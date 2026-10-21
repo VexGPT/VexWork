@@ -102,7 +102,7 @@ An exact snapshot left behind before first CURRENT publication may be safely reu
 
 ## CURRENT pointer
 
-`current.json` is the one accepted runtime currentness pointer for a Workgraph identity.
+Runtime currentness is derived from the **unique validated tip of the retained immutable pointer lineage** for one Workgraph identity.
 
 It binds:
 
@@ -122,6 +122,23 @@ Every accepted pointer identity is retained as an immutable content-addressed re
 Publishing a new pointer record is the atomic currentness commit point. Because its content address includes its predecessor identity, replaying an older pointer is idempotent rather than a rollback, a false predecessor cannot resolve, and erasing predecessor fields creates a second lineage root that fails closed.
 
 This gives runtime currentness verifiable retained lineage without creating another Workgraph event ledger. Workgraph transitions remain the only semantic lifecycle/event history; runtime pointers only prove which validated Workgraph snapshot succeeded which prior accepted pointer.
+
+The portable adapter's machine-facing currentness basis is:
+
+```text
+RETAINED_POINTER_LINEAGE
+```
+
+That name is deliberately narrower than "anti-rollback." The adapter can prove that the pointer records **still retained in the store** form one internally valid, connected lineage with one tip. It cannot prove that a privileged local actor previously accepted a later tip and then deleted that tip's immutable pointer record.
+
+```text
+RETAINED_LINEAGE_INTEGRITY != DESTRUCTIVE_ANTI_ROLLBACK
+POINTER_RECORD_MISSING_BY_DELETION != DETECTABLE_FROM_REMAINING_PREFIX_ALONE
+```
+
+If an accepted successor pointer record is destructively removed, the remaining valid prefix may again have one root and one tip. Within this first portable filesystem contract, that is outside the anti-rollback guarantee rather than silently claimed as protected behavior.
+
+A deployment that requires detection of destructive lineage truncation must supply a **separate trusted monotonic/currentness anchor outside this truncatable pointer-record set**. That anchor is not invented by this foundation because no current consumer has established its rightful owner or substrate.
 
 Read-back revalidates:
 
@@ -210,7 +227,7 @@ A crash after writing an immutable next snapshot but before publishing its succe
 
 A crash after the immutable successor pointer is atomically published may lose the caller's return value, but a fresh read derives that successor as the unique lineage tip and recovers the accepted current Workgraph.
 
-This source does not claim power-loss durability beyond the filesystem guarantees exercised by the adapter. A deployment that requires stronger device/filesystem guarantees may wrap or replace the portable adapter while preserving the same VexWork semantics.
+This source does not claim power-loss durability beyond the filesystem guarantees exercised by the adapter. It also does not claim destructive anti-rollback when an accepted pointer record is removed from the store. A deployment that requires stronger device/filesystem or anti-rollback guarantees may wrap or replace the portable adapter while preserving the same VexWork semantics and providing its own trusted external anchor.
 
 ## Public/private boundary
 
@@ -235,6 +252,7 @@ Focused source proof lives in `test/workgraph-runtime.test.mjs` and covers:
 - exact-current lifecycle transition persistence;
 - immutable pointer-lineage currentness with one validated tip;
 - replayed-old-pointer, falsified predecessor identity, and lineage-erased Workgraph substitution rejection;
+- explicit accepted-tip deletion behavior proving that currentness is retained-lineage-scoped rather than destructive anti-rollback;
 - stale CURRENT-pointer rejection;
 - lifecycle legality delegated to Workgraph semantics;
 - abandoned writer hold + stale recovery rejection + exact recovery.
@@ -255,6 +273,7 @@ multi-host distributed locking
 remote store protocol
 Vex Home deployment binding
 production migration from VexLife's current runtime writer
+trusted external monotonic anchor / destructive anti-rollback
 ```
 
 Those are later questions. The next runtime work should only add one when a real consumer requires it.

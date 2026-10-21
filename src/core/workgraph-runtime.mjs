@@ -8,6 +8,7 @@ import { createWorkgraph, requestTransition } from './workgraph.mjs';
 export const WORKGRAPH_RUNTIME_STORE_SCHEMA = 'vexwork.workgraph-runtime-store/v1';
 export const WORKGRAPH_RUNTIME_POINTER_SCHEMA = 'vexwork.workgraph-runtime-pointer/v1';
 export const WORKGRAPH_RUNTIME_WRITER_SCHEMA = 'vexwork.workgraph-runtime-writer/v1';
+export const WORKGRAPH_RUNTIME_CURRENTNESS_BASIS = 'RETAINED_POINTER_LINEAGE';
 
 const REF = /^[A-Za-z0-9][A-Za-z0-9._:/-]*$/u;
 const HEX64 = /^[a-f0-9]{64}$/u;
@@ -477,7 +478,11 @@ function readAccepted(paths, graphRef, registry) {
   const graph = readSnapshot(paths, pointer.graphSemanticFingerprint, registry);
   assertPointerMatchesGraph(pointer, graph);
   validatePointerLineage(paths, pointer, graph, registry, resolved.recordCount);
-  return deepFreeze({ pointer: structuredClone(pointer), graph: structuredClone(graph) });
+  return deepFreeze({
+    currentnessBasis: WORKGRAPH_RUNTIME_CURRENTNESS_BASIS,
+    pointer: structuredClone(pointer),
+    graph: structuredClone(graph),
+  });
 }
 
 function persistAccepted(paths, graph, priorPointerSha256OrNull, priorGraphSemanticFingerprintOrNull, registry) {

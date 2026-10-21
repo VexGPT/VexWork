@@ -8,6 +8,7 @@ import test from 'node:test';
 import { semanticHash } from '../src/core/semantic.mjs';
 import { createWorkgraph } from '../src/core/workgraph.mjs';
 import {
+  WORKGRAPH_RUNTIME_CURRENTNESS_BASIS,
   WORKGRAPH_RUNTIME_POINTER_SCHEMA,
   WORKGRAPH_RUNTIME_WRITER_SCHEMA,
   commitWorkgraphRuntimeTransition,
@@ -128,6 +129,8 @@ test('initialize + restart preserves exact current Workgraph', () => {
     assert.equal(current.state, 'CURRENT');
     assert.equal(current.changed, true);
     assert.equal(current.pointer.transitionCount, 0);
+    assert.equal(current.currentnessBasis, WORKGRAPH_RUNTIME_CURRENTNESS_BASIS);
+    assert.equal(restarted.currentnessBasis, 'RETAINED_POINTER_LINEAGE');
     assert.equal(restarted.pointer.pointerSha256, current.pointer.pointerSha256);
     assert.equal(restarted.graph.semanticFingerprint, current.graph.semanticFingerprint);
     assert.equal(restarted.effects.runtimeMutationPerformed, false);
@@ -303,3 +306,25 @@ test('pointer lineage cannot erase predecessor identity and substitute a differe
     );
   } finally { cleanup(storeRoot); }
 });
+
+test('accepted-tip deletion is outside retained-lineage anti-rollback guarantees', () => {
+  const storeRoot = tmp();
+  try {
+    const initial = init(storeRoot);
+    const next = commit(storeRoot, initial);
+    const paths = graphRuntimePaths(storeRoot, initial.graph.graphRef);
+    fs.unlinkSync(path.join(paths.pointers, `${next.pointer.pointerSha256}.json`));
+
+    const retainedPrefix = readCurrentWorkgraphRuntime({
+      storeRoot,
+      graphRef: initial.graph.graphRef,
+      registry,
+    });
+
+    assert.equal(retainedPrefix.currentnessBasis, 'RETAINED_POINTER_LINEAGE');
+    assert.equal(retainedPrefix.pointer.pointerSha256, initial.pointer.pointerSha256);
+    assert.equal(retainedPrefix.graph.items[0].state, 'READY');
+    assert.notEqual(retainedPrefix.pointer.pointerSha256, next.pointer.pointerSha256);
+  } finally { cleanup(storeRoot); }
+});
+
