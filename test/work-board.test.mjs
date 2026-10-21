@@ -26,10 +26,10 @@ test('Project Work Board projects only the Project subgraph without becoming lif
   const active = board.lanes.find((lane) => lane.laneRef === 'lane.work.active');
   assert.equal(active.cards.some((card) => card.workRef === 'work.vexwork.visibility.public-dashboard'), false);
   const verify = board.lanes.find((lane) => lane.laneRef === 'lane.work.verify');
-  assert.equal(verify.cards.length, 1);
-  assert.equal(verify.cards.some((card) => card.workRef === 'work.vexwork.visibility.public-dashboard'), true);
+  assert.equal(verify.cards.length, 0);
   const done = board.lanes.find((lane) => lane.laneRef === 'lane.work.done');
-  assert.equal(done.cards.length, 4);
+  assert.equal(done.cards.length, 5);
+  assert.equal(done.cards.some((card) => card.workRef === 'work.vexwork.visibility.public-dashboard'), true);
   const ready = board.lanes.find((lane) => lane.laneRef === 'lane.work.ready');
   assert.equal(ready.cards.length, 0);
 });
