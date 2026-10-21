@@ -51,6 +51,30 @@ BOARD_LANE != WORK_STATE
 PROJECTION != EFFECT_AUTHORITY
 ```
 
+## Ambient source of truth; not foreground ceremony
+
+VexWork should make ongoing work easier, not require a worker to repeatedly announce or re-register the system while continuing an already-known lane. Once a Work identity, current state and route are established, ordinary execution can remain focused on the owning work and repository.
+
+Return to VexWork when work truth materially changes:
+
+```text
+new adjacent work discovered
+work state / disposition changes
+dependency or containment changes
+Project membership changes
+repository relation changes
+reusable process route is learned or changed
+completion / supersession / cancellation becomes true
+```
+
+Reading or updating VexWork is therefore driven by a work-truth change or navigation need, not by ceremony.
+
+```text
+CONTINUING_WORK != RE_REGISTER_WORK
+SOURCE_OF_TRUTH != CONSTANT_FOREGROUND_SURFACE
+NO_MATERIAL_WORK_CHANGE -> NO_REQUIRED_WORKGRAPH_CHURN
+```
+
 ## SCAE-shaped recognition: name the role, not only the area
 
 VexLife-Android's Behavior foundation taught a useful recognition discipline: a semantic stem and an architectural role are different coordinates. VexWork adopts that *method* for work behavior.
