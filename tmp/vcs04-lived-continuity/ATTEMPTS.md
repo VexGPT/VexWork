@@ -174,3 +174,45 @@ L5 canonical installed Conversation read
 A successful future attempt must establish those before advancing to L6-L11.
 
 <!-- [VXG RealForever][VEXWORK][TEMP-CONTINUITY][VCS04-LIVED][ATTEMPTS] -->
+
+
+## A008
+
+```text
+packageSha256=13010c3527ff105de4b992549e893824fa64ab744c7aa8d317ca6b8a06146f6c
+returnSha256=c3e6788a05eae14bbeb919248703584c11f331c5a6910a2b3250e1ece5da858a
+disposition=USER_ACTION_REQUIRED
+firstFailure=TAILSCALE_SERVE_ENABLE_REQUIRED
+networkServeEffectPerformed=false
+publicFunnelEffectPerformed=false
+L1-L5=NOT_PROVEN
+```
+
+Important correction from the return:
+- the human Serve/HTTPS enablement **did succeed**;
+- Tailscale Serve log recorded `Success.`;
+- later retries reported `listener already exists for port 8443`;
+- every Mac curl to the MagicDNS FQDN returned status 6 (hostname could not be resolved);
+- A008 therefore confused macOS local DNS resolution failure with Serve enablement failure and repeatedly launched conflicting Serve clients;
+- Serve-state receipt truthfully retained `attempted=true / activeEffectPerformed=false / publicFunnelEffectPerformed=false`;
+- cleanup closed the temporary gateway and preserved the Mac's originally-running Tailscale state.
+
+## A009 — current
+
+```text
+packageSha256=ad90c1079e1386ba58bbb78eb5624340079e71ea2e85d690f6659fa86392f197
+SDK.main=b4d427564409989e8f839066accd17ec4c790724
+VexLife.main=0fbaeb7c918ebdfc7af5389220d5bf081a906702
+Android.main=30ecfe22156f6bb4b565eda990c72feff48a3866
+state=FORMED_STATIC_ALL_PASS
+```
+
+A009 corrections:
+- Tailscale `serve status --json` is the Serve listener/proxy truth owner;
+- macOS local MagicDNS resolution is not an admission predicate;
+- optional Mac HTTPS diagnostic uses `curl --resolve <dns>:<port>:<tailscale-ip>` while preserving the TLS hostname;
+- actual Android private-gateway route traffic remains the acceptance oracle;
+- if A008 left predecessor-owned HTTPS 8443 private Serve state, A009 first verifies 8443 is not Funnel/public and attempts exact endpoint recovery only;
+- one foreground Serve candidate runs at a time; no repeated listener-conflict loop;
+- visible progress/heartbeat behavior remains.
+
