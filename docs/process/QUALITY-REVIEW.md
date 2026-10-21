@@ -345,9 +345,9 @@ Neither command is the semantic QA disposition; both only produce deterministic 
 Then exercise the source-managed dogfood projections:
 
 ```bash
-npm run work:status -- --project projects/vexwork-foundation/project.json --graph projects/vexwork-foundation/workgraph.json --view projects/vexwork-foundation/board.view.json --format board
-npm run work:status -- --graph projects/vexwork-foundation/workgraph.json --format parking-lot
-npm run work:status -- --graph projects/vexwork-foundation/workgraph.json --format parking-lot --repository repo.vexlife-android
+npm run work:status -- --project projects/vexwork-foundation/project.json --graph workgraphs/public.json --view projects/vexwork-foundation/board.view.json --format board
+npm run work:status -- --graph workgraphs/public.json --format parking-lot
+npm run work:status -- --graph workgraphs/public.json --format parking-lot --repository repo.vexlife-android
 ```
 
 These commands are the deterministic floor, not the complete review.
