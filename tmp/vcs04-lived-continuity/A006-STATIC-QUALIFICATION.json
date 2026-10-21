@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "vexwork.temp.vcs04-lived-a006-qualification/v1",
+  "packageSha256": "4665251b1b4cc571ad0d4fab8602b44b6734bdbcec3574af22191c16eff3b4b8",
+  "sourceCurrentness": {
+    "sdkMain": "b4d427564409989e8f839066accd17ec4c790724",
+    "vexLifeMain": "0fbaeb7c918ebdfc7af5389220d5bf081a906702",
+    "androidMain": "30ecfe22156f6bb4b565eda990c72feff48a3866"
+  },
+  "checks": {
+    "wrapperDigest": true,
+    "zipCrc": true,
+    "noSymlinks": true,
+    "manifestParity": true,
+    "heartbeat15s": true,
+    "liveProgressLog": true,
+    "currentPhaseJson": true,
+    "gradleAsyncHeartbeat": true,
+    "magicDnsPingGateRemoved": true,
+    "privateHttpsGatewayIsReachabilityProof": true,
+    "adbReconnectPreserved": true,
+    "androidTailscaleAssistPreserved": true,
+    "noAutoTailscaleInstall": true,
+    "noFunnelConfiguration": true,
+    "noServeBg": true,
+    "sendModelRestartHeld": true,
+    "nodeSyntax": true,
+    "bashSyntax": true
+  },
+  "allPass": true
+}
