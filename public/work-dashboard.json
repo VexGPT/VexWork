@@ -1,0 +1,233 @@
+{
+  "schemaVersion": "vexwork.public-work-dashboard/v1",
+  "project": {
+    "projectRef": "project.vexwork.foundation",
+    "label": "VexWork Foundation",
+    "purpose": "Establish VexWork as the portable work-navigation foundation for cross-repository projects, Workgraph truth, Work Board projections and provider relations without becoming cross-repository source authority."
+  },
+  "graphRef": "workgraph.vexwork.foundation",
+  "viewRef": "view.vexwork.foundation.board",
+  "lanes": [
+    {
+      "laneRef": "lane.work.intake",
+      "label": "Intake",
+      "cards": [
+        {
+          "workRef": "work.vexwork.foundation.idea-intake",
+          "label": "Human idea intake",
+          "purpose": "Let a human capture a potential into VexWork without converting that potential into implementation authority or a roadmap commitment.",
+          "workClass": "POTENTIAL",
+          "state": "CAPTURED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "updatedAt": "2026-10-21T01:45:05.000Z"
+        },
+        {
+          "workRef": "work.vexwork.history.foundational-infrastructure-backfill",
+          "label": "Foundational Infrastructure history backfill",
+          "purpose": "Gradually reconstruct completed foundational work into VexWork with provenance so future humans and instances can perceive what was built from a dashboard instead of rediscovering it across repositories and chat history.",
+          "workClass": "POTENTIAL",
+          "state": "CAPTURED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "LOW",
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "updatedAt": "2026-10-21T06:07:27.000Z"
+        }
+      ]
+    },
+    {
+      "laneRef": "lane.work.planned",
+      "label": "Planned",
+      "cards": []
+    },
+    {
+      "laneRef": "lane.work.ready",
+      "label": "Ready",
+      "cards": []
+    },
+    {
+      "laneRef": "lane.work.active",
+      "label": "Active",
+      "cards": [
+        {
+          "workRef": "work.vexwork.foundation.outcome",
+          "label": "Establish VexWork foundation",
+          "purpose": "Create one portable work-navigation owner that can relate projects and work across repositories while leaving target repository culture and source authority local.",
+          "workClass": "OUTCOME",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "updatedAt": "2026-10-21T01:45:01.000Z"
+        }
+      ]
+    },
+    {
+      "laneRef": "lane.work.waiting",
+      "label": "Waiting",
+      "cards": []
+    },
+    {
+      "laneRef": "lane.work.needs-human",
+      "label": "Needs Human",
+      "cards": []
+    },
+    {
+      "laneRef": "lane.work.verify",
+      "label": "Verify",
+      "cards": [
+        {
+          "workRef": "work.vexwork.visibility.public-dashboard",
+          "label": "Public VexWork dashboard",
+          "purpose": "Make current VexWork Project Board and Parking Lot truth visibly explorable through a stable public read projection without making Vextreme another work-state owner.",
+          "workClass": "TASK",
+          "state": "VERIFYING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme"
+          ],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "updatedAt": "2026-10-21T06:20:08.000Z"
+        }
+      ]
+    },
+    {
+      "laneRef": "lane.work.attention",
+      "label": "Attention",
+      "cards": []
+    },
+    {
+      "laneRef": "lane.work.done",
+      "label": "Done",
+      "cards": [
+        {
+          "workRef": "work.vexwork.foundation.portable-workgraph",
+          "label": "Portable Workgraph",
+          "purpose": "Source-place portable work identity, lifecycle, relationships and deterministic transition behavior compatible with useful VexLife P0B distinctions.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife"
+          ],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "updatedAt": "2026-10-21T03:56:12.000Z"
+        },
+        {
+          "workRef": "work.vexwork.foundation.repository-graph",
+          "label": "Repository Graph",
+          "purpose": "Make cross-repository work source-descendable through public/source-safe repository and culture-entry references without consolidating cultures.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife",
+            "repo.vexlife-android"
+          ],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "updatedAt": "2026-10-21T03:56:14.000Z"
+        },
+        {
+          "workRef": "work.vexwork.foundation.work-board",
+          "label": "Work Board",
+          "purpose": "Provide the familiar Jira/kanban-shaped human projection while preserving Workgraph as the only work lifecycle owner.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife"
+          ],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "updatedAt": "2026-10-21T03:56:13.000Z"
+        },
+        {
+          "workRef": "work.vexwork.foundation.runtime-persistence",
+          "label": "Runtime persistence owner",
+          "purpose": "Source-place portable private/current event, snapshot, writer and CURRENT-pointer semantics without using Git commit churn as the runtime database.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "updatedAt": "2026-10-21T05:51:43.000Z"
+        }
+      ]
+    },
+    {
+      "laneRef": "lane.work.archive",
+      "label": "Archive",
+      "cards": []
+    }
+  ],
+  "parkingLot": {
+    "items": [
+      {
+        "workRef": "work.vexlife.connected-services.guided-onboarding",
+        "label": "Simplify Connected Services onboarding across computer + phone",
+        "purpose": "Preserve the lived need for one guided setup path that checks Tailscale readiness across computer and phone, asks for protected human-only steps at the right moment, then returns to VexLife pairing/private-route setup without weakening Home, session, reachability, or pairing authority boundaries.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "LOW",
+        "repositoryRefs": [
+          "repo.vexlife",
+          "repo.vexlife-android"
+        ],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "updatedAt": "2026-10-21T06:23:27.000Z"
+      },
+      {
+        "workRef": "work.vexlife-android.vexstream.not-yet-downloaded-filter",
+        "label": "VexStream Songs filter for Not yet downloaded",
+        "purpose": "Preserve the nice-to-have Songs-level filter that answers which songs on this device are still not downloaded, without making it part of MassDownload completion or authorizing implementation.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "LOW",
+        "repositoryRefs": [
+          "repo.vexlife-android"
+        ],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "updatedAt": "2026-10-21T01:18:35.000Z"
+      }
+    ]
+  },
+  "summary": {
+    "projectWorkItemCount": 8,
+    "openProjectWorkItemCount": 4,
+    "parkingLotItemCount": 2
+  },
+  "effects": false,
+  "executionAuthority": "NONE"
+}

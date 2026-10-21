@@ -3,7 +3,8 @@
   "graphRef": "workgraph.vexwork.foundation",
   "rootWorkRefs": [
     "work.vexwork.foundation.outcome",
-    "work.vexlife-android.vexstream.not-yet-downloaded-filter"
+    "work.vexlife-android.vexstream.not-yet-downloaded-filter",
+    "work.vexlife.connected-services.guided-onboarding"
   ],
   "items": [
     {
@@ -196,6 +197,89 @@
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-21T01:18:35.000Z",
       "updatedAt": "2026-10-21T01:18:35.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexwork.visibility.public-dashboard",
+      "parentWorkRefOrNull": "work.vexwork.foundation.outcome",
+      "label": "Public VexWork dashboard",
+      "purpose": "Make current VexWork Project Board and Parking Lot truth visibly explorable through a stable public read projection without making Vextreme another work-state owner.",
+      "workClass": "TASK",
+      "state": "VERIFYING",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexwork.foundation.work-board"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vextreme"
+      ],
+      "sourceRefs": [
+        "github.commit.vexwork.5c0e871c8e2e275cdeb20506ac928b4994b2758e",
+        "public/work-dashboard.json",
+        "docs/foundation/WORK-BOARD.md"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-21T06:07:27.000Z",
+      "updatedAt": "2026-10-21T06:20:08.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexwork.history.foundational-infrastructure-backfill",
+      "parentWorkRefOrNull": "work.vexwork.foundation.outcome",
+      "label": "Foundational Infrastructure history backfill",
+      "purpose": "Gradually reconstruct completed foundational work into VexWork with provenance so future humans and instances can perceive what was built from a dashboard instead of rediscovering it across repositories and chat history.",
+      "workClass": "POTENTIAL",
+      "state": "CAPTURED",
+      "priorityClass": "LOW",
+      "dependencyRefs": [
+        "work.vexwork.visibility.public-dashboard"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "public/work-dashboard.json",
+        "docs/lineage/VEXLIFE-P0B.md"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-21T06:07:27.000Z",
+      "updatedAt": "2026-10-21T06:07:27.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.connected-services.guided-onboarding",
+      "parentWorkRefOrNull": null,
+      "label": "Simplify Connected Services onboarding across computer + phone",
+      "purpose": "Preserve the lived need for one guided setup path that checks Tailscale readiness across computer and phone, asks for protected human-only steps at the right moment, then returns to VexLife pairing/private-route setup without weakening Home, session, reachability, or pairing authority boundaries.",
+      "workClass": "POTENTIAL",
+      "state": "CAPTURED",
+      "workDisposition": "PARKED",
+      "priorityClass": "LOW",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexlife",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "github.issue.vexwork.6",
+        "github.issue.vexlife.899",
+        "docs/process/CAPTURE-DISCOVERED-WORK.md"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-21T06:23:27.000Z",
+      "updatedAt": "2026-10-21T06:23:27.000Z"
     }
   ],
   "transitions": [
@@ -298,6 +382,21 @@
         "github.commit.vexwork.bc73c72071186673290b4ae6f8419bb9366b42b3"
       ],
       "createdAt": "2026-10-21T05:51:43.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.visibility.public-dashboard.verifying.pr5",
+      "workRef": "work.vexwork.visibility.public-dashboard",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Public dashboard projection contract and dogfood state are source-placed on PR #5 and ready for independent review.",
+      "actorRef": "role.vexwork.public-dashboard-author",
+      "sourceRefs": [
+        "github.pull.vexwork.5",
+        "github.commit.vexwork.c3ed1553c5147fc3ce61f3b72a7111573a9c0a5c",
+        "public/work-dashboard.json"
+      ],
+      "createdAt": "2026-10-21T06:20:08.000Z"
     }
   ],
   "sourceRefs": [
