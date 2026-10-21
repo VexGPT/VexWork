@@ -55,8 +55,5 @@ console.log(JSON.stringify({
   boardCardCount: board.lanes.reduce((sum, lane) => sum + lane.cards.length, 0),
   parkingLotItemCount: parkingLot.items.length,
   graphEdgeCount: graphProjection.edges.length,
-  processCount: processMap.processes.length,
-  providerIsCanonicalWorkState: false,
-  workBoardIsCanonicalWorkState: false,
-  parkingLotIsProject: false
+  processCount: processMap.processes.length
 }, null, 2));

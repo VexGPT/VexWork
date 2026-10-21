@@ -328,11 +328,19 @@ Use `docs/templates/QA-REVIEW-BRIEF.md` to hand the role to a fresh reviewer and
 
 ## VexWork Foundation deterministic floor
 
-For the current repository foundation, the automated floor is:
+For the current repository foundation, the ergonomic automated-floor entry is:
+
+```bash
+npm run review
+```
+
+That delegates to the explicit deterministic floor:
 
 ```bash
 npm run review:deterministic
 ```
+
+Neither command is the semantic QA disposition; both only produce deterministic evidence for the reviewer.
 
 Then exercise the source-managed dogfood projections:
 
@@ -356,11 +364,13 @@ A fresh QA reviewer of VexWork PR #1 should actively try to falsify at least the
 5. GitHub issue #144 remains provenance, not canonical Work identity.
 6. Unknown repository/process refs fail closed.
 7. Stale Workgraph transition requests fail closed.
-8. Containment/dependency cycles fail closed.
-9. Process Map points to Android feature authoring without taking ownership of it.
-10. "Jira board" remains a human alias for Work Board rather than a dependency or namespace.
-11. A fresh worker can find the above from README -> AGENTS -> Foundation/Process sources.
-12. The PR does not claim live persistence, interactive UI, provider reconciliation, or a production-current Workgraph writer.
+8. Stored transition history rejects illegal edges, duplicate transition identities, broken chains, and current-state contradictions.
+9. Containment/dependency cycles fail closed.
+10. Board lane ordering is an exact unique permutation and cannot silently duplicate or suppress Project work.
+11. Process Map points to Android feature authoring without taking ownership of it.
+12. "Jira board" remains a human alias for Work Board rather than a dependency or namespace.
+13. A fresh worker can find the above from README -> AGENTS -> Foundation/Process sources.
+14. The PR does not claim live persistence, interactive UI, provider reconciliation, or a production-current Workgraph writer.
 ```
 
 If any of those is false, the review should not return `CLEAR` merely because the test suite is green.

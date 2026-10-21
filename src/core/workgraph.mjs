@@ -140,19 +140,36 @@ export function createWorkgraph(input, registry) {
   assertAcyclic(items, (item) => item.parentWorkRefOrNull === null ? [] : [item.parentWorkRefOrNull], 'containment');
   assertAcyclic(items, (item) => item.dependencyRefs, 'dependency');
 
+  const transitionRefs = new Set();
+  const transitionsByWork = new Map();
   const transitions = input.transitions.map((transition) => {
     assertStoredFingerprintIfPresent(transition, 'transition');
     assert(transition.schemaVersion === TRANSITION_SCHEMA, 'transition schema mismatch');
     stableRef(transition.transitionRef, 'transitionRef');
+    assert(!transitionRefs.has(transition.transitionRef), `duplicate transitionRef ${transition.transitionRef}`);
+    transitionRefs.add(transition.transitionRef);
     stableRef(transition.workRef, 'transition.workRef');
     assert(byRef.has(transition.workRef), `transition work missing: ${transition.workRef}`);
     assert(registry.lifecycleStates.includes(transition.priorState), 'transition priorState unsupported');
     assert(registry.lifecycleStates.includes(transition.nextState), 'transition nextState unsupported');
+    assert((registry.allowedTransitions[transition.priorState] ?? []).includes(transition.nextState), `transition ${transition.priorState} -> ${transition.nextState} not allowed`);
     stableRef(transition.actorRef, 'transition.actorRef');
     refs(transition.sourceRefs, 'transition.sourceRefs');
     timestamp(transition.createdAt, 'transition.createdAt');
-    return withSemanticFingerprint(transition);
+    const accepted = withSemanticFingerprint(transition);
+    if (!transitionsByWork.has(accepted.workRef)) transitionsByWork.set(accepted.workRef, []);
+    transitionsByWork.get(accepted.workRef).push(accepted);
+    return accepted;
   });
+
+  for (const [workRef, history] of transitionsByWork) {
+    for (let index = 1; index < history.length; index += 1) {
+      assert(history[index].priorState === history[index - 1].nextState, `transition history discontinuity for ${workRef}`);
+    }
+    const latest = history.at(-1);
+    assert(latest.nextState === byRef.get(workRef).state, `transition history latest state ${latest.nextState} does not match current ${byRef.get(workRef).state} for ${workRef}`);
+  }
+
   return withSemanticFingerprint({ ...input, items, transitions });
 }
 
@@ -186,6 +203,7 @@ export function requestTransition(graph, request, registry) {
   refs(request.sourceRefs, 'request.sourceRefs');
   timestamp(request.createdAt, 'request.createdAt');
   assert(request.expectedGraphFingerprint === graph.semanticFingerprint, 'stale Workgraph observation');
+  assert(!graph.transitions.some((transition) => transition.transitionRef === request.transitionRef), `transitionRef already used ${request.transitionRef}`);
 
   const index = graph.items.findIndex((item) => item.workRef === request.workRef);
   assert(index >= 0, `unknown workRef ${request.workRef}`);

@@ -46,8 +46,10 @@ export function createBoardView(input, registry) {
   assert(typeof input.projectRef === 'string' && input.projectRef.length > 0, 'projectRef required');
   assert(typeof input.label === 'string' && input.label.trim(), 'view label required');
   assert(Array.isArray(input.laneRefOrder) && input.laneRefOrder.length > 0, 'laneRefOrder required');
-  const known = new Set(registry.boardLanes.map((lane) => lane.laneRef));
+  const expected = registry.boardLanes.map((lane) => lane.laneRef);
+  const known = new Set(expected);
   assert(input.laneRefOrder.every((ref) => known.has(ref)), 'board view contains unknown lane');
+  assert(input.laneRefOrder.length === expected.length && new Set(input.laneRefOrder).size === expected.length, 'laneRefOrder must be an exact unique permutation of Board lanes');
   if (input.semanticFingerprint && !verifySemanticFingerprint(input)) throw new TypeError('board view semanticFingerprint mismatch');
   return withSemanticFingerprint(input);
 }
@@ -55,7 +57,7 @@ export function createBoardView(input, registry) {
 export function projectWorkBoard({ project, graph, view, registry }) {
   assert(verifySemanticFingerprint(project), 'project semanticFingerprint mismatch');
   assert(verifySemanticFingerprint(graph), 'workgraph semanticFingerprint mismatch');
-  if (!verifySemanticFingerprint(view)) view = createBoardView(view, registry);
+  view = createBoardView(view, registry);
   assert(project.projectRef === view.projectRef, 'project/view identity mismatch');
 
   const selectedRefs = new Set(projectWorkRefs(project, graph));

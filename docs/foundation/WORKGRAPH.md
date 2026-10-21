@@ -73,6 +73,18 @@ REQUEST_TRANSITION
 
 Provider mutations, repository writes, deployment, model effects, and other external effects remain outside this foundation.
 
+
+Stored transition history is part of lifecycle truth, not decorative provenance. Loading a Workgraph therefore fails closed when:
+
+```text
+transitionRef is reused
+priorState -> nextState is not an allowed lifecycle edge
+one Work item's stored transition chain is discontinuous
+latest stored nextState disagrees with the Work item's current state
+```
+
+A Work item may legitimately have no stored transition history in a source-managed snapshot. Once history is present for that Work item, the stored chain must be internally lawful and converge on current WorkState.
+
 ## Work classes
 
 The initial registry uses a deliberately small set:

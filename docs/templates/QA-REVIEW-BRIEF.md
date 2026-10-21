@@ -43,6 +43,8 @@ REVIEW POSTURE
 AUTOMATED FLOOR
 [commands owned by the target repository]
 
+For VexWork itself, use `npm run review`; it delegates to the repository's deterministic floor. Treat that output as evidence, not the QA conclusion.
+
 MANUAL / ADVERSARIAL SCENARIOS
 [list the candidate-specific claims worth trying to break]
 

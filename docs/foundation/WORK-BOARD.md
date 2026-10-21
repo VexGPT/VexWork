@@ -43,6 +43,9 @@ Archive      SUPERSEDED / CANCELLED
 
 These lanes preserve the VexLife P0B board vocabulary for migration continuity.
 
+
+`laneRefOrder` is ordering only. A valid Board view must name every registry lane exactly once. It cannot duplicate a lane or omit one to change Project membership visibility. If intentional filtering is later needed, that must be modeled as a separate projection question rather than smuggled through ordering.
+
 ## Non-collapse
 
 ```text
