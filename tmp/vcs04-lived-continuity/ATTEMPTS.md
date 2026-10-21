@@ -216,3 +216,46 @@ A009 corrections:
 - one foreground Serve candidate runs at a time; no repeated listener-conflict loop;
 - visible progress/heartbeat behavior remains.
 
+
+
+## A009 — consumed SAFE_FAILURE during over-conservative Funnel guard
+
+```text
+packageSha256=ad90c1079e1386ba58bbb78eb5624340079e71ea2e85d690f6659fa86392f197
+returnSha256=4a9b7eacca2afbe2452afb44c1b30772c1eeffe3a5072ce83fefd47e61dd9b15
+disposition=SAFE_FAILURE
+firstFailure=PUBLIC_FUNNEL_EXPOSURE_DETECTED
+duration≈2s
+productEffectsPerformed=false
+L1-L5=NOT_PROVEN
+```
+
+A009 stopped before ADB/source clones/product effects while trying to recover A008's predecessor Serve state.
+
+The guard was safe but semantically wrong:
+- it treated "HTTPS 8443 appears in `tailscale funnel status --json`" as public exposure;
+- current Tailscale Serve/Funnel status describes a shared ServeConfig;
+- actual public ingress permission is represented separately by `AllowFunnel[host:port]`;
+- foreground config may be nested beneath `Foreground`.
+
+Therefore port presence alone is not Funnel truth.
+
+## A010 — current qualified successor
+
+```text
+packageSha256=5ca5e69be1c8cff902795e7b024008e872211e0ae0f14970946b5e3063716f30
+SDK.main=b4d427564409989e8f839066accd17ec4c790724
+VexLife.main=0fbaeb7c918ebdfc7af5389220d5bf081a906702
+Android.main=30ecfe22156f6bb4b565eda990c72feff48a3866
+staticQualification=ALL_PASS
+```
+
+A010 corrections:
+- parses both top-level and `Foreground` ServeConfig values;
+- classifies exact public exposure only when `AllowFunnel[host:port] == true`;
+- does not call `tailscale funnel status` and does not issue Funnel mutation commands;
+- if exact predecessor host:8443 exists with AllowFunnel absent/false, removes only that private Serve endpoint;
+- active private Serve is rejected only if the exact host:port later gains AllowFunnel=true;
+- preserves forced-IP Mac HTTPS diagnostic, heartbeats, USB recovery and Android private-gateway traffic as the acceptance oracle;
+- no broad Serve reset, no `--bg`, no Send/model/restart effect.
+
