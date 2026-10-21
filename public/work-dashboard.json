@@ -190,6 +190,21 @@
   "parkingLot": {
     "items": [
       {
+        "workRef": "work.vexstream.mobile-library.keep-offline-sync",
+        "label": "Persistent Keep Offline / Sync",
+        "purpose": "Preserve the future policy question of keeping an album, artist, playlist, or other collection continuously mirrored as producer membership changes, without conflating it with one-shot Download missing.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "LOW",
+        "repositoryRefs": [
+          "repo.vexlife-android"
+        ],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "updatedAt": "2026-10-21T08:41:00.000Z"
+      },
+      {
         "workRef": "work.vexlife.connected-services.guided-onboarding",
         "label": "Simplify Connected Services onboarding across computer + phone",
         "purpose": "Preserve the lived need for one guided setup path that checks Tailscale readiness across computer and phone, asks for protected human-only steps at the right moment, then returns to VexLife pairing/private-route setup without weakening Home, session, reachability, or pairing authority boundaries.",
@@ -225,7 +240,7 @@
   "summary": {
     "projectWorkItemCount": 8,
     "openProjectWorkItemCount": 3,
-    "parkingLotItemCount": 2
+    "parkingLotItemCount": 3
   },
   "effects": false,
   "executionAuthority": "NONE"
