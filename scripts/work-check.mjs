@@ -7,6 +7,7 @@ import { assertKnownProcessRefs, projectProcessMap, validateProcessRegistry } fr
 import { createProject, createWorkgraph, projectWorkRefs, validateRegistry } from '../src/core/workgraph.mjs';
 import { createBoardView, projectParkingLot, projectWorkBoard, projectWorkGraph } from '../src/core/work-board.mjs';
 import { verifySemanticFingerprint } from '../src/core/semantic.mjs';
+import { createProjectAgencyPolicy } from '../src/core/transition-handshake.mjs';
 
 const read = (path) => JSON.parse(fs.readFileSync(new URL(`../${path}`, import.meta.url), 'utf8'));
 
@@ -65,12 +66,22 @@ for (const entry of projectRegistry.projects) {
     if (!verifySemanticFingerprint(value)) throw new Error('semantic fingerprint self-check failed');
   }
 
+  let agencyPolicyRefOrNull = null;
+  if (entry.agencyPolicyPathOrNull) {
+    const agencyPolicy = createProjectAgencyPolicy(read(entry.agencyPolicyPathOrNull), workRegistry);
+    if (agencyPolicy.projectRef !== project.projectRef) {
+      throw new Error(`Agency Policy/Project identity mismatch for ${entry.projectRef}`);
+    }
+    agencyPolicyRefOrNull = agencyPolicy.policyRef;
+    if (!verifySemanticFingerprint(agencyPolicy)) throw new Error('agency policy semantic fingerprint self-check failed');
+  }
+
   projectChecks.push({
     projectRef: project.projectRef,
     workgraphRef: graph.graphRef,
     workItemCount: projectRefs.length,
     boardCardCount: board.lanes.reduce((sum, lane) => sum + lane.cards.length, 0),
-    agencyPolicyPathOrNull: entry.agencyPolicyPathOrNull,
+    agencyPolicyRefOrNull,
   });
 }
 

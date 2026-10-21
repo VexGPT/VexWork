@@ -18,7 +18,7 @@ test('work registry covers lifecycle states exactly once on the default Work Boa
 test('one Workgraph can contain project work and unprojected parked work', () => {
   const project = createProject(projectSource);
   const graph = createWorkgraph(graphSource, registry);
-  assert.equal(graph.items.length, 10);
+  assert.equal(graph.items.length, 21);
   assert.equal(projectWorkRefs(project, graph).length, 8);
   assert.equal(verifySemanticFingerprint(project), true);
   assert.equal(verifySemanticFingerprint(graph), true);
@@ -51,6 +51,19 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.deepEqual(tailscale.repositoryRefs, ['repo.vexlife', 'repo.vexlife-android']);
   assert.equal(tailscale.formationProcessRefOrNull, 'process.vexwork.capture-discovered-work');
   assert.deepEqual(tailscale.nextProcessRefs, []);
+  const mobile = graph.items.find((item) => item.workRef === 'work.vexstream.mobile-library.outcome');
+  assert.equal(mobile.workClass, 'OUTCOME');
+  assert.equal(mobile.state, 'DECOMPOSED');
+  assert.equal(mobile.authorityDisposition, 'AUTHORIZED_BOUNDED');
+  const massDownload = graph.items.find((item) => item.workRef === 'work.vexstream.mobile-library.massdownload-product');
+  assert.equal(massDownload.state, 'COMPLETED');
+  const e2e = graph.items.find((item) => item.workRef === 'work.vexstream.mobile-library.massdownload-e2e');
+  assert.equal(e2e.state, 'CAPTURED');
+  assert.equal(e2e.authorityDisposition, 'HELD_UNKNOWN');
+  const keepOffline = graph.items.find((item) => item.workRef === 'work.vexstream.mobile-library.keep-offline-sync');
+  assert.equal(keepOffline.workDisposition, 'PARKED');
+  assert.equal(keepOffline.authorityDisposition, 'NO_AUTHORITY');
+  assert.equal(keepOffline.effectDisposition, 'NO_EFFECTS');
 });
 
 test('typed transition rejects stale observation and accepts exact current transition', () => {

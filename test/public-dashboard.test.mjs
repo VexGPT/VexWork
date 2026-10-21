@@ -23,13 +23,14 @@ test('public dashboard is a read-only composition of Board and Parking Lot truth
   assert.equal(dashboard.graphRef, graph.graphRef);
   assert.equal(dashboard.summary.projectWorkItemCount, 8);
   assert.equal(dashboard.summary.openProjectWorkItemCount, 3);
-  assert.equal(dashboard.summary.parkingLotItemCount, 2);
+  assert.equal(dashboard.summary.parkingLotItemCount, 3);
   assert.equal(cards.some((card) => card.workRef === 'work.vexwork.visibility.public-dashboard'), true);
   assert.equal(dashboard.lanes.find((lane) => lane.laneRef === 'lane.work.done').cards.some((card) => card.workRef === 'work.vexwork.visibility.public-dashboard'), true);
   assert.equal(cards.some((card) => card.workRef === 'work.vexwork.history.foundational-infrastructure-backfill'), true);
   assert.equal(cards.some((card) => card.workRef === 'work.vexlife-android.vexstream.not-yet-downloaded-filter'), false);
   assert.equal(dashboard.parkingLot.items.some((item) => item.workRef === 'work.vexlife-android.vexstream.not-yet-downloaded-filter'), true);
   assert.equal(dashboard.parkingLot.items.some((item) => item.workRef === 'work.vexlife.connected-services.guided-onboarding'), true);
+  assert.equal(dashboard.parkingLot.items.some((item) => item.workRef === 'work.vexstream.mobile-library.keep-offline-sync'), true);
   assert.equal(dashboard.effects, false);
   assert.equal(dashboard.executionAuthority, 'NONE');
 
