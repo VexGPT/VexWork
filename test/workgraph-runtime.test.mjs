@@ -8,6 +8,7 @@ import test from 'node:test';
 import { semanticHash } from '../src/core/semantic.mjs';
 import { createWorkgraph } from '../src/core/workgraph.mjs';
 import {
+  WORKGRAPH_RUNTIME_POINTER_SCHEMA,
   WORKGRAPH_RUNTIME_WRITER_SCHEMA,
   commitWorkgraphRuntimeTransition,
   initializeWorkgraphRuntime,
@@ -96,6 +97,30 @@ function commit(storeRoot, current, overrides = {}) {
 
 function cleanup(storeRoot) { fs.rmSync(storeRoot, { recursive: true, force: true }); }
 
+function graphRuntimePaths(storeRoot, graphRef) {
+  const graphRoot = path.join(storeRoot, 'workgraphs', workgraphRuntimeAddress(graphRef));
+  return {
+    current: path.join(graphRoot, 'current.json'),
+    pointers: path.join(graphRoot, 'pointers'),
+    snapshots: path.join(graphRoot, 'snapshots'),
+  };
+}
+
+function sealedPointer(graph, priorPointerSha256OrNull = null, priorGraphSemanticFingerprintOrNull = null) {
+  const core = {
+    schemaVersion: WORKGRAPH_RUNTIME_POINTER_SCHEMA,
+    currentness: 'CURRENT',
+    graphRef: graph.graphRef,
+    graphSemanticFingerprint: graph.semanticFingerprint,
+    graphPayloadSha256: semanticHash(graph),
+    transitionCount: graph.transitions.length,
+    lastTransitionRefOrNull: graph.transitions.length ? graph.transitions.at(-1).transitionRef : null,
+    priorPointerSha256OrNull,
+    priorGraphSemanticFingerprintOrNull,
+  };
+  return { ...core, pointerSha256: semanticHash(core) };
+}
+
 test('initialize + restart preserves exact current Workgraph', () => {
   const storeRoot = tmp();
   try {
@@ -133,6 +158,12 @@ test('transition uses exact CURRENT CAS and survives restart', () => {
     assert.equal(next.graph.items[0].state, 'RUNNING');
     assert.equal(next.pointer.transitionCount, 1);
     assert.equal(next.pointer.priorPointerSha256OrNull, initial.pointer.pointerSha256);
+    const paths = graphRuntimePaths(storeRoot, initial.graph.graphRef);
+    const anchor = path.join(paths.pointers, `${next.pointer.pointerSha256}.json`);
+    const currentStat = fs.statSync(paths.current, { bigint: true });
+    const anchorStat = fs.statSync(anchor, { bigint: true });
+    assert.equal(currentStat.dev, anchorStat.dev);
+    assert.equal(currentStat.ino, anchorStat.ino);
     assert.equal(restarted.pointer.pointerSha256, next.pointer.pointerSha256);
     assert.equal(restarted.graph.transitions.at(-1).transitionRef, 'transition.test.runtime.start');
     assert.equal(next.effects.providerMutationPerformed, false);
@@ -213,5 +244,57 @@ test('abandoned writer requires exact explicit recovery', async () => {
     assert.equal(recovered.effects.writerLeaseDeletionPerformed, true);
     assert.equal(recovered.effects.providerMutationPerformed, false);
     assert.equal(fs.existsSync(lockFile), false);
+  } finally { cleanup(storeRoot); }
+});
+
+test('CURRENT rollback to an older accepted pointer fails closed', () => {
+  const storeRoot = tmp();
+  try {
+    const initial = init(storeRoot);
+    commit(storeRoot, initial);
+    const paths = graphRuntimePaths(storeRoot, initial.graph.graphRef);
+    fs.writeFileSync(paths.current, canonical(initial.pointer), 'utf8');
+    assert.throws(
+      () => readCurrentWorkgraphRuntime({ storeRoot, graphRef: initial.graph.graphRef, registry }),
+      (error) => error?.code === 'RUNTIME_POINTER_CORRUPT',
+    );
+  } finally { cleanup(storeRoot); }
+});
+
+test('CURRENT cannot self-declare a false predecessor pointer identity', () => {
+  const storeRoot = tmp();
+  try {
+    const initial = init(storeRoot);
+    const next = commit(storeRoot, initial);
+    const paths = graphRuntimePaths(storeRoot, initial.graph.graphRef);
+    const forged = sealedPointer(next.graph, 'a'.repeat(64), next.pointer.priorGraphSemanticFingerprintOrNull);
+    fs.writeFileSync(paths.current, canonical(forged), 'utf8');
+    assert.throws(
+      () => readCurrentWorkgraphRuntime({ storeRoot, graphRef: initial.graph.graphRef, registry }),
+      (error) => error?.code === 'RUNTIME_POINTER_CORRUPT',
+    );
+  } finally { cleanup(storeRoot); }
+});
+
+test('CURRENT cannot erase lineage and substitute a different valid Workgraph formation', () => {
+  const storeRoot = tmp();
+  try {
+    const initial = init(storeRoot);
+    commit(storeRoot, initial);
+    const paths = graphRuntimePaths(storeRoot, initial.graph.graphRef);
+    const alternateSource = source();
+    alternateSource.formedAt = '2026-10-21T05:10:00.000Z';
+    alternateSource.items[0].label = 'Alternate runtime test work';
+    const alternate = createWorkgraph(alternateSource, registry);
+    fs.writeFileSync(
+      path.join(paths.snapshots, `${alternate.semanticFingerprint}.json`),
+      canonical(alternate),
+      { encoding: 'utf8', mode: 0o600 },
+    );
+    fs.writeFileSync(paths.current, canonical(sealedPointer(alternate)), 'utf8');
+    assert.throws(
+      () => readCurrentWorkgraphRuntime({ storeRoot, graphRef: initial.graph.graphRef, registry }),
+      (error) => error?.code === 'RUNTIME_POINTER_CORRUPT',
+    );
   } finally { cleanup(storeRoot); }
 });

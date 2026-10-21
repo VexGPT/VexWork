@@ -76,6 +76,8 @@ This keeps one semantic owner and avoids duplicated event truth.
     <sha256(store-schema + graphRef)>/
       snapshots/
         <graph-semantic-fingerprint>.json
+      pointers/
+        <pointer-sha256>.json
       current.json
       writer.lock
 ```
@@ -116,16 +118,21 @@ priorGraphSemanticFingerprintOrNull
 pointerSha256
 ```
 
-The pointer is replaced atomically from a same-directory temporary file.
+Every pointer identity is also retained as an immutable content-addressed record under `pointers/`. `current.json` is not a copied claim: publication creates a hard link to that exact immutable pointer record and atomically renames the hard link into the CURRENT path.
+
+This gives runtime currentness one filesystem-verifiable acceptance identity without creating another Workgraph event ledger. An unpublished pointer record may exist after a crash, but it is not CURRENT unless the CURRENT path was atomically published to that same file identity.
 
 Read-back revalidates:
 
 - the pointer's own digest;
+- CURRENT and its addressed immutable pointer record are the same opened filesystem identity;
 - the addressed Workgraph through the canonical Workgraph validator;
 - the full graph payload digest;
 - transition count + latest transition identity;
-- the prior addressed snapshot when a predecessor is named;
-- append-only transition-history prefix continuity from prior snapshot to current snapshot.
+- every named predecessor pointer resolves to its retained immutable pointer identity;
+- predecessor pointer -> predecessor Workgraph identity agreement;
+- exactly one admitted Workgraph transition per runtime pointer step;
+- append-only transition-history prefix continuity through the retained pointer lineage.
 
 ## Initialization
 
@@ -151,7 +158,8 @@ acquire per-Workgraph writer lease
 -> compare expected CURRENT pointer SHA-256
 -> delegate transition to requestTransition(...)
 -> write immutable next Workgraph snapshot
--> atomically replace CURRENT pointer
+-> retain immutable next pointer identity
+-> atomically publish CURRENT as a hard link to that pointer identity
 -> read back + revalidate
 -> release exact writer lease
 ```
@@ -195,11 +203,11 @@ Recovery is a real local runtime mutation. It is not provider mutation and it do
 
 ## Crash / replay boundary
 
-The pointer is written last.
+CURRENT publication is the last authoritative step.
 
-A crash after writing an immutable next snapshot but before advancing CURRENT leaves the prior pointer authoritative. Repeating the same exact operation may reuse the identical content-addressed snapshot and then advance CURRENT under the still-exact predecessor CAS.
+A crash after writing an immutable next snapshot or immutable pointer record but before the atomic CURRENT hard-link rename leaves the prior CURRENT authoritative. Those unpublished content-addressed artifacts may be reused by an exact retry; their mere existence never advances currentness.
 
-A crash after CURRENT replacement may lose the caller's return value, but a fresh read recovers the accepted current Workgraph.
+A crash after the CURRENT rename may lose the caller's return value, but a fresh read recovers the accepted current Workgraph because CURRENT still resolves to the exact immutable pointer identity that was published.
 
 This source does not claim power-loss durability beyond the filesystem guarantees exercised by the adapter. A deployment that requires stronger device/filesystem guarantees may wrap or replace the portable adapter while preserving the same VexWork semantics.
 
@@ -224,6 +232,8 @@ Focused source proof lives in `test/workgraph-runtime.test.mjs` and covers:
 - initialization and restart/read-back;
 - exact orphan-snapshot replay before first CURRENT;
 - exact-current lifecycle transition persistence;
+- immutable CURRENT-pointer identity and predecessor-lineage validation;
+- rollback, falsified predecessor identity, and lineage-erased Workgraph substitution rejection;
 - stale CURRENT-pointer rejection;
 - lifecycle legality delegated to Workgraph semantics;
 - abandoned writer hold + stale recovery rejection + exact recovery.
