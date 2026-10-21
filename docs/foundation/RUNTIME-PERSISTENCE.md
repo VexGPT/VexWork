@@ -78,7 +78,6 @@ This keeps one semantic owner and avoids duplicated event truth.
         <graph-semantic-fingerprint>.json
       pointers/
         <pointer-sha256>.json
-      current.json
       writer.lock
 ```
 
@@ -118,15 +117,17 @@ priorGraphSemanticFingerprintOrNull
 pointerSha256
 ```
 
-Every pointer identity is also retained as an immutable content-addressed record under `pointers/`. `current.json` is not a copied claim: publication creates a hard link to that exact immutable pointer record and atomically renames the hard link into the CURRENT path.
+Every accepted pointer identity is retained as an immutable content-addressed record under `pointers/`. The pointer chain itself owns runtime currentness: **CURRENT is the unique validated tip of that retained lineage**, not a mutable file whose self-hash can declare itself current.
 
-This gives runtime currentness one filesystem-verifiable acceptance identity without creating another Workgraph event ledger. An unpublished pointer record may exist after a crash, but it is not CURRENT unless the CURRENT path was atomically published to that same file identity.
+Publishing a new pointer record is the atomic currentness commit point. Because its content address includes its predecessor identity, replaying an older pointer is idempotent rather than a rollback, a false predecessor cannot resolve, and erasing predecessor fields creates a second lineage root that fails closed.
+
+This gives runtime currentness verifiable retained lineage without creating another Workgraph event ledger. Workgraph transitions remain the only semantic lifecycle/event history; runtime pointers only prove which validated Workgraph snapshot succeeded which prior accepted pointer.
 
 Read-back revalidates:
 
-- the pointer's own digest;
-- CURRENT and its addressed immutable pointer record are the same opened filesystem identity;
-- the addressed Workgraph through the canonical Workgraph validator;
+- every retained pointer's own digest and content address;
+- exactly one connected pointer lineage with one root and one tip;
+- the tip's addressed Workgraph through the canonical Workgraph validator;
 - the full graph payload digest;
 - transition count + latest transition identity;
 - every named predecessor pointer resolves to its retained immutable pointer identity;
@@ -158,8 +159,8 @@ acquire per-Workgraph writer lease
 -> compare expected CURRENT pointer SHA-256
 -> delegate transition to requestTransition(...)
 -> write immutable next Workgraph snapshot
--> retain immutable next pointer identity
--> atomically publish CURRENT as a hard link to that pointer identity
+-> atomically publish one immutable successor pointer record
+-> derive CURRENT as the unique validated pointer-lineage tip
 -> read back + revalidate
 -> release exact writer lease
 ```
@@ -203,11 +204,11 @@ Recovery is a real local runtime mutation. It is not provider mutation and it do
 
 ## Crash / replay boundary
 
-CURRENT publication is the last authoritative step.
+Pointer-record publication is the last authoritative step.
 
-A crash after writing an immutable next snapshot or immutable pointer record but before the atomic CURRENT hard-link rename leaves the prior CURRENT authoritative. Those unpublished content-addressed artifacts may be reused by an exact retry; their mere existence never advances currentness.
+A crash after writing an immutable next snapshot but before publishing its successor pointer leaves the prior pointer-lineage tip authoritative. The orphan snapshot may be reused by an exact retry; its mere existence never advances currentness.
 
-A crash after the CURRENT rename may lose the caller's return value, but a fresh read recovers the accepted current Workgraph because CURRENT still resolves to the exact immutable pointer identity that was published.
+A crash after the immutable successor pointer is atomically published may lose the caller's return value, but a fresh read derives that successor as the unique lineage tip and recovers the accepted current Workgraph.
 
 This source does not claim power-loss durability beyond the filesystem guarantees exercised by the adapter. A deployment that requires stronger device/filesystem guarantees may wrap or replace the portable adapter while preserving the same VexWork semantics.
 
@@ -232,8 +233,8 @@ Focused source proof lives in `test/workgraph-runtime.test.mjs` and covers:
 - initialization and restart/read-back;
 - exact orphan-snapshot replay before first CURRENT;
 - exact-current lifecycle transition persistence;
-- immutable CURRENT-pointer identity and predecessor-lineage validation;
-- rollback, falsified predecessor identity, and lineage-erased Workgraph substitution rejection;
+- immutable pointer-lineage currentness with one validated tip;
+- replayed-old-pointer, falsified predecessor identity, and lineage-erased Workgraph substitution rejection;
 - stale CURRENT-pointer rejection;
 - lifecycle legality delegated to Workgraph semantics;
 - abandoned writer hold + stale recovery rejection + exact recovery.

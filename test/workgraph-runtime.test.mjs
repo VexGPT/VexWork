@@ -100,7 +100,6 @@ function cleanup(storeRoot) { fs.rmSync(storeRoot, { recursive: true, force: tru
 function graphRuntimePaths(storeRoot, graphRef) {
   const graphRoot = path.join(storeRoot, 'workgraphs', workgraphRuntimeAddress(graphRef));
   return {
-    current: path.join(graphRoot, 'current.json'),
     pointers: path.join(graphRoot, 'pointers'),
     snapshots: path.join(graphRoot, 'snapshots'),
   };
@@ -159,11 +158,11 @@ test('transition uses exact CURRENT CAS and survives restart', () => {
     assert.equal(next.pointer.transitionCount, 1);
     assert.equal(next.pointer.priorPointerSha256OrNull, initial.pointer.pointerSha256);
     const paths = graphRuntimePaths(storeRoot, initial.graph.graphRef);
-    const anchor = path.join(paths.pointers, `${next.pointer.pointerSha256}.json`);
-    const currentStat = fs.statSync(paths.current, { bigint: true });
-    const anchorStat = fs.statSync(anchor, { bigint: true });
-    assert.equal(currentStat.dev, anchorStat.dev);
-    assert.equal(currentStat.ino, anchorStat.ino);
+    const pointers = fs.readdirSync(paths.pointers).sort();
+    assert.deepEqual(pointers, [
+      `${initial.pointer.pointerSha256}.json`,
+      `${next.pointer.pointerSha256}.json`,
+    ].sort());
     assert.equal(restarted.pointer.pointerSha256, next.pointer.pointerSha256);
     assert.equal(restarted.graph.transitions.at(-1).transitionRef, 'transition.test.runtime.start');
     assert.equal(next.effects.providerMutationPerformed, false);
@@ -247,28 +246,29 @@ test('abandoned writer requires exact explicit recovery', async () => {
   } finally { cleanup(storeRoot); }
 });
 
-test('CURRENT rollback to an older accepted pointer fails closed', () => {
+test('an older retained pointer cannot become current after a valid successor is published', () => {
   const storeRoot = tmp();
   try {
     const initial = init(storeRoot);
-    commit(storeRoot, initial);
+    const next = commit(storeRoot, initial);
     const paths = graphRuntimePaths(storeRoot, initial.graph.graphRef);
-    fs.writeFileSync(paths.current, canonical(initial.pointer), 'utf8');
-    assert.throws(
-      () => readCurrentWorkgraphRuntime({ storeRoot, graphRef: initial.graph.graphRef, registry }),
-      (error) => error?.code === 'RUNTIME_POINTER_CORRUPT',
-    );
+    const replay = sealedPointer(initial.graph);
+    assert.equal(replay.pointerSha256, initial.pointer.pointerSha256);
+    fs.writeFileSync(path.join(paths.pointers, `${replay.pointerSha256}.json`), canonical(replay), 'utf8');
+    const restarted = readCurrentWorkgraphRuntime({ storeRoot, graphRef: initial.graph.graphRef, registry });
+    assert.equal(restarted.pointer.pointerSha256, next.pointer.pointerSha256);
+    assert.equal(restarted.graph.items[0].state, 'RUNNING');
   } finally { cleanup(storeRoot); }
 });
 
-test('CURRENT cannot self-declare a false predecessor pointer identity', () => {
+test('pointer lineage cannot self-declare a false predecessor identity', () => {
   const storeRoot = tmp();
   try {
     const initial = init(storeRoot);
     const next = commit(storeRoot, initial);
     const paths = graphRuntimePaths(storeRoot, initial.graph.graphRef);
     const forged = sealedPointer(next.graph, 'a'.repeat(64), next.pointer.priorGraphSemanticFingerprintOrNull);
-    fs.writeFileSync(paths.current, canonical(forged), 'utf8');
+    fs.writeFileSync(path.join(paths.pointers, `${forged.pointerSha256}.json`), canonical(forged), 'utf8');
     assert.throws(
       () => readCurrentWorkgraphRuntime({ storeRoot, graphRef: initial.graph.graphRef, registry }),
       (error) => error?.code === 'RUNTIME_POINTER_CORRUPT',
@@ -276,7 +276,7 @@ test('CURRENT cannot self-declare a false predecessor pointer identity', () => {
   } finally { cleanup(storeRoot); }
 });
 
-test('CURRENT cannot erase lineage and substitute a different valid Workgraph formation', () => {
+test('pointer lineage cannot erase predecessor identity and substitute a different valid Workgraph formation', () => {
   const storeRoot = tmp();
   try {
     const initial = init(storeRoot);
@@ -291,7 +291,12 @@ test('CURRENT cannot erase lineage and substitute a different valid Workgraph fo
       canonical(alternate),
       { encoding: 'utf8', mode: 0o600 },
     );
-    fs.writeFileSync(paths.current, canonical(sealedPointer(alternate)), 'utf8');
+    const alternatePointer = sealedPointer(alternate);
+    fs.writeFileSync(
+      path.join(paths.pointers, `${alternatePointer.pointerSha256}.json`),
+      canonical(alternatePointer),
+      { encoding: 'utf8', mode: 0o600 },
+    );
     assert.throws(
       () => readCurrentWorkgraphRuntime({ storeRoot, graphRef: initial.graph.graphRef, registry }),
       (error) => error?.code === 'RUNTIME_POINTER_CORRUPT',

@@ -120,7 +120,6 @@ function storePaths(storeRoot, graphRef, { create = false } = {}) {
   const graphRoot = safePath(root, path.join(workgraphs, address));
   const snapshots = safePath(root, path.join(graphRoot, 'snapshots'));
   const pointers = safePath(root, path.join(graphRoot, 'pointers'));
-  const current = safePath(root, path.join(graphRoot, 'current.json'));
   const writer = safePath(root, path.join(graphRoot, 'writer.lock'));
   if (create) {
     ensureDirectory(root, workgraphs);
@@ -128,29 +127,19 @@ function storePaths(storeRoot, graphRef, { create = false } = {}) {
     ensureDirectory(root, snapshots);
     ensureDirectory(root, pointers);
   }
-  return Object.freeze({ root, address, workgraphs, graphRoot, snapshots, pointers, current, writer });
+  return Object.freeze({ root, address, workgraphs, graphRoot, snapshots, pointers, writer });
 }
 
-function readCanonicalJsonWithIdentity(root, file, code, label) {
+function readCanonicalJson(root, file, code, label) {
   let raw;
-  let fd = null;
-  let identity = null;
   try {
-    const linkStat = fs.lstatSync(file);
-    if (linkStat.isSymbolicLink() || !linkStat.isFile()) fail(code, `${label} must be one regular file`);
+    const stat = fs.lstatSync(file);
+    if (stat.isSymbolicLink() || !stat.isFile()) fail(code, `${label} must be one regular file`);
     safePath(root, file);
-    fd = fs.openSync(file, 'r');
-    const stat = fs.fstatSync(fd, { bigint: true });
-    if (!stat.isFile()) fail(code, `${label} must be one regular file`);
-    identity = Object.freeze({ dev: stat.dev, ino: stat.ino });
-    raw = fs.readFileSync(fd, 'utf8');
+    raw = fs.readFileSync(file, 'utf8');
   } catch (error) {
     if (error instanceof WorkgraphRuntimeStoreError) throw error;
     fail(code, `${label} could not be read`, { cause: error.message });
-  } finally {
-    if (fd !== null) {
-      try { fs.closeSync(fd); } catch {}
-    }
   }
   let parsed;
   try {
@@ -159,11 +148,7 @@ function readCanonicalJsonWithIdentity(root, file, code, label) {
     fail(code, `${label} is malformed JSON`);
   }
   if (raw !== canonicalJson(parsed)) fail(code, `${label} bytes are not canonical`);
-  return Object.freeze({ value: parsed, identity });
-}
-
-function readCanonicalJson(root, file, code, label) {
-  return readCanonicalJsonWithIdentity(root, file, code, label).value;
+  return parsed;
 }
 
 function writeImmutableJson(root, file, value, label = 'immutable runtime record') {
@@ -193,13 +178,36 @@ function pointerRecordFile(paths, pointerSha256) {
   return safePath(paths.root, path.join(paths.pointers, `${pointerSha256}.json`));
 }
 
-function publishCurrentAtomic(paths, pointerFile) {
-  ensureDirectory(paths.root, path.dirname(paths.current));
-  const tmp = safePath(paths.root, `${paths.current}.tmp-${process.pid}-${crypto.randomUUID()}`);
+function publishPointerRecordAtomic(paths, pointer) {
+  ensureDirectory(paths.root, paths.pointers);
+  const file = pointerRecordFile(paths, pointer.pointerSha256);
+  const bytes = canonicalJson(pointer);
+  if (fs.existsSync(file)) {
+    const existing = readCanonicalJson(paths.root, file, 'RUNTIME_IMMUTABLE_CONFLICT', 'immutable current-pointer record');
+    if (canonicalJson(existing) !== bytes) fail('RUNTIME_IMMUTABLE_CONFLICT', 'current-pointer content address exists with different bytes');
+    return false;
+  }
+  const tmp = safePath(paths.root, path.join(paths.graphRoot, `.pointer-publish-${process.pid}-${crypto.randomUUID()}.tmp`));
+  let fd = null;
   try {
-    fs.linkSync(pointerFile, tmp);
-    fs.renameSync(tmp, paths.current);
+    fd = fs.openSync(tmp, 'wx', 0o600);
+    fs.writeFileSync(fd, bytes, 'utf8');
+    fs.fsyncSync(fd);
+    fs.closeSync(fd);
+    fd = null;
+    try {
+      fs.linkSync(tmp, file);
+      return true;
+    } catch (error) {
+      if (error?.code !== 'EEXIST') throw error;
+      const existing = readCanonicalJson(paths.root, file, 'RUNTIME_IMMUTABLE_CONFLICT', 'immutable current-pointer record');
+      if (canonicalJson(existing) !== bytes) fail('RUNTIME_IMMUTABLE_CONFLICT', 'current-pointer content address exists with different bytes');
+      return false;
+    }
   } finally {
+    if (fd !== null) {
+      try { fs.closeSync(fd); } catch {}
+    }
     if (fs.existsSync(tmp)) fs.rmSync(tmp, { force: true });
   }
 }
@@ -351,21 +359,54 @@ function validatePointer(value, graphRef) {
 function readPointerRecord(paths, pointerSha256, graphRef) {
   const file = pointerRecordFile(paths, pointerSha256);
   if (!fs.existsSync(file)) fail('RUNTIME_POINTER_CORRUPT', 'current pointer lineage record is missing');
-  const record = readCanonicalJsonWithIdentity(
-    paths.root,
-    file,
-    'RUNTIME_POINTER_CORRUPT',
-    'immutable current-pointer record',
+  const pointer = validatePointer(
+    readCanonicalJson(paths.root, file, 'RUNTIME_POINTER_CORRUPT', 'immutable current-pointer record'),
+    graphRef,
   );
-  const pointer = validatePointer(record.value, graphRef);
   if (pointer.pointerSha256 !== pointerSha256) {
     fail('RUNTIME_POINTER_CORRUPT', 'current pointer lineage record does not match its content address');
   }
-  return Object.freeze({ file, pointer, identity: record.identity });
+  return Object.freeze({ file, pointer });
 }
 
-function sameIdentity(left, right) {
-  return left.dev === right.dev && left.ino === right.ino;
+function pointerRecordNames(paths) {
+  if (!fs.existsSync(paths.pointers)) return [];
+  const names = fs.readdirSync(paths.pointers).sort();
+  for (const name of names) {
+    if (!/^[a-f0-9]{64}\.json$/u.test(name)) {
+      fail('RUNTIME_POINTER_CORRUPT', 'pointer store contains an unexpected entry', { name });
+    }
+  }
+  return names;
+}
+
+function resolveCurrentPointer(paths, graphRef) {
+  const names = pointerRecordNames(paths);
+  if (names.length === 0) fail('RUNTIME_CURRENT_UNAVAILABLE', 'current Workgraph pointer is unavailable');
+  const records = names.map((name) => readPointerRecord(paths, name.slice(0, -5), graphRef));
+  const bySha = new Map(records.map((record) => [record.pointer.pointerSha256, record.pointer]));
+  const referencedParents = new Set();
+  let roots = 0;
+  for (const { pointer } of records) {
+    if (pointer.priorPointerSha256OrNull === null) {
+      roots += 1;
+      continue;
+    }
+    const prior = bySha.get(pointer.priorPointerSha256OrNull);
+    if (!prior) fail('RUNTIME_POINTER_CORRUPT', 'current pointer lineage predecessor is missing');
+    if (prior.graphSemanticFingerprint !== pointer.priorGraphSemanticFingerprintOrNull) {
+      fail('RUNTIME_POINTER_CORRUPT', 'current pointer predecessor identity does not match retained lineage');
+    }
+    if (prior.transitionCount + 1 !== pointer.transitionCount) {
+      fail('RUNTIME_POINTER_CORRUPT', 'current pointer lineage does not represent one admitted Workgraph transition');
+    }
+    referencedParents.add(prior.pointerSha256);
+  }
+  const tips = records.map((record) => record.pointer).filter((pointer) => !referencedParents.has(pointer.pointerSha256));
+  if (roots !== 1 || tips.length !== 1) {
+    fail('RUNTIME_POINTER_CORRUPT', 'pointer store must contain one connected currentness lineage with one current tip', { roots, tips: tips.length });
+  }
+  return Object.freeze({ pointer: tips[0], recordCount: records.length });
 }
 
 function assertPointerMatchesGraph(pointer, graph) {
@@ -379,7 +420,7 @@ function assertPointerMatchesGraph(pointer, graph) {
   }
 }
 
-function validatePointerLineage(paths, pointer, graph, registry) {
+function validatePointerLineage(paths, pointer, graph, registry, expectedRecordCount) {
   const seen = new Set([pointer.pointerSha256]);
   let currentPointer = pointer;
   let currentGraph = graph;
@@ -399,6 +440,9 @@ function validatePointerLineage(paths, pointer, graph, registry) {
     assertTransitionHistoryPrefix(priorGraph, currentGraph);
     currentPointer = priorPointer;
     currentGraph = priorGraph;
+  }
+  if (seen.size !== expectedRecordCount) {
+    fail('RUNTIME_POINTER_CORRUPT', 'pointer store contains disconnected or unaccepted currentness lineage');
   }
 }
 
@@ -428,21 +472,11 @@ function readSnapshot(paths, fingerprint, registry) {
 }
 
 function readAccepted(paths, graphRef, registry) {
-  if (!fs.existsSync(paths.current)) fail('RUNTIME_CURRENT_UNAVAILABLE', 'current Workgraph pointer is unavailable');
-  const currentRecord = readCanonicalJsonWithIdentity(
-    paths.root,
-    paths.current,
-    'RUNTIME_POINTER_CORRUPT',
-    'current Workgraph pointer',
-  );
-  const pointer = validatePointer(currentRecord.value, graphRef);
-  const anchor = readPointerRecord(paths, pointer.pointerSha256, graphRef);
-  if (canonicalJson(anchor.pointer) !== canonicalJson(pointer) || !sameIdentity(currentRecord.identity, anchor.identity)) {
-    fail('RUNTIME_POINTER_CORRUPT', 'current pointer is not the atomically published immutable pointer identity');
-  }
+  const resolved = resolveCurrentPointer(paths, graphRef);
+  const pointer = resolved.pointer;
   const graph = readSnapshot(paths, pointer.graphSemanticFingerprint, registry);
   assertPointerMatchesGraph(pointer, graph);
-  validatePointerLineage(paths, pointer, graph, registry);
+  validatePointerLineage(paths, pointer, graph, registry, resolved.recordCount);
   return deepFreeze({ pointer: structuredClone(pointer), graph: structuredClone(graph) });
 }
 
@@ -450,9 +484,7 @@ function persistAccepted(paths, graph, priorPointerSha256OrNull, priorGraphSeman
   const snapshotFile = safePath(paths.root, path.join(paths.snapshots, `${graph.semanticFingerprint}.json`));
   writeImmutableJson(paths.root, snapshotFile, graph, 'immutable Workgraph snapshot');
   const pointer = sealPointer({ graph, priorPointerSha256OrNull, priorGraphSemanticFingerprintOrNull });
-  const pointerFile = pointerRecordFile(paths, pointer.pointerSha256);
-  writeImmutableJson(paths.root, pointerFile, pointer, 'immutable current-pointer record');
-  publishCurrentAtomic(paths, pointerFile);
+  publishPointerRecordAtomic(paths, pointer);
   const readback = readAccepted(paths, graph.graphRef, registry);
   if (readback.pointer.pointerSha256 !== pointer.pointerSha256 || readback.graph.semanticFingerprint !== graph.semanticFingerprint) {
     fail('RUNTIME_COMMIT_READBACK_INVALID', 'runtime read-back does not match the committed Workgraph');
@@ -460,15 +492,11 @@ function persistAccepted(paths, graph, priorPointerSha256OrNull, priorGraphSeman
   return readback;
 }
 
-function initializationArtifacts(paths, exactGraphFingerprint, exactPointerSha256) {
+function initializationArtifacts(paths, exactGraphFingerprint) {
   const unexpected = [];
   if (fs.existsSync(paths.snapshots)) {
     const allowedSnapshot = `${exactGraphFingerprint}.json`;
     unexpected.push(...fs.readdirSync(paths.snapshots).sort().filter((name) => name !== allowedSnapshot).map((name) => `snapshots/${name}`));
-  }
-  if (fs.existsSync(paths.pointers)) {
-    const allowedPointer = `${exactPointerSha256}.json`;
-    unexpected.push(...fs.readdirSync(paths.pointers).sort().filter((name) => name !== allowedPointer).map((name) => `pointers/${name}`));
   }
   return unexpected;
 }
@@ -486,15 +514,14 @@ export function initializeWorkgraphRuntime({
   assertTimestamp(observedAt, 'observedAt');
   const paths = storePaths(storeRoot, exactGraph.graphRef, { create: true });
   return withWriter(paths, exactGraph.graphRef, instanceRef, observedAt, () => {
-    if (fs.existsSync(paths.current)) {
+    if (pointerRecordNames(paths).length > 0) {
       const current = readAccepted(paths, exactGraph.graphRef, registry);
       if (current.graph.semanticFingerprint === exactGraph.semanticFingerprint) {
         return deepFreeze({ state: 'CURRENT', changed: false, ...current, effects: { runtimeMutationPerformed: false, providerMutationPerformed: false } });
       }
       fail('RUNTIME_ALREADY_INITIALIZED', 'runtime Workgraph already has a different current snapshot');
     }
-    const initialPointer = sealPointer({ graph: exactGraph, priorPointerSha256OrNull: null, priorGraphSemanticFingerprintOrNull: null });
-    const unexpected = initializationArtifacts(paths, exactGraph.semanticFingerprint, initialPointer.pointerSha256);
+    const unexpected = initializationArtifacts(paths, exactGraph.semanticFingerprint);
     if (unexpected.length) fail('RUNTIME_RECOVERY_REQUIRED', 'unrelated immutable Workgraph history exists without a current pointer', { unexpected });
     const accepted = persistAccepted(paths, exactGraph, null, null, registry);
     return deepFreeze({ state: 'CURRENT', changed: true, ...accepted, effects: { runtimeMutationPerformed: true, providerMutationPerformed: false } });
@@ -571,7 +598,7 @@ export function recoverWorkgraphRuntimeWriter({ storeRoot, graphRef, expectedLea
   if (lease.leaseSha256 !== expectedLeaseSha256) fail('RUNTIME_RECOVERY_STALE', 'writer recovery lease identity is stale');
   const state = processState(lease.pid);
   if (state !== 'ABSENT') fail('RUNTIME_WRITER_CONFLICT', 'writer lease is active or unverifiable');
-  if (fs.existsSync(paths.current)) readAccepted(paths, graphRef, registry);
+  if (pointerRecordNames(paths).length > 0) readAccepted(paths, graphRef, registry);
   fs.unlinkSync(paths.writer);
   return deepFreeze({ state: 'RECOVERED', recovered: true, graphRef, recoveredLeaseSha256: lease.leaseSha256, effects: { runtimeMutationPerformed: true, writerLeaseDeletionPerformed: true, providerMutationPerformed: false } });
 }
