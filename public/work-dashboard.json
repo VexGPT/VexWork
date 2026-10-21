@@ -88,24 +88,7 @@
     {
       "laneRef": "lane.work.verify",
       "label": "Verify",
-      "cards": [
-        {
-          "workRef": "work.vexwork.visibility.public-dashboard",
-          "label": "Public VexWork dashboard",
-          "purpose": "Make current VexWork Project Board and Parking Lot truth visibly explorable through a stable public read projection without making Vextreme another work-state owner.",
-          "workClass": "TASK",
-          "state": "VERIFYING",
-          "workDisposition": "ACTIVE",
-          "priorityClass": "HIGH",
-          "repositoryRefs": [
-            "repo.vexwork",
-            "repo.vextreme"
-          ],
-          "authorityDisposition": "AUTHORIZED_BOUNDED",
-          "effectDisposition": "EFFECTS_BOUND",
-          "updatedAt": "2026-10-21T06:20:08.000Z"
-        }
-      ]
+      "cards": []
     },
     {
       "laneRef": "lane.work.attention",
@@ -164,6 +147,22 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "updatedAt": "2026-10-21T03:56:13.000Z"
+        },
+        {
+          "workRef": "work.vexwork.visibility.public-dashboard",
+          "label": "Public VexWork dashboard",
+          "purpose": "Make current VexWork Project Board and Parking Lot truth visibly explorable through a stable public read projection without making Vextreme another work-state owner.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme"
+          ],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "updatedAt": "2026-10-21T07:09:18.000Z"
         },
         {
           "workRef": "work.vexwork.foundation.runtime-persistence",
@@ -225,7 +224,7 @@
   },
   "summary": {
     "projectWorkItemCount": 8,
-    "openProjectWorkItemCount": 4,
+    "openProjectWorkItemCount": 3,
     "parkingLotItemCount": 2
   },
   "effects": false,
