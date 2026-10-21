@@ -3,7 +3,8 @@
   "graphRef": "workgraph.vexwork.foundation",
   "rootWorkRefs": [
     "work.vexwork.foundation.outcome",
-    "work.vexlife-android.vexstream.not-yet-downloaded-filter"
+    "work.vexlife-android.vexstream.not-yet-downloaded-filter",
+    "work.vexlife.connected-services.guided-onboarding"
   ],
   "items": [
     {
@@ -252,6 +253,33 @@
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.connected-services.guided-onboarding",
+      "parentWorkRefOrNull": null,
+      "label": "Simplify Connected Services onboarding across computer + phone",
+      "purpose": "Preserve the lived need for one guided setup path that checks Tailscale readiness across computer and phone, asks for protected human-only steps at the right moment, then returns to VexLife pairing/private-route setup without weakening Home, session, reachability, or pairing authority boundaries.",
+      "workClass": "POTENTIAL",
+      "state": "CAPTURED",
+      "workDisposition": "PARKED",
+      "priorityClass": "LOW",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexlife",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "github.issue.vexwork.6",
+        "github.issue.vexlife.899",
+        "docs/process/CAPTURE-DISCOVERED-WORK.md"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-21T06:23:27.000Z",
+      "updatedAt": "2026-10-21T06:23:27.000Z"
     }
   ],
   "transitions": [

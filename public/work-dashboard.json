@@ -191,6 +191,22 @@
   "parkingLot": {
     "items": [
       {
+        "workRef": "work.vexlife.connected-services.guided-onboarding",
+        "label": "Simplify Connected Services onboarding across computer + phone",
+        "purpose": "Preserve the lived need for one guided setup path that checks Tailscale readiness across computer and phone, asks for protected human-only steps at the right moment, then returns to VexLife pairing/private-route setup without weakening Home, session, reachability, or pairing authority boundaries.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "LOW",
+        "repositoryRefs": [
+          "repo.vexlife",
+          "repo.vexlife-android"
+        ],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "updatedAt": "2026-10-21T06:23:27.000Z"
+      },
+      {
         "workRef": "work.vexlife-android.vexstream.not-yet-downloaded-filter",
         "label": "VexStream Songs filter for Not yet downloaded",
         "purpose": "Preserve the nice-to-have Songs-level filter that answers which songs on this device are still not downloaded, without making it part of MassDownload completion or authorizing implementation.",
@@ -210,7 +226,7 @@
   "summary": {
     "projectWorkItemCount": 8,
     "openProjectWorkItemCount": 4,
-    "parkingLotItemCount": 1
+    "parkingLotItemCount": 2
   },
   "effects": false,
   "executionAuthority": "NONE"

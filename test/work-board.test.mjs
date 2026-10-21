@@ -15,7 +15,7 @@ test('Project Work Board projects only the Project subgraph without becoming lif
   const board = projectWorkBoard({ project, graph, view, registry });
   const cards = board.lanes.flatMap((lane) => lane.cards);
   assert.equal(cards.length, 8);
-  assert.equal(graph.items.length, 9);
+  assert.equal(graph.items.length, 10);
   assert.equal(cards.some((card) => card.workRef === 'work.vexlife-android.vexstream.not-yet-downloaded-filter'), false);
   assert.equal(board.effects, false);
   assert.equal(board.executionAuthority, 'NONE');
@@ -36,15 +36,18 @@ test('Project Work Board projects only the Project subgraph without becoming lif
 
 test('Parking Lot projects parked work independently of Project membership', () => {
   const lot = projectParkingLot({ graph, registry });
-  assert.equal(lot.items.length, 1);
-  assert.equal(lot.items[0].workRef, 'work.vexlife-android.vexstream.not-yet-downloaded-filter');
-  assert.equal(lot.items[0].workDisposition, 'PARKED');
-  assert.deepEqual(lot.items[0].repositoryRefs, ['repo.vexlife-android']);
+  assert.equal(lot.items.length, 2);
+  assert.deepEqual(lot.items.map((item) => item.workRef).sort(), ['work.vexlife-android.vexstream.not-yet-downloaded-filter', 'work.vexlife.connected-services.guided-onboarding'].sort());
+  assert.equal(lot.items.every((item) => item.workDisposition === 'PARKED'), true);
+  assert.equal(lot.items.some((item) => item.workRef === 'work.vexlife-android.vexstream.not-yet-downloaded-filter' && item.repositoryRefs.includes('repo.vexlife-android')), true);
   assert.equal(lot.effects, false);
   assert.equal(lot.executionAuthority, 'NONE');
 
   const androidOnly = projectParkingLot({ graph, registry, repositoryRefOrNull: 'repo.vexlife-android' });
-  assert.equal(androidOnly.items.length, 1);
+  assert.equal(androidOnly.items.length, 2);
+  const vexlifeOnly = projectParkingLot({ graph, registry, repositoryRefOrNull: 'repo.vexlife' });
+  assert.equal(vexlifeOnly.items.length, 1);
+  assert.equal(vexlifeOnly.items[0].workRef, 'work.vexlife.connected-services.guided-onboarding');
   const vexworkOnly = projectParkingLot({ graph, registry, repositoryRefOrNull: 'repo.vexwork' });
   assert.equal(vexworkOnly.items.length, 0);
 });

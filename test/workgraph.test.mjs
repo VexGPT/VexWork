@@ -18,7 +18,7 @@ test('work registry covers lifecycle states exactly once on the default Work Boa
 test('one Workgraph can contain project work and unprojected parked work', () => {
   const project = createProject(projectSource);
   const graph = createWorkgraph(graphSource, registry);
-  assert.equal(graph.items.length, 9);
+  assert.equal(graph.items.length, 10);
   assert.equal(projectWorkRefs(project, graph).length, 8);
   assert.equal(verifySemanticFingerprint(project), true);
   assert.equal(verifySemanticFingerprint(graph), true);
@@ -42,6 +42,15 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(parked.effectDisposition, 'NO_EFFECTS');
   assert.equal(parked.formationProcessRefOrNull, 'process.vexwork.capture-discovered-work');
   assert.deepEqual(parked.nextProcessRefs, ['process.vexlife-android.feature-authoring']);
+  const tailscale = graph.items.find((item) => item.workRef === 'work.vexlife.connected-services.guided-onboarding');
+  assert.equal(tailscale.workClass, 'POTENTIAL');
+  assert.equal(tailscale.state, 'CAPTURED');
+  assert.equal(tailscale.workDisposition, 'PARKED');
+  assert.equal(tailscale.authorityDisposition, 'NO_AUTHORITY');
+  assert.equal(tailscale.effectDisposition, 'NO_EFFECTS');
+  assert.deepEqual(tailscale.repositoryRefs, ['repo.vexlife', 'repo.vexlife-android']);
+  assert.equal(tailscale.formationProcessRefOrNull, 'process.vexwork.capture-discovered-work');
+  assert.deepEqual(tailscale.nextProcessRefs, []);
 });
 
 test('typed transition rejects stale observation and accepts exact current transition', () => {
