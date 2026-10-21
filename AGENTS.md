@@ -33,6 +33,10 @@ Do not broad-read every connected repository. The Repository Graph tells you whe
 "What work exists / depends on what?"
   -> docs/foundation/WORKGRAPH.md
 
+"What Projects exist / form a new Project / epic-like outcome grouping"
+  -> docs/foundation/PROJECTS.md
+  -> docs/process/FORM-PROJECT.md
+
 "Show me the Jira board / kanban / board"
   -> docs/foundation/WORK-BOARD.md
 

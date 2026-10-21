@@ -25,6 +25,7 @@ REFERENCE_TO_ANDROID_FEATURE_PROCESS != OWNERSHIP_OF_ANDROID_FEATURE_PROCESS
 
 Current process entries:
 
+- [`FORM-PROJECT.md`](FORM-PROJECT.md) — form one durable Project/outcome grouping without turning formation into implementation authority.
 - [`CAPTURE-DISCOVERED-WORK.md`](CAPTURE-DISCOVERED-WORK.md) — preserve adjacent work without widening the active lane.
 - [`QUALITY-REVIEW.md`](QUALITY-REVIEW.md) — reusable QA/falsification review contract with exact-target currentness, question matrix, evidence scope, and semantic disposition.
 

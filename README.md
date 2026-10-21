@@ -24,6 +24,7 @@ For migration and conversational discoverability, **"Jira board"** is accepted a
 ```text
 VexWork     system / repository
 Workgraph   canonical work topology + lifecycle truth
+Project Registry discoverability map for source-managed Projects
 Project     human outcome grouping over Workgraph roots
 Work item   human name for one Workgraph node
 Work Board  project board projection over Workgraph truth
@@ -63,7 +64,8 @@ The root README is an entry router, not a second architecture manual.
 
 The first foundation establishes:
 
-- one portable Workgraph that can contain project-bound and unprojected work, with lifecycle + transition validation;
+- one portable Workgraph that can contain work for multiple Projects plus unprojected work, with lifecycle + transition validation;
+- a Project Registry that locates source-managed Projects/Board views without duplicating their work truth;
 - `WorkState / WorkControl / WorkAct / WorkEffect / WorkBehavior` recognition grammar;
 - Work Board as a Project-derived projection, with Board lanes kept distinct from lifecycle state;
 - Parking Lot as a provider-independent projection for intentionally deferred work;
