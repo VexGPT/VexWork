@@ -15,7 +15,7 @@ jobs:
       - name: Checkout exact PR candidate
         uses: actions/checkout@v4
         with:
-          ref: 1e965974704b7ac54d1ff7aa4ba0076469127019
+          ref: a78e584ccb289e993ca44f06d5e7c8e948b0cd7d
           fetch-depth: 0
 
       - name: Set up Node
@@ -27,8 +27,8 @@ jobs:
         run: |
           echo "HEAD=$(git rev-parse HEAD)"
           echo "TREE=$(git rev-parse HEAD^{tree})"
-          test "$(git rev-parse HEAD)" = "1e965974704b7ac54d1ff7aa4ba0076469127019"
-          test "$(git rev-parse HEAD^{tree})" = "e74d2c0f0e0a46988b68b2d642968036589b1f78"
+          test "$(git rev-parse HEAD)" = "a78e584ccb289e993ca44f06d5e7c8e948b0cd7d"
+          test "$(git rev-parse HEAD^{tree})" = "502566796e7a74378840e91f123ce5cab5e58cbf"
 
       - name: Run exact VexWork review
         run: npm run review
