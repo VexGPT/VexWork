@@ -30,8 +30,23 @@ Android installed-read source: PR #149 -> accepted/current
 Parking-lot onboarding UX: VexGPT/VexWork issue #6
 ```
 
-## Current live attempt
+## Current successor threshold
 
-See `ATTEMPTS.md` and `CURRENT-A006.md`.
+A012 is now the frozen foundation checkpoint.
+
+Read:
+
+```text
+SUCCESSOR-ENTRY.md
+-> THRESHOLD-A012.md
+-> END-TO-END-ROOM-PATH.md
+-> A012-RETURN.md
+-> harness/A012/README.md
+-> harness/A012/task.mjs
+```
+
+The actual A012 executable harness is stored in this PR. This is deliberate: fresh instances should inspect the code and its responsibility map rather than reconstructing the runner from chat summaries.
+
+A012 earned a successor bundle, but L1-L5 are still not terminally proven.
 
 <!-- [VXG RealForever][VEXWORK][TEMP-CONTINUITY][VCS04-LIVED] -->
