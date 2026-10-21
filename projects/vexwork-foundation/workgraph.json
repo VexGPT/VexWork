@@ -38,7 +38,7 @@
       "label": "Portable Workgraph",
       "purpose": "Source-place portable work identity, lifecycle, relationships and deterministic transition behavior compatible with useful VexLife P0B distinctions.",
       "workClass": "TASK",
-      "state": "VERIFYING",
+      "state": "COMPLETED",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [],
       "repositoryRefs": [
@@ -53,7 +53,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-21T01:45:02.000Z",
-      "updatedAt": "2026-10-21T01:45:02.000Z",
+      "updatedAt": "2026-10-21T03:56:12.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -65,7 +65,7 @@
       "label": "Work Board",
       "purpose": "Provide the familiar Jira/kanban-shaped human projection while preserving Workgraph as the only work lifecycle owner.",
       "workClass": "TASK",
-      "state": "VERIFYING",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexwork.foundation.portable-workgraph"
@@ -82,7 +82,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-21T01:45:03.000Z",
-      "updatedAt": "2026-10-21T01:45:03.000Z",
+      "updatedAt": "2026-10-21T03:56:13.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -94,7 +94,7 @@
       "label": "Repository Graph",
       "purpose": "Make cross-repository work source-descendable through public/source-safe repository and culture-entry references without consolidating cultures.",
       "workClass": "TASK",
-      "state": "VERIFYING",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
       "repositoryRefs": [
@@ -109,7 +109,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-21T01:45:04.000Z",
-      "updatedAt": "2026-10-21T01:45:04.000Z",
+      "updatedAt": "2026-10-21T03:56:14.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -148,7 +148,7 @@
       "label": "Runtime persistence owner",
       "purpose": "Source-place portable private/current event, snapshot, writer and CURRENT-pointer semantics without using Git commit churn as the runtime database.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "READY",
       "priorityClass": "NORMAL",
       "dependencyRefs": [
         "work.vexwork.foundation.portable-workgraph"
@@ -164,7 +164,7 @@
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-21T01:45:06.000Z",
-      "updatedAt": "2026-10-21T01:45:06.000Z",
+      "updatedAt": "2026-10-21T03:56:15.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -198,7 +198,64 @@
       "updatedAt": "2026-10-21T01:18:35.000Z"
     }
   ],
-  "transitions": [],
+  "transitions": [
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.foundation.portable-workgraph.completed.pr1",
+      "workRef": "work.vexwork.foundation.portable-workgraph",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "PR #1 merged after exact-head QA and Formal Review; portable Workgraph foundation accepted.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.1",
+        "github.commit.vexwork.4e0b79475566277c168f51d4f6a3bfbdd2f39784"
+      ],
+      "createdAt": "2026-10-21T03:56:12.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.foundation.work-board.completed.pr1",
+      "workRef": "work.vexwork.foundation.work-board",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "PR #1 merged after exact-head QA and Formal Review; Work Board foundation accepted.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.1",
+        "github.commit.vexwork.4e0b79475566277c168f51d4f6a3bfbdd2f39784"
+      ],
+      "createdAt": "2026-10-21T03:56:13.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.foundation.repository-graph.completed.pr1",
+      "workRef": "work.vexwork.foundation.repository-graph",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "PR #1 merged after exact-head QA and Formal Review; Repository Graph foundation accepted.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.1",
+        "github.commit.vexwork.4e0b79475566277c168f51d4f6a3bfbdd2f39784"
+      ],
+      "createdAt": "2026-10-21T03:56:14.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.foundation.runtime-persistence.ready.after-pr1",
+      "workRef": "work.vexwork.foundation.runtime-persistence",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "Portable Workgraph dependency completed on merged PR #1; runtime persistence is now ready for bounded formation.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.1",
+        "github.commit.vexwork.4e0b79475566277c168f51d4f6a3bfbdd2f39784"
+      ],
+      "createdAt": "2026-10-21T03:56:15.000Z"
+    }
+  ],
   "sourceRefs": [
     "project.vexwork.foundation",
     "docs/lineage/VEXLIFE-P0B.md",
