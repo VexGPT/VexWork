@@ -1,96 +1,79 @@
-# Current lived runner — A005
+# Current lived runner — A006
 
 `[VXG RealForever]`
 
-## Human-visible symptom
+A006 replaces the interrupted A005 attempt.
 
-The current terminal may appear idle after invoking:
+## Why A005 was retired
+
+The operator intentionally ended A005 because a running process without progress feedback was not trustworthy. Read-only diagnostics after termination showed:
 
 ```text
-RUN-VEXLIFE-CONNECTED-SERVICES-VCS04-INSTALLED-READ-LIVED-A005.command
+attempt files:
+  ATTEMPT-STARTED.txt only
+
+ADB:
+  R5CT50N3ZHA device SM_S908U
 ```
 
-If the shell has **not** returned a fresh prompt, that is not by itself a failure. A005 contains long phases whose subprocess output is captured for the RETURN instead of streamed continuously.
+A005 source ordering proves the observed run had not yet reached source clones, Android route seeding, Home membership, foreground Serve, gateway traffic or Conversation effects.
 
-Possible silent phases include:
+## A006 health contract
 
-```text
-waiting for authorized ADB device
-waiting for same Android serial to reconnect
-waiting for Android tailnet reachability
-exact source clones/checkouts
-Android Gradle build
-APK/test APK install
-instrumentation
-UI polling
-foreground Serve / gateway readiness
-```
-
-Current user-observed transcript at continuity formation:
-- exact A005 wrapper command was accepted;
-- no fresh shell prompt was shown after the command;
-- no A005 RETURN or terminal failure receipt had been provided yet;
-- therefore live state is `RUNNING_OR_WAITING__UNVERIFIED_FROM_REMOTE_CONTEXT`, not PASS and not FAIL.
-
-## What A005 prints today
-
-A005 emits one-time state changes for:
-- no Android device visible;
-- same serial missing/offline;
-- USB debugging unauthorized;
-- device reconnected;
-- Android Tailscale setup action.
-
-It does **not** yet emit periodic liveness heartbeats during long healthy waits/builds.
-
-## Next harness refinement if A005 does not finish
-
-Do not mutate/replay the single-use A005 attempt.
-
-Form A006 with a fresh attempt identity and add a heartbeat owner such as:
+A006 emits immediate phase transitions plus a 15-second heartbeat:
 
 ```text
-VCS04_HEALTH phase=<phase>
-  elapsed=<duration>
-  adb=<device|missing|offline|unauthorized>
-  androidTailnet=<reachable|waiting|unknown>
-  macTailnet=<running|not-running>
+VCS04_PROGRESS
+  kind=PHASE | HEARTBEAT | STATE | CHECKPOINT | COMPLETE
+  phase=<current phase>
+  phaseElapsedSec=<seconds>
+  adb=<DEVICE|MISSING|OFFLINE|UNAUTHORIZED|UNKNOWN>
+  macTailnet=<RUNNING|...>
+  androidTailscale=<INSTALLED|INSTALLED_VPN_VISIBLE|MISSING|UNKNOWN>
+  networkProof=<NOT_STARTED|DEFERRED_TO_PRIVATE_HTTPS_GATEWAY|PRIVATE_HTTPS_GATEWAY_ACTIVE>
   productEffectsStarted=<true|false>
+  effects=route=<yes/no>,membership=<yes/no>,serve=<yes/no>
 ```
 
-Suggested cadence should be bounded and readable (for example, state change immediately plus a low-frequency periodic heartbeat), not noisy command tracing.
-
-Heartbeat principles:
-- never print session bearer/token/private key;
-- never infer PASS from process liveness;
-- distinguish `waiting` from `stuck`;
-- state whether VCS-04 product effects have begun;
-- keep cleanup/result truth in the RETURN as the authoritative attempt receipt.
-
-## Current effect boundary
-
-Until the runner passes ADB + same-tailnet prerequisite checks, all of these remain false:
+The same state is written to:
 
 ```text
-Home membership mutation
-foreground Serve
-Android VexLife route persistence
-private gateway traffic
-Conversation read
-Send
-Companion/model effect
-restart proof
+LIVE-PROGRESS.log
+CURRENT-PHASE.json
 ```
 
-## Source currentness bound by A005
+inside the canonical attempt directory.
+
+## Reachability correction
+
+A006 no longer waits for `adb shell ping <MagicDNS>` as an admission oracle.
 
 ```text
+ADB authorized
++ Tailscale Android package present
+-> proceed to bounded lived effects
+-> installed VexLife performs:
+   possession challenge/signature
+   remote authenticated session
+   Family bootstrap
+   READ_THREAD_HISTORY
+-> those completed private HTTPS routes are the real reachability proof
+```
+
+If the installed Screen reports route/read unavailable **before any gateway request is observed**, the attempt records `ANDROID_TAILNET_ROUTE_UNREACHABLE` as the environment checkpoint.
+
+## Current exact coordinates
+
+```text
+packageSha256=4665251b1b4cc571ad0d4fab8602b44b6734bdbcec3574af22191c16eff3b4b8
 SDK.main=b4d427564409989e8f839066accd17ec4c790724
 VexLife.main=0fbaeb7c918ebdfc7af5389220d5bf081a906702
-VexLife.tree=3ab3affa774a2b97c0b27be2efb5a9506cdab0f9
 Android.main=30ecfe22156f6bb4b565eda990c72feff48a3866
+staticQualification=ALL_PASS
 ```
 
-The VexLife main advance that caused the A005 rebind changed Heretic/browser-companion recovery paths and manifest buckets; all nine VCS-04 Home/session/Family producer blobs remained unchanged.
+## Held acceptance
 
-<!-- [VXG RealForever][VEXWORK][TEMP-CONTINUITY][VCS04-LIVED][CURRENT-A005] -->
+A006 still does not pre-claim L1-L5. It must produce a PASS RETURN with actual route evidence first. L6-L11 remain held even after a successful installed read.
+
+<!-- [VXG RealForever][VEXWORK][TEMP-CONTINUITY][VCS04-LIVED][CURRENT-A006] -->
