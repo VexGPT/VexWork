@@ -94,27 +94,44 @@ A005 added explicit same-serial USB/debug reconnect handling, but two problems r
 
 Because the only attempt artifact was `ATTEMPT-STARTED.txt`, and A005 source orders source clones before all route/membership/Serve/gateway effects, the observed interruption remained pre-effect.
 
-## A006 — current qualified successor
+## A006 — consumed SAFE_FAILURE after first real product effects
 
 ```text
 packageSha256=4665251b1b4cc571ad0d4fab8602b44b6734bdbcec3574af22191c16eff3b4b8
+returnSha256=287f3720e884221aec6e63fc462aed0eed5644925961fe0ac1406c63b502ca44
+SDK.main=b4d427564409989e8f839066accd17ec4c790724
+VexLife.main=0fbaeb7c918ebdfc7af5389220d5bf081a906702
+Android.main=30ecfe22156f6bb4b565eda990c72feff48a3866
+disposition=SAFE_FAILURE
+firstFailure=FAMILY_SPACE_HOME_INVALID
+```
+
+A006 proved the new health/progress model worked and materially crossed the previous environment boundary:
+- Mac Tailscale RUNNING;
+- Android ADB DEVICE;
+- Android Tailscale INSTALLED_VPN_VISIBLE;
+- exact SDK/VexLife/Android sources;
+- Android APK/test APK build + install;
+- host bridge instrumentation;
+- reachability-only Android route persisted;
+- public Android possession identity observed;
+- one bounded temporary Home membership + lease formed.
+
+A006 stopped before Serve/gateway traffic because the temporary macOS Home path was `/var/folders/...` while the accepted Family owner requires its canonical `/private/var/folders/...` real path.
+
+## A007 — current qualified successor
+
+```text
+packageSha256=ef63aa3d953b5f943e613a48d84fe81fbacc4415083ad35922e374b7913a92b8
 SDK.main=b4d427564409989e8f839066accd17ec4c790724
 VexLife.main=0fbaeb7c918ebdfc7af5389220d5bf081a906702
 Android.main=30ecfe22156f6bb4b565eda990c72feff48a3866
 staticQualification=ALL_PASS
-state=QUALIFIED_NOT_YET_RUN
+repair=canonicalize temporary harness Home with fs.realpathSync.native
+ownerInvariantWeakening=false
 ```
 
-A006 corrections:
-- terminal `VCS04_PROGRESS` phase lines;
-- 15-second heartbeat lines;
-- `LIVE-PROGRESS.log` and `CURRENT-PHASE.json` inside the attempt receipt surface;
-- ADB/missing/offline/unauthorized health in heartbeats;
-- product-effect status in every heartbeat;
-- Gradle build moved to an async child so heartbeat output continues while it works;
-- Android shell ping removed as an admission gate;
-- Android Tailscale package/setup remains a prerequisite, but actual tailnet reachability is proven by the private HTTPS possession/session/bootstrap/history route;
-- ADB reconnect and Android Tailscale assisted setup remain preserved.
+A007 preserves all A006 progress/heartbeat behavior and removes no accepted product guard.
 
 ## Product acceptance still held
 
