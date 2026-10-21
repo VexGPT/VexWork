@@ -48,7 +48,9 @@ mode=DELEGATED_WITH_TRANSITION_HANDSHAKE
 routineTransitionAutonomy=WITHIN_CURRENT_PHASE
 ```
 
-The policy names only the Board-lane crossings that require a human handshake.
+The policy names the canonical Board-phase crossings that require a human handshake. A configured boundary also protects entry into its destination phase from transient lanes, so Waiting / Needs Human cannot become a detour around Ready -> Active or Active -> Verify.
+
+When exact Workgraph transition history proves the work was already inside that destination phase before a transient interruption, returning to the same phase remains routine. If that provenance is absent or points to an earlier phase, VexWork requires the protected handshake rather than silently promoting the work.
 
 That lets routine operational movement remain autonomous:
 

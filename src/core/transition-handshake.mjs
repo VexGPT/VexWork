@@ -112,6 +112,33 @@ function knownLaneRefs(registry) {
   return new Set(registry.boardLanes.map((lane) => lane.laneRef));
 }
 
+function protectedPhaseLaneRefs(policy) {
+  return new Set(policy.handshakeLaneTransitions.flatMap((boundary) => [boundary.fromLaneRef, boundary.toLaneRef]));
+}
+
+function effectivePhaseLaneFromHistory({ policy, graph, workRef, priorState, registry }) {
+  const directLaneRef = laneForState(registry, priorState);
+  const phaseLanes = protectedPhaseLaneRefs(policy);
+  if (phaseLanes.has(directLaneRef)) return directLaneRef;
+  if (graph === null || workRef === null) return null;
+
+  assert(verifySemanticFingerprint(graph), 'Workgraph semanticFingerprint mismatch for handshake phase provenance');
+  stableRef(workRef, 'workRef');
+  const item = graph.items.find((candidate) => candidate.workRef === workRef);
+  assert(item, `unknown workRef ${workRef}`);
+  assert(item.state === priorState, 'handshake phase provenance WorkState mismatch');
+
+  let state = priorState;
+  for (let index = graph.transitions.length - 1; index >= 0; index -= 1) {
+    const transition = graph.transitions[index];
+    if (transition.workRef !== workRef || transition.nextState !== state) continue;
+    const priorLaneRef = laneForState(registry, transition.priorState);
+    if (phaseLanes.has(priorLaneRef)) return priorLaneRef;
+    state = transition.priorState;
+  }
+  return null;
+}
+
 export function createProjectAgencyPolicy(input, registry) {
   if (input?.semanticFingerprint !== undefined) {
     assert(verifySemanticFingerprint(input), 'Project Agency Policy semanticFingerprint mismatch');
@@ -126,12 +153,15 @@ export function createProjectAgencyPolicy(input, registry) {
   assert(Array.isArray(input.handshakeLaneTransitions) && input.handshakeLaneTransitions.length > 0, 'handshakeLaneTransitions required');
   const pairs = new Set();
   const boundaryRefs = new Set();
+  const protectedTargetLaneRefs = new Set();
   for (const boundary of input.handshakeLaneTransitions) {
     stableRef(boundary.boundaryRef, 'boundaryRef');
     assert(!boundaryRefs.has(boundary.boundaryRef), `duplicate boundaryRef ${boundary.boundaryRef}`);
     boundaryRefs.add(boundary.boundaryRef);
     assert(knownLanes.has(boundary.fromLaneRef), `unknown fromLaneRef ${boundary.fromLaneRef}`);
     assert(knownLanes.has(boundary.toLaneRef), `unknown toLaneRef ${boundary.toLaneRef}`);
+    assert(!protectedTargetLaneRefs.has(boundary.toLaneRef), `duplicate handshake target lane ${boundary.toLaneRef}`);
+    protectedTargetLaneRefs.add(boundary.toLaneRef);
     assert(boundary.fromLaneRef !== boundary.toLaneRef, 'handshake boundary must cross Board lanes');
     const key = `${boundary.fromLaneRef}->${boundary.toLaneRef}`;
     assert(!pairs.has(key), `duplicate handshake lane transition ${key}`);
@@ -150,13 +180,22 @@ export function createProjectAgencyPolicy(input, registry) {
   return withSemanticFingerprint(input);
 }
 
-export function transitionHandshakeRequirement({ policy, priorState, nextState, registry }) {
+export function transitionHandshakeRequirement({ policy, priorState, nextState, registry, graph = null, workRef = null }) {
   policy = createProjectAgencyPolicy(policy, registry);
   const fromLaneRef = laneForState(registry, priorState);
   const toLaneRef = laneForState(registry, nextState);
-  const boundary = policy.handshakeLaneTransitions.find(
+  let boundary = policy.handshakeLaneTransitions.find(
     (candidate) => candidate.fromLaneRef === fromLaneRef && candidate.toLaneRef === toLaneRef,
   ) ?? null;
+
+  if (boundary === null && fromLaneRef !== toLaneRef) {
+    const protectedTarget = policy.handshakeLaneTransitions.find((candidate) => candidate.toLaneRef === toLaneRef) ?? null;
+    if (protectedTarget !== null) {
+      const effectivePhaseLaneRef = effectivePhaseLaneFromHistory({ policy, graph, workRef, priorState, registry });
+      if (effectivePhaseLaneRef !== toLaneRef) boundary = protectedTarget;
+    }
+  }
+
   return Object.freeze({
     required: boundary !== null,
     boundaryRefOrNull: boundary?.boundaryRef ?? null,
@@ -191,7 +230,7 @@ export function createTransitionProposal({
   assert(item, `unknown workRef ${workRef}`);
   assert((registry.allowedTransitions[item.state] ?? []).includes(nextState), `transition ${item.state} -> ${nextState} not allowed`);
 
-  const requirement = transitionHandshakeRequirement({ policy, priorState: item.state, nextState, registry });
+  const requirement = transitionHandshakeRequirement({ policy, priorState: item.state, nextState, registry, graph, workRef });
   assert(requirement.required, 'transition does not require a human handshake');
 
   stableRef(proposalRef, 'proposalRef');
@@ -316,6 +355,8 @@ export function requestProjectTransition({
     priorState: item.state,
     nextState: transitionRequest.nextState,
     registry,
+    graph,
+    workRef: item.workRef,
   });
 
   if (!requirement.required) {

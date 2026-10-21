@@ -141,6 +141,71 @@ test('Project Agency Policy distinguishes routine movement from phase handshakes
   assert.equal(transitionHandshakeRequirement({ policy: p, priorState: 'VERIFYING', nextState: 'COMPLETED', registry }).required, true);
 });
 
+
+test('transient lanes cannot bypass protected phase entry while proven same-phase resume stays autonomous', () => {
+  const ready = graph('READY');
+  const waitingResource = requestTransition(
+    ready,
+    transition(ready, 'WAITING_RESOURCE', 'transition.test.waiting-resource'),
+    registry,
+  ).graph;
+  assert.equal(transitionHandshakeRequirement({
+    policy: policy(),
+    priorState: 'WAITING_RESOURCE',
+    nextState: 'CONTEXT_ADMITTED',
+    registry,
+    graph: waitingResource,
+    workRef: 'work.test.agency',
+  }).required, true);
+  assert.throws(() => requestProjectTransition({
+    project: project(),
+    graph: waitingResource,
+    policy: policy(),
+    transitionRequest: transition(waitingResource, 'CONTEXT_ADMITTED', 'transition.test.waiting-resource-active'),
+    registry,
+  }), /transition handshake required/);
+
+  const active = graph('RUNNING');
+  const waitingHuman = requestTransition(
+    active,
+    transition(active, 'WAITING_HUMAN', 'transition.test.waiting-human'),
+    registry,
+  ).graph;
+  assert.equal(transitionHandshakeRequirement({
+    policy: policy(),
+    priorState: 'WAITING_HUMAN',
+    nextState: 'RUNNING',
+    registry,
+    graph: waitingHuman,
+    workRef: 'work.test.agency',
+  }).required, false);
+  const resumed = requestProjectTransition({
+    project: project(),
+    graph: waitingHuman,
+    policy: policy(),
+    transitionRequest: transition(waitingHuman, 'RUNNING', 'transition.test.waiting-human-resume'),
+    registry,
+  });
+  assert.equal(resumed.state, 'ACCEPTED');
+  assert.equal(resumed.handshake.required, false);
+
+  assert.equal(transitionHandshakeRequirement({
+    policy: policy(),
+    priorState: 'WAITING_HUMAN',
+    nextState: 'VERIFYING',
+    registry,
+    graph: waitingHuman,
+    workRef: 'work.test.agency',
+  }).required, true);
+  assert.throws(() => requestProjectTransition({
+    project: project(),
+    graph: waitingHuman,
+    policy: policy(),
+    transitionRequest: transition(waitingHuman, 'VERIFYING', 'transition.test.waiting-human-verify'),
+    registry,
+  }), /transition handshake required/);
+});
+
 test('routine same-phase transition proceeds autonomously inside bounded authority', () => {
   const current = graph('RUNNING');
   const result = requestProjectTransition({
@@ -266,6 +331,18 @@ test('Project Agency Policy rejects reused boundary identity across different ph
   delete source.semanticFingerprint;
   source.handshakeLaneTransitions[1].boundaryRef = source.handshakeLaneTransitions[0].boundaryRef;
   assert.throws(() => createProjectAgencyPolicy(source, registry), /duplicate boundaryRef/);
+});
+
+
+test('Project Agency Policy rejects ambiguous duplicate protected target phases', () => {
+  const source = structuredClone(policy());
+  delete source.semanticFingerprint;
+  source.handshakeLaneTransitions[1] = {
+    boundaryRef: 'boundary.test.planned-active',
+    fromLaneRef: 'lane.work.planned',
+    toLaneRef: 'lane.work.active',
+  };
+  assert.throws(() => createProjectAgencyPolicy(source, registry), /duplicate handshake target lane/);
 });
 
 test('final transition admission rejects fingerprint-valid handshake schema substitution', () => {
