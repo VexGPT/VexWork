@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "vexwork.process-registry/v1",
+  "registryRef": "registry.vexwork.processes.001",
+  "registryVersion": 2,
+  "purpose": "Map recurring work questions to the smallest reusable process source without making VexWork the executor or stealing process ownership from target repositories.",
+  "processes": [
+    {
+      "processRef": "process.vexwork.capture-discovered-work",
+      "label": "Capture discovered work",
+      "purpose": "Preserve useful adjacent work discovered during another lane without widening that lane or granting implementation authority.",
+      "ownerRepositoryRef": "repo.vexwork",
+      "entryRefs": [
+        "docs/process/CAPTURE-DISCOVERED-WORK.md"
+      ],
+      "appliesWhen": "Current work discovers a useful idea, defect, question, or enhancement that is not required for the current acceptance boundary.",
+      "executionAuthority": "NONE"
+    },
+    {
+      "processRef": "process.vexlife-android.feature-authoring",
+      "label": "VexLife Android feature authoring",
+      "purpose": "Route admitted Android product-feature work through the repository-owned human-outcome, feature-home, source, and proof formation process.",
+      "ownerRepositoryRef": "repo.vexlife-android",
+      "entryRefs": [
+        "docs/features/README.md",
+        "docs/foundation/FEATURE-EXPERIENCE-LANGUAGE.md"
+      ],
+      "appliesWhen": "A VexLife Android potential or product need is deliberately adopted for feature implementation or major feature evolution.",
+      "executionAuthority": "NONE"
+    },
+    {
+      "processRef": "process.vexwork.quality-review",
+      "label": "VexWork Quality Review",
+      "purpose": "Give a fresh QA/reviewer a stable question, evidence, falsification, scope, and disposition contract for one exact candidate without granting merge or provider authority.",
+      "ownerRepositoryRef": "repo.vexwork",
+      "entryRefs": [
+        "docs/process/QUALITY-REVIEW.md",
+        "docs/templates/QA-REVIEW-BRIEF.md",
+        "docs/templates/QA-REVIEW-RETURN.md"
+      ],
+      "appliesWhen": "A VexWork candidate or other work-system candidate needs repeatable QA/semantic quality review before a lifecycle or merge decision.",
+      "executionAuthority": "NONE"
+    }
+  ]
+}
