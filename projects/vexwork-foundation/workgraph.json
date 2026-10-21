@@ -148,7 +148,7 @@
       "label": "Runtime persistence owner",
       "purpose": "Source-place portable private/current event, snapshot, writer and CURRENT-pointer semantics without using Git commit churn as the runtime database.",
       "workClass": "TASK",
-      "state": "READY",
+      "state": "VERIFYING",
       "priorityClass": "NORMAL",
       "dependencyRefs": [
         "work.vexwork.foundation.portable-workgraph"
@@ -161,10 +161,10 @@
         "github.pull.vexlife.908",
         "github.pull.vexlife.909"
       ],
-      "authorityDisposition": "NO_AUTHORITY",
-      "effectDisposition": "NO_EFFECTS",
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-21T01:45:06.000Z",
-      "updatedAt": "2026-10-21T03:56:15.000Z",
+      "updatedAt": "2026-10-21T04:20:02.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -254,6 +254,36 @@
         "github.commit.vexwork.4e0b79475566277c168f51d4f6a3bfbdd2f39784"
       ],
       "createdAt": "2026-10-21T03:56:15.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.foundation.runtime-persistence.running.runtime-foundation",
+      "workRef": "work.vexwork.foundation.runtime-persistence",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Portable runtime persistence source and focused proof are source-placed on the admitted authoring branch.",
+      "actorRef": "role.vexwork.runtime-persistence-author",
+      "sourceRefs": [
+        "github.commit.vexwork.6bd93985709e270973c7c86854a4a8021663763f",
+        "docs/foundation/RUNTIME-PERSISTENCE.md",
+        "test/workgraph-runtime.test.mjs"
+      ],
+      "createdAt": "2026-10-21T04:20:02.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.foundation.runtime-persistence.verifying.runtime-foundation",
+      "workRef": "work.vexwork.foundation.runtime-persistence",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Author-side runtime persistence proof is green; exact candidate is ready for independent QA.",
+      "actorRef": "role.vexwork.runtime-persistence-author",
+      "sourceRefs": [
+        "github.commit.vexwork.6bd93985709e270973c7c86854a4a8021663763f",
+        "docs/foundation/RUNTIME-PERSISTENCE.md",
+        "test/workgraph-runtime.test.mjs"
+      ],
+      "createdAt": "2026-10-21T04:20:02.000Z"
     }
   ],
   "sourceRefs": [
