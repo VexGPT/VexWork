@@ -23,11 +23,12 @@ test('Project Work Board projects only the Project subgraph without becoming lif
   const intake = board.lanes.find((lane) => lane.laneRef === 'lane.work.intake');
   assert.equal(intake.cards.some((card) => card.workRef === 'work.vexwork.foundation.idea-intake'), true);
   const verify = board.lanes.find((lane) => lane.laneRef === 'lane.work.verify');
-  assert.equal(verify.cards.length, 0);
+  assert.equal(verify.cards.length, 1);
+  assert.equal(verify.cards.some((card) => card.workRef === 'work.vexwork.foundation.runtime-persistence'), true);
   const done = board.lanes.find((lane) => lane.laneRef === 'lane.work.done');
   assert.equal(done.cards.length, 3);
   const ready = board.lanes.find((lane) => lane.laneRef === 'lane.work.ready');
-  assert.equal(ready.cards.some((card) => card.workRef === 'work.vexwork.foundation.runtime-persistence'), true);
+  assert.equal(ready.cards.length, 0);
 });
 
 test('Parking Lot projects parked work independently of Project membership', () => {
