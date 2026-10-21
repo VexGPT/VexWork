@@ -11,6 +11,7 @@ export const PROJECT_AGENCY_MODE = 'DELEGATED_WITH_TRANSITION_HANDSHAKE';
 export const HUMAN_TRANSITION_DECISIONS = Object.freeze(['ACK_APPROVED', 'ACK_FEEDBACK', 'ACK_HOLD']);
 
 const REF = /^[A-Za-z0-9][A-Za-z0-9._:/-]*$/u;
+const SEMANTIC_FINGERPRINT = /^[0-9a-f]{64}$/u;
 const ISO = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/u;
 
 function assert(condition, message) {
@@ -42,6 +43,63 @@ function textArray(values, label) {
 function timestamp(value, label) {
   assert(typeof value === 'string' && ISO.test(value) && new Date(value).toISOString() === value, `${label} must be canonical UTC ISO`);
   return value;
+}
+
+function semanticFingerprint(value, label) {
+  assert(typeof value === 'string' && SEMANTIC_FINGERPRINT.test(value), `${label} must be one semantic fingerprint`);
+  return value;
+}
+
+function validateTransitionProposalObject(proposal) {
+  assert(verifySemanticFingerprint(proposal), 'transition proposal semanticFingerprint mismatch');
+  assert(proposal.schemaVersion === TRANSITION_PROPOSAL_SCHEMA, 'transition proposal schema mismatch');
+  stableRef(proposal.proposalRef, 'proposalRef');
+  stableRef(proposal.projectRef, 'projectRef');
+  stableRef(proposal.workRef, 'workRef');
+  semanticFingerprint(proposal.observedGraphFingerprint, 'observedGraphFingerprint');
+  text(proposal.observedState, 'observedState');
+  text(proposal.proposedState, 'proposedState');
+  stableRef(proposal.fromLaneRef, 'fromLaneRef');
+  stableRef(proposal.toLaneRef, 'toLaneRef');
+  stableRef(proposal.boundaryRef, 'boundaryRef');
+  text(proposal.whatBecameTrue, 'whatBecameTrue');
+  text(proposal.nextIntent, 'nextIntent');
+  textArray(proposal.attention, 'attention');
+  textArray(proposal.heldBoundaries, 'heldBoundaries');
+  refs(proposal.authorityBasisRefs, 'authorityBasisRefs');
+  stableRef(proposal.proposedByActorRef, 'proposedByActorRef');
+  timestamp(proposal.formedAt, 'formedAt');
+  return proposal;
+}
+
+function validateHumanTransitionResponseObject(response) {
+  assert(verifySemanticFingerprint(response), 'human transition response semanticFingerprint mismatch');
+  assert(response.schemaVersion === HUMAN_TRANSITION_RESPONSE_SCHEMA, 'human transition response schema mismatch');
+  stableRef(response.responseRef, 'responseRef');
+  stableRef(response.proposalRef, 'proposalRef');
+  semanticFingerprint(response.proposalSemanticFingerprint, 'proposalSemanticFingerprint');
+  stableRef(response.humanActorRef, 'humanActorRef');
+  assert(HUMAN_TRANSITION_DECISIONS.includes(response.decision), 'unsupported human transition decision');
+  if (response.decision === 'ACK_FEEDBACK') text(response.feedbackOrNull, 'feedbackOrNull');
+  else assert(response.feedbackOrNull === null || (typeof response.feedbackOrNull === 'string' && response.feedbackOrNull.trim()), 'feedbackOrNull invalid');
+  timestamp(response.respondedAt, 'respondedAt');
+  return response;
+}
+
+function validateAiTransitionConfirmationObject(confirmation) {
+  assert(verifySemanticFingerprint(confirmation), 'AI transition confirmation semanticFingerprint mismatch');
+  assert(confirmation.schemaVersion === AI_TRANSITION_CONFIRMATION_SCHEMA, 'AI transition confirmation schema mismatch');
+  stableRef(confirmation.confirmationRef, 'confirmationRef');
+  stableRef(confirmation.proposalRef, 'proposalRef');
+  semanticFingerprint(confirmation.proposalSemanticFingerprint, 'proposalSemanticFingerprint');
+  stableRef(confirmation.responseRef, 'responseRef');
+  semanticFingerprint(confirmation.responseSemanticFingerprint, 'responseSemanticFingerprint');
+  stableRef(confirmation.actorRef, 'actorRef');
+  text(confirmation.confirmedInterpretation, 'confirmedInterpretation');
+  text(confirmation.confirmedEnvelope, 'confirmedEnvelope');
+  assert(['COMMIT_TRANSITION', 'HOLD'].includes(confirmation.nextAction), 'unsupported confirmation nextAction');
+  timestamp(confirmation.confirmedAt, 'confirmedAt');
+  return confirmation;
 }
 
 function laneForState(registry, state) {
@@ -145,7 +203,7 @@ export function createTransitionProposal({
   stableRef(proposedByActorRef, 'proposedByActorRef');
   timestamp(formedAt, 'formedAt');
 
-  return withSemanticFingerprint({
+  return validateTransitionProposalObject(withSemanticFingerprint({
     schemaVersion: TRANSITION_PROPOSAL_SCHEMA,
     proposalRef,
     projectRef: project.projectRef,
@@ -163,7 +221,7 @@ export function createTransitionProposal({
     authorityBasisRefs,
     proposedByActorRef,
     formedAt,
-  });
+  }));
 }
 
 export function createHumanTransitionResponse({
@@ -174,8 +232,7 @@ export function createHumanTransitionResponse({
   feedbackOrNull = null,
   respondedAt,
 }) {
-  assert(verifySemanticFingerprint(proposal), 'transition proposal semanticFingerprint mismatch');
-  assert(proposal.schemaVersion === TRANSITION_PROPOSAL_SCHEMA, 'transition proposal schema mismatch');
+  validateTransitionProposalObject(proposal);
   stableRef(responseRef, 'responseRef');
   stableRef(humanActorRef, 'humanActorRef');
   assert(HUMAN_TRANSITION_DECISIONS.includes(decision), 'unsupported human transition decision');
@@ -183,7 +240,7 @@ export function createHumanTransitionResponse({
   else assert(feedbackOrNull === null || (typeof feedbackOrNull === 'string' && feedbackOrNull.trim()), 'feedbackOrNull invalid');
   timestamp(respondedAt, 'respondedAt');
 
-  return withSemanticFingerprint({
+  return validateHumanTransitionResponseObject(withSemanticFingerprint({
     schemaVersion: HUMAN_TRANSITION_RESPONSE_SCHEMA,
     responseRef,
     proposalRef: proposal.proposalRef,
@@ -192,7 +249,7 @@ export function createHumanTransitionResponse({
     decision,
     feedbackOrNull,
     respondedAt,
-  });
+  }));
 }
 
 export function createAiTransitionConfirmation({
@@ -205,10 +262,8 @@ export function createAiTransitionConfirmation({
   nextAction,
   confirmedAt,
 }) {
-  assert(verifySemanticFingerprint(proposal), 'transition proposal semanticFingerprint mismatch');
-  assert(proposal.schemaVersion === TRANSITION_PROPOSAL_SCHEMA, 'transition proposal schema mismatch');
-  assert(verifySemanticFingerprint(response), 'human transition response semanticFingerprint mismatch');
-  assert(response.schemaVersion === HUMAN_TRANSITION_RESPONSE_SCHEMA, 'human transition response schema mismatch');
+  validateTransitionProposalObject(proposal);
+  validateHumanTransitionResponseObject(response);
   assert(response.proposalRef === proposal.proposalRef, 'human response proposalRef mismatch');
   assert(response.proposalSemanticFingerprint === proposal.semanticFingerprint, 'human response proposal fingerprint mismatch');
   stableRef(confirmationRef, 'confirmationRef');
@@ -223,7 +278,7 @@ export function createAiTransitionConfirmation({
   }
   timestamp(confirmedAt, 'confirmedAt');
 
-  return withSemanticFingerprint({
+  return validateAiTransitionConfirmationObject(withSemanticFingerprint({
     schemaVersion: AI_TRANSITION_CONFIRMATION_SCHEMA,
     confirmationRef,
     proposalRef: proposal.proposalRef,
@@ -235,7 +290,7 @@ export function createAiTransitionConfirmation({
     confirmedEnvelope,
     nextAction,
     confirmedAt,
-  });
+  }));
 }
 
 export function requestProjectTransition({
@@ -275,12 +330,9 @@ export function requestProjectTransition({
   assert(item.effectDisposition === 'EFFECTS_BOUND', 'phase promotion requires bounded effects');
   assert(handshakeOrNull && typeof handshakeOrNull === 'object', 'transition handshake required');
   const { proposal, response, confirmation } = handshakeOrNull;
-  assert(verifySemanticFingerprint(proposal), 'transition proposal semanticFingerprint mismatch');
-  assert(proposal.schemaVersion === TRANSITION_PROPOSAL_SCHEMA, 'transition proposal schema mismatch');
-  assert(verifySemanticFingerprint(response), 'human transition response semanticFingerprint mismatch');
-  assert(response.schemaVersion === HUMAN_TRANSITION_RESPONSE_SCHEMA, 'human transition response schema mismatch');
-  assert(verifySemanticFingerprint(confirmation), 'AI transition confirmation semanticFingerprint mismatch');
-  assert(confirmation.schemaVersion === AI_TRANSITION_CONFIRMATION_SCHEMA, 'AI transition confirmation schema mismatch');
+  validateTransitionProposalObject(proposal);
+  validateHumanTransitionResponseObject(response);
+  validateAiTransitionConfirmationObject(confirmation);
 
   assert(proposal.projectRef === project.projectRef, 'transition proposal project mismatch');
   assert(proposal.workRef === item.workRef, 'transition proposal work mismatch');
