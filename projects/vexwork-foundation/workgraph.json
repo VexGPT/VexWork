@@ -204,7 +204,7 @@
       "label": "Public VexWork dashboard",
       "purpose": "Make current VexWork Project Board and Parking Lot truth visibly explorable through a stable public read projection without making Vextreme another work-state owner.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "VERIFYING",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexwork.foundation.work-board"
@@ -221,7 +221,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-21T06:07:27.000Z",
-      "updatedAt": "2026-10-21T06:07:27.000Z",
+      "updatedAt": "2026-10-21T06:20:08.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -354,6 +354,21 @@
         "github.commit.vexwork.bc73c72071186673290b4ae6f8419bb9366b42b3"
       ],
       "createdAt": "2026-10-21T05:51:43.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.visibility.public-dashboard.verifying.pr5",
+      "workRef": "work.vexwork.visibility.public-dashboard",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Public dashboard projection contract and dogfood state are source-placed on PR #5 and ready for independent review.",
+      "actorRef": "role.vexwork.public-dashboard-author",
+      "sourceRefs": [
+        "github.pull.vexwork.5",
+        "github.commit.vexwork.c3ed1553c5147fc3ce61f3b72a7111573a9c0a5c",
+        "public/work-dashboard.json"
+      ],
+      "createdAt": "2026-10-21T06:20:08.000Z"
     }
   ],
   "sourceRefs": [

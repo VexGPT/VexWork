@@ -72,22 +72,6 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "updatedAt": "2026-10-21T01:45:01.000Z"
-        },
-        {
-          "workRef": "work.vexwork.visibility.public-dashboard",
-          "label": "Public VexWork dashboard",
-          "purpose": "Make current VexWork Project Board and Parking Lot truth visibly explorable through a stable public read projection without making Vextreme another work-state owner.",
-          "workClass": "TASK",
-          "state": "RUNNING",
-          "workDisposition": "ACTIVE",
-          "priorityClass": "HIGH",
-          "repositoryRefs": [
-            "repo.vexwork",
-            "repo.vextreme"
-          ],
-          "authorityDisposition": "AUTHORIZED_BOUNDED",
-          "effectDisposition": "EFFECTS_BOUND",
-          "updatedAt": "2026-10-21T06:07:27.000Z"
         }
       ]
     },
@@ -104,7 +88,24 @@
     {
       "laneRef": "lane.work.verify",
       "label": "Verify",
-      "cards": []
+      "cards": [
+        {
+          "workRef": "work.vexwork.visibility.public-dashboard",
+          "label": "Public VexWork dashboard",
+          "purpose": "Make current VexWork Project Board and Parking Lot truth visibly explorable through a stable public read projection without making Vextreme another work-state owner.",
+          "workClass": "TASK",
+          "state": "VERIFYING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme"
+          ],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "updatedAt": "2026-10-21T06:20:08.000Z"
+        }
+      ]
     },
     {
       "laneRef": "lane.work.attention",
@@ -208,8 +209,8 @@
   },
   "summary": {
     "projectWorkItemCount": 8,
-    "parkingLotItemCount": 1,
-    "openProjectWorkItemCount": 4
+    "openProjectWorkItemCount": 4,
+    "parkingLotItemCount": 1
   },
   "effects": false,
   "executionAuthority": "NONE"
