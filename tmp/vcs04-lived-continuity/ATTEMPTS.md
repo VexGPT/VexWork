@@ -259,3 +259,51 @@ A010 corrections:
 - preserves forced-IP Mac HTTPS diagnostic, heartbeats, USB recovery and Android private-gateway traffic as the acceptance oracle;
 - no broad Serve reset, no `--bg`, no Send/model/restart effect.
 
+
+
+## A010 — consumed USER_ACTION_REQUIRED during foreground-owner recovery
+
+```text
+packageSha256=5ca5e69be1c8cff902795e7b024008e872211e0ae0f14970946b5e3063716f30
+returnSha256=171150e42682886b1ca9136018aa34b9b4c9a9e5e5d7c48936a1d3d396cc2de8
+disposition=USER_ACTION_REQUIRED
+firstFailure=TAILSCALE_SERVE_UNAVAILABLE
+duration≈8s
+productEffectsPerformed=false
+L1-L5=NOT_PROVEN
+```
+
+A010 correctly classified the stale 8443 mapping as private foreground Serve:
+- exact foreground session = `e3af76c41c2acacf`;
+- exact proxy = `http://127.0.0.1:53148`;
+- `AllowFunnel` absent/false;
+- A010 attempted `tailscale serve --https=8443 off` six times;
+- each off command failed and the foreground mapping remained.
+
+Root cause:
+- the mapping lives under Tailscale's foreground WatchIPNBus session;
+- `off` does not operate inside that existing foreground session;
+- recovery must act on the exact foreground process/session owner, not the parent/background config.
+
+## A011 — current qualified successor
+
+```text
+packageSha256=cbe48015de98c2de5a9f37217e12011e2478cb62bf8420a84a40caccebd52896
+SDK.main=b4d427564409989e8f839066accd17ec4c790724
+VexLife.main=0fbaeb7c918ebdfc7af5389220d5bf081a906702
+Android.main=30ecfe22156f6bb4b565eda990c72feff48a3866
+staticQualification=ALL_PASS
+```
+
+A011 recovery:
+- requires exactly one foreground host:8443 entry;
+- requires HTTPS=true;
+- requires exact loopback proxy shape `http://127.0.0.1:<port>`;
+- requires `AllowFunnel != true`;
+- requires exactly one matching local `tailscale serve --yes --https=8443 <exact-proxy>` process;
+- sends SIGTERM to that exact owner only;
+- uses SIGKILL only as a bounded fallback if that same exact process remains;
+- requires the foreground config to disappear before proceeding;
+- never uses `tailscale serve reset`, broad cleanup, or Funnel mutation;
+- preserves heartbeat/progress output and the Android private-HTTPS acceptance oracle.
+
