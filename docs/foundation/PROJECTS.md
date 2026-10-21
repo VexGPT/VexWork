@@ -51,6 +51,7 @@ It answers:
 what Projects exist?
 where is each Project definition?
 which Workgraph identity does it project?
+where is that Workgraph source?
 where is its Board view?
 does it have a Project Agency Policy?
 ```

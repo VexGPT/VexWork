@@ -68,6 +68,7 @@ The first foundation establishes:
 - a Project Registry that locates source-managed Projects/Board views without duplicating their work truth;
 - `WorkState / WorkControl / WorkAct / WorkEffect / WorkBehavior` recognition grammar;
 - Work Board as a Project-derived projection, with Board lanes kept distinct from lifecycle state;
+- Project Agency Policy + Human Transition Handshake so bounded AI stewardship can automate routine work while meaningful phase promotions remain human-aware and exact-current;
 - Parking Lot as a provider-independent projection for intentionally deferred work;
 - a Process Map that records reusable work routes without becoming their executor or stealing target-repository process ownership;
 - a Repository Graph that points to repositories and their own entry/culture sources without consolidating their cultures;

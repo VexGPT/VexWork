@@ -37,6 +37,9 @@ Do not broad-read every connected repository. The Repository Graph tells you whe
   -> docs/foundation/PROJECTS.md
   -> docs/process/FORM-PROJECT.md
 
+"How may an AI advance work while Victor stays aware of phase changes?"
+  -> docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md
+
 "Show me the Jira board / kanban / board"
   -> docs/foundation/WORK-BOARD.md
 
