@@ -36,6 +36,13 @@ Do not broad-read every connected repository. The Repository Graph tells you whe
 "Show me the Jira board / kanban / board"
   -> docs/foundation/WORK-BOARD.md
 
+"Park this / remember this later / nice-to-have"
+  -> docs/process/CAPTURE-DISCOVERED-WORK.md
+  -> docs/foundation/PARKING-LOT.md
+
+"What process should future instances reuse?"
+  -> docs/foundation/PROCESS-MAP.md
+
 "Which repositories does this work touch?"
   -> docs/foundation/REPOSITORY-GRAPH.md
 

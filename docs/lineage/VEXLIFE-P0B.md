@@ -34,10 +34,11 @@ VALID_WORKGRAPH != RUNTIME_CURRENT_WORKGRAPH
 VexWork takes ownership only of the portable work-management questions:
 
 - Workgraph identity, lifecycle and relationships;
-- Projects as human outcome groupings;
+- Projects as human outcome groupings over a larger Workgraph rather than mandatory Work-item containers;
 - Board/Graph/Focus projections;
 - repository navigation relations;
 - provider relations that remain non-canonical;
+- parking and process-route semantics learned from later real work pressure;
 - later portable planning/reconciliation/runtime contracts when they are deliberately migrated.
 
 ## What remains outside
@@ -58,6 +59,8 @@ VexLife is MPL-2.0. VexWork is Apache-2.0. The initial VexWork source is an inde
 ## Migration rule
 
 Do not create two live canonical work owners by casually copying runtime state.
+
+A later Android parking-lot pressure also exposed a predecessor limitation: useful work can exist before Project membership. VexWork therefore keeps Work identity global and treats Project membership as grouping/projection truth.
 
 A future migration should:
 

@@ -16,13 +16,14 @@ human says "Jira board"
 
 ## What it owns
 
-The Work Board owns **projection**, not lifecycle truth.
+The Work Board owns **projection**, not lifecycle truth. A Work Board is Project-scoped: the Project selects root Work items and their containment descendants from the larger Workgraph.
 
 ```text
 CURRENT Workgraph
++ Project rootWorkRefs[]
 + Board ViewDefinition
 + lane mapping
--> Work Board projection
+-> bounded Work Board projection
 ```
 
 Every lifecycle state maps to exactly one default lane:
@@ -46,6 +47,7 @@ These lanes preserve the VexLife P0B board vocabulary for migration continuity.
 
 ```text
 WORK_BOARD != WORKGRAPH
+PROJECT_BOARD != GLOBAL_WORKGRAPH
 BOARD_LANE != WORK_STATE
 CARD != WORK_ITEM_SOURCE
 DRAG != DIRECT_MUTATION
@@ -53,6 +55,10 @@ VIEW != EFFECT_AUTHORITY
 ```
 
 A future interactive Board should emit a typed `WorkAct` / transition request bound to the exact observed Workgraph fingerprint. It must never move a card optimistically and call the local UI position canonical truth.
+
+## Parking Lot is a sibling projection
+
+The Parking Lot is **not** another Board lane and not a Project. It projects intentionally parked work from the larger Workgraph. See `PARKING-LOT.md`.
 
 ## Views
 

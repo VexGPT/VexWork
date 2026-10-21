@@ -17,6 +17,11 @@ function stableRef(value, label) {
   return value;
 }
 
+function optionalRef(value, label) {
+  if (value === null) return null;
+  return stableRef(value, label);
+}
+
 function refs(values, label) {
   assert(Array.isArray(values), `${label} must be an array`);
   const result = values.map((value, index) => stableRef(value, `${label}[${index}]`));
@@ -27,6 +32,12 @@ function refs(values, label) {
 function timestamp(value, label) {
   assert(typeof value === 'string' && ISO.test(value) && new Date(value).toISOString() === value, `${label} must be canonical UTC ISO`);
   return value;
+}
+
+function assertStoredFingerprintIfPresent(value, label) {
+  if (value?.semanticFingerprint !== undefined) {
+    assert(verifySemanticFingerprint(value), `${label} semanticFingerprint mismatch`);
+  }
 }
 
 function assertAcyclic(items, edgesFor, label) {
@@ -63,10 +74,15 @@ export function validateRegistry(registry) {
   if (laneStates.length !== states.length || new Set(laneStates).size !== stateSet.size || laneStates.some((state) => !stateSet.has(state))) {
     errors.push('board lane coverage must exactly equal lifecycleStates');
   }
+  const dispositions = registry?.workDispositions ?? [];
+  if (!Array.isArray(dispositions) || !dispositions.includes('ACTIVE') || !dispositions.includes('PARKED')) {
+    errors.push('workDispositions must include ACTIVE and PARKED');
+  }
   return Object.freeze({ ok: errors.length === 0, errors: Object.freeze(errors) });
 }
 
 export function createProject(input) {
+  assertStoredFingerprintIfPresent(input, 'project');
   assert(input?.schemaVersion === PROJECT_SCHEMA, 'project schema mismatch');
   stableRef(input.projectRef, 'projectRef');
   assert(typeof input.label === 'string' && input.label.trim(), 'project label required');
@@ -79,47 +95,53 @@ export function createProject(input) {
 }
 
 export function createWorkItem(input, registry) {
+  assertStoredFingerprintIfPresent(input, 'work item');
   assert(input?.schemaVersion === WORK_ITEM_SCHEMA, 'work item schema mismatch');
   stableRef(input.workRef, 'workRef');
-  stableRef(input.projectRef, 'projectRef');
-  if (input.parentWorkRefOrNull !== null) stableRef(input.parentWorkRefOrNull, 'parentWorkRefOrNull');
+  optionalRef(input.parentWorkRefOrNull, 'parentWorkRefOrNull');
   assert(typeof input.label === 'string' && input.label.trim(), 'work label required');
   assert(typeof input.purpose === 'string' && input.purpose.trim(), 'work purpose required');
   assert(registry.workClasses.includes(input.workClass), `unsupported workClass ${input.workClass}`);
   assert(registry.lifecycleStates.includes(input.state), `unsupported state ${input.state}`);
+  assert(registry.workDispositions.includes(input.workDisposition), `unsupported workDisposition ${input.workDisposition}`);
   assert(registry.priorityClasses.includes(input.priorityClass), `unsupported priority ${input.priorityClass}`);
   assert(registry.authorityDispositions.includes(input.authorityDisposition), 'unsupported authorityDisposition');
   assert(registry.effectDispositions.includes(input.effectDisposition), 'unsupported effectDisposition');
   refs(input.dependencyRefs, 'dependencyRefs');
   refs(input.repositoryRefs, 'repositoryRefs');
   refs(input.sourceRefs, 'sourceRefs');
+  optionalRef(input.formationProcessRefOrNull, 'formationProcessRefOrNull');
+  refs(input.nextProcessRefs, 'nextProcessRefs');
   timestamp(input.createdAt, 'createdAt');
   timestamp(input.updatedAt, 'updatedAt');
   return withSemanticFingerprint(input);
 }
 
 export function createWorkgraph(input, registry) {
+  assertStoredFingerprintIfPresent(input, 'workgraph');
   assert(input?.schemaVersion === WORKGRAPH_SCHEMA, 'workgraph schema mismatch');
   stableRef(input.graphRef, 'graphRef');
-  stableRef(input.projectRef, 'projectRef');
   refs(input.rootWorkRefs, 'rootWorkRefs');
   refs(input.sourceRefs, 'sourceRefs');
   timestamp(input.formedAt, 'formedAt');
   assert(Array.isArray(input.items) && input.items.length > 0, 'workgraph items required');
   assert(Array.isArray(input.transitions), 'workgraph transitions must be an array');
 
-  const items = input.items.map((item) => verifySemanticFingerprint(item) ? item : createWorkItem(item, registry));
+  const items = input.items.map((item) => createWorkItem(item, registry));
   const byRef = new Map(items.map((item) => [item.workRef, item]));
   assert(byRef.size === items.length, 'workRef must be unique');
   for (const item of items) {
-    assert(item.projectRef === input.projectRef, `${item.workRef} project mismatch`);
     if (item.parentWorkRefOrNull !== null) assert(byRef.has(item.parentWorkRefOrNull), `${item.workRef} parent missing`);
     for (const dep of item.dependencyRefs) assert(byRef.has(dep), `${item.workRef} dependency missing: ${dep}`);
   }
-  for (const rootRef of input.rootWorkRefs) assert(byRef.has(rootRef), `rootWorkRef missing: ${rootRef}`);
+  const actualRoots = items.filter((item) => item.parentWorkRefOrNull === null).map((item) => item.workRef).sort();
+  const declaredRoots = [...input.rootWorkRefs].sort();
+  assert(JSON.stringify(actualRoots) === JSON.stringify(declaredRoots), 'rootWorkRefs must exactly equal parentless work items');
   assertAcyclic(items, (item) => item.parentWorkRefOrNull === null ? [] : [item.parentWorkRefOrNull], 'containment');
   assertAcyclic(items, (item) => item.dependencyRefs, 'dependency');
+
   const transitions = input.transitions.map((transition) => {
+    assertStoredFingerprintIfPresent(transition, 'transition');
     assert(transition.schemaVersion === TRANSITION_SCHEMA, 'transition schema mismatch');
     stableRef(transition.transitionRef, 'transitionRef');
     stableRef(transition.workRef, 'transition.workRef');
@@ -129,9 +151,31 @@ export function createWorkgraph(input, registry) {
     stableRef(transition.actorRef, 'transition.actorRef');
     refs(transition.sourceRefs, 'transition.sourceRefs');
     timestamp(transition.createdAt, 'transition.createdAt');
-    return verifySemanticFingerprint(transition) ? transition : withSemanticFingerprint(transition);
+    return withSemanticFingerprint(transition);
   });
   return withSemanticFingerprint({ ...input, items, transitions });
+}
+
+export function projectWorkRefs(project, graph) {
+  assert(verifySemanticFingerprint(project), 'project semanticFingerprint mismatch');
+  assert(verifySemanticFingerprint(graph), 'workgraph semanticFingerprint mismatch');
+  const byRef = new Map(graph.items.map((item) => [item.workRef, item]));
+  const children = new Map();
+  for (const item of graph.items) {
+    if (!item.parentWorkRefOrNull) continue;
+    if (!children.has(item.parentWorkRefOrNull)) children.set(item.parentWorkRefOrNull, []);
+    children.get(item.parentWorkRefOrNull).push(item.workRef);
+  }
+  const selected = new Set();
+  const pending = [...project.rootWorkRefs];
+  while (pending.length > 0) {
+    const workRef = pending.pop();
+    assert(byRef.has(workRef), `project rootWorkRef missing from Workgraph: ${workRef}`);
+    if (selected.has(workRef)) continue;
+    selected.add(workRef);
+    pending.push(...(children.get(workRef) ?? []));
+  }
+  return Object.freeze([...selected].sort());
 }
 
 export function requestTransition(graph, request, registry) {

@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import test from 'node:test';
 
-import { createProject, createWorkgraph, requestTransition, validateRegistry } from '../src/core/workgraph.mjs';
+import { createProject, createWorkgraph, projectWorkRefs, requestTransition, validateRegistry } from '../src/core/workgraph.mjs';
 import { verifySemanticFingerprint } from '../src/core/semantic.mjs';
 
 const read = (relative) => JSON.parse(fs.readFileSync(new URL(`../${relative}`, import.meta.url), 'utf8'));
@@ -15,16 +15,22 @@ test('work registry covers lifecycle states exactly once on the default Work Boa
   assert.equal(result.ok, true, result.errors.join('\n'));
 });
 
-test('source-managed VexWork foundation project and Workgraph are canonical', () => {
+test('one Workgraph can contain project work and unprojected parked work', () => {
   const project = createProject(projectSource);
   const graph = createWorkgraph(graphSource, registry);
-  assert.equal(project.projectRef, graph.projectRef);
-  assert.equal(graph.items.length, 6);
+  assert.equal(graph.items.length, 7);
+  assert.equal(projectWorkRefs(project, graph).length, 6);
   assert.equal(verifySemanticFingerprint(project), true);
   assert.equal(verifySemanticFingerprint(graph), true);
-  const potential = graph.items.find((item) => item.workClass === 'POTENTIAL');
-  assert.equal(potential.authorityDisposition, 'NO_AUTHORITY');
-  assert.equal(potential.effectDisposition, 'NO_EFFECTS');
+
+  const parked = graph.items.find((item) => item.workRef === 'work.vexlife-android.vexstream.not-yet-downloaded-filter');
+  assert.equal(parked.workClass, 'POTENTIAL');
+  assert.equal(parked.state, 'CAPTURED');
+  assert.equal(parked.workDisposition, 'PARKED');
+  assert.equal(parked.authorityDisposition, 'NO_AUTHORITY');
+  assert.equal(parked.effectDisposition, 'NO_EFFECTS');
+  assert.equal(parked.formationProcessRefOrNull, 'process.vexwork.capture-discovered-work');
+  assert.deepEqual(parked.nextProcessRefs, ['process.vexlife-android.feature-authoring']);
 });
 
 test('typed transition rejects stale observation and accepts exact current transition', () => {
@@ -38,7 +44,7 @@ test('typed transition rejects stale observation and accepts exact current trans
     actorRef: 'actor.test',
     sourceRefs: ['test.workgraph'],
     reason: 'stale test',
-    createdAt: '2026-10-21T01:46:00.000Z'
+    createdAt: '2026-10-21T02:20:00.000Z'
   }, registry), /stale Workgraph observation/);
 
   const result = requestTransition(graph, {
@@ -50,17 +56,22 @@ test('typed transition rejects stale observation and accepts exact current trans
     actorRef: 'actor.test',
     sourceRefs: ['test.workgraph'],
     reason: 'focused proof complete',
-    createdAt: '2026-10-21T01:46:01.000Z'
+    createdAt: '2026-10-21T02:20:01.000Z'
   }, registry);
   assert.equal(result.state, 'ACCEPTED');
   assert.equal(result.graph.items.find((item) => item.workRef === 'work.vexwork.foundation.portable-workgraph').state, 'COMPLETED');
   assert.equal(result.effects.providerMutationPerformed, false);
 });
 
-
 test('dependency cycles fail closed', () => {
   const cyclic = structuredClone(graphSource);
   cyclic.items[1].dependencyRefs = ['work.vexwork.foundation.work-board'];
   cyclic.items[2].dependencyRefs = ['work.vexwork.foundation.portable-workgraph'];
   assert.throws(() => createWorkgraph(cyclic, registry), /dependency cycle detected/);
+});
+
+test('declared Workgraph roots must include every parentless work item', () => {
+  const missingParkingRoot = structuredClone(graphSource);
+  missingParkingRoot.rootWorkRefs = ['work.vexwork.foundation.outcome'];
+  assert.throws(() => createWorkgraph(missingParkingRoot, registry), /rootWorkRefs must exactly equal parentless work items/);
 });

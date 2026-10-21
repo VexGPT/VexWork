@@ -3,10 +3,30 @@
   "registryRef": "registry.vexwork.work.001",
   "registryVersion": 1,
   "purpose": "Define portable VexWork lifecycle, work classes, authority/effect dispositions, and default Work Board lanes without making a provider or projection the work-state owner.",
-  "workClasses": ["POTENTIAL", "OUTCOME", "TASK", "DEFECT"],
-  "priorityClasses": ["IMMEDIATE", "HIGH", "NORMAL", "LOW"],
-  "authorityDispositions": ["NO_AUTHORITY", "AUTHORIZED_BOUNDED", "DENIED", "HELD_UNKNOWN"],
-  "effectDispositions": ["NO_EFFECTS", "EFFECTS_BOUND", "DENIED", "HELD_UNKNOWN"],
+  "workClasses": [
+    "POTENTIAL",
+    "OUTCOME",
+    "TASK",
+    "DEFECT"
+  ],
+  "priorityClasses": [
+    "IMMEDIATE",
+    "HIGH",
+    "NORMAL",
+    "LOW"
+  ],
+  "authorityDispositions": [
+    "NO_AUTHORITY",
+    "AUTHORIZED_BOUNDED",
+    "DENIED",
+    "HELD_UNKNOWN"
+  ],
+  "effectDispositions": [
+    "NO_EFFECTS",
+    "EFFECTS_BOUND",
+    "DENIED",
+    "HELD_UNKNOWN"
+  ],
   "lifecycleStates": [
     "CAPTURED",
     "NEEDS_CLARIFICATION",
@@ -31,40 +51,216 @@
     "HELD_UNKNOWN"
   ],
   "allowedTransitions": {
-    "CAPTURED": ["NEEDS_CLARIFICATION", "DECOMPOSED", "CANCELLED", "HELD_UNKNOWN"],
-    "NEEDS_CLARIFICATION": ["DECOMPOSED", "WAITING_HUMAN", "CANCELLED", "HELD_UNKNOWN"],
-    "DECOMPOSED": ["PLAN_VALIDATED", "NEEDS_CLARIFICATION", "BLOCKED", "CANCELLED"],
-    "PLAN_VALIDATED": ["WAITING_DEPENDENCIES", "READY", "BLOCKED", "CANCELLED"],
-    "WAITING_DEPENDENCIES": ["READY", "BLOCKED", "CANCELLED", "HELD_UNKNOWN"],
-    "READY": ["WAITING_RESOURCE", "CONTEXT_ADMITTED", "RUNNING", "CANCELLED", "HELD_UNKNOWN"],
-    "WAITING_RESOURCE": ["READY", "CONTEXT_ADMITTED", "CANCELLED", "HELD_UNKNOWN"],
-    "CONTEXT_ADMITTED": ["RUNNING", "WAITING_TOOL", "WAITING_HUMAN", "CANCELLED"],
-    "RUNNING": ["WAITING_TOOL", "WAITING_HUMAN", "VERIFYING", "FAILED_RECOVERABLE", "PAUSED_AT_CHECKPOINT", "CANCELLED"],
-    "WAITING_TOOL": ["RUNNING", "VERIFYING", "FAILED_RECOVERABLE", "CANCELLED", "HELD_UNKNOWN"],
-    "WAITING_HUMAN": ["READY", "RUNNING", "VERIFYING", "CANCELLED", "HELD_UNKNOWN"],
-    "VERIFYING": ["COMPLETED", "FAILED_RECOVERABLE", "BLOCKED", "CANCELLED", "HELD_UNKNOWN"],
-    "COMPLETED": ["CONVERGED", "CLOSED", "SUPERSEDED"],
-    "CONVERGED": ["CLOSED", "SUPERSEDED"],
-    "FAILED_RECOVERABLE": ["READY", "PAUSED_AT_CHECKPOINT", "BLOCKED", "CANCELLED"],
-    "PAUSED_AT_CHECKPOINT": ["READY", "CANCELLED", "HELD_UNKNOWN"],
-    "BLOCKED": ["READY", "CANCELLED", "HELD_UNKNOWN"],
-    "HELD_UNKNOWN": ["NEEDS_CLARIFICATION", "READY", "BLOCKED", "CANCELLED"],
+    "CAPTURED": [
+      "NEEDS_CLARIFICATION",
+      "DECOMPOSED",
+      "CANCELLED",
+      "HELD_UNKNOWN"
+    ],
+    "NEEDS_CLARIFICATION": [
+      "DECOMPOSED",
+      "WAITING_HUMAN",
+      "CANCELLED",
+      "HELD_UNKNOWN"
+    ],
+    "DECOMPOSED": [
+      "PLAN_VALIDATED",
+      "NEEDS_CLARIFICATION",
+      "BLOCKED",
+      "CANCELLED"
+    ],
+    "PLAN_VALIDATED": [
+      "WAITING_DEPENDENCIES",
+      "READY",
+      "BLOCKED",
+      "CANCELLED"
+    ],
+    "WAITING_DEPENDENCIES": [
+      "READY",
+      "BLOCKED",
+      "CANCELLED",
+      "HELD_UNKNOWN"
+    ],
+    "READY": [
+      "WAITING_RESOURCE",
+      "CONTEXT_ADMITTED",
+      "RUNNING",
+      "CANCELLED",
+      "HELD_UNKNOWN"
+    ],
+    "WAITING_RESOURCE": [
+      "READY",
+      "CONTEXT_ADMITTED",
+      "CANCELLED",
+      "HELD_UNKNOWN"
+    ],
+    "CONTEXT_ADMITTED": [
+      "RUNNING",
+      "WAITING_TOOL",
+      "WAITING_HUMAN",
+      "CANCELLED"
+    ],
+    "RUNNING": [
+      "WAITING_TOOL",
+      "WAITING_HUMAN",
+      "VERIFYING",
+      "FAILED_RECOVERABLE",
+      "PAUSED_AT_CHECKPOINT",
+      "CANCELLED"
+    ],
+    "WAITING_TOOL": [
+      "RUNNING",
+      "VERIFYING",
+      "FAILED_RECOVERABLE",
+      "CANCELLED",
+      "HELD_UNKNOWN"
+    ],
+    "WAITING_HUMAN": [
+      "READY",
+      "RUNNING",
+      "VERIFYING",
+      "CANCELLED",
+      "HELD_UNKNOWN"
+    ],
+    "VERIFYING": [
+      "COMPLETED",
+      "FAILED_RECOVERABLE",
+      "BLOCKED",
+      "CANCELLED",
+      "HELD_UNKNOWN"
+    ],
+    "COMPLETED": [
+      "CONVERGED",
+      "CLOSED",
+      "SUPERSEDED"
+    ],
+    "CONVERGED": [
+      "CLOSED",
+      "SUPERSEDED"
+    ],
+    "FAILED_RECOVERABLE": [
+      "READY",
+      "PAUSED_AT_CHECKPOINT",
+      "BLOCKED",
+      "CANCELLED"
+    ],
+    "PAUSED_AT_CHECKPOINT": [
+      "READY",
+      "CANCELLED",
+      "HELD_UNKNOWN"
+    ],
+    "BLOCKED": [
+      "READY",
+      "CANCELLED",
+      "HELD_UNKNOWN"
+    ],
+    "HELD_UNKNOWN": [
+      "NEEDS_CLARIFICATION",
+      "READY",
+      "BLOCKED",
+      "CANCELLED"
+    ],
     "CLOSED": [],
     "SUPERSEDED": [],
     "CANCELLED": []
   },
-  "terminalStates": ["CLOSED", "SUPERSEDED", "CANCELLED"],
-  "viewClasses": ["BOARD", "GRAPH", "TABLE", "ROADMAP", "FOCUS"],
+  "terminalStates": [
+    "CLOSED",
+    "SUPERSEDED",
+    "CANCELLED"
+  ],
+  "viewClasses": [
+    "BOARD",
+    "GRAPH",
+    "TABLE",
+    "ROADMAP",
+    "FOCUS"
+  ],
   "boardLanes": [
-    {"laneRef": "lane.work.intake", "label": "Intake", "lifecycleStates": ["CAPTURED", "NEEDS_CLARIFICATION", "DECOMPOSED"]},
-    {"laneRef": "lane.work.planned", "label": "Planned", "lifecycleStates": ["PLAN_VALIDATED", "WAITING_DEPENDENCIES"]},
-    {"laneRef": "lane.work.ready", "label": "Ready", "lifecycleStates": ["READY"]},
-    {"laneRef": "lane.work.active", "label": "Active", "lifecycleStates": ["CONTEXT_ADMITTED", "RUNNING", "WAITING_TOOL"]},
-    {"laneRef": "lane.work.waiting", "label": "Waiting", "lifecycleStates": ["WAITING_RESOURCE", "PAUSED_AT_CHECKPOINT"]},
-    {"laneRef": "lane.work.needs-human", "label": "Needs Human", "lifecycleStates": ["WAITING_HUMAN", "HELD_UNKNOWN"]},
-    {"laneRef": "lane.work.verify", "label": "Verify", "lifecycleStates": ["VERIFYING"]},
-    {"laneRef": "lane.work.attention", "label": "Attention", "lifecycleStates": ["BLOCKED", "FAILED_RECOVERABLE"]},
-    {"laneRef": "lane.work.done", "label": "Done", "lifecycleStates": ["COMPLETED", "CONVERGED", "CLOSED"]},
-    {"laneRef": "lane.work.archive", "label": "Archive", "lifecycleStates": ["SUPERSEDED", "CANCELLED"]}
+    {
+      "laneRef": "lane.work.intake",
+      "label": "Intake",
+      "lifecycleStates": [
+        "CAPTURED",
+        "NEEDS_CLARIFICATION",
+        "DECOMPOSED"
+      ]
+    },
+    {
+      "laneRef": "lane.work.planned",
+      "label": "Planned",
+      "lifecycleStates": [
+        "PLAN_VALIDATED",
+        "WAITING_DEPENDENCIES"
+      ]
+    },
+    {
+      "laneRef": "lane.work.ready",
+      "label": "Ready",
+      "lifecycleStates": [
+        "READY"
+      ]
+    },
+    {
+      "laneRef": "lane.work.active",
+      "label": "Active",
+      "lifecycleStates": [
+        "CONTEXT_ADMITTED",
+        "RUNNING",
+        "WAITING_TOOL"
+      ]
+    },
+    {
+      "laneRef": "lane.work.waiting",
+      "label": "Waiting",
+      "lifecycleStates": [
+        "WAITING_RESOURCE",
+        "PAUSED_AT_CHECKPOINT"
+      ]
+    },
+    {
+      "laneRef": "lane.work.needs-human",
+      "label": "Needs Human",
+      "lifecycleStates": [
+        "WAITING_HUMAN",
+        "HELD_UNKNOWN"
+      ]
+    },
+    {
+      "laneRef": "lane.work.verify",
+      "label": "Verify",
+      "lifecycleStates": [
+        "VERIFYING"
+      ]
+    },
+    {
+      "laneRef": "lane.work.attention",
+      "label": "Attention",
+      "lifecycleStates": [
+        "BLOCKED",
+        "FAILED_RECOVERABLE"
+      ]
+    },
+    {
+      "laneRef": "lane.work.done",
+      "label": "Done",
+      "lifecycleStates": [
+        "COMPLETED",
+        "CONVERGED",
+        "CLOSED"
+      ]
+    },
+    {
+      "laneRef": "lane.work.archive",
+      "label": "Archive",
+      "lifecycleStates": [
+        "SUPERSEDED",
+        "CANCELLED"
+      ]
+    }
+  ],
+  "workDispositions": [
+    "ACTIVE",
+    "PARKED"
   ]
 }

@@ -1,13 +1,14 @@
 {
   "schemaVersion": "vexwork.workgraph/v1",
   "graphRef": "workgraph.vexwork.foundation",
-  "projectRef": "project.vexwork.foundation",
-  "rootWorkRefs": ["work.vexwork.foundation.outcome"],
+  "rootWorkRefs": [
+    "work.vexwork.foundation.outcome",
+    "work.vexlife-android.vexstream.not-yet-downloaded-filter"
+  ],
   "items": [
     {
       "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vexwork.foundation.outcome",
-      "projectRef": "project.vexwork.foundation",
       "parentWorkRefOrNull": null,
       "label": "Establish VexWork foundation",
       "purpose": "Create one portable work-navigation owner that can relate projects and work across repositories while leaving target repository culture and source authority local.",
@@ -15,17 +16,24 @@
       "state": "RUNNING",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [],
-      "repositoryRefs": ["repo.vexwork"],
-      "sourceRefs": ["README.md", "docs/CULTURE.md"],
+      "repositoryRefs": [
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "README.md",
+        "docs/CULTURE.md"
+      ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-21T01:45:01.000Z",
-      "updatedAt": "2026-10-21T01:45:01.000Z"
+      "updatedAt": "2026-10-21T01:45:01.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vexwork.foundation.portable-workgraph",
-      "projectRef": "project.vexwork.foundation",
       "parentWorkRefOrNull": "work.vexwork.foundation.outcome",
       "label": "Portable Workgraph",
       "purpose": "Source-place portable work identity, lifecycle, relationships and deterministic transition behavior compatible with useful VexLife P0B distinctions.",
@@ -33,35 +41,55 @@
       "state": "VERIFYING",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [],
-      "repositoryRefs": ["repo.vexwork", "repo.vexlife"],
-      "sourceRefs": ["github.pull.vexlife.908", "blueprint/work-registry.json", "src/core/workgraph.mjs"],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "github.pull.vexlife.908",
+        "blueprint/work-registry.json",
+        "src/core/workgraph.mjs"
+      ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-21T01:45:02.000Z",
-      "updatedAt": "2026-10-21T01:45:02.000Z"
+      "updatedAt": "2026-10-21T01:45:02.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vexwork.foundation.work-board",
-      "projectRef": "project.vexwork.foundation",
       "parentWorkRefOrNull": "work.vexwork.foundation.outcome",
       "label": "Work Board",
       "purpose": "Provide the familiar Jira/kanban-shaped human projection while preserving Workgraph as the only work lifecycle owner.",
       "workClass": "TASK",
       "state": "VERIFYING",
       "priorityClass": "HIGH",
-      "dependencyRefs": ["work.vexwork.foundation.portable-workgraph"],
-      "repositoryRefs": ["repo.vexwork", "repo.vexlife"],
-      "sourceRefs": ["github.pull.vexlife.911", "docs/foundation/WORK-BOARD.md", "src/core/work-board.mjs"],
+      "dependencyRefs": [
+        "work.vexwork.foundation.portable-workgraph"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "github.pull.vexlife.911",
+        "docs/foundation/WORK-BOARD.md",
+        "src/core/work-board.mjs"
+      ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-21T01:45:03.000Z",
-      "updatedAt": "2026-10-21T01:45:03.000Z"
+      "updatedAt": "2026-10-21T01:45:03.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vexwork.foundation.repository-graph",
-      "projectRef": "project.vexwork.foundation",
       "parentWorkRefOrNull": "work.vexwork.foundation.outcome",
       "label": "Repository Graph",
       "purpose": "Make cross-repository work source-descendable through public/source-safe repository and culture-entry references without consolidating cultures.",
@@ -69,51 +97,112 @@
       "state": "VERIFYING",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
-      "repositoryRefs": ["repo.vexwork", "repo.vexlife", "repo.vexlife-android"],
-      "sourceRefs": ["docs/foundation/REPOSITORY-GRAPH.md", "blueprint/repository-registry.json"],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "docs/foundation/REPOSITORY-GRAPH.md",
+        "blueprint/repository-registry.json"
+      ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-21T01:45:04.000Z",
-      "updatedAt": "2026-10-21T01:45:04.000Z"
+      "updatedAt": "2026-10-21T01:45:04.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vexwork.foundation.idea-intake",
-      "projectRef": "project.vexwork.foundation",
       "parentWorkRefOrNull": "work.vexwork.foundation.outcome",
       "label": "Human idea intake",
       "purpose": "Let a human capture a potential into VexWork without converting that potential into implementation authority or a roadmap commitment.",
       "workClass": "POTENTIAL",
       "state": "CAPTURED",
       "priorityClass": "NORMAL",
-      "dependencyRefs": ["work.vexwork.foundation.portable-workgraph"],
-      "repositoryRefs": ["repo.vexwork"],
-      "sourceRefs": ["docs/CULTURE.md", "github.issue.vexlife.705"],
+      "dependencyRefs": [
+        "work.vexwork.foundation.portable-workgraph"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "docs/CULTURE.md",
+        "github.issue.vexlife.705"
+      ],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-21T01:45:05.000Z",
-      "updatedAt": "2026-10-21T01:45:05.000Z"
+      "updatedAt": "2026-10-21T01:45:05.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vexwork.foundation.runtime-persistence",
-      "projectRef": "project.vexwork.foundation",
       "parentWorkRefOrNull": "work.vexwork.foundation.outcome",
       "label": "Runtime persistence owner",
       "purpose": "Source-place portable private/current event, snapshot, writer and CURRENT-pointer semantics without using Git commit churn as the runtime database.",
       "workClass": "TASK",
       "state": "WAITING_DEPENDENCIES",
       "priorityClass": "NORMAL",
-      "dependencyRefs": ["work.vexwork.foundation.portable-workgraph"],
-      "repositoryRefs": ["repo.vexwork"],
-      "sourceRefs": ["docs/foundation/INDEX.md", "github.pull.vexlife.908", "github.pull.vexlife.909"],
+      "dependencyRefs": [
+        "work.vexwork.foundation.portable-workgraph"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "docs/foundation/INDEX.md",
+        "github.pull.vexlife.908",
+        "github.pull.vexlife.909"
+      ],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-21T01:45:06.000Z",
-      "updatedAt": "2026-10-21T01:45:06.000Z"
+      "updatedAt": "2026-10-21T01:45:06.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife-android.vexstream.not-yet-downloaded-filter",
+      "parentWorkRefOrNull": null,
+      "label": "VexStream Songs filter for Not yet downloaded",
+      "purpose": "Preserve the nice-to-have Songs-level filter that answers which songs on this device are still not downloaded, without making it part of MassDownload completion or authorizing implementation.",
+      "workClass": "POTENTIAL",
+      "state": "CAPTURED",
+      "workDisposition": "PARKED",
+      "priorityClass": "LOW",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "github.issue.vexlife-android.144",
+        "github.pull.vexlife-android.142",
+        "docs/process/CAPTURE-DISCOVERED-WORK.md"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+      "nextProcessRefs": [
+        "process.vexlife-android.feature-authoring"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-21T01:18:35.000Z",
+      "updatedAt": "2026-10-21T01:18:35.000Z"
     }
   ],
   "transitions": [],
-  "sourceRefs": ["project.vexwork.foundation", "docs/lineage/VEXLIFE-P0B.md"],
+  "sourceRefs": [
+    "project.vexwork.foundation",
+    "docs/lineage/VEXLIFE-P0B.md",
+    "github.issue.vexlife-android.144"
+  ],
   "formedAt": "2026-10-21T01:45:00.000Z"
 }

@@ -8,7 +8,8 @@ It is intentionally not a source-code monorepo and not another provider-owned ti
 
 ```text
 human intention
--> VexWork project / Workgraph
+-> VexWork Workgraph
+-> optional Project / Parking Lot / other bounded projection
 -> exact work neighborhood
 -> target repositories and their own current culture/source
 -> implementation / proof / provider evidence
@@ -23,9 +24,11 @@ For migration and conversational discoverability, **"Jira board"** is accepted a
 ```text
 VexWork     system / repository
 Workgraph   canonical work topology + lifecycle truth
-Project     human outcome grouping
+Project     human outcome grouping over Workgraph roots
 Work item   human name for one Workgraph node
-Work Board  board projection over Workgraph truth
+Work Board  project board projection over Workgraph truth
+Parking Lot intentionally deferred work projection
+Process Map reusable route to the rightful process owner
 Graph       relationship projection
 Focus       bounded one-item causal neighborhood
 ```
@@ -60,12 +63,15 @@ The root README is an entry router, not a second architecture manual.
 
 The first foundation establishes:
 
-- portable Workgraph lifecycle + transition validation;
+- one portable Workgraph that can contain project-bound and unprojected work, with lifecycle + transition validation;
 - `WorkState / WorkControl / WorkAct / WorkEffect / WorkBehavior` recognition grammar;
-- Work Board as a derived projection, with Board lanes kept distinct from lifecycle state;
+- Work Board as a Project-derived projection, with Board lanes kept distinct from lifecycle state;
+- Parking Lot as a provider-independent projection for intentionally deferred work;
+- a Process Map that records reusable work routes without becoming their executor or stealing target-repository process ownership;
 - a Repository Graph that points to repositories and their own entry/culture sources without consolidating their cultures;
 - provider references such as GitHub issues/PRs/commits as evidence/relations, never canonical work state;
-- a source-managed VexWork Foundation project that dogfoods the same contracts.
+- a source-managed VexWork Foundation Project that dogfoods the same contracts;
+- VexLife-Android issue #144 represented as a real parked VexWork potential, with GitHub retained as provider provenance and Android feature authoring as the future route if adopted.
 
 ## Try it
 
@@ -76,6 +82,7 @@ npm test
 npm run check
 npm run work:status -- --project projects/vexwork-foundation/project.json --graph projects/vexwork-foundation/workgraph.json --view projects/vexwork-foundation/board.view.json --format board
 npm run work:status -- --project projects/vexwork-foundation/project.json --graph projects/vexwork-foundation/workgraph.json --format graph
+npm run work:status -- --graph projects/vexwork-foundation/workgraph.json --format parking-lot
 ```
 
 The output is deterministic JSON suitable for people, agents, future UI surfaces, or adapters.
@@ -85,12 +92,16 @@ The output is deterministic JSON suitable for people, agents, future UI surfaces
 ```text
 VEXWORK != ROOT_AUTHORITY
 PROJECT != REPOSITORY
+WORK_ITEM != PROJECT_MEMBERSHIP
+PARKING_LOT != PROJECT
 WORK_ITEM != GITHUB_ISSUE
 GITHUB_ISSUE != CANONICAL_WORK_STATE
 WORK_BOARD != WORKGRAPH
 BOARD_LANE != WORK_STATE
 PROVIDER_STATE != WORK_STATE
 IDEA_CAPTURED != IMPLEMENTATION_AUTHORIZED
+PARKED != REJECTED
+PROCESS_MAP != PROCESS_EXECUTOR
 REPOSITORY_GRAPH != REPOSITORY_CULTURE_OWNER
 CROSS_REPO_REFERENCE != CROSS_REPO_SOURCE_AUTHORITY
 ```

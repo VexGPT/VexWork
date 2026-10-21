@@ -31,7 +31,7 @@ PROVIDER_GREEN != WORK_COMPLETE
 PROVIDER_CLOSED != WORK_CLOSED
 ```
 
-A migration adapter may intentionally create a Work item *from* a provider issue, but the import must create a VexWork identity and record the provider identity as provenance. It must not leave canonical identity permanently delegated to the provider.
+A migration adapter may intentionally create a Work item *from* a provider issue, but the import must create a VexWork identity and record the provider identity as provenance. It must not leave canonical identity permanently delegated to the provider. VexLife-Android issue #144 is the first concrete worked example: the provider issue remains provenance for `work.vexlife-android.vexstream.not-yet-downloaded-filter`.
 
 ## Reconciliation is separate
 

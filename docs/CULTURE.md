@@ -28,12 +28,13 @@ Provider systems are adapters and evidence sources around VexWork, not hidden se
 
 ## One work truth owner; bounded projections
 
-The Workgraph owns lifecycle truth and relationships between work items.
+The Workgraph owns lifecycle truth and relationships between work items. A Work item does not need Project membership to exist; Projects select bounded subgraphs from that larger truth.
 
 Consumers derive only what they need:
 
 ```text
 CURRENT Workgraph
+-> Project / Parking Lot selection
 -> Work Board
 -> Graph
 -> Table
@@ -92,6 +93,34 @@ READY_FOR_DISCUSSION != EFFECT_AUTHORITY
 ```
 
 Work classes can describe the meaning of an item; authority remains separately explicit.
+
+
+## Projects group work; they do not create it
+
+A Project is a human outcome grouping over Workgraph roots. Useful work may exist before anyone chooses a Project for it.
+
+```text
+WORK_ITEM != PROJECT_MEMBERSHIP
+PROJECT != WORKGRAPH
+PARKING_LOT != PROJECT
+```
+
+This matters for ideas discovered while another lane is being completed. Do not invent a fake project merely to store an item. Preserve the Work identity first; group it later when a real outcome earns that relationship.
+
+## Learn reusable process without preserving private reasoning
+
+When work reveals a repeatable way of handling a recurring question, future workers should not have to rediscover that route from chats or provider artifacts.
+
+Ask whether the observed process is truly reusable. If it is, identify the rightful process owner and source-place the smallest durable process there. VexWork records or references the route when work navigation needs it.
+
+```text
+ONE_OFF_MANEUVER != PROCESS_FOUNDATION
+REUSABLE_PROCESS != PRIVATE_CHAIN_OF_THOUGHT
+PROCESS_MAP != EXECUTOR
+PROCESS_REFERENCE != PROCESS_OWNERSHIP
+```
+
+VexWork owns processes about work-system behavior itself, such as capturing adjacent discovered work. Product repositories continue to own their own feature/source processes.
 
 ## Project before repository
 

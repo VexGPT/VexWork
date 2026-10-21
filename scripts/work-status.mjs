@@ -4,7 +4,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { createProject, createWorkgraph } from '../src/core/workgraph.mjs';
-import { createBoardView, projectWorkBoard, projectWorkGraph } from '../src/core/work-board.mjs';
+import { createBoardView, projectParkingLot, projectWorkBoard, projectWorkGraph } from '../src/core/work-board.mjs';
 
 const args = process.argv.slice(2);
 const value = (name) => {
@@ -16,10 +16,13 @@ const projectPath = value('--project');
 const graphPath = value('--graph');
 const format = value('--format');
 const viewPath = value('--view');
-if (!projectPath || !graphPath || !['board', 'graph'].includes(format)) {
-  console.error('Usage: npm run work:status -- --project <project.json> --graph <workgraph.json> --format board|graph [--view <board.view.json>]');
+const repositoryRefOrNull = value('--repository');
+if (!graphPath || !['board', 'graph', 'parking-lot'].includes(format)) {
+  console.error('Usage: npm run work:status -- --graph <workgraph.json> --format board|graph|parking-lot [--project <project.json>] [--view <board.view.json>] [--repository <repo.ref>]');
   process.exit(2);
 }
+if (['board', 'graph'].includes(format) && !projectPath) throw new Error(`${format} format requires --project`);
+if (format === 'board' && !viewPath) throw new Error('board format requires --view');
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const resolveSource = (relative) => {
@@ -30,14 +33,17 @@ const resolveSource = (relative) => {
 };
 const read = (relative) => JSON.parse(fs.readFileSync(resolveSource(relative), 'utf8'));
 const registry = read('blueprint/work-registry.json');
-const project = createProject(read(projectPath));
 const graph = createWorkgraph(read(graphPath), registry);
 
 let output;
-if (format === 'board') {
-  if (!viewPath) throw new Error('board format requires --view');
-  output = projectWorkBoard({ project, graph, view: createBoardView(read(viewPath), registry), registry });
+if (format === 'parking-lot') {
+  output = projectParkingLot({ graph, registry, repositoryRefOrNull });
 } else {
-  output = projectWorkGraph({ project, graph });
+  const project = createProject(read(projectPath));
+  if (format === 'board') {
+    output = projectWorkBoard({ project, graph, view: createBoardView(read(viewPath), registry), registry });
+  } else {
+    output = projectWorkGraph({ project, graph });
+  }
 }
 console.log(JSON.stringify(output, null, 2));

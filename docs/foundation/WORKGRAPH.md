@@ -4,13 +4,16 @@
 
 ## Purpose
 
-The Workgraph is the canonical portable representation of work relationships and lifecycle truth in VexWork.
+The Workgraph is the canonical portable representation of work relationships and lifecycle truth in VexWork. It is not owned by one Project; Projects select bounded subgraphs from it.
 
 It answers:
 
 ```text
-WHAT ARE WE TRYING TO DO?
-  Project + root work items
+WHAT WORK EXISTS ACROSS PROJECTS AND REPOSITORIES?
+  Workgraph root work items + descendants
+
+WHAT ARE WE TRYING TO DO IN ONE PROJECT?
+  Project rootWorkRefs[] -> bounded Workgraph subgraph
 
 WHAT WORK EXISTS?
   Work items
@@ -27,6 +30,12 @@ WHAT CONTAINS WHAT?
 WHICH REPOSITORIES DOES IT TOUCH?
   repositoryRefs
 
+HOW DID THIS WORK ENTER / WHERE SHOULD IT ROUTE NEXT?
+  formationProcessRefOrNull + nextProcessRefs[]
+
+IS IT INTENTIONALLY DEFERRED?
+  workDisposition = ACTIVE | PARKED
+
 WHAT IS TRUE NOW?
   WorkState + accepted transition history
 
@@ -38,7 +47,7 @@ WHAT EVIDENCE / SOURCE EXPLAINS IT?
 
 VexLife's Intent Workgraph established a 21-state lifecycle while solving a real product trajectory. VexWork retains those state names initially so existing VexLife Project/Board work can migrate without translating away meaningful distinctions.
 
-VexWork does **not** copy VexLife's intent/runtime/effect authority contracts wholesale. The portable Workgraph is narrower: work identity, relationships, lifecycle, explicit authority/effect disposition, repositories, sources, and transitions.
+VexWork does **not** copy VexLife's intent/runtime/effect authority contracts wholesale. The portable Workgraph is narrower: work identity, relationships, lifecycle, work disposition, explicit authority/effect disposition, repositories, process routes, sources, and transitions. VexWork also removes the predecessor assumption that one Workgraph must equal one Project.
 
 ## Work behavior grammar
 
@@ -76,6 +85,18 @@ DEFECT     observed undesired behavior requiring investigation/repair
 ```
 
 New classes should be added only when they answer a recurring question not represented by the existing set.
+
+## Project membership and parking are separate
+
+A Work item may exist without being in any Project. `PARKED` is an intentional work disposition, not a lifecycle terminal state.
+
+```text
+WORK_ITEM != PROJECT_MEMBERSHIP
+WORK_DISPOSITION != WORK_STATE
+PARKED != REJECTED
+PARKED != BLOCKED
+PARKED != AUTHORITY
+```
 
 ## State and authority are separate
 
