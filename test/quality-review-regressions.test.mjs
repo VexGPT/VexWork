@@ -120,15 +120,15 @@ test('requestTransition refuses a correctly fingerprinted Workgraph with invalid
   assert.equal(verifySemanticFingerprint(fingerprintedInvalid), true);
 
   assert.throws(() => requestTransition(fingerprintedInvalid, {
-    workRef: 'work.vexwork.foundation.portable-workgraph',
+    workRef: 'work.vexwork.foundation.outcome',
     transitionRef: 'transition.test.other-work',
     expectedGraphFingerprint: fingerprintedInvalid.semanticFingerprint,
-    expectedState: 'VERIFYING',
-    nextState: 'COMPLETED',
+    expectedState: 'RUNNING',
+    nextState: 'VERIFYING',
     actorRef: 'actor.test',
     sourceRefs: ['test.quality-review'],
     reason: 'must reject invalid graph before deriving new truth',
-    createdAt: '2026-10-21T02:41:00.000Z',
+    createdAt: '2026-10-21T04:01:00.000Z',
   }, registry), /transition CAPTURED -> CLOSED not allowed/);
 });
 
