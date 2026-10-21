@@ -24,6 +24,9 @@ export function projectPublicWorkDashboard({ project, board, parkingLot }) {
   if (!verifySemanticFingerprint(parkingLot)) throw new TypeError('parking lot semanticFingerprint mismatch');
   if (board.projectRef !== project.projectRef) throw new TypeError('project/board identity mismatch');
   if (board.graphRef !== parkingLot.graphRef) throw new TypeError('board/parking Workgraph identity mismatch');
+  if (board.graphSemanticFingerprint !== parkingLot.graphSemanticFingerprint) {
+    throw new TypeError('board/parking Workgraph semantic version mismatch');
+  }
   if (board.effects !== false || board.executionAuthority !== 'NONE') throw new TypeError('board projection must be read-only');
   if (parkingLot.effects !== false || parkingLot.executionAuthority !== 'NONE') throw new TypeError('parking lot projection must be read-only');
 

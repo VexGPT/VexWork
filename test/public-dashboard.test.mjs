@@ -40,6 +40,25 @@ test('public dashboard is a read-only composition of Board and Parking Lot truth
   );
 });
 
+test('public dashboard rejects Board and Parking Lot from different semantic versions of the same Workgraph', () => {
+  const nextGraphSource = structuredClone(read('projects/vexwork-foundation/workgraph.json'));
+  const parked = nextGraphSource.items.find((item) => item.workRef === 'work.vexlife.connected-services.guided-onboarding');
+  parked.updatedAt = '2026-10-21T06:23:28.000Z';
+
+  const nextGraph = createWorkgraph(nextGraphSource, registry);
+  assert.equal(nextGraph.graphRef, graph.graphRef);
+  assert.notEqual(nextGraph.semanticFingerprint, graph.semanticFingerprint);
+
+  const nextParkingLot = projectParkingLot({ graph: nextGraph, registry });
+  assert.equal(nextParkingLot.graphRef, board.graphRef);
+  assert.notEqual(nextParkingLot.graphSemanticFingerprint, board.graphSemanticFingerprint);
+
+  assert.throws(
+    () => projectPublicWorkDashboard({ project, board, parkingLot: nextParkingLot }),
+    /board\/parking Workgraph semantic version mismatch/,
+  );
+});
+
 test('checked-in public dashboard exactly matches the canonical projection', () => {
   const dashboard = projectPublicWorkDashboard({ project, board, parkingLot });
   assert.deepEqual(read('public/work-dashboard.json'), dashboard);
