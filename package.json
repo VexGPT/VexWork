@@ -7,8 +7,10 @@
   "scripts": {
     "test": "node --test",
     "check": "node scripts/work-check.mjs",
+    "dashboard:build": "node scripts/build-public-dashboard.mjs",
+    "dashboard:check": "node scripts/build-public-dashboard.mjs --check",
     "work:status": "node scripts/work-status.mjs",
-    "review:deterministic": "npm test && npm run check",
+    "review:deterministic": "npm test && npm run check && npm run dashboard:check",
     "review": "npm run review:deterministic"
   },
   "engines": {

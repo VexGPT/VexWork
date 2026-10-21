@@ -88,6 +88,15 @@ npm run work:status -- --graph projects/vexwork-foundation/workgraph.json --form
 
 The output is deterministic JSON suitable for people, agents, future UI surfaces, or adapters.
 
+The first stable public read projection is checked in at `public/work-dashboard.json`. It composes the canonical VexWork Foundation Work Board and global Parking Lot without exposing the raw Workgraph as a UI contract:
+
+```bash
+npm run dashboard:build
+npm run dashboard:check
+```
+
+Public consumers may render that artifact; they do not become VexWork truth owners.
+
 ## Permanent boundaries
 
 ```text

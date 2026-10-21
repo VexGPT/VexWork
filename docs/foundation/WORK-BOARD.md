@@ -43,8 +43,33 @@ Archive      SUPERSEDED / CANCELLED
 
 These lanes preserve the VexLife P0B board vocabulary for migration continuity.
 
-
 `laneRefOrder` is ordering only. A valid Board view must name every registry lane exactly once. It cannot duplicate a lane or omit one to change Project membership visibility. If intentional filtering is later needed, that must be modeled as a separate projection question rather than smuggled through ordering.
+
+## Public read projection
+
+`public/work-dashboard.json` is the first deliberately small public read model over VexWork truth.
+
+It composes:
+
+```text
+canonical Project
++ canonical Work Board projection
++ canonical Parking Lot projection
+-> public dashboard JSON
+```
+
+The public artifact exposes only the fields needed for a human-facing dashboard: Project identity/purpose, Board lane/card meaning, Parking Lot items, simple counts, and the explicit no-effects boundary.
+
+```text
+PUBLIC_DASHBOARD != WORKGRAPH
+PUBLIC_DASHBOARD != RUNTIME_CURRENTNESS_OWNER
+PUBLIC_DASHBOARD != EFFECT_AUTHORITY
+VEXTREME_VIEW != VEXWORK_TRUTH_OWNER
+```
+
+A public consumer such as Vextreme may render this artifact without parsing VexWork's source-managed Workgraph or becoming another work-state owner.
+
+`npm run dashboard:build` regenerates the artifact. `npm run dashboard:check` fails when the checked-in projection drifts from current source truth, and the aggregate deterministic review includes that check.
 
 ## Non-collapse
 
@@ -62,6 +87,8 @@ A future interactive Board should emit a typed `WorkAct` / transition request bo
 ## Parking Lot is a sibling projection
 
 The Parking Lot is **not** another Board lane and not a Project. It projects intentionally parked work from the larger Workgraph. See `PARKING-LOT.md`.
+
+The first public dashboard deliberately renders Parking Lot beside the Project Board rather than forcing parked work into Project membership merely for visibility.
 
 ## Views
 
