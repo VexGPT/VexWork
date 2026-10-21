@@ -23,6 +23,12 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(verifySemanticFingerprint(project), true);
   assert.equal(verifySemanticFingerprint(graph), true);
 
+  assert.equal(graph.items.find((item) => item.workRef === 'work.vexwork.foundation.portable-workgraph').state, 'COMPLETED');
+  assert.equal(graph.items.find((item) => item.workRef === 'work.vexwork.foundation.work-board').state, 'COMPLETED');
+  assert.equal(graph.items.find((item) => item.workRef === 'work.vexwork.foundation.repository-graph').state, 'COMPLETED');
+  assert.equal(graph.items.find((item) => item.workRef === 'work.vexwork.foundation.runtime-persistence').state, 'READY');
+  assert.equal(graph.transitions.length, 4);
+
   const parked = graph.items.find((item) => item.workRef === 'work.vexlife-android.vexstream.not-yet-downloaded-filter');
   assert.equal(parked.workClass, 'POTENTIAL');
   assert.equal(parked.state, 'CAPTURED');
@@ -36,30 +42,30 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
 test('typed transition rejects stale observation and accepts exact current transition', () => {
   const graph = createWorkgraph(graphSource, registry);
   assert.throws(() => requestTransition(graph, {
-    workRef: 'work.vexwork.foundation.portable-workgraph',
+    workRef: 'work.vexwork.foundation.outcome',
     transitionRef: 'transition.test.stale',
     expectedGraphFingerprint: '0'.repeat(64),
-    expectedState: 'VERIFYING',
-    nextState: 'COMPLETED',
+    expectedState: 'RUNNING',
+    nextState: 'VERIFYING',
     actorRef: 'actor.test',
     sourceRefs: ['test.workgraph'],
     reason: 'stale test',
-    createdAt: '2026-10-21T02:20:00.000Z'
+    createdAt: '2026-10-21T04:00:00.000Z'
   }, registry), /stale Workgraph observation/);
 
   const result = requestTransition(graph, {
-    workRef: 'work.vexwork.foundation.portable-workgraph',
-    transitionRef: 'transition.test.complete',
+    workRef: 'work.vexwork.foundation.outcome',
+    transitionRef: 'transition.test.verify-outcome',
     expectedGraphFingerprint: graph.semanticFingerprint,
-    expectedState: 'VERIFYING',
-    nextState: 'COMPLETED',
+    expectedState: 'RUNNING',
+    nextState: 'VERIFYING',
     actorRef: 'actor.test',
     sourceRefs: ['test.workgraph'],
-    reason: 'focused proof complete',
-    createdAt: '2026-10-21T02:20:01.000Z'
+    reason: 'exact-current transition proof',
+    createdAt: '2026-10-21T04:00:01.000Z'
   }, registry);
   assert.equal(result.state, 'ACCEPTED');
-  assert.equal(result.graph.items.find((item) => item.workRef === 'work.vexwork.foundation.portable-workgraph').state, 'COMPLETED');
+  assert.equal(result.graph.items.find((item) => item.workRef === 'work.vexwork.foundation.outcome').state, 'VERIFYING');
   assert.equal(result.effects.providerMutationPerformed, false);
 });
 
