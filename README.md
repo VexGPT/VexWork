@@ -70,6 +70,7 @@ The first foundation establishes:
 - a Process Map that records reusable work routes without becoming their executor or stealing target-repository process ownership;
 - a Repository Graph that points to repositories and their own entry/culture sources without consolidating their cultures;
 - provider references such as GitHub issues/PRs/commits as evidence/relations, never canonical work state;
+- portable Workgraph runtime persistence with immutable snapshots, one atomic CURRENT pointer, exact-current CAS, serialized writers, and explicit abandoned-writer recovery under a caller-supplied private store root;
 - a source-managed VexWork Foundation Project that dogfoods the same contracts;
 - VexLife-Android issue #144 represented as a real parked VexWork potential, with GitHub retained as provider provenance and Android feature authoring as the future route if adopted.
 
