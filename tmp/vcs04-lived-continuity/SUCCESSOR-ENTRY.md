@@ -7,18 +7,21 @@
 Read in this order:
 
 ```text
-1. INTENT-AND-ACCEPTANCE.md
-2. THRESHOLD-A012.md
-3. END-TO-END-ROOM-PATH.md
-4. A012-RETURN.md
-5. SOURCE-OWNER-MAP.md
-6. A012-CODE-INDEX.md
-7. harness/A012/README.md
-8. exact harness code only where needed
-9. live target-repository entry/source for the next effect
+1. PROGRAM-TRAJECTORY.md
+2. INTENT-AND-ACCEPTANCE.md
+3. POST-A012-PHASES.md
+4. THRESHOLD-A012.md
+5. END-TO-END-ROOM-PATH.md
+6. A012-RETURN.md
+7. SOURCE-OWNER-MAP.md
+8. LESSONS-TO-PRESERVE.md
+9. A012-CODE-INDEX.md
+10. harness/A012/README.md
+11. exact harness code only where needed
+12. live target-repository entry/source for the next effect
 ```
 
-You should not need predecessor chat to understand what this lane is trying to accomplish or why A012 matters.
+You should not need predecessor chat to understand the program end goal, VCS-04 completion contract, current phase, lessons already learned, or why A012 matters.
 
 ## Human intention
 
