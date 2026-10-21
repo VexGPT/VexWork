@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "vexlocalbridge.vcs04-installed-read-lived-a012-static-qualification/v1",
+  "wrapperSha256": "5f416a18f4c1d2fbc2da2987165ebee17c0c7e3fd91e3fd9fe4f3b9e8c83533e",
+  "wrapperBytes": 28849,
+  "sourceCurrentness": {
+    "sdkMain": "b4d427564409989e8f839066accd17ec4c790724",
+    "vexLifeMain": "0fbaeb7c918ebdfc7af5389220d5bf081a906702",
+    "androidMain": "30ecfe22156f6bb4b565eda990c72feff48a3866"
+  },
+  "predecessor": {
+    "returnSha256": "a40fbecb8478661596e992d4fb7d5e52efa149af268578d4a759e1b51bcfa714",
+    "firstFailure": "TAILSCALE_FOREGROUND_OWNER_UNAVAILABLE",
+    "ownerMatchCount": 0,
+    "processObservationWeakness": "ordinary-width ps + path regex"
+  },
+  "checks": {
+    "zipShaMatches": true,
+    "zipCrc": true,
+    "memberCount": true,
+    "noSymlinks": true,
+    "manifestParity": true,
+    "a012Identity": true,
+    "psWideArgs": true,
+    "basenameAware": true,
+    "macAppBinaryAware": true,
+    "tokenMatchServe": true,
+    "tokenMatchYes": true,
+    "tokenMatchPort": true,
+    "tokenMatchTarget": true,
+    "rejectBgAndFunnel": true,
+    "candidateDiagnostics": true,
+    "sigtermSigkillPreserved": true,
+    "noServeReset": true,
+    "noFunnelMutation": true,
+    "heartbeatsPreserved": true,
+    "heldSendModelRestart": true,
+    "nodeCheck": true,
+    "runnerBashSyntax": true,
+    "exactCommandBashSyntax": true
+  },
+  "nodeCheckStderr": "",
+  "allPass": true
+}
