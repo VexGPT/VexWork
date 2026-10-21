@@ -148,7 +148,7 @@
       "label": "Runtime persistence owner",
       "purpose": "Source-place portable private/current event, snapshot, writer and CURRENT-pointer semantics without using Git commit churn as the runtime database.",
       "workClass": "TASK",
-      "state": "VERIFYING",
+      "state": "COMPLETED",
       "priorityClass": "NORMAL",
       "dependencyRefs": [
         "work.vexwork.foundation.portable-workgraph"
@@ -164,7 +164,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-21T01:45:06.000Z",
-      "updatedAt": "2026-10-21T04:20:02.000Z",
+      "updatedAt": "2026-10-21T05:51:43.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -284,6 +284,20 @@
         "test/workgraph-runtime.test.mjs"
       ],
       "createdAt": "2026-10-21T04:20:02.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.foundation.runtime-persistence.completed.pr3",
+      "workRef": "work.vexwork.foundation.runtime-persistence",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "PR #3 merged after exact-head Independent QA and Formal Semantic Review; portable runtime persistence foundation accepted.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.3",
+        "github.commit.vexwork.bc73c72071186673290b4ae6f8419bb9366b42b3"
+      ],
+      "createdAt": "2026-10-21T05:51:43.000Z"
     }
   ],
   "sourceRefs": [
