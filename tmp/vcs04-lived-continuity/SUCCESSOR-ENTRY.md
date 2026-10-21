@@ -16,9 +16,10 @@ Read in this order:
 7. SOURCE-OWNER-MAP.md
 8. LESSONS-TO-PRESERVE.md
 9. A012-CODE-INDEX.md
-10. harness/A012/README.md
-11. exact harness code only where needed
-12. live target-repository entry/source for the next effect
+10. FRESH-SUCCESSOR-SELF-CHECK.md
+11. harness/A012/README.md
+12. exact harness code only where needed
+13. live target-repository entry/source for the next effect
 ```
 
 You should not need predecessor chat to understand the program end goal, VCS-04 completion contract, current phase, lessons already learned, or why A012 matters.
