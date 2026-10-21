@@ -1,0 +1,34 @@
+name: PR 9 exact VexWork review proof
+
+on:
+  push:
+    branches:
+      - VXG-102126-pr9-review-proof
+
+permissions:
+  contents: read
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact PR candidate
+        uses: actions/checkout@v4
+        with:
+          ref: 9416b87fc90f636f5d5d74668febcc2335a58627
+          fetch-depth: 0
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Bind exact candidate
+        run: |
+          echo "HEAD=$(git rev-parse HEAD)"
+          echo "TREE=$(git rev-parse HEAD^{tree})"
+          test "$(git rev-parse HEAD)" = "9416b87fc90f636f5d5d74668febcc2335a58627"
+          test "$(git rev-parse HEAD^{tree})" = "7fe2ae11affe5925aea73ad5394fa5eb1c344b82"
+
+      - name: Run exact VexWork review
+        run: npm run review
