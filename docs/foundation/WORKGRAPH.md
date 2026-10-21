@@ -85,6 +85,13 @@ latest stored nextState disagrees with the Work item's current state
 
 A Work item may legitimately have no stored transition history in a source-managed snapshot. Once history is present for that Work item, the stored chain must be internally lawful and converge on current WorkState.
 
+Any behavior that derives new Workgraph lifecycle truth must first admit the complete supplied Workgraph through the same semantic validation boundary. A valid `semanticFingerprint` proves value identity; it does not substitute for lifecycle, relationship, or history validation.
+
+```text
+SEMANTIC_FINGERPRINT_VALID != WORKGRAPH_SEMANTICALLY_VALID
+STATE_CHANGE_ENTRY -> COMPLETE_WORKGRAPH_VALIDATION -> EXACT_CURRENT_CHECKS -> DERIVE_NEXT_TRUTH
+```
+
 ## Work classes
 
 The initial registry uses a deliberately small set:

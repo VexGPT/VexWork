@@ -365,12 +365,13 @@ A fresh QA reviewer of VexWork PR #1 should actively try to falsify at least the
 6. Unknown repository/process refs fail closed.
 7. Stale Workgraph transition requests fail closed.
 8. Stored transition history rejects illegal edges, duplicate transition identities, broken chains, and current-state contradictions.
-9. Containment/dependency cycles fail closed.
-10. Board lane ordering is an exact unique permutation and cannot silently duplicate or suppress Project work.
-11. Process Map points to Android feature authoring without taking ownership of it.
-12. "Jira board" remains a human alias for Work Board rather than a dependency or namespace.
-13. A fresh worker can find the above from README -> AGENTS -> Foundation/Process sources.
-14. The PR does not claim live persistence, interactive UI, provider reconciliation, or a production-current Workgraph writer.
+9. A correctly fingerprinted but semantically invalid Workgraph cannot bypass complete Workgraph validation through `requestTransition` or another state-changing behavior entry.
+10. Containment/dependency cycles fail closed.
+11. Board lane ordering is an exact unique permutation and cannot silently duplicate or suppress Project work.
+12. Process Map points to Android feature authoring without taking ownership of it.
+13. "Jira board" remains a human alias for Work Board rather than a dependency or namespace.
+14. A fresh worker can find the above from README -> AGENTS -> Foundation/Process sources.
+15. The PR does not claim live persistence, interactive UI, provider reconciliation, or a production-current Workgraph writer.
 ```
 
 If any of those is false, the review should not return `CLEAR` merely because the test suite is green.

@@ -4,6 +4,7 @@ import test from 'node:test';
 
 import { createWorkgraph, requestTransition } from '../src/core/workgraph.mjs';
 import { createBoardView } from '../src/core/work-board.mjs';
+import { verifySemanticFingerprint, withSemanticFingerprint } from '../src/core/semantic.mjs';
 
 const read = (relative) => JSON.parse(fs.readFileSync(new URL(`../${relative}`, import.meta.url), 'utf8'));
 const registry = read('blueprint/work-registry.json');
@@ -97,3 +98,37 @@ test('Board lane order is an exact unique permutation, not a filtering mechanism
   duplicated.laneRefOrder[duplicated.laneRefOrder.length - 1] = duplicated.laneRefOrder[0];
   assert.throws(() => createBoardView(duplicated, registry), /exact unique permutation/);
 });
+
+test('requestTransition refuses a correctly fingerprinted Workgraph with invalid stored history', () => {
+  const valid = createWorkgraph(graphSource, registry);
+  const invalid = structuredClone(valid);
+
+  invalid.items[4] = withSemanticFingerprint({
+    ...invalid.items[4],
+    state: 'CLOSED',
+    updatedAt: '2026-10-21T02:40:00.000Z',
+  });
+  invalid.transitions = [
+    storedTransition({
+      transitionRef: 'transition.test.invalid-history',
+      nextState: 'CLOSED',
+      createdAt: '2026-10-21T02:40:00.000Z',
+    }),
+  ];
+  delete invalid.semanticFingerprint;
+  const fingerprintedInvalid = withSemanticFingerprint(invalid);
+  assert.equal(verifySemanticFingerprint(fingerprintedInvalid), true);
+
+  assert.throws(() => requestTransition(fingerprintedInvalid, {
+    workRef: 'work.vexwork.foundation.portable-workgraph',
+    transitionRef: 'transition.test.other-work',
+    expectedGraphFingerprint: fingerprintedInvalid.semanticFingerprint,
+    expectedState: 'VERIFYING',
+    nextState: 'COMPLETED',
+    actorRef: 'actor.test',
+    sourceRefs: ['test.quality-review'],
+    reason: 'must reject invalid graph before deriving new truth',
+    createdAt: '2026-10-21T02:41:00.000Z',
+  }, registry), /transition CAPTURED -> CLOSED not allowed/);
+});
+

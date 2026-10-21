@@ -197,17 +197,19 @@ export function projectWorkRefs(project, graph) {
 
 export function requestTransition(graph, request, registry) {
   assert(verifySemanticFingerprint(graph), 'current Workgraph semanticFingerprint mismatch');
+  const currentGraph = createWorkgraph(graph, registry);
+  assert(currentGraph.semanticFingerprint === graph.semanticFingerprint, 'validated Workgraph semanticFingerprint mismatch');
   stableRef(request.workRef, 'request.workRef');
   stableRef(request.transitionRef, 'request.transitionRef');
   stableRef(request.actorRef, 'request.actorRef');
   refs(request.sourceRefs, 'request.sourceRefs');
   timestamp(request.createdAt, 'request.createdAt');
-  assert(request.expectedGraphFingerprint === graph.semanticFingerprint, 'stale Workgraph observation');
-  assert(!graph.transitions.some((transition) => transition.transitionRef === request.transitionRef), `transitionRef already used ${request.transitionRef}`);
+  assert(request.expectedGraphFingerprint === currentGraph.semanticFingerprint, 'stale Workgraph observation');
+  assert(!currentGraph.transitions.some((transition) => transition.transitionRef === request.transitionRef), `transitionRef already used ${request.transitionRef}`);
 
-  const index = graph.items.findIndex((item) => item.workRef === request.workRef);
+  const index = currentGraph.items.findIndex((item) => item.workRef === request.workRef);
   assert(index >= 0, `unknown workRef ${request.workRef}`);
-  const current = graph.items[index];
+  const current = currentGraph.items[index];
   assert(request.expectedState === current.state, 'stale WorkState observation');
   assert((registry.allowedTransitions[current.state] ?? []).includes(request.nextState), `transition ${current.state} -> ${request.nextState} not allowed`);
 
@@ -228,19 +230,19 @@ export function requestTransition(graph, request, registry) {
     state: request.nextState,
     updatedAt: request.createdAt,
   });
-  const items = [...graph.items];
+  const items = [...currentGraph.items];
   items[index] = nextItem;
   const nextGraphCore = {
-    ...graph,
+    ...currentGraph,
     items,
-    transitions: [...graph.transitions, transition],
+    transitions: [...currentGraph.transitions, transition],
   };
   delete nextGraphCore.semanticFingerprint;
   const nextGraph = withSemanticFingerprint(nextGraphCore);
   return Object.freeze({
     schemaVersion: 'vexwork.work-transition-result/v1',
     state: 'ACCEPTED',
-    priorGraphFingerprint: graph.semanticFingerprint,
+    priorGraphFingerprint: currentGraph.semanticFingerprint,
     nextGraphFingerprint: nextGraph.semanticFingerprint,
     transition,
     graph: nextGraph,
