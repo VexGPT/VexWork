@@ -65,6 +65,19 @@ INSTALLED APP
 
 ## Failure evidence
 
+### Raw firstFailure is not semantic Android-traffic proof
+
+The receipt says:
+
+```text
+firstFailure=LIVED_GATEWAY_INTEGRATION_FAILED
+```
+
+But the harness's screen-failure classifier considered `gatewayEvents.length > 0` sufficient for that branch.
+
+The only gateway event was the harness-owned status probe below. Therefore the failure name must not be used to claim Android gateway traffic.
+
+
 UI:
 
 ```text
@@ -111,6 +124,22 @@ Mac original Tailscale running state=PRESERVED
 ```
 
 The fallback `serve ... off` cleanup returned status 1 after the foreground client stop. Do not interpret that alone as a remaining live Serve effect; re-observe provider state before recovery.
+
+## Immediate resume coordinate
+
+```text
+foreground:
+  VexLife-Android transport/session diagnostics
+
+first question:
+  why does HttpsVexPrivateHomeGatewayHttpTransport / VexPrivateHomeGatewayConnection
+  fail before POST /v1/home/session/challenge reaches the gateway?
+
+held parallel question:
+  where does real fresh-user Home setup invoke VexLife family-host-runtime::hostFamily()?
+```
+
+Do not rerun A012 unchanged.
 
 ## Threshold disposition
 
