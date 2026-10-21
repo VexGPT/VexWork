@@ -8,7 +8,7 @@ import { createBoardView, projectParkingLot, projectWorkBoard, projectWorkGraph 
 const read = (relative) => JSON.parse(fs.readFileSync(new URL(`../${relative}`, import.meta.url), 'utf8'));
 const registry = read('blueprint/work-registry.json');
 const project = createProject(read('projects/vexwork-foundation/project.json'));
-const graph = createWorkgraph(read('projects/vexwork-foundation/workgraph.json'), registry);
+const graph = createWorkgraph(read('workgraphs/public.json'), registry);
 const view = createBoardView(read('projects/vexwork-foundation/board.view.json'), registry);
 
 test('Project Work Board projects only the Project subgraph without becoming lifecycle authority', () => {

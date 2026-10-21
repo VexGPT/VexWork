@@ -8,7 +8,7 @@ import { verifySemanticFingerprint } from '../src/core/semantic.mjs';
 const read = (relative) => JSON.parse(fs.readFileSync(new URL(`../${relative}`, import.meta.url), 'utf8'));
 const registry = read('blueprint/work-registry.json');
 const projectSource = read('projects/vexwork-foundation/project.json');
-const graphSource = read('projects/vexwork-foundation/workgraph.json');
+const graphSource = read('workgraphs/public.json');
 
 test('work registry covers lifecycle states exactly once on the default Work Board', () => {
   const result = validateRegistry(registry);

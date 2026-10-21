@@ -83,9 +83,9 @@ Requires a current Node.js runtime; there are no package dependencies.
 ```bash
 npm test
 npm run check
-npm run work:status -- --project projects/vexwork-foundation/project.json --graph projects/vexwork-foundation/workgraph.json --view projects/vexwork-foundation/board.view.json --format board
-npm run work:status -- --project projects/vexwork-foundation/project.json --graph projects/vexwork-foundation/workgraph.json --format graph
-npm run work:status -- --graph projects/vexwork-foundation/workgraph.json --format parking-lot
+npm run work:status -- --project projects/vexwork-foundation/project.json --graph workgraphs/public.json --view projects/vexwork-foundation/board.view.json --format board
+npm run work:status -- --project projects/vexwork-foundation/project.json --graph workgraphs/public.json --format graph
+npm run work:status -- --graph workgraphs/public.json --format parking-lot
 ```
 
 The output is deterministic JSON suitable for people, agents, future UI surfaces, or adapters.

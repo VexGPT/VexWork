@@ -9,7 +9,7 @@ import { createBoardView, projectParkingLot, projectWorkBoard } from '../src/cor
 const read = (relative) => JSON.parse(fs.readFileSync(new URL(`../${relative}`, import.meta.url), 'utf8'));
 const registry = read('blueprint/work-registry.json');
 const project = createProject(read('projects/vexwork-foundation/project.json'));
-const graph = createWorkgraph(read('projects/vexwork-foundation/workgraph.json'), registry);
+const graph = createWorkgraph(read('workgraphs/public.json'), registry);
 const view = createBoardView(read('projects/vexwork-foundation/board.view.json'), registry);
 const board = projectWorkBoard({ project, graph, view, registry });
 const parkingLot = projectParkingLot({ graph, registry });
@@ -41,7 +41,7 @@ test('public dashboard is a read-only composition of Board and Parking Lot truth
 });
 
 test('public dashboard rejects Board and Parking Lot from different semantic versions of the same Workgraph', () => {
-  const nextGraphSource = structuredClone(read('projects/vexwork-foundation/workgraph.json'));
+  const nextGraphSource = structuredClone(read('workgraphs/public.json'));
   const parked = nextGraphSource.items.find((item) => item.workRef === 'work.vexlife.connected-services.guided-onboarding');
   parked.updatedAt = '2026-10-21T06:23:28.000Z';
 
