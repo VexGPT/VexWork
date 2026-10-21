@@ -1,0 +1,152 @@
+--- /mnt/data/a011_pkg/VEXLIFE-CONNECTED-SERVICES-VCS04-INSTALLED-READ-LIVED-A011/task.mjs	2026-10-21 08:00:21.564945511 +0000
++++ /mnt/data/vcs04_lived_a012/VEXLIFE-CONNECTED-SERVICES-VCS04-INSTALLED-READ-LIVED-A012/task.mjs	2026-10-21 08:03:14.542201987 +0000
+@@ -7,8 +7,8 @@
+ import { createRequire } from 'node:module';
+ 
+ const TASK_REF = 'task.vexlife.connected-services.vcs04.installed-read-lived';
+-const ATTEMPT_REF = 'attempt.vexlife.connected-services.vcs04.installed-read-lived.a011';
+-const CORRELATION_REF = 'correlation.vexlife.connected-services.vcs04.installed-read-lived.a011';
++const ATTEMPT_REF = 'attempt.vexlife.connected-services.vcs04.installed-read-lived.a012';
++const CORRELATION_REF = 'correlation.vexlife.connected-services.vcs04.installed-read-lived.a012';
+ const CONTINUITY = '[VXG RealForever]';
+ const SDK_REPO = 'vgong24/Vextreme-SDK';
+ const VEX_REPO = 'vgong24/VexLife';
+@@ -64,7 +64,7 @@
+ const home = os.homedir();
+ const canonicalParent = path.join(home, 'projects', 'vexlocalbridge', 'return', TASK_REF);
+ const resultRoot = path.join(canonicalParent, ATTEMPT_REF);
+-const tempRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'vcs04-installed-read-lived-a011-'));
++const tempRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'vcs04-installed-read-lived-a012-'));
+ const workRoot = path.join(tempRoot, 'work');
+ const commandLog = [];
+ const gatewayEvents = [];
+@@ -778,30 +778,61 @@
+   }
+   return out;
+ }
+-function exactForegroundServeProcesses({port,target}) {
++function shellArgTokens(command) {
++  // The A008 Serve command contains no whitespace-bearing arguments; preserve a simple bounded parser
++  // rather than introducing shell interpretation. This is process observation only.
++  return safeString(command)
++    .trim()
++    .split(/\s+/u)
++    .filter(Boolean);
++}
++function tailscaleProcessCandidates() {
+   const ps = run(
+     '/bin/ps',
+-    ['-axo','pid=,ppid=,etime=,command='],
++    ['-ww','-axo','pid=,ppid=,etime=,args='],
+     {allowFailure:true,timeout:10000},
+   );
+-  const escapedTarget = target.replace(/[.*+?^${}()|[\]\\]/gu, '\\$&');
+-  const pattern = new RegExp(
+-    `^\\s*(\\d+)\\s+(\\d+)\\s+(\\S+)\\s+.*\\/tailscale\\s+serve\\s+--yes\\s+--https=${port}\\s+${escapedTarget}\\s*$`,
+-    'u',
+-  );
+-  const matches = [];
++  const candidates = [];
+   for (const line of safeString(ps.stdout).split(/\r?\n/u)) {
+-    const match = line.match(pattern);
++    const match = line.match(/^\s*(\d+)\s+(\d+)\s+(\S+)\s+(.+)$/u);
+     if (!match) continue;
+-    matches.push({
++    const command = match[4].trim();
++    const tokens = shellArgTokens(command);
++    if (tokens.length === 0) continue;
++    const executableBase = path.basename(tokens[0]).toLowerCase();
++    const looksLikeTailscaleCli =
++      executableBase === 'tailscale'
++      || /\/Contents\/MacOS\/Tailscale$/u.test(tokens[0]);
++    if (!looksLikeTailscaleCli) continue;
++    candidates.push({
+       pid:Number(match[1]),
+       ppid:Number(match[2]),
+       elapsed:match[3],
++      executable:tokens[0],
++      args:tokens.slice(1),
+       line:line.trim(),
+     });
+   }
+   return {
+     psStatus:ps.status,
++    candidates,
++  };
++}
++function exactForegroundServeProcesses({port,target}) {
++  const observed = tailscaleProcessCandidates();
++  const portArg = `--https=${port}`;
++  const matches = observed.candidates.filter((candidate) => {
++    const args = candidate.args;
++    return args.includes('serve')
++      && args.includes('--yes')
++      && args.includes(portArg)
++      && args.includes(target)
++      && !args.includes('--bg')
++      && !args.includes('funnel');
++  });
++  return {
++    psStatus:observed.psStatus,
++    candidates:observed.candidates,
+     matches,
+   };
+ }
+@@ -876,6 +907,14 @@
+         sessionId:entry.sessionId,
+         proxy:entry.proxy,
+         ownerMatchCount:owners.matches.length,
++        tailscaleProcessCandidateCount:owners.candidates.length,
++        tailscaleProcessCandidates:owners.candidates.slice(0,20).map((candidate) => ({
++          pid:candidate.pid,
++          ppid:candidate.ppid,
++          elapsed:candidate.elapsed,
++          executable:candidate.executable,
++          args:candidate.args,
++        })),
+       },
+     );
+   }
+@@ -1246,20 +1285,20 @@
+   const now0 = Date.now();
+   const iso = (offset) => new Date(now0 + offset).toISOString();
+   const offer = homeBridge.createPairingOffer({
+-    pairingRef:'pairing.vcs04.lived.a011', homeNodeRef:HOME_REF, homePublicKey:'home-public-key.vcs04.lived',
+-    oneTimeNonceHash:crypto.createHash('sha256').update('vcs04-lived-a011').digest('hex'), humanFingerprint:'fingerprint.vcs04.lived.a011',
++    pairingRef:'pairing.vcs04.lived.a012', homeNodeRef:HOME_REF, homePublicKey:'home-public-key.vcs04.lived',
++    oneTimeNonceHash:crypto.createHash('sha256').update('vcs04-lived-a012').digest('hex'), humanFingerprint:'fingerprint.vcs04.lived.a012',
+     requestedCapabilityRefs:[CAPABILITY_REF], expiresAt:iso(30*60*1000)
+   });
+   const paired = homeBridge.approvePairing({
+     offer, principalRef:PRINCIPAL_REF, deviceRef:identity.deviceRef, devicePublicKey:identity.devicePublicKeyBase64Url,
+-    approvedCapabilityRefs:[CAPABILITY_REF], approvedBy:PRINCIPAL_REF, approvedAt:iso(1000), expectedFingerprint:'fingerprint.vcs04.lived.a011'
++    approvedCapabilityRefs:[CAPABILITY_REF], approvedBy:PRINCIPAL_REF, approvedAt:iso(1000), expectedFingerprint:'fingerprint.vcs04.lived.a012'
+   });
+   if (paired.state !== 'PAIRED') fail('HOME_MEMBERSHIP_FORMATION_FAILED', `Pairing state ${paired.state}`);
+   effectLedger.homeMembershipPerformed = true;
+   const membership = paired.membership;
+   if (membership.principalRef !== PRINCIPAL_REF || membership.deviceRef !== identity.deviceRef || membership.state !== 'ACTIVE') fail('HOME_MEMBERSHIP_FORMATION_FAILED', 'Membership identity mismatch');
+   const lease = homeBridge.issueCapabilityLease({
+-    leaseRef:'lease.vcs04.lived.a011', membership, requestedCapabilityRefs:[CAPABILITY_REF], projectRefs:['project.vexlife.connected-services'],
++    leaseRef:'lease.vcs04.lived.a012', membership, requestedCapabilityRefs:[CAPABILITY_REF], projectRefs:['project.vexlife.connected-services'],
+     issuedAt:iso(2000), expiresAt:iso(20*60*1000), revocationGeneration:membership.revocationGeneration
+   });
+ 
+@@ -1289,7 +1328,7 @@
+   if (!['MATERIALIZED','CURRENT','IDEMPOTENT_CURRENT'].includes(materialized.state)) fail('FAMILY_CHANNEL_MATERIALIZATION_FAILED', `state=${materialized.state}`);
+   const seeded = browserBridge.appendBrowserFamilyMessage({
+     home:livedHome,
+-    intent:{spaceRef:SPACE_REF,channelRef:CHANNEL_REF,content:SEED_CONTENT,expectedMembershipGeneration:familyRecord.membershipGeneration,idempotencyKey:'vcs04-lived-read-seed-a011'},
++    intent:{spaceRef:SPACE_REF,channelRef:CHANNEL_REF,content:SEED_CONTENT,expectedMembershipGeneration:familyRecord.membershipGeneration,idempotencyKey:'vcs04-lived-read-seed-a012'},
+     channel, membership, lease, currentRevocationGeneration:membership.revocationGeneration, now:iso(6000), instanceRef:'instance.vcs04.lived.seed-message'
+   });
+   if (!['APPENDED','IDEMPOTENT_CURRENT'].includes(seeded.state) || seeded.message?.content !== SEED_CONTENT) fail('FAMILY_SEED_MESSAGE_FAILED', `state=${seeded.state}`);
+@@ -1544,7 +1583,7 @@
+     schemaVersion:'vexlocalbridge.return-manifest/v1',continuity:CONTINUITY,taskRef:TASK_REF,attemptRef:ATTEMPT_REF,correlationRef:CORRELATION_REF,
+     disposition,inputPackageSha256:inputSha,memberCountExcludingManifest:files.length,files
+   });
+-  const baseName=`RETURN-vexlife-connected-services-vcs04-installed-read-lived-a011`;
++  const baseName=`RETURN-vexlife-connected-services-vcs04-installed-read-lived-a012`;
+   const tempZip=path.join(canonicalParent,`${baseName}.forming.zip`);
+   if (fs.existsSync(tempZip)) fs.rmSync(tempZip,{force:true});
+   run('/usr/bin/zip',['-q','-r',tempZip,'.'],{cwd:resultRoot,code:'RETURN_ZIP_FORMATION_FAILED',timeout:60000});
