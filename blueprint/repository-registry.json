@@ -4,9 +4,45 @@
   "registryVersion": 1,
   "purpose": "Public/source-safe navigation graph for repositories VexWork may reference. Repository entries point to current owner sources; they do not consolidate repository culture or create source authority.",
   "repositories": [
-    {"repositoryRef":"repo.vexwork","label":"VexWork","provider":"GITHUB","nameWithOwner":"VexGPT/VexWork","visibility":"PUBLIC","purpose":"Portable work/project graph, projections, repository relations and provider-adapter foundation.","entryRefs":["README.md","AGENTS.md","docs/foundation/INDEX.md"],"cultureRefs":["docs/CULTURE.md"]},
-    {"repositoryRef":"repo.vextreme","label":"Vextreme","provider":"GITHUB","nameWithOwner":"vgong24/Vextreme","visibility":"PUBLIC","purpose":"Public Vextreme institutional template and public interface.","entryRefs":["README.md","CLAUDE.md","docs/continuity/INDEX.md"],"cultureRefs":["docs/culture.md"]},
-    {"repositoryRef":"repo.vexlife","label":"VexLife","provider":"GITHUB","nameWithOwner":"vgong24/VexLife","visibility":"PUBLIC","purpose":"VexLife product integration repository.","entryRefs":["AGENTS.md"],"cultureRefs":["docs/CULTURE.md","docs/FOUNDATION-CULTURE-IMPLEMENTATION-STANDARD.md"]},
-    {"repositoryRef":"repo.vexlife-android","label":"VexLife Android","provider":"GITHUB","nameWithOwner":"vgong24/VexLife-Android","visibility":"PUBLIC","purpose":"Standalone native Android companion implementation for VexLife.","entryRefs":["README.md","AGENTS.md","docs/foundation/INDEX.md"],"cultureRefs":["docs/CULTURE.md"]}
+    {
+      "repositoryRef": "repo.vexwork",
+      "label": "VexWork",
+      "provider": "GITHUB",
+      "nameWithOwner": "VexGPT/VexWork",
+      "visibility": "PUBLIC",
+      "purpose": "Portable work/project graph, projections, repository relations and provider-adapter foundation.",
+      "entryRefs": ["README.md", "AGENTS.md", "docs/foundation/INDEX.md"],
+      "cultureRefs": ["docs/CULTURE.md"]
+    },
+    {
+      "repositoryRef": "repo.vextreme",
+      "label": "Vextreme",
+      "provider": "GITHUB",
+      "nameWithOwner": "vgong24/Vextreme",
+      "visibility": "PUBLIC",
+      "purpose": "Public Vextreme institutional template and public interface.",
+      "entryRefs": ["README.md", "CLAUDE.md", "docs/continuity/INDEX.md"],
+      "cultureRefs": ["docs/culture.md"]
+    },
+    {
+      "repositoryRef": "repo.vexlife",
+      "label": "VexLife",
+      "provider": "GITHUB",
+      "nameWithOwner": "vgong24/VexLife",
+      "visibility": "PUBLIC",
+      "purpose": "VexLife product integration repository.",
+      "entryRefs": ["AGENTS.md"],
+      "cultureRefs": ["docs/CULTURE.md", "docs/FOUNDATION-CULTURE-IMPLEMENTATION-STANDARD.md"]
+    },
+    {
+      "repositoryRef": "repo.vexlife-android",
+      "label": "VexLife Android",
+      "provider": "GITHUB",
+      "nameWithOwner": "vgong24/VexLife-Android",
+      "visibility": "PUBLIC",
+      "purpose": "Standalone native Android companion implementation for VexLife.",
+      "entryRefs": ["README.md", "AGENTS.md", "docs/foundation/INDEX.md"],
+      "cultureRefs": ["docs/CULTURE.md"]
+    }
   ]
 }
