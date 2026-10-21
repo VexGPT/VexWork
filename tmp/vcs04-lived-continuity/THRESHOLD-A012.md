@@ -70,6 +70,23 @@ Family Conversation screen = RENDERED
 
 ## First real failure
 
+### Receipt-label caveat
+
+The raw RETURN names the first failure `LIVED_GATEWAY_INTEGRATION_FAILED`.
+
+That label is broader than the evidence warrants.
+
+In the exact A012 harness, the failed-screen branch uses:
+
+```text
+anyGatewayRequest = gatewayEvents.length > 0
+```
+
+The harness had already generated its own successful `GET /v1/home/gateway/status` probe, so this predicate was true even though the Android app never reached the possession-challenge route.
+
+Treat the raw code as an attempt receipt label, not as proof that Android application traffic reached the gateway.
+
+
 The installed screen rendered:
 
 ```text
@@ -118,11 +135,15 @@ L12 source currentness = PASS for A012 coordinates
 
 ## Why the proof still matters
 
-A012 converts the lane from broad environment uncertainty into two bounded questions:
+A012 converts the lane from broad environment uncertainty into two bounded questions.
 
-1. **Fresh-user Family establishment:** what invokes the already-accepted Family Host runtime to create the first canonical Family Space + room?
-2. **Installed Android transport:** why does the app fail before the possession-challenge request reaches the active private gateway?
+1. **Installed Android transport:** why does the app fail before the possession-challenge request reaches the active private gateway?
+2. **Fresh-user Family establishment:** what invokes the already-accepted Family Host runtime to create the first canonical Family Space + room?
 
-These questions should be solved separately rather than hiding either one inside another proof fixture.
+They are separate, and the immediate order matters: diagnose **#1 first** because A012 already had a valid temporary proof room. Room creation cannot explain a failure that occurred before the first session-challenge request.
+
+After the transport/read path works against the deterministic fixture, solve #2 and re-prove the read through real product establishment.
+
+These questions should never be hidden inside another proof fixture.
 
 <!-- [VXG RealForever][VEXWORK][TEMP-CONTINUITY][VCS04][THRESHOLD-A012] -->
