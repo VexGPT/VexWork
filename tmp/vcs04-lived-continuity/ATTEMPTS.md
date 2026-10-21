@@ -307,3 +307,33 @@ A011 recovery:
 - never uses `tailscale serve reset`, broad cleanup, or Funnel mutation;
 - preserves heartbeat/progress output and the Android private-HTTPS acceptance oracle.
 
+
+
+## A012 — consumed successor threshold
+
+```text
+packageSha256=5f416a18f4c1d2fbc2da2987165ebee17c0c7e3fd91e3fd9fe4f3b9e8c83533e
+returnSha256=1e797fda70ac935157ffa30d7aad8a06922be2099348f0b0730ecc0bf1b9b7c5
+disposition=SAFE_FAILURE
+firstFailure=LIVED_GATEWAY_INTEGRATION_FAILED
+duration≈79s
+successorBundle=EARNED
+L1-L5=NOT_TERMINAL
+```
+
+A012:
+- recovered the stale A008 foreground Serve owner by exact PID + SIGTERM;
+- reached the real installed Family Conversation screen;
+- formed an exact private Serve config with AllowFunnel=false;
+- used a temporary proof Family Space/channel/seed message;
+- saw no Android session challenge/bootstrap/history request at the gateway;
+- rendered "The current Family conversation could not be refreshed."
+
+This is the first threshold where the lane should hand off as a foundation checkpoint rather than continue accumulating setup-recovery attempts in one chat.
+
+Room-establishment correction:
+- canonical first-room creation already exists in `VexLife/src/core/family-host-runtime.mjs`;
+- Android installed read only bootstraps/reads existing rooms;
+- the A012 room is proof scaffolding, not fresh-user product establishment.
+
+See `THRESHOLD-A012.md` and `END-TO-END-ROOM-PATH.md`.
