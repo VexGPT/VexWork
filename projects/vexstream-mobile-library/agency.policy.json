@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "vexwork.project-agency-policy/v1",
+  "policyRef": "agency.vexstream.mobile-library.delegated-handshake",
+  "projectRef": "project.vexstream.mobile-library",
+  "mode": "DELEGATED_WITH_TRANSITION_HANDSHAKE",
+  "routineTransitionAutonomy": "WITHIN_CURRENT_PHASE",
+  "handshakeLaneTransitions": [
+    {
+      "boundaryRef": "boundary.vexstream.mobile-library.ready-active",
+      "fromLaneRef": "lane.work.ready",
+      "toLaneRef": "lane.work.active"
+    },
+    {
+      "boundaryRef": "boundary.vexstream.mobile-library.active-verify",
+      "fromLaneRef": "lane.work.active",
+      "toLaneRef": "lane.work.verify"
+    },
+    {
+      "boundaryRef": "boundary.vexstream.mobile-library.verify-done",
+      "fromLaneRef": "lane.work.verify",
+      "toLaneRef": "lane.work.done"
+    }
+  ],
+  "discoveredWorkDefault": {
+    "workClass": "POTENTIAL",
+    "workDisposition": "PARKED",
+    "authorityDisposition": "NO_AUTHORITY",
+    "effectDisposition": "NO_EFFECTS"
+  },
+  "sourceRefs": [
+    "project.vexstream.mobile-library",
+    "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md",
+    "docs/process/FORM-PROJECT.md"
+  ],
+  "formedAt": "2026-10-21T08:41:00.000Z"
+}

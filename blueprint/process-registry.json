@@ -1,7 +1,7 @@
 {
   "schemaVersion": "vexwork.process-registry/v1",
   "registryRef": "registry.vexwork.processes.001",
-  "registryVersion": 2,
+  "registryVersion": 3,
   "purpose": "Map recurring work questions to the smallest reusable process source without making VexWork the executor or stealing process ownership from target repositories.",
   "processes": [
     {
@@ -13,6 +13,18 @@
         "docs/process/CAPTURE-DISCOVERED-WORK.md"
       ],
       "appliesWhen": "Current work discovers a useful idea, defect, question, or enhancement that is not required for the current acceptance boundary.",
+      "executionAuthority": "NONE"
+    },
+    {
+      "processRef": "process.vexwork.form-project",
+      "label": "Form a VexWork Project",
+      "purpose": "Turn one human-approved outcome into a durable Project + bounded Workgraph grouping without conflating formation, planning, implementation authority, or provider tickets.",
+      "ownerRepositoryRef": "repo.vexwork",
+      "entryRefs": [
+        "docs/process/FORM-PROJECT.md",
+        "docs/foundation/PROJECTS.md"
+      ],
+      "appliesWhen": "One coherent outcome has enough related work topology that future humans or agents would otherwise reconstruct grouping, decomposition, routes, or currentness from chat/provider history.",
       "executionAuthority": "NONE"
     },
     {

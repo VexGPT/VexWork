@@ -24,6 +24,7 @@ For migration and conversational discoverability, **"Jira board"** is accepted a
 ```text
 VexWork     system / repository
 Workgraph   canonical work topology + lifecycle truth
+Project Registry discoverability map for source-managed Projects
 Project     human outcome grouping over Workgraph roots
 Work item   human name for one Workgraph node
 Work Board  project board projection over Workgraph truth
@@ -63,9 +64,11 @@ The root README is an entry router, not a second architecture manual.
 
 The first foundation establishes:
 
-- one portable Workgraph that can contain project-bound and unprojected work, with lifecycle + transition validation;
+- one portable Workgraph that can contain work for multiple Projects plus unprojected work, with lifecycle + transition validation;
+- a Project Registry that locates source-managed Projects/Board views without duplicating their work truth;
 - `WorkState / WorkControl / WorkAct / WorkEffect / WorkBehavior` recognition grammar;
 - Work Board as a Project-derived projection, with Board lanes kept distinct from lifecycle state;
+- Project Agency Policy + Human Transition Handshake so bounded AI stewardship can automate routine work while meaningful phase promotions remain human-aware and exact-current;
 - Parking Lot as a provider-independent projection for intentionally deferred work;
 - a Process Map that records reusable work routes without becoming their executor or stealing target-repository process ownership;
 - a Repository Graph that points to repositories and their own entry/culture sources without consolidating their cultures;
@@ -81,9 +84,9 @@ Requires a current Node.js runtime; there are no package dependencies.
 ```bash
 npm test
 npm run check
-npm run work:status -- --project projects/vexwork-foundation/project.json --graph projects/vexwork-foundation/workgraph.json --view projects/vexwork-foundation/board.view.json --format board
-npm run work:status -- --project projects/vexwork-foundation/project.json --graph projects/vexwork-foundation/workgraph.json --format graph
-npm run work:status -- --graph projects/vexwork-foundation/workgraph.json --format parking-lot
+npm run work:status -- --project projects/vexwork-foundation/project.json --graph workgraphs/public.json --view projects/vexwork-foundation/board.view.json --format board
+npm run work:status -- --project projects/vexwork-foundation/project.json --graph workgraphs/public.json --format graph
+npm run work:status -- --graph workgraphs/public.json --format parking-lot
 ```
 
 The output is deterministic JSON suitable for people, agents, future UI surfaces, or adapters.

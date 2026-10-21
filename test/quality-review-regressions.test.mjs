@@ -8,7 +8,7 @@ import { verifySemanticFingerprint, withSemanticFingerprint } from '../src/core/
 
 const read = (relative) => JSON.parse(fs.readFileSync(new URL(`../${relative}`, import.meta.url), 'utf8'));
 const registry = read('blueprint/work-registry.json');
-const graphSource = read('projects/vexwork-foundation/workgraph.json');
+const graphSource = read('workgraphs/public.json');
 const boardViewSource = read('projects/vexwork-foundation/board.view.json');
 
 function storedTransition(overrides = {}) {

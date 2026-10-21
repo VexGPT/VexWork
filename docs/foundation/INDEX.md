@@ -7,6 +7,8 @@ This is the current architecture map. Follow the exact foundation whose question
 | Foundation | Human question | Canonical source | Proof | State |
 |---|---|---|---|---|
 | Workgraph | What work exists, what state is it in, and what depends on what? | `blueprint/work-registry.json`, `src/core/workgraph.mjs` | `test/workgraph.test.mjs` | FOUNDATION |
+| Projects / Project Registry | What Projects exist and how do they select bounded work without becoming another lifecycle owner? | `blueprint/project-registry.json`, `src/core/project-registry.mjs`, `docs/foundation/PROJECTS.md` | `test/project-registry.test.mjs` | FOUNDATION |
+| Delegated agency / Human Transition Handshake | How can an authorized AI manage routine work while a human explicitly acknowledges and approves meaningful phase promotions? | `src/core/transition-handshake.mjs`, `docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md` | `test/transition-handshake.test.mjs` | FOUNDATION |
 | Work Board | How do I see one Project in a familiar Jira/kanban-shaped view without making the view the truth owner? | `src/core/work-board.mjs` | `test/work-board.test.mjs` | FOUNDATION |
 | Parking Lot | How do I preserve useful deferred work without making a provider ticket or fake Project the owner? | `docs/foundation/PARKING-LOT.md`, `src/core/work-board.mjs` | `test/work-board.test.mjs` | FOUNDATION |
 | Process Map | Which reusable process should a fresh worker follow for this kind of work question? | `blueprint/process-registry.json`, `src/core/process-map.mjs`, `docs/process/` | `test/process-map.test.mjs` | FOUNDATION |
@@ -22,8 +24,15 @@ This is the current architecture map. Follow the exact foundation whose question
 ## Descent
 
 ```text
+Project discovery / formation / outcome grouping
+-> PROJECTS.md
+-> ../process/FORM-PROJECT.md
+
 work topology / lifecycle
 -> WORKGRAPH.md
+
+delegated AI agency / human acknowledgement + approval / phase transition
+-> HUMAN-TRANSITION-HANDSHAKE.md
 
 Jira board / Work Board / kanban / cards
 -> WORK-BOARD.md

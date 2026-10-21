@@ -84,6 +84,20 @@ VIEW != EFFECT_AUTHORITY
 
 A future interactive Board should emit a typed `WorkAct` / transition request bound to the exact observed Workgraph fingerprint. It must never move a card optimistically and call the local UI position canonical truth.
 
+## Human phase transitions
+
+Board lanes are also the first human-facing phase language for delegated Project agency.
+
+A Project Agency Policy may require the Human Transition Handshake for selected lane crossings such as Ready -> Active, Active -> Verify, and Verify -> Done while allowing routine same-phase lifecycle movement to remain autonomous.
+
+The Work Board still does not own the transition. See `HUMAN-TRANSITION-HANDSHAKE.md`.
+
+```text
+BOARD_PHASE != AUTHORITY
+HUMAN_ACKNOWLEDGEMENT != NEW_AUTHORITY
+HANDSHAKE != DRAG_TO_MUTATE
+```
+
 ## Parking Lot is a sibling projection
 
 The Parking Lot is **not** another Board lane and not a Project. It projects intentionally parked work from the larger Workgraph. See `PARKING-LOT.md`.

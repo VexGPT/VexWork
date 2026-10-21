@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.vexstream.mobile-library",
+  "label": "VexStream Mobile Library",
+  "purpose": "Make downloaded VexStream music a durable, reusable Android device library while preserving exact media identity, truthful one-shot download semantics, and separately governed persistent sync.",
+  "rootWorkRefs": [
+    "work.vexstream.mobile-library.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vexlife-android"
+  ],
+  "sourceRefs": [
+    "github.pull.vexlife-android.142",
+    "github.issue.vexlife-android.144",
+    "repo.vexlife-android:docs/features/README.md",
+    "docs/process/FORM-PROJECT.md",
+    "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md"
+  ],
+  "formedAt": "2026-10-21T08:41:00.000Z"
+}

@@ -12,7 +12,7 @@ const read = (relative) => JSON.parse(fs.readFileSync(path.join(ROOT, relative),
 
 const registry = read('blueprint/work-registry.json');
 const project = createProject(read('projects/vexwork-foundation/project.json'));
-const graph = createWorkgraph(read('projects/vexwork-foundation/workgraph.json'), registry);
+const graph = createWorkgraph(read('workgraphs/public.json'), registry);
 const view = createBoardView(read('projects/vexwork-foundation/board.view.json'), registry);
 const board = projectWorkBoard({ project, graph, view, registry });
 const parkingLot = projectParkingLot({ graph, registry });

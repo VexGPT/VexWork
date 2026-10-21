@@ -8,14 +8,14 @@ import { createBoardView, projectParkingLot, projectWorkBoard, projectWorkGraph 
 const read = (relative) => JSON.parse(fs.readFileSync(new URL(`../${relative}`, import.meta.url), 'utf8'));
 const registry = read('blueprint/work-registry.json');
 const project = createProject(read('projects/vexwork-foundation/project.json'));
-const graph = createWorkgraph(read('projects/vexwork-foundation/workgraph.json'), registry);
+const graph = createWorkgraph(read('workgraphs/public.json'), registry);
 const view = createBoardView(read('projects/vexwork-foundation/board.view.json'), registry);
 
 test('Project Work Board projects only the Project subgraph without becoming lifecycle authority', () => {
   const board = projectWorkBoard({ project, graph, view, registry });
   const cards = board.lanes.flatMap((lane) => lane.cards);
   assert.equal(cards.length, 8);
-  assert.equal(graph.items.length, 10);
+  assert.equal(graph.items.length, 21);
   assert.equal(cards.some((card) => card.workRef === 'work.vexlife-android.vexstream.not-yet-downloaded-filter'), false);
   assert.equal(board.effects, false);
   assert.equal(board.executionAuthority, 'NONE');
@@ -36,15 +36,15 @@ test('Project Work Board projects only the Project subgraph without becoming lif
 
 test('Parking Lot projects parked work independently of Project membership', () => {
   const lot = projectParkingLot({ graph, registry });
-  assert.equal(lot.items.length, 2);
-  assert.deepEqual(lot.items.map((item) => item.workRef).sort(), ['work.vexlife-android.vexstream.not-yet-downloaded-filter', 'work.vexlife.connected-services.guided-onboarding'].sort());
+  assert.equal(lot.items.length, 3);
+  assert.deepEqual(lot.items.map((item) => item.workRef).sort(), ['work.vexlife-android.vexstream.not-yet-downloaded-filter', 'work.vexlife.connected-services.guided-onboarding', 'work.vexstream.mobile-library.keep-offline-sync'].sort());
   assert.equal(lot.items.every((item) => item.workDisposition === 'PARKED'), true);
   assert.equal(lot.items.some((item) => item.workRef === 'work.vexlife-android.vexstream.not-yet-downloaded-filter' && item.repositoryRefs.includes('repo.vexlife-android')), true);
   assert.equal(lot.effects, false);
   assert.equal(lot.executionAuthority, 'NONE');
 
   const androidOnly = projectParkingLot({ graph, registry, repositoryRefOrNull: 'repo.vexlife-android' });
-  assert.equal(androidOnly.items.length, 2);
+  assert.equal(androidOnly.items.length, 3);
   const vexlifeOnly = projectParkingLot({ graph, registry, repositoryRefOrNull: 'repo.vexlife' });
   assert.equal(vexlifeOnly.items.length, 1);
   assert.equal(vexlifeOnly.items[0].workRef, 'work.vexlife.connected-services.guided-onboarding');

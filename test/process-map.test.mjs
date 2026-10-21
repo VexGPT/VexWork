@@ -14,8 +14,9 @@ test('Process Map is source-addressable, non-executing navigation', () => {
   const map = projectProcessMap(processRegistry);
   assert.equal(map.effects, false);
   assert.equal(map.executionAuthority, 'NONE');
-  assert.equal(map.processes.length, 3);
+  assert.equal(map.processes.length, 4);
   assert.equal(map.processes.some((process) => process.processRef === 'process.vexwork.capture-discovered-work'), true);
+  assert.equal(map.processes.some((process) => process.processRef === 'process.vexwork.form-project'), true);
   assert.equal(map.processes.some((process) => process.processRef === 'process.vexlife-android.feature-authoring'), true);
   assert.equal(map.processes.some((process) => process.processRef === 'process.vexwork.quality-review'), true);
 });

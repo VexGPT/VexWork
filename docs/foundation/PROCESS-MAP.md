@@ -44,6 +44,8 @@ That is enough for the first foundation to preserve how it entered the system an
 
 VexWork may own a work-system process such as `process.vexwork.capture-discovered-work`.
 
+For Project formation, VexWork owns the work-navigation route `process.vexwork.form-project`; it forms grouping/topology only and does not authorize implementation.
+
 For an Android product feature, VexWork instead points to the Android-owned authoring process:
 
 ```text
