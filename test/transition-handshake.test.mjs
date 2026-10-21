@@ -221,15 +221,29 @@ test('human feedback is acknowledged by the AI but holds the transition', () => 
 test('stale proposal cannot apply after Workgraph currentness changes', () => {
   const current = graph('READY');
   const handshake = approvedHandshake(current, 'RUNNING');
-  const moved = requestTransition(current, transition(current, 'WAITING_RESOURCE', 'transition.test.wait'), registry).graph;
+
+  const waiting = requestTransition(
+    current,
+    transition(current, 'WAITING_RESOURCE', 'transition.test.wait'),
+    registry,
+  ).graph;
+  const returned = requestTransition(
+    waiting,
+    transition(waiting, 'READY', 'transition.test.return-ready'),
+    registry,
+  ).graph;
+
+  assert.equal(returned.items[0].state, 'READY');
+  assert.notEqual(returned.semanticFingerprint, current.semanticFingerprint);
+
   assert.throws(() => requestProjectTransition({
     project: project(),
-    graph: moved,
+    graph: returned,
     policy: policy(),
-    transitionRequest: transition(moved, 'READY', 'transition.test.return-ready'),
+    transitionRequest: transition(returned, 'RUNNING', 'transition.test.stale-active'),
     registry,
     handshakeOrNull: handshake,
-  }), /transition proposal is stale|transition does not require a human handshake/);
+  }), /transition proposal is stale/);
 });
 
 test('acknowledgement cannot manufacture authority', () => {
