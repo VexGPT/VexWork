@@ -26,6 +26,21 @@
           "authorityDisposition": "NO_AUTHORITY",
           "effectDisposition": "NO_EFFECTS",
           "updatedAt": "2026-10-21T01:45:05.000Z"
+        },
+        {
+          "workRef": "work.vexwork.history.foundational-infrastructure-backfill",
+          "label": "Foundational Infrastructure history backfill",
+          "purpose": "Gradually reconstruct completed foundational work into VexWork with provenance so future humans and instances can perceive what was built from a dashboard instead of rediscovering it across repositories and chat history.",
+          "workClass": "POTENTIAL",
+          "state": "CAPTURED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "LOW",
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "updatedAt": "2026-10-21T06:07:27.000Z"
         }
       ]
     },
@@ -57,6 +72,22 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "updatedAt": "2026-10-21T01:45:01.000Z"
+        },
+        {
+          "workRef": "work.vexwork.visibility.public-dashboard",
+          "label": "Public VexWork dashboard",
+          "purpose": "Make current VexWork Project Board and Parking Lot truth visibly explorable through a stable public read projection without making Vextreme another work-state owner.",
+          "workClass": "TASK",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme"
+          ],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "updatedAt": "2026-10-21T06:07:27.000Z"
         }
       ]
     },
@@ -97,7 +128,7 @@
             "repo.vexlife"
           ],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
-          "efectDisposition": "EFFECTS_BOUND",
+          "effectDisposition": "EFFECTS_BOUND",
           "updatedAt": "2026-10-21T03:56:12.000Z"
         },
         {
@@ -130,7 +161,7 @@
             "repo.vexlife"
           ],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
-          "efectDisposition": "EFFECTS_BOUND",
+          "effectDisposition": "EFFECTS_BOUND",
           "updatedAt": "2026-10-21T03:56:13.000Z"
         },
         {
@@ -176,8 +207,8 @@
     ]
   },
   "summary": {
-    "projectWorkItemCount": 6,
-    "activeProjectWorkItemCount": 2,
+    "projectWorkItemCount": 8,
+    "activeProjectWorkItemCount": 4,
     "parkingLotItemCount": 1
   },
   "effects": false,

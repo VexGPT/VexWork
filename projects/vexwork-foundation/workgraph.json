@@ -196,6 +196,62 @@
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-21T01:18:35.000Z",
       "updatedAt": "2026-10-21T01:18:35.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexwork.visibility.public-dashboard",
+      "parentWorkRefOrNull": "work.vexwork.foundation.outcome",
+      "label": "Public VexWork dashboard",
+      "purpose": "Make current VexWork Project Board and Parking Lot truth visibly explorable through a stable public read projection without making Vextreme another work-state owner.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexwork.foundation.work-board"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vextreme"
+      ],
+      "sourceRefs": [
+        "github.commit.vexwork.5c0e871c8e2e275cdeb20506ac928b4994b2758e",
+        "public/work-dashboard.json",
+        "docs/foundation/WORK-BOARD.md"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-21T06:07:27.000Z",
+      "updatedAt": "2026-10-21T06:07:27.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexwork.history.foundational-infrastructure-backfill",
+      "parentWorkRefOrNull": "work.vexwork.foundation.outcome",
+      "label": "Foundational Infrastructure history backfill",
+      "purpose": "Gradually reconstruct completed foundational work into VexWork with provenance so future humans and instances can perceive what was built from a dashboard instead of rediscovering it across repositories and chat history.",
+      "workClass": "POTENTIAL",
+      "state": "CAPTURED",
+      "priorityClass": "LOW",
+      "dependencyRefs": [
+        "work.vexwork.visibility.public-dashboard"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "public/work-dashboard.json",
+        "docs/lineage/VEXLIFE-P0B.md"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-21T06:07:27.000Z",
+      "updatedAt": "2026-10-21T06:07:27.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
     }
   ],
   "transitions": [
