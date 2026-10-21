@@ -67,8 +67,11 @@ export function createProjectAgencyPolicy(input, registry) {
   const knownLanes = knownLaneRefs(registry);
   assert(Array.isArray(input.handshakeLaneTransitions) && input.handshakeLaneTransitions.length > 0, 'handshakeLaneTransitions required');
   const pairs = new Set();
+  const boundaryRefs = new Set();
   for (const boundary of input.handshakeLaneTransitions) {
     stableRef(boundary.boundaryRef, 'boundaryRef');
+    assert(!boundaryRefs.has(boundary.boundaryRef), `duplicate boundaryRef ${boundary.boundaryRef}`);
+    boundaryRefs.add(boundary.boundaryRef);
     assert(knownLanes.has(boundary.fromLaneRef), `unknown fromLaneRef ${boundary.fromLaneRef}`);
     assert(knownLanes.has(boundary.toLaneRef), `unknown toLaneRef ${boundary.toLaneRef}`);
     assert(boundary.fromLaneRef !== boundary.toLaneRef, 'handshake boundary must cross Board lanes');
@@ -203,7 +206,9 @@ export function createAiTransitionConfirmation({
   confirmedAt,
 }) {
   assert(verifySemanticFingerprint(proposal), 'transition proposal semanticFingerprint mismatch');
+  assert(proposal.schemaVersion === TRANSITION_PROPOSAL_SCHEMA, 'transition proposal schema mismatch');
   assert(verifySemanticFingerprint(response), 'human transition response semanticFingerprint mismatch');
+  assert(response.schemaVersion === HUMAN_TRANSITION_RESPONSE_SCHEMA, 'human transition response schema mismatch');
   assert(response.proposalRef === proposal.proposalRef, 'human response proposalRef mismatch');
   assert(response.proposalSemanticFingerprint === proposal.semanticFingerprint, 'human response proposal fingerprint mismatch');
   stableRef(confirmationRef, 'confirmationRef');
@@ -271,8 +276,11 @@ export function requestProjectTransition({
   assert(handshakeOrNull && typeof handshakeOrNull === 'object', 'transition handshake required');
   const { proposal, response, confirmation } = handshakeOrNull;
   assert(verifySemanticFingerprint(proposal), 'transition proposal semanticFingerprint mismatch');
+  assert(proposal.schemaVersion === TRANSITION_PROPOSAL_SCHEMA, 'transition proposal schema mismatch');
   assert(verifySemanticFingerprint(response), 'human transition response semanticFingerprint mismatch');
+  assert(response.schemaVersion === HUMAN_TRANSITION_RESPONSE_SCHEMA, 'human transition response schema mismatch');
   assert(verifySemanticFingerprint(confirmation), 'AI transition confirmation semanticFingerprint mismatch');
+  assert(confirmation.schemaVersion === AI_TRANSITION_CONFIRMATION_SCHEMA, 'AI transition confirmation schema mismatch');
 
   assert(proposal.projectRef === project.projectRef, 'transition proposal project mismatch');
   assert(proposal.workRef === item.workRef, 'transition proposal work mismatch');

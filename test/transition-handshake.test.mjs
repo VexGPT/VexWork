@@ -10,6 +10,7 @@ import {
   requestProjectTransition,
   transitionHandshakeRequirement,
 } from '../src/core/transition-handshake.mjs';
+import { withSemanticFingerprint } from '../src/core/semantic.mjs';
 import { createProject, createWorkgraph, requestTransition } from '../src/core/workgraph.mjs';
 
 const registry = JSON.parse(fs.readFileSync(new URL('../blueprint/work-registry.json', import.meta.url), 'utf8'));
@@ -257,4 +258,87 @@ test('acknowledgement cannot manufacture authority', () => {
     registry,
     handshakeOrNull: handshake,
   }), /cannot advance work without bounded authority/);
+});
+
+
+test('Project Agency Policy rejects reused boundary identity across different phase crossings', () => {
+  const source = structuredClone(policy());
+  delete source.semanticFingerprint;
+  source.handshakeLaneTransitions[1].boundaryRef = source.handshakeLaneTransitions[0].boundaryRef;
+  assert.throws(() => createProjectAgencyPolicy(source, registry), /duplicate boundaryRef/);
+});
+
+test('final transition admission rejects fingerprint-valid handshake schema substitution', () => {
+  const current = graph('READY');
+  const original = approvedHandshake(current, 'RUNNING');
+
+  const forgedProposal = withSemanticFingerprint({
+    ...original.proposal,
+    schemaVersion: 'vexwork.not-a-transition-proposal/v1',
+  });
+  const forgedResponse = withSemanticFingerprint({
+    ...original.response,
+    proposalRef: forgedProposal.proposalRef,
+    proposalSemanticFingerprint: forgedProposal.semanticFingerprint,
+  });
+  const forgedConfirmation = withSemanticFingerprint({
+    ...original.confirmation,
+    proposalRef: forgedProposal.proposalRef,
+    proposalSemanticFingerprint: forgedProposal.semanticFingerprint,
+    responseRef: forgedResponse.responseRef,
+    responseSemanticFingerprint: forgedResponse.semanticFingerprint,
+  });
+
+  assert.throws(() => requestProjectTransition({
+    project: project(),
+    graph: current,
+    policy: policy(),
+    transitionRequest: transition(current, 'RUNNING'),
+    registry,
+    handshakeOrNull: {
+      proposal: forgedProposal,
+      response: forgedResponse,
+      confirmation: forgedConfirmation,
+    },
+  }), /transition proposal schema mismatch/);
+
+  const validProposal = original.proposal;
+  const wrongResponse = withSemanticFingerprint({
+    ...original.response,
+    schemaVersion: 'vexwork.not-a-human-response/v1',
+  });
+  const confirmationForWrongResponse = withSemanticFingerprint({
+    ...original.confirmation,
+    responseRef: wrongResponse.responseRef,
+    responseSemanticFingerprint: wrongResponse.semanticFingerprint,
+  });
+  assert.throws(() => requestProjectTransition({
+    project: project(),
+    graph: current,
+    policy: policy(),
+    transitionRequest: transition(current, 'RUNNING', 'transition.test.wrong-response-schema'),
+    registry,
+    handshakeOrNull: {
+      proposal: validProposal,
+      response: wrongResponse,
+      confirmation: confirmationForWrongResponse,
+    },
+  }), /human transition response schema mismatch/);
+
+  const wrongConfirmation = withSemanticFingerprint({
+    ...original.confirmation,
+    schemaVersion: 'vexwork.not-an-ai-confirmation/v1',
+  });
+  assert.throws(() => requestProjectTransition({
+    project: project(),
+    graph: current,
+    policy: policy(),
+    transitionRequest: transition(current, 'RUNNING', 'transition.test.wrong-confirmation-schema'),
+    registry,
+    handshakeOrNull: {
+      proposal: validProposal,
+      response: original.response,
+      confirmation: wrongConfirmation,
+    },
+  }), /AI transition confirmation schema mismatch/);
 });
