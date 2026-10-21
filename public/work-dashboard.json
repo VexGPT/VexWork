@@ -208,8 +208,8 @@
   },
   "summary": {
     "projectWorkItemCount": 8,
-    "activeProjectWorkItemCount": 4,
-    "parkingLotItemCount": 1
+    "parkingLotItemCount": 1,
+    "openProjectWorkItemCount": 4
   },
   "effects": false,
   "executionAuthority": "NONE"

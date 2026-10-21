@@ -1,3 +1,5 @@
+import { verifySemanticFingerprint } from './semantic.mjs';
+
 export const PUBLIC_WORK_DASHBOARD_SCHEMA = 'vexwork.public-work-dashboard/v1';
 
 function publicCard(card) {
@@ -17,6 +19,14 @@ function publicCard(card) {
 }
 
 export function projectPublicWorkDashboard({ project, board, parkingLot }) {
+  if (!verifySemanticFingerprint(project)) throw new TypeError('project semanticFingerprint mismatch');
+  if (!verifySemanticFingerprint(board)) throw new TypeError('board semanticFingerprint mismatch');
+  if (!verifySemanticFingerprint(parkingLot)) throw new TypeError('parking lot semanticFingerprint mismatch');
+  if (board.projectRef !== project.projectRef) throw new TypeError('project/board identity mismatch');
+  if (board.graphRef !== parkingLot.graphRef) throw new TypeError('board/parking Workgraph identity mismatch');
+  if (board.effects !== false || board.executionAuthority !== 'NONE') throw new TypeError('board projection must be read-only');
+  if (parkingLot.effects !== false || parkingLot.executionAuthority !== 'NONE') throw new TypeError('parking lot projection must be read-only');
+
   const lanes = board.lanes.map((lane) => Object.freeze({
     laneRef: lane.laneRef,
     label: lane.label,
@@ -24,7 +34,7 @@ export function projectPublicWorkDashboard({ project, board, parkingLot }) {
   }));
   const parked = parkingLot.items.map(publicCard);
   const projectWorkItemCount = lanes.reduce((total, lane) => total + lane.cards.length, 0);
-  const activeProjectWorkItemCount = lanes
+  const openProjectWorkItemCount = lanes
     .filter((lane) => !['lane.work.done', 'lane.work.archive'].includes(lane.laneRef))
     .reduce((total, lane) => total + lane.cards.length, 0);
 
@@ -43,7 +53,7 @@ export function projectPublicWorkDashboard({ project, board, parkingLot }) {
     }),
     summary: Object.freeze({
       projectWorkItemCount,
-      activeProjectWorkItemCount,
+      openProjectWorkItemCount,
       parkingLotItemCount: parked.length,
     }),
     effects: false,
