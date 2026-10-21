@@ -26,6 +26,7 @@ const projectRegistryValidation = validateProjectRegistry(projectRegistry);
 if (!projectRegistryValidation.ok) throw new Error(projectRegistryValidation.errors.join('\n'));
 
 const graphSources = new Map();
+const graphPaths = new Map();
 const projectChecks = [];
 
 for (const entry of projectRegistry.projects) {
@@ -34,13 +35,15 @@ for (const entry of projectRegistry.projects) {
     throw new Error(`Project Registry identity mismatch for ${entry.projectRef}`);
   }
 
+  const priorGraphPath = graphPaths.get(entry.workgraphRef);
+  if (priorGraphPath && priorGraphPath !== entry.workgraphPath) {
+    throw new Error(`Workgraph ${entry.workgraphRef} has conflicting source paths`);
+  }
+  graphPaths.set(entry.workgraphRef, entry.workgraphPath);
+
   let graph = graphSources.get(entry.workgraphRef);
   if (!graph) {
-    const graphPath = entry.workgraphRef === 'workgraph.vexwork.foundation'
-      ? 'workgraphs/public.json'
-      : null;
-    if (!graphPath) throw new Error(`no source path registered for Workgraph ${entry.workgraphRef}`);
-    graph = createWorkgraph(read(graphPath), workRegistry);
+    graph = createWorkgraph(read(entry.workgraphPath), workRegistry);
     if (graph.graphRef !== entry.workgraphRef) {
       throw new Error(`Workgraph identity mismatch for ${entry.workgraphRef}`);
     }

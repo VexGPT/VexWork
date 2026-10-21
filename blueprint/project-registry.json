@@ -9,14 +9,16 @@
       "workgraphRef": "workgraph.vexwork.foundation",
       "definitionPath": "projects/vexwork-foundation/project.json",
       "boardViewPath": "projects/vexwork-foundation/board.view.json",
-      "agencyPolicyPathOrNull": null
+      "agencyPolicyPathOrNull": null,
+      "workgraphPath": "workgraphs/public.json"
     },
     {
       "projectRef": "project.vexstream.mobile-library",
       "workgraphRef": "workgraph.vexwork.foundation",
       "definitionPath": "projects/vexstream-mobile-library/project.json",
       "boardViewPath": "projects/vexstream-mobile-library/board.view.json",
-      "agencyPolicyPathOrNull": "projects/vexstream-mobile-library/agency.policy.json"
+      "agencyPolicyPathOrNull": "projects/vexstream-mobile-library/agency.policy.json",
+      "workgraphPath": "workgraphs/public.json"
     }
   ]
 }

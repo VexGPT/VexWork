@@ -30,6 +30,7 @@ export function validateProjectRegistry(registry) {
     else projectRefs.add(entry.projectRef);
 
     if (typeof entry?.workgraphRef !== 'string' || !REF.test(entry.workgraphRef)) errors.push(`workgraphRef invalid for ${entry?.projectRef ?? 'unknown'}`);
+    if (!safeRelativePath(entry?.workgraphPath)) errors.push(`workgraphPath invalid for ${entry?.projectRef ?? 'unknown'}`);
 
     for (const [label, value, seen] of [
       ['definitionPath', entry?.definitionPath, definitionPaths],

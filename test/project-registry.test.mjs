@@ -14,8 +14,10 @@ test('Project Registry locates Projects without owning their WorkState', () => {
   assert.equal(projection.projects.length, 2);
   assert.equal(projection.projects[0].projectRef, 'project.vexwork.foundation');
   assert.equal(projection.projects[0].workgraphRef, 'workgraph.vexwork.foundation');
+  assert.equal(projection.projects[0].workgraphPath, 'workgraphs/public.json');
   const mobile = projection.projects.find((entry) => entry.projectRef === 'project.vexstream.mobile-library');
   assert.equal(mobile.workgraphRef, 'workgraph.vexwork.foundation');
+  assert.equal(mobile.workgraphPath, 'workgraphs/public.json');
   assert.equal(mobile.agencyPolicyPathOrNull, 'projects/vexstream-mobile-library/agency.policy.json');
   assert.equal(projection.effects, false);
   assert.equal(projection.executionAuthority, 'NONE');
