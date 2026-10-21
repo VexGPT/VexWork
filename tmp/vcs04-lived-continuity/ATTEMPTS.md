@@ -119,19 +119,45 @@ A006 proved the new health/progress model worked and materially crossed the prev
 
 A006 stopped before Serve/gateway traffic because the temporary macOS Home path was `/var/folders/...` while the accepted Family owner requires its canonical `/private/var/folders/...` real path.
 
-## A007 — current qualified successor
+## A007 — consumed USER_ACTION_REQUIRED at private Serve enablement
 
 ```text
 packageSha256=ef63aa3d953b5f943e613a48d84fe81fbacc4415083ad35922e374b7913a92b8
+returnSha256=b2b6be3f6a034a1348a39a7a83ed709c5b2f6f7705be5a50127d05ff57ed1546
+disposition=USER_ACTION_REQUIRED
+firstFailure=TAILSCALE_SERVE_UNAVAILABLE
+reason=TAILNET_SERVE_NOT_ENABLED
+```
+
+A007 crossed the A006 canonical-path defect:
+- temporary Family fixture = READY;
+- loopback private gateway = LISTENING;
+- route persistence + bounded temporary membership/lease = performed;
+- Tailscale foreground Serve attempt was rejected before becoming active because Serve is disabled for the tailnet;
+- no Funnel/public exposure occurred;
+- no Android gateway request was observed;
+- L1-L5 therefore remain unproven.
+
+A007 also exposed an evidence-accounting defect: `networkServeEffectPerformed` flipped on Serve attempt even though no active Serve listener existed. The return log proves the effect was attempted but not active.
+
+## A008 — current qualified successor
+
+```text
+packageSha256=13010c3527ff105de4b992549e893824fa64ab744c7aa8d317ca6b8a06146f6c
 SDK.main=b4d427564409989e8f839066accd17ec4c790724
 VexLife.main=0fbaeb7c918ebdfc7af5389220d5bf081a906702
 Android.main=30ecfe22156f6bb4b565eda990c72feff48a3866
 staticQualification=ALL_PASS
-repair=canonicalize temporary harness Home with fs.realpathSync.native
-ownerInvariantWeakening=false
 ```
 
-A007 preserves all A006 progress/heartbeat behavior and removes no accepted product guard.
+A008:
+- separates Serve attempted from Serve active;
+- opens the exact private Serve enablement page if Tailscale reports that Serve is disabled;
+- emits visible WAIT/HEARTBEAT state while the human completes the protected enablement;
+- retries only the same foreground private Serve;
+- marks `networkServeEffectPerformed=true` only after the private HTTPS gateway status route is reachable;
+- never configures Funnel;
+- preserves Send/model/restart holds.
 
 ## Product acceptance still held
 
