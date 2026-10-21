@@ -35,6 +35,11 @@ parking lot / remember for later / adjacent nice-to-have
 reusable work process / where should a fresh instance route?
 -> PROCESS-MAP.md
 
+QA / quality review / reviewer question set / review handoff
+-> ../process/QUALITY-REVIEW.md
+-> ../templates/QA-REVIEW-BRIEF.md
+-> ../templates/QA-REVIEW-RETURN.md
+
 cross-repository navigation / culture entry
 -> REPOSITORY-GRAPH.md
 

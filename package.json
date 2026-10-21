@@ -7,7 +7,8 @@
   "scripts": {
     "test": "node --test",
     "check": "node scripts/work-check.mjs",
-    "work:status": "node scripts/work-status.mjs"
+    "work:status": "node scripts/work-status.mjs",
+    "review:deterministic": "npm test && npm run check"
   },
   "engines": {
     "node": ">=20"

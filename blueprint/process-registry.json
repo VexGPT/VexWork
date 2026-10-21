@@ -1,7 +1,7 @@
 {
   "schemaVersion": "vexwork.process-registry/v1",
   "registryRef": "registry.vexwork.processes.001",
-  "registryVersion": 1,
+  "registryVersion": 2,
   "purpose": "Map recurring work questions to the smallest reusable process source without making VexWork the executor or stealing process ownership from target repositories.",
   "processes": [
     {
@@ -25,6 +25,19 @@
         "docs/foundation/FEATURE-EXPERIENCE-LANGUAGE.md"
       ],
       "appliesWhen": "A VexLife Android potential or product need is deliberately adopted for feature implementation or major feature evolution.",
+      "executionAuthority": "NONE"
+    },
+    {
+      "processRef": "process.vexwork.quality-review",
+      "label": "VexWork Quality Review",
+      "purpose": "Give a fresh QA/reviewer a stable question, evidence, falsification, scope, and disposition contract for one exact candidate without granting merge or provider authority.",
+      "ownerRepositoryRef": "repo.vexwork",
+      "entryRefs": [
+        "docs/process/QUALITY-REVIEW.md",
+        "docs/templates/QA-REVIEW-BRIEF.md",
+        "docs/templates/QA-REVIEW-RETURN.md"
+      ],
+      "appliesWhen": "A VexWork candidate or other work-system candidate needs repeatable QA/semantic quality review before a lifecycle or merge decision.",
       "executionAuthority": "NONE"
     }
   ]

@@ -43,6 +43,11 @@ Do not broad-read every connected repository. The Repository Graph tells you whe
 "What process should future instances reuse?"
   -> docs/foundation/PROCESS-MAP.md
 
+"QA / review this candidate / what questions should a reviewer answer?"
+  -> docs/process/QUALITY-REVIEW.md
+  -> docs/templates/QA-REVIEW-BRIEF.md
+  -> docs/templates/QA-REVIEW-RETURN.md
+
 "Which repositories does this work touch?"
   -> docs/foundation/REPOSITORY-GRAPH.md
 

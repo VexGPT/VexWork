@@ -23,9 +23,10 @@ PROCESS_REF != EFFECT_AUTHORITY
 REFERENCE_TO_ANDROID_FEATURE_PROCESS != OWNERSHIP_OF_ANDROID_FEATURE_PROCESS
 ```
 
-Current process entry:
+Current process entries:
 
 - [`CAPTURE-DISCOVERED-WORK.md`](CAPTURE-DISCOVERED-WORK.md) — preserve adjacent work without widening the active lane.
+- [`QUALITY-REVIEW.md`](QUALITY-REVIEW.md) — reusable QA/falsification review contract with exact-target currentness, question matrix, evidence scope, and semantic disposition.
 
 Machine-readable navigation lives in `blueprint/process-registry.json`.
 
