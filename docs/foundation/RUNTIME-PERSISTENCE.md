@@ -11,7 +11,8 @@ The first runtime foundation answers only that question.
 ```text
 lawful Workgraph truth
 -> immutable Workgraph snapshot
--> atomic CURRENT pointer
+-> atomic immutable successor-pointer publication
+-> CURRENT = unique validated tip of retained pointer lineage
 -> exact-current transition under one writer lease
 -> restart / read-back
 ```
