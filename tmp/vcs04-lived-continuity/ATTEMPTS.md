@@ -73,7 +73,7 @@ Learned:
 - Android onboarding may legitimately require temporary USB disconnection.
 - ADB reconnect must be an explicit prerequisite state, not an implicit assumption.
 
-## A005 — current attempt
+## A005 — interrupted / no RETURN
 
 ```text
 packageSha256=3a51a21330cd26debd6c7349ab41dae4987e043b8688d71206a2f9e7745a0dd7
@@ -81,22 +81,40 @@ SDK.main=b4d427564409989e8f839066accd17ec4c790724
 VexLife.main=0fbaeb7c918ebdfc7af5389220d5bf081a906702
 VexLife.tree=3ab3affa774a2b97c0b27be2efb5a9506cdab0f9
 Android.main=30ecfe22156f6bb4b565eda990c72feff48a3866
-VCS04 VexLife producer blob parity across prior main advance=9/9 unchanged
-state=RUNNING_OR_WAITING__NO_RETURN_OBSERVED_YET
+returnFormed=false
+termination=USER_ENDED_FEEDBACKLESS_PRE_EFFECT_LOOP
+attemptArtifactsObserved=[ATTEMPT-STARTED.txt]
+adbAfterStop=R5CT50N3ZHA device SM_S908U
+knownProductEffectsPerformed=false
 ```
 
-A005 adds:
-- explicit same-serial ADB reconnect waiting;
-- missing/offline/unauthorized distinction;
-- `adb reconnect offline` / `adb reconnect device` assistance;
-- human-only USB debugging prompt boundary;
-- Android Tailscale assisted setup preserved;
-- Mac initially-running Tailscale state preserved.
+A005 added explicit same-serial USB/debug reconnect handling, but two problems remained:
+- long waits/builds could be healthy-but-silent;
+- Android shell/MagicDNS `ping` was still used as a 20-minute prerequisite gate even though the real Connected Services claim is private HTTPS gateway traffic.
 
-Known harness weakness:
-- A005 is still too quiet. Long waits/builds use captured subprocess output, so a healthy process may show no terminal activity.
-- Next runner revision, if needed, should emit bounded heartbeats with phase + elapsed + ADB/tailnet state.
-- A005 static qualification contains one **qualification-heuristic false negative**: the check named `noAutoThirdPartyInstall` sees the intentional VexLife APK install and reports false. This does not mean A005 auto-installs Tailscale; it does not. Correct the qualification predicate in the next formation instead of weakening the runtime.
+Because the only attempt artifact was `ATTEMPT-STARTED.txt`, and A005 source orders source clones before all route/membership/Serve/gateway effects, the observed interruption remained pre-effect.
+
+## A006 — current qualified successor
+
+```text
+packageSha256=4665251b1b4cc571ad0d4fab8602b44b6734bdbcec3574af22191c16eff3b4b8
+SDK.main=b4d427564409989e8f839066accd17ec4c790724
+VexLife.main=0fbaeb7c918ebdfc7af5389220d5bf081a906702
+Android.main=30ecfe22156f6bb4b565eda990c72feff48a3866
+staticQualification=ALL_PASS
+state=QUALIFIED_NOT_YET_RUN
+```
+
+A006 corrections:
+- terminal `VCS04_PROGRESS` phase lines;
+- 15-second heartbeat lines;
+- `LIVE-PROGRESS.log` and `CURRENT-PHASE.json` inside the attempt receipt surface;
+- ADB/missing/offline/unauthorized health in heartbeats;
+- product-effect status in every heartbeat;
+- Gradle build moved to an async child so heartbeat output continues while it works;
+- Android shell ping removed as an admission gate;
+- Android Tailscale package/setup remains a prerequisite, but actual tailnet reachability is proven by the private HTTPS possession/session/bootstrap/history route;
+- ADB reconnect and Android Tailscale assisted setup remain preserved.
 
 ## Product acceptance still held
 
