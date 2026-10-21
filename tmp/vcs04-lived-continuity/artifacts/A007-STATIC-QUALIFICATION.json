@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "vexlocalbridge.vcs04-installed-read-lived-a007-static-qualification/v1",
+  "wrapperSha256": "ef63aa3d953b5f943e613a48d84fe81fbacc4415083ad35922e374b7913a92b8",
+  "wrapperBytes": 23543,
+  "sourceCurrentness": {
+    "sdkMain": "b4d427564409989e8f839066accd17ec4c790724",
+    "vexLifeMain": "0fbaeb7c918ebdfc7af5389220d5bf081a906702",
+    "androidMain": "30ecfe22156f6bb4b565eda990c72feff48a3866"
+  },
+  "repair": {
+    "predecessorReturnSha256": "287f3720e884221aec6e63fc462aed0eed5644925961fe0ac1406c63b502ca44",
+    "firstFailure": "FAMILY_SPACE_HOME_INVALID",
+    "canonicalization": "fs.realpathSync.native",
+    "ownerInvariantPreserved": true
+  },
+  "checks": {
+    "zipShaMatches": true,
+    "zipCrc": true,
+    "memberCount": true,
+    "noSymlinks": true,
+    "manifestParity": true,
+    "a007Identity": true,
+    "canonicalHomeFix": true,
+    "noCanonicalOwnerWeakening": true,
+    "heartbeatPreserved": true,
+    "pingGateStillRemoved": true,
+    "gatewayProofStillActual": true,
+    "noFunnelConfiguration": true,
+    "noServeBg": true,
+    "heldSendModelRestart": true,
+    "nodeCheck": true,
+    "runnerBashSyntax": true,
+    "exactCommandBashSyntax": true
+  },
+  "nodeCheckStderr": "",
+  "allPass": true
+}
