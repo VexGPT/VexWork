@@ -32,6 +32,6 @@ Parking-lot onboarding UX: VexGPT/VexWork issue #6
 
 ## Current live attempt
 
-See `ATTEMPTS.md` and `CURRENT-A005.md`.
+See `ATTEMPTS.md` and `CURRENT-A006.md`.
 
 <!-- [VXG RealForever][VEXWORK][TEMP-CONTINUITY][VCS04-LIVED] -->
