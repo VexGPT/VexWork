@@ -34,6 +34,7 @@ A segment is an authoring membrane for one locally contained work family. Compos
 
 ```text
 vexwork.workgraph-composition/v1
+vexwork.workgraph-composition/v2
 vexwork.workgraph-segment/v1
 vexwork.workgraph-composition-result/v1
 ```
@@ -96,6 +97,32 @@ Composition therefore:
 - delegates parent/dependency existence, cycle detection, transition legality, history continuity and latest-state agreement to `createWorkgraph(...)`.
 
 Equivalent segments supplied in different order produce the same Workgraph semantic fingerprint.
+
+### Migration-compatible ordering
+
+The accepted source-managed Workgraph predates composition and its semantic fingerprint currently preserves array order for items, roots, transitions and source refs. Reordering those arrays during source segmentation would therefore manufacture a new whole-graph fingerprint even when no work meaning changed.
+
+Composition v2 adds an optional `compatibilityOrder`:
+
+```json
+{
+  "itemWorkRefs": ["..."],
+  "transitionRefs": ["..."],
+  "rootWorkRefs": ["..."],
+  "sourceRefs": ["..."]
+}
+```
+
+Listed present refs retain the named legacy order. New refs not listed are appended in deterministic fallback order, so the compatibility map does not need to grow for ordinary future work.
+
+For v2, `composition.sourceRefs` are the exact canonical Workgraph source refs. Segment `sourceRefs` remain composition-layer provenance and are not silently injected into Workgraph identity.
+
+```text
+SOURCE_SEGMENT_PROVENANCE != WORKGRAPH_SOURCE_REFS
+FILE_SPLIT != WORKGRAPH_CURRENTNESS_CHANGE
+```
+
+v1 behavior remains unchanged and rejects `compatibilityOrder`.
 
 ## What this does not do yet
 

@@ -2,6 +2,7 @@ import { verifySemanticFingerprint, withSemanticFingerprint } from './semantic.m
 import { TRANSITION_SCHEMA, createWorkItem, createWorkgraph } from './workgraph.mjs';
 
 export const WORKGRAPH_COMPOSITION_SCHEMA = 'vexwork.workgraph-composition/v1';
+export const WORKGRAPH_COMPOSITION_SCHEMA_V2 = 'vexwork.workgraph-composition/v2';
 export const WORKGRAPH_SEGMENT_SCHEMA = 'vexwork.workgraph-segment/v1';
 export const WORKGRAPH_COMPOSITION_RESULT_SCHEMA = 'vexwork.workgraph-composition-result/v1';
 
@@ -35,12 +36,43 @@ function validateStoredFingerprintIfPresent(value, label) {
   }
 }
 
+function validateCompatibilityOrder(input) {
+  if (input.compatibilityOrder === undefined) return;
+  assert(input.schemaVersion === WORKGRAPH_COMPOSITION_SCHEMA_V2, 'compatibilityOrder requires Workgraph Composition v2');
+  const order = input.compatibilityOrder;
+  assert(order && typeof order === 'object' && !Array.isArray(order), 'compatibilityOrder must be one object');
+  const fields = ['itemWorkRefs', 'transitionRefs', 'rootWorkRefs', 'sourceRefs'];
+  let represented = 0;
+  for (const field of fields) {
+    if (order[field] === undefined) continue;
+    refs(order[field], `compatibilityOrder.${field}`);
+    represented += 1;
+  }
+  assert(represented > 0, 'compatibilityOrder must contain at least one ordering field');
+}
+
+function preferredOrder(values, refFor, preferredRefs = []) {
+  if (!preferredRefs.length) return values;
+  const rank = new Map(preferredRefs.map((ref, index) => [ref, index]));
+  return [...values].sort((left, right) => {
+    const leftRank = rank.get(refFor(left));
+    const rightRank = rank.get(refFor(right));
+    const leftKnown = leftRank !== undefined;
+    const rightKnown = rightRank !== undefined;
+    if (leftKnown && rightKnown) return leftRank - rightRank;
+    if (leftKnown) return -1;
+    if (rightKnown) return 1;
+    return 0;
+  });
+}
+
 export function createWorkgraphComposition(input) {
   validateStoredFingerprintIfPresent(input, 'Workgraph Composition');
-  assert(input?.schemaVersion === WORKGRAPH_COMPOSITION_SCHEMA, 'Workgraph Composition schema mismatch');
+  assert([WORKGRAPH_COMPOSITION_SCHEMA, WORKGRAPH_COMPOSITION_SCHEMA_V2].includes(input?.schemaVersion), 'Workgraph Composition schema mismatch');
   stableRef(input.compositionRef, 'compositionRef');
   stableRef(input.graphRef, 'graphRef');
   refs(input.sourceRefs, 'sourceRefs');
+  validateCompatibilityOrder(input);
   timestamp(input.formedAt, 'formedAt');
   return withSemanticFingerprint(input);
 }
@@ -114,23 +146,47 @@ export function composeWorkgraph({ composition, segments, registry }) {
     }
   }
 
-  const items = acceptedSegments
+  const compatibilityOrder = composition.compatibilityOrder ?? {};
+
+  const deterministicItems = acceptedSegments
     .flatMap((segment) => segment.items)
     .sort((left, right) => left.workRef.localeCompare(right.workRef));
+  const items = preferredOrder(
+    deterministicItems,
+    (item) => item.workRef,
+    compatibilityOrder.itemWorkRefs ?? [],
+  );
 
-  const transitions = [...transitionsByWork.keys()]
+  const deterministicTransitions = [...transitionsByWork.keys()]
     .sort()
     .flatMap((workRef) => transitionsByWork.get(workRef));
+  const transitions = preferredOrder(
+    deterministicTransitions,
+    (transition) => transition.transitionRef,
+    compatibilityOrder.transitionRefs ?? [],
+  );
 
-  const rootWorkRefs = items
+  const deterministicRootWorkRefs = items
     .filter((item) => item.parentWorkRefOrNull === null)
     .map((item) => item.workRef)
     .sort();
+  const rootWorkRefs = preferredOrder(
+    deterministicRootWorkRefs,
+    (workRef) => workRef,
+    compatibilityOrder.rootWorkRefs ?? [],
+  );
 
-  const sourceRefs = [...new Set([
-    ...composition.sourceRefs,
-    ...acceptedSegments.flatMap((segment) => segment.sourceRefs),
-  ])].sort();
+  const deterministicSourceRefs = composition.schemaVersion === WORKGRAPH_COMPOSITION_SCHEMA_V2
+    ? [...composition.sourceRefs].sort()
+    : [...new Set([
+      ...composition.sourceRefs,
+      ...acceptedSegments.flatMap((segment) => segment.sourceRefs),
+    ])].sort();
+  const sourceRefs = preferredOrder(
+    deterministicSourceRefs,
+    (sourceRef) => sourceRef,
+    compatibilityOrder.sourceRefs ?? [],
+  );
 
   const graph = createWorkgraph({
     schemaVersion: 'vexwork.workgraph/v1',
