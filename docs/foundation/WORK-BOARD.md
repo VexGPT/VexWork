@@ -104,6 +104,36 @@ The Parking Lot is **not** another Board lane and not a Project. It projects int
 
 The first public dashboard deliberately renders Parking Lot beside the Project Board rather than forcing parked work into Project membership merely for visibility.
 
+### Multi-Project workspace projection
+
+`public/workspace.json` is the richer read model for navigating VexWork as a workspace rather than equating VexWork with one Kanban board.
+
+It is generated from the Project Registry, each registered Project + Board view, the rightful Workgraph, transition history, and global Parking Lot. It exposes Project summaries, recursive containment relationships, dependency/source/process fields, Board lane membership, and per-item transition history while remaining explicitly read-only.
+
+```text
+Project Registry
++ Project definitions
++ Workgraph containment/dependencies/transitions
++ Board views
++ Parking Lot
+-> public/workspace.json
+-> portfolio / Project / Outcome / work-item readers
+```
+
+The browser may derive presentation state such as the currently selected Project, Outcome, ticket tab, or semantic navigation level. It must not invent work relationships or lifecycle truth.
+
+```text
+PUBLIC_WORKSPACE != WORKGRAPH
+PUBLIC_WORKSPACE != PROJECT_REGISTRY
+SEMANTIC_NAVIGATION != WORK_MUTATION
+ITEM_DETAIL != COMMENT_WRITER
+BOARD_VIEW != PRIMARY_HOME
+```
+
+`public/work-dashboard.json` remains the small Foundation-board compatibility projection. New multi-Project readers should prefer `public/workspace.json`.
+
+`npm run workspace:build` regenerates the workspace projection. `npm run workspace:check` fails on drift and is part of deterministic review.
+
 ## Views
 
 `BOARD` is the first implemented view. The architecture keeps `GRAPH`, `TABLE`, `ROADMAP`, and `FOCUS` as projections over the same Workgraph rather than separate ledgers.

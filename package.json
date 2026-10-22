@@ -10,8 +10,10 @@
     "dashboard:build": "node scripts/build-public-dashboard.mjs",
     "dashboard:check": "node scripts/build-public-dashboard.mjs --check",
     "work:status": "node scripts/work-status.mjs",
-    "review:deterministic": "npm test && npm run check && npm run dashboard:check",
-    "review": "npm run review:deterministic"
+    "review:deterministic": "npm test && npm run check && npm run dashboard:check && npm run workspace:check",
+    "review": "npm run review:deterministic",
+    "workspace:build": "node scripts/build-public-workspace.mjs",
+    "workspace:check": "node scripts/build-public-workspace.mjs --check"
   },
   "engines": {
     "node": ">=20"
