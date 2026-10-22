@@ -1653,34 +1653,6 @@
       "viewRef": "view.vexlife.connected-services.board",
       "items": [
         {
-          "workRef": "work.vexlife.connected-services.guided-onboarding",
-          "label": "Simplify Connected Services onboarding across computer + phone",
-          "purpose": "Preserve the lived need for one guided setup path that checks Tailscale readiness across computer and phone, asks for protected human-only steps at the right moment, then returns to VexLife pairing/private-route setup without weakening Home, session, reachability, or pairing authority boundaries.",
-          "workClass": "POTENTIAL",
-          "state": "CAPTURED",
-          "workDisposition": "PARKED",
-          "priorityClass": "LOW",
-          "parentWorkRefOrNull": null,
-          "childWorkRefs": [],
-          "dependencyRefs": [],
-          "repositoryRefs": [
-            "repo.vexlife",
-            "repo.vexlife-android"
-          ],
-          "sourceRefs": [
-            "github.issue.vexwork.6",
-            "github.issue.vexlife.899",
-            "docs/process/CAPTURE-DISCOVERED-WORK.md"
-          ],
-          "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
-          "nextProcessRefs": [],
-          "authorityDisposition": "NO_AUTHORITY",
-          "effectDisposition": "NO_EFFECTS",
-          "createdAt": "2026-10-21T06:23:27.000Z",
-          "updatedAt": "2026-10-21T06:23:27.000Z",
-          "transitionHistory": []
-        },
-        {
           "workRef": "work.vexlife.connected-services.outcome",
           "label": "Establish VexLife Connected Services",
           "purpose": "Establish the reusable private connection/session boundary through which VexLife capabilities can reach Home-hosted semantics while feature meaning, Home authority, providers and deployment remain separately owned.",
@@ -2387,9 +2359,7 @@
         {
           "laneRef": "lane.work.intake",
           "label": "Intake",
-          "workRefs": [
-            "work.vexlife.connected-services.guided-onboarding"
-          ]
+          "workRefs": []
         },
         {
           "laneRef": "lane.work.planned",
@@ -2461,12 +2431,12 @@
         }
       ],
       "summary": {
-        "workItemCount": 20,
-        "openWorkItemCount": 11,
+        "workItemCount": 19,
+        "openWorkItemCount": 10,
         "outcomeCount": 15,
         "taskCount": 3,
         "defectCount": 1,
-        "potentialCount": 1,
+        "potentialCount": 0,
         "needsHumanCount": 0,
         "completedCount": 9
       },
