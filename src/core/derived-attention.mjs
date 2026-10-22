@@ -51,6 +51,14 @@ function assertStoredFingerprintIfPresent(value, label) {
   }
 }
 
+function withCanonicalSemanticFingerprint(input, normalized, label) {
+  const accepted = withSemanticFingerprint(normalized);
+  if (input?.semanticFingerprint !== undefined) {
+    assert(input.semanticFingerprint === accepted.semanticFingerprint, `${label} semanticFingerprint is not canonical`);
+  }
+  return accepted;
+}
+
 function assertScopeAcyclic(scopes) {
   const byRef = new Map(scopes.map((scope) => [scope.scopeRef, scope]));
   const visiting = new Set();
@@ -109,7 +117,7 @@ export function createPopulationSnapshot(input) {
   assert(new Set(entities.map((entity) => entity.entityRef)).size === entities.length, 'entityRef must be unique');
   entities.sort((left, right) => left.entityRef.localeCompare(right.entityRef));
 
-  return withSemanticFingerprint({ ...input, sourceRefs, scopes, entities });
+  return withCanonicalSemanticFingerprint(input, { ...input, sourceRefs, scopes, entities }, 'population snapshot');
 }
 
 export function createWorkLens(input) {
@@ -133,7 +141,7 @@ export function createWorkLens(input) {
   assert(new Set(predicates.map((predicate) => predicate.predicateRef)).size === predicates.length, 'predicateRef must be unique');
   predicates.sort((left, right) => left.predicateRef.localeCompare(right.predicateRef));
 
-  return withSemanticFingerprint({ ...input, sourceRefs, predicates });
+  return withCanonicalSemanticFingerprint(input, { ...input, sourceRefs, predicates }, 'work lens');
 }
 
 export function createEntityLensEvidence(input, { population, lens }) {
@@ -170,7 +178,7 @@ export function createEntityLensEvidence(input, { population, lens }) {
   assert(predicateResults.length === predicateRefs.size && predicateResults.every((result) => predicateRefs.has(result.predicateRef)), 'predicateResults must exactly cover lens predicates');
   predicateResults.sort((left, right) => left.predicateRef.localeCompare(right.predicateRef));
 
-  return withSemanticFingerprint({ ...input, existingWorkRefs, predicateResults });
+  return withCanonicalSemanticFingerprint(input, { ...input, existingWorkRefs, predicateResults }, 'entity lens evidence');
 }
 
 function completionState(predicates, resultsByRef) {

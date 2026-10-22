@@ -138,7 +138,7 @@ executionAuthority = NONE
 
 ## Deterministic identity
 
-Population, scope, predicate, evidence and existing-Work reference arrays are normalized by stable identity before semantic fingerprinting. Provider enumeration order therefore does not manufacture semantic drift.
+Population, scope, predicate, evidence and existing-Work reference arrays are normalized by stable identity before semantic fingerprinting. Provider enumeration order therefore does not manufacture semantic drift. A stored fingerprinted object must already use that normalized order; VexWork rejects rather than silently rewriting persisted semantic identity.
 
 Actual truth changes still change the fingerprint:
 

@@ -13,7 +13,7 @@ import {
   createWorkLens,
   deriveEntityAttention,
 } from '../src/core/derived-attention.mjs';
-import { verifySemanticFingerprint } from '../src/core/semantic.mjs';
+import { verifySemanticFingerprint, withSemanticFingerprint } from '../src/core/semantic.mjs';
 
 const populationInput = () => ({
   schemaVersion: POPULATION_SNAPSHOT_SCHEMA,
@@ -140,6 +140,14 @@ test('population snapshot preserves stable entities, nested scopes, and dynamic 
     entities: [...populationInput().entities].reverse(),
   });
   assert.equal(reordered.semanticFingerprint, first.semanticFingerprint);
+
+  const noncanonicalStored = withSemanticFingerprint({
+    ...populationInput(),
+    scopes: [...populationInput().scopes].reverse(),
+    entities: [...populationInput().entities].reverse(),
+  });
+  assert.equal(verifySemanticFingerprint(noncanonicalStored), true);
+  assert.throws(() => createPopulationSnapshot(noncanonicalStored), /semanticFingerprint is not canonical/);
 
   assert.throws(() => createPopulationSnapshot({
     ...populationInput(),
