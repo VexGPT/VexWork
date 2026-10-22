@@ -249,6 +249,109 @@ The base Terrain should optimize for calm reading before interaction:
 
 This preserves AI-readable provenance without making the human UI look like the traversal engine's internal graph.
 
+### Live roadmap — sequence before time
+
+The perceptual Terrain should surface concurrency before forcing a human to descend:
+
+```text
+PROJECT
+  workfront A   prior -> NOW -> next
+  workfront B   prior -> NOW -> next
+  workfront C           REVIEW / BLOCKED
+```
+
+Vertical position means concurrent workfronts. Horizontal position means continuity through one workfront. Project height may therefore grow with meaningful concurrency, while independent fold state lets a viewer collapse Projects they are not watching.
+
+The default Terrain answers **what is happening now**. A time lens may widen context without hiding current work:
+
+```text
+NOW
+6H
+24H
+7D
+```
+
+Only accepted transition timestamps establish recent lifecycle movement. Snapshot `updatedAt` may be shown as weaker state-age coverage, but must not be treated as transition truth.
+
+A sibling Roadmap presentation answers a different question:
+
+> **How many admitted sequence steps away is later work?**
+
+It projects:
+
+```text
+NOW | +1 | +2 | +3 | LATER / PARALLEL
+```
+
+Dependency-grounded sequence is solid. Structural or admitted later work whose exact order is not dependency-grounded is dotted.
+
+Permanent:
+
+```text
+SEQUENCE_DISTANCE != ELAPSED_TIME
+ROADMAP_STEP != DAY
+ROADMAP_STEP != ETA
+DEPENDENCY_PATH != CALENDAR_COMMITMENT
+PROJECTED_LATER != PROMISED_ORDER
+```
+
+The first roadmap should therefore answer:
+
+```text
+what is being worked now?
+what can follow it directly?
+what is two or three dependency steps away?
+what admitted work exists later but is not sequenced from this frontier?
+```
+
+without inventing dates.
+
+### Measuring AI-carried work
+
+AI-heavy work creates useful measurements, but wall-clock averages alone are misleading because work shape, provider latency, human relay, review loops and fresh-instance handoffs vary.
+
+The more stable first measurements are:
+
+```text
+dependency / sequence depth
+fresh session count
+participant count
+continuity handoff count
+review-cycle count
+accepted lifecycle transition count
+human/host waiting intervals
+```
+
+Work Participation provides the identity grammar for sessions/participants/handoffs, but live runtime instrumentation is still required before those counts become real operational evidence.
+
+If later evidence becomes dense enough, VexWork may derive empirical effort bands such as:
+
+```text
+similar TASK shape
+  usually 1-2 sessions
+  usually 0-1 human relay holds
+  usually one review cycle
+```
+
+That remains an effort/interaction expectation, not a promised completion timestamp.
+
+This distinction also survives the transition from Victor acting as a human relay to future Vex automation:
+
+```text
+SEQUENCE MODEL
+  remains useful
+
+AI / executor effort
+  sessions + handoffs + review cycles
+
+human relay latency
+  separate waiting dimension
+
+future Vex automation
+  may reduce relay latency
+  does not rewrite historical sequence truth
+```
+
 ### Flows pressure — VexWork must not block the work it describes
 
 The same lived cycle exposed a separate source-authoring pressure. Current independent drafts #19 (VexStream Mobile Library), #27 (VexLife ToCompletion) and #35 (VexLife Blueprint Source of Truth) all carry different product meaning yet each touches the same aggregate VexWork paths:

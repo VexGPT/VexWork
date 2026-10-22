@@ -69,6 +69,41 @@ test('Inspect is closable and participation evidence is explicitly bounded to re
   assert.match(page, /does not yet model total worker\/thread participation/);
 });
 
+test('Terrain workspace is a vertically scrollable Project/workfront roadmap rather than fixed-height Project bands', () => {
+  assert.match(page, /project-road/);
+  assert.match(page, /workfront-row/);
+  assert.match(page, /projectRoadSection/);
+  assert.match(page, /collapsedProjects/);
+  assert.match(page, /overflow:auto/);
+  assert.match(page, /Vertical = parallel work; horizontal = prior, now, next/);
+});
+
+test('Terrain time lens preserves Now while adding recent accepted movement windows', () => {
+  assert.match(page, /data-hours="0">Now/);
+  assert.match(page, /data-hours="6">6H/);
+  assert.match(page, /data-hours="24">24H/);
+  assert.match(page, /data-hours="168">7D/);
+  assert.match(page, /Flow\.projectWorkfronts\(project,\{recentHours:timeLensHours/);
+  assert.match(page, /recent moves/);
+});
+
+test('Roadmap presentation shows sequence distance rather than calendar ETA', () => {
+  assert.match(page, /data-mode="roadmap"/);
+  assert.match(page, /function renderRoadmap/);
+  assert.match(page, /Flow\.projectScopeRoadmap/);
+  assert.match(page, /'Now','\+1','\+2','\+3','Later \/ parallel'/);
+  assert.match(page, /Solid future = dependency-grounded sequence/);
+  assert.match(page, /Dotted future = admitted structural\/later work/);
+  assert.match(page, /sequence, not calendar estimate/);
+  assert.doesNotMatch(page, /estimated completion date|ETA:/i);
+});
+
+test('Terrain and Roadmap mode changes remain presentation state rather than semantic Journey mutations', () => {
+  assert.match(page, /function setViewMode\(mode\)/);
+  assert.match(page, /history\.replaceState/);
+  assert.match(page, /refreshControls\(\)/);
+  assert.match(page, /viewMode==='roadmap'/);
+});
 test('nested scrolling retains priority over outward level-of-detail traversal', () => {
   assert.match(page, /scrollPathCanMove/);
   assert.match(page, /Outer boundary reached/);
