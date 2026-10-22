@@ -53,7 +53,7 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(historyBackfill.effectDisposition, 'NO_EFFECTS');
   assert.equal(historyBackfill.formationProcessRefOrNull, 'process.vexwork.capture-discovered-work');
   assert.equal(graph.rootWorkRefs.includes(historyBackfill.workRef), true);
-  assert.equal(graph.transitions.length, 59);
+  assert.equal(graph.transitions.length, 60);
 
   const parked = graph.items.find((item) => item.workRef === 'work.vexlife-android.vexstream.not-yet-downloaded-filter');
   assert.equal(parked.workClass, 'POTENTIAL');
@@ -89,9 +89,15 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(e2e.state, 'COMPLETED');
   assert.equal(e2e.authorityDisposition, 'AUTHORIZED_BOUNDED');
   const queueIncident = graph.items.find((item) => item.workRef === 'work.vexstream.mobile-library.track-menu-presentation-defect');
-  assert.equal(queueIncident.state, 'RUNNING');
+  assert.equal(queueIncident.state, 'PAUSED_AT_CHECKPOINT');
+  assert.equal(queueIncident.workDisposition, 'ACTIVE');
   assert.equal(queueIncident.parentWorkRefOrNull, 'work.vexstream.mobile-library.massdownload-maturity');
+  assert.equal(queueIncident.authorityDisposition, 'AUTHORIZED_BOUNDED');
   assert.equal(queueIncident.effectDisposition, 'NO_EFFECTS');
+  const queueCheckpoint = graph.transitions.find((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.track-menu-defect.paused.current-n8-01');
+  assert.ok(queueCheckpoint);
+  assert.equal(queueCheckpoint.priorState, 'RUNNING');
+  assert.equal(queueCheckpoint.nextState, 'PAUSED_AT_CHECKPOINT');
   const keepOffline = graph.items.find((item) => item.workRef === 'work.vexstream.mobile-library.keep-offline-sync');
   assert.equal(keepOffline.workDisposition, 'PARKED');
   assert.equal(keepOffline.authorityDisposition, 'NO_AUTHORITY');
