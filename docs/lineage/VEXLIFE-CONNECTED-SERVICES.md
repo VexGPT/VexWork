@@ -252,7 +252,22 @@ Current truth:
 ```text
 Allow incoming connections was checked by the human.
 Machine re-observation is still owed.
-A015 is next.
+A015 is QUALIFIED and waiting for one host execution.
 ```
+
+Current A015 formation:
+
+```text
+purpose=machine re-observe shieldsUp=false, then prove/disprove Android -> Mac private Serve TCP reachability
+wrapperSha256=f9e50c1b4da5d2ee5c18732ba8246092e3a14ddfe563b23322f3ff0ca742c64d
+wrapperBytes=18860
+carrier=accepted VexLocalBridge direct-host adapter
+productEffectsHeld=true
+tailnetPolicyMutation=false
+shieldsUpMutation=false
+publicFunnel=false
+```
+
+On terminal A015 RETURN, consume it before any replay.
 
 <!-- [VXG RealForever][VEXWORK][LINEAGE][VEXLIFE-CONNECTED-SERVICES] -->
