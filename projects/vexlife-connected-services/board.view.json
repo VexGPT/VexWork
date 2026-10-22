@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "vexwork.work-board-view/v1",
+  "viewRef": "view.vexlife.connected-services.board",
+  "projectRef": "project.vexlife.connected-services",
+  "label": "VexLife Connected Services Work Board",
+  "laneRefOrder": [
+    "lane.work.intake",
+    "lane.work.planned",
+    "lane.work.ready",
+    "lane.work.active",
+    "lane.work.waiting",
+    "lane.work.needs-human",
+    "lane.work.verify",
+    "lane.work.attention",
+    "lane.work.done",
+    "lane.work.archive"
+  ]
+}
