@@ -53,7 +53,7 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(historyBackfill.effectDisposition, 'NO_EFFECTS');
   assert.equal(historyBackfill.formationProcessRefOrNull, 'process.vexwork.capture-discovered-work');
   assert.equal(graph.rootWorkRefs.includes(historyBackfill.workRef), true);
-  assert.equal(graph.transitions.length, 58);
+  assert.equal(graph.transitions.length, 59);
 
   const parked = graph.items.find((item) => item.workRef === 'work.vexlife-android.vexstream.not-yet-downloaded-filter');
   assert.equal(parked.workClass, 'POTENTIAL');
@@ -159,6 +159,7 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   const vexsite = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.vexsite-dogfood');
   const populationScope = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.vexsite-population-scope');
   const terrain = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.relational-terrain');
+  const terrainPatient = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.relational-terrain.patient-zero');
   assert.equal(operationalOutcome.state, 'RUNNING');
   assert.equal(derivedFoundation.state, 'COMPLETED');
   assert.equal(derivedContract.state, 'COMPLETED');
@@ -167,6 +168,7 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(vexsite.state, 'READY');
   assert.equal(populationScope.state, 'READY');
   assert.equal(terrain.state, 'RUNNING');
+  assert.equal(terrainPatient.state, 'VERIFYING');
 
 });
 
