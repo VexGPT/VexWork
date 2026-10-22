@@ -140,29 +140,51 @@ This table keeps the causal history without making future instances read every i
 | A049 | Dependency/browser setup reached the real suite; exposed clean-source test ordering, preservation of explicit `ADOPTED_READ_ONLY` source shape, and the need to isolate the new live-resource P4 test under the repository's existing isolation class. |
 | A050 | Exact 30-path DCO commit formed; focused proof + clean full repository check passed; non-force push succeeded. Final remote-head assertion was harness-only and occurred after publication. |
 | A051 | SourceOwner carrier stopped before inner execution because the current native carrier no longer accepts the obsolete `expectedCandidateHead` outer-binding key. No VexLife/PR/lifecycle effect occurred. |
-| A052 | Fresh same-head SourceOwner carrier removed the obsolete binding key and PASSed the exact-head SourceOwner gate; it advanced the lifecycle into Assurance without mutation. |
+| A052 | Fresh same-head SourceOwner carrier removed the obsolete binding key and PASSed the exact-head SourceOwner gate; it advanced the lifecycle into Assurance without mutation. |\n| A053 | First post-source-acceptance retained-Home lived attempt re-bound the exact P3 Home/thread/head, then stopped before P4 authority/effect when the accepted Heretic runtime owner's qualification chat hit `LOOPBACK_INFER_FAILED` / timeout. Target typed effect and Conversation advance were not performed. |
 
 The repeating engineering lesson is to preserve the first substantive failure and repair the **smallest rightful layer**: candidate source when the candidate is wrong, harness/formation when source never executed, proof environment when the repository's declared prerequisites were absent, and lifecycle only after exact-head evidence is earned.
 
-## Current edge
+## Project-local task progression
 
-As of this migration:
+For this trajectory, the Work Board may carry **bounded progression tasks** beneath the larger P4 outcome so a successor can orient from completed work rather than reconstructing attempts from chat.
+
+```text
+parent outcome/task stays RUNNING while the human outcome is still open
+-> one bounded progression TASK answers one exact engineering question
+-> that TASK may become COMPLETED even when its answer is SAFE_FAILURE / defect discovery
+-> its sourceRefs point to the canonical final evidence/comment
+-> the next READY TASK names the next unconsumed executable edge
+```
+
+This is not permission to create a task for every typo or retry. Add one only when it preserves a material checkpoint a successor would otherwise have to rediscover.
+
+## Current edge
 
 ```text
 work.vexlife.tocompletion.p4.lived-reinjection
-state = READY
+state = RUNNING
 
-source prerequisite:
-  work.vexlife.tocompletion.p4.source-acceptance = COMPLETED
-  PR #916 = terminal source-accepted
-  merge = a23313f7be4a24f6fb9989277bc1f5ad4dbdf6e8
+completed progression:
+  work.vexlife.tocompletion.p4.lived-attempt-a053 = COMPLETED
+  RETURN sha256 = ae547d380f4309ca49b15dcd9f1bd2cdf8905c4980979f306aeb19415543f64f
+  first failure = LOOPBACK_INFER_FAILED / qualification timeout
+  P4 authority write = false
+  typed orientation effect = false
+  durable Conversation advance = false
+
+next READY task:
+  work.vexlife.tocompletion.p4.runtime-currentness-a054
 
 next action:
-  form and run the retained-Home lived P4 typed-effect/reinjection proof
-  using the accepted main source and the already-proven P1-P3 Home/model/Conversation continuity
+  re-observe retained Heretic receipt/process/loopback currentness
+  -> if exact live runtime is current, continue P4 without redundant preflight chat
+  -> if runtime recovery is required, use the rightful #636 owner
+  -> if the current owner qualification timeout is reproducible/material, route that exact source defect
+
+Do not replay A053.
 ```
 
-A052 completed read-only SourceOwner proof with no VexLife source/Home/model effect. Source lifecycle then converged through Assurance, currentness, Formal Review, READY, exact-head merge, post-merge verification, and claim release.
+A053 leaves the retained P3 durable head as the exact current predecessor for the eventual P4 Conversation turn. The target P4 semantic effect was not attempted.
 
 ## Remaining completion path
 
