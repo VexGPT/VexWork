@@ -4174,7 +4174,9 @@
         "sourceRefs": [
           "work.vexstream.mobile-library.outcome",
           "github.pull.vexlife-android.142",
-          "docs/process/CAPTURE-DISCOVERED-WORK.md"
+          "docs/process/CAPTURE-DISCOVERED-WORK.md",
+          "projects/vexstream-mobile-library/README.md",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/offline/VexStreamOfflineDocs.kt"
         ],
         "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
         "nextProcessRefs": [
