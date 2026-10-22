@@ -11,6 +11,7 @@ This is the current architecture map. Follow the exact foundation whose question
 | Delegated agency / Human Transition Handshake | How can an authorized AI manage routine work while a human explicitly acknowledges and approves meaningful phase promotions? | `src/core/transition-handshake.mjs`, `docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md` | `test/transition-handshake.test.mjs` | FOUNDATION |
 | Work Board | How do I see one Project in a familiar Jira/kanban-shaped view without making the view the truth owner? | `src/core/work-board.mjs` | `test/work-board.test.mjs` | FOUNDATION |
 | Derived Attention | How do dynamic entity populations and current evidence become work-shaped attention, aggregate counts and scope/entity descent without becoming WorkState or implementation authority? | `docs/foundation/DERIVED-ATTENTION.md`, `docs/foundation/DERIVED-ATTENTION-PROJECTION.md`, `src/core/derived-attention.mjs`, `src/core/derived-attention-projection.mjs` | `test/derived-attention.test.mjs`, `test/derived-attention-projection.test.mjs` | FOUNDATION |
+| Derived Work Promotion | How does one exact derived concern create one canonical Work item or resolve to existing Work without automatic ticket generation? | `docs/process/PROMOTE-DERIVED-CONCERN.md`, `src/core/derived-work-promotion.mjs` | `test/derived-work-promotion.test.mjs` | FOUNDATION |
 | Parking Lot | How do I preserve useful deferred work without making a provider ticket or fake Project the owner? | `docs/foundation/PARKING-LOT.md`, `src/core/work-board.mjs` | `test/work-board.test.mjs` | FOUNDATION |
 | Process Map | Which reusable process should a fresh worker follow for this kind of work question? | `blueprint/process-registry.json`, `src/core/process-map.mjs`, `docs/process/` | `test/process-map.test.mjs` | FOUNDATION |
 | Repository Graph | Which repositories does work touch and where does each repository explain itself? | `blueprint/repository-registry.json`, `src/core/repository-graph.mjs` | `test/repository-graph.test.mjs` | FOUNDATION |
@@ -38,6 +39,9 @@ dynamic entity populations / Work Lenses / current derived attention
 
 aggregate / scope / entity / evidence projection
 -> DERIVED-ATTENTION-PROJECTION.md
+
+one exact concern -> new or existing canonical Work
+-> ../process/PROMOTE-DERIVED-CONCERN.md
 
 delegated AI agency / human acknowledgement + approval / phase transition
 -> HUMAN-TRANSITION-HANDSHAKE.md
