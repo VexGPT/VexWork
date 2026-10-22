@@ -60,19 +60,14 @@ test('public workspace preserves recursive containment and Jira-like detail fiel
   const p5 = project.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p5.lived-continuity-learning');
   const p5G02 = project.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p5.g02-semantic-authority-materializer');
   assert.equal(p5.state, 'RUNNING');
-  assert.equal(p5G02.state, 'READY');
+  assert.equal(p5G02.state, 'RUNNING');
   assert.deepEqual(p5.childWorkRefs, ['work.vexlife.tocompletion.p5.g02-semantic-authority-materializer']);
-  const connected = workspace.projects.find((entry) => entry.project.projectRef === 'project.vexlife.connected-services');
-  assert.ok(connected);
-  assert.equal(connected.summary.workItemCount, 19);
-  const phase3 = connected.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs04.phase3-fresh-user-family');
-  const lived = connected.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs04.phase3.host-to-android-l1-l5');
-  const defect = connected.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs04.phase3.owner-only-family-readability');
-  assert.equal(phase3.state, 'RUNNING');
-  assert.equal(defect.state, 'COMPLETED');
-  assert.equal(lived.state, 'READY');
-  assert.deepEqual(lived.dependencyRefs, [defect.workRef]);
-  assert.equal(connected.lanes.find((lane) => lane.laneRef === 'lane.work.ready').workRefs.includes(lived.workRef), true);
+  const p6 = project.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p6.cultivation-training-birth');
+  const p7 = project.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p7.whole-product-expansion');
+  assert.equal(p6.state, 'WAITING_DEPENDENCIES');
+  assert.equal(p7.state, 'PLAN_VALIDATED');
+  assert.deepEqual(p6.childWorkRefs, []);
+  assert.deepEqual(p7.childWorkRefs, []);
 });
 
 test('public workspace board lanes reference the same canonical projected items', () => {
@@ -95,3 +90,23 @@ test('checked-in public workspace is generated-current', () => {
 });
 
 // [VXG RealForever]
+
+
+test('Connected Services is discoverable as a real Project with the current lived edge in Ready', () => {
+  const workspace = buildWorkspace();
+  const connected = workspace.projects.find((entry) => entry.project.projectRef === 'project.vexlife.connected-services');
+  assert.ok(connected);
+  assert.equal(connected.summary.workItemCount, 19);
+  const phase1 = connected.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs04.phase1-prechallenge');
+  const phase2 = connected.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs04.phase2-fixture-l1-l5');
+  const phase3 = connected.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs04.phase3-fresh-user-family');
+  const defect = connected.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs04.phase3.owner-only-family-readability');
+  const lived = connected.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs04.phase3.host-to-android-l1-l5');
+  assert.deepEqual([phase1.state, phase2.state, phase3.state], ['COMPLETED', 'COMPLETED', 'RUNNING']);
+  assert.equal(defect.state, 'COMPLETED');
+  assert.equal(lived.state, 'READY');
+  assert.deepEqual(lived.dependencyRefs, [defect.workRef]);
+  assert.equal(connected.lanes.find((lane) => lane.laneRef === 'lane.work.ready').workRefs.includes(lived.workRef), true);
+  assert.equal(connected.items.some((item) => item.workRef === 'work.vexlife.connected-services.guided-onboarding'), false);
+  assert.equal(workspace.parkingLot.items.some((item) => item.workRef === 'work.vexlife.connected-services.guided-onboarding'), true);
+});
