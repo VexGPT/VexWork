@@ -903,9 +903,9 @@
       "workRef": "work.vexlife.connected-services.vcs04.phase3-fresh-user-family",
       "parentWorkRefOrNull": "work.vexlife.connected-services.vcs04-conversation-adoption",
       "label": "Phase 3 — fresh-user Family establishment",
-      "purpose": "Replace proof-only room construction with the rightful fresh-user Family host establishment path and re-prove installed L1-L5 through product-created canonical Family state.",
+      "purpose": "Establish or reuse the canonical first Family Space and initial GROUP room through the accepted browser HOST lifecycle owner, then re-prove installed Android L1-L5; current source work corrects owner-only hosted room visibility before lived replay.",
       "workClass": "OUTCOME",
-      "state": "READY",
+      "state": "RUNNING",
       "workDisposition": "ACTIVE",
       "priorityClass": "HIGH",
       "dependencyRefs": [
@@ -918,14 +918,15 @@
       "sourceRefs": [
         "docs/lineage/VEXLIFE-CONNECTED-SERVICES.md",
         "github.issue.vexlife.899",
-        "github.issue.vexlife.899.comment.6330469773"
+        "github.issue.vexlife.899.comment.6330469773",
+        "github.pull.vexlife.917"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-21T23:56:41.000Z",
-      "updatedAt": "2026-10-22T01:28:59.658Z"
+      "updatedAt": "2026-10-22T01:33:58.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -1065,6 +1066,33 @@
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-21T23:56:41.000Z",
       "updatedAt": "2026-10-22T00:54:57.922Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.connected-services.vcs04.phase3.owner-only-family-readability",
+      "parentWorkRefOrNull": "work.vexlife.connected-services.vcs04.phase3-fresh-user-family",
+      "label": "Fresh hosted owner-only Family is hidden from bootstrap/read",
+      "purpose": "Correct the Conversation admission mismatch where hostFamily() canonically creates an initial GROUP with one authenticated human OWNER plus Family companion lineage, but browser/server bootstrap currently requires two human principals and therefore hides the fresh room as EMPTY.",
+      "workClass": "DEFECT",
+      "state": "RUNNING",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "github.pull.vexlife.917",
+        "repo.vexlife:docs/VEX-FAMILY-HOST-ESTABLISHMENT.md",
+        "repo.vexlife:src/core/family-host-runtime.mjs",
+        "repo.vexlife:src/core/browser-family-conversation-bridge.mjs"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-22T01:33:58.000Z",
+      "updatedAt": "2026-10-22T01:35:31.000Z"
     }
   ],
   "transitions": [
@@ -1313,6 +1341,19 @@
         "github.issue.vexlife.899.comment.6330469773"
       ],
       "createdAt": "2026-10-22T01:28:59.658Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.connected-services.vcs04.phase3.running.pr917",
+      "workRef": "work.vexlife.connected-services.vcs04.phase3-fresh-user-family",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Phase 3 grounded the accepted browser HOST product trigger and found a source-level owner-only GROUP visibility defect required for fresh-user Android read; PR #917 is the bounded correction.",
+      "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexlife.917"
+      ],
+      "createdAt": "2026-10-22T01:33:58.000Z"
     }
   ],
   "sourceRefs": [
