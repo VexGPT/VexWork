@@ -75,7 +75,7 @@ Exact private Home/model identities are intentionally **not duplicated in public
 | P1 | COMPLETED | Selected Heretic model/runtime established in the real retained Home path. |
 | P2 | COMPLETED | First lived real Heretic Conversation turn reached `TERMINAL_LIVED_PASS`. |
 | P3 | COMPLETED | Same-Home restart + second real Heretic turn + durable readback reached `TERMINAL_LIVED_PASS`; PR #915 is accepted history. |
-| P4 | RUNNING | Typed local effect + verified result reinjection. PR #916 is terminal source-accepted; the retained-Home lived effect/reinjection proof is now the foreground gate. |
+| P4 | COMPLETED | A054 reached `P4_TERMINAL_LIVED_PASS`: real Heretic chose the exact cued typed effect, Native Worker executed orientation, ToolResultRelay reinjected the verified result, later synthesis completed, and the same durable Conversation advanced. |\n| P5 | RUNNING | Lived continuity/learning is now foreground. A054 supplies exact G01 evidence; the first open seam is the missing rightful Memory/Safety owner-side semantic-authority materializer required before VexLife may commit one live G02 Score record. |
 
 ## P4 accepted design
 
@@ -141,6 +141,7 @@ This table keeps the causal history without making future instances read every i
 | A050 | Exact 30-path DCO commit formed; focused proof + clean full repository check passed; non-force push succeeded. Final remote-head assertion was harness-only and occurred after publication. |
 | A051 | SourceOwner carrier stopped before inner execution because the current native carrier no longer accepts the obsolete `expectedCandidateHead` outer-binding key. No VexLife/PR/lifecycle effect occurred. |
 | A052 | Fresh same-head SourceOwner carrier removed the obsolete binding key and PASSed the exact-head SourceOwner gate; it advanced the lifecycle into Assurance without mutation. |\n| A053 | First post-source-acceptance retained-Home lived attempt re-bound the exact P3 Home/thread/head, then stopped before P4 authority/effect when the accepted Heretic runtime owner's qualification chat hit `LOOPBACK_INFER_FAILED` / timeout. Target typed effect and Conversation advance were not performed. |
+| A054 | Re-observed the exact live qualified Heretic using read-only health/model identity, then reached `P4_TERMINAL_LIVED_PASS`: one model-chosen typed orientation effect, exact receipt, ToolResultRelay reinjection, later synthesis, consumed authority and durable head advance from sequence 3 to 5. |
 
 The repeating engineering lesson is to preserve the first substantive failure and repair the **smallest rightful layer**: candidate source when the candidate is wrong, harness/formation when source never executed, proof environment when the repository's declared prerequisites were absent, and lifecycle only after exact-head evidence is earned.
 
@@ -161,51 +162,59 @@ This is not permission to create a task for every typo or retry. Add one only wh
 ## Current edge
 
 ```text
-work.vexlife.tocompletion.p4.lived-reinjection
-state = RUNNING
+P4 = COMPLETED / TERMINAL_LIVED_PASS
 
 completed progression:
-  work.vexlife.tocompletion.p4.lived-attempt-a053 = COMPLETED
-  RETURN sha256 = ae547d380f4309ca49b15dcd9f1bd2cdf8905c4980979f306aeb19415543f64f
-  first failure = LOOPBACK_INFER_FAILED / qualification timeout
-  P4 authority write = false
-  typed orientation effect = false
-  durable Conversation advance = false
+  work.vexlife.tocompletion.p4.runtime-currentness-a054 = COMPLETED
+  work.vexlife.tocompletion.p4.lived-reinjection = COMPLETED
+  work.vexlife.tocompletion.p4.typed-local-effect = COMPLETED
+
+A054 terminal evidence:
+  RETURN sha256 = 3a36c72a984d9d5c0eed1e362f914f329b3e26dfb8b51083014a1578deecf09c
+  prior lived head = b6eaf4f7dc253c2d2ebb9ad2d6a0c7230d9cb95b0145755290bd2b2a35e4a4eb
+  post lived head = aade465e9026870cdcb73a2b117fcbf08bbad4624a8def08ac2c20d07a778046
+  exact typed effect receipt = receipt.vexlife.typed-command.209c711407f94898b452a708dc5609c6
+  one-time authority after = AUTHORITY_ALREADY_RESERVED_OR_CONSUMED
+  raw Conversation content returned = false
+
+current phase:
+  work.vexlife.tocompletion.p5.lived-continuity-learning = RUNNING
 
 next READY task:
-  work.vexlife.tocompletion.p4.runtime-currentness-a054
+  work.vexlife.tocompletion.p5.g02-semantic-authority-materializer
+
+grounded reason:
+  A054 is valid real G01 lived evidence.
+  VexLife G02 Score can consume a canonical Memory/Safety semantic-authority ledger.
+  It cannot mint classification/consent/acceptance itself.
+  The accepted Memory/Safety contracts explicitly held the owner-side writer/materializer,
+  and no later production materializer exists in current VexLife/SDK source.
 
 next action:
-  re-observe retained Heretic receipt/process/loopback currentness
-  -> if exact live runtime is current, continue P4 without redundant preflight chat
-  -> if runtime recovery is required, use the rightful #636 owner
-  -> if the current owner qualification timeout is reproducible/material, route that exact source defect
-
-Do not replay A053.
+  establish the smallest rightful owner-side materializer for one A054-derived
+  device-private semantic candidate and exact classification/consent/acceptance/head,
+  then let existing VexLife Score consume that owner evidence.
 ```
 
-A053 leaves the retained P3 durable head as the exact current predecessor for the eventual P4 Conversation turn. The target P4 semantic effect was not attempted.
+Do not skip directly to Dream, Rhythm or weight training. The first P5 predicate is truthful G02 semantic placement under the rightful owners.
 
 ## Remaining completion path
 
-Source lifecycle is now complete:
+P4 is now terminal complete:
 
 ```text
-ExactHeadSourceOwnerProof PASS
--> Independent Assurance CLEAR
--> lifecycle currentness CURRENT
--> Formal Reviewer APPROVE_EXACT_HEAD
--> READY
--> OwnerMergeDuty CURRENT
--> exact-head merge
--> post-merge verification PASS
--> terminal source acceptance + claim release
--> retained-Home P4 lived typed-effect/reinjection proof   <-- CURRENT
+source terminal acceptance
+-> A053 first lived attempt / exact failure learned
+-> A054 exact runtime currentness
+-> real Heretic typed-effect request
+-> Native Worker orientation effect
+-> ToolResultRelay reinjection
+-> later synthesis
+-> durable same-thread head advance
+-> P4_TERMINAL_LIVED_PASS
 ```
 
-**Source acceptance alone is not P4 completion.** The lived proof must reuse the retained real Home/model/Conversation and demonstrate the real Heretic request, exact one-time authority, Native Worker effect, verified result reinjection, and natural same-Conversation continuation.
-
-Post-P4 decomposition is intentionally not invented here. Once P4 closes, re-ground the still-protected ToCompletion outcome and form only the next actually-supported remaining work.
+P5 is now grounded from the canonical #866 phase map and current source. Its first missing predicate is not model-weight training: it is the rightful live Memory/Safety semantic-authority materializer required before existing VexLife G02 Score may commit one A054-derived device-private continuity record.
 
 ## Fresh-instance entry
 
@@ -216,7 +225,7 @@ VexWork
 -> project.vexlife.tocompletion
 -> work.vexlife.tocompletion.outcome
 -> this README for architecture / causal continuity
--> current P4 work item for the unfinished edge
+-> current READY/RUNNING work item for the unfinished phase
 -> VexLife #866 / PR #916 only for mutable exact provider/source state
 -> rightful repository/runtime owner when an effect actually descends there
 ```
