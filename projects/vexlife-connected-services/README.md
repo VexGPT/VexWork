@@ -49,8 +49,8 @@ The program intentionally learns from real consumers before extracting more arch
 ```text
 Phase 1  pre-challenge observability + private network discrimination = COMPLETED
 Phase 2  deterministic-fixture installed L1-L5                     = COMPLETED
-Phase 3  real fresh-user Family establishment                       = RUNNING
-Phase 4  durable human Send + separate Companion                    = WAITING
+Phase 3  real fresh-user Family establishment                       = COMPLETED
+Phase 4  durable human Send + separate Companion                    = READY
 Phase 5  restart + no duplicates                                    = WAITING
 Phase 6  VCS-04 terminal currentness                                = WAITING
 ```
@@ -74,68 +74,59 @@ L4 current Home / Family authority   PASS
 L5 installed Conversation read       PASS
 ```
 
-## Current Phase-3 architecture
+## Phase-3 completion evidence
 
-The rightful first-Family owner already exists:
+The rightful fresh-user product path is now lived and closed:
 
 ```text
-visible browser Host
+fresh authenticated Home
+-> visible browser Host
 -> /api/v1/family/lifecycle
--> server-owned authority
--> executeBrowserFamilyLifecycle(HOST)
 -> hostFamily()
--> canonical Family Space
--> canonical initial GROUP room
+-> canonical Family Space / initial owner-only GROUP
+-> installed Android possession + authenticated session + private gateway
+-> installed bootstrap/read
+-> owner-only empty history CURRENT
+-> exact temporary Serve cleanup closed
 ```
 
-PR #917 corrected the one source mismatch that hid a legitimate fresh owner-only room:
+A020 proved the product path without proof-fixture room creation or a seed message. A021 then re-observed A020's temporary port-10000 private Serve mapping already absent, with `AllowFunnel=false` and no product replay.
 
 ```text
-GROUP read/list minimum current humans = 1
-PRIVATE minimum current humans         = 2
-owner-only human APPEND                 = still denied
-```
-
-Accepted VexLife source:
-
-```text
-merge/main = b33765aada1f4a70d4cae253d196411b23b9cded
-tree       = 91ecd71616a971f6cb56a0ce41a45f44f14e23a6
-main Foundation run 39708257381 = PASS
+L1 remote device possession              PASS
+L2 bounded remote authenticated session  PASS
+L3 private bounded gateway               PASS
+L4 current Home / Family authority       PASS
+L5 canonical installed Conversation read PASS
+Phase-3 cleanup                          CLOSED
 ```
 
 ## Current edge
 
-**Fresh HOST → installed Android L1–L5** is the current READY work.
+**Phase 4 — durable human Send and separate Companion** is now READY.
 
 The canonical work item is:
 
 ```text
-work.vexlife.connected-services.vcs04.phase3.host-to-android-l1-l5
+work.vexlife.connected-services.vcs04.phase4-send-companion
 ```
 
 Its product claim is:
 
 ```text
-fresh authenticated Home
--> real Family HOST lifecycle
--> hostFamily-owned Family Space + initial owner-only GROUP
--> NO proof-fixture room creation
--> installed Android bootstrap/read
--> owner-only empty history remains CURRENT
--> exact cleanup
+one durable human Send exactly once
+-> human append remains durable independently
+-> separately admitted Companion/model response
+-> Companion/model failure cannot erase the human append
 ```
 
 Held until later phases:
 
 ```text
-human Send
-Companion/model response
-restart/no-duplicate proof
+real Android process restart
+restart/no-duplicate append/model replay proof
 public Funnel
 tailnet policy changes
-Android-authored room identity
-bootstrap-authored room identity
 ```
 
 ## Read next
