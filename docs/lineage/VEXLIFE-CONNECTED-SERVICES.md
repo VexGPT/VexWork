@@ -320,8 +320,24 @@ Current truth:
 A018 terminal RETURN consumed.
 Installed deterministic-fixture L1-L5 is PROVEN.
 Phase 2 is VERIFYING, not failed.
-The only hold is exact temporary Serve cleanup on port 10000.
-Fresh-user hostFamily() remains held until that cleanup closes.
+A019 cleanup-only carrier is QUALIFIED and waiting for one host execution.
+Android is not required for A019.
+Fresh-user hostFamily() remains held until cleanup closes.
+```
+
+Current A019 formation:
+
+```text
+purpose=close only A018-owned private Serve cleanup
+A018 returnSha256=e89e5beea91830be7a58b59ffcc537cbf95a713c21b2fce6dc2d458419675d6f
+expectedPort=10000
+expectedProxy=http://127.0.0.1:63594
+wrapperSha256=f578158e4c9167ad914bd1111f9c1a06600e80626f9bea5d3a99cf2510439e3d
+wrapperBytes=15798
+productReplay=false
+publicFunnelMutation=false
+tailnetPolicyMutation=false
+shieldsUpMutation=false
 ```
 
 <!-- [VXG RealForever][VEXWORK][LINEAGE][VEXLIFE-CONNECTED-SERVICES] -->
