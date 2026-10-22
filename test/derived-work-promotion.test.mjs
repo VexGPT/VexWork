@@ -32,18 +32,19 @@ const P = Object.freeze({
 });
 
 const registry = Object.freeze({
-  workClasses: ['OUTCOME', 'TASK', 'DEFECT', 'POTENTIAL'],
+  workClasses: ['POTENTIAL', 'OUTCOME', 'TASK', 'DEFECT'],
   lifecycleStates: [
     'CAPTURED', 'NEEDS_CLARIFICATION', 'DECOMPOSED', 'PLAN_VALIDATED',
-    'WAITING_DEPENDENCIES', 'WAITING_RESOURCE', 'READY', 'RUNNING',
-    'VERIFYING', 'BLOCKED', 'COMPLETED', 'CANCELLED', 'SUPERSEDED',
-    'PARKED', 'ARCHIVED',
+    'WAITING_DEPENDENCIES', 'READY', 'WAITING_RESOURCE', 'CONTEXT_ADMITTED',
+    'RUNNING', 'WAITING_TOOL', 'WAITING_HUMAN', 'VERIFYING', 'COMPLETED',
+    'CONVERGED', 'CLOSED', 'BLOCKED', 'FAILED_RECOVERABLE', 'PAUSED_AT_CHECKPOINT',
+    'SUPERSEDED', 'CANCELLED', 'HELD_UNKNOWN',
   ],
   allowedTransitions: {},
   workDispositions: ['ACTIVE', 'PARKED'],
-  priorityClasses: ['CRITICAL', 'HIGH', 'MEDIUM', 'LOW', 'UNSET'],
-  authorityDispositions: ['AUTHORIZED_BOUNDED', 'AUTHORITY_REQUIRED', 'NO_AUTHORITY'],
-  effectDispositions: ['EFFECTS_ALLOWED_BOUNDED', 'EFFECTS_HELD', 'NO_EFFECTS'],
+  priorityClasses: ['IMMEDIATE', 'HIGH', 'NORMAL', 'LOW'],
+  authorityDispositions: ['NO_AUTHORITY', 'AUTHORIZED_BOUNDED', 'DENIED', 'HELD_UNKNOWN'],
+  effectDispositions: ['NO_EFFECTS', 'EFFECTS_BOUND', 'DENIED', 'HELD_UNKNOWN'],
 });
 
 function workItem({
@@ -68,9 +69,9 @@ function workItem({
     workClass,
     state,
     workDisposition: 'ACTIVE',
-    priorityClass: 'MEDIUM',
+    priorityClass: 'NORMAL',
     authorityDisposition: 'AUTHORIZED_BOUNDED',
-    effectDisposition: 'EFFECTS_ALLOWED_BOUNDED',
+    effectDisposition: 'EFFECTS_BOUND',
     dependencyRefs,
     repositoryRefs: ['repo.example'],
     sourceRefs,
