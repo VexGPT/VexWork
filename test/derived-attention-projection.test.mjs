@@ -21,7 +21,6 @@ const P = {
   delta: ['SATISFIED', 'SATISFIED', 'UNSATISFIED'],
   epsilon: ['NOT_APPLICABLE', 'NOT_APPLICABLE', 'NOT_APPLICABLE'],
 };
-const NAMES = Object.keys(P);
 const scope = (name, parent = null) => ({
   scopeRef: `scope.example.${name}`,
   label: name,
