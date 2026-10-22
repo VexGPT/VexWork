@@ -144,9 +144,7 @@ export function createWorkLens(input) {
   return withCanonicalSemanticFingerprint(input, { ...input, sourceRefs, predicates }, 'work lens');
 }
 
-export function createEntityLensEvidence(input, { population, lens }) {
-  population = createPopulationSnapshot(population);
-  lens = createWorkLens(lens);
+function createEntityLensEvidenceFromAccepted(input, { population, lens }) {
   assertStoredFingerprintIfPresent(input, 'entity lens evidence');
   assert(input?.schemaVersion === ENTITY_LENS_EVIDENCE_SCHEMA, 'entity lens evidence schema mismatch');
   stableRef(input.evidenceRef, 'evidenceRef');
@@ -181,6 +179,12 @@ export function createEntityLensEvidence(input, { population, lens }) {
   return withCanonicalSemanticFingerprint(input, { ...input, existingWorkRefs, predicateResults }, 'entity lens evidence');
 }
 
+export function createEntityLensEvidence(input, { population, lens }) {
+  population = createPopulationSnapshot(population);
+  lens = createWorkLens(lens);
+  return createEntityLensEvidenceFromAccepted(input, { population, lens });
+}
+
 function completionState(predicates, resultsByRef) {
   const required = predicates
     .filter((predicate) => predicate.requirement === 'REQUIRED')
@@ -199,10 +203,7 @@ function attentionState(predicateResults) {
   return 'CLEAR';
 }
 
-export function deriveEntityAttention({ population, lens, evidence }) {
-  population = createPopulationSnapshot(population);
-  lens = createWorkLens(lens);
-  evidence = createEntityLensEvidence(evidence, { population, lens });
+function deriveEntityAttentionFromAccepted({ population, lens, evidence }) {
   const entity = population.entities.find((candidate) => candidate.entityRef === evidence.entityRef);
   const predicatesByRef = new Map(lens.predicates.map((predicate) => [predicate.predicateRef, predicate]));
   const resultsByRef = new Map(evidence.predicateResults.map((result) => [result.predicateRef, result]));
@@ -242,6 +243,27 @@ export function deriveEntityAttention({ population, lens, evidence }) {
   assert(COMPLETION_STATES.includes(result.completionState), 'derived completionState invalid');
   assert(ATTENTION_STATES.includes(result.attentionState), 'derived attentionState invalid');
   return result;
+}
+
+export function deriveEntityAttention({ population, lens, evidence }) {
+  population = createPopulationSnapshot(population);
+  lens = createWorkLens(lens);
+  evidence = createEntityLensEvidenceFromAccepted(evidence, { population, lens });
+  return deriveEntityAttentionFromAccepted({ population, lens, evidence });
+}
+
+export function deriveEntityAttentionBatch({ population, lens, evidence }) {
+  population = createPopulationSnapshot(population);
+  lens = createWorkLens(lens);
+  assert(lens.populationRef === population.populationRef, 'lens populationRef mismatch');
+  assert(Array.isArray(evidence), 'batch evidence must be an array');
+  return Object.freeze(evidence.map((input) => {
+    const acceptedEvidence = createEntityLensEvidenceFromAccepted(input, { population, lens });
+    return Object.freeze({
+      evidence: acceptedEvidence,
+      derived: deriveEntityAttentionFromAccepted({ population, lens, evidence: acceptedEvidence }),
+    });
+  }));
 }
 
 // [VXG RealForever]
