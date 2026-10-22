@@ -250,17 +250,21 @@ README.md
 Current truth:
 
 ```text
-Allow incoming connections was checked by the human.
-Machine re-observation is still owed.
-A015 is QUALIFIED and waiting for one host execution.
+A015 terminal RETURN consumed.
+Mac incoming Tailscale connections are machine-confirmed enabled.
+Android Tailscale/VPN is present.
+A015 stopped because broad peer-candidate collection remained ambiguous.
+A016 is QUALIFIED and waiting for one host execution.
 ```
 
-Current A015 formation:
+Current A016 formation:
 
 ```text
-purpose=machine re-observe shieldsUp=false, then prove/disprove Android -> Mac private Serve TCP reachability
-wrapperSha256=f9e50c1b4da5d2ee5c18732ba8246092e3a14ddfe563b23322f3ff0ca742c64d
-wrapperBytes=18860
+purpose=derive the Android route-selected tailnet identity toward the Mac,
+        correlate that one identity to the current Mac peer map,
+        then continue the bounded private Serve reachability probe
+wrapperSha256=7988261dd93ca3174984416b7b4abfc3f0f162d39a1f7e46a264c07796455245
+wrapperBytes=19128
 carrier=accepted VexLocalBridge direct-host adapter
 productEffectsHeld=true
 tailnetPolicyMutation=false
@@ -268,6 +272,8 @@ shieldsUpMutation=false
 publicFunnel=false
 ```
 
-On terminal A015 RETURN, consume it before any replay.
+A016 does not choose a peer by display name and does not guess among historical address references.
+
+On terminal A016 RETURN, consume it before any replay.
 
 <!-- [VXG RealForever][VEXWORK][LINEAGE][VEXLIFE-CONNECTED-SERVICES] -->
