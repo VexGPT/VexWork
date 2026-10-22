@@ -1370,7 +1370,10 @@
           "workDisposition": "ACTIVE",
           "priorityClass": "IMMEDIATE",
           "parentWorkRefOrNull": "work.vexlife.tocompletion.p5.lived-continuity-learning",
-          "childWorkRefs": [],
+          "childWorkRefs": [
+            "work.vexlife.tocompletion.p5.g02.coder-harness-a055-a056",
+            "work.vexlife.tocompletion.p5.g02.sdk-runner-a057"
+          ],
           "dependencyRefs": [
             "work.vexlife.tocompletion.p4.typed-local-effect"
           ],
@@ -1388,14 +1391,17 @@
             "source.vexlife.score-context-continuity",
             "github.issue.vextreme-sdk.225.comment.6330349715",
             "github.issue.vextreme-sdk.226.comment.6330352075",
-            "claim.vextreme-sdk.vexlife-tocompletion.p5.g02-semantic-authority-materializer.20261022a"
+            "claim.vextreme-sdk.vexlife-tocompletion.p5.g02-semantic-authority-materializer.20261022a",
+            "github.issue.vextreme-sdk.225.comment.6330620123",
+            "github.issue.vextreme-sdk.225.comment.6330658616",
+            "github.issue.vextreme-sdk.225.comment.6330760587"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-22T01:08:02.000Z",
-          "updatedAt": "2026-10-22T01:18:00.000Z",
+          "updatedAt": "2026-10-22T01:39:00.000Z",
           "transitionHistory": [
             {
               "transitionRef": "transition.vexlife.tocompletion.p5.g02-semantic-authority-materializer.source-claim-running",
@@ -1411,6 +1417,63 @@
               "createdAt": "2026-10-22T01:18:00.000Z"
             }
           ]
+        },
+        {
+          "workRef": "work.vexlife.tocompletion.p5.g02.coder-harness-a055-a056",
+          "label": "P5 G02 — A055/A056 carrier convergence",
+          "purpose": "Consume the two pre-product host failures, preserve that no SDK source effect occurred, and identify the exact current Relay/VexLocalBridge carrier requirements before another product attempt.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": "work.vexlife.tocompletion.p5.g02-semantic-authority-materializer",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife"
+          ],
+          "sourceRefs": [
+            "github.issue.vextreme-sdk.225.comment.6330620123",
+            "github.issue.vextreme-sdk.225.comment.6330658616",
+            "github.issue.vextreme-sdk.225.comment.6330760587"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T01:39:00.000Z",
+          "updatedAt": "2026-10-22T01:39:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.tocompletion.p5.g02.sdk-runner-a057",
+          "label": "P5 G02 A057 — use SDK-bound Mac runner",
+          "purpose": "Form one fresh compatible A057 attempt with the unchanged four-file Memory/Safety payload and current Relay authority shape, but execute the outer task through SDK's RUN-VEX-TASK.command / profile.repository.vextreme-sdk.macos-v1 instead of the VexLife-bound runner.",
+          "workClass": "TASK",
+          "state": "READY",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": "work.vexlife.tocompletion.p5.g02-semantic-authority-materializer",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.tocompletion.p5.g02.coder-harness-a055-a056"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife"
+          ],
+          "sourceRefs": [
+            "github.issue.vextreme-sdk.225.comment.6330760587",
+            "claim.vextreme-sdk.vexlife-tocompletion.p5.g02-semantic-authority-materializer.20261022a"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T01:39:00.000Z",
+          "updatedAt": "2026-10-22T01:39:00.000Z",
+          "transitionHistory": []
         },
         {
           "workRef": "work.vexlife.tocompletion.p5.lived-continuity-learning",
@@ -1461,7 +1524,9 @@
         {
           "laneRef": "lane.work.ready",
           "label": "Ready",
-          "workRefs": []
+          "workRefs": [
+            "work.vexlife.tocompletion.p5.g02.sdk-runner-a057"
+          ]
         },
         {
           "laneRef": "lane.work.active",
@@ -1501,6 +1566,7 @@
             "work.vexlife.tocompletion.p4.runtime-currentness-a054",
             "work.vexlife.tocompletion.p4.source-acceptance",
             "work.vexlife.tocompletion.p4.typed-local-effect",
+            "work.vexlife.tocompletion.p5.g02.coder-harness-a055-a056",
             "work.vexlife.tocompletion.p0b.foundation",
             "work.vexlife.tocompletion.p1.heretic-establishment",
             "work.vexlife.tocompletion.p2.first-lived-turn",
@@ -1514,14 +1580,14 @@
         }
       ],
       "summary": {
-        "workItemCount": 12,
-        "openWorkItemCount": 3,
+        "workItemCount": 14,
+        "openWorkItemCount": 4,
         "outcomeCount": 3,
-        "taskCount": 9,
+        "taskCount": 11,
         "defectCount": 0,
         "potentialCount": 0,
         "needsHumanCount": 0,
-        "completedCount": 9
+        "completedCount": 10
       },
       "rootItems": [
         {
