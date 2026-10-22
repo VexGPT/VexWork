@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.vexlife.blueprint-source-of-truth",
+  "label": "VexLife Blueprint Source of Truth",
+  "purpose": "Make VexLife portable software/product meaning expressible once and truthfully realizable across languages, frameworks and platforms through source-addressed deterministic mapping and matched proof without making any implementation, provider or generated target the semantic owner.",
+  "rootWorkRefs": [
+    "work.vexlife.blueprint-source-of-truth.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vexlife",
+    "repo.vextreme-sdk",
+    "repo.vexlife-android",
+    "repo.vexlife-construction-reference"
+  ],
+  "sourceRefs": [
+    "projects/vexlife-blueprint-source-of-truth/README.md",
+    "trajectory.vexlife.blueprint-source-of-truth",
+    "github.issue.vextreme-sdk.1839",
+    "github.pull.vexlife.902",
+    "github.issue.VexGPT.VexLife-Construction-Reference.11",
+    "github.pull.VexGPT.VexLife-Construction-Reference.12",
+    "docs/process/FORM-PROJECT.md"
+  ],
+  "formedAt": "2026-10-22T06:33:00.000Z"
+}
