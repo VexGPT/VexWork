@@ -597,11 +597,11 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T00:13:43.000Z",
-      "updatedAt": "2026-10-22T01:08:02.000Z",
+      "updatedAt": "2026-10-22T01:55:06.000Z",
       "workRef": "work.vexlife.tocompletion.outcome",
       "parentWorkRefOrNull": null,
       "label": "VexLife ToCompletion",
-      "purpose": "Complete VexLife as a fresh-user-capable, restartable Heretic Companion, prove bounded real local action/result reinjection, then prove one honest lived continuity/learning loop through rightful Memory/Score placement without falsely equating memory, Dream, Rhythm or learning with weight mutation.",
+      "purpose": "Carry the full VexLife ToCompletion trajectory: reconcile current truth, establish a fresh-user-capable restartable Heretic Companion, prove bounded real work, prove honest lived continuity/learning, route earned development through Cultivation/School/Training Placement/Birth, and mature connected/native product branches on the same Home/identity/capability laws.",
       "workClass": "OUTCOME",
       "state": "RUNNING",
       "priorityClass": "IMMEDIATE",
@@ -614,7 +614,9 @@
         "project.vexlife.tocompletion",
         "projects/vexlife-tocompletion/README.md",
         "github.issue.vexlife.866",
-        "github.issue.vexlife.866.comment.6330185511"
+        "github.issue.vexlife.866.comment.6330185511",
+        "github.issue.vexlife.866.comment.6280226452",
+        "map.vexlife.tocompletion.nested-pathway.20261019a"
       ]
     },
     {
@@ -625,22 +627,25 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T00:13:43.000Z",
-      "updatedAt": "2026-10-22T00:13:43.000Z",
+      "updatedAt": "2026-10-22T01:55:06.000Z",
       "workRef": "work.vexlife.tocompletion.p0b.foundation",
       "parentWorkRefOrNull": "work.vexlife.tocompletion.outcome",
-      "label": "P0/P0B — completion foundation",
-      "purpose": "Establish the completion-oriented work/project and source-lifecycle foundation needed to carry VexLife toward a real fresh-user lived path instead of stopping at architecture or partial source.",
+      "label": "P0B — durable Project / Workgraph completion foundation",
+      "purpose": "Materialize the durable Project/Workgraph/currentness foundation inserted after the canonical P0 map so later ToCompletion phases could survive fresh instances without depending on prose handoffs.",
       "workClass": "TASK",
       "state": "COMPLETED",
       "priorityClass": "HIGH",
-      "dependencyRefs": [],
+      "dependencyRefs": [
+        "work.vexlife.tocompletion.p0.research-closure"
+      ],
       "repositoryRefs": [
         "repo.vexlife"
       ],
       "sourceRefs": [
         "github.issue.vexlife.866",
         "github.pull.vexlife.912",
-        "docs/lineage/VEXLIFE-P0B.md"
+        "docs/lineage/VEXLIFE-P0B.md",
+        "github.issue.vexlife.866.comment.6280575985"
       ]
     },
     {
@@ -1004,6 +1009,94 @@
         "github.issue.vextreme-sdk.225.comment.6330760587",
         "claim.vextreme-sdk.vexlife-tocompletion.p5.g02-semantic-authority-materializer.20261022a"
       ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.tocompletion.p0.research-closure",
+      "parentWorkRefOrNull": "work.vexlife.tocompletion.outcome",
+      "label": "P0 — current entry and research closure",
+      "purpose": "Reconcile Heretic, M4, School/Cultivation, current product source and ownership; separate closed research from open engineering; and freeze one canonical ToCompletion entry before implementation descends into exact missing seams.",
+      "workClass": "TASK",
+      "state": "COMPLETED",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "github.issue.vexlife.866",
+        "github.issue.vexlife.866.comment.6264243604",
+        "github.issue.vexlife.866.comment.6265286718",
+        "github.issue.vexlife.866.comment.6280226452",
+        "map.vexlife.tocompletion.nested-pathway.20261019a"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-20T00:14:25.000Z",
+      "updatedAt": "2026-10-20T00:14:25.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.tocompletion.p6.cultivation-training-birth",
+      "parentWorkRefOrNull": "work.vexlife.tocompletion.outcome",
+      "label": "P6 — Cultivation, School, Training Placement, optional Birth",
+      "purpose": "Once the lived operational surface is stable, use actual developmental evidence to re-enter Cultivation/School, let Training Placement decide the rightful learning surface, and perform neural training/candidate evaluation/succession only when a weight route is genuinely earned.",
+      "workClass": "OUTCOME",
+      "state": "WAITING_DEPENDENCIES",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.tocompletion.p5.lived-continuity-learning"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "github.issue.vexlife.866",
+        "github.issue.vexlife.866.comment.6280226452",
+        "github.issue.vextreme-sdk.1399",
+        "github.issue.vextreme-sdk.354"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-20T00:14:25.000Z",
+      "updatedAt": "2026-10-20T00:14:25.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.tocompletion.p7.whole-product-expansion",
+      "parentWorkRefOrNull": "work.vexlife.tocompletion.outcome",
+      "label": "P7 — connected, native and whole-product expansion",
+      "purpose": "Mature Home Bridge, Android Conversation, VexMaps, VexStream, Family consent/invitation, voice, Living Journal, Relationships, Purpose Workspace and native-platform branches while consuming the same core Home/identity/capability/continuity laws rather than creating alternate Vex universes.",
+      "workClass": "OUTCOME",
+      "state": "PLAN_VALIDATED",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [
+        "work.vexlife.tocompletion.p4.typed-local-effect"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "github.issue.vexlife.866",
+        "github.issue.vexlife.866.comment.6280226452",
+        "map.vexlife.tocompletion.nested-pathway.20261019a"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-20T00:14:25.000Z",
+      "updatedAt": "2026-10-20T00:14:25.000Z"
     }
   ],
   "transitions": [
