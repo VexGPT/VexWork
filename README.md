@@ -76,6 +76,7 @@ The first foundation establishes:
 - portable Workgraph runtime persistence with immutable snapshots, atomic successor-pointer publication, CURRENT derived from the unique validated tip of retained pointer lineage, exact-current CAS, serialized writers, and explicit abandoned-writer recovery under a caller-supplied private store root;
 - a source-managed VexWork Foundation Project that dogfoods the same contracts;
 - VexLife-Android issue #144 represented as a real parked VexWork potential, with GitHub retained as provider provenance and Android feature authoring as the future route if adopted.
+- Operating Profiles that keep one VexWork truth across hosted-assistant and future local-Vex execution, with an assisted-host workflow for bounded human-only/local effects rather than making GitHub Actions or a Local Workspace universal prerequisites.
 
 ## Try it
 
