@@ -767,92 +767,7 @@
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-21T08:41:00.000Z",
           "updatedAt": "2026-10-22T06:41:27.006Z",
-          "transitionHistory": [
-            {
-              "transitionRef": "transition.vexstream.mobile-library.massdownload-e2e.decomposed.terminal-currentization-01",
-              "priorState": "CAPTURED",
-              "nextState": "DECOMPOSED",
-              "reason": "Terminal evidence resolves the MassDownload EndToEnd work shape without folding Queue into its acceptance.",
-              "actorRef": "role.vexwork.lifecycle-currentizer",
-              "sourceRefs": [
-                "github.pull.vexlife-android.148",
-                "github.pull.vextreme-sdk.1887",
-                "github.pull.vextreme-sdk.1887.comment.6334088788",
-                "github.issue.vextreme-sdk.418.comment.6334089437"
-              ],
-              "createdAt": "2026-10-22T06:41:27.001Z"
-            },
-            {
-              "transitionRef": "transition.vexstream.mobile-library.massdownload-e2e.plan-validated.terminal-currentization-02",
-              "priorState": "DECOMPOSED",
-              "nextState": "PLAN_VALIDATED",
-              "reason": "The exact three-track acceptance boundary and Queue non-claim are validated by terminal Android/SDK evidence.",
-              "actorRef": "role.vexwork.lifecycle-currentizer",
-              "sourceRefs": [
-                "github.pull.vexlife-android.148",
-                "github.pull.vextreme-sdk.1887",
-                "github.pull.vextreme-sdk.1887.comment.6334088788",
-                "github.issue.vextreme-sdk.418.comment.6334089437"
-              ],
-              "createdAt": "2026-10-22T06:41:27.002Z"
-            },
-            {
-              "transitionRef": "transition.vexstream.mobile-library.massdownload-e2e.ready.terminal-currentization-03",
-              "priorState": "PLAN_VALIDATED",
-              "nextState": "READY",
-              "reason": "Current exact-head proof, review and lifecycle evidence establish the terminal execution path as ready.",
-              "actorRef": "role.vexwork.lifecycle-currentizer",
-              "sourceRefs": [
-                "github.pull.vexlife-android.148",
-                "github.pull.vextreme-sdk.1887",
-                "github.pull.vextreme-sdk.1887.comment.6334088788",
-                "github.issue.vextreme-sdk.418.comment.6334089437"
-              ],
-              "createdAt": "2026-10-22T06:41:27.003Z"
-            },
-            {
-              "transitionRef": "transition.vexstream.mobile-library.massdownload-e2e.running.terminal-currentization-04",
-              "priorState": "READY",
-              "nextState": "RUNNING",
-              "reason": "Accepted lived execution evidence establishes that the terminal MassDownload proof entered active execution.",
-              "actorRef": "role.vexwork.lifecycle-currentizer",
-              "sourceRefs": [
-                "github.pull.vexlife-android.148",
-                "github.pull.vextreme-sdk.1887",
-                "github.pull.vextreme-sdk.1887.comment.6334088788",
-                "github.issue.vextreme-sdk.418.comment.6334089437"
-              ],
-              "createdAt": "2026-10-22T06:41:27.004Z"
-            },
-            {
-              "transitionRef": "transition.vexstream.mobile-library.massdownload-e2e.verifying.terminal-currentization-05",
-              "priorState": "RUNNING",
-              "nextState": "VERIFYING",
-              "reason": "A012, currentized Assurance, exact-head review and post-merge source parity establish terminal verification.",
-              "actorRef": "role.vexwork.lifecycle-currentizer",
-              "sourceRefs": [
-                "github.pull.vexlife-android.148",
-                "github.pull.vextreme-sdk.1887",
-                "github.pull.vextreme-sdk.1887.comment.6334088788",
-                "github.issue.vextreme-sdk.418.comment.6334089437"
-              ],
-              "createdAt": "2026-10-22T06:41:27.005Z"
-            },
-            {
-              "transitionRef": "transition.vexstream.mobile-library.massdownload-e2e.completed.terminal-currentization-06",
-              "priorState": "VERIFYING",
-              "nextState": "COMPLETED",
-              "reason": "Android PR #148 and SDK PR #1887 are merged and Main Integrity is converged; no MassDownload device or sdk-ready replay is owed.",
-              "actorRef": "role.vexwork.lifecycle-currentizer",
-              "sourceRefs": [
-                "github.pull.vexlife-android.148",
-                "github.pull.vextreme-sdk.1887",
-                "github.pull.vextreme-sdk.1887.comment.6334088788",
-                "github.issue.vextreme-sdk.418.comment.6334089437"
-              ],
-              "createdAt": "2026-10-22T06:41:27.006Z"
-            }
-          ]
+          "transitionHistory": []
         },
         {
           "workRef": "work.vexstream.mobile-library.massdownload-maturity",
@@ -1046,60 +961,7 @@
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-10-21T08:41:00.000Z",
           "updatedAt": "2026-10-22T06:41:27.010Z",
-          "transitionHistory": [
-            {
-              "transitionRef": "transition.vexstream.mobile-library.track-menu-defect.decomposed.incident-currentization-01",
-              "priorState": "CAPTURED",
-              "nextState": "DECOMPOSED",
-              "reason": "Merged incident #151 preserves the recurrence signature, counterexample, known evidence and explicit unknown root cause.",
-              "actorRef": "role.vexwork.lifecycle-currentizer",
-              "sourceRefs": [
-                "github.pull.vexlife-android.151",
-                "repo.vexlife-android:docs/foundation/test-proof/incidents/TF-INCIDENT-2026-10-21-004.md",
-                "github.pull.vexlife-android.148"
-              ],
-              "createdAt": "2026-10-22T06:41:27.007Z"
-            },
-            {
-              "transitionRef": "transition.vexstream.mobile-library.track-menu-defect.plan-validated.incident-currentization-02",
-              "priorState": "DECOMPOSED",
-              "nextState": "PLAN_VALIDATED",
-              "reason": "The incident defines truthful closure criteria and separates accepted observability hardening from causal resolution.",
-              "actorRef": "role.vexwork.lifecycle-currentizer",
-              "sourceRefs": [
-                "github.pull.vexlife-android.151",
-                "repo.vexlife-android:docs/foundation/test-proof/incidents/TF-INCIDENT-2026-10-21-004.md",
-                "github.pull.vexlife-android.148"
-              ],
-              "createdAt": "2026-10-22T06:41:27.008Z"
-            },
-            {
-              "transitionRef": "transition.vexstream.mobile-library.track-menu-defect.ready.incident-currentization-03",
-              "priorState": "PLAN_VALIDATED",
-              "nextState": "READY",
-              "reason": "Current source and merged incident evidence are sufficient to begin bounded causal investigation without authorizing a speculative repair.",
-              "actorRef": "role.vexwork.lifecycle-currentizer",
-              "sourceRefs": [
-                "github.pull.vexlife-android.151",
-                "repo.vexlife-android:docs/foundation/test-proof/incidents/TF-INCIDENT-2026-10-21-004.md",
-                "github.pull.vexlife-android.148"
-              ],
-              "createdAt": "2026-10-22T06:41:27.009Z"
-            },
-            {
-              "transitionRef": "transition.vexstream.mobile-library.track-menu-defect.running.incident-currentization-04",
-              "priorState": "READY",
-              "nextState": "RUNNING",
-              "reason": "Human-approved continuation enters active Queue causal investigation; source-repair effects remain held until a cause earns them.",
-              "actorRef": "role.vexwork.lifecycle-currentizer",
-              "sourceRefs": [
-                "github.pull.vexlife-android.151",
-                "repo.vexlife-android:docs/foundation/test-proof/incidents/TF-INCIDENT-2026-10-21-004.md",
-                "github.pull.vexlife-android.148"
-              ],
-              "createdAt": "2026-10-22T06:41:27.010Z"
-            }
-          ]
+          "transitionHistory": []
         }
       ],
       "lanes": [
