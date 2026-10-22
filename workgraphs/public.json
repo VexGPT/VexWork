@@ -919,7 +919,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T01:08:02.000Z",
-      "updatedAt": "2026-10-22T01:18:00.000Z",
+      "updatedAt": "2026-10-22T01:39:00.000Z",
       "workRef": "work.vexlife.tocompletion.p5.g02-semantic-authority-materializer",
       "parentWorkRefOrNull": "work.vexlife.tocompletion.p5.lived-continuity-learning",
       "label": "P5 G02 — establish rightful semantic-authority materializer",
@@ -944,6 +944,64 @@
         "source.vexlife.score-context-continuity",
         "github.issue.vextreme-sdk.225.comment.6330349715",
         "github.issue.vextreme-sdk.226.comment.6330352075",
+        "claim.vextreme-sdk.vexlife-tocompletion.p5.g02-semantic-authority-materializer.20261022a",
+        "github.issue.vextreme-sdk.225.comment.6330620123",
+        "github.issue.vextreme-sdk.225.comment.6330658616",
+        "github.issue.vextreme-sdk.225.comment.6330760587"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-22T01:39:00.000Z",
+      "updatedAt": "2026-10-22T01:39:00.000Z",
+      "workRef": "work.vexlife.tocompletion.p5.g02.coder-harness-a055-a056",
+      "parentWorkRefOrNull": "work.vexlife.tocompletion.p5.g02-semantic-authority-materializer",
+      "label": "P5 G02 — A055/A056 carrier convergence",
+      "purpose": "Consume the two pre-product host failures, preserve that no SDK source effect occurred, and identify the exact current Relay/VexLocalBridge carrier requirements before another product attempt.",
+      "workClass": "TASK",
+      "state": "COMPLETED",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "github.issue.vextreme-sdk.225.comment.6330620123",
+        "github.issue.vextreme-sdk.225.comment.6330658616",
+        "github.issue.vextreme-sdk.225.comment.6330760587"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-22T01:39:00.000Z",
+      "updatedAt": "2026-10-22T01:39:00.000Z",
+      "workRef": "work.vexlife.tocompletion.p5.g02.sdk-runner-a057",
+      "parentWorkRefOrNull": "work.vexlife.tocompletion.p5.g02-semantic-authority-materializer",
+      "label": "P5 G02 A057 — use SDK-bound Mac runner",
+      "purpose": "Form one fresh compatible A057 attempt with the unchanged four-file Memory/Safety payload and current Relay authority shape, but execute the outer task through SDK's RUN-VEX-TASK.command / profile.repository.vextreme-sdk.macos-v1 instead of the VexLife-bound runner.",
+      "workClass": "TASK",
+      "state": "READY",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexlife.tocompletion.p5.g02.coder-harness-a055-a056"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "github.issue.vextreme-sdk.225.comment.6330760587",
         "claim.vextreme-sdk.vexlife-tocompletion.p5.g02-semantic-authority-materializer.20261022a"
       ]
     }
