@@ -219,7 +219,37 @@ The experiment does **not** yet establish a generic `VexTerrain` foundation. Reu
 
 The currentness/flow layer is a dependency-gated successor. It will add current work, recent accepted transitions, recent completion and dependency-based newly-available work only after traversal semantics are stable; provider activity and incomplete transition-history coverage must never be presented as canonical progress.
 
-PR #33 has now merged the patient-zero source into accepted VexWork main. T1 therefore sits in `VERIFYING`: the remaining predicate is lived browser/trackpad/compact traversal behavior, not additional source formation.
+### Lived correction — depth is perceptual, not navigational
+
+The first browser patient-zero made one architectural mistake visible:
+
+```text
+WRONG
+focus node + radial neighbors
+wheel -> another semantic node
+depth rail -> breadcrumb/navigation
+
+CORRECT DIRECTION
+one stable organized field
+children already latent/visible inside their parent region
+zoom/scroll -> more semantic level-of-detail
+click/search -> optional explicit repositioning
+dependency/search/back -> explicit traversal continuity when provenance matters
+```
+
+The base Terrain should therefore optimize for calm reading before interaction:
+
+- Projects occupy stable bands rather than orbiting a central workspace card.
+- A Project band previews its root Outcomes before the human enters deeper detail.
+- Deeper containment expands in-place while ancestors and siblings remain compressed context.
+- Long purpose text is secondary; identity, state and trajectory structure lead.
+- Dependency/cross-project relationships appear contextually on focus or explicit inspection rather than as permanent connector lines.
+- Pixel/camera depth changes presentation only. It does not append Journey history or silently change canonical work position.
+- Explicit search, dependency jumps, Back and Revisit may still use Navigation Continuity because those are real semantic jumps.
+
+This preserves AI-readable provenance without making the human UI look like the traversal engine's internal graph.
+
+PR #33 merged the first patient-zero source, and PR #34 correctly moved T1 to `VERIFYING`. Lived review then rejected the radial renderer: it made depth behave like node navigation and made humans reconstruct meaning from orbiting cards. The traversal kernel remains useful, but T1 has re-entered `RUNNING` for a perceptual-depth refactor.
 
 ## Phase 2 — Patient Zero: VexSite Localization
 
@@ -478,7 +508,7 @@ P5  Antique Plate lived commerce pilot                    WAITING_DEPENDENCIES
 P6  Cross-domain completion                               WAITING_DEPENDENCIES
 
 PARALLEL EXPERIENCE
-T1  Relational Terrain patient-zero                       VERIFYING
+T1  Relational Terrain patient-zero                       RUNNING
 T2  Currentness and flow Terrain layer                    WAITING_DEPENDENCIES
 
 PARKED

@@ -3467,7 +3467,7 @@
           "label": "Relational Terrain patient-zero",
           "purpose": "Prove one VexWork-owned Terrain experience with arbitrary-depth semantic traversal, typed containment/dependency/project portals, structural path distinct from traversal path, cycle-safe route planning, serialized idempotent commands, bounded Journey/revisit semantics, nested-scroll arbitration and responsive presentation over the read-only public workspace.",
           "workClass": "TASK",
-          "state": "VERIFYING",
+          "state": "RUNNING",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vexwork.operational-console.relational-terrain",
@@ -3491,7 +3491,7 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-22T05:32:34.019Z",
-          "updatedAt": "2026-10-22T06:31:52.000Z",
+          "updatedAt": "2026-10-22T06:47:00.002Z",
           "transitionHistory": [
             {
               "transitionRef": "transition.vexwork.operational-console.relational-terrain.patient-zero.verifying.pr33-accepted",
@@ -3504,6 +3504,39 @@
                 "github.commit.vexwork.2427b52996134510eaabfc5e208b0853d688845f"
               ],
               "createdAt": "2026-10-22T06:31:52.000Z"
+            },
+            {
+              "transitionRef": "transition.vexwork.operational-console.relational-terrain.patient-zero.failed-recoverable.lived-layout-review",
+              "priorState": "VERIFYING",
+              "nextState": "FAILED_RECOVERABLE",
+              "reason": "Lived Pages review showed the radial focus/neighborhood renderer forced eye-darting, card overlap and treated depth as node navigation rather than progressive perceptual disclosure. Traversal semantics remain reusable; the presentation model requires refactor.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vexwork.34.comment.6334565363"
+              ],
+              "createdAt": "2026-10-22T06:47:00.000Z"
+            },
+            {
+              "transitionRef": "transition.vexwork.operational-console.relational-terrain.patient-zero.ready.perceptual-depth-correction",
+              "priorState": "FAILED_RECOVERABLE",
+              "nextState": "READY",
+              "reason": "The correction is bounded: keep explicit traversal continuity underneath, replace radial navigation with stable banded terrain where deeper structure is already visible and zoom changes level-of-detail rather than canonical semantic position.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vexwork.34.comment.6334565363"
+              ],
+              "createdAt": "2026-10-22T06:47:00.001Z"
+            },
+            {
+              "transitionRef": "transition.vexwork.operational-console.relational-terrain.patient-zero.running.perceptual-depth-refactor",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "Perceptual-depth Terrain refactor has entered bounded source authoring on the accepted VexWork Flows continuity.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vexwork.34.comment.6334565363"
+              ],
+              "createdAt": "2026-10-22T06:47:00.002Z"
             }
           ]
         },
@@ -3728,7 +3761,8 @@
           "label": "Active",
           "workRefs": [
             "work.vexwork.operational-console.outcome",
-            "work.vexwork.operational-console.relational-terrain"
+            "work.vexwork.operational-console.relational-terrain",
+            "work.vexwork.operational-console.relational-terrain.patient-zero"
           ]
         },
         {
@@ -3744,9 +3778,7 @@
         {
           "laneRef": "lane.work.verify",
           "label": "Verify",
-          "workRefs": [
-            "work.vexwork.operational-console.relational-terrain.patient-zero"
-          ]
+          "workRefs": []
         },
         {
           "laneRef": "lane.work.attention",
