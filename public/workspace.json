@@ -2158,7 +2158,7 @@
           "label": "Phase 3 — fresh-user Family establishment",
           "purpose": "Prove the real fresh-user path through the accepted browser HOST lifecycle owner: canonical Family Space and initial owner-only GROUP, followed by installed Android bootstrap/read without proof-fixture room creation; Phase-4 Send/model effects remain held.",
           "workClass": "OUTCOME",
-          "state": "RUNNING",
+          "state": "COMPLETED",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vexlife.connected-services.vcs04-conversation-adoption",
@@ -2184,7 +2184,7 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-21T23:56:41.000Z",
-          "updatedAt": "2026-10-22T01:58:34.000Z",
+          "updatedAt": "2026-10-22T04:21:01.000Z",
           "transitionHistory": [
             {
               "transitionRef": "transition.vexlife.connected-services.vcs04.phase3.ready.after-phase2",
@@ -2207,6 +2207,29 @@
                 "github.pull.vexlife.917"
               ],
               "createdAt": "2026-10-22T01:33:58.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.connected-services.vcs04.phase3.verifying.a020",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "The real fresh-user Family product claim passed through canonical HOST establishment and installed Android read; only A020-owned private Serve cleanup remained.",
+              "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.issue.vexlife.899.comment.6332093243"
+              ],
+              "createdAt": "2026-10-22T04:20:02.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.connected-services.vcs04.phase3.completed.a021",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "A021 closed the final temporary Serve cleanup debt, preserving A020's fresh HOST -> installed Android L1-L5 proof; Phase 3 is complete.",
+              "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.issue.vexlife.899.comment.6332093243",
+                "github.issue.vexlife.899.comment.6332564149"
+              ],
+              "createdAt": "2026-10-22T04:21:01.000Z"
             }
           ]
         },
@@ -2215,7 +2238,7 @@
           "label": "Fresh HOST → installed Android L1-L5",
           "purpose": "Execute the current product establishment path without proof-fixture room creation: fresh authenticated Home -> real Family HOST lifecycle -> hostFamily-owned canonical Family Space/initial owner-only GROUP -> installed Android bootstrap/read -> exact cleanup, while Send/model/restart remain held.",
           "workClass": "TASK",
-          "state": "READY",
+          "state": "COMPLETED",
           "workDisposition": "ACTIVE",
           "priorityClass": "IMMEDIATE",
           "parentWorkRefOrNull": "work.vexlife.connected-services.vcs04.phase3-fresh-user-family",
@@ -2238,8 +2261,42 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-22T01:58:34.000Z",
-          "updatedAt": "2026-10-22T01:58:34.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-10-22T04:21:00.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexlife.connected-services.vcs04.phase3.host-to-android-l1-l5.running.a020",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "A020 executed the real fresh browser HOST -> installed Android path on current accepted source without proof-fixture room creation.",
+              "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.issue.vexlife.899.comment.6332093243"
+              ],
+              "createdAt": "2026-10-22T04:20:00.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.connected-services.vcs04.phase3.host-to-android-l1-l5.verifying.a020",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "A020 proved fresh HOST establishment plus installed Android L1-L5 and owner-only empty history; exact temporary private Serve cleanup remained.",
+              "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.issue.vexlife.899.comment.6332093243"
+              ],
+              "createdAt": "2026-10-22T04:20:01.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.connected-services.vcs04.phase3.host-to-android-l1-l5.completed.a021",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "A021 re-observed the exact A020 port-10000 private Serve mapping already absent with AllowFunnel=false and no product replay, closing the task.",
+              "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.issue.vexlife.899.comment.6332564149"
+              ],
+              "createdAt": "2026-10-22T04:21:00.000Z"
+            }
+          ]
         },
         {
           "workRef": "work.vexlife.connected-services.vcs04.phase3.owner-only-family-readability",
@@ -2297,7 +2354,7 @@
           "label": "Phase 4 — durable Send and separate Companion",
           "purpose": "Prove one durable human Send exactly once, then a separately admitted Companion/model response whose failure cannot erase the human append.",
           "workClass": "OUTCOME",
-          "state": "WAITING_DEPENDENCIES",
+          "state": "READY",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vexlife.connected-services.vcs04-conversation-adoption",
@@ -2318,8 +2375,21 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-21T23:56:41.000Z",
-          "updatedAt": "2026-10-21T23:56:41.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-10-22T04:21:02.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexlife.connected-services.vcs04.phase4.ready.after-phase3",
+              "priorState": "WAITING_DEPENDENCIES",
+              "nextState": "READY",
+              "reason": "Fresh-user Family establishment and installed Android L1-L5 completed with cleanup closed, releasing durable human Send and separate Companion/failure proof.",
+              "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.issue.vexlife.899.comment.6332093243",
+                "github.issue.vexlife.899.comment.6332564149"
+              ],
+              "createdAt": "2026-10-22T04:21:02.000Z"
+            }
+          ]
         },
         {
           "workRef": "work.vexlife.connected-services.vcs04.phase5-restart-no-duplicates",
@@ -2475,7 +2545,6 @@
           "laneRef": "lane.work.planned",
           "label": "Planned",
           "workRefs": [
-            "work.vexlife.connected-services.vcs04.phase4-send-companion",
             "work.vexlife.connected-services.vcs04.phase5-restart-no-duplicates",
             "work.vexlife.connected-services.vcs05-stream-stress",
             "work.vexlife.connected-services.vcs04.phase6-terminal-currentness",
@@ -2487,7 +2556,7 @@
           "laneRef": "lane.work.ready",
           "label": "Ready",
           "workRefs": [
-            "work.vexlife.connected-services.vcs04.phase3.host-to-android-l1-l5"
+            "work.vexlife.connected-services.vcs04.phase4-send-companion"
           ]
         },
         {
@@ -2495,8 +2564,7 @@
           "label": "Active",
           "workRefs": [
             "work.vexlife.connected-services.outcome",
-            "work.vexlife.connected-services.vcs04-conversation-adoption",
-            "work.vexlife.connected-services.vcs04.phase3-fresh-user-family"
+            "work.vexlife.connected-services.vcs04-conversation-adoption"
           ]
         },
         {
@@ -2526,12 +2594,14 @@
             "work.vexlife.connected-services.vcs04.phase1-prechallenge",
             "work.vexlife.connected-services.vcs04.phase1.android-observability-source",
             "work.vexlife.connected-services.vcs04.phase1.private-serve-ingress",
+            "work.vexlife.connected-services.vcs04.phase3.host-to-android-l1-l5",
             "work.vexlife.connected-services.vcs04.phase3.owner-only-family-readability",
             "work.vexlife.connected-services.vcs00-maps-home-admission",
             "work.vexlife.connected-services.vcs01-consumer-comparison",
             "work.vexlife.connected-services.vcs02-shared-contract",
             "work.vexlife.connected-services.vcs03-maps-engine",
-            "work.vexlife.connected-services.vcs04.phase2-fixture-l1-l5"
+            "work.vexlife.connected-services.vcs04.phase2-fixture-l1-l5",
+            "work.vexlife.connected-services.vcs04.phase3-fresh-user-family"
           ]
         },
         {
@@ -2542,13 +2612,13 @@
       ],
       "summary": {
         "workItemCount": 19,
-        "openWorkItemCount": 10,
+        "openWorkItemCount": 8,
         "outcomeCount": 15,
         "taskCount": 3,
         "defectCount": 1,
         "potentialCount": 0,
         "needsHumanCount": 0,
-        "completedCount": 9
+        "completedCount": 11
       },
       "rootItems": [
         {
