@@ -187,45 +187,29 @@ ANDROID_READ_DOORWAY != FAMILY_HOST_ESTABLISHMENT
 
 ## Current checkpoint
 
-Phase 3 is active.
-
-The rightful product establishment trigger is already source-owned:
+Phase 3 is active; its bounded source defect is merged and VERIFYING on accepted main.
 
 ```text
-visible browser Host control
--> /api/v1/family/lifecycle
--> server-owned authority resolution
--> executeBrowserFamilyLifecycle(HOST)
--> hostFamily()
--> canonical Family Space
--> canonical initial GROUP room
+VexLife PR #917 = MERGED
+accepted main = b33765aada1f4a70d4cae253d196411b23b9cded
+accepted main tree = 91ecd71616a971f6cb56a0ce41a45f44f14e23a6
+candidate tree = 91ecd71616a971f6cb56a0ce41a45f44f14e23a6
+exact candidate blobs on main = 6/6
+main Foundation push run = 39708257381 / IN_PROGRESS
 ```
 
-Grounding exposed one required source defect:
+Accepted source meaning:
 
 ```text
-hostFamily() fresh result:
-  one authenticated human OWNER
-  + Family companion lineage
-  + canonical initial GROUP
+fresh HOST owner-only GROUP
+  -> bootstrap-visible
+  -> read/thread-history-visible
 
-browser/server Conversation visibility:
-  required >= 2 human principals for every channel
-  -> owner-only canonical GROUP skipped as denied
-  -> bootstrap appears EMPTY
-```
+PRIVATE
+  -> still requires >= 2 human principals
 
-Current bounded correction:
-
-```text
-VexLife PR #917
-Work: work.vexlife.connected-services.vcs04.phase3.owner-only-family-readability
-
-GROUP minimum human audience = 1
-PRIVATE minimum human audience = 2
-APPEND recipient rule remains unchanged
-HTTP regression:
-  HOST -> bootstrap CURRENT -> owner-only room -> READ_THREAD_HISTORY 200
+owner-only APPEND
+  -> still denied
 ```
 
 Current VexWork state:
@@ -234,11 +218,21 @@ Current VexWork state:
 Phase 1 = COMPLETED
 Phase 2 = COMPLETED
 Phase 3 = RUNNING
-owner-only Family readability defect = RUNNING
+owner-only Family readability defect = VERIFYING
 Phase 4 = WAITING_DEPENDENCIES
 ```
 
-Do not form the lived fresh-user Phase-3 replay until PR #917 completes source proof, semantic Assurance, lifecycle acceptance, and post-merge currentness.
+Next unconsumed edge after accepted-main validation:
+
+```text
+fresh authenticated Home
+-> real browser HOST lifecycle trigger
+-> canonical Family Space + initial GROUP
+-> no proof-only room fixture
+-> installed Android bootstrap/read
+-> preserve owner-only empty history truth
+-> no Send/model/restart yet
+```
 
 ## Manual foundation / onboarding observations
 
@@ -337,11 +331,9 @@ README.md
 Current truth:
 
 ```text
-A019 cleanup is consumed PASS.
-Phase 2 is COMPLETED.
-Phase 3 is RUNNING.
-PR #917 is the bounded owner-only fresh Family readability correction.
-Fresh lived Phase-3 replay is held until that source candidate is accepted/current.
+PR #917 merged exact and post-merge bytes/tree are verified.
+The Phase-3 source defect is VERIFYING only for the normal accepted-main Foundation push gate.
+Fresh lived Phase-3 Host -> installed Android read is the next product edge after that gate.
 ```
 
 <!-- [VXG RealForever][VEXWORK][LINEAGE][VEXLIFE-CONNECTED-SERVICES] -->
