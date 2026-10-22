@@ -2,7 +2,7 @@
   "schemaVersion": "vexwork.project-definition/v1",
   "projectRef": "project.vexwork.operational-console",
   "label": "VexWork Operational Console Evolution",
-  "purpose": "Evolve VexWork from a Project/Work Board navigator into a reusable console that can derive work-shaped attention from dynamic entity populations and operating environments without turning every entity, event, or provider record into a Work item; prove the abstraction first with VexSite Localization, then generalize it through an online antique-plate commerce pilot that reaches a human physical-fulfillment acknowledgement.",
+  "purpose": "Evolve VexWork from a Project/Work Board navigator into a reusable console that derives work-shaped attention from dynamic populations and also experiments with a relational Terrain Map for human/AI traversal of current work, movement and cross-project context without changing the underlying Workgraph or provider truth.",
   "rootWorkRefs": [
     "work.vexwork.operational-console.outcome"
   ],
@@ -18,7 +18,11 @@
     "repo.vextreme:pages/terrain-map.html",
     "github.pull.vextreme.376",
     "github.pull.vextreme.378",
-    "github.pull.vextreme.379"
+    "github.pull.vextreme.379",
+    "repo.vexlife:docs/NAVIGATION-CONTINUITY.md",
+    "repo.vexlife:docs/VEX-PRESENTATION-GRAPH.md",
+    "repo.vexlife:src/core/terrain.mjs",
+    "repo.vexlife-android:docs/foundation/VEX-BODY-SEMANTIC-BLUEPRINT.md"
   ],
   "formedAt": "2026-10-22T03:20:00.000Z"
 }
