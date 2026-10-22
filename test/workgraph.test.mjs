@@ -53,7 +53,7 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(historyBackfill.effectDisposition, 'NO_EFFECTS');
   assert.equal(historyBackfill.formationProcessRefOrNull, 'process.vexwork.capture-discovered-work');
   assert.equal(graph.rootWorkRefs.includes(historyBackfill.workRef), true);
-  assert.equal(graph.transitions.length, 62);
+  assert.equal(graph.transitions.length, 59);
 
   const parked = graph.items.find((item) => item.workRef === 'work.vexlife-android.vexstream.not-yet-downloaded-filter');
   assert.equal(parked.workClass, 'POTENTIAL');
@@ -163,7 +163,7 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(vexsite.state, 'READY');
   assert.equal(populationScope.state, 'READY');
   assert.equal(terrain.state, 'RUNNING');
-  assert.equal(terrainPatient.state, 'RUNNING');
+  assert.equal(terrainPatient.state, 'VERIFYING');
 
 });
 
