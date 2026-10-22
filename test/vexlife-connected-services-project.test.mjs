@@ -13,7 +13,7 @@ const view = createBoardView(read('projects/vexlife-connected-services/board.vie
 
 test('Connected Services Project preserves program and VCS-04 phase topology', () => {
   const refs = projectWorkRefs(project, graph);
-  assert.equal(refs.length, 17);
+  assert.equal(refs.length, 18);
   assert.equal(refs.includes('work.vexlife.connected-services.outcome'), true);
   assert.equal(refs.includes('work.vexlife.connected-services.vcs04-conversation-adoption'), true);
   assert.equal(refs.includes('work.vexlife.connected-services.vcs04.phase1.private-serve-ingress'), true);
@@ -37,6 +37,9 @@ test('Connected Services Project preserves program and VCS-04 phase topology', (
     'work.vexlife.connected-services.vcs04.phase5-restart-no-duplicates',
     'work.vexlife.connected-services.vcs04.phase6-terminal-currentness',
   ]);
+  assert.deepEqual(childRefs(graph, 'work.vexlife.connected-services.vcs04.phase3-fresh-user-family'), [
+    'work.vexlife.connected-services.vcs04.phase3.owner-only-family-readability',
+  ]);
 });
 
 test('Connected Services Board makes completed, current and held phases visible without adopting onboarding', () => {
@@ -47,15 +50,16 @@ test('Connected Services Board makes completed, current and held phases visible 
   const verify = board.lanes.find((lane) => lane.laneRef === 'lane.work.verify');
   const ready = board.lanes.find((lane) => lane.laneRef === 'lane.work.ready');
 
-  assert.equal(board.lanes.flatMap((lane) => lane.cards).length, 17);
-  assert.equal(active.cards.length, 2);
+  assert.equal(board.lanes.flatMap((lane) => lane.cards).length, 18);
+  assert.equal(active.cards.length, 4);
   assert.equal(planned.cards.length, 6);
   assert.equal(done.cards.length, 8);
   assert.equal(active.cards.some((card) => card.workRef === 'work.vexlife.connected-services.vcs04-conversation-adoption'), true);
   assert.equal(done.cards.some((card) => card.workRef === 'work.vexlife.connected-services.vcs04.phase1.private-serve-ingress'), true);
   assert.equal(done.cards.some((card) => card.workRef === 'work.vexlife.connected-services.vcs04.phase1-prechallenge'), true);
   assert.equal(done.cards.some((card) => card.workRef === 'work.vexlife.connected-services.vcs04.phase2-fixture-l1-l5'), true);
-  assert.equal(ready.cards.some((card) => card.workRef === 'work.vexlife.connected-services.vcs04.phase3-fresh-user-family'), true);
+  assert.equal(active.cards.some((card) => card.workRef === 'work.vexlife.connected-services.vcs04.phase3-fresh-user-family'), true);
+  assert.equal(active.cards.some((card) => card.workRef === 'work.vexlife.connected-services.vcs04.phase3.owner-only-family-readability'), true);
   assert.equal(done.cards.some((card) => card.workRef === 'work.vexlife.connected-services.vcs04.phase1.android-observability-source'), true);
 
   const lot = projectParkingLot({ graph, registry });
