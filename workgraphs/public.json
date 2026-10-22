@@ -1037,7 +1037,7 @@
       "workRef": "work.vexlife.connected-services.vcs04.phase1.private-serve-ingress",
       "parentWorkRefOrNull": "work.vexlife.connected-services.vcs04.phase1-prechallenge",
       "label": "Clear Android-to-Mac private Serve ingress",
-      "purpose": "Machine-verify the post-Shields-Up state and determine whether Android can reach one tailnet-only Mac Serve listener by private Tailscale address before re-entering the full VexLife product proof.",
+      "purpose": "Preserve the proven Android-to-Mac private tailnet/Serve TCP path, recover the exact A016-owned temporary HTTPS port 10000 mapping without broad reset, then close the Phase-1 network discrimination edge before fixture-backed L1-L5 resumes.",
       "workClass": "TASK",
       "state": "RUNNING",
       "workDisposition": "ACTIVE",
@@ -1050,14 +1050,15 @@
       ],
       "sourceRefs": [
         "docs/lineage/VEXLIFE-CONNECTED-SERVICES.md",
-        "github.issue.vexlife.899.comment.6329236847"
+        "github.issue.vexlife.899.comment.6329236847",
+        "github.issue.vexlife.899.comment.6329946967"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-21T23:56:41.000Z",
-      "updatedAt": "2026-10-21T23:56:41.000Z"
+      "updatedAt": "2026-10-22T00:46:20.756Z"
     }
   ],
   "transitions": [
