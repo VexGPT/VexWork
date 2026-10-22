@@ -19,10 +19,10 @@ test('work registry covers lifecycle states exactly once on the default Work Boa
 test('one Workgraph can contain project work and unprojected parked work', () => {
   const project = createProject(projectSource);
   const graph = createWorkgraph(graphSource, registry);
-  assert.equal(graph.items.length, 33);
+  assert.equal(graph.items.length, 35);
   assert.equal(projectWorkRefs(project, graph).length, 8);
   const toCompletionProject = createProject(toCompletionProjectSource);
-  assert.equal(projectWorkRefs(toCompletionProject, graph).length, 12);
+  assert.equal(projectWorkRefs(toCompletionProject, graph).length, 14);
   assert.equal(verifySemanticFingerprint(project), true);
   assert.equal(verifySemanticFingerprint(graph), true);
 
@@ -96,6 +96,11 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   const p5G02 = graph.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p5.g02-semantic-authority-materializer');
   assert.equal(p5G02.state, 'RUNNING');
   assert.deepEqual(p5G02.dependencyRefs, ['work.vexlife.tocompletion.p4.typed-local-effect']);
+  const p5Harness = graph.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p5.g02.coder-harness-a055-a056');
+  assert.equal(p5Harness.state, 'COMPLETED');
+  const p5A057 = graph.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p5.g02.sdk-runner-a057');
+  assert.equal(p5A057.state, 'READY');
+  assert.deepEqual(p5A057.dependencyRefs, ['work.vexlife.tocompletion.p5.g02.coder-harness-a055-a056']);
 });
 
 test('typed transition rejects stale observation and accepts exact current transition', () => {

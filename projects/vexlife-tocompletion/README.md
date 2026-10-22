@@ -164,39 +164,53 @@ This is not permission to create a task for every typo or retry. Add one only wh
 ## Current edge
 
 ```text
-P4 = COMPLETED / TERMINAL_LIVED_PASS
+P5 = RUNNING
 
-completed progression:
-  work.vexlife.tocompletion.p4.runtime-currentness-a054 = COMPLETED
-  work.vexlife.tocompletion.p4.lived-reinjection = COMPLETED
-  work.vexlife.tocompletion.p4.typed-local-effect = COMPLETED
-
-A054 terminal evidence:
-  RETURN sha256 = 3a36c72a984d9d5c0eed1e362f914f329b3e26dfb8b51083014a1578deecf09c
-  prior lived head = b6eaf4f7dc253c2d2ebb9ad2d6a0c7230d9cb95b0145755290bd2b2a35e4a4eb
-  post lived head = aade465e9026870cdcb73a2b117fcbf08bbad4624a8def08ac2c20d07a778046
-  exact typed effect receipt = receipt.vexlife.typed-command.209c711407f94898b452a708dc5609c6
-  one-time authority after = AUTHORITY_ALREADY_RESERVED_OR_CONSUMED
-  raw Conversation content returned = false
-
-current phase:
-  work.vexlife.tocompletion.p5.lived-continuity-learning = RUNNING
-
-next READY task:
+parent source task:
   work.vexlife.tocompletion.p5.g02-semantic-authority-materializer = RUNNING
 
-grounded reason:
-  A054 is valid real G01 lived evidence.
-  VexLife G02 Score can consume a canonical Memory/Safety semantic-authority ledger.
-  It cannot mint classification/consent/acceptance itself.
-  The accepted Memory/Safety contracts explicitly held the owner-side writer/materializer,
-  and no later production materializer exists in current VexLife/SDK source.
+completed harness checkpoint:
+  work.vexlife.tocompletion.p5.g02.coder-harness-a055-a056 = COMPLETED
+
+A055:
+  failed before inner task formation
+  cause = missing current Relay authority.allowedExecutables / authority shape
+  SDK source effect = false
+
+A056:
+  Relay authority shape repaired
+  formed outer carrier successfully
+  failed VexLocalBridge admission before attempt reservation
+  exact cause:
+    task profile = profile.repository.vextreme-sdk.macos-v1
+    invoked runner = RUN-VEXLIFE-TASK.command
+    runner profile = profile.repository.vexlife.macos-v1
+  SDK source effect = false
+
+fresh remote state:
+  SDK main = b4d427564409989e8f839066accd17ec4c790724
+  SDK tree = 0e7b40415cbf60ea4b998a2a2423e8c5587857c6
+  claimed branch = exact same base
+  claim = ACTIVE
+  open claimed-branch PRs = 0
+  four-file Memory/Safety product payload = unchanged
+  focused local producer proof = 13/13 PASS
+
+next READY task:
+  work.vexlife.tocompletion.p5.g02.sdk-runner-a057
 
 next action:
-  source-author the claimed four-path SDK Memory/Safety materializer slice on\n  Vextreme-SDK b4d427564409989e8f839066accd17ec4c790724, prove it through sdk-check,\n  then let existing VexLife Score consume one owner-authored A054-derived ledger.
+  freshen attempt/package identities only
+  preserve semantic task/work/claim/base/branch/product payload
+  use lib/vexlocalbridge/templates/RUN-VEX-TASK.command
+  require profile.repository.vextreme-sdk.macos-v1 at outer admission
+  then run focused tests + npm run sdk-check + exact DCO commit + non-force push
+  create PR connector-direct only after verified RETURN/push
+
+Do not replay A055 or A056.
 ```
 
-Do not skip directly to Dream, Rhythm or weight training. The first P5 predicate is truthful G02 semantic placement under the rightful owners.
+The current defect is carrier selection, not Memory/Safety product semantics.
 
 ## Remaining completion path
 
