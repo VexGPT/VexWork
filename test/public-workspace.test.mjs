@@ -1,0 +1,77 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import test from 'node:test';
+
+import { validateProjectRegistry } from '../src/core/project-registry.mjs';
+import { projectPublicWorkspace } from '../src/core/public-workspace.mjs';
+import { createProject, createWorkgraph } from '../src/core/workgraph.mjs';
+import { createBoardView, projectParkingLot, projectWorkBoard } from '../src/core/work-board.mjs';
+
+const read = (relative) => JSON.parse(fs.readFileSync(new URL(`../${relative}`, import.meta.url), 'utf8'));
+const registry = read('blueprint/work-registry.json');
+const projectRegistry = read('blueprint/project-registry.json');
+
+function buildWorkspace() {
+  assert.equal(validateProjectRegistry(projectRegistry).ok, true);
+  const graphCache = new Map();
+  const projectEntries = projectRegistry.projects.map((entry) => {
+    let graph = graphCache.get(entry.workgraphPath);
+    if (!graph) {
+      graph = createWorkgraph(read(entry.workgraphPath), registry);
+      graphCache.set(entry.workgraphPath, graph);
+    }
+    const project = createProject(read(entry.definitionPath));
+    const view = createBoardView(read(entry.boardViewPath), registry);
+    const board = projectWorkBoard({ project, graph, view, registry });
+    return { project, board, graph };
+  });
+  const parkingLots = [...graphCache.values()].map((graph) => ({ graph, parkingLot: projectParkingLot({ graph, registry }) }));
+  return projectPublicWorkspace({ projectRegistry, projectEntries, parkingLots });
+}
+
+test('public workspace projects every registered Project without becoming a work-state owner', () => {
+  const workspace = buildWorkspace();
+  assert.equal(workspace.schemaVersion, 'vexwork.public-workspace/v1');
+  assert.deepEqual(workspace.projects.map((entry) => entry.project.projectRef), projectRegistry.projects.map((entry) => entry.projectRef));
+  assert.equal(workspace.effects, false);
+  assert.equal(workspace.executionAuthority, 'NONE');
+});
+
+test('public workspace preserves recursive containment and Jira-like detail fields', () => {
+  const workspace = buildWorkspace();
+  const project = workspace.projects.find((entry) => entry.project.projectRef === 'project.vexlife.tocompletion');
+  assert.ok(project);
+  const p4 = project.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p4.typed-local-effect');
+  assert.ok(p4);
+  assert.equal(p4.workClass, 'OUTCOME');
+  assert.deepEqual(p4.childWorkRefs.sort(), [
+    'work.vexlife.tocompletion.p4.lived-reinjection',
+    'work.vexlife.tocompletion.p4.source-acceptance',
+  ]);
+  const source = project.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p4.source-acceptance');
+  assert.equal(source.parentWorkRefOrNull, p4.workRef);
+  assert.equal(source.state, 'WAITING_HUMAN');
+  assert.ok(Array.isArray(source.sourceRefs) && source.sourceRefs.length > 0);
+  assert.ok(Array.isArray(source.transitionHistory));
+});
+
+test('public workspace board lanes reference the same canonical projected items', () => {
+  const workspace = buildWorkspace();
+  for (const project of workspace.projects) {
+    const known = new Set(project.items.map((item) => item.workRef));
+    for (const lane of project.lanes) assert.equal(lane.workRefs.every((workRef) => known.has(workRef)), true);
+  }
+});
+
+test('public workspace keeps global Parking Lot separate from Project membership', () => {
+  const workspace = buildWorkspace();
+  assert.equal(workspace.parkingLot.items.every((item) => item.workDisposition === 'PARKED'), true);
+  assert.equal(workspace.parkingLot.items.every((item) => item.authorityDisposition === 'NO_AUTHORITY'), true);
+  assert.equal(workspace.parkingLot.items.some((item) => item.workRef === 'work.vexstream.mobile-library.keep-offline-sync'), true);
+});
+
+test('checked-in public workspace is generated-current', () => {
+  assert.deepEqual(read('public/workspace.json'), buildWorkspace());
+});
+
+// [VXG RealForever]
