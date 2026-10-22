@@ -190,6 +190,21 @@
   "parkingLot": {
     "items": [
       {
+        "workRef": "work.vexwork.operational-console.multi-fulfiller-routing",
+        "label": "Multiple fulfiller / nearby-route optimization",
+        "purpose": "Preserve the possible later need for assigning fulfillment to multiple people, grouping nearby deliveries, routing/sequencing stops and collecting worker delivery acknowledgement without making dispatch/routing part of the first commerce-pilot completion boundary.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "LOW",
+        "repositoryRefs": [
+          "repo.vexwork"
+        ],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "updatedAt": "2026-10-22T03:20:00.000Z"
+      },
+      {
         "workRef": "work.vexstream.mobile-library.keep-offline-sync",
         "label": "Persistent Keep Offline / Sync",
         "purpose": "Preserve the future policy question of keeping an album, artist, playlist, or other collection continuously mirrored as producer membership changes, without conflating it with one-shot Download missing.",
@@ -240,7 +255,7 @@
   "summary": {
     "projectWorkItemCount": 8,
     "openProjectWorkItemCount": 3,
-    "parkingLotItemCount": 3
+    "parkingLotItemCount": 4
   },
   "effects": false,
   "executionAuthority": "NONE"

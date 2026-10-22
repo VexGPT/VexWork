@@ -1629,9 +1629,9 @@
       "workRef": "work.vexwork.operational-console.outcome",
       "parentWorkRefOrNull": null,
       "label": "Evolve VexWork into an Operational Console",
-      "purpose": "Make VexWork capable of representing intentional work plus dynamically derived work-shaped attention from repository/provider-owned populations and operating environments, while preserving Workgraph as the owner only of admitted work lifecycle truth.",
+      "purpose": "Make VexWork capable of representing intentional work plus dynamically derived work-shaped attention from repository/provider-owned populations and operating environments, and make that truth traversable through an experimental relational Terrain that preserves currentness, provenance and typed relationships without becoming another Workgraph owner.",
       "workClass": "OUTCOME",
-      "state": "DECOMPOSED",
+      "state": "RUNNING",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
       "repositoryRefs": [
@@ -1646,7 +1646,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T03:20:00.000Z",
-      "updatedAt": "2026-10-22T03:20:00.000Z",
+      "updatedAt": "2026-10-22T05:32:34.002Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -1658,7 +1658,7 @@
       "label": "Derived-work projection foundation",
       "purpose": "Establish the reusable domain-neutral contract for population, scope, lens, evidence, derived facets, projection and explicit promotion without materializing one Work item per entity.",
       "workClass": "OUTCOME",
-      "state": "READY",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
       "repositoryRefs": [
@@ -1672,7 +1672,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T03:20:00.000Z",
-      "updatedAt": "2026-10-22T03:20:00.000Z",
+      "updatedAt": "2026-10-22T05:32:34.016Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -1684,7 +1684,7 @@
       "label": "Derived attention contract",
       "purpose": "Source-place the smallest reusable model that keeps entity identity, entity health, derived attention and canonical WorkState distinct while supporting dynamic populations, scopes, lenses, evidence states and reason facets.",
       "workClass": "TASK",
-      "state": "READY",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
       "repositoryRefs": [
@@ -1696,7 +1696,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T03:20:00.000Z",
-      "updatedAt": "2026-10-22T03:20:00.000Z",
+      "updatedAt": "2026-10-22T05:32:34.005Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -1708,7 +1708,7 @@
       "label": "Aggregate and entity projection",
       "purpose": "Project one derived-work lens from aggregate counts through scopes/groups to exact entities and current evidence without granting effects or duplicating entity truth.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexwork.operational-console.derived-work-contract"
@@ -1723,7 +1723,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T03:20:00.000Z",
-      "updatedAt": "2026-10-22T03:20:00.000Z",
+      "updatedAt": "2026-10-22T05:32:34.009Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -1735,7 +1735,7 @@
       "label": "Derived concern to Work promotion",
       "purpose": "Define explicit adoption of one derived concern into a canonical Work item with provenance back to entity, lens and evidence, without automatic task generation.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexwork.operational-console.derived-work-contract"
@@ -1750,7 +1750,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T03:20:00.000Z",
-      "updatedAt": "2026-10-22T03:20:00.000Z",
+      "updatedAt": "2026-10-22T05:32:34.013Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -1762,7 +1762,7 @@
       "label": "Patient Zero: VexSite Localization",
       "purpose": "Prove the derived-work foundation against Vextreme's existing page/arc/localization world so VexWork can answer what remains without a page-per-task Workgraph.",
       "workClass": "OUTCOME",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "READY",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexwork.operational-console.derived-work-foundation"
@@ -1781,7 +1781,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T03:20:00.000Z",
-      "updatedAt": "2026-10-22T03:20:00.000Z",
+      "updatedAt": "2026-10-22T05:32:34.017Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -1793,7 +1793,7 @@
       "label": "VexSite page population and arc scope",
       "purpose": "Bind a reusable VexWork population/scope projection to current Vextreme-owned page, node, group and arc identity without copying every page into Workgraph.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "READY",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexwork.operational-console.derived-work-contract"
@@ -1809,7 +1809,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T03:20:00.000Z",
-      "updatedAt": "2026-10-22T03:20:00.000Z",
+      "updatedAt": "2026-10-22T05:32:34.018Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -2214,6 +2214,93 @@
       "workDisposition": "PARKED",
       "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
       "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexwork.operational-console.relational-terrain",
+      "parentWorkRefOrNull": "work.vexwork.operational-console.outcome",
+      "label": "VexWork Terrain Map v2",
+      "purpose": "Establish an experimental read-only relational Terrain projection over VexWork truth so humans and AI can traverse Projects, nested Work and typed cross-context relationships with arbitrary semantic depth, preserved structural and traversal context, deterministic continuity and bounded neighborhoods without creating another lifecycle or graph owner.",
+      "workClass": "OUTCOME",
+      "state": "RUNNING",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/vexwork-operational-console/README.md",
+        "repo.vextreme:pages/terrain-map.html",
+        "repo.vexlife:docs/NAVIGATION-CONTINUITY.md",
+        "repo.vexlife:docs/VEX-PRESENTATION-GRAPH.md",
+        "repo.vexlife:src/core/terrain.mjs",
+        "repo.vexlife-android:docs/foundation/VEX-BODY-SEMANTIC-BLUEPRINT.md"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-22T05:32:34.019Z",
+      "updatedAt": "2026-10-22T05:32:34.019Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexwork.operational-console.relational-terrain.patient-zero",
+      "parentWorkRefOrNull": "work.vexwork.operational-console.relational-terrain",
+      "label": "Relational Terrain patient-zero",
+      "purpose": "Prove one VexWork-owned Terrain experience with arbitrary-depth semantic traversal, typed containment/dependency/project portals, structural path distinct from traversal path, cycle-safe route planning, serialized idempotent commands, bounded Journey/revisit semantics, nested-scroll arbitration and responsive presentation over the read-only public workspace.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/vexwork-operational-console/README.md",
+        "terrain-reader.js",
+        "terrain.html",
+        "repo.vextreme:pages/terrain-map.html",
+        "repo.vexlife:docs/NAVIGATION-CONTINUITY.md",
+        "repo.vexlife:docs/VEX-PRESENTATION-GRAPH.md",
+        "repo.vexlife:src/core/terrain.mjs",
+        "repo.vexlife-android:docs/foundation/VEX-BODY-SEMANTIC-BLUEPRINT.md"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-22T05:32:34.019Z",
+      "updatedAt": "2026-10-22T05:32:34.019Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexwork.operational-console.relational-terrain.temporal-currentness",
+      "parentWorkRefOrNull": "work.vexwork.operational-console.relational-terrain",
+      "label": "Currentness and flow Terrain layer",
+      "purpose": "Layer current work, recent accepted transitions, recent completions, newly available work and later honest flow measures onto the same relational Terrain without treating provider activity, layout or incomplete transition-history coverage as canonical progress.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexwork.operational-console.relational-terrain.patient-zero"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/vexwork-operational-console/README.md",
+        "terrain-reader.js"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-22T05:32:34.019Z",
+      "updatedAt": "2026-10-22T05:32:34.019Z"
     }
   ],
   "transitions": [
@@ -2708,6 +2795,261 @@
         "github.issue.vexlife.899.comment.6332564149"
       ],
       "createdAt": "2026-10-22T04:21:02.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.outcome.plan_validated.operational-console-currentization-0",
+      "workRef": "work.vexwork.operational-console.outcome",
+      "priorState": "DECOMPOSED",
+      "nextState": "PLAN_VALIDATED",
+      "reason": "Human-approved Operational Console trajectory has accepted reusable source plus an admitted implementation path.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "projects/vexwork-operational-console/README.md"
+      ],
+      "createdAt": "2026-10-22T05:32:34.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.outcome.ready.operational-console-currentization-1",
+      "workRef": "work.vexwork.operational-console.outcome",
+      "priorState": "PLAN_VALIDATED",
+      "nextState": "READY",
+      "reason": "Accepted Derived Attention contract, projection and promotion source establish an executable Operational Console trajectory.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.29",
+        "github.pull.vexwork.30",
+        "github.pull.vexwork.32"
+      ],
+      "createdAt": "2026-10-22T05:32:34.001Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.outcome.running.operational-console-currentization-2",
+      "workRef": "work.vexwork.operational-console.outcome",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Operational Console implementation remains active; VexSite patient-zero and relational Terrain are now parallel executable edges.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "projects/vexwork-operational-console/README.md"
+      ],
+      "createdAt": "2026-10-22T05:32:34.002Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.derived-work-contract.running.operational-console-currentization-3",
+      "workRef": "work.vexwork.operational-console.derived-work-contract",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Derived Attention contract implementation formed.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.29"
+      ],
+      "createdAt": "2026-10-22T05:32:34.003Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.derived-work-contract.verifying.operational-console-currentization-4",
+      "workRef": "work.vexwork.operational-console.derived-work-contract",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Focused deterministic and adversarial contract proof passed.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.29"
+      ],
+      "createdAt": "2026-10-22T05:32:34.004Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.derived-work-contract.completed.operational-console-currentization-5",
+      "workRef": "work.vexwork.operational-console.derived-work-contract",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "PR #29 merged the reviewed Derived Attention contract into VexWork main.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.29"
+      ],
+      "createdAt": "2026-10-22T05:32:34.005Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.derived-work-projection.ready.operational-console-currentization-6",
+      "workRef": "work.vexwork.operational-console.derived-work-projection",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "Derived Attention contract dependency completed.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.29"
+      ],
+      "createdAt": "2026-10-22T05:32:34.006Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.derived-work-projection.running.operational-console-currentization-7",
+      "workRef": "work.vexwork.operational-console.derived-work-projection",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Aggregate and entity projection implementation formed.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.30"
+      ],
+      "createdAt": "2026-10-22T05:32:34.007Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.derived-work-projection.verifying.operational-console-currentization-8",
+      "workRef": "work.vexwork.operational-console.derived-work-projection",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Focused deterministic and adversarial projection proof passed.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.30"
+      ],
+      "createdAt": "2026-10-22T05:32:34.008Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.derived-work-projection.completed.operational-console-currentization-9",
+      "workRef": "work.vexwork.operational-console.derived-work-projection",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "PR #30 merged the reviewed aggregate/scope/entity projection into VexWork main.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.30"
+      ],
+      "createdAt": "2026-10-22T05:32:34.009Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.derived-work-promotion.ready.operational-console-currentization-10",
+      "workRef": "work.vexwork.operational-console.derived-work-promotion",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "Derived Attention contract dependency completed.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.29"
+      ],
+      "createdAt": "2026-10-22T05:32:34.010Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.derived-work-promotion.running.operational-console-currentization-11",
+      "workRef": "work.vexwork.operational-console.derived-work-promotion",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Explicit concern-to-Work promotion implementation formed.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.32"
+      ],
+      "createdAt": "2026-10-22T05:32:34.011Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.derived-work-promotion.verifying.operational-console-currentization-12",
+      "workRef": "work.vexwork.operational-console.derived-work-promotion",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Promotion proposal/decision/application proof passed.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.32"
+      ],
+      "createdAt": "2026-10-22T05:32:34.012Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.derived-work-promotion.completed.operational-console-currentization-13",
+      "workRef": "work.vexwork.operational-console.derived-work-promotion",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "PR #32 merged the reviewed derived concern promotion process into VexWork main.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.32"
+      ],
+      "createdAt": "2026-10-22T05:32:34.013Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.derived-work-foundation.running.operational-console-currentization-14",
+      "workRef": "work.vexwork.operational-console.derived-work-foundation",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Reusable Derived Attention foundation entered implementation.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.29"
+      ],
+      "createdAt": "2026-10-22T05:32:34.014Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.derived-work-foundation.verifying.operational-console-currentization-15",
+      "workRef": "work.vexwork.operational-console.derived-work-foundation",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Contract, aggregate projection and explicit promotion are all accepted on main.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.29",
+        "github.pull.vexwork.30",
+        "github.pull.vexwork.32"
+      ],
+      "createdAt": "2026-10-22T05:32:34.015Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.derived-work-foundation.completed.operational-console-currentization-16",
+      "workRef": "work.vexwork.operational-console.derived-work-foundation",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "P1 reusable derived-work foundation is source-complete without materializing entity-per-task topology.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.29",
+        "github.pull.vexwork.30",
+        "github.pull.vexwork.32"
+      ],
+      "createdAt": "2026-10-22T05:32:34.016Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.vexsite-dogfood.ready.operational-console-currentization-17",
+      "workRef": "work.vexwork.operational-console.vexsite-dogfood",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "Reusable derived-work foundation dependency completed; VexSite patient-zero may begin.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.29",
+        "github.pull.vexwork.30",
+        "github.pull.vexwork.32"
+      ],
+      "createdAt": "2026-10-22T05:32:34.017Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.vexsite-population-scope.ready.operational-console-currentization-18",
+      "workRef": "work.vexwork.operational-console.vexsite-population-scope",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "Derived Attention contract dependency completed; VexSite population/scope binding is the first P2 source edge.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.29"
+      ],
+      "createdAt": "2026-10-22T05:32:34.018Z"
     }
   ],
   "sourceRefs": [

@@ -158,6 +158,67 @@ The feature should support:
 
 The implementation should not introduce domain-specific words such as Page, SKU, Order or Credential into the generic owner unless repeated pressure earns them.
 
+## Parallel experience evolution — VexWork Terrain Map v2
+
+The Operational Console now also carries one parallel experience experiment: **VexWork Terrain Map**.
+
+This does not replace Projects, Workgraph, Work Board, or the existing first-party navigator. It projects the same truth through a relational traversal model so a human or AI can remain oriented while moving through arbitrary-depth containment and cross-context relationships.
+
+The pressure comes from three already-lived lines:
+
+```text
+Vextreme Terrain
+  semantic zoom + immediate-parent outward movement
+  scrollable-content priority + armed boundary traversal
+
+VexLife
+  semantic position != pixel position
+  Journey inspection != travel
+  deterministic no-teleport navigation
+  duplicate command idempotency
+  presentation/reachability != semantic ownership
+
+VexLife Android
+  Terrain / State / Traversal / Relationship / Projection / Continuity
+  are distinct semantic questions that may compose fractally
+```
+
+Permanent traversal distinctions:
+
+```text
+CANONICAL_TOPOLOGY != TERRAIN_STATE
+SEMANTIC_POSITION != CAMERA_POSITION
+TRAVERSAL_PREDECESSOR != STRUCTURAL_PARENT
+ROUTE_PLAN != PRESENCE
+HISTORY_INSPECTION != TRAVEL
+PRESENTATION_ADAPTATION != WORK_STATE
+
+ROUTE_SEARCH_DEDUPLICATES_VISITS
+EXECUTION_DEDUPLICATES_EXACT_COMMANDS
+JOURNEY_PRESERVES_MEANINGFUL_REVISITS
+
+A -> B -> A
+  remains real Journey history
+```
+
+The first patient-zero is intentionally bounded:
+
+```text
+public/workspace.json
+-> workspace / Project / nested Work terrain
+-> typed containment + dependency relationships
+-> structural path + actual traversal path
+-> bounded local neighborhood
+-> serialized/idempotent semantic movement
+-> Journey inspection + explicit revisit
+-> nested-scroll / semantic-boundary arbitration
+-> responsive projection
+```
+
+The experiment does **not** yet establish a generic `VexTerrain` foundation. Reuse is earned only after this VexWork patient-zero and a genuinely different second consumer prove the same contract.
+
+The currentness/flow layer is a dependency-gated successor. It will add current work, recent accepted transitions, recent completion and dependency-based newly-available work only after traversal semantics are stable; provider activity and incomplete transition-history coverage must never be presented as canonical progress.
+
 ## Phase 2 — Patient Zero: VexSite Localization
 
 VexSite Localization is the first dogfood because it already has a meaningful repository-owned population and evidence surfaces.
@@ -401,12 +462,22 @@ At that point VexWork has demonstrated that it is no longer only a Jira/kanban-s
 ## Current trajectory
 
 ```text
-P1  Derived-work projection foundation                    READY
-P2  VexSite Localization patient-zero dogfood             WAITING_DEPENDENCIES
+P1  Derived-work projection foundation                    COMPLETED
+    contract                                               COMPLETED
+    aggregate / scope / entity projection                 COMPLETED
+    explicit concern-to-Work promotion                    COMPLETED
+P2  VexSite Localization patient-zero dogfood             READY
+    page population / scope                               READY
+    localization / modernization lens                     WAITING_DEPENDENCIES
+    patient-zero proof                                    WAITING_DEPENDENCIES
 P3  Operating Domain template                             WAITING_DEPENDENCIES
 P4  Commerce starter template                             WAITING_DEPENDENCIES
 P5  Antique Plate lived commerce pilot                    WAITING_DEPENDENCIES
 P6  Cross-domain completion                               WAITING_DEPENDENCIES
+
+PARALLEL EXPERIENCE
+T1  Relational Terrain patient-zero                       RUNNING
+T2  Currentness and flow Terrain layer                    WAITING_DEPENDENCIES
 
 PARKED
   multi-person / nearby-route fulfillment optimization

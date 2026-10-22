@@ -21,14 +21,14 @@ test('work registry covers lifecycle states exactly once on the default Work Boa
 test('one Workgraph can contain project work and unprojected parked work', () => {
   const project = createProject(projectSource);
   const graph = createWorkgraph(graphSource, registry);
-  assert.equal(graph.items.length, 79);
+  assert.equal(graph.items.length, 82);
   assert.equal(projectWorkRefs(project, graph).length, 8);
   const toCompletionProject = createProject(toCompletionProjectSource);
   assert.equal(projectWorkRefs(toCompletionProject, graph).length, 17);
   const connectedServicesProject = createProject(connectedServicesProjectSource);
   assert.equal(projectWorkRefs(connectedServicesProject, graph).length, 19);
   const operationalConsoleProject = createProject(operationalConsoleProjectSource);
-  assert.equal(projectWorkRefs(operationalConsoleProject, graph).length, 21);
+  assert.equal(projectWorkRefs(operationalConsoleProject, graph).length, 24);
   assert.equal(verifySemanticFingerprint(project), true);
   assert.equal(verifySemanticFingerprint(graph), true);
 
@@ -41,7 +41,7 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(graph.items.find((item) => item.workRef === 'work.vexwork.visibility.public-dashboard').state, 'COMPLETED');
   assert.equal(graph.items.find((item) => item.workRef === 'work.vexwork.history.foundational-infrastructure-backfill').state, 'CAPTURED');
   assert.equal(graph.items.find((item) => item.workRef === 'work.vexwork.history.foundational-infrastructure-backfill').authorityDisposition, 'NO_AUTHORITY');
-  assert.equal(graph.transitions.length, 30);
+  assert.equal(graph.transitions.length, 55);
 
   const parked = graph.items.find((item) => item.workRef === 'work.vexlife-android.vexstream.not-yet-downloaded-filter');
   assert.equal(parked.workClass, 'POTENTIAL');
@@ -133,6 +133,23 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(connectedPhase3Defect.state, 'COMPLETED');
   assert.equal(connectedPhase3Lived.state, 'READY');
   assert.deepEqual(connectedPhase3Lived.dependencyRefs, [connectedPhase3Defect.workRef]);
+
+  const operationalOutcome = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.outcome');
+  const derivedFoundation = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.derived-work-foundation');
+  const derivedContract = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.derived-work-contract');
+  const derivedProjection = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.derived-work-projection');
+  const derivedPromotion = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.derived-work-promotion');
+  const vexsite = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.vexsite-dogfood');
+  const populationScope = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.vexsite-population-scope');
+  const terrain = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.relational-terrain');
+  assert.equal(operationalOutcome.state, 'RUNNING');
+  assert.equal(derivedFoundation.state, 'COMPLETED');
+  assert.equal(derivedContract.state, 'COMPLETED');
+  assert.equal(derivedProjection.state, 'COMPLETED');
+  assert.equal(derivedPromotion.state, 'COMPLETED');
+  assert.equal(vexsite.state, 'READY');
+  assert.equal(populationScope.state, 'READY');
+  assert.equal(terrain.state, 'RUNNING');
 
 });
 
