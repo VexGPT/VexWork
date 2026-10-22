@@ -1,5 +1,13 @@
-export const PROJECT_VIEWS = Object.freeze(['story', 'board', 'dependencies']);
+export const PROJECTS_VIEWS = Object.freeze(['projects', 'open']);
+export const PROJECT_VIEWS = Object.freeze(['story', 'open', 'board', 'dependencies']);
 export const ITEM_VIEWS = Object.freeze(['overview', 'children', 'dependencies', 'history']);
+
+const DONE_STATES = new Set(['COMPLETED', 'CONVERGED', 'CLOSED']);
+const BLOCKED_STATES = new Set(['BLOCKED', 'FAILED_RECOVERABLE']);
+const OPEN_STATES = new Set(['READY', 'CONTEXT_ADMITTED', 'RUNNING', 'WAITING_TOOL', 'VERIFYING']);
+const WAITING_STATES = new Set(['WAITING_DEPENDENCIES', 'WAITING_RESOURCE', 'PAUSED_AT_CHECKPOINT', 'WAITING_HUMAN', 'HELD_UNKNOWN']);
+const PENDING_STATES = new Set(['CAPTURED', 'NEEDS_CLARIFICATION', 'DECOMPOSED', 'PLAN_VALIDATED']);
+const ARCHIVE_STATES = new Set(['SUPERSEDED', 'CANCELLED']);
 
 export function validateWorkspace(data) {
   if (!data || data.schemaVersion !== 'vexwork.public-workspace/v1') throw new Error('unsupported VexWork workspace schema');
@@ -14,8 +22,9 @@ export function parseRoute(search) {
   const workRef = params.get('work') || null;
   const rawView = params.get('view') || null;
   const level = workRef ? 'ITEM' : (projectRef ? 'PROJECT' : 'PROJECTS');
-  const allowed = level === 'ITEM' ? ITEM_VIEWS : PROJECT_VIEWS;
-  const view = allowed.includes(rawView) ? rawView : (level === 'ITEM' ? 'overview' : 'story');
+  const allowed = level === 'ITEM' ? ITEM_VIEWS : (level === 'PROJECT' ? PROJECT_VIEWS : PROJECTS_VIEWS);
+  const fallback = level === 'ITEM' ? 'overview' : (level === 'PROJECT' ? 'story' : 'projects');
+  const view = allowed.includes(rawView) ? rawView : fallback;
   return Object.freeze({ projectRef, workRef, view, level });
 }
 
@@ -23,7 +32,8 @@ export function routeSearch(route) {
   const params = new URLSearchParams();
   if (route.projectRef) params.set('project', route.projectRef);
   if (route.workRef) params.set('work', route.workRef);
-  if (route.view && route.view !== (route.workRef ? 'overview' : 'story')) params.set('view', route.view);
+  const fallback = route.workRef ? 'overview' : (route.projectRef ? 'story' : 'projects');
+  if (route.view && route.view !== fallback) params.set('view', route.view);
   const query = params.toString();
   return query ? '?' + query : '';
 }
@@ -89,6 +99,66 @@ export function childItems(project, workRef) {
 export function projectRootItems(project) {
   const byRef = itemMap(project);
   return (project?.project?.rootWorkRefs || []).map((ref) => byRef.get(ref)).filter(Boolean);
+}
+
+export function openWorkItems(project) {
+  const closed = new Set(
+    (project?.lanes || [])
+      .filter((lane) => ['lane.work.done', 'lane.work.archive'].includes(lane.laneRef))
+      .flatMap((lane) => lane.workRefs || [])
+  );
+  return (project?.items || []).filter((item) => !closed.has(item.workRef));
+}
+
+function topScopeRef(project, workRef) {
+  const byRef = itemMap(project);
+  const roots = new Set(project?.project?.rootWorkRefs || []);
+  let current = byRef.get(workRef);
+  if (!current) return workRef;
+  if (roots.has(current.workRef)) return current.workRef;
+  while (current?.parentWorkRefOrNull && !roots.has(current.parentWorkRefOrNull)) {
+    const parent = byRef.get(current.parentWorkRefOrNull);
+    if (!parent) break;
+    current = parent;
+  }
+  return current?.workRef || workRef;
+}
+
+export function openWorkGroups(project) {
+  const byRef = itemMap(project);
+  const groups = new Map();
+  for (const item of openWorkItems(project)) {
+    const scopeRef = topScopeRef(project, item.workRef);
+    if (!groups.has(scopeRef)) {
+      groups.set(scopeRef, {
+        scopeRef,
+        scopeLabel: byRef.get(scopeRef)?.label || scopeRef,
+        items: [],
+      });
+    }
+    groups.get(scopeRef).items.push(item);
+  }
+  return Object.freeze([...groups.values()].map((group) => Object.freeze({
+    ...group,
+    items: Object.freeze([...group.items]),
+  })));
+}
+
+export function stateTone(state) {
+  if (DONE_STATES.has(state)) return 'done';
+  if (BLOCKED_STATES.has(state)) return 'blocked';
+  if (OPEN_STATES.has(state)) return 'open';
+  if (WAITING_STATES.has(state)) return 'waiting';
+  if (PENDING_STATES.has(state)) return 'pending';
+  if (ARCHIVE_STATES.has(state)) return 'archive';
+  return 'pending';
+}
+
+export function priorityTone(priorityClass) {
+  if (priorityClass === 'IMMEDIATE') return 'immediate';
+  if (priorityClass === 'HIGH') return 'high';
+  if (priorityClass === 'LOW') return 'low';
+  return 'normal';
 }
 
 export function searchWorkspace(workspace, query) {
