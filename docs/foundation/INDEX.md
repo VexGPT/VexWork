@@ -18,6 +18,7 @@ This is the current architecture map. Follow the exact foundation whose question
 | Repository Graph | Which repositories does work touch and where does each repository explain itself? | `blueprint/repository-registry.json`, `src/core/repository-graph.mjs` | `test/repository-graph.test.mjs` | FOUNDATION |
 | Provider Relations | How do GitHub/Jira/etc. relate to work without becoming canonical work state? | `docs/foundation/PROVIDER-RELATIONS.md` | structural laws in `scripts/work-check.mjs` | FOUNDATION |
 | Runtime persistence | Where does private/current Workgraph truth persist across restart without turning Git into the live database? | `docs/foundation/RUNTIME-PERSISTENCE.md`, `src/core/workgraph-runtime.mjs` | `test/workgraph-runtime.test.mjs` | FOUNDATION |
+| Work Participation | Who has actually carried this work across fresh sessions/threads without making participation assignment or authority? | `docs/foundation/WORK-PARTICIPATION.md`, `src/core/work-participation.mjs` | `test/work-participation.test.mjs` | FOUNDATION |
 | Operating Profiles | How can hosted assistants and a future local Vex carry the same work truth while using different effect routes? | `docs/foundation/OPERATING-PROFILES.md`, `docs/process/ASSISTED-HOST-WORKFLOW.md` | source review + lived assisted-host use | FOUNDATION |
 | Planning | How do iterations, WIP, ordering and planning transactions persist? | lineage exists in VexLife P0B; portable owner not yet source-placed | future owner | HELD |
 | Reconciliation | How do exact provider/source/proof observations attach to work currentness? | lineage exists in VexLife P0B; portable owner not yet source-placed | future owner | HELD |
@@ -62,6 +63,9 @@ reusable work process / where should a fresh instance route?
 
 runtime currentness / restart persistence / CURRENT pointer / writer recovery
 -> RUNTIME-PERSISTENCE.md
+
+worker/session participation / fresh-instance continuity / handoff counts
+-> WORK-PARTICIPATION.md
 
 hosted ChatGPT / local Vex / assisted host action / VexRelay-style handoff
 -> OPERATING-PROFILES.md
