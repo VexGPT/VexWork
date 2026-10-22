@@ -10,6 +10,7 @@ This is the current architecture map. Follow the exact foundation whose question
 | Projects / Project Registry | What Projects exist and how do they select bounded work without becoming another lifecycle owner? | `blueprint/project-registry.json`, `src/core/project-registry.mjs`, `docs/foundation/PROJECTS.md` | `test/project-registry.test.mjs` | FOUNDATION |
 | Delegated agency / Human Transition Handshake | How can an authorized AI manage routine work while a human explicitly acknowledges and approves meaningful phase promotions? | `src/core/transition-handshake.mjs`, `docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md` | `test/transition-handshake.test.mjs` | FOUNDATION |
 | Work Board | How do I see one Project in a familiar Jira/kanban-shaped view without making the view the truth owner? | `src/core/work-board.mjs` | `test/work-board.test.mjs` | FOUNDATION |
+| Derived Attention | How do dynamic entity populations and current evidence become work-shaped attention without becoming WorkState or implementation authority? | `docs/foundation/DERIVED-ATTENTION.md`, `src/core/derived-attention.mjs` | `test/derived-attention.test.mjs` | FOUNDATION |
 | Parking Lot | How do I preserve useful deferred work without making a provider ticket or fake Project the owner? | `docs/foundation/PARKING-LOT.md`, `src/core/work-board.mjs` | `test/work-board.test.mjs` | FOUNDATION |
 | Process Map | Which reusable process should a fresh worker follow for this kind of work question? | `blueprint/process-registry.json`, `src/core/process-map.mjs`, `docs/process/` | `test/process-map.test.mjs` | FOUNDATION |
 | Repository Graph | Which repositories does work touch and where does each repository explain itself? | `blueprint/repository-registry.json`, `src/core/repository-graph.mjs` | `test/repository-graph.test.mjs` | FOUNDATION |
@@ -31,6 +32,9 @@ Project discovery / formation / outcome grouping
 
 work topology / lifecycle
 -> WORKGRAPH.md
+
+dynamic entity populations / Work Lenses / current derived attention
+-> DERIVED-ATTENTION.md
 
 delegated AI agency / human acknowledgement + approval / phase transition
 -> HUMAN-TRANSITION-HANDSHAKE.md
