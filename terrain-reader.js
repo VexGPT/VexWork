@@ -396,35 +396,101 @@ export function createTerrainSession({ workspace, initialNodeKey = 'workspace:ve
     })];
   }
 
-  async function execute({ targetNodeKey, relationshipKind, commandRef, actionRef = 'action.terrain.navigate' }) {
-    nodeFromKey(workspace, targetNodeKey);
-    assert(typeof commandRef === 'string' && commandRef, 'commandRef required');
-    assert(Object.values(RELATIONSHIP).includes(relationshipKind), `unsupported relationship ${relationshipKind}`);
-    const input = { targetNodeKey, relationshipKind, actionRef };
+  function replayCommand(commandRef, input) {
     const prior = commandLedger.get(commandRef);
-    if (prior) {
-      if (!sameCommandInput(prior.input, input)) return freeze({ state: 'DIVERGENT_COMMAND_IDENTITY', commandRef, frame: clone(current) });
-      return freeze({ state: 'DUPLICATE_EXACT_NOOP', commandRef, frame: clone(current), event: prior.event ? clone(prior.event) : null });
+    if (!prior) return null;
+    if (!sameCommandInput(prior.input, input)) {
+      return freeze({ state: 'DIVERGENT_COMMAND_IDENTITY', commandRef, frame: clone(current), event: null });
     }
-    if (targetNodeKey === current.focus.nodeKey) {
-      const result = freeze({ state: 'ALREADY_PRESENT', commandRef, frame: clone(current), event: null });
-      commandLedger.set(commandRef, { input, result, event: null });
-      return result;
-    }
+    return freeze({
+      state: 'DUPLICATE_EXACT_NOOP',
+      commandRef,
+      frame: clone(current),
+      event: prior.event ? clone(prior.event) : null,
+    });
+  }
 
-    const before = current;
-    backStack.push(before);
-    if (backStack.length > 64) backStack.shift();
-    const enteredVia = freeze({ fromNodeKey: before.focus.nodeKey, relationshipKind, actionRef });
-    current = frameFor(workspace, targetNodeKey, traversalPathFor(targetNodeKey, relationshipKind), enteredVia);
-    const event = appendJourney(before, current, actionRef, relationshipKind, commandRef);
-    const result = freeze({ state: 'COMMITTED', commandRef, frame: clone(current), event: clone(event) });
-    commandLedger.set(commandRef, { input, result, event });
+  function rememberCommand(commandRef, input, result, event = null) {
+    commandLedger.set(commandRef, { input: clone(input), result, event });
     return result;
   }
 
-  function enqueue(request) {
-    const operation = () => execute(request);
+  function relationshipIsAdmitted(targetNodeKey, relationshipKind, actionRef) {
+    if (relationshipKind === RELATIONSHIP.SEARCH_PORTAL) return true;
+    if (relationshipKind === RELATIONSHIP.REVISIT) {
+      return actionRef === 'action.terrain.revisit' && journey.some((event) => event.after.focus.nodeKey === targetNodeKey);
+    }
+    if (relationshipKind === RELATIONSHIP.RETURN) return false;
+    const edge = terrainNeighborhood(workspace, current.focus.nodeKey, { limit: Number.MAX_SAFE_INTEGER })
+      .neighbors.find((candidate) => candidate.node.nodeKey === targetNodeKey);
+    return Boolean(edge && edge.relationshipKinds.includes(relationshipKind));
+  }
+
+  function commitMove(targetNodeKey, relationshipKind, commandRef, actionRef, { pushBack = true } = {}) {
+    const before = current;
+    if (pushBack) {
+      backStack.push(before);
+      if (backStack.length > 64) backStack.shift();
+    }
+    const enteredVia = freeze({ fromNodeKey: before.focus.nodeKey, relationshipKind, actionRef });
+    current = frameFor(workspace, targetNodeKey, traversalPathFor(targetNodeKey, relationshipKind), enteredVia);
+    const event = appendJourney(before, current, actionRef, relationshipKind, commandRef);
+    return { event, result: freeze({ state: 'COMMITTED', commandRef, frame: clone(current), event: clone(event) }) };
+  }
+
+  async function executeNavigate({ targetNodeKey, relationshipKind, commandRef, actionRef = 'action.terrain.navigate' }) {
+    nodeFromKey(workspace, targetNodeKey);
+    assert(typeof commandRef === 'string' && commandRef, 'commandRef required');
+    assert(Object.values(RELATIONSHIP).includes(relationshipKind), `unsupported relationship ${relationshipKind}`);
+    const input = { kind: 'NAVIGATE', targetNodeKey, relationshipKind, actionRef };
+    const replay = replayCommand(commandRef, input);
+    if (replay) return replay;
+    if (targetNodeKey === current.focus.nodeKey) {
+      return rememberCommand(commandRef, input, freeze({ state: 'ALREADY_PRESENT', commandRef, frame: clone(current), event: null }));
+    }
+    if (!relationshipIsAdmitted(targetNodeKey, relationshipKind, actionRef)) {
+      return rememberCommand(commandRef, input, freeze({ state: 'BLOCKED_NO_VISIBLE_ROUTE', commandRef, frame: clone(current), event: null }));
+    }
+    const committed = commitMove(targetNodeKey, relationshipKind, commandRef, actionRef);
+    return rememberCommand(commandRef, input, committed.result, committed.event);
+  }
+
+  async function executeBack(commandRef) {
+    assert(typeof commandRef === 'string' && commandRef, 'commandRef required');
+    const input = { kind: 'BACK' };
+    const replay = replayCommand(commandRef, input);
+    if (replay) return replay;
+    if (!backStack.length) {
+      return rememberCommand(commandRef, input, freeze({ state: 'BACK_STACK_EMPTY', commandRef, frame: clone(current), event: null }));
+    }
+    const target = backStack.pop();
+    const before = current;
+    const path = current.traversalPath.slice(0, -1);
+    current = frameFor(workspace, target.focus.nodeKey, path.length ? path : initialTraversalPath(workspace, target.focus.nodeKey), {
+      fromNodeKey: before.focus.nodeKey,
+      relationshipKind: RELATIONSHIP.RETURN,
+      actionRef: 'action.terrain.return',
+    });
+    const event = appendJourney(before, current, 'action.terrain.return', RELATIONSHIP.RETURN, commandRef);
+    const result = freeze({ state: 'COMMITTED', commandRef, frame: clone(current), event: clone(event) });
+    return rememberCommand(commandRef, input, result, event);
+  }
+
+  async function executeRevisit(index, commandRef) {
+    assert(Number.isInteger(index) && index >= 0 && index < journey.length, 'history index out of range');
+    assert(typeof commandRef === 'string' && commandRef, 'commandRef required');
+    const input = { kind: 'REVISIT', index };
+    const replay = replayCommand(commandRef, input);
+    if (replay) return replay;
+    const targetNodeKey = journey[index].after.focus.nodeKey;
+    if (targetNodeKey === current.focus.nodeKey) {
+      return rememberCommand(commandRef, input, freeze({ state: 'ALREADY_PRESENT', commandRef, frame: clone(current), event: null }));
+    }
+    const committed = commitMove(targetNodeKey, RELATIONSHIP.REVISIT, commandRef, 'action.terrain.revisit');
+    return rememberCommand(commandRef, input, committed.result, committed.event);
+  }
+
+  function enqueue(operation) {
     const next = queueTail.then(operation, operation);
     queueTail = next.catch(() => undefined);
     return next;
@@ -445,33 +511,23 @@ export function createTerrainSession({ workspace, initialNodeKey = 'workspace:ve
     },
     navigate(targetNodeKey, relationshipKind, { commandRef = null, actionRef = 'action.terrain.navigate' } = {}) {
       sequence += 1;
-      return enqueue({
+      const request = {
         targetNodeKey,
         relationshipKind,
         actionRef,
         commandRef: commandRef || `command.terrain.${sequence}`,
-      });
+      };
+      return enqueue(() => executeNavigate(request));
     },
-    async back({ commandRef = null } = {}) {
-      if (!backStack.length) return freeze({ state: 'BACK_STACK_EMPTY', frame: clone(current), event: null });
-      const target = backStack.pop();
+    back({ commandRef = null } = {}) {
       sequence += 1;
-      const before = current;
-      const path = current.traversalPath.slice(0, -1);
-      current = frameFor(workspace, target.focus.nodeKey, path.length ? path : initialTraversalPath(workspace, target.focus.nodeKey), {
-        fromNodeKey: before.focus.nodeKey,
-        relationshipKind: RELATIONSHIP.RETURN,
-        actionRef: 'action.terrain.return',
-      });
       const effectiveCommandRef = commandRef || `command.terrain.${sequence}`;
-      const event = appendJourney(before, current, 'action.terrain.return', RELATIONSHIP.RETURN, effectiveCommandRef);
-      return freeze({ state: 'COMMITTED', commandRef: effectiveCommandRef, frame: clone(current), event: clone(event) });
+      return enqueue(() => executeBack(effectiveCommandRef));
     },
-    async revisit(index, { commandRef = null } = {}) {
-      assert(Number.isInteger(index) && index >= 0 && index < journey.length, 'history index out of range');
-      const target = journey[index].after.focus.nodeKey;
-      if (target === current.focus.nodeKey) return freeze({ state: 'ALREADY_PRESENT', frame: clone(current), event: null });
-      return this.navigate(target, RELATIONSHIP.REVISIT, { commandRef, actionRef: 'action.terrain.revisit' });
+    revisit(index, { commandRef = null } = {}) {
+      sequence += 1;
+      const effectiveCommandRef = commandRef || `command.terrain.${sequence}`;
+      return enqueue(() => executeRevisit(index, effectiveCommandRef));
     },
   });
 }

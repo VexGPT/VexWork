@@ -80,6 +80,41 @@ test('exact command duplicate is idempotent while divergent reuse conflicts', as
   assert.equal(conflict.state, 'DIVERGENT_COMMAND_IDENTITY');
 });
 
+test('semantic movement rejects invented edges while explicit search remains a portal', async () => {
+  const session = createTerrainSession({ workspace });
+  const invented = await session.navigate('work:project.a:work.a.root', RELATIONSHIP.CONTAINS, { commandRef: 'command.invented-edge' });
+  assert.equal(invented.state, 'BLOCKED_NO_VISIBLE_ROUTE');
+  assert.equal(session.currentFrame().focus.nodeKey, 'workspace:vexwork');
+  assert.equal(session.journey().length, 0);
+
+  const search = await session.navigate('work:project.a:work.a.root', RELATIONSHIP.SEARCH_PORTAL, { commandRef: 'command.search-portal', actionRef: 'action.terrain.search-portal' });
+  assert.equal(search.state, 'COMMITTED');
+  assert.equal(session.currentFrame().focus.nodeKey, 'work:project.a:work.a.root');
+});
+
+test('back participates in the same serialized idempotent command stream', async () => {
+  const session = createTerrainSession({ workspace });
+  await session.navigate('project:project.a', RELATIONSHIP.PROJECT);
+  await session.navigate('work:project.a:work.a.root', RELATIONSHIP.PROJECT_ROOT);
+  const [first, duplicate] = await Promise.all([
+    session.back({ commandRef: 'command.back.same' }),
+    session.back({ commandRef: 'command.back.same' }),
+  ]);
+  assert.equal(first.state, 'COMMITTED');
+  assert.equal(duplicate.state, 'DUPLICATE_EXACT_NOOP');
+  assert.equal(session.currentFrame().focus.nodeKey, 'project:project.a');
+});
+
+test('direct revisit relation cannot manufacture history', async () => {
+  const session = createTerrainSession({ workspace });
+  const forged = await session.navigate('project:project.a', RELATIONSHIP.REVISIT, {
+    commandRef: 'command.forged-revisit',
+    actionRef: 'action.terrain.revisit',
+  });
+  assert.equal(forged.state, 'BLOCKED_NO_VISIBLE_ROUTE');
+  assert.equal(session.journey().length, 0);
+});
+
 test('journey preserves meaningful revisits but suppresses same-current travel', async () => {
   const session = createTerrainSession({ workspace });
   await session.navigate('project:project.a', RELATIONSHIP.PROJECT);
