@@ -53,6 +53,12 @@ Do not broad-read every connected repository. The Repository Graph tells you whe
 "Where does live/current Workgraph state persist across restart?"
   -> docs/foundation/RUNTIME-PERSISTENCE.md
 
+"How should ChatGPT / a hosted assistant / a future local Vex carry this work?"
+  -> docs/foundation/OPERATING-PROFILES.md
+
+"I need one local host action but the hosted assistant cannot perform it"
+  -> docs/process/ASSISTED-HOST-WORKFLOW.md
+
 "QA / review this candidate / what questions should a reviewer answer?"
   -> docs/process/QUALITY-REVIEW.md
   -> docs/templates/QA-REVIEW-BRIEF.md
