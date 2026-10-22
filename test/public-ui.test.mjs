@@ -92,4 +92,23 @@ test('semantic level rail and VexWork title expose navigation home/back controls
   assert.match(page, /data-level="PROJECT"/);
 });
 
+test('lifecycle workflow map is projected from canonical registries rather than copied into the page', () => {
+  assert.match(page, /const WORK_REGISTRY_URL = '\.\/blueprint\/work-registry\.json'/);
+  assert.match(page, /const PROJECT_REGISTRY_URL = '\.\/blueprint\/project-registry\.json'/);
+  assert.match(page, /import \* as Workflow from '\.\/workflow-reader\.js'/);
+  assert.match(page, /Workflow\.projectLifecycleWorkflow\(workRegistry/);
+  assert.match(page, /class="workflow-map-canvas"/);
+  assert.match(page, /View workflows/);
+  assert.match(page, /marker-end/);
+  assert.doesNotMatch(page, /const\s+WORKFLOW_STATES\s*=/);
+  assert.doesNotMatch(page, /const\s+WORKFLOW_TRANSITIONS\s*=/);
+});
+
+test('workflow map stays read-only and carries exact item transition history into review interpretation', () => {
+  assert.match(page, /transitionHistory:item\?\.transitionHistory\|\|\[\]/);
+  assert.match(page, /policy overlay:/);
+  assert.match(page, /human review boundary/);
+  assert.doesNotMatch(page, /workflow.*method:\s*['"](?:POST|PUT|PATCH|DELETE)['"]/i);
+});
+
 // [VXG RealForever]
