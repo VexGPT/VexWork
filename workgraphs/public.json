@@ -872,9 +872,9 @@
       "workRef": "work.vexlife.connected-services.vcs04.phase2-fixture-l1-l5",
       "parentWorkRefOrNull": "work.vexlife.connected-services.vcs04-conversation-adoption",
       "label": "Phase 2 — deterministic-fixture L1-L5",
-      "purpose": "Prove possession, remote session, private gateway, temporary current Family authority and installed Conversation history read against the deterministic proof fixture.",
+      "purpose": "Preserve the A018-installed deterministic-fixture proof that L1 possession, L2 remote session, L3 private gateway, L4 bounded current Home/Family authority, and L5 canonical Conversation history read all succeeded; hold completion only for exact temporary Serve cleanup closure.",
       "workClass": "OUTCOME",
-      "state": "READY",
+      "state": "VERIFYING",
       "workDisposition": "ACTIVE",
       "priorityClass": "HIGH",
       "dependencyRefs": [
@@ -887,14 +887,15 @@
       "sourceRefs": [
         "docs/lineage/VEXLIFE-CONNECTED-SERVICES.md",
         "github.issue.vexlife.899",
-        "github.issue.vexlife.899.comment.6330027250"
+        "github.issue.vexlife.899.comment.6330027250",
+        "github.issue.vexlife.899.comment.6330169106"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-21T23:56:41.000Z",
-      "updatedAt": "2026-10-22T00:54:57.925Z"
+      "updatedAt": "2026-10-22T01:05:42.781Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -1258,6 +1259,32 @@
         "github.issue.vexlife.899.comment.6330027250"
       ],
       "createdAt": "2026-10-22T00:54:57.925Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.connected-services.vcs04.phase2.running.a018",
+      "workRef": "work.vexlife.connected-services.vcs04.phase2-fixture-l1-l5",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "A018 entered the fresh installed deterministic-fixture L1-L5 product proof on current SDK/VexLife/Android source after Phase 1 completed.",
+      "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.issue.vexlife.899.comment.6330169106"
+      ],
+      "createdAt": "2026-10-22T01:04:32.545Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.connected-services.vcs04.phase2.verifying.a018-l1-l5",
+      "workRef": "work.vexlife.connected-services.vcs04.phase2-fixture-l1-l5",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "A018 proved installed L1-L5 and current source truth; exact temporary private Serve cleanup remained the only harness debt.",
+      "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.issue.vexlife.899.comment.6330169106"
+      ],
+      "createdAt": "2026-10-22T01:05:42.781Z"
     }
   ],
   "sourceRefs": [
