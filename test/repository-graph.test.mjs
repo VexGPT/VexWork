@@ -14,6 +14,12 @@ test('public Repository Graph is structurally valid and culture remains by refer
   assert.equal(graph.executionAuthority, 'NONE');
   const android = graph.repositories.find((repository) => repository.repositoryRef === 'repo.vexlife-android');
   assert.deepEqual(android.cultureRefs, ['docs/CULTURE.md']);
+  const sdk = graph.repositories.find((repository) => repository.repositoryRef === 'repo.vextreme-sdk');
+  assert.equal(sdk.visibility, 'PRIVATE');
+  assert.deepEqual(sdk.cultureRefs, []);
+  const construction = graph.repositories.find((repository) => repository.repositoryRef === 'repo.vexlife-construction-reference');
+  assert.equal(construction.visibility, 'PUBLIC');
+  assert.deepEqual(construction.cultureRefs, ['docs/CULTURE.md']);
 });
 
 test('unknown repository references fail closed', () => {
