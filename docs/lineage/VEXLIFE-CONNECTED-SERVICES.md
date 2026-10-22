@@ -125,14 +125,16 @@ A016 semantic result
   Android -> Mac private Serve TCP by Tailscale IPv4 PASS
   Android -> Mac private Serve TCP by MagicDNS PASS
 
-current debt
-  A016-owned temporary private Serve port 10000 remained after cleanup attempt
-  this is harness/effect cleanup debt, not a reversal of the network proof
+A017 closure
+  A016-owned temporary private Serve port 10000 was already absent when cleanup re-observed it
+  second observation confirmed mapping absent and AllowFunnel=false
+  no further network mutation was required
 
 next
-  exact A016-owned Serve cleanup only
-  -> require mapping gone
-  -> then Phase 1 can close and Phase 2 fixture-backed L1-L5 may resume
+  Phase 2 deterministic-fixture L1-L5 is READY
+  -> fresh installed product replay
+  -> possession / remote session / Family authority / bootstrap / history read
+  -> retain accepted diagnostic refs if a higher-layer failure remains
 ```
 
 Permanent interpretation:
@@ -165,6 +167,7 @@ The attempt number is recovery/evidence lineage, not canonical work progress. Re
 | A014 | Tailnet/Serve seam probe identified `MAC_SHIELDS_UP`; no security preference mutation was performed. |
 | A015 | Machine-confirmed `shieldsUp=false`; broad peer collection remained ambiguous and correctly refused to guess. |
 | A016 | Route-selected Android identity resolved uniquely and private Serve TCP passed by both Tailscale IPv4 and MagicDNS; only exact temporary Serve cleanup remained unproven. |
+| A017 | Exact cleanup-only re-observation found the A016 port-10000 mapping already gone and confirmed it remained absent; Phase 1 cleanup debt closed without further network mutation. |
 
 A012 fixture law:
 
@@ -177,32 +180,30 @@ ANDROID_READ_DOORWAY != FAMILY_HOST_ESTABLISHMENT
 
 ## Current checkpoint
 
-The private network seam is now materially proven:
+Phase 1 is complete.
 
 ```text
-Mac ShieldsUp=false
-Android route-selected interface=tun1
-route-selected Android tailnet identity -> exactly one current Mac peer
+Android diagnostic observability = accepted/current
+Mac incoming Tailscale connections = enabled
+Android route-selected tailnet identity = unique current peer
 Mac -> Android DISCO / TSMP / ICMP = PASS
 Android -> Mac ICMP = PASS
 Android -> Mac private Serve TCP by Tailscale IPv4 = PASS
 Android -> Mac private Serve TCP by MagicDNS = PASS
-AllowFunnel=false
+A016 temporary Serve port 10000 = absent on A017 re-observation
+AllowFunnel = false
+network cleanup = CLOSED
 ```
 
-A016 itself ended `SAFE_FAILURE` only because its exact temporary private Serve mapping on HTTPS port 10000 remained after bounded cleanup.
-
-Current edge:
+Current VexWork state:
 
 ```text
-recover exact A016-owned private Serve mapping
--> prove port 10000 mapping gone
--> no broad Serve reset
--> no Funnel mutation
--> no product replay inside the cleanup attempt
+work.vexlife.connected-services.vcs04.phase1.private-serve-ingress = COMPLETED
+work.vexlife.connected-services.vcs04.phase1-prechallenge = COMPLETED
+work.vexlife.connected-services.vcs04.phase2-fixture-l1-l5 = READY
 ```
 
-Once cleanup is proven, the Phase-1 network discrimination outcome is complete enough to advance into deterministic-fixture L1-L5 rather than continuing to diagnose generic tailnet reachability.
+The next product question is no longer generic networking. Re-enter the installed deterministic-fixture L1-L5 path and let the accepted Android diagnostic boundary identify any remaining higher-layer failure.
 
 ## Manual foundation / onboarding observations
 
@@ -294,29 +295,18 @@ README.md
 -> project.vexlife.connected-services
 -> docs/lineage/VEXLIFE-CONNECTED-SERVICES.md
 -> work.vexlife.connected-services.vcs04.phase1.private-serve-ingress
--> only then descend into the exact A016 cleanup edge / next qualified cleanup carrier
+-> work.vexlife.connected-services.vcs04.phase2-fixture-l1-l5
+-> only then descend into the live product/source needed for the fresh Phase-2 replay
 ```
 
 Current truth:
 
 ```text
-A016 terminal RETURN consumed.
-Private tailnet + private Serve TCP reachability is proven.
-The only current hold is exact cleanup of A016-owned HTTPS port 10000.
-A017 cleanup-only carrier is QUALIFIED and waiting for one Mac execution.
-No product replay should occur before that mapping is proven gone.
-```
-
-Current A017:
-
-```text
-task=exact A016 private Serve cleanup only
-wrapperSha256=588531ea5708eb72c19efc6fdc0e9bd6b62342999f8a0a9114cafd94df8f7594
-wrapperBytes=15901
-Android phone required=false
-broad Serve reset=false
-Funnel/security-policy mutation=false
-PASS requires exact port 10000 mapping gone
+A017 terminal RETURN consumed PASS.
+Phase 1 private-network discrimination is COMPLETE.
+No A016 diagnostic Serve mapping remains.
+Phase 2 deterministic-fixture L1-L5 is READY.
+Fresh Phase-2 replay is next.
 ```
 
 <!-- [VXG RealForever][VEXWORK][LINEAGE][VEXLIFE-CONNECTED-SERVICES] -->
