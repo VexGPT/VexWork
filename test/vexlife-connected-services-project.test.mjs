@@ -45,15 +45,17 @@ test('Connected Services Board makes completed, current and held phases visible 
   const planned = board.lanes.find((lane) => lane.laneRef === 'lane.work.planned');
   const done = board.lanes.find((lane) => lane.laneRef === 'lane.work.done');
   const verify = board.lanes.find((lane) => lane.laneRef === 'lane.work.verify');
+  const ready = board.lanes.find((lane) => lane.laneRef === 'lane.work.ready');
 
   assert.equal(board.lanes.flatMap((lane) => lane.cards).length, 17);
   assert.equal(active.cards.length, 2);
-  assert.equal(planned.cards.length, 7);
-  assert.equal(done.cards.length, 7);
+  assert.equal(planned.cards.length, 6);
+  assert.equal(done.cards.length, 8);
   assert.equal(active.cards.some((card) => card.workRef === 'work.vexlife.connected-services.vcs04-conversation-adoption'), true);
   assert.equal(done.cards.some((card) => card.workRef === 'work.vexlife.connected-services.vcs04.phase1.private-serve-ingress'), true);
   assert.equal(done.cards.some((card) => card.workRef === 'work.vexlife.connected-services.vcs04.phase1-prechallenge'), true);
-  assert.equal(verify.cards.some((card) => card.workRef === 'work.vexlife.connected-services.vcs04.phase2-fixture-l1-l5'), true);
+  assert.equal(done.cards.some((card) => card.workRef === 'work.vexlife.connected-services.vcs04.phase2-fixture-l1-l5'), true);
+  assert.equal(ready.cards.some((card) => card.workRef === 'work.vexlife.connected-services.vcs04.phase3-fresh-user-family'), true);
   assert.equal(done.cards.some((card) => card.workRef === 'work.vexlife.connected-services.vcs04.phase1.android-observability-source'), true);
 
   const lot = projectParkingLot({ graph, registry });
