@@ -254,25 +254,30 @@ completed execution checkpoint:
 A057:
   exact SDK-bound Mac carrier executed
   four Memory/Safety writes + exact path/membrane + git diff --check = PASS
-  focused Memory/Safety proof = 13/13 PASS
+  initial focused Memory/Safety proof = 13/13 PASS
   full sdk-check stopped on 8 non-candidate-local repository/dependency findings
   commit/push inside A057 = false
 
-post-A057 source review/current candidate:
+current semantic source candidate:
   PR #1890 = OPEN DRAFT
   base = b4d427564409989e8f839066accd17ec4c790724
-  head = 4f22f4b376e4c23485184491df458116760defb3
-  tree = 754613e848c3ffe5f9b6fd06a7a383f0e16006dd
+  head = 2cb613ca37fe454beee2ef3fc1d63de3ce226afa
+  tree = 779eda369f52e2be93160c1a34857265a6c4f143
   exact changed paths = 4
   exact DCO author/trailer = PASS
-  focused Memory/Safety proof after owner-contract corrections = 19/19 PASS
+  focused Memory/Safety owner proof = 28/28 PASS
 
-semantic corrections earned by fresh review:
+owner-contract corrections earned after A057:
+  lineage natural-language interpretation = INFERRED / LINEAGE_INFERENCE
   explicit current-predecessor correction/supersession required
-  positive consent/authority currentness enforced at head materialization
-  release/tombstone held until explicit accepted Safety release authority exists
+  silent same-subject replacement rejected
+  positive consent/authority currentness uses owner-observed clock
+  caller backdating cannot revive expired authority
   acceptedForContinuity derived from semantic state + Safety continuity disposition
   caller-provided continuity boolean is non-authoritative
+  release/tombstone held until explicit accepted Safety release authority exists
+  head.json must equal its immutable heads/<sha>.json receipt
+  prior-head lineage must remain immutable, acyclic and sequence-continuous
 
 current dependency task:
   work.vexlife.tocompletion.p5.g02.sdk-readiness-admission = WAITING_DEPENDENCIES
@@ -289,11 +294,15 @@ next action after serializer release:
   -> ordinary-forward currentize PR #1890 if main moved
   -> rerun affected focused/repository proof
   -> fresh exact-head SourceOwner / Independent Assurance / lifecycle
+  -> separate retained-Home G02 lived consumption
+
+durable owner checkpoint:
+  github.issue.vextreme-sdk.225.comment.6332780928
 
 VictorAction=NONE
 ```
 
-A057 is not the next action anymore. The semantic source is published and review-stable; the exact held edge is repository readiness/currentization, not another Memory/Safety redesign or another host replay.
+A057 is not the next action anymore. The semantic source is published and review-stable for the pre-readiness stage; the exact held edge is repository readiness/currentization, not another host replay. Terminal exact-head SourceOwner/Assurance is intentionally deferred because #1891 will advance accepted SDK main and force one ordinary-forward candidate currentization.
 
 ## Remaining completion path
 

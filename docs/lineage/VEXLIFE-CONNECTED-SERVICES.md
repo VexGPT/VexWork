@@ -86,9 +86,9 @@ A019 confirmed A018's temporary Serve mapping already gone and still absent.
 Phase 2 = COMPLETED
 ```
 
-### Phase 3 — current
+### Phase 3 — completed
 
-Fixture law learned in Phase 2:
+Fixture law learned in Phase 2 remained intact:
 
 ```text
 temporary Family proof room != product first Family
@@ -97,47 +97,49 @@ Android bootstrap is read-only
 Android must not invent space/channel/thread identity
 ```
 
-The rightful product owner was already present:
+PR #917 corrected the one source mismatch that hid a legitimate fresh owner-only GROUP. A020 then executed the actual product owner:
 
 ```text
-browser Host
--> /api/v1/family/lifecycle
--> executeBrowserFamilyLifecycle(HOST)
+fresh authenticated Home
+-> browser HOST lifecycle
 -> hostFamily()
--> createFamilySpace()
--> createFamilyChannel(kind=GROUP)
--> materializeConversationChannel()
+-> Family Space CREATED
+-> initial GROUP MATERIALIZED
+-> owner-only bootstrap/read CURRENT
+-> installed Android L1-L5 PASS
+-> empty history visible
+-> no seed message
 ```
 
-Grounding exposed a real source mismatch: `hostFamily()` correctly creates the first Family with one authenticated human OWNER plus the Family companion lineage, but the Conversation bridge required two human principals for every channel and therefore hid the canonical fresh GROUP.
-
-VexLife PR #917 corrected that ownership mismatch:
+A020's outer SAFE_FAILURE was cleanup-only. A021 observed the exact A020 port-10000 private Serve mapping already absent, `AllowFunnel=false`, and performed no product replay or network mutation.
 
 ```text
-GROUP read/list minimum = 1 current human
-PRIVATE minimum = 2 current humans
-owner-only APPEND = still denied
+Phase 3 = COMPLETED
 ```
 
-The final exact candidate passed:
-- DCO;
-- Foundation checks;
-- accepted-main topology preflight;
-- PR_READY;
-- fresh Independent Assurance;
-- Formal Review;
-- expected-head merge.
+### Phase 4 — current
 
-Accepted main:
+The next acceptance slice is deliberately two effects rather than one disguised transaction:
 
 ```text
-b33765aada1f4a70d4cae253d196411b23b9cded
-tree=91ecd71616a971f6cb56a0ce41a45f44f14e23a6
-candidate blobs on main=6/6 exact
-main Foundation push run 39708257381=PASS
+L6 one durable human Send exactly once
+L7 separate Companion/model response
+L8 model failure does not erase human append
 ```
 
-Therefore the source defect is complete. The current unconsumed edge is the real fresh-user lived proof `work.vexlife.connected-services.vcs04.phase3.host-to-android-l1-l5`.
+Accepted Family Conversation law keeps ordinary human delivery and AI attention separate. The Family Companion runtime consumes a persisted Family trigger and owns its own queue/model/durable-response semantics. Phase 4 must preserve that separation while connecting the installed Android Send path to the current Home-owned producer.
+
+```text
+HUMAN_MESSAGE_DELIVERY != AI_ATTENTION
+MODEL_BUSY != FAMILY_CHAT_BLOCKED
+HUMAN_APPEND_DURABLE != MODEL_RESPONSE_SUCCEEDED
+```
+
+Current canonical Work item:
+
+```text
+work.vexlife.connected-services.vcs04.phase4-send-companion = READY
+```
 
 ## Recovery appendix — attempt lineage
 
@@ -164,6 +166,8 @@ Attempt identities are evidence/recovery history, not canonical Work items.
 | A017 | Exact cleanup re-observation found the temporary mapping already gone; Phase 1 complete. |
 | A018 | Installed deterministic-fixture L1-L5 passed; cleanup debt only. |
 | A019 | Exact cleanup re-observation found the temporary mapping already gone; Phase 2 complete. |
+| A020 | Real fresh browser HOST -> installed Android L1-L5 passed with owner-only empty history; cleanup debt only. |
+| A021 | Exact A020 cleanup re-observation found port 10000 already absent; Phase 3 complete. |
 
 ## Manual onboarding discoveries
 
@@ -231,9 +235,11 @@ Current truth:
 ```text
 Phase 1 = COMPLETED
 Phase 2 = COMPLETED
-Phase 3 = RUNNING
+Phase 3 = COMPLETED
 PR #917 source defect = COMPLETED / accepted-current
-work.vexlife.connected-services.vcs04.phase3.host-to-android-l1-l5 = READY
+work.vexlife.connected-services.vcs04.phase3.host-to-android-l1-l5 = COMPLETED
+Phase 4 = READY
+work.vexlife.connected-services.vcs04.phase4-send-companion = READY
 ```
 
 <!-- [VXG RealForever][VEXWORK][LINEAGE][VEXLIFE-CONNECTED-SERVICES] -->

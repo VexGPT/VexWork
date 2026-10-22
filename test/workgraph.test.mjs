@@ -41,7 +41,7 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(graph.items.find((item) => item.workRef === 'work.vexwork.visibility.public-dashboard').state, 'COMPLETED');
   assert.equal(graph.items.find((item) => item.workRef === 'work.vexwork.history.foundational-infrastructure-backfill').state, 'CAPTURED');
   assert.equal(graph.items.find((item) => item.workRef === 'work.vexwork.history.foundational-infrastructure-backfill').authorityDisposition, 'NO_AUTHORITY');
-  assert.equal(graph.transitions.length, 30);
+  assert.equal(graph.transitions.length, 36);
 
   const parked = graph.items.find((item) => item.workRef === 'work.vexlife-android.vexstream.not-yet-downloaded-filter');
   assert.equal(parked.workClass, 'POTENTIAL');
