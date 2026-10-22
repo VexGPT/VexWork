@@ -24,6 +24,7 @@ test('VexStream Mobile Library is the first external Project over the shared Wor
   assert.equal(project.repositoryRefs.includes('repo.vexstream-music'), true);
   assert.equal(project.sourceRefs.includes('projects/vexstream-mobile-library/README.md'), true);
   assert.equal(project.sourceRefs.includes('github.pull.vexlife-android.151'), true);
+  assert.equal(project.sourceRefs.includes('github.pull.vexlife-android.155'), true);
   assert.equal(project.sourceRefs.includes('github.pull.vextreme-sdk.1887'), true);
 
   assert.deepEqual(childRefs(graph, 'work.vexstream.mobile-library.outcome'), [
@@ -49,16 +50,21 @@ test('VexStream Mobile Library is the first external Project over the shared Wor
   assert.deepEqual(childRefs(graph, 'work.vexstream.mobile-library.massdownload-e2e'), []);
 });
 
-test('Mobile Library Board separates terminal MassDownload from the running Queue defect', () => {
+test('Mobile Library Board separates terminal MassDownload from the paused Queue checkpoint', () => {
   const board = projectWorkBoard({ project, graph, view, registry });
   const done = board.lanes.find((lane) => lane.laneRef === 'lane.work.done');
   const active = board.lanes.find((lane) => lane.laneRef === 'lane.work.active');
+  const waiting = board.lanes.find((lane) => lane.laneRef === 'lane.work.waiting');
 
   assert.equal(board.lanes.flatMap((lane) => lane.cards).length, 12);
   assert.equal(done.cards.some((card) => card.workRef === 'work.vexstream.mobile-library.massdownload-product'), true);
   assert.equal(done.cards.some((card) => card.workRef === 'work.vexstream.mobile-library.massdownload-e2e'), true);
-  assert.equal(active.cards.some((card) => card.workRef === 'work.vexstream.mobile-library.track-menu-presentation-defect'), true);
-  const queueIncident = active.cards.find((card) => card.workRef === 'work.vexstream.mobile-library.track-menu-presentation-defect');
+  assert.equal(active.cards.some((card) => card.workRef === 'work.vexstream.mobile-library.track-menu-presentation-defect'), false);
+  assert.equal(waiting.cards.some((card) => card.workRef === 'work.vexstream.mobile-library.track-menu-presentation-defect'), true);
+  const queueIncident = waiting.cards.find((card) => card.workRef === 'work.vexstream.mobile-library.track-menu-presentation-defect');
+  assert.equal(queueIncident.state, 'PAUSED_AT_CHECKPOINT');
+  assert.equal(queueIncident.workDisposition, 'ACTIVE');
+  assert.equal(queueIncident.authorityDisposition, 'AUTHORIZED_BOUNDED');
   assert.equal(queueIncident.effectDisposition, 'NO_EFFECTS');
 });
 
