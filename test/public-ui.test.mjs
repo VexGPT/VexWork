@@ -14,10 +14,12 @@ test('VexWork Pages owns the semantic navigator and reads same-origin public wor
 });
 
 test('semantic routes distinguish Projects, Project and work-item levels', () => {
-  assert.deepEqual(reader.parseRoute(''), { projectRef: null, workRef: null, view: 'story', level: 'PROJECTS' });
+  assert.deepEqual(reader.parseRoute(''), { projectRef: null, workRef: null, view: 'projects', level: 'PROJECTS' });
   assert.deepEqual(reader.parseRoute('?project=project.demo'), { projectRef: 'project.demo', workRef: null, view: 'story', level: 'PROJECT' });
   assert.deepEqual(reader.parseRoute('?project=project.demo&work=work.demo.task&view=history'), { projectRef: 'project.demo', workRef: 'work.demo.task', view: 'history', level: 'ITEM' });
   assert.equal(reader.routeSearch({ projectRef: 'project.demo', workRef: 'work.demo.task', view: 'overview' }), '?project=project.demo&work=work.demo.task');
+  assert.deepEqual(reader.parseRoute('?view=open'), { projectRef: null, workRef: null, view: 'open', level: 'PROJECTS' });
+  assert.equal(reader.routeSearch({ projectRef: null, workRef: null, view: 'open' }), '?view=open');
 });
 
 test('recursive containment and incoming dependencies remain projection helpers', () => {
@@ -32,6 +34,13 @@ test('recursive containment and incoming dependencies remain projection helpers'
   assert.deepEqual(reader.ancestorRefs(project, 'work.child'), ['work.root']);
   assert.deepEqual(reader.childItems(project, 'work.root').map((item) => item.workRef), ['work.child']);
   assert.deepEqual(reader.incomingDependencyRefs(project, 'work.child'), ['work.consumer']);
+  project.lanes = [
+    { laneRef: 'lane.work.active', workRefs: ['work.root', 'work.consumer'] },
+    { laneRef: 'lane.work.done', workRefs: ['work.child'] },
+    { laneRef: 'lane.work.archive', workRefs: [] },
+  ];
+  assert.deepEqual(reader.openWorkItems(project).map((item) => item.workRef), ['work.root', 'work.consumer']);
+  assert.deepEqual(reader.openWorkGroups(project).map((group) => group.scopeRef), ['work.root', 'work.consumer']);
 });
 
 test('public schema validator preserves no-effects boundary', () => {
@@ -45,6 +54,10 @@ test('UI exposes semantic lenses but no work/comment mutation controls', () => {
   assert.match(page, /Board/);
   assert.match(page, /Dependencies/);
   assert.match(page, /State History/);
+  assert.match(page, /Open Work/);
+  assert.match(page, /fold-toggle/);
+  assert.match(page, /preserveScroll/);
+  assert.match(page, /Priority ·/);
   assert.match(page, /This page cannot mutate Workgraph truth/);
   assert.match(page, /VexWork stays read-only/);
   assert.doesNotMatch(page, /method:\s*['"](?:POST|PUT|PATCH|DELETE)['"]/i);
@@ -59,6 +72,24 @@ test('dynamic VexWork strings enter through textContent, not producer HTML', () 
 test('family navigation keeps Vextreme and VexLife as sibling destinations', () => {
   assert.match(page, /https:\/\/vgong24\.github\.io\/Vextreme\/pages\/terrain-map\.html\?view=content&amp;profile=evolution-v1/);
   assert.match(page, /https:\/\/vgong24\.github\.io\/VexLife\//);
+});
+
+test('state presentation uses stable semantic color families and keeps priority separate', () => {
+  assert.equal(reader.stateTone('COMPLETED'), 'done');
+  assert.equal(reader.stateTone('RUNNING'), 'open');
+  assert.equal(reader.stateTone('BLOCKED'), 'blocked');
+  assert.equal(reader.stateTone('WAITING_HUMAN'), 'waiting');
+  assert.equal(reader.stateTone('DECOMPOSED'), 'pending');
+  assert.equal(reader.priorityTone('IMMEDIATE'), 'immediate');
+  assert.equal(reader.priorityTone('HIGH'), 'high');
+  assert.equal(reader.priorityTone('NORMAL'), 'normal');
+});
+
+test('semantic level rail and VexWork title expose navigation home/back controls', () => {
+  assert.match(page, /class="family-current" href="\.\/"/);
+  assert.match(page, /class="brand-home" href="\.\/">VexWork<\/a>/);
+  assert.match(page, /data-level="PROJECTS"/);
+  assert.match(page, /data-level="PROJECT"/);
 });
 
 // [VXG RealForever]
