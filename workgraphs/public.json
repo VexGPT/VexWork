@@ -844,9 +844,9 @@
       "workRef": "work.vexlife.connected-services.vcs04.phase1-prechallenge",
       "parentWorkRefOrNull": "work.vexlife.connected-services.vcs04-conversation-adoption",
       "label": "Phase 1 — pre-challenge transport discrimination",
-      "purpose": "Turn the formerly generic installed Conversation refresh failure into a discriminating, secret-free network diagnosis and clear the private tailnet/Serve ingress boundary before another full product replay.",
+      "purpose": "Preserve the completed pre-challenge discrimination result: accepted Android diagnostics identified the former session-challenge timeout, Shields Up was found and cleared, private tailnet/Serve TCP was proven bidirectionally, and temporary network effects were closed.",
       "workClass": "OUTCOME",
-      "state": "RUNNING",
+      "state": "COMPLETED",
       "workDisposition": "ACTIVE",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [],
@@ -857,14 +857,15 @@
       "sourceRefs": [
         "docs/lineage/VEXLIFE-CONNECTED-SERVICES.md",
         "github.pull.vexlife-android.152",
-        "github.issue.vexlife.899.comment.6329236847"
+        "github.issue.vexlife.899.comment.6329236847",
+        "github.issue.vexlife.899.comment.6330027250"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-21T23:56:41.000Z",
-      "updatedAt": "2026-10-21T23:56:41.000Z"
+      "updatedAt": "2026-10-22T00:54:57.924Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -873,7 +874,7 @@
       "label": "Phase 2 — deterministic-fixture L1-L5",
       "purpose": "Prove possession, remote session, private gateway, temporary current Family authority and installed Conversation history read against the deterministic proof fixture.",
       "workClass": "OUTCOME",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "READY",
       "workDisposition": "ACTIVE",
       "priorityClass": "HIGH",
       "dependencyRefs": [
@@ -885,14 +886,15 @@
       ],
       "sourceRefs": [
         "docs/lineage/VEXLIFE-CONNECTED-SERVICES.md",
-        "github.issue.vexlife.899"
+        "github.issue.vexlife.899",
+        "github.issue.vexlife.899.comment.6330027250"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-21T23:56:41.000Z",
-      "updatedAt": "2026-10-21T23:56:41.000Z"
+      "updatedAt": "2026-10-22T00:54:57.925Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -1037,9 +1039,9 @@
       "workRef": "work.vexlife.connected-services.vcs04.phase1.private-serve-ingress",
       "parentWorkRefOrNull": "work.vexlife.connected-services.vcs04.phase1-prechallenge",
       "label": "Clear Android-to-Mac private Serve ingress",
-      "purpose": "Preserve the proven Android-to-Mac private tailnet/Serve TCP path, recover the exact A016-owned temporary HTTPS port 10000 mapping without broad reset, then close the Phase-1 network discrimination edge before fixture-backed L1-L5 resumes.",
+      "purpose": "Preserve the proven bidirectional private tailnet/Serve TCP path and its closed cleanup: Mac-to-Android DISCO/TSMP/ICMP passed, Android-to-Mac ICMP/TCP passed by Tailscale IPv4 and MagicDNS, and the A016-owned port-10000 mapping was subsequently observed absent.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "COMPLETED",
       "workDisposition": "ACTIVE",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [
@@ -1051,14 +1053,15 @@
       "sourceRefs": [
         "docs/lineage/VEXLIFE-CONNECTED-SERVICES.md",
         "github.issue.vexlife.899.comment.6329236847",
-        "github.issue.vexlife.899.comment.6329946967"
+        "github.issue.vexlife.899.comment.6329946967",
+        "github.issue.vexlife.899.comment.6330027250"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-21T23:56:41.000Z",
-      "updatedAt": "2026-10-22T00:46:20.756Z"
+      "updatedAt": "2026-10-22T00:54:57.922Z"
     }
   ],
   "transitions": [
@@ -1190,6 +1193,71 @@
         "github.commit.vexwork.7b8309aabfaa3894c43485a45f27d286ffe7aa52"
       ],
       "createdAt": "2026-10-21T07:09:18.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.connected-services.vcs04.phase1.private-serve-ingress.verifying.a016-proof",
+      "workRef": "work.vexlife.connected-services.vcs04.phase1.private-serve-ingress",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "A016 proved the route-selected Android peer and bidirectional private tailnet/Serve TCP path; only exact temporary Serve cleanup remained.",
+      "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.issue.vexlife.899.comment.6329946967"
+      ],
+      "createdAt": "2026-10-22T00:54:57.921Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.connected-services.vcs04.phase1.private-serve-ingress.completed.a017",
+      "workRef": "work.vexlife.connected-services.vcs04.phase1.private-serve-ingress",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "A017 observed the A016-owned port-10000 private Serve mapping already absent and reverified it remained absent with Funnel false and clean task cleanup.",
+      "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.issue.vexlife.899.comment.6330027250"
+      ],
+      "createdAt": "2026-10-22T00:54:57.922Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.connected-services.vcs04.phase1.verifying.network-discrimination",
+      "workRef": "work.vexlife.connected-services.vcs04.phase1-prechallenge",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Android observability plus A013-A016 discrimination proved the generic private-network seam and identified/corrected the Shields Up prerequisite.",
+      "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.issue.vexlife.899.comment.6329946967"
+      ],
+      "createdAt": "2026-10-22T00:54:57.923Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.connected-services.vcs04.phase1.completed.a017",
+      "workRef": "work.vexlife.connected-services.vcs04.phase1-prechallenge",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "A017 closed the last temporary Serve cleanup debt; Phase 1 now has accepted observability, proven private connectivity, and no outstanding network effect.",
+      "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.issue.vexlife.899.comment.6330027250"
+      ],
+      "createdAt": "2026-10-22T00:54:57.924Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.connected-services.vcs04.phase2.ready.after-phase1",
+      "workRef": "work.vexlife.connected-services.vcs04.phase2-fixture-l1-l5",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "Phase 1 completed with private network/Serve reachability proven and cleanup closed, releasing deterministic-fixture L1-L5 as the next bounded VCS-04 edge.",
+      "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.issue.vexlife.899.comment.6330027250"
+      ],
+      "createdAt": "2026-10-22T00:54:57.925Z"
     }
   ],
   "sourceRefs": [
