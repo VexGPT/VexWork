@@ -8,6 +8,7 @@ import { verifySemanticFingerprint } from '../src/core/semantic.mjs';
 const read = (relative) => JSON.parse(fs.readFileSync(new URL(`../${relative}`, import.meta.url), 'utf8'));
 const registry = read('blueprint/work-registry.json');
 const projectSource = read('projects/vexwork-foundation/project.json');
+const toCompletionProjectSource = read('projects/vexlife-tocompletion/project.json');
 const graphSource = read('workgraphs/public.json');
 
 test('work registry covers lifecycle states exactly once on the default Work Board', () => {
@@ -18,8 +19,10 @@ test('work registry covers lifecycle states exactly once on the default Work Boa
 test('one Workgraph can contain project work and unprojected parked work', () => {
   const project = createProject(projectSource);
   const graph = createWorkgraph(graphSource, registry);
-  assert.equal(graph.items.length, 21);
+  assert.equal(graph.items.length, 29);
   assert.equal(projectWorkRefs(project, graph).length, 8);
+  const toCompletionProject = createProject(toCompletionProjectSource);
+  assert.equal(projectWorkRefs(toCompletionProject, graph).length, 8);
   assert.equal(verifySemanticFingerprint(project), true);
   assert.equal(verifySemanticFingerprint(graph), true);
 
@@ -64,6 +67,24 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(keepOffline.workDisposition, 'PARKED');
   assert.equal(keepOffline.authorityDisposition, 'NO_AUTHORITY');
   assert.equal(keepOffline.effectDisposition, 'NO_EFFECTS');
+
+  const toCompletion = graph.items.find((item) => item.workRef === 'work.vexlife.tocompletion.outcome');
+  assert.equal(toCompletion.workClass, 'OUTCOME');
+  assert.equal(toCompletion.state, 'RUNNING');
+  assert.equal(toCompletion.authorityDisposition, 'AUTHORIZED_BOUNDED');
+  const p0b = graph.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p0b.foundation');
+  const p1 = graph.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p1.heretic-establishment');
+  const p2 = graph.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p2.first-lived-turn');
+  const p3 = graph.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p3.restart-durability');
+  assert.deepEqual([p0b.state, p1.state, p2.state, p3.state], ['COMPLETED', 'COMPLETED', 'COMPLETED', 'COMPLETED']);
+  const p4 = graph.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p4.typed-local-effect');
+  assert.equal(p4.state, 'RUNNING');
+  const p4Source = graph.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p4.source-acceptance');
+  assert.equal(p4Source.state, 'WAITING_HUMAN');
+  assert.equal(p4Source.sourceRefs.includes('github.pull.vexlife.916'), true);
+  const p4Lived = graph.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p4.lived-reinjection');
+  assert.equal(p4Lived.state, 'WAITING_DEPENDENCIES');
+  assert.deepEqual(p4Lived.dependencyRefs, ['work.vexlife.tocompletion.p4.source-acceptance']);
 });
 
 test('typed transition rejects stale observation and accepts exact current transition', () => {
