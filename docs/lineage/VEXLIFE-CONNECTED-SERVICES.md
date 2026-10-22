@@ -187,15 +187,45 @@ ANDROID_READ_DOORWAY != FAMILY_HOST_ESTABLISHMENT
 
 ## Current checkpoint
 
-Phase 2 is complete.
+Phase 3 is active.
+
+The rightful product establishment trigger is already source-owned:
 
 ```text
-L1 remote device possession = PASS
-L2 remote authenticated session = PASS
-L3 private bounded gateway = PASS
-L4 current bounded Home/Family authority = PASS
-L5 canonical installed Conversation read = PASS
-A018 temporary Serve cleanup = CLOSED by A019 re-observation
+visible browser Host control
+-> /api/v1/family/lifecycle
+-> server-owned authority resolution
+-> executeBrowserFamilyLifecycle(HOST)
+-> hostFamily()
+-> canonical Family Space
+-> canonical initial GROUP room
+```
+
+Grounding exposed one required source defect:
+
+```text
+hostFamily() fresh result:
+  one authenticated human OWNER
+  + Family companion lineage
+  + canonical initial GROUP
+
+browser/server Conversation visibility:
+  required >= 2 human principals for every channel
+  -> owner-only canonical GROUP skipped as denied
+  -> bootstrap appears EMPTY
+```
+
+Current bounded correction:
+
+```text
+VexLife PR #917
+Work: work.vexlife.connected-services.vcs04.phase3.owner-only-family-readability
+
+GROUP minimum human audience = 1
+PRIVATE minimum human audience = 2
+APPEND recipient rule remains unchanged
+HTTP regression:
+  HOST -> bootstrap CURRENT -> owner-only room -> READ_THREAD_HISTORY 200
 ```
 
 Current VexWork state:
@@ -203,21 +233,12 @@ Current VexWork state:
 ```text
 Phase 1 = COMPLETED
 Phase 2 = COMPLETED
-Phase 3 = READY
+Phase 3 = RUNNING
+owner-only Family readability defect = RUNNING
 Phase 4 = WAITING_DEPENDENCIES
 ```
 
-The next product question is **fresh-user Family establishment**. The deterministic proof fixture must stop being the room creator.
-
-```text
-fresh authenticated Home
--> rightful Family host runtime
--> canonical Family Space
--> canonical initial GROUP room
--> installed Android bootstrap/read
-```
-
-Do not let Android invent room identity. Do not make bootstrap silently create the room. Ground the existing product owner and rightful trigger first.
+Do not form the lived fresh-user Phase-3 replay until PR #917 completes source proof, semantic Assurance, lifecycle acceptance, and post-merge currentness.
 
 ## Manual foundation / onboarding observations
 
@@ -316,10 +337,11 @@ README.md
 Current truth:
 
 ```text
-A019 terminal RETURN consumed PASS.
-Phase 2 deterministic-fixture L1-L5 is COMPLETED.
-Phase 3 fresh-user Family establishment is READY.
-The next work is product-owner/source grounding before another lived package.
+A019 cleanup is consumed PASS.
+Phase 2 is COMPLETED.
+Phase 3 is RUNNING.
+PR #917 is the bounded owner-only fresh Family readability correction.
+Fresh lived Phase-3 replay is held until that source candidate is accepted/current.
 ```
 
 <!-- [VXG RealForever][VEXWORK][LINEAGE][VEXLIFE-CONNECTED-SERVICES] -->
