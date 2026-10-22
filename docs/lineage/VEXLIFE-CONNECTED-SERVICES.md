@@ -306,7 +306,24 @@ A017 terminal RETURN consumed PASS.
 Phase 1 private-network discrimination is COMPLETE.
 No A016 diagnostic Serve mapping remains.
 Phase 2 deterministic-fixture L1-L5 is READY.
-Fresh Phase-2 replay is next.
+A018 is QUALIFIED and waiting for one host execution.
 ```
+
+Current A018:
+
+```text
+wrapperSha256=8d1d35d2637153efaec661f5369659c72b3d71db663c7c2272d8bf13149145bb
+purpose=fixture-backed installed L1-L5
+current VexLife main=a23313f7be4a24f6fb9989277bc1f5ad4dbdf6e8
+VexLife movement since A013=2 unrelated commits
+VCS-04 bound producer blobs=unchanged
+Mac ShieldsUp=false required
+route-selected Android peer unique/current/online required
+private Serve port=10000
+public Funnel=false
+hostFamily / Send / model / restart held
+```
+
+On terminal A018 RETURN, consume it before any replay.
 
 <!-- [VXG RealForever][VEXWORK][LINEAGE][VEXLIFE-CONNECTED-SERVICES] -->
