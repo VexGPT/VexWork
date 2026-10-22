@@ -760,13 +760,13 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T00:13:43.000Z",
-      "updatedAt": "2026-10-22T00:13:43.000Z",
+      "updatedAt": "2026-10-22T00:30:00.000Z",
       "workRef": "work.vexlife.tocompletion.p4.source-acceptance",
       "parentWorkRefOrNull": "work.vexlife.tocompletion.p4.typed-local-effect",
       "label": "P4 source acceptance for PR #916",
       "purpose": "Complete exact-head source acceptance for PR #916 through SourceOwner proof, fresh Assurance, lifecycle currentness, semantic review/READY, owner merge duty, post-merge verification, and claim release without confusing source acceptance with lived P4 completion.",
       "workClass": "TASK",
-      "state": "WAITING_HUMAN",
+      "state": "COMPLETED",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [],
       "repositoryRefs": [
@@ -777,7 +777,11 @@
         "github.pull.vexlife.916",
         "github.commit.vexlife.d8e1c855118bd4578650c2708b837e05cbaaef73",
         "source.vexrelay.current-contract/v1",
-        "vexrelay.package.vexlife.p4.source-owner.a052.sha256.f13f320b6f1aaad0b3d1de0fd865d53e2aaa3f4b5a37e92fedc6e61a6c7e3570"
+        "vexrelay.package.vexlife.p4.source-owner.a052.sha256.f13f320b6f1aaad0b3d1de0fd865d53e2aaa3f4b5a37e92fedc6e61a6c7e3570",
+        "github.commit.vexlife.a23313f7be4a24f6fb9989277bc1f5ad4dbdf6e8",
+        "evidence.vexlife.tocompletion.p4.source-owner.a052.pass",
+        "evidence.vexlife.tocompletion.p4.assurance.clear",
+        "evidence.vexlife.tocompletion.p4.source-terminal-accepted"
       ]
     },
     {
@@ -788,13 +792,13 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T00:13:43.000Z",
-      "updatedAt": "2026-10-22T00:13:43.000Z",
+      "updatedAt": "2026-10-22T00:30:00.000Z",
       "workRef": "work.vexlife.tocompletion.p4.lived-reinjection",
       "parentWorkRefOrNull": "work.vexlife.tocompletion.p4.typed-local-effect",
       "label": "P4 retained-Home lived typed-effect proof",
       "purpose": "After source acceptance, prove real Heretic request -> exact one-time authority -> Native Worker orientation effect -> verified result reinjection through ToolResultRelay -> natural continuation in the same retained Conversation.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "READY",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [
         "work.vexlife.tocompletion.p4.source-acceptance"
@@ -804,7 +808,9 @@
       ],
       "sourceRefs": [
         "github.issue.vexlife.866",
-        "projects/vexlife-tocompletion/README.md"
+        "projects/vexlife-tocompletion/README.md",
+        "github.commit.vexlife.a23313f7be4a24f6fb9989277bc1f5ad4dbdf6e8",
+        "evidence.vexlife.tocompletion.p4.source-terminal-accepted"
       ]
     }
   ],

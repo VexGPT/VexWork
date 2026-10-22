@@ -80,10 +80,10 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   const p4 = graph.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p4.typed-local-effect');
   assert.equal(p4.state, 'RUNNING');
   const p4Source = graph.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p4.source-acceptance');
-  assert.equal(p4Source.state, 'WAITING_HUMAN');
+  assert.equal(p4Source.state, 'COMPLETED');
   assert.equal(p4Source.sourceRefs.includes('github.pull.vexlife.916'), true);
   const p4Lived = graph.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p4.lived-reinjection');
-  assert.equal(p4Lived.state, 'WAITING_DEPENDENCIES');
+  assert.equal(p4Lived.state, 'READY');
   assert.deepEqual(p4Lived.dependencyRefs, ['work.vexlife.tocompletion.p4.source-acceptance']);
 });
 

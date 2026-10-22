@@ -75,7 +75,7 @@ Exact private Home/model identities are intentionally **not duplicated in public
 | P1 | COMPLETED | Selected Heretic model/runtime established in the real retained Home path. |
 | P2 | COMPLETED | First lived real Heretic Conversation turn reached `TERMINAL_LIVED_PASS`. |
 | P3 | COMPLETED | Same-Home restart + second real Heretic turn + durable readback reached `TERMINAL_LIVED_PASS`; PR #915 is accepted history. |
-| P4 | RUNNING | Typed local effect + verified result reinjection. Source candidate is PR #916; source lifecycle and lived proof are still distinct remaining gates. |
+| P4 | RUNNING | Typed local effect + verified result reinjection. PR #916 is terminal source-accepted; the retained-Home lived effect/reinjection proof is now the foreground gate. |
 
 ## P4 accepted design
 
@@ -106,17 +106,21 @@ Heretic requests capability
 
 ## P4 source candidate
 
-Current published source candidate:
+Accepted P4 source:
 
 ```text
-VexLife PR      #916 (draft)
-base            0fbaeb7c918ebdfc7af5389220d5bf081a906702
-head            d8e1c855118bd4578650c2708b837e05cbaaef73
-tree            9e41eb8b5bfd85860773a9c7ba180f0cd955522a
+VexLife PR      #916 (merged / terminal source-accepted)
+prior main      0fbaeb7c918ebdfc7af5389220d5bf081a906702
+candidate head  d8e1c855118bd4578650c2708b837e05cbaaef73
+candidate tree  9e41eb8b5bfd85860773a9c7ba180f0cd955522a
+merge           a23313f7be4a24f6fb9989277bc1f5ad4dbdf6e8
+merge tree      9e41eb8b5bfd85860773a9c7ba180f0cd955522a
 changed paths   30
-commit          exact VexGPT author/committer + matching DCO trailer
-full check      PASS on clean committed candidate before push
-publication     non-force branch push verified
+SourceOwner     A052 PASS
+Assurance       CLEAR
+Formal Review   APPROVE_EXACT_HEAD
+post-merge      exact parents/tree/PR verification PASS
+claim           RELEASED
 ```
 
 A050's final red result happened **after** that successful push because its last checker compared the real remote SHA to the literal token `$CANDIDATE_HEAD`. The performed publication is preserved.
@@ -136,7 +140,7 @@ This table keeps the causal history without making future instances read every i
 | A049 | Dependency/browser setup reached the real suite; exposed clean-source test ordering, preservation of explicit `ADOPTED_READ_ONLY` source shape, and the need to isolate the new live-resource P4 test under the repository's existing isolation class. |
 | A050 | Exact 30-path DCO commit formed; focused proof + clean full repository check passed; non-force push succeeded. Final remote-head assertion was harness-only and occurred after publication. |
 | A051 | SourceOwner carrier stopped before inner execution because the current native carrier no longer accepts the obsolete `expectedCandidateHead` outer-binding key. No VexLife/PR/lifecycle effect occurred. |
-| A052 | Fresh same-head SourceOwner carrier formed with only that obsolete binding key removed. Pending one Mac host invocation. |
+| A052 | Fresh same-head SourceOwner carrier removed the obsolete binding key and PASSed the exact-head SourceOwner gate; it advanced the lifecycle into Assurance without mutation. |
 
 The repeating engineering lesson is to preserve the first substantive failure and repair the **smallest rightful layer**: candidate source when the candidate is wrong, harness/formation when source never executed, proof environment when the repository's declared prerequisites were absent, and lifecycle only after exact-head evidence is earned.
 
@@ -145,39 +149,36 @@ The repeating engineering lesson is to preserve the first substantive failure an
 As of this migration:
 
 ```text
-work.vexlife.tocompletion.p4.source-acceptance
-state = WAITING_HUMAN
+work.vexlife.tocompletion.p4.lived-reinjection
+state = READY
+
+source prerequisite:
+  work.vexlife.tocompletion.p4.source-acceptance = COMPLETED
+  PR #916 = terminal source-accepted
+  merge = a23313f7be4a24f6fb9989277bc1f5ad4dbdf6e8
 
 next action:
-  run one qualified macOS A052 SourceOwner carrier
-
-artifact:
-  VEXLIFE-TOCOMPLETION-P4-SOURCE-OWNER-A052-FORMATION
-  sha256=f13f320b6f1aaad0b3d1de0fd865d53e2aaa3f4b5a37e92fedc6e61a6c7e3570
-
-candidate remains:
-  PR #916
-  head=d8e1c855118bd4578650c2708b837e05cbaaef73
-  tree=9e41eb8b5bfd85860773a9c7ba180f0cd955522a
+  form and run the retained-Home lived P4 typed-effect/reinjection proof
+  using the accepted main source and the already-proven P1-P3 Home/model/Conversation continuity
 ```
 
-A052 is read-only SourceOwner proof. It does not mutate VexLife source, PR metadata, lifecycle, Home, Memory, model runtime, training, weights, activation, or succession.
+A052 completed read-only SourceOwner proof with no VexLife source/Home/model effect. Source lifecycle then converged through Assurance, currentness, Formal Review, READY, exact-head merge, post-merge verification, and claim release.
 
 ## Remaining completion path
 
-On A052 PASS:
+Source lifecycle is now complete:
 
 ```text
-ExactHeadSourceOwnerProof
--> fresh Independent Assurance on the same immutable head
--> lifecycle currentness
--> Formal Reviewer semantic decision
--> READY if earned
--> OwnerMergeDuty
--> ordinary expected-head merge
--> post-merge verification
+ExactHeadSourceOwnerProof PASS
+-> Independent Assurance CLEAR
+-> lifecycle currentness CURRENT
+-> Formal Reviewer APPROVE_EXACT_HEAD
+-> READY
+-> OwnerMergeDuty CURRENT
+-> exact-head merge
+-> post-merge verification PASS
 -> terminal source acceptance + claim release
--> retained-Home P4 lived typed-effect/reinjection proof
+-> retained-Home P4 lived typed-effect/reinjection proof   <-- CURRENT
 ```
 
 **Source acceptance alone is not P4 completion.** The lived proof must reuse the retained real Home/model/Conversation and demonstrate the real Heretic request, exact one-time authority, Native Worker effect, verified result reinjection, and natural same-Conversation continuation.
