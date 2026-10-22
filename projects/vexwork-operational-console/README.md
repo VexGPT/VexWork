@@ -219,6 +219,64 @@ The experiment does **not** yet establish a generic `VexTerrain` foundation. Reu
 
 The currentness/flow layer is a dependency-gated successor. It will add current work, recent accepted transitions, recent completion and dependency-based newly-available work only after traversal semantics are stable; provider activity and incomplete transition-history coverage must never be presented as canonical progress.
 
+### Lived correction — depth is perceptual, not navigational
+
+The first browser patient-zero made one architectural mistake visible:
+
+```text
+WRONG
+focus node + radial neighbors
+wheel -> another semantic node
+depth rail -> breadcrumb/navigation
+
+CORRECT DIRECTION
+one stable organized field
+children already latent/visible inside their parent region
+zoom/scroll -> more semantic level-of-detail
+click/search -> optional explicit repositioning
+dependency/search/back -> explicit traversal continuity when provenance matters
+```
+
+The base Terrain should optimize for calm reading before interaction:
+
+- Projects occupy stable bands rather than orbiting a central workspace card.
+- A Project band previews its next structural layer before the human descends.
+- Deeper containment expands in-place while ancestors and siblings remain compressed context.
+- Long purpose text is secondary; identity, state and trajectory structure lead.
+- Dependency/cross-project relationships appear contextually on focus or explicit inspection rather than as permanent connector lines.
+- Camera depth changes presentation only. It does not append Journey history or silently change canonical work position.
+- Explicit search, dependency jumps, Back and Revisit may still use Navigation Continuity because those are real semantic jumps.
+
+This preserves AI-readable provenance without making the human UI look like the traversal engine's internal graph.
+
+### Flows pressure — VexWork must not block the work it describes
+
+The same lived cycle exposed a separate source-authoring pressure. Current independent drafts #19 (VexStream Mobile Library), #27 (VexLife ToCompletion) and #35 (VexLife Blueprint Source of Truth) all carry different product meaning yet each touches the same aggregate VexWork paths:
+
+```text
+workgraphs/public.json
+public/workspace.json
+test/workgraph.test.mjs
+```
+
+The collision is physical-source coupling, not evidence that those trajectories share one implementation owner.
+
+Permanent direction:
+
+```text
+ONE_SEMANTIC_WORKGRAPH != ONE_AUTHORED_FILE
+VEXWORK_RECONCILIATION != PRODUCT_EXECUTION_BLOCKER
+UI_REFINEMENT != SHARED_WORKGRAPH_WRITE
+NO_MATERIAL_WORK_CHANGE -> NO_REQUIRED_WORKGRAPH_CHURN
+TRACEABILITY_LAG != LICENSE_TO_INVENT_CURRENTNESS
+```
+
+Product/source lanes should continue inside their rightful repositories when their real dependencies and authority allow it. VexWork Flows may reconcile a material checkpoint separately rather than forcing the product lane to wait on an aggregate-file conflict.
+
+This does not yet choose a source-segmentation schema, distributed runtime, or new work-state ontology. The observed need is narrower: preserve one canonical Workgraph while allowing independent work families to author/reconcile without routine aggregate-file contention. The smallest implementation should be earned from that pressure.
+
+The perceptual-depth Terrain correction deliberately follows this rule: it changes Terrain presentation and its focused UI proof without rewriting the shared Workgraph merely because a UI review produced feedback. Accepted Workgraph currentness may temporarily lag that branch and be reconciled as a separate VexWork Flows effect.
+
 PR #33 has now merged the patient-zero source into accepted VexWork main. T1 therefore sits in `VERIFYING`: the remaining predicate is lived browser/trackpad/compact traversal behavior, not additional source formation.
 
 ## Phase 2 — Patient Zero: VexSite Localization
