@@ -22,7 +22,7 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   const project = createProject(projectSource);
   const graph = createWorkgraph(graphSource, registry);
   assert.equal(graph.items.length, 79);
-  assert.equal(projectWorkRefs(project, graph).length, 8);
+  assert.equal(projectWorkRefs(project, graph).length, 7);
   const toCompletionProject = createProject(toCompletionProjectSource);
   assert.equal(projectWorkRefs(toCompletionProject, graph).length, 17);
   const connectedServicesProject = createProject(connectedServicesProjectSource);
@@ -39,9 +39,21 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(graph.items.find((item) => item.workRef === 'work.vexwork.foundation.runtime-persistence').authorityDisposition, 'AUTHORIZED_BOUNDED');
   assert.equal(graph.items.find((item) => item.workRef === 'work.vexwork.foundation.runtime-persistence').effectDisposition, 'EFFECTS_BOUND');
   assert.equal(graph.items.find((item) => item.workRef === 'work.vexwork.visibility.public-dashboard').state, 'COMPLETED');
-  assert.equal(graph.items.find((item) => item.workRef === 'work.vexwork.history.foundational-infrastructure-backfill').state, 'CAPTURED');
-  assert.equal(graph.items.find((item) => item.workRef === 'work.vexwork.history.foundational-infrastructure-backfill').authorityDisposition, 'NO_AUTHORITY');
-  assert.equal(graph.transitions.length, 30);
+  const foundationRoot = graph.items.find((item) => item.workRef === 'work.vexwork.foundation.outcome');
+  assert.equal(foundationRoot.state, 'COMPLETED');
+  const ideaIntake = graph.items.find((item) => item.workRef === 'work.vexwork.foundation.idea-intake');
+  assert.equal(ideaIntake.state, 'CANCELLED');
+  assert.equal(ideaIntake.authorityDisposition, 'NO_AUTHORITY');
+  assert.equal(ideaIntake.effectDisposition, 'NO_EFFECTS');
+  const historyBackfill = graph.items.find((item) => item.workRef === 'work.vexwork.history.foundational-infrastructure-backfill');
+  assert.equal(historyBackfill.state, 'CAPTURED');
+  assert.equal(historyBackfill.parentWorkRefOrNull, null);
+  assert.equal(historyBackfill.workDisposition, 'PARKED');
+  assert.equal(historyBackfill.authorityDisposition, 'NO_AUTHORITY');
+  assert.equal(historyBackfill.effectDisposition, 'NO_EFFECTS');
+  assert.equal(historyBackfill.formationProcessRefOrNull, 'process.vexwork.capture-discovered-work');
+  assert.equal(graph.rootWorkRefs.includes(historyBackfill.workRef), true);
+  assert.equal(graph.transitions.length, 39);
 
   const parked = graph.items.find((item) => item.workRef === 'work.vexlife-android.vexstream.not-yet-downloaded-filter');
   assert.equal(parked.workClass, 'POTENTIAL');
@@ -129,15 +141,20 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   const connectedPhase3Defect = graph.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs04.phase3.owner-only-family-readability');
   const connectedPhase3Lived = graph.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs04.phase3.host-to-android-l1-l5');
   assert.equal(connectedOutcome.state, 'RUNNING');
-  assert.deepEqual([connectedPhase1.state, connectedPhase2.state, connectedPhase3.state], ['COMPLETED', 'COMPLETED', 'RUNNING']);
+  assert.deepEqual([connectedPhase1.state, connectedPhase2.state, connectedPhase3.state], ['COMPLETED', 'COMPLETED', 'COMPLETED']);
   assert.equal(connectedPhase3Defect.state, 'COMPLETED');
-  assert.equal(connectedPhase3Lived.state, 'READY');
+  assert.equal(connectedPhase3Lived.state, 'COMPLETED');
   assert.deepEqual(connectedPhase3Lived.dependencyRefs, [connectedPhase3Defect.workRef]);
 
 });
 
 test('typed transition rejects stale observation and accepts exact current transition', () => {
-  const graph = createWorkgraph(graphSource, registry);
+  const transitionSource = structuredClone(graphSource);
+  const transitionRoot = transitionSource.items.find((item) => item.workRef === 'work.vexwork.foundation.outcome');
+  transitionRoot.state = 'RUNNING';
+  transitionRoot.updatedAt = transitionRoot.createdAt;
+  transitionSource.transitions = transitionSource.transitions.filter((transition) => transition.workRef !== transitionRoot.workRef);
+  const graph = createWorkgraph(transitionSource, registry);
   assert.throws(() => requestTransition(graph, {
     workRef: 'work.vexwork.foundation.outcome',
     transitionRef: 'transition.test.stale',
