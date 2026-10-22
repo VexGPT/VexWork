@@ -1,7 +1,7 @@
 {
   "schemaVersion": "vexwork.public-workspace/v1",
   "projectRegistryRef": "registry.vexwork.projects.001",
-  "projectRegistryVersion": 5,
+  "projectRegistryVersion": 6,
   "projects": [
     {
       "project": {
@@ -3851,6 +3851,608 @@
               "createdAt": "2026-10-22T05:32:34.002Z"
             }
           ]
+        }
+      ]
+    },
+    {
+      "project": {
+        "projectRef": "project.vexlife.blueprint-source-of-truth",
+        "label": "VexLife Blueprint Source of Truth",
+        "purpose": "Make VexLife portable software/product meaning expressible once and truthfully realizable across languages, frameworks and platforms through source-addressed deterministic mapping and matched proof without making any implementation, provider or generated target the semantic owner.",
+        "rootWorkRefs": [
+          "work.vexlife.blueprint-source-of-truth.outcome"
+        ],
+        "repositoryRefs": [
+          "repo.vexwork",
+          "repo.vexlife",
+          "repo.vextreme-sdk",
+          "repo.vexlife-android",
+          "repo.vexlife-construction-reference"
+        ],
+        "sourceRefs": [
+          "projects/vexlife-blueprint-source-of-truth/README.md",
+          "trajectory.vexlife.blueprint-source-of-truth",
+          "github.issue.vextreme-sdk.1839",
+          "github.pull.vexlife.902",
+          "github.issue.VexGPT.VexLife-Construction-Reference.11",
+          "github.pull.VexGPT.VexLife-Construction-Reference.12",
+          "docs/process/FORM-PROJECT.md"
+        ],
+        "formedAt": "2026-10-22T06:33:00.000Z"
+      },
+      "graphRef": "workgraph.vexwork.foundation",
+      "viewRef": "view.vexlife.blueprint-source-of-truth.board",
+      "items": [
+        {
+          "workRef": "work.vexlife.blueprint-source-of-truth.outcome",
+          "label": "VexLife Blueprint Source of Truth",
+          "purpose": "Carry VexLife from one canonical product/software intention through reusable source-addressed mappings and multiple truthful platform realizations, preserving construction, semantic and native proof boundaries all the way to whole-product portable capacity.",
+          "workClass": "OUTCOME",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vexlife.blueprint-source-of-truth.play-pause-practicum",
+            "work.vexlife.blueprint-source-of-truth.reusable-v1",
+            "work.vexlife.blueprint-source-of-truth.total-feature-capacity"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife",
+            "repo.vextreme-sdk",
+            "repo.vexlife-android",
+            "repo.vexlife-construction-reference"
+          ],
+          "sourceRefs": [
+            "project.vexlife.blueprint-source-of-truth",
+            "projects/vexlife-blueprint-source-of-truth/README.md",
+            "trajectory.vexlife.blueprint-source-of-truth",
+            "github.issue.vextreme-sdk.1839"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T06:33:00.000Z",
+          "updatedAt": "2026-10-22T06:33:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.blueprint-source-of-truth.play-pause-practicum",
+          "label": "Play/Pause first complete semantic circuit",
+          "purpose": "Finish the first bounded end-to-end practicum from canonical portable Play/Pause meaning through deterministic C# representation, provider-neutral runtime/connection, target-native source acceptance and lived provider proof.",
+          "workClass": "OUTCOME",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": "work.vexlife.blueprint-source-of-truth.outcome",
+          "childWorkRefs": [
+            "work.vexlife.blueprint-source-of-truth.play-pause.android-reconstruction",
+            "work.vexlife.blueprint-source-of-truth.play-pause.csharp-representation",
+            "work.vexlife.blueprint-source-of-truth.play-pause.csharp-runtime",
+            "work.vexlife.blueprint-source-of-truth.play-pause.formation-contracts",
+            "work.vexlife.blueprint-source-of-truth.play-pause.native-adapter-selection",
+            "work.vexlife.blueprint-source-of-truth.play-pause.native-lived-proof",
+            "work.vexlife.blueprint-source-of-truth.play-pause.native-source-admission",
+            "work.vexlife.blueprint-source-of-truth.play-pause.portable-behavior",
+            "work.vexlife.blueprint-source-of-truth.play-pause.semantic-parity",
+            "work.vexlife.blueprint-source-of-truth.play-pause.target-bootstrap"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife",
+            "repo.vextreme-sdk",
+            "repo.vexlife-android",
+            "repo.vexlife-construction-reference"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-blueprint-source-of-truth/README.md",
+            "contract.vexlife.vexstream.playback.play-pause.001"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T06:33:00.000Z",
+          "updatedAt": "2026-10-22T06:33:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.blueprint-source-of-truth.play-pause.android-reconstruction",
+          "label": "Android reconstruction parity",
+          "purpose": "Demonstrate that the accepted Android implementation reconstructs all 19 portable law rows while Android-specific Media3, Compose, lifetime and presentation details remain platform-specific.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.blueprint-source-of-truth.play-pause-practicum",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.blueprint-source-of-truth.play-pause.portable-behavior"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme-sdk",
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "github.pull.vextreme-sdk.1863",
+            "projects/vexlife-blueprint-source-of-truth/README.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T06:33:00.000Z",
+          "updatedAt": "2026-10-22T06:33:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.blueprint-source-of-truth.play-pause.csharp-representation",
+          "label": "Deterministic C# representation and type isolation",
+          "purpose": "Generate the accepted portable contract deterministically into C# and prove the representation builds while illegal Control/Act/Effect/Projection cross-role assignments remain rejected.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.blueprint-source-of-truth.play-pause-practicum",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.blueprint-source-of-truth.play-pause.target-bootstrap",
+            "work.vexlife.blueprint-source-of-truth.play-pause.android-reconstruction"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme-sdk",
+            "repo.vexlife-construction-reference"
+          ],
+          "sourceRefs": [
+            "github.pull.vextreme-sdk.1865",
+            "github.pull.VexGPT.VexLife-Construction-Reference.4",
+            "proof.vlbsot.p7.csharp-compile-and-negative-type.001"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T06:33:00.000Z",
+          "updatedAt": "2026-10-22T06:33:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.blueprint-source-of-truth.play-pause.csharp-runtime",
+          "label": "Pure C# semantic runtime",
+          "purpose": "Execute the accepted Play/Pause semantics in provider-free C# across all 19 portable laws and 23 concrete cases while keeping provider effects outside the semantic runtime.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.blueprint-source-of-truth.play-pause-practicum",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.blueprint-source-of-truth.play-pause.semantic-parity"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife",
+            "repo.vexlife-construction-reference"
+          ],
+          "sourceRefs": [
+            "github.pull.VexGPT.VexLife-Construction-Reference.6",
+            "github.pull.VexGPT.VexLife-Construction-Reference.7",
+            "proof.vlbsot.p10.csharp-semantic-runtime.001"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T06:33:00.000Z",
+          "updatedAt": "2026-10-22T06:33:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.blueprint-source-of-truth.play-pause.formation-contracts",
+          "label": "Feature formation and construction contracts",
+          "purpose": "Preserve one feature identity, owner split, bounded Play/Pause practicum and no-effect construction contract before any target realization is allowed to imply canonical meaning.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.blueprint-source-of-truth.play-pause-practicum",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife",
+            "repo.vextreme-sdk",
+            "repo.vexlife-android",
+            "repo.vexlife-construction-reference"
+          ],
+          "sourceRefs": [
+            "github.issue.vextreme-sdk.1839",
+            "github.pull.vextreme-sdk.1841",
+            "github.pull.vextreme-sdk.1845",
+            "github.pull.vextreme-sdk.1851"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T06:33:00.000Z",
+          "updatedAt": "2026-10-22T06:33:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.blueprint-source-of-truth.play-pause.native-adapter-selection",
+          "label": "Native adapter selection",
+          "purpose": "Select one target-native realization — MAUI, MediaElement and Mac Catalyst first-lived proof — while keeping the visible affordance driven by semantic Projection and target provider observations explicitly mapped.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.blueprint-source-of-truth.play-pause-practicum",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.blueprint-source-of-truth.play-pause.csharp-runtime"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme-sdk",
+            "repo.vexlife-construction-reference"
+          ],
+          "sourceRefs": [
+            "github.pull.VexGPT.VexLife-Construction-Reference.9",
+            "github.pull.VexGPT.VexLife-Construction-Reference.10",
+            "selection.vlbsot.p10.maui-mediaelement.play-pause.001"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T06:33:00.000Z",
+          "updatedAt": "2026-10-22T06:33:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.blueprint-source-of-truth.play-pause.native-lived-proof",
+          "label": "Lived native provider conformance",
+          "purpose": "After native source acceptance, prove the actual target provider loop preserves admission, stale/matching acknowledgements, rapid opposite intent, end/restart and fail-closed target observations without promoting provider state into portable meaning.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.blueprint-source-of-truth.play-pause-practicum",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.blueprint-source-of-truth.play-pause.native-source-admission"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-construction-reference"
+          ],
+          "sourceRefs": [
+            "github.issue.VexGPT.VexLife-Construction-Reference.11",
+            "projects/vexlife-blueprint-source-of-truth/README.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T06:33:00.000Z",
+          "updatedAt": "2026-10-22T06:33:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.blueprint-source-of-truth.play-pause.native-source-admission",
+          "label": "Target-native MAUI / MediaElement source admission",
+          "purpose": "Accept the smallest target-owned native media-port/UI source membrane on exact PR #12 after provider-neutral adapter proof and the remaining qualified Mac Catalyst build proof, without claiming lived provider conformance.",
+          "workClass": "TASK",
+          "state": "WAITING_RESOURCE",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": "work.vexlife.blueprint-source-of-truth.play-pause-practicum",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.blueprint-source-of-truth.play-pause.native-adapter-selection"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme-sdk",
+            "repo.vexlife-construction-reference"
+          ],
+          "sourceRefs": [
+            "github.issue.VexGPT.VexLife-Construction-Reference.11",
+            "github.pull.VexGPT.VexLife-Construction-Reference.12",
+            "github.issue.VexGPT.VexLife-Construction-Reference.11.comment.6289018948",
+            "projects/vexlife-blueprint-source-of-truth/README.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T06:33:00.000Z",
+          "updatedAt": "2026-10-22T06:33:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.blueprint-source-of-truth.play-pause.portable-behavior",
+          "label": "Canonical portable Play/Pause Behavior",
+          "purpose": "Accept the VexLife-owned language-neutral Play/Pause Control, Act, Effect, pending-intent, provider-observation and Projection laws as portable product meaning.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.blueprint-source-of-truth.play-pause-practicum",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.blueprint-source-of-truth.play-pause.formation-contracts"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife"
+          ],
+          "sourceRefs": [
+            "github.pull.vexlife.902",
+            "contract.vexlife.vexstream.playback.play-pause.001"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T06:33:00.000Z",
+          "updatedAt": "2026-10-22T06:33:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.blueprint-source-of-truth.play-pause.semantic-parity",
+          "label": "Language-neutral semantic and graph parity",
+          "purpose": "Prove the accepted portable, Android and C# representations preserve the same law rows and normalized semantic relationships without inventing a new semantic graph owner.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.blueprint-source-of-truth.play-pause-practicum",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.blueprint-source-of-truth.play-pause.csharp-representation",
+            "work.vexlife.blueprint-source-of-truth.play-pause.android-reconstruction"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife",
+            "repo.vextreme-sdk",
+            "repo.vexlife-android",
+            "repo.vexlife-construction-reference"
+          ],
+          "sourceRefs": [
+            "github.pull.vextreme-sdk.1868",
+            "github.pull.vextreme-sdk.1869",
+            "proof.vlbsot.p8.language-neutral-semantic-law-parity.vexstream-playback-play-pause.001",
+            "proof.vlbsot.p9.semantic-graph-hash-parity.vexstream-playback-play-pause.001"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T06:33:00.000Z",
+          "updatedAt": "2026-10-22T06:33:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.blueprint-source-of-truth.play-pause.target-bootstrap",
+          "label": "Construction Reference foundation bootstrap",
+          "purpose": "Establish the clean-room .NET/C# construction target and its own repository culture/build boundary without feature semantics or semantic-authority transfer.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.blueprint-source-of-truth.play-pause-practicum",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.blueprint-source-of-truth.play-pause.formation-contracts"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme-sdk",
+            "repo.vexlife-construction-reference"
+          ],
+          "sourceRefs": [
+            "github.issue.VexGPT.VexLife-Construction-Reference.1",
+            "github.pull.VexGPT.VexLife-Construction-Reference.2",
+            "projects/vexlife-blueprint-source-of-truth/README.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T06:33:00.000Z",
+          "updatedAt": "2026-10-22T06:33:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.blueprint-source-of-truth.reusable-v1",
+          "label": "Reusable VLBSoT v1",
+          "purpose": "Turn the first practicum into a repeatable capability with bounded source intake, stable portable meaning, deterministic mappings, multiple materially different realizations, separate construction/semantic/native proof, guarded reverse observation and projectable mapping coverage.",
+          "workClass": "OUTCOME",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.blueprint-source-of-truth.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.blueprint-source-of-truth.play-pause-practicum"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife",
+            "repo.vextreme-sdk",
+            "repo.vexlife-android",
+            "repo.vexlife-construction-reference"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-blueprint-source-of-truth/README.md",
+            "trajectory.vexlife.blueprint-source-of-truth"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T06:33:00.000Z",
+          "updatedAt": "2026-10-22T06:33:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.blueprint-source-of-truth.total-feature-capacity",
+          "label": "Whole-product total feature capacity",
+          "purpose": "Reach a sufficiently complete VexLife semantic Blueprint and reusable adapter/proof system such that supported codebases can be constructed and re-observed truthfully without whole-repository guesswork or automatic reverse writeback.",
+          "workClass": "OUTCOME",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vexlife.blueprint-source-of-truth.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.blueprint-source-of-truth.reusable-v1"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife",
+            "repo.vextreme-sdk",
+            "repo.vexlife-android",
+            "repo.vexlife-construction-reference"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-blueprint-source-of-truth/README.md",
+            "trajectory.vexlife.blueprint-source-of-truth"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T06:33:00.000Z",
+          "updatedAt": "2026-10-22T06:33:00.000Z",
+          "transitionHistory": []
+        }
+      ],
+      "lanes": [
+        {
+          "laneRef": "lane.work.intake",
+          "label": "Intake",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.planned",
+          "label": "Planned",
+          "workRefs": [
+            "work.vexlife.blueprint-source-of-truth.play-pause.native-lived-proof",
+            "work.vexlife.blueprint-source-of-truth.reusable-v1",
+            "work.vexlife.blueprint-source-of-truth.total-feature-capacity"
+          ]
+        },
+        {
+          "laneRef": "lane.work.ready",
+          "label": "Ready",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.active",
+          "label": "Active",
+          "workRefs": [
+            "work.vexlife.blueprint-source-of-truth.play-pause-practicum",
+            "work.vexlife.blueprint-source-of-truth.outcome"
+          ]
+        },
+        {
+          "laneRef": "lane.work.waiting",
+          "label": "Waiting",
+          "workRefs": [
+            "work.vexlife.blueprint-source-of-truth.play-pause.native-source-admission"
+          ]
+        },
+        {
+          "laneRef": "lane.work.needs-human",
+          "label": "Needs Human",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.verify",
+          "label": "Verify",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.attention",
+          "label": "Attention",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.done",
+          "label": "Done",
+          "workRefs": [
+            "work.vexlife.blueprint-source-of-truth.play-pause.android-reconstruction",
+            "work.vexlife.blueprint-source-of-truth.play-pause.csharp-representation",
+            "work.vexlife.blueprint-source-of-truth.play-pause.csharp-runtime",
+            "work.vexlife.blueprint-source-of-truth.play-pause.formation-contracts",
+            "work.vexlife.blueprint-source-of-truth.play-pause.native-adapter-selection",
+            "work.vexlife.blueprint-source-of-truth.play-pause.portable-behavior",
+            "work.vexlife.blueprint-source-of-truth.play-pause.semantic-parity",
+            "work.vexlife.blueprint-source-of-truth.play-pause.target-bootstrap"
+          ]
+        },
+        {
+          "laneRef": "lane.work.archive",
+          "label": "Archive",
+          "workRefs": []
+        }
+      ],
+      "summary": {
+        "workItemCount": 14,
+        "openWorkItemCount": 6,
+        "outcomeCount": 4,
+        "taskCount": 10,
+        "defectCount": 0,
+        "potentialCount": 0,
+        "needsHumanCount": 0,
+        "completedCount": 8
+      },
+      "rootItems": [
+        {
+          "workRef": "work.vexlife.blueprint-source-of-truth.outcome",
+          "label": "VexLife Blueprint Source of Truth",
+          "purpose": "Carry VexLife from one canonical product/software intention through reusable source-addressed mappings and multiple truthful platform realizations, preserving construction, semantic and native proof boundaries all the way to whole-product portable capacity.",
+          "workClass": "OUTCOME",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vexlife.blueprint-source-of-truth.play-pause-practicum",
+            "work.vexlife.blueprint-source-of-truth.reusable-v1",
+            "work.vexlife.blueprint-source-of-truth.total-feature-capacity"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife",
+            "repo.vextreme-sdk",
+            "repo.vexlife-android",
+            "repo.vexlife-construction-reference"
+          ],
+          "sourceRefs": [
+            "project.vexlife.blueprint-source-of-truth",
+            "projects/vexlife-blueprint-source-of-truth/README.md",
+            "trajectory.vexlife.blueprint-source-of-truth",
+            "github.issue.vextreme-sdk.1839"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T06:33:00.000Z",
+          "updatedAt": "2026-10-22T06:33:00.000Z",
+          "transitionHistory": []
         }
       ]
     }
