@@ -303,7 +303,20 @@ Current truth:
 A016 terminal RETURN consumed.
 Private tailnet + private Serve TCP reachability is proven.
 The only current hold is exact cleanup of A016-owned HTTPS port 10000.
+A017 cleanup-only carrier is QUALIFIED and waiting for one Mac execution.
 No product replay should occur before that mapping is proven gone.
+```
+
+Current A017:
+
+```text
+task=exact A016 private Serve cleanup only
+wrapperSha256=588531ea5708eb72c19efc6fdc0e9bd6b62342999f8a0a9114cafd94df8f7594
+wrapperBytes=15901
+Android phone required=false
+broad Serve reset=false
+Funnel/security-policy mutation=false
+PASS requires exact port 10000 mapping gone
 ```
 
 <!-- [VXG RealForever][VEXWORK][LINEAGE][VEXLIFE-CONNECTED-SERVICES] -->
