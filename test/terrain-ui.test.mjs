@@ -35,6 +35,14 @@ test('camera depth is presentation-only while explicit jumps keep traversal cont
   assert.match(module, /REVISIT/);
 });
 
+test('focused Terrain reserves explicit rows for context, siblings, focus header and child strata', () => {
+  assert.match(page, /\.focus-layout\{height:100%;display:grid;grid-template-rows:auto auto auto minmax\(0,1fr\)/);
+  assert.match(page, /layout\.append\(contextTrail\(\)\)/);
+  assert.match(page, /layout\.append\(sib\)/);
+  assert.match(page, /layout\.append\(head\)/);
+  assert.match(page, /layout\.append\(list\)/);
+});
+
 test('nested scrolling retains priority over outward level-of-detail traversal', () => {
   assert.match(page, /scrollPathCanMove/);
   assert.match(page, /Outer boundary reached/);
