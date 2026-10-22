@@ -6,7 +6,7 @@ const DONE = new Set(['COMPLETED','CONVERGED','CLOSED']);
 const ARCHIVE = new Set(['SUPERSEDED','CANCELLED']);
 const CURRENT = new Set([...ACTIVE,...REVIEW,...BLOCKED]);
 
-function freeze(value){if(Array.isArray(value))return Object.freeze(value.map(freeze));if(value&&typeof value==='object'){for(const key of Object.keys(value))value[key]=freeze(value[key]);return Object.freeze(value)}return value}
+function freeze(value){if(Array.isArray(value))return Object.freeze(value.map(freeze));if(value&&typeof value==='object'){const copy={};for(const [key,member] of Object.entries(value))copy[key]=freeze(member);return Object.freeze(copy)}return value}
 function byRef(project){return new Map((project?.items||[]).map(item=>[item.workRef,item]))}
 function roots(project){return new Set(project?.project?.rootWorkRefs||[])}
 function incomingMap(project){const map=new Map();for(const item of project?.items||[]){for(const dep of item.dependencyRefs||[]){if(!map.has(dep))map.set(dep,[]);map.get(dep).push(item.workRef)}}return map}
