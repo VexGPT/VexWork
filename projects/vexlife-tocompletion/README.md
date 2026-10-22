@@ -183,7 +183,7 @@ current phase:
   work.vexlife.tocompletion.p5.lived-continuity-learning = RUNNING
 
 next READY task:
-  work.vexlife.tocompletion.p5.g02-semantic-authority-materializer
+  work.vexlife.tocompletion.p5.g02-semantic-authority-materializer = RUNNING
 
 grounded reason:
   A054 is valid real G01 lived evidence.
@@ -193,9 +193,7 @@ grounded reason:
   and no later production materializer exists in current VexLife/SDK source.
 
 next action:
-  establish the smallest rightful owner-side materializer for one A054-derived
-  device-private semantic candidate and exact classification/consent/acceptance/head,
-  then let existing VexLife Score consume that owner evidence.
+  source-author the claimed four-path SDK Memory/Safety materializer slice on\n  Vextreme-SDK b4d427564409989e8f839066accd17ec4c790724, prove it through sdk-check,\n  then let existing VexLife Score consume one owner-authored A054-derived ledger.
 ```
 
 Do not skip directly to Dream, Rhythm or weight training. The first P5 predicate is truthful G02 semantic placement under the rightful owners.

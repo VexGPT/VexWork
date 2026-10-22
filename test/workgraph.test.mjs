@@ -94,7 +94,7 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(p5.state, 'RUNNING');
   assert.deepEqual(p5.dependencyRefs, ['work.vexlife.tocompletion.p4.typed-local-effect']);
   const p5G02 = graph.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p5.g02-semantic-authority-materializer');
-  assert.equal(p5G02.state, 'READY');
+  assert.equal(p5G02.state, 'RUNNING');
   assert.deepEqual(p5G02.dependencyRefs, ['work.vexlife.tocompletion.p4.typed-local-effect']);
 });
 

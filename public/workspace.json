@@ -1366,7 +1366,7 @@
           "label": "P5 G02 — establish rightful semantic-authority materializer",
           "purpose": "Use the exact A054 lived turn/effect as G01 evidence and close the missing owner-side Memory/Safety semantic-authority materializer needed for one device-private G02 candidate; VexLife may consume the resulting canonical ledger but must not mint its own classification, consent or acceptance authority.",
           "workClass": "TASK",
-          "state": "READY",
+          "state": "RUNNING",
           "workDisposition": "ACTIVE",
           "priorityClass": "IMMEDIATE",
           "parentWorkRefOrNull": "work.vexlife.tocompletion.p5.lived-continuity-learning",
@@ -1385,15 +1385,32 @@
             "github.issue.vextreme-sdk.225.comment.5217085830",
             "github.issue.vextreme-sdk.226.comment.5217090896",
             "github.issue.vextreme-sdk.350.comment.5217097749",
-            "source.vexlife.score-context-continuity"
+            "source.vexlife.score-context-continuity",
+            "github.issue.vextreme-sdk.225.comment.6330349715",
+            "github.issue.vextreme-sdk.226.comment.6330352075",
+            "claim.vextreme-sdk.vexlife-tocompletion.p5.g02-semantic-authority-materializer.20261022a"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-22T01:08:02.000Z",
-          "updatedAt": "2026-10-22T01:08:02.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-10-22T01:18:00.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexlife.tocompletion.p5.g02-semantic-authority-materializer.source-claim-running",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "Exact Vextreme-SDK Memory/Safety source claim established on four non-overlapping paths; source authoring is now active.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.issue.vextreme-sdk.225.comment.6330349715",
+                "github.issue.vextreme-sdk.226.comment.6330352075",
+                "claim.vextreme-sdk.vexlife-tocompletion.p5.g02-semantic-authority-materializer.20261022a"
+              ],
+              "createdAt": "2026-10-22T01:18:00.000Z"
+            }
+          ]
         },
         {
           "workRef": "work.vexlife.tocompletion.p5.lived-continuity-learning",
@@ -1444,15 +1461,14 @@
         {
           "laneRef": "lane.work.ready",
           "label": "Ready",
-          "workRefs": [
-            "work.vexlife.tocompletion.p5.g02-semantic-authority-materializer"
-          ]
+          "workRefs": []
         },
         {
           "laneRef": "lane.work.active",
           "label": "Active",
           "workRefs": [
             "work.vexlife.tocompletion.outcome",
+            "work.vexlife.tocompletion.p5.g02-semantic-authority-materializer",
             "work.vexlife.tocompletion.p5.lived-continuity-learning"
           ]
         },
