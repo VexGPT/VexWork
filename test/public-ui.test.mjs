@@ -7,7 +7,7 @@ import * as reader from '../workspace-reader.js';
 const page = fs.readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 
 test('VexWork Pages owns the semantic navigator and reads same-origin public workspace', () => {
-  assert.match(page, /<h1>VexWork<\/h1>/);
+  assert.match(page, /class="brand-home" href="\.\/">VexWork<\/a>/);
   assert.match(page, /const WORKSPACE_URL = '\.\/public\/workspace\.json'/);
   assert.doesNotMatch(page, /raw\.githubusercontent\.com/);
   assert.match(page, /VEXWORK VIEW · VEXWORK TRUTH OWNER/);
