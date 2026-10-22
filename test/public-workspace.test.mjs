@@ -78,6 +78,21 @@ test('public workspace board lanes reference the same canonical projected items'
   }
 });
 
+test('Foundation Project is terminal while optional history remains globally parked', () => {
+  const workspace = buildWorkspace();
+  const foundation = workspace.projects.find((entry) => entry.project.projectRef === 'project.vexwork.foundation');
+  assert.ok(foundation);
+  assert.equal(foundation.summary.workItemCount, 7);
+  assert.equal(foundation.summary.openWorkItemCount, 0);
+  assert.equal(foundation.summary.completedCount, 7);
+  assert.equal(foundation.items.find((item) => item.workRef === 'work.vexwork.foundation.outcome').state, 'COMPLETED');
+  assert.equal(foundation.items.find((item) => item.workRef === 'work.vexwork.foundation.idea-intake').state, 'CANCELLED');
+  assert.equal(foundation.items.some((item) => item.workRef === 'work.vexwork.history.foundational-infrastructure-backfill'), false);
+  assert.equal(foundation.lanes.find((lane) => lane.laneRef === 'lane.work.archive').workRefs.includes('work.vexwork.foundation.idea-intake'), true);
+  assert.equal(workspace.parkingLot.items.some((item) => item.workRef === 'work.vexwork.operational-console.multi-fulfiller-routing'), true);
+  assert.equal(workspace.parkingLot.items.some((item) => item.workRef === 'work.vexwork.history.foundational-infrastructure-backfill'), true);
+});
+
 test('public workspace keeps global Parking Lot separate from Project membership', () => {
   const workspace = buildWorkspace();
   assert.equal(workspace.parkingLot.items.every((item) => item.workDisposition === 'PARKED'), true);
@@ -102,11 +117,13 @@ test('Connected Services is discoverable as a real Project with the current live
   const phase3 = connected.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs04.phase3-fresh-user-family');
   const defect = connected.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs04.phase3.owner-only-family-readability');
   const lived = connected.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs04.phase3.host-to-android-l1-l5');
-  assert.deepEqual([phase1.state, phase2.state, phase3.state], ['COMPLETED', 'COMPLETED', 'RUNNING']);
+  const phase4 = connected.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs04.phase4-send-companion');
+  assert.deepEqual([phase1.state, phase2.state, phase3.state], ['COMPLETED', 'COMPLETED', 'COMPLETED']);
   assert.equal(defect.state, 'COMPLETED');
-  assert.equal(lived.state, 'READY');
+  assert.equal(lived.state, 'COMPLETED');
   assert.deepEqual(lived.dependencyRefs, [defect.workRef]);
-  assert.equal(connected.lanes.find((lane) => lane.laneRef === 'lane.work.ready').workRefs.includes(lived.workRef), true);
+  assert.equal(phase4.state, 'READY');
+  assert.equal(connected.lanes.find((lane) => lane.laneRef === 'lane.work.ready').workRefs.includes(phase4.workRef), true);
   assert.equal(connected.items.some((item) => item.workRef === 'work.vexlife.connected-services.guided-onboarding'), false);
   assert.equal(workspace.parkingLot.items.some((item) => item.workRef === 'work.vexlife.connected-services.guided-onboarding'), true);
 });

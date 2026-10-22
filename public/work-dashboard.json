@@ -11,38 +11,7 @@
     {
       "laneRef": "lane.work.intake",
       "label": "Intake",
-      "cards": [
-        {
-          "workRef": "work.vexwork.foundation.idea-intake",
-          "label": "Human idea intake",
-          "purpose": "Let a human capture a potential into VexWork without converting that potential into implementation authority or a roadmap commitment.",
-          "workClass": "POTENTIAL",
-          "state": "CAPTURED",
-          "workDisposition": "ACTIVE",
-          "priorityClass": "NORMAL",
-          "repositoryRefs": [
-            "repo.vexwork"
-          ],
-          "authorityDisposition": "NO_AUTHORITY",
-          "effectDisposition": "NO_EFFECTS",
-          "updatedAt": "2026-10-21T01:45:05.000Z"
-        },
-        {
-          "workRef": "work.vexwork.history.foundational-infrastructure-backfill",
-          "label": "Foundational Infrastructure history backfill",
-          "purpose": "Gradually reconstruct completed foundational work into VexWork with provenance so future humans and instances can perceive what was built from a dashboard instead of rediscovering it across repositories and chat history.",
-          "workClass": "POTENTIAL",
-          "state": "CAPTURED",
-          "workDisposition": "ACTIVE",
-          "priorityClass": "LOW",
-          "repositoryRefs": [
-            "repo.vexwork"
-          ],
-          "authorityDisposition": "NO_AUTHORITY",
-          "effectDisposition": "NO_EFFECTS",
-          "updatedAt": "2026-10-21T06:07:27.000Z"
-        }
-      ]
+      "cards": []
     },
     {
       "laneRef": "lane.work.planned",
@@ -57,23 +26,7 @@
     {
       "laneRef": "lane.work.active",
       "label": "Active",
-      "cards": [
-        {
-          "workRef": "work.vexwork.foundation.outcome",
-          "label": "Establish VexWork foundation",
-          "purpose": "Create one portable work-navigation owner that can relate projects and work across repositories while leaving target repository culture and source authority local.",
-          "workClass": "OUTCOME",
-          "state": "RUNNING",
-          "workDisposition": "ACTIVE",
-          "priorityClass": "IMMEDIATE",
-          "repositoryRefs": [
-            "repo.vexwork"
-          ],
-          "authorityDisposition": "AUTHORIZED_BOUNDED",
-          "effectDisposition": "EFFECTS_BOUND",
-          "updatedAt": "2026-10-21T01:45:01.000Z"
-        }
-      ]
+      "cards": []
     },
     {
       "laneRef": "lane.work.waiting",
@@ -99,6 +52,21 @@
       "laneRef": "lane.work.done",
       "label": "Done",
       "cards": [
+        {
+          "workRef": "work.vexwork.foundation.outcome",
+          "label": "Establish VexWork foundation",
+          "purpose": "Create one portable work-navigation owner that can relate projects and work across repositories while leaving target repository culture and source authority local.",
+          "workClass": "OUTCOME",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "updatedAt": "2026-10-22T04:42:06.000Z"
+        },
         {
           "workRef": "work.vexwork.foundation.portable-workgraph",
           "label": "Portable Workgraph",
@@ -184,11 +152,42 @@
     {
       "laneRef": "lane.work.archive",
       "label": "Archive",
-      "cards": []
+      "cards": [
+        {
+          "workRef": "work.vexwork.foundation.idea-intake",
+          "label": "Human idea intake",
+          "purpose": "Let a human capture a potential into VexWork without converting that potential into implementation authority or a roadmap commitment.",
+          "workClass": "POTENTIAL",
+          "state": "CANCELLED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "updatedAt": "2026-10-22T04:42:04.000Z"
+        }
+      ]
     }
   ],
   "parkingLot": {
     "items": [
+      {
+        "workRef": "work.vexwork.history.foundational-infrastructure-backfill",
+        "label": "Foundational Infrastructure history backfill",
+        "purpose": "Gradually reconstruct completed foundational work into VexWork with provenance so future humans and instances can perceive what was built from a dashboard instead of rediscovering it across repositories and chat history.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "LOW",
+        "repositoryRefs": [
+          "repo.vexwork"
+        ],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "updatedAt": "2026-10-22T04:42:04.000Z"
+      },
       {
         "workRef": "work.vexwork.operational-console.multi-fulfiller-routing",
         "label": "Multiple fulfiller / nearby-route optimization",
@@ -253,9 +252,9 @@
     ]
   },
   "summary": {
-    "projectWorkItemCount": 8,
-    "openProjectWorkItemCount": 3,
-    "parkingLotItemCount": 4
+    "projectWorkItemCount": 7,
+    "openProjectWorkItemCount": 0,
+    "parkingLotItemCount": 5
   },
   "effects": false,
   "executionAuthority": "NONE"
