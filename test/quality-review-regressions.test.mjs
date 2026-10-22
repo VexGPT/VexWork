@@ -26,8 +26,17 @@ function storedTransition(overrides = {}) {
   };
 }
 
-test('stored transition history rejects illegal lifecycle edges', () => {
+function historyFixtureSource() {
   const candidate = structuredClone(graphSource);
+  const item = candidate.items.find((entry) => entry.workRef === 'work.vexwork.foundation.idea-intake');
+  item.state = 'CAPTURED';
+  item.updatedAt = item.createdAt;
+  candidate.transitions = candidate.transitions.filter((transition) => transition.workRef !== item.workRef);
+  return candidate;
+}
+
+test('stored transition history rejects illegal lifecycle edges', () => {
+  const candidate = historyFixtureSource();
   candidate.items[4].state = 'CLOSED';
   candidate.items[4].updatedAt = '2026-10-21T02:30:00.000Z';
   candidate.transitions = [storedTransition({ nextState: 'CLOSED' })];
@@ -35,11 +44,11 @@ test('stored transition history rejects illegal lifecycle edges', () => {
 });
 
 test('stored transition history must be continuous and converge on current WorkState', () => {
-  const mismatch = structuredClone(graphSource);
+  const mismatch = historyFixtureSource();
   mismatch.transitions = [storedTransition()];
   assert.throws(() => createWorkgraph(mismatch, registry), /latest state NEEDS_CLARIFICATION does not match current CAPTURED/);
 
-  const discontinuous = structuredClone(graphSource);
+  const discontinuous = historyFixtureSource();
   discontinuous.items[4].state = 'PLAN_VALIDATED';
   discontinuous.items[4].updatedAt = '2026-10-21T02:31:00.000Z';
   discontinuous.transitions = [
@@ -50,7 +59,7 @@ test('stored transition history must be continuous and converge on current WorkS
 });
 
 test('stored and requested transition identities are unique', () => {
-  const duplicate = structuredClone(graphSource);
+  const duplicate = historyFixtureSource();
   duplicate.items[4].state = 'DECOMPOSED';
   duplicate.items[4].updatedAt = '2026-10-21T02:31:00.000Z';
   duplicate.transitions = [
@@ -59,7 +68,7 @@ test('stored and requested transition identities are unique', () => {
   ];
   assert.throws(() => createWorkgraph(duplicate, registry), /duplicate transitionRef/);
 
-  const accepted = structuredClone(graphSource);
+  const accepted = historyFixtureSource();
   accepted.items[4].state = 'NEEDS_CLARIFICATION';
   accepted.items[4].updatedAt = '2026-10-21T02:30:00.000Z';
   accepted.transitions = [storedTransition()];
@@ -78,7 +87,7 @@ test('stored and requested transition identities are unique', () => {
 });
 
 test('valid stored transition history remains accepted', () => {
-  const candidate = structuredClone(graphSource);
+  const candidate = historyFixtureSource();
   candidate.items[4].state = 'DECOMPOSED';
   candidate.items[4].updatedAt = '2026-10-21T02:31:00.000Z';
   candidate.transitions = [

@@ -35,7 +35,7 @@
           "label": "Human idea intake",
           "purpose": "Let a human capture a potential into VexWork without converting that potential into implementation authority or a roadmap commitment.",
           "workClass": "POTENTIAL",
-          "state": "CAPTURED",
+          "state": "CANCELLED",
           "workDisposition": "ACTIVE",
           "priorityClass": "NORMAL",
           "parentWorkRefOrNull": "work.vexwork.foundation.outcome",
@@ -48,22 +48,38 @@
           ],
           "sourceRefs": [
             "docs/CULTURE.md",
-            "github.issue.vexlife.705"
+            "github.issue.vexlife.705",
+            "docs/foundation/PARKING-LOT.md",
+            "docs/process/CAPTURE-DISCOVERED-WORK.md"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
           "authorityDisposition": "NO_AUTHORITY",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-10-21T01:45:05.000Z",
-          "updatedAt": "2026-10-21T01:45:05.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-10-22T04:42:04.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexwork.foundation.idea-intake.cancelled.accepted-capture-process",
+              "priorState": "CAPTURED",
+              "nextState": "CANCELLED",
+              "reason": "The distinct idea-intake placeholder is no longer needed because accepted VexWork culture, Parking Lot semantics, and process.vexwork.capture-discovered-work now provide the human capture capability without implementation authority.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "docs/CULTURE.md",
+                "docs/foundation/PARKING-LOT.md",
+                "docs/process/CAPTURE-DISCOVERED-WORK.md"
+              ],
+              "createdAt": "2026-10-22T04:42:04.000Z"
+            }
+          ]
         },
         {
           "workRef": "work.vexwork.foundation.outcome",
           "label": "Establish VexWork foundation",
           "purpose": "Create one portable work-navigation owner that can relate projects and work across repositories while leaving target repository culture and source authority local.",
           "workClass": "OUTCOME",
-          "state": "RUNNING",
+          "state": "COMPLETED",
           "workDisposition": "ACTIVE",
           "priorityClass": "IMMEDIATE",
           "parentWorkRefOrNull": null,
@@ -73,7 +89,6 @@
             "work.vexwork.foundation.repository-graph",
             "work.vexwork.foundation.runtime-persistence",
             "work.vexwork.foundation.work-board",
-            "work.vexwork.history.foundational-infrastructure-backfill",
             "work.vexwork.visibility.public-dashboard"
           ],
           "dependencyRefs": [],
@@ -82,15 +97,49 @@
           ],
           "sourceRefs": [
             "README.md",
-            "docs/CULTURE.md"
+            "docs/CULTURE.md",
+            "docs/foundation/INDEX.md",
+            "docs/foundation/PARKING-LOT.md",
+            "docs/process/CAPTURE-DISCOVERED-WORK.md",
+            "public/work-dashboard.json",
+            "public/workspace.json"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-21T01:45:01.000Z",
-          "updatedAt": "2026-10-21T01:45:01.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-10-22T04:42:06.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexwork.foundation.outcome.verifying.foundation-acceptance",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "All admitted first-foundation capabilities are source-placed and the two stale Potential leaves have been reconciled without widening the Foundation outcome.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "README.md",
+                "docs/foundation/INDEX.md",
+                "docs/foundation/PARKING-LOT.md",
+                "docs/process/CAPTURE-DISCOVERED-WORK.md"
+              ],
+              "createdAt": "2026-10-22T04:42:05.000Z"
+            },
+            {
+              "transitionRef": "transition.vexwork.foundation.outcome.completed.foundation-acceptance",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "VexWork first-foundation acceptance is complete: the portable Workgraph, Projects, Work Board, Parking Lot/capture route, Process and Repository maps, runtime persistence, operating profiles, and public human read surface are accepted; optional history reconstruction remains separately parked outside Project membership.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "README.md",
+                "docs/foundation/INDEX.md",
+                "public/work-dashboard.json",
+                "public/workspace.json"
+              ],
+              "createdAt": "2026-10-22T04:42:06.000Z"
+            }
+          ]
         },
         {
           "workRef": "work.vexwork.foundation.portable-workgraph",
@@ -298,34 +347,6 @@
           ]
         },
         {
-          "workRef": "work.vexwork.history.foundational-infrastructure-backfill",
-          "label": "Foundational Infrastructure history backfill",
-          "purpose": "Gradually reconstruct completed foundational work into VexWork with provenance so future humans and instances can perceive what was built from a dashboard instead of rediscovering it across repositories and chat history.",
-          "workClass": "POTENTIAL",
-          "state": "CAPTURED",
-          "workDisposition": "ACTIVE",
-          "priorityClass": "LOW",
-          "parentWorkRefOrNull": "work.vexwork.foundation.outcome",
-          "childWorkRefs": [],
-          "dependencyRefs": [
-            "work.vexwork.visibility.public-dashboard"
-          ],
-          "repositoryRefs": [
-            "repo.vexwork"
-          ],
-          "sourceRefs": [
-            "public/work-dashboard.json",
-            "docs/lineage/VEXLIFE-P0B.md"
-          ],
-          "formationProcessRefOrNull": null,
-          "nextProcessRefs": [],
-          "authorityDisposition": "NO_AUTHORITY",
-          "effectDisposition": "NO_EFFECTS",
-          "createdAt": "2026-10-21T06:07:27.000Z",
-          "updatedAt": "2026-10-21T06:07:27.000Z",
-          "transitionHistory": []
-        },
-        {
           "workRef": "work.vexwork.visibility.public-dashboard",
           "label": "Public VexWork dashboard",
           "purpose": "Make current VexWork Project Board and Parking Lot truth visibly explorable through a stable public read projection without making Vextreme another work-state owner.",
@@ -386,10 +407,7 @@
         {
           "laneRef": "lane.work.intake",
           "label": "Intake",
-          "workRefs": [
-            "work.vexwork.foundation.idea-intake",
-            "work.vexwork.history.foundational-infrastructure-backfill"
-          ]
+          "workRefs": []
         },
         {
           "laneRef": "lane.work.planned",
@@ -404,9 +422,7 @@
         {
           "laneRef": "lane.work.active",
           "label": "Active",
-          "workRefs": [
-            "work.vexwork.foundation.outcome"
-          ]
+          "workRefs": []
         },
         {
           "laneRef": "lane.work.waiting",
@@ -432,6 +448,7 @@
           "laneRef": "lane.work.done",
           "label": "Done",
           "workRefs": [
+            "work.vexwork.foundation.outcome",
             "work.vexwork.foundation.portable-workgraph",
             "work.vexwork.foundation.repository-graph",
             "work.vexwork.foundation.work-board",
@@ -442,18 +459,20 @@
         {
           "laneRef": "lane.work.archive",
           "label": "Archive",
-          "workRefs": []
+          "workRefs": [
+            "work.vexwork.foundation.idea-intake"
+          ]
         }
       ],
       "summary": {
-        "workItemCount": 8,
-        "openWorkItemCount": 3,
+        "workItemCount": 7,
+        "openWorkItemCount": 0,
         "outcomeCount": 1,
         "taskCount": 5,
         "defectCount": 0,
-        "potentialCount": 2,
+        "potentialCount": 1,
         "needsHumanCount": 0,
-        "completedCount": 5
+        "completedCount": 7
       },
       "rootItems": [
         {
@@ -461,7 +480,7 @@
           "label": "Establish VexWork foundation",
           "purpose": "Create one portable work-navigation owner that can relate projects and work across repositories while leaving target repository culture and source authority local.",
           "workClass": "OUTCOME",
-          "state": "RUNNING",
+          "state": "COMPLETED",
           "workDisposition": "ACTIVE",
           "priorityClass": "IMMEDIATE",
           "parentWorkRefOrNull": null,
@@ -471,7 +490,6 @@
             "work.vexwork.foundation.repository-graph",
             "work.vexwork.foundation.runtime-persistence",
             "work.vexwork.foundation.work-board",
-            "work.vexwork.history.foundational-infrastructure-backfill",
             "work.vexwork.visibility.public-dashboard"
           ],
           "dependencyRefs": [],
@@ -480,15 +498,49 @@
           ],
           "sourceRefs": [
             "README.md",
-            "docs/CULTURE.md"
+            "docs/CULTURE.md",
+            "docs/foundation/INDEX.md",
+            "docs/foundation/PARKING-LOT.md",
+            "docs/process/CAPTURE-DISCOVERED-WORK.md",
+            "public/work-dashboard.json",
+            "public/workspace.json"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-21T01:45:01.000Z",
-          "updatedAt": "2026-10-21T01:45:01.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-10-22T04:42:06.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexwork.foundation.outcome.verifying.foundation-acceptance",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "All admitted first-foundation capabilities are source-placed and the two stale Potential leaves have been reconciled without widening the Foundation outcome.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "README.md",
+                "docs/foundation/INDEX.md",
+                "docs/foundation/PARKING-LOT.md",
+                "docs/process/CAPTURE-DISCOVERED-WORK.md"
+              ],
+              "createdAt": "2026-10-22T04:42:05.000Z"
+            },
+            {
+              "transitionRef": "transition.vexwork.foundation.outcome.completed.foundation-acceptance",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "VexWork first-foundation acceptance is complete: the portable Workgraph, Projects, Work Board, Parking Lot/capture route, Process and Repository maps, runtime persistence, operating profiles, and public human read surface are accepted; optional history reconstruction remains separately parked outside Project membership.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "README.md",
+                "docs/foundation/INDEX.md",
+                "public/work-dashboard.json",
+                "public/workspace.json"
+              ],
+              "createdAt": "2026-10-22T04:42:06.000Z"
+            }
+          ]
         }
       ]
     },
@@ -3428,6 +3480,37 @@
   ],
   "parkingLot": {
     "items": [
+      {
+        "workRef": "work.vexwork.history.foundational-infrastructure-backfill",
+        "label": "Foundational Infrastructure history backfill",
+        "purpose": "Gradually reconstruct completed foundational work into VexWork with provenance so future humans and instances can perceive what was built from a dashboard instead of rediscovering it across repositories and chat history.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "LOW",
+        "parentWorkRefOrNull": null,
+        "childWorkRefs": [],
+        "dependencyRefs": [
+          "work.vexwork.visibility.public-dashboard"
+        ],
+        "repositoryRefs": [
+          "repo.vexwork"
+        ],
+        "sourceRefs": [
+          "public/work-dashboard.json",
+          "docs/lineage/VEXLIFE-P0B.md",
+          "docs/foundation/PARKING-LOT.md",
+          "docs/process/CAPTURE-DISCOVERED-WORK.md"
+        ],
+        "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+        "nextProcessRefs": [],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "createdAt": "2026-10-21T06:07:27.000Z",
+        "updatedAt": "2026-10-22T04:42:04.000Z",
+        "transitionHistory": [],
+        "graphRef": "workgraph.vexwork.foundation"
+      },
       {
         "workRef": "work.vexwork.operational-console.multi-fulfiller-routing",
         "label": "Multiple fulfiller / nearby-route optimization",
