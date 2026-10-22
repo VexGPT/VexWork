@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.vexwork.operational-console",
+  "label": "VexWork Operational Console Evolution",
+  "purpose": "Evolve VexWork from a Project/Work Board navigator into a reusable console that can derive work-shaped attention from dynamic entity populations and operating environments without turning every entity, event, or provider record into a Work item; prove the abstraction first with VexSite Localization, then generalize it through an online antique-plate commerce pilot that reaches a human physical-fulfillment acknowledgement.",
+  "rootWorkRefs": [
+    "work.vexwork.operational-console.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vextreme"
+  ],
+  "sourceRefs": [
+    "projects/vexwork-operational-console/README.md",
+    "docs/foundation/PROJECTS.md",
+    "docs/foundation/WORKGRAPH.md",
+    "docs/foundation/WORK-BOARD.md",
+    "repo.vextreme:pages/terrain-map.html",
+    "github.pull.vextreme.376",
+    "github.pull.vextreme.378",
+    "github.pull.vextreme.379"
+  ],
+  "formedAt": "2026-10-22T03:20:00.000Z"
+}

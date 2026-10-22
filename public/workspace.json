@@ -1,7 +1,7 @@
 {
   "schemaVersion": "vexwork.public-workspace/v1",
   "projectRegistryRef": "registry.vexwork.projects.001",
-  "projectRegistryVersion": 4,
+  "projectRegistryVersion": 5,
   "projects": [
     {
       "project": {
@@ -2627,10 +2627,802 @@
           "transitionHistory": []
         }
       ]
+    },
+    {
+      "project": {
+        "projectRef": "project.vexwork.operational-console",
+        "label": "VexWork Operational Console Evolution",
+        "purpose": "Evolve VexWork from a Project/Work Board navigator into a reusable console that can derive work-shaped attention from dynamic entity populations and operating environments without turning every entity, event, or provider record into a Work item; prove the abstraction first with VexSite Localization, then generalize it through an online antique-plate commerce pilot that reaches a human physical-fulfillment acknowledgement.",
+        "rootWorkRefs": [
+          "work.vexwork.operational-console.outcome"
+        ],
+        "repositoryRefs": [
+          "repo.vexwork",
+          "repo.vextreme"
+        ],
+        "sourceRefs": [
+          "projects/vexwork-operational-console/README.md",
+          "docs/foundation/PROJECTS.md",
+          "docs/foundation/WORKGRAPH.md",
+          "docs/foundation/WORK-BOARD.md",
+          "repo.vextreme:pages/terrain-map.html",
+          "github.pull.vextreme.376",
+          "github.pull.vextreme.378",
+          "github.pull.vextreme.379"
+        ],
+        "formedAt": "2026-10-22T03:20:00.000Z"
+      },
+      "graphRef": "workgraph.vexwork.foundation",
+      "viewRef": "view.vexwork.operational-console.board",
+      "items": [
+        {
+          "workRef": "work.vexwork.operational-console.antique-bootstrap",
+          "label": "Form the antique-store operating environment",
+          "purpose": "Establish the minimum real catalog/storefront/AI-readable operating environment required for the antique-plate pilot, with protected provider/account actions remaining human-owned.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexwork.operational-console.antique-pilot",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexwork.operational-console.commerce-template"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "projects/vexwork-operational-console/README.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T03:20:00.000Z",
+          "updatedAt": "2026-10-22T03:20:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexwork.operational-console.antique-first-item",
+          "label": "Publish the first picture-backed antique item",
+          "purpose": "Add one real antique plate, attach real picture evidence, add or edit the details actually known, and publish it through the managed site/storefront while VexWork can explain its readiness and current state.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexwork.operational-console.antique-pilot",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexwork.operational-console.antique-bootstrap",
+            "work.vexwork.operational-console.commerce-ai-site"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "projects/vexwork-operational-console/README.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T03:20:00.000Z",
+          "updatedAt": "2026-10-22T03:20:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexwork.operational-console.antique-first-sale-fulfillment",
+          "label": "Complete one sale through human shipment acknowledgement",
+          "purpose": "Observe or record the first sold item, surface bounded fulfillment attention, optionally track expected shipment date, notify the human of the physical action, accept bounded receipt/photo acknowledgement after shipment, and close the attention truthfully.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexwork.operational-console.antique-pilot",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexwork.operational-console.antique-first-item",
+            "work.vexwork.operational-console.commerce-fulfillment-attention"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "projects/vexwork-operational-console/README.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T03:20:00.000Z",
+          "updatedAt": "2026-10-22T03:20:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexwork.operational-console.antique-pilot",
+          "label": "Antique Plate lived commerce pilot",
+          "purpose": "Dogfood the reusable commerce starter for a nontechnical human selling unique antique plates online, from no operating environment through one truthful item sale and physical-shipment acknowledgement.",
+          "workClass": "OUTCOME",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexwork.operational-console.outcome",
+          "childWorkRefs": [
+            "work.vexwork.operational-console.antique-bootstrap",
+            "work.vexwork.operational-console.antique-first-item",
+            "work.vexwork.operational-console.antique-first-sale-fulfillment"
+          ],
+          "dependencyRefs": [
+            "work.vexwork.operational-console.commerce-template"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "projects/vexwork-operational-console/README.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T03:20:00.000Z",
+          "updatedAt": "2026-10-22T03:20:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexwork.operational-console.attention-queue-contract",
+          "label": "Operational attention queue",
+          "purpose": "Support event/exception-driven attention such as fulfillment, expiry or failure queues without automatically converting every event into durable Work.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vexwork.operational-console.operating-domain-template",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexwork.operational-console.operating-domain-contract"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "projects/vexwork-operational-console/README.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T03:20:00.000Z",
+          "updatedAt": "2026-10-22T03:20:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexwork.operational-console.commerce-ai-site",
+          "label": "AI-managed storefront/site surface",
+          "purpose": "Prove that a human can add or revise an item and its pictures through an AI-assisted environment that updates a rightful managed public site/storefront while VexWork remains the work/navigation console.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexwork.operational-console.commerce-template",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexwork.operational-console.commerce-item-model"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "projects/vexwork-operational-console/README.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T03:20:00.000Z",
+          "updatedAt": "2026-10-22T03:20:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexwork.operational-console.commerce-fulfillment-attention",
+          "label": "Sale and fulfillment attention",
+          "purpose": "Turn a provider/manual sale observation into truthful inventory/listing state plus bounded fulfillment attention, optional expected shipment date and a human acknowledgement boundary without copying protected customer data into public VexWork source.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexwork.operational-console.commerce-template",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexwork.operational-console.attention-queue-contract",
+            "work.vexwork.operational-console.commerce-item-model"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "projects/vexwork-operational-console/README.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T03:20:00.000Z",
+          "updatedAt": "2026-10-22T03:20:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexwork.operational-console.commerce-item-model",
+          "label": "Flexible commerce item model",
+          "purpose": "Model stable sellable-item identity and state while allowing images, descriptions, condition, provenance, price, listing URL, sold date and expected shipment date to remain optional unless a selected process requires them.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexwork.operational-console.commerce-template",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexwork.operational-console.operating-domain-contract"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "projects/vexwork-operational-console/README.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T03:20:00.000Z",
+          "updatedAt": "2026-10-22T03:20:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexwork.operational-console.commerce-template",
+          "label": "Reusable small-commerce starter",
+          "purpose": "Apply the Operating Domain foundation to a reusable small-commerce starter covering catalog, public storefront/site, sale state, inventory state and fulfillment attention without making VexWork the commerce database.",
+          "workClass": "OUTCOME",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexwork.operational-console.outcome",
+          "childWorkRefs": [
+            "work.vexwork.operational-console.commerce-ai-site",
+            "work.vexwork.operational-console.commerce-fulfillment-attention",
+            "work.vexwork.operational-console.commerce-item-model"
+          ],
+          "dependencyRefs": [
+            "work.vexwork.operational-console.operating-domain-template"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "projects/vexwork-operational-console/README.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T03:20:00.000Z",
+          "updatedAt": "2026-10-22T03:20:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexwork.operational-console.cross-domain-completion",
+          "label": "Cross-domain Operational Console completion",
+          "purpose": "Prove that the same underlying VexWork abstraction handles both a large existing VexSite population and a newly formed commerce environment, including dynamic regression, derived attention, promotion and a lived human fulfillment boundary without domain-specific task explosion.",
+          "workClass": "OUTCOME",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexwork.operational-console.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexwork.operational-console.antique-pilot",
+            "work.vexwork.operational-console.vexsite-patient-zero-proof"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "projects/vexwork-operational-console/README.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T03:20:00.000Z",
+          "updatedAt": "2026-10-22T03:20:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexwork.operational-console.derived-work-contract",
+          "label": "Derived attention contract",
+          "purpose": "Source-place the smallest reusable model that keeps entity identity, entity health, derived attention and canonical WorkState distinct while supporting dynamic populations, scopes, lenses, evidence states and reason facets.",
+          "workClass": "TASK",
+          "state": "READY",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexwork.operational-console.derived-work-foundation",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "projects/vexwork-operational-console/README.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T03:20:00.000Z",
+          "updatedAt": "2026-10-22T03:20:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexwork.operational-console.derived-work-foundation",
+          "label": "Derived-work projection foundation",
+          "purpose": "Establish the reusable domain-neutral contract for population, scope, lens, evidence, derived facets, projection and explicit promotion without materializing one Work item per entity.",
+          "workClass": "OUTCOME",
+          "state": "READY",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexwork.operational-console.outcome",
+          "childWorkRefs": [
+            "work.vexwork.operational-console.derived-work-contract",
+            "work.vexwork.operational-console.derived-work-projection",
+            "work.vexwork.operational-console.derived-work-promotion"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "projects/vexwork-operational-console/README.md",
+            "docs/foundation/WORKGRAPH.md",
+            "docs/foundation/WORK-BOARD.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T03:20:00.000Z",
+          "updatedAt": "2026-10-22T03:20:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexwork.operational-console.derived-work-projection",
+          "label": "Aggregate and entity projection",
+          "purpose": "Project one derived-work lens from aggregate counts through scopes/groups to exact entities and current evidence without granting effects or duplicating entity truth.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexwork.operational-console.derived-work-foundation",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexwork.operational-console.derived-work-contract"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "projects/vexwork-operational-console/README.md",
+            "docs/foundation/WORK-BOARD.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T03:20:00.000Z",
+          "updatedAt": "2026-10-22T03:20:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexwork.operational-console.derived-work-promotion",
+          "label": "Derived concern to Work promotion",
+          "purpose": "Define explicit adoption of one derived concern into a canonical Work item with provenance back to entity, lens and evidence, without automatic task generation.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexwork.operational-console.derived-work-foundation",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexwork.operational-console.derived-work-contract"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "projects/vexwork-operational-console/README.md",
+            "docs/process/CAPTURE-DISCOVERED-WORK.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T03:20:00.000Z",
+          "updatedAt": "2026-10-22T03:20:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexwork.operational-console.operating-domain-contract",
+          "label": "Operating Domain contract",
+          "purpose": "Define a domain-neutral template boundary for capabilities, populations, lenses, processes and provider/repository evidence while keeping business/entity records outside Workgraph.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexwork.operational-console.operating-domain-template",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexwork.operational-console.vexsite-patient-zero-proof"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "projects/vexwork-operational-console/README.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T03:20:00.000Z",
+          "updatedAt": "2026-10-22T03:20:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexwork.operational-console.operating-domain-template",
+          "label": "Reusable Operating Domain template",
+          "purpose": "Generalize the patient-zero model into a reusable operating-domain template for capabilities, populations, attention queues, processes and work lenses without domain-specific ownership leakage.",
+          "workClass": "OUTCOME",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexwork.operational-console.outcome",
+          "childWorkRefs": [
+            "work.vexwork.operational-console.attention-queue-contract",
+            "work.vexwork.operational-console.operating-domain-contract"
+          ],
+          "dependencyRefs": [
+            "work.vexwork.operational-console.vexsite-patient-zero-proof"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "projects/vexwork-operational-console/README.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T03:20:00.000Z",
+          "updatedAt": "2026-10-22T03:20:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexwork.operational-console.outcome",
+          "label": "Evolve VexWork into an Operational Console",
+          "purpose": "Make VexWork capable of representing intentional work plus dynamically derived work-shaped attention from repository/provider-owned populations and operating environments, while preserving Workgraph as the owner only of admitted work lifecycle truth.",
+          "workClass": "OUTCOME",
+          "state": "DECOMPOSED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vexwork.operational-console.antique-pilot",
+            "work.vexwork.operational-console.commerce-template",
+            "work.vexwork.operational-console.cross-domain-completion",
+            "work.vexwork.operational-console.derived-work-foundation",
+            "work.vexwork.operational-console.operating-domain-template",
+            "work.vexwork.operational-console.vexsite-dogfood"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "projects/vexwork-operational-console/README.md",
+            "docs/foundation/WORKGRAPH.md",
+            "docs/foundation/WORK-BOARD.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T03:20:00.000Z",
+          "updatedAt": "2026-10-22T03:20:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexwork.operational-console.vexsite-dogfood",
+          "label": "Patient Zero: VexSite Localization",
+          "purpose": "Prove the derived-work foundation against Vextreme's existing page/arc/localization world so VexWork can answer what remains without a page-per-task Workgraph.",
+          "workClass": "OUTCOME",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexwork.operational-console.outcome",
+          "childWorkRefs": [
+            "work.vexwork.operational-console.vexsite-localization-lens",
+            "work.vexwork.operational-console.vexsite-patient-zero-proof",
+            "work.vexwork.operational-console.vexsite-population-scope"
+          ],
+          "dependencyRefs": [
+            "work.vexwork.operational-console.derived-work-foundation"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "projects/vexwork-operational-console/README.md",
+            "repo.vextreme:pages/terrain-map.html",
+            "github.pull.vextreme.376",
+            "github.pull.vextreme.378",
+            "github.pull.vextreme.379"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T03:20:00.000Z",
+          "updatedAt": "2026-10-22T03:20:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexwork.operational-console.vexsite-localization-lens",
+          "label": "VexSite localization and modernization lens",
+          "purpose": "Derive current page attention from Vextreme-owned evidence such as source localization, locale coverage, generated currentness, lived proof and modernization debt, grouped by current arc/scope.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexwork.operational-console.vexsite-dogfood",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexwork.operational-console.derived-work-projection",
+            "work.vexwork.operational-console.vexsite-population-scope"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "projects/vexwork-operational-console/README.md",
+            "github.pull.vextreme.376",
+            "github.pull.vextreme.378",
+            "github.pull.vextreme.379"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T03:20:00.000Z",
+          "updatedAt": "2026-10-22T03:20:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexwork.operational-console.vexsite-patient-zero-proof",
+          "label": "VexSite derived-work lived proof",
+          "purpose": "Demonstrate that current Vextreme evidence can answer what remains, why, and where to descend; link existing foreground Work where present; and promote one derived concern without creating tasks for the whole page population.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexwork.operational-console.vexsite-dogfood",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexwork.operational-console.derived-work-promotion",
+            "work.vexwork.operational-console.vexsite-localization-lens"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "projects/vexwork-operational-console/README.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T03:20:00.000Z",
+          "updatedAt": "2026-10-22T03:20:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexwork.operational-console.vexsite-population-scope",
+          "label": "VexSite page population and arc scope",
+          "purpose": "Bind a reusable VexWork population/scope projection to current Vextreme-owned page, node, group and arc identity without copying every page into Workgraph.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexwork.operational-console.vexsite-dogfood",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexwork.operational-console.derived-work-contract"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "projects/vexwork-operational-console/README.md",
+            "repo.vextreme:pages/terrain-map.html"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T03:20:00.000Z",
+          "updatedAt": "2026-10-22T03:20:00.000Z",
+          "transitionHistory": []
+        }
+      ],
+      "lanes": [
+        {
+          "laneRef": "lane.work.intake",
+          "label": "Intake",
+          "workRefs": [
+            "work.vexwork.operational-console.outcome"
+          ]
+        },
+        {
+          "laneRef": "lane.work.planned",
+          "label": "Planned",
+          "workRefs": [
+            "work.vexwork.operational-console.antique-bootstrap",
+            "work.vexwork.operational-console.antique-first-item",
+            "work.vexwork.operational-console.antique-first-sale-fulfillment",
+            "work.vexwork.operational-console.antique-pilot",
+            "work.vexwork.operational-console.commerce-ai-site",
+            "work.vexwork.operational-console.commerce-fulfillment-attention",
+            "work.vexwork.operational-console.commerce-item-model",
+            "work.vexwork.operational-console.commerce-template",
+            "work.vexwork.operational-console.cross-domain-completion",
+            "work.vexwork.operational-console.derived-work-projection",
+            "work.vexwork.operational-console.derived-work-promotion",
+            "work.vexwork.operational-console.operating-domain-contract",
+            "work.vexwork.operational-console.operating-domain-template",
+            "work.vexwork.operational-console.vexsite-dogfood",
+            "work.vexwork.operational-console.vexsite-localization-lens",
+            "work.vexwork.operational-console.vexsite-patient-zero-proof",
+            "work.vexwork.operational-console.vexsite-population-scope",
+            "work.vexwork.operational-console.attention-queue-contract"
+          ]
+        },
+        {
+          "laneRef": "lane.work.ready",
+          "label": "Ready",
+          "workRefs": [
+            "work.vexwork.operational-console.derived-work-contract",
+            "work.vexwork.operational-console.derived-work-foundation"
+          ]
+        },
+        {
+          "laneRef": "lane.work.active",
+          "label": "Active",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.waiting",
+          "label": "Waiting",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.needs-human",
+          "label": "Needs Human",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.verify",
+          "label": "Verify",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.attention",
+          "label": "Attention",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.done",
+          "label": "Done",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.archive",
+          "label": "Archive",
+          "workRefs": []
+        }
+      ],
+      "summary": {
+        "workItemCount": 21,
+        "openWorkItemCount": 21,
+        "outcomeCount": 7,
+        "taskCount": 14,
+        "defectCount": 0,
+        "potentialCount": 0,
+        "needsHumanCount": 0,
+        "completedCount": 0
+      },
+      "rootItems": [
+        {
+          "workRef": "work.vexwork.operational-console.outcome",
+          "label": "Evolve VexWork into an Operational Console",
+          "purpose": "Make VexWork capable of representing intentional work plus dynamically derived work-shaped attention from repository/provider-owned populations and operating environments, while preserving Workgraph as the owner only of admitted work lifecycle truth.",
+          "workClass": "OUTCOME",
+          "state": "DECOMPOSED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vexwork.operational-console.antique-pilot",
+            "work.vexwork.operational-console.commerce-template",
+            "work.vexwork.operational-console.cross-domain-completion",
+            "work.vexwork.operational-console.derived-work-foundation",
+            "work.vexwork.operational-console.operating-domain-template",
+            "work.vexwork.operational-console.vexsite-dogfood"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "projects/vexwork-operational-console/README.md",
+            "docs/foundation/WORKGRAPH.md",
+            "docs/foundation/WORK-BOARD.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T03:20:00.000Z",
+          "updatedAt": "2026-10-22T03:20:00.000Z",
+          "transitionHistory": []
+        }
+      ]
     }
   ],
   "parkingLot": {
     "items": [
+      {
+        "workRef": "work.vexwork.operational-console.multi-fulfiller-routing",
+        "label": "Multiple fulfiller / nearby-route optimization",
+        "purpose": "Preserve the possible later need for assigning fulfillment to multiple people, grouping nearby deliveries, routing/sequencing stops and collecting worker delivery acknowledgement without making dispatch/routing part of the first commerce-pilot completion boundary.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "LOW",
+        "parentWorkRefOrNull": null,
+        "childWorkRefs": [],
+        "dependencyRefs": [],
+        "repositoryRefs": [
+          "repo.vexwork"
+        ],
+        "sourceRefs": [
+          "projects/vexwork-operational-console/README.md",
+          "docs/process/CAPTURE-DISCOVERED-WORK.md"
+        ],
+        "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+        "nextProcessRefs": [],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "createdAt": "2026-10-22T03:20:00.000Z",
+        "updatedAt": "2026-10-22T03:20:00.000Z",
+        "transitionHistory": [],
+        "graphRef": "workgraph.vexwork.foundation"
+      },
       {
         "workRef": "work.vexstream.mobile-library.keep-offline-sync",
         "label": "Persistent Keep Offline / Sync",
