@@ -110,4 +110,24 @@ test('local workfront roadmap can extend inside a running scope using dependency
   assert.equal(p5.steps[1].basis, 'STRUCTURAL');
 });
 
+test('flow projections never freeze or mutate the canonical public workspace input', () => {
+  const p = project('project.vexlife.tocompletion');
+  const before = JSON.stringify(p);
+  const item = p.items[0];
+  assert.equal(Object.isFrozen(p), false);
+  assert.equal(Object.isFrozen(item), false);
+  assert.equal(Object.getOwnPropertyDescriptor(item, 'workRef').writable, true);
+
+  projectWorkfronts(p, { maxRows: 8 });
+  projectActivitySummary(p, { recentHours: 24, nowMs: Date.parse('2026-10-22T07:30:00.000Z') });
+  projectRoadmap(p, { maxSteps: 4, maxRows: 8 });
+  projectScopeRoadmap(p, { maxSteps: 4 });
+  projectWorkfronts(p, { maxRows: 8 });
+
+  assert.equal(Object.isFrozen(p), false);
+  assert.equal(Object.isFrozen(item), false);
+  assert.equal(Object.getOwnPropertyDescriptor(item, 'workRef').writable, true);
+  assert.equal(JSON.stringify(p), before);
+});
+
 // [VXG RealForever][VEXWORK][TERRAIN][FLOW-PROJECTION]
