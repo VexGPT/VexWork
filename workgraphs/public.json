@@ -3,6 +3,7 @@
   "graphRef": "workgraph.vexwork.foundation",
   "rootWorkRefs": [
     "work.vexwork.foundation.outcome",
+    "work.vexwork.history.foundational-infrastructure-backfill",
     "work.vexlife-android.vexstream.not-yet-downloaded-filter",
     "work.vexlife.connected-services.guided-onboarding",
     "work.vexstream.mobile-library.outcome",
@@ -20,7 +21,7 @@
       "label": "Establish VexWork foundation",
       "purpose": "Create one portable work-navigation owner that can relate projects and work across repositories while leaving target repository culture and source authority local.",
       "workClass": "OUTCOME",
-      "state": "RUNNING",
+      "state": "COMPLETED",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [],
       "repositoryRefs": [
@@ -28,12 +29,17 @@
       ],
       "sourceRefs": [
         "README.md",
-        "docs/CULTURE.md"
+        "docs/CULTURE.md",
+        "docs/foundation/INDEX.md",
+        "docs/foundation/PARKING-LOT.md",
+        "docs/process/CAPTURE-DISCOVERED-WORK.md",
+        "public/work-dashboard.json",
+        "public/workspace.json"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-21T01:45:01.000Z",
-      "updatedAt": "2026-10-21T01:45:01.000Z",
+      "updatedAt": "2026-10-22T04:42:06.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -128,7 +134,7 @@
       "label": "Human idea intake",
       "purpose": "Let a human capture a potential into VexWork without converting that potential into implementation authority or a roadmap commitment.",
       "workClass": "POTENTIAL",
-      "state": "CAPTURED",
+      "state": "CANCELLED",
       "priorityClass": "NORMAL",
       "dependencyRefs": [
         "work.vexwork.foundation.portable-workgraph"
@@ -138,12 +144,14 @@
       ],
       "sourceRefs": [
         "docs/CULTURE.md",
-        "github.issue.vexlife.705"
+        "github.issue.vexlife.705",
+        "docs/foundation/PARKING-LOT.md",
+        "docs/process/CAPTURE-DISCOVERED-WORK.md"
       ],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-21T01:45:05.000Z",
-      "updatedAt": "2026-10-21T01:45:05.000Z",
+      "updatedAt": "2026-10-22T04:42:04.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -236,7 +244,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vexwork.history.foundational-infrastructure-backfill",
-      "parentWorkRefOrNull": "work.vexwork.foundation.outcome",
+      "parentWorkRefOrNull": null,
       "label": "Foundational Infrastructure history backfill",
       "purpose": "Gradually reconstruct completed foundational work into VexWork with provenance so future humans and instances can perceive what was built from a dashboard instead of rediscovering it across repositories and chat history.",
       "workClass": "POTENTIAL",
@@ -250,14 +258,16 @@
       ],
       "sourceRefs": [
         "public/work-dashboard.json",
-        "docs/lineage/VEXLIFE-P0B.md"
+        "docs/lineage/VEXLIFE-P0B.md",
+        "docs/foundation/PARKING-LOT.md",
+        "docs/process/CAPTURE-DISCOVERED-WORK.md"
       ],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-21T06:07:27.000Z",
-      "updatedAt": "2026-10-21T06:07:27.000Z",
-      "workDisposition": "ACTIVE",
-      "formationProcessRefOrNull": null,
+      "updatedAt": "2026-10-22T04:42:04.000Z",
+      "workDisposition": "PARKED",
+      "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
       "nextProcessRefs": []
     },
     {
@@ -2744,6 +2754,53 @@
         "github.issue.vexlife.899.comment.6332564149"
       ],
       "createdAt": "2026-10-22T04:21:02.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.foundation.idea-intake.cancelled.accepted-capture-process",
+      "workRef": "work.vexwork.foundation.idea-intake",
+      "priorState": "CAPTURED",
+      "nextState": "CANCELLED",
+      "reason": "The distinct idea-intake placeholder is no longer needed because accepted VexWork culture, Parking Lot semantics, and process.vexwork.capture-discovered-work now provide the human capture capability without implementation authority.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "docs/CULTURE.md",
+        "docs/foundation/PARKING-LOT.md",
+        "docs/process/CAPTURE-DISCOVERED-WORK.md"
+      ],
+      "createdAt": "2026-10-22T04:42:04.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.foundation.outcome.verifying.foundation-acceptance",
+      "workRef": "work.vexwork.foundation.outcome",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "All admitted first-foundation capabilities are source-placed and the two stale Potential leaves have been reconciled without widening the Foundation outcome.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "README.md",
+        "docs/foundation/INDEX.md",
+        "docs/foundation/PARKING-LOT.md",
+        "docs/process/CAPTURE-DISCOVERED-WORK.md"
+      ],
+      "createdAt": "2026-10-22T04:42:05.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.foundation.outcome.completed.foundation-acceptance",
+      "workRef": "work.vexwork.foundation.outcome",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "VexWork first-foundation acceptance is complete: the portable Workgraph, Projects, Work Board, Parking Lot/capture route, Process and Repository maps, runtime persistence, operating profiles, and public human read surface are accepted; optional history reconstruction remains separately parked outside Project membership.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "README.md",
+        "docs/foundation/INDEX.md",
+        "public/work-dashboard.json",
+        "public/workspace.json"
+      ],
+      "createdAt": "2026-10-22T04:42:06.000Z"
     }
   ],
   "sourceRefs": [
