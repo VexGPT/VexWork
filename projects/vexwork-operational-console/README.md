@@ -219,6 +219,8 @@ The experiment does **not** yet establish a generic `VexTerrain` foundation. Reu
 
 The currentness/flow layer is a dependency-gated successor. It will add current work, recent accepted transitions, recent completion and dependency-based newly-available work only after traversal semantics are stable; provider activity and incomplete transition-history coverage must never be presented as canonical progress.
 
+PR #33 has now merged the patient-zero source into accepted VexWork main. T1 therefore sits in `VERIFYING`: the remaining predicate is lived browser/trackpad/compact traversal behavior, not additional source formation.
+
 ## Phase 2 — Patient Zero: VexSite Localization
 
 VexSite Localization is the first dogfood because it already has a meaningful repository-owned population and evidence surfaces.
@@ -476,7 +478,7 @@ P5  Antique Plate lived commerce pilot                    WAITING_DEPENDENCIES
 P6  Cross-domain completion                               WAITING_DEPENDENCIES
 
 PARALLEL EXPERIENCE
-T1  Relational Terrain patient-zero                       RUNNING
+T1  Relational Terrain patient-zero                       VERIFYING
 T2  Currentness and flow Terrain layer                    WAITING_DEPENDENCIES
 
 PARKED
