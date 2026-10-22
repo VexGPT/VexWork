@@ -2,7 +2,7 @@
   "schemaVersion": "vexwork.project-definition/v1",
   "projectRef": "project.vexlife.tocompletion",
   "label": "VexLife ToCompletion",
-  "purpose": "Carry VexLife from source architecture into a real installable, restart-durable local Companion experience with the selected Heretic model, then prove bounded typed local action and same-Conversation result reinjection without collapsing authority, source acceptance, runtime ownership, or lived proof.",
+  "purpose": "Carry VexLife from fresh-user Heretic establishment through restart-durable Conversation, bounded typed local action/result reinjection, and one honest lived continuity/learning loop whose durable placement stays source-bound to the rightful Memory/Safety owners and never falsely claims weight learning.",
   "rootWorkRefs": [
     "work.vexlife.tocompletion.outcome"
   ],
