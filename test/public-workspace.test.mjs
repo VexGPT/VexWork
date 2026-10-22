@@ -49,8 +49,10 @@ test('public workspace preserves recursive containment and Jira-like detail fiel
     'work.vexlife.tocompletion.p4.source-acceptance',
   ]);
   const source = project.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p4.source-acceptance');
+  const canonical = read('workgraphs/public.json').items.find((item) => item.workRef === source.workRef);
   assert.equal(source.parentWorkRefOrNull, p4.workRef);
-  assert.equal(source.state, 'WAITING_HUMAN');
+  assert.equal(source.state, canonical.state);
+  assert.equal(source.updatedAt, canonical.updatedAt);
   assert.ok(Array.isArray(source.sourceRefs) && source.sourceRefs.length > 0);
   assert.ok(Array.isArray(source.transitionHistory));
 });
