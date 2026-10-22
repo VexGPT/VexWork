@@ -75,7 +75,8 @@ Exact private Home/model identities are intentionally **not duplicated in public
 | P1 | COMPLETED | Selected Heretic model/runtime established in the real retained Home path. |
 | P2 | COMPLETED | First lived real Heretic Conversation turn reached `TERMINAL_LIVED_PASS`. |
 | P3 | COMPLETED | Same-Home restart + second real Heretic turn + durable readback reached `TERMINAL_LIVED_PASS`; PR #915 is accepted history. |
-| P4 | COMPLETED | A054 reached `P4_TERMINAL_LIVED_PASS`: real Heretic chose the exact cued typed effect, Native Worker executed orientation, ToolResultRelay reinjected the verified result, later synthesis completed, and the same durable Conversation advanced. |\n| P5 | RUNNING | Lived continuity/learning is now foreground. A054 supplies exact G01 evidence; the first open seam is the missing rightful Memory/Safety owner-side semantic-authority materializer required before VexLife may commit one live G02 Score record. |
+| P4 | COMPLETED | A054 reached `P4_TERMINAL_LIVED_PASS`: real Heretic chose the exact cued typed effect, Native Worker executed orientation, ToolResultRelay reinjected the verified result, later synthesis completed, and the same durable Conversation advanced. |
+| P5 | RUNNING | Lived continuity/learning is now foreground. A054 supplies exact G01 evidence; the first open seam is the missing rightful Memory/Safety owner-side semantic-authority materializer required before VexLife may commit one live G02 Score record. |
 
 ## P4 accepted design
 
@@ -140,7 +141,8 @@ This table keeps the causal history without making future instances read every i
 | A049 | Dependency/browser setup reached the real suite; exposed clean-source test ordering, preservation of explicit `ADOPTED_READ_ONLY` source shape, and the need to isolate the new live-resource P4 test under the repository's existing isolation class. |
 | A050 | Exact 30-path DCO commit formed; focused proof + clean full repository check passed; non-force push succeeded. Final remote-head assertion was harness-only and occurred after publication. |
 | A051 | SourceOwner carrier stopped before inner execution because the current native carrier no longer accepts the obsolete `expectedCandidateHead` outer-binding key. No VexLife/PR/lifecycle effect occurred. |
-| A052 | Fresh same-head SourceOwner carrier removed the obsolete binding key and PASSed the exact-head SourceOwner gate; it advanced the lifecycle into Assurance without mutation. |\n| A053 | First post-source-acceptance retained-Home lived attempt re-bound the exact P3 Home/thread/head, then stopped before P4 authority/effect when the accepted Heretic runtime owner's qualification chat hit `LOOPBACK_INFER_FAILED` / timeout. Target typed effect and Conversation advance were not performed. |
+| A052 | Fresh same-head SourceOwner carrier removed the obsolete binding key and PASSed the exact-head SourceOwner gate; it advanced the lifecycle into Assurance without mutation. |
+| A053 | First post-source-acceptance retained-Home lived attempt re-bound the exact P3 Home/thread/head, then stopped before P4 authority/effect when the accepted Heretic runtime owner's qualification chat hit `LOOPBACK_INFER_FAILED` / timeout. Target typed effect and Conversation advance were not performed. |
 | A054 | Re-observed the exact live qualified Heretic using read-only health/model identity, then reached `P4_TERMINAL_LIVED_PASS`: one model-chosen typed orientation effect, exact receipt, ToolResultRelay reinjection, later synthesis, consumed authority and durable head advance from sequence 3 to 5. |
 
 The repeating engineering lesson is to preserve the first substantive failure and repair the **smallest rightful layer**: candidate source when the candidate is wrong, harness/formation when source never executed, proof environment when the repository's declared prerequisites were absent, and lifecycle only after exact-head evidence is earned.
