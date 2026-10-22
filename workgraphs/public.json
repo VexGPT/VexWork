@@ -1072,9 +1072,9 @@
       "workRef": "work.vexlife.connected-services.vcs04.phase3.owner-only-family-readability",
       "parentWorkRefOrNull": "work.vexlife.connected-services.vcs04.phase3-fresh-user-family",
       "label": "Fresh hosted owner-only Family is hidden from bootstrap/read",
-      "purpose": "Correct the Conversation admission mismatch where hostFamily() canonically creates an initial GROUP with one authenticated human OWNER plus Family companion lineage, but browser/server bootstrap currently requires two human principals and therefore hides the fresh room as EMPTY.",
+      "purpose": "Preserve the merged accepted-main owner-only Family readability correction and close it only after normal main-branch Foundation validation confirms the exact merge commit; fresh lived Phase-3 Host-to-Android proof remains a separate parent-outcome edge.",
       "workClass": "DEFECT",
-      "state": "RUNNING",
+      "state": "VERIFYING",
       "workDisposition": "ACTIVE",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [],
@@ -1085,14 +1085,16 @@
         "github.pull.vexlife.917",
         "repo.vexlife:docs/VEX-FAMILY-HOST-ESTABLISHMENT.md",
         "repo.vexlife:src/core/family-host-runtime.mjs",
-        "repo.vexlife:src/core/browser-family-conversation-bridge.mjs"
+        "repo.vexlife:src/core/browser-family-conversation-bridge.mjs",
+        "github.commit.vexlife.b33765aada1f4a70d4cae253d196411b23b9cded",
+        "github.pull.vexlife.917.comment.6330785192"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T01:33:58.000Z",
-      "updatedAt": "2026-10-22T01:35:31.000Z"
+      "updatedAt": "2026-10-22T01:54:00.000Z"
     }
   ],
   "transitions": [
@@ -1354,6 +1356,20 @@
         "github.pull.vexlife.917"
       ],
       "createdAt": "2026-10-22T01:33:58.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.connected-services.vcs04.phase3.owner-only-family-readability.verifying.merge917",
+      "workRef": "work.vexlife.connected-services.vcs04.phase3.owner-only-family-readability",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "PR #917 merged at the exact approved head; accepted main tree equals the reviewed candidate tree and all six candidate blobs match. Final defect closure waits only for normal main-branch Foundation validation of merge commit b33765a.",
+      "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.commit.vexlife.b33765aada1f4a70d4cae253d196411b23b9cded",
+        "github.pull.vexlife.917.comment.6330785192"
+      ],
+      "createdAt": "2026-10-22T01:54:00.000Z"
     }
   ],
   "sourceRefs": [
