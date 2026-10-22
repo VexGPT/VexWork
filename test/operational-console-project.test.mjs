@@ -19,12 +19,12 @@ test('Operational Console Project models evolution without entity-per-task explo
   assert.deepEqual(project.repositoryRefs, ['repo.vexwork', 'repo.vextreme']);
 
   assert.deepEqual(childRefs(graph, 'work.vexwork.operational-console.outcome'), [
+    'work.vexwork.operational-console.antique-pilot',
     'work.vexwork.operational-console.commerce-template',
     'work.vexwork.operational-console.cross-domain-completion',
     'work.vexwork.operational-console.derived-work-foundation',
     'work.vexwork.operational-console.operating-domain-template',
     'work.vexwork.operational-console.vexsite-dogfood',
-    'work.vexwork.operational-console.antique-pilot',
   ]);
 });
 
