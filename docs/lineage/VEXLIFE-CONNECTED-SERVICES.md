@@ -105,44 +105,46 @@ VCS-00..VCS-03
 VCS-04 installed read source
   Android PR #149 accepted/current
 
-Phase 1 observability
+Phase 1 observability + private network discrimination
   Android PR #152 accepted/current
   generic refresh failure -> closed secret-free diagnostic boundary
-
-A013 semantic result
-  installed session-challenge path classified as network-timeout
-  gateway still saw no authenticated challenge
-
-A014/A015 semantic result
-  Mac Shields Up identified as a real protected prerequisite
+  Shields Up identified as a real protected prerequisite
   human enabled incoming connections
-  daemon subsequently machine-confirmed shieldsUp=false
-
-A016 semantic result
+  daemon machine-confirmed incoming connections enabled
   Android route-selected tailnet identity resolved uniquely
-  Mac -> Android DISCO / TSMP / ICMP PASS
-  Android -> Mac ICMP PASS
-  Android -> Mac private Serve TCP by Tailscale IPv4 PASS
-  Android -> Mac private Serve TCP by MagicDNS PASS
+  private Serve TCP proven by both Tailscale IPv4 and MagicDNS
+  temporary network cleanup closed
+  Phase 1 = COMPLETED
 
-A017 closure
-  A016-owned temporary private Serve port 10000 was already absent when cleanup re-observed it
-  second observation confirmed mapping absent and AllowFunnel=false
-  no further network mutation was required
+Phase 2 installed deterministic-fixture proof
+  fresh Android process launched
+  Home doorway and Family screen observed
+  possession challenge 200
+  authenticated session establish 200
+  Family bootstrap 200
+  READ_THREAD_HISTORY 200
+  seed message observed in installed UI
+  L1=true / L2=true / L3=true / L4=true / L5=true
+  diagnosticRef=null
+  current source/lifecycle L12=true
+
+current debt
+  A018-owned temporary private Serve port 10000 cleanup was not proven before result formation
+  this is harness cleanup debt and does not erase L1-L5
 
 next
-  Phase 2 deterministic-fixture L1-L5 is READY
-  -> fresh installed product replay
-  -> possession / remote session / Family authority / bootstrap / history read
-  -> retain accepted diagnostic refs if a higher-layer failure remains
+  exact A018-owned Serve cleanup only
+  -> require mapping gone
+  -> then Phase 2 completes
+  -> Phase 3 fresh-user Family establishment becomes READY
 ```
 
 Permanent interpretation:
 
 ```text
 ATTEMPT_DISPOSITION != WORK_PROGRESS
-SAFE_FAILURE_AFTER_PROOF != PROOF_ERASED
-HARNESS_CLEANUP_DEBT != PRODUCT_NETWORK_FAILURE
+SAFE_FAILURE_AFTER_PRODUCT_PROOF != PRODUCT_PROOF_ERASED
+HARNESS_CLEANUP_DEBT != PRODUCT_FAILURE
 ```
 
 ## Recovery appendix — attempt lineage (skip unless diagnosing)
@@ -168,6 +170,7 @@ The attempt number is recovery/evidence lineage, not canonical work progress. Re
 | A015 | Machine-confirmed `shieldsUp=false`; broad peer collection remained ambiguous and correctly refused to guess. |
 | A016 | Route-selected Android identity resolved uniquely and private Serve TCP passed by both Tailscale IPv4 and MagicDNS; only exact temporary Serve cleanup remained unproven. |
 | A017 | Exact cleanup-only re-observation found the A016 port-10000 mapping already gone and confirmed it remained absent; Phase 1 cleanup debt closed without further network mutation. |
+| A018 | Installed deterministic-fixture L1-L5 passed end-to-end with all gateway routes 200 and the seed message visible; only exact temporary Serve cleanup remained unproven. |
 
 A012 fixture law:
 
@@ -180,30 +183,42 @@ ANDROID_READ_DOORWAY != FAMILY_HOST_ESTABLISHMENT
 
 ## Current checkpoint
 
-Phase 1 is complete.
+Phase 2 has earned its semantic product proof and is now VERIFYING.
 
 ```text
-Android diagnostic observability = accepted/current
-Mac incoming Tailscale connections = enabled
-Android route-selected tailnet identity = unique current peer
-Mac -> Android DISCO / TSMP / ICMP = PASS
-Android -> Mac ICMP = PASS
-Android -> Mac private Serve TCP by Tailscale IPv4 = PASS
-Android -> Mac private Serve TCP by MagicDNS = PASS
-A016 temporary Serve port 10000 = absent on A017 re-observation
-AllowFunnel = false
-network cleanup = CLOSED
+L1 remote device possession = PASS
+L2 remote authenticated session = PASS
+L3 private bounded gateway = PASS
+L4 current bounded Home/Family authority = PASS
+L5 canonical installed Conversation read = PASS
+L12 source/lifecycle current = PASS
+
+gateway:
+  status = 200
+  session challenge = 200
+  session establish = 200
+  Family bootstrap = 200
+  Family conversation / READ_THREAD_HISTORY = 200
+
+installed UI:
+  fresh process launch = true
+  Home doorway = observed
+  Family screen = observed
+  deterministic seed message = observed
+  diagnostic ref = none
 ```
+
+The only current hold is exact cleanup of A018's temporary private Serve mapping on port 10000.
 
 Current VexWork state:
 
 ```text
-work.vexlife.connected-services.vcs04.phase1.private-serve-ingress = COMPLETED
-work.vexlife.connected-services.vcs04.phase1-prechallenge = COMPLETED
-work.vexlife.connected-services.vcs04.phase2-fixture-l1-l5 = READY
+Phase 1 = COMPLETED
+Phase 2 = VERIFYING
+Phase 3 = WAITING_DEPENDENCIES
 ```
 
-The next product question is no longer generic networking. Re-enter the installed deterministic-fixture L1-L5 path and let the accepted Android diagnostic boundary identify any remaining higher-layer failure.
+Do not replay A018. Perform cleanup only, then complete Phase 2 and release Phase 3.
 
 ## Manual foundation / onboarding observations
 
@@ -302,28 +317,11 @@ README.md
 Current truth:
 
 ```text
-A017 terminal RETURN consumed PASS.
-Phase 1 private-network discrimination is COMPLETE.
-No A016 diagnostic Serve mapping remains.
-Phase 2 deterministic-fixture L1-L5 is READY.
-A018 is QUALIFIED and waiting for one host execution.
+A018 terminal RETURN consumed.
+Installed deterministic-fixture L1-L5 is PROVEN.
+Phase 2 is VERIFYING, not failed.
+The only hold is exact temporary Serve cleanup on port 10000.
+Fresh-user hostFamily() remains held until that cleanup closes.
 ```
-
-Current A018:
-
-```text
-wrapperSha256=8d1d35d2637153efaec661f5369659c72b3d71db663c7c2272d8bf13149145bb
-purpose=fixture-backed installed L1-L5
-current VexLife main=a23313f7be4a24f6fb9989277bc1f5ad4dbdf6e8
-VexLife movement since A013=2 unrelated commits
-VCS-04 bound producer blobs=unchanged
-Mac ShieldsUp=false required
-route-selected Android peer unique/current/online required
-private Serve port=10000
-public Funnel=false
-hostFamily / Send / model / restart held
-```
-
-On terminal A018 RETURN, consume it before any replay.
 
 <!-- [VXG RealForever][VEXWORK][LINEAGE][VEXLIFE-CONNECTED-SERVICES] -->
