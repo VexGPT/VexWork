@@ -1097,11 +1097,41 @@
           "transitionHistory": []
         },
         {
+          "workRef": "work.vexlife.tocompletion.p4.lived-attempt-a053",
+          "label": "P4 lived A053 — first accepted-source retained-Home attempt",
+          "purpose": "Execute and consume the first post-source-acceptance retained-Home P4 lived attempt, preserve the exact first substantive failure, and determine whether the typed effect or Conversation advanced before any replay.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": "work.vexlife.tocompletion.p4.typed-local-effect",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.tocompletion.p4.source-acceptance"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife"
+          ],
+          "sourceRefs": [
+            "github.issue.vexlife.866.comment.6329920155",
+            "github.issue.vexlife.866.comment.6330014415",
+            "evidence.vexlife.tocompletion.p4.lived.a053.return.sha256.ae547d380f4309ca49b15dcd9f1bd2cdf8905c4980979f306aeb19415543f64f"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T00:54:56.000Z",
+          "updatedAt": "2026-10-22T00:54:56.000Z",
+          "transitionHistory": []
+        },
+        {
           "workRef": "work.vexlife.tocompletion.p4.lived-reinjection",
           "label": "P4 retained-Home lived typed-effect proof",
           "purpose": "After source acceptance, prove real Heretic request -> exact one-time authority -> Native Worker orientation effect -> verified result reinjection through ToolResultRelay -> natural continuation in the same retained Conversation.",
           "workClass": "TASK",
-          "state": "READY",
+          "state": "RUNNING",
           "workDisposition": "ACTIVE",
           "priorityClass": "IMMEDIATE",
           "parentWorkRefOrNull": "work.vexlife.tocompletion.p4.typed-local-effect",
@@ -1116,14 +1146,58 @@
             "github.issue.vexlife.866",
             "projects/vexlife-tocompletion/README.md",
             "github.commit.vexlife.a23313f7be4a24f6fb9989277bc1f5ad4dbdf6e8",
-            "evidence.vexlife.tocompletion.p4.source-terminal-accepted"
+            "evidence.vexlife.tocompletion.p4.source-terminal-accepted",
+            "github.issue.vexlife.866.comment.6330014415",
+            "evidence.vexlife.tocompletion.p4.lived.a053.return.sha256.ae547d380f4309ca49b15dcd9f1bd2cdf8905c4980979f306aeb19415543f64f"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-22T00:13:43.000Z",
-          "updatedAt": "2026-10-22T00:30:00.000Z",
+          "updatedAt": "2026-10-22T00:54:56.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexlife.tocompletion.p4.lived-reinjection.a053-start",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "A053 executed against accepted source and retained P3 continuity; the lived P4 task is now active while the completed A053 progression and next READY runtime-currentness task carry exact attempt state.",
+              "actorRef": "actor.vexlife.tocompletion",
+              "sourceRefs": [
+                "github.issue.vexlife.866.comment.6330014415"
+              ],
+              "createdAt": "2026-10-22T00:54:56.000Z"
+            }
+          ]
+        },
+        {
+          "workRef": "work.vexlife.tocompletion.p4.runtime-currentness-a054",
+          "label": "P4 A054 — re-observe Heretic runtime currentness and resume lived effect",
+          "purpose": "Re-observe the retained Heretic runtime receipt/process/loopback currentness after A053 timed out during owner qualification; if exact live runtime truth is current, continue the P4 typed-effect/reinjection proof without redundant preflight inference, otherwise recover through the rightful owner or surface the exact source defect.",
+          "workClass": "TASK",
+          "state": "READY",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": "work.vexlife.tocompletion.p4.typed-local-effect",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.tocompletion.p4.lived-attempt-a053"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife"
+          ],
+          "sourceRefs": [
+            "github.issue.vexlife.866.comment.6330014415",
+            "github.issue.vextreme-sdk.636",
+            "evidence.vexlife.tocompletion.p4.lived.a053.return.sha256.ae547d380f4309ca49b15dcd9f1bd2cdf8905c4980979f306aeb19415543f64f"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T00:54:56.000Z",
+          "updatedAt": "2026-10-22T00:54:56.000Z",
           "transitionHistory": []
         },
         {
@@ -1169,7 +1243,9 @@
           "priorityClass": "IMMEDIATE",
           "parentWorkRefOrNull": "work.vexlife.tocompletion.outcome",
           "childWorkRefs": [
+            "work.vexlife.tocompletion.p4.lived-attempt-a053",
             "work.vexlife.tocompletion.p4.lived-reinjection",
+            "work.vexlife.tocompletion.p4.runtime-currentness-a054",
             "work.vexlife.tocompletion.p4.source-acceptance"
           ],
           "dependencyRefs": [
@@ -1207,7 +1283,7 @@
           "laneRef": "lane.work.ready",
           "label": "Ready",
           "workRefs": [
-            "work.vexlife.tocompletion.p4.lived-reinjection"
+            "work.vexlife.tocompletion.p4.runtime-currentness-a054"
           ]
         },
         {
@@ -1215,6 +1291,7 @@
           "label": "Active",
           "workRefs": [
             "work.vexlife.tocompletion.outcome",
+            "work.vexlife.tocompletion.p4.lived-reinjection",
             "work.vexlife.tocompletion.p4.typed-local-effect"
           ]
         },
@@ -1242,6 +1319,7 @@
           "laneRef": "lane.work.done",
           "label": "Done",
           "workRefs": [
+            "work.vexlife.tocompletion.p4.lived-attempt-a053",
             "work.vexlife.tocompletion.p4.source-acceptance",
             "work.vexlife.tocompletion.p0b.foundation",
             "work.vexlife.tocompletion.p1.heretic-establishment",
@@ -1256,14 +1334,14 @@
         }
       ],
       "summary": {
-        "workItemCount": 8,
-        "openWorkItemCount": 3,
+        "workItemCount": 10,
+        "openWorkItemCount": 4,
         "outcomeCount": 2,
-        "taskCount": 6,
+        "taskCount": 8,
         "defectCount": 0,
         "potentialCount": 0,
         "needsHumanCount": 0,
-        "completedCount": 5
+        "completedCount": 6
       },
       "rootItems": [
         {
