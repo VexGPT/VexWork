@@ -20,10 +20,10 @@ test('work registry covers lifecycle states exactly once on the default Work Boa
 test('one Workgraph can contain project work and unprojected parked work', () => {
   const project = createProject(projectSource);
   const graph = createWorkgraph(graphSource, registry);
-  assert.equal(graph.items.length, 57);
+  assert.equal(graph.items.length, 58);
   assert.equal(projectWorkRefs(project, graph).length, 8);
   const toCompletionProject = createProject(toCompletionProjectSource);
-  assert.equal(projectWorkRefs(toCompletionProject, graph).length, 17);
+  assert.equal(projectWorkRefs(toCompletionProject, graph).length, 18);
   const connectedServicesProject = createProject(connectedServicesProjectSource);
   assert.equal(projectWorkRefs(connectedServicesProject, graph).length, 19);
   assert.equal(verifySemanticFingerprint(project), true);
@@ -38,7 +38,7 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(graph.items.find((item) => item.workRef === 'work.vexwork.visibility.public-dashboard').state, 'COMPLETED');
   assert.equal(graph.items.find((item) => item.workRef === 'work.vexwork.history.foundational-infrastructure-backfill').state, 'CAPTURED');
   assert.equal(graph.items.find((item) => item.workRef === 'work.vexwork.history.foundational-infrastructure-backfill').authorityDisposition, 'NO_AUTHORITY');
-  assert.equal(graph.transitions.length, 9);
+  assert.equal(graph.transitions.length, 30);
 
   const parked = graph.items.find((item) => item.workRef === 'work.vexlife-android.vexstream.not-yet-downloaded-filter');
   assert.equal(parked.workClass, 'POTENTIAL');
@@ -104,8 +104,13 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   const p5Harness = graph.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p5.g02.coder-harness-a055-a056');
   assert.equal(p5Harness.state, 'COMPLETED');
   const p5A057 = graph.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p5.g02.sdk-runner-a057');
-  assert.equal(p5A057.state, 'READY');
+  assert.equal(p5A057.state, 'COMPLETED');
   assert.deepEqual(p5A057.dependencyRefs, ['work.vexlife.tocompletion.p5.g02.coder-harness-a055-a056']);
+  const p5Readiness = graph.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p5.g02.sdk-readiness-admission');
+  assert.equal(p5Readiness.state, 'WAITING_DEPENDENCIES');
+  assert.equal(p5Readiness.authorityDisposition, 'NO_AUTHORITY');
+  assert.equal(p5Readiness.effectDisposition, 'NO_EFFECTS');
+  assert.deepEqual(p5Readiness.dependencyRefs, ['work.vexlife.tocompletion.p5.g02.sdk-runner-a057']);
   const p6 = graph.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p6.cultivation-training-birth');
   assert.equal(p6.state, 'WAITING_DEPENDENCIES');
   assert.deepEqual(p6.dependencyRefs, ['work.vexlife.tocompletion.p5.lived-continuity-learning']);

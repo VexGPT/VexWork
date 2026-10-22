@@ -925,7 +925,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T01:08:02.000Z",
-      "updatedAt": "2026-10-22T01:39:00.000Z",
+      "updatedAt": "2026-10-22T04:17:38.000Z",
       "workRef": "work.vexlife.tocompletion.p5.g02-semantic-authority-materializer",
       "parentWorkRefOrNull": "work.vexlife.tocompletion.p5.lived-continuity-learning",
       "label": "P5 G02 — establish rightful semantic-authority materializer",
@@ -953,7 +953,10 @@
         "claim.vextreme-sdk.vexlife-tocompletion.p5.g02-semantic-authority-materializer.20261022a",
         "github.issue.vextreme-sdk.225.comment.6330620123",
         "github.issue.vextreme-sdk.225.comment.6330658616",
-        "github.issue.vextreme-sdk.225.comment.6330760587"
+        "github.issue.vextreme-sdk.225.comment.6330760587",
+        "github.pull.vextreme-sdk.1890",
+        "github.issue.vextreme-sdk.1891",
+        "github.issue.vextreme-sdk.225.comment.6332597414"
       ]
     },
     {
@@ -991,13 +994,13 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T01:39:00.000Z",
-      "updatedAt": "2026-10-22T01:39:00.000Z",
+      "updatedAt": "2026-10-22T04:17:38.000Z",
       "workRef": "work.vexlife.tocompletion.p5.g02.sdk-runner-a057",
       "parentWorkRefOrNull": "work.vexlife.tocompletion.p5.g02-semantic-authority-materializer",
       "label": "P5 G02 A057 — use SDK-bound Mac runner",
       "purpose": "Form one fresh compatible A057 attempt with the unchanged four-file Memory/Safety payload and current Relay authority shape, but execute the outer task through SDK's RUN-VEX-TASK.command / profile.repository.vextreme-sdk.macos-v1 instead of the VexLife-bound runner.",
       "workClass": "TASK",
-      "state": "READY",
+      "state": "COMPLETED",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [
         "work.vexlife.tocompletion.p5.g02.coder-harness-a055-a056"
@@ -1008,7 +1011,10 @@
       ],
       "sourceRefs": [
         "github.issue.vextreme-sdk.225.comment.6330760587",
-        "claim.vextreme-sdk.vexlife-tocompletion.p5.g02-semantic-authority-materializer.20261022a"
+        "claim.vextreme-sdk.vexlife-tocompletion.p5.g02-semantic-authority-materializer.20261022a",
+        "github.pull.vextreme-sdk.1890",
+        "github.issue.vextreme-sdk.1891",
+        "github.issue.vextreme-sdk.225.comment.6332597414"
       ]
     },
     {
@@ -1621,6 +1627,36 @@
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T01:58:34.000Z",
       "updatedAt": "2026-10-22T01:58:34.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-22T03:17:50.000Z",
+      "updatedAt": "2026-10-22T04:17:38.000Z",
+      "workRef": "work.vexlife.tocompletion.p5.g02.sdk-readiness-admission",
+      "parentWorkRefOrNull": "work.vexlife.tocompletion.p5.g02-semantic-authority-materializer",
+      "label": "P5 G02 — exact SDK readiness admission",
+      "purpose": "Admit exactly the two new Vex Memory semantic-authority paths into SDK readiness after the current serializer releases, then run the complete-checkout differential proof required before PR #1890 may currentize into exact-head lifecycle review.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexlife.tocompletion.p5.g02.sdk-runner-a057"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "github.issue.vextreme-sdk.1891",
+        "github.pull.vextreme-sdk.1890",
+        "github.pull.vextreme-sdk.1879",
+        "github.issue.vextreme-sdk.225.comment.6332597414"
+      ]
     }
   ],
   "transitions": [
