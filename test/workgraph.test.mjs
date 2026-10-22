@@ -83,8 +83,13 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(p4Source.state, 'COMPLETED');
   assert.equal(p4Source.sourceRefs.includes('github.pull.vexlife.916'), true);
   const p4Lived = graph.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p4.lived-reinjection');
-  assert.equal(p4Lived.state, 'READY');
+  assert.equal(p4Lived.state, 'RUNNING');
   assert.deepEqual(p4Lived.dependencyRefs, ['work.vexlife.tocompletion.p4.source-acceptance']);
+  const p4A053 = graph.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p4.lived-attempt-a053');
+  assert.equal(p4A053.state, 'COMPLETED');
+  const p4A054 = graph.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p4.runtime-currentness-a054');
+  assert.equal(p4A054.state, 'READY');
+  assert.deepEqual(p4A054.dependencyRefs, ['work.vexlife.tocompletion.p4.lived-attempt-a053']);
 });
 
 test('typed transition rejects stale observation and accepts exact current transition', () => {
