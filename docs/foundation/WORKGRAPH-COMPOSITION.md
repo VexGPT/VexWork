@@ -141,6 +141,37 @@ segment authoring
 
 without forcing unrelated work-family branches to edit the same authored segment.
 
+## Shadow patient zero — VexWork Foundation
+
+The first real adoption pressure uses the completed VexWork Foundation family because its containment is stable and no active product lane needs to author inside it.
+
+`workgraphs/segments/vexwork-foundation.json` is initially a **shadow segment**, not the current Workgraph source owner.
+
+```text
+accepted workgraphs/public.json
+        │
+        ├─ exact Foundation segment
+        └─ derived untouched remainder
+                 │
+                 ▼
+          Composition v2
+                 │
+                 ▼
+deep-equal accepted Workgraph
+same semantic fingerprint
+```
+
+`test/workgraph-composition-foundation.test.mjs` enforces that parity against the current accepted aggregate. If Foundation truth changes while the shadow segment is stale, the test fails.
+
+This staged posture avoids a big-bang ownership flip:
+
+```text
+SHADOW_SEGMENT != CURRENT_SOURCE_OWNER
+PARITY_PROVEN != AUTHORSHIP_MIGRATED
+```
+
+A later adoption may make segments the authored source and `workgraphs/public.json` generated only after the real concurrent lanes have demonstrated that ordinary-forward reconciliation remains clean.
+
 ## Operational posture during migration
 
 Until adoption is complete:
