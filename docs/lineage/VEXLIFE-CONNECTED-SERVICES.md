@@ -94,9 +94,58 @@ Phase 5 same-session / real restart / no duplicates
 Phase 6 VCS-04 terminal currentness
 ```
 
-## Lived attempt lineage
+## Durable progress — read this first
 
-The attempt number is evidence lineage, not product architecture.
+This section is the successor-facing history. It records **what became true**, not which harness invocation happened to carry the evidence.
+
+```text
+VCS-00..VCS-03
+  completed and accepted as the program foundation
+
+VCS-04 installed read source
+  Android PR #149 accepted/current
+
+Phase 1 observability
+  Android PR #152 accepted/current
+  generic refresh failure -> closed secret-free diagnostic boundary
+
+A013 semantic result
+  installed session-challenge path classified as network-timeout
+  gateway still saw no authenticated challenge
+
+A014/A015 semantic result
+  Mac Shields Up identified as a real protected prerequisite
+  human enabled incoming connections
+  daemon subsequently machine-confirmed shieldsUp=false
+
+A016 semantic result
+  Android route-selected tailnet identity resolved uniquely
+  Mac -> Android DISCO / TSMP / ICMP PASS
+  Android -> Mac ICMP PASS
+  Android -> Mac private Serve TCP by Tailscale IPv4 PASS
+  Android -> Mac private Serve TCP by MagicDNS PASS
+
+current debt
+  A016-owned temporary private Serve port 10000 remained after cleanup attempt
+  this is harness/effect cleanup debt, not a reversal of the network proof
+
+next
+  exact A016-owned Serve cleanup only
+  -> require mapping gone
+  -> then Phase 1 can close and Phase 2 fixture-backed L1-L5 may resume
+```
+
+Permanent interpretation:
+
+```text
+ATTEMPT_DISPOSITION != WORK_PROGRESS
+SAFE_FAILURE_AFTER_PROOF != PROOF_ERASED
+HARNESS_CLEANUP_DEBT != PRODUCT_NETWORK_FAILURE
+```
+
+## Recovery appendix — attempt lineage (skip unless diagnosing)
+
+The attempt number is recovery/evidence lineage, not canonical work progress. Read this only when reproducing a prior setup/cleanup condition.
 
 | Attempt | Terminal learning |
 |---|---|
@@ -114,6 +163,8 @@ The attempt number is evidence lineage, not product architecture.
 | A012 | Reached installed Family Conversation with private Serve and a deterministic proof room; no Android authenticated request reached the gateway. Foundation successor threshold. |
 | A013 | Accepted Android diagnostics surfaced `private-home.session-challenge.network-timeout`; gateway still saw no challenge; Mac forced-IP HTTPS also timed out. |
 | A014 | Tailnet/Serve seam probe identified `MAC_SHIELDS_UP`; no security preference mutation was performed. |
+| A015 | Machine-confirmed `shieldsUp=false`; broad peer collection remained ambiguous and correctly refused to guess. |
+| A016 | Route-selected Android identity resolved uniquely and private Serve TCP passed by both Tailscale IPv4 and MagicDNS; only exact temporary Serve cleanup remained unproven. |
 
 A012 fixture law:
 
@@ -126,33 +177,32 @@ ANDROID_READ_DOORWAY != FAMILY_HOST_ESTABLISHMENT
 
 ## Current checkpoint
 
-A014 proved:
+The private network seam is now materially proven:
 
 ```text
-Mac Tailscale backend running=true
-Mac ShieldsUp=true
-Android Tailscale/VPN projection visible
-Android peer candidates visible
+Mac ShieldsUp=false
+Android route-selected interface=tun1
+route-selected Android tailnet identity -> exactly one current Mac peer
+Mac -> Android DISCO / TSMP / ICMP = PASS
+Android -> Mac ICMP = PASS
+Android -> Mac private Serve TCP by Tailscale IPv4 = PASS
+Android -> Mac private Serve TCP by MagicDNS = PASS
+AllowFunnel=false
 ```
 
-The protected human action was then completed in the macOS Tailscale UI:
+A016 itself ended `SAFE_FAILURE` only because its exact temporary private Serve mapping on HTTPS port 10000 remained after bounded cleanup.
+
+Current edge:
 
 ```text
-Settings -> Allow incoming connections = checked
+recover exact A016-owned private Serve mapping
+-> prove port 10000 mapping gone
+-> no broad Serve reset
+-> no Funnel mutation
+-> no product replay inside the cleanup attempt
 ```
 
-This is **human-observed completion**, not yet machine proof that the daemon now reports `shieldsUp=false`.
-
-Current next edge:
-
-```text
-fresh A015
--> machine re-observe shieldsUp=false
--> prove/disprove Android -> Mac private Serve TCP reachability
--> only then decide whether to re-enter full VexLife L1-L5 product replay
-```
-
-Do not replay terminal A014.
+Once cleanup is proven, the Phase-1 network discrimination outcome is complete enough to advance into deterministic-fixture L1-L5 rather than continuing to diagnose generic tailnet reachability.
 
 ## Manual foundation / onboarding observations
 
@@ -244,36 +294,16 @@ README.md
 -> project.vexlife.connected-services
 -> docs/lineage/VEXLIFE-CONNECTED-SERVICES.md
 -> work.vexlife.connected-services.vcs04.phase1.private-serve-ingress
--> only then descend into the live target source needed for A015
+-> only then descend into the exact A016 cleanup edge / next qualified cleanup carrier
 ```
 
 Current truth:
 
 ```text
-A015 terminal RETURN consumed.
-Mac incoming Tailscale connections are machine-confirmed enabled.
-Android Tailscale/VPN is present.
-A015 stopped because broad peer-candidate collection remained ambiguous.
-A016 is QUALIFIED and waiting for one host execution.
+A016 terminal RETURN consumed.
+Private tailnet + private Serve TCP reachability is proven.
+The only current hold is exact cleanup of A016-owned HTTPS port 10000.
+No product replay should occur before that mapping is proven gone.
 ```
-
-Current A016 formation:
-
-```text
-purpose=derive the Android route-selected tailnet identity toward the Mac,
-        correlate that one identity to the current Mac peer map,
-        then continue the bounded private Serve reachability probe
-wrapperSha256=7988261dd93ca3174984416b7b4abfc3f0f162d39a1f7e46a264c07796455245
-wrapperBytes=19128
-carrier=accepted VexLocalBridge direct-host adapter
-productEffectsHeld=true
-tailnetPolicyMutation=false
-shieldsUpMutation=false
-publicFunnel=false
-```
-
-A016 does not choose a peer by display name and does not guess among historical address references.
-
-On terminal A016 RETURN, consume it before any replay.
 
 <!-- [VXG RealForever][VEXWORK][LINEAGE][VEXLIFE-CONNECTED-SERVICES] -->
