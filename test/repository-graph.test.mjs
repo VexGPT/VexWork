@@ -14,6 +14,9 @@ test('public Repository Graph is structurally valid and culture remains by refer
   assert.equal(graph.executionAuthority, 'NONE');
   const android = graph.repositories.find((repository) => repository.repositoryRef === 'repo.vexlife-android');
   assert.deepEqual(android.cultureRefs, ['docs/CULTURE.md']);
+  const music = graph.repositories.find((repository) => repository.repositoryRef === 'repo.vexstream-music');
+  assert.equal(music.nameWithOwner, 'vgong24/VexstreamMusic');
+  assert.deepEqual(music.entryRefs, ['README.md', 'v2/README.md', 'v2/architecture/README.md']);
 });
 
 test('unknown repository references fail closed', () => {

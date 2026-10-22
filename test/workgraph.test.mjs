@@ -21,7 +21,7 @@ test('work registry covers lifecycle states exactly once on the default Work Boa
 test('one Workgraph can contain project work and unprojected parked work', () => {
   const project = createProject(projectSource);
   const graph = createWorkgraph(graphSource, registry);
-  assert.equal(graph.items.length, 82);
+  assert.equal(graph.items.length, 84);
   assert.equal(projectWorkRefs(project, graph).length, 7);
   const toCompletionProject = createProject(toCompletionProjectSource);
   assert.equal(projectWorkRefs(toCompletionProject, graph).length, 17);
@@ -86,8 +86,12 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   const massDownload = graph.items.find((item) => item.workRef === 'work.vexstream.mobile-library.massdownload-product');
   assert.equal(massDownload.state, 'COMPLETED');
   const e2e = graph.items.find((item) => item.workRef === 'work.vexstream.mobile-library.massdownload-e2e');
-  assert.equal(e2e.state, 'CAPTURED');
-  assert.equal(e2e.authorityDisposition, 'HELD_UNKNOWN');
+  assert.equal(e2e.state, 'COMPLETED');
+  assert.equal(e2e.authorityDisposition, 'AUTHORIZED_BOUNDED');
+  const queueIncident = graph.items.find((item) => item.workRef === 'work.vexstream.mobile-library.track-menu-presentation-defect');
+  assert.equal(queueIncident.state, 'RUNNING');
+  assert.equal(queueIncident.parentWorkRefOrNull, 'work.vexstream.mobile-library.massdownload-maturity');
+  assert.equal(queueIncident.effectDisposition, 'NO_EFFECTS');
   const keepOffline = graph.items.find((item) => item.workRef === 'work.vexstream.mobile-library.keep-offline-sync');
   assert.equal(keepOffline.workDisposition, 'PARKED');
   assert.equal(keepOffline.authorityDisposition, 'NO_AUTHORITY');
