@@ -7,6 +7,7 @@ import {
   createWorkgraphComposition,
   createWorkgraphSegment,
 } from '../src/core/workgraph-composition.mjs';
+import { createWorkgraph } from '../src/core/workgraph.mjs';
 
 const registry = JSON.parse(fs.readFileSync(new URL('../blueprint/work-registry.json', import.meta.url), 'utf8'));
 
@@ -56,6 +57,17 @@ function composition() {
     compositionRef: 'composition.test.public',
     graphRef: 'workgraph.test.composed',
     sourceRefs: ['test.workgraph-composition'],
+    formedAt: '2026-10-22T07:00:00.000Z',
+  };
+}
+
+function compositionV2({ sourceRefs, compatibilityOrder }) {
+  return {
+    schemaVersion: 'vexwork.workgraph-composition/v2',
+    compositionRef: 'composition.test.public.v2',
+    graphRef: 'workgraph.test.composed',
+    sourceRefs,
+    compatibilityOrder,
     formedAt: '2026-10-22T07:00:00.000Z',
   };
 }
@@ -202,6 +214,82 @@ test('global Workgraph validation still rejects missing or cyclic cross-segment 
     ],
     registry,
   }), /dependency cycle detected/);
+});
+
+test('v2 compatibility order preserves an existing Workgraph semantic fingerprint exactly', () => {
+  const alphaOutcome = item({ workRef: 'work.alpha.outcome', workClass: 'OUTCOME' });
+  const alphaTask = item({
+    workRef: 'work.alpha.task',
+    parentWorkRefOrNull: 'work.alpha.outcome',
+    dependencyRefs: ['work.beta.task'],
+    state: 'RUNNING',
+    updatedAt: '2026-10-22T07:00:02.000Z',
+  });
+  const betaTask = item({
+    workRef: 'work.beta.task',
+    state: 'RUNNING',
+    updatedAt: '2026-10-22T07:00:03.000Z',
+  });
+  const alphaTransition = transition({
+    transitionRef: 'transition.alpha.running',
+    workRef: 'work.alpha.task',
+    priorState: 'READY',
+    nextState: 'RUNNING',
+    createdAt: '2026-10-22T07:00:02.000Z',
+  });
+  const betaTransition = transition({
+    transitionRef: 'transition.beta.running',
+    workRef: 'work.beta.task',
+    priorState: 'READY',
+    nextState: 'RUNNING',
+    createdAt: '2026-10-22T07:00:03.000Z',
+  });
+
+  const legacy = createWorkgraph({
+    schemaVersion: 'vexwork.workgraph/v1',
+    graphRef: 'workgraph.test.composed',
+    rootWorkRefs: ['work.alpha.outcome', 'work.beta.task'],
+    items: [betaTask, alphaOutcome, alphaTask],
+    transitions: [betaTransition, alphaTransition],
+    sourceRefs: ['source.legacy.z', 'source.legacy.a'],
+    formedAt: '2026-10-22T07:00:00.000Z',
+  }, registry);
+
+  const alpha = segment({
+    segmentRef: 'segment.alpha',
+    items: [alphaOutcome, alphaTask],
+    transitions: [alphaTransition],
+  });
+  const beta = segment({
+    segmentRef: 'segment.beta',
+    items: [betaTask],
+    transitions: [betaTransition],
+  });
+
+  const composed = composeWorkgraph({
+    composition: compositionV2({
+      sourceRefs: ['source.legacy.z', 'source.legacy.a'],
+      compatibilityOrder: {
+        itemWorkRefs: legacy.items.map((candidate) => candidate.workRef),
+        transitionRefs: legacy.transitions.map((candidate) => candidate.transitionRef),
+        rootWorkRefs: legacy.rootWorkRefs,
+        sourceRefs: legacy.sourceRefs,
+      },
+    }),
+    segments: [alpha, beta],
+    registry,
+  });
+
+  assert.equal(composed.graph.semanticFingerprint, legacy.semanticFingerprint);
+  assert.deepEqual(composed.graph, legacy);
+  assert.equal(composed.graph.sourceRefs.includes('source.segment.alpha'), false);
+});
+
+test('v1 rejects migration-only compatibility ordering', () => {
+  assert.throws(() => createWorkgraphComposition({
+    ...composition(),
+    compatibilityOrder: { itemWorkRefs: ['work.alpha.task'] },
+  }), /requires Workgraph Composition v2/);
 });
 
 test('stored composition and segment fingerprints fail closed when tampered', () => {
