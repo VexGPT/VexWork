@@ -43,6 +43,32 @@ test('focused Terrain reserves explicit rows for context, siblings, focus header
   assert.match(page, /layout\.append\(list\)/);
 });
 
+test('semantic wheel traversal is disabled by default while its implementation remains available', () => {
+  assert.match(page, /const SEMANTIC_WHEEL_TRAVERSAL_ENABLED=false/);
+  assert.match(page, /function onWheel\(e\)\{\s*if\(!SEMANTIC_WHEEL_TRAVERSAL_ENABLED\)return;/);
+  assert.match(page, /function cameraEnter/);
+  assert.match(page, /function cameraOut/);
+  assert.match(page, /wheel traversal off/);
+});
+
+test('Terrain projects continuity around current work with state color and age evidence', () => {
+  assert.match(page, /function continuityWindow/);
+  assert.match(page, /data\.continuity=role/);
+  assert.match(page, /data\.tone=tone\(item\.state\)/);
+  assert.match(page, /latest completed/);
+  assert.match(page, /snapshot /);
+  assert.match(page, /stateAgeText/);
+  assert.match(page, /outside continuity/);
+});
+
+test('Inspect is closable and participation evidence is explicitly bounded to recorded transition actors', () => {
+  assert.match(page, /classList\.remove\('open'\)/);
+  assert.match(page, /Recorded lifecycle actors:/);
+  assert.match(page, /Recorded actor handoffs:/);
+  assert.match(page, /this is not a total worker\/thread count/);
+  assert.match(page, /does not yet model total worker\/thread participation/);
+});
+
 test('nested scrolling retains priority over outward level-of-detail traversal', () => {
   assert.match(page, /scrollPathCanMove/);
   assert.match(page, /Outer boundary reached/);
