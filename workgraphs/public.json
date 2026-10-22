@@ -874,7 +874,7 @@
       "label": "Phase 2 — deterministic-fixture L1-L5",
       "purpose": "Preserve the A018-installed deterministic-fixture proof that L1 possession, L2 remote session, L3 private gateway, L4 bounded current Home/Family authority, and L5 canonical Conversation history read all succeeded; hold completion only for exact temporary Serve cleanup closure.",
       "workClass": "OUTCOME",
-      "state": "VERIFYING",
+      "state": "COMPLETED",
       "workDisposition": "ACTIVE",
       "priorityClass": "HIGH",
       "dependencyRefs": [
@@ -888,14 +888,15 @@
         "docs/lineage/VEXLIFE-CONNECTED-SERVICES.md",
         "github.issue.vexlife.899",
         "github.issue.vexlife.899.comment.6330027250",
-        "github.issue.vexlife.899.comment.6330169106"
+        "github.issue.vexlife.899.comment.6330169106",
+        "github.issue.vexlife.899.comment.6330469773"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-21T23:56:41.000Z",
-      "updatedAt": "2026-10-22T01:05:42.781Z"
+      "updatedAt": "2026-10-22T01:28:59.657Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -904,7 +905,7 @@
       "label": "Phase 3 — fresh-user Family establishment",
       "purpose": "Replace proof-only room construction with the rightful fresh-user Family host establishment path and re-prove installed L1-L5 through product-created canonical Family state.",
       "workClass": "OUTCOME",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "READY",
       "workDisposition": "ACTIVE",
       "priorityClass": "HIGH",
       "dependencyRefs": [
@@ -916,14 +917,15 @@
       ],
       "sourceRefs": [
         "docs/lineage/VEXLIFE-CONNECTED-SERVICES.md",
-        "github.issue.vexlife.899"
+        "github.issue.vexlife.899",
+        "github.issue.vexlife.899.comment.6330469773"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-21T23:56:41.000Z",
-      "updatedAt": "2026-10-21T23:56:41.000Z"
+      "updatedAt": "2026-10-22T01:28:59.658Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -1285,6 +1287,32 @@
         "github.issue.vexlife.899.comment.6330169106"
       ],
       "createdAt": "2026-10-22T01:05:42.781Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.connected-services.vcs04.phase2.completed.a019-cleanup",
+      "workRef": "work.vexlife.connected-services.vcs04.phase2-fixture-l1-l5",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "A019 re-observed the A018-owned temporary port-10000 mapping already absent and preserved clean private-network state, closing the only remaining harness debt after installed L1-L5 passed.",
+      "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.issue.vexlife.899.comment.6330469773"
+      ],
+      "createdAt": "2026-10-22T01:28:59.657Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.connected-services.vcs04.phase3.ready.after-phase2",
+      "workRef": "work.vexlife.connected-services.vcs04.phase3-fresh-user-family",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "Deterministic-fixture installed L1-L5 is complete with cleanup closed; fresh-user Family establishment is now the next bounded VCS-04 outcome.",
+      "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.issue.vexlife.899.comment.6330469773"
+      ],
+      "createdAt": "2026-10-22T01:28:59.658Z"
     }
   ],
   "sourceRefs": [
