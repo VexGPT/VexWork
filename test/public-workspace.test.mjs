@@ -127,3 +127,22 @@ test('Connected Services is discoverable as a real Project with the current live
   assert.equal(connected.items.some((item) => item.workRef === 'work.vexlife.connected-services.guided-onboarding'), false);
   assert.equal(workspace.parkingLot.items.some((item) => item.workRef === 'work.vexlife.connected-services.guided-onboarding'), true);
 });
+
+
+test('Blueprint SOT preserves the full trajectory while keeping the Mac toolchain hold scoped', () => {
+  const workspace = buildWorkspace();
+  const blueprint = workspace.projects.find((entry) => entry.project.projectRef === 'project.vexlife.blueprint-source-of-truth');
+  assert.ok(blueprint);
+  assert.equal(blueprint.summary.workItemCount, 14);
+  assert.equal(blueprint.summary.completedCount, 8);
+  assert.equal(blueprint.summary.openWorkItemCount, 6);
+  const root = blueprint.items.find((item) => item.workRef === 'work.vexlife.blueprint-source-of-truth.outcome');
+  const practicum = blueprint.items.find((item) => item.workRef === 'work.vexlife.blueprint-source-of-truth.play-pause-practicum');
+  const nativeSource = blueprint.items.find((item) => item.workRef === 'work.vexlife.blueprint-source-of-truth.play-pause.native-source-admission');
+  const reusable = blueprint.items.find((item) => item.workRef === 'work.vexlife.blueprint-source-of-truth.reusable-v1');
+  assert.equal(root.state, 'RUNNING');
+  assert.equal(practicum.state, 'RUNNING');
+  assert.equal(nativeSource.state, 'WAITING_RESOURCE');
+  assert.equal(reusable.state, 'WAITING_DEPENDENCIES');
+  assert.equal(blueprint.lanes.find((lane) => lane.laneRef === 'lane.work.waiting').workRefs.includes(nativeSource.workRef), true);
+});
