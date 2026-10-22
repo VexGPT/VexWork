@@ -57,7 +57,7 @@ test('dynamic VexWork strings enter through textContent, not producer HTML', () 
 });
 
 test('family navigation keeps Vextreme and VexLife as sibling destinations', () => {
-  assert.match(page, /https:\/\/vgong24\.github\.io\/Vextreme\//);
+  assert.match(page, /https:\/\/vgong24\.github\.io\/Vextreme\/pages\/terrain-map\.html\?view=content&amp;profile=evolution-v1/);
   assert.match(page, /https:\/\/vgong24\.github\.io\/VexLife\//);
 });
 
