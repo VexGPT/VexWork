@@ -10,6 +10,7 @@ const registry = read('blueprint/work-registry.json');
 const projectSource = read('projects/vexwork-foundation/project.json');
 const toCompletionProjectSource = read('projects/vexlife-tocompletion/project.json');
 const connectedServicesProjectSource = read('projects/vexlife-connected-services/project.json');
+const operationalConsoleProjectSource = read('projects/vexwork-operational-console/project.json');
 const graphSource = read('workgraphs/public.json');
 
 test('work registry covers lifecycle states exactly once on the default Work Board', () => {
@@ -20,12 +21,14 @@ test('work registry covers lifecycle states exactly once on the default Work Boa
 test('one Workgraph can contain project work and unprojected parked work', () => {
   const project = createProject(projectSource);
   const graph = createWorkgraph(graphSource, registry);
-  assert.equal(graph.items.length, 57);
+  assert.equal(graph.items.length, 79);
   assert.equal(projectWorkRefs(project, graph).length, 8);
   const toCompletionProject = createProject(toCompletionProjectSource);
   assert.equal(projectWorkRefs(toCompletionProject, graph).length, 17);
   const connectedServicesProject = createProject(connectedServicesProjectSource);
   assert.equal(projectWorkRefs(connectedServicesProject, graph).length, 19);
+  const operationalConsoleProject = createProject(operationalConsoleProjectSource);
+  assert.equal(projectWorkRefs(operationalConsoleProject, graph).length, 21);
   assert.equal(verifySemanticFingerprint(project), true);
   assert.equal(verifySemanticFingerprint(graph), true);
 
@@ -38,7 +41,7 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(graph.items.find((item) => item.workRef === 'work.vexwork.visibility.public-dashboard').state, 'COMPLETED');
   assert.equal(graph.items.find((item) => item.workRef === 'work.vexwork.history.foundational-infrastructure-backfill').state, 'CAPTURED');
   assert.equal(graph.items.find((item) => item.workRef === 'work.vexwork.history.foundational-infrastructure-backfill').authorityDisposition, 'NO_AUTHORITY');
-  assert.equal(graph.transitions.length, 9);
+  assert.equal(graph.transitions.length, 30);
 
   const parked = graph.items.find((item) => item.workRef === 'work.vexlife-android.vexstream.not-yet-downloaded-filter');
   assert.equal(parked.workClass, 'POTENTIAL');
@@ -57,6 +60,13 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.deepEqual(tailscale.repositoryRefs, ['repo.vexlife', 'repo.vexlife-android']);
   assert.equal(tailscale.formationProcessRefOrNull, 'process.vexwork.capture-discovered-work');
   assert.deepEqual(tailscale.nextProcessRefs, []);
+  const routing = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.multi-fulfiller-routing');
+  assert.equal(routing.workClass, 'POTENTIAL');
+  assert.equal(routing.state, 'CAPTURED');
+  assert.equal(routing.workDisposition, 'PARKED');
+  assert.equal(routing.authorityDisposition, 'NO_AUTHORITY');
+  assert.equal(routing.effectDisposition, 'NO_EFFECTS');
+  assert.equal(routing.formationProcessRefOrNull, 'process.vexwork.capture-discovered-work');
   const mobile = graph.items.find((item) => item.workRef === 'work.vexstream.mobile-library.outcome');
   assert.equal(mobile.workClass, 'OUTCOME');
   assert.equal(mobile.state, 'DECOMPOSED');
