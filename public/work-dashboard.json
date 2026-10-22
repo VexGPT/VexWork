@@ -190,6 +190,22 @@
   "parkingLot": {
     "items": [
       {
+        "workRef": "work.vexlife.connected-services.guided-onboarding",
+        "label": "Simplify Connected Services onboarding across computer + phone",
+        "purpose": "Preserve the lived need for one guided setup path that detects Tailscale readiness across computer and phone, exposes protected human-only actions such as sign-in, VPN consent, Serve enablement, and Mac Allow incoming connections only when needed, then machine-verifies the resulting predicate before returning to VexLife pairing/private-route setup without weakening Home, session, reachability, or pairing authority boundaries.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "LOW",
+        "repositoryRefs": [
+          "repo.vexlife",
+          "repo.vexlife-android"
+        ],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "updatedAt": "2026-10-21T23:56:41.000Z"
+      },
+      {
         "workRef": "work.vexstream.mobile-library.keep-offline-sync",
         "label": "Persistent Keep Offline / Sync",
         "purpose": "Preserve the future policy question of keeping an album, artist, playlist, or other collection continuously mirrored as producer membership changes, without conflating it with one-shot Download missing.",
@@ -203,22 +219,6 @@
         "authorityDisposition": "NO_AUTHORITY",
         "effectDisposition": "NO_EFFECTS",
         "updatedAt": "2026-10-21T08:41:00.000Z"
-      },
-      {
-        "workRef": "work.vexlife.connected-services.guided-onboarding",
-        "label": "Simplify Connected Services onboarding across computer + phone",
-        "purpose": "Preserve the lived need for one guided setup path that checks Tailscale readiness across computer and phone, asks for protected human-only steps at the right moment, then returns to VexLife pairing/private-route setup without weakening Home, session, reachability, or pairing authority boundaries.",
-        "workClass": "POTENTIAL",
-        "state": "CAPTURED",
-        "workDisposition": "PARKED",
-        "priorityClass": "LOW",
-        "repositoryRefs": [
-          "repo.vexlife",
-          "repo.vexlife-android"
-        ],
-        "authorityDisposition": "NO_AUTHORITY",
-        "effectDisposition": "NO_EFFECTS",
-        "updatedAt": "2026-10-21T06:23:27.000Z"
       },
       {
         "workRef": "work.vexlife-android.vexstream.not-yet-downloaded-filter",
