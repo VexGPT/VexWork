@@ -13,7 +13,7 @@ const view = createBoardView(read('projects/vexwork-operational-console/board.vi
 
 test('Operational Console Project models evolution without entity-per-task explosion', () => {
   const refs = projectWorkRefs(project, graph);
-  assert.equal(refs.length, 21);
+  assert.equal(refs.length, 24);
   assert.equal(refs.includes('work.vexwork.operational-console.outcome'), true);
   assert.equal(refs.includes('work.vexwork.operational-console.multi-fulfiller-routing'), false);
   assert.deepEqual(project.repositoryRefs, ['repo.vexwork', 'repo.vextreme']);
@@ -24,6 +24,7 @@ test('Operational Console Project models evolution without entity-per-task explo
     'work.vexwork.operational-console.cross-domain-completion',
     'work.vexwork.operational-console.derived-work-foundation',
     'work.vexwork.operational-console.operating-domain-template',
+    'work.vexwork.operational-console.relational-terrain',
     'work.vexwork.operational-console.vexsite-dogfood',
   ]);
 });
@@ -48,14 +49,35 @@ test('Operational Console progression keeps patient zero before generalized comm
   ]);
 });
 
+test('Operational Console Terrain remains parallel to the existing completion chain', () => {
+  const byRef = new Map(graph.items.map((item) => [item.workRef, item]));
+  const terrain = byRef.get('work.vexwork.operational-console.relational-terrain');
+  const patient = byRef.get('work.vexwork.operational-console.relational-terrain.patient-zero');
+  const temporal = byRef.get('work.vexwork.operational-console.relational-terrain.temporal-currentness');
+  assert.equal(terrain.state, 'RUNNING');
+  assert.equal(patient.state, 'RUNNING');
+  assert.equal(temporal.state, 'WAITING_DEPENDENCIES');
+  assert.deepEqual(temporal.dependencyRefs, [patient.workRef]);
+  assert.deepEqual(terrain.dependencyRefs, []);
+});
+
 test('Operational Console board distinguishes admitted evolution from held future logistics', () => {
   const board = projectWorkBoard({ project, graph, view, registry });
+  const active = board.lanes.find((lane) => lane.laneRef === 'lane.work.active');
   const ready = board.lanes.find((lane) => lane.laneRef === 'lane.work.ready');
+  const done = board.lanes.find((lane) => lane.laneRef === 'lane.work.done');
   const planned = board.lanes.find((lane) => lane.laneRef === 'lane.work.planned');
-  assert.equal(board.lanes.flatMap((lane) => lane.cards).length, 21);
-  assert.equal(ready.cards.some((card) => card.workRef === 'work.vexwork.operational-console.derived-work-foundation'), true);
-  assert.equal(ready.cards.some((card) => card.workRef === 'work.vexwork.operational-console.derived-work-contract'), true);
-  assert.equal(planned.cards.some((card) => card.workRef === 'work.vexwork.operational-console.vexsite-dogfood'), true);
+  assert.equal(board.lanes.flatMap((lane) => lane.cards).length, 24);
+  assert.equal(active.cards.some((card) => card.workRef === 'work.vexwork.operational-console.outcome'), true);
+  assert.equal(active.cards.some((card) => card.workRef === 'work.vexwork.operational-console.relational-terrain'), true);
+  assert.equal(active.cards.some((card) => card.workRef === 'work.vexwork.operational-console.relational-terrain.patient-zero'), true);
+  assert.equal(done.cards.some((card) => card.workRef === 'work.vexwork.operational-console.derived-work-foundation'), true);
+  assert.equal(done.cards.some((card) => card.workRef === 'work.vexwork.operational-console.derived-work-contract'), true);
+  assert.equal(done.cards.some((card) => card.workRef === 'work.vexwork.operational-console.derived-work-projection'), true);
+  assert.equal(done.cards.some((card) => card.workRef === 'work.vexwork.operational-console.derived-work-promotion'), true);
+  assert.equal(ready.cards.some((card) => card.workRef === 'work.vexwork.operational-console.vexsite-dogfood'), true);
+  assert.equal(ready.cards.some((card) => card.workRef === 'work.vexwork.operational-console.vexsite-population-scope'), true);
+  assert.equal(planned.cards.some((card) => card.workRef === 'work.vexwork.operational-console.vexsite-localization-lens'), true);
 
   const lot = projectParkingLot({ graph, registry, repositoryRefOrNull: 'repo.vexwork' });
   const routing = lot.items.find((item) => item.workRef === 'work.vexwork.operational-console.multi-fulfiller-routing');
