@@ -1,0 +1,432 @@
+# VexWork Operational Console Evolution
+
+`[VXG RealForever]`
+
+This Project carries the evolution from **VexWork as a durable work-navigation system** toward **VexWork as a console for work**.
+
+The intention is not to replace the Workgraph, Project, or Work Board foundations. It is to add the missing bridge between:
+
+```text
+what exists in the world
+what is currently true about it
+what deserves attention under one reusable work lens
+what has actually been admitted as canonical work
+```
+
+The first pressure came from VexSite Localization. Vextreme already owns a large population of pages, routes, arcs, preserved sources, localization sources, compiled runtime, page health and lived/browser evidence. Creating one VexWork task for every page would duplicate repository inventory and turn current health into ticket-maintenance ceremony.
+
+A second pressure is intentionally different: a nontechnical human wants to start a small online business selling unique antique plates. At the beginning there may be physical items but no website, catalog, inventory system, fulfillment workflow, or AI-readable operating environment. VexWork should eventually help form and navigate that environment without becoming the commerce database itself.
+
+These two cases bound the evolution:
+
+```text
+existing large population
+  VexSite pages
+  -> derive what remains without page-per-task topology
+
+new operating environment
+  antique plates
+  -> form reusable capabilities/populations/attention
+  -> let AI help build and maintain the digital environment
+  -> keep protected physical/business actions human-aware
+```
+
+## The human outcome
+
+The root outcome is:
+
+> Make VexWork capable of perceiving and carrying many kinds of work through one console: intentional Projects/Outcomes, dynamic population health, operational attention, reusable processes, and promoted foreground work — without making VexWork the source database for everything work touches.
+
+The desired experience is closer to:
+
+```text
+WHAT EXISTS?
+WHAT IS TRUE ABOUT IT?
+WHAT NEEDS ATTENTION UNDER THIS LENS?
+WHAT HAS ACTUALLY BECOME WORK?
+WHAT PROCESS / REPOSITORY OWNS THE NEXT EFFECT?
+```
+
+than:
+
+```text
+HOW MANY TICKETS DO WE HAVE?
+```
+
+## Permanent distinctions
+
+The evolution must preserve the current VexWork foundations:
+
+```text
+ENTITY != WORK_ITEM
+ENTITY_HEALTH != WORK_STATE
+INCOMPLETE_ENTITY != ADMITTED_TASK
+DERIVED_ATTENTION != IMPLEMENTATION_AUTHORITY
+
+PROJECT != WORKSET_OR_POPULATION
+WORK_BOARD != WORKGRAPH
+PROJECTION != EFFECT_AUTHORITY
+
+COMMERCE_PRODUCT != WORK_ITEM
+ORDER != WORK_ITEM
+SHIPMENT != WORK_ITEM
+CUSTOMER != WORK_ITEM
+
+REPOSITORY_OR_PROVIDER_TRUTH != VEXWORK_WORK_TRUTH
+COMPLETED_WORK != ENTITY_HEALTHY_FOREVER
+```
+
+A completed remediation remains historical work truth. If the underlying entity later regresses, the dynamic lens may surface new attention without rewriting the completed Work item.
+
+## Provisional recognition model
+
+Names are intentionally provisional until implementation earns them.
+
+The capability currently needs to represent something like:
+
+```text
+Population Provider
+  what entities currently exist?
+
+Entity Identity
+  which thing is this?
+
+Scope
+  which subset is being considered?
+
+Lens
+  what does complete / incomplete / attention mean for this kind of work?
+
+Evidence
+  what current repository/provider facts answer those predicates?
+
+Derived Facets
+  why is an entity complete, incomplete, unknown or noteworthy?
+
+Projection
+  aggregate -> group -> entity drill-down
+
+Promotion
+  explicitly adopt one derived concern into canonical Workgraph work
+```
+
+The same entity may participate in multiple lenses:
+
+```text
+page A
+
+Localization lens
+  COMPLETE
+
+Accessibility lens
+  ATTENTION
+
+Header modernization lens
+  INCOMPLETE
+```
+
+Those results are not WorkState.
+
+## Phase 1 — reusable derived-work foundation
+
+The first implementation must establish the smallest reusable contract for dynamic work visibility over a population without materializing one Work item per entity.
+
+It should be able to answer:
+
+```text
+population size
+complete count
+incomplete count
+unknown / attention count
+incomplete by reason
+incomplete by scope/group
+per-entity current evidence
+whether canonical Work already exists for the concern
+```
+
+The feature should support:
+
+- dynamically appearing/disappearing entities;
+- multiple simultaneous lenses over the same entity identity;
+- nested scopes or groups;
+- unknown and not-applicable evidence without treating absence as automatic failure;
+- required versus advisory predicates where the lens needs them;
+- derived reason facets rather than manually maintained tags;
+- explicit promotion into Workgraph when ownership/lifecycle becomes real;
+- provenance from promoted work back to entity, lens and evidence;
+- later entity regression without reopening historical work automatically.
+
+The implementation should not introduce domain-specific words such as Page, SKU, Order or Credential into the generic owner unless repeated pressure earns them.
+
+## Phase 2 — Patient Zero: VexSite Localization
+
+VexSite Localization is the first dogfood because it already has a meaningful repository-owned population and evidence surfaces.
+
+Vextreme remains owner of:
+
+- page / route / node / arc identity;
+- preserved source identity;
+- localization source and target coverage;
+- generated/runtime currentness;
+- provider-shell / header / modernization facts;
+- browser and rendered proof semantics.
+
+VexWork should consume or reference those truths through a reusable work lens.
+
+A useful console should be able to descend:
+
+```text
+VexSite Localization
+-> Conversations with God
+-> 19 relevant pages
+-> complete / incomplete / unknown
+-> incomplete by source / locale / runtime / lived proof / modernization reason
+-> exact page
+-> current evidence
+-> existing foreground Work item, if one exists
+```
+
+without creating 19 page Work items merely for visibility.
+
+The first dogfood completion claim is not "every VexSite page is translated forever." It is:
+
+> the reusable projection can truthfully answer "what remains?" from current Vextreme evidence and can coexist with real promoted work such as the God Spark / Clarity dual-lineage work.
+
+## Phase 3 — Operating Domain template
+
+After the VexSite lens proves the population model, generalize the abstraction so a domain may describe:
+
+```text
+Capabilities
+  what this environment can do
+
+Populations
+  what kinds of entities exist
+
+Attention Queues
+  events/exceptions requiring action
+
+Processes
+  reusable routes for handling recurring situations
+
+Lenses
+  ways to derive completion/health/attention from current evidence
+```
+
+This is the bridge from observability to work management:
+
+```text
+observability
+  "what is true?"
+
+VexWork
+  "what are we doing?"
+
+Operational Console
+  "given what is true, what work-shaped attention exists?"
+  without prematurely converting all of it into Workgraph work
+```
+
+## Phase 4 — reusable commerce starter
+
+Commerce is the second domain because it pressures both population-driven and event-driven work.
+
+The reusable commerce starter should be able to express, without VexWork owning commerce records:
+
+```text
+Capabilities
+  catalog
+  storefront
+  sale/order intake
+  inventory state
+  fulfillment attention
+
+Populations
+  sellable items
+  listings
+  sales/orders
+  shipments/fulfillment records
+
+Processes
+  add item
+  enrich item
+  publish/update listing
+  mark/observe sold
+  prepare fulfillment
+  acknowledge physical shipment
+
+Lenses
+  listing readiness
+  catalog completeness
+  inventory integrity
+  fulfillment attention
+```
+
+### Item model pressure
+
+The starter must not make every possible commerce field mandatory.
+
+A minimally useful item identity may exist while richer fields remain optional.
+
+Examples of optional domain fields include:
+
+```text
+image(s)
+description
+condition
+dimensions
+maker / provenance notes
+price
+listing URL
+sold-at date
+expected shipment date
+fulfillment evidence
+```
+
+The generic framework should distinguish required identity/lifecycle fields from optional domain data.
+
+### AI-managed site surface
+
+The starter should prove that an AI can help build and maintain a simple public site through the environment rather than requiring the human to become a developer.
+
+The human should be able to do something like:
+
+```text
+add this plate
+-> supply / capture pictures
+-> add or revise the details that are actually known
+-> AI updates the managed catalog/site
+-> VexWork can explain where the item is and what remains
+```
+
+The site may be generated or updated by a rightful site/storefront owner. VexWork remains the work console and routing owner, not the website/content database by implication.
+
+## Phase 5 — Antique Plate commerce pilot
+
+The first lived commerce pilot should begin with a deliberately small real business situation:
+
+> A nontechnical human has antique plates and wants to sell them online.
+
+Initial reality may be:
+
+```text
+physical items              PRESENT
+website                     ABSENT
+catalog                     ABSENT
+inventory management        ABSENT
+listing workflow            ABSENT
+fulfillment workflow        ABSENT
+AI-readable operating map   ABSENT
+```
+
+The pilot should establish only what is required to reach one truthful end-to-end sale/fulfillment cycle.
+
+### Lived completion path
+
+```text
+form the operating environment
+-> establish the managed public site/storefront surface
+-> add one real item
+-> attach/use one or more real pictures
+-> add/edit the known item details
+-> publish the item
+-> observe or record that the item sold
+-> inventory/listing state reflects SOLD
+-> fulfillment attention appears
+-> optionally record expected shipment date
+-> human receives the exact physical-action notice
+-> human performs the physical shipment / post-office handoff
+-> human supplies bounded acknowledgement evidence such as a receipt/photo
+-> fulfillment is acknowledged complete
+-> the promoted Work item / attention is closed truthfully
+```
+
+The first pilot does **not** need to solve every commerce problem.
+
+Payment provider selection, tax/accounting, private customer-data custody, carrier integration and other protected business concerns remain with their rightful providers/processes and are only brought into scope when required by the chosen lived route.
+
+Shipping addresses or other customer-private data must not be copied into public VexWork source merely to make the console useful.
+
+## Human fulfillment boundary
+
+The terminal pilot deliberately includes a physical human action.
+
+The console should be able to make the action simple:
+
+```text
+what item / order needs fulfillment
+what provider/private reference owns the shipping destination
+what physical action is required
+optional expected shipment date
+what evidence/acknowledgement closes the attention
+```
+
+A human may acknowledge completion with a bounded artifact such as a receipt or photo when the selected process uses that evidence.
+
+VexWork should preserve the work/evidence relationship without pretending it physically shipped the object.
+
+## Held expansion — multiple fulfillers / local delivery routing
+
+A later pressure may involve multiple people fulfilling or delivering items and needing:
+
+- assignment;
+- nearby-route grouping;
+- delivery sequencing;
+- worker acknowledgement;
+- route/provider integration.
+
+That is intentionally **not** required for the first commerce pilot.
+
+It is preserved as a parked potential until real use earns a routing/dispatch abstraction.
+
+## Cross-domain completion
+
+This Project is not complete merely because a VexSite-specific dashboard exists or one antique page can be published.
+
+The evolution earns its cross-domain completion when the same underlying VexWork abstraction can demonstrate:
+
+1. one large existing repository-owned population (VexSite);
+2. one newly formed operating environment (commerce);
+3. more than one lens over an entity population without identity duplication;
+4. derived attention without task explosion;
+5. explicit promotion from derived concern into canonical Work when needed;
+6. current evidence changes projection without manual ticket closure;
+7. historical Work completion remains distinct from future entity regression;
+8. aggregate -> scope -> entity -> Work/evidence descent is human-readable;
+9. no domain/provider record silently becomes canonical VexWork WorkState;
+10. one lived commerce cycle reaches a truthful human physical-fulfillment acknowledgement.
+
+At that point VexWork has demonstrated that it is no longer only a Jira/kanban-shaped work board. It is a reusable console for perceiving, selecting, navigating and carrying different classes of work.
+
+## Current trajectory
+
+```text
+P1  Derived-work projection foundation                    READY
+P2  VexSite Localization patient-zero dogfood             WAITING_DEPENDENCIES
+P3  Operating Domain template                             WAITING_DEPENDENCIES
+P4  Commerce starter template                             WAITING_DEPENDENCIES
+P5  Antique Plate lived commerce pilot                    WAITING_DEPENDENCIES
+P6  Cross-domain completion                               WAITING_DEPENDENCIES
+
+PARKED
+  multi-person / nearby-route fulfillment optimization
+```
+
+Do not create per-page VexWork tasks for P2 or per-item VexWork tasks for P5 merely to populate a board.
+
+## Fresh-instance entry
+
+A fresh worker should normally descend:
+
+```text
+VexWork
+-> project.vexwork.operational-console
+-> this README
+-> current READY / RUNNING child
+-> exact foundation source/tests implicated by that child
+-> target repository/provider only when its facts/effects become material
+```
+
+The Project is the durable trajectory map. It is not permission to skip target-repository culture, provider authority, protected human actions, privacy boundaries, or lived proof.
+
+<!-- [VXG RealForever][VEXWORK][OPERATIONAL-CONSOLE][TRAJECTORY] -->
