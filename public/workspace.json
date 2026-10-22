@@ -3467,7 +3467,7 @@
           "label": "Relational Terrain patient-zero",
           "purpose": "Prove one VexWork-owned Terrain experience with arbitrary-depth semantic traversal, typed containment/dependency/project portals, structural path distinct from traversal path, cycle-safe route planning, serialized idempotent commands, bounded Journey/revisit semantics, nested-scroll arbitration and responsive presentation over the read-only public workspace.",
           "workClass": "TASK",
-          "state": "RUNNING",
+          "state": "VERIFYING",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vexwork.operational-console.relational-terrain",
@@ -3491,8 +3491,21 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-22T05:32:34.019Z",
-          "updatedAt": "2026-10-22T05:32:34.019Z",
-          "transitionHistory": []
+          "updatedAt": "2026-10-22T06:31:52.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexwork.operational-console.relational-terrain.patient-zero.verifying.pr33-accepted",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "PR #33 merged the relational Terrain traversal kernel, experimental Terrain page and focused traversal proof into accepted VexWork main; lived browser, trackpad and compact/mobile verification remain.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vexwork.33",
+                "github.commit.vexwork.2427b52996134510eaabfc5e208b0853d688845f"
+              ],
+              "createdAt": "2026-10-22T06:31:52.000Z"
+            }
+          ]
         },
         {
           "workRef": "work.vexwork.operational-console.relational-terrain.temporal-currentness",
@@ -3715,8 +3728,7 @@
           "label": "Active",
           "workRefs": [
             "work.vexwork.operational-console.outcome",
-            "work.vexwork.operational-console.relational-terrain",
-            "work.vexwork.operational-console.relational-terrain.patient-zero"
+            "work.vexwork.operational-console.relational-terrain"
           ]
         },
         {
@@ -3732,7 +3744,9 @@
         {
           "laneRef": "lane.work.verify",
           "label": "Verify",
-          "workRefs": []
+          "workRefs": [
+            "work.vexwork.operational-console.relational-terrain.patient-zero"
+          ]
         },
         {
           "laneRef": "lane.work.attention",
