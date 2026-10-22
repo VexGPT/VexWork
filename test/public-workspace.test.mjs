@@ -62,6 +62,17 @@ test('public workspace preserves recursive containment and Jira-like detail fiel
   assert.equal(p5.state, 'RUNNING');
   assert.equal(p5G02.state, 'READY');
   assert.deepEqual(p5.childWorkRefs, ['work.vexlife.tocompletion.p5.g02-semantic-authority-materializer']);
+  const connected = workspace.projects.find((entry) => entry.project.projectRef === 'project.vexlife.connected-services');
+  assert.ok(connected);
+  assert.equal(connected.summary.workItemCount, 19);
+  const phase3 = connected.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs04.phase3-fresh-user-family');
+  const lived = connected.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs04.phase3.host-to-android-l1-l5');
+  const defect = connected.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs04.phase3.owner-only-family-readability');
+  assert.equal(phase3.state, 'RUNNING');
+  assert.equal(defect.state, 'COMPLETED');
+  assert.equal(lived.state, 'READY');
+  assert.deepEqual(lived.dependencyRefs, [defect.workRef]);
+  assert.equal(connected.lanes.find((lane) => lane.laneRef === 'lane.work.ready').workRefs.includes(lived.workRef), true);
 });
 
 test('public workspace board lanes reference the same canonical projected items', () => {

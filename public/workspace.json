@@ -1,7 +1,7 @@
 {
   "schemaVersion": "vexwork.public-workspace/v1",
   "projectRegistryRef": "registry.vexwork.projects.001",
-  "projectRegistryVersion": 3,
+  "projectRegistryVersion": 4,
   "projects": [
     {
       "project": {
@@ -1624,6 +1624,888 @@
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-22T00:13:43.000Z",
           "updatedAt": "2026-10-22T01:08:02.000Z",
+          "transitionHistory": []
+        }
+      ]
+    },
+    {
+      "project": {
+        "projectRef": "project.vexlife.connected-services",
+        "label": "VexLife Connected Services",
+        "purpose": "Make VexLife capabilities privately and lawfully reachable across devices and Vex Home through one shared connection/session substrate while each feature keeps its rightful semantic owner.",
+        "rootWorkRefs": [
+          "work.vexlife.connected-services.outcome"
+        ],
+        "repositoryRefs": [
+          "repo.vexwork",
+          "repo.vexlife",
+          "repo.vexlife-android"
+        ],
+        "sourceRefs": [
+          "projects/vexlife-connected-services/README.md",
+          "docs/lineage/VEXLIFE-CONNECTED-SERVICES.md",
+          "github.issue.vexlife.899",
+          "docs/process/FORM-PROJECT.md"
+        ],
+        "formedAt": "2026-10-21T23:56:41.000Z"
+      },
+      "graphRef": "workgraph.vexwork.foundation",
+      "viewRef": "view.vexlife.connected-services.board",
+      "items": [
+        {
+          "workRef": "work.vexlife.connected-services.guided-onboarding",
+          "label": "Simplify Connected Services onboarding across computer + phone",
+          "purpose": "Preserve the lived need for one guided setup path that checks Tailscale readiness across computer and phone, asks for protected human-only steps at the right moment, then returns to VexLife pairing/private-route setup without weakening Home, session, reachability, or pairing authority boundaries.",
+          "workClass": "POTENTIAL",
+          "state": "CAPTURED",
+          "workDisposition": "PARKED",
+          "priorityClass": "LOW",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexlife",
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "github.issue.vexwork.6",
+            "github.issue.vexlife.899",
+            "docs/process/CAPTURE-DISCOVERED-WORK.md"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-21T06:23:27.000Z",
+          "updatedAt": "2026-10-21T06:23:27.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.connected-services.outcome",
+          "label": "Establish VexLife Connected Services",
+          "purpose": "Establish the reusable private connection/session boundary through which VexLife capabilities can reach Home-hosted semantics while feature meaning, Home authority, providers and deployment remain separately owned.",
+          "workClass": "OUTCOME",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vexlife.connected-services.vcs00-maps-home-admission",
+            "work.vexlife.connected-services.vcs01-consumer-comparison",
+            "work.vexlife.connected-services.vcs02-shared-contract",
+            "work.vexlife.connected-services.vcs03-maps-engine",
+            "work.vexlife.connected-services.vcs04-conversation-adoption",
+            "work.vexlife.connected-services.vcs05-stream-stress",
+            "work.vexlife.connected-services.vcs06-architecture-extraction",
+            "work.vexlife.connected-services.vcs07-deployment-choices"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife",
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "docs/lineage/VEXLIFE-CONNECTED-SERVICES.md",
+            "github.issue.vexlife.899"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-21T23:56:41.000Z",
+          "updatedAt": "2026-10-21T23:56:41.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.connected-services.vcs00-maps-home-admission",
+          "label": "VCS-00 — Maps Home-routed admission",
+          "purpose": "Preserve the completed Maps C1 practicum that first proved Home-routed capability admission without moving feature semantics into transport.",
+          "workClass": "OUTCOME",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.connected-services.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexlife"
+          ],
+          "sourceRefs": [
+            "docs/lineage/VEXLIFE-CONNECTED-SERVICES.md",
+            "github.issue.vexlife.899"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-21T23:56:41.000Z",
+          "updatedAt": "2026-10-21T23:56:41.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.connected-services.vcs01-consumer-comparison",
+          "label": "VCS-01 — three-consumer comparison",
+          "purpose": "Preserve the completed comparison of Maps, Conversation and VexStream that separated genuinely shared connection concerns from feature-specific semantics.",
+          "workClass": "OUTCOME",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.connected-services.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.connected-services.vcs00-maps-home-admission"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife",
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "docs/lineage/VEXLIFE-CONNECTED-SERVICES.md",
+            "github.issue.vexlife.899"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-21T23:56:41.000Z",
+          "updatedAt": "2026-10-21T23:56:41.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.connected-services.vcs02-shared-contract",
+          "label": "VCS-02 — minimum shared Connected Services contract",
+          "purpose": "Preserve the completed minimum shared contract for authentication/session binding, reachability, capability addressing, currentness and bounded failure without a generic API manager.",
+          "workClass": "OUTCOME",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.connected-services.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.connected-services.vcs01-consumer-comparison"
+          ],
+          "repositoryRefs": [
+            "repo.vexlife"
+          ],
+          "sourceRefs": [
+            "docs/lineage/VEXLIFE-CONNECTED-SERVICES.md",
+            "github.issue.vexlife.899"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-21T23:56:41.000Z",
+          "updatedAt": "2026-10-21T23:56:41.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.connected-services.vcs03-maps-engine",
+          "label": "VCS-03 — Maps engine realization",
+          "purpose": "Preserve the completed Maps engine practicum that exercised the shared boundary against a real provider adapter while provider semantics remained replaceable.",
+          "workClass": "OUTCOME",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.connected-services.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.connected-services.vcs02-shared-contract"
+          ],
+          "repositoryRefs": [
+            "repo.vexlife"
+          ],
+          "sourceRefs": [
+            "docs/lineage/VEXLIFE-CONNECTED-SERVICES.md",
+            "github.issue.vexlife.899"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-21T23:56:41.000Z",
+          "updatedAt": "2026-10-21T23:56:41.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.connected-services.vcs04-conversation-adoption",
+          "label": "VCS-04 — Conversation adoption",
+          "purpose": "Complete the lived Android Conversation path through private device possession, bounded remote session, current Family authority, durable read/Send/Companion behavior and restart without duplicates.",
+          "workClass": "OUTCOME",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": "work.vexlife.connected-services.outcome",
+          "childWorkRefs": [
+            "work.vexlife.connected-services.vcs04.phase1-prechallenge",
+            "work.vexlife.connected-services.vcs04.phase2-fixture-l1-l5",
+            "work.vexlife.connected-services.vcs04.phase3-fresh-user-family",
+            "work.vexlife.connected-services.vcs04.phase4-send-companion",
+            "work.vexlife.connected-services.vcs04.phase5-restart-no-duplicates",
+            "work.vexlife.connected-services.vcs04.phase6-terminal-currentness"
+          ],
+          "dependencyRefs": [
+            "work.vexlife.connected-services.vcs03-maps-engine"
+          ],
+          "repositoryRefs": [
+            "repo.vexlife",
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "docs/lineage/VEXLIFE-CONNECTED-SERVICES.md",
+            "github.issue.vexlife.899"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-21T23:56:41.000Z",
+          "updatedAt": "2026-10-21T23:56:41.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.connected-services.vcs04.phase1-prechallenge",
+          "label": "Phase 1 — pre-challenge transport discrimination",
+          "purpose": "Preserve the completed pre-challenge discrimination result: accepted Android diagnostics identified the former session-challenge timeout, Shields Up was found and cleared, private tailnet/Serve TCP was proven bidirectionally, and temporary network effects were closed.",
+          "workClass": "OUTCOME",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": "work.vexlife.connected-services.vcs04-conversation-adoption",
+          "childWorkRefs": [
+            "work.vexlife.connected-services.vcs04.phase1.android-observability-source",
+            "work.vexlife.connected-services.vcs04.phase1.private-serve-ingress"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexlife",
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "docs/lineage/VEXLIFE-CONNECTED-SERVICES.md",
+            "github.pull.vexlife-android.152",
+            "github.issue.vexlife.899.comment.6330027250"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-21T23:56:41.000Z",
+          "updatedAt": "2026-10-21T23:56:41.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexlife.connected-services.vcs04.phase1.verifying.network-discrimination",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "Android diagnostics plus A013-A016 separated the generic private-network seam and corrected the Shields Up prerequisite.",
+              "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.issue.vexlife.899.comment.6329946967"
+              ],
+              "createdAt": "2026-10-22T00:54:57.923Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.connected-services.vcs04.phase1.completed.a017",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "A017 closed the last temporary Serve cleanup debt; Phase 1 ended with accepted observability and proven private connectivity.",
+              "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.issue.vexlife.899.comment.6330027250"
+              ],
+              "createdAt": "2026-10-22T00:54:57.924Z"
+            }
+          ]
+        },
+        {
+          "workRef": "work.vexlife.connected-services.vcs04.phase1.android-observability-source",
+          "label": "Accepted Android pre-challenge observability",
+          "purpose": "Preserve accepted Android diagnostics that distinguish DNS, route/connect, TLS, timeout, HTTP and local-contract failures while preserving authenticated 401 session invalidation.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": "work.vexlife.connected-services.vcs04.phase1-prechallenge",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "github.pull.vexlife-android.152",
+            "github.commit.vexlife-android.28bef968e53ebd6cf066cab89c2b8b849f5ba3e3"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-21T23:56:41.000Z",
+          "updatedAt": "2026-10-21T23:56:41.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.connected-services.vcs04.phase1.private-serve-ingress",
+          "label": "Clear Android-to-Mac private Serve ingress",
+          "purpose": "Preserve the proven bidirectional private tailnet/Serve path: route-selected Android peer, Mac-to-Android DISCO/TSMP/ICMP, Android-to-Mac ICMP and private Serve TCP by Tailscale IPv4 and MagicDNS, with temporary Serve cleanup closed.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": "work.vexlife.connected-services.vcs04.phase1-prechallenge",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.connected-services.vcs04.phase1.android-observability-source"
+          ],
+          "repositoryRefs": [
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "github.issue.vexlife.899.comment.6329946967",
+            "github.issue.vexlife.899.comment.6330027250"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-21T23:56:41.000Z",
+          "updatedAt": "2026-10-22T00:54:57.922Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexlife.connected-services.vcs04.phase1.private-serve-ingress.verifying.a016-proof",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "A016 proved route-selected peer identity and bidirectional private tailnet/Serve TCP; only exact temporary Serve cleanup remained.",
+              "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.issue.vexlife.899.comment.6329946967"
+              ],
+              "createdAt": "2026-10-22T00:54:57.921Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.connected-services.vcs04.phase1.private-serve-ingress.completed.a017",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "A017 observed the A016-owned port-10000 private Serve mapping already absent and reverified clean private-only state.",
+              "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.issue.vexlife.899.comment.6330027250"
+              ],
+              "createdAt": "2026-10-22T00:54:57.922Z"
+            }
+          ]
+        },
+        {
+          "workRef": "work.vexlife.connected-services.vcs04.phase2-fixture-l1-l5",
+          "label": "Phase 2 — deterministic-fixture L1-L5",
+          "purpose": "Preserve the completed A018/A019 installed deterministic-fixture proof that L1 possession, L2 remote session, L3 private gateway, L4 bounded current Home/Family authority and L5 canonical Conversation history read all succeeded with cleanup closed.",
+          "workClass": "OUTCOME",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.connected-services.vcs04-conversation-adoption",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.connected-services.vcs04.phase1-prechallenge"
+          ],
+          "repositoryRefs": [
+            "repo.vexlife",
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "docs/lineage/VEXLIFE-CONNECTED-SERVICES.md",
+            "github.issue.vexlife.899.comment.6330169106",
+            "github.issue.vexlife.899.comment.6330469773"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-21T23:56:41.000Z",
+          "updatedAt": "2026-10-22T01:28:59.657Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexlife.connected-services.vcs04.phase2.ready.after-phase1",
+              "priorState": "WAITING_DEPENDENCIES",
+              "nextState": "READY",
+              "reason": "Phase 1 completed with private network/Serve reachability proven and cleanup closed.",
+              "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.issue.vexlife.899.comment.6330027250"
+              ],
+              "createdAt": "2026-10-22T00:54:57.925Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.connected-services.vcs04.phase2.running.a018",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "A018 entered the installed deterministic-fixture L1-L5 product proof on current source.",
+              "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.issue.vexlife.899.comment.6330169106"
+              ],
+              "createdAt": "2026-10-22T01:04:32.545Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.connected-services.vcs04.phase2.verifying.a018-l1-l5",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "A018 proved installed L1-L5; exact temporary private Serve cleanup remained the only harness debt.",
+              "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.issue.vexlife.899.comment.6330169106"
+              ],
+              "createdAt": "2026-10-22T01:05:42.781Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.connected-services.vcs04.phase2.completed.a019-cleanup",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "A019 re-observed A018's temporary port-10000 mapping absent and closed the final Phase-2 cleanup obligation.",
+              "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.issue.vexlife.899.comment.6330469773"
+              ],
+              "createdAt": "2026-10-22T01:28:59.657Z"
+            }
+          ]
+        },
+        {
+          "workRef": "work.vexlife.connected-services.vcs04.phase3-fresh-user-family",
+          "label": "Phase 3 — fresh-user Family establishment",
+          "purpose": "Prove the real fresh-user path through the accepted browser HOST lifecycle owner: canonical Family Space and initial owner-only GROUP, followed by installed Android bootstrap/read without proof-fixture room creation; Phase-4 Send/model effects remain held.",
+          "workClass": "OUTCOME",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.connected-services.vcs04-conversation-adoption",
+          "childWorkRefs": [
+            "work.vexlife.connected-services.vcs04.phase3.host-to-android-l1-l5",
+            "work.vexlife.connected-services.vcs04.phase3.owner-only-family-readability"
+          ],
+          "dependencyRefs": [
+            "work.vexlife.connected-services.vcs04.phase2-fixture-l1-l5"
+          ],
+          "repositoryRefs": [
+            "repo.vexlife",
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "docs/lineage/VEXLIFE-CONNECTED-SERVICES.md",
+            "github.issue.vexlife.899",
+            "github.pull.vexlife.917",
+            "github.commit.vexlife.b33765aada1f4a70d4cae253d196411b23b9cded"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-21T23:56:41.000Z",
+          "updatedAt": "2026-10-22T01:58:34.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexlife.connected-services.vcs04.phase3.ready.after-phase2",
+              "priorState": "WAITING_DEPENDENCIES",
+              "nextState": "READY",
+              "reason": "Deterministic-fixture installed L1-L5 completed with cleanup closed, releasing fresh-user Family establishment.",
+              "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.issue.vexlife.899.comment.6330469773"
+              ],
+              "createdAt": "2026-10-22T01:28:59.658Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.connected-services.vcs04.phase3.running.pr917",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "Phase 3 grounded the accepted browser HOST owner and identified the owner-only GROUP visibility defect corrected by PR #917.",
+              "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vexlife.917"
+              ],
+              "createdAt": "2026-10-22T01:33:58.000Z"
+            }
+          ]
+        },
+        {
+          "workRef": "work.vexlife.connected-services.vcs04.phase3.host-to-android-l1-l5",
+          "label": "Fresh HOST → installed Android L1-L5",
+          "purpose": "Execute the current product establishment path without proof-fixture room creation: fresh authenticated Home -> real Family HOST lifecycle -> hostFamily-owned canonical Family Space/initial owner-only GROUP -> installed Android bootstrap/read -> exact cleanup, while Send/model/restart remain held.",
+          "workClass": "TASK",
+          "state": "READY",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": "work.vexlife.connected-services.vcs04.phase3-fresh-user-family",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.connected-services.vcs04.phase3.owner-only-family-readability"
+          ],
+          "repositoryRefs": [
+            "repo.vexlife",
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-connected-services/README.md",
+            "docs/lineage/VEXLIFE-CONNECTED-SERVICES.md",
+            "github.pull.vexlife.917",
+            "github.action-run.vexlife.39708257381"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T01:58:34.000Z",
+          "updatedAt": "2026-10-22T01:58:34.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.connected-services.vcs04.phase3.owner-only-family-readability",
+          "label": "Fresh hosted owner-only Family is hidden from bootstrap/read",
+          "purpose": "Preserve the completed PR #917 correction that makes a canonical fresh owner-only GROUP bootstrap/read/thread-history visible while PRIVATE still requires two humans and owner-only APPEND remains denied.",
+          "workClass": "DEFECT",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": "work.vexlife.connected-services.vcs04.phase3-fresh-user-family",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexlife"
+          ],
+          "sourceRefs": [
+            "github.pull.vexlife.917",
+            "github.commit.vexlife.b33765aada1f4a70d4cae253d196411b23b9cded",
+            "github.action-run.vexlife.39708257381"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T01:33:58.000Z",
+          "updatedAt": "2026-10-22T01:58:34.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexlife.connected-services.vcs04.phase3.owner-only-family-readability.verifying.merge917",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "PR #917 merged at the exact reviewed tree with all candidate blobs byte-identical on accepted main; normal main validation remained.",
+              "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.commit.vexlife.b33765aada1f4a70d4cae253d196411b23b9cded"
+              ],
+              "createdAt": "2026-10-22T01:54:00.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.connected-services.vcs04.phase3.owner-only-family-readability.completed.main-foundation",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "VexLife accepted-main Foundation run 39708257381 completed successfully on merge commit b33765a; the source defect is accepted/current and lived Phase-3 proof is now the next edge.",
+              "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.action-run.vexlife.39708257381",
+                "github.commit.vexlife.b33765aada1f4a70d4cae253d196411b23b9cded"
+              ],
+              "createdAt": "2026-10-22T01:58:34.000Z"
+            }
+          ]
+        },
+        {
+          "workRef": "work.vexlife.connected-services.vcs04.phase4-send-companion",
+          "label": "Phase 4 — durable Send and separate Companion",
+          "purpose": "Prove one durable human Send exactly once, then a separately admitted Companion/model response whose failure cannot erase the human append.",
+          "workClass": "OUTCOME",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.connected-services.vcs04-conversation-adoption",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.connected-services.vcs04.phase3-fresh-user-family"
+          ],
+          "repositoryRefs": [
+            "repo.vexlife",
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "docs/lineage/VEXLIFE-CONNECTED-SERVICES.md",
+            "github.issue.vexlife.899"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-21T23:56:41.000Z",
+          "updatedAt": "2026-10-21T23:56:41.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.connected-services.vcs04.phase5-restart-no-duplicates",
+          "label": "Phase 5 — restart and no duplicates",
+          "purpose": "Prove same-session observation, a real Android process restart, and absence of duplicate human append or model replay.",
+          "workClass": "OUTCOME",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.connected-services.vcs04-conversation-adoption",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.connected-services.vcs04.phase4-send-companion"
+          ],
+          "repositoryRefs": [
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "docs/lineage/VEXLIFE-CONNECTED-SERVICES.md",
+            "github.issue.vexlife.899"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-21T23:56:41.000Z",
+          "updatedAt": "2026-10-21T23:56:41.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.connected-services.vcs04.phase6-terminal-currentness",
+          "label": "Phase 6 — VCS-04 terminal currentness",
+          "purpose": "Re-ground current source/lifecycle evidence only after the lived predicates are complete and close the VCS-04 acceptance contract without confusing it with parent-program terminality.",
+          "workClass": "OUTCOME",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vexlife.connected-services.vcs04-conversation-adoption",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.connected-services.vcs04.phase5-restart-no-duplicates"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife",
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "docs/lineage/VEXLIFE-CONNECTED-SERVICES.md",
+            "github.issue.vexlife.899"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-21T23:56:41.000Z",
+          "updatedAt": "2026-10-21T23:56:41.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.connected-services.vcs05-stream-stress",
+          "label": "VCS-05 — VexStream adoption / streaming stress",
+          "purpose": "Stress the accepted request/response Connected Services boundary against long-lived media delivery, range, throughput, reconnect and backpressure pressure before any streaming extension is generalized.",
+          "workClass": "OUTCOME",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.connected-services.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.connected-services.vcs04-conversation-adoption"
+          ],
+          "repositoryRefs": [
+            "repo.vexlife",
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "docs/lineage/VEXLIFE-CONNECTED-SERVICES.md",
+            "github.issue.vexlife.899"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-21T23:56:41.000Z",
+          "updatedAt": "2026-10-21T23:56:41.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.connected-services.vcs06-architecture-extraction",
+          "label": "VCS-06 — VexArchitecture extraction",
+          "purpose": "Extract only the recurring Connected Services architecture earned by multiple real consumers, preserving questions, ownership and proof obligations rather than copying one implementation.",
+          "workClass": "OUTCOME",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vexlife.connected-services.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.connected-services.vcs05-stream-stress"
+          ],
+          "repositoryRefs": [
+            "repo.vexlife"
+          ],
+          "sourceRefs": [
+            "docs/lineage/VEXLIFE-CONNECTED-SERVICES.md",
+            "github.issue.vexlife.899"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-21T23:56:41.000Z",
+          "updatedAt": "2026-10-21T23:56:41.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.connected-services.vcs07-deployment-choices",
+          "label": "VCS-07 — deployment choices",
+          "purpose": "Make deployment realization choices only after the runtime boundary is stable, keeping same-machine, owned-host and future managed deployment separate from semantic ownership.",
+          "workClass": "OUTCOME",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vexlife.connected-services.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.connected-services.vcs06-architecture-extraction"
+          ],
+          "repositoryRefs": [
+            "repo.vexlife"
+          ],
+          "sourceRefs": [
+            "docs/lineage/VEXLIFE-CONNECTED-SERVICES.md",
+            "github.issue.vexlife.899"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-21T23:56:41.000Z",
+          "updatedAt": "2026-10-21T23:56:41.000Z",
+          "transitionHistory": []
+        }
+      ],
+      "lanes": [
+        {
+          "laneRef": "lane.work.intake",
+          "label": "Intake",
+          "workRefs": [
+            "work.vexlife.connected-services.guided-onboarding"
+          ]
+        },
+        {
+          "laneRef": "lane.work.planned",
+          "label": "Planned",
+          "workRefs": [
+            "work.vexlife.connected-services.vcs04.phase4-send-companion",
+            "work.vexlife.connected-services.vcs04.phase5-restart-no-duplicates",
+            "work.vexlife.connected-services.vcs05-stream-stress",
+            "work.vexlife.connected-services.vcs04.phase6-terminal-currentness",
+            "work.vexlife.connected-services.vcs06-architecture-extraction",
+            "work.vexlife.connected-services.vcs07-deployment-choices"
+          ]
+        },
+        {
+          "laneRef": "lane.work.ready",
+          "label": "Ready",
+          "workRefs": [
+            "work.vexlife.connected-services.vcs04.phase3.host-to-android-l1-l5"
+          ]
+        },
+        {
+          "laneRef": "lane.work.active",
+          "label": "Active",
+          "workRefs": [
+            "work.vexlife.connected-services.outcome",
+            "work.vexlife.connected-services.vcs04-conversation-adoption",
+            "work.vexlife.connected-services.vcs04.phase3-fresh-user-family"
+          ]
+        },
+        {
+          "laneRef": "lane.work.waiting",
+          "label": "Waiting",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.needs-human",
+          "label": "Needs Human",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.verify",
+          "label": "Verify",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.attention",
+          "label": "Attention",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.done",
+          "label": "Done",
+          "workRefs": [
+            "work.vexlife.connected-services.vcs04.phase1-prechallenge",
+            "work.vexlife.connected-services.vcs04.phase1.android-observability-source",
+            "work.vexlife.connected-services.vcs04.phase1.private-serve-ingress",
+            "work.vexlife.connected-services.vcs04.phase3.owner-only-family-readability",
+            "work.vexlife.connected-services.vcs00-maps-home-admission",
+            "work.vexlife.connected-services.vcs01-consumer-comparison",
+            "work.vexlife.connected-services.vcs02-shared-contract",
+            "work.vexlife.connected-services.vcs03-maps-engine",
+            "work.vexlife.connected-services.vcs04.phase2-fixture-l1-l5"
+          ]
+        },
+        {
+          "laneRef": "lane.work.archive",
+          "label": "Archive",
+          "workRefs": []
+        }
+      ],
+      "summary": {
+        "workItemCount": 20,
+        "openWorkItemCount": 11,
+        "outcomeCount": 15,
+        "taskCount": 3,
+        "defectCount": 1,
+        "potentialCount": 1,
+        "needsHumanCount": 0,
+        "completedCount": 9
+      },
+      "rootItems": [
+        {
+          "workRef": "work.vexlife.connected-services.outcome",
+          "label": "Establish VexLife Connected Services",
+          "purpose": "Establish the reusable private connection/session boundary through which VexLife capabilities can reach Home-hosted semantics while feature meaning, Home authority, providers and deployment remain separately owned.",
+          "workClass": "OUTCOME",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vexlife.connected-services.vcs00-maps-home-admission",
+            "work.vexlife.connected-services.vcs01-consumer-comparison",
+            "work.vexlife.connected-services.vcs02-shared-contract",
+            "work.vexlife.connected-services.vcs03-maps-engine",
+            "work.vexlife.connected-services.vcs04-conversation-adoption",
+            "work.vexlife.connected-services.vcs05-stream-stress",
+            "work.vexlife.connected-services.vcs06-architecture-extraction",
+            "work.vexlife.connected-services.vcs07-deployment-choices"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife",
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "docs/lineage/VEXLIFE-CONNECTED-SERVICES.md",
+            "github.issue.vexlife.899"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-21T23:56:41.000Z",
+          "updatedAt": "2026-10-21T23:56:41.000Z",
           "transitionHistory": []
         }
       ]

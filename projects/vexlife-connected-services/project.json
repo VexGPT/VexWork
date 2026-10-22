@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.vexlife.connected-services",
+  "label": "VexLife Connected Services",
+  "purpose": "Make VexLife capabilities privately and lawfully reachable across devices and Vex Home through one shared connection/session substrate while each feature keeps its rightful semantic owner.",
+  "rootWorkRefs": [
+    "work.vexlife.connected-services.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vexlife",
+    "repo.vexlife-android"
+  ],
+  "sourceRefs": [
+    "projects/vexlife-connected-services/README.md",
+    "docs/lineage/VEXLIFE-CONNECTED-SERVICES.md",
+    "github.issue.vexlife.899",
+    "docs/process/FORM-PROJECT.md"
+  ],
+  "formedAt": "2026-10-21T23:56:41.000Z"
+}
