@@ -12,34 +12,6 @@
   "items": [
     {
       "schemaVersion": "vexwork.work-item/v1",
-      "workRef": "work.vexlife-android.vexstream.not-yet-downloaded-filter",
-      "parentWorkRefOrNull": null,
-      "label": "VexStream Songs filter for Not yet downloaded",
-      "purpose": "Preserve the nice-to-have Songs-level filter that answers which songs on this device are still not downloaded, without making it part of MassDownload completion or authorizing implementation.",
-      "workClass": "POTENTIAL",
-      "state": "CAPTURED",
-      "workDisposition": "PARKED",
-      "priorityClass": "LOW",
-      "dependencyRefs": [],
-      "repositoryRefs": [
-        "repo.vexlife-android"
-      ],
-      "sourceRefs": [
-        "github.issue.vexlife-android.144",
-        "github.pull.vexlife-android.142",
-        "docs/process/CAPTURE-DISCOVERED-WORK.md"
-      ],
-      "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
-      "nextProcessRefs": [
-        "process.vexlife-android.feature-authoring"
-      ],
-      "authorityDisposition": "NO_AUTHORITY",
-      "effectDisposition": "NO_EFFECTS",
-      "createdAt": "2026-10-21T01:18:35.000Z",
-      "updatedAt": "2026-10-21T01:18:35.000Z"
-    },
-    {
-      "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vexwork.foundation.outcome",
       "parentWorkRefOrNull": null,
       "label": "Establish VexWork foundation",
@@ -203,30 +175,31 @@
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
-      "workRef": "work.vexwork.history.foundational-infrastructure-backfill",
-      "parentWorkRefOrNull": "work.vexwork.foundation.outcome",
-      "label": "Foundational Infrastructure history backfill",
-      "purpose": "Gradually reconstruct completed foundational work into VexWork with provenance so future humans and instances can perceive what was built from a dashboard instead of rediscovering it across repositories and chat history.",
+      "workRef": "work.vexlife-android.vexstream.not-yet-downloaded-filter",
+      "parentWorkRefOrNull": null,
+      "label": "VexStream Songs filter for Not yet downloaded",
+      "purpose": "Preserve the nice-to-have Songs-level filter that answers which songs on this device are still not downloaded, without making it part of MassDownload completion or authorizing implementation.",
       "workClass": "POTENTIAL",
       "state": "CAPTURED",
+      "workDisposition": "PARKED",
       "priorityClass": "LOW",
-      "dependencyRefs": [
-        "work.vexwork.visibility.public-dashboard"
-      ],
+      "dependencyRefs": [],
       "repositoryRefs": [
-        "repo.vexwork"
+        "repo.vexlife-android"
       ],
       "sourceRefs": [
-        "public/work-dashboard.json",
-        "docs/lineage/VEXLIFE-P0B.md"
+        "github.issue.vexlife-android.144",
+        "github.pull.vexlife-android.142",
+        "docs/process/CAPTURE-DISCOVERED-WORK.md"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+      "nextProcessRefs": [
+        "process.vexlife-android.feature-authoring"
       ],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
-      "createdAt": "2026-10-21T06:07:27.000Z",
-      "updatedAt": "2026-10-21T06:07:27.000Z",
-      "workDisposition": "ACTIVE",
-      "formationProcessRefOrNull": null,
-      "nextProcessRefs": []
+      "createdAt": "2026-10-21T01:18:35.000Z",
+      "updatedAt": "2026-10-21T01:18:35.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -253,6 +226,33 @@
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-21T06:07:27.000Z",
       "updatedAt": "2026-10-21T07:09:18.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexwork.history.foundational-infrastructure-backfill",
+      "parentWorkRefOrNull": "work.vexwork.foundation.outcome",
+      "label": "Foundational Infrastructure history backfill",
+      "purpose": "Gradually reconstruct completed foundational work into VexWork with provenance so future humans and instances can perceive what was built from a dashboard instead of rediscovering it across repositories and chat history.",
+      "workClass": "POTENTIAL",
+      "state": "CAPTURED",
+      "priorityClass": "LOW",
+      "dependencyRefs": [
+        "work.vexwork.visibility.public-dashboard"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "public/work-dashboard.json",
+        "docs/lineage/VEXLIFE-P0B.md"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-21T06:07:27.000Z",
+      "updatedAt": "2026-10-21T06:07:27.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -290,83 +290,23 @@
       "updatedAt": "2026-10-22T01:32:00.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": "process.vexwork.form-project",
-      "workRef": "work.vexstream.mobile-library.clear-data-proof",
-      "parentWorkRefOrNull": "work.vexstream.mobile-library.durable-device-library",
-      "label": "Clear-data durability lived proof",
-      "purpose": "Prove downloaded music survives VexLife Clear Data, is rediscovered after relaunch, and plays without redownloading.",
-      "workClass": "TASK",
-      "state": "CAPTURED",
-      "priorityClass": "HIGH",
-      "dependencyRefs": [
-        "work.vexstream.mobile-library.rediscovery"
-      ],
-      "repositoryRefs": [
-        "repo.vexlife-android"
-      ],
-      "sourceRefs": [
-        "work.vexstream.mobile-library.rediscovery",
-        "repo.vexlife-android:docs/features/FEATURE-WALKS.md",
-        "projects/vexstream-mobile-library/README.md"
-      ],
-      "nextProcessRefs": [],
-      "authorityDisposition": "AUTHORIZED_BOUNDED",
-      "effectDisposition": "EFFECTS_BOUND"
-    },
-    {
-      "schemaVersion": "vexwork.work-item/v1",
-      "createdAt": "2026-10-21T08:41:00.000Z",
-      "updatedAt": "2026-10-22T01:32:00.000Z",
-      "workDisposition": "ACTIVE",
-      "formationProcessRefOrNull": "process.vexwork.form-project",
-      "workRef": "work.vexstream.mobile-library.contextual-download-missing",
-      "parentWorkRefOrNull": "work.vexstream.mobile-library.download-experience",
-      "label": "Contextual Download Missing",
-      "purpose": "Offer one bounded Download missing action whose scope and count come from the listener's current Songs, Album, Artist, or Playlist context while reusing MassDownload planning/execution semantics.",
-      "workClass": "TASK",
+      "workRef": "work.vexstream.mobile-library.outcome",
+      "parentWorkRefOrNull": null,
+      "label": "VexStream Mobile Library",
+      "purpose": "Make downloaded VexStream music a durable, reusable Android device library while preserving exact media identity, truthful one-shot download semantics, and separately governed persistent sync.",
+      "workClass": "OUTCOME",
       "state": "DECOMPOSED",
-      "priorityClass": "NORMAL",
-      "dependencyRefs": [
-        "work.vexstream.mobile-library.massdownload-product"
-      ],
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
       "repositoryRefs": [
-        "repo.vexlife-android"
+        "repo.vexlife-android",
+        "repo.vexstream-music"
       ],
       "sourceRefs": [
         "github.pull.vexlife-android.142",
         "github.issue.vexlife-android.144",
-        "projects/vexstream-mobile-library/README.md",
-        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt",
-        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamCollectionPresentation.kt",
-        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/offline/VexStreamOfflineCollection.kt"
-      ],
-      "nextProcessRefs": [
-        "process.vexlife-android.feature-authoring"
-      ],
-      "authorityDisposition": "AUTHORIZED_BOUNDED",
-      "effectDisposition": "EFFECTS_BOUND"
-    },
-    {
-      "schemaVersion": "vexwork.work-item/v1",
-      "createdAt": "2026-10-21T08:41:00.000Z",
-      "updatedAt": "2026-10-22T01:32:00.000Z",
-      "workDisposition": "ACTIVE",
-      "formationProcessRefOrNull": "process.vexwork.form-project",
-      "workRef": "work.vexstream.mobile-library.device-storage",
-      "parentWorkRefOrNull": "work.vexstream.mobile-library.durable-device-library",
-      "label": "Durable device music storage",
-      "purpose": "Establish the Android-native durable media-storage realization while preserving exact trackRef, SHA-256 and byte-length verification.",
-      "workClass": "TASK",
-      "state": "CAPTURED",
-      "priorityClass": "HIGH",
-      "dependencyRefs": [],
-      "repositoryRefs": [
-        "repo.vexlife-android"
-      ],
-      "sourceRefs": [
-        "work.vexstream.mobile-library.durable-device-library",
-        "github.pull.vexlife-android.142",
-        "projects/vexstream-mobile-library/README.md",
-        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMediaStore.kt"
+        "repo.vexlife-android:docs/features/README.md",
+        "projects/vexstream-mobile-library/README.md"
       ],
       "nextProcessRefs": [
         "process.vexlife-android.feature-authoring"
@@ -407,147 +347,24 @@
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
-      "workRef": "work.vexstream.mobile-library.keep-offline-sync",
-      "parentWorkRefOrNull": null,
-      "label": "Persistent Keep Offline / Sync",
-      "purpose": "Preserve the future policy question of keeping an album, artist, playlist, or other collection continuously mirrored as producer membership changes, without conflating it with one-shot Download missing.",
-      "workClass": "POTENTIAL",
-      "state": "CAPTURED",
-      "workDisposition": "PARKED",
-      "priorityClass": "LOW",
-      "dependencyRefs": [
-        "work.vexstream.mobile-library.durable-device-library"
-      ],
-      "repositoryRefs": [
-        "repo.vexlife-android"
-      ],
-      "sourceRefs": [
-        "work.vexstream.mobile-library.outcome",
-        "github.pull.vexlife-android.142",
-        "docs/process/CAPTURE-DISCOVERED-WORK.md",
-        "projects/vexstream-mobile-library/README.md",
-        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/offline/VexStreamOfflineDocs.kt"
-      ],
-      "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
-      "nextProcessRefs": [
-        "process.vexlife-android.feature-authoring"
-      ],
-      "authorityDisposition": "NO_AUTHORITY",
-      "effectDisposition": "NO_EFFECTS",
-      "createdAt": "2026-10-21T08:41:00.000Z",
-      "updatedAt": "2026-10-21T08:41:00.000Z"
-    },
-    {
-      "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-21T08:41:00.000Z",
       "updatedAt": "2026-10-22T01:32:00.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": "process.vexwork.form-project",
-      "workRef": "work.vexstream.mobile-library.massdownload-e2e",
-      "parentWorkRefOrNull": "work.vexstream.mobile-library.massdownload-maturity",
-      "label": "MassDownload terminal EndToEnd",
-      "purpose": "Bind the current live MassDownload EndToEnd proof trajectory to durable work identity and finish its terminal route only after its actual current proof owner is freshly re-grounded.",
+      "workRef": "work.vexstream.mobile-library.device-storage",
+      "parentWorkRefOrNull": "work.vexstream.mobile-library.durable-device-library",
+      "label": "Durable device music storage",
+      "purpose": "Establish the Android-native durable media-storage realization while preserving exact trackRef, SHA-256 and byte-length verification.",
       "workClass": "TASK",
       "state": "CAPTURED",
-      "priorityClass": "NORMAL",
-      "dependencyRefs": [
-        "work.vexstream.mobile-library.massdownload-product"
-      ],
-      "repositoryRefs": [
-        "repo.vexlife-android",
-        "repo.vexstream-music"
-      ],
-      "sourceRefs": [
-        "github.pull.vexlife-android.142",
-        "repo.vexlife-android:docs/features/FEATURE-WALKS.md",
-        "projects/vexstream-mobile-library/README.md",
-        "github.pull.vexlife-android.148",
-        "github.pull.vexlife-android.151",
-        "github.pull.vextreme-sdk.1887",
-        "repo.vexstream-music:README.md"
-      ],
-      "nextProcessRefs": [],
-      "authorityDisposition": "HELD_UNKNOWN",
-      "effectDisposition": "HELD_UNKNOWN"
-    },
-    {
-      "schemaVersion": "vexwork.work-item/v1",
-      "createdAt": "2026-10-21T08:41:00.000Z",
-      "updatedAt": "2026-10-22T01:32:00.000Z",
-      "workDisposition": "ACTIVE",
-      "formationProcessRefOrNull": "process.vexwork.form-project",
-      "workRef": "work.vexstream.mobile-library.massdownload-product",
-      "parentWorkRefOrNull": "work.vexstream.mobile-library.massdownload-maturity",
-      "label": "MassDownload product implementation",
-      "purpose": "Preserve the accepted one-shot collection Download missing implementation as completed predecessor truth without relabelling it as persistent sync.",
-      "workClass": "TASK",
-      "state": "COMPLETED",
-      "priorityClass": "NORMAL",
-      "dependencyRefs": [],
-      "repositoryRefs": [
-        "repo.vexlife-android"
-      ],
-      "sourceRefs": [
-        "github.pull.vexlife-android.142",
-        "github.commit.vexlife-android.83133896f0ccfa664824789aa9682647b2e8724a",
-        "projects/vexstream-mobile-library/README.md"
-      ],
-      "nextProcessRefs": [],
-      "authorityDisposition": "AUTHORIZED_BOUNDED",
-      "effectDisposition": "EFFECTS_BOUND"
-    },
-    {
-      "schemaVersion": "vexwork.work-item/v1",
-      "createdAt": "2026-10-21T08:41:00.000Z",
-      "updatedAt": "2026-10-22T01:32:00.000Z",
-      "workDisposition": "ACTIVE",
-      "formationProcessRefOrNull": "process.vexwork.form-project",
-      "workRef": "work.vexstream.mobile-library.outcome",
-      "parentWorkRefOrNull": null,
-      "label": "VexStream Mobile Library",
-      "purpose": "Make downloaded VexStream music a durable, reusable Android device library while preserving exact media identity, truthful one-shot download semantics, and separately governed persistent sync.",
-      "workClass": "OUTCOME",
-      "state": "DECOMPOSED",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
       "repositoryRefs": [
-        "repo.vexlife-android",
-        "repo.vexstream-music"
-      ],
-      "sourceRefs": [
-        "github.pull.vexlife-android.142",
-        "github.issue.vexlife-android.144",
-        "repo.vexlife-android:docs/features/README.md",
-        "projects/vexstream-mobile-library/README.md"
-      ],
-      "nextProcessRefs": [
-        "process.vexlife-android.feature-authoring"
-      ],
-      "authorityDisposition": "AUTHORIZED_BOUNDED",
-      "effectDisposition": "EFFECTS_BOUND"
-    },
-    {
-      "schemaVersion": "vexwork.work-item/v1",
-      "createdAt": "2026-10-21T08:41:00.000Z",
-      "updatedAt": "2026-10-22T01:32:00.000Z",
-      "workDisposition": "ACTIVE",
-      "formationProcessRefOrNull": "process.vexwork.form-project",
-      "workRef": "work.vexstream.mobile-library.private-download-migration",
-      "parentWorkRefOrNull": "work.vexstream.mobile-library.durable-device-library",
-      "label": "Existing private-download migration",
-      "purpose": "Define and implement a bounded path for already verified app-private VexStream downloads to enter durable device-library storage without duplication or partial/corrupt promotion.",
-      "workClass": "TASK",
-      "state": "CAPTURED",
-      "priorityClass": "NORMAL",
-      "dependencyRefs": [
-        "work.vexstream.mobile-library.device-storage"
-      ],
-      "repositoryRefs": [
         "repo.vexlife-android"
       ],
       "sourceRefs": [
+        "work.vexstream.mobile-library.durable-device-library",
         "github.pull.vexlife-android.142",
-        "work.vexstream.mobile-library.device-storage",
         "projects/vexstream-mobile-library/README.md",
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMediaStore.kt"
       ],
@@ -594,6 +411,219 @@
       "updatedAt": "2026-10-22T01:32:00.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": "process.vexwork.form-project",
+      "workRef": "work.vexstream.mobile-library.clear-data-proof",
+      "parentWorkRefOrNull": "work.vexstream.mobile-library.durable-device-library",
+      "label": "Clear-data durability lived proof",
+      "purpose": "Prove downloaded music survives VexLife Clear Data, is rediscovered after relaunch, and plays without redownloading.",
+      "workClass": "TASK",
+      "state": "CAPTURED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexstream.mobile-library.rediscovery"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "work.vexstream.mobile-library.rediscovery",
+        "repo.vexlife-android:docs/features/FEATURE-WALKS.md",
+        "projects/vexstream-mobile-library/README.md"
+      ],
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-10-21T08:41:00.000Z",
+      "updatedAt": "2026-10-22T01:32:00.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "workRef": "work.vexstream.mobile-library.private-download-migration",
+      "parentWorkRefOrNull": "work.vexstream.mobile-library.durable-device-library",
+      "label": "Existing private-download migration",
+      "purpose": "Define and implement a bounded path for already verified app-private VexStream downloads to enter durable device-library storage without duplication or partial/corrupt promotion.",
+      "workClass": "TASK",
+      "state": "CAPTURED",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [
+        "work.vexstream.mobile-library.device-storage"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "github.pull.vexlife-android.142",
+        "work.vexstream.mobile-library.device-storage",
+        "projects/vexstream-mobile-library/README.md",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMediaStore.kt"
+      ],
+      "nextProcessRefs": [
+        "process.vexlife-android.feature-authoring"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-10-22T01:32:00.000Z",
+      "updatedAt": "2026-10-22T01:32:00.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "workRef": "work.vexstream.mobile-library.download-experience",
+      "parentWorkRefOrNull": "work.vexstream.mobile-library.outcome",
+      "label": "Contextual Download Experience",
+      "purpose": "Make existing one-shot VexStream download intent reachable from the listener's current music context with truthful missing counts and phone-constrained presentation, without creating another download engine.",
+      "workClass": "OUTCOME",
+      "state": "DECOMPOSED",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [
+        "work.vexstream.mobile-library.massdownload-product"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "projects/vexstream-mobile-library/README.md",
+        "github.pull.vexlife-android.142",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/offline/VexStreamOfflineCollection.kt"
+      ],
+      "nextProcessRefs": [
+        "process.vexlife-android.feature-authoring"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-10-21T08:41:00.000Z",
+      "updatedAt": "2026-10-22T01:32:00.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "workRef": "work.vexstream.mobile-library.contextual-download-missing",
+      "parentWorkRefOrNull": "work.vexstream.mobile-library.download-experience",
+      "label": "Contextual Download Missing",
+      "purpose": "Offer one bounded Download missing action whose scope and count come from the listener's current Songs, Album, Artist, or Playlist context while reusing MassDownload planning/execution semantics.",
+      "workClass": "TASK",
+      "state": "DECOMPOSED",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [
+        "work.vexstream.mobile-library.massdownload-product"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "github.pull.vexlife-android.142",
+        "github.issue.vexlife-android.144",
+        "projects/vexstream-mobile-library/README.md",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamCollectionPresentation.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/offline/VexStreamOfflineCollection.kt"
+      ],
+      "nextProcessRefs": [
+        "process.vexlife-android.feature-authoring"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-10-22T01:32:00.000Z",
+      "updatedAt": "2026-10-22T01:32:00.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "workRef": "work.vexstream.mobile-library.massdownload-maturity",
+      "parentWorkRefOrNull": "work.vexstream.mobile-library.outcome",
+      "label": "MassDownload Maturity",
+      "purpose": "Keep accepted MassDownload product source distinct from its still-unfinished terminal current-source lived proof, and preserve proof-surface defects without relabelling the shipped feature as unimplemented.",
+      "workClass": "OUTCOME",
+      "state": "DECOMPOSED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexlife-android",
+        "repo.vexstream-music"
+      ],
+      "sourceRefs": [
+        "projects/vexstream-mobile-library/README.md",
+        "github.pull.vexlife-android.142",
+        "github.pull.vexlife-android.148",
+        "github.pull.vexlife-android.151",
+        "github.pull.vextreme-sdk.1887",
+        "repo.vexstream-music:README.md"
+      ],
+      "nextProcessRefs": [
+        "process.vexlife-android.feature-authoring"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-10-21T08:41:00.000Z",
+      "updatedAt": "2026-10-22T01:32:00.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "workRef": "work.vexstream.mobile-library.massdownload-product",
+      "parentWorkRefOrNull": "work.vexstream.mobile-library.massdownload-maturity",
+      "label": "MassDownload product implementation",
+      "purpose": "Preserve the accepted one-shot collection Download missing implementation as completed predecessor truth without relabelling it as persistent sync.",
+      "workClass": "TASK",
+      "state": "COMPLETED",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "github.pull.vexlife-android.142",
+        "github.commit.vexlife-android.83133896f0ccfa664824789aa9682647b2e8724a",
+        "projects/vexstream-mobile-library/README.md"
+      ],
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-10-21T08:41:00.000Z",
+      "updatedAt": "2026-10-22T01:32:00.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "workRef": "work.vexstream.mobile-library.massdownload-e2e",
+      "parentWorkRefOrNull": "work.vexstream.mobile-library.massdownload-maturity",
+      "label": "MassDownload terminal EndToEnd",
+      "purpose": "Bind the current live MassDownload EndToEnd proof trajectory to durable work identity and finish its terminal route only after its actual current proof owner is freshly re-grounded.",
+      "workClass": "TASK",
+      "state": "CAPTURED",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [
+        "work.vexstream.mobile-library.massdownload-product"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-android",
+        "repo.vexstream-music"
+      ],
+      "sourceRefs": [
+        "github.pull.vexlife-android.142",
+        "repo.vexlife-android:docs/features/FEATURE-WALKS.md",
+        "projects/vexstream-mobile-library/README.md",
+        "github.pull.vexlife-android.148",
+        "github.pull.vexlife-android.151",
+        "github.pull.vextreme-sdk.1887",
+        "repo.vexstream-music:README.md"
+      ],
+      "nextProcessRefs": [],
+      "authorityDisposition": "HELD_UNKNOWN",
+      "effectDisposition": "HELD_UNKNOWN"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-10-21T08:41:00.000Z",
+      "updatedAt": "2026-10-22T01:32:00.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
       "workRef": "work.vexstream.mobile-library.track-menu-presentation-defect",
       "parentWorkRefOrNull": "work.vexstream.mobile-library.massdownload-e2e",
       "label": "Track-menu presentation intermittency",
@@ -617,6 +647,38 @@
       "nextProcessRefs": [],
       "authorityDisposition": "HELD_UNKNOWN",
       "effectDisposition": "HELD_UNKNOWN"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexstream.mobile-library.keep-offline-sync",
+      "parentWorkRefOrNull": null,
+      "label": "Persistent Keep Offline / Sync",
+      "purpose": "Preserve the future policy question of keeping an album, artist, playlist, or other collection continuously mirrored as producer membership changes, without conflating it with one-shot Download missing.",
+      "workClass": "POTENTIAL",
+      "state": "CAPTURED",
+      "workDisposition": "PARKED",
+      "priorityClass": "LOW",
+      "dependencyRefs": [
+        "work.vexstream.mobile-library.durable-device-library"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "work.vexstream.mobile-library.outcome",
+        "github.pull.vexlife-android.142",
+        "docs/process/CAPTURE-DISCOVERED-WORK.md",
+        "projects/vexstream-mobile-library/README.md",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/offline/VexStreamOfflineDocs.kt"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+      "nextProcessRefs": [
+        "process.vexlife-android.feature-authoring"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-21T08:41:00.000Z",
+      "updatedAt": "2026-10-21T08:41:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -763,26 +825,23 @@
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T00:13:43.000Z",
       "updatedAt": "2026-10-22T01:08:02.000Z",
-      "workRef": "work.vexlife.tocompletion.p4.lived-reinjection",
-      "parentWorkRefOrNull": "work.vexlife.tocompletion.p4.typed-local-effect",
-      "label": "P4 retained-Home lived typed-effect proof",
-      "purpose": "After source acceptance, prove real Heretic request -> exact one-time authority -> Native Worker orientation effect -> verified result reinjection through ToolResultRelay -> natural continuation in the same retained Conversation.",
-      "workClass": "TASK",
+      "workRef": "work.vexlife.tocompletion.p4.typed-local-effect",
+      "parentWorkRefOrNull": "work.vexlife.tocompletion.outcome",
+      "label": "P4 — typed local effect and same-Conversation reinjection",
+      "purpose": "Prove the model can perceive current orientation, request one exact typed local capability under separate one-time authority, execute it through the rightful Native Worker, reinject the verified result, and naturally continue in the same Conversation.",
+      "workClass": "OUTCOME",
       "state": "COMPLETED",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [
-        "work.vexlife.tocompletion.p4.source-acceptance"
+        "work.vexlife.tocompletion.p3.restart-durability"
       ],
       "repositoryRefs": [
         "repo.vexlife"
       ],
       "sourceRefs": [
         "github.issue.vexlife.866",
+        "github.pull.vexlife.916",
         "projects/vexlife-tocompletion/README.md",
-        "github.commit.vexlife.a23313f7be4a24f6fb9989277bc1f5ad4dbdf6e8",
-        "evidence.vexlife.tocompletion.p4.source-terminal-accepted",
-        "github.issue.vexlife.866.comment.6330014415",
-        "evidence.vexlife.tocompletion.p4.lived.a053.return.sha256.ae547d380f4309ca49b15dcd9f1bd2cdf8905c4980979f306aeb19415543f64f",
         "github.issue.vexlife.866.comment.6330185511",
         "evidence.vexlife.tocompletion.p4.lived.a054.return.sha256.3a36c72a984d9d5c0eed1e362f914f329b3e26dfb8b51083014a1578deecf09c"
       ]
@@ -828,23 +887,26 @@
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T00:13:43.000Z",
       "updatedAt": "2026-10-22T01:08:02.000Z",
-      "workRef": "work.vexlife.tocompletion.p4.typed-local-effect",
-      "parentWorkRefOrNull": "work.vexlife.tocompletion.outcome",
-      "label": "P4 — typed local effect and same-Conversation reinjection",
-      "purpose": "Prove the model can perceive current orientation, request one exact typed local capability under separate one-time authority, execute it through the rightful Native Worker, reinject the verified result, and naturally continue in the same Conversation.",
-      "workClass": "OUTCOME",
+      "workRef": "work.vexlife.tocompletion.p4.lived-reinjection",
+      "parentWorkRefOrNull": "work.vexlife.tocompletion.p4.typed-local-effect",
+      "label": "P4 retained-Home lived typed-effect proof",
+      "purpose": "After source acceptance, prove real Heretic request -> exact one-time authority -> Native Worker orientation effect -> verified result reinjection through ToolResultRelay -> natural continuation in the same retained Conversation.",
+      "workClass": "TASK",
       "state": "COMPLETED",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [
-        "work.vexlife.tocompletion.p3.restart-durability"
+        "work.vexlife.tocompletion.p4.source-acceptance"
       ],
       "repositoryRefs": [
         "repo.vexlife"
       ],
       "sourceRefs": [
         "github.issue.vexlife.866",
-        "github.pull.vexlife.916",
         "projects/vexlife-tocompletion/README.md",
+        "github.commit.vexlife.a23313f7be4a24f6fb9989277bc1f5ad4dbdf6e8",
+        "evidence.vexlife.tocompletion.p4.source-terminal-accepted",
+        "github.issue.vexlife.866.comment.6330014415",
+        "evidence.vexlife.tocompletion.p4.lived.a053.return.sha256.ae547d380f4309ca49b15dcd9f1bd2cdf8905c4980979f306aeb19415543f64f",
         "github.issue.vexlife.866.comment.6330185511",
         "evidence.vexlife.tocompletion.p4.lived.a054.return.sha256.3a36c72a984d9d5c0eed1e362f914f329b3e26dfb8b51083014a1578deecf09c"
       ]
@@ -917,6 +979,37 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T01:08:02.000Z",
+      "updatedAt": "2026-10-22T01:08:02.000Z",
+      "workRef": "work.vexlife.tocompletion.p5.lived-continuity-learning",
+      "parentWorkRefOrNull": "work.vexlife.tocompletion.outcome",
+      "label": "P5 — lived continuity and learning",
+      "purpose": "Prove that one real lived VexLife episode can become durable, source-attributed continuity through the rightful Score/Memory/consent owners, survive restart, and influence later lived context without overstating Dream, Rhythm, training or weight mutation.",
+      "workClass": "OUTCOME",
+      "state": "RUNNING",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexlife.tocompletion.p4.typed-local-effect"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "github.issue.vexlife.866",
+        "github.issue.vexlife.866.comment.6330185511",
+        "evidence.vexlife.tocompletion.p4.lived.a054.return.sha256.3a36c72a984d9d5c0eed1e362f914f329b3e26dfb8b51083014a1578deecf09c",
+        "source.vexlife.continuity-evolution",
+        "source.vexlife.score-context-continuity"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-22T01:08:02.000Z",
       "updatedAt": "2026-10-22T01:18:00.000Z",
       "workRef": "work.vexlife.tocompletion.p5.g02-semantic-authority-materializer",
       "parentWorkRefOrNull": "work.vexlife.tocompletion.p5.lived-continuity-learning",
@@ -944,99 +1037,6 @@
         "github.issue.vextreme-sdk.226.comment.6330352075",
         "claim.vextreme-sdk.vexlife-tocompletion.p5.g02-semantic-authority-materializer.20261022a"
       ]
-    },
-    {
-      "schemaVersion": "vexwork.work-item/v1",
-      "workDisposition": "ACTIVE",
-      "formationProcessRefOrNull": null,
-      "nextProcessRefs": [],
-      "authorityDisposition": "AUTHORIZED_BOUNDED",
-      "effectDisposition": "EFFECTS_BOUND",
-      "createdAt": "2026-10-22T01:08:02.000Z",
-      "updatedAt": "2026-10-22T01:08:02.000Z",
-      "workRef": "work.vexlife.tocompletion.p5.lived-continuity-learning",
-      "parentWorkRefOrNull": "work.vexlife.tocompletion.outcome",
-      "label": "P5 — lived continuity and learning",
-      "purpose": "Prove that one real lived VexLife episode can become durable, source-attributed continuity through the rightful Score/Memory/consent owners, survive restart, and influence later lived context without overstating Dream, Rhythm, training or weight mutation.",
-      "workClass": "OUTCOME",
-      "state": "RUNNING",
-      "priorityClass": "IMMEDIATE",
-      "dependencyRefs": [
-        "work.vexlife.tocompletion.p4.typed-local-effect"
-      ],
-      "repositoryRefs": [
-        "repo.vexwork",
-        "repo.vexlife"
-      ],
-      "sourceRefs": [
-        "github.issue.vexlife.866",
-        "github.issue.vexlife.866.comment.6330185511",
-        "evidence.vexlife.tocompletion.p4.lived.a054.return.sha256.3a36c72a984d9d5c0eed1e362f914f329b3e26dfb8b51083014a1578deecf09c",
-        "source.vexlife.continuity-evolution",
-        "source.vexlife.score-context-continuity"
-      ]
-    },
-    {
-      "schemaVersion": "vexwork.work-item/v1",
-      "createdAt": "2026-10-22T01:32:00.000Z",
-      "updatedAt": "2026-10-22T01:32:00.000Z",
-      "workDisposition": "ACTIVE",
-      "formationProcessRefOrNull": "process.vexwork.form-project",
-      "workRef": "work.vexstream.mobile-library.download-experience",
-      "parentWorkRefOrNull": "work.vexstream.mobile-library.outcome",
-      "label": "Contextual Download Experience",
-      "purpose": "Make existing one-shot VexStream download intent reachable from the listener's current music context with truthful missing counts and phone-constrained presentation, without creating another download engine.",
-      "workClass": "OUTCOME",
-      "state": "DECOMPOSED",
-      "priorityClass": "NORMAL",
-      "dependencyRefs": [
-        "work.vexstream.mobile-library.massdownload-product"
-      ],
-      "repositoryRefs": [
-        "repo.vexlife-android"
-      ],
-      "sourceRefs": [
-        "projects/vexstream-mobile-library/README.md",
-        "github.pull.vexlife-android.142",
-        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/offline/VexStreamOfflineCollection.kt"
-      ],
-      "nextProcessRefs": [
-        "process.vexlife-android.feature-authoring"
-      ],
-      "authorityDisposition": "AUTHORIZED_BOUNDED",
-      "effectDisposition": "EFFECTS_BOUND"
-    },
-    {
-      "schemaVersion": "vexwork.work-item/v1",
-      "createdAt": "2026-10-22T01:32:00.000Z",
-      "updatedAt": "2026-10-22T01:32:00.000Z",
-      "workDisposition": "ACTIVE",
-      "formationProcessRefOrNull": "process.vexwork.form-project",
-      "workRef": "work.vexstream.mobile-library.massdownload-maturity",
-      "parentWorkRefOrNull": "work.vexstream.mobile-library.outcome",
-      "label": "MassDownload Maturity",
-      "purpose": "Keep accepted MassDownload product source distinct from its still-unfinished terminal current-source lived proof, and preserve proof-surface defects without relabelling the shipped feature as unimplemented.",
-      "workClass": "OUTCOME",
-      "state": "DECOMPOSED",
-      "priorityClass": "HIGH",
-      "dependencyRefs": [],
-      "repositoryRefs": [
-        "repo.vexlife-android",
-        "repo.vexstream-music"
-      ],
-      "sourceRefs": [
-        "projects/vexstream-mobile-library/README.md",
-        "github.pull.vexlife-android.142",
-        "github.pull.vexlife-android.148",
-        "github.pull.vexlife-android.151",
-        "github.pull.vextreme-sdk.1887",
-        "repo.vexstream-music:README.md"
-      ],
-      "nextProcessRefs": [
-        "process.vexlife-android.feature-authoring"
-      ],
-      "authorityDisposition": "AUTHORIZED_BOUNDED",
-      "effectDisposition": "EFFECTS_BOUND"
     }
   ],
   "transitions": [
