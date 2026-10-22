@@ -111,4 +111,16 @@ test('workflow map stays read-only and carries exact item transition history int
   assert.doesNotMatch(page, /workflow.*method:\s*['"](?:POST|PUT|PATCH|DELETE)['"]/i);
 });
 
+test('workflow map reuses the same V1 state-tone owner as cards and legend', () => {
+  assert.match(page, /node\.dataset\.tone=Reader\.stateTone\(state\)/);
+  assert.match(page, /workflow-state\[data-tone="open"\]/);
+  assert.match(page, /workflow-state\[data-tone="waiting"\]/);
+  assert.match(page, /workflow-state\[data-tone="blocked"\]/);
+  assert.match(page, /workflow-state\[data-tone="done"\]/);
+  assert.match(page, /workflow-swatch open/);
+  assert.match(page, /workflow-swatch waiting/);
+  assert.match(page, /workflow-swatch blocked/);
+  assert.match(page, /workflow-swatch done/);
+});
+
 // [VXG RealForever]

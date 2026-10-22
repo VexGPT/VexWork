@@ -622,6 +622,69 @@ The evolution earns its cross-domain completion when the same underlying VexWork
 
 At that point VexWork has demonstrated that it is no longer only a Jira/kanban-shaped work board. It is a reusable console for perceiving, selecting, navigating and carrying different classes of work.
 
+## 2026-10-22 experience threshold and successor return
+
+Victor has lived-reviewed the current Terrain / Roadmap / Lifecycle Workflow surfaces and accepted the design as **good enough to stop foreground experience iteration and return to the Operational Console product trajectory**.
+
+Accepted first-party experience now includes:
+
+```text
+Terrain
+  foldable variable-height Projects
+  concurrent workfront rows
+  Prior | Now | Next continuity
+  Now / 6H / 24H / 7D recent-movement lens
+  state tint + state-age evidence
+  click/search traversal; wheel semantic traversal disabled
+  closable Inspect
+  bounded participation evidence
+
+Roadmap
+  Now | +1 | +2 | +3 | Later / parallel
+  dependency-grounded solid sequence
+  projected/unsequenced dotted future
+  no calendar ETA invention
+
+V1
+  live Lifecycle Workflow Map projected from canonical Work Registry
+  scoped human-review overlays from Project Agency Policy
+  same state-tone families as the V1 board/cards
+```
+
+This is a **product threshold**, not a claim that Terrain can never evolve again. Reopen experience work only for a real regression or new consumer pressure.
+
+The foreground returns to:
+
+```text
+P2 VexSite Localization patient-zero
+  1. page population / scope
+  2. localization / modernization lens
+  3. patient-zero lived proof
+     -> truthfully answer "what remains?"
+     -> coexist with real promoted Work
+
+P3 Operating Domain template
+P4 reusable commerce starter
+P5 Antique Plate lived commerce pilot
+P6 cross-domain completion
+```
+
+### Bounded Workgraph currentness lag
+
+The accepted aggregate Workgraph may still project:
+
+```text
+T1 Relational Terrain patient-zero     VERIFYING
+T2 Currentness and flow Terrain layer  WAITING_DEPENDENCIES
+P2 VexSite patient-zero                READY
+```
+
+That lag is known. It exists because independent drafts #27 and #35 still write the shared aggregate Workgraph/workspace paths, and VexWork Flows deliberately avoids making UI/product progress a coordination blocker.
+
+Do not interpret the stale T1/T2 aggregate states as rejection of the lived threshold above. A future VexWork Flows reconciliation may ordinary-forward the accepted experience checkpoint when the shared aggregate edge is safe. **Do not hold P2 foreground work merely to perform that bookkeeping first.**
+
+The next fresh instance should re-ground current VexWork main and current Vextreme/VexSite evidence, then lead the smallest P2 edge. Vextreme remains the owner of page identity, localization evidence, generated/runtime currentness, modernization facts and browser proof.
+
 ## Current trajectory
 
 ```text
