@@ -8,7 +8,30 @@ VexWork owns the **work truth and navigation** here. VexLife and the other right
 
 ## What completion means
 
-The protected outcome is a lived VexLife path, not merely green source:
+The canonical ToCompletion trajectory has three nested completion claims:
+
+```text
+TOCOMPLETION_CORE = P1-P4
+  fresh Heretic
+  -> real Conversation
+  -> durable restart/reentry
+  -> awake orientation
+  -> one bounded real local-work loop
+
+TOCOMPLETION_DEVELOPMENTAL = P5-P6
+  lived experience
+  -> truthful continuity / Memory / Score / Rhythm placement
+  -> restart and observe what carried
+  -> Cultivation / School
+  -> Training Placement
+  -> neural training / Birth only when evidence genuinely earns it
+
+WHOLE_PRODUCT_EXPANSION = P7
+  connected/native product families mature under the same Home,
+  identity, capability, authority and continuity foundations
+```
+
+The Core lived path is not merely a green source gate:
 
 ```text
 fresh human setup
@@ -27,7 +50,59 @@ fresh human setup
 -> same Conversation naturally continues from that result
 ```
 
-Future learning, Memory, School, training, weight mutation, publication, and broader autonomy remain separate owners/effects. P4 does not turn prompt text into standing authority and does not make a model request equivalent to process permission.
+Memory change is not weight change; Dream is not truth; a Rhythm candidate is not an active model; and a lived episode is not training data by default. P4 does not turn prompt text into standing authority, P5 must place learning honestly, and P6 may conclude NO_WEIGHT_NEEDED without failing the developmental outcome.
+
+## Trajectory provenance
+
+The phase labels were **canonicalized forward from the same trajectory**, not imported from an older PR roadmap:
+
+```text
+October 18, 2026
+  predecessor Actualization / lived-product checkpoint
+  real Companion -> real model -> durable response -> restart continuity
+
+October 19, 2026 — early
+  canonical current-entry correction
+  current intelligence re-grounded to Heretic 27B
+  M4 preserved as operational/product precedent
+  School/Cultivation history reconciled rather than erased
+
+October 19, 2026 — morning
+  completion spine reconciled:
+  fresh Mac/no model -> Heretic -> talk -> restart -> orient -> bounded work
+  with developmental learning explicitly later and separately admitted
+
+October 19, 2026 — evening
+  map.vexlife.tocompletion.nested-pathway.20261019a
+  formally serialized the same trajectory as P0 -> P7
+  with TOCOMPLETION_CORE=P1-P4,
+       TOCOMPLETION_DEVELOPMENTAL=P5-P6,
+       WHOLE_PRODUCT_EXPANSION=P7
+
+October 19/20, 2026
+  P0B Project/Workgraph foundation inserted before P1
+  so the trajectory itself could survive fresh-instance boundaries
+
+October 20-21, 2026
+  P1-P4 executed to lived completion
+
+October 21, 2026 onward
+  P5 is current foreground; P6/P7 remain canonical future horizon
+  without fabricated child-task decomposition
+```
+
+Permanent interpretation:
+
+```text
+OCT18_LIVED_INTENTION
+  -> OCT19_RECONCILIATION
+  -> OCT19_P0_P7_CANONICAL_MAP
+  -> OCT20_P0B_DURABLE_WORK_FOUNDATION
+  -> ACTUAL_EXECUTION_FORWARD
+
+new labels != new trajectory
+canonicalized map != retroactive claim that every label existed on Oct 18
+```
 
 ## Architectural separations that must survive
 
@@ -71,12 +146,15 @@ Exact private Home/model identities are intentionally **not duplicated in public
 
 | Phase | Current truth | Meaning |
 |---|---|---|
-| P0 / P0B | COMPLETED | Completion-oriented work/source foundation converged; VexWork itself later extracted the portable work-management boundary discovered here. |
+| P0 | COMPLETED | Current-entry/research closure reconciled Heretic, M4, School/Cultivation, product truth, owner boundaries and the full ToCompletion horizon. |
+| P0B | COMPLETED | Durable Project/Workgraph/currentness foundation was inserted before P1 so the trajectory no longer depended on prose handoffs. |
 | P1 | COMPLETED | Selected Heretic model/runtime established in the real retained Home path. |
 | P2 | COMPLETED | First lived real Heretic Conversation turn reached `TERMINAL_LIVED_PASS`. |
 | P3 | COMPLETED | Same-Home restart + second real Heretic turn + durable readback reached `TERMINAL_LIVED_PASS`; PR #915 is accepted history. |
 | P4 | COMPLETED | A054 reached `P4_TERMINAL_LIVED_PASS`: real Heretic chose the exact cued typed effect, Native Worker executed orientation, ToolResultRelay reinjected the verified result, later synthesis completed, and the same durable Conversation advanced. |
 | P5 | RUNNING | Lived continuity/learning is now foreground. A054 supplies exact G01 evidence; the first open seam is the missing rightful Memory/Safety owner-side semantic-authority materializer required before VexLife may commit one live G02 Score record. |
+| P6 | WAITING_DEPENDENCIES | Cultivation/School/Training Placement/Birth waits on real P5 lived evidence; Training Placement decides whether learning belongs in source, Memory, curriculum, Rhythm, more evidence, no weight, or an earned weight route. |
+| P7 | PLAN_VALIDATED | Whole-product connected/native expansion is canonical but not current foreground; detailed child work remains in rightful lateral Projects until explicitly activated here. |
 
 ## P4 accepted design
 
@@ -164,57 +242,90 @@ This is not permission to create a task for every typo or retry. Add one only wh
 ## Current edge
 
 ```text
-P4 = COMPLETED / TERMINAL_LIVED_PASS
+P5 = RUNNING
 
-completed progression:
-  work.vexlife.tocompletion.p4.runtime-currentness-a054 = COMPLETED
-  work.vexlife.tocompletion.p4.lived-reinjection = COMPLETED
-  work.vexlife.tocompletion.p4.typed-local-effect = COMPLETED
-
-A054 terminal evidence:
-  RETURN sha256 = 3a36c72a984d9d5c0eed1e362f914f329b3e26dfb8b51083014a1578deecf09c
-  prior lived head = b6eaf4f7dc253c2d2ebb9ad2d6a0c7230d9cb95b0145755290bd2b2a35e4a4eb
-  post lived head = aade465e9026870cdcb73a2b117fcbf08bbad4624a8def08ac2c20d07a778046
-  exact typed effect receipt = receipt.vexlife.typed-command.209c711407f94898b452a708dc5609c6
-  one-time authority after = AUTHORITY_ALREADY_RESERVED_OR_CONSUMED
-  raw Conversation content returned = false
-
-current phase:
-  work.vexlife.tocompletion.p5.lived-continuity-learning = RUNNING
-
-next READY task:
+parent source task:
   work.vexlife.tocompletion.p5.g02-semantic-authority-materializer = RUNNING
 
-grounded reason:
-  A054 is valid real G01 lived evidence.
-  VexLife G02 Score can consume a canonical Memory/Safety semantic-authority ledger.
-  It cannot mint classification/consent/acceptance itself.
-  The accepted Memory/Safety contracts explicitly held the owner-side writer/materializer,
-  and no later production materializer exists in current VexLife/SDK source.
+completed harness checkpoint:
+  work.vexlife.tocompletion.p5.g02.coder-harness-a055-a056 = COMPLETED
+
+A055:
+  failed before inner task formation
+  cause = missing current Relay authority.allowedExecutables / authority shape
+  SDK source effect = false
+
+A056:
+  Relay authority shape repaired
+  formed outer carrier successfully
+  failed VexLocalBridge admission before attempt reservation
+  exact cause:
+    task profile = profile.repository.vextreme-sdk.macos-v1
+    invoked runner = RUN-VEXLIFE-TASK.command
+    runner profile = profile.repository.vexlife.macos-v1
+  SDK source effect = false
+
+fresh remote state:
+  SDK main = b4d427564409989e8f839066accd17ec4c790724
+  SDK tree = 0e7b40415cbf60ea4b998a2a2423e8c5587857c6
+  claimed branch = exact same base
+  claim = ACTIVE
+  open claimed-branch PRs = 0
+  four-file Memory/Safety product payload = unchanged
+  focused local producer proof = 13/13 PASS
+
+next READY task:
+  work.vexlife.tocompletion.p5.g02.sdk-runner-a057
 
 next action:
-  source-author the claimed four-path SDK Memory/Safety materializer slice on\n  Vextreme-SDK b4d427564409989e8f839066accd17ec4c790724, prove it through sdk-check,\n  then let existing VexLife Score consume one owner-authored A054-derived ledger.
+  freshen attempt/package identities only
+  preserve semantic task/work/claim/base/branch/product payload
+  use lib/vexlocalbridge/templates/RUN-VEX-TASK.command
+  require profile.repository.vextreme-sdk.macos-v1 at outer admission
+  then run focused tests + npm run sdk-check + exact DCO commit + non-force push
+  create PR connector-direct only after verified RETURN/push
+
+Do not replay A055 or A056.
 ```
 
-Do not skip directly to Dream, Rhythm or weight training. The first P5 predicate is truthful G02 semantic placement under the rightful owners.
+The current defect is carrier selection, not Memory/Safety product semantics.
 
 ## Remaining completion path
 
-P4 is now terminal complete:
+P4 is terminal complete. The remaining canonical horizon is:
 
 ```text
-source terminal acceptance
--> A053 first lived attempt / exact failure learned
--> A054 exact runtime currentness
--> real Heretic typed-effect request
--> Native Worker orientation effect
--> ToolResultRelay reinjection
--> later synthesis
--> durable same-thread head advance
--> P4_TERMINAL_LIVED_PASS
+P5  LIVED CONTINUITY / MEMORY / RHYTHM PLACEMENT   <-- CURRENT
+    lived episode
+    -> rightful semantic placement
+    -> Score / private Memory / accepted context
+    -> bounded Dream / Continuity Evolution routing
+    -> evaluated Rhythm candidate when appropriate
+    -> restart / observe what actually carried
+
+P6  CULTIVATION / SCHOOL / TRAINING PLACEMENT / OPTIONAL BIRTH
+    waits on grounded P5 lived evidence
+    -> School only when deficiency/growth opportunity is observed
+    -> Training Placement decides rightful learning surface
+    -> weight training only when separately earned
+    -> candidate/eval/succession with rollback if a weight route is earned
+
+P7  WHOLE-PRODUCT CONNECTED / NATIVE EXPANSION
+    canonical future/lateral horizon
+    -> Home Bridge / Android / Maps / Stream / Family / Voice /
+       Journal / Relationships / Purpose / native platform maturation
+    -> same Home/identity/capability/continuity laws
 ```
 
-P5 is now grounded from the canonical #866 phase map and current source. Its first missing predicate is not model-weight training: it is the rightful live Memory/Safety semantic-authority materializer required before existing VexLife G02 Score may commit one A054-derived device-private continuity record.
+Nested completion claims:
+
+```text
+P1-P4 closed  = TOCOMPLETION_CORE
+P5-P6 closed  = TOCOMPLETION_DEVELOPMENTAL
+P7 matured    = WHOLE_PRODUCT_EXPANSION
+```
+
+The current P5 missing predicate is the rightful live Memory/Safety semantic-authority materializer required before existing VexLife G02 Score may commit one A054-derived device-private continuity record.
 
 ## Fresh-instance entry
 

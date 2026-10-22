@@ -45,8 +45,8 @@ VexStream Mobile Library                         OUTCOME
 |
 +-- MassDownload Maturity                        OUTCOME
     +-- MassDownload product implementation      TASK / completed
-    +-- MassDownload terminal EndToEnd           TASK
-        +-- Track-menu presentation intermittency DEFECT
+    +-- MassDownload terminal EndToEnd           TASK / completed
+    +-- Track-menu presentation intermittency    DEFECT / running / OPEN_UNEXPLAINED
 ```
 
 Adjacent but deliberately **outside current Project membership**:
@@ -186,19 +186,37 @@ Source:
 
 ### ML-D6 — MassDownload product source and terminal EndToEnd proof are different Work
 
-MassDownload product implementation is accepted predecessor truth.
+MassDownload product implementation is accepted predecessor truth, and its terminal three-track
+EndToEnd trajectory is now accepted/current rather than still pending.
 
-The current cross-platform/lived proof trajectory remains separate work. Its proof has materially
-crossed pairing, verified downloads, three-track MassDownload, producer loss, LOCAL_ONLY behavior,
-Android restart and restored local playback, but one clean current-source terminal occurrence has not
-yet been accepted.
+Terminal evidence establishes:
 
-The Track-menu presentation intermittency is a child DEFECT of that proof work; it does not rewrite
-the completed MassDownload product item into "not implemented."
+```text
+Android PR #148 = MERGED
+SDK PR #1887 = MERGED / post-merge parity PASS
+SDK Main Integrity = CONVERGED through PR #1887
+MassDownloadDeviceReplayOwed = false
+sdkReadyPhysicalReplayOwed = false
+```
 
-Provider/evidence refs include Android PR #148 and Test/Proof incident PR #151. Cross-platform proof
-also consumes private SDK process/evidence; public VexWork does not publish private repository
-culture merely to make the graph look complete.
+The Queue/Add-to-queue intermittency is **not** part of that acceptance. Android Test / Proof incident
+PR #151 is now merged as the durable open incident record with:
+
+```text
+failureStatus = OPEN_UNEXPLAINED
+failureRootCause = UNKNOWN
+hardeningState = ACCEPTED_CURRENT
+
+MERGED_INCIDENT_RECORD != INCIDENT_RESOLUTION
+MASSDOWNLOAD_TERMINAL != QUEUE_INCIDENT_CLOSED
+```
+
+VexWork therefore keeps the Queue defect as a sibling under MassDownload Maturity rather than hiding
+it beneath the completed EndToEnd item. The incident record is source/evidence; this Work item owns
+the lifecycle truth.
+
+Provider/evidence refs include Android PR #148, merged Test/Proof incident PR #151, and SDK PR #1887.
+Public VexWork references private SDK provider evidence without publishing private repository culture.
 
 ### ML-D7 — VexStream Music is a real repository relationship, not hidden context
 

@@ -23,6 +23,8 @@ test('VexStream Mobile Library is the first external Project over the shared Wor
   assert.equal(project.repositoryRefs.includes('repo.vexlife-android'), true);
   assert.equal(project.repositoryRefs.includes('repo.vexstream-music'), true);
   assert.equal(project.sourceRefs.includes('projects/vexstream-mobile-library/README.md'), true);
+  assert.equal(project.sourceRefs.includes('github.pull.vexlife-android.151'), true);
+  assert.equal(project.sourceRefs.includes('github.pull.vextreme-sdk.1887'), true);
 
   assert.deepEqual(childRefs(graph, 'work.vexstream.mobile-library.outcome'), [
     'work.vexstream.mobile-library.download-experience',
@@ -42,23 +44,22 @@ test('VexStream Mobile Library is the first external Project over the shared Wor
   assert.deepEqual(childRefs(graph, 'work.vexstream.mobile-library.massdownload-maturity'), [
     'work.vexstream.mobile-library.massdownload-e2e',
     'work.vexstream.mobile-library.massdownload-product',
-  ]);
-  assert.deepEqual(childRefs(graph, 'work.vexstream.mobile-library.massdownload-e2e'), [
     'work.vexstream.mobile-library.track-menu-presentation-defect',
   ]);
+  assert.deepEqual(childRefs(graph, 'work.vexstream.mobile-library.massdownload-e2e'), []);
 });
 
-test('Mobile Library Board preserves current truth without pretending unknown proof work is active', () => {
+test('Mobile Library Board separates terminal MassDownload from the running Queue defect', () => {
   const board = projectWorkBoard({ project, graph, view, registry });
-  const intake = board.lanes.find((lane) => lane.laneRef === 'lane.work.intake');
   const done = board.lanes.find((lane) => lane.laneRef === 'lane.work.done');
   const active = board.lanes.find((lane) => lane.laneRef === 'lane.work.active');
 
   assert.equal(board.lanes.flatMap((lane) => lane.cards).length, 12);
   assert.equal(done.cards.some((card) => card.workRef === 'work.vexstream.mobile-library.massdownload-product'), true);
-  assert.equal(intake.cards.some((card) => card.workRef === 'work.vexstream.mobile-library.massdownload-e2e'), true);
-  assert.equal(intake.cards.some((card) => card.workRef === 'work.vexstream.mobile-library.track-menu-presentation-defect'), true);
-  assert.equal(active.cards.length, 0);
+  assert.equal(done.cards.some((card) => card.workRef === 'work.vexstream.mobile-library.massdownload-e2e'), true);
+  assert.equal(active.cards.some((card) => card.workRef === 'work.vexstream.mobile-library.track-menu-presentation-defect'), true);
+  const queueIncident = active.cards.find((card) => card.workRef === 'work.vexstream.mobile-library.track-menu-presentation-defect');
+  assert.equal(queueIncident.effectDisposition, 'NO_EFFECTS');
 });
 
 test('persistent Keep Offline remains parked outside Project membership', () => {

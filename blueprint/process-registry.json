@@ -1,7 +1,7 @@
 {
   "schemaVersion": "vexwork.process-registry/v1",
   "registryRef": "registry.vexwork.processes.001",
-  "registryVersion": 3,
+  "registryVersion": 4,
   "purpose": "Map recurring work questions to the smallest reusable process source without making VexWork the executor or stealing process ownership from target repositories.",
   "processes": [
     {
@@ -25,6 +25,19 @@
         "docs/foundation/PROJECTS.md"
       ],
       "appliesWhen": "One coherent outcome has enough related work topology that future humans or agents would otherwise reconstruct grouping, decomposition, routes, or currentness from chat/provider history.",
+      "executionAuthority": "NONE"
+    },
+    {
+      "processRef": "process.vexwork.promote-derived-concern",
+      "label": "Promote a derived concern",
+      "purpose": "Explicitly decide whether one exact Derived Attention concern creates one canonical Work item or confirms existing Work without automatic ticket generation.",
+      "ownerRepositoryRef": "repo.vexwork",
+      "entryRefs": [
+        "docs/process/PROMOTE-DERIVED-CONCERN.md",
+        "docs/foundation/DERIVED-ATTENTION.md",
+        "docs/foundation/DERIVED-ATTENTION-PROJECTION.md"
+      ],
+      "appliesWhen": "One exact current entity, Work Lens, Evidence observation, and UNSATISFIED or UNKNOWN reason facet has been selected; existing Work has been reviewed; and an explicit create, confirm, hold, or reject decision is required.",
       "executionAuthority": "NONE"
     },
     {

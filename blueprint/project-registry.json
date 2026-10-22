@@ -1,7 +1,7 @@
 {
   "schemaVersion": "vexwork.project-registry/v1",
   "registryRef": "registry.vexwork.projects.001",
-  "registryVersion": 3,
+  "registryVersion": 5,
   "purpose": "Locate source-managed Projects and their Workgraph, Board, and optional agency-policy sources without making the registry another owner of work state.",
   "projects": [
     {
@@ -25,6 +25,22 @@
       "workgraphRef": "workgraph.vexwork.foundation",
       "definitionPath": "projects/vexlife-tocompletion/project.json",
       "boardViewPath": "projects/vexlife-tocompletion/board.view.json",
+      "agencyPolicyPathOrNull": null,
+      "workgraphPath": "workgraphs/public.json"
+    },
+    {
+      "projectRef": "project.vexlife.connected-services",
+      "workgraphRef": "workgraph.vexwork.foundation",
+      "definitionPath": "projects/vexlife-connected-services/project.json",
+      "boardViewPath": "projects/vexlife-connected-services/board.view.json",
+      "agencyPolicyPathOrNull": null,
+      "workgraphPath": "workgraphs/public.json"
+    },
+    {
+      "projectRef": "project.vexwork.operational-console",
+      "workgraphRef": "workgraph.vexwork.foundation",
+      "definitionPath": "projects/vexwork-operational-console/project.json",
+      "boardViewPath": "projects/vexwork-operational-console/board.view.json",
       "agencyPolicyPathOrNull": null,
       "workgraphPath": "workgraphs/public.json"
     }
