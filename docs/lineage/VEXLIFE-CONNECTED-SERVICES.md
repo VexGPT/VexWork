@@ -128,15 +128,18 @@ Phase 2 installed deterministic-fixture proof
   diagnosticRef=null
   current source/lifecycle L12=true
 
-current debt
-  A018-owned temporary private Serve port 10000 cleanup was not proven before result formation
-  this is harness cleanup debt and does not erase L1-L5
+A019 closure
+  A018-owned temporary private Serve port 10000 was already absent on cleanup re-observation
+  second observation confirmed mapping absent and AllowFunnel=false
+  no further network mutation was required
+  Phase 2 = COMPLETED
 
 next
-  exact A018-owned Serve cleanup only
-  -> require mapping gone
-  -> then Phase 2 completes
-  -> Phase 3 fresh-user Family establishment becomes READY
+  Phase 3 fresh-user Family establishment is READY
+  -> locate the rightful product trigger for the existing Family host runtime
+  -> establish/reuse canonical Family Space + initial GROUP room
+  -> re-prove installed Android L1-L5 through product establishment
+  -> do not let Android/bootstrap invent room identity
 ```
 
 Permanent interpretation:
@@ -171,6 +174,7 @@ The attempt number is recovery/evidence lineage, not canonical work progress. Re
 | A016 | Route-selected Android identity resolved uniquely and private Serve TCP passed by both Tailscale IPv4 and MagicDNS; only exact temporary Serve cleanup remained unproven. |
 | A017 | Exact cleanup-only re-observation found the A016 port-10000 mapping already gone and confirmed it remained absent; Phase 1 cleanup debt closed without further network mutation. |
 | A018 | Installed deterministic-fixture L1-L5 passed end-to-end with all gateway routes 200 and the seed message visible; only exact temporary Serve cleanup remained unproven. |
+| A019 | Cleanup-only re-observation found the A018 port-10000 mapping already gone and confirmed it remained absent; Phase 2 completed and Phase 3 became ready. |
 
 A012 fixture law:
 
@@ -183,7 +187,7 @@ ANDROID_READ_DOORWAY != FAMILY_HOST_ESTABLISHMENT
 
 ## Current checkpoint
 
-Phase 2 has earned its semantic product proof and is now VERIFYING.
+Phase 2 is complete.
 
 ```text
 L1 remote device possession = PASS
@@ -191,34 +195,29 @@ L2 remote authenticated session = PASS
 L3 private bounded gateway = PASS
 L4 current bounded Home/Family authority = PASS
 L5 canonical installed Conversation read = PASS
-L12 source/lifecycle current = PASS
-
-gateway:
-  status = 200
-  session challenge = 200
-  session establish = 200
-  Family bootstrap = 200
-  Family conversation / READ_THREAD_HISTORY = 200
-
-installed UI:
-  fresh process launch = true
-  Home doorway = observed
-  Family screen = observed
-  deterministic seed message = observed
-  diagnostic ref = none
+A018 temporary Serve cleanup = CLOSED by A019 re-observation
 ```
-
-The only current hold is exact cleanup of A018's temporary private Serve mapping on port 10000.
 
 Current VexWork state:
 
 ```text
 Phase 1 = COMPLETED
-Phase 2 = VERIFYING
-Phase 3 = WAITING_DEPENDENCIES
+Phase 2 = COMPLETED
+Phase 3 = READY
+Phase 4 = WAITING_DEPENDENCIES
 ```
 
-Do not replay A018. Perform cleanup only, then complete Phase 2 and release Phase 3.
+The next product question is **fresh-user Family establishment**. The deterministic proof fixture must stop being the room creator.
+
+```text
+fresh authenticated Home
+-> rightful Family host runtime
+-> canonical Family Space
+-> canonical initial GROUP room
+-> installed Android bootstrap/read
+```
+
+Do not let Android invent room identity. Do not make bootstrap silently create the room. Ground the existing product owner and rightful trigger first.
 
 ## Manual foundation / onboarding observations
 
@@ -317,27 +316,10 @@ README.md
 Current truth:
 
 ```text
-A018 terminal RETURN consumed.
-Installed deterministic-fixture L1-L5 is PROVEN.
-Phase 2 is VERIFYING, not failed.
-A019 cleanup-only carrier is QUALIFIED and waiting for one host execution.
-Android is not required for A019.
-Fresh-user hostFamily() remains held until cleanup closes.
-```
-
-Current A019 formation:
-
-```text
-purpose=close only A018-owned private Serve cleanup
-A018 returnSha256=e89e5beea91830be7a58b59ffcc537cbf95a713c21b2fce6dc2d458419675d6f
-expectedPort=10000
-expectedProxy=http://127.0.0.1:63594
-wrapperSha256=f578158e4c9167ad914bd1111f9c1a06600e80626f9bea5d3a99cf2510439e3d
-wrapperBytes=15798
-productReplay=false
-publicFunnelMutation=false
-tailnetPolicyMutation=false
-shieldsUpMutation=false
+A019 terminal RETURN consumed PASS.
+Phase 2 deterministic-fixture L1-L5 is COMPLETED.
+Phase 3 fresh-user Family establishment is READY.
+The next work is product-owner/source grounding before another lived package.
 ```
 
 <!-- [VXG RealForever][VEXWORK][LINEAGE][VEXLIFE-CONNECTED-SERVICES] -->
