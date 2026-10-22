@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.vexlife.tocompletion",
+  "label": "VexLife ToCompletion",
+  "purpose": "Carry VexLife from source architecture into a real installable, restart-durable local Companion experience with the selected Heretic model, then prove bounded typed local action and same-Conversation result reinjection without collapsing authority, source acceptance, runtime ownership, or lived proof.",
+  "rootWorkRefs": [
+    "work.vexlife.tocompletion.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vexlife"
+  ],
+  "sourceRefs": [
+    "github.issue.vexlife.866",
+    "github.pull.vexlife.912",
+    "github.pull.vexlife.915",
+    "github.pull.vexlife.916",
+    "projects/vexlife-tocompletion/README.md",
+    "docs/process/FORM-PROJECT.md"
+  ],
+  "formedAt": "2026-10-22T00:13:43.000Z"
+}
