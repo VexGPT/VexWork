@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
 import test from 'node:test';
 
 import {
@@ -31,21 +32,7 @@ const P = Object.freeze({
   gamma: Object.freeze({ runtime: 'NOT_APPLICABLE', modernization: 'NOT_APPLICABLE' }),
 });
 
-const registry = Object.freeze({
-  workClasses: ['POTENTIAL', 'OUTCOME', 'TASK', 'DEFECT'],
-  lifecycleStates: [
-    'CAPTURED', 'NEEDS_CLARIFICATION', 'DECOMPOSED', 'PLAN_VALIDATED',
-    'WAITING_DEPENDENCIES', 'READY', 'WAITING_RESOURCE', 'CONTEXT_ADMITTED',
-    'RUNNING', 'WAITING_TOOL', 'WAITING_HUMAN', 'VERIFYING', 'COMPLETED',
-    'CONVERGED', 'CLOSED', 'BLOCKED', 'FAILED_RECOVERABLE', 'PAUSED_AT_CHECKPOINT',
-    'SUPERSEDED', 'CANCELLED', 'HELD_UNKNOWN',
-  ],
-  allowedTransitions: {},
-  workDispositions: ['ACTIVE', 'PARKED'],
-  priorityClasses: ['IMMEDIATE', 'HIGH', 'NORMAL', 'LOW'],
-  authorityDispositions: ['NO_AUTHORITY', 'AUTHORIZED_BOUNDED', 'DENIED', 'HELD_UNKNOWN'],
-  effectDispositions: ['NO_EFFECTS', 'EFFECTS_BOUND', 'DENIED', 'HELD_UNKNOWN'],
-});
+const registry = JSON.parse(fs.readFileSync(new URL('../blueprint/work-registry.json', import.meta.url), 'utf8'));
 
 function workItem({
   workRef,
