@@ -17,7 +17,7 @@ This is the current architecture map. Follow the exact foundation whose question
 | Runtime persistence | Where does private/current Workgraph truth persist across restart without turning Git into the live database? | `docs/foundation/RUNTIME-PERSISTENCE.md`, `src/core/workgraph-runtime.mjs` | `test/workgraph-runtime.test.mjs` | FOUNDATION |
 | Planning | How do iterations, WIP, ordering and planning transactions persist? | lineage exists in VexLife P0B; portable owner not yet source-placed | future owner | HELD |
 | Reconciliation | How do exact provider/source/proof observations attach to work currentness? | lineage exists in VexLife P0B; portable owner not yet source-placed | future owner | HELD |
-| Human UI | What is the native/web Work Board experience? | no UI owner yet | future lived proof | HELD |
+| Human UI | How can a human navigate Projects, nested Outcomes/work, Board/dependencies and work-item detail without making the UI a work-state owner? | `index.html`, `workspace-reader.js`, `public/workspace.json` | `test/public-ui.test.mjs` + lived Pages proof | FOUNDATION |
 
 `FOUNDATION` means the initial portable contract exists in this repository. It does not mean every production integration is complete.
 

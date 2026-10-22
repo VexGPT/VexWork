@@ -64,10 +64,10 @@ The public artifact exposes only the fields needed for a human-facing dashboard:
 PUBLIC_DASHBOARD != WORKGRAPH
 PUBLIC_DASHBOARD != RUNTIME_CURRENTNESS_OWNER
 PUBLIC_DASHBOARD != EFFECT_AUTHORITY
-VEXTREME_VIEW != VEXWORK_TRUTH_OWNER
+PUBLIC_UI_VIEW != VEXWORK_TRUTH_OWNER
 ```
 
-A public consumer such as Vextreme may render this artifact without parsing VexWork's source-managed Workgraph or becoming another work-state owner.
+A public consumer may render this artifact without parsing VexWork's source-managed Workgraph or becoming another work-state owner. The canonical first-party public consumer is now VexWork's own GitHub Pages surface; sibling products may link to it without sharing UI ownership.
 
 `npm run dashboard:build` regenerates the artifact. `npm run dashboard:check` fails when the checked-in projection drifts from current source truth, and the aggregate deterministic review includes that check.
 
@@ -133,6 +133,29 @@ BOARD_VIEW != PRIMARY_HOME
 `public/work-dashboard.json` remains the small Foundation-board compatibility projection. New multi-Project readers should prefer `public/workspace.json`.
 
 `npm run workspace:build` regenerates the workspace projection. `npm run workspace:check` fails on drift and is part of deterministic review.
+
+### First-party web ownership
+
+VexWork's public semantic navigator is owned by this repository and served from the same Pages origin as `public/workspace.json`.
+
+```text
+VexWork source + public checkpoint
+-> VexWork Pages semantic navigator
+
+Vextreme / VexLife
+-> sibling links into VexWork
+-> no shared UI ownership required
+```
+
+The navigator reuses the proven interaction grammar of semantic descent and progressive disclosure, but VexWork owns its own work-specific presentation and lifecycle vocabulary.
+
+Permanent:
+
+```text
+PAGES_NAVIGATION != WORK_MUTATION
+STATE_HISTORY != RECOVERY_ATTEMPT_LOG
+VEXWORK_UI_OWNERSHIP != VEXTREME_SITE_OWNERSHIP
+```
 
 ## Views
 
