@@ -106,7 +106,9 @@ main Foundation run 39708257381 = PASS
 
 ## Current edge
 
-The current READY work item is:
+**Fresh HOST → installed Android L1–L5** is the current READY work.
+
+The canonical work item is:
 
 ```text
 work.vexlife.connected-services.vcs04.phase3.host-to-android-l1-l5
