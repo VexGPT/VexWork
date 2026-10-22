@@ -15,7 +15,7 @@ test('Project Work Board projects only the Project subgraph without becoming lif
   const board = projectWorkBoard({ project, graph, view, registry });
   const cards = board.lanes.flatMap((lane) => lane.cards);
   assert.equal(cards.length, 8);
-  assert.equal(graph.items.length, 21);
+  assert.equal(graph.items.length, 38);
   assert.equal(cards.some((card) => card.workRef === 'work.vexlife-android.vexstream.not-yet-downloaded-filter'), false);
   assert.equal(board.effects, false);
   assert.equal(board.executionAuthority, 'NONE');
