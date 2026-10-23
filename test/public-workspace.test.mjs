@@ -59,9 +59,22 @@ test('public workspace preserves recursive containment and Jira-like detail fiel
   assert.ok(Array.isArray(source.transitionHistory));
   const p5 = project.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p5.lived-continuity-learning');
   const p5G02 = project.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p5.g02-semantic-authority-materializer');
-  assert.equal(p5.state, 'RUNNING');
-  assert.equal(p5G02.state, 'RUNNING');
-  assert.deepEqual(p5.childWorkRefs, ['work.vexlife.tocompletion.p5.g02-semantic-authority-materializer']);
+  const p5G03 = project.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p5.g03.daily-memory-dream');
+  assert.equal(p5.state, 'PAUSED_AT_CHECKPOINT');
+  assert.equal(p5G02.state, 'COMPLETED');
+  assert.equal(p5G03.state, 'COMPLETED');
+  assert.deepEqual(p5.childWorkRefs, [
+    'work.vexlife.tocompletion.p5.g02-semantic-authority-materializer',
+    'work.vexlife.tocompletion.p5.g03.daily-memory-dream',
+  ]);
+  const productization = project.items.find((item) => item.workRef === 'work.vexlife.tocompletion.productization.ordinary-heretic-setup');
+  const setupConvergence = project.items.find((item) => item.workRef === 'work.vexlife.tocompletion.productization.setup-safety-convergence');
+  const hereticIntegration = project.items.find((item) => item.workRef === 'work.vexlife.tocompletion.productization.heretic-normal-start-integration');
+  assert.equal(productization.state, 'RUNNING');
+  assert.equal(setupConvergence.state, 'RUNNING');
+  assert.equal(hereticIntegration.state, 'WAITING_DEPENDENCIES');
+  assert.equal(project.lanes.find((lane) => lane.laneRef === 'lane.work.active').workRefs.includes(setupConvergence.workRef), true);
+  assert.equal(project.lanes.find((lane) => lane.laneRef === 'lane.work.planned').workRefs.includes(hereticIntegration.workRef), true);
   const p6 = project.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p6.cultivation-training-birth');
   const p7 = project.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p7.whole-product-expansion');
   assert.equal(p6.state, 'WAITING_DEPENDENCIES');
