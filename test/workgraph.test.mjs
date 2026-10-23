@@ -107,6 +107,9 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(vexboardContract.authorityDisposition, 'AUTHORIZED_BOUNDED');
   assert.equal(vexboardContract.effectDisposition, 'EFFECTS_BOUND');
   assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexboard.boardgraph-contract.running.20261023a'));
+  assert.equal(vexboardContract.sourceRefs.includes('src/shared/vexboard-model.mjs'), true);
+  assert.equal(vexboardContract.sourceRefs.includes('vexboard/index.html'), true);
+  assert.equal(vexboardContract.sourceRefs.includes('vexboard/self-map.json'), true);
 
   const blueprintRoot = graph.items.find((item) => item.workRef === 'work.vexlife.blueprint-source-of-truth.outcome');
   const blueprintPracticum = graph.items.find((item) => item.workRef === 'work.vexlife.blueprint-source-of-truth.play-pause-practicum');
