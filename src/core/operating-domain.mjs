@@ -33,7 +33,7 @@ function exactKeys(value, keys, label) {
   assert(JSON.stringify(Object.keys(value).sort()) === JSON.stringify([...keys].sort()), `${label} has unexpected fields`);
 }
 
-function binding(value, { kind, refField, extraKeys = [], normalizeExtra = (entry) => entry }) {
+function binding(value, { kind, refField, extraKeys = [], normalizeExtra = () => ({}) }) {
   const keys = [refField, 'label', 'ownerRepositoryRef', 'sourceRefs', ...extraKeys];
   exactKeys(value, keys, `${kind} binding`);
   const ref = stableRef(value[refField], `${kind}.${refField}`);
@@ -107,6 +107,8 @@ export function createOperatingDomain(input, { repositoryRegistry, processRegist
   });
 
   const allBindings = [...capabilities, ...populations, ...lenses, ...processes, ...attentionQueues];
+  const bindingOwnerRefs = [...new Set(allBindings.map((row) => row.ownerRepositoryRef))].sort();
+  assertKnownRepositoryRefs(bindingOwnerRefs, repositoryRegistry);
   for (const row of allBindings) {
     assert(repositorySet.has(row.ownerRepositoryRef), `binding owner ${row.ownerRepositoryRef} must be included in repositoryRefs`);
   }
