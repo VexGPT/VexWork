@@ -237,7 +237,7 @@ Default engineering habits:
 - a deterministic bug discovered in review or lived use gains a regression fixture before or with its repair;
 - checked-in generated projections are regenerated or checked from their rightful source rather than hand-edited into agreement;
 - changes that compose with shared Workgraph/Project truth test coexistence, not only an empty happy-path fixture;
-- coverage is inspected as a blind-spot signal, not used as a substitute for assertions, semantic review, provider evidence, or lived proof;
+- coverage is inspected as a blind-spot signal over durable executable source, not inflated by test-file self-coverage and not used as a substitute for assertions, semantic review, provider evidence, or lived proof;
 - a numerical coverage floor is earned from an exact measured baseline and may ratchet upward; do not invent a percentage merely to make a dashboard green;
 - do not delete, weaken, skip, or narrow a legitimate regression test merely to permit a new feature.
 
