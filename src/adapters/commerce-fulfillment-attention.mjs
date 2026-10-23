@@ -179,11 +179,11 @@ export function createCommerceFulfillmentAttention(input, {
     ? `Fulfillment acknowledged: ${item.label}`
     : `Fulfill ${item.label}`;
 
-  const combinedSourceRefs = refs([
+  const combinedSourceRefs = refs([...new Set([
     ...input.sourceRefs,
     ...item.sourceRefs,
     ...fulfillment.sourceRefs,
-  ], 'combined sourceRefs', { allowEmpty: false });
+  ])], 'combined sourceRefs', { allowEmpty: false });
 
   return createAttentionQueueSnapshot({
     schemaVersion: ATTENTION_QUEUE_SNAPSHOT_SCHEMA,
