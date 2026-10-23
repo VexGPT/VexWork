@@ -77,9 +77,12 @@ test('Operational Console board distinguishes admitted evolution from held futur
   assert.equal(done.cards.some((card) => card.workRef === 'work.vexwork.operational-console.derived-work-contract'), true);
   assert.equal(done.cards.some((card) => card.workRef === 'work.vexwork.operational-console.derived-work-projection'), true);
   assert.equal(done.cards.some((card) => card.workRef === 'work.vexwork.operational-console.derived-work-promotion'), true);
-  assert.equal(ready.cards.some((card) => card.workRef === 'work.vexwork.operational-console.vexsite-dogfood'), true);
-  assert.equal(ready.cards.some((card) => card.workRef === 'work.vexwork.operational-console.vexsite-population-scope'), true);
-  assert.equal(planned.cards.some((card) => card.workRef === 'work.vexwork.operational-console.vexsite-localization-lens'), true);
+  assert.equal(active.cards.some((card) => card.workRef === 'work.vexwork.operational-console.vexsite-dogfood'), true);
+  assert.equal(active.cards.some((card) => card.workRef === 'work.vexwork.operational-console.vexsite-patient-zero-proof'), true);
+  assert.equal(done.cards.some((card) => card.workRef === 'work.vexwork.operational-console.vexsite-population-scope'), true);
+  assert.equal(done.cards.some((card) => card.workRef === 'work.vexwork.operational-console.vexsite-localization-lens'), true);
+  assert.equal(ready.cards.some((card) => card.workRef === 'work.vexwork.operational-console.vexsite-dogfood'), false);
+  assert.equal(planned.cards.some((card) => card.workRef === 'work.vexwork.operational-console.vexsite-localization-lens'), false);
 
   const lot = projectParkingLot({ graph, registry, repositoryRefOrNull: 'repo.vexwork' });
   const routing = lot.items.find((item) => item.workRef === 'work.vexwork.operational-console.multi-fulfiller-routing');
