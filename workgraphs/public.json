@@ -2110,7 +2110,7 @@
       "label": "Reusable small-commerce starter",
       "purpose": "Apply the Operating Domain foundation to a reusable small-commerce starter covering catalog, public storefront/site, sale state, inventory state and fulfillment attention without making VexWork the commerce database.",
       "workClass": "OUTCOME",
-      "state": "READY",
+      "state": "RUNNING",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexwork.operational-console.operating-domain-template"
@@ -2120,12 +2120,16 @@
       ],
       "sourceRefs": [
         "projects/vexwork-operational-console/README.md",
-        "github.pull.vexwork.71"
+        "github.pull.vexwork.71",
+        "github.pull.vexwork.73",
+        "github.commit.vexwork.d316b570a14d3b080e69291cf9186bce53365280",
+        "vexrelay.return.vexwork.commerce-item-model.a005.sha256.daf72abd8f8d96a03a1249d7ed4955a5234ea870a6fb22815394a82535a9f12b",
+        "projects/vexwork-operational-console/COMMERCE-ITEM-MODEL.md"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T03:20:00.000Z",
-      "updatedAt": "2026-10-23T04:34:26.003Z",
+      "updatedAt": "2026-10-23T04:51:11.919Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -2137,7 +2141,7 @@
       "label": "Flexible commerce item model",
       "purpose": "Model stable sellable-item identity and state while allowing images, descriptions, condition, provenance, price, listing URL, sold date and expected shipment date to remain optional unless a selected process requires them.",
       "workClass": "TASK",
-      "state": "READY",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexwork.operational-console.operating-domain-contract"
@@ -2147,12 +2151,17 @@
       ],
       "sourceRefs": [
         "projects/vexwork-operational-console/README.md",
-        "github.pull.vexwork.71"
+        "github.pull.vexwork.71",
+        "github.pull.vexwork.73",
+        "github.commit.vexwork.d316b570a14d3b080e69291cf9186bce53365280",
+        "vexrelay.return.vexwork.commerce-item-model.a005.sha256.daf72abd8f8d96a03a1249d7ed4955a5234ea870a6fb22815394a82535a9f12b",
+        "projects/vexwork-operational-console/COMMERCE-ITEM-MODEL.md",
+        "src/adapters/commerce-item-model.mjs"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T03:20:00.000Z",
-      "updatedAt": "2026-10-23T04:34:26.004Z",
+      "updatedAt": "2026-10-23T04:53:01.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -2164,7 +2173,7 @@
       "label": "AI-managed storefront/site surface",
       "purpose": "Prove that a human can add or revise an item and its pictures through an AI-assisted environment that updates a rightful managed public site/storefront while VexWork remains the work/navigation console.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "READY",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexwork.operational-console.commerce-item-model"
@@ -2173,12 +2182,14 @@
         "repo.vexwork"
       ],
       "sourceRefs": [
-        "projects/vexwork-operational-console/README.md"
+        "projects/vexwork-operational-console/README.md",
+        "github.pull.vexwork.73",
+        "work.vexwork.operational-console.commerce-item-model"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T03:20:00.000Z",
-      "updatedAt": "2026-10-22T03:20:00.000Z",
+      "updatedAt": "2026-10-23T04:53:01.001Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -2190,7 +2201,7 @@
       "label": "Sale and fulfillment attention",
       "purpose": "Turn a provider/manual sale observation into truthful inventory/listing state plus bounded fulfillment attention, optional expected shipment date and a human acknowledgement boundary without copying protected customer data into public VexWork source.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "READY",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexwork.operational-console.attention-queue-contract",
@@ -2200,12 +2211,15 @@
         "repo.vexwork"
       ],
       "sourceRefs": [
-        "projects/vexwork-operational-console/README.md"
+        "projects/vexwork-operational-console/README.md",
+        "github.pull.vexwork.73",
+        "work.vexwork.operational-console.commerce-item-model",
+        "work.vexwork.operational-console.attention-queue-contract"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T03:20:00.000Z",
-      "updatedAt": "2026-10-22T03:20:00.000Z",
+      "updatedAt": "2026-10-23T04:53:01.002Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -4219,6 +4233,35 @@
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.commerce-ai-site.ready.item-model-complete",
+      "workRef": "work.vexwork.operational-console.commerce-ai-site",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "Commerce item model completed on merged PR #73; the AI-managed storefront/site surface dependency is now clear.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.73",
+        "work.vexwork.operational-console.commerce-item-model"
+      ],
+      "createdAt": "2026-10-23T04:53:01.001Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.commerce-fulfillment-attention.ready.item-model-complete",
+      "workRef": "work.vexwork.operational-console.commerce-fulfillment-attention",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "Both declared dependencies are complete: the Attention Queue foundation and Commerce item model are accepted on main, so sale/fulfillment attention may begin.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.73",
+        "work.vexwork.operational-console.commerce-item-model",
+        "work.vexwork.operational-console.attention-queue-contract"
+      ],
+      "createdAt": "2026-10-23T04:53:01.002Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
       "transitionRef": "transition.vexwork.operational-console.commerce-item-model.ready.p3-terminal",
       "workRef": "work.vexwork.operational-console.commerce-item-model",
       "priorState": "WAITING_DEPENDENCIES",
@@ -4233,6 +4276,47 @@
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.commerce-item-model.running.sourceowner-a005",
+      "workRef": "work.vexwork.operational-console.commerce-item-model",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "SourceOwner A005 passed npm run review for the exact three-path Commerce item-model candidate.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "vexrelay.return.vexwork.commerce-item-model.a005.sha256.daf72abd8f8d96a03a1249d7ed4955a5234ea870a6fb22815394a82535a9f12b"
+      ],
+      "createdAt": "2026-10-23T04:51:11.919Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.commerce-item-model.verifying.assurance-a005",
+      "workRef": "work.vexwork.operational-console.commerce-item-model",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Fresh independent semantic Assurance found the exact Commerce item-model candidate clear with no ownership, privacy, lifecycle, or optional-field boundary findings.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.73",
+        "vexrelay.return.vexwork.commerce-item-model.a005.sha256.daf72abd8f8d96a03a1249d7ed4955a5234ea870a6fb22815394a82535a9f12b"
+      ],
+      "createdAt": "2026-10-23T04:52:44.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.commerce-item-model.completed.pr73",
+      "workRef": "work.vexwork.operational-console.commerce-item-model",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "PR #73 merged the exact A005-proven Commerce item model, and the merge commit introduced zero file delta beyond the assured candidate.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.73",
+        "github.commit.vexwork.d316b570a14d3b080e69291cf9186bce53365280"
+      ],
+      "createdAt": "2026-10-23T04:53:01.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
       "transitionRef": "transition.vexwork.operational-console.commerce-template.ready.p3-terminal",
       "workRef": "work.vexwork.operational-console.commerce-template",
       "priorState": "WAITING_DEPENDENCIES",
@@ -4244,6 +4328,20 @@
         "work.vexwork.operational-console.operating-domain-template"
       ],
       "createdAt": "2026-10-23T04:34:26.003Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.commerce-template.running.item-model-a005",
+      "workRef": "work.vexwork.operational-console.commerce-template",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Commerce item-model SourceOwner A005 passed the exact repository review floor; P4 entered active implementation with its first reusable domain contract under proof.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "vexrelay.return.vexwork.commerce-item-model.a005.sha256.daf72abd8f8d96a03a1249d7ed4955a5234ea870a6fb22815394a82535a9f12b",
+        "work.vexwork.operational-console.commerce-item-model"
+      ],
+      "createdAt": "2026-10-23T04:51:11.919Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
