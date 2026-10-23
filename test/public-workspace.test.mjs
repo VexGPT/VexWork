@@ -71,10 +71,11 @@ test('public workspace preserves recursive containment and Jira-like detail fiel
   const setupConvergence = project.items.find((item) => item.workRef === 'work.vexlife.tocompletion.productization.setup-safety-convergence');
   const hereticIntegration = project.items.find((item) => item.workRef === 'work.vexlife.tocompletion.productization.heretic-normal-start-integration');
   assert.equal(productization.state, 'RUNNING');
-  assert.equal(setupConvergence.state, 'RUNNING');
-  assert.equal(hereticIntegration.state, 'WAITING_DEPENDENCIES');
-  assert.equal(project.lanes.find((lane) => lane.laneRef === 'lane.work.active').workRefs.includes(setupConvergence.workRef), true);
-  assert.equal(project.lanes.find((lane) => lane.laneRef === 'lane.work.planned').workRefs.includes(hereticIntegration.workRef), true);
+  assert.equal(setupConvergence.state, 'COMPLETED');
+  assert.equal(hereticIntegration.state, 'RUNNING');
+  assert.equal(project.lanes.find((lane) => lane.laneRef === 'lane.work.done').workRefs.includes(setupConvergence.workRef), true);
+  assert.equal(project.lanes.find((lane) => lane.laneRef === 'lane.work.active').workRefs.includes(hereticIntegration.workRef), true);
+  assert.equal(project.lanes.find((lane) => lane.laneRef === 'lane.work.planned').workRefs.includes(hereticIntegration.workRef), false);
   const p6 = project.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p6.cultivation-training-birth');
   const p7 = project.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p7.whole-product-expansion');
   assert.equal(p6.state, 'WAITING_DEPENDENCIES');
