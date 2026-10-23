@@ -108,7 +108,48 @@ jobs:
           });
 
           if (result.state !== 'ACCEPTED') throw new Error('transition not accepted');
-          fs.writeFileSync('workgraphs/public.json', JSON.stringify(result.graph, null, 2) + '\n');
+
+          // Canonical checked-in Workgraph source intentionally omits derived semanticFingerprint
+          // members. Keep fingerprints as runtime validation evidence, not duplicated source bytes.
+          const stripStoredFingerprints = (value) => {
+            if (Array.isArray(value)) return value.map(stripStoredFingerprints);
+            if (value && typeof value === 'object') {
+              return Object.fromEntries(
+                Object.entries(value)
+                  .filter(([key]) => key !== 'semanticFingerprint')
+                  .map(([key, child]) => [key, stripStoredFingerprints(child)]),
+              );
+            }
+            return value;
+          };
+          fs.writeFileSync(
+            'workgraphs/public.json',
+            JSON.stringify(stripStoredFingerprints(result.graph), null, 2) + '\n',
+          );
+
+          const projectTestPath = 'test/vexstream-mobile-library-project.test.mjs';
+          let projectTest = fs.readFileSync(projectTestPath, 'utf8');
+          projectTest = projectTest
+            .replace(
+              "test('durable device storage is Ready with a durable Android claim while activation remains protected', () => {",
+              "test('durable device storage is Active after the approved exact handshake', () => {",
+            )
+            .replace("  assert.equal(item.state, 'READY');", "  assert.equal(item.state, 'RUNNING');")
+            .replace(
+              "  const ready = board.lanes.find((lane) => lane.laneRef === 'lane.work.ready');\n  assert.equal(ready.cards.some((card) => card.workRef === item.workRef), true);",
+              "  const active = board.lanes.find((lane) => lane.laneRef === 'lane.work.active');\n  assert.equal(active.cards.some((card) => card.workRef === item.workRef), true);",
+            );
+          fs.writeFileSync(projectTestPath, projectTest);
+
+          const workgraphTestPath = 'test/workgraph.test.mjs';
+          let workgraphTest = fs.readFileSync(workgraphTestPath, 'utf8');
+          workgraphTest = workgraphTest
+            .replace('  assert.equal(graph.transitions.length, 63);', '  assert.equal(graph.transitions.length, 64);')
+            .replace(
+              "  assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.ready.20261022'));",
+              "  assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.ready.20261022'));\n  assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.running.20261022'));",
+            );
+          fs.writeFileSync(workgraphTestPath, workgraphTest);
 
           const readmePath = 'projects/vexstream-mobile-library/README.md';
           let readme = fs.readFileSync(readmePath, 'utf8');
@@ -137,6 +178,6 @@ jobs:
           git rm .github/workflows/vexstream-device-storage-activate-a001.yml
           git config user.name "VexGPT"
           git config user.email "victor.gong@vextreme24.com"
-          git add workgraphs/public.json public/workspace.json public/work-dashboard.json projects/vexstream-mobile-library/README.md
+          git add workgraphs/public.json public/workspace.json public/work-dashboard.json projects/vexstream-mobile-library/README.md test/vexstream-mobile-library-project.test.mjs test/workgraph.test.mjs
           git commit -m "[VexStream Project] Activate durable device storage" -m "Consume Victor's exact Ready -> Active handshake and move durable device storage into RUNNING without widening rediscovery, migration, Clear Data, persistent sync, or Connected Services scope." -m "[VXG RealForever]"
           git push origin HEAD:VXG-102226-vexstream-device-storage-active-a001
