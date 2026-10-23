@@ -631,6 +631,434 @@ observed journey contains unmodeled behavior
 
 The comparison is evidence. It does not silently rewrite the design or product source.
 
+## Reusable case vocabulary
+
+VexBoard should preserve representative scenarios as first-class design evidence without prematurely turning every example into product schema.
+
+The first architecture uses **case labels** in source documentation:
+
+```text
+PRIME_CASE
+  a representative scenario that exercises several core VexBoard capabilities
+  and is valuable enough to shape the product around
+
+PATIENT_ZERO_CASE
+  a bounded implementation/proof scenario used to establish that a product
+  threshold actually works
+
+SOURCE_PROJECTION_CASE
+  a case where another accepted source owns the meaning and VexBoard must
+  project it without becoming the semantic owner
+
+REGRESSION_CASE
+  a previously observed misclassification, failure, or confusing path that
+  should remain reproducible so the product can prove it no longer invites
+  the same error
+
+EDGE_CONDITION_CASE
+  a scenario where superficially similar facts can lead to different valid
+  outcomes and the deciding condition must remain visible
+```
+
+One case may carry several labels.
+
+For now these labels are **architecture/documentation vocabulary**, not accepted BoardGraph schema fields. The first implementation should earn whether they become typed metadata, annotations, test fixtures, or another smaller reusable mechanism.
+
+```text
+CASE_LABEL != BOARDGRAPH_SCHEMA_FIELD_YET
+EXAMPLE != ACCEPTED_PROCESS_TRUTH
+REGRESSION_CASE != AUTOMATIC_POLICY
+```
+
+A useful case record should preserve enough context that a fresh instance can understand and traverse the problem without reconstructing the originating conversation:
+
+```text
+caseRef
+caseLabels[]
+humanSituation
+questionToResolve
+sourceOwners[]
+observedFacts[]
+decisionConditions[]
+expectedJourney[]
+knownWrongOrUnsafeJourney[]
+completionPredicate
+proofObservations[]
+relatedBoardRefs[]
+```
+
+The exact storage shape remains provisional. The information is what matters.
+
+## Prime case — Project formation under shared aggregate contention
+
+```text
+caseRef =
+  case.vexboard.vexwork-project-formation-shared-aggregate-contention
+
+caseLabels =
+  PRIME_CASE
+  PATIENT_ZERO_CASE
+  SOURCE_PROJECTION_CASE
+  REGRESSION_CASE
+  EDGE_CONDITION_CASE
+```
+
+### Why this case matters
+
+This case came from VexBoard's own formation.
+
+The human had already supplied enough product intention, examples, architectural pressure, reusable-module expectations, open design questions, and desired patient-zero behavior to form VexBoard as a durable VexWork Project.
+
+At the time, other live VexWork trajectories were also changing shared aggregate source:
+
+```text
+VexLife ToCompletion / PR #27
+  workgraphs/public.json
+  public/workspace.json
+  test/workgraph.test.mjs
+
+VexLife Blueprint SOT / PR #35
+  workgraphs/public.json
+  public/workspace.json
+  blueprint/project-registry.json
+  related aggregate tests
+
+VexBoard formation
+  needed its own project sources
+  plus registration in the same aggregate surfaces
+```
+
+The VexBoard-owned architecture path itself was disjoint:
+
+```text
+projects/vexboard/README.md
+```
+
+The shared paths represented **convergence pressure**, not another lane owning VexBoard meaning.
+
+### Source owners that must remain distinct
+
+The correct decision requires combining several existing source owners without collapsing them:
+
+```text
+process.vexwork.form-project
+  owns the reusable Project-formation route
+
+VexWork Process Map
+  owns routing to that process source
+  but does not execute or import its internal semantics
+
+Operations coordination
+  owns classification of related work, active overlap,
+  reconciliation conflict, and protected semantic/authority conflict
+
+Workgraph Composition
+  explains that independent work families repeatedly touching
+  workgraphs/public.json is physical source contention
+  and that ONE_SEMANTIC_WORKGRAPH != ONE_AUTHORED_FILE
+
+live PR / Git state
+  owns which exact paths and candidate histories currently overlap
+```
+
+VexBoard should project these owners through references and provenance. It should not rewrite their rules into a competing process owner.
+
+### The human question
+
+```text
+Human has approved formation of VexBoard.
+
+Other live PRs touch workgraphs/public.json,
+public/workspace.json, and/or project-registry.json.
+
+Is VexBoard Project formation blocked?
+```
+
+A flat reading of filenames can make the situation look like:
+
+```text
+same file touched
+-> another writer exists
+-> stop
+```
+
+That is the regression this case must expose.
+
+### The deciding classification
+
+The useful decision is not merely:
+
+```text
+same path?
+```
+
+It is:
+
+```text
+same path?
+  -> yes
+
+same semantic work / owner?
+  -> no
+
+foreign active ownership of VexBoard meaning?
+  -> no
+
+shared generated projection?
+  -> regenerate after canonical-source reconciliation
+
+shared authored aggregate?
+  -> preserve both semantic additions through ordinary-forward reconciliation
+
+protected semantic or authority conflict?
+  -> no
+
+therefore
+  -> CONTINUE PROJECT FORMATION
+  -> reconcile aggregate currentness at convergence
+```
+
+The distinction should remain visually and semantically explicit:
+
+```text
+PHYSICAL_FILE_OVERLAP
+!=
+SEMANTIC_OWNERSHIP_CONFLICT
+
+RELATED_WORK_EXISTS
+!=
+BLOCKER
+
+GENERATED_OUTPUT_OVERLAP
+!=
+MULTIPLE_OUTPUT_OWNERS
+
+AGGREGATE_RECONCILIATION_REQUIRED
+!=
+PROJECT_FORMATION_BLOCKED
+```
+
+### Authored aggregate versus generated projection
+
+This case also proves that VexBoard must expose **artifact role**, not merely filename overlap.
+
+Current VexWork relationships include:
+
+```text
+Project definitions
++ Board views
++ Project Registry
++ canonical Workgraph
+        ↓
+scripts/build-public-workspace.mjs
+        ↓
+public/workspace.json
+```
+
+So:
+
+```text
+public/workspace.json
+  generated checked-in projection
+  -> reconcile canonical source
+  -> regenerate
+
+workgraphs/public.json
+  current canonical authored aggregate
+  -> independent semantic families may collide physically
+  -> preserve both meanings during ordinary-forward reconciliation
+
+blueprint/project-registry.json
+  source-managed aggregate locator
+  -> independent Project registrations may collide physically
+  -> reconcile entries rather than suppress one Project
+```
+
+The longer-term Workgraph Composition direction should also be visible:
+
+```text
+work-family segment A
+work-family segment B
+work-family segment C
+        ↓
+deterministic composition
+        ↓
+one canonical Workgraph
+        ↓
+generated public workspace
+```
+
+This is a strong example of why VexBoard needs recursive depth: a worker should be able to enter `physical overlap`, then enter `generated versus authored aggregate`, then inspect the rightful source owner and return to the main decision path.
+
+### Expected BoardJourney
+
+A correct traversal of the case should be representable as:
+
+```text
+Form Project
+-> inspect existing work / current source
+-> detect shared aggregate path
+-> classify relationship
+-> physical overlap
+-> semantic owners differ
+-> no protected conflict
+-> continue Project formation
+-> form Project + Board + bounded Work
+-> register Project
+-> prove source relationships
+-> ordinary-forward reconcile whichever aggregate writer merges first
+```
+
+The journey must preserve the exact branch conditions that justified continuing.
+
+A later revisit to `shared aggregate path` remains a real BoardJourney step rather than being discarded as a duplicate node visit.
+
+### Observed regression journey
+
+The historical misclassification was:
+
+```text
+human outcome sufficiently formed
+-> shared aggregate writers observed
+-> overlap interpreted too strongly
+-> only collision-free architecture README merged
+-> canonical Project registration deferred
+-> VexBoard absent from normal Projects discovery
+```
+
+Nothing in that observed journey changed VexBoard's product intention. The defect was the decision path.
+
+The corrective journey was:
+
+```text
+re-read source ownership + coordination meaning
+-> classify aggregate overlap as reconciliation pressure
+-> form project.json
+-> form board.view.json
+-> add bounded work.vexboard.* decomposition
+-> register project.vexboard
+-> regenerate public workspace
+-> prove deterministic projection
+-> merge canonical formation
+```
+
+### What VexBoard should prove with this case
+
+A source-projected board for this case should let a fresh worker answer, without reconstructing several prose documents manually:
+
+1. **Which source owns each decision?**
+2. **What fact is being classified at this node?**
+3. **Which conditions actually block Project formation?**
+4. **Which conditions merely require later reconciliation?**
+5. **Is the overlapping artifact authored source or generated projection?**
+6. **What work can continue while one convergence effect is held?**
+7. **Why did the expected path continue while the historical path stopped?**
+8. **What exact source references support the chosen branch?**
+9. **Where can the worker enter deeper detail and return without losing the main journey?**
+10. **Can the current coordinate be recovered without relying on the originating chat?**
+
+### Prime-case acceptance observations
+
+The case should eventually exercise the same BoardGraph through at least two projections:
+
+```text
+PROCESS LENS
+  formation steps + decisions + continuation/reconciliation branches
+
+ARCHITECTURE / SOURCE LENS
+  process owner
+  coordination owner
+  Workgraph Composition owner
+  canonical aggregate artifacts
+  generated workspace artifact
+  live PR/source references
+```
+
+Useful semantic objects include:
+
+```text
+PROCESS
+  Form VexWork Project
+  Reconcile aggregate currentness
+  Regenerate public workspace
+
+DECISION
+  Existing Work already represents truth?
+  Shared path?
+  Generated or authored?
+  Same semantic owner?
+  Active incompatible overlap?
+  Protected semantic/authority conflict?
+
+ARTIFACT
+  project.json
+  board.view.json
+  blueprint/project-registry.json
+  workgraphs/public.json
+  public/workspace.json
+
+REFERENCE
+  process.vexwork.form-project
+  Process Map source
+  Operations coordination source
+  Workgraph Composition source
+  exact live PR / commit refs
+
+PORTAL
+  enter overlap classification
+  enter generated-artifact relationship
+  enter Workgraph Composition detail
+```
+
+The board should make the correct path easier to perceive **without simplifying away the distinction that sometimes an overlap really is blocking**.
+
+### Edge-condition variants
+
+The same case family should include controlled variants so VexBoard does not teach the false opposite rule that all overlap is harmless.
+
+```text
+VARIANT A — disjoint semantic additions to one aggregate
+  expected = continue + reconcile
+
+VARIANT B — same generated projection, disjoint canonical inputs
+  expected = reconcile inputs + regenerate
+
+VARIANT C — two writers changing the same Work item's lifecycle truth
+  expected = semantic/currentness conflict; do not mechanically union
+
+VARIANT D — two writers independently redesigning the same BoardGraph contract
+  expected = active semantic ownership conflict; coordinate before mutation
+
+VARIANT E — protected authority decision differs
+  expected = hold only the protected effect and route to rightful decision owner
+```
+
+This is why the case is both a `REGRESSION_CASE` and an `EDGE_CONDITION_CASE`: VexBoard must preserve the boundary between **continue** and **hold**, not merely visualize one preferred answer.
+
+### Relation to intended-versus-observed proof
+
+This case is also an early non-UI example of the intended-versus-observed comparison model:
+
+```text
+source-derived intended decision journey
+        vs
+observed worker decision journey
+        ↓
+semantic divergence
+        ↓
+human + AI can inspect the first wrong branch
+```
+
+That same comparison shape later applies to:
+
+```text
+VexBoard intended experience
+        vs
+Screencrawler observed product journey
+```
+
+The product therefore earns one reusable comparison concept across operational processes and user experiences.
+
 ## First foundation threshold
 
 The first implementation should be deliberately smaller than “clone Lucidspark and Figma.”
@@ -655,7 +1083,9 @@ The human must be able to inspect the whole design, enter the deeper module, ret
 
 ### Patient zero B — projected current process
 
-The same semantic/rendering foundation should project one existing source-owned VexWork process—initially `process.vexwork.form-project` is a strong candidate—without copying ownership or making the projection editable as accepted process truth.
+The same semantic/rendering foundation should project one existing source-owned VexWork process without copying ownership or making the projection editable as accepted process truth.
+
+The **prime case** above is the preferred initial proof: project `process.vexwork.form-project` together with the exact referenced coordination/composition decision sources needed to answer the shared-aggregate-contention scenario truthfully.
 
 The projection should show:
 
@@ -794,13 +1224,17 @@ Exact Work states, dependencies, authority/effect dispositions, transition histo
 ## Current continuation
 
 ```text
-architecture source
--> review this Project understanding with Victor
--> keep the source-only candidate disjoint from active aggregate writers
--> ordinary-forward reconcile after relevant Project/Workgraph writers settle
--> form canonical Project + Workgraph + Board + generated workspace
--> select the first BoardGraph patient-zero implementation threshold
--> separately establish implementation authority and source membrane
+architecture source                         CURRENT
+canonical Project + Workgraph + Board       CURRENT
+public Projects projection                  CURRENT
+prime Project-formation regression case     SOURCE-PLACED
+
+next product frontier
+-> BoardGraph semantic contract
+-> use authored website patient zero + prime source-projection case
+   to earn the smallest reusable graph/schema vocabulary
+-> keep case labels provisional until implementation proves the right storage shape
+-> separately establish implementation authority and source membrane before mutation
 ```
 
 No human host action is required to preserve this design.
