@@ -32,15 +32,15 @@ test('ToCompletion surfaces the real deep active frontier without requiring desc
   ]);
 });
 
-test('Operational Console keeps concurrent Terrain review and active VexSite as separate workfront rows', () => {
+test('Operational Console keeps concurrent Terrain review and Ready Operating Domain as separate workfront rows', () => {
   const p = project('project.vexwork.operational-console');
   const rows = projectWorkfronts(p, { maxRows: 8 }).rows;
   assert.equal(rows.some((row) => row.scopeRef === 'work.vexwork.operational-console.relational-terrain'), true);
-  assert.equal(rows.some((row) => row.scopeRef === 'work.vexwork.operational-console.vexsite-dogfood'), true);
+  assert.equal(rows.some((row) => row.scopeRef === 'work.vexwork.operational-console.operating-domain-template'), true);
   const terrain = rows.find((row) => row.scopeRef === 'work.vexwork.operational-console.relational-terrain');
-  const vexsite = rows.find((row) => row.scopeRef === 'work.vexwork.operational-console.vexsite-dogfood');
+  const domain = rows.find((row) => row.scopeRef === 'work.vexwork.operational-console.operating-domain-template');
   assert.equal(terrain.currentItems.some((item) => item.state === 'VERIFYING'), true);
-  assert.equal(vexsite.currentItems.some((item) => item.state === 'RUNNING'), true);
+  assert.equal(domain.currentItems.some((item) => item.state === 'READY'), true);
 });
 
 test('Connected Services Roadmap derives next-next-next from dependency truth', () => {
