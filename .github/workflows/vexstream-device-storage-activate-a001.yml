@@ -1,0 +1,142 @@
+name: VexStream device storage activate A001
+on:
+  push:
+    branches:
+      - VXG-102226-vexstream-device-storage-active-a001
+permissions:
+  contents: write
+jobs:
+  activate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Apply approved Ready to Active handshake
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --input-type=module <<'EOF'
+          import fs from 'node:fs';
+          import {
+            createProjectAgencyPolicy,
+            createTransitionProposal,
+            createHumanTransitionResponse,
+            createAiTransitionConfirmation,
+            requestProjectTransition,
+          } from './src/core/transition-handshake.mjs';
+          import { createProject, createWorkgraph } from './src/core/workgraph.mjs';
+
+          const read = (path) => JSON.parse(fs.readFileSync(path, 'utf8'));
+          const registry = read('blueprint/work-registry.json');
+          const project = createProject(read('projects/vexstream-mobile-library/project.json'));
+          const graph = createWorkgraph(read('workgraphs/public.json'), registry);
+          const policy = createProjectAgencyPolicy(read('projects/vexstream-mobile-library/agency.policy.json'), registry);
+
+          const workRef = 'work.vexstream.mobile-library.device-storage';
+          const actorRef = 'actor.local-vex-operations.vexstream-mobile-library';
+          const proposal = createTransitionProposal({
+            project,
+            graph,
+            policy,
+            registry,
+            proposalRef: 'proposal.vexstream.mobile-library.device-storage.ready-active.20261022a',
+            workRef,
+            nextState: 'RUNNING',
+            whatBecameTrue: 'Durable shared-device storage is source-admitted, current against Android main, non-overlapping with active Android work, and the bounded MediaStore realization and failure semantics are explicit.',
+            nextIntent: 'Implement the bounded Android durable device-media owner, prove integrity and failure behavior, publish a reviewable exact-head candidate, then continue to rediscovery rather than stopping at source completion.',
+            attention: [
+              'The implementation must preserve SHA-256 and exact byte-length identity before publication.',
+              'Rediscovery, private-download migration, destructive Clear Data proof, and persistent Keep Offline remain separately governed.',
+            ],
+            heldBoundaries: [
+              'No persistent Keep Offline or sync semantics.',
+              'No claim that storage-only proof equals rediscovery or terminal Clear Data acceptance.',
+              'No Connected Services scope transfer.',
+            ],
+            authorityBasisRefs: [
+              'github.issue.vexlife-android.157',
+              'project.vexstream.mobile-library',
+              'boundary.vexstream.mobile-library.ready-active',
+            ],
+            proposedByActorRef: actorRef,
+            formedAt: '2026-10-23T00:30:30.000Z',
+          });
+          const response = createHumanTransitionResponse({
+            proposal,
+            responseRef: 'response.victor.vexstream.mobile-library.device-storage.ready-active.20261022a',
+            humanActorRef: 'human.victor',
+            decision: 'ACK_APPROVED',
+            feedbackOrNull: 'Continue with a completionist posture: prioritize completion, currentness, judgment, responsibility, integrity, and awareness over unnecessary process.',
+            respondedAt: '2026-10-23T00:30:31.000Z',
+          });
+          const confirmation = createAiTransitionConfirmation({
+            proposal,
+            response,
+            confirmationRef: 'confirmation.local-vex-operations.vexstream.device-storage.ready-active.20261022a',
+            actorRef,
+            confirmedInterpretation: 'Victor approved entry into the exact Active implementation envelope and explicitly asked the lane to continue toward completion rather than stop at intermediate process checkpoints.',
+            confirmedEnvelope: 'Implement and prove durable shared VexStream device storage in the issue-157 Android membrane; keep rediscovery, migration, terminal Clear Data proof, persistent sync, and Connected Services distinct until their own predicates are earned.',
+            nextAction: 'COMMIT_TRANSITION',
+            confirmedAt: '2026-10-23T00:30:32.000Z',
+          });
+
+          const result = requestProjectTransition({
+            project,
+            graph,
+            policy,
+            registry,
+            transitionRequest: {
+              expectedGraphFingerprint: graph.semanticFingerprint,
+              workRef,
+              transitionRef: 'transition.vexstream.mobile-library.device-storage.running.20261022',
+              expectedState: 'READY',
+              nextState: 'RUNNING',
+              reason: 'Victor approved the exact Ready-to-Active envelope; implementation may now proceed inside the already-authorized issue-157 storage membrane.',
+              actorRef,
+              sourceRefs: [
+                'github.issue.vexlife-android.157',
+                'projects/vexstream-mobile-library/README.md',
+                'docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md',
+              ],
+              createdAt: '2026-10-23T00:30:33.000Z',
+            },
+            handshakeOrNull: { proposal, response, confirmation },
+          });
+
+          if (result.state !== 'ACCEPTED') throw new Error('transition not accepted');
+          fs.writeFileSync('workgraphs/public.json', JSON.stringify(result.graph, null, 2) + '\n');
+
+          const readmePath = 'projects/vexstream-mobile-library/README.md';
+          let readme = fs.readFileSync(readmePath, 'utf8');
+          const oldText = [
+            'The Work item is therefore \`READY\`, not \`RUNNING\`. Product source mutation remains held until the',
+            "Project's exact Ready -> Active human transition handshake is acknowledged and confirmed.",
+          ].join('\n');
+          const newText = [
+            'The Ready -> Active handshake was approved by Victor on 2026-10-22 and confirmed by Local Vex Operations.',
+            'The Work item is now \`RUNNING\`. Implementation is admitted only inside the issue-157 storage membrane;',
+            'rediscovery, private-copy migration, destructive Clear Data proof, persistent Keep Offline / Sync, and',
+            'Connected Services remain distinct and are not implied by this activation.',
+          ].join('\n');
+          if (!readme.includes(oldText)) throw new Error('expected Ready boundary text missing');
+          readme = readme.replace(oldText, newText);
+          fs.writeFileSync(readmePath, readme);
+          EOF
+
+          npm run workspace:build
+          npm run dashboard:build
+          npm run check
+          npm run workspace:check
+          npm run dashboard:check
+          node --test test/vexstream-mobile-library-project.test.mjs test/workgraph.test.mjs test/transition-handshake.test.mjs
+
+          git rm .github/workflows/vexstream-device-storage-activate-a001.yml
+          git config user.name "VexGPT"
+          git config user.email "victor.gong@vextreme24.com"
+          git add workgraphs/public.json public/workspace.json public/work-dashboard.json projects/vexstream-mobile-library/README.md
+          git commit -m "[VexStream Project] Activate durable device storage" -m "Consume Victor's exact Ready -> Active handshake and move durable device storage into RUNNING without widening rediscovery, migration, Clear Data, persistent sync, or Connected Services scope." -m "[VXG RealForever]"
+          git push origin HEAD:VXG-102226-vexstream-device-storage-active-a001
