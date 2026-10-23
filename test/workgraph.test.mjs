@@ -63,7 +63,7 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(historyBackfill.effectDisposition, 'NO_EFFECTS');
   assert.equal(historyBackfill.formationProcessRefOrNull, 'process.vexwork.capture-discovered-work');
   assert.equal(graph.rootWorkRefs.includes(historyBackfill.workRef), true);
-  assert.equal(graph.transitions.length, 64);
+  assert.equal(graph.transitions.length, 65);
   assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.decomposed.20261022'));
   assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.plan-validated.20261022'));
   assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.ready.20261022'));
