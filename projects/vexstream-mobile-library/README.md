@@ -43,6 +43,8 @@ VexStream Mobile Library                         OUTCOME
 +-- Contextual Download Experience               OUTCOME
 |   +-- Contextual Download Missing              TASK
 |
++-- Duration-aware song filtering                TASK / decomposed
+|
 +-- MassDownload Maturity                        OUTCOME
     +-- MassDownload product implementation      TASK / completed
     +-- MassDownload terminal EndToEnd           TASK / completed
@@ -284,6 +286,79 @@ implicated.
 
 Product meaning remains in VexStream Music's own entry/architecture sources.
 
+
+### ML-D9 — Duration is a listening lens, not track or playlist identity
+
+Victor's listening need is not "add another metadata field." The current Android track projection already
+carries `durationSeconds`, and track rows already render known duration. What is missing is a convenient
+way to choose a listening universe before Play All / Shuffle All.
+
+Human examples:
+
+```text
+under 10 minutes
+  -> ordinary individual-song variety
+
+under 30 minutes
+  -> avoid very long mixes/playlists while keeping a broad shuffle pool
+
+over 30 minutes / over 2 hours
+  -> intentionally choose long-form journey, flight, focus, or mix listening
+```
+
+Current Android source already gives this feature a narrow owner boundary:
+
+```text
+VexStreamTrack.durationSeconds
+-> VexStreamMusicState.playableTracks()
+-> VexStreamLibraryProjection
+-> visible library track set
+-> existing VexStreamCollectionPlaybackRequest
+-> Play All / Shuffle All
+```
+
+The first source-design challenge is therefore a **read-only duration lens over current playable track
+truth**, not a second catalog, downloader, queue, or playlist model.
+
+Permanent non-collapse:
+
+```text
+DURATION_FILTER != TRACK_IDENTITY
+DURATION_FILTER != CATALOG_TRUTH
+DURATION_FILTER != PLAYLIST_MEMBERSHIP_MUTATION
+DURATION_FILTER != PERSISTENT_SHUFFLE_MODE
+DURATION_FILTER != OFFLINE_OR_SYNC_POLICY
+FILTERED_SHUFFLE -> EXISTING_COLLECTION_PLAYBACK_REQUEST
+```
+
+Initial behavior to preserve through Android feature authoring:
+
+- support both less-than and greater-than a listener-chosen duration threshold;
+- clearing the filter restores the ordinary playable library without mutating repository state;
+- Search composes with the active duration lens rather than becoming a second independent library;
+- the visible Songs universe and library-level Play All / Shuffle All must agree on the same filtered
+  track set;
+- unknown duration (`durationSeconds == 0`) must not be silently classified as short or long while a
+  duration threshold is active;
+- canonical track refs, availability, download state and playback source resolution remain unchanged;
+- exact filter UI (chip, sheet, presets, custom value, or a combination) is an Android
+  feature-authoring decision rather than being frozen in VexWork;
+- propagation into Albums / Artists / Downloads / playlist detail must be made explicit by the
+  Android design instead of accidentally rewriting collection membership truth.
+
+Useful acceptance examples include `< 10 min`, `< 30 min`, `> 30 min`, and `> 2 hr`; they are
+examples of the intended human modes, not a requirement to hard-code those exact presets.
+
+Current Work:
+
+```text
+work.vexstream.mobile-library.duration-filter
+state = DECOMPOSED
+next = process.vexlife-android.feature-authoring
+```
+
+The next step is to source-place the smallest Android presentation/projection contract and focused
+proof, then use the Project's normal meaningful-phase handshake before Active implementation.
 
 ### ML-D8 — Android target orchestration is a reusable dependency, not VexStream product scope
 
