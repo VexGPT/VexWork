@@ -402,7 +402,7 @@ A useful console should be able to descend:
 ```text
 VexSite Localization
 -> Conversations with God
--> 19 relevant pages
+-> provider-current relevant pages (14 in observation 87a013e / 4eaafb71685d)
 -> complete / incomplete / unknown
 -> incomplete by source / locale / runtime / lived proof / modernization reason
 -> exact page
@@ -410,11 +410,11 @@ VexSite Localization
 -> existing foreground Work item, if one exists
 ```
 
-without creating 19 page Work items merely for visibility.
+without creating one Work item per provider page merely for visibility.
 
 The first dogfood completion claim is not "every VexSite page is translated forever." It is:
 
-> the reusable projection can truthfully answer "what remains?" from current Vextreme evidence and can coexist with real promoted work such as the God Spark / Clarity dual-lineage work.
+> the reusable projection can truthfully answer "what remains?" from current Vextreme evidence, preserve source-owned work lineage such as God Spark / Clarity without relabeling it canonical VexWork Work, and explicitly promote one exact derived concern when durable Work is actually admitted.
 
 ## Phase 3 — Operating Domain template
 
