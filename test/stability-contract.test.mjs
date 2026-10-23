@@ -86,6 +86,9 @@ test('source coverage baseline is source-managed and below the measured accepted
   assert.ok(baseline.criticalFiles['src/core/workgraph.mjs']);
   assert.ok(baseline.criticalFiles['src/core/transition-handshake.mjs']);
   assert.ok(baseline.criticalFiles['src/core/workgraph-composition.mjs']);
+  assert.ok(baseline.criticalFiles['src/core/project-planning-runtime.mjs']);
+  assert.ok(baseline.criticalFiles['src/core/project-planning.mjs']);
+  assert.ok(baseline.criticalFiles['src/core/project-reconciliation.mjs']);
 });
 
 // [VXG RealForever][VEXWORK][SOURCE-COVERAGE-BASELINE]
