@@ -299,7 +299,7 @@
       "label": "Sort / Filter library controls",
       "purpose": "Present one compact VexStream library organization surface that keeps Sort by and Filter by distinct, uses field-appropriate controls, composes with Search, and makes visible rows plus row playback / Play All / Shuffle All consume the same current filtered listening membership.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "WAITING_TOOL",
       "workDisposition": "ACTIVE",
       "priorityClass": "NORMAL",
       "dependencyRefs": [],
@@ -328,7 +328,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-23T08:02:00.000Z",
-      "updatedAt": "2026-10-23T23:44:03.000Z"
+      "updatedAt": "2026-10-23T23:48:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -670,6 +670,21 @@
         "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md"
       ],
       "createdAt": "2026-10-23T23:44:03.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.sort-filter.waiting-tool.android-host-proof.20261023",
+      "workRef": "work.vexstream.mobile-library.sort-filter-controls",
+      "priorState": "RUNNING",
+      "nextState": "WAITING_TOOL",
+      "reason": "The Android Sort / Filter source candidate is authored and current; exact projection source compiles and its core organization behavior passes in a minimal Kotlin check, but repository-owned vexVerifyLocal and device Feature-Walk Journey proof require a qualified Android host/Relay execution surface that is not available in the current operator environment. Preserve source truth and wait on proof tooling rather than infer product failure or acceptance.",
+      "actorRef": "actor.local-vex-operations.vexstream-mobile-library",
+      "sourceRefs": [
+        "github.issue.vexlife-android.163",
+        "github.pull.vexlife-android.164",
+        "repo.vexlife-android:docs/foundation/ANDROID-HOST-PROOF.md"
+      ],
+      "createdAt": "2026-10-23T23:48:00.000Z"
     }
   ],
   "sourceRefs": [
