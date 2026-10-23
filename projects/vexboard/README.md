@@ -32,8 +32,15 @@ effects = EFFECTS_BOUND
 state = RUNNING
 
 initial implementation membrane
+  src/shared/vexboard-model.mjs
   src/core/vexboard.mjs
+  vexboard-reader.js
+  vexboard/index.html
+  vexboard/self-map.json
   test/vexboard.test.mjs
+  test/vexboard-ui.test.mjs
+  index.html
+  test/public-ui.test.mjs
   projects/vexboard/README.md
   VexBoard-owned Workgraph/project projections required to keep work truth current
 ```
