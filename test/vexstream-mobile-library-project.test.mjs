@@ -106,14 +106,14 @@ test('durable device storage retains source authority while waiting on reusable 
   }).required, false);
 });
 
-test('Sort / Filter library controls are active source work with Android claim and draft candidate', () => {
+test('Sort / Filter library controls preserve authored source while waiting on qualified Android proof', () => {
   const browse = graph.items.find((candidate) => candidate.workRef === 'work.vexstream.mobile-library.library-browse-discovery');
   const controls = graph.items.find((candidate) => candidate.workRef === 'work.vexstream.mobile-library.sort-filter-controls');
   assert.ok(browse);
   assert.ok(controls);
   assert.equal(browse.state, 'DECOMPOSED');
   assert.equal(controls.parentWorkRefOrNull, browse.workRef);
-  assert.equal(controls.state, 'RUNNING');
+  assert.equal(controls.state, 'WAITING_TOOL');
   assert.equal(controls.authorityDisposition, 'AUTHORIZED_BOUNDED');
   assert.equal(controls.effectDisposition, 'EFFECTS_BOUND');
   assert.equal(controls.sourceRefs.includes('github.issue.vexlife-android.163'), true);
