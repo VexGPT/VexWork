@@ -71,6 +71,187 @@ visual object
 
 The objective is not to reproduce another product's toolbar. It is to make visual planning and process understanding a durable, executable-quality design surface for Vex.
 
+## Foundation correction — one shared human / AI board toolkit
+
+The first proving ground should exercise the reusable **board operations themselves**, rather than
+waiting until a later rich-editor phase to discover whether humans and AI can manipulate the same
+canvas truth.
+
+"AI-first" therefore does **not** mean "AI-only." The durable requirement is:
+
+```text
+human toolbar gesture ---------\
+                                +-> one typed Board Control
+AI board function call --------/        |
+                                         v
+                          resolve against CURRENT
+                          BoardGraph + BoardProjection
+                                         |
+                                         v
+                                   Board Act
+                                         |
+                         +---------------+---------------+
+                         |                               |
+                         v                               v
+                    BoardPatch                    ProjectionPatch
+                 semantic meaning              spatial presentation
+                         |                               |
+                         +---------------+---------------+
+                                         v
+                              validated next state
+```
+
+This follows architectural lessons already proven elsewhere in the Vex family without importing
+their implementation as VexBoard ownership:
+
+- VexLife-Android SCAE keeps **current truth, stable Control, resolved Act and Effect** distinct.
+- Convergence Relay combines independently-owned current truths into explicit relationship truth
+  without flattening the participants into one mega-State.
+- VexLife Atlas / Process Factory uses stable refs, thin bounded projections and typed
+  `functionRef + arguments + dependencies` rather than requiring the model to ingest an entire
+  world before acting.
+
+Those are lineage patterns, not VexBoard runtime dependencies. The first VexBoard implementation
+must earn its own smallest vocabulary from the proving ground.
+
+### Shared Board Control surface
+
+The exact schema and names remain provisional, but the first toolkit should be capable of expressing
+the same operation whether it originates from a toolbar, keyboard/pointer interaction, test fixture
+or AI function call.
+
+The initial operation families should cover roughly:
+
+```text
+CREATE
+  create semantic object + its first projection item
+
+ARRANGE
+  move
+  resize
+  set layer / front / back
+
+CONTAIN
+  explicitly nest / unnest semantic meaning
+
+CONNECT
+  create or change one explicit relationship
+
+PRESENT
+  choose projection shape / frame treatment
+  apply bounded visual treatment
+
+NAVIGATE
+  select / focus
+  enter / return
+  expand / collapse
+
+EXCHANGE
+  export deterministic board snapshot
+  query a bounded board neighborhood
+  reload / compare a snapshot
+```
+
+The semantic resolver decides what an operation means from current truth. A human drag and an AI
+request must not bypass into different mutation models.
+
+Permanent:
+
+```text
+BOARD_CONTROL != BOARD_ACT
+BOARD_GRAPH_PATCH != PROJECTION_PATCH
+
+MOVE_OR_RESIZE != SEMANTIC_REPARENT
+VISUAL_OVERLAP != SEMANTIC_CONTAINMENT
+Z_ORDER != SEMANTIC_PRIORITY
+SHAPE_KIND != NODE_KIND
+
+HUMAN_TOOLBAR_ACTION
+AND AI_FUNCTION_CALL
+-> SAME_CONTROL_CONTRACT
+```
+
+### Projection geometry is addressable, but it is not semantic identity
+
+BoardProjection should intentionally carry enough spatial information for a board to round-trip and
+for AI to perceive the current map:
+
+```text
+projectionItemRef
+semanticRef
+bounds
+  x
+  y
+  width
+  height
+layer / z-order
+optional parent projection/frame ref
+visibility / expansion state
+layout intent / constraints where earned
+```
+
+Coordinates are useful current projection truth. They are not BoardGraph identity.
+
+One formation reference supplied from Lucidspark demonstrated why this separation matters: its CSV
+projection preserved object kinds, stable shape IDs, text and explicit `Contained By` relationships,
+while the exported table did not carry enough x/y/size/layer geometry to reconstruct the visible
+canvas by itself. VexBoard should improve that boundary rather than copy it.
+
+```text
+EXPORTABLE_OBJECT_LEDGER
+!=
+FULL_FIDELITY_BOARD_SNAPSHOT
+```
+
+A VexBoard snapshot should therefore be able to preserve both:
+
+```text
+BoardGraph
+  stable semantic topology
+
+BoardProjection
+  exact current spatial realization
+```
+
+and a model-facing bounded query should be able to return a small Atlas-like neighborhood around
+selected refs instead of serializing the entire board into every conversation.
+
+### First interactive proving ground
+
+Before the authored website patient zero grows into a full prototype, establish a deliberately small
+blank-canvas proof:
+
+```text
+blank scalable canvas
+-> create a few primitive visual forms
+-> select
+-> move
+-> resize
+-> layer front/back
+-> explicitly nest one object in a container/frame
+-> connect two objects
+-> export snapshot
+-> reload snapshot
+-> same stable refs + semantic relationships + projection geometry
+```
+
+At least one equivalent board mutation sequence should be driven through the human toolbar and
+through the AI/tool-call surface and converge on the same validated meaning.
+
+The first toolbar should expose only the toolkit families actually implemented. A useful early
+grouping is:
+
+```text
+CREATE      shape / text / frame / connector
+ARRANGE     move / resize / layer / explicit containment
+MEANING     semantic kind / relationship / portal when earned
+NAVIGATE    select / focus / enter / expand / collapse
+EXCHANGE    export / import / bounded AI query
+```
+
+This is a proving ground, not a commitment to clone another product's toolbar or ship a complete
+manual visual editor before the semantic contracts are understood.
+
 ## Product identity
 
 **VexBoard** is the product/project name.
@@ -459,7 +640,7 @@ The second visit to A is not discarded merely because the node was visited befor
 
 ## AI-first authoring posture
 
-The first version should be **AI-authored and human-navigated**, not a premature full manual editor.
+The first version should be **AI-addressable and human-operable through one shared Board Control contract**, not a premature full manual editor. Rich natural-language authoring may remain AI-led while the same primitive operations are directly testable by a human.
 
 The user should be able to say:
 
@@ -1075,7 +1256,9 @@ One code-authored BoardGraph should represent a small website journey with:
 - one PORTAL into a deeper input-process-output module;
 - one shared/reused module instance;
 - deterministic layout;
-- read-only pan/zoom/focus;
+- one shared human/AI toolkit proving create/move/resize/layer/explicit-containment/connect;
+- pan/zoom/focus;
+- deterministic export/reload of BoardGraph + BoardProjection;
 - clickable simulation;
 - a right-side BoardJourney stack with revisit.
 
@@ -1132,13 +1315,18 @@ These are product horizons, not calendar promises or implementation authority.
 
 This document, canonical Project registration, bounded Work decomposition, and first-source placement.
 
-### Phase 1 — BoardGraph foundation
+### Phase 1 — BoardGraph + shared Board Control foundation
 
-Stable refs, node/relationship/interaction grammar, validation, semantic fingerprinting, modules/ports, source binding, and deterministic fixtures.
+Stable refs, node/relationship/interaction grammar, validation, semantic fingerprinting, modules/ports,
+source binding, deterministic fixtures, and the first typed operation contract shared by human
+tooling and AI function calls.
 
-### Phase 2 — read-only canvas projection
+### Phase 2 — interactive canvas proving ground + projection
 
-Deterministic layout, shapes/frames/connectors, pan/zoom/minimap, focus, inline expansion, portal entry, and source inspectability.
+Blank scalable canvas, deterministic geometry/layout, primitive shapes/frames/connectors,
+select/move/resize/layer/explicit containment, pan/zoom/minimap, focus, inline expansion, portal
+entry, deterministic export/reload, bounded model-facing board query, and source inspectability.
+This is deliberately smaller than a full manual editor.
 
 ### Phase 3 — prototype simulation and BoardJourney
 
@@ -1152,9 +1340,12 @@ Intent-to-patch, anchored conversation, validation, minimal-movement relayout, m
 
 VexWork Process/Work/Project adapters, Atlas adapters, intended-versus-observed Journey comparison, and implementation-brief output.
 
-### Phase 6 — direct manipulation and collaboration
+### Phase 6 — advanced direct manipulation and collaboration
 
-Manual drag/resize/connect/edit, multi-user collaboration, comments, voting, permissions, and richer media only after the AI-first semantic foundation proves that direct manipulation can preserve the same source rules.
+Richer manual editing, multi-select/align/distribute, advanced connector editing, multi-user
+collaboration, comments, voting, permissions and richer media. Basic create/move/resize/layer/
+contain/connect operations are intentionally proven earlier through the shared Board Control
+contract rather than postponed until this horizon.
 
 ## Deliberately held
 
@@ -1230,11 +1421,14 @@ public Projects projection                  CURRENT
 prime Project-formation regression case     SOURCE-PLACED
 
 next product frontier
--> BoardGraph semantic contract
+-> BoardGraph semantic contract + shared Board Control contract
+-> first blank-canvas human/AI toolkit proving ground
+   create / move / resize / layer / explicit containment / connect / export-reload
 -> use authored website patient zero + prime source-projection case
    to earn the smallest reusable graph/schema vocabulary
--> keep case labels provisional until implementation proves the right storage shape
--> separately establish implementation authority and source membrane before mutation
+-> use BoardProjection geometry as addressable spatial truth without making coordinates semantic identity
+-> keep case labels and exact tool/schema names provisional until implementation proves the right storage shape
+-> separately establish implementation authority and source membrane before product-source mutation
 ```
 
 No human host action is required to preserve this design.
