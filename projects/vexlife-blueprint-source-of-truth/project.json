@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.vexlife.blueprint-source-of-truth",
+  "label": "VexLife Blueprint Source of Truth",
+  "purpose": "Preserve and eventually complete the VexLife Blueprint Source of Truth capability: express portable product/software meaning once, realize it truthfully across languages/frameworks/platforms through source-addressed mappings and matched proof, and carry the trajectory without making any implementation, provider, generated target, or VexWork itself the semantic owner.",
+  "rootWorkRefs": [
+    "work.vexlife.blueprint-source-of-truth.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vexlife",
+    "repo.vextreme-sdk",
+    "repo.vexlife-android",
+    "repo.vexlife-construction-reference"
+  ],
+  "sourceRefs": [
+    "projects/vexlife-blueprint-source-of-truth/README.md",
+    "trajectory.vexlife.blueprint-source-of-truth",
+    "github.issue.vextreme-sdk.1839",
+    "github.pull.vexlife.902",
+    "github.issue.VexGPT.VexLife-Construction-Reference.11",
+    "github.pull.VexGPT.VexLife-Construction-Reference.12",
+    "github.pull.vexwork.35",
+    "docs/process/FORM-PROJECT.md"
+  ],
+  "formedAt": "2026-10-23T00:33:00.000Z"
+}
