@@ -13,7 +13,8 @@
     "review:deterministic": "npm test && npm run check && npm run dashboard:check && npm run workspace:check",
     "review": "npm run review:deterministic",
     "workspace:build": "node scripts/build-public-workspace.mjs",
-    "workspace:check": "node scripts/build-public-workspace.mjs --check"
+    "workspace:check": "node scripts/build-public-workspace.mjs --check",
+    "test:coverage": "node --test --experimental-test-coverage"
   },
   "engines": {
     "node": ">=20"
