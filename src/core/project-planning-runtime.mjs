@@ -184,4 +184,155 @@ function publishPointerAtomic(paths, pointer) {
     } catch (error) {
       if (error?.code !== 'EEXIST') throw error;
       const existing = readCanonicalJson(paths.root, file, 'PLANNING_RUNTIME_IMMUTABLE_CONFLICT', 'planning pointer');
-      if (canonicalJson(ex
+      if (canonicalJson(existing) !== bytes) fail('PLANNING_RUNTIME_IMMUTABLE_CONFLICT', 'planning pointer address exists with different bytes');
+      return false;
+    }
+  } finally {
+    if (fd !== null) {
+      try { fs.closeSync(fd); } catch {}
+    }
+    if (fs.existsSync(tmp)) fs.rmSync(tmp, { force: true });
+  }
+}
+
+function processState(pid) {
+  if (!Number.isSafeInteger(pid) || pid <= 0) return 'UNVERIFIABLE';
+  if (pid === process.pid) return 'ACTIVE';
+  try { process.kill(pid, 0); return 'ACTIVE'; }
+  catch (error) {
+    if (error?.code === 'ESRCH') return 'ABSENT';
+    if (error?.code === 'EPERM') return 'ACTIVE';
+    return 'UNVERIFIABLE';
+  }
+}
+
+function validateWriterLease(value, projectRef) {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) fail('PLANNING_RUNTIME_WRITER_CONFLICT', 'writer lease is invalid');
+  const { leaseSha256, ...core } = value;
+  if (
+    value.schemaVersion !== PROJECT_PLANNING_RUNTIME_WRITER_SCHEMA
+    || value.projectRef !== projectRef
+    || typeof value.instanceRef !== 'string' || !REF.test(value.instanceRef)
+    || !Number.isSafeInteger(value.pid) || value.pid <= 0
+    || typeof value.lockToken !== 'string' || !value.lockToken
+    || typeof value.formedAt !== 'string' || !ISO.test(value.formedAt)
+    || typeof leaseSha256 !== 'string' || !HEX64.test(leaseSha256)
+    || semanticHash(core) !== leaseSha256
+  ) fail('PLANNING_RUNTIME_WRITER_CONFLICT', 'writer lease is corrupt or substituted');
+  return value;
+}
+
+function acquireWriter(paths, projectRef, instanceRef, observedAt) {
+  assertRef(instanceRef, 'instanceRef');
+  assertTimestamp(observedAt, 'observedAt');
+  ensureDirectory(paths.root, paths.projectRoot);
+  const core = {
+    schemaVersion: PROJECT_PLANNING_RUNTIME_WRITER_SCHEMA,
+    projectRef,
+    instanceRef,
+    pid: process.pid,
+    lockToken: crypto.randomUUID(),
+    formedAt: observedAt,
+  };
+  const lease = Object.freeze({ ...core, leaseSha256: semanticHash(core) });
+  try {
+    const fd = fs.openSync(paths.writer, 'wx', 0o600);
+    try { fs.writeFileSync(fd, canonicalJson(lease), 'utf8'); fs.fsyncSync(fd); }
+    finally { fs.closeSync(fd); }
+    return Object.freeze({ token: lease.lockToken, leaseSha256: lease.leaseSha256 });
+  } catch (error) {
+    if (error?.code !== 'EEXIST') throw error;
+    const existing = validateWriterLease(readCanonicalJson(paths.root, paths.writer, 'PLANNING_RUNTIME_WRITER_CONFLICT', 'writer lease'), projectRef);
+    const state = processState(existing.pid);
+    fail(
+      state === 'ABSENT' ? 'PLANNING_RUNTIME_WRITER_RECOVERY_REQUIRED' : 'PLANNING_RUNTIME_WRITER_CONFLICT',
+      state === 'ABSENT' ? 'abandoned writer lease requires explicit recovery' : 'writer lease is active or unverifiable',
+      { leaseSha256: existing.leaseSha256 },
+    );
+  }
+}
+
+function releaseWriter(paths, projectRef, lease) {
+  if (!fs.existsSync(paths.writer)) return false;
+  const current = validateWriterLease(readCanonicalJson(paths.root, paths.writer, 'PLANNING_RUNTIME_WRITER_CONFLICT', 'writer lease'), projectRef);
+  if (current.lockToken !== lease.token || current.leaseSha256 !== lease.leaseSha256) return false;
+  fs.unlinkSync(paths.writer);
+  return true;
+}
+
+function withWriter(paths, projectRef, instanceRef, observedAt, fn) {
+  const lease = acquireWriter(paths, projectRef, instanceRef, observedAt);
+  let result;
+  let caught = null;
+  try { result = fn(); } catch (error) { caught = error; }
+  const released = releaseWriter(paths, projectRef, lease);
+  if (!released && !caught) fail('PLANNING_RUNTIME_WRITER_CONFLICT', 'writer lease release could not be proven');
+  if (caught) throw caught;
+  return result;
+}
+
+function eventFile(paths, event) {
+  return safePath(paths.root, path.join(paths.events, `${String(event.sequence).padStart(12, '0')}-${event.semanticFingerprint}.json`));
+}
+
+function snapshotFile(paths, fingerprint) {
+  return safePath(paths.root, path.join(paths.snapshots, `${fingerprint}.json`));
+}
+
+function pointerFile(paths, pointerSha256) {
+  return safePath(paths.root, path.join(paths.pointers, `${pointerSha256}.json`));
+}
+
+function validatePointer(value, projectRef) {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) fail('PLANNING_RUNTIME_POINTER_CORRUPT', 'planning pointer invalid');
+  const { pointerSha256, ...core } = value;
+  if (
+    value.schemaVersion !== PROJECT_PLANNING_RUNTIME_POINTER_SCHEMA
+    || value.currentness !== 'CURRENT'
+    || value.projectRef !== projectRef
+    || typeof value.snapshotFingerprint !== 'string' || !HEX64.test(value.snapshotFingerprint)
+    || typeof value.eventFingerprint !== 'string' || !HEX64.test(value.eventFingerprint)
+    || !Number.isSafeInteger(value.sequence) || value.sequence < 1
+    || (value.priorPointerSha256OrNull !== null && !HEX64.test(value.priorPointerSha256OrNull))
+    || (value.priorSnapshotFingerprintOrNull !== null && !HEX64.test(value.priorSnapshotFingerprintOrNull))
+    || ((value.priorPointerSha256OrNull === null) !== (value.priorSnapshotFingerprintOrNull === null))
+    || typeof pointerSha256 !== 'string' || !HEX64.test(pointerSha256)
+    || semanticHash(core) !== pointerSha256
+  ) fail('PLANNING_RUNTIME_POINTER_CORRUPT', 'planning pointer is stale, substituted, or corrupt');
+  return value;
+}
+
+function readPointer(paths, sha, projectRef) {
+  const file = pointerFile(paths, sha);
+  if (!fs.existsSync(file)) fail('PLANNING_RUNTIME_POINTER_CORRUPT', 'planning pointer lineage record missing');
+  const pointer = validatePointer(readCanonicalJson(paths.root, file, 'PLANNING_RUNTIME_POINTER_CORRUPT', 'planning pointer'), projectRef);
+  if (pointer.pointerSha256 !== sha) fail('PLANNING_RUNTIME_POINTER_CORRUPT', 'planning pointer address mismatch');
+  return pointer;
+}
+
+function resolveCurrentPointer(paths, projectRef) {
+  if (!fs.existsSync(paths.pointers)) return null;
+  const names = fs.readdirSync(paths.pointers).sort();
+  if (names.length === 0) return null;
+  for (const name of names) if (!/^[a-f0-9]{64}\.json$/u.test(name)) fail('PLANNING_RUNTIME_POINTER_CORRUPT', 'unexpected planning pointer entry', { name });
+  const pointers = names.map((name) => readPointer(paths, name.slice(0, -5), projectRef));
+  const bySha = new Map(pointers.map((pointer) => [pointer.pointerSha256, pointer]));
+  const referenced = new Set();
+  let roots = 0;
+  for (const pointer of pointers) {
+    if (pointer.priorPointerSha256OrNull === null) { roots += 1; continue; }
+    const prior = bySha.get(pointer.priorPointerSha256OrNull);
+    if (!prior) fail('PLANNING_RUNTIME_POINTER_CORRUPT', 'planning pointer predecessor missing');
+    if (prior.snapshotFingerprint !== pointer.priorSnapshotFingerprintOrNull) fail('PLANNING_RUNTIME_POINTER_CORRUPT', 'planning predecessor snapshot mismatch');
+    if (prior.sequence + 1 !== pointer.sequence) fail('PLANNING_RUNTIME_POINTER_CORRUPT', 'planning pointer sequence is discontinuous');
+    referenced.add(prior.pointerSha256);
+  }
+  const tips = pointers.filter((pointer) => !referenced.has(pointer.pointerSha256));
+  if (roots !== 1 || tips.length !== 1) fail('PLANNING_RUNTIME_POINTER_CORRUPT', 'planning pointer store must contain one connected lineage');
+  return Object.freeze({ pointer: tips[0], recordCount: pointers.length });
+}
+
+function readSnapshot(paths, fingerprint) {
+  const file = snapshotFile(paths, fingerprint);
+  if (!fs.existsSync(file)) fail('PLANNING_RUNTIME_SNAPSHOT_MISSING', 'planning snapshot missing');
+  const snapshot = validateProjectPlanningSnapshot(readCanonicalJson(paths.root, 
