@@ -358,7 +358,17 @@ Coverage is observable through:
 
 ```bash
 npm run test:coverage
+npm run coverage:source
 ```
+
+Node 20's built-in aggregate includes the test files themselves, so VexWork does **not** use the headline all-files percentage as its source baseline. The LCOV projection is filtered by the repository-owned checker to:
+
+```text
+src/**/*.mjs
+*-reader.js
+```
+
+That keeps the baseline about durable executable VexWork source rather than test-code self-coverage.
 
 The ordinary review floor runs that coverage-enabled test execution once before the remaining deterministic checks:
 
@@ -366,6 +376,7 @@ The ordinary review floor runs that coverage-enabled test execution once before 
 npm run review
 -> npm run review:deterministic
 -> npm run test:coverage
+-> npm run coverage:source
 -> npm run check
 -> npm run dashboard:check
 -> npm run workspace:check
