@@ -5,9 +5,9 @@
 ## Human outcome
 
 Make VexStream on Android a **durable, reusable and human-navigable mobile music library**: keep
-downloaded media truthful and durable, while also letting a listener narrow the current library into
-the listening context they actually want. Continuous "Keep Offline" sync remains a separately
-governed future policy.
+downloaded media truthful and durable, while giving the listener a compact way to **Sort by** and
+**Filter by** the kinds of music they actually want to play. Continuous "Keep Offline" sync remains
+a separately governed future policy.
 
 This Project is the human/navigation owner for that outcome. Product semantics remain with
 VexLife-Android and VexStream Music.
@@ -44,8 +44,8 @@ VexStream Mobile Library                         OUTCOME
 +-- Contextual Download Experience               OUTCOME
 |   +-- Contextual Download Missing              TASK
 |
-+-- Library Filtering                            OUTCOME
-|   +-- Duration-aware song filtering            TASK / decomposed / first pressure
++-- Library Browse & Discovery                   OUTCOME
+|   +-- Sort / Filter library controls           TASK / decomposed
 |
 +-- MassDownload Maturity                        OUTCOME
     +-- MassDownload product implementation      TASK / completed
@@ -62,10 +62,18 @@ Persistent Keep Offline / Sync
     PARKED
     NO_AUTHORITY
     NO_EFFECTS
+
+User tag topology / dynamic stations
+    POTENTIAL
+    CAPTURED
+    PARKED
+    NO_AUTHORITY
+    NO_EFFECTS
 ```
 
-It remains visible through the Parking Lot until Victor deliberately adopts continuous sync as a
-separate product commitment.
+These remain visible through the Parking Lot until Victor deliberately adopts them as product
+commitments. The station/tag potential has a distinct durable-ownership question and is not hidden
+inside the first Sort / Filter implementation.
 
 ## Current source truth that motivated the Project
 
@@ -289,148 +297,180 @@ implicated.
 Product meaning remains in VexStream Music's own entry/architecture sources.
 
 
-### ML-D9 — Library Filtering is a human narrowing capability, not a generic engine
+### ML-D9 — Sort by and Filter by are one presentation surface, not one measurement
 
-Duration exposed a broader missing product question:
+The product need is simpler than a generic filtering framework:
 
-> How can a listener narrow the VexStream library into the music that fits the present listening
-> intention, while every track, collection and provider truth keeps its original owner?
+> Give me one presentable place to organize what I am about to listen to.
 
-Current Android source already contains multiple independent filterable truths:
-
-```text
-track metadata
-  durationSeconds
-  artist
-  album
-  genre
-  year
-
-current device/source truth
-  local copy state
-  HUB_ONLY / HUB_AND_LOCAL / LOCAL_ONLY / UNAVAILABLE
-
-existing narrowing input
-  Search query over human metadata
-```
-
-That is enough real pressure to earn one **Library Filtering** outcome. It is not enough pressure to
-invent an app-wide filtering framework or create speculative Work items for every possible field.
-
-The product relationship to design is:
+A compact dialog / bottom-sheet-style surface should expose **Sort by** and **Filter by** as separate
+human actions. Exact Material component choice remains Android feature-authoring detail, but the
+experience should not scatter unrelated controls across the library.
 
 ```text
-CURRENT repository-owned track truth
-+ current playable truth
-+ current library/collection context
-+ text query when present
-+ active user filters
-+ existing ordering/grouping rules
-        ↓
-CURRENT visible listening universe
-        ↓
-track-row playback context
-+ Play All
-+ Shuffle All
+SORT BY
+    changes order
+    does not change membership
+
+FILTER BY
+    changes membership in the current visible/listening set
+    does not mutate catalog or collection truth
 ```
 
-The important questions for Android feature authoring are therefore relational:
-
-1. **Dimension** — what accepted track/currentness fact is being narrowed?
-2. **Predicate** — what does a match mean for numeric, categorical and state-valued dimensions?
-3. **Unknown policy** — what happens when a value such as duration is unknown?
-4. **Scope** — does the filter apply to Songs only, the whole library, Search, Downloads, or a
-   collection detail?
-5. **Composition** — how do several active filters combine, and how does Search compose with them?
-6. **Playback context** — does tapping a visible track, Play All, and Shuffle All operate over the same
-   narrowed universe the human can see?
-7. **Collection truth** — when filtering inside an Album/Artist/Playlist projection, how do we narrow
-   visible members without pretending the canonical collection membership changed?
-8. **Lifetime** — is filter state screen-local, saveable across recomposition/navigation, or truly
-   persistent? Persistence must be earned rather than assumed.
-9. **Legibility** — how can the human see that filters are active, clear them, and understand a
-   no-results state?
-10. **Extensibility** — can a new meaningful dimension be added at the rightful projection boundary
-    without another ad-hoc screen-specific predicate pile?
-
-Candidate dimensions are **source-supported possibilities, not committed product controls**. Artist
-and Album already have first-class navigation lenses, for example, so duplicating them as filters may
-or may not improve the experience. Likewise Search is already a distinct human input and should
-compose with filters rather than being relabeled merely for architectural symmetry.
-
-Permanent non-collapse:
+Different fields require different controls; there is no requirement that every filter share one
+measurement or comparator:
 
 ```text
-LIBRARY_FILTERING != SECOND_LIBRARY
-LIBRARY_FILTERING != CATALOG_TRUTH
-LIBRARY_FILTERING != PLAYLIST_MEMBERSHIP_MUTATION
-LIBRARY_FILTERING != SEARCH
-LIBRARY_FILTERING != SORTING
-LIBRARY_FILTERING != PERSISTENT_SHUFFLE_MODE
-LIBRARY_FILTERING != OFFLINE_OR_SYNC_POLICY
-FILTERED_PROJECTION != FILTERED_SOURCE_OF_TRUTH
+duration
+    numeric threshold / range
+    e.g. under 10 min, under 30 min, over 30 min, over 2 hr
+
+genre / artist / album / tag / category
+    categorical selection
+
+download / availability state
+    state selection
+
+title / artist / album / year / duration / added time
+    possible ordering keys where a stable ordering is meaningful
 ```
 
-New filter dimensions should become separate Work only when their human outcome, source pressure or
-proof boundary is meaningfully distinct. The broader outcome exists so one-off predicates can
-compose coherently without manufacturing a ticket for every field.
+A multi-tag track does **not** automatically have a meaningful "Sort by tag" order. Tags are
+naturally filter/group inputs unless feature design defines an explicit deterministic tag ordering.
+
+Search remains Search and composes with the Sort / Filter result.
+
+The first acceptance pressure remains Victor's duration use case, but it proves the numeric branch
+of the broader surface rather than becoming its own product feature:
+
+```text
+< 10 min   -> individual-song variety
+< 30 min   -> broad shuffle without long mixes
+> 30 min   -> long-form listening
+> 2 hr     -> journey / flight / focus
+```
+
+Unknown duration must not silently classify as short or long while duration filtering is active.
+
+If Sort / Filter produces 23 visible songs, visible rows, track-row playback context, Play All and
+Shuffle All must share that same 23-song membership. Sorting may change traversal order; filtering
+may change membership. Neither operation rewrites playlist membership, catalog identity, download
+truth, or provider metadata.
 
 Current Work:
 
 ```text
-work.vexstream.mobile-library.library-filtering
+work.vexstream.mobile-library.library-browse-discovery
+  -> work.vexstream.mobile-library.sort-filter-controls
+
 state = DECOMPOSED
 next = process.vexlife-android.feature-authoring
 ```
 
-### ML-D10 — Duration is the first earned Library Filtering slice
+### ML-D10 — VexStream already has source tags/categories; mobile currently drops them
 
-Victor's first concrete listening pressure is duration:
-
-```text
-under 10 minutes
-  -> ordinary individual-song variety
-
-under 30 minutes
-  -> avoid very long mixes while keeping a broad shuffle pool
-
-over 30 minutes / over 2 hours
-  -> intentionally choose long-form journey, flight, focus, or mix listening
-```
-
-Current Android source already carries `VexStreamTrack.durationSeconds`, already renders known
-duration on track rows, and already routes library-level Play All / Shuffle All through the current
-track set. The first slice can therefore challenge the filtering contract without inventing new media
-metadata or another playback engine.
-
-Initial behavior to preserve:
-
-- support both less-than and greater-than a listener-chosen duration threshold;
-- clearing the duration filter restores the ordinary playable projection;
-- Search composes with duration filtering;
-- the visible Songs universe and library-level Play All / Shuffle All agree on the same filtered set;
-- starting playback from one visible track carries the same narrowed context rather than immediately
-  escaping into hidden unfiltered tracks;
-- unknown duration (`durationSeconds == 0`) is not silently classified as short or long while a
-  duration threshold is active;
-- track refs, availability, download state and playback-source resolution remain unchanged;
-- exact UI (chip, sheet, presets, custom value, or combination) stays an Android feature-authoring
-  decision;
-- Albums / Artists / Downloads / Playlist-detail propagation must be decided explicitly from the
-  broader Library Filtering scope rather than accidentally changing collection membership.
-
-Examples such as `< 10 min`, `< 30 min`, `> 30 min`, and `> 2 hr` express listening modes;
-they do not require hard-coded presets.
+Tag filtering is not hypothetical metadata invention. Current VexStream Music source already owns:
 
 ```text
-work.vexstream.mobile-library.duration-filter
-parent = work.vexstream.mobile-library.library-filtering
-state = DECOMPOSED
+library.Track.Tags       []string
+library.Track.Categories []string
 ```
 
-The next real edge is to source-place the smallest Android Library Filtering projection/control shape,
-use duration as the first proving dimension, and then apply the Project's normal meaningful-phase
-handshake before Active implementation.
+The filesystem Library projection loads those values from `_vexmedia/library.jsonl` provenance
+metadata, and the V2 browser Library projection already preserves both `tags` and `categories`.
+
+The current mobile bridge does **not** project them:
+
+```text
+VexStream Music library.Track
+    tags / categories present
+        ↓
+mobileTrackProjection
+    tags / categories absent
+        ↓
+Android VexStreamTrack
+    tags / categories absent
+```
+
+So an Android tag/category filter should first preserve existing source classification through the
+sanitized mobile catalog boundary. It does not need an Android-only tag database merely to expose
+classification the source already owns.
+
+Permanent distinction:
+
+```text
+SOURCE_TAGS / SOURCE_CATEGORIES
+!= USER_AUTHORED_CLASSIFICATION
+```
+
+### ML-D11 — User-authored tags and stations are a future classification topology, not hidden scope
+
+The editable VexStream Library overlay currently owns title, artist, album and genre. It does **not**
+currently own user-authored tags. Personal labels such as `road-trip`, `gym`, `sleep`, `nostalgia`,
+`instrumental` or `high-energy` must therefore not be implemented by silently overwriting imported
+provider tags/categories.
+
+A later design may expose an effective classification view:
+
+```text
+source/import tags
++ user-authored tags
+        ↓
+effective classification for browsing
+```
+
+while retaining provenance so a source rescan cannot erase the human's own organization and a human
+edit cannot pretend it came from the provider.
+
+That classification can later support dynamic stations / smart playlists:
+
+```text
+station rule
+    tags include road-trip
+    AND duration < 30 min
+    AND genre in {...}
+        ↓
+resolve against current Library truth
+        ↓
+current listening set
+        ↓
+Play / Shuffle
+```
+
+This is deliberately different from a static Playlist:
+
+```text
+STATIC_PLAYLIST
+    owns explicit ordered track references
+
+STATION / SMART_PLAYLIST
+    owns a reusable selection rule
+    resolves membership from current Library truth
+
+FILTER
+    temporary current-view selection
+
+STATION_RULE != PLAYLIST_MEMBERSHIP
+FILTER != STATION_PERSISTENCE
+```
+
+The unresolved questions are real: what durable owner stores user tags, what portable identity they
+attach to, how source-vs-user tag collisions are shown, whether station rules are saved/synced, and
+whether a station may ever be explicitly materialized into a static Playlist.
+
+For now that future is captured, not authorized:
+
+```text
+work.vexstream.mobile-library.tag-topology-stations
+class = POTENTIAL
+state = CAPTURED
+disposition = PARKED
+authority = NO_AUTHORITY
+effects = NO_EFFECTS
+```
+
+The immediate implementation edge remains the compact Sort / Filter library surface and the
+smallest source projection needed for the filters actually selected.
 
 ### ML-D8 — Android target orchestration is a reusable dependency, not VexStream product scope
 
