@@ -583,6 +583,251 @@ The user's mention of Fibonacci-like growth expresses a real design need: deeper
 AESTHETIC_HEURISTIC != SEMANTIC_IDENTITY
 ```
 
+### Next proving foundation — spatial arrangement and connector routing
+
+After primitive create/move/resize/layer/contain/connect operations are proven, the next layer should
+make a board **organize itself readably without surrendering human control**.
+
+This is not merely a beautification pass. It is a deterministic spatial reasoning layer over the
+current BoardGraph + BoardProjection:
+
+```text
+semantic topology
++ projection bounds
++ containment
++ sequence / branch meaning
++ layout intent
++ current anchors / locks
+        |
+        v
+spatial arrangement
++ obstacle map
++ connector routing
++ local collision repair
+        |
+        v
+next BoardProjection
+```
+
+The first implementation should prefer one projection-owned **layout metric profile** rather than a
+continuously drifting arithmetic average of every current node. A useful profile may be initialized
+from observed content pressure, but should preserve a stable visual rhythm through bounded metrics:
+
+```text
+base unit
+default node width / height
+minimum readable width / height
+horizontal / vertical gap
+container padding
+connector gutter
+label padding
+size classes or quantized multiples
+```
+
+This lets ordinary nodes share a coherent scale while allowing content-heavy nodes, portals and
+expanded modules to occupy larger multiples without redefining the entire board's spacing every time
+one object changes.
+
+```text
+CONTENT_FIT_MAY_EXPAND_NODE
+!=
+ONE_LARGE_NODE_REDEFINES_GLOBAL_SCALE
+```
+
+#### Position awareness and local occupancy
+
+Every projected object should be reasoned about as a spatial participant:
+
+```text
+bounds
+preferred / minimum bounds
+container bounds
+nearby obstacle bounds
+reserved connector corridors
+anchor / lock state
+semantic neighbors
+incoming / outgoing relationships
+```
+
+The solver should maintain a bounded spatial/occupancy index so it can answer questions such as:
+
+```text
+what occupies the region to my right?
+is the vertical gap between these nodes readable?
+is this connector corridor clear?
+can this module expand here without displacing an unrelated region?
+which nearby objects would move if I create room locally?
+```
+
+Human placement remains meaningful. Auto-layout should first preserve explicit anchors and repair the
+smallest affected neighborhood rather than globally shuffling an already-understood map.
+
+#### Connector routing is a scored spatial decision
+
+Relationship direction remains semantic; the visible route is projection.
+
+For one directed relationship the router should evaluate candidate source/target ports and path
+shapes against the current spatial index. Conceptually:
+
+```text
+candidate port pairs
+-> direct orthogonal route when clear
+-> one-bend elbow when clear
+-> two-bend dogleg / U-turn when clear
+-> bounded local gutter expansion / node reflow
+-> explicit degraded rendering only when presentation cannot currently realize a clean route
+```
+
+Candidate routes can be ranked by a deterministic cost function using pressures such as:
+
+```text
+obstacle collision               forbidden / very high cost
+node or container penetration    forbidden unless semantically admitted
+edge crossing                    high cost
+label collision                  high cost
+insufficient clearance           high cost
+bend count                       moderate cost
+route length                     moderate cost
+departure opposite target        moderate cost
+movement of unrelated anchors    high cost
+preserving prior accepted route  preferred
+semantic reading direction       preferred where lens supplies one
+```
+
+Exact weights should be earned from proving cases rather than frozen from prose.
+
+A route such as:
+
+```text
+row:  [1] [2] [3] [4]
+                  |
+                  v
+                 [5]
+```
+
+should therefore not hard-code "bottom of 4 to top of 5." It should derive candidate geometry from
+the actual relative bounds and available corridors:
+
+```text
+4 bottom -> 5 top
+  preferred when their horizontal overlap / gutter is clear
+
+4 right -> route around -> 5 right
+  useful when a side corridor is clearer than the vertical gap
+
+other source/target ports
+  legal when they minimize crossings, bends and obstruction
+```
+
+If no safe route exists, the preferred response is to create local room or mark the route as
+visually degraded rather than silently discard direction. An arrowhead may be suppressed as a
+presentation choice under extreme density only when the relationship remains explicitly directed
+and inspectable through semantic identity/accessibility.
+
+```text
+ARROWHEAD_HIDDEN
+!=
+EDGE_DIRECTION_UNKNOWN
+```
+
+#### Connectors and nodes may negotiate space
+
+Layout should be able to solve the reciprocal problem:
+
+```text
+nodes create corridors for edges
+AND
+important edges can create spacing pressure on nodes
+```
+
+For example, if a clean U-turn requires a right-side gutter, the local solver may widen the owning
+container or shift a small nearby region instead of routing an unreadable line through several
+objects. This should remain bounded and explainable:
+
+```text
+layoutDecision
+  affectedRefs[]
+  preservedAnchors[]
+  chosenRoute
+  rejectedCandidateReasons[]
+  localMovements[]
+```
+
+That explanation can later support AI inspection, regression fixtures and human "why did this move?"
+feedback without making private solver search history a permanent product artifact.
+
+#### Fractal module expansion uses the same spatial contract
+
+A condensed PROCESS / PORTAL may initially occupy one ordinary node-sized region:
+
+```text
+[ Step 1 ] -> [ Step 2 ] -> [ Existing Process ]
+```
+
+When expanded inline:
+
+```text
+[ Step 1 ] -> [ Step 2 ] -> [ Existing Process
+                               step A -> step B
+                                         |
+                                         v
+                                       step C ]
+```
+
+the owning region requests additional projection space. The solver should:
+
+1. preserve the portal/module's semantic identity;
+2. allocate enough local space for its child projection;
+3. preserve surrounding anchors where possible;
+4. reroute affected connectors;
+5. avoid changing unrelated BoardGraph meaning;
+6. allow collapse to recover the prior compact spatial role.
+
+The same mechanism should work recursively. Depth changes the projection's space demand, not the
+identity of the underlying process.
+
+```text
+INLINE_DEPTH_EXPANSION
+-> LOCAL_SPACE_NEGOTIATION
+-> CONNECTOR_REPAIR
+!=
+GLOBAL_BOARD_REWRITE
+```
+
+#### Spatial proving cases before richer blueprint authoring
+
+The second proving ground should deliberately include small pathological arrangements:
+
+```text
+straight sequence
+right-angle continuation
+U-turn continuation
+branch + merge
+return loop
+dense neighboring nodes
+nested container
+expanded portal/module
+two edges competing for one corridor
+human-pinned node that auto-layout must preserve
+node resize that forces only local rerouting
+```
+
+Each case should prove deterministic output for the same input state, no node/edge overlap outside
+explicitly admitted presentation, stable anchors where possible, and bounded movement when the map
+changes incrementally.
+
+The human should also be able to request:
+
+```text
+auto-arrange this selection
+route this edge more clearly
+make room for this expanded process
+keep these three nodes fixed
+compact this region
+```
+
+through the same shared Board Control contract used by AI.
+
 ### Visual cues
 
 Color, shape, border, icon, line style, depth, and animation may communicate semantic roles and state, but the underlying meaning must remain readable without relying on color alone.
@@ -1323,10 +1568,16 @@ tooling and AI function calls.
 
 ### Phase 2 — interactive canvas proving ground + projection
 
-Blank scalable canvas, deterministic geometry/layout, primitive shapes/frames/connectors,
-select/move/resize/layer/explicit containment, pan/zoom/minimap, focus, inline expansion, portal
-entry, deterministic export/reload, bounded model-facing board query, and source inspectability.
-This is deliberately smaller than a full manual editor.
+Blank scalable canvas, deterministic geometry, primitive shapes/frames/connectors,
+select/move/resize/layer/explicit containment, pan/zoom/minimap, focus, deterministic export/reload,
+bounded model-facing board query, and source inspectability.
+
+### Phase 2B — spatial arrangement, routing and fractal expansion
+
+Projection-owned layout metrics, local occupancy/spatial indexing, deterministic incremental
+auto-arrangement, obstacle-aware connector routing, local space negotiation, human-pinned anchors,
+inline module expansion/collapse and bounded rerouting. Human and AI invoke the same arrangement
+Controls. This remains smaller than a full manual visual editor.
 
 ### Phase 3 — prototype simulation and BoardJourney
 
@@ -1424,6 +1675,8 @@ next product frontier
 -> BoardGraph semantic contract + shared Board Control contract
 -> first blank-canvas human/AI toolkit proving ground
    create / move / resize / layer / explicit containment / connect / export-reload
+-> spatial arrangement + connector-routing proving ground
+   stable scale / local occupancy / obstacle avoidance / incremental reflow / fractal expansion
 -> use authored website patient zero + prime source-projection case
    to earn the smallest reusable graph/schema vocabulary
 -> use BoardProjection geometry as addressable spatial truth without making coordinates semantic identity
