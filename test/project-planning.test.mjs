@@ -142,3 +142,39 @@ test('planning events preserve causal sequence and prior-event fingerprint', () 
 });
 
 // [VXG RealForever][VEXWORK][PROJECT-PLANNING]
+
+
+test('planning registry validator fails closed for malformed and duplicate event definitions', () => {
+  const missingPurpose = structuredClone(planningRegistry);
+  missingPurpose.purpose = '';
+  assert.equal(validateProjectPlanningRegistry(missingPurpose).ok, false);
+
+  const duplicate = structuredClone(planningRegistry);
+  duplicate.planningEventClasses[1].eventClass = duplicate.planningEventClasses[0].eventClass;
+  assert.equal(validateProjectPlanningRegistry(duplicate).ok, false);
+
+  const invalidPayload = structuredClone(planningRegistry);
+  invalidPayload.planningEventClasses[0].requiredPayloadFields = [];
+  const validation = validateProjectPlanningRegistry(invalidPayload);
+  assert.equal(validation.ok, false);
+  assert.ok(validation.errors.some((error) => error.includes('payload definition invalid')));
+});
+
+test('planning transaction stored fingerprints and duplicate source refs fail closed', () => {
+  const accepted = createProjectPlanningTransaction(tx({
+    eventClass: 'WIP_POLICY_SET',
+    n: 1,
+    payload: { laneRef: 'lane.work.active', limit: 2 },
+  }), planningRegistry);
+  assert.throws(
+    () => createProjectPlanningTransaction({ ...accepted, actorRef: 'actor.tampered' }, planningRegistry),
+    /semanticFingerprint mismatch/,
+  );
+  assert.throws(
+    () => createProjectPlanningTransaction({
+      ...tx({ eventClass: 'WIP_POLICY_SET', n: 2, payload: { laneRef: 'lane.work.active', limit: 2 } }),
+      sourceRefs: ['test.project-planning', 'test.project-planning'],
+    }, planningRegistry),
+    /sourceRefs must be unique/,
+  );
+});
