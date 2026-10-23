@@ -1529,6 +1529,299 @@ A -> B -> A
 
 The second visit to A is not discarded merely because the node was visited before.
 
+### Animated semantic traversal — let the human perceive the move
+
+When a CONTROL, branch, portal, search result or explicit navigation action changes semantic focus,
+VexBoard should not make the destination appear as an unexplained instantaneous replacement.
+
+The navigation contract should preserve two separate truths:
+
+```text
+semantic traversal
+  fromRef
+  relationship/control used
+  toRef
+  BoardJourney step
+
+projection transition
+  camera path
+  zoom / pan / emphasis
+  destination centering
+  optional connector/path highlight
+```
+
+The semantic move is the meaning. Animation helps the human perceive that move.
+
+```text
+SEMANTIC_TRAVERSAL != CAMERA_ANIMATION
+ANIMATION_DURATION != PROCESS_DURATION
+ANIMATION_INTERRUPTED != JOURNEY_HISTORY_DELETED
+```
+
+For an ordinary same-board transition:
+
+```text
+click / activate
+-> resolve exact destination
+-> highlight or trace the selected relationship when useful
+-> smoothly pan/zoom toward destination
+-> center/focus destination
+-> settle with brief destination emphasis
+```
+
+For a PORTAL / change-map transition:
+
+```text
+current map + source coordinate
+-> activate portal
+-> visible leave/enter transition
+-> destination map centers on its entry coordinate
+-> prior semantic coordinate remains in BoardJourney
+```
+
+Return should likewise make the relationship perceptible instead of merely restoring unrelated camera
+coordinates.
+
+Motion must respect reduced-motion/accessibility preferences. Reduced motion may use a short
+crossfade/highlight or immediate focus with explicit origin/destination cues while preserving the
+same BoardJourney semantics.
+
+The first proving cases should cover:
+
+```text
+nearby same-board move
+long-distance same-board move
+follow one bent connector around obstacles
+branch choice -> centered destination
+portal -> another board
+return -> prior semantic coordinate
+revisit an already-visited node
+reduced-motion equivalent
+user interrupts motion without corrupting semantic position
+```
+
+## Publish readiness — closed paths, known open ends and a reviewable blueprint release
+
+Once a board can be authored, arranged, traversed, templated and enriched with media, it should be
+possible to publish a **versioned design deliverable** without pretending every incomplete board is
+equally ready.
+
+Before publication, VexBoard should derive a bounded reachability/readiness projection from the
+declared start coordinates.
+
+The audit should distinguish at least conceptually:
+
+```text
+declared terminal
+  intentional end of a pathway
+
+declared portal destination
+  current board intentionally hands off to another board/process
+
+declared return
+  entered process has an explicit return contract
+
+open end
+  reachable path stops without an explicit outcome
+
+incomplete branch
+  a choice/condition exists but one or more outcomes have no destination
+
+unreachable meaning
+  authored node/subgraph cannot be reached from a declared entry unless explicitly library-only
+
+trap / non-exiting cycle
+  reachable loop has no declared exit or terminal meaning
+
+placeholder / unresolved binding
+  source/template/asset/destination still intentionally unresolved
+```
+
+This is not one universal "green/red" score. Structural invalidity and design incompleteness have
+different consequences.
+
+Conceptually:
+
+```text
+BLOCK PUBLICATION
+  invalid references
+  illegal containment/template cycles
+  missing required source identity
+  structurally impossible graph
+  corrupt release inputs
+
+WARN / REQUIRE ACKNOWLEDGEMENT
+  intentional open ends
+  incomplete choice outcomes
+  placeholders
+  design TODOs
+  target-specific readiness gaps
+
+READY
+  every reachable path is either
+    explicitly terminal
+    explicitly handed off
+    explicitly returnable
+    or intentionally marked open
+```
+
+A warning should be specific enough to navigate directly to the problem:
+
+```text
+Start: onboarding.start
+-> Account Type
+-> Business
+-> Verification choice
+-> "Manual review"
+-> NO OUTCOME
+
+Publish anyway?
+  [Go to missing outcome]
+  [Mark intentionally open]
+  [Publish with known open end]
+  [Cancel]
+```
+
+Publishing with acknowledged open ends must preserve those open ends as release metadata; it must not
+rewrite them as complete.
+
+### Published Board revision
+
+A publish action should freeze one inspectable design revision:
+
+```text
+BoardGraph semantic identity
+BoardProjection(s) selected for release
+template/source revisions
+declared variances
+asset/media bindings
+journey/readiness audit
+known open ends / warnings
+release fingerprint
+```
+
+Later editing continues in working state rather than silently mutating the already-published design.
+
+```text
+WORKING_BOARD != PUBLISHED_BOARD_REVISION
+PUBLISHED_BLUEPRINT != TARGET_DEPLOYMENT
+PUBLISH_WITH_WARNING != WARNING_RESOLVED
+```
+
+This allows a human to share, review, compare and approve a concrete design before any target source
+is changed.
+
+## Blueprint compilation — project one published design into a real target
+
+After a Board revision is publishable, a separately governed **target adapter/compiler** may translate
+that design into the source language of an existing product.
+
+The important relationship is:
+
+```text
+published VexBoard design
+        |
+        v
+target adapter
+  understands target repository contracts
+        |
+        v
+implementation plan / source candidate
+        |
+        v
+target repository's own validation + review + lifecycle
+        |
+        v
+real implementation
+```
+
+VexBoard does not become the target repository's source owner.
+
+```text
+BOARD_RELEASE != SOURCE_AUTHORITY
+TARGET_ADAPTER != TARGET_SEMANTIC_OWNER
+COMPILED_CANDIDATE != DEPLOYED_PRODUCT
+DESIGN_APPROVAL != MERGE_OR_PUBLICATION_AUTHORITY
+```
+
+### Vextreme as a strong future target adapter
+
+Current Vextreme already exposes several useful target-native contracts rather than requiring
+VexBoard to invent a new website architecture:
+
+```text
+pages/{slug}.html
+  concrete page surface
+
+data/viewmodels.json + generated slug/index viewmodels
+  category / template / localization scopes / feature composition
+
+data/strings/source/**
+  canonical display/localization keys
+
+data/strings/compiled/** + pageLanguageMap
+  generated locale/runtime coverage projections
+
+Vextreme-Assets
+  content-addressed authored/source assets
+  + separately owned screenshot evidence
+
+data/nodes.json / auto-discovery / content intents
+  existing page discovery/placement machinery
+```
+
+A future Vextreme adapter could therefore map Board meaning conceptually:
+
+```text
+SCENE
+-> page / route / viewmodel identity
+
+templated page structure
+-> target-native reusable page/component contract where one exists
+-> otherwise surface a target capability gap rather than silently copy stale markup
+
+visible text / labels
+-> canonical localization keys + declared page scopes
+-> never hardcoded display strings
+
+asset binding
+-> Vextreme-Assets logical/content identity
+
+CONTROL / transition
+-> target-native link/navigation/interaction
+
+Board route / page relationship
+-> target navigation/registration meaning
+
+published design readiness
+-> implementation plan inputs and explicit remaining gaps
+```
+
+The target adapter should not invent a target capability merely because the Board can express it. If
+the Board uses reusable template inheritance but the selected target has no equivalent source-owned
+mechanism for that exact case, compilation should identify the missing target seam or deliberately
+form the smallest supported target evolution—not flatten the template into hidden copies and call
+that success.
+
+### Round-trip design/runtime relationship
+
+Once a target implementation exists, VexBoard's source-projector/lived-comparison side can close the
+loop:
+
+```text
+VexBoard intended design
+-> published Board revision
+-> target compile / implementation candidate
+-> accepted target source
+-> built / lived product
+-> source + journey projection back into VexBoard
+-> intended vs observed comparison
+```
+
+That is the deeper meaning of VexBoard as a different form of website projection: the Board is not a
+screenshot of the website and the website is not a screenshot of the Board. They are two forms tied
+through stable semantic identities and an explicit target translation contract.
+
 ## AI-first authoring posture
 
 The first version should be **AI-addressable and human-operable through one shared Board Control contract**, not a premature full manual editor. Rich natural-language authoring may remain AI-led while the same primitive operations are directly testable by a human.
@@ -2249,13 +2542,35 @@ export/reload of media bindings.
 
 Clickable controls, conditions, scenario state, overlays, loops, Back/Return, right-side walk stack, and revisit.
 
+### Phase 3A — animated semantic traversal
+
+Relationship-aware pan/zoom/focus transitions, destination centering, portal/map-change animation,
+return/revisit animation and reduced-motion equivalents that help the human perceive a semantic move
+without making camera motion the source of traversal truth.
+
+### Phase 3B — publish readiness and Board releases
+
+Reachability/path-closure analysis, explicit terminal/open/handoff/return classification, incomplete
+branch detection, unreachable/trap diagnostics, navigable warnings, acknowledged known-open releases
+and immutable/versioned Board release fingerprints.
+
+### Phase 3C — target blueprint compilation
+
+Target-specific adapters that translate a published Board revision into a reviewable implementation
+plan/source candidate while preserving the target repository's own source, localization, asset,
+validation and lifecycle ownership. Vextreme is a strong future proving target because its page,
+viewmodel/index, localization and Vextreme-Assets contracts are already source-addressable.
+
 ### Phase 4 — AI BoardPatch authoring
 
 Intent-to-patch, anchored conversation, validation, minimal-movement relayout, material-change preview, undo/redo lineage, and reusable module extraction.
 
 ### Phase 5 — source projectors and lived comparison
 
-VexWork Process/Work/Project adapters, Atlas adapters, intended-versus-observed Journey comparison, and implementation-brief output.
+VexWork Process/Work/Project adapters, Atlas adapters, target-source projectors,
+intended-versus-observed Journey comparison, and implementation-brief output. This phase closes the
+round trip by projecting accepted real source/lived behavior back against the published Board
+revision rather than assuming successful compilation means the product matches the design.
 
 ### Phase 6 — advanced direct manipulation and collaboration
 
@@ -2349,6 +2664,12 @@ next product frontier
    one source / linked instances / declared variance / make-unique provenance / reverse usages
 -> asset + image support proving ground
    source-bound media / semantic discovery / SVG + screenshots / gallery / exact provenance
+-> animated semantic traversal proving ground
+   visible route-following / centered destination / portal map-change / return / reduced motion
+-> publish-readiness + versioned Board release
+   path closure / open ends / incomplete branches / warnings / immutable release fingerprint
+-> target blueprint compiler proving ground
+   published Board -> target-native implementation plan/candidate without stealing target ownership
 -> use authored website patient zero + prime source-projection case
    to earn the smallest reusable graph/schema vocabulary
 -> use BoardProjection geometry as addressable spatial truth without making coordinates semantic identity
