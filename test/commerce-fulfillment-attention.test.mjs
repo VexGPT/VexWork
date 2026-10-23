@@ -186,6 +186,17 @@ test('stored fulfillment identity must already be canonical and read-only', () =
   );
 });
 
+test('shared item and fulfillment provenance is de-duplicated rather than treated as contradiction', () => {
+  const shared = 'provider.commerce.example:shared/plate-001';
+  const snapshot = attention({
+    sourceRefs: [shared],
+    item: item({ sourceRefs: [shared] }),
+    fulfillment: fulfillment({ sourceRefs: [shared] }),
+  });
+  assert.deepEqual(snapshot.sourceRefs, [shared]);
+  assert.deepEqual(snapshot.entries[0].sourceRefs, [shared]);
+});
+
 test('queue repository ownership and optional process routing stay in existing contracts', () => {
   assert.throws(
     () => attention({ ownerRepositoryRef: 'repo.not-registered' }),
