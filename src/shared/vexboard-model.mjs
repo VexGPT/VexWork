@@ -59,10 +59,14 @@ function isObject(value) {
   return Boolean(value) && typeof value === 'object' && !Array.isArray(value);
 }
 
+function compareCanonicalText(left, right) {
+  return left < right ? -1 : left > right ? 1 : 0;
+}
+
 function exactKeys(value, keys, label) {
   assert(isObject(value), `${label} must be one object`);
-  const actual = Object.keys(value).sort();
-  const expected = [...keys].sort();
+  const actual = Object.keys(value).sort(compareCanonicalText);
+  const expected = [...keys].sort(compareCanonicalText);
   assert(JSON.stringify(actual) === JSON.stringify(expected), `${label} schema drift`);
 }
 
@@ -80,7 +84,7 @@ function refs(values, label) {
   assert(Array.isArray(values), `${label} must be an array`);
   const result = values.map((value, index) => stableRef(value, `${label}[${index}]`));
   assert(new Set(result).size === result.length, `${label} must be unique`);
-  return [...result].sort();
+  return [...result].sort(compareCanonicalText);
 }
 
 function finiteNumber(value, label) {
@@ -167,9 +171,9 @@ export function normalizeBoardGraph(input) {
   assert(Array.isArray(input.nodes), 'BoardGraph nodes must be an array');
   assert(Array.isArray(input.relationships), 'BoardGraph relationships must be an array');
 
-  const nodes = input.nodes.map(normalizeNode).sort((a, b) => a.nodeRef.localeCompare(b.nodeRef));
+  const nodes = input.nodes.map(normalizeNode).sort((a, b) => compareCanonicalText(a.nodeRef, b.nodeRef));
   const relationships = input.relationships.map(normalizeRelationship)
-    .sort((a, b) => a.relationshipRef.localeCompare(b.relationshipRef));
+    .sort((a, b) => compareCanonicalText(a.relationshipRef, b.relationshipRef));
   const byRef = new Map(nodes.map((node) => [node.nodeRef, node]));
   assert(byRef.size === nodes.length, 'BoardGraph nodeRef must be unique');
   assert(new Set(relationships.map((relationship) => relationship.relationshipRef)).size === relationships.length,
@@ -226,7 +230,7 @@ export function normalizeBoardProjection(input, graphInput) {
   assert(BOARD_LAYOUT_INTENTS.includes(input.layoutIntent), `unsupported layout intent ${input.layoutIntent}`);
   assert(Array.isArray(input.items), 'BoardProjection items must be an array');
   const items = input.items.map(normalizeProjectionItem)
-    .sort((a, b) => a.projectionItemRef.localeCompare(b.projectionItemRef));
+    .sort((a, b) => compareCanonicalText(a.projectionItemRef, b.projectionItemRef));
   const byItemRef = new Map(items.map((item) => [item.projectionItemRef, item]));
   assert(byItemRef.size === items.length, 'BoardProjection projectionItemRef must be unique');
   const nodeRefs = new Set(graph.nodes.map((node) => node.nodeRef));

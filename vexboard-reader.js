@@ -40,6 +40,14 @@ export async function semanticHash(value) {
   return hex(digest);
 }
 
+async function verifyInputFingerprint(value, label) {
+  if (value?.semanticFingerprint === undefined) return;
+  const core = structuredClone(value);
+  delete core.semanticFingerprint;
+  const observed = await semanticHash(core);
+  if (value.semanticFingerprint !== observed) throw new TypeError(`${label} semanticFingerprint mismatch`);
+}
+
 async function fingerprint(value) {
   const core = structuredClone(value);
   delete core.semanticFingerprint;
@@ -53,7 +61,9 @@ function stripFingerprint(value) {
 }
 
 export async function hydrateBoardState(graphInput, projectionInput) {
+  await verifyInputFingerprint(graphInput, 'BoardGraph');
   const graph = await fingerprint(normalizeBoardGraph(stripFingerprint(graphInput)));
+  await verifyInputFingerprint(projectionInput, 'BoardProjection');
   const projection = await fingerprint(normalizeBoardProjection(stripFingerprint(projectionInput), stripFingerprint(graph)));
   return Object.freeze({ graph, projection });
 }

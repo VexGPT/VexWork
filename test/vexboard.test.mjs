@@ -67,6 +67,24 @@ test('BoardGraph identity is independent of source order and projection geometry
   assert.notEqual(projection.semanticFingerprint, movedProjection.semanticFingerprint);
 });
 
+test('canonical ref ordering is locale-independent code-point order', () => {
+  const graph = baseGraph();
+  graph.nodes = [
+    { nodeRef: 'node.i', kind: 'PROCESS', label: 'lower', parentRefOrNull: null, detailBoardRefOrNull: null, sourceRefs: [] },
+    { nodeRef: 'node.I', kind: 'PROCESS', label: 'upper', parentRefOrNull: null, detailBoardRefOrNull: null, sourceRefs: [] },
+  ];
+  const normalized = normalizeBoardGraph(graph);
+  assert.deepEqual(normalized.nodes.map((node) => node.nodeRef), ['node.I', 'node.i']);
+
+  const projection = baseProjection();
+  projection.items = [
+    { projectionItemRef: 'item.i', semanticRef: 'node.i', shapeKind: 'RECTANGLE', bounds: { x: 0, y: 0, width: 160, height: 80 }, layer: 0, parentProjectionItemRefOrNull: null, visible: true, locked: false },
+    { projectionItemRef: 'item.I', semanticRef: 'node.I', shapeKind: 'RECTANGLE', bounds: { x: 260, y: 0, width: 160, height: 80 }, layer: 0, parentProjectionItemRefOrNull: null, visible: true, locked: false },
+  ];
+  const normalizedProjection = normalizeBoardProjection(projection, normalized);
+  assert.deepEqual(normalizedProjection.items.map((item) => item.projectionItemRef), ['item.I', 'item.i']);
+});
+
 test('graph validation fails closed on missing refs and containment cycles', () => {
   const missing = baseGraph();
   missing.relationships.push({ relationshipRef: 'rel.bad', kind: 'FLOW', fromRef: 'node.a', toRef: 'node.missing', labelOrNull: null, sourceRefs: [] });
@@ -192,6 +210,24 @@ test('stale fingerprints and locked item movement fail closed', () => {
 test('browser and Node semantic hashing agree on canonical Board values', async () => {
   const value = normalizeBoardGraph(baseGraph());
   assert.equal(await Reader.semanticHash(value), nodeHash(value));
+});
+
+test('browser reload rejects stale graph and projection fingerprints instead of healing them', async () => {
+  const state = await Reader.hydrateBoardState(baseGraph(), baseProjection());
+
+  const staleGraph = structuredClone(state.graph);
+  staleGraph.nodes[0].label = 'tampered';
+  await assert.rejects(
+    () => Reader.hydrateBoardState(staleGraph, state.projection),
+    /BoardGraph semanticFingerprint mismatch/,
+  );
+
+  const staleProjection = structuredClone(state.projection);
+  staleProjection.items[0].bounds.x = 999;
+  await assert.rejects(
+    () => Reader.hydrateBoardState(state.graph, staleProjection),
+    /BoardProjection semanticFingerprint mismatch/,
+  );
 });
 
 test('local draft flow creates, forks, serializes and uses the same BoardControl shape', async () => {
