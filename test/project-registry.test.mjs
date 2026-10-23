@@ -11,7 +11,7 @@ test('Project Registry locates Projects without owning their WorkState', () => {
   const validation = validateProjectRegistry(registry);
   assert.equal(validation.ok, true, validation.errors.join('\n'));
   const projection = projectProjectRegistry(registry);
-  assert.equal(projection.projects.length, 7);
+  assert.equal(projection.projects.length, 8);
   assert.equal(projection.projects[0].projectRef, 'project.vexwork.foundation');
   assert.equal(projection.projects[0].workgraphRef, 'workgraph.vexwork.foundation');
   assert.equal(projection.projects[0].workgraphPath, 'workgraphs/public.json');
@@ -19,6 +19,12 @@ test('Project Registry locates Projects without owning their WorkState', () => {
   assert.equal(mobile.workgraphRef, 'workgraph.vexwork.foundation');
   assert.equal(mobile.workgraphPath, 'workgraphs/public.json');
   assert.equal(mobile.agencyPolicyPathOrNull, 'projects/vexstream-mobile-library/agency.policy.json');
+  const androidProof = projection.projects.find((entry) => entry.projectRef === 'project.android-proof-orchestration');
+  assert.equal(androidProof.workgraphRef, 'workgraph.vexwork.foundation');
+  assert.equal(androidProof.workgraphPath, 'workgraphs/public.json');
+  assert.equal(androidProof.definitionPath, 'projects/android-proof-orchestration/project.json');
+  assert.equal(androidProof.boardViewPath, 'projects/android-proof-orchestration/board.view.json');
+  assert.equal(androidProof.agencyPolicyPathOrNull, null);
   const toCompletion = projection.projects.find((entry) => entry.projectRef === 'project.vexlife.tocompletion');
   assert.equal(toCompletion.workgraphRef, 'workgraph.vexwork.foundation');
   assert.equal(toCompletion.workgraphPath, 'workgraphs/public.json');

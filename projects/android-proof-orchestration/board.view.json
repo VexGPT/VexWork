@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "vexwork.work-board-view/v1",
+  "viewRef": "view.android-proof-orchestration.board",
+  "projectRef": "project.android-proof-orchestration",
+  "label": "Android Proof Orchestration Work Board",
+  "laneRefOrder": [
+    "lane.work.intake",
+    "lane.work.planned",
+    "lane.work.ready",
+    "lane.work.active",
+    "lane.work.waiting",
+    "lane.work.needs-human",
+    "lane.work.verify",
+    "lane.work.attention",
+    "lane.work.done",
+    "lane.work.archive"
+  ]
+}
