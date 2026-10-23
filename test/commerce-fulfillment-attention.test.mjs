@@ -91,7 +91,7 @@ test('explicit ACKNOWLEDGED evidence maps to CLEAR without claiming completed Wo
   assert.deepEqual(projection.summary.existingWorkRefs, []);
 });
 
-test('truthful UNKNOWN remains queued without manufactured evidence', () => {
+test('truthful UNKNOWN remains queued without manufactured evidence or action wording', () => {
   const snapshot = attention({
     fulfillment: fulfillment({
       fulfillmentState: 'UNKNOWN',
@@ -99,6 +99,7 @@ test('truthful UNKNOWN remains queued without manufactured evidence', () => {
     }),
   });
   assert.equal(snapshot.entries[0].attentionState, 'UNKNOWN');
+  assert.equal(snapshot.entries[0].label, 'Fulfillment status unknown: Blue floral plate');
   assert.deepEqual(snapshot.entries[0].evidenceRefs, []);
   assert.equal(projectAttentionQueue(snapshot, context).summary.queuedCount, 1);
 });
