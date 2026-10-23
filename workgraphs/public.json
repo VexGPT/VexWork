@@ -632,15 +632,15 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-21T08:41:00.000Z",
-      "updatedAt": "2026-10-22T06:41:27.010Z",
+      "updatedAt": "2026-10-22T08:35:30.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "workRef": "work.vexstream.mobile-library.track-menu-presentation-defect",
       "parentWorkRefOrNull": "work.vexstream.mobile-library.massdownload-maturity",
       "label": "Track-menu presentation intermittency",
-      "purpose": "Investigate and close the still-unexplained Add-to-queue / Track-menu intermittency preserved by merged Android Test / Proof incident #151; accepted #148 observability hardening and terminal MassDownload acceptance do not identify or close its root cause.",
+      "purpose": "Preserve the still-unexplained historical Add-to-queue / Track-menu intermittency after eight fresh accepted-current Queue evaluations produced eight passes and zero matching recurrence; pause foreground causal execution at this checkpoint and resume on matching recurrence or materially new causal evidence.",
       "workClass": "DEFECT",
-      "state": "RUNNING",
+      "state": "PAUSED_AT_CHECKPOINT",
       "priorityClass": "NORMAL",
       "dependencyRefs": [
         "work.vexstream.mobile-library.massdownload-product"
@@ -653,7 +653,8 @@
         "repo.vexlife-android:docs/foundation/test-proof/incidents/TF-INCIDENT-2026-10-21-004.md",
         "github.pull.vexlife-android.148",
         "github.pull.vextreme-sdk.1887",
-        "projects/vexstream-mobile-library/README.md"
+        "projects/vexstream-mobile-library/README.md",
+        "github.pull.vexlife-android.155"
       ],
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
@@ -3210,6 +3211,20 @@
         "github.commit.vexwork.2427b52996134510eaabfc5e208b0853d688845f"
       ],
       "createdAt": "2026-10-22T06:31:52.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.track-menu-defect.paused.current-n8-01",
+      "workRef": "work.vexstream.mobile-library.track-menu-presentation-defect",
+      "priorState": "RUNNING",
+      "nextState": "PAUSED_AT_CHECKPOINT",
+      "reason": "Eight fresh isolated Queue evaluations on accepted current source produced eight exact queue occurrence #2 passes and zero matching recurrence. Preserve the incident as OPEN_UNEXPLAINED while pausing blind foreground reproduction until recurrence or materially new causal evidence.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexlife-android.155",
+        "repo.vexlife-android:docs/foundation/test-proof/incidents/TF-INCIDENT-2026-10-21-004.md"
+      ],
+      "createdAt": "2026-10-22T08:35:30.000Z"
     }
   ],
   "sourceRefs": [

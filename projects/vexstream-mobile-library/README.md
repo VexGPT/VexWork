@@ -46,7 +46,7 @@ VexStream Mobile Library                         OUTCOME
 +-- MassDownload Maturity                        OUTCOME
     +-- MassDownload product implementation      TASK / completed
     +-- MassDownload terminal EndToEnd           TASK / completed
-    +-- Track-menu presentation intermittency    DEFECT / running / OPEN_UNEXPLAINED
+    +-- Track-menu presentation intermittency    DEFECT / paused at checkpoint / OPEN_UNEXPLAINED
 ```
 
 Adjacent but deliberately **outside current Project membership**:
@@ -215,8 +215,29 @@ VexWork therefore keeps the Queue defect as a sibling under MassDownload Maturit
 it beneath the completed EndToEnd item. The incident record is source/evidence; this Work item owns
 the lifecycle truth.
 
-Provider/evidence refs include Android PR #148, merged Test/Proof incident PR #151, and SDK PR #1887.
-Public VexWork references private SDK provider evidence without publishing private repository culture.
+Provider/evidence refs include Android PR #148, merged Test/Proof incident PR #151, current-source
+checkpoint PR #155, and SDK PR #1887. Public VexWork references private SDK provider evidence without
+publishing private repository culture.
+
+Current-source recurrence evidence now establishes:
+
+```text
+fresh isolated evaluable Queue runs = 8
+exact queue occurrence #2 PASS = 8
+matching AddTrackToQueue semantic recurrence = 0
+
+failureStatus = OPEN_UNEXPLAINED
+failureRootCause = UNKNOWN
+```
+
+That is enough to stop blind active reproduction pressure, but not enough to claim a fix or external
+cause. VexWork therefore moves the admitted defect from `RUNNING` to `PAUSED_AT_CHECKPOINT` in the
+Waiting lane. It remains `workDisposition=ACTIVE`, `authorityDisposition=AUTHORIZED_BOUNDED`, and
+`effectDisposition=NO_EFFECTS`: this is a checkpoint inside the delegated defect envelope, not
+canonical Parking Lot work and not incident closure.
+
+Resume causal execution when the accepted recurrence rule matches again or materially new evidence
+creates a bounded hypothesis worth falsifying.
 
 ### ML-D7 — VexStream Music is a real repository relationship, not hidden context
 
