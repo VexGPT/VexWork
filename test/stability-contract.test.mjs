@@ -74,3 +74,18 @@ test('coverage reporting is available without pretending coverage is semantic cl
 });
 
 // [VXG RealForever]
+
+test('source coverage baseline is source-managed and below the measured accepted baseline', () => {
+  const baseline = JSON.parse(fs.readFileSync(path.join(ROOT, 'blueprint', 'source-coverage-baseline.json'), 'utf8'));
+  assert.equal(baseline.schemaVersion, 'vexwork.source-coverage-baseline/v1');
+  assert.deepEqual(baseline.sourcePolicy, ['src/**/*.mjs', '*-reader.js']);
+  for (const metric of ['lines', 'branches', 'functions']) {
+    assert.ok(baseline.observedBaseline[metric] >= baseline.minimum[metric], metric);
+  }
+  assert.ok(baseline.criticalFiles['src/core/workgraph-runtime.mjs']);
+  assert.ok(baseline.criticalFiles['src/core/workgraph.mjs']);
+  assert.ok(baseline.criticalFiles['src/core/transition-handshake.mjs']);
+  assert.ok(baseline.criticalFiles['src/core/workgraph-composition.mjs']);
+});
+
+// [VXG RealForever][VEXWORK][SOURCE-COVERAGE-BASELINE]
