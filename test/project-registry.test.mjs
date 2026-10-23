@@ -11,7 +11,7 @@ test('Project Registry locates Projects without owning their WorkState', () => {
   const validation = validateProjectRegistry(registry);
   assert.equal(validation.ok, true, validation.errors.join('\n'));
   const projection = projectProjectRegistry(registry);
-  assert.equal(projection.projects.length, 5);
+  assert.equal(projection.projects.length, 6);
   assert.equal(projection.projects[0].projectRef, 'project.vexwork.foundation');
   assert.equal(projection.projects[0].workgraphRef, 'workgraph.vexwork.foundation');
   assert.equal(projection.projects[0].workgraphPath, 'workgraphs/public.json');
@@ -37,6 +37,11 @@ test('Project Registry locates Projects without owning their WorkState', () => {
   assert.equal(operational.definitionPath, 'projects/vexwork-operational-console/project.json');
   assert.equal(operational.boardViewPath, 'projects/vexwork-operational-console/board.view.json');
   assert.equal(operational.agencyPolicyPathOrNull, null);
+  const vexboard = projection.projects.find((entry) => entry.projectRef === 'project.vexboard');
+  assert.equal(vexboard.workgraphRef, 'workgraph.vexwork.foundation');
+  assert.equal(vexboard.definitionPath, 'projects/vexboard/project.json');
+  assert.equal(vexboard.boardViewPath, 'projects/vexboard/board.view.json');
+  assert.equal(vexboard.agencyPolicyPathOrNull, null);
   assert.equal(projection.effects, false);
   assert.equal(projection.executionAuthority, 'NONE');
   assert.equal(verifySemanticFingerprint(projection), true);
