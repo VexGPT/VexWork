@@ -174,3 +174,82 @@ test('runtime fails closed when current pointer bytes are corrupted', () => {
 });
 
 // [VXG RealForever][VEXWORK][PROJECT-PLANNING-RUNTIME]
+
+
+test('runtime public inputs and store roots fail closed', () => {
+  assert.throws(
+    () => projectPlanningRuntimeAddress('bad project ref!'),
+    (error) => error instanceof ProjectPlanningRuntimeError && error.code === 'PLANNING_RUNTIME_INPUT_INVALID',
+  );
+  assert.throws(
+    () => readProjectPlanningRuntime({ storeRoot: path.join(os.tmpdir(), 'vexwork-planning-runtime-definitely-missing'), projectRef: project.projectRef }),
+    (error) => error instanceof ProjectPlanningRuntimeError && error.code === 'PLANNING_RUNTIME_STORE_ROOT_INVALID',
+  );
+  const storeRoot = tempRoot();
+  try {
+    assert.throws(
+      () => recoverProjectPlanningRuntimeWriter({ storeRoot, projectRef: project.projectRef, expectedLeaseSha256: 'not-a-digest' }),
+      (error) => error instanceof ProjectPlanningRuntimeError && error.code === 'PLANNING_RUNTIME_INPUT_INVALID',
+    );
+    assert.throws(
+      () => recordProjectPlanningRuntimeTransaction({
+        storeRoot, project, graph, viewRefs, transaction: transaction({ n: 1 }), planningRegistry, workRegistry,
+        expectedPointerSha256OrNull: null, instanceRef: 'instance.invalid-time', observedAt: 'not-a-time',
+      }),
+      (error) => error instanceof ProjectPlanningRuntimeError && error.code === 'PLANNING_RUNTIME_INPUT_INVALID',
+    );
+  } finally {
+    fs.rmSync(storeRoot, { recursive: true, force: true });
+  }
+});
+
+test('an abandoned writer blocks ordinary planning admission until explicit recovery', () => {
+  const storeRoot = tempRoot();
+  try {
+    const exited = childProcess.spawnSync(process.execPath, ['-e', 'process.exit(0)']);
+    assert.ok(Number.isSafeInteger(exited.pid) && exited.pid > 0);
+    const abandoned = writeLease(storeRoot, { pid: exited.pid });
+    assert.throws(
+      () => record(storeRoot, { n: 1 }),
+      (error) => error instanceof ProjectPlanningRuntimeError
+        && error.code === 'PLANNING_RUNTIME_WRITER_RECOVERY_REQUIRED'
+        && error.details.leaseSha256 === abandoned.leaseSha256,
+    );
+  } finally {
+    fs.rmSync(storeRoot, { recursive: true, force: true });
+  }
+});
+
+test('pointer store rejects unexpected entries and retained event tampering', () => {
+  const storeRoot = tempRoot();
+  try {
+    const first = record(storeRoot, { n: 1 });
+    const root = path.join(storeRoot, 'project-planning', projectPlanningRuntimeAddress(project.projectRef));
+    const pointers = path.join(root, 'pointers');
+    fs.writeFileSync(path.join(pointers, 'unexpected.txt'), '{}', 'utf8');
+    assert.throws(
+      () => readProjectPlanningRuntime({ storeRoot, projectRef: project.projectRef }),
+      (error) => error instanceof ProjectPlanningRuntimeError && error.code === 'PLANNING_RUNTIME_POINTER_CORRUPT',
+    );
+    fs.rmSync(path.join(pointers, 'unexpected.txt'));
+
+    const current1 = readProjectPlanningRuntime({ storeRoot, projectRef: project.projectRef });
+    record(storeRoot, {
+      n: 2,
+      current: current1.snapshot,
+      expectedPointerSha256OrNull: current1.pointer.pointerSha256,
+      payload: { laneRef: 'lane.work.active', limit: 5 },
+    });
+
+    const eventFile = path.join(root, 'events', `000000000001-${first.planning.event.semanticFingerprint}.json`);
+    const event = JSON.parse(fs.readFileSync(eventFile, 'utf8'));
+    event.eventRef = 'event.runtime.tampered';
+    fs.writeFileSync(eventFile, JSON.stringify(canonicalize(event)), 'utf8');
+    assert.throws(
+      () => readProjectPlanningRuntime({ storeRoot, projectRef: project.projectRef }),
+      (error) => error instanceof ProjectPlanningRuntimeError && error.code === 'PLANNING_RUNTIME_EVENT_CORRUPT',
+    );
+  } finally {
+    fs.rmSync(storeRoot, { recursive: true, force: true });
+  }
+});
