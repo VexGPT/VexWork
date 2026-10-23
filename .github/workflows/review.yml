@@ -1,0 +1,53 @@
+name: VexWork deterministic review
+
+on:
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'test/**'
+      - 'scripts/**'
+      - 'blueprint/**'
+      - 'projects/**'
+      - 'workgraphs/**'
+      - 'public/**'
+      - '*.js'
+      - 'package.json'
+      - '.github/workflows/review.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/**'
+      - 'test/**'
+      - 'scripts/**'
+      - 'blueprint/**'
+      - 'projects/**'
+      - 'workgraphs/**'
+      - 'public/**'
+      - '*.js'
+      - 'package.json'
+      - '.github/workflows/review.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  deterministic-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out exact candidate
+        uses: actions/checkout@v4
+
+      - name: Use minimum supported Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.1.0'
+
+      - name: Show runtime
+        run: node --version
+
+      - name: Run VexWork review floor with coverage
+        run: npm run review
+
+# [VXG RealForever]
