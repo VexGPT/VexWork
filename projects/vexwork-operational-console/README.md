@@ -696,10 +696,11 @@ P2  VexSite Localization patient-zero dogfood             COMPLETED
     page population / scope                               COMPLETED
     localization / modernization lens                     COMPLETED
     patient-zero proof                                    COMPLETED
-P3  Operating Domain template                             RUNNING
+P3  Operating Domain template                             COMPLETED
     Operating Domain contract                             COMPLETED
-    operational attention queue                           READY
-P4  Commerce starter template                             WAITING_DEPENDENCIES
+    operational attention queue                           COMPLETED
+P4  Commerce starter template                             READY
+    flexible commerce item model                          READY
 P5  Antique Plate lived commerce pilot                    WAITING_DEPENDENCIES
 P6  Cross-domain completion                               WAITING_DEPENDENCIES
 

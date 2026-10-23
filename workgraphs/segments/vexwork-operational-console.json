@@ -272,7 +272,7 @@
       "label": "Reusable Operating Domain template",
       "purpose": "Generalize the patient-zero model into a reusable operating-domain template for capabilities, populations, attention queues, processes and work lenses without domain-specific ownership leakage.",
       "workClass": "OUTCOME",
-      "state": "RUNNING",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexwork.operational-console.vexsite-patient-zero-proof"
@@ -286,12 +286,16 @@
         "github.pull.vexwork.68",
         "github.commit.vexwork.ddd56d8ddff92b5053644c758197d014d2000613",
         "vexrelay.return.vexwork.operating-domain-contract.a002.sha256.0da1df2bcc4ba49c30a6311e616b6c45bfc3140da2f110f646be7b756f27fcbc",
-        "vexrelay.return.vexwork.operating-domain-assurance.a003.sha256.072d2f29699be1ea545ec08881e5a8ba87eab9de03353e99805449d2d6bb1286"
+        "vexrelay.return.vexwork.operating-domain-assurance.a003.sha256.072d2f29699be1ea545ec08881e5a8ba87eab9de03353e99805449d2d6bb1286",
+        "github.pull.vexwork.71",
+        "github.commit.vexwork.15e3b73835f45b641944b94491dad2e494ba1c63",
+        "vexrelay.return.vexwork.attention-queue-sourceowner.a003.sha256.d148ce7c6a4dffa77057cdf3f285cb74f6c1ee9934d667ed733f1461ead8bbc9",
+        "docs/foundation/ATTENTION-QUEUE.md"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T03:20:00.000Z",
-      "updatedAt": "2026-10-23T03:25:33.425Z",
+      "updatedAt": "2026-10-23T04:34:26.002Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -336,7 +340,7 @@
       "label": "Operational attention queue",
       "purpose": "Support event/exception-driven attention such as fulfillment, expiry or failure queues without automatically converting every event into durable Work.",
       "workClass": "TASK",
-      "state": "READY",
+      "state": "COMPLETED",
       "priorityClass": "NORMAL",
       "dependencyRefs": [
         "work.vexwork.operational-console.operating-domain-contract"
@@ -347,12 +351,17 @@
       "sourceRefs": [
         "projects/vexwork-operational-console/README.md",
         "github.pull.vexwork.68",
-        "docs/foundation/OPERATING-DOMAIN.md"
+        "docs/foundation/OPERATING-DOMAIN.md",
+        "github.pull.vexwork.71",
+        "github.commit.vexwork.15e3b73835f45b641944b94491dad2e494ba1c63",
+        "vexrelay.return.vexwork.attention-queue-sourceowner.a003.sha256.d148ce7c6a4dffa77057cdf3f285cb74f6c1ee9934d667ed733f1461ead8bbc9",
+        "docs/foundation/ATTENTION-QUEUE.md",
+        "src/core/attention-queue.mjs"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T03:20:00.000Z",
-      "updatedAt": "2026-10-23T03:37:41.001Z",
+      "updatedAt": "2026-10-23T04:34:26.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -364,7 +373,7 @@
       "label": "Reusable small-commerce starter",
       "purpose": "Apply the Operating Domain foundation to a reusable small-commerce starter covering catalog, public storefront/site, sale state, inventory state and fulfillment attention without making VexWork the commerce database.",
       "workClass": "OUTCOME",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "READY",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexwork.operational-console.operating-domain-template"
@@ -373,12 +382,13 @@
         "repo.vexwork"
       ],
       "sourceRefs": [
-        "projects/vexwork-operational-console/README.md"
+        "projects/vexwork-operational-console/README.md",
+        "github.pull.vexwork.71"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T03:20:00.000Z",
-      "updatedAt": "2026-10-22T03:20:00.000Z",
+      "updatedAt": "2026-10-23T04:34:26.003Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -390,7 +400,7 @@
       "label": "Flexible commerce item model",
       "purpose": "Model stable sellable-item identity and state while allowing images, descriptions, condition, provenance, price, listing URL, sold date and expected shipment date to remain optional unless a selected process requires them.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "READY",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexwork.operational-console.operating-domain-contract"
@@ -399,12 +409,13 @@
         "repo.vexwork"
       ],
       "sourceRefs": [
-        "projects/vexwork-operational-console/README.md"
+        "projects/vexwork-operational-console/README.md",
+        "github.pull.vexwork.71"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T03:20:00.000Z",
-      "updatedAt": "2026-10-22T03:20:00.000Z",
+      "updatedAt": "2026-10-23T04:34:26.004Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -1266,6 +1277,105 @@
         "work.vexwork.operational-console.operating-domain-contract"
       ],
       "createdAt": "2026-10-23T03:37:41.001Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.attention-queue-contract.running.sourceowner-a003",
+      "workRef": "work.vexwork.operational-console.attention-queue-contract",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Currentized SourceOwner A003 passed the full repository-owned npm run review floor for the exact Attention Queue candidate composed with accepted Android Proof Orchestration.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "vexrelay.return.vexwork.attention-queue-sourceowner.a003.sha256.d148ce7c6a4dffa77057cdf3f285cb74f6c1ee9934d667ed733f1461ead8bbc9"
+      ],
+      "createdAt": "2026-10-23T04:32:47.698Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.attention-queue-contract.verifying.assurance-clear-a003",
+      "workRef": "work.vexwork.operational-console.attention-queue-contract",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Fresh semantic Assurance remained CLEAR on the unchanged five-path Attention Queue membrane after ordinary-forward currentization; A003 re-proved the exact composed head.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.71",
+        "vexrelay.return.vexwork.attention-queue-sourceowner.a003.sha256.d148ce7c6a4dffa77057cdf3f285cb74f6c1ee9934d667ed733f1461ead8bbc9"
+      ],
+      "createdAt": "2026-10-23T04:34:16.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.attention-queue-contract.completed.pr71",
+      "workRef": "work.vexwork.operational-console.attention-queue-contract",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "PR #71 merged the exact A003-proven Attention Queue semantic foundation, and the merge commit introduced zero file delta beyond the assured candidate.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.71",
+        "github.commit.vexwork.15e3b73835f45b641944b94491dad2e494ba1c63"
+      ],
+      "createdAt": "2026-10-23T04:34:26.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.operating-domain-template.verifying.pr71",
+      "workRef": "work.vexwork.operational-console.operating-domain-template",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Both P3 semantic children are accepted: Operating Domain contract and Attention Queue contract are complete on main.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.68",
+        "github.pull.vexwork.71",
+        "work.vexwork.operational-console.attention-queue-contract"
+      ],
+      "createdAt": "2026-10-23T04:34:26.001Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.operating-domain-template.completed.pr71",
+      "workRef": "work.vexwork.operational-console.operating-domain-template",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "P3 Operating Domain template is complete with domain-neutral composition plus bounded event/exception Attention Queue semantics accepted on main.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.68",
+        "github.pull.vexwork.71",
+        "github.commit.vexwork.15e3b73835f45b641944b94491dad2e494ba1c63"
+      ],
+      "createdAt": "2026-10-23T04:34:26.002Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.commerce-template.ready.p3-terminal",
+      "workRef": "work.vexwork.operational-console.commerce-template",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "P3 Operating Domain template completed on PR #71; the reusable small-commerce starter is now the next Operational Console phase.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.71",
+        "work.vexwork.operational-console.operating-domain-template"
+      ],
+      "createdAt": "2026-10-23T04:34:26.003Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.commerce-item-model.ready.p3-terminal",
+      "workRef": "work.vexwork.operational-console.commerce-item-model",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "The declared Operating Domain contract dependency is complete and P3 is terminal; the flexible commerce item model is the first P4 source edge.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.71",
+        "work.vexwork.operational-console.operating-domain-contract"
+      ],
+      "createdAt": "2026-10-23T04:34:26.004Z"
     }
   ],
   "sourceRefs": [
