@@ -11,7 +11,8 @@
     "work.vexlife.tocompletion.outcome",
     "work.vexlife.connected-services.outcome",
     "work.vexwork.operational-console.outcome",
-    "work.vexwork.operational-console.multi-fulfiller-routing"
+    "work.vexwork.operational-console.multi-fulfiller-routing",
+    "work.vexboard.outcome"
   ],
   "items": [
     {
@@ -2407,6 +2408,187 @@
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T05:32:34.019Z",
       "updatedAt": "2026-10-22T05:32:34.019Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexboard.outcome",
+      "parentWorkRefOrNull": null,
+      "label": "VexBoard Semantic Canvas",
+      "purpose": "Create a reusable semantic-canvas foundation that can author new experience/process meaning and project existing source-owned truth through interactive, recursive, AI-addressable visual journeys.",
+      "workClass": "OUTCOME",
+      "state": "DECOMPOSED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/vexboard/README.md"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-10-23T00:14:29.000Z",
+      "updatedAt": "2026-10-23T00:14:29.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexboard.project-architecture",
+      "parentWorkRefOrNull": "work.vexboard.outcome",
+      "label": "Project architecture and foundation boundary",
+      "purpose": "Preserve the human outcome, semantic roles, recursive-depth model, AI-authoring posture, source-projection boundary, patient-zero proofs and phased horizons so implementation does not rediscover VexBoard from chat.",
+      "workClass": "TASK",
+      "state": "COMPLETED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/vexboard/README.md"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-10-23T00:14:29.000Z",
+      "updatedAt": "2026-10-23T00:14:29.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexboard.boardgraph-contract",
+      "parentWorkRefOrNull": "work.vexboard.outcome",
+      "label": "BoardGraph semantic contract",
+      "purpose": "Form the smallest reusable semantic graph contract for scenes, controls, processes, decisions, artifacts, containers, portals, references, relationships, modules, ports, source bindings and validation without making canvas coordinates canonical meaning.",
+      "workClass": "TASK",
+      "state": "READY",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": null,
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/vexboard/README.md"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-10-23T00:14:29.000Z",
+      "updatedAt": "2026-10-23T00:14:29.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexboard.canvas-projection",
+      "parentWorkRefOrNull": "work.vexboard.outcome",
+      "label": "Read-only canvas and recursive navigation",
+      "purpose": "Project BoardGraph meaning into a deterministic, stable, zoomable and pannable canvas with semantic shapes, connectors, focus, minimap, inline expansion, portal entry and collapse while keeping camera position separate from semantic position.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexboard.boardgraph-contract"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": null,
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/vexboard/README.md"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-10-23T00:14:29.000Z",
+      "updatedAt": "2026-10-23T00:14:29.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexboard.boardjourney-simulation",
+      "parentWorkRefOrNull": "work.vexboard.outcome",
+      "label": "Prototype simulation and BoardJourney",
+      "purpose": "Make semantic controls, conditions, overlays, loops, return paths and scenario state traversable without real external effects, preserving a right-side journey stack that distinguishes meaningful traversal from viewport movement.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexboard.boardgraph-contract",
+        "work.vexboard.canvas-projection"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": null,
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/vexboard/README.md"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-10-23T00:14:29.000Z",
+      "updatedAt": "2026-10-23T00:14:29.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexboard.boardpatch-authoring",
+      "parentWorkRefOrNull": "work.vexboard.outcome",
+      "label": "AI BoardPatch authoring and reusable extraction",
+      "purpose": "Let AI make bounded, reviewable semantic changes anchored to stable board refs, including minimal-movement relayout, undoable lineage, copy-versus-reuse semantics and extraction of overwhelming regions into reusable modules with explicit interfaces.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexboard.boardgraph-contract",
+        "work.vexboard.canvas-projection",
+        "work.vexboard.boardjourney-simulation"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": null,
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/vexboard/README.md"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-10-23T00:14:29.000Z",
+      "updatedAt": "2026-10-23T00:14:29.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexboard.source-projectors",
+      "parentWorkRefOrNull": "work.vexboard.outcome",
+      "label": "Source projectors and lived comparison",
+      "purpose": "Use the same semantic/rendering foundation to project VexWork processes/work/projects and repository Atlas-style truth read-only, then compare intended VexBoard journeys with observed lived journeys such as Screencrawler evidence without copying source ownership.",
+      "workClass": "OUTCOME",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [
+        "work.vexboard.boardgraph-contract",
+        "work.vexboard.canvas-projection",
+        "work.vexboard.boardjourney-simulation"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": null,
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/vexboard/README.md"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-10-23T00:14:29.000Z",
+      "updatedAt": "2026-10-23T00:14:29.000Z"
     }
   ],
   "transitions": [
@@ -3286,7 +3468,8 @@
     "project.vexlife.tocompletion",
     "project.vexlife.connected-services",
     "docs/lineage/VEXLIFE-CONNECTED-SERVICES.md",
-    "projects/vexlife-connected-services/README.md"
+    "projects/vexlife-connected-services/README.md",
+    "project.vexboard"
   ],
   "formedAt": "2026-10-21T01:45:00.000Z"
 }
