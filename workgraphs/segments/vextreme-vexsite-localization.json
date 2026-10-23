@@ -27,14 +27,16 @@
         "github.pull.vextreme.339",
         "github.pull.vextreme.361",
         "github.pull.vextreme.383",
-        "docs/process/FORM-PROJECT.md"
+        "docs/process/FORM-PROJECT.md",
+        "github.pull.vextreme.384",
+        "github.pull.vextreme.385"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-23T07:48:00.000Z",
-      "updatedAt": "2026-10-23T07:48:00.000Z"
+      "updatedAt": "2026-10-23T08:33:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -43,7 +45,7 @@
       "label": "Port Bending Condominium third arc into a Vextreme record reader",
       "purpose": "Turn PR #383's preserved third-arc record into a source-first Vextreme reader using the shared neutral record-reader controller, exact provenance, and only the record-specific structure and media the source earns; do not rewrite the evidence archive or invent a generic HTML template.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "VERIFYING",
       "workDisposition": "ACTIVE",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [],
@@ -55,21 +57,23 @@
         "repo.vextreme:docs/architecture/19-record-readers.md",
         "github.pull.vextreme.339",
         "github.pull.vextreme.361",
-        "project.vextreme.vexsite-localization"
+        "project.vextreme.vexsite-localization",
+        "github.pull.vextreme.384",
+        "github.commit.vextreme.0073189278695f8d2361f08b3c7725b4f97d3f03"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-23T07:48:00.000Z",
-      "updatedAt": "2026-10-23T07:48:00.000Z"
+      "updatedAt": "2026-10-23T08:33:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vextreme.vexsite.localization.recent-record-readers-global-core",
       "parentWorkRefOrNull": "work.vextreme.vexsite.localization.outcome",
       "label": "Localize the recent record-reader surfaces across Global Core",
-      "purpose": "Carry the page-authored presentation strings for Returning scorpions to God, Recognizing Life Receiving Abundance, and the Bending Condominium third reader across the Global Core tier while preserving frozen transcript evidence as source evidence rather than silently translating or rewriting the historical record.",
+      "purpose": "Carry the page-authored presentation strings for Returning scorpions to God, Recognizing Life Receiving Abundance, and—after its source is accepted—the Bending Condominium third reader across the Global Core tier while preserving frozen transcript evidence as source evidence rather than silently translating or rewriting the historical record.",
       "workClass": "TASK",
       "state": "RUNNING",
       "workDisposition": "ACTIVE",
@@ -86,14 +90,16 @@
         "github.pull.vextreme.383",
         "repo.vextreme:docs/architecture/06-i18n.md",
         "repo.vextreme:docs/architecture/19-record-readers.md",
-        "projects/vexwork-operational-console/VEXSITE-LOCALIZATION-LENS.md"
+        "projects/vexwork-operational-console/VEXSITE-LOCALIZATION-LENS.md",
+        "github.pull.vextreme.385",
+        "github.commit.vextreme.4fbedf5b4bea0d277ac61604c49489899303e343"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-23T07:48:00.000Z",
-      "updatedAt": "2026-10-23T07:48:00.000Z"
+      "updatedAt": "2026-10-23T08:33:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -131,12 +137,29 @@
       "updatedAt": "2026-10-23T07:48:00.000Z"
     }
   ],
-  "transitions": [],
+  "transitions": [
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.vexsite.localization.bending-condominium-reader.verifying.source-complete-20261023",
+      "workRef": "work.vextreme.vexsite.localization.bending-condominium-reader",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Vextreme PR #384 formed the exact third-reader source: three source movements cover exchanges 1–6, all 46 page bindings resolve, the selected daylight artwork is byte-identical to PR #383, and the canonical registries place the third arc immediately after the second. Exact-head SourceOwner proof remains next.",
+      "actorRef": "actor.local-vex-operations.vexsite-localization",
+      "sourceRefs": [
+        "github.pull.vextreme.384",
+        "github.commit.vextreme.0073189278695f8d2361f08b3c7725b4f97d3f03"
+      ],
+      "createdAt": "2026-10-23T08:33:00.000Z"
+    }
+  ],
   "sourceRefs": [
     "projects/vexsite-localization/README.md",
     "projects/vexwork-operational-console/VEXSITE-LOCALIZATION-LENS.md",
     "github.issue.vextreme.273",
-    "github.pull.vextreme.383"
+    "github.pull.vextreme.383",
+    "github.pull.vextreme.384",
+    "github.pull.vextreme.385"
   ],
   "formedAt": "2026-10-23T07:48:00.000Z"
 }

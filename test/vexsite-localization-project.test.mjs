@@ -26,15 +26,18 @@ test('VexSite Localization Project groups the live trajectory without page-per-t
   assert.deepEqual(project.repositoryRefs, ['repo.vexwork', 'repo.vextreme']);
 });
 
-test('VexSite Localization board exposes foreground reader/localization work and the parked canonical queue edge', () => {
-  const board = projectWorkBoard({ project, graph, view, registry });
-  const active = board.lanes.find((lane) => lane.laneRef === 'lane.work.active');
-  const intake = board.lanes.find((lane) => lane.laneRef === 'lane.work.intake');
+test('VexSite Localization board separates active localization, reader verification, and parked queue work', () => {
+  const projected = projectWorkBoard({ project, graph, view, registry });
+  const active = projected.lanes.find((lane) => lane.laneRef === 'lane.work.active');
+  const verify = projected.lanes.find((lane) => lane.laneRef === 'lane.work.verify');
+  const intake = projected.lanes.find((lane) => lane.laneRef === 'lane.work.intake');
 
   assert.deepEqual(active.cards.map((card) => card.workRef), [
-    'work.vextreme.vexsite.localization.bending-condominium-reader',
     'work.vextreme.vexsite.localization.outcome',
     'work.vextreme.vexsite.localization.recent-record-readers-global-core',
+  ]);
+  assert.deepEqual(verify.cards.map((card) => card.workRef), [
+    'work.vextreme.vexsite.localization.bending-condominium-reader',
   ]);
   assert.equal(intake.cards.some((card) => card.workRef === 'work.vextreme.vexsite.localization.closed-circuit.global-core'), true);
   assert.equal(intake.cards.find((card) => card.workRef === 'work.vextreme.vexsite.localization.closed-circuit.global-core').workDisposition, 'PARKED');

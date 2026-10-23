@@ -5206,7 +5206,7 @@
           "label": "BoardGraph semantic contract",
           "purpose": "Form the smallest reusable semantic graph contract for scenes, controls, processes, decisions, artifacts, containers, portals, references, relationships, modules, ports, source bindings and validation without making canvas coordinates canonical meaning.",
           "workClass": "TASK",
-          "state": "RUNNING",
+          "state": "COMPLETED",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vexboard.outcome",
@@ -5232,7 +5232,7 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-23T00:14:29.000Z",
-          "updatedAt": "2026-10-23T02:59:44.000Z",
+          "updatedAt": "2026-10-23T07:52:13.000Z",
           "transitionHistory": [
             {
               "transitionRef": "transition.vexboard.boardgraph-contract.running.20261023a",
@@ -5245,6 +5245,31 @@
                 "projects/vexboard/README.md"
               ],
               "createdAt": "2026-10-23T02:59:44.000Z"
+            },
+            {
+              "transitionRef": "transition.vexboard.boardgraph-contract.verifying.pr66-terminal",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "PR #66 merged at the exact semantically-cleared BoardGraph head after SourceOwner, Independent Assurance and LifecycleCurrentness; terminal post-merge evidence is current.",
+              "actorRef": "actor.chatgpt.vexboard.boardgraph-foundation",
+              "sourceRefs": [
+                "github.pull.vexwork.66",
+                "git.commit.vexwork.1f19e70a397baab1f5d995bacc2358372b93563e"
+              ],
+              "createdAt": "2026-10-23T07:52:12.000Z"
+            },
+            {
+              "transitionRef": "transition.vexboard.boardgraph-contract.completed.pr66-terminal",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "The PR #66 merge tree exactly matches the cleared BoardGraph candidate and terminal PostMergeVerification A003 PASS was consumed; the shared-control foundation is accepted.",
+              "actorRef": "actor.chatgpt.vexboard.boardgraph-foundation",
+              "sourceRefs": [
+                "github.pull.vexwork.66",
+                "git.commit.vexwork.1f19e70a397baab1f5d995bacc2358372b93563e",
+                "relay.return.vexboard.pr66.post-merge.a003.3af5b26b237e1b8f597c9c14844109db9bf2bb8f62717714f9c6ea71316b83c4"
+              ],
+              "createdAt": "2026-10-23T07:52:13.000Z"
             }
           ]
         },
@@ -5310,7 +5335,7 @@
           "label": "Read-only canvas and recursive navigation",
           "purpose": "Project BoardGraph meaning into a deterministic, stable, zoomable and pannable canvas with semantic shapes, connectors, focus, minimap, inline expansion, portal entry and collapse while keeping camera position separate from semantic position.",
           "workClass": "TASK",
-          "state": "WAITING_DEPENDENCIES",
+          "state": "READY",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vexboard.outcome",
@@ -5329,8 +5354,22 @@
           "authorityDisposition": "NO_AUTHORITY",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-10-23T00:14:29.000Z",
-          "updatedAt": "2026-10-23T00:14:29.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-10-23T07:52:14.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexboard.canvas-projection.ready.boardgraph-pr66",
+              "priorState": "WAITING_DEPENDENCIES",
+              "nextState": "READY",
+              "reason": "The BoardGraph dependency is completed at the exact merged and post-merge-verified source, releasing the read-only canvas and recursive-navigation frontier. Readiness does not grant implementation authority.",
+              "actorRef": "actor.chatgpt.vexboard.boardgraph-foundation",
+              "sourceRefs": [
+                "work.vexboard.boardgraph-contract",
+                "github.pull.vexwork.66",
+                "git.commit.vexwork.1f19e70a397baab1f5d995bacc2358372b93563e"
+              ],
+              "createdAt": "2026-10-23T07:52:14.000Z"
+            }
+          ]
         },
         {
           "workRef": "work.vexboard.outcome",
@@ -5433,21 +5472,20 @@
           "workRefs": [
             "work.vexboard.boardjourney-simulation",
             "work.vexboard.boardpatch-authoring",
-            "work.vexboard.canvas-projection",
             "work.vexboard.source-projectors"
           ]
         },
         {
           "laneRef": "lane.work.ready",
           "label": "Ready",
-          "workRefs": []
+          "workRefs": [
+            "work.vexboard.canvas-projection"
+          ]
         },
         {
           "laneRef": "lane.work.active",
           "label": "Active",
-          "workRefs": [
-            "work.vexboard.boardgraph-contract"
-          ]
+          "workRefs": []
         },
         {
           "laneRef": "lane.work.waiting",
@@ -5473,6 +5511,7 @@
           "laneRef": "lane.work.done",
           "label": "Done",
           "workRefs": [
+            "work.vexboard.boardgraph-contract",
             "work.vexboard.project-architecture"
           ]
         },
@@ -5484,13 +5523,13 @@
       ],
       "summary": {
         "workItemCount": 7,
-        "openWorkItemCount": 6,
+        "openWorkItemCount": 5,
         "outcomeCount": 2,
         "taskCount": 5,
         "defectCount": 0,
         "potentialCount": 0,
         "needsHumanCount": 0,
-        "completedCount": 1
+        "completedCount": 2
       },
       "rootItems": [
         {
@@ -6150,7 +6189,9 @@
           "repo.vextreme:docs/architecture/19-record-readers.md",
           "github.pull.vextreme.339",
           "github.pull.vextreme.361",
-          "github.pull.vextreme.383"
+          "github.pull.vextreme.383",
+          "github.pull.vextreme.384",
+          "github.pull.vextreme.385"
         ],
         "formedAt": "2026-10-23T07:48:00.000Z"
       },
@@ -6162,7 +6203,7 @@
           "label": "Port Bending Condominium third arc into a Vextreme record reader",
           "purpose": "Turn PR #383's preserved third-arc record into a source-first Vextreme reader using the shared neutral record-reader controller, exact provenance, and only the record-specific structure and media the source earns; do not rewrite the evidence archive or invent a generic HTML template.",
           "workClass": "TASK",
-          "state": "RUNNING",
+          "state": "VERIFYING",
           "workDisposition": "ACTIVE",
           "priorityClass": "IMMEDIATE",
           "parentWorkRefOrNull": "work.vextreme.vexsite.localization.outcome",
@@ -6176,15 +6217,30 @@
             "repo.vextreme:docs/architecture/19-record-readers.md",
             "github.pull.vextreme.339",
             "github.pull.vextreme.361",
-            "project.vextreme.vexsite-localization"
+            "project.vextreme.vexsite-localization",
+            "github.pull.vextreme.384",
+            "github.commit.vextreme.0073189278695f8d2361f08b3c7725b4f97d3f03"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [],
           "authorityDisposition": "NO_AUTHORITY",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-10-23T07:48:00.000Z",
-          "updatedAt": "2026-10-23T07:48:00.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-10-23T08:33:00.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vextreme.vexsite.localization.bending-condominium-reader.verifying.source-complete-20261023",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "Vextreme PR #384 formed the exact third-reader source: three source movements cover exchanges 1–6, all 46 page bindings resolve, the selected daylight artwork is byte-identical to PR #383, and the canonical registries place the third arc immediately after the second. Exact-head SourceOwner proof remains next.",
+              "actorRef": "actor.local-vex-operations.vexsite-localization",
+              "sourceRefs": [
+                "github.pull.vextreme.384",
+                "github.commit.vextreme.0073189278695f8d2361f08b3c7725b4f97d3f03"
+              ],
+              "createdAt": "2026-10-23T08:33:00.000Z"
+            }
+          ]
         },
         {
           "workRef": "work.vextreme.vexsite.localization.closed-circuit.global-core",
@@ -6250,20 +6306,22 @@
             "github.pull.vextreme.339",
             "github.pull.vextreme.361",
             "github.pull.vextreme.383",
-            "docs/process/FORM-PROJECT.md"
+            "docs/process/FORM-PROJECT.md",
+            "github.pull.vextreme.384",
+            "github.pull.vextreme.385"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [],
           "authorityDisposition": "NO_AUTHORITY",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-10-23T07:48:00.000Z",
-          "updatedAt": "2026-10-23T07:48:00.000Z",
+          "updatedAt": "2026-10-23T08:33:00.000Z",
           "transitionHistory": []
         },
         {
           "workRef": "work.vextreme.vexsite.localization.recent-record-readers-global-core",
           "label": "Localize the recent record-reader surfaces across Global Core",
-          "purpose": "Carry the page-authored presentation strings for Returning scorpions to God, Recognizing Life Receiving Abundance, and the Bending Condominium third reader across the Global Core tier while preserving frozen transcript evidence as source evidence rather than silently translating or rewriting the historical record.",
+          "purpose": "Carry the page-authored presentation strings for Returning scorpions to God, Recognizing Life Receiving Abundance, and—after its source is accepted—the Bending Condominium third reader across the Global Core tier while preserving frozen transcript evidence as source evidence rather than silently translating or rewriting the historical record.",
           "workClass": "TASK",
           "state": "RUNNING",
           "workDisposition": "ACTIVE",
@@ -6282,14 +6340,16 @@
             "github.pull.vextreme.383",
             "repo.vextreme:docs/architecture/06-i18n.md",
             "repo.vextreme:docs/architecture/19-record-readers.md",
-            "projects/vexwork-operational-console/VEXSITE-LOCALIZATION-LENS.md"
+            "projects/vexwork-operational-console/VEXSITE-LOCALIZATION-LENS.md",
+            "github.pull.vextreme.385",
+            "github.commit.vextreme.4fbedf5b4bea0d277ac61604c49489899303e343"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [],
           "authorityDisposition": "NO_AUTHORITY",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-10-23T07:48:00.000Z",
-          "updatedAt": "2026-10-23T07:48:00.000Z",
+          "updatedAt": "2026-10-23T08:33:00.000Z",
           "transitionHistory": []
         }
       ],
@@ -6315,7 +6375,6 @@
           "laneRef": "lane.work.active",
           "label": "Active",
           "workRefs": [
-            "work.vextreme.vexsite.localization.bending-condominium-reader",
             "work.vextreme.vexsite.localization.outcome",
             "work.vextreme.vexsite.localization.recent-record-readers-global-core"
           ]
@@ -6333,7 +6392,9 @@
         {
           "laneRef": "lane.work.verify",
           "label": "Verify",
-          "workRefs": []
+          "workRefs": [
+            "work.vextreme.vexsite.localization.bending-condominium-reader"
+          ]
         },
         {
           "laneRef": "lane.work.attention",
@@ -6390,14 +6451,16 @@
             "github.pull.vextreme.339",
             "github.pull.vextreme.361",
             "github.pull.vextreme.383",
-            "docs/process/FORM-PROJECT.md"
+            "docs/process/FORM-PROJECT.md",
+            "github.pull.vextreme.384",
+            "github.pull.vextreme.385"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [],
           "authorityDisposition": "NO_AUTHORITY",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-10-23T07:48:00.000Z",
-          "updatedAt": "2026-10-23T07:48:00.000Z",
+          "updatedAt": "2026-10-23T08:33:00.000Z",
           "transitionHistory": []
         }
       ]

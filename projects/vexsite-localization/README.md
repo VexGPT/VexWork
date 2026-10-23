@@ -15,17 +15,16 @@ preserved record
 -> resume the canonical arc-ordered localization queue
 ```
 
-The immediate foreground is the third preserved arc in Vextreme PR #383, **The Bending Condominium — Life Beyond the Vessel**. The record-reader architecture says a new reader reuses only neutral controller behavior; record-specific structure, evidence coordinates, media meaning, styling and synthesis remain page-owned.
+## Current foreground
 
-The recent record-reader localization batch covers the page-authored presentation surfaces for:
+Two source rows have now reached review:
 
-- Returning scorpions to God;
-- Recognizing Life, Receiving Abundance;
-- the Bending Condominium third reader once its page source is formed.
+- **Bending Condominium third reader** — Vextreme PR #384 is source-complete at exact candidate `0073189…`; exact-head SourceOwner proof is next.
+- **Recent record-reader Global Core source** — Vextreme PR #385 has Returning scorpions to God (126 keys) and Recognizing Life, Receiving Abundance (74 keys) complete across all nine Global Core targets, **1,800 / 1,800 target cells**; exact-head SourceOwner proof is next.
 
-Frozen transcript evidence remains evidence. Localization must not silently rewrite the historical record.
+The third reader's 46 page-owned presentation keys join that localization batch only after its source is accepted/current. Frozen transcript evidence remains evidence and is never silently rewritten as localized presentation copy.
 
-After that foreground, the canonical issue #273 queue resumes from the already-promoted **Closed Circuit / Global Core** concern.
+After the record-reader foreground converges, the canonical issue #273 queue resumes from the already-promoted **Closed Circuit / Global Core** concern.
 
 ## Truth boundaries
 
