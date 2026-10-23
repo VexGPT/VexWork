@@ -828,6 +828,277 @@ compact this region
 
 through the same shared Board Control contract used by AI.
 
+
+### Next-next proving foundation — relational direction navigation
+
+Once primitive manipulation and spatial arrangement/routing are proven, the next layer should teach
+VexBoard how to **present and traverse branching relationship topology**.
+
+This is different from connector routing:
+
+```text
+connector routing
+  "how can this already-known relationship be drawn clearly?"
+
+relational direction navigation
+  "what kind of relationship fork is this,
+   how many distinct paths leave it,
+   which paths stay in this process,
+   which paths reconverge,
+   and which paths enter another map?"
+```
+
+#### Semantic shape defaults without shape-owned meaning
+
+Some node roles should have recognizable default visual forms so a human can scan a process without
+reading every label. For example, one Process-lens style might conventionally render:
+
+```text
+PROCESS     -> rounded/ordinary process block
+DECISION    -> angled / diamond-like choice form
+ARTIFACT    -> document/data-like form
+PORTAL      -> distinctive enter-map / module form
+REFERENCE   -> linked/source form
+```
+
+Those are projection defaults, not semantic definitions:
+
+```text
+DECISION
+-> may default to diamond presentation
+
+DIAMOND_SHAPE
+!=
+DECISION_SEMANTICS
+
+SHAPE_OVERRIDE
+!=
+SEMANTIC_ROLE_CHANGE
+```
+
+The stable node/relationship refs, labels and accessibility projection must preserve meaning even
+when a lens, theme or human override uses another shape.
+
+#### A branch is topology, not a fan of anonymous arrows
+
+A DECISION / choice point should carry stable outgoing relationship identity. Exact schema fields
+remain to be earned, but the graph needs enough meaning to distinguish conceptually:
+
+```text
+choice point
+  branch A -> destination A
+  branch B -> destination B
+  branch C -> destination C
+  branch D -> destination D
+```
+
+Each branch should be independently addressable so human/AI discussion can say:
+
+```text
+"move choice C to its own process"
+"rename branch B"
+"these two outcomes reconverge"
+"choice D leaves this process and does not return"
+```
+
+A branch label/condition belongs to the relationship meaning; the visual angle or connector port does
+not.
+
+#### Fan-out is a readability budget, not a truth limit
+
+Large flat choice sets become hard to perceive. The first proving ground may use an **eight visible
+branch readability threshold** as a deliberately provisional pressure test:
+
+```text
+visible branch count <= 8
+  ordinary fan-out may remain readable
+
+visible branch count > 8
+  raise design pressure:
+    can related outcomes be grouped?
+    can a category/state object own a smaller sub-choice?
+    should detail move behind a PORTAL?
+    is a menu/list projection more truthful than a radial fan?
+```
+
+Eight is not a semantic maximum and must not reject a real process that truthfully has nine or more
+outcomes.
+
+```text
+FANOUT_OVER_READABILITY_THRESHOLD
+!=
+INVALID_BOARDGRAPH
+```
+
+The right result may be intentional high fan-out, a condensed choice hierarchy, or extraction into a
+deeper board. VexBoard should surface the pressure rather than silently rewriting the human's
+meaning.
+
+#### Branch fan-out can reshape the enclosing projection
+
+A linear process may begin compactly:
+
+```text
+[1] -> [2] -> [3] -> [4]
+                       |
+                       v
+                      [5] -> [6 choice]
+```
+
+When step 6 gains several meaningful outcomes, preserving those old rows at all costs is the wrong
+goal. The enclosing region may reflow into a branch-readable form:
+
+```text
+[1] -> [2] -> [3]
+               |
+              [4] -> [5]
+                       |
+                    < 6 >
+                  /   |   |   \
+                c1    c2  c3   c4
+                |     |         |
+             c1a/c1b ...     enter another process
+                  \   /
+                 converge
+```
+
+The layout engine should estimate the **branch envelope** required by each outgoing subgraph, then
+allocate distinct branch corridors/lanes before routing the individual edges.
+
+Useful inputs include:
+
+```text
+branch count
+estimated descendant footprint
+expected convergence
+portal/terminal destination
+preferred reading direction
+existing human pins
+container bounds
+available whitespace
+neighboring branch envelopes
+```
+
+This permits the solver to reshape the current process region while preserving unrelated outer
+anchors.
+
+```text
+BRANCH_FANOUT_MAY_REFLOW_ENCLOSING_REGION
+!=
+GLOBAL_BOARD_REWRITE
+```
+
+#### Convergence is preserved separately from branching
+
+Several choice paths may later meet at one stable process coordinate.
+
+VexBoard should be able to recognize the visual/topological opportunity:
+
+```text
+choice
+  -> branch A --\
+  -> branch B ----> common downstream coordinate
+  -> branch C --/
+```
+
+but it must not invent new semantic meaning merely because graph topology shares a descendant.
+
+```text
+COMMON_DOWNSTREAM_NODE
+!=
+NEW_SEMANTIC_CONVERGENCE_KIND_AUTOMATICALLY
+```
+
+When the source explicitly says branches converge, or the graph already expresses several incoming
+flows into the same destination, the projection may reserve a stable visual meeting region and route
+branches toward it. If convergence itself has product/process meaning, that meaning must be represented
+by an earned semantic object rather than inferred from arrow geometry.
+
+#### Some branches leave the current map
+
+A branch does not have to remain inside the current board family.
+
+A PORTAL-like destination can behave conceptually like changing maps in a game:
+
+```text
+current process map
+  -> choose "Choice 3"
+  -> ENTER destination board/module
+       current board coordinate retained in BoardJourney
+       destination gets its own readable projection
+  -> RETURN when that route admits return
+```
+
+This avoids forcing every possible process branch onto one enormous canvas.
+
+The branch should distinguish, in meaning, among cases such as:
+
+```text
+continue in current board
+enter another board and allow return
+enter another board with an explicit named return point
+enter another board with no return in this process
+terminal outcome
+```
+
+Exact enum/schema names remain provisional.
+
+Entering another map is semantic traversal and should append BoardJourney. Merely expanding the same
+portal inline remains projection state:
+
+```text
+ENTER_OTHER_BOARD
+!=
+EXPAND_PORTAL_INLINE
+
+RETURN_TO_PRIOR_COORDINATE
+!=
+CAMERA_BACK
+```
+
+The visible branch destination can therefore act like a clickable doorway/button while preserving a
+stable destination ref, source coordinate and return policy. A Back/Return affordance should restore
+the prior semantic coordinate without requiring the user to remember where the parent map was.
+
+#### Relational navigation proving cases
+
+Before full prototype simulation, Phase 2C should prove at least:
+
+```text
+two-way choice
+four-way choice with angled/default Decision presentation
+eight-way visible fan-out
+more-than-threshold fan-out producing design pressure, not invalidation
+
+branch with uneven descendant sizes
+branch where several paths reconverge
+branch where one path terminates
+branch where one path enters another board and returns
+branch where one path enters another board and does not return
+
+fan-out that forces enclosing-region reflow
+human-pinned upstream nodes preserved during that reflow
+collapse/expand of one branch subtree
+deterministic export/reload of branch and portal identity
+```
+
+The same shared Board Control contract should eventually support human and AI intentions such as:
+
+```text
+add another choice
+group these three choices
+extract this branch into another process
+make these branches reconverge here
+enter this process
+return to the previous map
+auto-arrange this branch family
+```
+
+The proof target is not merely that the arrows look attractive. It is that branching, convergence,
+cross-map traversal and return remain semantically stable while projection is free to reorganize
+itself for readability.
+
+
 ### Visual cues
 
 Color, shape, border, icon, line style, depth, and animation may communicate semantic roles and state, but the underlying meaning must remain readable without relying on color alone.
@@ -1579,6 +1850,13 @@ auto-arrangement, obstacle-aware connector routing, local space negotiation, hum
 inline module expansion/collapse and bounded rerouting. Human and AI invoke the same arrangement
 Controls. This remains smaller than a full manual visual editor.
 
+### Phase 2C — relational direction navigation
+
+Semantic shape defaults, stable branch identities, branch-envelope layout, advisory fan-out
+readability pressure, branch/merge visualization, cross-board PORTAL traversal, explicit
+return/non-return semantics and automatic enclosing-region reflow. Prove branch topology remains
+stable even when the projection reorganizes around it.
+
 ### Phase 3 — prototype simulation and BoardJourney
 
 Clickable controls, conditions, scenario state, overlays, loops, Back/Return, right-side walk stack, and revisit.
@@ -1677,6 +1955,8 @@ next product frontier
    create / move / resize / layer / explicit containment / connect / export-reload
 -> spatial arrangement + connector-routing proving ground
    stable scale / local occupancy / obstacle avoidance / incremental reflow / fractal expansion
+-> relational direction navigation proving ground
+   semantic choice forms / branch envelopes / convergence / portal enter-return / fan-out pressure
 -> use authored website patient zero + prime source-projection case
    to earn the smallest reusable graph/schema vocabulary
 -> use BoardProjection geometry as addressable spatial truth without making coordinates semantic identity
