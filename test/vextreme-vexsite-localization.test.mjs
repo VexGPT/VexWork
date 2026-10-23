@@ -7,6 +7,7 @@ import { createVextremeVexSitePopulation } from '../src/adapters/vextreme-vexsit
 import {
   VEXTREME_VEXSITE_LOCALIZATION_GENERATED_PREDICATE_REF,
   VEXTREME_VEXSITE_LOCALIZATION_LENS_REF,
+  VEXTREME_VEXSITE_LOCALIZATION_TIER_PREDICATE_REF,
   createVextremeVexSiteLocalizationEvidenceBatch,
   createVextremeVexSiteLocalizationLens,
   localePredicateRef,
@@ -99,6 +100,7 @@ test('lens turns each target locale into a required reason facet and keeps other
   assert.deepEqual(result.predicates.filter((predicate) => predicate.requirement === 'REQUIRED').map((predicate) => predicate.predicateRef), [
     localePredicateRef('ar'),
     localePredicateRef('fr'),
+    VEXTREME_VEXSITE_LOCALIZATION_TIER_PREDICATE_REF,
   ]);
   assert.equal(result.predicates.find((predicate) => predicate.predicateRef === VEXTREME_VEXSITE_LOCALIZATION_GENERATED_PREDICATE_REF).requirement, 'ADVISORY');
   assert.equal(verifySemanticFingerprint(result), true);
@@ -148,7 +150,20 @@ test('source-only policy is NOT_APPLICABLE rather than localization debt', () =>
     'NOT_APPLICABLE',
     'NOT_APPLICABLE',
   ]);
+  assert.equal(item.predicateResults.find((result) => result.predicateRef === VEXTREME_VEXSITE_LOCALIZATION_TIER_PREDICATE_REF).state, 'NOT_APPLICABLE');
   assert.equal(item.predicateResults.every((result) => result.state === 'UNKNOWN' || result.evidenceRefs.length > 0), true);
+});
+
+test('target-tier predicate aligns one promotion concern with the provider page-tier work unit', () => {
+  const currentPopulation = population();
+  const currentLens = lens();
+  const currentEvidence = evidence(currentPopulation, currentLens);
+  const alpha = currentEvidence.find((entry) => entry.entityRef.endsWith('.alpha'));
+  const beta = currentEvidence.find((entry) => entry.entityRef.endsWith('.beta'));
+
+  assert.equal(alpha.predicateResults.find((result) => result.predicateRef === VEXTREME_VEXSITE_LOCALIZATION_TIER_PREDICATE_REF).state, 'SATISFIED');
+  assert.equal(beta.predicateResults.find((result) => result.predicateRef === VEXTREME_VEXSITE_LOCALIZATION_TIER_PREDICATE_REF).state, 'UNSATISFIED');
+  assert.equal(beta.predicateResults.filter((result) => result.predicateRef.includes('.locale.') && result.state === 'UNSATISFIED').length, 1);
 });
 
 test('generated, lived, and modernization evidence stay separately typed instead of being inferred from completeLangs', () => {

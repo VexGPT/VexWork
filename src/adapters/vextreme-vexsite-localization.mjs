@@ -10,6 +10,7 @@ import {
 } from './vextreme-vexsite-population.mjs';
 
 export const VEXTREME_VEXSITE_LOCALIZATION_LENS_REF = 'lens.vextreme.vexsite.localization';
+export const VEXTREME_VEXSITE_LOCALIZATION_TIER_PREDICATE_REF = 'predicate.vextreme.vexsite.localization.target-tier-complete';
 export const VEXTREME_VEXSITE_LOCALIZATION_GENERATED_PREDICATE_REF = 'predicate.vextreme.vexsite.localization.generated-currentness';
 export const VEXTREME_VEXSITE_LOCALIZATION_LIVED_PREDICATE_REF = 'predicate.vextreme.vexsite.localization.lived-proof';
 export const VEXTREME_VEXSITE_LOCALIZATION_MODERNIZATION_PREDICATE_REF = 'predicate.vextreme.vexsite.localization.modernization';
@@ -88,6 +89,13 @@ export function createVextremeVexSiteLocalizationLens({ targetLocales, sourceRef
     targetLocales: targets,
     sourceRefs: refs,
     predicates: [
+      {
+        predicateRef: VEXTREME_VEXSITE_LOCALIZATION_TIER_PREDICATE_REF,
+        label: 'Target localization tier complete',
+        requirement: 'REQUIRED',
+        reasonFacetRef: 'reason.vextreme.vexsite.localization.target-tier-completion',
+        sourceRefs: refs,
+      },
       ...targets.map((locale) => ({
         predicateRef: localePredicateRef(locale),
         label: `${locale} locale complete`,
@@ -211,7 +219,13 @@ export function createVextremeVexSiteLocalizationEvidenceBatch({
     const existingWorkRefs = existingWorkRefsByEntityRef[entity.entityRef] || [];
     assert(Array.isArray(existingWorkRefs), `existingWorkRefsByEntityRef.${entity.entityRef} must be an array`);
 
+    const targetTierComplete = targets.every((locale) => completeLangs.has(locale));
     const predicateResults = [
+      {
+        predicateRef: VEXTREME_VEXSITE_LOCALIZATION_TIER_PREDICATE_REF,
+        state: sourceOnly ? 'NOT_APPLICABLE' : (targetTierComplete ? 'SATISFIED' : 'UNSATISFIED'),
+        evidenceRefs: sourceOnly ? policyEvidenceRefs : coverageEvidenceRefs,
+      },
       ...targets.map((locale) => ({
         predicateRef: localePredicateRef(locale),
         state: sourceOnly ? 'NOT_APPLICABLE' : (completeLangs.has(locale) ? 'SATISFIED' : 'UNSATISFIED'),
