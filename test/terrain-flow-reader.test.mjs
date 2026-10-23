@@ -32,16 +32,15 @@ test('ToCompletion surfaces the real deep active frontier without requiring desc
   ]);
 });
 
-test('Operational Console keeps concurrent Terrain review and Operating Domain Attention Queue frontier as separate workfront rows', () => {
+test('Operational Console keeps concurrent Terrain review and Ready Commerce frontier as separate workfront rows', () => {
   const p = project('project.vexwork.operational-console');
   const rows = projectWorkfronts(p, { maxRows: 8 }).rows;
   assert.equal(rows.some((row) => row.scopeRef === 'work.vexwork.operational-console.relational-terrain'), true);
-  assert.equal(rows.some((row) => row.scopeRef === 'work.vexwork.operational-console.operating-domain-template'), true);
+  assert.equal(rows.some((row) => row.scopeRef === 'work.vexwork.operational-console.commerce-template'), true);
   const terrain = rows.find((row) => row.scopeRef === 'work.vexwork.operational-console.relational-terrain');
-  const domain = rows.find((row) => row.scopeRef === 'work.vexwork.operational-console.operating-domain-template');
+  const commerce = rows.find((row) => row.scopeRef === 'work.vexwork.operational-console.commerce-template');
   assert.equal(terrain.currentItems.some((item) => item.state === 'VERIFYING'), true);
-  assert.equal(domain.currentItems.some((item) => item.workRef === 'work.vexwork.operational-console.operating-domain-template' && item.state === 'RUNNING'), true);
-  assert.equal(domain.nextStructuralItems.some((item) => item.workRef === 'work.vexwork.operational-console.attention-queue-contract' && item.state === 'READY'), true);
+  assert.equal(commerce.currentItems.some((item) => item.workRef === 'work.vexwork.operational-console.commerce-item-model' && item.state === 'READY'), true);
 });
 
 test('Connected Services Roadmap derives next-next-next from dependency truth', () => {
@@ -80,7 +79,7 @@ test('ToCompletion Roadmap keeps P6 dependency-grounded while P7 remains later/u
 
 test('time lens adds recent accepted movement but current work remains pinned', () => {
   const p = project('project.vexwork.operational-console');
-  const nowMs = Date.parse('2026-10-23T04:00:00.000Z');
+  const nowMs = Date.parse('2026-10-23T05:00:00.000Z');
   const now = projectWorkfronts(p, { recentHours: 0, nowMs, maxRows: 8 });
   const day = projectWorkfronts(p, { recentHours: 24, nowMs, maxRows: 8 });
   const terrainNow = now.rows.find((row) => row.scopeRef === 'work.vexwork.operational-console.relational-terrain');
