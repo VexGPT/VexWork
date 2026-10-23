@@ -692,11 +692,11 @@ P1  Derived-work projection foundation                    COMPLETED
     contract                                               COMPLETED
     aggregate / scope / entity projection                 COMPLETED
     explicit concern-to-Work promotion                    COMPLETED
-P2  VexSite Localization patient-zero dogfood             RUNNING
+P2  VexSite Localization patient-zero dogfood             COMPLETED
     page population / scope                               COMPLETED
     localization / modernization lens                     COMPLETED
-    patient-zero proof                                    RUNNING
-P3  Operating Domain template                             WAITING_DEPENDENCIES
+    patient-zero proof                                    COMPLETED
+P3  Operating Domain template                             READY
 P4  Commerce starter template                             WAITING_DEPENDENCIES
 P5  Antique Plate lived commerce pilot                    WAITING_DEPENDENCIES
 P6  Cross-domain completion                               WAITING_DEPENDENCIES
