@@ -40,7 +40,8 @@ test('Operational Console keeps concurrent Terrain review and Operating Domain A
   const terrain = rows.find((row) => row.scopeRef === 'work.vexwork.operational-console.relational-terrain');
   const domain = rows.find((row) => row.scopeRef === 'work.vexwork.operational-console.operating-domain-template');
   assert.equal(terrain.currentItems.some((item) => item.state === 'VERIFYING'), true);
-  assert.equal(domain.currentItems.some((item) => item.workRef === 'work.vexwork.operational-console.attention-queue-contract' && item.state === 'READY'), true);
+  assert.equal(domain.currentItems.some((item) => item.workRef === 'work.vexwork.operational-console.operating-domain-template' && item.state === 'RUNNING'), true);
+  assert.equal(domain.nextStructuralItems.some((item) => item.workRef === 'work.vexwork.operational-console.attention-queue-contract' && item.state === 'READY'), true);
 });
 
 test('Connected Services Roadmap derives next-next-next from dependency truth', () => {
@@ -79,7 +80,7 @@ test('ToCompletion Roadmap keeps P6 dependency-grounded while P7 remains later/u
 
 test('time lens adds recent accepted movement but current work remains pinned', () => {
   const p = project('project.vexwork.operational-console');
-  const nowMs = Date.parse('2026-10-23T03:00:00.000Z');
+  const nowMs = Date.parse('2026-10-23T04:00:00.000Z');
   const now = projectWorkfronts(p, { recentHours: 0, nowMs, maxRows: 8 });
   const day = projectWorkfronts(p, { recentHours: 24, nowMs, maxRows: 8 });
   const terrainNow = now.rows.find((row) => row.scopeRef === 'work.vexwork.operational-console.relational-terrain');
