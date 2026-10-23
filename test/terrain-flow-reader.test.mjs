@@ -82,7 +82,7 @@ test('ToCompletion Roadmap keeps P6 dependency-grounded while P7 remains later/u
   assert.equal(p7.basis, 'LATER_UNSEQUENCED');
 });
 
-test('time lens adds recent accepted movement but current work remains pinned', () => {
+test('time lens preserves current workfronts while project activity counts accepted movement', () => {
   const p = project('project.vexwork.operational-console');
   const nowMs = Date.parse('2026-10-23T06:20:00.000Z');
   const now = projectWorkfronts(p, { recentHours: 0, nowMs, maxRows: 8 });
@@ -90,7 +90,7 @@ test('time lens adds recent accepted movement but current work remains pinned', 
   const terrainNow = now.rows.find((row) => row.scopeRef === 'work.vexwork.operational-console.relational-terrain');
   const terrainDay = day.rows.find((row) => row.scopeRef === 'work.vexwork.operational-console.relational-terrain');
   assert.deepEqual(terrainNow.currentItems.map((item) => item.workRef), terrainDay.currentItems.map((item) => item.workRef));
-  assert.equal(day.rows.some((row) => row.recentItems.length > 0), true);
+  assert.equal(day.rows.some((row) => row.scopeRef === 'work.vexwork.operational-console.commerce-template'), false);
 
   const summary = projectActivitySummary(p, { recentHours: 24, nowMs });
   assert.equal(summary.review >= 1, true);
