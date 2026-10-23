@@ -1,7 +1,7 @@
 {
   "schemaVersion": "vexwork.public-workspace/v1",
   "projectRegistryRef": "registry.vexwork.projects.001",
-  "projectRegistryVersion": 7,
+  "projectRegistryVersion": 8,
   "projects": [
     {
       "project": {
@@ -626,7 +626,9 @@
           "github.pull.vexlife-android.151",
           "github.pull.vextreme-sdk.1887",
           "github.pull.vexlife-android.155",
-          "github.issue.vexlife-android.157"
+          "github.issue.vexlife-android.157",
+          "project.android-proof-orchestration",
+          "github.issue.vextreme-sdk.1894"
         ],
         "formedAt": "2026-10-21T08:41:00.000Z"
       },
@@ -701,12 +703,14 @@
           "label": "Durable device music storage",
           "purpose": "Establish the Android-native durable media-storage realization while preserving exact trackRef, SHA-256 and byte-length verification.",
           "workClass": "TASK",
-          "state": "RUNNING",
+          "state": "WAITING_TOOL",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vexstream.mobile-library.durable-device-library",
           "childWorkRefs": [],
-          "dependencyRefs": [],
+          "dependencyRefs": [
+            "work.android-proof-orchestration.api-target-runner"
+          ],
           "repositoryRefs": [
             "repo.vexlife-android"
           ],
@@ -720,7 +724,11 @@
             "repo.vexstream-music:mobile_bridge.go",
             "repo.vexlife-android:app/src/main/AndroidManifest.xml",
             "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/PairedVexStreamMusicRepository.kt",
-            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt"
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt",
+            "project.android-proof-orchestration",
+            "github.issue.vextreme-sdk.1894",
+            "repo.vexlife-android:docs/foundation/ANDROID-HOST-PROOF.md",
+            "repo.vexlife-android:docs/foundation/test-proof/README.md"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [
@@ -729,7 +737,7 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-21T08:41:00.000Z",
-          "updatedAt": "2026-10-23T00:30:33.000Z",
+          "updatedAt": "2026-10-23T03:15:48.000Z",
           "transitionHistory": [
             {
               "transitionRef": "transition.vexstream.mobile-library.device-storage.decomposed.20261022",
@@ -785,6 +793,20 @@
                 "confirmation.local-vex-operations.vexstream.device-storage.ready-active.20261022a"
               ],
               "createdAt": "2026-10-23T00:30:33.000Z"
+            },
+            {
+              "transitionRef": "transition.vexstream.mobile-library.device-storage.waiting-tool.android-proof-orchestration.20261022",
+              "priorState": "RUNNING",
+              "nextState": "WAITING_TOOL",
+              "reason": "The durable storage source and retained repository-local proof are intact; the remaining API 24-28 and API 29+ native proof is held on a reusable Android target-orchestration tool rather than another lane-local emulator script.",
+              "actorRef": "actor.local-vex-operations.vexstream-mobile-library",
+              "sourceRefs": [
+                "github.issue.vexlife-android.157",
+                "github.issue.vextreme-sdk.1894",
+                "project.android-proof-orchestration",
+                "repo.vexlife-android:docs/foundation/ANDROID-HOST-PROOF.md"
+              ],
+              "createdAt": "2026-10-23T03:15:48.000Z"
             }
           ]
         },
@@ -1211,6 +1233,261 @@
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-21T08:41:00.000Z",
           "updatedAt": "2026-10-22T01:32:00.000Z",
+          "transitionHistory": []
+        }
+      ]
+    },
+    {
+      "project": {
+        "projectRef": "project.android-proof-orchestration",
+        "label": "Android Proof Orchestration",
+        "purpose": "Make Android-native proof reusable across lanes by selecting or booting API-compatible targets, running exact proof commands, and coordinating shared physical/emulated devices without making humans reconstruct host mechanics.",
+        "rootWorkRefs": [
+          "work.android-proof-orchestration.outcome"
+        ],
+        "repositoryRefs": [
+          "repo.vexwork",
+          "repo.vexlife-android",
+          "repo.vextreme-sdk"
+        ],
+        "sourceRefs": [
+          "projects/android-proof-orchestration/README.md",
+          "repo.vexlife-android:docs/foundation/ANDROID-HOST-PROOF.md",
+          "repo.vexlife-android:docs/foundation/test-proof/README.md",
+          "repo.vextreme-sdk:docs/process/cross-platform-lived-proof-and-branch-reuse.md",
+          "github.issue.vextreme-sdk.1894",
+          "github.issue.vexlife-android.157",
+          "docs/process/FORM-PROJECT.md"
+        ],
+        "formedAt": "2026-10-23T03:15:48.000Z"
+      },
+      "graphRef": "workgraph.vexwork.foundation",
+      "viewRef": "view.android-proof-orchestration.board",
+      "items": [
+        {
+          "workRef": "work.android-proof-orchestration.api-target-runner",
+          "label": "Reusable API target runner",
+          "purpose": "Provide one reusable host runner that accepts an Android API requirement and proof command, inventories eligible physical/emulated targets, boots an already-configured compatible AVD when needed, records exact target identity, runs the caller-owned proof, and cleans up only task-started emulators.",
+          "workClass": "TASK",
+          "state": "READY",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.android-proof-orchestration.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vextreme-sdk",
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "github.issue.vextreme-sdk.1894",
+            "github.issue.vexlife-android.157",
+            "repo.vexlife-android:docs/foundation/ANDROID-HOST-PROOF.md",
+            "repo.vexlife-android:docs/foundation/test-proof/README.md",
+            "repo.vextreme-sdk:docs/process/cross-platform-lived-proof-and-branch-reuse.md",
+            "repo.vextreme-sdk:lib/cross-platform-tests/vexstream-v4-android-lived-proof.js"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-23T03:15:48.000Z",
+          "updatedAt": "2026-10-23T03:15:48.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.android-proof-orchestration.device-lease-queue",
+          "label": "Android device lease and wait queue",
+          "purpose": "Coordinate concurrent Android proof lanes so a compatible free isolated AVD is preferred, shared physical targets are not raced, bounded waiting is explicit, and only task-owned emulator instances are released.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.android-proof-orchestration.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.android-proof-orchestration.api-target-runner"
+          ],
+          "repositoryRefs": [
+            "repo.vextreme-sdk"
+          ],
+          "sourceRefs": [
+            "github.issue.vextreme-sdk.1894",
+            "repo.vextreme-sdk:docs/process/cross-platform-lived-proof-and-branch-reuse.md"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-23T03:15:48.000Z",
+          "updatedAt": "2026-10-23T03:15:48.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.android-proof-orchestration.outcome",
+          "label": "Android Proof Orchestration",
+          "purpose": "Create one reusable Android proof-target foundation so feature lanes can request an API capability, obtain one truthful isolated target, execute repository-owned proof, and release only task-owned emulator effects.",
+          "workClass": "OUTCOME",
+          "state": "DECOMPOSED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.android-proof-orchestration.api-target-runner",
+            "work.android-proof-orchestration.device-lease-queue",
+            "work.android-proof-orchestration.vexrelay-integration"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexlife-android",
+            "repo.vextreme-sdk"
+          ],
+          "sourceRefs": [
+            "projects/android-proof-orchestration/README.md",
+            "github.issue.vextreme-sdk.1894",
+            "repo.vexlife-android:docs/foundation/ANDROID-HOST-PROOF.md",
+            "repo.vextreme-sdk:docs/process/cross-platform-lived-proof-and-branch-reuse.md"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-23T03:15:48.000Z",
+          "updatedAt": "2026-10-23T03:15:48.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.android-proof-orchestration.vexrelay-integration",
+          "label": "VexRelay Android target integration",
+          "purpose": "Bind the reusable API target runner into current VexRelay Android host proof so formed tasks request target capabilities instead of embedding bespoke ADB/AVD discovery and cleanup shell.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.android-proof-orchestration.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.android-proof-orchestration.api-target-runner"
+          ],
+          "repositoryRefs": [
+            "repo.vextreme-sdk",
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "github.issue.vextreme-sdk.1894",
+            "repo.vexlife-android:docs/foundation/ANDROID-HOST-PROOF.md",
+            "repo.vextreme-sdk:docs/private-continuity/vexrelay/current-contract.json"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-23T03:15:48.000Z",
+          "updatedAt": "2026-10-23T03:15:48.000Z",
+          "transitionHistory": []
+        }
+      ],
+      "lanes": [
+        {
+          "laneRef": "lane.work.intake",
+          "label": "Intake",
+          "workRefs": [
+            "work.android-proof-orchestration.outcome"
+          ]
+        },
+        {
+          "laneRef": "lane.work.planned",
+          "label": "Planned",
+          "workRefs": [
+            "work.android-proof-orchestration.vexrelay-integration",
+            "work.android-proof-orchestration.device-lease-queue"
+          ]
+        },
+        {
+          "laneRef": "lane.work.ready",
+          "label": "Ready",
+          "workRefs": [
+            "work.android-proof-orchestration.api-target-runner"
+          ]
+        },
+        {
+          "laneRef": "lane.work.active",
+          "label": "Active",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.waiting",
+          "label": "Waiting",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.needs-human",
+          "label": "Needs Human",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.verify",
+          "label": "Verify",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.attention",
+          "label": "Attention",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.done",
+          "label": "Done",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.archive",
+          "label": "Archive",
+          "workRefs": []
+        }
+      ],
+      "summary": {
+        "workItemCount": 4,
+        "openWorkItemCount": 4,
+        "outcomeCount": 1,
+        "taskCount": 3,
+        "defectCount": 0,
+        "potentialCount": 0,
+        "needsHumanCount": 0,
+        "completedCount": 0
+      },
+      "rootItems": [
+        {
+          "workRef": "work.android-proof-orchestration.outcome",
+          "label": "Android Proof Orchestration",
+          "purpose": "Create one reusable Android proof-target foundation so feature lanes can request an API capability, obtain one truthful isolated target, execute repository-owned proof, and release only task-owned emulator effects.",
+          "workClass": "OUTCOME",
+          "state": "DECOMPOSED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.android-proof-orchestration.api-target-runner",
+            "work.android-proof-orchestration.device-lease-queue",
+            "work.android-proof-orchestration.vexrelay-integration"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexlife-android",
+            "repo.vextreme-sdk"
+          ],
+          "sourceRefs": [
+            "projects/android-proof-orchestration/README.md",
+            "github.issue.vextreme-sdk.1894",
+            "repo.vexlife-android:docs/foundation/ANDROID-HOST-PROOF.md",
+            "repo.vextreme-sdk:docs/process/cross-platform-lived-proof-and-branch-reuse.md"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-23T03:15:48.000Z",
+          "updatedAt": "2026-10-23T03:15:48.000Z",
           "transitionHistory": []
         }
       ]
@@ -3100,7 +3377,7 @@
           "label": "Operational attention queue",
           "purpose": "Support event/exception-driven attention such as fulfillment, expiry or failure queues without automatically converting every event into durable Work.",
           "workClass": "TASK",
-          "state": "WAITING_DEPENDENCIES",
+          "state": "READY",
           "workDisposition": "ACTIVE",
           "priorityClass": "NORMAL",
           "parentWorkRefOrNull": "work.vexwork.operational-console.operating-domain-template",
@@ -3112,15 +3389,30 @@
             "repo.vexwork"
           ],
           "sourceRefs": [
-            "projects/vexwork-operational-console/README.md"
+            "projects/vexwork-operational-console/README.md",
+            "github.pull.vexwork.68",
+            "docs/foundation/OPERATING-DOMAIN.md"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-22T03:20:00.000Z",
-          "updatedAt": "2026-10-22T03:20:00.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-10-23T03:37:41.001Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexwork.operational-console.attention-queue-contract.ready.operating-domain-complete",
+              "priorState": "WAITING_DEPENDENCIES",
+              "nextState": "READY",
+              "reason": "Operating Domain contract dependency completed on merged PR #68; the bounded Attention Queue semantic contract is now the next P3 edge.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vexwork.68",
+                "work.vexwork.operational-console.operating-domain-contract"
+              ],
+              "createdAt": "2026-10-23T03:37:41.001Z"
+            }
+          ]
         },
         {
           "workRef": "work.vexwork.operational-console.commerce-ai-site",
@@ -3543,7 +3835,7 @@
           "label": "Operating Domain contract",
           "purpose": "Define a domain-neutral template boundary for capabilities, populations, lenses, processes and provider/repository evidence while keeping business/entity records outside Workgraph.",
           "workClass": "TASK",
-          "state": "READY",
+          "state": "COMPLETED",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vexwork.operational-console.operating-domain-template",
@@ -3556,14 +3848,20 @@
           ],
           "sourceRefs": [
             "projects/vexwork-operational-console/README.md",
-            "github.pull.vexwork.63"
+            "github.pull.vexwork.63",
+            "github.pull.vexwork.68",
+            "github.commit.vexwork.ddd56d8ddff92b5053644c758197d014d2000613",
+            "vexrelay.return.vexwork.operating-domain-contract.a002.sha256.0da1df2bcc4ba49c30a6311e616b6c45bfc3140da2f110f646be7b756f27fcbc",
+            "vexrelay.return.vexwork.operating-domain-assurance.a003.sha256.072d2f29699be1ea545ec08881e5a8ba87eab9de03353e99805449d2d6bb1286",
+            "docs/foundation/OPERATING-DOMAIN.md",
+            "src/core/operating-domain.mjs"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-22T03:20:00.000Z",
-          "updatedAt": "2026-10-23T02:34:28.002Z",
+          "updatedAt": "2026-10-23T03:37:41.000Z",
           "transitionHistory": [
             {
               "transitionRef": "transition.vexwork.operational-console.operating-domain-contract.ready.p2-terminal",
@@ -3576,6 +3874,40 @@
                 "work.vexwork.operational-console.vexsite-patient-zero-proof"
               ],
               "createdAt": "2026-10-23T02:34:28.002Z"
+            },
+            {
+              "transitionRef": "transition.vexwork.operational-console.operating-domain-contract.running.sourceowner-a002",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "Corrected SourceOwner A002 passed npm run review for the exact six-path Operating Domain contract candidate.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "vexrelay.return.vexwork.operating-domain-contract.a002.sha256.0da1df2bcc4ba49c30a6311e616b6c45bfc3140da2f110f646be7b756f27fcbc"
+              ],
+              "createdAt": "2026-10-23T03:25:33.425Z"
+            },
+            {
+              "transitionRef": "transition.vexwork.operational-console.operating-domain-contract.verifying.assurance-a003",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "Fresh Independent Assurance A003 captured the entire exact remote candidate with zero findings, omissions or truncation.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "vexrelay.return.vexwork.operating-domain-assurance.a003.sha256.072d2f29699be1ea545ec08881e5a8ba87eab9de03353e99805449d2d6bb1286"
+              ],
+              "createdAt": "2026-10-23T03:35:54.209Z"
+            },
+            {
+              "transitionRef": "transition.vexwork.operational-console.operating-domain-contract.completed.pr68",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "PR #68 merged at a tree byte-identical to the independently assured Operating Domain candidate.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vexwork.68",
+                "github.commit.vexwork.ddd56d8ddff92b5053644c758197d014d2000613"
+              ],
+              "createdAt": "2026-10-23T03:37:41.000Z"
             }
           ]
         },
@@ -3584,7 +3916,7 @@
           "label": "Reusable Operating Domain template",
           "purpose": "Generalize the patient-zero model into a reusable operating-domain template for capabilities, populations, attention queues, processes and work lenses without domain-specific ownership leakage.",
           "workClass": "OUTCOME",
-          "state": "READY",
+          "state": "RUNNING",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vexwork.operational-console.outcome",
@@ -3600,14 +3932,18 @@
           ],
           "sourceRefs": [
             "projects/vexwork-operational-console/README.md",
-            "github.pull.vexwork.63"
+            "github.pull.vexwork.63",
+            "github.pull.vexwork.68",
+            "github.commit.vexwork.ddd56d8ddff92b5053644c758197d014d2000613",
+            "vexrelay.return.vexwork.operating-domain-contract.a002.sha256.0da1df2bcc4ba49c30a6311e616b6c45bfc3140da2f110f646be7b756f27fcbc",
+            "vexrelay.return.vexwork.operating-domain-assurance.a003.sha256.072d2f29699be1ea545ec08881e5a8ba87eab9de03353e99805449d2d6bb1286"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-22T03:20:00.000Z",
-          "updatedAt": "2026-10-23T02:34:28.003Z",
+          "updatedAt": "2026-10-23T03:25:33.425Z",
           "transitionHistory": [
             {
               "transitionRef": "transition.vexwork.operational-console.operating-domain-template.ready.p2-terminal",
@@ -3620,6 +3956,18 @@
                 "work.vexwork.operational-console.vexsite-patient-zero-proof"
               ],
               "createdAt": "2026-10-23T02:34:28.003Z"
+            },
+            {
+              "transitionRef": "transition.vexwork.operational-console.operating-domain-template.running.sourceowner-a002",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "Corrected SourceOwner A002 passed the exact Operating Domain candidate; P3 entered active implementation with the reusable contract under proof.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "vexrelay.return.vexwork.operating-domain-contract.a002.sha256.0da1df2bcc4ba49c30a6311e616b6c45bfc3140da2f110f646be7b756f27fcbc",
+                "work.vexwork.operational-console.operating-domain-contract"
+              ],
+              "createdAt": "2026-10-23T03:25:33.425Z"
             }
           ]
         },
@@ -4152,22 +4500,21 @@
             "work.vexwork.operational-console.commerce-item-model",
             "work.vexwork.operational-console.commerce-template",
             "work.vexwork.operational-console.cross-domain-completion",
-            "work.vexwork.operational-console.relational-terrain.temporal-currentness",
-            "work.vexwork.operational-console.attention-queue-contract"
+            "work.vexwork.operational-console.relational-terrain.temporal-currentness"
           ]
         },
         {
           "laneRef": "lane.work.ready",
           "label": "Ready",
           "workRefs": [
-            "work.vexwork.operational-console.operating-domain-contract",
-            "work.vexwork.operational-console.operating-domain-template"
+            "work.vexwork.operational-console.attention-queue-contract"
           ]
         },
         {
           "laneRef": "lane.work.active",
           "label": "Active",
           "workRefs": [
+            "work.vexwork.operational-console.operating-domain-template",
             "work.vexwork.operational-console.outcome",
             "work.vexwork.operational-console.relational-terrain"
           ]
@@ -4202,6 +4549,7 @@
             "work.vexwork.operational-console.derived-work-foundation",
             "work.vexwork.operational-console.derived-work-projection",
             "work.vexwork.operational-console.derived-work-promotion",
+            "work.vexwork.operational-console.operating-domain-contract",
             "work.vexwork.operational-console.vexsite-dogfood",
             "work.vexwork.operational-console.vexsite-localization-lens",
             "work.vexwork.operational-console.vexsite-patient-zero-proof",
@@ -4216,13 +4564,13 @@
       ],
       "summary": {
         "workItemCount": 24,
-        "openWorkItemCount": 16,
+        "openWorkItemCount": 15,
         "outcomeCount": 8,
         "taskCount": 16,
         "defectCount": 0,
         "potentialCount": 0,
         "needsHumanCount": 0,
-        "completedCount": 8
+        "completedCount": 9
       },
       "rootItems": [
         {

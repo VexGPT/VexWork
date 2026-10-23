@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "vexwork.operating-domain/v1",
+  "domainRef": "domain.vextreme.vexsite.localization",
+  "label": "VexSite Localization",
+  "purpose": "Expose current VexSite localization truth as a reusable operating domain by composing provider-owned page population, VexWork-owned interpretation/promotion capabilities and the accepted localization lens without copying page inventory into Workgraph or granting Vextreme source effects.",
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vextreme"
+  ],
+  "capabilities": [
+    {
+      "capabilityRef": "capability.vexwork.derived-attention",
+      "label": "Derived Attention",
+      "ownerRepositoryRef": "repo.vexwork",
+      "sourceRefs": [
+        "docs/foundation/DERIVED-ATTENTION.md",
+        "src/core/derived-attention.mjs"
+      ]
+    },
+    {
+      "capabilityRef": "capability.vexwork.derived-work-promotion",
+      "label": "Derived concern promotion",
+      "ownerRepositoryRef": "repo.vexwork",
+      "sourceRefs": [
+        "docs/process/PROMOTE-DERIVED-CONCERN.md",
+        "src/core/derived-work-promotion.mjs"
+      ]
+    }
+  ],
+  "populations": [
+    {
+      "populationRef": "population.vextreme.vexsite.pages",
+      "label": "VexSite pages",
+      "ownerRepositoryRef": "repo.vextreme",
+      "entityKind": "entity.vextreme.vexsite.page",
+      "sourceRefs": [
+        "repo.vextreme:data/index.json",
+        "projects/vexwork-operational-console/VEXSITE-POPULATION.md"
+      ]
+    }
+  ],
+  "lenses": [
+    {
+      "lensRef": "lens.vextreme.vexsite.localization",
+      "label": "VexSite localization",
+      "ownerRepositoryRef": "repo.vexwork",
+      "populationRef": "population.vextreme.vexsite.pages",
+      "sourceRefs": [
+        "projects/vexwork-operational-console/VEXSITE-LOCALIZATION-LENS.md",
+        "src/adapters/vextreme-vexsite-localization.mjs"
+      ]
+    }
+  ],
+  "processes": [
+    {
+      "processRef": "process.vexwork.promote-derived-concern",
+      "label": "Promote one derived concern",
+      "ownerRepositoryRef": "repo.vexwork",
+      "sourceRefs": [
+        "docs/process/PROMOTE-DERIVED-CONCERN.md"
+      ]
+    }
+  ],
+  "attentionQueues": [],
+  "sourceRefs": [
+    "projects/vexwork-operational-console/README.md",
+    "projects/vexwork-operational-console/VEXSITE-PATIENT-ZERO.md",
+    "github.pull.vexwork.63"
+  ]
+}
