@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "vexwork.project-agency-policy/v1",
+  "schemaVersion": "vexwork.project-agency-policy/v2",
   "policyRef": "agency.vexstream.mobile-library.delegated-handshake",
   "projectRef": "project.vexstream.mobile-library",
   "mode": "DELEGATED_WITH_TRANSITION_HANDSHAKE",
@@ -8,17 +8,41 @@
     {
       "boundaryRef": "boundary.vexstream.mobile-library.ready-active",
       "fromLaneRef": "lane.work.ready",
-      "toLaneRef": "lane.work.active"
+      "toLaneRef": "lane.work.active",
+      "appliesTo": {
+        "workClasses": [
+          "OUTCOME"
+        ],
+        "workRefs": [
+          "work.vexstream.mobile-library.clear-data-proof"
+        ]
+      }
     },
     {
       "boundaryRef": "boundary.vexstream.mobile-library.active-verify",
       "fromLaneRef": "lane.work.active",
-      "toLaneRef": "lane.work.verify"
+      "toLaneRef": "lane.work.verify",
+      "appliesTo": {
+        "workClasses": [
+          "OUTCOME"
+        ],
+        "workRefs": [
+          "work.vexstream.mobile-library.clear-data-proof"
+        ]
+      }
     },
     {
       "boundaryRef": "boundary.vexstream.mobile-library.verify-done",
       "fromLaneRef": "lane.work.verify",
-      "toLaneRef": "lane.work.done"
+      "toLaneRef": "lane.work.done",
+      "appliesTo": {
+        "workClasses": [
+          "OUTCOME"
+        ],
+        "workRefs": [
+          "work.vexstream.mobile-library.clear-data-proof"
+        ]
+      }
     }
   ],
   "discoveredWorkDefault": {
@@ -30,7 +54,8 @@
   "sourceRefs": [
     "project.vexstream.mobile-library",
     "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md",
-    "docs/process/FORM-PROJECT.md"
+    "docs/process/FORM-PROJECT.md",
+    "decision.victor.vexstream.mobile-library.completion-trajectory-delegation.20261023"
   ],
   "formedAt": "2026-10-21T08:41:00.000Z"
 }
