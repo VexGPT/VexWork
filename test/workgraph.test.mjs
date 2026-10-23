@@ -53,7 +53,10 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(historyBackfill.effectDisposition, 'NO_EFFECTS');
   assert.equal(historyBackfill.formationProcessRefOrNull, 'process.vexwork.capture-discovered-work');
   assert.equal(graph.rootWorkRefs.includes(historyBackfill.workRef), true);
-  assert.equal(graph.transitions.length, 60);
+  assert.equal(graph.transitions.length, 63);
+  assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.decomposed.20261022'));
+  assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.plan-validated.20261022'));
+  assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.ready.20261022'));
 
   const parked = graph.items.find((item) => item.workRef === 'work.vexlife-android.vexstream.not-yet-downloaded-filter');
   assert.equal(parked.workClass, 'POTENTIAL');
@@ -179,7 +182,9 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
 
 test('typed transition rejects stale observation and accepts exact current transition', () => {
   const transitionSource = structuredClone(graphSource);
+  delete transitionSource.semanticFingerprint;
   const transitionRoot = transitionSource.items.find((item) => item.workRef === 'work.vexwork.foundation.outcome');
+  delete transitionRoot.semanticFingerprint;
   transitionRoot.state = 'RUNNING';
   transitionRoot.updatedAt = transitionRoot.createdAt;
   transitionSource.transitions = transitionSource.transitions.filter((transition) => transition.workRef !== transitionRoot.workRef);
@@ -214,6 +219,9 @@ test('typed transition rejects stale observation and accepts exact current trans
 
 test('dependency cycles fail closed', () => {
   const cyclic = structuredClone(graphSource);
+  delete cyclic.semanticFingerprint;
+  delete cyclic.items[1].semanticFingerprint;
+  delete cyclic.items[2].semanticFingerprint;
   cyclic.items[1].dependencyRefs = ['work.vexwork.foundation.work-board'];
   cyclic.items[2].dependencyRefs = ['work.vexwork.foundation.portable-workgraph'];
   assert.throws(() => createWorkgraph(cyclic, registry), /dependency cycle detected/);
@@ -221,6 +229,7 @@ test('dependency cycles fail closed', () => {
 
 test('declared Workgraph roots must include every parentless work item', () => {
   const missingParkingRoot = structuredClone(graphSource);
+  delete missingParkingRoot.semanticFingerprint;
   missingParkingRoot.rootWorkRefs = ['work.vexwork.foundation.outcome'];
   assert.throws(() => createWorkgraph(missingParkingRoot, registry), /rootWorkRefs must exactly equal parentless work items/);
 });
