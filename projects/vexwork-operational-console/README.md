@@ -701,7 +701,7 @@ P3  Operating Domain template                             COMPLETED
     operational attention queue                           COMPLETED
 P4  Commerce starter template                             RUNNING
     flexible commerce item model                          COMPLETED
-    AI-managed storefront/site surface                    READY
+    AI-managed storefront/site surface                    RUNNING
     sale / fulfillment attention                          COMPLETED
 P5  Antique Plate lived commerce pilot                    WAITING_DEPENDENCIES
 P6  Cross-domain completion                               WAITING_DEPENDENCIES
