@@ -2481,22 +2481,31 @@
       "label": "BoardGraph semantic contract",
       "purpose": "Form the smallest reusable semantic graph contract for scenes, controls, processes, decisions, artifacts, containers, portals, references, relationships, modules, ports, source bindings and validation without making canvas coordinates canonical meaning.",
       "workClass": "TASK",
-      "state": "READY",
+      "state": "RUNNING",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
-      "authorityDisposition": "NO_AUTHORITY",
-      "effectDisposition": "NO_EFFECTS",
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
       "formationProcessRefOrNull": null,
       "workDisposition": "ACTIVE",
       "repositoryRefs": [
         "repo.vexwork"
       ],
       "sourceRefs": [
-        "projects/vexboard/README.md"
+        "projects/vexboard/README.md",
+        "src/shared/vexboard-model.mjs",
+        "src/core/vexboard.mjs",
+        "vexboard-reader.js",
+        "vexboard/index.html",
+        "vexboard/self-map.json",
+        "test/vexboard.test.mjs",
+        "test/vexboard-ui.test.mjs",
+        "index.html",
+        "test/public-ui.test.mjs"
       ],
       "nextProcessRefs": [],
       "createdAt": "2026-10-23T00:14:29.000Z",
-      "updatedAt": "2026-10-23T00:14:29.000Z"
+      "updatedAt": "2026-10-23T02:59:44.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -3985,6 +3994,20 @@
         "confirmation.local-vex-operations.vexstream.device-storage.ready-active.20261022a"
       ],
       "createdAt": "2026-10-23T00:30:33.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.boardgraph-contract.running.20261023a",
+      "workRef": "work.vexboard.boardgraph-contract",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Victor explicitly authorized beginning actual VexBoard implementation after the completion-state architecture formation was mapped end to end.",
+      "actorRef": "actor.chatgpt.vexboard.boardgraph-foundation",
+      "sourceRefs": [
+        "project.vexboard",
+        "projects/vexboard/README.md"
+      ],
+      "createdAt": "2026-10-23T02:59:44.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",

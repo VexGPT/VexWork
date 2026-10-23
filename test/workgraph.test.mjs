@@ -68,7 +68,7 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(historyBackfill.effectDisposition, 'NO_EFFECTS');
   assert.equal(historyBackfill.formationProcessRefOrNull, 'process.vexwork.capture-discovered-work');
   assert.equal(graph.rootWorkRefs.includes(historyBackfill.workRef), true);
-  assert.equal(graph.transitions.length, 81);
+  assert.equal(graph.transitions.length, 82);
   assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.decomposed.20261022'));
   assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.plan-validated.20261022'));
   assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.ready.20261022'));
@@ -103,8 +103,13 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   const vexboardContract = graph.items.find((item) => item.workRef === 'work.vexboard.boardgraph-contract');
   assert.equal(vexboardRoot.state, 'DECOMPOSED');
   assert.equal(vexboardArchitecture.state, 'COMPLETED');
-  assert.equal(vexboardContract.state, 'READY');
-  assert.equal(vexboardContract.authorityDisposition, 'NO_AUTHORITY');
+  assert.equal(vexboardContract.state, 'RUNNING');
+  assert.equal(vexboardContract.authorityDisposition, 'AUTHORIZED_BOUNDED');
+  assert.equal(vexboardContract.effectDisposition, 'EFFECTS_BOUND');
+  assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexboard.boardgraph-contract.running.20261023a'));
+  assert.equal(vexboardContract.sourceRefs.includes('src/shared/vexboard-model.mjs'), true);
+  assert.equal(vexboardContract.sourceRefs.includes('vexboard/index.html'), true);
+  assert.equal(vexboardContract.sourceRefs.includes('vexboard/self-map.json'), true);
 
   const blueprintRoot = graph.items.find((item) => item.workRef === 'work.vexlife.blueprint-source-of-truth.outcome');
   const blueprintPracticum = graph.items.find((item) => item.workRef === 'work.vexlife.blueprint-source-of-truth.play-pause-practicum');
