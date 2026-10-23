@@ -481,4 +481,8 @@ export function recoverProjectPlanningRuntimeWriter({ storeRoot, projectRef, exp
   return Object.freeze({
     state: 'RECOVERED',
     recoveredLeaseSha256: lease.leaseSha256,
-    effects: Object.freeze({ writerLeaseDeletionPerformed: tru
+    effects: Object.freeze({ writerLeaseDeletionPerformed: true }),
+  });
+}
+
+// [VXG RealForever][VEXWORK][PROJECT-PLANNING-RUNTIME]
