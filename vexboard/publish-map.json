@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "vexboard.local-draft/v1",
+  "draftRef": "board.vexboard.publish",
+  "title": "VexBoard — publish / release horizon",
+  "mode": "READ_ONLY_SOURCE",
+  "derivedFromRefOrNull": "board.vexboard.self-map",
+  "savedAtOrNull": null,
+  "graph": {
+    "schemaVersion": "vexboard.board-graph/v1",
+    "graphRef": "graph.vexboard.publish",
+    "nodes": [
+      {
+        "nodeRef": "node.vexboard.publish.entry",
+        "kind": "PROCESS",
+        "label": "Publish / release horizon",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": ["projects/vexboard/README.md"]
+      },
+      {
+        "nodeRef": "node.vexboard.publish.readiness",
+        "kind": "REFERENCE",
+        "label": "Publish readiness · later frontier",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": ["projects/vexboard/README.md"]
+      },
+      {
+        "nodeRef": "node.vexboard.publish.release",
+        "kind": "ARTIFACT",
+        "label": "Immutable Board release · not implemented yet",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": ["projects/vexboard/README.md"]
+      },
+      {
+        "nodeRef": "node.vexboard.publish.return",
+        "kind": "PORTAL",
+        "label": "Return to VexBoard self-map",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": "board.vexboard.self-map",
+        "sourceRefs": ["vexboard/self-map.json"]
+      }
+    ],
+    "relationships": [
+      {
+        "relationshipRef": "rel.vexboard.publish.entry-readiness",
+        "kind": "FLOW",
+        "fromRef": "node.vexboard.publish.entry",
+        "toRef": "node.vexboard.publish.readiness",
+        "labelOrNull": null,
+        "sourceRefs": ["projects/vexboard/README.md"]
+      },
+      {
+        "relationshipRef": "rel.vexboard.publish.readiness-release",
+        "kind": "FLOW",
+        "fromRef": "node.vexboard.publish.readiness",
+        "toRef": "node.vexboard.publish.release",
+        "labelOrNull": null,
+        "sourceRefs": ["projects/vexboard/README.md"]
+      },
+      {
+        "relationshipRef": "rel.vexboard.publish.release-return",
+        "kind": "FLOW",
+        "fromRef": "node.vexboard.publish.release",
+        "toRef": "node.vexboard.publish.return",
+        "labelOrNull": null,
+        "sourceRefs": ["projects/vexboard/README.md"]
+      }
+    ],
+    "sourceRefs": ["projects/vexboard/README.md"]
+  },
+  "projection": {
+    "schemaVersion": "vexboard.board-projection/v1",
+    "projectionRef": "projection.vexboard.publish",
+    "graphRef": "graph.vexboard.publish",
+    "layoutIntent": "SCREEN_FLOW",
+    "items": [
+      {
+        "projectionItemRef": "item.vexboard.publish.entry",
+        "semanticRef": "node.vexboard.publish.entry",
+        "shapeKind": "RECTANGLE",
+        "bounds": {"x": 120, "y": 220, "width": 220, "height": 92},
+        "layer": 0,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexboard.publish.readiness",
+        "semanticRef": "node.vexboard.publish.readiness",
+        "shapeKind": "RECTANGLE",
+        "bounds": {"x": 460, "y": 220, "width": 250, "height": 92},
+        "layer": 0,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexboard.publish.release",
+        "semanticRef": "node.vexboard.publish.release",
+        "shapeKind": "RECTANGLE",
+        "bounds": {"x": 830, "y": 220, "width": 270, "height": 92},
+        "layer": 0,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexboard.publish.return",
+        "semanticRef": "node.vexboard.publish.return",
+        "shapeKind": "RECTANGLE",
+        "bounds": {"x": 1220, "y": 220, "width": 230, "height": 92},
+        "layer": 0,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      }
+    ],
+    "sourceRefs": ["projects/vexboard/README.md"]
+  }
+}
