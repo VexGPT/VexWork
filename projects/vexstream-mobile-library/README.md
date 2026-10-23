@@ -429,7 +429,7 @@ STATION / SMART PLAYLIST
 `work.vexstream.mobile-library.tag-topology-stations` is therefore `POTENTIAL / CAPTURED / PARKED /
 NO_AUTHORITY / NO_EFFECTS`.
 
-### ML-D12 — Sort / Filter implementation is active; draft source is not acceptance
+### ML-D12 — Sort / Filter source is authored; exact Android proof is the held edge
 
 Android source ownership is now durable:
 
@@ -452,20 +452,26 @@ work.vexstream.mobile-library.library-browse-discovery
     DECOMPOSED
 
 work.vexstream.mobile-library.sort-filter-controls
-    RUNNING
+    WAITING_TOOL
 ```
 
 Current completion boundary:
 
 ```text
-RUNNING != VERIFIED
+WAITING_TOOL != PRODUCT_FAILURE
 DRAFT_PR != ACCEPTED
 SOURCE_AUTHORED != vexVerifyLocal_PASS
 FEATURE_WALK_AUTHORED != DEVICE_JOURNEY_PASS
 ```
 
-PR #164 is intentionally still draft. Exact-head repository proof has not yet been claimed; the
-source remains active Work until focused/aggregate/Journey proof is actually executed and accepted.
+PR #164 is intentionally still draft. The exact projection source compiles and its core organization
+behavior passes against minimal Kotlin domain stubs after correcting the candidate availability-owner
+reference. That is supporting source evidence, not repository acceptance.
+
+The remaining claim is exact-head Android repository/Journey execution. Direct checkout/archive
+acquisition and a qualified Android host are unavailable in the current operator environment, and the
+canonical VexRelay/VexLocalBridge package producer cannot be substituted with a hand-authored carrier.
+The Work is therefore WAITING_TOOL on qualified host proof while the authored source remains intact.
 
 
 ## Work-state and agency safety
