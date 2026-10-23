@@ -14,6 +14,7 @@
     "work.vexwork.operational-console.multi-fulfiller-routing",
     "work.vexboard.outcome",
     "work.vexlife.blueprint-source-of-truth.outcome",
+    "work.android-proof-orchestration.outcome",
     "work.vextreme.vexsite.localization.closed-circuit.global-core"
   ],
   "items": [
@@ -364,7 +365,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-21T08:41:00.000Z",
-      "updatedAt": "2026-10-23T00:30:33.000Z",
+      "updatedAt": "2026-10-23T03:15:48.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "workRef": "work.vexstream.mobile-library.device-storage",
@@ -372,9 +373,11 @@
       "label": "Durable device music storage",
       "purpose": "Establish the Android-native durable media-storage realization while preserving exact trackRef, SHA-256 and byte-length verification.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "WAITING_TOOL",
       "priorityClass": "HIGH",
-      "dependencyRefs": [],
+      "dependencyRefs": [
+        "work.android-proof-orchestration.api-target-runner"
+      ],
       "repositoryRefs": [
         "repo.vexlife-android"
       ],
@@ -388,7 +391,11 @@
         "repo.vexstream-music:mobile_bridge.go",
         "repo.vexlife-android:app/src/main/AndroidManifest.xml",
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/PairedVexStreamMusicRepository.kt",
-        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt"
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt",
+        "project.android-proof-orchestration",
+        "github.issue.vextreme-sdk.1894",
+        "repo.vexlife-android:docs/foundation/ANDROID-HOST-PROOF.md",
+        "repo.vexlife-android:docs/foundation/test-proof/README.md"
       ],
       "nextProcessRefs": [
         "process.vexlife-android.feature-authoring"
@@ -3045,6 +3052,120 @@
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.android-proof-orchestration.outcome",
+      "parentWorkRefOrNull": null,
+      "label": "Android Proof Orchestration",
+      "purpose": "Create one reusable Android proof-target foundation so feature lanes can request an API capability, obtain one truthful isolated target, execute repository-owned proof, and release only task-owned emulator effects.",
+      "workClass": "OUTCOME",
+      "state": "DECOMPOSED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexlife-android",
+        "repo.vextreme-sdk"
+      ],
+      "sourceRefs": [
+        "projects/android-proof-orchestration/README.md",
+        "github.issue.vextreme-sdk.1894",
+        "repo.vexlife-android:docs/foundation/ANDROID-HOST-PROOF.md",
+        "repo.vextreme-sdk:docs/process/cross-platform-lived-proof-and-branch-reuse.md"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-10-23T03:15:48.000Z",
+      "updatedAt": "2026-10-23T03:15:48.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.android-proof-orchestration.api-target-runner",
+      "parentWorkRefOrNull": "work.android-proof-orchestration.outcome",
+      "label": "Reusable API target runner",
+      "purpose": "Provide one reusable host runner that accepts an Android API requirement and proof command, inventories eligible physical/emulated targets, boots an already-configured compatible AVD when needed, records exact target identity, runs the caller-owned proof, and cleans up only task-started emulators.",
+      "workClass": "TASK",
+      "state": "READY",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vextreme-sdk",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "github.issue.vextreme-sdk.1894",
+        "github.issue.vexlife-android.157",
+        "repo.vexlife-android:docs/foundation/ANDROID-HOST-PROOF.md",
+        "repo.vexlife-android:docs/foundation/test-proof/README.md",
+        "repo.vextreme-sdk:docs/process/cross-platform-lived-proof-and-branch-reuse.md",
+        "repo.vextreme-sdk:lib/cross-platform-tests/vexstream-v4-android-lived-proof.js"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-10-23T03:15:48.000Z",
+      "updatedAt": "2026-10-23T03:15:48.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.android-proof-orchestration.vexrelay-integration",
+      "parentWorkRefOrNull": "work.android-proof-orchestration.outcome",
+      "label": "VexRelay Android target integration",
+      "purpose": "Bind the reusable API target runner into current VexRelay Android host proof so formed tasks request target capabilities instead of embedding bespoke ADB/AVD discovery and cleanup shell.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.android-proof-orchestration.api-target-runner"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vextreme-sdk",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "github.issue.vextreme-sdk.1894",
+        "repo.vexlife-android:docs/foundation/ANDROID-HOST-PROOF.md",
+        "repo.vextreme-sdk:docs/private-continuity/vexrelay/current-contract.json"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-10-23T03:15:48.000Z",
+      "updatedAt": "2026-10-23T03:15:48.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.android-proof-orchestration.device-lease-queue",
+      "parentWorkRefOrNull": "work.android-proof-orchestration.outcome",
+      "label": "Android device lease and wait queue",
+      "purpose": "Coordinate concurrent Android proof lanes so a compatible free isolated AVD is preferred, shared physical targets are not raced, bounded waiting is explicit, and only task-owned emulator instances are released.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [
+        "work.android-proof-orchestration.api-target-runner"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vextreme-sdk"
+      ],
+      "sourceRefs": [
+        "github.issue.vextreme-sdk.1894",
+        "repo.vextreme-sdk:docs/process/cross-platform-lived-proof-and-branch-reuse.md"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-10-23T03:15:48.000Z",
+      "updatedAt": "2026-10-23T03:15:48.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vextreme.vexsite.localization.closed-circuit.global-core",
       "parentWorkRefOrNull": null,
       "label": "Localize Closed Circuit across Global Core",
@@ -4000,6 +4121,22 @@
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.device-storage.waiting-tool.android-proof-orchestration.20261022",
+      "workRef": "work.vexstream.mobile-library.device-storage",
+      "priorState": "RUNNING",
+      "nextState": "WAITING_TOOL",
+      "reason": "The durable storage source and retained repository-local proof are intact; the remaining API 24-28 and API 29+ native proof is held on a reusable Android target-orchestration tool rather than another lane-local emulator script.",
+      "actorRef": "actor.local-vex-operations.vexstream-mobile-library",
+      "sourceRefs": [
+        "github.issue.vexlife-android.157",
+        "github.issue.vextreme-sdk.1894",
+        "project.android-proof-orchestration",
+        "repo.vexlife-android:docs/foundation/ANDROID-HOST-PROOF.md"
+      ],
+      "createdAt": "2026-10-23T03:15:48.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
       "transitionRef": "transition.vexwork.foundation.maturity-closure.completed.pr59",
       "workRef": "work.vexwork.foundation.maturity-closure",
       "priorState": "VERIFYING",
@@ -4314,7 +4451,8 @@
     "projects/vexlife-connected-services/README.md",
     "project.vexboard",
     "project.vexlife.blueprint-source-of-truth",
-    "projects/vexlife-blueprint-source-of-truth/README.md"
+    "projects/vexlife-blueprint-source-of-truth/README.md",
+    "project.android-proof-orchestration"
   ],
   "formedAt": "2026-10-21T01:45:00.000Z"
 }

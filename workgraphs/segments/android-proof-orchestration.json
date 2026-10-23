@@ -1,0 +1,126 @@
+{
+  "schemaVersion": "vexwork.workgraph-segment/v1",
+  "segmentRef": "segment.android-proof-orchestration",
+  "graphRef": "workgraph.vexwork.foundation",
+  "items": [
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.android-proof-orchestration.outcome",
+      "parentWorkRefOrNull": null,
+      "label": "Android Proof Orchestration",
+      "purpose": "Create one reusable Android proof-target foundation so feature lanes can request an API capability, obtain one truthful isolated target, execute repository-owned proof, and release only task-owned emulator effects.",
+      "workClass": "OUTCOME",
+      "state": "DECOMPOSED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexlife-android",
+        "repo.vextreme-sdk"
+      ],
+      "sourceRefs": [
+        "projects/android-proof-orchestration/README.md",
+        "github.issue.vextreme-sdk.1894",
+        "repo.vexlife-android:docs/foundation/ANDROID-HOST-PROOF.md",
+        "repo.vextreme-sdk:docs/process/cross-platform-lived-proof-and-branch-reuse.md"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-10-23T03:15:48.000Z",
+      "updatedAt": "2026-10-23T03:15:48.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.android-proof-orchestration.api-target-runner",
+      "parentWorkRefOrNull": "work.android-proof-orchestration.outcome",
+      "label": "Reusable API target runner",
+      "purpose": "Provide one reusable host runner that accepts an Android API requirement and proof command, inventories eligible physical/emulated targets, boots an already-configured compatible AVD when needed, records exact target identity, runs the caller-owned proof, and cleans up only task-started emulators.",
+      "workClass": "TASK",
+      "state": "READY",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vextreme-sdk",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "github.issue.vextreme-sdk.1894",
+        "github.issue.vexlife-android.157",
+        "repo.vexlife-android:docs/foundation/ANDROID-HOST-PROOF.md",
+        "repo.vexlife-android:docs/foundation/test-proof/README.md",
+        "repo.vextreme-sdk:docs/process/cross-platform-lived-proof-and-branch-reuse.md",
+        "repo.vextreme-sdk:lib/cross-platform-tests/vexstream-v4-android-lived-proof.js"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-10-23T03:15:48.000Z",
+      "updatedAt": "2026-10-23T03:15:48.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.android-proof-orchestration.vexrelay-integration",
+      "parentWorkRefOrNull": "work.android-proof-orchestration.outcome",
+      "label": "VexRelay Android target integration",
+      "purpose": "Bind the reusable API target runner into current VexRelay Android host proof so formed tasks request target capabilities instead of embedding bespoke ADB/AVD discovery and cleanup shell.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.android-proof-orchestration.api-target-runner"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vextreme-sdk",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "github.issue.vextreme-sdk.1894",
+        "repo.vexlife-android:docs/foundation/ANDROID-HOST-PROOF.md",
+        "repo.vextreme-sdk:docs/private-continuity/vexrelay/current-contract.json"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-10-23T03:15:48.000Z",
+      "updatedAt": "2026-10-23T03:15:48.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.android-proof-orchestration.device-lease-queue",
+      "parentWorkRefOrNull": "work.android-proof-orchestration.outcome",
+      "label": "Android device lease and wait queue",
+      "purpose": "Coordinate concurrent Android proof lanes so a compatible free isolated AVD is preferred, shared physical targets are not raced, bounded waiting is explicit, and only task-owned emulator instances are released.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [
+        "work.android-proof-orchestration.api-target-runner"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vextreme-sdk"
+      ],
+      "sourceRefs": [
+        "github.issue.vextreme-sdk.1894",
+        "repo.vextreme-sdk:docs/process/cross-platform-lived-proof-and-branch-reuse.md"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-10-23T03:15:48.000Z",
+      "updatedAt": "2026-10-23T03:15:48.000Z"
+    }
+  ],
+  "transitions": [],
+  "sourceRefs": [
+    "project.android-proof-orchestration"
+  ],
+  "formedAt": "2026-10-21T01:45:00.000Z"
+}

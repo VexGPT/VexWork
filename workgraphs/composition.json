@@ -13,7 +13,8 @@
     "projects/vexlife-connected-services/README.md",
     "project.vexboard",
     "project.vexlife.blueprint-source-of-truth",
-    "projects/vexlife-blueprint-source-of-truth/README.md"
+    "projects/vexlife-blueprint-source-of-truth/README.md",
+    "project.android-proof-orchestration"
   ],
   "compatibilityOrder": {
     "itemWorkRefs": [
@@ -121,7 +122,11 @@
       "work.vexlife.blueprint-source-of-truth.play-pause.native-source-admission",
       "work.vexlife.blueprint-source-of-truth.play-pause.native-lived-proof",
       "work.vexlife.blueprint-source-of-truth.reusable-v1",
-      "work.vexlife.blueprint-source-of-truth.total-feature-capacity"
+      "work.vexlife.blueprint-source-of-truth.total-feature-capacity",
+      "work.android-proof-orchestration.outcome",
+      "work.android-proof-orchestration.api-target-runner",
+      "work.android-proof-orchestration.vexrelay-integration",
+      "work.android-proof-orchestration.device-lease-queue"
     ],
     "transitionRefs": [
       "transition.vexwork.foundation.portable-workgraph.completed.pr1",
@@ -187,7 +192,8 @@
       "transition.vexstream.mobile-library.device-storage.decomposed.20261022",
       "transition.vexstream.mobile-library.device-storage.plan-validated.20261022",
       "transition.vexstream.mobile-library.device-storage.ready.20261022",
-      "transition.vexstream.mobile-library.device-storage.running.20261022"
+      "transition.vexstream.mobile-library.device-storage.running.20261022",
+      "transition.vexstream.mobile-library.device-storage.waiting-tool.android-proof-orchestration.20261022"
     ],
     "rootWorkRefs": [
       "work.vexwork.foundation.outcome",
@@ -201,7 +207,8 @@
       "work.vexwork.operational-console.outcome",
       "work.vexwork.operational-console.multi-fulfiller-routing",
       "work.vexboard.outcome",
-      "work.vexlife.blueprint-source-of-truth.outcome"
+      "work.vexlife.blueprint-source-of-truth.outcome",
+      "work.android-proof-orchestration.outcome"
     ],
     "sourceRefs": [
       "project.vexwork.foundation",
@@ -214,7 +221,8 @@
       "projects/vexlife-connected-services/README.md",
       "project.vexboard",
       "project.vexlife.blueprint-source-of-truth",
-      "projects/vexlife-blueprint-source-of-truth/README.md"
+      "projects/vexlife-blueprint-source-of-truth/README.md",
+      "project.android-proof-orchestration"
     ]
   },
   "formedAt": "2026-10-21T01:45:00.000Z"
