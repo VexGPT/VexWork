@@ -11,7 +11,7 @@ const publicSource = read('workgraphs/public.json');
 const foundationSource = read('workgraphs/segments/vexwork-foundation.json');
 const foundationProjectSource = read('projects/vexwork-foundation/project.json');
 
-test('Foundation shadow segment round-trips the exact accepted Workgraph identity', () => {
+test('Foundation source segment remains exactly compatible with the accepted Workgraph identity', () => {
   const accepted = createWorkgraph(publicSource, registry);
   const foundationSegment = createWorkgraphSegment(foundationSource, registry);
   const foundationRefs = new Set(foundationSegment.items.map((item) => item.workRef));
@@ -27,7 +27,7 @@ test('Foundation shadow segment round-trips the exact accepted Workgraph identit
 
   const remainder = {
     schemaVersion: 'vexwork.workgraph-segment/v1',
-    segmentRef: 'segment.vexwork.legacy-remainder',
+    segmentRef: 'segment.vexwork.compatibility-remainder',
     graphRef: publicSource.graphRef,
     items: remainderItems,
     transitions: remainderTransitions,

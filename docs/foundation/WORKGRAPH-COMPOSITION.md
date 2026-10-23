@@ -124,64 +124,91 @@ FILE_SPLIT != WORKGRAPH_CURRENTNESS_CHANGE
 
 v1 behavior remains unchanged and rejects `compatibilityOrder`.
 
-## What this does not do yet
+## Source-authoring adoption
 
-This contract deliberately does **not** migrate `workgraphs/public.json`, change Project Registry paths, add a distributed writer, change runtime CURRENT semantics, or make generated public projections asynchronous.
+The shadow patient zero has now earned the ownership flip.
 
-Those are adoption questions.
-
-The next earned migration should use one real work family as patient zero and prove:
+The canonical authored source is:
 
 ```text
-segment authoring
--> composition
--> exact existing Workgraph meaning
--> existing public workspace/dashboard readers
+workgraphs/composition.json
+workgraphs/segments/*.json
 ```
 
-without forcing unrelated work-family branches to edit the same authored segment.
-
-## Shadow patient zero — VexWork Foundation
-
-The first real adoption pressure uses the completed VexWork Foundation family because its containment is stable and no active product lane needs to author inside it.
-
-`workgraphs/segments/vexwork-foundation.json` is initially a **shadow segment**, not the current Workgraph source owner.
+and the checked-in aggregate is generated:
 
 ```text
-accepted workgraphs/public.json
-        │
-        ├─ exact Foundation segment
-        └─ derived untouched remainder
-                 │
-                 ▼
-          Composition v2
-                 │
-                 ▼
-deep-equal accepted Workgraph
-same semantic fingerprint
+source segments
+        +
+composition v2 compatibility order
+        ↓
+scripts/build-public-workgraph.mjs
+        ↓
+workgraphs/public.json
+        ↓
+public workspace / dashboard / other readers
 ```
 
-`test/workgraph-composition-foundation.test.mjs` enforces that parity against the current accepted aggregate. If Foundation truth changes while the shadow segment is stale, the test fails.
+`workgraphs/public.json` remains the one canonical portable Workgraph value consumed by existing readers. What changed is **where authors write**, not the semantic owner or runtime contract.
 
-This staged posture avoids a big-bang ownership flip:
+Nine current source segments divide the live Work families:
 
 ```text
-SHADOW_SEGMENT != CURRENT_SOURCE_OWNER
-PARITY_PROVEN != AUTHORSHIP_MIGRATED
+segment.vexwork.foundation
+segment.vexwork.history
+segment.vexlife.android.vexstream
+segment.vexstream.mobile.library
+segment.vexlife.tocompletion
+segment.vexlife.connected.services
+segment.vexwork.operational.console
+segment.vexboard
+segment.vexlife.blueprint.source.of.truth
 ```
 
-A later adoption may make segments the authored source and `workgraphs/public.json` generated only after the real concurrent lanes have demonstrated that ordinary-forward reconciliation remains clean.
+Containment is local to one segment. Dependencies may cross segments. The first accepted cross-segment dependency is the parked historical backfill depending on the completed Foundation public dashboard.
 
-## Operational posture during migration
-
-Until adoption is complete:
+The compatibility order preserves the exact pre-migration Workgraph semantic fingerprint. New refs omitted from the compatibility list append deterministically, so ordinary future work does not require maintaining one global ordering array.
 
 ```text
-product/source work may continue when its real authority/dependencies permit
-VexWork reconciliation remains a separate Flows concern
-aggregate-file contention is not a product blocker
-traceability lag is explicit rather than disguised as provider truth
+SEGMENT_AUTHORING_CURRENT
+PUBLIC_WORKGRAPH_GENERATED
+PUBLIC_WORKGRAPH_STILL_CANONICAL_VALUE
+PROJECT_REGISTRY_PATHS_UNCHANGED
+RUNTIME_CURRENTNESS_UNCHANGED
 ```
+
+### Authoring rule
+
+A lane that changes Work truth edits the segment that owns that WorkRef and then regenerates/checks the public Workgraph.
+
+```text
+edit rightful segment
+-> npm run workgraph:build
+-> affected tests
+-> npm run review
+```
+
+A lane must not hand-edit `workgraphs/public.json` to bypass the segment owner. Generated-currentness is enforced by `npm run workgraph:check` inside the deterministic review floor.
+
+This removes the recurring physical writer collision that motivated the foundation without inventing distributed locking or multiple Workgraphs.
+
+## Operational posture after adoption
+
+```text
+different work-family segments
+  -> may author in parallel
+
+same segment
+  -> coordinate exact semantic ownership/currentness
+
+generated public Workgraph
+  -> convergence artifact, not an authoring membrane
+
+public workspace
+  -> generated projection from canonical Project + Workgraph truth
+```
+
+Aggregate merge conflicts should now normally indicate stale generated output or source-currentness reconciliation, not a reason to serialize unrelated work families.
 
 ## Non-collapse
 

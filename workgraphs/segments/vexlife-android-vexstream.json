@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "vexwork.workgraph-segment/v1",
+  "segmentRef": "segment.vexlife.android.vexstream",
+  "graphRef": "workgraph.vexwork.foundation",
+  "items": [
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife-android.vexstream.not-yet-downloaded-filter",
+      "parentWorkRefOrNull": null,
+      "label": "VexStream Songs filter for Not yet downloaded",
+      "purpose": "Preserve the nice-to-have Songs-level filter that answers which songs on this device are still not downloaded, without making it part of MassDownload completion or authorizing implementation.",
+      "workClass": "POTENTIAL",
+      "state": "CAPTURED",
+      "workDisposition": "PARKED",
+      "priorityClass": "LOW",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "github.issue.vexlife-android.144",
+        "github.pull.vexlife-android.142",
+        "docs/process/CAPTURE-DISCOVERED-WORK.md"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+      "nextProcessRefs": [
+        "process.vexlife-android.feature-authoring"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-21T01:18:35.000Z",
+      "updatedAt": "2026-10-21T01:18:35.000Z"
+    }
+  ],
+  "transitions": [],
+  "sourceRefs": [
+    "github.issue.vexlife-android.144"
+  ],
+  "formedAt": "2026-10-21T01:45:00.000Z"
+}

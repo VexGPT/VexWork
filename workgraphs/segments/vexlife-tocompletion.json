@@ -1,0 +1,648 @@
+{
+  "schemaVersion": "vexwork.workgraph-segment/v1",
+  "segmentRef": "segment.vexlife.tocompletion",
+  "graphRef": "workgraph.vexwork.foundation",
+  "items": [
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-22T00:13:43.000Z",
+      "updatedAt": "2026-10-22T01:55:06.000Z",
+      "workRef": "work.vexlife.tocompletion.outcome",
+      "parentWorkRefOrNull": null,
+      "label": "VexLife ToCompletion",
+      "purpose": "Carry the full VexLife ToCompletion trajectory: reconcile current truth, establish a fresh-user-capable restartable Heretic Companion, prove bounded real work, prove honest lived continuity/learning, route earned development through Cultivation/School/Training Placement/Birth, and mature connected/native product branches on the same Home/identity/capability laws.",
+      "workClass": "OUTCOME",
+      "state": "RUNNING",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "project.vexlife.tocompletion",
+        "projects/vexlife-tocompletion/README.md",
+        "github.issue.vexlife.866",
+        "github.issue.vexlife.866.comment.6330185511",
+        "github.issue.vexlife.866.comment.6280226452",
+        "map.vexlife.tocompletion.nested-pathway.20261019a"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-22T00:13:43.000Z",
+      "updatedAt": "2026-10-22T01:55:06.000Z",
+      "workRef": "work.vexlife.tocompletion.p0b.foundation",
+      "parentWorkRefOrNull": "work.vexlife.tocompletion.outcome",
+      "label": "P0B — durable Project / Workgraph completion foundation",
+      "purpose": "Materialize the durable Project/Workgraph/currentness foundation inserted after the canonical P0 map so later ToCompletion phases could survive fresh instances without depending on prose handoffs.",
+      "workClass": "TASK",
+      "state": "COMPLETED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.tocompletion.p0.research-closure"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "github.issue.vexlife.866",
+        "github.pull.vexlife.912",
+        "docs/lineage/VEXLIFE-P0B.md",
+        "github.issue.vexlife.866.comment.6280575985"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-22T00:13:43.000Z",
+      "updatedAt": "2026-10-22T00:13:43.000Z",
+      "workRef": "work.vexlife.tocompletion.p1.heretic-establishment",
+      "parentWorkRefOrNull": "work.vexlife.tocompletion.outcome",
+      "label": "P1 — establish Heretic in the real Home",
+      "purpose": "Establish and qualify the selected Heretic model/runtime in the real Vex Home under persistent ownership so later lived turns reuse the same current binding rather than a simulated or throwaway model path.",
+      "workClass": "TASK",
+      "state": "COMPLETED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.tocompletion.p0b.foundation"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "github.issue.vexlife.866",
+        "github.pull.vexlife.913"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-22T00:13:43.000Z",
+      "updatedAt": "2026-10-22T00:13:43.000Z",
+      "workRef": "work.vexlife.tocompletion.p2.first-lived-turn",
+      "parentWorkRefOrNull": "work.vexlife.tocompletion.outcome",
+      "label": "P2 — first lived Heretic turn",
+      "purpose": "Prove one real Conversation to selected Heretic runtime to durable response turn on the retained host without substituting fake inference or synthetic completion.",
+      "workClass": "TASK",
+      "state": "COMPLETED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.tocompletion.p1.heretic-establishment"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "github.issue.vexlife.866",
+        "evidence.vexlife.tocompletion.p2.a031.terminal-lived-pass"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-22T00:13:43.000Z",
+      "updatedAt": "2026-10-22T00:13:43.000Z",
+      "workRef": "work.vexlife.tocompletion.p3.restart-durability",
+      "parentWorkRefOrNull": "work.vexlife.tocompletion.outcome",
+      "label": "P3 — restart and durable second turn",
+      "purpose": "Prove stop/restart of the same Vex Home and a second real Heretic Conversation turn with binding and durable continuity preserved across process reentry.",
+      "workClass": "TASK",
+      "state": "COMPLETED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.tocompletion.p2.first-lived-turn"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "github.issue.vexlife.866",
+        "github.pull.vexlife.915",
+        "evidence.vexlife.tocompletion.p3.a042.durable-readback"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-22T00:13:43.000Z",
+      "updatedAt": "2026-10-22T01:08:02.000Z",
+      "workRef": "work.vexlife.tocompletion.p4.typed-local-effect",
+      "parentWorkRefOrNull": "work.vexlife.tocompletion.outcome",
+      "label": "P4 — typed local effect and same-Conversation reinjection",
+      "purpose": "Prove the model can perceive current orientation, request one exact typed local capability under separate one-time authority, execute it through the rightful Native Worker, reinject the verified result, and naturally continue in the same Conversation.",
+      "workClass": "OUTCOME",
+      "state": "COMPLETED",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexlife.tocompletion.p3.restart-durability"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "github.issue.vexlife.866",
+        "github.pull.vexlife.916",
+        "projects/vexlife-tocompletion/README.md",
+        "github.issue.vexlife.866.comment.6330185511",
+        "evidence.vexlife.tocompletion.p4.lived.a054.return.sha256.3a36c72a984d9d5c0eed1e362f914f329b3e26dfb8b51083014a1578deecf09c"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-22T00:13:43.000Z",
+      "updatedAt": "2026-10-22T00:30:00.000Z",
+      "workRef": "work.vexlife.tocompletion.p4.source-acceptance",
+      "parentWorkRefOrNull": "work.vexlife.tocompletion.p4.typed-local-effect",
+      "label": "P4 source acceptance for PR #916",
+      "purpose": "Complete exact-head source acceptance for PR #916 through SourceOwner proof, fresh Assurance, lifecycle currentness, semantic review/READY, owner merge duty, post-merge verification, and claim release without confusing source acceptance with lived P4 completion.",
+      "workClass": "TASK",
+      "state": "COMPLETED",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "github.issue.vexlife.866",
+        "github.pull.vexlife.916",
+        "github.commit.vexlife.d8e1c855118bd4578650c2708b837e05cbaaef73",
+        "source.vexrelay.current-contract/v1",
+        "vexrelay.package.vexlife.p4.source-owner.a052.sha256.f13f320b6f1aaad0b3d1de0fd865d53e2aaa3f4b5a37e92fedc6e61a6c7e3570",
+        "github.commit.vexlife.a23313f7be4a24f6fb9989277bc1f5ad4dbdf6e8",
+        "evidence.vexlife.tocompletion.p4.source-owner.a052.pass",
+        "evidence.vexlife.tocompletion.p4.assurance.clear",
+        "evidence.vexlife.tocompletion.p4.source-terminal-accepted"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-22T00:13:43.000Z",
+      "updatedAt": "2026-10-22T01:08:02.000Z",
+      "workRef": "work.vexlife.tocompletion.p4.lived-reinjection",
+      "parentWorkRefOrNull": "work.vexlife.tocompletion.p4.typed-local-effect",
+      "label": "P4 retained-Home lived typed-effect proof",
+      "purpose": "After source acceptance, prove real Heretic request -> exact one-time authority -> Native Worker orientation effect -> verified result reinjection through ToolResultRelay -> natural continuation in the same retained Conversation.",
+      "workClass": "TASK",
+      "state": "COMPLETED",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexlife.tocompletion.p4.source-acceptance"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "github.issue.vexlife.866",
+        "projects/vexlife-tocompletion/README.md",
+        "github.commit.vexlife.a23313f7be4a24f6fb9989277bc1f5ad4dbdf6e8",
+        "evidence.vexlife.tocompletion.p4.source-terminal-accepted",
+        "github.issue.vexlife.866.comment.6330014415",
+        "evidence.vexlife.tocompletion.p4.lived.a053.return.sha256.ae547d380f4309ca49b15dcd9f1bd2cdf8905c4980979f306aeb19415543f64f",
+        "github.issue.vexlife.866.comment.6330185511",
+        "evidence.vexlife.tocompletion.p4.lived.a054.return.sha256.3a36c72a984d9d5c0eed1e362f914f329b3e26dfb8b51083014a1578deecf09c"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.tocompletion.p4.lived-attempt-a053",
+      "parentWorkRefOrNull": "work.vexlife.tocompletion.p4.typed-local-effect",
+      "label": "P4 lived A053 — first accepted-source retained-Home attempt",
+      "purpose": "Execute and consume the first post-source-acceptance retained-Home P4 lived attempt, preserve the exact first substantive failure, and determine whether the typed effect or Conversation advanced before any replay.",
+      "workClass": "TASK",
+      "state": "COMPLETED",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexlife.tocompletion.p4.source-acceptance"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "github.issue.vexlife.866.comment.6329920155",
+        "github.issue.vexlife.866.comment.6330014415",
+        "evidence.vexlife.tocompletion.p4.lived.a053.return.sha256.ae547d380f4309ca49b15dcd9f1bd2cdf8905c4980979f306aeb19415543f64f"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-22T00:54:56.000Z",
+      "updatedAt": "2026-10-22T00:54:56.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.tocompletion.p4.runtime-currentness-a054",
+      "parentWorkRefOrNull": "work.vexlife.tocompletion.p4.typed-local-effect",
+      "label": "P4 A054 — re-observe Heretic runtime currentness and resume lived effect",
+      "purpose": "Re-observe the retained Heretic runtime receipt/process/loopback currentness after A053 timed out during owner qualification; if exact live runtime truth is current, continue the P4 typed-effect/reinjection proof without redundant preflight inference, otherwise recover through the rightful owner or surface the exact source defect.",
+      "workClass": "TASK",
+      "state": "COMPLETED",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexlife.tocompletion.p4.lived-attempt-a053"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "github.issue.vexlife.866.comment.6330014415",
+        "github.issue.vextreme-sdk.636",
+        "evidence.vexlife.tocompletion.p4.lived.a053.return.sha256.ae547d380f4309ca49b15dcd9f1bd2cdf8905c4980979f306aeb19415543f64f",
+        "github.issue.vexlife.866.comment.6330185511",
+        "evidence.vexlife.tocompletion.p4.lived.a054.return.sha256.3a36c72a984d9d5c0eed1e362f914f329b3e26dfb8b51083014a1578deecf09c"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-22T00:54:56.000Z",
+      "updatedAt": "2026-10-22T01:08:02.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-22T01:08:02.000Z",
+      "updatedAt": "2026-10-22T01:08:02.000Z",
+      "workRef": "work.vexlife.tocompletion.p5.lived-continuity-learning",
+      "parentWorkRefOrNull": "work.vexlife.tocompletion.outcome",
+      "label": "P5 — lived continuity and learning",
+      "purpose": "Prove that one real lived VexLife episode can become durable, source-attributed continuity through the rightful Score/Memory/consent owners, survive restart, and influence later lived context without overstating Dream, Rhythm, training or weight mutation.",
+      "workClass": "OUTCOME",
+      "state": "RUNNING",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexlife.tocompletion.p4.typed-local-effect"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "github.issue.vexlife.866",
+        "github.issue.vexlife.866.comment.6330185511",
+        "evidence.vexlife.tocompletion.p4.lived.a054.return.sha256.3a36c72a984d9d5c0eed1e362f914f329b3e26dfb8b51083014a1578deecf09c",
+        "source.vexlife.continuity-evolution",
+        "source.vexlife.score-context-continuity"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-22T01:08:02.000Z",
+      "updatedAt": "2026-10-22T01:39:00.000Z",
+      "workRef": "work.vexlife.tocompletion.p5.g02-semantic-authority-materializer",
+      "parentWorkRefOrNull": "work.vexlife.tocompletion.p5.lived-continuity-learning",
+      "label": "P5 G02 — establish rightful semantic-authority materializer",
+      "purpose": "Use the exact A054 lived turn/effect as G01 evidence and close the missing owner-side Memory/Safety semantic-authority materializer needed for one device-private G02 candidate; VexLife may consume the resulting canonical ledger but must not mint its own classification, consent or acceptance authority.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexlife.tocompletion.p4.typed-local-effect"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "github.issue.vexlife.866",
+        "github.issue.vexlife.866.comment.6330185511",
+        "evidence.vexlife.tocompletion.p4.lived.a054.return.sha256.3a36c72a984d9d5c0eed1e362f914f329b3e26dfb8b51083014a1578deecf09c",
+        "github.issue.vextreme-sdk.225.comment.5217085830",
+        "github.issue.vextreme-sdk.226.comment.5217090896",
+        "github.issue.vextreme-sdk.350.comment.5217097749",
+        "source.vexlife.score-context-continuity",
+        "github.issue.vextreme-sdk.225.comment.6330349715",
+        "github.issue.vextreme-sdk.226.comment.6330352075",
+        "claim.vextreme-sdk.vexlife-tocompletion.p5.g02-semantic-authority-materializer.20261022a",
+        "github.issue.vextreme-sdk.225.comment.6330620123",
+        "github.issue.vextreme-sdk.225.comment.6330658616",
+        "github.issue.vextreme-sdk.225.comment.6330760587"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-22T01:39:00.000Z",
+      "updatedAt": "2026-10-22T01:39:00.000Z",
+      "workRef": "work.vexlife.tocompletion.p5.g02.coder-harness-a055-a056",
+      "parentWorkRefOrNull": "work.vexlife.tocompletion.p5.g02-semantic-authority-materializer",
+      "label": "P5 G02 — A055/A056 carrier convergence",
+      "purpose": "Consume the two pre-product host failures, preserve that no SDK source effect occurred, and identify the exact current Relay/VexLocalBridge carrier requirements before another product attempt.",
+      "workClass": "TASK",
+      "state": "COMPLETED",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "github.issue.vextreme-sdk.225.comment.6330620123",
+        "github.issue.vextreme-sdk.225.comment.6330658616",
+        "github.issue.vextreme-sdk.225.comment.6330760587"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-22T01:39:00.000Z",
+      "updatedAt": "2026-10-22T01:39:00.000Z",
+      "workRef": "work.vexlife.tocompletion.p5.g02.sdk-runner-a057",
+      "parentWorkRefOrNull": "work.vexlife.tocompletion.p5.g02-semantic-authority-materializer",
+      "label": "P5 G02 A057 — use SDK-bound Mac runner",
+      "purpose": "Form one fresh compatible A057 attempt with the unchanged four-file Memory/Safety payload and current Relay authority shape, but execute the outer task through SDK's RUN-VEX-TASK.command / profile.repository.vextreme-sdk.macos-v1 instead of the VexLife-bound runner.",
+      "workClass": "TASK",
+      "state": "READY",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexlife.tocompletion.p5.g02.coder-harness-a055-a056"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "github.issue.vextreme-sdk.225.comment.6330760587",
+        "claim.vextreme-sdk.vexlife-tocompletion.p5.g02-semantic-authority-materializer.20261022a"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.tocompletion.p0.research-closure",
+      "parentWorkRefOrNull": "work.vexlife.tocompletion.outcome",
+      "label": "P0 — current entry and research closure",
+      "purpose": "Reconcile Heretic, M4, School/Cultivation, current product source and ownership; separate closed research from open engineering; and freeze one canonical ToCompletion entry before implementation descends into exact missing seams.",
+      "workClass": "TASK",
+      "state": "COMPLETED",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "github.issue.vexlife.866",
+        "github.issue.vexlife.866.comment.6264243604",
+        "github.issue.vexlife.866.comment.6265286718",
+        "github.issue.vexlife.866.comment.6280226452",
+        "map.vexlife.tocompletion.nested-pathway.20261019a"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-20T00:14:25.000Z",
+      "updatedAt": "2026-10-20T00:14:25.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.tocompletion.p6.cultivation-training-birth",
+      "parentWorkRefOrNull": "work.vexlife.tocompletion.outcome",
+      "label": "P6 — Cultivation, School, Training Placement, optional Birth",
+      "purpose": "Once the lived operational surface is stable, use actual developmental evidence to re-enter Cultivation/School, let Training Placement decide the rightful learning surface, and perform neural training/candidate evaluation/succession only when a weight route is genuinely earned.",
+      "workClass": "OUTCOME",
+      "state": "WAITING_DEPENDENCIES",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.tocompletion.p5.lived-continuity-learning"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "github.issue.vexlife.866",
+        "github.issue.vexlife.866.comment.6280226452",
+        "github.issue.vextreme-sdk.1399",
+        "github.issue.vextreme-sdk.354"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-20T00:14:25.000Z",
+      "updatedAt": "2026-10-20T00:14:25.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.tocompletion.p7.whole-product-expansion",
+      "parentWorkRefOrNull": "work.vexlife.tocompletion.outcome",
+      "label": "P7 — connected, native and whole-product expansion",
+      "purpose": "Mature Home Bridge, Android Conversation, VexMaps, VexStream, Family consent/invitation, voice, Living Journal, Relationships, Purpose Workspace and native-platform branches while consuming the same core Home/identity/capability/continuity laws rather than creating alternate Vex universes.",
+      "workClass": "OUTCOME",
+      "state": "PLAN_VALIDATED",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [
+        "work.vexlife.tocompletion.p4.typed-local-effect"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "github.issue.vexlife.866",
+        "github.issue.vexlife.866.comment.6280226452",
+        "map.vexlife.tocompletion.nested-pathway.20261019a"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-20T00:14:25.000Z",
+      "updatedAt": "2026-10-20T00:14:25.000Z"
+    }
+  ],
+  "transitions": [
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.tocompletion.p4.lived-reinjection.a053-start",
+      "workRef": "work.vexlife.tocompletion.p4.lived-reinjection",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "A053 executed against accepted source and retained P3 continuity; the lived P4 task is now active while the completed A053 progression and next READY runtime-currentness task carry exact attempt state.",
+      "actorRef": "actor.vexlife.tocompletion",
+      "sourceRefs": [
+        "github.issue.vexlife.866.comment.6330014415"
+      ],
+      "createdAt": "2026-10-22T00:54:56.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.tocompletion.p4.runtime-currentness-a054.running.a054-return",
+      "workRef": "work.vexlife.tocompletion.p4.runtime-currentness-a054",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "A054 host proof executed on exact accepted source and retained P3 continuity; result is available for verification.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.issue.vexlife.866.comment.6330185511",
+        "evidence.vexlife.tocompletion.p4.lived.a054.return.sha256.3a36c72a984d9d5c0eed1e362f914f329b3e26dfb8b51083014a1578deecf09c"
+      ],
+      "createdAt": "2026-10-22T01:08:02.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.tocompletion.p4.runtime-currentness-a054.verifying.a054-return",
+      "workRef": "work.vexlife.tocompletion.p4.runtime-currentness-a054",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "A054 RETURN archive integrity, internal SHA256SUMS, cross-summary consistency, exact source binding, effect receipt, durable-head advance and authority consumption were verified.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.issue.vexlife.866.comment.6330185511",
+        "evidence.vexlife.tocompletion.p4.lived.a054.return.sha256.3a36c72a984d9d5c0eed1e362f914f329b3e26dfb8b51083014a1578deecf09c"
+      ],
+      "createdAt": "2026-10-22T01:08:02.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.tocompletion.p4.runtime-currentness-a054.completed.a054-terminal-lived-pass",
+      "workRef": "work.vexlife.tocompletion.p4.runtime-currentness-a054",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "A054 earned P4_TERMINAL_LIVED_PASS: exact live Heretic selected the typed effect, Native Worker executed it, ToolResultRelay reinjected the result, later synthesis completed and the same durable Conversation advanced.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.issue.vexlife.866.comment.6330185511",
+        "evidence.vexlife.tocompletion.p4.lived.a054.return.sha256.3a36c72a984d9d5c0eed1e362f914f329b3e26dfb8b51083014a1578deecf09c"
+      ],
+      "createdAt": "2026-10-22T01:08:02.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.tocompletion.p4.lived-reinjection.verifying.a054-terminal",
+      "workRef": "work.vexlife.tocompletion.p4.lived-reinjection",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "A054 completed the retained-Home typed-effect/reinjection path; parent lived proof entered exact result verification.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.issue.vexlife.866.comment.6330185511",
+        "evidence.vexlife.tocompletion.p4.lived.a054.return.sha256.3a36c72a984d9d5c0eed1e362f914f329b3e26dfb8b51083014a1578deecf09c"
+      ],
+      "createdAt": "2026-10-22T01:08:02.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.tocompletion.p4.lived-reinjection.completed.a054-terminal",
+      "workRef": "work.vexlife.tocompletion.p4.lived-reinjection",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "Verified A054 exact P3 predecessor head, one typed process effect, exact reinjection/synthesis, new durable head and consumed one-time authority.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.issue.vexlife.866.comment.6330185511",
+        "evidence.vexlife.tocompletion.p4.lived.a054.return.sha256.3a36c72a984d9d5c0eed1e362f914f329b3e26dfb8b51083014a1578deecf09c"
+      ],
+      "createdAt": "2026-10-22T01:08:02.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.tocompletion.p4.typed-local-effect.verifying.a054-terminal",
+      "workRef": "work.vexlife.tocompletion.p4.typed-local-effect",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "P4 source acceptance and lived A054 proof are both complete; verify the whole P4 completion predicate.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.issue.vexlife.866.comment.6330185511",
+        "evidence.vexlife.tocompletion.p4.lived.a054.return.sha256.3a36c72a984d9d5c0eed1e362f914f329b3e26dfb8b51083014a1578deecf09c"
+      ],
+      "createdAt": "2026-10-22T01:08:02.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.tocompletion.p4.typed-local-effect.completed.a054-terminal-lived-pass",
+      "workRef": "work.vexlife.tocompletion.p4.typed-local-effect",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "P4 completion predicate satisfied end-to-end: real Heretic request -> one-time authority -> Native Worker typed orientation effect -> verified result -> ToolResultRelay reinjection -> same-Conversation continuation.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.issue.vexlife.866.comment.6330185511",
+        "evidence.vexlife.tocompletion.p4.lived.a054.return.sha256.3a36c72a984d9d5c0eed1e362f914f329b3e26dfb8b51083014a1578deecf09c"
+      ],
+      "createdAt": "2026-10-22T01:08:02.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.tocompletion.p5.g02-semantic-authority-materializer.source-claim-running",
+      "workRef": "work.vexlife.tocompletion.p5.g02-semantic-authority-materializer",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Exact Vextreme-SDK Memory/Safety source claim established on four non-overlapping paths; source authoring is now active.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.issue.vextreme-sdk.225.comment.6330349715",
+        "github.issue.vextreme-sdk.226.comment.6330352075",
+        "claim.vextreme-sdk.vexlife-tocompletion.p5.g02-semantic-authority-materializer.20261022a"
+      ],
+      "createdAt": "2026-10-22T01:18:00.000Z"
+    }
+  ],
+  "sourceRefs": [
+    "project.vexlife.tocompletion"
+  ],
+  "formedAt": "2026-10-21T01:45:00.000Z"
+}
