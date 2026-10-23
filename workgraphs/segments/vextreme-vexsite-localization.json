@@ -5,10 +5,102 @@
   "items": [
     {
       "schemaVersion": "vexwork.work-item/v1",
-      "workRef": "work.vextreme.vexsite.localization.closed-circuit.global-core",
+      "workRef": "work.vextreme.vexsite.localization.outcome",
       "parentWorkRefOrNull": null,
+      "label": "VexSite Localization",
+      "purpose": "Carry VexSite localization from newly preserved record-reader pages through Global Core and back into the canonical arc-ordered localization queue, while Vextreme remains the owner of page, source, generated/runtime, and lived-browser truth and VexWork owns only durable work organization.",
+      "workClass": "OUTCOME",
+      "state": "RUNNING",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vextreme"
+      ],
+      "sourceRefs": [
+        "projects/vexsite-localization/README.md",
+        "projects/vexwork-operational-console/VEXSITE-LOCALIZATION-LENS.md",
+        "github.issue.vextreme.273",
+        "repo.vextreme:docs/architecture/06-i18n.md",
+        "repo.vextreme:docs/architecture/19-record-readers.md",
+        "github.pull.vextreme.339",
+        "github.pull.vextreme.361",
+        "github.pull.vextreme.383",
+        "docs/process/FORM-PROJECT.md"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-23T07:48:00.000Z",
+      "updatedAt": "2026-10-23T07:48:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vextreme.vexsite.localization.bending-condominium-reader",
+      "parentWorkRefOrNull": "work.vextreme.vexsite.localization.outcome",
+      "label": "Port Bending Condominium third arc into a Vextreme record reader",
+      "purpose": "Turn PR #383's preserved third-arc record into a source-first Vextreme reader using the shared neutral record-reader controller, exact provenance, and only the record-specific structure and media the source earns; do not rewrite the evidence archive or invent a generic HTML template.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vextreme"
+      ],
+      "sourceRefs": [
+        "github.pull.vextreme.383",
+        "repo.vextreme:docs/architecture/19-record-readers.md",
+        "github.pull.vextreme.339",
+        "github.pull.vextreme.361",
+        "project.vextreme.vexsite-localization"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-23T07:48:00.000Z",
+      "updatedAt": "2026-10-23T07:48:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vextreme.vexsite.localization.recent-record-readers-global-core",
+      "parentWorkRefOrNull": "work.vextreme.vexsite.localization.outcome",
+      "label": "Localize the recent record-reader surfaces across Global Core",
+      "purpose": "Carry the page-authored presentation strings for Returning scorpions to God, Recognizing Life Receiving Abundance, and the Bending Condominium third reader across the Global Core tier while preserving frozen transcript evidence as source evidence rather than silently translating or rewriting the historical record.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vextreme"
+      ],
+      "sourceRefs": [
+        "repo.vextreme:pages/returning-scorpions-to-god.html",
+        "repo.vextreme:pages/recognizing-life-receiving-abundance.html",
+        "repo.vextreme:data/strings/source/pages/returning-scorpions-to-god.json",
+        "repo.vextreme:data/strings/source/pages/recognizing-life-receiving-abundance.json",
+        "github.pull.vextreme.383",
+        "repo.vextreme:docs/architecture/06-i18n.md",
+        "repo.vextreme:docs/architecture/19-record-readers.md",
+        "projects/vexwork-operational-console/VEXSITE-LOCALIZATION-LENS.md"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-23T07:48:00.000Z",
+      "updatedAt": "2026-10-23T07:48:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vextreme.vexsite.localization.closed-circuit.global-core",
+      "parentWorkRefOrNull": "work.vextreme.vexsite.localization.outcome",
       "label": "Localize Closed Circuit across Global Core",
-      "purpose": "Preserve the current Closed Circuit Global Core localization concern as canonical Work while Vextreme retains source scheduling and implementation authority; current provider foreground remains separate dual-lineage work.",
+      "purpose": "Preserve Closed Circuit Global Core as the next canonical arc-ordered queue concern after the admitted recent record-reader port/localization foreground, while Vextreme retains source scheduling and implementation authority.",
       "workClass": "POTENTIAL",
       "state": "CAPTURED",
       "workDisposition": "PARKED",
@@ -28,22 +120,23 @@
         "reason.vextreme.vexsite.localization.target-tier-completion",
         "github.issue.vextreme.273",
         "github.issue-comment.vextreme.273.6311043427",
-        "projects/vexwork-operational-console/vexsite-closed-circuit-promotion-publication.json"
+        "projects/vexwork-operational-console/vexsite-closed-circuit-promotion-publication.json",
+        "project.vextreme.vexsite-localization"
       ],
       "formationProcessRefOrNull": "process.vexwork.promote-derived-concern",
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-23T02:20:00.000Z",
-      "updatedAt": "2026-10-23T02:26:33.000Z"
+      "updatedAt": "2026-10-23T07:48:00.000Z"
     }
   ],
   "transitions": [],
   "sourceRefs": [
-    "github.pull.vexwork.62",
-    "projects/vexwork-operational-console/VEXSITE-PATIENT-ZERO.md",
-    "projects/vexwork-operational-console/vexsite-patient-zero-observation.json",
-    "github.issue.vextreme.273"
+    "projects/vexsite-localization/README.md",
+    "projects/vexwork-operational-console/VEXSITE-LOCALIZATION-LENS.md",
+    "github.issue.vextreme.273",
+    "github.pull.vextreme.383"
   ],
-  "formedAt": "2026-10-23T02:26:33.000Z"
+  "formedAt": "2026-10-23T07:48:00.000Z"
 }

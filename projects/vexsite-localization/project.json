@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.vextreme.vexsite-localization",
+  "label": "VexSite Localization",
+  "purpose": "Finish source-backed VexSite record surfaces, carry their page-owned presentation strings through Global Core localization, and then continue the canonical Vextreme localization queue without turning VexWork into a second page, translation, generated-artifact, or browser-proof owner.",
+  "rootWorkRefs": [
+    "work.vextreme.vexsite.localization.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vextreme"
+  ],
+  "sourceRefs": [
+    "projects/vexsite-localization/README.md",
+    "docs/process/FORM-PROJECT.md",
+    "projects/vexwork-operational-console/VEXSITE-LOCALIZATION-LENS.md",
+    "github.issue.vextreme.273",
+    "repo.vextreme:docs/architecture/06-i18n.md",
+    "repo.vextreme:docs/architecture/19-record-readers.md",
+    "github.pull.vextreme.339",
+    "github.pull.vextreme.361",
+    "github.pull.vextreme.383"
+  ],
+  "formedAt": "2026-10-23T07:48:00.000Z"
+}
