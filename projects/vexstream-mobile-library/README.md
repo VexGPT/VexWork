@@ -4,9 +4,10 @@
 
 ## Human outcome
 
-Make downloaded VexStream music a **durable, reusable Android device library** while keeping the
-already-accepted one-shot MassDownload behavior truthful and keeping continuous "Keep Offline" sync
-as a separately governed future policy.
+Make VexStream on Android a **durable, reusable and human-navigable mobile music library**: keep
+downloaded media truthful and durable, while also letting a listener narrow the current library into
+the listening context they actually want. Continuous "Keep Offline" sync remains a separately
+governed future policy.
 
 This Project is the human/navigation owner for that outcome. Product semantics remain with
 VexLife-Android and VexStream Music.
@@ -43,7 +44,8 @@ VexStream Mobile Library                         OUTCOME
 +-- Contextual Download Experience               OUTCOME
 |   +-- Contextual Download Missing              TASK
 |
-+-- Duration-aware song filtering                TASK / decomposed
++-- Library Filtering                            OUTCOME
+|   +-- Duration-aware song filtering            TASK / decomposed / first pressure
 |
 +-- MassDownload Maturity                        OUTCOME
     +-- MassDownload product implementation      TASK / completed
@@ -287,78 +289,148 @@ implicated.
 Product meaning remains in VexStream Music's own entry/architecture sources.
 
 
-### ML-D9 — Duration is a listening lens, not track or playlist identity
+### ML-D9 — Library Filtering is a human narrowing capability, not a generic engine
 
-Victor's listening need is not "add another metadata field." The current Android track projection already
-carries `durationSeconds`, and track rows already render known duration. What is missing is a convenient
-way to choose a listening universe before Play All / Shuffle All.
+Duration exposed a broader missing product question:
 
-Human examples:
+> How can a listener narrow the VexStream library into the music that fits the present listening
+> intention, while every track, collection and provider truth keeps its original owner?
+
+Current Android source already contains multiple independent filterable truths:
+
+```text
+track metadata
+  durationSeconds
+  artist
+  album
+  genre
+  year
+
+current device/source truth
+  local copy state
+  HUB_ONLY / HUB_AND_LOCAL / LOCAL_ONLY / UNAVAILABLE
+
+existing narrowing input
+  Search query over human metadata
+```
+
+That is enough real pressure to earn one **Library Filtering** outcome. It is not enough pressure to
+invent an app-wide filtering framework or create speculative Work items for every possible field.
+
+The product relationship to design is:
+
+```text
+CURRENT repository-owned track truth
++ current playable truth
++ current library/collection context
++ text query when present
++ active user filters
++ existing ordering/grouping rules
+        ↓
+CURRENT visible listening universe
+        ↓
+track-row playback context
++ Play All
++ Shuffle All
+```
+
+The important questions for Android feature authoring are therefore relational:
+
+1. **Dimension** — what accepted track/currentness fact is being narrowed?
+2. **Predicate** — what does a match mean for numeric, categorical and state-valued dimensions?
+3. **Unknown policy** — what happens when a value such as duration is unknown?
+4. **Scope** — does the filter apply to Songs only, the whole library, Search, Downloads, or a
+   collection detail?
+5. **Composition** — how do several active filters combine, and how does Search compose with them?
+6. **Playback context** — does tapping a visible track, Play All, and Shuffle All operate over the same
+   narrowed universe the human can see?
+7. **Collection truth** — when filtering inside an Album/Artist/Playlist projection, how do we narrow
+   visible members without pretending the canonical collection membership changed?
+8. **Lifetime** — is filter state screen-local, saveable across recomposition/navigation, or truly
+   persistent? Persistence must be earned rather than assumed.
+9. **Legibility** — how can the human see that filters are active, clear them, and understand a
+   no-results state?
+10. **Extensibility** — can a new meaningful dimension be added at the rightful projection boundary
+    without another ad-hoc screen-specific predicate pile?
+
+Candidate dimensions are **source-supported possibilities, not committed product controls**. Artist
+and Album already have first-class navigation lenses, for example, so duplicating them as filters may
+or may not improve the experience. Likewise Search is already a distinct human input and should
+compose with filters rather than being relabeled merely for architectural symmetry.
+
+Permanent non-collapse:
+
+```text
+LIBRARY_FILTERING != SECOND_LIBRARY
+LIBRARY_FILTERING != CATALOG_TRUTH
+LIBRARY_FILTERING != PLAYLIST_MEMBERSHIP_MUTATION
+LIBRARY_FILTERING != SEARCH
+LIBRARY_FILTERING != SORTING
+LIBRARY_FILTERING != PERSISTENT_SHUFFLE_MODE
+LIBRARY_FILTERING != OFFLINE_OR_SYNC_POLICY
+FILTERED_PROJECTION != FILTERED_SOURCE_OF_TRUTH
+```
+
+New filter dimensions should become separate Work only when their human outcome, source pressure or
+proof boundary is meaningfully distinct. The broader outcome exists so one-off predicates can
+compose coherently without manufacturing a ticket for every field.
+
+Current Work:
+
+```text
+work.vexstream.mobile-library.library-filtering
+state = DECOMPOSED
+next = process.vexlife-android.feature-authoring
+```
+
+### ML-D10 — Duration is the first earned Library Filtering slice
+
+Victor's first concrete listening pressure is duration:
 
 ```text
 under 10 minutes
   -> ordinary individual-song variety
 
 under 30 minutes
-  -> avoid very long mixes/playlists while keeping a broad shuffle pool
+  -> avoid very long mixes while keeping a broad shuffle pool
 
 over 30 minutes / over 2 hours
   -> intentionally choose long-form journey, flight, focus, or mix listening
 ```
 
-Current Android source already gives this feature a narrow owner boundary:
+Current Android source already carries `VexStreamTrack.durationSeconds`, already renders known
+duration on track rows, and already routes library-level Play All / Shuffle All through the current
+track set. The first slice can therefore challenge the filtering contract without inventing new media
+metadata or another playback engine.
 
-```text
-VexStreamTrack.durationSeconds
--> VexStreamMusicState.playableTracks()
--> VexStreamLibraryProjection
--> visible library track set
--> existing VexStreamCollectionPlaybackRequest
--> Play All / Shuffle All
-```
-
-The first source-design challenge is therefore a **read-only duration lens over current playable track
-truth**, not a second catalog, downloader, queue, or playlist model.
-
-Permanent non-collapse:
-
-```text
-DURATION_FILTER != TRACK_IDENTITY
-DURATION_FILTER != CATALOG_TRUTH
-DURATION_FILTER != PLAYLIST_MEMBERSHIP_MUTATION
-DURATION_FILTER != PERSISTENT_SHUFFLE_MODE
-DURATION_FILTER != OFFLINE_OR_SYNC_POLICY
-FILTERED_SHUFFLE -> EXISTING_COLLECTION_PLAYBACK_REQUEST
-```
-
-Initial behavior to preserve through Android feature authoring:
+Initial behavior to preserve:
 
 - support both less-than and greater-than a listener-chosen duration threshold;
-- clearing the filter restores the ordinary playable library without mutating repository state;
-- Search composes with the active duration lens rather than becoming a second independent library;
-- the visible Songs universe and library-level Play All / Shuffle All must agree on the same filtered
-  track set;
-- unknown duration (`durationSeconds == 0`) must not be silently classified as short or long while a
+- clearing the duration filter restores the ordinary playable projection;
+- Search composes with duration filtering;
+- the visible Songs universe and library-level Play All / Shuffle All agree on the same filtered set;
+- starting playback from one visible track carries the same narrowed context rather than immediately
+  escaping into hidden unfiltered tracks;
+- unknown duration (`durationSeconds == 0`) is not silently classified as short or long while a
   duration threshold is active;
-- canonical track refs, availability, download state and playback source resolution remain unchanged;
-- exact filter UI (chip, sheet, presets, custom value, or a combination) is an Android
-  feature-authoring decision rather than being frozen in VexWork;
-- propagation into Albums / Artists / Downloads / playlist detail must be made explicit by the
-  Android design instead of accidentally rewriting collection membership truth.
+- track refs, availability, download state and playback-source resolution remain unchanged;
+- exact UI (chip, sheet, presets, custom value, or combination) stays an Android feature-authoring
+  decision;
+- Albums / Artists / Downloads / Playlist-detail propagation must be decided explicitly from the
+  broader Library Filtering scope rather than accidentally changing collection membership.
 
-Useful acceptance examples include `< 10 min`, `< 30 min`, `> 30 min`, and `> 2 hr`; they are
-examples of the intended human modes, not a requirement to hard-code those exact presets.
-
-Current Work:
+Examples such as `< 10 min`, `< 30 min`, `> 30 min`, and `> 2 hr` express listening modes;
+they do not require hard-coded presets.
 
 ```text
 work.vexstream.mobile-library.duration-filter
+parent = work.vexstream.mobile-library.library-filtering
 state = DECOMPOSED
-next = process.vexlife-android.feature-authoring
 ```
 
-The next step is to source-place the smallest Android presentation/projection contract and focused
-proof, then use the Project's normal meaningful-phase handshake before Active implementation.
+The next real edge is to source-place the smallest Android Library Filtering projection/control shape,
+use duration as the first proving dimension, and then apply the Project's normal meaningful-phase
+handshake before Active implementation.
 
 ### ML-D8 — Android target orchestration is a reusable dependency, not VexStream product scope
 
