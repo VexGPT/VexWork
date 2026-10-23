@@ -3281,16 +3281,16 @@
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
-      "authorityDisposition": "NO_AUTHORITY",
-      "effectDisposition": "NO_EFFECTS",
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-23T05:30:00.000Z",
-      "updatedAt": "2026-10-23T05:30:00.000Z",
+      "updatedAt": "2026-10-23T08:30:00.000Z",
       "workRef": "work.vexlife.tocompletion.productization.heretic-normal-start-integration",
       "parentWorkRefOrNull": "work.vexlife.tocompletion.productization.ordinary-heretic-setup",
       "label": "Normal-start integration — route safe setup into accepted Heretic establishment",
-      "purpose": "After setup-safety convergence, connect normal fresh startup to the accepted Heretic product target and merged PR #919 establishment composition, then carry the exact runtime receipt/endpoint into the existing Browser/Companion start without rebuilding Artifact Delivery/runtime ownership, blindly swapping activeModelBundleRef, or silently migrating an existing Home.",
+      "purpose": "Actively connect normal fresh startup to the accepted Heretic product target and merged PR #919 establishment composition, carrying the exact runtime receipt/endpoint into the existing Browser/Lived Companion without rebuilding Artifact Delivery/runtime ownership, blindly swapping activeModelBundleRef, or silently migrating an existing Home.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "RUNNING",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [
         "work.vexlife.tocompletion.productization.setup-safety-convergence"
@@ -3303,7 +3303,9 @@
         "github.pull.vexlife.919",
         "github.pull.vexlife.873",
         "github.issue.vexlife.857",
-        "github.issue.vexlife.866"
+        "github.issue.vexlife.866",
+        "github.issue.vexlife.866.comment.6360434385",
+        "git.commit.vexlife.85ef85dfa4852154e522deadc45707b03cf74221"
       ]
     },
     {
@@ -3314,7 +3316,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-23T05:30:00.000Z",
-      "updatedAt": "2026-10-23T05:30:00.000Z",
+      "updatedAt": "2026-10-23T08:30:00.000Z",
       "workRef": "work.vexlife.tocompletion.productization.ordinary-heretic-setup",
       "parentWorkRefOrNull": "work.vexlife.tocompletion.outcome",
       "label": "Ordinary productization — safe fresh setup enters Heretic",
@@ -3335,7 +3337,9 @@
         "github.issue.vexlife.857",
         "github.pull.vexlife.919",
         "github.pull.vexlife.873",
-        "projects/vexlife-tocompletion/README.md"
+        "projects/vexlife-tocompletion/README.md",
+        "github.issue.vexlife.866.comment.6360434385",
+        "git.commit.vexlife.85ef85dfa4852154e522deadc45707b03cf74221"
       ]
     },
     {
@@ -3346,13 +3350,13 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-23T05:30:00.000Z",
-      "updatedAt": "2026-10-23T05:30:00.000Z",
+      "updatedAt": "2026-10-23T08:30:00.000Z",
       "workRef": "work.vexlife.tocompletion.productization.setup-safety-convergence",
       "parentWorkRefOrNull": "work.vexlife.tocompletion.productization.ordinary-heretic-setup",
       "label": "Setup safety convergence — currentize and finish PR #873",
-      "purpose": "Actively re-ground, ordinary-forward currentize, prove and finish the existing PR #873 setup-safety owner against current VexLife main while preserving one Home-scoped setup owner, cancellation, resumable partial state, exact pending-runtime ownership, progress/debuggability and preservation-safe cleanup. This task does not decide model identity.",
+      "purpose": "Preserve terminal accepted setup-safety convergence from VexLife PR #873: one Home-scoped setup owner, exact cancellation, resumable partial state, exact pending-runtime ownership, truthful progress/debuggability and preservation-safe cleanup. This completed dependency does not decide model identity.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "COMPLETED",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [],
       "repositoryRefs": [
@@ -3362,7 +3366,9 @@
         "github.pull.vexlife.873",
         "github.issue.vexlife.872",
         "github.issue.vexlife.866.comment.6357923021",
-        "github.pull.vexlife.919"
+        "github.pull.vexlife.919",
+        "github.issue.vexlife.866.comment.6360434385",
+        "git.commit.vexlife.85ef85dfa4852154e522deadc45707b03cf74221"
       ]
     },
     {
@@ -4435,6 +4441,64 @@
         "github.issue.vexlife.866.comment.6356465627"
       ],
       "createdAt": "2026-10-23T05:30:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.tocompletion.productization.heretic-normal-start-integration.ready.pr873-terminal",
+      "workRef": "work.vexlife.tocompletion.productization.heretic-normal-start-integration",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "The only named setup-safety dependency became TERMINAL_ACCEPTED_CURRENT at PR873, so normal-start Heretic integration is no longer dependency-held.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexlife.873",
+        "github.issue.vexlife.866.comment.6360434385",
+        "git.commit.vexlife.85ef85dfa4852154e522deadc45707b03cf74221"
+      ],
+      "createdAt": "2026-10-23T08:30:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.tocompletion.productization.heretic-normal-start-integration.running.pr873-terminal",
+      "workRef": "work.vexlife.tocompletion.productization.heretic-normal-start-integration",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "The ToCompletion foreground immediately descends into the already-defined normal-start Heretic integration slice under bounded VexLife/Vextreme-SDK source authority.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexlife.873",
+        "github.issue.vexlife.866.comment.6360434385"
+      ],
+      "createdAt": "2026-10-23T08:30:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.tocompletion.productization.setup-safety-convergence.verifying.pr873-terminal",
+      "workRef": "work.vexlife.tocompletion.productization.setup-safety-convergence",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "PR873 reached exact-head SourceOwner PASS, fresh Independent Assurance CLEAR, Lifecycle Currentness PASS, Formal Review and protected-path approval on the accepted setup-safety candidate.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexlife.873",
+        "github.issue.vexlife.866.comment.6360434385"
+      ],
+      "createdAt": "2026-10-23T08:30:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.tocompletion.productization.setup-safety-convergence.completed.pr873-terminal",
+      "workRef": "work.vexlife.tocompletion.productization.setup-safety-convergence",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "PR873 merged by expected head and post-merge verification proved accepted main tree byte-identical to the assured candidate, terminalizing setup-safety convergence.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexlife.873",
+        "github.issue.vexlife.866.comment.6360434385",
+        "git.commit.vexlife.85ef85dfa4852154e522deadc45707b03cf74221"
+      ],
+      "createdAt": "2026-10-23T08:30:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",

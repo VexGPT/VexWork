@@ -71,7 +71,7 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(historyBackfill.effectDisposition, 'NO_EFFECTS');
   assert.equal(historyBackfill.formationProcessRefOrNull, 'process.vexwork.capture-discovered-work');
   assert.equal(graph.rootWorkRefs.includes(historyBackfill.workRef), true);
-  assert.equal(graph.transitions.length, 116);
+  assert.equal(graph.transitions.length, 120);
   assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.decomposed.20261022'));
   assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.plan-validated.20261022'));
   assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.ready.20261022'));
@@ -227,11 +227,11 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   const setupConvergence = graph.items.find((item) => item.workRef === 'work.vexlife.tocompletion.productization.setup-safety-convergence');
   const hereticIntegration = graph.items.find((item) => item.workRef === 'work.vexlife.tocompletion.productization.heretic-normal-start-integration');
   assert.equal(productization.state, 'RUNNING');
-  assert.equal(setupConvergence.state, 'RUNNING');
-  assert.equal(hereticIntegration.state, 'WAITING_DEPENDENCIES');
+  assert.equal(setupConvergence.state, 'COMPLETED');
+  assert.equal(hereticIntegration.state, 'RUNNING');
   assert.deepEqual(hereticIntegration.dependencyRefs, ['work.vexlife.tocompletion.productization.setup-safety-convergence']);
-  assert.equal(hereticIntegration.authorityDisposition, 'NO_AUTHORITY');
-  assert.equal(hereticIntegration.effectDisposition, 'NO_EFFECTS');
+  assert.equal(hereticIntegration.authorityDisposition, 'AUTHORIZED_BOUNDED');
+  assert.equal(hereticIntegration.effectDisposition, 'EFFECTS_BOUND');
   const p6 = graph.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p6.cultivation-training-birth');
   assert.equal(p6.state, 'WAITING_DEPENDENCIES');
   assert.deepEqual(p6.dependencyRefs, ['work.vexlife.tocompletion.p5.lived-continuity-learning']);
