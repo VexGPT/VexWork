@@ -61,7 +61,17 @@ function processOwner(processRef, processRegistry) {
 }
 
 export function createOperatingDomain(input, { repositoryRegistry, processRegistry }) {
+  const sourceKeys = [
+    'schemaVersion', 'domainRef', 'label', 'purpose', 'repositoryRefs',
+    'capabilities', 'populations', 'lenses', 'processes', 'attentionQueues', 'sourceRefs',
+  ];
+  const storedKeys = [...sourceKeys, 'effects', 'executionAuthority', 'semanticFingerprint'];
+  exactKeys(input, input?.semanticFingerprint === undefined ? sourceKeys : storedKeys, 'operating domain');
   assert(input?.schemaVersion === OPERATING_DOMAIN_SCHEMA, 'operating domain schema mismatch');
+  if (input.semanticFingerprint !== undefined) {
+    assert(input.effects === false, 'stored operating domain effects must remain false');
+    assert(input.executionAuthority === 'NONE', 'stored operating domain executionAuthority must remain NONE');
+  }
   if (input.semanticFingerprint !== undefined) {
     assert(verifySemanticFingerprint(input), 'operating domain semanticFingerprint mismatch');
   }
