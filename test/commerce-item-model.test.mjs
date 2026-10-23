@@ -97,6 +97,14 @@ test('sold-only enrichment cannot contradict current inventory state', () => {
     /require inventoryState SOLD/,
   );
 
+  assert.throws(
+    () => createCommerceItemObservation(minimum({
+      inventoryState: 'SOLD',
+      soldAt: '2026-10-23T05:01:00.000Z',
+    })),
+    /soldAt cannot be after observedAt/,
+  );
+
   const soldWithoutDetails = createCommerceItemObservation(minimum({ inventoryState: 'SOLD' }));
   assert.equal(soldWithoutDetails.inventoryState, 'SOLD');
   assert.equal(Object.hasOwn(soldWithoutDetails, 'soldAt'), false);
