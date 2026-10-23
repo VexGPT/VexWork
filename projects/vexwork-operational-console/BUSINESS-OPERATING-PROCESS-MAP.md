@@ -20,11 +20,33 @@ It deliberately does not turn every process box into canonical Work yet. The imm
 
 Once VexBoard's navigable BoardJourney plus lived-evidence slice is accepted, this source can become the input to a first-class visual/process-map epic rather than requiring a fresh instance to rediscover the generic business model from the internet.
 
-## Provisional root process name
+## VexBusinessFactory — provisional root identity
+
+The broader reusable abstraction is now:
+
+~~~text
+VexBusinessFactory
+~~~
+
+It is not one business runtime, one storefront, or one giant schema. It is a **factory of business-process profiles** that composes the smallest useful operating model from the kind of value being sold, how supply is obtained, how the transaction occurs, how fulfillment happens, which specialist providers are required, and how exceptions/reconciliation work.
+
+The root reusable process template remains:
 
 ~~~text
 Business Actualization & Operations
 process.business.actualization-and-operations
+~~~
+
+Relationship:
+
+~~~text
+VexBusinessFactory
+  -> selects / composes one Business Profile
+  -> instantiates Business Actualization & Operations
+  -> activates only applicable subprocesses
+  -> connects provider-owned capabilities
+  -> exposes human-required actions
+  -> projects readiness/checklists/journeys through VexBoard
 ~~~
 
 VexEcommerce is a major reusable child process, not the whole business.
@@ -149,7 +171,35 @@ Similar establishment paths may exist for banking, tax/accounting, shipping/carr
 
 Human question:
 
-> What is actually being created or made available for sale?
+> What is actually being created, owned, prepared, reserved, intermediated, or made available for sale?
+
+The first useful abstraction is **offer/supply type**, not merely "product versus service":
+
+~~~text
+OWNED_INVENTORIED_OBJECT
+  one-off antique, stocked retail good, manufactured item
+
+PREPARED_GOOD
+  restaurant meal or another item created after demand
+
+DIGITAL_ARTIFACT
+  file, software, media, course, license-delivered content
+
+HUMAN_SERVICE_CAPACITY
+  consulting, repair, appointment, professional service
+
+RESERVATION_RIGHT
+  hotel room-night, airline seat/itinerary, rental car, tour, transfer
+
+RECURRING_ENTITLEMENT
+  subscription / membership / recurring access
+
+INTERMEDIATED_PARTNER_OFFER
+  supplier-owned inventory/rate that this business is authorized to search,
+  quote, refer, reserve, book, ticket, or service
+~~~
+
+Supply paths then specialize:
 
 ~~~text
 PHYSICAL_ONE_OFF
@@ -166,9 +216,17 @@ RESTAURANT_PREPARED_FOOD
 
 SERVICE_BOOKING
   define service -> capacity -> booking -> human service performance
+
+TRAVEL_INTERMEDIARY
+  establish supplier/distribution relationship
+  -> obtain authorized inventory/rate access
+  -> search live availability
+  -> quote/revalidate
+  -> reserve/book/ticket where authorized
+  -> service/cancel/change under supplier rules
 ~~~
 
-The business profile supplies this production/supply path without changing the generic commerce process.
+The business profile supplies this production/supply path without changing the generic commerce/transaction process.
 
 # 3. VexEcommerce — Make the Offer Buyable
 
@@ -363,22 +421,26 @@ DIGITAL_GOOD
 RESTAURANT_PREPARED_FOOD
 SERVICE_BOOKING
 SUBSCRIPTION
+TRAVEL_AGENCY_OR_OTA
 ~~~
 
 Example applicability:
 
-| Capability | Physical one-off | Digital good | Restaurant | Service |
-| --- | --- | --- | --- | --- |
-| Item/menu/service identity | REQUIRED | REQUIRED | REQUIRED | REQUIRED |
-| Physical inventory/storage | REQUIRED | N/A | INGREDIENT/CAPACITY | N/A |
-| Public storefront/menu | REQUIRED | REQUIRED | REQUIRED | OPTIONAL |
-| Checkout/payment | REQUIRED | REQUIRED | REQUIRED | OPTIONAL/REQUIRED |
-| Shipping | REQUIRED/LOCAL_PICKUP | N/A | DELIVERY/PICKUP | N/A |
-| Digital entitlement | N/A | REQUIRED | N/A | OPTIONAL |
-| Human preparation | OPTIONAL | N/A | REQUIRED | N/A |
-| Human service performance | N/A | N/A | N/A | REQUIRED |
-| Traditional physical return | OPTIONAL | N/A | N/A | N/A |
-| Refund path | REQUIRED | REQUIRED/POLICY | REQUIRED | REQUIRED/POLICY |
+| Capability | Physical one-off | Digital good | Restaurant | Service | Travel |
+| --- | --- | --- | --- | --- | --- |
+| Offer identity | REQUIRED | REQUIRED | REQUIRED | REQUIRED | REQUIRED |
+| Physical inventory/storage | REQUIRED | N/A | INGREDIENT/CAPACITY | N/A | PROVIDER_OWNED |
+| Public storefront/menu/search | REQUIRED | REQUIRED | REQUIRED | OPTIONAL | REQUIRED |
+| Live availability/revalidation | SIMPLE | N/A | TIME/CAPACITY | CALENDAR | REQUIRED |
+| Checkout/payment | REQUIRED | REQUIRED | REQUIRED | OPTIONAL/REQUIRED | PROFILE/PROVIDER_DEPENDENT |
+| Shipping | REQUIRED/LOCAL_PICKUP | N/A | DELIVERY/PICKUP | N/A | N/A |
+| Digital entitlement | N/A | REQUIRED | N/A | OPTIONAL | VOUCHER/TICKET/RESERVATION |
+| Human preparation | OPTIONAL | N/A | REQUIRED | N/A | N/A |
+| Human service performance | N/A | N/A | N/A | REQUIRED | AGENT_SUPPORT_OPTIONAL |
+| Traditional physical return | OPTIONAL | N/A | N/A | N/A | N/A |
+| Cancellation/change servicing | POLICY | POLICY | POLICY | POLICY | REQUIRED |
+| Refund path | REQUIRED | REQUIRED/POLICY | REQUIRED | REQUIRED/POLICY | REQUIRED/POLICY |
+| Supplier/partner relationship | OPTIONAL | OPTIONAL | OPTIONAL | OPTIONAL | REQUIRED |
 
 Checklist dispositions:
 
@@ -390,6 +452,173 @@ PROVIDER_DELEGATED
 HUMAN_ACTION_REQUIRED
 UNKNOWN_NEEDS_DECISION
 ~~~
+
+
+# Travel business profile — reservation and partner-supply commerce
+
+Travel is a critical pressure test because the business commonly **does not own the underlying inventory**.
+
+A travel agency, OTA, booking portal, concierge, or travel platform may compose offers from airlines, lodging suppliers, car-rental companies, attractions, transfer providers, wholesalers, GDSs, aggregators, or direct supplier APIs.
+
+Permanent distinctions:
+
+~~~text
+TRAVEL_OFFER != OWNED_INVENTORY
+SEARCH_RESULT != BOOKABLE_AVAILABILITY
+DISPLAYED_PRICE != FINAL_CONFIRMED_PRICE
+RESERVATION != AIR_TICKET
+BOOKING != SERVICE_FULFILLED
+SUPPLIER_ORDER != VEXWORK_WORK_ITEM
+CANCELLATION_REQUEST != REFUND
+PARTNER_API_ACCESS != UNIVERSAL_RESELL_RIGHT
+~~~
+
+## Travel product subtypes
+
+~~~text
+AIR
+  flight offers / seats / ancillaries / ticketing / exchanges
+
+LODGING
+  hotel / resort / vacation rental / room-night reservation
+
+CAR_RENTAL
+  vehicle + depot + rate + options + pickup/dropoff rules
+
+ACTIVITY
+  attraction / tour / event / destination experience
+
+TRANSFER
+  airport / point-to-point transportation
+
+PACKAGE
+  composed trip containing multiple travel products
+
+CRUISE
+  later profile pressure; supplier-specific booking/servicing complexity
+~~~
+
+The shared travel journey is approximately:
+
+~~~text
+BUSINESS / AGENCY FOUNDATION
+  |
+  v
+SUPPLIER / DISTRIBUTION PARTNERSHIP
+  contract / affiliate / accreditation / commercial access
+  |
+  v
+AUTHORIZED CONTENT + RATE ACCESS
+  |
+  v
+TRAVELLER SEARCH INTENT
+  destination / dates / party / constraints
+  |
+  v
+SEARCH / SHOP
+  |
+  v
+LIVE AVAILABILITY + PRICE / RULES
+  |
+  v
+QUOTE / REVALIDATE
+  |
+  v
+TRAVELLER SELECTS
+  |
+  v
+BOOK / RESERVE / ORDER
+  |
+  +----> PAYMENT according to provider/business model
+  |
+  v
+CONFIRMATION / TICKET / VOUCHER / RESERVATION
+  |
+  v
+PRE-TRAVEL SERVICING
+  changes / cancellation / disruption / traveller support
+  |
+  v
+TRAVEL SERVICE OCCURS
+  airline / hotel / car / activity provider performs the real service
+  |
+  v
+POST-TRAVEL SUPPORT + RECONCILIATION
+  commission / supplier settlement / refunds / disputes / reporting
+~~~
+
+This is commerce, but fulfillment is **supplier service performance**, not the business packing a box.
+
+## Travel provider/distribution patterns
+
+A profile may choose one or more patterns:
+
+~~~text
+AFFILIATE / REDIRECT
+  search/display locally
+  -> traveller completes booking at provider
+  -> referral/commission observation
+
+SEARCH + BOOK THROUGH PARTNER API
+  search / availability / price
+  -> provider order/booking API
+  -> post-booking servicing where authorized
+
+GDS / TRAVEL DISTRIBUTION PLATFORM
+  multi-supplier search / booking / ticketing / servicing
+  -> commercial agency relationship and provider credentials
+
+DIRECT SUPPLIER
+  airline / hotel / rental / tour operator API or portal
+
+WHITE-LABEL PLATFORM
+  provider owns more of checkout/booking/servicing while business owns brand/customer journey
+~~~
+
+Current official provider examples show these are real integration patterns, not hypothetical ones:
+
+- Booking.com Demand API supports content/search/redirect, supported in-app booking, post-booking management, and reporting across accommodations, cars and other travel services, with capability depending on partner access.
+- Expedia Group Rapid provides partner APIs for lodging, cars, flights and activities and requires becoming a partner before integration.
+- Sabre exposes travel-agency APIs spanning air shopping/booking, lodging and cars.
+- Travelport TripServices exposes air search/price/book/ticket/change/cancel plus hotel search/book/manage.
+- Amadeus offers self-service/enterprise travel APIs across flights, hotels, cars/transfers and destination experiences.
+- IATA/IATAN accreditation is one industry route for recognized travel-agent/ticketing relationships; exact accreditation or seller requirements depend on location and chosen commercial model.
+
+These providers are references, not defaults. Availability, commercial terms, accreditation, ticketing authority, payment responsibility and post-booking servicing vary by provider/product/market.
+
+## Travel-specific human and operational complexity
+
+Typical human/business work may include:
+
+~~~text
+choose agency / affiliate / merchant model
+form supplier or distributor agreements
+complete commercial/provider verification
+obtain any required accreditation or seller authorization
+decide who is merchant of record
+define traveller-support responsibility
+define cancellation/change/refund support
+handle schedule changes / disruptions / exceptions
+reconcile commissions / supplier settlements / refunds
+maintain customer-service coverage
+~~~
+
+Typical system/provider work may include:
+
+~~~text
+content ingestion
+search
+live availability
+rate/fare rules
+price revalidation
+booking/order creation
+ticket/voucher/reservation issuance
+provider notifications
+change/cancel endpoints
+reporting/reconciliation feeds
+~~~
+
+VexBusinessFactory should make these responsibilities explicit before generating a checklist.
 
 # Provider boundary — connect rather than rebuild
 
@@ -496,7 +725,7 @@ The checklist is a projection of process requirements, not a second source of pr
 Provisional future epic:
 
 ~~~text
-Business Operating Process Map & Reusable VexEcommerce
+VexBusinessFactory — Business Process Map & Reusable Operating Profiles
 ~~~
 
 Admit it only when VexBoard can support the human-readable process map rather than forcing this source into a flat collection of tickets.
@@ -504,22 +733,23 @@ Admit it only when VexBoard can support the human-readable process map rather th
 Provisional decomposition:
 
 ~~~text
-B1  Root Business Operating Map
+B1  VexBusinessFactory root grammar
 B2  Business Profile / Checklist Projection
 B3  Provider Boundary & Integration Registry
 B4  VexEcommerce Core
 B5  Physical Goods Profile
 B6  Digital Goods Profile
 B7  Restaurant / Prepared Food Profile
-B8  Customer Care / Reverse Commerce
-B9  Reconciliation & Attention
-B10 Lived Journey + Screenshot Evidence
-B11 Fresh-Instance Learnability Proof
+B8  Travel Agency / OTA Profile
+B9  Customer Care / Reverse Commerce
+B10 Reconciliation & Attention
+B11 Lived Journey + Screenshot Evidence
+B12 Fresh-Instance Learnability Proof
 ~~~
 
-B4-B9 are process/domain meaning.
-B10 is evidence.
-B11 tests the actual reason this map exists.
+B4-B10 are process/domain meaning.
+B11 is evidence.
+B12 tests the actual reason this map exists.
 
 # VexBoard human-readable target
 
@@ -616,7 +846,7 @@ The future epic earns completion when:
 
 1. one root topology connects foundation, offer creation, commerce, fulfillment, customer care and reconciliation;
 2. VexEcommerce is reusable as a child process rather than the whole business;
-3. physical, digital and restaurant profiles reuse the same core without corrupting distinct fulfillment semantics;
+3. physical, digital, restaurant and travel profiles reuse the same core without corrupting distinct supply/fulfillment/servicing semantics;
 4. a profile produces a human-readable readiness checklist with REQUIRED / OPTIONAL / N/A / provider / human distinctions;
 5. provider-delegated infrastructure is explicit and private/provider truth remains outside public process source;
 6. human-only physical/service actions are first-class boundaries;
@@ -653,7 +883,7 @@ Business Actualization & Operations root map
 
 The Antique Plate path remains a useful physical-goods patient zero.
 A synthetic fixture is acceptable for template proving when explicitly marked synthetic.
-Restaurant and digital-good profiles are deliberately different follow-up pressure tests.
+Restaurant, digital-good and travel-agency/OTA profiles are deliberately different follow-up pressure tests.
 
 # Held work
 
