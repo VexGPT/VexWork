@@ -9,9 +9,9 @@ test('Terrain remains an explicit read-only VexWork projection', () => {
   assert.match(page, /VexWork/);
   assert.match(page, /Terrain Map/);
   assert.match(page, /experimental v2/i);
-  assert.match(page, /./public/workspace.json/);
+  assert.match(page, /\\.\\/public\\/workspace\\.json/);
   assert.match(page, /executionAuthority!=='NONE'/);
-  assert.doesNotMatch(page, /method:s*['"](?:POST|PUT|PATCH|DELETE)['"]/i);
+  assert.doesNotMatch(page, /method:\\s*['"](?:POST|PUT|PATCH|DELETE)['"]/i);
 });
 
 test('Terrain uses stable perceptual bands and strata rather than radial graph navigation', () => {
@@ -19,7 +19,7 @@ test('Terrain uses stable perceptual bands and strata rather than radial graph n
   assert.match(page, /preview-strip/);
   assert.match(page, /strata-list/);
   assert.match(page, /depth is level-of-detail/);
-  assert.doesNotMatch(page, /Math.PI*2*index/);
+  assert.doesNotMatch(page, /Math\\.PI\\*2\\*index/);
   assert.doesNotMatch(page, /class="rail"/);
 });
 
