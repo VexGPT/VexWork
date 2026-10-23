@@ -15,7 +15,7 @@ const policy = createProjectAgencyPolicy(read('projects/vexstream-mobile-library
 
 test('VexStream Mobile Library is the first external Project over the shared Workgraph', () => {
   const refs = projectWorkRefs(project, graph);
-  assert.equal(refs.length, 12);
+  assert.equal(refs.length, 13);
   assert.equal(refs.includes('work.vexstream.mobile-library.outcome'), true);
   assert.equal(refs.includes('work.vexstream.mobile-library.download-experience'), true);
   assert.equal(refs.includes('work.vexstream.mobile-library.massdownload-maturity'), true);
@@ -31,6 +31,7 @@ test('VexStream Mobile Library is the first external Project over the shared Wor
   assert.deepEqual(childRefs(graph, 'work.vexstream.mobile-library.outcome'), [
     'work.vexstream.mobile-library.download-experience',
     'work.vexstream.mobile-library.durable-device-library',
+    'work.vexstream.mobile-library.duration-filter',
     'work.vexstream.mobile-library.massdownload-maturity',
   ]);
 
@@ -57,7 +58,7 @@ test('Mobile Library Board separates terminal MassDownload from the paused Queue
   const active = board.lanes.find((lane) => lane.laneRef === 'lane.work.active');
   const waiting = board.lanes.find((lane) => lane.laneRef === 'lane.work.waiting');
 
-  assert.equal(board.lanes.flatMap((lane) => lane.cards).length, 12);
+  assert.equal(board.lanes.flatMap((lane) => lane.cards).length, 13);
   assert.equal(done.cards.some((card) => card.workRef === 'work.vexstream.mobile-library.massdownload-product'), true);
   assert.equal(done.cards.some((card) => card.workRef === 'work.vexstream.mobile-library.massdownload-e2e'), true);
   assert.equal(active.cards.some((card) => card.workRef === 'work.vexstream.mobile-library.track-menu-presentation-defect'), false);
@@ -67,6 +68,24 @@ test('Mobile Library Board separates terminal MassDownload from the paused Queue
   assert.equal(queueIncident.workDisposition, 'ACTIVE');
   assert.equal(queueIncident.authorityDisposition, 'AUTHORIZED_BOUNDED');
   assert.equal(queueIncident.effectDisposition, 'NO_EFFECTS');
+});
+
+test('duration-aware song filtering is admitted as decomposed Android feature work', () => {
+  const item = graph.items.find((candidate) => candidate.workRef === 'work.vexstream.mobile-library.duration-filter');
+  assert.ok(item);
+  assert.equal(item.parentWorkRefOrNull, 'work.vexstream.mobile-library.outcome');
+  assert.equal(item.workClass, 'TASK');
+  assert.equal(item.state, 'DECOMPOSED');
+  assert.equal(item.workDisposition, 'ACTIVE');
+  assert.equal(item.authorityDisposition, 'AUTHORIZED_BOUNDED');
+  assert.equal(item.effectDisposition, 'EFFECTS_BOUND');
+  assert.deepEqual(item.repositoryRefs, ['repo.vexlife-android']);
+  assert.equal(item.sourceRefs.includes('repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt'), true);
+  assert.equal(item.sourceRefs.includes('repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamLibraryProjection.kt'), true);
+
+  const board = projectWorkBoard({ project, graph, view, registry });
+  const intake = board.lanes.find((lane) => lane.laneRef === 'lane.work.intake');
+  assert.equal(intake.cards.some((card) => card.workRef === item.workRef), true);
 });
 
 test('durable device storage retains source authority while waiting on reusable Android proof orchestration', () => {
@@ -129,5 +148,7 @@ test('Mobile Library Project keeps a human audit/decision front door beside grap
   assert.match(readme, /VexLife-Android issue #157/);
   assert.match(readme, /DEVICE_STORAGE_READY/);
   assert.match(readme, /Android target orchestration is a reusable dependency/);
+  assert.match(readme, /ML-D9 — Duration is a listening lens, not track or playlist identity/);
+  assert.match(readme, /work\.vexstream\.mobile-library\.duration-filter/);
   assert.match(readme, /Known VexWork modeling gap/);
 });
