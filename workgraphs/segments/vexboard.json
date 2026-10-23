@@ -58,7 +58,7 @@
       "label": "BoardGraph semantic contract",
       "purpose": "Form the smallest reusable semantic graph contract for scenes, controls, processes, decisions, artifacts, containers, portals, references, relationships, modules, ports, source bindings and validation without making canvas coordinates canonical meaning.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
@@ -82,7 +82,7 @@
       ],
       "nextProcessRefs": [],
       "createdAt": "2026-10-23T00:14:29.000Z",
-      "updatedAt": "2026-10-23T02:59:44.000Z"
+      "updatedAt": "2026-10-23T07:52:13.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -91,7 +91,7 @@
       "label": "Read-only canvas and recursive navigation",
       "purpose": "Project BoardGraph meaning into a deterministic, stable, zoomable and pannable canvas with semantic shapes, connectors, focus, minimap, inline expansion, portal entry and collapse while keeping camera position separate from semantic position.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "READY",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexboard.boardgraph-contract"
@@ -108,7 +108,7 @@
       ],
       "nextProcessRefs": [],
       "createdAt": "2026-10-23T00:14:29.000Z",
-      "updatedAt": "2026-10-23T00:14:29.000Z"
+      "updatedAt": "2026-10-23T07:52:14.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -208,6 +208,50 @@
         "projects/vexboard/README.md"
       ],
       "createdAt": "2026-10-23T02:59:44.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.boardgraph-contract.verifying.pr66-terminal",
+      "workRef": "work.vexboard.boardgraph-contract",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "PR #66 merged at the exact semantically-cleared BoardGraph head after SourceOwner, Independent Assurance and LifecycleCurrentness; terminal post-merge evidence is current.",
+      "actorRef": "actor.chatgpt.vexboard.boardgraph-foundation",
+      "sourceRefs": [
+        "github.pull.vexwork.66",
+        "git.commit.vexwork.1f19e70a397baab1f5d995bacc2358372b93563e"
+      ],
+      "createdAt": "2026-10-23T07:52:12.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.boardgraph-contract.completed.pr66-terminal",
+      "workRef": "work.vexboard.boardgraph-contract",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "The PR #66 merge tree exactly matches the cleared BoardGraph candidate and terminal PostMergeVerification A003 PASS was consumed; the shared-control foundation is accepted.",
+      "actorRef": "actor.chatgpt.vexboard.boardgraph-foundation",
+      "sourceRefs": [
+        "github.pull.vexwork.66",
+        "git.commit.vexwork.1f19e70a397baab1f5d995bacc2358372b93563e",
+        "relay.return.vexboard.pr66.post-merge.a003.3af5b26b237e1b8f597c9c14844109db9bf2bb8f62717714f9c6ea71316b83c4"
+      ],
+      "createdAt": "2026-10-23T07:52:13.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.canvas-projection.ready.boardgraph-pr66",
+      "workRef": "work.vexboard.canvas-projection",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "The BoardGraph dependency is completed at the exact merged and post-merge-verified source, releasing the read-only canvas and recursive-navigation frontier. Readiness does not grant implementation authority.",
+      "actorRef": "actor.chatgpt.vexboard.boardgraph-foundation",
+      "sourceRefs": [
+        "work.vexboard.boardgraph-contract",
+        "github.pull.vexwork.66",
+        "git.commit.vexwork.1f19e70a397baab1f5d995bacc2358372b93563e"
+      ],
+      "createdAt": "2026-10-23T07:52:14.000Z"
     }
   ],
   "sourceRefs": [

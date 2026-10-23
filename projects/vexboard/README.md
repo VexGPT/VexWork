@@ -3062,15 +3062,19 @@ Exact Work states, dependencies, authority/effect dispositions, transition histo
 ## Current continuation
 
 ```text
-architecture source                         CURRENT
-canonical Project + Workgraph + Board       CURRENT
-public Projects projection                  CURRENT
-prime Project-formation regression case     SOURCE-PLACED
+architecture source                                  CURRENT
+canonical Project + Workgraph + Board                CURRENT
+public Projects projection                           CURRENT
+prime Project-formation regression case              SOURCE-PLACED
+BoardGraph + shared Board Control foundation         MERGED / VERIFIED / COMPLETED
+self-hosted blank-canvas proving ground              MERGED / VERIFIED
 
-next product frontier
--> BoardGraph semantic contract + shared Board Control contract
--> first blank-canvas human/AI toolkit proving ground
-   create / move / resize / layer / explicit containment / connect / export-reload
+next Workgraph frontier
+-> Read-only canvas and recursive navigation         READY / NO_AUTHORITY / NO_EFFECTS
+   deterministic canvas projection / pan / zoom / minimap / focus
+   inline expansion / collapse / portal entry / bounded model-facing board query
+
+then
 -> spatial arrangement + connector-routing proving ground
    stable scale / local occupancy / obstacle avoidance / incremental reflow / fractal expansion
 -> relational direction navigation proving ground
@@ -3091,11 +3095,10 @@ next product frontier
    path closure / open ends / incomplete branches / warnings / immutable release fingerprint
 -> target blueprint compiler proving ground
    published Board -> target-native implementation plan/candidate without stealing target ownership
--> use authored website patient zero + prime source-projection case
-   to earn the smallest reusable graph/schema vocabulary
--> use BoardProjection geometry as addressable spatial truth without making coordinates semantic identity
--> keep case labels and exact tool/schema names provisional until implementation proves the right storage shape
--> separately establish implementation authority and source membrane before product-source mutation
+
+Implementation authority remains separate from Workgraph readiness.
+The Canvas Projection item is READY because its BoardGraph dependency is complete;
+it remains NO_AUTHORITY / NO_EFFECTS until Victor or another exact current authority grants that implementation membrane.
 ```
 
 No human host action is required to preserve this design.
