@@ -72,6 +72,48 @@ Verify -> Done
 
 can require the three-way handshake.
 
+### Review meaningful promises, not every implementation step
+
+Project Agency Policy v2 may scope one handshake boundary to meaningful work rather than forcing every task through human review.
+
+```json
+{
+  "boundaryRef": "boundary.example.verify-done",
+  "fromLaneRef": "lane.work.verify",
+  "toLaneRef": "lane.work.done",
+  "appliesTo": {
+    "workClasses": ["OUTCOME"],
+    "workRefs": ["work.example.user-facing-story"]
+  }
+}
+```
+
+When `appliesTo` is present, the boundary applies when the current Work item matches **either** a listed `workClass` or an explicitly listed `workRef`. This supports the common pattern:
+
+```text
+implementation TASK
+  deterministic/source proof complete
+  -> may complete autonomously when Project policy permits
+
+meaningful OUTCOME / explicitly reviewable user-facing TASK
+  implementation is ready
+  -> VERIFYING
+  -> human lives/reviews the promise
+  -> ACK_APPROVED -> Done
+     ACK_FEEDBACK / ACK_HOLD -> transition holds
+```
+
+The v1 policy schema remains unchanged and continues to apply each configured boundary to all Project work. Scoped boundaries require `vexwork.project-agency-policy/v2`.
+
+This is deliberately a Project stewardship choice, not a new global lifecycle state:
+
+```text
+DEV_SOURCE_COMPLETE != HUMAN_ACCEPTED
+HUMAN_REVIEW_REQUIRED != EVERY_TASK_NEEDS_HUMAN_REVIEW
+VERIFYING = promise/proof under review
+DONE = configured completion boundary satisfied
+```
+
 The Board lane is the human phase language; WorkState remains canonical lifecycle truth.
 
 ## Exact binding

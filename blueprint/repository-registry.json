@@ -1,7 +1,7 @@
 {
   "schemaVersion": "vexwork.repository-registry/v1",
   "registryRef": "registry.vexwork.repositories.001",
-  "registryVersion": 1,
+  "registryVersion": 3,
   "purpose": "Public/source-safe navigation graph for repositories VexWork may reference. Repository entries point to current owner sources; they do not consolidate repository culture or create source authority.",
   "repositories": [
     {
@@ -11,8 +11,14 @@
       "nameWithOwner": "VexGPT/VexWork",
       "visibility": "PUBLIC",
       "purpose": "Portable work/project graph, projections, repository relations and provider-adapter foundation.",
-      "entryRefs": ["README.md", "AGENTS.md", "docs/foundation/INDEX.md"],
-      "cultureRefs": ["docs/CULTURE.md"]
+      "entryRefs": [
+        "README.md",
+        "AGENTS.md",
+        "docs/foundation/INDEX.md"
+      ],
+      "cultureRefs": [
+        "docs/CULTURE.md"
+      ]
     },
     {
       "repositoryRef": "repo.vextreme",
@@ -21,8 +27,26 @@
       "nameWithOwner": "vgong24/Vextreme",
       "visibility": "PUBLIC",
       "purpose": "Public Vextreme institutional template and public interface.",
-      "entryRefs": ["README.md", "CLAUDE.md", "docs/continuity/INDEX.md"],
-      "cultureRefs": ["docs/culture.md"]
+      "entryRefs": [
+        "README.md",
+        "CLAUDE.md",
+        "docs/continuity/INDEX.md"
+      ],
+      "cultureRefs": [
+        "docs/culture.md"
+      ]
+    },
+    {
+      "repositoryRef": "repo.vextreme-sdk",
+      "label": "Vextreme SDK",
+      "provider": "GITHUB",
+      "nameWithOwner": "vgong24/Vextreme-SDK",
+      "visibility": "PRIVATE",
+      "purpose": "Private reusable observation, mapping, construction, proof and interoperability machinery consumed by VexLife Blueprint work; public VexWork carries boundary-level navigation only.",
+      "entryRefs": [
+        "CLAUDE.md"
+      ],
+      "cultureRefs": []
     },
     {
       "repositoryRef": "repo.vexlife",
@@ -31,8 +55,13 @@
       "nameWithOwner": "vgong24/VexLife",
       "visibility": "PUBLIC",
       "purpose": "VexLife product integration repository.",
-      "entryRefs": ["AGENTS.md"],
-      "cultureRefs": ["docs/CULTURE.md", "docs/FOUNDATION-CULTURE-IMPLEMENTATION-STANDARD.md"]
+      "entryRefs": [
+        "AGENTS.md"
+      ],
+      "cultureRefs": [
+        "docs/CULTURE.md",
+        "docs/FOUNDATION-CULTURE-IMPLEMENTATION-STANDARD.md"
+      ]
     },
     {
       "repositoryRef": "repo.vexlife-android",
@@ -41,8 +70,47 @@
       "nameWithOwner": "vgong24/VexLife-Android",
       "visibility": "PUBLIC",
       "purpose": "Standalone native Android companion implementation for VexLife.",
-      "entryRefs": ["README.md", "AGENTS.md", "docs/foundation/INDEX.md"],
-      "cultureRefs": ["docs/CULTURE.md"]
+      "entryRefs": [
+        "README.md",
+        "AGENTS.md",
+        "docs/foundation/INDEX.md"
+      ],
+      "cultureRefs": [
+        "docs/CULTURE.md"
+      ]
+    },
+    {
+      "repositoryRef": "repo.vexstream-music",
+      "label": "VexStream Music",
+      "provider": "GITHUB",
+      "nameWithOwner": "vgong24/VexstreamMusic",
+      "visibility": "PUBLIC",
+      "purpose": "Local-first desktop music library/player and real Desktop producer for bounded VexLife Android streaming and verified offline-copy integration.",
+      "entryRefs": [
+        "README.md",
+        "v2/README.md",
+        "v2/architecture/README.md"
+      ],
+      "cultureRefs": [
+        "v2/README.md",
+        "v2/architecture/README.md"
+      ]
+    },
+    {
+      "repositoryRef": "repo.vexlife-construction-reference",
+      "label": "VexLife Construction Reference",
+      "provider": "GITHUB",
+      "nameWithOwner": "VexGPT/VexLife-Construction-Reference",
+      "visibility": "PUBLIC",
+      "purpose": "Derived clean-room C#/.NET construction and proof surface for VexLife meaning; canonical product semantics remain externally owned.",
+      "entryRefs": [
+        "README.md",
+        "AGENTS.md",
+        "docs/foundation/INDEX.md"
+      ],
+      "cultureRefs": [
+        "docs/CULTURE.md"
+      ]
     }
   ]
 }

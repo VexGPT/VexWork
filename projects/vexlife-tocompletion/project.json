@@ -8,7 +8,8 @@
   ],
   "repositoryRefs": [
     "repo.vexwork",
-    "repo.vexlife"
+    "repo.vexlife",
+    "repo.vextreme-sdk"
   ],
   "sourceRefs": [
     "github.issue.vexlife.866",

@@ -219,6 +219,167 @@ The experiment does **not** yet establish a generic `VexTerrain` foundation. Reu
 
 The currentness/flow layer is a dependency-gated successor. It will add current work, recent accepted transitions, recent completion and dependency-based newly-available work only after traversal semantics are stable; provider activity and incomplete transition-history coverage must never be presented as canonical progress.
 
+### Lived correction — depth is perceptual, not navigational
+
+The first browser patient-zero made one architectural mistake visible:
+
+```text
+WRONG
+focus node + radial neighbors
+wheel -> another semantic node
+depth rail -> breadcrumb/navigation
+
+CORRECT DIRECTION
+one stable organized field
+children already latent/visible inside their parent region
+zoom/scroll -> more semantic level-of-detail
+click/search -> optional explicit repositioning
+dependency/search/back -> explicit traversal continuity when provenance matters
+```
+
+The base Terrain should optimize for calm reading before interaction:
+
+- Projects occupy stable bands rather than orbiting a central workspace card.
+- A Project band previews its next structural layer before the human descends.
+- Deeper containment expands in-place while ancestors and siblings remain compressed context.
+- Long purpose text is secondary; identity, state and trajectory structure lead.
+- Dependency/cross-project relationships appear contextually on focus or explicit inspection rather than as permanent connector lines.
+- Camera depth changes presentation only. It does not append Journey history or silently change canonical work position.
+- Explicit search, dependency jumps, Back and Revisit may still use Navigation Continuity because those are real semantic jumps.
+
+This preserves AI-readable provenance without making the human UI look like the traversal engine's internal graph.
+
+### Live roadmap — sequence before time
+
+The perceptual Terrain should surface concurrency before forcing a human to descend:
+
+```text
+PROJECT
+  workfront A   prior -> NOW -> next
+  workfront B   prior -> NOW -> next
+  workfront C           REVIEW / BLOCKED
+```
+
+Vertical position means concurrent workfronts. Horizontal position means continuity through one workfront. Project height may therefore grow with meaningful concurrency, while independent fold state lets a viewer collapse Projects they are not watching.
+
+The default Terrain answers **what is happening now**. A time lens may widen context without hiding current work:
+
+```text
+NOW
+6H
+24H
+7D
+```
+
+Only accepted transition timestamps establish recent lifecycle movement. Snapshot `updatedAt` may be shown as weaker state-age coverage, but must not be treated as transition truth.
+
+A sibling Roadmap presentation answers a different question:
+
+> **How many admitted sequence steps away is later work?**
+
+It projects:
+
+```text
+NOW | +1 | +2 | +3 | LATER / PARALLEL
+```
+
+Dependency-grounded sequence is solid. Structural or admitted later work whose exact order is not dependency-grounded is dotted.
+
+Permanent:
+
+```text
+SEQUENCE_DISTANCE != ELAPSED_TIME
+ROADMAP_STEP != DAY
+ROADMAP_STEP != ETA
+DEPENDENCY_PATH != CALENDAR_COMMITMENT
+PROJECTED_LATER != PROMISED_ORDER
+```
+
+The first roadmap should therefore answer:
+
+```text
+what is being worked now?
+what can follow it directly?
+what is two or three dependency steps away?
+what admitted work exists later but is not sequenced from this frontier?
+```
+
+without inventing dates.
+
+### Measuring AI-carried work
+
+AI-heavy work creates useful measurements, but wall-clock averages alone are misleading because work shape, provider latency, human relay, review loops and fresh-instance handoffs vary.
+
+The more stable first measurements are:
+
+```text
+dependency / sequence depth
+fresh session count
+participant count
+continuity handoff count
+review-cycle count
+accepted lifecycle transition count
+human/host waiting intervals
+```
+
+Work Participation provides the identity grammar for sessions/participants/handoffs, but live runtime instrumentation is still required before those counts become real operational evidence.
+
+If later evidence becomes dense enough, VexWork may derive empirical effort bands such as:
+
+```text
+similar TASK shape
+  usually 1-2 sessions
+  usually 0-1 human relay holds
+  usually one review cycle
+```
+
+That remains an effort/interaction expectation, not a promised completion timestamp.
+
+This distinction also survives the transition from Victor acting as a human relay to future Vex automation:
+
+```text
+SEQUENCE MODEL
+  remains useful
+
+AI / executor effort
+  sessions + handoffs + review cycles
+
+human relay latency
+  separate waiting dimension
+
+future Vex automation
+  may reduce relay latency
+  does not rewrite historical sequence truth
+```
+
+### Flows pressure — VexWork must not block the work it describes
+
+The same lived cycle exposed a separate source-authoring pressure. Current independent drafts #19 (VexStream Mobile Library), #27 (VexLife ToCompletion) and #35 (VexLife Blueprint Source of Truth) all carry different product meaning yet each touches the same aggregate VexWork paths:
+
+```text
+workgraphs/public.json
+public/workspace.json
+test/workgraph.test.mjs
+```
+
+The collision is physical-source coupling, not evidence that those trajectories share one implementation owner.
+
+Permanent direction:
+
+```text
+ONE_SEMANTIC_WORKGRAPH != ONE_AUTHORED_FILE
+VEXWORK_RECONCILIATION != PRODUCT_EXECUTION_BLOCKER
+UI_REFINEMENT != SHARED_WORKGRAPH_WRITE
+NO_MATERIAL_WORK_CHANGE -> NO_REQUIRED_WORKGRAPH_CHURN
+TRACEABILITY_LAG != LICENSE_TO_INVENT_CURRENTNESS
+```
+
+Product/source lanes should continue inside their rightful repositories when their real dependencies and authority allow it. VexWork Flows may reconcile a material checkpoint separately rather than forcing the product lane to wait on an aggregate-file conflict.
+
+This does not yet choose a source-segmentation schema, distributed runtime, or new work-state ontology. The observed need is narrower: preserve one canonical Workgraph while allowing independent work families to author/reconcile without routine aggregate-file contention. The smallest implementation should be earned from that pressure.
+
+The perceptual-depth Terrain correction deliberately follows this rule: it changes Terrain presentation and its focused UI proof without rewriting the shared Workgraph merely because a UI review produced feedback. Accepted Workgraph currentness may temporarily lag that branch and be reconciled as a separate VexWork Flows effect.
+
 PR #33 has now merged the patient-zero source into accepted VexWork main. T1 therefore sits in `VERIFYING`: the remaining predicate is lived browser/trackpad/compact traversal behavior, not additional source formation.
 
 ## Phase 2 — Patient Zero: VexSite Localization
@@ -460,6 +621,69 @@ The evolution earns its cross-domain completion when the same underlying VexWork
 10. one lived commerce cycle reaches a truthful human physical-fulfillment acknowledgement.
 
 At that point VexWork has demonstrated that it is no longer only a Jira/kanban-shaped work board. It is a reusable console for perceiving, selecting, navigating and carrying different classes of work.
+
+## 2026-10-22 experience threshold and successor return
+
+Victor has lived-reviewed the current Terrain / Roadmap / Lifecycle Workflow surfaces and accepted the design as **good enough to stop foreground experience iteration and return to the Operational Console product trajectory**.
+
+Accepted first-party experience now includes:
+
+```text
+Terrain
+  foldable variable-height Projects
+  concurrent workfront rows
+  Prior | Now | Next continuity
+  Now / 6H / 24H / 7D recent-movement lens
+  state tint + state-age evidence
+  click/search traversal; wheel semantic traversal disabled
+  closable Inspect
+  bounded participation evidence
+
+Roadmap
+  Now | +1 | +2 | +3 | Later / parallel
+  dependency-grounded solid sequence
+  projected/unsequenced dotted future
+  no calendar ETA invention
+
+V1
+  live Lifecycle Workflow Map projected from canonical Work Registry
+  scoped human-review overlays from Project Agency Policy
+  same state-tone families as the V1 board/cards
+```
+
+This is a **product threshold**, not a claim that Terrain can never evolve again. Reopen experience work only for a real regression or new consumer pressure.
+
+The foreground returns to:
+
+```text
+P2 VexSite Localization patient-zero
+  1. page population / scope
+  2. localization / modernization lens
+  3. patient-zero lived proof
+     -> truthfully answer "what remains?"
+     -> coexist with real promoted Work
+
+P3 Operating Domain template
+P4 reusable commerce starter
+P5 Antique Plate lived commerce pilot
+P6 cross-domain completion
+```
+
+### Bounded Workgraph currentness lag
+
+The accepted aggregate Workgraph may still project:
+
+```text
+T1 Relational Terrain patient-zero     VERIFYING
+T2 Currentness and flow Terrain layer  WAITING_DEPENDENCIES
+P2 VexSite patient-zero                READY
+```
+
+That lag is known. It exists because independent drafts #27 and #35 still write the shared aggregate Workgraph/workspace paths, and VexWork Flows deliberately avoids making UI/product progress a coordination blocker.
+
+Do not interpret the stale T1/T2 aggregate states as rejection of the lived threshold above. A future VexWork Flows reconciliation may ordinary-forward the accepted experience checkpoint when the shared aggregate edge is safe. **Do not hold P2 foreground work merely to perform that bookkeeping first.**
+
+The next fresh instance should re-ground current VexWork main and current Vextreme/VexSite evidence, then lead the smallest P2 edge. Vextreme remains the owner of page identity, localization evidence, generated/runtime currentness, modernization facts and browser proof.
 
 ## Current trajectory
 

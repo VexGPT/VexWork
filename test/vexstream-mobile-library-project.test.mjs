@@ -15,10 +15,24 @@ const policy = createProjectAgencyPolicy(read('projects/vexstream-mobile-library
 
 test('VexStream Mobile Library is the first external Project over the shared Workgraph', () => {
   const refs = projectWorkRefs(project, graph);
-  assert.equal(refs.length, 10);
+  assert.equal(refs.length, 12);
   assert.equal(refs.includes('work.vexstream.mobile-library.outcome'), true);
+  assert.equal(refs.includes('work.vexstream.mobile-library.download-experience'), true);
+  assert.equal(refs.includes('work.vexstream.mobile-library.massdownload-maturity'), true);
   assert.equal(refs.includes('work.vexstream.mobile-library.keep-offline-sync'), false);
   assert.equal(project.repositoryRefs.includes('repo.vexlife-android'), true);
+  assert.equal(project.repositoryRefs.includes('repo.vexstream-music'), true);
+  assert.equal(project.sourceRefs.includes('projects/vexstream-mobile-library/README.md'), true);
+  assert.equal(project.sourceRefs.includes('github.pull.vexlife-android.151'), true);
+  assert.equal(project.sourceRefs.includes('github.pull.vexlife-android.155'), true);
+  assert.equal(project.sourceRefs.includes('github.pull.vextreme-sdk.1887'), true);
+  assert.equal(project.sourceRefs.includes('github.issue.vexlife-android.157'), true);
+
+  assert.deepEqual(childRefs(graph, 'work.vexstream.mobile-library.outcome'), [
+    'work.vexstream.mobile-library.download-experience',
+    'work.vexstream.mobile-library.durable-device-library',
+    'work.vexstream.mobile-library.massdownload-maturity',
+  ]);
 
   assert.deepEqual(childRefs(graph, 'work.vexstream.mobile-library.durable-device-library'), [
     'work.vexstream.mobile-library.clear-data-proof',
@@ -26,22 +40,55 @@ test('VexStream Mobile Library is the first external Project over the shared Wor
     'work.vexstream.mobile-library.private-download-migration',
     'work.vexstream.mobile-library.rediscovery',
   ]);
-  assert.deepEqual(childRefs(graph, 'work.vexstream.mobile-library.massdownload-e2e'), [
+  assert.deepEqual(childRefs(graph, 'work.vexstream.mobile-library.download-experience'), [
+    'work.vexstream.mobile-library.contextual-download-missing',
+  ]);
+  assert.deepEqual(childRefs(graph, 'work.vexstream.mobile-library.massdownload-maturity'), [
+    'work.vexstream.mobile-library.massdownload-e2e',
+    'work.vexstream.mobile-library.massdownload-product',
     'work.vexstream.mobile-library.track-menu-presentation-defect',
   ]);
+  assert.deepEqual(childRefs(graph, 'work.vexstream.mobile-library.massdownload-e2e'), []);
 });
 
-test('Mobile Library Board preserves current truth without pretending unknown proof work is active', () => {
+test('Mobile Library Board separates terminal MassDownload from the paused Queue checkpoint', () => {
   const board = projectWorkBoard({ project, graph, view, registry });
-  const intake = board.lanes.find((lane) => lane.laneRef === 'lane.work.intake');
   const done = board.lanes.find((lane) => lane.laneRef === 'lane.work.done');
   const active = board.lanes.find((lane) => lane.laneRef === 'lane.work.active');
+  const waiting = board.lanes.find((lane) => lane.laneRef === 'lane.work.waiting');
 
-  assert.equal(board.lanes.flatMap((lane) => lane.cards).length, 10);
+  assert.equal(board.lanes.flatMap((lane) => lane.cards).length, 12);
   assert.equal(done.cards.some((card) => card.workRef === 'work.vexstream.mobile-library.massdownload-product'), true);
-  assert.equal(intake.cards.some((card) => card.workRef === 'work.vexstream.mobile-library.massdownload-e2e'), true);
-  assert.equal(intake.cards.some((card) => card.workRef === 'work.vexstream.mobile-library.track-menu-presentation-defect'), true);
-  assert.equal(active.cards.length, 0);
+  assert.equal(done.cards.some((card) => card.workRef === 'work.vexstream.mobile-library.massdownload-e2e'), true);
+  assert.equal(active.cards.some((card) => card.workRef === 'work.vexstream.mobile-library.track-menu-presentation-defect'), false);
+  assert.equal(waiting.cards.some((card) => card.workRef === 'work.vexstream.mobile-library.track-menu-presentation-defect'), true);
+  const queueIncident = waiting.cards.find((card) => card.workRef === 'work.vexstream.mobile-library.track-menu-presentation-defect');
+  assert.equal(queueIncident.state, 'PAUSED_AT_CHECKPOINT');
+  assert.equal(queueIncident.workDisposition, 'ACTIVE');
+  assert.equal(queueIncident.authorityDisposition, 'AUTHORIZED_BOUNDED');
+  assert.equal(queueIncident.effectDisposition, 'NO_EFFECTS');
+});
+
+test('durable device storage is Active after the approved exact handshake', () => {
+  const item = graph.items.find((candidate) => candidate.workRef === 'work.vexstream.mobile-library.device-storage');
+  assert.ok(item);
+  assert.equal(item.state, 'RUNNING');
+  assert.equal(item.workDisposition, 'ACTIVE');
+  assert.equal(item.authorityDisposition, 'AUTHORIZED_BOUNDED');
+  assert.equal(item.effectDisposition, 'EFFECTS_BOUND');
+  assert.equal(item.sourceRefs.includes('github.issue.vexlife-android.157'), true);
+
+  const board = projectWorkBoard({ project, graph, view, registry });
+  const active = board.lanes.find((lane) => lane.laneRef === 'lane.work.active');
+  assert.equal(active.cards.some((card) => card.workRef === item.workRef), true);
+  assert.equal(transitionHandshakeRequirement({
+    policy,
+    priorState: 'READY',
+    nextState: 'RUNNING',
+    registry,
+    graph,
+    workRef: item.workRef,
+  }).required, true);
 });
 
 test('persistent Keep Offline remains parked outside Project membership', () => {
@@ -62,4 +109,14 @@ test('Mobile Library agency policy requires human handshake only at meaningful p
   assert.equal(transitionHandshakeRequirement({ policy, priorState: 'RUNNING', nextState: 'WAITING_TOOL', registry }).required, false);
   assert.equal(transitionHandshakeRequirement({ policy, priorState: 'RUNNING', nextState: 'VERIFYING', registry }).required, true);
   assert.equal(transitionHandshakeRequirement({ policy, priorState: 'VERIFYING', nextState: 'COMPLETED', registry }).required, true);
+});
+
+test('Mobile Library Project keeps a human audit/decision front door beside graph truth', () => {
+  const readme = fs.readFileSync(new URL('../projects/vexstream-mobile-library/README.md', import.meta.url), 'utf8');
+  assert.match(readme, /ML-D1 — Preserve exact media identity/);
+  assert.match(readme, /ML-D4 — Contextual Download Missing reuses MassDownload semantics/);
+  assert.match(readme, /ML-D6 — MassDownload product source and terminal EndToEnd proof are different Work/);
+  assert.match(readme, /VexLife-Android issue #157/);
+  assert.match(readme, /DEVICE_STORAGE_READY/);
+  assert.match(readme, /Known VexWork modeling gap/);
 });

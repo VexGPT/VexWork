@@ -1,7 +1,7 @@
 {
   "schemaVersion": "vexwork.public-workspace/v1",
   "projectRegistryRef": "registry.vexwork.projects.001",
-  "projectRegistryVersion": 5,
+  "projectRegistryVersion": 7,
   "projects": [
     {
       "project": {
@@ -554,14 +554,22 @@
         ],
         "repositoryRefs": [
           "repo.vexwork",
-          "repo.vexlife-android"
+          "repo.vexlife-android",
+          "repo.vexstream-music"
         ],
         "sourceRefs": [
           "github.pull.vexlife-android.142",
           "github.issue.vexlife-android.144",
           "repo.vexlife-android:docs/features/README.md",
           "docs/process/FORM-PROJECT.md",
-          "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md"
+          "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md",
+          "projects/vexstream-mobile-library/README.md",
+          "repo.vexstream-music:README.md",
+          "github.pull.vexlife-android.148",
+          "github.pull.vexlife-android.151",
+          "github.pull.vextreme-sdk.1887",
+          "github.pull.vexlife-android.155",
+          "github.issue.vexlife-android.157"
         ],
         "formedAt": "2026-10-21T08:41:00.000Z"
       },
@@ -586,14 +594,15 @@
           ],
           "sourceRefs": [
             "work.vexstream.mobile-library.rediscovery",
-            "repo.vexlife-android:docs/features/FEATURE-WALKS.md"
+            "repo.vexlife-android:docs/features/FEATURE-WALKS.md",
+            "projects/vexstream-mobile-library/README.md"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-21T08:41:00.000Z",
-          "updatedAt": "2026-10-21T08:41:00.000Z",
+          "updatedAt": "2026-10-22T01:32:00.000Z",
           "transitionHistory": []
         },
         {
@@ -604,7 +613,7 @@
           "state": "DECOMPOSED",
           "workDisposition": "ACTIVE",
           "priorityClass": "NORMAL",
-          "parentWorkRefOrNull": "work.vexstream.mobile-library.outcome",
+          "parentWorkRefOrNull": "work.vexstream.mobile-library.download-experience",
           "childWorkRefs": [],
           "dependencyRefs": [
             "work.vexstream.mobile-library.massdownload-product"
@@ -614,7 +623,11 @@
           ],
           "sourceRefs": [
             "github.pull.vexlife-android.142",
-            "github.issue.vexlife-android.144"
+            "github.issue.vexlife-android.144",
+            "projects/vexstream-mobile-library/README.md",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamCollectionPresentation.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/offline/VexStreamOfflineCollection.kt"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [
@@ -623,7 +636,7 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-21T08:41:00.000Z",
-          "updatedAt": "2026-10-21T08:41:00.000Z",
+          "updatedAt": "2026-10-22T01:32:00.000Z",
           "transitionHistory": []
         },
         {
@@ -631,7 +644,7 @@
           "label": "Durable device music storage",
           "purpose": "Establish the Android-native durable media-storage realization while preserving exact trackRef, SHA-256 and byte-length verification.",
           "workClass": "TASK",
-          "state": "CAPTURED",
+          "state": "RUNNING",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vexstream.mobile-library.durable-device-library",
@@ -642,7 +655,15 @@
           ],
           "sourceRefs": [
             "work.vexstream.mobile-library.durable-device-library",
-            "github.pull.vexlife-android.142"
+            "github.pull.vexlife-android.142",
+            "projects/vexstream-mobile-library/README.md",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMediaStore.kt",
+            "github.issue.vexlife-android.157",
+            "repo.vexstream-music:docs/architecture/MOBILE-BRIDGE-V1.md",
+            "repo.vexstream-music:mobile_bridge.go",
+            "repo.vexlife-android:app/src/main/AndroidManifest.xml",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/PairedVexStreamMusicRepository.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [
@@ -651,7 +672,96 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-21T08:41:00.000Z",
-          "updatedAt": "2026-10-21T08:41:00.000Z",
+          "updatedAt": "2026-10-23T00:30:33.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexstream.mobile-library.device-storage.decomposed.20261022",
+              "priorState": "CAPTURED",
+              "nextState": "DECOMPOSED",
+              "reason": "The durable-device outcome is decomposed into shared storage, later rediscovery, private-copy migration, and lived Clear Data proof with separate ownership and dependencies.",
+              "actorRef": "actor.local-vex-operations.vexstream-mobile-library",
+              "sourceRefs": [
+                "github.issue.vexlife-android.157",
+                "projects/vexstream-mobile-library/README.md",
+                "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md"
+              ],
+              "createdAt": "2026-10-23T00:12:00.000Z"
+            },
+            {
+              "transitionRef": "transition.vexstream.mobile-library.device-storage.plan-validated.20261022",
+              "priorState": "DECOMPOSED",
+              "nextState": "PLAN_VALIDATED",
+              "reason": "Android issue 157 binds the source owner, exact base/tree, MediaStore realization, API 24-28 permission boundary, source membrane, failure semantics, and proof plan.",
+              "actorRef": "actor.local-vex-operations.vexstream-mobile-library",
+              "sourceRefs": [
+                "github.issue.vexlife-android.157",
+                "projects/vexstream-mobile-library/README.md",
+                "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md"
+              ],
+              "createdAt": "2026-10-23T00:12:01.000Z"
+            },
+            {
+              "transitionRef": "transition.vexstream.mobile-library.device-storage.ready.20261022",
+              "priorState": "PLAN_VALIDATED",
+              "nextState": "READY",
+              "reason": "Dependencies are clear, no active source collision was found, and implementation is ready for the protected Ready-to-Active human handshake.",
+              "actorRef": "actor.local-vex-operations.vexstream-mobile-library",
+              "sourceRefs": [
+                "github.issue.vexlife-android.157",
+                "projects/vexstream-mobile-library/README.md",
+                "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md"
+              ],
+              "createdAt": "2026-10-23T00:12:02.000Z"
+            },
+            {
+              "transitionRef": "transition.vexstream.mobile-library.device-storage.running.20261022",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "Victor approved the exact Ready-to-Active envelope; implementation may now proceed inside the already-authorized issue-157 storage membrane.",
+              "actorRef": "actor.local-vex-operations.vexstream-mobile-library",
+              "sourceRefs": [
+                "github.issue.vexlife-android.157",
+                "projects/vexstream-mobile-library/README.md",
+                "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md",
+                "proposal.vexstream.mobile-library.device-storage.ready-active.20261022a",
+                "response.victor.vexstream.mobile-library.device-storage.ready-active.20261022a",
+                "confirmation.local-vex-operations.vexstream.device-storage.ready-active.20261022a"
+              ],
+              "createdAt": "2026-10-23T00:30:33.000Z"
+            }
+          ]
+        },
+        {
+          "workRef": "work.vexstream.mobile-library.download-experience",
+          "label": "Contextual Download Experience",
+          "purpose": "Make existing one-shot VexStream download intent reachable from the listener's current music context with truthful missing counts and phone-constrained presentation, without creating another download engine.",
+          "workClass": "OUTCOME",
+          "state": "DECOMPOSED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vexstream.mobile-library.outcome",
+          "childWorkRefs": [
+            "work.vexstream.mobile-library.contextual-download-missing"
+          ],
+          "dependencyRefs": [
+            "work.vexstream.mobile-library.massdownload-product"
+          ],
+          "repositoryRefs": [
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "projects/vexstream-mobile-library/README.md",
+            "github.pull.vexlife-android.142",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/offline/VexStreamOfflineCollection.kt"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [
+            "process.vexlife-android.feature-authoring"
+          ],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T01:32:00.000Z",
+          "updatedAt": "2026-10-22T01:32:00.000Z",
           "transitionHistory": []
         },
         {
@@ -675,7 +785,11 @@
           ],
           "sourceRefs": [
             "work.vexstream.mobile-library.outcome",
-            "github.pull.vexlife-android.142"
+            "github.pull.vexlife-android.142",
+            "projects/vexstream-mobile-library/README.md",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMediaStore.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamOfflineIndex.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/PairedVexStreamMusicRepository.kt"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [
@@ -684,37 +798,76 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-21T08:41:00.000Z",
-          "updatedAt": "2026-10-21T08:41:00.000Z",
+          "updatedAt": "2026-10-22T01:32:00.000Z",
           "transitionHistory": []
         },
         {
           "workRef": "work.vexstream.mobile-library.massdownload-e2e",
           "label": "MassDownload terminal EndToEnd",
-          "purpose": "Bind the current live MassDownload EndToEnd proof trajectory to durable work identity and finish its terminal route only after its actual current proof owner is freshly re-grounded.",
+          "purpose": "Preserve the terminal accepted three-track MassDownload EndToEnd outcome across Android and SDK proof ownership without absorbing the separate Queue/Track-menu incident.",
           "workClass": "TASK",
-          "state": "CAPTURED",
+          "state": "COMPLETED",
           "workDisposition": "ACTIVE",
           "priorityClass": "NORMAL",
-          "parentWorkRefOrNull": "work.vexstream.mobile-library.outcome",
-          "childWorkRefs": [
-            "work.vexstream.mobile-library.track-menu-presentation-defect"
-          ],
+          "parentWorkRefOrNull": "work.vexstream.mobile-library.massdownload-maturity",
+          "childWorkRefs": [],
           "dependencyRefs": [
             "work.vexstream.mobile-library.massdownload-product"
           ],
           "repositoryRefs": [
-            "repo.vexlife-android"
+            "repo.vexlife-android",
+            "repo.vexstream-music"
           ],
           "sourceRefs": [
-            "github.pull.vexlife-android.142",
-            "repo.vexlife-android:docs/features/FEATURE-WALKS.md"
+            "github.pull.vexlife-android.148",
+            "github.pull.vextreme-sdk.1887",
+            "github.pull.vextreme-sdk.1887.comment.6334088788",
+            "github.issue.vextreme-sdk.418.comment.6334089437",
+            "projects/vexstream-mobile-library/README.md"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [],
-          "authorityDisposition": "HELD_UNKNOWN",
-          "effectDisposition": "HELD_UNKNOWN",
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-21T08:41:00.000Z",
-          "updatedAt": "2026-10-21T08:41:00.000Z",
+          "updatedAt": "2026-10-22T06:41:27.006Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexstream.mobile-library.massdownload-maturity",
+          "label": "MassDownload Maturity",
+          "purpose": "Keep accepted MassDownload product source and terminal EndToEnd proof as completed truth while the independently owned Queue/Track-menu intermittency remains visible as open causal work.",
+          "workClass": "OUTCOME",
+          "state": "DECOMPOSED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexstream.mobile-library.outcome",
+          "childWorkRefs": [
+            "work.vexstream.mobile-library.massdownload-e2e",
+            "work.vexstream.mobile-library.massdownload-product",
+            "work.vexstream.mobile-library.track-menu-presentation-defect"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexlife-android",
+            "repo.vexstream-music"
+          ],
+          "sourceRefs": [
+            "projects/vexstream-mobile-library/README.md",
+            "github.pull.vexlife-android.142",
+            "github.pull.vexlife-android.148",
+            "github.pull.vexlife-android.151",
+            "github.pull.vextreme-sdk.1887",
+            "repo.vexstream-music:README.md"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [
+            "process.vexlife-android.feature-authoring"
+          ],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T01:32:00.000Z",
+          "updatedAt": "2026-10-22T06:41:27.000Z",
           "transitionHistory": []
         },
         {
@@ -725,7 +878,7 @@
           "state": "COMPLETED",
           "workDisposition": "ACTIVE",
           "priorityClass": "NORMAL",
-          "parentWorkRefOrNull": "work.vexstream.mobile-library.outcome",
+          "parentWorkRefOrNull": "work.vexstream.mobile-library.massdownload-maturity",
           "childWorkRefs": [],
           "dependencyRefs": [],
           "repositoryRefs": [
@@ -733,14 +886,15 @@
           ],
           "sourceRefs": [
             "github.pull.vexlife-android.142",
-            "github.commit.vexlife-android.83133896f0ccfa664824789aa9682647b2e8724a"
+            "github.commit.vexlife-android.83133896f0ccfa664824789aa9682647b2e8724a",
+            "projects/vexstream-mobile-library/README.md"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-21T08:41:00.000Z",
-          "updatedAt": "2026-10-21T08:41:00.000Z",
+          "updatedAt": "2026-10-22T01:32:00.000Z",
           "transitionHistory": []
         },
         {
@@ -753,19 +907,20 @@
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": null,
           "childWorkRefs": [
-            "work.vexstream.mobile-library.contextual-download-missing",
+            "work.vexstream.mobile-library.download-experience",
             "work.vexstream.mobile-library.durable-device-library",
-            "work.vexstream.mobile-library.massdownload-e2e",
-            "work.vexstream.mobile-library.massdownload-product"
+            "work.vexstream.mobile-library.massdownload-maturity"
           ],
           "dependencyRefs": [],
           "repositoryRefs": [
-            "repo.vexlife-android"
+            "repo.vexlife-android",
+            "repo.vexstream-music"
           ],
           "sourceRefs": [
             "github.pull.vexlife-android.142",
             "github.issue.vexlife-android.144",
-            "repo.vexlife-android:docs/features/README.md"
+            "repo.vexlife-android:docs/features/README.md",
+            "projects/vexstream-mobile-library/README.md"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [
@@ -774,7 +929,7 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-21T08:41:00.000Z",
-          "updatedAt": "2026-10-21T08:41:00.000Z",
+          "updatedAt": "2026-10-22T01:32:00.000Z",
           "transitionHistory": []
         },
         {
@@ -795,7 +950,9 @@
           ],
           "sourceRefs": [
             "github.pull.vexlife-android.142",
-            "work.vexstream.mobile-library.device-storage"
+            "work.vexstream.mobile-library.device-storage",
+            "projects/vexstream-mobile-library/README.md",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMediaStore.kt"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [
@@ -804,7 +961,7 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-21T08:41:00.000Z",
-          "updatedAt": "2026-10-21T08:41:00.000Z",
+          "updatedAt": "2026-10-22T01:32:00.000Z",
           "transitionHistory": []
         },
         {
@@ -825,7 +982,9 @@
           ],
           "sourceRefs": [
             "work.vexstream.mobile-library.durable-device-library",
-            "github.pull.vexlife-android.142"
+            "github.pull.vexlife-android.142",
+            "projects/vexstream-mobile-library/README.md",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamOfflineIndex.kt"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [
@@ -834,18 +993,18 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-21T08:41:00.000Z",
-          "updatedAt": "2026-10-21T08:41:00.000Z",
+          "updatedAt": "2026-10-22T01:32:00.000Z",
           "transitionHistory": []
         },
         {
           "workRef": "work.vexstream.mobile-library.track-menu-presentation-defect",
           "label": "Track-menu presentation intermittency",
-          "purpose": "Preserve the reported Add to queue / Track-menu presentation symptom from the ongoing proof lane, but require fresh live-source classification before any repair is authorized.",
+          "purpose": "Preserve the still-unexplained historical Add-to-queue / Track-menu intermittency after eight fresh accepted-current Queue evaluations produced eight passes and zero matching recurrence; pause foreground causal execution at this checkpoint and resume on matching recurrence or materially new causal evidence.",
           "workClass": "DEFECT",
-          "state": "CAPTURED",
+          "state": "PAUSED_AT_CHECKPOINT",
           "workDisposition": "ACTIVE",
           "priorityClass": "NORMAL",
-          "parentWorkRefOrNull": "work.vexstream.mobile-library.massdownload-e2e",
+          "parentWorkRefOrNull": "work.vexstream.mobile-library.massdownload-maturity",
           "childWorkRefs": [],
           "dependencyRefs": [
             "work.vexstream.mobile-library.massdownload-product"
@@ -854,16 +1013,33 @@
             "repo.vexlife-android"
           ],
           "sourceRefs": [
-            "work.vexstream.mobile-library.massdownload-e2e",
-            "github.pull.vexlife-android.142"
+            "github.pull.vexlife-android.151",
+            "repo.vexlife-android:docs/foundation/test-proof/incidents/TF-INCIDENT-2026-10-21-004.md",
+            "github.pull.vexlife-android.148",
+            "github.pull.vextreme-sdk.1887",
+            "projects/vexstream-mobile-library/README.md",
+            "github.pull.vexlife-android.155"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [],
-          "authorityDisposition": "HELD_UNKNOWN",
-          "effectDisposition": "HELD_UNKNOWN",
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-10-21T08:41:00.000Z",
-          "updatedAt": "2026-10-21T08:41:00.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-10-22T08:35:30.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexstream.mobile-library.track-menu-defect.paused.current-n8-01",
+              "priorState": "RUNNING",
+              "nextState": "PAUSED_AT_CHECKPOINT",
+              "reason": "Eight fresh isolated Queue evaluations on accepted current source produced eight exact queue occurrence #2 passes and zero matching recurrence. Preserve the incident as OPEN_UNEXPLAINED while pausing blind foreground reproduction until recurrence or materially new causal evidence.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vexlife-android.155",
+                "repo.vexlife-android:docs/foundation/test-proof/incidents/TF-INCIDENT-2026-10-21-004.md"
+              ],
+              "createdAt": "2026-10-22T08:35:30.000Z"
+            }
+          ]
         }
       ],
       "lanes": [
@@ -872,14 +1048,13 @@
           "label": "Intake",
           "workRefs": [
             "work.vexstream.mobile-library.clear-data-proof",
-            "work.vexstream.mobile-library.device-storage",
             "work.vexstream.mobile-library.durable-device-library",
+            "work.vexstream.mobile-library.massdownload-maturity",
             "work.vexstream.mobile-library.outcome",
             "work.vexstream.mobile-library.rediscovery",
             "work.vexstream.mobile-library.contextual-download-missing",
-            "work.vexstream.mobile-library.massdownload-e2e",
-            "work.vexstream.mobile-library.private-download-migration",
-            "work.vexstream.mobile-library.track-menu-presentation-defect"
+            "work.vexstream.mobile-library.download-experience",
+            "work.vexstream.mobile-library.private-download-migration"
           ]
         },
         {
@@ -895,12 +1070,16 @@
         {
           "laneRef": "lane.work.active",
           "label": "Active",
-          "workRefs": []
+          "workRefs": [
+            "work.vexstream.mobile-library.device-storage"
+          ]
         },
         {
           "laneRef": "lane.work.waiting",
           "label": "Waiting",
-          "workRefs": []
+          "workRefs": [
+            "work.vexstream.mobile-library.track-menu-presentation-defect"
+          ]
         },
         {
           "laneRef": "lane.work.needs-human",
@@ -921,6 +1100,7 @@
           "laneRef": "lane.work.done",
           "label": "Done",
           "workRefs": [
+            "work.vexstream.mobile-library.massdownload-e2e",
             "work.vexstream.mobile-library.massdownload-product"
           ]
         },
@@ -931,14 +1111,14 @@
         }
       ],
       "summary": {
-        "workItemCount": 10,
-        "openWorkItemCount": 9,
-        "outcomeCount": 2,
+        "workItemCount": 12,
+        "openWorkItemCount": 10,
+        "outcomeCount": 4,
         "taskCount": 7,
         "defectCount": 1,
         "potentialCount": 0,
         "needsHumanCount": 0,
-        "completedCount": 1
+        "completedCount": 2
       },
       "rootItems": [
         {
@@ -951,19 +1131,20 @@
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": null,
           "childWorkRefs": [
-            "work.vexstream.mobile-library.contextual-download-missing",
+            "work.vexstream.mobile-library.download-experience",
             "work.vexstream.mobile-library.durable-device-library",
-            "work.vexstream.mobile-library.massdownload-e2e",
-            "work.vexstream.mobile-library.massdownload-product"
+            "work.vexstream.mobile-library.massdownload-maturity"
           ],
           "dependencyRefs": [],
           "repositoryRefs": [
-            "repo.vexlife-android"
+            "repo.vexlife-android",
+            "repo.vexstream-music"
           ],
           "sourceRefs": [
             "github.pull.vexlife-android.142",
             "github.issue.vexlife-android.144",
-            "repo.vexlife-android:docs/features/README.md"
+            "repo.vexlife-android:docs/features/README.md",
+            "projects/vexstream-mobile-library/README.md"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [
@@ -972,7 +1153,7 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-21T08:41:00.000Z",
-          "updatedAt": "2026-10-21T08:41:00.000Z",
+          "updatedAt": "2026-10-22T01:32:00.000Z",
           "transitionHistory": []
         }
       ]
@@ -987,7 +1168,8 @@
         ],
         "repositoryRefs": [
           "repo.vexwork",
-          "repo.vexlife"
+          "repo.vexlife",
+          "repo.vextreme-sdk"
         ],
         "sourceRefs": [
           "github.issue.vexlife.866",
@@ -1027,7 +1209,8 @@
           "dependencyRefs": [],
           "repositoryRefs": [
             "repo.vexwork",
-            "repo.vexlife"
+            "repo.vexlife",
+            "repo.vextreme-sdk"
           ],
           "sourceRefs": [
             "project.vexlife.tocompletion",
@@ -1042,7 +1225,7 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-22T00:13:43.000Z",
-          "updatedAt": "2026-10-22T01:55:06.000Z",
+          "updatedAt": "2026-10-23T01:01:29.000Z",
           "transitionHistory": []
         },
         {
@@ -1465,14 +1648,16 @@
           "childWorkRefs": [
             "work.vexlife.tocompletion.p5.g02.coder-harness-a055-a056",
             "work.vexlife.tocompletion.p5.g02.sdk-readiness-admission",
-            "work.vexlife.tocompletion.p5.g02.sdk-runner-a057"
+            "work.vexlife.tocompletion.p5.g02.sdk-runner-a057",
+            "work.vexlife.tocompletion.p5.g02.semantic-source-acceptance"
           ],
           "dependencyRefs": [
             "work.vexlife.tocompletion.p4.typed-local-effect"
           ],
           "repositoryRefs": [
             "repo.vexwork",
-            "repo.vexlife"
+            "repo.vexlife",
+            "repo.vextreme-sdk"
           ],
           "sourceRefs": [
             "github.issue.vexlife.866",
@@ -1490,14 +1675,16 @@
             "github.issue.vextreme-sdk.225.comment.6330760587",
             "github.pull.vextreme-sdk.1890",
             "github.issue.vextreme-sdk.1891",
-            "github.issue.vextreme-sdk.225.comment.6332780928"
+            "github.pull.vextreme-sdk.1893",
+            "github.pull.vextreme-sdk.1893.comment.6354725712",
+            "github.pull.vextreme-sdk.1890.comment.6354758722"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-22T01:08:02.000Z",
-          "updatedAt": "2026-10-22T04:32:57.000Z",
+          "updatedAt": "2026-10-23T01:01:29.000Z",
           "transitionHistory": [
             {
               "transitionRef": "transition.vexlife.tocompletion.p5.g02-semantic-authority-materializer.source-claim-running",
@@ -1545,9 +1732,9 @@
         {
           "workRef": "work.vexlife.tocompletion.p5.g02.sdk-readiness-admission",
           "label": "P5 G02 — exact SDK readiness admission",
-          "purpose": "Admit exactly the two new Vex Memory semantic-authority paths into SDK readiness after the current serializer releases, then run the complete-checkout differential proof required before PR #1890 may currentize into exact-head lifecycle review.",
+          "purpose": "Admit exactly the two Vex Memory semantic-authority paths into SDK readiness, prove the frozen PR #1890 consumer against that admission, and release the exact readiness dependency without widening Vex Memory family prefixes.",
           "workClass": "TASK",
-          "state": "WAITING_DEPENDENCIES",
+          "state": "COMPLETED",
           "workDisposition": "ACTIVE",
           "priorityClass": "IMMEDIATE",
           "parentWorkRefOrNull": "work.vexlife.tocompletion.p5.g02-semantic-authority-materializer",
@@ -1557,20 +1744,22 @@
           ],
           "repositoryRefs": [
             "repo.vexwork",
-            "repo.vexlife"
+            "repo.vextreme-sdk"
           ],
           "sourceRefs": [
-            "github.issue.vextreme-sdk.1891",
-            "github.pull.vextreme-sdk.1890",
             "github.pull.vextreme-sdk.1879",
-            "github.issue.vextreme-sdk.225.comment.6332780928"
+            "github.issue.vextreme-sdk.1891",
+            "github.pull.vextreme-sdk.1893",
+            "github.pull.vextreme-sdk.1893.review.5622676991",
+            "github.pull.vextreme-sdk.1893.comment.6354725712",
+            "github.commit.vextreme-sdk.990be7f896e5dcbf2c8af875fe8e3f9cbd464088"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
           "authorityDisposition": "NO_AUTHORITY",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-10-22T03:17:50.000Z",
-          "updatedAt": "2026-10-22T04:32:57.000Z",
+          "updatedAt": "2026-10-23T00:52:34.000Z",
           "transitionHistory": []
         },
         {
@@ -1588,7 +1777,7 @@
           ],
           "repositoryRefs": [
             "repo.vexwork",
-            "repo.vexlife"
+            "repo.vextreme-sdk"
           ],
           "sourceRefs": [
             "github.issue.vextreme-sdk.225.comment.6330760587",
@@ -1603,6 +1792,39 @@
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-22T01:39:00.000Z",
           "updatedAt": "2026-10-22T04:32:57.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.tocompletion.p5.g02.semantic-source-acceptance",
+          "label": "P5 G02 — accept currentized semantic-authority source",
+          "purpose": "Carry currentized Vextreme-SDK PR #1890 through fresh exact-head SourceOwner proof, Independent Assurance and lifecycle acceptance while preserving its four frozen Memory/Safety blobs, then return to the lived G02 Score/continuity path.",
+          "workClass": "TASK",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": "work.vexlife.tocompletion.p5.g02-semantic-authority-materializer",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.tocompletion.p5.g02.sdk-readiness-admission"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme-sdk"
+          ],
+          "sourceRefs": [
+            "github.pull.vextreme-sdk.1890",
+            "github.pull.vextreme-sdk.1890.comment.6354731339",
+            "github.pull.vextreme-sdk.1890.comment.6354758722",
+            "github.pull.vextreme-sdk.1890.comment.6354838390",
+            "github.commit.vextreme-sdk.440f4250ea1c51bc0c670526775277942e9c2af7",
+            "github.pull.vextreme-sdk.1893.comment.6354696183"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-23T00:52:57.000Z",
+          "updatedAt": "2026-10-23T01:01:29.000Z",
           "transitionHistory": []
         },
         {
@@ -1622,7 +1844,8 @@
           ],
           "repositoryRefs": [
             "repo.vexwork",
-            "repo.vexlife"
+            "repo.vexlife",
+            "repo.vextreme-sdk"
           ],
           "sourceRefs": [
             "github.issue.vexlife.866",
@@ -1636,7 +1859,7 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-22T01:08:02.000Z",
-          "updatedAt": "2026-10-22T01:08:02.000Z",
+          "updatedAt": "2026-10-23T01:01:29.000Z",
           "transitionHistory": []
         },
         {
@@ -1711,7 +1934,6 @@
           "laneRef": "lane.work.planned",
           "label": "Planned",
           "workRefs": [
-            "work.vexlife.tocompletion.p5.g02.sdk-readiness-admission",
             "work.vexlife.tocompletion.p6.cultivation-training-birth",
             "work.vexlife.tocompletion.p7.whole-product-expansion"
           ]
@@ -1727,6 +1949,7 @@
           "workRefs": [
             "work.vexlife.tocompletion.outcome",
             "work.vexlife.tocompletion.p5.g02-semantic-authority-materializer",
+            "work.vexlife.tocompletion.p5.g02.semantic-source-acceptance",
             "work.vexlife.tocompletion.p5.lived-continuity-learning"
           ]
         },
@@ -1760,6 +1983,7 @@
             "work.vexlife.tocompletion.p4.source-acceptance",
             "work.vexlife.tocompletion.p4.typed-local-effect",
             "work.vexlife.tocompletion.p5.g02.coder-harness-a055-a056",
+            "work.vexlife.tocompletion.p5.g02.sdk-readiness-admission",
             "work.vexlife.tocompletion.p5.g02.sdk-runner-a057",
             "work.vexlife.tocompletion.p0.research-closure",
             "work.vexlife.tocompletion.p0b.foundation",
@@ -1775,14 +1999,14 @@
         }
       ],
       "summary": {
-        "workItemCount": 18,
+        "workItemCount": 19,
         "openWorkItemCount": 6,
         "outcomeCount": 5,
-        "taskCount": 13,
+        "taskCount": 14,
         "defectCount": 0,
         "potentialCount": 0,
         "needsHumanCount": 0,
-        "completedCount": 12
+        "completedCount": 13
       },
       "rootItems": [
         {
@@ -1808,7 +2032,8 @@
           "dependencyRefs": [],
           "repositoryRefs": [
             "repo.vexwork",
-            "repo.vexlife"
+            "repo.vexlife",
+            "repo.vextreme-sdk"
           ],
           "sourceRefs": [
             "project.vexlife.tocompletion",
@@ -1823,7 +2048,7 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-22T00:13:43.000Z",
-          "updatedAt": "2026-10-22T01:55:06.000Z",
+          "updatedAt": "2026-10-23T01:01:29.000Z",
           "transitionHistory": []
         }
       ]
@@ -3891,6 +4116,935 @@
           ]
         }
       ]
+    },
+    {
+      "project": {
+        "projectRef": "project.vexboard",
+        "label": "VexBoard Semantic Canvas",
+        "purpose": "Let a human and AI design, inspect, traverse, refine, reuse and discuss interactive experiences, processes and systems on one scalable semantic canvas, while allowing the same substrate to project accepted external truth without becoming its second semantic owner.",
+        "rootWorkRefs": [
+          "work.vexboard.outcome"
+        ],
+        "repositoryRefs": [
+          "repo.vexwork"
+        ],
+        "sourceRefs": [
+          "projects/vexboard/README.md",
+          "docs/foundation/PROJECTS.md",
+          "docs/foundation/WORK-BOARD.md",
+          "docs/foundation/PROCESS-MAP.md",
+          "docs/process/FORM-PROJECT.md"
+        ],
+        "formedAt": "2026-10-23T00:14:29.000Z"
+      },
+      "graphRef": "workgraph.vexwork.foundation",
+      "viewRef": "view.vexboard.board",
+      "items": [
+        {
+          "workRef": "work.vexboard.boardgraph-contract",
+          "label": "BoardGraph semantic contract",
+          "purpose": "Form the smallest reusable semantic graph contract for scenes, controls, processes, decisions, artifacts, containers, portals, references, relationships, modules, ports, source bindings and validation without making canvas coordinates canonical meaning.",
+          "workClass": "TASK",
+          "state": "READY",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexboard.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "projects/vexboard/README.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-23T00:14:29.000Z",
+          "updatedAt": "2026-10-23T00:14:29.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexboard.boardjourney-simulation",
+          "label": "Prototype simulation and BoardJourney",
+          "purpose": "Make semantic controls, conditions, overlays, loops, return paths and scenario state traversable without real external effects, preserving a right-side journey stack that distinguishes meaningful traversal from viewport movement.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexboard.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexboard.boardgraph-contract",
+            "work.vexboard.canvas-projection"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "projects/vexboard/README.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-23T00:14:29.000Z",
+          "updatedAt": "2026-10-23T00:14:29.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexboard.boardpatch-authoring",
+          "label": "AI BoardPatch authoring and reusable extraction",
+          "purpose": "Let AI make bounded, reviewable semantic changes anchored to stable board refs, including minimal-movement relayout, undoable lineage, copy-versus-reuse semantics and extraction of overwhelming regions into reusable modules with explicit interfaces.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexboard.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexboard.boardgraph-contract",
+            "work.vexboard.canvas-projection",
+            "work.vexboard.boardjourney-simulation"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "projects/vexboard/README.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-23T00:14:29.000Z",
+          "updatedAt": "2026-10-23T00:14:29.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexboard.canvas-projection",
+          "label": "Read-only canvas and recursive navigation",
+          "purpose": "Project BoardGraph meaning into a deterministic, stable, zoomable and pannable canvas with semantic shapes, connectors, focus, minimap, inline expansion, portal entry and collapse while keeping camera position separate from semantic position.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexboard.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexboard.boardgraph-contract"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "projects/vexboard/README.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-23T00:14:29.000Z",
+          "updatedAt": "2026-10-23T00:14:29.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexboard.outcome",
+          "label": "VexBoard Semantic Canvas",
+          "purpose": "Create a reusable semantic-canvas foundation that can author new experience/process meaning and project existing source-owned truth through interactive, recursive, AI-addressable visual journeys.",
+          "workClass": "OUTCOME",
+          "state": "DECOMPOSED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vexboard.boardgraph-contract",
+            "work.vexboard.boardjourney-simulation",
+            "work.vexboard.boardpatch-authoring",
+            "work.vexboard.canvas-projection",
+            "work.vexboard.project-architecture",
+            "work.vexboard.source-projectors"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "projects/vexboard/README.md"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-23T00:14:29.000Z",
+          "updatedAt": "2026-10-23T00:14:29.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexboard.project-architecture",
+          "label": "Project architecture and foundation boundary",
+          "purpose": "Preserve the human outcome, semantic roles, recursive-depth model, AI-authoring posture, source-projection boundary, patient-zero proofs and phased horizons so implementation does not rediscover VexBoard from chat.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexboard.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "projects/vexboard/README.md"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-23T00:14:29.000Z",
+          "updatedAt": "2026-10-23T00:14:29.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexboard.source-projectors",
+          "label": "Source projectors and lived comparison",
+          "purpose": "Use the same semantic/rendering foundation to project VexWork processes/work/projects and repository Atlas-style truth read-only, then compare intended VexBoard journeys with observed lived journeys such as Screencrawler evidence without copying source ownership.",
+          "workClass": "OUTCOME",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vexboard.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexboard.boardgraph-contract",
+            "work.vexboard.canvas-projection",
+            "work.vexboard.boardjourney-simulation"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "projects/vexboard/README.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-23T00:14:29.000Z",
+          "updatedAt": "2026-10-23T00:14:29.000Z",
+          "transitionHistory": []
+        }
+      ],
+      "lanes": [
+        {
+          "laneRef": "lane.work.intake",
+          "label": "Intake",
+          "workRefs": [
+            "work.vexboard.outcome"
+          ]
+        },
+        {
+          "laneRef": "lane.work.planned",
+          "label": "Planned",
+          "workRefs": [
+            "work.vexboard.boardjourney-simulation",
+            "work.vexboard.boardpatch-authoring",
+            "work.vexboard.canvas-projection",
+            "work.vexboard.source-projectors"
+          ]
+        },
+        {
+          "laneRef": "lane.work.ready",
+          "label": "Ready",
+          "workRefs": [
+            "work.vexboard.boardgraph-contract"
+          ]
+        },
+        {
+          "laneRef": "lane.work.active",
+          "label": "Active",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.waiting",
+          "label": "Waiting",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.needs-human",
+          "label": "Needs Human",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.verify",
+          "label": "Verify",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.attention",
+          "label": "Attention",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.done",
+          "label": "Done",
+          "workRefs": [
+            "work.vexboard.project-architecture"
+          ]
+        },
+        {
+          "laneRef": "lane.work.archive",
+          "label": "Archive",
+          "workRefs": []
+        }
+      ],
+      "summary": {
+        "workItemCount": 7,
+        "openWorkItemCount": 6,
+        "outcomeCount": 2,
+        "taskCount": 5,
+        "defectCount": 0,
+        "potentialCount": 0,
+        "needsHumanCount": 0,
+        "completedCount": 1
+      },
+      "rootItems": [
+        {
+          "workRef": "work.vexboard.outcome",
+          "label": "VexBoard Semantic Canvas",
+          "purpose": "Create a reusable semantic-canvas foundation that can author new experience/process meaning and project existing source-owned truth through interactive, recursive, AI-addressable visual journeys.",
+          "workClass": "OUTCOME",
+          "state": "DECOMPOSED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vexboard.boardgraph-contract",
+            "work.vexboard.boardjourney-simulation",
+            "work.vexboard.boardpatch-authoring",
+            "work.vexboard.canvas-projection",
+            "work.vexboard.project-architecture",
+            "work.vexboard.source-projectors"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "projects/vexboard/README.md"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-23T00:14:29.000Z",
+          "updatedAt": "2026-10-23T00:14:29.000Z",
+          "transitionHistory": []
+        }
+      ]
+    },
+    {
+      "project": {
+        "projectRef": "project.vexlife.blueprint-source-of-truth",
+        "label": "VexLife Blueprint Source of Truth",
+        "purpose": "Preserve and eventually complete the VexLife Blueprint Source of Truth capability: express portable product/software meaning once, realize it truthfully across languages/frameworks/platforms through source-addressed mappings and matched proof, and carry the trajectory without making any implementation, provider, generated target, or VexWork itself the semantic owner.",
+        "rootWorkRefs": [
+          "work.vexlife.blueprint-source-of-truth.outcome"
+        ],
+        "repositoryRefs": [
+          "repo.vexwork",
+          "repo.vexlife",
+          "repo.vextreme-sdk",
+          "repo.vexlife-android",
+          "repo.vexlife-construction-reference"
+        ],
+        "sourceRefs": [
+          "projects/vexlife-blueprint-source-of-truth/README.md",
+          "trajectory.vexlife.blueprint-source-of-truth",
+          "github.issue.vextreme-sdk.1839",
+          "github.pull.vexlife.902",
+          "github.issue.VexGPT.VexLife-Construction-Reference.11",
+          "github.pull.VexGPT.VexLife-Construction-Reference.12",
+          "github.pull.vexwork.35",
+          "docs/process/FORM-PROJECT.md"
+        ],
+        "formedAt": "2026-10-23T00:33:00.000Z"
+      },
+      "graphRef": "workgraph.vexwork.foundation",
+      "viewRef": "view.vexlife.blueprint-source-of-truth.board",
+      "items": [
+        {
+          "workRef": "work.vexlife.blueprint-source-of-truth.outcome",
+          "label": "VexLife Blueprint Source of Truth",
+          "purpose": "Preserve and eventually complete the VexLife Blueprint Source of Truth capability across portable meaning, deterministic mappings, target realizations and proof while the lane is deliberately dormant.",
+          "workClass": "OUTCOME",
+          "state": "PAUSED_AT_CHECKPOINT",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vexlife.blueprint-source-of-truth.play-pause-practicum",
+            "work.vexlife.blueprint-source-of-truth.reusable-v1",
+            "work.vexlife.blueprint-source-of-truth.total-feature-capacity"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife",
+            "repo.vextreme-sdk",
+            "repo.vexlife-android",
+            "repo.vexlife-construction-reference"
+          ],
+          "sourceRefs": [
+            "project.vexlife.blueprint-source-of-truth",
+            "projects/vexlife-blueprint-source-of-truth/README.md",
+            "trajectory.vexlife.blueprint-source-of-truth",
+            "github.pull.vexwork.35"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-23T00:33:00.000Z",
+          "updatedAt": "2026-10-23T00:33:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.blueprint-source-of-truth.play-pause-practicum",
+          "label": "Play/Pause first complete semantic circuit",
+          "purpose": "Preserve the first bounded practicum from canonical portable Play/Pause meaning through deterministic C# representation, provider-neutral runtime/connection, target-native source acceptance and lived provider proof; resume only when Victor reactivates the lane.",
+          "workClass": "OUTCOME",
+          "state": "PAUSED_AT_CHECKPOINT",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.blueprint-source-of-truth.outcome",
+          "childWorkRefs": [
+            "work.vexlife.blueprint-source-of-truth.play-pause.android-reconstruction",
+            "work.vexlife.blueprint-source-of-truth.play-pause.csharp-representation",
+            "work.vexlife.blueprint-source-of-truth.play-pause.csharp-runtime",
+            "work.vexlife.blueprint-source-of-truth.play-pause.formation-contracts",
+            "work.vexlife.blueprint-source-of-truth.play-pause.native-adapter-selection",
+            "work.vexlife.blueprint-source-of-truth.play-pause.native-lived-proof",
+            "work.vexlife.blueprint-source-of-truth.play-pause.native-source-admission",
+            "work.vexlife.blueprint-source-of-truth.play-pause.portable-behavior",
+            "work.vexlife.blueprint-source-of-truth.play-pause.semantic-parity",
+            "work.vexlife.blueprint-source-of-truth.play-pause.target-bootstrap"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife",
+            "repo.vextreme-sdk",
+            "repo.vexlife-android",
+            "repo.vexlife-construction-reference"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-blueprint-source-of-truth/README.md",
+            "contract.vexlife.vexstream.playback.play-pause.001"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-23T00:33:00.000Z",
+          "updatedAt": "2026-10-23T00:33:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.blueprint-source-of-truth.play-pause.android-reconstruction",
+          "label": "Android reconstruction parity",
+          "purpose": "Demonstrate that the accepted Android implementation reconstructs all 19 portable law rows while Android-specific Media3, Compose, lifetime and presentation details remain platform-specific.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.blueprint-source-of-truth.play-pause-practicum",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.blueprint-source-of-truth.play-pause.portable-behavior"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme-sdk",
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "github.pull.vextreme-sdk.1863",
+            "projects/vexlife-blueprint-source-of-truth/README.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-23T00:33:00.000Z",
+          "updatedAt": "2026-10-23T00:33:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.blueprint-source-of-truth.play-pause.csharp-representation",
+          "label": "Deterministic C# representation and type isolation",
+          "purpose": "Generate the accepted portable contract deterministically into C# and prove the representation builds while illegal Control/Act/Effect/Projection cross-role assignments remain rejected.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.blueprint-source-of-truth.play-pause-practicum",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.blueprint-source-of-truth.play-pause.target-bootstrap",
+            "work.vexlife.blueprint-source-of-truth.play-pause.android-reconstruction"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme-sdk",
+            "repo.vexlife-construction-reference"
+          ],
+          "sourceRefs": [
+            "github.pull.vextreme-sdk.1865",
+            "github.pull.VexGPT.VexLife-Construction-Reference.4",
+            "proof.vlbsot.p7.csharp-compile-and-negative-type.001"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-23T00:33:00.000Z",
+          "updatedAt": "2026-10-23T00:33:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.blueprint-source-of-truth.play-pause.csharp-runtime",
+          "label": "Pure C# semantic runtime",
+          "purpose": "Execute the accepted Play/Pause semantics in provider-free C# across all 19 portable laws and 23 concrete cases while keeping provider effects outside the semantic runtime.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.blueprint-source-of-truth.play-pause-practicum",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.blueprint-source-of-truth.play-pause.semantic-parity"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife",
+            "repo.vexlife-construction-reference"
+          ],
+          "sourceRefs": [
+            "github.pull.VexGPT.VexLife-Construction-Reference.6",
+            "github.pull.VexGPT.VexLife-Construction-Reference.7",
+            "proof.vlbsot.p10.csharp-semantic-runtime.001"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-23T00:33:00.000Z",
+          "updatedAt": "2026-10-23T00:33:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.blueprint-source-of-truth.play-pause.formation-contracts",
+          "label": "Feature formation and construction contracts",
+          "purpose": "Preserve one feature identity, owner split, bounded Play/Pause practicum and no-effect construction contract before any target realization is allowed to imply canonical meaning.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.blueprint-source-of-truth.play-pause-practicum",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife",
+            "repo.vextreme-sdk",
+            "repo.vexlife-android",
+            "repo.vexlife-construction-reference"
+          ],
+          "sourceRefs": [
+            "github.issue.vextreme-sdk.1839",
+            "github.pull.vextreme-sdk.1841",
+            "github.pull.vextreme-sdk.1845",
+            "github.pull.vextreme-sdk.1851"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-23T00:33:00.000Z",
+          "updatedAt": "2026-10-23T00:33:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.blueprint-source-of-truth.play-pause.native-adapter-selection",
+          "label": "Native adapter selection",
+          "purpose": "Select one target-native realization — MAUI, MediaElement and Mac Catalyst first-lived proof — while keeping the visible affordance driven by semantic Projection and target provider observations explicitly mapped.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.blueprint-source-of-truth.play-pause-practicum",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.blueprint-source-of-truth.play-pause.csharp-runtime"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme-sdk",
+            "repo.vexlife-construction-reference"
+          ],
+          "sourceRefs": [
+            "github.pull.VexGPT.VexLife-Construction-Reference.9",
+            "github.pull.VexGPT.VexLife-Construction-Reference.10",
+            "selection.vlbsot.p10.maui-mediaelement.play-pause.001"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-23T00:33:00.000Z",
+          "updatedAt": "2026-10-23T00:33:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.blueprint-source-of-truth.play-pause.native-lived-proof",
+          "label": "Lived native provider conformance",
+          "purpose": "After native source acceptance and lane reactivation, prove the actual target provider loop preserves admission, stale/matching acknowledgements, opposite intent, end/restart and fail-closed target observations without promoting provider state into portable meaning.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vexlife.blueprint-source-of-truth.play-pause-practicum",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.blueprint-source-of-truth.play-pause.native-source-admission"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-construction-reference"
+          ],
+          "sourceRefs": [
+            "github.issue.VexGPT.VexLife-Construction-Reference.11",
+            "projects/vexlife-blueprint-source-of-truth/README.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-23T00:33:00.000Z",
+          "updatedAt": "2026-10-23T00:33:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.blueprint-source-of-truth.play-pause.native-source-admission",
+          "label": "Target-native MAUI / MediaElement source admission",
+          "purpose": "Resume at exact Construction Reference PR #12 and complete the remaining qualified Mac Catalyst build proof before native source acceptance; this edge is stored but performs no effects while the Project is paused.",
+          "workClass": "TASK",
+          "state": "WAITING_RESOURCE",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.blueprint-source-of-truth.play-pause-practicum",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.blueprint-source-of-truth.play-pause.native-adapter-selection"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme-sdk",
+            "repo.vexlife-construction-reference"
+          ],
+          "sourceRefs": [
+            "github.issue.VexGPT.VexLife-Construction-Reference.11",
+            "github.pull.VexGPT.VexLife-Construction-Reference.12",
+            "github.issue.VexGPT.VexLife-Construction-Reference.11.comment.6289018948",
+            "projects/vexlife-blueprint-source-of-truth/README.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-23T00:33:00.000Z",
+          "updatedAt": "2026-10-23T00:33:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.blueprint-source-of-truth.play-pause.portable-behavior",
+          "label": "Canonical portable Play/Pause Behavior",
+          "purpose": "Accept the VexLife-owned language-neutral Play/Pause Control, Act, Effect, pending-intent, provider-observation and Projection laws as portable product meaning.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.blueprint-source-of-truth.play-pause-practicum",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.blueprint-source-of-truth.play-pause.formation-contracts"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife"
+          ],
+          "sourceRefs": [
+            "github.pull.vexlife.902",
+            "contract.vexlife.vexstream.playback.play-pause.001"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-23T00:33:00.000Z",
+          "updatedAt": "2026-10-23T00:33:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.blueprint-source-of-truth.play-pause.semantic-parity",
+          "label": "Language-neutral semantic and graph parity",
+          "purpose": "Prove the accepted portable, Android and C# representations preserve the same law rows and normalized semantic relationships without inventing a new semantic graph owner.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.blueprint-source-of-truth.play-pause-practicum",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.blueprint-source-of-truth.play-pause.csharp-representation",
+            "work.vexlife.blueprint-source-of-truth.play-pause.android-reconstruction"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife",
+            "repo.vextreme-sdk",
+            "repo.vexlife-android",
+            "repo.vexlife-construction-reference"
+          ],
+          "sourceRefs": [
+            "github.pull.vextreme-sdk.1868",
+            "github.pull.vextreme-sdk.1869",
+            "proof.vlbsot.p8.language-neutral-semantic-law-parity.vexstream-playback-play-pause.001",
+            "proof.vlbsot.p9.semantic-graph-hash-parity.vexstream-playback-play-pause.001"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-23T00:33:00.000Z",
+          "updatedAt": "2026-10-23T00:33:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.blueprint-source-of-truth.play-pause.target-bootstrap",
+          "label": "Construction Reference foundation bootstrap",
+          "purpose": "Establish the clean-room .NET/C# construction target and its own repository culture/build boundary without feature semantics or semantic-authority transfer.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.blueprint-source-of-truth.play-pause-practicum",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.blueprint-source-of-truth.play-pause.formation-contracts"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme-sdk",
+            "repo.vexlife-construction-reference"
+          ],
+          "sourceRefs": [
+            "github.issue.VexGPT.VexLife-Construction-Reference.1",
+            "github.pull.VexGPT.VexLife-Construction-Reference.2",
+            "projects/vexlife-blueprint-source-of-truth/README.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-23T00:33:00.000Z",
+          "updatedAt": "2026-10-23T00:33:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.blueprint-source-of-truth.reusable-v1",
+          "label": "Reusable VLBSoT v1",
+          "purpose": "When the practicum is terminal and the lane is reactivated, turn it into a repeatable capability with bounded source intake, stable portable meaning, deterministic mappings, multiple materially different realizations, separate construction/semantic/native proof, guarded reverse observation and projectable mapping coverage.",
+          "workClass": "OUTCOME",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vexlife.blueprint-source-of-truth.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.blueprint-source-of-truth.play-pause-practicum"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife",
+            "repo.vextreme-sdk",
+            "repo.vexlife-android",
+            "repo.vexlife-construction-reference"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-blueprint-source-of-truth/README.md",
+            "trajectory.vexlife.blueprint-source-of-truth"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-23T00:33:00.000Z",
+          "updatedAt": "2026-10-23T00:33:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.blueprint-source-of-truth.total-feature-capacity",
+          "label": "Whole-product total feature capacity",
+          "purpose": "Eventually reach a sufficiently complete VexLife semantic Blueprint and reusable adapter/proof system such that supported codebases can be constructed and re-observed truthfully without whole-repository guesswork or automatic reverse writeback.",
+          "workClass": "OUTCOME",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vexlife.blueprint-source-of-truth.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.blueprint-source-of-truth.reusable-v1"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife",
+            "repo.vextreme-sdk",
+            "repo.vexlife-android",
+            "repo.vexlife-construction-reference"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-blueprint-source-of-truth/README.md",
+            "trajectory.vexlife.blueprint-source-of-truth"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-23T00:33:00.000Z",
+          "updatedAt": "2026-10-23T00:33:00.000Z",
+          "transitionHistory": []
+        }
+      ],
+      "lanes": [
+        {
+          "laneRef": "lane.work.intake",
+          "label": "Intake",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.planned",
+          "label": "Planned",
+          "workRefs": [
+            "work.vexlife.blueprint-source-of-truth.play-pause.native-lived-proof",
+            "work.vexlife.blueprint-source-of-truth.reusable-v1",
+            "work.vexlife.blueprint-source-of-truth.total-feature-capacity"
+          ]
+        },
+        {
+          "laneRef": "lane.work.ready",
+          "label": "Ready",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.active",
+          "label": "Active",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.waiting",
+          "label": "Waiting",
+          "workRefs": [
+            "work.vexlife.blueprint-source-of-truth.outcome",
+            "work.vexlife.blueprint-source-of-truth.play-pause-practicum",
+            "work.vexlife.blueprint-source-of-truth.play-pause.native-source-admission"
+          ]
+        },
+        {
+          "laneRef": "lane.work.needs-human",
+          "label": "Needs Human",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.verify",
+          "label": "Verify",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.attention",
+          "label": "Attention",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.done",
+          "label": "Done",
+          "workRefs": [
+            "work.vexlife.blueprint-source-of-truth.play-pause.android-reconstruction",
+            "work.vexlife.blueprint-source-of-truth.play-pause.csharp-representation",
+            "work.vexlife.blueprint-source-of-truth.play-pause.csharp-runtime",
+            "work.vexlife.blueprint-source-of-truth.play-pause.formation-contracts",
+            "work.vexlife.blueprint-source-of-truth.play-pause.native-adapter-selection",
+            "work.vexlife.blueprint-source-of-truth.play-pause.portable-behavior",
+            "work.vexlife.blueprint-source-of-truth.play-pause.semantic-parity",
+            "work.vexlife.blueprint-source-of-truth.play-pause.target-bootstrap"
+          ]
+        },
+        {
+          "laneRef": "lane.work.archive",
+          "label": "Archive",
+          "workRefs": []
+        }
+      ],
+      "summary": {
+        "workItemCount": 14,
+        "openWorkItemCount": 6,
+        "outcomeCount": 4,
+        "taskCount": 10,
+        "defectCount": 0,
+        "potentialCount": 0,
+        "needsHumanCount": 0,
+        "completedCount": 8
+      },
+      "rootItems": [
+        {
+          "workRef": "work.vexlife.blueprint-source-of-truth.outcome",
+          "label": "VexLife Blueprint Source of Truth",
+          "purpose": "Preserve and eventually complete the VexLife Blueprint Source of Truth capability across portable meaning, deterministic mappings, target realizations and proof while the lane is deliberately dormant.",
+          "workClass": "OUTCOME",
+          "state": "PAUSED_AT_CHECKPOINT",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vexlife.blueprint-source-of-truth.play-pause-practicum",
+            "work.vexlife.blueprint-source-of-truth.reusable-v1",
+            "work.vexlife.blueprint-source-of-truth.total-feature-capacity"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife",
+            "repo.vextreme-sdk",
+            "repo.vexlife-android",
+            "repo.vexlife-construction-reference"
+          ],
+          "sourceRefs": [
+            "project.vexlife.blueprint-source-of-truth",
+            "projects/vexlife-blueprint-source-of-truth/README.md",
+            "trajectory.vexlife.blueprint-source-of-truth",
+            "github.pull.vexwork.35"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-23T00:33:00.000Z",
+          "updatedAt": "2026-10-23T00:33:00.000Z",
+          "transitionHistory": []
+        }
+      ]
     }
   ],
   "parkingLot": {
@@ -3972,7 +5126,9 @@
         "sourceRefs": [
           "work.vexstream.mobile-library.outcome",
           "github.pull.vexlife-android.142",
-          "docs/process/CAPTURE-DISCOVERED-WORK.md"
+          "docs/process/CAPTURE-DISCOVERED-WORK.md",
+          "projects/vexstream-mobile-library/README.md",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/offline/VexStreamOfflineDocs.kt"
         ],
         "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
         "nextProcessRefs": [

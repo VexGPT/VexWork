@@ -1,0 +1,390 @@
+{
+  "schemaVersion": "vexwork.workgraph-segment/v1",
+  "segmentRef": "segment.vexwork.foundation",
+  "graphRef": "workgraph.vexwork.foundation",
+  "items": [
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexwork.foundation.outcome",
+      "parentWorkRefOrNull": null,
+      "label": "Establish VexWork foundation",
+      "purpose": "Create one portable work-navigation owner that can relate projects and work across repositories while leaving target repository culture and source authority local.",
+      "workClass": "OUTCOME",
+      "state": "COMPLETED",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "README.md",
+        "docs/CULTURE.md",
+        "docs/foundation/INDEX.md",
+        "docs/foundation/PARKING-LOT.md",
+        "docs/process/CAPTURE-DISCOVERED-WORK.md",
+        "public/work-dashboard.json",
+        "public/workspace.json"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-21T01:45:01.000Z",
+      "updatedAt": "2026-10-22T04:42:06.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexwork.foundation.portable-workgraph",
+      "parentWorkRefOrNull": "work.vexwork.foundation.outcome",
+      "label": "Portable Workgraph",
+      "purpose": "Source-place portable work identity, lifecycle, relationships and deterministic transition behavior compatible with useful VexLife P0B distinctions.",
+      "workClass": "TASK",
+      "state": "COMPLETED",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "github.pull.vexlife.908",
+        "blueprint/work-registry.json",
+        "src/core/workgraph.mjs"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-21T01:45:02.000Z",
+      "updatedAt": "2026-10-21T03:56:12.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexwork.foundation.work-board",
+      "parentWorkRefOrNull": "work.vexwork.foundation.outcome",
+      "label": "Work Board",
+      "purpose": "Provide the familiar Jira/kanban-shaped human projection while preserving Workgraph as the only work lifecycle owner.",
+      "workClass": "TASK",
+      "state": "COMPLETED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexwork.foundation.portable-workgraph"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "github.pull.vexlife.911",
+        "docs/foundation/WORK-BOARD.md",
+        "src/core/work-board.mjs"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-21T01:45:03.000Z",
+      "updatedAt": "2026-10-21T03:56:13.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexwork.foundation.repository-graph",
+      "parentWorkRefOrNull": "work.vexwork.foundation.outcome",
+      "label": "Repository Graph",
+      "purpose": "Make cross-repository work source-descendable through public/source-safe repository and culture-entry references without consolidating cultures.",
+      "workClass": "TASK",
+      "state": "COMPLETED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "docs/foundation/REPOSITORY-GRAPH.md",
+        "blueprint/repository-registry.json"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-21T01:45:04.000Z",
+      "updatedAt": "2026-10-21T03:56:14.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexwork.foundation.idea-intake",
+      "parentWorkRefOrNull": "work.vexwork.foundation.outcome",
+      "label": "Human idea intake",
+      "purpose": "Let a human capture a potential into VexWork without converting that potential into implementation authority or a roadmap commitment.",
+      "workClass": "POTENTIAL",
+      "state": "CANCELLED",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [
+        "work.vexwork.foundation.portable-workgraph"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "docs/CULTURE.md",
+        "github.issue.vexlife.705",
+        "docs/foundation/PARKING-LOT.md",
+        "docs/process/CAPTURE-DISCOVERED-WORK.md"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-21T01:45:05.000Z",
+      "updatedAt": "2026-10-22T04:42:04.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexwork.foundation.runtime-persistence",
+      "parentWorkRefOrNull": "work.vexwork.foundation.outcome",
+      "label": "Runtime persistence owner",
+      "purpose": "Source-place portable private/current event, snapshot, writer and CURRENT-pointer semantics without using Git commit churn as the runtime database.",
+      "workClass": "TASK",
+      "state": "COMPLETED",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [
+        "work.vexwork.foundation.portable-workgraph"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "docs/foundation/INDEX.md",
+        "github.pull.vexlife.908",
+        "github.pull.vexlife.909"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-21T01:45:06.000Z",
+      "updatedAt": "2026-10-21T05:51:43.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexwork.visibility.public-dashboard",
+      "parentWorkRefOrNull": "work.vexwork.foundation.outcome",
+      "label": "Public VexWork dashboard",
+      "purpose": "Make current VexWork Project Board and Parking Lot truth visibly explorable through a stable public read projection without making Vextreme another work-state owner.",
+      "workClass": "TASK",
+      "state": "COMPLETED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexwork.foundation.work-board"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vextreme"
+      ],
+      "sourceRefs": [
+        "github.commit.vexwork.5c0e871c8e2e275cdeb20506ac928b4994b2758e",
+        "public/work-dashboard.json",
+        "docs/foundation/WORK-BOARD.md"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-21T06:07:27.000Z",
+      "updatedAt": "2026-10-21T07:09:18.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    }
+  ],
+  "transitions": [
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.foundation.portable-workgraph.completed.pr1",
+      "workRef": "work.vexwork.foundation.portable-workgraph",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "PR #1 merged after exact-head QA and Formal Review; portable Workgraph foundation accepted.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.1",
+        "github.commit.vexwork.4e0b79475566277c168f51d4f6a3bfbdd2f39784"
+      ],
+      "createdAt": "2026-10-21T03:56:12.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.foundation.work-board.completed.pr1",
+      "workRef": "work.vexwork.foundation.work-board",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "PR #1 merged after exact-head QA and Formal Review; Work Board foundation accepted.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.1",
+        "github.commit.vexwork.4e0b79475566277c168f51d4f6a3bfbdd2f39784"
+      ],
+      "createdAt": "2026-10-21T03:56:13.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.foundation.repository-graph.completed.pr1",
+      "workRef": "work.vexwork.foundation.repository-graph",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "PR #1 merged after exact-head QA and Formal Review; Repository Graph foundation accepted.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.1",
+        "github.commit.vexwork.4e0b79475566277c168f51d4f6a3bfbdd2f39784"
+      ],
+      "createdAt": "2026-10-21T03:56:14.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.foundation.runtime-persistence.ready.after-pr1",
+      "workRef": "work.vexwork.foundation.runtime-persistence",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "Portable Workgraph dependency completed on merged PR #1; runtime persistence is now ready for bounded formation.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.1",
+        "github.commit.vexwork.4e0b79475566277c168f51d4f6a3bfbdd2f39784"
+      ],
+      "createdAt": "2026-10-21T03:56:15.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.foundation.runtime-persistence.running.runtime-foundation",
+      "workRef": "work.vexwork.foundation.runtime-persistence",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Portable runtime persistence source and focused proof are source-placed on the admitted authoring branch.",
+      "actorRef": "role.vexwork.runtime-persistence-author",
+      "sourceRefs": [
+        "github.commit.vexwork.6bd93985709e270973c7c86854a4a8021663763f",
+        "docs/foundation/RUNTIME-PERSISTENCE.md",
+        "test/workgraph-runtime.test.mjs"
+      ],
+      "createdAt": "2026-10-21T04:20:02.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.foundation.runtime-persistence.verifying.runtime-foundation",
+      "workRef": "work.vexwork.foundation.runtime-persistence",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Author-side runtime persistence proof is green; exact candidate is ready for independent QA.",
+      "actorRef": "role.vexwork.runtime-persistence-author",
+      "sourceRefs": [
+        "github.commit.vexwork.6bd93985709e270973c7c86854a4a8021663763f",
+        "docs/foundation/RUNTIME-PERSISTENCE.md",
+        "test/workgraph-runtime.test.mjs"
+      ],
+      "createdAt": "2026-10-21T04:20:02.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.foundation.runtime-persistence.completed.pr3",
+      "workRef": "work.vexwork.foundation.runtime-persistence",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "PR #3 merged after exact-head Independent QA and Formal Semantic Review; portable runtime persistence foundation accepted.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.3",
+        "github.commit.vexwork.bc73c72071186673290b4ae6f8419bb9366b42b3"
+      ],
+      "createdAt": "2026-10-21T05:51:43.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.visibility.public-dashboard.verifying.pr5",
+      "workRef": "work.vexwork.visibility.public-dashboard",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Public dashboard projection contract and dogfood state are source-placed on PR #5 and ready for independent review.",
+      "actorRef": "role.vexwork.public-dashboard-author",
+      "sourceRefs": [
+        "github.pull.vexwork.5",
+        "github.commit.vexwork.c3ed1553c5147fc3ce61f3b72a7111573a9c0a5c",
+        "public/work-dashboard.json"
+      ],
+      "createdAt": "2026-10-21T06:20:08.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.visibility.public-dashboard.completed.pr5",
+      "workRef": "work.vexwork.visibility.public-dashboard",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "PR #5 merged after exact-head Independent QA and Formal Semantic Review; public Work Board and Parking Lot dashboard projection accepted.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.5",
+        "github.commit.vexwork.7b8309aabfaa3894c43485a45f27d286ffe7aa52"
+      ],
+      "createdAt": "2026-10-21T07:09:18.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.foundation.idea-intake.cancelled.accepted-capture-process",
+      "workRef": "work.vexwork.foundation.idea-intake",
+      "priorState": "CAPTURED",
+      "nextState": "CANCELLED",
+      "reason": "The distinct idea-intake placeholder is no longer needed because accepted VexWork culture, Parking Lot semantics, and process.vexwork.capture-discovered-work now provide the human capture capability without implementation authority.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "docs/CULTURE.md",
+        "docs/foundation/PARKING-LOT.md",
+        "docs/process/CAPTURE-DISCOVERED-WORK.md"
+      ],
+      "createdAt": "2026-10-22T04:42:04.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.foundation.outcome.verifying.foundation-acceptance",
+      "workRef": "work.vexwork.foundation.outcome",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "All admitted first-foundation capabilities are source-placed and the two stale Potential leaves have been reconciled without widening the Foundation outcome.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "README.md",
+        "docs/foundation/INDEX.md",
+        "docs/foundation/PARKING-LOT.md",
+        "docs/process/CAPTURE-DISCOVERED-WORK.md"
+      ],
+      "createdAt": "2026-10-22T04:42:05.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.foundation.outcome.completed.foundation-acceptance",
+      "workRef": "work.vexwork.foundation.outcome",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "VexWork first-foundation acceptance is complete: the portable Workgraph, Projects, Work Board, Parking Lot/capture route, Process and Repository maps, runtime persistence, operating profiles, and public human read surface are accepted; optional history reconstruction remains separately parked outside Project membership.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "README.md",
+        "docs/foundation/INDEX.md",
+        "public/work-dashboard.json",
+        "public/workspace.json"
+      ],
+      "createdAt": "2026-10-22T04:42:06.000Z"
+    }
+  ],
+  "sourceRefs": [
+    "project.vexwork.foundation",
+    "projects/vexwork-foundation/project.json",
+    "docs/foundation/WORKGRAPH-COMPOSITION.md"
+  ],
+  "formedAt": "2026-10-22T07:22:27.000Z"
+}

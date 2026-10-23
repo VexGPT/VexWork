@@ -127,3 +127,38 @@ test('Connected Services is discoverable as a real Project with the current live
   assert.equal(connected.items.some((item) => item.workRef === 'work.vexlife.connected-services.guided-onboarding'), false);
   assert.equal(workspace.parkingLot.items.some((item) => item.workRef === 'work.vexlife.connected-services.guided-onboarding'), true);
 });
+
+test('VexBoard is discoverable with BoardGraph as the next ready edge', () => {
+  const workspace = buildWorkspace();
+  const vexboard = workspace.projects.find((entry) => entry.project.projectRef === 'project.vexboard');
+  assert.ok(vexboard);
+  assert.equal(vexboard.summary.workItemCount, 7);
+  assert.equal(vexboard.summary.openWorkItemCount, 6);
+  assert.equal(vexboard.items.find((item) => item.workRef === 'work.vexboard.project-architecture').state, 'COMPLETED');
+  assert.equal(vexboard.items.find((item) => item.workRef === 'work.vexboard.boardgraph-contract').state, 'READY');
+  assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.ready').workRefs.includes('work.vexboard.boardgraph-contract'), true);
+  assert.equal(vexboard.project.sourceRefs.includes('projects/vexboard/README.md'), true);
+});
+
+// [VXG RealForever]
+
+
+test('Blueprint SOT is durably paused without active effects while preserving its exact resume edge', () => {
+  const workspace = buildWorkspace();
+  const blueprint = workspace.projects.find((entry) => entry.project.projectRef === 'project.vexlife.blueprint-source-of-truth');
+  assert.ok(blueprint);
+  assert.equal(blueprint.summary.workItemCount, 14);
+  assert.equal(blueprint.summary.completedCount, 8);
+  assert.equal(blueprint.summary.openWorkItemCount, 6);
+  const root = blueprint.items.find((item) => item.workRef === 'work.vexlife.blueprint-source-of-truth.outcome');
+  const practicum = blueprint.items.find((item) => item.workRef === 'work.vexlife.blueprint-source-of-truth.play-pause-practicum');
+  const nativeSource = blueprint.items.find((item) => item.workRef === 'work.vexlife.blueprint-source-of-truth.play-pause.native-source-admission');
+  assert.equal(root.state, 'PAUSED_AT_CHECKPOINT');
+  assert.equal(root.effectDisposition, 'NO_EFFECTS');
+  assert.equal(practicum.state, 'PAUSED_AT_CHECKPOINT');
+  assert.equal(practicum.effectDisposition, 'NO_EFFECTS');
+  assert.equal(nativeSource.state, 'WAITING_RESOURCE');
+  assert.equal(nativeSource.effectDisposition, 'NO_EFFECTS');
+  assert.equal(blueprint.lanes.find((lane) => lane.laneRef === 'lane.work.waiting').workRefs.includes(root.workRef), true);
+  assert.equal(blueprint.lanes.find((lane) => lane.laneRef === 'lane.work.waiting').workRefs.includes(nativeSource.workRef), true);
+});

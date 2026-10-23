@@ -157,6 +157,52 @@ STATE_HISTORY != RECOVERY_ATTEMPT_LOG
 VEXWORK_UI_OWNERSHIP != VEXTREME_SITE_OWNERSHIP
 ```
 
+## Lifecycle Workflow Map
+
+The Work Board color legend answers **what the current state means visually**. The Lifecycle Workflow Map answers a different question:
+
+> **From this state, what transitions are lawful, which branches are waits/recovery/exits, and where does human review apply?**
+
+It is a read-only projection over the same canonical owners:
+
+```text
+blueprint/work-registry.json
+  lifecycleStates
+  allowedTransitions
+  boardLanes
+        │
+        ├─ Work Board colors / lanes
+        └─ Lifecycle Workflow Map nodes / arrows
+
+optional Project Agency Policy
+        └─ human-review conditions over exact phase crossings
+```
+
+Permanent:
+
+```text
+LIFECYCLE_WORKFLOW_MAP != PROCESS_MAP
+LIFECYCLE_WORKFLOW_MAP != SECOND_WORK_STATE_OWNER
+WORKFLOW_NODE != COPIED_STATE_DEFINITION
+WORKFLOW_ARROW != COPIED_TRANSITION_DEFINITION
+WORKFLOW_VISUALIZATION != TRANSITION_AUTHORITY
+```
+
+The browser therefore loads the canonical Work Registry at view time. It must not carry its own lifecycle state list or arrow table.
+
+When an exact Work item is in context, the projection may additionally use its current state, work class, work ref, and accepted transition history to highlight:
+
+- its current state;
+- lawful outgoing transitions;
+- one lawful route toward the Done lane;
+- wait/recovery branches;
+- exact Human Transition Handshake requirements;
+- proven same-phase resumes that do **not** require a new review.
+
+Project Agency Policy v2 allows the same canonical lifecycle edge to be human-reviewed for one meaningful OUTCOME or explicitly named user-facing TASK while remaining autonomous for ordinary implementation tasks.
+
+This is intentionally separate from the existing **Process Map**, which answers which reusable repository/process route a worker should follow.
+
 ## Views
 
 `BOARD` is the first implemented view. The architecture keeps `GRAPH`, `TABLE`, `ROADMAP`, and `FOCUS` as projections over the same Workgraph rather than separate ledgers.

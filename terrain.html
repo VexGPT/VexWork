@@ -4,27 +4,377 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>VexWork Terrain Map — experimental v2</title>
-<meta name="description" content="Experimental read-only relational Terrain projection over VexWork truth.">
+<meta name="description" content="Experimental read-only perceptual Terrain projection over VexWork truth.">
 <style>
-:root{--ink:#1c1917;--muted:#78716c;--faint:#a8a29e;--line:#e7e5e4;--blue:#2563eb;--paper:#fff;--wash:#fafaf9;--ember:#b45830}*{box-sizing:border-box}html,body{height:100%}body{margin:0;overflow:hidden;background:var(--wash);color:var(--ink);font-family:Inter,system-ui,sans-serif}button,input{font:inherit}.app{height:100%;display:grid;grid-template-rows:auto minmax(0,1fr)}.shell{width:min(1460px,calc(100% - 28px));margin:auto}.top{border-bottom:1px solid var(--line)}.family{display:flex;gap:8px;align-items:center;padding:16px 0 10px;font:15px Georgia,serif}.family a{color:var(--muted);text-decoration:none}.family .current{font-weight:700;color:var(--ink)}.sep{color:#d6d3d1}.bar{display:flex;align-items:center;gap:14px;padding:13px 0}.brand{display:flex;align-items:baseline;gap:12px;white-space:nowrap}.brand a{color:var(--ink);text-decoration:none}.brand strong{font:700 30px Georgia,serif}.brand span{font:700 10px ui-monospace,monospace;color:var(--blue);text-transform:uppercase;letter-spacing:.08em}.brand em{font:8px ui-monospace,monospace;color:var(--ember);text-transform:uppercase;letter-spacing:.12em}.search{margin-left:auto;width:min(420px,44vw);border:1px solid #d6d3d1;border-radius:9px;background:#f2f2f0;padding:10px 12px}.stage{position:relative;min-height:0;overflow:hidden;background:radial-gradient(circle at 50% 42%,#eff6ff,transparent 42%),var(--wash)}.world{position:absolute;inset:0;transform-origin:50% 50%;transition:transform .16s ease,opacity .16s ease}.node{position:absolute;left:50%;top:50%;width:200px;min-height:92px;transform:translate(-50%,-50%);border:1px solid #d6d3d1;border-radius:16px;background:rgba(255,255,255,.96);box-shadow:0 10px 28px rgba(28,25,23,.06);padding:13px;text-align:left;color:var(--ink)}.node:hover,.node:focus-visible{outline:none;border-color:#93c5fd}.node.focus{width:min(430px,58vw);min-height:180px;padding:21px;border-color:#93c5fd;z-index:4}.kind{font:8px ui-monospace,monospace;color:var(--blue);text-transform:uppercase;letter-spacing:.11em}.node h2,.node h3{margin:7px 0 5px;line-height:1.08}.node h2{font:700 clamp(26px,4vw,40px) Georgia,serif}.node h3{font-size:15px}.node p{margin:0;color:var(--muted);font-size:11px;line-height:1.45}.meta{margin-top:9px;display:flex;gap:5px;flex-wrap:wrap}.chip{padding:3px 6px;border-radius:999px;background:#f1f0ee;color:var(--muted);font:8px ui-monospace,monospace}.edge{position:absolute;left:50%;top:50%;height:1px;background:#d6d3d1;transform-origin:0 50%;z-index:1}.edge-label{position:absolute;z-index:2;transform:translate(-50%,-50%);padding:3px 6px;border-radius:999px;background:rgba(250,250,249,.94);font:8px ui-monospace,monospace;color:var(--faint)}.rail{position:absolute;left:14px;top:15px;bottom:15px;z-index:10;width:78px;border:1px solid var(--line);border-radius:13px;background:rgba(255,255,255,.82);backdrop-filter:blur(8px);padding:10px 7px;overflow:auto}.rail strong{display:block;margin-bottom:9px;font:8px ui-monospace,monospace;color:var(--faint);text-transform:uppercase;letter-spacing:.1em}.crumb{display:block;width:100%;border:0;background:transparent;padding:5px 3px;text-align:left;color:var(--muted);font:8px/1.25 ui-monospace,monospace}.crumb.current{color:var(--blue);font-weight:700}.orientation{position:absolute;left:106px;right:14px;top:15px;z-index:8;display:flex;gap:10px;align-items:center;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.84);padding:9px 11px;backdrop-filter:blur(8px);pointer-events:none}.orientation strong{font:700 9px ui-monospace,monospace;text-transform:uppercase;letter-spacing:.1em}.orientation span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--muted);font-size:10px}.orientation small{margin-left:auto;color:var(--faint);font:9px ui-monospace,monospace}.inspect{position:absolute;right:14px;top:72px;bottom:14px;z-index:12;width:min(360px,38vw);border:1px solid var(--line);border-radius:13px;background:rgba(255,255,255,.96);padding:12px;overflow:auto;transform:translateX(calc(100% + 28px));transition:transform .18s ease}.inspect.open{transform:none}.inspect h4{margin:14px 0 6px;font:700 8px ui-monospace,monospace;text-transform:uppercase;letter-spacing:.1em;color:var(--faint)}.inspect code{display:block;white-space:pre-wrap;word-break:break-word;padding:8px;border:1px solid var(--line);border-radius:8px;background:#fafaf9;font:9px/1.45 ui-monospace,monospace}.tools{position:absolute;right:14px;top:15px;z-index:11;display:flex;gap:7px;transform:translateY(52px)}.tool{border:1px solid #d6d3d1;border-radius:8px;background:#fff;padding:7px 9px;color:var(--ink);font-size:10px}.history{position:absolute;left:106px;right:14px;bottom:14px;z-index:9;display:none;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.94);padding:10px}.history.open{display:block}.track{display:flex;gap:7px;overflow:auto}.event{flex:0 0 auto;max-width:210px;border:1px solid var(--line);border-radius:8px;background:#fff;padding:7px 9px;text-align:left}.event strong{display:block;font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.event small{display:block;margin-top:3px;color:var(--faint);font:8px ui-monospace,monospace}.results{position:absolute;right:14px;top:64px;z-index:30;width:min(430px,90vw);max-height:50vh;overflow:auto;border:1px solid #d6d3d1;border-radius:9px;background:#fff;padding:5px;box-shadow:0 12px 32px rgba(28,25,23,.12)}.results[hidden]{display:none}.result{display:block;width:100%;border:0;border-radius:6px;background:transparent;padding:9px;text-align:left}.result:hover{background:#eff6ff}.result strong,.result small{display:block}.result small{margin-top:3px;color:var(--muted);font:8px ui-monospace,monospace}.hint{position:absolute;left:50%;bottom:15px;z-index:20;transform:translateX(-50%);border:1px solid #d6d3d1;border-radius:999px;background:#fff;padding:7px 10px;color:var(--muted);font:9px ui-monospace,monospace}.hint[hidden]{display:none}@media(max-width:760px){.bar{flex-wrap:wrap}.brand{width:100%}.search{width:100%;margin:0}.rail{width:62px}.orientation{left:80px}.node.focus{width:min(330px,72vw)}.inspect{width:calc(100% - 90px)}.history{left:80px}.tools{top:62px}.edge,.edge-label{display:none}}
+:root{--ink:#1c1917;--muted:#78716c;--faint:#a8a29e;--line:#e7e5e4;--blue:#2563eb;--paper:#fff;--wash:#fafaf9;--ember:#b45830;--green:#15803d;--amber:#b45309;--red:#b91c1c}
+*{box-sizing:border-box}html,body{height:100%}body{margin:0;background:var(--wash);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;overflow:hidden}button,input{font:inherit}.app{height:100%;display:grid;grid-template-rows:auto minmax(0,1fr)}.shell{width:min(1480px,calc(100% - 28px));margin:auto}.top{border-bottom:1px solid var(--line);background:rgba(250,250,249,.96)}.family{display:flex;gap:8px;align-items:center;padding:15px 0 8px;font:15px Georgia,"Times New Roman",serif}.family a{color:var(--muted);text-decoration:none}.family .current{font-weight:700;color:var(--ink)}.sep{color:#d6d3d1}.bar{display:flex;align-items:center;gap:14px;padding:10px 0 13px}.brand{display:flex;align-items:baseline;gap:12px;white-space:nowrap}.brand a{color:var(--ink);text-decoration:none}.brand strong{font:700 30px Georgia,"Times New Roman",serif}.brand span{font:700 10px ui-monospace,monospace;color:var(--blue);text-transform:uppercase;letter-spacing:.08em}.brand em{font:8px ui-monospace,monospace;color:var(--ember);text-transform:uppercase;letter-spacing:.12em}.search{margin-left:auto;width:min(430px,45vw);border:1px solid #d6d3d1;border-radius:10px;background:#f2f2f0;padding:10px 12px;color:var(--ink)}.search:focus{outline:2px solid rgba(37,99,235,.18);border-color:#93c5fd}
+.stage{position:relative;min-height:0;overflow:hidden}.terrain{height:100%;display:grid;grid-template-rows:auto minmax(0,1fr);gap:10px;padding:14px}.orientation{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.88);padding:8px 10px;min-width:0}.orientation-copy{display:flex;align-items:center;gap:10px;min-width:0;flex:1}.orientation strong{font:700 9px ui-monospace,monospace;text-transform:uppercase;letter-spacing:.1em}.orientation span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--muted);font-size:10px}.orientation small{color:var(--faint);font:9px ui-monospace,monospace;white-space:nowrap}.terrain-controls{display:flex;align-items:center;gap:8px}.mode-switch,.time-switch{display:flex;gap:3px;border:1px solid var(--line);border-radius:8px;padding:2px;background:#fafaf9}.mode-switch button,.time-switch button{border:0;border-radius:6px;background:transparent;padding:5px 7px;color:var(--muted);font:8px ui-monospace,monospace;text-transform:uppercase}.mode-switch button.current,.time-switch button.current{background:#fff;color:var(--blue);box-shadow:0 1px 4px rgba(28,25,23,.08)}.surface{position:relative;min-height:0;overflow:hidden;border:1px solid var(--line);border-radius:16px;background:#fff}.surface-inner{height:100%;overflow:auto;padding:12px;overscroll-behavior:contain}.workspace-stack{display:grid;gap:9px;align-content:start}.project-band{min-height:0;border:1px solid var(--line);border-radius:12px;background:#fff;display:grid;grid-template-columns:minmax(220px,30%) minmax(0,1fr);align-items:stretch;overflow:hidden;transition:border-color .12s ease,background .12s ease,opacity .12s ease}.project-band:hover,.project-band:focus-within{border-color:#bfdbfe;background:#fcfdff}.project-lead{border:0;background:transparent;padding:11px 13px;text-align:left;min-width:0;color:inherit}.project-lead:focus-visible,.stratum-main:focus-visible,.preview:focus-visible{outline:2px solid rgba(37,99,235,.28);outline-offset:-2px}.eyebrow{font:700 8px ui-monospace,monospace;text-transform:uppercase;letter-spacing:.1em;color:var(--blue)}.project-title{margin:4px 0 3px;font-weight:750;font-size:14px;line-height:1.08}.purpose{color:var(--muted);font-size:10px;line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.band-meta{display:flex;gap:6px;align-items:center;margin-top:7px;flex-wrap:wrap}.chip{display:inline-flex;align-items:center;border-radius:999px;background:#f1f0ee;padding:3px 6px;color:#78716c;font:8px ui-monospace,monospace;white-space:nowrap}.chip.open{background:#eff6ff;color:#1d4ed8}.chip.done{background:#f0fdf4;color:var(--green)}.chip.waiting{background:#fffbeb;color:var(--amber)}.chip.blocked{background:#fef2f2;color:var(--red)}.preview-strip{min-width:0;border-left:1px solid var(--line);display:flex;align-items:stretch;gap:5px;padding:7px;overflow:hidden}.preview{border:1px solid transparent;border-radius:8px;background:#f7f7f5;color:var(--ink);padding:7px 8px;text-align:left;min-width:0;flex:1 1 0;overflow:hidden;position:relative}.preview[data-tone="open"]{background:#eff6ff;border-color:#dbeafe}.preview[data-tone="done"]{background:#f0fdf4;border-color:#dcfce7}.preview[data-tone="attention"]{background:#fffbeb;border-color:#fde68a}.preview[data-tone="waiting"]{background:#fffdf5;border-color:#f5e9c8}.preview[data-tone="blocked"]{background:#fef2f2;border-color:#fecaca}.preview[data-tone="pending"]{background:#f7f7f5;border-color:#e7e5e4}.preview[data-continuity="current"]{box-shadow:inset 3px 0 0 #2563eb}.preview[data-continuity="prior"]{box-shadow:inset 3px 0 0 #16a34a}.preview[data-continuity="next"]{box-shadow:inset 3px 0 0 #d97706}.preview[data-continuity="latest"]{box-shadow:inset 3px 0 0 #16a34a}.preview:hover{border-color:#93c5fd}.preview strong{display:block;font-size:10px;line-height:1.12;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.preview small{display:block;margin-top:4px;color:var(--muted);font:8px ui-monospace,monospace;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.continuity-mark{display:block;margin-bottom:4px;color:var(--faint);font:700 7px ui-monospace,monospace;text-transform:uppercase;letter-spacing:.09em}.preview[data-continuity="current"] .continuity-mark{color:#1d4ed8}.preview[data-continuity="prior"] .continuity-mark,.preview[data-continuity="latest"] .continuity-mark{color:#15803d}.preview[data-continuity="next"] .continuity-mark{color:#b45309}.preview-more{flex:0 0 auto;align-self:center;color:var(--faint);font:8px ui-monospace,monospace;padding:0 5px}
+.project-road{border:1px solid var(--line);border-radius:12px;background:#fff;overflow:hidden}.project-road[data-collapsed="true"] .project-road-body{display:none}.project-road-head{display:grid;grid-template-columns:auto minmax(220px,1fr) auto;gap:10px;align-items:center;padding:9px 11px;border-bottom:1px solid var(--line);background:#fcfcfb}.project-road[data-collapsed="true"] .project-road-head{border-bottom:0}.fold-project{border:1px solid #d6d3d1;border-radius:7px;background:#fff;width:28px;height:28px;color:var(--muted)}.project-road-copy{min-width:0}.project-road-copy strong{display:block;font-size:13px}.project-road-copy span{display:block;margin-top:2px;color:var(--muted);font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.project-road-summary{display:flex;gap:5px;align-items:center;flex-wrap:wrap;justify-content:flex-end}.project-road-body{padding:6px}.workfront-row{display:grid;grid-template-columns:minmax(170px,.9fr) repeat(3,minmax(170px,1fr));gap:6px;align-items:stretch;padding:5px 0;border-top:1px solid #f0eeeb}.workfront-row:first-child{border-top:0}.workfront-label{padding:7px 8px;min-width:0}.workfront-label strong{display:block;font-size:10px;line-height:1.2}.workfront-label small{display:block;margin-top:4px;color:var(--faint);font:8px ui-monospace,monospace}.flow-cell{min-width:0;border-radius:8px;background:#fafaf9;padding:5px;border:1px solid #f0eeeb}.flow-cell-title{display:block;margin-bottom:4px;color:var(--faint);font:700 7px ui-monospace,monospace;text-transform:uppercase;letter-spacing:.08em}.flow-stack{display:grid;gap:4px}.flow-card{border:1px solid transparent;border-radius:7px;padding:6px 7px;background:#f7f7f5;text-align:left;color:var(--ink);min-width:0;width:100%}.flow-card[data-tone="open"]{background:#eff6ff;border-color:#dbeafe}.flow-card[data-tone="done"]{background:#f0fdf4;border-color:#dcfce7}.flow-card[data-tone="attention"],.flow-card[data-tone="waiting"]{background:#fffbeb;border-color:#fde68a}.flow-card[data-tone="blocked"]{background:#fef2f2;border-color:#fecaca}.flow-card strong{display:block;font-size:9px;line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.flow-card small{display:block;margin-top:3px;color:var(--muted);font:7px ui-monospace,monospace;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.flow-card.projected{border-style:dashed}.recent-strip{grid-column:2/-1;display:flex;gap:5px;align-items:center;min-width:0;overflow:hidden;padding:2px 5px 5px}.recent-strip>span{color:var(--faint);font:700 7px ui-monospace,monospace;text-transform:uppercase}.recent-pill{border:1px solid var(--line);border-radius:999px;background:#fff;padding:4px 6px;font:7px ui-monospace,monospace;color:var(--muted);white-space:nowrap}.roadmap-stack{display:grid;gap:10px;align-content:start}.roadmap-project{border:1px solid var(--line);border-radius:12px;background:#fff;overflow:hidden}.roadmap-grid{overflow-x:auto;padding:7px}.roadmap-head,.roadmap-row{display:grid;grid-template-columns:minmax(190px,.9fr) repeat(4,minmax(170px,1fr)) minmax(180px,1fr);gap:6px;min-width:1120px}.roadmap-head{padding:0 0 5px;color:var(--faint);font:700 7px ui-monospace,monospace;text-transform:uppercase}.roadmap-row{padding:5px 0;border-top:1px solid #f0eeeb}.roadmap-label{padding:7px}.roadmap-label strong{display:block;font-size:10px}.roadmap-label small{display:block;margin-top:3px;color:var(--muted);font-size:8px}.roadmap-cell{border:1px solid var(--line);border-radius:8px;background:#fafaf9;padding:5px;min-height:58px}.roadmap-cell[data-basis="STRUCTURAL"],.roadmap-cell[data-basis="LATER_UNSEQUENCED"]{border-style:dashed;background:#fff}.roadmap-cell[data-basis="CURRENT"]{border-color:#93c5fd;background:#f8fbff}.roadmap-cell[data-basis="DEPENDENCY"]{border-color:#bfdbfe;background:#fbfdff}.roadmap-note{padding:7px 10px;border-top:1px solid var(--line);color:var(--muted);font-size:9px}.roadmap-note strong{color:var(--ink)}.empty-cell{color:var(--faint);font:8px ui-monospace,monospace;padding:5px}.project-road-actions{display:flex;gap:5px}.project-road-actions button{border:1px solid #d6d3d1;border-radius:7px;background:#fff;padding:5px 7px;font-size:8px;color:var(--muted)}.focus-layout{height:100%;display:grid;grid-template-rows:auto auto auto minmax(0,1fr);gap:8px}.context-strip{display:flex;gap:6px;min-width:0;overflow:hidden}.context-pill{border:1px solid var(--line);background:#fafaf9;border-radius:999px;padding:5px 8px;color:var(--muted);font:8px ui-monospace,monospace;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:220px}.context-pill.current{border-color:#bfdbfe;color:#1d4ed8;background:#eff6ff}.focus-head{border:1px solid #bfdbfe;border-radius:13px;background:#fbfdff;padding:12px 14px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center}.focus-head h1{margin:4px 0 4px;font:700 clamp(24px,3vw,38px)/1 Georgia,"Times New Roman",serif;letter-spacing:-.02em}.focus-head .purpose{white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}.focus-actions{display:flex;gap:6px}.tool{border:1px solid #d6d3d1;border-radius:8px;background:#fff;padding:7px 9px;color:var(--ink);font-size:9px}.tool:hover,.tool:focus-visible{border-color:#93c5fd;outline:none}.strata-shell{min-height:0;display:grid;grid-template-columns:minmax(0,1fr);gap:8px}.strata-list{min-height:0;overflow:auto;overscroll-behavior:contain;padding-right:3px}.stratum{border:1px solid var(--line);border-radius:11px;background:#fff;margin-bottom:7px;display:grid;grid-template-columns:minmax(210px,38%) minmax(0,1fr);overflow:hidden}.stratum[data-tone="open"]{background:#f8fbff;border-color:#dbeafe}.stratum[data-tone="done"]{background:#f8fff9;border-color:#dcfce7}.stratum[data-tone="attention"]{background:#fffdf5;border-color:#fde68a}.stratum[data-tone="waiting"]{background:#fffefa;border-color:#f5e9c8}.stratum[data-tone="blocked"]{background:#fff8f8;border-color:#fecaca}.stratum[data-continuity="current"]{box-shadow:inset 4px 0 0 #2563eb}.stratum[data-continuity="prior"]{box-shadow:inset 4px 0 0 #16a34a}.stratum[data-continuity="next"]{box-shadow:inset 4px 0 0 #d97706}.stratum:hover{border-color:#93c5fd}.stratum-main{border:0;background:transparent;padding:10px 12px;text-align:left;color:inherit;min-width:0}.stratum-title{font-weight:740;font-size:13px;line-height:1.12;margin:3px 0 4px}.stratum .purpose{font-size:9px}.stratum-next{min-width:0;border-left:1px solid var(--line);padding:7px;display:flex;gap:5px;align-items:center;overflow:hidden;background:#fcfcfb}.leaf .stratum-next{color:var(--faint);font:8px ui-monospace,monospace}.empty{height:100%;display:grid;place-items:center;color:var(--muted);font-size:12px;text-align:center;padding:30px}.results{position:absolute;right:14px;top:62px;z-index:30;width:min(430px,90vw);max-height:55vh;overflow:auto;border:1px solid #d6d3d1;border-radius:10px;background:#fff;padding:5px;box-shadow:0 12px 32px rgba(28,25,23,.12)}.results[hidden]{display:none}.result{display:block;width:100%;border:0;border-radius:7px;background:transparent;padding:9px;text-align:left}.result:hover{background:#eff6ff}.result strong,.result small{display:block}.result small{margin-top:3px;color:var(--muted);font:8px ui-monospace,monospace}.inspect{position:absolute;right:14px;top:14px;bottom:14px;z-index:20;width:min(390px,42vw);border:1px solid var(--line);border-radius:13px;background:rgba(255,255,255,.98);padding:12px;overflow:auto;transform:translateX(calc(100% + 30px));transition:transform .16s ease}.inspect.open{transform:none}.inspect-head{position:sticky;top:-12px;z-index:2;margin:-12px -12px 8px;padding:10px 12px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.98);display:flex;align-items:center;justify-content:space-between;gap:12px}.inspect-head strong{font:700 9px ui-monospace,monospace;text-transform:uppercase;letter-spacing:.1em}.inspect-close{border:1px solid #d6d3d1;border-radius:7px;background:#fff;padding:5px 8px;font-size:9px}.inspect-close:hover,.inspect-close:focus-visible{border-color:#93c5fd;outline:none}.inspect h4{margin:14px 0 6px;font:700 8px ui-monospace,monospace;text-transform:uppercase;letter-spacing:.1em;color:var(--faint)}.inspect code{display:block;white-space:pre-wrap;word-break:break-word;padding:8px;border:1px solid var(--line);border-radius:8px;background:#fafaf9;font:9px/1.45 ui-monospace,monospace}.journey{position:absolute;left:14px;right:14px;bottom:14px;z-index:18;display:none;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.96);padding:9px}.journey.open{display:block}.journey-track{display:flex;gap:6px;overflow:auto}.event{flex:0 0 auto;max-width:210px;border:1px solid var(--line);border-radius:8px;background:#fff;padding:7px 9px;text-align:left}.event strong{display:block;font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.event small{display:block;margin-top:3px;color:var(--faint);font:8px ui-monospace,monospace}.hint{position:absolute;left:50%;bottom:14px;z-index:25;transform:translateX(-50%);border:1px solid #d6d3d1;border-radius:999px;background:#fff;padding:7px 10px;color:var(--muted);font:9px ui-monospace,monospace}.hint[hidden]{display:none}
+@media(max-width:820px){.bar{flex-wrap:wrap}.orientation{align-items:flex-start;flex-wrap:wrap}.terrain-controls{width:100%;justify-content:space-between}.workfront-row{grid-template-columns:1fr}.workfront-label,.recent-strip{grid-column:1}.project-road-head{grid-template-columns:auto minmax(0,1fr)}.project-road-summary{grid-column:1/-1;justify-content:flex-start}.roadmap-head,.roadmap-row{min-width:900px}.brand{width:100%}.search{margin:0;width:100%}.project-band,.stratum{grid-template-columns:1fr}.preview-strip,.stratum-next{border-left:0;border-top:1px solid var(--line)}.workspace-stack{overflow:auto;display:block}.project-band{margin-bottom:8px}.focus-head{grid-template-columns:1fr}.inspect{width:calc(100% - 28px)}}
 </style>
 </head>
-<body><div class="app"><div class="top"><div class="shell"><nav class="family" aria-label="Vextreme, VexLife, and VexWork homes"><a href="https://vgong24.github.io/Vextreme/pages/terrain-map.html?view=content&amp;profile=evolution-v1">Vextreme</a><span class="sep">/</span><a href="https://vgong24.github.io/VexLife/">VexLife</a><span class="sep">/</span><a class="current" href="./">VexWork</a></nav><div class="bar"><div class="brand"><a href="./"><strong>VexWork</strong></a><span>Terrain Map</span><em>experimental v2</em></div><input id="search" class="search" type="search" placeholder="Travel to a Project or work ref…" aria-label="Find Terrain destination"></div></div></div><main class="stage" id="stage"><div id="world" class="world"></div><aside id="rail" class="rail"><strong>Depth</strong><div id="depth"></div></aside><div class="orientation"><strong id="orientationTitle">VexWork</strong><span id="orientationSummary">Loading read-only workspace…</span><small id="orientationMeta"></small></div><div class="tools"><button id="inspectToggle" class="tool" type="button">Inspect</button><button id="historyToggle" class="tool" type="button">Journey</button></div><aside id="inspect" class="inspect" aria-label="Current Terrain frame"></aside><section id="history" class="history" aria-label="Terrain journey"><div id="historyTrack" class="track"></div></section><div id="searchResults" class="results" hidden></div><div id="hint" class="hint" role="status" hidden></div></main></div>
+<body>
+<div class="app">
+  <div class="top"><div class="shell">
+    <nav class="family" aria-label="Vextreme, VexLife, and VexWork homes"><a href="https://vgong24.github.io/Vextreme/pages/terrain-map.html?view=content&amp;profile=evolution-v1">Vextreme</a><span class="sep">/</span><a href="https://vgong24.github.io/VexLife/">VexLife</a><span class="sep">/</span><a class="current" href="./">VexWork</a></nav>
+    <div class="bar"><div class="brand"><a href="./"><strong>VexWork</strong></a><span>Terrain Map</span><em>experimental v2</em></div><input id="search" class="search" type="search" placeholder="Travel to a Project or work ref…" aria-label="Find Terrain destination"></div>
+  </div></div>
+  <main class="stage" id="stage">
+    <div class="terrain">
+      <div class="orientation"><div class="orientation-copy"><strong id="orientationTitle">VexWork</strong><span id="orientationSummary">Loading read-only workspace…</span></div><div class="terrain-controls"><div class="mode-switch" aria-label="Terrain presentation"><button type="button" data-mode="terrain">Terrain</button><button type="button" data-mode="roadmap">Roadmap</button></div><div class="time-switch" aria-label="Recent movement window"><button type="button" data-hours="0">Now</button><button type="button" data-hours="6">6H</button><button type="button" data-hours="24">24H</button><button type="button" data-hours="168">7D</button></div></div><small id="orientationMeta">depth is level-of-detail</small></div>
+      <section class="surface"><div id="surface" class="surface-inner"></div></section>
+    </div>
+    <div id="searchResults" class="results" hidden></div>
+    <aside id="inspect" class="inspect" aria-label="Current Terrain context"></aside>
+    <section id="journey" class="journey" aria-label="Explicit Terrain journey"><div id="journeyTrack" class="journey-track"></div></section>
+    <div id="hint" class="hint" role="status" hidden></div>
+  </main>
+</div>
 <script type="module">
-import {RELATIONSHIP,createTerrainSession} from './terrain-reader.js';
-const WORKSPACE_URL='./public/workspace.json';const relationshipLabel={PROJECT:'project',PROJECT_ROOT:'root outcome',CONTAINS:'contains',PARENT:'parent',DEPENDS_ON:'depends on',DEPENDED_ON_BY:'depended on by',RETURN:'return',REVISIT:'revisit',SEARCH_PORTAL:'search'};let workspace=null,session=null,pixelScale=1,hovered=null,seq=0,wheel={candidate:null,inward:0,lastOutAt:0};const world=document.getElementById('world'),stage=document.getElementById('stage'),depth=document.getElementById('depth'),inspect=document.getElementById('inspect'),historyPanel=document.getElementById('history'),historyTrack=document.getElementById('historyTrack'),search=document.getElementById('search'),searchResults=document.getElementById('searchResults'),hint=document.getElementById('hint'),title=document.getElementById('orientationTitle'),summary=document.getElementById('orientationSummary'),meta=document.getElementById('orientationMeta');
-const el=(tag,cls,text='')=>{const n=document.createElement(tag);if(cls)n.className=cls;n.textContent=String(text);return n};const tone=s=>['COMPLETED','CONVERGED','CLOSED'].includes(s)?'done':['BLOCKED','FAILED_RECOVERABLE'].includes(s)?'blocked':['WAITING_DEPENDENCIES','WAITING_RESOURCE','WAITING_HUMAN','HELD_UNKNOWN','PAUSED_AT_CHECKPOINT'].includes(s)?'waiting':'open';function showHint(text){hint.textContent=text;hint.hidden=false;clearTimeout(showHint.t);showHint.t=setTimeout(()=>hint.hidden=true,2200)}
-function keyFromUrl(){const p=new URLSearchParams(location.search),project=p.get('project'),work=p.get('work');return work&&project?`work:${project}:${work}`:project?`project:${project}`:'workspace:vexwork'}function syncUrl(frame,{replace=false}={}){const u=new URL(location.href);u.search='';if(frame.projectRefOrNull)u.searchParams.set('project',frame.projectRefOrNull);if(frame.workRefOrNull)u.searchParams.set('work',frame.workRefOrNull);window.history[replace?'replaceState':'pushState']({vexworkTerrain:true},'',u)}
-function position(entry,index,total){if(innerWidth<=760)return{x:0,y:155+index*115};const rel=entry.relationshipKinds[0],angle=(Math.PI*2*index/Math.max(1,total))-Math.PI/2,r=Math.min(310,190+total*10);if(rel==='PARENT')return{x:0,y:-250};if(rel==='DEPENDS_ON')return{x:300,y:30};if(rel==='DEPENDED_ON_BY')return{x:-300,y:30};return{x:Math.cos(angle)*r,y:Math.sin(angle)*r}}
-function nodeButton(node,{focus=false,entry=null,index=0,total=1}={}){const b=el('button','node'+(focus?' focus':''));b.type='button';const p=focus?{x:0,y:0}:position(entry,index,total);b.style.marginLeft=p.x+'px';b.style.marginTop=p.y+'px';b.append(el('div','kind',node.kind+(entry?' · '+entry.relationshipKinds.map(r=>relationshipLabel[r]||r).join(' · '):'')),el(focus?'h2':'h3','',node.label),el('p','',node.purpose||node.semanticRef));const m=el('div','meta');if(node.state)m.append(el('span','chip '+tone(node.state),node.state));if(node.workClass)m.append(el('span','chip',node.workClass));b.append(m);if(!focus){b.onmouseenter=()=>hovered=entry;b.onmouseleave=()=>{if(hovered===entry)hovered=null};b.onclick=()=>travel(node.nodeKey,entry.relationshipKinds[0],'action.terrain.select')}else b.onclick=()=>{pixelScale=1;applyScale()};return b}
-function drawEdge(entry,index,total){if(innerWidth<=760)return;const p=position(entry,index,total),len=Math.hypot(p.x,p.y),deg=Math.atan2(p.y,p.x)*180/Math.PI,line=el('div','edge');line.style.width=len+'px';line.style.transform=`rotate(${deg}deg)`;const lab=el('div','edge-label',entry.relationshipKinds.map(r=>relationshipLabel[r]||r).join(' · '));lab.style.left=`calc(50% + ${p.x*.52}px)`;lab.style.top=`calc(50% + ${p.y*.52}px)`;world.append(line,lab)}
-function renderDepth(frame){depth.replaceChildren();frame.structuralPath.forEach(n=>{const b=el('button','crumb'+(n.nodeKey===frame.focus.nodeKey?' current':''),n.label);b.type='button';b.title=n.semanticRef;b.onclick=()=>n.nodeKey===frame.focus.nodeKey?(pixelScale=1,applyScale()):travel(n.nodeKey,RELATIONSHIP.PARENT,'action.terrain.depth');depth.append(b)})}
-function renderInspect(frame){inspect.replaceChildren();inspect.append(el('h4','', 'Identity'),el('code','',`${frame.focus.kind}\n${frame.focus.semanticRef}`),el('h4','','Structural path'),el('code','',frame.structuralPath.map(n=>n.semanticRef).join('\n→ ')),el('h4','','Traversal path'),el('code','',frame.traversalPath.map(s=>(s.relationshipKind?`${s.relationshipKind} → `:'')+s.semanticRef).join('\n')),el('h4','','Entered via'),el('code','',frame.enteredViaOrNull?JSON.stringify(frame.enteredViaOrNull,null,2):'Direct / structural entry'),el('h4','','Neighborhood'),el('code','',JSON.stringify({shown:frame.neighborhood.neighbors.map(n=>({ref:n.node.semanticRef,relationships:n.relationshipKinds})),hidden:frame.neighborhood.hiddenNeighborCount},null,2)))}
-function renderHistory(){const events=session.journey();historyTrack.replaceChildren();events.forEach((event,index)=>{const b=el('button','event');b.type='button';b.append(el('strong','',event.after.focus.label),el('small','',(relationshipLabel[event.relationshipKind]||event.relationshipKind)+' · '+event.actionRef));b.onclick=()=>{const view=session.inspectHistory(index);inspect.classList.add('open');renderInspect(view.currentFrame);inspect.append(el('h4','','History inspection'),el('code','',`Current: ${view.currentFrame.focus.semanticRef}\nInspecting: ${view.inspectedFrame.focus.semanticRef}\n\nHistory inspection does not move current context.`));const revisit=el('button','tool','Revisit');revisit.disabled=!view.browsingHistory;revisit.onclick=async()=>{const r=await session.revisit(index,{commandRef:`command.terrain.revisit.${++seq}`});if(r.state==='COMMITTED'){syncUrl(r.frame);render()}else showHint('Already at this semantic context')};inspect.append(revisit)};historyTrack.append(b)})}
-function render(){const frame=session.currentFrame();title.textContent=frame.focus.label;summary.textContent=frame.focus.purpose||frame.focus.semanticRef;meta.textContent=`${frame.neighborhood.neighbors.length}${frame.neighborhood.hiddenNeighborCount?` + ${frame.neighborhood.hiddenNeighborCount} hidden`:''} nearby`;renderDepth(frame);world.replaceChildren();frame.neighborhood.neighbors.forEach((e,i)=>drawEdge(e,i,frame.neighborhood.neighbors.length));frame.neighborhood.neighbors.forEach((e,i)=>world.append(nodeButton(e.node,{entry:e,index:i,total:frame.neighborhood.neighbors.length})));world.append(nodeButton(frame.focus,{focus:true}));renderInspect(frame);renderHistory();applyScale()}
-function applyScale(){world.style.transform=`scale(${pixelScale})`}async function travel(key,rel,action){const r=await session.navigate(key,rel,{commandRef:`command.terrain.ui.${++seq}`,actionRef:action});if(r.state==='COMMITTED'){pixelScale=1;wheel={candidate:null,inward:0,lastOutAt:0};syncUrl(r.frame);render()}else if(r.state==='ALREADY_PRESENT'){pixelScale=1;applyScale();showHint('Already at this semantic context')}else showHint(r.state)}
-function scrollPathCanMove(target,direction){let n=target?.nodeType===1?target:target?.parentElement;while(n&&n!==document.body){const s=getComputedStyle(n);if(/(auto|scroll|overlay)/.test(s.overflowY)&&n.scrollHeight>n.clientHeight+1){if(direction<0&&n.scrollTop>1)return true;if(direction>0&&n.scrollTop+n.clientHeight<n.scrollHeight-1)return true}n=n.parentElement}return false}function onWheel(e){const d=e.deltaY>0?1:-1;if(scrollPathCanMove(e.target,d)){wheel={candidate:null,inward:0,lastOutAt:0};return}e.preventDefault();if(Math.abs(e.deltaX)>Math.abs(e.deltaY))return;if(d<0){const candidate=hovered?.node?.nodeKey||null;if(candidate!==wheel.candidate){wheel.candidate=candidate;wheel.inward=0}wheel.inward+=Math.abs(e.deltaY);pixelScale=Math.min(1.28,pixelScale+Math.abs(e.deltaY)*.00065);applyScale();if(candidate&&wheel.inward>430)travel(candidate,hovered.relationshipKinds[0],'action.terrain.semantic-zoom-in');return}wheel.candidate=null;wheel.inward=0;pixelScale=Math.max(.72,pixelScale-Math.abs(e.deltaY)*.00055);applyScale();if(pixelScale>.721)return;const now=performance.now();if(!wheel.lastOutAt||now-wheel.lastOutAt>3000){wheel.lastOutAt=now;showHint('Outer boundary reached · release, then scroll again to return one semantic step');return}const gap=now-wheel.lastOutAt;wheel.lastOutAt=now;if(gap<220)return;wheel.lastOutAt=0;session.back({commandRef:`command.terrain.out.${++seq}`}).then(r=>{if(r.state==='COMMITTED'){pixelScale=1;syncUrl(r.frame);render()}else showHint('Terrain root reached')})}
-function hits(q){q=q.trim().toLowerCase();if(!q)return[];const out=[];for(const p of workspace.projects){if([p.project.label,p.project.purpose,p.project.projectRef].some(v=>String(v).toLowerCase().includes(q)))out.push({key:`project:${p.project.projectRef}`,label:p.project.label,meta:p.project.projectRef});for(const i of p.items)if([i.label,i.purpose,i.workRef,i.state].some(v=>String(v).toLowerCase().includes(q)))out.push({key:`work:${p.project.projectRef}:${i.workRef}`,label:i.label,meta:`${p.project.label} · ${i.state}`})}return out.slice(0,18)}function renderSearch(){const found=hits(search.value);searchResults.replaceChildren();searchResults.hidden=!search.value.trim();found.forEach(h=>{const b=el('button','result');b.type='button';b.append(el('strong','',h.label),el('small','',h.meta));b.onclick=()=>{search.value='';searchResults.hidden=true;travel(h.key,RELATIONSHIP.SEARCH_PORTAL,'action.terrain.search-portal')};searchResults.append(b)})}
-document.getElementById('inspectToggle').onclick=()=>inspect.classList.toggle('open');document.getElementById('historyToggle').onclick=()=>historyPanel.classList.toggle('open');search.oninput=renderSearch;stage.addEventListener('wheel',onWheel,{passive:false});window.onresize=render;window.addEventListener('popstate',()=>{if(!workspace)return;session=createTerrainSession({workspace,initialNodeKey:keyFromUrl()});pixelScale=1;render()});fetch(WORKSPACE_URL,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(`HTTP ${r.status}`);return r.json()}).then(data=>{if(data?.schemaVersion!=='vexwork.public-workspace/v1'||data.effects!==false||data.executionAuthority!=='NONE')throw new Error('workspace projection boundary invalid');workspace=data;session=createTerrainSession({workspace,initialNodeKey:keyFromUrl()});syncUrl(session.currentFrame(),{replace:true});render()}).catch(err=>{summary.textContent=err.message;showHint('Terrain unavailable; canonical VexWork truth is unchanged')});
-</script></body></html>
-<!-- [VXG RealForever][VEXWORK][TERRAIN][EXPERIMENTAL-V2] -->
+import {RELATIONSHIP,createTerrainSession,structuralPath} from './terrain-reader.js';
+import * as Flow from './terrain-flow-reader.js';
+
+const WORKSPACE_URL='./public/workspace.json';
+const ACTIVE=new Set(['CONTEXT_ADMITTED','RUNNING','WAITING_TOOL']);
+const REVIEW=new Set(['VERIFYING','WAITING_HUMAN','HELD_UNKNOWN']);
+const WAITING=new Set(['WAITING_DEPENDENCIES','WAITING_RESOURCE','PAUSED_AT_CHECKPOINT']);
+const DONE=new Set(['COMPLETED','CONVERGED','CLOSED']);
+const BLOCKED=new Set(['BLOCKED','FAILED_RECOVERABLE']);
+const PENDING=new Set(['CAPTURED','NEEDS_CLARIFICATION','DECOMPOSED','PLAN_VALIDATED']);
+const ARCHIVE=new Set(['SUPERSEDED','CANCELLED']);
+const SEMANTIC_WHEEL_TRAVERSAL_ENABLED=false;
+
+let workspace=null;
+let session=null;
+let cameraPath=[];
+let hoveredKey=null;
+let wheel={candidate:null,inward:0,outwardAt:0};
+let seq=0;
+let viewMode=new URLSearchParams(location.search).get('mode')==='roadmap'?'roadmap':'terrain';
+let timeLensHours=Number(new URLSearchParams(location.search).get('hours')||0);if(![0,6,24,168].includes(timeLensHours))timeLensHours=0;
+const collapsedProjects=new Set();
+let collapseInitialized=false;
+
+const surface=document.getElementById('surface');
+const stage=document.getElementById('stage');
+const search=document.getElementById('search');
+const results=document.getElementById('searchResults');
+const inspect=document.getElementById('inspect');
+const journey=document.getElementById('journey');
+const journeyTrack=document.getElementById('journeyTrack');
+const hint=document.getElementById('hint');
+const orientationTitle=document.getElementById('orientationTitle');
+const orientationSummary=document.getElementById('orientationSummary');
+const orientationMeta=document.getElementById('orientationMeta');
+const modeButtons=[...document.querySelectorAll('[data-mode]')];
+const timeButtons=[...document.querySelectorAll('[data-hours]')];
+
+const el=(tag,cls,text='')=>{const n=document.createElement(tag);if(cls)n.className=cls;n.textContent=String(text);return n};
+function syncPresentationUrl(){const u=new URL(location.href);if(viewMode==='roadmap')u.searchParams.set('mode','roadmap');else u.searchParams.delete('mode');if(timeLensHours)u.searchParams.set('hours',String(timeLensHours));else u.searchParams.delete('hours');history.replaceState(history.state,'',u)}
+function refreshControls(){modeButtons.forEach(button=>button.classList.toggle('current',button.dataset.mode===viewMode));timeButtons.forEach(button=>button.classList.toggle('current',Number(button.dataset.hours)===timeLensHours));document.querySelector('.time-switch').hidden=viewMode==='roadmap'}
+function setViewMode(mode){viewMode=mode;syncPresentationUrl();refreshControls();render()}
+function setTimeLens(hours){timeLensHours=hours;syncPresentationUrl();refreshControls();render()}
+modeButtons.forEach(button=>button.onclick=()=>setViewMode(button.dataset.mode));
+timeButtons.forEach(button=>button.onclick=()=>setTimeLens(Number(button.dataset.hours)));
+function tone(state){if(DONE.has(state))return'done';if(BLOCKED.has(state))return'blocked';if(REVIEW.has(state))return'attention';if(WAITING.has(state))return'waiting';if(PENDING.has(state)||ARCHIVE.has(state))return'pending';return'open'}
+function currentLike(state){return ACTIVE.has(state)||REVIEW.has(state)||BLOCKED.has(state)}
+function stateEvidence(item){const history=item?.transitionHistory||[];const exact=[...history].reverse().find((entry)=>entry.nextState===item.state);if(exact?.createdAt)return{at:exact.createdAt,coverage:'transition',actorRef:exact.actorRef||null};if(item?.updatedAt)return{at:item.updatedAt,coverage:'snapshot',actorRef:null};return null}
+function ageText(iso){const at=Date.parse(iso);if(!Number.isFinite(at))return'unknown';const minutes=Math.max(0,Math.floor((Date.now()-at)/60000)),hours=Math.floor(minutes/60),mins=minutes%60;return String(hours).padStart(2,'0')+':'+String(mins).padStart(2,'0')+' ago'}
+function stateAgeText(item){const evidence=stateEvidence(item);if(!evidence)return item.state+' · time unknown';return item.state+' · '+(evidence.coverage==='snapshot'?'snapshot ':'')+ageText(evidence.at)}
+function addAgeData(node,item){const evidence=stateEvidence(item);if(evidence){node.dataset.stateAt=evidence.at;node.dataset.stateCoverage=evidence.coverage;node.dataset.stateName=item.state}}
+function refreshAges(){document.querySelectorAll('[data-state-at]').forEach((node)=>{const coverage=node.dataset.stateCoverage==='snapshot'?'snapshot ':'';node.textContent=node.dataset.stateName+' · '+coverage+ageText(node.dataset.stateAt)})}
+function continuityWindow(items,max=6){
+  if(!items.length)return[];
+  const anchors=[];
+  items.forEach((item,index)=>{if(currentLike(item.state))anchors.push(index)});
+  if(!anchors.length){items.forEach((item,index)=>{if(item.state==='READY')anchors.push(index)})}
+  let latestIndex=-1;
+  if(!anchors.length){let latest=-Infinity;items.forEach((item,index)=>{if(!DONE.has(item.state))return;const evidence=stateEvidence(item);const at=evidence?Date.parse(evidence.at):NaN;if(Number.isFinite(at)&&at>latest){latest=at;latestIndex=index}});if(latestIndex>=0)anchors.push(latestIndex)}
+  if(!anchors.length)anchors.push(0);
+  const roles=new Map();
+  for(const index of anchors){roles.set(index,currentLike(items[index].state)?'current':(DONE.has(items[index].state)?'latest':'current'));if(index>0&&!roles.has(index-1))roles.set(index-1,'prior');if(index+1<items.length&&!roles.has(index+1))roles.set(index+1,'next')}
+  let indices=[...roles.keys()].sort((a,b)=>a-b);
+  if(indices.length>max){const currentIndices=new Set(anchors);indices=indices.sort((a,b)=>{const ac=currentIndices.has(a)?0:1,bc=currentIndices.has(b)?0:1;return ac-bc||a-b}).slice(0,max).sort((a,b)=>a-b)}
+  return indices.map((index)=>({item:items[index],role:roles.get(index)||''}));
+}
+function continuityRoles(items){return new Map(continuityWindow(items,items.length).map(({item,role})=>[item.workRef,role]))}
+function showHint(text){hint.textContent=text;hint.hidden=false;clearTimeout(showHint.t);showHint.t=setTimeout(()=>hint.hidden=true,2200)}
+function projectByRef(ref){return workspace.projects.find(p=>p.project.projectRef===ref)||null}
+function itemByRef(project,ref){return(project?.items||[]).find(i=>i.workRef===ref)||null}
+function nodeKeyFor(project,item){return item?`work:${project.project.projectRef}:${item.workRef}`:`project:${project.project.projectRef}`}
+function parseKey(key){
+  if(key==='workspace:vexwork')return{kind:'WORKSPACE',project:null,item:null};
+  if(key.startsWith('project:')){const project=projectByRef(key.slice(8));return{kind:'PROJECT',project,item:null}}
+  if(key.startsWith('work:')){
+    const body=key.slice(5),i=body.indexOf(':work.');
+    const project=projectByRef(body.slice(0,i)),item=itemByRef(project,body.slice(i+1));
+    return{kind:'WORK',project,item};
+  }
+  return{kind:'UNKNOWN',project:null,item:null};
+}
+function cameraKey(){return cameraPath.at(-1)||'workspace:vexwork'}
+function pathForKey(key){return structuralPath(workspace,key).slice(1).map(n=>n.nodeKey)}
+function keyFromUrl(){const p=new URLSearchParams(location.search),project=p.get('project'),work=p.get('work');return work&&project?`work:${project}:${work}`:project?`project:${project}`:'workspace:vexwork'}
+function syncUrlForExplicit(key,{replace=false}={}){const p=parseKey(key),u=new URL(location.href);u.search='';if(p.project)u.searchParams.set('project',p.project.project.projectRef);if(p.item)u.searchParams.set('work',p.item.workRef);history[replace?'replaceState':'pushState']({vexworkTerrain:true},'',u)}
+function childrenFor(key){
+  const p=parseKey(key);
+  if(p.kind==='WORKSPACE')return workspace.projects.map(project=>({key:nodeKeyFor(project,null),project,item:null}));
+  if(p.kind==='PROJECT')return p.project.project.rootWorkRefs.map(ref=>itemByRef(p.project,ref)).filter(Boolean).map(item=>({key:nodeKeyFor(p.project,item),project:p.project,item}));
+  if(p.kind==='WORK')return(p.item.childWorkRefs||[]).map(ref=>itemByRef(p.project,ref)).filter(Boolean).map(item=>({key:nodeKeyFor(p.project,item),project:p.project,item}));
+  return[];
+}
+function surfaceItemsForProject(project){
+  const roots=project.project.rootWorkRefs.map(ref=>itemByRef(project,ref)).filter(Boolean);
+  if(roots.length===1){
+    const child=(roots[0].childWorkRefs||[]).map(ref=>itemByRef(project,ref)).filter(Boolean);
+    if(child.length)return child;
+  }
+  return roots;
+}
+function chip(state,label=state){const n=el('span','chip '+tone(state),label);return n}
+function previewButton(project,item,role=''){
+  const b=el('button','preview');b.type='button';b.dataset.nodeKey=nodeKeyFor(project,item);b.dataset.tone=tone(item.state);if(role)b.dataset.continuity=role;
+  if(role)b.append(el('span','continuity-mark',role==='latest'?'latest completed':role));
+  const status=el('small','state-age',stateAgeText(item));addAgeData(status,item);
+  b.append(el('strong','',item.label),status);
+  b.onmouseenter=()=>hoveredKey=b.dataset.nodeKey;b.onmouseleave=()=>{if(hoveredKey===b.dataset.nodeKey)hoveredKey=null};
+  b.onclick=(e)=>{e.stopPropagation();explicitEnter(b.dataset.nodeKey,RELATIONSHIP.CONTAINS,'action.terrain.click')};
+  return b;
+}
+function appendPreviewStrip(container,project,items,max=6){
+  const windowItems=continuityWindow(items,max);
+  windowItems.forEach(({item,role})=>container.append(previewButton(project,item,role)));
+  if(items.length>windowItems.length)container.append(el('span','preview-more',`+${items.length-windowItems.length} outside continuity`));
+  if(!items.length)container.append(el('span','preview-more','no deeper work'));
+}
+function projectBand(project,index){
+  const band=el('article','project-band');band.dataset.nodeKey=nodeKeyFor(project,null);
+  const lead=el('button','project-lead');lead.type='button';lead.append(el('div','eyebrow',`Project ${index+1}`),el('div','project-title',project.project.label),el('div','purpose',project.project.purpose));
+  const meta=el('div','band-meta'),root=project.rootItems?.[0]||null;
+  if(root?.state){meta.append(chip(root.state));const age=el('span','chip',stateAgeText(root));addAgeData(age,root);meta.append(age)}
+  meta.append(el('span','chip',`${project.summary.openWorkItemCount} open`),el('span','chip',`${project.summary.completedCount} done`));lead.append(meta);
+  lead.onmouseenter=()=>hoveredKey=band.dataset.nodeKey;lead.onmouseleave=()=>{if(hoveredKey===band.dataset.nodeKey)hoveredKey=null};
+  lead.onclick=()=>explicitEnter(band.dataset.nodeKey,RELATIONSHIP.PROJECT,'action.terrain.click');
+  const previews=el('div','preview-strip');appendPreviewStrip(previews,project,surfaceItemsForProject(project),6);
+  band.append(lead,previews);return band;
+}
+function flowCard(project,item,{projected=false}={}){
+  const button=el('button','flow-card'+(projected?' projected':''));button.type='button';button.dataset.tone=tone(item.state);
+  const status=el('small','state-age',stateAgeText(item));addAgeData(status,item);
+  button.append(el('strong','',item.label),status);
+  button.onclick=()=>explicitEnter(nodeKeyFor(project,item),RELATIONSHIP.SEARCH_PORTAL,'action.terrain.flow-card');
+  return button;
+}
+function flowCell(project,title,items,{projected=false}={}){
+  const cell=el('div','flow-cell'),label=el('span','flow-cell-title',title),stack=el('div','flow-stack');cell.append(label,stack);
+  if(items.length)items.slice(0,3).forEach(item=>stack.append(flowCard(project,item,{projected})));else stack.append(el('div','empty-cell','—'));
+  if(items.length>3)stack.append(el('div','empty-cell','+'+(items.length-3)+' more'));
+  return cell;
+}
+function recentStrip(project,items){
+  const strip=el('div','recent-strip');strip.append(el('span','','recent '+(timeLensHours===168?'7d':timeLensHours+'h')));
+  items.slice(0,5).forEach(item=>{const pill=el('button','recent-pill',item.label+' · '+stateAgeText(item));pill.type='button';pill.onclick=()=>explicitEnter(nodeKeyFor(project,item),RELATIONSHIP.SEARCH_PORTAL,'action.terrain.recent');strip.append(pill)});
+  if(items.length>5)strip.append(el('span','','+'+(items.length-5)+' more'));
+  return strip;
+}
+function workfrontRow(project,row){
+  const wrap=el('div','workfront-row'),label=el('div','workfront-label');label.append(el('strong','',row.label),el('small','',row.basis.replaceAll('_',' ')));wrap.append(label);
+  wrap.append(flowCell(project,'Prior',row.priorItems),flowCell(project,'Now',row.currentItems),flowCell(project,'Next',[...row.nextDependencyItems,...row.nextStructuralItems],{projected:row.nextDependencyItems.length===0&&row.nextStructuralItems.length>0}));
+  if(timeLensHours&&row.recentItems.length)wrap.append(recentStrip(project,row.recentItems));
+  return wrap;
+}
+function projectRoadSection(project,index){
+  const projection=Flow.projectWorkfronts(project,{recentHours:timeLensHours,maxRows:6}),summary=Flow.projectActivitySummary(project,{recentHours:timeLensHours});
+  if(!collapseInitialized&&summary.running===0&&summary.review===0&&summary.blocked===0&&summary.ready===0)collapsedProjects.add(project.project.projectRef);
+  const road=el('article','project-road');road.dataset.collapsed=collapsedProjects.has(project.project.projectRef)?'true':'false';
+  const head=el('header','project-road-head'),fold=el('button','fold-project',road.dataset.collapsed==='true'?'▸':'▾');fold.type='button';
+  const copy=el('div','project-road-copy');copy.append(el('strong','',project.project.label),el('span','',project.project.purpose));
+  const summaryBox=el('div','project-road-summary');
+  if(summary.running)summaryBox.append(el('span','chip open',summary.running+' active'));
+  if(summary.review)summaryBox.append(el('span','chip waiting',summary.review+' review'));
+  if(summary.blocked)summaryBox.append(el('span','chip blocked',summary.blocked+' blocked'));
+  if(summary.ready)summaryBox.append(el('span','chip open',summary.ready+' ready'));
+  if(!summary.running&&!summary.review&&!summary.blocked&&!summary.ready)summaryBox.append(el('span','chip done','no active work'));
+  if(timeLensHours&&summary.recentExactTransitionCount)summaryBox.append(el('span','chip',summary.recentExactTransitionCount+' recent moves'));
+  const actions=el('div','project-road-actions'),open=el('button','','Open'),roadmap=el('button','','Roadmap');open.type=roadmap.type='button';
+  open.onclick=()=>explicitEnter(nodeKeyFor(project,null),RELATIONSHIP.PROJECT,'action.terrain.project-open');
+  roadmap.onclick=()=>{const u=new URL(location.href);u.searchParams.set('project',project.project.projectRef);u.searchParams.delete('work');history.replaceState(history.state,'',u);cameraPath=[nodeKeyFor(project,null)];setViewMode('roadmap')};
+  actions.append(open,roadmap);summaryBox.append(actions);
+  fold.onclick=()=>{const ref=project.project.projectRef;if(collapsedProjects.has(ref))collapsedProjects.delete(ref);else collapsedProjects.add(ref);render()};
+  head.append(fold,copy,summaryBox);
+  const body=el('div','project-road-body');if(projection.rows.length)projection.rows.forEach(row=>body.append(workfrontRow(project,row)));else body.append(el('div','empty','No current, ready, or recently completed workfront.'));
+  if(projection.hiddenRowCount)body.append(el('div','preview-more','+'+projection.hiddenRowCount+' other workfronts'));
+  road.append(head,body);return road;
+}
+function roadmapStepCell(project,step){
+  const cell=el('div','roadmap-cell');cell.dataset.basis=step?.basis||'EMPTY';
+  if(!step?.items?.length){cell.append(el('div','empty-cell','—'));return cell}
+  step.items.slice(0,3).forEach(item=>cell.append(flowCard(project,item,{projected:step.basis==='STRUCTURAL'||step.basis==='LATER_UNSEQUENCED'})));
+  if(step.items.length>3)cell.append(el('div','empty-cell','+'+(step.items.length-3)+' more'));
+  return cell;
+}
+function roadmapProjectSection(project){
+  const road=Flow.projectScopeRoadmap(project,{maxSteps:3}),section=el('section','roadmap-project');
+  const head=el('header','project-road-head'),spacer=el('span','','◇'),copy=el('div','project-road-copy');copy.append(el('strong','',project.project.label),el('span','','Sequence steps are dependency-grounded where possible; Later is not an ETA.'));
+  const actions=el('div','project-road-actions'),terrain=el('button','','Terrain');terrain.type='button';terrain.onclick=()=>{const u=new URL(location.href);u.searchParams.set('project',project.project.projectRef);u.searchParams.delete('work');history.replaceState(history.state,'',u);cameraPath=[nodeKeyFor(project,null)];setViewMode('terrain')};actions.append(terrain);head.append(spacer,copy,actions);section.append(head);
+  const grid=el('div','roadmap-grid'),labels=el('div','roadmap-head');['Workfront','Now','+1','+2','+3','Later / parallel'].forEach(label=>labels.append(el('div','',label)));grid.append(labels);
+  if(!road.rows.length)grid.append(el('div','empty','No active/ready sequence anchor.'));
+  for(const row of road.rows){
+    const line=el('div','roadmap-row'),label=el('div','roadmap-label');label.append(el('strong','',row.label),el('small','','sequence, not calendar estimate'));line.append(label);
+    for(let distance=0;distance<=3;distance++)line.append(roadmapStepCell(project,row.steps.find(step=>step.distance===distance)||null));
+    line.append(roadmapStepCell(project,{basis:'LATER_UNSEQUENCED',items:row.laterItems}));grid.append(line);
+  }
+  section.append(grid,el('div','roadmap-note','Solid future = dependency-grounded sequence. Dotted future = admitted structural/later work whose exact order may still change.'));return section;
+}
+function renderRoadmap(){
+  const stack=el('div','roadmap-stack'),params=new URLSearchParams(location.search),scoped=params.get('project'),projects=scoped?[projectByRef(scoped)].filter(Boolean):workspace.projects;
+  projects.forEach(project=>stack.append(roadmapProjectSection(project)));surface.replaceChildren(stack);
+  orientationTitle.textContent=scoped?(projectByRef(scoped)?.project.label||'Roadmap'):'Live Roadmap';
+  orientationSummary.textContent='Sequence is shown before time: Now, dependency-grounded next steps, and dotted later/parallel work.';
+  orientationMeta.textContent=scoped?'Project roadmap · sequence distance':'Portfolio roadmap · sequence distance';
+}
+function contextTrail(){
+  const wrap=el('div','context-strip');
+  const keys=['workspace:vexwork',...cameraPath];
+  keys.forEach((key,index)=>{const p=parseKey(key),label=key==='workspace:vexwork'?'VexWork':p.kind==='PROJECT'?p.project.project.label:p.item?.label||key;const b=el('button','context-pill'+(index===keys.length-1?' current':''),label);b.type='button';b.onclick=()=>{cameraPath=index===0?[]:cameraPath.slice(0,index);render()};wrap.append(b)});
+  return wrap;
+}
+function siblingContext(){
+  if(!cameraPath.length)return null;
+  const parentKey=cameraPath.length===1?'workspace:vexwork':cameraPath.at(-2);
+  const current=cameraKey(),siblings=childrenFor(parentKey);
+  const wrap=el('div','context-strip');
+  siblings.slice(0,12).forEach(s=>{const label=s.item?s.item.label:s.project.project.label;const b=el('button','context-pill'+(s.key===current?' current':''),label);b.type='button';b.onclick=()=>{cameraPath=[...cameraPath.slice(0,-1),s.key];render()};wrap.append(b)});
+  if(siblings.length>12)wrap.append(el('span','context-pill',`+${siblings.length-12} siblings`));
+  return wrap;
+}
+function stratumRow(entry,role=''){
+  const {project,item,key}=entry,kids=(item.childWorkRefs||[]).map(ref=>itemByRef(project,ref)).filter(Boolean);
+  const row=el('article','stratum'+(kids.length?'':' leaf'));row.dataset.nodeKey=key;row.dataset.tone=tone(item.state);if(role)row.dataset.continuity=role;
+  const main=el('button','stratum-main');main.type='button';if(role)main.append(el('div','continuity-mark',role==='latest'?'latest completed':role));main.append(el('div','eyebrow',item.workClass),el('div','stratum-title',item.label),el('div','purpose',item.purpose));
+  const meta=el('div','band-meta');meta.append(chip(item.state),el('span','chip',item.priorityClass));const age=el('span','chip state-age',stateAgeText(item));addAgeData(age,item);meta.append(age);if(item.dependencyRefs?.length)meta.append(el('span','chip',`${item.dependencyRefs.length} dep${item.dependencyRefs.length===1?'':'s'}`));main.append(meta);
+  main.onmouseenter=()=>hoveredKey=key;main.onmouseleave=()=>{if(hoveredKey===key)hoveredKey=null};
+  main.onclick=()=>explicitEnter(key,RELATIONSHIP.CONTAINS,'action.terrain.click');
+  const next=el('div','stratum-next');if(kids.length)appendPreviewStrip(next,project,kids,5);else next.textContent='Leaf work · inspect for exact relationships';
+  row.append(main,next);return row;
+}
+function renderWorkspace(){
+  const stack=el('div','workspace-stack');workspace.projects.forEach((project,index)=>stack.append(projectRoadSection(project,index)));surface.replaceChildren(stack);collapseInitialized=true;
+  orientationTitle.textContent='VexWork';
+  orientationSummary.textContent='Projects expand into concurrent workfront rows. Vertical = parallel work; horizontal = prior, now, next.';
+  orientationMeta.textContent=workspace.projects.length+' Projects · '+(timeLensHours?timeLensHours+'h movement':'Now');
+}
+function renderFocus(){
+  const key=cameraKey(),parsed=parseKey(key),children=childrenFor(key);
+  const layout=el('div','focus-layout');layout.append(contextTrail());
+  const sib=siblingContext();if(sib)layout.append(sib);
+  const head=el('header','focus-head'),copy=el('div','');
+  const label=parsed.kind==='PROJECT'?parsed.project.project.label:parsed.item.label;
+  const purpose=parsed.kind==='PROJECT'?parsed.project.project.purpose:parsed.item.purpose;
+  copy.append(el('div','eyebrow',parsed.kind==='PROJECT'?'Project terrain':parsed.item.workClass),el('h1','',label),el('div','purpose',purpose));
+  const meta=el('div','band-meta');
+  if(parsed.item?.state)meta.append(chip(parsed.item.state));
+  meta.append(el('span','chip',`${children.length} deeper`));copy.append(meta);
+  const actions=el('div','focus-actions'),inspectButton=el('button','tool','Inspect'),journeyButton=el('button','tool','Journey');
+  inspectButton.type=journeyButton.type='button';inspectButton.onclick=()=>{inspect.classList.toggle('open');renderInspect()};journeyButton.onclick=()=>{journey.classList.toggle('open');renderJourney()};actions.append(inspectButton,journeyButton);head.append(copy,actions);layout.append(head);
+  const list=el('div','strata-list');
+  if(children.length){const roles=continuityRoles(children.map((entry)=>entry.item));children.forEach((entry)=>list.append(stratumRow(entry,roles.get(entry.item.workRef)||'')))}else list.append(el('div','empty','No deeper containment here. Inspect shows exact identity, dependencies and provenance without inventing another visual layer.'));
+  layout.append(list);surface.replaceChildren(layout);
+  orientationTitle.textContent=label;orientationSummary.textContent=purpose;orientationMeta.textContent=`${cameraPath.length} layer${cameraPath.length===1?'':'s'} revealed · click/search traversal`;
+}
+function render(){if(!workspace)return;refreshControls();if(viewMode==='roadmap')renderRoadmap();else if(cameraPath.length)renderFocus();else renderWorkspace();renderInspect();renderJourney()}
+function cameraEnter(key){if(!key||key===cameraKey())return;const direct=childrenFor(cameraKey()).some(x=>x.key===key);if(!direct)return;cameraPath.push(key);wheel={candidate:null,inward:0,outwardAt:0};render()}
+function cameraOut(){if(!cameraPath.length){showHint('Whole VexWork field is already visible');return}cameraPath.pop();wheel={candidate:null,inward:0,outwardAt:0};render()}
+async function explicitEnter(key,relationshipKind,actionRef){
+  const current=session.currentFrame().focus.nodeKey;
+  let result;
+  if(current===key){result={state:'ALREADY_PRESENT'}}else{
+    try{result=await session.navigate(key,relationshipKind,{commandRef:`command.terrain.explicit.${++seq}`,actionRef})}
+    catch{result=await session.navigate(key,RELATIONSHIP.SEARCH_PORTAL,{commandRef:`command.terrain.portal.${++seq}`,actionRef:'action.terrain.explicit-portal'})}
+  }
+  viewMode='terrain';cameraPath=pathForKey(key);syncUrlForExplicit(key);syncPresentationUrl();render();if(result.state==='DUPLICATE_EXACT_NOOP')showHint('Already represented in explicit Journey')
+}
+function scrollPathCanMove(target,direction){
+  let n=target?.nodeType===1?target:target?.parentElement;
+  while(n&&n!==document.body){
+    const s=getComputedStyle(n);
+    if(/(auto|scroll|overlay)/.test(s.overflowY)&&n.scrollHeight>n.clientHeight+1){
+      if(direction<0&&n.scrollTop>1)return true;
+      if(direction>0&&n.scrollTop+n.clientHeight<n.scrollHeight-1)return true;
+    }
+    n=n.parentElement;
+  }
+  return false;
+}
+function onWheel(e){
+  if(!SEMANTIC_WHEEL_TRAVERSAL_ENABLED)return;
+  const direction=e.deltaY>0?1:-1;
+  if(scrollPathCanMove(e.target,direction)){wheel={candidate:null,inward:0,outwardAt:0};return}
+  if(Math.abs(e.deltaX)>Math.abs(e.deltaY))return;
+  e.preventDefault();
+  if(direction<0){
+    const candidate=hoveredKey;
+    if(candidate!==wheel.candidate){wheel.candidate=candidate;wheel.inward=0}
+    wheel.inward+=Math.abs(e.deltaY);
+    if(candidate&&wheel.inward>360){cameraEnter(candidate);showHint('More detail revealed · semantic Journey unchanged')}
+    return;
+  }
+  wheel.candidate=null;wheel.inward=0;
+  const now=performance.now();
+  if(!wheel.outwardAt||now-wheel.outwardAt>3000){wheel.outwardAt=now;showHint('Outer boundary reached · release, then scroll again to reveal less detail');return}
+  const gap=now-wheel.outwardAt;wheel.outwardAt=now;if(gap<220)return;wheel.outwardAt=0;cameraOut();
+}
+function renderInspect(){
+  if(!workspace)return;
+  const key=cameraKey(),p=parseKey(key);
+  inspect.replaceChildren();
+  const head=el('div','inspect-head'),title=el('strong','','Inspect'),close=el('button','inspect-close','Close');close.type='button';close.onclick=()=>inspect.classList.remove('open');head.append(title,close);inspect.append(head);
+  const semanticRef=key==='workspace:vexwork'?'workspace.vexwork':p.kind==='PROJECT'?p.project.project.projectRef:p.item.workRef;
+  inspect.append(el('h4','','Perceptual context'),el('code','',`Camera focus: ${semanticRef}\nCamera depth: ${cameraPath.length}\n\nZooming through containment does not append semantic Journey history.`));
+  if(p.kind==='WORK'){
+    const evidence=stateEvidence(p.item),actors=[...new Set((p.item.transitionHistory||[]).map((entry)=>entry.actorRef).filter(Boolean))],handoffs=(p.item.transitionHistory||[]).reduce((count,entry,index,history)=>index>0&&entry.actorRef&&history[index-1].actorRef&&entry.actorRef!==history[index-1].actorRef?count+1:count,0);
+    inspect.append(el('h4','','State'),el('code','',`${p.item.state}\n${p.item.priorityClass}\n${p.item.workClass}\n${evidence?stateAgeText(p.item):'time unknown'}`),el('h4','','Participation evidence'),el('code','',actors.length?`Recorded lifecycle actors: ${actors.length}\nRecorded actor handoffs: ${handoffs}\n${actors.join('\n')}\n\nCoverage: accepted lifecycle transitions only; this is not a total worker/thread count.`:'No transition actors recorded.\n\nCoverage: current Workgraph does not yet model total worker/thread participation.'),el('h4','','Dependencies'),el('code','',(p.item.dependencyRefs||[]).join('\n')||'None'),el('h4','','Sources'),el('code','',(p.item.sourceRefs||[]).join('\n')||'None'));
+  }else if(p.kind==='PROJECT'){
+    inspect.append(el('h4','','Project'),el('code','',`${p.project.project.projectRef}\n${p.project.summary.openWorkItemCount} open\n${p.project.summary.completedCount} completed`));
+  }
+  const frame=session?.currentFrame();
+  if(frame)inspect.append(el('h4','','Last explicit semantic position'),el('code','',frame.focus.semanticRef),el('h4','','Explicit traversal path'),el('code','',frame.traversalPath.map(s=>(s.relationshipKind?`${s.relationshipKind} → `:'')+s.semanticRef).join('\n')));
+}
+function renderJourney(){
+  if(!session)return;journeyTrack.replaceChildren();
+  const events=session.journey();
+  if(!events.length){journeyTrack.append(el('span','context-pill','No explicit jumps yet · camera zoom does not pollute Journey'));return}
+  events.forEach((event,index)=>{const b=el('button','event');b.type='button';b.append(el('strong','',event.after.focus.label),el('small','',event.relationshipKind));b.onclick=()=>{const v=session.inspectHistory(index);inspect.classList.add('open');renderInspect();inspect.append(el('h4','','History inspection'),el('code','',`Current explicit position: ${v.currentFrame.focus.semanticRef}\nInspecting: ${v.inspectedFrame.focus.semanticRef}\n\nHistory inspection does not move the camera or semantic position.`))};journeyTrack.append(b)})
+}
+function hits(q){
+  q=q.trim().toLowerCase();if(!q)return[];
+  const out=[];
+  for(const p of workspace.projects){
+    if([p.project.label,p.project.purpose,p.project.projectRef].some(v=>String(v).toLowerCase().includes(q)))out.push({key:nodeKeyFor(p,null),label:p.project.label,meta:p.project.projectRef,rel:RELATIONSHIP.SEARCH_PORTAL});
+    for(const i of p.items)if([i.label,i.purpose,i.workRef,i.state].some(v=>String(v).toLowerCase().includes(q)))out.push({key:nodeKeyFor(p,i),label:i.label,meta:`${p.project.label} · ${i.state}`,rel:RELATIONSHIP.SEARCH_PORTAL});
+  }
+  return out.slice(0,18);
+}
+function renderSearch(){
+  const found=hits(search.value);results.replaceChildren();results.hidden=!search.value.trim();
+  found.forEach(h=>{const b=el('button','result');b.type='button';b.append(el('strong','',h.label),el('small','',h.meta));b.onclick=async()=>{search.value='';results.hidden=true;await explicitEnter(h.key,h.rel,'action.terrain.search-portal')};results.append(b)})
+}
+search.oninput=renderSearch;
+stage.addEventListener('wheel',onWheel,{passive:false});
+window.addEventListener('keydown',(event)=>{if(event.key==='Escape'){inspect.classList.remove('open');journey.classList.remove('open');results.hidden=true}});
+setInterval(refreshAges,60000);
+window.addEventListener('popstate',()=>{if(!workspace)return;const params=new URLSearchParams(location.search),key=keyFromUrl();viewMode=params.get('mode')==='roadmap'?'roadmap':'terrain';timeLensHours=Number(params.get('hours')||0);if(![0,6,24,168].includes(timeLensHours))timeLensHours=0;cameraPath=key==='workspace:vexwork'?[]:pathForKey(key);session=createTerrainSession({workspace,initialNodeKey:key});render()});
+
+fetch(WORKSPACE_URL,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(`HTTP ${r.status}`);return r.json()}).then(data=>{
+  if(data?.schemaVersion!=='vexwork.public-workspace/v1'||data.effects!==false||data.executionAuthority!=='NONE')throw new Error('workspace projection boundary invalid');
+  workspace=data;
+  const key=keyFromUrl();
+  cameraPath=key==='workspace:vexwork'?[]:pathForKey(key);
+  session=createTerrainSession({workspace,initialNodeKey:key});
+  syncUrlForExplicit(key,{replace:true});
+  syncPresentationUrl();refreshControls();render();
+}).catch(error=>{orientationSummary.textContent=error.message;showHint('Terrain unavailable; canonical VexWork truth is unchanged')});
+</script>
+</body>
+</html>
+<!-- [VXG RealForever][VEXWORK][TERRAIN][PERCEPTUAL-DEPTH] -->

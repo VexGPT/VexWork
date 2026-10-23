@@ -2,6 +2,7 @@ import { verifySemanticFingerprint, withSemanticFingerprint } from './semantic.m
 import { projectWorkRefs, requestTransition } from './workgraph.mjs';
 
 export const PROJECT_AGENCY_POLICY_SCHEMA = 'vexwork.project-agency-policy/v1';
+export const PROJECT_AGENCY_POLICY_SCHEMA_V2 = 'vexwork.project-agency-policy/v2';
 export const TRANSITION_PROPOSAL_SCHEMA = 'vexwork.transition-proposal/v1';
 export const HUMAN_TRANSITION_RESPONSE_SCHEMA = 'vexwork.human-transition-response/v1';
 export const AI_TRANSITION_CONFIRMATION_SCHEMA = 'vexwork.ai-transition-confirmation/v1';
@@ -112,13 +113,44 @@ function knownLaneRefs(registry) {
   return new Set(registry.boardLanes.map((lane) => lane.laneRef));
 }
 
-function protectedPhaseLaneRefs(policy) {
-  return new Set(policy.handshakeLaneTransitions.flatMap((boundary) => [boundary.fromLaneRef, boundary.toLaneRef]));
+function validateBoundaryApplicability(boundary, registry, schemaVersion) {
+  if (boundary.appliesTo === undefined) return;
+  assert(schemaVersion === PROJECT_AGENCY_POLICY_SCHEMA_V2, 'boundary appliesTo requires Project Agency Policy v2');
+  const appliesTo = boundary.appliesTo;
+  assert(appliesTo && typeof appliesTo === 'object' && !Array.isArray(appliesTo), 'boundary appliesTo must be one object');
+  const workClasses = appliesTo.workClasses ?? [];
+  const workRefs = appliesTo.workRefs ?? [];
+  assert(Array.isArray(workClasses), 'boundary appliesTo.workClasses must be an array');
+  assert(Array.isArray(workRefs), 'boundary appliesTo.workRefs must be an array');
+  assert(workClasses.length > 0 || workRefs.length > 0, 'boundary appliesTo must select at least one workClass or workRef');
+  assert(new Set(workClasses).size === workClasses.length, 'boundary appliesTo.workClasses must be unique');
+  for (const workClass of workClasses) {
+    assert(registry.workClasses.includes(workClass), `unsupported boundary workClass ${workClass}`);
+  }
+  refs(workRefs, 'boundary appliesTo.workRefs');
+}
+
+function boundaryAppliesToWork({ boundary, graph = null, workRef = null }) {
+  if (boundary.appliesTo === undefined) return true;
+  assert(graph !== null && workRef !== null, 'scoped handshake boundary requires Workgraph and workRef');
+  assert(verifySemanticFingerprint(graph), 'Workgraph semanticFingerprint mismatch for scoped handshake boundary');
+  stableRef(workRef, 'workRef');
+  const item = graph.items.find((candidate) => candidate.workRef === workRef);
+  assert(item, `unknown workRef ${workRef}`);
+  const workClasses = boundary.appliesTo.workClasses ?? [];
+  const workRefs = boundary.appliesTo.workRefs ?? [];
+  return workClasses.includes(item.workClass) || workRefs.includes(item.workRef);
+}
+
+function protectedPhaseLaneRefs(policy, graph = null, workRef = null) {
+  return new Set(policy.handshakeLaneTransitions
+    .filter((boundary) => boundaryAppliesToWork({ boundary, graph, workRef }))
+    .flatMap((boundary) => [boundary.fromLaneRef, boundary.toLaneRef]));
 }
 
 function effectivePhaseLaneFromHistory({ policy, graph, workRef, priorState, registry }) {
   const directLaneRef = laneForState(registry, priorState);
-  const phaseLanes = protectedPhaseLaneRefs(policy);
+  const phaseLanes = protectedPhaseLaneRefs(policy, graph, workRef);
   if (phaseLanes.has(directLaneRef)) return directLaneRef;
   if (graph === null || workRef === null) return null;
 
@@ -143,7 +175,7 @@ export function createProjectAgencyPolicy(input, registry) {
   if (input?.semanticFingerprint !== undefined) {
     assert(verifySemanticFingerprint(input), 'Project Agency Policy semanticFingerprint mismatch');
   }
-  assert(input?.schemaVersion === PROJECT_AGENCY_POLICY_SCHEMA, 'Project Agency Policy schema mismatch');
+  assert([PROJECT_AGENCY_POLICY_SCHEMA, PROJECT_AGENCY_POLICY_SCHEMA_V2].includes(input?.schemaVersion), 'Project Agency Policy schema mismatch');
   stableRef(input.policyRef, 'policyRef');
   stableRef(input.projectRef, 'projectRef');
   assert(input.mode === PROJECT_AGENCY_MODE, 'unsupported Project Agency Policy mode');
@@ -163,6 +195,7 @@ export function createProjectAgencyPolicy(input, registry) {
     assert(!protectedTargetLaneRefs.has(boundary.toLaneRef), `duplicate handshake target lane ${boundary.toLaneRef}`);
     protectedTargetLaneRefs.add(boundary.toLaneRef);
     assert(boundary.fromLaneRef !== boundary.toLaneRef, 'handshake boundary must cross Board lanes');
+    validateBoundaryApplicability(boundary, registry, input.schemaVersion);
     const key = `${boundary.fromLaneRef}->${boundary.toLaneRef}`;
     assert(!pairs.has(key), `duplicate handshake lane transition ${key}`);
     pairs.add(key);
@@ -185,11 +218,16 @@ export function transitionHandshakeRequirement({ policy, priorState, nextState, 
   const fromLaneRef = laneForState(registry, priorState);
   const toLaneRef = laneForState(registry, nextState);
   let boundary = policy.handshakeLaneTransitions.find(
-    (candidate) => candidate.fromLaneRef === fromLaneRef && candidate.toLaneRef === toLaneRef,
+    (candidate) => candidate.fromLaneRef === fromLaneRef
+      && candidate.toLaneRef === toLaneRef
+      && boundaryAppliesToWork({ boundary: candidate, graph, workRef }),
   ) ?? null;
 
   if (boundary === null && fromLaneRef !== toLaneRef) {
-    const protectedTarget = policy.handshakeLaneTransitions.find((candidate) => candidate.toLaneRef === toLaneRef) ?? null;
+    const protectedTarget = policy.handshakeLaneTransitions.find(
+      (candidate) => candidate.toLaneRef === toLaneRef
+        && boundaryAppliesToWork({ boundary: candidate, graph, workRef }),
+    ) ?? null;
     if (protectedTarget !== null) {
       const effectivePhaseLaneRef = effectivePhaseLaneFromHistory({ policy, graph, workRef, priorState, registry });
       if (effectivePhaseLaneRef !== toLaneRef) boundary = protectedTarget;

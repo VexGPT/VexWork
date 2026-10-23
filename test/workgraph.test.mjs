@@ -11,6 +11,8 @@ const projectSource = read('projects/vexwork-foundation/project.json');
 const toCompletionProjectSource = read('projects/vexlife-tocompletion/project.json');
 const connectedServicesProjectSource = read('projects/vexlife-connected-services/project.json');
 const operationalConsoleProjectSource = read('projects/vexwork-operational-console/project.json');
+const vexboardProjectSource = read('projects/vexboard/project.json');
+const blueprintProjectSource = read('projects/vexlife-blueprint-source-of-truth/project.json');
 const graphSource = read('workgraphs/public.json');
 
 test('work registry covers lifecycle states exactly once on the default Work Board', () => {
@@ -21,14 +23,18 @@ test('work registry covers lifecycle states exactly once on the default Work Boa
 test('one Workgraph can contain project work and unprojected parked work', () => {
   const project = createProject(projectSource);
   const graph = createWorkgraph(graphSource, registry);
-  assert.equal(graph.items.length, 83);
+  assert.equal(graph.items.length, 107);
   assert.equal(projectWorkRefs(project, graph).length, 7);
   const toCompletionProject = createProject(toCompletionProjectSource);
-  assert.equal(projectWorkRefs(toCompletionProject, graph).length, 18);
+  assert.equal(projectWorkRefs(toCompletionProject, graph).length, 17);
   const connectedServicesProject = createProject(connectedServicesProjectSource);
   assert.equal(projectWorkRefs(connectedServicesProject, graph).length, 19);
   const operationalConsoleProject = createProject(operationalConsoleProjectSource);
   assert.equal(projectWorkRefs(operationalConsoleProject, graph).length, 24);
+  const vexboardProject = createProject(vexboardProjectSource);
+  assert.equal(projectWorkRefs(vexboardProject, graph).length, 7);
+  const blueprintProject = createProject(blueprintProjectSource);
+  assert.equal(projectWorkRefs(blueprintProject, graph).length, 14);
   assert.equal(verifySemanticFingerprint(project), true);
   assert.equal(verifySemanticFingerprint(graph), true);
 
@@ -53,7 +59,11 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(historyBackfill.effectDisposition, 'NO_EFFECTS');
   assert.equal(historyBackfill.formationProcessRefOrNull, 'process.vexwork.capture-discovered-work');
   assert.equal(graph.rootWorkRefs.includes(historyBackfill.workRef), true);
-  assert.equal(graph.transitions.length, 59);
+  assert.equal(graph.transitions.length, 64);
+  assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.decomposed.20261022'));
+  assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.plan-validated.20261022'));
+  assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.ready.20261022'));
+  assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.running.20261022'));
 
   const parked = graph.items.find((item) => item.workRef === 'work.vexlife-android.vexstream.not-yet-downloaded-filter');
   assert.equal(parked.workClass, 'POTENTIAL');
@@ -79,6 +89,34 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(routing.authorityDisposition, 'NO_AUTHORITY');
   assert.equal(routing.effectDisposition, 'NO_EFFECTS');
   assert.equal(routing.formationProcessRefOrNull, 'process.vexwork.capture-discovered-work');
+  const vexboardRoot = graph.items.find((item) => item.workRef === 'work.vexboard.outcome');
+  const vexboardArchitecture = graph.items.find((item) => item.workRef === 'work.vexboard.project-architecture');
+  const vexboardContract = graph.items.find((item) => item.workRef === 'work.vexboard.boardgraph-contract');
+  assert.equal(vexboardRoot.state, 'DECOMPOSED');
+  assert.equal(vexboardArchitecture.state, 'COMPLETED');
+  assert.equal(vexboardContract.state, 'READY');
+  assert.equal(vexboardContract.authorityDisposition, 'NO_AUTHORITY');
+
+  const blueprintRoot = graph.items.find((item) => item.workRef === 'work.vexlife.blueprint-source-of-truth.outcome');
+  const blueprintPracticum = graph.items.find((item) => item.workRef === 'work.vexlife.blueprint-source-of-truth.play-pause-practicum');
+  const blueprintNativeSource = graph.items.find((item) => item.workRef === 'work.vexlife.blueprint-source-of-truth.play-pause.native-source-admission');
+  const blueprintNativeLived = graph.items.find((item) => item.workRef === 'work.vexlife.blueprint-source-of-truth.play-pause.native-lived-proof');
+  const blueprintReusable = graph.items.find((item) => item.workRef === 'work.vexlife.blueprint-source-of-truth.reusable-v1');
+  const blueprintTotal = graph.items.find((item) => item.workRef === 'work.vexlife.blueprint-source-of-truth.total-feature-capacity');
+  assert.equal(blueprintRoot.state, 'PAUSED_AT_CHECKPOINT');
+  assert.equal(blueprintRoot.effectDisposition, 'NO_EFFECTS');
+  assert.equal(blueprintPracticum.state, 'PAUSED_AT_CHECKPOINT');
+  assert.equal(blueprintPracticum.effectDisposition, 'NO_EFFECTS');
+  assert.equal(blueprintNativeSource.state, 'WAITING_RESOURCE');
+  assert.equal(blueprintNativeSource.effectDisposition, 'NO_EFFECTS');
+  assert.equal(blueprintNativeSource.sourceRefs.includes('github.pull.VexGPT.VexLife-Construction-Reference.12'), true);
+  assert.equal(blueprintNativeLived.state, 'WAITING_DEPENDENCIES');
+  assert.deepEqual(blueprintNativeLived.dependencyRefs, [blueprintNativeSource.workRef]);
+  assert.equal(blueprintReusable.state, 'WAITING_DEPENDENCIES');
+  assert.deepEqual(blueprintReusable.dependencyRefs, [blueprintPracticum.workRef]);
+  assert.equal(blueprintTotal.state, 'WAITING_DEPENDENCIES');
+  assert.deepEqual(blueprintTotal.dependencyRefs, [blueprintReusable.workRef]);
+
   const mobile = graph.items.find((item) => item.workRef === 'work.vexstream.mobile-library.outcome');
   assert.equal(mobile.workClass, 'OUTCOME');
   assert.equal(mobile.state, 'DECOMPOSED');
@@ -86,8 +124,18 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   const massDownload = graph.items.find((item) => item.workRef === 'work.vexstream.mobile-library.massdownload-product');
   assert.equal(massDownload.state, 'COMPLETED');
   const e2e = graph.items.find((item) => item.workRef === 'work.vexstream.mobile-library.massdownload-e2e');
-  assert.equal(e2e.state, 'CAPTURED');
-  assert.equal(e2e.authorityDisposition, 'HELD_UNKNOWN');
+  assert.equal(e2e.state, 'COMPLETED');
+  assert.equal(e2e.authorityDisposition, 'AUTHORIZED_BOUNDED');
+  const queueIncident = graph.items.find((item) => item.workRef === 'work.vexstream.mobile-library.track-menu-presentation-defect');
+  assert.equal(queueIncident.state, 'PAUSED_AT_CHECKPOINT');
+  assert.equal(queueIncident.workDisposition, 'ACTIVE');
+  assert.equal(queueIncident.parentWorkRefOrNull, 'work.vexstream.mobile-library.massdownload-maturity');
+  assert.equal(queueIncident.authorityDisposition, 'AUTHORIZED_BOUNDED');
+  assert.equal(queueIncident.effectDisposition, 'NO_EFFECTS');
+  const queueCheckpoint = graph.transitions.find((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.track-menu-defect.paused.current-n8-01');
+  assert.ok(queueCheckpoint);
+  assert.equal(queueCheckpoint.priorState, 'RUNNING');
+  assert.equal(queueCheckpoint.nextState, 'PAUSED_AT_CHECKPOINT');
   const keepOffline = graph.items.find((item) => item.workRef === 'work.vexstream.mobile-library.keep-offline-sync');
   assert.equal(keepOffline.workDisposition, 'PARKED');
   assert.equal(keepOffline.authorityDisposition, 'NO_AUTHORITY');
@@ -120,19 +168,25 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   const p5 = graph.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p5.lived-continuity-learning');
   assert.equal(p5.state, 'RUNNING');
   assert.deepEqual(p5.dependencyRefs, ['work.vexlife.tocompletion.p4.typed-local-effect']);
+  assert.ok(p5.repositoryRefs.includes('repo.vextreme-sdk'));
   const p5G02 = graph.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p5.g02-semantic-authority-materializer');
   assert.equal(p5G02.state, 'RUNNING');
   assert.deepEqual(p5G02.dependencyRefs, ['work.vexlife.tocompletion.p4.typed-local-effect']);
+  assert.ok(p5G02.repositoryRefs.includes('repo.vextreme-sdk'));
   const p5Harness = graph.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p5.g02.coder-harness-a055-a056');
   assert.equal(p5Harness.state, 'COMPLETED');
   const p5A057 = graph.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p5.g02.sdk-runner-a057');
   assert.equal(p5A057.state, 'COMPLETED');
   assert.deepEqual(p5A057.dependencyRefs, ['work.vexlife.tocompletion.p5.g02.coder-harness-a055-a056']);
   const p5Readiness = graph.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p5.g02.sdk-readiness-admission');
-  assert.equal(p5Readiness.state, 'WAITING_DEPENDENCIES');
+  assert.equal(p5Readiness.state, 'COMPLETED');
   assert.equal(p5Readiness.authorityDisposition, 'NO_AUTHORITY');
   assert.equal(p5Readiness.effectDisposition, 'NO_EFFECTS');
   assert.deepEqual(p5Readiness.dependencyRefs, ['work.vexlife.tocompletion.p5.g02.sdk-runner-a057']);
+  const p5SourceAcceptance = graph.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p5.g02.semantic-source-acceptance');
+  assert.equal(p5SourceAcceptance.state, 'RUNNING');
+  assert.deepEqual(p5SourceAcceptance.dependencyRefs, ['work.vexlife.tocompletion.p5.g02.sdk-readiness-admission']);
+  assert.deepEqual(p5SourceAcceptance.repositoryRefs, ['repo.vexwork', 'repo.vextreme-sdk']);
   const p6 = graph.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p6.cultivation-training-birth');
   assert.equal(p6.state, 'WAITING_DEPENDENCIES');
   assert.deepEqual(p6.dependencyRefs, ['work.vexlife.tocompletion.p5.lived-continuity-learning']);

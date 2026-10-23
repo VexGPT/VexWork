@@ -28,7 +28,7 @@ function project() {
   });
 }
 
-function graph(state = 'READY', authorityDisposition = 'AUTHORIZED_BOUNDED', effectDisposition = 'EFFECTS_BOUND') {
+function graph(state = 'READY', authorityDisposition = 'AUTHORIZED_BOUNDED', effectDisposition = 'EFFECTS_BOUND', workClass = 'TASK') {
   return createWorkgraph({
     schemaVersion: 'vexwork.workgraph/v1',
     graphRef: 'workgraph.test.agency',
@@ -39,7 +39,7 @@ function graph(state = 'READY', authorityDisposition = 'AUTHORIZED_BOUNDED', eff
       parentWorkRefOrNull: null,
       label: 'Agency test work',
       purpose: 'Advance only through the delegated Project handshake contract.',
-      workClass: 'TASK',
+      workClass,
       state,
       workDisposition: 'ACTIVE',
       priorityClass: 'NORMAL',
@@ -71,6 +71,30 @@ function policy() {
       { boundaryRef: 'boundary.test.active-verify', fromLaneRef: 'lane.work.active', toLaneRef: 'lane.work.verify' },
       { boundaryRef: 'boundary.test.verify-done', fromLaneRef: 'lane.work.verify', toLaneRef: 'lane.work.done' },
     ],
+    discoveredWorkDefault: {
+      workClass: 'POTENTIAL',
+      workDisposition: 'PARKED',
+      authorityDisposition: 'NO_AUTHORITY',
+      effectDisposition: 'NO_EFFECTS',
+    },
+    sourceRefs: ['test.transition-handshake'],
+    formedAt: '2026-10-21T08:00:00.000Z',
+  }, registry);
+}
+
+function scopedReviewPolicy(appliesTo) {
+  return createProjectAgencyPolicy({
+    schemaVersion: 'vexwork.project-agency-policy/v2',
+    policyRef: 'agency.test.scoped-review',
+    projectRef: 'project.test.agency',
+    mode: 'DELEGATED_WITH_TRANSITION_HANDSHAKE',
+    routineTransitionAutonomy: 'WITHIN_CURRENT_PHASE',
+    handshakeLaneTransitions: [{
+      boundaryRef: 'boundary.test.verify-done.scoped',
+      fromLaneRef: 'lane.work.verify',
+      toLaneRef: 'lane.work.done',
+      appliesTo,
+    }],
     discoveredWorkDefault: {
       workClass: 'POTENTIAL',
       workDisposition: 'PARKED',
@@ -141,6 +165,71 @@ test('Project Agency Policy distinguishes routine movement from phase handshakes
   assert.equal(transitionHandshakeRequirement({ policy: p, priorState: 'VERIFYING', nextState: 'COMPLETED', registry }).required, true);
 });
 
+
+test('v2 policy can reserve Verify -> Done human review for meaningful work classes only', () => {
+  const p = scopedReviewPolicy({ workClasses: ['OUTCOME'] });
+  const task = graph('VERIFYING', 'AUTHORIZED_BOUNDED', 'EFFECTS_BOUND', 'TASK');
+  const outcome = graph('VERIFYING', 'AUTHORIZED_BOUNDED', 'EFFECTS_BOUND', 'OUTCOME');
+
+  assert.equal(transitionHandshakeRequirement({
+    policy: p,
+    priorState: 'VERIFYING',
+    nextState: 'COMPLETED',
+    registry,
+    graph: task,
+    workRef: 'work.test.agency',
+  }).required, false);
+
+  assert.equal(transitionHandshakeRequirement({
+    policy: p,
+    priorState: 'VERIFYING',
+    nextState: 'COMPLETED',
+    registry,
+    graph: outcome,
+    workRef: 'work.test.agency',
+  }).required, true);
+
+  const taskResult = requestProjectTransition({
+    project: project(),
+    graph: task,
+    policy: p,
+    transitionRequest: transition(task, 'COMPLETED', 'transition.test.scoped-task-complete'),
+    registry,
+  });
+  assert.equal(taskResult.state, 'ACCEPTED');
+  assert.equal(taskResult.handshake.required, false);
+
+  assert.throws(() => requestProjectTransition({
+    project: project(),
+    graph: outcome,
+    policy: p,
+    transitionRequest: transition(outcome, 'COMPLETED', 'transition.test.scoped-outcome-complete'),
+    registry,
+  }), /transition handshake required/);
+});
+
+test('v2 review boundary may explicitly include one meaningful task by workRef', () => {
+  const p = scopedReviewPolicy({ workRefs: ['work.test.agency'] });
+  const task = graph('VERIFYING');
+  assert.equal(transitionHandshakeRequirement({
+    policy: p,
+    priorState: 'VERIFYING',
+    nextState: 'COMPLETED',
+    registry,
+    graph: task,
+    workRef: 'work.test.agency',
+  }).required, true);
+});
+
+test('scoped review policy fails closed for empty, unknown or v1 applicability', () => {
+  assert.throws(() => scopedReviewPolicy({}), /must select at least one workClass or workRef/);
+  assert.throws(() => scopedReviewPolicy({ workClasses: ['STORY'] }), /unsupported boundary workClass STORY/);
+
+  const legacy = structuredClone(policy());
+  delete legacy.semanticFingerprint;
+  legacy.handshakeLaneTransitions[2].appliesTo = { workClasses: ['OUTCOME'] };
+  assert.throws(() => createProjectAgencyPolicy(legacy, registry), /requires Project Agency Policy v2/);
+});
 
 test('transient lanes cannot bypass protected phase entry while proven same-phase resume stays autonomous', () => {
   const ready = graph('READY');

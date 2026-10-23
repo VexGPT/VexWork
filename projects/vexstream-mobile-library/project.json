@@ -8,14 +8,22 @@
   ],
   "repositoryRefs": [
     "repo.vexwork",
-    "repo.vexlife-android"
+    "repo.vexlife-android",
+    "repo.vexstream-music"
   ],
   "sourceRefs": [
     "github.pull.vexlife-android.142",
     "github.issue.vexlife-android.144",
     "repo.vexlife-android:docs/features/README.md",
     "docs/process/FORM-PROJECT.md",
-    "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md"
+    "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md",
+    "projects/vexstream-mobile-library/README.md",
+    "repo.vexstream-music:README.md",
+    "github.pull.vexlife-android.148",
+    "github.pull.vexlife-android.151",
+    "github.pull.vextreme-sdk.1887",
+    "github.pull.vexlife-android.155",
+    "github.issue.vexlife-android.157"
   ],
   "formedAt": "2026-10-21T08:41:00.000Z"
 }

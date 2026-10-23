@@ -152,7 +152,7 @@ Exact private Home/model identities are intentionally **not duplicated in public
 | P2 | COMPLETED | First lived real Heretic Conversation turn reached `TERMINAL_LIVED_PASS`. |
 | P3 | COMPLETED | Same-Home restart + second real Heretic turn + durable readback reached `TERMINAL_LIVED_PASS`; PR #915 is accepted history. |
 | P4 | COMPLETED | A054 reached `P4_TERMINAL_LIVED_PASS`: real Heretic chose the exact cued typed effect, Native Worker executed orientation, ToolResultRelay reinjected the verified result, later synthesis completed, and the same durable Conversation advanced. |
-| P5 | RUNNING | Lived continuity/learning is now foreground. A054 supplies exact G01 evidence; the first open seam is the missing rightful Memory/Safety owner-side semantic-authority materializer required before VexLife may commit one live G02 Score record. |
+| P5 | RUNNING | Lived continuity/learning remains foreground. The exact SDK readiness dependency is terminally accepted; currentized Vextreme-SDK PR #1890 now preserves the frozen four-file Memory/Safety semantic candidate and is in fresh exact-head SourceOwner/Assurance acceptance before one live G02 Score record may be materialized. |
 | P6 | WAITING_DEPENDENCIES | Cultivation/School/Training Placement/Birth waits on real P5 lived evidence; Training Placement decides whether learning belongs in source, Memory, curriculum, Rhythm, more evidence, no weight, or an earned weight route. |
 | P7 | PLAN_VALIDATED | Whole-product connected/native expansion is canonical but not current foreground; detailed child work remains in rightful lateral Projects until explicitly activated here. |
 
@@ -246,63 +246,87 @@ P5 = RUNNING
 
 parent source task:
   work.vexlife.tocompletion.p5.g02-semantic-authority-materializer = RUNNING
-  Vextreme-SDK PR #1890 claim = REVIEW
 
-completed execution checkpoint:
+completed producer checkpoint:
   work.vexlife.tocompletion.p5.g02.sdk-runner-a057 = COMPLETED
 
-A057:
-  exact SDK-bound Mac carrier executed
-  four Memory/Safety writes + exact path/membrane + git diff --check = PASS
-  initial focused Memory/Safety proof = 13/13 PASS
-  full sdk-check stopped on 8 non-candidate-local repository/dependency findings
-  commit/push inside A057 = false
+completed SDK readiness checkpoint:
+  work.vexlife.tocompletion.p5.g02.sdk-readiness-admission = COMPLETED
 
-current semantic source candidate:
-  PR #1890 = OPEN DRAFT
-  base = b4d427564409989e8f839066accd17ec4c790724
-  head = 2cb613ca37fe454beee2ef3fc1d63de3ce226afa
-  tree = 779eda369f52e2be93160c1a34857265a6c4f143
-  exact changed paths = 4
-  exact DCO author/trailer = PASS
-  focused Memory/Safety owner proof = 28/28 PASS
+  serializer blocker PR #1879 =
+    merged as c822ec414b54cea570b3b939eab84cc4c8803d19
 
-owner-contract corrections earned after A057:
-  lineage natural-language interpretation = INFERRED / LINEAGE_INFERENCE
-  explicit current-predecessor correction/supersession required
-  silent same-subject replacement rejected
-  positive consent/authority currentness uses owner-observed clock
-  caller backdating cannot revive expired authority
-  acceptedForContinuity derived from semantic state + Safety continuity disposition
-  caller-provided continuity boolean is non-authoritative
-  release/tombstone held until explicit accepted Safety release authority exists
-  head.json must equal its immutable heads/<sha>.json receipt
-  prior-head lineage must remain immutable, acyclic and sequence-continuous
+  readiness PR #1893 =
+    terminally accepted / merged
+    merge = 990be7f896e5dcbf2c8af875fe8e3f9cbd464088
+    merge tree = 0e94755e83cdd996b13558568d4ac18c6d768cc8
 
-current dependency task:
-  work.vexlife.tocompletion.p5.g02.sdk-readiness-admission = WAITING_DEPENDENCIES
+  issue #1891 =
+    CLOSED / dependency released
 
-readiness dependency:
-  github.issue.vextreme-sdk.1891
-  exact required admission = 2 new Vex Memory paths only
-  current serializer = github.pull.vextreme-sdk.1879
-  readiness branch/claim/mutation = NONE while serializer remains occupied
+  readiness evidence =
+    A001 exact-head SourceOwner PASS
+    A004 SR-G02-07..10 PASS / preserved
+    A005 SR-G02-11 PASS
+    Formal Reviewer = APPROVE / CLEAR
+    post-merge tree identity = PASS
 
-next action after serializer release:
-  exact-admit the two Memory paths under #1891
-  -> complete-checkout differential sdk-ready/sdk-check proof
-  -> ordinary-forward currentize PR #1890 if main moved
-  -> rerun affected focused/repository proof
-  -> fresh exact-head SourceOwner / Independent Assurance / lifecycle
-  -> separate retained-Home G02 lived consumption
+current foreground task:
+  work.vexlife.tocompletion.p5.g02.semantic-source-acceptance = RUNNING
 
-durable owner checkpoint:
-  github.issue.vextreme-sdk.225.comment.6332780928
+Vextreme-SDK PR #1890 current coordinate:
+  base = 990be7f896e5dcbf2c8af875fe8e3f9cbd464088
+  head = 440f4250ea1c51bc0c670526775277942e9c2af7
+  tree = 30535351ecf62569ff73d54e59a15fd122f4fead
+  behind accepted main = 0
+  changed paths = exact 4
+  mergeable = true
 
-VictorAction=NONE
+frozen semantic blobs:
+  8af37e34f2b5194eee53e4276a420a7d31ffd3cd
+    lib/vex-memory/score-semantic-authority-materializer.js
+
+  799e1a2505ab4dd3782711bc6503806184725a6a
+    lib/trust-safety/score-consent-authority.js
+
+  f217955d2d8158e3ad003f4cff59d5d424edf4a1
+    tests/vex-memory/score-semantic-authority-materializer.test.js
+
+  4d965f72e200f0f057fdc38f47d6f55bd81893f8
+    tests/trust-safety/score-consent-authority.test.js
+
+retained content-tree evidence:
+  PR #1893 accepted readiness tree + these exact four blobs
+  = currentized PR #1890 tree
+
+  A005 therefore remains valid broad differential evidence
+  but does not replace fresh exact-head lifecycle proof.
+
+SourceOwner A001:
+  stopped before proof formation
+  cause = wrapper bootstrap queried stale PR_NUMBER="1893"
+  live PR #1890 never closed
+  source/product effect = false
+  SourceOwner proof credit = none
+
+SourceOwner A002:
+  corrected provider lookup = PR #1890
+  fresh single-use identities
+  semantic candidate/predicates unchanged
+  qualified formation sha256 =
+    30281c40ef3a0643937caa21d25edabfec8d08d550f455cd93648b517101748f
+  state = PENDING_HOST_RETURN
+
+next executable edge:
+  run/consume PR #1890 SourceOwner A002
+  -> fresh exact-head Independent Assurance
+  -> lifecycle/merge only if earned
+  -> then return to the lived G02 Score / restart continuity path
+
+Do not replay the completed SDK-readiness detour.
 ```
 
-A057 is not the next action anymore. The semantic source is published and review-stable for the pre-readiness stage; the exact held edge is repository readiness/currentization, not another host replay. Terminal exact-head SourceOwner/Assurance is intentionally deferred because #1891 will advance accepted SDK main and force one ordinary-forward candidate currentization.
+The current held predicate is exact-head PR #1890 source/lifecycle acceptance, not readiness design and not Memory/Safety semantic redesign.
 
 ## Remaining completion path
 
