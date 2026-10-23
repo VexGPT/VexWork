@@ -151,7 +151,10 @@ function normalizedCore(input) {
   if (input.listingUrl !== undefined) normalized.listingUrl = canonicalHttpsUrl(input.listingUrl, 'listingUrl');
 
   const soldAt = optionalTimestamp(input.soldAt, 'soldAt');
-  if (soldAt !== undefined) normalized.soldAt = soldAt;
+  if (soldAt !== undefined) {
+    assert(soldAt <= normalized.observedAt, 'soldAt cannot be after observedAt');
+    normalized.soldAt = soldAt;
+  }
 
   const expectedShipmentAt = optionalTimestamp(input.expectedShipmentAt, 'expectedShipmentAt');
   if (expectedShipmentAt !== undefined) normalized.expectedShipmentAt = expectedShipmentAt;
