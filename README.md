@@ -74,6 +74,8 @@ The first foundation establishes:
 - a Repository Graph that points to repositories and their own entry/culture sources without consolidating their cultures;
 - provider references such as GitHub issues/PRs/commits as evidence/relations, never canonical work state;
 - portable Workgraph runtime persistence with immutable snapshots, atomic successor-pointer publication, CURRENT derived from the unique validated tip of retained pointer lineage, exact-current CAS, serialized writers, and explicit abandoned-writer recovery under a caller-supplied private store root;
+- portable Project Planning with explicit iteration definition/closure, iteration membership, shared order, WIP policy, selected view, exact-current planning transactions, and its own restart-safe private planning runtime without becoming WorkState;
+- portable Project Reconciliation that joins exact Project/provider/proof evidence into `CURRENT_IN_REVIEW`, `REVERIFY_REQUIRED`, `COMPLETION_EVIDENCE_READY`, or `HELD_UNKNOWN` while retaining zero lifecycle/provider mutation authority;
 - a source-managed VexWork Foundation Project that dogfoods the same contracts;
 - VexLife-Android issue #144 represented as a real parked VexWork potential, with GitHub retained as provider provenance and Android feature authoring as the future route if adopted.
 - Operating Profiles that keep one VexWork truth across hosted-assistant and future local-Vex execution, with an assisted-host workflow for bounded human-only/local effects rather than making GitHub Actions or a Local Workspace universal prerequisites.
@@ -84,6 +86,7 @@ Requires a current Node.js runtime; there are no package dependencies.
 
 ```bash
 npm test
+npm run review
 npm run check
 npm run work:status -- --project projects/vexwork-foundation/project.json --graph workgraphs/public.json --view projects/vexwork-foundation/board.view.json --format board
 npm run work:status -- --project projects/vexwork-foundation/project.json --graph workgraphs/public.json --format graph
