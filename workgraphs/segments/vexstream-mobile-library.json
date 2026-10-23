@@ -67,7 +67,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-21T08:41:00.000Z",
-      "updatedAt": "2026-10-23T00:30:33.000Z",
+      "updatedAt": "2026-10-23T03:15:48.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "workRef": "work.vexstream.mobile-library.device-storage",
@@ -75,9 +75,11 @@
       "label": "Durable device music storage",
       "purpose": "Establish the Android-native durable media-storage realization while preserving exact trackRef, SHA-256 and byte-length verification.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "WAITING_TOOL",
       "priorityClass": "HIGH",
-      "dependencyRefs": [],
+      "dependencyRefs": [
+        "work.android-proof-orchestration.api-target-runner"
+      ],
       "repositoryRefs": [
         "repo.vexlife-android"
       ],
@@ -91,7 +93,11 @@
         "repo.vexstream-music:mobile_bridge.go",
         "repo.vexlife-android:app/src/main/AndroidManifest.xml",
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/PairedVexStreamMusicRepository.kt",
-        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt"
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt",
+        "project.android-proof-orchestration",
+        "github.issue.vextreme-sdk.1894",
+        "repo.vexlife-android:docs/foundation/ANDROID-HOST-PROOF.md",
+        "repo.vexlife-android:docs/foundation/test-proof/README.md"
       ],
       "nextProcessRefs": [
         "process.vexlife-android.feature-authoring"
@@ -482,6 +488,22 @@
         "confirmation.local-vex-operations.vexstream.device-storage.ready-active.20261022a"
       ],
       "createdAt": "2026-10-23T00:30:33.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.device-storage.waiting-tool.android-proof-orchestration.20261022",
+      "workRef": "work.vexstream.mobile-library.device-storage",
+      "priorState": "RUNNING",
+      "nextState": "WAITING_TOOL",
+      "reason": "The durable storage source and retained repository-local proof are intact; the remaining API 24-28 and API 29+ native proof is held on a reusable Android target-orchestration tool rather than another lane-local emulator script.",
+      "actorRef": "actor.local-vex-operations.vexstream-mobile-library",
+      "sourceRefs": [
+        "github.issue.vexlife-android.157",
+        "github.issue.vextreme-sdk.1894",
+        "project.android-proof-orchestration",
+        "repo.vexlife-android:docs/foundation/ANDROID-HOST-PROOF.md"
+      ],
+      "createdAt": "2026-10-23T03:15:48.000Z"
     }
   ],
   "sourceRefs": [
