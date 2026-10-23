@@ -91,11 +91,14 @@ test('Operational Console board distinguishes admitted evolution from held futur
   assert.equal(done.cards.some((card) => card.workRef === 'work.vexwork.operational-console.operating-domain-template'), true);
   assert.equal(done.cards.some((card) => card.workRef === 'work.vexwork.operational-console.operating-domain-contract'), true);
   assert.equal(done.cards.some((card) => card.workRef === 'work.vexwork.operational-console.attention-queue-contract'), true);
-  assert.equal(active.cards.some((card) => card.workRef === 'work.vexwork.operational-console.commerce-template'), true);
+  assert.equal(active.cards.some((card) => card.workRef === 'work.vexwork.operational-console.commerce-template'), false);
+  assert.equal(done.cards.some((card) => card.workRef === 'work.vexwork.operational-console.commerce-template'), true);
   assert.equal(done.cards.some((card) => card.workRef === 'work.vexwork.operational-console.commerce-item-model'), true);
-  assert.equal(active.cards.some((card) => card.workRef === 'work.vexwork.operational-console.commerce-ai-site'), true);
+  assert.equal(active.cards.some((card) => card.workRef === 'work.vexwork.operational-console.commerce-ai-site'), false);
+  assert.equal(done.cards.some((card) => card.workRef === 'work.vexwork.operational-console.commerce-ai-site'), true);
   assert.equal(ready.cards.some((card) => card.workRef === 'work.vexwork.operational-console.commerce-ai-site'), false);
   assert.equal(done.cards.some((card) => card.workRef === 'work.vexwork.operational-console.commerce-fulfillment-attention'), true);
+  assert.equal(ready.cards.some((card) => card.workRef === 'work.vexwork.operational-console.antique-pilot'), true);
   assert.equal(ready.cards.some((card) => card.workRef === 'work.vexwork.operational-console.commerce-fulfillment-attention'), false);
   assert.equal(ready.cards.some((card) => card.workRef === 'work.vexwork.operational-console.commerce-template'), false);
   assert.equal(ready.cards.some((card) => card.workRef === 'work.vexwork.operational-console.commerce-item-model'), false);

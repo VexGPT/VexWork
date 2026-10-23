@@ -1,0 +1,108 @@
+{
+  "schemaVersion": "vexwork.commerce-storefront-publication-proof/v1",
+  "continuity": "[VXG RealForever]",
+  "itemObservation": {
+    "schemaVersion": "vexwork.commerce-item-observation/v1",
+    "itemRef": "item.commerce.reference.plate-001",
+    "providerRef": "provider.vexcommerce.storefront-reference",
+    "label": "Reference Floral Plate",
+    "inventoryState": "AVAILABLE",
+    "observedAt": "2026-10-23T06:17:28.000Z",
+    "sourceRefs": [
+      "github.commit.vexcommerce-storefront-reference.a43b54a4626c6ff9b5eb2b402ffae9db9b466836",
+      "github.pull.vexcommerce-storefront-reference.1",
+      "repo.vexcommerce-storefront-reference:storefront.json"
+    ],
+    "effects": false,
+    "executionAuthority": "NONE",
+    "description": "Synthetic fixture revised by the AI-managed storefront proof.",
+    "condition": "Synthetic reference condition — revised",
+    "price": {
+      "amountMinor": 13750,
+      "currency": "USD"
+    },
+    "imageRefs": [
+      "assets/reference-plate.svg"
+    ],
+    "listingUrl": "https://vgong24.github.io/VexCommerce-Storefront-Reference/",
+    "semanticFingerprint": "cc9e16c971f37bb4d147576409a9451fb37d4ca1897a2d21ff281afffa8f34e4"
+  },
+  "storefrontDocument": {
+    "schemaVersion": "vexwork.commerce-storefront-document/v1",
+    "documentRef": "document.vexcommerce.reference.plate-001.storefront.a001",
+    "storefrontRef": "storefront.vexcommerce.reference",
+    "itemRef": "item.commerce.reference.plate-001",
+    "itemSemanticFingerprint": "cc9e16c971f37bb4d147576409a9451fb37d4ca1897a2d21ff281afffa8f34e4",
+    "itemObservedAt": "2026-10-23T06:17:28.000Z",
+    "label": "Reference Floral Plate",
+    "availabilityState": "AVAILABLE",
+    "publicFieldRefs": [
+      "field.commerce.storefront.condition",
+      "field.commerce.storefront.description",
+      "field.commerce.storefront.price"
+    ],
+    "imageRefs": [
+      "assets/reference-plate.svg"
+    ],
+    "publicFields": {
+      "condition": "Synthetic reference condition — revised",
+      "description": "Synthetic fixture revised by the AI-managed storefront proof.",
+      "price": {
+        "amountMinor": 13750,
+        "currency": "USD"
+      }
+    },
+    "sourceRefs": [
+      "github.commit.vexcommerce-storefront-reference.a43b54a4626c6ff9b5eb2b402ffae9db9b466836",
+      "github.pull.vexcommerce-storefront-reference.1",
+      "repo.vexcommerce-storefront-reference:storefront.json",
+      "vexcommerce.return.storefront-ai-revision-merge.a017.sha256.b792b38d06b4a8434f4c719769210a4894d6355e347f825e1b5974321bbb9d5b"
+    ],
+    "effects": false,
+    "executionAuthority": "NONE",
+    "semanticFingerprint": "a80861cf0f207f4a45f8db329a2e886b36991aaf8ce4c987cc9f02e42218dfa5"
+  },
+  "publicationReceipt": {
+    "schemaVersion": "vexwork.commerce-storefront-publication-receipt/v1",
+    "receiptRef": "receipt.vexcommerce.reference.plate-001.publication.a001",
+    "storefrontRef": "storefront.vexcommerce.reference",
+    "documentRef": "document.vexcommerce.reference.plate-001.storefront.a001",
+    "itemRef": "item.commerce.reference.plate-001",
+    "documentSemanticFingerprint": "a80861cf0f207f4a45f8db329a2e886b36991aaf8ce4c987cc9f02e42218dfa5",
+    "ownerRepositoryRef": "repo.vexcommerce-storefront-reference",
+    "publicationState": "PUBLISHED",
+    "publicUrlOrNull": "https://vgong24.github.io/VexCommerce-Storefront-Reference/",
+    "observedAt": "2026-10-23T06:17:28.000Z",
+    "sourceRefs": [
+      "github.commit.vexcommerce-storefront-reference.a43b54a4626c6ff9b5eb2b402ffae9db9b466836",
+      "github.pull.vexcommerce-storefront-reference.1",
+      "vexcommerce.return.storefront-ai-revision-merge.a017.sha256.b792b38d06b4a8434f4c719769210a4894d6355e347f825e1b5974321bbb9d5b"
+    ],
+    "evidenceRefs": [
+      "evidence.vexcommerce.storefront.image-marker.a017",
+      "evidence.vexcommerce.storefront.page-marker.a017",
+      "vexcommerce.return.storefront-ai-revision-merge.a017.sha256.b792b38d06b4a8434f4c719769210a4894d6355e347f825e1b5974321bbb9d5b"
+    ],
+    "effects": false,
+    "executionAuthority": "NONE",
+    "semanticFingerprint": "25fee73aae30b42fb2c021f346aefb9805b293b77cf94140d6be17b1b77ad6c8"
+  },
+  "hostEvidence": {
+    "repository": "vgong24/VexCommerce-Storefront-Reference",
+    "pullRequest": 1,
+    "baseHead": "e0411c7a5b272b1b79fe6d234e83c1bdf4af8184",
+    "candidateHead": "6d203f5e2a85ebc47a25d6577cfa46cf553c870c",
+    "candidateTree": "c2ab49d91885408cd7a05e09a303da0c0d8f7bad",
+    "mergeCommit": "a43b54a4626c6ff9b5eb2b402ffae9db9b466836",
+    "mainTree": "c2ab49d91885408cd7a05e09a303da0c0d8f7bad",
+    "pageUrl": "https://vgong24.github.io/VexCommerce-Storefront-Reference/",
+    "pageMarker": "PASS",
+    "imageUrl": "https://vgong24.github.io/VexCommerce-Storefront-Reference/assets/reference-plate.svg",
+    "imageMarker": "PASS",
+    "returnSha256": "b792b38d06b4a8434f4c719769210a4894d6355e347f825e1b5974321bbb9d5b",
+    "syntheticOnly": true,
+    "realCustomerDataIncluded": false,
+    "githubActionsUsedAsProofCarrier": false,
+    "localWorkspaceUsed": false
+  }
+}

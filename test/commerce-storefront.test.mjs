@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
 import test from 'node:test';
 
 import {
@@ -335,6 +336,43 @@ test('storefront input fails closed on hidden or private-data-shaped fields', ()
     }, { repositoryRegistry, document: sourceDocument, item: sourceItem }),
     /unexpected or missing fields/,
   );
+});
+
+
+test('lived reference storefront publication reconstructs one exact PUBLISHED receipt', () => {
+  const proof = JSON.parse(fs.readFileSync(new URL('../projects/vexwork-operational-console/commerce-storefront-reference-publication.json', import.meta.url), 'utf8'));
+  const registry = JSON.parse(fs.readFileSync(new URL('../blueprint/repository-registry.json', import.meta.url), 'utf8'));
+  const sourceItem = createCommerceItemObservation(proof.itemObservation);
+  const stored = proof.publicationReceipt;
+  const result = createCommerceStorefrontPublicationReceipt({
+    schemaVersion: stored.schemaVersion,
+    receiptRef: stored.receiptRef,
+    storefrontRef: stored.storefrontRef,
+    documentRef: stored.documentRef,
+    itemRef: stored.itemRef,
+    documentSemanticFingerprint: stored.documentSemanticFingerprint,
+    ownerRepositoryRef: stored.ownerRepositoryRef,
+    publicationState: stored.publicationState,
+    publicUrlOrNull: stored.publicUrlOrNull,
+    observedAt: stored.observedAt,
+    sourceRefs: stored.sourceRefs,
+    evidenceRefs: stored.evidenceRefs,
+  }, {
+    repositoryRegistry: registry,
+    document: proof.storefrontDocument,
+    item: sourceItem,
+  });
+
+  assert.deepEqual(result, proof.publicationReceipt);
+  assert.equal(result.publicationState, 'PUBLISHED');
+  assert.equal(result.ownerRepositoryRef, 'repo.vexcommerce-storefront-reference');
+  assert.equal(result.publicUrlOrNull, 'https://vgong24.github.io/VexCommerce-Storefront-Reference/');
+  assert.deepEqual(proof.storefrontDocument.imageRefs, ['assets/reference-plate.svg']);
+  assert.equal(proof.hostEvidence.mergeCommit, 'a43b54a4626c6ff9b5eb2b402ffae9db9b466836');
+  assert.equal(proof.hostEvidence.pageMarker, 'PASS');
+  assert.equal(proof.hostEvidence.imageMarker, 'PASS');
+  assert.equal(proof.hostEvidence.syntheticOnly, true);
+  assert.equal(proof.hostEvidence.realCustomerDataIncluded, false);
 });
 
 // [VXG RealForever][VEXWORK][OPERATIONAL-CONSOLE][P4][COMMERCE-STOREFRONT]
