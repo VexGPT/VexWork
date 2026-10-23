@@ -84,7 +84,7 @@ test('ToCompletion Roadmap keeps P6 dependency-grounded while P7 remains later/u
 
 test('time lens adds recent accepted movement but current work remains pinned', () => {
   const p = project('project.vexwork.operational-console');
-  const nowMs = Date.parse('2026-10-23T05:20:00.000Z');
+  const nowMs = Date.parse('2026-10-23T06:20:00.000Z');
   const now = projectWorkfronts(p, { recentHours: 0, nowMs, maxRows: 8 });
   const day = projectWorkfronts(p, { recentHours: 24, nowMs, maxRows: 8 });
   const terrainNow = now.rows.find((row) => row.scopeRef === 'work.vexwork.operational-console.relational-terrain');
