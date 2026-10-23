@@ -163,3 +163,30 @@ test('foreign work and mismatched evidence owners fail closed; stored fingerprin
 });
 
 // [VXG RealForever][VEXWORK][PROJECT-RECONCILIATION]
+
+
+test('proof binding mismatch independently requires reverification', () => {
+  const result = reconcile({
+    proofObservation: proof({ candidateTreeShaOrNull: '8'.repeat(40) }),
+  });
+  assert.equal(result.state, 'REVERIFY_REQUIRED');
+  assert.ok(result.attentionRefs.includes('attention.vexwork.reconciliation.proof-candidateTreeShaOrNull-mismatch'));
+});
+
+test('reconciliation registry validator rejects malformed vocabularies', () => {
+  const wrongSchema = structuredClone(reconciliationRegistry);
+  wrongSchema.schemaVersion = 'wrong';
+  assert.equal(validateProjectReconciliationRegistry(wrongSchema).ok, false);
+
+  const wrongDispositions = structuredClone(reconciliationRegistry);
+  wrongDispositions.dispositions = ['CURRENT_IN_REVIEW'];
+  assert.equal(validateProjectReconciliationRegistry(wrongDispositions).ok, false);
+
+  const wrongProviders = structuredClone(reconciliationRegistry);
+  wrongProviders.providerStates = ['OPEN'];
+  assert.equal(validateProjectReconciliationRegistry(wrongProviders).ok, false);
+
+  const wrongProofs = structuredClone(reconciliationRegistry);
+  wrongProofs.proofStates = ['PASSED'];
+  assert.equal(validateProjectReconciliationRegistry(wrongProofs).ok, false);
+});
