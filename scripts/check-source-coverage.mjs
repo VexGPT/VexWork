@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const LCOV_PATH = path.join(ROOT, 'coverage.lcov');
+const BASELINE_PATH = path.join(ROOT, 'blueprint', 'source-coverage-baseline.json');
 
 function normalizeSourcePath(value) {
   let sourcePath = value.trim();
@@ -78,15 +79,50 @@ const totals = records.reduce((result, record) => ({
   functions: { found: 0, hit: 0 },
 });
 
+const baseline = JSON.parse(fs.readFileSync(BASELINE_PATH, 'utf8'));
+if (baseline?.schemaVersion !== 'vexwork.source-coverage-baseline/v1') {
+  throw new Error('source coverage baseline schema mismatch');
+}
+if (JSON.stringify(baseline.sourcePolicy) !== JSON.stringify(['src/**/*.mjs', '*-reader.js'])) {
+  throw new Error('source coverage baseline policy mismatch');
+}
+
+function assertFloor(label, actual, minimum, failures) {
+  if (actual < minimum) failures.push(`${label} ${actual}% < floor ${minimum}%`);
+}
+
+const failures = [];
+const aggregatePercents = {
+  lines: percent(totals.lines),
+  branches: percent(totals.branches),
+  functions: percent(totals.functions),
+};
+assertFloor('aggregate lines', aggregatePercents.lines, baseline.minimum.lines, failures);
+assertFloor('aggregate branches', aggregatePercents.branches, baseline.minimum.branches, failures);
+assertFloor('aggregate functions', aggregatePercents.functions, baseline.minimum.functions, failures);
+
+const recordByPath = new Map(records.map((record) => [record.sourcePath, record]));
+for (const [sourcePath, floors] of Object.entries(baseline.criticalFiles ?? {})) {
+  const record = recordByPath.get(sourcePath);
+  if (!record) {
+    failures.push(`critical source missing from coverage: ${sourcePath}`);
+    continue;
+  }
+  assertFloor(`${sourcePath} lines`, percent(record.lines), floors.lines, failures);
+  assertFloor(`${sourcePath} branches`, percent(record.branches), floors.branches, failures);
+  assertFloor(`${sourcePath} functions`, percent(record.functions), floors.functions, failures);
+}
+
 const report = {
   schemaVersion: 'vexwork.source-coverage/v1',
-  state: 'MEASURED',
+  state: failures.length ? 'REGRESSION' : 'PASS',
+  baselineRef: baseline.baselineRef,
   sourcePolicy: ['src/**/*.mjs', '*-reader.js'],
   fileCount: records.length,
   totals: {
-    lines: { ...totals.lines, percent: percent(totals.lines) },
-    branches: { ...totals.branches, percent: percent(totals.branches) },
-    functions: { ...totals.functions, percent: percent(totals.functions) },
+    lines: { ...totals.lines, percent: aggregatePercents.lines, minimum: baseline.minimum.lines },
+    branches: { ...totals.branches, percent: aggregatePercents.branches, minimum: baseline.minimum.branches },
+    functions: { ...totals.functions, percent: aggregatePercents.functions, minimum: baseline.minimum.functions },
   },
   files: records.map((record) => ({
     sourcePath: record.sourcePath,
@@ -94,8 +130,10 @@ const report = {
     branches: { ...record.branches, percent: percent(record.branches) },
     functions: { ...record.functions, percent: percent(record.functions) },
   })),
+  failures,
 };
 
 console.log(JSON.stringify(report, null, 2));
+if (failures.length) process.exitCode = 1;
 
 // [VXG RealForever]
