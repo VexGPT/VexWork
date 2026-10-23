@@ -71,7 +71,7 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(historyBackfill.effectDisposition, 'NO_EFFECTS');
   assert.equal(historyBackfill.formationProcessRefOrNull, 'process.vexwork.capture-discovered-work');
   assert.equal(graph.rootWorkRefs.includes(historyBackfill.workRef), true);
-  assert.equal(graph.transitions.length, 107);
+  assert.equal(graph.transitions.length, 112);
   assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.decomposed.20261022'));
   assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.plan-validated.20261022'));
   assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.ready.20261022'));
@@ -267,9 +267,9 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(operatingDomainTemplate.state, 'COMPLETED');
   assert.equal(operatingDomainContract.state, 'COMPLETED');
   assert.equal(attentionQueue.state, 'COMPLETED');
-  assert.equal(commerceTemplate.state, 'RUNNING');
+  assert.equal(commerceTemplate.state, 'COMPLETED');
   assert.equal(commerceItemModel.state, 'COMPLETED');
-  assert.equal(commerceAiSite.state, 'RUNNING');
+  assert.equal(commerceAiSite.state, 'COMPLETED');
   assert.equal(commerceFulfillment.state, 'COMPLETED');
   assert.equal(terrain.state, 'RUNNING');
   assert.equal(terrainPatient.state, 'VERIFYING');

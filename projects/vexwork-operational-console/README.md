@@ -699,11 +699,11 @@ P2  VexSite Localization patient-zero dogfood             COMPLETED
 P3  Operating Domain template                             COMPLETED
     Operating Domain contract                             COMPLETED
     operational attention queue                           COMPLETED
-P4  Commerce starter template                             RUNNING
+P4  Commerce starter template                             COMPLETED
     flexible commerce item model                          COMPLETED
-    AI-managed storefront/site surface                    RUNNING
+    AI-managed storefront/site surface                    COMPLETED
     sale / fulfillment attention                          COMPLETED
-P5  Antique Plate lived commerce pilot                    WAITING_DEPENDENCIES
+P5  Antique Plate lived commerce pilot                    READY
 P6  Cross-domain completion                               WAITING_DEPENDENCIES
 
 PARALLEL EXPERIENCE

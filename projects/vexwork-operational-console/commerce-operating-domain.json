@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "vexwork.operating-domain/v1",
+  "domainRef": "domain.vexwork.operational-console.commerce",
+  "label": "Reusable Commerce",
+  "purpose": "Compose current Commerce item truth, managed storefront publication, sale/fulfillment attention and reusable work lenses without copying provider records into VexWork or granting execution authority.",
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vexcommerce-storefront-reference"
+  ],
+  "capabilities": [
+    {
+      "capabilityRef": "capability.vexwork.commerce-item-observation",
+      "label": "Commerce item observation",
+      "ownerRepositoryRef": "repo.vexwork",
+      "sourceRefs": [
+        "projects/vexwork-operational-console/COMMERCE-ITEM-MODEL.md",
+        "src/adapters/commerce-item-model.mjs"
+      ]
+    },
+    {
+      "capabilityRef": "capability.vexcommerce.storefront-publication",
+      "label": "Managed storefront publication",
+      "ownerRepositoryRef": "repo.vexcommerce-storefront-reference",
+      "sourceRefs": [
+        "github.pull.vexcommerce-storefront-reference.1",
+        "repo.vexcommerce-storefront-reference:README.md",
+        "repo.vexcommerce-storefront-reference:storefront.json"
+      ]
+    },
+    {
+      "capabilityRef": "capability.vexwork.commerce-fulfillment-attention",
+      "label": "Commerce fulfillment attention",
+      "ownerRepositoryRef": "repo.vexwork",
+      "sourceRefs": [
+        "projects/vexwork-operational-console/COMMERCE-FULFILLMENT-ATTENTION.md",
+        "src/adapters/commerce-fulfillment-attention.mjs"
+      ]
+    }
+  ],
+  "populations": [
+    {
+      "populationRef": "population.vexcommerce.reference.items",
+      "label": "Reference storefront sellable items",
+      "ownerRepositoryRef": "repo.vexcommerce-storefront-reference",
+      "entityKind": "entity.commerce.sellable-item",
+      "sourceRefs": [
+        "repo.vexcommerce-storefront-reference:storefront.json",
+        "projects/vexwork-operational-console/commerce-storefront-reference-publication.json"
+      ]
+    }
+  ],
+  "lenses": [
+    {
+      "lensRef": "lens.vexwork.commerce.listing-readiness",
+      "label": "Listing readiness",
+      "ownerRepositoryRef": "repo.vexwork",
+      "populationRef": "population.vexcommerce.reference.items",
+      "sourceRefs": [
+        "projects/vexwork-operational-console/COMMERCE-ITEM-MODEL.md",
+        "projects/vexwork-operational-console/COMMERCE-STOREFRONT.md"
+      ]
+    },
+    {
+      "lensRef": "lens.vexwork.commerce.catalog-completeness",
+      "label": "Catalog completeness",
+      "ownerRepositoryRef": "repo.vexwork",
+      "populationRef": "population.vexcommerce.reference.items",
+      "sourceRefs": [
+        "projects/vexwork-operational-console/COMMERCE-ITEM-MODEL.md",
+        "projects/vexwork-operational-console/README.md"
+      ]
+    },
+    {
+      "lensRef": "lens.vexwork.commerce.inventory-integrity",
+      "label": "Inventory integrity",
+      "ownerRepositoryRef": "repo.vexwork",
+      "populationRef": "population.vexcommerce.reference.items",
+      "sourceRefs": [
+        "projects/vexwork-operational-console/COMMERCE-ITEM-MODEL.md",
+        "src/adapters/commerce-item-model.mjs"
+      ]
+    },
+    {
+      "lensRef": "lens.vexwork.commerce.fulfillment-attention",
+      "label": "Fulfillment attention",
+      "ownerRepositoryRef": "repo.vexwork",
+      "populationRef": "population.vexcommerce.reference.items",
+      "sourceRefs": [
+        "docs/foundation/ATTENTION-QUEUE.md",
+        "projects/vexwork-operational-console/COMMERCE-FULFILLMENT-ATTENTION.md"
+      ]
+    }
+  ],
+  "processes": [
+    {
+      "processRef": "process.vexcommerce.manage-reference-storefront-item",
+      "label": "Manage one reference storefront item",
+      "ownerRepositoryRef": "repo.vexcommerce-storefront-reference",
+      "sourceRefs": [
+        "repo.vexcommerce-storefront-reference:AGENTS.md",
+        "repo.vexcommerce-storefront-reference:README.md"
+      ]
+    }
+  ],
+  "attentionQueues": [
+    {
+      "queueRef": "queue.vexwork.operational-console.commerce.fulfillment",
+      "label": "Commerce fulfillment attention",
+      "ownerRepositoryRef": "repo.vexwork",
+      "sourceRefs": [
+        "docs/foundation/ATTENTION-QUEUE.md",
+        "projects/vexwork-operational-console/COMMERCE-FULFILLMENT-ATTENTION.md"
+      ]
+    }
+  ],
+  "sourceRefs": [
+    "projects/vexwork-operational-console/README.md",
+    "projects/vexwork-operational-console/commerce-storefront-reference-publication.json",
+    "github.pull.vexcommerce-storefront-reference.1",
+    "github.commit.vexcommerce-storefront-reference.a43b54a4626c6ff9b5eb2b402ffae9db9b466836"
+  ]
+}
