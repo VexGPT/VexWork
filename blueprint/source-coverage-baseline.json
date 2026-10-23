@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "vexwork.source-coverage-baseline/v1",
+  "baselineRef": "baseline.vexwork.foundation.source-coverage.001",
+  "runtimeRef": "node.v20.18.1",
+  "sourcePolicy": [
+    "src/**/*.mjs",
+    "*-reader.js"
+  ],
+  "observedBaseline": {
+    "lines": 96.73,
+    "branches": 84.73,
+    "functions": 96.71
+  },
+  "minimum": {
+    "lines": 96,
+    "branches": 84,
+    "functions": 96
+  },
+  "criticalFiles": {
+    "src/core/workgraph-runtime.mjs": {
+      "lines": 92,
+      "branches": 75,
+      "functions": 100
+    },
+    "src/core/workgraph.mjs": {
+      "lines": 96,
+      "branches": 80,
+      "functions": 96
+    },
+    "src/core/transition-handshake.mjs": {
+      "lines": 99,
+      "branches": 90,
+      "functions": 100
+    },
+    "src/core/workgraph-composition.mjs": {
+      "lines": 98,
+      "branches": 95,
+      "functions": 100
+    }
+  },
+  "rationale": "First accepted non-regression floor measured from the exact deterministic Foundation suite after repairing stale baseline tests and adding validator/runtime fail-closed regressions. Floors sit below the measured baseline so ordinary source evolution has small headroom while material regression remains visible."
+}
