@@ -1,0 +1,77 @@
+name: Normalize VexStream device storage Ready candidate
+
+on:
+  push:
+    branches:
+      - VXG-102226-vexstream-device-storage-ready
+
+permissions:
+  contents: write
+
+jobs:
+  normalize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout exact branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Use Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Restore canonical raw representation
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+
+          const readJson = (path) => JSON.parse(fs.readFileSync(path, 'utf8'));
+          const writeJson = (path, value) => fs.writeFileSync(path, `${JSON.stringify(value, null, 2)}\n`);
+
+          const graphPath = 'workgraphs/public.json';
+          const graph = readJson(graphPath);
+          delete graph.semanticFingerprint;
+          for (const item of graph.items) delete item.semanticFingerprint;
+          for (const transition of graph.transitions) delete transition.semanticFingerprint;
+          writeJson(graphPath, graph);
+
+          const projectPath = 'projects/vexstream-mobile-library/project.json';
+          const project = readJson(projectPath);
+          delete project.semanticFingerprint;
+          writeJson(projectPath, project);
+          NODE
+
+          git checkout origin/main -- test/workgraph.test.mjs
+
+      - name: Regenerate public projections
+        run: |
+          npm run workspace:build
+          npm run dashboard:build
+
+      - name: Prove normalized Ready candidate
+        run: |
+          node --test test/vexstream-mobile-library-project.test.mjs test/workgraph.test.mjs
+          npm run check
+          npm run dashboard:check
+          npm run workspace:check
+
+      - name: Commit normalized candidate without retaining this workflow
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'VexGPT'
+          git config user.email 'victor.gong@vextreme24.com'
+          rm -- '.github/workflows/vexstream-device-storage-normalize.yml'
+          git add workgraphs/public.json \
+            projects/vexstream-mobile-library/project.json \
+            public/workspace.json \
+            public/work-dashboard.json \
+            test/workgraph.test.mjs \
+            .github/workflows/vexstream-device-storage-normalize.yml
+          git commit -m '[VexStream Project] Keep Ready transition diff causal' -m 'Store the canonical Workgraph and Project in their existing raw representation, leave derived fingerprints to validation/projection, and revert generic fixture edits that were only needed by the noisy representation.' -m '[VXG RealForever]'
+          git push origin HEAD:VXG-102226-vexstream-device-storage-ready
