@@ -335,4 +335,150 @@ function resolveCurrentPointer(paths, projectRef) {
 function readSnapshot(paths, fingerprint) {
   const file = snapshotFile(paths, fingerprint);
   if (!fs.existsSync(file)) fail('PLANNING_RUNTIME_SNAPSHOT_MISSING', 'planning snapshot missing');
-  const snapshot = validateProjectPlanningSnapshot(readCanonicalJson(paths.root, 
+  const snapshot = validateProjectPlanningSnapshot(readCanonicalJson(paths.root, file, 'PLANNING_RUNTIME_SNAPSHOT_CORRUPT', 'planning snapshot'));
+  if (snapshot.semanticFingerprint !== fingerprint) fail('PLANNING_RUNTIME_SNAPSHOT_CORRUPT', 'planning snapshot address mismatch');
+  return snapshot;
+}
+
+function readEvent(paths, sequence, fingerprint) {
+  const file = safePath(paths.root, path.join(paths.events, `${String(sequence).padStart(12, '0')}-${fingerprint}.json`));
+  if (!fs.existsSync(file)) fail('PLANNING_RUNTIME_EVENT_MISSING', 'planning event missing');
+  const event = readCanonicalJson(paths.root, file, 'PLANNING_RUNTIME_EVENT_CORRUPT', 'planning event');
+  if (event.schemaVersion !== PROJECT_PLANNING_EVENT_SCHEMA || event.sequence !== sequence || event.semanticFingerprint !== fingerprint) {
+    fail('PLANNING_RUNTIME_EVENT_CORRUPT', 'planning event identity mismatch');
+  }
+  const { semanticFingerprint, ...core } = event;
+  if (!HEX64.test(semanticFingerprint) || semanticHash(core) !== semanticFingerprint) fail('PLANNING_RUNTIME_EVENT_CORRUPT', 'planning event fingerprint mismatch');
+  return event;
+}
+
+function validateRetainedLineage(paths, projectRef, pointer, snapshot, event, expectedRecordCount) {
+  const seen = new Set([pointer.pointerSha256]);
+  let currentPointer = pointer;
+  let currentSnapshot = snapshot;
+  let currentEvent = event;
+  while (currentPointer.priorPointerSha256OrNull !== null) {
+    const priorPointer = readPointer(paths, currentPointer.priorPointerSha256OrNull, projectRef);
+    if (seen.has(priorPointer.pointerSha256)) fail('PLANNING_RUNTIME_POINTER_CORRUPT', 'planning pointer lineage contains a cycle');
+    seen.add(priorPointer.pointerSha256);
+    if (priorPointer.snapshotFingerprint !== currentPointer.priorSnapshotFingerprintOrNull || priorPointer.sequence + 1 !== currentPointer.sequence) {
+      fail('PLANNING_RUNTIME_POINTER_CORRUPT', 'planning pointer lineage predecessor identity is inconsistent');
+    }
+    const priorSnapshot = readSnapshot(paths, priorPointer.snapshotFingerprint);
+    const priorEvent = readEvent(paths, priorPointer.sequence, priorPointer.eventFingerprint);
+    if (
+      priorSnapshot.projectRef !== projectRef
+      || priorSnapshot.sequence !== priorPointer.sequence
+      || priorSnapshot.lastEventFingerprintOrNull !== priorEvent.semanticFingerprint
+      || priorSnapshot.lastEventRefOrNull !== priorEvent.eventRef
+    ) fail('PLANNING_RUNTIME_POINTER_CORRUPT', 'retained planning pointer disagrees with snapshot/event');
+    if (
+      currentEvent.priorEventRefOrNull !== priorEvent.eventRef
+      || currentEvent.priorEventFingerprintOrNull !== priorEvent.semanticFingerprint
+      || currentSnapshot.sequence !== priorSnapshot.sequence + 1
+    ) fail('PLANNING_RUNTIME_EVENT_CORRUPT', 'planning event history is not causally continuous');
+    currentPointer = priorPointer;
+    currentSnapshot = priorSnapshot;
+    currentEvent = priorEvent;
+  }
+  if (seen.size !== expectedRecordCount) fail('PLANNING_RUNTIME_POINTER_CORRUPT', 'planning pointer store contains disconnected retained history');
+}
+
+function readAccepted(paths, projectRef) {
+  const resolved = resolveCurrentPointer(paths, projectRef);
+  if (resolved === null) return null;
+  const pointer = resolved.pointer;
+  const snapshot = readSnapshot(paths, pointer.snapshotFingerprint);
+  const event = readEvent(paths, pointer.sequence, pointer.eventFingerprint);
+  if (snapshot.projectRef !== projectRef || snapshot.sequence !== pointer.sequence || snapshot.lastEventFingerprintOrNull !== event.semanticFingerprint || snapshot.lastEventRefOrNull !== event.eventRef) {
+    fail('PLANNING_RUNTIME_POINTER_CORRUPT', 'planning pointer disagrees with snapshot/event');
+  }
+  validateRetainedLineage(paths, projectRef, pointer, snapshot, event, resolved.recordCount);
+  return deepFreeze({
+    currentnessBasis: PROJECT_PLANNING_RUNTIME_CURRENTNESS_BASIS,
+    pointer,
+    snapshot,
+    event,
+  });
+}
+
+function sealPointer({ projectRef, snapshot, event, prior }) {
+  const core = {
+    schemaVersion: PROJECT_PLANNING_RUNTIME_POINTER_SCHEMA,
+    currentness: 'CURRENT',
+    projectRef,
+    snapshotFingerprint: snapshot.semanticFingerprint,
+    eventFingerprint: event.semanticFingerprint,
+    sequence: snapshot.sequence,
+    priorPointerSha256OrNull: prior?.pointer.pointerSha256 ?? null,
+    priorSnapshotFingerprintOrNull: prior?.snapshot.semanticFingerprint ?? null,
+  };
+  return Object.freeze({ ...core, pointerSha256: semanticHash(core) });
+}
+
+export function readProjectPlanningRuntime({ storeRoot, projectRef }) {
+  const paths = storePaths(storeRoot, projectRef, { create: false });
+  return readAccepted(paths, projectRef);
+}
+
+export function recordProjectPlanningRuntimeTransaction({
+  storeRoot,
+  project,
+  graph,
+  viewRefs = [],
+  transaction,
+  planningRegistry,
+  workRegistry,
+  expectedPointerSha256OrNull,
+  instanceRef,
+  observedAt,
+}) {
+  const projectRef = project.projectRef;
+  const paths = storePaths(storeRoot, projectRef, { create: true });
+  return withWriter(paths, projectRef, instanceRef, observedAt, () => {
+    const prior = readAccepted(paths, projectRef);
+    const currentPointer = prior?.pointer.pointerSha256 ?? null;
+    if (expectedPointerSha256OrNull !== currentPointer) {
+      fail('PLANNING_RUNTIME_STALE_CURRENT', 'planning CURRENT pointer changed', { expectedPointerSha256OrNull, currentPointer });
+    }
+    const result = applyProjectPlanningTransaction({
+      project,
+      graph,
+      viewRefs,
+      currentSnapshotOrNull: prior?.snapshot ?? null,
+      transaction,
+      planningRegistry,
+      workRegistry,
+    });
+    writeImmutableJson(paths.root, eventFile(paths, result.event), result.event, 'planning event');
+    writeImmutableJson(paths.root, snapshotFile(paths, result.snapshot.semanticFingerprint), result.snapshot, 'planning snapshot');
+    const pointer = sealPointer({ projectRef, snapshot: result.snapshot, event: result.event, prior });
+    publishPointerAtomic(paths, pointer);
+    return deepFreeze({
+      schemaVersion: 'vexwork.project-planning-runtime-result/v1',
+      state: 'ACCEPTED',
+      priorPointerSha256OrNull: currentPointer,
+      nextPointerSha256: pointer.pointerSha256,
+      planning: result,
+      effects: Object.freeze({
+        planningMutationPerformed: true,
+        workgraphMutationPerformed: false,
+        providerMutationPerformed: false,
+      }),
+    });
+  });
+}
+
+export function recoverProjectPlanningRuntimeWriter({ storeRoot, projectRef, expectedLeaseSha256 }) {
+  if (typeof expectedLeaseSha256 !== 'string' || !HEX64.test(expectedLeaseSha256)) fail('PLANNING_RUNTIME_INPUT_INVALID', 'expectedLeaseSha256 must be lowercase SHA-256');
+  const paths = storePaths(storeRoot, projectRef, { create: false });
+  if (!fs.existsSync(paths.writer)) return Object.freeze({ state: 'RECOVERY_NOT_REQUIRED', effects: Object.freeze({ writerLeaseDeletionPerformed: false }) });
+  const lease = validateWriterLease(readCanonicalJson(paths.root, paths.writer, 'PLANNING_RUNTIME_WRITER_CONFLICT', 'writer lease'), projectRef);
+  if (lease.leaseSha256 !== expectedLeaseSha256) fail('PLANNING_RUNTIME_STALE_RECOVERY', 'writer lease changed before recovery');
+  const state = processState(lease.pid);
+  if (state !== 'ABSENT') fail('PLANNING_RUNTIME_WRITER_CONFLICT', 'writer lease is active or unverifiable', { processState: state });
+  fs.unlinkSync(paths.writer);
+  return Object.freeze({
+    state: 'RECOVERED',
+    recoveredLeaseSha256: lease.leaseSha256,
+    effects: Object.freeze({ writerLeaseDeletionPerformed: tru
