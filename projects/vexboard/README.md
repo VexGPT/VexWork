@@ -1478,6 +1478,366 @@ export/reload preserves exact asset bindings
 missing/stale source binding fails closed or becomes explicit unresolved media
 ```
 
+## Existing-system adoption — reverse project implementation into the design collection
+
+Future Vex work should begin from VexBoard design collections before implementation, but accepted
+systems already exist. VexBoard therefore needs a **reverse-adoption** path that can map current
+source-owned design/implementation truth into a BoardGraph without pretending that importing it
+transfers ownership.
+
+VexLife's current Universal Blueprint is a strong patient zero because it already carries:
+
+```text
+Product
+-> Screen
+-> Region
+-> Element
+-> Action / Permission / State selector / Localization key / Terrain / Tests
+
+stable refs
+bounded Atlas descent
+human + machine projections
+versioned blueprint changes
+target/platform adoption receipts
+```
+
+The current VexLife Presentation Graph also already preserves distinctions VexBoard needs:
+
+```text
+elementRef / screenRef are canonical identity projections
+display label is not canonical identity
+geometry is not semantic context
+motion is not product state
+localization is not identity mutation
+screenshot is not semantic map
+```
+
+So VexBoard should initially **project and bind** that accepted source rather than replace it.
+
+Conceptually:
+
+```text
+existing VexLife Blueprint / Presentation Graph
+        |
+        | source-bound adapter
+        v
+VexBoard design collection
+  stable Board refs mapped to canonical VexLife refs
+  source provenance retained
+  current implementation / proof backlinks retained
+        |
+        v
+future visual BoardPatch
+        |
+        | when authorized
+        v
+VexLife Blueprint change proposal
+  affected refs
+  impact report
+  target adoption requirements
+        |
+        v
+existing Blueprint change-propagation / platform adoption machinery
+```
+
+This permits the product direction:
+
+```text
+NEW DESIGN WORK
+-> begins in VexBoard
+
+EXISTING ACCEPTED WORK
+-> reverse-adopt into VexBoard
+-> verify identity/source parity
+-> then continue future design from the mapped collection
+```
+
+without silently declaring:
+
+```text
+VEXBOARD_PROJECTION
+=
+NEW_CANONICAL_OWNER
+```
+
+An explicit later source-governance evolution may choose VexBoard published design as an upstream
+authoring source for a target family, but that ownership transition must be deliberate and proven.
+
+### Reverse-adoption proving cases
+
+Use at least one existing VexLife Screen/Element family and one existing Vextreme page:
+
+```text
+canonical source ref
+-> Board semantic ref
+-> projected shape/layout
+-> localization identity
+-> source implementation refs
+-> tests/evidence
+-> live/runtime ref when current
+```
+
+Round-trip proof should establish:
+
+```text
+import/project
+-> no source mutation
+-> stable identity retained
+
+Board-only layout edit
+-> no target semantic mutation
+
+authorized semantic edit
+-> bounded source change proposal against rightful owner
+-> affected refs / tests / localization impact visible
+```
+
+## Context Inspector — selected meaning, metadata, documentation and traversable source
+
+VexBoard should provide a persistent side panel comparable to a design-tool inspector, but the panel
+is not merely a property editor. It is the **selected semantic coordinate's bounded Atlas / source
+projection**.
+
+Selecting or right-clicking any addressable object should resolve its stable identity and show only
+the sections that actually exist for that object.
+
+A useful conceptual inspector:
+
+```text
+SELECTED
+  human label
+  semantic kind
+  canonical ref
+  current Board ref
+  source/currentness state
+
+DESIGN
+  editable Board-owned properties
+  projection geometry / shape
+  template source / instance / variance
+  asset bindings
+
+WHERE USED
+  template instances
+  incoming/outgoing relationships
+  parent/child refs
+  screens/processes that consume it
+  known derivatives / exceptions
+
+SOURCE
+  canonical owner
+  repository
+  source paths / exact source refs
+  implementation bindings
+  change impact / affected refs
+
+LOCALIZATION
+  string ref
+  source-language value
+  languages
+  completeness/staleness
+  exact source file / key
+  screenshot context when available
+
+DOCUMENTATION
+  purpose / why
+  owning feature/process docs
+  design/decision records
+  relevant architecture sources
+
+PROOF
+  tests
+  behavior witnesses
+  screenshots
+  currentness / conformance receipts
+
+LIVE
+  live route / site / app coordinate when verified
+  open current implementation
+  runtime/readiness status when source supports it
+```
+
+This should be generated from pointers/backlinks, not a copied inspector database.
+
+```text
+INSPECTOR
+= QUERY + HYDRATE + PROJECT
+
+INSPECTOR
+!= SECOND_SOURCE_OF_TRUTH
+```
+
+### Identity is the traversal key
+
+The ability to right-click a visible element and ask "where is this used?" depends on stable identity.
+
+A selected Button should be able to traverse, when those bindings exist:
+
+```text
+Board elementRef
+-> reusable template/component source
+-> every Board usage
+-> target blueprint elementRef
+-> implementation binding
+-> GitHub source
+-> localization stringRef
+-> translated values / status
+-> screenshots/evidence
+-> live route
+-> tests / behavior witnesses
+```
+
+Reverse traversal should work too:
+
+```text
+known source file / string ref / live route / screenshot identity
+-> canonical semantic ref
+-> Board coordinate(s)
+```
+
+This is especially important for adopted existing systems, because the Board can become the human
+navigation surface over documentation that currently lives in several rightful repositories/files
+without copying those documents into one giant monolith.
+
+### Editable versus projected fields must be explicit
+
+The inspector may show both editable and read-only data, but it must never make a projected source
+look editable merely because it appears in a form field.
+
+```text
+BOARD_OWNED_FIELD
+-> may be edited through Board Control / BoardPatch
+
+SOURCE_PROJECTED_FIELD
+-> inspect/read by default
+-> edit only through an admitted owner-specific change adapter
+
+PROOF / LIVE EVIDENCE
+-> observation, never direct design mutation
+```
+
+The UI should visibly distinguish those states.
+
+## Localization synchronization — visual text edits become source-aware change impact
+
+A visible string should never be only anonymous text painted on a shape when the target/source has a
+stable localization identity.
+
+VexLife Blueprint already models a localization key on stable elements, while Vextreme's current
+localization architecture treats the key/source registry as UI identity and generates page/language
+coverage. Vextreme's identity pilot additionally preserves canonical versus observed element IDs and
+builds pointer indexes rather than duplicating translation records.
+
+VexBoard can project those relationships directly.
+
+For an adopted/localization-bound element:
+
+```text
+visible text
++ canonical elementRef
++ stringRef
++ source-language source
++ locale projections
++ source / screenshot / usage backlinks
+```
+
+If the human edits the visible English text in VexBoard:
+
+```text
+"Continue"
+-> "Continue to verification"
+```
+
+the Board should not silently change only its own display text.
+
+Instead:
+
+```text
+Board edit intention
+-> resolve canonical stringRef
+-> form source-language change proposal
+-> compute affected usages
+-> compute translation freshness impact
+-> show synchronization status
+```
+
+Conceptually the Inspector may then show:
+
+```text
+Localization synchronization
+
+EN source        CHANGED IN DESIGN / SOURCE UPDATE PENDING
+JA               STALE AGAINST NEW SOURCE
+ZH               STALE AGAINST NEW SOURCE
+FR               MISSING / NOT CURRENTLY COMPLETE
+
+Used by
+  Checkout / Continue
+  Account Setup / Continue
+
+[Open source string]
+[View usages]
+[Prepare localization update]
+[Revert Board text]
+```
+
+A target that already owns hash-based translation staleness should remain the authority for the
+actual stale/complete calculation; VexBoard projects that status and the proposed design delta.
+
+```text
+BOARD_TEXT_CHANGED
+!=
+SOURCE_STRING_UPDATED
+
+SOURCE_STRING_UPDATED
+!=
+TRANSLATIONS_CURRENT
+
+TRANSLATIONS_CURRENT
+!=
+LAYOUT_PROOF_CURRENT
+```
+
+### Publish readiness consumes synchronization truth
+
+The Board publish-readiness audit should include source-binding/localization synchronization when a
+published design claims a target-bound deliverable.
+
+Warnings can include:
+
+```text
+design text changed but canonical source update not formed
+source language changed but one or more required locales are stale
+target element identity no longer resolves
+screenshot evidence predates the intended source revision
+live implementation remains on an earlier accepted blueprint revision
+```
+
+These are navigable inspector findings, not generic red badges.
+
+A design-only Board with no target binding may legitimately publish without target localization
+coverage; a target-bound release must state its actual synchronization debt.
+
+### Better-than-screenshot-only localization workflow
+
+The intended experience extends the useful idea behind screenshot-context localization tools:
+
+```text
+select visual element in Board / screenshot
+-> resolve canonical identity
+-> inspect current source-language + translations
+-> inspect where used
+-> inspect source implementation
+-> inspect live route / screenshots
+-> edit/propose one source-aware change
+-> see affected translations / layouts / proofs
+-> route the exact target change
+```
+
+The differentiator is not merely "translate text beside a screenshot." It is that **design identity,
+source, localization, screenshots, docs, implementation and proof are traversable forms of the same
+semantic coordinate**.
+
 ## Semantic navigation and the walk stack
 
 VexBoard should reuse the navigation lesson already earned by Terrain and VexLife:
@@ -2538,6 +2898,26 @@ semantic names/aliases/tags, project-scoped and cross-project discovery, PNG/JPG
 asset gallery access independent of board placement, provenance/usages, and deterministic
 export/reload of media bindings.
 
+### Phase 2F — existing-system reverse adoption
+
+Source-bound adapters that project accepted existing design/implementation systems into VexBoard
+without taking ownership. First proving candidates should include VexLife Universal Blueprint /
+Presentation Graph and one Vextreme page/localization surface. Establish stable identity mapping,
+source/proof backlinks and safe future BoardPatch -> rightful source-change proposal routes.
+
+### Phase 2G — Context Inspector and documentation/source traversal
+
+Selected-item side inspector over stable refs: design properties, where-used/backlinks, source,
+localization, documentation, proof, screenshots and verified live coordinates. Use bounded
+query/hydrate/project behavior rather than a copied metadata database; visually distinguish
+Board-editable fields from source-projected evidence.
+
+### Phase 2H — localization/source synchronization
+
+Source-aware visual text editing, canonical stringRef resolution, affected-usage mapping,
+translation staleness/completeness projection, screenshot/layout proof freshness and exact
+synchronization warnings that feed publish readiness without making VexBoard the localization owner.
+
 ### Phase 3 — prototype simulation and BoardJourney
 
 Clickable controls, conditions, scenario state, overlays, loops, Back/Return, right-side walk stack, and revisit.
@@ -2664,6 +3044,12 @@ next product frontier
    one source / linked instances / declared variance / make-unique provenance / reverse usages
 -> asset + image support proving ground
    source-bound media / semantic discovery / SVG + screenshots / gallery / exact provenance
+-> reverse-adopt existing accepted systems into the design collection
+   VexLife Blueprint SOT / Presentation Graph + one Vextreme page/localization patient zero
+-> Context Inspector proving ground
+   identity / where-used / source / docs / localization / proof / live traversal
+-> localization/source synchronization proving ground
+   visual text edit -> source-aware proposal -> stale locale/layout/proof impact
 -> animated semantic traversal proving ground
    visible route-following / centered destination / portal map-change / return / reduced motion
 -> publish-readiness + versioned Board release
