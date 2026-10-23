@@ -12,6 +12,7 @@ const read = (relative) => JSON.parse(fs.readFileSync(new URL(`../${relative}`, 
 const repositoryRegistry = read('blueprint/repository-registry.json');
 const processRegistry = read('blueprint/process-registry.json');
 const source = read('projects/vexwork-operational-console/vexsite-operating-domain.json');
+const commerceSource = read('projects/vexwork-operational-console/commerce-operating-domain.json');
 
 function create(value = source) {
   return createOperatingDomain(value, { repositoryRegistry, processRegistry });
@@ -115,6 +116,33 @@ test('stored semantic fingerprint is verified rather than silently rewritten', (
   const tampered = structuredClone(current);
   tampered.label = 'Tampered label';
   assert.throws(() => create(tampered), /operating domain semanticFingerprint mismatch/);
+});
+
+
+test('Commerce reuses the Operating Domain contract without schema evolution', () => {
+  const domain = createOperatingDomain(commerceSource, { repositoryRegistry, processRegistry });
+  const projection = projectOperatingDomain(domain);
+
+  assert.equal(domain.domainRef, 'domain.vexwork.operational-console.commerce');
+  assert.deepEqual(domain.repositoryRefs, ['repo.vexcommerce-storefront-reference', 'repo.vexwork']);
+  assert.deepEqual(projection.summary, {
+    capabilityCount: 3,
+    populationCount: 1,
+    lensCount: 4,
+    processCount: 1,
+    attentionQueueCount: 1,
+  });
+  assert.equal(projection.populations[0].populationRef, 'population.vexcommerce.reference.items');
+  assert.deepEqual(projection.lenses.map((lens) => lens.lensRef), [
+    'lens.vexwork.commerce.catalog-completeness',
+    'lens.vexwork.commerce.fulfillment-attention',
+    'lens.vexwork.commerce.inventory-integrity',
+    'lens.vexwork.commerce.listing-readiness',
+  ]);
+  assert.equal(projection.processes[0].processRef, 'process.vexcommerce.manage-reference-storefront-item');
+  assert.equal(projection.attentionQueues[0].queueRef, 'queue.vexwork.operational-console.commerce.fulfillment');
+  assert.equal(projection.effects, false);
+  assert.equal(projection.executionAuthority, 'NONE');
 });
 
 // [VXG RealForever][VEXWORK][OPERATING-DOMAIN]
