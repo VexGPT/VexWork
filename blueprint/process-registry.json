@@ -1,7 +1,7 @@
 {
   "schemaVersion": "vexwork.process-registry/v1",
   "registryRef": "registry.vexwork.processes.001",
-  "registryVersion": 4,
+  "registryVersion": 5,
   "purpose": "Map recurring work questions to the smallest reusable process source without making VexWork the executor or stealing process ownership from target repositories.",
   "processes": [
     {
@@ -63,6 +63,18 @@
         "docs/templates/QA-REVIEW-RETURN.md"
       ],
       "appliesWhen": "A VexWork candidate or other work-system candidate needs repeatable QA/semantic quality review before a lifecycle or merge decision.",
+      "executionAuthority": "NONE"
+    },
+    {
+      "processRef": "process.vexcommerce.manage-reference-storefront-item",
+      "label": "Manage reference storefront item",
+      "purpose": "Route one synthetic public-safe storefront item add/revision through the registered storefront repository without granting VexWork publication authority.",
+      "ownerRepositoryRef": "repo.vexcommerce-storefront-reference",
+      "entryRefs": [
+        "AGENTS.md",
+        "README.md"
+      ],
+      "appliesWhen": "A synthetic reference storefront item needs known public details or pictures added/revised and published through the rightful storefront owner.",
       "executionAuthority": "NONE"
     }
   ]
