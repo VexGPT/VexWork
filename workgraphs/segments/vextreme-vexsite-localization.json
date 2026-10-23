@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "vexwork.workgraph-segment/v1",
+  "segmentRef": "segment.vextreme.vexsite.localization",
+  "graphRef": "workgraph.vexwork.foundation",
+  "items": [
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vextreme.vexsite.localization.closed-circuit.global-core",
+      "parentWorkRefOrNull": null,
+      "label": "Localize Closed Circuit across Global Core",
+      "purpose": "Preserve the current Closed Circuit Global Core localization concern as canonical Work while Vextreme retains source scheduling and implementation authority; current provider foreground remains separate dual-lineage work.",
+      "workClass": "POTENTIAL",
+      "state": "CAPTURED",
+      "workDisposition": "PARKED",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vextreme"
+      ],
+      "sourceRefs": [
+        "github.pull.vexwork.62",
+        "projects/vexwork-operational-console/VEXSITE-PATIENT-ZERO.md",
+        "projects/vexwork-operational-console/vexsite-patient-zero-observation.json",
+        "concern.vextreme.vexsite.localization.closed-circuit.global-core",
+        "entity.vextreme.vexsite.page.closed-circuit",
+        "lens.vextreme.vexsite.localization",
+        "predicate.vextreme.vexsite.localization.target-tier-complete",
+        "reason.vextreme.vexsite.localization.target-tier-completion",
+        "github.issue.vextreme.273",
+        "github.issue-comment.vextreme.273.6311043427",
+        "projects/vexwork-operational-console/vexsite-closed-circuit-promotion-publication.json"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.promote-derived-concern",
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-23T02:20:00.000Z",
+      "updatedAt": "2026-10-23T02:26:33.000Z"
+    }
+  ],
+  "transitions": [],
+  "sourceRefs": [
+    "github.pull.vexwork.62",
+    "projects/vexwork-operational-console/VEXSITE-PATIENT-ZERO.md",
+    "projects/vexwork-operational-console/vexsite-patient-zero-observation.json",
+    "github.issue.vextreme.273"
+  ],
+  "formedAt": "2026-10-23T02:26:33.000Z"
+}

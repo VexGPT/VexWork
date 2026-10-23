@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "vexwork.vexsite-patient-zero-observation/v1",
+  "observationRef": "observation.vextreme.vexsite.localization.87a013e.4eaafb71685d",
+  "providerRef": "repo.vextreme",
+  "providerCommit": "87a013e00fe13d43688e4c7abd1ea7ebaecca243",
+  "providerTree": "3fe85d059f9d6077714dd98ab913541521fbdc36",
+  "indexBlobSha": "12a1999a5fb334b5695817067dbbf4805f75b38e",
+  "scopeIndexBlobSha": "ae5a555d8aef0fd7e67490dac887025b8636e8f3",
+  "contentFingerprint": "4eaafb71685d",
+  "sourceRefs": [
+    "github.commit.vextreme.87a013e00fe13d43688e4c7abd1ea7ebaecca243",
+    "repo.vextreme:data/index.json",
+    "repo.vextreme:data/strings/compiled/scopes/index.json",
+    "github.issue.vextreme.273"
+  ],
+  "targetLocales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "ja",
+    "ko",
+    "pt",
+    "zh"
+  ],
+  "population": {
+    "providerNodeCount": 116,
+    "portedPageCount": 115,
+    "excludedUnportedCount": 1,
+    "completeCount": 34,
+    "incompleteCount": 80,
+    "notApplicableCount": 1,
+    "sourceOnlySlugs": [
+      "ai-cheat-sheet"
+    ]
+  },
+  "missingByLocale": {
+    "ar": 80,
+    "de": 80,
+    "es": 80,
+    "fr": 80,
+    "hi": 80,
+    "ja": 80,
+    "ko": 80,
+    "pt": 80,
+    "zh": 79
+  },
+  "scopes": {
+    "conversationsWithGod": {
+      "arcKey": "convos_with_god",
+      "label": "Conversations with God",
+      "currentPageCount": 14,
+      "completeCount": 7,
+      "incompleteCount": 7,
+      "completeSlugs": [
+        "what-is-the-god-spark",
+        "clarity-on-christianity",
+        "what-about-buddhism",
+        "god-to-speak-of-the-truth-of-love",
+        "why-financial-freedom-is-harder-to-trust",
+        "truth-of-demons-and-intrusive-thoughts",
+        "scopes-of-god"
+      ],
+      "incompleteSlugs": [
+        "closed-circuit",
+        "divine-emergence",
+        "the-firmament-conversation",
+        "ascension-and-embodiment",
+        "the-testimony-of-the-handler",
+        "returning-scorpions-to-god",
+        "recognizing-life-receiving-abundance"
+      ]
+    }
+  },
+  "advisoryEvidence": {
+    "defaultGeneratedCurrentness": "UNKNOWN",
+    "defaultLivedProof": "UNKNOWN",
+    "defaultModernization": "UNKNOWN",
+    "byEntityRef": {
+      "entity.vextreme.vexsite.page.what-is-the-god-spark": {
+        "generatedCurrentness": {
+          "state": "SATISFIED",
+          "evidenceRefs": [
+            "github.pull.vextreme.376"
+          ]
+        }
+      },
+      "entity.vextreme.vexsite.page.clarity-on-christianity": {
+        "generatedCurrentness": {
+          "state": "UNSATISFIED",
+          "evidenceRefs": [
+            "github.pull.vextreme.379"
+          ]
+        }
+      }
+    }
+  },
+  "selectedConcern": {
+    "concernRef": "concern.vextreme.vexsite.localization.closed-circuit.global-core",
+    "entityRef": "entity.vextreme.vexsite.page.closed-circuit",
+    "pageSlug": "closed-circuit",
+    "missingLocales": [
+      "ar",
+      "de",
+      "es",
+      "fr",
+      "hi",
+      "ja",
+      "ko",
+      "pt",
+      "zh"
+    ],
+    "providerQueueRef": "github.issue.vextreme.273",
+    "providerQueueEvidenceRef": "github.issue-comment.vextreme.273.6311043427",
+    "providerAdmissionState": "NOT_ADMITTED",
+    "providerCurrentForeground": "DUAL_LINEAGE_SOURCE_WORK",
+    "intendedWorkDisposition": "PARKED"
+  },
+  "effects": false,
+  "executionAuthority": "NONE"
+}

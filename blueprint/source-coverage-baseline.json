@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "vexwork.source-coverage-baseline/v1",
+  "baselineRef": "baseline.vexwork.foundation.source-coverage.001",
+  "runtimeRef": "node.v20.18.1",
+  "sourcePolicy": [
+    "src/**/*.mjs",
+    "*-reader.js"
+  ],
+  "observedBaseline": {
+    "lines": 96.85,
+    "branches": 84.11,
+    "functions": 97.14
+  },
+  "minimum": {
+    "lines": 96,
+    "branches": 84,
+    "functions": 96
+  },
+  "criticalFiles": {
+    "src/core/workgraph-runtime.mjs": {
+      "lines": 92,
+      "branches": 75,
+      "functions": 100
+    },
+    "src/core/workgraph.mjs": {
+      "lines": 96,
+      "branches": 80,
+      "functions": 96
+    },
+    "src/core/transition-handshake.mjs": {
+      "lines": 99,
+      "branches": 90,
+      "functions": 100
+    },
+    "src/core/workgraph-composition.mjs": {
+      "lines": 98,
+      "branches": 95,
+      "functions": 100
+    },
+    "src/core/project-planning-runtime.mjs": {
+      "lines": 93,
+      "branches": 75,
+      "functions": 100
+    },
+    "src/core/project-planning.mjs": {
+      "lines": 99,
+      "branches": 86,
+      "functions": 100
+    },
+    "src/core/project-reconciliation.mjs": {
+      "lines": 99,
+      "branches": 88,
+      "functions": 100
+    }
+  },
+  "rationale": "Accepted non-regression floors measured from the exact deterministic Foundation suite through the portable Planning/Reconciliation candidate. Aggregate floors remain stable; critical-file floors preserve the measured lifecycle/currentness boundaries with small review headroom rather than relying on aggregate coverage to protect them."
+}

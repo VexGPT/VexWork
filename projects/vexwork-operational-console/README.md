@@ -402,7 +402,7 @@ A useful console should be able to descend:
 ```text
 VexSite Localization
 -> Conversations with God
--> 19 relevant pages
+-> provider-current relevant pages (14 in observation 87a013e / 4eaafb71685d)
 -> complete / incomplete / unknown
 -> incomplete by source / locale / runtime / lived proof / modernization reason
 -> exact page
@@ -410,11 +410,11 @@ VexSite Localization
 -> existing foreground Work item, if one exists
 ```
 
-without creating 19 page Work items merely for visibility.
+without creating one Work item per provider page merely for visibility.
 
 The first dogfood completion claim is not "every VexSite page is translated forever." It is:
 
-> the reusable projection can truthfully answer "what remains?" from current Vextreme evidence and can coexist with real promoted work such as the God Spark / Clarity dual-lineage work.
+> the reusable projection can truthfully answer "what remains?" from current Vextreme evidence, preserve source-owned work lineage such as God Spark / Clarity without relabeling it canonical VexWork Work, and explicitly promote one exact derived concern when durable Work is actually admitted.
 
 ## Phase 3 — Operating Domain template
 
@@ -692,12 +692,17 @@ P1  Derived-work projection foundation                    COMPLETED
     contract                                               COMPLETED
     aggregate / scope / entity projection                 COMPLETED
     explicit concern-to-Work promotion                    COMPLETED
-P2  VexSite Localization patient-zero dogfood             READY
-    page population / scope                               READY
-    localization / modernization lens                     WAITING_DEPENDENCIES
-    patient-zero proof                                    WAITING_DEPENDENCIES
-P3  Operating Domain template                             WAITING_DEPENDENCIES
-P4  Commerce starter template                             WAITING_DEPENDENCIES
+P2  VexSite Localization patient-zero dogfood             COMPLETED
+    page population / scope                               COMPLETED
+    localization / modernization lens                     COMPLETED
+    patient-zero proof                                    COMPLETED
+P3  Operating Domain template                             COMPLETED
+    Operating Domain contract                             COMPLETED
+    operational attention queue                           COMPLETED
+P4  Commerce starter template                             RUNNING
+    flexible commerce item model                          COMPLETED
+    AI-managed storefront/site surface                    READY
+    sale / fulfillment attention                          COMPLETED
 P5  Antique Plate lived commerce pilot                    WAITING_DEPENDENCIES
 P6  Cross-domain completion                               WAITING_DEPENDENCIES
 

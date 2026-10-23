@@ -3,8 +3,14 @@
   "projectRef": "project.vexwork.foundation",
   "label": "VexWork Foundation",
   "purpose": "Establish VexWork as the portable work-navigation foundation for cross-repository projects, Workgraph truth, Work Board projections and provider relations without becoming cross-repository source authority.",
-  "rootWorkRefs": ["work.vexwork.foundation.outcome"],
-  "repositoryRefs": ["repo.vexwork", "repo.vexlife", "repo.vexlife-android"],
+  "rootWorkRefs": [
+    "work.vexwork.foundation.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vexlife",
+    "repo.vexlife-android"
+  ],
   "sourceRefs": [
     "github.repo.VexGPT/VexWork",
     "github.pull.vexlife.908",
@@ -12,7 +18,11 @@
     "github.pull.vexlife.910",
     "github.pull.vexlife.911",
     "github.pull.vexlife.912",
-    "github.repo.vgong24/VexLife-Android"
+    "github.repo.vgong24/VexLife-Android",
+    "docs/foundation/INDEX.md",
+    "github.pull.vexwork.57",
+    "github.pull.vexwork.58",
+    "github.pull.vexwork.59"
   ],
   "formedAt": "2026-10-21T01:45:00.000Z"
 }

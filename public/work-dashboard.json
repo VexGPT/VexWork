@@ -84,6 +84,22 @@
           "updatedAt": "2026-10-21T03:56:12.000Z"
         },
         {
+          "workRef": "work.vexwork.foundation.maturity-closure",
+          "label": "Foundation maturity closure",
+          "purpose": "Close the pre-VexBoard foundation hardening pass by establishing the regression/coverage floor, adopting segment-owned Workgraph authoring, and migrating portable Project Planning and Project Reconciliation without reopening the already-completed first-foundation outcome.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife"
+          ],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "updatedAt": "2026-10-23T02:02:22.000Z"
+        },
+        {
           "workRef": "work.vexwork.foundation.repository-graph",
           "label": "Repository Graph",
           "purpose": "Make cross-repository work source-descendable through public/source-safe repository and culture-entry references without consolidating cultures.",
@@ -174,6 +190,21 @@
   "parkingLot": {
     "items": [
       {
+        "workRef": "work.vextreme.vexsite.localization.closed-circuit.global-core",
+        "label": "Localize Closed Circuit across Global Core",
+        "purpose": "Preserve the current Closed Circuit Global Core localization concern as canonical Work while Vextreme retains source scheduling and implementation authority; current provider foreground remains separate dual-lineage work.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "NORMAL",
+        "repositoryRefs": [
+          "repo.vextreme"
+        ],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "updatedAt": "2026-10-23T02:26:33.000Z"
+      },
+      {
         "workRef": "work.vexwork.history.foundational-infrastructure-backfill",
         "label": "Foundational Infrastructure history backfill",
         "purpose": "Gradually reconstruct completed foundational work into VexWork with provenance so future humans and instances can perceive what was built from a dashboard instead of rediscovering it across repositories and chat history.",
@@ -252,9 +283,9 @@
     ]
   },
   "summary": {
-    "projectWorkItemCount": 7,
+    "projectWorkItemCount": 8,
     "openProjectWorkItemCount": 0,
-    "parkingLotItemCount": 5
+    "parkingLotItemCount": 6
   },
   "effects": false,
   "executionAuthority": "NONE"

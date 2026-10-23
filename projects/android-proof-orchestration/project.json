@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.android-proof-orchestration",
+  "label": "Android Proof Orchestration",
+  "purpose": "Make Android-native proof reusable across lanes by selecting or booting API-compatible targets, running exact proof commands, and coordinating shared physical/emulated devices without making humans reconstruct host mechanics.",
+  "rootWorkRefs": [
+    "work.android-proof-orchestration.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vexlife-android",
+    "repo.vextreme-sdk"
+  ],
+  "sourceRefs": [
+    "projects/android-proof-orchestration/README.md",
+    "repo.vexlife-android:docs/foundation/ANDROID-HOST-PROOF.md",
+    "repo.vexlife-android:docs/foundation/test-proof/README.md",
+    "repo.vextreme-sdk:docs/process/cross-platform-lived-proof-and-branch-reuse.md",
+    "github.issue.vextreme-sdk.1894",
+    "github.issue.vexlife-android.157",
+    "docs/process/FORM-PROJECT.md"
+  ],
+  "formedAt": "2026-10-23T03:15:48.000Z"
+}

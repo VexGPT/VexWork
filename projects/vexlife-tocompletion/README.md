@@ -86,9 +86,21 @@ October 19/20, 2026
 October 20-21, 2026
   P1-P4 executed to lived completion
 
-October 21, 2026 onward
-  P5 is current foreground; P6/P7 remain canonical future horizon
-  without fabricated child-task decomposition
+October 21-22, 2026
+  P5 G02 reached terminal lived Score continuity;
+  P5 G03 reached terminal lived memory-only Daily Dream;
+  no G04 Rhythm candidate was fabricated without recurrent evidence
+
+October 22, 2026
+  PR919 terminally accepted the reusable ordinary-product Heretic establishment composition:
+  exact 11-member Artifact Delivery -> exact Python 3.14.7 / mlx-lm 0.32.0
+  -> fresh-host HF cache compatibility -> exact clean SDK owner closure
+
+Current
+  ordinary fresh-user productization is foreground:
+  actively finish/currentize the existing PR873 setup-safety owner,
+  then connect normal start to the accepted PR919 Heretic composition.
+  P6/P7 remain canonical future/lateral horizon.
 ```
 
 Permanent interpretation:
@@ -152,9 +164,57 @@ Exact private Home/model identities are intentionally **not duplicated in public
 | P2 | COMPLETED | First lived real Heretic Conversation turn reached `TERMINAL_LIVED_PASS`. |
 | P3 | COMPLETED | Same-Home restart + second real Heretic turn + durable readback reached `TERMINAL_LIVED_PASS`; PR #915 is accepted history. |
 | P4 | COMPLETED | A054 reached `P4_TERMINAL_LIVED_PASS`: real Heretic chose the exact cued typed effect, Native Worker executed orientation, ToolResultRelay reinjected the verified result, later synthesis completed, and the same durable Conversation advanced. |
-| P5 | RUNNING | Lived continuity/learning remains foreground. The exact SDK readiness dependency is terminally accepted; currentized Vextreme-SDK PR #1890 now preserves the frozen four-file Memory/Safety semantic candidate and is in fresh exact-head SourceOwner/Assurance acceptance before one live G02 Score record may be materialized. |
-| P6 | WAITING_DEPENDENCIES | Cultivation/School/Training Placement/Birth waits on real P5 lived evidence; Training Placement decides whether learning belongs in source, Memory, curriculum, Rhythm, more evidence, no weight, or an earned weight route. |
-| P7 | PLAN_VALIDATED | Whole-product connected/native expansion is canonical but not current foreground; detailed child work remains in rightful lateral Projects until explicitly activated here. |
+| P5 | PAUSED_AT_CHECKPOINT | G02 Score continuity and G03 memory-only Daily Dream are both terminal lived passes. No recurrent correction/preference/relationship pattern is currently earned, so G04 Rhythm/training/weight effects remain held until another ordinary source-bound lived episode creates real Continuity Evolution evidence. |
+| P6 | WAITING_DEPENDENCIES | Cultivation/School/Training Placement/Birth remains unearned while P5 has no real G04 developmental evidence; NO_WEIGHT_NEEDED remains a valid future outcome. |
+| P7 | PLAN_VALIDATED | Whole-product connected/native expansion is canonical but not the current ToCompletion foreground; detailed child work remains in rightful lateral Projects until explicitly activated here. |
+
+## Ordinary fresh-user productization — current foreground
+
+The lived core and the standalone Heretic establishment composition are already available. The remaining product gap is the normal setup route itself:
+
+```text
+current ordinary start
+-> setup/bootstrap
+-> legacy active G0 / Qwen3.5-4B initializer
+
+accepted target composition
+-> exact Heretic 11-member Artifact Delivery
+-> exact Python 3.14.7 / mlx-lm 0.32.0
+-> accepted SDK persistent MLX owner
+-> exact runtime receipt
+-> existing Browser / Lived Companion
+```
+
+Current VexLife source milestone:
+
+```text
+PR919 = TERMINAL_ACCEPTED_CURRENT
+merge/main = 7eab93caf9936ab9b53c6ebc39c46a6b59a6120a
+tree = a687e764797edc028d27cdd13b82127cd254f955
+```
+
+The continuation is **active**, not a wait state:
+
+```text
+work.vexlife.tocompletion.productization.setup-safety-convergence
+  = RUNNING
+  -> descend into the existing PR873 setup-safety owner
+  -> ordinary-forward currentize it against current VexLife main
+  -> preserve one setup owner / cancellation / resumable partials /
+     pending-runtime ownership / progress / preserve-Home cleanup
+  -> prove and terminalize that dependency
+
+then
+
+work.vexlife.tocompletion.productization.heretic-normal-start-integration
+  = WAITING_DEPENDENCIES
+  -> becomes the immediate next source slice
+  -> route safe normal start into the accepted PR919 Heretic composition
+```
+
+Do **not** create a parallel initializer just to avoid PR873. Continuing the dependency is continuing ToCompletion.
+
+Do **not** solve selection by a blind `activeModelBundleRef` pointer flip. Existing-Home replacement/upgrade remains explicit; no silent lineage rewrite is allowed.
 
 ## P4 accepted design
 
@@ -242,128 +302,80 @@ This is not permission to create a task for every typo or retry. Add one only wh
 ## Current edge
 
 ```text
-P5 = RUNNING
+CURRENT FOREGROUND
+  work.vexlife.tocompletion.productization.ordinary-heretic-setup = RUNNING
 
-parent source task:
-  work.vexlife.tocompletion.p5.g02-semantic-authority-materializer = RUNNING
+CURRENT EXECUTABLE WORK
+  work.vexlife.tocompletion.productization.setup-safety-convergence = RUNNING
 
-completed producer checkpoint:
-  work.vexlife.tocompletion.p5.g02.sdk-runner-a057 = COMPLETED
+  owner/provider surface:
+    VexLife PR #873
 
-completed SDK readiness checkpoint:
-  work.vexlife.tocompletion.p5.g02.sdk-readiness-admission = COMPLETED
+  present task:
+    re-ground #873 against current VexLife main
+    -> preserve accepted setup-safety semantics
+    -> reconcile old branch/current-main divergence ordinary-forward
+    -> recompose deterministic Source Manifest consequences from current truth
+    -> focused + repository proof
+    -> source lifecycle to terminal acceptance
 
-  serializer blocker PR #1879 =
-    merged as c822ec414b54cea570b3b939eab84cc4c8803d19
+NEXT ALREADY-DEFINED EDGE
+  work.vexlife.tocompletion.productization.heretic-normal-start-integration
+    = WAITING_DEPENDENCIES on setup-safety-convergence
 
-  readiness PR #1893 =
-    terminally accepted / merged
-    merge = 990be7f896e5dcbf2c8af875fe8e3f9cbd464088
-    merge tree = 0e94755e83cdd996b13558568d4ac18c6d768cc8
+  once dependency is current:
+    safe normal start
+    -> accepted Heretic target
+    -> merged PR919 establishment composition
+    -> existing runtime receipt / Browser Companion
+    -> ordinary fresh-user proof
 
-  issue #1891 =
-    CLOSED / dependency released
+DEVELOPMENTAL SIDE
+  G02 = TERMINAL_LIVED_PASS
+  G03 = TERMINAL_LIVED_PASS
+  P5 = PAUSED_AT_CHECKPOINT
+  G04 = HELD_NOT_EARNED until new real recurrent developmental evidence exists
 
-  readiness evidence =
-    A001 exact-head SourceOwner PASS
-    A004 SR-G02-07..10 PASS / preserved
-    A005 SR-G02-11 PASS
-    Formal Reviewer = APPROVE / CLEAR
-    post-merge tree identity = PASS
-
-current foreground task:
-  work.vexlife.tocompletion.p5.g02.semantic-source-acceptance = RUNNING
-
-Vextreme-SDK PR #1890 current coordinate:
-  base = 990be7f896e5dcbf2c8af875fe8e3f9cbd464088
-  head = 440f4250ea1c51bc0c670526775277942e9c2af7
-  tree = 30535351ecf62569ff73d54e59a15fd122f4fead
-  behind accepted main = 0
-  changed paths = exact 4
-  mergeable = true
-
-frozen semantic blobs:
-  8af37e34f2b5194eee53e4276a420a7d31ffd3cd
-    lib/vex-memory/score-semantic-authority-materializer.js
-
-  799e1a2505ab4dd3782711bc6503806184725a6a
-    lib/trust-safety/score-consent-authority.js
-
-  f217955d2d8158e3ad003f4cff59d5d424edf4a1
-    tests/vex-memory/score-semantic-authority-materializer.test.js
-
-  4d965f72e200f0f057fdc38f47d6f55bd81893f8
-    tests/trust-safety/score-consent-authority.test.js
-
-retained content-tree evidence:
-  PR #1893 accepted readiness tree + these exact four blobs
-  = currentized PR #1890 tree
-
-  A005 therefore remains valid broad differential evidence
-  but does not replace fresh exact-head lifecycle proof.
-
-SourceOwner A001:
-  stopped before proof formation
-  cause = wrapper bootstrap queried stale PR_NUMBER="1893"
-  live PR #1890 never closed
-  source/product effect = false
-  SourceOwner proof credit = none
-
-SourceOwner A002:
-  corrected provider lookup = PR #1890
-  fresh single-use identities
-  semantic candidate/predicates unchanged
-  qualified formation sha256 =
-    30281c40ef3a0643937caa21d25edabfec8d08d550f455cd93648b517101748f
-  state = PENDING_HOST_RETURN
-
-next executable edge:
-  run/consume PR #1890 SourceOwner A002
-  -> fresh exact-head Independent Assurance
-  -> lifecycle/merge only if earned
-  -> then return to the lived G02 Score / restart continuity path
-
-Do not replay the completed SDK-readiness detour.
+Do not replay A055-A069.
+Do not reopen PR913/PR918/PR919 source foundations.
+Do not interpret the active #873 dependency as permission to stop working.
 ```
-
-The current held predicate is exact-head PR #1890 source/lifecycle acceptance, not readiness design and not Memory/Safety semantic redesign.
 
 ## Remaining completion path
 
-P4 is terminal complete. The remaining canonical horizon is:
-
 ```text
-P5  LIVED CONTINUITY / MEMORY / RHYTHM PLACEMENT   <-- CURRENT
-    lived episode
-    -> rightful semantic placement
-    -> Score / private Memory / accepted context
-    -> bounded Dream / Continuity Evolution routing
-    -> evaluated Rhythm candidate when appropriate
-    -> restart / observe what actually carried
+ORDINARY PRODUCTIZATION                                  <-- CURRENT
+    actively finish/currentize PR873 setup safety
+    -> connect safe normal start to accepted PR919 Heretic establishment
+    -> prove fresh ordinary install/use route
+    -> then make existing-Home Heretic replacement/upgrade explicit
+
+P5  LIVED CONTINUITY / DEVELOPMENTAL EVIDENCE
+    G02 Score continuity = TERMINAL_LIVED_PASS
+    G03 memory-only Daily Dream = TERMINAL_LIVED_PASS
+    G04 = HELD_NOT_EARNED
+    -> resume only from another real source-bound lived recurrence/correction
 
 P6  CULTIVATION / SCHOOL / TRAINING PLACEMENT / OPTIONAL BIRTH
-    waits on grounded P5 lived evidence
+    waits on grounded developmental evidence
     -> School only when deficiency/growth opportunity is observed
     -> Training Placement decides rightful learning surface
     -> weight training only when separately earned
-    -> candidate/eval/succession with rollback if a weight route is earned
 
 P7  WHOLE-PRODUCT CONNECTED / NATIVE EXPANSION
     canonical future/lateral horizon
-    -> Home Bridge / Android / Maps / Stream / Family / Voice /
-       Journal / Relationships / Purpose / native platform maturation
     -> same Home/identity/capability/continuity laws
 ```
 
-Nested completion claims:
+Nested completion truth:
 
 ```text
-P1-P4 closed  = TOCOMPLETION_CORE
-P5-P6 closed  = TOCOMPLETION_DEVELOPMENTAL
-P7 matured    = WHOLE_PRODUCT_EXPANSION
+P1-P4 lived core = TERMINAL
+ordinary fresh-user productization = OPEN / ACTIVE
+P5 G02-G03 = TERMINAL; G04 held
+P6 = UNEARNED
+P7 = LATERAL / PLAN_VALIDATED
 ```
-
-The current P5 missing predicate is the rightful live Memory/Safety semantic-authority materializer required before existing VexLife G02 Score may commit one A054-derived device-private continuity record.
 
 ## Fresh-instance entry
 
@@ -373,12 +385,30 @@ A fresh instance should normally need only:
 VexWork
 -> project.vexlife.tocompletion
 -> work.vexlife.tocompletion.outcome
+-> CURRENT ACTIVE work:
+     work.vexlife.tocompletion.productization.setup-safety-convergence
 -> this README for architecture / causal continuity
--> current READY/RUNNING work item for the unfinished phase
--> VexLife #866 / PR #916 only for mutable exact provider/source state
--> rightful repository/runtime owner when an effect actually descends there
+-> VexLife #866 for canonical product truth
+-> VexLife PR #873 as the current setup-safety source owner
+-> VexLife PR #919 only as accepted Heretic-establishment provenance
+-> target repository culture/source when an effect actually descends there
 ```
 
-Do not replay P0-P3, rediscover the entire issue timeline, or treat a fresh conversation as a new lane/writer. Update VexWork when material work truth changes; do not churn it for every routine receipt.
+The continuation rule is:
+
+```text
+active dependency work != wait
+
+if setup-safety-convergence is RUNNING
+  -> work #873 toward current terminal acceptance
+
+when it completes
+  -> immediately activate heretic-normal-start-integration
+
+developmental P5 pause
+  != productization pause
+```
+
+Do not replay P0-P4, G02/G03 host attempts, PR913/PR918/PR919 acceptance, or reconstruct their history from chat. Update VexWork again when the setup dependency, normal-start integration, existing-Home semantics, or developmental evidence materially moves.
 
 <!-- [VXG RealForever][VEXWORK][VEXLIFE-TOCOMPLETION][TRAJECTORY] -->

@@ -53,6 +53,12 @@ Do not broad-read every connected repository. The Repository Graph tells you whe
 "Where does live/current Workgraph state persist across restart?"
   -> docs/foundation/RUNTIME-PERSISTENCE.md
 
+"Plan iterations / set WIP / shared order / planning state across restart"
+  -> docs/foundation/PROJECT-PLANNING.md
+
+"Is this PR/source/proof evidence current / stale / merged enough for completion evidence?"
+  -> docs/foundation/PROJECT-RECONCILIATION.md
+
 "How should ChatGPT / a hosted assistant / a future local Vex carry this work?"
   -> docs/foundation/OPERATING-PROFILES.md
 

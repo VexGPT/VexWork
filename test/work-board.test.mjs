@@ -14,7 +14,7 @@ const view = createBoardView(read('projects/vexwork-foundation/board.view.json')
 test('Project Work Board projects only the Project subgraph without becoming lifecycle authority', () => {
   const board = projectWorkBoard({ project, graph, view, registry });
   const cards = board.lanes.flatMap((lane) => lane.cards);
-  assert.equal(cards.length, 7);
+  assert.equal(cards.length, 8);
   assert.equal(graph.items.length > cards.length, true);
   assert.equal(cards.some((card) => card.workRef === 'work.vexlife-android.vexstream.not-yet-downloaded-filter'), false);
   assert.equal(board.effects, false);
@@ -27,8 +27,9 @@ test('Project Work Board projects only the Project subgraph without becoming lif
   const verify = board.lanes.find((lane) => lane.laneRef === 'lane.work.verify');
   assert.equal(verify.cards.length, 0);
   const done = board.lanes.find((lane) => lane.laneRef === 'lane.work.done');
-  assert.equal(done.cards.length, 6);
+  assert.equal(done.cards.length, 7);
   assert.equal(done.cards.some((card) => card.workRef === 'work.vexwork.foundation.outcome'), true);
+  assert.equal(done.cards.some((card) => card.workRef === 'work.vexwork.foundation.maturity-closure'), true);
   assert.equal(done.cards.some((card) => card.workRef === 'work.vexwork.visibility.public-dashboard'), true);
   const archive = board.lanes.find((lane) => lane.laneRef === 'lane.work.archive');
   assert.deepEqual(archive.cards.map((card) => card.workRef), ['work.vexwork.foundation.idea-intake']);
@@ -38,10 +39,11 @@ test('Project Work Board projects only the Project subgraph without becoming lif
 
 test('Parking Lot projects parked work independently of Project membership', () => {
   const lot = projectParkingLot({ graph, registry });
-  assert.equal(lot.items.length, 5);
-  assert.deepEqual(lot.items.map((item) => item.workRef).sort(), ['work.vexlife-android.vexstream.not-yet-downloaded-filter', 'work.vexlife.connected-services.guided-onboarding', 'work.vexstream.mobile-library.keep-offline-sync', 'work.vexwork.operational-console.multi-fulfiller-routing', 'work.vexwork.history.foundational-infrastructure-backfill'].sort());
+  assert.equal(lot.items.length, 6);
+  assert.deepEqual(lot.items.map((item) => item.workRef).sort(), ['work.vexlife-android.vexstream.not-yet-downloaded-filter', 'work.vexlife.connected-services.guided-onboarding', 'work.vexstream.mobile-library.keep-offline-sync', 'work.vextreme.vexsite.localization.closed-circuit.global-core', 'work.vexwork.operational-console.multi-fulfiller-routing', 'work.vexwork.history.foundational-infrastructure-backfill'].sort());
   assert.equal(lot.items.every((item) => item.workDisposition === 'PARKED'), true);
   assert.equal(lot.items.some((item) => item.workRef === 'work.vexlife-android.vexstream.not-yet-downloaded-filter' && item.repositoryRefs.includes('repo.vexlife-android')), true);
+  assert.equal(lot.items.some((item) => item.workRef === 'work.vextreme.vexsite.localization.closed-circuit.global-core' && item.repositoryRefs.includes('repo.vextreme')), true);
   assert.equal(lot.effects, false);
   assert.equal(lot.executionAuthority, 'NONE');
 
@@ -57,7 +59,7 @@ test('Parking Lot projects parked work independently of Project membership', () 
 
 test('Project Graph projection preserves project containment, dependencies and repository relations', () => {
   const projection = projectWorkGraph({ project, graph });
-  assert.equal(projection.nodes.length, 7);
+  assert.equal(projection.nodes.length, 8);
   assert.equal(projection.edges.some((edge) => edge.kind === 'DEPENDS_ON'), true);
   assert.equal(projection.edges.some((edge) => edge.kind === 'TOUCHES_REPOSITORY' && edge.to === 'repo.vexlife-android'), true);
   assert.equal(projection.nodes.some((node) => node.workRef === 'work.vexlife-android.vexstream.not-yet-downloaded-filter'), false);

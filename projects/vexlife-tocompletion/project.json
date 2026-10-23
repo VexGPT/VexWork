@@ -2,7 +2,7 @@
   "schemaVersion": "vexwork.project-definition/v1",
   "projectRef": "project.vexlife.tocompletion",
   "label": "VexLife ToCompletion",
-  "purpose": "Carry the full VexLife ToCompletion horizon: P0/P0B truth and durable work continuity; P1-P4 fresh Heretic Core; P5-P6 developmental continuity, School and Training Placement with optional earned Birth; and P7 whole-product connected/native expansion under the same Vex foundations.",
+  "purpose": "Carry the full VexLife ToCompletion horizon while making the current unfinished edge obvious: P1-P4 lived core is terminal, G02/G03 developmental continuity is terminal and evidence-gated before G04, and ordinary fresh-user productization is actively converging setup safety into the accepted Heretic establishment composition before later explicit existing-Home upgrade and whole-product horizons.",
   "rootWorkRefs": [
     "work.vexlife.tocompletion.outcome"
   ],
@@ -19,7 +19,10 @@
     "projects/vexlife-tocompletion/README.md",
     "docs/process/FORM-PROJECT.md",
     "github.issue.vexlife.866.comment.6280226452",
-    "map.vexlife.tocompletion.nested-pathway.20261019a"
+    "map.vexlife.tocompletion.nested-pathway.20261019a",
+    "github.pull.vexlife.919",
+    "github.pull.vexlife.873",
+    "github.issue.vexlife.866.comment.6357923021"
   ],
   "formedAt": "2026-10-22T00:13:43.000Z"
 }

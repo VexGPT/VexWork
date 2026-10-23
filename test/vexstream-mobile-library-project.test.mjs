@@ -69,14 +69,16 @@ test('Mobile Library Board separates terminal MassDownload from the paused Queue
   assert.equal(queueIncident.effectDisposition, 'NO_EFFECTS');
 });
 
-test('durable device storage is Active after the approved exact handshake', () => {
+test('durable device storage retains source authority while waiting on reusable Android proof orchestration', () => {
   const item = graph.items.find((candidate) => candidate.workRef === 'work.vexstream.mobile-library.device-storage');
   assert.ok(item);
-  assert.equal(item.state, 'RUNNING');
+  assert.equal(item.state, 'WAITING_TOOL');
   assert.equal(item.workDisposition, 'ACTIVE');
   assert.equal(item.authorityDisposition, 'AUTHORIZED_BOUNDED');
   assert.equal(item.effectDisposition, 'EFFECTS_BOUND');
   assert.equal(item.sourceRefs.includes('github.issue.vexlife-android.157'), true);
+  assert.equal(item.sourceRefs.includes('github.issue.vextreme-sdk.1894'), true);
+  assert.equal(item.dependencyRefs.includes('work.android-proof-orchestration.api-target-runner'), true);
 
   const board = projectWorkBoard({ project, graph, view, registry });
   const active = board.lanes.find((lane) => lane.laneRef === 'lane.work.active');
@@ -89,6 +91,14 @@ test('durable device storage is Active after the approved exact handshake', () =
     graph,
     workRef: item.workRef,
   }).required, true);
+  assert.equal(transitionHandshakeRequirement({
+    policy,
+    priorState: 'RUNNING',
+    nextState: 'WAITING_TOOL',
+    registry,
+    graph,
+    workRef: item.workRef,
+  }).required, false);
 });
 
 test('persistent Keep Offline remains parked outside Project membership', () => {
@@ -118,5 +128,6 @@ test('Mobile Library Project keeps a human audit/decision front door beside grap
   assert.match(readme, /ML-D6 — MassDownload product source and terminal EndToEnd proof are different Work/);
   assert.match(readme, /VexLife-Android issue #157/);
   assert.match(readme, /DEVICE_STORAGE_READY/);
+  assert.match(readme, /Android target orchestration is a reusable dependency/);
   assert.match(readme, /Known VexWork modeling gap/);
 });

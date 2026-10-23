@@ -59,9 +59,22 @@ test('public workspace preserves recursive containment and Jira-like detail fiel
   assert.ok(Array.isArray(source.transitionHistory));
   const p5 = project.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p5.lived-continuity-learning');
   const p5G02 = project.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p5.g02-semantic-authority-materializer');
-  assert.equal(p5.state, 'RUNNING');
-  assert.equal(p5G02.state, 'RUNNING');
-  assert.deepEqual(p5.childWorkRefs, ['work.vexlife.tocompletion.p5.g02-semantic-authority-materializer']);
+  const p5G03 = project.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p5.g03.daily-memory-dream');
+  assert.equal(p5.state, 'PAUSED_AT_CHECKPOINT');
+  assert.equal(p5G02.state, 'COMPLETED');
+  assert.equal(p5G03.state, 'COMPLETED');
+  assert.deepEqual(p5.childWorkRefs, [
+    'work.vexlife.tocompletion.p5.g02-semantic-authority-materializer',
+    'work.vexlife.tocompletion.p5.g03.daily-memory-dream',
+  ]);
+  const productization = project.items.find((item) => item.workRef === 'work.vexlife.tocompletion.productization.ordinary-heretic-setup');
+  const setupConvergence = project.items.find((item) => item.workRef === 'work.vexlife.tocompletion.productization.setup-safety-convergence');
+  const hereticIntegration = project.items.find((item) => item.workRef === 'work.vexlife.tocompletion.productization.heretic-normal-start-integration');
+  assert.equal(productization.state, 'RUNNING');
+  assert.equal(setupConvergence.state, 'RUNNING');
+  assert.equal(hereticIntegration.state, 'WAITING_DEPENDENCIES');
+  assert.equal(project.lanes.find((lane) => lane.laneRef === 'lane.work.active').workRefs.includes(setupConvergence.workRef), true);
+  assert.equal(project.lanes.find((lane) => lane.laneRef === 'lane.work.planned').workRefs.includes(hereticIntegration.workRef), true);
   const p6 = project.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p6.cultivation-training-birth');
   const p7 = project.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p7.whole-product-expansion');
   assert.equal(p6.state, 'WAITING_DEPENDENCIES');
@@ -82,10 +95,12 @@ test('Foundation Project is terminal while optional history remains globally par
   const workspace = buildWorkspace();
   const foundation = workspace.projects.find((entry) => entry.project.projectRef === 'project.vexwork.foundation');
   assert.ok(foundation);
-  assert.equal(foundation.summary.workItemCount, 7);
+  assert.equal(foundation.summary.workItemCount, 8);
   assert.equal(foundation.summary.openWorkItemCount, 0);
-  assert.equal(foundation.summary.completedCount, 7);
+  assert.equal(foundation.summary.completedCount, 8);
   assert.equal(foundation.items.find((item) => item.workRef === 'work.vexwork.foundation.outcome').state, 'COMPLETED');
+  assert.equal(foundation.items.find((item) => item.workRef === 'work.vexwork.foundation.maturity-closure').state, 'COMPLETED');
+  assert.equal(foundation.lanes.find((lane) => lane.laneRef === 'lane.work.done').workRefs.includes('work.vexwork.foundation.maturity-closure'), true);
   assert.equal(foundation.items.find((item) => item.workRef === 'work.vexwork.foundation.idea-intake').state, 'CANCELLED');
   assert.equal(foundation.items.some((item) => item.workRef === 'work.vexwork.history.foundational-infrastructure-backfill'), false);
   assert.equal(foundation.lanes.find((lane) => lane.laneRef === 'lane.work.archive').workRefs.includes('work.vexwork.foundation.idea-intake'), true);
@@ -98,6 +113,7 @@ test('public workspace keeps global Parking Lot separate from Project membership
   assert.equal(workspace.parkingLot.items.every((item) => item.workDisposition === 'PARKED'), true);
   assert.equal(workspace.parkingLot.items.every((item) => item.authorityDisposition === 'NO_AUTHORITY'), true);
   assert.equal(workspace.parkingLot.items.some((item) => item.workRef === 'work.vexstream.mobile-library.keep-offline-sync'), true);
+  assert.equal(workspace.parkingLot.items.some((item) => item.workRef === 'work.vextreme.vexsite.localization.closed-circuit.global-core'), true);
 });
 
 test('checked-in public workspace is generated-current', () => {

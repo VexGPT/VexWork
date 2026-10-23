@@ -11,7 +11,7 @@ test('Project Registry locates Projects without owning their WorkState', () => {
   const validation = validateProjectRegistry(registry);
   assert.equal(validation.ok, true, validation.errors.join('\n'));
   const projection = projectProjectRegistry(registry);
-  assert.equal(projection.projects.length, 7);
+  assert.equal(projection.projects.length, 8);
   assert.equal(projection.projects[0].projectRef, 'project.vexwork.foundation');
   assert.equal(projection.projects[0].workgraphRef, 'workgraph.vexwork.foundation');
   assert.equal(projection.projects[0].workgraphPath, 'workgraphs/public.json');
@@ -19,6 +19,12 @@ test('Project Registry locates Projects without owning their WorkState', () => {
   assert.equal(mobile.workgraphRef, 'workgraph.vexwork.foundation');
   assert.equal(mobile.workgraphPath, 'workgraphs/public.json');
   assert.equal(mobile.agencyPolicyPathOrNull, 'projects/vexstream-mobile-library/agency.policy.json');
+  const androidProof = projection.projects.find((entry) => entry.projectRef === 'project.android-proof-orchestration');
+  assert.equal(androidProof.workgraphRef, 'workgraph.vexwork.foundation');
+  assert.equal(androidProof.workgraphPath, 'workgraphs/public.json');
+  assert.equal(androidProof.definitionPath, 'projects/android-proof-orchestration/project.json');
+  assert.equal(androidProof.boardViewPath, 'projects/android-proof-orchestration/board.view.json');
+  assert.equal(androidProof.agencyPolicyPathOrNull, null);
   const toCompletion = projection.projects.find((entry) => entry.projectRef === 'project.vexlife.tocompletion');
   assert.equal(toCompletion.workgraphRef, 'workgraph.vexwork.foundation');
   assert.equal(toCompletion.workgraphPath, 'workgraphs/public.json');
@@ -59,4 +65,36 @@ test('Project Registry fails closed for duplicate Projects and unknown refs', ()
   assert.equal(validateProjectRegistry(duplicate).ok, false);
   assert.equal(assertKnownProjectRefs(['project.vexwork.foundation'], registry), true);
   assert.throws(() => assertKnownProjectRefs(['project.unknown'], registry), /unknown projectRef/);
+});
+
+test('Project Registry validator exercises malformed identity and path boundaries', () => {
+  const mutations = [
+    ['schema', (value) => { value.schemaVersion = 'wrong'; }, /schema mismatch/],
+    ['registry ref', (value) => { value.registryRef = 'bad ref'; }, /registryRef invalid/],
+    ['registry version', (value) => { value.registryVersion = 0; }, /registryVersion invalid/],
+    ['purpose', (value) => { value.purpose = ' '; }, /purpose required/],
+    ['projects', (value) => { value.projects = []; }, /projects required/],
+    ['project ref', (value) => { value.projects[0].projectRef = 'bad ref'; }, /projectRef invalid/],
+    ['workgraph ref', (value) => { value.projects[0].workgraphRef = 'bad ref'; }, /workgraphRef invalid/],
+    ['workgraph path', (value) => { value.projects[0].workgraphPath = '../escape.json'; }, /workgraphPath invalid/],
+    ['definition path', (value) => { value.projects[0].definitionPath = '/absolute.json'; }, /definitionPath invalid/],
+    ['board path', (value) => { value.projects[0].boardViewPath = '..\\escape.json'; }, /boardViewPath invalid/],
+    ['agency path', (value) => { value.projects[0].agencyPolicyPathOrNull = '../escape.json'; }, /agencyPolicyPathOrNull invalid/],
+    ['duplicate definition path', (value) => { value.projects[1].definitionPath = value.projects[0].definitionPath; }, /duplicate definitionPath/],
+    ['duplicate board path', (value) => { value.projects[1].boardViewPath = value.projects[0].boardViewPath; }, /duplicate boardViewPath/],
+  ];
+  for (const [label, mutate, pattern] of mutations) {
+    const candidate = structuredClone(registry);
+    mutate(candidate);
+    const result = validateProjectRegistry(candidate);
+    assert.equal(result.ok, false, label);
+    assert.match(result.errors.join('\n'), pattern, label);
+    assert.throws(() => projectProjectRegistry(candidate), pattern, label);
+  }
+});
+
+test('known-project assertion rejects an invalid registry before checking membership', () => {
+  const invalid = structuredClone(registry);
+  invalid.registryVersion = 0;
+  assert.throws(() => assertKnownProjectRefs(['project.vexwork.foundation'], invalid), /registryVersion invalid/);
 });

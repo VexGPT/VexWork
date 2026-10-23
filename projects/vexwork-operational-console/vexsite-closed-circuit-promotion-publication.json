@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "vexwork.vexsite-promotion-publication/v1",
+  "publicationRef": "publication.vexwork.vexsite.closed-circuit.20261022a",
+  "workRef": "work.vextreme.vexsite.localization.closed-circuit.global-core",
+  "acceptedPromotionProofRef": "github.pull.vexwork.62",
+  "providerObservationRef": "observation.vextreme.vexsite.localization.87a013e.4eaafb71685d",
+  "concernRef": "concern.vextreme.vexsite.localization.closed-circuit.global-core",
+  "entityRef": "entity.vextreme.vexsite.page.closed-circuit",
+  "lensRef": "lens.vextreme.vexsite.localization",
+  "predicateRef": "predicate.vextreme.vexsite.localization.target-tier-complete",
+  "reasonFacetRef": "reason.vextreme.vexsite.localization.target-tier-completion",
+  "providerQueueRefs": [
+    "github.issue.vextreme.273",
+    "github.issue-comment.vextreme.273.6311043427"
+  ],
+  "publicationState": "SOURCE_PLACED",
+  "providerMutationPerformed": false,
+  "sourceMutationAuthorityGranted": false,
+  "notes": "Durable Work provenance is currentized to accepted provider/source evidence from PR #62; synthetic test-fixture snapshot/evidence refs are intentionally not promoted into durable source truth.",
+  "sourceRefs": [
+    "github.pull.vexwork.62",
+    "projects/vexwork-operational-console/VEXSITE-PATIENT-ZERO.md",
+    "projects/vexwork-operational-console/vexsite-patient-zero-observation.json"
+  ],
+  "formedAt": "2026-10-23T02:26:33.000Z"
+}

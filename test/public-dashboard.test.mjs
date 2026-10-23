@@ -21,9 +21,9 @@ test('public dashboard is a read-only composition of Board and Parking Lot truth
   assert.equal(dashboard.schemaVersion, 'vexwork.public-work-dashboard/v1');
   assert.equal(dashboard.project.projectRef, project.projectRef);
   assert.equal(dashboard.graphRef, graph.graphRef);
-  assert.equal(dashboard.summary.projectWorkItemCount, 7);
+  assert.equal(dashboard.summary.projectWorkItemCount, 8);
   assert.equal(dashboard.summary.openProjectWorkItemCount, 0);
-  assert.equal(dashboard.summary.parkingLotItemCount, 5);
+  assert.equal(dashboard.summary.parkingLotItemCount, 6);
   assert.equal(cards.some((card) => card.workRef === 'work.vexwork.visibility.public-dashboard'), true);
   assert.equal(dashboard.lanes.find((lane) => lane.laneRef === 'lane.work.done').cards.some((card) => card.workRef === 'work.vexwork.visibility.public-dashboard'), true);
   assert.equal(cards.some((card) => card.workRef === 'work.vexwork.history.foundational-infrastructure-backfill'), false);
@@ -33,7 +33,9 @@ test('public dashboard is a read-only composition of Board and Parking Lot truth
   assert.equal(dashboard.parkingLot.items.some((item) => item.workRef === 'work.vexstream.mobile-library.keep-offline-sync'), true);
   assert.equal(dashboard.parkingLot.items.some((item) => item.workRef === 'work.vexwork.operational-console.multi-fulfiller-routing'), true);
   assert.equal(dashboard.parkingLot.items.some((item) => item.workRef === 'work.vexwork.history.foundational-infrastructure-backfill'), true);
+  assert.equal(dashboard.parkingLot.items.some((item) => item.workRef === 'work.vextreme.vexsite.localization.closed-circuit.global-core'), true);
   assert.equal(dashboard.lanes.find((lane) => lane.laneRef === 'lane.work.done').cards.some((card) => card.workRef === 'work.vexwork.foundation.outcome'), true);
+  assert.equal(dashboard.lanes.find((lane) => lane.laneRef === 'lane.work.done').cards.some((card) => card.workRef === 'work.vexwork.foundation.maturity-closure'), true);
   assert.equal(dashboard.lanes.find((lane) => lane.laneRef === 'lane.work.archive').cards.some((card) => card.workRef === 'work.vexwork.foundation.idea-intake'), true);
   assert.equal(dashboard.effects, false);
   assert.equal(dashboard.executionAuthority, 'NONE');
