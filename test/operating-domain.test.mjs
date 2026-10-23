@@ -104,6 +104,12 @@ test('unknown authority-shaped fields cannot silently enter a domain binding', (
   assert.throws(() => create(value), /capability binding has unexpected fields/);
 });
 
+test('domain root also rejects hidden authority fields', () => {
+  const value = structuredClone(source);
+  value.executionAuthority = 'WRITE_SOURCE';
+  assert.throws(() => create(value), /operating domain has unexpected fields/);
+});
+
 test('stored semantic fingerprint is verified rather than silently rewritten', () => {
   const current = create();
   const tampered = structuredClone(current);
