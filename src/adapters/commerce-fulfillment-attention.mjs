@@ -177,7 +177,9 @@ export function createCommerceFulfillmentAttention(input, {
   const attentionState = ATTENTION_STATE_BY_FULFILLMENT_STATE[fulfillment.fulfillmentState];
   const entryLabel = fulfillment.fulfillmentState === 'ACKNOWLEDGED'
     ? `Fulfillment acknowledged: ${item.label}`
-    : `Fulfill ${item.label}`;
+    : fulfillment.fulfillmentState === 'UNKNOWN'
+      ? `Fulfillment status unknown: ${item.label}`
+      : `Fulfill ${item.label}`;
 
   const combinedSourceRefs = refs([...new Set([
     ...input.sourceRefs,
