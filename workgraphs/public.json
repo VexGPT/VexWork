@@ -2185,23 +2185,32 @@
       "label": "AI-managed storefront/site surface",
       "purpose": "Prove that a human can add or revise an item and its pictures through an AI-assisted environment that updates a rightful managed public site/storefront while VexWork remains the work/navigation console.",
       "workClass": "TASK",
-      "state": "READY",
+      "state": "RUNNING",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexwork.operational-console.commerce-item-model"
       ],
       "repositoryRefs": [
-        "repo.vexwork"
+        "repo.vexwork",
+        "repo.vexcommerce-storefront-reference"
       ],
       "sourceRefs": [
         "projects/vexwork-operational-console/README.md",
         "github.pull.vexwork.73",
-        "work.vexwork.operational-console.commerce-item-model"
+        "work.vexwork.operational-console.commerce-item-model",
+        "github.pull.vexwork.78",
+        "github.commit.vexwork.82626abc2834568735709d1d82f4ef1c62e052f5",
+        "vexrelay.return.vexwork.commerce-storefront-surface.a011.sha256.61405e35a1bf0c9d7ccbba7908400a17d66bb87c11c8239baf980e8977fdc829",
+        "projects/vexwork-operational-console/COMMERCE-STOREFRONT.md",
+        "src/adapters/commerce-storefront.mjs",
+        "github.repo.vgong24/VexCommerce-Storefront-Reference",
+        "github.commit.vexcommerce-storefront-reference.e0411c7a5b272b1b79fe6d234e83c1bdf4af8184",
+        "vexcommerce.storefront-reference.establishment.a003.sha256.24d32911b251bf9e8a4549569f7de1695d6039712b20e4b399845039a2352636"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T03:20:00.000Z",
-      "updatedAt": "2026-10-23T04:53:01.001Z",
+      "updatedAt": "2026-10-23T05:59:29.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -4296,19 +4305,6 @@
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vexlife.tocompletion.p5.g02-semantic-authority-materializer.completed.a067-terminal-lived-pass",
-      "workRef": "work.vexlife.tocompletion.p5.g02-semantic-authority-materializer",
-      "priorState": "VERIFYING",
-      "nextState": "COMPLETED",
-      "reason": "A067 earned P5_G02_RETAINED_HOME_CONTINUITY_PASS with exact durable Score/semantic-authority heads, historical verification, source descent and fresh-process readback while Dream/Rhythm/training/weights/sync/publication remained false.",
-      "actorRef": "role.vexwork.lifecycle-currentizer",
-      "sourceRefs": [
-        "github.issue.vexlife.866.comment.6356366903"
-      ],
-      "createdAt": "2026-10-23T05:30:00.000Z"
-    },
-    {
-      "schemaVersion": "vexwork.work-transition/v1",
       "transitionRef": "transition.vexlife.tocompletion.p5.g02-semantic-authority-materializer.verifying.a067-terminal",
       "workRef": "work.vexlife.tocompletion.p5.g02-semantic-authority-materializer",
       "priorState": "RUNNING",
@@ -4319,6 +4315,19 @@
         "github.issue.vexlife.866.comment.6356366903",
         "github.pull.vexlife.918",
         "github.pull.vextreme-sdk.1890"
+      ],
+      "createdAt": "2026-10-23T05:30:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.tocompletion.p5.g02-semantic-authority-materializer.completed.a067-terminal-lived-pass",
+      "workRef": "work.vexlife.tocompletion.p5.g02-semantic-authority-materializer",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "A067 earned P5_G02_RETAINED_HOME_CONTINUITY_PASS with exact durable Score/semantic-authority heads, historical verification, source descent and fresh-process readback while Dream/Rhythm/training/weights/sync/publication remained false.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.issue.vexlife.866.comment.6356366903"
       ],
       "createdAt": "2026-10-23T05:30:00.000Z"
     },
@@ -4351,20 +4360,6 @@
         "github.actions.vexwork.run.39885985305"
       ],
       "createdAt": "2026-10-23T02:02:22.000Z"
-    },
-    {
-      "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vexwork.operational-console.attention-queue-contract.completed.pr71",
-      "workRef": "work.vexwork.operational-console.attention-queue-contract",
-      "priorState": "VERIFYING",
-      "nextState": "COMPLETED",
-      "reason": "PR #71 merged the exact A003-proven Attention Queue semantic foundation, and the merge commit introduced zero file delta beyond the assured candidate.",
-      "actorRef": "role.vexwork.lifecycle-currentizer",
-      "sourceRefs": [
-        "github.pull.vexwork.71",
-        "github.commit.vexwork.15e3b73835f45b641944b94491dad2e494ba1c63"
-      ],
-      "createdAt": "2026-10-23T04:34:26.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
@@ -4409,6 +4404,20 @@
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.attention-queue-contract.completed.pr71",
+      "workRef": "work.vexwork.operational-console.attention-queue-contract",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "PR #71 merged the exact A003-proven Attention Queue semantic foundation, and the merge commit introduced zero file delta beyond the assured candidate.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.71",
+        "github.commit.vexwork.15e3b73835f45b641944b94491dad2e494ba1c63"
+      ],
+      "createdAt": "2026-10-23T04:34:26.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
       "transitionRef": "transition.vexwork.operational-console.commerce-ai-site.ready.item-model-complete",
       "workRef": "work.vexwork.operational-console.commerce-ai-site",
       "priorState": "WAITING_DEPENDENCIES",
@@ -4423,17 +4432,18 @@
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vexwork.operational-console.commerce-fulfillment-attention.completed.pr75",
-      "workRef": "work.vexwork.operational-console.commerce-fulfillment-attention",
-      "priorState": "VERIFYING",
-      "nextState": "COMPLETED",
-      "reason": "PR #75 merged the exact A008-proven corrected Commerce fulfillment-attention adapter, and the merge commit introduced zero file delta beyond the assured head.",
+      "transitionRef": "transition.vexwork.operational-console.commerce-ai-site.running.storefront-boundary-pr78",
+      "workRef": "work.vexwork.operational-console.commerce-ai-site",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "PR #78 merged the exact A011-proven provider-neutral storefront document/publication-receipt boundary. The AI-site work is now actively grounded, but remains RUNNING because no rightful managed public site/storefront update has yet been performed or observed.",
       "actorRef": "role.vexwork.lifecycle-currentizer",
       "sourceRefs": [
-        "github.pull.vexwork.75",
-        "github.commit.vexwork.b54d2f0fd39d4d59abbbce5212e1c3643cc7f883"
+        "github.pull.vexwork.78",
+        "github.commit.vexwork.82626abc2834568735709d1d82f4ef1c62e052f5",
+        "vexrelay.return.vexwork.commerce-storefront-surface.a011.sha256.61405e35a1bf0c9d7ccbba7908400a17d66bb87c11c8239baf980e8977fdc829"
       ],
-      "createdAt": "2026-10-23T05:09:13.000Z"
+      "createdAt": "2026-10-23T05:34:37.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
@@ -4479,17 +4489,17 @@
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vexwork.operational-console.commerce-item-model.completed.pr73",
-      "workRef": "work.vexwork.operational-console.commerce-item-model",
+      "transitionRef": "transition.vexwork.operational-console.commerce-fulfillment-attention.completed.pr75",
+      "workRef": "work.vexwork.operational-console.commerce-fulfillment-attention",
       "priorState": "VERIFYING",
       "nextState": "COMPLETED",
-      "reason": "PR #73 merged the exact A005-proven Commerce item model, and the merge commit introduced zero file delta beyond the assured candidate.",
+      "reason": "PR #75 merged the exact A008-proven corrected Commerce fulfillment-attention adapter, and the merge commit introduced zero file delta beyond the assured head.",
       "actorRef": "role.vexwork.lifecycle-currentizer",
       "sourceRefs": [
-        "github.pull.vexwork.73",
-        "github.commit.vexwork.d316b570a14d3b080e69291cf9186bce53365280"
+        "github.pull.vexwork.75",
+        "github.commit.vexwork.b54d2f0fd39d4d59abbbce5212e1c3643cc7f883"
       ],
-      "createdAt": "2026-10-23T04:53:01.000Z"
+      "createdAt": "2026-10-23T05:09:13.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
@@ -4534,6 +4544,20 @@
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.commerce-item-model.completed.pr73",
+      "workRef": "work.vexwork.operational-console.commerce-item-model",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "PR #73 merged the exact A005-proven Commerce item model, and the merge commit introduced zero file delta beyond the assured candidate.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.73",
+        "github.commit.vexwork.d316b570a14d3b080e69291cf9186bce53365280"
+      ],
+      "createdAt": "2026-10-23T04:53:01.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
       "transitionRef": "transition.vexwork.operational-console.commerce-template.ready.p3-terminal",
       "workRef": "work.vexwork.operational-console.commerce-template",
       "priorState": "WAITING_DEPENDENCIES",
@@ -4559,20 +4583,6 @@
         "work.vexwork.operational-console.commerce-item-model"
       ],
       "createdAt": "2026-10-23T04:51:11.919Z"
-    },
-    {
-      "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vexwork.operational-console.operating-domain-contract.completed.pr68",
-      "workRef": "work.vexwork.operational-console.operating-domain-contract",
-      "priorState": "VERIFYING",
-      "nextState": "COMPLETED",
-      "reason": "PR #68 merged at a tree byte-identical to the independently assured Operating Domain candidate.",
-      "actorRef": "role.vexwork.lifecycle-currentizer",
-      "sourceRefs": [
-        "github.pull.vexwork.68",
-        "github.commit.vexwork.ddd56d8ddff92b5053644c758197d014d2000613"
-      ],
-      "createdAt": "2026-10-23T03:37:41.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
@@ -4616,18 +4626,17 @@
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vexwork.operational-console.operating-domain-template.completed.pr71",
-      "workRef": "work.vexwork.operational-console.operating-domain-template",
+      "transitionRef": "transition.vexwork.operational-console.operating-domain-contract.completed.pr68",
+      "workRef": "work.vexwork.operational-console.operating-domain-contract",
       "priorState": "VERIFYING",
       "nextState": "COMPLETED",
-      "reason": "P3 Operating Domain template is complete with domain-neutral composition plus bounded event/exception Attention Queue semantics accepted on main.",
+      "reason": "PR #68 merged at a tree byte-identical to the independently assured Operating Domain candidate.",
       "actorRef": "role.vexwork.lifecycle-currentizer",
       "sourceRefs": [
         "github.pull.vexwork.68",
-        "github.pull.vexwork.71",
-        "github.commit.vexwork.15e3b73835f45b641944b94491dad2e494ba1c63"
+        "github.commit.vexwork.ddd56d8ddff92b5053644c758197d014d2000613"
       ],
-      "createdAt": "2026-10-23T04:34:26.002Z"
+      "createdAt": "2026-10-23T03:37:41.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
@@ -4674,17 +4683,18 @@
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vexwork.operational-console.vexsite-dogfood.completed.pr63",
-      "workRef": "work.vexwork.operational-console.vexsite-dogfood",
+      "transitionRef": "transition.vexwork.operational-console.operating-domain-template.completed.pr71",
+      "workRef": "work.vexwork.operational-console.operating-domain-template",
       "priorState": "VERIFYING",
       "nextState": "COMPLETED",
-      "reason": "PR #63 merged the one promoted Closed Circuit concern, exact Parking Lot publication and re-projection while leaving the remaining provider population derived-only.",
+      "reason": "P3 Operating Domain template is complete with domain-neutral composition plus bounded event/exception Attention Queue semantics accepted on main.",
       "actorRef": "role.vexwork.lifecycle-currentizer",
       "sourceRefs": [
-        "github.pull.vexwork.63",
-        "github.commit.vexwork.a4813424d67d8813457446b509ca92b406b9b98e"
+        "github.pull.vexwork.68",
+        "github.pull.vexwork.71",
+        "github.commit.vexwork.15e3b73835f45b641944b94491dad2e494ba1c63"
       ],
-      "createdAt": "2026-10-23T02:34:28.001Z"
+      "createdAt": "2026-10-23T04:34:26.002Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
@@ -4716,17 +4726,17 @@
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vexwork.operational-console.vexsite-localization-lens.completed.pr62",
-      "workRef": "work.vexwork.operational-console.vexsite-localization-lens",
+      "transitionRef": "transition.vexwork.operational-console.vexsite-dogfood.completed.pr63",
+      "workRef": "work.vexwork.operational-console.vexsite-dogfood",
       "priorState": "VERIFYING",
       "nextState": "COMPLETED",
-      "reason": "PR #62 merged the promotion-aligned localization lens and exact patient-zero evidence separation.",
+      "reason": "PR #63 merged the one promoted Closed Circuit concern, exact Parking Lot publication and re-projection while leaving the remaining provider population derived-only.",
       "actorRef": "role.vexwork.lifecycle-currentizer",
       "sourceRefs": [
-        "github.pull.vexwork.62",
-        "github.commit.vexwork.63ada6726d4ddbe6374da14fede0d11666d6e225"
+        "github.pull.vexwork.63",
+        "github.commit.vexwork.a4813424d67d8813457446b509ca92b406b9b98e"
       ],
-      "createdAt": "2026-10-23T02:26:33.000Z"
+      "createdAt": "2026-10-23T02:34:28.001Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
@@ -4770,17 +4780,17 @@
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vexwork.operational-console.vexsite-patient-zero-proof.completed.pr63",
-      "workRef": "work.vexwork.operational-console.vexsite-patient-zero-proof",
+      "transitionRef": "transition.vexwork.operational-console.vexsite-localization-lens.completed.pr62",
+      "workRef": "work.vexwork.operational-console.vexsite-localization-lens",
       "priorState": "VERIFYING",
       "nextState": "COMPLETED",
-      "reason": "PR #63 merged the checked-in promoted Work and proved Closed Circuit alone links to canonical Work while other incomplete pages remain derived observations.",
+      "reason": "PR #62 merged the promotion-aligned localization lens and exact patient-zero evidence separation.",
       "actorRef": "role.vexwork.lifecycle-currentizer",
       "sourceRefs": [
-        "github.pull.vexwork.63",
-        "github.commit.vexwork.a4813424d67d8813457446b509ca92b406b9b98e"
+        "github.pull.vexwork.62",
+        "github.commit.vexwork.63ada6726d4ddbe6374da14fede0d11666d6e225"
       ],
-      "createdAt": "2026-10-23T02:34:28.000Z"
+      "createdAt": "2026-10-23T02:26:33.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
@@ -4825,17 +4835,17 @@
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vexwork.operational-console.vexsite-population-scope.completed.pr49",
-      "workRef": "work.vexwork.operational-console.vexsite-population-scope",
+      "transitionRef": "transition.vexwork.operational-console.vexsite-patient-zero-proof.completed.pr63",
+      "workRef": "work.vexwork.operational-console.vexsite-patient-zero-proof",
       "priorState": "VERIFYING",
       "nextState": "COMPLETED",
-      "reason": "PR #49 merged the current Vextreme page population and arc/section scope adapter.",
+      "reason": "PR #63 merged the checked-in promoted Work and proved Closed Circuit alone links to canonical Work while other incomplete pages remain derived observations.",
       "actorRef": "role.vexwork.lifecycle-currentizer",
       "sourceRefs": [
-        "github.pull.vexwork.49",
-        "github.commit.vexwork.d8b0028bd9413a9c05cfe4b36f1d54425021a6fc"
+        "github.pull.vexwork.63",
+        "github.commit.vexwork.a4813424d67d8813457446b509ca92b406b9b98e"
       ],
-      "createdAt": "2026-10-23T02:15:05.000Z"
+      "createdAt": "2026-10-23T02:34:28.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
@@ -4863,6 +4873,20 @@
         "github.actions.vexwork.run.39888485435"
       ],
       "createdAt": "2026-10-23T02:14:40.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.vexsite-population-scope.completed.pr49",
+      "workRef": "work.vexwork.operational-console.vexsite-population-scope",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "PR #49 merged the current Vextreme page population and arc/section scope adapter.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.49",
+        "github.commit.vexwork.d8b0028bd9413a9c05cfe4b36f1d54425021a6fc"
+      ],
+      "createdAt": "2026-10-23T02:15:05.000Z"
     }
   ],
   "sourceRefs": [

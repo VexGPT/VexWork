@@ -23,6 +23,11 @@ test('public Repository Graph is structurally valid and culture remains by refer
   const construction = graph.repositories.find((repository) => repository.repositoryRef === 'repo.vexlife-construction-reference');
   assert.equal(construction.visibility, 'PUBLIC');
   assert.deepEqual(construction.cultureRefs, ['docs/CULTURE.md']);
+  const storefront = graph.repositories.find((repository) => repository.repositoryRef === 'repo.vexcommerce-storefront-reference');
+  assert.equal(storefront.nameWithOwner, 'vgong24/VexCommerce-Storefront-Reference');
+  assert.equal(storefront.visibility, 'PUBLIC');
+  assert.deepEqual(storefront.entryRefs, ['README.md', 'AGENTS.md', 'storefront.json']);
+  assert.deepEqual(storefront.cultureRefs, ['AGENTS.md']);
 });
 
 test('unknown repository references fail closed', () => {
