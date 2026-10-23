@@ -5206,7 +5206,7 @@
           "label": "BoardGraph semantic contract",
           "purpose": "Form the smallest reusable semantic graph contract for scenes, controls, processes, decisions, artifacts, containers, portals, references, relationships, modules, ports, source bindings and validation without making canvas coordinates canonical meaning.",
           "workClass": "TASK",
-          "state": "READY",
+          "state": "RUNNING",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vexboard.outcome",
@@ -5216,15 +5216,37 @@
             "repo.vexwork"
           ],
           "sourceRefs": [
-            "projects/vexboard/README.md"
+            "projects/vexboard/README.md",
+            "src/shared/vexboard-model.mjs",
+            "src/core/vexboard.mjs",
+            "vexboard-reader.js",
+            "vexboard/index.html",
+            "vexboard/self-map.json",
+            "test/vexboard.test.mjs",
+            "test/vexboard-ui.test.mjs",
+            "index.html",
+            "test/public-ui.test.mjs"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
-          "authorityDisposition": "NO_AUTHORITY",
-          "effectDisposition": "NO_EFFECTS",
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-23T00:14:29.000Z",
-          "updatedAt": "2026-10-23T00:14:29.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-10-23T02:59:44.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexboard.boardgraph-contract.running.20261023a",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "Victor explicitly authorized beginning actual VexBoard implementation after the completion-state architecture formation was mapped end to end.",
+              "actorRef": "actor.chatgpt.vexboard.boardgraph-foundation",
+              "sourceRefs": [
+                "project.vexboard",
+                "projects/vexboard/README.md"
+              ],
+              "createdAt": "2026-10-23T02:59:44.000Z"
+            }
+          ]
         },
         {
           "workRef": "work.vexboard.boardjourney-simulation",
@@ -5418,14 +5440,14 @@
         {
           "laneRef": "lane.work.ready",
           "label": "Ready",
-          "workRefs": [
-            "work.vexboard.boardgraph-contract"
-          ]
+          "workRefs": []
         },
         {
           "laneRef": "lane.work.active",
           "label": "Active",
-          "workRefs": []
+          "workRefs": [
+            "work.vexboard.boardgraph-contract"
+          ]
         },
         {
           "laneRef": "lane.work.waiting",
