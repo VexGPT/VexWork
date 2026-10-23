@@ -22,6 +22,16 @@ const read = (relative) => JSON.parse(fs.readFileSync(new URL(`../${relative}`, 
 const observation = read('projects/vexwork-operational-console/vexsite-patient-zero-observation.json');
 const registry = read('blueprint/work-registry.json');
 const currentGraph = createWorkgraph(read('workgraphs/public.json'), registry);
+const PUBLISHED_WORK_REF = 'work.vextreme.vexsite.localization.closed-circuit.global-core';
+
+function graphBeforePublishedConcern() {
+  const source = structuredClone(read('workgraphs/public.json'));
+  source.items = source.items.filter((item) => item.workRef !== PUBLISHED_WORK_REF);
+  source.rootWorkRefs = source.rootWorkRefs.filter((workRef) => workRef !== PUBLISHED_WORK_REF);
+  return createWorkgraph(source, registry);
+}
+
+const promotionBaseGraph = graphBeforePublishedConcern();
 
 const OBSERVED_AT = '2026-10-23T02:20:00.000Z';
 const TARGETS = observation.targetLocales;
@@ -256,7 +266,7 @@ test('target-tier concern promotes Closed Circuit as exactly one parked no-autho
 
   const proposal = createDerivedWorkPromotionProposal({
     projection,
-    graph: currentGraph,
+    graph: promotionBaseGraph,
     registry,
     proposalRef,
     concernRef,
@@ -283,7 +293,7 @@ test('target-tier concern promotes Closed Circuit as exactly one parked no-autho
   const decision = createDerivedWorkPromotionDecision({
     proposal,
     projection,
-    graph: currentGraph,
+    graph: promotionBaseGraph,
     registry,
     decisionRef: 'decision.vexwork.operational-console.vexsite.closed-circuit.20261022a',
     decision: 'APPROVE',
@@ -301,7 +311,7 @@ test('target-tier concern promotes Closed Circuit as exactly one parked no-autho
   });
 
   const result = applyDerivedWorkPromotion({
-    graph: currentGraph,
+    graph: promotionBaseGraph,
     registry,
     projection,
     proposal,
@@ -319,7 +329,7 @@ test('target-tier concern promotes Closed Circuit as exactly one parked no-autho
   assert.equal(created.workDisposition, 'PARKED');
   assert.equal(created.authorityDisposition, 'NO_AUTHORITY');
   assert.equal(created.effectDisposition, 'NO_EFFECTS');
-  assert.equal(result.graph.items.length, currentGraph.items.length + 1);
+  assert.equal(result.graph.items.length, promotionBaseGraph.items.length + 1);
 
   const linked = makeProjection({
     [closed.entityRef]: [created.workRef],
@@ -330,6 +340,30 @@ test('target-tier concern promotes Closed Circuit as exactly one parked no-autho
   assert.deepEqual(linked.aggregate.existingWorkRefs, [created.workRef]);
   assert.equal(
     linked.entities.filter((entity) => entity.entityRef !== closed.entityRef)
+      .every((entity) => entity.existingWorkRefs.length === 0),
+    true,
+  );
+});
+
+test('checked-in promoted Closed Circuit Work reprojects only the selected concern', () => {
+  const published = currentGraph.items.find((item) => item.workRef === PUBLISHED_WORK_REF);
+  assert.ok(published);
+  assert.equal(published.state, 'CAPTURED');
+  assert.equal(published.workDisposition, 'PARKED');
+  assert.equal(published.authorityDisposition, 'NO_AUTHORITY');
+  assert.equal(published.effectDisposition, 'NO_EFFECTS');
+  assert.equal(published.formationProcessRefOrNull, 'process.vexwork.promote-derived-concern');
+  assert.equal(published.sourceRefs.includes('github.pull.vexwork.62'), true);
+
+  const closedRef = 'entity.vextreme.vexsite.page.closed-circuit';
+  const linked = makeProjection({ [closedRef]: [PUBLISHED_WORK_REF] }).projection;
+  const closed = linked.entities.find((entity) => entity.entityRef === closedRef);
+
+  assert.deepEqual(closed.existingWorkRefs, [PUBLISHED_WORK_REF]);
+  assert.equal(linked.aggregate.entitiesWithExistingWorkCount, 1);
+  assert.deepEqual(linked.aggregate.existingWorkRefs, [PUBLISHED_WORK_REF]);
+  assert.equal(
+    linked.entities.filter((entity) => entity.entityRef !== closedRef)
       .every((entity) => entity.existingWorkRefs.length === 0),
     true,
   );

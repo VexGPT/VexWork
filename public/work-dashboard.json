@@ -190,6 +190,21 @@
   "parkingLot": {
     "items": [
       {
+        "workRef": "work.vextreme.vexsite.localization.closed-circuit.global-core",
+        "label": "Localize Closed Circuit across Global Core",
+        "purpose": "Preserve the current Closed Circuit Global Core localization concern as canonical Work while Vextreme retains source scheduling and implementation authority; current provider foreground remains separate dual-lineage work.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "NORMAL",
+        "repositoryRefs": [
+          "repo.vextreme"
+        ],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "updatedAt": "2026-10-23T02:26:33.000Z"
+      },
+      {
         "workRef": "work.vexwork.history.foundational-infrastructure-backfill",
         "label": "Foundational Infrastructure history backfill",
         "purpose": "Gradually reconstruct completed foundational work into VexWork with provenance so future humans and instances can perceive what was built from a dashboard instead of rediscovering it across repositories and chat history.",
@@ -270,7 +285,7 @@
   "summary": {
     "projectWorkItemCount": 8,
     "openProjectWorkItemCount": 0,
-    "parkingLotItemCount": 5
+    "parkingLotItemCount": 6
   },
   "effects": false,
   "executionAuthority": "NONE"

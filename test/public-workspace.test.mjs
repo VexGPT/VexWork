@@ -100,6 +100,7 @@ test('public workspace keeps global Parking Lot separate from Project membership
   assert.equal(workspace.parkingLot.items.every((item) => item.workDisposition === 'PARKED'), true);
   assert.equal(workspace.parkingLot.items.every((item) => item.authorityDisposition === 'NO_AUTHORITY'), true);
   assert.equal(workspace.parkingLot.items.some((item) => item.workRef === 'work.vexstream.mobile-library.keep-offline-sync'), true);
+  assert.equal(workspace.parkingLot.items.some((item) => item.workRef === 'work.vextreme.vexsite.localization.closed-circuit.global-core'), true);
 });
 
 test('checked-in public workspace is generated-current', () => {
