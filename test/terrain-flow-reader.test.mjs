@@ -32,7 +32,7 @@ test('ToCompletion surfaces the real deep active frontier without requiring desc
   ]);
 });
 
-test('Operational Console keeps concurrent Terrain review and running Commerce with storefront as the sole Ready child', () => {
+test('Operational Console keeps concurrent Terrain review and active storefront realization inside running Commerce', () => {
   const p = project('project.vexwork.operational-console');
   const rows = projectWorkfronts(p, { maxRows: 8 }).rows;
   assert.equal(rows.some((row) => row.scopeRef === 'work.vexwork.operational-console.relational-terrain'), true);
@@ -41,8 +41,8 @@ test('Operational Console keeps concurrent Terrain review and running Commerce w
   const commerce = rows.find((row) => row.scopeRef === 'work.vexwork.operational-console.commerce-template');
   assert.equal(terrain.currentItems.some((item) => item.state === 'VERIFYING'), true);
   assert.equal(commerce.currentItems.some((item) => item.workRef === 'work.vexwork.operational-console.commerce-template' && item.state === 'RUNNING'), true);
-  assert.equal(commerce.nextStructuralItems.some((item) => item.workRef === 'work.vexwork.operational-console.commerce-ai-site' && item.state === 'READY'), true);
-  assert.equal(commerce.nextStructuralItems.some((item) => item.workRef === 'work.vexwork.operational-console.commerce-fulfillment-attention' && item.state === 'READY'), false);
+  assert.equal(commerce.currentItems.some((item) => item.workRef === 'work.vexwork.operational-console.commerce-ai-site' && item.state === 'RUNNING'), true);
+  assert.equal(commerce.nextStructuralItems.some((item) => item.workRef === 'work.vexwork.operational-console.commerce-ai-site' && item.state === 'READY'), false);
 });
 
 test('Connected Services Roadmap derives next-next-next from dependency truth', () => {
