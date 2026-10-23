@@ -7,6 +7,7 @@ This is the current architecture map. Follow the exact foundation whose question
 | Foundation | Human question | Canonical source | Proof | State |
 |---|---|---|---|---|
 | Workgraph | What work exists, what state is it in, and what depends on what? | `blueprint/work-registry.json`, `src/core/workgraph.mjs` | `test/workgraph.test.mjs` | FOUNDATION |
+| Stability / regression floor | How do accepted VexWork contracts stay protected as new features expand the repository, and how are untested core surfaces exposed? | `docs/CULTURE.md`, `docs/process/QUALITY-REVIEW.md` | `test/stability-contract.test.mjs`, `npm run review`; `npm run test:coverage` for coverage visibility | FOUNDATION |
 | Workgraph Composition | How can independent work families author separately while still producing one validated Workgraph? | `docs/foundation/WORKGRAPH-COMPOSITION.md`, `src/core/workgraph-composition.mjs` | `test/workgraph-composition.test.mjs` | FOUNDATION |
 | Projects / Project Registry | What Projects exist and how do they select bounded work without becoming another lifecycle owner? | `blueprint/project-registry.json`, `src/core/project-registry.mjs`, `docs/foundation/PROJECTS.md` | `test/project-registry.test.mjs` | FOUNDATION |
 | Delegated agency / Human Transition Handshake | How can an authorized AI manage routine work while a human explicitly acknowledges and approves meaningful phase promotions? | `src/core/transition-handshake.mjs`, `docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md` | `test/transition-handshake.test.mjs` | FOUNDATION |
@@ -70,6 +71,10 @@ worker/session participation / fresh-instance continuity / handoff counts
 hosted ChatGPT / local Vex / assisted host action / VexRelay-style handoff
 -> OPERATING-PROFILES.md
 -> ../process/ASSISTED-HOST-WORKFLOW.md
+
+testing / regression / coverage / stability
+-> ../process/QUALITY-REVIEW.md
+-> ../CULTURE.md#regression-before-expansion
 
 QA / quality review / reviewer question set / review handoff
 -> ../process/QUALITY-REVIEW.md
