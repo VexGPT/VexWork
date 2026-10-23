@@ -53,7 +53,7 @@ test('semantic wheel traversal is disabled by default while its implementation r
 test('Terrain projects continuity around current work with state color and age evidence', () => {
   assert.match(page, /function continuityWindow/);
   assert.match(page, /dataset\.continuity=role/);
-  assert.match(page, /data\.tone=tone\(item\.state\)/);
+  assert.match(page, /dataset\.tone=tone\(item\.state\)/);
   assert.match(page, /latest completed/);
   assert.match(page, /snapshot /);
   assert.match(page, /stateAgeText/);
