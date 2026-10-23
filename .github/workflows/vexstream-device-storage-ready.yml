@@ -136,6 +136,30 @@ jobs:
             "  assert.match(readme, /ML-D6 — MassDownload product source and terminal EndToEnd proof are different Work/);\n  assert.match(readme, /VexLife-Android issue #157/);\n  assert.match(readme, /DEVICE_STORAGE_READY/);",
           );
           fs.writeFileSync(testPath, tests);
+
+          const graphTestPath = 'test/workgraph.test.mjs';
+          let graphTests = fs.readFileSync(graphTestPath, 'utf8');
+          graphTests = graphTests.replace(
+            '  assert.equal(graph.transitions.length, 60);',
+            `  assert.equal(graph.transitions.length, 63);\n  assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.decomposed.20261022'));\n  assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.plan-validated.20261022'));\n  assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.ready.20261022'));`,
+          );
+          graphTests = graphTests.replace(
+            '  const transitionSource = structuredClone(graphSource);\n  const transitionRoot = transitionSource.items.find',
+            '  const transitionSource = structuredClone(graphSource);\n  delete transitionSource.semanticFingerprint;\n  const transitionRoot = transitionSource.items.find',
+          );
+          graphTests = graphTests.replace(
+            "  transitionRoot.state = 'RUNNING';",
+            "  delete transitionRoot.semanticFingerprint;\n  transitionRoot.state = 'RUNNING';",
+          );
+          graphTests = graphTests.replace(
+            "  const cyclic = structuredClone(graphSource);\n  cyclic.items[1].dependencyRefs",
+            "  const cyclic = structuredClone(graphSource);\n  delete cyclic.semanticFingerprint;\n  delete cyclic.items[1].semanticFingerprint;\n  delete cyclic.items[2].semanticFingerprint;\n  cyclic.items[1].dependencyRefs",
+          );
+          graphTests = graphTests.replace(
+            "  const missingParkingRoot = structuredClone(graphSource);\n  missingParkingRoot.rootWorkRefs",
+            "  const missingParkingRoot = structuredClone(graphSource);\n  delete missingParkingRoot.semanticFingerprint;\n  missingParkingRoot.rootWorkRefs",
+          );
+          fs.writeFileSync(graphTestPath, graphTests);
           NODE
 
       - name: Regenerate public projections
@@ -163,6 +187,7 @@ jobs:
             public/workspace.json \
             public/work-dashboard.json \
             test/vexstream-mobile-library-project.test.mjs \
+            test/workgraph.test.mjs \
             .github/workflows/vexstream-device-storage-ready.yml
-          git commit -m '[VexStream Project] Stage durable device storage at Ready' -m 'Bind Android issue #157, record the resolved shared-audio design, apply CAPTURED -> DECOMPOSED -> PLAN_VALIDATED -> READY through VexWork requestTransition, and preserve Ready -> Active as the protected human handshake.' -m '[VXG RealForever]'
+          git commit -m '[VexStream Project] Stage durable device storage at Ready' -m 'Bind Android issue #157, record the resolved shared-audio design, apply CAPTURED -> DECOMPOSED -> PLAN_VALIDATED -> READY through VexWork requestTransition, and preserve Ready -> Active as the protected human handshake.' -m 'Currentize generic Workgraph fixtures for the three admitted transitions and fingerprint-aware mutation tests.' -m '[VXG RealForever]'
           git push origin HEAD:VXG-102226-vexstream-device-storage-ready
