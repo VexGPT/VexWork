@@ -361,7 +361,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-21T08:41:00.000Z",
-      "updatedAt": "2026-10-22T01:32:00.000Z",
+      "updatedAt": "2026-10-23T00:12:02.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "workRef": "work.vexstream.mobile-library.device-storage",
@@ -369,7 +369,7 @@
       "label": "Durable device music storage",
       "purpose": "Establish the Android-native durable media-storage realization while preserving exact trackRef, SHA-256 and byte-length verification.",
       "workClass": "TASK",
-      "state": "CAPTURED",
+      "state": "READY",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
       "repositoryRefs": [
@@ -379,7 +379,13 @@
         "work.vexstream.mobile-library.durable-device-library",
         "github.pull.vexlife-android.142",
         "projects/vexstream-mobile-library/README.md",
-        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMediaStore.kt"
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMediaStore.kt",
+        "github.issue.vexlife-android.157",
+        "repo.vexstream-music:docs/architecture/MOBILE-BRIDGE-V1.md",
+        "repo.vexstream-music:mobile_bridge.go",
+        "repo.vexlife-android:app/src/main/AndroidManifest.xml",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/PairedVexStreamMusicRepository.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt"
       ],
       "nextProcessRefs": [
         "process.vexlife-android.feature-authoring"
@@ -3225,6 +3231,51 @@
         "repo.vexlife-android:docs/foundation/test-proof/incidents/TF-INCIDENT-2026-10-21-004.md"
       ],
       "createdAt": "2026-10-22T08:35:30.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.device-storage.decomposed.20261022",
+      "workRef": "work.vexstream.mobile-library.device-storage",
+      "priorState": "CAPTURED",
+      "nextState": "DECOMPOSED",
+      "reason": "The durable-device outcome is decomposed into shared storage, later rediscovery, private-copy migration, and lived Clear Data proof with separate ownership and dependencies.",
+      "actorRef": "actor.local-vex-operations.vexstream-mobile-library",
+      "sourceRefs": [
+        "github.issue.vexlife-android.157",
+        "projects/vexstream-mobile-library/README.md",
+        "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md"
+      ],
+      "createdAt": "2026-10-23T00:12:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.device-storage.plan-validated.20261022",
+      "workRef": "work.vexstream.mobile-library.device-storage",
+      "priorState": "DECOMPOSED",
+      "nextState": "PLAN_VALIDATED",
+      "reason": "Android issue 157 binds the source owner, exact base/tree, MediaStore realization, API 24-28 permission boundary, source membrane, failure semantics, and proof plan.",
+      "actorRef": "actor.local-vex-operations.vexstream-mobile-library",
+      "sourceRefs": [
+        "github.issue.vexlife-android.157",
+        "projects/vexstream-mobile-library/README.md",
+        "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md"
+      ],
+      "createdAt": "2026-10-23T00:12:01.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.device-storage.ready.20261022",
+      "workRef": "work.vexstream.mobile-library.device-storage",
+      "priorState": "PLAN_VALIDATED",
+      "nextState": "READY",
+      "reason": "Dependencies are clear, no active source collision was found, and implementation is ready for the protected Ready-to-Active human handshake.",
+      "actorRef": "actor.local-vex-operations.vexstream-mobile-library",
+      "sourceRefs": [
+        "github.issue.vexlife-android.157",
+        "projects/vexstream-mobile-library/README.md",
+        "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md"
+      ],
+      "createdAt": "2026-10-23T00:12:02.000Z"
     }
   ],
   "sourceRefs": [
