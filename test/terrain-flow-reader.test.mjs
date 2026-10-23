@@ -40,9 +40,12 @@ test('Operational Console keeps concurrent Terrain review and active storefront 
   const terrain = rows.find((row) => row.scopeRef === 'work.vexwork.operational-console.relational-terrain');
   const commerce = rows.find((row) => row.scopeRef === 'work.vexwork.operational-console.commerce-template');
   assert.equal(terrain.currentItems.some((item) => item.state === 'VERIFYING'), true);
-  assert.equal(commerce.currentItems.some((item) => item.workRef === 'work.vexwork.operational-console.commerce-template' && item.state === 'RUNNING'), true);
-  assert.equal(commerce.currentItems.some((item) => item.workRef === 'work.vexwork.operational-console.commerce-ai-site' && item.state === 'RUNNING'), true);
-  assert.equal(commerce.nextStructuralItems.some((item) => item.workRef === 'work.vexwork.operational-console.commerce-ai-site' && item.state === 'READY'), false);
+  assert.equal(commerce.scopeState, 'RUNNING');
+  assert.deepEqual(commerce.currentItems.map((item) => item.workRef), [
+    'work.vexwork.operational-console.commerce-ai-site',
+  ]);
+  assert.equal(commerce.currentItems[0].state, 'RUNNING');
+  assert.equal(commerce.nextStructuralItems.some((item) => item.workRef === 'work.vexwork.operational-console.commerce-ai-site'), false);
 });
 
 test('Connected Services Roadmap derives next-next-next from dependency truth', () => {
