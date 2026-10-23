@@ -82,10 +82,12 @@ test('Foundation Project is terminal while optional history remains globally par
   const workspace = buildWorkspace();
   const foundation = workspace.projects.find((entry) => entry.project.projectRef === 'project.vexwork.foundation');
   assert.ok(foundation);
-  assert.equal(foundation.summary.workItemCount, 7);
+  assert.equal(foundation.summary.workItemCount, 8);
   assert.equal(foundation.summary.openWorkItemCount, 0);
-  assert.equal(foundation.summary.completedCount, 7);
+  assert.equal(foundation.summary.completedCount, 8);
   assert.equal(foundation.items.find((item) => item.workRef === 'work.vexwork.foundation.outcome').state, 'COMPLETED');
+  assert.equal(foundation.items.find((item) => item.workRef === 'work.vexwork.foundation.maturity-closure').state, 'COMPLETED');
+  assert.equal(foundation.lanes.find((lane) => lane.laneRef === 'lane.work.done').workRefs.includes('work.vexwork.foundation.maturity-closure'), true);
   assert.equal(foundation.items.find((item) => item.workRef === 'work.vexwork.foundation.idea-intake').state, 'CANCELLED');
   assert.equal(foundation.items.some((item) => item.workRef === 'work.vexwork.history.foundational-infrastructure-backfill'), false);
   assert.equal(foundation.lanes.find((lane) => lane.laneRef === 'lane.work.archive').workRefs.includes('work.vexwork.foundation.idea-intake'), true);
