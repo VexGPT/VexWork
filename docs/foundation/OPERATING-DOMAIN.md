@@ -118,10 +118,13 @@ attentionQueues = []
 
 That is not an omission.
 
-The P3 sibling work `work.vexwork.operational-console.attention-queue-contract` owns event/exception queue semantics. This contract only reserves the composition slot so later domains do not require a schema redesign.
+The P3 sibling work `work.vexwork.operational-console.attention-queue-contract` owns event/exception queue semantics through `docs/foundation/ATTENTION-QUEUE.md` and `src/core/attention-queue.mjs`.
+
+The Operating Domain remains relational: binding a queue does not copy its entries, transfer its ownership or make the domain execute it.
 
 ```text
-QUEUE_SLOT_EXISTS != QUEUE_SEMANTICS_ALREADY_DEFINED
+QUEUE_SLOT_EXISTS != QUEUE_IMPLEMENTATION_OWNED_BY_DOMAIN
+ATTENTION_QUEUE_BINDING != QUEUE_IMPLEMENTATION
 ```
 
 ## Patient zero
@@ -157,7 +160,7 @@ commerce capabilities
 commerce population(s)
 commerce lens(es)
 commerce process route(s)
-later commerce attention queue(s)
+commerce attention queue(s)
 ```
 
 without changing `vexwork.operating-domain/v1`.
