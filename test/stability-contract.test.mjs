@@ -58,7 +58,9 @@ test('every root public reader module has a direct deterministic regression surf
 test('coverage reporting is available without pretending coverage is semantic clearance', () => {
   const pkg = JSON.parse(fs.readFileSync(path.join(ROOT, 'package.json'), 'utf8'));
   assert.equal(pkg.scripts['test:coverage'], 'node --test --experimental-test-coverage');
+  assert.equal(pkg.scripts['review:deterministic'], 'npm run test:coverage && npm run check && npm run dashboard:check && npm run workspace:check');
   assert.equal(pkg.scripts.review, 'npm run review:deterministic');
+  assert.equal(pkg.engines.node, '>=20.1');
 });
 
 // [VXG RealForever]
