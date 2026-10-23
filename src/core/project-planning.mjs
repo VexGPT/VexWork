@@ -262,4 +262,62 @@ export function applyProjectPlanningTransaction({
 
   const state = currentState(current, project.projectRef, contextFingerprint);
   const knownWorkRefs = new Set(projectWorkRefs(project, graph));
-  const knownLaneRefs = new Set(workRegistry.boardLanes.map((lane) => 
+  const knownLaneRefs = new Set(workRegistry.boardLanes.map((lane) => lane.laneRef));
+  const knownViewRefs = new Set(refs(viewRefs, 'viewRefs'));
+  validatePayload({ transaction, state, knownWorkRefs, knownLaneRefs, knownViewRefs });
+
+  const sequence = state.sequence + 1;
+  const event = withSemanticFingerprint({
+    schemaVersion: PROJECT_PLANNING_EVENT_SCHEMA,
+    eventRef: transaction.eventRef,
+    transactionRef: transaction.transactionRef,
+    projectRef: project.projectRef,
+    sequence,
+    priorEventRefOrNull: state.lastEventRefOrNull,
+    priorEventFingerprintOrNull: state.lastEventFingerprintOrNull,
+    eventClass: transaction.eventClass,
+    payload: structuredClone(transaction.payload),
+    actorRef: transaction.actorRef,
+    sourceRefs: transaction.sourceRefs,
+    formedAt: transaction.formedAt,
+  });
+
+  applyPayload(transaction, state);
+  const sourceRefs = [...new Set([...state.sourceRefs, ...transaction.sourceRefs])].sort();
+  const snapshot = withSemanticFingerprint({
+    schemaVersion: PROJECT_PLANNING_SNAPSHOT_SCHEMA,
+    currentness: 'CURRENT',
+    projectRef: project.projectRef,
+    contextFingerprint,
+    sequence,
+    lastEventRefOrNull: event.eventRef,
+    lastEventFingerprintOrNull: event.semanticFingerprint,
+    iterations: state.iterations,
+    iterationMemberships: state.iterationMemberships,
+    sharedOrders: state.sharedOrders,
+    wipPolicies: state.wipPolicies,
+    selectedViewRefOrNull: state.selectedViewRefOrNull,
+    sourceRefs,
+    formedAt: transaction.formedAt,
+  });
+
+  return Object.freeze({
+    schemaVersion: PROJECT_PLANNING_RESULT_SCHEMA,
+    state: 'ACCEPTED',
+    event,
+    snapshot,
+    graph,
+    effects: Object.freeze({
+      planningMutationRepresented: true,
+      workgraphMutationRepresented: false,
+      providerMutationPerformed: false,
+    }),
+    executionAuthority: 'NONE',
+  });
+}
+
+export function validateProjectPlanningSnapshot(snapshot) {
+  return normalizeSnapshot(snapshot);
+}
+
+// [VXG RealForever][VEXWORK][PROJECT-PLANNING]
