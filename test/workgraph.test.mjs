@@ -210,6 +210,8 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   const derivedPromotion = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.derived-work-promotion');
   const vexsite = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.vexsite-dogfood');
   const populationScope = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.vexsite-population-scope');
+  const localizationLens = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.vexsite-localization-lens');
+  const patientZeroProof = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.vexsite-patient-zero-proof');
   const terrain = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.relational-terrain');
   const terrainPatient = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.relational-terrain.patient-zero');
   assert.equal(operationalOutcome.state, 'RUNNING');
@@ -217,8 +219,10 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(derivedContract.state, 'COMPLETED');
   assert.equal(derivedProjection.state, 'COMPLETED');
   assert.equal(derivedPromotion.state, 'COMPLETED');
-  assert.equal(vexsite.state, 'READY');
-  assert.equal(populationScope.state, 'READY');
+  assert.equal(vexsite.state, 'RUNNING');
+  assert.equal(populationScope.state, 'COMPLETED');
+  assert.equal(localizationLens.state, 'COMPLETED');
+  assert.equal(patientZeroProof.state, 'RUNNING');
   assert.equal(terrain.state, 'RUNNING');
   assert.equal(terrainPatient.state, 'VERIFYING');
 
