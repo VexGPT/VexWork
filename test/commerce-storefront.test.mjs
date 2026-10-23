@@ -175,6 +175,33 @@ test('public selection ordering does not manufacture storefront document identit
   assert.equal(left.semanticFingerprint, right.semanticFingerprint);
 });
 
+test('new item observation revises document identity and rejects stale storefront content', () => {
+  const firstItem = item({
+    description: 'Original description.',
+  });
+  const firstDocument = document(firstItem, {
+    publicFieldRefs: ['field.commerce.storefront.description'],
+  });
+
+  const nextItem = item({
+    observedAt: '2026-10-23T05:21:00.000Z',
+    description: 'Revised description.',
+  });
+  const nextDocument = document(nextItem, {
+    publicFieldRefs: ['field.commerce.storefront.description'],
+  });
+
+  assert.equal(firstDocument.itemRef, nextDocument.itemRef);
+  assert.notEqual(firstDocument.itemSemanticFingerprint, nextDocument.itemSemanticFingerprint);
+  assert.notEqual(firstDocument.semanticFingerprint, nextDocument.semanticFingerprint);
+  assert.deepEqual(nextDocument.publicFields, { description: 'Revised description.' });
+
+  assert.throws(
+    () => receipt(firstDocument, nextItem),
+    /does not match current Commerce item observation/,
+  );
+});
+
 test('publication receipt proves observed public state without performing publication', () => {
   const sourceItem = item({ description: 'Plate.' });
   const sourceDocument = document(sourceItem, {
