@@ -119,4 +119,147 @@ function normalizeSnapshot(snapshot) {
   stableRef(snapshot.projectRef, 'snapshot.projectRef');
   assert(typeof snapshot.contextFingerprint === 'string' && HEX64.test(snapshot.contextFingerprint), 'snapshot contextFingerprint invalid');
   assert(Number.isSafeInteger(snapshot.sequence) && snapshot.sequence >= 1, 'snapshot sequence invalid');
-  assert(snapshot.lastEventRefOrNull === null || REF.test(snapshot.lastEventRefOrNull), 'snapshot lastEventRe
+  assert(snapshot.lastEventRefOrNull === null || REF.test(snapshot.lastEventRefOrNull), 'snapshot lastEventRefOrNull invalid');
+  assert(snapshot.lastEventFingerprintOrNull === null || HEX64.test(snapshot.lastEventFingerprintOrNull), 'snapshot lastEventFingerprintOrNull invalid');
+  assert(Array.isArray(snapshot.iterations), 'snapshot iterations required');
+  assert(Array.isArray(snapshot.iterationMemberships), 'snapshot iterationMemberships required');
+  assert(Array.isArray(snapshot.sharedOrders), 'snapshot sharedOrders required');
+  assert(Array.isArray(snapshot.wipPolicies), 'snapshot wipPolicies required');
+  assert(snapshot.selectedViewRefOrNull === null || REF.test(snapshot.selectedViewRefOrNull), 'snapshot selectedViewRefOrNull invalid');
+  refs(snapshot.sourceRefs, 'snapshot.sourceRefs');
+  timestamp(snapshot.formedAt, 'snapshot.formedAt');
+  return snapshot;
+}
+
+function currentState(snapshot, projectRef, contextFingerprint) {
+  if (snapshot === null) {
+    return {
+      projectRef,
+      contextFingerprint,
+      sequence: 0,
+      lastEventRefOrNull: null,
+      lastEventFingerprintOrNull: null,
+      iterations: [],
+      iterationMemberships: [],
+      sharedOrders: [],
+      wipPolicies: [],
+      selectedViewRefOrNull: null,
+      sourceRefs: [],
+    };
+  }
+  normalizeSnapshot(snapshot);
+  assert(snapshot.projectRef === projectRef, 'planning snapshot project mismatch');
+  assert(snapshot.contextFingerprint === contextFingerprint, 'planning snapshot context changed; rebase required');
+  return structuredClone(snapshot);
+}
+
+function iterationByRef(state, iterationRef) {
+  return state.iterations.find((item) => item.iterationRef === iterationRef) ?? null;
+}
+
+function membershipFor(state, iterationRef) {
+  return state.iterationMemberships.find((item) => item.iterationRef === iterationRef)?.workRefs ?? [];
+}
+
+function upsert(list, key, value) {
+  const index = list.findIndex((item) => item[key] === value[key]);
+  if (index < 0) list.push(value);
+  else list[index] = value;
+}
+
+function validatePayload({ transaction, state, knownWorkRefs, knownLaneRefs, knownViewRefs }) {
+  const payload = transaction.payload;
+  if (transaction.eventClass === 'ITERATION_DEFINED') {
+    stableRef(payload.iterationRef, 'iterationRef');
+    assert(typeof payload.label === 'string' && payload.label.trim(), 'iteration label required');
+    timestamp(payload.startsAt, 'startsAt');
+    timestamp(payload.endsAt, 'endsAt');
+    assert(Date.parse(payload.endsAt) > Date.parse(payload.startsAt), 'iteration endsAt must be after startsAt');
+    assert(!iterationByRef(state, payload.iterationRef), `iteration already defined: ${payload.iterationRef}`);
+    return;
+  }
+  if (transaction.eventClass === 'ITERATION_CLOSED') {
+    stableRef(payload.iterationRef, 'iterationRef');
+    timestamp(payload.closedAt, 'closedAt');
+    const iteration = iterationByRef(state, payload.iterationRef);
+    assert(iteration, `unknown iteration ${payload.iterationRef}`);
+    assert(iteration.closedAtOrNull === null, `iteration already closed: ${payload.iterationRef}`);
+    return;
+  }
+  if (transaction.eventClass === 'ITERATION_MEMBERSHIP_SET') {
+    stableRef(payload.iterationRef, 'iterationRef');
+    const iteration = iterationByRef(state, payload.iterationRef);
+    assert(iteration, `unknown iteration ${payload.iterationRef}`);
+    assert(iteration.closedAtOrNull === null, `closed iteration membership cannot change: ${payload.iterationRef}`);
+    const workRefs = refs(payload.workRefs, 'workRefs');
+    assert(workRefs.every((workRef) => knownWorkRefs.has(workRef)), 'iteration membership contains work outside Project');
+    return;
+  }
+  if (transaction.eventClass === 'SHARED_ORDER_SET') {
+    stableRef(payload.scopeRef, 'scopeRef');
+    const workRefs = refs(payload.workRefs, 'workRefs', { ordered: true });
+    assert(workRefs.every((workRef) => knownWorkRefs.has(workRef)), 'shared order contains work outside Project');
+    return;
+  }
+  if (transaction.eventClass === 'WIP_POLICY_SET') {
+    stableRef(payload.laneRef, 'laneRef');
+    assert(knownLaneRefs.has(payload.laneRef), `unknown Board lane ${payload.laneRef}`);
+    assert(Number.isSafeInteger(payload.limit) && payload.limit > 0, 'WIP limit must be one positive integer');
+    return;
+  }
+  if (transaction.eventClass === 'VIEW_SELECTED') {
+    stableRef(payload.viewRef, 'viewRef');
+    assert(knownViewRefs.has(payload.viewRef), `unknown Project view ${payload.viewRef}`);
+    return;
+  }
+  throw new TypeError(`unsupported planning eventClass ${transaction.eventClass}`);
+}
+
+function applyPayload(transaction, state) {
+  const payload = structuredClone(transaction.payload);
+  if (transaction.eventClass === 'ITERATION_DEFINED') {
+    state.iterations.push({
+      iterationRef: payload.iterationRef,
+      label: payload.label,
+      startsAt: payload.startsAt,
+      endsAt: payload.endsAt,
+      closedAtOrNull: null,
+      finalWorkRefs: [],
+    });
+  } else if (transaction.eventClass === 'ITERATION_CLOSED') {
+    const iteration = iterationByRef(state, payload.iterationRef);
+    iteration.closedAtOrNull = payload.closedAt;
+    iteration.finalWorkRefs = membershipFor(state, payload.iterationRef);
+  } else if (transaction.eventClass === 'ITERATION_MEMBERSHIP_SET') {
+    upsert(state.iterationMemberships, 'iterationRef', { iterationRef: payload.iterationRef, workRefs: refs(payload.workRefs, 'workRefs') });
+  } else if (transaction.eventClass === 'SHARED_ORDER_SET') {
+    upsert(state.sharedOrders, 'scopeRef', { scopeRef: payload.scopeRef, workRefs: refs(payload.workRefs, 'workRefs', { ordered: true }) });
+  } else if (transaction.eventClass === 'WIP_POLICY_SET') {
+    upsert(state.wipPolicies, 'laneRef', { laneRef: payload.laneRef, limit: payload.limit });
+  } else if (transaction.eventClass === 'VIEW_SELECTED') {
+    state.selectedViewRefOrNull = payload.viewRef;
+  }
+}
+
+export function applyProjectPlanningTransaction({
+  project,
+  graph,
+  viewRefs = [],
+  currentSnapshotOrNull = null,
+  transaction,
+  planningRegistry,
+  workRegistry,
+}) {
+  assert(verifySemanticFingerprint(project), 'project semanticFingerprint mismatch');
+  assert(verifySemanticFingerprint(graph), 'Workgraph semanticFingerprint mismatch');
+  transaction = createProjectPlanningTransaction(transaction, planningRegistry);
+  assert(transaction.projectRef === project.projectRef, 'planning transaction project mismatch');
+  const contextFingerprint = projectPlanningContextFingerprint({ project, graph, viewRefs, workRegistry });
+  assert(transaction.expectedContextFingerprint === contextFingerprint, 'planning transaction context is stale');
+  const current = normalizeSnapshot(currentSnapshotOrNull);
+  const currentFingerprint = current?.semanticFingerprint ?? null;
+  assert(transaction.expectedPlanningSnapshotFingerprintOrNull === currentFingerprint, 'planning transaction snapshot is stale');
+
+  const state = currentState(current, project.projectRef, contextFingerprint);
+  const knownWorkRefs = new Set(projectWorkRefs(project, graph));
+  const knownLaneRefs = new Set(workRegistry.boardLanes.map((lane) => 
