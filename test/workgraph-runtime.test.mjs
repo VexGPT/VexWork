@@ -25,7 +25,7 @@ function canonicalize(value) {
   return value;
 }
 const canonical = (value) => JSON.stringify(canonicalize(value));
-const tmp = () => fs.mkdtempSync(path.join(os.tmpdir(), 'vexwork-runtime-'));
+const tmp = () => fs.realpathSync.native(fs.mkdtempSync(path.join(os.tmpdir(), 'vexwork-runtime-')));
 
 function source() {
   return {
