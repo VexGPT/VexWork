@@ -480,6 +480,193 @@ INSTANTIATE REUSABLE MODULE
 
 Copy/paste must not accidentally create hidden shared state, and reusable instances must not become silent detached copies.
 
+## Next-next-next proving foundation — reusable templates, inheritance and declared variance
+
+Once relational topology can be represented and navigated, VexBoard should prove that repeated design
+structure can have **one reusable source** rather than becoming copied drawing fragments.
+
+The motivating example is a website shell:
+
+```text
+Website Foundation Template
+  Header
+  Navigation
+  Content slot
+  Footer
+
+        |
+        +-> Home Screen instance
+        +-> About Screen instance
+        +-> Contact Screen instance
+        +-> Experimental Screen instance
+```
+
+Changing the canonical Header should update every linked instance that has not explicitly declared a
+different value. The board should not require a human to hunt through every Screen and manually
+repair copied headers.
+
+The exact schema names remain provisional, but the semantic roles should distinguish:
+
+```text
+TEMPLATE SOURCE
+  one canonical reusable design definition
+
+TEMPLATE INSTANCE
+  one placement/use of that source
+
+PARAMETER / SLOT BINDING
+  admitted instance-specific content without redefining the template
+
+DECLARED VARIANCE
+  one bounded intentional exception that remains linked to the source
+
+DETACHED UNIQUE DERIVATIVE
+  an intentional fork that no longer receives future source updates
+```
+
+Permanent:
+
+```text
+TEMPLATE_INSTANCE != COPIED_SUBGRAPH
+INSTANCE_PARAMETER != TEMPLATE_FORK
+DECLARED_VARIANCE != DETACH
+DETACHED_UNIQUE != HIDDEN_STALE_COPY
+```
+
+### Propagation should be source-driven and inspectable
+
+A template update should conceptually resolve:
+
+```text
+prior template revision
+-> next template revision
+-> linked instances
+-> parameter bindings
+-> declared variance overlays
+-> compatibility / conflict check
+-> next projected instances
+```
+
+The root template should maintain a reverse-addressable dependency view so human or AI can answer:
+
+```text
+where is this Header reused?
+which Screens inherit it exactly?
+which Screens carry declared exceptions?
+which derivatives were detached?
+which template update cannot currently propagate cleanly?
+```
+
+This is the same one-source-many-projections discipline used elsewhere in Vex: a reusable definition
+owns its meaning; instances project/use it without becoming independent sources by accident.
+
+### Exception is a governed variance, not a secret copy
+
+A Screen may legitimately need a different Header.
+
+The first human interaction may look like a right-click action such as:
+
+```text
+Declare exception...
+```
+
+The action should require a short human-readable reason before the variance becomes accepted:
+
+```text
+reason
+affected semantic/property refs
+expected duration or permanence when useful
+optional related requirement/source ref
+```
+
+The resulting instance stays linked to the root template. Future template changes continue to
+propagate outside the explicitly overridden surface.
+
+The root/source view should expose backlinks:
+
+```text
+Header Template
+  exact instances: 11
+  declared variances: 2
+    -> Experimental Checkout
+       reason: tests compact navigation variant
+    -> Kiosk Screen
+       reason: no account controls in kiosk mode
+```
+
+A human or AI can enter either variance and return to the root without searching the whole board.
+
+### Make unique is the stronger operation
+
+A separate action such as:
+
+```text
+Make unique / detach from template...
+```
+
+should be used only when the object is intended to evolve independently.
+
+That transition should require an explicit reason and preserve provenance:
+
+```text
+derivedFromTemplateRef
+detachedFromRevision
+reason
+new stable refs where required
+```
+
+After detachment:
+
+```text
+future template update
+-> does not silently mutate detached derivative
+```
+
+but the template/root can still point to the derivative as a known lineage relation.
+
+This prevents "unique" from becoming the ordinary escape hatch that recreates stale Sketch/Figma
+copies.
+
+### Templates may be fractal
+
+A whole Screen may be templated, but so may smaller reusable meaning:
+
+```text
+site shell
+header
+navigation group
+form pattern
+card
+process module
+decision family
+onboarding step
+```
+
+A template can contain other template instances. The graph must reject accidental template
+inheritance cycles and preserve explicit source lineage.
+
+```text
+TEMPLATE_REUSE_LOOP != VALID_PROCESS_FLOW_LOOP
+```
+
+### Template proving cases
+
+Before relying on templates for real webpage blueprints, prove:
+
+```text
+one Header source -> three Screen instances
+root Header edit -> all exact instances update
+one parameterized instance -> source update + parameter preserved
+one declared variance -> source update propagates outside variance
+variance reason/backlink visible from root and instance
+variance removed -> instance reconverges with source
+make unique -> later root update does not alter derivative
+nested template instance
+cycle attempt fails closed
+export/reload preserves template/instance/variance lineage
+human and AI use the same template Controls
+```
+
 ## Interactive experience semantics
 
 A CONTROL should be behavior-addressable rather than merely styled like a button.
@@ -1102,6 +1289,194 @@ itself for readability.
 ### Visual cues
 
 Color, shape, border, icon, line style, depth, and animation may communicate semantic roles and state, but the underlying meaning must remain readable without relying on color alone.
+
+## Asset and image support — source identity, semantic discovery and reusable media
+
+VexBoard should be able to use screenshots, raster images and vector assets without turning board
+files into an opaque pile of embedded bytes.
+
+Current Vextreme-Assets already establishes a useful source distinction:
+
+```text
+__assets/
+  preserved authored/source dependencies
+  content-addressed by stable byte identity
+
+evidence/screenshots/
+  derived screenshot evidence
+  semantic coordinate + exact SHA-256 + source binding
+```
+
+VexBoard should **consume that distinction rather than overwrite it**. An authored logo/SVG and a
+captured screenshot may both be visually displayable, but they do not mean the same thing.
+
+```text
+AUTHORED_ASSET != DERIVED_SCREENSHOT_EVIDENCE
+MEDIA_DISPLAY != MEDIA_SOURCE_OWNERSHIP
+```
+
+The current Vextreme-Assets import manifest is intentionally provenance/byte-oriented: canonical
+content path, imported path, Git blob, extension and size. It is not currently a semantic search
+catalog. VexBoard therefore needs a bounded discovery layer without redefining immutable asset
+identity.
+
+### Stable media reference plus semantic catalog metadata
+
+Conceptually, a board-visible asset binding needs two separable coordinates:
+
+```text
+source identity
+  repository / source namespace
+  immutable asset id or evidence coordinate
+  exact content identity
+  media type
+
+discovery / design meaning
+  human name
+  aliases
+  tags
+  project / domain scope
+  semantic role
+  optional description / alt meaning
+```
+
+Exact ownership of broadly reusable tags should be earned from real consumers. Project-local tags may
+belong to the VexBoard/project binding; cross-project canonical names may eventually belong to an
+Assets-owned semantic catalog.
+
+Do not mutate a content hash merely to give an image a better human name.
+
+```text
+SEMANTIC_ALIAS != BYTE_IDENTITY
+TAG_CHANGE != NEW_ASSET_BYTES
+```
+
+### Search should work without knowing exact labels
+
+The same gallery/query surface should serve humans and AI.
+
+Examples:
+
+```text
+search "header"
+-> reusable Headers across visible/admitted projects
+
+search "header" + project:vexsite
+-> VexSite-scoped Header assets/templates
+
+search "onboarding screenshot"
+-> screenshot evidence / guidance media
+
+search "navigation icon" + type:svg
+-> matching vector assets
+```
+
+Useful search fields may include:
+
+```text
+name
+aliases
+tags
+semantic role
+project refs
+source namespace
+media type
+usage refs
+```
+
+A user should not need to know the exact asset hash or internal filename to discover a useful visual.
+
+### SVGs are assets first, editable geometry only when deliberately converted
+
+Vextreme-Assets already contains SVG source assets alongside PNG/JPG/WebP and other files. VexBoard
+should render admitted SVGs as reusable vector media.
+
+```text
+SVG_ASSET
+-> renderable / scalable media reference
+```
+
+It should **not** automatically explode arbitrary SVG paths into editable BoardGraph shapes. That
+would confuse visual bytes with semantic board meaning.
+
+A future explicit operation may convert selected vector geometry into board-editable primitives when
+there is a real need and the conversion can preserve provenance.
+
+```text
+RENDER_SVG != IMPORT_SVG_AS_SEMANTIC_SHAPES
+```
+
+AI-authored SVGs may enter the same asset path only through the rightful asset/source admission
+contract; image generation alone does not make them canonical reusable assets.
+
+### Media need not be placed on the current board to be useful
+
+The toolbar/library should expose an asset gallery independent of the current canvas:
+
+```text
+Asset Library
+  browse
+  search
+  filter
+  inspect provenance
+  inspect usages
+  insert/reference
+```
+
+An asset can exist in the library and be available to AI without occupying any current BoardProjection.
+
+When inserted:
+
+```text
+asset source
+-> stable media binding
+-> projection item
+-> optional semantic role / caption / alt meaning
+```
+
+The same source asset may appear in many boards or template instances without copying bytes.
+
+### Screenshots as persistent visual guidance
+
+Screenshots can support instructions where disappearing tooltips or prose alone are insufficient:
+
+```text
+onboarding step
+  text explanation
+  + referenced screenshot
+  + optional highlighted/annotated region later
+
+feature guide
+  expected state screenshot
+  + semantic step identity
+
+tool instruction
+  stable process step
+  + visual example
+```
+
+A screenshot should retain source/provenance when known, especially when it represents a specific
+product revision. A stale screenshot can then be detected as stale evidence rather than silently
+remaining "the current UI."
+
+### Asset proving cases
+
+Before rich media becomes ordinary board content, prove:
+
+```text
+reference one PNG without embedding duplicate bytes
+reference one SVG and render at multiple sizes
+same asset used by several template instances
+search by semantic name
+search by alias/tag without exact label
+project-scoped and cross-project search
+distinguish authored source asset from screenshot evidence
+asset library item exists without board placement
+insert/remove projection without deleting source asset
+source/provenance inspection
+export/reload preserves exact asset bindings
+missing/stale source binding fails closed or becomes explicit unresolved media
+```
 
 ## Semantic navigation and the walk stack
 
@@ -1857,6 +2232,19 @@ readability pressure, branch/merge visualization, cross-board PORTAL traversal, 
 return/non-return semantics and automatic enclosing-region reflow. Prove branch topology remains
 stable even when the projection reorganizes around it.
 
+### Phase 2D — reusable templates, inheritance and variance
+
+Canonical template sources, linked instances, parameter/slot bindings, declared variance with
+required human-readable rationale, reverse usage/backlink maps, source-update propagation,
+conflict visibility, nested templates and explicit make-unique/detach provenance.
+
+### Phase 2E — asset/media library and visual guidance
+
+External/source-bound media references, authored-asset versus screenshot-evidence distinction,
+semantic names/aliases/tags, project-scoped and cross-project discovery, PNG/JPG/WebP/SVG display,
+asset gallery access independent of board placement, provenance/usages, and deterministic
+export/reload of media bindings.
+
 ### Phase 3 — prototype simulation and BoardJourney
 
 Clickable controls, conditions, scenario state, overlays, loops, Back/Return, right-side walk stack, and revisit.
@@ -1957,6 +2345,10 @@ next product frontier
    stable scale / local occupancy / obstacle avoidance / incremental reflow / fractal expansion
 -> relational direction navigation proving ground
    semantic choice forms / branch envelopes / convergence / portal enter-return / fan-out pressure
+-> reusable template inheritance proving ground
+   one source / linked instances / declared variance / make-unique provenance / reverse usages
+-> asset + image support proving ground
+   source-bound media / semantic discovery / SVG + screenshots / gallery / exact provenance
 -> use authored website patient zero + prime source-projection case
    to earn the smallest reusable graph/schema vocabulary
 -> use BoardProjection geometry as addressable spatial truth without making coordinates semantic identity
