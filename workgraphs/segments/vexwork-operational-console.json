@@ -272,7 +272,7 @@
       "label": "Reusable Operating Domain template",
       "purpose": "Generalize the patient-zero model into a reusable operating-domain template for capabilities, populations, attention queues, processes and work lenses without domain-specific ownership leakage.",
       "workClass": "OUTCOME",
-      "state": "READY",
+      "state": "RUNNING",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexwork.operational-console.vexsite-patient-zero-proof"
@@ -282,12 +282,16 @@
       ],
       "sourceRefs": [
         "projects/vexwork-operational-console/README.md",
-        "github.pull.vexwork.63"
+        "github.pull.vexwork.63",
+        "github.pull.vexwork.68",
+        "github.commit.vexwork.ddd56d8ddff92b5053644c758197d014d2000613",
+        "vexrelay.return.vexwork.operating-domain-contract.a002.sha256.0da1df2bcc4ba49c30a6311e616b6c45bfc3140da2f110f646be7b756f27fcbc",
+        "vexrelay.return.vexwork.operating-domain-assurance.a003.sha256.072d2f29699be1ea545ec08881e5a8ba87eab9de03353e99805449d2d6bb1286"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T03:20:00.000Z",
-      "updatedAt": "2026-10-23T02:34:28.003Z",
+      "updatedAt": "2026-10-23T03:25:33.425Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -299,7 +303,7 @@
       "label": "Operating Domain contract",
       "purpose": "Define a domain-neutral template boundary for capabilities, populations, lenses, processes and provider/repository evidence while keeping business/entity records outside Workgraph.",
       "workClass": "TASK",
-      "state": "READY",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexwork.operational-console.vexsite-patient-zero-proof"
@@ -309,12 +313,18 @@
       ],
       "sourceRefs": [
         "projects/vexwork-operational-console/README.md",
-        "github.pull.vexwork.63"
+        "github.pull.vexwork.63",
+        "github.pull.vexwork.68",
+        "github.commit.vexwork.ddd56d8ddff92b5053644c758197d014d2000613",
+        "vexrelay.return.vexwork.operating-domain-contract.a002.sha256.0da1df2bcc4ba49c30a6311e616b6c45bfc3140da2f110f646be7b756f27fcbc",
+        "vexrelay.return.vexwork.operating-domain-assurance.a003.sha256.072d2f29699be1ea545ec08881e5a8ba87eab9de03353e99805449d2d6bb1286",
+        "docs/foundation/OPERATING-DOMAIN.md",
+        "src/core/operating-domain.mjs"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T03:20:00.000Z",
-      "updatedAt": "2026-10-23T02:34:28.002Z",
+      "updatedAt": "2026-10-23T03:37:41.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -326,7 +336,7 @@
       "label": "Operational attention queue",
       "purpose": "Support event/exception-driven attention such as fulfillment, expiry or failure queues without automatically converting every event into durable Work.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "READY",
       "priorityClass": "NORMAL",
       "dependencyRefs": [
         "work.vexwork.operational-console.operating-domain-contract"
@@ -335,12 +345,14 @@
         "repo.vexwork"
       ],
       "sourceRefs": [
-        "projects/vexwork-operational-console/README.md"
+        "projects/vexwork-operational-console/README.md",
+        "github.pull.vexwork.68",
+        "docs/foundation/OPERATING-DOMAIN.md"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T03:20:00.000Z",
-      "updatedAt": "2026-10-22T03:20:00.000Z",
+      "updatedAt": "2026-10-23T03:37:41.001Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -1186,6 +1198,74 @@
         "github.commit.vexwork.a4813424d67d8813457446b509ca92b406b9b98e"
       ],
       "createdAt": "2026-10-23T02:34:28.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.operating-domain-template.running.sourceowner-a002",
+      "workRef": "work.vexwork.operational-console.operating-domain-template",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Corrected SourceOwner A002 passed the exact Operating Domain candidate; P3 entered active implementation with the reusable contract under proof.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "vexrelay.return.vexwork.operating-domain-contract.a002.sha256.0da1df2bcc4ba49c30a6311e616b6c45bfc3140da2f110f646be7b756f27fcbc",
+        "work.vexwork.operational-console.operating-domain-contract"
+      ],
+      "createdAt": "2026-10-23T03:25:33.425Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.operating-domain-contract.running.sourceowner-a002",
+      "workRef": "work.vexwork.operational-console.operating-domain-contract",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Corrected SourceOwner A002 passed npm run review for the exact six-path Operating Domain contract candidate.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "vexrelay.return.vexwork.operating-domain-contract.a002.sha256.0da1df2bcc4ba49c30a6311e616b6c45bfc3140da2f110f646be7b756f27fcbc"
+      ],
+      "createdAt": "2026-10-23T03:25:33.425Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.operating-domain-contract.verifying.assurance-a003",
+      "workRef": "work.vexwork.operational-console.operating-domain-contract",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Fresh Independent Assurance A003 captured the entire exact remote candidate with zero findings, omissions or truncation.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "vexrelay.return.vexwork.operating-domain-assurance.a003.sha256.072d2f29699be1ea545ec08881e5a8ba87eab9de03353e99805449d2d6bb1286"
+      ],
+      "createdAt": "2026-10-23T03:35:54.209Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.operating-domain-contract.completed.pr68",
+      "workRef": "work.vexwork.operational-console.operating-domain-contract",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "PR #68 merged at a tree byte-identical to the independently assured Operating Domain candidate.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.68",
+        "github.commit.vexwork.ddd56d8ddff92b5053644c758197d014d2000613"
+      ],
+      "createdAt": "2026-10-23T03:37:41.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.attention-queue-contract.ready.operating-domain-complete",
+      "workRef": "work.vexwork.operational-console.attention-queue-contract",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "Operating Domain contract dependency completed on merged PR #68; the bounded Attention Queue semantic contract is now the next P3 edge.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.68",
+        "work.vexwork.operational-console.operating-domain-contract"
+      ],
+      "createdAt": "2026-10-23T03:37:41.001Z"
     }
   ],
   "sourceRefs": [
