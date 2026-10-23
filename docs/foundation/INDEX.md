@@ -15,6 +15,7 @@ This is the current architecture map. Follow the exact foundation whose question
 | Derived Attention | How do dynamic entity populations and current evidence become work-shaped attention, aggregate counts and scope/entity descent without becoming WorkState or implementation authority? | `docs/foundation/DERIVED-ATTENTION.md`, `docs/foundation/DERIVED-ATTENTION-PROJECTION.md`, `src/core/derived-attention.mjs`, `src/core/derived-attention-projection.mjs` | `test/derived-attention.test.mjs`, `test/derived-attention-projection.test.mjs` | FOUNDATION |
 | Derived Work Promotion | How does one exact derived concern create one canonical Work item or resolve to existing Work without automatic ticket generation? | `docs/process/PROMOTE-DERIVED-CONCERN.md`, `src/core/derived-work-promotion.mjs` | `test/derived-work-promotion.test.mjs` | FOUNDATION |
 | Operating Domain | How can one operational environment compose capabilities, populations, lenses, processes and later attention queues without becoming another truth or authority owner? | `docs/foundation/OPERATING-DOMAIN.md`, `src/core/operating-domain.mjs`, `projects/vexwork-operational-console/vexsite-operating-domain.json` | `test/operating-domain.test.mjs`, structural validation in `scripts/work-check.mjs` | FOUNDATION |
+| Attention Queue | How do current event/exception observations become a deterministic action-oriented queue without becoming WorkState, an event database or execution authority? | `docs/foundation/ATTENTION-QUEUE.md`, `src/core/attention-queue.mjs` | `test/attention-queue.test.mjs` | FOUNDATION |
 | Parking Lot | How do I preserve useful deferred work without making a provider ticket or fake Project the owner? | `docs/foundation/PARKING-LOT.md`, `src/core/work-board.mjs` | `test/work-board.test.mjs` | FOUNDATION |
 | Process Map | Which reusable process should a fresh worker follow for this kind of work question? | `blueprint/process-registry.json`, `src/core/process-map.mjs`, `docs/process/` | `test/process-map.test.mjs` | FOUNDATION |
 | Repository Graph | Which repositories does work touch and where does each repository explain itself? | `blueprint/repository-registry.json`, `src/core/repository-graph.mjs` | `test/repository-graph.test.mjs` | FOUNDATION |
@@ -52,6 +53,9 @@ one exact concern -> new or existing canonical Work
 
 operating domain / reusable operational environment / capabilities + populations + lenses + processes
 -> OPERATING-DOMAIN.md
+
+current event/exception attention queue / fulfillment attention / explicit clear evidence
+-> ATTENTION-QUEUE.md
 
 delegated AI agency / human acknowledgement + approval / phase transition
 -> HUMAN-TRANSITION-HANDSHAKE.md
