@@ -434,9 +434,25 @@ MEASURE exact candidate
 -> ratchet deliberately as coverage improves
 ```
 
-Until that baseline is actually measured and accepted, a numerical threshold is **held**, not silently assumed.
+The first accepted source-only baseline is now measured on the exact Node 20.18.1 Foundation suite:
 
-When a floor is later introduced, changes should not lower it without an explicit reviewed reason. Critical lifecycle, authority, currentness, validation, and fail-closed decision code may warrant stronger branch expectations than presentation/helper code; one global number must not hide that difference.
+```text
+lines      96.73%
+branches   84.73%
+functions  96.71%
+```
+
+The first non-regression floor is intentionally just below that earned baseline:
+
+```text
+lines      >= 96%
+branches   >= 84%
+functions  >= 96%
+```
+
+Critical lifecycle/currentness modules also carry file-local floors in `blueprint/source-coverage-baseline.json`, so broad easy-to-cover code cannot compensate for a regression in Workgraph persistence, lifecycle admission, transition handshakes, or composition.
+
+The floor is a ratchet, not a target. Changes should not lower it without an explicit reviewed reason, and meaningful new tests should raise the accepted baseline/floor when the repository has earned the increase.
 
 ## VexWork Foundation deterministic floor
 
