@@ -4338,8 +4338,15 @@
           ],
           "sourceRefs": [
             "projects/vexboard/README.md",
+            "src/shared/vexboard-model.mjs",
             "src/core/vexboard.mjs",
-            "test/vexboard.test.mjs"
+            "vexboard-reader.js",
+            "vexboard/index.html",
+            "vexboard/self-map.json",
+            "test/vexboard.test.mjs",
+            "test/vexboard-ui.test.mjs",
+            "index.html",
+            "test/public-ui.test.mjs"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
