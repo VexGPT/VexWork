@@ -13,7 +13,8 @@
     "work.vexwork.operational-console.outcome",
     "work.vexwork.operational-console.multi-fulfiller-routing",
     "work.vexboard.outcome",
-    "work.vexlife.blueprint-source-of-truth.outcome"
+    "work.vexlife.blueprint-source-of-truth.outcome",
+    "work.vextreme.vexsite.localization.closed-circuit.global-core"
   ],
   "items": [
     {
@@ -1870,7 +1871,7 @@
       "label": "Patient Zero: VexSite Localization",
       "purpose": "Prove the derived-work foundation against Vextreme's existing page/arc/localization world so VexWork can answer what remains without a page-per-task Workgraph.",
       "workClass": "OUTCOME",
-      "state": "READY",
+      "state": "RUNNING",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexwork.operational-console.derived-work-foundation"
@@ -1884,12 +1885,15 @@
         "repo.vextreme:pages/terrain-map.html",
         "github.pull.vextreme.376",
         "github.pull.vextreme.378",
-        "github.pull.vextreme.379"
+        "github.pull.vextreme.379",
+        "github.pull.vexwork.49",
+        "github.pull.vexwork.52",
+        "github.pull.vexwork.62"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T03:20:00.000Z",
-      "updatedAt": "2026-10-22T05:32:34.017Z",
+      "updatedAt": "2026-10-23T02:16:34.001Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -1901,7 +1905,7 @@
       "label": "VexSite page population and arc scope",
       "purpose": "Bind a reusable VexWork population/scope projection to current Vextreme-owned page, node, group and arc identity without copying every page into Workgraph.",
       "workClass": "TASK",
-      "state": "READY",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexwork.operational-console.derived-work-contract"
@@ -1912,12 +1916,14 @@
       ],
       "sourceRefs": [
         "projects/vexwork-operational-console/README.md",
-        "repo.vextreme:pages/terrain-map.html"
+        "repo.vextreme:pages/terrain-map.html",
+        "github.pull.vexwork.49",
+        "projects/vexwork-operational-console/VEXSITE-POPULATION.md"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T03:20:00.000Z",
-      "updatedAt": "2026-10-22T05:32:34.018Z",
+      "updatedAt": "2026-10-23T02:15:05.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -1929,7 +1935,7 @@
       "label": "VexSite localization and modernization lens",
       "purpose": "Derive current page attention from Vextreme-owned evidence such as source localization, locale coverage, generated currentness, lived proof and modernization debt, grouped by current arc/scope.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexwork.operational-console.derived-work-projection",
@@ -1943,12 +1949,15 @@
         "projects/vexwork-operational-console/README.md",
         "github.pull.vextreme.376",
         "github.pull.vextreme.378",
-        "github.pull.vextreme.379"
+        "github.pull.vextreme.379",
+        "github.pull.vexwork.52",
+        "github.pull.vexwork.62",
+        "projects/vexwork-operational-console/VEXSITE-LOCALIZATION-LENS.md"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T03:20:00.000Z",
-      "updatedAt": "2026-10-22T03:20:00.000Z",
+      "updatedAt": "2026-10-23T02:26:33.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -1960,7 +1969,7 @@
       "label": "VexSite derived-work lived proof",
       "purpose": "Demonstrate that current Vextreme evidence can answer what remains, why, and where to descend; link existing foreground Work where present; and promote one derived concern without creating tasks for the whole page population.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "RUNNING",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexwork.operational-console.derived-work-promotion",
@@ -1971,12 +1980,15 @@
         "repo.vextreme"
       ],
       "sourceRefs": [
-        "projects/vexwork-operational-console/README.md"
+        "projects/vexwork-operational-console/README.md",
+        "github.pull.vexwork.62",
+        "projects/vexwork-operational-console/VEXSITE-PATIENT-ZERO.md",
+        "projects/vexwork-operational-console/vexsite-closed-circuit-promotion-publication.json"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T03:20:00.000Z",
-      "updatedAt": "2026-10-22T03:20:00.000Z",
+      "updatedAt": "2026-10-23T02:26:34.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -3048,6 +3060,40 @@
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vextreme.vexsite.localization.closed-circuit.global-core",
+      "parentWorkRefOrNull": null,
+      "label": "Localize Closed Circuit across Global Core",
+      "purpose": "Preserve the current Closed Circuit Global Core localization concern as canonical Work while Vextreme retains source scheduling and implementation authority; current provider foreground remains separate dual-lineage work.",
+      "workClass": "POTENTIAL",
+      "state": "CAPTURED",
+      "workDisposition": "PARKED",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vextreme"
+      ],
+      "sourceRefs": [
+        "github.pull.vexwork.62",
+        "projects/vexwork-operational-console/VEXSITE-PATIENT-ZERO.md",
+        "projects/vexwork-operational-console/vexsite-patient-zero-observation.json",
+        "concern.vextreme.vexsite.localization.closed-circuit.global-core",
+        "entity.vextreme.vexsite.page.closed-circuit",
+        "lens.vextreme.vexsite.localization",
+        "predicate.vextreme.vexsite.localization.target-tier-complete",
+        "reason.vextreme.vexsite.localization.target-tier-completion",
+        "github.issue.vextreme.273",
+        "github.issue-comment.vextreme.273.6311043427",
+        "projects/vexwork-operational-console/vexsite-closed-circuit-promotion-publication.json"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.promote-derived-concern",
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-23T02:20:00.000Z",
+      "updatedAt": "2026-10-23T02:26:33.000Z"
     }
   ],
   "transitions": [
@@ -3951,6 +3997,142 @@
         "github.actions.vexwork.run.39885985305"
       ],
       "createdAt": "2026-10-23T02:02:22.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.vexsite-dogfood.running.p2-source-accepted",
+      "workRef": "work.vexwork.operational-console.vexsite-dogfood",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "P2 source work entered accepted execution: population/scope and localization lens candidates reached exact-head proof and merge.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.49",
+        "github.pull.vexwork.52"
+      ],
+      "createdAt": "2026-10-23T02:16:34.001Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.vexsite-localization-lens.ready.pr49",
+      "workRef": "work.vexwork.operational-console.vexsite-localization-lens",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "Population/scope dependency completed on merged PR #49.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.49"
+      ],
+      "createdAt": "2026-10-23T02:15:05.001Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.vexsite-localization-lens.running.pr52",
+      "workRef": "work.vexwork.operational-console.vexsite-localization-lens",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Localization lens implementation and focused proof were admitted on PR #52.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.52"
+      ],
+      "createdAt": "2026-10-23T02:15:06.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.vexsite-localization-lens.verifying.pr62",
+      "workRef": "work.vexwork.operational-console.vexsite-localization-lens",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Patient-zero pressure added and proved the provider-work-unit target-tier predicate without widening generic promotion semantics.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.62",
+        "github.actions.vexwork.run.39889410355"
+      ],
+      "createdAt": "2026-10-23T02:24:50.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.vexsite-localization-lens.completed.pr62",
+      "workRef": "work.vexwork.operational-console.vexsite-localization-lens",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "PR #62 merged the promotion-aligned localization lens and exact patient-zero evidence separation.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.62",
+        "github.commit.vexwork.63ada6726d4ddbe6374da14fede0d11666d6e225"
+      ],
+      "createdAt": "2026-10-23T02:26:33.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.vexsite-patient-zero-proof.ready.pr62",
+      "workRef": "work.vexwork.operational-console.vexsite-patient-zero-proof",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "Localization lens and generic promotion dependencies are accepted; publication is the remaining patient-zero effect.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.62"
+      ],
+      "createdAt": "2026-10-23T02:26:33.001Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.vexsite-patient-zero-proof.running.publication",
+      "workRef": "work.vexwork.operational-console.vexsite-patient-zero-proof",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "The exact Closed Circuit promotion is being source-published and re-projected through existingWorkRefs.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.62",
+        "projects/vexwork-operational-console/vexsite-closed-circuit-promotion-publication.json"
+      ],
+      "createdAt": "2026-10-23T02:26:34.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.vexsite-population-scope.running.pr49",
+      "workRef": "work.vexwork.operational-console.vexsite-population-scope",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "VexSite provider population/scope adapter entered exact-head review on PR #49.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.49"
+      ],
+      "createdAt": "2026-10-23T02:14:39.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.vexsite-population-scope.verifying.pr49",
+      "workRef": "work.vexwork.operational-console.vexsite-population-scope",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Hardened review passed 198 tests and repository coverage/currentness floors.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.49",
+        "github.actions.vexwork.run.39888485435"
+      ],
+      "createdAt": "2026-10-23T02:14:40.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.vexsite-population-scope.completed.pr49",
+      "workRef": "work.vexwork.operational-console.vexsite-population-scope",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "PR #49 merged the current Vextreme page population and arc/section scope adapter.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.49",
+        "github.commit.vexwork.d8b0028bd9413a9c05cfe4b36f1d54425021a6fc"
+      ],
+      "createdAt": "2026-10-23T02:15:05.000Z"
     }
   ],
   "sourceRefs": [
