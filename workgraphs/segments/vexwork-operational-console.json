@@ -464,7 +464,7 @@
       "label": "Sale and fulfillment attention",
       "purpose": "Turn a provider/manual sale observation into truthful inventory/listing state plus bounded fulfillment attention, optional expected shipment date and a human acknowledgement boundary without copying protected customer data into public VexWork source.",
       "workClass": "TASK",
-      "state": "READY",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexwork.operational-console.attention-queue-contract",
@@ -477,12 +477,17 @@
         "projects/vexwork-operational-console/README.md",
         "github.pull.vexwork.73",
         "work.vexwork.operational-console.commerce-item-model",
-        "work.vexwork.operational-console.attention-queue-contract"
+        "work.vexwork.operational-console.attention-queue-contract",
+        "github.pull.vexwork.75",
+        "github.commit.vexwork.b54d2f0fd39d4d59abbbce5212e1c3643cc7f883",
+        "vexrelay.return.vexwork.commerce-fulfillment-attention.a008.sha256.737aafab7f78e0e7cfb903e088180d753e8872c5f31a0db9292c6175d91adcc0",
+        "projects/vexwork-operational-console/COMMERCE-FULFILLMENT-ATTENTION.md",
+        "src/adapters/commerce-fulfillment-attention.mjs"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T03:20:00.000Z",
-      "updatedAt": "2026-10-23T04:53:01.002Z",
+      "updatedAt": "2026-10-23T05:09:13.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -1474,6 +1479,47 @@
         "work.vexwork.operational-console.attention-queue-contract"
       ],
       "createdAt": "2026-10-23T04:53:01.002Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.commerce-fulfillment-attention.running.sourceowner-a008",
+      "workRef": "work.vexwork.operational-console.commerce-fulfillment-attention",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Corrected Commerce fulfillment-attention SourceOwner A008 passed the exact repository review floor after the UNKNOWN wording repair.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "vexrelay.return.vexwork.commerce-fulfillment-attention.a008.sha256.737aafab7f78e0e7cfb903e088180d753e8872c5f31a0db9292c6175d91adcc0"
+      ],
+      "createdAt": "2026-10-23T05:07:14.741Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.commerce-fulfillment-attention.verifying.assurance-a008",
+      "workRef": "work.vexwork.operational-console.commerce-fulfillment-attention",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Fresh Independent Assurance re-read the corrected three-path candidate and found the fulfillment mapping, uncertainty wording, privacy boundary and no-authority composition clear.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.75",
+        "vexrelay.return.vexwork.commerce-fulfillment-attention.a008.sha256.737aafab7f78e0e7cfb903e088180d753e8872c5f31a0db9292c6175d91adcc0"
+      ],
+      "createdAt": "2026-10-23T05:09:01.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.commerce-fulfillment-attention.completed.pr75",
+      "workRef": "work.vexwork.operational-console.commerce-fulfillment-attention",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "PR #75 merged the exact A008-proven corrected Commerce fulfillment-attention adapter, and the merge commit introduced zero file delta beyond the assured head.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.75",
+        "github.commit.vexwork.b54d2f0fd39d4d59abbbce5212e1c3643cc7f883"
+      ],
+      "createdAt": "2026-10-23T05:09:13.000Z"
     }
   ],
   "sourceRefs": [
