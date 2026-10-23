@@ -3543,7 +3543,7 @@
           "label": "Operating Domain contract",
           "purpose": "Define a domain-neutral template boundary for capabilities, populations, lenses, processes and provider/repository evidence while keeping business/entity records outside Workgraph.",
           "workClass": "TASK",
-          "state": "WAITING_DEPENDENCIES",
+          "state": "READY",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vexwork.operational-console.operating-domain-template",
@@ -3555,22 +3555,36 @@
             "repo.vexwork"
           ],
           "sourceRefs": [
-            "projects/vexwork-operational-console/README.md"
+            "projects/vexwork-operational-console/README.md",
+            "github.pull.vexwork.63"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-22T03:20:00.000Z",
-          "updatedAt": "2026-10-22T03:20:00.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-10-23T02:34:28.002Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexwork.operational-console.operating-domain-contract.ready.p2-terminal",
+              "priorState": "WAITING_DEPENDENCIES",
+              "nextState": "READY",
+              "reason": "VexSite patient-zero proof completed on accepted PR #63; the reusable Operating Domain contract dependency is clear.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vexwork.63",
+                "work.vexwork.operational-console.vexsite-patient-zero-proof"
+              ],
+              "createdAt": "2026-10-23T02:34:28.002Z"
+            }
+          ]
         },
         {
           "workRef": "work.vexwork.operational-console.operating-domain-template",
           "label": "Reusable Operating Domain template",
           "purpose": "Generalize the patient-zero model into a reusable operating-domain template for capabilities, populations, attention queues, processes and work lenses without domain-specific ownership leakage.",
           "workClass": "OUTCOME",
-          "state": "WAITING_DEPENDENCIES",
+          "state": "READY",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vexwork.operational-console.outcome",
@@ -3585,15 +3599,29 @@
             "repo.vexwork"
           ],
           "sourceRefs": [
-            "projects/vexwork-operational-console/README.md"
+            "projects/vexwork-operational-console/README.md",
+            "github.pull.vexwork.63"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-22T03:20:00.000Z",
-          "updatedAt": "2026-10-22T03:20:00.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-10-23T02:34:28.003Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexwork.operational-console.operating-domain-template.ready.p2-terminal",
+              "priorState": "WAITING_DEPENDENCIES",
+              "nextState": "READY",
+              "reason": "VexSite patient-zero proof completed on accepted PR #63; P3 reusable Operating Domain formation may begin.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vexwork.63",
+                "work.vexwork.operational-console.vexsite-patient-zero-proof"
+              ],
+              "createdAt": "2026-10-23T02:34:28.003Z"
+            }
+          ]
         },
         {
           "workRef": "work.vexwork.operational-console.outcome",
@@ -3778,7 +3806,7 @@
           "label": "Patient Zero: VexSite Localization",
           "purpose": "Prove the derived-work foundation against Vextreme's existing page/arc/localization world so VexWork can answer what remains without a page-per-task Workgraph.",
           "workClass": "OUTCOME",
-          "state": "RUNNING",
+          "state": "COMPLETED",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vexwork.operational-console.outcome",
@@ -3802,14 +3830,15 @@
             "github.pull.vextreme.379",
             "github.pull.vexwork.49",
             "github.pull.vexwork.52",
-            "github.pull.vexwork.62"
+            "github.pull.vexwork.62",
+            "github.pull.vexwork.63"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-22T03:20:00.000Z",
-          "updatedAt": "2026-10-23T02:16:34.001Z",
+          "updatedAt": "2026-10-23T02:34:28.001Z",
           "transitionHistory": [
             {
               "transitionRef": "transition.vexwork.operational-console.vexsite-dogfood.ready.operational-console-currentization-17",
@@ -3835,6 +3864,30 @@
                 "github.pull.vexwork.52"
               ],
               "createdAt": "2026-10-23T02:16:34.001Z"
+            },
+            {
+              "transitionRef": "transition.vexwork.operational-console.vexsite-dogfood.verifying.pr63",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "Patient-zero publication exact-head review passed with the promoted Work, re-projection, ten source segments and all currentness checks green.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vexwork.63",
+                "github.actions.vexwork.run.39890235795"
+              ],
+              "createdAt": "2026-10-23T02:33:55.001Z"
+            },
+            {
+              "transitionRef": "transition.vexwork.operational-console.vexsite-dogfood.completed.pr63",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "PR #63 merged the one promoted Closed Circuit concern, exact Parking Lot publication and re-projection while leaving the remaining provider population derived-only.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vexwork.63",
+                "github.commit.vexwork.a4813424d67d8813457446b509ca92b406b9b98e"
+              ],
+              "createdAt": "2026-10-23T02:34:28.001Z"
             }
           ]
         },
@@ -3925,7 +3978,7 @@
           "label": "VexSite derived-work lived proof",
           "purpose": "Demonstrate that current Vextreme evidence can answer what remains, why, and where to descend; link existing foreground Work where present; and promote one derived concern without creating tasks for the whole page population.",
           "workClass": "TASK",
-          "state": "RUNNING",
+          "state": "COMPLETED",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vexwork.operational-console.vexsite-dogfood",
@@ -3942,14 +3995,15 @@
             "projects/vexwork-operational-console/README.md",
             "github.pull.vexwork.62",
             "projects/vexwork-operational-console/VEXSITE-PATIENT-ZERO.md",
-            "projects/vexwork-operational-console/vexsite-closed-circuit-promotion-publication.json"
+            "projects/vexwork-operational-console/vexsite-closed-circuit-promotion-publication.json",
+            "github.pull.vexwork.63"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-22T03:20:00.000Z",
-          "updatedAt": "2026-10-23T02:26:34.000Z",
+          "updatedAt": "2026-10-23T02:34:28.000Z",
           "transitionHistory": [
             {
               "transitionRef": "transition.vexwork.operational-console.vexsite-patient-zero-proof.ready.pr62",
@@ -3973,6 +4027,30 @@
                 "projects/vexwork-operational-console/vexsite-closed-circuit-promotion-publication.json"
               ],
               "createdAt": "2026-10-23T02:26:34.000Z"
+            },
+            {
+              "transitionRef": "transition.vexwork.operational-console.vexsite-patient-zero-proof.verifying.pr63",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "Exact-head publication proof passed 211 tests, coverage floors, Workgraph composition and public projection currentness.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vexwork.63",
+                "github.actions.vexwork.run.39890235795"
+              ],
+              "createdAt": "2026-10-23T02:33:55.000Z"
+            },
+            {
+              "transitionRef": "transition.vexwork.operational-console.vexsite-patient-zero-proof.completed.pr63",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "PR #63 merged the checked-in promoted Work and proved Closed Circuit alone links to canonical Work while other incomplete pages remain derived observations.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vexwork.63",
+                "github.commit.vexwork.a4813424d67d8813457446b509ca92b406b9b98e"
+              ],
+              "createdAt": "2026-10-23T02:34:28.000Z"
             }
           ]
         },
@@ -4074,8 +4152,6 @@
             "work.vexwork.operational-console.commerce-item-model",
             "work.vexwork.operational-console.commerce-template",
             "work.vexwork.operational-console.cross-domain-completion",
-            "work.vexwork.operational-console.operating-domain-contract",
-            "work.vexwork.operational-console.operating-domain-template",
             "work.vexwork.operational-console.relational-terrain.temporal-currentness",
             "work.vexwork.operational-console.attention-queue-contract"
           ]
@@ -4083,16 +4159,17 @@
         {
           "laneRef": "lane.work.ready",
           "label": "Ready",
-          "workRefs": []
+          "workRefs": [
+            "work.vexwork.operational-console.operating-domain-contract",
+            "work.vexwork.operational-console.operating-domain-template"
+          ]
         },
         {
           "laneRef": "lane.work.active",
           "label": "Active",
           "workRefs": [
             "work.vexwork.operational-console.outcome",
-            "work.vexwork.operational-console.relational-terrain",
-            "work.vexwork.operational-console.vexsite-dogfood",
-            "work.vexwork.operational-console.vexsite-patient-zero-proof"
+            "work.vexwork.operational-console.relational-terrain"
           ]
         },
         {
@@ -4125,7 +4202,9 @@
             "work.vexwork.operational-console.derived-work-foundation",
             "work.vexwork.operational-console.derived-work-projection",
             "work.vexwork.operational-console.derived-work-promotion",
+            "work.vexwork.operational-console.vexsite-dogfood",
             "work.vexwork.operational-console.vexsite-localization-lens",
+            "work.vexwork.operational-console.vexsite-patient-zero-proof",
             "work.vexwork.operational-console.vexsite-population-scope"
           ]
         },
@@ -4137,13 +4216,13 @@
       ],
       "summary": {
         "workItemCount": 24,
-        "openWorkItemCount": 18,
+        "openWorkItemCount": 16,
         "outcomeCount": 8,
         "taskCount": 16,
         "defectCount": 0,
         "potentialCount": 0,
         "needsHumanCount": 0,
-        "completedCount": 6
+        "completedCount": 8
       },
       "rootItems": [
         {
