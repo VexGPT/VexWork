@@ -2278,24 +2278,27 @@
       "label": "Antique Plate lived commerce pilot",
       "purpose": "Dogfood the reusable commerce starter for a nontechnical human selling unique antique plates online, from no operating environment through one truthful item sale and physical-shipment acknowledgement.",
       "workClass": "OUTCOME",
-      "state": "READY",
+      "state": "RUNNING",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexwork.operational-console.commerce-template"
       ],
       "repositoryRefs": [
-        "repo.vexwork"
+        "repo.vexwork",
+        "repo.antique-plate-storefront"
       ],
       "sourceRefs": [
         "projects/vexwork-operational-console/README.md",
         "work.vexwork.operational-console.commerce-template",
         "projects/vexwork-operational-console/commerce-operating-domain.json",
-        "projects/vexwork-operational-console/commerce-storefront-reference-publication.json"
+        "projects/vexwork-operational-console/commerce-storefront-reference-publication.json",
+        "github.repo.vgong24/Antique-Plate-Storefront",
+        "projects/vexwork-operational-console/antique-plate-storefront-bootstrap.json"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T03:20:00.000Z",
-      "updatedAt": "2026-10-23T06:17:28.005Z",
+      "updatedAt": "2026-10-23T06:55:30.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -2307,21 +2310,24 @@
       "label": "Form the antique-store operating environment",
       "purpose": "Establish the minimum real catalog/storefront/AI-readable operating environment required for the antique-plate pilot, with protected provider/account actions remaining human-owned.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexwork.operational-console.commerce-template"
       ],
       "repositoryRefs": [
-        "repo.vexwork"
+        "repo.vexwork",
+        "repo.antique-plate-storefront"
       ],
       "sourceRefs": [
-        "projects/vexwork-operational-console/README.md"
+        "projects/vexwork-operational-console/README.md",
+        "github.repo.vgong24/Antique-Plate-Storefront",
+        "projects/vexwork-operational-console/antique-plate-storefront-bootstrap.json"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T03:20:00.000Z",
-      "updatedAt": "2026-10-22T03:20:00.000Z",
+      "updatedAt": "2026-10-23T06:55:30.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -2333,22 +2339,25 @@
       "label": "Publish the first picture-backed antique item",
       "purpose": "Add one real antique plate, attach real picture evidence, add or edit the details actually known, and publish it through the managed site/storefront while VexWork can explain its readiness and current state.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "READY",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexwork.operational-console.antique-bootstrap",
         "work.vexwork.operational-console.commerce-ai-site"
       ],
       "repositoryRefs": [
-        "repo.vexwork"
+        "repo.vexwork",
+        "repo.antique-plate-storefront"
       ],
       "sourceRefs": [
-        "projects/vexwork-operational-console/README.md"
+        "projects/vexwork-operational-console/README.md",
+        "github.repo.vgong24/Antique-Plate-Storefront",
+        "projects/vexwork-operational-console/antique-plate-storefront-bootstrap.json"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T03:20:00.000Z",
-      "updatedAt": "2026-10-22T03:20:00.000Z",
+      "updatedAt": "2026-10-23T06:55:30.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -4387,6 +4396,74 @@
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.antique-bootstrap.ready.commerce-template-complete",
+      "workRef": "work.vexwork.operational-console.antique-bootstrap",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "The reusable Commerce starter is completed on current main, so the real operating-environment bootstrap is dependency-clear.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "work.vexwork.operational-console.commerce-template",
+        "github.pull.vexwork.81"
+      ],
+      "createdAt": "2026-10-23T06:52:01.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.antique-bootstrap.running.a023-executed",
+      "workRef": "work.vexwork.operational-console.antique-bootstrap",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "A023 formed the real empty storefront environment and returned exact host evidence.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "antique-plate.storefront-bootstrap.a023.sha256.627dea5336556eddfd45d24d23dde8f768b8f513ad9f7bf44eb7f8328086e8d1"
+      ],
+      "createdAt": "2026-10-23T06:55:30.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.antique-bootstrap.verifying.a023-consumed",
+      "workRef": "work.vexwork.operational-console.antique-bootstrap",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "A023 RETURN and live repository currentness were consumed: Pages built, empty catalog PASS, exact repository head preserved, and no synthetic/private commerce data introduced.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "projects/vexwork-operational-console/antique-plate-storefront-bootstrap.json"
+      ],
+      "createdAt": "2026-10-23T06:55:30.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.antique-bootstrap.completed.real-empty-environment",
+      "workRef": "work.vexwork.operational-console.antique-bootstrap",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "The minimum real P5 operating environment is established and source-descendable through the registered Antique Plate storefront owner.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "projects/vexwork-operational-console/antique-plate-storefront-bootstrap.json",
+        "repo.antique-plate-storefront"
+      ],
+      "createdAt": "2026-10-23T06:55:30.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.antique-first-item.ready.bootstrap-complete",
+      "workRef": "work.vexwork.operational-console.antique-first-item",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "The real empty storefront environment and reusable AI-managed storefront capability are complete; the next truthful edge is one real antique plate with real picture evidence.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "work.vexwork.operational-console.antique-bootstrap",
+        "work.vexwork.operational-console.commerce-ai-site"
+      ],
+      "createdAt": "2026-10-23T06:55:30.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
       "transitionRef": "transition.vexwork.operational-console.antique-pilot.ready.commerce-template-complete",
       "workRef": "work.vexwork.operational-console.antique-pilot",
       "priorState": "WAITING_DEPENDENCIES",
@@ -4398,6 +4475,20 @@
         "projects/vexwork-operational-console/commerce-operating-domain.json"
       ],
       "createdAt": "2026-10-23T06:17:28.005Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.antique-pilot.running.real-storefront-bootstrap",
+      "workRef": "work.vexwork.operational-console.antique-pilot",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "A real Antique Plate storefront owner now exists and P5 has begun without inventing a product, customer, payment, sale or shipment.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "projects/vexwork-operational-console/antique-plate-storefront-bootstrap.json",
+        "github.commit.antique-plate-storefront.bcadd970f7c45898e008bc1b1e5246e5005a253b"
+      ],
+      "createdAt": "2026-10-23T06:55:30.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",

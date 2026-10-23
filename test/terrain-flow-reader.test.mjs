@@ -41,11 +41,11 @@ test('Operational Console keeps Terrain review while Antique Plate becomes the n
   const terrain = rows.find((row) => row.scopeRef === 'work.vexwork.operational-console.relational-terrain');
   const antique = rows.find((row) => row.scopeRef === 'work.vexwork.operational-console.antique-pilot');
   assert.equal(terrain.currentItems.some((item) => item.state === 'VERIFYING'), true);
-  assert.equal(antique.scopeState, 'READY');
+  assert.equal(antique.scopeState, 'RUNNING');
   assert.deepEqual(antique.currentItems.map((item) => item.workRef), [
     'work.vexwork.operational-console.antique-pilot',
   ]);
-  assert.equal(antique.currentItems[0].state, 'READY');
+  assert.equal(antique.currentItems[0].state, 'RUNNING');
 });
 
 test('Connected Services Roadmap derives next-next-next from dependency truth', () => {

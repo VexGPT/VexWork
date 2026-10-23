@@ -71,7 +71,7 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(historyBackfill.effectDisposition, 'NO_EFFECTS');
   assert.equal(historyBackfill.formationProcessRefOrNull, 'process.vexwork.capture-discovered-work');
   assert.equal(graph.rootWorkRefs.includes(historyBackfill.workRef), true);
-  assert.equal(graph.transitions.length, 112);
+  assert.equal(graph.transitions.length, 118);
   assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.decomposed.20261022'));
   assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.plan-validated.20261022'));
   assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.ready.20261022'));
@@ -253,6 +253,9 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   const commerceItemModel = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.commerce-item-model');
   const commerceAiSite = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.commerce-ai-site');
   const commerceFulfillment = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.commerce-fulfillment-attention');
+  const antiquePilot = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.antique-pilot');
+  const antiqueBootstrap = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.antique-bootstrap');
+  const antiqueFirstItem = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.antique-first-item');
   const terrain = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.relational-terrain');
   const terrainPatient = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.relational-terrain.patient-zero');
   assert.equal(operationalOutcome.state, 'RUNNING');
@@ -271,6 +274,9 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(commerceItemModel.state, 'COMPLETED');
   assert.equal(commerceAiSite.state, 'COMPLETED');
   assert.equal(commerceFulfillment.state, 'COMPLETED');
+  assert.equal(antiquePilot.state, 'RUNNING');
+  assert.equal(antiqueBootstrap.state, 'COMPLETED');
+  assert.equal(antiqueFirstItem.state, 'READY');
   assert.equal(terrain.state, 'RUNNING');
   assert.equal(terrainPatient.state, 'VERIFYING');
 

@@ -545,6 +545,14 @@ AI-readable operating map   ABSENT
 
 The pilot should establish only what is required to reach one truthful end-to-end sale/fulfillment cycle.
 
+### Current P5 checkpoint
+
+The real operating environment is now established at `vgong24/Antique-Plate-Storefront`.
+It is intentionally empty: `storefront.json` is `REAL_EMPTY`, GitHub Pages is built, and the public page says **No items published yet**.
+A023 introduced no synthetic item, customer, payment, sale, shipment or fulfillment truth. VexWork registers that repository as the real storefront/source owner.
+
+The next edge is deliberately human-grounded rather than synthetic: **one real antique plate plus one or more real photos**. Until those exist, no title, price, maker, provenance, condition, dimensions or listing state should be invented.
+
 ### Lived completion path
 
 ```text
@@ -703,7 +711,9 @@ P4  Commerce starter template                             COMPLETED
     flexible commerce item model                          COMPLETED
     AI-managed storefront/site surface                    COMPLETED
     sale / fulfillment attention                          COMPLETED
-P5  Antique Plate lived commerce pilot                    READY
+P5  Antique Plate lived commerce pilot                    RUNNING
+    operating environment / empty real storefront           COMPLETED
+    first real picture-backed antique item                  READY
 P6  Cross-domain completion                               WAITING_DEPENDENCIES
 
 PARALLEL EXPERIENCE

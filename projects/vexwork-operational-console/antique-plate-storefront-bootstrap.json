@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "vexwork.antique-plate-storefront-bootstrap-proof/v1",
+  "continuity": "[VXG RealForever]",
+  "proofRef": "proof.vexwork.operational-console.antique-plate-storefront-bootstrap.a023",
+  "workRef": "work.vexwork.operational-console.antique-bootstrap",
+  "repositoryRef": "repo.antique-plate-storefront",
+  "repository": "vgong24/Antique-Plate-Storefront",
+  "storefrontRef": "storefront.antique-plate.real",
+  "establishedHead": "bcadd970f7c45898e008bc1b1e5246e5005a253b",
+  "establishedTree": "28f1bbb4a2c5c55e5c1af379b45f316a052f8942",
+  "establishedAt": "2026-10-23T06:55:30.000Z",
+  "pageUrl": "https://vgong24.github.io/Antique-Plate-Storefront/",
+  "pageStatus": "built",
+  "pageMarker": "PASS",
+  "emptyCatalogMarker": "PASS",
+  "environmentState": "REAL_EMPTY",
+  "itemCount": 0,
+  "syntheticItemDataIncluded": false,
+  "realCustomerDataIncluded": false,
+  "paymentProviderConfigured": false,
+  "githubActionsUsedAsProofCarrier": false,
+  "localWorkspaceUsed": false,
+  "returnSha256": "627dea5336556eddfd45d24d23dde8f768b8f513ad9f7bf44eb7f8328086e8d1",
+  "sourceRefs": [
+    "github.repo.vgong24/Antique-Plate-Storefront",
+    "github.commit.antique-plate-storefront.bcadd970f7c45898e008bc1b1e5246e5005a253b"
+  ],
+  "boundary": "Environment bootstrap only. No real antique item, price, provenance, customer, payment, sale, shipment or fulfillment fact is claimed."
+}
