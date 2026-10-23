@@ -31,12 +31,12 @@ test('VexStream Mobile Library is the first external Project over the shared Wor
   assert.deepEqual(childRefs(graph, 'work.vexstream.mobile-library.outcome'), [
     'work.vexstream.mobile-library.download-experience',
     'work.vexstream.mobile-library.durable-device-library',
-    'work.vexstream.mobile-library.library-filtering',
+    'work.vexstream.mobile-library.library-browse-discovery',
     'work.vexstream.mobile-library.massdownload-maturity',
   ]);
 
-  assert.deepEqual(childRefs(graph, 'work.vexstream.mobile-library.library-filtering'), [
-    'work.vexstream.mobile-library.duration-filter',
+  assert.deepEqual(childRefs(graph, 'work.vexstream.mobile-library.library-browse-discovery'), [
+    'work.vexstream.mobile-library.sort-filter-controls',
   ]);
 
   assert.deepEqual(childRefs(graph, 'work.vexstream.mobile-library.durable-device-library'), [
@@ -74,29 +74,38 @@ test('Mobile Library Board separates terminal MassDownload from the paused Queue
   assert.equal(queueIncident.effectDisposition, 'NO_EFFECTS');
 });
 
-test('Library Filtering owns duration as its first decomposed slice without inventing another library', () => {
-  const filtering = graph.items.find((candidate) => candidate.workRef === 'work.vexstream.mobile-library.library-filtering');
-  const duration = graph.items.find((candidate) => candidate.workRef === 'work.vexstream.mobile-library.duration-filter');
-  assert.ok(filtering);
-  assert.ok(duration);
-  assert.equal(filtering.parentWorkRefOrNull, 'work.vexstream.mobile-library.outcome');
-  assert.equal(filtering.workClass, 'OUTCOME');
-  assert.equal(filtering.state, 'DECOMPOSED');
-  assert.equal(filtering.workDisposition, 'ACTIVE');
-  assert.equal(filtering.authorityDisposition, 'AUTHORIZED_BOUNDED');
-  assert.equal(filtering.effectDisposition, 'EFFECTS_BOUND');
+test('Library Browse & Discovery owns one decomposed Sort / Filter surface', () => {
+  const browse = graph.items.find((candidate) => candidate.workRef === 'work.vexstream.mobile-library.library-browse-discovery');
+  const controls = graph.items.find((candidate) => candidate.workRef === 'work.vexstream.mobile-library.sort-filter-controls');
+  const stations = graph.items.find((candidate) => candidate.workRef === 'work.vexstream.mobile-library.tag-topology-stations');
+  assert.ok(browse);
+  assert.ok(controls);
+  assert.ok(stations);
 
-  assert.equal(duration.parentWorkRefOrNull, filtering.workRef);
-  assert.equal(duration.workClass, 'TASK');
-  assert.equal(duration.state, 'DECOMPOSED');
-  assert.deepEqual(duration.repositoryRefs, ['repo.vexlife-android']);
-  assert.equal(duration.sourceRefs.includes('repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt'), true);
-  assert.equal(duration.sourceRefs.includes('repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamLibraryProjection.kt'), true);
+  assert.equal(browse.parentWorkRefOrNull, 'work.vexstream.mobile-library.outcome');
+  assert.equal(browse.workClass, 'OUTCOME');
+  assert.equal(browse.state, 'DECOMPOSED');
+  assert.deepEqual(browse.repositoryRefs, ['repo.vexlife-android', 'repo.vexstream-music']);
+
+  assert.equal(controls.parentWorkRefOrNull, browse.workRef);
+  assert.equal(controls.workClass, 'TASK');
+  assert.equal(controls.state, 'DECOMPOSED');
+  assert.equal(controls.sourceRefs.includes('repo.vexstream-music:v2/desktop/library/model.go'), true);
+  assert.equal(controls.sourceRefs.includes('repo.vexstream-music:mobile_bridge.go'), true);
+  assert.equal(controls.sourceRefs.includes('repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamLibraryProjection.kt'), true);
+
+  assert.equal(stations.parentWorkRefOrNull, null);
+  assert.equal(stations.workClass, 'POTENTIAL');
+  assert.equal(stations.state, 'CAPTURED');
+  assert.equal(stations.workDisposition, 'PARKED');
+  assert.equal(stations.authorityDisposition, 'NO_AUTHORITY');
+  assert.equal(stations.effectDisposition, 'NO_EFFECTS');
 
   const board = projectWorkBoard({ project, graph, view, registry });
   const intake = board.lanes.find((lane) => lane.laneRef === 'lane.work.intake');
-  assert.equal(intake.cards.some((card) => card.workRef === filtering.workRef), true);
-  assert.equal(intake.cards.some((card) => card.workRef === duration.workRef), true);
+  assert.equal(intake.cards.some((card) => card.workRef === browse.workRef), true);
+  assert.equal(intake.cards.some((card) => card.workRef === controls.workRef), true);
+  assert.equal(board.lanes.flatMap((lane) => lane.cards).some((card) => card.workRef === stations.workRef), false);
 });
 
 test('durable device storage retains source authority while waiting on reusable Android proof orchestration', () => {
@@ -159,9 +168,11 @@ test('Mobile Library Project keeps a human audit/decision front door beside grap
   assert.match(readme, /VexLife-Android issue #157/);
   assert.match(readme, /DEVICE_STORAGE_READY/);
   assert.match(readme, /Android target orchestration is a reusable dependency/);
-  assert.match(readme, /ML-D9 — Library Filtering is a human narrowing capability, not a generic engine/);
-  assert.match(readme, /ML-D10 — Duration is the first earned Library Filtering slice/);
-  assert.match(readme, /work\.vexstream\.mobile-library\.library-filtering/);
-  assert.match(readme, /work\.vexstream\.mobile-library\.duration-filter/);
+  assert.match(readme, /ML-D9 — Sort by and Filter by are one presentation surface, not one measurement/);
+  assert.match(readme, /ML-D10 — VexStream already has source tags\/categories; mobile currently drops them/);
+  assert.match(readme, /ML-D11 — User-authored tags and stations are a future classification topology, not hidden scope/);
+  assert.match(readme, /work\.vexstream\.mobile-library\.library-browse-discovery/);
+  assert.match(readme, /work\.vexstream\.mobile-library\.sort-filter-controls/);
+  assert.match(readme, /work\.vexstream\.mobile-library\.tag-topology-stations/);
   assert.match(readme, /Known VexWork modeling gap/);
 });
