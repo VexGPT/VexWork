@@ -11,7 +11,7 @@ const publicSource = read('workgraphs/public.json');
 const foundationSource = read('workgraphs/segments/vexwork-foundation.json');
 const foundationProjectSource = read('projects/vexwork-foundation/project.json');
 
-test('Foundation shadow segment round-trips the exact accepted Workgraph identity', () => {
+test('Foundation source segment remains exactly compatible with the accepted Workgraph identity', () => {
   const accepted = createWorkgraph(publicSource, registry);
   const foundationSegment = createWorkgraphSegment(foundationSource, registry);
   const foundationRefs = new Set(foundationSegment.items.map((item) => item.workRef));
@@ -27,7 +27,7 @@ test('Foundation shadow segment round-trips the exact accepted Workgraph identit
 
   const remainder = {
     schemaVersion: 'vexwork.workgraph-segment/v1',
-    segmentRef: 'segment.vexwork.legacy-remainder',
+    segmentRef: 'segment.vexwork.compatibility-remainder',
     graphRef: publicSource.graphRef,
     items: remainderItems,
     transitions: remainderTransitions,
@@ -60,10 +60,10 @@ test('Foundation shadow segment round-trips the exact accepted Workgraph identit
   assert.equal(result.graph.sourceRefs.includes('workgraphs/segments/vexwork-foundation.json'), false);
 });
 
-test('Foundation shadow segment owns only local containment and local transitions', () => {
+test('Foundation source segment owns only local containment and local transitions', () => {
   const refs = new Set(foundationSource.items.map((item) => item.workRef));
-  assert.equal(foundationSource.items.length, 7);
-  assert.equal(foundationSource.transitions.length, 12);
+  assert.equal(foundationSource.items.length, 8);
+  assert.equal(foundationSource.transitions.length, 13);
   assert.equal(
     foundationSource.items.every((item) => item.parentWorkRefOrNull === null || refs.has(item.parentWorkRefOrNull)),
     true,

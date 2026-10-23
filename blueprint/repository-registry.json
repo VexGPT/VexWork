@@ -1,7 +1,7 @@
 {
   "schemaVersion": "vexwork.repository-registry/v1",
   "registryRef": "registry.vexwork.repositories.001",
-  "registryVersion": 2,
+  "registryVersion": 3,
   "purpose": "Public/source-safe navigation graph for repositories VexWork may reference. Repository entries point to current owner sources; they do not consolidate repository culture or create source authority.",
   "repositories": [
     {
@@ -35,6 +35,18 @@
       "cultureRefs": [
         "docs/culture.md"
       ]
+    },
+    {
+      "repositoryRef": "repo.vextreme-sdk",
+      "label": "Vextreme SDK",
+      "provider": "GITHUB",
+      "nameWithOwner": "vgong24/Vextreme-SDK",
+      "visibility": "PRIVATE",
+      "purpose": "Private reusable observation, mapping, construction, proof and interoperability machinery consumed by VexLife Blueprint work; public VexWork carries boundary-level navigation only.",
+      "entryRefs": [
+        "CLAUDE.md"
+      ],
+      "cultureRefs": []
     },
     {
       "repositoryRef": "repo.vexlife",
@@ -82,6 +94,22 @@
       "cultureRefs": [
         "v2/README.md",
         "v2/architecture/README.md"
+      ]
+    },
+    {
+      "repositoryRef": "repo.vexlife-construction-reference",
+      "label": "VexLife Construction Reference",
+      "provider": "GITHUB",
+      "nameWithOwner": "VexGPT/VexLife-Construction-Reference",
+      "visibility": "PUBLIC",
+      "purpose": "Derived clean-room C#/.NET construction and proof surface for VexLife meaning; canonical product semantics remain externally owned.",
+      "entryRefs": [
+        "README.md",
+        "AGENTS.md",
+        "docs/foundation/INDEX.md"
+      ],
+      "cultureRefs": [
+        "docs/CULTURE.md"
       ]
     }
   ]

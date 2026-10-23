@@ -8,6 +8,8 @@ import { createProject, createWorkgraph, projectWorkRefs, validateRegistry } fro
 import { createBoardView, projectParkingLot, projectWorkBoard, projectWorkGraph } from '../src/core/work-board.mjs';
 import { verifySemanticFingerprint } from '../src/core/semantic.mjs';
 import { createProjectAgencyPolicy } from '../src/core/transition-handshake.mjs';
+import { validateProjectPlanningRegistry } from '../src/core/project-planning.mjs';
+import { validateProjectReconciliationRegistry } from '../src/core/project-reconciliation.mjs';
 
 const read = (path) => JSON.parse(fs.readFileSync(new URL(`../${path}`, import.meta.url), 'utf8'));
 
@@ -15,6 +17,8 @@ const workRegistry = read('blueprint/work-registry.json');
 const repositoryRegistry = read('blueprint/repository-registry.json');
 const processRegistry = read('blueprint/process-registry.json');
 const projectRegistry = read('blueprint/project-registry.json');
+const projectPlanningRegistry = read('blueprint/project-planning-registry.json');
+const projectReconciliationRegistry = read('blueprint/project-reconciliation-registry.json');
 
 const workRegistryValidation = validateRegistry(workRegistry);
 if (!workRegistryValidation.ok) throw new Error(workRegistryValidation.errors.join('\n'));
@@ -24,6 +28,10 @@ const processValidation = validateProcessRegistry(processRegistry, repositoryReg
 if (!processValidation.ok) throw new Error(processValidation.errors.join('\n'));
 const projectRegistryValidation = validateProjectRegistry(projectRegistry);
 if (!projectRegistryValidation.ok) throw new Error(projectRegistryValidation.errors.join('\n'));
+const projectPlanningValidation = validateProjectPlanningRegistry(projectPlanningRegistry);
+if (!projectPlanningValidation.ok) throw new Error(projectPlanningValidation.errors.join('\n'));
+const projectReconciliationValidation = validateProjectReconciliationRegistry(projectReconciliationRegistry);
+if (!projectReconciliationValidation.ok) throw new Error(projectReconciliationValidation.errors.join('\n'));
 
 const graphSources = new Map();
 const graphPaths = new Map();
@@ -99,12 +107,14 @@ for (const value of [projectMap, processMap]) {
 }
 
 console.log(JSON.stringify({
-  schemaVersion: 'vexwork.foundation-check/v2',
+  schemaVersion: 'vexwork.foundation-check/v3',
   state: 'PASS',
   workRegistry: 'PASS',
   repositoryRegistry: 'PASS',
   processRegistry: 'PASS',
   projectRegistry: 'PASS',
+  projectPlanningRegistry: 'PASS',
+  projectReconciliationRegistry: 'PASS',
   projectCount: projectRegistry.projects.length,
   workgraphCount: graphSources.size,
   globalWorkItemCount: globalItems,

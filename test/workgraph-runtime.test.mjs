@@ -328,3 +328,184 @@ test('accepted-tip deletion is outside retained-lineage anti-rollback guarantees
   } finally { cleanup(storeRoot); }
 });
 
+
+function expectRuntimeCode(fn, code) {
+  assert.throws(fn, (error) => error?.code === code);
+}
+
+test('runtime public inputs and store roots fail closed', () => {
+  const storeRoot = tmp();
+  try {
+    expectRuntimeCode(() => workgraphRuntimeAddress('bad ref'), 'RUNTIME_INPUT_INVALID');
+    expectRuntimeCode(() => initializeWorkgraphRuntime({
+      storeRoot,
+      graph: source(),
+      registry: null,
+    }), 'RUNTIME_INPUT_INVALID');
+    expectRuntimeCode(() => initializeWorkgraphRuntime({
+      storeRoot,
+      graph: source(),
+      registry,
+      observedAt: 'not-a-timestamp',
+    }), 'RUNTIME_INPUT_INVALID');
+    expectRuntimeCode(() => initializeWorkgraphRuntime({
+      storeRoot: path.join(storeRoot, 'missing'),
+      graph: source(),
+      registry,
+    }), 'RUNTIME_STORE_ROOT_INVALID');
+
+    const fileRoot = path.join(storeRoot, 'not-a-directory');
+    fs.writeFileSync(fileRoot, 'x');
+    expectRuntimeCode(() => initializeWorkgraphRuntime({
+      storeRoot: fileRoot,
+      graph: source(),
+      registry,
+    }), 'RUNTIME_STORE_ROOT_INVALID');
+  } finally { cleanup(storeRoot); }
+});
+
+test('initialize is idempotent for exact current truth and rejects a different current snapshot', () => {
+  const storeRoot = tmp();
+  try {
+    const first = init(storeRoot);
+    const again = init(storeRoot);
+    assert.equal(again.state, 'CURRENT');
+    assert.equal(again.changed, false);
+    assert.equal(again.pointer.pointerSha256, first.pointer.pointerSha256);
+    assert.equal(again.effects.runtimeMutationPerformed, false);
+
+    const changed = source();
+    changed.items[0].label = 'Different current truth';
+    expectRuntimeCode(() => initializeWorkgraphRuntime({
+      storeRoot,
+      graph: changed,
+      registry,
+      instanceRef: 'instance.test.runtime.different',
+      observedAt: '2026-10-21T05:00:02.000Z',
+    }), 'RUNTIME_ALREADY_INITIALIZED');
+  } finally { cleanup(storeRoot); }
+});
+
+test('unrelated immutable history without CURRENT requires recovery instead of silent adoption', () => {
+  const storeRoot = tmp();
+  try {
+    const alternateSource = source();
+    alternateSource.items[0].label = 'Unrelated orphan';
+    const alternate = createWorkgraph(alternateSource, registry);
+    const snapshots = path.join(storeRoot, 'workgraphs', workgraphRuntimeAddress(alternate.graphRef), 'snapshots');
+    fs.mkdirSync(snapshots, { recursive: true });
+    fs.writeFileSync(path.join(snapshots, `${alternate.semanticFingerprint}.json`), canonical(alternate), 'utf8');
+    expectRuntimeCode(() => init(storeRoot), 'RUNTIME_RECOVERY_REQUIRED');
+  } finally { cleanup(storeRoot); }
+});
+
+test('commit validates CAS identity, timestamp and registry before mutation', () => {
+  const storeRoot = tmp();
+  try {
+    const current = init(storeRoot);
+    expectRuntimeCode(() => commitWorkgraphRuntimeTransition({
+      storeRoot,
+      graphRef: current.graph.graphRef,
+      expectedPointerSha256: 'bad',
+      transitionRequest: transition(current.graph.semanticFingerprint),
+      registry,
+      observedAt: '2026-10-21T05:01:01.000Z',
+    }), 'RUNTIME_INPUT_INVALID');
+    expectRuntimeCode(() => commitWorkgraphRuntimeTransition({
+      storeRoot,
+      graphRef: current.graph.graphRef,
+      expectedPointerSha256: current.pointer.pointerSha256,
+      transitionRequest: transition(current.graph.semanticFingerprint),
+      registry,
+      observedAt: 'bad',
+    }), 'RUNTIME_INPUT_INVALID');
+    expectRuntimeCode(() => commitWorkgraphRuntimeTransition({
+      storeRoot,
+      graphRef: current.graph.graphRef,
+      expectedPointerSha256: current.pointer.pointerSha256,
+      transitionRequest: transition(current.graph.semanticFingerprint),
+      registry: null,
+      observedAt: '2026-10-21T05:01:01.000Z',
+    }), 'RUNTIME_INPUT_INVALID');
+    assert.equal(readCurrentWorkgraphRuntime({ storeRoot, graphRef: current.graph.graphRef, registry }).pointer.transitionCount, 0);
+  } finally { cleanup(storeRoot); }
+});
+
+test('writer recovery validates input and is a no-op when no abandoned lease exists', () => {
+  const storeRoot = tmp();
+  try {
+    const current = init(storeRoot);
+    expectRuntimeCode(() => recoverWorkgraphRuntimeWriter({
+      storeRoot,
+      graphRef: current.graph.graphRef,
+      expectedLeaseSha256: 'bad',
+      registry,
+    }), 'RUNTIME_INPUT_INVALID');
+    expectRuntimeCode(() => recoverWorkgraphRuntimeWriter({
+      storeRoot,
+      graphRef: current.graph.graphRef,
+      expectedLeaseSha256: '0'.repeat(64),
+      registry: null,
+    }), 'RUNTIME_INPUT_INVALID');
+    const result = recoverWorkgraphRuntimeWriter({
+      storeRoot,
+      graphRef: current.graph.graphRef,
+      expectedLeaseSha256: '0'.repeat(64),
+      registry,
+    });
+    assert.equal(result.state, 'RECOVERY_NOT_REQUIRED');
+    assert.equal(result.recovered, false);
+    assert.equal(result.effects.writerLeaseDeletionPerformed, false);
+  } finally { cleanup(storeRoot); }
+});
+
+test('runtime rejects malformed, noncanonical and substituted pointer records', () => {
+  for (const corruption of ['malformed', 'noncanonical', 'substituted']) {
+    const storeRoot = tmp();
+    try {
+      const current = init(storeRoot);
+      const paths = graphRuntimePaths(storeRoot, current.graph.graphRef);
+      const pointerFile = path.join(paths.pointers, `${current.pointer.pointerSha256}.json`);
+      if (corruption === 'malformed') {
+        fs.writeFileSync(pointerFile, '{', 'utf8');
+      } else if (corruption === 'noncanonical') {
+        fs.writeFileSync(pointerFile, JSON.stringify(current.pointer, null, 2), 'utf8');
+      } else {
+        const changed = { ...current.pointer, pointerSha256: '0'.repeat(64) };
+        fs.writeFileSync(pointerFile, canonical(changed), 'utf8');
+      }
+      expectRuntimeCode(
+        () => readCurrentWorkgraphRuntime({ storeRoot, graphRef: current.graph.graphRef, registry }),
+        'RUNTIME_POINTER_CORRUPT',
+      );
+    } finally { cleanup(storeRoot); }
+  }
+});
+
+test('runtime rejects unexpected pointer-store entries and corrupt writer leases', () => {
+  const storeRoot = tmp();
+  try {
+    const current = init(storeRoot);
+    const graphRoot = path.join(storeRoot, 'workgraphs', workgraphRuntimeAddress(current.graph.graphRef));
+    const paths = graphRuntimePaths(storeRoot, current.graph.graphRef);
+    fs.writeFileSync(path.join(paths.pointers, 'unexpected.txt'), '{}', 'utf8');
+    expectRuntimeCode(
+      () => readCurrentWorkgraphRuntime({ storeRoot, graphRef: current.graph.graphRef, registry }),
+      'RUNTIME_POINTER_CORRUPT',
+    );
+    fs.rmSync(path.join(paths.pointers, 'unexpected.txt'));
+
+    fs.writeFileSync(path.join(graphRoot, 'writer.lock'), canonical({
+      schemaVersion: WORKGRAPH_RUNTIME_WRITER_SCHEMA,
+      graphRef: current.graph.graphRef,
+      instanceRef: 'bad ref',
+      pid: process.pid,
+      lockToken: 'lock.test.corrupt',
+      formedAt: '2026-10-21T05:03:00.000Z',
+      leaseSha256: '0'.repeat(64),
+    }), 'utf8');
+    expectRuntimeCode(() => commit(storeRoot, current), 'RUNTIME_WRITER_CONFLICT');
+  } finally { cleanup(storeRoot); }
+});
+
+// [VXG RealForever][VEXWORK][RUNTIME-PERSISTENCE-REGRESSION]

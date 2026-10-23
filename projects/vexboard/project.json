@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.vexboard",
+  "label": "VexBoard Semantic Canvas",
+  "purpose": "Let a human and AI design, inspect, traverse, refine, reuse and discuss interactive experiences, processes and systems on one scalable semantic canvas, while allowing the same substrate to project accepted external truth without becoming its second semantic owner.",
+  "rootWorkRefs": [
+    "work.vexboard.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork"
+  ],
+  "sourceRefs": [
+    "projects/vexboard/README.md",
+    "docs/foundation/PROJECTS.md",
+    "docs/foundation/WORK-BOARD.md",
+    "docs/foundation/PROCESS-MAP.md",
+    "docs/process/FORM-PROJECT.md"
+  ],
+  "formedAt": "2026-10-23T00:14:29.000Z"
+}

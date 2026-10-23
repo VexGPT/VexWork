@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "vexwork.project-planning-registry/v1",
+  "registryRef": "registry.vexwork.project-planning.001",
+  "registryVersion": 1,
+  "purpose": "Define portable Project planning events for iterations, membership, shared order, WIP policy and selected view without making planning a second Workgraph or lifecycle owner.",
+  "planningEventClasses": [
+    { "eventClass": "ITERATION_DEFINED", "requiredPayloadFields": ["iterationRef", "label", "startsAt", "endsAt"] },
+    { "eventClass": "ITERATION_CLOSED", "requiredPayloadFields": ["iterationRef", "closedAt"] },
+    { "eventClass": "ITERATION_MEMBERSHIP_SET", "requiredPayloadFields": ["iterationRef", "workRefs"] },
+    { "eventClass": "SHARED_ORDER_SET", "requiredPayloadFields": ["scopeRef", "workRefs"] },
+    { "eventClass": "WIP_POLICY_SET", "requiredPayloadFields": ["laneRef", "limit"] },
+    { "eventClass": "VIEW_SELECTED", "requiredPayloadFields": ["viewRef"] }
+  ],
+  "nonCollapseLaws": [
+    "PROJECT_PLANNING != WORKGRAPH",
+    "ITERATION_MEMBERSHIP != WORK_STATE",
+    "SHARED_ORDER != LIFECYCLE_ORDER",
+    "WIP_POLICY != EXECUTION_AUTHORITY",
+    "BOARD_DRAG != DIRECT_MUTATION",
+    "PLANNING_EVENT != PROVIDER_EVENT"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "vexwork.workgraph-segment/v1",
+  "segmentRef": "segment.vexwork.history",
+  "graphRef": "workgraph.vexwork.foundation",
+  "items": [
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexwork.history.foundational-infrastructure-backfill",
+      "parentWorkRefOrNull": null,
+      "label": "Foundational Infrastructure history backfill",
+      "purpose": "Gradually reconstruct completed foundational work into VexWork with provenance so future humans and instances can perceive what was built from a dashboard instead of rediscovering it across repositories and chat history.",
+      "workClass": "POTENTIAL",
+      "state": "CAPTURED",
+      "priorityClass": "LOW",
+      "dependencyRefs": [
+        "work.vexwork.visibility.public-dashboard"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "public/work-dashboard.json",
+        "docs/lineage/VEXLIFE-P0B.md",
+        "docs/foundation/PARKING-LOT.md",
+        "docs/process/CAPTURE-DISCOVERED-WORK.md"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-21T06:07:27.000Z",
+      "updatedAt": "2026-10-22T04:42:04.000Z",
+      "workDisposition": "PARKED",
+      "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+      "nextProcessRefs": []
+    }
+  ],
+  "transitions": [],
+  "sourceRefs": [
+    "docs/foundation/PARKING-LOT.md"
+  ],
+  "formedAt": "2026-10-21T01:45:00.000Z"
+}

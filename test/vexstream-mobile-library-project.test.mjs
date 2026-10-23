@@ -26,6 +26,7 @@ test('VexStream Mobile Library is the first external Project over the shared Wor
   assert.equal(project.sourceRefs.includes('github.pull.vexlife-android.151'), true);
   assert.equal(project.sourceRefs.includes('github.pull.vexlife-android.155'), true);
   assert.equal(project.sourceRefs.includes('github.pull.vextreme-sdk.1887'), true);
+  assert.equal(project.sourceRefs.includes('github.issue.vexlife-android.157'), true);
 
   assert.deepEqual(childRefs(graph, 'work.vexstream.mobile-library.outcome'), [
     'work.vexstream.mobile-library.download-experience',
@@ -68,6 +69,28 @@ test('Mobile Library Board separates terminal MassDownload from the paused Queue
   assert.equal(queueIncident.effectDisposition, 'NO_EFFECTS');
 });
 
+test('durable device storage is Active after the approved exact handshake', () => {
+  const item = graph.items.find((candidate) => candidate.workRef === 'work.vexstream.mobile-library.device-storage');
+  assert.ok(item);
+  assert.equal(item.state, 'RUNNING');
+  assert.equal(item.workDisposition, 'ACTIVE');
+  assert.equal(item.authorityDisposition, 'AUTHORIZED_BOUNDED');
+  assert.equal(item.effectDisposition, 'EFFECTS_BOUND');
+  assert.equal(item.sourceRefs.includes('github.issue.vexlife-android.157'), true);
+
+  const board = projectWorkBoard({ project, graph, view, registry });
+  const active = board.lanes.find((lane) => lane.laneRef === 'lane.work.active');
+  assert.equal(active.cards.some((card) => card.workRef === item.workRef), true);
+  assert.equal(transitionHandshakeRequirement({
+    policy,
+    priorState: 'READY',
+    nextState: 'RUNNING',
+    registry,
+    graph,
+    workRef: item.workRef,
+  }).required, true);
+});
+
 test('persistent Keep Offline remains parked outside Project membership', () => {
   const lot = projectParkingLot({ graph, registry, repositoryRefOrNull: 'repo.vexlife-android' });
   const keepOffline = lot.items.find((item) => item.workRef === 'work.vexstream.mobile-library.keep-offline-sync');
@@ -93,5 +116,7 @@ test('Mobile Library Project keeps a human audit/decision front door beside grap
   assert.match(readme, /ML-D1 — Preserve exact media identity/);
   assert.match(readme, /ML-D4 — Contextual Download Missing reuses MassDownload semantics/);
   assert.match(readme, /ML-D6 — MassDownload product source and terminal EndToEnd proof are different Work/);
+  assert.match(readme, /VexLife-Android issue #157/);
+  assert.match(readme, /DEVICE_STORAGE_READY/);
   assert.match(readme, /Known VexWork modeling gap/);
 });
