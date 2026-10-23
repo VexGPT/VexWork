@@ -13,6 +13,7 @@ const connectedServicesProjectSource = read('projects/vexlife-connected-services
 const operationalConsoleProjectSource = read('projects/vexwork-operational-console/project.json');
 const vexboardProjectSource = read('projects/vexboard/project.json');
 const blueprintProjectSource = read('projects/vexlife-blueprint-source-of-truth/project.json');
+const androidProofProjectSource = read('projects/android-proof-orchestration/project.json');
 const graphSource = read('workgraphs/public.json');
 
 test('work registry covers lifecycle states exactly once on the default Work Board', () => {
@@ -23,7 +24,7 @@ test('work registry covers lifecycle states exactly once on the default Work Boa
 test('one Workgraph can contain project work and unprojected parked work', () => {
   const project = createProject(projectSource);
   const graph = createWorkgraph(graphSource, registry);
-  assert.equal(graph.items.length, 107);
+  assert.equal(graph.items.length, 111);
   assert.equal(projectWorkRefs(project, graph).length, 8);
   const toCompletionProject = createProject(toCompletionProjectSource);
   assert.equal(projectWorkRefs(toCompletionProject, graph).length, 17);
@@ -35,6 +36,8 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(projectWorkRefs(vexboardProject, graph).length, 7);
   const blueprintProject = createProject(blueprintProjectSource);
   assert.equal(projectWorkRefs(blueprintProject, graph).length, 14);
+  const androidProofProject = createProject(androidProofProjectSource);
+  assert.equal(projectWorkRefs(androidProofProject, graph).length, 4);
   assert.equal(verifySemanticFingerprint(project), true);
   assert.equal(verifySemanticFingerprint(graph), true);
 
@@ -68,11 +71,19 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(historyBackfill.effectDisposition, 'NO_EFFECTS');
   assert.equal(historyBackfill.formationProcessRefOrNull, 'process.vexwork.capture-discovered-work');
   assert.equal(graph.rootWorkRefs.includes(historyBackfill.workRef), true);
-  assert.equal(graph.transitions.length, 82);
+  assert.equal(graph.transitions.length, 88);
   assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.decomposed.20261022'));
   assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.plan-validated.20261022'));
   assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.ready.20261022'));
   assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.running.20261022'));
+  const storageWait = graph.transitions.find(
+    (transition) =>
+      transition.transitionRef ===
+      'transition.vexstream.mobile-library.device-storage.waiting-tool.android-proof-orchestration.20261022',
+  );
+  assert.ok(storageWait);
+  assert.equal(storageWait.priorState, 'RUNNING');
+  assert.equal(storageWait.nextState, 'WAITING_TOOL');
 
   const parked = graph.items.find((item) => item.workRef === 'work.vexlife-android.vexstream.not-yet-downloaded-filter');
   assert.equal(parked.workClass, 'POTENTIAL');
@@ -135,6 +146,15 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(mobile.workClass, 'OUTCOME');
   assert.equal(mobile.state, 'DECOMPOSED');
   assert.equal(mobile.authorityDisposition, 'AUTHORIZED_BOUNDED');
+  const storage = graph.items.find((item) => item.workRef === 'work.vexstream.mobile-library.device-storage');
+  assert.equal(storage.state, 'WAITING_TOOL');
+  assert.equal(storage.dependencyRefs.includes('work.android-proof-orchestration.api-target-runner'), true);
+  const runner = graph.items.find((item) => item.workRef === 'work.android-proof-orchestration.api-target-runner');
+  assert.equal(runner.state, 'READY');
+  assert.equal(runner.priorityClass, 'HIGH');
+  const lease = graph.items.find((item) => item.workRef === 'work.android-proof-orchestration.device-lease-queue');
+  assert.equal(lease.state, 'WAITING_DEPENDENCIES');
+  assert.deepEqual(lease.dependencyRefs, [runner.workRef]);
   const massDownload = graph.items.find((item) => item.workRef === 'work.vexstream.mobile-library.massdownload-product');
   assert.equal(massDownload.state, 'COMPLETED');
   const e2e = graph.items.find((item) => item.workRef === 'work.vexstream.mobile-library.massdownload-e2e');
@@ -219,6 +239,7 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   const patientZeroProof = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.vexsite-patient-zero-proof');
   const operatingDomainTemplate = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.operating-domain-template');
   const operatingDomainContract = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.operating-domain-contract');
+  const attentionQueue = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.attention-queue-contract');
   const terrain = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.relational-terrain');
   const terrainPatient = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.relational-terrain.patient-zero');
   assert.equal(operationalOutcome.state, 'RUNNING');
@@ -230,8 +251,9 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(populationScope.state, 'COMPLETED');
   assert.equal(localizationLens.state, 'COMPLETED');
   assert.equal(patientZeroProof.state, 'COMPLETED');
-  assert.equal(operatingDomainTemplate.state, 'READY');
-  assert.equal(operatingDomainContract.state, 'READY');
+  assert.equal(operatingDomainTemplate.state, 'RUNNING');
+  assert.equal(operatingDomainContract.state, 'COMPLETED');
+  assert.equal(attentionQueue.state, 'READY');
   assert.equal(terrain.state, 'RUNNING');
   assert.equal(terrainPatient.state, 'VERIFYING');
 

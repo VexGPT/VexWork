@@ -155,9 +155,14 @@ DEVICE_STORAGE_READY
 ```
 
 The Ready -> Active handshake was approved by Victor on 2026-10-22 and confirmed by Local Vex Operations.
-The Work item is now `RUNNING`. Implementation is admitted only inside the issue-157 storage membrane;
+Source implementation then advanced inside the issue-157 storage membrane and retained repository-local
+proof at the exact storage candidate. The remaining claim is native API-matrix proof, not more product
+authoring.
+
+The Work item is now `WAITING_TOOL` on the reusable Android API target runner in
+`project.android-proof-orchestration`. Its product/source authority remains `AUTHORIZED_BOUNDED`;
 rediscovery, private-copy migration, destructive Clear Data proof, persistent Keep Offline / Sync, and
-Connected Services remain distinct and are not implied by this activation.
+Connected Services remain distinct and are not implied by this checkpoint.
 
 ### ML-D3 — Rediscovery must reconstruct truth; the private index cannot remain the only memory
 
@@ -278,6 +283,53 @@ the public VexStream Music repository in the Repository Graph and binds it only 
 implicated.
 
 Product meaning remains in VexStream Music's own entry/architecture sources.
+
+
+### ML-D8 — Android target orchestration is a reusable dependency, not VexStream product scope
+
+The storage lane exposed a cross-lane host-proof gap after product source had already stabilized:
+
+```text
+retained repository-local source proof = PASS
+modern Android target = available
+legacy API 24-28 target = required for permission/storage branch
+reusable API-compatible AVD acquisition/lease = not yet source-placed
+```
+
+The Android Test / Proof foundation already says native storage/permission claims belong on a real
+Android target and that an authorized physical device or qualified AVD may realize device proof.
+Vextreme-SDK's cross-platform proof source also allows logical branches to use isolated
+devices/emulators and already owns Android availability/selection in the VexStream lived coordinator.
+
+What is missing is reusable host coordination that can accept an API requirement, select or boot a
+compatible target, retain exact target identity, and clean up only task-owned emulator effects.
+
+That work is now source-managed separately as:
+
+```text
+project.android-proof-orchestration
+  -> work.android-proof-orchestration.api-target-runner
+```
+
+with source claim `github.issue.vextreme-sdk.1894`.
+
+Therefore:
+
+```text
+VEXSTREAM_STORAGE_WAITING_TOOL
+!= PRODUCT_SOURCE_FAILURE
+!= ANDROID_MAIN_DRIFT
+!= CONNECTED_SERVICES_COLLISION
+
+API_TARGET_RUNNER_READY
+-> resume exact-head native storage proof
+-> fresh Assurance
+-> PR / merge / post-merge
+-> rediscovery
+```
+
+Do not re-create another lane-local emulator script while this reusable dependency is the admitted
+next edge.
 
 ## Work-state and agency safety
 

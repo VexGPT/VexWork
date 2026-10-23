@@ -10,6 +10,7 @@ import { verifySemanticFingerprint } from '../src/core/semantic.mjs';
 import { createProjectAgencyPolicy } from '../src/core/transition-handshake.mjs';
 import { validateProjectPlanningRegistry } from '../src/core/project-planning.mjs';
 import { validateProjectReconciliationRegistry } from '../src/core/project-reconciliation.mjs';
+import { createOperatingDomain, projectOperatingDomain } from '../src/core/operating-domain.mjs';
 
 const read = (path) => JSON.parse(fs.readFileSync(new URL(`../${path}`, import.meta.url), 'utf8'));
 
@@ -19,6 +20,7 @@ const processRegistry = read('blueprint/process-registry.json');
 const projectRegistry = read('blueprint/project-registry.json');
 const projectPlanningRegistry = read('blueprint/project-planning-registry.json');
 const projectReconciliationRegistry = read('blueprint/project-reconciliation-registry.json');
+const vexsiteOperatingDomainSource = read('projects/vexwork-operational-console/vexsite-operating-domain.json');
 
 const workRegistryValidation = validateRegistry(workRegistry);
 if (!workRegistryValidation.ok) throw new Error(workRegistryValidation.errors.join('\n'));
@@ -32,6 +34,8 @@ const projectPlanningValidation = validateProjectPlanningRegistry(projectPlannin
 if (!projectPlanningValidation.ok) throw new Error(projectPlanningValidation.errors.join('\n'));
 const projectReconciliationValidation = validateProjectReconciliationRegistry(projectReconciliationRegistry);
 if (!projectReconciliationValidation.ok) throw new Error(projectReconciliationValidation.errors.join('\n'));
+const vexsiteOperatingDomain = createOperatingDomain(vexsiteOperatingDomainSource, { repositoryRegistry, processRegistry });
+const vexsiteOperatingDomainProjection = projectOperatingDomain(vexsiteOperatingDomain);
 
 const graphSources = new Map();
 const graphPaths = new Map();
@@ -102,7 +106,7 @@ const graphs = [...graphSources.values()];
 const globalItems = graphs.reduce((sum, graph) => sum + graph.items.length, 0);
 const parkingLotItems = graphs.reduce((sum, graph) => sum + projectParkingLot({ graph, registry: workRegistry }).items.length, 0);
 
-for (const value of [projectMap, processMap]) {
+for (const value of [projectMap, processMap, vexsiteOperatingDomain, vexsiteOperatingDomainProjection]) {
   if (!verifySemanticFingerprint(value)) throw new Error('semantic fingerprint self-check failed');
 }
 
@@ -115,6 +119,7 @@ console.log(JSON.stringify({
   projectRegistry: 'PASS',
   projectPlanningRegistry: 'PASS',
   projectReconciliationRegistry: 'PASS',
+  operatingDomain: 'PASS',
   projectCount: projectRegistry.projects.length,
   workgraphCount: graphSources.size,
   globalWorkItemCount: globalItems,

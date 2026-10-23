@@ -23,7 +23,7 @@ test('source-managed segments compose to the exact checked-in canonical Workgrap
   const result = composeWorkgraph({ composition, segments, registry });
   const accepted = createWorkgraph(publicSource, registry);
 
-  assert.equal(segments.length, 10);
+  assert.equal(segments.length, 11);
   assert.equal(result.graph.semanticFingerprint, accepted.semanticFingerprint);
   assert.deepEqual(result.graph, accepted);
   assert.equal(result.graph.items.length, publicSource.items.length);
@@ -56,10 +56,21 @@ test('segment containment is local while cross-segment dependencies remain legal
       .filter((dependencyRef) => owner.get(dependencyRef) !== segment.segmentRef)
       .map((dependencyRef) => ({ from: item.workRef, to: dependencyRef })),
   ));
-  assert.deepEqual(crossDependencies, [{
-    from: 'work.vexwork.history.foundational-infrastructure-backfill',
-    to: 'work.vexwork.visibility.public-dashboard',
-  }]);
+  assert.deepEqual(
+    crossDependencies.sort((left, right) =>
+      left.from.localeCompare(right.from) || left.to.localeCompare(right.to),
+    ),
+    [
+      {
+        from: 'work.vexstream.mobile-library.device-storage',
+        to: 'work.android-proof-orchestration.api-target-runner',
+      },
+      {
+        from: 'work.vexwork.history.foundational-infrastructure-backfill',
+        to: 'work.vexwork.visibility.public-dashboard',
+      },
+    ],
+  );
 });
 
 // [VXG RealForever][VEXWORK][WORKGRAPH-COMPOSITION][SOURCE-ADOPTION]
