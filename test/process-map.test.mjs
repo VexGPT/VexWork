@@ -40,3 +40,22 @@ test('unknown process refs fail closed', () => {
   ], processRegistry), true);
   assert.throws(() => assertKnownProcessRefs(['process.unknown'], processRegistry), /unknown processRef/);
 });
+
+test('process registry validator exercises each fail-closed boundary', () => {
+  const mutations = [
+    ['schema', (value) => { value.schemaVersion = 'wrong'; }, /schema mismatch/],
+    ['processes array', (value) => { value.processes = null; }, /processes must be an array/],
+    ['process ref', (value) => { value.processes[0].processRef = 'bad ref'; }, /invalid processRef/],
+    ['duplicate process ref', (value) => { value.processes.push(structuredClone(value.processes[0])); }, /duplicate processRef/],
+    ['owner repository', (value) => { value.processes[0].ownerRepositoryRef = 'repo.unknown'; }, /unknown ownerRepositoryRef/],
+    ['entry refs', (value) => { value.processes[0].entryRefs = []; }, /entryRefs missing/],
+    ['execution authority', (value) => { value.processes[0].executionAuthority = 'WRITE'; }, /must not claim execution authority/],
+  ];
+  for (const [label, mutate, pattern] of mutations) {
+    const candidate = structuredClone(processRegistry);
+    mutate(candidate);
+    const result = validateProcessRegistry(candidate, repositoryRegistry);
+    assert.equal(result.ok, false, label);
+    assert.match(result.errors.join('\n'), pattern, label);
+  }
+});

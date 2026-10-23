@@ -326,6 +326,134 @@ NEXT ROUTE
 
 Use `docs/templates/QA-REVIEW-BRIEF.md` to hand the role to a fresh reviewer and `docs/templates/QA-REVIEW-RETURN.md` for the return shape.
 
+## Stability and coverage contract
+
+The deterministic suite is the first regression floor, not the whole meaning of quality.
+
+VexWork currently separates four questions:
+
+```text
+DIRECT_TEST_OWNERSHIP
+  does every durable core/public reader module have an explicit regression surface?
+
+BEHAVIORAL_REGRESSION
+  do focused tests exercise the intended behavior and the material fail-closed branches?
+
+COVERAGE_VISIBILITY
+  which executable lines/branches/functions were actually reached by the suite?
+
+CLAIM_FIT
+  does the available evidence class prove the product/foundation claim being made?
+```
+
+The repository enforces direct test ownership through:
+
+```text
+test/stability-contract.test.mjs
+```
+
+It requires every current `src/core/*.mjs` module and root `*-reader.js` public reader to be named by at least one deterministic test surface. This is intentionally weaker than code coverage and stronger than relying on convention alone.
+
+Coverage is observable through:
+
+```bash
+npm run test:coverage
+npm run coverage:source
+```
+
+Node 20's built-in aggregate includes the test files themselves, so VexWork does **not** use the headline all-files percentage as its source baseline. The LCOV projection is filtered by the repository-owned checker to:
+
+```text
+src/**/*.mjs
+*-reader.js
+```
+
+That keeps the baseline about durable executable VexWork source rather than test-code self-coverage.
+
+The ordinary review floor runs that coverage-enabled test execution once before the remaining deterministic checks:
+
+```text
+npm run review
+-> npm run review:deterministic
+-> npm run test:coverage
+-> npm run coverage:source
+-> npm run check
+-> npm run dashboard:check
+-> npm run workspace:check
+```
+
+The repository runtime floor is Node >=20.1 because that is the first Node 20 release where the built-in test coverage mode can be used with the command-line test runner.
+
+The coverage report is diagnostic evidence. It does not create semantic clearance:
+
+```text
+LINE_EXECUTED != ASSERTION_PROVED
+HIGH_COVERAGE != CORRECT_BEHAVIOR
+COVERAGE_REPORT != QA_DISPOSITION
+```
+
+### Change-class expectations
+
+For executable changes, apply the smallest relevant proof:
+
+```text
+core contract / state behavior
+  -> focused positive tests
+  -> relevant negative / stale / fail-closed tests
+  -> inspect coverage of the touched responsibility
+
+public reader / UI behavior
+  -> deterministic reader/UI regression
+  -> lived proof when the claim is actually visual or interactive
+
+generated checked-in projection
+  -> owning source tests
+  -> generated-currentness check
+
+deterministic defect repair
+  -> regression fixture that fails for the defect
+  -> repair
+  -> affected broader proof
+
+shared composition / aggregate behavior
+  -> coexistence fixture preserving unrelated accepted truth
+```
+
+### Coverage-floor posture
+
+Do not choose an arbitrary repository-wide percentage before measuring the exact accepted suite and understanding which source classes belong in the denominator.
+
+The first maturity step is therefore:
+
+```text
+MEASURE exact candidate
+-> identify meaningful uncovered responsibilities
+-> add missing behavioral tests where warranted
+-> record an accepted baseline
+-> introduce a non-regression floor
+-> ratchet deliberately as coverage improves
+```
+
+The first accepted source-only baseline is now measured on the exact Node 20.18.1 Foundation suite:
+
+```text
+lines      96.73%
+branches   84.73%
+functions  96.71%
+```
+
+The first non-regression floor is intentionally just below that earned baseline:
+
+```text
+lines      >= 96%
+branches   >= 84%
+functions  >= 96%
+```
+
+Critical lifecycle/currentness modules also carry file-local floors in `blueprint/source-coverage-baseline.json`, so broad easy-to-cover code cannot compensate for a regression in Workgraph persistence, lifecycle admission, transition handshakes, or composition.
+
+The floor is a ratchet, not a target. Changes should not lower it without an explicit reviewed reason, and meaningful new tests should raise the accepted baseline/floor when the repository has earned the increase.
+
 ## VexWork Foundation deterministic floor
 
 For the current repository foundation, the ergonomic automated-floor entry is:

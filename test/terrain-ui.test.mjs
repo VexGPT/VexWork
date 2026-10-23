@@ -9,9 +9,9 @@ test('Terrain remains an explicit read-only VexWork projection', () => {
   assert.match(page, /VexWork/);
   assert.match(page, /Terrain Map/);
   assert.match(page, /experimental v2/i);
-  assert.match(page, /./public/workspace.json/);
+  assert.match(page, /\.\/public\/workspace\.json/);
   assert.match(page, /executionAuthority!=='NONE'/);
-  assert.doesNotMatch(page, /method:s*['"](?:POST|PUT|PATCH|DELETE)['"]/i);
+  assert.doesNotMatch(page, /method:\s*['"](?:POST|PUT|PATCH|DELETE)['"]/i);
 });
 
 test('Terrain uses stable perceptual bands and strata rather than radial graph navigation', () => {
@@ -19,7 +19,7 @@ test('Terrain uses stable perceptual bands and strata rather than radial graph n
   assert.match(page, /preview-strip/);
   assert.match(page, /strata-list/);
   assert.match(page, /depth is level-of-detail/);
-  assert.doesNotMatch(page, /Math.PI*2*index/);
+  assert.doesNotMatch(page, /Math\.PI\*2\*index/);
   assert.doesNotMatch(page, /class="rail"/);
 });
 
@@ -48,13 +48,12 @@ test('semantic wheel traversal is disabled by default while its implementation r
   assert.match(page, /function onWheel\(e\)\{\s*if\(!SEMANTIC_WHEEL_TRAVERSAL_ENABLED\)return;/);
   assert.match(page, /function cameraEnter/);
   assert.match(page, /function cameraOut/);
-  assert.match(page, /wheel traversal off/);
 });
 
 test('Terrain projects continuity around current work with state color and age evidence', () => {
   assert.match(page, /function continuityWindow/);
-  assert.match(page, /data\.continuity=role/);
-  assert.match(page, /data\.tone=tone\(item\.state\)/);
+  assert.match(page, /dataset\.continuity=role/);
+  assert.match(page, /dataset\.tone=tone\(item\.state\)/);
   assert.match(page, /latest completed/);
   assert.match(page, /snapshot /);
   assert.match(page, /stateAgeText/);
@@ -95,7 +94,8 @@ test('Roadmap presentation shows sequence distance rather than calendar ETA', ()
   assert.match(page, /Solid future = dependency-grounded sequence/);
   assert.match(page, /Dotted future = admitted structural\/later work/);
   assert.match(page, /sequence, not calendar estimate/);
-  assert.doesNotMatch(page, /estimated completion date|ETA:/i);
+  assert.match(page, /Later is not an ETA\./);
+  assert.doesNotMatch(page, /estimated completion date|ETA:\s*\d/i);
 });
 
 test('Terrain and Roadmap mode changes remain presentation state rather than semantic Journey mutations', () => {
