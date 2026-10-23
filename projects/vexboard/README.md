@@ -9,8 +9,8 @@ human outcome                         APPROVED_FOR_PROJECT_FORMATION
 project architecture source           CURRENT
 canonical Project / Workgraph entry   CURRENT
 public Projects projection            CURRENT
-product implementation                NOT_STARTED
-implementation authority              SEPARATE_FROM_PROJECT_FORMATION
+product implementation                BOARDGRAPH_FOUNDATION_STARTED
+implementation authority              AUTHORIZED_BOUNDED_BOARDGRAPH_FOUNDATION
 ```
 
 This source preserves the VexBoard product intention and architecture before implementation begins. The Project is now canonically formed through `project.json`, its Work Board view, a bounded Workgraph decomposition, the Project Registry, and the generated public workspace. Product implementation remains separately authority-bound; Project formation does not silently grant repository effects.
@@ -19,6 +19,34 @@ This source preserves the VexBoard product intention and architecture before imp
 PRESERVE_THE_PROJECT_NOW
 !=
 PRETEND_CANONICAL_REGISTRATION_ALREADY_HAPPENED
+```
+
+### Current implementation admission
+
+The architecture formation is now followed by one bounded implementation grant:
+
+```text
+workRef = work.vexboard.boardgraph-contract
+authority = AUTHORIZED_BOUNDED
+effects = EFFECTS_BOUND
+state = RUNNING
+
+initial implementation membrane
+  src/core/vexboard.mjs
+  test/vexboard.test.mjs
+  projects/vexboard/README.md
+  VexBoard-owned Workgraph/project projections required to keep work truth current
+```
+
+This admission comes from Victor's explicit instruction to begin the actual VexBoard work after the
+completion-state architecture was mapped. It authorizes the BoardGraph/shared-Control foundation in
+VexWork; it does not grant source authority in VexLife, Vextreme, Vextreme-Assets or other projected
+repositories.
+
+```text
+VEXBOARD_IMPLEMENTATION_AUTHORITY
+!=
+TARGET_REPOSITORY_AUTHORITY
 ```
 
 ## Human outcome
