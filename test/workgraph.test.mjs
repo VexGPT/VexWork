@@ -23,8 +23,8 @@ test('work registry covers lifecycle states exactly once on the default Work Boa
 test('one Workgraph can contain project work and unprojected parked work', () => {
   const project = createProject(projectSource);
   const graph = createWorkgraph(graphSource, registry);
-  assert.equal(graph.items.length, 105);
-  assert.equal(projectWorkRefs(project, graph).length, 7);
+  assert.equal(graph.items.length, 106);
+  assert.equal(projectWorkRefs(project, graph).length, 8);
   const toCompletionProject = createProject(toCompletionProjectSource);
   assert.equal(projectWorkRefs(toCompletionProject, graph).length, 17);
   const connectedServicesProject = createProject(connectedServicesProjectSource);
@@ -47,6 +47,10 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(graph.items.find((item) => item.workRef === 'work.vexwork.visibility.public-dashboard').state, 'COMPLETED');
   const foundationRoot = graph.items.find((item) => item.workRef === 'work.vexwork.foundation.outcome');
   assert.equal(foundationRoot.state, 'COMPLETED');
+  const maturityClosure = graph.items.find((item) => item.workRef === 'work.vexwork.foundation.maturity-closure');
+  assert.equal(maturityClosure.state, 'COMPLETED');
+  assert.equal(maturityClosure.parentWorkRefOrNull, 'work.vexwork.foundation.outcome');
+  assert.equal(maturityClosure.sourceRefs.includes('github.pull.vexwork.59'), true);
   const ideaIntake = graph.items.find((item) => item.workRef === 'work.vexwork.foundation.idea-intake');
   assert.equal(ideaIntake.state, 'CANCELLED');
   assert.equal(ideaIntake.authorityDisposition, 'NO_AUTHORITY');
@@ -59,7 +63,7 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(historyBackfill.effectDisposition, 'NO_EFFECTS');
   assert.equal(historyBackfill.formationProcessRefOrNull, 'process.vexwork.capture-discovered-work');
   assert.equal(graph.rootWorkRefs.includes(historyBackfill.workRef), true);
-  assert.equal(graph.transitions.length, 64);
+  assert.equal(graph.transitions.length, 65);
   assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.decomposed.20261022'));
   assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.plan-validated.20261022'));
   assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.ready.20261022'));

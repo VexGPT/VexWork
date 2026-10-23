@@ -84,6 +84,22 @@
           "updatedAt": "2026-10-21T03:56:12.000Z"
         },
         {
+          "workRef": "work.vexwork.foundation.maturity-closure",
+          "label": "Foundation maturity closure",
+          "purpose": "Close the pre-VexBoard foundation hardening pass by establishing the regression/coverage floor, adopting segment-owned Workgraph authoring, and migrating portable Project Planning and Project Reconciliation without reopening the already-completed first-foundation outcome.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife"
+          ],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "updatedAt": "2026-10-23T02:02:22.000Z"
+        },
+        {
           "workRef": "work.vexwork.foundation.repository-graph",
           "label": "Repository Graph",
           "purpose": "Make cross-repository work source-descendable through public/source-safe repository and culture-entry references without consolidating cultures.",
@@ -252,7 +268,7 @@
     ]
   },
   "summary": {
-    "projectWorkItemCount": 7,
+    "projectWorkItemCount": 8,
     "openProjectWorkItemCount": 0,
     "parkingLotItemCount": 5
   },
