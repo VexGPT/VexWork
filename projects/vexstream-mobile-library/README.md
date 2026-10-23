@@ -127,6 +127,38 @@ DURABLE_DEVICE_LIBRARY_REQUIREMENT
 != PREDECIDED_MEDIASTORE_IMPLEMENTATION
 ```
 
+#### Ready decision — 2026-10-22
+
+Android source admission and design are now durably bound by
+[`VexLife-Android issue #157`](https://github.com/vgong24/VexLife-Android/issues/157).
+
+The bounded storage realization is:
+
+```text
+accepted producer media = MP3 / audio/mpeg
+portable identity = mediaSha256 + mediaByteLength
+Android 10+ owner = MediaStore.Audio / Music/VexStream / <sha256>.mp3
+write rule = pending -> stream + exact digest/length verification -> publish
+Android 7-9 owner = MediaStore audio + WRITE_EXTERNAL_STORAGE through API 28 only
+permission denial = preserve the verified private copy and fail closed
+localMediaRef = content URI after successful shared publication
+```
+
+This decision does not collapse the dependent work:
+
+```text
+DEVICE_STORAGE_READY
+!= REDISCOVERY_COMPLETE
+!= PRIVATE_COPY_MIGRATED
+!= CLEAR_DATA_LIVED_PROOF
+!= PERSISTENT_KEEP_OFFLINE
+```
+
+The Ready -> Active handshake was approved by Victor on 2026-10-22 and confirmed by Local Vex Operations.
+The Work item is now `RUNNING`. Implementation is admitted only inside the issue-157 storage membrane;
+rediscovery, private-copy migration, destructive Clear Data proof, persistent Keep Offline / Sync, and
+Connected Services remain distinct and are not implied by this activation.
+
 ### ML-D3 — Rediscovery must reconstruct truth; the private index cannot remain the only memory
 
 The current offline index lives beside app-private media. The desired product must be able to rebuild

@@ -98,22 +98,25 @@ test('v2 policy can require human acceptance for outcomes while allowing ordinar
   assert.equal(policyScopeSummary(v2OutcomeReview.handshakeLaneTransitions[0]), 'OUTCOME');
 });
 
-test('protected target phase stays review-gated without same-phase provenance', () => {
+test('configured destination phase stays review-gated from transient lanes without same-phase provenance', () => {
+  const result = reviewRequirementForTransition(v1Policy, registry, {
+    fromState: 'WAITING_HUMAN',
+    toState: 'VERIFYING',
+    workClass: 'TASK',
+    workRef: 'work.test.task',
+  });
+  assert.equal(result.mode, 'PROTECTED_TARGET');
+  assert.match(result.reason, /no exact same-phase resume provenance/);
+});
+
+test('v2 completion-only review does not retroactively protect Verify entry', () => {
   const outcome = reviewRequirementForTransition(v2OutcomeReview, registry, {
     fromState: 'WAITING_HUMAN',
     toState: 'VERIFYING',
     workClass: 'OUTCOME',
     workRef: 'work.test.outcome',
   });
-  const task = reviewRequirementForTransition(v2OutcomeReview, registry, {
-    fromState: 'WAITING_HUMAN',
-    toState: 'VERIFYING',
-    workClass: 'TASK',
-    workRef: 'work.test.task',
-  });
-  assert.equal(outcome.mode, 'PROTECTED_TARGET');
-  assert.match(outcome.reason, /no exact same-phase resume provenance/);
-  assert.equal(task.mode, 'NONE');
+  assert.equal(outcome.mode, 'NONE');
 });
 
 test('exact transition history makes a true same-phase resume autonomous in the map', () => {

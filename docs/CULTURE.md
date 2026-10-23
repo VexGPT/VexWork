@@ -216,6 +216,33 @@ and receive a calm answer.
 
 The deeper graph, fingerprints, source refs, provider evidence, and repository culture links remain inspectable rather than permanently occupying the main surface.
 
+## Regression before expansion
+
+VexWork is allowed to grow, but accepted behavior should become cheaper to preserve as the surface area grows.
+
+A completed foundation is not a frozen repository and it is not permission to treat every later feature as isolated. New work must preserve the contracts it depends on and the unrelated behavior it can reasonably disturb.
+
+```text
+NEW_FEATURE != PERMISSION_TO_REOPEN_ACCEPTED_BEHAVIOR
+FOUNDATION_COMPLETE != TEST_SUITE_FROZEN
+GREEN_TESTS != COMPLETE_PROOF
+COVERAGE_PERCENT != CORRECTNESS
+REGRESSION_FOUND -> REGRESSION_TEST_WHEN_DETERMINISTIC
+```
+
+Default engineering habits:
+
+- every durable `src/core` module and public reader module has a direct deterministic test surface;
+- new semantic branches exercise the intended path and the relevant stale, unknown, duplicate, cyclic, unauthorized, malformed, or fail-closed paths;
+- a deterministic bug discovered in review or lived use gains a regression fixture before or with its repair;
+- checked-in generated projections are regenerated or checked from their rightful source rather than hand-edited into agreement;
+- changes that compose with shared Workgraph/Project truth test coexistence, not only an empty happy-path fixture;
+- coverage is inspected as a blind-spot signal over durable executable source, not inflated by test-file self-coverage and not used as a substitute for assertions, semantic review, provider evidence, or lived proof;
+- a numerical coverage floor is earned from an exact measured baseline and ratchets upward deliberately; the accepted baseline/floor lives in one source-managed coverage contract rather than being guessed per PR;
+- do not delete, weaken, skip, or narrow a legitimate regression test merely to permit a new feature.
+
+The reusable review route for these habits is `process.vexwork.quality-review`.
+
 ## Proof follows the claim
 
 A validator can prove structural validity. A unit test can prove deterministic behavior. A provider observation can prove a provider fact. A repository review can prove source meaning. None becomes another merely because it is green.

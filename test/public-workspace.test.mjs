@@ -82,10 +82,12 @@ test('Foundation Project is terminal while optional history remains globally par
   const workspace = buildWorkspace();
   const foundation = workspace.projects.find((entry) => entry.project.projectRef === 'project.vexwork.foundation');
   assert.ok(foundation);
-  assert.equal(foundation.summary.workItemCount, 7);
+  assert.equal(foundation.summary.workItemCount, 8);
   assert.equal(foundation.summary.openWorkItemCount, 0);
-  assert.equal(foundation.summary.completedCount, 7);
+  assert.equal(foundation.summary.completedCount, 8);
   assert.equal(foundation.items.find((item) => item.workRef === 'work.vexwork.foundation.outcome').state, 'COMPLETED');
+  assert.equal(foundation.items.find((item) => item.workRef === 'work.vexwork.foundation.maturity-closure').state, 'COMPLETED');
+  assert.equal(foundation.lanes.find((lane) => lane.laneRef === 'lane.work.done').workRefs.includes('work.vexwork.foundation.maturity-closure'), true);
   assert.equal(foundation.items.find((item) => item.workRef === 'work.vexwork.foundation.idea-intake').state, 'CANCELLED');
   assert.equal(foundation.items.some((item) => item.workRef === 'work.vexwork.history.foundational-infrastructure-backfill'), false);
   assert.equal(foundation.lanes.find((lane) => lane.laneRef === 'lane.work.archive').workRefs.includes('work.vexwork.foundation.idea-intake'), true);
@@ -126,4 +128,39 @@ test('Connected Services is discoverable as a real Project with the current live
   assert.equal(connected.lanes.find((lane) => lane.laneRef === 'lane.work.ready').workRefs.includes(phase4.workRef), true);
   assert.equal(connected.items.some((item) => item.workRef === 'work.vexlife.connected-services.guided-onboarding'), false);
   assert.equal(workspace.parkingLot.items.some((item) => item.workRef === 'work.vexlife.connected-services.guided-onboarding'), true);
+});
+
+test('VexBoard is discoverable with BoardGraph as the next ready edge', () => {
+  const workspace = buildWorkspace();
+  const vexboard = workspace.projects.find((entry) => entry.project.projectRef === 'project.vexboard');
+  assert.ok(vexboard);
+  assert.equal(vexboard.summary.workItemCount, 7);
+  assert.equal(vexboard.summary.openWorkItemCount, 6);
+  assert.equal(vexboard.items.find((item) => item.workRef === 'work.vexboard.project-architecture').state, 'COMPLETED');
+  assert.equal(vexboard.items.find((item) => item.workRef === 'work.vexboard.boardgraph-contract').state, 'READY');
+  assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.ready').workRefs.includes('work.vexboard.boardgraph-contract'), true);
+  assert.equal(vexboard.project.sourceRefs.includes('projects/vexboard/README.md'), true);
+});
+
+// [VXG RealForever]
+
+
+test('Blueprint SOT is durably paused without active effects while preserving its exact resume edge', () => {
+  const workspace = buildWorkspace();
+  const blueprint = workspace.projects.find((entry) => entry.project.projectRef === 'project.vexlife.blueprint-source-of-truth');
+  assert.ok(blueprint);
+  assert.equal(blueprint.summary.workItemCount, 14);
+  assert.equal(blueprint.summary.completedCount, 8);
+  assert.equal(blueprint.summary.openWorkItemCount, 6);
+  const root = blueprint.items.find((item) => item.workRef === 'work.vexlife.blueprint-source-of-truth.outcome');
+  const practicum = blueprint.items.find((item) => item.workRef === 'work.vexlife.blueprint-source-of-truth.play-pause-practicum');
+  const nativeSource = blueprint.items.find((item) => item.workRef === 'work.vexlife.blueprint-source-of-truth.play-pause.native-source-admission');
+  assert.equal(root.state, 'PAUSED_AT_CHECKPOINT');
+  assert.equal(root.effectDisposition, 'NO_EFFECTS');
+  assert.equal(practicum.state, 'PAUSED_AT_CHECKPOINT');
+  assert.equal(practicum.effectDisposition, 'NO_EFFECTS');
+  assert.equal(nativeSource.state, 'WAITING_RESOURCE');
+  assert.equal(nativeSource.effectDisposition, 'NO_EFFECTS');
+  assert.equal(blueprint.lanes.find((lane) => lane.laneRef === 'lane.work.waiting').workRefs.includes(root.workRef), true);
+  assert.equal(blueprint.lanes.find((lane) => lane.laneRef === 'lane.work.waiting').workRefs.includes(nativeSource.workRef), true);
 });
