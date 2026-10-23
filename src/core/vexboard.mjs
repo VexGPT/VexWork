@@ -4,6 +4,7 @@ import {
   BOARD_GRAPH_SCHEMA,
   BOARD_PROJECTION_SCHEMA,
   applyBoardAct,
+  freezeBoardValue,
   normalizeBoardControl,
   normalizeBoardGraph,
   normalizeBoardProjection,
@@ -25,7 +26,7 @@ export function createBoardGraph(input) {
   if (input?.semanticFingerprint !== undefined) {
     assert(verifySemanticFingerprint(input), 'BoardGraph semanticFingerprint mismatch');
   }
-  return withSemanticFingerprint(normalizeBoardGraph(stripFingerprint(input)));
+  return freezeBoardValue(withSemanticFingerprint(normalizeBoardGraph(stripFingerprint(input))));
 }
 
 export function createBoardProjection(input, graphInput) {
@@ -33,7 +34,7 @@ export function createBoardProjection(input, graphInput) {
   if (input?.semanticFingerprint !== undefined) {
     assert(verifySemanticFingerprint(input), 'BoardProjection semanticFingerprint mismatch');
   }
-  return withSemanticFingerprint(normalizeBoardProjection(stripFingerprint(input), stripFingerprint(graph)));
+  return freezeBoardValue(withSemanticFingerprint(normalizeBoardProjection(stripFingerprint(input), stripFingerprint(graph))));
 }
 
 export function applyBoardControl({ graph: graphInput, projection: projectionInput, control: controlInput }) {

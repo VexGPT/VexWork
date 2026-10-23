@@ -63,6 +63,13 @@ function compareCanonicalText(left, right) {
   return left < right ? -1 : left > right ? 1 : 0;
 }
 
+export function freezeBoardValue(value, seen = new WeakSet()) {
+  if (!value || typeof value !== 'object' || seen.has(value)) return value;
+  seen.add(value);
+  for (const child of Object.values(value)) freezeBoardValue(child, seen);
+  return Object.freeze(value);
+}
+
 function exactKeys(value, keys, label) {
   assert(isObject(value), `${label} must be one object`);
   const actual = Object.keys(value).sort(compareCanonicalText);

@@ -85,6 +85,23 @@ test('canonical ref ordering is locale-independent code-point order', () => {
   assert.deepEqual(normalizedProjection.items.map((item) => item.projectionItemRef), ['item.I', 'item.i']);
 });
 
+test('canonical Board states are deeply immutable outside BoardControl', async () => {
+  const graph = createBoardGraph(baseGraph());
+  const projection = createBoardProjection(baseProjection(), graph);
+  assert.equal(Object.isFrozen(graph.nodes), true);
+  assert.equal(Object.isFrozen(graph.nodes[0]), true);
+  assert.equal(Object.isFrozen(projection.items), true);
+  assert.equal(Object.isFrozen(projection.items[0].bounds), true);
+  assert.throws(() => { graph.nodes[0].label = 'bypass'; }, TypeError);
+  assert.throws(() => { projection.items[0].bounds.x = 999; }, TypeError);
+
+  const browser = await Reader.hydrateBoardState(baseGraph(), baseProjection());
+  assert.equal(Object.isFrozen(browser.graph.nodes[0]), true);
+  assert.equal(Object.isFrozen(browser.projection.items[0].bounds), true);
+  assert.throws(() => { browser.graph.nodes[0].label = 'browser-bypass'; }, TypeError);
+  assert.throws(() => { browser.projection.items[0].bounds.x = 999; }, TypeError);
+});
+
 test('graph validation fails closed on missing refs and containment cycles', () => {
   const missing = baseGraph();
   missing.relationships.push({ relationshipRef: 'rel.bad', kind: 'FLOW', fromRef: 'node.a', toRef: 'node.missing', labelOrNull: null, sourceRefs: [] });

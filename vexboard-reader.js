@@ -3,6 +3,7 @@ import {
   BOARD_GRAPH_SCHEMA,
   BOARD_PROJECTION_SCHEMA,
   applyBoardAct,
+  freezeBoardValue,
   normalizeBoardControl,
   normalizeBoardGraph,
   normalizeBoardProjection,
@@ -51,7 +52,7 @@ async function verifyInputFingerprint(value, label) {
 async function fingerprint(value) {
   const core = structuredClone(value);
   delete core.semanticFingerprint;
-  return Object.freeze({ ...core, semanticFingerprint: await semanticHash(core) });
+  return freezeBoardValue({ ...core, semanticFingerprint: await semanticHash(core) });
 }
 
 function stripFingerprint(value) {
