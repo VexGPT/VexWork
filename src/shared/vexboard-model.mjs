@@ -311,6 +311,16 @@ export function applyBoardAct({ graph: graphInput, projection: projectionInput, 
     assert(!graph.nodes.some((item) => item.nodeRef === node.nodeRef), `nodeRef already exists ${node.nodeRef}`);
     const item = normalizeProjectionItem(args.projectionItem);
     assert(item.semanticRef === node.nodeRef, 'CREATE_NODE projection semanticRef must equal nodeRef');
+    assert((node.parentRefOrNull === null) === (item.parentProjectionItemRefOrNull === null),
+      'CREATE_NODE semantic and projection parents must both be null or both be present');
+    if (node.parentRefOrNull !== null) {
+      const parentProjectionItem = projection.items.find(
+        (candidate) => candidate.projectionItemRef === item.parentProjectionItemRefOrNull,
+      );
+      assert(parentProjectionItem, `unknown parentProjectionItemRef ${item.parentProjectionItemRefOrNull}`);
+      assert(parentProjectionItem.semanticRef === node.parentRefOrNull,
+        `CREATE_NODE parent projection ${item.parentProjectionItemRefOrNull} must project node ${node.parentRefOrNull}`);
+    }
     assert(!projection.items.some((candidate) => candidate.projectionItemRef === item.projectionItemRef),
       `projectionItemRef already exists ${item.projectionItemRef}`);
     nextGraph.nodes.push(node);

@@ -195,6 +195,40 @@ test('SET_CONTAINMENT fails closed when semantic and projection identities diver
   }), /must both be null or both be present/);
 });
 
+test('CREATE_NODE fails closed when semantic and projection containment diverge', () => {
+  const graph = createBoardGraph(baseGraph());
+  const projection = createBoardProjection(baseProjection(), graph);
+
+  assert.throws(() => applyBoardControl({
+    graph,
+    projection,
+    control: control(graph, projection, 'CREATE_NODE', {
+      node: { nodeRef: 'node.child', kind: 'PROCESS', label: 'Child', parentRefOrNull: null, detailBoardRefOrNull: null, sourceRefs: [] },
+      projectionItem: { projectionItemRef: 'item.child', semanticRef: 'node.child', shapeKind: 'RECTANGLE', bounds: { x: 20, y: 120, width: 160, height: 80 }, layer: 0, parentProjectionItemRefOrNull: 'item.a', visible: true, locked: false },
+    }, 'control.create-split-containment'),
+  }), /must both be null or both be present/);
+
+  assert.throws(() => applyBoardControl({
+    graph,
+    projection,
+    control: control(graph, projection, 'CREATE_NODE', {
+      node: { nodeRef: 'node.child', kind: 'PROCESS', label: 'Child', parentRefOrNull: 'node.b', detailBoardRefOrNull: null, sourceRefs: [] },
+      projectionItem: { projectionItemRef: 'item.child', semanticRef: 'node.child', shapeKind: 'RECTANGLE', bounds: { x: 20, y: 120, width: 160, height: 80 }, layer: 0, parentProjectionItemRefOrNull: 'item.a', visible: true, locked: false },
+    }, 'control.create-parent-mismatch'),
+  }), /must project node node\.b/);
+
+  const result = applyBoardControl({
+    graph,
+    projection,
+    control: control(graph, projection, 'CREATE_NODE', {
+      node: { nodeRef: 'node.child', kind: 'PROCESS', label: 'Child', parentRefOrNull: 'node.b', detailBoardRefOrNull: null, sourceRefs: [] },
+      projectionItem: { projectionItemRef: 'item.child', semanticRef: 'node.child', shapeKind: 'RECTANGLE', bounds: { x: 20, y: 120, width: 160, height: 80 }, layer: 0, parentProjectionItemRefOrNull: 'item.b', visible: true, locked: false },
+    }, 'control.create-contained'),
+  });
+  assert.equal(result.graph.nodes.find((node) => node.nodeRef === 'node.child').parentRefOrNull, 'node.b');
+  assert.equal(result.projection.items.find((item) => item.projectionItemRef === 'item.child').parentProjectionItemRefOrNull, 'item.b');
+});
+
 test('browser client-to-canvas conversion does not double-apply scroll offsets', () => {
   assert.deepEqual(
     Reader.localPointFromClient({ clientX: 410, clientY: 320 }, { left: -190, top: -80 }),
