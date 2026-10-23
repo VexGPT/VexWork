@@ -16,7 +16,7 @@ test('Operational Console Project models evolution without entity-per-task explo
   assert.equal(refs.length, 24);
   assert.equal(refs.includes('work.vexwork.operational-console.outcome'), true);
   assert.equal(refs.includes('work.vexwork.operational-console.multi-fulfiller-routing'), false);
-  assert.deepEqual(project.repositoryRefs, ['repo.vexwork', 'repo.vextreme']);
+  assert.deepEqual(project.repositoryRefs, ['repo.vexwork', 'repo.vextreme', 'repo.vexcommerce-storefront-reference']);
 
   assert.deepEqual(childRefs(graph, 'work.vexwork.operational-console.outcome'), [
     'work.vexwork.operational-console.antique-pilot',
@@ -39,6 +39,10 @@ test('Operational Console progression keeps patient zero before generalized comm
   ]);
   assert.deepEqual(byRef.get('work.vexwork.operational-console.commerce-template').dependencyRefs, [
     'work.vexwork.operational-console.operating-domain-template',
+  ]);
+  assert.deepEqual(byRef.get('work.vexwork.operational-console.commerce-ai-site').repositoryRefs, [
+    'repo.vexwork',
+    'repo.vexcommerce-storefront-reference',
   ]);
   assert.deepEqual(byRef.get('work.vexwork.operational-console.antique-pilot').dependencyRefs, [
     'work.vexwork.operational-console.commerce-template',
