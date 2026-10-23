@@ -1496,13 +1496,14 @@
       "project": {
         "projectRef": "project.vexlife.tocompletion",
         "label": "VexLife ToCompletion",
-        "purpose": "Carry the full VexLife ToCompletion horizon: P0/P0B truth and durable work continuity; P1-P4 fresh Heretic Core; P5-P6 developmental continuity, School and Training Placement with optional earned Birth; and P7 whole-product connected/native expansion under the same Vex foundations.",
+        "purpose": "Carry the full VexLife ToCompletion horizon while making the current unfinished edge obvious: P1-P4 lived core is terminal, G02/G03 developmental continuity is terminal and evidence-gated before G04, and ordinary fresh-user productization is actively converging setup safety into the accepted Heretic establishment composition before later explicit existing-Home upgrade and whole-product horizons.",
         "rootWorkRefs": [
           "work.vexlife.tocompletion.outcome"
         ],
         "repositoryRefs": [
           "repo.vexwork",
-          "repo.vexlife"
+          "repo.vexlife",
+          "repo.vextreme-sdk"
         ],
         "sourceRefs": [
           "github.issue.vexlife.866",
@@ -1512,7 +1513,10 @@
           "projects/vexlife-tocompletion/README.md",
           "docs/process/FORM-PROJECT.md",
           "github.issue.vexlife.866.comment.6280226452",
-          "map.vexlife.tocompletion.nested-pathway.20261019a"
+          "map.vexlife.tocompletion.nested-pathway.20261019a",
+          "github.pull.vexlife.919",
+          "github.pull.vexlife.873",
+          "github.issue.vexlife.866.comment.6357923021"
         ],
         "formedAt": "2026-10-22T00:13:43.000Z"
       },
@@ -1522,7 +1526,7 @@
         {
           "workRef": "work.vexlife.tocompletion.outcome",
           "label": "VexLife ToCompletion",
-          "purpose": "Carry the full VexLife ToCompletion trajectory: reconcile current truth, establish a fresh-user-capable restartable Heretic Companion, prove bounded real work, prove honest lived continuity/learning, route earned development through Cultivation/School/Training Placement/Birth, and mature connected/native product branches on the same Home/identity/capability laws.",
+          "purpose": "Carry the full VexLife ToCompletion trajectory: preserve the terminal P1-P4 lived core, preserve terminal G02/G03 developmental continuity without fabricating G04, actively complete ordinary fresh-user Heretic productization through the rightful setup-safety owner, and later mature earned developmental and connected/native horizons under the same Home/identity/capability laws.",
           "workClass": "OUTCOME",
           "state": "RUNNING",
           "workDisposition": "ACTIVE",
@@ -1537,7 +1541,8 @@
             "work.vexlife.tocompletion.p4.typed-local-effect",
             "work.vexlife.tocompletion.p5.lived-continuity-learning",
             "work.vexlife.tocompletion.p6.cultivation-training-birth",
-            "work.vexlife.tocompletion.p7.whole-product-expansion"
+            "work.vexlife.tocompletion.p7.whole-product-expansion",
+            "work.vexlife.tocompletion.productization.ordinary-heretic-setup"
           ],
           "dependencyRefs": [],
           "repositoryRefs": [
@@ -1550,14 +1555,17 @@
             "github.issue.vexlife.866",
             "github.issue.vexlife.866.comment.6330185511",
             "github.issue.vexlife.866.comment.6280226452",
-            "map.vexlife.tocompletion.nested-pathway.20261019a"
+            "map.vexlife.tocompletion.nested-pathway.20261019a",
+            "github.issue.vexlife.866.comment.6357923021",
+            "github.pull.vexlife.919",
+            "github.pull.vexlife.873"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-22T00:13:43.000Z",
-          "updatedAt": "2026-10-22T01:55:06.000Z",
+          "updatedAt": "2026-10-23T05:30:00.000Z",
           "transitionHistory": []
         },
         {
@@ -1971,9 +1979,9 @@
         {
           "workRef": "work.vexlife.tocompletion.p5.g02-semantic-authority-materializer",
           "label": "P5 G02 — establish rightful semantic-authority materializer",
-          "purpose": "Use the exact A054 lived turn/effect as G01 evidence and close the missing owner-side Memory/Safety semantic-authority materializer needed for one device-private G02 candidate; VexLife may consume the resulting canonical ledger but must not mint its own classification, consent or acceptance authority.",
+          "purpose": "Terminally close the rightful Memory/Safety semantic-authority -> source-bound G02 Score continuity path for the A054 lived episode, including accepted SDK/VexLife source corrections, durable Score commit, historical/source-descent verification and fresh-process readback.",
           "workClass": "TASK",
-          "state": "RUNNING",
+          "state": "COMPLETED",
           "workDisposition": "ACTIVE",
           "priorityClass": "IMMEDIATE",
           "parentWorkRefOrNull": "work.vexlife.tocompletion.p5.lived-continuity-learning",
@@ -1986,7 +1994,8 @@
           ],
           "repositoryRefs": [
             "repo.vexwork",
-            "repo.vexlife"
+            "repo.vexlife",
+            "repo.vextreme-sdk"
           ],
           "sourceRefs": [
             "github.issue.vexlife.866",
@@ -2001,14 +2010,17 @@
             "claim.vextreme-sdk.vexlife-tocompletion.p5.g02-semantic-authority-materializer.20261022a",
             "github.issue.vextreme-sdk.225.comment.6330620123",
             "github.issue.vextreme-sdk.225.comment.6330658616",
-            "github.issue.vextreme-sdk.225.comment.6330760587"
+            "github.issue.vextreme-sdk.225.comment.6330760587",
+            "github.pull.vextreme-sdk.1890",
+            "github.pull.vexlife.918",
+            "github.issue.vexlife.866.comment.6356366903"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-22T01:08:02.000Z",
-          "updatedAt": "2026-10-22T01:39:00.000Z",
+          "updatedAt": "2026-10-23T05:30:00.000Z",
           "transitionHistory": [
             {
               "transitionRef": "transition.vexlife.tocompletion.p5.g02-semantic-authority-materializer.source-claim-running",
@@ -2022,6 +2034,30 @@
                 "claim.vextreme-sdk.vexlife-tocompletion.p5.g02-semantic-authority-materializer.20261022a"
               ],
               "createdAt": "2026-10-22T01:18:00.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.tocompletion.p5.g02-semantic-authority-materializer.verifying.a067-terminal",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "Accepted SDK/VexLife source corrections plus the recovered durable Score effect reached exact current, historical, source-descent and fresh-process verification.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.issue.vexlife.866.comment.6356366903",
+                "github.pull.vexlife.918",
+                "github.pull.vextreme-sdk.1890"
+              ],
+              "createdAt": "2026-10-23T05:30:00.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.tocompletion.p5.g02-semantic-authority-materializer.completed.a067-terminal-lived-pass",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "A067 earned P5_G02_RETAINED_HOME_CONTINUITY_PASS with exact durable Score/semantic-authority heads, historical verification, source descent and fresh-process readback while Dream/Rhythm/training/weights/sync/publication remained false.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.issue.vexlife.866.comment.6356366903"
+              ],
+              "createdAt": "2026-10-23T05:30:00.000Z"
             }
           ]
         },
@@ -2056,9 +2092,9 @@
         {
           "workRef": "work.vexlife.tocompletion.p5.g02.sdk-runner-a057",
           "label": "P5 G02 A057 — use SDK-bound Mac runner",
-          "purpose": "Form one fresh compatible A057 attempt with the unchanged four-file Memory/Safety payload and current Relay authority shape, but execute the outer task through SDK's RUN-VEX-TASK.command / profile.repository.vextreme-sdk.macos-v1 instead of the VexLife-bound runner.",
+          "purpose": "Complete the SDK-bound Relay execution-surface correction that unblocked the Memory/Safety semantic-authority source candidate; later SDK readiness/source acceptance is preserved as terminal history rather than a current execution edge.",
           "workClass": "TASK",
-          "state": "READY",
+          "state": "COMPLETED",
           "workDisposition": "ACTIVE",
           "priorityClass": "IMMEDIATE",
           "parentWorkRefOrNull": "work.vexlife.tocompletion.p5.g02-semantic-authority-materializer",
@@ -2068,31 +2104,64 @@
           ],
           "repositoryRefs": [
             "repo.vexwork",
-            "repo.vexlife"
+            "repo.vexlife",
+            "repo.vextreme-sdk"
           ],
           "sourceRefs": [
             "github.issue.vextreme-sdk.225.comment.6330760587",
-            "claim.vextreme-sdk.vexlife-tocompletion.p5.g02-semantic-authority-materializer.20261022a"
+            "claim.vextreme-sdk.vexlife-tocompletion.p5.g02-semantic-authority-materializer.20261022a",
+            "github.pull.vextreme-sdk.1890",
+            "github.pull.vextreme-sdk.1893"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-22T01:39:00.000Z",
-          "updatedAt": "2026-10-22T01:39:00.000Z",
+          "updatedAt": "2026-10-23T05:30:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.tocompletion.p5.g03.daily-memory-dream",
+          "label": "P5 G03 — bounded Daily Memory-only Dream",
+          "purpose": "Preserve the terminal lived memory-only Daily Stratum over the exact G01/G02/semantic-authority frontier, including direct, historical and fresh-process verification, while keeping new semantic acceptance, first-person authority, Rhythm, training, weights, synchronization and publication false.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.tocompletion.p5.lived-continuity-learning",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.tocompletion.p5.g02-semantic-authority-materializer"
+          ],
+          "repositoryRefs": [
+            "repo.vexlife",
+            "repo.vextreme-sdk"
+          ],
+          "sourceRefs": [
+            "github.issue.vexlife.866.comment.6356465627",
+            "evidence.vexlife.tocompletion.p5.g03.a069.terminal-lived-pass"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-23T05:30:00.000Z",
+          "updatedAt": "2026-10-23T05:30:00.000Z",
           "transitionHistory": []
         },
         {
           "workRef": "work.vexlife.tocompletion.p5.lived-continuity-learning",
           "label": "P5 — lived continuity and learning",
-          "purpose": "Prove that one real lived VexLife episode can become durable, source-attributed continuity through the rightful Score/Memory/consent owners, survive restart, and influence later lived context without overstating Dream, Rhythm, training or weight mutation.",
+          "purpose": "Preserve the lived developmental frontier after terminal G02 Score continuity and terminal G03 memory-only Daily Dream. Resume only when another ordinary source-bound episode/correction/recurrence creates real Continuity Evolution evidence; do not manufacture G04 Rhythm, training or weight work from the absence of evidence.",
           "workClass": "OUTCOME",
-          "state": "RUNNING",
+          "state": "PAUSED_AT_CHECKPOINT",
           "workDisposition": "ACTIVE",
           "priorityClass": "IMMEDIATE",
           "parentWorkRefOrNull": "work.vexlife.tocompletion.outcome",
           "childWorkRefs": [
-            "work.vexlife.tocompletion.p5.g02-semantic-authority-materializer"
+            "work.vexlife.tocompletion.p5.g02-semantic-authority-materializer",
+            "work.vexlife.tocompletion.p5.g03.daily-memory-dream"
           ],
           "dependencyRefs": [
             "work.vexlife.tocompletion.p4.typed-local-effect"
@@ -2106,15 +2175,30 @@
             "github.issue.vexlife.866.comment.6330185511",
             "evidence.vexlife.tocompletion.p4.lived.a054.return.sha256.3a36c72a984d9d5c0eed1e362f914f329b3e26dfb8b51083014a1578deecf09c",
             "source.vexlife.continuity-evolution",
-            "source.vexlife.score-context-continuity"
+            "source.vexlife.score-context-continuity",
+            "github.issue.vexlife.866.comment.6356366903",
+            "github.issue.vexlife.866.comment.6356465627"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
-          "authorityDisposition": "AUTHORIZED_BOUNDED",
-          "effectDisposition": "EFFECTS_BOUND",
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-10-22T01:08:02.000Z",
-          "updatedAt": "2026-10-22T01:08:02.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-10-23T05:30:00.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexlife.tocompletion.p5.lived-continuity-learning.paused.g03-terminal-no-g04-evidence",
+              "priorState": "RUNNING",
+              "nextState": "PAUSED_AT_CHECKPOINT",
+              "reason": "G02 and G03 are terminal lived passes, but one memory-only Daily Stratum does not establish recurrent developmental evidence. Pause developmental effects until an ordinary source-bound episode/correction/recurrence earns Continuity Evolution and possible G04 evaluation.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.issue.vexlife.866.comment.6356366903",
+                "github.issue.vexlife.866.comment.6356465627"
+              ],
+              "createdAt": "2026-10-23T05:30:00.000Z"
+            }
+          ]
         },
         {
           "workRef": "work.vexlife.tocompletion.p6.cultivation-training-birth",
@@ -2176,6 +2260,101 @@
           "createdAt": "2026-10-20T00:14:25.000Z",
           "updatedAt": "2026-10-20T00:14:25.000Z",
           "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.tocompletion.productization.heretic-normal-start-integration",
+          "label": "Normal-start integration — route safe setup into accepted Heretic establishment",
+          "purpose": "After setup-safety convergence, connect normal fresh startup to the accepted Heretic product target and merged PR #919 establishment composition, then carry the exact runtime receipt/endpoint into the existing Browser/Companion start without rebuilding Artifact Delivery/runtime ownership, blindly swapping activeModelBundleRef, or silently migrating an existing Home.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": "work.vexlife.tocompletion.productization.ordinary-heretic-setup",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.tocompletion.productization.setup-safety-convergence"
+          ],
+          "repositoryRefs": [
+            "repo.vexlife",
+            "repo.vextreme-sdk"
+          ],
+          "sourceRefs": [
+            "github.pull.vexlife.919",
+            "github.pull.vexlife.873",
+            "github.issue.vexlife.857",
+            "github.issue.vexlife.866"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-23T05:30:00.000Z",
+          "updatedAt": "2026-10-23T05:30:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.tocompletion.productization.ordinary-heretic-setup",
+          "label": "Ordinary productization — safe fresh setup enters Heretic",
+          "purpose": "Complete the ordinary fresh-user Mac route so the repository-owned setup path preserves setup-session safety and enters the accepted Heretic establishment/runtime/Conversation composition instead of centering the legacy G0 Qwen3.5/llama.cpp initializer.",
+          "workClass": "OUTCOME",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": "work.vexlife.tocompletion.outcome",
+          "childWorkRefs": [
+            "work.vexlife.tocompletion.productization.heretic-normal-start-integration",
+            "work.vexlife.tocompletion.productization.setup-safety-convergence"
+          ],
+          "dependencyRefs": [
+            "work.vexlife.tocompletion.p4.typed-local-effect"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife",
+            "repo.vextreme-sdk"
+          ],
+          "sourceRefs": [
+            "github.issue.vexlife.866",
+            "github.issue.vexlife.857",
+            "github.pull.vexlife.919",
+            "github.pull.vexlife.873",
+            "projects/vexlife-tocompletion/README.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-23T05:30:00.000Z",
+          "updatedAt": "2026-10-23T05:30:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.tocompletion.productization.setup-safety-convergence",
+          "label": "Setup safety convergence — currentize and finish PR #873",
+          "purpose": "Actively re-ground, ordinary-forward currentize, prove and finish the existing PR #873 setup-safety owner against current VexLife main while preserving one Home-scoped setup owner, cancellation, resumable partial state, exact pending-runtime ownership, progress/debuggability and preservation-safe cleanup. This task does not decide model identity.",
+          "workClass": "TASK",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": "work.vexlife.tocompletion.productization.ordinary-heretic-setup",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexlife"
+          ],
+          "sourceRefs": [
+            "github.pull.vexlife.873",
+            "github.issue.vexlife.872",
+            "github.issue.vexlife.866.comment.6357923021",
+            "github.pull.vexlife.919"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-23T05:30:00.000Z",
+          "updatedAt": "2026-10-23T05:30:00.000Z",
+          "transitionHistory": []
         }
       ],
       "lanes": [
@@ -2188,6 +2367,7 @@
           "laneRef": "lane.work.planned",
           "label": "Planned",
           "workRefs": [
+            "work.vexlife.tocompletion.productization.heretic-normal-start-integration",
             "work.vexlife.tocompletion.p6.cultivation-training-birth",
             "work.vexlife.tocompletion.p7.whole-product-expansion"
           ]
@@ -2195,23 +2375,23 @@
         {
           "laneRef": "lane.work.ready",
           "label": "Ready",
-          "workRefs": [
-            "work.vexlife.tocompletion.p5.g02.sdk-runner-a057"
-          ]
+          "workRefs": []
         },
         {
           "laneRef": "lane.work.active",
           "label": "Active",
           "workRefs": [
             "work.vexlife.tocompletion.outcome",
-            "work.vexlife.tocompletion.p5.g02-semantic-authority-materializer",
-            "work.vexlife.tocompletion.p5.lived-continuity-learning"
+            "work.vexlife.tocompletion.productization.ordinary-heretic-setup",
+            "work.vexlife.tocompletion.productization.setup-safety-convergence"
           ]
         },
         {
           "laneRef": "lane.work.waiting",
           "label": "Waiting",
-          "workRefs": []
+          "workRefs": [
+            "work.vexlife.tocompletion.p5.lived-continuity-learning"
+          ]
         },
         {
           "laneRef": "lane.work.needs-human",
@@ -2237,12 +2417,15 @@
             "work.vexlife.tocompletion.p4.runtime-currentness-a054",
             "work.vexlife.tocompletion.p4.source-acceptance",
             "work.vexlife.tocompletion.p4.typed-local-effect",
+            "work.vexlife.tocompletion.p5.g02-semantic-authority-materializer",
             "work.vexlife.tocompletion.p5.g02.coder-harness-a055-a056",
+            "work.vexlife.tocompletion.p5.g02.sdk-runner-a057",
             "work.vexlife.tocompletion.p0.research-closure",
             "work.vexlife.tocompletion.p0b.foundation",
             "work.vexlife.tocompletion.p1.heretic-establishment",
             "work.vexlife.tocompletion.p2.first-lived-turn",
-            "work.vexlife.tocompletion.p3.restart-durability"
+            "work.vexlife.tocompletion.p3.restart-durability",
+            "work.vexlife.tocompletion.p5.g03.daily-memory-dream"
           ]
         },
         {
@@ -2252,20 +2435,20 @@
         }
       ],
       "summary": {
-        "workItemCount": 17,
-        "openWorkItemCount": 6,
-        "outcomeCount": 5,
-        "taskCount": 12,
+        "workItemCount": 21,
+        "openWorkItemCount": 7,
+        "outcomeCount": 6,
+        "taskCount": 15,
         "defectCount": 0,
         "potentialCount": 0,
         "needsHumanCount": 0,
-        "completedCount": 11
+        "completedCount": 14
       },
       "rootItems": [
         {
           "workRef": "work.vexlife.tocompletion.outcome",
           "label": "VexLife ToCompletion",
-          "purpose": "Carry the full VexLife ToCompletion trajectory: reconcile current truth, establish a fresh-user-capable restartable Heretic Companion, prove bounded real work, prove honest lived continuity/learning, route earned development through Cultivation/School/Training Placement/Birth, and mature connected/native product branches on the same Home/identity/capability laws.",
+          "purpose": "Carry the full VexLife ToCompletion trajectory: preserve the terminal P1-P4 lived core, preserve terminal G02/G03 developmental continuity without fabricating G04, actively complete ordinary fresh-user Heretic productization through the rightful setup-safety owner, and later mature earned developmental and connected/native horizons under the same Home/identity/capability laws.",
           "workClass": "OUTCOME",
           "state": "RUNNING",
           "workDisposition": "ACTIVE",
@@ -2280,7 +2463,8 @@
             "work.vexlife.tocompletion.p4.typed-local-effect",
             "work.vexlife.tocompletion.p5.lived-continuity-learning",
             "work.vexlife.tocompletion.p6.cultivation-training-birth",
-            "work.vexlife.tocompletion.p7.whole-product-expansion"
+            "work.vexlife.tocompletion.p7.whole-product-expansion",
+            "work.vexlife.tocompletion.productization.ordinary-heretic-setup"
           ],
           "dependencyRefs": [],
           "repositoryRefs": [
@@ -2293,14 +2477,17 @@
             "github.issue.vexlife.866",
             "github.issue.vexlife.866.comment.6330185511",
             "github.issue.vexlife.866.comment.6280226452",
-            "map.vexlife.tocompletion.nested-pathway.20261019a"
+            "map.vexlife.tocompletion.nested-pathway.20261019a",
+            "github.issue.vexlife.866.comment.6357923021",
+            "github.pull.vexlife.919",
+            "github.pull.vexlife.873"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-22T00:13:43.000Z",
-          "updatedAt": "2026-10-22T01:55:06.000Z",
+          "updatedAt": "2026-10-23T05:30:00.000Z",
           "transitionHistory": []
         }
       ]
