@@ -24,18 +24,27 @@ function directOwners(relativePath, sources) {
     .map(({ name }) => name);
 }
 
-test('every core module has a direct deterministic regression surface', () => {
-  const sources = testSources();
-  const coreModules = fs.readdirSync(path.join(ROOT, 'src', 'core'))
-    .filter((name) => name.endsWith('.mjs'))
-    .sort();
+function sourceModules(root, relative = '') {
+  const absolute = path.join(root, relative);
+  const modules = [];
+  for (const entry of fs.readdirSync(absolute, { withFileTypes: true })) {
+    const next = path.join(relative, entry.name);
+    if (entry.isDirectory()) modules.push(...sourceModules(root, next));
+    else if (entry.isFile() && entry.name.endsWith('.mjs')) modules.push(next.split(path.sep).join('/'));
+  }
+  return modules.sort();
+}
 
-  assert.ok(coreModules.length > 0, 'expected at least one src/core module');
-  for (const name of coreModules) {
-    const relativePath = `src/core/${name}`;
+test('every durable src module has a direct deterministic regression surface', () => {
+  const sources = testSources();
+  const modules = sourceModules(path.join(ROOT, 'src'));
+
+  assert.ok(modules.length > 0, 'expected at least one src module');
+  for (const relative of modules) {
+    const relativePath = `src/${relative}`;
     assert.ok(
       directOwners(relativePath, sources).length > 0,
-      `${relativePath} has no direct test owner; add or name its regression surface before expanding core`,
+      `${relativePath} has no direct test owner; add or name its regression surface before expanding source behavior`,
     );
   }
 });
