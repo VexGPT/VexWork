@@ -127,3 +127,17 @@ test('Connected Services is discoverable as a real Project with the current live
   assert.equal(connected.items.some((item) => item.workRef === 'work.vexlife.connected-services.guided-onboarding'), false);
   assert.equal(workspace.parkingLot.items.some((item) => item.workRef === 'work.vexlife.connected-services.guided-onboarding'), true);
 });
+
+test('VexBoard is discoverable with BoardGraph as the next ready edge', () => {
+  const workspace = buildWorkspace();
+  const vexboard = workspace.projects.find((entry) => entry.project.projectRef === 'project.vexboard');
+  assert.ok(vexboard);
+  assert.equal(vexboard.summary.workItemCount, 7);
+  assert.equal(vexboard.summary.openWorkItemCount, 6);
+  assert.equal(vexboard.items.find((item) => item.workRef === 'work.vexboard.project-architecture').state, 'COMPLETED');
+  assert.equal(vexboard.items.find((item) => item.workRef === 'work.vexboard.boardgraph-contract').state, 'READY');
+  assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.ready').workRefs.includes('work.vexboard.boardgraph-contract'), true);
+  assert.equal(vexboard.project.sourceRefs.includes('projects/vexboard/README.md'), true);
+});
+
+// [VXG RealForever]
