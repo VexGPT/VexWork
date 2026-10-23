@@ -71,6 +71,187 @@ visual object
 
 The objective is not to reproduce another product's toolbar. It is to make visual planning and process understanding a durable, executable-quality design surface for Vex.
 
+## Foundation correction — one shared human / AI board toolkit
+
+The first proving ground should exercise the reusable **board operations themselves**, rather than
+waiting until a later rich-editor phase to discover whether humans and AI can manipulate the same
+canvas truth.
+
+"AI-first" therefore does **not** mean "AI-only." The durable requirement is:
+
+```text
+human toolbar gesture ---------\
+                                +-> one typed Board Control
+AI board function call --------/        |
+                                         v
+                          resolve against CURRENT
+                          BoardGraph + BoardProjection
+                                         |
+                                         v
+                                   Board Act
+                                         |
+                         +---------------+---------------+
+                         |                               |
+                         v                               v
+                    BoardPatch                    ProjectionPatch
+                 semantic meaning              spatial presentation
+                         |                               |
+                         +---------------+---------------+
+                                         v
+                              validated next state
+```
+
+This follows architectural lessons already proven elsewhere in the Vex family without importing
+their implementation as VexBoard ownership:
+
+- VexLife-Android SCAE keeps **current truth, stable Control, resolved Act and Effect** distinct.
+- Convergence Relay combines independently-owned current truths into explicit relationship truth
+  without flattening the participants into one mega-State.
+- VexLife Atlas / Process Factory uses stable refs, thin bounded projections and typed
+  `functionRef + arguments + dependencies` rather than requiring the model to ingest an entire
+  world before acting.
+
+Those are lineage patterns, not VexBoard runtime dependencies. The first VexBoard implementation
+must earn its own smallest vocabulary from the proving ground.
+
+### Shared Board Control surface
+
+The exact schema and names remain provisional, but the first toolkit should be capable of expressing
+the same operation whether it originates from a toolbar, keyboard/pointer interaction, test fixture
+or AI function call.
+
+The initial operation families should cover roughly:
+
+```text
+CREATE
+  create semantic object + its first projection item
+
+ARRANGE
+  move
+  resize
+  set layer / front / back
+
+CONTAIN
+  explicitly nest / unnest semantic meaning
+
+CONNECT
+  create or change one explicit relationship
+
+PRESENT
+  choose projection shape / frame treatment
+  apply bounded visual treatment
+
+NAVIGATE
+  select / focus
+  enter / return
+  expand / collapse
+
+EXCHANGE
+  export deterministic board snapshot
+  query a bounded board neighborhood
+  reload / compare a snapshot
+```
+
+The semantic resolver decides what an operation means from current truth. A human drag and an AI
+request must not bypass into different mutation models.
+
+Permanent:
+
+```text
+BOARD_CONTROL != BOARD_ACT
+BOARD_GRAPH_PATCH != PROJECTION_PATCH
+
+MOVE_OR_RESIZE != SEMANTIC_REPARENT
+VISUAL_OVERLAP != SEMANTIC_CONTAINMENT
+Z_ORDER != SEMANTIC_PRIORITY
+SHAPE_KIND != NODE_KIND
+
+HUMAN_TOOLBAR_ACTION
+AND AI_FUNCTION_CALL
+-> SAME_CONTROL_CONTRACT
+```
+
+### Projection geometry is addressable, but it is not semantic identity
+
+BoardProjection should intentionally carry enough spatial information for a board to round-trip and
+for AI to perceive the current map:
+
+```text
+projectionItemRef
+semanticRef
+bounds
+  x
+  y
+  width
+  height
+layer / z-order
+optional parent projection/frame ref
+visibility / expansion state
+layout intent / constraints where earned
+```
+
+Coordinates are useful current projection truth. They are not BoardGraph identity.
+
+One formation reference supplied from Lucidspark demonstrated why this separation matters: its CSV
+projection preserved object kinds, stable shape IDs, text and explicit `Contained By` relationships,
+while the exported table did not carry enough x/y/size/layer geometry to reconstruct the visible
+canvas by itself. VexBoard should improve that boundary rather than copy it.
+
+```text
+EXPORTABLE_OBJECT_LEDGER
+!=
+FULL_FIDELITY_BOARD_SNAPSHOT
+```
+
+A VexBoard snapshot should therefore be able to preserve both:
+
+```text
+BoardGraph
+  stable semantic topology
+
+BoardProjection
+  exact current spatial realization
+```
+
+and a model-facing bounded query should be able to return a small Atlas-like neighborhood around
+selected refs instead of serializing the entire board into every conversation.
+
+### First interactive proving ground
+
+Before the authored website patient zero grows into a full prototype, establish a deliberately small
+blank-canvas proof:
+
+```text
+blank scalable canvas
+-> create a few primitive visual forms
+-> select
+-> move
+-> resize
+-> layer front/back
+-> explicitly nest one object in a container/frame
+-> connect two objects
+-> export snapshot
+-> reload snapshot
+-> same stable refs + semantic relationships + projection geometry
+```
+
+At least one equivalent board mutation sequence should be driven through the human toolbar and
+through the AI/tool-call surface and converge on the same validated meaning.
+
+The first toolbar should expose only the toolkit families actually implemented. A useful early
+grouping is:
+
+```text
+CREATE      shape / text / frame / connector
+ARRANGE     move / resize / layer / explicit containment
+MEANING     semantic kind / relationship / portal when earned
+NAVIGATE    select / focus / enter / expand / collapse
+EXCHANGE    export / import / bounded AI query
+```
+
+This is a proving ground, not a commitment to clone another product's toolbar or ship a complete
+manual visual editor before the semantic contracts are understood.
+
 ## Product identity
 
 **VexBoard** is the product/project name.
@@ -299,6 +480,193 @@ INSTANTIATE REUSABLE MODULE
 
 Copy/paste must not accidentally create hidden shared state, and reusable instances must not become silent detached copies.
 
+## Next-next-next proving foundation — reusable templates, inheritance and declared variance
+
+Once relational topology can be represented and navigated, VexBoard should prove that repeated design
+structure can have **one reusable source** rather than becoming copied drawing fragments.
+
+The motivating example is a website shell:
+
+```text
+Website Foundation Template
+  Header
+  Navigation
+  Content slot
+  Footer
+
+        |
+        +-> Home Screen instance
+        +-> About Screen instance
+        +-> Contact Screen instance
+        +-> Experimental Screen instance
+```
+
+Changing the canonical Header should update every linked instance that has not explicitly declared a
+different value. The board should not require a human to hunt through every Screen and manually
+repair copied headers.
+
+The exact schema names remain provisional, but the semantic roles should distinguish:
+
+```text
+TEMPLATE SOURCE
+  one canonical reusable design definition
+
+TEMPLATE INSTANCE
+  one placement/use of that source
+
+PARAMETER / SLOT BINDING
+  admitted instance-specific content without redefining the template
+
+DECLARED VARIANCE
+  one bounded intentional exception that remains linked to the source
+
+DETACHED UNIQUE DERIVATIVE
+  an intentional fork that no longer receives future source updates
+```
+
+Permanent:
+
+```text
+TEMPLATE_INSTANCE != COPIED_SUBGRAPH
+INSTANCE_PARAMETER != TEMPLATE_FORK
+DECLARED_VARIANCE != DETACH
+DETACHED_UNIQUE != HIDDEN_STALE_COPY
+```
+
+### Propagation should be source-driven and inspectable
+
+A template update should conceptually resolve:
+
+```text
+prior template revision
+-> next template revision
+-> linked instances
+-> parameter bindings
+-> declared variance overlays
+-> compatibility / conflict check
+-> next projected instances
+```
+
+The root template should maintain a reverse-addressable dependency view so human or AI can answer:
+
+```text
+where is this Header reused?
+which Screens inherit it exactly?
+which Screens carry declared exceptions?
+which derivatives were detached?
+which template update cannot currently propagate cleanly?
+```
+
+This is the same one-source-many-projections discipline used elsewhere in Vex: a reusable definition
+owns its meaning; instances project/use it without becoming independent sources by accident.
+
+### Exception is a governed variance, not a secret copy
+
+A Screen may legitimately need a different Header.
+
+The first human interaction may look like a right-click action such as:
+
+```text
+Declare exception...
+```
+
+The action should require a short human-readable reason before the variance becomes accepted:
+
+```text
+reason
+affected semantic/property refs
+expected duration or permanence when useful
+optional related requirement/source ref
+```
+
+The resulting instance stays linked to the root template. Future template changes continue to
+propagate outside the explicitly overridden surface.
+
+The root/source view should expose backlinks:
+
+```text
+Header Template
+  exact instances: 11
+  declared variances: 2
+    -> Experimental Checkout
+       reason: tests compact navigation variant
+    -> Kiosk Screen
+       reason: no account controls in kiosk mode
+```
+
+A human or AI can enter either variance and return to the root without searching the whole board.
+
+### Make unique is the stronger operation
+
+A separate action such as:
+
+```text
+Make unique / detach from template...
+```
+
+should be used only when the object is intended to evolve independently.
+
+That transition should require an explicit reason and preserve provenance:
+
+```text
+derivedFromTemplateRef
+detachedFromRevision
+reason
+new stable refs where required
+```
+
+After detachment:
+
+```text
+future template update
+-> does not silently mutate detached derivative
+```
+
+but the template/root can still point to the derivative as a known lineage relation.
+
+This prevents "unique" from becoming the ordinary escape hatch that recreates stale Sketch/Figma
+copies.
+
+### Templates may be fractal
+
+A whole Screen may be templated, but so may smaller reusable meaning:
+
+```text
+site shell
+header
+navigation group
+form pattern
+card
+process module
+decision family
+onboarding step
+```
+
+A template can contain other template instances. The graph must reject accidental template
+inheritance cycles and preserve explicit source lineage.
+
+```text
+TEMPLATE_REUSE_LOOP != VALID_PROCESS_FLOW_LOOP
+```
+
+### Template proving cases
+
+Before relying on templates for real webpage blueprints, prove:
+
+```text
+one Header source -> three Screen instances
+root Header edit -> all exact instances update
+one parameterized instance -> source update + parameter preserved
+one declared variance -> source update propagates outside variance
+variance reason/backlink visible from root and instance
+variance removed -> instance reconverges with source
+make unique -> later root update does not alter derivative
+nested template instance
+cycle attempt fails closed
+export/reload preserves template/instance/variance lineage
+human and AI use the same template Controls
+```
+
 ## Interactive experience semantics
 
 A CONTROL should be behavior-addressable rather than merely styled like a button.
@@ -402,9 +770,1073 @@ The user's mention of Fibonacci-like growth expresses a real design need: deeper
 AESTHETIC_HEURISTIC != SEMANTIC_IDENTITY
 ```
 
+### Next proving foundation — spatial arrangement and connector routing
+
+After primitive create/move/resize/layer/contain/connect operations are proven, the next layer should
+make a board **organize itself readably without surrendering human control**.
+
+This is not merely a beautification pass. It is a deterministic spatial reasoning layer over the
+current BoardGraph + BoardProjection:
+
+```text
+semantic topology
++ projection bounds
++ containment
++ sequence / branch meaning
++ layout intent
++ current anchors / locks
+        |
+        v
+spatial arrangement
++ obstacle map
++ connector routing
++ local collision repair
+        |
+        v
+next BoardProjection
+```
+
+The first implementation should prefer one projection-owned **layout metric profile** rather than a
+continuously drifting arithmetic average of every current node. A useful profile may be initialized
+from observed content pressure, but should preserve a stable visual rhythm through bounded metrics:
+
+```text
+base unit
+default node width / height
+minimum readable width / height
+horizontal / vertical gap
+container padding
+connector gutter
+label padding
+size classes or quantized multiples
+```
+
+This lets ordinary nodes share a coherent scale while allowing content-heavy nodes, portals and
+expanded modules to occupy larger multiples without redefining the entire board's spacing every time
+one object changes.
+
+```text
+CONTENT_FIT_MAY_EXPAND_NODE
+!=
+ONE_LARGE_NODE_REDEFINES_GLOBAL_SCALE
+```
+
+#### Position awareness and local occupancy
+
+Every projected object should be reasoned about as a spatial participant:
+
+```text
+bounds
+preferred / minimum bounds
+container bounds
+nearby obstacle bounds
+reserved connector corridors
+anchor / lock state
+semantic neighbors
+incoming / outgoing relationships
+```
+
+The solver should maintain a bounded spatial/occupancy index so it can answer questions such as:
+
+```text
+what occupies the region to my right?
+is the vertical gap between these nodes readable?
+is this connector corridor clear?
+can this module expand here without displacing an unrelated region?
+which nearby objects would move if I create room locally?
+```
+
+Human placement remains meaningful. Auto-layout should first preserve explicit anchors and repair the
+smallest affected neighborhood rather than globally shuffling an already-understood map.
+
+#### Connector routing is a scored spatial decision
+
+Relationship direction remains semantic; the visible route is projection.
+
+For one directed relationship the router should evaluate candidate source/target ports and path
+shapes against the current spatial index. Conceptually:
+
+```text
+candidate port pairs
+-> direct orthogonal route when clear
+-> one-bend elbow when clear
+-> two-bend dogleg / U-turn when clear
+-> bounded local gutter expansion / node reflow
+-> explicit degraded rendering only when presentation cannot currently realize a clean route
+```
+
+Candidate routes can be ranked by a deterministic cost function using pressures such as:
+
+```text
+obstacle collision               forbidden / very high cost
+node or container penetration    forbidden unless semantically admitted
+edge crossing                    high cost
+label collision                  high cost
+insufficient clearance           high cost
+bend count                       moderate cost
+route length                     moderate cost
+departure opposite target        moderate cost
+movement of unrelated anchors    high cost
+preserving prior accepted route  preferred
+semantic reading direction       preferred where lens supplies one
+```
+
+Exact weights should be earned from proving cases rather than frozen from prose.
+
+A route such as:
+
+```text
+row:  [1] [2] [3] [4]
+                  |
+                  v
+                 [5]
+```
+
+should therefore not hard-code "bottom of 4 to top of 5." It should derive candidate geometry from
+the actual relative bounds and available corridors:
+
+```text
+4 bottom -> 5 top
+  preferred when their horizontal overlap / gutter is clear
+
+4 right -> route around -> 5 right
+  useful when a side corridor is clearer than the vertical gap
+
+other source/target ports
+  legal when they minimize crossings, bends and obstruction
+```
+
+If no safe route exists, the preferred response is to create local room or mark the route as
+visually degraded rather than silently discard direction. An arrowhead may be suppressed as a
+presentation choice under extreme density only when the relationship remains explicitly directed
+and inspectable through semantic identity/accessibility.
+
+```text
+ARROWHEAD_HIDDEN
+!=
+EDGE_DIRECTION_UNKNOWN
+```
+
+#### Connectors and nodes may negotiate space
+
+Layout should be able to solve the reciprocal problem:
+
+```text
+nodes create corridors for edges
+AND
+important edges can create spacing pressure on nodes
+```
+
+For example, if a clean U-turn requires a right-side gutter, the local solver may widen the owning
+container or shift a small nearby region instead of routing an unreadable line through several
+objects. This should remain bounded and explainable:
+
+```text
+layoutDecision
+  affectedRefs[]
+  preservedAnchors[]
+  chosenRoute
+  rejectedCandidateReasons[]
+  localMovements[]
+```
+
+That explanation can later support AI inspection, regression fixtures and human "why did this move?"
+feedback without making private solver search history a permanent product artifact.
+
+#### Fractal module expansion uses the same spatial contract
+
+A condensed PROCESS / PORTAL may initially occupy one ordinary node-sized region:
+
+```text
+[ Step 1 ] -> [ Step 2 ] -> [ Existing Process ]
+```
+
+When expanded inline:
+
+```text
+[ Step 1 ] -> [ Step 2 ] -> [ Existing Process
+                               step A -> step B
+                                         |
+                                         v
+                                       step C ]
+```
+
+the owning region requests additional projection space. The solver should:
+
+1. preserve the portal/module's semantic identity;
+2. allocate enough local space for its child projection;
+3. preserve surrounding anchors where possible;
+4. reroute affected connectors;
+5. avoid changing unrelated BoardGraph meaning;
+6. allow collapse to recover the prior compact spatial role.
+
+The same mechanism should work recursively. Depth changes the projection's space demand, not the
+identity of the underlying process.
+
+```text
+INLINE_DEPTH_EXPANSION
+-> LOCAL_SPACE_NEGOTIATION
+-> CONNECTOR_REPAIR
+!=
+GLOBAL_BOARD_REWRITE
+```
+
+#### Spatial proving cases before richer blueprint authoring
+
+The second proving ground should deliberately include small pathological arrangements:
+
+```text
+straight sequence
+right-angle continuation
+U-turn continuation
+branch + merge
+return loop
+dense neighboring nodes
+nested container
+expanded portal/module
+two edges competing for one corridor
+human-pinned node that auto-layout must preserve
+node resize that forces only local rerouting
+```
+
+Each case should prove deterministic output for the same input state, no node/edge overlap outside
+explicitly admitted presentation, stable anchors where possible, and bounded movement when the map
+changes incrementally.
+
+The human should also be able to request:
+
+```text
+auto-arrange this selection
+route this edge more clearly
+make room for this expanded process
+keep these three nodes fixed
+compact this region
+```
+
+through the same shared Board Control contract used by AI.
+
+
+### Next-next proving foundation — relational direction navigation
+
+Once primitive manipulation and spatial arrangement/routing are proven, the next layer should teach
+VexBoard how to **present and traverse branching relationship topology**.
+
+This is different from connector routing:
+
+```text
+connector routing
+  "how can this already-known relationship be drawn clearly?"
+
+relational direction navigation
+  "what kind of relationship fork is this,
+   how many distinct paths leave it,
+   which paths stay in this process,
+   which paths reconverge,
+   and which paths enter another map?"
+```
+
+#### Semantic shape defaults without shape-owned meaning
+
+Some node roles should have recognizable default visual forms so a human can scan a process without
+reading every label. For example, one Process-lens style might conventionally render:
+
+```text
+PROCESS     -> rounded/ordinary process block
+DECISION    -> angled / diamond-like choice form
+ARTIFACT    -> document/data-like form
+PORTAL      -> distinctive enter-map / module form
+REFERENCE   -> linked/source form
+```
+
+Those are projection defaults, not semantic definitions:
+
+```text
+DECISION
+-> may default to diamond presentation
+
+DIAMOND_SHAPE
+!=
+DECISION_SEMANTICS
+
+SHAPE_OVERRIDE
+!=
+SEMANTIC_ROLE_CHANGE
+```
+
+The stable node/relationship refs, labels and accessibility projection must preserve meaning even
+when a lens, theme or human override uses another shape.
+
+#### A branch is topology, not a fan of anonymous arrows
+
+A DECISION / choice point should carry stable outgoing relationship identity. Exact schema fields
+remain to be earned, but the graph needs enough meaning to distinguish conceptually:
+
+```text
+choice point
+  branch A -> destination A
+  branch B -> destination B
+  branch C -> destination C
+  branch D -> destination D
+```
+
+Each branch should be independently addressable so human/AI discussion can say:
+
+```text
+"move choice C to its own process"
+"rename branch B"
+"these two outcomes reconverge"
+"choice D leaves this process and does not return"
+```
+
+A branch label/condition belongs to the relationship meaning; the visual angle or connector port does
+not.
+
+#### Fan-out is a readability budget, not a truth limit
+
+Large flat choice sets become hard to perceive. The first proving ground may use an **eight visible
+branch readability threshold** as a deliberately provisional pressure test:
+
+```text
+visible branch count <= 8
+  ordinary fan-out may remain readable
+
+visible branch count > 8
+  raise design pressure:
+    can related outcomes be grouped?
+    can a category/state object own a smaller sub-choice?
+    should detail move behind a PORTAL?
+    is a menu/list projection more truthful than a radial fan?
+```
+
+Eight is not a semantic maximum and must not reject a real process that truthfully has nine or more
+outcomes.
+
+```text
+FANOUT_OVER_READABILITY_THRESHOLD
+!=
+INVALID_BOARDGRAPH
+```
+
+The right result may be intentional high fan-out, a condensed choice hierarchy, or extraction into a
+deeper board. VexBoard should surface the pressure rather than silently rewriting the human's
+meaning.
+
+#### Branch fan-out can reshape the enclosing projection
+
+A linear process may begin compactly:
+
+```text
+[1] -> [2] -> [3] -> [4]
+                       |
+                       v
+                      [5] -> [6 choice]
+```
+
+When step 6 gains several meaningful outcomes, preserving those old rows at all costs is the wrong
+goal. The enclosing region may reflow into a branch-readable form:
+
+```text
+[1] -> [2] -> [3]
+               |
+              [4] -> [5]
+                       |
+                    < 6 >
+                  /   |   |   \
+                c1    c2  c3   c4
+                |     |         |
+             c1a/c1b ...     enter another process
+                  \   /
+                 converge
+```
+
+The layout engine should estimate the **branch envelope** required by each outgoing subgraph, then
+allocate distinct branch corridors/lanes before routing the individual edges.
+
+Useful inputs include:
+
+```text
+branch count
+estimated descendant footprint
+expected convergence
+portal/terminal destination
+preferred reading direction
+existing human pins
+container bounds
+available whitespace
+neighboring branch envelopes
+```
+
+This permits the solver to reshape the current process region while preserving unrelated outer
+anchors.
+
+```text
+BRANCH_FANOUT_MAY_REFLOW_ENCLOSING_REGION
+!=
+GLOBAL_BOARD_REWRITE
+```
+
+#### Convergence is preserved separately from branching
+
+Several choice paths may later meet at one stable process coordinate.
+
+VexBoard should be able to recognize the visual/topological opportunity:
+
+```text
+choice
+  -> branch A --\
+  -> branch B ----> common downstream coordinate
+  -> branch C --/
+```
+
+but it must not invent new semantic meaning merely because graph topology shares a descendant.
+
+```text
+COMMON_DOWNSTREAM_NODE
+!=
+NEW_SEMANTIC_CONVERGENCE_KIND_AUTOMATICALLY
+```
+
+When the source explicitly says branches converge, or the graph already expresses several incoming
+flows into the same destination, the projection may reserve a stable visual meeting region and route
+branches toward it. If convergence itself has product/process meaning, that meaning must be represented
+by an earned semantic object rather than inferred from arrow geometry.
+
+#### Some branches leave the current map
+
+A branch does not have to remain inside the current board family.
+
+A PORTAL-like destination can behave conceptually like changing maps in a game:
+
+```text
+current process map
+  -> choose "Choice 3"
+  -> ENTER destination board/module
+       current board coordinate retained in BoardJourney
+       destination gets its own readable projection
+  -> RETURN when that route admits return
+```
+
+This avoids forcing every possible process branch onto one enormous canvas.
+
+The branch should distinguish, in meaning, among cases such as:
+
+```text
+continue in current board
+enter another board and allow return
+enter another board with an explicit named return point
+enter another board with no return in this process
+terminal outcome
+```
+
+Exact enum/schema names remain provisional.
+
+Entering another map is semantic traversal and should append BoardJourney. Merely expanding the same
+portal inline remains projection state:
+
+```text
+ENTER_OTHER_BOARD
+!=
+EXPAND_PORTAL_INLINE
+
+RETURN_TO_PRIOR_COORDINATE
+!=
+CAMERA_BACK
+```
+
+The visible branch destination can therefore act like a clickable doorway/button while preserving a
+stable destination ref, source coordinate and return policy. A Back/Return affordance should restore
+the prior semantic coordinate without requiring the user to remember where the parent map was.
+
+#### Relational navigation proving cases
+
+Before full prototype simulation, Phase 2C should prove at least:
+
+```text
+two-way choice
+four-way choice with angled/default Decision presentation
+eight-way visible fan-out
+more-than-threshold fan-out producing design pressure, not invalidation
+
+branch with uneven descendant sizes
+branch where several paths reconverge
+branch where one path terminates
+branch where one path enters another board and returns
+branch where one path enters another board and does not return
+
+fan-out that forces enclosing-region reflow
+human-pinned upstream nodes preserved during that reflow
+collapse/expand of one branch subtree
+deterministic export/reload of branch and portal identity
+```
+
+The same shared Board Control contract should eventually support human and AI intentions such as:
+
+```text
+add another choice
+group these three choices
+extract this branch into another process
+make these branches reconverge here
+enter this process
+return to the previous map
+auto-arrange this branch family
+```
+
+The proof target is not merely that the arrows look attractive. It is that branching, convergence,
+cross-map traversal and return remain semantically stable while projection is free to reorganize
+itself for readability.
+
+
 ### Visual cues
 
 Color, shape, border, icon, line style, depth, and animation may communicate semantic roles and state, but the underlying meaning must remain readable without relying on color alone.
+
+## Asset and image support — source identity, semantic discovery and reusable media
+
+VexBoard should be able to use screenshots, raster images and vector assets without turning board
+files into an opaque pile of embedded bytes.
+
+Current Vextreme-Assets already establishes a useful source distinction:
+
+```text
+__assets/
+  preserved authored/source dependencies
+  content-addressed by stable byte identity
+
+evidence/screenshots/
+  derived screenshot evidence
+  semantic coordinate + exact SHA-256 + source binding
+```
+
+VexBoard should **consume that distinction rather than overwrite it**. An authored logo/SVG and a
+captured screenshot may both be visually displayable, but they do not mean the same thing.
+
+```text
+AUTHORED_ASSET != DERIVED_SCREENSHOT_EVIDENCE
+MEDIA_DISPLAY != MEDIA_SOURCE_OWNERSHIP
+```
+
+The current Vextreme-Assets import manifest is intentionally provenance/byte-oriented: canonical
+content path, imported path, Git blob, extension and size. It is not currently a semantic search
+catalog. VexBoard therefore needs a bounded discovery layer without redefining immutable asset
+identity.
+
+### Stable media reference plus semantic catalog metadata
+
+Conceptually, a board-visible asset binding needs two separable coordinates:
+
+```text
+source identity
+  repository / source namespace
+  immutable asset id or evidence coordinate
+  exact content identity
+  media type
+
+discovery / design meaning
+  human name
+  aliases
+  tags
+  project / domain scope
+  semantic role
+  optional description / alt meaning
+```
+
+Exact ownership of broadly reusable tags should be earned from real consumers. Project-local tags may
+belong to the VexBoard/project binding; cross-project canonical names may eventually belong to an
+Assets-owned semantic catalog.
+
+Do not mutate a content hash merely to give an image a better human name.
+
+```text
+SEMANTIC_ALIAS != BYTE_IDENTITY
+TAG_CHANGE != NEW_ASSET_BYTES
+```
+
+### Search should work without knowing exact labels
+
+The same gallery/query surface should serve humans and AI.
+
+Examples:
+
+```text
+search "header"
+-> reusable Headers across visible/admitted projects
+
+search "header" + project:vexsite
+-> VexSite-scoped Header assets/templates
+
+search "onboarding screenshot"
+-> screenshot evidence / guidance media
+
+search "navigation icon" + type:svg
+-> matching vector assets
+```
+
+Useful search fields may include:
+
+```text
+name
+aliases
+tags
+semantic role
+project refs
+source namespace
+media type
+usage refs
+```
+
+A user should not need to know the exact asset hash or internal filename to discover a useful visual.
+
+### SVGs are assets first, editable geometry only when deliberately converted
+
+Vextreme-Assets already contains SVG source assets alongside PNG/JPG/WebP and other files. VexBoard
+should render admitted SVGs as reusable vector media.
+
+```text
+SVG_ASSET
+-> renderable / scalable media reference
+```
+
+It should **not** automatically explode arbitrary SVG paths into editable BoardGraph shapes. That
+would confuse visual bytes with semantic board meaning.
+
+A future explicit operation may convert selected vector geometry into board-editable primitives when
+there is a real need and the conversion can preserve provenance.
+
+```text
+RENDER_SVG != IMPORT_SVG_AS_SEMANTIC_SHAPES
+```
+
+AI-authored SVGs may enter the same asset path only through the rightful asset/source admission
+contract; image generation alone does not make them canonical reusable assets.
+
+### Media need not be placed on the current board to be useful
+
+The toolbar/library should expose an asset gallery independent of the current canvas:
+
+```text
+Asset Library
+  browse
+  search
+  filter
+  inspect provenance
+  inspect usages
+  insert/reference
+```
+
+An asset can exist in the library and be available to AI without occupying any current BoardProjection.
+
+When inserted:
+
+```text
+asset source
+-> stable media binding
+-> projection item
+-> optional semantic role / caption / alt meaning
+```
+
+The same source asset may appear in many boards or template instances without copying bytes.
+
+### Screenshots as persistent visual guidance
+
+Screenshots can support instructions where disappearing tooltips or prose alone are insufficient:
+
+```text
+onboarding step
+  text explanation
+  + referenced screenshot
+  + optional highlighted/annotated region later
+
+feature guide
+  expected state screenshot
+  + semantic step identity
+
+tool instruction
+  stable process step
+  + visual example
+```
+
+A screenshot should retain source/provenance when known, especially when it represents a specific
+product revision. A stale screenshot can then be detected as stale evidence rather than silently
+remaining "the current UI."
+
+### Asset proving cases
+
+Before rich media becomes ordinary board content, prove:
+
+```text
+reference one PNG without embedding duplicate bytes
+reference one SVG and render at multiple sizes
+same asset used by several template instances
+search by semantic name
+search by alias/tag without exact label
+project-scoped and cross-project search
+distinguish authored source asset from screenshot evidence
+asset library item exists without board placement
+insert/remove projection without deleting source asset
+source/provenance inspection
+export/reload preserves exact asset bindings
+missing/stale source binding fails closed or becomes explicit unresolved media
+```
+
+## Existing-system adoption — reverse project implementation into the design collection
+
+Future Vex work should begin from VexBoard design collections before implementation, but accepted
+systems already exist. VexBoard therefore needs a **reverse-adoption** path that can map current
+source-owned design/implementation truth into a BoardGraph without pretending that importing it
+transfers ownership.
+
+VexLife's current Universal Blueprint is a strong patient zero because it already carries:
+
+```text
+Product
+-> Screen
+-> Region
+-> Element
+-> Action / Permission / State selector / Localization key / Terrain / Tests
+
+stable refs
+bounded Atlas descent
+human + machine projections
+versioned blueprint changes
+target/platform adoption receipts
+```
+
+The current VexLife Presentation Graph also already preserves distinctions VexBoard needs:
+
+```text
+elementRef / screenRef are canonical identity projections
+display label is not canonical identity
+geometry is not semantic context
+motion is not product state
+localization is not identity mutation
+screenshot is not semantic map
+```
+
+So VexBoard should initially **project and bind** that accepted source rather than replace it.
+
+Conceptually:
+
+```text
+existing VexLife Blueprint / Presentation Graph
+        |
+        | source-bound adapter
+        v
+VexBoard design collection
+  stable Board refs mapped to canonical VexLife refs
+  source provenance retained
+  current implementation / proof backlinks retained
+        |
+        v
+future visual BoardPatch
+        |
+        | when authorized
+        v
+VexLife Blueprint change proposal
+  affected refs
+  impact report
+  target adoption requirements
+        |
+        v
+existing Blueprint change-propagation / platform adoption machinery
+```
+
+This permits the product direction:
+
+```text
+NEW DESIGN WORK
+-> begins in VexBoard
+
+EXISTING ACCEPTED WORK
+-> reverse-adopt into VexBoard
+-> verify identity/source parity
+-> then continue future design from the mapped collection
+```
+
+without silently declaring:
+
+```text
+VEXBOARD_PROJECTION
+=
+NEW_CANONICAL_OWNER
+```
+
+An explicit later source-governance evolution may choose VexBoard published design as an upstream
+authoring source for a target family, but that ownership transition must be deliberate and proven.
+
+### Reverse-adoption proving cases
+
+Use at least one existing VexLife Screen/Element family and one existing Vextreme page:
+
+```text
+canonical source ref
+-> Board semantic ref
+-> projected shape/layout
+-> localization identity
+-> source implementation refs
+-> tests/evidence
+-> live/runtime ref when current
+```
+
+Round-trip proof should establish:
+
+```text
+import/project
+-> no source mutation
+-> stable identity retained
+
+Board-only layout edit
+-> no target semantic mutation
+
+authorized semantic edit
+-> bounded source change proposal against rightful owner
+-> affected refs / tests / localization impact visible
+```
+
+## Context Inspector — selected meaning, metadata, documentation and traversable source
+
+VexBoard should provide a persistent side panel comparable to a design-tool inspector, but the panel
+is not merely a property editor. It is the **selected semantic coordinate's bounded Atlas / source
+projection**.
+
+Selecting or right-clicking any addressable object should resolve its stable identity and show only
+the sections that actually exist for that object.
+
+A useful conceptual inspector:
+
+```text
+SELECTED
+  human label
+  semantic kind
+  canonical ref
+  current Board ref
+  source/currentness state
+
+DESIGN
+  editable Board-owned properties
+  projection geometry / shape
+  template source / instance / variance
+  asset bindings
+
+WHERE USED
+  template instances
+  incoming/outgoing relationships
+  parent/child refs
+  screens/processes that consume it
+  known derivatives / exceptions
+
+SOURCE
+  canonical owner
+  repository
+  source paths / exact source refs
+  implementation bindings
+  change impact / affected refs
+
+LOCALIZATION
+  string ref
+  source-language value
+  languages
+  completeness/staleness
+  exact source file / key
+  screenshot context when available
+
+DOCUMENTATION
+  purpose / why
+  owning feature/process docs
+  design/decision records
+  relevant architecture sources
+
+PROOF
+  tests
+  behavior witnesses
+  screenshots
+  currentness / conformance receipts
+
+LIVE
+  live route / site / app coordinate when verified
+  open current implementation
+  runtime/readiness status when source supports it
+```
+
+This should be generated from pointers/backlinks, not a copied inspector database.
+
+```text
+INSPECTOR
+= QUERY + HYDRATE + PROJECT
+
+INSPECTOR
+!= SECOND_SOURCE_OF_TRUTH
+```
+
+### Identity is the traversal key
+
+The ability to right-click a visible element and ask "where is this used?" depends on stable identity.
+
+A selected Button should be able to traverse, when those bindings exist:
+
+```text
+Board elementRef
+-> reusable template/component source
+-> every Board usage
+-> target blueprint elementRef
+-> implementation binding
+-> GitHub source
+-> localization stringRef
+-> translated values / status
+-> screenshots/evidence
+-> live route
+-> tests / behavior witnesses
+```
+
+Reverse traversal should work too:
+
+```text
+known source file / string ref / live route / screenshot identity
+-> canonical semantic ref
+-> Board coordinate(s)
+```
+
+This is especially important for adopted existing systems, because the Board can become the human
+navigation surface over documentation that currently lives in several rightful repositories/files
+without copying those documents into one giant monolith.
+
+### Editable versus projected fields must be explicit
+
+The inspector may show both editable and read-only data, but it must never make a projected source
+look editable merely because it appears in a form field.
+
+```text
+BOARD_OWNED_FIELD
+-> may be edited through Board Control / BoardPatch
+
+SOURCE_PROJECTED_FIELD
+-> inspect/read by default
+-> edit only through an admitted owner-specific change adapter
+
+PROOF / LIVE EVIDENCE
+-> observation, never direct design mutation
+```
+
+The UI should visibly distinguish those states.
+
+## Localization synchronization — visual text edits become source-aware change impact
+
+A visible string should never be only anonymous text painted on a shape when the target/source has a
+stable localization identity.
+
+VexLife Blueprint already models a localization key on stable elements, while Vextreme's current
+localization architecture treats the key/source registry as UI identity and generates page/language
+coverage. Vextreme's identity pilot additionally preserves canonical versus observed element IDs and
+builds pointer indexes rather than duplicating translation records.
+
+VexBoard can project those relationships directly.
+
+For an adopted/localization-bound element:
+
+```text
+visible text
++ canonical elementRef
++ stringRef
++ source-language source
++ locale projections
++ source / screenshot / usage backlinks
+```
+
+If the human edits the visible English text in VexBoard:
+
+```text
+"Continue"
+-> "Continue to verification"
+```
+
+the Board should not silently change only its own display text.
+
+Instead:
+
+```text
+Board edit intention
+-> resolve canonical stringRef
+-> form source-language change proposal
+-> compute affected usages
+-> compute translation freshness impact
+-> show synchronization status
+```
+
+Conceptually the Inspector may then show:
+
+```text
+Localization synchronization
+
+EN source        CHANGED IN DESIGN / SOURCE UPDATE PENDING
+JA               STALE AGAINST NEW SOURCE
+ZH               STALE AGAINST NEW SOURCE
+FR               MISSING / NOT CURRENTLY COMPLETE
+
+Used by
+  Checkout / Continue
+  Account Setup / Continue
+
+[Open source string]
+[View usages]
+[Prepare localization update]
+[Revert Board text]
+```
+
+A target that already owns hash-based translation staleness should remain the authority for the
+actual stale/complete calculation; VexBoard projects that status and the proposed design delta.
+
+```text
+BOARD_TEXT_CHANGED
+!=
+SOURCE_STRING_UPDATED
+
+SOURCE_STRING_UPDATED
+!=
+TRANSLATIONS_CURRENT
+
+TRANSLATIONS_CURRENT
+!=
+LAYOUT_PROOF_CURRENT
+```
+
+### Publish readiness consumes synchronization truth
+
+The Board publish-readiness audit should include source-binding/localization synchronization when a
+published design claims a target-bound deliverable.
+
+Warnings can include:
+
+```text
+design text changed but canonical source update not formed
+source language changed but one or more required locales are stale
+target element identity no longer resolves
+screenshot evidence predates the intended source revision
+live implementation remains on an earlier accepted blueprint revision
+```
+
+These are navigable inspector findings, not generic red badges.
+
+A design-only Board with no target binding may legitimately publish without target localization
+coverage; a target-bound release must state its actual synchronization debt.
+
+### Better-than-screenshot-only localization workflow
+
+The intended experience extends the useful idea behind screenshot-context localization tools:
+
+```text
+select visual element in Board / screenshot
+-> resolve canonical identity
+-> inspect current source-language + translations
+-> inspect where used
+-> inspect source implementation
+-> inspect live route / screenshots
+-> edit/propose one source-aware change
+-> see affected translations / layouts / proofs
+-> route the exact target change
+```
+
+The differentiator is not merely "translate text beside a screenshot." It is that **design identity,
+source, localization, screenshots, docs, implementation and proof are traversable forms of the same
+semantic coordinate**.
 
 ## Semantic navigation and the walk stack
 
@@ -457,9 +1889,302 @@ A -> B -> A
 
 The second visit to A is not discarded merely because the node was visited before.
 
+### Animated semantic traversal — let the human perceive the move
+
+When a CONTROL, branch, portal, search result or explicit navigation action changes semantic focus,
+VexBoard should not make the destination appear as an unexplained instantaneous replacement.
+
+The navigation contract should preserve two separate truths:
+
+```text
+semantic traversal
+  fromRef
+  relationship/control used
+  toRef
+  BoardJourney step
+
+projection transition
+  camera path
+  zoom / pan / emphasis
+  destination centering
+  optional connector/path highlight
+```
+
+The semantic move is the meaning. Animation helps the human perceive that move.
+
+```text
+SEMANTIC_TRAVERSAL != CAMERA_ANIMATION
+ANIMATION_DURATION != PROCESS_DURATION
+ANIMATION_INTERRUPTED != JOURNEY_HISTORY_DELETED
+```
+
+For an ordinary same-board transition:
+
+```text
+click / activate
+-> resolve exact destination
+-> highlight or trace the selected relationship when useful
+-> smoothly pan/zoom toward destination
+-> center/focus destination
+-> settle with brief destination emphasis
+```
+
+For a PORTAL / change-map transition:
+
+```text
+current map + source coordinate
+-> activate portal
+-> visible leave/enter transition
+-> destination map centers on its entry coordinate
+-> prior semantic coordinate remains in BoardJourney
+```
+
+Return should likewise make the relationship perceptible instead of merely restoring unrelated camera
+coordinates.
+
+Motion must respect reduced-motion/accessibility preferences. Reduced motion may use a short
+crossfade/highlight or immediate focus with explicit origin/destination cues while preserving the
+same BoardJourney semantics.
+
+The first proving cases should cover:
+
+```text
+nearby same-board move
+long-distance same-board move
+follow one bent connector around obstacles
+branch choice -> centered destination
+portal -> another board
+return -> prior semantic coordinate
+revisit an already-visited node
+reduced-motion equivalent
+user interrupts motion without corrupting semantic position
+```
+
+## Publish readiness — closed paths, known open ends and a reviewable blueprint release
+
+Once a board can be authored, arranged, traversed, templated and enriched with media, it should be
+possible to publish a **versioned design deliverable** without pretending every incomplete board is
+equally ready.
+
+Before publication, VexBoard should derive a bounded reachability/readiness projection from the
+declared start coordinates.
+
+The audit should distinguish at least conceptually:
+
+```text
+declared terminal
+  intentional end of a pathway
+
+declared portal destination
+  current board intentionally hands off to another board/process
+
+declared return
+  entered process has an explicit return contract
+
+open end
+  reachable path stops without an explicit outcome
+
+incomplete branch
+  a choice/condition exists but one or more outcomes have no destination
+
+unreachable meaning
+  authored node/subgraph cannot be reached from a declared entry unless explicitly library-only
+
+trap / non-exiting cycle
+  reachable loop has no declared exit or terminal meaning
+
+placeholder / unresolved binding
+  source/template/asset/destination still intentionally unresolved
+```
+
+This is not one universal "green/red" score. Structural invalidity and design incompleteness have
+different consequences.
+
+Conceptually:
+
+```text
+BLOCK PUBLICATION
+  invalid references
+  illegal containment/template cycles
+  missing required source identity
+  structurally impossible graph
+  corrupt release inputs
+
+WARN / REQUIRE ACKNOWLEDGEMENT
+  intentional open ends
+  incomplete choice outcomes
+  placeholders
+  design TODOs
+  target-specific readiness gaps
+
+READY
+  every reachable path is either
+    explicitly terminal
+    explicitly handed off
+    explicitly returnable
+    or intentionally marked open
+```
+
+A warning should be specific enough to navigate directly to the problem:
+
+```text
+Start: onboarding.start
+-> Account Type
+-> Business
+-> Verification choice
+-> "Manual review"
+-> NO OUTCOME
+
+Publish anyway?
+  [Go to missing outcome]
+  [Mark intentionally open]
+  [Publish with known open end]
+  [Cancel]
+```
+
+Publishing with acknowledged open ends must preserve those open ends as release metadata; it must not
+rewrite them as complete.
+
+### Published Board revision
+
+A publish action should freeze one inspectable design revision:
+
+```text
+BoardGraph semantic identity
+BoardProjection(s) selected for release
+template/source revisions
+declared variances
+asset/media bindings
+journey/readiness audit
+known open ends / warnings
+release fingerprint
+```
+
+Later editing continues in working state rather than silently mutating the already-published design.
+
+```text
+WORKING_BOARD != PUBLISHED_BOARD_REVISION
+PUBLISHED_BLUEPRINT != TARGET_DEPLOYMENT
+PUBLISH_WITH_WARNING != WARNING_RESOLVED
+```
+
+This allows a human to share, review, compare and approve a concrete design before any target source
+is changed.
+
+## Blueprint compilation — project one published design into a real target
+
+After a Board revision is publishable, a separately governed **target adapter/compiler** may translate
+that design into the source language of an existing product.
+
+The important relationship is:
+
+```text
+published VexBoard design
+        |
+        v
+target adapter
+  understands target repository contracts
+        |
+        v
+implementation plan / source candidate
+        |
+        v
+target repository's own validation + review + lifecycle
+        |
+        v
+real implementation
+```
+
+VexBoard does not become the target repository's source owner.
+
+```text
+BOARD_RELEASE != SOURCE_AUTHORITY
+TARGET_ADAPTER != TARGET_SEMANTIC_OWNER
+COMPILED_CANDIDATE != DEPLOYED_PRODUCT
+DESIGN_APPROVAL != MERGE_OR_PUBLICATION_AUTHORITY
+```
+
+### Vextreme as a strong future target adapter
+
+Current Vextreme already exposes several useful target-native contracts rather than requiring
+VexBoard to invent a new website architecture:
+
+```text
+pages/{slug}.html
+  concrete page surface
+
+data/viewmodels.json + generated slug/index viewmodels
+  category / template / localization scopes / feature composition
+
+data/strings/source/**
+  canonical display/localization keys
+
+data/strings/compiled/** + pageLanguageMap
+  generated locale/runtime coverage projections
+
+Vextreme-Assets
+  content-addressed authored/source assets
+  + separately owned screenshot evidence
+
+data/nodes.json / auto-discovery / content intents
+  existing page discovery/placement machinery
+```
+
+A future Vextreme adapter could therefore map Board meaning conceptually:
+
+```text
+SCENE
+-> page / route / viewmodel identity
+
+templated page structure
+-> target-native reusable page/component contract where one exists
+-> otherwise surface a target capability gap rather than silently copy stale markup
+
+visible text / labels
+-> canonical localization keys + declared page scopes
+-> never hardcoded display strings
+
+asset binding
+-> Vextreme-Assets logical/content identity
+
+CONTROL / transition
+-> target-native link/navigation/interaction
+
+Board route / page relationship
+-> target navigation/registration meaning
+
+published design readiness
+-> implementation plan inputs and explicit remaining gaps
+```
+
+The target adapter should not invent a target capability merely because the Board can express it. If
+the Board uses reusable template inheritance but the selected target has no equivalent source-owned
+mechanism for that exact case, compilation should identify the missing target seam or deliberately
+form the smallest supported target evolution—not flatten the template into hidden copies and call
+that success.
+
+### Round-trip design/runtime relationship
+
+Once a target implementation exists, VexBoard's source-projector/lived-comparison side can close the
+loop:
+
+```text
+VexBoard intended design
+-> published Board revision
+-> target compile / implementation candidate
+-> accepted target source
+-> built / lived product
+-> source + journey projection back into VexBoard
+-> intended vs observed comparison
+```
+
+That is the deeper meaning of VexBoard as a different form of website projection: the Board is not a
+screenshot of the website and the website is not a screenshot of the Board. They are two forms tied
+through stable semantic identities and an explicit target translation contract.
+
 ## AI-first authoring posture
 
-The first version should be **AI-authored and human-navigated**, not a premature full manual editor.
+The first version should be **AI-addressable and human-operable through one shared Board Control contract**, not a premature full manual editor. Rich natural-language authoring may remain AI-led while the same primitive operations are directly testable by a human.
 
 The user should be able to say:
 
@@ -1075,7 +2800,9 @@ One code-authored BoardGraph should represent a small website journey with:
 - one PORTAL into a deeper input-process-output module;
 - one shared/reused module instance;
 - deterministic layout;
-- read-only pan/zoom/focus;
+- one shared human/AI toolkit proving create/move/resize/layer/explicit-containment/connect;
+- pan/zoom/focus;
+- deterministic export/reload of BoardGraph + BoardProjection;
 - clickable simulation;
 - a right-side BoardJourney stack with revisit.
 
@@ -1132,17 +2859,87 @@ These are product horizons, not calendar promises or implementation authority.
 
 This document, canonical Project registration, bounded Work decomposition, and first-source placement.
 
-### Phase 1 — BoardGraph foundation
+### Phase 1 — BoardGraph + shared Board Control foundation
 
-Stable refs, node/relationship/interaction grammar, validation, semantic fingerprinting, modules/ports, source binding, and deterministic fixtures.
+Stable refs, node/relationship/interaction grammar, validation, semantic fingerprinting, modules/ports,
+source binding, deterministic fixtures, and the first typed operation contract shared by human
+tooling and AI function calls.
 
-### Phase 2 — read-only canvas projection
+### Phase 2 — interactive canvas proving ground + projection
 
-Deterministic layout, shapes/frames/connectors, pan/zoom/minimap, focus, inline expansion, portal entry, and source inspectability.
+Blank scalable canvas, deterministic geometry, primitive shapes/frames/connectors,
+select/move/resize/layer/explicit containment, pan/zoom/minimap, focus, deterministic export/reload,
+bounded model-facing board query, and source inspectability.
+
+### Phase 2B — spatial arrangement, routing and fractal expansion
+
+Projection-owned layout metrics, local occupancy/spatial indexing, deterministic incremental
+auto-arrangement, obstacle-aware connector routing, local space negotiation, human-pinned anchors,
+inline module expansion/collapse and bounded rerouting. Human and AI invoke the same arrangement
+Controls. This remains smaller than a full manual visual editor.
+
+### Phase 2C — relational direction navigation
+
+Semantic shape defaults, stable branch identities, branch-envelope layout, advisory fan-out
+readability pressure, branch/merge visualization, cross-board PORTAL traversal, explicit
+return/non-return semantics and automatic enclosing-region reflow. Prove branch topology remains
+stable even when the projection reorganizes around it.
+
+### Phase 2D — reusable templates, inheritance and variance
+
+Canonical template sources, linked instances, parameter/slot bindings, declared variance with
+required human-readable rationale, reverse usage/backlink maps, source-update propagation,
+conflict visibility, nested templates and explicit make-unique/detach provenance.
+
+### Phase 2E — asset/media library and visual guidance
+
+External/source-bound media references, authored-asset versus screenshot-evidence distinction,
+semantic names/aliases/tags, project-scoped and cross-project discovery, PNG/JPG/WebP/SVG display,
+asset gallery access independent of board placement, provenance/usages, and deterministic
+export/reload of media bindings.
+
+### Phase 2F — existing-system reverse adoption
+
+Source-bound adapters that project accepted existing design/implementation systems into VexBoard
+without taking ownership. First proving candidates should include VexLife Universal Blueprint /
+Presentation Graph and one Vextreme page/localization surface. Establish stable identity mapping,
+source/proof backlinks and safe future BoardPatch -> rightful source-change proposal routes.
+
+### Phase 2G — Context Inspector and documentation/source traversal
+
+Selected-item side inspector over stable refs: design properties, where-used/backlinks, source,
+localization, documentation, proof, screenshots and verified live coordinates. Use bounded
+query/hydrate/project behavior rather than a copied metadata database; visually distinguish
+Board-editable fields from source-projected evidence.
+
+### Phase 2H — localization/source synchronization
+
+Source-aware visual text editing, canonical stringRef resolution, affected-usage mapping,
+translation staleness/completeness projection, screenshot/layout proof freshness and exact
+synchronization warnings that feed publish readiness without making VexBoard the localization owner.
 
 ### Phase 3 — prototype simulation and BoardJourney
 
 Clickable controls, conditions, scenario state, overlays, loops, Back/Return, right-side walk stack, and revisit.
+
+### Phase 3A — animated semantic traversal
+
+Relationship-aware pan/zoom/focus transitions, destination centering, portal/map-change animation,
+return/revisit animation and reduced-motion equivalents that help the human perceive a semantic move
+without making camera motion the source of traversal truth.
+
+### Phase 3B — publish readiness and Board releases
+
+Reachability/path-closure analysis, explicit terminal/open/handoff/return classification, incomplete
+branch detection, unreachable/trap diagnostics, navigable warnings, acknowledged known-open releases
+and immutable/versioned Board release fingerprints.
+
+### Phase 3C — target blueprint compilation
+
+Target-specific adapters that translate a published Board revision into a reviewable implementation
+plan/source candidate while preserving the target repository's own source, localization, asset,
+validation and lifecycle ownership. Vextreme is a strong future proving target because its page,
+viewmodel/index, localization and Vextreme-Assets contracts are already source-addressable.
 
 ### Phase 4 — AI BoardPatch authoring
 
@@ -1150,11 +2947,17 @@ Intent-to-patch, anchored conversation, validation, minimal-movement relayout, m
 
 ### Phase 5 — source projectors and lived comparison
 
-VexWork Process/Work/Project adapters, Atlas adapters, intended-versus-observed Journey comparison, and implementation-brief output.
+VexWork Process/Work/Project adapters, Atlas adapters, target-source projectors,
+intended-versus-observed Journey comparison, and implementation-brief output. This phase closes the
+round trip by projecting accepted real source/lived behavior back against the published Board
+revision rather than assuming successful compilation means the product matches the design.
 
-### Phase 6 — direct manipulation and collaboration
+### Phase 6 — advanced direct manipulation and collaboration
 
-Manual drag/resize/connect/edit, multi-user collaboration, comments, voting, permissions, and richer media only after the AI-first semantic foundation proves that direct manipulation can preserve the same source rules.
+Richer manual editing, multi-select/align/distribute, advanced connector editing, multi-user
+collaboration, comments, voting, permissions and richer media. Basic create/move/resize/layer/
+contain/connect operations are intentionally proven earlier through the shared Board Control
+contract rather than postponed until this horizon.
 
 ## Deliberately held
 
@@ -1230,11 +3033,34 @@ public Projects projection                  CURRENT
 prime Project-formation regression case     SOURCE-PLACED
 
 next product frontier
--> BoardGraph semantic contract
+-> BoardGraph semantic contract + shared Board Control contract
+-> first blank-canvas human/AI toolkit proving ground
+   create / move / resize / layer / explicit containment / connect / export-reload
+-> spatial arrangement + connector-routing proving ground
+   stable scale / local occupancy / obstacle avoidance / incremental reflow / fractal expansion
+-> relational direction navigation proving ground
+   semantic choice forms / branch envelopes / convergence / portal enter-return / fan-out pressure
+-> reusable template inheritance proving ground
+   one source / linked instances / declared variance / make-unique provenance / reverse usages
+-> asset + image support proving ground
+   source-bound media / semantic discovery / SVG + screenshots / gallery / exact provenance
+-> reverse-adopt existing accepted systems into the design collection
+   VexLife Blueprint SOT / Presentation Graph + one Vextreme page/localization patient zero
+-> Context Inspector proving ground
+   identity / where-used / source / docs / localization / proof / live traversal
+-> localization/source synchronization proving ground
+   visual text edit -> source-aware proposal -> stale locale/layout/proof impact
+-> animated semantic traversal proving ground
+   visible route-following / centered destination / portal map-change / return / reduced motion
+-> publish-readiness + versioned Board release
+   path closure / open ends / incomplete branches / warnings / immutable release fingerprint
+-> target blueprint compiler proving ground
+   published Board -> target-native implementation plan/candidate without stealing target ownership
 -> use authored website patient zero + prime source-projection case
    to earn the smallest reusable graph/schema vocabulary
--> keep case labels provisional until implementation proves the right storage shape
--> separately establish implementation authority and source membrane before mutation
+-> use BoardProjection geometry as addressable spatial truth without making coordinates semantic identity
+-> keep case labels and exact tool/schema names provisional until implementation proves the right storage shape
+-> separately establish implementation authority and source membrane before product-source mutation
 ```
 
 No human host action is required to preserve this design.
