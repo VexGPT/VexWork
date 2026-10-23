@@ -315,3 +315,48 @@ test('shared model rejects schema drift rather than silently dropping unknown fi
     arguments: { projectionItemRef: 'item.a', x: 1, y: 2, mystery: 3 },
   }), /schema drift/);
 });
+
+
+test('canvas camera helpers preserve board coordinates while zooming and fitting', () => {
+  const camera = Reader.normalizeCamera({ x: 10, y: 20, zoom: 1 });
+  const zoomed = Reader.zoomCameraAt(camera, { factor: 2, anchorX: 100, anchorY: 80 });
+  assert.equal(zoomed.zoom, 2);
+  assert.deepEqual(Reader.boardPointFromClient({ clientX: 100, clientY: 80 }, { left: 0, top: 0 }, zoomed), { x: 90, y: 60 });
+  const fit = Reader.cameraForBounds({ x: 0, y: 0, width: 400, height: 200 }, { width: 800, height: 600 }, { padding: 100 });
+  assert.ok(fit.zoom > 0);
+  const visible = Reader.boardViewport(fit, { width: 800, height: 600 });
+  assert.ok(visible.width >= 400);
+  assert.ok(visible.height >= 200);
+});
+
+test('collapsed view state hides descendants without mutating BoardGraph or BoardProjection', () => {
+  const graph = baseGraph();
+  graph.nodes[1].parentRefOrNull = 'node.a';
+  const projection = baseProjection();
+  projection.items[1].parentProjectionItemRefOrNull = 'item.a';
+  const before = JSON.stringify({ graph, projection });
+  const visible = Reader.visibleProjectionItems(graph, projection, ['node.a']);
+  assert.deepEqual(visible.map((item) => item.semanticRef), ['node.a']);
+  assert.equal(JSON.stringify({ graph, projection }), before);
+});
+
+test('bounded neighborhood query follows relationships and containment deterministically', () => {
+  const graph = baseGraph();
+  graph.nodes[1].parentRefOrNull = 'node.a';
+  graph.relationships = [{ relationshipRef: 'rel.a-b', kind: 'FLOW', fromRef: 'node.a', toRef: 'node.b', labelOrNull: null, sourceRefs: ['source.rel'] }];
+  const projection = baseProjection();
+  projection.items[1].parentProjectionItemRefOrNull = 'item.a';
+  const query = Reader.queryBoardNeighborhood({ graph, projection }, { semanticRef: 'node.a', depth: 1, maxNodes: 10 });
+  assert.equal(query.schemaVersion, Reader.VEXBOARD_NEIGHBORHOOD_SCHEMA);
+  assert.deepEqual(query.nodes.map((node) => node.nodeRef), ['node.a', 'node.b']);
+  assert.deepEqual(query.relationships.map((relationship) => relationship.relationshipRef), ['rel.a-b']);
+  assert.deepEqual(query.projectionItems.map((item) => item.semanticRef), ['node.a', 'node.b']);
+  assert.ok(query.sourceRefs.includes('source.rel'));
+  assert.throws(() => Reader.queryBoardNeighborhood({ graph, projection }, { semanticRef: 'node.missing' }), /unknown semanticRef/);
+});
+
+test('built-in board routing is explicit and fail-closed for unknown portal targets', () => {
+  assert.equal(Reader.builtinBoardUrl('board.vexboard.self-map'), './self-map.json');
+  assert.equal(Reader.builtinBoardUrl('board.vexboard.publish'), './publish-map.json');
+  assert.equal(Reader.builtinBoardUrl('board.vexboard.unknown'), null);
+});

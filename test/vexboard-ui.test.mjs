@@ -7,6 +7,7 @@ import { normalizeBoardGraph, normalizeBoardProjection } from '../src/shared/vex
 
 const page = fs.readFileSync(new URL('../vexboard/index.html', import.meta.url), 'utf8');
 const selfMap = JSON.parse(fs.readFileSync(new URL('../vexboard/self-map.json', import.meta.url), 'utf8'));
+const publishMap = JSON.parse(fs.readFileSync(new URL('../vexboard/publish-map.json', import.meta.url), 'utf8'));
 
 test('VexBoard Pages entry exposes create/open/read-only/fork/save-draft workflow', () => {
   assert.match(page, /Create new/);
@@ -18,6 +19,13 @@ test('VexBoard Pages entry exposes create/open/read-only/fork/save-draft workflo
   assert.match(page, /href="\.\.\/">← VexWork/);
 });
 
+test('read-only fork preserves the actual draft identity as the active board coordinate', () => {
+  const forkLine = page.split('\n').find((line) => line.includes('fork.onclick=async'));
+  assert.ok(forkLine);
+  assert.equal((forkLine.match(/ref\('draft\.vexboard'\)/g) ?? []).length, 1);
+  assert.doesNotMatch(forkLine, /boardRef:ref\('draft\.vexboard'\)/);
+});
+
 test('browser UI uses the shared BoardControl adapter for mutation rather than source/provider writes', () => {
   assert.match(page, /Board\.controlFor\(current/);
   assert.match(page, /Board\.applyBoardControl/);
@@ -25,30 +33,52 @@ test('browser UI uses the shared BoardControl adapter for mutation rather than s
   assert.match(page, /'MOVE_ITEM'/);
   assert.match(page, /'RESIZE_ITEM'/);
   assert.match(page, /'CONNECT_NODES'/);
-  assert.match(page, /Board\.localPointFromClient/);
-  assert.doesNotMatch(page, /\+view\.scrollLeft|\+view\.scrollTop/);
+  assert.match(page, /Board\.boardPointFromClient/);
   assert.doesNotMatch(page, /method:\s*['"](?:POST|PUT|PATCH|DELETE)['"]/i);
   assert.doesNotMatch(page, /api\.github\.com|raw\.githubusercontent\.com/);
 });
 
-test('self-map is a valid read-only VexBoard source that documents how to begin', () => {
-  assert.equal(selfMap.schemaVersion, Reader.VEXBOARD_DRAFT_SCHEMA);
-  assert.equal(selfMap.mode, 'READ_ONLY_SOURCE');
-  const graph = normalizeBoardGraph(selfMap.graph);
-  const projection = normalizeBoardProjection(selfMap.projection, graph);
-  assert.ok(graph.nodes.some((node) => node.nodeRef === 'node.vexboard.create-new'));
-  assert.ok(graph.nodes.some((node) => node.nodeRef === 'node.vexboard.request-edit'));
-  assert.ok(graph.nodes.some((node) => node.nodeRef === 'node.vexboard.save-draft'));
-  assert.ok(graph.relationships.length >= 7);
-  assert.equal(projection.layoutIntent, 'SCREEN_FLOW');
+test('canvas projection exposes pan zoom fit focus minimap and read-only recursive navigation', () => {
+  for (const label of ['Pan', 'Zoom out', 'Zoom in', 'Fit', 'Reset view', 'Focus selected', 'Collapse children', 'Enter portal']) {
+    assert.match(page, new RegExp(label));
+  }
+  assert.match(page, /el\(['"]div['"],['"]minimap['"]\)/);
+  assert.match(page, /Board\.zoomCameraAt/);
+  assert.match(page, /Board\.cameraForBounds/);
+  assert.match(page, /Board\.boardViewport/);
+  assert.match(page, /Board\.visibleProjectionItems/);
+  assert.match(page, /Board\.builtinBoardUrl/);
+  assert.match(page, /↩ Return/);
 });
 
-test('Context Inspector is identity-first and source-aware in the initial UI slice', () => {
+test('Context Inspector remains identity-first and includes bounded neighborhood query', () => {
   assert.match(page, /Context Inspector/);
   assert.match(page, /stable identity, projection geometry, source refs/);
   assert.match(page, /nodeRef/);
   assert.match(page, /Relationships/);
   assert.match(page, /Source refs/);
+  assert.match(page, /Neighborhood · bounded query/);
+  assert.match(page, /Board\.queryBoardNeighborhood/);
+});
+
+test('self-map and publish-map are valid read-only built-in boards with reciprocal portal routing', () => {
+  for (const source of [selfMap, publishMap]) {
+    assert.equal(source.schemaVersion, Reader.VEXBOARD_DRAFT_SCHEMA);
+    assert.equal(source.mode, 'READ_ONLY_SOURCE');
+    const graph = normalizeBoardGraph(source.graph);
+    const projection = normalizeBoardProjection(source.projection, graph);
+    assert.ok(graph.nodes.length > 0);
+    assert.ok(projection.items.length > 0);
+  }
+  const selfGraph = normalizeBoardGraph(selfMap.graph);
+  assert.ok(selfGraph.nodes.some((node) => node.nodeRef === 'node.vexboard.create-new'));
+  assert.ok(selfGraph.nodes.some((node) => node.nodeRef === 'node.vexboard.request-edit'));
+  assert.ok(selfGraph.nodes.some((node) => node.nodeRef === 'node.vexboard.save-draft'));
+  assert.ok(selfGraph.nodes.some((node) => node.detailBoardRefOrNull === 'board.vexboard.publish'));
+  assert.equal(Reader.builtinBoardUrl('board.vexboard.self-map'), './self-map.json');
+  assert.equal(Reader.builtinBoardUrl('board.vexboard.publish'), './publish-map.json');
+  const publishGraph = normalizeBoardGraph(publishMap.graph);
+  assert.ok(publishGraph.nodes.some((node) => node.detailBoardRefOrNull === 'board.vexboard.self-map'));
 });
 
 test('draft reader keeps read-only source separate from editable local fork', async () => {

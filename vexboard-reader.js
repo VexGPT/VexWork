@@ -10,14 +10,113 @@ import {
 } from './src/shared/vexboard-model.mjs';
 
 export const VEXBOARD_DRAFT_SCHEMA = 'vexboard.local-draft/v1';
+export const VEXBOARD_NEIGHBORHOOD_SCHEMA = 'vexboard.board-neighborhood/v1';
 export const VEXBOARD_SELF_MAP_URL = './self-map.json';
 export const VEXBOARD_DRAFT_STORAGE_KEY = 'vexboard.local-drafts/v1';
+export const VEXBOARD_BUILTIN_BOARD_URLS = Object.freeze({
+  'board.vexboard.self-map': './self-map.json',
+  'board.vexboard.publish': './publish-map.json',
+});
+
+const MIN_ZOOM = 0.2;
+const MAX_ZOOM = 3;
+
+function finite(value, label) {
+  if (typeof value !== 'number' || !Number.isFinite(value)) throw new TypeError(`${label} must be finite`);
+  return value;
+}
+
+function clamp(value, minimum, maximum) {
+  return Math.min(maximum, Math.max(minimum, value));
+}
+
+export function builtinBoardUrl(boardRef) {
+  if (typeof boardRef !== 'string' || !boardRef) throw new TypeError('boardRef required');
+  return VEXBOARD_BUILTIN_BOARD_URLS[boardRef] ?? null;
+}
 
 export function localPointFromClient({ clientX, clientY }, { left, top }) {
-  for (const [label, value] of Object.entries({ clientX, clientY, left, top })) {
-    if (typeof value !== 'number' || !Number.isFinite(value)) throw new TypeError(`${label} must be finite`);
-  }
+  for (const [label, value] of Object.entries({ clientX, clientY, left, top })) finite(value, label);
   return Object.freeze({ x: clientX - left, y: clientY - top });
+}
+
+export function normalizeCamera(input = {}) {
+  const x = finite(input.x ?? 0, 'camera.x');
+  const y = finite(input.y ?? 0, 'camera.y');
+  const zoom = clamp(finite(input.zoom ?? 1, 'camera.zoom'), MIN_ZOOM, MAX_ZOOM);
+  return Object.freeze({ x, y, zoom });
+}
+
+export function boardPointFromClient({ clientX, clientY }, { left, top }, cameraInput) {
+  const local = localPointFromClient({ clientX, clientY }, { left, top });
+  const camera = normalizeCamera(cameraInput);
+  return Object.freeze({
+    x: (local.x - camera.x) / camera.zoom,
+    y: (local.y - camera.y) / camera.zoom,
+  });
+}
+
+export function zoomCameraAt(cameraInput, { factor, anchorX, anchorY }) {
+  const camera = normalizeCamera(cameraInput);
+  finite(factor, 'zoom factor');
+  if (factor <= 0) throw new TypeError('zoom factor must be positive');
+  finite(anchorX, 'zoom anchorX');
+  finite(anchorY, 'zoom anchorY');
+  const nextZoom = clamp(camera.zoom * factor, MIN_ZOOM, MAX_ZOOM);
+  const boardX = (anchorX - camera.x) / camera.zoom;
+  const boardY = (anchorY - camera.y) / camera.zoom;
+  return normalizeCamera({
+    x: anchorX - boardX * nextZoom,
+    y: anchorY - boardY * nextZoom,
+    zoom: nextZoom,
+  });
+}
+
+export function projectionBounds(items) {
+  if (!Array.isArray(items)) throw new TypeError('projection items must be an array');
+  const visible = items.filter((item) => item?.visible !== false);
+  if (!visible.length) return Object.freeze({ x: 0, y: 0, width: 1, height: 1 });
+  const left = Math.min(...visible.map((item) => finite(item.bounds?.x, 'projection bounds x')));
+  const top = Math.min(...visible.map((item) => finite(item.bounds?.y, 'projection bounds y')));
+  const right = Math.max(...visible.map((item) => finite(item.bounds?.x, 'projection bounds x') + finite(item.bounds?.width, 'projection bounds width')));
+  const bottom = Math.max(...visible.map((item) => finite(item.bounds?.y, 'projection bounds y') + finite(item.bounds?.height, 'projection bounds height')));
+  return Object.freeze({ x: left, y: top, width: Math.max(1, right - left), height: Math.max(1, bottom - top) });
+}
+
+export function cameraForBounds(bounds, viewport, options = {}) {
+  for (const [label, value] of Object.entries({
+    x: bounds?.x, y: bounds?.y, width: bounds?.width, height: bounds?.height,
+    viewportWidth: viewport?.width, viewportHeight: viewport?.height,
+  })) finite(value, label);
+  if (bounds.width <= 0 || bounds.height <= 0 || viewport.width <= 0 || viewport.height <= 0) {
+    throw new TypeError('camera bounds and viewport must be positive');
+  }
+  const padding = finite(options.padding ?? 72, 'camera padding');
+  const minZoom = clamp(finite(options.minZoom ?? MIN_ZOOM, 'camera minZoom'), MIN_ZOOM, MAX_ZOOM);
+  const maxZoom = clamp(finite(options.maxZoom ?? 1.6, 'camera maxZoom'), minZoom, MAX_ZOOM);
+  const usableWidth = Math.max(1, viewport.width - padding * 2);
+  const usableHeight = Math.max(1, viewport.height - padding * 2);
+  const zoom = clamp(Math.min(usableWidth / bounds.width, usableHeight / bounds.height), minZoom, maxZoom);
+  const centerX = bounds.x + bounds.width / 2;
+  const centerY = bounds.y + bounds.height / 2;
+  return normalizeCamera({
+    x: viewport.width / 2 - centerX * zoom,
+    y: viewport.height / 2 - centerY * zoom,
+    zoom,
+  });
+}
+
+export function boardViewport(cameraInput, viewport) {
+  const camera = normalizeCamera(cameraInput);
+  const width = finite(viewport?.width, 'viewport width');
+  const height = finite(viewport?.height, 'viewport height');
+  if (width <= 0 || height <= 0) throw new TypeError('viewport dimensions must be positive');
+  return Object.freeze({
+    x: -camera.x / camera.zoom,
+    y: -camera.y / camera.zoom,
+    width: width / camera.zoom,
+    height: height / camera.zoom,
+  });
 }
 
 function canonicalize(value) {
@@ -67,6 +166,84 @@ export async function hydrateBoardState(graphInput, projectionInput) {
   await verifyInputFingerprint(projectionInput, 'BoardProjection');
   const projection = await fingerprint(normalizeBoardProjection(stripFingerprint(projectionInput), stripFingerprint(graph)));
   return Object.freeze({ graph, projection });
+}
+
+export function visibleProjectionItems(graphInput, projectionInput, collapsedNodeRefs = []) {
+  const graph = normalizeBoardGraph(stripFingerprint(graphInput));
+  const projection = normalizeBoardProjection(stripFingerprint(projectionInput), graph);
+  if (!Array.isArray(collapsedNodeRefs) || collapsedNodeRefs.some((value) => typeof value !== 'string')) {
+    throw new TypeError('collapsedNodeRefs must be an array of refs');
+  }
+  const collapsed = new Set(collapsedNodeRefs);
+  const byRef = new Map(graph.nodes.map((node) => [node.nodeRef, node]));
+  const hiddenByAncestor = (semanticRef) => {
+    let cursor = byRef.get(semanticRef)?.parentRefOrNull ?? null;
+    while (cursor) {
+      if (collapsed.has(cursor)) return true;
+      cursor = byRef.get(cursor)?.parentRefOrNull ?? null;
+    }
+    return false;
+  };
+  return Object.freeze(projection.items.filter((item) => item.visible && !hiddenByAncestor(item.semanticRef)));
+}
+
+export function queryBoardNeighborhood(state, options) {
+  const graph = normalizeBoardGraph(stripFingerprint(state?.graph));
+  const projection = normalizeBoardProjection(stripFingerprint(state?.projection), graph);
+  const semanticRef = options?.semanticRef;
+  if (typeof semanticRef !== 'string' || !semanticRef) throw new TypeError('semanticRef required');
+  const depth = options?.depth ?? 1;
+  const maxNodes = options?.maxNodes ?? 25;
+  if (!Number.isInteger(depth) || depth < 0 || depth > 4) throw new TypeError('depth must be an integer from 0 to 4');
+  if (!Number.isInteger(maxNodes) || maxNodes < 1 || maxNodes > 100) throw new TypeError('maxNodes must be an integer from 1 to 100');
+  const byRef = new Map(graph.nodes.map((node) => [node.nodeRef, node]));
+  if (!byRef.has(semanticRef)) throw new TypeError(`unknown semanticRef ${semanticRef}`);
+  const neighbors = new Map(graph.nodes.map((node) => [node.nodeRef, new Set()]));
+  for (const node of graph.nodes) {
+    if (node.parentRefOrNull) {
+      neighbors.get(node.nodeRef).add(node.parentRefOrNull);
+      neighbors.get(node.parentRefOrNull).add(node.nodeRef);
+    }
+  }
+  for (const relationship of graph.relationships) {
+    neighbors.get(relationship.fromRef).add(relationship.toRef);
+    neighbors.get(relationship.toRef).add(relationship.fromRef);
+  }
+  const seen = new Map([[semanticRef, 0]]);
+  const queue = [semanticRef];
+  while (queue.length && seen.size < maxNodes) {
+    const ref = queue.shift();
+    const currentDepth = seen.get(ref);
+    if (currentDepth >= depth) continue;
+    for (const next of [...neighbors.get(ref)].sort()) {
+      if (seen.has(next)) continue;
+      seen.set(next, currentDepth + 1);
+      queue.push(next);
+      if (seen.size >= maxNodes) break;
+    }
+  }
+  const refs = [...seen.keys()].sort();
+  const refSet = new Set(refs);
+  const nodes = graph.nodes.filter((node) => refSet.has(node.nodeRef));
+  const relationships = graph.relationships.filter((relationship) => refSet.has(relationship.fromRef) && refSet.has(relationship.toRef));
+  const items = projection.items.filter((item) => refSet.has(item.semanticRef));
+  const sourceRefs = [...new Set([
+    ...graph.sourceRefs,
+    ...nodes.flatMap((node) => node.sourceRefs),
+    ...relationships.flatMap((relationship) => relationship.sourceRefs),
+    ...projection.sourceRefs,
+  ])].sort();
+  return freezeBoardValue({
+    schemaVersion: VEXBOARD_NEIGHBORHOOD_SCHEMA,
+    graphRef: graph.graphRef,
+    projectionRef: projection.projectionRef,
+    centerRef: semanticRef,
+    depth,
+    nodes,
+    relationships,
+    projectionItems: items,
+    sourceRefs,
+  });
 }
 
 export async function applyBoardControl({ graph: graphInput, projection: projectionInput, control: controlInput }) {
