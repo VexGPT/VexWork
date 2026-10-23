@@ -14,21 +14,21 @@ import {
 const workspace = JSON.parse(fs.readFileSync(new URL('../public/workspace.json', import.meta.url), 'utf8'));
 const project = (ref) => workspace.projects.find((entry) => entry.project.projectRef === ref);
 
-test('ToCompletion surfaces the real deep active frontier without requiring descent', () => {
+test('ToCompletion surfaces setup-safety convergence as the real active productization frontier', () => {
   const p = project('project.vexlife.tocompletion');
   const fronts = deepestCurrentFrontiers(p);
   assert.deepEqual(fronts.map((item) => item.workRef), [
-    'work.vexlife.tocompletion.p5.g02-semantic-authority-materializer',
+    'work.vexlife.tocompletion.productization.setup-safety-convergence',
   ]);
 
   const rows = projectWorkfronts(p, { maxRows: 8 }).rows;
-  const p5 = rows.find((row) => row.scopeRef === 'work.vexlife.tocompletion.p5.lived-continuity-learning');
-  assert.ok(p5);
-  assert.deepEqual(p5.currentItems.map((item) => item.workRef), [
-    'work.vexlife.tocompletion.p5.g02-semantic-authority-materializer',
+  const productization = rows.find((row) => row.scopeRef === 'work.vexlife.tocompletion.productization.ordinary-heretic-setup');
+  assert.ok(productization);
+  assert.deepEqual(productization.currentItems.map((item) => item.workRef), [
+    'work.vexlife.tocompletion.productization.setup-safety-convergence',
   ]);
-  assert.deepEqual(p5.nextStructuralItems.map((item) => item.workRef), [
-    'work.vexlife.tocompletion.p5.g02.sdk-runner-a057',
+  assert.deepEqual(productization.nextDependencyItems.map((item) => item.workRef), [
+    'work.vexlife.tocompletion.productization.heretic-normal-start-integration',
   ]);
 });
 
@@ -62,17 +62,19 @@ test('Connected Services Roadmap derives next-next-next from dependency truth', 
   assert.deepEqual(row.steps.map((step) => step.basis), ['CURRENT', 'DEPENDENCY', 'DEPENDENCY', 'DEPENDENCY']);
 });
 
-test('ToCompletion Roadmap keeps P6 dependency-grounded while P7 remains later/unsequenced relative to P5', () => {
+test('ToCompletion Roadmap keeps ordinary productization current while developmental and lateral scopes remain unsequenced', () => {
   const p = project('project.vexlife.tocompletion');
   const roadmap = projectScopeRoadmap(p, { maxSteps: 4 });
-  const row = roadmap.rows.find((candidate) => candidate.scopeRef === 'work.vexlife.tocompletion.p5.lived-continuity-learning');
+  const row = roadmap.rows.find((candidate) => candidate.scopeRef === 'work.vexlife.tocompletion.productization.ordinary-heretic-setup');
   assert.ok(row);
-  assert.equal(row.steps[1].items.some((item) => item.workRef === 'work.vexlife.tocompletion.p6.cultivation-training-birth'), true);
+  assert.equal(row.steps[0].items.some((item) => item.workRef === 'work.vexlife.tocompletion.productization.ordinary-heretic-setup'), true);
+  assert.equal(row.laterItems.some((item) => item.workRef === 'work.vexlife.tocompletion.p5.lived-continuity-learning'), true);
+  assert.equal(row.laterItems.some((item) => item.workRef === 'work.vexlife.tocompletion.p6.cultivation-training-birth'), true);
   assert.equal(row.laterItems.some((item) => item.workRef === 'work.vexlife.tocompletion.p7.whole-product-expansion'), true);
 
   const p6 = projectSequenceDistance(p, 'work.vexlife.tocompletion.p6.cultivation-training-birth');
-  assert.equal(p6.distance, 1);
-  assert.equal(p6.basis, 'DEPENDENCY');
+  assert.equal(p6.distance, null);
+  assert.equal(p6.basis, 'LATER_UNSEQUENCED');
 
   const p7 = projectSequenceDistance(p, 'work.vexlife.tocompletion.p7.whole-product-expansion');
   assert.equal(p7.distance, null);
@@ -102,14 +104,14 @@ test('completed Foundation collapses to a latest-completed workfront instead of 
   assert.equal(result.rows[0].basis, 'LATEST_COMPLETED');
 });
 
-test('local workfront roadmap can extend inside a running scope using dependency then structural evidence', () => {
+test('local workfront roadmap advances from setup safety into normal-start Heretic integration by dependency', () => {
   const p = project('project.vexlife.tocompletion');
   const roadmap = projectRoadmap(p, { maxSteps: 4, maxRows: 8 });
-  const p5 = roadmap.rows.find((row) => row.scopeRef === 'work.vexlife.tocompletion.p5.lived-continuity-learning');
-  assert.ok(p5);
-  assert.equal(p5.steps[0].items[0].workRef, 'work.vexlife.tocompletion.p5.g02-semantic-authority-materializer');
-  assert.equal(p5.steps[1].items.some((item) => item.workRef === 'work.vexlife.tocompletion.p5.g02.sdk-runner-a057'), true);
-  assert.equal(p5.steps[1].basis, 'STRUCTURAL');
+  const productization = roadmap.rows.find((row) => row.scopeRef === 'work.vexlife.tocompletion.productization.ordinary-heretic-setup');
+  assert.ok(productization);
+  assert.equal(productization.steps[0].items[0].workRef, 'work.vexlife.tocompletion.productization.setup-safety-convergence');
+  assert.equal(productization.steps[1].items.some((item) => item.workRef === 'work.vexlife.tocompletion.productization.heretic-normal-start-integration'), true);
+  assert.equal(productization.steps[1].basis, 'DEPENDENCY');
 });
 
 test('flow projections never freeze or mutate the canonical public workspace input', () => {

@@ -3208,74 +3208,6 @@
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
-      "workRef": "work.vextreme.vexsite.localization.closed-circuit.global-core",
-      "parentWorkRefOrNull": null,
-      "label": "Localize Closed Circuit across Global Core",
-      "purpose": "Preserve the current Closed Circuit Global Core localization concern as canonical Work while Vextreme retains source scheduling and implementation authority; current provider foreground remains separate dual-lineage work.",
-      "workClass": "POTENTIAL",
-      "state": "CAPTURED",
-      "workDisposition": "PARKED",
-      "priorityClass": "NORMAL",
-      "dependencyRefs": [],
-      "repositoryRefs": [
-        "repo.vextreme"
-      ],
-      "sourceRefs": [
-        "github.pull.vexwork.62",
-        "projects/vexwork-operational-console/VEXSITE-PATIENT-ZERO.md",
-        "projects/vexwork-operational-console/vexsite-patient-zero-observation.json",
-        "concern.vextreme.vexsite.localization.closed-circuit.global-core",
-        "entity.vextreme.vexsite.page.closed-circuit",
-        "lens.vextreme.vexsite.localization",
-        "predicate.vextreme.vexsite.localization.target-tier-complete",
-        "reason.vextreme.vexsite.localization.target-tier-completion",
-        "github.issue.vextreme.273",
-        "github.issue-comment.vextreme.273.6311043427",
-        "projects/vexwork-operational-console/vexsite-closed-circuit-promotion-publication.json"
-      ],
-      "formationProcessRefOrNull": "process.vexwork.promote-derived-concern",
-      "nextProcessRefs": [],
-      "authorityDisposition": "NO_AUTHORITY",
-      "effectDisposition": "NO_EFFECTS",
-      "createdAt": "2026-10-23T02:20:00.000Z",
-      "updatedAt": "2026-10-23T02:26:33.000Z"
-    },
-    {
-      "schemaVersion": "vexwork.work-item/v1",
-      "workRef": "work.vexwork.foundation.maturity-closure",
-      "parentWorkRefOrNull": "work.vexwork.foundation.outcome",
-      "label": "Foundation maturity closure",
-      "purpose": "Close the pre-VexBoard foundation hardening pass by establishing the regression/coverage floor, adopting segment-owned Workgraph authoring, and migrating portable Project Planning and Project Reconciliation without reopening the already-completed first-foundation outcome.",
-      "workClass": "TASK",
-      "state": "COMPLETED",
-      "priorityClass": "HIGH",
-      "dependencyRefs": [
-        "work.vexwork.foundation.portable-workgraph"
-      ],
-      "repositoryRefs": [
-        "repo.vexwork",
-        "repo.vexlife"
-      ],
-      "sourceRefs": [
-        "github.pull.vexwork.57",
-        "github.pull.vexwork.58",
-        "github.pull.vexwork.59",
-        "docs/foundation/INDEX.md",
-        "docs/process/QUALITY-REVIEW.md",
-        "docs/foundation/WORKGRAPH-COMPOSITION.md",
-        "docs/foundation/PROJECT-PLANNING.md",
-        "docs/foundation/PROJECT-RECONCILIATION.md"
-      ],
-      "authorityDisposition": "AUTHORIZED_BOUNDED",
-      "effectDisposition": "EFFECTS_BOUND",
-      "createdAt": "2026-10-23T00:49:14.000Z",
-      "updatedAt": "2026-10-23T02:02:22.000Z",
-      "workDisposition": "ACTIVE",
-      "formationProcessRefOrNull": null,
-      "nextProcessRefs": []
-    },
-    {
-      "schemaVersion": "vexwork.work-item/v1",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
@@ -3390,6 +3322,74 @@
         "github.issue.vexlife.866.comment.6357923021",
         "github.pull.vexlife.919"
       ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vextreme.vexsite.localization.closed-circuit.global-core",
+      "parentWorkRefOrNull": null,
+      "label": "Localize Closed Circuit across Global Core",
+      "purpose": "Preserve the current Closed Circuit Global Core localization concern as canonical Work while Vextreme retains source scheduling and implementation authority; current provider foreground remains separate dual-lineage work.",
+      "workClass": "POTENTIAL",
+      "state": "CAPTURED",
+      "workDisposition": "PARKED",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vextreme"
+      ],
+      "sourceRefs": [
+        "github.pull.vexwork.62",
+        "projects/vexwork-operational-console/VEXSITE-PATIENT-ZERO.md",
+        "projects/vexwork-operational-console/vexsite-patient-zero-observation.json",
+        "concern.vextreme.vexsite.localization.closed-circuit.global-core",
+        "entity.vextreme.vexsite.page.closed-circuit",
+        "lens.vextreme.vexsite.localization",
+        "predicate.vextreme.vexsite.localization.target-tier-complete",
+        "reason.vextreme.vexsite.localization.target-tier-completion",
+        "github.issue.vextreme.273",
+        "github.issue-comment.vextreme.273.6311043427",
+        "projects/vexwork-operational-console/vexsite-closed-circuit-promotion-publication.json"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.promote-derived-concern",
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-23T02:20:00.000Z",
+      "updatedAt": "2026-10-23T02:26:33.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexwork.foundation.maturity-closure",
+      "parentWorkRefOrNull": "work.vexwork.foundation.outcome",
+      "label": "Foundation maturity closure",
+      "purpose": "Close the pre-VexBoard foundation hardening pass by establishing the regression/coverage floor, adopting segment-owned Workgraph authoring, and migrating portable Project Planning and Project Reconciliation without reopening the already-completed first-foundation outcome.",
+      "workClass": "TASK",
+      "state": "COMPLETED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexwork.foundation.portable-workgraph"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "github.pull.vexwork.57",
+        "github.pull.vexwork.58",
+        "github.pull.vexwork.59",
+        "docs/foundation/INDEX.md",
+        "docs/process/QUALITY-REVIEW.md",
+        "docs/foundation/WORKGRAPH-COMPOSITION.md",
+        "docs/foundation/PROJECT-PLANNING.md",
+        "docs/foundation/PROJECT-RECONCILIATION.md"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-23T00:49:14.000Z",
+      "updatedAt": "2026-10-23T02:02:22.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
     }
   ],
   "transitions": [
@@ -4296,6 +4296,48 @@
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.tocompletion.p5.g02-semantic-authority-materializer.completed.a067-terminal-lived-pass",
+      "workRef": "work.vexlife.tocompletion.p5.g02-semantic-authority-materializer",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "A067 earned P5_G02_RETAINED_HOME_CONTINUITY_PASS with exact durable Score/semantic-authority heads, historical verification, source descent and fresh-process readback while Dream/Rhythm/training/weights/sync/publication remained false.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.issue.vexlife.866.comment.6356366903"
+      ],
+      "createdAt": "2026-10-23T05:30:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.tocompletion.p5.g02-semantic-authority-materializer.verifying.a067-terminal",
+      "workRef": "work.vexlife.tocompletion.p5.g02-semantic-authority-materializer",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Accepted SDK/VexLife source corrections plus the recovered durable Score effect reached exact current, historical, source-descent and fresh-process verification.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.issue.vexlife.866.comment.6356366903",
+        "github.pull.vexlife.918",
+        "github.pull.vextreme-sdk.1890"
+      ],
+      "createdAt": "2026-10-23T05:30:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.tocompletion.p5.lived-continuity-learning.paused.g03-terminal-no-g04-evidence",
+      "workRef": "work.vexlife.tocompletion.p5.lived-continuity-learning",
+      "priorState": "RUNNING",
+      "nextState": "PAUSED_AT_CHECKPOINT",
+      "reason": "G02 and G03 are terminal lived passes, but one memory-only Daily Stratum does not establish recurrent developmental evidence. Pause developmental effects until an ordinary source-bound episode/correction/recurrence earns Continuity Evolution and possible G04 evaluation.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.issue.vexlife.866.comment.6356366903",
+        "github.issue.vexlife.866.comment.6356465627"
+      ],
+      "createdAt": "2026-10-23T05:30:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
       "transitionRef": "transition.vexwork.foundation.maturity-closure.completed.pr59",
       "workRef": "work.vexwork.foundation.maturity-closure",
       "priorState": "VERIFYING",
@@ -4309,6 +4351,20 @@
         "github.actions.vexwork.run.39885985305"
       ],
       "createdAt": "2026-10-23T02:02:22.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.attention-queue-contract.completed.pr71",
+      "workRef": "work.vexwork.operational-console.attention-queue-contract",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "PR #71 merged the exact A003-proven Attention Queue semantic foundation, and the merge commit introduced zero file delta beyond the assured candidate.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.71",
+        "github.commit.vexwork.15e3b73835f45b641944b94491dad2e494ba1c63"
+      ],
+      "createdAt": "2026-10-23T04:34:26.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
@@ -4353,20 +4409,6 @@
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vexwork.operational-console.attention-queue-contract.completed.pr71",
-      "workRef": "work.vexwork.operational-console.attention-queue-contract",
-      "priorState": "VERIFYING",
-      "nextState": "COMPLETED",
-      "reason": "PR #71 merged the exact A003-proven Attention Queue semantic foundation, and the merge commit introduced zero file delta beyond the assured candidate.",
-      "actorRef": "role.vexwork.lifecycle-currentizer",
-      "sourceRefs": [
-        "github.pull.vexwork.71",
-        "github.commit.vexwork.15e3b73835f45b641944b94491dad2e494ba1c63"
-      ],
-      "createdAt": "2026-10-23T04:34:26.000Z"
-    },
-    {
-      "schemaVersion": "vexwork.work-transition/v1",
       "transitionRef": "transition.vexwork.operational-console.commerce-ai-site.ready.item-model-complete",
       "workRef": "work.vexwork.operational-console.commerce-ai-site",
       "priorState": "WAITING_DEPENDENCIES",
@@ -4378,6 +4420,20 @@
         "work.vexwork.operational-console.commerce-item-model"
       ],
       "createdAt": "2026-10-23T04:53:01.001Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.commerce-fulfillment-attention.completed.pr75",
+      "workRef": "work.vexwork.operational-console.commerce-fulfillment-attention",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "PR #75 merged the exact A008-proven corrected Commerce fulfillment-attention adapter, and the merge commit introduced zero file delta beyond the assured head.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.75",
+        "github.commit.vexwork.b54d2f0fd39d4d59abbbce5212e1c3643cc7f883"
+      ],
+      "createdAt": "2026-10-23T05:09:13.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
@@ -4423,17 +4479,17 @@
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vexwork.operational-console.commerce-fulfillment-attention.completed.pr75",
-      "workRef": "work.vexwork.operational-console.commerce-fulfillment-attention",
+      "transitionRef": "transition.vexwork.operational-console.commerce-item-model.completed.pr73",
+      "workRef": "work.vexwork.operational-console.commerce-item-model",
       "priorState": "VERIFYING",
       "nextState": "COMPLETED",
-      "reason": "PR #75 merged the exact A008-proven corrected Commerce fulfillment-attention adapter, and the merge commit introduced zero file delta beyond the assured head.",
+      "reason": "PR #73 merged the exact A005-proven Commerce item model, and the merge commit introduced zero file delta beyond the assured candidate.",
       "actorRef": "role.vexwork.lifecycle-currentizer",
       "sourceRefs": [
-        "github.pull.vexwork.75",
-        "github.commit.vexwork.b54d2f0fd39d4d59abbbce5212e1c3643cc7f883"
+        "github.pull.vexwork.73",
+        "github.commit.vexwork.d316b570a14d3b080e69291cf9186bce53365280"
       ],
-      "createdAt": "2026-10-23T05:09:13.000Z"
+      "createdAt": "2026-10-23T04:53:01.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
@@ -4478,20 +4534,6 @@
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vexwork.operational-console.commerce-item-model.completed.pr73",
-      "workRef": "work.vexwork.operational-console.commerce-item-model",
-      "priorState": "VERIFYING",
-      "nextState": "COMPLETED",
-      "reason": "PR #73 merged the exact A005-proven Commerce item model, and the merge commit introduced zero file delta beyond the assured candidate.",
-      "actorRef": "role.vexwork.lifecycle-currentizer",
-      "sourceRefs": [
-        "github.pull.vexwork.73",
-        "github.commit.vexwork.d316b570a14d3b080e69291cf9186bce53365280"
-      ],
-      "createdAt": "2026-10-23T04:53:01.000Z"
-    },
-    {
-      "schemaVersion": "vexwork.work-transition/v1",
       "transitionRef": "transition.vexwork.operational-console.commerce-template.ready.p3-terminal",
       "workRef": "work.vexwork.operational-console.commerce-template",
       "priorState": "WAITING_DEPENDENCIES",
@@ -4517,6 +4559,20 @@
         "work.vexwork.operational-console.commerce-item-model"
       ],
       "createdAt": "2026-10-23T04:51:11.919Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.operating-domain-contract.completed.pr68",
+      "workRef": "work.vexwork.operational-console.operating-domain-contract",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "PR #68 merged at a tree byte-identical to the independently assured Operating Domain candidate.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.68",
+        "github.commit.vexwork.ddd56d8ddff92b5053644c758197d014d2000613"
+      ],
+      "createdAt": "2026-10-23T03:37:41.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
@@ -4560,17 +4616,18 @@
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vexwork.operational-console.operating-domain-contract.completed.pr68",
-      "workRef": "work.vexwork.operational-console.operating-domain-contract",
+      "transitionRef": "transition.vexwork.operational-console.operating-domain-template.completed.pr71",
+      "workRef": "work.vexwork.operational-console.operating-domain-template",
       "priorState": "VERIFYING",
       "nextState": "COMPLETED",
-      "reason": "PR #68 merged at a tree byte-identical to the independently assured Operating Domain candidate.",
+      "reason": "P3 Operating Domain template is complete with domain-neutral composition plus bounded event/exception Attention Queue semantics accepted on main.",
       "actorRef": "role.vexwork.lifecycle-currentizer",
       "sourceRefs": [
         "github.pull.vexwork.68",
-        "github.commit.vexwork.ddd56d8ddff92b5053644c758197d014d2000613"
+        "github.pull.vexwork.71",
+        "github.commit.vexwork.15e3b73835f45b641944b94491dad2e494ba1c63"
       ],
-      "createdAt": "2026-10-23T03:37:41.000Z"
+      "createdAt": "2026-10-23T04:34:26.002Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
@@ -4617,18 +4674,17 @@
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vexwork.operational-console.operating-domain-template.completed.pr71",
-      "workRef": "work.vexwork.operational-console.operating-domain-template",
+      "transitionRef": "transition.vexwork.operational-console.vexsite-dogfood.completed.pr63",
+      "workRef": "work.vexwork.operational-console.vexsite-dogfood",
       "priorState": "VERIFYING",
       "nextState": "COMPLETED",
-      "reason": "P3 Operating Domain template is complete with domain-neutral composition plus bounded event/exception Attention Queue semantics accepted on main.",
+      "reason": "PR #63 merged the one promoted Closed Circuit concern, exact Parking Lot publication and re-projection while leaving the remaining provider population derived-only.",
       "actorRef": "role.vexwork.lifecycle-currentizer",
       "sourceRefs": [
-        "github.pull.vexwork.68",
-        "github.pull.vexwork.71",
-        "github.commit.vexwork.15e3b73835f45b641944b94491dad2e494ba1c63"
+        "github.pull.vexwork.63",
+        "github.commit.vexwork.a4813424d67d8813457446b509ca92b406b9b98e"
       ],
-      "createdAt": "2026-10-23T04:34:26.002Z"
+      "createdAt": "2026-10-23T02:34:28.001Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
@@ -4660,17 +4716,17 @@
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vexwork.operational-console.vexsite-dogfood.completed.pr63",
-      "workRef": "work.vexwork.operational-console.vexsite-dogfood",
+      "transitionRef": "transition.vexwork.operational-console.vexsite-localization-lens.completed.pr62",
+      "workRef": "work.vexwork.operational-console.vexsite-localization-lens",
       "priorState": "VERIFYING",
       "nextState": "COMPLETED",
-      "reason": "PR #63 merged the one promoted Closed Circuit concern, exact Parking Lot publication and re-projection while leaving the remaining provider population derived-only.",
+      "reason": "PR #62 merged the promotion-aligned localization lens and exact patient-zero evidence separation.",
       "actorRef": "role.vexwork.lifecycle-currentizer",
       "sourceRefs": [
-        "github.pull.vexwork.63",
-        "github.commit.vexwork.a4813424d67d8813457446b509ca92b406b9b98e"
+        "github.pull.vexwork.62",
+        "github.commit.vexwork.63ada6726d4ddbe6374da14fede0d11666d6e225"
       ],
-      "createdAt": "2026-10-23T02:34:28.001Z"
+      "createdAt": "2026-10-23T02:26:33.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
@@ -4714,17 +4770,17 @@
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vexwork.operational-console.vexsite-localization-lens.completed.pr62",
-      "workRef": "work.vexwork.operational-console.vexsite-localization-lens",
+      "transitionRef": "transition.vexwork.operational-console.vexsite-patient-zero-proof.completed.pr63",
+      "workRef": "work.vexwork.operational-console.vexsite-patient-zero-proof",
       "priorState": "VERIFYING",
       "nextState": "COMPLETED",
-      "reason": "PR #62 merged the promotion-aligned localization lens and exact patient-zero evidence separation.",
+      "reason": "PR #63 merged the checked-in promoted Work and proved Closed Circuit alone links to canonical Work while other incomplete pages remain derived observations.",
       "actorRef": "role.vexwork.lifecycle-currentizer",
       "sourceRefs": [
-        "github.pull.vexwork.62",
-        "github.commit.vexwork.63ada6726d4ddbe6374da14fede0d11666d6e225"
+        "github.pull.vexwork.63",
+        "github.commit.vexwork.a4813424d67d8813457446b509ca92b406b9b98e"
       ],
-      "createdAt": "2026-10-23T02:26:33.000Z"
+      "createdAt": "2026-10-23T02:34:28.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
@@ -4769,17 +4825,17 @@
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vexwork.operational-console.vexsite-patient-zero-proof.completed.pr63",
-      "workRef": "work.vexwork.operational-console.vexsite-patient-zero-proof",
+      "transitionRef": "transition.vexwork.operational-console.vexsite-population-scope.completed.pr49",
+      "workRef": "work.vexwork.operational-console.vexsite-population-scope",
       "priorState": "VERIFYING",
       "nextState": "COMPLETED",
-      "reason": "PR #63 merged the checked-in promoted Work and proved Closed Circuit alone links to canonical Work while other incomplete pages remain derived observations.",
+      "reason": "PR #49 merged the current Vextreme page population and arc/section scope adapter.",
       "actorRef": "role.vexwork.lifecycle-currentizer",
       "sourceRefs": [
-        "github.pull.vexwork.63",
-        "github.commit.vexwork.a4813424d67d8813457446b509ca92b406b9b98e"
+        "github.pull.vexwork.49",
+        "github.commit.vexwork.d8b0028bd9413a9c05cfe4b36f1d54425021a6fc"
       ],
-      "createdAt": "2026-10-23T02:34:28.000Z"
+      "createdAt": "2026-10-23T02:15:05.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
@@ -4807,62 +4863,6 @@
         "github.actions.vexwork.run.39888485435"
       ],
       "createdAt": "2026-10-23T02:14:40.000Z"
-    },
-    {
-      "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vexwork.operational-console.vexsite-population-scope.completed.pr49",
-      "workRef": "work.vexwork.operational-console.vexsite-population-scope",
-      "priorState": "VERIFYING",
-      "nextState": "COMPLETED",
-      "reason": "PR #49 merged the current Vextreme page population and arc/section scope adapter.",
-      "actorRef": "role.vexwork.lifecycle-currentizer",
-      "sourceRefs": [
-        "github.pull.vexwork.49",
-        "github.commit.vexwork.d8b0028bd9413a9c05cfe4b36f1d54425021a6fc"
-      ],
-      "createdAt": "2026-10-23T02:15:05.000Z"
-    },
-    {
-      "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vexlife.tocompletion.p5.g02-semantic-authority-materializer.verifying.a067-terminal",
-      "workRef": "work.vexlife.tocompletion.p5.g02-semantic-authority-materializer",
-      "priorState": "RUNNING",
-      "nextState": "VERIFYING",
-      "reason": "Accepted SDK/VexLife source corrections plus the recovered durable Score effect reached exact current, historical, source-descent and fresh-process verification.",
-      "actorRef": "role.vexwork.lifecycle-currentizer",
-      "sourceRefs": [
-        "github.issue.vexlife.866.comment.6356366903",
-        "github.pull.vexlife.918",
-        "github.pull.vextreme-sdk.1890"
-      ],
-      "createdAt": "2026-10-23T05:30:00.000Z"
-    },
-    {
-      "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vexlife.tocompletion.p5.g02-semantic-authority-materializer.completed.a067-terminal-lived-pass",
-      "workRef": "work.vexlife.tocompletion.p5.g02-semantic-authority-materializer",
-      "priorState": "VERIFYING",
-      "nextState": "COMPLETED",
-      "reason": "A067 earned P5_G02_RETAINED_HOME_CONTINUITY_PASS with exact durable Score/semantic-authority heads, historical verification, source descent and fresh-process readback while Dream/Rhythm/training/weights/sync/publication remained false.",
-      "actorRef": "role.vexwork.lifecycle-currentizer",
-      "sourceRefs": [
-        "github.issue.vexlife.866.comment.6356366903"
-      ],
-      "createdAt": "2026-10-23T05:30:00.000Z"
-    },
-    {
-      "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vexlife.tocompletion.p5.lived-continuity-learning.paused.g03-terminal-no-g04-evidence",
-      "workRef": "work.vexlife.tocompletion.p5.lived-continuity-learning",
-      "priorState": "RUNNING",
-      "nextState": "PAUSED_AT_CHECKPOINT",
-      "reason": "G02 and G03 are terminal lived passes, but one memory-only Daily Stratum does not establish recurrent developmental evidence. Pause developmental effects until an ordinary source-bound episode/correction/recurrence earns Continuity Evolution and possible G04 evaluation.",
-      "actorRef": "role.vexwork.lifecycle-currentizer",
-      "sourceRefs": [
-        "github.issue.vexlife.866.comment.6356366903",
-        "github.issue.vexlife.866.comment.6356465627"
-      ],
-      "createdAt": "2026-10-23T05:30:00.000Z"
     }
   ],
   "sourceRefs": [
