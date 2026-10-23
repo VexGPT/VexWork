@@ -23,7 +23,7 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Restore canonical raw representation
+      - name: Restore canonical raw representation and exact transition assertions
         shell: bash
         run: |
           set -euo pipefail
@@ -47,6 +47,17 @@ jobs:
           NODE
 
           git checkout origin/main -- test/workgraph.test.mjs
+
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          const path = 'test/workgraph.test.mjs';
+          let source = fs.readFileSync(path, 'utf8');
+          const prior = '  assert.equal(graph.transitions.length, 60);';
+          const next = `  assert.equal(graph.transitions.length, 63);\n  assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.decomposed.20261022'));\n  assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.plan-validated.20261022'));\n  assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.ready.20261022'));`;
+          if (!source.includes(prior)) throw new Error('expected transition-count assertion missing');
+          source = source.replace(prior, next);
+          fs.writeFileSync(path, source);
+          NODE
 
       - name: Regenerate public projections
         run: |
@@ -73,5 +84,5 @@ jobs:
             public/work-dashboard.json \
             test/workgraph.test.mjs \
             .github/workflows/vexstream-device-storage-normalize.yml
-          git commit -m '[VexStream Project] Keep Ready transition diff causal' -m 'Store the canonical Workgraph and Project in their existing raw representation, leave derived fingerprints to validation/projection, and revert generic fixture edits that were only needed by the noisy representation.' -m '[VXG RealForever]'
+          git commit -m '[VexStream Project] Keep Ready transition diff causal' -m 'Store the canonical Workgraph and Project in their existing raw representation, leave derived fingerprints to validation/projection, and update only the generic transition-count contract for the three admitted Ready transitions.' -m '[VXG RealForever]'
           git push origin HEAD:VXG-102226-vexstream-device-storage-ready
