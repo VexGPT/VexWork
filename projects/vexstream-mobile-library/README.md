@@ -4,9 +4,10 @@
 
 ## Human outcome
 
-Make downloaded VexStream music a **durable, reusable Android device library** while keeping the
-already-accepted one-shot MassDownload behavior truthful and keeping continuous "Keep Offline" sync
-as a separately governed future policy.
+Make VexStream on Android a **durable, reusable and human-navigable mobile music library**: keep
+downloaded media truthful and durable, while giving the listener a compact way to **Sort by** and
+**Filter by** the kinds of music they actually want to play. Continuous "Keep Offline" sync remains
+a separately governed future policy.
 
 This Project is the human/navigation owner for that outcome. Product semantics remain with
 VexLife-Android and VexStream Music.
@@ -43,6 +44,9 @@ VexStream Mobile Library                         OUTCOME
 +-- Contextual Download Experience               OUTCOME
 |   +-- Contextual Download Missing              TASK
 |
++-- Library Browse & Discovery                   OUTCOME
+|   +-- Sort / Filter library controls           TASK / running / Android PR #164
+|
 +-- MassDownload Maturity                        OUTCOME
     +-- MassDownload product implementation      TASK / completed
     +-- MassDownload terminal EndToEnd           TASK / completed
@@ -58,10 +62,18 @@ Persistent Keep Offline / Sync
     PARKED
     NO_AUTHORITY
     NO_EFFECTS
+
+User tag topology / dynamic stations
+    POTENTIAL
+    CAPTURED
+    PARKED
+    NO_AUTHORITY
+    NO_EFFECTS
 ```
 
-It remains visible through the Parking Lot until Victor deliberately adopts continuous sync as a
-separate product commitment.
+These remain visible through the Parking Lot until deliberately adopted as product commitments.
+The tag/station potential is preserved because it has a distinct durable-classification ownership
+question; it is not hidden inside the first Sort / Filter implementation.
 
 ## Current source truth that motivated the Project
 
@@ -330,6 +342,131 @@ API_TARGET_RUNNER_READY
 
 Do not re-create another lane-local emulator script while this reusable dependency is the admitted
 next edge.
+
+### ML-D9 — Sort by and Filter by are one presentation surface, not one measurement
+
+The product need is one presentable place to organize what the listener is about to play, not a
+generic predicate engine.
+
+```text
+SORT BY
+    changes order
+    does not change membership
+
+FILTER BY
+    changes membership in the current visible/listening set
+    does not mutate catalog or collection truth
+```
+
+Different fields use the control appropriate to their meaning:
+
+```text
+duration
+    numeric threshold
+
+genre / artist / source classification
+    categorical selection
+
+availability / local-copy state
+    state selection
+
+title / artist / album / year / duration
+    stable ordering choices
+```
+
+The first accepted Android slice is intentionally smaller than every possible dimension. Draft PR
+#164 currently implements Title / Artist / Album / Year / Duration sorting plus Duration, Artist,
+Genre and Availability filtering. Search evaluates inside the same organized membership.
+
+Victor's original duration pressure remains the proving human case:
+
+```text
+< 10 / 30 min  -> ordinary-song variety / avoid long mixes
+> 30 min / 2 h -> long-form journey / flight / focus listening
+```
+
+Unknown duration is not silently classified short or long. The current filtered set is also the
+library playback context for visible rows, row playback, Play All and Shuffle All.
+
+### ML-D10 — VexStream already has source tags/categories; mobile propagation is a later seam
+
+VexStream Music source already owns `library.Track.Tags` and `library.Track.Categories`, loaded from
+`_vexmedia/library.jsonl` provenance metadata and preserved in the V2 browser Library projection.
+The current mobile catalog / Android `VexStreamTrack` does not yet carry them.
+
+Therefore:
+
+```text
+SOURCE_TAGS / SOURCE_CATEGORIES
+!= ANDROID_LOCAL_INVENTED_TAGS
+!= USER_AUTHORED_CLASSIFICATION
+```
+
+PR #164 deliberately does not widen into a VexStream Music mobile-catalog migration merely to ship
+the first useful Android organization surface. Source tag/category filtering remains an explicit
+extension seam.
+
+### ML-D11 — User-authored tags and dynamic stations remain separate future Work
+
+The current editable VexStream Library overlay owns title, artist, album and genre; it does not own
+personal tags. A later design may combine imported classification with separately-owned human
+classification for browsing while retaining provenance.
+
+That can later support dynamic station/smart-playlist rules resolved against current Library truth:
+
+```text
+STATIC_PLAYLIST
+    explicit ordered track references
+
+FILTER
+    temporary current-view selection
+
+STATION / SMART PLAYLIST
+    durable reusable selection rule
+    resolves membership from current Library truth
+```
+
+`work.vexstream.mobile-library.tag-topology-stations` is therefore `POTENTIAL / CAPTURED / PARKED /
+NO_AUTHORITY / NO_EFFECTS`.
+
+### ML-D12 — Sort / Filter implementation is active; draft source is not acceptance
+
+Android source ownership is now durable:
+
+```text
+github.issue.vexlife-android.163
+    bounded feature/source claim
+
+github.pull.vexlife-android.164
+    draft implementation candidate
+    current feature source + focused tests + Feature Walk/Journey
+```
+
+Victor explicitly directed this lane to continue and complete the feature after the design/VexBoard
+refinement. That is the protected Ready -> Active handshake for this exact bounded Work.
+
+Current lifecycle:
+
+```text
+work.vexstream.mobile-library.library-browse-discovery
+    DECOMPOSED
+
+work.vexstream.mobile-library.sort-filter-controls
+    RUNNING
+```
+
+Current completion boundary:
+
+```text
+RUNNING != VERIFIED
+DRAFT_PR != ACCEPTED
+SOURCE_AUTHORED != vexVerifyLocal_PASS
+FEATURE_WALK_AUTHORED != DEVICE_JOURNEY_PASS
+```
+
+PR #164 is intentionally still draft. Exact-head repository proof has not yet been claimed; the
+source remains active Work until focused/aggregate/Journey proof is actually executed and accepted.
+
 
 ## Work-state and agency safety
 
