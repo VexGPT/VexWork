@@ -304,13 +304,13 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-21T08:41:00.000Z",
-      "updatedAt": "2026-10-22T01:32:00.000Z",
+      "updatedAt": "2026-10-23T08:02:00.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "workRef": "work.vexstream.mobile-library.outcome",
       "parentWorkRefOrNull": null,
       "label": "VexStream Mobile Library",
-      "purpose": "Make downloaded VexStream music a durable, reusable Android device library while preserving exact media identity, truthful one-shot download semantics, and separately governed persistent sync.",
+      "purpose": "Make VexStream on Android a durable, reusable and human-navigable mobile music library: preserve exact media identity and truthful download semantics while letting listeners narrow the current library into useful listening contexts, with persistent sync separately governed.",
       "workClass": "OUTCOME",
       "state": "DECOMPOSED",
       "priorityClass": "HIGH",
@@ -3436,9 +3436,9 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vexstream.mobile-library.duration-filter",
-      "parentWorkRefOrNull": "work.vexstream.mobile-library.outcome",
+      "parentWorkRefOrNull": "work.vexstream.mobile-library.library-filtering",
       "label": "Duration-aware song filtering",
-      "purpose": "Let a listener constrain current playable VexStream tracks by a chosen duration threshold so Play All / Shuffle All can intentionally target short-form variety or long-form listening without changing track identity, catalog truth, or playlist membership.",
+      "purpose": "Prove the first Library Filtering slice by letting a listener apply less-than or greater-than duration thresholds to current playable VexStream tracks so short-form variety and long-form journey listening use the same filtered universe for visible rows and playback actions.",
       "workClass": "TASK",
       "state": "DECOMPOSED",
       "workDisposition": "ACTIVE",
@@ -3464,7 +3464,40 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-23T07:38:00.000Z",
-      "updatedAt": "2026-10-23T07:38:00.000Z"
+      "updatedAt": "2026-10-23T08:02:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexstream.mobile-library.library-filtering",
+      "parentWorkRefOrNull": "work.vexstream.mobile-library.outcome",
+      "label": "Library Filtering",
+      "purpose": "Let a listener narrow current VexStream library truth into a meaningful listening universe using composable, source-truth-derived filters without creating another catalog, playlist, playback, or lifecycle owner.",
+      "workClass": "OUTCOME",
+      "state": "DECOMPOSED",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "work.vexstream.mobile-library.outcome",
+        "projects/vexstream-mobile-library/README.md",
+        "repo.vexlife-android:docs/features/README.md",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamLibraryProjection.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamLibrarySurface.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamLibraryPresentation.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamSearchPresentation.kt"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "nextProcessRefs": [
+        "process.vexlife-android.feature-authoring"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-23T08:02:00.000Z",
+      "updatedAt": "2026-10-23T08:02:00.000Z"
     }
   ],
   "transitions": [
