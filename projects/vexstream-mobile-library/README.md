@@ -154,8 +154,10 @@ DEVICE_STORAGE_READY
 != PERSISTENT_KEEP_OFFLINE
 ```
 
-The Work item is therefore `READY`, not `RUNNING`. Product source mutation remains held until the
-Project's exact Ready -> Active human transition handshake is acknowledged and confirmed.
+The Ready -> Active handshake was approved by Victor on 2026-10-22 and confirmed by Local Vex Operations.
+The Work item is now `RUNNING`. Implementation is admitted only inside the issue-157 storage membrane;
+rediscovery, private-copy migration, destructive Clear Data proof, persistent Keep Offline / Sync, and
+Connected Services remain distinct and are not implied by this activation.
 
 ### ML-D3 — Rediscovery must reconstruct truth; the private index cannot remain the only memory
 

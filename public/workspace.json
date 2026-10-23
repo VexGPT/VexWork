@@ -644,7 +644,7 @@
           "label": "Durable device music storage",
           "purpose": "Establish the Android-native durable media-storage realization while preserving exact trackRef, SHA-256 and byte-length verification.",
           "workClass": "TASK",
-          "state": "READY",
+          "state": "RUNNING",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vexstream.mobile-library.durable-device-library",
@@ -672,7 +672,7 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-21T08:41:00.000Z",
-          "updatedAt": "2026-10-23T00:12:02.000Z",
+          "updatedAt": "2026-10-23T00:30:33.000Z",
           "transitionHistory": [
             {
               "transitionRef": "transition.vexstream.mobile-library.device-storage.decomposed.20261022",
@@ -712,6 +712,22 @@
                 "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md"
               ],
               "createdAt": "2026-10-23T00:12:02.000Z"
+            },
+            {
+              "transitionRef": "transition.vexstream.mobile-library.device-storage.running.20261022",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "Victor approved the exact Ready-to-Active envelope; implementation may now proceed inside the already-authorized issue-157 storage membrane.",
+              "actorRef": "actor.local-vex-operations.vexstream-mobile-library",
+              "sourceRefs": [
+                "github.issue.vexlife-android.157",
+                "projects/vexstream-mobile-library/README.md",
+                "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md",
+                "proposal.vexstream.mobile-library.device-storage.ready-active.20261022a",
+                "response.victor.vexstream.mobile-library.device-storage.ready-active.20261022a",
+                "confirmation.local-vex-operations.vexstream.device-storage.ready-active.20261022a"
+              ],
+              "createdAt": "2026-10-23T00:30:33.000Z"
             }
           ]
         },
@@ -1049,14 +1065,14 @@
         {
           "laneRef": "lane.work.ready",
           "label": "Ready",
-          "workRefs": [
-            "work.vexstream.mobile-library.device-storage"
-          ]
+          "workRefs": []
         },
         {
           "laneRef": "lane.work.active",
           "label": "Active",
-          "workRefs": []
+          "workRefs": [
+            "work.vexstream.mobile-library.device-storage"
+          ]
         },
         {
           "laneRef": "lane.work.waiting",
