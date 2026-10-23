@@ -27,7 +27,8 @@
         "predicate.vextreme.vexsite.localization.target-tier-complete",
         "reason.vextreme.vexsite.localization.target-tier-completion",
         "github.issue.vextreme.273",
-        "github.issue-comment.vextreme.273.6311043427"
+        "github.issue-comment.vextreme.273.6311043427",
+        "projects/vexwork-operational-console/vexsite-closed-circuit-promotion-publication.json"
       ],
       "formationProcessRefOrNull": "process.vexwork.promote-derived-concern",
       "nextProcessRefs": [],
