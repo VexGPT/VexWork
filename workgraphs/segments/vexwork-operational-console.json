@@ -436,23 +436,32 @@
       "label": "AI-managed storefront/site surface",
       "purpose": "Prove that a human can add or revise an item and its pictures through an AI-assisted environment that updates a rightful managed public site/storefront while VexWork remains the work/navigation console.",
       "workClass": "TASK",
-      "state": "READY",
+      "state": "RUNNING",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexwork.operational-console.commerce-item-model"
       ],
       "repositoryRefs": [
-        "repo.vexwork"
+        "repo.vexwork",
+        "repo.vexcommerce-storefront-reference"
       ],
       "sourceRefs": [
         "projects/vexwork-operational-console/README.md",
         "github.pull.vexwork.73",
-        "work.vexwork.operational-console.commerce-item-model"
+        "work.vexwork.operational-console.commerce-item-model",
+        "github.pull.vexwork.78",
+        "github.commit.vexwork.82626abc2834568735709d1d82f4ef1c62e052f5",
+        "vexrelay.return.vexwork.commerce-storefront-surface.a011.sha256.61405e35a1bf0c9d7ccbba7908400a17d66bb87c11c8239baf980e8977fdc829",
+        "projects/vexwork-operational-console/COMMERCE-STOREFRONT.md",
+        "src/adapters/commerce-storefront.mjs",
+        "github.repo.vgong24/VexCommerce-Storefront-Reference",
+        "github.commit.vexcommerce-storefront-reference.e0411c7a5b272b1b79fe6d234e83c1bdf4af8184",
+        "vexcommerce.storefront-reference.establishment.a003.sha256.24d32911b251bf9e8a4549569f7de1695d6039712b20e4b399845039a2352636"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T03:20:00.000Z",
-      "updatedAt": "2026-10-23T04:53:01.001Z",
+      "updatedAt": "2026-10-23T05:59:29.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -1520,6 +1529,21 @@
         "github.commit.vexwork.b54d2f0fd39d4d59abbbce5212e1c3643cc7f883"
       ],
       "createdAt": "2026-10-23T05:09:13.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.commerce-ai-site.running.storefront-boundary-pr78",
+      "workRef": "work.vexwork.operational-console.commerce-ai-site",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "PR #78 merged the exact A011-proven provider-neutral storefront document/publication-receipt boundary. The AI-site work is now actively grounded, but remains RUNNING because no rightful managed public site/storefront update has yet been performed or observed.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.78",
+        "github.commit.vexwork.82626abc2834568735709d1d82f4ef1c62e052f5",
+        "vexrelay.return.vexwork.commerce-storefront-surface.a011.sha256.61405e35a1bf0c9d7ccbba7908400a17d66bb87c11c8239baf980e8977fdc829"
+      ],
+      "createdAt": "2026-10-23T05:34:37.000Z"
     }
   ],
   "sourceRefs": [

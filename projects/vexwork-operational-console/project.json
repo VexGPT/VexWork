@@ -8,7 +8,8 @@
   ],
   "repositoryRefs": [
     "repo.vexwork",
-    "repo.vextreme"
+    "repo.vextreme",
+    "repo.vexcommerce-storefront-reference"
   ],
   "sourceRefs": [
     "projects/vexwork-operational-console/README.md",
@@ -22,7 +23,10 @@
     "repo.vexlife:docs/NAVIGATION-CONTINUITY.md",
     "repo.vexlife:docs/VEX-PRESENTATION-GRAPH.md",
     "repo.vexlife:src/core/terrain.mjs",
-    "repo.vexlife-android:docs/foundation/VEX-BODY-SEMANTIC-BLUEPRINT.md"
+    "repo.vexlife-android:docs/foundation/VEX-BODY-SEMANTIC-BLUEPRINT.md",
+    "github.repo.vgong24/VexCommerce-Storefront-Reference",
+    "github.commit.vexcommerce-storefront-reference.e0411c7a5b272b1b79fe6d234e83c1bdf4af8184",
+    "vexcommerce.storefront-reference.establishment.a003.sha256.24d32911b251bf9e8a4549569f7de1695d6039712b20e4b399845039a2352636"
   ],
   "formedAt": "2026-10-22T03:20:00.000Z"
 }
