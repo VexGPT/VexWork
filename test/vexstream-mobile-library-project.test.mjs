@@ -69,18 +69,18 @@ test('Mobile Library Board separates terminal MassDownload from the paused Queue
   assert.equal(queueIncident.effectDisposition, 'NO_EFFECTS');
 });
 
-test('durable device storage is Ready with a durable Android claim while activation remains protected', () => {
+test('durable device storage is Active after the approved exact handshake', () => {
   const item = graph.items.find((candidate) => candidate.workRef === 'work.vexstream.mobile-library.device-storage');
   assert.ok(item);
-  assert.equal(item.state, 'READY');
+  assert.equal(item.state, 'RUNNING');
   assert.equal(item.workDisposition, 'ACTIVE');
   assert.equal(item.authorityDisposition, 'AUTHORIZED_BOUNDED');
   assert.equal(item.effectDisposition, 'EFFECTS_BOUND');
   assert.equal(item.sourceRefs.includes('github.issue.vexlife-android.157'), true);
 
   const board = projectWorkBoard({ project, graph, view, registry });
-  const ready = board.lanes.find((lane) => lane.laneRef === 'lane.work.ready');
-  assert.equal(ready.cards.some((card) => card.workRef === item.workRef), true);
+  const active = board.lanes.find((lane) => lane.laneRef === 'lane.work.active');
+  assert.equal(active.cards.some((card) => card.workRef === item.workRef), true);
   assert.equal(transitionHandshakeRequirement({
     policy,
     priorState: 'READY',
