@@ -141,3 +141,24 @@ test('VexBoard is discoverable with BoardGraph as the next ready edge', () => {
 });
 
 // [VXG RealForever]
+
+
+test('Blueprint SOT is durably paused without active effects while preserving its exact resume edge', () => {
+  const workspace = buildWorkspace();
+  const blueprint = workspace.projects.find((entry) => entry.project.projectRef === 'project.vexlife.blueprint-source-of-truth');
+  assert.ok(blueprint);
+  assert.equal(blueprint.summary.workItemCount, 14);
+  assert.equal(blueprint.summary.completedCount, 8);
+  assert.equal(blueprint.summary.openWorkItemCount, 6);
+  const root = blueprint.items.find((item) => item.workRef === 'work.vexlife.blueprint-source-of-truth.outcome');
+  const practicum = blueprint.items.find((item) => item.workRef === 'work.vexlife.blueprint-source-of-truth.play-pause-practicum');
+  const nativeSource = blueprint.items.find((item) => item.workRef === 'work.vexlife.blueprint-source-of-truth.play-pause.native-source-admission');
+  assert.equal(root.state, 'PAUSED_AT_CHECKPOINT');
+  assert.equal(root.effectDisposition, 'NO_EFFECTS');
+  assert.equal(practicum.state, 'PAUSED_AT_CHECKPOINT');
+  assert.equal(practicum.effectDisposition, 'NO_EFFECTS');
+  assert.equal(nativeSource.state, 'WAITING_RESOURCE');
+  assert.equal(nativeSource.effectDisposition, 'NO_EFFECTS');
+  assert.equal(blueprint.lanes.find((lane) => lane.laneRef === 'lane.work.waiting').workRefs.includes(root.workRef), true);
+  assert.equal(blueprint.lanes.find((lane) => lane.laneRef === 'lane.work.waiting').workRefs.includes(nativeSource.workRef), true);
+});
