@@ -1,0 +1,168 @@
+name: Stage VexStream device storage Ready
+
+on:
+  push:
+    branches:
+      - VXG-102226-vexstream-device-storage-ready
+
+permissions:
+  contents: write
+
+jobs:
+  stage-ready:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout exact branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Use Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Apply canonical Work transitions and Ready decision record
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import { createProject, createWorkgraph, requestTransition } from './src/core/workgraph.mjs';
+
+          const readJson = (path) => JSON.parse(fs.readFileSync(path, 'utf8'));
+          const writeJson = (path, value) => fs.writeFileSync(path, `${JSON.stringify(value, null, 2)}\n`);
+          const unique = (values) => [...new Set(values)];
+
+          const registry = readJson('blueprint/work-registry.json');
+          const workRef = 'work.vexstream.mobile-library.device-storage';
+          const actorRef = 'actor.local-vex-operations.vexstream-mobile-library';
+          const sourceRefs = [
+            'github.issue.vexlife-android.157',
+            'projects/vexstream-mobile-library/README.md',
+            'docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md',
+          ];
+
+          let graph = createWorkgraph(readJson('workgraphs/public.json'), registry);
+          const graphCore = structuredClone(graph);
+          delete graphCore.semanticFingerprint;
+          const itemIndex = graphCore.items.findIndex((item) => item.workRef === workRef);
+          if (itemIndex < 0) throw new Error(`missing ${workRef}`);
+          const item = structuredClone(graphCore.items[itemIndex]);
+          delete item.semanticFingerprint;
+          item.sourceRefs = unique([
+            ...item.sourceRefs,
+            'github.issue.vexlife-android.157',
+            'repo.vexstream-music:docs/architecture/MOBILE-BRIDGE-V1.md',
+            'repo.vexstream-music:mobile_bridge.go',
+            'repo.vexlife-android:app/src/main/AndroidManifest.xml',
+            'repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/PairedVexStreamMusicRepository.kt',
+            'repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt',
+          ]);
+          graphCore.items[itemIndex] = item;
+          graph = createWorkgraph(graphCore, registry);
+
+          const transitions = [
+            {
+              expectedState: 'CAPTURED',
+              nextState: 'DECOMPOSED',
+              transitionRef: 'transition.vexstream.mobile-library.device-storage.decomposed.20261022',
+              createdAt: '2026-10-23T00:12:00.000Z',
+              reason: 'The durable-device outcome is decomposed into shared storage, later rediscovery, private-copy migration, and lived Clear Data proof with separate ownership and dependencies.',
+            },
+            {
+              expectedState: 'DECOMPOSED',
+              nextState: 'PLAN_VALIDATED',
+              transitionRef: 'transition.vexstream.mobile-library.device-storage.plan-validated.20261022',
+              createdAt: '2026-10-23T00:12:01.000Z',
+              reason: 'Android issue 157 binds the source owner, exact base/tree, MediaStore realization, API 24-28 permission boundary, source membrane, failure semantics, and proof plan.',
+            },
+            {
+              expectedState: 'PLAN_VALIDATED',
+              nextState: 'READY',
+              transitionRef: 'transition.vexstream.mobile-library.device-storage.ready.20261022',
+              createdAt: '2026-10-23T00:12:02.000Z',
+              reason: 'Dependencies are clear, no active source collision was found, and implementation is ready for the protected Ready-to-Active human handshake.',
+            },
+          ];
+
+          for (const transition of transitions) {
+            const result = requestTransition(graph, {
+              workRef,
+              transitionRef: transition.transitionRef,
+              actorRef,
+              sourceRefs,
+              createdAt: transition.createdAt,
+              expectedGraphFingerprint: graph.semanticFingerprint,
+              expectedState: transition.expectedState,
+              nextState: transition.nextState,
+              reason: transition.reason,
+            }, registry);
+            graph = result.graph;
+          }
+          writeJson('workgraphs/public.json', graph);
+
+          const projectPath = 'projects/vexstream-mobile-library/project.json';
+          const projectCore = readJson(projectPath);
+          delete projectCore.semanticFingerprint;
+          projectCore.sourceRefs = unique([...projectCore.sourceRefs, 'github.issue.vexlife-android.157']);
+          writeJson(projectPath, createProject(projectCore));
+
+          const readmePath = 'projects/vexstream-mobile-library/README.md';
+          let readme = fs.readFileSync(readmePath, 'utf8');
+          const marker = '### ML-D3 — Rediscovery must reconstruct truth; the private index cannot remain the only memory\n';
+          const readyDecision = `#### Ready decision — 2026-10-22\n\nAndroid source admission and design are now durably bound by\n[\`VexLife-Android issue #157\`](https://github.com/vgong24/VexLife-Android/issues/157).\n\nThe bounded storage realization is:\n\n\`\`\`text\naccepted producer media = MP3 / audio/mpeg\nportable identity = mediaSha256 + mediaByteLength\nAndroid 10+ owner = MediaStore.Audio / Music/VexStream / <sha256>.mp3\nwrite rule = pending -> stream + exact digest/length verification -> publish\nAndroid 7-9 owner = MediaStore audio + WRITE_EXTERNAL_STORAGE through API 28 only\npermission denial = preserve the verified private copy and fail closed\nlocalMediaRef = content URI after successful shared publication\n\`\`\`\n\nThis decision does not collapse the dependent work:\n\n\`\`\`text\nDEVICE_STORAGE_READY\n!= REDISCOVERY_COMPLETE\n!= PRIVATE_COPY_MIGRATED\n!= CLEAR_DATA_LIVED_PROOF\n!= PERSISTENT_KEEP_OFFLINE\n\`\`\`\n\nThe Work item is therefore \`READY\`, not \`RUNNING\`. Product source mutation remains held until the\nProject's exact Ready -> Active human transition handshake is acknowledged and confirmed.\n\n`;
+          if (!readme.includes(marker)) throw new Error('ML-D3 marker missing');
+          if (!readme.includes('#### Ready decision — 2026-10-22')) {
+            readme = readme.replace(marker, `${readyDecision}${marker}`);
+          }
+          fs.writeFileSync(readmePath, readme);
+
+          const testPath = 'test/vexstream-mobile-library-project.test.mjs';
+          let tests = fs.readFileSync(testPath, 'utf8');
+          const insertionMarker = "test('persistent Keep Offline remains parked outside Project membership', () => {\n";
+          const readyTest = `test('durable device storage is Ready with a durable Android claim while activation remains protected', () => {\n  const item = graph.items.find((candidate) => candidate.workRef === 'work.vexstream.mobile-library.device-storage');\n  assert.ok(item);\n  assert.equal(item.state, 'READY');\n  assert.equal(item.workDisposition, 'ACTIVE');\n  assert.equal(item.authorityDisposition, 'AUTHORIZED_BOUNDED');\n  assert.equal(item.effectDisposition, 'EFFECTS_BOUND');\n  assert.equal(item.sourceRefs.includes('github.issue.vexlife-android.157'), true);\n\n  const board = projectWorkBoard({ project, graph, view, registry });\n  const ready = board.lanes.find((lane) => lane.laneRef === 'lane.work.ready');\n  assert.equal(ready.cards.some((card) => card.workRef === item.workRef), true);\n  assert.equal(transitionHandshakeRequirement({\n    policy,\n    priorState: 'READY',\n    nextState: 'RUNNING',\n    registry,\n    graph,\n    workRef: item.workRef,\n  }).required, true);\n});\n\n`;
+          if (!tests.includes(insertionMarker)) throw new Error('test insertion marker missing');
+          if (!tests.includes("durable device storage is Ready with a durable Android claim")) {
+            tests = tests.replace(insertionMarker, `${readyTest}${insertionMarker}`);
+          }
+          tests = tests.replace(
+            "  assert.equal(project.sourceRefs.includes('github.pull.vextreme-sdk.1887'), true);",
+            "  assert.equal(project.sourceRefs.includes('github.pull.vextreme-sdk.1887'), true);\n  assert.equal(project.sourceRefs.includes('github.issue.vexlife-android.157'), true);",
+          );
+          tests = tests.replace(
+            "  assert.match(readme, /ML-D6 — MassDownload product source and terminal EndToEnd proof are different Work/);",
+            "  assert.match(readme, /ML-D6 — MassDownload product source and terminal EndToEnd proof are different Work/);\n  assert.match(readme, /VexLife-Android issue #157/);\n  assert.match(readme, /DEVICE_STORAGE_READY/);",
+          );
+          fs.writeFileSync(testPath, tests);
+          NODE
+
+      - name: Regenerate public projections
+        run: |
+          npm run workspace:build
+          npm run dashboard:build
+
+      - name: Prove the bounded Ready state
+        run: |
+          node --test test/vexstream-mobile-library-project.test.mjs test/workgraph.test.mjs
+          npm run check
+          npm run dashboard:check
+          npm run workspace:check
+
+      - name: Commit the canonical Ready state without retaining this temporary workflow
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'VexGPT'
+          git config user.email 'victor.gong@vextreme24.com'
+          rm -- '.github/workflows/vexstream-device-storage-ready.yml'
+          git add workgraphs/public.json \
+            projects/vexstream-mobile-library/project.json \
+            projects/vexstream-mobile-library/README.md \
+            public/workspace.json \
+            public/work-dashboard.json \
+            test/vexstream-mobile-library-project.test.mjs \
+            .github/workflows/vexstream-device-storage-ready.yml
+          git commit -m '[VexStream Project] Stage durable device storage at Ready' -m 'Bind Android issue #157, record the resolved shared-audio design, apply CAPTURED -> DECOMPOSED -> PLAN_VALIDATED -> READY through VexWork requestTransition, and preserve Ready -> Active as the protected human handshake.' -m '[VXG RealForever]'
+          git push origin HEAD:VXG-102226-vexstream-device-storage-ready
