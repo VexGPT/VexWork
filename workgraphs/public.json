@@ -2179,7 +2179,8 @@
         "work.vexwork.operational-console.commerce-item-model"
       ],
       "repositoryRefs": [
-        "repo.vexwork"
+        "repo.vexwork",
+        "repo.vexcommerce-storefront-reference"
       ],
       "sourceRefs": [
         "projects/vexwork-operational-console/README.md",
@@ -2189,12 +2190,15 @@
         "github.commit.vexwork.82626abc2834568735709d1d82f4ef1c62e052f5",
         "vexrelay.return.vexwork.commerce-storefront-surface.a011.sha256.61405e35a1bf0c9d7ccbba7908400a17d66bb87c11c8239baf980e8977fdc829",
         "projects/vexwork-operational-console/COMMERCE-STOREFRONT.md",
-        "src/adapters/commerce-storefront.mjs"
+        "src/adapters/commerce-storefront.mjs",
+        "github.repo.vgong24/VexCommerce-Storefront-Reference",
+        "github.commit.vexcommerce-storefront-reference.e0411c7a5b272b1b79fe6d234e83c1bdf4af8184",
+        "vexcommerce.storefront-reference.establishment.a003.sha256.24d32911b251bf9e8a4549569f7de1695d6039712b20e4b399845039a2352636"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T03:20:00.000Z",
-      "updatedAt": "2026-10-23T05:34:37.000Z",
+      "updatedAt": "2026-10-23T05:59:29.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
