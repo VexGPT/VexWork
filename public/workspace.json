@@ -5247,9 +5247,7 @@
               "createdAt": "2026-10-23T02:59:44.000Z"
             },
             {
-              "schemaVersion": "vexwork.work-transition/v1",
               "transitionRef": "transition.vexboard.boardgraph-contract.verifying.pr66-terminal",
-              "workRef": "work.vexboard.boardgraph-contract",
               "priorState": "RUNNING",
               "nextState": "VERIFYING",
               "reason": "PR #66 merged at the exact semantically-cleared BoardGraph head after SourceOwner, Independent Assurance and LifecycleCurrentness; terminal post-merge evidence is current.",
@@ -5261,9 +5259,7 @@
               "createdAt": "2026-10-23T07:52:12.000Z"
             },
             {
-              "schemaVersion": "vexwork.work-transition/v1",
               "transitionRef": "transition.vexboard.boardgraph-contract.completed.pr66-terminal",
-              "workRef": "work.vexboard.boardgraph-contract",
               "priorState": "VERIFYING",
               "nextState": "COMPLETED",
               "reason": "The PR #66 merge tree exactly matches the cleared BoardGraph candidate and terminal PostMergeVerification A003 PASS was consumed; the shared-control foundation is accepted.",
@@ -5361,9 +5357,7 @@
           "updatedAt": "2026-10-23T07:52:14.000Z",
           "transitionHistory": [
             {
-              "schemaVersion": "vexwork.work-transition/v1",
               "transitionRef": "transition.vexboard.canvas-projection.ready.boardgraph-pr66",
-              "workRef": "work.vexboard.canvas-projection",
               "priorState": "WAITING_DEPENDENCIES",
               "nextState": "READY",
               "reason": "The BoardGraph dependency is completed at the exact merged and post-merge-verified source, releasing the read-only canvas and recursive-navigation frontier. Readiness does not grant implementation authority.",
@@ -5517,8 +5511,8 @@
           "laneRef": "lane.work.done",
           "label": "Done",
           "workRefs": [
-            "work.vexboard.project-architecture",
-            "work.vexboard.boardgraph-contract"
+            "work.vexboard.boardgraph-contract",
+            "work.vexboard.project-architecture"
           ]
         },
         {
