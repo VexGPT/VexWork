@@ -9,11 +9,13 @@ human outcome                         APPROVED_FOR_PROJECT_FORMATION
 project architecture source           CURRENT
 canonical Project / Workgraph entry   CURRENT
 public Projects projection            CURRENT
-product implementation                BOARDGRAPH_FOUNDATION_STARTED
-implementation authority              AUTHORIZED_BOUNDED_BOARDGRAPH_FOUNDATION
+product implementation                BOARDGRAPH_FOUNDATION_COMPLETED
+next implementation frontier          CANVAS_PROJECTION_READY
+current implementation authority      NO_AUTHORITY
+current effects                       NO_EFFECTS
 ```
 
-This source preserves the VexBoard product intention and architecture before implementation begins. The Project is now canonically formed through `project.json`, its Work Board view, a bounded Workgraph decomposition, the Project Registry, and the generated public workspace. Product implementation remains separately authority-bound; Project formation does not silently grant repository effects.
+This source preserves the VexBoard product intention and architecture across implementation phases. The Project is canonically formed through `project.json`, its Work Board view, a bounded Workgraph decomposition, the Project Registry, and the generated public workspace. The BoardGraph/shared-Control foundation is complete, and the canonical Workgraph now exposes Canvas Projection as READY while keeping its implementation authority and effects absent. This architecture source explains that state; it does not own or advance lifecycle truth.
 
 ```text
 PRESERVE_THE_PROJECT_NOW
@@ -21,15 +23,20 @@ PRESERVE_THE_PROJECT_NOW
 PRETEND_CANONICAL_REGISTRATION_ALREADY_HAPPENED
 ```
 
-### Current implementation admission
+### Consumed BoardGraph implementation admission
 
-The architecture formation is now followed by one bounded implementation grant:
+The first bounded implementation grant is complete and remains useful as historical scope:
 
 ```text
 workRef = work.vexboard.boardgraph-contract
 authority = AUTHORIZED_BOUNDED
 effects = EFFECTS_BOUND
-state = RUNNING
+state = COMPLETED
+
+nextWorkRef = work.vexboard.canvas-projection
+nextState = READY
+nextAuthority = NO_AUTHORITY
+nextEffects = NO_EFFECTS
 
 initial implementation membrane
   src/shared/vexboard-model.mjs
@@ -45,15 +52,23 @@ initial implementation membrane
   VexBoard-owned Workgraph/project projections required to keep work truth current
 ```
 
-This admission comes from Victor's explicit instruction to begin the actual VexBoard work after the
-completion-state architecture was mapped. It authorizes the BoardGraph/shared-Control foundation in
-VexWork; it does not grant source authority in VexLife, Vextreme, Vextreme-Assets or other projected
-repositories.
+This consumed admission came from Victor's explicit instruction to begin the actual VexBoard work after
+the completion-state architecture was mapped. It authorized and completed the BoardGraph/shared-Control
+foundation in VexWork. Its scope does not flow into Canvas Projection, and it never granted source
+authority in VexLife, Vextreme, Vextreme-Assets or other projected repositories.
 
 ```text
 VEXBOARD_IMPLEMENTATION_AUTHORITY
 !=
 TARGET_REPOSITORY_AUTHORITY
+
+BOARDGRAPH_COMPLETION
+!=
+CANVAS_IMPLEMENTATION_AUTHORITY
+
+READY
+!=
+AUTHORIZED
 ```
 
 ## Human outcome
@@ -2341,6 +2356,124 @@ VexBoard intended journey
 ```
 
 VexBoard may become the reusable visual substrate for future Operational Console and process-design experiences. It must not steal Workgraph lifecycle, Process Map ownership, Terrain continuity, or target-repository product semantics.
+
+### Whole-work perception across rightful owners
+
+A feature should remain perceivable as one continuous development trajectory even though its truths
+remain separately owned:
+
+```text
+human intention
+-> VexWork formation / currentness
+-> intended VexBoard design
+-> feature / source home
+-> implementation
+-> BoardJourney / Feature Walk
+-> focused + lived proof
+-> completed current meaning
+```
+
+Permanent:
+
+```text
+ONE_FEATURE_TRAJECTORY
+!=
+ONE_SOURCE
+!=
+ONE_BOARD
+!=
+ONE_DOCUMENT
+
+STABLE_SEMANTIC_FEATURE_COORDINATE
+-> WORK_REFERENCE
+-> DESIGN_REFERENCE
+-> FEATURE_HOME_REFERENCE
+-> IMPLEMENTATION_REFERENCE
+-> JOURNEY_REFERENCE
+-> PROOF_REFERENCE
+```
+
+VexBoard should compose facilities it already owns rather than invent a second lifecycle or proof
+database:
+
+```text
+Work lens
+  why the Work exists and where it is current
+
+Experience / Atlas lenses
+  intended human experience and source relationships
+
+REFERENCE
+  reciprocal pointers to Work, feature homes, repositories, source and proof
+
+PORTAL
+  descent into deeper design or topology without one enormous canvas
+
+BoardJourney
+  intended semantic traversal
+
+Context Inspector
+  bounded where-used, source, documentation, proof and live traversal
+
+Source projection + lived comparison
+  projected current source and observed behavior, kept distinct from intended design
+```
+
+From a completed feature coordinate, a human should be able to answer:
+
+```text
+What is this?                         -> feature home
+Why did we build it?                  -> VexWork
+What was intended?                    -> VexBoard
+Where does it live?                   -> source / implementation
+How does a human traverse it?         -> BoardJourney / Feature Walk
+How do we know?                       -> focused + lived proof
+What was deliberately left out?      -> sibling / parked Work
+```
+
+Reverse traversal should work from any rightful owner back toward the same stable feature coordinate.
+The relationships are navigational projections; each owner keeps its own truth.
+
+```text
+INTENDED_DESIGN
+!=
+PROJECTED_CURRENT_SOURCE
+!=
+OBSERVED_LIVED_BEHAVIOR
+
+DESIGN_COMPLETE
+!=
+IMPLEMENTATION_AUTHORIZED
+!=
+WORK_COMPLETE
+
+IMPLEMENTATION_COMPLETE
+!=
+DESIGN_REASONING_DISAPPEARS
+
+HISTORICAL_DESIGN_REASONING
+!=
+CURRENT_PRODUCT_OR_SOURCE_TRUTH
+```
+
+This relationship must scale down. A tiny feature should not acquire ceremonial documents or a dense
+board merely because VexBoard exists. Add richer references only when real complexity, proof or
+continuity pressure earns them.
+
+The VexStream Sort / Filter library-controls feature is a useful patient-zero consumer:
+
+```text
+express its intended experience with current BoardGraph
+-> link existing Work + feature home + source + journey/proof
+-> observe what is awkward or impossible
+-> improve the smallest reusable VexBoard relationship
+-> prove that improvement against the same feature
+```
+
+Use existing stable Work/source refs first. Do not change VexWork schema or create a universal feature-
+trajectory subsystem until a concrete consumer proves the present references are insufficient. This
+patient zero may teach the architecture; it must not become a dependency that blocks the current
+VexStream feature or VexBoard's nearer implementation frontier.
 
 ## Blueprint-to-implementation boundary
 
