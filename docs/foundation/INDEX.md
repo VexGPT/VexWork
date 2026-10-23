@@ -21,8 +21,8 @@ This is the current architecture map. Follow the exact foundation whose question
 | Runtime persistence | Where does private/current Workgraph truth persist across restart without turning Git into the live database? | `docs/foundation/RUNTIME-PERSISTENCE.md`, `src/core/workgraph-runtime.mjs` | `test/workgraph-runtime.test.mjs` | FOUNDATION |
 | Work Participation | Who has actually carried this work across fresh sessions/threads without making participation assignment or authority? | `docs/foundation/WORK-PARTICIPATION.md`, `src/core/work-participation.mjs` | `test/work-participation.test.mjs` | FOUNDATION |
 | Operating Profiles | How can hosted assistants and a future local Vex carry the same work truth while using different effect routes? | `docs/foundation/OPERATING-PROFILES.md`, `docs/process/ASSISTED-HOST-WORKFLOW.md` | source review + lived assisted-host use | FOUNDATION |
-| Planning | How do iterations, WIP, ordering and planning transactions persist? | lineage exists in VexLife P0B; portable owner not yet source-placed | future owner | HELD |
-| Reconciliation | How do exact provider/source/proof observations attach to work currentness? | lineage exists in VexLife P0B; portable owner not yet source-placed | future owner | HELD |
+| Planning | How do iterations, WIP, ordering and planning transactions persist without becoming lifecycle truth? | `blueprint/project-planning-registry.json`, `docs/foundation/PROJECT-PLANNING.md`, `src/core/project-planning.mjs`, `src/core/project-planning-runtime.mjs` | `test/project-planning.test.mjs`, `test/project-planning-runtime.test.mjs` | FOUNDATION |
+| Reconciliation | How do exact provider/source/proof observations classify currentness without becoming WorkState or transition authority? | `blueprint/project-reconciliation-registry.json`, `docs/foundation/PROJECT-RECONCILIATION.md`, `src/core/project-reconciliation.mjs` | `test/project-reconciliation.test.mjs` | FOUNDATION |
 | Human UI | How can a human navigate Projects, nested Outcomes/work, Board/dependencies and work-item detail without making the UI a work-state owner? | `index.html`, `workspace-reader.js`, `public/workspace.json` | `test/public-ui.test.mjs` + lived Pages proof | FOUNDATION |
 
 `FOUNDATION` means the initial portable contract exists in this repository. It does not mean every production integration is complete.
@@ -67,6 +67,12 @@ runtime currentness / restart persistence / CURRENT pointer / writer recovery
 
 worker/session participation / fresh-instance continuity / handoff counts
 -> WORK-PARTICIPATION.md
+
+iteration / WIP / shared order / planning currentness
+-> PROJECT-PLANNING.md
+
+provider + proof currentness / completion evidence / reverification
+-> PROJECT-RECONCILIATION.md
 
 hosted ChatGPT / local Vex / assisted host action / VexRelay-style handoff
 -> OPERATING-PROFILES.md
