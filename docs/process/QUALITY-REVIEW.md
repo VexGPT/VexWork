@@ -454,6 +454,35 @@ Critical lifecycle/currentness modules also carry file-local floors in `blueprin
 
 The floor is a ratchet, not a target. Changes should not lower it without an explicit reviewed reason, and meaningful new tests should raise the accepted baseline/floor when the repository has earned the increase.
 
+## Accepted execution carrier
+
+The deterministic review command is repository-owned source, but **GitHub Actions is not the accepted default proof carrier for VexWork work in Local Vex Operations**.
+
+For an exact repository candidate that requires host execution, use the current VexRelay contract and its named recipe family:
+
+```text
+source.vexrelay.current-contract/v1
+-> adapter.vexrelay.repository/v2
+-> ExactHeadSourceOwnerProof
+-> canonical ten-member RETURN
+-> independent consumption
+```
+
+Use `IndependentAssurance` when the lifecycle stage requires a separate read-only assurance role.
+
+```text
+npm run review
+  = repository deterministic proof command
+
+VexRelay
+  = admitted execution/evidence carrier
+
+GITHUB_ACTIONS
+  != DEFAULT_VEXWORK_PROOF_ROUTE
+```
+
+If another repository explicitly requires a hosted GitHub check, that is a separate owner-specific predicate. Do not relabel Relay/local host proof as hosted Actions proof.
+
 ## VexWork Foundation deterministic floor
 
 For the current repository foundation, the ergonomic automated-floor entry is:
