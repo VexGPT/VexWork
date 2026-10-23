@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "vexwork.project-reconciliation-registry/v1",
+  "registryRef": "registry.vexwork.project-reconciliation.001",
+  "registryVersion": 1,
+  "purpose": "Relate exact Project work to provider and proof observations and classify current review, required reverification, earned completion evidence or unknown currentness without owning Workgraph lifecycle mutation.",
+  "dispositions": ["CURRENT_IN_REVIEW", "REVERIFY_REQUIRED", "COMPLETION_EVIDENCE_READY", "HELD_UNKNOWN"],
+  "providerStates": ["OPEN", "MERGED", "CLOSED_UNMERGED", "UNKNOWN"],
+  "proofStates": ["PASSED", "FAILED", "UNKNOWN"],
+  "nonCollapseLaws": [
+    "PROVIDER_STATE != WORK_STATE",
+    "CHECK_SUCCESS != SEMANTIC_PROOF_BY_ITSELF",
+    "PROVIDER_TIMESTAMP != CURRENTNESS",
+    "PROVIDER_OBSERVATION != SOURCE_AUTHORITY",
+    "RECONCILIATION_DISPOSITION != TRANSITION_AUTHORITY",
+    "PR_MERGED != WORK_CLOSED",
+    "COMPLETION_EVIDENCE_READY != COMPLETED",
+    "STALE_PROOF -> REVERIFY_REQUIRED"
+  ]
+}
