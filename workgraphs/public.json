@@ -2110,13 +2110,14 @@
       "label": "Reusable small-commerce starter",
       "purpose": "Apply the Operating Domain foundation to a reusable small-commerce starter covering catalog, public storefront/site, sale state, inventory state and fulfillment attention without making VexWork the commerce database.",
       "workClass": "OUTCOME",
-      "state": "RUNNING",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexwork.operational-console.operating-domain-template"
       ],
       "repositoryRefs": [
-        "repo.vexwork"
+        "repo.vexwork",
+        "repo.vexcommerce-storefront-reference"
       ],
       "sourceRefs": [
         "projects/vexwork-operational-console/README.md",
@@ -2124,12 +2125,28 @@
         "github.pull.vexwork.73",
         "github.commit.vexwork.d316b570a14d3b080e69291cf9186bce53365280",
         "vexrelay.return.vexwork.commerce-item-model.a005.sha256.daf72abd8f8d96a03a1249d7ed4955a5234ea870a6fb22815394a82535a9f12b",
-        "projects/vexwork-operational-console/COMMERCE-ITEM-MODEL.md"
+        "projects/vexwork-operational-console/COMMERCE-ITEM-MODEL.md",
+        "work.vexwork.operational-console.commerce-item-model",
+        "work.vexwork.operational-console.commerce-ai-site",
+        "work.vexwork.operational-console.commerce-fulfillment-attention",
+        "github.pull.vexwork.75",
+        "github.commit.vexwork.b54d2f0fd39d4d59abbbce5212e1c3643cc7f883",
+        "projects/vexwork-operational-console/COMMERCE-FULFILLMENT-ATTENTION.md",
+        "github.pull.vexwork.78",
+        "github.commit.vexwork.82626abc2834568735709d1d82f4ef1c62e052f5",
+        "projects/vexwork-operational-console/COMMERCE-STOREFRONT.md",
+        "github.pull.vexwork.80",
+        "github.commit.vexwork.b5decd7692dbcc74109278a15cd67e1fe5afa4e7",
+        "projects/vexwork-operational-console/commerce-operating-domain.json",
+        "projects/vexwork-operational-console/commerce-storefront-reference-publication.json",
+        "github.pull.vexcommerce-storefront-reference.1",
+        "github.commit.vexcommerce-storefront-reference.a43b54a4626c6ff9b5eb2b402ffae9db9b466836",
+        "vexcommerce.return.storefront-ai-revision-merge.a017.sha256.b792b38d06b4a8434f4c719769210a4894d6355e347f825e1b5974321bbb9d5b"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T03:20:00.000Z",
-      "updatedAt": "2026-10-23T04:51:11.919Z",
+      "updatedAt": "2026-10-23T06:17:28.004Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -2173,7 +2190,7 @@
       "label": "AI-managed storefront/site surface",
       "purpose": "Prove that a human can add or revise an item and its pictures through an AI-assisted environment that updates a rightful managed public site/storefront while VexWork remains the work/navigation console.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexwork.operational-console.commerce-item-model"
@@ -2193,12 +2210,16 @@
         "src/adapters/commerce-storefront.mjs",
         "github.repo.vgong24/VexCommerce-Storefront-Reference",
         "github.commit.vexcommerce-storefront-reference.e0411c7a5b272b1b79fe6d234e83c1bdf4af8184",
-        "vexcommerce.storefront-reference.establishment.a003.sha256.24d32911b251bf9e8a4549569f7de1695d6039712b20e4b399845039a2352636"
+        "vexcommerce.storefront-reference.establishment.a003.sha256.24d32911b251bf9e8a4549569f7de1695d6039712b20e4b399845039a2352636",
+        "github.pull.vexcommerce-storefront-reference.1",
+        "github.commit.vexcommerce-storefront-reference.a43b54a4626c6ff9b5eb2b402ffae9db9b466836",
+        "vexcommerce.return.storefront-ai-revision-merge.a017.sha256.b792b38d06b4a8434f4c719769210a4894d6355e347f825e1b5974321bbb9d5b",
+        "projects/vexwork-operational-console/commerce-storefront-reference-publication.json"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T03:20:00.000Z",
-      "updatedAt": "2026-10-23T05:59:29.000Z",
+      "updatedAt": "2026-10-23T06:17:28.002Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -2245,7 +2266,7 @@
       "label": "Antique Plate lived commerce pilot",
       "purpose": "Dogfood the reusable commerce starter for a nontechnical human selling unique antique plates online, from no operating environment through one truthful item sale and physical-shipment acknowledgement.",
       "workClass": "OUTCOME",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "READY",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexwork.operational-console.commerce-template"
@@ -2254,12 +2275,15 @@
         "repo.vexwork"
       ],
       "sourceRefs": [
-        "projects/vexwork-operational-console/README.md"
+        "projects/vexwork-operational-console/README.md",
+        "work.vexwork.operational-console.commerce-template",
+        "projects/vexwork-operational-console/commerce-operating-domain.json",
+        "projects/vexwork-operational-console/commerce-storefront-reference-publication.json"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T03:20:00.000Z",
-      "updatedAt": "2026-10-22T03:20:00.000Z",
+      "updatedAt": "2026-10-23T06:17:28.005Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -4192,6 +4216,20 @@
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.antique-pilot.ready.commerce-template-complete",
+      "workRef": "work.vexwork.operational-console.antique-pilot",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "The reusable Commerce starter completed its P4 acceptance boundary, clearing the Antique Plate lived pilot dependency without pre-claiming any real item, sale or shipment effect.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "work.vexwork.operational-console.commerce-template",
+        "projects/vexwork-operational-console/commerce-operating-domain.json"
+      ],
+      "createdAt": "2026-10-23T06:17:28.005Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
       "transitionRef": "transition.vexwork.operational-console.attention-queue-contract.ready.operating-domain-complete",
       "workRef": "work.vexwork.operational-console.attention-queue-contract",
       "priorState": "WAITING_DEPENDENCIES",
@@ -4273,6 +4311,37 @@
         "vexrelay.return.vexwork.commerce-storefront-surface.a011.sha256.61405e35a1bf0c9d7ccbba7908400a17d66bb87c11c8239baf980e8977fdc829"
       ],
       "createdAt": "2026-10-23T05:34:37.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.commerce-ai-site.verifying.lived-storefront-publication",
+      "workRef": "work.vexwork.operational-console.commerce-ai-site",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Registered storefront owner PR #1 merged the exact AI-managed synthetic item/details/picture revision, and A017 observed the revised page and image markers on the public Pages surface.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexcommerce-storefront-reference.1",
+        "github.commit.vexcommerce-storefront-reference.a43b54a4626c6ff9b5eb2b402ffae9db9b466836",
+        "vexcommerce.return.storefront-ai-revision-merge.a017.sha256.b792b38d06b4a8434f4c719769210a4894d6355e347f825e1b5974321bbb9d5b",
+        "projects/vexwork-operational-console/commerce-storefront-reference-publication.json"
+      ],
+      "createdAt": "2026-10-23T06:17:28.001Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.commerce-ai-site.completed.lived-storefront-publication",
+      "workRef": "work.vexwork.operational-console.commerce-ai-site",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "The contract-valid PUBLISHED receipt binds the revised Commerce item and picture to the registered rightful storefront owner while VexWork remains read-only/no-publication-authority.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "projects/vexwork-operational-console/commerce-storefront-reference-publication.json",
+        "github.commit.vexcommerce-storefront-reference.a43b54a4626c6ff9b5eb2b402ffae9db9b466836",
+        "vexcommerce.return.storefront-ai-revision-merge.a017.sha256.b792b38d06b4a8434f4c719769210a4894d6355e347f825e1b5974321bbb9d5b"
+      ],
+      "createdAt": "2026-10-23T06:17:28.002Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
@@ -4412,6 +4481,38 @@
         "work.vexwork.operational-console.commerce-item-model"
       ],
       "createdAt": "2026-10-23T04:51:11.919Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.commerce-template.verifying.p4-reuse-threshold",
+      "workRef": "work.vexwork.operational-console.commerce-template",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Item modeling, lived managed storefront publication, and sale/fulfillment attention are accepted; the Commerce Operating Domain descriptor now reuses the generic domain contract with Commerce capabilities, population, lenses, process route and fulfillment queue.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "work.vexwork.operational-console.commerce-item-model",
+        "work.vexwork.operational-console.commerce-ai-site",
+        "work.vexwork.operational-console.commerce-fulfillment-attention",
+        "projects/vexwork-operational-console/commerce-operating-domain.json"
+      ],
+      "createdAt": "2026-10-23T06:17:28.003Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.operational-console.commerce-template.completed.p4-reuse-threshold",
+      "workRef": "work.vexwork.operational-console.commerce-template",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "P4 reusable Commerce acceptance is complete: catalog/item truth, public storefront revision, sale/inventory/fulfillment attention and Operating Domain reuse are source-placed without making VexWork the commerce database or effect owner.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "projects/vexwork-operational-console/commerce-operating-domain.json",
+        "projects/vexwork-operational-console/commerce-storefront-reference-publication.json",
+        "github.pull.vexcommerce-storefront-reference.1",
+        "github.commit.vexcommerce-storefront-reference.a43b54a4626c6ff9b5eb2b402ffae9db9b466836"
+      ],
+      "createdAt": "2026-10-23T06:17:28.004Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
