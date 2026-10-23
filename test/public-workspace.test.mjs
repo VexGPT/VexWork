@@ -144,18 +144,24 @@ test('Connected Services is discoverable as a real Project with the current live
   assert.equal(workspace.parkingLot.items.some((item) => item.workRef === 'work.vexlife.connected-services.guided-onboarding'), true);
 });
 
-test('VexBoard is discoverable with BoardGraph as the current active edge', () => {
+test('VexBoard is discoverable with BoardGraph completed and Canvas Projection ready', () => {
   const workspace = buildWorkspace();
   const vexboard = workspace.projects.find((entry) => entry.project.projectRef === 'project.vexboard');
   assert.ok(vexboard);
   assert.equal(vexboard.summary.workItemCount, 7);
-  assert.equal(vexboard.summary.openWorkItemCount, 6);
+  assert.equal(vexboard.summary.openWorkItemCount, 5);
+  assert.equal(vexboard.summary.completedCount, 2);
   assert.equal(vexboard.items.find((item) => item.workRef === 'work.vexboard.project-architecture').state, 'COMPLETED');
   const boardgraph = vexboard.items.find((item) => item.workRef === 'work.vexboard.boardgraph-contract');
-  assert.equal(boardgraph.state, 'RUNNING');
+  const canvas = vexboard.items.find((item) => item.workRef === 'work.vexboard.canvas-projection');
+  assert.equal(boardgraph.state, 'COMPLETED');
   assert.equal(boardgraph.authorityDisposition, 'AUTHORIZED_BOUNDED');
   assert.equal(boardgraph.effectDisposition, 'EFFECTS_BOUND');
-  assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.active').workRefs.includes(boardgraph.workRef), true);
+  assert.equal(canvas.state, 'READY');
+  assert.equal(canvas.authorityDisposition, 'NO_AUTHORITY');
+  assert.equal(canvas.effectDisposition, 'NO_EFFECTS');
+  assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.ready').workRefs.includes(canvas.workRef), true);
+  assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.done').workRefs.includes(boardgraph.workRef), true);
   assert.equal(vexboard.project.sourceRefs.includes('projects/vexboard/README.md'), true);
 });
 
