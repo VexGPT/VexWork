@@ -60,10 +60,10 @@ test('Foundation source segment remains exactly compatible with the accepted Wor
   assert.equal(result.graph.sourceRefs.includes('workgraphs/segments/vexwork-foundation.json'), false);
 });
 
-test('Foundation shadow segment owns only local containment and local transitions', () => {
+test('Foundation source segment owns only local containment and local transitions', () => {
   const refs = new Set(foundationSource.items.map((item) => item.workRef));
-  assert.equal(foundationSource.items.length, 7);
-  assert.equal(foundationSource.transitions.length, 12);
+  assert.equal(foundationSource.items.length, 8);
+  assert.equal(foundationSource.transitions.length, 13);
   assert.equal(
     foundationSource.items.every((item) => item.parentWorkRefOrNull === null || refs.has(item.parentWorkRefOrNull)),
     true,
