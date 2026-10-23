@@ -7,9 +7,9 @@
     "*-reader.js"
   ],
   "observedBaseline": {
-    "lines": 96.73,
-    "branches": 84.73,
-    "functions": 96.71
+    "lines": 96.85,
+    "branches": 84.11,
+    "functions": 97.14
   },
   "minimum": {
     "lines": 96,
@@ -36,7 +36,22 @@
       "lines": 98,
       "branches": 95,
       "functions": 100
+    },
+    "src/core/project-planning-runtime.mjs": {
+      "lines": 93,
+      "branches": 75,
+      "functions": 100
+    },
+    "src/core/project-planning.mjs": {
+      "lines": 99,
+      "branches": 86,
+      "functions": 100
+    },
+    "src/core/project-reconciliation.mjs": {
+      "lines": 99,
+      "branches": 88,
+      "functions": 100
     }
   },
-  "rationale": "First accepted non-regression floor measured from the exact deterministic Foundation suite after repairing stale baseline tests and adding validator/runtime fail-closed regressions. Floors sit below the measured baseline so ordinary source evolution has small headroom while material regression remains visible."
+  "rationale": "Accepted non-regression floors measured from the exact deterministic Foundation suite through the portable Planning/Reconciliation candidate. Aggregate floors remain stable; critical-file floors preserve the measured lifecycle/currentness boundaries with small review headroom rather than relying on aggregate coverage to protect them."
 }
