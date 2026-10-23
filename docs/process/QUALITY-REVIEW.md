@@ -360,6 +360,19 @@ Coverage is observable through:
 npm run test:coverage
 ```
 
+The ordinary review floor runs that coverage-enabled test execution once before the remaining deterministic checks:
+
+```text
+npm run review
+-> npm run review:deterministic
+-> npm run test:coverage
+-> npm run check
+-> npm run dashboard:check
+-> npm run workspace:check
+```
+
+The repository runtime floor is Node >=20.1 because that is the first Node 20 release where the built-in test coverage mode can be used with the command-line test runner.
+
 The coverage report is diagnostic evidence. It does not create semantic clearance:
 
 ```text
