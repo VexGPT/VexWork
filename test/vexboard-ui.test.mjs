@@ -19,6 +19,13 @@ test('VexBoard Pages entry exposes create/open/read-only/fork/save-draft workflo
   assert.match(page, /href="\.\.\/">← VexWork/);
 });
 
+test('read-only fork preserves the actual draft identity as the active board coordinate', () => {
+  const forkLine = page.split('\n').find((line) => line.includes('fork.onclick=async'));
+  assert.ok(forkLine);
+  assert.equal((forkLine.match(/ref\('draft\.vexboard'\)/g) ?? []).length, 1);
+  assert.doesNotMatch(forkLine, /boardRef:ref\('draft\.vexboard'\)/);
+});
+
 test('browser UI uses the shared BoardControl adapter for mutation rather than source/provider writes', () => {
   assert.match(page, /Board\.controlFor\(current/);
   assert.match(page, /Board\.applyBoardControl/);
