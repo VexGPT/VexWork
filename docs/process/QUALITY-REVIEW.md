@@ -326,6 +326,94 @@ NEXT ROUTE
 
 Use `docs/templates/QA-REVIEW-BRIEF.md` to hand the role to a fresh reviewer and `docs/templates/QA-REVIEW-RETURN.md` for the return shape.
 
+## Stability and coverage contract
+
+The deterministic suite is the first regression floor, not the whole meaning of quality.
+
+VexWork currently separates four questions:
+
+```text
+DIRECT_TEST_OWNERSHIP
+  does every durable core/public reader module have an explicit regression surface?
+
+BEHAVIORAL_REGRESSION
+  do focused tests exercise the intended behavior and the material fail-closed branches?
+
+COVERAGE_VISIBILITY
+  which executable lines/branches/functions were actually reached by the suite?
+
+CLAIM_FIT
+  does the available evidence class prove the product/foundation claim being made?
+```
+
+The repository enforces direct test ownership through:
+
+```text
+test/stability-contract.test.mjs
+```
+
+It requires every current `src/core/*.mjs` module and root `*-reader.js` public reader to be named by at least one deterministic test surface. This is intentionally weaker than code coverage and stronger than relying on convention alone.
+
+Coverage is observable through:
+
+```bash
+npm run test:coverage
+```
+
+The coverage report is diagnostic evidence. It does not create semantic clearance:
+
+```text
+LINE_EXECUTED != ASSERTION_PROVED
+HIGH_COVERAGE != CORRECT_BEHAVIOR
+COVERAGE_REPORT != QA_DISPOSITION
+```
+
+### Change-class expectations
+
+For executable changes, apply the smallest relevant proof:
+
+```text
+core contract / state behavior
+  -> focused positive tests
+  -> relevant negative / stale / fail-closed tests
+  -> inspect coverage of the touched responsibility
+
+public reader / UI behavior
+  -> deterministic reader/UI regression
+  -> lived proof when the claim is actually visual or interactive
+
+generated checked-in projection
+  -> owning source tests
+  -> generated-currentness check
+
+deterministic defect repair
+  -> regression fixture that fails for the defect
+  -> repair
+  -> affected broader proof
+
+shared composition / aggregate behavior
+  -> coexistence fixture preserving unrelated accepted truth
+```
+
+### Coverage-floor posture
+
+Do not choose an arbitrary repository-wide percentage before measuring the exact accepted suite and understanding which source classes belong in the denominator.
+
+The first maturity step is therefore:
+
+```text
+MEASURE exact candidate
+-> identify meaningful uncovered responsibilities
+-> add missing behavioral tests where warranted
+-> record an accepted baseline
+-> introduce a non-regression floor
+-> ratchet deliberately as coverage improves
+```
+
+Until that baseline is actually measured and accepted, a numerical threshold is **held**, not silently assumed.
+
+When a floor is later introduced, changes should not lower it without an explicit reviewed reason. Critical lifecycle, authority, currentness, validation, and fail-closed decision code may warrant stronger branch expectations than presentation/helper code; one global number must not hide that difference.
+
 ## VexWork Foundation deterministic floor
 
 For the current repository foundation, the ergonomic automated-floor entry is:
