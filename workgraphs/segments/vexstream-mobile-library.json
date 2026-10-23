@@ -260,6 +260,39 @@
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexstream.mobile-library.duration-filter",
+      "parentWorkRefOrNull": "work.vexstream.mobile-library.outcome",
+      "label": "Duration-aware song filtering",
+      "purpose": "Let a listener constrain current playable VexStream tracks by a chosen duration threshold so Play All / Shuffle All can intentionally target short-form variety or long-form listening without changing track identity, catalog truth, or playlist membership.",
+      "workClass": "TASK",
+      "state": "DECOMPOSED",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "work.vexstream.mobile-library.outcome",
+        "projects/vexstream-mobile-library/README.md",
+        "repo.vexlife-android:docs/features/README.md",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamLibraryProjection.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamLibrarySurface.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamLibraryPresentation.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "nextProcessRefs": [
+        "process.vexlife-android.feature-authoring"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-23T07:38:00.000Z",
+      "updatedAt": "2026-10-23T07:38:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-22T01:32:00.000Z",
       "updatedAt": "2026-10-22T06:41:27.000Z",
       "workDisposition": "ACTIVE",
