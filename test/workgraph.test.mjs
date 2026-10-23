@@ -23,7 +23,7 @@ test('work registry covers lifecycle states exactly once on the default Work Boa
 test('one Workgraph can contain project work and unprojected parked work', () => {
   const project = createProject(projectSource);
   const graph = createWorkgraph(graphSource, registry);
-  assert.equal(graph.items.length, 106);
+  assert.equal(graph.items.length, 107);
   assert.equal(projectWorkRefs(project, graph).length, 8);
   const toCompletionProject = createProject(toCompletionProjectSource);
   assert.equal(projectWorkRefs(toCompletionProject, graph).length, 17);
@@ -55,6 +55,11 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(ideaIntake.state, 'CANCELLED');
   assert.equal(ideaIntake.authorityDisposition, 'NO_AUTHORITY');
   assert.equal(ideaIntake.effectDisposition, 'NO_EFFECTS');
+  const closedCircuit = graph.items.find((item) => item.workRef === 'work.vextreme.vexsite.localization.closed-circuit.global-core');
+  assert.equal(closedCircuit.state, 'CAPTURED');
+  assert.equal(closedCircuit.workDisposition, 'PARKED');
+  assert.equal(closedCircuit.authorityDisposition, 'NO_AUTHORITY');
+  assert.equal(graph.rootWorkRefs.includes(closedCircuit.workRef), true);
   const historyBackfill = graph.items.find((item) => item.workRef === 'work.vexwork.history.foundational-infrastructure-backfill');
   assert.equal(historyBackfill.state, 'CAPTURED');
   assert.equal(historyBackfill.parentWorkRefOrNull, null);
@@ -63,7 +68,7 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(historyBackfill.effectDisposition, 'NO_EFFECTS');
   assert.equal(historyBackfill.formationProcessRefOrNull, 'process.vexwork.capture-discovered-work');
   assert.equal(graph.rootWorkRefs.includes(historyBackfill.workRef), true);
-  assert.equal(graph.transitions.length, 65);
+  assert.equal(graph.transitions.length, 75);
   assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.decomposed.20261022'));
   assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.plan-validated.20261022'));
   assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.ready.20261022'));
