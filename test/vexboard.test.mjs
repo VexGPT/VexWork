@@ -122,6 +122,55 @@ test('semantic controls create, contain and connect through one control grammar'
   assert.equal(result.effects.externalEffectsPerformed, false);
 });
 
+test('SET_CONTAINMENT fails closed when semantic and projection identities diverge', () => {
+  const graph = createBoardGraph(baseGraph());
+  const projection = createBoardProjection(baseProjection(), graph);
+
+  assert.throws(() => applyBoardControl({
+    graph,
+    projection,
+    control: control(graph, projection, 'SET_CONTAINMENT', {
+      nodeRef: 'node.a',
+      parentRefOrNull: 'node.b',
+      projectionItemRef: 'item.b',
+      parentProjectionItemRefOrNull: 'item.a',
+    }, 'control.bad-containment'),
+  }), /must project node node\.a/);
+
+  assert.throws(() => applyBoardControl({
+    graph,
+    projection,
+    control: control(graph, projection, 'SET_CONTAINMENT', {
+      nodeRef: 'node.a',
+      parentRefOrNull: 'node.b',
+      projectionItemRef: 'item.a',
+      parentProjectionItemRefOrNull: 'item.a',
+    }, 'control.bad-parent-projection'),
+  }), /must project node node\.b/);
+
+  assert.throws(() => applyBoardControl({
+    graph,
+    projection,
+    control: control(graph, projection, 'SET_CONTAINMENT', {
+      nodeRef: 'node.a',
+      parentRefOrNull: null,
+      projectionItemRef: 'item.a',
+      parentProjectionItemRefOrNull: 'item.b',
+    }, 'control.split-containment'),
+  }), /must both be null or both be present/);
+});
+
+test('browser client-to-canvas conversion does not double-apply scroll offsets', () => {
+  assert.deepEqual(
+    Reader.localPointFromClient({ clientX: 410, clientY: 320 }, { left: -190, top: -80 }),
+    { x: 600, y: 400 },
+  );
+  assert.throws(
+    () => Reader.localPointFromClient({ clientX: Number.NaN, clientY: 0 }, { left: 0, top: 0 }),
+    /clientX must be finite/,
+  );
+});
+
 test('stale fingerprints and locked item movement fail closed', () => {
   const graph = createBoardGraph(baseGraph());
   const projection = createBoardProjection(baseProjection(), graph);

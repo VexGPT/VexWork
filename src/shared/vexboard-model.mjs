@@ -338,6 +338,18 @@ export function applyBoardAct({ graph: graphInput, projection: projectionInput, 
     const projectionItemRef = stableRef(args.projectionItemRef, 'SET_CONTAINMENT.projectionItemRef');
     const parentRefOrNull = optionalRef(args.parentRefOrNull, 'SET_CONTAINMENT.parentRefOrNull');
     const parentProjectionItemRefOrNull = optionalRef(args.parentProjectionItemRefOrNull, 'SET_CONTAINMENT.parentProjectionItemRefOrNull');
+    const projectionItem = projection.items.find((item) => item.projectionItemRef === projectionItemRef);
+    assert(projectionItem, `unknown projectionItemRef ${projectionItemRef}`);
+    assert(projectionItem.semanticRef === nodeRef,
+      `SET_CONTAINMENT projection item ${projectionItemRef} must project node ${nodeRef}`);
+    assert((parentRefOrNull === null) === (parentProjectionItemRefOrNull === null),
+      'SET_CONTAINMENT semantic and projection parents must both be null or both be present');
+    if (parentRefOrNull !== null) {
+      const parentProjectionItem = projection.items.find((item) => item.projectionItemRef === parentProjectionItemRefOrNull);
+      assert(parentProjectionItem, `unknown parentProjectionItemRef ${parentProjectionItemRefOrNull}`);
+      assert(parentProjectionItem.semanticRef === parentRefOrNull,
+        `SET_CONTAINMENT parent projection ${parentProjectionItemRefOrNull} must project node ${parentRefOrNull}`);
+    }
     nextGraph.nodes = replaceByRef(nextGraph.nodes, nodeRef, 'nodeRef', (node) => ({ ...node, parentRefOrNull }), `unknown nodeRef ${nodeRef}`);
     nextProjection.items = replaceByRef(nextProjection.items, projectionItemRef, 'projectionItemRef', (item) => ({
       ...item,

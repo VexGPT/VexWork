@@ -25,6 +25,8 @@ test('browser UI uses the shared BoardControl adapter for mutation rather than s
   assert.match(page, /'MOVE_ITEM'/);
   assert.match(page, /'RESIZE_ITEM'/);
   assert.match(page, /'CONNECT_NODES'/);
+  assert.match(page, /Board\.localPointFromClient/);
+  assert.doesNotMatch(page, /\+view\.scrollLeft|\+view\.scrollTop/);
   assert.doesNotMatch(page, /method:\s*['"](?:POST|PUT|PATCH|DELETE)['"]/i);
   assert.doesNotMatch(page, /api\.github\.com|raw\.githubusercontent\.com/);
 });

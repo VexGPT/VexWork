@@ -12,6 +12,13 @@ export const VEXBOARD_DRAFT_SCHEMA = 'vexboard.local-draft/v1';
 export const VEXBOARD_SELF_MAP_URL = './self-map.json';
 export const VEXBOARD_DRAFT_STORAGE_KEY = 'vexboard.local-drafts/v1';
 
+export function localPointFromClient({ clientX, clientY }, { left, top }) {
+  for (const [label, value] of Object.entries({ clientX, clientY, left, top })) {
+    if (typeof value !== 'number' || !Number.isFinite(value)) throw new TypeError(`${label} must be finite`);
+  }
+  return Object.freeze({ x: clientX - left, y: clientY - top });
+}
+
 function canonicalize(value) {
   if (Array.isArray(value)) return value.map(canonicalize);
   if (value && typeof value === 'object') {
