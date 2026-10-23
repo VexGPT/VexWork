@@ -35,7 +35,7 @@ const viewRefs = ['view.test.board'];
 const contextFingerprint = projectPlanningContextFingerprint({ project, graph, viewRefs, workRegistry });
 
 function tempRoot() {
-  return fs.mkdtempSync(path.join(os.tmpdir(), 'vexwork-planning-runtime-'));
+  return fs.realpathSync.native(fs.mkdtempSync(path.join(os.tmpdir(), 'vexwork-planning-runtime-')));
 }
 
 function transaction({ n, current = null, eventClass = 'WIP_POLICY_SET', payload = { laneRef: 'lane.work.active', limit: 2 } }) {
