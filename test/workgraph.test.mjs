@@ -11,6 +11,7 @@ const projectSource = read('projects/vexwork-foundation/project.json');
 const toCompletionProjectSource = read('projects/vexlife-tocompletion/project.json');
 const connectedServicesProjectSource = read('projects/vexlife-connected-services/project.json');
 const operationalConsoleProjectSource = read('projects/vexwork-operational-console/project.json');
+const vexboardProjectSource = read('projects/vexboard/project.json');
 const graphSource = read('workgraphs/public.json');
 
 test('work registry covers lifecycle states exactly once on the default Work Board', () => {
@@ -21,7 +22,7 @@ test('work registry covers lifecycle states exactly once on the default Work Boa
 test('one Workgraph can contain project work and unprojected parked work', () => {
   const project = createProject(projectSource);
   const graph = createWorkgraph(graphSource, registry);
-  assert.equal(graph.items.length, 84);
+  assert.equal(graph.items.length, 91);
   assert.equal(projectWorkRefs(project, graph).length, 7);
   const toCompletionProject = createProject(toCompletionProjectSource);
   assert.equal(projectWorkRefs(toCompletionProject, graph).length, 17);
@@ -29,6 +30,8 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(projectWorkRefs(connectedServicesProject, graph).length, 19);
   const operationalConsoleProject = createProject(operationalConsoleProjectSource);
   assert.equal(projectWorkRefs(operationalConsoleProject, graph).length, 24);
+  const vexboardProject = createProject(vexboardProjectSource);
+  assert.equal(projectWorkRefs(vexboardProject, graph).length, 7);
   assert.equal(verifySemanticFingerprint(project), true);
   assert.equal(verifySemanticFingerprint(graph), true);
 
@@ -82,6 +85,14 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(routing.authorityDisposition, 'NO_AUTHORITY');
   assert.equal(routing.effectDisposition, 'NO_EFFECTS');
   assert.equal(routing.formationProcessRefOrNull, 'process.vexwork.capture-discovered-work');
+  const vexboardRoot = graph.items.find((item) => item.workRef === 'work.vexboard.outcome');
+  const vexboardArchitecture = graph.items.find((item) => item.workRef === 'work.vexboard.project-architecture');
+  const vexboardContract = graph.items.find((item) => item.workRef === 'work.vexboard.boardgraph-contract');
+  assert.equal(vexboardRoot.state, 'DECOMPOSED');
+  assert.equal(vexboardArchitecture.state, 'COMPLETED');
+  assert.equal(vexboardContract.state, 'READY');
+  assert.equal(vexboardContract.authorityDisposition, 'NO_AUTHORITY');
+
   const mobile = graph.items.find((item) => item.workRef === 'work.vexstream.mobile-library.outcome');
   assert.equal(mobile.workClass, 'OUTCOME');
   assert.equal(mobile.state, 'DECOMPOSED');

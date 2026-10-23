@@ -7,12 +7,13 @@
 ```text
 human outcome                         APPROVED_FOR_PROJECT_FORMATION
 project architecture source           CURRENT
-canonical Project / Workgraph entry   PENDING_AGGREGATE_RECONCILIATION
+canonical Project / Workgraph entry   CURRENT
+public Projects projection            CURRENT
 product implementation                NOT_STARTED
-implementation authority              NOT_GRANTED_BY_THIS_DOCUMENT
+implementation authority              SEPARATE_FROM_PROJECT_FORMATION
 ```
 
-This source preserves the VexBoard product intention and architecture before implementation begins. It intentionally starts as one Project current-entry document because current VexWork aggregate Project/Workgraph sources have active disjoint writers. Canonical `project.json`, Work Board, Project Registry, Workgraph, and generated workspace registration should be added through ordinary-forward reconciliation rather than overwriting those trajectories.
+This source preserves the VexBoard product intention and architecture before implementation begins. The Project is now canonically formed through `project.json`, its Work Board view, a bounded Workgraph decomposition, the Project Registry, and the generated public workspace. Product implementation remains separately authority-bound; Project formation does not silently grant repository effects.
 
 ```text
 PRESERVE_THE_PROJECT_NOW
