@@ -15,7 +15,7 @@ const policy = createProjectAgencyPolicy(read('projects/vexstream-mobile-library
 
 test('VexStream Mobile Library is the first external Project over the shared Workgraph', () => {
   const refs = projectWorkRefs(project, graph);
-  assert.equal(refs.length, 13);
+  assert.equal(refs.length, 14);
   assert.equal(refs.includes('work.vexstream.mobile-library.outcome'), true);
   assert.equal(refs.includes('work.vexstream.mobile-library.download-experience'), true);
   assert.equal(refs.includes('work.vexstream.mobile-library.massdownload-maturity'), true);
@@ -31,8 +31,12 @@ test('VexStream Mobile Library is the first external Project over the shared Wor
   assert.deepEqual(childRefs(graph, 'work.vexstream.mobile-library.outcome'), [
     'work.vexstream.mobile-library.download-experience',
     'work.vexstream.mobile-library.durable-device-library',
-    'work.vexstream.mobile-library.duration-filter',
+    'work.vexstream.mobile-library.library-filtering',
     'work.vexstream.mobile-library.massdownload-maturity',
+  ]);
+
+  assert.deepEqual(childRefs(graph, 'work.vexstream.mobile-library.library-filtering'), [
+    'work.vexstream.mobile-library.duration-filter',
   ]);
 
   assert.deepEqual(childRefs(graph, 'work.vexstream.mobile-library.durable-device-library'), [
@@ -58,7 +62,7 @@ test('Mobile Library Board separates terminal MassDownload from the paused Queue
   const active = board.lanes.find((lane) => lane.laneRef === 'lane.work.active');
   const waiting = board.lanes.find((lane) => lane.laneRef === 'lane.work.waiting');
 
-  assert.equal(board.lanes.flatMap((lane) => lane.cards).length, 13);
+  assert.equal(board.lanes.flatMap((lane) => lane.cards).length, 14);
   assert.equal(done.cards.some((card) => card.workRef === 'work.vexstream.mobile-library.massdownload-product'), true);
   assert.equal(done.cards.some((card) => card.workRef === 'work.vexstream.mobile-library.massdownload-e2e'), true);
   assert.equal(active.cards.some((card) => card.workRef === 'work.vexstream.mobile-library.track-menu-presentation-defect'), false);
@@ -70,22 +74,29 @@ test('Mobile Library Board separates terminal MassDownload from the paused Queue
   assert.equal(queueIncident.effectDisposition, 'NO_EFFECTS');
 });
 
-test('duration-aware song filtering is admitted as decomposed Android feature work', () => {
-  const item = graph.items.find((candidate) => candidate.workRef === 'work.vexstream.mobile-library.duration-filter');
-  assert.ok(item);
-  assert.equal(item.parentWorkRefOrNull, 'work.vexstream.mobile-library.outcome');
-  assert.equal(item.workClass, 'TASK');
-  assert.equal(item.state, 'DECOMPOSED');
-  assert.equal(item.workDisposition, 'ACTIVE');
-  assert.equal(item.authorityDisposition, 'AUTHORIZED_BOUNDED');
-  assert.equal(item.effectDisposition, 'EFFECTS_BOUND');
-  assert.deepEqual(item.repositoryRefs, ['repo.vexlife-android']);
-  assert.equal(item.sourceRefs.includes('repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt'), true);
-  assert.equal(item.sourceRefs.includes('repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamLibraryProjection.kt'), true);
+test('Library Filtering owns duration as its first decomposed slice without inventing another library', () => {
+  const filtering = graph.items.find((candidate) => candidate.workRef === 'work.vexstream.mobile-library.library-filtering');
+  const duration = graph.items.find((candidate) => candidate.workRef === 'work.vexstream.mobile-library.duration-filter');
+  assert.ok(filtering);
+  assert.ok(duration);
+  assert.equal(filtering.parentWorkRefOrNull, 'work.vexstream.mobile-library.outcome');
+  assert.equal(filtering.workClass, 'OUTCOME');
+  assert.equal(filtering.state, 'DECOMPOSED');
+  assert.equal(filtering.workDisposition, 'ACTIVE');
+  assert.equal(filtering.authorityDisposition, 'AUTHORIZED_BOUNDED');
+  assert.equal(filtering.effectDisposition, 'EFFECTS_BOUND');
+
+  assert.equal(duration.parentWorkRefOrNull, filtering.workRef);
+  assert.equal(duration.workClass, 'TASK');
+  assert.equal(duration.state, 'DECOMPOSED');
+  assert.deepEqual(duration.repositoryRefs, ['repo.vexlife-android']);
+  assert.equal(duration.sourceRefs.includes('repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt'), true);
+  assert.equal(duration.sourceRefs.includes('repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamLibraryProjection.kt'), true);
 
   const board = projectWorkBoard({ project, graph, view, registry });
   const intake = board.lanes.find((lane) => lane.laneRef === 'lane.work.intake');
-  assert.equal(intake.cards.some((card) => card.workRef === item.workRef), true);
+  assert.equal(intake.cards.some((card) => card.workRef === filtering.workRef), true);
+  assert.equal(intake.cards.some((card) => card.workRef === duration.workRef), true);
 });
 
 test('durable device storage retains source authority while waiting on reusable Android proof orchestration', () => {
@@ -148,7 +159,9 @@ test('Mobile Library Project keeps a human audit/decision front door beside grap
   assert.match(readme, /VexLife-Android issue #157/);
   assert.match(readme, /DEVICE_STORAGE_READY/);
   assert.match(readme, /Android target orchestration is a reusable dependency/);
-  assert.match(readme, /ML-D9 — Duration is a listening lens, not track or playlist identity/);
+  assert.match(readme, /ML-D9 — Library Filtering is a human narrowing capability, not a generic engine/);
+  assert.match(readme, /ML-D10 — Duration is the first earned Library Filtering slice/);
+  assert.match(readme, /work\.vexstream\.mobile-library\.library-filtering/);
   assert.match(readme, /work\.vexstream\.mobile-library\.duration-filter/);
   assert.match(readme, /Known VexWork modeling gap/);
 });
