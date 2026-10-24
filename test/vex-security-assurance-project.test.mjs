@@ -6,6 +6,9 @@ import { createProject, createWorkgraph, childRefs, projectWorkRefs } from '../s
 import { createBoardView, projectWorkBoard } from '../src/core/work-board.mjs';
 
 const read = (relative) => JSON.parse(fs.readFileSync(new URL(`../${relative}`, import.meta.url), 'utf8'));
+const readText = (relative) => fs.readFileSync(new URL(`../${relative}`, import.meta.url), 'utf8');
+const securityReadme = readText('projects/vex-security-assurance/README.md');
+const repositoryRouter = readText('AGENTS.md');
 const registry = read('blueprint/work-registry.json');
 const graph = createWorkgraph(read('workgraphs/public.json'), registry);
 const project = createProject(read('projects/vex-security-assurance/project.json'));
@@ -82,7 +85,7 @@ test('Security Spikes begin as TASK process semantics with no implied authority 
   }
 });
 
-test('Security board exposes active mapping, ready lens work, the Process Registry wait, and the patient-zero dependency gate', () => {
+test('Security board exposes active mapping, ready lens and Spike work, and the patient-zero dependency gate', () => {
   const projected = projectWorkBoard({ project, graph, view, registry });
   const cards = (laneRef) => projected.lanes.find((lane) => lane.laneRef === laneRef).cards.map((card) => card.workRef);
 
@@ -92,10 +95,9 @@ test('Security board exposes active mapping, ready lens work, the Process Regist
   ]);
   assert.deepEqual(cards('lane.work.ready'), [
     'work.vex.security-assurance.question-lens-foundation',
-  ]);
-  assert.deepEqual(cards('lane.work.waiting'), [
     'work.vex.security-assurance.spike-process',
   ]);
+  assert.deepEqual(cards('lane.work.waiting'), []);
   assert.deepEqual(cards('lane.work.intake'), [
     'work.vex.security-assurance.ai-agentic-security-lens',
     'work.vex.security-assurance.software-security-lens',
@@ -103,6 +105,26 @@ test('Security board exposes active mapping, ready lens work, the Process Regist
   assert.deepEqual(cards('lane.work.planned'), [
     'work.vex.security-assurance.patient-zero',
   ]);
+});
+
+test('Security Assurance is selectively routed from current work rather than loaded as ambient model context', () => {
+  assert.match(securityReadme, /SECURITY_SOURCE != MODEL_CONTEXT/);
+  assert.match(securityReadme, /WORK_RESUME != SECURITY_REVIEW/);
+  assert.match(securityReadme, /do not load Security Assurance context/);
+  assert.match(securityReadme, /retrieve only the applicable Security Lens predicates/);
+
+  assert.match(repositoryRouter, /Do \*\*not\*\* load the Security Assurance corpus/);
+  assert.match(repositoryRouter, /current work's meaning or changed boundary/);
+  assert.match(repositoryRouter, /projects\/vex-security-assurance\/README\.md/);
+});
+
+test('released Process Registry capacity makes Spike source placement ready without claiming registration', () => {
+  const spike = graph.items.find((item) => item.workRef === 'work.vex.security-assurance.spike-process');
+  assert.equal(spike.state, 'READY');
+  assert.match(spike.purpose, /released the Process Registry surface/);
+  assert.equal(spike.sourceRefs.includes('github.pull.vexwork.103'), true);
+  assert.match(securityReadme, /Generic Spike registration remains separate successor work/);
+  assert.match(securityReadme, /does not imply that `process\.vexwork\.run-spike` has been accepted or implemented/);
 });
 
 // [VXG RealForever][VEXWORK][SECURITY-ASSURANCE][PROJECT]

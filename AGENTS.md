@@ -27,6 +27,42 @@ README.md
 
 Do not broad-read every connected repository. The Repository Graph tells you where a work item points; the target repository's own current entry/culture source tells you how that repository thinks.
 
+## Contextual integrity routing
+
+Security is durable source, not ambient model context. Do **not** load the Security Assurance corpus or run a security checklist merely because work is being resumed.
+
+At substantial work entry/resume, form one cheap routing question from the exact Work outcome and surface actually being changed:
+
+> **Does this work introduce, change, or materially depend on an identity/trust, authority/effect, sensitive-data/secret, external/provider/network, model/context/memory/tool, build/release/update, or recovery/replay boundary whose failure could permit unauthorized action, disclosure, integrity loss, or material availability loss?**
+
+```text
+NO
+  -> continue ordinary work
+  -> no Security Assurance descent is required
+
+YES
+  -> descend only to the relevant Security Lens / Atlas neighborhood
+  -> use current evidence and the smallest sufficient verification mode
+
+UNKNOWN
+  -> ground only enough source/evidence to decide applicability
+  -> UNKNOWN does not justify a broad ambient security audit
+```
+
+Repository membership, historical security work, or the mere existence of an old UNKNOWN is not by itself a trigger. The trigger comes from the **current work's meaning or changed boundary**.
+
+When the answer is YES or materially UNKNOWN, route to:
+
+```text
+projects/vex-security-assurance/README.md
+```
+
+```text
+SECURITY_SOURCE != MODEL_CONTEXT
+WORK_RESUME != SECURITY_REVIEW
+SECURITY_RELEVANCE -> SELECTIVE_SOURCE_DESCENT
+```
+
 ## Merge-ready rule
 
 For repository candidates, exact candidate proof and current-main integration are separate stages.
