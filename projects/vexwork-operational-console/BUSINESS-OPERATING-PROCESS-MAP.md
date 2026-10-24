@@ -904,6 +904,9 @@ VEXBUSINESSFACTORY-FORMATION-EXPANSION-AND-AVAILABILITY-NETWORK.md
 
 VEXBUSINESSFACTORY-USER-DIRECTED-DISCOVERY-AND-PROMOTION.md
   user-invited discovery, novelty/freshness, transparent promotion, sponsored separation
+
+VEXBUSINESSFACTORY-AMBIENT-DISCOVERY-AND-WHATS-NEW.md
+  source-owned public updates, calm What's New projection, model-mediated contextual awareness
 ~~~
 
 Related VexBoard semantic-topology/perspective/discovery patient-zero work is preserved separately in VexBoard draft PR #92 so BusinessFactory meaning does not become VexBoard-owned by implication.
