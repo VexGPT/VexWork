@@ -445,7 +445,7 @@ CUTOVER_DEFAULT != REFERENCE_RETIREMENT
 
 Existing-Home Heretic replacement/upgrade remains explicit and later.
 
-## P4 accepted design## P4 accepted design## P4 accepted design
+## P4 accepted design
 
 The first intentionally tiny real effect is:
 
