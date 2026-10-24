@@ -100,6 +100,8 @@ Currentness/provider drift:
 The world changed while proof was being formed or executed.
 currentness drift -> re-observe current source/provider state -> preserve still-valid evidence -> avoid replaying unrelated work
 
+For exact-candidate source proof, unrelated movement of remote main is not by itself candidate drift. A host wrapper must not add remote-main-equals-fixed-evidence-base unless the selected current stage contract explicitly requires it. Preserve exact candidate proof and defer current-main composition to the repository integration boundary described by docs/foundation/REPOSITORY-INTEGRATION.md.
+
 ## Recover before replay
 
 If a return proves that an effect already happened, do not repeat it merely because a later verification/wrapper step failed.
