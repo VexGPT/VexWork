@@ -3127,6 +3127,51 @@ collaboration, comments, voting, permissions and richer media. Basic create/move
 contain/connect operations are intentionally proven earlier through the shared Board Control
 contract rather than postponed until this horizon.
 
+## Semantic-topology patient zero — VexBusinessFactory
+
+VexBusinessFactory is now the first explicit pressure test for using VexBoard as a reusable semantic-topology substrate rather than a domain-specific diagrammer.
+
+Durable source:
+
+```text
+projects/vexboard/VEXBUSINESSFACTORY-INTENT-TOPOLOGY-PATIENT-ZERO.md
+projects/vexboard/examples/vexbusinessfactory-intent-topology.board.json
+```
+
+The patient zero begins from:
+
+```text
+"What do you want to make possible?"
+```
+
+and maps intention through reusable semantic need-spots such as value, actors/roles, capability, capacity, offer, availability, commitment, exchange, realization, outcome, evidence, exception/recovery, reconciliation and learning/evolution.
+
+The design deliberately keeps two vocabularies separate:
+
+```text
+VexBoard relationship family
+  FLOW | TRANSITION | DATA | REFERENCE
+
+domain relationship role
+  SERVES | REQUIRES | PROVIDED_BY | AVAILABLE_THROUGH
+  COMMITS_TO | FULFILLED_BY | EVIDENCED_BY | RECOVERED_BY
+  RECONCILES_WITH | EXTENDS_WITH | ...
+```
+
+Business-specific roles should initially project through current VexBoard relationship families rather than inflating the BoardGraph core enum. A future orthogonal relationship-role reference is earned only if repeated patient-zero pressure proves it belongs in BoardGraph.
+
+The same source also preserves:
+
+- questions as a typed compiler into semantic slots;
+- OTHER only inside a known category/need-spot rather than unscoped semantic escape;
+- profile/module composition instead of one permanent industry class;
+- business evolution through linked template/module additions and declared variance;
+- one source projected through executive, education, operations, provider, beneficiary, capacity, readiness and evolution lenses;
+- VexBusinessFactory itself as a recursive self-test;
+- a threshold requiring one genuinely different non-business consumer before extracting a universal semantic-factory contract.
+
+This is architecture/patient-zero source only. It does not grant Canvas Projection authority, mutate provider/business truth, or make VexBoard the BusinessGraph owner.
+
 ## Deliberately held
 
 The first foundation does not require:
