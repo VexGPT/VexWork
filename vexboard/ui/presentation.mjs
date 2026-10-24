@@ -26,10 +26,10 @@ html[data-vexboard-palette="HIGH_CONTRAST"] .palette-fab::after { content: "High
 html[data-vexboard-palette="COLOR_SAFE"] .viewport {
   background-color: #f8fafc;
   background-image:
-    linear-gradient(135deg, rgb(15 118 110 / 5%) 25%, transparent 25%, transparent 75%, rgb(15 118 110 / 5%) 75%),
-    radial-gradient(#64748b 1px, transparent 1px);
-  background-position: 0 0, 0 0;
-  background-size: 16px 16px, 20px 20px;
+    linear-gradient(to right, rgb(3 105 161 / 8%) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(3 105 161 / 8%) 1px, transparent 1px);
+  background-position: 0 0;
+  background-size: 20px 20px;
 }
 html[data-vexboard-palette="COLOR_SAFE"] .shape.role-BEGIN {
   background-image: repeating-linear-gradient(135deg, transparent 0 8px, rgb(3 105 161 / 12%) 8px 12px);
