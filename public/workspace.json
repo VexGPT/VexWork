@@ -1,7 +1,7 @@
 {
   "schemaVersion": "vexwork.public-workspace/v1",
   "projectRegistryRef": "registry.vexwork.projects.001",
-  "projectRegistryVersion": 8,
+  "projectRegistryVersion": 11,
   "projects": [
     {
       "project": {
@@ -605,7 +605,7 @@
       "project": {
         "projectRef": "project.vexstream.mobile-library",
         "label": "VexStream Mobile Library",
-        "purpose": "Make downloaded VexStream music a durable, reusable Android device library while preserving exact media identity, truthful one-shot download semantics, and separately governed persistent sync.",
+        "purpose": "Make VexStream on Android a durable, reusable and human-navigable mobile music library: preserve exact media identity and truthful download semantics while giving listeners coherent browse, sort/filter, and whole-Songs download management, with persistent sync separately governed.",
         "rootWorkRefs": [
           "work.vexstream.mobile-library.outcome"
         ],
@@ -628,7 +628,12 @@
           "github.pull.vexlife-android.155",
           "github.issue.vexlife-android.157",
           "project.android-proof-orchestration",
-          "github.issue.vextreme-sdk.1894"
+          "github.issue.vextreme-sdk.1894",
+          "github.issue.vexlife-android.163",
+          "github.pull.vexlife-android.166",
+          "github.commit.vexlife-android.01432d594172829c2da22e3bddcb09c073c97c16",
+          "github.pull.vexlife-android.167",
+          "github.commit.vexlife-android.8213ae7befe08bc0a21c76bd70e7c8790e5bcf9f"
         ],
         "formedAt": "2026-10-21T08:41:00.000Z"
       },
@@ -640,7 +645,7 @@
           "label": "Clear-data durability lived proof",
           "purpose": "Prove downloaded music survives VexLife Clear Data, is rediscovered after relaunch, and plays without redownloading.",
           "workClass": "TASK",
-          "state": "CAPTURED",
+          "state": "COMPLETED",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vexstream.mobile-library.durable-device-library",
@@ -654,22 +659,30 @@
           "sourceRefs": [
             "work.vexstream.mobile-library.rediscovery",
             "repo.vexlife-android:docs/features/FEATURE-WALKS.md",
-            "projects/vexstream-mobile-library/README.md"
+            "projects/vexstream-mobile-library/README.md",
+            "github.issue.vexlife-android.162",
+            "github.issue.vextreme-sdk.1897",
+            "github.pull.vexlife-android.165",
+            "github.commit.vexlife-android.b8826e32ca78cc5fb8bcae14e29218a0392238bb",
+            "github.pull.vextreme-sdk.1898",
+            "github.commit.vextreme-sdk.7731cc3c638221b3c1087e8cd78d4352bde1a28f",
+            "evidence.vexstream.mobile-library.clear-data.a039.return.sha256.67e4b6ede7aab8964406894da8fdcddc216f88692e11fbd8a21ac2ae21c537b7",
+            "evidence.vexstream.mobile-library.clear-data.cleanup.a043.return.sha256.e4dbda67670dcc2a86a88f1cc12e93929e3cc35699de485ea30bdc428dc3ebe6"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-21T08:41:00.000Z",
-          "updatedAt": "2026-10-22T01:32:00.000Z",
+          "updatedAt": "2026-10-24T02:34:46.000Z",
           "transitionHistory": []
         },
         {
           "workRef": "work.vexstream.mobile-library.contextual-download-missing",
-          "label": "Contextual Download Missing",
-          "purpose": "Offer one bounded Download missing action whose scope and count come from the listener's current Songs, Album, Artist, or Playlist context while reusing MassDownload planning/execution semantics.",
+          "label": "Songs bulk download / remove all",
+          "purpose": "From VexStream settings, let the listener manage the canonical playable Songs library in one shot: Download all currently missing eligible songs and Remove all currently downloaded local copies, reusing existing MassDownload/offline-copy owners while preserving catalog truth. Album, Artist, and Playlist collection Download missing remains owned by existing collection actions.",
           "workClass": "TASK",
-          "state": "DECOMPOSED",
+          "state": "WAITING_HUMAN",
           "workDisposition": "ACTIVE",
           "priorityClass": "NORMAL",
           "parentWorkRefOrNull": "work.vexstream.mobile-library.download-experience",
@@ -686,7 +699,10 @@
             "projects/vexstream-mobile-library/README.md",
             "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt",
             "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamCollectionPresentation.kt",
-            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/offline/VexStreamOfflineCollection.kt"
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/offline/VexStreamOfflineCollection.kt",
+            "github.pull.vexlife-android.167",
+            "github.commit.vexlife-android.8213ae7befe08bc0a21c76bd70e7c8790e5bcf9f",
+            "evidence.vexstream.mobile-library.bulk-download-management.a003.return.sha256.c43d3203bff4c36a7b67693606272355914f4257912f19319c6bd39258180974"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [
@@ -695,7 +711,7 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-21T08:41:00.000Z",
-          "updatedAt": "2026-10-22T01:32:00.000Z",
+          "updatedAt": "2026-10-24T05:30:04.000Z",
           "transitionHistory": []
         },
         {
@@ -703,14 +719,12 @@
           "label": "Durable device music storage",
           "purpose": "Establish the Android-native durable media-storage realization while preserving exact trackRef, SHA-256 and byte-length verification.",
           "workClass": "TASK",
-          "state": "WAITING_TOOL",
+          "state": "COMPLETED",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vexstream.mobile-library.durable-device-library",
           "childWorkRefs": [],
-          "dependencyRefs": [
-            "work.android-proof-orchestration.api-target-runner"
-          ],
+          "dependencyRefs": [],
           "repositoryRefs": [
             "repo.vexlife-android"
           ],
@@ -728,16 +742,18 @@
             "project.android-proof-orchestration",
             "github.issue.vextreme-sdk.1894",
             "repo.vexlife-android:docs/foundation/ANDROID-HOST-PROOF.md",
-            "repo.vexlife-android:docs/foundation/test-proof/README.md"
+            "repo.vexlife-android:docs/foundation/test-proof/README.md",
+            "evidence.vexstream.mobile-library.device-storage.a033.api28-pass",
+            "evidence.vexstream.mobile-library.device-storage.a034.api36-pass",
+            "github.pull.vexlife-android.165",
+            "github.commit.vexlife-android.b8826e32ca78cc5fb8bcae14e29218a0392238bb"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
-          "nextProcessRefs": [
-            "process.vexlife-android.feature-authoring"
-          ],
+          "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-21T08:41:00.000Z",
-          "updatedAt": "2026-10-23T03:15:48.000Z",
+          "updatedAt": "2026-10-24T02:34:46.000Z",
           "transitionHistory": [
             {
               "transitionRef": "transition.vexstream.mobile-library.device-storage.decomposed.20261022",
@@ -807,6 +823,42 @@
                 "repo.vexlife-android:docs/foundation/ANDROID-HOST-PROOF.md"
               ],
               "createdAt": "2026-10-23T03:15:48.000Z"
+            },
+            {
+              "transitionRef": "transition.vexstream.mobile-library.device-storage.verifying.a033-a039-terminal",
+              "priorState": "WAITING_TOOL",
+              "nextState": "VERIFYING",
+              "reason": "A033 API28 proof, A034 physical API36 storage/migration proof, and the composed A039 post-Clear-Data run established the previously held native storage predicates on exact accepted source.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.issue.vexlife-android.157",
+                "evidence.vexstream.mobile-library.device-storage.a033.api28-pass",
+                "evidence.vexstream.mobile-library.device-storage.a034.api36-pass",
+                "evidence.vexstream.mobile-library.clear-data.a039.return.sha256.67e4b6ede7aab8964406894da8fdcddc216f88692e11fbd8a21ac2ae21c537b7",
+                "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md",
+                "proposal.local-vex-operations.vexstream-mobile-library.durable-device-completion.20261023a",
+                "response.victor.vexstream-mobile-library.durable-device-completion.20261023a",
+                "confirmation.local-vex-operations.vexstream-mobile-library.durable-device-completion.20261023a"
+              ],
+              "createdAt": "2026-10-24T02:34:45.000Z"
+            },
+            {
+              "transitionRef": "transition.vexstream.mobile-library.device-storage.completed.pr165-terminal",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "Android PR #165 merged the composed durable-device candidate and post-merge verification proved main tree-exact to the accepted candidate; the storage task no longer waits on Android proof orchestration.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vexlife-android.165",
+                "github.commit.vexlife-android.b8826e32ca78cc5fb8bcae14e29218a0392238bb",
+                "evidence.vexstream.mobile-library.clear-data.a039.return.sha256.67e4b6ede7aab8964406894da8fdcddc216f88692e11fbd8a21ac2ae21c537b7",
+                "evidence.vexstream.mobile-library.clear-data.cleanup.a043.return.sha256.e4dbda67670dcc2a86a88f1cc12e93929e3cc35699de485ea30bdc428dc3ebe6",
+                "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md",
+                "proposal.local-vex-operations.vexstream-mobile-library.durable-device-completion.20261023a",
+                "response.victor.vexstream-mobile-library.durable-device-completion.20261023a",
+                "confirmation.local-vex-operations.vexstream-mobile-library.durable-device-completion.20261023a"
+              ],
+              "createdAt": "2026-10-24T02:34:46.000Z"
             }
           ]
         },
@@ -848,7 +900,7 @@
           "label": "Durable Device Music Library",
           "purpose": "Give verified VexStream media one durable Android device-library home that can survive VexLife app-data clearing and be rediscovered as reusable music.",
           "workClass": "OUTCOME",
-          "state": "DECOMPOSED",
+          "state": "COMPLETED",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vexstream.mobile-library.outcome",
@@ -868,7 +920,91 @@
             "projects/vexstream-mobile-library/README.md",
             "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMediaStore.kt",
             "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamOfflineIndex.kt",
-            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/PairedVexStreamMusicRepository.kt"
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/PairedVexStreamMusicRepository.kt",
+            "github.issue.vexlife-android.160",
+            "github.issue.vexlife-android.161",
+            "github.issue.vexlife-android.162",
+            "github.issue.vextreme-sdk.1897",
+            "github.pull.vexlife-android.165",
+            "github.commit.vexlife-android.b8826e32ca78cc5fb8bcae14e29218a0392238bb",
+            "github.pull.vextreme-sdk.1898",
+            "github.commit.vextreme-sdk.7731cc3c638221b3c1087e8cd78d4352bde1a28f",
+            "evidence.vexstream.mobile-library.clear-data.a039.return.sha256.67e4b6ede7aab8964406894da8fdcddc216f88692e11fbd8a21ac2ae21c537b7",
+            "evidence.vexstream.mobile-library.clear-data.cleanup.a043.return.sha256.e4dbda67670dcc2a86a88f1cc12e93929e3cc35699de485ea30bdc428dc3ebe6"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-21T08:41:00.000Z",
+          "updatedAt": "2026-10-24T02:34:46.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexstream.mobile-library.large-offline-startup-performance",
+          "label": "Large offline library cold-start performance",
+          "purpose": "Measure and resolve the noticeably slow Android cold launch observed with 785 downloaded VexStream songs, identifying which startup phase/thread owns the delay while preserving exact local-media integrity and durable-device recovery semantics.",
+          "workClass": "DEFECT",
+          "state": "DECOMPOSED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexstream.mobile-library.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexstream.mobile-library.durable-device-library"
+          ],
+          "repositoryRefs": [
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "work.vexstream.mobile-library.outcome",
+            "github.issue.vexlife-android.168",
+            "projects/vexstream-mobile-library/README.md",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/AppRepositories.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/PairedVexStreamMusicRepository.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamOfflineIndex.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamDeviceMediaStore.kt",
+            "repo.vexlife-android:architecture/logging/README.md",
+            "repo.vexlife-android:docs/foundation/ANDROID-HOST-PROOF.md",
+            "repo.vexlife-android:docs/foundation/test-proof/README.md"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+          "nextProcessRefs": [
+            "process.vexlife-android.feature-authoring"
+          ],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-24T07:16:00.000Z",
+          "updatedAt": "2026-10-24T07:16:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexstream.mobile-library.library-browse-discovery",
+          "label": "Library Browse & Discovery",
+          "purpose": "Give listeners one coherent way to order and narrow current VexStream library truth into useful listening sets while catalog, collection, playback, and classification truth keep their rightful owners.",
+          "workClass": "OUTCOME",
+          "state": "DECOMPOSED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vexstream.mobile-library.outcome",
+          "childWorkRefs": [
+            "work.vexstream.mobile-library.sort-filter-controls"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexlife-android",
+            "repo.vexstream-music"
+          ],
+          "sourceRefs": [
+            "work.vexstream.mobile-library.outcome",
+            "projects/vexstream-mobile-library/README.md",
+            "repo.vexlife-android:docs/features/README.md",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/README.md",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamLibraryProjection.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamLibrarySurface.kt",
+            "repo.vexstream-music:v2/desktop/library/model.go",
+            "repo.vexstream-music:mobile_bridge.go"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [
@@ -876,8 +1012,8 @@
           ],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
-          "createdAt": "2026-10-21T08:41:00.000Z",
-          "updatedAt": "2026-10-22T01:32:00.000Z",
+          "createdAt": "2026-10-23T08:02:00.000Z",
+          "updatedAt": "2026-10-24T02:59:02.000Z",
           "transitionHistory": []
         },
         {
@@ -979,7 +1115,7 @@
         {
           "workRef": "work.vexstream.mobile-library.outcome",
           "label": "VexStream Mobile Library",
-          "purpose": "Make downloaded VexStream music a durable, reusable Android device library while preserving exact media identity, truthful one-shot download semantics, and separately governed persistent sync.",
+          "purpose": "Make VexStream on Android a durable, reusable and human-navigable mobile music library: preserve exact media identity and truthful download semantics while giving listeners coherent browse, sort/filter, and whole-Songs download management, with persistent sync separately governed.",
           "workClass": "OUTCOME",
           "state": "DECOMPOSED",
           "workDisposition": "ACTIVE",
@@ -988,6 +1124,8 @@
           "childWorkRefs": [
             "work.vexstream.mobile-library.download-experience",
             "work.vexstream.mobile-library.durable-device-library",
+            "work.vexstream.mobile-library.large-offline-startup-performance",
+            "work.vexstream.mobile-library.library-browse-discovery",
             "work.vexstream.mobile-library.massdownload-maturity"
           ],
           "dependencyRefs": [],
@@ -999,7 +1137,11 @@
             "github.pull.vexlife-android.142",
             "github.issue.vexlife-android.144",
             "repo.vexlife-android:docs/features/README.md",
-            "projects/vexstream-mobile-library/README.md"
+            "projects/vexstream-mobile-library/README.md",
+            "github.pull.vexlife-android.166",
+            "github.commit.vexlife-android.01432d594172829c2da22e3bddcb09c073c97c16",
+            "github.pull.vexlife-android.167",
+            "github.commit.vexlife-android.8213ae7befe08bc0a21c76bd70e7c8790e5bcf9f"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [
@@ -1008,7 +1150,7 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-21T08:41:00.000Z",
-          "updatedAt": "2026-10-22T01:32:00.000Z",
+          "updatedAt": "2026-10-24T05:30:04.000Z",
           "transitionHistory": []
         },
         {
@@ -1016,7 +1158,7 @@
           "label": "Existing private-download migration",
           "purpose": "Define and implement a bounded path for already verified app-private VexStream downloads to enter durable device-library storage without duplication or partial/corrupt promotion.",
           "workClass": "TASK",
-          "state": "CAPTURED",
+          "state": "COMPLETED",
           "workDisposition": "ACTIVE",
           "priorityClass": "NORMAL",
           "parentWorkRefOrNull": "work.vexstream.mobile-library.durable-device-library",
@@ -1031,16 +1173,18 @@
             "github.pull.vexlife-android.142",
             "work.vexstream.mobile-library.device-storage",
             "projects/vexstream-mobile-library/README.md",
-            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMediaStore.kt"
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMediaStore.kt",
+            "github.issue.vexlife-android.161",
+            "github.pull.vexlife-android.165",
+            "github.commit.vexlife-android.b8826e32ca78cc5fb8bcae14e29218a0392238bb",
+            "evidence.vexstream.mobile-library.device-storage.a034.api36-pass"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
-          "nextProcessRefs": [
-            "process.vexlife-android.feature-authoring"
-          ],
+          "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-21T08:41:00.000Z",
-          "updatedAt": "2026-10-22T01:32:00.000Z",
+          "updatedAt": "2026-10-24T02:34:46.000Z",
           "transitionHistory": []
         },
         {
@@ -1048,7 +1192,7 @@
           "label": "Existing-download rediscovery",
           "purpose": "Let a fresh VexLife Android state reconstruct verified local-copy truth from durable VexStream media instead of treating the app-private index as the only memory of downloads.",
           "workClass": "TASK",
-          "state": "CAPTURED",
+          "state": "COMPLETED",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vexstream.mobile-library.durable-device-library",
@@ -1063,7 +1207,51 @@
             "work.vexstream.mobile-library.durable-device-library",
             "github.pull.vexlife-android.142",
             "projects/vexstream-mobile-library/README.md",
-            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamOfflineIndex.kt"
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamOfflineIndex.kt",
+            "github.issue.vexlife-android.160",
+            "github.pull.vexlife-android.165",
+            "github.commit.vexlife-android.b8826e32ca78cc5fb8bcae14e29218a0392238bb",
+            "evidence.vexstream.mobile-library.clear-data.a039.return.sha256.67e4b6ede7aab8964406894da8fdcddc216f88692e11fbd8a21ac2ae21c537b7"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-21T08:41:00.000Z",
+          "updatedAt": "2026-10-24T02:34:46.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexstream.mobile-library.sort-filter-controls",
+          "label": "Sort / Filter library controls",
+          "purpose": "Present one compact VexStream library organization surface that keeps Sort by and Filter by distinct, uses field-appropriate controls, composes with Search, and makes visible rows plus row playback / Play All / Shuffle All consume the same current filtered listening membership.",
+          "workClass": "TASK",
+          "state": "WAITING_HUMAN",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vexstream.mobile-library.library-browse-discovery",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexlife-android",
+            "repo.vexstream-music"
+          ],
+          "sourceRefs": [
+            "work.vexstream.mobile-library.library-browse-discovery",
+            "github.issue.vexlife-android.163",
+            "github.pull.vexlife-android.166",
+            "projects/vexstream-mobile-library/README.md",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/README.md",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamLibraryProjection.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamLibraryOrganizationPresentation.kt",
+            "repo.vexlife-android:app/src/journeyTest/kotlin/com/vextreme/vexlife/android/testing/journey/catalog/shared/vexstream/VexStreamJourneys.kt",
+            "repo.vexstream-music:v2/desktop/library/model.go",
+            "repo.vexstream-music:v2/desktop/library/filesystem/metadata.go",
+            "repo.vexstream-music:v2/web/features/library/client.js",
+            "repo.vexstream-music:mobile_bridge.go",
+            "github.pull.vexlife-android.165",
+            "github.commit.vexlife-android.01432d594172829c2da22e3bddcb09c073c97c16",
+            "evidence.vexstream.mobile-library.sort-filter.a011.return.sha256.ebd1e85886d471375260a35d92d641b38cb292016a1154455e92a9892c412d0a"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [
@@ -1071,9 +1259,103 @@
           ],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
-          "createdAt": "2026-10-21T08:41:00.000Z",
-          "updatedAt": "2026-10-22T01:32:00.000Z",
-          "transitionHistory": []
+          "createdAt": "2026-10-23T08:02:00.000Z",
+          "updatedAt": "2026-10-24T05:00:00.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexstream.mobile-library.sort-filter.decomposed.20261023",
+              "priorState": "CAPTURED",
+              "nextState": "DECOMPOSED",
+              "reason": "The duration-filter request was decomposed into one coherent library organization surface: sorting changes order, filtering changes current listening membership, Search composes with that set, and personal tag/station topology remains separate future Work.",
+              "actorRef": "actor.local-vex-operations.vexstream-mobile-library",
+              "sourceRefs": [
+                "github.issue.vexlife-android.163",
+                "projects/vexstream-mobile-library/README.md"
+              ],
+              "createdAt": "2026-10-23T23:44:00.000Z"
+            },
+            {
+              "transitionRef": "transition.vexstream.mobile-library.sort-filter.plan-validated.20261023",
+              "priorState": "DECOMPOSED",
+              "nextState": "PLAN_VALIDATED",
+              "reason": "Current Android and VexStream source establish the exact projection/playback boundaries, upstream tag/category extension seam, bounded source membrane, and focused plus Feature-Walk proof plan.",
+              "actorRef": "actor.local-vex-operations.vexstream-mobile-library",
+              "sourceRefs": [
+                "github.issue.vexlife-android.163",
+                "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/README.md",
+                "projects/vexstream-mobile-library/README.md"
+              ],
+              "createdAt": "2026-10-23T23:44:01.000Z"
+            },
+            {
+              "transitionRef": "transition.vexstream.mobile-library.sort-filter.ready.20261023",
+              "priorState": "PLAN_VALIDATED",
+              "nextState": "READY",
+              "reason": "The feature has a current Android source owner, no competing Sort/Filter writer, a bounded implementation membrane, and a clear completion/proof route.",
+              "actorRef": "actor.local-vex-operations.vexstream-mobile-library",
+              "sourceRefs": [
+                "github.issue.vexlife-android.163",
+                "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md",
+                "projects/vexstream-mobile-library/README.md"
+              ],
+              "createdAt": "2026-10-23T23:44:02.000Z"
+            },
+            {
+              "transitionRef": "transition.vexstream.mobile-library.sort-filter.running.20261023",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "Victor explicitly directed this lane to continue and complete the feature after the design/VexBoard refinement; Android issue 163 owns the bounded feature and draft PR 164 is now the live implementation candidate. Implementation is active while exact-head repository/Journey proof remains pending.",
+              "actorRef": "actor.local-vex-operations.vexstream-mobile-library",
+              "sourceRefs": [
+                "github.issue.vexlife-android.163",
+                "github.pull.vexlife-android.164",
+                "projects/vexstream-mobile-library/README.md",
+                "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md"
+              ],
+              "createdAt": "2026-10-23T23:44:03.000Z"
+            },
+            {
+              "transitionRef": "transition.vexstream.mobile-library.sort-filter.waiting-tool.android-host-proof.20261023",
+              "priorState": "RUNNING",
+              "nextState": "WAITING_TOOL",
+              "reason": "The Android Sort / Filter source candidate is authored and current; exact projection source compiles and its core organization behavior passes in a minimal Kotlin check, but repository-owned vexVerifyLocal and device Feature-Walk Journey proof require a qualified Android host/Relay execution surface that is not available in the current operator environment. Preserve source truth and wait on proof tooling rather than infer product failure or acceptance.",
+              "actorRef": "actor.local-vex-operations.vexstream-mobile-library",
+              "sourceRefs": [
+                "github.issue.vexlife-android.163",
+                "github.pull.vexlife-android.164",
+                "repo.vexlife-android:docs/foundation/ANDROID-HOST-PROOF.md"
+              ],
+              "createdAt": "2026-10-23T23:48:00.000Z"
+            },
+            {
+              "transitionRef": "transition.vexstream.mobile-library.sort-filter.running.proof-complete.20261024",
+              "priorState": "WAITING_TOOL",
+              "nextState": "RUNNING",
+              "reason": "Exact-head A011 repository/device proof, fresh Assurance, lifecycle currentness, merge, and post-merge tree identity completed the prior Android proof-tool hold. Return the work to its already-approved Active phase without crossing the protected human Verify boundary.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vexlife-android.166",
+                "github.commit.vexlife-android.01432d594172829c2da22e3bddcb09c073c97c16",
+                "evidence.vexstream.mobile-library.sort-filter.a011.return.sha256.ebd1e85886d471375260a35d92d641b38cb292016a1154455e92a9892c412d0a",
+                "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md"
+              ],
+              "createdAt": "2026-10-24T04:59:35.000Z"
+            },
+            {
+              "transitionRef": "transition.vexstream.mobile-library.sort-filter.waiting-human.acceptance.20261024",
+              "priorState": "RUNNING",
+              "nextState": "WAITING_HUMAN",
+              "reason": "Android source and exact proof are accepted and merged. The Project v1 agency policy protects entry into Verify, so the remaining Work edge is Victor lived review rather than more source or tool execution.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vexlife-android.166",
+                "github.commit.vexlife-android.01432d594172829c2da22e3bddcb09c073c97c16",
+                "projects/vexstream-mobile-library/agency.policy.json",
+                "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md"
+              ],
+              "createdAt": "2026-10-24T05:00:00.000Z"
+            }
+          ]
         },
         {
           "workRef": "work.vexstream.mobile-library.track-menu-presentation-defect",
@@ -1126,14 +1408,11 @@
           "laneRef": "lane.work.intake",
           "label": "Intake",
           "workRefs": [
-            "work.vexstream.mobile-library.clear-data-proof",
-            "work.vexstream.mobile-library.durable-device-library",
+            "work.vexstream.mobile-library.large-offline-startup-performance",
             "work.vexstream.mobile-library.massdownload-maturity",
             "work.vexstream.mobile-library.outcome",
-            "work.vexstream.mobile-library.rediscovery",
-            "work.vexstream.mobile-library.contextual-download-missing",
             "work.vexstream.mobile-library.download-experience",
-            "work.vexstream.mobile-library.private-download-migration"
+            "work.vexstream.mobile-library.library-browse-discovery"
           ]
         },
         {
@@ -1149,9 +1428,7 @@
         {
           "laneRef": "lane.work.active",
           "label": "Active",
-          "workRefs": [
-            "work.vexstream.mobile-library.device-storage"
-          ]
+          "workRefs": []
         },
         {
           "laneRef": "lane.work.waiting",
@@ -1163,7 +1440,10 @@
         {
           "laneRef": "lane.work.needs-human",
           "label": "Needs Human",
-          "workRefs": []
+          "workRefs": [
+            "work.vexstream.mobile-library.contextual-download-missing",
+            "work.vexstream.mobile-library.sort-filter-controls"
+          ]
         },
         {
           "laneRef": "lane.work.verify",
@@ -1179,8 +1459,13 @@
           "laneRef": "lane.work.done",
           "label": "Done",
           "workRefs": [
+            "work.vexstream.mobile-library.clear-data-proof",
+            "work.vexstream.mobile-library.device-storage",
+            "work.vexstream.mobile-library.durable-device-library",
+            "work.vexstream.mobile-library.rediscovery",
             "work.vexstream.mobile-library.massdownload-e2e",
-            "work.vexstream.mobile-library.massdownload-product"
+            "work.vexstream.mobile-library.massdownload-product",
+            "work.vexstream.mobile-library.private-download-migration"
           ]
         },
         {
@@ -1190,20 +1475,20 @@
         }
       ],
       "summary": {
-        "workItemCount": 12,
-        "openWorkItemCount": 10,
-        "outcomeCount": 4,
-        "taskCount": 7,
-        "defectCount": 1,
+        "workItemCount": 15,
+        "openWorkItemCount": 8,
+        "outcomeCount": 5,
+        "taskCount": 8,
+        "defectCount": 2,
         "potentialCount": 0,
-        "needsHumanCount": 0,
-        "completedCount": 2
+        "needsHumanCount": 2,
+        "completedCount": 7
       },
       "rootItems": [
         {
           "workRef": "work.vexstream.mobile-library.outcome",
           "label": "VexStream Mobile Library",
-          "purpose": "Make downloaded VexStream music a durable, reusable Android device library while preserving exact media identity, truthful one-shot download semantics, and separately governed persistent sync.",
+          "purpose": "Make VexStream on Android a durable, reusable and human-navigable mobile music library: preserve exact media identity and truthful download semantics while giving listeners coherent browse, sort/filter, and whole-Songs download management, with persistent sync separately governed.",
           "workClass": "OUTCOME",
           "state": "DECOMPOSED",
           "workDisposition": "ACTIVE",
@@ -1212,6 +1497,8 @@
           "childWorkRefs": [
             "work.vexstream.mobile-library.download-experience",
             "work.vexstream.mobile-library.durable-device-library",
+            "work.vexstream.mobile-library.large-offline-startup-performance",
+            "work.vexstream.mobile-library.library-browse-discovery",
             "work.vexstream.mobile-library.massdownload-maturity"
           ],
           "dependencyRefs": [],
@@ -1223,7 +1510,11 @@
             "github.pull.vexlife-android.142",
             "github.issue.vexlife-android.144",
             "repo.vexlife-android:docs/features/README.md",
-            "projects/vexstream-mobile-library/README.md"
+            "projects/vexstream-mobile-library/README.md",
+            "github.pull.vexlife-android.166",
+            "github.commit.vexlife-android.01432d594172829c2da22e3bddcb09c073c97c16",
+            "github.pull.vexlife-android.167",
+            "github.commit.vexlife-android.8213ae7befe08bc0a21c76bd70e7c8790e5bcf9f"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [
@@ -1232,7 +1523,7 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-21T08:41:00.000Z",
-          "updatedAt": "2026-10-22T01:32:00.000Z",
+          "updatedAt": "2026-10-24T05:30:04.000Z",
           "transitionHistory": []
         }
       ]
@@ -1496,7 +1787,7 @@
       "project": {
         "projectRef": "project.vexlife.tocompletion",
         "label": "VexLife ToCompletion",
-        "purpose": "Carry the full VexLife ToCompletion horizon while making the current unfinished edge obvious: P1-P4 lived core is terminal, G02/G03 developmental continuity is terminal and evidence-gated before G04, and ordinary fresh-user productization is actively converging setup safety into the accepted Heretic establishment composition before later explicit existing-Home upgrade and whole-product horizons.",
+        "purpose": "Carry the full VexLife ToCompletion horizon while making the current unfinished edge obvious: P1-P4 lived core is terminal, G02/G03 developmental continuity is terminal and evidence-gated before G04, setup safety is terminal accepted through PR873, and ordinary fresh-user productization is now actively wiring normal start into the accepted Heretic establishment composition before explicit existing-Home upgrade and whole-product horizons.",
         "rootWorkRefs": [
           "work.vexlife.tocompletion.outcome"
         ],
@@ -1516,7 +1807,9 @@
           "map.vexlife.tocompletion.nested-pathway.20261019a",
           "github.pull.vexlife.919",
           "github.pull.vexlife.873",
-          "github.issue.vexlife.866.comment.6357923021"
+          "github.issue.vexlife.866.comment.6357923021",
+          "github.issue.vexlife.866.comment.6360434385",
+          "git.commit.vexlife.85ef85dfa4852154e522deadc45707b03cf74221"
         ],
         "formedAt": "2026-10-22T00:13:43.000Z"
       },
@@ -2264,9 +2557,9 @@
         {
           "workRef": "work.vexlife.tocompletion.productization.heretic-normal-start-integration",
           "label": "Normal-start integration — route safe setup into accepted Heretic establishment",
-          "purpose": "After setup-safety convergence, connect normal fresh startup to the accepted Heretic product target and merged PR #919 establishment composition, then carry the exact runtime receipt/endpoint into the existing Browser/Companion start without rebuilding Artifact Delivery/runtime ownership, blindly swapping activeModelBundleRef, or silently migrating an existing Home.",
+          "purpose": "Actively connect normal fresh startup to the accepted Heretic product target and merged PR #919 establishment composition, carrying the exact runtime receipt/endpoint into the existing Browser/Lived Companion without rebuilding Artifact Delivery/runtime ownership, blindly swapping activeModelBundleRef, or silently migrating an existing Home.",
           "workClass": "TASK",
-          "state": "WAITING_DEPENDENCIES",
+          "state": "RUNNING",
           "workDisposition": "ACTIVE",
           "priorityClass": "IMMEDIATE",
           "parentWorkRefOrNull": "work.vexlife.tocompletion.productization.ordinary-heretic-setup",
@@ -2282,15 +2575,43 @@
             "github.pull.vexlife.919",
             "github.pull.vexlife.873",
             "github.issue.vexlife.857",
-            "github.issue.vexlife.866"
+            "github.issue.vexlife.866",
+            "github.issue.vexlife.866.comment.6360434385",
+            "git.commit.vexlife.85ef85dfa4852154e522deadc45707b03cf74221"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
-          "authorityDisposition": "NO_AUTHORITY",
-          "effectDisposition": "NO_EFFECTS",
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-23T05:30:00.000Z",
-          "updatedAt": "2026-10-23T05:30:00.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-10-23T08:30:00.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexlife.tocompletion.productization.heretic-normal-start-integration.ready.pr873-terminal",
+              "priorState": "WAITING_DEPENDENCIES",
+              "nextState": "READY",
+              "reason": "The only named setup-safety dependency became TERMINAL_ACCEPTED_CURRENT at PR873, so normal-start Heretic integration is no longer dependency-held.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vexlife.873",
+                "github.issue.vexlife.866.comment.6360434385",
+                "git.commit.vexlife.85ef85dfa4852154e522deadc45707b03cf74221"
+              ],
+              "createdAt": "2026-10-23T08:30:00.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.tocompletion.productization.heretic-normal-start-integration.running.pr873-terminal",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "The ToCompletion foreground immediately descends into the already-defined normal-start Heretic integration slice under bounded VexLife/Vextreme-SDK source authority.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vexlife.873",
+                "github.issue.vexlife.866.comment.6360434385"
+              ],
+              "createdAt": "2026-10-23T08:30:00.000Z"
+            }
+          ]
         },
         {
           "workRef": "work.vexlife.tocompletion.productization.ordinary-heretic-setup",
@@ -2318,22 +2639,24 @@
             "github.issue.vexlife.857",
             "github.pull.vexlife.919",
             "github.pull.vexlife.873",
-            "projects/vexlife-tocompletion/README.md"
+            "projects/vexlife-tocompletion/README.md",
+            "github.issue.vexlife.866.comment.6360434385",
+            "git.commit.vexlife.85ef85dfa4852154e522deadc45707b03cf74221"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-23T05:30:00.000Z",
-          "updatedAt": "2026-10-23T05:30:00.000Z",
+          "updatedAt": "2026-10-23T08:30:00.000Z",
           "transitionHistory": []
         },
         {
           "workRef": "work.vexlife.tocompletion.productization.setup-safety-convergence",
           "label": "Setup safety convergence — currentize and finish PR #873",
-          "purpose": "Actively re-ground, ordinary-forward currentize, prove and finish the existing PR #873 setup-safety owner against current VexLife main while preserving one Home-scoped setup owner, cancellation, resumable partial state, exact pending-runtime ownership, progress/debuggability and preservation-safe cleanup. This task does not decide model identity.",
+          "purpose": "Preserve terminal accepted setup-safety convergence from VexLife PR #873: one Home-scoped setup owner, exact cancellation, resumable partial state, exact pending-runtime ownership, truthful progress/debuggability and preservation-safe cleanup. This completed dependency does not decide model identity.",
           "workClass": "TASK",
-          "state": "RUNNING",
+          "state": "COMPLETED",
           "workDisposition": "ACTIVE",
           "priorityClass": "IMMEDIATE",
           "parentWorkRefOrNull": "work.vexlife.tocompletion.productization.ordinary-heretic-setup",
@@ -2346,15 +2669,43 @@
             "github.pull.vexlife.873",
             "github.issue.vexlife.872",
             "github.issue.vexlife.866.comment.6357923021",
-            "github.pull.vexlife.919"
+            "github.pull.vexlife.919",
+            "github.issue.vexlife.866.comment.6360434385",
+            "git.commit.vexlife.85ef85dfa4852154e522deadc45707b03cf74221"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-23T05:30:00.000Z",
-          "updatedAt": "2026-10-23T05:30:00.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-10-23T08:30:00.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexlife.tocompletion.productization.setup-safety-convergence.verifying.pr873-terminal",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "PR873 reached exact-head SourceOwner PASS, fresh Independent Assurance CLEAR, Lifecycle Currentness PASS, Formal Review and protected-path approval on the accepted setup-safety candidate.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vexlife.873",
+                "github.issue.vexlife.866.comment.6360434385"
+              ],
+              "createdAt": "2026-10-23T08:30:00.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.tocompletion.productization.setup-safety-convergence.completed.pr873-terminal",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "PR873 merged by expected head and post-merge verification proved accepted main tree byte-identical to the assured candidate, terminalizing setup-safety convergence.",
+              "actorRef": "role.vexwork.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vexlife.873",
+                "github.issue.vexlife.866.comment.6360434385",
+                "git.commit.vexlife.85ef85dfa4852154e522deadc45707b03cf74221"
+              ],
+              "createdAt": "2026-10-23T08:30:00.000Z"
+            }
+          ]
         }
       ],
       "lanes": [
@@ -2367,7 +2718,6 @@
           "laneRef": "lane.work.planned",
           "label": "Planned",
           "workRefs": [
-            "work.vexlife.tocompletion.productization.heretic-normal-start-integration",
             "work.vexlife.tocompletion.p6.cultivation-training-birth",
             "work.vexlife.tocompletion.p7.whole-product-expansion"
           ]
@@ -2382,8 +2732,8 @@
           "label": "Active",
           "workRefs": [
             "work.vexlife.tocompletion.outcome",
-            "work.vexlife.tocompletion.productization.ordinary-heretic-setup",
-            "work.vexlife.tocompletion.productization.setup-safety-convergence"
+            "work.vexlife.tocompletion.productization.heretic-normal-start-integration",
+            "work.vexlife.tocompletion.productization.ordinary-heretic-setup"
           ]
         },
         {
@@ -2420,6 +2770,7 @@
             "work.vexlife.tocompletion.p5.g02-semantic-authority-materializer",
             "work.vexlife.tocompletion.p5.g02.coder-harness-a055-a056",
             "work.vexlife.tocompletion.p5.g02.sdk-runner-a057",
+            "work.vexlife.tocompletion.productization.setup-safety-convergence",
             "work.vexlife.tocompletion.p0.research-closure",
             "work.vexlife.tocompletion.p0b.foundation",
             "work.vexlife.tocompletion.p1.heretic-establishment",
@@ -2436,13 +2787,13 @@
       ],
       "summary": {
         "workItemCount": 21,
-        "openWorkItemCount": 7,
+        "openWorkItemCount": 6,
         "outcomeCount": 6,
         "taskCount": 15,
         "defectCount": 0,
         "potentialCount": 0,
         "needsHumanCount": 0,
-        "completedCount": 14
+        "completedCount": 15
       },
       "rootItems": [
         {
@@ -5292,7 +5643,7 @@
           "label": "BoardGraph semantic contract",
           "purpose": "Form the smallest reusable semantic graph contract for scenes, controls, processes, decisions, artifacts, containers, portals, references, relationships, modules, ports, source bindings and validation without making canvas coordinates canonical meaning.",
           "workClass": "TASK",
-          "state": "READY",
+          "state": "COMPLETED",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vexboard.outcome",
@@ -5302,22 +5653,69 @@
             "repo.vexwork"
           ],
           "sourceRefs": [
-            "projects/vexboard/README.md"
+            "projects/vexboard/README.md",
+            "src/shared/vexboard-model.mjs",
+            "src/core/vexboard.mjs",
+            "vexboard-reader.js",
+            "vexboard/index.html",
+            "vexboard/self-map.json",
+            "test/vexboard.test.mjs",
+            "test/vexboard-ui.test.mjs",
+            "index.html",
+            "test/public-ui.test.mjs"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
-          "authorityDisposition": "NO_AUTHORITY",
-          "effectDisposition": "NO_EFFECTS",
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-23T00:14:29.000Z",
-          "updatedAt": "2026-10-23T00:14:29.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-10-23T07:52:13.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexboard.boardgraph-contract.running.20261023a",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "Victor explicitly authorized beginning actual VexBoard implementation after the completion-state architecture formation was mapped end to end.",
+              "actorRef": "actor.chatgpt.vexboard.boardgraph-foundation",
+              "sourceRefs": [
+                "project.vexboard",
+                "projects/vexboard/README.md"
+              ],
+              "createdAt": "2026-10-23T02:59:44.000Z"
+            },
+            {
+              "transitionRef": "transition.vexboard.boardgraph-contract.verifying.pr66-terminal",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "PR #66 merged at the exact semantically-cleared BoardGraph head after SourceOwner, Independent Assurance and LifecycleCurrentness; terminal post-merge evidence is current.",
+              "actorRef": "actor.chatgpt.vexboard.boardgraph-foundation",
+              "sourceRefs": [
+                "github.pull.vexwork.66",
+                "git.commit.vexwork.1f19e70a397baab1f5d995bacc2358372b93563e"
+              ],
+              "createdAt": "2026-10-23T07:52:12.000Z"
+            },
+            {
+              "transitionRef": "transition.vexboard.boardgraph-contract.completed.pr66-terminal",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "The PR #66 merge tree exactly matches the cleared BoardGraph candidate and terminal PostMergeVerification A003 PASS was consumed; the shared-control foundation is accepted.",
+              "actorRef": "actor.chatgpt.vexboard.boardgraph-foundation",
+              "sourceRefs": [
+                "github.pull.vexwork.66",
+                "git.commit.vexwork.1f19e70a397baab1f5d995bacc2358372b93563e",
+                "relay.return.vexboard.pr66.post-merge.a003.3af5b26b237e1b8f597c9c14844109db9bf2bb8f62717714f9c6ea71316b83c4"
+              ],
+              "createdAt": "2026-10-23T07:52:13.000Z"
+            }
+          ]
         },
         {
           "workRef": "work.vexboard.boardjourney-simulation",
           "label": "Prototype simulation and BoardJourney",
           "purpose": "Make semantic controls, conditions, overlays, loops, return paths and scenario state traversable without real external effects, preserving a right-side journey stack that distinguishes meaningful traversal from viewport movement.",
           "workClass": "TASK",
-          "state": "WAITING_DEPENDENCIES",
+          "state": "COMPLETED",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vexboard.outcome",
@@ -5330,22 +5728,83 @@
             "repo.vexwork"
           ],
           "sourceRefs": [
-            "projects/vexboard/README.md"
+            "projects/vexboard/README.md",
+            "github.pull.vexwork.91",
+            "git.commit.vexwork.0a5d36632400f4ff6e7478a2fc9805bc8b9d7c8b",
+            "github.pull.vexwork.93",
+            "git.commit.vexwork.c1c50a226bf80066a59f8d9daded9b75f0fb814e",
+            "github.pull.vexwork.95",
+            "git.commit.vexwork.4d28fd33e271991fe0257c94acf5ebdce87a2f2b",
+            "src/shared/vexboard-journey.mjs",
+            "src/shared/vexboard-simulation.mjs",
+            "vexboard/prototype-demo.prototype.json"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
-          "authorityDisposition": "NO_AUTHORITY",
-          "effectDisposition": "NO_EFFECTS",
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-23T00:14:29.000Z",
-          "updatedAt": "2026-10-23T00:14:29.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-10-24T02:41:32.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexboard.boardjourney-simulation.ready.canvas-pr88",
+              "priorState": "WAITING_DEPENDENCIES",
+              "nextState": "READY",
+              "reason": "BoardGraph and Canvas Projection were both terminally complete, releasing the BoardJourney and prototype-simulation frontier.",
+              "actorRef": "actor.chatgpt.vexboard.boardjourney-simulation",
+              "sourceRefs": [
+                "work.vexboard.boardgraph-contract",
+                "work.vexboard.canvas-projection",
+                "github.pull.vexwork.88"
+              ],
+              "createdAt": "2026-10-23T23:59:06.000Z"
+            },
+            {
+              "transitionRef": "transition.vexboard.boardjourney-simulation.running.pr91",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "PR #91 began the first bounded BoardJourney semantic-walk implementation slice.",
+              "actorRef": "actor.chatgpt.vexboard.boardjourney-simulation",
+              "sourceRefs": [
+                "github.pull.vexwork.91",
+                "projects/vexboard/README.md"
+              ],
+              "createdAt": "2026-10-24T00:14:33.000Z"
+            },
+            {
+              "transitionRef": "transition.vexboard.boardjourney-simulation.verifying.pr95-clear",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "BoardJourney, typed prototype simulation and clickable same-board simulation reached the corrected PR #95 exact head with SourceOwner PASS and fresh Independent Assurance CLEAR.",
+              "actorRef": "actor.chatgpt.vexboard.boardjourney-simulation",
+              "sourceRefs": [
+                "github.pull.vexwork.91",
+                "github.pull.vexwork.93",
+                "github.pull.vexwork.95",
+                "git.commit.vexwork.e33c7883ea8e9b3cf6f2329415700dcfc81ac9d5"
+              ],
+              "createdAt": "2026-10-24T02:40:12.000Z"
+            },
+            {
+              "transitionRef": "transition.vexboard.boardjourney-simulation.completed.pr95-terminal",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "PR #95 merged the corrected clickable simulation candidate and post-merge verification proved the exact accepted blobs on main, completing the bounded BoardJourney/simulation work item.",
+              "actorRef": "actor.chatgpt.vexboard.boardjourney-simulation",
+              "sourceRefs": [
+                "github.pull.vexwork.95",
+                "git.commit.vexwork.4d28fd33e271991fe0257c94acf5ebdce87a2f2b"
+              ],
+              "createdAt": "2026-10-24T02:41:32.000Z"
+            }
+          ]
         },
         {
           "workRef": "work.vexboard.boardpatch-authoring",
           "label": "AI BoardPatch authoring and reusable extraction",
           "purpose": "Let AI make bounded, reviewable semantic changes anchored to stable board refs, including minimal-movement relayout, undoable lineage, copy-versus-reuse semantics and extraction of overwhelming regions into reusable modules with explicit interfaces.",
           "workClass": "TASK",
-          "state": "WAITING_DEPENDENCIES",
+          "state": "READY",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vexboard.outcome",
@@ -5366,15 +5825,30 @@
           "authorityDisposition": "NO_AUTHORITY",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-10-23T00:14:29.000Z",
-          "updatedAt": "2026-10-23T00:14:29.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-10-24T02:41:33.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexboard.boardpatch-authoring.ready.pr95-terminal",
+              "priorState": "WAITING_DEPENDENCIES",
+              "nextState": "READY",
+              "reason": "BoardGraph, Canvas Projection and BoardJourney/simulation dependencies are complete; BoardPatch authoring is dependency-ready while retaining NO_AUTHORITY / NO_EFFECTS.",
+              "actorRef": "actor.chatgpt.vexboard.currentization",
+              "sourceRefs": [
+                "work.vexboard.boardgraph-contract",
+                "work.vexboard.canvas-projection",
+                "work.vexboard.boardjourney-simulation",
+                "github.pull.vexwork.95"
+              ],
+              "createdAt": "2026-10-24T02:41:33.000Z"
+            }
+          ]
         },
         {
           "workRef": "work.vexboard.canvas-projection",
           "label": "Read-only canvas and recursive navigation",
           "purpose": "Project BoardGraph meaning into a deterministic, stable, zoomable and pannable canvas with semantic shapes, connectors, focus, minimap, inline expansion, portal entry and collapse while keeping camera position separate from semantic position.",
           "workClass": "TASK",
-          "state": "WAITING_DEPENDENCIES",
+          "state": "COMPLETED",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vexboard.outcome",
@@ -5386,15 +5860,69 @@
             "repo.vexwork"
           ],
           "sourceRefs": [
-            "projects/vexboard/README.md"
+            "projects/vexboard/README.md",
+            "github.pull.vexwork.88",
+            "git.commit.vexwork.666001854babc14b5e956d65d66f0c6432e72349",
+            "vexboard-reader.js",
+            "vexboard/index.html"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
-          "authorityDisposition": "NO_AUTHORITY",
-          "effectDisposition": "NO_EFFECTS",
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-23T00:14:29.000Z",
-          "updatedAt": "2026-10-23T00:14:29.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-10-23T23:59:06.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexboard.canvas-projection.ready.boardgraph-pr66",
+              "priorState": "WAITING_DEPENDENCIES",
+              "nextState": "READY",
+              "reason": "The BoardGraph dependency is completed at the exact merged and post-merge-verified source, releasing the read-only canvas and recursive-navigation frontier. Readiness does not grant implementation authority.",
+              "actorRef": "actor.chatgpt.vexboard.boardgraph-foundation",
+              "sourceRefs": [
+                "work.vexboard.boardgraph-contract",
+                "github.pull.vexwork.66",
+                "git.commit.vexwork.1f19e70a397baab1f5d995bacc2358372b93563e"
+              ],
+              "createdAt": "2026-10-23T07:52:14.000Z"
+            },
+            {
+              "transitionRef": "transition.vexboard.canvas-projection.running.pr88",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "PR #88 began the bounded Canvas Projection implementation after the BoardGraph dependency was terminally accepted.",
+              "actorRef": "actor.chatgpt.vexboard.canvas-projection",
+              "sourceRefs": [
+                "github.pull.vexwork.88",
+                "projects/vexboard/README.md"
+              ],
+              "createdAt": "2026-10-23T23:26:55.000Z"
+            },
+            {
+              "transitionRef": "transition.vexboard.canvas-projection.verifying.pr88-clear",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "Corrected PR #88 head passed SourceOwner and fresh Independent Assurance, closing the fork-identity finding on the exact candidate.",
+              "actorRef": "actor.chatgpt.vexboard.canvas-projection",
+              "sourceRefs": [
+                "github.pull.vexwork.88",
+                "git.commit.vexwork.2818a90a93b4f5fc6e6cdb991df0c2c2e8bd1ec5"
+              ],
+              "createdAt": "2026-10-23T23:57:17.000Z"
+            },
+            {
+              "transitionRef": "transition.vexboard.canvas-projection.completed.pr88-terminal",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "PR #88 merged and post-merge verification proved the cleared Canvas Projection candidate on main.",
+              "actorRef": "actor.chatgpt.vexboard.canvas-projection",
+              "sourceRefs": [
+                "github.pull.vexwork.88",
+                "git.commit.vexwork.666001854babc14b5e956d65d66f0c6432e72349"
+              ],
+              "createdAt": "2026-10-23T23:59:06.000Z"
+            }
+          ]
         },
         {
           "workRef": "work.vexboard.outcome",
@@ -5458,7 +5986,7 @@
           "label": "Source projectors and lived comparison",
           "purpose": "Use the same semantic/rendering foundation to project VexWork processes/work/projects and repository Atlas-style truth read-only, then compare intended VexBoard journeys with observed lived journeys such as Screencrawler evidence without copying source ownership.",
           "workClass": "OUTCOME",
-          "state": "WAITING_DEPENDENCIES",
+          "state": "RUNNING",
           "workDisposition": "ACTIVE",
           "priorityClass": "NORMAL",
           "parentWorkRefOrNull": "work.vexboard.outcome",
@@ -5472,15 +6000,55 @@
             "repo.vexwork"
           ],
           "sourceRefs": [
-            "projects/vexboard/README.md"
+            "projects/vexboard/README.md",
+            "github.pull.vexwork.108",
+            "git.commit.vexwork.3278edf9c39b58ef4f59be9e239875518d6c2abf",
+            "src/core/vexboard-source-projectors.mjs",
+            "test/vexboard-source-projectors.test.mjs",
+            "github.pull.vexwork.110",
+            "git.commit.vexwork.92f35785aa4dc540ad9fdeb239948b7c3a32cff6",
+            "src/shared/vexboard-evidence.mjs",
+            "test/vexboard-evidence.test.mjs",
+            "github.pull.vexwork.115",
+            "git.commit.vexwork.a4023a83039924fdbd8384008543f23587e4bc94",
+            "src/shared/vexboard-source-resolver.mjs",
+            "test/vexboard-source-resolver.test.mjs"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
-          "authorityDisposition": "NO_AUTHORITY",
-          "effectDisposition": "NO_EFFECTS",
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-23T00:14:29.000Z",
-          "updatedAt": "2026-10-23T00:14:29.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-10-24T06:38:19.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexboard.source-projectors.ready.pr95-terminal",
+              "priorState": "WAITING_DEPENDENCIES",
+              "nextState": "READY",
+              "reason": "BoardGraph, Canvas Projection and BoardJourney/simulation dependencies are complete; source projectors are dependency-ready while retaining NO_AUTHORITY / NO_EFFECTS.",
+              "actorRef": "actor.chatgpt.vexboard.currentization",
+              "sourceRefs": [
+                "work.vexboard.boardgraph-contract",
+                "work.vexboard.canvas-projection",
+                "work.vexboard.boardjourney-simulation",
+                "github.pull.vexwork.95"
+              ],
+              "createdAt": "2026-10-24T02:41:34.000Z"
+            },
+            {
+              "transitionRef": "transition.vexboard.source-projectors.running.pr108",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "PR #108 merged the first bounded read-only VexWork and public-safe Process Atlas source projector adapters after exact-head SourceOwner PASS and fresh Independent Assurance CLEAR; the broader source-projectors/lived-comparison outcome remains active because evidence comparison, federation and additional consumers are still unfinished.",
+              "actorRef": "actor.chatgpt.vexboard.source-projectors",
+              "sourceRefs": [
+                "github.pull.vexwork.108",
+                "git.commit.vexwork.3278edf9c39b58ef4f59be9e239875518d6c2abf",
+                "src/core/vexboard-source-projectors.mjs"
+              ],
+              "createdAt": "2026-10-24T05:21:11.000Z"
+            }
+          ]
         }
       ],
       "lanes": [
@@ -5494,24 +6062,21 @@
         {
           "laneRef": "lane.work.planned",
           "label": "Planned",
-          "workRefs": [
-            "work.vexboard.boardjourney-simulation",
-            "work.vexboard.boardpatch-authoring",
-            "work.vexboard.canvas-projection",
-            "work.vexboard.source-projectors"
-          ]
+          "workRefs": []
         },
         {
           "laneRef": "lane.work.ready",
           "label": "Ready",
           "workRefs": [
-            "work.vexboard.boardgraph-contract"
+            "work.vexboard.boardpatch-authoring"
           ]
         },
         {
           "laneRef": "lane.work.active",
           "label": "Active",
-          "workRefs": []
+          "workRefs": [
+            "work.vexboard.source-projectors"
+          ]
         },
         {
           "laneRef": "lane.work.waiting",
@@ -5537,6 +6102,9 @@
           "laneRef": "lane.work.done",
           "label": "Done",
           "workRefs": [
+            "work.vexboard.boardgraph-contract",
+            "work.vexboard.boardjourney-simulation",
+            "work.vexboard.canvas-projection",
             "work.vexboard.project-architecture"
           ]
         },
@@ -5548,13 +6116,13 @@
       ],
       "summary": {
         "workItemCount": 7,
-        "openWorkItemCount": 6,
+        "openWorkItemCount": 3,
         "outcomeCount": 2,
         "taskCount": 5,
         "defectCount": 0,
         "potentialCount": 0,
         "needsHumanCount": 0,
-        "completedCount": 1
+        "completedCount": 4
       },
       "rootItems": [
         {
@@ -5588,6 +6156,478 @@
           "createdAt": "2026-10-23T00:14:29.000Z",
           "updatedAt": "2026-10-23T00:14:29.000Z",
           "transitionHistory": []
+        }
+      ]
+    },
+    {
+      "project": {
+        "projectRef": "project.vex-universe",
+        "label": "Vex Universe Foundations",
+        "purpose": "Make VexWork the visible operating record for Vex Universe and VexBusinessFactory work, and use VexBoard as the explorable semantic/process view, while preserving source ownership and allowing the VexBoard substrate to evolve independently.",
+        "rootWorkRefs": [
+          "work.vex-universe.outcome"
+        ],
+        "repositoryRefs": [
+          "repo.vexwork"
+        ],
+        "sourceRefs": [
+          "docs/foundation/PROCESS-MAP.md",
+          "docs/foundation/PROJECTS.md",
+          "docs/foundation/WORKGRAPH-COMPOSITION.md",
+          "github.pull.vexwork.90",
+          "github.pull.vexwork.92",
+          "project.vexboard"
+        ],
+        "formedAt": "2026-10-24T03:45:00.000Z"
+      },
+      "graphRef": "workgraph.vexwork.foundation",
+      "viewRef": "view.vex-universe.board",
+      "items": [
+        {
+          "workRef": "work.vex-universe.businessfactory-convergence",
+          "label": "Converge VexBusinessFactory architecture",
+          "purpose": "Consume and reconcile the BusinessFactory domain/process and VexBoard patient-zero architecture into accepted source while preserving the split between business truth and VexBoard projection instead of duplicating sibling source ownership.",
+          "workClass": "TASK",
+          "state": "WAITING_RESOURCE",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vex-universe.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "github.pull.vexwork.90",
+            "github.pull.vexwork.92"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [
+            "process.vexwork.quality-review"
+          ],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T03:45:00.000Z",
+          "updatedAt": "2026-10-24T03:45:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vex-universe.journey-evidence-patient-zero",
+          "label": "Journey evidence and Vex Universe patient zero",
+          "purpose": "Use the accepted process-addressability and VexBoard contracts to render, walk and explain the Vex Universe and BusinessFactory system from VexWork with why/before/action/after/source/evidence semantics before moving into the later lived business proof.",
+          "workClass": "OUTCOME",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vex-universe.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vex-universe.businessfactory-convergence",
+            "work.vex-universe.process-board-addressability",
+            "work.vex-universe.vexboard-contract-alignment"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "github.pull.vexwork.90",
+            "github.pull.vexwork.92",
+            "project.vex-universe"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T03:45:00.000Z",
+          "updatedAt": "2026-10-24T03:45:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vex-universe.outcome",
+          "label": "Vex Universe Foundations",
+          "purpose": "Make the Vex Universe completion pathway perceptible in VexWork and progressively navigable and replayable through VexBoard, so current work, parallel waits, source ownership and lived proof can be understood without GitHub archaeology.",
+          "workClass": "OUTCOME",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vex-universe.businessfactory-convergence",
+            "work.vex-universe.journey-evidence-patient-zero",
+            "work.vex-universe.process-board-addressability",
+            "work.vex-universe.vexboard-contract-alignment",
+            "work.vex-universe.visible-work-record"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "github.pull.vexwork.90",
+            "github.pull.vexwork.92",
+            "project.vexboard"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T03:45:00.000Z",
+          "updatedAt": "2026-10-24T03:45:01.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vex-universe.outcome.running.visible-foundation",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "Victor explicitly asked for the Vex Universe and BusinessFactory trajectory to become visible through VexWork and authorized this lane to lead the bounded VexWork/VexBoard foundation work.",
+              "actorRef": "actor.chatgpt.vex-universe-foundations",
+              "sourceRefs": [
+                "github.pull.vexwork.90",
+                "github.pull.vexwork.92",
+                "project.vexboard"
+              ],
+              "createdAt": "2026-10-24T03:45:01.000Z"
+            }
+          ]
+        },
+        {
+          "workRef": "work.vex-universe.process-board-addressability",
+          "label": "Process → VexBoard addressability minimum",
+          "purpose": "Connect stable VexWork process refs to read-only VexBoard maps and BoardJourney without making VexBoard the process registry or granting execution authority; use Form Project as the first source-owned process patient zero.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vex-universe.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "blueprint/process-registry.json",
+            "docs/foundation/PROCESS-MAP.md",
+            "github.pull.vexwork.103",
+            "github.pull.vexwork.115",
+            "src/shared/vexboard-source-resolver.mjs",
+            "vexboard/process-board-catalog.json",
+            "vexboard/form-project-process.json"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [
+            "process.vexwork.quality-review"
+          ],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-24T03:45:00.000Z",
+          "updatedAt": "2026-10-24T07:30:43.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vex-universe.process-board-addressability.running.source-ready",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "The source-ready addressability design is grounded against the accepted Process Map, explicit VexBoard board resolver and BoardJourney contracts and is the next implementation foundation after Project visibility.",
+              "actorRef": "actor.chatgpt.vex-universe-foundations",
+              "sourceRefs": [
+                "blueprint/process-registry.json",
+                "docs/foundation/PROCESS-MAP.md",
+                "vexboard-reader.js"
+              ],
+              "createdAt": "2026-10-24T03:45:03.000Z"
+            },
+            {
+              "transitionRef": "transition.vex-universe.process-board-addressability.verifying.pr103",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "PR #103 now carries the exact six-path Process → VexBoard addressability implementation candidate; implementation is source-formed and the remaining gate is exact-head deterministic and semantic verification.",
+              "actorRef": "actor.chatgpt.vex-universe-foundations",
+              "sourceRefs": [
+                "github.pull.vexwork.103"
+              ],
+              "createdAt": "2026-10-24T04:05:56.000Z"
+            },
+            {
+              "transitionRef": "transition.vex-universe.process-board-addressability.completed.pr103-postmerge",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "SourceOwner A002, fresh Independent Assurance, ordinary merge and exact post-merge blob/tree verification completed PR #103, so the Process → VexBoard addressability minimum is accepted/current.",
+              "actorRef": "actor.chatgpt.vex-universe-foundations",
+              "sourceRefs": [
+                "github.pull.vexwork.103",
+                "git.commit.vexwork.766fda592ff825d5b2b4bb865b07e5a2fac5fa9b"
+              ],
+              "createdAt": "2026-10-24T07:30:43.000Z"
+            }
+          ]
+        },
+        {
+          "workRef": "work.vex-universe.vexboard-contract-alignment",
+          "label": "Align to the evolving VexBoard contract",
+          "purpose": "After the VexBoard lane finishes its naming, ontology/typology and resolver refactor work, rebind this trajectory to the accepted stable refs and routing contract without carrying stale labels or duplicating its UI/source membrane.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vex-universe.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "github.pull.vexwork.98",
+            "github.pull.vexwork.100",
+            "github.pull.vexwork.115",
+            "github.pull.vexwork.116",
+            "github.pull.vexwork.103",
+            "project.vexboard"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T03:45:00.000Z",
+          "updatedAt": "2026-10-24T07:30:43.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vex-universe.vexboard-contract-alignment.ready.accepted-foundations",
+              "priorState": "WAITING_RESOURCE",
+              "nextState": "READY",
+              "reason": "The VexBoard foundation and source-projector/currentization lineage landed through PRs #98, #100, #115 and #116, satisfying the resource wait for a stable accepted routing contract.",
+              "actorRef": "actor.chatgpt.vex-universe-foundations",
+              "sourceRefs": [
+                "github.pull.vexwork.98",
+                "github.pull.vexwork.100",
+                "github.pull.vexwork.115",
+                "github.pull.vexwork.116",
+                "project.vexboard"
+              ],
+              "createdAt": "2026-10-24T06:52:20.000Z"
+            },
+            {
+              "transitionRef": "transition.vex-universe.vexboard-contract-alignment.running.pr103-reconciliation",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "PR #103 was materially reconciled to the accepted source-owned BoardSourceCatalog and shared VexBoard resolver contract instead of retaining the superseded hard-coded built-in URL seam.",
+              "actorRef": "actor.chatgpt.vex-universe-foundations",
+              "sourceRefs": [
+                "github.pull.vexwork.103",
+                "github.pull.vexwork.115",
+                "src/shared/vexboard-source-resolver.mjs"
+              ],
+              "createdAt": "2026-10-24T07:21:41.000Z"
+            },
+            {
+              "transitionRef": "transition.vex-universe.vexboard-contract-alignment.verifying.pr103-assurance",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "Exact-head SourceOwner A002 passed and fresh Independent Assurance cleared the reconciled PR #103 source-catalog seam with zero blocking or nonblocking findings.",
+              "actorRef": "actor.chatgpt.vex-universe-foundations",
+              "sourceRefs": [
+                "github.pull.vexwork.103"
+              ],
+              "createdAt": "2026-10-24T07:30:07.000Z"
+            },
+            {
+              "transitionRef": "transition.vex-universe.vexboard-contract-alignment.completed.pr103-postmerge",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "PR #103 merged on the exact cleared tree and post-merge verification preserved all six candidate blobs, completing the temporary VexBoard contract-alignment seam.",
+              "actorRef": "actor.chatgpt.vex-universe-foundations",
+              "sourceRefs": [
+                "github.pull.vexwork.103",
+                "git.commit.vexwork.766fda592ff825d5b2b4bb865b07e5a2fac5fa9b",
+                "project.vexboard"
+              ],
+              "createdAt": "2026-10-24T07:30:43.000Z"
+            }
+          ]
+        },
+        {
+          "workRef": "work.vex-universe.visible-work-record",
+          "label": "Make VexWork the visible operating record",
+          "purpose": "Represent this trajectory as a first-class VexWork Project and Workgraph family so Victor can see current work, parallel waits, next dependencies and completion movement from VexWork without relying on GitHub.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vex-universe.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "docs/foundation/PROJECTS.md",
+            "docs/foundation/WORKGRAPH-COMPOSITION.md"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [
+            "process.vexwork.quality-review"
+          ],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-24T03:45:00.000Z",
+          "updatedAt": "2026-10-24T03:59:29.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vex-universe.visible-work-record.running.formation",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "The Project/Workgraph formation is now the active bounded source effect so VexWork itself becomes the human-visible record.",
+              "actorRef": "actor.chatgpt.vex-universe-foundations",
+              "sourceRefs": [
+                "docs/foundation/PROJECTS.md",
+                "docs/foundation/WORKGRAPH-COMPOSITION.md"
+              ],
+              "createdAt": "2026-10-24T03:45:02.000Z"
+            },
+            {
+              "transitionRef": "transition.vex-universe.visible-work-record.verifying.pr101-merged",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "PR #101 merged the Vex Universe Project/Workgraph visibility source into VexWork main, so the human-visible record formation moved to verification.",
+              "actorRef": "actor.chatgpt.vex-universe-foundations",
+              "sourceRefs": [
+                "github.pull.vexwork.101",
+                "git.commit.vexwork.0c862cb494465fa108c69ae0e4f1ee0dd270deca"
+              ],
+              "createdAt": "2026-10-24T03:59:28.000Z"
+            },
+            {
+              "transitionRef": "transition.vex-universe.visible-work-record.completed.pr101-postmerge",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "Post-merge observation confirmed main, Project Registry, canonical Workgraph and public workspace all project project.vex-universe and its six work items exactly, completing the visible-work-record foundation.",
+              "actorRef": "actor.chatgpt.vex-universe-foundations",
+              "sourceRefs": [
+                "github.pull.vexwork.101",
+                "git.commit.vexwork.0c862cb494465fa108c69ae0e4f1ee0dd270deca",
+                "project.vex-universe"
+              ],
+              "createdAt": "2026-10-24T03:59:29.000Z"
+            }
+          ]
+        }
+      ],
+      "lanes": [
+        {
+          "laneRef": "lane.work.intake",
+          "label": "Intake",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.planned",
+          "label": "Planned",
+          "workRefs": [
+            "work.vex-universe.journey-evidence-patient-zero"
+          ]
+        },
+        {
+          "laneRef": "lane.work.ready",
+          "label": "Ready",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.active",
+          "label": "Active",
+          "workRefs": [
+            "work.vex-universe.outcome"
+          ]
+        },
+        {
+          "laneRef": "lane.work.waiting",
+          "label": "Waiting",
+          "workRefs": [
+            "work.vex-universe.businessfactory-convergence"
+          ]
+        },
+        {
+          "laneRef": "lane.work.needs-human",
+          "label": "Needs Human",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.verify",
+          "label": "Verify",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.attention",
+          "label": "Attention",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.done",
+          "label": "Done",
+          "workRefs": [
+            "work.vex-universe.process-board-addressability",
+            "work.vex-universe.visible-work-record",
+            "work.vex-universe.vexboard-contract-alignment"
+          ]
+        },
+        {
+          "laneRef": "lane.work.archive",
+          "label": "Archive",
+          "workRefs": []
+        }
+      ],
+      "summary": {
+        "workItemCount": 6,
+        "openWorkItemCount": 3,
+        "outcomeCount": 2,
+        "taskCount": 4,
+        "defectCount": 0,
+        "potentialCount": 0,
+        "needsHumanCount": 0,
+        "completedCount": 3
+      },
+      "rootItems": [
+        {
+          "workRef": "work.vex-universe.outcome",
+          "label": "Vex Universe Foundations",
+          "purpose": "Make the Vex Universe completion pathway perceptible in VexWork and progressively navigable and replayable through VexBoard, so current work, parallel waits, source ownership and lived proof can be understood without GitHub archaeology.",
+          "workClass": "OUTCOME",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vex-universe.businessfactory-convergence",
+            "work.vex-universe.journey-evidence-patient-zero",
+            "work.vex-universe.process-board-addressability",
+            "work.vex-universe.vexboard-contract-alignment",
+            "work.vex-universe.visible-work-record"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "github.pull.vexwork.90",
+            "github.pull.vexwork.92",
+            "project.vexboard"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T03:45:00.000Z",
+          "updatedAt": "2026-10-24T03:45:01.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vex-universe.outcome.running.visible-foundation",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "Victor explicitly asked for the Vex Universe and BusinessFactory trajectory to become visible through VexWork and authorized this lane to lead the bounded VexWork/VexBoard foundation work.",
+              "actorRef": "actor.chatgpt.vex-universe-foundations",
+              "sourceRefs": [
+                "github.pull.vexwork.90",
+                "github.pull.vexwork.92",
+                "project.vexboard"
+              ],
+              "createdAt": "2026-10-24T03:45:01.000Z"
+            }
+          ]
         }
       ]
     },
@@ -6192,43 +7232,923 @@
           "transitionHistory": []
         }
       ]
+    },
+    {
+      "project": {
+        "projectRef": "project.vextreme.vexsite-localization",
+        "label": "VexSite Localization",
+        "purpose": "Keep VexSite localization visible from source-lineage preservation through the canonical Global Core queue and separate generated/runtime convergence without turning VexWork into a second page, translation, generated-artifact, or browser-proof owner.",
+        "rootWorkRefs": [
+          "work.vextreme.vexsite.localization.outcome"
+        ],
+        "repositoryRefs": [
+          "repo.vexwork",
+          "repo.vextreme"
+        ],
+        "sourceRefs": [
+          "projects/vexsite-localization/README.md",
+          "docs/process/FORM-PROJECT.md",
+          "projects/vexwork-operational-console/VEXSITE-LOCALIZATION-LENS.md",
+          "github.issue.vextreme.273",
+          "github.issue-comment.vextreme.273.6379017700",
+          "github.issue-comment.vextreme.273.6379565128",
+          "github.issue-comment.vextreme.273.6380410929",
+          "github.issue-comment.vextreme.273.6380816622",
+          "github.pull.vextreme.379",
+          "github.pull.vextreme.395",
+          "github.pull.vextreme.397",
+          "github.pull.vextreme.398",
+          "github.pull.vextreme.399",
+          "repo.vextreme:docs/architecture/06-i18n.md"
+        ],
+        "formedAt": "2026-10-23T07:48:00.000Z"
+      },
+      "graphRef": "workgraph.vexwork.foundation",
+      "viewRef": "view.vextreme.vexsite-localization.board",
+      "items": [
+        {
+          "workRef": "work.vextreme.vexsite.localization.canonical-global-core-source",
+          "label": "Advance the canonical Conversations-with-God Global Core source queue",
+          "purpose": "Advance exactly the Vextreme-owned canonical scheduler foreground without creating one VexWork item per page; Closed Circuit, Divine Emergence, The Firmament Conversation, and Ascension & Embodiment are terminal/current, and The Testimony of the Handler is the next exact source row at 134 canonical keys / 1,206 Global Core target cells.",
+          "workClass": "TASK",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": "work.vextreme.vexsite.localization.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vextreme.vexsite.localization.presentation-source-lineage"
+          ],
+          "repositoryRefs": [
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "github.issue.vextreme.273",
+            "github.issue-comment.vextreme.273.6379565128",
+            "github.issue-comment.vextreme.273.6379741965",
+            "github.issue-comment.vextreme.273.6380410929",
+            "github.issue-comment.vextreme.273.6380816622",
+            "github.pull.vextreme.395",
+            "github.pull.vextreme.397",
+            "github.pull.vextreme.398",
+            "github.pull.vextreme.399",
+            "repo.vextreme:data/strings/source/pages/the-testimony-of-the-handler.json",
+            "repo.vextreme:docs/ingestion/workmaps/content-forge-convos-with-god-arc-batch-formation.json"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T05:28:32.000Z",
+          "updatedAt": "2026-10-24T06:17:51.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vextreme.vexsite.localization.closed-circuit.global-core",
+          "label": "Localize Closed Circuit across Global Core",
+          "purpose": "Preserve the promoted Closed Circuit concern as completed canonical Global Core source work through PR #395 while keeping the broader Part-025 nested source as SOURCE_ONLY_HOLD rather than inferring alias, replacement, or exact semantic identity.",
+          "workClass": "POTENTIAL",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vextreme.vexsite.localization.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vextreme.vexsite.localization.presentation-source-lineage"
+          ],
+          "repositoryRefs": [
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "github.pull.vexwork.62",
+            "projects/vexwork-operational-console/VEXSITE-PATIENT-ZERO.md",
+            "projects/vexwork-operational-console/vexsite-patient-zero-observation.json",
+            "concern.vextreme.vexsite.localization.closed-circuit.global-core",
+            "entity.vextreme.vexsite.page.closed-circuit",
+            "lens.vextreme.vexsite.localization",
+            "predicate.vextreme.vexsite.localization.target-tier-complete",
+            "reason.vextreme.vexsite.localization.target-tier-completion",
+            "github.issue.vextreme.273",
+            "github.issue-comment.vextreme.273.6379565128",
+            "github.pull.vextreme.395",
+            "projects/vexwork-operational-console/vexsite-closed-circuit-promotion-publication.json",
+            "project.vextreme.vexsite-localization"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.promote-derived-concern",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-23T02:20:00.000Z",
+          "updatedAt": "2026-10-24T05:28:32.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vextreme.vexsite.localization.generated-runtime-currentness",
+          "label": "Converge VexSite generated/runtime currentness",
+          "purpose": "Keep generated/runtime realization distinct from canonical localization source acceptance and converge those consequences through the existing broad Vextreme generated/runtime owner rather than admitting duplicate generated writers.",
+          "workClass": "TASK",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vextreme.vexsite.localization.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "github.pull.vextreme.379",
+            "github.issue.vextreme.273",
+            "github.issue-comment.vextreme.273.6380410929"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T05:28:32.000Z",
+          "updatedAt": "2026-10-24T05:28:32.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vextreme.vexsite.localization.outcome",
+          "label": "VexSite Localization",
+          "purpose": "Keep VexSite localization legible from preserved source lineage through the canonical Global Core source queue and separate generated/runtime convergence, while Vextreme remains the owner of page, source, runtime, and lived-browser truth and VexWork owns only durable work organization.",
+          "workClass": "OUTCOME",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vextreme.vexsite.localization.canonical-global-core-source",
+            "work.vextreme.vexsite.localization.closed-circuit.global-core",
+            "work.vextreme.vexsite.localization.generated-runtime-currentness",
+            "work.vextreme.vexsite.localization.presentation-source-lineage"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "projects/vexsite-localization/README.md",
+            "projects/vexwork-operational-console/VEXSITE-LOCALIZATION-LENS.md",
+            "github.issue.vextreme.273",
+            "github.issue-comment.vextreme.273.6380410929",
+            "github.issue-comment.vextreme.273.6380816622",
+            "github.pull.vextreme.379",
+            "github.pull.vextreme.395",
+            "github.pull.vextreme.397",
+            "github.pull.vextreme.398",
+            "github.pull.vextreme.399",
+            "repo.vextreme:docs/architecture/06-i18n.md"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-23T07:48:00.000Z",
+          "updatedAt": "2026-10-24T06:17:51.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vextreme.vexsite.localization.presentation-source-lineage",
+          "label": "Preserve Presentation / Source transcript lineage before localization",
+          "purpose": "Record the completed Conversations-with-God duplicate-lineage prerequisite: exact Presentation and Source transcript identities were preserved rather than collapsed, the seven exact-pair census closed, Merron earned dual-lineage treatment, Closed Circuit's broader nested source remains SOURCE_ONLY_HOLD, and the canonical localization scheduler resumed only after that lineage frontier was resolved.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vextreme.vexsite.localization.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "github.issue.vextreme.273",
+            "github.issue-comment.vextreme.273.6379017700",
+            "github.issue-comment.vextreme.273.6379565128",
+            "repo.vextreme:docs/ingestion/workmaps/content-forge-convos-with-god-arc-batch-formation.json"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T05:28:32.000Z",
+          "updatedAt": "2026-10-24T05:28:32.000Z",
+          "transitionHistory": []
+        }
+      ],
+      "lanes": [
+        {
+          "laneRef": "lane.work.intake",
+          "label": "Intake",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.planned",
+          "label": "Planned",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.ready",
+          "label": "Ready",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.active",
+          "label": "Active",
+          "workRefs": [
+            "work.vextreme.vexsite.localization.canonical-global-core-source",
+            "work.vextreme.vexsite.localization.generated-runtime-currentness",
+            "work.vextreme.vexsite.localization.outcome"
+          ]
+        },
+        {
+          "laneRef": "lane.work.waiting",
+          "label": "Waiting",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.needs-human",
+          "label": "Needs Human",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.verify",
+          "label": "Verify",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.attention",
+          "label": "Attention",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.done",
+          "label": "Done",
+          "workRefs": [
+            "work.vextreme.vexsite.localization.closed-circuit.global-core",
+            "work.vextreme.vexsite.localization.presentation-source-lineage"
+          ]
+        },
+        {
+          "laneRef": "lane.work.archive",
+          "label": "Archive",
+          "workRefs": []
+        }
+      ],
+      "summary": {
+        "workItemCount": 5,
+        "openWorkItemCount": 3,
+        "outcomeCount": 1,
+        "taskCount": 3,
+        "defectCount": 0,
+        "potentialCount": 1,
+        "needsHumanCount": 0,
+        "completedCount": 2
+      },
+      "rootItems": [
+        {
+          "workRef": "work.vextreme.vexsite.localization.outcome",
+          "label": "VexSite Localization",
+          "purpose": "Keep VexSite localization legible from preserved source lineage through the canonical Global Core source queue and separate generated/runtime convergence, while Vextreme remains the owner of page, source, runtime, and lived-browser truth and VexWork owns only durable work organization.",
+          "workClass": "OUTCOME",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vextreme.vexsite.localization.canonical-global-core-source",
+            "work.vextreme.vexsite.localization.closed-circuit.global-core",
+            "work.vextreme.vexsite.localization.generated-runtime-currentness",
+            "work.vextreme.vexsite.localization.presentation-source-lineage"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "projects/vexsite-localization/README.md",
+            "projects/vexwork-operational-console/VEXSITE-LOCALIZATION-LENS.md",
+            "github.issue.vextreme.273",
+            "github.issue-comment.vextreme.273.6380410929",
+            "github.issue-comment.vextreme.273.6380816622",
+            "github.pull.vextreme.379",
+            "github.pull.vextreme.395",
+            "github.pull.vextreme.397",
+            "github.pull.vextreme.398",
+            "github.pull.vextreme.399",
+            "repo.vextreme:docs/architecture/06-i18n.md"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-23T07:48:00.000Z",
+          "updatedAt": "2026-10-24T06:17:51.000Z",
+          "transitionHistory": []
+        }
+      ]
+    },
+    {
+      "project": {
+        "projectRef": "project.vexlife.welcome-wagon",
+        "label": "VexLife Welcome Wagon",
+        "purpose": "Create a humane first-entry experience for VexLife and the Vextreme public world: orient a new human plainly, let them enter according to intent, preserve accepted Terrain/VexLife/VexWork foundations and accessibility capabilities, and converge reusable family navigation/design through small reversible visual moves rather than dismantling working source semantics.",
+        "rootWorkRefs": [
+          "work.vexlife.welcome-wagon.outcome"
+        ],
+        "repositoryRefs": [
+          "repo.vexwork",
+          "repo.vextreme",
+          "repo.vexlife"
+        ],
+        "sourceRefs": [
+          "projects/vexlife-welcome-wagon/README.md",
+          "repo.vextreme:pages/terrain-map.html",
+          "repo.vextreme:pages/vextreme-home.html",
+          "repo.vextreme:vexsystem/index.html",
+          "docs/process/FORM-PROJECT.md",
+          "repo.vextreme:styles/design-system.css",
+          "repo.vextreme:styles/vex-institutional.css",
+          "repo.vextreme:widgets/vex-institutional.js",
+          "repo.vextreme:widgets/vex-fab.js",
+          "repo.vextreme:widgets/fab-lang.js",
+          "repo.vextreme:widgets/fab-read-aloud.js",
+          "repo.vextreme:lib/shell.js",
+          "repo.vextreme:lib/vextreme.js",
+          "repo.vexlife:pages/vexlife-onboarding.html",
+          "repo.vexlife:pages/vexlife-onboarding.css",
+          "repo.vexlife:pages/vexlife-onboarding.js",
+          "repo.vexwork:index.html",
+          "repo.vextreme:docs/architecture/12-design-system.md",
+          "repo.vextreme:docs/architecture/18-institutional-pages.md",
+          "repo.vextreme:config/institutional-surfaces.json",
+          "repo.vextreme:index.html",
+          "repo.vextreme:pages/vextreme-covenant.html",
+          "repo.vexlife:README.md",
+          "repo.vexwork:README.md",
+          "repo.vextreme:data/status/tech-debt.json",
+          "repo.vextreme:lib/build-sitemap.js",
+          "repo.vextreme:lib/build-page-health.js",
+          "repo.vextreme:lib/build-terrain-map.js",
+          "repo.vextreme:lib/check-institutional-surfaces.js",
+          "repo.vextreme:lib/check-key-alignment.js",
+          "repo.vextreme:scripts/screenshot-institutional.js",
+          "repo.vextreme:tests/54-institutional-surfaces.test.js",
+          "repo.vextreme:tests/55-build-sitemap.test.js",
+          "repo.vextreme:data/screenshot-evidence-assets.json",
+          "repo.vextreme:sitemap.xml",
+          "github.pull.vexwork.113"
+        ],
+        "formedAt": "2026-10-24T06:05:10.000Z"
+      },
+      "graphRef": "workgraph.vexwork.foundation",
+      "viewRef": "view.vexlife.welcome-wagon.board",
+      "items": [
+        {
+          "workRef": "work.vexlife.welcome-wagon.about-vextreme-slug-migration",
+          "label": "Rename `vextreme-home` to canonical `about-vextreme` safely",
+          "purpose": "Migrate the registered institutional page identity from vextreme-home to about-vextreme through a machine-derived impact set, preserving historical/provenance references, updating live links/generated projections/evidence/tests, and retaining a deliberate compatibility route for the old public URL when repository constraints allow it.",
+          "workClass": "POTENTIAL",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.welcome-wagon.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.welcome-wagon.slug-rename-tooling"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-welcome-wagon/README.md",
+            "repo.vextreme:config/institutional-surfaces.json",
+            "repo.vextreme:data/status/tech-debt.json",
+            "repo.vextreme:index.html",
+            "repo.vextreme:tests/54-institutional-surfaces.test.js",
+            "repo.vextreme:tests/55-build-sitemap.test.js"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T06:05:10.000Z",
+          "updatedAt": "2026-10-24T06:43:34.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.welcome-wagon.human-language-currentness",
+          "label": "Current, true, meaningful and human welcome copy",
+          "purpose": "Rewrite first-entry wording from current accepted product truth so a new human can understand what the place is and what each route offers without prior internal vocabulary, defensive explanation or aspirational claims.",
+          "workClass": "POTENTIAL",
+          "state": "CAPTURED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.welcome-wagon.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme",
+            "repo.vexlife"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-welcome-wagon/README.md",
+            "repo.vextreme:pages/terrain-map.html",
+            "repo.vextreme:pages/vextreme-home.html"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T06:05:10.000Z",
+          "updatedAt": "2026-10-24T06:05:10.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.welcome-wagon.outcome",
+          "label": "VexLife Welcome Wagon",
+          "purpose": "Create a humane front door where a first-time person can understand where they are and enter according to why they came, while preserving accepted Terrain/VexLife/VexWork foundations, accessibility/FAB capabilities and reversible presentation boundaries instead of treating welcome design as permission to rebuild working systems.",
+          "workClass": "OUTCOME",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vexlife.welcome-wagon.about-vextreme-slug-migration",
+            "work.vexlife.welcome-wagon.human-language-currentness",
+            "work.vexlife.welcome-wagon.shared-header-capability-map",
+            "work.vexlife.welcome-wagon.slug-rename-tooling",
+            "work.vexlife.welcome-wagon.terrain-design-convergence",
+            "work.vexlife.welcome-wagon.terrain-front-door",
+            "work.vexlife.welcome-wagon.vexlife-placeholder-visual-story",
+            "work.vexlife.welcome-wagon.vexsystem-secondary",
+            "work.vexlife.welcome-wagon.vextreme-home-role",
+            "work.vexlife.welcome-wagon.visual-rollout-rollback",
+            "work.vexlife.welcome-wagon.what-is-this"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme",
+            "repo.vexlife"
+          ],
+          "sourceRefs": [
+            "project.vexlife.welcome-wagon",
+            "projects/vexlife-welcome-wagon/README.md",
+            "repo.vextreme:pages/terrain-map.html",
+            "repo.vextreme:pages/vextreme-home.html",
+            "repo.vextreme:vexsystem/index.html",
+            "github.pull.vexwork.113"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-24T06:05:10.000Z",
+          "updatedAt": "2026-10-24T06:43:34.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.welcome-wagon.shared-header-capability-map",
+          "label": "Map the reusable family header and FAB capability foundation",
+          "purpose": "Map the accepted Vextreme, Terrain, VexLife and VexWork header/navigation foundations into a reusable semantic capability contract covering family identity, current-surface identity, primary navigation, language, Read Aloud, theme and surface-specific controls without forcing one identical DOM/header implementation across repositories.",
+          "workClass": "POTENTIAL",
+          "state": "CAPTURED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.welcome-wagon.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme",
+            "repo.vexlife"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-welcome-wagon/README.md",
+            "repo.vextreme:pages/terrain-map.html",
+            "repo.vextreme:pages/vextreme-home.html",
+            "repo.vextreme:widgets/vex-fab.js",
+            "repo.vextreme:widgets/fab-lang.js",
+            "repo.vextreme:widgets/fab-read-aloud.js",
+            "repo.vextreme:widgets/vex-institutional.js",
+            "repo.vextreme:lib/vextreme.js",
+            "repo.vexlife:pages/vexlife-onboarding.html",
+            "repo.vexwork:index.html"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T06:05:10.000Z",
+          "updatedAt": "2026-10-24T06:05:10.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.welcome-wagon.slug-rename-tooling",
+          "label": "Add plan-first page-slug rename impact tooling",
+          "purpose": "Close or materially reduce Vextreme td-004 by providing a deterministic plan-first rename tool that discovers and classifies live owner, live reference, generated, evidence, test and historical-provenance references before mutation so future page identity changes are source-derived rather than grep-by-assumption.",
+          "workClass": "POTENTIAL",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vexlife.welcome-wagon.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-welcome-wagon/README.md",
+            "repo.vextreme:data/status/tech-debt.json",
+            "repo.vextreme:lib/check-key-alignment.js",
+            "repo.vextreme:lib/check-institutional-surfaces.js",
+            "github.pull.vexwork.113",
+            "github.pull.vextreme.400",
+            "github.commit.vextreme.3a54f4168a2ffabdf4ce646f5d880f7ab363821d",
+            "relay.return.vextreme.welcome-wagon.slug-rename-tooling.source-owner.mac-a001.safe-failure"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-24T06:05:10.000Z",
+          "updatedAt": "2026-10-24T07:04:24.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.welcome-wagon.terrain-design-convergence",
+          "label": "Converge Terrain with the Vextreme design foundation without replacing Terrain",
+          "purpose": "Explore the smallest reusable design/header movement that lets Terrain inherit the Vextreme family logo, typography, visual language and accessibility affordances while preserving accepted Terrain Journey, search, reader, archive and entry behavior.",
+          "workClass": "POTENTIAL",
+          "state": "CAPTURED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.welcome-wagon.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-welcome-wagon/README.md",
+            "repo.vextreme:pages/terrain-map.html",
+            "repo.vextreme:styles/design-system.css",
+            "repo.vextreme:styles/vex-institutional.css",
+            "repo.vextreme:lib/shell.js",
+            "repo.vextreme:lib/vextreme.js"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T06:05:10.000Z",
+          "updatedAt": "2026-10-24T06:05:10.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.welcome-wagon.terrain-front-door",
+          "label": "Terrain as the candidate human front door",
+          "purpose": "Preserve the current Terrain arrival as the strongest candidate human entry surface: one plain orientation sentence followed by intent-shaped entry choices rather than an institutional explanation-first homepage.",
+          "workClass": "POTENTIAL",
+          "state": "CAPTURED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.welcome-wagon.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-welcome-wagon/README.md",
+            "repo.vextreme:pages/terrain-map.html"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T06:05:10.000Z",
+          "updatedAt": "2026-10-24T06:05:10.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.welcome-wagon.vexlife-placeholder-visual-story",
+          "label": "Evolve the VexLife placeholder toward screenshot-led human orientation",
+          "purpose": "Treat the current no-effect VexLife Public Alpha page as truthful placeholder/onboarding material while Vex is not yet ready; as real lived product surfaces become available, reduce explanation where screenshots and current product behavior can demonstrate the experience more directly.",
+          "workClass": "POTENTIAL",
+          "state": "CAPTURED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vexlife.welcome-wagon.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-welcome-wagon/README.md",
+            "repo.vexlife:pages/vexlife-onboarding.html",
+            "repo.vexlife:pages/vexlife-onboarding.css",
+            "repo.vexlife:pages/vexlife-onboarding.js"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T06:05:10.000Z",
+          "updatedAt": "2026-10-24T06:05:10.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.welcome-wagon.vexsystem-secondary",
+          "label": "VexSystem as secondary technical depth",
+          "purpose": "Keep VexSystem discoverable for AI, builders and technically curious humans while removing the assumption that system architecture deserves equal first-arrival priority with receiving, exploring or basic orientation.",
+          "workClass": "POTENTIAL",
+          "state": "CAPTURED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vexlife.welcome-wagon.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-welcome-wagon/README.md",
+            "repo.vextreme:vexsystem/index.html",
+            "repo.vextreme:pages/terrain-map.html"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T06:05:10.000Z",
+          "updatedAt": "2026-10-24T06:05:10.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.welcome-wagon.vextreme-home-role",
+          "label": "Refactor the canonical About Vextreme surface after slug migration",
+          "purpose": "Treat `vextreme-home` as the current pre-migration institutional identity only; after the dependency-held canonical migration to `about-vextreme`, refactor that canonical About Vextreme surface to answer “What is this?” in plain language in the first viewport, explain Vextreme/VexLife/VexWork with current truth, retain the four alignments in human language, move Build Health/VexSystem/Covenant/source into deeper on-demand routes, and avoid competing with Terrain as the accepted public front door.",
+          "workClass": "POTENTIAL",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vexlife.welcome-wagon.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.welcome-wagon.about-vextreme-slug-migration"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-welcome-wagon/README.md",
+            "repo.vextreme:pages/vextreme-home.html",
+            "repo.vextreme:docs/architecture/12-design-system.md",
+            "repo.vextreme:docs/architecture/18-institutional-pages.md",
+            "repo.vextreme:index.html",
+            "repo.vextreme:pages/vextreme-covenant.html",
+            "repo.vexlife:README.md",
+            "repo.vexwork:README.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T06:05:10.000Z",
+          "updatedAt": "2026-10-24T06:43:34.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.welcome-wagon.visual-rollout-rollback",
+          "label": "One-PR reversible visual rollout and rollback membrane",
+          "purpose": "Keep material Welcome Wagon/header presentation experiments bounded enough that Victor can judge the rendered result after merge and one coherent PR can revert a bad visual move without unwinding unrelated route, Journey, localization, accessibility or product semantics.",
+          "workClass": "POTENTIAL",
+          "state": "CAPTURED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.welcome-wagon.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme",
+            "repo.vexlife"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-welcome-wagon/README.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T06:05:10.000Z",
+          "updatedAt": "2026-10-24T06:05:10.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.welcome-wagon.what-is-this",
+          "label": "Plain-human \"What is this?\" orientation",
+          "purpose": "Provide a short human orientation route for visitors who do not yet understand Vextreme, VexLife, Terrain or VexSystem, using ordinary language before deeper institutional or technical vocabulary.",
+          "workClass": "POTENTIAL",
+          "state": "CAPTURED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.welcome-wagon.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-welcome-wagon/README.md",
+            "repo.vextreme:pages/terrain-map.html",
+            "repo.vextreme:pages/vextreme-home.html"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T06:05:10.000Z",
+          "updatedAt": "2026-10-24T06:05:10.000Z",
+          "transitionHistory": []
+        }
+      ],
+      "lanes": [
+        {
+          "laneRef": "lane.work.intake",
+          "label": "Intake",
+          "workRefs": [
+            "work.vexlife.welcome-wagon.human-language-currentness",
+            "work.vexlife.welcome-wagon.shared-header-capability-map",
+            "work.vexlife.welcome-wagon.terrain-design-convergence",
+            "work.vexlife.welcome-wagon.terrain-front-door",
+            "work.vexlife.welcome-wagon.visual-rollout-rollback",
+            "work.vexlife.welcome-wagon.what-is-this",
+            "work.vexlife.welcome-wagon.vexlife-placeholder-visual-story",
+            "work.vexlife.welcome-wagon.vexsystem-secondary"
+          ]
+        },
+        {
+          "laneRef": "lane.work.planned",
+          "label": "Planned",
+          "workRefs": [
+            "work.vexlife.welcome-wagon.about-vextreme-slug-migration",
+            "work.vexlife.welcome-wagon.vextreme-home-role"
+          ]
+        },
+        {
+          "laneRef": "lane.work.ready",
+          "label": "Ready",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.active",
+          "label": "Active",
+          "workRefs": [
+            "work.vexlife.welcome-wagon.outcome",
+            "work.vexlife.welcome-wagon.slug-rename-tooling"
+          ]
+        },
+        {
+          "laneRef": "lane.work.waiting",
+          "label": "Waiting",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.needs-human",
+          "label": "Needs Human",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.verify",
+          "label": "Verify",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.attention",
+          "label": "Attention",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.done",
+          "label": "Done",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.archive",
+          "label": "Archive",
+          "workRefs": []
+        }
+      ],
+      "summary": {
+        "workItemCount": 12,
+        "openWorkItemCount": 12,
+        "outcomeCount": 1,
+        "taskCount": 0,
+        "defectCount": 0,
+        "potentialCount": 11,
+        "needsHumanCount": 0,
+        "completedCount": 0
+      },
+      "rootItems": [
+        {
+          "workRef": "work.vexlife.welcome-wagon.outcome",
+          "label": "VexLife Welcome Wagon",
+          "purpose": "Create a humane front door where a first-time person can understand where they are and enter according to why they came, while preserving accepted Terrain/VexLife/VexWork foundations, accessibility/FAB capabilities and reversible presentation boundaries instead of treating welcome design as permission to rebuild working systems.",
+          "workClass": "OUTCOME",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vexlife.welcome-wagon.about-vextreme-slug-migration",
+            "work.vexlife.welcome-wagon.human-language-currentness",
+            "work.vexlife.welcome-wagon.shared-header-capability-map",
+            "work.vexlife.welcome-wagon.slug-rename-tooling",
+            "work.vexlife.welcome-wagon.terrain-design-convergence",
+            "work.vexlife.welcome-wagon.terrain-front-door",
+            "work.vexlife.welcome-wagon.vexlife-placeholder-visual-story",
+            "work.vexlife.welcome-wagon.vexsystem-secondary",
+            "work.vexlife.welcome-wagon.vextreme-home-role",
+            "work.vexlife.welcome-wagon.visual-rollout-rollback",
+            "work.vexlife.welcome-wagon.what-is-this"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme",
+            "repo.vexlife"
+          ],
+          "sourceRefs": [
+            "project.vexlife.welcome-wagon",
+            "projects/vexlife-welcome-wagon/README.md",
+            "repo.vextreme:pages/terrain-map.html",
+            "repo.vextreme:pages/vextreme-home.html",
+            "repo.vextreme:vexsystem/index.html",
+            "github.pull.vexwork.113"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-24T06:05:10.000Z",
+          "updatedAt": "2026-10-24T06:43:34.000Z",
+          "transitionHistory": []
+        }
+      ]
     }
   ],
   "parkingLot": {
     "items": [
       {
-        "workRef": "work.vextreme.vexsite.localization.closed-circuit.global-core",
-        "label": "Localize Closed Circuit across Global Core",
-        "purpose": "Preserve the current Closed Circuit Global Core localization concern as canonical Work while Vextreme retains source scheduling and implementation authority; current provider foreground remains separate dual-lineage work.",
+        "workRef": "work.vexstream.mobile-library.tag-topology-stations",
+        "label": "User tag topology / dynamic stations",
+        "purpose": "Preserve the future product question of user-authored music tags that remain distinct from imported source tags/categories and can drive reusable dynamic stations or smart-playlist rules without pre-deciding identity attachment, persistence ownership, rule language, or playlist materialization.",
         "workClass": "POTENTIAL",
         "state": "CAPTURED",
         "workDisposition": "PARKED",
-        "priorityClass": "NORMAL",
+        "priorityClass": "LOW",
         "parentWorkRefOrNull": null,
         "childWorkRefs": [],
-        "dependencyRefs": [],
+        "dependencyRefs": [
+          "work.vexstream.mobile-library.sort-filter-controls"
+        ],
         "repositoryRefs": [
-          "repo.vextreme"
+          "repo.vexstream-music",
+          "repo.vexlife-android"
         ],
         "sourceRefs": [
-          "github.pull.vexwork.62",
-          "projects/vexwork-operational-console/VEXSITE-PATIENT-ZERO.md",
-          "projects/vexwork-operational-console/vexsite-patient-zero-observation.json",
-          "concern.vextreme.vexsite.localization.closed-circuit.global-core",
-          "entity.vextreme.vexsite.page.closed-circuit",
-          "lens.vextreme.vexsite.localization",
-          "predicate.vextreme.vexsite.localization.target-tier-complete",
-          "reason.vextreme.vexsite.localization.target-tier-completion",
-          "github.issue.vextreme.273",
-          "github.issue-comment.vextreme.273.6311043427",
-          "projects/vexwork-operational-console/vexsite-closed-circuit-promotion-publication.json"
+          "work.vexstream.mobile-library.library-browse-discovery",
+          "projects/vexstream-mobile-library/README.md",
+          "repo.vexstream-music:v2/desktop/library/model.go",
+          "repo.vexstream-music:v2/desktop/library/filesystem/metadata.go",
+          "repo.vexstream-music:v2/web/features/library/client.js",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/README.md"
         ],
-        "formationProcessRefOrNull": "process.vexwork.promote-derived-concern",
-        "nextProcessRefs": [],
+        "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+        "nextProcessRefs": [
+          "process.vexlife-android.feature-authoring"
+        ],
         "authorityDisposition": "NO_AUTHORITY",
         "effectDisposition": "NO_EFFECTS",
-        "createdAt": "2026-10-23T02:20:00.000Z",
-        "updatedAt": "2026-10-23T02:26:33.000Z",
+        "createdAt": "2026-10-23T08:02:00.000Z",
+        "updatedAt": "2026-10-24T02:59:02.000Z",
         "transitionHistory": [],
         "graphRef": "workgraph.vexwork.foundation"
       },

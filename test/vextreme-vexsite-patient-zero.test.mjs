@@ -348,12 +348,14 @@ test('target-tier concern promotes Closed Circuit as exactly one parked no-autho
 test('checked-in promoted Closed Circuit Work reprojects only the selected concern', () => {
   const published = currentGraph.items.find((item) => item.workRef === PUBLISHED_WORK_REF);
   assert.ok(published);
-  assert.equal(published.state, 'CAPTURED');
-  assert.equal(published.workDisposition, 'PARKED');
+  assert.equal(published.state, 'COMPLETED');
+  assert.equal(published.workDisposition, 'ACTIVE');
+  assert.equal(published.parentWorkRefOrNull, 'work.vextreme.vexsite.localization.outcome');
   assert.equal(published.authorityDisposition, 'NO_AUTHORITY');
   assert.equal(published.effectDisposition, 'NO_EFFECTS');
   assert.equal(published.formationProcessRefOrNull, 'process.vexwork.promote-derived-concern');
   assert.equal(published.sourceRefs.includes('github.pull.vexwork.62'), true);
+  assert.equal(published.sourceRefs.includes('project.vextreme.vexsite-localization'), true);
 
   const closedRef = 'entity.vextreme.vexsite.page.closed-circuit';
   const linked = makeProjection({ [closedRef]: [PUBLISHED_WORK_REF] }).projection;

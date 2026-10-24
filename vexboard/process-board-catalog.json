@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "vexboard.board-source-catalog/v1",
+  "catalogRef": "catalog.vexwork.process-boards",
+  "entries": [
+    {
+      "boardRef": "board.vexwork.form-project",
+      "location": "./form-project-process.json",
+      "sourceRefs": [
+        "process.vexwork.form-project",
+        "vexboard/form-project-process.json"
+      ]
+    }
+  ],
+  "sourceRefs": [
+    "blueprint/process-registry.json",
+    "docs/process/FORM-PROJECT.md"
+  ]
+}

@@ -203,6 +203,185 @@ Did the work reveal a recurring process future workers would otherwise rediscove
 
 If yes, is the smallest reusable route source-placed with the rightful owner? If no, did the candidate avoid turning a one-off maneuver into bureaucracy?
 
+### QR-13A — Worked example: A022 -> A024, when a lived retry chain must become a source regression
+
+Use this incident as a concrete pattern, not as VexLife-specific ceremony. The important question is **when a fresh worker should stop repeating a host/lived attempt and descend to the owning source**.
+
+#### Starting truth
+
+The ordinary Heretic fresh-Home proof had already finished its large artifact prerequisite:
+
+```text
+11 / 11 model members exact
+15,153,242,506 bytes exact
+missing = 0
+invalid = 0
+```
+
+A022 therefore had a narrow job:
+
+```text
+exact local model
+-> Python 3.14.7 + mlx-lm 0.32.0 environment
+-> Heretic runtime qualification
+```
+
+A022 failed during environment realization. Its outer result surfaced only:
+
+```text
+HERETIC_ENVIRONMENT_REALIZATION_FAILED
+```
+
+A tempting but wrong continuation would have been:
+
+```text
+retry A022
+increase timeout
+re-download the model
+reinstall Python blindly
+blame pip/network without discrimination
+```
+
+None of those actions followed from the evidence.
+
+#### First discriminator: separate harness observation loss from product failure
+
+A022's child emitted an owner error in this shape:
+
+```text
+[VexLife A022] environment failed: <OWNER_CODE>
+```
+
+The parent sanitizer searched for:
+
+```text
+A022 environment failed: <OWNER_CODE>
+```
+
+The extra `] ` meant the exact owner code was lost and the outer carrier fell back to a generic failure.
+
+That is a **harness observation-loss defect**, but it does not explain why the environment owner failed.
+
+The next attempt therefore repaired error transport *and* added a discriminating diagnostic instead of assuming the harness defect was the product defect.
+
+#### Second discriminator: prove or eliminate the external prerequisite
+
+A023 created one task-owned temporary Python environment and performed a binary-only dry-run of the exact dependency request before mutating the retained fresh Home.
+
+Observed:
+
+```text
+bootstrap Python = 3.14.7
+pip dependency resolution = PASS
+mlx-lm = 0.32.0
+mlx = 0.32.4
+dependency resolver exit = 0
+```
+
+Then the accepted VexLife environment owner still failed, now with the exact owner code:
+
+```text
+HERETIC_ENVIRONMENT_PROBE_FAILED
+```
+
+At this point, repeating the host attempt would no longer be evidence-seeking. The external prerequisite had passed; the failure was reproducibly inside the owning source path.
+
+#### Exact source cause
+
+Current VexLife source formed the post-install Python probe from separate statements:
+
+```javascript
+const script = [
+  'import importlib.metadata as md,json,sys',
+  'import mlx_lm',
+  'import mlx_lm.server',
+  'print(...)'
+].join('');
+```
+
+Those fragments do not contain separators. The generated `python -c` program therefore collapsed statement boundaries into a shape like:
+
+```text
+import importlib.metadata as md,json,sysimport mlx_lmimport mlx_lm.serverprint(...)
+```
+
+That is invalid Python syntax.
+
+The smallest rightful repair was:
+
+```javascript
+].join('\n');
+```
+
+No model identity, Python version, package version, runtime owner, Home semantics, or Browser behavior needed redesign.
+
+#### Regression shape
+
+The regression did **not** merely assert that the source text contains `join('\n')`.
+
+It injected the environment owner's command runner, captured the actual program passed as the Python `-c` argument, and asserted both the intended statement boundaries and the exact historical failure shape:
+
+```javascript
+assert.match(
+  observedProgram,
+  /import importlib\.metadata as md,json,sys\nimport mlx_lm\nimport mlx_lm\.server\nprint/
+);
+assert.doesNotMatch(observedProgram, /sysimport mlx_lm/);
+```
+
+That matters because the bug lived in the **generated program**, not merely in one source token. A future refactor can change how the string is built while the regression still protects the actual contract.
+
+#### Resume coordinate
+
+The source correction became a bounded candidate rather than another host retry:
+
+```text
+source owner:
+  src/core/heretic-runtime-establishment.mjs
+
+regression:
+  test/heretic-runtime-establishment.test.mjs
+
+generated closure:
+  exact Source Manifest buckets only
+
+then:
+  focused proof
+  -> whole-repository proof
+  -> exact-head SourceOwner
+  -> Independent Assurance
+  -> lifecycle / merge / postmerge
+  -> resume the preserved fresh Home
+```
+
+The already-proven 15.15 GB model set remains reusable. Source correction does not authorize reacquiring it merely to gain confidence.
+
+#### Reusable decision rule
+
+When a lived/host attempt fails, use this order:
+
+```text
+1. Did the attempt create durable state?
+   YES -> recover/read current state before replay.
+
+2. Is the reported error exact?
+   NO -> repair observation transport without calling that the product fix.
+
+3. Can one bounded diagnostic separate external prerequisite failure from owner-source failure?
+   YES -> run that discriminator once.
+
+4. Did the prerequisite pass while the same owner path still fail deterministically?
+   YES -> stop host retries and descend to owner source.
+
+5. Can the defect be reproduced from source/generated input?
+   YES -> form the smallest source correction plus a regression against the real generated artifact/command/input.
+
+6. After source acceptance, where do we resume?
+   -> from the preserved host state, not from the beginning.
+```
+
+This example is preserved in VexLife ToCompletion lineage through issue #866's A022/A023/A024 checkpoints and the A024 environment-probe correction candidate. Future workers should use the sequence to recognize the **shape of the problem**, not copy its attempt numbers mechanically.
+
 ### QR-14 — Review currentness
 
 Is the terminal review bound to the exact head/source/proof actually inspected? Are stale observations explicitly marked stale rather than carried forward?
@@ -325,6 +504,58 @@ NEXT ROUTE
 ```
 
 Use `docs/templates/QA-REVIEW-BRIEF.md` to hand the role to a fresh reviewer and `docs/templates/QA-REVIEW-RETURN.md` for the return shape.
+
+## Merge-ready handoff
+
+A terminal exact-candidate review does not need to keep chasing live `main`.
+
+When the exact candidate is clear and every candidate-owned proof/review predicate required by the owning repository is satisfied:
+
+```text
+exact candidate head/tree stable
++ required SourceOwner / QA / assurance evidence current
++ no candidate-owned blocking finding
+-> READY_FOR_INTEGRATION
+```
+
+The review return should preserve:
+
+```text
+providerPullRequestRef
+candidateHead
+candidateTree
+fixedEvidenceBase
+sourceOwnerEvidenceRefOrNull
+review / assurance evidence refs
+dependency / priority evidence refs
+explicit non-claims
+```
+
+Then route to:
+
+```text
+docs/foundation/REPOSITORY-INTEGRATION.md
+docs/process/INTEGRATE-READY-PULL-REQUESTS.md
+```
+
+Do **not** reinterpret unrelated `main` movement as a failed candidate review.
+
+```text
+MAIN_MOVED
++ CANDIDATE_UNCHANGED
+-> preserve exact-candidate review/proof
+-> invalidate only stale integration-currentness/composition evidence
+-> Integration Steward rebinds current main at the candidate's queue turn
+```
+
+If the candidate head/tree changes, re-evaluate only the materially affected candidate proof/review.
+
+If a candidate-owned test actually consumes mutable source generated from current `main`, re-run that affected proof instead of mechanically carrying it forward.
+
+```text
+READY_FOR_INTEGRATION != MERGE_AUTHORITY
+QA_CLEAR != ORDINARY_MERGE
+```
 
 ## Stability and coverage contract
 

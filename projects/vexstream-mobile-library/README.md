@@ -4,9 +4,11 @@
 
 ## Human outcome
 
-Make downloaded VexStream music a **durable, reusable Android device library** while keeping the
-already-accepted one-shot MassDownload behavior truthful and keeping continuous "Keep Offline" sync
-as a separately governed future policy.
+Make VexStream on Android a **durable, reusable and human-navigable mobile music library** while
+keeping the accepted durable-device and one-shot MassDownload truths intact. Android now also has a
+compact **Sort by / Filter by** surface plus settings-level **Download all missing songs / Remove all
+downloaded songs** for the canonical Songs library. Continuous "Keep Offline" sync remains a
+separately governed future policy.
 
 This Project is the human/navigation owner for that outcome. Product semantics remain with
 VexLife-Android and VexStream Music.
@@ -34,14 +36,19 @@ VexWork does not have a separate Epic ontology. Epic-like grouping is nested `wo
 ```text
 VexStream Mobile Library                         OUTCOME
 |
-+-- Durable Device Music Library                 OUTCOME
-|   +-- Durable device music storage             TASK
-|   +-- Existing-download rediscovery            TASK
-|   +-- Existing private-download migration      TASK
-|   +-- Clear-data durability lived proof        TASK
++-- Durable Device Music Library                 OUTCOME / completed
+|   +-- Durable device music storage             TASK / completed
+|   +-- Existing-download rediscovery            TASK / completed
+|   +-- Existing private-download migration      TASK / completed
+|   +-- Clear-data durability lived proof        TASK / completed
 |
-+-- Contextual Download Experience               OUTCOME
-|   +-- Contextual Download Missing              TASK
++-- Contextual Download Experience               OUTCOME / decomposed
+|   +-- Songs bulk download / remove all          TASK / needs human review
+|
++-- Library Browse & Discovery                   OUTCOME / decomposed
+|   +-- Sort / Filter library controls           TASK / needs human review
+|
++-- Large offline-library cold-start performance DEFECT / investigation
 |
 +-- MassDownload Maturity                        OUTCOME
     +-- MassDownload product implementation      TASK / completed
@@ -58,34 +65,59 @@ Persistent Keep Offline / Sync
     PARKED
     NO_AUTHORITY
     NO_EFFECTS
+
+User tag topology / dynamic stations
+    POTENTIAL
+    CAPTURED
+    PARKED
+    NO_AUTHORITY
+    NO_EFFECTS
 ```
 
-It remains visible through the Parking Lot until Victor deliberately adopts continuous sync as a
-separate product commitment.
+Both remain visible through the Parking Lot until deliberately adopted. Personal tag/station topology
+is separate because its durable classification and rule ownership are different product questions;
+it is not hidden inside the first Sort / Filter implementation.
 
-## Current source truth that motivated the Project
+## Source truth — original motivation and completed durable-device state
 
-Current Android production downloads are verified, digest-addressed files under app-private
-`Context.filesDir`:
+The Project began because verified VexStream downloads lived only under app-private
+`Context.filesDir`, so Android Clear Data removed both the media and the private offline index.
+
+That predecessor state is now historical. Accepted Android source now realizes:
 
 ```text
-filesDir/vexstream/media/<sha256>.media
-filesDir/vexstream/offline-index.properties
+verified download bytes
+-> app-private integrity staging
+-> durable MediaStore.Audio publication
+-> Music/VexStream/<lowercase-sha256>.mp3
+-> exact re-opened SHA-256 + byte-length verification
+-> content:// localMediaRef
 ```
 
-Therefore the current product already survives ordinary process/app restart, but app-private VexStream
-media is not a reusable device music library and is removed by Android Clear Data / app uninstall.
+Portable media identity is `mediaSha256 + mediaByteLength`; `trackRef` remains the current Hub
+address and the MediaStore URI remains the storage address.
 
-Source owners:
+After Clear Data, the shared MP3 survives while app-private pairing/index state disappears. A fresh
+VexLife state reacquires the platform's shared-audio read authority, establishes current catalog
+identity, rediscovers the exact durable object by digest + length, rebuilds its private restart index,
+and rejects a repeat download as `ALREADY_DOWNLOADED`.
+
+Retained verified pre-MediaStore private copies migrate through the same durable publication boundary
+without network redownload and are removed only after successful shared publication.
+
+Current source owners include:
 
 ```text
 VexStreamMediaStore.kt
+VexStreamDeviceMediaStore.kt
 VexStreamOfflineIndex.kt
 PairedVexStreamMusicRepository.kt
+VexStreamOfflineCopy.kt
 ```
 
-The existing collection MassDownload feature is already accepted product source. Its current design
-explicitly distinguishes one-shot Download missing from persistent sync.
+Terminal evidence is Android PR #165, SDK PR #1898, the A039 physical post-Clear-Data product pass,
+and A043 exact run-owned cleanup. The separate Sort / Filter lane and other Mobile Library siblings
+are not implied complete by this durable-device checkpoint.
 
 ## Requirement / design ledger
 
@@ -111,97 +143,85 @@ Source:
 
 `repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMediaStore.kt`
 
-### ML-D2 — Durable/reusable library is the requirement; Android realization is not frozen yet
+### ML-D2 — Durable/reusable library realization is accepted and terminal
 
 Human requirement:
 
 > A downloaded VexStream song should remain useful as device music after VexLife app-data clearing,
 > and a fresh VexLife state should be able to rediscover and verify it instead of redownloading it.
 
-An Android MediaStore / Music/VexStream-style realization is a candidate, **not yet a source-approved
-decision**. The Android feature-authoring route owns the exact storage API, collection/path policy,
-permission behavior, removal semantics, migration behavior and device-version pressure.
-
-```text
-DURABLE_DEVICE_LIBRARY_REQUIREMENT
-!= PREDECIDED_MEDIASTORE_IMPLEMENTATION
-```
-
-#### Ready decision — 2026-10-22
-
-Android source admission and design are now durably bound by
-[`VexLife-Android issue #157`](https://github.com/vgong24/VexLife-Android/issues/157).
-
-The bounded storage realization is:
+The original Android realization was intentionally left open until source admission. Issue #157 then
+bound the MediaStore design, and the completed trajectory proved the exact realization across legacy
+and modern Android targets.
 
 ```text
 accepted producer media = MP3 / audio/mpeg
 portable identity = mediaSha256 + mediaByteLength
-Android 10+ owner = MediaStore.Audio / Music/VexStream / <sha256>.mp3
-write rule = pending -> stream + exact digest/length verification -> publish
-Android 7-9 owner = MediaStore audio + WRITE_EXTERNAL_STORAGE through API 28 only
-permission denial = preserve the verified private copy and fail closed
-localMediaRef = content URI after successful shared publication
+Android shared owner = MediaStore.Audio / Music/VexStream / <sha256>.mp3
+write rule = stage -> publish -> re-open -> exact digest/length verify
+post-Clear-Data read = READ_EXTERNAL_STORAGE (API 29-32) | READ_MEDIA_AUDIO (API 33+)
+localMediaRef = verified content:// URI
 ```
 
-This decision does not collapse the dependent work:
+Terminal evidence:
 
 ```text
-DEVICE_STORAGE_READY
-!= REDISCOVERY_COMPLETE
-!= PRIVATE_COPY_MIGRATED
-!= CLEAR_DATA_LIVED_PROOF
-!= PERSISTENT_KEEP_OFFLINE
+A033 API28 native proof = PASS
+A034 physical API36 storage / migration proof = PASS
+A039 Clear Data rediscovery / no-redownload / offline playback = PASS
+A043 run-owned cleanup = PASS
+
+Android PR #165 = MERGED / tree-exact
+SDK PR #1898 = MERGED / tree-exact
+Android #160 / #161 / #162 = CLOSED
+SDK #1897 = CLOSED
 ```
 
-The Ready -> Active handshake was approved by Victor on 2026-10-22 and confirmed by Local Vex Operations.
-Source implementation then advanced inside the issue-157 storage membrane and retained repository-local
-proof at the exact storage candidate. The remaining claim is native API-matrix proof, not more product
-authoring.
+The bounded durable-device subtree is therefore complete:
 
-The Work item is now `WAITING_TOOL` on the reusable Android API target runner in
-`project.android-proof-orchestration`. Its product/source authority remains `AUTHORIZED_BOUNDED`;
-rediscovery, private-copy migration, destructive Clear Data proof, persistent Keep Offline / Sync, and
-Connected Services remain distinct and are not implied by this checkpoint.
+```text
+DEVICE_STORAGE_COMPLETE
+REDISCOVERY_COMPLETE
+PRIVATE_COPY_MIGRATION_COMPLETE
+CLEAR_DATA_LIVED_PROOF_COMPLETE
+```
 
-### ML-D3 — Rediscovery must reconstruct truth; the private index cannot remain the only memory
+This completion does **not** close the whole Mobile Library Project and does not adopt persistent
+Keep Offline / Sync, Contextual Download work, the paused Track-menu incident, or the separate
+Sort / Filter lane.
 
-The current offline index lives beside app-private media. The desired product must be able to rebuild
-verified local-copy truth from the admitted durable media owner after fresh app state.
+### ML-D3 — Rediscovery reconstructs truth; the private index is no longer the only memory
 
-This is why `Existing-download rediscovery` depends on `Durable device music storage`.
+This requirement is now earned. After Clear Data removes app-private VexStream state, the shared
+MediaStore object survives. Once current catalog identity is re-established, Android verifies the
+deterministic shared row by exact digest + length, binds the resulting `content://` copy to the
+current `trackRef`, rebuilds the private restart index, and rejects a repeat download as
+`ALREADY_DOWNLOADED`.
+
+A039 proved that exact sequence on the physical Samsung and then proved `LOCAL_ONLY`
+`content://` playback after Desktop stop.
 
 Source:
 
-`repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamOfflineIndex.kt`
+`repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/PairedVexStreamMusicRepository.kt`
 
-### ML-D4 — Contextual Download Missing reuses MassDownload semantics
-
-The settings-sheet quick action is another entry point into the existing one-shot download planner,
-not a second downloader.
-
-Human requirement:
-
-- place the quick action beneath **Refresh library** in the VexStream connection/settings surface;
-- make its scope follow the current music context (Songs / Album / Artist / Playlist as admitted by
-  the feature design);
-- show the current missing count;
-- constrain wording for phone width rather than forcing long labels;
-- keep exact copy/secondary-label realization as a design choice until Android feature authoring.
+Evidence:
 
 ```text
-CONTEXTUAL_QUICK_ACTION
--> EXISTING_MASSDOWNLOAD_PLAN
-!= SECOND_DOWNLOAD_ENGINE
+github.issue.vexlife-android.160
+github.pull.vexlife-android.165
+evidence.vexstream.mobile-library.clear-data.a039.return.sha256.67e4b6ede7aab8964406894da8fdcddc216f88692e11fbd8a21ac2ae21c537b7
 ```
 
-Relevant product sources:
+### ML-D4 — Songs settings actions reuse MassDownload / Offline Copy truth
 
-```text
-VexStreamConnectionPresentation.kt
-VexStreamCollectionPresentation.kt
-VexStreamOfflineCollection.kt
-```
+The VexStream settings sheet now owns a whole-Songs convenience doorway, not another downloader or storage owner.
+
+`Download all missing songs` reuses the existing exact MassDownload planner over canonical playable Songs. `Remove all downloaded songs` reuses repository removal, VexStream-owned MediaStore deletion, and offline-index persistence. Album, Artist and Playlist detail screens keep their accepted collection-level Download missing action.
+
+PR #167 merged at `8213ae7befe08bc0a21c76bd70e7c8790e5bcf9f`; A003 passed focused/local proof plus exactly one three-song connected Journey and fresh Assurance.
+
+`SOURCE_PROVEN_AND_MERGED != HUMAN_ACCEPTED`. VexWork therefore projects this Work as **WAITING_HUMAN** until Victor reviews the merged experience.
 
 ### ML-D5 — One-shot Download missing is not persistent Keep Offline
 
@@ -285,51 +305,153 @@ implicated.
 Product meaning remains in VexStream Music's own entry/architecture sources.
 
 
-### ML-D8 — Android target orchestration is a reusable dependency, not VexStream product scope
+### ML-D8 — Android target orchestration remains reusable, but VexStream no longer waits on it
 
-The storage lane exposed a cross-lane host-proof gap after product source had already stabilized:
+The storage lane originally entered `WAITING_TOOL` because the missing API-matrix proof needed a
+reusable Android target route rather than another lane-local emulator script. That dependency is
+historical for this completed subtree.
+
+The required evidence was subsequently earned:
 
 ```text
-retained repository-local source proof = PASS
-modern Android target = available
-legacy API 24-28 target = required for permission/storage branch
-reusable API-compatible AVD acquisition/lease = not yet source-placed
+API28 native storage / permission branch = PASS
+physical API36 modern storage / rediscovery / migration = PASS
+Clear Data physical continuation = PASS
 ```
 
-The Android Test / Proof foundation already says native storage/permission claims belong on a real
-Android target and that an authorized physical device or qualified AVD may realize device proof.
-Vextreme-SDK's cross-platform proof source also allows logical branches to use isolated
-devices/emulators and already owns Android availability/selection in the VexStream lived coordinator.
-
-What is missing is reusable host coordination that can accept an API requirement, select or boot a
-compatible target, retain exact target identity, and clean up only task-owned emulator effects.
-
-That work is now source-managed separately as:
+The reusable orchestration work remains independently owned as:
 
 ```text
 project.android-proof-orchestration
   -> work.android-proof-orchestration.api-target-runner
 ```
 
-with source claim `github.issue.vextreme-sdk.1894`.
-
-Therefore:
+and may continue for broader callers. It is **not** a live dependency of the completed VexStream
+storage card.
 
 ```text
-VEXSTREAM_STORAGE_WAITING_TOOL
-!= PRODUCT_SOURCE_FAILURE
-!= ANDROID_MAIN_DRIFT
-!= CONNECTED_SERVICES_COLLISION
+VEXSTREAM_STORAGE_COMPLETE
+!= ANDROID_PROOF_ORCHESTRATION_PROJECT_COMPLETE
 
-API_TARGET_RUNNER_READY
--> resume exact-head native storage proof
--> fresh Assurance
--> PR / merge / post-merge
--> rediscovery
+HISTORICAL_TOOL_DEPENDENCY
+!= CURRENT_VEXSTREAM_BLOCKER
 ```
 
-Do not re-create another lane-local emulator script while this reusable dependency is the admitted
-next edge.
+Do not move the VexStream storage work back to `WAITING_TOOL` merely because the reusable
+orchestration Project still has its own unfinished work.
+
+### ML-D9 — Sort by and Filter by are one presentation surface, not one measurement
+
+The immediate human need is one compact place to organize the music about to be played:
+
+```text
+SORT BY
+    changes order
+    does not change membership
+
+FILTER BY
+    changes current listening membership
+    does not mutate catalog / playlist / Queue / Playback truth
+
+SEARCH
+    evaluates inside that same organized set
+```
+
+Current Android candidate PR #166 is ordinary-forwarded onto the terminal durable-device main from
+PR #165. The durable-device lane changed zero paths in this feature's 16-file source membrane and
+deliberately left the VexStream feature-home README to this organization lane.
+
+Current first-slice controls:
+
+```text
+Sort
+    Title / Artist / Album / Year / Duration
+
+Filter
+    Duration: Any / Less than / Greater than + positive minute threshold
+    Artist: multi-select
+    Genre: multi-select
+    Availability: desktop-only / desktop+device / device-only
+```
+
+The duration pressure remains the proving human use case:
+
+```text
+< 10 / 30 min  -> ordinary-song variety / avoid long mixes
+> 30 min / 2 h -> long-form journey / flight / focus listening
+```
+
+Unknown duration does not match an active threshold. Visible rows, row playback context, Play All
+and Shuffle All consume the same filtered membership. Playlist filtering may narrow visible members
+but does not rewrite canonical playlist order.
+
+The completed durable-device substrate improves the meaning of Availability without changing this
+feature's ownership: rediscovered `Downloaded` truth and verified `content://` local media can now
+legitimately project as `HUB_AND_LOCAL` or `LOCAL_ONLY`, while Sort / Filter remains a read-only
+presentation lens over `VexStreamTrackState.availability`.
+
+### ML-D10 — VexStream source tags/categories remain a later mobile-projection seam
+
+VexStream Music already owns source `tags[]` and `categories[]`. The Android mobile catalog still
+does not carry them, and PR #166 does not widen into that cross-repository projection merely to ship
+the first useful organization surface.
+
+```text
+SOURCE_TAGS / SOURCE_CATEGORIES
+!= ANDROID_LOCAL_INVENTED_TAGS
+!= USER_AUTHORED_CLASSIFICATION
+```
+
+### ML-D11 — User-authored tags and dynamic stations remain separate future Work
+
+A future personal classification layer may drive reusable dynamic stations / smart playlists, but
+that is distinct from both imported provider tags and a temporary Filter:
+
+```text
+STATIC_PLAYLIST
+    explicit ordered track references
+
+FILTER
+    temporary current-view selection
+
+STATION / SMART PLAYLIST
+    durable reusable selection rule
+    resolves membership from current Library truth
+```
+
+`work.vexstream.mobile-library.tag-topology-stations` remains `POTENTIAL / CAPTURED / PARKED /
+NO_AUTHORITY / NO_EFFECTS`.
+
+### ML-D12 — Sort / Filter Android source and proof are accepted; human Verify entry remains
+
+PR #166 merged at `01432d594172829c2da22e3bddcb09c073c97c16` with exact A011 tree identity. Focused/local proof, W02 device proof, aggregate device proof, fresh Assurance and lifecycle currentness all passed.
+
+VexWork leaves the obsolete `WAITING_TOOL` checkpoint, returns to the already-approved Active phase, and projects **WAITING_HUMAN** because the Project v1 policy protects entry into Verify.
+
+### ML-D13 — Songs bulk management is merged/proven and waiting on lived review
+
+PR #167 is accepted Android source. Its bounded fixture used exactly three Songs: one local plus two missing; Download all reached 3/3 local, Remove all returned to 0/3 local, and the same three catalog refs remained.
+
+This Work item had no stored transition history, so VexWork currentizes its source-managed snapshot directly to `WAITING_HUMAN` rather than fabricating retrospective lifecycle edges.
+
+### ML-D14 — Large offline libraries exposed a cold-start performance defect
+
+A lived device state with **785 downloaded VexStream songs** launches noticeably slowly before Home appears. The songs are available once startup completes; corruption or missing-media behavior was not observed.
+
+The first source-grounded hypothesis is synchronous startup verification:
+
+```text
+VexLifeViewModel
+-> AppRepositoryFactory.production(...)
+-> PairedVexStreamMusicRepository constructor
+-> initialState()
+-> VexStreamOfflineIndex.load()
+-> mediaStore.verify(localCopy) for each persisted downloaded song
+```
+
+This is an investigation lead, **not** a root-cause claim. Android issue #168 owns the product investigation and should measure cold-start phases/threads using the existing logging, Android Host Proof and Test/Proof infrastructure before optimizing.
+
+A reusable startup/performance debugging guide should be added only if this investigation proves a recurring route worth preserving.
 
 ## Work-state and agency safety
 

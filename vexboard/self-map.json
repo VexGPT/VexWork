@@ -1,0 +1,234 @@
+{
+  "schemaVersion": "vexboard.local-draft/v1",
+  "draftRef": "board.vexboard.self-map",
+  "title": "VexBoard — how to begin",
+  "mode": "READ_ONLY_SOURCE",
+  "derivedFromRefOrNull": null,
+  "savedAtOrNull": null,
+  "graph": {
+    "schemaVersion": "vexboard.board-graph/v1",
+    "graphRef": "graph.vexboard.self-map",
+    "nodes": [
+      {
+        "nodeRef": "node.vexboard.entry",
+        "kind": "SCENE",
+        "label": "VexBoard",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": ["projects/vexboard/README.md"]
+      },
+      {
+        "nodeRef": "node.vexboard.create-new",
+        "kind": "CONTROL",
+        "label": "Create new",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": ["vexboard/index.html"]
+      },
+      {
+        "nodeRef": "node.vexboard.open-existing",
+        "kind": "CONTROL",
+        "label": "Open existing",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": ["vexboard/index.html"]
+      },
+      {
+        "nodeRef": "node.vexboard.read-only",
+        "kind": "PROCESS",
+        "label": "Inspect read-only source",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": ["vexboard-reader.js"]
+      },
+      {
+        "nodeRef": "node.vexboard.request-edit",
+        "kind": "CONTROL",
+        "label": "Request edit → draft copy",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": ["vexboard-reader.js"]
+      },
+      {
+        "nodeRef": "node.vexboard.local-draft",
+        "kind": "PROCESS",
+        "label": "Local editable draft",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": ["vexboard-reader.js"]
+      },
+      {
+        "nodeRef": "node.vexboard.save-draft",
+        "kind": "CONTROL",
+        "label": "Save draft",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": ["vexboard/index.html"]
+      },
+      {
+        "nodeRef": "node.vexboard.future-publish",
+        "kind": "PORTAL",
+        "label": "Future: publish / target adapter",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": "board.vexboard.publish",
+        "sourceRefs": ["projects/vexboard/README.md"]
+      }
+    ],
+    "relationships": [
+      {
+        "relationshipRef": "rel.vexboard.entry-create",
+        "kind": "TRANSITION",
+        "fromRef": "node.vexboard.entry",
+        "toRef": "node.vexboard.create-new",
+        "labelOrNull": "new",
+        "sourceRefs": []
+      },
+      {
+        "relationshipRef": "rel.vexboard.entry-open",
+        "kind": "TRANSITION",
+        "fromRef": "node.vexboard.entry",
+        "toRef": "node.vexboard.open-existing",
+        "labelOrNull": "existing",
+        "sourceRefs": []
+      },
+      {
+        "relationshipRef": "rel.vexboard.open-readonly",
+        "kind": "FLOW",
+        "fromRef": "node.vexboard.open-existing",
+        "toRef": "node.vexboard.read-only",
+        "labelOrNull": null,
+        "sourceRefs": []
+      },
+      {
+        "relationshipRef": "rel.vexboard.readonly-request-edit",
+        "kind": "FLOW",
+        "fromRef": "node.vexboard.read-only",
+        "toRef": "node.vexboard.request-edit",
+        "labelOrNull": null,
+        "sourceRefs": []
+      },
+      {
+        "relationshipRef": "rel.vexboard.request-draft",
+        "kind": "TRANSITION",
+        "fromRef": "node.vexboard.request-edit",
+        "toRef": "node.vexboard.local-draft",
+        "labelOrNull": "fork",
+        "sourceRefs": []
+      },
+      {
+        "relationshipRef": "rel.vexboard.create-draft",
+        "kind": "TRANSITION",
+        "fromRef": "node.vexboard.create-new",
+        "toRef": "node.vexboard.local-draft",
+        "labelOrNull": "blank",
+        "sourceRefs": []
+      },
+      {
+        "relationshipRef": "rel.vexboard.draft-save",
+        "kind": "FLOW",
+        "fromRef": "node.vexboard.local-draft",
+        "toRef": "node.vexboard.save-draft",
+        "labelOrNull": null,
+        "sourceRefs": []
+      },
+      {
+        "relationshipRef": "rel.vexboard.save-future",
+        "kind": "REFERENCE",
+        "fromRef": "node.vexboard.save-draft",
+        "toRef": "node.vexboard.future-publish",
+        "labelOrNull": "later",
+        "sourceRefs": ["projects/vexboard/README.md"]
+      }
+    ],
+    "sourceRefs": ["projects/vexboard/README.md", "vexboard/index.html"]
+  },
+  "projection": {
+    "schemaVersion": "vexboard.board-projection/v1",
+    "projectionRef": "projection.vexboard.self-map",
+    "graphRef": "graph.vexboard.self-map",
+    "layoutIntent": "SCREEN_FLOW",
+    "items": [
+      {
+        "projectionItemRef": "item.vexboard.entry",
+        "semanticRef": "node.vexboard.entry",
+        "shapeKind": "RECTANGLE",
+        "bounds": { "x": 80, "y": 140, "width": 180, "height": 84 },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vexboard.create-new",
+        "semanticRef": "node.vexboard.create-new",
+        "shapeKind": "RECTANGLE",
+        "bounds": { "x": 360, "y": 70, "width": 180, "height": 74 },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vexboard.open-existing",
+        "semanticRef": "node.vexboard.open-existing",
+        "shapeKind": "RECTANGLE",
+        "bounds": { "x": 360, "y": 220, "width": 180, "height": 74 },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vexboard.read-only",
+        "semanticRef": "node.vexboard.read-only",
+        "shapeKind": "RECTANGLE",
+        "bounds": { "x": 630, "y": 220, "width": 210, "height": 74 },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vexboard.request-edit",
+        "semanticRef": "node.vexboard.request-edit",
+        "shapeKind": "DIAMOND",
+        "bounds": { "x": 920, "y": 205, "width": 180, "height": 104 },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vexboard.local-draft",
+        "semanticRef": "node.vexboard.local-draft",
+        "shapeKind": "RECTANGLE",
+        "bounds": { "x": 1200, "y": 130, "width": 210, "height": 84 },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vexboard.save-draft",
+        "semanticRef": "node.vexboard.save-draft",
+        "shapeKind": "RECTANGLE",
+        "bounds": { "x": 1490, "y": 130, "width": 180, "height": 74 },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vexboard.future-publish",
+        "semanticRef": "node.vexboard.future-publish",
+        "shapeKind": "ELLIPSE",
+        "bounds": { "x": 1760, "y": 125, "width": 220, "height": 84 },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": false
+      }
+    ],
+    "sourceRefs": ["vexboard/index.html"]
+  }
+}

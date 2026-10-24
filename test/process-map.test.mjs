@@ -14,13 +14,18 @@ test('Process Map is source-addressable, non-executing navigation', () => {
   const map = projectProcessMap(processRegistry);
   assert.equal(map.effects, false);
   assert.equal(map.executionAuthority, 'NONE');
-  assert.equal(map.processes.length, 6);
+  assert.equal(map.processes.length, 7);
   assert.equal(map.processes.some((process) => process.processRef === 'process.vexwork.capture-discovered-work'), true);
   assert.equal(map.processes.some((process) => process.processRef === 'process.vexwork.form-project'), true);
+  const formProject = map.processes.find((process) => process.processRef === 'process.vexwork.form-project');
+  assert.equal(formProject.boardRefOrNull, 'board.vexwork.form-project');
+  assert.equal(map.processes.filter((process) => process.processRef !== formProject.processRef)
+    .every((process) => process.boardRefOrNull === null), true);
   assert.equal(map.processes.some((process) => process.processRef === 'process.vexwork.promote-derived-concern'), true);
   assert.equal(map.processes.some((process) => process.processRef === 'process.vexlife-android.feature-authoring'), true);
   assert.equal(map.processes.some((process) => process.processRef === 'process.vexwork.quality-review'), true);
   assert.equal(map.processes.some((process) => process.processRef === 'process.vexcommerce.manage-reference-storefront-item'), true);
+  assert.equal(map.processes.some((process) => process.processRef === 'process.vexwork.integrate-ready-pull-requests'), true);
 
   const promotion = map.processes.find((process) => process.processRef === 'process.vexwork.promote-derived-concern');
   assert.match(promotion.purpose, /without automatic ticket generation/i);
@@ -50,6 +55,7 @@ test('process registry validator exercises each fail-closed boundary', () => {
     ['duplicate process ref', (value) => { value.processes.push(structuredClone(value.processes[0])); }, /duplicate processRef/],
     ['owner repository', (value) => { value.processes[0].ownerRepositoryRef = 'repo.unknown'; }, /unknown ownerRepositoryRef/],
     ['entry refs', (value) => { value.processes[0].entryRefs = []; }, /entryRefs missing/],
+    ['board ref', (value) => { value.processes[0].boardRefOrNull = 'bad ref'; }, /invalid boardRefOrNull/],
     ['execution authority', (value) => { value.processes[0].executionAuthority = 'WRITE'; }, /must not claim execution authority/],
   ];
   for (const [label, mutate, pattern] of mutations) {

@@ -1,7 +1,7 @@
 {
   "schemaVersion": "vexwork.project-registry/v1",
   "registryRef": "registry.vexwork.projects.001",
-  "registryVersion": 8,
+  "registryVersion": 11,
   "purpose": "Locate source-managed Projects and their Workgraph, Board, and optional agency-policy sources without making the registry another owner of work state.",
   "projects": [
     {
@@ -61,10 +61,34 @@
       "workgraphPath": "workgraphs/public.json"
     },
     {
+      "projectRef": "project.vex-universe",
+      "workgraphRef": "workgraph.vexwork.foundation",
+      "definitionPath": "projects/vex-universe/project.json",
+      "boardViewPath": "projects/vex-universe/board.view.json",
+      "agencyPolicyPathOrNull": null,
+      "workgraphPath": "workgraphs/public.json"
+    },
+    {
       "projectRef": "project.vexlife.blueprint-source-of-truth",
       "workgraphRef": "workgraph.vexwork.foundation",
       "definitionPath": "projects/vexlife-blueprint-source-of-truth/project.json",
       "boardViewPath": "projects/vexlife-blueprint-source-of-truth/board.view.json",
+      "agencyPolicyPathOrNull": null,
+      "workgraphPath": "workgraphs/public.json"
+    },
+    {
+      "projectRef": "project.vextreme.vexsite-localization",
+      "workgraphRef": "workgraph.vexwork.foundation",
+      "definitionPath": "projects/vexsite-localization/project.json",
+      "boardViewPath": "projects/vexsite-localization/board.view.json",
+      "agencyPolicyPathOrNull": null,
+      "workgraphPath": "workgraphs/public.json"
+    },
+    {
+      "projectRef": "project.vexlife.welcome-wagon",
+      "workgraphRef": "workgraph.vexwork.foundation",
+      "definitionPath": "projects/vexlife-welcome-wagon/project.json",
+      "boardViewPath": "projects/vexlife-welcome-wagon/board.view.json",
       "agencyPolicyPathOrNull": null,
       "workgraphPath": "workgraphs/public.json"
     }

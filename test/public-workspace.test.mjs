@@ -71,10 +71,11 @@ test('public workspace preserves recursive containment and Jira-like detail fiel
   const setupConvergence = project.items.find((item) => item.workRef === 'work.vexlife.tocompletion.productization.setup-safety-convergence');
   const hereticIntegration = project.items.find((item) => item.workRef === 'work.vexlife.tocompletion.productization.heretic-normal-start-integration');
   assert.equal(productization.state, 'RUNNING');
-  assert.equal(setupConvergence.state, 'RUNNING');
-  assert.equal(hereticIntegration.state, 'WAITING_DEPENDENCIES');
-  assert.equal(project.lanes.find((lane) => lane.laneRef === 'lane.work.active').workRefs.includes(setupConvergence.workRef), true);
-  assert.equal(project.lanes.find((lane) => lane.laneRef === 'lane.work.planned').workRefs.includes(hereticIntegration.workRef), true);
+  assert.equal(setupConvergence.state, 'COMPLETED');
+  assert.equal(hereticIntegration.state, 'RUNNING');
+  assert.equal(project.lanes.find((lane) => lane.laneRef === 'lane.work.done').workRefs.includes(setupConvergence.workRef), true);
+  assert.equal(project.lanes.find((lane) => lane.laneRef === 'lane.work.active').workRefs.includes(hereticIntegration.workRef), true);
+  assert.equal(project.lanes.find((lane) => lane.laneRef === 'lane.work.planned').workRefs.includes(hereticIntegration.workRef), false);
   const p6 = project.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p6.cultivation-training-birth');
   const p7 = project.items.find((item) => item.workRef === 'work.vexlife.tocompletion.p7.whole-product-expansion');
   assert.equal(p6.state, 'WAITING_DEPENDENCIES');
@@ -113,7 +114,7 @@ test('public workspace keeps global Parking Lot separate from Project membership
   assert.equal(workspace.parkingLot.items.every((item) => item.workDisposition === 'PARKED'), true);
   assert.equal(workspace.parkingLot.items.every((item) => item.authorityDisposition === 'NO_AUTHORITY'), true);
   assert.equal(workspace.parkingLot.items.some((item) => item.workRef === 'work.vexstream.mobile-library.keep-offline-sync'), true);
-  assert.equal(workspace.parkingLot.items.some((item) => item.workRef === 'work.vextreme.vexsite.localization.closed-circuit.global-core'), true);
+  assert.equal(workspace.parkingLot.items.some((item) => item.workRef === 'work.vextreme.vexsite.localization.closed-circuit.global-core'), false);
 });
 
 test('checked-in public workspace is generated-current', () => {
@@ -144,20 +145,63 @@ test('Connected Services is discoverable as a real Project with the current live
   assert.equal(workspace.parkingLot.items.some((item) => item.workRef === 'work.vexlife.connected-services.guided-onboarding'), true);
 });
 
-test('VexBoard is discoverable with BoardGraph as the next ready edge', () => {
+test('VexBoard projects completed navigation foundations with Source Projectors active and BoardPatch still ready', () => {
   const workspace = buildWorkspace();
   const vexboard = workspace.projects.find((entry) => entry.project.projectRef === 'project.vexboard');
   assert.ok(vexboard);
   assert.equal(vexboard.summary.workItemCount, 7);
-  assert.equal(vexboard.summary.openWorkItemCount, 6);
+  assert.equal(vexboard.summary.openWorkItemCount, 3);
+  assert.equal(vexboard.summary.completedCount, 4);
   assert.equal(vexboard.items.find((item) => item.workRef === 'work.vexboard.project-architecture').state, 'COMPLETED');
-  assert.equal(vexboard.items.find((item) => item.workRef === 'work.vexboard.boardgraph-contract').state, 'READY');
-  assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.ready').workRefs.includes('work.vexboard.boardgraph-contract'), true);
+  const boardgraph = vexboard.items.find((item) => item.workRef === 'work.vexboard.boardgraph-contract');
+  const canvas = vexboard.items.find((item) => item.workRef === 'work.vexboard.canvas-projection');
+  const journey = vexboard.items.find((item) => item.workRef === 'work.vexboard.boardjourney-simulation');
+  const boardpatch = vexboard.items.find((item) => item.workRef === 'work.vexboard.boardpatch-authoring');
+  const projectors = vexboard.items.find((item) => item.workRef === 'work.vexboard.source-projectors');
+  assert.deepEqual([boardgraph.state, canvas.state, journey.state], ['COMPLETED', 'COMPLETED', 'COMPLETED']);
+  assert.equal(canvas.authorityDisposition, 'AUTHORIZED_BOUNDED');
+  assert.equal(canvas.effectDisposition, 'EFFECTS_BOUND');
+  assert.equal(journey.authorityDisposition, 'AUTHORIZED_BOUNDED');
+  assert.equal(journey.effectDisposition, 'EFFECTS_BOUND');
+  assert.deepEqual([boardpatch.state, projectors.state], ['READY', 'RUNNING']);
+  assert.deepEqual([boardpatch.authorityDisposition, projectors.authorityDisposition], ['NO_AUTHORITY', 'AUTHORIZED_BOUNDED']);
+  assert.deepEqual([boardpatch.effectDisposition, projectors.effectDisposition], ['NO_EFFECTS', 'EFFECTS_BOUND']);
+  assert.equal(projectors.sourceRefs.includes('github.pull.vexwork.108'), true);
+  assert.equal(projectors.sourceRefs.includes('src/core/vexboard-source-projectors.mjs'), true);
+  assert.equal(projectors.sourceRefs.includes('github.pull.vexwork.110'), true);
+  assert.equal(projectors.sourceRefs.includes('src/shared/vexboard-evidence.mjs'), true);
+  assert.equal(projectors.sourceRefs.includes('github.pull.vexwork.115'), true);
+  assert.equal(projectors.sourceRefs.includes('src/shared/vexboard-source-resolver.mjs'), true);
+  assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.done').workRefs.includes(canvas.workRef), true);
+  assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.done').workRefs.includes(journey.workRef), true);
+  assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.ready').workRefs.includes(boardpatch.workRef), true);
+  assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.active').workRefs.includes(projectors.workRef), true);
+  assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.ready').workRefs.includes(projectors.workRef), false);
   assert.equal(vexboard.project.sourceRefs.includes('projects/vexboard/README.md'), true);
 });
 
 // [VXG RealForever]
 
+
+test('Vex Universe Foundations exposes this trajectory and keeps the VexBoard refactor seam explicit', () => {
+  const workspace = buildWorkspace();
+  const universe = workspace.projects.find((entry) => entry.project.projectRef === 'project.vex-universe');
+  assert.ok(universe);
+  assert.equal(universe.summary.workItemCount, 6);
+  assert.equal(universe.summary.openWorkItemCount, 3);
+  assert.equal(universe.summary.completedCount, 3);
+  assert.equal(universe.items.find((item) => item.workRef === 'work.vex-universe.outcome').state, 'RUNNING');
+  assert.equal(universe.items.find((item) => item.workRef === 'work.vex-universe.visible-work-record').state, 'COMPLETED');
+  assert.equal(universe.items.find((item) => item.workRef === 'work.vex-universe.process-board-addressability').state, 'COMPLETED');
+  assert.equal(universe.items.find((item) => item.workRef === 'work.vex-universe.businessfactory-convergence').state, 'WAITING_RESOURCE');
+  assert.equal(universe.items.find((item) => item.workRef === 'work.vex-universe.vexboard-contract-alignment').state, 'COMPLETED');
+  assert.equal(universe.items.find((item) => item.workRef === 'work.vex-universe.journey-evidence-patient-zero').state, 'WAITING_DEPENDENCIES');
+  assert.equal(universe.lanes.find((lane) => lane.laneRef === 'lane.work.done').workRefs.includes('work.vex-universe.process-board-addressability'), true);
+  assert.equal(universe.lanes.find((lane) => lane.laneRef === 'lane.work.done').workRefs.includes('work.vex-universe.vexboard-contract-alignment'), true);
+  assert.equal(universe.lanes.find((lane) => lane.laneRef === 'lane.work.done').workRefs.includes('work.vex-universe.visible-work-record'), true);
+  assert.equal(universe.lanes.find((lane) => lane.laneRef === 'lane.work.waiting').workRefs.includes('work.vex-universe.businessfactory-convergence'), true);
+  assert.equal(universe.lanes.find((lane) => lane.laneRef === 'lane.work.planned').workRefs.includes('work.vex-universe.journey-evidence-patient-zero'), true);
+});
 
 test('Blueprint SOT is durably paused without active effects while preserving its exact resume edge', () => {
   const workspace = buildWorkspace();

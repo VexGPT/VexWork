@@ -190,19 +190,20 @@
   "parkingLot": {
     "items": [
       {
-        "workRef": "work.vextreme.vexsite.localization.closed-circuit.global-core",
-        "label": "Localize Closed Circuit across Global Core",
-        "purpose": "Preserve the current Closed Circuit Global Core localization concern as canonical Work while Vextreme retains source scheduling and implementation authority; current provider foreground remains separate dual-lineage work.",
+        "workRef": "work.vexstream.mobile-library.tag-topology-stations",
+        "label": "User tag topology / dynamic stations",
+        "purpose": "Preserve the future product question of user-authored music tags that remain distinct from imported source tags/categories and can drive reusable dynamic stations or smart-playlist rules without pre-deciding identity attachment, persistence ownership, rule language, or playlist materialization.",
         "workClass": "POTENTIAL",
         "state": "CAPTURED",
         "workDisposition": "PARKED",
-        "priorityClass": "NORMAL",
+        "priorityClass": "LOW",
         "repositoryRefs": [
-          "repo.vextreme"
+          "repo.vexstream-music",
+          "repo.vexlife-android"
         ],
         "authorityDisposition": "NO_AUTHORITY",
         "effectDisposition": "NO_EFFECTS",
-        "updatedAt": "2026-10-23T02:26:33.000Z"
+        "updatedAt": "2026-10-24T02:59:02.000Z"
       },
       {
         "workRef": "work.vexwork.history.foundational-infrastructure-backfill",

@@ -14,22 +14,20 @@ import {
 const workspace = JSON.parse(fs.readFileSync(new URL('../public/workspace.json', import.meta.url), 'utf8'));
 const project = (ref) => workspace.projects.find((entry) => entry.project.projectRef === ref);
 
-test('ToCompletion surfaces setup-safety convergence as the real active productization frontier', () => {
+test('ToCompletion surfaces normal-start Heretic integration as the active productization frontier', () => {
   const p = project('project.vexlife.tocompletion');
   const fronts = deepestCurrentFrontiers(p);
   assert.deepEqual(fronts.map((item) => item.workRef), [
-    'work.vexlife.tocompletion.productization.setup-safety-convergence',
+    'work.vexlife.tocompletion.productization.heretic-normal-start-integration',
   ]);
 
   const rows = projectWorkfronts(p, { maxRows: 8 }).rows;
   const productization = rows.find((row) => row.scopeRef === 'work.vexlife.tocompletion.productization.ordinary-heretic-setup');
   assert.ok(productization);
   assert.deepEqual(productization.currentItems.map((item) => item.workRef), [
-    'work.vexlife.tocompletion.productization.setup-safety-convergence',
-  ]);
-  assert.deepEqual(productization.nextDependencyItems.map((item) => item.workRef), [
     'work.vexlife.tocompletion.productization.heretic-normal-start-integration',
   ]);
+  assert.deepEqual(productization.nextDependencyItems.map((item) => item.workRef), []);
 });
 
 test('Operational Console keeps Terrain review while Antique Plate becomes the next Commerce frontier', () => {
@@ -107,14 +105,17 @@ test('completed Foundation collapses to a latest-completed workfront instead of 
   assert.equal(result.rows[0].basis, 'LATEST_COMPLETED');
 });
 
-test('local workfront roadmap advances from setup safety into normal-start Heretic integration by dependency', () => {
+test('local workfront roadmap keeps completed setup safety as prior context and normal-start Heretic integration current', () => {
   const p = project('project.vexlife.tocompletion');
   const roadmap = projectRoadmap(p, { maxSteps: 4, maxRows: 8 });
   const productization = roadmap.rows.find((row) => row.scopeRef === 'work.vexlife.tocompletion.productization.ordinary-heretic-setup');
   assert.ok(productization);
-  assert.equal(productization.steps[0].items[0].workRef, 'work.vexlife.tocompletion.productization.setup-safety-convergence');
-  assert.equal(productization.steps[1].items.some((item) => item.workRef === 'work.vexlife.tocompletion.productization.heretic-normal-start-integration'), true);
-  assert.equal(productization.steps[1].basis, 'DEPENDENCY');
+  assert.equal(productization.steps[0].basis, 'CURRENT');
+  assert.deepEqual(productization.steps[0].items.map((item) => item.workRef), [
+    'work.vexlife.tocompletion.productization.heretic-normal-start-integration',
+  ]);
+  assert.equal(productization.steps.length, 1);
+  assert.equal(productization.priorItems.some((item) => item.workRef === 'work.vexlife.tocompletion.productization.setup-safety-convergence' && item.state === 'COMPLETED'), true);
 });
 
 test('flow projections never freeze or mutate the canonical public workspace input', () => {
