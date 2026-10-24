@@ -59,6 +59,10 @@ Do not broad-read every connected repository. The Repository Graph tells you whe
 "Is this PR/source/proof evidence current / stale / merged enough for completion evidence?"
   -> docs/foundation/PROJECT-RECONCILIATION.md
 
+"Several PRs are ready / main keeps moving / what merges next / do we need dev or staging?"
+  -> docs/foundation/REPOSITORY-INTEGRATION.md
+  -> docs/process/INTEGRATE-READY-PULL-REQUESTS.md
+
 "How should ChatGPT / a hosted assistant / a future local Vex carry this work?"
   -> docs/foundation/OPERATING-PROFILES.md
 
