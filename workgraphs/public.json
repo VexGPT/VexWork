@@ -4741,23 +4741,6 @@
   "transitions": [
     {
       "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vex.security-assurance.spike-process.ready.process-registry-released",
-      "workRef": "work.vex.security-assurance.spike-process",
-      "priorState": "WAITING_RESOURCE",
-      "nextState": "READY",
-      "reason": "PR #103 merged and released the shared Process Registry source surface before Security Assurance became accepted on main through PR #112; the historical resource wait is therefore cleared. This transition makes Spike source placement available without claiming that process.vexwork.run-spike is registered or implemented.",
-      "actorRef": "actor.chatgpt.vex-security-assurance",
-      "sourceRefs": [
-        "github.pull.vexwork.103",
-        "git.commit.vexwork.766fda592ff825d5b2b4bb865b07e5a2fac5fa9b",
-        "github.pull.vexwork.112",
-        "git.commit.vexwork.87c675b1c304f068278940c6a7ceb6cd7f14d506",
-        "blueprint/process-registry.json"
-      ],
-      "createdAt": "2026-10-24T10:06:02.000Z"
-    },
-    {
-      "schemaVersion": "vexwork.work-transition/v1",
       "transitionRef": "transition.vexwork.foundation.portable-workgraph.completed.pr1",
       "workRef": "work.vexwork.foundation.portable-workgraph",
       "priorState": "VERIFYING",
@@ -6474,6 +6457,23 @@
         "github.commit.vexwork.d8b0028bd9413a9c05cfe4b36f1d54425021a6fc"
       ],
       "createdAt": "2026-10-23T02:15:05.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vex.security-assurance.spike-process.ready.process-registry-released",
+      "workRef": "work.vex.security-assurance.spike-process",
+      "priorState": "WAITING_RESOURCE",
+      "nextState": "READY",
+      "reason": "PR #103 merged and released the shared Process Registry source surface before Security Assurance became accepted on main through PR #112; the historical resource wait is therefore cleared. This transition makes Spike source placement available without claiming that process.vexwork.run-spike is registered or implemented.",
+      "actorRef": "actor.chatgpt.vex-security-assurance",
+      "sourceRefs": [
+        "github.pull.vexwork.103",
+        "git.commit.vexwork.766fda592ff825d5b2b4bb865b07e5a2fac5fa9b",
+        "github.pull.vexwork.112",
+        "git.commit.vexwork.87c675b1c304f068278940c6a7ceb6cd7f14d506",
+        "blueprint/process-registry.json"
+      ],
+      "createdAt": "2026-10-24T10:06:02.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
