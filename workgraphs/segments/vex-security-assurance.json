@@ -43,7 +43,7 @@
       "workRef": "work.vex.security-assurance.security-atlas",
       "parentWorkRefOrNull": "work.vex.security-assurance.outcome",
       "label": "Map the Vex security surface and trust boundaries",
-      "purpose": "Build a public-safe atlas of assets, trust zones, data classes, privilege/effect boundaries, attack surfaces, evidence owners and existing controls across registered Vex repositories while keeping private SDK internals private and source-owned.",
+      "purpose": "Build a public-safe atlas of assets, trust zones, data classes, privilege/effect boundaries, attack surfaces, availability/deployment boundaries, evidence owners and existing controls across registered Vex repositories while keeping private SDK internals private and source-owned.",
       "workClass": "TASK",
       "state": "RUNNING",
       "priorityClass": "IMMEDIATE",
@@ -58,7 +58,13 @@
       "sourceRefs": [
         "projects/vex-security-assurance/README.md",
         "docs/foundation/OPERATING-DOMAIN.md",
-        "blueprint/repository-registry.json"
+        "blueprint/repository-registry.json",
+        "projects/vex-security-assurance/PUBLIC-AVAILABILITY-DDOS.md",
+        "repo.vextreme:README.md",
+        "repo.vextreme:docs/architecture/01-identity.md",
+        "repo.vextreme:docs/continuity/INDEX.md",
+        "repo.vextreme:lib/build-sw.js",
+        "repo.vextreme:docs/architecture/05-browser.md"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -125,7 +131,7 @@
       "workRef": "work.vex.security-assurance.software-security-lens",
       "parentWorkRefOrNull": "work.vex.security-assurance.outcome",
       "label": "Build the software and supply-chain security lens",
-      "purpose": "Cover secure-development, web/application, dependency, provenance, build/release, secrets, configuration, logging, resilience and update concerns using current external baselines plus repository-owned invariants without copying those standards into WorkState.",
+      "purpose": "Cover secure-development, web/application, dependency, provenance, build/release, secrets, configuration, logging, resilience, denial-of-service/abuse, quota and cost exhaustion, and update concerns using current external baselines plus repository-owned invariants without copying those standards into WorkState.",
       "workClass": "TASK",
       "state": "DECOMPOSED",
       "priorityClass": "HIGH",
@@ -141,7 +147,8 @@
       ],
       "sourceRefs": [
         "projects/vex-security-assurance/README.md",
-        "work.vex.security-assurance.question-lens-foundation"
+        "work.vex.security-assurance.question-lens-foundation",
+        "projects/vex-security-assurance/PUBLIC-AVAILABILITY-DDOS.md"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -218,7 +225,8 @@
     "projects/vex-security-assurance/README.md",
     "projects/vex-security-assurance/SPIKE-DESIGN.md",
     "projects/vex-security-assurance/ADVERSARIAL-LENS.md",
-    "projects/vex-security-assurance/SIMULATED-ADVERSARIAL-PATIENT-ZERO-A001.md"
+    "projects/vex-security-assurance/SIMULATED-ADVERSARIAL-PATIENT-ZERO-A001.md",
+    "projects/vex-security-assurance/PUBLIC-AVAILABILITY-DDOS.md"
   ],
   "formedAt": "2026-10-24T05:45:00.000Z"
 }
