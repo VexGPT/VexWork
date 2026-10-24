@@ -90,6 +90,190 @@ VexWorld PR #120
 
 Re-ground live heads before any merge/currentization effect.
 
+# 2A. Cross-repository source index
+
+This pathway is the continuity/router source. It does not replace the canonical owner of each meaning.
+
+A fresh instance should use this index to descend only as deeply as the active edge requires.
+
+## VexBusinessFactory / Operational Console
+
+Repository:
+
+~~~text
+VexGPT/VexWork
+~~~
+
+Root domain/process source:
+
+~~~text
+projects/vexwork-operational-console/BUSINESS-OPERATING-PROCESS-MAP.md
+~~~
+
+Bounded companion sources:
+
+~~~text
+VEXBUSINESSFACTORY-LEARNING-AND-CAPABILITY-MODULES.md
+  education as business + education as process projection
+  selectable capability/vendor sourcing
+
+VEXBUSINESSFACTORY-MEDIA-EXPRESSION-AND-CREATOR-PROFILE.md
+  public value / expression without mandatory commerce
+
+VEXBUSINESSFACTORY-MOTORSPORT-AND-INDUSTRY-ECOSYSTEM-PROFILE.md
+  ecosystem participants / sponsorship / supplier + authority relationships
+
+VEXBUSINESSFACTORY-FORMATION-EXPANSION-AND-AVAILABILITY-NETWORK.md
+  current state -> desired state
+  staged expansion
+  vendor/time/location/equipment availability
+
+VEXBUSINESSFACTORY-USER-DIRECTED-DISCOVERY-AND-PROMOTION.md
+  discovery != advertising
+  novelty/freshness/under-seen
+  sponsored separation
+
+VEXBUSINESSFACTORY-AMBIENT-DISCOVERY-AND-WHATS-NEW.md
+  public semantic updates
+  MATCH != SURFACE_NOW
+  private contextual presentation gate
+~~~
+
+## VexBoard
+
+Repository:
+
+~~~text
+VexGPT/VexWork
+~~~
+
+Accepted architecture/runtime entry:
+
+~~~text
+projects/vexboard/README.md
+projects/vexboard/project.json
+src/shared/vexboard-model.mjs
+src/shared/vexboard-journey.mjs
+~~~
+
+Accepted repeatable implementation lessons:
+
+~~~text
+projects/vexboard/LESSONS.md
+~~~
+
+Read that lessons source before forming another VexBoard implementation/proof carrier. It preserves actual observed distinctions such as:
+
+~~~text
+STABLE_TRAJECTORY_IDENTITY != ATTEMPT_LOCAL_IDENTITY
+ARRAY_POSITION != SEMANTIC_IDENTITY
+SOURCE_OWNER_PASS != SEMANTIC_CLEARANCE
+PLAUSIBLE_NAME != ACCEPTED_ENUM_VALUE
+~~~
+
+BusinessFactory patient-zero architecture currently lives on PR #92:
+
+~~~text
+projects/vexboard/VEXBUSINESSFACTORY-INTENT-TOPOLOGY-PATIENT-ZERO.md
+projects/vexboard/VEXBUSINESSFACTORY-PERSPECTIVE-ALIVENESS-AND-COORDINATION.md
+projects/vexboard/VEXBUSINESSFACTORY-VEXWORLD-DISCOVERY-AND-OPPORTUNITY-LAYER.md
+projects/vexboard/examples/vexbusinessfactory-intent-topology.board.json
+~~~
+
+The important ownership boundary is:
+
+~~~text
+VEXBOARD_PROJECTION != BUSINESS_SOURCE
+PERSPECTIVE != SECOND_SOURCE_OF_TRUTH
+RELATIONSHIP_FAMILY != DOMAIN_RELATIONSHIP_ROLE
+~~~
+
+## Antique Plate
+
+VexWork coordination/currentness source:
+
+~~~text
+VexGPT/VexWork
+projects/vexwork-operational-console/antique-plate-storefront-bootstrap.json
+projects/vexwork-operational-console/README.md
+PR #82
+~~~
+
+Actual storefront source owner:
+
+~~~text
+vgong24/Antique-Plate-Storefront
+~~~
+
+Do not manufacture item/business/customer/payment facts merely because VexWork expects the next step.
+
+## VexWorld
+
+Repository:
+
+~~~text
+vgong24/VexWorld
+~~~
+
+Completion-state architecture route currently lives on PR #120 / VW-FWD-08A:
+
+~~~text
+README.md
+docs/architecture/SHARED-WORLD-COMPLETION-STATE.md
+versions/v1/docs/CULTURE.md
+versions/v1/docs/ARCHITECTURE.md
+versions/v1/docs/ROADMAP.md
+config/project-state.json
+~~~
+
+Root distinction:
+
+~~~text
+VexWorld
+  shared semantic / experiential world layer
+
+Vextory: First Grove
+  first playable reference realm
+  != product ceiling
+~~~
+
+## Vextreme setup/support teaching source
+
+Repository:
+
+~~~text
+vgong24/Vextreme
+~~~
+
+Current support/provider setup sources:
+
+~~~text
+pages/vex-support.html
+data/support-routes.json
+pages/connect.html
+~~~
+
+Current invariant:
+
+~~~text
+current held route != broken link
+legacy Stripe URL != verified current destination
+~~~
+
+## Mutable-provider rule
+
+PR heads, main commits, mergeability, provider availability, live payment destinations and deployment state are observations, not durable architecture.
+
+~~~text
+BUNDLE_COORDINATE
+  historical observation
+
+LIVE_PROVIDER_SOURCE
+  current truth
+~~~
+
+Re-ground mutable facts before acting. Preserve the architecture/source index even when those coordinates move.
+
 # 3. First foundation horizon
 
 The first meaningful foundation-complete state is not “all Vex Universe projects finished.”
