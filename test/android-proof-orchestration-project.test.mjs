@@ -42,10 +42,10 @@ test('Android Proof Orchestration board exposes runner as the immediate ready ed
   assert.equal(planned.cards.some((card) => card.workRef === 'work.android-proof-orchestration.device-lease-queue'), true);
 });
 
-test('VexStream durable device storage waits on the reusable API target runner without losing source authority', () => {
+test('VexStream durable device storage is terminal and no longer depends on the reusable API target runner', () => {
   const storage = graph.items.find((item) => item.workRef === 'work.vexstream.mobile-library.device-storage');
-  assert.equal(storage.state, 'WAITING_TOOL');
-  assert.equal(storage.dependencyRefs.includes('work.android-proof-orchestration.api-target-runner'), true);
+  assert.equal(storage.state, 'COMPLETED');
+  assert.deepEqual(storage.dependencyRefs, []);
   assert.equal(storage.authorityDisposition, 'AUTHORIZED_BOUNDED');
   assert.equal(storage.effectDisposition, 'EFFECTS_BOUND');
 });

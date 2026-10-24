@@ -3,6 +3,8 @@ import test from 'node:test';
 
 import { semanticHash as nodeHash } from '../src/core/semantic.mjs';
 import { applyBoardControl, createBoardGraph, createBoardProjection } from '../src/core/vexboard.mjs';
+import * as Journey from '../src/shared/vexboard-journey.mjs';
+import * as Simulation from '../src/shared/vexboard-simulation.mjs';
 import {
   BOARD_CONTROL_SCHEMA,
   BOARD_GRAPH_SCHEMA,
@@ -314,4 +316,427 @@ test('shared model rejects schema drift rather than silently dropping unknown fi
     act: 'MOVE_ITEM',
     arguments: { projectionItemRef: 'item.a', x: 1, y: 2, mystery: 3 },
   }), /schema drift/);
+});
+
+
+test('canvas camera helpers preserve board coordinates while zooming and fitting', () => {
+  const camera = Reader.normalizeCamera({ x: 10, y: 20, zoom: 1 });
+  const zoomed = Reader.zoomCameraAt(camera, { factor: 2, anchorX: 100, anchorY: 80 });
+  assert.equal(zoomed.zoom, 2);
+  assert.deepEqual(Reader.boardPointFromClient({ clientX: 100, clientY: 80 }, { left: 0, top: 0 }, zoomed), { x: 90, y: 60 });
+  const fit = Reader.cameraForBounds({ x: 0, y: 0, width: 400, height: 200 }, { width: 800, height: 600 }, { padding: 100 });
+  assert.ok(fit.zoom > 0);
+  const visible = Reader.boardViewport(fit, { width: 800, height: 600 });
+  assert.ok(visible.width >= 400);
+  assert.ok(visible.height >= 200);
+});
+
+test('collapsed view state hides descendants without mutating BoardGraph or BoardProjection', () => {
+  const graph = baseGraph();
+  graph.nodes[1].parentRefOrNull = 'node.a';
+  const projection = baseProjection();
+  projection.items[1].parentProjectionItemRefOrNull = 'item.a';
+  const before = JSON.stringify({ graph, projection });
+  const visible = Reader.visibleProjectionItems(graph, projection, ['node.a']);
+  assert.deepEqual(visible.map((item) => item.semanticRef), ['node.a']);
+  assert.equal(JSON.stringify({ graph, projection }), before);
+});
+
+test('bounded neighborhood query follows relationships and containment deterministically', () => {
+  const graph = baseGraph();
+  graph.nodes[1].parentRefOrNull = 'node.a';
+  graph.relationships = [{ relationshipRef: 'rel.a-b', kind: 'FLOW', fromRef: 'node.a', toRef: 'node.b', labelOrNull: null, sourceRefs: ['source.rel'] }];
+  const projection = baseProjection();
+  projection.items[1].parentProjectionItemRefOrNull = 'item.a';
+  const query = Reader.queryBoardNeighborhood({ graph, projection }, { semanticRef: 'node.a', depth: 1, maxNodes: 10 });
+  assert.equal(query.schemaVersion, Reader.VEXBOARD_NEIGHBORHOOD_SCHEMA);
+  assert.deepEqual(query.nodes.map((node) => node.nodeRef), ['node.a', 'node.b']);
+  assert.deepEqual(query.relationships.map((relationship) => relationship.relationshipRef), ['rel.a-b']);
+  assert.deepEqual(query.projectionItems.map((item) => item.semanticRef), ['node.a', 'node.b']);
+  assert.ok(query.sourceRefs.includes('source.rel'));
+  assert.throws(() => Reader.queryBoardNeighborhood({ graph, projection }, { semanticRef: 'node.missing' }), /unknown semanticRef/);
+});
+
+test('built-in board routing is explicit and fail-closed for unknown portal targets', () => {
+  assert.equal(Reader.builtinBoardUrl('board.vexboard.self-map'), './self-map.json');
+  assert.equal(Reader.builtinBoardUrl('board.vexboard.publish'), './publish-map.json');
+  assert.equal(Reader.builtinBoardUrl('board.vexboard.unknown'), null);
+});
+
+test('BoardJourney follows explicit relationships and preserves repeated visits without mutating board truth', () => {
+  const graph = baseGraph();
+  graph.relationships = [
+    { relationshipRef: 'rel.a-b', kind: 'FLOW', fromRef: 'node.a', toRef: 'node.b', labelOrNull: 'Next', sourceRefs: [] },
+    { relationshipRef: 'rel.b-a', kind: 'FLOW', fromRef: 'node.b', toRef: 'node.a', labelOrNull: 'Loop', sourceRefs: [] },
+  ];
+  const before = JSON.stringify(graph);
+  let journey = Journey.createBoardJourney(graph, { journeyRef: 'journey.test', boardRef: 'board.test', startRef: 'node.a' });
+  assert.equal(journey.schemaVersion, Journey.BOARD_JOURNEY_SCHEMA);
+  assert.deepEqual(Journey.journeyChoices(graph, journey).map((choice) => choice.relationshipRef), ['rel.a-b']);
+  journey = Journey.advanceBoardJourney(graph, journey, 'rel.a-b');
+  journey = Journey.advanceBoardJourney(graph, journey, 'rel.b-a');
+  assert.deepEqual(journey.steps.map((step) => step.semanticRef), ['node.a', 'node.b', 'node.a']);
+  assert.deepEqual(journey.steps.map((step) => step.navigationKind), ['START', 'RELATIONSHIP', 'RELATIONSHIP']);
+  assert.deepEqual(journey.returnStack, ['node.a', 'node.b']);
+  assert.equal(JSON.stringify(graph), before);
+});
+
+test('BoardJourney Back and Revisit append semantic history while preserving return semantics', () => {
+  const graph = baseGraph();
+  graph.relationships = [{ relationshipRef: 'rel.a-b', kind: 'FLOW', fromRef: 'node.a', toRef: 'node.b', labelOrNull: null, sourceRefs: [] }];
+  let journey = Journey.createBoardJourney(graph, { journeyRef: 'journey.return', boardRef: 'board.test', startRef: 'node.a' });
+  journey = Journey.advanceBoardJourney(graph, journey, 'rel.a-b');
+  journey = Journey.backBoardJourney(graph, journey);
+  assert.deepEqual(journey.steps.map((step) => [step.semanticRef, step.navigationKind]), [
+    ['node.a', 'START'],
+    ['node.b', 'RELATIONSHIP'],
+    ['node.a', 'BACK'],
+  ]);
+  assert.deepEqual(journey.returnStack, []);
+  journey = Journey.revisitBoardJourney(graph, journey, 1);
+  assert.equal(journey.currentRef, 'node.b');
+  assert.equal(journey.steps.at(-1).navigationKind, 'REVISIT');
+  assert.deepEqual(journey.returnStack, ['node.a']);
+});
+
+test('BoardJourney fails closed on invalid semantic traversal coordinates', () => {
+  const graph = baseGraph();
+  graph.relationships = [{ relationshipRef: 'rel.a-b', kind: 'FLOW', fromRef: 'node.a', toRef: 'node.b', labelOrNull: null, sourceRefs: [] }];
+  assert.throws(() => Journey.createBoardJourney(graph, { journeyRef: 'journey.bad', boardRef: 'board.test', startRef: 'node.missing' }), /startRef missing/);
+  const journey = Journey.createBoardJourney(graph, { journeyRef: 'journey.bad', boardRef: 'board.test', startRef: 'node.a' });
+  assert.throws(() => Journey.advanceBoardJourney(graph, journey, 'rel.missing'), /relationship missing/);
+  assert.throws(() => Journey.backBoardJourney(graph, journey), /return stack is empty/);
+  assert.throws(() => Journey.revisitBoardJourney(graph, journey, 99), /revisit sequence invalid/);
+});
+
+test('BoardJourney normalization rejects fabricated semantic history and return stacks', () => {
+  const graph = baseGraph();
+  graph.nodes.push({ nodeRef: 'node.c', kind: 'PROCESS', label: 'C', parentRefOrNull: null, detailBoardRefOrNull: null, sourceRefs: [] });
+  graph.relationships = [{ relationshipRef: 'rel.a-b', kind: 'FLOW', fromRef: 'node.a', toRef: 'node.b', labelOrNull: null, sourceRefs: [] }];
+
+  const traversed = Journey.advanceBoardJourney(
+    graph,
+    Journey.createBoardJourney(graph, { journeyRef: 'journey.integrity', boardRef: 'board.test', startRef: 'node.a' }),
+    'rel.a-b',
+  );
+
+  const wrongDestination = structuredClone(traversed);
+  wrongDestination.currentRef = 'node.a';
+  wrongDestination.steps[1].semanticRef = 'node.a';
+  assert.throws(() => Journey.normalizeBoardJourney(wrongDestination, graph), /relationship destination mismatch/);
+
+  const wrongOrigin = structuredClone(traversed);
+  wrongOrigin.steps[0].semanticRef = 'node.b';
+  wrongOrigin.returnStack = ['node.b'];
+  assert.throws(() => Journey.normalizeBoardJourney(wrongOrigin, graph), /relationship origin mismatch/);
+
+  const restarted = structuredClone(traversed);
+  restarted.steps[1].navigationKind = 'START';
+  restarted.steps[1].viaRelationshipRefOrNull = null;
+  restarted.returnStack = [];
+  assert.throws(() => Journey.normalizeBoardJourney(restarted, graph), /cannot restart an existing journey/);
+
+  const backed = Journey.backBoardJourney(graph, traversed);
+  const wrongBackTarget = structuredClone(backed);
+  wrongBackTarget.currentRef = 'node.b';
+  wrongBackTarget.steps.at(-1).semanticRef = 'node.b';
+  assert.throws(() => Journey.normalizeBoardJourney(wrongBackTarget, graph), /BACK target mismatch/);
+
+  const unseenRevisit = structuredClone(Journey.createBoardJourney(
+    graph,
+    { journeyRef: 'journey.revisit-integrity', boardRef: 'board.test', startRef: 'node.a' },
+  ));
+  unseenRevisit.currentRef = 'node.c';
+  unseenRevisit.steps.push({ sequence: 1, semanticRef: 'node.c', navigationKind: 'REVISIT', viaRelationshipRefOrNull: null });
+  unseenRevisit.returnStack = ['node.a'];
+  assert.throws(() => Journey.normalizeBoardJourney(unseenRevisit, graph), /REVISIT target was not previously visited/);
+
+  const wrongStack = structuredClone(traversed);
+  wrongStack.returnStack = ['node.b'];
+  assert.throws(() => Journey.normalizeBoardJourney(wrongStack, graph), /returnStack does not match journey history/);
+});
+
+test('BoardJourney choices preserve canonical locale-independent ref ordering', () => {
+  const graph = baseGraph();
+  graph.relationships = [
+    { relationshipRef: 'rel.i', kind: 'FLOW', fromRef: 'node.a', toRef: 'node.b', labelOrNull: 'lower', sourceRefs: [] },
+    { relationshipRef: 'rel.I', kind: 'FLOW', fromRef: 'node.a', toRef: 'node.b', labelOrNull: 'upper', sourceRefs: [] },
+  ];
+  const journey = Journey.createBoardJourney(graph, {
+    journeyRef: 'journey.canonical-order',
+    boardRef: 'board.test',
+    startRef: 'node.a',
+  });
+  assert.deepEqual(
+    Journey.journeyChoices(graph, journey).map((choice) => choice.relationshipRef),
+    ['rel.I', 'rel.i'],
+  );
+});
+
+
+function simulationGraph() {
+  return {
+    schemaVersion: BOARD_GRAPH_SCHEMA,
+    graphRef: 'graph.simulation',
+    nodes: [
+      { nodeRef: 'node.control.submit', kind: 'CONTROL', label: 'Submit', parentRefOrNull: null, detailBoardRefOrNull: null, sourceRefs: [] },
+      { nodeRef: 'node.control.back', kind: 'CONTROL', label: 'Back', parentRefOrNull: null, detailBoardRefOrNull: null, sourceRefs: [] },
+      { nodeRef: 'node.scene.done', kind: 'SCENE', label: 'Done', parentRefOrNull: null, detailBoardRefOrNull: null, sourceRefs: [] },
+      { nodeRef: 'node.process.other', kind: 'PROCESS', label: 'Other', parentRefOrNull: null, detailBoardRefOrNull: null, sourceRefs: [] },
+    ],
+    relationships: [
+      { relationshipRef: 'rel.submit-done', kind: 'TRANSITION', fromRef: 'node.control.submit', toRef: 'node.scene.done', labelOrNull: 'continue', sourceRefs: [] },
+      { relationshipRef: 'rel.done-back', kind: 'FLOW', fromRef: 'node.scene.done', toRef: 'node.control.back', labelOrNull: null, sourceRefs: [] },
+      { relationshipRef: 'rel.submit-other', kind: 'FLOW', fromRef: 'node.control.submit', toRef: 'node.process.other', labelOrNull: null, sourceRefs: [] },
+    ],
+    sourceRefs: [],
+  };
+}
+
+function simulationPrototype() {
+  return {
+    schemaVersion: Simulation.BOARD_PROTOTYPE_SCHEMA,
+    prototypeRef: 'prototype.simulation',
+    graphRef: 'graph.simulation',
+    overlays: [
+      { overlayRef: 'overlay.success', label: 'Success', sourceRefs: [] },
+    ],
+    interactions: [
+      {
+        interactionRef: 'interaction.submit',
+        controlRef: 'node.control.submit',
+        trigger: 'CLICK',
+        conditionOrNull: {
+          conditionRef: 'condition.can-submit',
+          valueRef: 'value.can-submit',
+          operator: 'EQUALS',
+          expectedValueOrNull: true,
+        },
+        actions: [
+          { actionRef: 'action.mark-submitted', kind: 'SET_SCENARIO_VALUE', arguments: { valueRef: 'value.submitted', value: true } },
+          { actionRef: 'action.open-success', kind: 'OPEN_OVERLAY', arguments: { overlayRef: 'overlay.success' } },
+          { actionRef: 'action.focus-done', kind: 'FOCUS_NODE', arguments: { semanticRef: 'node.scene.done' } },
+          { actionRef: 'action.emit-submitted', kind: 'EMIT_SIMULATED_EVENT', arguments: { eventRef: 'event.submitted' } },
+          { actionRef: 'action.navigate-done', kind: 'NAVIGATE_TO_SCENE', arguments: { relationshipRef: 'rel.submit-done' } },
+        ],
+        sourceRefs: [],
+      },
+      {
+        interactionRef: 'interaction.back',
+        controlRef: 'node.control.back',
+        trigger: 'BACK',
+        conditionOrNull: null,
+        actions: [
+          { actionRef: 'action.close-success', kind: 'CLOSE_OVERLAY', arguments: { overlayRef: 'overlay.success' } },
+          { actionRef: 'action.return', kind: 'RETURN', arguments: {} },
+        ],
+        sourceRefs: [],
+      },
+    ],
+    sourceRefs: [],
+  };
+}
+
+test('prototype simulation applies ordered local actions and performs zero external effects', () => {
+  const graph = simulationGraph();
+  const prototype = Simulation.normalizeBoardPrototype(simulationPrototype(), graph);
+  const scenario = Simulation.createBoardScenario(prototype, graph, {
+    scenarioRef: 'scenario.allowed',
+    values: [
+      { valueRef: 'value.can-submit', value: true },
+      { valueRef: 'value.submitted', value: false },
+    ],
+  });
+  const journey = Journey.createBoardJourney(graph, {
+    journeyRef: 'journey.simulation',
+    boardRef: 'board.simulation',
+    startRef: 'node.control.submit',
+  });
+  const result = Simulation.applyBoardInteraction({
+    graph,
+    journey,
+    prototype,
+    scenario,
+    interactionRef: 'interaction.submit',
+  });
+  assert.equal(result.schemaVersion, Simulation.BOARD_SIMULATION_RESULT_SCHEMA);
+  assert.equal(result.conditionState, 'TRUE');
+  assert.equal(result.journey.currentRef, 'node.scene.done');
+  assert.equal(result.journey.steps.at(-1).viaRelationshipRefOrNull, 'rel.submit-done');
+  assert.equal(result.scenario.values.find((entry) => entry.valueRef === 'value.submitted').value, true);
+  assert.deepEqual(result.scenario.openOverlayRefs, ['overlay.success']);
+  assert.equal(result.focusRefOrNull, 'node.scene.done');
+  assert.deepEqual(result.emittedEventRefs, ['event.submitted']);
+  assert.deepEqual(result.effects, { externalEffectsPerformed: false });
+  assert.deepEqual(scenario.openOverlayRefs, []);
+  assert.equal(scenario.values.find((entry) => entry.valueRef === 'value.submitted').value, false);
+});
+
+test('prototype conditions distinguish TRUE FALSE and UNKNOWN without inventing missing scenario truth', () => {
+  const graph = simulationGraph();
+  const prototype = Simulation.normalizeBoardPrototype(simulationPrototype(), graph);
+  const condition = prototype.interactions.find((entry) => entry.interactionRef === 'interaction.submit').conditionOrNull;
+  const makeScenario = (scenarioRef, values) => Simulation.createBoardScenario(prototype, graph, { scenarioRef, values });
+  const allowed = makeScenario('scenario.true', [{ valueRef: 'value.can-submit', value: true }]);
+  const blocked = makeScenario('scenario.false', [{ valueRef: 'value.can-submit', value: false }]);
+  const unknown = makeScenario('scenario.unknown', []);
+  assert.equal(Simulation.evaluateBoardCondition(condition, allowed, prototype, graph), 'TRUE');
+  assert.equal(Simulation.evaluateBoardCondition(condition, blocked, prototype, graph), 'FALSE');
+  assert.equal(Simulation.evaluateBoardCondition(condition, unknown, prototype, graph), 'UNKNOWN');
+  assert.deepEqual(
+    Simulation.boardInteractionChoices(graph, prototype, unknown, { controlRef: 'node.control.submit', trigger: 'CLICK' }),
+    [{
+      interactionRef: 'interaction.submit',
+      controlRef: 'node.control.submit',
+      trigger: 'CLICK',
+      conditionRefOrNull: 'condition.can-submit',
+      conditionState: 'UNKNOWN',
+    }],
+  );
+  const journey = Journey.createBoardJourney(graph, { journeyRef: 'journey.blocked', boardRef: 'board.simulation', startRef: 'node.control.submit' });
+  assert.throws(() => Simulation.applyBoardInteraction({
+    graph, journey, prototype, scenario: blocked, interactionRef: 'interaction.submit',
+  }), /condition is FALSE/);
+  assert.throws(() => Simulation.applyBoardInteraction({
+    graph, journey, prototype, scenario: unknown, interactionRef: 'interaction.submit',
+  }), /condition is UNKNOWN/);
+});
+
+test('prototype condition operators and unconditional choices evaluate deterministically', () => {
+  const graph = simulationGraph();
+  for (const [operator, expectedValueOrNull, observedValue, expectedState] of [
+    ['NOT_EQUALS', 'blocked', 'ready', 'TRUE'],
+    ['NOT_EQUALS', 'ready', 'ready', 'FALSE'],
+    ['TRUTHY', null, 'ready', 'TRUE'],
+    ['TRUTHY', null, '', 'FALSE'],
+    ['FALSY', null, 0, 'TRUE'],
+    ['FALSY', null, 1, 'FALSE'],
+  ]) {
+    const input = simulationPrototype();
+    input.interactions[0].conditionOrNull = {
+      conditionRef: 'condition.operator',
+      valueRef: 'value.operator',
+      operator,
+      expectedValueOrNull,
+    };
+    input.interactions[0].actions[0].arguments.valueRef = 'value.operator';
+    const prototype = Simulation.normalizeBoardPrototype(input, graph);
+    const scenario = Simulation.createBoardScenario(prototype, graph, {
+      scenarioRef: `scenario.${operator.toLowerCase()}.${String(observedValue || 'empty')}`,
+      values: [{ valueRef: 'value.operator', value: observedValue }],
+    });
+    const condition = prototype.interactions.find((entry) => entry.interactionRef === 'interaction.submit').conditionOrNull;
+    assert.equal(Simulation.evaluateBoardCondition(condition, scenario, prototype, graph), expectedState);
+  }
+
+  const prototype = Simulation.normalizeBoardPrototype(simulationPrototype(), graph);
+  const scenario = Simulation.createBoardScenario(prototype, graph, { scenarioRef: 'scenario.unconditional' });
+  assert.deepEqual(
+    Simulation.boardInteractionChoices(graph, prototype, scenario, { controlRef: 'node.control.back', trigger: 'BACK' }),
+    [{
+      interactionRef: 'interaction.back',
+      controlRef: 'node.control.back',
+      trigger: 'BACK',
+      conditionRefOrNull: null,
+      conditionState: 'TRUE',
+    }],
+  );
+});
+
+test('prototype RETURN uses BoardJourney return semantics while scenario overlays remain simulation state', () => {
+  const graph = simulationGraph();
+  const prototype = Simulation.normalizeBoardPrototype(simulationPrototype(), graph);
+  let journey = Journey.createBoardJourney(graph, { journeyRef: 'journey.return-sim', boardRef: 'board.simulation', startRef: 'node.control.submit' });
+  journey = Journey.advanceBoardJourney(graph, journey, 'rel.submit-done');
+  journey = Journey.advanceBoardJourney(graph, journey, 'rel.done-back');
+  const scenario = Simulation.normalizeBoardScenario({
+    schemaVersion: Simulation.BOARD_SCENARIO_SCHEMA,
+    scenarioRef: 'scenario.return',
+    prototypeRef: prototype.prototypeRef,
+    values: [{ valueRef: 'value.can-submit', value: true }],
+    openOverlayRefs: ['overlay.success'],
+  }, prototype, graph);
+  const result = Simulation.applyBoardInteraction({
+    graph, journey, prototype, scenario, interactionRef: 'interaction.back',
+  });
+  assert.equal(result.journey.currentRef, 'node.scene.done');
+  assert.equal(result.journey.steps.at(-1).navigationKind, 'BACK');
+  assert.deepEqual(result.scenario.openOverlayRefs, []);
+  assert.deepEqual(result.effects, { externalEffectsPerformed: false });
+});
+
+test('prototype validation fails closed on invalid controls, navigation, action ordering and hidden scenario state', () => {
+  const graph = simulationGraph();
+
+  const nonControl = simulationPrototype();
+  nonControl.interactions[0].controlRef = 'node.process.other';
+  assert.throws(() => Simulation.normalizeBoardPrototype(nonControl, graph), /controlRef must reference one CONTROL/);
+
+  const wrongTarget = simulationPrototype();
+  wrongTarget.interactions[0].actions.at(-1).arguments.relationshipRef = 'rel.submit-other';
+  const wrongTargetGraph = simulationGraph();
+  wrongTargetGraph.relationships.find((relationship) => relationship.relationshipRef === 'rel.submit-other').kind = 'TRANSITION';
+  assert.throws(() => Simulation.normalizeBoardPrototype(wrongTarget, wrongTargetGraph), /target must be SCENE/);
+
+  const wrongRelationshipKindGraph = simulationGraph();
+  wrongRelationshipKindGraph.relationships.find((relationship) => relationship.relationshipRef === 'rel.submit-done').kind = 'REFERENCE';
+  assert.throws(
+    () => Simulation.normalizeBoardPrototype(simulationPrototype(), wrongRelationshipKindGraph),
+    /NAVIGATE_TO_SCENE relationship must be TRANSITION/,
+  );
+
+  const badOrder = simulationPrototype();
+  badOrder.interactions[0].actions = [
+    { actionRef: 'action.navigate-first', kind: 'NAVIGATE_TO_SCENE', arguments: { relationshipRef: 'rel.submit-done' } },
+    { actionRef: 'action.event-after', kind: 'EMIT_SIMULATED_EVENT', arguments: { eventRef: 'event.after' } },
+  ];
+  assert.throws(() => Simulation.normalizeBoardPrototype(badOrder, graph), /semantic traversal action must be last/);
+
+  const duplicateTraversal = simulationPrototype();
+  duplicateTraversal.interactions[0].actions.push({ actionRef: 'action.return-too', kind: 'RETURN', arguments: {} });
+  assert.throws(() => Simulation.normalizeBoardPrototype(duplicateTraversal, graph), /at most one semantic traversal action/);
+
+  const unknownOverlay = simulationPrototype();
+  unknownOverlay.interactions[0].actions[1].arguments.overlayRef = 'overlay.missing';
+  assert.throws(() => Simulation.normalizeBoardPrototype(unknownOverlay, graph), /overlay missing/);
+
+  const prototype = Simulation.normalizeBoardPrototype(simulationPrototype(), graph);
+  assert.throws(() => Simulation.createBoardScenario(prototype, graph, {
+    scenarioRef: 'scenario.hidden',
+    values: [{ valueRef: 'value.unowned', value: true }],
+  }), /undeclared valueRef/);
+});
+
+test('prototype condition and schema validation reject drift, undeclared condition identity and invalid primitive values', () => {
+  const graph = simulationGraph();
+  const prototype = Simulation.normalizeBoardPrototype(simulationPrototype(), graph);
+  const scenario = Simulation.createBoardScenario(prototype, graph, {
+    scenarioRef: 'scenario.condition',
+    values: [{ valueRef: 'value.can-submit', value: true }],
+  });
+  const condition = structuredClone(prototype.interactions.find((entry) => entry.interactionRef === 'interaction.submit').conditionOrNull);
+  const drifted = structuredClone(condition);
+  drifted.expectedValueOrNull = false;
+  assert.throws(() => Simulation.evaluateBoardCondition(drifted, scenario, prototype, graph), /does not match prototype declaration/);
+
+  const undeclared = structuredClone(condition);
+  undeclared.conditionRef = 'condition.undeclared';
+  assert.throws(() => Simulation.evaluateBoardCondition(undeclared, scenario, prototype, graph), /condition not declared/);
+
+  const badCondition = simulationPrototype();
+  badCondition.interactions[0].conditionOrNull = {
+    conditionRef: 'condition.bad',
+    valueRef: 'value.can-submit',
+    operator: 'TRUTHY',
+    expectedValueOrNull: true,
+  };
+  assert.throws(() => Simulation.normalizeBoardPrototype(badCondition, graph), /cannot carry an expected value/);
+
+  const badValue = simulationPrototype();
+  badValue.interactions[0].actions[0].arguments.value = { nested: true };
+  assert.throws(() => Simulation.normalizeBoardPrototype(badValue, graph), /must be one JSON primitive/);
+
+  const drift = simulationPrototype();
+  drift.mystery = true;
+  assert.throws(() => Simulation.normalizeBoardPrototype(drift, graph), /schema drift/);
 });

@@ -9,11 +9,16 @@ human outcome                         APPROVED_FOR_PROJECT_FORMATION
 project architecture source           CURRENT
 canonical Project / Workgraph entry   CURRENT
 public Projects projection            CURRENT
-product implementation                BOARDGRAPH_FOUNDATION_STARTED
-implementation authority              AUTHORIZED_BOUNDED_BOARDGRAPH_FOUNDATION
+BoardGraph                            COMPLETED
+Canvas Projection                     COMPLETED
+BoardJourney + simulation             COMPLETED
+animated semantic traversal           ACCEPTED / PR #98 MERGED
+BoardPatch                            READY / NO_AUTHORITY / NO_EFFECTS
+Source Projectors                     READY / NO_AUTHORITY / NO_EFFECTS
+VexBoard root                         DECOMPOSED
 ```
 
-This source preserves the VexBoard product intention and architecture before implementation begins. The Project is now canonically formed through `project.json`, its Work Board view, a bounded Workgraph decomposition, the Project Registry, and the generated public workspace. Product implementation remains separately authority-bound; Project formation does not silently grant repository effects.
+This source preserves the VexBoard product intention and architecture across implementation phases. The Project is canonically formed through `project.json`, its Work Board view, a bounded Workgraph decomposition, the Project Registry, and the generated public workspace. BoardGraph, Canvas Projection, BoardJourney and same-board prototype simulation are accepted implementation foundations; PR #98 adds presentation-only animated semantic focus without changing Journey truth. PR #100 currentized those completed foundations into canonical VexWork truth. BoardPatch and Source Projectors are dependency-ready but still carry no implementation authority or effects. This architecture source explains that state; it does not own or advance lifecycle truth.
 
 ```text
 PRESERVE_THE_PROJECT_NOW
@@ -21,15 +26,20 @@ PRESERVE_THE_PROJECT_NOW
 PRETEND_CANONICAL_REGISTRATION_ALREADY_HAPPENED
 ```
 
-### Current implementation admission
+### Consumed BoardGraph implementation admission
 
-The architecture formation is now followed by one bounded implementation grant:
+The first bounded implementation grant is complete and remains useful as historical scope:
 
 ```text
 workRef = work.vexboard.boardgraph-contract
 authority = AUTHORIZED_BOUNDED
 effects = EFFECTS_BOUND
-state = RUNNING
+state = COMPLETED
+
+nextWorkRef = work.vexboard.canvas-projection
+nextState = READY
+nextAuthority = NO_AUTHORITY
+nextEffects = NO_EFFECTS
 
 initial implementation membrane
   src/shared/vexboard-model.mjs
@@ -45,15 +55,23 @@ initial implementation membrane
   VexBoard-owned Workgraph/project projections required to keep work truth current
 ```
 
-This admission comes from Victor's explicit instruction to begin the actual VexBoard work after the
-completion-state architecture was mapped. It authorizes the BoardGraph/shared-Control foundation in
-VexWork; it does not grant source authority in VexLife, Vextreme, Vextreme-Assets or other projected
-repositories.
+This consumed admission came from Victor's explicit instruction to begin the actual VexBoard work after
+the completion-state architecture was mapped. It authorized and completed the BoardGraph/shared-Control
+foundation in VexWork. Its scope does not flow into Canvas Projection, and it never granted source
+authority in VexLife, Vextreme, Vextreme-Assets or other projected repositories.
 
 ```text
 VEXBOARD_IMPLEMENTATION_AUTHORITY
 !=
 TARGET_REPOSITORY_AUTHORITY
+
+BOARDGRAPH_COMPLETION
+!=
+CANVAS_IMPLEMENTATION_AUTHORITY
+
+READY
+!=
+AUTHORIZED
 ```
 
 ## Human outcome
@@ -347,6 +365,310 @@ AI_SUGGESTION != APPLIED_PATCH
 PROJECTED_PROCESS != PROCESS_OWNER
 PROJECTED_WORK != WORK_STATE_OWNER
 SOURCE_REFERENCE != MUTATION_PERMISSION
+```
+
+## VexBoard ontology and typologies
+
+The accepted wire contracts use the compact field name `kind` as a discriminator. That is useful machine syntax, but it is too generic to be the conceptual address humans and fresh AI instances use when the system grows.
+
+Use this language when explaining the model:
+
+```text
+VexBoard ontology
+  the conceptual families that may exist and relate
+
+Node typology
+  node.kind
+  -> SCENE | CONTROL | PROCESS | DECISION | ARTIFACT |
+     CONTAINER | PORTAL | REFERENCE | ANNOTATION
+
+Relationship typology
+  relationship.kind
+  -> FLOW | TRANSITION | DATA | REFERENCE
+
+Interaction typology
+  interaction/action discriminator
+  -> the admitted prototype interaction and simulated-action vocabulary
+
+Projection typology
+  visual form / shape + layout intent
+  -> how meaning appears here, not what it means
+```
+
+So the ordinary human projection should prefer:
+
+```text
+Node type / Represents
+Relationship family
+Interaction type
+Visual form
+```
+
+rather than asking a person to reason from a bare label such as `Kind: PROCESS`.
+
+This is a terminology/projection boundary, **not a wire-schema migration**. The current `kind` fields remain valid and stable until repeated implementation pressure earns an actual schema change.
+
+```text
+KIND_FIELD = MACHINE_DISCRIMINATOR
+TYPOLOGY = CLASSIFICATION_DIMENSION
+TYPE = ONE_MEMBER_OF_THAT_TYPOLOGY
+ROLE = CONTEXTUAL_FUNCTION
+STATE = WHAT_IS_CURRENTLY_TRUE
+FORM = HOW_IT_APPEARS
+```
+
+## Federated totality — modular boards, not one mega-map
+
+A useful “totality process map” should not mean one enormous BoardGraph that every domain and perspective must load at once.
+
+The scalable target is:
+
+```text
+many small source-owned boards / projections
+        |
+        | stable boardRef + source refs
+        v
+board source registry / resolver
+        |
+        +-> resolve one requested board
+        +-> resolve a PORTAL/detailBoardRef target
+        +-> optionally resolve its prototype/presentation companions
+        v
+VexBoard
+        |
+        +-> render one bounded projection
+        +-> preserve BoardJourney
+        +-> enter another board
+        +-> return without losing the explicit interaction path
+```
+
+The current `VEXBOARD_BUILTIN_BOARD_URLS` / prototype maps are a good proving-ground realization for a few local boards. They are not the long-term catalog for hundreds of reusable business, development, education, provider, architecture or operational process modules.
+
+The next reusable routing seam should therefore be a **board source registry/resolver** that maps stable `boardRef` identity to the rightful source descriptor. It is routing/catalog infrastructure, not another semantic owner and not an automation-effect grant. Its exact schema is intentionally not declared here before implementation pressure earns it.
+
+Permanent boundaries:
+
+```text
+TOTALITY != ONE_GIANT_BOARD
+BOARD_REGISTRY != BOARDGRAPH_TRUTH
+BOARD_REGISTRY != PROCESS_REGISTRY
+BOARD_REGISTRY != EFFECT_AUTHORITY
+PORTAL != COPIED_SUBGRAPH
+PERSPECTIVE != SECOND_SOURCE_OF_TRUTH
+CROSS_BOARD_JOURNEY != CAMERA_MOVEMENT
+```
+
+A future cross-board Journey should preserve a semantic coordinate that includes both the board and the node being visited, conceptually:
+
+```text
+(boardRef, semanticRef)
+```
+
+and preserve return/interaction history across portal traversal. That extends the accepted BoardJourney distinction rather than replacing it with a second traversal model.
+
+### Parallel construction without semantic collapse
+
+The repository already has the right pattern for parallel **work** authoring:
+
+```text
+independent Workgraph segments
+-> deterministic composition
+-> one canonical Workgraph
+```
+
+VexBoard should consume that pattern, not duplicate it. For visual/process construction:
+
+```text
+rightful source owner A -> board/module A
+rightful source owner B -> board/module B
+rightful source owner C -> board/module C
+                         |
+                         v
+             stable refs + resolver
+                         |
+                         v
+            traversable VexBoard world
+```
+
+BoardGraph modules/ports, source projectors and BoardPatch extraction may make those pieces reusable. VexWork remains the work/lifecycle truth owner; source-owned process registries remain their own catalogs; VexBoard provides the semantic visual/traversal substrate over them.
+
+VexBusinessFactory is the first strong pressure test because one business world needs many actor-centered perspectives and reusable process modules. It must not become the only evidence for a universal semantic-factory contract. Preserve the existing threshold: prove the same federation/resolution model with at least one genuinely different non-business consumer—VexWork process/work projection is a natural candidate—before extracting a broader universal contract.
+
+## Vex lineage alignment — SCAE, Atlas / Process Map, and lived topology
+
+VexBoard should evolve by preserving the semantic questions already earned elsewhere in Vex rather
+than inventing parallel vocabulary because the canvas is visually different.
+
+These sources are **implementation references and pressure tests**, not VexBoard runtime
+dependencies:
+
+```text
+VexLife-Android Behavior / SCAE
+  State + Control -> Act
+  State + Act -> Effect + admitted State
+  independently-owned States -> Convergence -> bounded Control
+
+VexLife-Android VexMaps topology
+  semantic registration != visual composition
+  local semantic owners remain independent
+  relationship truth belongs to explicit convergence owners
+  Process / Session owns lived currentness
+  Projection / Compose presents already-resolved meaning
+
+VexLife Atlas / Process Map lineage
+  stable refs
+  bounded neighborhoods / thin projections
+  typed functionRef + arguments + dependencies
+  source-owned process meaning
+  navigable descent without ingesting the whole world
+
+VexWork Workgraph / Process truth
+  source segment owns local work family
+  deterministic composition -> one canonical graph
+  projections do not become lifecycle owners
+```
+
+The reusable lesson is not to mechanically copy Android classes into JavaScript. It is to preserve
+the same separations when the VexBoard domain has an equivalent question.
+
+### Board Control and Board Act remain different questions
+
+The architecture already states:
+
+```text
+human gesture / AI function call
+-> Board Control
+-> resolve against CURRENT BoardGraph + BoardProjection
+-> Board Act
+-> bounded semantic/projection change
+```
+
+Current `vexboard.board-control/v1` compresses that first proving slice by carrying an `act`
+field directly on the Control envelope. That was acceptable for proving shared human/AI mutation
+plumbing, but it must not silently become the final semantic model.
+
+Before BoardPatch authoring or a broad external tool surface depends on that compression, preserve
+the stronger lineage law:
+
+```text
+BOARD_CONTROL
+  stable request / affordance identity
+
+CURRENT BOARD TRUTH
+  BoardGraph + BoardProjection
+  plus bounded current context where earned
+
+BOARD_ACT
+  resolved meaning of that Control now
+
+BOARD_PATCH / PROJECTION_PATCH
+  proposed or applied local change
+
+EXTERNAL EFFECT
+  separate question
+  never implied by a semantic simulation or board edit
+```
+
+A compatible implementation may preserve the v1 wire shape while adding an explicit resolver or
+vNext contract. The point is semantic separation, not schema churn for its own sake.
+
+```text
+CONTROL != ACT
+ACT != PATCH
+PATCH != EXTERNAL EFFECT
+```
+
+### Atlas / Process Map is a required non-business patient zero
+
+The existing self-map, publish-map and clickable prototype are useful VexBoard proving fixtures, but
+they do not by themselves prove that VexBoard can project a real source-owned map without becoming
+its owner.
+
+Before a universal source-projector / semantic-factory contract is declared mature, exercise at
+least these distinct pressures:
+
+```text
+1. VexBusinessFactory
+   domain semantic topology + perspectives + reusable modules
+
+2. VexLife Atlas / Process Map
+   source-owned stable refs + process descent + bounded neighborhoods
+   + typed callable/dependency meaning
+
+3. VexWork Process / Work projection
+   lifecycle/work truth + processRefs + source backlinks
+```
+
+For the Atlas / Process Map patient zero:
+
+```text
+source-owned Atlas / process truth
+-> projector
+-> BoardGraph references / relationships
+-> BoardProjection lens
+-> BoardJourney traversal
+-> exact source backlinks
+
+VEXBOARD
+!= ATLAS OWNER
+!= PROCESS REGISTRY
+!= PROCESS EXECUTOR
+```
+
+This gives VexBoard a genuinely different non-business consumer before generic topology vocabulary
+is promoted.
+
+### Process / Session / Journey alignment
+
+VexMaps demonstrates another useful distinction:
+
+```text
+semantic owners
+  remain complete in themselves
+
+Process / Session
+  owns one lived relationship/currentness lifetime
+
+Projection
+  presents that meaning
+
+Journey
+  records the human-semantic walk
+```
+
+Current `vexboard.board-journey/v1` is truthfully single-board and validates traversal history
+against one BoardGraph. That remains a valid accepted foundation.
+
+Federated totality should extend it rather than invent a second navigation model:
+
+```text
+current coordinate
+  (boardRef, semanticRef)
+
+ENTER_BOARD
+  resolve stable boardRef
+  append explicit cross-board Journey step
+
+RETURN
+  restore prior (boardRef, semanticRef)
+  preserve interaction / reason / source path
+
+camera move
+  presentation only
+  never a Journey step by itself
+```
+
+The current hard-coded built-in board URL table is therefore a proving fixture, not the scalable
+addressability owner. The earned next seam remains a bounded board source registry/resolver.
+
+Permanent:
+
+```text
+SEMANTIC_REGISTRATION != VISUAL_COMPOSITION
+LOCAL_TRUTH_OWNER != CONVERGENCE_RELATIONSHIP_OWNER
+PROCESS_SESSION != UNDERLYING_DOMAIN_OWNER
+BOARD_JOURNEY != CAMERA_HISTORY
+ATLAS_PROJECTION != COPIED_ATLAS_TRUTH
 ```
 
 ## One semantic model, several visual lenses
@@ -2342,6 +2664,124 @@ VexBoard intended journey
 
 VexBoard may become the reusable visual substrate for future Operational Console and process-design experiences. It must not steal Workgraph lifecycle, Process Map ownership, Terrain continuity, or target-repository product semantics.
 
+### Whole-work perception across rightful owners
+
+A feature should remain perceivable as one continuous development trajectory even though its truths
+remain separately owned:
+
+```text
+human intention
+-> VexWork formation / currentness
+-> intended VexBoard design
+-> feature / source home
+-> implementation
+-> BoardJourney / Feature Walk
+-> focused + lived proof
+-> completed current meaning
+```
+
+Permanent:
+
+```text
+ONE_FEATURE_TRAJECTORY
+!=
+ONE_SOURCE
+!=
+ONE_BOARD
+!=
+ONE_DOCUMENT
+
+STABLE_SEMANTIC_FEATURE_COORDINATE
+-> WORK_REFERENCE
+-> DESIGN_REFERENCE
+-> FEATURE_HOME_REFERENCE
+-> IMPLEMENTATION_REFERENCE
+-> JOURNEY_REFERENCE
+-> PROOF_REFERENCE
+```
+
+VexBoard should compose facilities it already owns rather than invent a second lifecycle or proof
+database:
+
+```text
+Work lens
+  why the Work exists and where it is current
+
+Experience / Atlas lenses
+  intended human experience and source relationships
+
+REFERENCE
+  reciprocal pointers to Work, feature homes, repositories, source and proof
+
+PORTAL
+  descent into deeper design or topology without one enormous canvas
+
+BoardJourney
+  intended semantic traversal
+
+Context Inspector
+  bounded where-used, source, documentation, proof and live traversal
+
+Source projection + lived comparison
+  projected current source and observed behavior, kept distinct from intended design
+```
+
+From a completed feature coordinate, a human should be able to answer:
+
+```text
+What is this?                         -> feature home
+Why did we build it?                  -> VexWork
+What was intended?                    -> VexBoard
+Where does it live?                   -> source / implementation
+How does a human traverse it?         -> BoardJourney / Feature Walk
+How do we know?                       -> focused + lived proof
+What was deliberately left out?      -> sibling / parked Work
+```
+
+Reverse traversal should work from any rightful owner back toward the same stable feature coordinate.
+The relationships are navigational projections; each owner keeps its own truth.
+
+```text
+INTENDED_DESIGN
+!=
+PROJECTED_CURRENT_SOURCE
+!=
+OBSERVED_LIVED_BEHAVIOR
+
+DESIGN_COMPLETE
+!=
+IMPLEMENTATION_AUTHORIZED
+!=
+WORK_COMPLETE
+
+IMPLEMENTATION_COMPLETE
+!=
+DESIGN_REASONING_DISAPPEARS
+
+HISTORICAL_DESIGN_REASONING
+!=
+CURRENT_PRODUCT_OR_SOURCE_TRUTH
+```
+
+This relationship must scale down. A tiny feature should not acquire ceremonial documents or a dense
+board merely because VexBoard exists. Add richer references only when real complexity, proof or
+continuity pressure earns them.
+
+The VexStream Sort / Filter library-controls feature is a useful patient-zero consumer:
+
+```text
+express its intended experience with current BoardGraph
+-> link existing Work + feature home + source + journey/proof
+-> observe what is awkward or impossible
+-> improve the smallest reusable VexBoard relationship
+-> prove that improvement against the same feature
+```
+
+Use existing stable Work/source refs first. Do not change VexWork schema or create a universal feature-
+trajectory subsystem until a concrete consumer proves the present references are insufficient. This
+patient zero may teach the architecture; it must not become a dependency that blocks the current
+VexStream feature or VexBoard's nearer implementation frontier.
+
 ## Blueprint-to-implementation boundary
 
 VexBoard should eventually compile a BoardGraph into a truthful implementation brief containing:
@@ -2994,6 +3434,77 @@ collaboration, comments, voting, permissions and richer media. Basic create/move
 contain/connect operations are intentionally proven earlier through the shared Board Control
 contract rather than postponed until this horizon.
 
+## Semantic-topology patient zero — VexBusinessFactory
+
+VexBusinessFactory is now the first explicit pressure test for using VexBoard as a reusable semantic-topology substrate rather than a domain-specific diagrammer.
+
+Durable source:
+
+```text
+projects/vexboard/VEXBUSINESSFACTORY-INTENT-TOPOLOGY-PATIENT-ZERO.md
+projects/vexboard/examples/vexbusinessfactory-intent-topology.board.json
+```
+
+The patient zero begins from:
+
+```text
+"What do you want to make possible?"
+```
+
+and maps intention through reusable semantic need-spots such as value, actors/roles, capability, capacity, offer, availability, commitment, exchange, realization, outcome, evidence, exception/recovery, reconciliation and learning/evolution.
+
+The design deliberately keeps two vocabularies separate:
+
+```text
+VexBoard relationship family
+  FLOW | TRANSITION | DATA | REFERENCE
+
+domain relationship role
+  SERVES | REQUIRES | PROVIDED_BY | AVAILABLE_THROUGH
+  COMMITS_TO | FULFILLED_BY | EVIDENCED_BY | RECOVERED_BY
+  RECONCILES_WITH | EXTENDS_WITH | ...
+```
+
+Business-specific roles should initially project through current VexBoard relationship families rather than inflating the BoardGraph core enum. A future orthogonal relationship-role reference is earned only if repeated patient-zero pressure proves it belongs in BoardGraph.
+
+The same source also preserves:
+
+- questions as a typed compiler into semantic slots;
+- OTHER only inside a known category/need-spot rather than unscoped semantic escape;
+- profile/module composition instead of one permanent industry class;
+- business evolution through linked template/module additions and declared variance;
+- one source projected through executive, education, operations, provider, beneficiary, capacity, readiness and evolution lenses;
+- VexBusinessFactory itself as a recursive self-test;
+- a threshold requiring one genuinely different non-business consumer before extracting a universal semantic-factory contract.
+
+This patient zero now also carries a perspective/aliveness/coordination companion:
+
+~~~text
+projects/vexboard/VEXBUSINESSFACTORY-PERSPECTIVE-ALIVENESS-AND-COORDINATION.md
+~~~
+
+That source preserves:
+
+- actor-centered inverse projections over one shared semantic topology;
+- customer/beneficiary journeys without duplicated business truth;
+- recurring organizational functions such as SENSE / INTERPRET / DESIGN / COMMUNICATE / REALIZE / CARE / ASSURE / LEARN / EVOLVE / COORDINATE rather than fixed department requirements;
+- a business aliveness loop from observation -> interpretation -> proposal -> coordination -> implementation -> verification -> learning;
+- explicit compatibility classes for concurrent adaptations (DISJOINT, COMMUTATIVE, ORDER_DEPENDENT, SHARED_READ, SHARED_PARAMETERIZED, EXCLUSIVE_RESOURCE, OVERLAPPING_MUTATION, CONTRADICTORY, CYCLIC_WAIT, UNKNOWN);
+- reuse/variance/detachment semantics for avoiding accidental duplicated truth;
+- the requirement that conflict coordination preserve separate rightful owners instead of centralizing every domain into one mega-owner.
+
+This patient zero also preserves a future VexWorld discovery/network pressure:
+
+~~~text
+projects/vexboard/VEXBUSINESSFACTORY-VEXWORLD-DISCOVERY-AND-OPPORTUNITY-LAYER.md
+~~~
+
+That source does **not** change current VexWorld purpose. It records a possible future bridge in which BusinessFactory publishes a bounded public business presence and VexWorld later projects opt-in discovery, learning, collaboration, supplier/customer and career-exploration opportunities through transparent user-selected lenses rather than opaque ranking.
+
+Current VexWorld remains separately owned and currently has no production networking or commerce authority.
+
+This is architecture/patient-zero source only. It does not grant Canvas Projection authority, mutate provider/business truth, or make VexBoard the BusinessGraph owner.
+
 ## Deliberately held
 
 The first foundation does not require:
@@ -3061,45 +3572,89 @@ Exact Work states, dependencies, authority/effect dispositions, transition histo
 
 ## Current continuation
 
-```text
-architecture source                                  CURRENT
-canonical Project + Workgraph + Board                CURRENT
-public Projects projection                           CURRENT
-prime Project-formation regression case              SOURCE-PLACED
-BoardGraph + shared Board Control foundation         MERGED / VERIFIED / COMPLETED
-self-hosted blank-canvas proving ground              MERGED / VERIFIED
+Accepted source and canonical VexWork projection are now aligned through the navigation foundation:
 
-next Workgraph frontier
--> Read-only canvas and recursive navigation         READY / NO_AUTHORITY / NO_EFFECTS
-   deterministic canvas projection / pan / zoom / minimap / focus
-   inline expansion / collapse / portal entry / bounded model-facing board query
+~~~text
+BoardGraph
+  PR #66 MERGED / VERIFIED
+  merge = 1f19e70a397baab1f5d995bacc2358372b93563e
 
-then
--> spatial arrangement + connector-routing proving ground
-   stable scale / local occupancy / obstacle avoidance / incremental reflow / fractal expansion
--> relational direction navigation proving ground
-   semantic choice forms / branch envelopes / convergence / portal enter-return / fan-out pressure
--> reusable template inheritance proving ground
-   one source / linked instances / declared variance / make-unique provenance / reverse usages
--> asset + image support proving ground
-   source-bound media / semantic discovery / SVG + screenshots / gallery / exact provenance
--> reverse-adopt existing accepted systems into the design collection
-   VexLife Blueprint SOT / Presentation Graph + one Vextreme page/localization patient zero
--> Context Inspector proving ground
-   identity / where-used / source / docs / localization / proof / live traversal
--> localization/source synchronization proving ground
-   visual text edit -> source-aware proposal -> stale locale/layout/proof impact
--> animated semantic traversal proving ground
-   visible route-following / centered destination / portal map-change / return / reduced motion
--> publish-readiness + versioned Board release
-   path closure / open ends / incomplete branches / warnings / immutable release fingerprint
--> target blueprint compiler proving ground
-   published Board -> target-native implementation plan/candidate without stealing target ownership
+Canvas Projection
+  PR #88 MERGED / VERIFIED
+  merge = 666001854babc14b5e956d65d66f0c6432e72349
 
-Implementation authority remains separate from Workgraph readiness.
-The Canvas Projection item is READY because its BoardGraph dependency is complete;
-it remains NO_AUTHORITY / NO_EFFECTS until Victor or another exact current authority grants that implementation membrane.
-```
+BoardJourney
+  PR #91 MERGED / VERIFIED
+  merge = 0a5d36632400f4ff6e7478a2fc9805bc8b9d7c8b
+
+typed prototype simulation
+  PR #93 MERGED / VERIFIED
+  merge = c1c50a226bf80066a59f8d9daded9b75f0fb814e
+
+clickable simulation + explicit interaction trail
+  PR #95 MERGED / VERIFIED
+  merge = 4d28fd33e271991fe0257c94acf5ebdce87a2f2b
+
+VexBoard Workgraph currentization
+  PR #100 MERGED / TREE-EXACT
+  merge = ebd405561aea8bf9f48e5e6f12485bd122ebeffd
+
+animated semantic traversal focus
+  PR #98 MERGED / TREE-EXACT
+  merge = 2c37fcb4e90aa45f96bc8a9e42d970a62b85b4a6
+~~~
+
+The accepted Workgraph therefore truthfully exposes:
+
+~~~text
+BoardGraph                 COMPLETED
+Canvas Projection          COMPLETED
+BoardJourney + simulation  COMPLETED
+
+BoardPatch                 READY / NO_AUTHORITY / NO_EFFECTS
+Source Projectors          READY / NO_AUTHORITY / NO_EFFECTS
+
+VexBoard root              DECOMPOSED
+~~~
+
+PR #98 is a presentation enhancement inside the accepted Canvas/Journey substrate; it does not create a second lifecycle owner or imply that BoardPatch/source projection is implemented.
+
+For the VexBusinessFactory patient zero this means:
+
+~~~text
+semantic architecture                    MATURE_ENOUGH_TO_PRESERVE
+current-schema BoardGraph example        PRESENT
+read-only canvas substrate               ACCEPTED
+semantic BoardJourney substrate          ACCEPTED
+typed/clickable simulation substrate     ACCEPTED
+animated semantic focus                  ACCEPTED / PRESENTATION-ONLY
+educational/perspective projections      ARCHITECTURE_SOURCE_ONLY
+provider / business source adapters      NOT_YET_IMPLEMENTED
+generic board source resolver            NOT_YET_IMPLEMENTED
+cross-board Journey coordinates          NOT_YET_IMPLEMENTED
+lived screenshot evidence loop           NOT_YET_IMPLEMENTED
+AI BoardPatch / business mutation         NOT_YET_IMPLEMENTED
+~~~
+
+The first implementation pressure after this architecture converges should stay read-only and source-owned. VexWork PR #103 is a useful non-business patient zero because it addresses one canonical VexWork process through the accepted BoardGraph/BoardProjection/BoardJourney contracts while deliberately keeping the current built-in resolver as a bounded proving fixture.
+
+That patient zero must inform—but must not silently define—the scalable contract:
+
+~~~text
+VexBusinessFactory topology
++ VexLife Atlas / Process Map lineage
++ VexWork Process / Work projection
+-> pressure stable boardRef resolution
+-> pressure bounded neighborhoods + source backlinks
+-> pressure (boardRef, semanticRef) Journey continuity
+-> pressure Control + current truth -> resolved Act
+
+!= copy source ownership into VexBoard
+!= make VexBoard the process registry
+!= make VexBoard the executor
+~~~
+
+Only after those distinct consumers agree should VexBoard extract broader resolver/source-projector or semantic-factory contracts. BoardPatch and Source Projectors being READY means their dependencies are satisfied; it does not itself grant implementation authority.
 
 No human host action is required to preserve this design.
 

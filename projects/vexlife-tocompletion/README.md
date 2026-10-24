@@ -96,10 +96,15 @@ October 22, 2026
   exact 11-member Artifact Delivery -> exact Python 3.14.7 / mlx-lm 0.32.0
   -> fresh-host HF cache compatibility -> exact clean SDK owner closure
 
+October 23, 2026
+  PR873 reached TERMINAL_ACCEPTED_CURRENT for ordinary Mac setup safety:
+  one Home-scoped setup owner, safe cancellation, exact pending-runtime ownership,
+  resumable partial state, truthful progress and preservation-safe cleanup.
+
 Current
-  ordinary fresh-user productization is foreground:
-  actively finish/currentize the existing PR873 setup-safety owner,
-  then connect normal start to the accepted PR919 Heretic composition.
+  ordinary fresh-user productization remains foreground:
+  normal-start Heretic integration is now the active executable slice,
+  consuming terminal PR873 setup safety plus accepted PR919 Heretic establishment.
   P6/P7 remain canonical future/lateral horizon.
 ```
 
@@ -185,31 +190,32 @@ accepted target composition
 -> existing Browser / Lived Companion
 ```
 
-Current VexLife source milestone:
+Current VexLife source milestones:
 
 ```text
-PR919 = TERMINAL_ACCEPTED_CURRENT
-merge/main = 7eab93caf9936ab9b53c6ebc39c46a6b59a6120a
-tree = a687e764797edc028d27cdd13b82127cd254f955
+PR919 Heretic establishment = TERMINAL_ACCEPTED_CURRENT
+PR873 setup safety = TERMINAL_ACCEPTED_CURRENT
+current VexLife main = 85ef85dfa4852154e522deadc45707b03cf74221
+current main tree = c2038d90a6cea6cb155552d9db6faa47df417df8
 ```
 
 The continuation is **active**, not a wait state:
 
 ```text
 work.vexlife.tocompletion.productization.setup-safety-convergence
-  = RUNNING
-  -> descend into the existing PR873 setup-safety owner
-  -> ordinary-forward currentize it against current VexLife main
-  -> preserve one setup owner / cancellation / resumable partials /
-     pending-runtime ownership / progress / preserve-Home cleanup
-  -> prove and terminalize that dependency
-
-then
+  = COMPLETED
+  -> PR873 TERMINAL_ACCEPTED_CURRENT
+  -> one setup owner / cancellation / resumable partials /
+     pending-runtime ownership / progress / preserve-Home cleanup are accepted source
 
 work.vexlife.tocompletion.productization.heretic-normal-start-integration
-  = WAITING_DEPENDENCIES
-  -> becomes the immediate next source slice
-  -> route safe normal start into the accepted PR919 Heretic composition
+  = RUNNING
+  -> safe ordinary normal start
+  -> accepted Heretic product target
+  -> merged PR919 Heretic establishment composition
+  -> exact runtime receipt / endpoint
+  -> existing Browser / Lived Companion
+  -> ordinary fresh-user proof
 ```
 
 Do **not** create a parallel initializer just to avoid PR873. Continuing the dependency is continuing ToCompletion.
@@ -305,47 +311,37 @@ This is not permission to create a task for every typo or retry. Add one only wh
 CURRENT FOREGROUND
   work.vexlife.tocompletion.productization.ordinary-heretic-setup = RUNNING
 
-CURRENT EXECUTABLE WORK
-  work.vexlife.tocompletion.productization.setup-safety-convergence = RUNNING
+COMPLETED DEPENDENCY
+  work.vexlife.tocompletion.productization.setup-safety-convergence = COMPLETED
+  VexLife PR #873 = TERMINAL_ACCEPTED_CURRENT
 
-  owner/provider surface:
-    VexLife PR #873
+CURRENT EXECUTABLE WORK
+  work.vexlife.tocompletion.productization.heretic-normal-start-integration = RUNNING
 
   present task:
-    re-ground #873 against current VexLife main
-    -> preserve accepted setup-safety semantics
-    -> reconcile old branch/current-main divergence ordinary-forward
-    -> recompose deterministic Source Manifest consequences from current truth
-    -> focused + repository proof
-    -> source lifecycle to terminal acceptance
+    preserve PR873 setup-safety laws
+    -> select the accepted Heretic product target through the rightful normal-start owner
+    -> reuse merged PR919 Artifact Delivery / environment / persistent-runtime composition
+    -> carry exact runtime receipt / endpoint into the existing Browser / Lived Companion
+    -> prove the ordinary fresh-user front door without hidden intervention
 
-NEXT ALREADY-DEFINED EDGE
-  work.vexlife.tocompletion.productization.heretic-normal-start-integration
-    = WAITING_DEPENDENCIES on setup-safety-convergence
-
-  once dependency is current:
-    safe normal start
-    -> accepted Heretic target
-    -> merged PR919 establishment composition
-    -> existing runtime receipt / Browser Companion
-    -> ordinary fresh-user proof
-
-DEVELOPMENTAL SIDE
+HELD / SEPARATE
+  existing-Home Heretic replacement/upgrade remains explicit; no silent lineage rewrite
   G02 = TERMINAL_LIVED_PASS
   G03 = TERMINAL_LIVED_PASS
   P5 = PAUSED_AT_CHECKPOINT
   G04 = HELD_NOT_EARNED until new real recurrent developmental evidence exists
 
-Do not replay A055-A069.
+Do not replay PR873 source correction/proof attempts.
 Do not reopen PR913/PR918/PR919 source foundations.
-Do not interpret the active #873 dependency as permission to stop working.
+Do not build a parallel initializer or second runtime owner.
 ```
 
 ## Remaining completion path
 
 ```text
 ORDINARY PRODUCTIZATION                                  <-- CURRENT
-    actively finish/currentize PR873 setup safety
+    PR873 setup safety = TERMINAL_ACCEPTED_CURRENT
     -> connect safe normal start to accepted PR919 Heretic establishment
     -> prove fresh ordinary install/use route
     -> then make existing-Home Heretic replacement/upgrade explicit
@@ -372,6 +368,8 @@ Nested completion truth:
 ```text
 P1-P4 lived core = TERMINAL
 ordinary fresh-user productization = OPEN / ACTIVE
+setup safety = TERMINAL_ACCEPTED_CURRENT
+normal-start Heretic integration = RUNNING
 P5 G02-G03 = TERMINAL; G04 held
 P6 = UNEARNED
 P7 = LATERAL / PLAN_VALIDATED
@@ -386,29 +384,27 @@ VexWork
 -> project.vexlife.tocompletion
 -> work.vexlife.tocompletion.outcome
 -> CURRENT ACTIVE work:
-     work.vexlife.tocompletion.productization.setup-safety-convergence
+     work.vexlife.tocompletion.productization.heretic-normal-start-integration
 -> this README for architecture / causal continuity
 -> VexLife #866 for canonical product truth
--> VexLife PR #873 as the current setup-safety source owner
--> VexLife PR #919 only as accepted Heretic-establishment provenance
+-> VexLife PR #873 as terminal setup-safety provenance
+-> VexLife PR #919 as accepted Heretic-establishment provenance
 -> target repository culture/source when an effect actually descends there
 ```
 
 The continuation rule is:
 
 ```text
-active dependency work != wait
+setup-safety-convergence = COMPLETED
+  -> do not replay PR873
 
-if setup-safety-convergence is RUNNING
-  -> work #873 toward current terminal acceptance
-
-when it completes
-  -> immediately activate heretic-normal-start-integration
+heretic-normal-start-integration = RUNNING
+  -> integrate safe normal start with accepted PR919 Heretic establishment now
 
 developmental P5 pause
   != productization pause
 ```
 
-Do not replay P0-P4, G02/G03 host attempts, PR913/PR918/PR919 acceptance, or reconstruct their history from chat. Update VexWork again when the setup dependency, normal-start integration, existing-Home semantics, or developmental evidence materially moves.
+Do not replay P0-P4, G02/G03 host attempts, PR873 acceptance, or PR913/PR918/PR919 acceptance. Update VexWork again when normal-start integration, ordinary fresh-user lived proof, existing-Home semantics, or developmental evidence materially moves.
 
 <!-- [VXG RealForever][VEXWORK][VEXLIFE-TOCOMPLETION][TRAJECTORY] -->

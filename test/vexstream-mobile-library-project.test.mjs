@@ -69,38 +69,57 @@ test('Mobile Library Board separates terminal MassDownload from the paused Queue
   assert.equal(queueIncident.effectDisposition, 'NO_EFFECTS');
 });
 
-test('durable device storage retains source authority while waiting on reusable Android proof orchestration', () => {
-  const item = graph.items.find((candidate) => candidate.workRef === 'work.vexstream.mobile-library.device-storage');
-  assert.ok(item);
-  assert.equal(item.state, 'WAITING_TOOL');
-  assert.equal(item.workDisposition, 'ACTIVE');
-  assert.equal(item.authorityDisposition, 'AUTHORIZED_BOUNDED');
-  assert.equal(item.effectDisposition, 'EFFECTS_BOUND');
-  assert.equal(item.sourceRefs.includes('github.issue.vexlife-android.157'), true);
-  assert.equal(item.sourceRefs.includes('github.issue.vextreme-sdk.1894'), true);
-  assert.equal(item.dependencyRefs.includes('work.android-proof-orchestration.api-target-runner'), true);
+test('durable device library is terminal without closing separate Mobile Library work', () => {
+  const durableRefs = [
+    'work.vexstream.mobile-library.durable-device-library',
+    'work.vexstream.mobile-library.device-storage',
+    'work.vexstream.mobile-library.rediscovery',
+    'work.vexstream.mobile-library.private-download-migration',
+    'work.vexstream.mobile-library.clear-data-proof',
+  ];
+  for (const workRef of durableRefs) {
+    const item = graph.items.find((candidate) => candidate.workRef === workRef);
+    assert.ok(item, workRef);
+    assert.equal(item.state, 'COMPLETED', workRef);
+    assert.equal(item.workDisposition, 'ACTIVE', workRef);
+  }
+
+  const storage = graph.items.find((candidate) => candidate.workRef === 'work.vexstream.mobile-library.device-storage');
+  assert.deepEqual(storage.dependencyRefs, []);
+  assert.equal(storage.sourceRefs.includes('github.pull.vexlife-android.165'), true);
+
+  const clearData = graph.items.find((candidate) => candidate.workRef === 'work.vexstream.mobile-library.clear-data-proof');
+  assert.equal(clearData.sourceRefs.includes('github.pull.vextreme-sdk.1898'), true);
+  assert.equal(clearData.sourceRefs.includes('github.issue.vexlife-android.162'), true);
+
+  const root = graph.items.find((candidate) => candidate.workRef === 'work.vexstream.mobile-library.outcome');
+  assert.equal(root.state, 'DECOMPOSED');
+
+  const storageHistory = graph.transitions.filter(
+    (transition) => transition.workRef === storage.workRef,
+  );
+  assert.deepEqual(
+    storageHistory.slice(-2).map((transition) => [transition.priorState, transition.nextState]),
+    [
+      ['WAITING_TOOL', 'VERIFYING'],
+      ['VERIFYING', 'COMPLETED'],
+    ],
+  );
 
   const board = projectWorkBoard({ project, graph, view, registry });
+  const done = board.lanes.find((lane) => lane.laneRef === 'lane.work.done');
   const active = board.lanes.find((lane) => lane.laneRef === 'lane.work.active');
-  assert.equal(active.cards.some((card) => card.workRef === item.workRef), true);
-  assert.equal(transitionHandshakeRequirement({
-    policy,
-    priorState: 'READY',
-    nextState: 'RUNNING',
-    registry,
-    graph,
-    workRef: item.workRef,
-  }).required, true);
-  assert.equal(transitionHandshakeRequirement({
-    policy,
-    priorState: 'RUNNING',
-    nextState: 'WAITING_TOOL',
-    registry,
-    graph,
-    workRef: item.workRef,
-  }).required, false);
-});
+  const intake = board.lanes.find((lane) => lane.laneRef === 'lane.work.intake');
+  const waiting = board.lanes.find((lane) => lane.laneRef === 'lane.work.waiting');
 
+  for (const workRef of durableRefs) {
+    assert.equal(done.cards.some((card) => card.workRef === workRef), true, workRef);
+  }
+  assert.equal(active.cards.some((card) => card.workRef === storage.workRef), false);
+  assert.equal(intake.cards.some((card) => card.workRef === root.workRef), true);
+  assert.equal(intake.cards.some((card) => card.workRef === 'work.vexstream.mobile-library.download-experience'), true);
+  assert.equal(waiting.cards.some((card) => card.workRef === 'work.vexstream.mobile-library.track-menu-presentation-defect'), true);
+});
 test('persistent Keep Offline remains parked outside Project membership', () => {
   const lot = projectParkingLot({ graph, registry, repositoryRefOrNull: 'repo.vexlife-android' });
   const keepOffline = lot.items.find((item) => item.workRef === 'work.vexstream.mobile-library.keep-offline-sync');
@@ -126,8 +145,8 @@ test('Mobile Library Project keeps a human audit/decision front door beside grap
   assert.match(readme, /ML-D1 — Preserve exact media identity/);
   assert.match(readme, /ML-D4 — Contextual Download Missing reuses MassDownload semantics/);
   assert.match(readme, /ML-D6 — MassDownload product source and terminal EndToEnd proof are different Work/);
-  assert.match(readme, /VexLife-Android issue #157/);
-  assert.match(readme, /DEVICE_STORAGE_READY/);
-  assert.match(readme, /Android target orchestration is a reusable dependency/);
+  assert.match(readme, /Android PR #165 = MERGED \/ tree-exact/);
+  assert.match(readme, /DEVICE_STORAGE_COMPLETE/);
+  assert.match(readme, /Android target orchestration remains reusable, but VexStream no longer waits on it/);
   assert.match(readme, /Known VexWork modeling gap/);
 });

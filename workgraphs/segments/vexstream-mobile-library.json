@@ -36,7 +36,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-21T08:41:00.000Z",
-      "updatedAt": "2026-10-22T01:32:00.000Z",
+      "updatedAt": "2026-10-24T02:34:46.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "workRef": "work.vexstream.mobile-library.durable-device-library",
@@ -44,7 +44,7 @@
       "label": "Durable Device Music Library",
       "purpose": "Give verified VexStream media one durable Android device-library home that can survive VexLife app-data clearing and be rediscovered as reusable music.",
       "workClass": "OUTCOME",
-      "state": "DECOMPOSED",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
       "repositoryRefs": [
@@ -56,18 +56,26 @@
         "projects/vexstream-mobile-library/README.md",
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMediaStore.kt",
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamOfflineIndex.kt",
-        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/PairedVexStreamMusicRepository.kt"
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/PairedVexStreamMusicRepository.kt",
+        "github.issue.vexlife-android.160",
+        "github.issue.vexlife-android.161",
+        "github.issue.vexlife-android.162",
+        "github.issue.vextreme-sdk.1897",
+        "github.pull.vexlife-android.165",
+        "github.commit.vexlife-android.b8826e32ca78cc5fb8bcae14e29218a0392238bb",
+        "github.pull.vextreme-sdk.1898",
+        "github.commit.vextreme-sdk.7731cc3c638221b3c1087e8cd78d4352bde1a28f",
+        "evidence.vexstream.mobile-library.clear-data.a039.return.sha256.67e4b6ede7aab8964406894da8fdcddc216f88692e11fbd8a21ac2ae21c537b7",
+        "evidence.vexstream.mobile-library.clear-data.cleanup.a043.return.sha256.e4dbda67670dcc2a86a88f1cc12e93929e3cc35699de485ea30bdc428dc3ebe6"
       ],
-      "nextProcessRefs": [
-        "process.vexlife-android.feature-authoring"
-      ],
+      "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-21T08:41:00.000Z",
-      "updatedAt": "2026-10-23T03:15:48.000Z",
+      "updatedAt": "2026-10-24T02:34:46.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "workRef": "work.vexstream.mobile-library.device-storage",
@@ -75,11 +83,9 @@
       "label": "Durable device music storage",
       "purpose": "Establish the Android-native durable media-storage realization while preserving exact trackRef, SHA-256 and byte-length verification.",
       "workClass": "TASK",
-      "state": "WAITING_TOOL",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
-      "dependencyRefs": [
-        "work.android-proof-orchestration.api-target-runner"
-      ],
+      "dependencyRefs": [],
       "repositoryRefs": [
         "repo.vexlife-android"
       ],
@@ -97,18 +103,20 @@
         "project.android-proof-orchestration",
         "github.issue.vextreme-sdk.1894",
         "repo.vexlife-android:docs/foundation/ANDROID-HOST-PROOF.md",
-        "repo.vexlife-android:docs/foundation/test-proof/README.md"
+        "repo.vexlife-android:docs/foundation/test-proof/README.md",
+        "evidence.vexstream.mobile-library.device-storage.a033.api28-pass",
+        "evidence.vexstream.mobile-library.device-storage.a034.api36-pass",
+        "github.pull.vexlife-android.165",
+        "github.commit.vexlife-android.b8826e32ca78cc5fb8bcae14e29218a0392238bb"
       ],
-      "nextProcessRefs": [
-        "process.vexlife-android.feature-authoring"
-      ],
+      "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-21T08:41:00.000Z",
-      "updatedAt": "2026-10-22T01:32:00.000Z",
+      "updatedAt": "2026-10-24T02:34:46.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "workRef": "work.vexstream.mobile-library.rediscovery",
@@ -116,7 +124,7 @@
       "label": "Existing-download rediscovery",
       "purpose": "Let a fresh VexLife Android state reconstruct verified local-copy truth from durable VexStream media instead of treating the app-private index as the only memory of downloads.",
       "workClass": "TASK",
-      "state": "CAPTURED",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexstream.mobile-library.device-storage"
@@ -128,18 +136,20 @@
         "work.vexstream.mobile-library.durable-device-library",
         "github.pull.vexlife-android.142",
         "projects/vexstream-mobile-library/README.md",
-        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamOfflineIndex.kt"
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamOfflineIndex.kt",
+        "github.issue.vexlife-android.160",
+        "github.pull.vexlife-android.165",
+        "github.commit.vexlife-android.b8826e32ca78cc5fb8bcae14e29218a0392238bb",
+        "evidence.vexstream.mobile-library.clear-data.a039.return.sha256.67e4b6ede7aab8964406894da8fdcddc216f88692e11fbd8a21ac2ae21c537b7"
       ],
-      "nextProcessRefs": [
-        "process.vexlife-android.feature-authoring"
-      ],
+      "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-21T08:41:00.000Z",
-      "updatedAt": "2026-10-22T01:32:00.000Z",
+      "updatedAt": "2026-10-24T02:34:46.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "workRef": "work.vexstream.mobile-library.clear-data-proof",
@@ -147,7 +157,7 @@
       "label": "Clear-data durability lived proof",
       "purpose": "Prove downloaded music survives VexLife Clear Data, is rediscovered after relaunch, and plays without redownloading.",
       "workClass": "TASK",
-      "state": "CAPTURED",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexstream.mobile-library.rediscovery"
@@ -158,7 +168,15 @@
       "sourceRefs": [
         "work.vexstream.mobile-library.rediscovery",
         "repo.vexlife-android:docs/features/FEATURE-WALKS.md",
-        "projects/vexstream-mobile-library/README.md"
+        "projects/vexstream-mobile-library/README.md",
+        "github.issue.vexlife-android.162",
+        "github.issue.vextreme-sdk.1897",
+        "github.pull.vexlife-android.165",
+        "github.commit.vexlife-android.b8826e32ca78cc5fb8bcae14e29218a0392238bb",
+        "github.pull.vextreme-sdk.1898",
+        "github.commit.vextreme-sdk.7731cc3c638221b3c1087e8cd78d4352bde1a28f",
+        "evidence.vexstream.mobile-library.clear-data.a039.return.sha256.67e4b6ede7aab8964406894da8fdcddc216f88692e11fbd8a21ac2ae21c537b7",
+        "evidence.vexstream.mobile-library.clear-data.cleanup.a043.return.sha256.e4dbda67670dcc2a86a88f1cc12e93929e3cc35699de485ea30bdc428dc3ebe6"
       ],
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
@@ -167,7 +185,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-21T08:41:00.000Z",
-      "updatedAt": "2026-10-22T01:32:00.000Z",
+      "updatedAt": "2026-10-24T02:34:46.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "workRef": "work.vexstream.mobile-library.private-download-migration",
@@ -175,7 +193,7 @@
       "label": "Existing private-download migration",
       "purpose": "Define and implement a bounded path for already verified app-private VexStream downloads to enter durable device-library storage without duplication or partial/corrupt promotion.",
       "workClass": "TASK",
-      "state": "CAPTURED",
+      "state": "COMPLETED",
       "priorityClass": "NORMAL",
       "dependencyRefs": [
         "work.vexstream.mobile-library.device-storage"
@@ -187,11 +205,13 @@
         "github.pull.vexlife-android.142",
         "work.vexstream.mobile-library.device-storage",
         "projects/vexstream-mobile-library/README.md",
-        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMediaStore.kt"
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMediaStore.kt",
+        "github.issue.vexlife-android.161",
+        "github.pull.vexlife-android.165",
+        "github.commit.vexlife-android.b8826e32ca78cc5fb8bcae14e29218a0392238bb",
+        "evidence.vexstream.mobile-library.device-storage.a034.api36-pass"
       ],
-      "nextProcessRefs": [
-        "process.vexlife-android.feature-authoring"
-      ],
+      "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
     },
@@ -504,6 +524,46 @@
         "repo.vexlife-android:docs/foundation/ANDROID-HOST-PROOF.md"
       ],
       "createdAt": "2026-10-23T03:15:48.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.device-storage.verifying.a033-a039-terminal",
+      "workRef": "work.vexstream.mobile-library.device-storage",
+      "priorState": "WAITING_TOOL",
+      "nextState": "VERIFYING",
+      "reason": "A033 API28 proof, A034 physical API36 storage/migration proof, and the composed A039 post-Clear-Data run established the previously held native storage predicates on exact accepted source.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.issue.vexlife-android.157",
+        "evidence.vexstream.mobile-library.device-storage.a033.api28-pass",
+        "evidence.vexstream.mobile-library.device-storage.a034.api36-pass",
+        "evidence.vexstream.mobile-library.clear-data.a039.return.sha256.67e4b6ede7aab8964406894da8fdcddc216f88692e11fbd8a21ac2ae21c537b7",
+        "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md",
+        "proposal.local-vex-operations.vexstream-mobile-library.durable-device-completion.20261023a",
+        "response.victor.vexstream-mobile-library.durable-device-completion.20261023a",
+        "confirmation.local-vex-operations.vexstream-mobile-library.durable-device-completion.20261023a"
+      ],
+      "createdAt": "2026-10-24T02:34:45.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.device-storage.completed.pr165-terminal",
+      "workRef": "work.vexstream.mobile-library.device-storage",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "Android PR #165 merged the composed durable-device candidate and post-merge verification proved main tree-exact to the accepted candidate; the storage task no longer waits on Android proof orchestration.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexlife-android.165",
+        "github.commit.vexlife-android.b8826e32ca78cc5fb8bcae14e29218a0392238bb",
+        "evidence.vexstream.mobile-library.clear-data.a039.return.sha256.67e4b6ede7aab8964406894da8fdcddc216f88692e11fbd8a21ac2ae21c537b7",
+        "evidence.vexstream.mobile-library.clear-data.cleanup.a043.return.sha256.e4dbda67670dcc2a86a88f1cc12e93929e3cc35699de485ea30bdc428dc3ebe6",
+        "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md",
+        "proposal.local-vex-operations.vexstream-mobile-library.durable-device-completion.20261023a",
+        "response.victor.vexstream-mobile-library.durable-device-completion.20261023a",
+        "confirmation.local-vex-operations.vexstream-mobile-library.durable-device-completion.20261023a"
+      ],
+      "createdAt": "2026-10-24T02:34:46.000Z"
     }
   ],
   "sourceRefs": [

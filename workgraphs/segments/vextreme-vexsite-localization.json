@@ -8,7 +8,7 @@
       "workRef": "work.vextreme.vexsite.localization.outcome",
       "parentWorkRefOrNull": null,
       "label": "VexSite Localization",
-      "purpose": "Carry VexSite localization from newly preserved record-reader pages through Global Core and back into the canonical arc-ordered localization queue, while Vextreme remains the owner of page, source, generated/runtime, and lived-browser truth and VexWork owns only durable work organization.",
+      "purpose": "Keep VexSite localization legible from preserved source lineage through the canonical Global Core source queue and separate generated/runtime convergence, while Vextreme remains the owner of page, source, runtime, and lived-browser truth and VexWork owns only durable work organization.",
       "workClass": "OUTCOME",
       "state": "RUNNING",
       "workDisposition": "ACTIVE",
@@ -22,58 +22,60 @@
         "projects/vexsite-localization/README.md",
         "projects/vexwork-operational-console/VEXSITE-LOCALIZATION-LENS.md",
         "github.issue.vextreme.273",
-        "repo.vextreme:docs/architecture/06-i18n.md",
-        "repo.vextreme:docs/architecture/19-record-readers.md",
-        "github.pull.vextreme.339",
-        "github.pull.vextreme.361",
-        "github.pull.vextreme.383",
-        "docs/process/FORM-PROJECT.md",
-        "github.pull.vextreme.384",
-        "github.pull.vextreme.385"
+        "github.issue-comment.vextreme.273.6380410929",
+        "github.pull.vextreme.379",
+        "github.pull.vextreme.395",
+        "github.pull.vextreme.397",
+        "github.pull.vextreme.398",
+        "repo.vextreme:docs/architecture/06-i18n.md"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-23T07:48:00.000Z",
-      "updatedAt": "2026-10-23T08:33:00.000Z"
+      "updatedAt": "2026-10-24T05:28:32.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
-      "workRef": "work.vextreme.vexsite.localization.bending-condominium-reader",
+      "workRef": "work.vextreme.vexsite.localization.canonical-global-core-source",
       "parentWorkRefOrNull": "work.vextreme.vexsite.localization.outcome",
-      "label": "Port Bending Condominium third arc into a Vextreme record reader",
-      "purpose": "Turn PR #383's preserved third-arc record into a source-first Vextreme reader using the shared neutral record-reader controller, exact provenance, and only the record-specific structure and media the source earns; do not rewrite the evidence archive or invent a generic HTML template.",
+      "label": "Advance the canonical Conversations-with-God Global Core source queue",
+      "purpose": "Advance exactly the Vextreme-owned canonical scheduler foreground without creating one VexWork item per page; Closed Circuit, Divine Emergence, and The Firmament Conversation are terminal/current, and Ascension & Embodiment is the next exact source row at 72 canonical keys / 648 Global Core target cells.",
       "workClass": "TASK",
-      "state": "VERIFYING",
+      "state": "RUNNING",
       "workDisposition": "ACTIVE",
       "priorityClass": "IMMEDIATE",
-      "dependencyRefs": [],
+      "dependencyRefs": [
+        "work.vextreme.vexsite.localization.presentation-source-lineage"
+      ],
       "repositoryRefs": [
         "repo.vextreme"
       ],
       "sourceRefs": [
-        "github.pull.vextreme.383",
-        "repo.vextreme:docs/architecture/19-record-readers.md",
-        "github.pull.vextreme.339",
-        "github.pull.vextreme.361",
-        "project.vextreme.vexsite-localization",
-        "github.pull.vextreme.384",
-        "github.commit.vextreme.0073189278695f8d2361f08b3c7725b4f97d3f03"
+        "github.issue.vextreme.273",
+        "github.issue-comment.vextreme.273.6379565128",
+        "github.issue-comment.vextreme.273.6379741965",
+        "github.issue-comment.vextreme.273.6380410929",
+        "github.pull.vextreme.395",
+        "github.pull.vextreme.397",
+        "github.pull.vextreme.398",
+        "repo.vextreme:data/strings/source/pages/ascension-and-embodiment.json",
+        "repo.vextreme:docs/ingestion/workmaps/content-forge-convos-with-god-arc-batch-formation.json"
       ],
-      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
-      "createdAt": "2026-10-23T07:48:00.000Z",
-      "updatedAt": "2026-10-23T08:33:00.000Z"
+      "createdAt": "2026-10-24T05:28:32.000Z",
+      "updatedAt": "2026-10-24T05:28:32.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
-      "workRef": "work.vextreme.vexsite.localization.recent-record-readers-global-core",
+      "workRef": "work.vextreme.vexsite.localization.generated-runtime-currentness",
       "parentWorkRefOrNull": "work.vextreme.vexsite.localization.outcome",
-      "label": "Localize the recent record-reader surfaces across Global Core",
-      "purpose": "Carry the page-authored presentation strings for Returning scorpions to God, Recognizing Life Receiving Abundance, and—after its source is accepted—the Bending Condominium third reader across the Global Core tier while preserving frozen transcript evidence as source evidence rather than silently translating or rewriting the historical record.",
+      "label": "Converge VexSite generated/runtime currentness",
+      "purpose": "Keep generated/runtime realization distinct from canonical localization source acceptance and converge those consequences through the existing broad Vextreme generated/runtime owner rather than admitting duplicate generated writers.",
       "workClass": "TASK",
       "state": "RUNNING",
       "workDisposition": "ACTIVE",
@@ -83,35 +85,57 @@
         "repo.vextreme"
       ],
       "sourceRefs": [
-        "repo.vextreme:pages/returning-scorpions-to-god.html",
-        "repo.vextreme:pages/recognizing-life-receiving-abundance.html",
-        "repo.vextreme:data/strings/source/pages/returning-scorpions-to-god.json",
-        "repo.vextreme:data/strings/source/pages/recognizing-life-receiving-abundance.json",
-        "github.pull.vextreme.383",
-        "repo.vextreme:docs/architecture/06-i18n.md",
-        "repo.vextreme:docs/architecture/19-record-readers.md",
-        "projects/vexwork-operational-console/VEXSITE-LOCALIZATION-LENS.md",
-        "github.pull.vextreme.385",
-        "github.commit.vextreme.4fbedf5b4bea0d277ac61604c49489899303e343"
+        "github.pull.vextreme.379",
+        "github.issue.vextreme.273",
+        "github.issue-comment.vextreme.273.6380410929"
       ],
-      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
-      "createdAt": "2026-10-23T07:48:00.000Z",
-      "updatedAt": "2026-10-23T08:33:00.000Z"
+      "createdAt": "2026-10-24T05:28:32.000Z",
+      "updatedAt": "2026-10-24T05:28:32.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vextreme.vexsite.localization.presentation-source-lineage",
+      "parentWorkRefOrNull": "work.vextreme.vexsite.localization.outcome",
+      "label": "Preserve Presentation / Source transcript lineage before localization",
+      "purpose": "Record the completed Conversations-with-God duplicate-lineage prerequisite: exact Presentation and Source transcript identities were preserved rather than collapsed, the seven exact-pair census closed, Merron earned dual-lineage treatment, Closed Circuit's broader nested source remains SOURCE_ONLY_HOLD, and the canonical localization scheduler resumed only after that lineage frontier was resolved.",
+      "workClass": "TASK",
+      "state": "COMPLETED",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vextreme"
+      ],
+      "sourceRefs": [
+        "github.issue.vextreme.273",
+        "github.issue-comment.vextreme.273.6379017700",
+        "github.issue-comment.vextreme.273.6379565128",
+        "repo.vextreme:docs/ingestion/workmaps/content-forge-convos-with-god-arc-batch-formation.json"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-24T05:28:32.000Z",
+      "updatedAt": "2026-10-24T05:28:32.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vextreme.vexsite.localization.closed-circuit.global-core",
       "parentWorkRefOrNull": "work.vextreme.vexsite.localization.outcome",
       "label": "Localize Closed Circuit across Global Core",
-      "purpose": "Preserve Closed Circuit Global Core as the next canonical arc-ordered queue concern after the admitted recent record-reader port/localization foreground, while Vextreme retains source scheduling and implementation authority.",
+      "purpose": "Preserve the promoted Closed Circuit concern as completed canonical Global Core source work through PR #395 while keeping the broader Part-025 nested source as SOURCE_ONLY_HOLD rather than inferring alias, replacement, or exact semantic identity.",
       "workClass": "POTENTIAL",
-      "state": "CAPTURED",
-      "workDisposition": "PARKED",
+      "state": "COMPLETED",
+      "workDisposition": "ACTIVE",
       "priorityClass": "NORMAL",
-      "dependencyRefs": [],
+      "dependencyRefs": [
+        "work.vextreme.vexsite.localization.presentation-source-lineage"
+      ],
       "repositoryRefs": [
         "repo.vextreme"
       ],
@@ -125,7 +149,8 @@
         "predicate.vextreme.vexsite.localization.target-tier-complete",
         "reason.vextreme.vexsite.localization.target-tier-completion",
         "github.issue.vextreme.273",
-        "github.issue-comment.vextreme.273.6311043427",
+        "github.issue-comment.vextreme.273.6379565128",
+        "github.pull.vextreme.395",
         "projects/vexwork-operational-console/vexsite-closed-circuit-promotion-publication.json",
         "project.vextreme.vexsite-localization"
       ],
@@ -134,32 +159,19 @@
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-23T02:20:00.000Z",
-      "updatedAt": "2026-10-23T07:48:00.000Z"
+      "updatedAt": "2026-10-24T05:28:32.000Z"
     }
   ],
-  "transitions": [
-    {
-      "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vextreme.vexsite.localization.bending-condominium-reader.verifying.source-complete-20261023",
-      "workRef": "work.vextreme.vexsite.localization.bending-condominium-reader",
-      "priorState": "RUNNING",
-      "nextState": "VERIFYING",
-      "reason": "Vextreme PR #384 formed the exact third-reader source: three source movements cover exchanges 1–6, all 46 page bindings resolve, the selected daylight artwork is byte-identical to PR #383, and the canonical registries place the third arc immediately after the second. Exact-head SourceOwner proof remains next.",
-      "actorRef": "actor.local-vex-operations.vexsite-localization",
-      "sourceRefs": [
-        "github.pull.vextreme.384",
-        "github.commit.vextreme.0073189278695f8d2361f08b3c7725b4f97d3f03"
-      ],
-      "createdAt": "2026-10-23T08:33:00.000Z"
-    }
-  ],
+  "transitions": [],
   "sourceRefs": [
     "projects/vexsite-localization/README.md",
     "projects/vexwork-operational-console/VEXSITE-LOCALIZATION-LENS.md",
     "github.issue.vextreme.273",
-    "github.pull.vextreme.383",
-    "github.pull.vextreme.384",
-    "github.pull.vextreme.385"
+    "github.issue-comment.vextreme.273.6380410929",
+    "github.pull.vextreme.379",
+    "github.pull.vextreme.395",
+    "github.pull.vextreme.397",
+    "github.pull.vextreme.398"
   ],
   "formedAt": "2026-10-23T07:48:00.000Z"
 }
