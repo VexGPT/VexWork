@@ -5,13 +5,10 @@ import test from 'node:test';
 import {
   DEFAULT_CANVAS_EXTENT,
   PALETTE_MODES,
-  PALETTE_PRESENTATION_CSS,
   canvasExtent,
   deriveBranchPresentation,
-  installPalettePresentation,
   nextPaletteMode,
   normalizePaletteMode,
-  paletteModeLabel,
   roleMarker,
   semanticRole,
 } from '../vexboard/ui/presentation.mjs';
@@ -44,16 +41,9 @@ test('palette modes cycle without creating semantic state', () => {
   assert.equal(nextPaletteMode('STANDARD'), 'COLOR_SAFE');
   assert.equal(nextPaletteMode('COLOR_SAFE'), 'HIGH_CONTRAST');
   assert.equal(nextPaletteMode('HIGH_CONTRAST'), 'STANDARD');
-  assert.equal(paletteModeLabel('STANDARD'), 'Standard');
-  assert.equal(paletteModeLabel('COLOR_SAFE'), 'Color safe');
-  assert.equal(paletteModeLabel('HIGH_CONTRAST'), 'High contrast');
 });
 
-test('palette state is visibly projected across the browser canvas rather than only recoloring the icon', () => {
-  assert.match(PALETTE_PRESENTATION_CSS, /palette-fab::after/);
-  assert.match(PALETTE_PRESENTATION_CSS, /viewport\.palette-color-safe[^]*repeating-linear-gradient/);
-  assert.match(PALETTE_PRESENTATION_CSS, /viewport\.palette-high-contrast[^]*\.canvas/);
-
+test('palette state is visibly projected across the browser canvas rather than only recoloring the icon', async () => {
   const appended = [];
   const documentRef = {
     documentElement: { append: (value) => appended.push(value) },
@@ -65,11 +55,23 @@ test('palette state is visibly projected across the browser canvas rather than o
   assert.equal(normalizePaletteMode('COLOR_SAFE'), 'COLOR_SAFE');
   assert.equal(nextPaletteMode('COLOR_SAFE'), 'HIGH_CONTRAST');
   assert.equal(appended.length, 0, 'pure palette derivation must not mutate browser state');
-  assert.equal(installPalettePresentation(documentRef), true);
-  assert.equal(appended.length, 1);
+
+  const priorDocument = globalThis.document;
+  globalThis.document = documentRef;
+  try {
+    const browserModuleUrl = new URL('../vexboard/ui/presentation.mjs?palette-browser-proof', import.meta.url);
+    await import(browserModuleUrl);
+    await import(browserModuleUrl);
+  } finally {
+    if (priorDocument === undefined) delete globalThis.document;
+    else globalThis.document = priorDocument;
+  }
+
+  assert.equal(appended.length, 1, 'browser presentation stylesheet should be installed once');
   assert.equal(appended[0].id, 'vexboard-palette-presentation-v2');
-  assert.equal(installPalettePresentation(documentRef), false);
-  assert.equal(appended.length, 1, 'presentation stylesheet should be installed once');
+  assert.match(appended[0].textContent, /palette-fab::after/);
+  assert.match(appended[0].textContent, /viewport\.palette-color-safe[^]*repeating-linear-gradient/);
+  assert.match(appended[0].textContent, /viewport\.palette-high-contrast[^]*\.canvas/);
 });
 
 test('semantic role derives start, choice and terminal meaning from current graph shape', () => {
