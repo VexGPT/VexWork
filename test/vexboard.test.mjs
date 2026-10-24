@@ -3,6 +3,7 @@ import test from 'node:test';
 
 import { semanticHash as nodeHash } from '../src/core/semantic.mjs';
 import { applyBoardControl, createBoardGraph, createBoardProjection } from '../src/core/vexboard.mjs';
+import * as Journey from '../src/shared/vexboard-journey.mjs';
 import {
   BOARD_CONTROL_SCHEMA,
   BOARD_GRAPH_SCHEMA,
@@ -359,4 +360,50 @@ test('built-in board routing is explicit and fail-closed for unknown portal targ
   assert.equal(Reader.builtinBoardUrl('board.vexboard.self-map'), './self-map.json');
   assert.equal(Reader.builtinBoardUrl('board.vexboard.publish'), './publish-map.json');
   assert.equal(Reader.builtinBoardUrl('board.vexboard.unknown'), null);
+});
+
+test('BoardJourney follows explicit relationships and preserves repeated visits without mutating board truth', () => {
+  const graph = baseGraph();
+  graph.relationships = [
+    { relationshipRef: 'rel.a-b', kind: 'FLOW', fromRef: 'node.a', toRef: 'node.b', labelOrNull: 'Next', sourceRefs: [] },
+    { relationshipRef: 'rel.b-a', kind: 'FLOW', fromRef: 'node.b', toRef: 'node.a', labelOrNull: 'Loop', sourceRefs: [] },
+  ];
+  const before = JSON.stringify(graph);
+  let journey = Journey.createBoardJourney(graph, { journeyRef: 'journey.test', boardRef: 'board.test', startRef: 'node.a' });
+  assert.equal(journey.schemaVersion, Journey.BOARD_JOURNEY_SCHEMA);
+  assert.deepEqual(Journey.journeyChoices(graph, journey).map((choice) => choice.relationshipRef), ['rel.a-b']);
+  journey = Journey.advanceBoardJourney(graph, journey, 'rel.a-b');
+  journey = Journey.advanceBoardJourney(graph, journey, 'rel.b-a');
+  assert.deepEqual(journey.steps.map((step) => step.semanticRef), ['node.a', 'node.b', 'node.a']);
+  assert.deepEqual(journey.steps.map((step) => step.navigationKind), ['START', 'RELATIONSHIP', 'RELATIONSHIP']);
+  assert.deepEqual(journey.returnStack, ['node.a', 'node.b']);
+  assert.equal(JSON.stringify(graph), before);
+});
+
+test('BoardJourney Back and Revisit append semantic history while preserving return semantics', () => {
+  const graph = baseGraph();
+  graph.relationships = [{ relationshipRef: 'rel.a-b', kind: 'FLOW', fromRef: 'node.a', toRef: 'node.b', labelOrNull: null, sourceRefs: [] }];
+  let journey = Journey.createBoardJourney(graph, { journeyRef: 'journey.return', boardRef: 'board.test', startRef: 'node.a' });
+  journey = Journey.advanceBoardJourney(graph, journey, 'rel.a-b');
+  journey = Journey.backBoardJourney(graph, journey);
+  assert.deepEqual(journey.steps.map((step) => [step.semanticRef, step.navigationKind]), [
+    ['node.a', 'START'],
+    ['node.b', 'RELATIONSHIP'],
+    ['node.a', 'BACK'],
+  ]);
+  assert.deepEqual(journey.returnStack, []);
+  journey = Journey.revisitBoardJourney(graph, journey, 1);
+  assert.equal(journey.currentRef, 'node.b');
+  assert.equal(journey.steps.at(-1).navigationKind, 'REVISIT');
+  assert.deepEqual(journey.returnStack, ['node.a']);
+});
+
+test('BoardJourney fails closed on invalid semantic traversal coordinates', () => {
+  const graph = baseGraph();
+  graph.relationships = [{ relationshipRef: 'rel.a-b', kind: 'FLOW', fromRef: 'node.a', toRef: 'node.b', labelOrNull: null, sourceRefs: [] }];
+  assert.throws(() => Journey.createBoardJourney(graph, { journeyRef: 'journey.bad', boardRef: 'board.test', startRef: 'node.missing' }), /startRef missing/);
+  const journey = Journey.createBoardJourney(graph, { journeyRef: 'journey.bad', boardRef: 'board.test', startRef: 'node.a' });
+  assert.throws(() => Journey.advanceBoardJourney(graph, journey, 'rel.missing'), /relationship missing/);
+  assert.throws(() => Journey.backBoardJourney(graph, journey), /return stack is empty/);
+  assert.throws(() => Journey.revisitBoardJourney(graph, journey, 99), /revisit sequence invalid/);
 });

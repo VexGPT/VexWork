@@ -92,3 +92,15 @@ test('draft reader keeps read-only source separate from editable local fork', as
 });
 
 // [VXG RealForever][VEXWORK][VEXBOARD][UI-PROOF]
+
+test('BoardJourney UI keeps semantic walk state distinct from camera navigation', () => {
+  assert.match(page, /BoardJourney · semantic walk/);
+  assert.match(page, /Start journey here/);
+  assert.match(page, /Board\.createBoardJourney/);
+  assert.match(page, /Board\.advanceBoardJourney/);
+  assert.match(page, /Board\.backBoardJourney/);
+  assert.match(page, /Board\.revisitBoardJourney/);
+  assert.match(page, /Board\.journeyChoices/);
+  assert.match(page, /navigationKind/);
+  assert.doesNotMatch(page, /method:\s*['"](?:POST|PUT|PATCH|DELETE)['"]/i);
+});
