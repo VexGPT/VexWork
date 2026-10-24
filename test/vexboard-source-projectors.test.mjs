@@ -42,6 +42,8 @@ test('VexWork Project source projector preserves source ownership and currentnes
   const sourceProjector = first.graph.nodes.find((node) => node.nodeRef === 'work.vexboard.source-projectors');
   assert.equal(sourceProjector.kind, 'REFERENCE');
   assert.equal(sourceProjector.sourceRefs.includes('workgraphs/public.json'), true);
+  assert.equal(sourceProjector.sourceRefs.includes('src/shared/vexboard-evidence.mjs'), true);
+  assert.equal(sourceProjector.sourceRefs.includes('src/shared/vexboard-source-resolver.mjs'), true);
 
   const currentness = first.graph.nodes.find(
     (node) => node.nodeRef === 'annotation.work.vexboard.source-projectors.currentness',

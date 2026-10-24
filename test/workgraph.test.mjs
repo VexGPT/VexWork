@@ -141,6 +141,10 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(vexboardProjectors.effectDisposition, 'EFFECTS_BOUND');
   assert.equal(vexboardProjectors.sourceRefs.includes('github.pull.vexwork.108'), true);
   assert.equal(vexboardProjectors.sourceRefs.includes('src/core/vexboard-source-projectors.mjs'), true);
+  assert.equal(vexboardProjectors.sourceRefs.includes('github.pull.vexwork.110'), true);
+  assert.equal(vexboardProjectors.sourceRefs.includes('src/shared/vexboard-evidence.mjs'), true);
+  assert.equal(vexboardProjectors.sourceRefs.includes('github.pull.vexwork.115'), true);
+  assert.equal(vexboardProjectors.sourceRefs.includes('src/shared/vexboard-source-resolver.mjs'), true);
   assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexboard.source-projectors.running.pr108'));
   assert.equal(vexboardContract.sourceRefs.includes('src/shared/vexboard-model.mjs'), true);
   assert.equal(vexboardContract.sourceRefs.includes('vexboard/index.html'), true);
