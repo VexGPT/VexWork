@@ -190,12 +190,20 @@ export function backBoardJourney(graphInput, journeyInput) {
   const journey = normalizeBoardJourney(journeyInput, graph);
   assert(journey.returnStack.length > 0, 'BoardJourney return stack is empty');
   const targetRef = journey.returnStack.at(-1);
-  return appendStep(graph, journey, {
-    semanticRef: targetRef,
-    navigationKind: 'BACK',
-    viaRelationshipRefOrNull: null,
+  let targetSequence = -1;
+  for (let index = journey.steps.length - 2; index >= 0; index -= 1) {
+    if (journey.steps[index].semanticRef === targetRef) {
+      targetSequence = index;
+      break;
+    }
+  }
+  assert(targetSequence >= 0, `BoardJourney return target missing from history: ${targetRef}`);
+  return normalizeBoardJourney({
+    ...journey,
+    currentRef: targetRef,
+    steps: journey.steps.slice(0, targetSequence + 1),
     returnStack: journey.returnStack.slice(0, -1),
-  });
+  }, graph);
 }
 
 export function revisitBoardJourney(graphInput, journeyInput, sequence) {
