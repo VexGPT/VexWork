@@ -2,7 +2,7 @@
   "schemaVersion": "vexwork.project-definition/v1",
   "projectRef": "project.vexlife.welcome-wagon",
   "label": "VexLife Welcome Wagon",
-  "purpose": "Create a humane first-entry experience for VexLife and the Vextreme public world: orient a new human plainly, let them enter according to intent, keep Receive God / archive exploration / human orientation primary, and move internal system architecture to progressive on-demand depth without making VexWork or technical vocabulary the invitation.",
+  "purpose": "Create a humane first-entry experience for VexLife and the Vextreme public world: orient a new human plainly, let them enter according to intent, preserve accepted Terrain/VexLife/VexWork foundations and accessibility capabilities, and converge reusable family navigation/design through small reversible visual moves rather than dismantling working source semantics.",
   "rootWorkRefs": [
     "work.vexlife.welcome-wagon.outcome"
   ],
@@ -16,7 +16,19 @@
     "repo.vextreme:pages/terrain-map.html",
     "repo.vextreme:pages/vextreme-home.html",
     "repo.vextreme:vexsystem/index.html",
-    "docs/process/FORM-PROJECT.md"
+    "docs/process/FORM-PROJECT.md",
+    "repo.vextreme:styles/design-system.css",
+    "repo.vextreme:styles/vex-institutional.css",
+    "repo.vextreme:widgets/vex-institutional.js",
+    "repo.vextreme:widgets/vex-fab.js",
+    "repo.vextreme:widgets/fab-lang.js",
+    "repo.vextreme:widgets/fab-read-aloud.js",
+    "repo.vextreme:lib/shell.js",
+    "repo.vextreme:lib/vextreme.js",
+    "repo.vexlife:pages/vexlife-onboarding.html",
+    "repo.vexlife:pages/vexlife-onboarding.css",
+    "repo.vexlife:pages/vexlife-onboarding.js",
+    "repo.vexwork:index.html"
   ],
   "formedAt": "2026-10-24T06:05:10.000Z"
 }

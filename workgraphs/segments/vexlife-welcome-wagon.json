@@ -12,7 +12,7 @@
       "workRef": "work.vexlife.welcome-wagon.outcome",
       "parentWorkRefOrNull": null,
       "label": "VexLife Welcome Wagon",
-      "purpose": "Create a humane front door where a first-time person can understand where they are and enter according to why they came, without making institutional or system architecture the prerequisite for participation.",
+      "purpose": "Create a humane front door where a first-time person can understand where they are and enter according to why they came, while preserving accepted Terrain/VexLife/VexWork foundations, accessibility/FAB capabilities and reversible presentation boundaries instead of treating welcome design as permission to rebuild working systems.",
       "workClass": "OUTCOME",
       "state": "CAPTURED",
       "priorityClass": "NORMAL",
@@ -162,6 +162,125 @@
         "projects/vexlife-welcome-wagon/README.md",
         "repo.vextreme:pages/terrain-map.html",
         "repo.vextreme:pages/vextreme-home.html"
+      ],
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-10-24T06:05:10.000Z",
+      "updatedAt": "2026-10-24T06:05:10.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "workRef": "work.vexlife.welcome-wagon.shared-header-capability-map",
+      "parentWorkRefOrNull": "work.vexlife.welcome-wagon.outcome",
+      "label": "Map the reusable family header and FAB capability foundation",
+      "purpose": "Map the accepted Vextreme, Terrain, VexLife and VexWork header/navigation foundations into a reusable semantic capability contract covering family identity, current-surface identity, primary navigation, language, Read Aloud, theme and surface-specific controls without forcing one identical DOM/header implementation across repositories.",
+      "workClass": "POTENTIAL",
+      "state": "CAPTURED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vextreme",
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-welcome-wagon/README.md",
+        "repo.vextreme:pages/terrain-map.html",
+        "repo.vextreme:pages/vextreme-home.html",
+        "repo.vextreme:widgets/vex-fab.js",
+        "repo.vextreme:widgets/fab-lang.js",
+        "repo.vextreme:widgets/fab-read-aloud.js",
+        "repo.vextreme:widgets/vex-institutional.js",
+        "repo.vextreme:lib/vextreme.js",
+        "repo.vexlife:pages/vexlife-onboarding.html",
+        "repo.vexwork:index.html"
+      ],
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-10-24T06:05:10.000Z",
+      "updatedAt": "2026-10-24T06:05:10.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "workRef": "work.vexlife.welcome-wagon.terrain-design-convergence",
+      "parentWorkRefOrNull": "work.vexlife.welcome-wagon.outcome",
+      "label": "Converge Terrain with the Vextreme design foundation without replacing Terrain",
+      "purpose": "Explore the smallest reusable design/header movement that lets Terrain inherit the Vextreme family logo, typography, visual language and accessibility affordances while preserving accepted Terrain Journey, search, reader, archive and entry behavior.",
+      "workClass": "POTENTIAL",
+      "state": "CAPTURED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vextreme"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-welcome-wagon/README.md",
+        "repo.vextreme:pages/terrain-map.html",
+        "repo.vextreme:styles/design-system.css",
+        "repo.vextreme:styles/vex-institutional.css",
+        "repo.vextreme:lib/shell.js",
+        "repo.vextreme:lib/vextreme.js"
+      ],
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-10-24T06:05:10.000Z",
+      "updatedAt": "2026-10-24T06:05:10.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "workRef": "work.vexlife.welcome-wagon.visual-rollout-rollback",
+      "parentWorkRefOrNull": "work.vexlife.welcome-wagon.outcome",
+      "label": "One-PR reversible visual rollout and rollback membrane",
+      "purpose": "Keep material Welcome Wagon/header presentation experiments bounded enough that Victor can judge the rendered result after merge and one coherent PR can revert a bad visual move without unwinding unrelated route, Journey, localization, accessibility or product semantics.",
+      "workClass": "POTENTIAL",
+      "state": "CAPTURED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vextreme",
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-welcome-wagon/README.md"
+      ],
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-10-24T06:05:10.000Z",
+      "updatedAt": "2026-10-24T06:05:10.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "workRef": "work.vexlife.welcome-wagon.vexlife-placeholder-visual-story",
+      "parentWorkRefOrNull": "work.vexlife.welcome-wagon.outcome",
+      "label": "Evolve the VexLife placeholder toward screenshot-led human orientation",
+      "purpose": "Treat the current no-effect VexLife Public Alpha page as truthful placeholder/onboarding material while Vex is not yet ready; as real lived product surfaces become available, reduce explanation where screenshots and current product behavior can demonstrate the experience more directly.",
+      "workClass": "POTENTIAL",
+      "state": "CAPTURED",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-welcome-wagon/README.md",
+        "repo.vexlife:pages/vexlife-onboarding.html",
+        "repo.vexlife:pages/vexlife-onboarding.css",
+        "repo.vexlife:pages/vexlife-onboarding.js"
       ],
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
