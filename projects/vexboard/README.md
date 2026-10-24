@@ -14,11 +14,11 @@ Canvas Projection                     COMPLETED
 BoardJourney + simulation             COMPLETED
 animated semantic traversal           ACCEPTED / PR #98 MERGED
 BoardPatch                            READY / NO_AUTHORITY / NO_EFFECTS
-Source Projectors                     READY / NO_AUTHORITY / NO_EFFECTS
+Source Projectors                     RUNNING / AUTHORIZED_BOUNDED / EFFECTS_BOUND
 VexBoard root                         DECOMPOSED
 ```
 
-This source preserves the VexBoard product intention and architecture across implementation phases. The Project is canonically formed through `project.json`, its Work Board view, a bounded Workgraph decomposition, the Project Registry, and the generated public workspace. BoardGraph, Canvas Projection, BoardJourney and same-board prototype simulation are accepted implementation foundations; PR #98 adds presentation-only animated semantic focus without changing Journey truth. PR #100 currentized those completed foundations into canonical VexWork truth. BoardPatch and Source Projectors are dependency-ready but still carry no implementation authority or effects. This architecture source explains that state; it does not own or advance lifecycle truth.
+This source preserves the VexBoard product intention and architecture across implementation phases. The Project is canonically formed through `project.json`, its Work Board view, a bounded Workgraph decomposition, the Project Registry, and the generated public workspace. BoardGraph, Canvas Projection, BoardJourney and same-board prototype simulation are accepted implementation foundations; PR #98 adds presentation-only animated semantic focus without changing Journey truth. PR #100 currentized those completed foundations into canonical VexWork truth. PR #108 then landed the first bounded read-only Source Projectors implementation, and PR #109 currentized that broader Work item to RUNNING / AUTHORIZED_BOUNDED / EFFECTS_BOUND while keeping lived comparison, evidence presentation, federation, and broader source families unfinished. BoardPatch remains dependency-ready with NO_AUTHORITY / NO_EFFECTS. This architecture source explains that state; it does not own or advance lifecycle truth.
 
 ```text
 PRESERVE_THE_PROJECT_NOW
@@ -3739,6 +3739,14 @@ VexBoard Workgraph currentization
 animated semantic traversal focus
   PR #98 MERGED / TREE-EXACT
   merge = 2c37fcb4e90aa45f96bc8a9e42d970a62b85b4a6
+
+read-only Source Projectors
+  PR #108 MERGED / VERIFIED
+  merge = 3278edf9c39b58ef4f59be9e239875518d6c2abf
+
+Source Projectors currentization
+  PR #109 MERGED / VERIFIED
+  merge = 928ee2c2e2b5d73fa1ac5c71a50c0bf4d6f40845
 ~~~
 
 The accepted Workgraph therefore truthfully exposes:
@@ -3749,7 +3757,7 @@ Canvas Projection          COMPLETED
 BoardJourney + simulation  COMPLETED
 
 BoardPatch                 READY / NO_AUTHORITY / NO_EFFECTS
-Source Projectors          READY / NO_AUTHORITY / NO_EFFECTS
+Source Projectors          RUNNING / AUTHORIZED_BOUNDED / EFFECTS_BOUND
 
 VexBoard root              DECOMPOSED
 ~~~
@@ -3791,7 +3799,7 @@ VexBusinessFactory topology
 != make VexBoard the executor
 ~~~
 
-Only after those distinct consumers agree should VexBoard extract broader resolver/source-projector or semantic-factory contracts. BoardPatch and Source Projectors being READY means their dependencies are satisfied; it does not itself grant implementation authority.
+The first Source Projectors slice is now accepted and active, but broader resolver/federation or semantic-factory extraction still waits for repeated consumer pressure. RUNNING / AUTHORIZED_BOUNDED / EFFECTS_BOUND names only that bounded active outcome; it does not grant BoardPatch authority, target-repository mutation, or completion of lived comparison.
 
 No human host action is required to preserve this design.
 
