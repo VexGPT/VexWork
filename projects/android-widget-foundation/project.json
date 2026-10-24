@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.android-widget-foundation",
+  "label": "Android Widget Foundation",
+  "purpose": "Create a reusable Android home-screen App Widget foundation that projects product-owned State into compact remote surfaces and routes user interaction back as bounded product Controls, with VexStream playback as the first real consumer.",
+  "rootWorkRefs": [
+    "work.android-widget-foundation.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vexlife-android"
+  ],
+  "sourceRefs": [
+    "projects/android-widget-foundation/README.md",
+    "docs/process/FORM-PROJECT.md",
+    "repo.vexlife-android:docs/CULTURE.md",
+    "repo.vexlife-android:docs/foundation/FEATURE-EXPERIENCE-LANGUAGE.md",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/MainActivity.kt",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/media/vexstream/VexStreamPlaybackService.kt"
+  ],
+  "formedAt": "2026-10-24T11:20:00.000Z"
+}
