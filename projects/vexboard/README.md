@@ -3662,6 +3662,51 @@ expected evidence slot
 VexBoard presentation may later render placeholders, galleries and expected-vs-observed comparisons. That
 UI should be added only after the current single-file browser surface is decomposed enough that evidence
 presentation does not enlarge `vexboard/index.html` into another semantic owner.
+### Presentation decomposition before evidence UI
+
+The current browser proving surface is still concentrated in `vexboard/index.html`. That is acceptable for
+the foundation that already shipped, but it should not be the growth surface for evidence, federation, richer
+prototype views or additional source projectors.
+
+The next structural presentation slice should extract existing responsibilities rather than introduce a new
+framework:
+
+~~~text
+vexboard/index.html
+  shell / state wiring / composition only
+
+vexboard/ui/renderer.mjs
+  canvas items / edges / projection rendering
+
+vexboard/ui/inspector.mjs
+  stable identity / source refs / bounded-neighborhood inspection
+
+vexboard/ui/journey-panel.mjs
+  BoardJourney walk / choices / return / revisit presentation
+
+vexboard/ui/prototype-view.mjs
+  prototype scenario / conditions / interaction trail presentation
+
+vexboard/ui/evidence-panel.mjs
+  expected-image placeholders / reference artifacts / observed artifacts
+
+vexboard/ui/camera-animation.mjs
+  already extracted camera movement owner
+
+vexboard/ui/styles.css
+  presentation styling
+~~~
+
+This is an incremental module split, not a React/framework migration and not a semantic rewrite.
+
+Permanent:
+
+~~~text
+UI_MODULE_SPLIT != NEW_SEMANTIC_OWNER
+EVIDENCE_PANEL != EVIDENCE_TRUTH
+INSPECTOR != SOURCE_OWNER
+RENDERER != BOARDGRAPH
+~~~
 ## Current continuation
 
 Accepted source and canonical VexWork projection are now aligned through the navigation foundation:
