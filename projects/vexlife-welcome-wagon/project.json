@@ -28,7 +28,14 @@
     "repo.vexlife:pages/vexlife-onboarding.html",
     "repo.vexlife:pages/vexlife-onboarding.css",
     "repo.vexlife:pages/vexlife-onboarding.js",
-    "repo.vexwork:index.html"
+    "repo.vexwork:index.html",
+    "repo.vextreme:docs/architecture/12-design-system.md",
+    "repo.vextreme:docs/architecture/18-institutional-pages.md",
+    "repo.vextreme:config/institutional-surfaces.json",
+    "repo.vextreme:index.html",
+    "repo.vextreme:pages/vextreme-covenant.html",
+    "repo.vexlife:README.md",
+    "repo.vexwork:README.md"
   ],
   "formedAt": "2026-10-24T06:05:10.000Z"
 }

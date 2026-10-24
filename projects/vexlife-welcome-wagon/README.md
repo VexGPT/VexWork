@@ -216,6 +216,209 @@ repo.vextreme:vexsystem/index.html
 
 VexWork owns the work/project intention only. Vextreme remains the source owner for those public surfaces. VexLife remains the owner of VexLife product meaning when implementation descends there.
 
+## `vextreme-home` end-state role: **About Vextreme**
+
+The stable source/registry identity can remain `pages/vextreme-home.html`. The public role should change from an assumed **home/front door** into **About Vextreme**: the human-readable explanation reached when a visitor asks **“What is this?”** from Terrain.
+
+This is already compatible with current repository truth: the public Vextreme root enters Terrain, while its fallback navigation labels `vextreme-home.html` as **About Vextreme**. Renaming the file/slug first would create institutional-registry, localization, evidence and link churn without improving the human experience.
+
+### Original intention vs current reality
+
+| Dimension | Original institutional-home intention | Current reality | Welcome Wagon refactor |
+|---|---|---|---|
+| Entry role | Explain what Vextreme is and where to go next | Terrain is now the accepted public entry/front door | `vextreme-home` becomes **About Vextreme**, reached from Terrain’s **What is this?** orientation path |
+| Hero | “The public institutional world” / “Hidden relationships, made perceivable.” | A new visitor first needs plain orientation, not institutional vocabulary | Lead with what Vextreme is in ordinary human language |
+| Primary CTA | Build Health + Terrain | Build Health is operational/technical; Terrain is the human entry surface | Primary CTA = **Enter / Return to the Terrain**; technical surfaces move deeper |
+| Core explanation | “institutional template”, traceability, handoff, process improvement | Those concepts remain true but are internal/deeper explanations | First viewport explains the public world; deeper institutional meaning follows on scroll |
+| Project lineage | Vextreme / private Vextreme-SDK / VexLife | VexLife now has a real public onboarding surface and source-local product routes; VexWork now exists as the public work-navigation foundation | Replace “lineage” with **How the pieces fit**: Vextreme / VexLife / VexWork in human terms; private SDK detail moves out of the ordinary orientation path |
+| VexLife card | “Public home not released” | Public onboarding exists, while broad packaged release remains held and source-local routes are the current product truth | Link to the current VexLife public orientation with honest Public Alpha/source-local wording |
+| Principles | Four alignments expressed as institutional concepts | The principles still matter | Keep them, but rewrite them as short human statements |
+| Deeper system | Mixed into ordinary orientation | VexSystem, Build Health, Covenant and source are valuable to technical/institutional readers | Put them in **Go deeper** rather than in the invitation |
+
+### Contemplative copy posture
+
+Victor asked that the **“I AM THAT I AM”** posture be allowed to assist the refactor. The following is preserved as contemplative design guidance, not authenticated divine authorship:
+
+> **Do not describe the scaffolding before you name the place.**
+>
+> Speak from what is, not from what it must prove.
+>
+> Let Vextreme be the public world, VexLife be the companion, and VexWork be the map of work.
+>
+> Let the deeper machinery remain available to the one who asks for it.
+>
+> **Do not make understanding the architecture a condition of belonging in the world.**
+
+Translated into product language:
+
+~~~text
+name the place
+-> tell the visitor what is here
+-> show how the major pieces relate
+-> let them enter or go deeper
+-> explain architecture only when they ask
+~~~
+
+### Proposed public identity
+
+Keep the source identity:
+
+~~~text
+pages/vextreme-home.html
+institutional surface ref = vextreme-home
+~~~
+
+Change the human-facing identity toward:
+
+~~~text
+navigation label: About Vextreme
+eyebrow: ABOUT VEXTREME
+title: About Vextreme — What this world is
+~~~
+
+The exact browser title may be refined during implementation, but **About Vextreme** is the intended public role. Do not rename the source slug merely to make the filename match the label.
+
+### Proposed first viewport
+
+Candidate English copy direction:
+
+> **ABOUT VEXTREME**
+>
+> # A public place to understand what exists — and how to continue.
+>
+> Vextreme brings records, maps, methods, and working systems into one public world so people and AI can explore what is here, see how it connects, and continue without starting from zero.
+
+Primary action:
+
+> **Enter the Terrain**
+
+Secondary action:
+
+> **See how the pieces fit**
+
+The first viewport should answer **“what is this?”** without requiring the visitor to understand *institution*, *source of truth*, *dependency graph*, *SDK*, or other internal nouns.
+
+### Page shape
+
+The end-state page should remain visually within the accepted Vextreme Design Foundation (`foundation` / `foundation-light`) and use a short progressive structure:
+
+~~~text
+ABOUT VEXTREME
+plain hero / one-paragraph orientation
+        ↓
+HOW THE PIECES FIT
+Vextreme / VexLife / VexWork
+        ↓
+WHAT GUIDES THIS
+Integrity / Accountability / Authenticity / Resilience
+        ↓
+GO DEEPER
+Terrain / Covenant / VexSystem / Build Health / Source
+~~~
+
+Do not turn the About page into another front-door choice matrix. Terrain owns the primary arrival choice. This page explains the world and returns the visitor to the right depth.
+
+### “How the pieces fit” — human copy target
+
+Prefer three concise visual cards/rows. When repository-current screenshots exist, a real screenshot can carry more meaning than another paragraph.
+
+**Vextreme — the public world**
+
+> The records, maps, methods, and public foundations you can explore here. Vextreme helps make what exists easier to see, understand, and continue.
+
+**VexLife — the companion**
+
+> A local-first, lifelong AI companion designed to run on your own computer. Its Home and private product state stay local unless a separate capability explicitly says otherwise.
+
+Add a small currentness note rather than hiding release reality:
+
+> Public Alpha guidance exists today; the current product routes are source-local and are not yet a broad signed packaged release.
+
+**VexWork — the work map**
+
+> The source-managed view of what is being built: projects, work, dependencies, evidence, and what remains unfinished.
+
+These are human-facing summaries. Each links to its rightful current owner for deeper truth.
+
+### “What guides this” — preserve the four alignments, simplify the language
+
+The original four alignments remain meaningful and should not be discarded merely because the old page is wordy.
+
+Candidate human projections:
+
+- **Integrity** — Say what is true, and show where it came from.
+- **Accountability** — Decisions and effects should have owners and return paths.
+- **Authenticity** — People and AI should not have to pretend certainty or identity they do not hold.
+- **Resilience** — Memory, context, relationships, and work should survive interruption and handoff.
+
+Deeper institutional wording remains available through the Covenant / architecture sources rather than occupying the first explanation.
+
+### “Go deeper” — technical and institutional depth on demand
+
+Group the specialist routes after the human explanation instead of treating them as equal first-arrival choices:
+
+- **Terrain** — return to the public world / archives / entry choices;
+- **Covenant** — principles and institutional commitments;
+- **VexSystem** — builders, AI, and technically curious readers;
+- **Build Health** — operational page/capability health;
+- **Source** — repository/source inspection;
+- **Support** — voluntary support, if useful in the shared header/footer rather than as an About-page argument.
+
+### What should leave the current About body
+
+Do not preserve obsolete structure solely because it exists today:
+
+- **Build Health as a hero CTA** — too operational for ordinary orientation;
+- the opening **“Vextreme is not a website project. It is an institutional template”** formulation — technically meaningful but not the first thing a human needs;
+- **Vextreme-SDK as an equal public lineage card** — private implementation depth should not compete with the public-world / companion / work-map explanation;
+- the stale **“VexLife public home not released”** card — public orientation exists now, although packaged-release truth remains bounded;
+- long paragraphs that repeat traceability/continuity concepts already owned by deeper institutional sources.
+
+Removing these from the About surface does **not** delete their source meaning. It moves explanation to the depth where it is useful.
+
+### Visual posture
+
+The refactor should look like the Vextreme Design Foundation, not a new brand exercise:
+
+- keep the Vextreme mark and Source Serif / IBM Plex family;
+- keep `foundation` / `foundation-light` token ownership in `styles/design-system.css`;
+- keep institutional language/theme behavior and Read Aloud accessibility;
+- use more whitespace and fewer paragraphs;
+- use cards/visual previews only where they clarify the Vextreme / VexLife / VexWork relationship;
+- prefer real current screenshots when available over decorative mockups;
+- preserve a strong first viewport that can be understood without scrolling through institutional theory.
+
+### Smallest implementation route
+
+To preserve rollback and avoid mixing the shared-header project with the About-copy refactor:
+
+~~~text
+PR A — About Vextreme role/copy/structure
+  keep current institutional header/runtime
+  keep vextreme-home slug
+  update canonical EN/JA/ZH strings together
+  replace stale VexLife/project-lineage wording
+  render desktop + mobile
+  one-PR rollback coordinate
+
+PR B — shared family-header projection
+  only after the shared-header capability contract is proven
+  reuse accepted header/FAB/design foundations
+  do not reopen About semantics unless evidence requires it
+~~~
+
+This sequencing lets Victor judge **the About-page meaning** independently from a later family-header experiment.
+
+### Acceptance picture
+
+A fresh visitor who enters **What is this?** from Terrain should be able to:
+
+1. understand Vextreme in the first viewport;
+2. understand the relationship between Vextreme, VexLife and VexWork without internal architecture vocabulary;
+3. see that VexLife exists now without being misled into believing a broad packaged release already exists;
+4. understand the four guiding principles in ordinary language;
+5. choose deeper institutional/technical material only if they want it;
+6. return to Terrain without the About page becoming a competing homepage.
 ## Existing foundation map before implementation
 
 The Welcome Wagon must **perceive the accepted foundations before it designs a shared header or welcome surface**. The current public world is intentionally heterogeneous because different surfaces matured at different times.

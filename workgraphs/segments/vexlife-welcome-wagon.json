@@ -121,8 +121,8 @@
       "formationProcessRefOrNull": null,
       "workRef": "work.vexlife.welcome-wagon.vextreme-home-role",
       "parentWorkRefOrNull": "work.vexlife.welcome-wagon.outcome",
-      "label": "Reposition the institutional home foundation",
-      "purpose": "Evolve the current vextreme-home foundation toward deeper institutional/About meaning instead of treating its filename or intellectual architecture copy as proof that it should be the ordinary human default homepage.",
+      "label": "Refactor `vextreme-home` into the human About Vextreme surface",
+      "purpose": "Keep the stable vextreme-home institutional identity while changing its public role to About Vextreme: answer “What is this?” in plain language in the first viewport, explain Vextreme/VexLife/VexWork with current truth, retain the four alignments in human language, move Build Health/VexSystem/Covenant/source into deeper on-demand routes, and avoid competing with Terrain as the accepted public front door.",
       "workClass": "POTENTIAL",
       "state": "CAPTURED",
       "priorityClass": "NORMAL",
@@ -133,7 +133,13 @@
       ],
       "sourceRefs": [
         "projects/vexlife-welcome-wagon/README.md",
-        "repo.vextreme:pages/vextreme-home.html"
+        "repo.vextreme:pages/vextreme-home.html",
+        "repo.vextreme:docs/architecture/12-design-system.md",
+        "repo.vextreme:docs/architecture/18-institutional-pages.md",
+        "repo.vextreme:index.html",
+        "repo.vextreme:pages/vextreme-covenant.html",
+        "repo.vexlife:README.md",
+        "repo.vexwork:README.md"
       ],
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
