@@ -114,6 +114,23 @@ A security Spike defaults to defensive, bounded evidence acquisition. It does no
 
 If one of those effects is genuinely required for an authorized security exercise, its exact owner, target, effect, safeguards and evidence contract must be admitted separately. The generic Spike process never grants it.
 
+## Adversarial Spike relationship
+
+When a Spike comes from the attacker lens, the brief must additionally bind:
+
+```text
+attackerGoal
+attackerStartingPosition
+attackerCapabilities
+assumptionUnderAttack
+maximumAllowedBlastRadius
+lowestSufficientScopeTier
+```
+
+The default is an A0/A1/A2 conceptual, synthetic or isolated investigation. Reaching an A3 real-environment exercise requires a separately current target/effect grant; the Spike process itself never upgrades scope.
+
+See `projects/vex-security-assurance/ADVERSARIAL-LENS.md`.
+
 ## Connection to Derived Attention
 
 ```text
