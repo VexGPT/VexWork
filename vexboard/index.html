@@ -6,7 +6,38 @@
 <title>VexBoard — Semantic Canvas</title>
 <meta name="description" content="Create local VexBoard drafts or inspect an existing semantic board through a zoomable, recursive, read-only canvas projection without mutating source truth.">
 <style>
-:root{--ink:#1c1917;--muted:#78716c;--line:#e7e5e4;--blue:#2563eb;--violet:#7c3aed;--paper:#fff;--wash:#fafaf9}*{box-sizing:border-box}html,body{height:100%}body{margin:0;background:var(--wash);color:var(--ink);font:14px Inter,system-ui,sans-serif}button,input{font:inherit}.top{height:58px;padding:0 16px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--line);background:#fff}.top strong{font:700 24px Georgia,serif}.top a{margin-left:auto;color:var(--blue);text-decoration:none}.app{height:calc(100% - 58px)}.landing{width:min(980px,calc(100% - 32px));margin:auto;padding:52px 0}.eyebrow,.tiny{font:700 9px ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--blue)}h1{font:700 clamp(38px,7vw,70px)/1 Georgia,serif;letter-spacing:-.04em;margin:10px 0 18px}.lede{max-width:720px;color:var(--muted);line-height:1.7}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.btn{border:1px solid #d6d3d1;border-radius:8px;background:#fff;padding:9px 12px;cursor:pointer}.btn.primary{background:var(--blue);color:#fff;border-color:var(--blue)}.btn.violet{background:#f5f3ff;color:#6d28d9;border-color:#ddd6fe}.btn:disabled{opacity:.4;cursor:not-allowed}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin-top:14px}.card{background:#fff;border:1px solid var(--line);border-radius:11px;padding:14px}.card h3{margin:5px 0}.card p{color:var(--muted);font-size:12px;line-height:1.5}.workspace{height:100%;display:grid;grid-template-rows:auto minmax(0,1fr)}.bar{padding:8px 10px;background:#fff;border-bottom:1px solid var(--line);display:flex;gap:7px;align-items:center}.title{flex:1;border:1px solid transparent;border-radius:6px;padding:7px;font-weight:700}.title:not(:disabled):focus{outline:none;border-color:#93c5fd}.badge{font:700 8px ui-monospace,monospace;text-transform:uppercase;border-radius:999px;padding:5px 8px}.draft{background:#eff6ff;color:#1d4ed8}.readonly{background:#fff7ed;color:#c2410c}.zoom-readout{min-width:52px;text-align:center;color:var(--muted);font:700 10px ui-monospace,monospace}.work{min-height:0;display:grid;grid-template-columns:74px minmax(0,1fr) 286px}.tools{background:#fff;border-right:1px solid var(--line);padding:7px;display:flex;flex-direction:column;gap:5px}.tool{border:1px solid transparent;background:transparent;border-radius:7px;min-height:46px;font-size:9px;color:var(--muted);cursor:pointer}.tool.active{background:#eff6ff;border-color:#bfdbfe;color:var(--blue);font-weight:700}.tool:disabled{opacity:.35}.viewport{position:relative;overflow:hidden;background-color:#f7f7f5;background-image:radial-gradient(#d6d3d1 1px,transparent 1px);background-size:20px 20px;touch-action:none}.canvas{position:absolute;left:0;top:0;width:2100px;height:1100px;transform-origin:0 0;will-change:transform}.edges{position:absolute;inset:0;pointer-events:none}.edge{stroke:#94a3b8;stroke-width:2}.shape{position:absolute;display:flex;align-items:center;justify-content:center;text-align:center;padding:10px;background:#fff;border:1px solid #cbd5e1;border-radius:10px;box-shadow:0 3px 12px #00000010;user-select:none;touch-action:none;overflow:hidden}.shape.selected{outline:3px solid #2563eb33;border-color:var(--blue)}.shape.DIAMOND{clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);border-radius:0;padding:18px}.shape.FRAME{border:2px dashed #94a3b8;background:#ffffff55;align-items:flex-start;justify-content:flex-start;color:#64748b}.shape.TEXT{border-color:transparent;background:transparent;box-shadow:none;justify-content:flex-start}.minimap{position:absolute;right:12px;bottom:12px;width:188px;height:118px;border:1px solid #cbd5e1;border-radius:9px;background:#ffffffef;box-shadow:0 5px 18px #0002;overflow:hidden;z-index:40}.minimap-item{position:absolute;background:#cbd5e1;border:1px solid #94a3b8;min-width:2px;min-height:2px}.minimap-view{position:absolute;border:2px solid var(--blue);background:#2563eb12;pointer-events:none}.inspector{background:#fff;border-left:1px solid var(--line);padding:14px;overflow:auto}.inspector h2{margin:0 0 5px;font:700 20px Georgia,serif}.sub{font-size:11px;color:var(--muted);margin-bottom:14px}.group{border-top:1px solid var(--line);padding:12px 0}.group h3{margin:0 0 8px;font:700 9px ui-monospace,monospace;text-transform:uppercase}.kv{display:grid;grid-template-columns:82px minmax(0,1fr);gap:6px;font-size:11px}.k{font:700 8px ui-monospace,monospace;color:#a8a29e;text-transform:uppercase}.v{overflow-wrap:anywhere;white-space:pre-wrap}.number{width:76px}.journey-stack{display:flex;flex-direction:column;gap:5px;margin:8px 0}.journey-step{border:1px solid var(--line);border-radius:7px;background:#fafaf9;padding:6px 8px;text-align:left;font-size:10px;cursor:pointer}.journey-step.current{border-color:#93c5fd;background:#eff6ff;color:#1d4ed8;font-weight:700}.journey-choice{width:100%;text-align:left}.shape.simulatable{cursor:pointer;box-shadow:0 0 0 2px #7c3aed22,0 3px 12px #00000010}.prototype-overlays{position:absolute;left:12px;top:12px;display:flex;flex-direction:column;gap:6px;z-index:45;pointer-events:none}.prototype-overlay{max-width:280px;border:1px solid #c4b5fd;border-radius:8px;background:#f5f3ffea;color:#5b21b6;padding:8px 10px;box-shadow:0 5px 18px #0002;font-size:11px}.empty{color:var(--muted);line-height:1.6;font-size:12px}@media(max-width:850px){.work{grid-template-columns:62px minmax(0,1fr)}.inspector{display:none}.minimap{width:150px;height:94px}}
+:root{--ink:#1c1917;--muted:#78716c;--line:#e7e5e4;--blue:#2563eb;--violet:#7c3aed;--paper:#fff;--wash:#fafaf9}*{box-sizing:border-box}html,body{height:100%}body{margin:0;background:var(--wash);color:var(--ink);font:14px Inter,system-ui,sans-serif}button,input{font:inherit}.top{height:58px;padding:0 16px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--line);background:#fff}.top strong{font:700 24px Georgia,serif}.top a{margin-left:auto;color:var(--blue);text-decoration:none}.app{height:calc(100% - 58px)}.landing{width:min(980px,calc(100% - 32px));margin:auto;padding:52px 0}.eyebrow,.tiny{font:700 9px ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--blue)}h1{font:700 clamp(38px,7vw,70px)/1 Georgia,serif;letter-spacing:-.04em;margin:10px 0 18px}.lede{max-width:720px;color:var(--muted);line-height:1.7}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.btn{border:1px solid #d6d3d1;border-radius:8px;background:#fff;padding:9px 12px;cursor:pointer}.btn.primary{background:var(--blue);color:#fff;border-color:var(--blue)}.btn.violet{background:#f5f3ff;color:#6d28d9;border-color:#ddd6fe}.btn:disabled{opacity:.4;cursor:not-allowed}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin-top:14px}.card{background:#fff;border:1px solid var(--line);border-radius:11px;padding:14px}.card h3{margin:5px 0}.card p{color:var(--muted);font-size:12px;line-height:1.5}.workspace{height:100%;display:grid;grid-template-rows:auto minmax(0,1fr)}.bar{padding:8px 10px;background:#fff;border-bottom:1px solid var(--line);display:flex;gap:7px;align-items:center}.title{flex:1;border:1px solid transparent;border-radius:6px;padding:7px;font-weight:700}.title:not(:disabled):focus{outline:none;border-color:#93c5fd}.badge{font:700 8px ui-monospace,monospace;text-transform:uppercase;border-radius:999px;padding:5px 8px}.draft{background:#eff6ff;color:#1d4ed8}.readonly{background:#fff7ed;color:#c2410c}.zoom-readout{min-width:52px;text-align:center;color:var(--muted);font:700 10px ui-monospace,monospace}.work{min-height:0;display:grid;grid-template-columns:74px minmax(0,1fr) 286px}.tools{background:#fff;border-right:1px solid var(--line);padding:7px;display:flex;flex-direction:column;gap:5px}.tool{border:1px solid transparent;background:transparent;border-radius:7px;min-height:46px;font-size:9px;color:var(--muted);cursor:pointer}.tool.active{background:#eff6ff;border-color:#bfdbfe;color:var(--blue);font-weight:700}.tool:disabled{opacity:.35}.viewport{position:relative;overflow:hidden;background-color:#f7f7f5;background-image:radial-gradient(#d6d3d1 1px,transparent 1px);background-size:20px 20px;touch-action:none}.canvas{position:absolute;left:0;top:0;width:2100px;height:1100px;transform-origin:0 0;will-change:transform}.edges{position:absolute;inset:0;pointer-events:none}.edge{stroke:#94a3b8;stroke-width:2}.shape{position:absolute;display:flex;align-items:center;justify-content:center;text-align:center;padding:10px;background:#fff;border:1px solid #cbd5e1;border-radius:10px;box-shadow:0 3px 12px #00000010;user-select:none;touch-action:none;overflow:hidden}.shape.selected{outline:3px solid #2563eb33;border-color:var(--blue)}.shape.DIAMOND{clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);border-radius:0;padding:18px}.shape.FRAME{border:2px dashed #94a3b8;background:#ffffff55;align-items:flex-start;justify-content:flex-start;color:#64748b}.shape.TEXT{border-color:transparent;background:transparent;box-shadow:none;justify-content:flex-start}.minimap{position:absolute;right:12px;bottom:12px;width:188px;height:118px;border:1px solid #cbd5e1;border-radius:9px;background:#ffffffef;box-shadow:0 5px 18px #0002;overflow:hidden;z-index:40}.minimap-item{position:absolute;background:#cbd5e1;border:1px solid #94a3b8;min-width:2px;min-height:2px}.minimap-view{position:absolute;border:2px solid var(--blue);background:#2563eb12;pointer-events:none}.inspector{background:#fff;border-left:1px solid var(--line);padding:14px;overflow:auto}.inspector h2{margin:0 0 5px;font:700 20px Georgia,serif}.sub{font-size:11px;color:var(--muted);margin-bottom:14px}.group{border-top:1px solid var(--line);padding:12px 0}.group h3{margin:0 0 8px;font:700 9px ui-monospace,monospace;text-transform:uppercase}.kv{display:grid;grid-template-columns:82px minmax(0,1fr);gap:6px;font-size:11px}.k{font:700 8px ui-monospace,monospace;color:#a8a29e;text-transform:uppercase}.v{overflow-wrap:anywhere;white-space:pre-wrap}.number{width:76px}.journey-stack{display:flex;flex-direction:column;gap:5px;margin:8px 0}.journey-step{border:1px solid var(--line);border-radius:7px;background:#fafaf9;padding:6px 8px;text-align:left;font-size:10px;cursor:pointer}.journey-step.current{border-color:#93c5fd;background:#eff6ff;color:#1d4ed8;font-weight:700}.journey-choice{width:100%;text-align:left}.shape.simulatable{cursor:pointer;box-shadow:0 0 0 2px #7c3aed22,0 3px 12px #00000010}.prototype-overlays{position:absolute;left:12px;top:12px;display:flex;flex-direction:column;gap:6px;z-index:45;pointer-events:none}.prototype-overlay{max-width:280px;border:1px solid #c4b5fd;border-radius:8px;background:#f5f3ffea;color:#5b21b6;padding:8px 10px;box-shadow:0 5px 18px #0002;font-size:11px}.empty{color:var(--muted);line-height:1.6;font-size:12px}
+.canvas{border:1px solid #d6d3d1;box-sizing:border-box;background-clip:padding-box}
+.canvas-boundary-label{position:absolute;left:10px;top:8px;z-index:1;padding:3px 7px;border:1px solid #d6d3d1;border-radius:999px;background:#ffffffd9;color:#78716c;font:700 8px ui-monospace,monospace;letter-spacing:.05em;text-transform:uppercase;pointer-events:none}
+.viewport.pan-ready{cursor:grab}.viewport.pan-ready:active{cursor:grabbing}.shape{padding:0;line-height:1.25}
+.shape-label{display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:10px;overflow-wrap:anywhere}
+.shape.DIAMOND{padding:0}.shape.DIAMOND .shape-label{width:62%;height:auto;max-height:62%;padding:2px 4px;line-height:1.2}
+.shape.FRAME{padding:0;overflow:visible}.shape.FRAME .shape-label{position:absolute;left:10px;top:8px;width:auto;height:auto;max-width:calc(100% - 20px);justify-content:flex-start;padding:4px 8px;border:1px solid #94a3b8;border-radius:999px;background:#fff;color:#475569;font:700 9px ui-monospace,monospace;letter-spacing:.03em;text-align:left}
+.role-marker,.kind-marker,.branch-marker,.contained-marker{position:absolute;z-index:3;border-radius:999px;background:#fff;border:1px solid #d6d3d1;color:#57534e;font:700 7px ui-monospace,monospace;letter-spacing:.04em;text-transform:uppercase;pointer-events:none}
+.role-marker{left:6px;top:6px;padding:2px 5px}.kind-marker{left:6px;bottom:5px;padding:2px 5px}.branch-marker{right:6px;top:6px;padding:2px 5px}.contained-marker{right:6px;bottom:5px;max-width:60%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:2px 5px}
+.shape.role-BEGIN{background:var(--role-begin-bg);border-color:var(--role-begin-border)}
+.shape.role-DECISION{background:var(--role-decision-bg);border-color:var(--role-decision-border)}
+.shape.role-END{background:var(--role-end-bg);border-color:var(--role-end-border)}
+.shape.role-PROCESS{background:var(--role-process-bg);border-color:var(--role-process-border)}
+.shape.role-CONTAINER{background:var(--role-container-bg);border-color:var(--role-container-border)}
+.shape.branch-0{box-shadow:inset 0 4px 0 var(--branch-0),0 3px 12px #00000010}
+.shape.branch-1{box-shadow:inset 0 4px 0 var(--branch-1),0 3px 12px #00000010}
+.shape.branch-2{box-shadow:inset 0 4px 0 var(--branch-2),0 3px 12px #00000010}
+.shape.branch-3{box-shadow:inset 0 4px 0 var(--branch-3),0 3px 12px #00000010}
+.shape.FRAME.branch-0{border-color:var(--branch-0)}.shape.FRAME.branch-1{border-color:var(--branch-1)}.shape.FRAME.branch-2{border-color:var(--branch-2)}.shape.FRAME.branch-3{border-color:var(--branch-3)}
+.edge{stroke-width:2;opacity:.85}.edge.branch-0{stroke:var(--branch-0)}.edge.branch-1{stroke:var(--branch-1)}.edge.branch-2{stroke:var(--branch-2)}.edge.branch-3{stroke:var(--branch-3)}
+.edge.reference{stroke:#94a3b8;stroke-dasharray:2 5;opacity:.65}.edge.data{stroke:#64748b;stroke-dasharray:7 4}.edge.transition{stroke-width:2.5}
+.edge-label{font:700 8px ui-monospace,monospace;fill:#475569;paint-order:stroke;stroke:#f7f7f5;stroke-width:4px;stroke-linejoin:round;pointer-events:none}
+.viewport.palette-standard{--role-begin-bg:#dbeafe;--role-begin-border:#60a5fa;--role-decision-bg:#fef3c7;--role-decision-border:#f59e0b;--role-process-bg:#eff6ff;--role-process-border:#bfdbfe;--role-end-bg:#dcfce7;--role-end-border:#4ade80;--role-container-bg:#ffffff55;--role-container-border:#94a3b8;--branch-0:#2563eb;--branch-1:#0f766e;--branch-2:#ea580c;--branch-3:#7c3aed}
+.viewport.palette-color-safe{--role-begin-bg:#e0f2fe;--role-begin-border:#0369a1;--role-decision-bg:#fff7ed;--role-decision-border:#c2410c;--role-process-bg:#f8fafc;--role-process-border:#64748b;--role-end-bg:#ecfdf5;--role-end-border:#047857;--role-container-bg:#ffffff66;--role-container-border:#475569;--branch-0:#0369a1;--branch-1:#047857;--branch-2:#c2410c;--branch-3:#6d28d9}
+.viewport.palette-color-safe .edge.branch-1{stroke-dasharray:9 4}.viewport.palette-color-safe .edge.branch-2{stroke-dasharray:3 4}.viewport.palette-color-safe .edge.branch-3{stroke-dasharray:10 3 2 3}
+.viewport.palette-high-contrast{--role-begin-bg:#fff;--role-begin-border:#000;--role-decision-bg:#fff;--role-decision-border:#000;--role-process-bg:#fff;--role-process-border:#000;--role-end-bg:#fff;--role-end-border:#000;--role-container-bg:#fff;--role-container-border:#000;--branch-0:#000;--branch-1:#000;--branch-2:#000;--branch-3:#000}
+.viewport.palette-high-contrast .shape{border-width:2px;box-shadow:none}.viewport.palette-high-contrast .edge{stroke:#000;stroke-width:2.5}.viewport.palette-high-contrast .edge.branch-1{stroke-dasharray:9 4}.viewport.palette-high-contrast .edge.branch-2{stroke-dasharray:3 4}.viewport.palette-high-contrast .edge.branch-3{stroke-dasharray:10 3 2 3}
+.palette-fab{position:absolute;right:12px;top:12px;z-index:50;width:42px;height:42px;border-radius:999px;border:1px solid #cbd5e1;background:#fffffff2;box-shadow:0 5px 18px #0002;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.palette-fab:hover,.palette-fab:focus-visible{outline:2px solid #93c5fd;outline-offset:2px}.palette-dots{position:relative;width:24px;height:16px}.palette-dot{position:absolute;width:11px;height:11px;border-radius:50%;border:1px solid #64748b;top:2px}.palette-dot:nth-child(1){left:1px;background:var(--branch-0)}.palette-dot:nth-child(2){left:7px;background:var(--branch-2)}.palette-dot:nth-child(3){left:13px;background:var(--branch-3)}
+.save-status{min-width:116px;color:#78716c;font:700 8px ui-monospace,monospace;line-height:1.25}.save-status.dirty{color:#b45309}.save-status.error{color:#b91c1c}.save-status.saved{color:#15803d}
+.containment-row{display:grid;grid-template-columns:82px minmax(0,1fr);gap:6px;align-items:center;margin-top:8px}.containment-select{min-width:0;border:1px solid #d6d3d1;border-radius:6px;background:#fff;padding:6px;font-size:10px}
+@media(max-width:850px){.work{grid-template-columns:62px minmax(0,1fr)}.inspector{display:none}.minimap{width:150px;height:94px}}
 </style>
 </head>
 <body>
@@ -15,6 +46,8 @@
 <script type="module">
 import * as Board from '../vexboard-reader.js';
 import { createCameraAnimator } from './ui/camera-animation.mjs';
+import * as Interaction from './ui/interaction.mjs';
+import * as Presentation from './ui/presentation.mjs';
 
 const app=document.getElementById('app');
 let current=null,selected=null,tool='SELECT',connectFrom=null;
@@ -25,6 +58,7 @@ let prototype=null,scenario=null,interactionTrail=[];
 let boardStack=[];
 let activeBoardRef=null;
 let viewportEl=null,canvasEl=null,minimapEl=null,zoomReadoutEl=null;
+let draftDirty=false,saveMessage='',suppressCanvasClick=false;
 const reducedMotion=globalThis.matchMedia?.('(prefers-reduced-motion: reduce)')||null;
 const cameraAnimator=createCameraAnimator({
   normalizeCamera:Board.normalizeCamera,
@@ -41,6 +75,10 @@ const ref=(prefix)=>`${prefix}.${crypto.randomUUID().replaceAll('-','')}`;
 const editable=()=>current?.mode==='LOCAL_DRAFT';
 const drafts=()=>{try{return Board.parseDraftCollection(localStorage.getItem(Board.VEXBOARD_DRAFT_STORAGE_KEY))}catch{return[]}};
 const store=(items)=>localStorage.setItem(Board.VEXBOARD_DRAFT_STORAGE_KEY,JSON.stringify(items));
+const readPaletteMode=()=>{try{return Presentation.normalizePaletteMode(localStorage.getItem(Presentation.VEXBOARD_PALETTE_STORAGE_KEY))}catch{return'STANDARD'}};
+let paletteMode=readPaletteMode();
+const savedClock=(value)=>{if(!value)return'';try{return new Date(value).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}catch{return''}};
+function markDraftDirty(){if(!editable())return;draftDirty=true;saveMessage='Unsaved changes'}
 const node=(r)=>current.graph.nodes.find(n=>n.nodeRef===r);
 const item=(r)=>current.projection.items.find(i=>i.projectionItemRef===r);
 const itemFor=(r)=>current.projection.items.find(i=>i.semanticRef===r);
@@ -66,7 +104,7 @@ async function openBuiltInBoard(boardRef,{pushCurrent=false}={}){
   return openBoard(d,{pushCurrent,boardRef,prototypeInput});
 }
 
-function snapshotCurrent(){return current?{current,selected,tool,camera,collapsed:[...collapsed],journey,prototype,scenario,interactionTrail:interactionTrail.map(entry=>({...entry})),activeBoardRef}:null}
+function snapshotCurrent(){return current?{current,selected,tool,camera,collapsed:[...collapsed],journey,prototype,scenario,interactionTrail:interactionTrail.map(entry=>({...entry})),activeBoardRef,draftDirty,saveMessage}:null}
 async function openBoard(input,{pushCurrent=false,boardRef=null,prototypeInput=null}={}){
   cameraAnimator.cancel();
   if(pushCurrent&&current)boardStack.push(snapshotCurrent());
@@ -75,9 +113,11 @@ async function openBoard(input,{pushCurrent=false,boardRef=null,prototypeInput=n
   prototype=prototypeInput?Board.normalizeBoardPrototype(prototypeInput,s.graph):null;
   scenario=prototype?Board.createBoardScenario(prototype,s.graph,{scenarioRef:ref('scenario.vexboard')}):null;
   interactionTrail=[];collapsed=new Set();journey=null;camera=Board.normalizeCamera({x:48,y:48,zoom:1});activeBoardRef=boardRef||d.draftRef;
+  draftDirty=d.mode==='LOCAL_DRAFT'&&!d.savedAtOrNull;
+  saveMessage=d.mode==='LOCAL_DRAFT'?(d.savedAtOrNull?`Saved locally · ${savedClock(d.savedAtOrNull)}`:'Not saved locally yet'):'';
   renderWorkspace();requestAnimationFrame(()=>fitBoard());
 }
-function returnBoard(){cameraAnimator.cancel();const prior=boardStack.pop();if(!prior)return;({current,selected,tool,camera,journey,prototype,scenario,interactionTrail,activeBoardRef}=prior);collapsed=new Set(prior.collapsed);connectFrom=null;renderWorkspace();requestAnimationFrame(()=>applyCamera())}
+function returnBoard(){cameraAnimator.cancel();const prior=boardStack.pop();if(!prior)return;({current,selected,tool,camera,journey,prototype,scenario,interactionTrail,activeBoardRef,draftDirty,saveMessage}=prior);collapsed=new Set(prior.collapsed);connectFrom=null;renderWorkspace();requestAnimationFrame(()=>applyCamera())}
 async function enterPortal(detailBoardRef){
   const local=drafts().find(d=>d.draftRef===detailBoardRef);
   if(local){await openBoard(local,{pushCurrent:true,boardRef:detailBoardRef});return}
@@ -105,7 +145,7 @@ function landing(){
 async function act(name,args){
   const control=Board.controlFor(current,{controlRef:ref('control.vexboard'),actorRef:'actor.vexboard.human',act:name,arguments:args});
   const r=await Board.applyBoardControl({graph:current.graph,projection:current.projection,control});
-  current={...current,graph:r.graph,projection:r.projection};renderWorkspace();requestAnimationFrame(()=>applyCamera());
+  current={...current,graph:r.graph,projection:r.projection};markDraftDirty();renderWorkspace();requestAnimationFrame(()=>applyCamera());
 }
 async function addShape(kind,x,y){
   const semantic=kind==='DIAMOND'?'DECISION':kind==='FRAME'?'CONTAINER':kind==='TEXT'?'ANNOTATION':'PROCESS',nref=ref('node.vexboard'),iref=ref('item.vexboard'),count=current.graph.nodes.length+1;
@@ -124,12 +164,21 @@ function resetView(){cameraAnimator.jumpTo(Board.normalizeCamera({x:48,y:48,zoom
 function focusSelected({animate=false}={}){const target=selected?item(selected):null;if(!target||!viewportEl)return;const targetCamera=()=>Board.cameraForBounds(target.bounds,viewportSize(),{padding:120,maxZoom:1.7});animate?cameraAnimator.scheduleTo(targetCamera):cameraAnimator.jumpTo(targetCamera())}
 function zoomBy(factor,anchor=null){if(!viewportEl)return;const size=viewportSize(),point=anchor||{anchorX:size.width/2,anchorY:size.height/2};cameraAnimator.jumpTo(Board.zoomCameraAt(camera,{factor,...point}))}
 
-function renderEdges(svg,visibleSemanticRefs){
+function renderEdges(svg,visibleSemanticRefs,presentation){
+  const defs=document.createElementNS('http://www.w3.org/2000/svg','defs');
+  const marker=document.createElementNS('http://www.w3.org/2000/svg','marker');
+  marker.setAttribute('id','vexboard-arrow');marker.setAttribute('viewBox','0 0 10 10');marker.setAttribute('refX','8');marker.setAttribute('refY','5');marker.setAttribute('markerWidth','5');marker.setAttribute('markerHeight','5');marker.setAttribute('orient','auto-start-reverse');
+  const path=document.createElementNS('http://www.w3.org/2000/svg','path');path.setAttribute('d','M 0 0 L 10 5 L 0 10 z');path.setAttribute('fill','#64748b');marker.append(path);defs.append(marker);svg.append(defs);
   for(const r of current.graph.relationships){
     if(!visibleSemanticRefs.has(r.fromRef)||!visibleSemanticRefs.has(r.toRef))continue;
     const a=itemFor(r.fromRef),b=itemFor(r.toRef);if(!a||!b)continue;
-    const l=document.createElementNS('http://www.w3.org/2000/svg','line');l.classList.add('edge');
-    l.setAttribute('x1',a.bounds.x+a.bounds.width/2);l.setAttribute('y1',a.bounds.y+a.bounds.height/2);l.setAttribute('x2',b.bounds.x+b.bounds.width/2);l.setAttribute('y2',b.bounds.y+b.bounds.height/2);svg.append(l);
+    const x1=a.bounds.x+a.bounds.width/2,y1=a.bounds.y+a.bounds.height/2,x2=b.bounds.x+b.bounds.width/2,y2=b.bounds.y+b.bounds.height/2;
+    const accent=presentation.relationshipAccentByRef[r.relationshipRef];
+    const classes=['edge',r.kind.toLowerCase()];if(Number.isInteger(accent))classes.push(`branch-${accent}`);
+    const l=document.createElementNS('http://www.w3.org/2000/svg','line');l.setAttribute('class',classes.join(' '));l.setAttribute('x1',x1);l.setAttribute('y1',y1);l.setAttribute('x2',x2);l.setAttribute('y2',y2);l.setAttribute('marker-end','url(#vexboard-arrow)');svg.append(l);
+    if(r.labelOrNull){
+      const label=document.createElementNS('http://www.w3.org/2000/svg','text');label.classList.add('edge-label');label.setAttribute('x',String((x1+x2)/2));label.setAttribute('y',String((y1+y2)/2-5));label.setAttribute('text-anchor','middle');label.textContent=r.labelOrNull;svg.append(label);
+    }
   }
 }
 function prototypeChoices(controlRef,trigger='CLICK'){
@@ -179,29 +228,36 @@ function renderPrototypeOverlays(view){
 }
 
 function renderCanvas(canvas){
-  const shown=visibleItems(),visibleSemanticRefs=new Set(shown.map(i=>i.semanticRef));
-  const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.classList.add('edges');svg.setAttribute('width','2100');svg.setAttribute('height','1100');renderEdges(svg,visibleSemanticRefs);canvas.append(svg);
+  const shown=visibleItems(),visibleSemanticRefs=new Set(shown.map(i=>i.semanticRef)),presentation=Presentation.deriveBranchPresentation(current.graph),extent=Presentation.canvasExtent(shown);
+  Object.assign(canvas.style,{width:`${extent.width}px`,height:`${extent.height}px`});
+  canvas.append(el('div','canvas-boundary-label','Board canvas'));
+  const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.classList.add('edges');svg.setAttribute('width',String(extent.width));svg.setAttribute('height',String(extent.height));renderEdges(svg,visibleSemanticRefs,presentation);canvas.append(svg);
   for(const i of [...shown].sort((a,b)=>a.layer-b.layer)){
     const n=node(i.semanticRef);if(!n)continue;
-    const canSimulate=n.kind==='CONTROL'&&prototype&&journey?.currentRef===n.nodeRef;
-    const s=el('div',`shape ${i.shapeKind}${selected===i.projectionItemRef?' selected':''}${canSimulate?' simulatable':''}`,n.label);Object.assign(s.style,{left:`${i.bounds.x}px`,top:`${i.bounds.y}px`,width:`${i.bounds.width}px`,height:`${i.bounds.height}px`,zIndex:String(i.layer+10)});
+    const canSimulate=n.kind==='CONTROL'&&prototype&&journey?.currentRef===n.nodeRef,role=Presentation.semanticRole(current.graph,n.nodeRef),accent=presentation.nodeAccentByRef[n.nodeRef];
+    const parentProjection=i.parentProjectionItemRefOrNull?item(i.parentProjectionItemRefOrNull):null,parentNode=parentProjection?node(parentProjection.semanticRef):null;
+    const classes=[`shape ${i.shapeKind}`,`role-${role}`];if(selected===i.projectionItemRef)classes.push('selected');if(canSimulate)classes.push('simulatable');if(Number.isInteger(accent))classes.push(`branch-${accent}`);if(parentNode)classes.push('contained');
+    const s=el('div',classes.join(' '));Object.assign(s.style,{left:`${i.bounds.x}px`,top:`${i.bounds.y}px`,width:`${i.bounds.width}px`,height:`${i.bounds.height}px`,zIndex:String(i.layer+10)});
+    s.append(el('span','shape-label',n.label));
+    const marker=Presentation.roleMarker(role);if(marker)s.append(el('span','role-marker',marker));
+    if(!['PROCESS','DECISION','CONTAINER'].includes(n.kind))s.append(el('span','kind-marker',n.kind));
+    if(presentation.hasBranching&&Number.isInteger(accent))s.append(el('span','branch-marker',`Path ${String.fromCharCode(65+accent)}`));
+    if(parentNode)s.append(el('span','contained-marker',`in ${parentNode.label}`));
     s.onclick=async(e)=>{e.stopPropagation();if(tool==='CONNECT'&&editable()){if(!connectFrom){connectFrom=i.projectionItemRef;selected=i.projectionItemRef;renderWorkspace();requestAnimationFrame(()=>applyCamera());return}const from=item(connectFrom);connectFrom=null;if(from&&from.semanticRef!==i.semanticRef)await act('CONNECT_NODES',{relationship:{relationshipRef:ref('rel.vexboard'),kind:'FLOW',fromRef:from.semanticRef,toRef:i.semanticRef,labelOrNull:null,sourceRefs:[]}});tool='SELECT';selected=i.projectionItemRef;renderWorkspace();requestAnimationFrame(()=>applyCamera());return}if(tool==='SELECT'&&tryClickableControl(n.nodeRef))return;selected=i.projectionItemRef;renderWorkspace();requestAnimationFrame(()=>applyCamera())};
     if(editable()&&tool==='SELECT'&&!i.locked)s.onpointerdown=(e)=>{cameraAnimator.cancel();e.preventDefault();e.stopPropagation();const sx=e.clientX,sy=e.clientY,ox=i.bounds.x,oy=i.bounds.y,zoom=camera.zoom;s.setPointerCapture(e.pointerId);s.onpointermove=m=>{s.style.left=`${ox+(m.clientX-sx)/zoom}px`;s.style.top=`${oy+(m.clientY-sy)/zoom}px`};s.onpointerup=async u=>{s.onpointermove=null;s.onpointerup=null;await act('MOVE_ITEM',{projectionItemRef:i.projectionItemRef,x:ox+(u.clientX-sx)/zoom,y:oy+(u.clientY-sy)/zoom})}};
     canvas.append(s);
   }
 }
-
 function renderMinimap(){
   if(!minimapEl||!current||!viewportEl)return;
   minimapEl.replaceChildren();
-  const width=2100,height=1100,miniW=minimapEl.clientWidth||188,miniH=minimapEl.clientHeight||118;
+  const extent=Presentation.canvasExtent(visibleItems()),width=extent.width,height=extent.height,miniW=minimapEl.clientWidth||188,miniH=minimapEl.clientHeight||118;
   for(const i of visibleItems()){
     const m=el('div','minimap-item');Object.assign(m.style,{left:`${i.bounds.x/width*miniW}px`,top:`${i.bounds.y/height*miniH}px`,width:`${Math.max(2,i.bounds.width/width*miniW)}px`,height:`${Math.max(2,i.bounds.height/height*miniH)}px`});minimapEl.append(m);
   }
   const v=Board.boardViewport(camera,viewportSize()),frame=el('div','minimap-view');
   Object.assign(frame.style,{left:`${v.x/width*miniW}px`,top:`${v.y/height*miniH}px`,width:`${v.width/width*miniW}px`,height:`${v.height/height*miniH}px`});minimapEl.append(frame);
 }
-
 function journeyBoardRef(){return activeBoardRef||current?.draftRef||null}
 function applyJourney(next){journey=next;const target=itemFor(journey.currentRef);if(target)selected=target.projectionItemRef;renderWorkspace();focusSelected({animate:true})}
 function startJourneyAt(semanticRef){interactionTrail=[];applyJourney(Board.createBoardJourney(current.graph,{journeyRef:ref('journey.vexboard'),boardRef:journeyBoardRef(),startRef:semanticRef}))}
@@ -213,13 +269,25 @@ function inspector(side){
   side.replaceChildren();const i=selected?item(selected):null,n=i?node(i.semanticRef):null;
   if(!i||!n){side.append(el('h2','','Context Inspector'),el('p','empty','Select a semantic object to inspect its stable identity, projection geometry, source refs, relationship neighborhood, and bounded model-facing query.'));return}
   side.append(el('h2','',n.label),el('div','sub',`${n.kind} · ${i.shapeKind}`));
-  const g=el('div','group');g.append(el('h3','','Identity + design'));const kv=el('div','kv');[['nodeRef',n.nodeRef],['projection',i.projectionItemRef],['position',`${Math.round(i.bounds.x)}, ${Math.round(i.bounds.y)}`],['layer',i.layer],['board',activeBoardRef||current.draftRef]].forEach(([k,v])=>kv.append(el('div','k',k),el('div','v',v)));g.append(kv);
+  const g=el('div','group');g.append(el('h3','','Identity + design'));const kv=el('div','kv');[['nodeRef',n.nodeRef],['projection',i.projectionItemRef],['position',`${Math.round(i.bounds.x)}, ${Math.round(i.bounds.y)}`],['layer',i.layer],['container',n.parentRefOrNull||'None'],['board',activeBoardRef||current.draftRef]].forEach(([k,v])=>kv.append(el('div','k',k),el('div','v',v)));g.append(kv);
   const nav=el('div','row');const focus=el('button','btn','Focus selected');focus.onclick=()=>focusSelected({animate:true});nav.append(focus);
   const children=current.graph.nodes.filter(candidate=>candidate.parentRefOrNull===n.nodeRef);
   if(children.length){const toggle=el('button','btn',collapsed.has(n.nodeRef)?'Expand children':'Collapse children');toggle.onclick=()=>{collapsed.has(n.nodeRef)?collapsed.delete(n.nodeRef):collapsed.add(n.nodeRef);renderWorkspace();requestAnimationFrame(()=>applyCamera())};nav.append(toggle)}
   if(n.detailBoardRefOrNull){const enter=el('button','btn violet','Enter portal');enter.disabled=!Board.builtinBoardUrl(n.detailBoardRefOrNull)&&!drafts().some(d=>d.draftRef===n.detailBoardRefOrNull);enter.onclick=()=>enterPortal(n.detailBoardRefOrNull);nav.append(enter)}
   g.append(nav);
-  if(editable()){const row=el('div','row');for(const [label,key,val] of [['Width','width',i.bounds.width],['Height','height',i.bounds.height]]){const lab=el('label','k',label);const input=document.createElement('input');input.className='number';input.type='number';input.min='20';input.value=Math.round(val);input.onchange=()=>act('RESIZE_ITEM',{projectionItemRef:i.projectionItemRef,width:key==='width'?Number(input.value):i.bounds.width,height:key==='height'?Number(input.value):i.bounds.height});lab.append(input);row.append(lab)}const front=el('button','btn','Forward');front.onclick=()=>act('SET_LAYER',{projectionItemRef:i.projectionItemRef,layer:i.layer+1});row.append(front);g.append(row)}
+  if(editable()){
+    const row=el('div','row');for(const [label,key,val] of [['Width','width',i.bounds.width],['Height','height',i.bounds.height]]){const lab=el('label','k',label);const input=document.createElement('input');input.className='number';input.type='number';input.min='20';input.value=Math.round(val);input.onchange=()=>act('RESIZE_ITEM',{projectionItemRef:i.projectionItemRef,width:key==='width'?Number(input.value):i.bounds.width,height:key==='height'?Number(input.value):i.bounds.height});lab.append(input);row.append(lab)}const front=el('button','btn','Forward');front.onclick=()=>act('SET_LAYER',{projectionItemRef:i.projectionItemRef,layer:i.layer+1});row.append(front);g.append(row);
+    if(n.kind!=='CONTAINER'){
+      const containers=current.graph.nodes.filter(candidate=>candidate.kind==='CONTAINER'&&candidate.nodeRef!==n.nodeRef);
+      if(containers.length){
+        const containment=el('div','containment-row'),label=el('div','k','Container'),select=document.createElement('select');select.className='containment-select';
+        const none=document.createElement('option');none.value='';none.textContent='No frame';select.append(none);
+        for(const candidate of containers){const option=document.createElement('option');option.value=candidate.nodeRef;option.textContent=candidate.label;option.selected=n.parentRefOrNull===candidate.nodeRef;select.append(option)}
+        select.onchange=async()=>{const parentRefOrNull=select.value||null,parentItem=parentRefOrNull?itemFor(parentRefOrNull):null;await act('SET_CONTAINMENT',{nodeRef:n.nodeRef,parentRefOrNull,projectionItemRef:i.projectionItemRef,parentProjectionItemRefOrNull:parentItem?.projectionItemRef??null})};
+        containment.append(label,select);g.append(containment);
+      }
+    }
+  }
   side.append(g);
   const rel=current.graph.relationships.filter(r=>r.fromRef===n.nodeRef||r.toRef===n.nodeRef),rg=el('div','group');rg.append(el('h3','','Relationships'),el('div','v',rel.length?rel.map(r=>`${r.fromRef} → ${r.toRef}`).join('\n'):'No relationships yet.'));side.append(rg);
   const q=Board.queryBoardNeighborhood(current,{semanticRef:n.nodeRef,depth:1,maxNodes:12}),qg=el('div','group');qg.append(el('h3','','Neighborhood · bounded query'),el('div','v',`${q.nodes.map(value=>value.nodeRef).join('\n')}\n\n${q.relationships.length} relationship(s) · depth ${q.depth}`));side.append(qg);
@@ -260,21 +328,42 @@ function inspector(side){
 function toolButton(label,name,disabled=false){const b=el('button',`tool${tool===name?' active':''}`,label);b.disabled=disabled;b.onclick=()=>{tool=name;connectFrom=null;renderWorkspace();requestAnimationFrame(()=>applyCamera())};return b}
 function wireViewport(view,canvas){
   view.onwheel=(e)=>{e.preventDefault();const rect=view.getBoundingClientRect();zoomBy(e.deltaY<0?1.12:1/1.12,{anchorX:e.clientX-rect.left,anchorY:e.clientY-rect.top})};
-  view.onpointerdown=(e)=>{cameraAnimator.cancel();if(tool!=='PAN')return;e.preventDefault();const startX=e.clientX,startY=e.clientY,origin=camera;view.setPointerCapture(e.pointerId);view.onpointermove=m=>{camera=Board.normalizeCamera({x:origin.x+m.clientX-startX,y:origin.y+m.clientY-startY,zoom:origin.zoom});applyCamera()};view.onpointerup=()=>{view.onpointermove=null;view.onpointerup=null}};
-  canvas.onclick=async e=>{if(editable()&&['RECTANGLE','DIAMOND','FRAME','TEXT'].includes(tool)){const point=Board.boardPointFromClient({clientX:e.clientX,clientY:e.clientY},view.getBoundingClientRect(),camera);await addShape(tool,point.x,point.y)}else if(tool!=='PAN'){selected=null;renderWorkspace();requestAnimationFrame(()=>applyCamera())}};
+  view.onpointerdown=(e)=>{
+    cameraAnimator.cancel();
+    const targetIsShape=Boolean(e.target.closest?.('.shape'));
+    if(!Interaction.shouldStartCanvasPan({tool,targetIsShape,button:e.button}))return;
+    e.preventDefault();
+    const start={x:e.clientX,y:e.clientY},origin=camera;let dragged=false;
+    view.setPointerCapture(e.pointerId);
+    view.onpointermove=m=>{const currentPoint={x:m.clientX,y:m.clientY};if(!dragged&&!Interaction.dragExceededThreshold(start,currentPoint))return;dragged=true;camera=Board.normalizeCamera(Interaction.cameraFromPointerDrag(origin,start,currentPoint));applyCamera()};
+    const end=()=>{view.onpointermove=null;view.onpointerup=null;view.onpointercancel=null;if(dragged)suppressCanvasClick=true};
+    view.onpointerup=end;view.onpointercancel=end;
+  };
+  canvas.onclick=async e=>{if(suppressCanvasClick){suppressCanvasClick=false;return}if(editable()&&['RECTANGLE','DIAMOND','FRAME','TEXT'].includes(tool)){const point=Board.boardPointFromClient({clientX:e.clientX,clientY:e.clientY},view.getBoundingClientRect(),camera);await addShape(tool,point.x,point.y)}else if(tool!=='PAN'){selected=null;renderWorkspace();requestAnimationFrame(()=>applyCamera())}};
 }
 
+function paletteFab(){
+  const button=el('button','palette-fab');button.type='button';button.title=`Palette: ${paletteMode.replaceAll('_',' ')} · activate to rotate`;button.setAttribute('aria-label',button.title);
+  const dots=el('span','palette-dots');dots.append(el('span','palette-dot'),el('span','palette-dot'),el('span','palette-dot'));button.append(dots);
+  button.onclick=(event)=>{event.stopPropagation();paletteMode=Presentation.nextPaletteMode(paletteMode);try{localStorage.setItem(Presentation.VEXBOARD_PALETTE_STORAGE_KEY,paletteMode)}catch{}renderWorkspace();requestAnimationFrame(()=>applyCamera())};
+  return button;
+}
 function renderWorkspace(){
   app.className='app workspace';app.replaceChildren();
   const bar=el('div','bar'),home=el('button','btn','← Boards');home.onclick=landing;bar.append(home);
   if(boardStack.length){const back=el('button','btn','↩ Return');back.onclick=returnBoard;bar.append(back)}
-  const title=document.createElement('input');title.className='title';title.value=current.title;title.disabled=!editable();title.onchange=()=>{current={...current,title:title.value.trim()||'Untitled VexBoard'};renderWorkspace();requestAnimationFrame(()=>applyCamera())};
-  const badge=el('span',`badge ${editable()?'draft':'readonly'}`,editable()?'Local draft · source detached':'Read-only source');bar.append(title,badge);
+  const title=document.createElement('input');title.className='title';title.value=current.title;title.disabled=!editable();title.onchange=()=>{current={...current,title:title.value.trim()||'Untitled VexBoard'};markDraftDirty();renderWorkspace();requestAnimationFrame(()=>applyCamera())};
+  const badge=el('span',`badge ${editable()?'draft':'readonly'}`,editable()?'Local draft · browser only':'Read-only source');bar.append(title,badge);
   const zoomOut=el('button','btn','Zoom out');zoomOut.onclick=()=>zoomBy(1/1.18);const zoomIn=el('button','btn','Zoom in');zoomIn.onclick=()=>zoomBy(1.18);const fit=el('button','btn','Fit');fit.onclick=fitBoard;const reset=el('button','btn','Reset view');reset.onclick=resetView;zoomReadoutEl=el('span','zoom-readout','100%');bar.append(zoomOut,zoomIn,fit,reset,zoomReadoutEl);
-  if(editable()){const save=el('button','btn primary','Save draft');save.onclick=()=>{current={...current,savedAtOrNull:new Date().toISOString()};store(Board.upsertDraft(drafts(),current));renderWorkspace();requestAnimationFrame(()=>applyCamera())};bar.append(save)}else{const fork=el('button','btn violet','Request edit → draft copy');fork.onclick=async()=>openBoard(await Board.forkReadOnlyBoard(current,{draftRef:ref('draft.vexboard')}));bar.append(fork)}
+  if(editable()){
+    const save=el('button','btn primary','Save draft');save.disabled=!draftDirty&&Boolean(current.savedAtOrNull);
+    save.onclick=()=>{try{const savedAt=new Date().toISOString(),next={...current,savedAtOrNull:savedAt};store(Board.upsertDraft(drafts(),next));current=next;draftDirty=false;saveMessage=`Saved locally · ${savedClock(savedAt)}`}catch(error){draftDirty=true;saveMessage=`Local save failed · ${error?.name||'storage unavailable'}`}renderWorkspace();requestAnimationFrame(()=>applyCamera())};
+    const statusClass=saveMessage.startsWith('Local save failed')?'error':draftDirty?'dirty':'saved';bar.append(save,el('span',`save-status ${statusClass}`,saveMessage||'Browser-local draft'));
+  }else{const fork=el('button','btn violet','Request edit → draft copy');fork.onclick=async()=>openBoard(await Board.forkReadOnlyBoard(current,{draftRef:ref('draft.vexboard')}));bar.append(fork)}
   app.append(bar);
   const work=el('div','work'),tools=el('aside','tools'),disabled=!editable();tools.append(toolButton('Select','SELECT'),toolButton('Pan','PAN'),toolButton('Box','RECTANGLE',disabled),toolButton('Decision','DIAMOND',disabled),toolButton('Frame','FRAME',disabled),toolButton('Text','TEXT',disabled),toolButton('Connect','CONNECT',disabled));
-  viewportEl=el('section','viewport');canvasEl=el('div','canvas');renderCanvas(canvasEl);viewportEl.append(canvasEl);minimapEl=el('div','minimap');minimapEl.setAttribute('aria-label','Canvas minimap');viewportEl.append(minimapEl);renderPrototypeOverlays(viewportEl);wireViewport(viewportEl,canvasEl);
+  const paletteClass=`palette-${paletteMode.toLowerCase().replaceAll('_','-')}`;
+  viewportEl=el('section',`viewport ${paletteClass}${['SELECT','PAN'].includes(tool)?' pan-ready':''}`);canvasEl=el('div','canvas');renderCanvas(canvasEl);viewportEl.append(canvasEl);minimapEl=el('div','minimap');minimapEl.setAttribute('aria-label','Canvas minimap');viewportEl.append(minimapEl,paletteFab());renderPrototypeOverlays(viewportEl);wireViewport(viewportEl,canvasEl);
   const side=el('aside','inspector');inspector(side);work.append(tools,viewportEl,side);app.append(work);applyCamera();
 }
 

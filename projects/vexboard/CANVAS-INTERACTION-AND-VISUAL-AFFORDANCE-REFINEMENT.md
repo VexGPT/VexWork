@@ -6,9 +6,9 @@
 
 ```text
 workRef = work.vexboard.usability-refinement
-state = READY
-authority = NO_AUTHORITY
-effects = NO_EFFECTS
+state = RUNNING
+authority = AUTHORIZED_BOUNDED
+effects = EFFECTS_BOUND
 ```
 
 This task preserves a bounded lived-usability refinement discovered while using the accepted VexBoard Pages surface.
@@ -258,6 +258,58 @@ Acceptance:
 - a local preference may persist browser-locally;
 - color-safe/high-contrast modes preserve start/decision/end/branch recognition using shape, marker, pattern, border or label cues in addition to color;
 - the palette control itself does not become a new semantic owner.
+
+## Complex-case display pressure — VexBusinessFactory
+
+The accepted BusinessFactory patient-zero board is the regression fixture for this implementation:
+
+```text
+projects/vexboard/examples/vexbusinessfactory-intent-topology.board.json
+
+18 nodes
+20 relationships
+node kinds:
+  REFERENCE
+  PROCESS
+  PORTAL
+  ARTIFACT
+  DECISION
+```
+
+It contains semantic relationship labels such as:
+
+```text
+SERVES
+ADDRESSES
+REQUIRES
+EXTENDS_WITH
+PACKAGED_AS
+AVAILABLE_THROUGH
+ENABLES
+RESULTS_IN
+EVIDENCED_BY
+```
+
+That fixture exposes a display weakness a small self-map can hide: unlabeled undirected-looking lines throw away too much already-owned meaning.
+
+This refinement therefore also requires:
+
+- visible relationship direction;
+- rendering `labelOrNull` when present;
+- relationship-family styling that remains secondary to domain role text;
+- node-kind cues for non-generic nodes such as PORTAL / REFERENCE / ARTIFACT;
+- deterministic branch accents that can survive parallel paths and merges without becoming semantic identity.
+
+Permanent:
+
+```text
+EDGE_LABEL != NEW_RELATIONSHIP_KIND
+BRANCH_ACCENT != DOMAIN_RELATIONSHIP_ROLE
+DISPLAY_DIRECTION != EXECUTION_DIRECTION_AUTHORITY
+BUSINESSFACTORY_FIXTURE != VEXBOARD_SCHEMA_OWNER
+```
+
+The fixture is used to pressure presentation only. VexBusinessFactory remains the domain/source owner.
 
 ## Proof expectation
 
