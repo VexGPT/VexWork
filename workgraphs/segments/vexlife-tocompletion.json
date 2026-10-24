@@ -11,11 +11,11 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T00:13:43.000Z",
-      "updatedAt": "2026-10-24T09:59:00.000Z",
+      "updatedAt": "2026-10-24T11:40:30.000Z",
       "workRef": "work.vexlife.tocompletion.outcome",
       "parentWorkRefOrNull": null,
       "label": "VexLife ToCompletion",
-      "purpose": "Carry the full VexLife ToCompletion trajectory: preserve terminal P1-P4 lived runtime truth, A034 ordinary Heretic restart truth and P4 A054 bounded effect/reinjection truth; make the immediate product edge a source-aware inhabited Heretic baseline with exact location, accepted semantic neighborhood, truthful source addressability and honest Project/Frontier admission boundaries; then continue richer evolved-experience adoption, later separately admitted Project/Intent mutation, existing-Home upgrade and developmental/native horizons without reopening completed work.",
+      "purpose": "Carry the full VexLife ToCompletion trajectory: preserve terminal P1-P4 lived runtime truth, A034 ordinary Heretic restart truth and P4 A054 bounded effect/reinjection truth; make the immediate product edge a real Victor↔Vex relationship inside the already-prepared Evolution Conversation with two visible-composer Heretic turns; then resume source-aware inhabitation across VexLife/VexWork/VexBoard/VexHome and later earned UX cutover without reopening completed work.",
       "workClass": "OUTCOME",
       "state": "RUNNING",
       "priorityClass": "IMMEDIATE",
@@ -65,7 +65,9 @@
         "github.issue.vexlife.885.comment.6383056125",
         "github.issue.vexlife.811.comment.6382972135",
         "github.pull.vexwork.120.comment.6382973067",
-        "github.pull.vexwork.120.comment.6382999618"
+        "github.pull.vexwork.120.comment.6382999618",
+        "github.pull.vexlife.924",
+        "github.commit.vexlife.ec3e6a2a03ff21713baa4ec1e58e38026ba35e1b"
       ]
     },
     {
@@ -592,11 +594,11 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-23T05:30:00.000Z",
-      "updatedAt": "2026-10-24T08:03:08.000Z",
+      "updatedAt": "2026-10-24T11:40:30.000Z",
       "workRef": "work.vexlife.tocompletion.productization.ordinary-heretic-setup",
       "parentWorkRefOrNull": "work.vexlife.tocompletion.outcome",
       "label": "Ordinary productization — Heretic lived path + evolved VexLife baseline",
-      "purpose": "Complete the ordinary VexLife product route. Heretic source/runtime/restart is terminal lived through A034. The active edge is current-main convergence of accepted Assortment/E2.8/UX Evolution with the later Vex Furnishing / Adaptive Home Human Experience law: Terrain-primary Home, current context first, one continuous Vex relationship and truthful Continue. Existing-Home Heretic replacement/upgrade remains separate and later.",
+      "purpose": "Complete the ordinary VexLife product route. Heretic source/runtime/restart is terminal lived through A034. The active edge is now the prepared Evolution Conversation itself: prove Victor can send through the visible Vex composer, receive real CURRENT_LOCAL_MODEL output there, and continue a second durable turn before broader source-aware/world-query integration or product-default cutover.",
       "workClass": "OUTCOME",
       "state": "RUNNING",
       "priorityClass": "IMMEDIATE",
@@ -627,7 +629,9 @@
         "github.issue.vexlife.624.comment.6012908914",
         "github.issue.vexlife.811.comment.6015223469",
         "github.issue.vexlife.817.comment.6031153511",
-        "github.issue.vexlife.817.comment.6094683418"
+        "github.issue.vexlife.817.comment.6094683418",
+        "github.pull.vexlife.924",
+        "github.commit.vexlife.ec3e6a2a03ff21713baa4ec1e58e38026ba35e1b"
       ]
     },
     {
@@ -735,11 +739,11 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-24T08:03:08.000Z",
-      "updatedAt": "2026-10-24T10:53:00.000Z",
+      "updatedAt": "2026-10-24T11:40:30.000Z",
       "workRef": "work.vexlife.tocompletion.productization.evolved-experience-baseline-convergence",
       "parentWorkRefOrNull": "work.vexlife.tocompletion.productization.ordinary-heretic-setup",
       "label": "Evolved VexLife convergence — Heretic source-aware inhabitation + Assortment R2",
-      "purpose": "Converge the ordinary lived product from terminal Heretic runtime/restart and terminal bounded effect/reinjection into source-aware inhabitation first, then richer evolved experience. The active architecture composes existing owners instead of rebuilding them locally: VexBoard for bounded place/neighborhood/relationships, VexWork for Project/Work/Continue/Frontier currentness, Atlas/Meaning Addressability for meaning/source/proof/rewalk, Federated Current State/Orientation for current/question-bounded context, and Process Factory for applicable/held process truth. Preserve one persistent Vex relationship across semantic places, use raw source reads only for exact deeper descent, keep generic Project/Frontier mutation held without a current canonical admission route, then complete genuinely remaining Human Experience/accessibility/recovery/cutover work.",
+      "purpose": "Converge the ordinary lived product in the smallest earned order: first prove the already-prepared Evolution Conversation as a real Victor↔Heretic interface through two visible-composer CURRENT_LOCAL_MODEL turns; then resume source-aware inhabitation using VexBoard/VexWork/VexHome/Atlas/currentness/Process Factory owners; only after lived evidence exposes a real presentation gap proceed toward broader Human Experience/accessibility/recovery/cutover work.",
       "workClass": "TASK",
       "state": "RUNNING",
       "priorityClass": "IMMEDIATE",
@@ -788,7 +792,40 @@
         "github.pull.vexwork.120.comment.6382973067",
         "github.pull.vexwork.120.comment.6382999618",
         "github.issue.vexlife.866.comment.6383259191",
-        "github.pull.vexwork.120.comment.6383258893"
+        "github.pull.vexwork.120.comment.6383258893",
+        "github.pull.vexlife.924",
+        "github.commit.vexlife.ec3e6a2a03ff21713baa4ec1e58e38026ba35e1b"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-24T11:40:30.000Z",
+      "updatedAt": "2026-10-24T11:40:30.000Z",
+      "workRef": "work.vexlife.tocompletion.productization.evolution-conversation-lived-heretic",
+      "parentWorkRefOrNull": "work.vexlife.tocompletion.productization.evolved-experience-baseline-convergence",
+      "label": "Evolution Conversation — real Heretic lived engagement",
+      "purpose": "Prove the already-prepared Evolution Conversation is genuinely inhabitable by the real current Heretic before broader world-query work: enter the canonical direct Companion relationship, send two harmless turns only through the visible Evolution composer, require visible CURRENT_LOCAL_MODEL replies, preserve the same relationship, and prove the durable Conversation head advances. The proof does not cut over the ordinary Browser default and does not require VexWork/VexBoard/VexHome querying.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexlife.tocompletion.productization.ordinary-heretic-lived-proof"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife",
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-tocompletion/README.md",
+        "github.pull.vexlife.924",
+        "github.commit.vexlife.ec3e6a2a03ff21713baa4ec1e58e38026ba35e1b",
+        "scripts/evolution-conversation-lived-proof.mjs",
+        "test/evolution-conversation-lived-proof.test.mjs"
       ]
     },
     {
@@ -799,16 +836,16 @@
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-24T09:32:00.000Z",
-      "updatedAt": "2026-10-24T10:53:00.000Z",
+      "updatedAt": "2026-10-24T11:40:30.000Z",
       "workRef": "work.vexlife.tocompletion.productization.heretic-source-aware-baseline",
       "parentWorkRefOrNull": "work.vexlife.tocompletion.productization.evolved-experience-baseline-convergence",
       "label": "Canonical Heretic source-aware inhabitation",
-      "purpose": "Prove the ordinary real Heretic inhabits the same canonical Vex world as Victor: start from the exact semantic frame, consume a bounded VexBoard neighborhood, VexWork Project/Work/Continue/Frontier truth, Atlas/Meaning source routes, Federated Current State/Orientation currentness, and Process Factory applicable/held possibilities, then source-descend only when precision is needed. Existing context.where, PR903 Architecture Node, Terrain sourcePath and code.read seams remain bounded implementation wires rather than a parallel world model. P4 A054 already terminally proves authorized-effect verification/reinjection, so no new mutation effect is required; generic Project/Frontier creation remains truthfully held.",
+      "purpose": "After the prepared Evolution Conversation is proved as a real Victor↔Heretic interface, prove the same Heretic can inhabit the broader canonical Vex world without being constrained by Victor's current screen: consume bounded VexLife/VexWork/VexBoard/VexHome current truth, Atlas/Meaning routes, Federated Current State/Orientation and Process Factory possibilities, then source-descend only when precision is needed. P4 A054 already proves authorized effect/reinjection; generic Project/Frontier creation remains held.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "WAITING_DEPENDENCIES",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [
-        "work.vexlife.tocompletion.productization.ordinary-heretic-lived-proof"
+        "work.vexlife.tocompletion.productization.evolution-conversation-lived-heretic"
       ],
       "repositoryRefs": [
         "repo.vexlife",
@@ -831,7 +868,9 @@
         "github.pull.vexwork.120.comment.6382973067",
         "github.pull.vexwork.120.comment.6382999618",
         "github.issue.vexlife.866.comment.6383259191",
-        "github.pull.vexwork.120.comment.6383258893"
+        "github.pull.vexwork.120.comment.6383258893",
+        "github.pull.vexlife.924",
+        "github.commit.vexlife.ec3e6a2a03ff21713baa4ec1e58e38026ba35e1b"
       ]
     }
   ],

@@ -2,7 +2,7 @@
   "schemaVersion": "vexwork.project-definition/v1",
   "projectRef": "project.vexlife.tocompletion",
   "label": "VexLife ToCompletion",
-  "purpose": "Carry the full VexLife ToCompletion horizon from terminal lived Heretic runtime/restart and terminal bounded effect/reinjection into a canonical inhabited-current-context baseline: preserve one Victor↔Vex relationship while composing VexBoard place/neighborhood, VexWork Project/Work/Continue/Frontier currentness, Atlas/Meaning source routes, Federated Current State/Orientation, and Process Factory possibility/held truth; descend to exact source only when useful; keep generic Project/Frontier mutation held until its rightful admission-materialization route exists; preserve richer Assortment/evolved-product work without making full visual convergence a prerequisite.",
+  "purpose": "Carry the full VexLife ToCompletion horizon from terminal lived Heretic runtime/restart and bounded effect/reinjection into a human-usable Vex relationship: first prove the already-prepared Evolution Conversation carries two real Heretic turns through its visible composer and same durable Conversation; then resume source-aware inhabitation across VexLife, VexWork, VexBoard, VexHome, Atlas/Meaning, Federated Current State/Orientation and Process Factory without making the current screen Vex's world boundary; keep generic Project/Frontier mutation held until its rightful admission-materialization route exists.",
   "rootWorkRefs": [
     "work.vexlife.tocompletion.outcome"
   ],
@@ -64,7 +64,9 @@
     "github.pull.vexwork.120.comment.6382973067",
     "github.pull.vexwork.120.comment.6382999618",
     "github.issue.vexlife.866.comment.6383259191",
-    "github.pull.vexwork.120.comment.6383258893"
+    "github.pull.vexwork.120.comment.6383258893",
+    "github.pull.vexlife.924",
+    "github.commit.vexlife.ec3e6a2a03ff21713baa4ec1e58e38026ba35e1b"
   ],
   "formedAt": "2026-10-22T00:13:43.000Z"
 }

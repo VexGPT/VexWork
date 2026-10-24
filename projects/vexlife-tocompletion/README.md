@@ -203,11 +203,45 @@ ports 8765 / 18110 closed = true
 
 The runtime path is therefore not the current ToCompletion unknown.
 
+### Immediate lived threshold — real Heretic in the prepared Conversation
+
+A034 already proved that the ordinary VexLife runtime can reach real Heretic and preserve Conversation continuity across restart. The remaining question is now simpler and more human-facing:
+
+~~~text
+ordinary VexLife runtime
+-> canonical direct Companion relationship
+-> prepared Evolution Conversation
+-> Victor sends through the visible composer
+-> real Heretic returns CURRENT_LOCAL_MODEL
+-> reply renders in that same Conversation
+-> second visible turn advances the same durable Conversation
+~~~
+
+VexLife PR #924 is the bounded proof candidate for that threshold:
+
+~~~text
+PR      #924 (DRAFT)
+base    8f1e9fd9e3f38f8dc23296257df718fca9806988
+head    ec3e6a2a03ff21713baa4ec1e58e38026ba35e1b
+tree    9061853859459ad03b6fd30789e09fc8cb36aae4
+
+source candidate     FORMED
+focused structure    4 / 4 PASS (candidate-local only)
+real Heretic UI proof PENDING
+SourceOwner           PENDING
+Assurance             PENDING
+READY_FOR_INTEGRATION false
+~~~
+
+The candidate does **not** change the ordinary Browser default or create a second Conversation owner. It verifies source-exact served UI assets, enters the already-canonical direct Companion relationship, opens the already-prepared Evolution Conversation, and sends two harmless turns only through the visible Evolution composer. The lived Mac run is what can turn this from a proof candidate into evidence.
+
+This threshold comes before VexWork/VexBoard/VexHome world-query integration. Screen awareness, source-aware inhabitation and broader Vex perception remain important, but they are capabilities of an already-living Victor <-> Vex relationship rather than prerequisites for establishing that relationship in the prepared interface.
+
 ### Evolved VexLife baseline convergence — active
 
-A034 already terminally proved the ordinary Heretic runtime/restart path, and P4 A054 already terminally proved one exact authorized local effect -> verified ToolResultRelay reinjection -> same durable Conversation continuation. The active missing threshold is therefore **not another runtime proof, not another generic effect proof, and not full visual cutover first**.
+A034 already terminally proved the ordinary Heretic runtime/restart path, and P4 A054 already terminally proved one exact authorized local effect -> verified ToolResultRelay reinjection -> same durable Conversation continuation. The active first threshold is therefore **not another runtime proof, not another generic effect proof, and not full visual cutover**: it is the real Heretic lived Conversation proof above.
 
-It is one **inhabited current-world read path** in which Victor and Heretic share the same source-backed semantic place.
+After that interface relationship is established, the next broader threshold is one **inhabited current-world read path** in which Victor and Heretic share source-backed current context without making the current screen Vex's world boundary.
 
 #### Canonical foundation circuit
 
@@ -439,9 +473,26 @@ The future missing seam is Project/Intent admission-materialization under the ri
 
 P4 A054 already proves the generic **authorized effect -> verification -> reinjection** substrate. Do not make a new Project mutation proof a prerequisite for inhabited source awareness.
 
-#### Current lived discriminator
+#### Immediate lived discriminator — interface relationship first
 
-The smallest useful acceptance path is now:
+Before the broader source-aware orientation loop, the current acceptance path is deliberately smaller:
+
+~~~text
+1. Start ordinary VexLife with the real current Heretic binding.
+2. Enter the canonical direct Companion relationship.
+3. Open the already-prepared Evolution Conversation.
+4. Confirm the surface presents one CONTINUOUS_VEX_RELATIONSHIP titled "Vex".
+5. Victor sends one harmless message through the visible Evolution composer.
+6. A CURRENT_LOCAL_MODEL reply appears in that same visible Conversation.
+7. Victor sends a second harmless message through the same composer.
+8. The second CURRENT_LOCAL_MODEL reply appears and the durable Conversation head advances.
+~~~
+
+This does not require VexWork querying, VexBoard querying, effects, Project creation or whole-product cutover. It proves the human-facing relationship is alive first.
+
+#### Next lived discriminator — source-aware inhabitation
+
+Once the interface relationship above passes, the smallest useful source-aware acceptance path is:
 
 ~~~text
 1. Open ordinary VexLife with real Heretic.
@@ -469,17 +520,24 @@ Full Adaptive Home / Assortment visual refinement remains valuable, but it is no
 
 ~~~text
 FIRST
-  source-place this architecture/currentness in VexWork
-  so fresh instances stop rediscovering it
+  prove the prepared Evolution Conversation with real Heretic
+  -> two visible-composer CURRENT_LOCAL_MODEL turns
+  -> same canonical Companion relationship
+  -> durable Conversation head advances
+  -> no product-default cutover claim yet
 
 THEN
-  implement the smallest read-only composition seam around the current semantic frame
-  by consuming existing owners/projections
+  use that lived result to decide the smallest presentation/cutover correction
+  -> keep the canonical Conversation owner
+  -> preserve Reference fallback until cutover is actually earned
 
 THEN
-  prove the lived Heretic orientation loop above
+  resume the source-aware inhabitation work
+  -> bounded VexLife / VexWork / VexBoard / VexHome queries
+  -> existing currentness / meaning / Process Factory owners
+  -> source-descend only when precision is needed
 
-ONLY AFTER THE PROOF EXPOSES A REAL GAP
+ONLY AFTER LIVED PRESSURE EXPOSES A REAL GAP
   add the smallest missing adapter/seam under its rightful owner
 
 LATER / SEPARATE
@@ -598,68 +656,56 @@ TERMINAL PRODUCT/RUNTIME WORK
   P4 A054 typed authorized effect/reinjection = TERMINAL_LIVED_PASS
 
 CURRENT EXECUTABLE WORK
+  work.vexlife.tocompletion.productization.evolution-conversation-lived-heretic = RUNNING
+    -> VexLife PR #924 draft
+    -> exact two-file proof candidate
+    -> focused structural checks 4 / 4 PASS
+    -> real Mac Heretic/UI proof PENDING
+    -> no ordinary-default cutover yet
+
+WAITING ON THAT LIVED THRESHOLD
+  work.vexlife.tocompletion.productization.heretic-source-aware-baseline = WAITING_DEPENDENCIES
+    -> VexWork / VexBoard / VexHome / Atlas / Process Factory query inhabitation follows
+    -> current screen remains ambient context, not Vex's world boundary
+
+PRESERVED PARENT
   work.vexlife.tocompletion.productization.evolved-experience-baseline-convergence = RUNNING
-  work.vexlife.tocompletion.productization.heretic-source-aware-baseline = RUNNING
-
-  exact open baseline:
-    real Heretic ordinary interface
-    -> persistent Vex relationship
-    -> exact screenRef + selectedNodeRef
-    -> accepted PR903 source-bound semantic neighborhood
-    -> truthful Terrain sourcePath from canonical Blueprint composition
-    -> code.read only on exact current path
-    -> truthful Project / Frontier / admission explanation
-    -> hold generic create/capture effects that have no current canonical realization
-
-  Slice A:
-    default context.where receives screenRef + selectedNodeRef
-    but does not project them
-    -> #333 two-file source placement
-    -> path-clear
-    -> source mutation authority still held
-
-  Slice B:
-    PR903 Architecture Node owner already exists
-    -> populate existing Terrain sourcePath from includes.terrain
-    -> Browser-owned context.where override may carry bounded semanticNeighborhood
-    -> no new root capability / no new topology owner
-    -> server/test paths serialized behind retained PR904 custody
-
-  richer experience work preserved after/beside baseline:
-    Home -> Continue / Projects / Frontier / Vex
-    -> persistent Vex across semantic places
-    -> truthful Live bridges / product adoption
-    -> Human Experience / accessibility / recovery
-    -> cutover only when current source earns it
+    -> owns the staged progression from lived Conversation
+       into source-aware inhabitation and later earned UX cutover
 
 HELD / SEPARATE
   generic runtime Project admission/create effect owner
   generic Companion-safe Frontier Intent-capture effect adapter
-  PR904 server/test custody for semantic-neighborhood composition
-  #333 source mutation admission for the universal context.where correction
   existing-Home Heretic replacement/upgrade
   Reference retirement until separately earned
   G04 Rhythm/training/weights until recurrent developmental evidence exists
 ```
 
 Do not replay A015-A034 or P4 A054 merely for confidence.
-Do not execute the superseded PR120 SourceOwner A001 package.
-Do not treat the unformed A002 carrier checkpoint as proof.
-Do not reopen PR #923 parser acceptance.
-Do not treat the current Reference default, historical PR #818 bytes, old Assortment missing-owner statements, or legacy title-only Project action vocabulary as current completed-product truth.
+Do not bypass the visible Evolution composer with a direct Companion API proof.
+Do not claim PR #924 as lived merely because its structural proof is green.
+Do not reopen broader world-query architecture until the direct human <-> Vex interface threshold is either proved or exposes a concrete defect.
 
 ## Remaining completion path
 
 ```text
-CANONICAL HERETIC SOURCE-AWARE INHABITATION                 <-- CURRENT
+EVOLUTION CONVERSATION REAL-HERETIC ENGAGEMENT              <-- CURRENT
     A034 ordinary Heretic runtime/restart = TERMINAL_LIVED_PASS
+    -> PR #924 exact proof candidate
+    -> prepared Evolution Conversation
+    -> visible composer only
+    -> two CURRENT_LOCAL_MODEL turns
+    -> durable Conversation head advances
+    -> lived Mac proof still required
+
+CANONICAL HERETIC SOURCE-AWARE INHABITATION                <-- NEXT / WAITING
     P4 A054 effect/reinjection substrate = TERMINAL_LIVED_PASS
-    -> exact semantic location in context.where
-    -> accepted PR903 semantic neighborhood in ordinary Companion synthesis
-    -> truthful Terrain sourcePath from canonical Blueprint composition
-    -> exact code.read verification when requested
-    -> truthful Project / Frontier / admission explanation
-    -> fresh lived proof with real Heretic
+    -> exact semantic location / ambient current frame
+    -> bounded VexWork / VexBoard / VexHome queries
+    -> Atlas / Meaning / Federated Current State / Orientation
+    -> Process Factory applicable / held truth
+    -> exact source descent only when needed
+    -> current screen does not constrain Vex's query target
 
 EVOLVED EXPERIENCE ADOPTION                               <-- CONTINUES AFTER/BESIDE BASELINE
     preserved Assortment R2 grammar
@@ -696,9 +742,10 @@ Nested completion truth:
 P1-P4 lived core = TERMINAL
 ordinary Heretic source/runtime/restart path = TERMINAL_LIVED_PASS
 bounded typed effect + verification + reinjection = TERMINAL_LIVED_PASS
-Heretic semantic/source-aware inhabited baseline = OPEN / ACTIVE
-generic Project/Frontier create/capture effect = HELD / NOT REQUIRED FOR CURRENT BASELINE
-full evolved visual/product convergence = OPEN / ACTIVE but not prerequisite to source-aware baseline
+Evolution Conversation real-Heretic engagement = OPEN / CURRENT
+Heretic semantic/source-aware inhabited baseline = WAITING_DEPENDENCIES
+generic Project/Frontier create/capture effect = HELD / NOT REQUIRED FOR CURRENT INTERFACE PROOF
+full evolved visual/product convergence = OPEN / ACTIVE but not prerequisite to real-Heretic Conversation engagement
 Reference default = CURRENT SOURCE FACT / NOT TARGET COMPLETION BASELINE
 P5 G02-G03 = TERMINAL; G04 held
 P6 = UNEARNED
@@ -714,9 +761,12 @@ VexWork
 -> project.vexlife.tocompletion
 -> work.vexlife.tocompletion.outcome
 -> CURRENT ACTIVE work:
-     work.vexlife.tocompletion.productization.heretic-source-aware-baseline
+     work.vexlife.tocompletion.productization.evolution-conversation-lived-heretic
      work.vexlife.tocompletion.productization.evolved-experience-baseline-convergence
+-> NEXT / WAITING:
+     work.vexlife.tocompletion.productization.heretic-source-aware-baseline
 -> this README
+-> VexLife PR #924 exact candidate
 -> VexLife #866 current entry
 -> #866 comment 6382998459 for P4 A054 effect/reinjection terminality
 -> #333 comments 6382565492 + 6382871320 for context.where exact-location placement
@@ -735,10 +785,16 @@ A034 lived runtime/restart = COMPLETED
 P4 A054 bounded effect/reinjection = COMPLETED
   -> do not replay either for confidence
 
+Evolution Conversation real-Heretic engagement
+  -> visible composer
+  -> two real CURRENT_LOCAL_MODEL turns
+  -> same durable Conversation
+  -> no broader query prerequisite
+
 Heretic source-aware baseline
-  -> exact location
-  -> accepted semantic neighborhood
-  -> exact source addressability
+  -> resumes after the interface relationship is lived
+  -> exact location + bounded domain queries
+  -> accepted semantic neighborhood / source addressability
   -> truthful current admission boundaries
 
 Project / Frontier mutation
