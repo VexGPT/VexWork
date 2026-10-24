@@ -19,7 +19,8 @@
     "project.vexlife.welcome-wagon",
     "projects/vexlife-welcome-wagon/README.md",
     "project.vexlife-android.current-state-refinement",
-    "projects/vexlife-android-current-state-refinement/README.md"
+    "projects/vexlife-android-current-state-refinement/README.md",
+    "project.android-widget-foundation"
   ],
   "compatibilityOrder": {
     "itemWorkRefs": [
@@ -46,6 +47,9 @@
       "work.vexstream.mobile-library.massdownload-e2e",
       "work.vexstream.mobile-library.track-menu-presentation-defect",
       "work.vexstream.mobile-library.keep-offline-sync",
+      "work.vexstream.mobile-library.playback-surfaces",
+      "work.vexstream.mobile-library.now-playing-artwork-projection",
+      "work.vexstream.mobile-library.full-player",
       "work.vexlife.tocompletion.outcome",
       "work.vexlife.tocompletion.p0b.foundation",
       "work.vexlife.tocompletion.p1.heretic-establishment",
@@ -131,7 +135,10 @@
       "work.android-proof-orchestration.outcome",
       "work.android-proof-orchestration.api-target-runner",
       "work.android-proof-orchestration.vexrelay-integration",
-      "work.android-proof-orchestration.device-lease-queue"
+      "work.android-proof-orchestration.device-lease-queue",
+      "work.android-widget-foundation.outcome",
+      "work.android-widget-foundation.semantic-widget-surface",
+      "work.android-widget-foundation.vexstream-playback-widget"
     ],
     "transitionRefs": [
       "transition.vexwork.foundation.portable-workgraph.completed.pr1",
@@ -270,7 +277,8 @@
       "work.vexwork.operational-console.multi-fulfiller-routing",
       "work.vexboard.outcome",
       "work.vexlife.blueprint-source-of-truth.outcome",
-      "work.android-proof-orchestration.outcome"
+      "work.android-proof-orchestration.outcome",
+      "work.android-widget-foundation.outcome"
     ],
     "sourceRefs": [
       "project.vexwork.foundation",
@@ -284,7 +292,8 @@
       "project.vexboard",
       "project.vexlife.blueprint-source-of-truth",
       "projects/vexlife-blueprint-source-of-truth/README.md",
-      "project.android-proof-orchestration"
+      "project.android-proof-orchestration",
+      "project.android-widget-foundation"
     ]
   },
   "formedAt": "2026-10-21T01:45:00.000Z"
