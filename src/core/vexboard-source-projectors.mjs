@@ -297,6 +297,7 @@ function atlasIndex(atlas) {
   assert(atlas.projectionReceipt?.schemaVersion === PROCESS_ATLAS_RECEIPT_SCHEMA,
     'Process Atlas public-safe projectionReceipt required');
   assert(atlas.projectionReceipt.atlasRef === atlas.atlasRef, 'Process Atlas projectionReceipt atlasRef mismatch');
+  stableRef(atlas.projectionReceipt.projectionReceiptRef, 'Process Atlas projectionReceiptRef');
   // VexBoard consumes the source owner's public-safe receipt; it does not recompute or own Atlas privacy policy.
   assert(HEX64.test(atlas.projectionReceipt.contentSha256 ?? ''),
     'Process Atlas projectionReceipt contentSha256 must be sha256');
@@ -339,7 +340,7 @@ export function projectProcessAtlasPublicSafe({ atlas, boardRef: boardRefInput }
   const relationships = [];
 
   for (const node of atlas.nodes) {
-    const sourceRefs = refs(node.sourceRefs, `${node.nodeRef}.sourceRefs`);
+    const sourceRefs = refs([...node.sourceRefs, node.freshnessRef], `${node.nodeRef}.sourceRefs`);
     nodes.push({
       nodeRef: node.nodeRef,
       kind: 'REFERENCE',
@@ -365,7 +366,7 @@ export function projectProcessAtlasPublicSafe({ atlas, boardRef: boardRefInput }
       fromRef: edge.fromRef,
       toRef: edge.toRef,
       labelOrNull: edge.edgeClass,
-      sourceRefs: refs(edge.sourceRefs, `${edge.edgeRef}.sourceRefs`),
+      sourceRefs: refs([...edge.sourceRefs, edge.freshnessRef], `${edge.edgeRef}.sourceRefs`),
     });
   }
 
@@ -379,7 +380,7 @@ export function projectProcessAtlasPublicSafe({ atlas, boardRef: boardRefInput }
       fromRef: dependency.beforeRef,
       toRef: dependency.afterRef,
       labelOrNull: 'SERIAL_DEPENDENCY',
-      sourceRefs: refs(dependency.sourceRefs, `${dependency.serialDependencyRef}.sourceRefs`),
+      sourceRefs: refs([...dependency.sourceRefs, dependency.freshnessRef], `${dependency.serialDependencyRef}.sourceRefs`),
     });
   }
 
@@ -396,7 +397,7 @@ export function projectProcessAtlasPublicSafe({ atlas, boardRef: boardRefInput }
         label: `${prefix}: ${text(entry[textKey], `Process Atlas ${refKey}.${textKey}`)}`,
         parentRefOrNull: entry.targetRef,
         detailBoardRefOrNull: null,
-        sourceRefs: refs(entry.sourceRefs, `Process Atlas ${refKey}.sourceRefs`),
+        sourceRefs: refs([...entry.sourceRefs, entry.freshnessRef], `Process Atlas ${refKey}.sourceRefs`),
       });
     }
   }
@@ -412,12 +413,13 @@ export function projectProcessAtlasPublicSafe({ atlas, boardRef: boardRefInput }
       label: `Priority: ${priority.rank}`,
       parentRefOrNull: priority.targetRef,
       detailBoardRefOrNull: null,
-      sourceRefs: refs(priority.sourceRefs, `Process Atlas priority ${priority.priorityRef}.sourceRefs`),
+      sourceRefs: refs([...priority.sourceRefs, priority.freshnessRef], `Process Atlas priority ${priority.priorityRef}.sourceRefs`),
     });
   }
 
   const sourceRefs = refs([
     atlas.atlasRef,
+    atlas.projectionReceipt.projectionReceiptRef,
     ...(atlas.projectionReceipt.sourceRefs ?? []),
   ], 'Process Atlas source projection graph.sourceRefs');
   const boardGraph = createBoardGraph({
