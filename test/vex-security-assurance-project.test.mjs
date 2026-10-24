@@ -33,6 +33,18 @@ test('Vex Security Assurance forms one small evidence-and-question Project rathe
   ]);
   assert.equal(project.sourceRefs.includes('docs/foundation/DERIVED-ATTENTION.md'), true);
   assert.equal(project.sourceRefs.includes('projects/vex-security-assurance/SPIKE-DESIGN.md'), true);
+  assert.equal(project.sourceRefs.includes('projects/vex-security-assurance/ADVERSARIAL-LENS.md'), true);
+  assert.equal(project.sourceRefs.includes('projects/vex-security-assurance/SIMULATED-ADVERSARIAL-PATIENT-ZERO-A001.md'), true);
+});
+
+test('AI / agentic security includes a bounded attacker perspective without granting effects', () => {
+  const ai = graph.items.find((item) => item.workRef === 'work.vex.security-assurance.ai-agentic-security-lens');
+  assert.match(ai.purpose, /bounded attacker-perspective/);
+  assert.match(ai.purpose, /pre-convergence/);
+  assert.equal(ai.sourceRefs.includes('projects/vex-security-assurance/ADVERSARIAL-LENS.md'), true);
+  assert.equal(ai.sourceRefs.includes('projects/vex-security-assurance/SIMULATED-ADVERSARIAL-PATIENT-ZERO-A001.md'), true);
+  assert.equal(ai.authorityDisposition, 'NO_AUTHORITY');
+  assert.equal(ai.effectDisposition, 'NO_EFFECTS');
 });
 
 test('Security Spikes begin as TASK process semantics with no implied authority or effects', () => {
