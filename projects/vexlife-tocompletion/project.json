@@ -2,7 +2,7 @@
   "schemaVersion": "vexwork.project-definition/v1",
   "projectRef": "project.vexlife.tocompletion",
   "label": "VexLife ToCompletion",
-  "purpose": "Carry the full VexLife ToCompletion horizon from terminal lived Heretic runtime and terminal bounded effect/reinjection truth into a canonical inhabited source-aware baseline: preserve one Victor↔Vex relationship, expose exact semantic location, reuse the accepted PR903 Architecture Node neighborhood and canonical Blueprint source provenance, let exact source reads verify current bytes, and make Project/Frontier admission limits truthful; preserve the Assortment R2 Home/Continue/Projects/Frontier/Vex grammar without making full visual convergence or a new generic mutation proof prerequisites.",
+  "purpose": "Carry the full VexLife ToCompletion horizon from terminal lived Heretic runtime/restart and terminal bounded effect/reinjection into a canonical inhabited-current-context baseline: preserve one Victor↔Vex relationship while composing VexBoard place/neighborhood, VexWork Project/Work/Continue/Frontier currentness, Atlas/Meaning source routes, Federated Current State/Orientation, and Process Factory possibility/held truth; descend to exact source only when useful; keep generic Project/Frontier mutation held until its rightful admission-materialization route exists; preserve richer Assortment/evolved-product work without making full visual convergence a prerequisite.",
   "rootWorkRefs": [
     "work.vexlife.tocompletion.outcome"
   ],
@@ -62,7 +62,9 @@
     "github.issue.vexlife.885.comment.6383056125",
     "github.issue.vexlife.811.comment.6382972135",
     "github.pull.vexwork.120.comment.6382973067",
-    "github.pull.vexwork.120.comment.6382999618"
+    "github.pull.vexwork.120.comment.6382999618",
+    "github.issue.vexlife.866.comment.6383259191",
+    "github.pull.vexwork.120.comment.6383258893"
   ],
   "formedAt": "2026-10-22T00:13:43.000Z"
 }

@@ -735,11 +735,11 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-24T08:03:08.000Z",
-      "updatedAt": "2026-10-24T09:59:00.000Z",
+      "updatedAt": "2026-10-24T10:53:00.000Z",
       "workRef": "work.vexlife.tocompletion.productization.evolved-experience-baseline-convergence",
       "parentWorkRefOrNull": "work.vexlife.tocompletion.productization.ordinary-heretic-setup",
       "label": "Evolved VexLife convergence — Heretic source-aware inhabitation + Assortment R2",
-      "purpose": "Converge the ordinary lived product from terminal Heretic runtime and terminal bounded effect/reinjection truth into source-aware inhabitation first, then richer evolved experience: preserve one persistent Vex relationship across Home/Continue/Projects/Frontier and other semantic places; expose exact location; reuse accepted PR903 Architecture Node meaning and canonical Blueprint fragment provenance; keep code.read path-exact; consume current ProjectDefinition/Project Continuity, Refinement Current and Intent Workgraph owners; treat generic Project/Frontier create/capture effects as held where no current canonical realization exists; then complete genuinely remaining Human Experience/accessibility/recovery/cutover work without replaying stale PR818 or frozen Assortment pixels.",
+      "purpose": "Converge the ordinary lived product from terminal Heretic runtime/restart and terminal bounded effect/reinjection into source-aware inhabitation first, then richer evolved experience. The active architecture composes existing owners instead of rebuilding them locally: VexBoard for bounded place/neighborhood/relationships, VexWork for Project/Work/Continue/Frontier currentness, Atlas/Meaning Addressability for meaning/source/proof/rewalk, Federated Current State/Orientation for current/question-bounded context, and Process Factory for applicable/held process truth. Preserve one persistent Vex relationship across semantic places, use raw source reads only for exact deeper descent, keep generic Project/Frontier mutation held without a current canonical admission route, then complete genuinely remaining Human Experience/accessibility/recovery/cutover work.",
       "workClass": "TASK",
       "state": "RUNNING",
       "priorityClass": "IMMEDIATE",
@@ -786,7 +786,9 @@
         "github.issue.vexlife.885.comment.6383056125",
         "github.issue.vexlife.811.comment.6382972135",
         "github.pull.vexwork.120.comment.6382973067",
-        "github.pull.vexwork.120.comment.6382999618"
+        "github.pull.vexwork.120.comment.6382999618",
+        "github.issue.vexlife.866.comment.6383259191",
+        "github.pull.vexwork.120.comment.6383258893"
       ]
     },
     {
@@ -797,11 +799,11 @@
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-24T09:32:00.000Z",
-      "updatedAt": "2026-10-24T09:59:00.000Z",
+      "updatedAt": "2026-10-24T10:53:00.000Z",
       "workRef": "work.vexlife.tocompletion.productization.heretic-source-aware-baseline",
       "parentWorkRefOrNull": "work.vexlife.tocompletion.productization.evolved-experience-baseline-convergence",
       "label": "Canonical Heretic source-aware inhabitation",
-      "purpose": "Prove the ordinary real Heretic can remain in one persistent Conversation while recognizing exact screenRef + selectedNodeRef, consuming the accepted PR903 source-bound semantic neighborhood, exposing a truthful exact Terrain sourcePath from canonical Blueprint composition for later code.read verification, and explaining current Project/Frontier meaning and admission limits without pretending the legacy title-only project.create vocabulary or generic Frontier capture has a current canonical effect realization. P4 A054 already terminally proves the bounded authorized-effect/verification/reinjection substrate, so no new mutation effect is required for this baseline.",
+      "purpose": "Prove the ordinary real Heretic inhabits the same canonical Vex world as Victor: start from the exact semantic frame, consume a bounded VexBoard neighborhood, VexWork Project/Work/Continue/Frontier truth, Atlas/Meaning source routes, Federated Current State/Orientation currentness, and Process Factory applicable/held possibilities, then source-descend only when precision is needed. Existing context.where, PR903 Architecture Node, Terrain sourcePath and code.read seams remain bounded implementation wires rather than a parallel world model. P4 A054 already terminally proves authorized-effect verification/reinjection, so no new mutation effect is required; generic Project/Frontier creation remains truthfully held.",
       "workClass": "TASK",
       "state": "RUNNING",
       "priorityClass": "IMMEDIATE",
@@ -827,7 +829,9 @@
         "github.issue.vexlife.885.comment.6383056125",
         "github.issue.vexlife.811.comment.6382972135",
         "github.pull.vexwork.120.comment.6382973067",
-        "github.pull.vexwork.120.comment.6382999618"
+        "github.pull.vexwork.120.comment.6382999618",
+        "github.issue.vexlife.866.comment.6383259191",
+        "github.pull.vexwork.120.comment.6383258893"
       ]
     }
   ],
@@ -1130,7 +1134,9 @@
     "github.issue.vexlife.624.comment.6012908914",
     "github.issue.vexlife.811.comment.6015223469",
     "github.issue.vexlife.817.comment.6031153511",
-    "github.issue.vexlife.817.comment.6094683418"
+    "github.issue.vexlife.817.comment.6094683418",
+    "github.issue.vexlife.866.comment.6383259191",
+    "github.pull.vexwork.120.comment.6383258893"
   ],
   "formedAt": "2026-10-21T01:45:00.000Z"
 }
