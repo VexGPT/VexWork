@@ -330,7 +330,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-24T06:05:10.000Z",
-      "updatedAt": "2026-10-24T06:43:34.000Z",
+      "updatedAt": "2026-10-24T06:58:52.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "workRef": "work.vexlife.welcome-wagon.slug-rename-tooling",
@@ -350,7 +350,8 @@
         "repo.vextreme:data/status/tech-debt.json",
         "repo.vextreme:lib/check-key-alignment.js",
         "repo.vextreme:lib/check-institutional-surfaces.js",
-        "github.pull.vexwork.113"
+        "github.pull.vexwork.113",
+        "github.pull.vextreme.400"
       ],
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",

@@ -769,6 +769,23 @@ PR B  — shared family-header projection
 
 This gives each risk one rollback coordinate: **identity migration**, **page meaning**, and **shared presentation** are independently reversible.
 
+## Current execution edge
+
+Victor explicitly authorized continuing the Welcome Wagon implementation.
+
+The first bounded implementation row is now source-formed in Vextreme:
+
+```text
+work.vexlife.welcome-wagon.slug-rename-tooling
+  -> Vextreme PR #400
+  -> plan-first / read-only slug rename impact tooling
+  -> exact candidate 989c6c2b92b8f9dd82516f88bf1e561582204217
+  -> no page rename yet
+  -> SourceOwner VexRelay proof pending
+```
+
+The actual `vextreme-home -> about-vextreme` identity migration remains dependency-held behind this tooling row. About-page meaning/design remains dependency-held behind the canonical identity migration.
+
 ## Process map to completion
 
 The Welcome Wagon is currently straightforward enough that it does **not** need a VexBoard to explain the completion sequence. Preserve this ordered path until real implementation fan-out makes a visual Board materially useful.
