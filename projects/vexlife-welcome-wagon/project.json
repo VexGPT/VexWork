@@ -46,7 +46,8 @@
     "repo.vextreme:tests/54-institutional-surfaces.test.js",
     "repo.vextreme:tests/55-build-sitemap.test.js",
     "repo.vextreme:data/screenshot-evidence-assets.json",
-    "repo.vextreme:sitemap.xml"
+    "repo.vextreme:sitemap.xml",
+    "github.pull.vexwork.113"
   ],
   "formedAt": "2026-10-24T06:05:10.000Z"
 }

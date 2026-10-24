@@ -15,7 +15,9 @@
     "project.vexlife.blueprint-source-of-truth",
     "projects/vexlife-blueprint-source-of-truth/README.md",
     "project.android-proof-orchestration",
-    "project.vex-universe"
+    "project.vex-universe",
+    "project.vexlife.welcome-wagon",
+    "projects/vexlife-welcome-wagon/README.md"
   ],
   "compatibilityOrder": {
     "itemWorkRefs": [

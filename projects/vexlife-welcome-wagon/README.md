@@ -18,7 +18,7 @@ IMPLEMENTATION AUTHORIZED
 
 The Project packet is deliberately formed before implementation so a future worker does not have to reconstruct the human entry philosophy from chat history.
 
-At formation time the Project Registry / composed public Workgraph integration is held because open VexWork PR #112 is already changing those shared aggregate surfaces. The project-local source here is disjoint and may be integrated after that shared writer is reconciled.
+At formation time registry/composed-Workgraph integration was held because VexWork PR #112 was already changing shared aggregate surfaces. Victor later explicitly authorized continuing the Welcome Wagon effort. This branch now admits the Project Registry/composition source on current VexWork main; generated aggregate projections remain a convergence boundary that must be rebuilt and reconciled against any still-open shared-output PR before merge.
 
 ## Human outcome
 
@@ -861,7 +861,7 @@ The Welcome Wagon is currently straightforward enough that it does **not** need 
 VexBoard becomes useful later only if this path genuinely fans out into parallel/conditional work such as independent Terrain, VexLife, VexWork, localization, FAB, evidence and publication tracks. Do not add Board ceremony merely to redraw a mostly sequential plan.
 ## Deliberately held
 
-This formation does **not** decide or authorize:
+The original formation alone did **not** decide or authorize the items below. Victor's later explicit “please move forward” authorizes bounded implementation along this saved completion path, but it does not collapse the held product/design choices or provider/repository boundaries:
 
 - which URL becomes the final default homepage;
 - whether Terrain itself, a wrapper, or another surface owns the default route;
@@ -870,7 +870,7 @@ This formation does **not** decide or authorize:
 - deletion of `vextreme-home.html`;
 - a fourth card;
 - VexLife app onboarding changes;
-- repository source mutation;
+- source mutation outside the bounded active Welcome Wagon edge;
 - provider/deployment effects;
 - Project Agency Policy.
 

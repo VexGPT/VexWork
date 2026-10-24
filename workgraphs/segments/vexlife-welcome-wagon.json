@@ -6,7 +6,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-24T06:05:10.000Z",
-      "updatedAt": "2026-10-24T06:05:10.000Z",
+      "updatedAt": "2026-10-24T06:43:34.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "workRef": "work.vexlife.welcome-wagon.outcome",
@@ -14,7 +14,7 @@
       "label": "VexLife Welcome Wagon",
       "purpose": "Create a humane front door where a first-time person can understand where they are and enter according to why they came, while preserving accepted Terrain/VexLife/VexWork foundations, accessibility/FAB capabilities and reversible presentation boundaries instead of treating welcome design as permission to rebuild working systems.",
       "workClass": "OUTCOME",
-      "state": "CAPTURED",
+      "state": "RUNNING",
       "priorityClass": "NORMAL",
       "dependencyRefs": [],
       "repositoryRefs": [
@@ -27,11 +27,12 @@
         "projects/vexlife-welcome-wagon/README.md",
         "repo.vextreme:pages/terrain-map.html",
         "repo.vextreme:pages/vextreme-home.html",
-        "repo.vextreme:vexsystem/index.html"
+        "repo.vextreme:vexsystem/index.html",
+        "github.pull.vexwork.113"
       ],
       "nextProcessRefs": [],
-      "authorityDisposition": "NO_AUTHORITY",
-      "effectDisposition": "NO_EFFECTS"
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -116,7 +117,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-24T06:05:10.000Z",
-      "updatedAt": "2026-10-24T06:05:10.000Z",
+      "updatedAt": "2026-10-24T06:43:34.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "workRef": "work.vexlife.welcome-wagon.vextreme-home-role",
@@ -124,7 +125,7 @@
       "label": "Refactor `vextreme-home` into the human About Vextreme surface",
       "purpose": "Keep the stable vextreme-home institutional identity while changing its public role to About Vextreme: answer “What is this?” in plain language in the first viewport, explain Vextreme/VexLife/VexWork with current truth, retain the four alignments in human language, move Build Health/VexSystem/Covenant/source into deeper on-demand routes, and avoid competing with Terrain as the accepted public front door.",
       "workClass": "POTENTIAL",
-      "state": "CAPTURED",
+      "state": "WAITING_DEPENDENCIES",
       "priorityClass": "NORMAL",
       "dependencyRefs": [
         "work.vexlife.welcome-wagon.about-vextreme-slug-migration"
@@ -297,7 +298,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-24T06:05:10.000Z",
-      "updatedAt": "2026-10-24T06:05:10.000Z",
+      "updatedAt": "2026-10-24T06:43:34.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "workRef": "work.vexlife.welcome-wagon.about-vextreme-slug-migration",
@@ -305,9 +306,11 @@
       "label": "Rename `vextreme-home` to canonical `about-vextreme` safely",
       "purpose": "Migrate the registered institutional page identity from vextreme-home to about-vextreme through a machine-derived impact set, preserving historical/provenance references, updating live links/generated projections/evidence/tests, and retaining a deliberate compatibility route for the old public URL when repository constraints allow it.",
       "workClass": "POTENTIAL",
-      "state": "CAPTURED",
+      "state": "WAITING_DEPENDENCIES",
       "priorityClass": "HIGH",
-      "dependencyRefs": [],
+      "dependencyRefs": [
+        "work.vexlife.welcome-wagon.slug-rename-tooling"
+      ],
       "repositoryRefs": [
         "repo.vexwork",
         "repo.vextreme"
@@ -327,7 +330,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-24T06:05:10.000Z",
-      "updatedAt": "2026-10-24T06:05:10.000Z",
+      "updatedAt": "2026-10-24T06:43:34.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "workRef": "work.vexlife.welcome-wagon.slug-rename-tooling",
@@ -335,7 +338,7 @@
       "label": "Add plan-first page-slug rename impact tooling",
       "purpose": "Close or materially reduce Vextreme td-004 by providing a deterministic plan-first rename tool that discovers and classifies live owner, live reference, generated, evidence, test and historical-provenance references before mutation so future page identity changes are source-derived rather than grep-by-assumption.",
       "workClass": "POTENTIAL",
-      "state": "CAPTURED",
+      "state": "RUNNING",
       "priorityClass": "NORMAL",
       "dependencyRefs": [],
       "repositoryRefs": [
@@ -346,11 +349,12 @@
         "projects/vexlife-welcome-wagon/README.md",
         "repo.vextreme:data/status/tech-debt.json",
         "repo.vextreme:lib/check-key-alignment.js",
-        "repo.vextreme:lib/check-institutional-surfaces.js"
+        "repo.vextreme:lib/check-institutional-surfaces.js",
+        "github.pull.vexwork.113"
       ],
       "nextProcessRefs": [],
-      "authorityDisposition": "NO_AUTHORITY",
-      "effectDisposition": "NO_EFFECTS"
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND"
     }
   ],
   "transitions": [],
