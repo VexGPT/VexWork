@@ -162,6 +162,17 @@ test('evidence fails closed on unknown semantic/slot coordinates and malformed o
   unknownSlot.artifacts[0].slotRef = 'evidence-slot.missing';
   assert.throws(() => normalizeBoardEvidence(unknownSlot, graph), /slot missing/);
 
+  const validWithoutSlot = evidenceFixture();
+  validWithoutSlot.slots = validWithoutSlot.slots
+    .filter((slot) => slot.semanticRef !== 'node.github.pages');
+  validWithoutSlot.artifacts = validWithoutSlot.artifacts
+    .filter((artifact) => artifact.slotRef !== 'evidence-slot.github.pages');
+  assert.deepEqual(evidenceForSemanticRef(validWithoutSlot, graph, 'node.github.pages'), []);
+  assert.throws(
+    () => evidenceForSemanticRef(evidenceFixture(), graph, 'node.missing'),
+    /semanticRef missing/,
+  );
+
   const observedWithoutTime = evidenceFixture();
   observedWithoutTime.artifacts.find((artifact) => artifact.role === 'OBSERVED').capturedAtOrNull = null;
   assert.throws(() => normalizeBoardEvidence(observedWithoutTime, graph), /requires capturedAt/);

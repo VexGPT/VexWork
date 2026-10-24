@@ -183,14 +183,16 @@ export function normalizeBoardEvidence(input, graphInput) {
 }
 
 export function evidenceForSemanticRef(evidenceInput, graphInput, semanticRefInput) {
-  const evidence = normalizeBoardEvidence(evidenceInput, graphInput);
+  const graph = graphValue(graphInput);
+  const evidence = normalizeBoardEvidence(evidenceInput, graph);
   const semanticRef = stableRef(semanticRefInput, 'semanticRef');
+  assert(graph.nodes.some((node) => node.nodeRef === semanticRef),
+    `semanticRef missing: ${semanticRef}`);
   const slots = evidence.slots.filter((slot) => slot.semanticRef === semanticRef);
-  const slotRefs = new Set(slots.map((slot) => slot.slotRef));
   return freezeBoardValue(slots.map((slot) => ({
     ...slot,
     artifacts: evidence.artifacts.filter((artifact) => artifact.slotRef === slot.slotRef),
-  })).filter((slot) => slotRefs.has(slot.slotRef)));
+  })));
 }
 
 // [VXG RealForever][VEXWORK][VEXBOARD][EVIDENCE]
