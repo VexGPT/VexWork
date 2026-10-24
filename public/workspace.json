@@ -5969,7 +5969,7 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-24T03:45:00.000Z",
-          "updatedAt": "2026-10-24T04:05:56Z",
+          "updatedAt": "2026-10-24T04:05:56.000Z",
           "transitionHistory": [
             {
               "transitionRef": "transition.vex-universe.process-board-addressability.running.source-ready",
@@ -5993,7 +5993,7 @@
               "sourceRefs": [
                 "github.pull.vexwork.103"
               ],
-              "createdAt": "2026-10-24T04:05:56Z"
+              "createdAt": "2026-10-24T04:05:56.000Z"
             }
           ]
         },
