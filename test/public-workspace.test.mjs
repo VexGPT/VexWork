@@ -168,6 +168,10 @@ test('VexBoard projects completed navigation foundations with Source Projectors 
   assert.deepEqual([boardpatch.effectDisposition, projectors.effectDisposition], ['NO_EFFECTS', 'EFFECTS_BOUND']);
   assert.equal(projectors.sourceRefs.includes('github.pull.vexwork.108'), true);
   assert.equal(projectors.sourceRefs.includes('src/core/vexboard-source-projectors.mjs'), true);
+  assert.equal(projectors.sourceRefs.includes('github.pull.vexwork.110'), true);
+  assert.equal(projectors.sourceRefs.includes('src/shared/vexboard-evidence.mjs'), true);
+  assert.equal(projectors.sourceRefs.includes('github.pull.vexwork.115'), true);
+  assert.equal(projectors.sourceRefs.includes('src/shared/vexboard-source-resolver.mjs'), true);
   assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.done').workRefs.includes(canvas.workRef), true);
   assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.done').workRefs.includes(journey.workRef), true);
   assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.ready').workRefs.includes(boardpatch.workRef), true);
