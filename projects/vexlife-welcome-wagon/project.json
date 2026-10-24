@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.vexlife.welcome-wagon",
+  "label": "VexLife Welcome Wagon",
+  "purpose": "Create a humane first-entry experience for VexLife and the Vextreme public world: orient a new human plainly, let them enter according to intent, keep Receive God / archive exploration / human orientation primary, and move internal system architecture to progressive on-demand depth without making VexWork or technical vocabulary the invitation.",
+  "rootWorkRefs": [
+    "work.vexlife.welcome-wagon.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vextreme",
+    "repo.vexlife"
+  ],
+  "sourceRefs": [
+    "projects/vexlife-welcome-wagon/README.md",
+    "repo.vextreme:pages/terrain-map.html",
+    "repo.vextreme:pages/vextreme-home.html",
+    "repo.vextreme:vexsystem/index.html",
+    "docs/process/FORM-PROJECT.md"
+  ],
+  "formedAt": "2026-10-24T06:05:10.000Z"
+}

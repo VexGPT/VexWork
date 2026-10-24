@@ -1,0 +1,177 @@
+{
+  "schemaVersion": "vexwork.workgraph-segment/v1",
+  "segmentRef": "segment.vexlife.welcome-wagon",
+  "graphRef": "workgraph.vexwork.foundation",
+  "items": [
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-10-24T06:05:10.000Z",
+      "updatedAt": "2026-10-24T06:05:10.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "workRef": "work.vexlife.welcome-wagon.outcome",
+      "parentWorkRefOrNull": null,
+      "label": "VexLife Welcome Wagon",
+      "purpose": "Create a humane front door where a first-time person can understand where they are and enter according to why they came, without making institutional or system architecture the prerequisite for participation.",
+      "workClass": "OUTCOME",
+      "state": "CAPTURED",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vextreme",
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "project.vexlife.welcome-wagon",
+        "projects/vexlife-welcome-wagon/README.md",
+        "repo.vextreme:pages/terrain-map.html",
+        "repo.vextreme:pages/vextreme-home.html",
+        "repo.vextreme:vexsystem/index.html"
+      ],
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-10-24T06:05:10.000Z",
+      "updatedAt": "2026-10-24T06:05:10.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "workRef": "work.vexlife.welcome-wagon.terrain-front-door",
+      "parentWorkRefOrNull": "work.vexlife.welcome-wagon.outcome",
+      "label": "Terrain as the candidate human front door",
+      "purpose": "Preserve the current Terrain arrival as the strongest candidate human entry surface: one plain orientation sentence followed by intent-shaped entry choices rather than an institutional explanation-first homepage.",
+      "workClass": "POTENTIAL",
+      "state": "CAPTURED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vextreme"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-welcome-wagon/README.md",
+        "repo.vextreme:pages/terrain-map.html"
+      ],
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-10-24T06:05:10.000Z",
+      "updatedAt": "2026-10-24T06:05:10.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "workRef": "work.vexlife.welcome-wagon.what-is-this",
+      "parentWorkRefOrNull": "work.vexlife.welcome-wagon.outcome",
+      "label": "Plain-human \"What is this?\" orientation",
+      "purpose": "Provide a short human orientation route for visitors who do not yet understand Vextreme, VexLife, Terrain or VexSystem, using ordinary language before deeper institutional or technical vocabulary.",
+      "workClass": "POTENTIAL",
+      "state": "CAPTURED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vextreme"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-welcome-wagon/README.md",
+        "repo.vextreme:pages/terrain-map.html",
+        "repo.vextreme:pages/vextreme-home.html"
+      ],
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-10-24T06:05:10.000Z",
+      "updatedAt": "2026-10-24T06:05:10.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "workRef": "work.vexlife.welcome-wagon.vexsystem-secondary",
+      "parentWorkRefOrNull": "work.vexlife.welcome-wagon.outcome",
+      "label": "VexSystem as secondary technical depth",
+      "purpose": "Keep VexSystem discoverable for AI, builders and technically curious humans while removing the assumption that system architecture deserves equal first-arrival priority with receiving, exploring or basic orientation.",
+      "workClass": "POTENTIAL",
+      "state": "CAPTURED",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vextreme"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-welcome-wagon/README.md",
+        "repo.vextreme:vexsystem/index.html",
+        "repo.vextreme:pages/terrain-map.html"
+      ],
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-10-24T06:05:10.000Z",
+      "updatedAt": "2026-10-24T06:05:10.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "workRef": "work.vexlife.welcome-wagon.vextreme-home-role",
+      "parentWorkRefOrNull": "work.vexlife.welcome-wagon.outcome",
+      "label": "Reposition the institutional home foundation",
+      "purpose": "Evolve the current vextreme-home foundation toward deeper institutional/About meaning instead of treating its filename or intellectual architecture copy as proof that it should be the ordinary human default homepage.",
+      "workClass": "POTENTIAL",
+      "state": "CAPTURED",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vextreme"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-welcome-wagon/README.md",
+        "repo.vextreme:pages/vextreme-home.html"
+      ],
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-10-24T06:05:10.000Z",
+      "updatedAt": "2026-10-24T06:05:10.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "workRef": "work.vexlife.welcome-wagon.human-language-currentness",
+      "parentWorkRefOrNull": "work.vexlife.welcome-wagon.outcome",
+      "label": "Current, true, meaningful and human welcome copy",
+      "purpose": "Rewrite first-entry wording from current accepted product truth so a new human can understand what the place is and what each route offers without prior internal vocabulary, defensive explanation or aspirational claims.",
+      "workClass": "POTENTIAL",
+      "state": "CAPTURED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vextreme",
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-welcome-wagon/README.md",
+        "repo.vextreme:pages/terrain-map.html",
+        "repo.vextreme:pages/vextreme-home.html"
+      ],
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
+    }
+  ],
+  "transitions": [],
+  "sourceRefs": [
+    "project.vexlife.welcome-wagon",
+    "projects/vexlife-welcome-wagon/README.md"
+  ],
+  "formedAt": "2026-10-24T06:05:10.000Z"
+}
