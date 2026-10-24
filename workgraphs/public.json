@@ -2628,24 +2628,28 @@
       "label": "Read-only canvas and recursive navigation",
       "purpose": "Project BoardGraph meaning into a deterministic, stable, zoomable and pannable canvas with semantic shapes, connectors, focus, minimap, inline expansion, portal entry and collapse while keeping camera position separate from semantic position.",
       "workClass": "TASK",
-      "state": "READY",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexboard.boardgraph-contract"
       ],
-      "authorityDisposition": "NO_AUTHORITY",
-      "effectDisposition": "NO_EFFECTS",
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
       "formationProcessRefOrNull": null,
       "workDisposition": "ACTIVE",
       "repositoryRefs": [
         "repo.vexwork"
       ],
       "sourceRefs": [
-        "projects/vexboard/README.md"
+        "projects/vexboard/README.md",
+        "github.pull.vexwork.88",
+        "git.commit.vexwork.666001854babc14b5e956d65d66f0c6432e72349",
+        "vexboard-reader.js",
+        "vexboard/index.html"
       ],
       "nextProcessRefs": [],
       "createdAt": "2026-10-23T00:14:29.000Z",
-      "updatedAt": "2026-10-23T07:52:14.000Z"
+      "updatedAt": "2026-10-23T23:59:06.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -2654,25 +2658,34 @@
       "label": "Prototype simulation and BoardJourney",
       "purpose": "Make semantic controls, conditions, overlays, loops, return paths and scenario state traversable without real external effects, preserving a right-side journey stack that distinguishes meaningful traversal from viewport movement.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexboard.boardgraph-contract",
         "work.vexboard.canvas-projection"
       ],
-      "authorityDisposition": "NO_AUTHORITY",
-      "effectDisposition": "NO_EFFECTS",
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
       "formationProcessRefOrNull": null,
       "workDisposition": "ACTIVE",
       "repositoryRefs": [
         "repo.vexwork"
       ],
       "sourceRefs": [
-        "projects/vexboard/README.md"
+        "projects/vexboard/README.md",
+        "github.pull.vexwork.91",
+        "git.commit.vexwork.0a5d36632400f4ff6e7478a2fc9805bc8b9d7c8b",
+        "github.pull.vexwork.93",
+        "git.commit.vexwork.c1c50a226bf80066a59f8d9daded9b75f0fb814e",
+        "github.pull.vexwork.95",
+        "git.commit.vexwork.4d28fd33e271991fe0257c94acf5ebdce87a2f2b",
+        "src/shared/vexboard-journey.mjs",
+        "src/shared/vexboard-simulation.mjs",
+        "vexboard/prototype-demo.prototype.json"
       ],
       "nextProcessRefs": [],
       "createdAt": "2026-10-23T00:14:29.000Z",
-      "updatedAt": "2026-10-23T00:14:29.000Z"
+      "updatedAt": "2026-10-24T02:41:32.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -2681,7 +2694,7 @@
       "label": "AI BoardPatch authoring and reusable extraction",
       "purpose": "Let AI make bounded, reviewable semantic changes anchored to stable board refs, including minimal-movement relayout, undoable lineage, copy-versus-reuse semantics and extraction of overwhelming regions into reusable modules with explicit interfaces.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "READY",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexboard.boardgraph-contract",
@@ -2700,7 +2713,7 @@
       ],
       "nextProcessRefs": [],
       "createdAt": "2026-10-23T00:14:29.000Z",
-      "updatedAt": "2026-10-23T00:14:29.000Z"
+      "updatedAt": "2026-10-24T02:41:33.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -2709,7 +2722,7 @@
       "label": "Source projectors and lived comparison",
       "purpose": "Use the same semantic/rendering foundation to project VexWork processes/work/projects and repository Atlas-style truth read-only, then compare intended VexBoard journeys with observed lived journeys such as Screencrawler evidence without copying source ownership.",
       "workClass": "OUTCOME",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "READY",
       "priorityClass": "NORMAL",
       "dependencyRefs": [
         "work.vexboard.boardgraph-contract",
@@ -2728,7 +2741,7 @@
       ],
       "nextProcessRefs": [],
       "createdAt": "2026-10-23T00:14:29.000Z",
-      "updatedAt": "2026-10-23T00:14:29.000Z"
+      "updatedAt": "2026-10-24T02:41:34.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -4364,46 +4377,6 @@
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vexstream.mobile-library.device-storage.verifying.a033-a039-terminal",
-      "workRef": "work.vexstream.mobile-library.device-storage",
-      "priorState": "WAITING_TOOL",
-      "nextState": "VERIFYING",
-      "reason": "A033 API28 proof, A034 physical API36 storage/migration proof, and the composed A039 post-Clear-Data run established the previously held native storage predicates on exact accepted source.",
-      "actorRef": "role.vexwork.lifecycle-currentizer",
-      "sourceRefs": [
-        "github.issue.vexlife-android.157",
-        "evidence.vexstream.mobile-library.device-storage.a033.api28-pass",
-        "evidence.vexstream.mobile-library.device-storage.a034.api36-pass",
-        "evidence.vexstream.mobile-library.clear-data.a039.return.sha256.67e4b6ede7aab8964406894da8fdcddc216f88692e11fbd8a21ac2ae21c537b7",
-        "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md",
-        "proposal.local-vex-operations.vexstream-mobile-library.durable-device-completion.20261023a",
-        "response.victor.vexstream-mobile-library.durable-device-completion.20261023a",
-        "confirmation.local-vex-operations.vexstream-mobile-library.durable-device-completion.20261023a"
-      ],
-      "createdAt": "2026-10-24T02:34:45.000Z"
-    },
-    {
-      "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vexstream.mobile-library.device-storage.completed.pr165-terminal",
-      "workRef": "work.vexstream.mobile-library.device-storage",
-      "priorState": "VERIFYING",
-      "nextState": "COMPLETED",
-      "reason": "Android PR #165 merged the composed durable-device candidate and post-merge verification proved main tree-exact to the accepted candidate; the storage task no longer waits on Android proof orchestration.",
-      "actorRef": "role.vexwork.lifecycle-currentizer",
-      "sourceRefs": [
-        "github.pull.vexlife-android.165",
-        "github.commit.vexlife-android.b8826e32ca78cc5fb8bcae14e29218a0392238bb",
-        "evidence.vexstream.mobile-library.clear-data.a039.return.sha256.67e4b6ede7aab8964406894da8fdcddc216f88692e11fbd8a21ac2ae21c537b7",
-        "evidence.vexstream.mobile-library.clear-data.cleanup.a043.return.sha256.e4dbda67670dcc2a86a88f1cc12e93929e3cc35699de485ea30bdc428dc3ebe6",
-        "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md",
-        "proposal.local-vex-operations.vexstream-mobile-library.durable-device-completion.20261023a",
-        "response.victor.vexstream-mobile-library.durable-device-completion.20261023a",
-        "confirmation.local-vex-operations.vexstream-mobile-library.durable-device-completion.20261023a"
-      ],
-      "createdAt": "2026-10-24T02:34:46.000Z"
-    },
-    {
-      "schemaVersion": "vexwork.work-transition/v1",
       "transitionRef": "transition.vexboard.boardgraph-contract.running.20261023a",
       "workRef": "work.vexboard.boardgraph-contract",
       "priorState": "READY",
@@ -4447,6 +4420,81 @@
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.boardjourney-simulation.ready.canvas-pr88",
+      "workRef": "work.vexboard.boardjourney-simulation",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "BoardGraph and Canvas Projection were both terminally complete, releasing the BoardJourney and prototype-simulation frontier.",
+      "actorRef": "actor.chatgpt.vexboard.boardjourney-simulation",
+      "sourceRefs": [
+        "work.vexboard.boardgraph-contract",
+        "work.vexboard.canvas-projection",
+        "github.pull.vexwork.88"
+      ],
+      "createdAt": "2026-10-23T23:59:06.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.boardjourney-simulation.running.pr91",
+      "workRef": "work.vexboard.boardjourney-simulation",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "PR #91 began the first bounded BoardJourney semantic-walk implementation slice.",
+      "actorRef": "actor.chatgpt.vexboard.boardjourney-simulation",
+      "sourceRefs": [
+        "github.pull.vexwork.91",
+        "projects/vexboard/README.md"
+      ],
+      "createdAt": "2026-10-24T00:14:33.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.boardjourney-simulation.verifying.pr95-clear",
+      "workRef": "work.vexboard.boardjourney-simulation",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "BoardJourney, typed prototype simulation and clickable same-board simulation reached the corrected PR #95 exact head with SourceOwner PASS and fresh Independent Assurance CLEAR.",
+      "actorRef": "actor.chatgpt.vexboard.boardjourney-simulation",
+      "sourceRefs": [
+        "github.pull.vexwork.91",
+        "github.pull.vexwork.93",
+        "github.pull.vexwork.95",
+        "git.commit.vexwork.e33c7883ea8e9b3cf6f2329415700dcfc81ac9d5"
+      ],
+      "createdAt": "2026-10-24T02:40:12.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.boardjourney-simulation.completed.pr95-terminal",
+      "workRef": "work.vexboard.boardjourney-simulation",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "PR #95 merged the corrected clickable simulation candidate and post-merge verification proved the exact accepted blobs on main, completing the bounded BoardJourney/simulation work item.",
+      "actorRef": "actor.chatgpt.vexboard.boardjourney-simulation",
+      "sourceRefs": [
+        "github.pull.vexwork.95",
+        "git.commit.vexwork.4d28fd33e271991fe0257c94acf5ebdce87a2f2b"
+      ],
+      "createdAt": "2026-10-24T02:41:32.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.boardpatch-authoring.ready.pr95-terminal",
+      "workRef": "work.vexboard.boardpatch-authoring",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "BoardGraph, Canvas Projection and BoardJourney/simulation dependencies are complete; BoardPatch authoring is dependency-ready while retaining NO_AUTHORITY / NO_EFFECTS.",
+      "actorRef": "actor.chatgpt.vexboard.currentization",
+      "sourceRefs": [
+        "work.vexboard.boardgraph-contract",
+        "work.vexboard.canvas-projection",
+        "work.vexboard.boardjourney-simulation",
+        "github.pull.vexwork.95"
+      ],
+      "createdAt": "2026-10-24T02:41:33.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
       "transitionRef": "transition.vexboard.canvas-projection.ready.boardgraph-pr66",
       "workRef": "work.vexboard.canvas-projection",
       "priorState": "WAITING_DEPENDENCIES",
@@ -4459,6 +4507,64 @@
         "git.commit.vexwork.1f19e70a397baab1f5d995bacc2358372b93563e"
       ],
       "createdAt": "2026-10-23T07:52:14.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.canvas-projection.running.pr88",
+      "workRef": "work.vexboard.canvas-projection",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "PR #88 began the bounded Canvas Projection implementation after the BoardGraph dependency was terminally accepted.",
+      "actorRef": "actor.chatgpt.vexboard.canvas-projection",
+      "sourceRefs": [
+        "github.pull.vexwork.88",
+        "projects/vexboard/README.md"
+      ],
+      "createdAt": "2026-10-23T23:26:55.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.canvas-projection.verifying.pr88-clear",
+      "workRef": "work.vexboard.canvas-projection",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Corrected PR #88 head passed SourceOwner and fresh Independent Assurance, closing the fork-identity finding on the exact candidate.",
+      "actorRef": "actor.chatgpt.vexboard.canvas-projection",
+      "sourceRefs": [
+        "github.pull.vexwork.88",
+        "git.commit.vexwork.2818a90a93b4f5fc6e6cdb991df0c2c2e8bd1ec5"
+      ],
+      "createdAt": "2026-10-23T23:57:17.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.canvas-projection.completed.pr88-terminal",
+      "workRef": "work.vexboard.canvas-projection",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "PR #88 merged and post-merge verification proved the cleared Canvas Projection candidate on main.",
+      "actorRef": "actor.chatgpt.vexboard.canvas-projection",
+      "sourceRefs": [
+        "github.pull.vexwork.88",
+        "git.commit.vexwork.666001854babc14b5e956d65d66f0c6432e72349"
+      ],
+      "createdAt": "2026-10-23T23:59:06.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.source-projectors.ready.pr95-terminal",
+      "workRef": "work.vexboard.source-projectors",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "BoardGraph, Canvas Projection and BoardJourney/simulation dependencies are complete; source projectors are dependency-ready while retaining NO_AUTHORITY / NO_EFFECTS.",
+      "actorRef": "actor.chatgpt.vexboard.currentization",
+      "sourceRefs": [
+        "work.vexboard.boardgraph-contract",
+        "work.vexboard.canvas-projection",
+        "work.vexboard.boardjourney-simulation",
+        "github.pull.vexwork.95"
+      ],
+      "createdAt": "2026-10-24T02:41:34.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
@@ -4559,6 +4665,46 @@
         "git.commit.vexlife.85ef85dfa4852154e522deadc45707b03cf74221"
       ],
       "createdAt": "2026-10-23T08:30:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.device-storage.verifying.a033-a039-terminal",
+      "workRef": "work.vexstream.mobile-library.device-storage",
+      "priorState": "WAITING_TOOL",
+      "nextState": "VERIFYING",
+      "reason": "A033 API28 proof, A034 physical API36 storage/migration proof, and the composed A039 post-Clear-Data run established the previously held native storage predicates on exact accepted source.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.issue.vexlife-android.157",
+        "evidence.vexstream.mobile-library.device-storage.a033.api28-pass",
+        "evidence.vexstream.mobile-library.device-storage.a034.api36-pass",
+        "evidence.vexstream.mobile-library.clear-data.a039.return.sha256.67e4b6ede7aab8964406894da8fdcddc216f88692e11fbd8a21ac2ae21c537b7",
+        "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md",
+        "proposal.local-vex-operations.vexstream-mobile-library.durable-device-completion.20261023a",
+        "response.victor.vexstream-mobile-library.durable-device-completion.20261023a",
+        "confirmation.local-vex-operations.vexstream-mobile-library.durable-device-completion.20261023a"
+      ],
+      "createdAt": "2026-10-24T02:34:45.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.device-storage.completed.pr165-terminal",
+      "workRef": "work.vexstream.mobile-library.device-storage",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "Android PR #165 merged the composed durable-device candidate and post-merge verification proved main tree-exact to the accepted candidate; the storage task no longer waits on Android proof orchestration.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexlife-android.165",
+        "github.commit.vexlife-android.b8826e32ca78cc5fb8bcae14e29218a0392238bb",
+        "evidence.vexstream.mobile-library.clear-data.a039.return.sha256.67e4b6ede7aab8964406894da8fdcddc216f88692e11fbd8a21ac2ae21c537b7",
+        "evidence.vexstream.mobile-library.clear-data.cleanup.a043.return.sha256.e4dbda67670dcc2a86a88f1cc12e93929e3cc35699de485ea30bdc428dc3ebe6",
+        "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md",
+        "proposal.local-vex-operations.vexstream-mobile-library.durable-device-completion.20261023a",
+        "response.victor.vexstream-mobile-library.durable-device-completion.20261023a",
+        "confirmation.local-vex-operations.vexstream-mobile-library.durable-device-completion.20261023a"
+      ],
+      "createdAt": "2026-10-24T02:34:46.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
