@@ -364,6 +364,133 @@ PROJECTED_WORK != WORK_STATE_OWNER
 SOURCE_REFERENCE != MUTATION_PERMISSION
 ```
 
+## VexBoard ontology and typologies
+
+The accepted wire contracts use the compact field name `kind` as a discriminator. That is useful machine syntax, but it is too generic to be the conceptual address humans and fresh AI instances use when the system grows.
+
+Use this language when explaining the model:
+
+```text
+VexBoard ontology
+  the conceptual families that may exist and relate
+
+Node typology
+  node.kind
+  -> SCENE | CONTROL | PROCESS | DECISION | ARTIFACT |
+     CONTAINER | PORTAL | REFERENCE | ANNOTATION
+
+Relationship typology
+  relationship.kind
+  -> FLOW | TRANSITION | DATA | REFERENCE
+
+Interaction typology
+  interaction/action discriminator
+  -> the admitted prototype interaction and simulated-action vocabulary
+
+Projection typology
+  visual form / shape + layout intent
+  -> how meaning appears here, not what it means
+```
+
+So the ordinary human projection should prefer:
+
+```text
+Node type / Represents
+Relationship family
+Interaction type
+Visual form
+```
+
+rather than asking a person to reason from a bare label such as `Kind: PROCESS`.
+
+This is a terminology/projection boundary, **not a wire-schema migration**. The current `kind` fields remain valid and stable until repeated implementation pressure earns an actual schema change.
+
+```text
+KIND_FIELD = MACHINE_DISCRIMINATOR
+TYPOLOGY = CLASSIFICATION_DIMENSION
+TYPE = ONE_MEMBER_OF_THAT_TYPOLOGY
+ROLE = CONTEXTUAL_FUNCTION
+STATE = WHAT_IS_CURRENTLY_TRUE
+FORM = HOW_IT_APPEARS
+```
+
+## Federated totality — modular boards, not one mega-map
+
+A useful “totality process map” should not mean one enormous BoardGraph that every domain and perspective must load at once.
+
+The scalable target is:
+
+```text
+many small source-owned boards / projections
+        |
+        | stable boardRef + source refs
+        v
+board source registry / resolver
+        |
+        +-> resolve one requested board
+        +-> resolve a PORTAL/detailBoardRef target
+        +-> optionally resolve its prototype/presentation companions
+        v
+VexBoard
+        |
+        +-> render one bounded projection
+        +-> preserve BoardJourney
+        +-> enter another board
+        +-> return without losing the explicit interaction path
+```
+
+The current `VEXBOARD_BUILTIN_BOARD_URLS` / prototype maps are a good proving-ground realization for a few local boards. They are not the long-term catalog for hundreds of reusable business, development, education, provider, architecture or operational process modules.
+
+The next reusable routing seam should therefore be a **board source registry/resolver** that maps stable `boardRef` identity to the rightful source descriptor. It is routing/catalog infrastructure, not another semantic owner and not an automation-effect grant. Its exact schema is intentionally not declared here before implementation pressure earns it.
+
+Permanent boundaries:
+
+```text
+TOTALITY != ONE_GIANT_BOARD
+BOARD_REGISTRY != BOARDGRAPH_TRUTH
+BOARD_REGISTRY != PROCESS_REGISTRY
+BOARD_REGISTRY != EFFECT_AUTHORITY
+PORTAL != COPIED_SUBGRAPH
+PERSPECTIVE != SECOND_SOURCE_OF_TRUTH
+CROSS_BOARD_JOURNEY != CAMERA_MOVEMENT
+```
+
+A future cross-board Journey should preserve a semantic coordinate that includes both the board and the node being visited, conceptually:
+
+```text
+(boardRef, semanticRef)
+```
+
+and preserve return/interaction history across portal traversal. That extends the accepted BoardJourney distinction rather than replacing it with a second traversal model.
+
+### Parallel construction without semantic collapse
+
+The repository already has the right pattern for parallel **work** authoring:
+
+```text
+independent Workgraph segments
+-> deterministic composition
+-> one canonical Workgraph
+```
+
+VexBoard should consume that pattern, not duplicate it. For visual/process construction:
+
+```text
+rightful source owner A -> board/module A
+rightful source owner B -> board/module B
+rightful source owner C -> board/module C
+                         |
+                         v
+             stable refs + resolver
+                         |
+                         v
+            traversable VexBoard world
+```
+
+BoardGraph modules/ports, source projectors and BoardPatch extraction may make those pieces reusable. VexWork remains the work/lifecycle truth owner; source-owned process registries remain their own catalogs; VexBoard provides the semantic visual/traversal substrate over them.
+
+VexBusinessFactory is the first strong pressure test because one business world needs many actor-centered perspectives and reusable process modules. It must not become the only evidence for a universal semantic-factory contract. Preserve the existing threshold: prove the same federation/resolution model with at least one genuinely different non-business consumer—VexWork process/work projection is a natural candidate—before extracting a broader universal contract.
+
 ## One semantic model, several visual lenses
 
 The same BoardGraph should support several projections without cloning meaning.
