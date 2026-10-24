@@ -3170,6 +3170,22 @@ The same source also preserves:
 - VexBusinessFactory itself as a recursive self-test;
 - a threshold requiring one genuinely different non-business consumer before extracting a universal semantic-factory contract.
 
+This patient zero now also carries a perspective/aliveness/coordination companion:
+
+~~~text
+projects/vexboard/VEXBUSINESSFACTORY-PERSPECTIVE-ALIVENESS-AND-COORDINATION.md
+~~~
+
+That source preserves:
+
+- actor-centered inverse projections over one shared semantic topology;
+- customer/beneficiary journeys without duplicated business truth;
+- recurring organizational functions such as SENSE / INTERPRET / DESIGN / COMMUNICATE / REALIZE / CARE / ASSURE / LEARN / EVOLVE / COORDINATE rather than fixed department requirements;
+- a business aliveness loop from observation -> interpretation -> proposal -> coordination -> implementation -> verification -> learning;
+- explicit compatibility classes for concurrent adaptations (DISJOINT, COMMUTATIVE, ORDER_DEPENDENT, SHARED_READ, SHARED_PARAMETERIZED, EXCLUSIVE_RESOURCE, OVERLAPPING_MUTATION, CONTRADICTORY, CYCLIC_WAIT, UNKNOWN);
+- reuse/variance/detachment semantics for avoiding accidental duplicated truth;
+- the requirement that conflict coordination preserve separate rightful owners instead of centralizing every domain into one mega-owner.
+
 This is architecture/patient-zero source only. It does not grant Canvas Projection authority, mutate provider/business truth, or make VexBoard the BusinessGraph owner.
 
 ## Deliberately held
