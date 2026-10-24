@@ -167,8 +167,10 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(mobile.state, 'DECOMPOSED');
   assert.equal(mobile.authorityDisposition, 'AUTHORIZED_BOUNDED');
   const storage = graph.items.find((item) => item.workRef === 'work.vexstream.mobile-library.device-storage');
-  assert.equal(storage.state, 'WAITING_TOOL');
-  assert.equal(storage.dependencyRefs.includes('work.android-proof-orchestration.api-target-runner'), true);
+  assert.equal(storage.state, 'COMPLETED');
+  assert.deepEqual(storage.dependencyRefs, []);
+  assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.verifying.a033-a039-terminal'));
+  assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.completed.pr165-terminal'));
   const runner = graph.items.find((item) => item.workRef === 'work.android-proof-orchestration.api-target-runner');
   assert.equal(runner.state, 'READY');
   assert.equal(runner.priorityClass, 'HIGH');
