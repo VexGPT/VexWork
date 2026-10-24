@@ -98,12 +98,21 @@ test('draft reader keeps read-only source separate from editable local fork', as
 });
 
 
-test('canvas usability refinement exposes direct-drag pan, local-save feedback and palette presentation controls', () => {
+test('canvas usability refinement arbitrates chrome, canvas pan, object drag and click before mutation', () => {
   assert.match(page, /ui\/interaction\.mjs/);
   assert.match(page, /ui\/presentation\.mjs/);
+  assert.match(page, /Interaction\.interactionPlaneForTarget/);
   assert.match(page, /Interaction\.shouldStartCanvasPan/);
-  assert.match(page, /Interaction\.dragExceededThreshold/);
-  assert.match(page, /targetIsShape/);
+  assert.match(page, /Interaction\.shouldStartObjectMove/);
+  assert.match(page, /Interaction\.pointerGestureFromMovement/);
+  assert.match(page, /Interaction\.objectPositionFromPointerDrag/);
+  assert.match(page, /dataset\.vexboardPlane=Interaction\.INTERACTION_PLANES\.OBJECT/);
+  assert.match(page, /dataset\.vexboardPlane=Interaction\.INTERACTION_PLANES\.CHROME/);
+  assert.match(page, /dataset\.vexboardPlane=Interaction\.INTERACTION_PLANES\.OVERLAY/);
+  assert.match(page, /let suppressShapeClick=false/);
+  assert.match(page, /if\(suppressShapeClick\)\{suppressShapeClick=false;return\}/);
+  assert.match(page, /if\(!dragged&&Interaction\.pointerGestureFromMovement\(start,end\)!=='DRAG'\)\{cleanup\(\);return\}/);
+  assert.match(page, /await act\('MOVE_ITEM'/);
   assert.match(page, /Saved locally/);
   assert.match(page, /Local save failed/);
   assert.match(page, /Browser-local draft/);
