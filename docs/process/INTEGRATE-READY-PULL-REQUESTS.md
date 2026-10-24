@@ -4,9 +4,11 @@
 
 Intended process ref: process.vexwork.integrate-ready-pull-requests
 
-Registration state: SOURCE_PLACED_NOT_REGISTERED
+Registration state: REGISTERED
 
-Reason registration is held: open VexWork PR #103 currently owns the shared Process Registry source surface.
+Registry source: `blueprint/process-registry.json`
+
+Accepted predecessor dependency: PR #103 merged and released the shared Process Registry source surface before this process was registered.
 
 ## Purpose
 
