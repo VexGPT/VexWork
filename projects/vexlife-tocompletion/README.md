@@ -222,8 +222,8 @@ VexLife PR #924 is the bounded proof candidate for that threshold:
 ~~~text
 PR      #924 (DRAFT)
 base    8f1e9fd9e3f38f8dc23296257df718fca9806988
-head    ec3e6a2a03ff21713baa4ec1e58e38026ba35e1b
-tree    9061853859459ad03b6fd30789e09fc8cb36aae4
+head    b4c0b9a8e5b187b30bd137ac03e9e58eb7786627
+tree    7d702e43095a24eda6ed9f8f1c52a722e281543d
 
 source candidate     FORMED
 focused structure    4 / 4 PASS (candidate-local only)
