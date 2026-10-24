@@ -21,7 +21,9 @@
     "docs/foundation/DERIVED-ATTENTION-PROJECTION.md",
     "docs/foundation/OPERATING-DOMAIN.md",
     "docs/foundation/ATTENTION-QUEUE.md",
-    "docs/process/PROMOTE-DERIVED-CONCERN.md"
+    "docs/process/PROMOTE-DERIVED-CONCERN.md",
+    "projects/vex-security-assurance/ADVERSARIAL-LENS.md",
+    "projects/vex-security-assurance/SIMULATED-ADVERSARIAL-PATIENT-ZERO-A001.md"
   ],
   "formedAt": "2026-10-24T05:45:00.000Z"
 }
