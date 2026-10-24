@@ -49,6 +49,25 @@ SECOND_PUBLIC_URL != AUTOMATIC_FAILOVER
 STATIC_HOSTING != UNLIMITED_AVAILABILITY
 ```
 
+## Existing provider-managed protection on the production surface
+
+Squarespace currently documents that its platform:
+
+- has solutions designed to protect against and mitigate DDoS attacks;
+- uses WAF technology;
+- uses geographically separate infrastructure / availability zones for continuity;
+- supports high-traffic sites under managed hosting.
+
+Squarespace also documents Cloudflare as an optional additional security/traffic layer for advanced needs rather than a universal requirement.
+
+Canonical sources:
+
+- https://www.squarespace.com/measures
+- https://www.squarespace.com/security
+- https://support.squarespace.com/hc/en-us/articles/213469948-Using-Cloudflare-with-Squarespace
+
+This is provider evidence about the current `vextreme24.com` hosting surface. It does not prove Vex-specific configuration, an availability SLO, automatic failover, or protection of the separate GitHub Pages surface.
+
 ## Existing adjacent Cloudflare work
 
 The private SDK currently contains a separately owned Cloudflare provider-family qualification for managed edge/stateful coordination. Public-safe facts already represented there include:
@@ -222,11 +241,13 @@ The exact controls belong to the owning runtime/provider.
 ```text
 existing explicit Vextreme DDoS plan       = NOT_FOUND
 current public deployment topology          = SOURCE_PROVEN
+Squarespace provider DDoS/WAF capability     = PROVIDER_DOCUMENTED
 client caching/resilience                    = SOURCE_PROVEN
 automatic cross-provider failover            = NOT_PROVED
+GitHub Pages Vex-specific DDoS assurance      = UNKNOWN
 Cloudflare selected as public-site host       = NO
 Cloudflare adjacent capability prior art      = SOURCE_PROVEN
-public-site DDoS assurance                    = UNKNOWN
+whole public-site DDoS assurance              = UNKNOWN
 next useful work                              = map exact traffic/DNS/provider boundary,
                                                 then decide whether M1 is sufficient
                                                 or an M2/M3 Spike is warranted
