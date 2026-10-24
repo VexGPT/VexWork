@@ -126,6 +126,8 @@ function normalizeAction(input, { graph, controlRef, overlayRefs }, label) {
     assert(relationship, `${label} relationship missing: ${relationshipRef}`);
     assert(relationship.fromRef === controlRef,
       `${label} relationship ${relationshipRef} must leave control ${controlRef}`);
+    assert(relationship.kind === 'TRANSITION',
+      `${label} NAVIGATE_TO_SCENE relationship must be TRANSITION`);
     const target = graph.nodes.find((node) => node.nodeRef === relationship.toRef);
     assert(target?.kind === 'SCENE', `${label} NAVIGATE_TO_SCENE target must be SCENE`);
     args = { relationshipRef };

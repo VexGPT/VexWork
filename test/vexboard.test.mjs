@@ -674,7 +674,16 @@ test('prototype validation fails closed on invalid controls, navigation, action 
 
   const wrongTarget = simulationPrototype();
   wrongTarget.interactions[0].actions.at(-1).arguments.relationshipRef = 'rel.submit-other';
-  assert.throws(() => Simulation.normalizeBoardPrototype(wrongTarget, graph), /target must be SCENE/);
+  const wrongTargetGraph = simulationGraph();
+  wrongTargetGraph.relationships.find((relationship) => relationship.relationshipRef === 'rel.submit-other').kind = 'TRANSITION';
+  assert.throws(() => Simulation.normalizeBoardPrototype(wrongTarget, wrongTargetGraph), /target must be SCENE/);
+
+  const wrongRelationshipKindGraph = simulationGraph();
+  wrongRelationshipKindGraph.relationships.find((relationship) => relationship.relationshipRef === 'rel.submit-done').kind = 'REFERENCE';
+  assert.throws(
+    () => Simulation.normalizeBoardPrototype(simulationPrototype(), wrongRelationshipKindGraph),
+    /NAVIGATE_TO_SCENE relationship must be TRANSITION/,
+  );
 
   const badOrder = simulationPrototype();
   badOrder.interactions[0].actions = [
