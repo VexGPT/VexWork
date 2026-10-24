@@ -2723,26 +2723,30 @@
       "label": "Source projectors and lived comparison",
       "purpose": "Use the same semantic/rendering foundation to project VexWork processes/work/projects and repository Atlas-style truth read-only, then compare intended VexBoard journeys with observed lived journeys such as Screencrawler evidence without copying source ownership.",
       "workClass": "OUTCOME",
-      "state": "READY",
+      "state": "RUNNING",
       "priorityClass": "NORMAL",
       "dependencyRefs": [
         "work.vexboard.boardgraph-contract",
         "work.vexboard.canvas-projection",
         "work.vexboard.boardjourney-simulation"
       ],
-      "authorityDisposition": "NO_AUTHORITY",
-      "effectDisposition": "NO_EFFECTS",
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
       "formationProcessRefOrNull": null,
       "workDisposition": "ACTIVE",
       "repositoryRefs": [
         "repo.vexwork"
       ],
       "sourceRefs": [
-        "projects/vexboard/README.md"
+        "projects/vexboard/README.md",
+        "github.pull.vexwork.108",
+        "git.commit.vexwork.3278edf9c39b58ef4f59be9e239875518d6c2abf",
+        "src/core/vexboard-source-projectors.mjs",
+        "test/vexboard-source-projectors.test.mjs"
       ],
       "nextProcessRefs": [],
       "createdAt": "2026-10-23T00:14:29.000Z",
-      "updatedAt": "2026-10-24T02:41:34.000Z"
+      "updatedAt": "2026-10-24T05:21:11.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -5579,6 +5583,21 @@
         "github.pull.vexwork.95"
       ],
       "createdAt": "2026-10-24T02:41:34.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.source-projectors.running.pr108",
+      "workRef": "work.vexboard.source-projectors",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "PR #108 merged the first bounded read-only VexWork and public-safe Process Atlas source projector adapters after exact-head SourceOwner PASS and fresh Independent Assurance CLEAR; the broader source-projectors/lived-comparison outcome remains active because evidence comparison, federation and additional consumers are still unfinished.",
+      "actorRef": "actor.chatgpt.vexboard.source-projectors",
+      "sourceRefs": [
+        "github.pull.vexwork.108",
+        "git.commit.vexwork.3278edf9c39b58ef4f59be9e239875518d6c2abf",
+        "src/core/vexboard-source-projectors.mjs"
+      ],
+      "createdAt": "2026-10-24T05:21:11.000Z"
     }
   ],
   "sourceRefs": [
