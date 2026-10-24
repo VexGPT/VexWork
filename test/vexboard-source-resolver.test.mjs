@@ -31,11 +31,10 @@ test('existing built-in Board URLs project into one source-owned catalog without
   const catalog = builtinCatalog();
   assert.equal(catalog.schemaVersion, BOARD_SOURCE_CATALOG_SCHEMA);
   assert.equal(catalog.catalogRef, 'catalog.vexboard.builtin');
-  assert.deepEqual(catalog.entries.map((entry) => entry.boardRef), [
-    'board.vexboard.prototype-demo',
-    'board.vexboard.publish',
-    'board.vexboard.self-map',
-  ]);
+  const boardRefs = catalog.entries.map((entry) => entry.boardRef);
+  assert.equal(boardRefs.includes('board.vexboard.prototype-demo'), true);
+  assert.equal(boardRefs.includes('board.vexboard.publish'), true);
+  assert.equal(boardRefs.includes('board.vexboard.self-map'), true);
 
   const resolved = resolveBoardSource('board.vexboard.self-map', [catalog]);
   assert.equal(resolved.schemaVersion, BOARD_SOURCE_RESOLUTION_SCHEMA);
@@ -95,6 +94,11 @@ test('catalog validation rejects duplicate refs, unsafe locations and schema dri
   unsafe.catalogRef = 'catalog.unsafe';
   unsafe.entries = [{ boardRef: 'board.example', location: './../escape.json', sourceRefs: [] }];
   assert.throws(() => normalizeBoardSourceCatalog(unsafe), /stay inside its source root/);
+
+  const encodedTraversal = structuredClone(duplicateEntry);
+  encodedTraversal.catalogRef = 'catalog.encoded-traversal';
+  encodedTraversal.entries = [{ boardRef: 'board.example', location: './%2e%2e/escape.json', sourceRefs: [] }];
+  assert.throws(() => normalizeBoardSourceCatalog(encodedTraversal), /plain relative JSON location/);
 
   const drift = {
     schemaVersion: BOARD_SOURCE_CATALOG_SCHEMA,

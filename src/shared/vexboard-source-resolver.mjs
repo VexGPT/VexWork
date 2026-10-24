@@ -40,7 +40,7 @@ function relativeJsonLocation(value, label) {
   const parts = value.slice(2).split('/');
   assert(parts.length > 0 && parts.every((part) => part && part !== '.' && part !== '..'),
     `${label} must stay inside its source root`);
-  assert(!value.includes('\\') && !value.includes('?') && !value.includes('#'),
+  assert(!value.includes('\\') && !value.includes('?') && !value.includes('#') && !value.includes('%'),
     `${label} must be a plain relative JSON location`);
   return value;
 }
@@ -51,7 +51,7 @@ function normalizeEntry(input) {
   return {
     boardRef,
     location: relativeJsonLocation(input.location, `board source ${boardRef}.location`),
-    sourceRefs: refs(input.sourceRefs, `board source ${boardRef}.sourceRefs`),
+    sourceRefs: Object.freeze(refs(input.sourceRefs, `board source ${boardRef}.sourceRefs`)),
   };
 }
 
