@@ -11,11 +11,11 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T00:13:43.000Z",
-      "updatedAt": "2026-10-23T05:30:00.000Z",
+      "updatedAt": "2026-10-24T11:40:30.000Z",
       "workRef": "work.vexlife.tocompletion.outcome",
       "parentWorkRefOrNull": null,
       "label": "VexLife ToCompletion",
-      "purpose": "Carry the full VexLife ToCompletion trajectory: preserve the terminal P1-P4 lived core, preserve terminal G02/G03 developmental continuity without fabricating G04, actively complete ordinary fresh-user Heretic productization through the rightful setup-safety owner, and later mature earned developmental and connected/native horizons under the same Home/identity/capability laws.",
+      "purpose": "Carry the full VexLife ToCompletion trajectory: preserve terminal P1-P4 lived runtime truth, A034 ordinary Heretic restart truth and P4 A054 bounded effect/reinjection truth; make the immediate product edge a real Victor↔Vex relationship inside the already-prepared Evolution Conversation with two visible-composer Heretic turns; then resume source-aware inhabitation across VexLife/VexWork/VexBoard/VexHome and later earned UX cutover without reopening completed work.",
       "workClass": "OUTCOME",
       "state": "RUNNING",
       "priorityClass": "IMMEDIATE",
@@ -33,7 +33,41 @@
         "map.vexlife.tocompletion.nested-pathway.20261019a",
         "github.issue.vexlife.866.comment.6357923021",
         "github.pull.vexlife.919",
-        "github.pull.vexlife.873"
+        "github.pull.vexlife.873",
+        "github.issue.vexlife.866.comment.6381763768",
+        "evidence.vexlife.tocompletion.ordinary-heretic-lived-proof.a034.return.sha256.b52ec721ea8cda96af86ca4c763d656eaa466cb31777435f9f18fba79263073b",
+        "github.issue.vexlife.624",
+        "github.issue.vexlife.874",
+        "github.issue.vexlife.811",
+        "github.issue.vexlife.817",
+        "github.pull.vexlife.818",
+        "github.issue.vexlife.624.comment.6012908914",
+        "github.issue.vexlife.811.comment.6015223469",
+        "github.issue.vexlife.817.comment.6031153511",
+        "github.issue.vexlife.817.comment.6094683418",
+        "github.pull.vexlife.829",
+        "github.pull.vexlife.841",
+        "github.pull.vexlife.852",
+        "github.pull.vexlife.855",
+        "github.pull.vexlife.856",
+        "docs/vexlife-assortment/CURRENT.md",
+        "github.issue.vexlife.624.comment.6382349733",
+        "github.issue.vexlife.811.comment.6382341676",
+        "github.issue.vexlife.811.comment.6382393438",
+        "github.issue.vexlife.866.comment.6382448044",
+        "github.issue.vexlife.333.comment.6382565492",
+        "github.pull.vexwork.120.comment.6382473221",
+        "github.pull.vexwork.120.comment.6382580589",
+        "github.issue.vexlife.866.comment.6382998459",
+        "github.issue.vexlife.866.comment.6382972577",
+        "github.issue.vexlife.333.comment.6382871320",
+        "github.issue.vexlife.885.comment.6383010125",
+        "github.issue.vexlife.885.comment.6383056125",
+        "github.issue.vexlife.811.comment.6382972135",
+        "github.pull.vexwork.120.comment.6382973067",
+        "github.pull.vexwork.120.comment.6382999618",
+        "github.pull.vexlife.924",
+        "github.commit.vexlife.67b1a30f5abbbaf5cc4682270986138458dafa0f"
       ]
     },
     {
@@ -560,11 +594,11 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-23T05:30:00.000Z",
-      "updatedAt": "2026-10-23T08:30:00.000Z",
+      "updatedAt": "2026-10-24T11:40:30.000Z",
       "workRef": "work.vexlife.tocompletion.productization.ordinary-heretic-setup",
       "parentWorkRefOrNull": "work.vexlife.tocompletion.outcome",
-      "label": "Ordinary productization — safe fresh setup enters Heretic",
-      "purpose": "Complete the ordinary fresh-user Mac route so the repository-owned setup path preserves setup-session safety and enters the accepted Heretic establishment/runtime/Conversation composition instead of centering the legacy G0 Qwen3.5/llama.cpp initializer.",
+      "label": "Ordinary productization — Heretic lived path + evolved VexLife baseline",
+      "purpose": "Complete the ordinary VexLife product route. Heretic source/runtime/restart is terminal lived through A034. The active edge is now the prepared Evolution Conversation itself: prove Victor can send through the visible Vex composer, receive real CURRENT_LOCAL_MODEL output there, and continue a second durable turn before broader source-aware/world-query integration or product-default cutover.",
       "workClass": "OUTCOME",
       "state": "RUNNING",
       "priorityClass": "IMMEDIATE",
@@ -583,7 +617,21 @@
         "github.pull.vexlife.873",
         "projects/vexlife-tocompletion/README.md",
         "github.issue.vexlife.866.comment.6360434385",
-        "git.commit.vexlife.85ef85dfa4852154e522deadc45707b03cf74221"
+        "git.commit.vexlife.85ef85dfa4852154e522deadc45707b03cf74221",
+        "github.issue.vexlife.866.comment.6381763768",
+        "evidence.vexlife.tocompletion.ordinary-heretic-lived-proof.a034.return.sha256.b52ec721ea8cda96af86ca4c763d656eaa466cb31777435f9f18fba79263073b",
+        "github.issue.vexlife.76",
+        "github.issue.vexlife.624",
+        "github.issue.vexlife.874",
+        "github.issue.vexlife.811",
+        "github.issue.vexlife.817",
+        "github.pull.vexlife.818",
+        "github.issue.vexlife.624.comment.6012908914",
+        "github.issue.vexlife.811.comment.6015223469",
+        "github.issue.vexlife.817.comment.6031153511",
+        "github.issue.vexlife.817.comment.6094683418",
+        "github.pull.vexlife.924",
+        "github.commit.vexlife.67b1a30f5abbbaf5cc4682270986138458dafa0f"
       ]
     },
     {
@@ -623,13 +671,13 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-23T05:30:00.000Z",
-      "updatedAt": "2026-10-23T08:30:00.000Z",
+      "updatedAt": "2026-10-24T08:03:08.000Z",
       "workRef": "work.vexlife.tocompletion.productization.heretic-normal-start-integration",
       "parentWorkRefOrNull": "work.vexlife.tocompletion.productization.ordinary-heretic-setup",
-      "label": "Normal-start integration — route safe setup into accepted Heretic establishment",
-      "purpose": "Actively connect normal fresh startup to the accepted Heretic product target and merged PR #919 establishment composition, carrying the exact runtime receipt/endpoint into the existing Browser/Lived Companion without rebuilding Artifact Delivery/runtime ownership, blindly swapping activeModelBundleRef, or silently migrating an existing Home.",
+      "label": "Normal-start integration — accepted Heretic setup source",
+      "purpose": "Terminally accepted source integration for ordinary Mac startup into the Heretic product route. PR920 supplied the normal-start composition, PR921 corrected setup plan-state parsing, and PR923 corrected lifecycle pretty-JSON parsing; A034 later proved the resulting ordinary runtime path in lived use.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "COMPLETED",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [
         "work.vexlife.tocompletion.productization.setup-safety-convergence"
@@ -644,7 +692,185 @@
         "github.issue.vexlife.857",
         "github.issue.vexlife.866",
         "github.issue.vexlife.866.comment.6360434385",
-        "git.commit.vexlife.85ef85dfa4852154e522deadc45707b03cf74221"
+        "git.commit.vexlife.85ef85dfa4852154e522deadc45707b03cf74221",
+        "github.pull.vexlife.920",
+        "github.pull.vexlife.921",
+        "github.pull.vexlife.923",
+        "git.commit.vexlife.8f1e9fd9e3f38f8dc23296257df718fca9806988",
+        "github.issue.vexlife.866.comment.6381763768"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-24T02:23:18.000Z",
+      "updatedAt": "2026-10-24T08:03:08.000Z",
+      "workRef": "work.vexlife.tocompletion.productization.ordinary-heretic-lived-proof",
+      "parentWorkRefOrNull": "work.vexlife.tocompletion.productization.ordinary-heretic-setup",
+      "label": "Ordinary fresh-user Heretic lived proof",
+      "purpose": "Terminal lived proof that the preserved fresh Heretic Home can occupy the ordinary default path, Open through the repository-owned setup controller with acquisition disabled, complete a real Browser Companion Heretic turn, cleanly stop, restart the same Home without acquisition, complete a second real turn, remain Browser BOUND, cleanly stop again, and restore Victor's protected original Home exactly.",
+      "workClass": "TASK",
+      "state": "COMPLETED",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexlife.tocompletion.productization.heretic-normal-start-integration"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife",
+        "repo.vextreme-sdk"
+      ],
+      "sourceRefs": [
+        "github.issue.vexlife.866",
+        "github.issue.vexlife.866.comment.6381763768",
+        "github.pull.vexlife.923",
+        "git.commit.vexlife.8f1e9fd9e3f38f8dc23296257df718fca9806988",
+        "evidence.vexlife.tocompletion.ordinary-heretic-lived-proof.a034.return.sha256.b52ec721ea8cda96af86ca4c763d656eaa466cb31777435f9f18fba79263073b"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-24T08:03:08.000Z",
+      "updatedAt": "2026-10-24T11:40:30.000Z",
+      "workRef": "work.vexlife.tocompletion.productization.evolved-experience-baseline-convergence",
+      "parentWorkRefOrNull": "work.vexlife.tocompletion.productization.ordinary-heretic-setup",
+      "label": "Evolved VexLife convergence — Heretic source-aware inhabitation + Assortment R2",
+      "purpose": "Converge the ordinary lived product in the smallest earned order: first prove the already-prepared Evolution Conversation as a real Victor↔Heretic interface through two visible-composer CURRENT_LOCAL_MODEL turns; then resume source-aware inhabitation using VexBoard/VexWork/VexHome/Atlas/currentness/Process Factory owners; only after lived evidence exposes a real presentation gap proceed toward broader Human Experience/accessibility/recovery/cutover work.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexlife.tocompletion.productization.ordinary-heretic-lived-proof"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife",
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "github.issue.vexlife.76",
+        "github.issue.vexlife.418",
+        "github.issue.vexlife.624",
+        "github.issue.vexlife.874",
+        "github.issue.vexlife.874.comment.6381765795",
+        "github.issue.vexlife.866.comment.6381763768",
+        "blueprint/ux-evolution-registry.json",
+        "evidence.vexlife.tocompletion.ordinary-heretic-lived-proof.a034.return.sha256.b52ec721ea8cda96af86ca4c763d656eaa466cb31777435f9f18fba79263073b",
+        "github.issue.vexlife.811",
+        "github.issue.vexlife.817",
+        "github.pull.vexlife.818",
+        "github.issue.vexlife.624.comment.6012908914",
+        "github.issue.vexlife.811.comment.6015223469",
+        "github.issue.vexlife.817.comment.6031153511",
+        "github.issue.vexlife.817.comment.6094683418",
+        "github.pull.vexlife.829",
+        "github.pull.vexlife.841",
+        "github.pull.vexlife.852",
+        "github.pull.vexlife.855",
+        "github.pull.vexlife.856",
+        "docs/vexlife-assortment/CURRENT.md",
+        "github.issue.vexlife.624.comment.6382349733",
+        "github.issue.vexlife.811.comment.6382341676",
+        "github.issue.vexlife.811.comment.6382393438",
+        "github.issue.vexlife.866.comment.6382448044",
+        "github.issue.vexlife.333.comment.6382565492",
+        "github.pull.vexwork.120.comment.6382473221",
+        "github.pull.vexwork.120.comment.6382580589",
+        "github.issue.vexlife.866.comment.6382998459",
+        "github.issue.vexlife.866.comment.6382972577",
+        "github.issue.vexlife.333.comment.6382871320",
+        "github.issue.vexlife.885.comment.6383010125",
+        "github.issue.vexlife.885.comment.6383056125",
+        "github.issue.vexlife.811.comment.6382972135",
+        "github.pull.vexwork.120.comment.6382973067",
+        "github.pull.vexwork.120.comment.6382999618",
+        "github.issue.vexlife.866.comment.6383259191",
+        "github.pull.vexwork.120.comment.6383258893",
+        "github.pull.vexlife.924",
+        "github.commit.vexlife.67b1a30f5abbbaf5cc4682270986138458dafa0f"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-24T11:40:30.000Z",
+      "updatedAt": "2026-10-24T11:40:30.000Z",
+      "workRef": "work.vexlife.tocompletion.productization.evolution-conversation-lived-heretic",
+      "parentWorkRefOrNull": "work.vexlife.tocompletion.productization.evolved-experience-baseline-convergence",
+      "label": "Evolution Conversation — real Heretic lived engagement",
+      "purpose": "Prove the already-prepared Evolution Conversation is genuinely inhabitable by the real current Heretic before broader world-query work: enter the canonical direct Companion relationship, send two harmless turns only through the visible Evolution composer, require visible CURRENT_LOCAL_MODEL replies, preserve the same relationship, and prove the durable Conversation head advances. The proof does not cut over the ordinary Browser default and does not require VexWork/VexBoard/VexHome querying.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexlife.tocompletion.productization.ordinary-heretic-lived-proof"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife",
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-tocompletion/README.md",
+        "github.pull.vexlife.924",
+        "github.commit.vexlife.67b1a30f5abbbaf5cc4682270986138458dafa0f",
+        "scripts/evolution-conversation-lived-proof.mjs",
+        "test/evolution-conversation-lived-proof.test.mjs"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-24T09:32:00.000Z",
+      "updatedAt": "2026-10-24T11:40:30.000Z",
+      "workRef": "work.vexlife.tocompletion.productization.heretic-source-aware-baseline",
+      "parentWorkRefOrNull": "work.vexlife.tocompletion.productization.evolved-experience-baseline-convergence",
+      "label": "Canonical Heretic source-aware inhabitation",
+      "purpose": "After the prepared Evolution Conversation is proved as a real Victor↔Heretic interface, prove the same Heretic can inhabit the broader canonical Vex world without being constrained by Victor's current screen: consume bounded VexLife/VexWork/VexBoard/VexHome current truth, Atlas/Meaning routes, Federated Current State/Orientation and Process Factory possibilities, then source-descend only when precision is needed. P4 A054 already proves authorized effect/reinjection; generic Project/Frontier creation remains held.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexlife.tocompletion.productization.evolution-conversation-lived-heretic"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife",
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "github.issue.vexlife.866.comment.6382448044",
+        "github.issue.vexlife.333.comment.6382453462",
+        "github.issue.vexlife.333.comment.6382565492",
+        "github.issue.vexlife.811.comment.6382393438",
+        "github.issue.vexlife.624.comment.6382349733",
+        "github.pull.vexwork.120.comment.6382473221",
+        "github.pull.vexwork.120.comment.6382580589",
+        "github.issue.vexlife.866.comment.6382998459",
+        "github.issue.vexlife.866.comment.6382972577",
+        "github.issue.vexlife.333.comment.6382871320",
+        "github.issue.vexlife.885.comment.6383010125",
+        "github.issue.vexlife.885.comment.6383056125",
+        "github.issue.vexlife.811.comment.6382972135",
+        "github.pull.vexwork.120.comment.6382973067",
+        "github.pull.vexwork.120.comment.6382999618",
+        "github.issue.vexlife.866.comment.6383259191",
+        "github.pull.vexwork.120.comment.6383258893",
+        "github.pull.vexlife.924",
+        "github.commit.vexlife.67b1a30f5abbbaf5cc4682270986138458dafa0f"
       ]
     }
   ],
@@ -874,12 +1100,82 @@
         "github.issue.vexlife.866.comment.6360434385"
       ],
       "createdAt": "2026-10-23T08:30:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.tocompletion.productization.heretic-normal-start-integration.verifying.accepted-source",
+      "workRef": "work.vexlife.tocompletion.productization.heretic-normal-start-integration",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "PR920/PR921/PR923 accepted the ordinary Heretic normal-start and parser source chain; the source slice entered lived verification rather than remaining implementation work.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexlife.920",
+        "github.pull.vexlife.921",
+        "github.pull.vexlife.923"
+      ],
+      "createdAt": "2026-10-24T08:03:08.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.tocompletion.productization.heretic-normal-start-integration.completed.a034-terminal",
+      "workRef": "work.vexlife.tocompletion.productization.heretic-normal-start-integration",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "A034 proved the accepted ordinary startup source reaches the real Heretic Browser Companion path and same-Home no-acquisition restart, closing normal-start integration as current work.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.issue.vexlife.866.comment.6381763768",
+        "evidence.vexlife.tocompletion.ordinary-heretic-lived-proof.a034.return.sha256.b52ec721ea8cda96af86ca4c763d656eaa466cb31777435f9f18fba79263073b"
+      ],
+      "createdAt": "2026-10-24T08:03:08.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.tocompletion.productization.ordinary-heretic-lived-proof.verifying.a034-terminal",
+      "workRef": "work.vexlife.tocompletion.productization.ordinary-heretic-lived-proof",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "A034 produced a canonical PASS RETURN with two real current-local-model Browser turns, clean stop/restart, final BOUND and exact Home restoration; the lived proof entered terminal verification.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.issue.vexlife.866.comment.6381763768",
+        "evidence.vexlife.tocompletion.ordinary-heretic-lived-proof.a034.return.sha256.b52ec721ea8cda96af86ca4c763d656eaa466cb31777435f9f18fba79263073b"
+      ],
+      "createdAt": "2026-10-24T08:03:08.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.tocompletion.productization.ordinary-heretic-lived-proof.completed.a034-terminal-lived-pass",
+      "workRef": "work.vexlife.tocompletion.productization.ordinary-heretic-lived-proof",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "A034 terminal evidence establishes the ordinary fresh-user Heretic runtime/restart path end-to-end while preserving and restoring both Home identities exactly.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.issue.vexlife.866.comment.6381763768",
+        "evidence.vexlife.tocompletion.ordinary-heretic-lived-proof.a034.return.sha256.b52ec721ea8cda96af86ca4c763d656eaa466cb31777435f9f18fba79263073b"
+      ],
+      "createdAt": "2026-10-24T08:03:08.000Z"
     }
   ],
   "sourceRefs": [
     "project.vexlife.tocompletion",
     "github.issue.vexlife.866.comment.6360434385",
-    "git.commit.vexlife.85ef85dfa4852154e522deadc45707b03cf74221"
+    "git.commit.vexlife.85ef85dfa4852154e522deadc45707b03cf74221",
+    "github.issue.vexlife.866.comment.6381763768",
+    "evidence.vexlife.tocompletion.ordinary-heretic-lived-proof.a034.return.sha256.b52ec721ea8cda96af86ca4c763d656eaa466cb31777435f9f18fba79263073b",
+    "github.issue.vexlife.624",
+    "github.issue.vexlife.874.comment.6381765795",
+    "github.issue.vexlife.811",
+    "github.issue.vexlife.817",
+    "github.pull.vexlife.818",
+    "github.issue.vexlife.624.comment.6012908914",
+    "github.issue.vexlife.811.comment.6015223469",
+    "github.issue.vexlife.817.comment.6031153511",
+    "github.issue.vexlife.817.comment.6094683418",
+    "github.issue.vexlife.866.comment.6383259191",
+    "github.pull.vexwork.120.comment.6383258893"
   ],
   "formedAt": "2026-10-21T01:45:00.000Z"
 }
