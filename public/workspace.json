@@ -1,7 +1,7 @@
 {
   "schemaVersion": "vexwork.public-workspace/v1",
   "projectRegistryRef": "registry.vexwork.projects.001",
-  "projectRegistryVersion": 8,
+  "projectRegistryVersion": 9,
   "projects": [
     {
       "project": {
@@ -5808,6 +5808,397 @@
           "createdAt": "2026-10-23T00:14:29.000Z",
           "updatedAt": "2026-10-23T00:14:29.000Z",
           "transitionHistory": []
+        }
+      ]
+    },
+    {
+      "project": {
+        "projectRef": "project.vex-universe",
+        "label": "Vex Universe Foundations",
+        "purpose": "Make VexWork the visible operating record for Vex Universe and VexBusinessFactory work, and use VexBoard as the explorable semantic/process view, while preserving source ownership and allowing the VexBoard substrate to evolve independently.",
+        "rootWorkRefs": [
+          "work.vex-universe.outcome"
+        ],
+        "repositoryRefs": [
+          "repo.vexwork"
+        ],
+        "sourceRefs": [
+          "docs/foundation/PROCESS-MAP.md",
+          "docs/foundation/PROJECTS.md",
+          "docs/foundation/WORKGRAPH-COMPOSITION.md",
+          "github.pull.vexwork.90",
+          "github.pull.vexwork.92",
+          "project.vexboard"
+        ],
+        "formedAt": "2026-10-24T03:45:00.000Z"
+      },
+      "graphRef": "workgraph.vexwork.foundation",
+      "viewRef": "view.vex-universe.board",
+      "items": [
+        {
+          "workRef": "work.vex-universe.businessfactory-convergence",
+          "label": "Converge VexBusinessFactory architecture",
+          "purpose": "Consume and reconcile the BusinessFactory domain/process and VexBoard patient-zero architecture into accepted source while preserving the split between business truth and VexBoard projection instead of duplicating sibling source ownership.",
+          "workClass": "TASK",
+          "state": "WAITING_RESOURCE",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vex-universe.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "github.pull.vexwork.90",
+            "github.pull.vexwork.92"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [
+            "process.vexwork.quality-review"
+          ],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T03:45:00.000Z",
+          "updatedAt": "2026-10-24T03:45:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vex-universe.journey-evidence-patient-zero",
+          "label": "Journey evidence and Vex Universe patient zero",
+          "purpose": "Use the accepted process-addressability and VexBoard contracts to render, walk and explain the Vex Universe and BusinessFactory system from VexWork with why/before/action/after/source/evidence semantics before moving into the later lived business proof.",
+          "workClass": "OUTCOME",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vex-universe.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vex-universe.businessfactory-convergence",
+            "work.vex-universe.process-board-addressability",
+            "work.vex-universe.vexboard-contract-alignment"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "github.pull.vexwork.90",
+            "github.pull.vexwork.92",
+            "project.vex-universe"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T03:45:00.000Z",
+          "updatedAt": "2026-10-24T03:45:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vex-universe.outcome",
+          "label": "Vex Universe Foundations",
+          "purpose": "Make the Vex Universe completion pathway perceptible in VexWork and progressively navigable and replayable through VexBoard, so current work, parallel waits, source ownership and lived proof can be understood without GitHub archaeology.",
+          "workClass": "OUTCOME",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vex-universe.businessfactory-convergence",
+            "work.vex-universe.journey-evidence-patient-zero",
+            "work.vex-universe.process-board-addressability",
+            "work.vex-universe.vexboard-contract-alignment",
+            "work.vex-universe.visible-work-record"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "github.pull.vexwork.90",
+            "github.pull.vexwork.92",
+            "project.vexboard"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T03:45:00.000Z",
+          "updatedAt": "2026-10-24T03:45:01.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vex-universe.outcome.running.visible-foundation",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "Victor explicitly asked for the Vex Universe and BusinessFactory trajectory to become visible through VexWork and authorized this lane to lead the bounded VexWork/VexBoard foundation work.",
+              "actorRef": "actor.chatgpt.vex-universe-foundations",
+              "sourceRefs": [
+                "github.pull.vexwork.90",
+                "github.pull.vexwork.92",
+                "project.vexboard"
+              ],
+              "createdAt": "2026-10-24T03:45:01.000Z"
+            }
+          ]
+        },
+        {
+          "workRef": "work.vex-universe.process-board-addressability",
+          "label": "Process → VexBoard addressability minimum",
+          "purpose": "Connect stable VexWork process refs to read-only VexBoard maps and BoardJourney without making VexBoard the process registry or granting execution authority; use Form Project as the first source-owned process patient zero.",
+          "workClass": "TASK",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vex-universe.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "blueprint/process-registry.json",
+            "docs/foundation/PROCESS-MAP.md",
+            "github.pull.vexwork.90",
+            "vexboard-reader.js"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [
+            "process.vexwork.quality-review"
+          ],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-24T03:45:00.000Z",
+          "updatedAt": "2026-10-24T03:45:03.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vex-universe.process-board-addressability.running.source-ready",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "The source-ready addressability design is grounded against the accepted Process Map, explicit VexBoard board resolver and BoardJourney contracts and is the next implementation foundation after Project visibility.",
+              "actorRef": "actor.chatgpt.vex-universe-foundations",
+              "sourceRefs": [
+                "blueprint/process-registry.json",
+                "docs/foundation/PROCESS-MAP.md",
+                "vexboard-reader.js"
+              ],
+              "createdAt": "2026-10-24T03:45:03.000Z"
+            }
+          ]
+        },
+        {
+          "workRef": "work.vex-universe.vexboard-contract-alignment",
+          "label": "Align to the evolving VexBoard contract",
+          "purpose": "After the VexBoard lane finishes its naming, ontology/typology and resolver refactor work, rebind this trajectory to the accepted stable refs and routing contract without carrying stale labels or duplicating its UI/source membrane.",
+          "workClass": "TASK",
+          "state": "WAITING_RESOURCE",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vex-universe.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "github.pull.vexwork.92",
+            "github.pull.vexwork.98",
+            "github.pull.vexwork.100",
+            "project.vexboard"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T03:45:00.000Z",
+          "updatedAt": "2026-10-24T03:45:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vex-universe.visible-work-record",
+          "label": "Make VexWork the visible operating record",
+          "purpose": "Represent this trajectory as a first-class VexWork Project and Workgraph family so Victor can see current work, parallel waits, next dependencies and completion movement from VexWork without relying on GitHub.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vex-universe.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "docs/foundation/PROJECTS.md",
+            "docs/foundation/WORKGRAPH-COMPOSITION.md"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [
+            "process.vexwork.quality-review"
+          ],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-24T03:45:00.000Z",
+          "updatedAt": "2026-10-24T03:59:29.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vex-universe.visible-work-record.running.formation",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "The Project/Workgraph formation is now the active bounded source effect so VexWork itself becomes the human-visible record.",
+              "actorRef": "actor.chatgpt.vex-universe-foundations",
+              "sourceRefs": [
+                "docs/foundation/PROJECTS.md",
+                "docs/foundation/WORKGRAPH-COMPOSITION.md"
+              ],
+              "createdAt": "2026-10-24T03:45:02.000Z"
+            },
+            {
+              "transitionRef": "transition.vex-universe.visible-work-record.verifying.pr101-merged",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "PR #101 merged the Vex Universe Project/Workgraph visibility source into VexWork main, so the human-visible record formation moved to verification.",
+              "actorRef": "actor.chatgpt.vex-universe-foundations",
+              "sourceRefs": [
+                "github.pull.vexwork.101",
+                "git.commit.vexwork.0c862cb494465fa108c69ae0e4f1ee0dd270deca"
+              ],
+              "createdAt": "2026-10-24T03:59:28.000Z"
+            },
+            {
+              "transitionRef": "transition.vex-universe.visible-work-record.completed.pr101-postmerge",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "Post-merge observation confirmed main, Project Registry, canonical Workgraph and public workspace all project project.vex-universe and its six work items exactly, completing the visible-work-record foundation.",
+              "actorRef": "actor.chatgpt.vex-universe-foundations",
+              "sourceRefs": [
+                "github.pull.vexwork.101",
+                "git.commit.vexwork.0c862cb494465fa108c69ae0e4f1ee0dd270deca",
+                "project.vex-universe"
+              ],
+              "createdAt": "2026-10-24T03:59:29.000Z"
+            }
+          ]
+        }
+      ],
+      "lanes": [
+        {
+          "laneRef": "lane.work.intake",
+          "label": "Intake",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.planned",
+          "label": "Planned",
+          "workRefs": [
+            "work.vex-universe.journey-evidence-patient-zero"
+          ]
+        },
+        {
+          "laneRef": "lane.work.ready",
+          "label": "Ready",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.active",
+          "label": "Active",
+          "workRefs": [
+            "work.vex-universe.outcome",
+            "work.vex-universe.process-board-addressability"
+          ]
+        },
+        {
+          "laneRef": "lane.work.waiting",
+          "label": "Waiting",
+          "workRefs": [
+            "work.vex-universe.businessfactory-convergence",
+            "work.vex-universe.vexboard-contract-alignment"
+          ]
+        },
+        {
+          "laneRef": "lane.work.needs-human",
+          "label": "Needs Human",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.verify",
+          "label": "Verify",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.attention",
+          "label": "Attention",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.done",
+          "label": "Done",
+          "workRefs": [
+            "work.vex-universe.visible-work-record"
+          ]
+        },
+        {
+          "laneRef": "lane.work.archive",
+          "label": "Archive",
+          "workRefs": []
+        }
+      ],
+      "summary": {
+        "workItemCount": 6,
+        "openWorkItemCount": 5,
+        "outcomeCount": 2,
+        "taskCount": 4,
+        "defectCount": 0,
+        "potentialCount": 0,
+        "needsHumanCount": 0,
+        "completedCount": 1
+      },
+      "rootItems": [
+        {
+          "workRef": "work.vex-universe.outcome",
+          "label": "Vex Universe Foundations",
+          "purpose": "Make the Vex Universe completion pathway perceptible in VexWork and progressively navigable and replayable through VexBoard, so current work, parallel waits, source ownership and lived proof can be understood without GitHub archaeology.",
+          "workClass": "OUTCOME",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vex-universe.businessfactory-convergence",
+            "work.vex-universe.journey-evidence-patient-zero",
+            "work.vex-universe.process-board-addressability",
+            "work.vex-universe.vexboard-contract-alignment",
+            "work.vex-universe.visible-work-record"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "github.pull.vexwork.90",
+            "github.pull.vexwork.92",
+            "project.vexboard"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T03:45:00.000Z",
+          "updatedAt": "2026-10-24T03:45:01.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vex-universe.outcome.running.visible-foundation",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "Victor explicitly asked for the Vex Universe and BusinessFactory trajectory to become visible through VexWork and authorized this lane to lead the bounded VexWork/VexBoard foundation work.",
+              "actorRef": "actor.chatgpt.vex-universe-foundations",
+              "sourceRefs": [
+                "github.pull.vexwork.90",
+                "github.pull.vexwork.92",
+                "project.vexboard"
+              ],
+              "createdAt": "2026-10-24T03:45:01.000Z"
+            }
+          ]
         }
       ]
     },
