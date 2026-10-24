@@ -1,7 +1,7 @@
 {
   "schemaVersion": "vexwork.project-registry/v1",
   "registryRef": "registry.vexwork.projects.001",
-  "registryVersion": 13,
+  "registryVersion": 14,
   "purpose": "Locate source-managed Projects and their Workgraph, Board, and optional agency-policy sources without making the registry another owner of work state.",
   "projects": [
     {
@@ -105,6 +105,14 @@
       "workgraphRef": "workgraph.vexwork.foundation",
       "definitionPath": "projects/vex-security-assurance/project.json",
       "boardViewPath": "projects/vex-security-assurance/board.view.json",
+      "agencyPolicyPathOrNull": null,
+      "workgraphPath": "workgraphs/public.json"
+    },
+    {
+      "projectRef": "project.android-widget-foundation",
+      "workgraphRef": "workgraph.vexwork.foundation",
+      "definitionPath": "projects/android-widget-foundation/project.json",
+      "boardViewPath": "projects/android-widget-foundation/board.view.json",
       "agencyPolicyPathOrNull": null,
       "workgraphPath": "workgraphs/public.json"
     }
