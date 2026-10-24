@@ -4,21 +4,23 @@
 
 ## State
 
-This directory preserves a **source-managed design intention**.
+This directory preserves the **source-managed design intention and current implementation sequence**.
 
 ```text
 PROJECT INTENTION EXISTS
 !=
 DEFAULT ROUTE CHOSEN
+
+CAPTURED INTENTION
 !=
-IMPLEMENTATION STARTED
-!=
-IMPLEMENTATION AUTHORIZED
+IMPLEMENTATION AUTHORITY
 ```
 
-The Project packet is deliberately formed before implementation so a future worker does not have to reconstruct the human entry philosophy from chat history.
+The Project packet was deliberately formed before implementation so a future worker would not have to reconstruct the human entry philosophy from chat history.
 
-At formation time registry/composed-Workgraph integration was held because VexWork PR #112 was already changing shared aggregate surfaces. Victor later explicitly authorized continuing the Welcome Wagon effort. This branch now admits the Project Registry/composition source on current VexWork main; generated aggregate projections remain a convergence boundary that must be rebuilt and reconciled against any still-open shared-output PR before merge.
+Victor later explicitly authorized bounded Welcome Wagon implementation. The Workgraph now records the Project outcome and `slug-rename-tooling` as `RUNNING / AUTHORIZED_BOUNDED / EFFECTS_BOUND`, while unadmitted design/product rows remain `CAPTURED`, `WAITING_DEPENDENCIES`, `NO_AUTHORITY`, or `NO_EFFECTS` as appropriate.
+
+At formation time registry/composed-Workgraph integration was held because VexWork PR #112 was changing shared aggregate surfaces. PR #113 has since admitted the Project Registry/composition source and reconciled its checked-in public Workgraph/workspace projections on the exact candidate. The final public-entry URL and other held product choices remain undecided.
 
 ## Human outcome
 
@@ -216,11 +218,13 @@ repo.vextreme:vexsystem/index.html
 
 VexWork owns the work/project intention only. Vextreme remains the source owner for those public surfaces. VexLife remains the owner of VexLife product meaning when implementation descends there.
 
-## `vextreme-home` end-state role: **About Vextreme**
+## About Vextreme end-state role — semantic target
 
-The stable source/registry identity can remain `pages/vextreme-home.html`. The public role should change from an assumed **home/front door** into **About Vextreme**: the human-readable explanation reached when a visitor asks **“What is this?”** from Terrain.
+`pages/vextreme-home.html` is the **current pre-migration source identity**, not the durable target. While the A0 rename tooling and A1 identity migration are incomplete, do not hand-rename it ad hoc merely to make the filename match the label.
 
-This is already compatible with current repository truth: the public Vextreme root enters Terrain, while its fallback navigation labels `vextreme-home.html` as **About Vextreme**. Renaming the file/slug first would create institutional-registry, localization, evidence and link churn without improving the human experience.
+The durable canonical target is `pages/about-vextreme.html` / institutional slug `about-vextreme`. After that identity migration is proven, the page’s public role should become **About Vextreme**: the human-readable explanation reached when a visitor asks **“What is this?”** from Terrain.
+
+This preserves the useful observation behind the earlier intermediate plan—the public Vextreme root already enters Terrain and the About meaning is distinct from the front door—without leaving the old slug as permanent canonical identity.
 
 ### Original intention vs current reality
 
@@ -261,22 +265,24 @@ name the place
 
 ### Proposed public identity
 
-Keep the source identity:
+Current pre-migration identity, held only until the A1 migration is proven:
 
 ~~~text
 pages/vextreme-home.html
-institutional surface ref = vextreme-home
+institutional surface slug = vextreme-home
 ~~~
 
-Change the human-facing identity toward:
+Durable canonical identity:
 
 ~~~text
-navigation label: About Vextreme
-eyebrow: ABOUT VEXTREME
-title: About Vextreme — What this world is
+pages/about-vextreme.html
+institutional surface slug = about-vextreme
+navigation label = About Vextreme
+eyebrow = ABOUT VEXTREME
+title direction = About Vextreme — What this world is
 ~~~
 
-The exact browser title may be refined during implementation, but **About Vextreme** is the intended public role. Do not rename the source slug merely to make the filename match the label.
+The exact browser title may be refined during implementation. Do not rename the source slug by hand merely to match the label; use the A0/A1 source-derived migration path so live references, generated projections, evidence, tests, history, and compatibility routing remain intentional.
 
 ### Proposed first viewport
 
@@ -390,12 +396,20 @@ The refactor should look like the Vextreme Design Foundation, not a new brand ex
 
 ### Smallest implementation route
 
-To preserve rollback and avoid mixing the shared-header project with the About-copy refactor:
+To preserve rollback and avoid mixing identity migration, About meaning, and the shared-header experiment:
 
 ~~~text
-PR A — About Vextreme role/copy/structure
+PR A0 — slug migration tooling + plan-only proof
+  discover/classify the exact current impact set
+  mutationSupported=false until the migration membrane is proven
+
+PR A1 — canonical vextreme-home -> about-vextreme migration
+  compatibility redirect/alias if repository constraints admit it
+  generated/currentness/evidence/test updates
+  no semantic copy redesign beyond what identity migration requires
+
+PR A2 — About Vextreme role/copy/structure
   keep current institutional header/runtime
-  keep vextreme-home slug
   update canonical EN/JA/ZH strings together
   replace stale VexLife/project-lineage wording
   render desktop + mobile
@@ -407,7 +421,7 @@ PR B — shared family-header projection
   do not reopen About semantics unless evidence requires it
 ~~~
 
-This sequencing lets Victor judge **the About-page meaning** independently from a later family-header experiment.
+This sequencing lets Victor judge **identity**, **About-page meaning**, and **shared presentation** independently.
 
 ### Acceptance picture
 
@@ -781,8 +795,10 @@ work.vexlife.welcome-wagon.slug-rename-tooling
   -> plan-first / read-only slug rename impact tooling
   -> A001 SAFE_FAILURE classified: test import path only
   -> exact A002 candidate 3a54f4168a2ffabdf4ce646f5d880f7ab363821d
+  -> A002 focused tooling / patient-zero / lattice / continuity / coordination predicates PASS
+  -> A002 full repository `npm run pr-ready` = SAFE_FAILURE
   -> no page rename yet
-  -> fresh A002 SourceOwner VexRelay proof pending
+  -> #400 remains PROVING / not merge-ready
 ```
 
 The actual `vextreme-home -> about-vextreme` identity migration remains dependency-held behind this tooling row. About-page meaning/design remains dependency-held behind the canonical identity migration.
@@ -840,29 +856,35 @@ The Welcome Wagon is currently straightforward enough that it does **not** need 
                      ↓
                   VexSystem
         ↓
-5. Refactor vextreme-home -> About Vextreme
-   keep stable slug / registry identity
+5. Canonical identity migration
+   A0 plan-first tooling proves the impact membrane
+   A1 vextreme-home -> about-vextreme
+   compatibility route intentionally modeled
+   generated/currentness/evidence/test projections updated
+   historical provenance preserved
+        ↓
+6. Refactor About Vextreme meaning
    replace stale institutional-first language
    current Vextreme / VexLife / VexWork truth
    preserve four alignments in human language
    technical depth on demand
         ↓
-6. Evolve VexLife placeholder
+7. Evolve VexLife placeholder
    preserve truthful Public Alpha boundary
    reduce prose as the real product can show itself
    add current screenshots / visual examples
         ↓
-7. Extend the proven family-header pattern
+8. Extend the proven family-header pattern
    VexLife projection
    VexWork projection
    other suitable Vextreme surfaces
    each retains its own semantics
         ↓
-8. Decide the actual public-entry URL
+9. Decide the actual public-entry URL
    Terrain itself / wrapper / root route / other
    only after the experience is proven
         ↓
-9. Final lived acceptance
+10. Final lived acceptance
    desktop + mobile
    supported locales
    keyboard
