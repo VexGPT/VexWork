@@ -247,13 +247,14 @@ function renderCanvas(canvas){
     s.onclick=async(e)=>{e.stopPropagation();if(suppressShapeClick){suppressShapeClick=false;return}if(tool==='CONNECT'&&editable()){if(!connectFrom){connectFrom=i.projectionItemRef;selected=i.projectionItemRef;renderWorkspace();requestAnimationFrame(()=>applyCamera());return}const from=item(connectFrom);connectFrom=null;if(from&&from.semanticRef!==i.semanticRef)await act('CONNECT_NODES',{relationship:{relationshipRef:ref('rel.vexboard'),kind:'FLOW',fromRef:from.semanticRef,toRef:i.semanticRef,labelOrNull:null,sourceRefs:[]}});tool='SELECT';selected=i.projectionItemRef;renderWorkspace();requestAnimationFrame(()=>applyCamera());return}if(tool==='SELECT'&&tryClickableControl(n.nodeRef))return;selected=i.projectionItemRef;renderWorkspace();requestAnimationFrame(()=>applyCamera())};
     if(editable()&&tool==='SELECT'&&!i.locked)s.onpointerdown=(e)=>{
       if(!Interaction.shouldStartObjectMove({tool,editable:editable(),locked:i.locked,targetPlane:Interaction.INTERACTION_PLANES.OBJECT,button:e.button}))return;
-      cameraAnimator.cancel();e.preventDefault();e.stopPropagation();
+      cameraAnimator.cancel();e.stopPropagation();
       const start={x:e.clientX,y:e.clientY},origin={x:i.bounds.x,y:i.bounds.y},zoom=camera.zoom;let dragged=false;
       s.setPointerCapture(e.pointerId);
       s.onpointermove=m=>{
         const currentPoint={x:m.clientX,y:m.clientY};
         if(!dragged&&Interaction.pointerGestureFromMovement(start,currentPoint)!=='DRAG')return;
         if(!dragged){dragged=true;s.classList.add('dragging')}
+        m.preventDefault();
         const next=Interaction.objectPositionFromPointerDrag(origin,start,currentPoint,zoom);s.style.left=`${next.x}px`;s.style.top=`${next.y}px`;
       };
       const cleanup=()=>{s.onpointermove=null;s.onpointerup=null;s.onpointercancel=null;s.classList.remove('dragging')};
