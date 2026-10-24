@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.vextreme.vexsite-localization",
+  "label": "VexSite Localization",
+  "purpose": "Keep VexSite localization visible from source-lineage preservation through the canonical Global Core queue and separate generated/runtime convergence without turning VexWork into a second page, translation, generated-artifact, or browser-proof owner.",
+  "rootWorkRefs": [
+    "work.vextreme.vexsite.localization.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vextreme"
+  ],
+  "sourceRefs": [
+    "projects/vexsite-localization/README.md",
+    "docs/process/FORM-PROJECT.md",
+    "projects/vexwork-operational-console/VEXSITE-LOCALIZATION-LENS.md",
+    "github.issue.vextreme.273",
+    "github.issue-comment.vextreme.273.6379017700",
+    "github.issue-comment.vextreme.273.6379565128",
+    "github.issue-comment.vextreme.273.6380410929",
+    "github.pull.vextreme.379",
+    "github.pull.vextreme.395",
+    "github.pull.vextreme.397",
+    "github.pull.vextreme.398",
+    "repo.vextreme:docs/architecture/06-i18n.md"
+  ],
+  "formedAt": "2026-10-23T07:48:00.000Z"
+}
