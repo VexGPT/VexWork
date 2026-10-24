@@ -129,6 +129,38 @@ WRONG THREAD / WRONG LIFETIME / WRONG HOT PATH
 WRONG SEMANTIC OWNER
 ```
 
+## VexStream storage / memory clarification
+
+The 785 downloaded Songs do **not** mean 6.844 GiB of MP3 audio is retained in the ViewModel or Kotlin heap.
+
+Current Android state keeps metadata/reference truth:
+
+```text
+VexStreamMusicState.tracks
+-> trackRef
+-> mediaSha256
+-> mediaByteLength
+-> title / artist / album / genre / year / duration
+-> availability/localCopy state
+-> Downloaded.localMediaRef = content:// MediaStore URI
+```
+
+Current API-29+ durable media is content-addressed in MediaStore:
+
+```text
+RELATIVE_PATH = Music/VexStream/
+DISPLAY_NAME  = <sha256>.mp3
+MIME_TYPE     = audio/mpeg
+```
+
+The app-private restart index is `filesDir/vexstream/offline-index.properties`. A002 measured that index at **407,287 bytes** for 785 entries while the media represented **7,349,016,302 bytes / 6.844 GiB**.
+
+Playback creates Media3 items pointing at the local `content://` URI (or Hub-backed `vexstream://` source). Media3 buffers playback data as needed; the whole music library is not copied into memory.
+
+The scale defect is that verification can **stream the entire stored MP3 through SHA-256 again** on hot paths. That is disk I/O + CPU amplification, not whole-library resident audio memory.
+
+The flat `Music/VexStream/<sha256>.mp3` layout is intentional content-addressed storage. Human title/artist/album organization lives in MediaStore metadata and VexStream state, not artist/album folder names.
+
 ## Dynamic collection / rendering review
 
 Do not import RecyclerView-era “pagination” as a ritual.
