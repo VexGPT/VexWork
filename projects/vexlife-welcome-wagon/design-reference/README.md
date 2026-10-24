@@ -22,7 +22,7 @@ The comparison board is derived from screenshots Victor supplied while forming t
 ```text
 welcome-wagon-current-surfaces-comparison.webp
 sha256 = e583a34d5e6c47649868e3a447be969201f8235e86ed70b9c599aa41e06be7be
-dimensions = 400x531\nbytes = 11016\ncaptureCommit = PENDING_CAPTURE_COMMIT
+dimensions = 400x531\nbytes = 11016\ncaptureCommit = c673c8c4a1e5c25ec676d490a90086401d608c6c
 ```
 
 The board is a lightweight visual derivative, not the canonical bytes of each individual user screenshot.
@@ -80,7 +80,7 @@ After deletion, recover the exact comparison board when needed with:
 git show <captureCommit>:projects/vexlife-welcome-wagon/design-reference/welcome-wagon-current-surfaces-comparison.webp > /tmp/welcome-wagon-current-surfaces-comparison.webp
 ```
 
-The capture commit is filled in immediately after the image first lands so this recovery coordinate remains durable after current-tree cleanup.
+The verified image first lands at capture commit `c673c8c4a1e5c25ec676d490a90086401d608c6c`. That commit is the durable recovery coordinate after current-tree cleanup.
 
 ## Storage meaning
 

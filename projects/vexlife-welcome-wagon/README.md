@@ -419,6 +419,33 @@ A fresh visitor who enters **What is this?** from Terrain should be able to:
 4. understand the four guiding principles in ordinary language;
 5. choose deeper institutional/technical material only if they want it;
 6. return to Terrain without the About page becoming a competing homepage.
+## Temporary visual comparison — delete after completion
+
+A lightweight before-state comparison board is intentionally kept beside this Project while the Welcome Wagon design is still being implemented:
+
+[**Open the current-surface comparison board**](design-reference/welcome-wagon-current-surfaces-comparison.webp)
+
+It shows the current visual relationship between:
+
+- `vextreme-home` / future **About Vextreme**;
+- the accepted Vextreme Design Foundation as projected on Support;
+- Terrain entry and Terrain content;
+- VexLife Public Alpha onboarding;
+- VexWork work navigation.
+
+Use it to **perceive what already exists**, not as an end-state mockup to copy.
+
+The image is temporary working design evidence. Its lifecycle is owned by [`design-reference/README.md`](design-reference/README.md).
+
+When the Welcome Wagon / About Vextreme / shared-family presentation is accepted and final lived renders exist in their rightful evidence owners, delete the image from the current tree and keep the small manifest.
+
+Verified historical recovery coordinate:
+
+```bash
+git show c673c8c4a1e5c25ec676d490a90086401d608c6c:projects/vexlife-welcome-wagon/design-reference/welcome-wagon-current-surfaces-comparison.webp > /tmp/welcome-wagon-current-surfaces-comparison.webp
+```
+
+The capture commit remains in Git history after current-tree deletion. Do not rewrite history merely to remove this temporary design-reference object.
 ## Existing foundation map before implementation
 
 The Welcome Wagon must **perceive the accepted foundations before it designs a shared header or welcome surface**. The current public world is intentionally heterogeneous because different surfaces matured at different times.
