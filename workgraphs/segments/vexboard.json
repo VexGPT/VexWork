@@ -217,6 +217,38 @@
       "nextProcessRefs": [],
       "createdAt": "2026-10-23T00:14:29.000Z",
       "updatedAt": "2026-10-24T06:38:19.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexboard.usability-refinement",
+      "parentWorkRefOrNull": "work.vexboard.outcome",
+      "label": "Canvas interaction and visual affordance refinement",
+      "purpose": "Make VexBoard predictable in lived use by refining primary-drag navigation, shape-safe labels, explicit frame/container and canvas-boundary cues, trustworthy browser-local draft-save feedback, and accessible deterministic path/branch presentation without changing BoardGraph meaning or adding server persistence.",
+      "workClass": "TASK",
+      "state": "READY",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [
+        "work.vexboard.canvas-projection",
+        "work.vexboard.boardjourney-simulation"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/vexboard/CANVAS-INTERACTION-AND-VISUAL-AFFORDANCE-REFINEMENT.md",
+        "vexboard/index.html",
+        "src/shared/vexboard-model.mjs",
+        "test/vexboard-ui.test.mjs"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [
+        "process.vexwork.quality-review"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-24T08:19:00.000Z",
+      "updatedAt": "2026-10-24T08:19:00.000Z"
     }
   ],
   "transitions": [
