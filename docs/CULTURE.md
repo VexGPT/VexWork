@@ -101,6 +101,11 @@ REPOSITORY_REF
 A human-facing alias may improve discoverability (for example, "Jira board" resolving to the Work
 Board intention) without becoming a new namespace or truth owner.
 
+The identity/name distinction does not make every rename cosmetic. If a name is persisted, serialized,
+provider-native, externally addressed, or otherwise contract-bearing, changing that boundary name may
+require an explicit compatibility/migration path even while the underlying VexWork identity remains
+the same.
+
 When another source is projected into VexWork, retain its rightful stable identifier and provenance.
 Use VexWork labels to explain that coordinate rather than renaming the external thing into a new
 VexWork identity. If a referenced owner changes its canonical identity, treat that as an explicit
