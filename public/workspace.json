@@ -1,7 +1,7 @@
 {
   "schemaVersion": "vexwork.public-workspace/v1",
   "projectRegistryRef": "registry.vexwork.projects.001",
-  "projectRegistryVersion": 10,
+  "projectRegistryVersion": 11,
   "projects": [
     {
       "project": {
@@ -7142,6 +7142,372 @@
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-10-23T07:48:00.000Z",
           "updatedAt": "2026-10-24T05:28:32.000Z",
+          "transitionHistory": []
+        }
+      ]
+    },
+    {
+      "project": {
+        "projectRef": "project.vex.security-assurance",
+        "label": "Vex Security Assurance",
+        "purpose": "Create an evidence-driven, continuously revisable security assurance practice for the Vex ecosystem that maps trust and effect boundaries, asks versioned security questions, preserves SATISFIED / UNSATISFIED / UNKNOWN / NOT_APPLICABLE truth, runs bounded authorized Spikes to reduce uncertainty, and routes real findings back to the repository that owns the affected source.",
+        "rootWorkRefs": [
+          "work.vex.security-assurance.outcome"
+        ],
+        "repositoryRefs": [
+          "repo.vexwork",
+          "repo.vextreme",
+          "repo.vextreme-sdk",
+          "repo.vexlife",
+          "repo.vexlife-android"
+        ],
+        "sourceRefs": [
+          "projects/vex-security-assurance/README.md",
+          "projects/vex-security-assurance/SPIKE-DESIGN.md",
+          "docs/process/FORM-PROJECT.md",
+          "docs/foundation/DERIVED-ATTENTION.md",
+          "docs/foundation/DERIVED-ATTENTION-PROJECTION.md",
+          "docs/foundation/OPERATING-DOMAIN.md",
+          "docs/foundation/ATTENTION-QUEUE.md",
+          "docs/process/PROMOTE-DERIVED-CONCERN.md"
+        ],
+        "formedAt": "2026-10-24T05:45:00.000Z"
+      },
+      "graphRef": "workgraph.vexwork.foundation",
+      "viewRef": "view.vex.security-assurance.board",
+      "items": [
+        {
+          "workRef": "work.vex.security-assurance.ai-agentic-security-lens",
+          "label": "Build the AI, agentic and Heretic security lens",
+          "purpose": "Cover model/context poisoning, prompt and indirect-prompt injection, tool/effect misuse, identity/privilege abuse, memory/context integrity, data disclosure, agent control, observability, resource abuse and unsafe autonomy for Heretic and other model-mediated Vex workflows.",
+          "workClass": "TASK",
+          "state": "DECOMPOSED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vex.security-assurance.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vex.security-assurance.question-lens-foundation"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme-sdk",
+            "repo.vexlife"
+          ],
+          "sourceRefs": [
+            "projects/vex-security-assurance/README.md",
+            "work.vex.security-assurance.question-lens-foundation"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T05:45:00.000Z",
+          "updatedAt": "2026-10-24T05:45:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vex.security-assurance.outcome",
+          "label": "Vex Security Assurance",
+          "purpose": "Make security a durable evidence-and-question discipline across the Vex ecosystem without making VexWork a vulnerability database, private-source mirror, security oracle, or execution authority.",
+          "workClass": "OUTCOME",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vex.security-assurance.ai-agentic-security-lens",
+            "work.vex.security-assurance.patient-zero",
+            "work.vex.security-assurance.question-lens-foundation",
+            "work.vex.security-assurance.security-atlas",
+            "work.vex.security-assurance.software-security-lens",
+            "work.vex.security-assurance.spike-process"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme",
+            "repo.vextreme-sdk",
+            "repo.vexlife",
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "projects/vex-security-assurance/README.md",
+            "docs/process/FORM-PROJECT.md",
+            "docs/foundation/DERIVED-ATTENTION.md"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T05:45:00.000Z",
+          "updatedAt": "2026-10-24T05:45:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vex.security-assurance.patient-zero",
+          "label": "Run the first ecosystem security-assurance patient zero",
+          "purpose": "Apply the accepted security lenses to one exact authorized Vex surface, preserve known/unknown/unsatisfied evidence, run only the bounded Spikes required to resolve material uncertainty, and promote only real concerns into repository-owned TASK or DEFECT work.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vex.security-assurance.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vex.security-assurance.software-security-lens",
+            "work.vex.security-assurance.ai-agentic-security-lens",
+            "work.vex.security-assurance.spike-process"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme-sdk",
+            "repo.vexlife"
+          ],
+          "sourceRefs": [
+            "projects/vex-security-assurance/README.md",
+            "projects/vex-security-assurance/SPIKE-DESIGN.md",
+            "docs/process/PROMOTE-DERIVED-CONCERN.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [
+            "process.vexwork.promote-derived-concern"
+          ],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T05:45:00.000Z",
+          "updatedAt": "2026-10-24T05:45:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vex.security-assurance.question-lens-foundation",
+          "label": "Form the versioned security question and evidence lens",
+          "purpose": "Translate current security baselines and Vex-owned invariants into reusable Work Lens predicates with explicit evidence expectations and SATISFIED / UNSATISFIED / UNKNOWN / NOT_APPLICABLE results rather than an unbounded checklist or automatic ticket generator.",
+          "workClass": "TASK",
+          "state": "READY",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vex.security-assurance.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "projects/vex-security-assurance/README.md",
+            "docs/foundation/DERIVED-ATTENTION.md",
+            "docs/foundation/DERIVED-ATTENTION-PROJECTION.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T05:45:00.000Z",
+          "updatedAt": "2026-10-24T05:45:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vex.security-assurance.security-atlas",
+          "label": "Map the Vex security surface and trust boundaries",
+          "purpose": "Build a public-safe atlas of assets, trust zones, data classes, privilege/effect boundaries, attack surfaces, evidence owners and existing controls across registered Vex repositories while keeping private SDK internals private and source-owned.",
+          "workClass": "TASK",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": "work.vex.security-assurance.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme",
+            "repo.vextreme-sdk",
+            "repo.vexlife",
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "projects/vex-security-assurance/README.md",
+            "docs/foundation/OPERATING-DOMAIN.md",
+            "blueprint/repository-registry.json"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T05:45:00.000Z",
+          "updatedAt": "2026-10-24T05:45:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vex.security-assurance.software-security-lens",
+          "label": "Build the software and supply-chain security lens",
+          "purpose": "Cover secure-development, web/application, dependency, provenance, build/release, secrets, configuration, logging, resilience and update concerns using current external baselines plus repository-owned invariants without copying those standards into WorkState.",
+          "workClass": "TASK",
+          "state": "DECOMPOSED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vex.security-assurance.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vex.security-assurance.question-lens-foundation"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme",
+            "repo.vextreme-sdk",
+            "repo.vexlife",
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "projects/vex-security-assurance/README.md",
+            "work.vex.security-assurance.question-lens-foundation"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T05:45:00.000Z",
+          "updatedAt": "2026-10-24T05:45:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vex.security-assurance.spike-process",
+          "label": "Form reusable evidence-producing Spikes",
+          "purpose": "Dogfood and then source-place a reusable VexWork Spike process: a bounded TASK whose primary deliverable is reduced uncertainty, evidence and a decision-ready result rather than product mutation; the current Process Registry overlap in PR #103 is reconciled before registering the generic process.",
+          "workClass": "TASK",
+          "state": "WAITING_RESOURCE",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vex.security-assurance.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "projects/vex-security-assurance/SPIKE-DESIGN.md",
+            "github.pull.vexwork.103",
+            "blueprint/process-registry.json"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T05:45:00.000Z",
+          "updatedAt": "2026-10-24T05:45:00.000Z",
+          "transitionHistory": []
+        }
+      ],
+      "lanes": [
+        {
+          "laneRef": "lane.work.intake",
+          "label": "Intake",
+          "workRefs": [
+            "work.vex.security-assurance.ai-agentic-security-lens",
+            "work.vex.security-assurance.software-security-lens"
+          ]
+        },
+        {
+          "laneRef": "lane.work.planned",
+          "label": "Planned",
+          "workRefs": [
+            "work.vex.security-assurance.patient-zero"
+          ]
+        },
+        {
+          "laneRef": "lane.work.ready",
+          "label": "Ready",
+          "workRefs": [
+            "work.vex.security-assurance.question-lens-foundation"
+          ]
+        },
+        {
+          "laneRef": "lane.work.active",
+          "label": "Active",
+          "workRefs": [
+            "work.vex.security-assurance.security-atlas",
+            "work.vex.security-assurance.outcome"
+          ]
+        },
+        {
+          "laneRef": "lane.work.waiting",
+          "label": "Waiting",
+          "workRefs": [
+            "work.vex.security-assurance.spike-process"
+          ]
+        },
+        {
+          "laneRef": "lane.work.needs-human",
+          "label": "Needs Human",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.verify",
+          "label": "Verify",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.attention",
+          "label": "Attention",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.done",
+          "label": "Done",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.archive",
+          "label": "Archive",
+          "workRefs": []
+        }
+      ],
+      "summary": {
+        "workItemCount": 7,
+        "openWorkItemCount": 7,
+        "outcomeCount": 1,
+        "taskCount": 6,
+        "defectCount": 0,
+        "potentialCount": 0,
+        "needsHumanCount": 0,
+        "completedCount": 0
+      },
+      "rootItems": [
+        {
+          "workRef": "work.vex.security-assurance.outcome",
+          "label": "Vex Security Assurance",
+          "purpose": "Make security a durable evidence-and-question discipline across the Vex ecosystem without making VexWork a vulnerability database, private-source mirror, security oracle, or execution authority.",
+          "workClass": "OUTCOME",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vex.security-assurance.ai-agentic-security-lens",
+            "work.vex.security-assurance.patient-zero",
+            "work.vex.security-assurance.question-lens-foundation",
+            "work.vex.security-assurance.security-atlas",
+            "work.vex.security-assurance.software-security-lens",
+            "work.vex.security-assurance.spike-process"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme",
+            "repo.vextreme-sdk",
+            "repo.vexlife",
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "projects/vex-security-assurance/README.md",
+            "docs/process/FORM-PROJECT.md",
+            "docs/foundation/DERIVED-ATTENTION.md"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T05:45:00.000Z",
+          "updatedAt": "2026-10-24T05:45:00.000Z",
           "transitionHistory": []
         }
       ]
