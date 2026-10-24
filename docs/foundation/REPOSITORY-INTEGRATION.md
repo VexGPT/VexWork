@@ -520,7 +520,7 @@ Its source is:
 docs/process/INTEGRATE-READY-PULL-REQUESTS.md
 ~~~
 
-The process is source-placed now but is not registered in the Process Registry while open PR #103 owns that shared registry surface. Registration must reconcile that exact current owner first.
+The process is registered in the Process Registry after accepted PR #103 released that shared source surface. Its registry entry remains navigation only: `boardRefOrNull=null`, `executionAuthority=NONE`.
 
 ## Current intended operating model
 
