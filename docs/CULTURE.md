@@ -51,6 +51,70 @@ BOARD_LANE != WORK_STATE
 PROJECTION != EFFECT_AUTHORITY
 ```
 
+## Identity before naming; names follow the boundary
+
+VexWork needs stable coordinates that survive wording changes, while humans and connected systems need
+names that fit their own boundary. Do not make one string carry all of those jobs.
+
+For VexWork-owned objects:
+
+```text
+stable ref
+  enduring VexWork coordinate
+
+human label
+  current readable name for people
+
+projection label / lane name
+  contextual wording in one view
+
+provider title / external name
+  provider-owned wording and provenance
+
+source/native identifier
+  coordinate owned by the referenced repository/system
+```
+
+These may agree textually, but agreement is not identity.
+
+```text
+IDENTITY != HUMAN_LABEL
+IDENTITY != PROVIDER_TITLE
+IDENTITY != PROJECTION_LABEL
+
+RENAME != REIDENTIFY
+SAME_LABEL != SAME_OBJECT
+ALIAS != CANONICAL_IDENTITY
+
+WORK_REF
+!= WORK_LABEL
+!= GITHUB_ISSUE_TITLE
+
+PROCESS_REF
+!= PROCESS_DISPLAY_NAME
+
+REPOSITORY_REF
+!= REPOSITORY_LABEL
+!= PROVIDER_NATIVE_ID
+```
+
+A human-facing alias may improve discoverability (for example, "Jira board" resolving to the Work
+Board intention) without becoming a new namespace or truth owner.
+
+The identity/name distinction does not make every rename cosmetic. If a name is persisted, serialized,
+provider-native, externally addressed, or otherwise contract-bearing, changing that boundary name may
+require an explicit compatibility/migration path even while the underlying VexWork identity remains
+the same.
+
+When another source is projected into VexWork, retain its rightful stable identifier and provenance.
+Use VexWork labels to explain that coordinate rather than renaming the external thing into a new
+VexWork identity. If a referenced owner changes its canonical identity, treat that as an explicit
+mapping/migration question rather than silently following a matching label.
+
+This is the VexWork-local expression of a wider Vex lesson: **identity is the coordinate; naming is
+boundary-specific representation**. It does not require one universal naming schema across product
+code, provider APIs, repositories, wire formats, or human UI.
+
 ## Ambient source of truth; not foreground ceremony
 
 VexWork should make ongoing work easier, not require a worker to repeatedly announce or re-register the system while continuing an already-known lane. Once a Work identity, current state and route are established, ordinary execution can remain focused on the owning work and repository.

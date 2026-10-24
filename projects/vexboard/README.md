@@ -367,9 +367,94 @@ PROJECTED_WORK != WORK_STATE_OWNER
 SOURCE_REFERENCE != MUTATION_PERMISSION
 ```
 
-## VexBoard ontology and typologies
+## VexBoard naming, ontology and typologies
 
-The accepted wire contracts use the compact field name `kind` as a discriminator. That is useful machine syntax, but it is too generic to be the conceptual address humans and fresh AI instances use when the system grows.
+VexBoard needs names that stay understandable across human discussion, source projection, process maps,
+target realizations and machine contracts. The durable coordinate is therefore **identity**, not whichever
+name happens to be visible in one form.
+
+The current model already carries several distinct coordinates:
+
+```text
+boardRef
+  one stable board identity
+
+nodeRef / semanticRef
+  one stable semantic-object identity
+
+relationshipRef
+  one stable semantic relationship identity
+
+projectionRef / projectionItemRef
+  one projection and one situated occurrence of semantic meaning
+
+label
+  human-readable wording in this BoardGraph
+
+kind
+  compact machine discriminator / type member
+
+shapeKind + layoutIntent + bounds + layer
+  current projection form
+
+sourceRefs
+  provenance / route toward the rightful source owner
+```
+
+Permanent naming law:
+
+```text
+IDENTITY != NAME
+IDENTITY != LABEL
+IDENTITY != TYPE
+IDENTITY != ROLE
+IDENTITY != FORM
+
+RENAME != REIDENTIFY
+SAME_LABEL != SAME_IDENTITY
+SAME_IDENTITY -> MAY_HAVE_DIFFERENT_BOUNDARY_NAMES_AND_FORMS
+```
+
+A source owner may also have its own canonical human name, short name, aliases, code symbols,
+serialized names or provider-native identifiers. VexBoard may project those when useful, but it should
+not collapse them into a new VexBoard identity or infer equivalence from matching strings.
+
+Conversely, preserving identity does not make every boundary rename harmless. A change to a persisted,
+serialized, provider-native or otherwise contract-bearing name may require target-specific migration
+or compatibility proof while the semantic identity remains continuous.
+
+Conceptually:
+
+```text
+stable semantic identity
+        |
+        +-> source-owner canonical name
+        +-> human short label
+        +-> retrieval alias
+        +-> implementation-local symbol
+        +-> wire / serialized name
+        +-> provider-native identifier
+        +-> VexBoard projection label
+```
+
+These are **naming coordinates around an identity**, not peers that compete to become identity.
+
+This aligns with the wider Vex lineage:
+
+- Meaning-addressable architecture keeps the canonical subject identity while adding human meaning,
+  short names and aliases as bounded routes;
+- Semantic Assortment keeps one canonical object while occurrences, relationships and projections
+  remain separately typed;
+- VexLife-Android names according to the boundary rather than globally normalizing Kotlin symbols,
+  semantic refs, Android resources, persisted schema names and external/wire names.
+
+VexBoard should consume those lessons without becoming their new canonical owner.
+
+### Ontology and typologies
+
+The accepted wire contracts use the compact field name `kind` as a discriminator. That is useful
+machine syntax, but it is too generic to be the conceptual address humans and fresh AI instances use
+when the system grows.
 
 Use this language when explaining the model:
 
@@ -398,15 +483,20 @@ Projection typology
 So the ordinary human projection should prefer:
 
 ```text
-Node type / Represents
+Name / label
+Stable identity
+Represents / node type
 Relationship family
-Interaction type
+Contextual role
+Current state
 Visual form
+Source / owner
 ```
 
 rather than asking a person to reason from a bare label such as `Kind: PROCESS`.
 
-This is a terminology/projection boundary, **not a wire-schema migration**. The current `kind` fields remain valid and stable until repeated implementation pressure earns an actual schema change.
+This is a terminology/projection boundary, **not a wire-schema migration**. The current fields remain
+valid and stable until repeated implementation pressure earns an actual schema change.
 
 ```text
 KIND_FIELD = MACHINE_DISCRIMINATOR
@@ -415,7 +505,13 @@ TYPE = ONE_MEMBER_OF_THAT_TYPOLOGY
 ROLE = CONTEXTUAL_FUNCTION
 STATE = WHAT_IS_CURRENTLY_TRUE
 FORM = HOW_IT_APPEARS
+NAME = BOUNDARY-SPECIFIC HUMAN_OR_MACHINE REPRESENTATION
+IDENTITY = STABLE_COORDINATE
 ```
+
+When mapping one semantic object into another platform or process projection, preserve the identity
+relationship explicitly. Do not require the Android symbol, web identifier, process label and Board
+label to be spelled the same in order to prove they represent the same accepted meaning.
 
 ## Federated totality — modular boards, not one mega-map
 
