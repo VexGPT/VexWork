@@ -250,7 +250,7 @@ A model finding becomes durable only through evidence and the same repository/so
 Vex Security Assurance                         RUNNING
 ├─ Security atlas                              RUNNING
 ├─ Security question/evidence lens             READY
-├─ Reusable Spike process                      WAITING_RESOURCE
+├─ Reusable Spike process                      READY
 │    Process Registry surface released; generic process still unregistered
 ├─ Software + supply-chain security lens       DECOMPOSED
 ├─ AI / agentic / Heretic security lens        DECOMPOSED
