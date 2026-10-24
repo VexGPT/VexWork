@@ -1,0 +1,388 @@
+{
+  "schemaVersion": "vexboard.local-draft/v1",
+  "draftRef": "board.vexwork.form-project",
+  "title": "Form a VexWork Project",
+  "mode": "READ_ONLY_SOURCE",
+  "derivedFromRefOrNull": null,
+  "savedAtOrNull": null,
+  "graph": {
+    "schemaVersion": "vexboard.board-graph/v1",
+    "graphRef": "graph.vexwork.form-project",
+    "nodes": [
+      {
+        "nodeRef": "node.vexwork.form-project.entry",
+        "kind": "SCENE",
+        "label": "Form a VexWork Project",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "docs/process/FORM-PROJECT.md",
+          "docs/foundation/PROJECTS.md"
+        ]
+      },
+      {
+        "nodeRef": "node.vexwork.form-project.ground",
+        "kind": "PROCESS",
+        "label": "1. Ground current truth",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "docs/process/FORM-PROJECT.md"
+        ]
+      },
+      {
+        "nodeRef": "node.vexwork.form-project.name-outcome",
+        "kind": "PROCESS",
+        "label": "2. Name the human outcome",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "docs/process/FORM-PROJECT.md"
+        ]
+      },
+      {
+        "nodeRef": "node.vexwork.form-project.decompose",
+        "kind": "PROCESS",
+        "label": "3. Decompose just enough",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "docs/process/FORM-PROJECT.md"
+        ]
+      },
+      {
+        "nodeRef": "node.vexwork.form-project.currentness",
+        "kind": "PROCESS",
+        "label": "4. Preserve currentness",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "docs/process/FORM-PROJECT.md"
+        ]
+      },
+      {
+        "nodeRef": "node.vexwork.form-project.bind-routes",
+        "kind": "PROCESS",
+        "label": "5. Bind routes",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "docs/process/FORM-PROJECT.md",
+          "blueprint/process-registry.json"
+        ]
+      },
+      {
+        "nodeRef": "node.vexwork.form-project.separate-authority",
+        "kind": "PROCESS",
+        "label": "6. Separate authority",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "docs/process/FORM-PROJECT.md"
+        ]
+      },
+      {
+        "nodeRef": "node.vexwork.form-project.form-project-board",
+        "kind": "PROCESS",
+        "label": "7. Form Project + Board",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "docs/process/FORM-PROJECT.md",
+          "docs/foundation/PROJECTS.md",
+          "docs/foundation/WORK-BOARD.md",
+          "blueprint/project-registry.json"
+        ]
+      },
+      {
+        "nodeRef": "node.vexwork.form-project.agency-policy",
+        "kind": "DECISION",
+        "label": "8. Human delegated AI stewardship?",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "docs/process/FORM-PROJECT.md",
+          "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md"
+        ]
+      },
+      {
+        "nodeRef": "node.vexwork.form-project.prove",
+        "kind": "PROCESS",
+        "label": "9. Prove refs, graphs and projection",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "docs/process/FORM-PROJECT.md"
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "relationshipRef": "rel.vexwork.form-project.entry-ground",
+        "kind": "FLOW",
+        "fromRef": "node.vexwork.form-project.entry",
+        "toRef": "node.vexwork.form-project.ground",
+        "labelOrNull": "begin",
+        "sourceRefs": [
+          "docs/process/FORM-PROJECT.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexwork.form-project.ground-name",
+        "kind": "FLOW",
+        "fromRef": "node.vexwork.form-project.ground",
+        "toRef": "node.vexwork.form-project.name-outcome",
+        "labelOrNull": "current truth",
+        "sourceRefs": [
+          "docs/process/FORM-PROJECT.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexwork.form-project.name-decompose",
+        "kind": "FLOW",
+        "fromRef": "node.vexwork.form-project.name-outcome",
+        "toRef": "node.vexwork.form-project.decompose",
+        "labelOrNull": "one coherent outcome",
+        "sourceRefs": [
+          "docs/process/FORM-PROJECT.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexwork.form-project.decompose-currentness",
+        "kind": "FLOW",
+        "fromRef": "node.vexwork.form-project.decompose",
+        "toRef": "node.vexwork.form-project.currentness",
+        "labelOrNull": "bounded topology",
+        "sourceRefs": [
+          "docs/process/FORM-PROJECT.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexwork.form-project.currentness-routes",
+        "kind": "FLOW",
+        "fromRef": "node.vexwork.form-project.currentness",
+        "toRef": "node.vexwork.form-project.bind-routes",
+        "labelOrNull": "evidence-aware",
+        "sourceRefs": [
+          "docs/process/FORM-PROJECT.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexwork.form-project.routes-authority",
+        "kind": "FLOW",
+        "fromRef": "node.vexwork.form-project.bind-routes",
+        "toRef": "node.vexwork.form-project.separate-authority",
+        "labelOrNull": "routes are not grants",
+        "sourceRefs": [
+          "docs/process/FORM-PROJECT.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexwork.form-project.authority-form",
+        "kind": "FLOW",
+        "fromRef": "node.vexwork.form-project.separate-authority",
+        "toRef": "node.vexwork.form-project.form-project-board",
+        "labelOrNull": "no authority widening",
+        "sourceRefs": [
+          "docs/process/FORM-PROJECT.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexwork.form-project.form-agency",
+        "kind": "TRANSITION",
+        "fromRef": "node.vexwork.form-project.form-project-board",
+        "toRef": "node.vexwork.form-project.agency-policy",
+        "labelOrNull": "human delegated stewardship",
+        "sourceRefs": [
+          "docs/process/FORM-PROJECT.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexwork.form-project.form-prove",
+        "kind": "TRANSITION",
+        "fromRef": "node.vexwork.form-project.form-project-board",
+        "toRef": "node.vexwork.form-project.prove",
+        "labelOrNull": "no agency policy needed",
+        "sourceRefs": [
+          "docs/process/FORM-PROJECT.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexwork.form-project.agency-prove",
+        "kind": "FLOW",
+        "fromRef": "node.vexwork.form-project.agency-policy",
+        "toRef": "node.vexwork.form-project.prove",
+        "labelOrNull": "policy bound",
+        "sourceRefs": [
+          "docs/process/FORM-PROJECT.md"
+        ]
+      }
+    ],
+    "sourceRefs": [
+      "docs/process/FORM-PROJECT.md",
+      "docs/foundation/PROJECTS.md",
+      "blueprint/process-registry.json"
+    ]
+  },
+  "projection": {
+    "schemaVersion": "vexboard.board-projection/v1",
+    "projectionRef": "projection.vexwork.form-project",
+    "graphRef": "graph.vexwork.form-project",
+    "layoutIntent": "SEQUENCE",
+    "items": [
+      {
+        "projectionItemRef": "item.vexwork.form-project.entry",
+        "semanticRef": "node.vexwork.form-project.entry",
+        "shapeKind": "ELLIPSE",
+        "bounds": {
+          "x": 60,
+          "y": 90,
+          "width": 240,
+          "height": 86
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vexwork.form-project.ground",
+        "semanticRef": "node.vexwork.form-project.ground",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 370,
+          "y": 90,
+          "width": 220,
+          "height": 82
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vexwork.form-project.name-outcome",
+        "semanticRef": "node.vexwork.form-project.name-outcome",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 660,
+          "y": 90,
+          "width": 220,
+          "height": 82
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vexwork.form-project.decompose",
+        "semanticRef": "node.vexwork.form-project.decompose",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 950,
+          "y": 90,
+          "width": 220,
+          "height": 82
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vexwork.form-project.currentness",
+        "semanticRef": "node.vexwork.form-project.currentness",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1240,
+          "y": 90,
+          "width": 220,
+          "height": 82
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vexwork.form-project.bind-routes",
+        "semanticRef": "node.vexwork.form-project.bind-routes",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1530,
+          "y": 90,
+          "width": 220,
+          "height": 82
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vexwork.form-project.separate-authority",
+        "semanticRef": "node.vexwork.form-project.separate-authority",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1530,
+          "y": 330,
+          "width": 220,
+          "height": 82
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vexwork.form-project.form-project-board",
+        "semanticRef": "node.vexwork.form-project.form-project-board",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1240,
+          "y": 330,
+          "width": 220,
+          "height": 82
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vexwork.form-project.agency-policy",
+        "semanticRef": "node.vexwork.form-project.agency-policy",
+        "shapeKind": "DIAMOND",
+        "bounds": {
+          "x": 920,
+          "y": 310,
+          "width": 250,
+          "height": 120
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vexwork.form-project.prove",
+        "semanticRef": "node.vexwork.form-project.prove",
+        "shapeKind": "ELLIPSE",
+        "bounds": {
+          "x": 610,
+          "y": 330,
+          "width": 240,
+          "height": 86
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": false
+      }
+    ],
+    "sourceRefs": [
+      "docs/process/FORM-PROJECT.md"
+    ]
+  }
+}

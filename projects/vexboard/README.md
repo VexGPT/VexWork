@@ -14,11 +14,11 @@ Canvas Projection                     COMPLETED
 BoardJourney + simulation             COMPLETED
 animated semantic traversal           ACCEPTED / PR #98 MERGED
 BoardPatch                            READY / NO_AUTHORITY / NO_EFFECTS
-Source Projectors                     READY / NO_AUTHORITY / NO_EFFECTS
+Source Projectors                     RUNNING / AUTHORIZED_BOUNDED / EFFECTS_BOUND
 VexBoard root                         DECOMPOSED
 ```
 
-This source preserves the VexBoard product intention and architecture across implementation phases. The Project is canonically formed through `project.json`, its Work Board view, a bounded Workgraph decomposition, the Project Registry, and the generated public workspace. BoardGraph, Canvas Projection, BoardJourney and same-board prototype simulation are accepted implementation foundations; PR #98 adds presentation-only animated semantic focus without changing Journey truth. PR #100 currentized those completed foundations into canonical VexWork truth. BoardPatch and Source Projectors are dependency-ready but still carry no implementation authority or effects. This architecture source explains that state; it does not own or advance lifecycle truth.
+This source preserves the VexBoard product intention and architecture across implementation phases. The Project is canonically formed through `project.json`, its Work Board view, a bounded Workgraph decomposition, the Project Registry, and the generated public workspace. BoardGraph, Canvas Projection, BoardJourney and same-board prototype simulation are accepted implementation foundations; PR #98 adds presentation-only animated semantic focus without changing Journey truth. PR #100 currentized those completed foundations into canonical VexWork truth. PR #108 then landed the first bounded read-only Source Projectors implementation, and PR #109 currentized that broader Work item to RUNNING / AUTHORIZED_BOUNDED / EFFECTS_BOUND while keeping lived comparison, evidence presentation, federation, and broader source families unfinished. BoardPatch remains dependency-ready with NO_AUTHORITY / NO_EFFECTS. This architecture source explains that state; it does not own or advance lifecycle truth.
 
 ```text
 PRESERVE_THE_PROJECT_NOW
@@ -444,7 +444,46 @@ VexBoard
 
 The current `VEXBOARD_BUILTIN_BOARD_URLS` / prototype maps are a good proving-ground realization for a few local boards. They are not the long-term catalog for hundreds of reusable business, development, education, provider, architecture or operational process modules.
 
-The next reusable routing seam should therefore be a **board source registry/resolver** that maps stable `boardRef` identity to the rightful source descriptor. It is routing/catalog infrastructure, not another semantic owner and not an automation-effect grant. Its exact schema is intentionally not declared here before implementation pressure earns it.
+The repeated built-in-board and VexWork process pressure has now earned the first bounded resolver contract:
+
+~~~text
+vexboard.board-source-catalog/v1
+  catalogRef
+  entries[]
+    boardRef
+    location
+    sourceRefs
+  sourceRefs
+
+vexboard.board-source-resolution/v1
+  boardRef
+  catalogRef
+  location
+  sourceRefs
+~~~
+
+A source owner may project its own `boardRef -> relative JSON location` catalog. VexBoard resolves across several such catalogs without copying them into one mega-registry:
+
+~~~text
+resolve(boardRef, [catalog A, catalog B, ...])
+  zero matches -> null / unknown board
+  one match    -> exact source resolution
+  >1 matches   -> fail closed as ambiguous ownership
+~~~
+
+The existing `VEXBOARD_BUILTIN_BOARD_URLS` map can be projected into one catalog without changing its current reader ownership. VexWork PR #103 supplies the first distinct consumer pressure: its Form-Project board should reconnect through its own source-owned catalog when that foreign candidate currentizes, rather than teaching VexBoard to own the Process Registry.
+
+Permanent:
+
+~~~text
+BOARD_SOURCE_CATALOG != BOARDGRAPH_TRUTH
+BOARD_SOURCE_CATALOG != PROCESS_REGISTRY
+BOARD_SOURCE_RESOLUTION != EFFECT_AUTHORITY
+DUPLICATE_BOARD_REF_ACROSS_CATALOGS -> FAIL_CLOSED
+UNKNOWN_BOARD_REF -> NULL
+~~~
+
+This first contract deliberately resolves static relative JSON locations only. Projector-backed/in-memory source descriptors, remote/provider loaders and browser UI wiring remain later extensions that must be earned by actual consumers rather than predeclared.
 
 Permanent boundaries:
 
@@ -3570,6 +3609,143 @@ VexBoard Semantic Canvas                         OUTCOME
 
 Exact Work states, dependencies, authority/effect dispositions, transition history, and Project registration must be formed from live source at reconciliation time rather than copied from this architecture sketch.
 
+## Evidence companions — expected visuals, manual references and observed proof
+
+Real processes often need visual context that is **not** BoardGraph meaning.
+
+Examples:
+
+~~~text
+Stripe setup step
+  semantic meaning:
+    "Open Developers -> API keys"
+
+  expected visual:
+    placeholder describing what the human should see
+
+  reference context:
+    manually supplied Stripe screenshot / third-party walkthrough image
+
+  observed proof:
+    screenshot captured while a real person/crawler/device performs the walk
+~~~
+
+Do not add screenshot bytes, image URLs or visual-proof lifecycle to BoardGraph nodes merely because the
+same process step needs visual evidence.
+
+The first earned companion shape is:
+
+~~~text
+BoardGraph / BoardJourney
+  semantic truth and traversal
+
+BoardEvidence
+  evidence slots
+    stable expectation attached to one semanticRef
+
+  evidence artifacts
+    REFERENCE
+      illustrative/manual/third-party visual context
+
+    OBSERVED
+      one concrete captured observation
+      optionally bound to Journey + step + interaction + configuration
+~~~
+
+A slot may exist with **zero artifacts**. That is the expected-image placeholder:
+
+~~~text
+semantic step exists
++ evidence slot says what visual context is expected
++ no image captured yet
+~~~
+
+Later, multiple artifacts may bind to the same slot without changing the semantic process:
+
+~~~text
+one stable evidence slot
+  -> reference screenshot
+  -> manually observed screenshot
+  -> crawler/device screenshot
+  -> desktop/mobile/locale/accessibility variants
+~~~
+
+This follows the VexLife ScreenCrawler lesson that the semantic frame and the execution configuration are
+different coordinates. Configuration/capture variants must not create a second process identity.
+
+Permanent:
+
+~~~text
+EVIDENCE_SLOT != BOARD_NODE
+IMAGE_ARTIFACT != PROCESS_TRUTH
+REFERENCE_SCREENSHOT != OBSERVED_PROOF
+OBSERVED_SCREENSHOT != PRODUCT_ACCEPTANCE_BY_ITSELF
+PLACEHOLDER_WITHOUT_IMAGE != MISSING_PROCESS_STEP
+CONFIGURATION_VARIANT != NEW_SEMANTIC_STEP
+BOARD_EVIDENCE != ASSET_BINARY_STORAGE
+~~~
+
+Image bytes remain in a rightful asset/file surface. BoardEvidence carries stable asset/source refs and may
+carry a content hash when bytes are available; it does not embed base64 image payloads into BoardGraph.
+
+This companion is also the seam for later intended-versus-observed comparison:
+
+~~~text
+expected evidence slot
++ reference context
++ observed artifact(s)
+-> compare / inspect
+-> human or proof owner decides meaning
+~~~
+
+VexBoard presentation may later render placeholders, galleries and expected-vs-observed comparisons. That
+UI should be added only after the current single-file browser surface is decomposed enough that evidence
+presentation does not enlarge `vexboard/index.html` into another semantic owner.
+### Presentation decomposition before evidence UI
+
+The current browser proving surface is still concentrated in `vexboard/index.html`. That is acceptable for
+the foundation that already shipped, but it should not be the growth surface for evidence, federation, richer
+prototype views or additional source projectors.
+
+The next structural presentation slice should extract existing responsibilities rather than introduce a new
+framework:
+
+~~~text
+vexboard/index.html
+  shell / state wiring / composition only
+
+vexboard/ui/renderer.mjs
+  canvas items / edges / projection rendering
+
+vexboard/ui/inspector.mjs
+  stable identity / source refs / bounded-neighborhood inspection
+
+vexboard/ui/journey-panel.mjs
+  BoardJourney walk / choices / return / revisit presentation
+
+vexboard/ui/prototype-view.mjs
+  prototype scenario / conditions / interaction trail presentation
+
+vexboard/ui/evidence-panel.mjs
+  expected-image placeholders / reference artifacts / observed artifacts
+
+vexboard/ui/camera-animation.mjs
+  already extracted camera movement owner
+
+vexboard/ui/styles.css
+  presentation styling
+~~~
+
+This is an incremental module split, not a React/framework migration and not a semantic rewrite.
+
+Permanent:
+
+~~~text
+UI_MODULE_SPLIT != NEW_SEMANTIC_OWNER
+EVIDENCE_PANEL != EVIDENCE_TRUTH
+INSPECTOR != SOURCE_OWNER
+RENDERER != BOARDGRAPH
+~~~
 ## Current continuation
 
 Accepted source and canonical VexWork projection are now aligned through the navigation foundation:
@@ -3602,6 +3778,14 @@ VexBoard Workgraph currentization
 animated semantic traversal focus
   PR #98 MERGED / TREE-EXACT
   merge = 2c37fcb4e90aa45f96bc8a9e42d970a62b85b4a6
+
+read-only Source Projectors
+  PR #108 MERGED / VERIFIED
+  merge = 3278edf9c39b58ef4f59be9e239875518d6c2abf
+
+Source Projectors currentization
+  PR #109 MERGED / VERIFIED
+  merge = 928ee2c2e2b5d73fa1ac5c71a50c0bf4d6f40845
 ~~~
 
 The accepted Workgraph therefore truthfully exposes:
@@ -3612,7 +3796,7 @@ Canvas Projection          COMPLETED
 BoardJourney + simulation  COMPLETED
 
 BoardPatch                 READY / NO_AUTHORITY / NO_EFFECTS
-Source Projectors          READY / NO_AUTHORITY / NO_EFFECTS
+Source Projectors          RUNNING / AUTHORIZED_BOUNDED / EFFECTS_BOUND
 
 VexBoard root              DECOMPOSED
 ~~~
@@ -3630,7 +3814,7 @@ typed/clickable simulation substrate     ACCEPTED
 animated semantic focus                  ACCEPTED / PRESENTATION-ONLY
 educational/perspective projections      ARCHITECTURE_SOURCE_ONLY
 provider / business source adapters      NOT_YET_IMPLEMENTED
-generic board source resolver            NOT_YET_IMPLEMENTED
+generic board source resolver            BOUNDED_STATIC_CATALOG_CONTRACT_PRESENT / PR #115
 cross-board Journey coordinates          NOT_YET_IMPLEMENTED
 lived screenshot evidence loop           NOT_YET_IMPLEMENTED
 AI BoardPatch / business mutation         NOT_YET_IMPLEMENTED
@@ -3654,7 +3838,7 @@ VexBusinessFactory topology
 != make VexBoard the executor
 ~~~
 
-Only after those distinct consumers agree should VexBoard extract broader resolver/source-projector or semantic-factory contracts. BoardPatch and Source Projectors being READY means their dependencies are satisfied; it does not itself grant implementation authority.
+The first Source Projectors slice is now accepted and active, but broader resolver/federation or semantic-factory extraction still waits for repeated consumer pressure. RUNNING / AUTHORIZED_BOUNDED / EFFECTS_BOUND names only that bounded active outcome; it does not grant BoardPatch authority, target-repository mutation, or completion of lived comparison.
 
 No human host action is required to preserve this design.
 

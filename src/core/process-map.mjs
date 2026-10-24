@@ -18,6 +18,9 @@ export function validateProcessRegistry(registry, repositoryRegistry) {
     refs.add(process.processRef);
     if (!knownRepositories.has(process.ownerRepositoryRef)) errors.push(`unknown ownerRepositoryRef ${process.ownerRepositoryRef}`);
     if (!Array.isArray(process.entryRefs) || process.entryRefs.length === 0) errors.push(`entryRefs missing for ${process.processRef}`);
+    if (process.boardRefOrNull !== undefined
+      && process.boardRefOrNull !== null
+      && !REF.test(process.boardRefOrNull)) errors.push(`invalid boardRefOrNull ${process.boardRefOrNull}`);
     if (process.executionAuthority !== 'NONE') errors.push(`process map entry ${process.processRef} must not claim execution authority`);
   }
   return Object.freeze({ ok: errors.length === 0, errors: Object.freeze(errors) });
@@ -39,6 +42,7 @@ export function projectProcessMap(registry) {
       ownerRepositoryRef: process.ownerRepositoryRef,
       entryRefs: [...process.entryRefs],
       appliesWhen: process.appliesWhen,
+      boardRefOrNull: process.boardRefOrNull ?? null,
       effects: false,
       executionAuthority: 'NONE',
     })),
