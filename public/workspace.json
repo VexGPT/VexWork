@@ -1,7 +1,7 @@
 {
   "schemaVersion": "vexwork.public-workspace/v1",
   "projectRegistryRef": "registry.vexwork.projects.001",
-  "projectRegistryVersion": 11,
+  "projectRegistryVersion": 12,
   "projects": [
     {
       "project": {
@@ -8212,6 +8212,325 @@
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-24T06:05:10.000Z",
           "updatedAt": "2026-10-24T06:43:34.000Z",
+          "transitionHistory": []
+        }
+      ]
+    },
+    {
+      "project": {
+        "projectRef": "project.vexlife-android.current-state-refinement",
+        "label": "VexLife Android Current-State Refinement",
+        "purpose": "Refine the current VexLife Android product from lived use by reviewing scalability, SCAE/execution placement, large-state UI/data behavior, VexMaps discovery-to-navigation experience, Conversation history growth and reusable performance diagnostics while preserving accepted feature semantics and requiring evidence before optimization.",
+        "rootWorkRefs": [
+          "work.vexlife-android.current-state-refinement.outcome"
+        ],
+        "repositoryRefs": [
+          "repo.vexwork",
+          "repo.vexlife-android"
+        ],
+        "sourceRefs": [
+          "projects/vexlife-android-current-state-refinement/README.md",
+          "docs/process/FORM-PROJECT.md",
+          "github.issue.vexlife-android.168",
+          "github.commit.vexlife-android.8213ae7befe08bc0a21c76bd70e7c8790e5bcf9f",
+          "project.vexstream.mobile-library",
+          "repo.vexlife-android:AGENTS.md",
+          "repo.vexlife-android:docs/CULTURE.md",
+          "repo.vexlife-android:docs/foundation/INDEX.md",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexBehaviorDocs.kt",
+          "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt",
+          "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/VexStableLazyList.kt"
+        ],
+        "formedAt": "2026-10-24T08:50:00.000Z"
+      },
+      "graphRef": "workgraph.vexwork.foundation",
+      "viewRef": "view.vexlife-android.current-state-refinement.board",
+      "items": [
+        {
+          "workRef": "work.vexlife-android.current-state-refinement.conversation-growth",
+          "label": "Conversation large-history and state-growth review",
+          "purpose": "Review Conversation for long-lived thread/history scale: preserve bounded-history and truncation truth, lazy message rendering and semantic currentness while measuring full-list validation/copying, thread replacement, participant lookup and incremental history behavior as message counts grow.",
+          "workClass": "TASK",
+          "state": "READY",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vexlife-android.current-state-refinement.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-android-current-state-refinement/README.md",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/conversation/VexConversationState.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/conversation/VexFamilyConversationConnectedServiceClient.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/conversation/VexFamilyConversationConnectedServiceRepository.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/conversation/VexConversationRoom.kt"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T08:50:00.000Z",
+          "updatedAt": "2026-10-24T08:50:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife-android.current-state-refinement.dynamic-collections",
+          "label": "Dynamic collection, paging and large-state behavior review",
+          "purpose": "Review VexLife Android repeated-item and large-state surfaces to separate lazy rendering from eager data materialization, transformation, indexing and persistence; identify where full-list scans/copies/grouping or per-item whole-state work requires indexing, batching, incremental loading or paging, without adding pagination merely by analogy to RecyclerView.",
+          "workClass": "TASK",
+          "state": "READY",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife-android.current-state-refinement.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-android-current-state-refinement/README.md",
+            "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/VexStableLazyList.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamLibraryPresentation.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamCollectionPresentation.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/conversation/VexConversationRoom.kt"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T08:50:00.000Z",
+          "updatedAt": "2026-10-24T08:50:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife-android.current-state-refinement.outcome",
+          "label": "VexLife Android Current-State Refinement",
+          "purpose": "Refine the current VexLife Android product from lived evidence by reviewing scalability, execution/ownership placement, large-state behavior and important UX seams across existing features without treating review as blanket permission to redesign semantically correct source.",
+          "workClass": "OUTCOME",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vexlife-android.current-state-refinement.conversation-growth",
+            "work.vexlife-android.current-state-refinement.dynamic-collections",
+            "work.vexlife-android.current-state-refinement.performance-debugging",
+            "work.vexlife-android.current-state-refinement.scalability-scae-audit",
+            "work.vexlife-android.current-state-refinement.vexmaps-discovery-navigation"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "project.vexlife-android.current-state-refinement",
+            "projects/vexlife-android-current-state-refinement/README.md",
+            "github.issue.vexlife-android.168",
+            "github.commit.vexlife-android.8213ae7befe08bc0a21c76bd70e7c8790e5bcf9f"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T08:50:00.000Z",
+          "updatedAt": "2026-10-24T08:50:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife-android.current-state-refinement.performance-debugging",
+          "label": "Performance diagnostics and scalability guardrails",
+          "purpose": "Decide which lightweight Android debugging wisdom has now been earned from lived evidence—such as main-thread I/O detection, source-owned trace sections, large-state fixtures, Macrobenchmark/startup measurement and a concise command-line/VexRelay performance route—while reusing existing Logging, Test/Proof and Android Host Proof foundations instead of creating a parallel framework.",
+          "workClass": "TASK",
+          "state": "READY",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vexlife-android.current-state-refinement.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "github.issue.vexlife-android.168",
+            "projects/vexlife-android-current-state-refinement/README.md",
+            "repo.vexlife-android:architecture/logging/README.md",
+            "repo.vexlife-android:docs/foundation/ANDROID-HOST-PROOF.md",
+            "repo.vexlife-android:docs/foundation/test-proof/README.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T08:50:00.000Z",
+          "updatedAt": "2026-10-24T08:50:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife-android.current-state-refinement.scalability-scae-audit",
+          "label": "Cross-feature scalability and SCAE placement audit",
+          "purpose": "Review current Android feature boundaries for scale-amplified work and misplaced execution: distinguish rightful State/Control/Act/Effect ownership from expensive I/O or whole-state work performed at the wrong lifecycle/thread boundary, beginning with the VexStream 785-song startup evidence and extending only where source shows the same class.",
+          "workClass": "TASK",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife-android.current-state-refinement.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "github.issue.vexlife-android.168",
+            "work.vexstream.mobile-library.large-offline-startup-performance",
+            "repo.vexlife-android:docs/CULTURE.md",
+            "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexBehaviorDocs.kt",
+            "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/AppRepositories.kt"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T08:50:00.000Z",
+          "updatedAt": "2026-10-24T08:50:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife-android.current-state-refinement.vexmaps-discovery-navigation",
+          "label": "VexMaps discovery-to-navigation experience review",
+          "purpose": "Review the current Where-to search and destination flow as one human journey: assess incremental/typeahead discovery, debounce/currentness, result quality, destination selection, route formation and the visible transition into navigation without collapsing provider search, route planning and navigation ownership.",
+          "workClass": "TASK",
+          "state": "READY",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vexlife-android.current-state-refinement.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-android-current-state-refinement/README.md",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/maps/VexMapsDestinationSearchSession.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/maps/VexMapsDestinationSearchOverlay.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/maps/VexMapsMapSurface.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/maps/VexMapsPlaceSearchStore.kt"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T08:50:00.000Z",
+          "updatedAt": "2026-10-24T08:50:00.000Z",
+          "transitionHistory": []
+        }
+      ],
+      "lanes": [
+        {
+          "laneRef": "lane.work.intake",
+          "label": "Intake",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.planned",
+          "label": "Planned",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.ready",
+          "label": "Ready",
+          "workRefs": [
+            "work.vexlife-android.current-state-refinement.dynamic-collections",
+            "work.vexlife-android.current-state-refinement.conversation-growth",
+            "work.vexlife-android.current-state-refinement.performance-debugging",
+            "work.vexlife-android.current-state-refinement.vexmaps-discovery-navigation"
+          ]
+        },
+        {
+          "laneRef": "lane.work.active",
+          "label": "Active",
+          "workRefs": [
+            "work.vexlife-android.current-state-refinement.outcome",
+            "work.vexlife-android.current-state-refinement.scalability-scae-audit"
+          ]
+        },
+        {
+          "laneRef": "lane.work.waiting",
+          "label": "Waiting",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.needs-human",
+          "label": "Needs Human",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.verify",
+          "label": "Verify",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.attention",
+          "label": "Attention",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.done",
+          "label": "Done",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.archive",
+          "label": "Archive",
+          "workRefs": []
+        }
+      ],
+      "summary": {
+        "workItemCount": 6,
+        "openWorkItemCount": 6,
+        "outcomeCount": 1,
+        "taskCount": 5,
+        "defectCount": 0,
+        "potentialCount": 0,
+        "needsHumanCount": 0,
+        "completedCount": 0
+      },
+      "rootItems": [
+        {
+          "workRef": "work.vexlife-android.current-state-refinement.outcome",
+          "label": "VexLife Android Current-State Refinement",
+          "purpose": "Refine the current VexLife Android product from lived evidence by reviewing scalability, execution/ownership placement, large-state behavior and important UX seams across existing features without treating review as blanket permission to redesign semantically correct source.",
+          "workClass": "OUTCOME",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vexlife-android.current-state-refinement.conversation-growth",
+            "work.vexlife-android.current-state-refinement.dynamic-collections",
+            "work.vexlife-android.current-state-refinement.performance-debugging",
+            "work.vexlife-android.current-state-refinement.scalability-scae-audit",
+            "work.vexlife-android.current-state-refinement.vexmaps-discovery-navigation"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "project.vexlife-android.current-state-refinement",
+            "projects/vexlife-android-current-state-refinement/README.md",
+            "github.issue.vexlife-android.168",
+            "github.commit.vexlife-android.8213ae7befe08bc0a21c76bd70e7c8790e5bcf9f"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T08:50:00.000Z",
+          "updatedAt": "2026-10-24T08:50:00.000Z",
           "transitionHistory": []
         }
       ]
