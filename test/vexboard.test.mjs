@@ -679,7 +679,11 @@ test('prototype RETURN uses BoardJourney return semantics while scenario overlay
     graph, journey, prototype, scenario, interactionRef: 'interaction.back',
   });
   assert.equal(result.journey.currentRef, 'node.scene.done');
-  assert.equal(result.journey.steps.at(-1).navigationKind, 'BACK');
+  assert.deepEqual(result.journey.steps.map((step) => [step.semanticRef, step.navigationKind]), [
+    ['node.control.submit', 'START'],
+    ['node.scene.done', 'RELATIONSHIP'],
+  ]);
+  assert.deepEqual(result.journey.returnStack, ['node.control.submit']);
   assert.deepEqual(result.scenario.openOverlayRefs, []);
   assert.deepEqual(result.effects, { externalEffectsPerformed: false });
 });
