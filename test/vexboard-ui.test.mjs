@@ -111,6 +111,9 @@ test('canvas usability refinement arbitrates chrome, canvas pan, object drag and
   assert.match(page, /dataset\.vexboardPlane=Interaction\.INTERACTION_PLANES\.OVERLAY/);
   assert.match(page, /let suppressShapeClick=false/);
   assert.match(page, /if\(suppressShapeClick\)\{suppressShapeClick=false;return\}/);
+  assert.match(page, /cameraAnimator\.cancel\(\);e\.stopPropagation\(\);/);
+  assert.doesNotMatch(page, /cameraAnimator\.cancel\(\);e\.preventDefault\(\);e\.stopPropagation\(\);/);
+  assert.match(page, /m\.preventDefault\(\);/);
   assert.match(page, /if\(!dragged&&Interaction\.pointerGestureFromMovement\(start,end\)!=='DRAG'\)\{cleanup\(\);return\}/);
   assert.match(page, /await act\('MOVE_ITEM'/);
   assert.match(page, /Saved locally/);
