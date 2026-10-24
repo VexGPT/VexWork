@@ -9,7 +9,7 @@
 :root{--ink:#1c1917;--muted:#78716c;--line:#e7e5e4;--blue:#2563eb;--violet:#7c3aed;--paper:#fff;--wash:#fafaf9}*{box-sizing:border-box}html,body{height:100%}body{margin:0;background:var(--wash);color:var(--ink);font:14px Inter,system-ui,sans-serif}button,input{font:inherit}.top{height:58px;padding:0 16px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--line);background:#fff}.top strong{font:700 24px Georgia,serif}.top a{margin-left:auto;color:var(--blue);text-decoration:none}.app{height:calc(100% - 58px)}.landing{width:min(980px,calc(100% - 32px));margin:auto;padding:52px 0}.eyebrow,.tiny{font:700 9px ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--blue)}h1{font:700 clamp(38px,7vw,70px)/1 Georgia,serif;letter-spacing:-.04em;margin:10px 0 18px}.lede{max-width:720px;color:var(--muted);line-height:1.7}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.btn{border:1px solid #d6d3d1;border-radius:8px;background:#fff;padding:9px 12px;cursor:pointer}.btn.primary{background:var(--blue);color:#fff;border-color:var(--blue)}.btn.violet{background:#f5f3ff;color:#6d28d9;border-color:#ddd6fe}.btn:disabled{opacity:.4;cursor:not-allowed}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin-top:14px}.card{background:#fff;border:1px solid var(--line);border-radius:11px;padding:14px}.card h3{margin:5px 0}.card p{color:var(--muted);font-size:12px;line-height:1.5}.workspace{height:100%;display:grid;grid-template-rows:auto minmax(0,1fr)}.bar{padding:8px 10px;background:#fff;border-bottom:1px solid var(--line);display:flex;gap:7px;align-items:center}.title{flex:1;border:1px solid transparent;border-radius:6px;padding:7px;font-weight:700}.title:not(:disabled):focus{outline:none;border-color:#93c5fd}.badge{font:700 8px ui-monospace,monospace;text-transform:uppercase;border-radius:999px;padding:5px 8px}.draft{background:#eff6ff;color:#1d4ed8}.readonly{background:#fff7ed;color:#c2410c}.zoom-readout{min-width:52px;text-align:center;color:var(--muted);font:700 10px ui-monospace,monospace}.work{min-height:0;display:grid;grid-template-columns:74px minmax(0,1fr) 286px}.tools{background:#fff;border-right:1px solid var(--line);padding:7px;display:flex;flex-direction:column;gap:5px}.tool{border:1px solid transparent;background:transparent;border-radius:7px;min-height:46px;font-size:9px;color:var(--muted);cursor:pointer}.tool.active{background:#eff6ff;border-color:#bfdbfe;color:var(--blue);font-weight:700}.tool:disabled{opacity:.35}.viewport{position:relative;overflow:hidden;background-color:#f7f7f5;background-image:radial-gradient(#d6d3d1 1px,transparent 1px);background-size:20px 20px;touch-action:none}.canvas{position:absolute;left:0;top:0;width:2100px;height:1100px;transform-origin:0 0;will-change:transform}.edges{position:absolute;inset:0;pointer-events:none}.edge{stroke:#94a3b8;stroke-width:2}.shape{position:absolute;display:flex;align-items:center;justify-content:center;text-align:center;padding:10px;background:#fff;border:1px solid #cbd5e1;border-radius:10px;box-shadow:0 3px 12px #00000010;user-select:none;touch-action:none;overflow:hidden}.shape.selected{outline:3px solid #2563eb33;border-color:var(--blue)}.shape.DIAMOND{clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);border-radius:0;padding:18px}.shape.FRAME{border:2px dashed #94a3b8;background:#ffffff55;align-items:flex-start;justify-content:flex-start;color:#64748b}.shape.TEXT{border-color:transparent;background:transparent;box-shadow:none;justify-content:flex-start}.minimap{position:absolute;right:12px;bottom:12px;width:188px;height:118px;border:1px solid #cbd5e1;border-radius:9px;background:#ffffffef;box-shadow:0 5px 18px #0002;overflow:hidden;z-index:40}.minimap-item{position:absolute;background:#cbd5e1;border:1px solid #94a3b8;min-width:2px;min-height:2px}.minimap-view{position:absolute;border:2px solid var(--blue);background:#2563eb12;pointer-events:none}.inspector{background:#fff;border-left:1px solid var(--line);padding:14px;overflow:auto}.inspector h2{margin:0 0 5px;font:700 20px Georgia,serif}.sub{font-size:11px;color:var(--muted);margin-bottom:14px}.group{border-top:1px solid var(--line);padding:12px 0}.group h3{margin:0 0 8px;font:700 9px ui-monospace,monospace;text-transform:uppercase}.kv{display:grid;grid-template-columns:82px minmax(0,1fr);gap:6px;font-size:11px}.k{font:700 8px ui-monospace,monospace;color:#a8a29e;text-transform:uppercase}.v{overflow-wrap:anywhere;white-space:pre-wrap}.number{width:76px}.journey-stack{display:flex;flex-direction:column;gap:5px;margin:8px 0}.journey-step{border:1px solid var(--line);border-radius:7px;background:#fafaf9;padding:6px 8px;text-align:left;font-size:10px;cursor:pointer}.journey-step.current{border-color:#93c5fd;background:#eff6ff;color:#1d4ed8;font-weight:700}.journey-choice{width:100%;text-align:left}.shape.simulatable{cursor:pointer;box-shadow:0 0 0 2px #7c3aed22,0 3px 12px #00000010}.prototype-overlays{position:absolute;left:12px;top:12px;display:flex;flex-direction:column;gap:6px;z-index:45;pointer-events:none}.prototype-overlay{max-width:280px;border:1px solid #c4b5fd;border-radius:8px;background:#f5f3ffea;color:#5b21b6;padding:8px 10px;box-shadow:0 5px 18px #0002;font-size:11px}.empty{color:var(--muted);line-height:1.6;font-size:12px}
 .canvas{border:1px solid #d6d3d1;box-sizing:border-box;background-clip:padding-box}
 .canvas-boundary-label{position:absolute;left:10px;top:8px;z-index:1;padding:3px 7px;border:1px solid #d6d3d1;border-radius:999px;background:#ffffffd9;color:#78716c;font:700 8px ui-monospace,monospace;letter-spacing:.05em;text-transform:uppercase;pointer-events:none}
-.viewport.pan-ready{cursor:grab}.viewport.pan-ready:active{cursor:grabbing}.shape{padding:0;line-height:1.25}
+.viewport.pan-ready{cursor:grab}.viewport.pan-ready:active{cursor:grabbing}.shape{padding:0;line-height:1.25}.shape.draggable{cursor:grab}.shape.draggable.dragging{cursor:grabbing}
 .shape-label{display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:10px;overflow-wrap:anywhere}
 .shape.DIAMOND{padding:0}.shape.DIAMOND .shape-label{width:62%;height:auto;max-height:62%;padding:2px 4px;line-height:1.2}
 .shape.FRAME{padding:0;overflow:visible}.shape.FRAME .shape-label{position:absolute;left:10px;top:8px;width:auto;height:auto;max-width:calc(100% - 20px);justify-content:flex-start;padding:4px 8px;border:1px solid #94a3b8;border-radius:999px;background:#fff;color:#475569;font:700 9px ui-monospace,monospace;letter-spacing:.03em;text-align:left}
@@ -219,7 +219,7 @@ function tryClickableControl(nodeRef){
 }
 function renderPrototypeOverlays(view){
   if(!prototype||!scenario?.openOverlayRefs.length)return;
-  const layer=el('div','prototype-overlays');
+  const layer=el('div','prototype-overlays');layer.dataset.vexboardPlane=Interaction.INTERACTION_PLANES.OVERLAY;
   for(const overlayRef of scenario.openOverlayRefs){
     const overlay=prototype.overlays.find(candidate=>candidate.overlayRef===overlayRef);
     layer.append(el('div','prototype-overlay',overlay?.label||overlayRef));
@@ -236,15 +236,35 @@ function renderCanvas(canvas){
     const n=node(i.semanticRef);if(!n)continue;
     const canSimulate=n.kind==='CONTROL'&&prototype&&journey?.currentRef===n.nodeRef,role=Presentation.semanticRole(current.graph,n.nodeRef),accent=presentation.nodeAccentByRef[n.nodeRef];
     const parentProjection=i.parentProjectionItemRefOrNull?item(i.parentProjectionItemRefOrNull):null,parentNode=parentProjection?node(parentProjection.semanticRef):null;
-    const classes=[`shape ${i.shapeKind}`,`role-${role}`];if(selected===i.projectionItemRef)classes.push('selected');if(canSimulate)classes.push('simulatable');if(Number.isInteger(accent))classes.push(`branch-${accent}`);if(parentNode)classes.push('contained');
-    const s=el('div',classes.join(' '));Object.assign(s.style,{left:`${i.bounds.x}px`,top:`${i.bounds.y}px`,width:`${i.bounds.width}px`,height:`${i.bounds.height}px`,zIndex:String(i.layer+10)});
+    const classes=[`shape ${i.shapeKind}`,`role-${role}`];if(selected===i.projectionItemRef)classes.push('selected');if(canSimulate)classes.push('simulatable');if(Number.isInteger(accent))classes.push(`branch-${accent}`);if(parentNode)classes.push('contained');if(editable()&&!i.locked)classes.push('draggable');
+    const s=el('div',classes.join(' '));s.dataset.vexboardPlane=Interaction.INTERACTION_PLANES.OBJECT;Object.assign(s.style,{left:`${i.bounds.x}px`,top:`${i.bounds.y}px`,width:`${i.bounds.width}px`,height:`${i.bounds.height}px`,zIndex:String(i.layer+10)});
     s.append(el('span','shape-label',n.label));
     const marker=Presentation.roleMarker(role);if(marker)s.append(el('span','role-marker',marker));
     if(!['PROCESS','DECISION','CONTAINER'].includes(n.kind))s.append(el('span','kind-marker',n.kind));
     if(presentation.hasBranching&&Number.isInteger(accent))s.append(el('span','branch-marker',`Path ${String.fromCharCode(65+accent)}`));
     if(parentNode)s.append(el('span','contained-marker',`in ${parentNode.label}`));
-    s.onclick=async(e)=>{e.stopPropagation();if(tool==='CONNECT'&&editable()){if(!connectFrom){connectFrom=i.projectionItemRef;selected=i.projectionItemRef;renderWorkspace();requestAnimationFrame(()=>applyCamera());return}const from=item(connectFrom);connectFrom=null;if(from&&from.semanticRef!==i.semanticRef)await act('CONNECT_NODES',{relationship:{relationshipRef:ref('rel.vexboard'),kind:'FLOW',fromRef:from.semanticRef,toRef:i.semanticRef,labelOrNull:null,sourceRefs:[]}});tool='SELECT';selected=i.projectionItemRef;renderWorkspace();requestAnimationFrame(()=>applyCamera());return}if(tool==='SELECT'&&tryClickableControl(n.nodeRef))return;selected=i.projectionItemRef;renderWorkspace();requestAnimationFrame(()=>applyCamera())};
-    if(editable()&&tool==='SELECT'&&!i.locked)s.onpointerdown=(e)=>{cameraAnimator.cancel();e.preventDefault();e.stopPropagation();const sx=e.clientX,sy=e.clientY,ox=i.bounds.x,oy=i.bounds.y,zoom=camera.zoom;s.setPointerCapture(e.pointerId);s.onpointermove=m=>{s.style.left=`${ox+(m.clientX-sx)/zoom}px`;s.style.top=`${oy+(m.clientY-sy)/zoom}px`};s.onpointerup=async u=>{s.onpointermove=null;s.onpointerup=null;await act('MOVE_ITEM',{projectionItemRef:i.projectionItemRef,x:ox+(u.clientX-sx)/zoom,y:oy+(u.clientY-sy)/zoom})}};
+    let suppressShapeClick=false;
+    s.onclick=async(e)=>{e.stopPropagation();if(suppressShapeClick){suppressShapeClick=false;return}if(tool==='CONNECT'&&editable()){if(!connectFrom){connectFrom=i.projectionItemRef;selected=i.projectionItemRef;renderWorkspace();requestAnimationFrame(()=>applyCamera());return}const from=item(connectFrom);connectFrom=null;if(from&&from.semanticRef!==i.semanticRef)await act('CONNECT_NODES',{relationship:{relationshipRef:ref('rel.vexboard'),kind:'FLOW',fromRef:from.semanticRef,toRef:i.semanticRef,labelOrNull:null,sourceRefs:[]}});tool='SELECT';selected=i.projectionItemRef;renderWorkspace();requestAnimationFrame(()=>applyCamera());return}if(tool==='SELECT'&&tryClickableControl(n.nodeRef))return;selected=i.projectionItemRef;renderWorkspace();requestAnimationFrame(()=>applyCamera())};
+    if(editable()&&tool==='SELECT'&&!i.locked)s.onpointerdown=(e)=>{
+      if(!Interaction.shouldStartObjectMove({tool,editable:editable(),locked:i.locked,targetPlane:Interaction.INTERACTION_PLANES.OBJECT,button:e.button}))return;
+      cameraAnimator.cancel();e.preventDefault();e.stopPropagation();
+      const start={x:e.clientX,y:e.clientY},origin={x:i.bounds.x,y:i.bounds.y},zoom=camera.zoom;let dragged=false;
+      s.setPointerCapture(e.pointerId);
+      s.onpointermove=m=>{
+        const currentPoint={x:m.clientX,y:m.clientY};
+        if(!dragged&&Interaction.pointerGestureFromMovement(start,currentPoint)!=='DRAG')return;
+        if(!dragged){dragged=true;s.classList.add('dragging')}
+        const next=Interaction.objectPositionFromPointerDrag(origin,start,currentPoint,zoom);s.style.left=`${next.x}px`;s.style.top=`${next.y}px`;
+      };
+      const cleanup=()=>{s.onpointermove=null;s.onpointerup=null;s.onpointercancel=null;s.classList.remove('dragging')};
+      s.onpointercancel=()=>{if(dragged)suppressShapeClick=true;cleanup();s.style.left=`${origin.x}px`;s.style.top=`${origin.y}px`};
+      s.onpointerup=async u=>{
+        const end={x:u.clientX,y:u.clientY};
+        if(!dragged&&Interaction.pointerGestureFromMovement(start,end)!=='DRAG'){cleanup();return}
+        dragged=true;suppressShapeClick=true;const next=Interaction.objectPositionFromPointerDrag(origin,start,end,zoom);cleanup();
+        await act('MOVE_ITEM',{projectionItemRef:i.projectionItemRef,x:next.x,y:next.y});
+      };
+    };
     canvas.append(s);
   }
 }
@@ -330,8 +350,8 @@ function wireViewport(view,canvas){
   view.onwheel=(e)=>{e.preventDefault();const rect=view.getBoundingClientRect();zoomBy(e.deltaY<0?1.12:1/1.12,{anchorX:e.clientX-rect.left,anchorY:e.clientY-rect.top})};
   view.onpointerdown=(e)=>{
     cameraAnimator.cancel();
-    const targetIsShape=Boolean(e.target.closest?.('.shape'));
-    if(!Interaction.shouldStartCanvasPan({tool,targetIsShape,button:e.button}))return;
+    const targetPlane=Interaction.interactionPlaneForTarget(e.target);
+    if(!Interaction.shouldStartCanvasPan({tool,targetPlane,button:e.button}))return;
     e.preventDefault();
     const start={x:e.clientX,y:e.clientY},origin=camera;let dragged=false;
     view.setPointerCapture(e.pointerId);
@@ -343,7 +363,7 @@ function wireViewport(view,canvas){
 }
 
 function paletteFab(){
-  const button=el('button','palette-fab');button.type='button';button.title=`Palette: ${paletteMode.replaceAll('_',' ')} · activate to rotate`;button.setAttribute('aria-label',button.title);
+  const button=el('button','palette-fab');button.type='button';button.dataset.vexboardPlane=Interaction.INTERACTION_PLANES.CHROME;button.title=`Palette: ${paletteMode.replaceAll('_',' ')} · activate to rotate`;button.setAttribute('aria-label',button.title);
   const dots=el('span','palette-dots');dots.append(el('span','palette-dot'),el('span','palette-dot'),el('span','palette-dot'));button.append(dots);
   button.onclick=(event)=>{event.stopPropagation();paletteMode=Presentation.nextPaletteMode(paletteMode);try{localStorage.setItem(Presentation.VEXBOARD_PALETTE_STORAGE_KEY,paletteMode)}catch{}renderWorkspace();requestAnimationFrame(()=>applyCamera())};
   return button;
@@ -363,7 +383,7 @@ function renderWorkspace(){
   app.append(bar);
   const work=el('div','work'),tools=el('aside','tools'),disabled=!editable();tools.append(toolButton('Select','SELECT'),toolButton('Pan','PAN'),toolButton('Box','RECTANGLE',disabled),toolButton('Decision','DIAMOND',disabled),toolButton('Frame','FRAME',disabled),toolButton('Text','TEXT',disabled),toolButton('Connect','CONNECT',disabled));
   const paletteClass=`palette-${paletteMode.toLowerCase().replaceAll('_','-')}`;
-  viewportEl=el('section',`viewport ${paletteClass}${['SELECT','PAN'].includes(tool)?' pan-ready':''}`);canvasEl=el('div','canvas');renderCanvas(canvasEl);viewportEl.append(canvasEl);minimapEl=el('div','minimap');minimapEl.setAttribute('aria-label','Canvas minimap');viewportEl.append(minimapEl,paletteFab());renderPrototypeOverlays(viewportEl);wireViewport(viewportEl,canvasEl);
+  viewportEl=el('section',`viewport ${paletteClass}${['SELECT','PAN'].includes(tool)?' pan-ready':''}`);canvasEl=el('div','canvas');renderCanvas(canvasEl);viewportEl.append(canvasEl);minimapEl=el('div','minimap');minimapEl.dataset.vexboardPlane=Interaction.INTERACTION_PLANES.CHROME;minimapEl.setAttribute('aria-label','Canvas minimap');viewportEl.append(minimapEl,paletteFab());renderPrototypeOverlays(viewportEl);wireViewport(viewportEl,canvasEl);
   const side=el('aside','inspector');inspector(side);work.append(tools,viewportEl,side);app.append(work);applyCamera();
 }
 
