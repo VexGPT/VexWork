@@ -145,8 +145,8 @@ test('Mobile Library Project keeps a human audit/decision front door beside grap
   assert.match(readme, /ML-D1 — Preserve exact media identity/);
   assert.match(readme, /ML-D4 — Contextual Download Missing reuses MassDownload semantics/);
   assert.match(readme, /ML-D6 — MassDownload product source and terminal EndToEnd proof are different Work/);
-  assert.match(readme, /VexLife-Android issue #157/);
-  assert.match(readme, /DEVICE_STORAGE_READY/);
-  assert.match(readme, /Android target orchestration is a reusable dependency/);
+  assert.match(readme, /Android PR #165 = MERGED \/ tree-exact/);
+  assert.match(readme, /DEVICE_STORAGE_COMPLETE/);
+  assert.match(readme, /Android target orchestration remains reusable, but VexStream no longer waits on it/);
   assert.match(readme, /Known VexWork modeling gap/);
 });

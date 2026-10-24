@@ -24,7 +24,8 @@ test('work registry covers lifecycle states exactly once on the default Work Boa
 test('one Workgraph can contain project work and unprojected parked work', () => {
   const project = createProject(projectSource);
   const graph = createWorkgraph(graphSource, registry);
-  assert.equal(graph.items.length, 115);
+  assert.equal(graph.items.length, graphSource.items.length);
+  assert.equal(graph.transitions.length, graphSource.transitions.length);
   assert.equal(projectWorkRefs(project, graph).length, 8);
   const toCompletionProject = createProject(toCompletionProjectSource);
   assert.equal(projectWorkRefs(toCompletionProject, graph).length, 21);
@@ -71,7 +72,6 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(historyBackfill.effectDisposition, 'NO_EFFECTS');
   assert.equal(historyBackfill.formationProcessRefOrNull, 'process.vexwork.capture-discovered-work');
   assert.equal(graph.rootWorkRefs.includes(historyBackfill.workRef), true);
-  assert.equal(graph.transitions.length, 120);
   assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.decomposed.20261022'));
   assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.plan-validated.20261022'));
   assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.ready.20261022'));
@@ -113,6 +113,9 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   const vexboardArchitecture = graph.items.find((item) => item.workRef === 'work.vexboard.project-architecture');
   const vexboardContract = graph.items.find((item) => item.workRef === 'work.vexboard.boardgraph-contract');
   const vexboardCanvas = graph.items.find((item) => item.workRef === 'work.vexboard.canvas-projection');
+  const vexboardJourney = graph.items.find((item) => item.workRef === 'work.vexboard.boardjourney-simulation');
+  const vexboardBoardPatch = graph.items.find((item) => item.workRef === 'work.vexboard.boardpatch-authoring');
+  const vexboardProjectors = graph.items.find((item) => item.workRef === 'work.vexboard.source-projectors');
   assert.equal(vexboardRoot.state, 'DECOMPOSED');
   assert.equal(vexboardArchitecture.state, 'COMPLETED');
   assert.equal(vexboardContract.state, 'COMPLETED');
@@ -121,11 +124,21 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexboard.boardgraph-contract.running.20261023a'));
   assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexboard.boardgraph-contract.verifying.pr66-terminal'));
   assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexboard.boardgraph-contract.completed.pr66-terminal'));
-  assert.equal(vexboardCanvas.state, 'READY');
+  assert.equal(vexboardCanvas.state, 'COMPLETED');
   assert.deepEqual(vexboardCanvas.dependencyRefs, [vexboardContract.workRef]);
-  assert.equal(vexboardCanvas.authorityDisposition, 'NO_AUTHORITY');
-  assert.equal(vexboardCanvas.effectDisposition, 'NO_EFFECTS');
-  assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexboard.canvas-projection.ready.boardgraph-pr66'));
+  assert.equal(vexboardCanvas.authorityDisposition, 'AUTHORIZED_BOUNDED');
+  assert.equal(vexboardCanvas.effectDisposition, 'EFFECTS_BOUND');
+  assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexboard.canvas-projection.completed.pr88-terminal'));
+  assert.equal(vexboardJourney.state, 'COMPLETED');
+  assert.equal(vexboardJourney.authorityDisposition, 'AUTHORIZED_BOUNDED');
+  assert.equal(vexboardJourney.effectDisposition, 'EFFECTS_BOUND');
+  assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexboard.boardjourney-simulation.completed.pr95-terminal'));
+  assert.equal(vexboardBoardPatch.state, 'READY');
+  assert.equal(vexboardBoardPatch.authorityDisposition, 'NO_AUTHORITY');
+  assert.equal(vexboardBoardPatch.effectDisposition, 'NO_EFFECTS');
+  assert.equal(vexboardProjectors.state, 'READY');
+  assert.equal(vexboardProjectors.authorityDisposition, 'NO_AUTHORITY');
+  assert.equal(vexboardProjectors.effectDisposition, 'NO_EFFECTS');
   assert.equal(vexboardContract.sourceRefs.includes('src/shared/vexboard-model.mjs'), true);
   assert.equal(vexboardContract.sourceRefs.includes('vexboard/index.html'), true);
   assert.equal(vexboardContract.sourceRefs.includes('vexboard/self-map.json'), true);
@@ -155,8 +168,10 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(mobile.state, 'DECOMPOSED');
   assert.equal(mobile.authorityDisposition, 'AUTHORIZED_BOUNDED');
   const storage = graph.items.find((item) => item.workRef === 'work.vexstream.mobile-library.device-storage');
-  assert.equal(storage.state, 'WAITING_TOOL');
-  assert.equal(storage.dependencyRefs.includes('work.android-proof-orchestration.api-target-runner'), true);
+  assert.equal(storage.state, 'COMPLETED');
+  assert.deepEqual(storage.dependencyRefs, []);
+  assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.verifying.a033-a039-terminal'));
+  assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexstream.mobile-library.device-storage.completed.pr165-terminal'));
   const runner = graph.items.find((item) => item.workRef === 'work.android-proof-orchestration.api-target-runner');
   assert.equal(runner.state, 'READY');
   assert.equal(runner.priorityClass, 'HIGH');
