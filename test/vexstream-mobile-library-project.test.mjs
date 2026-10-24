@@ -195,10 +195,10 @@ test('Mobile Library agency policy requires human handshake only at meaningful p
 test('Mobile Library Project keeps a human audit/decision front door beside graph truth', () => {
   const readme = fs.readFileSync(new URL('../projects/vexstream-mobile-library/README.md', import.meta.url), 'utf8');
   assert.match(readme, /ML-D1 — Preserve exact media identity/);
-  assert.match(readme, /ML-D4 — Contextual Download Missing reuses MassDownload semantics/);
+  assert.match(readme, /ML-D4 — Songs settings actions reuse MassDownload \/ Offline Copy truth/);
   assert.match(readme, /ML-D6 — MassDownload product source and terminal EndToEnd proof are different Work/);
-  assert.match(readme, /VexLife-Android issue #157/);
-  assert.match(readme, /DEVICE_STORAGE_READY/);
+  assert.match(readme, /Issue #157/);
+  assert.match(readme, /DEVICE_STORAGE_COMPLETE/);
   assert.match(readme, /Android target orchestration remains reusable, but VexStream no longer waits on it/);
   assert.match(readme, /ML-D9 — Sort by and Filter by are one presentation surface, not one measurement/);
   assert.match(readme, /ML-D10 — VexStream source tags\/categories remain a later mobile-projection seam/);
@@ -207,6 +207,6 @@ test('Mobile Library Project keeps a human audit/decision front door beside grap
   assert.match(readme, /ML-D13 — Songs bulk management is merged\/proven and waiting on lived review/);
   assert.match(readme, /github\.pull\.vexlife-android\.166/);
   assert.match(readme, /PR #167/);
-  assert.match(readme, /VEXSTREAM_DURABLE_DEVICE_COMPLETE/);
+  assert.match(readme, /CLEAR_DATA_LIVED_PROOF_COMPLETE/);
   assert.match(readme, /Known VexWork modeling gap/);
 });
