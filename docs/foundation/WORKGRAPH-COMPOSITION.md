@@ -151,19 +151,7 @@ public workspace / dashboard / other readers
 
 `workgraphs/public.json` remains the one canonical portable Workgraph value consumed by existing readers. What changed is **where authors write**, not the semantic owner or runtime contract.
 
-Nine current source segments divide the live Work families:
-
-```text
-segment.vexwork.foundation
-segment.vexwork.history
-segment.vexlife.android.vexstream
-segment.vexstream.mobile.library
-segment.vexlife.tocompletion
-segment.vexlife.connected.services
-segment.vexwork.operational.console
-segment.vexboard
-segment.vexlife.blueprint.source.of.truth
-```
+Current source-segment membership is discovered from `workgraphs/segments/*.json` and validated against the composition source. The directory plus `workgraphs/composition.json` are canonical for current membership; prose must not freeze a segment count or become a second registry.
 
 Containment is local to one segment. Dependencies may cross segments. The first accepted cross-segment dependency is the parked historical backfill depending on the completed Foundation public dashboard.
 

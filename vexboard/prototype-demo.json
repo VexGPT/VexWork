@@ -1,0 +1,136 @@
+{
+  "schemaVersion": "vexboard.local-draft/v1",
+  "draftRef": "board.vexboard.prototype-demo",
+  "title": "VexBoard \u2014 clickable prototype simulation",
+  "mode": "READ_ONLY_SOURCE",
+  "derivedFromRefOrNull": null,
+  "savedAtOrNull": null,
+  "graph": {
+    "schemaVersion": "vexboard.board-graph/v1",
+    "graphRef": "graph.vexboard.prototype-demo",
+    "nodes": [
+      {
+        "nodeRef": "node.prototype.enable",
+        "kind": "CONTROL",
+        "label": "Enable submission",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "vexboard/prototype-demo.prototype.json"
+        ]
+      },
+      {
+        "nodeRef": "node.prototype.submit",
+        "kind": "CONTROL",
+        "label": "Submit",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "vexboard/prototype-demo.prototype.json"
+        ]
+      },
+      {
+        "nodeRef": "node.prototype.done",
+        "kind": "SCENE",
+        "label": "Done",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "vexboard/prototype-demo.prototype.json"
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "relationshipRef": "rel.prototype.enable-submit",
+        "kind": "FLOW",
+        "fromRef": "node.prototype.enable",
+        "toRef": "node.prototype.submit",
+        "labelOrNull": "next control",
+        "sourceRefs": [
+          "vexboard/prototype-demo.prototype.json"
+        ]
+      },
+      {
+        "relationshipRef": "rel.prototype.submit-done",
+        "kind": "TRANSITION",
+        "fromRef": "node.prototype.submit",
+        "toRef": "node.prototype.done",
+        "labelOrNull": "submit",
+        "sourceRefs": [
+          "vexboard/prototype-demo.prototype.json"
+        ]
+      },
+      {
+        "relationshipRef": "rel.prototype.done-enable",
+        "kind": "FLOW",
+        "fromRef": "node.prototype.done",
+        "toRef": "node.prototype.enable",
+        "labelOrNull": "try again",
+        "sourceRefs": [
+          "vexboard/prototype-demo.prototype.json"
+        ]
+      }
+    ],
+    "sourceRefs": [
+      "vexboard/prototype-demo.prototype.json",
+      "vexboard/index.html"
+    ]
+  },
+  "projection": {
+    "schemaVersion": "vexboard.board-projection/v1",
+    "projectionRef": "projection.vexboard.prototype-demo",
+    "graphRef": "graph.vexboard.prototype-demo",
+    "layoutIntent": "SCREEN_FLOW",
+    "items": [
+      {
+        "projectionItemRef": "item.prototype.enable",
+        "semanticRef": "node.prototype.enable",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 180,
+          "y": 220,
+          "width": 220,
+          "height": 86
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.prototype.submit",
+        "semanticRef": "node.prototype.submit",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 650,
+          "y": 220,
+          "width": 200,
+          "height": 86
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.prototype.done",
+        "semanticRef": "node.prototype.done",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1120,
+          "y": 220,
+          "width": 220,
+          "height": 86
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      }
+    ],
+    "sourceRefs": [
+      "vexboard/index.html"
+    ]
+  }
+}
