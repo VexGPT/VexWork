@@ -4,9 +4,10 @@
 
 ## Human outcome
 
-Make downloaded VexStream music a **durable, reusable Android device library** while keeping the
-already-accepted one-shot MassDownload behavior truthful and keeping continuous "Keep Offline" sync
-as a separately governed future policy.
+Make VexStream on Android a **durable, reusable and human-navigable mobile music library** while
+keeping the accepted durable-device and one-shot MassDownload truths intact. Give the listener a
+compact **Sort by / Filter by** organization surface for the music they are about to play, while
+continuous "Keep Offline" sync remains a separately governed future policy.
 
 This Project is the human/navigation owner for that outcome. Product semantics remain with
 VexLife-Android and VexStream Music.
@@ -43,6 +44,9 @@ VexStream Mobile Library                         OUTCOME
 +-- Contextual Download Experience               OUTCOME
 |   +-- Contextual Download Missing              TASK
 |
++-- Library Browse & Discovery                   OUTCOME
+|   +-- Sort / Filter library controls           TASK / waiting on exact Android proof
+|
 +-- MassDownload Maturity                        OUTCOME
     +-- MassDownload product implementation      TASK / completed
     +-- MassDownload terminal EndToEnd           TASK / completed
@@ -58,10 +62,18 @@ Persistent Keep Offline / Sync
     PARKED
     NO_AUTHORITY
     NO_EFFECTS
+
+User tag topology / dynamic stations
+    POTENTIAL
+    CAPTURED
+    PARKED
+    NO_AUTHORITY
+    NO_EFFECTS
 ```
 
-It remains visible through the Parking Lot until Victor deliberately adopts continuous sync as a
-separate product commitment.
+Both remain visible through the Parking Lot until deliberately adopted. Personal tag/station topology
+is separate because its durable classification and rule ownership are different product questions;
+it is not hidden inside the first Sort / Filter implementation.
 
 ## Source truth — original motivation and completed durable-device state
 
@@ -342,6 +354,126 @@ HISTORICAL_TOOL_DEPENDENCY
 
 Do not move the VexStream storage work back to `WAITING_TOOL` merely because the reusable
 orchestration Project still has its own unfinished work.
+
+### ML-D9 — Sort by and Filter by are one presentation surface, not one measurement
+
+The immediate human need is one compact place to organize the music about to be played:
+
+```text
+SORT BY
+    changes order
+    does not change membership
+
+FILTER BY
+    changes current listening membership
+    does not mutate catalog / playlist / Queue / Playback truth
+
+SEARCH
+    evaluates inside that same organized set
+```
+
+Current Android candidate PR #166 is ordinary-forwarded onto the terminal durable-device main from
+PR #165. The durable-device lane changed zero paths in this feature's 16-file source membrane and
+deliberately left the VexStream feature-home README to this organization lane.
+
+Current first-slice controls:
+
+```text
+Sort
+    Title / Artist / Album / Year / Duration
+
+Filter
+    Duration: Any / Less than / Greater than + positive minute threshold
+    Artist: multi-select
+    Genre: multi-select
+    Availability: desktop-only / desktop+device / device-only
+```
+
+The duration pressure remains the proving human use case:
+
+```text
+< 10 / 30 min  -> ordinary-song variety / avoid long mixes
+> 30 min / 2 h -> long-form journey / flight / focus listening
+```
+
+Unknown duration does not match an active threshold. Visible rows, row playback context, Play All
+and Shuffle All consume the same filtered membership. Playlist filtering may narrow visible members
+but does not rewrite canonical playlist order.
+
+The completed durable-device substrate improves the meaning of Availability without changing this
+feature's ownership: rediscovered `Downloaded` truth and verified `content://` local media can now
+legitimately project as `HUB_AND_LOCAL` or `LOCAL_ONLY`, while Sort / Filter remains a read-only
+presentation lens over `VexStreamTrackState.availability`.
+
+### ML-D10 — VexStream source tags/categories remain a later mobile-projection seam
+
+VexStream Music already owns source `tags[]` and `categories[]`. The Android mobile catalog still
+does not carry them, and PR #166 does not widen into that cross-repository projection merely to ship
+the first useful organization surface.
+
+```text
+SOURCE_TAGS / SOURCE_CATEGORIES
+!= ANDROID_LOCAL_INVENTED_TAGS
+!= USER_AUTHORED_CLASSIFICATION
+```
+
+### ML-D11 — User-authored tags and dynamic stations remain separate future Work
+
+A future personal classification layer may drive reusable dynamic stations / smart playlists, but
+that is distinct from both imported provider tags and a temporary Filter:
+
+```text
+STATIC_PLAYLIST
+    explicit ordered track references
+
+FILTER
+    temporary current-view selection
+
+STATION / SMART PLAYLIST
+    durable reusable selection rule
+    resolves membership from current Library truth
+```
+
+`work.vexstream.mobile-library.tag-topology-stations` remains `POTENTIAL / CAPTURED / PARKED /
+NO_AUTHORITY / NO_EFFECTS`.
+
+### ML-D12 — Sort / Filter source is currentized; exact Android proof is the held edge
+
+Current product/source coordinates:
+
+```text
+github.issue.vexlife-android.163
+    bounded feature/source claim
+
+github.pull.vexlife-android.166
+    post-durable-device draft candidate
+    exact current Android source
+```
+
+Lifecycle remains:
+
+```text
+CAPTURED -> DECOMPOSED -> PLAN_VALIDATED -> READY -> RUNNING -> WAITING_TOOL
+```
+
+The WAITING_TOOL checkpoint belongs only to this feature's own exact-head proof. It does not inherit
+the now-completed durable-device blocker and must not move that completed subtree backward.
+
+```text
+VEXSTREAM_DURABLE_DEVICE_COMPLETE
+!= SORT_FILTER_VERIFIED
+
+WAITING_TOOL != PRODUCT_FAILURE
+DRAFT_PR != ACCEPTED
+SOURCE_AUTHORED != vexVerifyLocal_PASS
+FEATURE_WALK_AUTHORED != DEVICE_JOURNEY_PASS
+```
+
+Pre-currentization supporting evidence compiled the exact projection source against minimal Kotlin
+domain stubs and exercised short/long/unknown-duration, composition, ordering and Clear behavior
+after correcting the availability-owner reference. The currentized PR #166 still requires its own
+repository-owned exact-head execution before Verify/Done may be claimed.
+
 
 ## Work-state and agency safety
 
