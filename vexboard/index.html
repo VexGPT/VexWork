@@ -14,6 +14,7 @@
 <main id="app" class="app"></main>
 <script type="module">
 import * as Board from '../vexboard-reader.js';
+import { createCameraAnimator } from './ui/camera-animation.mjs';
 
 const app=document.getElementById('app');
 let current=null,selected=null,tool='SELECT',connectFrom=null;
@@ -24,6 +25,16 @@ let prototype=null,scenario=null,interactionTrail=[];
 let boardStack=[];
 let activeBoardRef=null;
 let viewportEl=null,canvasEl=null,minimapEl=null,zoomReadoutEl=null;
+const reducedMotion=globalThis.matchMedia?.('(prefers-reduced-motion: reduce)')||null;
+const cameraAnimator=createCameraAnimator({
+  normalizeCamera:Board.normalizeCamera,
+  readCamera:()=>camera,
+  writeCamera:(next)=>{camera=next;applyCamera()},
+  requestFrame:(callback)=>requestAnimationFrame(callback),
+  cancelFrame:(frameId)=>cancelAnimationFrame(frameId),
+  now:()=>performance.now(),
+  prefersReducedMotion:()=>Boolean(reducedMotion?.matches),
+});
 
 const el=(tag,cls='',text='')=>{const n=document.createElement(tag);if(cls)n.className=cls;if(text!=='')n.textContent=String(text);return n};
 const ref=(prefix)=>`${prefix}.${crypto.randomUUID().replaceAll('-','')}`;
@@ -57,6 +68,7 @@ async function openBuiltInBoard(boardRef,{pushCurrent=false}={}){
 
 function snapshotCurrent(){return current?{current,selected,tool,camera,collapsed:[...collapsed],journey,prototype,scenario,interactionTrail:interactionTrail.map(entry=>({...entry})),activeBoardRef}:null}
 async function openBoard(input,{pushCurrent=false,boardRef=null,prototypeInput=null}={}){
+  cameraAnimator.cancel();
   if(pushCurrent&&current)boardStack.push(snapshotCurrent());
   const d=Board.normalizeDraft(input),s=await Board.hydrateBoardState(d.graph,d.projection);
   current={...d,graph:s.graph,projection:s.projection};selected=null;tool='SELECT';connectFrom=null;
@@ -65,7 +77,7 @@ async function openBoard(input,{pushCurrent=false,boardRef=null,prototypeInput=n
   interactionTrail=[];collapsed=new Set();journey=null;camera=Board.normalizeCamera({x:48,y:48,zoom:1});activeBoardRef=boardRef||d.draftRef;
   renderWorkspace();requestAnimationFrame(()=>fitBoard());
 }
-function returnBoard(){const prior=boardStack.pop();if(!prior)return;({current,selected,tool,camera,journey,prototype,scenario,interactionTrail,activeBoardRef}=prior);collapsed=new Set(prior.collapsed);connectFrom=null;renderWorkspace();requestAnimationFrame(()=>applyCamera())}
+function returnBoard(){cameraAnimator.cancel();const prior=boardStack.pop();if(!prior)return;({current,selected,tool,camera,journey,prototype,scenario,interactionTrail,activeBoardRef}=prior);collapsed=new Set(prior.collapsed);connectFrom=null;renderWorkspace();requestAnimationFrame(()=>applyCamera())}
 async function enterPortal(detailBoardRef){
   const local=drafts().find(d=>d.draftRef===detailBoardRef);
   if(local){await openBoard(local,{pushCurrent:true,boardRef:detailBoardRef});return}
@@ -75,6 +87,7 @@ async function enterPortal(detailBoardRef){
 }
 
 function landing(){
+  cameraAnimator.cancel();
   current=null;selected=null;journey=null;prototype=null;scenario=null;interactionTrail=[];boardStack=[];activeBoardRef=null;app.className='app';app.replaceChildren();
   const box=el('section','landing');
   box.append(el('div','eyebrow','VexBoard canvas projection'),el('h1','','Design the map before implementation has to guess it.'),el('p','lede','Create a local semantic-board draft or inspect an existing source board through a zoomable, pannable, recursive canvas. Camera, focus and collapse are read-only view state; requesting edit still forks a browser-local draft copy rather than mutating source truth.'));
@@ -106,10 +119,10 @@ function applyCamera(){
   if(zoomReadoutEl)zoomReadoutEl.textContent=`${Math.round(camera.zoom*100)}%`;
   renderMinimap();
 }
-function fitBoard(){if(!current||!viewportEl)return;camera=Board.cameraForBounds(Board.projectionBounds(visibleItems()),viewportSize(),{padding:72,maxZoom:1.35});applyCamera()}
-function resetView(){camera=Board.normalizeCamera({x:48,y:48,zoom:1});applyCamera()}
-function focusSelected(){const target=selected?item(selected):null;if(!target||!viewportEl)return;camera=Board.cameraForBounds(target.bounds,viewportSize(),{padding:120,maxZoom:1.7});applyCamera()}
-function zoomBy(factor,anchor=null){if(!viewportEl)return;const size=viewportSize(),point=anchor||{anchorX:size.width/2,anchorY:size.height/2};camera=Board.zoomCameraAt(camera,{factor,...point});applyCamera()}
+function fitBoard(){if(!current||!viewportEl)return;cameraAnimator.jumpTo(Board.cameraForBounds(Board.projectionBounds(visibleItems()),viewportSize(),{padding:72,maxZoom:1.35}))}
+function resetView(){cameraAnimator.jumpTo(Board.normalizeCamera({x:48,y:48,zoom:1}))}
+function focusSelected({animate=false}={}){const target=selected?item(selected):null;if(!target||!viewportEl)return;const targetCamera=()=>Board.cameraForBounds(target.bounds,viewportSize(),{padding:120,maxZoom:1.7});animate?cameraAnimator.scheduleTo(targetCamera):cameraAnimator.jumpTo(targetCamera())}
+function zoomBy(factor,anchor=null){if(!viewportEl)return;const size=viewportSize(),point=anchor||{anchorX:size.width/2,anchorY:size.height/2};cameraAnimator.jumpTo(Board.zoomCameraAt(camera,{factor,...point}))}
 
 function renderEdges(svg,visibleSemanticRefs){
   for(const r of current.graph.relationships){
@@ -140,7 +153,7 @@ function applySimulationInteraction(interactionRef){
   journey=result.journey;scenario=result.scenario;
   const focusRef=result.focusRefOrNull||journey.currentRef,target=itemFor(focusRef);
   if(target)selected=target.projectionItemRef;
-  renderWorkspace();requestAnimationFrame(()=>focusSelected());
+  renderWorkspace();focusSelected({animate:true});
 }
 function interactionTrailText(){
   if(!interactionTrail.length)return'No interactions yet.';
@@ -173,7 +186,7 @@ function renderCanvas(canvas){
     const canSimulate=n.kind==='CONTROL'&&prototype&&journey?.currentRef===n.nodeRef;
     const s=el('div',`shape ${i.shapeKind}${selected===i.projectionItemRef?' selected':''}${canSimulate?' simulatable':''}`,n.label);Object.assign(s.style,{left:`${i.bounds.x}px`,top:`${i.bounds.y}px`,width:`${i.bounds.width}px`,height:`${i.bounds.height}px`,zIndex:String(i.layer+10)});
     s.onclick=async(e)=>{e.stopPropagation();if(tool==='CONNECT'&&editable()){if(!connectFrom){connectFrom=i.projectionItemRef;selected=i.projectionItemRef;renderWorkspace();requestAnimationFrame(()=>applyCamera());return}const from=item(connectFrom);connectFrom=null;if(from&&from.semanticRef!==i.semanticRef)await act('CONNECT_NODES',{relationship:{relationshipRef:ref('rel.vexboard'),kind:'FLOW',fromRef:from.semanticRef,toRef:i.semanticRef,labelOrNull:null,sourceRefs:[]}});tool='SELECT';selected=i.projectionItemRef;renderWorkspace();requestAnimationFrame(()=>applyCamera());return}if(tool==='SELECT'&&tryClickableControl(n.nodeRef))return;selected=i.projectionItemRef;renderWorkspace();requestAnimationFrame(()=>applyCamera())};
-    if(editable()&&tool==='SELECT'&&!i.locked)s.onpointerdown=(e)=>{e.preventDefault();e.stopPropagation();const sx=e.clientX,sy=e.clientY,ox=i.bounds.x,oy=i.bounds.y,zoom=camera.zoom;s.setPointerCapture(e.pointerId);s.onpointermove=m=>{s.style.left=`${ox+(m.clientX-sx)/zoom}px`;s.style.top=`${oy+(m.clientY-sy)/zoom}px`};s.onpointerup=async u=>{s.onpointermove=null;s.onpointerup=null;await act('MOVE_ITEM',{projectionItemRef:i.projectionItemRef,x:ox+(u.clientX-sx)/zoom,y:oy+(u.clientY-sy)/zoom})}};
+    if(editable()&&tool==='SELECT'&&!i.locked)s.onpointerdown=(e)=>{cameraAnimator.cancel();e.preventDefault();e.stopPropagation();const sx=e.clientX,sy=e.clientY,ox=i.bounds.x,oy=i.bounds.y,zoom=camera.zoom;s.setPointerCapture(e.pointerId);s.onpointermove=m=>{s.style.left=`${ox+(m.clientX-sx)/zoom}px`;s.style.top=`${oy+(m.clientY-sy)/zoom}px`};s.onpointerup=async u=>{s.onpointermove=null;s.onpointerup=null;await act('MOVE_ITEM',{projectionItemRef:i.projectionItemRef,x:ox+(u.clientX-sx)/zoom,y:oy+(u.clientY-sy)/zoom})}};
     canvas.append(s);
   }
 }
@@ -190,7 +203,7 @@ function renderMinimap(){
 }
 
 function journeyBoardRef(){return activeBoardRef||current?.draftRef||null}
-function applyJourney(next){journey=next;const target=itemFor(journey.currentRef);if(target)selected=target.projectionItemRef;renderWorkspace();requestAnimationFrame(()=>focusSelected())}
+function applyJourney(next){journey=next;const target=itemFor(journey.currentRef);if(target)selected=target.projectionItemRef;renderWorkspace();focusSelected({animate:true})}
 function startJourneyAt(semanticRef){interactionTrail=[];applyJourney(Board.createBoardJourney(current.graph,{journeyRef:ref('journey.vexboard'),boardRef:journeyBoardRef(),startRef:semanticRef}))}
 function followJourney(relationshipRef){applyJourney(Board.advanceBoardJourney(current.graph,journey,relationshipRef))}
 function backJourney(){applyJourney(Board.backBoardJourney(current.graph,journey))}
@@ -201,7 +214,7 @@ function inspector(side){
   if(!i||!n){side.append(el('h2','','Context Inspector'),el('p','empty','Select a semantic object to inspect its stable identity, projection geometry, source refs, relationship neighborhood, and bounded model-facing query.'));return}
   side.append(el('h2','',n.label),el('div','sub',`${n.kind} · ${i.shapeKind}`));
   const g=el('div','group');g.append(el('h3','','Identity + design'));const kv=el('div','kv');[['nodeRef',n.nodeRef],['projection',i.projectionItemRef],['position',`${Math.round(i.bounds.x)}, ${Math.round(i.bounds.y)}`],['layer',i.layer],['board',activeBoardRef||current.draftRef]].forEach(([k,v])=>kv.append(el('div','k',k),el('div','v',v)));g.append(kv);
-  const nav=el('div','row');const focus=el('button','btn','Focus selected');focus.onclick=focusSelected;nav.append(focus);
+  const nav=el('div','row');const focus=el('button','btn','Focus selected');focus.onclick=()=>focusSelected({animate:true});nav.append(focus);
   const children=current.graph.nodes.filter(candidate=>candidate.parentRefOrNull===n.nodeRef);
   if(children.length){const toggle=el('button','btn',collapsed.has(n.nodeRef)?'Expand children':'Collapse children');toggle.onclick=()=>{collapsed.has(n.nodeRef)?collapsed.delete(n.nodeRef):collapsed.add(n.nodeRef);renderWorkspace();requestAnimationFrame(()=>applyCamera())};nav.append(toggle)}
   if(n.detailBoardRefOrNull){const enter=el('button','btn violet','Enter portal');enter.disabled=!Board.builtinBoardUrl(n.detailBoardRefOrNull)&&!drafts().some(d=>d.draftRef===n.detailBoardRefOrNull);enter.onclick=()=>enterPortal(n.detailBoardRefOrNull);nav.append(enter)}
@@ -247,7 +260,7 @@ function inspector(side){
 function toolButton(label,name,disabled=false){const b=el('button',`tool${tool===name?' active':''}`,label);b.disabled=disabled;b.onclick=()=>{tool=name;connectFrom=null;renderWorkspace();requestAnimationFrame(()=>applyCamera())};return b}
 function wireViewport(view,canvas){
   view.onwheel=(e)=>{e.preventDefault();const rect=view.getBoundingClientRect();zoomBy(e.deltaY<0?1.12:1/1.12,{anchorX:e.clientX-rect.left,anchorY:e.clientY-rect.top})};
-  view.onpointerdown=(e)=>{if(tool!=='PAN')return;e.preventDefault();const startX=e.clientX,startY=e.clientY,origin=camera;view.setPointerCapture(e.pointerId);view.onpointermove=m=>{camera=Board.normalizeCamera({x:origin.x+m.clientX-startX,y:origin.y+m.clientY-startY,zoom:origin.zoom});applyCamera()};view.onpointerup=()=>{view.onpointermove=null;view.onpointerup=null}};
+  view.onpointerdown=(e)=>{cameraAnimator.cancel();if(tool!=='PAN')return;e.preventDefault();const startX=e.clientX,startY=e.clientY,origin=camera;view.setPointerCapture(e.pointerId);view.onpointermove=m=>{camera=Board.normalizeCamera({x:origin.x+m.clientX-startX,y:origin.y+m.clientY-startY,zoom:origin.zoom});applyCamera()};view.onpointerup=()=>{view.onpointermove=null;view.onpointerup=null}};
   canvas.onclick=async e=>{if(editable()&&['RECTANGLE','DIAMOND','FRAME','TEXT'].includes(tool)){const point=Board.boardPointFromClient({clientX:e.clientX,clientY:e.clientY},view.getBoundingClientRect(),camera);await addShape(tool,point.x,point.y)}else if(tool!=='PAN'){selected=null;renderWorkspace();requestAnimationFrame(()=>applyCamera())}};
 }
 
