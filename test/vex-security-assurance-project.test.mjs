@@ -73,7 +73,7 @@ test('AI / agentic security includes a bounded attacker perspective without gran
 test('Security Spikes begin as TASK process semantics with no implied authority or effects', () => {
   const spike = graph.items.find((item) => item.workRef === 'work.vex.security-assurance.spike-process');
   assert.equal(spike.workClass, 'TASK');
-  assert.equal(spike.state, 'WAITING_RESOURCE');
+  assert.equal(spike.state, 'READY');
   assert.equal(spike.authorityDisposition, 'NO_AUTHORITY');
   assert.equal(spike.effectDisposition, 'NO_EFFECTS');
   assert.equal(spike.sourceRefs.includes('github.pull.vexwork.103'), true);
