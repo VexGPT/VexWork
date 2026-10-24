@@ -57,6 +57,14 @@ test('VexWork references VexRelay owner and missing merge-result composition wit
   assert.equal(source.includes('VEXWORK_INTEGRATION_POLICY != VEXRELAY_IMPLEMENTATION'), true);
 });
 
+test('fresh lanes can discover the merge-ready rule from front-door and Quality Review source', () => {
+  const agents = read('AGENTS.md');
+  const quality = read('docs/process/QUALITY-REVIEW.md');
+  assert.match(agents, /prove exact branch\/head\/tree[\s\S]*READY_FOR_INTEGRATION[\s\S]*stop chasing moving main/);
+  assert.match(quality, /MAIN_MOVED[\s\S]*CANDIDATE_UNCHANGED[\s\S]*preserve exact-candidate review\/proof/);
+  assert.match(quality, /Integration Steward rebinds current main/);
+});
+
 test('reusable integration process is source-placed but does not claim Process Registry ownership during PR 103', () => {
   const foundation = read('docs/foundation/REPOSITORY-INTEGRATION.md');
   const process = read('docs/process/INTEGRATE-READY-PULL-REQUESTS.md');
