@@ -297,6 +297,7 @@ function atlasIndex(atlas) {
   assert(atlas.projectionReceipt?.schemaVersion === PROCESS_ATLAS_RECEIPT_SCHEMA,
     'Process Atlas public-safe projectionReceipt required');
   assert(atlas.projectionReceipt.atlasRef === atlas.atlasRef, 'Process Atlas projectionReceipt atlasRef mismatch');
+  // VexBoard consumes the source owner's public-safe receipt; it does not recompute or own Atlas privacy policy.
   assert(HEX64.test(atlas.projectionReceipt.contentSha256 ?? ''),
     'Process Atlas projectionReceipt contentSha256 must be sha256');
 
@@ -312,6 +313,9 @@ function atlasIndex(atlas) {
     entry,
   ]));
   assert(freshness.size === atlas.freshnessAndInvalidation.length, 'Process Atlas freshnessRef must be unique');
+  for (const entry of atlas.freshnessAndInvalidation) {
+    text(entry.state, `Process Atlas freshness ${entry.freshnessRef}.state`);
+  }
 
   for (const node of atlas.nodes) {
     text(node.title, `Process Atlas node ${node.nodeRef}.title`);
