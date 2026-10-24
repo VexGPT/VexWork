@@ -885,6 +885,29 @@ The Antique Plate path remains a useful physical-goods patient zero.
 A synthetic fixture is acceptable for template proving when explicitly marked synthetic.
 Restaurant, digital-good and travel-agency/OTA profiles are deliberately different follow-up pressure tests.
 
+# Companion VexBusinessFactory pressure sources
+
+This root map remains the entry point. Descend to these bounded companion sources when the relevant pressure is material:
+
+~~~text
+VEXBUSINESSFACTORY-LEARNING-AND-CAPABILITY-MODULES.md
+  education business + process teaching + selectable vendors/providers
+
+VEXBUSINESSFACTORY-MEDIA-EXPRESSION-AND-CREATOR-PROFILE.md
+  expression/publication/creative-universe profile without mandatory commerce
+
+VEXBUSINESSFACTORY-MOTORSPORT-AND-INDUSTRY-ECOSYSTEM-PROFILE.md
+  multi-party industry ecosystems, sponsorship, suppliers, governance, community
+
+VEXBUSINESSFACTORY-FORMATION-EXPANSION-AND-AVAILABILITY-NETWORK.md
+  current state -> desired state, staged expansion, vendor/time/location/equipment availability
+
+VEXBUSINESSFACTORY-USER-DIRECTED-DISCOVERY-AND-PROMOTION.md
+  user-invited discovery, novelty/freshness, transparent promotion, sponsored separation
+~~~
+
+Related VexBoard semantic-topology/perspective/discovery patient-zero work is preserved separately in VexBoard draft PR #92 so BusinessFactory meaning does not become VexBoard-owned by implication.
+
 # Held work
 
 Do not yet:
