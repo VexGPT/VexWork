@@ -941,6 +941,45 @@
           "transitionHistory": []
         },
         {
+          "workRef": "work.vexstream.mobile-library.large-offline-startup-performance",
+          "label": "Large offline library cold-start performance",
+          "purpose": "Measure and resolve the noticeably slow Android cold launch observed with 785 downloaded VexStream songs, identifying which startup phase/thread owns the delay while preserving exact local-media integrity and durable-device recovery semantics.",
+          "workClass": "DEFECT",
+          "state": "DECOMPOSED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexstream.mobile-library.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexstream.mobile-library.durable-device-library"
+          ],
+          "repositoryRefs": [
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "work.vexstream.mobile-library.outcome",
+            "github.issue.vexlife-android.168",
+            "projects/vexstream-mobile-library/README.md",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/AppRepositories.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/PairedVexStreamMusicRepository.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamOfflineIndex.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamDeviceMediaStore.kt",
+            "repo.vexlife-android:architecture/logging/README.md",
+            "repo.vexlife-android:docs/foundation/ANDROID-HOST-PROOF.md",
+            "repo.vexlife-android:docs/foundation/test-proof/README.md"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+          "nextProcessRefs": [
+            "process.vexlife-android.feature-authoring"
+          ],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-24T07:16:00.000Z",
+          "updatedAt": "2026-10-24T07:16:00.000Z",
+          "transitionHistory": []
+        },
+        {
           "workRef": "work.vexstream.mobile-library.library-browse-discovery",
           "label": "Library Browse & Discovery",
           "purpose": "Give listeners one coherent way to order and narrow current VexStream library truth into useful listening sets while catalog, collection, playback, and classification truth keep their rightful owners.",
@@ -1085,6 +1124,7 @@
           "childWorkRefs": [
             "work.vexstream.mobile-library.download-experience",
             "work.vexstream.mobile-library.durable-device-library",
+            "work.vexstream.mobile-library.large-offline-startup-performance",
             "work.vexstream.mobile-library.library-browse-discovery",
             "work.vexstream.mobile-library.massdownload-maturity"
           ],
@@ -1368,6 +1408,7 @@
           "laneRef": "lane.work.intake",
           "label": "Intake",
           "workRefs": [
+            "work.vexstream.mobile-library.large-offline-startup-performance",
             "work.vexstream.mobile-library.massdownload-maturity",
             "work.vexstream.mobile-library.outcome",
             "work.vexstream.mobile-library.download-experience",
@@ -1434,11 +1475,11 @@
         }
       ],
       "summary": {
-        "workItemCount": 14,
-        "openWorkItemCount": 7,
+        "workItemCount": 15,
+        "openWorkItemCount": 8,
         "outcomeCount": 5,
         "taskCount": 8,
-        "defectCount": 1,
+        "defectCount": 2,
         "potentialCount": 0,
         "needsHumanCount": 2,
         "completedCount": 7
@@ -1456,6 +1497,7 @@
           "childWorkRefs": [
             "work.vexstream.mobile-library.download-experience",
             "work.vexstream.mobile-library.durable-device-library",
+            "work.vexstream.mobile-library.large-offline-startup-performance",
             "work.vexstream.mobile-library.library-browse-discovery",
             "work.vexstream.mobile-library.massdownload-maturity"
           ],

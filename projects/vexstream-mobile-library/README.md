@@ -48,6 +48,8 @@ VexStream Mobile Library                         OUTCOME
 +-- Library Browse & Discovery                   OUTCOME / decomposed
 |   +-- Sort / Filter library controls           TASK / needs human review
 |
++-- Large offline-library cold-start performance DEFECT / investigation
+|
 +-- MassDownload Maturity                        OUTCOME
     +-- MassDownload product implementation      TASK / completed
     +-- MassDownload terminal EndToEnd           TASK / completed
@@ -431,6 +433,25 @@ VexWork leaves the obsolete `WAITING_TOOL` checkpoint, returns to the already-ap
 PR #167 is accepted Android source. Its bounded fixture used exactly three Songs: one local plus two missing; Download all reached 3/3 local, Remove all returned to 0/3 local, and the same three catalog refs remained.
 
 This Work item had no stored transition history, so VexWork currentizes its source-managed snapshot directly to `WAITING_HUMAN` rather than fabricating retrospective lifecycle edges.
+
+### ML-D14 — Large offline libraries exposed a cold-start performance defect
+
+A lived device state with **785 downloaded VexStream songs** launches noticeably slowly before Home appears. The songs are available once startup completes; corruption or missing-media behavior was not observed.
+
+The first source-grounded hypothesis is synchronous startup verification:
+
+```text
+VexLifeViewModel
+-> AppRepositoryFactory.production(...)
+-> PairedVexStreamMusicRepository constructor
+-> initialState()
+-> VexStreamOfflineIndex.load()
+-> mediaStore.verify(localCopy) for each persisted downloaded song
+```
+
+This is an investigation lead, **not** a root-cause claim. Android issue #168 owns the product investigation and should measure cold-start phases/threads using the existing logging, Android Host Proof and Test/Proof infrastructure before optimizing.
+
+A reusable startup/performance debugging guide should be added only if this investigation proves a recurring route worth preserving.
 
 ## Work-state and agency safety
 
