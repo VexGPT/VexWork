@@ -71,25 +71,44 @@ function buildProjection(graph, projectionRef, layoutIntent) {
   const primary = graph.nodes
     .filter((node) => node.kind !== 'ANNOTATION')
     .sort((left, right) => depth(left.nodeRef) - depth(right.nodeRef) || compareCanonicalText(left.nodeRef, right.nodeRef));
-  const boundsByRef = new Map(primary.map((node, index) => [
-    node.nodeRef,
-    {
+  const annotationsByParent = new Map();
+  for (const node of graph.nodes.filter((candidate) => candidate.kind === 'ANNOTATION')) {
+    assert(node.parentRefOrNull !== null, `annotation ${node.nodeRef} requires one semantic parent`);
+    if (!annotationsByParent.has(node.parentRefOrNull)) annotationsByParent.set(node.parentRefOrNull, []);
+    annotationsByParent.get(node.parentRefOrNull).push(node.nodeRef);
+  }
+  for (const refsForParent of annotationsByParent.values()) refsForParent.sort(compareCanonicalText);
+
+  const boundsByRef = new Map();
+  let cursorY = 80;
+  for (const node of primary) {
+    const annotationCount = annotationsByParent.get(node.nodeRef)?.length ?? 0;
+    const height = Math.max(132, 92 + (annotationCount * 48));
+    boundsByRef.set(node.nodeRef, {
       x: 80 + (depth(node.nodeRef) * 340),
-      y: 80 + (index * 168),
+      y: cursorY,
       width: 300,
-      height: 132,
-    },
-  ]));
+      height,
+    });
+    cursorY += height + 36;
+  }
 
   const items = graph.nodes.map((node) => {
     if (node.kind === 'ANNOTATION') {
       const parent = boundsByRef.get(node.parentRefOrNull);
       assert(parent, `annotation ${node.nodeRef} parent must be one projected primary node`);
+      const annotationIndex = annotationsByParent.get(node.parentRefOrNull).indexOf(node.nodeRef);
+      assert(annotationIndex >= 0, `annotation ${node.nodeRef} missing from parent layout`);
       return {
         projectionItemRef: itemRef(node.nodeRef),
         semanticRef: node.nodeRef,
         shapeKind: 'TEXT',
-        bounds: { x: parent.x + 20, y: parent.y + 76, width: 260, height: 44 },
+        bounds: {
+          x: parent.x + 20,
+          y: parent.y + 76 + (annotationIndex * 48),
+          width: 260,
+          height: 40,
+        },
         layer: 1,
         parentProjectionItemRefOrNull: itemRef(node.parentRefOrNull),
         visible: true,
