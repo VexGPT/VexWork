@@ -444,7 +444,46 @@ VexBoard
 
 The current `VEXBOARD_BUILTIN_BOARD_URLS` / prototype maps are a good proving-ground realization for a few local boards. They are not the long-term catalog for hundreds of reusable business, development, education, provider, architecture or operational process modules.
 
-The next reusable routing seam should therefore be a **board source registry/resolver** that maps stable `boardRef` identity to the rightful source descriptor. It is routing/catalog infrastructure, not another semantic owner and not an automation-effect grant. Its exact schema is intentionally not declared here before implementation pressure earns it.
+The repeated built-in-board and VexWork process pressure has now earned the first bounded resolver contract:
+
+~~~text
+vexboard.board-source-catalog/v1
+  catalogRef
+  entries[]
+    boardRef
+    location
+    sourceRefs
+  sourceRefs
+
+vexboard.board-source-resolution/v1
+  boardRef
+  catalogRef
+  location
+  sourceRefs
+~~~
+
+A source owner may project its own `boardRef -> relative JSON location` catalog. VexBoard resolves across several such catalogs without copying them into one mega-registry:
+
+~~~text
+resolve(boardRef, [catalog A, catalog B, ...])
+  zero matches -> null / unknown board
+  one match    -> exact source resolution
+  >1 matches   -> fail closed as ambiguous ownership
+~~~
+
+The existing `VEXBOARD_BUILTIN_BOARD_URLS` map can be projected into one catalog without changing its current reader ownership. VexWork PR #103 supplies the first distinct consumer pressure: its Form-Project board should reconnect through its own source-owned catalog when that foreign candidate currentizes, rather than teaching VexBoard to own the Process Registry.
+
+Permanent:
+
+~~~text
+BOARD_SOURCE_CATALOG != BOARDGRAPH_TRUTH
+BOARD_SOURCE_CATALOG != PROCESS_REGISTRY
+BOARD_SOURCE_RESOLUTION != EFFECT_AUTHORITY
+DUPLICATE_BOARD_REF_ACROSS_CATALOGS -> FAIL_CLOSED
+UNKNOWN_BOARD_REF -> NULL
+~~~
+
+This first contract deliberately resolves static relative JSON locations only. Projector-backed/in-memory source descriptors, remote/provider loaders and browser UI wiring remain later extensions that must be earned by actual consumers rather than predeclared.
 
 Permanent boundaries:
 
