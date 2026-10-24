@@ -175,52 +175,61 @@ Exact private Home/model identities are intentionally **not duplicated in public
 
 ## Ordinary fresh-user productization — current foreground
 
-The lived core and the standalone Heretic establishment composition are already available. The remaining product gap is the normal setup route itself:
+The architecture and source integration are **not** the current unknown. The current accepted VexLife source already owns the Mac setup window, Heretic product selection, Artifact Delivery, exact Python/MLX environment, persistent Heretic runtime, lifecycle, and Browser/Lived Companion cable.
+
+Current accepted source milestones:
 
 ```text
-current ordinary start
--> setup/bootstrap
--> legacy active G0 / Qwen3.5-4B initializer
+PR873 setup safety                 = TERMINAL_ACCEPTED_CURRENT
+PR919 Heretic establishment        = TERMINAL_ACCEPTED_CURRENT
+PR920 normal-start Heretic wiring  = TERMINAL_ACCEPTED_CURRENT
+PR921 plan-state JSON correction   = TERMINAL_ACCEPTED_CURRENT
 
-accepted target composition
--> exact Heretic 11-member Artifact Delivery
--> exact Python 3.14.7 / mlx-lm 0.32.0
--> accepted SDK persistent MLX owner
--> exact runtime receipt
--> existing Browser / Lived Companion
+current VexLife main =
+334902a6401c77011cc41457d2ad51ad7dffb2b1
+
+current main tree =
+fe24da52f16f383b632f657a99d6463172c74cae
 ```
 
-Current VexLife source milestones:
+### What is usable now
 
 ```text
-PR919 Heretic establishment = TERMINAL_ACCEPTED_CURRENT
-PR873 setup safety = TERMINAL_ACCEPTED_CURRENT
-current VexLife main = 85ef85dfa4852154e522deadc45707b03cf74221
-current main tree = c2038d90a6cea6cb155552d9db6faa47df417df8
+Mac source-local setup app/window  = EXISTS / ACCEPTED SOURCE
+default Home selector              = EXISTS
+Browser UI                         = EXISTS at 127.0.0.1:18110 after qualified start
+Browser -> Companion -> Heretic    = TERMINAL_LIVED_PASS on retained Home
+same-Home restart + second turn    = TERMINAL_LIVED_PASS
+typed local orientation effect     = TERMINAL_LIVED_PASS
+G02 Score continuity               = TERMINAL_LIVED_PASS
+G03 memory-only Daily Dream        = TERMINAL_LIVED_PASS
 ```
 
-The continuation is **active**, not a wait state:
+This does **not** mean Victor's current default Home is already an ordinary Heretic-ready product session. The protected durable ToCompletion Home is preserved with no active Heretic runtime/browser binding, while a separate retained fresh Home is being used to finish the ordinary first-install proof without sacrificing prior continuity.
+
+### What is actually unfinished
 
 ```text
-work.vexlife.tocompletion.productization.setup-safety-convergence
-  = COMPLETED
-  -> PR873 TERMINAL_ACCEPTED_CURRENT
-  -> one setup owner / cancellation / resumable partials /
-     pending-runtime ownership / progress / preserve-Home cleanup are accepted source
-
 work.vexlife.tocompletion.productization.heretic-normal-start-integration
+  = COMPLETED
+
+work.vexlife.tocompletion.productization.ordinary-heretic-lived-proof
   = RUNNING
-  -> safe ordinary normal start
-  -> accepted Heretic product target
-  -> merged PR919 Heretic establishment composition
-  -> exact runtime receipt / endpoint
-  -> existing Browser / Lived Companion
-  -> ordinary fresh-user proof
+
+retained fresh Home
+  -> exact 11-member Heretic artifact recovery
+  -> exact Python 3.14.7 / mlx-lm 0.32.0
+  -> exact Heretic runtime qualification
+  -> real Browser first turn
+  -> clean stop
+  -> same-Home restart with NO acquisition authority
+  -> second real turn
+  -> final Browser BOUND
 ```
 
-Do **not** create a parallel initializer just to avoid PR873. Continuing the dependency is continuing ToCompletion.
+A015 proved the corrected ordinary controller reaches source-owned artifact acquisition and retained the fresh Home on timeout. A016 proved that retained state was exact and resumable. A017/A018 advanced the same artifact state without replaying setup. A019 then executed bounded parallel artifact recovery, but its canonical RETURN failed formation because the harness omitted a required failure fingerprint. Therefore **A019 effects are not assumed either way**: the immediate next edge is a read-only recovery readback of exact final/partial/range-segment bytes before any further acquisition.
 
-Do **not** solve selection by a blind `activeModelBundleRef` pointer flip. Existing-Home replacement/upgrade remains explicit; no silent lineage rewrite is allowed.
+Existing-Home Heretic replacement/upgrade remains separate and explicit. No silent lineage rewrite is authorized.
 
 ## P4 accepted design
 
@@ -311,39 +320,51 @@ This is not permission to create a task for every typo or retry. Add one only wh
 CURRENT FOREGROUND
   work.vexlife.tocompletion.productization.ordinary-heretic-setup = RUNNING
 
-COMPLETED DEPENDENCY
-  work.vexlife.tocompletion.productization.setup-safety-convergence = COMPLETED
-  VexLife PR #873 = TERMINAL_ACCEPTED_CURRENT
+TERMINAL SOURCE DEPENDENCIES
+  setup-safety-convergence = COMPLETED
+  heretic-normal-start-integration = COMPLETED
+  PR873 / PR919 / PR920 / PR921 = accepted source history
 
 CURRENT EXECUTABLE WORK
-  work.vexlife.tocompletion.productization.heretic-normal-start-integration = RUNNING
+  work.vexlife.tocompletion.productization.ordinary-heretic-lived-proof = RUNNING
 
-  present task:
-    preserve PR873 setup-safety laws
-    -> select the accepted Heretic product target through the rightful normal-start owner
-    -> reuse merged PR919 Artifact Delivery / environment / persistent-runtime composition
-    -> carry exact runtime receipt / endpoint into the existing Browser / Lived Companion
-    -> prove the ordinary fresh-user front door without hidden intervention
+  present exact edge:
+    A019 parallel artifact recovery executed
+    -> canonical RETURN did not form
+    -> exact post-A019 artifact/range state = UNKNOWN
+    -> perform read-only retained-fresh-Home recovery readback
+    -> recover from observed bytes; do not replay A015-A019 from zero
+
+  after artifact exactness:
+    Python 3.14.7 / mlx-lm 0.32.0
+    -> exact Heretic runtime qualification
+    -> reversible default-path Browser first turn
+    -> clean stop
+    -> same-Home restart without acquisition authority
+    -> second turn
+    -> final BOUND
 
 HELD / SEPARATE
-  existing-Home Heretic replacement/upgrade remains explicit; no silent lineage rewrite
-  G02 = TERMINAL_LIVED_PASS
-  G03 = TERMINAL_LIVED_PASS
-  P5 = PAUSED_AT_CHECKPOINT
-  G04 = HELD_NOT_EARNED until new real recurrent developmental evidence exists
-
-Do not replay PR873 source correction/proof attempts.
-Do not reopen PR913/PR918/PR919 source foundations.
-Do not build a parallel initializer or second runtime owner.
+  existing-Home Heretic replacement/upgrade
+  G04 Rhythm/training/weights until recurrent developmental evidence exists
+  human acceptance / signed public distribution
 ```
+
+Do not reopen PR873/PR919/PR920/PR921.
+Do not replay A015-A019 merely for confidence.
+Recover the retained fresh Home from current exact evidence.
 
 ## Remaining completion path
 
 ```text
 ORDINARY PRODUCTIZATION                                  <-- CURRENT
-    PR873 setup safety = TERMINAL_ACCEPTED_CURRENT
-    -> connect safe normal start to accepted PR919 Heretic establishment
-    -> prove fresh ordinary install/use route
+    accepted setup + Heretic source route
+    -> read back A019 retained artifact/range state
+    -> finish exact artifact/environment/runtime realization
+    -> Browser first turn
+    -> clean stop
+    -> no-acquisition same-Home restart
+    -> second turn + final BOUND
     -> then make existing-Home Heretic replacement/upgrade explicit
 
 P5  LIVED CONTINUITY / DEVELOPMENTAL EVIDENCE
@@ -367,9 +388,8 @@ Nested completion truth:
 
 ```text
 P1-P4 lived core = TERMINAL
-ordinary fresh-user productization = OPEN / ACTIVE
-setup safety = TERMINAL_ACCEPTED_CURRENT
-normal-start Heretic integration = RUNNING
+ordinary source integration = TERMINAL_ACCEPTED_CURRENT
+ordinary fresh-user lived proof = OPEN / ACTIVE
 P5 G02-G03 = TERMINAL; G04 held
 P6 = UNEARNED
 P7 = LATERAL / PLAN_VALIDATED
@@ -384,27 +404,28 @@ VexWork
 -> project.vexlife.tocompletion
 -> work.vexlife.tocompletion.outcome
 -> CURRENT ACTIVE work:
-     work.vexlife.tocompletion.productization.heretic-normal-start-integration
--> this README for architecture / causal continuity
--> VexLife #866 for canonical product truth
--> VexLife PR #873 as terminal setup-safety provenance
--> VexLife PR #919 as accepted Heretic-establishment provenance
--> target repository culture/source when an effect actually descends there
+     work.vexlife.tocompletion.productization.ordinary-heretic-lived-proof
+-> this README for architecture / practical usability truth
+-> VexLife #866 comment 6379258568 for the exact A019 recovery checkpoint
+-> current VexLife/SDK source only when the next host effect descends there
 ```
 
-The continuation rule is:
+Continuation rule:
 
 ```text
-setup-safety-convergence = COMPLETED
-  -> do not replay PR873
+normal-start Heretic source integration = COMPLETED
+  -> do not replay PR920/PR921
 
-heretic-normal-start-integration = RUNNING
-  -> integrate safe normal start with accepted PR919 Heretic establishment now
+A019 canonical RETURN = NOT_FORMED after payload execution
+  -> do not assume zero effect
+  -> do not rerun A019 first
+  -> read back retained fresh-Home artifact/range state
+  -> continue only missing recovery work
 
 developmental P5 pause
   != productization pause
 ```
 
-Do not replay P0-P4, G02/G03 host attempts, PR873 acceptance, or PR913/PR918/PR919 acceptance. Update VexWork again when normal-start integration, ordinary fresh-user lived proof, existing-Home semantics, or developmental evidence materially moves.
+Do not replay P0-P4, G02/G03 host attempts, PR873/PR913/PR918/PR919/PR920/PR921 acceptance, or A015-A019 from zero. Update VexWork again when the ordinary fresh-user lived proof becomes terminal, existing-Home upgrade semantics materially moves, or new developmental evidence earns G04.
 
 <!-- [VXG RealForever][VEXWORK][VEXLIFE-TOCOMPLETION][TRAJECTORY] -->

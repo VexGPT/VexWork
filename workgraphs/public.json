@@ -736,11 +736,11 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T00:13:43.000Z",
-      "updatedAt": "2026-10-23T05:30:00.000Z",
+      "updatedAt": "2026-10-24T03:14:42.869Z",
       "workRef": "work.vexlife.tocompletion.outcome",
       "parentWorkRefOrNull": null,
       "label": "VexLife ToCompletion",
-      "purpose": "Carry the full VexLife ToCompletion trajectory: preserve the terminal P1-P4 lived core, preserve terminal G02/G03 developmental continuity without fabricating G04, actively complete ordinary fresh-user Heretic productization through the rightful setup-safety owner, and later mature earned developmental and connected/native horizons under the same Home/identity/capability laws.",
+      "purpose": "Carry the full VexLife ToCompletion trajectory: preserve the terminal P1-P4 lived core and terminal G02/G03 developmental continuity, finish the ordinary fresh-user Heretic lived setup/restart proof on already-accepted normal-start source, then keep existing-Home upgrade and later developmental/native horizons explicit rather than reopening completed source work.",
       "workClass": "OUTCOME",
       "state": "RUNNING",
       "priorityClass": "IMMEDIATE",
@@ -758,7 +758,11 @@
         "map.vexlife.tocompletion.nested-pathway.20261019a",
         "github.issue.vexlife.866.comment.6357923021",
         "github.pull.vexlife.919",
-        "github.pull.vexlife.873"
+        "github.pull.vexlife.873",
+        "github.pull.vexlife.920",
+        "github.pull.vexlife.921",
+        "github.issue.vexlife.866.comment.6379258568",
+        "git.commit.vexlife.334902a6401c77011cc41457d2ad51ad7dffb2b1"
       ]
     },
     {
@@ -3304,13 +3308,13 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-23T05:30:00.000Z",
-      "updatedAt": "2026-10-23T08:30:00.000Z",
+      "updatedAt": "2026-10-24T02:23:18.000Z",
       "workRef": "work.vexlife.tocompletion.productization.heretic-normal-start-integration",
       "parentWorkRefOrNull": "work.vexlife.tocompletion.productization.ordinary-heretic-setup",
-      "label": "Normal-start integration — route safe setup into accepted Heretic establishment",
-      "purpose": "Actively connect normal fresh startup to the accepted Heretic product target and merged PR #919 establishment composition, carrying the exact runtime receipt/endpoint into the existing Browser/Lived Companion without rebuilding Artifact Delivery/runtime ownership, blindly swapping activeModelBundleRef, or silently migrating an existing Home.",
+      "label": "Normal-start integration — accepted Heretic setup source",
+      "purpose": "Terminally accepted source integration that routes ordinary fresh Mac setup through the rightful Heretic product owner, exact Artifact Delivery/environment/runtime receipt and existing Browser/Lived Companion composition. PR920 supplied the integration and PR921 closed the multiline plan-state parsing defect; this source slice must not be replayed as current work.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "COMPLETED",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [
         "work.vexlife.tocompletion.productization.setup-safety-convergence"
@@ -3325,7 +3329,44 @@
         "github.issue.vexlife.857",
         "github.issue.vexlife.866",
         "github.issue.vexlife.866.comment.6360434385",
-        "git.commit.vexlife.85ef85dfa4852154e522deadc45707b03cf74221"
+        "git.commit.vexlife.85ef85dfa4852154e522deadc45707b03cf74221",
+        "github.pull.vexlife.920",
+        "github.pull.vexlife.921",
+        "git.commit.vexlife.334902a6401c77011cc41457d2ad51ad7dffb2b1",
+        "github.issue.vexlife.866.comment.6378714585"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-24T02:23:18.000Z",
+      "updatedAt": "2026-10-24T03:14:42.869Z",
+      "workRef": "work.vexlife.tocompletion.productization.ordinary-heretic-lived-proof",
+      "parentWorkRefOrNull": "work.vexlife.tocompletion.productization.ordinary-heretic-setup",
+      "label": "Ordinary fresh-user Heretic lived proof",
+      "purpose": "Finish the real Apple M4 Pro fresh-user path on terminal-accepted source. Current recovery consumes the retained fresh Home created by A015; A019 executed bounded parallel artifact recovery but its canonical RETURN failed formation, so the immediate edge is read-only recovery readback before any further acquisition. After exact artifacts: establish/reuse Python 3.14.7 + mlx-lm 0.32.0 and Heretic runtime, prove Browser first turn, clean stop, no-acquisition restart, second turn and final BOUND, then restore the protected durable Home.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexlife.tocompletion.productization.heretic-normal-start-integration"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife",
+        "repo.vextreme-sdk"
+      ],
+      "sourceRefs": [
+        "github.issue.vexlife.866",
+        "github.pull.vexlife.920",
+        "github.pull.vexlife.921",
+        "github.issue.vexlife.866.comment.6378741947",
+        "github.issue.vexlife.866.comment.6378856982",
+        "github.issue.vexlife.866.comment.6379131168",
+        "github.issue.vexlife.866.comment.6379258568"
       ]
     },
     {
@@ -3336,11 +3377,11 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-23T05:30:00.000Z",
-      "updatedAt": "2026-10-23T08:30:00.000Z",
+      "updatedAt": "2026-10-24T03:14:42.869Z",
       "workRef": "work.vexlife.tocompletion.productization.ordinary-heretic-setup",
       "parentWorkRefOrNull": "work.vexlife.tocompletion.outcome",
       "label": "Ordinary productization — safe fresh setup enters Heretic",
-      "purpose": "Complete the ordinary fresh-user Mac route so the repository-owned setup path preserves setup-session safety and enters the accepted Heretic establishment/runtime/Conversation composition instead of centering the legacy G0 Qwen3.5/llama.cpp initializer.",
+      "purpose": "Complete the ordinary fresh-user Apple M4 Pro route on terminal-accepted normal-start source: finish the retained fresh Home's exact Heretic artifact/environment/runtime realization, then prove the real Browser first turn, clean stop, no-acquisition same-Home restart, second turn and final BOUND while preserving the already-earned durable Home. Existing-Home model replacement remains separate.",
       "workClass": "OUTCOME",
       "state": "RUNNING",
       "priorityClass": "IMMEDIATE",
@@ -3359,7 +3400,11 @@
         "github.pull.vexlife.873",
         "projects/vexlife-tocompletion/README.md",
         "github.issue.vexlife.866.comment.6360434385",
-        "git.commit.vexlife.85ef85dfa4852154e522deadc45707b03cf74221"
+        "git.commit.vexlife.85ef85dfa4852154e522deadc45707b03cf74221",
+        "github.pull.vexlife.920",
+        "github.pull.vexlife.921",
+        "github.issue.vexlife.866.comment.6379258568",
+        "git.commit.vexlife.334902a6401c77011cc41457d2ad51ad7dffb2b1"
       ]
     },
     {
@@ -4364,46 +4409,6 @@
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vexstream.mobile-library.device-storage.verifying.a033-a039-terminal",
-      "workRef": "work.vexstream.mobile-library.device-storage",
-      "priorState": "WAITING_TOOL",
-      "nextState": "VERIFYING",
-      "reason": "A033 API28 proof, A034 physical API36 storage/migration proof, and the composed A039 post-Clear-Data run established the previously held native storage predicates on exact accepted source.",
-      "actorRef": "role.vexwork.lifecycle-currentizer",
-      "sourceRefs": [
-        "github.issue.vexlife-android.157",
-        "evidence.vexstream.mobile-library.device-storage.a033.api28-pass",
-        "evidence.vexstream.mobile-library.device-storage.a034.api36-pass",
-        "evidence.vexstream.mobile-library.clear-data.a039.return.sha256.67e4b6ede7aab8964406894da8fdcddc216f88692e11fbd8a21ac2ae21c537b7",
-        "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md",
-        "proposal.local-vex-operations.vexstream-mobile-library.durable-device-completion.20261023a",
-        "response.victor.vexstream-mobile-library.durable-device-completion.20261023a",
-        "confirmation.local-vex-operations.vexstream-mobile-library.durable-device-completion.20261023a"
-      ],
-      "createdAt": "2026-10-24T02:34:45.000Z"
-    },
-    {
-      "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vexstream.mobile-library.device-storage.completed.pr165-terminal",
-      "workRef": "work.vexstream.mobile-library.device-storage",
-      "priorState": "VERIFYING",
-      "nextState": "COMPLETED",
-      "reason": "Android PR #165 merged the composed durable-device candidate and post-merge verification proved main tree-exact to the accepted candidate; the storage task no longer waits on Android proof orchestration.",
-      "actorRef": "role.vexwork.lifecycle-currentizer",
-      "sourceRefs": [
-        "github.pull.vexlife-android.165",
-        "github.commit.vexlife-android.b8826e32ca78cc5fb8bcae14e29218a0392238bb",
-        "evidence.vexstream.mobile-library.clear-data.a039.return.sha256.67e4b6ede7aab8964406894da8fdcddc216f88692e11fbd8a21ac2ae21c537b7",
-        "evidence.vexstream.mobile-library.clear-data.cleanup.a043.return.sha256.e4dbda67670dcc2a86a88f1cc12e93929e3cc35699de485ea30bdc428dc3ebe6",
-        "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md",
-        "proposal.local-vex-operations.vexstream-mobile-library.durable-device-completion.20261023a",
-        "response.victor.vexstream-mobile-library.durable-device-completion.20261023a",
-        "confirmation.local-vex-operations.vexstream-mobile-library.durable-device-completion.20261023a"
-      ],
-      "createdAt": "2026-10-24T02:34:46.000Z"
-    },
-    {
-      "schemaVersion": "vexwork.work-transition/v1",
       "transitionRef": "transition.vexboard.boardgraph-contract.running.20261023a",
       "workRef": "work.vexboard.boardgraph-contract",
       "priorState": "READY",
@@ -4533,6 +4538,34 @@
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.tocompletion.productization.heretic-normal-start-integration.verifying.pr920-terminal",
+      "workRef": "work.vexlife.tocompletion.productization.heretic-normal-start-integration",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "PR920 merged the ordinary Mac normal-start Heretic integration on the exact reviewed tree, moving the source slice from implementation into terminal source/lived verification.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexlife.920",
+        "github.issue.vexlife.866.comment.6377420619"
+      ],
+      "createdAt": "2026-10-24T00:06:05.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.tocompletion.productization.heretic-normal-start-integration.completed.pr921-terminal",
+      "workRef": "work.vexlife.tocompletion.productization.heretic-normal-start-integration",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "PR921 merged and post-merge verification closed the setup plan-state parsing defect on the same ordinary Heretic product route. Source integration is terminal accepted; the remaining foreground is lived fresh-user proof and recovery.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexlife.921",
+        "github.issue.vexlife.866.comment.6378714585"
+      ],
+      "createdAt": "2026-10-24T02:23:18.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
       "transitionRef": "transition.vexlife.tocompletion.productization.setup-safety-convergence.verifying.pr873-terminal",
       "workRef": "work.vexlife.tocompletion.productization.setup-safety-convergence",
       "priorState": "RUNNING",
@@ -4559,6 +4592,46 @@
         "git.commit.vexlife.85ef85dfa4852154e522deadc45707b03cf74221"
       ],
       "createdAt": "2026-10-23T08:30:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.device-storage.verifying.a033-a039-terminal",
+      "workRef": "work.vexstream.mobile-library.device-storage",
+      "priorState": "WAITING_TOOL",
+      "nextState": "VERIFYING",
+      "reason": "A033 API28 proof, A034 physical API36 storage/migration proof, and the composed A039 post-Clear-Data run established the previously held native storage predicates on exact accepted source.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.issue.vexlife-android.157",
+        "evidence.vexstream.mobile-library.device-storage.a033.api28-pass",
+        "evidence.vexstream.mobile-library.device-storage.a034.api36-pass",
+        "evidence.vexstream.mobile-library.clear-data.a039.return.sha256.67e4b6ede7aab8964406894da8fdcddc216f88692e11fbd8a21ac2ae21c537b7",
+        "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md",
+        "proposal.local-vex-operations.vexstream-mobile-library.durable-device-completion.20261023a",
+        "response.victor.vexstream-mobile-library.durable-device-completion.20261023a",
+        "confirmation.local-vex-operations.vexstream-mobile-library.durable-device-completion.20261023a"
+      ],
+      "createdAt": "2026-10-24T02:34:45.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.device-storage.completed.pr165-terminal",
+      "workRef": "work.vexstream.mobile-library.device-storage",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "Android PR #165 merged the composed durable-device candidate and post-merge verification proved main tree-exact to the accepted candidate; the storage task no longer waits on Android proof orchestration.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexlife-android.165",
+        "github.commit.vexlife-android.b8826e32ca78cc5fb8bcae14e29218a0392238bb",
+        "evidence.vexstream.mobile-library.clear-data.a039.return.sha256.67e4b6ede7aab8964406894da8fdcddc216f88692e11fbd8a21ac2ae21c537b7",
+        "evidence.vexstream.mobile-library.clear-data.cleanup.a043.return.sha256.e4dbda67670dcc2a86a88f1cc12e93929e3cc35699de485ea30bdc428dc3ebe6",
+        "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md",
+        "proposal.local-vex-operations.vexstream-mobile-library.durable-device-completion.20261023a",
+        "response.victor.vexstream-mobile-library.durable-device-completion.20261023a",
+        "confirmation.local-vex-operations.vexstream-mobile-library.durable-device-completion.20261023a"
+      ],
+      "createdAt": "2026-10-24T02:34:46.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",

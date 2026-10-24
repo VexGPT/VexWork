@@ -2,7 +2,7 @@
   "schemaVersion": "vexwork.project-definition/v1",
   "projectRef": "project.vexlife.tocompletion",
   "label": "VexLife ToCompletion",
-  "purpose": "Carry the full VexLife ToCompletion horizon while making the current unfinished edge obvious: P1-P4 lived core is terminal, G02/G03 developmental continuity is terminal and evidence-gated before G04, setup safety is terminal accepted through PR873, and ordinary fresh-user productization is now actively wiring normal start into the accepted Heretic establishment composition before explicit existing-Home upgrade and whole-product horizons.",
+  "purpose": "Carry the full VexLife ToCompletion horizon while making the current unfinished edge obvious: P1-P4 lived core and G02/G03 developmental continuity are terminal, the ordinary Mac Heretic normal-start source route is terminal accepted through PR920/PR921, and the active foreground is the ordinary fresh-user lived setup proof recovering its retained exact artifact state before Browser/restart completion; existing-Home Heretic upgrade and later developmental/native horizons remain separate.",
   "rootWorkRefs": [
     "work.vexlife.tocompletion.outcome"
   ],
@@ -24,7 +24,11 @@
     "github.pull.vexlife.873",
     "github.issue.vexlife.866.comment.6357923021",
     "github.issue.vexlife.866.comment.6360434385",
-    "git.commit.vexlife.85ef85dfa4852154e522deadc45707b03cf74221"
+    "git.commit.vexlife.85ef85dfa4852154e522deadc45707b03cf74221",
+    "github.pull.vexlife.920",
+    "github.pull.vexlife.921",
+    "github.issue.vexlife.866.comment.6379258568",
+    "git.commit.vexlife.334902a6401c77011cc41457d2ad51ad7dffb2b1"
   ],
   "formedAt": "2026-10-22T00:13:43.000Z"
 }
