@@ -8,6 +8,7 @@ import {
   PALETTE_PRESENTATION_CSS,
   canvasExtent,
   deriveBranchPresentation,
+  installPalettePresentation,
   nextPaletteMode,
   normalizePaletteMode,
   paletteModeLabel,
@@ -50,29 +51,25 @@ test('palette modes cycle without creating semantic state', () => {
 
 test('palette state is visibly projected across the browser canvas rather than only recoloring the icon', () => {
   assert.match(PALETTE_PRESENTATION_CSS, /palette-fab::after/);
-  assert.match(PALETTE_PRESENTATION_CSS, /data-vexboard-palette="COLOR_SAFE"[^]*repeating-linear-gradient/);
-  assert.match(PALETTE_PRESENTATION_CSS, /data-vexboard-palette="HIGH_CONTRAST"[^]*\.canvas/);
+  assert.match(PALETTE_PRESENTATION_CSS, /viewport\.palette-color-safe[^]*repeating-linear-gradient/);
+  assert.match(PALETTE_PRESENTATION_CSS, /viewport\.palette-high-contrast[^]*\.canvas/);
 
-  const priorDocument = globalThis.document;
   const appended = [];
-  const documentElement = { dataset: {}, append: (value) => appended.push(value) };
-  globalThis.document = {
-    documentElement,
+  const documentRef = {
+    documentElement: { append: (value) => appended.push(value) },
     head: { append: (value) => appended.push(value) },
     createElement: () => ({ id: '', textContent: '' }),
     getElementById: (id) => appended.find((value) => value.id === id) ?? null,
   };
-  try {
-    assert.equal(normalizePaletteMode('COLOR_SAFE'), 'COLOR_SAFE');
-    assert.equal(documentElement.dataset.vexboardPalette, 'COLOR_SAFE');
-    assert.equal(appended.length, 1);
-    assert.equal(nextPaletteMode('COLOR_SAFE'), 'HIGH_CONTRAST');
-    assert.equal(documentElement.dataset.vexboardPalette, 'HIGH_CONTRAST');
-    assert.equal(appended.length, 1, 'presentation stylesheet should be installed once');
-  } finally {
-    if (priorDocument === undefined) delete globalThis.document;
-    else globalThis.document = priorDocument;
-  }
+
+  assert.equal(normalizePaletteMode('COLOR_SAFE'), 'COLOR_SAFE');
+  assert.equal(nextPaletteMode('COLOR_SAFE'), 'HIGH_CONTRAST');
+  assert.equal(appended.length, 0, 'pure palette derivation must not mutate browser state');
+  assert.equal(installPalettePresentation(documentRef), true);
+  assert.equal(appended.length, 1);
+  assert.equal(appended[0].id, 'vexboard-palette-presentation-v2');
+  assert.equal(installPalettePresentation(documentRef), false);
+  assert.equal(appended.length, 1, 'presentation stylesheet should be installed once');
 });
 
 test('semantic role derives start, choice and terminal meaning from current graph shape', () => {
