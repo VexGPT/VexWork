@@ -241,6 +241,10 @@ Calendly
 Google Calendar
   exposes FreeBusy data; privacy can remain limited to busy ranges
 
+Booqable
+  exposes rental-product and inventory availability over exact periods/locations
+  and can distinguish available / partial / unavailable resource states
+
 GigSalad / The Bash
   commonly use location/category search -> quote request -> provider confirms availability -> booking
 ~~~
@@ -251,6 +255,7 @@ Reference documentation:
 https://developer.squareup.com/reference/square/bookings/search-availability
 https://developer.calendly.com/docs/api-guides/view-event-type-and-user-calendar-availability-data
 https://developers.google.com/workspace/calendar/api/v3/reference/freebusy/query
+https://developers.booqable.com/
 https://help.gigsalad.com/article/47-how-it-works
 https://www.thebash.com/help
 ~~~
