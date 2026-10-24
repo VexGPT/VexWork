@@ -35,7 +35,18 @@
     "repo.vextreme:index.html",
     "repo.vextreme:pages/vextreme-covenant.html",
     "repo.vexlife:README.md",
-    "repo.vexwork:README.md"
+    "repo.vexwork:README.md",
+    "repo.vextreme:data/status/tech-debt.json",
+    "repo.vextreme:lib/build-sitemap.js",
+    "repo.vextreme:lib/build-page-health.js",
+    "repo.vextreme:lib/build-terrain-map.js",
+    "repo.vextreme:lib/check-institutional-surfaces.js",
+    "repo.vextreme:lib/check-key-alignment.js",
+    "repo.vextreme:scripts/screenshot-institutional.js",
+    "repo.vextreme:tests/54-institutional-surfaces.test.js",
+    "repo.vextreme:tests/55-build-sitemap.test.js",
+    "repo.vextreme:data/screenshot-evidence-assets.json",
+    "repo.vextreme:sitemap.xml"
   ],
   "formedAt": "2026-10-24T06:05:10.000Z"
 }

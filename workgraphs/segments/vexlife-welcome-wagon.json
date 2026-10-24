@@ -126,7 +126,9 @@
       "workClass": "POTENTIAL",
       "state": "CAPTURED",
       "priorityClass": "NORMAL",
-      "dependencyRefs": [],
+      "dependencyRefs": [
+        "work.vexlife.welcome-wagon.about-vextreme-slug-migration"
+      ],
       "repositoryRefs": [
         "repo.vexwork",
         "repo.vextreme"
@@ -287,6 +289,64 @@
         "repo.vexlife:pages/vexlife-onboarding.html",
         "repo.vexlife:pages/vexlife-onboarding.css",
         "repo.vexlife:pages/vexlife-onboarding.js"
+      ],
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-10-24T06:05:10.000Z",
+      "updatedAt": "2026-10-24T06:05:10.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "workRef": "work.vexlife.welcome-wagon.about-vextreme-slug-migration",
+      "parentWorkRefOrNull": "work.vexlife.welcome-wagon.outcome",
+      "label": "Rename `vextreme-home` to canonical `about-vextreme` safely",
+      "purpose": "Migrate the registered institutional page identity from vextreme-home to about-vextreme through a machine-derived impact set, preserving historical/provenance references, updating live links/generated projections/evidence/tests, and retaining a deliberate compatibility route for the old public URL when repository constraints allow it.",
+      "workClass": "POTENTIAL",
+      "state": "CAPTURED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vextreme"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-welcome-wagon/README.md",
+        "repo.vextreme:config/institutional-surfaces.json",
+        "repo.vextreme:data/status/tech-debt.json",
+        "repo.vextreme:index.html",
+        "repo.vextreme:tests/54-institutional-surfaces.test.js",
+        "repo.vextreme:tests/55-build-sitemap.test.js"
+      ],
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-10-24T06:05:10.000Z",
+      "updatedAt": "2026-10-24T06:05:10.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "workRef": "work.vexlife.welcome-wagon.slug-rename-tooling",
+      "parentWorkRefOrNull": "work.vexlife.welcome-wagon.outcome",
+      "label": "Add plan-first page-slug rename impact tooling",
+      "purpose": "Close or materially reduce Vextreme td-004 by providing a deterministic plan-first rename tool that discovers and classifies live owner, live reference, generated, evidence, test and historical-provenance references before mutation so future page identity changes are source-derived rather than grep-by-assumption.",
+      "workClass": "POTENTIAL",
+      "state": "CAPTURED",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vextreme"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-welcome-wagon/README.md",
+        "repo.vextreme:data/status/tech-debt.json",
+        "repo.vextreme:lib/check-key-alignment.js",
+        "repo.vextreme:lib/check-institutional-surfaces.js"
       ],
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",

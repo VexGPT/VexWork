@@ -558,6 +558,190 @@ less explanation where the product can show
 Screenshots are **communication/evidence**, not product truth by themselves. They should demonstrate the real current experience rather than replace currentness, capability or proof ownership.
 
 This also means a future Welcome Wagon should be allowed to say less as the actual product becomes more self-explanatory.
+## Canonical rename migration: `vextreme-home` → `about-vextreme`
+
+The public role and the source slug should eventually converge. Once **About Vextreme** is accepted as the page's durable human identity, the canonical page should become:
+
+~~~text
+pages/about-vextreme.html
+institutional surface slug = about-vextreme
+public label = About Vextreme
+~~~
+
+The earlier `vextreme-home` identity should not remain the canonical source merely because renaming is inconvenient. However, this is **not a one-file rename**.
+
+Current Vextreme source already tracks:
+
+> **td-004 — No atomic slug rename script**
+>
+> Renaming a slug touches multiple source/generated/reference layers and currently requires manual work.
+
+For this institutional page, the exact migration membrane differs from an ordinary God-Script page, but the same lesson applies: **derive the impact set from source, do not guess it from memory.**
+
+### Rename safety model
+
+~~~text
+about-vextreme rename request
+        ↓
+machine preflight discovers exact references
+        ↓
+classify each reference
+  LIVE_OWNER
+  GENERATED
+  TEST_EXPECTATION
+  SCREENSHOT_EVIDENCE
+  HISTORICAL_PROVENANCE
+        ↓
+rewrite only the classes that should move
+        ↓
+regenerate deterministic projections
+        ↓
+run exact validators
+        ↓
+assert no live canonical reference still points to vextreme-home
+        ↓
+browser/render proof
+        ↓
+publish canonical about-vextreme
+~~~
+
+Historical continuity/source-provenance text is **not** mechanically renamed merely because it contains `vextreme-home`; those records describe what the old identity actually was.
+
+### Known live/reference layers to inspect
+
+A future migration script/preflight must at least classify the current references in:
+
+- `pages/vextreme-home.html` — source filename, self-link and authored static projection;
+- `config/institutional-surfaces.json` — canonical institutional identity/lifecycle owner;
+- `pages/vex-support.html` — brand/home and institutional navigation links;
+- `pages/vextreme-covenant.html` — brand and About navigation links;
+- `index.html` — public fallback **About Vextreme** link;
+- `sitemap.xml` — generated public URL projection;
+- `data/terrain-map.json` — generated live URL / screenshot projection;
+- `data/screenshot-evidence-assets.json` — pinned screenshot source-path evidence;
+- `docs/screenshots/vextreme-home-*` — institutional screenshot evidence filenames;
+- `tests/54-institutional-surfaces.test.js` — institutional root/link expectations;
+- `tests/55-build-sitemap.test.js` — active institutional sitemap expectations;
+- `scripts/screenshot-institutional.js` / `lib/screenshot-evidence.js` — evidence filename grammar and generation;
+- `lib/build-sitemap.js`, `lib/build-page-health.js`, `lib/build-terrain-map.js` — generated projections that should derive from the renamed registry/page rather than carry a second manual slug list;
+- institutional localization source/compiled bundles — copy keys may stay `institution.home.*` unless a separate semantic-key rename is actually valuable; **URL/slug rename does not automatically require key churn**;
+- architecture/currentness docs — inspect individually; live contracts move, historical records do not.
+
+This list is a grounded starting set, **not** permission to assume it is complete. The preflight script's purpose is to discover the actual current set at implementation time.
+
+### Prefer an automated rename preflight/migrator
+
+The implementation should first add or extend tooling so the AI can ask the repository what must move.
+
+Candidate command shape:
+
+~~~text
+node lib/rename-page-slug.js \
+  --from vextreme-home \
+  --to about-vextreme \
+  --kind institutional \
+  --plan
+~~~
+
+`--plan` should produce a deterministic report before mutation, for example:
+
+~~~text
+LIVE_OWNER
+  config/institutional-surfaces.json
+  pages/vextreme-home.html -> pages/about-vextreme.html
+
+LIVE_REFERENCE
+  pages/vex-support.html
+  pages/vextreme-covenant.html
+  index.html
+
+GENERATED
+  sitemap.xml
+  data/page-health.json
+  data/terrain-map.json
+
+EVIDENCE
+  docs/screenshots/vextreme-home-*
+  data/screenshot-evidence-assets.json
+
+TEST
+  tests/54-institutional-surfaces.test.js
+  tests/55-build-sitemap.test.js
+
+HISTORICAL_PRESERVE
+  docs/continuity/...
+  historical PR/session descriptions
+~~~
+
+The mutation mode should then fail unless:
+
+- the old canonical file exists exactly once;
+- the new canonical file does not already collide;
+- the institutional registry owns the old slug;
+- every discovered rewrite belongs to an allowed live/generated/test/evidence class;
+- historical/provenance references are not silently rewritten;
+- generated artifacts are rebuilt from their rightful owners rather than hand-patched when a builder exists.
+
+### Backward-compatible old URL
+
+Renaming the canonical page should not casually turn existing external bookmarks into 404s.
+
+Default safe posture:
+
+~~~text
+pages/about-vextreme.html      = canonical institutional surface
+pages/vextreme-home.html       = minimal compatibility redirect/alias only
+~~~
+
+The redirect/alias must be deliberately modeled so it does not become a second institutional identity, archive record, localization owner, or screenshot-evidence target. Internal navigation should point only to `about-vextreme.html` after migration.
+
+If current repository constraints make a compatibility alias unsafe, the implementation must surface that conflict explicitly rather than deleting the old URL by assumption.
+
+### Deterministic verification after rename
+
+Use repository-owned checks/builders instead of reasoning about what *might* have broken:
+
+~~~text
+node lib/build-sitemap.js
+node lib/build-page-health.js
+node lib/build-terrain-map.js
+node lib/check-institutional-surfaces.js
+node lib/check-key-alignment.js --json
+npm run institutional-surfaces:screenshots
+npm run pr-ready
+~~~
+
+Then add one rename-specific fail-closed check:
+
+~~~text
+live canonical refs containing 'vextreme-home' = 0
+except:
+  explicit compatibility redirect
+  historical/provenance records
+~~~
+
+The rename PR should include the machine-generated impact report in its proof so a reviewer can see what was classified and what was intentionally preserved.
+
+### Rename sequencing
+
+Do **not** mix the canonical rename with the first About-copy redesign unless the rename tooling/preflight proves the combined membrane remains easy to review and rollback.
+
+Preferred sequence:
+
+~~~text
+PR A0 — slug migration tooling + plan-only proof
+PR A1 — canonical vextreme-home -> about-vextreme migration
+        + compatibility redirect
+        + generated/currentness/evidence updates
+        + no semantic copy redesign beyond what the rename requires
+
+PR A2 — About Vextreme meaning / copy / structure
+
+PR B  — shared family-header projection
+~~~
+
+This gives each risk one rollback coordinate: **identity migration**, **page meaning**, and **shared presentation** are independently reversible.
+
 ## Process map to completion
 
 The Welcome Wagon is currently straightforward enough that it does **not** need a VexBoard to explain the completion sequence. Preserve this ordered path until real implementation fan-out makes a visual Board materially useful.
