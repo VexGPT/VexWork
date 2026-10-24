@@ -65,12 +65,17 @@ test('fresh lanes can discover the merge-ready rule from front-door and Quality 
   assert.match(quality, /Integration Steward rebinds current main/);
 });
 
-test('reusable integration process is source-placed but does not claim Process Registry ownership during PR 103', () => {
+test('reusable integration process registers only after accepted PR 103 releases the Process Registry', () => {
   const foundation = read('docs/foundation/REPOSITORY-INTEGRATION.md');
   const process = read('docs/process/INTEGRATE-READY-PULL-REQUESTS.md');
+  const registry = JSON.parse(read('blueprint/process-registry.json'));
+  const entry = registry.processes.find((candidate) => candidate.processRef === 'process.vexwork.integrate-ready-pull-requests');
   assert.equal(foundation.includes('process.vexwork.integrate-ready-pull-requests'), true);
-  assert.equal(process.includes('Registration state: SOURCE_PLACED_NOT_REGISTERED'), true);
-  assert.equal(process.includes('open VexWork PR #103 currently owns the shared Process Registry'), true);
+  assert.equal(process.includes('Registration state: REGISTERED'), true);
+  assert.ok(entry);
+  assert.equal(entry.ownerRepositoryRef, 'repo.vexwork');
+  assert.equal(entry.boardRefOrNull, null);
+  assert.equal(entry.executionAuthority, 'NONE');
 });
 
 // [VXG RealForever][VEXWORK][REPOSITORY-INTEGRATION]
