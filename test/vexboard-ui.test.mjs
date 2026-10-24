@@ -126,6 +126,9 @@ test('canvas usability refinement arbitrates chrome, canvas pan, object drag and
 
 test('decision labels, process frames and containment use presentation affordances without inventing new semantics', () => {
   assert.match(page, /shape-label/);
+  assert.match(page, /\.shape\.DIAMOND::before/);
+  assert.match(page, /--diamond-stroke/);
+  assert.match(page, /inset:1px/);
   assert.match(page, /\.shape\.DIAMOND \.shape-label/);
   assert.match(page, /FRAME \.shape-label/);
   assert.match(page, /containment-select/);
@@ -149,9 +152,11 @@ test('complex graph presentation renders relationship direction, labels, role ma
 
 // [VXG RealForever][VEXWORK][VEXBOARD][UI-PROOF]
 
-test('BoardJourney UI keeps semantic walk state distinct from camera navigation', () => {
+test('BoardJourney UI keeps semantic walk state distinct from camera navigation and exposes bounded history controls', () => {
   assert.match(page, /BoardJourney · semantic walk/);
   assert.match(page, /Start journey here/);
+  assert.match(page, /Clear journey/);
+  assert.match(page, /function clearJourney\(\)\{journey=null;interactionTrail=\[\]/);
   assert.match(page, /Board\.createBoardJourney/);
   assert.match(page, /Board\.advanceBoardJourney/);
   assert.match(page, /Board\.backBoardJourney/);
@@ -161,6 +166,23 @@ test('BoardJourney UI keeps semantic walk state distinct from camera navigation'
   assert.doesNotMatch(page, /method:\s*['"](?:POST|PUT|PATCH|DELETE)['"]/i);
 });
 
+
+test('Context Inspector refs reveal matching canvas objects and relationships without semantic mutation', () => {
+  assert.match(page, /function inspectorRefToken\(/);
+  assert.match(page, /function setInspectorReveal\(/);
+  assert.match(page, /function clearInspectorReveal\(/);
+  assert.match(page, /Hover or focus to reveal on canvas/);
+  assert.match(page, /dataset\.semanticRef=n\.nodeRef/);
+  assert.match(page, /dataset\.projectionItemRef=i\.projectionItemRef/);
+  assert.match(page, /l\.dataset\.relationshipRef=r\.relationshipRef/);
+  assert.match(page, /label\.dataset\.relationshipRef=r\.relationshipRef/);
+  assert.match(page, /\.shape\.inspector-reveal/);
+  assert.match(page, /\.edge\.inspector-reveal/);
+  assert.match(page, /inspectorRefToken\(r\.relationshipRef,\{semanticRefs:\[r\.fromRef,r\.toRef\],relationshipRefs:\[r\.relationshipRef\]\}\)/);
+  assert.match(page, /inspectorRefToken\(value\.nodeRef,\{semanticRefs:\[value\.nodeRef\]\}\)/);
+  assert.match(page, /token\.onmouseenter=reveal;token\.onfocus=reveal;token\.onmouseleave=clearInspectorReveal;token\.onblur=clearInspectorReveal/);
+  assert.doesNotMatch(page, /'SET_CONTAINMENT'.*inspector-reveal/s);
+});
 
 test('prototype demo drives clickable local simulation through scenario overlays and BoardJourney', () => {
   const graph = normalizeBoardGraph(prototypeDemo.graph);
