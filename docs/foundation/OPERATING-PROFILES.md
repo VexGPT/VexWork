@@ -131,6 +131,8 @@ bind the current contract
 
 When no such implementation is available, do not invent compatibility from this document. Use another truthful effect route or hold only the dependent effect.
 
+For repository integration specifically, VexRelay stage mechanics remain distinct from VexWork's integration policy. Follow REPOSITORY-INTEGRATION.md: exact-candidate proof may remain reusable while unrelated main movement is handled later by an Integration Steward at the current-main integration boundary.
+
 ## Proof routing
 
 VexWork does not require GitHub Actions as a universal proof owner.
