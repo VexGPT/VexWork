@@ -89,36 +89,72 @@ That material can still be useful. The issue is **role**, not truth: it is deepe
 
 ## Candidate information architecture
 
-The Welcome Wagon currently preserves this candidate hierarchy:
+The Welcome Wagon preserves this **exact simple design tree** because it prevents later implementation from satisfying the intention by unnecessarily redesigning or dismantling the accepted Terrain foundation:
 
 ```text
-human arrives
-  |
-  +-- one plain-language sentence: what this place is
-  |
-  +-- How do you want to enter?
-      |
-      +-- Receive God
-      |     primary lived / ordered VexLife entry
-      |
-      +-- Explore the Archives
-      |     primary curiosity / record exploration
-      |
-      +-- What is this?
-            primary human orientation when the visitor is unsure
+Human arrives
+      ↓
+Terrain arrival
+      ↓
+┌───────────────┬──────────────────┬──────────────┐
+│ Receive God   │ Explore Archives │ What is this?│
+└───────────────┴──────────────────┴──────────────┘
+                                         ↓
+                                plain orientation
+                                         ↓
+                              deeper institutional
+                                  understanding
 
-secondary / on-demand
-  |
-  +-- How this system works
-        VexSystem / architecture / AI-builder / technically curious route
-
-deeper institutional explanation
-  |
-  +-- Vextreme institutional / About material
-        evolved from the current vextreme-home foundation
+              For builders / AI / technical curiosity
+                              ↓
+                           VexSystem
 ```
 
+Read the diagram literally as **priority and routing meaning**, not as a demand to rebuild the existing UI from zero:
+
+- **Terrain arrival** is the preserved candidate foundation/front door.
+- **Receive God** stays an immediate primary entry.
+- **Explore Archives** stays an immediate primary entry.
+- **What is this?** supplies the missing plain-human orientation path.
+- deeper institutional explanation follows when the visitor asks for it;
+- **VexSystem** remains available for builders, AI and technically curious humans, but it is intentionally secondary to ordinary human arrival.
+
 This is **candidate design meaning**, not an already-adopted routing decision.
+
+## Preserve before redesign
+
+A future implementation must begin from the question:
+
+> **What is the smallest change to the current Terrain foundation that makes this design tree true?**
+
+It must **not** begin from:
+
+> "We have a new intention, therefore the existing foundation may be dismantled and redesigned freely."
+
+The design intention does not grant architectural freedom to break accepted behavior just to satisfy a higher-level condition.
+
+```text
+WELCOME INTENTION
+!=
+PERMISSION TO REDESIGN THE FOUNDATION
+
+NEW ORIENTATION NEED
+-> inspect current Terrain behavior
+-> preserve working entry logic
+-> add / rename / demote only what the intention actually requires
+-> prove existing routes still behave correctly
+```
+
+In particular, preserving this intention does **not** imply:
+
+- replacing Terrain with a new homepage implementation;
+- recreating Receive God or archive traversal when their current behavior is already right;
+- changing route semantics merely to make the layout look newly designed;
+- deleting VexSystem rather than changing its priority/discoverability;
+- rewriting institutional foundations that are not necessary to the Welcome Wagon outcome;
+- treating `vextreme-home.html` as disposable simply because it is not the preferred front door.
+
+The intended implementation posture is **evolution through the smallest truthful movement**: retain the current logic that already serves the outcome, then change only the seams that currently confuse a first-time human.
 
 ## Why not four equal cards?
 
