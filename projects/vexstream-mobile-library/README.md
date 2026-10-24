@@ -4,9 +4,11 @@
 
 ## Human outcome
 
-Make downloaded VexStream music a **durable, reusable Android device library** while keeping the
-already-accepted one-shot MassDownload behavior truthful and keeping continuous "Keep Offline" sync
-as a separately governed future policy.
+Make VexStream on Android a **durable, reusable and human-navigable mobile music library** while
+keeping the accepted durable-device and one-shot MassDownload truths intact. Android now also has a
+compact **Sort by / Filter by** surface plus settings-level **Download all missing songs / Remove all
+downloaded songs** for the canonical Songs library. Continuous "Keep Offline" sync remains a
+separately governed future policy.
 
 This Project is the human/navigation owner for that outcome. Product semantics remain with
 VexLife-Android and VexStream Music.
@@ -40,8 +42,11 @@ VexStream Mobile Library                         OUTCOME
 |   +-- Existing private-download migration      TASK / completed
 |   +-- Clear-data durability lived proof        TASK / completed
 |
-+-- Contextual Download Experience               OUTCOME
-|   +-- Contextual Download Missing              TASK
++-- Contextual Download Experience               OUTCOME / decomposed
+|   +-- Songs bulk download / remove all          TASK / needs human review
+|
++-- Library Browse & Discovery                   OUTCOME / decomposed
+|   +-- Sort / Filter library controls           TASK / needs human review
 |
 +-- MassDownload Maturity                        OUTCOME
     +-- MassDownload product implementation      TASK / completed
@@ -58,10 +63,18 @@ Persistent Keep Offline / Sync
     PARKED
     NO_AUTHORITY
     NO_EFFECTS
+
+User tag topology / dynamic stations
+    POTENTIAL
+    CAPTURED
+    PARKED
+    NO_AUTHORITY
+    NO_EFFECTS
 ```
 
-It remains visible through the Parking Lot until Victor deliberately adopts continuous sync as a
-separate product commitment.
+Both remain visible through the Parking Lot until deliberately adopted. Personal tag/station topology
+is separate because its durable classification and rule ownership are different product questions;
+it is not hidden inside the first Sort / Filter implementation.
 
 ## Source truth — original motivation and completed durable-device state
 
@@ -198,33 +211,15 @@ github.pull.vexlife-android.165
 evidence.vexstream.mobile-library.clear-data.a039.return.sha256.67e4b6ede7aab8964406894da8fdcddc216f88692e11fbd8a21ac2ae21c537b7
 ```
 
-### ML-D4 — Contextual Download Missing reuses MassDownload semantics
+### ML-D4 — Songs settings actions reuse MassDownload / Offline Copy truth
 
-The settings-sheet quick action is another entry point into the existing one-shot download planner,
-not a second downloader.
+The VexStream settings sheet now owns a whole-Songs convenience doorway, not another downloader or storage owner.
 
-Human requirement:
+`Download all missing songs` reuses the existing exact MassDownload planner over canonical playable Songs. `Remove all downloaded songs` reuses repository removal, VexStream-owned MediaStore deletion, and offline-index persistence. Album, Artist and Playlist detail screens keep their accepted collection-level Download missing action.
 
-- place the quick action beneath **Refresh library** in the VexStream connection/settings surface;
-- make its scope follow the current music context (Songs / Album / Artist / Playlist as admitted by
-  the feature design);
-- show the current missing count;
-- constrain wording for phone width rather than forcing long labels;
-- keep exact copy/secondary-label realization as a design choice until Android feature authoring.
+PR #167 merged at `8213ae7befe08bc0a21c76bd70e7c8790e5bcf9f`; A003 passed focused/local proof plus exactly one three-song connected Journey and fresh Assurance.
 
-```text
-CONTEXTUAL_QUICK_ACTION
--> EXISTING_MASSDOWNLOAD_PLAN
-!= SECOND_DOWNLOAD_ENGINE
-```
-
-Relevant product sources:
-
-```text
-VexStreamConnectionPresentation.kt
-VexStreamCollectionPresentation.kt
-VexStreamOfflineCollection.kt
-```
+`SOURCE_PROVEN_AND_MERGED != HUMAN_ACCEPTED`. VexWork therefore projects this Work as **WAITING_HUMAN** until Victor reviews the merged experience.
 
 ### ML-D5 — One-shot Download missing is not persistent Keep Offline
 
@@ -342,6 +337,100 @@ HISTORICAL_TOOL_DEPENDENCY
 
 Do not move the VexStream storage work back to `WAITING_TOOL` merely because the reusable
 orchestration Project still has its own unfinished work.
+
+### ML-D9 — Sort by and Filter by are one presentation surface, not one measurement
+
+The immediate human need is one compact place to organize the music about to be played:
+
+```text
+SORT BY
+    changes order
+    does not change membership
+
+FILTER BY
+    changes current listening membership
+    does not mutate catalog / playlist / Queue / Playback truth
+
+SEARCH
+    evaluates inside that same organized set
+```
+
+Current Android candidate PR #166 is ordinary-forwarded onto the terminal durable-device main from
+PR #165. The durable-device lane changed zero paths in this feature's 16-file source membrane and
+deliberately left the VexStream feature-home README to this organization lane.
+
+Current first-slice controls:
+
+```text
+Sort
+    Title / Artist / Album / Year / Duration
+
+Filter
+    Duration: Any / Less than / Greater than + positive minute threshold
+    Artist: multi-select
+    Genre: multi-select
+    Availability: desktop-only / desktop+device / device-only
+```
+
+The duration pressure remains the proving human use case:
+
+```text
+< 10 / 30 min  -> ordinary-song variety / avoid long mixes
+> 30 min / 2 h -> long-form journey / flight / focus listening
+```
+
+Unknown duration does not match an active threshold. Visible rows, row playback context, Play All
+and Shuffle All consume the same filtered membership. Playlist filtering may narrow visible members
+but does not rewrite canonical playlist order.
+
+The completed durable-device substrate improves the meaning of Availability without changing this
+feature's ownership: rediscovered `Downloaded` truth and verified `content://` local media can now
+legitimately project as `HUB_AND_LOCAL` or `LOCAL_ONLY`, while Sort / Filter remains a read-only
+presentation lens over `VexStreamTrackState.availability`.
+
+### ML-D10 — VexStream source tags/categories remain a later mobile-projection seam
+
+VexStream Music already owns source `tags[]` and `categories[]`. The Android mobile catalog still
+does not carry them, and PR #166 does not widen into that cross-repository projection merely to ship
+the first useful organization surface.
+
+```text
+SOURCE_TAGS / SOURCE_CATEGORIES
+!= ANDROID_LOCAL_INVENTED_TAGS
+!= USER_AUTHORED_CLASSIFICATION
+```
+
+### ML-D11 — User-authored tags and dynamic stations remain separate future Work
+
+A future personal classification layer may drive reusable dynamic stations / smart playlists, but
+that is distinct from both imported provider tags and a temporary Filter:
+
+```text
+STATIC_PLAYLIST
+    explicit ordered track references
+
+FILTER
+    temporary current-view selection
+
+STATION / SMART PLAYLIST
+    durable reusable selection rule
+    resolves membership from current Library truth
+```
+
+`work.vexstream.mobile-library.tag-topology-stations` remains `POTENTIAL / CAPTURED / PARKED /
+NO_AUTHORITY / NO_EFFECTS`.
+
+### ML-D12 — Sort / Filter Android source and proof are accepted; human Verify entry remains
+
+PR #166 merged at `01432d594172829c2da22e3bddcb09c073c97c16` with exact A011 tree identity. Focused/local proof, W02 device proof, aggregate device proof, fresh Assurance and lifecycle currentness all passed.
+
+VexWork leaves the obsolete `WAITING_TOOL` checkpoint, returns to the already-approved Active phase, and projects **WAITING_HUMAN** because the Project v1 policy protects entry into Verify.
+
+### ML-D13 — Songs bulk management is merged/proven and waiting on lived review
+
+PR #167 is accepted Android source. Its bounded fixture used exactly three Songs: one local plus two missing; Download all reached 3/3 local, Remove all returned to 0/3 local, and the same three catalog refs remained.
+
+This Work item had no stored transition history, so VexWork currentizes its source-managed snapshot directly to `WAITING_HUMAN` rather than fabricating retrospective lifecycle edges.
 
 ## Work-state and agency safety
 

@@ -190,6 +190,22 @@
   "parkingLot": {
     "items": [
       {
+        "workRef": "work.vexstream.mobile-library.tag-topology-stations",
+        "label": "User tag topology / dynamic stations",
+        "purpose": "Preserve the future product question of user-authored music tags that remain distinct from imported source tags/categories and can drive reusable dynamic stations or smart-playlist rules without pre-deciding identity attachment, persistence ownership, rule language, or playlist materialization.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "LOW",
+        "repositoryRefs": [
+          "repo.vexstream-music",
+          "repo.vexlife-android"
+        ],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "updatedAt": "2026-10-24T02:59:02.000Z"
+      },
+      {
         "workRef": "work.vexwork.history.foundational-infrastructure-backfill",
         "label": "Foundational Infrastructure history backfill",
         "purpose": "Gradually reconstruct completed foundational work into VexWork with provenance so future humans and instances can perceive what was built from a dashboard instead of rediscovering it across repositories and chat history.",
@@ -270,7 +286,7 @@
   "summary": {
     "projectWorkItemCount": 8,
     "openProjectWorkItemCount": 0,
-    "parkingLotItemCount": 5
+    "parkingLotItemCount": 6
   },
   "effects": false,
   "executionAuthority": "NONE"

@@ -16,6 +16,7 @@
     "work.vexlife.blueprint-source-of-truth.outcome",
     "work.android-proof-orchestration.outcome",
     "work.vex-universe.outcome",
+    "work.vexstream.mobile-library.tag-topology-stations",
     "work.vextreme.vexsite.localization.outcome"
   ],
   "items": [
@@ -305,13 +306,13 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-21T08:41:00.000Z",
-      "updatedAt": "2026-10-22T01:32:00.000Z",
+      "updatedAt": "2026-10-24T05:30:04.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "workRef": "work.vexstream.mobile-library.outcome",
       "parentWorkRefOrNull": null,
       "label": "VexStream Mobile Library",
-      "purpose": "Make downloaded VexStream music a durable, reusable Android device library while preserving exact media identity, truthful one-shot download semantics, and separately governed persistent sync.",
+      "purpose": "Make VexStream on Android a durable, reusable and human-navigable mobile music library: preserve exact media identity and truthful download semantics while giving listeners coherent browse, sort/filter, and whole-Songs download management, with persistent sync separately governed.",
       "workClass": "OUTCOME",
       "state": "DECOMPOSED",
       "priorityClass": "HIGH",
@@ -324,7 +325,11 @@
         "github.pull.vexlife-android.142",
         "github.issue.vexlife-android.144",
         "repo.vexlife-android:docs/features/README.md",
-        "projects/vexstream-mobile-library/README.md"
+        "projects/vexstream-mobile-library/README.md",
+        "github.pull.vexlife-android.166",
+        "github.commit.vexlife-android.01432d594172829c2da22e3bddcb09c073c97c16",
+        "github.pull.vexlife-android.167",
+        "github.commit.vexlife-android.8213ae7befe08bc0a21c76bd70e7c8790e5bcf9f"
       ],
       "nextProcessRefs": [
         "process.vexlife-android.feature-authoring"
@@ -547,15 +552,15 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-21T08:41:00.000Z",
-      "updatedAt": "2026-10-22T01:32:00.000Z",
+      "updatedAt": "2026-10-24T05:30:04.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "workRef": "work.vexstream.mobile-library.contextual-download-missing",
       "parentWorkRefOrNull": "work.vexstream.mobile-library.download-experience",
-      "label": "Contextual Download Missing",
-      "purpose": "Offer one bounded Download missing action whose scope and count come from the listener's current Songs, Album, Artist, or Playlist context while reusing MassDownload planning/execution semantics.",
+      "label": "Songs bulk download / remove all",
+      "purpose": "From VexStream settings, let the listener manage the canonical playable Songs library in one shot: Download all currently missing eligible songs and Remove all currently downloaded local copies, reusing existing MassDownload/offline-copy owners while preserving catalog truth. Album, Artist, and Playlist collection Download missing remains owned by existing collection actions.",
       "workClass": "TASK",
-      "state": "DECOMPOSED",
+      "state": "WAITING_HUMAN",
       "priorityClass": "NORMAL",
       "dependencyRefs": [
         "work.vexstream.mobile-library.massdownload-product"
@@ -569,7 +574,10 @@
         "projects/vexstream-mobile-library/README.md",
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt",
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamCollectionPresentation.kt",
-        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/offline/VexStreamOfflineCollection.kt"
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/offline/VexStreamOfflineCollection.kt",
+        "github.pull.vexlife-android.167",
+        "github.commit.vexlife-android.8213ae7befe08bc0a21c76bd70e7c8790e5bcf9f",
+        "evidence.vexstream.mobile-library.bulk-download-management.a003.return.sha256.c43d3203bff4c36a7b67693606272355914f4257912f19319c6bd39258180974"
       ],
       "nextProcessRefs": [
         "process.vexlife-android.feature-authoring"
@@ -3590,6 +3598,115 @@
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexstream.mobile-library.library-browse-discovery",
+      "parentWorkRefOrNull": "work.vexstream.mobile-library.outcome",
+      "label": "Library Browse & Discovery",
+      "purpose": "Give listeners one coherent way to order and narrow current VexStream library truth into useful listening sets while catalog, collection, playback, and classification truth keep their rightful owners.",
+      "workClass": "OUTCOME",
+      "state": "DECOMPOSED",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexlife-android",
+        "repo.vexstream-music"
+      ],
+      "sourceRefs": [
+        "work.vexstream.mobile-library.outcome",
+        "projects/vexstream-mobile-library/README.md",
+        "repo.vexlife-android:docs/features/README.md",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/README.md",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamLibraryProjection.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamLibrarySurface.kt",
+        "repo.vexstream-music:v2/desktop/library/model.go",
+        "repo.vexstream-music:mobile_bridge.go"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "nextProcessRefs": [
+        "process.vexlife-android.feature-authoring"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-23T08:02:00.000Z",
+      "updatedAt": "2026-10-24T02:59:02.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexstream.mobile-library.sort-filter-controls",
+      "parentWorkRefOrNull": "work.vexstream.mobile-library.library-browse-discovery",
+      "label": "Sort / Filter library controls",
+      "purpose": "Present one compact VexStream library organization surface that keeps Sort by and Filter by distinct, uses field-appropriate controls, composes with Search, and makes visible rows plus row playback / Play All / Shuffle All consume the same current filtered listening membership.",
+      "workClass": "TASK",
+      "state": "WAITING_HUMAN",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexlife-android",
+        "repo.vexstream-music"
+      ],
+      "sourceRefs": [
+        "work.vexstream.mobile-library.library-browse-discovery",
+        "github.issue.vexlife-android.163",
+        "github.pull.vexlife-android.166",
+        "projects/vexstream-mobile-library/README.md",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/README.md",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamLibraryProjection.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamLibraryOrganizationPresentation.kt",
+        "repo.vexlife-android:app/src/journeyTest/kotlin/com/vextreme/vexlife/android/testing/journey/catalog/shared/vexstream/VexStreamJourneys.kt",
+        "repo.vexstream-music:v2/desktop/library/model.go",
+        "repo.vexstream-music:v2/desktop/library/filesystem/metadata.go",
+        "repo.vexstream-music:v2/web/features/library/client.js",
+        "repo.vexstream-music:mobile_bridge.go",
+        "github.pull.vexlife-android.165",
+        "github.commit.vexlife-android.01432d594172829c2da22e3bddcb09c073c97c16",
+        "evidence.vexstream.mobile-library.sort-filter.a011.return.sha256.ebd1e85886d471375260a35d92d641b38cb292016a1154455e92a9892c412d0a"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "nextProcessRefs": [
+        "process.vexlife-android.feature-authoring"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-23T08:02:00.000Z",
+      "updatedAt": "2026-10-24T05:00:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexstream.mobile-library.tag-topology-stations",
+      "parentWorkRefOrNull": null,
+      "label": "User tag topology / dynamic stations",
+      "purpose": "Preserve the future product question of user-authored music tags that remain distinct from imported source tags/categories and can drive reusable dynamic stations or smart-playlist rules without pre-deciding identity attachment, persistence ownership, rule language, or playlist materialization.",
+      "workClass": "POTENTIAL",
+      "state": "CAPTURED",
+      "workDisposition": "PARKED",
+      "priorityClass": "LOW",
+      "dependencyRefs": [
+        "work.vexstream.mobile-library.sort-filter-controls"
+      ],
+      "repositoryRefs": [
+        "repo.vexstream-music",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "work.vexstream.mobile-library.library-browse-discovery",
+        "projects/vexstream-mobile-library/README.md",
+        "repo.vexstream-music:v2/desktop/library/model.go",
+        "repo.vexstream-music:v2/desktop/library/filesystem/metadata.go",
+        "repo.vexstream-music:v2/web/features/library/client.js",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/README.md"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+      "nextProcessRefs": [
+        "process.vexlife-android.feature-authoring"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-23T08:02:00.000Z",
+      "updatedAt": "2026-10-24T02:59:02.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vextreme.vexsite.localization.canonical-global-core-source",
       "parentWorkRefOrNull": "work.vextreme.vexsite.localization.outcome",
       "label": "Advance the canonical Conversations-with-God Global Core source queue",
@@ -5812,6 +5929,113 @@
         "src/core/vexboard-source-projectors.mjs"
       ],
       "createdAt": "2026-10-24T05:21:11.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.sort-filter.decomposed.20261023",
+      "workRef": "work.vexstream.mobile-library.sort-filter-controls",
+      "priorState": "CAPTURED",
+      "nextState": "DECOMPOSED",
+      "reason": "The duration-filter request was decomposed into one coherent library organization surface: sorting changes order, filtering changes current listening membership, Search composes with that set, and personal tag/station topology remains separate future Work.",
+      "actorRef": "actor.local-vex-operations.vexstream-mobile-library",
+      "sourceRefs": [
+        "github.issue.vexlife-android.163",
+        "projects/vexstream-mobile-library/README.md"
+      ],
+      "createdAt": "2026-10-23T23:44:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.sort-filter.plan-validated.20261023",
+      "workRef": "work.vexstream.mobile-library.sort-filter-controls",
+      "priorState": "DECOMPOSED",
+      "nextState": "PLAN_VALIDATED",
+      "reason": "Current Android and VexStream source establish the exact projection/playback boundaries, upstream tag/category extension seam, bounded source membrane, and focused plus Feature-Walk proof plan.",
+      "actorRef": "actor.local-vex-operations.vexstream-mobile-library",
+      "sourceRefs": [
+        "github.issue.vexlife-android.163",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/README.md",
+        "projects/vexstream-mobile-library/README.md"
+      ],
+      "createdAt": "2026-10-23T23:44:01.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.sort-filter.ready.20261023",
+      "workRef": "work.vexstream.mobile-library.sort-filter-controls",
+      "priorState": "PLAN_VALIDATED",
+      "nextState": "READY",
+      "reason": "The feature has a current Android source owner, no competing Sort/Filter writer, a bounded implementation membrane, and a clear completion/proof route.",
+      "actorRef": "actor.local-vex-operations.vexstream-mobile-library",
+      "sourceRefs": [
+        "github.issue.vexlife-android.163",
+        "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md",
+        "projects/vexstream-mobile-library/README.md"
+      ],
+      "createdAt": "2026-10-23T23:44:02.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.sort-filter.running.20261023",
+      "workRef": "work.vexstream.mobile-library.sort-filter-controls",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Victor explicitly directed this lane to continue and complete the feature after the design/VexBoard refinement; Android issue 163 owns the bounded feature and draft PR 164 is now the live implementation candidate. Implementation is active while exact-head repository/Journey proof remains pending.",
+      "actorRef": "actor.local-vex-operations.vexstream-mobile-library",
+      "sourceRefs": [
+        "github.issue.vexlife-android.163",
+        "github.pull.vexlife-android.164",
+        "projects/vexstream-mobile-library/README.md",
+        "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md"
+      ],
+      "createdAt": "2026-10-23T23:44:03.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.sort-filter.waiting-tool.android-host-proof.20261023",
+      "workRef": "work.vexstream.mobile-library.sort-filter-controls",
+      "priorState": "RUNNING",
+      "nextState": "WAITING_TOOL",
+      "reason": "The Android Sort / Filter source candidate is authored and current; exact projection source compiles and its core organization behavior passes in a minimal Kotlin check, but repository-owned vexVerifyLocal and device Feature-Walk Journey proof require a qualified Android host/Relay execution surface that is not available in the current operator environment. Preserve source truth and wait on proof tooling rather than infer product failure or acceptance.",
+      "actorRef": "actor.local-vex-operations.vexstream-mobile-library",
+      "sourceRefs": [
+        "github.issue.vexlife-android.163",
+        "github.pull.vexlife-android.164",
+        "repo.vexlife-android:docs/foundation/ANDROID-HOST-PROOF.md"
+      ],
+      "createdAt": "2026-10-23T23:48:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.sort-filter.running.proof-complete.20261024",
+      "workRef": "work.vexstream.mobile-library.sort-filter-controls",
+      "priorState": "WAITING_TOOL",
+      "nextState": "RUNNING",
+      "reason": "Exact-head A011 repository/device proof, fresh Assurance, lifecycle currentness, merge, and post-merge tree identity completed the prior Android proof-tool hold. Return the work to its already-approved Active phase without crossing the protected human Verify boundary.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexlife-android.166",
+        "github.commit.vexlife-android.01432d594172829c2da22e3bddcb09c073c97c16",
+        "evidence.vexstream.mobile-library.sort-filter.a011.return.sha256.ebd1e85886d471375260a35d92d641b38cb292016a1154455e92a9892c412d0a",
+        "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md"
+      ],
+      "createdAt": "2026-10-24T04:59:35.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.sort-filter.waiting-human.acceptance.20261024",
+      "workRef": "work.vexstream.mobile-library.sort-filter-controls",
+      "priorState": "RUNNING",
+      "nextState": "WAITING_HUMAN",
+      "reason": "Android source and exact proof are accepted and merged. The Project v1 agency policy protects entry into Verify, so the remaining Work edge is Victor lived review rather than more source or tool execution.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexlife-android.166",
+        "github.commit.vexlife-android.01432d594172829c2da22e3bddcb09c073c97c16",
+        "projects/vexstream-mobile-library/agency.policy.json",
+        "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md"
+      ],
+      "createdAt": "2026-10-24T05:00:00.000Z"
     }
   ],
   "sourceRefs": [
