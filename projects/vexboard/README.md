@@ -419,6 +419,10 @@ A source owner may also have its own canonical human name, short name, aliases, 
 serialized names or provider-native identifiers. VexBoard may project those when useful, but it should
 not collapse them into a new VexBoard identity or infer equivalence from matching strings.
 
+Conversely, preserving identity does not make every boundary rename harmless. A change to a persisted,
+serialized, provider-native or otherwise contract-bearing name may require target-specific migration
+or compatibility proof while the semantic identity remains continuous.
+
 Conceptually:
 
 ```text
