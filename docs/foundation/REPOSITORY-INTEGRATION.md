@@ -90,6 +90,20 @@ lane C -> prove PR C ┘
 
 A candidate that becomes ready does not need to chase the current main head immediately. It can wait while preserving exact-candidate proof.
 
+The source lane should explicitly announce the boundary in ordinary language:
+
+```text
+READY_FOR_INTEGRATION
+candidate = <exact head/tree>
+proof = <accepted exact-candidate evidence>
+main movement = coordination context only
+next owner = Integration Steward
+```
+
+This is the durable equivalent of:
+
+> exact branch proof first; live main movement is coordination context, not a failure.
+
 The integration queue answers a different question:
 
 > Which already-proven candidate should be reconsidered against the current trunk next?
