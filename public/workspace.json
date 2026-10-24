@@ -1,7 +1,7 @@
 {
   "schemaVersion": "vexwork.public-workspace/v1",
   "projectRegistryRef": "registry.vexwork.projects.001",
-  "projectRegistryVersion": 13,
+  "projectRegistryVersion": 14,
   "projects": [
     {
       "project": {
@@ -941,6 +941,41 @@
           "transitionHistory": []
         },
         {
+          "workRef": "work.vexstream.mobile-library.full-player",
+          "label": "VexStream full player",
+          "purpose": "Add a dedicated Android full-player destination using current Playback, Queue and Repeat State/Control/Act/Effect owners: artwork/title/artist, previous/play-pause/next, shuffle/repeat, progress, upward queue access, and large horizontal previous/next gestures suitable for low-precision interaction without creating a second player truth owner.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexstream.mobile-library.playback-surfaces",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexstream.mobile-library.now-playing-artwork-projection"
+          ],
+          "repositoryRefs": [
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "work.vexstream.mobile-library.playback-surfaces",
+            "work.vexstream.mobile-library.now-playing-artwork-projection",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamPlayerPresentation.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/VexStreamPlaybackControl.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/queue/VexStreamQueueControl.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/repeat/VexStreamRepeatControl.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/MainActivity.kt"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [
+            "process.vexlife-android.feature-authoring"
+          ],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-24T11:20:00.000Z",
+          "updatedAt": "2026-10-24T11:20:00.000Z",
+          "transitionHistory": []
+        },
+        {
           "workRef": "work.vexstream.mobile-library.large-offline-startup-performance",
           "label": "Large offline library cold-start performance",
           "purpose": "Measure and resolve the noticeably slow Android cold launch observed with 785 downloaded VexStream songs, identifying which startup phase/thread owns the delay while preserving exact local-media integrity and durable-device recovery semantics.",
@@ -1113,6 +1148,38 @@
           "transitionHistory": []
         },
         {
+          "workRef": "work.vexstream.mobile-library.now-playing-artwork-projection",
+          "label": "Now Playing artwork projection",
+          "purpose": "Carry optional current-track artwork from VexStream's canonical library metadata into the sanitized Android mobile catalog and Media3 MediaItem metadata so player/widget surfaces can render artwork when it is actually available without inventing Android-local artwork truth.",
+          "workClass": "TASK",
+          "state": "READY",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexstream.mobile-library.playback-surfaces",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexstream-music",
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "work.vexstream.mobile-library.playback-surfaces",
+            "repo.vexstream-music:v2/desktop/library/model.go",
+            "repo.vexstream-music:v2/desktop/mobile/catalog.go",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamHubContract.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamPlayback.kt"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [
+            "process.vexlife-android.feature-authoring"
+          ],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-24T11:20:00.000Z",
+          "updatedAt": "2026-10-24T11:20:00.000Z",
+          "transitionHistory": []
+        },
+        {
           "workRef": "work.vexstream.mobile-library.outcome",
           "label": "VexStream Mobile Library",
           "purpose": "Make VexStream on Android a durable, reusable and human-navigable mobile music library: preserve exact media identity and truthful download semantics while giving listeners coherent browse, sort/filter, and whole-Songs download management, with persistent sync separately governed.",
@@ -1126,7 +1193,8 @@
             "work.vexstream.mobile-library.durable-device-library",
             "work.vexstream.mobile-library.large-offline-startup-performance",
             "work.vexstream.mobile-library.library-browse-discovery",
-            "work.vexstream.mobile-library.massdownload-maturity"
+            "work.vexstream.mobile-library.massdownload-maturity",
+            "work.vexstream.mobile-library.playback-surfaces"
           ],
           "dependencyRefs": [],
           "repositoryRefs": [
@@ -1151,6 +1219,42 @@
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-21T08:41:00.000Z",
           "updatedAt": "2026-10-24T05:30:04.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexstream.mobile-library.playback-surfaces",
+          "label": "Playback surfaces",
+          "purpose": "Evolve VexStream's Android listening surfaces from the accepted mini-player into a full current-player experience that reuses Playback, Queue and Repeat semantic owners while remaining a presentation/navigation outcome rather than a second playback runtime.",
+          "workClass": "OUTCOME",
+          "state": "DECOMPOSED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexstream.mobile-library.outcome",
+          "childWorkRefs": [
+            "work.vexstream.mobile-library.full-player",
+            "work.vexstream.mobile-library.now-playing-artwork-projection"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexlife-android",
+            "repo.vexstream-music"
+          ],
+          "sourceRefs": [
+            "work.vexstream.mobile-library.outcome",
+            "projects/vexstream-mobile-library/README.md",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamPlayerPresentation.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/VexStreamPlaybackBehavior.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/queue/VexStreamQueueBehavior.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/repeat/VexStreamRepeatBehavior.kt"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [
+            "process.vexlife-android.feature-authoring"
+          ],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T11:20:00.000Z",
+          "updatedAt": "2026-10-24T11:20:00.000Z",
           "transitionHistory": []
         },
         {
@@ -1411,6 +1515,7 @@
             "work.vexstream.mobile-library.large-offline-startup-performance",
             "work.vexstream.mobile-library.massdownload-maturity",
             "work.vexstream.mobile-library.outcome",
+            "work.vexstream.mobile-library.playback-surfaces",
             "work.vexstream.mobile-library.download-experience",
             "work.vexstream.mobile-library.library-browse-discovery"
           ]
@@ -1418,12 +1523,16 @@
         {
           "laneRef": "lane.work.planned",
           "label": "Planned",
-          "workRefs": []
+          "workRefs": [
+            "work.vexstream.mobile-library.full-player"
+          ]
         },
         {
           "laneRef": "lane.work.ready",
           "label": "Ready",
-          "workRefs": []
+          "workRefs": [
+            "work.vexstream.mobile-library.now-playing-artwork-projection"
+          ]
         },
         {
           "laneRef": "lane.work.active",
@@ -1475,10 +1584,10 @@
         }
       ],
       "summary": {
-        "workItemCount": 15,
-        "openWorkItemCount": 8,
-        "outcomeCount": 5,
-        "taskCount": 8,
+        "workItemCount": 18,
+        "openWorkItemCount": 11,
+        "outcomeCount": 6,
+        "taskCount": 10,
         "defectCount": 2,
         "potentialCount": 0,
         "needsHumanCount": 2,
@@ -1499,7 +1608,8 @@
             "work.vexstream.mobile-library.durable-device-library",
             "work.vexstream.mobile-library.large-offline-startup-performance",
             "work.vexstream.mobile-library.library-browse-discovery",
-            "work.vexstream.mobile-library.massdownload-maturity"
+            "work.vexstream.mobile-library.massdownload-maturity",
+            "work.vexstream.mobile-library.playback-surfaces"
           ],
           "dependencyRefs": [],
           "repositoryRefs": [
@@ -8959,6 +9069,233 @@
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-10-24T05:45:00.000Z",
           "updatedAt": "2026-10-24T05:45:00.000Z",
+          "transitionHistory": []
+        }
+      ]
+    },
+    {
+      "project": {
+        "projectRef": "project.android-widget-foundation",
+        "label": "Android Widget Foundation",
+        "purpose": "Create a reusable Android home-screen App Widget foundation that projects product-owned State into compact remote surfaces and routes user interaction back as bounded product Controls, with VexStream playback as the first real consumer.",
+        "rootWorkRefs": [
+          "work.android-widget-foundation.outcome"
+        ],
+        "repositoryRefs": [
+          "repo.vexwork",
+          "repo.vexlife-android"
+        ],
+        "sourceRefs": [
+          "projects/android-widget-foundation/README.md",
+          "docs/process/FORM-PROJECT.md",
+          "repo.vexlife-android:docs/CULTURE.md",
+          "repo.vexlife-android:docs/foundation/FEATURE-EXPERIENCE-LANGUAGE.md",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/MainActivity.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/media/vexstream/VexStreamPlaybackService.kt"
+        ],
+        "formedAt": "2026-10-24T11:20:00.000Z"
+      },
+      "graphRef": "workgraph.vexwork.foundation",
+      "viewRef": "view.android-widget-foundation.board",
+      "items": [
+        {
+          "workRef": "work.android-widget-foundation.outcome",
+          "label": "Android Widget Foundation",
+          "purpose": "Establish one reusable home-screen widget substrate for VexLife Android so compact Android surfaces observe product-owned current State, render bounded projections, and return user intent through rightful product Control/Act/Effect owners instead of becoming parallel truth or effect systems.",
+          "workClass": "OUTCOME",
+          "state": "DECOMPOSED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.android-widget-foundation.semantic-widget-surface",
+            "work.android-widget-foundation.vexstream-playback-widget"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "project.android-widget-foundation",
+            "projects/android-widget-foundation/README.md",
+            "repo.vexlife-android:docs/CULTURE.md",
+            "repo.vexlife-android:docs/foundation/FEATURE-EXPERIENCE-LANGUAGE.md"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [
+            "process.vexlife-android.feature-authoring"
+          ],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T11:20:00.000Z",
+          "updatedAt": "2026-10-24T11:20:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.android-widget-foundation.semantic-widget-surface",
+          "label": "Reusable semantic App Widget surface",
+          "purpose": "Implement the smallest reusable Android App Widget foundation: Compose-first Glance rendering, explicit widget projection data, AppWidget receiver lifecycle, direct Activity deep links, and bounded callback/control dispatch that never lets widget code own domain truth or mutate providers directly.",
+          "workClass": "TASK",
+          "state": "READY",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.android-widget-foundation.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "projects/android-widget-foundation/README.md",
+            "repo.vexlife-android:app/src/main/AndroidManifest.xml",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/MainActivity.kt",
+            "repo.vexlife-android:docs/CULTURE.md"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [
+            "process.vexlife-android.feature-authoring"
+          ],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-24T11:20:00.000Z",
+          "updatedAt": "2026-10-24T11:20:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.android-widget-foundation.vexstream-playback-widget",
+          "label": "VexStream playback widget",
+          "purpose": "Use the widget foundation as patient zero: project current VexStream artwork when available, title/artist and Previous/Play-Pause/Next availability into a compact home-screen widget; tapping the artwork/content area opens the VexStream full player; controls route through existing Playback and Queue semantics.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.android-widget-foundation.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.android-widget-foundation.semantic-widget-surface",
+            "work.vexstream.mobile-library.full-player"
+          ],
+          "repositoryRefs": [
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "projects/android-widget-foundation/README.md",
+            "work.vexstream.mobile-library.full-player",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/VexStreamPlaybackControl.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/queue/VexStreamQueueControl.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/media/vexstream/VexStreamPlaybackService.kt"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [
+            "process.vexlife-android.feature-authoring"
+          ],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-24T11:20:00.000Z",
+          "updatedAt": "2026-10-24T11:20:00.000Z",
+          "transitionHistory": []
+        }
+      ],
+      "lanes": [
+        {
+          "laneRef": "lane.work.intake",
+          "label": "Intake",
+          "workRefs": [
+            "work.android-widget-foundation.outcome"
+          ]
+        },
+        {
+          "laneRef": "lane.work.planned",
+          "label": "Planned",
+          "workRefs": [
+            "work.android-widget-foundation.vexstream-playback-widget"
+          ]
+        },
+        {
+          "laneRef": "lane.work.ready",
+          "label": "Ready",
+          "workRefs": [
+            "work.android-widget-foundation.semantic-widget-surface"
+          ]
+        },
+        {
+          "laneRef": "lane.work.active",
+          "label": "Active",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.waiting",
+          "label": "Waiting",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.needs-human",
+          "label": "Needs Human",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.verify",
+          "label": "Verify",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.attention",
+          "label": "Attention",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.done",
+          "label": "Done",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.archive",
+          "label": "Archive",
+          "workRefs": []
+        }
+      ],
+      "summary": {
+        "workItemCount": 3,
+        "openWorkItemCount": 3,
+        "outcomeCount": 1,
+        "taskCount": 2,
+        "defectCount": 0,
+        "potentialCount": 0,
+        "needsHumanCount": 0,
+        "completedCount": 0
+      },
+      "rootItems": [
+        {
+          "workRef": "work.android-widget-foundation.outcome",
+          "label": "Android Widget Foundation",
+          "purpose": "Establish one reusable home-screen widget substrate for VexLife Android so compact Android surfaces observe product-owned current State, render bounded projections, and return user intent through rightful product Control/Act/Effect owners instead of becoming parallel truth or effect systems.",
+          "workClass": "OUTCOME",
+          "state": "DECOMPOSED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.android-widget-foundation.semantic-widget-surface",
+            "work.android-widget-foundation.vexstream-playback-widget"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "project.android-widget-foundation",
+            "projects/android-widget-foundation/README.md",
+            "repo.vexlife-android:docs/CULTURE.md",
+            "repo.vexlife-android:docs/foundation/FEATURE-EXPERIENCE-LANGUAGE.md"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [
+            "process.vexlife-android.feature-authoring"
+          ],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T11:20:00.000Z",
+          "updatedAt": "2026-10-24T11:20:00.000Z",
           "transitionHistory": []
         }
       ]
