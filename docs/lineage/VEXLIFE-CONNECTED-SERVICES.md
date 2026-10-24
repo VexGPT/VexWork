@@ -117,17 +117,28 @@ A020's outer SAFE_FAILURE was cleanup-only. A021 observed the exact A020 port-10
 Phase 3 = COMPLETED
 ```
 
-### Phase 4 — current
+### Phase 4 — split truth / L7 current
 
-The next acceptance slice is deliberately two effects rather than one disguised transaction:
+The lived evidence split the original Phase-4 bundle into two independently meaningful checkpoints:
 
 ```text
-L6 one durable human Send exactly once
-L7 separate Companion/model response
-L8 model failure does not erase human append
+A019:
+  L6 one durable human Send exactly once = PASS
+  L8 model failure does not erase human append = PASS
+
+remaining:
+  L7 separate Companion/model response = HELD_NOT_PROVEN
 ```
 
-Accepted Family Conversation law keeps ordinary human delivery and AI attention separate. The Family Companion runtime consumes a persisted Family trigger and owns its own queue/model/durable-response semantics. Phase 4 must preserve that separation while connecting the installed Android Send path to the current Home-owned producer.
+The canonical Workgraph now preserves that split rather than pretending the whole phase is either READY or complete:
+
+```text
+work.vexlife.connected-services.vcs04.phase4.send-failure-separation = COMPLETED
+work.vexlife.connected-services.vcs04.phase4.companion-response      = RUNNING
+parent Phase 4                                                     = RUNNING
+```
+
+Family Conversation law remains unchanged:
 
 ```text
 HUMAN_MESSAGE_DELIVERY != AI_ATTENTION
@@ -135,10 +146,46 @@ MODEL_BUSY != FAMILY_CHAT_BLOCKED
 HUMAN_APPEND_DURABLE != MODEL_RESPONSE_SUCCEEDED
 ```
 
-Current canonical Work item:
+The current source-side prerequisite has also moved. The retained PR #904 local candidate recorded at `8d2ef4ef...` was previously held on the Voice fixture's deterministic `bucket-6c` because PR #873 owned that bucket. PR #873 is now merged and fresh provider overlap on the Voice fixture/bucket is clear.
+
+That is a **wake condition**, not proof that the retained local workspace/custody is still current:
 
 ```text
-work.vexlife.connected-services.vcs04.phase4-send-companion = READY
+PR873 merged / bucket-6c clear
+-> PR904 owner re-observes retained Local Workspace
+-> recover before replay
+-> currentize against current VexLife main
+-> admit bounded Voice fixture + bucket-6c closure when exact
+-> full source proof / lifecycle
+-> then perform L7 on accepted/current source
+```
+
+The current accepted VexRelay SourceOwner contract likewise changed after A026 was formed: fixed base is now explicitly an evidence/diff anchor, and unrelated remote-main advancement alone must not block exact-head SourceOwner proof. New formation consumes the current contract; A026's exact old `current-contract.json` blob pin is superseded.
+
+### Phase 5 — completed
+
+A022/A023 completed the restart/no-duplicate slice against the already-proven durable human append:
+
+```text
+L9  same-session Android observation       PASS
+L10 real Android process restart           PASS
+L11 no duplicate append/model replay       PASS
+temporary private Serve cleanup            CLOSED
+```
+
+A022 proved the same canonical message survived real Android process death/relaunch with count 1 and without a second append/model replay. A023 then closed the exact temporary Serve effect without product replay.
+
+This phase did **not** require L7 to be complete; it required the durable exactly-once human-message checkpoint proven by A019. The Workgraph dependency now names that narrower completed child instead of all of Phase 4.
+
+### Phase 6 — waiting on both remaining/current obligations
+
+Terminal VCS-04 currentness now waits on:
+
+```text
+Phase 4 parent -> L7 separate durable Companion response
++ Phase 5 restart/no-duplicate -> COMPLETED
++ current source/lifecycle evidence, including PR904 convergence
+-> L12 / VCS-04 terminal currentness
 ```
 
 ## Recovery appendix — attempt lineage
@@ -236,10 +283,14 @@ Current truth:
 Phase 1 = COMPLETED
 Phase 2 = COMPLETED
 Phase 3 = COMPLETED
+Phase 4 = RUNNING
+  Phase 4A durable Send + failure separation = COMPLETED
+  Phase 4B separate durable Companion response (L7) = RUNNING
+Phase 5 = COMPLETED
+Phase 6 = WAITING_DEPENDENCIES
 PR #917 source defect = COMPLETED / accepted-current
-work.vexlife.connected-services.vcs04.phase3.host-to-android-l1-l5 = COMPLETED
-Phase 4 = READY
-work.vexlife.connected-services.vcs04.phase4-send-companion = READY
+PR #904 source wake = ACTIVE_RECOVERY_CURRENTIZATION_REQUIRED
+current lived gap = L7 only
 ```
 
 <!-- [VXG RealForever][VEXWORK][LINEAGE][VEXLIFE-CONNECTED-SERVICES] -->

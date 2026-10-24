@@ -50,9 +50,16 @@ The program intentionally learns from real consumers before extracting more arch
 Phase 1  pre-challenge observability + private network discrimination = COMPLETED
 Phase 2  deterministic-fixture installed L1-L5                     = COMPLETED
 Phase 3  real fresh-user Family establishment                       = COMPLETED
-Phase 4  durable human Send + separate Companion                    = READY
-Phase 5  restart + no duplicates                                    = WAITING
-Phase 6  VCS-04 terminal currentness                                = WAITING
+Phase 4  durable Send + separate Companion                          = RUNNING
+  L6 exactly-once durable human Send                                = PASS
+  L7 separate durable Companion/model response                      = HELD_NOT_PROVEN
+  L8 model failure cannot erase human append                        = PASS
+Phase 5  restart + no duplicates                                    = COMPLETED
+  L9 same-session observation                                       = PASS
+  L10 real Android process restart                                  = PASS
+  L11 no duplicate append/model replay                              = PASS
+  temporary private Serve cleanup                                   = CLOSED
+Phase 6  VCS-04 terminal currentness                                = WAITING_DEPENDENCIES
 ```
 
 Phase 1 proved the private transport seam rather than merely removing an error:
@@ -103,30 +110,40 @@ Phase-3 cleanup                          CLOSED
 
 ## Current edge
 
-**Phase 4 — durable human Send and separate Companion** is now READY.
+**Phase 4 remains RUNNING only for L7 — the separate durable Companion/model response.**
 
-The canonical work item is:
+VexWork now represents the split explicitly:
 
 ```text
-work.vexlife.connected-services.vcs04.phase4-send-companion
+work.vexlife.connected-services.vcs04.phase4.send-failure-separation = COMPLETED
+work.vexlife.connected-services.vcs04.phase4.companion-response      = RUNNING
+work.vexlife.connected-services.vcs04.phase5-restart-no-duplicates   = COMPLETED
+work.vexlife.connected-services.vcs04.phase6-terminal-currentness    = WAITING_DEPENDENCIES
 ```
 
-Its product claim is:
+The current engineering route is source-aware rather than another blind lived retry:
 
 ```text
-one durable human Send exactly once
--> human append remains durable independently
--> separately admitted Companion/model response
--> Companion/model failure cannot erase the human append
+retained PR904 Conversation-first candidate
+-> recover/reconcile exact Local Workspace custody
+-> currentize against current VexLife main
+-> now-released Voice fixture + bucket-6c closure
+-> full source proof / lifecycle convergence
+-> one real separately admitted Heretic Companion response (L7)
+-> Phase 6 terminal source/currentness
 ```
 
-Held until later phases:
+PR #873 has merged, so the old bucket-6c serialization hold on PR #904 is released. That wake does **not** prove the retained local workspace is still exact or authorize replay; owner-local recovery comes first.
+
+The current accepted VexRelay contract also now preserves moving-main stage isolation: a SourceOwner fixed base is an evidence/diff anchor rather than a live-main equality lock. New host formation must consume the current contract instead of pinning the superseded contract blob.
+
+Held until the remaining edge is proven:
 
 ```text
-real Android process restart
-restart/no-duplicate append/model replay proof
-public Funnel
-tailnet policy changes
+L7 completion claims
+PR904 publication/review/READY/merge before source proof
+VCS-04 terminal completion
+VCS-05 activation
 ```
 
 ## Read next
