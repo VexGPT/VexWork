@@ -219,7 +219,7 @@ Evolution selection = ?projection=evolution
 cutoverAllowed = false at the current recorded stage
 ```
 
-The accepted descendant lineage already exists:
+The accepted descendant lineage already exists, and the later lineage is more specific than the early Evolution projection:
 
 ```text
 Assortment R2 accepted/preserved practicum
@@ -227,9 +227,62 @@ Assortment R2 accepted/preserved practicum
 + E2.8 intelligence-native product evolution
 + UX Evolution Reference/Evolution migration
 + Experience Foundation
++ Vex Furnishing / Experience Population
++ Adaptive Home Composition v1.1
 ```
 
-But accepted source also says canonical product adoption/supersession is still held. Therefore the next work is **not** a blind flag flip.
+The later accepted Human Experience law corrects a tempting but wrong interpretation:
+
+```text
+EVOLVED_VEXLIFE != "MAKE ?projection=evolution THE DEFAULT"
+
+primaryStageScreenRef = screen.vexlife.terrain
+singleStageDefault = true
+
+HOME = THE LIVED MEANING OF THE CURRENT TERRAIN NEIGHBORHOOD
+
+current semantic context = center / first item
+desktop = SPATIAL_WORLD
+compact = MOBILE_STACK
+one semantic tree = multiple projections
+```
+
+Current-context composition is intended to feel human rather than architectural:
+
+```text
+CURRENT CONTEXT
+  meaningful title / purpose
+  one real-Vex presence / truthful status
+  primary current action
+  conditional Continue from real resumable continuity
+  material Attention only when source-bound
+  nearby meaningful resources / places
+  bounded details + source descent only on explicit disclosure
+```
+
+A historical Adaptive Home candidate, PR #818, reached exact-head SourceOwner PASS but **failed the Human Experience gate**. Its direct human finding is preserved as product-design evidence:
+
+```text
+one continuous Vex relationship in primary UX
+no split Root Hub / Guide conversation identity
+ordinary Vex use does not foreground a conversation list
+project/thread/channel/source refs remain internal routing evidence
+Guide = lightweight assistance, not a second conversation
+current context shapes conversation silently
+Continue resumes real intent/conversation continuity
+diagnostic architecture appears only on explicit disclosure
+```
+
+PR #818 is now closed, unmerged and stale. Later owner disposition explicitly says:
+
+```text
+SUPERSEDE_CLOSED_UNMERGED__PRESERVE_PROVENANCE
+stalePrByteReplay=false
+```
+
+Therefore its **meaning** is consumed but its source bytes must not be replayed.
+
+Accepted source also still says canonical product adoption/cutover is held. Therefore the next work is **not** a blind flag flip and **not** revival of PR #818.
 
 Current Work:
 
@@ -243,22 +296,29 @@ work.vexlife.tocompletion.productization.evolved-experience-baseline-convergence
 
 The evolved-baseline task must:
 
-1. consume the accepted Assortment R2 + E2.7/E2.8 + UX Evolution source lineage;
-2. identify the exact current evolved product target and rightful semantic owners;
-3. close only still-required semantic, truth/currentness, recovery/navigation and accessibility parity gaps;
-4. earn `CUTOVER_READY`;
-5. earn `CUTOVER_DEFAULT`;
-6. make the evolved projection the ordinary VexLife baseline;
-7. preserve Reference only as explicit fallback until retirement is separately earned;
-8. prove the already-accepted Heretic Browser Companion/runtime cable through the evolved baseline.
+1. consume the accepted Assortment R2 + E2.7/E2.8 + UX Evolution + Vex Furnishing / Adaptive Home lineage;
+2. re-ground **current main** and classify which later accepted Human Experience laws are already present versus missing;
+3. preserve Terrain as the single primary Home stage and the same semantic neighborhood across `SPATIAL_WORLD` / `MOBILE_STACK`;
+4. converge one continuous real-Vex relationship, current-context-first composition, truthful conditional Continue and meaningful nearby resources without creating a second state tree;
+5. keep project/thread/channel/source/currentness detail available as bounded evidence rather than dominant ordinary chrome;
+6. reconcile current UX Evolution migration/finding state so already-fixed historical findings are not replayed;
+7. close only the genuinely remaining semantic, truth/currentness, recovery/navigation, accessibility and Human Experience predicates;
+8. earn the smallest rightful current-main adoption / `CUTOVER_READY` / `CUTOVER_DEFAULT` sequence still required by live source;
+9. preserve Reference as explicit fallback until retirement is separately earned;
+10. prove the already-accepted Heretic Browser Companion/runtime cable through the evolved ordinary baseline and obtain actual Human Experience acceptance.
 
 Permanent:
 
 ```text
 A034_RUNTIME_PASS != REFERENCE_UI_IS_PRODUCT_COMPLETE
 EVOLUTION_TARGET_BASELINE != CUTOVER_ALREADY_ACCEPTED
+EVOLVED_VEXLIFE_BASELINE != EVOLUTION_URL_AS_PRODUCT
+TERRAIN_PRIMARY_HOME != LEGACY_GLOBAL_ROOT_HUB_PRESENTATION
 CUTOVER_DEFAULT != REFERENCE_RETIREMENT
 ASSORTMENT_PRACTICUM != CANONICAL_PRODUCT_ADOPTION
+SOURCE_DISTINCT_IDENTITIES != HUMAN_DISTINCT_EXPERIENCE
+SEMANTIC_ROUTING_REFS_INTERNAL != ARCHITECTURE_CHROME_AS_PRIMARY_UX
+PR818_HUMAN_FINDINGS_CURRENT != PR818_BYTES_CURRENT
 BLIND_DEFAULT_FLAG_FLIP != EVOLVED_VEXLIFE_CONVERGENCE
 ```
 
@@ -363,13 +423,14 @@ CURRENT EXECUTABLE WORK
   work.vexlife.tocompletion.productization.evolved-experience-baseline-convergence = RUNNING
 
   present exact edge:
-    accepted Assortment R2 + E2.7/E2.8 + UX Evolution lineage
-    -> re-ground current migration/cutover owner
-    -> distinguish already-migrated surfaces from held parity
-    -> close the smallest remaining cutover predicates
-    -> CUTOVER_READY
-    -> CUTOVER_DEFAULT
+    accepted Assortment R2 + E2.7/E2.8 + UX Evolution + Vex Furnishing lineage
+    -> re-ground current main against Adaptive Home v1.1 + one-continuous-Vex law
+    -> classify accepted meanings already current vs stale historical carriers
+    -> reconcile current migration/finding truth
+    -> form the smallest current-main successor for real remaining Human Experience gaps
+    -> CUTOVER_READY / CUTOVER_DEFAULT only when live source actually earns them
     -> prove Heretic Browser Companion through the evolved ordinary baseline
+    -> obtain actual Human Experience acceptance
 
 HELD / SEPARATE
   existing-Home Heretic replacement/upgrade
@@ -388,11 +449,12 @@ ORDINARY PRODUCTIZATION                                  <-- CURRENT
     Heretic normal-start source = TERMINAL_ACCEPTED_CURRENT
     -> A034 ordinary lived runtime/restart proof = TERMINAL_LIVED_PASS
     -> Evolved VexLife baseline convergence
-       -> Assortment/E2.7/E2.8/UX Evolution current source descent
-       -> semantic/parity/accessibility/recovery closure
-       -> CUTOVER_READY
-       -> CUTOVER_DEFAULT
+       -> Assortment/E2.7/E2.8/UX Evolution + Vex Furnishing current source descent
+       -> Terrain-primary Adaptive Home / one-continuous-Vex current-main reconciliation
+       -> genuine semantic/parity/accessibility/recovery/Human Experience closure
+       -> CUTOVER_READY / CUTOVER_DEFAULT only if still required by live source
        -> Heretic Companion proof through evolved ordinary baseline
+       -> humanAccepted=true only from actual lived acceptance
     -> then make existing-Home Heretic replacement/upgrade explicit
 
 P5  LIVED CONTINUITY / DEVELOPMENTAL EVIDENCE
@@ -436,7 +498,12 @@ VexWork
 -> VexLife #76 for E2.8 product-evolution direction
 -> VexLife #418 for Experience Foundation
 -> VexLife #874 for the now-awake Assortment R2 / Refinement supporting checkpoint
--> current VexLife ux-evolution registry/source when an effect descends there
+-> VexLife #811 for Vex Furnishing / Experience Population
+-> #624 comment 6012908914 for the Furnishing ↔ UX Evolution Human Experience completion coordinate
+-> #811 comment 6015223469 for Adaptive Home v1.1 / Terrain-primary law
+-> #817 comment 6031153511 for the human rejection of architecture-first / split-Vex PR818 UX
+-> #817 comment 6094683418 for PR818 stale/superseded current-main-successor law
+-> current VexLife ux-evolution / Furnishing / Presentation source when an effect descends there
 ```
 
 Continuation rule:
@@ -453,7 +520,9 @@ current Reference default
   != intended ToCompletion product baseline
 
 next work
-  = converge and earn Evolved VexLife cutover through rightful #624 owners
+  = converge the accepted Adaptive Home / one-continuous-Vex Human Experience on current main
+  -> use #624 / #811 / rightful Presentation owners
+  -> earn cutover only after current source and lived human truth agree
 ```
 
 Do not replay P0-P4, G02/G03 host attempts, PR873/919/920/921/922/923 acceptance, or A015-A034 merely to regain confidence. Re-read historical evidence only when one current predicate requires provenance.

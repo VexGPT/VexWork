@@ -15,7 +15,7 @@
       "workRef": "work.vexlife.tocompletion.outcome",
       "parentWorkRefOrNull": null,
       "label": "VexLife ToCompletion",
-      "purpose": "Carry the full VexLife ToCompletion trajectory: preserve terminal P1-P4 and G02/G03 continuity, preserve the now-terminal ordinary Heretic lived path, converge the accepted Assortment/E2.7/E2.8/UX Evolution lineage into the ordinary Evolved VexLife product baseline, then keep existing-Home upgrade and later developmental/native horizons explicit rather than reopening completed work.",
+      "purpose": "Carry the full VexLife ToCompletion trajectory: preserve terminal P1-P4 and G02/G03 continuity, preserve the terminal ordinary Heretic lived path, converge the accepted Assortment/E2.7/E2.8/UX Evolution and Vex Furnishing / Adaptive Home lineage into the ordinary evolved VexLife experience, then keep existing-Home upgrade and later developmental/native horizons explicit rather than reopening completed work.",
       "workClass": "OUTCOME",
       "state": "RUNNING",
       "priorityClass": "IMMEDIATE",
@@ -37,7 +37,14 @@
         "github.issue.vexlife.866.comment.6381763768",
         "evidence.vexlife.tocompletion.ordinary-heretic-lived-proof.a034.return.sha256.b52ec721ea8cda96af86ca4c763d656eaa466cb31777435f9f18fba79263073b",
         "github.issue.vexlife.624",
-        "github.issue.vexlife.874"
+        "github.issue.vexlife.874",
+        "github.issue.vexlife.811",
+        "github.issue.vexlife.817",
+        "github.pull.vexlife.818",
+        "github.issue.vexlife.624.comment.6012908914",
+        "github.issue.vexlife.811.comment.6015223469",
+        "github.issue.vexlife.817.comment.6031153511",
+        "github.issue.vexlife.817.comment.6094683418"
       ]
     },
     {
@@ -568,7 +575,7 @@
       "workRef": "work.vexlife.tocompletion.productization.ordinary-heretic-setup",
       "parentWorkRefOrNull": "work.vexlife.tocompletion.outcome",
       "label": "Ordinary productization — Heretic lived path + evolved VexLife baseline",
-      "purpose": "Complete the ordinary VexLife product route. The Heretic source/runtime/restart path is terminal lived through A034; the active edge is now explicit convergence and cutover of the accepted Assortment/E2.7/E2.8/UX Evolution experience into the ordinary Evolved VexLife baseline. Existing-Home Heretic replacement/upgrade remains separate and later.",
+      "purpose": "Complete the ordinary VexLife product route. Heretic source/runtime/restart is terminal lived through A034. The active edge is current-main convergence of accepted Assortment/E2.8/UX Evolution with the later Vex Furnishing / Adaptive Home Human Experience law: Terrain-primary Home, current context first, one continuous Vex relationship and truthful Continue. Existing-Home Heretic replacement/upgrade remains separate and later.",
       "workClass": "OUTCOME",
       "state": "RUNNING",
       "priorityClass": "IMMEDIATE",
@@ -592,7 +599,14 @@
         "evidence.vexlife.tocompletion.ordinary-heretic-lived-proof.a034.return.sha256.b52ec721ea8cda96af86ca4c763d656eaa466cb31777435f9f18fba79263073b",
         "github.issue.vexlife.76",
         "github.issue.vexlife.624",
-        "github.issue.vexlife.874"
+        "github.issue.vexlife.874",
+        "github.issue.vexlife.811",
+        "github.issue.vexlife.817",
+        "github.pull.vexlife.818",
+        "github.issue.vexlife.624.comment.6012908914",
+        "github.issue.vexlife.811.comment.6015223469",
+        "github.issue.vexlife.817.comment.6031153511",
+        "github.issue.vexlife.817.comment.6094683418"
       ]
     },
     {
@@ -703,8 +717,8 @@
       "updatedAt": "2026-10-24T08:03:08.000Z",
       "workRef": "work.vexlife.tocompletion.productization.evolved-experience-baseline-convergence",
       "parentWorkRefOrNull": "work.vexlife.tocompletion.productization.ordinary-heretic-setup",
-      "label": "Evolved VexLife baseline convergence — Assortment / E2.8 / UX Evolution",
-      "purpose": "Make the intended evolved VexLife experience the ordinary product baseline without inventing a second semantic owner: consume the accepted Assortment R2 practicum and E2.7/E2.8/UX Evolution lineage, close only the missing semantic/parity/accessibility/recovery predicates, earn CUTOVER_READY then CUTOVER_DEFAULT, retain Reference as explicit fallback until retirement is separately earned, and prove the already-accepted Heretic Browser Companion/runtime cable through that evolved baseline.",
+      "label": "Evolved VexLife baseline convergence — Adaptive Home / Assortment / Furnishing",
+      "purpose": "Recover the accepted evolved Human Experience into current VexLife product source without replaying stale UI bytes: consume Assortment R2, E2.7/E2.8, UX Evolution, Vex Furnishing and Adaptive Home law; preserve Terrain as the single primary Home stage; compose current semantic context first, one continuous real-Vex relationship, truthful conditional Continue and meaningful nearby resources; demote project/thread/channel/source metadata to explicit disclosure; reconcile Reference/Evolution migration currentness; then earn the smallest current-main adoption/cutover and lived human acceptance needed to make that evolved experience the ordinary VexLife baseline.",
       "workClass": "TASK",
       "state": "RUNNING",
       "priorityClass": "IMMEDIATE",
@@ -723,7 +737,14 @@
         "github.issue.vexlife.874.comment.6381765795",
         "github.issue.vexlife.866.comment.6381763768",
         "blueprint/ux-evolution-registry.json",
-        "evidence.vexlife.tocompletion.ordinary-heretic-lived-proof.a034.return.sha256.b52ec721ea8cda96af86ca4c763d656eaa466cb31777435f9f18fba79263073b"
+        "evidence.vexlife.tocompletion.ordinary-heretic-lived-proof.a034.return.sha256.b52ec721ea8cda96af86ca4c763d656eaa466cb31777435f9f18fba79263073b",
+        "github.issue.vexlife.811",
+        "github.issue.vexlife.817",
+        "github.pull.vexlife.818",
+        "github.issue.vexlife.624.comment.6012908914",
+        "github.issue.vexlife.811.comment.6015223469",
+        "github.issue.vexlife.817.comment.6031153511",
+        "github.issue.vexlife.817.comment.6094683418"
       ]
     }
   ],
@@ -1019,7 +1040,14 @@
     "github.issue.vexlife.866.comment.6381763768",
     "evidence.vexlife.tocompletion.ordinary-heretic-lived-proof.a034.return.sha256.b52ec721ea8cda96af86ca4c763d656eaa466cb31777435f9f18fba79263073b",
     "github.issue.vexlife.624",
-    "github.issue.vexlife.874.comment.6381765795"
+    "github.issue.vexlife.874.comment.6381765795",
+    "github.issue.vexlife.811",
+    "github.issue.vexlife.817",
+    "github.pull.vexlife.818",
+    "github.issue.vexlife.624.comment.6012908914",
+    "github.issue.vexlife.811.comment.6015223469",
+    "github.issue.vexlife.817.comment.6031153511",
+    "github.issue.vexlife.817.comment.6094683418"
   ],
   "formedAt": "2026-10-21T01:45:00.000Z"
 }

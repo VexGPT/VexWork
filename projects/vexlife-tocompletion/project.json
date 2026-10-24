@@ -2,7 +2,7 @@
   "schemaVersion": "vexwork.project-definition/v1",
   "projectRef": "project.vexlife.tocompletion",
   "label": "VexLife ToCompletion",
-  "purpose": "Carry the full VexLife ToCompletion horizon from terminal lived Heretic runtime truth into the actual product experience: A034 has closed the ordinary fresh-user Heretic Open/turn/stop/restart/second-turn path, and the current foreground is explicit convergence of the accepted Assortment R2 + E2.7/E2.8 + UX Evolution lineage into the ordinary Evolved VexLife baseline before later existing-Home upgrade and developmental/native horizons.",
+  "purpose": "Carry the full VexLife ToCompletion horizon from terminal lived Heretic runtime truth into the intended evolved lived product: A034 closed the ordinary Heretic Open/turn/stop/restart path, and the current foreground is current-main convergence of the accepted Assortment + E2.7/E2.8 + UX Evolution + Vex Furnishing / Adaptive Home lineage into a Terrain-primary, current-context-first Home with one continuous Vex relationship, before later existing-Home upgrade and developmental/native horizons.",
   "rootWorkRefs": [
     "work.vexlife.tocompletion.outcome"
   ],
@@ -34,7 +34,14 @@
     "github.pull.vexlife.923",
     "git.commit.vexlife.8f1e9fd9e3f38f8dc23296257df718fca9806988",
     "evidence.vexlife.tocompletion.ordinary-heretic-lived-proof.a034.return.sha256.b52ec721ea8cda96af86ca4c763d656eaa466cb31777435f9f18fba79263073b",
-    "blueprint/ux-evolution-registry.json"
+    "blueprint/ux-evolution-registry.json",
+    "github.issue.vexlife.811",
+    "github.issue.vexlife.817",
+    "github.pull.vexlife.818",
+    "github.issue.vexlife.624.comment.6012908914",
+    "github.issue.vexlife.811.comment.6015223469",
+    "github.issue.vexlife.817.comment.6031153511",
+    "github.issue.vexlife.817.comment.6094683418"
   ],
   "formedAt": "2026-10-22T00:13:43.000Z"
 }
