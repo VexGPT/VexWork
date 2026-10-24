@@ -3186,6 +3186,16 @@ That source preserves:
 - reuse/variance/detachment semantics for avoiding accidental duplicated truth;
 - the requirement that conflict coordination preserve separate rightful owners instead of centralizing every domain into one mega-owner.
 
+This patient zero also preserves a future VexWorld discovery/network pressure:
+
+~~~text
+projects/vexboard/VEXBUSINESSFACTORY-VEXWORLD-DISCOVERY-AND-OPPORTUNITY-LAYER.md
+~~~
+
+That source does **not** change current VexWorld purpose. It records a possible future bridge in which BusinessFactory publishes a bounded public business presence and VexWorld later projects opt-in discovery, learning, collaboration, supplier/customer and career-exploration opportunities through transparent user-selected lenses rather than opaque ranking.
+
+Current VexWorld remains separately owned and currently has no production networking or commerce authority.
+
 This is architecture/patient-zero source only. It does not grant Canvas Projection authority, mutate provider/business truth, or make VexBoard the BusinessGraph owner.
 
 ## Deliberately held
