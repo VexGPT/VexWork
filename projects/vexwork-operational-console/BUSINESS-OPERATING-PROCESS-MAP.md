@@ -6,20 +6,30 @@
 
 ~~~text
 source purpose                         DURABLE_PROCESS_MAP_FOUNDATION
-canonical Workgraph epic              NOT_YET_ADMITTED
-VexBoard semantic patient zero        READY_FOR_READ_ONLY_PROJECTION
-VexBoard lived evidence loop          NOT_YET_IMPLEMENTED
+Vex Universe convergence Work         CURRENT / work.vex-universe.businessfactory-convergence
+BusinessFactory mega-epic             NOT_ADMITTED
+VexBoard semantic topology            ACCEPTED / PR #92
+VexBoard source/evidence foundations  ACCEPTED / PR #108/#110/#115/#116
+Process -> VexBoard addressability    ACCEPTED / PR #103
+VexBoard broader Source Projectors    RUNNING / lived comparison still unfinished
+lived BusinessFactory evidence loop   NOT_YET_PROVED
 provider selections                   EXAMPLES_NOT_MANDATES
 jurisdiction-specific legal/tax truth NOT_OWNED_HERE
 ~~~
 
 This source preserves the reusable semantic/process model now called **VexBusinessFactory**.
 
-It deliberately does not turn every process box into canonical Work yet. The immediate need is smaller:
+It deliberately does not turn every process box into canonical Work. VexWork now carries one bounded convergence item for this foundation:
+
+~~~text
+work.vex-universe.businessfactory-convergence
+~~~
+
+That Work item tracks convergence of the already-authored domain/process source; it does not make every business process box a Work item.
 
 > Preserve one teachable, composable map for forming and evolving businesses/institutions from current reality toward a desired outcome; identify reusable capabilities, relationships, providers, perspectives and expansion modules; and keep external/provider truth with its rightful owner.
 
-VexBoard's first Canvas Projection and BoardJourney slices are now accepted, so the BusinessFactory source is mature enough to become a **read-only semantic patient zero**. Full lived-evidence, source-projector, provider-effect and AI-authoring loops remain later implementation work.
+VexBoard's BoardGraph/Canvas/Journey/prototype foundations, animated semantic focus, BoardEvidence companion contract, first bounded Source Projectors, source-owned board resolver, and Process -> Board addressability are now accepted source foundations. BusinessFactory can therefore project through those accepted read-only contracts without inventing a second owner. Lived BusinessFactory comparison/presentation, provider effects, and AI authoring remain later work.
 
 ## VexBusinessFactory — provisional root identity
 
@@ -62,66 +72,63 @@ RETURN != REFUND
 
 ## Root business map
 
+The universal spine must visibly preserve the same optionality the semantic grammar already claims. A business, institution, creator, school, community, team, or public-interest organization must not be forced through payment/order semantics merely because commerce is one important profile.
+
 ~~~text
-BUSINESS INTENTION
+BUSINESS / INSTITUTION INTENTION
   What value will be created, for whom, and in what form?
         |
         v
-1. BUSINESS FOUNDATION & PROVIDER SETUP
-  identity / ownership / jurisdiction-dependent obligations
-  bank / payout destination
-  payment provider
-  tax/accounting route
-  domains/contact/support surfaces
-  policies
-  provider credentials kept in rightful private custody
+1. CURRENT REALITY + DESIRED OUTCOME
+  identity / situation / constraints / gap map
         |
         v
-2. OFFER CREATION & SUPPLY
-  physical item / manufactured good
-  digital artifact
-  prepared food
-  service capacity
-  recurring entitlement
+2. BENEFICIARY / NEED / VALUE
+  who benefits / what changes / why it matters
         |
         v
-3. VEXECOMMERCE — MAKE THE OFFER BUYABLE
-  catalog/menu
-  public presentation
-  availability/inventory/capacity
-  price
-  cart/selection where applicable
-  checkout
-  payment observation
-  order acceptance
+3. CAPABILITIES / RESOURCES / CAPACITY
+  people / suppliers / tools / knowledge / time / locations / provider capabilities
         |
-        +--------------------+
-        |                    |
-        v                    v
-4. CUSTOMER ACQUISITION      5. ORDER-TO-FULFILLMENT
-  web/search/social             pick / prepare / provision
-  marketplace/POS               pack / cook / perform
-  restaurant ordering           ship / pickup / deliver
-  referrals/campaigns           digital entitlement
-        |                    |
-        +----------+---------+
-                   v
-6. CUSTOMER CARE & REVERSE COMMERCE
-  support / cancellation / return / refund / exchange / dispute
-                   |
-                   v
-7. FINANCE & RECONCILIATION
-  provider payout / fees / refunds
-  inventory-order-payment-fulfillment agreement
-  accounting/tax handoff
-                   |
-                   v
-8. OPERATING IMPROVEMENT & SCALE
-  analytics / automation / staffing
-  additional channels / locations / fulfillment capacity
+        v
+4. PUBLIC OFFER / EXPRESSION / ACCESS
+  product / service / publication / education / experience / opportunity / participation
+        |
+        v
+5. RELATIONSHIP / COMMITMENT where applicable
+  customer / member / audience / student / partner / sponsor / supplier / community
+        |
+        v
+6. TRANSACTIONAL EXCHANGE APPLIES?
+        |
+        +-----------------------------+
+        | NO                          | YES
+        v                             v
+7A. NON-COMMERCE REALIZATION      7B. VEXECOMMERCE
+  publish / teach / serve             catalog/menu
+  participate / perform               availability
+  collaborate / experience            price/selection
+  govern / support                    checkout/payment observation
+        |                             accepted order
+        |                             fulfillment route
+        +---------------+-------------+
+                        v
+8. REALIZATION + OUTCOME / EVIDENCE
+  deliver / perform / publish / complete / observe
+                        |
+                        v
+9. SUPPORT / EXCEPTION / RECOVERY
+  correction / cancellation / return / refund / dispute / other recovery where applicable
+                        |
+                        v
+10. RECONCILIATION + LEARNING / EVOLUTION
+  reconcile rightful external truth
+  learn / adapt / expand / simplify
 ~~~
 
-These are meaningful subprocesses with different owners and different human/provider boundaries. They compose into one business journey without being flattened into one giant record.
+The detailed numbered sections below intentionally pressure-test a **commerce-capable operating profile** because Antique Plate and several early examples need that depth. They are reusable child-process detail, not a declaration that every VexBusinessFactory profile must establish payment, checkout, orders, or reverse commerce.
+
+These are meaningful subprocesses with different owners and different human/provider boundaries. They compose when applicable without being flattened into one giant record.
 
 # 1. Business Foundation & Provider Setup
 

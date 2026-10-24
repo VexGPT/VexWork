@@ -63,56 +63,58 @@ human intention
 
 This section is a formation-time observation, not permanent authority. Re-ground before acting.
 
-Observed during the successor-A003 refinement:
+Observed during the post-PR103 / post-PR118 Vex Universe currentization:
 
 ~~~text
-VexWork main
-  0846ad94d9de5a84e90e882034f49635f1f703e6
+VexWork main at observation
+  cf5ff4959ceccbe91f6c48f9981b539ad31a6788
 
-VexBoard accepted on main
+VexBoard accepted foundations
   BoardGraph/shared Control             ACCEPTED
   Canvas Projection/navigation         ACCEPTED
   BoardJourney semantic walk           ACCEPTED
   typed prototype simulation           ACCEPTED / PR #93
   clickable prototype simulation UI    ACCEPTED / PR #95
   durable implementation lessons       ACCEPTED / PR #94
+  animated semantic traversal focus    ACCEPTED / PR #98
+  first read-only Source Projectors    ACCEPTED / PR #108
+  BoardEvidence companion contract     ACCEPTED / PR #110
+  source-owned board resolver          ACCEPTED / PR #115
+  source-projector currentization      ACCEPTED / PR #116
+  Process -> VexBoard addressability   ACCEPTED / PR #103
+  Vex Universe work currentization     ACCEPTED / PR #118
 
-VexBoard PR #98
-  animated semantic traversal focus    DRAFT / MERGEABLE at observation
+BusinessFactory topology
+  PR #92                               MERGED / ACCEPTED
 
-PR #92
-  BusinessFactory semantic topology    OPEN / REVIEW-READY / MERGEABLE at observation
+BusinessFactory domain foundation
+  PR #90                               CURRENT UNCONSUMED CANDIDATE
 
-PR #90
-  BusinessFactory domain foundation    OPEN / REVIEW-READY / MERGEABLE at observation
+Antique Plate
+  PR #82                               OPEN / STALE at observation
 
-PR #82
-  Antique Plate P5 bootstrap           OPEN / STALE / NOT MERGEABLE at observation
-
-VexWorld PR #120
-  shared-world completion-state        DRAFT / MERGEABLE at observation
+VexWorld
+  PR #120                              OPEN / DRAFT at observation
 ~~~
 
-The accepted clickable prototype now lets VexBoard demonstrate:
+Current VexWork truth now exposes the dependency directly:
 
 ~~~text
-CONTROL activation
--> condition state
--> ordered simulated actions
--> BoardJourney semantic movement
--> preserved interaction / trigger / condition path
--> externalEffectsPerformed=false
+DONE
+  visible Vex Universe work record
+  Process -> VexBoard addressability
+  VexBoard contract alignment
+
+WAITING
+  BusinessFactory convergence / PR #90
+
+PLANNED
+  Journey evidence + Vex Universe patient zero
 ~~~
 
-PR #98 is presentation-only pressure over that accepted semantic walk:
+The accepted VexBoard/source-resolution foundation can now demonstrate stable semantic identity, Journey/simulation movement, evidence companions, source-owned board resolution, and Process -> Board addressing without making VexBoard the source owner.
 
-~~~text
-same semantic destination
--> perceptible camera focus motion
--> reduced-motion same destination
-~~~
-
-Do not replay already-merged PR #93/#95 work because an older handoff names them as future.
+The remaining Journey-evidence work is therefore **lived/presentation integration over accepted contracts**, not a reason to replay PR #92/#93/#95/#98/#103 foundations.
 # 2A. Cross-repository source index
 
 This pathway is the continuity/router source. It does not replace the canonical owner of each meaning.
@@ -194,7 +196,7 @@ SOURCE_OWNER_PASS != SEMANTIC_CLEARANCE
 PLAUSIBLE_NAME != ACCEPTED_ENUM_VALUE
 ~~~
 
-BusinessFactory patient-zero architecture currently lives on PR #92:
+BusinessFactory patient-zero architecture is accepted on main through PR #92 / merge `5366079754874ba0818db299d12e5eb787931b16`:
 
 ~~~text
 projects/vexboard/VEXBUSINESSFACTORY-INTENT-TOPOLOGY-PATIENT-ZERO.md
@@ -202,6 +204,8 @@ projects/vexboard/VEXBUSINESSFACTORY-PERSPECTIVE-ALIVENESS-AND-COORDINATION.md
 projects/vexboard/VEXBUSINESSFACTORY-VEXWORLD-DISCOVERY-AND-OPPORTUNITY-LAYER.md
 projects/vexboard/examples/vexbusinessfactory-intent-topology.board.json
 ~~~
+
+Later accepted VexBoard lineage adds BoardEvidence, bounded Source Projectors and source-owned board resolution. Those are reusable projection/evidence contracts; they do not transfer BusinessFactory domain ownership to VexBoard.
 
 The important ownership boundary is:
 
@@ -502,27 +506,44 @@ Do not make VexBoard the process registry or VexWork the executor.
 
 ## U0 — Converge admitted architecture
 
-Preferred semantic order:
+The old dependency order has mostly been consumed.
+
+Already accepted:
 
 ```text
 PR #92
   VexBoard BusinessFactory topology
 
-PR #90
-  BusinessFactory domain/process foundation
+PR #93 / #95 / #98
+  simulation + clickable traversal + animated semantic focus
 
-PR #93
-  typed prototype simulation
+PR #108 / #110 / #115 / #116
+  Source Projectors + BoardEvidence + source-owned board resolver
 
-VexWorld PR #120
-  shared-world completion-state identity
+PR #103 / #118
+  Process -> VexBoard addressability + VexWork currentization
 ```
 
-Do not merge without each repository's exact review/currentness boundary.
+Current unconsumed BusinessFactory foundation:
+
+```text
+PR #90
+  BusinessFactory domain/process foundation
+  + this completion/source router
+```
+
+Parallel horizon, separately owned:
+
+```text
+VexWorld PR #120
+  shared-world completion-state architecture
+```
+
+Do not replay accepted predecessors. PR #90 should be proved on its exact candidate; unrelated movement of `main` is integration context for the Integration Steward rather than a reason to manufacture another source-currentization commit.
 
 ## U1 — VexBoard Journey Evidence Minimum
 
-Implement the smallest evidence projection needed to teach and replay one process.
+BoardEvidence itself is already accepted through PR #110. The remaining edge is the smallest **lived/presentation integration** needed to teach and replay one process using accepted evidence/source-resolution contracts.
 
 A meaningful Journey step should be able to expose:
 
@@ -930,51 +951,42 @@ what was owed
 Re-ground before following this literally; active lanes may have moved.
 
 ~~~text
-P0  consume current accepted VexBoard baseline
-    PR #93 + PR #95 are already merged
+P0  accepted foundation baseline — DONE
+    #92 / #93 / #95 / #98
+    #108 / #110 / #115 / #116
+    #103 / #118
     do not replay them
 
-P1  let current non-overlapping VexBoard presentation work converge
-    PR #98 if still active
-    do not duplicate its UI membrane
-
-P2  review/currentize/merge PR #92
-    BusinessFactory VexBoard topology
-
-P3  review/currentize/merge PR #90
+P1  prove and converge PR #90
     BusinessFactory domain/process foundation + this continuity map
+    if main moves after exact proof: READY_FOR_INTEGRATION, do not chase it
 
-P4  form the Process Module / Addressability Minimum
-    one source-owned process as patient zero
-    processRef -> boardRef
-    generic board resolver
-    VexWork Open process map route
-
-P5  implement VexBoard Journey Evidence Minimum
+P2  complete Journey Evidence presentation/lived integration
+    use accepted BoardEvidence + source resolver + Process addressability
     why / before / action / after / evidence / screenshots / recovery
 
-P6  map Vex Universe as Patient 0
+P3  map Vex Universe as BusinessFactory Patient 0
     prove whole-system orientation and source ownership
 
-P7  currentize/merge PR #82
+P4  currentize/merge PR #82
     Antique Plate empty-storefront currentness
 
-P8  run Antique Plate synthetic end-to-end POC
+P5  run Antique Plate synthetic end-to-end POC
     publication -> test checkout -> fulfillment -> refund/recovery
 
-P9  extract PHYSICAL_ONE_OFF reusable profile/modules
+P6  extract PHYSICAL_ONE_OFF reusable profile/modules
 
-P10 pressure with media/education
+P7  pressure with media/education
     prove value without mandatory commerce
 
-P11 pressure with restaurant/food-truck
+P8  pressure with restaurant/food-truck
     prove time/location/capacity/vendor composition
 
-P12 form vendor availability bridge when earned
+P9  form vendor availability bridge when earned
 
-P13 admit VexWorld presence/experience route when earned
+P10 admit VexWorld presence/experience route when earned
 
-P14 admit VexLife ambient What's New route when earned
+P11 admit VexLife ambient What's New route when earned
 ~~~
 
 Compact rule:
