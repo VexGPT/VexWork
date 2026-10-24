@@ -3814,7 +3814,7 @@ typed/clickable simulation substrate     ACCEPTED
 animated semantic focus                  ACCEPTED / PRESENTATION-ONLY
 educational/perspective projections      ARCHITECTURE_SOURCE_ONLY
 provider / business source adapters      NOT_YET_IMPLEMENTED
-generic board source resolver            NOT_YET_IMPLEMENTED
+generic board source resolver            BOUNDED_STATIC_CATALOG_CONTRACT_PRESENT / PR #115
 cross-board Journey coordinates          NOT_YET_IMPLEMENTED
 lived screenshot evidence loop           NOT_YET_IMPLEMENTED
 AI BoardPatch / business mutation         NOT_YET_IMPLEMENTED
