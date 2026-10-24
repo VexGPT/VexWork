@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.vex.security-assurance",
+  "label": "Vex Security Assurance",
+  "purpose": "Create an evidence-driven, continuously revisable security assurance practice for the Vex ecosystem that maps trust and effect boundaries, asks versioned security questions, preserves SATISFIED / UNSATISFIED / UNKNOWN / NOT_APPLICABLE truth, runs bounded authorized Spikes to reduce uncertainty, and routes real findings back to the repository that owns the affected source.",
+  "rootWorkRefs": [
+    "work.vex.security-assurance.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vextreme",
+    "repo.vextreme-sdk",
+    "repo.vexlife",
+    "repo.vexlife-android"
+  ],
+  "sourceRefs": [
+    "projects/vex-security-assurance/README.md",
+    "projects/vex-security-assurance/SPIKE-DESIGN.md",
+    "docs/process/FORM-PROJECT.md",
+    "docs/foundation/DERIVED-ATTENTION.md",
+    "docs/foundation/DERIVED-ATTENTION-PROJECTION.md",
+    "docs/foundation/OPERATING-DOMAIN.md",
+    "docs/foundation/ATTENTION-QUEUE.md",
+    "docs/process/PROMOTE-DERIVED-CONCERN.md"
+  ],
+  "formedAt": "2026-10-24T05:45:00.000Z"
+}
