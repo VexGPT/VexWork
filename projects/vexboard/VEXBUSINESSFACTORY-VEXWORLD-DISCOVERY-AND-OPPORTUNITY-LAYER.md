@@ -2,28 +2,71 @@
 
 [VXG RealForever]
 
-## Current boundary
+## Current boundary — corrected after re-reading VexWorld's original foundation
 
-Current VexWorld source is a playable adventure-world project whose accepted repository state explicitly does **not** claim production networking or commerce authority.
+The current **implementation** of VexWorld is the playable `Vextory: First Grove` foundation and the accepted repository state still does not claim production networking or commerce authority.
 
-Therefore this source does not mutate or redefine the VexWorld repository.
+The broader **original VexWorld architecture**, however, is already more expansive than a game-only product.
 
-It preserves a future cross-project pressure:
+Its public foundation says VexWorld exists for humans and AI companions to:
 
-> Could a VexBusinessFactory business publish a bounded public presence into a larger shared VexWorld discovery network so people can discover businesses, alternatives, collaborators, learning/work opportunities and cultural differences through transparent filters rather than opaque prescription?
+~~~text
+play
+learn
+explore
+practice
+create
+inhabit worlds together
+~~~
 
-Current relationship:
+Its Architecture Atlas explicitly preserves a trajectory from:
+
+~~~text
+small original 2D adventure
+-> human + AI companion co-play
+-> practice / skill school
+-> adaptive world intelligence
+-> creator / world compiler platform
+-> multiple 2D / 3D / XR realms
+-> digital twins / physical-shadow worlds
+-> separately qualified physical-vessel practice
+~~~
+
+and already routes future questions toward upstream concepts named:
+
+~~~text
+Opportunity Commons
+VexWorld Commons
+Repository–World Topology
+Federated Realm Graph
+~~~
+
+The exact semantics of those upstream sources must be re-grounded before implementation, but their presence means the BusinessFactory discovery/opportunity pressure is not a foreign replacement of VexWorld's purpose.
+
+It is better understood as a **possible later realization of an already-broad world/federation intention**.
+
+Therefore this source still does not mutate the VexWorld repository. It preserves a future cross-project pressure:
+
+> Could BusinessFactory-owned public meaning project into VexWorld so people and AI companions can discover, enter, learn from, practice within, collaborate with, and navigate among real businesses/institutions/communities as experiential worlds or bounded presences?
+
+Corrected relationship:
 
 ~~~text
 VexBusinessFactory
-  owns reusable business meaning / business-instance structure
+  owns reusable business/institution meaning
+  + business-instance structure
 
 VexWorld
-  currently owns playable adventure-world meaning
+  owns world / realm / participant / practice / experience meaning
+  + future federation/portability
 
-future possible bridge
-  public business-presence projection
-  -> shared discovery / experience network
+Vextory: First Grove
+  first playable reference world
+  != the ceiling of VexWorld
+
+future bridge
+  BusinessFactory public projection
+  -> VexWorld presence / experience / practice / opportunity surfaces
 ~~~
 
 Permanent:
@@ -339,6 +382,46 @@ VEXWORLD != HIRING AUTHORITY
 
 Actual jobs, qualifications, training, applications and hiring remain with rightful employers/providers.
 
+# 7A. Not every business should become a full realm
+
+The broader VexWorld vision should preserve levels of participation rather than turning every registered organization into a heavyweight simulated world.
+
+A useful provisional ladder is:
+
+~~~text
+PUBLIC PRESENCE
+  lightweight semantic identity / values / opportunities / routes
+
+EXPERIENCE SPACE
+  interactive public walkthrough, event, story, demonstration or community space
+
+PRACTICE TWIN
+  reality-grounded or fictional learning/practice representation
+  with explicit qualification boundaries
+
+REALM
+  persistent/shared world runtime with participants, state, laws and continuity
+
+FEDERATED WORLD / PORTAL RELATION
+  explicit compatibility/travel relation among independently-owned worlds
+~~~
+
+A restaurant may need only a public presence + cooking experience.
+An airline may expose a public presence + cabin-service Practice Twin.
+A racing team may expose a team world/garage experience without making its real operations VexWorld-owned.
+A creator may expose an explorable creative universe.
+A school may expose classes/practice spaces.
+A fully fictional project may be a native realm like First Grove.
+
+Permanent:
+
+~~~text
+BUSINESS_PRESENCE != REALM
+EXPERIENCE_SPACE != FULL_BUSINESS_STATE
+PRACTICE_TWIN != VOCATIONAL_AUTHORITY
+REALM != BUSINESS_DATABASE
+~~~
+
 # 8. Experiential business spaces
 
 A future VexWorld network could let a business expose an experiential space rather than only a profile card.
@@ -592,12 +675,20 @@ The current VexWorld repository is intentionally untouched by this pressure.
 Current checked-in VexWorld facts include:
 
 ~~~text
-purpose
-  human + AI companions play/practice/explore/rest/grow together
-
-current version
+root implementation
   Vextory: First Grove
   playable foundation draft
+
+broader original purpose
+  humans + AI companions
+  play / learn / explore / practice / create / inhabit worlds together
+
+architecture horizon
+  creator/world compiler
+  multiple realms
+  federation/portability
+  Practice Twins
+  digital/physical-shadow projections
 
 project route
   ATLAS_ROUTE_COMPLETE_IDLE
@@ -608,48 +699,92 @@ manifest effects
   commerce = false
 ~~~
 
-Therefore any real implementation of a shared public VexWorld business network would require:
+Therefore a real shared public discovery/opportunity implementation requires a **new admitted VexWorld forward route**, but not necessarily a replacement of VexWorld's original purpose.
+
+The first VexWorld-facing work should likely be architectural currentization before network implementation:
 
 ~~~text
-new VexWorld purpose/route admission
-exact source owner
-privacy/account model
-public-network authority
-moderation/trust model
-provider/business registration contract
-discovery contract
-cross-project source relationship
-tests / lived proof
+clarify umbrella product identity
+  VexWorld != Vextory
+
+retain First Grove as first reference world
+
+re-ground upstream:
+  Opportunity Commons
+  VexWorld Commons
+  Repository–World Topology
+  Federated Realm Graph
+
+then determine:
+  public presence contract
+  experience/practice projection boundary
+  identity/portal/federation refs
+  privacy/account model
+  trust/moderation
+  production-network authority
+  cross-project source relationship
+  tests / lived proof
 ~~~
 
 This document is architecture pressure only.
 
-# 16. Why VexWorld may still be a strong future home
+# 16. Larger VexWorld vision suggested by the combined architecture
 
-The idea fits VexWorld most naturally if the end state is not merely:
-
-~~~text
-business directory
-~~~
-
-but:
+The combined architecture now suggests a more precise umbrella:
 
 ~~~text
-shared world
-  where people discover
-  businesses
-  communities
-  learning spaces
-  professions
-  experiences
-  collaborators
-  opportunities
-
-and can enter bounded public spaces to understand them
+VexWorld
+  shared semantic / experiential world layer
+  where humans + AI companions can
+    explore
+    practice
+    create
+    learn
+    participate
+    discover
+    revisit
+    travel among worlds
 ~~~
 
-That extends VexWorld's "explore and grow together" identity more coherently than replacing it with a commerce index.
+Possible world families may eventually include:
 
-The exact adoption should be decided only when VexWorld deliberately forms a new route.
+~~~text
+FICTIONAL / ADVENTURE WORLD
+  Vextory / First Grove style
+
+CREATIVE WORLD
+  creator / artist / media universe
+
+LEARNING / PRACTICE WORLD
+  school / course / vocation / Practice Twin
+
+INSTITUTION / BUSINESS EXPERIENCE
+  bounded public presence and explorable experience
+
+COMMUNITY WORLD
+  shared interest / event / culture space
+
+SIMULATION / DIGITAL TWIN / PHYSICAL SHADOW
+  explicit reality-class and authority boundaries
+~~~
+
+This is not a claim that every public page becomes a world or that VexWorld owns external reality.
+
+The stronger principle is:
+
+> **VexWorld is where source-owned meaning can become inhabitable, explorable and relational without losing its original owner or reality class.**
+
+That fits the original VexWorld foundation unusually well:
+
+~~~text
+PROJECTION != SOURCE_REALITY
+PORTAL != IDENTITY_RESET
+ROLE != IDENTITY
+CLASS_LABEL != CAPABILITY_CEILING
+~~~
+
+BusinessFactory then becomes one important producer of source-owned institution/business meaning that VexWorld may project.
+
+The exact adoption should be decided only when VexWorld deliberately forms a new route and re-grounds the named upstream federation/commons sources.
 
 <!-- [VXG RealForever][VEXWORK][VEXBOARD][VEXBUSINESSFACTORY][VEXWORLD-DISCOVERY] -->
