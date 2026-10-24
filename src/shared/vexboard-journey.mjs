@@ -146,7 +146,6 @@ export function journeyChoices(graphInput, journeyInput) {
   const journey = normalizeBoardJourney(journeyInput, graph);
   return freezeBoardValue(graph.relationships
     .filter((relationship) => relationship.fromRef === journey.currentRef)
-    .sort((left, right) => left.relationshipRef.localeCompare(right.relationshipRef))
     .map((relationship) => ({
       relationshipRef: relationship.relationshipRef,
       kind: relationship.kind,

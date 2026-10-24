@@ -455,3 +455,19 @@ test('BoardJourney normalization rejects fabricated semantic history and return 
   assert.throws(() => Journey.normalizeBoardJourney(wrongStack, graph), /returnStack does not match journey history/);
 });
 
+test('BoardJourney choices preserve canonical locale-independent ref ordering', () => {
+  const graph = baseGraph();
+  graph.relationships = [
+    { relationshipRef: 'rel.i', kind: 'FLOW', fromRef: 'node.a', toRef: 'node.b', labelOrNull: 'lower', sourceRefs: [] },
+    { relationshipRef: 'rel.I', kind: 'FLOW', fromRef: 'node.a', toRef: 'node.b', labelOrNull: 'upper', sourceRefs: [] },
+  ];
+  const journey = Journey.createBoardJourney(graph, {
+    journeyRef: 'journey.canonical-order',
+    boardRef: 'board.test',
+    startRef: 'node.a',
+  });
+  assert.deepEqual(
+    Journey.journeyChoices(graph, journey).map((choice) => choice.relationshipRef),
+    ['rel.I', 'rel.i'],
+  );
+});
