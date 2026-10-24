@@ -16,7 +16,7 @@ test('Operational Console Project models evolution without entity-per-task explo
   assert.equal(refs.length, 24);
   assert.equal(refs.includes('work.vexwork.operational-console.outcome'), true);
   assert.equal(refs.includes('work.vexwork.operational-console.multi-fulfiller-routing'), false);
-  assert.deepEqual(project.repositoryRefs, ['repo.vexwork', 'repo.vextreme', 'repo.vexcommerce-storefront-reference']);
+  assert.deepEqual(project.repositoryRefs, ['repo.vexwork', 'repo.vextreme', 'repo.vexcommerce-storefront-reference', 'repo.antique-plate-storefront']);
 
   assert.deepEqual(childRefs(graph, 'work.vexwork.operational-console.outcome'), [
     'work.vexwork.operational-console.antique-pilot',
@@ -47,6 +47,9 @@ test('Operational Console progression keeps patient zero before generalized comm
   assert.deepEqual(byRef.get('work.vexwork.operational-console.antique-pilot').dependencyRefs, [
     'work.vexwork.operational-console.commerce-template',
   ]);
+  assert.deepEqual(byRef.get('work.vexwork.operational-console.antique-pilot').repositoryRefs, ['repo.vexwork', 'repo.antique-plate-storefront']);
+  assert.equal(byRef.get('work.vexwork.operational-console.antique-bootstrap').state, 'COMPLETED');
+  assert.equal(byRef.get('work.vexwork.operational-console.antique-first-item').state, 'READY');
   assert.deepEqual(byRef.get('work.vexwork.operational-console.cross-domain-completion').dependencyRefs, [
     'work.vexwork.operational-console.antique-pilot',
     'work.vexwork.operational-console.vexsite-patient-zero-proof',
@@ -98,7 +101,9 @@ test('Operational Console board distinguishes admitted evolution from held futur
   assert.equal(done.cards.some((card) => card.workRef === 'work.vexwork.operational-console.commerce-ai-site'), true);
   assert.equal(ready.cards.some((card) => card.workRef === 'work.vexwork.operational-console.commerce-ai-site'), false);
   assert.equal(done.cards.some((card) => card.workRef === 'work.vexwork.operational-console.commerce-fulfillment-attention'), true);
-  assert.equal(ready.cards.some((card) => card.workRef === 'work.vexwork.operational-console.antique-pilot'), true);
+  assert.equal(active.cards.some((card) => card.workRef === 'work.vexwork.operational-console.antique-pilot'), true);
+  assert.equal(done.cards.some((card) => card.workRef === 'work.vexwork.operational-console.antique-bootstrap'), true);
+  assert.equal(ready.cards.some((card) => card.workRef === 'work.vexwork.operational-console.antique-first-item'), true);
   assert.equal(ready.cards.some((card) => card.workRef === 'work.vexwork.operational-console.commerce-fulfillment-attention'), false);
   assert.equal(ready.cards.some((card) => card.workRef === 'work.vexwork.operational-console.commerce-template'), false);
   assert.equal(ready.cards.some((card) => card.workRef === 'work.vexwork.operational-console.commerce-item-model'), false);
