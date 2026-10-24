@@ -204,11 +204,19 @@
         "github.pull.vexwork.108",
         "git.commit.vexwork.3278edf9c39b58ef4f59be9e239875518d6c2abf",
         "src/core/vexboard-source-projectors.mjs",
-        "test/vexboard-source-projectors.test.mjs"
+        "test/vexboard-source-projectors.test.mjs",
+        "github.pull.vexwork.110",
+        "git.commit.vexwork.92f35785aa4dc540ad9fdeb239948b7c3a32cff6",
+        "src/shared/vexboard-evidence.mjs",
+        "test/vexboard-evidence.test.mjs",
+        "github.pull.vexwork.115",
+        "git.commit.vexwork.a4023a83039924fdbd8384008543f23587e4bc94",
+        "src/shared/vexboard-source-resolver.mjs",
+        "test/vexboard-source-resolver.test.mjs"
       ],
       "nextProcessRefs": [],
       "createdAt": "2026-10-23T00:14:29.000Z",
-      "updatedAt": "2026-10-24T05:21:11.000Z"
+      "updatedAt": "2026-10-24T06:38:19.000Z"
     }
   ],
   "transitions": [
