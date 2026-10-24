@@ -145,7 +145,7 @@ test('Connected Services is discoverable as a real Project with the current live
   assert.equal(workspace.parkingLot.items.some((item) => item.workRef === 'work.vexlife.connected-services.guided-onboarding'), true);
 });
 
-test('VexBoard projects completed Canvas and BoardJourney foundations with next frontiers ready', () => {
+test('VexBoard projects completed navigation foundations with Source Projectors active and BoardPatch still ready', () => {
   const workspace = buildWorkspace();
   const vexboard = workspace.projects.find((entry) => entry.project.projectRef === 'project.vexboard');
   assert.ok(vexboard);
@@ -163,13 +163,16 @@ test('VexBoard projects completed Canvas and BoardJourney foundations with next 
   assert.equal(canvas.effectDisposition, 'EFFECTS_BOUND');
   assert.equal(journey.authorityDisposition, 'AUTHORIZED_BOUNDED');
   assert.equal(journey.effectDisposition, 'EFFECTS_BOUND');
-  assert.deepEqual([boardpatch.state, projectors.state], ['READY', 'READY']);
-  assert.deepEqual([boardpatch.authorityDisposition, projectors.authorityDisposition], ['NO_AUTHORITY', 'NO_AUTHORITY']);
-  assert.deepEqual([boardpatch.effectDisposition, projectors.effectDisposition], ['NO_EFFECTS', 'NO_EFFECTS']);
+  assert.deepEqual([boardpatch.state, projectors.state], ['READY', 'RUNNING']);
+  assert.deepEqual([boardpatch.authorityDisposition, projectors.authorityDisposition], ['NO_AUTHORITY', 'AUTHORIZED_BOUNDED']);
+  assert.deepEqual([boardpatch.effectDisposition, projectors.effectDisposition], ['NO_EFFECTS', 'EFFECTS_BOUND']);
+  assert.equal(projectors.sourceRefs.includes('github.pull.vexwork.108'), true);
+  assert.equal(projectors.sourceRefs.includes('src/core/vexboard-source-projectors.mjs'), true);
   assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.done').workRefs.includes(canvas.workRef), true);
   assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.done').workRefs.includes(journey.workRef), true);
   assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.ready').workRefs.includes(boardpatch.workRef), true);
-  assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.ready').workRefs.includes(projectors.workRef), true);
+  assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.active').workRefs.includes(projectors.workRef), true);
+  assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.ready').workRefs.includes(projectors.workRef), false);
   assert.equal(vexboard.project.sourceRefs.includes('projects/vexboard/README.md'), true);
 });
 
