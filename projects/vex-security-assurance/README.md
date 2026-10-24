@@ -94,7 +94,7 @@ The first availability question is source-placed in [PUBLIC-AVAILABILITY-DDOS.md
 
 Current Vextreme source shows **two live public surfaces**, not GitHub Pages alone: GitHub Pages is the v2 source-of-truth/active-development surface, while `vextreme24.com` on Squarespace remains the production surface. The repository also has service-worker and browser caching that improve resilience for already-loaded/static assets.
 
-None of those facts is promoted into a whole-site DDoS claim.
+None of those facts is promoted into a whole-site DDoS claim. Squarespace currently documents provider-managed DDoS mitigation and WAF protection for its hosted surface; that is useful current provider evidence, but it still does not establish Vex-specific failover or protection of the separate GitHub Pages surface.
 
 Adjacent Cloudflare provider-family work in `repo.vextreme-sdk` already gives us useful public-safe prior art around rate-abuse boundaries, Workers rate limiting, quotas and observability, but it is not evidence that Cloudflare was selected as the Vextreme website host or proxy.
 
