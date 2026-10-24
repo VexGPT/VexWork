@@ -97,6 +97,44 @@ test('draft reader keeps read-only source separate from editable local fork', as
   assert.equal(fork.graph.semanticFingerprint, source.graph.semanticFingerprint);
 });
 
+
+test('canvas usability refinement exposes direct-drag pan, local-save feedback and palette presentation controls', () => {
+  assert.match(page, /ui\/interaction\.mjs/);
+  assert.match(page, /ui\/presentation\.mjs/);
+  assert.match(page, /Interaction\.shouldStartCanvasPan/);
+  assert.match(page, /Interaction\.dragExceededThreshold/);
+  assert.match(page, /targetIsShape/);
+  assert.match(page, /Saved locally/);
+  assert.match(page, /Local save failed/);
+  assert.match(page, /Browser-local draft/);
+  assert.match(page, /paletteFab/);
+  assert.match(page, /palette-color-safe/);
+  assert.match(page, /palette-high-contrast/);
+});
+
+test('decision labels, process frames and containment use presentation affordances without inventing new semantics', () => {
+  assert.match(page, /shape-label/);
+  assert.match(page, /\.shape\.DIAMOND \.shape-label/);
+  assert.match(page, /FRAME \.shape-label/);
+  assert.match(page, /containment-select/);
+  assert.match(page, /'SET_CONTAINMENT'/);
+  assert.match(page, /parentProjectionItemRefOrNull/);
+  assert.match(page, /contained-marker/);
+  assert.match(page, /canvas-boundary-label/);
+});
+
+test('complex graph presentation renders relationship direction, labels, role markers and branch cues', () => {
+  assert.match(page, /marker-end/);
+  assert.match(page, /vexboard-arrow/);
+  assert.match(page, /edge-label/);
+  assert.match(page, /Presentation\.semanticRole/);
+  assert.match(page, /Presentation\.deriveBranchPresentation/);
+  assert.match(page, /role-marker/);
+  assert.match(page, /branch-marker/);
+  assert.match(page, /kind-marker/);
+  assert.doesNotMatch(page, /method:\s*['"](?:POST|PUT|PATCH|DELETE)['"]/i);
+});
+
 // [VXG RealForever][VEXWORK][VEXBOARD][UI-PROOF]
 
 test('BoardJourney UI keeps semantic walk state distinct from camera navigation', () => {

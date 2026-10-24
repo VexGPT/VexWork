@@ -6056,7 +6056,7 @@
           "label": "Canvas interaction and visual affordance refinement",
           "purpose": "Make VexBoard predictable in lived use by refining primary-drag navigation, shape-safe labels, explicit frame/container and canvas-boundary cues, trustworthy browser-local draft-save feedback, and accessible deterministic path/branch presentation without changing BoardGraph meaning or adding server persistence.",
           "workClass": "TASK",
-          "state": "READY",
+          "state": "RUNNING",
           "workDisposition": "ACTIVE",
           "priorityClass": "NORMAL",
           "parentWorkRefOrNull": "work.vexboard.outcome",
@@ -6071,18 +6071,36 @@
           "sourceRefs": [
             "projects/vexboard/CANVAS-INTERACTION-AND-VISUAL-AFFORDANCE-REFINEMENT.md",
             "vexboard/index.html",
+            "vexboard/ui/interaction.mjs",
+            "vexboard/ui/presentation.mjs",
             "src/shared/vexboard-model.mjs",
-            "test/vexboard-ui.test.mjs"
+            "projects/vexboard/examples/vexbusinessfactory-intent-topology.board.json",
+            "test/vexboard-ui.test.mjs",
+            "test/vexboard-interaction.test.mjs",
+            "test/vexboard-presentation.test.mjs"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [
             "process.vexwork.quality-review"
           ],
-          "authorityDisposition": "NO_AUTHORITY",
-          "effectDisposition": "NO_EFFECTS",
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-24T08:19:00.000Z",
-          "updatedAt": "2026-10-24T08:19:00.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-10-24T08:19:30.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexboard.usability-refinement.running.victor-lived-refinement",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "Victor explicitly asked this instance to implement the lived VexBoard refinements and authorized using the accepted VexBusinessFactory patient-zero board as a complex presentation pressure fixture.",
+              "actorRef": "actor.chatgpt.vexboard.usability-refinement",
+              "sourceRefs": [
+                "projects/vexboard/CANVAS-INTERACTION-AND-VISUAL-AFFORDANCE-REFINEMENT.md",
+                "projects/vexboard/examples/vexbusinessfactory-intent-topology.board.json"
+              ],
+              "createdAt": "2026-10-24T08:19:30.000Z"
+            }
+          ]
         }
       ],
       "lanes": [
@@ -6102,15 +6120,15 @@
           "laneRef": "lane.work.ready",
           "label": "Ready",
           "workRefs": [
-            "work.vexboard.boardpatch-authoring",
-            "work.vexboard.usability-refinement"
+            "work.vexboard.boardpatch-authoring"
           ]
         },
         {
           "laneRef": "lane.work.active",
           "label": "Active",
           "workRefs": [
-            "work.vexboard.source-projectors"
+            "work.vexboard.source-projectors",
+            "work.vexboard.usability-refinement"
           ]
         },
         {
