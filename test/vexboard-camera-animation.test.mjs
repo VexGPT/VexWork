@@ -197,7 +197,11 @@ test('VexBoard UI animates semantic focus, honors reduced motion, and cancels on
   assert.match(page, /view\.onpointerdown=\(e\)=>\{/);
   assert.match(page, /cameraAnimator\.cancel\(\);/);
   assert.match(page, /Interaction\.shouldStartCanvasPan/);
-  assert.match(page, /s\.onpointerdown=\(e\)=>\{cameraAnimator\.cancel\(\);/);
+  assert.match(page, /s\\.onpointerdown=\\(e\\)=>\\{/);
+  const shapePointerBlock = page.match(/s\\.onpointerdown=\\(e\\)=>\\{[\\s\\S]*?s\\.setPointerCapture\\(e\\.pointerId\\);/u)?.[0];
+  assert.ok(shapePointerBlock);
+  assert.match(shapePointerBlock, /cameraAnimator\\.cancel\\(\\);/);
+  assert.match(shapePointerBlock, /Interaction\\.shouldStartObjectMove/);
   assert.match(page, /function fitBoard\(\).*cameraAnimator\.jumpTo/s);
   assert.match(page, /function zoomBy\(.*cameraAnimator\.jumpTo/s);
   const journeyLine = page.split('\n').find((line) => line.startsWith('function applyJourney('));
