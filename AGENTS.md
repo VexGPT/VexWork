@@ -27,6 +27,29 @@ README.md
 
 Do not broad-read every connected repository. The Repository Graph tells you where a work item points; the target repository's own current entry/culture source tells you how that repository thinks.
 
+## Merge-ready rule
+
+For repository candidates, exact candidate proof and current-main integration are separate stages.
+
+```text
+prove exact branch/head/tree
+-> review / assurance as required
+-> READY_FOR_INTEGRATION
+-> stop chasing moving main
+-> Integration Steward rebinds current main at merge time
+```
+
+Unrelated movement of `main` is coordination context, not candidate failure. Do not re-run SourceOwner or rebuild a valid host carrier merely because `main` advanced unless the candidate itself changed or the candidate-owned proof genuinely depends on newly changed main-owned inputs.
+
+When a candidate is ready, descend to:
+
+```text
+docs/foundation/REPOSITORY-INTEGRATION.md
+docs/process/INTEGRATE-READY-PULL-REQUESTS.md
+```
+
+A lane that reaches merge-ready may temporarily become the Integration Steward, but it inherits the existing queue and services higher-priority admissible entries before its own.
+
 ## Common routes
 
 ```text
@@ -58,6 +81,10 @@ Do not broad-read every connected repository. The Repository Graph tells you whe
 
 "Is this PR/source/proof evidence current / stale / merged enough for completion evidence?"
   -> docs/foundation/PROJECT-RECONCILIATION.md
+
+"Several PRs are ready / main keeps moving / what merges next / do we need dev or staging?"
+  -> docs/foundation/REPOSITORY-INTEGRATION.md
+  -> docs/process/INTEGRATE-READY-PULL-REQUESTS.md
 
 "How should ChatGPT / a hosted assistant / a future local Vex carry this work?"
   -> docs/foundation/OPERATING-PROFILES.md

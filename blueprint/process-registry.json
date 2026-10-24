@@ -1,7 +1,7 @@
 {
   "schemaVersion": "vexwork.process-registry/v1",
   "registryRef": "registry.vexwork.processes.001",
-  "registryVersion": 6,
+  "registryVersion": 7,
   "purpose": "Map recurring work questions to the smallest reusable process source without making VexWork the executor or stealing process ownership from target repositories.",
   "processes": [
     {
@@ -80,6 +80,19 @@
         "README.md"
       ],
       "appliesWhen": "A synthetic reference storefront item needs known public details or pictures added/revised and published through the rightful storefront owner.",
+      "boardRefOrNull": null,
+      "executionAuthority": "NONE"
+    },
+    {
+      "processRef": "process.vexwork.integrate-ready-pull-requests",
+      "label": "Integrate ready pull requests",
+      "purpose": "Carry already-proven repository candidates through one vigilant serialized Integration Steward queue without making source lanes chase a moving main or granting VexWork merge authority.",
+      "ownerRepositoryRef": "repo.vexwork",
+      "entryRefs": [
+        "docs/foundation/REPOSITORY-INTEGRATION.md",
+        "docs/process/INTEGRATE-READY-PULL-REQUESTS.md"
+      ],
+      "appliesWhen": "One or more exact pull-request candidates have completed their required candidate-owned proof/review and are ready to be reconsidered against the repository's current integration trunk.",
       "boardRefOrNull": null,
       "executionAuthority": "NONE"
     }
