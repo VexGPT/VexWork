@@ -7,23 +7,23 @@ export const DEFAULT_CANVAS_EXTENT = Object.freeze({
 });
 
 export const PALETTE_PRESENTATION_CSS = `
-html[data-vexboard-palette] .palette-fab {
+.viewport .palette-fab {
   width: auto;
   min-width: 42px;
   padding: 0 10px;
   gap: 7px;
   white-space: nowrap;
 }
-html[data-vexboard-palette] .palette-fab::after {
+.viewport .palette-fab::after {
   font: 700 8px ui-monospace, monospace;
   letter-spacing: .04em;
   text-transform: uppercase;
 }
-html[data-vexboard-palette="STANDARD"] .palette-fab::after { content: "Standard"; }
-html[data-vexboard-palette="COLOR_SAFE"] .palette-fab::after { content: "Color safe"; }
-html[data-vexboard-palette="HIGH_CONTRAST"] .palette-fab::after { content: "High contrast"; }
+.viewport.palette-standard .palette-fab::after { content: "Standard"; }
+.viewport.palette-color-safe .palette-fab::after { content: "Color safe"; }
+.viewport.palette-high-contrast .palette-fab::after { content: "High contrast"; }
 
-html[data-vexboard-palette="COLOR_SAFE"] .viewport {
+.viewport.palette-color-safe {
   background-color: #f8fafc;
   background-image:
     linear-gradient(to right, rgb(3 105 161 / 8%) 1px, transparent 1px),
@@ -31,56 +31,56 @@ html[data-vexboard-palette="COLOR_SAFE"] .viewport {
   background-position: 0 0;
   background-size: 20px 20px;
 }
-html[data-vexboard-palette="COLOR_SAFE"] .shape.role-BEGIN {
+.viewport.palette-color-safe .shape.role-BEGIN {
   background-image: repeating-linear-gradient(135deg, transparent 0 8px, rgb(3 105 161 / 12%) 8px 12px);
 }
-html[data-vexboard-palette="COLOR_SAFE"] .shape.role-DECISION {
+.viewport.palette-color-safe .shape.role-DECISION {
   background-image: repeating-linear-gradient(45deg, transparent 0 8px, rgb(194 65 12 / 12%) 8px 12px);
 }
-html[data-vexboard-palette="COLOR_SAFE"] .shape.role-END {
+.viewport.palette-color-safe .shape.role-END {
   background-image: repeating-linear-gradient(0deg, transparent 0 8px, rgb(4 120 87 / 12%) 8px 12px);
 }
-html[data-vexboard-palette="COLOR_SAFE"] .role-marker,
-html[data-vexboard-palette="COLOR_SAFE"] .branch-marker {
+.viewport.palette-color-safe .role-marker,
+.viewport.palette-color-safe .branch-marker {
   border-width: 2px;
 }
 
-html[data-vexboard-palette="HIGH_CONTRAST"] .viewport {
+.viewport.palette-high-contrast {
   background-color: #fff;
   background-image: radial-gradient(#000 1px, transparent 1px);
 }
-html[data-vexboard-palette="HIGH_CONTRAST"] .canvas {
+.viewport.palette-high-contrast .canvas {
   border-color: #000;
 }
-html[data-vexboard-palette="HIGH_CONTRAST"] .canvas-boundary-label,
-html[data-vexboard-palette="HIGH_CONTRAST"] .role-marker,
-html[data-vexboard-palette="HIGH_CONTRAST"] .kind-marker,
-html[data-vexboard-palette="HIGH_CONTRAST"] .branch-marker,
-html[data-vexboard-palette="HIGH_CONTRAST"] .contained-marker,
-html[data-vexboard-palette="HIGH_CONTRAST"] .shape.FRAME .shape-label {
+.viewport.palette-high-contrast .canvas-boundary-label,
+.viewport.palette-high-contrast .role-marker,
+.viewport.palette-high-contrast .kind-marker,
+.viewport.palette-high-contrast .branch-marker,
+.viewport.palette-high-contrast .contained-marker,
+.viewport.palette-high-contrast .shape.FRAME .shape-label {
   border-color: #000;
   background: #fff;
   color: #000;
 }
-html[data-vexboard-palette="HIGH_CONTRAST"] .minimap {
+.viewport.palette-high-contrast .minimap {
   border: 2px solid #000;
   box-shadow: none;
 }
-html[data-vexboard-palette="HIGH_CONTRAST"] .minimap-item {
+.viewport.palette-high-contrast .minimap-item {
   background: #fff;
   border-color: #000;
 }
-html[data-vexboard-palette="HIGH_CONTRAST"] .minimap-view {
+.viewport.palette-high-contrast .minimap-view {
   border-color: #000;
   background: transparent;
 }
 
 @media (max-width: 640px) {
-  html[data-vexboard-palette] .palette-fab {
+  .viewport .palette-fab {
     width: 42px;
     padding: 0;
   }
-  html[data-vexboard-palette] .palette-fab::after { display: none; }
+  .viewport .palette-fab::after { display: none; }
 }
 `;
 
@@ -102,35 +102,30 @@ function compareText(left, right) {
   return left < right ? -1 : left > right ? 1 : 0;
 }
 
-function normalizedPaletteMode(value) {
+export function normalizePaletteMode(value) {
   return PALETTE_MODES.includes(value) ? value : 'STANDARD';
 }
 
-function syncDocumentPalette(mode) {
-  if (typeof document === 'undefined' || !document.documentElement) return mode;
-  if (!document.getElementById(PALETTE_STYLE_ID)) {
-    const style = document.createElement('style');
-    style.id = PALETTE_STYLE_ID;
-    style.textContent = PALETTE_PRESENTATION_CSS;
-    (document.head ?? document.documentElement).append(style);
-  }
-  document.documentElement.dataset.vexboardPalette = mode;
-  return mode;
+export function nextPaletteMode(value) {
+  const current = normalizePaletteMode(value);
+  return PALETTE_MODES[(PALETTE_MODES.indexOf(current) + 1) % PALETTE_MODES.length];
 }
 
 export function paletteModeLabel(value) {
-  return PALETTE_LABELS[normalizedPaletteMode(value)];
+  return PALETTE_LABELS[normalizePaletteMode(value)];
 }
 
-export function normalizePaletteMode(value) {
-  return syncDocumentPalette(normalizedPaletteMode(value));
+export function installPalettePresentation(documentRef = globalThis.document) {
+  if (!documentRef?.documentElement || typeof documentRef.createElement !== 'function') return false;
+  if (documentRef.getElementById?.(PALETTE_STYLE_ID)) return false;
+  const style = documentRef.createElement('style');
+  style.id = PALETTE_STYLE_ID;
+  style.textContent = PALETTE_PRESENTATION_CSS;
+  (documentRef.head ?? documentRef.documentElement).append(style);
+  return true;
 }
 
-export function nextPaletteMode(value) {
-  const current = normalizedPaletteMode(value);
-  const next = PALETTE_MODES[(PALETTE_MODES.indexOf(current) + 1) % PALETTE_MODES.length];
-  return syncDocumentPalette(next);
-}
+installPalettePresentation();
 
 export function semanticRole(graph, nodeRef) {
   assertGraph(graph);
