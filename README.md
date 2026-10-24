@@ -78,7 +78,8 @@ The first foundation establishes:
 - portable Project Reconciliation that joins exact Project/provider/proof evidence into `CURRENT_IN_REVIEW`, `REVERIFY_REQUIRED`, `COMPLETION_EVIDENCE_READY`, or `HELD_UNKNOWN` while retaining zero lifecycle/provider mutation authority;
 - a source-managed VexWork Foundation Project that dogfoods the same contracts;
 - VexLife-Android issue #144 represented as a real parked VexWork potential, with GitHub retained as provider provenance and Android feature authoring as the future route if adopted.
-- Operating Profiles that keep one VexWork truth across hosted-assistant and future local-Vex execution, with an assisted-host workflow for bounded human-only/local effects rather than making GitHub Actions or a Local Workspace universal prerequisites.
+- Operating Profiles that keep one VexWork truth across hosted-assistant and future local-Vex execution, with an assisted-host workflow for bounded human-only/local effects rather than making GitHub Actions or a Local Workspace universal prerequisites;
+- Repository Integration and Merge Stewardship that lets proven PRs queue for one vigilant serialized integration path instead of making source lanes race a moving main.
 
 ## Try it
 
@@ -121,6 +122,8 @@ PARKED != REJECTED
 PROCESS_MAP != PROCESS_EXECUTOR
 REPOSITORY_GRAPH != REPOSITORY_CULTURE_OWNER
 CROSS_REPO_REFERENCE != CROSS_REPO_SOURCE_AUTHORITY
+QUEUE_ENTRY != MERGE_AUTHORITY
+INTEGRATION_STEWARD != STANDING_MERGE_AUTHORITY
 ```
 
 VexWork is a **work-navigation root**, not an authority root.

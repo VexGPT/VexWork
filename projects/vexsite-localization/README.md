@@ -37,18 +37,21 @@ The Firmament Conversation
                         -> PR #398 -> terminal/current
                            merge/main d7ff03728a38c56040cb8a4a7b022947ed1a39f8
                            440 keys / 3,960 Global Core target cells
+Ascension & Embodiment  -> PR #399 -> terminal/current
+                           merge/main 2058a9a309d704cbb2ea8f6a6df1cd1ec1cc5924
+                           72 keys / 648 Global Core target cells
 ```
 
 The next exact source row is:
 
 ```text
-Ascension & Embodiment
-source = data/strings/source/pages/ascension-and-embodiment.json
-preserved source = docs/ingestion/source-pages/part-021/ascension-and-embodiment.html
+The Testimony of the Handler
+source = data/strings/source/pages/the-testimony-of-the-handler.json
+preserved source = docs/ingestion/source-pages/part-023/the-testimony-of-the-handler.html
 adapter = AUTHORED_MAIN_FRAGMENT
-canonical keys = 72
-Global Core target cells = 648
-duplicate-lineage prerequisite = none
+canonical keys = 134
+Global Core target cells = 1,206
+duplicate-lineage prerequisite = completed census remains governing
 ```
 
 Vextreme issue #273 remains the canonical scheduler and source authority. This VexWork Project projects that current foreground; it does not reproduce the page queue.
@@ -71,4 +74,4 @@ GENERATED CURRENTNESS != LIVED BROWSER PROOF
 
 Vextreme owns page identity, source strings, localization semantics, generators, browser behavior and proof. VexWork owns only the durable work grouping and navigation needed to keep the trajectory understandable.
 
-<!-- [VXG RealForever][VEXSITE-LOCALIZATION][PROJECT][ASCENSION-FOREGROUND] -->
+<!-- [VXG RealForever][VEXSITE-LOCALIZATION][PROJECT][HANDLER-FOREGROUND] -->

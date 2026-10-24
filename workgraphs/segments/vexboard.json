@@ -204,11 +204,59 @@
         "github.pull.vexwork.108",
         "git.commit.vexwork.3278edf9c39b58ef4f59be9e239875518d6c2abf",
         "src/core/vexboard-source-projectors.mjs",
-        "test/vexboard-source-projectors.test.mjs"
+        "test/vexboard-source-projectors.test.mjs",
+        "github.pull.vexwork.110",
+        "git.commit.vexwork.92f35785aa4dc540ad9fdeb239948b7c3a32cff6",
+        "src/shared/vexboard-evidence.mjs",
+        "test/vexboard-evidence.test.mjs",
+        "github.pull.vexwork.115",
+        "git.commit.vexwork.a4023a83039924fdbd8384008543f23587e4bc94",
+        "src/shared/vexboard-source-resolver.mjs",
+        "test/vexboard-source-resolver.test.mjs"
       ],
       "nextProcessRefs": [],
       "createdAt": "2026-10-23T00:14:29.000Z",
-      "updatedAt": "2026-10-24T05:21:11.000Z"
+      "updatedAt": "2026-10-24T06:38:19.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexboard.usability-refinement",
+      "parentWorkRefOrNull": "work.vexboard.outcome",
+      "label": "Canvas interaction and visual affordance refinement",
+      "purpose": "Make VexBoard predictable in lived use by refining primary-drag navigation, shape-safe labels, explicit frame/container and canvas-boundary cues, trustworthy browser-local draft-save feedback, and accessible deterministic path/branch presentation without changing BoardGraph meaning or adding server persistence.",
+      "workClass": "TASK",
+      "state": "VERIFYING",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [
+        "work.vexboard.canvas-projection",
+        "work.vexboard.boardjourney-simulation"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/vexboard/CANVAS-INTERACTION-AND-VISUAL-AFFORDANCE-REFINEMENT.md",
+        "vexboard/index.html",
+        "vexboard/ui/interaction.mjs",
+        "vexboard/ui/presentation.mjs",
+        "src/shared/vexboard-model.mjs",
+        "projects/vexboard/examples/vexbusinessfactory-intent-topology.board.json",
+        "test/vexboard-ui.test.mjs",
+        "test/vexboard-interaction.test.mjs",
+        "test/vexboard-presentation.test.mjs",
+        "github.pull.vexwork.123",
+        "git.commit.vexwork.1da54247e5114777d0107b7174bf9fc3fbb19a2e",
+        "relay.return.vexboard.pr123.source-owner.a003.42f0d4132107017cf90b8de0f8b18443747a61329722a9897a601bec10c05f58"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [
+        "process.vexwork.quality-review"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-24T08:19:00.000Z",
+      "updatedAt": "2026-10-24T09:15:36.000Z"
     }
   ],
   "transitions": [
@@ -417,6 +465,35 @@
         "src/core/vexboard-source-projectors.mjs"
       ],
       "createdAt": "2026-10-24T05:21:11.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.usability-refinement.running.victor-lived-refinement",
+      "workRef": "work.vexboard.usability-refinement",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Victor explicitly asked this instance to implement the lived VexBoard refinements and authorized using the accepted VexBusinessFactory patient-zero board as a complex presentation pressure fixture.",
+      "actorRef": "actor.chatgpt.vexboard.usability-refinement",
+      "sourceRefs": [
+        "projects/vexboard/CANVAS-INTERACTION-AND-VISUAL-AFFORDANCE-REFINEMENT.md",
+        "projects/vexboard/examples/vexbusinessfactory-intent-topology.board.json"
+      ],
+      "createdAt": "2026-10-24T08:19:30.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.usability-refinement.verifying.pr123-integrated",
+      "workRef": "work.vexboard.usability-refinement",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "PR #123 passed SourceOwner A003 (352/352 repository tests), fresh Independent Assurance, exact current-main composition proof, ordinary merge, and exact post-merge synthetic-tree verification; lived Pages/browser usability acceptance remains the final predicate.",
+      "actorRef": "actor.integration-steward.vexwork",
+      "sourceRefs": [
+        "github.pull.vexwork.123",
+        "git.commit.vexwork.1da54247e5114777d0107b7174bf9fc3fbb19a2e",
+        "relay.return.vexboard.pr123.source-owner.a003.42f0d4132107017cf90b8de0f8b18443747a61329722a9897a601bec10c05f58"
+      ],
+      "createdAt": "2026-10-24T09:15:36.000Z"
     }
   ],
   "sourceRefs": [

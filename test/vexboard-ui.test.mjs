@@ -18,7 +18,7 @@ test('VexBoard Pages entry exposes create/open/read-only/fork/save-draft workflo
   assert.match(page, /Request edit → draft copy/);
   assert.match(page, /Save draft/);
   assert.match(page, /Browser-local proving copies · not source truth/);
-  assert.match(page, /Local draft · source detached/);
+  assert.match(page, /Local draft · browser only/);
   assert.match(page, /href="\.\.\/">← VexWork/);
 });
 
@@ -95,6 +95,44 @@ test('draft reader keeps read-only source separate from editable local fork', as
   assert.equal(fork.mode, 'LOCAL_DRAFT');
   assert.equal(fork.derivedFromRefOrNull, selfMap.draftRef);
   assert.equal(fork.graph.semanticFingerprint, source.graph.semanticFingerprint);
+});
+
+
+test('canvas usability refinement exposes direct-drag pan, local-save feedback and palette presentation controls', () => {
+  assert.match(page, /ui\/interaction\.mjs/);
+  assert.match(page, /ui\/presentation\.mjs/);
+  assert.match(page, /Interaction\.shouldStartCanvasPan/);
+  assert.match(page, /Interaction\.dragExceededThreshold/);
+  assert.match(page, /targetIsShape/);
+  assert.match(page, /Saved locally/);
+  assert.match(page, /Local save failed/);
+  assert.match(page, /Browser-local draft/);
+  assert.match(page, /paletteFab/);
+  assert.match(page, /palette-color-safe/);
+  assert.match(page, /palette-high-contrast/);
+});
+
+test('decision labels, process frames and containment use presentation affordances without inventing new semantics', () => {
+  assert.match(page, /shape-label/);
+  assert.match(page, /\.shape\.DIAMOND \.shape-label/);
+  assert.match(page, /FRAME \.shape-label/);
+  assert.match(page, /containment-select/);
+  assert.match(page, /'SET_CONTAINMENT'/);
+  assert.match(page, /parentProjectionItemRefOrNull/);
+  assert.match(page, /contained-marker/);
+  assert.match(page, /canvas-boundary-label/);
+});
+
+test('complex graph presentation renders relationship direction, labels, role markers and branch cues', () => {
+  assert.match(page, /marker-end/);
+  assert.match(page, /vexboard-arrow/);
+  assert.match(page, /edge-label/);
+  assert.match(page, /Presentation\.semanticRole/);
+  assert.match(page, /Presentation\.deriveBranchPresentation/);
+  assert.match(page, /role-marker/);
+  assert.match(page, /branch-marker/);
+  assert.match(page, /kind-marker/);
+  assert.doesNotMatch(page, /method:\s*['"](?:POST|PUT|PATCH|DELETE)['"]/i);
 });
 
 // [VXG RealForever][VEXWORK][VEXBOARD][UI-PROOF]
@@ -193,5 +231,9 @@ test('prototype UI preserves the explicit interaction path beside BoardJourney a
   assert.match(page, /function interactionTrailText\(\)/);
   assert.match(page, /Interaction path\\n\$\{interactionTrailText\(\)\}/);
   assert.match(page, /function startJourneyAt\(semanticRef\)\{interactionTrail=\[\];/);
-  assert.match(page, /\{current,selected,tool,camera,journey,prototype,scenario,interactionTrail,activeBoardRef\}=prior/);
+  const returnBoardLine = page.split('\n').find((line) => line.includes('function returnBoard()'));
+  assert.ok(returnBoardLine);
+  for (const field of ['interactionTrail', 'activeBoardRef', 'draftDirty', 'saveMessage']) {
+    assert.match(returnBoardLine, new RegExp(field));
+  }
 });

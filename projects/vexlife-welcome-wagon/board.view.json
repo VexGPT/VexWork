@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "vexwork.work-board-view/v1",
+  "viewRef": "view.vexlife.welcome-wagon.board",
+  "projectRef": "project.vexlife.welcome-wagon",
+  "label": "VexLife Welcome Wagon Work Board",
+  "laneRefOrder": [
+    "lane.work.intake",
+    "lane.work.planned",
+    "lane.work.ready",
+    "lane.work.active",
+    "lane.work.waiting",
+    "lane.work.needs-human",
+    "lane.work.verify",
+    "lane.work.attention",
+    "lane.work.done",
+    "lane.work.archive"
+  ]
+}

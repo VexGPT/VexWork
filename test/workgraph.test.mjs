@@ -14,7 +14,6 @@ const operationalConsoleProjectSource = read('projects/vexwork-operational-conso
 const vexboardProjectSource = read('projects/vexboard/project.json');
 const blueprintProjectSource = read('projects/vexlife-blueprint-source-of-truth/project.json');
 const androidProofProjectSource = read('projects/android-proof-orchestration/project.json');
-const securityProjectSource = read('projects/vex-security-assurance/project.json');
 const graphSource = read('workgraphs/public.json');
 
 test('work registry covers lifecycle states exactly once on the default Work Board', () => {
@@ -35,13 +34,11 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   const operationalConsoleProject = createProject(operationalConsoleProjectSource);
   assert.equal(projectWorkRefs(operationalConsoleProject, graph).length, 24);
   const vexboardProject = createProject(vexboardProjectSource);
-  assert.equal(projectWorkRefs(vexboardProject, graph).length, 7);
+  assert.equal(projectWorkRefs(vexboardProject, graph).length, 8);
   const blueprintProject = createProject(blueprintProjectSource);
   assert.equal(projectWorkRefs(blueprintProject, graph).length, 14);
   const androidProofProject = createProject(androidProofProjectSource);
   assert.equal(projectWorkRefs(androidProofProject, graph).length, 4);
-  const securityProject = createProject(securityProjectSource);
-  assert.equal(projectWorkRefs(securityProject, graph).length, 7);
   assert.equal(verifySemanticFingerprint(project), true);
   assert.equal(verifySemanticFingerprint(graph), true);
 
@@ -146,6 +143,10 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(vexboardProjectors.effectDisposition, 'EFFECTS_BOUND');
   assert.equal(vexboardProjectors.sourceRefs.includes('github.pull.vexwork.108'), true);
   assert.equal(vexboardProjectors.sourceRefs.includes('src/core/vexboard-source-projectors.mjs'), true);
+  assert.equal(vexboardProjectors.sourceRefs.includes('github.pull.vexwork.110'), true);
+  assert.equal(vexboardProjectors.sourceRefs.includes('src/shared/vexboard-evidence.mjs'), true);
+  assert.equal(vexboardProjectors.sourceRefs.includes('github.pull.vexwork.115'), true);
+  assert.equal(vexboardProjectors.sourceRefs.includes('src/shared/vexboard-source-resolver.mjs'), true);
   assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexboard.source-projectors.running.pr108'));
   assert.equal(vexboardContract.sourceRefs.includes('src/shared/vexboard-model.mjs'), true);
   assert.equal(vexboardContract.sourceRefs.includes('vexboard/index.html'), true);
@@ -289,6 +290,9 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   const commerceItemModel = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.commerce-item-model');
   const commerceAiSite = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.commerce-ai-site');
   const commerceFulfillment = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.commerce-fulfillment-attention');
+  const antiquePilot = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.antique-pilot');
+  const antiqueBootstrap = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.antique-bootstrap');
+  const antiqueFirstItem = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.antique-first-item');
   const terrain = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.relational-terrain');
   const terrainPatient = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.relational-terrain.patient-zero');
   assert.equal(operationalOutcome.state, 'RUNNING');
@@ -307,6 +311,9 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(commerceItemModel.state, 'COMPLETED');
   assert.equal(commerceAiSite.state, 'COMPLETED');
   assert.equal(commerceFulfillment.state, 'COMPLETED');
+  assert.equal(antiquePilot.state, 'RUNNING');
+  assert.equal(antiqueBootstrap.state, 'COMPLETED');
+  assert.equal(antiqueFirstItem.state, 'READY');
   assert.equal(terrain.state, 'RUNNING');
   assert.equal(terrainPatient.state, 'VERIFYING');
 

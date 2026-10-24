@@ -28,6 +28,11 @@ test('public Repository Graph is structurally valid and culture remains by refer
   assert.equal(storefront.visibility, 'PUBLIC');
   assert.deepEqual(storefront.entryRefs, ['README.md', 'AGENTS.md', 'storefront.json']);
   assert.deepEqual(storefront.cultureRefs, ['AGENTS.md']);
+  const antiqueStorefront = graph.repositories.find((repository) => repository.repositoryRef === 'repo.antique-plate-storefront');
+  assert.equal(antiqueStorefront.nameWithOwner, 'vgong24/Antique-Plate-Storefront');
+  assert.equal(antiqueStorefront.visibility, 'PUBLIC');
+  assert.deepEqual(antiqueStorefront.entryRefs, ['README.md', 'AGENTS.md', 'storefront.json']);
+  assert.deepEqual(antiqueStorefront.cultureRefs, ['AGENTS.md']);
 });
 
 test('unknown repository references fail closed', () => {

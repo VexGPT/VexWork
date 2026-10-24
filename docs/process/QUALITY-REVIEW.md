@@ -505,6 +505,58 @@ NEXT ROUTE
 
 Use `docs/templates/QA-REVIEW-BRIEF.md` to hand the role to a fresh reviewer and `docs/templates/QA-REVIEW-RETURN.md` for the return shape.
 
+## Merge-ready handoff
+
+A terminal exact-candidate review does not need to keep chasing live `main`.
+
+When the exact candidate is clear and every candidate-owned proof/review predicate required by the owning repository is satisfied:
+
+```text
+exact candidate head/tree stable
++ required SourceOwner / QA / assurance evidence current
++ no candidate-owned blocking finding
+-> READY_FOR_INTEGRATION
+```
+
+The review return should preserve:
+
+```text
+providerPullRequestRef
+candidateHead
+candidateTree
+fixedEvidenceBase
+sourceOwnerEvidenceRefOrNull
+review / assurance evidence refs
+dependency / priority evidence refs
+explicit non-claims
+```
+
+Then route to:
+
+```text
+docs/foundation/REPOSITORY-INTEGRATION.md
+docs/process/INTEGRATE-READY-PULL-REQUESTS.md
+```
+
+Do **not** reinterpret unrelated `main` movement as a failed candidate review.
+
+```text
+MAIN_MOVED
++ CANDIDATE_UNCHANGED
+-> preserve exact-candidate review/proof
+-> invalidate only stale integration-currentness/composition evidence
+-> Integration Steward rebinds current main at the candidate's queue turn
+```
+
+If the candidate head/tree changes, re-evaluate only the materially affected candidate proof/review.
+
+If a candidate-owned test actually consumes mutable source generated from current `main`, re-run that affected proof instead of mechanically carrying it forward.
+
+```text
+READY_FOR_INTEGRATION != MERGE_AUTHORITY
+QA_CLEAR != ORDINARY_MERGE
+```
+
 ## Stability and coverage contract
 
 The deterministic suite is the first regression floor, not the whole meaning of quality.

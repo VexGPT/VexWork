@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.vexlife-android.current-state-refinement",
+  "label": "VexLife Android Current-State Refinement",
+  "purpose": "Refine the current VexLife Android product from lived use by reviewing scalability, SCAE/execution placement, large-state UI/data behavior, VexMaps discovery-to-navigation experience, Conversation history growth and reusable performance diagnostics while preserving accepted feature semantics and requiring evidence before optimization.",
+  "rootWorkRefs": [
+    "work.vexlife-android.current-state-refinement.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vexlife-android"
+  ],
+  "sourceRefs": [
+    "projects/vexlife-android-current-state-refinement/README.md",
+    "docs/process/FORM-PROJECT.md",
+    "github.issue.vexlife-android.168",
+    "github.commit.vexlife-android.8213ae7befe08bc0a21c76bd70e7c8790e5bcf9f",
+    "project.vexstream.mobile-library",
+    "repo.vexlife-android:AGENTS.md",
+    "repo.vexlife-android:docs/CULTURE.md",
+    "repo.vexlife-android:docs/foundation/INDEX.md",
+    "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexBehaviorDocs.kt",
+    "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt",
+    "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/VexStableLazyList.kt"
+  ],
+  "formedAt": "2026-10-24T08:50:00.000Z"
+}
