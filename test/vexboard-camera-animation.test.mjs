@@ -194,7 +194,9 @@ test('VexBoard UI animates semantic focus, honors reduced motion, and cancels on
   assert.match(page, /function focusSelected\(\{animate=false\}=\{\}\)/);
   assert.match(page, /cameraAnimator\.scheduleTo\(targetCamera\)/);
   assert.equal((page.match(/focusSelected\(\{animate:true\}\)/g) || []).length, 3);
-  assert.match(page, /view\.onpointerdown=\(e\)=>\{cameraAnimator\.cancel\(\);/);
+  assert.match(page, /view\.onpointerdown=\(e\)=>\{/);
+  assert.match(page, /cameraAnimator\.cancel\(\);/);
+  assert.match(page, /Interaction\.shouldStartCanvasPan/);
   assert.match(page, /s\.onpointerdown=\(e\)=>\{cameraAnimator\.cancel\(\);/);
   assert.match(page, /function fitBoard\(\).*cameraAnimator\.jumpTo/s);
   assert.match(page, /function zoomBy\(.*cameraAnimator\.jumpTo/s);

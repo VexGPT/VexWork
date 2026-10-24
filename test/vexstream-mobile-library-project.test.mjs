@@ -65,7 +65,7 @@ test('Mobile Library Board separates terminal MassDownload from the paused Queue
   const active = board.lanes.find((lane) => lane.laneRef === 'lane.work.active');
   const waiting = board.lanes.find((lane) => lane.laneRef === 'lane.work.waiting');
 
-  assert.equal(board.lanes.flatMap((lane) => lane.cards).length, 14);
+  assert.equal(board.lanes.flatMap((lane) => lane.cards).length, 15);
   assert.equal(done.cards.some((card) => card.workRef === 'work.vexstream.mobile-library.massdownload-product'), true);
   assert.equal(done.cards.some((card) => card.workRef === 'work.vexstream.mobile-library.massdownload-e2e'), true);
   assert.equal(active.cards.some((card) => card.workRef === 'work.vexstream.mobile-library.track-menu-presentation-defect'), false);

@@ -34,7 +34,7 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   const operationalConsoleProject = createProject(operationalConsoleProjectSource);
   assert.equal(projectWorkRefs(operationalConsoleProject, graph).length, 24);
   const vexboardProject = createProject(vexboardProjectSource);
-  assert.equal(projectWorkRefs(vexboardProject, graph).length, 7);
+  assert.equal(projectWorkRefs(vexboardProject, graph).length, 8);
   const blueprintProject = createProject(blueprintProjectSource);
   assert.equal(projectWorkRefs(blueprintProject, graph).length, 14);
   const androidProofProject = createProject(androidProofProjectSource);
