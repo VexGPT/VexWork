@@ -115,8 +115,21 @@ export function createCameraAnimator({
     return true;
   }
 
+  function scheduleTo(targetFactory) {
+    const readTarget = requiredFunction(targetFactory, 'targetFactory');
+    cancel();
+    const scheduledGeneration = generation;
+    activeFrameId = request(() => {
+      if (scheduledGeneration !== generation) return;
+      activeFrameId = null;
+      animateTo(readTarget());
+    });
+    return true;
+  }
+
   return Object.freeze({
     animateTo,
+    scheduleTo,
     jumpTo,
     cancel,
     isAnimating: () => activeFrameId !== null,

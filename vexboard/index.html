@@ -121,7 +121,7 @@ function applyCamera(){
 }
 function fitBoard(){if(!current||!viewportEl)return;cameraAnimator.jumpTo(Board.cameraForBounds(Board.projectionBounds(visibleItems()),viewportSize(),{padding:72,maxZoom:1.35}))}
 function resetView(){cameraAnimator.jumpTo(Board.normalizeCamera({x:48,y:48,zoom:1}))}
-function focusSelected({animate=false}={}){const target=selected?item(selected):null;if(!target||!viewportEl)return;const targetCamera=Board.cameraForBounds(target.bounds,viewportSize(),{padding:120,maxZoom:1.7});animate?cameraAnimator.animateTo(targetCamera):cameraAnimator.jumpTo(targetCamera)}
+function focusSelected({animate=false}={}){const target=selected?item(selected):null;if(!target||!viewportEl)return;const targetCamera=()=>Board.cameraForBounds(target.bounds,viewportSize(),{padding:120,maxZoom:1.7});animate?cameraAnimator.scheduleTo(targetCamera):cameraAnimator.jumpTo(targetCamera())}
 function zoomBy(factor,anchor=null){if(!viewportEl)return;const size=viewportSize(),point=anchor||{anchorX:size.width/2,anchorY:size.height/2};cameraAnimator.jumpTo(Board.zoomCameraAt(camera,{factor,...point}))}
 
 function renderEdges(svg,visibleSemanticRefs){
@@ -153,7 +153,7 @@ function applySimulationInteraction(interactionRef){
   journey=result.journey;scenario=result.scenario;
   const focusRef=result.focusRefOrNull||journey.currentRef,target=itemFor(focusRef);
   if(target)selected=target.projectionItemRef;
-  renderWorkspace();requestAnimationFrame(()=>focusSelected({animate:true}));
+  renderWorkspace();focusSelected({animate:true});
 }
 function interactionTrailText(){
   if(!interactionTrail.length)return'No interactions yet.';
@@ -203,7 +203,7 @@ function renderMinimap(){
 }
 
 function journeyBoardRef(){return activeBoardRef||current?.draftRef||null}
-function applyJourney(next){journey=next;const target=itemFor(journey.currentRef);if(target)selected=target.projectionItemRef;renderWorkspace();requestAnimationFrame(()=>focusSelected({animate:true}))}
+function applyJourney(next){journey=next;const target=itemFor(journey.currentRef);if(target)selected=target.projectionItemRef;renderWorkspace();focusSelected({animate:true})}
 function startJourneyAt(semanticRef){interactionTrail=[];applyJourney(Board.createBoardJourney(current.graph,{journeyRef:ref('journey.vexboard'),boardRef:journeyBoardRef(),startRef:semanticRef}))}
 function followJourney(relationshipRef){applyJourney(Board.advanceBoardJourney(current.graph,journey,relationshipRef))}
 function backJourney(){applyJourney(Board.backBoardJourney(current.graph,journey))}

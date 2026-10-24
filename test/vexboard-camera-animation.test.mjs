@@ -115,6 +115,34 @@ test('manual camera input interrupts an in-flight focus without stale frame over
   assert.deepEqual(camera, { x: -20, y: 30, zoom: 0.5 });
 });
 
+test('manual camera input cancels a scheduled semantic focus before its starter frame runs', () => {
+  const frames = frameHarness();
+  let camera = { x: 0, y: 0, zoom: 1 };
+  const animator = createCameraAnimator({
+    normalizeCamera: cameraNormalizer,
+    readCamera: () => camera,
+    writeCamera: (next) => { camera = next; },
+    requestFrame: frames.requestFrame,
+    cancelFrame: frames.cancelFrame,
+    now: () => 0,
+    durationMs: 100,
+  });
+
+  assert.equal(animator.scheduleTo(() => ({ x: 100, y: 100, zoom: 2 })), true);
+  assert.equal(animator.isAnimating(), true);
+  const staleStarter = frames.next();
+
+  animator.jumpTo({ x: -50, y: 20, zoom: 0.75 });
+  assert.deepEqual(camera, { x: -50, y: 20, zoom: 0.75 });
+  assert.deepEqual(frames.cancelled, [staleStarter.id]);
+  assert.equal(animator.isAnimating(), false);
+
+  staleStarter.callback(16);
+  assert.deepEqual(camera, { x: -50, y: 20, zoom: 0.75 });
+  assert.equal(frames.pendingCount(), 0);
+  assert.equal(animator.isAnimating(), false);
+});
+
 test('reduced motion, zero duration, and no-op targets preserve meaning without animation', () => {
   for (const options of [
     { durationMs: 100, prefersReducedMotion: () => true },
@@ -164,7 +192,7 @@ test('VexBoard UI animates semantic focus, honors reduced motion, and cancels on
   assert.match(page, /import \{ createCameraAnimator \} from '\.\/ui\/camera-animation\.mjs';/);
   assert.match(page, /prefersReducedMotion:\(\)=>Boolean\(reducedMotion\?\.matches\)/);
   assert.match(page, /function focusSelected\(\{animate=false\}=\{\}\)/);
-  assert.match(page, /cameraAnimator\.animateTo\(targetCamera\)/);
+  assert.match(page, /cameraAnimator\.scheduleTo\(targetCamera\)/);
   assert.equal((page.match(/focusSelected\(\{animate:true\}\)/g) || []).length, 3);
   assert.match(page, /view\.onpointerdown=\(e\)=>\{cameraAnimator\.cancel\(\);/);
   assert.match(page, /s\.onpointerdown=\(e\)=>\{cameraAnimator\.cancel\(\);/);
@@ -172,5 +200,6 @@ test('VexBoard UI animates semantic focus, honors reduced motion, and cancels on
   assert.match(page, /function zoomBy\(.*cameraAnimator\.jumpTo/s);
   const journeyLine = page.split('\n').find((line) => line.startsWith('function applyJourney('));
   assert.ok(journeyLine);
+  assert.doesNotMatch(journeyLine, /requestAnimationFrame/);
   assert.doesNotMatch(journeyLine, /cameraAnimator\.jumpTo/);
 });
