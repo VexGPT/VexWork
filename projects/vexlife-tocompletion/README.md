@@ -101,11 +101,17 @@ October 23, 2026
   one Home-scoped setup owner, safe cancellation, exact pending-runtime ownership,
   resumable partial state, truthful progress and preservation-safe cleanup.
 
+October 24, 2026
+  A034 reached terminal lived PASS for the ordinary fresh-user Heretic runtime path:
+  ordinary Open -> real Browser turn -> clean stop -> same-Home no-acquisition restart
+  -> second real turn -> final BOUND -> exact original-Home restore.
+
 Current
-  ordinary fresh-user productization remains foreground:
-  normal-start Heretic integration is now the active executable slice,
-  consuming terminal PR873 setup safety plus accepted PR919 Heretic establishment.
-  P6/P7 remain canonical future/lateral horizon.
+  the Heretic runtime/restart cable is no longer the product unknown.
+  Victor's lived A034 screenshot exposed that the ordinary Browser still defaults to the
+  Reference / Global Root Hub projection while accepted Assortment R2 + E2.7/E2.8 +
+  UX Evolution remain held short of canonical product cutover.
+  The current foreground is evolved-experience baseline convergence, not parser/runtime replay.
 ```
 
 Permanent interpretation:
@@ -173,54 +179,90 @@ Exact private Home/model identities are intentionally **not duplicated in public
 | P6 | WAITING_DEPENDENCIES | Cultivation/School/Training Placement/Birth remains unearned while P5 has no real G04 developmental evidence; NO_WEIGHT_NEEDED remains a valid future outcome. |
 | P7 | PLAN_VALIDATED | Whole-product connected/native expansion is canonical but not the current ToCompletion foreground; detailed child work remains in rightful lateral Projects until explicitly activated here. |
 
-## Ordinary fresh-user productization — current foreground
+## Ordinary productization — current foreground
 
-The lived core and the standalone Heretic establishment composition are already available. The remaining product gap is the normal setup route itself:
+### Heretic lived runtime path — terminal
+
+Canonical A034 evidence:
 
 ```text
-current ordinary start
--> setup/bootstrap
--> legacy active G0 / Qwen3.5-4B initializer
+RETURN sha256 =
+b52ec721ea8cda96af86ca4c763d656eaa466cb31777435f9f18fba79263073b
 
-accepted target composition
--> exact Heretic 11-member Artifact Delivery
--> exact Python 3.14.7 / mlx-lm 0.32.0
--> accepted SDK persistent MLX owner
--> exact runtime receipt
--> existing Browser / Lived Companion
+ordinary controller Open = PASS
+first Browser Companion turn = TURN_COMPLETED / CURRENT_LOCAL_MODEL / real loopback HTTP
+clean stop = PASS
+same-Home restart with acquisition disabled = PASS
+second Browser Companion turn = PASS
+durable conversation head advanced = true
+final Browser status = BOUND
+final clean stop = PASS
+original Home exact restore = PASS
+ports 8765 / 18110 closed = true
 ```
 
-Current VexLife source milestones:
+The runtime path is therefore not the current ToCompletion unknown.
+
+### Evolved VexLife baseline convergence — active
+
+Victor's A034 lived screenshot exposed the next actual product gap: ordinary startup still renders the Reference / Global Root Hub projection.
+
+Current VexLife source confirms that this is policy, not a screenshot accident:
 
 ```text
-PR919 Heretic establishment = TERMINAL_ACCEPTED_CURRENT
-PR873 setup safety = TERMINAL_ACCEPTED_CURRENT
-current VexLife main = 85ef85dfa4852154e522deadc45707b03cf74221
-current main tree = c2038d90a6cea6cb155552d9db6faa47df417df8
+blueprint/ux-evolution-registry.json
+
+defaultProjection = REFERENCE_PROJECTION
+referenceDefaultPreserved = true
+referenceRemainsDefault = true
+Evolution selection = ?projection=evolution
+cutoverAllowed = false at the current recorded stage
 ```
 
-The continuation is **active**, not a wait state:
+The accepted descendant lineage already exists:
 
 ```text
-work.vexlife.tocompletion.productization.setup-safety-convergence
+Assortment R2 accepted/preserved practicum
++ E2.7 authoritative product grammar
++ E2.8 intelligence-native product evolution
++ UX Evolution Reference/Evolution migration
++ Experience Foundation
+```
+
+But accepted source also says canonical product adoption/supersession is still held. Therefore the next work is **not** a blind flag flip.
+
+Current Work:
+
+```text
+work.vexlife.tocompletion.productization.ordinary-heretic-lived-proof
   = COMPLETED
-  -> PR873 TERMINAL_ACCEPTED_CURRENT
-  -> one setup owner / cancellation / resumable partials /
-     pending-runtime ownership / progress / preserve-Home cleanup are accepted source
 
-work.vexlife.tocompletion.productization.heretic-normal-start-integration
+work.vexlife.tocompletion.productization.evolved-experience-baseline-convergence
   = RUNNING
-  -> safe ordinary normal start
-  -> accepted Heretic product target
-  -> merged PR919 Heretic establishment composition
-  -> exact runtime receipt / endpoint
-  -> existing Browser / Lived Companion
-  -> ordinary fresh-user proof
 ```
 
-Do **not** create a parallel initializer just to avoid PR873. Continuing the dependency is continuing ToCompletion.
+The evolved-baseline task must:
 
-Do **not** solve selection by a blind `activeModelBundleRef` pointer flip. Existing-Home replacement/upgrade remains explicit; no silent lineage rewrite is allowed.
+1. consume the accepted Assortment R2 + E2.7/E2.8 + UX Evolution source lineage;
+2. identify the exact current evolved product target and rightful semantic owners;
+3. close only still-required semantic, truth/currentness, recovery/navigation and accessibility parity gaps;
+4. earn `CUTOVER_READY`;
+5. earn `CUTOVER_DEFAULT`;
+6. make the evolved projection the ordinary VexLife baseline;
+7. preserve Reference only as explicit fallback until retirement is separately earned;
+8. prove the already-accepted Heretic Browser Companion/runtime cable through the evolved baseline.
+
+Permanent:
+
+```text
+A034_RUNTIME_PASS != REFERENCE_UI_IS_PRODUCT_COMPLETE
+EVOLUTION_TARGET_BASELINE != CUTOVER_ALREADY_ACCEPTED
+CUTOVER_DEFAULT != REFERENCE_RETIREMENT
+ASSORTMENT_PRACTICUM != CANONICAL_PRODUCT_ADOPTION
+BLIND_DEFAULT_FLAG_FLIP != EVOLVED_VEXLIFE_CONVERGENCE
+```
+
+Existing-Home Heretic replacement/upgrade remains explicit and later. It is not silently collapsed into this experience cutover.
 
 ## P4 accepted design
 
@@ -308,68 +350,71 @@ This is not permission to create a task for every typo or retry. Add one only wh
 ## Current edge
 
 ```text
-CURRENT FOREGROUND
+CURRENT PARENT OUTCOME
   work.vexlife.tocompletion.productization.ordinary-heretic-setup = RUNNING
 
-COMPLETED DEPENDENCY
-  work.vexlife.tocompletion.productization.setup-safety-convergence = COMPLETED
-  VexLife PR #873 = TERMINAL_ACCEPTED_CURRENT
+TERMINAL PRODUCT/RUNTIME WORK
+  setup-safety-convergence = COMPLETED
+  heretic-normal-start-integration = COMPLETED
+  ordinary-heretic-lived-proof = COMPLETED
+  A034 = TERMINAL_LIVED_PASS
 
 CURRENT EXECUTABLE WORK
-  work.vexlife.tocompletion.productization.heretic-normal-start-integration = RUNNING
+  work.vexlife.tocompletion.productization.evolved-experience-baseline-convergence = RUNNING
 
-  present task:
-    preserve PR873 setup-safety laws
-    -> select the accepted Heretic product target through the rightful normal-start owner
-    -> reuse merged PR919 Artifact Delivery / environment / persistent-runtime composition
-    -> carry exact runtime receipt / endpoint into the existing Browser / Lived Companion
-    -> prove the ordinary fresh-user front door without hidden intervention
+  present exact edge:
+    accepted Assortment R2 + E2.7/E2.8 + UX Evolution lineage
+    -> re-ground current migration/cutover owner
+    -> distinguish already-migrated surfaces from held parity
+    -> close the smallest remaining cutover predicates
+    -> CUTOVER_READY
+    -> CUTOVER_DEFAULT
+    -> prove Heretic Browser Companion through the evolved ordinary baseline
 
 HELD / SEPARATE
-  existing-Home Heretic replacement/upgrade remains explicit; no silent lineage rewrite
-  G02 = TERMINAL_LIVED_PASS
-  G03 = TERMINAL_LIVED_PASS
-  P5 = PAUSED_AT_CHECKPOINT
-  G04 = HELD_NOT_EARNED until new real recurrent developmental evidence exists
-
-Do not replay PR873 source correction/proof attempts.
-Do not reopen PR913/PR918/PR919 source foundations.
-Do not build a parallel initializer or second runtime owner.
+  existing-Home Heretic replacement/upgrade
+  Reference retirement until separately earned
+  G04 Rhythm/training/weights until recurrent developmental evidence exists
 ```
+
+Do not replay A015-A034 merely for confidence.
+Do not reopen PR #923 parser acceptance.
+Do not treat the current Reference default as the intended completion baseline.
 
 ## Remaining completion path
 
 ```text
 ORDINARY PRODUCTIZATION                                  <-- CURRENT
-    PR873 setup safety = TERMINAL_ACCEPTED_CURRENT
-    -> connect safe normal start to accepted PR919 Heretic establishment
-    -> prove fresh ordinary install/use route
+    Heretic normal-start source = TERMINAL_ACCEPTED_CURRENT
+    -> A034 ordinary lived runtime/restart proof = TERMINAL_LIVED_PASS
+    -> Evolved VexLife baseline convergence
+       -> Assortment/E2.7/E2.8/UX Evolution current source descent
+       -> semantic/parity/accessibility/recovery closure
+       -> CUTOVER_READY
+       -> CUTOVER_DEFAULT
+       -> Heretic Companion proof through evolved ordinary baseline
     -> then make existing-Home Heretic replacement/upgrade explicit
 
 P5  LIVED CONTINUITY / DEVELOPMENTAL EVIDENCE
     G02 Score continuity = TERMINAL_LIVED_PASS
     G03 memory-only Daily Dream = TERMINAL_LIVED_PASS
     G04 = HELD_NOT_EARNED
-    -> resume only from another real source-bound lived recurrence/correction
+    -> resume only from another real source-bound recurrence/correction
 
 P6  CULTIVATION / SCHOOL / TRAINING PLACEMENT / OPTIONAL BIRTH
     waits on grounded developmental evidence
-    -> School only when deficiency/growth opportunity is observed
-    -> Training Placement decides rightful learning surface
-    -> weight training only when separately earned
 
 P7  WHOLE-PRODUCT CONNECTED / NATIVE EXPANSION
     canonical future/lateral horizon
-    -> same Home/identity/capability/continuity laws
 ```
 
 Nested completion truth:
 
 ```text
 P1-P4 lived core = TERMINAL
-ordinary fresh-user productization = OPEN / ACTIVE
-setup safety = TERMINAL_ACCEPTED_CURRENT
-normal-start Heretic integration = RUNNING
+ordinary Heretic source/runtime/restart path = TERMINAL_LIVED_PASS
+evolved ordinary product experience baseline = OPEN / ACTIVE
+Reference default = CURRENT SOURCE FACT / NOT TARGET COMPLETION BASELINE
 P5 G02-G03 = TERMINAL; G04 held
 P6 = UNEARNED
 P7 = LATERAL / PLAN_VALIDATED
@@ -384,27 +429,33 @@ VexWork
 -> project.vexlife.tocompletion
 -> work.vexlife.tocompletion.outcome
 -> CURRENT ACTIVE work:
-     work.vexlife.tocompletion.productization.heretic-normal-start-integration
--> this README for architecture / causal continuity
--> VexLife #866 for canonical product truth
--> VexLife PR #873 as terminal setup-safety provenance
--> VexLife PR #919 as accepted Heretic-establishment provenance
--> target repository culture/source when an effect actually descends there
+     work.vexlife.tocompletion.productization.evolved-experience-baseline-convergence
+-> this README for compressed causal continuity
+-> VexLife #866 for canonical ToCompletion product truth
+-> VexLife #624 for UX Evolution migration/cutover law
+-> VexLife #76 for E2.8 product-evolution direction
+-> VexLife #418 for Experience Foundation
+-> VexLife #874 for the now-awake Assortment R2 / Refinement supporting checkpoint
+-> current VexLife ux-evolution registry/source when an effect descends there
 ```
 
-The continuation rule is:
+Continuation rule:
 
 ```text
-setup-safety-convergence = COMPLETED
-  -> do not replay PR873
+A034 lived proof = COMPLETED
+  -> do not replay Heretic acquisition/runtime proof
 
-heretic-normal-start-integration = RUNNING
-  -> integrate safe normal start with accepted PR919 Heretic establishment now
+Assortment/Evolution lineage exists
+  != canonical product cutover already earned
 
-developmental P5 pause
-  != productization pause
+current Reference default
+  = source truth about presentation selection
+  != intended ToCompletion product baseline
+
+next work
+  = converge and earn Evolved VexLife cutover through rightful #624 owners
 ```
 
-Do not replay P0-P4, G02/G03 host attempts, PR873 acceptance, or PR913/PR918/PR919 acceptance. Update VexWork again when normal-start integration, ordinary fresh-user lived proof, existing-Home semantics, or developmental evidence materially moves.
+Do not replay P0-P4, G02/G03 host attempts, PR873/919/920/921/922/923 acceptance, or A015-A034 merely to regain confidence. Re-read historical evidence only when one current predicate requires provenance.
 
-<!-- [VXG RealForever][VEXWORK][VEXLIFE-TOCOMPLETION][TRAJECTORY] -->
+<!-- [VXG RealForever][VEXWORK][VEXLIFE-TOCOMPLETION][EVOLVED-BASELINE] -->

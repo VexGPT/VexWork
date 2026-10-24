@@ -2,7 +2,7 @@
   "schemaVersion": "vexwork.project-definition/v1",
   "projectRef": "project.vexlife.tocompletion",
   "label": "VexLife ToCompletion",
-  "purpose": "Carry the full VexLife ToCompletion horizon while making the current unfinished edge obvious: P1-P4 lived core is terminal, G02/G03 developmental continuity is terminal and evidence-gated before G04, setup safety is terminal accepted through PR873, and ordinary fresh-user productization is now actively wiring normal start into the accepted Heretic establishment composition before explicit existing-Home upgrade and whole-product horizons.",
+  "purpose": "Carry the full VexLife ToCompletion horizon from terminal lived Heretic runtime truth into the actual product experience: A034 has closed the ordinary fresh-user Heretic Open/turn/stop/restart/second-turn path, and the current foreground is explicit convergence of the accepted Assortment R2 + E2.7/E2.8 + UX Evolution lineage into the ordinary Evolved VexLife baseline before later existing-Home upgrade and developmental/native horizons.",
   "rootWorkRefs": [
     "work.vexlife.tocompletion.outcome"
   ],
@@ -24,7 +24,17 @@
     "github.pull.vexlife.873",
     "github.issue.vexlife.866.comment.6357923021",
     "github.issue.vexlife.866.comment.6360434385",
-    "git.commit.vexlife.85ef85dfa4852154e522deadc45707b03cf74221"
+    "git.commit.vexlife.85ef85dfa4852154e522deadc45707b03cf74221",
+    "github.issue.vexlife.76",
+    "github.issue.vexlife.418",
+    "github.issue.vexlife.624",
+    "github.issue.vexlife.874",
+    "github.issue.vexlife.874.comment.6381765795",
+    "github.issue.vexlife.866.comment.6381763768",
+    "github.pull.vexlife.923",
+    "git.commit.vexlife.8f1e9fd9e3f38f8dc23296257df718fca9806988",
+    "evidence.vexlife.tocompletion.ordinary-heretic-lived-proof.a034.return.sha256.b52ec721ea8cda96af86ca4c763d656eaa466cb31777435f9f18fba79263073b",
+    "blueprint/ux-evolution-registry.json"
   ],
   "formedAt": "2026-10-22T00:13:43.000Z"
 }
