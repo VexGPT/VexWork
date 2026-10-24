@@ -1,0 +1,111 @@
+{
+  "schemaVersion": "vexboard.board-prototype/v1",
+  "prototypeRef": "prototype.vexboard.clickable-demo",
+  "graphRef": "graph.vexboard.prototype-demo",
+  "interactions": [
+    {
+      "interactionRef": "interaction.prototype.enable",
+      "controlRef": "node.prototype.enable",
+      "trigger": "CLICK",
+      "conditionOrNull": null,
+      "actions": [
+        {
+          "actionRef": "action.prototype.enable-value",
+          "kind": "SET_SCENARIO_VALUE",
+          "arguments": {
+            "valueRef": "value.prototype.can-submit",
+            "value": true
+          }
+        },
+        {
+          "actionRef": "action.prototype.enable-overlay",
+          "kind": "OPEN_OVERLAY",
+          "arguments": {
+            "overlayRef": "overlay.prototype.ready"
+          }
+        },
+        {
+          "actionRef": "action.prototype.enable-event",
+          "kind": "EMIT_SIMULATED_EVENT",
+          "arguments": {
+            "eventRef": "event.prototype.enabled"
+          }
+        }
+      ],
+      "sourceRefs": [
+        "vexboard/prototype-demo.prototype.json"
+      ]
+    },
+    {
+      "interactionRef": "interaction.prototype.submit",
+      "controlRef": "node.prototype.submit",
+      "trigger": "CLICK",
+      "conditionOrNull": {
+        "conditionRef": "condition.prototype.can-submit",
+        "valueRef": "value.prototype.can-submit",
+        "operator": "EQUALS",
+        "expectedValueOrNull": true
+      },
+      "actions": [
+        {
+          "actionRef": "action.prototype.submit-close-ready",
+          "kind": "CLOSE_OVERLAY",
+          "arguments": {
+            "overlayRef": "overlay.prototype.ready"
+          }
+        },
+        {
+          "actionRef": "action.prototype.submit-value",
+          "kind": "SET_SCENARIO_VALUE",
+          "arguments": {
+            "valueRef": "value.prototype.submitted",
+            "value": true
+          }
+        },
+        {
+          "actionRef": "action.prototype.submit-overlay",
+          "kind": "OPEN_OVERLAY",
+          "arguments": {
+            "overlayRef": "overlay.prototype.success"
+          }
+        },
+        {
+          "actionRef": "action.prototype.submit-event",
+          "kind": "EMIT_SIMULATED_EVENT",
+          "arguments": {
+            "eventRef": "event.prototype.submitted"
+          }
+        },
+        {
+          "actionRef": "action.prototype.submit-navigate",
+          "kind": "NAVIGATE_TO_SCENE",
+          "arguments": {
+            "relationshipRef": "rel.prototype.submit-done"
+          }
+        }
+      ],
+      "sourceRefs": [
+        "vexboard/prototype-demo.prototype.json"
+      ]
+    }
+  ],
+  "overlays": [
+    {
+      "overlayRef": "overlay.prototype.ready",
+      "label": "Ready \u00b7 submission enabled",
+      "sourceRefs": [
+        "vexboard/prototype-demo.prototype.json"
+      ]
+    },
+    {
+      "overlayRef": "overlay.prototype.success",
+      "label": "Success \u00b7 simulated submission only",
+      "sourceRefs": [
+        "vexboard/prototype-demo.prototype.json"
+      ]
+    }
+  ],
+  "sourceRefs": [
+    "vexboard/prototype-demo.prototype.json"
+  ]
+}
