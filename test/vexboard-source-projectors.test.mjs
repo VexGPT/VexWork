@@ -47,9 +47,9 @@ test('VexWork Project source projector preserves source ownership and currentnes
     (node) => node.nodeRef === 'annotation.work.vexboard.source-projectors.currentness',
   );
   assert.equal(currentness.kind, 'ANNOTATION');
-  assert.match(currentness.label, /State: READY/);
-  assert.match(currentness.label, /Authority: NO_AUTHORITY/);
-  assert.match(currentness.label, /Effects: NO_EFFECTS/);
+  assert.match(currentness.label, /State: RUNNING/);
+  assert.match(currentness.label, /Authority: AUTHORIZED_BOUNDED/);
+  assert.match(currentness.label, /Effects: EFFECTS_BOUND/);
 
   const processNode = first.graph.nodes.find(
     (node) => node.nodeRef === 'reference.process.vexwork.form-project',
