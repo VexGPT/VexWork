@@ -1152,7 +1152,7 @@
           "label": "Now Playing artwork projection",
           "purpose": "Carry optional current-track artwork from VexStream's canonical library metadata into the sanitized Android mobile catalog and Media3 MediaItem metadata so player/widget surfaces can render artwork when it is actually available without inventing Android-local artwork truth.",
           "workClass": "TASK",
-          "state": "READY",
+          "state": "RUNNING",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vexstream.mobile-library.playback-surfaces",
@@ -1176,8 +1176,23 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-24T11:20:00.000Z",
-          "updatedAt": "2026-10-24T11:20:00.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-10-24T11:26:00.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexstream.mobile-library.now-playing-artwork-projection.running.victor-approved-20261024a",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "Victor approved the exact playback-surface implementation envelope. Begin the bounded cross-repository artwork projection required by the full player and compact VexStream widget without widening into a second playback owner.",
+              "actorRef": "actor.local-vex-operations.vexstream-mobile-library",
+              "sourceRefs": [
+                "project.vexstream.mobile-library",
+                "proposal.local-vex-operations.android-widget-foundation.ready-active.20261024a",
+                "response.victor.android-widget-foundation.ready-active.20261024a",
+                "confirmation.local-vex-operations.android-widget-foundation.ready-active.20261024a"
+              ],
+              "createdAt": "2026-10-24T11:26:00.000Z"
+            }
+          ]
         },
         {
           "workRef": "work.vexstream.mobile-library.outcome",
@@ -1530,14 +1545,14 @@
         {
           "laneRef": "lane.work.ready",
           "label": "Ready",
-          "workRefs": [
-            "work.vexstream.mobile-library.now-playing-artwork-projection"
-          ]
+          "workRefs": []
         },
         {
           "laneRef": "lane.work.active",
           "label": "Active",
-          "workRefs": []
+          "workRefs": [
+            "work.vexstream.mobile-library.now-playing-artwork-projection"
+          ]
         },
         {
           "laneRef": "lane.work.waiting",
@@ -9136,7 +9151,7 @@
           "label": "Reusable semantic App Widget surface",
           "purpose": "Implement the smallest reusable Android App Widget foundation: Compose-first Glance rendering, explicit widget projection data, AppWidget receiver lifecycle, direct Activity deep links, and bounded callback/control dispatch that never lets widget code own domain truth or mutate providers directly.",
           "workClass": "TASK",
-          "state": "READY",
+          "state": "RUNNING",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.android-widget-foundation.outcome",
@@ -9158,8 +9173,23 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-24T11:20:00.000Z",
-          "updatedAt": "2026-10-24T11:20:00.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-10-24T11:26:00.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.android-widget-foundation.semantic-widget-surface.running.victor-approved-20261024a",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "Victor approved the proposed implementation envelope and supplied a compact one-row music-widget reference; implementation may proceed inside the bounded reusable widget substrate while VexStream remains the patient-zero consumer rather than the widget foundation's semantic owner.",
+              "actorRef": "actor.local-vex-operations.android-widget-foundation",
+              "sourceRefs": [
+                "project.android-widget-foundation",
+                "proposal.local-vex-operations.android-widget-foundation.ready-active.20261024a",
+                "response.victor.android-widget-foundation.ready-active.20261024a",
+                "confirmation.local-vex-operations.android-widget-foundation.ready-active.20261024a"
+              ],
+              "createdAt": "2026-10-24T11:26:00.000Z"
+            }
+          ]
         },
         {
           "workRef": "work.android-widget-foundation.vexstream-playback-widget",
@@ -9214,14 +9244,14 @@
         {
           "laneRef": "lane.work.ready",
           "label": "Ready",
-          "workRefs": [
-            "work.android-widget-foundation.semantic-widget-surface"
-          ]
+          "workRefs": []
         },
         {
           "laneRef": "lane.work.active",
           "label": "Active",
-          "workRefs": []
+          "workRefs": [
+            "work.android-widget-foundation.semantic-widget-surface"
+          ]
         },
         {
           "laneRef": "lane.work.waiting",

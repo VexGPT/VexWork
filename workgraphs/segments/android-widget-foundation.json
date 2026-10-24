@@ -39,7 +39,7 @@
       "label": "Reusable semantic App Widget surface",
       "purpose": "Implement the smallest reusable Android App Widget foundation: Compose-first Glance rendering, explicit widget projection data, AppWidget receiver lifecycle, direct Activity deep links, and bounded callback/control dispatch that never lets widget code own domain truth or mutate providers directly.",
       "workClass": "TASK",
-      "state": "READY",
+      "state": "RUNNING",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
@@ -59,7 +59,7 @@
         "process.vexlife-android.feature-authoring"
       ],
       "createdAt": "2026-10-24T11:20:00.000Z",
-      "updatedAt": "2026-10-24T11:20:00.000Z"
+      "updatedAt": "2026-10-24T11:26:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -95,7 +95,24 @@
       "updatedAt": "2026-10-24T11:20:00.000Z"
     }
   ],
-  "transitions": [],
+  "transitions": [
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.android-widget-foundation.semantic-widget-surface.running.victor-approved-20261024a",
+      "workRef": "work.android-widget-foundation.semantic-widget-surface",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Victor approved the proposed implementation envelope and supplied a compact one-row music-widget reference; implementation may proceed inside the bounded reusable widget substrate while VexStream remains the patient-zero consumer rather than the widget foundation's semantic owner.",
+      "actorRef": "actor.local-vex-operations.android-widget-foundation",
+      "sourceRefs": [
+        "project.android-widget-foundation",
+        "proposal.local-vex-operations.android-widget-foundation.ready-active.20261024a",
+        "response.victor.android-widget-foundation.ready-active.20261024a",
+        "confirmation.local-vex-operations.android-widget-foundation.ready-active.20261024a"
+      ],
+      "createdAt": "2026-10-24T11:26:00.000Z"
+    }
+  ],
   "sourceRefs": [
     "project.android-widget-foundation"
   ],
