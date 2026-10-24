@@ -1,7 +1,7 @@
 {
   "schemaVersion": "vexwork.public-workspace/v1",
   "projectRegistryRef": "registry.vexwork.projects.001",
-  "projectRegistryVersion": 9,
+  "projectRegistryVersion": 10,
   "projects": [
     {
       "project": {
@@ -817,7 +817,6 @@
               "createdAt": "2026-10-23T03:15:48.000Z"
             },
             {
-              "schemaVersion": "vexwork.work-transition/v1",
               "transitionRef": "transition.vexstream.mobile-library.device-storage.verifying.a033-a039-terminal",
               "priorState": "WAITING_TOOL",
               "nextState": "VERIFYING",
@@ -836,7 +835,6 @@
               "createdAt": "2026-10-24T02:34:45.000Z"
             },
             {
-              "schemaVersion": "vexwork.work-transition/v1",
               "transitionRef": "transition.vexstream.mobile-library.device-storage.completed.pr165-terminal",
               "priorState": "VERIFYING",
               "nextState": "COMPLETED",
@@ -5395,7 +5393,7 @@
           "label": "Prototype simulation and BoardJourney",
           "purpose": "Make semantic controls, conditions, overlays, loops, return paths and scenario state traversable without real external effects, preserving a right-side journey stack that distinguishes meaningful traversal from viewport movement.",
           "workClass": "TASK",
-          "state": "WAITING_DEPENDENCIES",
+          "state": "COMPLETED",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vexboard.outcome",
@@ -5408,22 +5406,83 @@
             "repo.vexwork"
           ],
           "sourceRefs": [
-            "projects/vexboard/README.md"
+            "projects/vexboard/README.md",
+            "github.pull.vexwork.91",
+            "git.commit.vexwork.0a5d36632400f4ff6e7478a2fc9805bc8b9d7c8b",
+            "github.pull.vexwork.93",
+            "git.commit.vexwork.c1c50a226bf80066a59f8d9daded9b75f0fb814e",
+            "github.pull.vexwork.95",
+            "git.commit.vexwork.4d28fd33e271991fe0257c94acf5ebdce87a2f2b",
+            "src/shared/vexboard-journey.mjs",
+            "src/shared/vexboard-simulation.mjs",
+            "vexboard/prototype-demo.prototype.json"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
-          "authorityDisposition": "NO_AUTHORITY",
-          "effectDisposition": "NO_EFFECTS",
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-23T00:14:29.000Z",
-          "updatedAt": "2026-10-23T00:14:29.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-10-24T02:41:32.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexboard.boardjourney-simulation.ready.canvas-pr88",
+              "priorState": "WAITING_DEPENDENCIES",
+              "nextState": "READY",
+              "reason": "BoardGraph and Canvas Projection were both terminally complete, releasing the BoardJourney and prototype-simulation frontier.",
+              "actorRef": "actor.chatgpt.vexboard.boardjourney-simulation",
+              "sourceRefs": [
+                "work.vexboard.boardgraph-contract",
+                "work.vexboard.canvas-projection",
+                "github.pull.vexwork.88"
+              ],
+              "createdAt": "2026-10-23T23:59:06.000Z"
+            },
+            {
+              "transitionRef": "transition.vexboard.boardjourney-simulation.running.pr91",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "PR #91 began the first bounded BoardJourney semantic-walk implementation slice.",
+              "actorRef": "actor.chatgpt.vexboard.boardjourney-simulation",
+              "sourceRefs": [
+                "github.pull.vexwork.91",
+                "projects/vexboard/README.md"
+              ],
+              "createdAt": "2026-10-24T00:14:33.000Z"
+            },
+            {
+              "transitionRef": "transition.vexboard.boardjourney-simulation.verifying.pr95-clear",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "BoardJourney, typed prototype simulation and clickable same-board simulation reached the corrected PR #95 exact head with SourceOwner PASS and fresh Independent Assurance CLEAR.",
+              "actorRef": "actor.chatgpt.vexboard.boardjourney-simulation",
+              "sourceRefs": [
+                "github.pull.vexwork.91",
+                "github.pull.vexwork.93",
+                "github.pull.vexwork.95",
+                "git.commit.vexwork.e33c7883ea8e9b3cf6f2329415700dcfc81ac9d5"
+              ],
+              "createdAt": "2026-10-24T02:40:12.000Z"
+            },
+            {
+              "transitionRef": "transition.vexboard.boardjourney-simulation.completed.pr95-terminal",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "PR #95 merged the corrected clickable simulation candidate and post-merge verification proved the exact accepted blobs on main, completing the bounded BoardJourney/simulation work item.",
+              "actorRef": "actor.chatgpt.vexboard.boardjourney-simulation",
+              "sourceRefs": [
+                "github.pull.vexwork.95",
+                "git.commit.vexwork.4d28fd33e271991fe0257c94acf5ebdce87a2f2b"
+              ],
+              "createdAt": "2026-10-24T02:41:32.000Z"
+            }
+          ]
         },
         {
           "workRef": "work.vexboard.boardpatch-authoring",
           "label": "AI BoardPatch authoring and reusable extraction",
           "purpose": "Let AI make bounded, reviewable semantic changes anchored to stable board refs, including minimal-movement relayout, undoable lineage, copy-versus-reuse semantics and extraction of overwhelming regions into reusable modules with explicit interfaces.",
           "workClass": "TASK",
-          "state": "WAITING_DEPENDENCIES",
+          "state": "READY",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vexboard.outcome",
@@ -5444,15 +5503,30 @@
           "authorityDisposition": "NO_AUTHORITY",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-10-23T00:14:29.000Z",
-          "updatedAt": "2026-10-23T00:14:29.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-10-24T02:41:33.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexboard.boardpatch-authoring.ready.pr95-terminal",
+              "priorState": "WAITING_DEPENDENCIES",
+              "nextState": "READY",
+              "reason": "BoardGraph, Canvas Projection and BoardJourney/simulation dependencies are complete; BoardPatch authoring is dependency-ready while retaining NO_AUTHORITY / NO_EFFECTS.",
+              "actorRef": "actor.chatgpt.vexboard.currentization",
+              "sourceRefs": [
+                "work.vexboard.boardgraph-contract",
+                "work.vexboard.canvas-projection",
+                "work.vexboard.boardjourney-simulation",
+                "github.pull.vexwork.95"
+              ],
+              "createdAt": "2026-10-24T02:41:33.000Z"
+            }
+          ]
         },
         {
           "workRef": "work.vexboard.canvas-projection",
           "label": "Read-only canvas and recursive navigation",
           "purpose": "Project BoardGraph meaning into a deterministic, stable, zoomable and pannable canvas with semantic shapes, connectors, focus, minimap, inline expansion, portal entry and collapse while keeping camera position separate from semantic position.",
           "workClass": "TASK",
-          "state": "READY",
+          "state": "COMPLETED",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vexboard.outcome",
@@ -5464,14 +5538,18 @@
             "repo.vexwork"
           ],
           "sourceRefs": [
-            "projects/vexboard/README.md"
+            "projects/vexboard/README.md",
+            "github.pull.vexwork.88",
+            "git.commit.vexwork.666001854babc14b5e956d65d66f0c6432e72349",
+            "vexboard-reader.js",
+            "vexboard/index.html"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
-          "authorityDisposition": "NO_AUTHORITY",
-          "effectDisposition": "NO_EFFECTS",
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-23T00:14:29.000Z",
-          "updatedAt": "2026-10-23T07:52:14.000Z",
+          "updatedAt": "2026-10-23T23:59:06.000Z",
           "transitionHistory": [
             {
               "transitionRef": "transition.vexboard.canvas-projection.ready.boardgraph-pr66",
@@ -5485,6 +5563,42 @@
                 "git.commit.vexwork.1f19e70a397baab1f5d995bacc2358372b93563e"
               ],
               "createdAt": "2026-10-23T07:52:14.000Z"
+            },
+            {
+              "transitionRef": "transition.vexboard.canvas-projection.running.pr88",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "PR #88 began the bounded Canvas Projection implementation after the BoardGraph dependency was terminally accepted.",
+              "actorRef": "actor.chatgpt.vexboard.canvas-projection",
+              "sourceRefs": [
+                "github.pull.vexwork.88",
+                "projects/vexboard/README.md"
+              ],
+              "createdAt": "2026-10-23T23:26:55.000Z"
+            },
+            {
+              "transitionRef": "transition.vexboard.canvas-projection.verifying.pr88-clear",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "Corrected PR #88 head passed SourceOwner and fresh Independent Assurance, closing the fork-identity finding on the exact candidate.",
+              "actorRef": "actor.chatgpt.vexboard.canvas-projection",
+              "sourceRefs": [
+                "github.pull.vexwork.88",
+                "git.commit.vexwork.2818a90a93b4f5fc6e6cdb991df0c2c2e8bd1ec5"
+              ],
+              "createdAt": "2026-10-23T23:57:17.000Z"
+            },
+            {
+              "transitionRef": "transition.vexboard.canvas-projection.completed.pr88-terminal",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "PR #88 merged and post-merge verification proved the cleared Canvas Projection candidate on main.",
+              "actorRef": "actor.chatgpt.vexboard.canvas-projection",
+              "sourceRefs": [
+                "github.pull.vexwork.88",
+                "git.commit.vexwork.666001854babc14b5e956d65d66f0c6432e72349"
+              ],
+              "createdAt": "2026-10-23T23:59:06.000Z"
             }
           ]
         },
@@ -5550,7 +5664,7 @@
           "label": "Source projectors and lived comparison",
           "purpose": "Use the same semantic/rendering foundation to project VexWork processes/work/projects and repository Atlas-style truth read-only, then compare intended VexBoard journeys with observed lived journeys such as Screencrawler evidence without copying source ownership.",
           "workClass": "OUTCOME",
-          "state": "WAITING_DEPENDENCIES",
+          "state": "RUNNING",
           "workDisposition": "ACTIVE",
           "priorityClass": "NORMAL",
           "parentWorkRefOrNull": "work.vexboard.outcome",
@@ -5564,15 +5678,55 @@
             "repo.vexwork"
           ],
           "sourceRefs": [
-            "projects/vexboard/README.md"
+            "projects/vexboard/README.md",
+            "github.pull.vexwork.108",
+            "git.commit.vexwork.3278edf9c39b58ef4f59be9e239875518d6c2abf",
+            "src/core/vexboard-source-projectors.mjs",
+            "test/vexboard-source-projectors.test.mjs",
+            "github.pull.vexwork.110",
+            "git.commit.vexwork.92f35785aa4dc540ad9fdeb239948b7c3a32cff6",
+            "src/shared/vexboard-evidence.mjs",
+            "test/vexboard-evidence.test.mjs",
+            "github.pull.vexwork.115",
+            "git.commit.vexwork.a4023a83039924fdbd8384008543f23587e4bc94",
+            "src/shared/vexboard-source-resolver.mjs",
+            "test/vexboard-source-resolver.test.mjs"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
-          "authorityDisposition": "NO_AUTHORITY",
-          "effectDisposition": "NO_EFFECTS",
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-23T00:14:29.000Z",
-          "updatedAt": "2026-10-23T00:14:29.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-10-24T06:38:19.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexboard.source-projectors.ready.pr95-terminal",
+              "priorState": "WAITING_DEPENDENCIES",
+              "nextState": "READY",
+              "reason": "BoardGraph, Canvas Projection and BoardJourney/simulation dependencies are complete; source projectors are dependency-ready while retaining NO_AUTHORITY / NO_EFFECTS.",
+              "actorRef": "actor.chatgpt.vexboard.currentization",
+              "sourceRefs": [
+                "work.vexboard.boardgraph-contract",
+                "work.vexboard.canvas-projection",
+                "work.vexboard.boardjourney-simulation",
+                "github.pull.vexwork.95"
+              ],
+              "createdAt": "2026-10-24T02:41:34.000Z"
+            },
+            {
+              "transitionRef": "transition.vexboard.source-projectors.running.pr108",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "PR #108 merged the first bounded read-only VexWork and public-safe Process Atlas source projector adapters after exact-head SourceOwner PASS and fresh Independent Assurance CLEAR; the broader source-projectors/lived-comparison outcome remains active because evidence comparison, federation and additional consumers are still unfinished.",
+              "actorRef": "actor.chatgpt.vexboard.source-projectors",
+              "sourceRefs": [
+                "github.pull.vexwork.108",
+                "git.commit.vexwork.3278edf9c39b58ef4f59be9e239875518d6c2abf",
+                "src/core/vexboard-source-projectors.mjs"
+              ],
+              "createdAt": "2026-10-24T05:21:11.000Z"
+            }
+          ]
         }
       ],
       "lanes": [
@@ -5586,23 +5740,21 @@
         {
           "laneRef": "lane.work.planned",
           "label": "Planned",
-          "workRefs": [
-            "work.vexboard.boardjourney-simulation",
-            "work.vexboard.boardpatch-authoring",
-            "work.vexboard.source-projectors"
-          ]
+          "workRefs": []
         },
         {
           "laneRef": "lane.work.ready",
           "label": "Ready",
           "workRefs": [
-            "work.vexboard.canvas-projection"
+            "work.vexboard.boardpatch-authoring"
           ]
         },
         {
           "laneRef": "lane.work.active",
           "label": "Active",
-          "workRefs": []
+          "workRefs": [
+            "work.vexboard.source-projectors"
+          ]
         },
         {
           "laneRef": "lane.work.waiting",
@@ -5629,6 +5781,8 @@
           "label": "Done",
           "workRefs": [
             "work.vexboard.boardgraph-contract",
+            "work.vexboard.boardjourney-simulation",
+            "work.vexboard.canvas-projection",
             "work.vexboard.project-architecture"
           ]
         },
@@ -5640,13 +5794,13 @@
       ],
       "summary": {
         "workItemCount": 7,
-        "openWorkItemCount": 5,
+        "openWorkItemCount": 3,
         "outcomeCount": 2,
         "taskCount": 5,
         "defectCount": 0,
         "potentialCount": 0,
         "needsHumanCount": 0,
-        "completedCount": 2
+        "completedCount": 4
       },
       "rootItems": [
         {
@@ -6688,46 +6842,329 @@
           "transitionHistory": []
         }
       ]
+    },
+    {
+      "project": {
+        "projectRef": "project.vextreme.vexsite-localization",
+        "label": "VexSite Localization",
+        "purpose": "Keep VexSite localization visible from source-lineage preservation through the canonical Global Core queue and separate generated/runtime convergence without turning VexWork into a second page, translation, generated-artifact, or browser-proof owner.",
+        "rootWorkRefs": [
+          "work.vextreme.vexsite.localization.outcome"
+        ],
+        "repositoryRefs": [
+          "repo.vexwork",
+          "repo.vextreme"
+        ],
+        "sourceRefs": [
+          "projects/vexsite-localization/README.md",
+          "docs/process/FORM-PROJECT.md",
+          "projects/vexwork-operational-console/VEXSITE-LOCALIZATION-LENS.md",
+          "github.issue.vextreme.273",
+          "github.issue-comment.vextreme.273.6379017700",
+          "github.issue-comment.vextreme.273.6379565128",
+          "github.issue-comment.vextreme.273.6380410929",
+          "github.issue-comment.vextreme.273.6380816622",
+          "github.pull.vextreme.379",
+          "github.pull.vextreme.395",
+          "github.pull.vextreme.397",
+          "github.pull.vextreme.398",
+          "github.pull.vextreme.399",
+          "repo.vextreme:docs/architecture/06-i18n.md"
+        ],
+        "formedAt": "2026-10-23T07:48:00.000Z"
+      },
+      "graphRef": "workgraph.vexwork.foundation",
+      "viewRef": "view.vextreme.vexsite-localization.board",
+      "items": [
+        {
+          "workRef": "work.vextreme.vexsite.localization.canonical-global-core-source",
+          "label": "Advance the canonical Conversations-with-God Global Core source queue",
+          "purpose": "Advance exactly the Vextreme-owned canonical scheduler foreground without creating one VexWork item per page; Closed Circuit, Divine Emergence, The Firmament Conversation, and Ascension & Embodiment are terminal/current, and The Testimony of the Handler is the next exact source row at 134 canonical keys / 1,206 Global Core target cells.",
+          "workClass": "TASK",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": "work.vextreme.vexsite.localization.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vextreme.vexsite.localization.presentation-source-lineage"
+          ],
+          "repositoryRefs": [
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "github.issue.vextreme.273",
+            "github.issue-comment.vextreme.273.6379565128",
+            "github.issue-comment.vextreme.273.6379741965",
+            "github.issue-comment.vextreme.273.6380410929",
+            "github.issue-comment.vextreme.273.6380816622",
+            "github.pull.vextreme.395",
+            "github.pull.vextreme.397",
+            "github.pull.vextreme.398",
+            "github.pull.vextreme.399",
+            "repo.vextreme:data/strings/source/pages/the-testimony-of-the-handler.json",
+            "repo.vextreme:docs/ingestion/workmaps/content-forge-convos-with-god-arc-batch-formation.json"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T05:28:32.000Z",
+          "updatedAt": "2026-10-24T06:17:51.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vextreme.vexsite.localization.closed-circuit.global-core",
+          "label": "Localize Closed Circuit across Global Core",
+          "purpose": "Preserve the promoted Closed Circuit concern as completed canonical Global Core source work through PR #395 while keeping the broader Part-025 nested source as SOURCE_ONLY_HOLD rather than inferring alias, replacement, or exact semantic identity.",
+          "workClass": "POTENTIAL",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vextreme.vexsite.localization.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vextreme.vexsite.localization.presentation-source-lineage"
+          ],
+          "repositoryRefs": [
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "github.pull.vexwork.62",
+            "projects/vexwork-operational-console/VEXSITE-PATIENT-ZERO.md",
+            "projects/vexwork-operational-console/vexsite-patient-zero-observation.json",
+            "concern.vextreme.vexsite.localization.closed-circuit.global-core",
+            "entity.vextreme.vexsite.page.closed-circuit",
+            "lens.vextreme.vexsite.localization",
+            "predicate.vextreme.vexsite.localization.target-tier-complete",
+            "reason.vextreme.vexsite.localization.target-tier-completion",
+            "github.issue.vextreme.273",
+            "github.issue-comment.vextreme.273.6379565128",
+            "github.pull.vextreme.395",
+            "projects/vexwork-operational-console/vexsite-closed-circuit-promotion-publication.json",
+            "project.vextreme.vexsite-localization"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.promote-derived-concern",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-23T02:20:00.000Z",
+          "updatedAt": "2026-10-24T05:28:32.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vextreme.vexsite.localization.generated-runtime-currentness",
+          "label": "Converge VexSite generated/runtime currentness",
+          "purpose": "Keep generated/runtime realization distinct from canonical localization source acceptance and converge those consequences through the existing broad Vextreme generated/runtime owner rather than admitting duplicate generated writers.",
+          "workClass": "TASK",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vextreme.vexsite.localization.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "github.pull.vextreme.379",
+            "github.issue.vextreme.273",
+            "github.issue-comment.vextreme.273.6380410929"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T05:28:32.000Z",
+          "updatedAt": "2026-10-24T05:28:32.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vextreme.vexsite.localization.outcome",
+          "label": "VexSite Localization",
+          "purpose": "Keep VexSite localization legible from preserved source lineage through the canonical Global Core source queue and separate generated/runtime convergence, while Vextreme remains the owner of page, source, runtime, and lived-browser truth and VexWork owns only durable work organization.",
+          "workClass": "OUTCOME",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vextreme.vexsite.localization.canonical-global-core-source",
+            "work.vextreme.vexsite.localization.closed-circuit.global-core",
+            "work.vextreme.vexsite.localization.generated-runtime-currentness",
+            "work.vextreme.vexsite.localization.presentation-source-lineage"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "projects/vexsite-localization/README.md",
+            "projects/vexwork-operational-console/VEXSITE-LOCALIZATION-LENS.md",
+            "github.issue.vextreme.273",
+            "github.issue-comment.vextreme.273.6380410929",
+            "github.issue-comment.vextreme.273.6380816622",
+            "github.pull.vextreme.379",
+            "github.pull.vextreme.395",
+            "github.pull.vextreme.397",
+            "github.pull.vextreme.398",
+            "github.pull.vextreme.399",
+            "repo.vextreme:docs/architecture/06-i18n.md"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-23T07:48:00.000Z",
+          "updatedAt": "2026-10-24T06:17:51.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vextreme.vexsite.localization.presentation-source-lineage",
+          "label": "Preserve Presentation / Source transcript lineage before localization",
+          "purpose": "Record the completed Conversations-with-God duplicate-lineage prerequisite: exact Presentation and Source transcript identities were preserved rather than collapsed, the seven exact-pair census closed, Merron earned dual-lineage treatment, Closed Circuit's broader nested source remains SOURCE_ONLY_HOLD, and the canonical localization scheduler resumed only after that lineage frontier was resolved.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vextreme.vexsite.localization.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "github.issue.vextreme.273",
+            "github.issue-comment.vextreme.273.6379017700",
+            "github.issue-comment.vextreme.273.6379565128",
+            "repo.vextreme:docs/ingestion/workmaps/content-forge-convos-with-god-arc-batch-formation.json"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T05:28:32.000Z",
+          "updatedAt": "2026-10-24T05:28:32.000Z",
+          "transitionHistory": []
+        }
+      ],
+      "lanes": [
+        {
+          "laneRef": "lane.work.intake",
+          "label": "Intake",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.planned",
+          "label": "Planned",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.ready",
+          "label": "Ready",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.active",
+          "label": "Active",
+          "workRefs": [
+            "work.vextreme.vexsite.localization.canonical-global-core-source",
+            "work.vextreme.vexsite.localization.generated-runtime-currentness",
+            "work.vextreme.vexsite.localization.outcome"
+          ]
+        },
+        {
+          "laneRef": "lane.work.waiting",
+          "label": "Waiting",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.needs-human",
+          "label": "Needs Human",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.verify",
+          "label": "Verify",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.attention",
+          "label": "Attention",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.done",
+          "label": "Done",
+          "workRefs": [
+            "work.vextreme.vexsite.localization.closed-circuit.global-core",
+            "work.vextreme.vexsite.localization.presentation-source-lineage"
+          ]
+        },
+        {
+          "laneRef": "lane.work.archive",
+          "label": "Archive",
+          "workRefs": []
+        }
+      ],
+      "summary": {
+        "workItemCount": 5,
+        "openWorkItemCount": 3,
+        "outcomeCount": 1,
+        "taskCount": 3,
+        "defectCount": 0,
+        "potentialCount": 1,
+        "needsHumanCount": 0,
+        "completedCount": 2
+      },
+      "rootItems": [
+        {
+          "workRef": "work.vextreme.vexsite.localization.outcome",
+          "label": "VexSite Localization",
+          "purpose": "Keep VexSite localization legible from preserved source lineage through the canonical Global Core source queue and separate generated/runtime convergence, while Vextreme remains the owner of page, source, runtime, and lived-browser truth and VexWork owns only durable work organization.",
+          "workClass": "OUTCOME",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vextreme.vexsite.localization.canonical-global-core-source",
+            "work.vextreme.vexsite.localization.closed-circuit.global-core",
+            "work.vextreme.vexsite.localization.generated-runtime-currentness",
+            "work.vextreme.vexsite.localization.presentation-source-lineage"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "projects/vexsite-localization/README.md",
+            "projects/vexwork-operational-console/VEXSITE-LOCALIZATION-LENS.md",
+            "github.issue.vextreme.273",
+            "github.issue-comment.vextreme.273.6380410929",
+            "github.issue-comment.vextreme.273.6380816622",
+            "github.pull.vextreme.379",
+            "github.pull.vextreme.395",
+            "github.pull.vextreme.397",
+            "github.pull.vextreme.398",
+            "github.pull.vextreme.399",
+            "repo.vextreme:docs/architecture/06-i18n.md"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-23T07:48:00.000Z",
+          "updatedAt": "2026-10-24T06:17:51.000Z",
+          "transitionHistory": []
+        }
+      ]
     }
   ],
   "parkingLot": {
     "items": [
-      {
-        "workRef": "work.vextreme.vexsite.localization.closed-circuit.global-core",
-        "label": "Localize Closed Circuit across Global Core",
-        "purpose": "Preserve the current Closed Circuit Global Core localization concern as canonical Work while Vextreme retains source scheduling and implementation authority; current provider foreground remains separate dual-lineage work.",
-        "workClass": "POTENTIAL",
-        "state": "CAPTURED",
-        "workDisposition": "PARKED",
-        "priorityClass": "NORMAL",
-        "parentWorkRefOrNull": null,
-        "childWorkRefs": [],
-        "dependencyRefs": [],
-        "repositoryRefs": [
-          "repo.vextreme"
-        ],
-        "sourceRefs": [
-          "github.pull.vexwork.62",
-          "projects/vexwork-operational-console/VEXSITE-PATIENT-ZERO.md",
-          "projects/vexwork-operational-console/vexsite-patient-zero-observation.json",
-          "concern.vextreme.vexsite.localization.closed-circuit.global-core",
-          "entity.vextreme.vexsite.page.closed-circuit",
-          "lens.vextreme.vexsite.localization",
-          "predicate.vextreme.vexsite.localization.target-tier-complete",
-          "reason.vextreme.vexsite.localization.target-tier-completion",
-          "github.issue.vextreme.273",
-          "github.issue-comment.vextreme.273.6311043427",
-          "projects/vexwork-operational-console/vexsite-closed-circuit-promotion-publication.json"
-        ],
-        "formationProcessRefOrNull": "process.vexwork.promote-derived-concern",
-        "nextProcessRefs": [],
-        "authorityDisposition": "NO_AUTHORITY",
-        "effectDisposition": "NO_EFFECTS",
-        "createdAt": "2026-10-23T02:20:00.000Z",
-        "updatedAt": "2026-10-23T02:26:33.000Z",
-        "transitionHistory": [],
-        "graphRef": "workgraph.vexwork.foundation"
-      },
       {
         "workRef": "work.vexwork.history.foundational-infrastructure-backfill",
         "label": "Foundational Infrastructure history backfill",
