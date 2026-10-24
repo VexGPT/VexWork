@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.vexlife.welcome-wagon",
+  "label": "VexLife Welcome Wagon",
+  "purpose": "Create a humane first-entry experience for VexLife and the Vextreme public world: orient a new human plainly, let them enter according to intent, preserve accepted Terrain/VexLife/VexWork foundations and accessibility capabilities, and converge reusable family navigation/design through small reversible visual moves rather than dismantling working source semantics.",
+  "rootWorkRefs": [
+    "work.vexlife.welcome-wagon.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vextreme",
+    "repo.vexlife"
+  ],
+  "sourceRefs": [
+    "projects/vexlife-welcome-wagon/README.md",
+    "repo.vextreme:pages/terrain-map.html",
+    "repo.vextreme:pages/vextreme-home.html",
+    "repo.vextreme:vexsystem/index.html",
+    "docs/process/FORM-PROJECT.md",
+    "repo.vextreme:styles/design-system.css",
+    "repo.vextreme:styles/vex-institutional.css",
+    "repo.vextreme:widgets/vex-institutional.js",
+    "repo.vextreme:widgets/vex-fab.js",
+    "repo.vextreme:widgets/fab-lang.js",
+    "repo.vextreme:widgets/fab-read-aloud.js",
+    "repo.vextreme:lib/shell.js",
+    "repo.vextreme:lib/vextreme.js",
+    "repo.vexlife:pages/vexlife-onboarding.html",
+    "repo.vexlife:pages/vexlife-onboarding.css",
+    "repo.vexlife:pages/vexlife-onboarding.js",
+    "repo.vexwork:index.html",
+    "repo.vextreme:docs/architecture/12-design-system.md",
+    "repo.vextreme:docs/architecture/18-institutional-pages.md",
+    "repo.vextreme:config/institutional-surfaces.json",
+    "repo.vextreme:index.html",
+    "repo.vextreme:pages/vextreme-covenant.html",
+    "repo.vexlife:README.md",
+    "repo.vexwork:README.md",
+    "repo.vextreme:data/status/tech-debt.json",
+    "repo.vextreme:lib/build-sitemap.js",
+    "repo.vextreme:lib/build-page-health.js",
+    "repo.vextreme:lib/build-terrain-map.js",
+    "repo.vextreme:lib/check-institutional-surfaces.js",
+    "repo.vextreme:lib/check-key-alignment.js",
+    "repo.vextreme:scripts/screenshot-institutional.js",
+    "repo.vextreme:tests/54-institutional-surfaces.test.js",
+    "repo.vextreme:tests/55-build-sitemap.test.js",
+    "repo.vextreme:data/screenshot-evidence-assets.json",
+    "repo.vextreme:sitemap.xml",
+    "github.pull.vexwork.113"
+  ],
+  "formedAt": "2026-10-24T06:05:10.000Z"
+}

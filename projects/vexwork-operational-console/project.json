@@ -9,7 +9,8 @@
   "repositoryRefs": [
     "repo.vexwork",
     "repo.vextreme",
-    "repo.vexcommerce-storefront-reference"
+    "repo.vexcommerce-storefront-reference",
+    "repo.antique-plate-storefront"
   ],
   "sourceRefs": [
     "projects/vexwork-operational-console/README.md",
@@ -26,7 +27,11 @@
     "repo.vexlife-android:docs/foundation/VEX-BODY-SEMANTIC-BLUEPRINT.md",
     "github.repo.vgong24/VexCommerce-Storefront-Reference",
     "github.commit.vexcommerce-storefront-reference.e0411c7a5b272b1b79fe6d234e83c1bdf4af8184",
-    "vexcommerce.storefront-reference.establishment.a003.sha256.24d32911b251bf9e8a4549569f7de1695d6039712b20e4b399845039a2352636"
+    "vexcommerce.storefront-reference.establishment.a003.sha256.24d32911b251bf9e8a4549569f7de1695d6039712b20e4b399845039a2352636",
+    "github.repo.vgong24/Antique-Plate-Storefront",
+    "github.commit.antique-plate-storefront.bcadd970f7c45898e008bc1b1e5246e5005a253b",
+    "antique-plate.storefront-bootstrap.a023.sha256.627dea5336556eddfd45d24d23dde8f768b8f513ad9f7bf44eb7f8328086e8d1",
+    "projects/vexwork-operational-console/antique-plate-storefront-bootstrap.json"
   ],
   "formedAt": "2026-10-22T03:20:00.000Z"
 }

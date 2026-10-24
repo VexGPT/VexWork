@@ -1,7 +1,7 @@
 {
   "schemaVersion": "vexwork.repository-registry/v1",
   "registryRef": "registry.vexwork.repositories.001",
-  "registryVersion": 4,
+  "registryVersion": 5,
   "purpose": "Public/source-safe navigation graph for repositories VexWork may reference. Repository entries point to current owner sources; they do not consolidate repository culture or create source authority.",
   "repositories": [
     {
@@ -119,6 +119,22 @@
       "nameWithOwner": "vgong24/VexCommerce-Storefront-Reference",
       "visibility": "PUBLIC",
       "purpose": "Public synthetic reference storefront owner for the reusable VexWork Commerce starter; proves managed catalog/site publication and revision without carrying real customer or Antique Plate business data.",
+      "entryRefs": [
+        "README.md",
+        "AGENTS.md",
+        "storefront.json"
+      ],
+      "cultureRefs": [
+        "AGENTS.md"
+      ]
+    },
+    {
+      "repositoryRef": "repo.antique-plate-storefront",
+      "label": "Antique Plate Storefront",
+      "provider": "GITHUB",
+      "nameWithOwner": "vgong24/Antique-Plate-Storefront",
+      "visibility": "PUBLIC",
+      "purpose": "Real public storefront/source owner for the Antique Plate lived commerce pilot; begins with an intentionally empty catalog and carries only public-safe item presentation truth, never private customer/payment data.",
       "entryRefs": [
         "README.md",
         "AGENTS.md",
