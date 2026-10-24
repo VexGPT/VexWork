@@ -1,0 +1,76 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import test from 'node:test';
+
+import { createProject, createWorkgraph, childRefs, projectWorkRefs } from '../src/core/workgraph.mjs';
+import { createBoardView, projectWorkBoard } from '../src/core/work-board.mjs';
+
+const read = (relative) => JSON.parse(fs.readFileSync(new URL(`../${relative}`, import.meta.url), 'utf8'));
+const registry = read('blueprint/work-registry.json');
+const graph = createWorkgraph(read('workgraphs/public.json'), registry);
+const project = createProject(read('projects/vex-security-assurance/project.json'));
+const view = createBoardView(read('projects/vex-security-assurance/board.view.json'), registry);
+
+const refs = [
+  'work.vex.security-assurance.ai-agentic-security-lens',
+  'work.vex.security-assurance.outcome',
+  'work.vex.security-assurance.patient-zero',
+  'work.vex.security-assurance.question-lens-foundation',
+  'work.vex.security-assurance.security-atlas',
+  'work.vex.security-assurance.software-security-lens',
+  'work.vex.security-assurance.spike-process',
+];
+
+test('Vex Security Assurance forms one small evidence-and-question Project rather than a security ticket inventory', () => {
+  assert.deepEqual(projectWorkRefs(project, graph), refs);
+  assert.deepEqual(childRefs(graph, 'work.vex.security-assurance.outcome'), refs.filter((ref) => ref !== 'work.vex.security-assurance.outcome'));
+  assert.deepEqual(project.repositoryRefs, [
+    'repo.vexwork',
+    'repo.vextreme',
+    'repo.vextreme-sdk',
+    'repo.vexlife',
+    'repo.vexlife-android',
+  ]);
+  assert.equal(project.sourceRefs.includes('docs/foundation/DERIVED-ATTENTION.md'), true);
+  assert.equal(project.sourceRefs.includes('projects/vex-security-assurance/SPIKE-DESIGN.md'), true);
+});
+
+test('Security Spikes begin as TASK process semantics with no implied authority or effects', () => {
+  const spike = graph.items.find((item) => item.workRef === 'work.vex.security-assurance.spike-process');
+  assert.equal(spike.workClass, 'TASK');
+  assert.equal(spike.state, 'WAITING_RESOURCE');
+  assert.equal(spike.authorityDisposition, 'NO_AUTHORITY');
+  assert.equal(spike.effectDisposition, 'NO_EFFECTS');
+  assert.equal(spike.sourceRefs.includes('github.pull.vexwork.103'), true);
+
+  for (const ref of refs) {
+    const item = graph.items.find((candidate) => candidate.workRef === ref);
+    assert.equal(item.authorityDisposition, 'NO_AUTHORITY');
+    assert.equal(item.effectDisposition, 'NO_EFFECTS');
+  }
+});
+
+test('Security board exposes active mapping, ready lens work, the Process Registry wait, and the patient-zero dependency gate', () => {
+  const projected = projectWorkBoard({ project, graph, view, registry });
+  const cards = (laneRef) => projected.lanes.find((lane) => lane.laneRef === laneRef).cards.map((card) => card.workRef);
+
+  assert.deepEqual(cards('lane.work.active'), [
+    'work.vex.security-assurance.security-atlas',
+    'work.vex.security-assurance.outcome',
+  ]);
+  assert.deepEqual(cards('lane.work.ready'), [
+    'work.vex.security-assurance.question-lens-foundation',
+  ]);
+  assert.deepEqual(cards('lane.work.waiting'), [
+    'work.vex.security-assurance.spike-process',
+  ]);
+  assert.deepEqual(cards('lane.work.intake'), [
+    'work.vex.security-assurance.ai-agentic-security-lens',
+    'work.vex.security-assurance.software-security-lens',
+  ]);
+  assert.deepEqual(cards('lane.work.planned'), [
+    'work.vex.security-assurance.patient-zero',
+  ]);
+});
+
+// [VXG RealForever][VEXWORK][SECURITY-ASSURANCE][PROJECT]
