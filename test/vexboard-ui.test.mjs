@@ -18,7 +18,7 @@ test('VexBoard Pages entry exposes create/open/read-only/fork/save-draft workflo
   assert.match(page, /Request edit → draft copy/);
   assert.match(page, /Save draft/);
   assert.match(page, /Browser-local proving copies · not source truth/);
-  assert.match(page, /Local draft · source detached/);
+  assert.match(page, /Local draft · browser only/);
   assert.match(page, /href="\.\.\/">← VexWork/);
 });
 
@@ -231,5 +231,9 @@ test('prototype UI preserves the explicit interaction path beside BoardJourney a
   assert.match(page, /function interactionTrailText\(\)/);
   assert.match(page, /Interaction path\\n\$\{interactionTrailText\(\)\}/);
   assert.match(page, /function startJourneyAt\(semanticRef\)\{interactionTrail=\[\];/);
-  assert.match(page, /\{current,selected,tool,camera,journey,prototype,scenario,interactionTrail,activeBoardRef\}=prior/);
+  const returnBoardLine = page.split('\n').find((line) => line.includes('function returnBoard()'));
+  assert.ok(returnBoardLine);
+  for (const field of ['interactionTrail', 'activeBoardRef', 'draftDirty', 'saveMessage']) {
+    assert.match(returnBoardLine, new RegExp(field));
+  }
 });
