@@ -710,6 +710,214 @@ BOARD_JOURNEY != CAMERA_HISTORY
 ATLAS_PROJECTION != COPIED_ATLAS_TRUTH
 ```
 
+## Fractal semantic identity — one thing, many forms
+
+The deeper convergence is not UI reuse or process reuse as separate product ideas. It is the ability
+for one **rightfully-owned semantic identity** to remain addressable while several bounded forms
+project, traverse, realize or explain it.
+
+Conceptually:
+
+```text
+rightful semantic identity
+        |
+        +-> experience / screen projection
+        +-> process-map projection
+        +-> architecture projection
+        +-> work / source projection
+        +-> nested detail board
+        +-> target-platform realization
+        +-> proof / observed-journey relationship
+```
+
+The projections are not new copies of the underlying meaning. When two things are genuinely different
+truths, they keep different stable refs and relate explicitly rather than being forced behind one ID.
+
+```text
+SAME_SEMANTIC_THING
+-> one stable identity may have many projections/forms
+
+DIFFERENT_TRUTH_OWNERS
+-> distinct stable identities + explicit relationship
+
+VISUAL_SIMILARITY
+!= SAME_IDENTITY
+
+SAME_IDENTITY
+!= SAME_PRESENTATION
+!= SAME_IMPLEMENTATION_FORM
+```
+
+This is the reusable foundation that connects VexBoard's Experience, Process, Architecture, Work and
+Atlas lenses without making any one lens the universal ontology.
+
+### Process identity is fractal too
+
+A process map should be able to use the same depth model as an experience blueprint without pretending
+that a process is a Screen or that a Screen is a process.
+
+For example:
+
+```text
+Organization
+  -> Customer Operations
+       -> Fulfillment
+            -> Validate order
+            -> PORTAL: Payment
+            -> PORTAL: Delivery
+  -> Engineering
+       -> Release
+            -> PORTAL: Quality Review
+            -> PORTAL: Integration
+```
+
+Each reusable process/module can keep its own stable identity and rightful source. Another board may
+reference that process, project a bounded neighborhood around it, or enter its detail without copying
+the process into the caller.
+
+The important depth coordinates remain different:
+
+```text
+TOPOLOGY
+  peer/cross-domain relationships among stable identities
+
+CONTAINMENT
+  explicit parent/child meaning inside one owned structure
+
+PORTAL / DETAIL BOARD
+  descent into another reusable module or bounded board
+
+PROJECTION
+  one visual arrangement/lens over those identities
+
+JOURNEY
+  one explicit semantic traversal through those identities
+
+SOURCE / PROCESS REF
+  where the rightful meaning is owned
+```
+
+```text
+TOPOLOGY != CONTAINMENT
+CONTAINMENT != PORTAL
+PORTAL != COPIED_SUBGRAPH
+PROJECTION != SOURCE OWNERSHIP
+JOURNEY != CAMERA HISTORY
+```
+
+This lets VexBoard connect an organization without requiring one organization-sized BoardGraph.
+"Whole organization" is a traversable federation of bounded identities, modules and projections.
+
+### Reuse is a relationship, not a UI feature
+
+The same architectural pressure appears at several scales:
+
+```text
+UI
+  reusable Screen / element tree / template / component
+
+PROCESS
+  reusable process module / sub-process / callable route
+
+ARCHITECTURE
+  reusable component / interface / capability
+
+WORK
+  reusable Process Map route + Work/Project relationships
+
+SOURCE / ATLAS
+  source-owned stable node + bounded neighborhood
+
+TARGET REALIZATION
+  platform-specific form of accepted portable meaning
+```
+
+These forms may reuse the same **identity / structure / relationship / projection** principles without
+being required to share one giant runtime interface or one universal node enum.
+
+VexLife-Android's Screen Blueprint / Elements / Vex Compose foundation is therefore useful realization
+pressure: nested stable identity, declared parent/child placement, Row/Column/Stack composition,
+inherited presentation identity and Gallery proof already exist there. VexBoard should reuse the
+architectural lesson and mapping pressure rather than rebuild Compose or make Android the portable
+semantic owner.
+
+The VexLife Blueprint Source-of-Truth trajectory supplies the complementary portability law:
+
+```text
+portable semantic meaning
+-> deterministic mapping
+-> target-specific realization
+-> construction proof
+-> semantic parity proof
+-> native/lived proof
+-> bounded reverse observation
+```
+
+VexBoard can be a visual authoring, inspection and simulation projection over that kind of portable
+meaning. It does not replace the rightful Blueprint/source owner.
+
+```text
+VEXBOARD_VISUAL_BLUEPRINT
+!= PORTABLE_SEMANTIC_OWNER
+!= TARGET_RUNTIME
+
+ANDROID_REALIZATION
+!= PORTABLE_SEMANTIC_OWNER
+
+PROCESS_PROJECTION
+!= PROCESS_REGISTRY
+
+WORK_PROJECTION
+!= WORKGRAPH
+```
+
+### Identity should make usages traversable
+
+Once stable identities and explicit relationships exist, "where is this used?" should become a graph
+question rather than a visual-search problem.
+
+Conceptually:
+
+```text
+semanticRef / processRef / boardRef
+        |
+        +-> parents / children
+        +-> incoming / outgoing relationships
+        +-> template/module instances
+        +-> PORTAL/detail-board references
+        +-> source backlinks
+        +-> Work / Project references
+        +-> target realization references
+        +-> Journey / proof references
+```
+
+A Context Inspector or future bounded query may project that neighborhood and let a human traverse it.
+The reverse-usage relationship should be derived from the rightful source graph/catalog where possible,
+not maintained as another manually synchronized registry.
+
+This is the organizational scalability target:
+
+```text
+TOTALITY
+= bounded source-owned identities
++ explicit relationships
++ reusable modules
++ source resolution
++ bounded projections
++ where-used/backlink traversal
++ Journey continuity
+
+TOTALITY
+!= one mega-map
+!= one mega-state
+!= one mega-owner
+```
+
+The same principle is fractal: a button, Screen, feature, reusable process, Project, architecture
+component or organization domain can each be a stable coordinate at its rightful semantic scale.
+What changes is the lens and the relationships around it, not the requirement to rebuild its identity
+for every representation.
+
 ## One semantic model, several visual lenses
 
 The same BoardGraph should support several projections without cloning meaning.
@@ -3839,6 +4047,33 @@ VexBusinessFactory topology
 ~~~
 
 The first Source Projectors slice is now accepted and active, but broader resolver/federation or semantic-factory extraction still waits for repeated consumer pressure. RUNNING / AUTHORIZED_BOUNDED / EFFECTS_BOUND names only that bounded active outcome; it does not grant BoardPatch authority, target-repository mutation, or completion of lived comparison.
+
+The later lived usability pass also exposed one concrete interaction-pressure case: a projection item may be both draggable and semantically actionable, so pointer-down must not silently decide that the user's intent was MOVE_ITEM before click-versus-drag is resolved. Treat that as an interaction-plane / gesture-arbitration problem, not as permission to make z-order, containment or semantic kind own pointer precedence.
+
+The broader architecture convergence is now:
+
+~~~text
+stable semantic identity
++ explicit topology / containment / portal relationships
++ bounded reusable projection
+-> Experience / Process / Architecture / Work / Atlas lenses
+-> optional target-specific realization
+-> observed/source/proof relationships
+
+VexLife-Android Screen Blueprint / Elements / Vex Compose
+  = one proven native realization pressure
+
+VexLife Blueprint Source of Truth
+  = one proven portable mapping/parity/proof lineage
+
+VexWork Process Map / Workgraph
+  = rightful work/process navigation owners
+
+VexBoard
+  = visual authoring / projection / traversal / simulation substrate
+~~~
+
+This clarification does **not** create a new universal schema, new Android dependency, new process registry, or new implementation task by itself. The next implementation should still be earned by a bounded consumer: first repair gesture arbitration where lived use exposed it, then let UI/process consumers pressure the smallest shared identity/layout/resolution seams rather than prebuilding a giant framework.
 
 No human host action is required to preserve this design.
 
