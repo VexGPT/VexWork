@@ -407,3 +407,51 @@ test('BoardJourney fails closed on invalid semantic traversal coordinates', () =
   assert.throws(() => Journey.backBoardJourney(graph, journey), /return stack is empty/);
   assert.throws(() => Journey.revisitBoardJourney(graph, journey, 99), /revisit sequence invalid/);
 });
+
+test('BoardJourney normalization rejects fabricated semantic history and return stacks', () => {
+  const graph = baseGraph();
+  graph.nodes.push({ nodeRef: 'node.c', kind: 'PROCESS', label: 'C', parentRefOrNull: null, detailBoardRefOrNull: null, sourceRefs: [] });
+  graph.relationships = [{ relationshipRef: 'rel.a-b', kind: 'FLOW', fromRef: 'node.a', toRef: 'node.b', labelOrNull: null, sourceRefs: [] }];
+
+  const traversed = Journey.advanceBoardJourney(
+    graph,
+    Journey.createBoardJourney(graph, { journeyRef: 'journey.integrity', boardRef: 'board.test', startRef: 'node.a' }),
+    'rel.a-b',
+  );
+
+  const wrongDestination = structuredClone(traversed);
+  wrongDestination.currentRef = 'node.a';
+  wrongDestination.steps[1].semanticRef = 'node.a';
+  assert.throws(() => Journey.normalizeBoardJourney(wrongDestination, graph), /relationship destination mismatch/);
+
+  const wrongOrigin = structuredClone(traversed);
+  wrongOrigin.steps[0].semanticRef = 'node.b';
+  wrongOrigin.returnStack = ['node.b'];
+  assert.throws(() => Journey.normalizeBoardJourney(wrongOrigin, graph), /relationship origin mismatch/);
+
+  const restarted = structuredClone(traversed);
+  restarted.steps[1].navigationKind = 'START';
+  restarted.steps[1].viaRelationshipRefOrNull = null;
+  restarted.returnStack = [];
+  assert.throws(() => Journey.normalizeBoardJourney(restarted, graph), /cannot restart an existing journey/);
+
+  const backed = Journey.backBoardJourney(graph, traversed);
+  const wrongBackTarget = structuredClone(backed);
+  wrongBackTarget.currentRef = 'node.b';
+  wrongBackTarget.steps.at(-1).semanticRef = 'node.b';
+  assert.throws(() => Journey.normalizeBoardJourney(wrongBackTarget, graph), /BACK target mismatch/);
+
+  const unseenRevisit = structuredClone(Journey.createBoardJourney(
+    graph,
+    { journeyRef: 'journey.revisit-integrity', boardRef: 'board.test', startRef: 'node.a' },
+  ));
+  unseenRevisit.currentRef = 'node.c';
+  unseenRevisit.steps.push({ sequence: 1, semanticRef: 'node.c', navigationKind: 'REVISIT', viaRelationshipRefOrNull: null });
+  unseenRevisit.returnStack = ['node.a'];
+  assert.throws(() => Journey.normalizeBoardJourney(unseenRevisit, graph), /REVISIT target was not previously visited/);
+
+  const wrongStack = structuredClone(traversed);
+  wrongStack.returnStack = ['node.b'];
+  assert.throws(() => Journey.normalizeBoardJourney(wrongStack, graph), /returnStack does not match journey history/);
+});
+

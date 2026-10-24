@@ -51,6 +51,8 @@ function normalizeStep(input, index, nodeRefs, relationshipRefs) {
   if (index === 0) {
     assert(input.navigationKind === 'START', 'first journey step must be START');
     assert(viaRelationshipRefOrNull === null, 'first journey step cannot carry a relationship');
+  } else {
+    assert(input.navigationKind !== 'START', `journey step ${index} cannot restart an existing journey`);
   }
   if (input.navigationKind === 'RELATIONSHIP') {
     assert(viaRelationshipRefOrNull !== null, `journey step ${index} relationship traversal requires a relationship ref`);
@@ -84,6 +86,32 @@ export function normalizeBoardJourney(input, graphInput) {
     assert(nodeRefs.has(value), `BoardJourney returnStack ref missing: ${value}`);
     return value;
   });
+
+  const relationshipByRef = new Map(graph.relationships.map((relationship) => [relationship.relationshipRef, relationship]));
+  const reconstructedReturnStack = [];
+  for (let index = 1; index < steps.length; index += 1) {
+    const prior = steps[index - 1];
+    const step = steps[index];
+    if (step.navigationKind === 'RELATIONSHIP') {
+      const relationship = relationshipByRef.get(step.viaRelationshipRefOrNull);
+      assert(relationship.fromRef === prior.semanticRef,
+        `journey step ${index} relationship origin mismatch: ${relationship.fromRef} != ${prior.semanticRef}`);
+      assert(relationship.toRef === step.semanticRef,
+        `journey step ${index} relationship destination mismatch: ${relationship.toRef} != ${step.semanticRef}`);
+      reconstructedReturnStack.push(prior.semanticRef);
+    } else if (step.navigationKind === 'BACK') {
+      assert(reconstructedReturnStack.length > 0, `journey step ${index} BACK has no return coordinate`);
+      const expectedRef = reconstructedReturnStack.pop();
+      assert(step.semanticRef === expectedRef,
+        `journey step ${index} BACK target mismatch: ${step.semanticRef} != ${expectedRef}`);
+    } else if (step.navigationKind === 'REVISIT') {
+      assert(steps.slice(0, index).some((priorStep) => priorStep.semanticRef === step.semanticRef),
+        `journey step ${index} REVISIT target was not previously visited: ${step.semanticRef}`);
+      reconstructedReturnStack.push(prior.semanticRef);
+    }
+  }
+  assert(JSON.stringify(returnStack) === JSON.stringify(reconstructedReturnStack),
+    'BoardJourney returnStack does not match journey history');
   return freezeBoardValue({
     schemaVersion: BOARD_JOURNEY_SCHEMA,
     journeyRef,
