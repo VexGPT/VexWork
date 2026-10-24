@@ -779,9 +779,10 @@ The first bounded implementation row is now source-formed in Vextreme:
 work.vexlife.welcome-wagon.slug-rename-tooling
   -> Vextreme PR #400
   -> plan-first / read-only slug rename impact tooling
-  -> exact candidate 989c6c2b92b8f9dd82516f88bf1e561582204217
+  -> A001 SAFE_FAILURE classified: test import path only
+  -> exact A002 candidate 3a54f4168a2ffabdf4ce646f5d880f7ab363821d
   -> no page rename yet
-  -> SourceOwner VexRelay proof pending
+  -> fresh A002 SourceOwner VexRelay proof pending
 ```
 
 The actual `vextreme-home -> about-vextreme` identity migration remains dependency-held behind this tooling row. About-page meaning/design remains dependency-held behind the canonical identity migration.
