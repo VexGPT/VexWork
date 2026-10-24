@@ -156,7 +156,7 @@
       "workRef": "work.vex.security-assurance.ai-agentic-security-lens",
       "parentWorkRefOrNull": "work.vex.security-assurance.outcome",
       "label": "Build the AI, agentic and Heretic security lens",
-      "purpose": "Cover model/context poisoning, prompt and indirect-prompt injection, tool/effect misuse, identity/privilege abuse, memory/context integrity, data disclosure, agent control, observability, resource abuse and unsafe autonomy for Heretic and other model-mediated Vex workflows.",
+      "purpose": "Cover model/context poisoning, prompt and indirect-prompt injection, tool/effect misuse, identity/privilege abuse, memory/context integrity, data disclosure, agent control, observability, resource abuse and unsafe autonomy for Heretic and other model-mediated Vex workflows, including a bounded attacker-perspective that challenges pre-convergence identity, condition, evidence and authority assumptions through synthetic/isolated tests by default.",
       "workClass": "TASK",
       "state": "DECOMPOSED",
       "priorityClass": "HIGH",
@@ -170,7 +170,9 @@
       ],
       "sourceRefs": [
         "projects/vex-security-assurance/README.md",
-        "work.vex.security-assurance.question-lens-foundation"
+        "work.vex.security-assurance.question-lens-foundation",
+        "projects/vex-security-assurance/ADVERSARIAL-LENS.md",
+        "projects/vex-security-assurance/SIMULATED-ADVERSARIAL-PATIENT-ZERO-A001.md"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
@@ -214,7 +216,9 @@
   "sourceRefs": [
     "project.vex.security-assurance",
     "projects/vex-security-assurance/README.md",
-    "projects/vex-security-assurance/SPIKE-DESIGN.md"
+    "projects/vex-security-assurance/SPIKE-DESIGN.md",
+    "projects/vex-security-assurance/ADVERSARIAL-LENS.md",
+    "projects/vex-security-assurance/SIMULATED-ADVERSARIAL-PATIENT-ZERO-A001.md"
   ],
   "formedAt": "2026-10-24T05:45:00.000Z"
 }
