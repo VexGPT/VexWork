@@ -35,6 +35,26 @@ test('Vex Security Assurance forms one small evidence-and-question Project rathe
   assert.equal(project.sourceRefs.includes('projects/vex-security-assurance/SPIKE-DESIGN.md'), true);
   assert.equal(project.sourceRefs.includes('projects/vex-security-assurance/ADVERSARIAL-LENS.md'), true);
   assert.equal(project.sourceRefs.includes('projects/vex-security-assurance/SIMULATED-ADVERSARIAL-PATIENT-ZERO-A001.md'), true);
+  assert.equal(project.sourceRefs.includes('projects/vex-security-assurance/PUBLIC-AVAILABILITY-DDOS.md'), true);
+});
+
+test('public availability and DDoS stays inside the existing atlas / software lens without inventing deployment truth', () => {
+  const atlas = graph.items.find((item) => item.workRef === 'work.vex.security-assurance.security-atlas');
+  const software = graph.items.find((item) => item.workRef === 'work.vex.security-assurance.software-security-lens');
+
+  assert.match(atlas.purpose, /availability\/deployment boundaries/);
+  assert.equal(atlas.sourceRefs.includes('projects/vex-security-assurance/PUBLIC-AVAILABILITY-DDOS.md'), true);
+  assert.equal(atlas.sourceRefs.includes('repo.vextreme:README.md'), true);
+  assert.equal(atlas.sourceRefs.includes('repo.vextreme:lib/build-sw.js'), true);
+
+  assert.match(software.purpose, /denial-of-service\/abuse/);
+  assert.match(software.purpose, /quota and cost exhaustion/);
+  assert.equal(software.sourceRefs.includes('projects/vex-security-assurance/PUBLIC-AVAILABILITY-DDOS.md'), true);
+
+  assert.equal(atlas.authorityDisposition, 'NO_AUTHORITY');
+  assert.equal(atlas.effectDisposition, 'NO_EFFECTS');
+  assert.equal(software.authorityDisposition, 'NO_AUTHORITY');
+  assert.equal(software.effectDisposition, 'NO_EFFECTS');
 });
 
 test('AI / agentic security includes a bounded attacker perspective without granting effects', () => {
