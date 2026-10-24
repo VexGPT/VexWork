@@ -6,7 +6,7 @@ export const DEFAULT_CANVAS_EXTENT = Object.freeze({
   padding: 96,
 });
 
-export const PALETTE_PRESENTATION_CSS = `
+const PALETTE_PRESENTATION_CSS = `
 .viewport .palette-fab {
   width: auto;
   min-width: 42px;
@@ -86,12 +86,6 @@ export const PALETTE_PRESENTATION_CSS = `
 
 const FLOW_KINDS = new Set(['FLOW', 'TRANSITION']);
 const PALETTE_STYLE_ID = 'vexboard-palette-presentation-v2';
-const PALETTE_LABELS = Object.freeze({
-  STANDARD: 'Standard',
-  COLOR_SAFE: 'Color safe',
-  HIGH_CONTRAST: 'High contrast',
-});
-
 function assertGraph(graph) {
   if (!graph || !Array.isArray(graph.nodes) || !Array.isArray(graph.relationships)) {
     throw new TypeError('graph with nodes and relationships required');
@@ -111,11 +105,7 @@ export function nextPaletteMode(value) {
   return PALETTE_MODES[(PALETTE_MODES.indexOf(current) + 1) % PALETTE_MODES.length];
 }
 
-export function paletteModeLabel(value) {
-  return PALETTE_LABELS[normalizePaletteMode(value)];
-}
-
-export function installPalettePresentation(documentRef = globalThis.document) {
+function installPalettePresentation(documentRef = globalThis.document) {
   if (!documentRef?.documentElement || typeof documentRef.createElement !== 'function') return false;
   if (documentRef.getElementById?.(PALETTE_STYLE_ID)) return false;
   const style = documentRef.createElement('style');
