@@ -169,6 +169,24 @@ test('VexBoard is discoverable with BoardGraph completed and Canvas Projection r
 // [VXG RealForever]
 
 
+test('Vex Universe Foundations exposes this trajectory and keeps the VexBoard refactor seam explicit', () => {
+  const workspace = buildWorkspace();
+  const universe = workspace.projects.find((entry) => entry.project.projectRef === 'project.vex-universe');
+  assert.ok(universe);
+  assert.equal(universe.summary.workItemCount, 6);
+  assert.equal(universe.summary.openWorkItemCount, 6);
+  assert.equal(universe.summary.completedCount, 0);
+  assert.equal(universe.items.find((item) => item.workRef === 'work.vex-universe.outcome').state, 'RUNNING');
+  assert.equal(universe.items.find((item) => item.workRef === 'work.vex-universe.visible-work-record').state, 'RUNNING');
+  assert.equal(universe.items.find((item) => item.workRef === 'work.vex-universe.process-board-addressability').state, 'RUNNING');
+  assert.equal(universe.items.find((item) => item.workRef === 'work.vex-universe.businessfactory-convergence').state, 'WAITING_RESOURCE');
+  assert.equal(universe.items.find((item) => item.workRef === 'work.vex-universe.vexboard-contract-alignment').state, 'WAITING_RESOURCE');
+  assert.equal(universe.items.find((item) => item.workRef === 'work.vex-universe.journey-evidence-patient-zero').state, 'WAITING_DEPENDENCIES');
+  assert.equal(universe.lanes.find((lane) => lane.laneRef === 'lane.work.active').workRefs.includes('work.vex-universe.process-board-addressability'), true);
+  assert.equal(universe.lanes.find((lane) => lane.laneRef === 'lane.work.waiting').workRefs.includes('work.vex-universe.vexboard-contract-alignment'), true);
+  assert.equal(universe.lanes.find((lane) => lane.laneRef === 'lane.work.planned').workRefs.includes('work.vex-universe.journey-evidence-patient-zero'), true);
+});
+
 test('Blueprint SOT is durably paused without active effects while preserving its exact resume edge', () => {
   const workspace = buildWorkspace();
   const blueprint = workspace.projects.find((entry) => entry.project.projectRef === 'project.vexlife.blueprint-source-of-truth');
