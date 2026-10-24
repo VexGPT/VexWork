@@ -77,7 +77,7 @@ Do **not** rewrite Git history to remove the image object.
 After deletion, recover the exact comparison board when needed with:
 
 ```bash
-git show <captureCommit>:projects/vexlife-welcome-wagon/design-reference/welcome-wagon-current-surfaces-comparison.webp > /tmp/welcome-wagon-current-surfaces-comparison.webp
+git show c673c8c4a1e5c25ec676d490a90086401d608c6c:projects/vexlife-welcome-wagon/design-reference/welcome-wagon-current-surfaces-comparison.webp > /tmp/welcome-wagon-current-surfaces-comparison.webp
 ```
 
 The verified image first lands at capture commit `c673c8c4a1e5c25ec676d490a90086401d608c6c`. That commit is the durable recovery coordinate after current-tree cleanup.
