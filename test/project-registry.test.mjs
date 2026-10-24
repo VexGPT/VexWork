@@ -11,7 +11,7 @@ test('Project Registry locates Projects without owning their WorkState', () => {
   const validation = validateProjectRegistry(registry);
   assert.equal(validation.ok, true, validation.errors.join('\n'));
   const projection = projectProjectRegistry(registry);
-  assert.equal(projection.projects.length, 8);
+  assert.equal(projection.projects.length, 9);
   assert.equal(projection.projects[0].projectRef, 'project.vexwork.foundation');
   assert.equal(projection.projects[0].workgraphRef, 'workgraph.vexwork.foundation');
   assert.equal(projection.projects[0].workgraphPath, 'workgraphs/public.json');
@@ -48,6 +48,12 @@ test('Project Registry locates Projects without owning their WorkState', () => {
   assert.equal(vexboard.definitionPath, 'projects/vexboard/project.json');
   assert.equal(vexboard.boardViewPath, 'projects/vexboard/board.view.json');
   assert.equal(vexboard.agencyPolicyPathOrNull, null);
+  const universe = projection.projects.find((entry) => entry.projectRef === 'project.vex-universe');
+  assert.equal(universe.workgraphRef, 'workgraph.vexwork.foundation');
+  assert.equal(universe.workgraphPath, 'workgraphs/public.json');
+  assert.equal(universe.definitionPath, 'projects/vex-universe/project.json');
+  assert.equal(universe.boardViewPath, 'projects/vex-universe/board.view.json');
+  assert.equal(universe.agencyPolicyPathOrNull, null);
   const blueprint = projection.projects.find((entry) => entry.projectRef === 'project.vexlife.blueprint-source-of-truth');
   assert.equal(blueprint.workgraphRef, 'workgraph.vexwork.foundation');
   assert.equal(blueprint.workgraphPath, 'workgraphs/public.json');

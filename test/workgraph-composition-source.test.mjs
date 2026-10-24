@@ -23,7 +23,7 @@ test('source-managed segments compose to the exact checked-in canonical Workgrap
   const result = composeWorkgraph({ composition, segments, registry });
   const accepted = createWorkgraph(publicSource, registry);
 
-  assert.equal(segments.length, 11);
+  assert.equal(segments.length, 12);
   assert.equal(result.graph.semanticFingerprint, accepted.semanticFingerprint);
   assert.deepEqual(result.graph, accepted);
   assert.equal(result.graph.items.length, publicSource.items.length);

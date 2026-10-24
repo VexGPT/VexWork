@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.vex-universe",
+  "label": "Vex Universe Foundations",
+  "purpose": "Make VexWork the visible operating record for Vex Universe and VexBusinessFactory work, and use VexBoard as the explorable semantic/process view, while preserving source ownership and allowing the VexBoard substrate to evolve independently.",
+  "rootWorkRefs": [
+    "work.vex-universe.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork"
+  ],
+  "sourceRefs": [
+    "docs/foundation/PROCESS-MAP.md",
+    "docs/foundation/PROJECTS.md",
+    "docs/foundation/WORKGRAPH-COMPOSITION.md",
+    "github.pull.vexwork.90",
+    "github.pull.vexwork.92",
+    "project.vexboard"
+  ],
+  "formedAt": "2026-10-24T03:45:00.000Z"
+}
