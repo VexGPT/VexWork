@@ -181,6 +181,13 @@ test('evidence fails closed on unknown semantic/slot coordinates and malformed o
   badTimestamp.artifacts.find((artifact) => artifact.role === 'OBSERVED').capturedAtOrNull = '2026-10-24T05:30:00Z';
   assert.throws(() => normalizeBoardEvidence(badTimestamp, graph), /canonical UTC ISO/);
 
+  const impossibleTimestamp = evidenceFixture();
+  impossibleTimestamp.artifacts.find((artifact) => artifact.role === 'OBSERVED').capturedAtOrNull = '2026-13-40T05:30:00.000Z';
+  assert.throws(
+    () => normalizeBoardEvidence(impossibleTimestamp, graph),
+    (error) => error instanceof TypeError && /canonical UTC ISO/.test(error.message),
+  );
+
   const badHash = evidenceFixture();
   badHash.artifacts.find((artifact) => artifact.role === 'OBSERVED').contentSha256OrNull = 'abc';
   assert.throws(() => normalizeBoardEvidence(badHash, graph), /must be sha256 or null/);
