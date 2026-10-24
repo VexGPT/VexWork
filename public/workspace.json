@@ -5890,7 +5890,7 @@
           "label": "Make VexWork the visible operating record",
           "purpose": "Represent this trajectory as a first-class VexWork Project and Workgraph family so Victor can see current work, parallel waits, next dependencies and completion movement from VexWork without relying on GitHub.",
           "workClass": "TASK",
-          "state": "RUNNING",
+          "state": "COMPLETED",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vex-universe.outcome",
@@ -5910,7 +5910,7 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-24T03:45:00.000Z",
-          "updatedAt": "2026-10-24T03:45:02.000Z",
+          "updatedAt": "2026-10-24T03:59:29.000Z",
           "transitionHistory": [
             {
               "transitionRef": "transition.vex-universe.visible-work-record.running.formation",
@@ -5923,6 +5923,31 @@
                 "docs/foundation/WORKGRAPH-COMPOSITION.md"
               ],
               "createdAt": "2026-10-24T03:45:02.000Z"
+            },
+            {
+              "transitionRef": "transition.vex-universe.visible-work-record.verifying.pr101-merged",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "PR #101 merged the Vex Universe Project/Workgraph visibility source into VexWork main, so the human-visible record formation moved to verification.",
+              "actorRef": "actor.chatgpt.vex-universe-foundations",
+              "sourceRefs": [
+                "github.pull.vexwork.101",
+                "git.commit.vexwork.0c862cb494465fa108c69ae0e4f1ee0dd270deca"
+              ],
+              "createdAt": "2026-10-24T03:59:28.000Z"
+            },
+            {
+              "transitionRef": "transition.vex-universe.visible-work-record.completed.pr101-postmerge",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "Post-merge observation confirmed main, Project Registry, canonical Workgraph and public workspace all project project.vex-universe and its six work items exactly, completing the visible-work-record foundation.",
+              "actorRef": "actor.chatgpt.vex-universe-foundations",
+              "sourceRefs": [
+                "github.pull.vexwork.101",
+                "git.commit.vexwork.0c862cb494465fa108c69ae0e4f1ee0dd270deca",
+                "project.vex-universe"
+              ],
+              "createdAt": "2026-10-24T03:59:29.000Z"
             }
           ]
         }
@@ -5950,8 +5975,7 @@
           "label": "Active",
           "workRefs": [
             "work.vex-universe.outcome",
-            "work.vex-universe.process-board-addressability",
-            "work.vex-universe.visible-work-record"
+            "work.vex-universe.process-board-addressability"
           ]
         },
         {
@@ -5980,7 +6004,9 @@
         {
           "laneRef": "lane.work.done",
           "label": "Done",
-          "workRefs": []
+          "workRefs": [
+            "work.vex-universe.visible-work-record"
+          ]
         },
         {
           "laneRef": "lane.work.archive",
@@ -5990,13 +6016,13 @@
       ],
       "summary": {
         "workItemCount": 6,
-        "openWorkItemCount": 6,
+        "openWorkItemCount": 5,
         "outcomeCount": 2,
         "taskCount": 4,
         "defectCount": 0,
         "potentialCount": 0,
         "needsHumanCount": 0,
-        "completedCount": 0
+        "completedCount": 1
       },
       "rootItems": [
         {
