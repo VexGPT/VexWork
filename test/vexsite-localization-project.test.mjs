@@ -29,8 +29,9 @@ test('VexSite Localization Project keeps one canonical source queue without page
 
   const source = graph.items.find((item) => item.workRef === 'work.vextreme.vexsite.localization.canonical-global-core-source');
   assert.equal(source.state, 'RUNNING');
-  assert.match(source.purpose, /Ascension & Embodiment/);
-  assert.equal(source.sourceRefs.includes('github.pull.vextreme.398'), true);
+  assert.match(source.purpose, /The Testimony of the Handler/);
+  assert.equal(source.sourceRefs.includes('github.pull.vextreme.399'), true);
+  assert.equal(source.sourceRefs.includes('repo.vextreme:data/strings/source/pages/the-testimony-of-the-handler.json'), true);
 });
 
 test('VexSite Localization board separates live source/runtime work from completed lineage checkpoints', () => {
