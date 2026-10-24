@@ -97,6 +97,7 @@ External baselines at formation include:
 - NIST Secure Software Development Framework (SSDF) SP 800-218 v1.1 — current final secure-development baseline;
 - NIST SP 800-218A — secure software practices for generative-AI and dual-use foundation-model development;
 - NIST AI Risk Management Framework and Generative AI Profile;
+- NIST AI 100-2 E2025 adversarial machine-learning taxonomy;
 - OWASP ASVS 5.0.0 — stable application-security verification requirements;
 - OWASP Top 10 2025 — current web-application risk awareness baseline;
 - OWASP GenAI LLM Top 10 2026;
@@ -109,6 +110,7 @@ Canonical references:
 - https://csrc.nist.gov/pubs/sp/800/218/final
 - https://csrc.nist.gov/pubs/sp/800/218/a/final
 - https://www.nist.gov/itl/ai-risk-management-framework
+- https://csrc.nist.gov/pubs/ai/100/2/e2025/final
 - https://asvs.owasp.org/
 - https://owasp.org/projects/top-ten
 - https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/
@@ -137,6 +139,26 @@ Real-target scanning, credential access, exploit deployment, destructive testing
 
 This is also how the work stays usable across assistants and the future Heretic model: we do not design around bypassing safety systems. We make the defensive purpose, owned target, bounded effect, evidence need and stop boundary explicit enough that a capable reviewer can distinguish legitimate verification from ambient offensive action.
 
+## Bounded adversarial / attacker lens
+
+Security Assurance also needs the perspective of someone trying to make the system fail. That perspective is source-placed in [ADVERSARIAL-LENS.md](./ADVERSARIAL-LENS.md).
+
+The boundary is:
+
+```text
+ATTACKER_PERSPECTIVE
+-> challenge assumptions / identities / trust boundaries
+-> form a falsifiable hypothesis
+-> select the smallest sufficient scope tier
+-> synthetic or isolated negative control by default
+-> evidence
+-> no scope widening by curiosity
+```
+
+A convergent mechanism may be perfectly deterministic and still converge from a poisoned premise. The adversarial lens therefore challenges the **pre-convergence membrane**—identity, provenance/currentness, condition classification and authority/effect binding—before trusting the downstream transition.
+
+The first non-executing simulated patient zero is recorded in [SIMULATED-ADVERSARIAL-PATIENT-ZERO-A001.md](./SIMULATED-ADVERSARIAL-PATIENT-ZERO-A001.md). Its strongest new question is `PRE_CONVERGENCE_INTEGRITY`: which attacker-controlled, stale or ambiguous input could make a convergent mechanism produce a confidently wrong result?
+
 ## Heretic relationship
 
 Heretic can later act as a **security-analysis participant**, not a security oracle:
@@ -162,6 +184,7 @@ Vex Security Assurance                         RUNNING
 │    current Process Registry overlap: PR #103
 ├─ Software + supply-chain security lens       DECOMPOSED
 ├─ AI / agentic / Heretic security lens        DECOMPOSED
+│    includes bounded attacker-perspective design
 └─ First ecosystem patient zero                WAITING_DEPENDENCIES
 ```
 
