@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "vexwork.workgraph-segment/v1",
+  "segmentRef": "segment.android-widget-foundation",
+  "graphRef": "workgraph.vexwork.foundation",
+  "items": [
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.android-widget-foundation.outcome",
+      "parentWorkRefOrNull": null,
+      "label": "Android Widget Foundation",
+      "purpose": "Establish one reusable home-screen widget substrate for VexLife Android so compact Android surfaces observe product-owned current State, render bounded projections, and return user intent through rightful product Control/Act/Effect owners instead of becoming parallel truth or effect systems.",
+      "workClass": "OUTCOME",
+      "state": "DECOMPOSED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "project.android-widget-foundation",
+        "projects/android-widget-foundation/README.md",
+        "repo.vexlife-android:docs/CULTURE.md",
+        "repo.vexlife-android:docs/foundation/FEATURE-EXPERIENCE-LANGUAGE.md"
+      ],
+      "nextProcessRefs": [
+        "process.vexlife-android.feature-authoring"
+      ],
+      "createdAt": "2026-10-24T11:20:00.000Z",
+      "updatedAt": "2026-10-24T11:20:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.android-widget-foundation.semantic-widget-surface",
+      "parentWorkRefOrNull": "work.android-widget-foundation.outcome",
+      "label": "Reusable semantic App Widget surface",
+      "purpose": "Implement the smallest reusable Android App Widget foundation: Compose-first Glance rendering, explicit widget projection data, AppWidget receiver lifecycle, direct Activity deep links, and bounded callback/control dispatch that never lets widget code own domain truth or mutate providers directly.",
+      "workClass": "TASK",
+      "state": "READY",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "projects/android-widget-foundation/README.md",
+        "repo.vexlife-android:app/src/main/AndroidManifest.xml",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/MainActivity.kt",
+        "repo.vexlife-android:docs/CULTURE.md"
+      ],
+      "nextProcessRefs": [
+        "process.vexlife-android.feature-authoring"
+      ],
+      "createdAt": "2026-10-24T11:20:00.000Z",
+      "updatedAt": "2026-10-24T11:20:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.android-widget-foundation.vexstream-playback-widget",
+      "parentWorkRefOrNull": "work.android-widget-foundation.outcome",
+      "label": "VexStream playback widget",
+      "purpose": "Use the widget foundation as patient zero: project current VexStream artwork when available, title/artist and Previous/Play-Pause/Next availability into a compact home-screen widget; tapping the artwork/content area opens the VexStream full player; controls route through existing Playback and Queue semantics.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.android-widget-foundation.semantic-widget-surface",
+        "work.vexstream.mobile-library.full-player"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "projects/android-widget-foundation/README.md",
+        "work.vexstream.mobile-library.full-player",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/VexStreamPlaybackControl.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/queue/VexStreamQueueControl.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/media/vexstream/VexStreamPlaybackService.kt"
+      ],
+      "nextProcessRefs": [
+        "process.vexlife-android.feature-authoring"
+      ],
+      "createdAt": "2026-10-24T11:20:00.000Z",
+      "updatedAt": "2026-10-24T11:20:00.000Z"
+    }
+  ],
+  "transitions": [],
+  "sourceRefs": [
+    "project.android-widget-foundation"
+  ],
+  "formedAt": "2026-10-24T11:20:00.000Z"
+}
