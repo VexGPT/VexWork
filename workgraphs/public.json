@@ -4531,47 +4531,43 @@
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vex-universe.outcome.running.visible-foundation",
-      "workRef": "work.vex-universe.outcome",
-      "priorState": "READY",
-      "nextState": "RUNNING",
-      "reason": "Victor explicitly asked for the Vex Universe and BusinessFactory trajectory to become visible through VexWork and authorized this lane to lead the bounded VexWork/VexBoard foundation work.",
-      "actorRef": "actor.chatgpt.vex-universe-foundations",
+      "transitionRef": "transition.vexstream.mobile-library.device-storage.verifying.a033-a039-terminal",
+      "workRef": "work.vexstream.mobile-library.device-storage",
+      "priorState": "WAITING_TOOL",
+      "nextState": "VERIFYING",
+      "reason": "A033 API28 proof, A034 physical API36 storage/migration proof, and the composed A039 post-Clear-Data run established the previously held native storage predicates on exact accepted source.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
       "sourceRefs": [
-        "github.pull.vexwork.90",
-        "github.pull.vexwork.92",
-        "project.vexboard"
+        "github.issue.vexlife-android.157",
+        "evidence.vexstream.mobile-library.device-storage.a033.api28-pass",
+        "evidence.vexstream.mobile-library.device-storage.a034.api36-pass",
+        "evidence.vexstream.mobile-library.clear-data.a039.return.sha256.67e4b6ede7aab8964406894da8fdcddc216f88692e11fbd8a21ac2ae21c537b7",
+        "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md",
+        "proposal.local-vex-operations.vexstream-mobile-library.durable-device-completion.20261023a",
+        "response.victor.vexstream-mobile-library.durable-device-completion.20261023a",
+        "confirmation.local-vex-operations.vexstream-mobile-library.durable-device-completion.20261023a"
       ],
-      "createdAt": "2026-10-24T03:45:01.000Z"
+      "createdAt": "2026-10-24T02:34:45.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vex-universe.process-board-addressability.running.source-ready",
-      "workRef": "work.vex-universe.process-board-addressability",
-      "priorState": "READY",
-      "nextState": "RUNNING",
-      "reason": "The source-ready addressability design is grounded against the accepted Process Map, explicit VexBoard board resolver and BoardJourney contracts and is the next implementation foundation after Project visibility.",
-      "actorRef": "actor.chatgpt.vex-universe-foundations",
+      "transitionRef": "transition.vexstream.mobile-library.device-storage.completed.pr165-terminal",
+      "workRef": "work.vexstream.mobile-library.device-storage",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "Android PR #165 merged the composed durable-device candidate and post-merge verification proved main tree-exact to the accepted candidate; the storage task no longer waits on Android proof orchestration.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
       "sourceRefs": [
-        "blueprint/process-registry.json",
-        "docs/foundation/PROCESS-MAP.md",
-        "vexboard-reader.js"
+        "github.pull.vexlife-android.165",
+        "github.commit.vexlife-android.b8826e32ca78cc5fb8bcae14e29218a0392238bb",
+        "evidence.vexstream.mobile-library.clear-data.a039.return.sha256.67e4b6ede7aab8964406894da8fdcddc216f88692e11fbd8a21ac2ae21c537b7",
+        "evidence.vexstream.mobile-library.clear-data.cleanup.a043.return.sha256.e4dbda67670dcc2a86a88f1cc12e93929e3cc35699de485ea30bdc428dc3ebe6",
+        "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md",
+        "proposal.local-vex-operations.vexstream-mobile-library.durable-device-completion.20261023a",
+        "response.victor.vexstream-mobile-library.durable-device-completion.20261023a",
+        "confirmation.local-vex-operations.vexstream-mobile-library.durable-device-completion.20261023a"
       ],
-      "createdAt": "2026-10-24T03:45:03.000Z"
-    },
-    {
-      "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vex-universe.visible-work-record.running.formation",
-      "workRef": "work.vex-universe.visible-work-record",
-      "priorState": "READY",
-      "nextState": "RUNNING",
-      "reason": "The Project/Workgraph formation is now the active bounded source effect so VexWork itself becomes the human-visible record.",
-      "actorRef": "actor.chatgpt.vex-universe-foundations",
-      "sourceRefs": [
-        "docs/foundation/PROJECTS.md",
-        "docs/foundation/WORKGRAPH-COMPOSITION.md"
-      ],
-      "createdAt": "2026-10-24T03:45:02.000Z"
+      "createdAt": "2026-10-24T02:34:46.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
@@ -4730,46 +4726,6 @@
         "git.commit.vexlife.85ef85dfa4852154e522deadc45707b03cf74221"
       ],
       "createdAt": "2026-10-23T08:30:00.000Z"
-    },
-    {
-      "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vexstream.mobile-library.device-storage.verifying.a033-a039-terminal",
-      "workRef": "work.vexstream.mobile-library.device-storage",
-      "priorState": "WAITING_TOOL",
-      "nextState": "VERIFYING",
-      "reason": "A033 API28 proof, A034 physical API36 storage/migration proof, and the composed A039 post-Clear-Data run established the previously held native storage predicates on exact accepted source.",
-      "actorRef": "role.vexwork.lifecycle-currentizer",
-      "sourceRefs": [
-        "github.issue.vexlife-android.157",
-        "evidence.vexstream.mobile-library.device-storage.a033.api28-pass",
-        "evidence.vexstream.mobile-library.device-storage.a034.api36-pass",
-        "evidence.vexstream.mobile-library.clear-data.a039.return.sha256.67e4b6ede7aab8964406894da8fdcddc216f88692e11fbd8a21ac2ae21c537b7",
-        "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md",
-        "proposal.local-vex-operations.vexstream-mobile-library.durable-device-completion.20261023a",
-        "response.victor.vexstream-mobile-library.durable-device-completion.20261023a",
-        "confirmation.local-vex-operations.vexstream-mobile-library.durable-device-completion.20261023a"
-      ],
-      "createdAt": "2026-10-24T02:34:45.000Z"
-    },
-    {
-      "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vexstream.mobile-library.device-storage.completed.pr165-terminal",
-      "workRef": "work.vexstream.mobile-library.device-storage",
-      "priorState": "VERIFYING",
-      "nextState": "COMPLETED",
-      "reason": "Android PR #165 merged the composed durable-device candidate and post-merge verification proved main tree-exact to the accepted candidate; the storage task no longer waits on Android proof orchestration.",
-      "actorRef": "role.vexwork.lifecycle-currentizer",
-      "sourceRefs": [
-        "github.pull.vexlife-android.165",
-        "github.commit.vexlife-android.b8826e32ca78cc5fb8bcae14e29218a0392238bb",
-        "evidence.vexstream.mobile-library.clear-data.a039.return.sha256.67e4b6ede7aab8964406894da8fdcddc216f88692e11fbd8a21ac2ae21c537b7",
-        "evidence.vexstream.mobile-library.clear-data.cleanup.a043.return.sha256.e4dbda67670dcc2a86a88f1cc12e93929e3cc35699de485ea30bdc428dc3ebe6",
-        "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md",
-        "proposal.local-vex-operations.vexstream-mobile-library.durable-device-completion.20261023a",
-        "response.victor.vexstream-mobile-library.durable-device-completion.20261023a",
-        "confirmation.local-vex-operations.vexstream-mobile-library.durable-device-completion.20261023a"
-      ],
-      "createdAt": "2026-10-24T02:34:46.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
@@ -5390,6 +5346,50 @@
         "github.commit.vexwork.d8b0028bd9413a9c05cfe4b36f1d54425021a6fc"
       ],
       "createdAt": "2026-10-23T02:15:05.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vex-universe.outcome.running.visible-foundation",
+      "workRef": "work.vex-universe.outcome",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Victor explicitly asked for the Vex Universe and BusinessFactory trajectory to become visible through VexWork and authorized this lane to lead the bounded VexWork/VexBoard foundation work.",
+      "actorRef": "actor.chatgpt.vex-universe-foundations",
+      "sourceRefs": [
+        "github.pull.vexwork.90",
+        "github.pull.vexwork.92",
+        "project.vexboard"
+      ],
+      "createdAt": "2026-10-24T03:45:01.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vex-universe.process-board-addressability.running.source-ready",
+      "workRef": "work.vex-universe.process-board-addressability",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "The source-ready addressability design is grounded against the accepted Process Map, explicit VexBoard board resolver and BoardJourney contracts and is the next implementation foundation after Project visibility.",
+      "actorRef": "actor.chatgpt.vex-universe-foundations",
+      "sourceRefs": [
+        "blueprint/process-registry.json",
+        "docs/foundation/PROCESS-MAP.md",
+        "vexboard-reader.js"
+      ],
+      "createdAt": "2026-10-24T03:45:03.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vex-universe.visible-work-record.running.formation",
+      "workRef": "work.vex-universe.visible-work-record",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "The Project/Workgraph formation is now the active bounded source effect so VexWork itself becomes the human-visible record.",
+      "actorRef": "actor.chatgpt.vex-universe-foundations",
+      "sourceRefs": [
+        "docs/foundation/PROJECTS.md",
+        "docs/foundation/WORKGRAPH-COMPOSITION.md"
+      ],
+      "createdAt": "2026-10-24T03:45:02.000Z"
     }
   ],
   "sourceRefs": [
