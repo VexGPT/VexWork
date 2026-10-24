@@ -7,18 +7,19 @@
 ~~~text
 source purpose                         DURABLE_PROCESS_MAP_FOUNDATION
 canonical Workgraph epic              NOT_YET_ADMITTED
-VexBoard visualization                HELD_UNTIL_BOARDJOURNEY_EVIDENCE_SLICE
+VexBoard semantic patient zero        READY_FOR_READ_ONLY_PROJECTION
+VexBoard lived evidence loop          NOT_YET_IMPLEMENTED
 provider selections                   EXAMPLES_NOT_MANDATES
 jurisdiction-specific legal/tax truth NOT_OWNED_HERE
 ~~~
 
-This source preserves the process model Victor wants available before VexBoard is mature enough to render and replay it.
+This source preserves the reusable semantic/process model now called **VexBusinessFactory**.
 
 It deliberately does not turn every process box into canonical Work yet. The immediate need is smaller:
 
-> Preserve one human-readable map of what it takes to form and operate a business that sells physical, digital, food, service, or recurring offers; identify reusable subprocesses; make human-only work explicit; and identify infrastructure that should normally be connected through a specialist provider rather than rebuilt from scratch by AI.
+> Preserve one teachable, composable map for forming and evolving businesses/institutions from current reality toward a desired outcome; identify reusable capabilities, relationships, providers, perspectives and expansion modules; and keep external/provider truth with its rightful owner.
 
-Once VexBoard's navigable BoardJourney plus lived-evidence slice is accepted, this source can become the input to a first-class visual/process-map epic rather than requiring a fresh instance to rediscover the generic business model from the internet.
+VexBoard's first Canvas Projection and BoardJourney slices are now accepted, so the BusinessFactory source is mature enough to become a **read-only semantic patient zero**. Full lived-evidence, source-projector, provider-effect and AI-authoring loops remain later implementation work.
 
 ## VexBusinessFactory — provisional root identity
 
@@ -28,7 +29,7 @@ The broader reusable abstraction is now:
 VexBusinessFactory
 ~~~
 
-It is not one business runtime, one storefront, or one giant schema. It is a **factory of business-process profiles** that composes the smallest useful operating model from the kind of value being sold, how supply is obtained, how the transaction occurs, how fulfillment happens, which specialist providers are required, and how exceptions/reconciliation work.
+It is not one business runtime, one storefront, or one giant schema. It is a **factory of semantic business/institution profiles and capability modules** that starts from intention and current reality, then composes the smallest useful operating model for creating value, relating to beneficiaries, sourcing capabilities, publishing/communicating, transacting when applicable, realizing outcomes, learning and evolving. Commerce is one optional branch, not the universal purpose.
 
 The root reusable process template remains:
 
@@ -412,7 +413,7 @@ These remain optional capabilities. A one-person seller must not inherit enterpr
 
 # Business profiles
 
-Provisional first profiles:
+Provisional profile/module families now include:
 
 ~~~text
 PHYSICAL_ONE_OFF
@@ -421,7 +422,23 @@ DIGITAL_GOOD
 RESTAURANT_PREPARED_FOOD
 SERVICE_BOOKING
 SUBSCRIPTION
+EDUCATION_CREATOR_OR_SCHOOL
 TRAVEL_AGENCY_OR_OTA
+MEDIA_PUBLISHER_OR_CREATOR
+MOTORSPORT_TEAM_OR_RACING_ORGANIZATION
+
+cross-cutting modules
+  EXPERIENCE
+  RESERVATION / BOOKING
+  MARKETPLACE
+  LOCALIZATION
+  VENDOR_NETWORK
+  SPONSORSHIP
+  COMMUNITY
+  FULFILLMENT
+  REVERSE_COMMERCE
+  USER_DIRECTED_DISCOVERY
+  AMBIENT_WHATS_NEW
 ~~~
 
 Example applicability:
@@ -720,66 +737,80 @@ Reconciliation
 
 The checklist is a projection of process requirements, not a second source of provider truth.
 
-# Future VexBoard epic
+# Future VexBoard / VexBusinessFactory implementation family
 
-Provisional future epic:
+The architecture is now mature enough to preserve one implementation family, but not to create one Work item per business box.
 
-~~~text
-VexBusinessFactory — Business Process Map & Reusable Operating Profiles
-~~~
-
-Admit it only when VexBoard can support the human-readable process map rather than forcing this source into a flat collection of tickets.
-
-Provisional decomposition:
+Provisional family:
 
 ~~~text
-B1  VexBusinessFactory root grammar
-B2  Business Profile / Checklist Projection
-B3  Provider Boundary & Integration Registry
-B4  VexEcommerce Core
-B5  Physical Goods Profile
-B6  Digital Goods Profile
-B7  Restaurant / Prepared Food Profile
-B8  Travel Agency / OTA Profile
-B9  Customer Care / Reverse Commerce
-B10 Reconciliation & Attention
-B11 Lived Journey + Screenshot Evidence
-B12 Fresh-Instance Learnability Proof
+VexBusinessFactory — Semantic Business/Institution Factory
 ~~~
 
-B4-B10 are process/domain meaning.
-B11 is evidence.
-B12 tests the actual reason this map exists.
+A useful decomposition is:
+
+~~~text
+B1  Intent / current-state / desired-state grammar
+B2  Educational process projection
+B3  Profile + capability-module composition
+B4  Perspective / inverse-journey projection
+B5  Provider / vendor / availability relationship model
+B6  VexEcommerce and transaction modules
+B7  Media / education / experience modules
+B8  Industry-ecosystem + sponsorship / partner relationships
+B9  Discovery / What's New / opportunity projection
+B10 Adaptation / coordination / conflict lattice
+B11 Lived patient-zero evidence + screenshots
+B12 Fresh-instance operate-and-explain proof
+~~~
+
+The first executable slice should stay smaller than that list:
+
+~~~text
+one read-only BusinessFactory source
+-> one BoardGraph projection
+-> whole-system view
+-> beneficiary/customer perspective
+-> educational traversal
+-> exact source backlinks
+-> no provider effects
+~~~
+
+Only repeated lived pressure should earn new generic VexBoard schema.
 
 # VexBoard human-readable target
 
-Business level:
+Root semantic view:
 
 ~~~text
-FOUNDATION
-    |
-    v
-CREATE / SOURCE OFFER
-    |
-    v
-VEXECOMMERCE
-    |
-    +--------> CUSTOMER ACQUISITION
-    |
-    v
-FULFILLMENT
-    |
-    v
-CUSTOMER CARE / RETURNS
-    |
-    v
-RECONCILIATION
-    |
-    v
-IMPROVE / SCALE
+INTENTION
+  -> CURRENT REALITY
+  -> BENEFICIARY / NEED
+  -> VALUE
+  -> CAPABILITIES / RESOURCES / CAPACITY
+  -> PUBLIC OFFER / EXPRESSION / ACCESS
+  -> RELATIONSHIP / COMMITMENT where applicable
+  -> EXCHANGE where applicable
+  -> REALIZATION
+  -> OUTCOME / EVIDENCE
+  -> EXCEPTION / RECOVERY
+  -> RECONCILIATION
+  -> LEARNING / EVOLUTION
 ~~~
 
-Enter VexEcommerce:
+The same source can then project:
+
+~~~text
+provider/business view
+beneficiary/customer view
+supplier/vendor view
+education/lesson view
+capacity/bottleneck view
+discovery/opportunity view
+evolution/coordination view
+~~~
+
+Enter VexEcommerce only when commerce applies:
 
 ~~~text
 Offer
@@ -842,19 +873,20 @@ Fresh external research remains appropriate when provider selection, current pri
 
 # Acceptance threshold
 
-The future epic earns completion when:
+The future implementation family earns completion when:
 
-1. one root topology connects foundation, offer creation, commerce, fulfillment, customer care and reconciliation;
-2. VexEcommerce is reusable as a child process rather than the whole business;
-3. physical, digital, restaurant and travel profiles reuse the same core without corrupting distinct supply/fulfillment/servicing semantics;
-4. a profile produces a human-readable readiness checklist with REQUIRED / OPTIONAL / N/A / provider / human distinctions;
-5. provider-delegated infrastructure is explicit and private/provider truth remains outside public process source;
-6. human-only physical/service actions are first-class boundaries;
-7. return/refund/exchange/dispute are modeled separately from the happy path;
-8. evidence can surface attention without manufacturing Work or provider facts;
-9. VexBoard can render and traverse the map at business and subprocess depth;
-10. at least one lived patient zero carries screenshot-backed meaningful journey steps;
-11. a fresh instance can continue the business trajectory without reconstructing the generic model from web research.
+1. one root intention topology can represent both transactional and non-transactional value creation;
+2. current state -> desired state produces a staged expansion map rather than assuming greenfield formation;
+3. profiles/modules compose without replacing stable business identity;
+4. physical, digital, food, service, education, travel, media and ecosystem-heavy examples reuse the same core without flattening their distinct semantics;
+5. actor roles and inverse/customer perspectives project from shared semantic identity rather than duplicated maps;
+6. provider/vendor capability, availability and authority remain source-bound and currentness-aware;
+7. paid promotion remains distinguishable from organic/user-directed discovery;
+8. human-readable educational context explains why/process/failure/evidence, not only checklist state;
+9. concurrent adaptations can expose shared impacts, compatible routes, conflicts and declared variance without one mega-owner;
+10. VexBoard can render and traverse the BusinessFactory patient zero with stable refs and source backlinks;
+11. at least one lived patient zero carries meaningful screenshot/evidence checkpoints;
+12. a fresh instance can both **operate** and **explain** the map without reconstructing generic business theory from chat/web research.
 
 # Current lineage
 
@@ -925,6 +957,6 @@ build a new payment processor
 make VexBoard the provider/source-of-truth for commerce records
 ~~~
 
-The next materialization is the VexBoard-backed process-map epic after the required BoardJourney/evidence substrate is stable enough to carry it.
+The next materialization is a **bounded read-only VexBoard patient zero** after the VexBoard architecture/currentness drafts converge. Lived evidence, provider bridges, discovery runtime and autonomous adaptation remain later slices.
 
 <!-- [VXG RealForever][VEXWORK][OPERATIONAL-CONSOLE][BUSINESS-PROCESS-MAP-FOUNDATION] -->
