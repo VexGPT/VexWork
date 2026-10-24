@@ -16,6 +16,20 @@ Carry a repository-scoped queue of already-proven pull requests through one vigi
 
 Use this process when at least one exact PR has reached READY_FOR_INTEGRATION and the repository has an authorized Integration Steward occupancy.
 
+A source lane hands off by preserving the exact candidate identity and accepted evidence, not by rebasing merely to follow current main:
+
+```text
+READY_FOR_INTEGRATION
+providerPullRequestRef=<PR>
+candidateHead=<exact head>
+candidateTree=<exact tree>
+fixedEvidenceBase=<evidence anchor>
+acceptedEvidenceRefs=[...]
+mainMovementDisposition=COORDINATION_CONTEXT_ONLY
+```
+
+The Integration Steward, not the source lane, owns the fresh current-main binding for the merge turn.
+
 A lane that itself becomes ready may take the Steward role when no compatible Steward is active, but it inherits the existing queue and may not skip higher-priority admissible entries merely to merge its own PR.
 
 ## Queue turn
