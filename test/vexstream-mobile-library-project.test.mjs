@@ -205,7 +205,7 @@ test('Mobile Library Project keeps a human audit/decision front door beside grap
   assert.match(readme, /ML-D11 — User-authored tags and dynamic stations remain separate future Work/);
   assert.match(readme, /ML-D12 — Sort \/ Filter Android source and proof are accepted; human Verify entry remains/);
   assert.match(readme, /ML-D13 — Songs bulk management is merged\/proven and waiting on lived review/);
-  assert.match(readme, /github\.pull\.vexlife-android\.166/);
+  assert.match(readme, /PR #166 merged/);
   assert.match(readme, /PR #167/);
   assert.match(readme, /CLEAR_DATA_LIVED_PROOF_COMPLETE/);
   assert.match(readme, /Known VexWork modeling gap/);
