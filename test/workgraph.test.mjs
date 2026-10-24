@@ -14,6 +14,7 @@ const operationalConsoleProjectSource = read('projects/vexwork-operational-conso
 const vexboardProjectSource = read('projects/vexboard/project.json');
 const blueprintProjectSource = read('projects/vexlife-blueprint-source-of-truth/project.json');
 const androidProofProjectSource = read('projects/android-proof-orchestration/project.json');
+const securityProjectSource = read('projects/vex-security-assurance/project.json');
 const graphSource = read('workgraphs/public.json');
 
 test('work registry covers lifecycle states exactly once on the default Work Board', () => {
@@ -39,6 +40,8 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(projectWorkRefs(blueprintProject, graph).length, 14);
   const androidProofProject = createProject(androidProofProjectSource);
   assert.equal(projectWorkRefs(androidProofProject, graph).length, 4);
+  const securityProject = createProject(securityProjectSource);
+  assert.equal(projectWorkRefs(securityProject, graph).length, 7);
   assert.equal(verifySemanticFingerprint(project), true);
   assert.equal(verifySemanticFingerprint(graph), true);
 
@@ -60,10 +63,12 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(ideaIntake.authorityDisposition, 'NO_AUTHORITY');
   assert.equal(ideaIntake.effectDisposition, 'NO_EFFECTS');
   const closedCircuit = graph.items.find((item) => item.workRef === 'work.vextreme.vexsite.localization.closed-circuit.global-core');
-  assert.equal(closedCircuit.state, 'CAPTURED');
-  assert.equal(closedCircuit.workDisposition, 'PARKED');
+  assert.equal(closedCircuit.state, 'COMPLETED');
+  assert.equal(closedCircuit.workDisposition, 'ACTIVE');
+  assert.equal(closedCircuit.parentWorkRefOrNull, 'work.vextreme.vexsite.localization.outcome');
   assert.equal(closedCircuit.authorityDisposition, 'NO_AUTHORITY');
-  assert.equal(graph.rootWorkRefs.includes(closedCircuit.workRef), true);
+  assert.equal(graph.rootWorkRefs.includes(closedCircuit.workRef), false);
+  assert.equal(graph.rootWorkRefs.includes('work.vextreme.vexsite.localization.outcome'), true);
   const historyBackfill = graph.items.find((item) => item.workRef === 'work.vexwork.history.foundational-infrastructure-backfill');
   assert.equal(historyBackfill.state, 'CAPTURED');
   assert.equal(historyBackfill.parentWorkRefOrNull, null);
