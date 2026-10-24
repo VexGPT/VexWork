@@ -65,6 +65,10 @@ export const VEXBOARD_DRAFT_STORAGE_KEY = 'vexboard.local-drafts/v1';
 export const VEXBOARD_BUILTIN_BOARD_URLS = Object.freeze({
   'board.vexboard.self-map': './self-map.json',
   'board.vexboard.publish': './publish-map.json',
+  'board.vexboard.prototype-demo': './prototype-demo.json',
+});
+export const VEXBOARD_BUILTIN_PROTOTYPE_URLS = Object.freeze({
+  'board.vexboard.prototype-demo': './prototype-demo.prototype.json',
 });
 
 const MIN_ZOOM = 0.2;
@@ -82,6 +86,11 @@ function clamp(value, minimum, maximum) {
 export function builtinBoardUrl(boardRef) {
   if (typeof boardRef !== 'string' || !boardRef) throw new TypeError('boardRef required');
   return VEXBOARD_BUILTIN_BOARD_URLS[boardRef] ?? null;
+}
+
+export function builtinPrototypeUrl(boardRef) {
+  if (typeof boardRef !== 'string' || !boardRef) throw new TypeError('boardRef required');
+  return VEXBOARD_BUILTIN_PROTOTYPE_URLS[boardRef] ?? null;
 }
 
 export function localPointFromClient({ clientX, clientY }, { left, top }) {

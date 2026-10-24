@@ -288,6 +288,41 @@ Before handing Victor a new host carrier:
 
 The goal is not more ceremony. It is fewer avoidable human host round trips.
 
+## 10. Source-definition changes can invalidate checked-in generated projections
+
+Observed failure:
+
+```text
+projects/vexboard/project.json
+  + projects/vexboard/LESSONS.md in sourceRefs[]
+
+public/workspace.json
+  remained on the prior generated projection
+
+result
+  npm run review failed at checked-in public workspace is generated-current
+```
+
+The source change itself was semantically reasonable, but `project.json` participates in the public workspace projection. Merging the source without regenerating its checked-in projection made repository main deterministically inconsistent.
+
+Permanent distinction:
+
+```text
+SOURCE_DEFINITION_CHANGE != GENERATED_PROJECTION_CURRENTNESS
+GENERATED_FILE != INDEPENDENT_SOURCE
+```
+
+Before merging a source definition that feeds a checked-in projection:
+
+1. identify every generated consumer owned by the repository;
+2. regenerate/check those consumers through their rightful generator;
+3. if that generated surface is actively contested by another lane, **defer the source-definition linkage** rather than merge stale generated output;
+4. do not hand-edit the generated projection merely to silence the test.
+
+For this incident, `projects/vexboard/LESSONS.md` remains durable source, but its `project.vexboard.sourceRefs[]` linkage is deferred until the shared public-workspace projection can be regenerated without colliding with current aggregate writers.
+
+This is a repository generated-currentness lesson, not a new VexRelay rule. VexRelay correctly surfaced the failing deterministic review and stopped before commit/push/publication.
+
 ## Current examples / lineage
 
 These lessons were earned during the VexBoard BoardJourney and Prototype Simulation trajectory around PRs #91 and #93. The provider artifacts and RETURN packages are evidence of the individual incidents; this file preserves only the reusable categories.
