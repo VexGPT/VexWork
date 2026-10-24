@@ -343,6 +343,70 @@ Acceptance:
 - the same threshold vocabulary is shared by canvas and object gesture arbitration;
 - no interaction-plane value is persisted into BoardGraph/BoardProjection merely to route DOM input.
 
+### H. Lived polish + inspector-to-canvas reveal
+
+The next lived browser pass exposed four small but meaningful refinements:
+
+```text
+DIAMOND
+  visible 1px presentation boundary
+
+BOARDJOURNEY BACK
+  pop the visible semantic walk
+  do not append another BACK row
+
+BOARDJOURNEY CLEAR
+  dispose the current ephemeral Journey/path state
+  do not mutate BoardGraph
+
+INSPECTOR REF HOVER / FOCUS
+  transiently reveal the corresponding canvas object / relationship
+```
+
+The reveal behavior is a projection reflex, not another semantic state owner:
+
+```text
+semanticRef / projectionItemRef / relationshipRef
+-> inspector token
+-> hover or keyboard focus
+-> transient canvas emphasis
+-> leave / blur
+-> emphasis removed
+
+REVEAL != SELECT
+REVEAL != MUTATE
+REVEAL != CONTAIN
+REVEAL != JOURNEY_STEP
+REVEAL != PERSISTED_STATE
+```
+
+Relationship reveal should emphasize both the relationship and its visible endpoint objects so a human
+can connect a logged/reference identity back to the board without guessing which line or object it
+represents.
+
+This is intentionally the smallest foundation for future source/evidence/mockup reflexes. It does not
+yet add global ID search, screenshot hotspot schemas, Compose/runtime instrumentation, or automatic
+camera traversal.
+
+Journey compatibility remains bounded:
+
+- newly invoked Back truncates the current Journey to its prior return coordinate;
+- historical `BACK` navigation entries remain readable by `normalizeBoardJourney()`;
+- Revisit remains an explicit appended semantic navigation event;
+- Clear Journey removes the current ephemeral Journey + interaction trail only.
+
+Acceptance:
+
+- DIAMOND has a visible one-pixel boundary in standard/color-safe/high-contrast presentation;
+- Back reduces the visible Journey step count and return stack;
+- Clear Journey returns the inspector to a no-active-Journey state without Board mutation;
+- node/projection refs in Identity + design reveal their visible projection;
+- relationship refs reveal the edge and both endpoints;
+- bounded-neighborhood refs reveal their visible projection;
+- Journey rows and outgoing relationship choices can use the same transient reveal seam;
+- hover and keyboard focus receive equivalent reveal behavior;
+- reveal state is not serialized into BoardGraph, BoardProjection, BoardJourney, draft storage or source.
+
 ## Complex-case display pressure — VexBusinessFactory
 
 The accepted BusinessFactory patient-zero board is the regression fixture for this implementation:
@@ -406,7 +470,10 @@ Implementation proof should include deterministic regression for:
 - no overlap-driven semantic reparenting;
 - saved/dirty/local-save feedback and storage-error behavior;
 - palette cycling and non-color semantic cues;
-- no source/provider write added by draft save or palette switching.
+- no source/provider write added by draft save or palette switching;
+- Back pops Journey history while historical BACK-bearing Journey input remains readable;
+- Clear Journey disposes only ephemeral Journey/path state;
+- inspector ref reveal is transient presentation state and never a semantic mutation.
 
 Because these are lived interaction/presentation claims, final acceptance should also include a Pages/browser walk with screenshots or direct observation at ordinary desktop width.
 
