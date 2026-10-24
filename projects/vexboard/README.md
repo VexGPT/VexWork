@@ -491,6 +491,183 @@ BoardGraph modules/ports, source projectors and BoardPatch extraction may make t
 
 VexBusinessFactory is the first strong pressure test because one business world needs many actor-centered perspectives and reusable process modules. It must not become the only evidence for a universal semantic-factory contract. Preserve the existing threshold: prove the same federation/resolution model with at least one genuinely different non-business consumer—VexWork process/work projection is a natural candidate—before extracting a broader universal contract.
 
+## Vex lineage alignment — SCAE, Atlas / Process Map, and lived topology
+
+VexBoard should evolve by preserving the semantic questions already earned elsewhere in Vex rather
+than inventing parallel vocabulary because the canvas is visually different.
+
+These sources are **implementation references and pressure tests**, not VexBoard runtime
+dependencies:
+
+```text
+VexLife-Android Behavior / SCAE
+  State + Control -> Act
+  State + Act -> Effect + admitted State
+  independently-owned States -> Convergence -> bounded Control
+
+VexLife-Android VexMaps topology
+  semantic registration != visual composition
+  local semantic owners remain independent
+  relationship truth belongs to explicit convergence owners
+  Process / Session owns lived currentness
+  Projection / Compose presents already-resolved meaning
+
+VexLife Atlas / Process Map lineage
+  stable refs
+  bounded neighborhoods / thin projections
+  typed functionRef + arguments + dependencies
+  source-owned process meaning
+  navigable descent without ingesting the whole world
+
+VexWork Workgraph / Process truth
+  source segment owns local work family
+  deterministic composition -> one canonical graph
+  projections do not become lifecycle owners
+```
+
+The reusable lesson is not to mechanically copy Android classes into JavaScript. It is to preserve
+the same separations when the VexBoard domain has an equivalent question.
+
+### Board Control and Board Act remain different questions
+
+The architecture already states:
+
+```text
+human gesture / AI function call
+-> Board Control
+-> resolve against CURRENT BoardGraph + BoardProjection
+-> Board Act
+-> bounded semantic/projection change
+```
+
+Current `vexboard.board-control/v1` compresses that first proving slice by carrying an `act`
+field directly on the Control envelope. That was acceptable for proving shared human/AI mutation
+plumbing, but it must not silently become the final semantic model.
+
+Before BoardPatch authoring or a broad external tool surface depends on that compression, preserve
+the stronger lineage law:
+
+```text
+BOARD_CONTROL
+  stable request / affordance identity
+
+CURRENT BOARD TRUTH
+  BoardGraph + BoardProjection
+  plus bounded current context where earned
+
+BOARD_ACT
+  resolved meaning of that Control now
+
+BOARD_PATCH / PROJECTION_PATCH
+  proposed or applied local change
+
+EXTERNAL EFFECT
+  separate question
+  never implied by a semantic simulation or board edit
+```
+
+A compatible implementation may preserve the v1 wire shape while adding an explicit resolver or
+vNext contract. The point is semantic separation, not schema churn for its own sake.
+
+```text
+CONTROL != ACT
+ACT != PATCH
+PATCH != EXTERNAL EFFECT
+```
+
+### Atlas / Process Map is a required non-business patient zero
+
+The existing self-map, publish-map and clickable prototype are useful VexBoard proving fixtures, but
+they do not by themselves prove that VexBoard can project a real source-owned map without becoming
+its owner.
+
+Before a universal source-projector / semantic-factory contract is declared mature, exercise at
+least these distinct pressures:
+
+```text
+1. VexBusinessFactory
+   domain semantic topology + perspectives + reusable modules
+
+2. VexLife Atlas / Process Map
+   source-owned stable refs + process descent + bounded neighborhoods
+   + typed callable/dependency meaning
+
+3. VexWork Process / Work projection
+   lifecycle/work truth + processRefs + source backlinks
+```
+
+For the Atlas / Process Map patient zero:
+
+```text
+source-owned Atlas / process truth
+-> projector
+-> BoardGraph references / relationships
+-> BoardProjection lens
+-> BoardJourney traversal
+-> exact source backlinks
+
+VEXBOARD
+!= ATLAS OWNER
+!= PROCESS REGISTRY
+!= PROCESS EXECUTOR
+```
+
+This gives VexBoard a genuinely different non-business consumer before generic topology vocabulary
+is promoted.
+
+### Process / Session / Journey alignment
+
+VexMaps demonstrates another useful distinction:
+
+```text
+semantic owners
+  remain complete in themselves
+
+Process / Session
+  owns one lived relationship/currentness lifetime
+
+Projection
+  presents that meaning
+
+Journey
+  records the human-semantic walk
+```
+
+Current `vexboard.board-journey/v1` is truthfully single-board and validates traversal history
+against one BoardGraph. That remains a valid accepted foundation.
+
+Federated totality should extend it rather than invent a second navigation model:
+
+```text
+current coordinate
+  (boardRef, semanticRef)
+
+ENTER_BOARD
+  resolve stable boardRef
+  append explicit cross-board Journey step
+
+RETURN
+  restore prior (boardRef, semanticRef)
+  preserve interaction / reason / source path
+
+camera move
+  presentation only
+  never a Journey step by itself
+```
+
+The current hard-coded built-in board URL table is therefore a proving fixture, not the scalable
+addressability owner. The earned next seam remains a bounded board source registry/resolver.
+
+Permanent:
+
+```text
+SEMANTIC_REGISTRATION != VISUAL_COMPOSITION
+LOCAL_TRUTH_OWNER != CONVERGENCE_RELATIONSHIP_OWNER
+PROCESS_SESSION != UNDERLYING_DOMAIN_OWNER
+BOARD_JOURNEY != CAMERA_HISTORY
+ATLAS_PROJECTION != COPIED_ATLAS_TRUTH
+```
+
 ## One semantic model, several visual lenses
 
 The same BoardGraph should support several projections without cloning meaning.
