@@ -178,3 +178,20 @@ test('prototype UI exposes simulation state and consumes the shared contract wit
   assert.doesNotMatch(page, /method:\s*['"](?:POST|PUT|PATCH|DELETE)['"]/i);
   assert.doesNotMatch(page, /api\.github\.com|raw\.githubusercontent\.com/);
 });
+
+
+test('prototype UI preserves the explicit interaction path beside BoardJourney after traversal', () => {
+  assert.match(page, /let prototype=null,scenario=null,interactionTrail=\[\]/);
+  assert.match(page, /interactionTrail:\s*interactionTrail\.map\(entry=>\(\{\.\.\.entry\}\)\)/);
+  assert.match(page, /interactionTrail=\[\.\.\.interactionTrail,\{/);
+  assert.match(page, /interactionRef:result\.interactionRef/);
+  assert.match(page, /controlRef:interaction\.controlRef/);
+  assert.match(page, /conditionRefOrNull:interaction\.conditionOrNull\?\.conditionRef\?\?null/);
+  assert.match(page, /conditionState:result\.conditionState/);
+  assert.match(page, /fromRef,/);
+  assert.match(page, /toRef:result\.journey\.currentRef/);
+  assert.match(page, /function interactionTrailText\(\)/);
+  assert.match(page, /Interaction path\\n\$\{interactionTrailText\(\)\}/);
+  assert.match(page, /function startJourneyAt\(semanticRef\)\{interactionTrail=\[\];/);
+  assert.match(page, /\{current,selected,tool,camera,journey,prototype,scenario,interactionTrail,activeBoardRef\}=prior/);
+});

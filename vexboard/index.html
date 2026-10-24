@@ -20,7 +20,7 @@ let current=null,selected=null,tool='SELECT',connectFrom=null;
 let camera=Board.normalizeCamera({x:48,y:48,zoom:1});
 let collapsed=new Set();
 let journey=null;
-let prototype=null,scenario=null;
+let prototype=null,scenario=null,interactionTrail=[];
 let boardStack=[];
 let activeBoardRef=null;
 let viewportEl=null,canvasEl=null,minimapEl=null,zoomReadoutEl=null;
@@ -55,17 +55,17 @@ async function openBuiltInBoard(boardRef,{pushCurrent=false}={}){
   return openBoard(d,{pushCurrent,boardRef,prototypeInput});
 }
 
-function snapshotCurrent(){return current?{current,selected,tool,camera,collapsed:[...collapsed],journey,prototype,scenario,activeBoardRef}:null}
+function snapshotCurrent(){return current?{current,selected,tool,camera,collapsed:[...collapsed],journey,prototype,scenario,interactionTrail:interactionTrail.map(entry=>({...entry})),activeBoardRef}:null}
 async function openBoard(input,{pushCurrent=false,boardRef=null,prototypeInput=null}={}){
   if(pushCurrent&&current)boardStack.push(snapshotCurrent());
   const d=Board.normalizeDraft(input),s=await Board.hydrateBoardState(d.graph,d.projection);
   current={...d,graph:s.graph,projection:s.projection};selected=null;tool='SELECT';connectFrom=null;
   prototype=prototypeInput?Board.normalizeBoardPrototype(prototypeInput,s.graph):null;
   scenario=prototype?Board.createBoardScenario(prototype,s.graph,{scenarioRef:ref('scenario.vexboard')}):null;
-  collapsed=new Set();journey=null;camera=Board.normalizeCamera({x:48,y:48,zoom:1});activeBoardRef=boardRef||d.draftRef;
+  interactionTrail=[];collapsed=new Set();journey=null;camera=Board.normalizeCamera({x:48,y:48,zoom:1});activeBoardRef=boardRef||d.draftRef;
   renderWorkspace();requestAnimationFrame(()=>fitBoard());
 }
-function returnBoard(){const prior=boardStack.pop();if(!prior)return;({current,selected,tool,camera,journey,prototype,scenario,activeBoardRef}=prior);collapsed=new Set(prior.collapsed);connectFrom=null;renderWorkspace();requestAnimationFrame(()=>applyCamera())}
+function returnBoard(){const prior=boardStack.pop();if(!prior)return;({current,selected,tool,camera,journey,prototype,scenario,interactionTrail,activeBoardRef}=prior);collapsed=new Set(prior.collapsed);connectFrom=null;renderWorkspace();requestAnimationFrame(()=>applyCamera())}
 async function enterPortal(detailBoardRef){
   const local=drafts().find(d=>d.draftRef===detailBoardRef);
   if(local){await openBoard(local,{pushCurrent:true,boardRef:detailBoardRef});return}
@@ -75,7 +75,7 @@ async function enterPortal(detailBoardRef){
 }
 
 function landing(){
-  current=null;selected=null;journey=null;prototype=null;scenario=null;boardStack=[];activeBoardRef=null;app.className='app';app.replaceChildren();
+  current=null;selected=null;journey=null;prototype=null;scenario=null;interactionTrail=[];boardStack=[];activeBoardRef=null;app.className='app';app.replaceChildren();
   const box=el('section','landing');
   box.append(el('div','eyebrow','VexBoard canvas projection'),el('h1','','Design the map before implementation has to guess it.'),el('p','lede','Create a local semantic-board draft or inspect an existing source board through a zoomable, pannable, recursive canvas. Camera, focus and collapse are read-only view state; requesting edit still forks a browser-local draft copy rather than mutating source truth.'));
   const actions=el('div','row');
@@ -124,11 +124,30 @@ function prototypeChoices(controlRef,trigger='CLICK'){
   return Board.boardInteractionChoices(current.graph,prototype,scenario,{controlRef,trigger});
 }
 function applySimulationInteraction(interactionRef){
-  const result=Board.applyBoardInteraction({graph:current.graph,journey,prototype,scenario,interactionRef});
+  const fromRef=journey.currentRef,result=Board.applyBoardInteraction({graph:current.graph,journey,prototype,scenario,interactionRef});
+  const interaction=prototype.interactions.find(candidate=>candidate.interactionRef===result.interactionRef);
+  if(!interaction)throw new Error(`prototype interaction unavailable ${result.interactionRef}`);
+  interactionTrail=[...interactionTrail,{
+    sequence:interactionTrail.length,
+    interactionRef:result.interactionRef,
+    controlRef:interaction.controlRef,
+    trigger:result.trigger,
+    conditionRefOrNull:interaction.conditionOrNull?.conditionRef??null,
+    conditionState:result.conditionState,
+    fromRef,
+    toRef:result.journey.currentRef,
+  }];
   journey=result.journey;scenario=result.scenario;
   const focusRef=result.focusRefOrNull||journey.currentRef,target=itemFor(focusRef);
   if(target)selected=target.projectionItemRef;
   renderWorkspace();requestAnimationFrame(()=>focusSelected());
+}
+function interactionTrailText(){
+  if(!interactionTrail.length)return'No interactions yet.';
+  return interactionTrail.map(entry=>{
+    const control=node(entry.controlRef),condition=entry.conditionRefOrNull?`${entry.conditionRefOrNull} = ${entry.conditionState}`:`unconditional = ${entry.conditionState}`;
+    return `${entry.sequence+1}. ${control?.label||entry.controlRef} · ${entry.trigger} · ${condition} · ${entry.fromRef} → ${entry.toRef}`;
+  }).join('\n');
 }
 function tryClickableControl(nodeRef){
   if(!prototype||!scenario||!journey||journey.currentRef!==nodeRef)return false;
@@ -172,7 +191,7 @@ function renderMinimap(){
 
 function journeyBoardRef(){return activeBoardRef||current?.draftRef||null}
 function applyJourney(next){journey=next;const target=itemFor(journey.currentRef);if(target)selected=target.projectionItemRef;renderWorkspace();requestAnimationFrame(()=>focusSelected())}
-function startJourneyAt(semanticRef){applyJourney(Board.createBoardJourney(current.graph,{journeyRef:ref('journey.vexboard'),boardRef:journeyBoardRef(),startRef:semanticRef}))}
+function startJourneyAt(semanticRef){interactionTrail=[];applyJourney(Board.createBoardJourney(current.graph,{journeyRef:ref('journey.vexboard'),boardRef:journeyBoardRef(),startRef:semanticRef}))}
 function followJourney(relationshipRef){applyJourney(Board.advanceBoardJourney(current.graph,journey,relationshipRef))}
 function backJourney(){applyJourney(Board.backBoardJourney(current.graph,journey))}
 function revisitJourney(sequence){applyJourney(Board.revisitBoardJourney(current.graph,journey,sequence))}
@@ -212,6 +231,7 @@ function inspector(side){
     side.append(pg);
   }
   const jg=el('div','group');jg.append(el('h3','','BoardJourney · semantic walk'));
+  if(prototype)jg.append(el('div','v',`Interaction path\n${interactionTrailText()}`));
   const journeyActive=journey&&journey.boardRef===journeyBoardRef();
   if(!journeyActive){const start=el('button','btn violet','Start journey here');start.onclick=()=>startJourneyAt(n.nodeRef);jg.append(start)}else{
     const currentNode=node(journey.currentRef),summary=el('div','v',`Current: ${currentNode?.label||journey.currentRef}\n${journey.steps.length} step(s) · ${journey.returnStack.length} return point(s)`);jg.append(summary);
