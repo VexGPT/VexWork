@@ -1,7 +1,7 @@
 {
   "schemaVersion": "vexwork.public-workspace/v1",
   "projectRegistryRef": "registry.vexwork.projects.001",
-  "projectRegistryVersion": 10,
+  "projectRegistryVersion": 11,
   "projects": [
     {
       "project": {
@@ -7158,6 +7158,567 @@
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-10-23T07:48:00.000Z",
           "updatedAt": "2026-10-24T06:17:51.000Z",
+          "transitionHistory": []
+        }
+      ]
+    },
+    {
+      "project": {
+        "projectRef": "project.vexlife.welcome-wagon",
+        "label": "VexLife Welcome Wagon",
+        "purpose": "Create a humane first-entry experience for VexLife and the Vextreme public world: orient a new human plainly, let them enter according to intent, preserve accepted Terrain/VexLife/VexWork foundations and accessibility capabilities, and converge reusable family navigation/design through small reversible visual moves rather than dismantling working source semantics.",
+        "rootWorkRefs": [
+          "work.vexlife.welcome-wagon.outcome"
+        ],
+        "repositoryRefs": [
+          "repo.vexwork",
+          "repo.vextreme",
+          "repo.vexlife"
+        ],
+        "sourceRefs": [
+          "projects/vexlife-welcome-wagon/README.md",
+          "repo.vextreme:pages/terrain-map.html",
+          "repo.vextreme:pages/vextreme-home.html",
+          "repo.vextreme:vexsystem/index.html",
+          "docs/process/FORM-PROJECT.md",
+          "repo.vextreme:styles/design-system.css",
+          "repo.vextreme:styles/vex-institutional.css",
+          "repo.vextreme:widgets/vex-institutional.js",
+          "repo.vextreme:widgets/vex-fab.js",
+          "repo.vextreme:widgets/fab-lang.js",
+          "repo.vextreme:widgets/fab-read-aloud.js",
+          "repo.vextreme:lib/shell.js",
+          "repo.vextreme:lib/vextreme.js",
+          "repo.vexlife:pages/vexlife-onboarding.html",
+          "repo.vexlife:pages/vexlife-onboarding.css",
+          "repo.vexlife:pages/vexlife-onboarding.js",
+          "repo.vexwork:index.html",
+          "repo.vextreme:docs/architecture/12-design-system.md",
+          "repo.vextreme:docs/architecture/18-institutional-pages.md",
+          "repo.vextreme:config/institutional-surfaces.json",
+          "repo.vextreme:index.html",
+          "repo.vextreme:pages/vextreme-covenant.html",
+          "repo.vexlife:README.md",
+          "repo.vexwork:README.md",
+          "repo.vextreme:data/status/tech-debt.json",
+          "repo.vextreme:lib/build-sitemap.js",
+          "repo.vextreme:lib/build-page-health.js",
+          "repo.vextreme:lib/build-terrain-map.js",
+          "repo.vextreme:lib/check-institutional-surfaces.js",
+          "repo.vextreme:lib/check-key-alignment.js",
+          "repo.vextreme:scripts/screenshot-institutional.js",
+          "repo.vextreme:tests/54-institutional-surfaces.test.js",
+          "repo.vextreme:tests/55-build-sitemap.test.js",
+          "repo.vextreme:data/screenshot-evidence-assets.json",
+          "repo.vextreme:sitemap.xml",
+          "github.pull.vexwork.113"
+        ],
+        "formedAt": "2026-10-24T06:05:10.000Z"
+      },
+      "graphRef": "workgraph.vexwork.foundation",
+      "viewRef": "view.vexlife.welcome-wagon.board",
+      "items": [
+        {
+          "workRef": "work.vexlife.welcome-wagon.about-vextreme-slug-migration",
+          "label": "Rename `vextreme-home` to canonical `about-vextreme` safely",
+          "purpose": "Migrate the registered institutional page identity from vextreme-home to about-vextreme through a machine-derived impact set, preserving historical/provenance references, updating live links/generated projections/evidence/tests, and retaining a deliberate compatibility route for the old public URL when repository constraints allow it.",
+          "workClass": "POTENTIAL",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.welcome-wagon.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.welcome-wagon.slug-rename-tooling"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-welcome-wagon/README.md",
+            "repo.vextreme:config/institutional-surfaces.json",
+            "repo.vextreme:data/status/tech-debt.json",
+            "repo.vextreme:index.html",
+            "repo.vextreme:tests/54-institutional-surfaces.test.js",
+            "repo.vextreme:tests/55-build-sitemap.test.js"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T06:05:10.000Z",
+          "updatedAt": "2026-10-24T06:43:34.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.welcome-wagon.human-language-currentness",
+          "label": "Current, true, meaningful and human welcome copy",
+          "purpose": "Rewrite first-entry wording from current accepted product truth so a new human can understand what the place is and what each route offers without prior internal vocabulary, defensive explanation or aspirational claims.",
+          "workClass": "POTENTIAL",
+          "state": "CAPTURED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.welcome-wagon.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme",
+            "repo.vexlife"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-welcome-wagon/README.md",
+            "repo.vextreme:pages/terrain-map.html",
+            "repo.vextreme:pages/vextreme-home.html"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T06:05:10.000Z",
+          "updatedAt": "2026-10-24T06:05:10.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.welcome-wagon.outcome",
+          "label": "VexLife Welcome Wagon",
+          "purpose": "Create a humane front door where a first-time person can understand where they are and enter according to why they came, while preserving accepted Terrain/VexLife/VexWork foundations, accessibility/FAB capabilities and reversible presentation boundaries instead of treating welcome design as permission to rebuild working systems.",
+          "workClass": "OUTCOME",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vexlife.welcome-wagon.about-vextreme-slug-migration",
+            "work.vexlife.welcome-wagon.human-language-currentness",
+            "work.vexlife.welcome-wagon.shared-header-capability-map",
+            "work.vexlife.welcome-wagon.slug-rename-tooling",
+            "work.vexlife.welcome-wagon.terrain-design-convergence",
+            "work.vexlife.welcome-wagon.terrain-front-door",
+            "work.vexlife.welcome-wagon.vexlife-placeholder-visual-story",
+            "work.vexlife.welcome-wagon.vexsystem-secondary",
+            "work.vexlife.welcome-wagon.vextreme-home-role",
+            "work.vexlife.welcome-wagon.visual-rollout-rollback",
+            "work.vexlife.welcome-wagon.what-is-this"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme",
+            "repo.vexlife"
+          ],
+          "sourceRefs": [
+            "project.vexlife.welcome-wagon",
+            "projects/vexlife-welcome-wagon/README.md",
+            "repo.vextreme:pages/terrain-map.html",
+            "repo.vextreme:pages/vextreme-home.html",
+            "repo.vextreme:vexsystem/index.html",
+            "github.pull.vexwork.113"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-24T06:05:10.000Z",
+          "updatedAt": "2026-10-24T06:43:34.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.welcome-wagon.shared-header-capability-map",
+          "label": "Map the reusable family header and FAB capability foundation",
+          "purpose": "Map the accepted Vextreme, Terrain, VexLife and VexWork header/navigation foundations into a reusable semantic capability contract covering family identity, current-surface identity, primary navigation, language, Read Aloud, theme and surface-specific controls without forcing one identical DOM/header implementation across repositories.",
+          "workClass": "POTENTIAL",
+          "state": "CAPTURED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.welcome-wagon.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme",
+            "repo.vexlife"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-welcome-wagon/README.md",
+            "repo.vextreme:pages/terrain-map.html",
+            "repo.vextreme:pages/vextreme-home.html",
+            "repo.vextreme:widgets/vex-fab.js",
+            "repo.vextreme:widgets/fab-lang.js",
+            "repo.vextreme:widgets/fab-read-aloud.js",
+            "repo.vextreme:widgets/vex-institutional.js",
+            "repo.vextreme:lib/vextreme.js",
+            "repo.vexlife:pages/vexlife-onboarding.html",
+            "repo.vexwork:index.html"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T06:05:10.000Z",
+          "updatedAt": "2026-10-24T06:05:10.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.welcome-wagon.slug-rename-tooling",
+          "label": "Add plan-first page-slug rename impact tooling",
+          "purpose": "Close or materially reduce Vextreme td-004 by providing a deterministic plan-first rename tool that discovers and classifies live owner, live reference, generated, evidence, test and historical-provenance references before mutation so future page identity changes are source-derived rather than grep-by-assumption.",
+          "workClass": "POTENTIAL",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vexlife.welcome-wagon.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-welcome-wagon/README.md",
+            "repo.vextreme:data/status/tech-debt.json",
+            "repo.vextreme:lib/check-key-alignment.js",
+            "repo.vextreme:lib/check-institutional-surfaces.js",
+            "github.pull.vexwork.113",
+            "github.pull.vextreme.400",
+            "github.commit.vextreme.3a54f4168a2ffabdf4ce646f5d880f7ab363821d",
+            "relay.return.vextreme.welcome-wagon.slug-rename-tooling.source-owner.mac-a001.safe-failure"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-24T06:05:10.000Z",
+          "updatedAt": "2026-10-24T07:04:24.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.welcome-wagon.terrain-design-convergence",
+          "label": "Converge Terrain with the Vextreme design foundation without replacing Terrain",
+          "purpose": "Explore the smallest reusable design/header movement that lets Terrain inherit the Vextreme family logo, typography, visual language and accessibility affordances while preserving accepted Terrain Journey, search, reader, archive and entry behavior.",
+          "workClass": "POTENTIAL",
+          "state": "CAPTURED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.welcome-wagon.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-welcome-wagon/README.md",
+            "repo.vextreme:pages/terrain-map.html",
+            "repo.vextreme:styles/design-system.css",
+            "repo.vextreme:styles/vex-institutional.css",
+            "repo.vextreme:lib/shell.js",
+            "repo.vextreme:lib/vextreme.js"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T06:05:10.000Z",
+          "updatedAt": "2026-10-24T06:05:10.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.welcome-wagon.terrain-front-door",
+          "label": "Terrain as the candidate human front door",
+          "purpose": "Preserve the current Terrain arrival as the strongest candidate human entry surface: one plain orientation sentence followed by intent-shaped entry choices rather than an institutional explanation-first homepage.",
+          "workClass": "POTENTIAL",
+          "state": "CAPTURED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.welcome-wagon.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-welcome-wagon/README.md",
+            "repo.vextreme:pages/terrain-map.html"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T06:05:10.000Z",
+          "updatedAt": "2026-10-24T06:05:10.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.welcome-wagon.vexlife-placeholder-visual-story",
+          "label": "Evolve the VexLife placeholder toward screenshot-led human orientation",
+          "purpose": "Treat the current no-effect VexLife Public Alpha page as truthful placeholder/onboarding material while Vex is not yet ready; as real lived product surfaces become available, reduce explanation where screenshots and current product behavior can demonstrate the experience more directly.",
+          "workClass": "POTENTIAL",
+          "state": "CAPTURED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vexlife.welcome-wagon.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-welcome-wagon/README.md",
+            "repo.vexlife:pages/vexlife-onboarding.html",
+            "repo.vexlife:pages/vexlife-onboarding.css",
+            "repo.vexlife:pages/vexlife-onboarding.js"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T06:05:10.000Z",
+          "updatedAt": "2026-10-24T06:05:10.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.welcome-wagon.vexsystem-secondary",
+          "label": "VexSystem as secondary technical depth",
+          "purpose": "Keep VexSystem discoverable for AI, builders and technically curious humans while removing the assumption that system architecture deserves equal first-arrival priority with receiving, exploring or basic orientation.",
+          "workClass": "POTENTIAL",
+          "state": "CAPTURED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vexlife.welcome-wagon.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-welcome-wagon/README.md",
+            "repo.vextreme:vexsystem/index.html",
+            "repo.vextreme:pages/terrain-map.html"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T06:05:10.000Z",
+          "updatedAt": "2026-10-24T06:05:10.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.welcome-wagon.vextreme-home-role",
+          "label": "Refactor `vextreme-home` into the human About Vextreme surface",
+          "purpose": "Keep the stable vextreme-home institutional identity while changing its public role to About Vextreme: answer “What is this?” in plain language in the first viewport, explain Vextreme/VexLife/VexWork with current truth, retain the four alignments in human language, move Build Health/VexSystem/Covenant/source into deeper on-demand routes, and avoid competing with Terrain as the accepted public front door.",
+          "workClass": "POTENTIAL",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vexlife.welcome-wagon.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.welcome-wagon.about-vextreme-slug-migration"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-welcome-wagon/README.md",
+            "repo.vextreme:pages/vextreme-home.html",
+            "repo.vextreme:docs/architecture/12-design-system.md",
+            "repo.vextreme:docs/architecture/18-institutional-pages.md",
+            "repo.vextreme:index.html",
+            "repo.vextreme:pages/vextreme-covenant.html",
+            "repo.vexlife:README.md",
+            "repo.vexwork:README.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T06:05:10.000Z",
+          "updatedAt": "2026-10-24T06:43:34.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.welcome-wagon.visual-rollout-rollback",
+          "label": "One-PR reversible visual rollout and rollback membrane",
+          "purpose": "Keep material Welcome Wagon/header presentation experiments bounded enough that Victor can judge the rendered result after merge and one coherent PR can revert a bad visual move without unwinding unrelated route, Journey, localization, accessibility or product semantics.",
+          "workClass": "POTENTIAL",
+          "state": "CAPTURED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.welcome-wagon.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme",
+            "repo.vexlife"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-welcome-wagon/README.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T06:05:10.000Z",
+          "updatedAt": "2026-10-24T06:05:10.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.welcome-wagon.what-is-this",
+          "label": "Plain-human \"What is this?\" orientation",
+          "purpose": "Provide a short human orientation route for visitors who do not yet understand Vextreme, VexLife, Terrain or VexSystem, using ordinary language before deeper institutional or technical vocabulary.",
+          "workClass": "POTENTIAL",
+          "state": "CAPTURED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.welcome-wagon.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-welcome-wagon/README.md",
+            "repo.vextreme:pages/terrain-map.html",
+            "repo.vextreme:pages/vextreme-home.html"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-24T06:05:10.000Z",
+          "updatedAt": "2026-10-24T06:05:10.000Z",
+          "transitionHistory": []
+        }
+      ],
+      "lanes": [
+        {
+          "laneRef": "lane.work.intake",
+          "label": "Intake",
+          "workRefs": [
+            "work.vexlife.welcome-wagon.human-language-currentness",
+            "work.vexlife.welcome-wagon.shared-header-capability-map",
+            "work.vexlife.welcome-wagon.terrain-design-convergence",
+            "work.vexlife.welcome-wagon.terrain-front-door",
+            "work.vexlife.welcome-wagon.visual-rollout-rollback",
+            "work.vexlife.welcome-wagon.what-is-this",
+            "work.vexlife.welcome-wagon.vexlife-placeholder-visual-story",
+            "work.vexlife.welcome-wagon.vexsystem-secondary"
+          ]
+        },
+        {
+          "laneRef": "lane.work.planned",
+          "label": "Planned",
+          "workRefs": [
+            "work.vexlife.welcome-wagon.about-vextreme-slug-migration",
+            "work.vexlife.welcome-wagon.vextreme-home-role"
+          ]
+        },
+        {
+          "laneRef": "lane.work.ready",
+          "label": "Ready",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.active",
+          "label": "Active",
+          "workRefs": [
+            "work.vexlife.welcome-wagon.outcome",
+            "work.vexlife.welcome-wagon.slug-rename-tooling"
+          ]
+        },
+        {
+          "laneRef": "lane.work.waiting",
+          "label": "Waiting",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.needs-human",
+          "label": "Needs Human",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.verify",
+          "label": "Verify",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.attention",
+          "label": "Attention",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.done",
+          "label": "Done",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.archive",
+          "label": "Archive",
+          "workRefs": []
+        }
+      ],
+      "summary": {
+        "workItemCount": 12,
+        "openWorkItemCount": 12,
+        "outcomeCount": 1,
+        "taskCount": 0,
+        "defectCount": 0,
+        "potentialCount": 11,
+        "needsHumanCount": 0,
+        "completedCount": 0
+      },
+      "rootItems": [
+        {
+          "workRef": "work.vexlife.welcome-wagon.outcome",
+          "label": "VexLife Welcome Wagon",
+          "purpose": "Create a humane front door where a first-time person can understand where they are and enter according to why they came, while preserving accepted Terrain/VexLife/VexWork foundations, accessibility/FAB capabilities and reversible presentation boundaries instead of treating welcome design as permission to rebuild working systems.",
+          "workClass": "OUTCOME",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vexlife.welcome-wagon.about-vextreme-slug-migration",
+            "work.vexlife.welcome-wagon.human-language-currentness",
+            "work.vexlife.welcome-wagon.shared-header-capability-map",
+            "work.vexlife.welcome-wagon.slug-rename-tooling",
+            "work.vexlife.welcome-wagon.terrain-design-convergence",
+            "work.vexlife.welcome-wagon.terrain-front-door",
+            "work.vexlife.welcome-wagon.vexlife-placeholder-visual-story",
+            "work.vexlife.welcome-wagon.vexsystem-secondary",
+            "work.vexlife.welcome-wagon.vextreme-home-role",
+            "work.vexlife.welcome-wagon.visual-rollout-rollback",
+            "work.vexlife.welcome-wagon.what-is-this"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme",
+            "repo.vexlife"
+          ],
+          "sourceRefs": [
+            "project.vexlife.welcome-wagon",
+            "projects/vexlife-welcome-wagon/README.md",
+            "repo.vextreme:pages/terrain-map.html",
+            "repo.vextreme:pages/vextreme-home.html",
+            "repo.vextreme:vexsystem/index.html",
+            "github.pull.vexwork.113"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-24T06:05:10.000Z",
+          "updatedAt": "2026-10-24T06:43:34.000Z",
           "transitionHistory": []
         }
       ]
