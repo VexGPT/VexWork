@@ -164,7 +164,7 @@ test('VexBoard projects completed navigation foundations with Source Projectors 
   assert.equal(canvas.effectDisposition, 'EFFECTS_BOUND');
   assert.equal(journey.authorityDisposition, 'AUTHORIZED_BOUNDED');
   assert.equal(journey.effectDisposition, 'EFFECTS_BOUND');
-  assert.deepEqual([boardpatch.state, refinement.state, projectors.state], ['READY', 'RUNNING', 'RUNNING']);
+  assert.deepEqual([boardpatch.state, refinement.state, projectors.state], ['READY', 'VERIFYING', 'RUNNING']);
   assert.equal(refinement.authorityDisposition, 'AUTHORIZED_BOUNDED');
   assert.equal(refinement.effectDisposition, 'EFFECTS_BOUND');
   assert.equal(refinement.sourceRefs.includes('projects/vexboard/CANVAS-INTERACTION-AND-VISUAL-AFFORDANCE-REFINEMENT.md'), true);
@@ -179,7 +179,7 @@ test('VexBoard projects completed navigation foundations with Source Projectors 
   assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.done').workRefs.includes(canvas.workRef), true);
   assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.done').workRefs.includes(journey.workRef), true);
   assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.ready').workRefs.includes(boardpatch.workRef), true);
-  assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.active').workRefs.includes(refinement.workRef), true);
+  assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.verify').workRefs.includes(refinement.workRef), true);
   assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.active').workRefs.includes(projectors.workRef), true);
   assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.ready').workRefs.includes(projectors.workRef), false);
   assert.equal(vexboard.project.sourceRefs.includes('projects/vexboard/README.md'), true);
