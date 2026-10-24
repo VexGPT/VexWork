@@ -173,6 +173,13 @@ test('Process Atlas projector consumes public-safe projection only and preserves
     (node) => node.label === 'Opportunity: Reuse the exact bounded proof.',
   ), true);
   assert.equal(projected.graph.nodes.some((node) => node.label === 'Priority: 1'), true);
+
+  const proofAnnotationItems = projected.projection.items
+    .filter((item) => ['annotation.atlas.node.proof.currentness',
+      'annotation.atlas.opportunity.reuse.opportunity',
+      'annotation.atlas.priority.proof.priority'].includes(item.semanticRef));
+  assert.equal(proofAnnotationItems.length, 3);
+  assert.equal(new Set(proofAnnotationItems.map((item) => item.bounds.y)).size, 3);
 });
 
 test('source projector layout ordering is canonical and Atlas freshness fails closed', () => {
