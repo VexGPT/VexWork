@@ -3265,45 +3265,71 @@ Exact Work states, dependencies, authority/effect dispositions, transition histo
 
 ## Current continuation
 
-```text
-architecture source                                  CURRENT
-canonical Project + Workgraph + Board                CURRENT
-public Projects projection                           CURRENT
-prime Project-formation regression case              SOURCE-PLACED
-BoardGraph + shared Board Control foundation         MERGED / VERIFIED / COMPLETED
-self-hosted blank-canvas proving ground              MERGED / VERIFIED
+Current source has moved beyond the older Workgraph projection. Preserve the distinction:
 
-next Workgraph frontier
--> Read-only canvas and recursive navigation         READY / NO_AUTHORITY / NO_EFFECTS
-   deterministic canvas projection / pan / zoom / minimap / focus
-   inline expansion / collapse / portal entry / bounded model-facing board query
+~~~text
+accepted source reality
 
-then
--> spatial arrangement + connector-routing proving ground
-   stable scale / local occupancy / obstacle avoidance / incremental reflow / fractal expansion
--> relational direction navigation proving ground
-   semantic choice forms / branch envelopes / convergence / portal enter-return / fan-out pressure
--> reusable template inheritance proving ground
-   one source / linked instances / declared variance / make-unique provenance / reverse usages
--> asset + image support proving ground
-   source-bound media / semantic discovery / SVG + screenshots / gallery / exact provenance
--> reverse-adopt existing accepted systems into the design collection
-   VexLife Blueprint SOT / Presentation Graph + one Vextreme page/localization patient zero
--> Context Inspector proving ground
-   identity / where-used / source / docs / localization / proof / live traversal
--> localization/source synchronization proving ground
-   visual text edit -> source-aware proposal -> stale locale/layout/proof impact
--> animated semantic traversal proving ground
-   visible route-following / centered destination / portal map-change / return / reduced motion
--> publish-readiness + versioned Board release
-   path closure / open ends / incomplete branches / warnings / immutable release fingerprint
--> target blueprint compiler proving ground
-   published Board -> target-native implementation plan/candidate without stealing target ownership
+BoardGraph + shared Board Control
+  MERGED / VERIFIED
 
-Implementation authority remains separate from Workgraph readiness.
-The Canvas Projection item is READY because its BoardGraph dependency is complete;
-it remains NO_AUTHORITY / NO_EFFECTS until Victor or another exact current authority grants that implementation membrane.
-```
+Canvas Projection first recursive-navigation slice
+  PR #88 MERGED
+  commit = 666001854babc14b5e956d65d66f0c6432e72349
+
+BoardJourney semantic-walk slice
+  PR #91 MERGED
+  commit = 0a5d36632400f4ff6e7478a2fc9805bc8b9d7c8b
+
+typed prototype simulation
+  PR #93 DRAFT / current candidate
+~~~
+
+Canonical Workgraph/public-workspace state currently lags those source effects because the Canvas/Journey
+implementation PRs explicitly held shared aggregate currentization while sibling aggregate PRs remained
+open. Therefore:
+
+~~~text
+ACCEPTED_SOURCE_IMPLEMENTATION
+!=
+CURRENT_WORKGRAPH_PROJECTION
+~~~
+
+The stale Workgraph coordinate must be reconciled through ordinary-forward composition after the
+overlapping aggregate lanes converge. Do not rewrite accepted Canvas/Journey source merely to make the
+aggregate projection look current.
+
+For the VexBusinessFactory patient zero this means:
+
+~~~text
+semantic architecture                    MATURE_ENOUGH_TO_PRESERVE
+current-schema BoardGraph example        PRESENT
+read-only canvas substrate               ACCEPTED
+semantic BoardJourney substrate          ACCEPTED
+typed simulation substrate               IN_DRAFT_PR_93
+educational/perspective projections      ARCHITECTURE_SOURCE_ONLY
+provider / business source adapters      NOT_YET_IMPLEMENTED
+lived screenshot evidence loop           NOT_YET_IMPLEMENTED
+AI BoardPatch / business mutation         NOT_YET_IMPLEMENTED
+~~~
+
+The first BusinessFactory implementation should therefore be a read-only semantic/projected patient zero,
+not a new business runtime or provider database. Its job is to pressure the accepted BoardGraph/Canvas/
+Journey substrate with real domain meaning while preserving source ownership.
+
+After prototype simulation is accepted, the next useful BusinessFactory pressure is:
+
+~~~text
+one BusinessFactory source
+-> whole-system projection
+-> beneficiary/customer perspective
+-> educational lesson/subprocess traversal
+-> exact stable refs / source backlinks
+-> no provider effects
+~~~
+
+Only after that lived pressure should VexBoard earn new generic schema such as an orthogonal relationship
+role reference, perspective projection field, or source-projector contract.
 
 No human host action is required to preserve this design.
 
