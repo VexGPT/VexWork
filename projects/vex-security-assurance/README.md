@@ -88,6 +88,29 @@ The first active Work item maps security-relevant relationships, not every file:
 
 Private SDK internals remain private. Public VexWork may identify `repo.vextreme-sdk` and public-safe concern/evidence references, but it does not enumerate private implementation paths or copy private findings into public source by default.
 
+## Public availability / DDoS
+
+The first availability question is source-placed in [PUBLIC-AVAILABILITY-DDOS.md](./PUBLIC-AVAILABILITY-DDOS.md).
+
+Current Vextreme source shows **two live public surfaces**, not GitHub Pages alone: GitHub Pages is the v2 source-of-truth/active-development surface, while `vextreme24.com` on Squarespace remains the production surface. The repository also has service-worker and browser caching that improve resilience for already-loaded/static assets.
+
+None of those facts is promoted into a whole-site DDoS claim.
+
+Adjacent Cloudflare provider-family work in `repo.vextreme-sdk` already gives us useful public-safe prior art around rate-abuse boundaries, Workers rate limiting, quotas and observability, but it is not evidence that Cloudflare was selected as the Vextreme website host or proxy.
+
+The initial assurance state is therefore:
+
+```text
+deployment topology                  SOURCE_PROVEN
+client-side caching/resilience        SOURCE_PROVEN
+explicit public-site DDoS plan        NOT_FOUND
+automatic cross-provider failover     NOT_PROVED
+Cloudflare selected for site hosting  NO
+public-site DDoS assurance            UNKNOWN
+```
+
+That UNKNOWN belongs in the Security Atlas / Lens until a bounded availability objective and provider boundary are actually evaluated.
+
 ## Security question lens
 
 The question layer should compile current standards and Vex-owned invariants into reusable Work Lens predicates. A predicate says what question is being asked and what evidence would satisfy, falsify or leave it unknown. The Project does not copy an external standard into WorkState or pretend any one framework is exhaustive.
