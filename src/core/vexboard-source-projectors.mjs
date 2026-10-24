@@ -15,6 +15,10 @@ function assert(condition, message) {
   if (!condition) throw new TypeError(message);
 }
 
+function compareCanonicalText(left, right) {
+  return left < right ? -1 : left > right ? 1 : 0;
+}
+
 function stableRef(value, label) {
   assert(typeof value === 'string' && REF.test(value), `${label} must be one stable ref`);
   return value;
@@ -66,7 +70,7 @@ function buildProjection(graph, projectionRef, layoutIntent) {
 
   const primary = graph.nodes
     .filter((node) => node.kind !== 'ANNOTATION')
-    .sort((left, right) => depth(left.nodeRef) - depth(right.nodeRef) || left.nodeRef.localeCompare(right.nodeRef));
+    .sort((left, right) => depth(left.nodeRef) - depth(right.nodeRef) || compareCanonicalText(left.nodeRef, right.nodeRef));
   const boundsByRef = new Map(primary.map((node, index) => [
     node.nodeRef,
     {
