@@ -583,6 +583,103 @@
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-24T07:16:00.000Z",
       "updatedAt": "2026-10-24T07:16:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexstream.mobile-library.playback-surfaces",
+      "parentWorkRefOrNull": "work.vexstream.mobile-library.outcome",
+      "label": "Playback surfaces",
+      "purpose": "Evolve VexStream's Android listening surfaces from the accepted mini-player into a full current-player experience that reuses Playback, Queue and Repeat semantic owners while remaining a presentation/navigation outcome rather than a second playback runtime.",
+      "workClass": "OUTCOME",
+      "state": "DECOMPOSED",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexlife-android",
+        "repo.vexstream-music"
+      ],
+      "sourceRefs": [
+        "work.vexstream.mobile-library.outcome",
+        "projects/vexstream-mobile-library/README.md",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamPlayerPresentation.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/VexStreamPlaybackBehavior.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/queue/VexStreamQueueBehavior.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/repeat/VexStreamRepeatBehavior.kt"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "nextProcessRefs": [
+        "process.vexlife-android.feature-authoring"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-24T11:20:00.000Z",
+      "updatedAt": "2026-10-24T11:20:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexstream.mobile-library.now-playing-artwork-projection",
+      "parentWorkRefOrNull": "work.vexstream.mobile-library.playback-surfaces",
+      "label": "Now Playing artwork projection",
+      "purpose": "Carry optional current-track artwork from VexStream's canonical library metadata into the sanitized Android mobile catalog and Media3 MediaItem metadata so player/widget surfaces can render artwork when it is actually available without inventing Android-local artwork truth.",
+      "workClass": "TASK",
+      "state": "READY",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexstream-music",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "work.vexstream.mobile-library.playback-surfaces",
+        "repo.vexstream-music:v2/desktop/library/model.go",
+        "repo.vexstream-music:v2/desktop/mobile/catalog.go",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamHubContract.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamPlayback.kt"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "nextProcessRefs": [
+        "process.vexlife-android.feature-authoring"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-24T11:20:00.000Z",
+      "updatedAt": "2026-10-24T11:20:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexstream.mobile-library.full-player",
+      "parentWorkRefOrNull": "work.vexstream.mobile-library.playback-surfaces",
+      "label": "VexStream full player",
+      "purpose": "Add a dedicated Android full-player destination using current Playback, Queue and Repeat State/Control/Act/Effect owners: artwork/title/artist, previous/play-pause/next, shuffle/repeat, progress, upward queue access, and large horizontal previous/next gestures suitable for low-precision interaction without creating a second player truth owner.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexstream.mobile-library.now-playing-artwork-projection"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "work.vexstream.mobile-library.playback-surfaces",
+        "work.vexstream.mobile-library.now-playing-artwork-projection",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamPlayerPresentation.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/VexStreamPlaybackControl.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/queue/VexStreamQueueControl.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/repeat/VexStreamRepeatControl.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/MainActivity.kt"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "nextProcessRefs": [
+        "process.vexlife-android.feature-authoring"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-24T11:20:00.000Z",
+      "updatedAt": "2026-10-24T11:20:00.000Z"
     }
   ],
   "transitions": [

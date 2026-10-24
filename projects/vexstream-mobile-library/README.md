@@ -50,6 +50,10 @@ VexStream Mobile Library                         OUTCOME
 |
 +-- Large offline-library cold-start performance DEFECT / investigation
 |
++-- Playback Surfaces                            OUTCOME / decomposed
+|   +-- Now Playing artwork projection           TASK / ready
+|   +-- VexStream full player                    TASK / waits on artwork projection
+|
 +-- MassDownload Maturity                        OUTCOME
     +-- MassDownload product implementation      TASK / completed
     +-- MassDownload terminal EndToEnd           TASK / completed
@@ -452,6 +456,68 @@ VexLifeViewModel
 This is an investigation lead, **not** a root-cause claim. Android issue #168 owns the product investigation and should measure cold-start phases/threads using the existing logging, Android Host Proof and Test/Proof infrastructure before optimizing.
 
 A reusable startup/performance debugging guide should be added only if this investigation proves a recurring route worth preserving.
+
+### ML-D15 — Playback surfaces reuse existing Behavior owners; Android Widget work stays cross-cutting
+
+Victor's next listening-surface intent has two distinct homes:
+
+```text
+VexStream product experience
+    -> Playback Surfaces outcome
+       -> optional artwork projection
+       -> full-player destination
+
+Reusable Android home-screen infrastructure
+    -> project.android-widget-foundation
+       -> semantic App Widget substrate
+       -> VexStream playback widget patient zero
+```
+
+The full player does **not** create another player runtime. Current accepted owners already answer the
+important behavior questions:
+
+```text
+Playback
+    PlayPause
+
+Queue
+    Previous / Next / Shuffle / Clear
+
+Repeat
+    Toggle
+```
+
+The new full-player surface should consume those existing State/Control/Act/Effect families and the
+current Media3 read projection. Its product scope includes:
+
+```text
+optional artwork
+title + artist
+previous / play-pause / next
+shuffle + repeat
+timeline/progress
+upward queue access
+large horizontal swipe -> Previous / Next
+```
+
+The swipe is another human Control doorway to existing Queue meaning; it is not permission to issue
+Media3 commands directly from gesture code.
+
+Artwork has a separate cross-repository seam because current Android MediaItems carry title, artist
+and album but no artwork URI, while VexStream Music's canonical library model already has thumbnail
+metadata. Android must consume an explicit sanitized artwork projection when available rather than
+inventing or scraping artwork locally.
+
+The Android home-screen widget is deliberately **not** nested beneath this VexStream outcome. It is
+the first consumer of a cross-feature App Widget foundation and depends on the full-player destination
+only because tapping the widget's artwork/content area needs one truthful external navigation target.
+
+```text
+APP_WIDGET != PLAYBACK_OWNER
+FULL_PLAYER != PLAYBACK_OWNER
+GESTURE != EFFECT
+ARTWORK_URI != MEDIA_IDENTITY
+```
 
 ## Work-state and agency safety
 

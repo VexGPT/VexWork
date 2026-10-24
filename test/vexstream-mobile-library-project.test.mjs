@@ -15,7 +15,7 @@ const policy = createProjectAgencyPolicy(read('projects/vexstream-mobile-library
 
 test('VexStream Mobile Library is the first external Project over the shared Workgraph', () => {
   const refs = projectWorkRefs(project, graph);
-  assert.equal(refs.length, 15);
+  assert.equal(refs.length, 18);
   assert.equal(refs.includes('work.vexstream.mobile-library.outcome'), true);
   assert.equal(refs.includes('work.vexstream.mobile-library.download-experience'), true);
   assert.equal(refs.includes('work.vexstream.mobile-library.massdownload-maturity'), true);
@@ -36,10 +36,16 @@ test('VexStream Mobile Library is the first external Project over the shared Wor
     'work.vexstream.mobile-library.large-offline-startup-performance',
     'work.vexstream.mobile-library.library-browse-discovery',
     'work.vexstream.mobile-library.massdownload-maturity',
+    'work.vexstream.mobile-library.playback-surfaces',
   ]);
 
   assert.deepEqual(childRefs(graph, 'work.vexstream.mobile-library.library-browse-discovery'), [
     'work.vexstream.mobile-library.sort-filter-controls',
+  ]);
+
+  assert.deepEqual(childRefs(graph, 'work.vexstream.mobile-library.playback-surfaces'), [
+    'work.vexstream.mobile-library.full-player',
+    'work.vexstream.mobile-library.now-playing-artwork-projection',
   ]);
 
   assert.deepEqual(childRefs(graph, 'work.vexstream.mobile-library.durable-device-library'), [
@@ -65,7 +71,7 @@ test('Mobile Library Board separates terminal MassDownload from the paused Queue
   const active = board.lanes.find((lane) => lane.laneRef === 'lane.work.active');
   const waiting = board.lanes.find((lane) => lane.laneRef === 'lane.work.waiting');
 
-  assert.equal(board.lanes.flatMap((lane) => lane.cards).length, 15);
+  assert.equal(board.lanes.flatMap((lane) => lane.cards).length, 18);
   assert.equal(done.cards.some((card) => card.workRef === 'work.vexstream.mobile-library.massdownload-product'), true);
   assert.equal(done.cards.some((card) => card.workRef === 'work.vexstream.mobile-library.massdownload-e2e'), true);
   assert.equal(active.cards.some((card) => card.workRef === 'work.vexstream.mobile-library.track-menu-presentation-defect'), false);
@@ -178,6 +184,21 @@ test('large offline library startup performance is a bounded active defect', () 
   assert.equal(item.effectDisposition, 'EFFECTS_BOUND');
   assert.deepEqual(item.dependencyRefs, ['work.vexstream.mobile-library.durable-device-library']);
 });
+test('Playback Surfaces keeps artwork projection ahead of the full-player destination', () => {
+  const outcome = graph.items.find((candidate) => candidate.workRef === 'work.vexstream.mobile-library.playback-surfaces');
+  const artwork = graph.items.find((candidate) => candidate.workRef === 'work.vexstream.mobile-library.now-playing-artwork-projection');
+  const player = graph.items.find((candidate) => candidate.workRef === 'work.vexstream.mobile-library.full-player');
+  assert.ok(outcome);
+  assert.ok(artwork);
+  assert.ok(player);
+  assert.equal(outcome.state, 'DECOMPOSED');
+  assert.equal(artwork.state, 'READY');
+  assert.equal(player.state, 'WAITING_DEPENDENCIES');
+  assert.deepEqual(player.dependencyRefs, [artwork.workRef]);
+  assert.equal(artwork.repositoryRefs.includes('repo.vexstream-music'), true);
+  assert.equal(artwork.repositoryRefs.includes('repo.vexlife-android'), true);
+});
+
 test('persistent Keep Offline and future tag stations remain parked outside Project membership', () => {
   const lot = projectParkingLot({ graph, registry, repositoryRefOrNull: 'repo.vexlife-android' });
   const keepOffline = lot.items.find((item) => item.workRef === 'work.vexstream.mobile-library.keep-offline-sync');
@@ -219,6 +240,7 @@ test('Mobile Library Project keeps a human audit/decision front door beside grap
   assert.match(readme, /ML-D12 — Sort \/ Filter Android source and proof are accepted; human Verify entry remains/);
   assert.match(readme, /ML-D13 — Songs bulk management is merged\/proven and waiting on lived review/);
   assert.match(readme, /ML-D14 — Large offline libraries exposed a cold-start performance defect/);
+  assert.match(readme, /ML-D15 — Playback surfaces reuse existing Behavior owners; Android Widget work stays cross-cutting/);
   assert.match(readme, /Android issue #168/);
   assert.match(readme, /PR #166 merged/);
   assert.match(readme, /PR #167/);
