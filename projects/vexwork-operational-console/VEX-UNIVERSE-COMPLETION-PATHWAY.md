@@ -61,35 +61,58 @@ human intention
 
 # 2. Current coordinate
 
-At formation of this map:
+This section is a formation-time observation, not permanent authority. Re-ground before acting.
 
-```text
+Observed during the successor-A003 refinement:
+
+~~~text
 VexWork main
-  0a5d36632400f4ff6e7478a2fc9805bc8b9d7c8b
+  0846ad94d9de5a84e90e882034f49635f1f703e6
 
-VexBoard
-  BoardGraph/shared Control            ACCEPTED
-  Canvas Projection/navigation        ACCEPTED
-  BoardJourney semantic walk          ACCEPTED
+VexBoard accepted on main
+  BoardGraph/shared Control             ACCEPTED
+  Canvas Projection/navigation         ACCEPTED
+  BoardJourney semantic walk           ACCEPTED
+  typed prototype simulation           ACCEPTED / PR #93
+  clickable prototype simulation UI    ACCEPTED / PR #95
+  durable implementation lessons       ACCEPTED / PR #94
+
+VexBoard PR #98
+  animated semantic traversal focus    DRAFT / MERGEABLE at observation
 
 PR #92
-  BusinessFactory semantic topology   READY FOR REVIEW
+  BusinessFactory semantic topology    OPEN / REVIEW-READY / MERGEABLE at observation
 
 PR #90
-  BusinessFactory domain foundation   READY FOR REVIEW
-
-PR #93
-  prototype simulation                DRAFT / MERGEABLE
+  BusinessFactory domain foundation    OPEN / REVIEW-READY / MERGEABLE at observation
 
 PR #82
-  Antique Plate P5 bootstrap          OPEN / STALE / NOT MERGEABLE
+  Antique Plate P5 bootstrap           OPEN / STALE / NOT MERGEABLE at observation
 
 VexWorld PR #120
-  shared-world completion-state       DRAFT / MERGEABLE
-```
+  shared-world completion-state        DRAFT / MERGEABLE at observation
+~~~
 
-Re-ground live heads before any merge/currentization effect.
+The accepted clickable prototype now lets VexBoard demonstrate:
 
+~~~text
+CONTROL activation
+-> condition state
+-> ordered simulated actions
+-> BoardJourney semantic movement
+-> preserved interaction / trigger / condition path
+-> externalEffectsPerformed=false
+~~~
+
+PR #98 is presentation-only pressure over that accepted semantic walk:
+
+~~~text
+same semantic destination
+-> perceptible camera focus motion
+-> reduced-motion same destination
+~~~
+
+Do not replay already-merged PR #93/#95 work because an older handoff names them as future.
 # 2A. Cross-repository source index
 
 This pathway is the continuity/router source. It does not replace the canonical owner of each meaning.
@@ -290,6 +313,191 @@ It is:
 
 The first lived business proof is **Antique Plate / PHYSICAL_ONE_OFF**.
 
+# 3A. Reusable Process Modules — puzzle pieces before all scaffolding exists
+
+A process may be authored now as one reusable **puzzle piece** even when the larger process library, automatic source projector, screenshot layer or external provider automation is not finished.
+
+The current VexBoard substrate already supports the essential shape:
+
+~~~text
+larger board
+  -> one PROCESS or PORTAL
+       stable identity
+       source refs
+       detailBoardRef
+  -> enter detail board
+       full BoardGraph
+       BoardProjection
+       BoardJourney
+       optional prototype interactions
+~~~
+
+Conceptually, a reusable Process Module has an interface:
+
+~~~text
+purpose
+inputs / prerequisites
+outputs / guarantees
+failure / recovery routes
+source owner
+detail board
+related process refs
+examples / evidence when available
+~~~
+
+This interface is architectural meaning, **not yet a new accepted wire schema**. Do not invent a ProcessModule/v1 contract merely because the concept is useful.
+
+Use existing primitives first and let repeated lived modules earn any formal contract.
+
+Permanent:
+
+~~~text
+PROCESS_MODULE != COPIED_SUBGRAPH
+MODULE_INTERFACE != PROVIDER_AUTHORITY
+DETAIL_BOARD != SECOND_SOURCE_OF_TRUTH
+REUSE != BLIND_REPLAY
+~~~
+
+A useful module should be context-light enough to compose:
+
+~~~text
+requires
+  deployable repository
+
+module
+  Configure GitHub Pages
+
+produces
+  verified public URL
+~~~
+
+rather than:
+
+~~~text
+requires
+  Antique Plate repository only
+~~~
+
+That lets the same module plug into:
+
+~~~text
+Antique Plate storefront
+creator site
+Vextreme public surface
+future BusinessFactory example
+~~~
+
+## Modules we can begin mapping before the full catalog exists
+
+High-value initial candidates:
+
+~~~text
+process.vexwork.form-project
+  source-owned internal control case
+  low external-effect risk
+
+Configure GitHub Pages
+  public deployment teaching module
+
+Manage reference storefront item
+  existing VexCommerce process
+
+Configure/test payment route
+  provider onboarding module
+  test/live distinction required
+
+Verify public support route
+  Vextreme held-route -> verified-route teaching case
+~~~
+
+Hand-authored BoardGraph + BoardProjection is acceptable at first.
+
+Do not wait for automatic Markdown-to-Board projection before proving that the process is actually useful to walk.
+
+# 3B. VexWork Process Library -> VexBoard routing
+
+VexWork already contains much of the process-wiki substrate.
+
+Canonical process catalog:
+
+~~~text
+blueprint/process-registry.json
+~~~
+
+It maps stable processRef values to the smallest reusable source and current owner.
+
+Work items already carry:
+
+~~~text
+formationProcessRefOrNull
+nextProcessRefs[]
+~~~
+
+The current VexWork public item projection already exposes Next process.
+
+What is not yet complete is the generic **visual-addressability bridge**.
+
+Current VexBoard built-in board routing is still explicit/manual in:
+
+~~~text
+vexboard-reader.js
+VEXBOARD_BUILTIN_BOARD_URLS
+~~~
+
+The minimum connective tissue should eventually make this possible:
+
+~~~text
+process registry
+  processRef
+  entryRefs[]
+  boardRefOrNull
+
+board registry / resolver
+  boardRef
+  -> source path
+
+VexWork item
+  nextProcessRefs[]
+  -> Open process map
+
+VexBoard
+  ?board=<boardRef>
+  -> resolve
+  -> render
+  -> Journey
+~~~
+
+This is a **routing/catalog concern**, not an automation-effect grant.
+
+A mature human-facing Process Library can then answer:
+
+~~~text
+What processes exist?
+When does this one apply?
+Who owns it?
+What text/source explains it?
+Can I open the VexBoard map?
+Which other processes connect to it?
+Where has it been used?
+~~~
+
+Useful product language:
+
+~~~text
+VexWork
+  What am I doing?
+
+Process Library
+  How is this kind of work done?
+
+VexBoard
+  Show me how it works.
+
+BoardJourney
+  Walk me through it.
+~~~
+
+Do not make VexBoard the process registry or VexWork the executor.
 # 4. Natural project pathway
 
 ## U0 — Converge admitted architecture
@@ -629,24 +837,86 @@ private VexLife context
 protected provider details unless explicitly private/bounded
 ```
 
-# 9. Fresh-instance operating contract
+# 9. Fresh-instance operating contract — lead Victor from source
 
-A successor should:
+The successor is expected to **lead from grounded current truth**, not ask Victor to remember operational state.
 
-1. read this map;
-2. re-ground current VexWork/VexBoard/VexWorld PR heads;
-3. determine the smallest unconsumed edge;
-4. continue that edge rather than reopening the entire architecture;
-5. preserve accepted effects;
-6. add screenshots only after the evidence substrate exists;
-7. write back material causal movement;
-8. stop only at a real authority/human/effect boundary or completed bounded outcome.
+Victor owns intention, lived observation and genuinely human-only decisions/actions.
 
-Do not require one instance to complete the whole epic.
+The successor owns the burden of discovering routine technical context.
 
-A good handoff is:
+At entry:
 
-```text
+1. read this map and the exact canonical owners implicated by the next edge;
+2. re-ground current VexWork / VexBoard / VexWorld / target-provider state;
+3. inspect active claims/PRs so parallel work is not duplicated;
+4. determine the smallest high-leverage unconsumed edge;
+5. explain that edge to Victor in ordinary language;
+6. act within current authority;
+7. ask Victor for one action only when it is genuinely human-only/protected/host-dependent;
+8. preserve material progression and the next resume coordinate.
+
+Do **not** ask Victor to choose:
+
+~~~text
+which branch
+which PR should be rebased first
+which stale receipt matters
+which source file owns a process
+which module should be mapped next
+which process registry entry exists
+which failed proof layer should be retried
+~~~
+
+when those facts are discoverable.
+
+Instead say, in ordinary meaning:
+
+~~~text
+what I found
+what is already complete
+what I am continuing
+why this edge matters
+what remains held
+the one human action, if any
+~~~
+
+If another live lane already owns a VexBoard surface, do not form a competing implementation just to keep busy. Prefer:
+
+~~~text
+review/currentize existing candidate
+or
+continue a compatible non-overlapping process-map/source edge
+~~~
+
+LEAD_VICTOR does not mean invent authority or silently make product decisions.
+
+~~~text
+LEAD_FROM_CURRENT_TRUTH
+!=
+ASSUME_PERMISSION
+
+PROTECT_VICTOR_ATTENTION
+!=
+HIDE_MATERIAL_CHOICES
+~~~
+
+## Process-map selection heuristic
+
+When several things are mappable, prefer the module that:
+
+1. is already source-owned;
+2. unlocks several later paths;
+3. can be represented with current VexBoard primitives;
+4. has low external-effect risk;
+5. produces a useful human teaching journey;
+6. can later be reused by Antique Plate/Vextreme/another profile.
+
+This normally favors foundational modules such as Project formation, GitHub Pages setup or a test payment-route onboarding map over a narrow one-off decorative map.
+
+A good writeback remains:
+
+~~~text
 what was owed
 -> what was completed
 -> what failed/changed
@@ -654,28 +924,60 @@ what was owed
 -> current next edge
 -> held effects
 -> one resume coordinate
-```
-
+~~~
 # 10. Priority summary
 
-```text
-P0  review/currentize/merge PR #92
-P1  review/currentize/merge PR #90
-P2  complete/review PR #93
-P3  implement VexBoard Journey Evidence Minimum
-P4  map Vex Universe as Patient 0
-P5  currentize/merge PR #82
-P6  run Antique Plate synthetic end-to-end POC
-P7  extract PHYSICAL_ONE_OFF template
-P8  run media/education POC
-P9  run restaurant/food-truck POC
-P10 form vendor availability bridge when earned
-P11 admit VexWorld presence/experience route when earned
-P12 admit VexLife ambient What's New route when earned
-```
+Re-ground before following this literally; active lanes may have moved.
+
+~~~text
+P0  consume current accepted VexBoard baseline
+    PR #93 + PR #95 are already merged
+    do not replay them
+
+P1  let current non-overlapping VexBoard presentation work converge
+    PR #98 if still active
+    do not duplicate its UI membrane
+
+P2  review/currentize/merge PR #92
+    BusinessFactory VexBoard topology
+
+P3  review/currentize/merge PR #90
+    BusinessFactory domain/process foundation + this continuity map
+
+P4  form the Process Module / Addressability Minimum
+    one source-owned process as patient zero
+    processRef -> boardRef
+    generic board resolver
+    VexWork Open process map route
+
+P5  implement VexBoard Journey Evidence Minimum
+    why / before / action / after / evidence / screenshots / recovery
+
+P6  map Vex Universe as Patient 0
+    prove whole-system orientation and source ownership
+
+P7  currentize/merge PR #82
+    Antique Plate empty-storefront currentness
+
+P8  run Antique Plate synthetic end-to-end POC
+    publication -> test checkout -> fulfillment -> refund/recovery
+
+P9  extract PHYSICAL_ONE_OFF reusable profile/modules
+
+P10 pressure with media/education
+    prove value without mandatory commerce
+
+P11 pressure with restaurant/food-truck
+    prove time/location/capacity/vendor composition
+
+P12 form vendor availability bridge when earned
+
+P13 admit VexWorld presence/experience route when earned
+
+P14 admit VexLife ambient What's New route when earned
+~~~
 
 Compact rule:
 
-> **Perceive the completion state, finish one bounded lived path, replay and teach it, extract only what repeated, then pressure the template with a deliberately different world.**
-
+> **Lead from current truth; compose reusable process pieces; finish one bounded lived path; replay and teach it; extract only what repeated; then pressure the template with a deliberately different world.**
 <!-- [VXG RealForever][VEXWORK][VEX-UNIVERSE][COMPLETION-PATHWAY] -->
