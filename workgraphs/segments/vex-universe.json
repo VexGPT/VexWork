@@ -95,7 +95,7 @@
       "label": "Converge VexBusinessFactory architecture",
       "purpose": "Consume and reconcile the BusinessFactory domain/process and VexBoard patient-zero architecture into accepted source while preserving the split between business truth and VexBoard projection instead of duplicating sibling source ownership.",
       "workClass": "TASK",
-      "state": "WAITING_RESOURCE",
+      "state": "COMPLETED",
       "workDisposition": "ACTIVE",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
@@ -104,7 +104,10 @@
       ],
       "sourceRefs": [
         "github.pull.vexwork.90",
-        "github.pull.vexwork.92"
+        "github.pull.vexwork.92",
+        "git.commit.vexwork.e822402ab2a57c8b683a4d73f91f860688424bf3",
+        "projects/vexwork-operational-console/BUSINESS-OPERATING-PROCESS-MAP.md",
+        "projects/vexwork-operational-console/VEX-UNIVERSE-COMPLETION-PATHWAY.md"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [
@@ -113,7 +116,7 @@
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-24T03:45:00.000Z",
-      "updatedAt": "2026-10-24T03:45:00.000Z"
+      "updatedAt": "2026-10-24T08:01:32.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -151,7 +154,7 @@
       "label": "Journey evidence and Vex Universe patient zero",
       "purpose": "Use the accepted process-addressability and VexBoard contracts to render, walk and explain the Vex Universe and BusinessFactory system from VexWork with why/before/action/after/source/evidence semantics before moving into the later lived business proof.",
       "workClass": "OUTCOME",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "READY",
       "workDisposition": "ACTIVE",
       "priorityClass": "NORMAL",
       "dependencyRefs": [
@@ -165,6 +168,9 @@
       "sourceRefs": [
         "github.pull.vexwork.90",
         "github.pull.vexwork.92",
+        "github.pull.vexwork.103",
+        "github.pull.vexwork.110",
+        "github.pull.vexwork.118",
         "project.vex-universe"
       ],
       "formationProcessRefOrNull": null,
@@ -172,7 +178,7 @@
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-24T03:45:00.000Z",
-      "updatedAt": "2026-10-24T03:45:00.000Z"
+      "updatedAt": "2026-10-24T08:01:32.000Z"
     }
   ],
   "transitions": [
@@ -335,6 +341,76 @@
         "project.vexboard"
       ],
       "createdAt": "2026-10-24T07:30:43.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vex-universe.businessfactory-convergence.ready.pr90-cleared",
+      "workRef": "work.vex-universe.businessfactory-convergence",
+      "priorState": "WAITING_RESOURCE",
+      "nextState": "READY",
+      "reason": "PR #90 reached CLEAR_ON_EXACT_HEAD / READY_FOR_INTEGRATION after the BusinessFactory root map was corrected for optional commerce and the Vex Universe pathway was currentized against accepted VexBoard source.",
+      "actorRef": "actor.chatgpt.vex-universe-foundations",
+      "sourceRefs": [
+        "github.pull.vexwork.90"
+      ],
+      "createdAt": "2026-10-24T07:42:22.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vex-universe.businessfactory-convergence.running.integration-steward",
+      "workRef": "work.vex-universe.businessfactory-convergence",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "The Integration Steward consumed PR #90's READY_FOR_INTEGRATION handoff and admitted its exact candidate for current-main integration without replaying candidate proof.",
+      "actorRef": "actor.integration-steward.vexwork",
+      "sourceRefs": [
+        "github.pull.vexwork.90"
+      ],
+      "createdAt": "2026-10-24T08:00:15.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vex-universe.businessfactory-convergence.verifying.pr90-merged",
+      "workRef": "work.vex-universe.businessfactory-convergence",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "PR #90 merged by ordinary merge; the terminal predicate became exact post-merge verification of the eight BusinessFactory source blobs.",
+      "actorRef": "actor.integration-steward.vexwork",
+      "sourceRefs": [
+        "github.pull.vexwork.90",
+        "git.commit.vexwork.e822402ab2a57c8b683a4d73f91f860688424bf3"
+      ],
+      "createdAt": "2026-10-24T08:00:15.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vex-universe.businessfactory-convergence.completed.pr90-terminal",
+      "workRef": "work.vex-universe.businessfactory-convergence",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "Integration Steward terminal verification proved all eight PR #90 BusinessFactory source blobs exact on merged main, completing BusinessFactory domain/process convergence.",
+      "actorRef": "actor.integration-steward.vexwork",
+      "sourceRefs": [
+        "github.pull.vexwork.90",
+        "git.commit.vexwork.e822402ab2a57c8b683a4d73f91f860688424bf3"
+      ],
+      "createdAt": "2026-10-24T08:01:32.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vex-universe.journey-evidence-patient-zero.ready.businessfactory-terminal",
+      "workRef": "work.vex-universe.journey-evidence-patient-zero",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "BusinessFactory convergence, Process → VexBoard addressability, and VexBoard contract alignment are all completed, releasing Journey evidence + Vex Universe patient-zero work without granting implementation authority.",
+      "actorRef": "actor.chatgpt.vex-universe-foundations",
+      "sourceRefs": [
+        "work.vex-universe.businessfactory-convergence",
+        "work.vex-universe.process-board-addressability",
+        "work.vex-universe.vexboard-contract-alignment",
+        "github.pull.vexwork.90"
+      ],
+      "createdAt": "2026-10-24T08:01:32.000Z"
     }
   ],
   "sourceRefs": [

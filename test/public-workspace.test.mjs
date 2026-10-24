@@ -193,19 +193,19 @@ test('Vex Universe Foundations exposes this trajectory and keeps the VexBoard re
   const universe = workspace.projects.find((entry) => entry.project.projectRef === 'project.vex-universe');
   assert.ok(universe);
   assert.equal(universe.summary.workItemCount, 6);
-  assert.equal(universe.summary.openWorkItemCount, 3);
-  assert.equal(universe.summary.completedCount, 3);
+  assert.equal(universe.summary.openWorkItemCount, 2);
+  assert.equal(universe.summary.completedCount, 4);
   assert.equal(universe.items.find((item) => item.workRef === 'work.vex-universe.outcome').state, 'RUNNING');
   assert.equal(universe.items.find((item) => item.workRef === 'work.vex-universe.visible-work-record').state, 'COMPLETED');
   assert.equal(universe.items.find((item) => item.workRef === 'work.vex-universe.process-board-addressability').state, 'COMPLETED');
-  assert.equal(universe.items.find((item) => item.workRef === 'work.vex-universe.businessfactory-convergence').state, 'WAITING_RESOURCE');
+  assert.equal(universe.items.find((item) => item.workRef === 'work.vex-universe.businessfactory-convergence').state, 'COMPLETED');
   assert.equal(universe.items.find((item) => item.workRef === 'work.vex-universe.vexboard-contract-alignment').state, 'COMPLETED');
-  assert.equal(universe.items.find((item) => item.workRef === 'work.vex-universe.journey-evidence-patient-zero').state, 'WAITING_DEPENDENCIES');
+  assert.equal(universe.items.find((item) => item.workRef === 'work.vex-universe.journey-evidence-patient-zero').state, 'READY');
   assert.equal(universe.lanes.find((lane) => lane.laneRef === 'lane.work.done').workRefs.includes('work.vex-universe.process-board-addressability'), true);
   assert.equal(universe.lanes.find((lane) => lane.laneRef === 'lane.work.done').workRefs.includes('work.vex-universe.vexboard-contract-alignment'), true);
   assert.equal(universe.lanes.find((lane) => lane.laneRef === 'lane.work.done').workRefs.includes('work.vex-universe.visible-work-record'), true);
-  assert.equal(universe.lanes.find((lane) => lane.laneRef === 'lane.work.waiting').workRefs.includes('work.vex-universe.businessfactory-convergence'), true);
-  assert.equal(universe.lanes.find((lane) => lane.laneRef === 'lane.work.planned').workRefs.includes('work.vex-universe.journey-evidence-patient-zero'), true);
+  assert.equal(universe.lanes.find((lane) => lane.laneRef === 'lane.work.done').workRefs.includes('work.vex-universe.businessfactory-convergence'), true);
+  assert.equal(universe.lanes.find((lane) => lane.laneRef === 'lane.work.ready').workRefs.includes('work.vex-universe.journey-evidence-patient-zero'), true);
 });
 
 test('Blueprint SOT is durably paused without active effects while preserving its exact resume edge', () => {
