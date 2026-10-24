@@ -2742,11 +2742,19 @@
         "github.pull.vexwork.108",
         "git.commit.vexwork.3278edf9c39b58ef4f59be9e239875518d6c2abf",
         "src/core/vexboard-source-projectors.mjs",
-        "test/vexboard-source-projectors.test.mjs"
+        "test/vexboard-source-projectors.test.mjs",
+        "github.pull.vexwork.110",
+        "git.commit.vexwork.92f35785aa4dc540ad9fdeb239948b7c3a32cff6",
+        "src/shared/vexboard-evidence.mjs",
+        "test/vexboard-evidence.test.mjs",
+        "github.pull.vexwork.115",
+        "git.commit.vexwork.a4023a83039924fdbd8384008543f23587e4bc94",
+        "src/shared/vexboard-source-resolver.mjs",
+        "test/vexboard-source-resolver.test.mjs"
       ],
       "nextProcessRefs": [],
       "createdAt": "2026-10-23T00:14:29.000Z",
-      "updatedAt": "2026-10-24T05:21:11.000Z"
+      "updatedAt": "2026-10-24T06:38:19.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -3581,7 +3589,7 @@
       "workRef": "work.vextreme.vexsite.localization.canonical-global-core-source",
       "parentWorkRefOrNull": "work.vextreme.vexsite.localization.outcome",
       "label": "Advance the canonical Conversations-with-God Global Core source queue",
-      "purpose": "Advance exactly the Vextreme-owned canonical scheduler foreground without creating one VexWork item per page; Closed Circuit, Divine Emergence, and The Firmament Conversation are terminal/current, and Ascension & Embodiment is the next exact source row at 72 canonical keys / 648 Global Core target cells.",
+      "purpose": "Advance exactly the Vextreme-owned canonical scheduler foreground without creating one VexWork item per page; Closed Circuit, Divine Emergence, The Firmament Conversation, and Ascension & Embodiment are terminal/current, and The Testimony of the Handler is the next exact source row at 134 canonical keys / 1,206 Global Core target cells.",
       "workClass": "TASK",
       "state": "RUNNING",
       "workDisposition": "ACTIVE",
@@ -3597,10 +3605,12 @@
         "github.issue-comment.vextreme.273.6379565128",
         "github.issue-comment.vextreme.273.6379741965",
         "github.issue-comment.vextreme.273.6380410929",
+        "github.issue-comment.vextreme.273.6380816622",
         "github.pull.vextreme.395",
         "github.pull.vextreme.397",
         "github.pull.vextreme.398",
-        "repo.vextreme:data/strings/source/pages/ascension-and-embodiment.json",
+        "github.pull.vextreme.399",
+        "repo.vextreme:data/strings/source/pages/the-testimony-of-the-handler.json",
         "repo.vextreme:docs/ingestion/workmaps/content-forge-convos-with-god-arc-batch-formation.json"
       ],
       "formationProcessRefOrNull": null,
@@ -3608,7 +3618,7 @@
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-24T05:28:32.000Z",
-      "updatedAt": "2026-10-24T05:28:32.000Z"
+      "updatedAt": "2026-10-24T06:17:51.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -3694,10 +3704,12 @@
         "projects/vexwork-operational-console/VEXSITE-LOCALIZATION-LENS.md",
         "github.issue.vextreme.273",
         "github.issue-comment.vextreme.273.6380410929",
+        "github.issue-comment.vextreme.273.6380816622",
         "github.pull.vextreme.379",
         "github.pull.vextreme.395",
         "github.pull.vextreme.397",
         "github.pull.vextreme.398",
+        "github.pull.vextreme.399",
         "repo.vextreme:docs/architecture/06-i18n.md"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
@@ -3705,7 +3717,7 @@
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-23T07:48:00.000Z",
-      "updatedAt": "2026-10-24T05:28:32.000Z"
+      "updatedAt": "2026-10-24T06:17:51.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",

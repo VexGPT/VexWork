@@ -114,7 +114,7 @@ test('public workspace keeps global Parking Lot separate from Project membership
   assert.equal(workspace.parkingLot.items.every((item) => item.workDisposition === 'PARKED'), true);
   assert.equal(workspace.parkingLot.items.every((item) => item.authorityDisposition === 'NO_AUTHORITY'), true);
   assert.equal(workspace.parkingLot.items.some((item) => item.workRef === 'work.vexstream.mobile-library.keep-offline-sync'), true);
-  assert.equal(workspace.parkingLot.items.some((item) => item.workRef === 'work.vextreme.vexsite.localization.closed-circuit.global-core'), true);
+  assert.equal(workspace.parkingLot.items.some((item) => item.workRef === 'work.vextreme.vexsite.localization.closed-circuit.global-core'), false);
 });
 
 test('checked-in public workspace is generated-current', () => {
@@ -168,6 +168,10 @@ test('VexBoard projects completed navigation foundations with Source Projectors 
   assert.deepEqual([boardpatch.effectDisposition, projectors.effectDisposition], ['NO_EFFECTS', 'EFFECTS_BOUND']);
   assert.equal(projectors.sourceRefs.includes('github.pull.vexwork.108'), true);
   assert.equal(projectors.sourceRefs.includes('src/core/vexboard-source-projectors.mjs'), true);
+  assert.equal(projectors.sourceRefs.includes('github.pull.vexwork.110'), true);
+  assert.equal(projectors.sourceRefs.includes('src/shared/vexboard-evidence.mjs'), true);
+  assert.equal(projectors.sourceRefs.includes('github.pull.vexwork.115'), true);
+  assert.equal(projectors.sourceRefs.includes('src/shared/vexboard-source-resolver.mjs'), true);
   assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.done').workRefs.includes(canvas.workRef), true);
   assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.done').workRefs.includes(journey.workRef), true);
   assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.ready').workRefs.includes(boardpatch.workRef), true);
