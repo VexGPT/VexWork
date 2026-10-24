@@ -6,7 +6,7 @@
 
 ```text
 workRef = work.vexboard.usability-refinement
-state = RUNNING
+state = VERIFYING
 authority = AUTHORIZED_BOUNDED
 effects = EFFECTS_BOUND
 ```
@@ -97,6 +97,58 @@ The current button gives little visible confirmation, so a successful browser-lo
 Color is useful for quick recognition, but it should not carry semantic identity by itself.
 
 The desired visual language should make starts, decisions, linear steps, endings and parallel branches easy to scan while remaining understandable for people with common color-vision differences.
+
+## Lived VERIFYING correction — layered pointer ownership
+
+Victor's browser review exposed a deeper input-routing defect after the first refinement merged:
+
+```text
+pointer target inside viewport
+-> browser treated anything that was not .shape as empty canvas
+-> canvas pan could compete with embedded controls/chrome
+
+editable shape pointer down
+-> MOVE_ITEM gesture began immediately
+-> pointer-up committed movement even when drag intent never crossed a threshold
+-> the later click path could lose its chance to own the interaction
+```
+
+This is not a BoardGraph or z-order problem. It is browser interaction ownership.
+
+The smallest earned browser vocabulary is therefore:
+
+```text
+CANVAS
+  empty board/world surface
+
+OBJECT
+  semantic/projection object body
+
+OVERLAY
+  transient presentation above board content
+
+CHROME
+  board UI controls such as palette/minimap
+```
+
+These are **interaction planes**, not serialized BoardGraph kinds and not semantic depth.
+
+Permanent:
+
+```text
+POINTER_DOWN != DRAG
+VISUAL_Z_ORDER != INPUT_AUTHORITY
+INTERACTION_PLANE != SEMANTIC_KIND
+INTERACTION_PLANE != BOARDGRAPH_SCHEMA
+
+CLICK_OR_DRAG
+-> resolved only after pointer movement/release
+-> then route to the rightful act
+```
+
+This correction deliberately stops before a broader zone taxonomy. Handles, ports, resize affordances,
+text editing and richer overlays should reuse this seam when real consumers earn them rather than
+predeclaring unused categories now.
 
 ## Acceptance slices
 
@@ -258,6 +310,38 @@ Acceptance:
 - a local preference may persist browser-locally;
 - color-safe/high-contrast modes preserve start/decision/end/branch recognition using shape, marker, pattern, border or label cues in addition to color;
 - the palette control itself does not become a new semantic owner.
+
+
+### G. Interaction planes + click/drag arbitration
+
+Within the viewport, embedded UI must not be mistaken for empty canvas:
+
+```text
+SELECT + primary drag on CANVAS
+-> pan camera after threshold
+
+PAN + primary drag on CANVAS or OBJECT
+-> pan camera after threshold
+
+primary pointer on CHROME / interactive OVERLAY
+-> do not begin canvas pan
+
+SELECT + editable unlocked OBJECT
+-> keep gesture pending
+-> movement below threshold + release = click/select/action path
+-> threshold crossed = object movement
+```
+
+Acceptance:
+
+- the palette control remains clickable even when the pointer moves slightly during activation;
+- the minimap and future interactive overlays do not accidentally start viewport panning;
+- an editable object does not issue `MOVE_ITEM` for an ordinary click;
+- object movement begins only after the shared primary-drag threshold is crossed;
+- a completed object drag suppresses the synthetic click that could otherwise select/activate after movement;
+- pointer cancellation restores the pre-drag presentation and performs no Board mutation;
+- the same threshold vocabulary is shared by canvas and object gesture arbitration;
+- no interaction-plane value is persisted into BoardGraph/BoardProjection merely to route DOM input.
 
 ## Complex-case display pressure — VexBusinessFactory
 
