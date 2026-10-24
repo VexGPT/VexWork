@@ -1,7 +1,7 @@
 {
   "schemaVersion": "vexwork.process-registry/v1",
   "registryRef": "registry.vexwork.processes.001",
-  "registryVersion": 5,
+  "registryVersion": 6,
   "purpose": "Map recurring work questions to the smallest reusable process source without making VexWork the executor or stealing process ownership from target repositories.",
   "processes": [
     {
@@ -13,7 +13,8 @@
         "docs/process/CAPTURE-DISCOVERED-WORK.md"
       ],
       "appliesWhen": "Current work discovers a useful idea, defect, question, or enhancement that is not required for the current acceptance boundary.",
-      "executionAuthority": "NONE"
+      "executionAuthority": "NONE",
+      "boardRefOrNull": null
     },
     {
       "processRef": "process.vexwork.form-project",
@@ -25,7 +26,8 @@
         "docs/foundation/PROJECTS.md"
       ],
       "appliesWhen": "One coherent outcome has enough related work topology that future humans or agents would otherwise reconstruct grouping, decomposition, routes, or currentness from chat/provider history.",
-      "executionAuthority": "NONE"
+      "executionAuthority": "NONE",
+      "boardRefOrNull": "board.vexwork.form-project"
     },
     {
       "processRef": "process.vexwork.promote-derived-concern",
@@ -38,7 +40,8 @@
         "docs/foundation/DERIVED-ATTENTION-PROJECTION.md"
       ],
       "appliesWhen": "One exact current entity, Work Lens, Evidence observation, and UNSATISFIED or UNKNOWN reason facet has been selected; existing Work has been reviewed; and an explicit create, confirm, hold, or reject decision is required.",
-      "executionAuthority": "NONE"
+      "executionAuthority": "NONE",
+      "boardRefOrNull": null
     },
     {
       "processRef": "process.vexlife-android.feature-authoring",
@@ -50,7 +53,8 @@
         "docs/foundation/FEATURE-EXPERIENCE-LANGUAGE.md"
       ],
       "appliesWhen": "A VexLife Android potential or product need is deliberately adopted for feature implementation or major feature evolution.",
-      "executionAuthority": "NONE"
+      "executionAuthority": "NONE",
+      "boardRefOrNull": null
     },
     {
       "processRef": "process.vexwork.quality-review",
@@ -63,7 +67,8 @@
         "docs/templates/QA-REVIEW-RETURN.md"
       ],
       "appliesWhen": "A VexWork candidate or other work-system candidate needs repeatable QA/semantic quality review before a lifecycle or merge decision.",
-      "executionAuthority": "NONE"
+      "executionAuthority": "NONE",
+      "boardRefOrNull": null
     },
     {
       "processRef": "process.vexcommerce.manage-reference-storefront-item",
@@ -75,7 +80,8 @@
         "README.md"
       ],
       "appliesWhen": "A synthetic reference storefront item needs known public details or pictures added/revised and published through the rightful storefront owner.",
-      "executionAuthority": "NONE"
+      "executionAuthority": "NONE",
+      "boardRefOrNull": null
     }
   ]
 }
