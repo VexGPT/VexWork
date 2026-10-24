@@ -2,7 +2,7 @@
   "schemaVersion": "vexwork.project-definition/v1",
   "projectRef": "project.vexstream.mobile-library",
   "label": "VexStream Mobile Library",
-  "purpose": "Make downloaded VexStream music a durable, reusable Android device library while preserving exact media identity, truthful one-shot download semantics, and separately governed persistent sync.",
+  "purpose": "Make VexStream on Android a durable, reusable and human-navigable mobile music library: preserve exact media identity and truthful download semantics while giving listeners coherent browse, sort and filter controls for the listening set they want, with persistent sync separately governed.",
   "rootWorkRefs": [
     "work.vexstream.mobile-library.outcome"
   ],
@@ -25,7 +25,9 @@
     "github.pull.vexlife-android.155",
     "github.issue.vexlife-android.157",
     "project.android-proof-orchestration",
-    "github.issue.vextreme-sdk.1894"
+    "github.issue.vextreme-sdk.1894",
+    "github.issue.vexlife-android.163",
+    "github.pull.vexlife-android.166"
   ],
   "formedAt": "2026-10-21T08:41:00.000Z"
 }
