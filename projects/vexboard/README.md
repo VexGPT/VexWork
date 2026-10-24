@@ -9,13 +9,16 @@ human outcome                         APPROVED_FOR_PROJECT_FORMATION
 project architecture source           CURRENT
 canonical Project / Workgraph entry   CURRENT
 public Projects projection            CURRENT
-product implementation                BOARDGRAPH_FOUNDATION_COMPLETED
-next implementation frontier          CANVAS_PROJECTION_READY
-current implementation authority      NO_AUTHORITY
-current effects                       NO_EFFECTS
+BoardGraph                            COMPLETED
+Canvas Projection                     COMPLETED
+BoardJourney + simulation             COMPLETED
+animated semantic traversal           ACCEPTED / PR #98 MERGED
+BoardPatch                            READY / NO_AUTHORITY / NO_EFFECTS
+Source Projectors                     READY / NO_AUTHORITY / NO_EFFECTS
+VexBoard root                         DECOMPOSED
 ```
 
-This source preserves the VexBoard product intention and architecture across implementation phases. The Project is canonically formed through `project.json`, its Work Board view, a bounded Workgraph decomposition, the Project Registry, and the generated public workspace. The BoardGraph/shared-Control foundation is complete, and the canonical Workgraph now exposes Canvas Projection as READY while keeping its implementation authority and effects absent. This architecture source explains that state; it does not own or advance lifecycle truth.
+This source preserves the VexBoard product intention and architecture across implementation phases. The Project is canonically formed through `project.json`, its Work Board view, a bounded Workgraph decomposition, the Project Registry, and the generated public workspace. BoardGraph, Canvas Projection, BoardJourney and same-board prototype simulation are accepted implementation foundations; PR #98 adds presentation-only animated semantic focus without changing Journey truth. PR #100 currentized those completed foundations into canonical VexWork truth. BoardPatch and Source Projectors are dependency-ready but still carry no implementation authority or effects. This architecture source explains that state; it does not own or advance lifecycle truth.
 
 ```text
 PRESERVE_THE_PROJECT_NOW
@@ -3569,39 +3572,52 @@ Exact Work states, dependencies, authority/effect dispositions, transition histo
 
 ## Current continuation
 
-Current source has moved beyond the older Workgraph projection. Preserve the distinction:
+Accepted source and canonical VexWork projection are now aligned through the navigation foundation:
 
 ~~~text
-accepted source reality
+BoardGraph
+  PR #66 MERGED / VERIFIED
+  merge = 1f19e70a397baab1f5d995bacc2358372b93563e
 
-BoardGraph + shared Board Control
-  MERGED / VERIFIED
+Canvas Projection
+  PR #88 MERGED / VERIFIED
+  merge = 666001854babc14b5e956d65d66f0c6432e72349
 
-Canvas Projection first recursive-navigation slice
-  PR #88 MERGED
-  commit = 666001854babc14b5e956d65d66f0c6432e72349
-
-BoardJourney semantic-walk slice
-  PR #91 MERGED
-  commit = 0a5d36632400f4ff6e7478a2fc9805bc8b9d7c8b
+BoardJourney
+  PR #91 MERGED / VERIFIED
+  merge = 0a5d36632400f4ff6e7478a2fc9805bc8b9d7c8b
 
 typed prototype simulation
-  PR #93 DRAFT / current candidate
+  PR #93 MERGED / VERIFIED
+  merge = c1c50a226bf80066a59f8d9daded9b75f0fb814e
+
+clickable simulation + explicit interaction trail
+  PR #95 MERGED / VERIFIED
+  merge = 4d28fd33e271991fe0257c94acf5ebdce87a2f2b
+
+VexBoard Workgraph currentization
+  PR #100 MERGED / TREE-EXACT
+  merge = ebd405561aea8bf9f48e5e6f12485bd122ebeffd
+
+animated semantic traversal focus
+  PR #98 MERGED / TREE-EXACT
+  merge = 2c37fcb4e90aa45f96bc8a9e42d970a62b85b4a6
 ~~~
 
-Canonical Workgraph/public-workspace state currently lags those source effects because the Canvas/Journey
-implementation PRs explicitly held shared aggregate currentization while sibling aggregate PRs remained
-open. Therefore:
+The accepted Workgraph therefore truthfully exposes:
 
 ~~~text
-ACCEPTED_SOURCE_IMPLEMENTATION
-!=
-CURRENT_WORKGRAPH_PROJECTION
+BoardGraph                 COMPLETED
+Canvas Projection          COMPLETED
+BoardJourney + simulation  COMPLETED
+
+BoardPatch                 READY / NO_AUTHORITY / NO_EFFECTS
+Source Projectors          READY / NO_AUTHORITY / NO_EFFECTS
+
+VexBoard root              DECOMPOSED
 ~~~
 
-The stale Workgraph coordinate must be reconciled through ordinary-forward composition after the
-overlapping aggregate lanes converge. Do not rewrite accepted Canvas/Journey source merely to make the
-aggregate projection look current.
+PR #98 is a presentation enhancement inside the accepted Canvas/Journey substrate; it does not create a second lifecycle owner or imply that BoardPatch/source projection is implemented.
 
 For the VexBusinessFactory patient zero this means:
 
@@ -3610,30 +3626,35 @@ semantic architecture                    MATURE_ENOUGH_TO_PRESERVE
 current-schema BoardGraph example        PRESENT
 read-only canvas substrate               ACCEPTED
 semantic BoardJourney substrate          ACCEPTED
-typed simulation substrate               IN_DRAFT_PR_93
+typed/clickable simulation substrate     ACCEPTED
+animated semantic focus                  ACCEPTED / PRESENTATION-ONLY
 educational/perspective projections      ARCHITECTURE_SOURCE_ONLY
 provider / business source adapters      NOT_YET_IMPLEMENTED
+generic board source resolver            NOT_YET_IMPLEMENTED
+cross-board Journey coordinates          NOT_YET_IMPLEMENTED
 lived screenshot evidence loop           NOT_YET_IMPLEMENTED
 AI BoardPatch / business mutation         NOT_YET_IMPLEMENTED
 ~~~
 
-The first BusinessFactory implementation should therefore be a read-only semantic/projected patient zero,
-not a new business runtime or provider database. Its job is to pressure the accepted BoardGraph/Canvas/
-Journey substrate with real domain meaning while preserving source ownership.
+The first implementation pressure after this architecture converges should stay read-only and source-owned. VexWork PR #103 is a useful non-business patient zero because it addresses one canonical VexWork process through the accepted BoardGraph/BoardProjection/BoardJourney contracts while deliberately keeping the current built-in resolver as a bounded proving fixture.
 
-After prototype simulation is accepted, the next useful BusinessFactory pressure is:
+That patient zero must inform—but must not silently define—the scalable contract:
 
 ~~~text
-one BusinessFactory source
--> whole-system projection
--> beneficiary/customer perspective
--> educational lesson/subprocess traversal
--> exact stable refs / source backlinks
--> no provider effects
+VexBusinessFactory topology
++ VexLife Atlas / Process Map lineage
++ VexWork Process / Work projection
+-> pressure stable boardRef resolution
+-> pressure bounded neighborhoods + source backlinks
+-> pressure (boardRef, semanticRef) Journey continuity
+-> pressure Control + current truth -> resolved Act
+
+!= copy source ownership into VexBoard
+!= make VexBoard the process registry
+!= make VexBoard the executor
 ~~~
 
-Only after that lived pressure should VexBoard earn new generic schema such as an orthogonal relationship
-role reference, perspective projection field, or source-projector contract.
+Only after those distinct consumers agree should VexBoard extract broader resolver/source-projector or semantic-factory contracts. BoardPatch and Source Projectors being READY means their dependencies are satisfied; it does not itself grant implementation authority.
 
 No human host action is required to preserve this design.
 
