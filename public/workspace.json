@@ -7510,8 +7510,8 @@
         },
         {
           "workRef": "work.vexlife.welcome-wagon.vextreme-home-role",
-          "label": "Refactor `vextreme-home` into the human About Vextreme surface",
-          "purpose": "Keep the stable vextreme-home institutional identity while changing its public role to About Vextreme: answer “What is this?” in plain language in the first viewport, explain Vextreme/VexLife/VexWork with current truth, retain the four alignments in human language, move Build Health/VexSystem/Covenant/source into deeper on-demand routes, and avoid competing with Terrain as the accepted public front door.",
+          "label": "Refactor the canonical About Vextreme surface after slug migration",
+          "purpose": "Treat `vextreme-home` as the current pre-migration institutional identity only; after the dependency-held canonical migration to `about-vextreme`, refactor that canonical About Vextreme surface to answer “What is this?” in plain language in the first viewport, explain Vextreme/VexLife/VexWork with current truth, retain the four alignments in human language, move Build Health/VexSystem/Covenant/source into deeper on-demand routes, and avoid competing with Terrain as the accepted public front door.",
           "workClass": "POTENTIAL",
           "state": "WAITING_DEPENDENCIES",
           "workDisposition": "ACTIVE",
