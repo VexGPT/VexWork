@@ -15,7 +15,7 @@ const policy = createProjectAgencyPolicy(read('projects/vexstream-mobile-library
 
 test('VexStream Mobile Library is the first external Project over the shared Workgraph', () => {
   const refs = projectWorkRefs(project, graph);
-  assert.equal(refs.length, 14);
+  assert.equal(refs.length, 15);
   assert.equal(refs.includes('work.vexstream.mobile-library.outcome'), true);
   assert.equal(refs.includes('work.vexstream.mobile-library.download-experience'), true);
   assert.equal(refs.includes('work.vexstream.mobile-library.massdownload-maturity'), true);
@@ -33,6 +33,7 @@ test('VexStream Mobile Library is the first external Project over the shared Wor
   assert.deepEqual(childRefs(graph, 'work.vexstream.mobile-library.outcome'), [
     'work.vexstream.mobile-library.download-experience',
     'work.vexstream.mobile-library.durable-device-library',
+    'work.vexstream.mobile-library.large-offline-startup-performance',
     'work.vexstream.mobile-library.library-browse-discovery',
     'work.vexstream.mobile-library.massdownload-maturity',
   ]);
@@ -165,6 +166,18 @@ test('Songs bulk download and remove-all is merged/proven and waits on human rev
   assert.equal(needsHuman.cards.some((card) => card.workRef === item.workRef), true);
 });
 
+test('large offline library startup performance is a bounded active defect', () => {
+  const item = graph.items.find((candidate) => candidate.workRef === 'work.vexstream.mobile-library.large-offline-startup-performance');
+  assert.ok(item);
+  assert.equal(item.workClass, 'DEFECT');
+  assert.equal(item.state, 'DECOMPOSED');
+  assert.equal(item.workDisposition, 'ACTIVE');
+  assert.equal(item.priorityClass, 'HIGH');
+  assert.equal(item.sourceRefs.includes('github.issue.vexlife-android.168'), true);
+  assert.equal(item.authorityDisposition, 'AUTHORIZED_BOUNDED');
+  assert.equal(item.effectDisposition, 'EFFECTS_BOUND');
+  assert.deepEqual(item.dependencyRefs, ['work.vexstream.mobile-library.durable-device-library']);
+});
 test('persistent Keep Offline and future tag stations remain parked outside Project membership', () => {
   const lot = projectParkingLot({ graph, registry, repositoryRefOrNull: 'repo.vexlife-android' });
   const keepOffline = lot.items.find((item) => item.workRef === 'work.vexstream.mobile-library.keep-offline-sync');
@@ -205,6 +218,8 @@ test('Mobile Library Project keeps a human audit/decision front door beside grap
   assert.match(readme, /ML-D11 — User-authored tags and dynamic stations remain separate future Work/);
   assert.match(readme, /ML-D12 — Sort \/ Filter Android source and proof are accepted; human Verify entry remains/);
   assert.match(readme, /ML-D13 — Songs bulk management is merged\/proven and waiting on lived review/);
+  assert.match(readme, /ML-D14 — Large offline libraries exposed a cold-start performance defect/);
+  assert.match(readme, /Android issue #168/);
   assert.match(readme, /PR #166 merged/);
   assert.match(readme, /PR #167/);
   assert.match(readme, /CLEAR_DATA_LIVED_PROOF_COMPLETE/);
