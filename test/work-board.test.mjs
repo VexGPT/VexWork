@@ -39,11 +39,10 @@ test('Project Work Board projects only the Project subgraph without becoming lif
 
 test('Parking Lot projects parked work independently of Project membership', () => {
   const lot = projectParkingLot({ graph, registry });
-  assert.equal(lot.items.length, 6);
-  assert.deepEqual(lot.items.map((item) => item.workRef).sort(), ['work.vexlife-android.vexstream.not-yet-downloaded-filter', 'work.vexlife.connected-services.guided-onboarding', 'work.vexstream.mobile-library.keep-offline-sync', 'work.vextreme.vexsite.localization.closed-circuit.global-core', 'work.vexwork.operational-console.multi-fulfiller-routing', 'work.vexwork.history.foundational-infrastructure-backfill'].sort());
+  assert.equal(lot.items.length, 5);
+  assert.deepEqual(lot.items.map((item) => item.workRef).sort(), ['work.vexlife-android.vexstream.not-yet-downloaded-filter', 'work.vexlife.connected-services.guided-onboarding', 'work.vexstream.mobile-library.keep-offline-sync', 'work.vexwork.operational-console.multi-fulfiller-routing', 'work.vexwork.history.foundational-infrastructure-backfill'].sort());
   assert.equal(lot.items.every((item) => item.workDisposition === 'PARKED'), true);
   assert.equal(lot.items.some((item) => item.workRef === 'work.vexlife-android.vexstream.not-yet-downloaded-filter' && item.repositoryRefs.includes('repo.vexlife-android')), true);
-  assert.equal(lot.items.some((item) => item.workRef === 'work.vextreme.vexsite.localization.closed-circuit.global-core' && item.repositoryRefs.includes('repo.vextreme')), true);
   assert.equal(lot.effects, false);
   assert.equal(lot.executionAuthority, 'NONE');
 

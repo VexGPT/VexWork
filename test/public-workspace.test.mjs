@@ -114,7 +114,7 @@ test('public workspace keeps global Parking Lot separate from Project membership
   assert.equal(workspace.parkingLot.items.every((item) => item.workDisposition === 'PARKED'), true);
   assert.equal(workspace.parkingLot.items.every((item) => item.authorityDisposition === 'NO_AUTHORITY'), true);
   assert.equal(workspace.parkingLot.items.some((item) => item.workRef === 'work.vexstream.mobile-library.keep-offline-sync'), true);
-  assert.equal(workspace.parkingLot.items.some((item) => item.workRef === 'work.vextreme.vexsite.localization.closed-circuit.global-core'), true);
+  assert.equal(workspace.parkingLot.items.some((item) => item.workRef === 'work.vextreme.vexsite.localization.closed-circuit.global-core'), false);
 });
 
 test('checked-in public workspace is generated-current', () => {
@@ -188,17 +188,18 @@ test('Vex Universe Foundations exposes this trajectory and keeps the VexBoard re
   const universe = workspace.projects.find((entry) => entry.project.projectRef === 'project.vex-universe');
   assert.ok(universe);
   assert.equal(universe.summary.workItemCount, 6);
-  assert.equal(universe.summary.openWorkItemCount, 5);
-  assert.equal(universe.summary.completedCount, 1);
+  assert.equal(universe.summary.openWorkItemCount, 3);
+  assert.equal(universe.summary.completedCount, 3);
   assert.equal(universe.items.find((item) => item.workRef === 'work.vex-universe.outcome').state, 'RUNNING');
   assert.equal(universe.items.find((item) => item.workRef === 'work.vex-universe.visible-work-record').state, 'COMPLETED');
-  assert.equal(universe.items.find((item) => item.workRef === 'work.vex-universe.process-board-addressability').state, 'VERIFYING');
+  assert.equal(universe.items.find((item) => item.workRef === 'work.vex-universe.process-board-addressability').state, 'COMPLETED');
   assert.equal(universe.items.find((item) => item.workRef === 'work.vex-universe.businessfactory-convergence').state, 'WAITING_RESOURCE');
-  assert.equal(universe.items.find((item) => item.workRef === 'work.vex-universe.vexboard-contract-alignment').state, 'WAITING_RESOURCE');
+  assert.equal(universe.items.find((item) => item.workRef === 'work.vex-universe.vexboard-contract-alignment').state, 'COMPLETED');
   assert.equal(universe.items.find((item) => item.workRef === 'work.vex-universe.journey-evidence-patient-zero').state, 'WAITING_DEPENDENCIES');
-  assert.equal(universe.lanes.find((lane) => lane.laneRef === 'lane.work.verify').workRefs.includes('work.vex-universe.process-board-addressability'), true);
+  assert.equal(universe.lanes.find((lane) => lane.laneRef === 'lane.work.done').workRefs.includes('work.vex-universe.process-board-addressability'), true);
+  assert.equal(universe.lanes.find((lane) => lane.laneRef === 'lane.work.done').workRefs.includes('work.vex-universe.vexboard-contract-alignment'), true);
   assert.equal(universe.lanes.find((lane) => lane.laneRef === 'lane.work.done').workRefs.includes('work.vex-universe.visible-work-record'), true);
-  assert.equal(universe.lanes.find((lane) => lane.laneRef === 'lane.work.waiting').workRefs.includes('work.vex-universe.vexboard-contract-alignment'), true);
+  assert.equal(universe.lanes.find((lane) => lane.laneRef === 'lane.work.waiting').workRefs.includes('work.vex-universe.businessfactory-convergence'), true);
   assert.equal(universe.lanes.find((lane) => lane.laneRef === 'lane.work.planned').workRefs.includes('work.vex-universe.journey-evidence-patient-zero'), true);
 });
 
