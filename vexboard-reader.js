@@ -18,6 +18,23 @@ import {
   revisitBoardJourney,
 } from './src/shared/vexboard-journey.mjs';
 
+import {
+  BOARD_CONDITION_OPERATORS,
+  BOARD_CONDITION_STATES,
+  BOARD_INTERACTION_TRIGGERS,
+  BOARD_PROTOTYPE_SCHEMA,
+  BOARD_SCENARIO_SCHEMA,
+  BOARD_SIMULATED_ACTION_KINDS,
+  BOARD_SIMULATION_RESULT_SCHEMA,
+  applyBoardInteraction,
+  boardInteractionChoices,
+  createBoardScenario,
+  evaluateBoardCondition,
+  normalizeBoardPrototype,
+  normalizeBoardScenario,
+} from './src/shared/vexboard-simulation.mjs';
+
+
 export {
   BOARD_JOURNEY_SCHEMA,
   advanceBoardJourney,
@@ -26,6 +43,19 @@ export {
   journeyChoices,
   normalizeBoardJourney,
   revisitBoardJourney,
+  BOARD_CONDITION_OPERATORS,
+  BOARD_CONDITION_STATES,
+  BOARD_INTERACTION_TRIGGERS,
+  BOARD_PROTOTYPE_SCHEMA,
+  BOARD_SCENARIO_SCHEMA,
+  BOARD_SIMULATED_ACTION_KINDS,
+  BOARD_SIMULATION_RESULT_SCHEMA,
+  applyBoardInteraction,
+  boardInteractionChoices,
+  createBoardScenario,
+  evaluateBoardCondition,
+  normalizeBoardPrototype,
+  normalizeBoardScenario,
 };
 
 export const VEXBOARD_DRAFT_SCHEMA = 'vexboard.local-draft/v1';
