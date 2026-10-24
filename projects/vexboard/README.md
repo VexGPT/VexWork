@@ -3570,6 +3570,98 @@ VexBoard Semantic Canvas                         OUTCOME
 
 Exact Work states, dependencies, authority/effect dispositions, transition history, and Project registration must be formed from live source at reconciliation time rather than copied from this architecture sketch.
 
+## Evidence companions — expected visuals, manual references and observed proof
+
+Real processes often need visual context that is **not** BoardGraph meaning.
+
+Examples:
+
+~~~text
+Stripe setup step
+  semantic meaning:
+    "Open Developers -> API keys"
+
+  expected visual:
+    placeholder describing what the human should see
+
+  reference context:
+    manually supplied Stripe screenshot / third-party walkthrough image
+
+  observed proof:
+    screenshot captured while a real person/crawler/device performs the walk
+~~~
+
+Do not add screenshot bytes, image URLs or visual-proof lifecycle to BoardGraph nodes merely because the
+same process step needs visual evidence.
+
+The first earned companion shape is:
+
+~~~text
+BoardGraph / BoardJourney
+  semantic truth and traversal
+
+BoardEvidence
+  evidence slots
+    stable expectation attached to one semanticRef
+
+  evidence artifacts
+    REFERENCE
+      illustrative/manual/third-party visual context
+
+    OBSERVED
+      one concrete captured observation
+      optionally bound to Journey + step + interaction + configuration
+~~~
+
+A slot may exist with **zero artifacts**. That is the expected-image placeholder:
+
+~~~text
+semantic step exists
++ evidence slot says what visual context is expected
++ no image captured yet
+~~~
+
+Later, multiple artifacts may bind to the same slot without changing the semantic process:
+
+~~~text
+one stable evidence slot
+  -> reference screenshot
+  -> manually observed screenshot
+  -> crawler/device screenshot
+  -> desktop/mobile/locale/accessibility variants
+~~~
+
+This follows the VexLife ScreenCrawler lesson that the semantic frame and the execution configuration are
+different coordinates. Configuration/capture variants must not create a second process identity.
+
+Permanent:
+
+~~~text
+EVIDENCE_SLOT != BOARD_NODE
+IMAGE_ARTIFACT != PROCESS_TRUTH
+REFERENCE_SCREENSHOT != OBSERVED_PROOF
+OBSERVED_SCREENSHOT != PRODUCT_ACCEPTANCE_BY_ITSELF
+PLACEHOLDER_WITHOUT_IMAGE != MISSING_PROCESS_STEP
+CONFIGURATION_VARIANT != NEW_SEMANTIC_STEP
+BOARD_EVIDENCE != ASSET_BINARY_STORAGE
+~~~
+
+Image bytes remain in a rightful asset/file surface. BoardEvidence carries stable asset/source refs and may
+carry a content hash when bytes are available; it does not embed base64 image payloads into BoardGraph.
+
+This companion is also the seam for later intended-versus-observed comparison:
+
+~~~text
+expected evidence slot
++ reference context
++ observed artifact(s)
+-> compare / inspect
+-> human or proof owner decides meaning
+~~~
+
+VexBoard presentation may later render placeholders, galleries and expected-vs-observed comparisons. That
+UI should be added only after the current single-file browser surface is decomposed enough that evidence
+presentation does not enlarge `vexboard/index.html` into another semantic owner.
 ## Current continuation
 
 Accepted source and canonical VexWork projection are now aligned through the navigation foundation:
