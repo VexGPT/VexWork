@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import test from 'node:test';
 
 import {
+  DEFAULT_CANVAS_EXTENT,
   PALETTE_MODES,
   canvasExtent,
   deriveBranchPresentation,
@@ -42,6 +43,37 @@ test('palette modes cycle without creating semantic state', () => {
   assert.equal(nextPaletteMode('HIGH_CONTRAST'), 'STANDARD');
 });
 
+test('palette state is visibly projected across the browser canvas rather than only recoloring the icon', async () => {
+  const appended = [];
+  const documentRef = {
+    documentElement: { append: (value) => appended.push(value) },
+    head: { append: (value) => appended.push(value) },
+    createElement: () => ({ id: '', textContent: '' }),
+    getElementById: (id) => appended.find((value) => value.id === id) ?? null,
+  };
+
+  assert.equal(normalizePaletteMode('COLOR_SAFE'), 'COLOR_SAFE');
+  assert.equal(nextPaletteMode('COLOR_SAFE'), 'HIGH_CONTRAST');
+  assert.equal(appended.length, 0, 'pure palette derivation must not mutate browser state');
+
+  const priorDocument = globalThis.document;
+  globalThis.document = documentRef;
+  try {
+    const browserModuleUrl = new URL('../vexboard/ui/presentation.mjs?palette-browser-proof', import.meta.url);
+    await import(browserModuleUrl);
+    await import(browserModuleUrl);
+  } finally {
+    if (priorDocument === undefined) delete globalThis.document;
+    else globalThis.document = priorDocument;
+  }
+
+  assert.equal(appended.length, 1, 'browser presentation stylesheet should be installed once');
+  assert.equal(appended[0].id, 'vexboard-palette-presentation-v2');
+  assert.match(appended[0].textContent, /palette-fab::after/);
+  assert.match(appended[0].textContent, /viewport\.palette-color-safe[^]*repeating-linear-gradient/);
+  assert.match(appended[0].textContent, /viewport\.palette-high-contrast[^]*\.canvas/);
+});
+
 test('semantic role derives start, choice and terminal meaning from current graph shape', () => {
   assert.equal(semanticRole(branchGraph, 'node.start'), 'BEGIN');
   assert.equal(semanticRole(branchGraph, 'node.choice'), 'DECISION');
@@ -71,7 +103,31 @@ test('BusinessFactory patient zero is accepted as a complex presentation pressur
   assert.equal(businessFactory.graph.relationships.length >= 20, true);
 });
 
-test('canvas extent grows visibly with content instead of retaining an unexplained fixed edge', () => {
+test('canvas extent uses a compact content envelope while retaining deterministic minimums', () => {
+  assert.deepEqual(DEFAULT_CANVAS_EXTENT, { minimumWidth: 720, minimumHeight: 480, padding: 96 });
+  assert.deepEqual(canvasExtent([]), { width: 720, height: 480 });
+  assert.deepEqual(canvasExtent([
+    { bounds: { x: 120, y: 90, width: 80, height: 50 } },
+  ]), { width: 720, height: 480 });
+  assert.deepEqual(canvasExtent([
+    { bounds: { x: 800, y: 620, width: 80, height: 50 } },
+  ]), { width: 976, height: 766 });
+});
+
+test('canvas extent grows from all visible items regardless of creation or layer order', () => {
+  const items = [
+    { projectionItemRef: 'item.child', layer: 4, bounds: { x: 160, y: 140, width: 120, height: 70 } },
+    { projectionItemRef: 'item.frame', layer: -1, bounds: { x: 60, y: 60, width: 600, height: 460 } },
+  ];
+  assert.deepEqual(canvasExtent(items), { width: 756, height: 616 });
+  assert.deepEqual(canvasExtent([...items].reverse()), { width: 756, height: 616 });
+});
+
+test('BusinessFactory remains intentionally horizontal while its vertical canvas hugs authored content', () => {
+  assert.deepEqual(canvasExtent(businessFactory.projection.items), { width: 3066, height: 736 });
+});
+
+test('canvas extent accepts explicit boundary policy for focused consumers', () => {
   assert.deepEqual(canvasExtent([], { minimumWidth: 100, minimumHeight: 80, padding: 20 }), { width: 100, height: 80 });
   assert.deepEqual(canvasExtent([
     { bounds: { x: 120, y: 90, width: 80, height: 50 } },
