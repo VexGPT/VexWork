@@ -96,30 +96,35 @@ function atlasFixture() {
       fromRef: 'atlas.node.question',
       toRef: 'atlas.node.proof',
       sourceRefs: ['source.synthetic.edge'],
+      freshnessRef: 'freshness.synthetic.question',
     }],
     priorities: [{
       priorityRef: 'atlas.priority.proof',
       targetRef: 'atlas.node.proof',
       rank: 1,
       sourceRefs: ['source.synthetic.proof'],
+      freshnessRef: 'freshness.synthetic.proof',
     }],
     serialDependencies: [{
       serialDependencyRef: 'atlas.serial.question-proof',
       beforeRef: 'atlas.node.question',
       afterRef: 'atlas.node.proof',
       sourceRefs: ['source.synthetic.edge'],
+      freshnessRef: 'freshness.synthetic.question',
     }],
     questions: [{
       questionRef: 'atlas.question.next',
       targetRef: 'atlas.node.question',
       question: 'What source owns the next decision?',
       sourceRefs: ['source.synthetic.question'],
+      freshnessRef: 'freshness.synthetic.question',
     }],
     opportunities: [{
       opportunityRef: 'atlas.opportunity.reuse',
       targetRef: 'atlas.node.proof',
       summary: 'Reuse the exact bounded proof.',
       sourceRefs: ['source.synthetic.proof'],
+      freshnessRef: 'freshness.synthetic.proof',
     }],
     freshnessAndInvalidation: [
       { freshnessRef: 'freshness.synthetic.question', state: 'CURRENT' },
@@ -127,6 +132,7 @@ function atlasFixture() {
     ],
     projectionReceipt: {
       schemaVersion: 'vextreme.process-atlas.projection-receipt/v1',
+      projectionReceiptRef: 'projection-receipt.synthetic.vexboard-source-projector.001',
       atlasRef: 'atlas.synthetic.vexboard-source-projector.001',
       contentSha256: '0'.repeat(64),
       sourceRefs: ['source.synthetic.question', 'source.synthetic.proof', 'source.synthetic.edge'],
@@ -167,6 +173,49 @@ test('Process Atlas projector consumes public-safe projection only and preserves
     (node) => node.label === 'Opportunity: Reuse the exact bounded proof.',
   ), true);
   assert.equal(projected.graph.nodes.some((node) => node.label === 'Priority: 1'), true);
+});
+
+test('source projector layout ordering is canonical and Atlas freshness fails closed', () => {
+  const mixed = atlasFixture();
+  mixed.nodes = [
+    {
+      nodeRef: 'atlas.node.i',
+      title: 'Lower',
+      state: 'SOURCE_FOUND',
+      sourceRefs: ['source.synthetic.question'],
+      freshnessRef: 'freshness.synthetic.question',
+    },
+    {
+      nodeRef: 'atlas.node.I',
+      title: 'Upper',
+      state: 'SOURCE_FOUND',
+      sourceRefs: ['source.synthetic.question'],
+      freshnessRef: 'freshness.synthetic.question',
+    },
+  ];
+  mixed.edges = [];
+  mixed.priorities = [];
+  mixed.serialDependencies = [];
+  mixed.questions = [];
+  mixed.opportunities = [];
+
+  const projected = projectProcessAtlasPublicSafe({
+    atlas: mixed,
+    boardRef: 'board.process-atlas.canonical-order',
+  });
+  const upper = projected.projection.items.find((item) => item.semanticRef === 'atlas.node.I');
+  const lower = projected.projection.items.find((item) => item.semanticRef === 'atlas.node.i');
+  assert.ok(upper.bounds.y < lower.bounds.y);
+
+  const invalidFreshness = atlasFixture();
+  invalidFreshness.freshnessAndInvalidation[0].state = '';
+  assert.throws(
+    () => projectProcessAtlasPublicSafe({
+      atlas: invalidFreshness,
+      boardRef: 'board.process-atlas.invalid-freshness',
+    }),
+    /must be non-empty text/,
+  );
 });
 
 test('Process Atlas projector rejects private Atlas bodies, missing receipts, and dangling topology', () => {
