@@ -381,22 +381,31 @@ test('BoardJourney follows explicit relationships and preserves repeated visits 
   assert.equal(JSON.stringify(graph), before);
 });
 
-test('BoardJourney Back and Revisit append semantic history while preserving return semantics', () => {
+test('BoardJourney Back pops semantic history while Revisit remains explicit navigation', () => {
   const graph = baseGraph();
   graph.relationships = [{ relationshipRef: 'rel.a-b', kind: 'FLOW', fromRef: 'node.a', toRef: 'node.b', labelOrNull: null, sourceRefs: [] }];
   let journey = Journey.createBoardJourney(graph, { journeyRef: 'journey.return', boardRef: 'board.test', startRef: 'node.a' });
   journey = Journey.advanceBoardJourney(graph, journey, 'rel.a-b');
+  journey = Journey.revisitBoardJourney(graph, journey, 0);
+  assert.deepEqual(journey.steps.map((step) => [step.semanticRef, step.navigationKind]), [
+    ['node.a', 'START'],
+    ['node.b', 'RELATIONSHIP'],
+    ['node.a', 'REVISIT'],
+  ]);
+  assert.deepEqual(journey.returnStack, ['node.a', 'node.b']);
+
   journey = Journey.backBoardJourney(graph, journey);
   assert.deepEqual(journey.steps.map((step) => [step.semanticRef, step.navigationKind]), [
     ['node.a', 'START'],
     ['node.b', 'RELATIONSHIP'],
-    ['node.a', 'BACK'],
+  ]);
+  assert.deepEqual(journey.returnStack, ['node.a']);
+
+  journey = Journey.backBoardJourney(graph, journey);
+  assert.deepEqual(journey.steps.map((step) => [step.semanticRef, step.navigationKind]), [
+    ['node.a', 'START'],
   ]);
   assert.deepEqual(journey.returnStack, []);
-  journey = Journey.revisitBoardJourney(graph, journey, 1);
-  assert.equal(journey.currentRef, 'node.b');
-  assert.equal(journey.steps.at(-1).navigationKind, 'REVISIT');
-  assert.deepEqual(journey.returnStack, ['node.a']);
 });
 
 test('BoardJourney fails closed on invalid semantic traversal coordinates', () => {
@@ -436,8 +445,18 @@ test('BoardJourney normalization rejects fabricated semantic history and return 
   restarted.returnStack = [];
   assert.throws(() => Journey.normalizeBoardJourney(restarted, graph), /cannot restart an existing journey/);
 
-  const backed = Journey.backBoardJourney(graph, traversed);
-  const wrongBackTarget = structuredClone(backed);
+  const legacyBack = structuredClone(traversed);
+  legacyBack.currentRef = 'node.a';
+  legacyBack.steps.push({
+    sequence: 2,
+    semanticRef: 'node.a',
+    navigationKind: 'BACK',
+    viaRelationshipRefOrNull: null,
+  });
+  legacyBack.returnStack = [];
+  assert.equal(Journey.normalizeBoardJourney(legacyBack, graph).currentRef, 'node.a');
+
+  const wrongBackTarget = structuredClone(legacyBack);
   wrongBackTarget.currentRef = 'node.b';
   wrongBackTarget.steps.at(-1).semanticRef = 'node.b';
   assert.throws(() => Journey.normalizeBoardJourney(wrongBackTarget, graph), /BACK target mismatch/);
