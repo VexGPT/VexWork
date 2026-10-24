@@ -2,7 +2,7 @@
   "schemaVersion": "vexwork.project-definition/v1",
   "projectRef": "project.vexlife.tocompletion",
   "label": "VexLife ToCompletion",
-  "purpose": "Carry the full VexLife ToCompletion horizon from terminal lived Heretic runtime truth into the intended evolved lived product: A034 closed the ordinary Heretic Open/turn/stop/restart path, and the current foreground is current-main convergence of the accepted Assortment + E2.7/E2.8 + UX Evolution + Vex Furnishing / Adaptive Home lineage into a Terrain-primary, current-context-first Home with one continuous Vex relationship, before later existing-Home upgrade and developmental/native horizons.",
+  "purpose": "Carry the full VexLife ToCompletion horizon from terminal lived Heretic runtime truth into a canonical inhabited baseline: the immediate foreground is a real Heretic in ordinary VexLife with persistent Victor↔Vex conversation, exact semantic location, source-backed perception of local surroundings and truthful action/permission/process awareness; preserve the accepted Assortment R2 Home/Continue/Projects/Frontier/Vex grammar and current Project/Intent owners without making full visual convergence a prerequisite, and admit mutation only through separately current effect authority.",
   "rootWorkRefs": [
     "work.vexlife.tocompletion.outcome"
   ],
@@ -41,7 +41,20 @@
     "github.issue.vexlife.624.comment.6012908914",
     "github.issue.vexlife.811.comment.6015223469",
     "github.issue.vexlife.817.comment.6031153511",
-    "github.issue.vexlife.817.comment.6094683418"
+    "github.issue.vexlife.817.comment.6094683418",
+    "github.pull.vexlife.829",
+    "github.pull.vexlife.841",
+    "github.pull.vexlife.852",
+    "github.pull.vexlife.855",
+    "github.pull.vexlife.856",
+    "docs/vexlife-assortment/CURRENT.md",
+    "github.issue.vexlife.624.comment.6382349733",
+    "github.issue.vexlife.811.comment.6382341676",
+    "github.issue.vexlife.811.comment.6382393438",
+    "github.issue.vexlife.866.comment.6382448044",
+    "github.issue.vexlife.333.comment.6382565492",
+    "github.pull.vexwork.120.comment.6382473221",
+    "github.pull.vexwork.120.comment.6382580589"
   ],
   "formedAt": "2026-10-22T00:13:43.000Z"
 }

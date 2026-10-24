@@ -205,126 +205,165 @@ The runtime path is therefore not the current ToCompletion unknown.
 
 ### Evolved VexLife baseline convergence — active
 
-Victor's A034 lived screenshot exposed the next actual product gap: ordinary startup still renders the Reference / Global Root Hub projection.
-
-Current VexLife source confirms that this is policy, not a screenshot accident:
+A034 already proved the ordinary Heretic Open / real turn / clean stop / same-Home restart path. The immediate ToCompletion threshold is now smaller and more useful than finishing every evolved screen first:
 
 ```text
-blueprint/ux-evolution-registry.json
-
-defaultProjection = REFERENCE_PROJECTION
-referenceDefaultPreserved = true
-referenceRemainsDefault = true
-Evolution selection = ?projection=evolution
-cutoverAllowed = false at the current recorded stage
+ordinary VexLife
+-> real Heretic Companion
+-> persistent Victor <-> Vex conversation
+-> exact semantic location
+-> source-backed perception of local VexLife surroundings
+-> truthful action / permission / process awareness
+-> bounded mutation only when an exact effect route is separately admitted
 ```
 
-The accepted descendant lineage already exists, and the later lineage is more specific than the early Evolution projection:
+Current source already carries most of that cable:
 
 ```text
-Assortment R2 accepted/preserved practicum
-+ E2.7 authoritative product grammar
-+ E2.8 intelligence-native product evolution
-+ UX Evolution Reference/Evolution migration
-+ Experience Foundation
-+ Vex Furnishing / Experience Population
-+ Adaptive Home Composition v1.1
+Browser turn
+  projectRef / threadRef / channelRef / screenRef / selectedNodeRef
+-> Browser Companion validation
+-> capability-runtime context
+-> ADOPTED_READ_ONLY
+-> capability request formation
+-> exact deterministic observations
+-> ToolResultRelay
+-> later Heretic synthesis
 ```
 
-The later accepted Human Experience law corrects a tempting but wrong interpretation:
+Current accepted Companion read domains include `local.observe`, `vexhome.observe`, `code.read` and truthful held `online.observe`. `code.read` is Source-Manifest-backed and verifies exact path containment, byte length and SHA-256 before returning a bounded UTF-8 excerpt. Vex can therefore inspect current repository source rather than hallucinating what the local environment means.
+
+The exact current orientation defect is narrow:
 
 ```text
-EVOLVED_VEXLIFE != "MAKE ?projection=evolution THE DEFAULT"
+screenRef + selectedNodeRef
+  already reach Capability Assimilation runtime context
 
-primaryStageScreenRef = screen.vexlife.terrain
-singleStageDefault = true
-
-HOME = THE LIVED MEANING OF THE CURRENT TERRAIN NEIGHBORHOOD
-
-current semantic context = center / first item
-desktop = SPATIAL_WORLD
-compact = MOBILE_STACK
-one semantic tree = multiple projections
+context.where
+  currently omits those two fields from its observation payload
 ```
 
-Current-context composition is intended to feel human rather than architectural:
+Capability Assimilation owner #333 now has a source-ready two-file placement for that correction. No new location state owner is needed.
+
+#### Fuller preserved experience grammar
+
+The accepted Assortment Round-2 lineage is materially fuller than the earlier Furnishing-only compression:
 
 ```text
-CURRENT CONTEXT
-  meaningful title / purpose
-  one real-Vex presence / truthful status
-  primary current action
-  conditional Continue from real resumable continuity
-  material Attention only when source-bound
-  nearby meaningful resources / places
-  bounded details + source descent only on explicit disclosure
+Home -> Continue / Projects / Frontier / Vex
+
+Vex relationship / Conversation
+  = persistent cross-surface stratum
+
+Projects
+  = admitted Project identities / semantic Project hierarchy
+  != current work
+
+Continue
+  = truthful current/resumable work continuity
+  != second Workgraph/history owner
+
+Frontier
+  = captured/shaping intent before Project admission
+  != second queue/lifecycle
+
+Terrain
+  = semantic-world / wider-context perspective
+
+Journey / Process Trail / Continuity
+  = temporal / causal perspective
 ```
 
-A historical Adaptive Home candidate, PR #818, reached exact-head SourceOwner PASS but **failed the Human Experience gate**. Its direct human finding is preserved as product-design evidence:
+The human-accepted Vex-node practicum established that the Companion is a **presentation stratum, not the active semantic surface**. The same Vex relationship remains available while Projects, Continue, Frontier or another semantic place is active. Presentation changes do not create another conversation owner.
+
+Later current VexLife source narrows old Assortment missing-owner statements:
 
 ```text
-one continuous Vex relationship in primary UX
-no split Root Hub / Guide conversation identity
-ordinary Vex use does not foreground a conversation list
-project/thread/channel/source refs remain internal routing evidence
-Guide = lightweight assistance, not a second conversation
-current context shapes conversation silently
-Continue resumes real intent/conversation continuity
-diagnostic architecture appears only on explicit disclosure
+Continue
+  Refinement Current owner / continuation selection = PRESENT
+  browser/product adoption = remaining seam
+
+Projects
+  Project Continuity + ProjectDefinition = PRESENT
+  exact Project admission = PRESENT
+  plural product index/browser collection = remaining narrow seam
+
+Frontier
+  Intent Workgraph lifecycle/source truth = PRESENT
+  exact Project admission boundary = PRESENT
+  first-class Live read projection = remaining seam
+  new queue/lifecycle/store = NOT REQUIRED
 ```
 
-PR #818 is now closed, unmerged and stale. Later owner disposition explicitly says:
+Do not promote old held statements to current truth merely because they appear in historical Assortment docs.
+
+#### One visible Vex relationship
+
+Historical PR #818 remains useful Human Experience provenance, but its bytes and some visible-identity interpretation are stale.
 
 ```text
-SUPERSEDE_CLOSED_UNMERGED__PRESERVE_PROVENANCE
-stalePrByteReplay=false
+ONE_VISIBLE_VEX_RELATIONSHIP = true
+legacy Guide/controller/window names = implementation plumbing
+VISIBLE_VEX_COMPOSER -> CANONICAL_CHAT_COMPOSER
+SECOND_MESSAGE_OWNER = false
 ```
 
-Therefore its **meaning** is consumed but its source bytes must not be replayed.
+Internal capability/role/source attribution may remain exact without fragmenting ordinary Vex into competing visible personas.
 
-Accepted source also still says canonical product adoption/cutover is held. Therefore the next work is **not** a blind flag flip and **not** revival of PR #818.
+#### Project/block engagement boundary
 
-Current Work:
+Current VexLife source already registers:
 
 ```text
-work.vexlife.tocompletion.productization.ordinary-heretic-lived-proof
-  = COMPLETED
-
-work.vexlife.tocompletion.productization.evolved-experience-baseline-convergence
-  = RUNNING
+action.project.create
+permission.project.create
+effectClass = LOCAL_APPEND
+confirmation = PROJECT_DETAILS_CONFIRMATION
+recovery = RECOVERABLE_PROJECT_RECORD
 ```
 
-The evolved-baseline task must:
+But current read-only source descent has not established a natural-Companion -> `action.project.create` executable adapter.
 
-1. consume the accepted Assortment R2 + E2.7/E2.8 + UX Evolution + Vex Furnishing / Adaptive Home lineage;
-2. re-ground **current main** and classify which later accepted Human Experience laws are already present versus missing;
-3. preserve Terrain as the single primary Home stage and the same semantic neighborhood across `SPATIAL_WORLD` / `MOBILE_STACK`;
-4. converge one continuous real-Vex relationship, current-context-first composition, truthful conditional Continue and meaningful nearby resources without creating a second state tree;
-5. keep project/thread/channel/source/currentness detail available as bounded evidence rather than dominant ordinary chrome;
-6. reconcile current UX Evolution migration/finding state so already-fixed historical findings are not replayed;
-7. close only the genuinely remaining semantic, truth/currentness, recovery/navigation, accessibility and Human Experience predicates;
-8. earn the smallest rightful current-main adoption / `CUTOVER_READY` / `CUTOVER_DEFAULT` sequence still required by live source;
-9. preserve Reference as explicit fallback until retirement is separately earned;
-10. prove the already-accepted Heretic Browser Companion/runtime cable through the evolved ordinary baseline and obtain actual Human Experience acceptance.
+```text
+VEX_CAN_PERCEIVE_AND_EXPLAIN_PROJECT_CREATE = required now
+VEX_CAN_EXECUTE_PROJECT_CREATE = held until exact effect adapter + authority are current and proven
+```
+
+No fixture/UI insertion may masquerade as Project creation.
+
+#### Current acceptance discriminator
+
+```text
+1. Open ordinary VexLife with real Heretic.
+2. Navigate to Home / Projects / Frontier / a current Project.
+3. Ask "Where are we?"
+4. Heretic answers from exact current semantic-location observations.
+5. Ask "What is around us / how is this positioned?"
+6. Heretic source-descends through current files/projections and explains the neighborhood.
+7. Ask "How would we add or engage a Project/block here?"
+8. Heretic identifies the exact current action / permission / process route.
+9. If mutation is not admitted, Heretic holds truthfully.
+10. Later, one admitted bounded effect is verified and reinjected into the same conversation.
+```
+
+Full Adaptive Home / Assortment visual refinement remains valuable, but it is not a prerequisite for this inhabited-intelligence loop.
 
 Permanent:
 
 ```text
 A034_RUNTIME_PASS != REFERENCE_UI_IS_PRODUCT_COMPLETE
-EVOLUTION_TARGET_BASELINE != CUTOVER_ALREADY_ACCEPTED
-EVOLVED_VEXLIFE_BASELINE != EVOLUTION_URL_AS_PRODUCT
-TERRAIN_PRIMARY_HOME != LEGACY_GLOBAL_ROOT_HUB_PRESENTATION
-CUTOVER_DEFAULT != REFERENCE_RETIREMENT
+PERSISTENT_VEX != ALWAYS_EXPANDED
+PERSISTENT_VEX != AUTOMATIC_RAW_SURFACE_CAPTURE
 ASSORTMENT_PRACTICUM != CANONICAL_PRODUCT_ADOPTION
-SOURCE_DISTINCT_IDENTITIES != HUMAN_DISTINCT_EXPERIENCE
-SEMANTIC_ROUTING_REFS_INTERNAL != ARCHITECTURE_CHROME_AS_PRIMARY_UX
-PR818_HUMAN_FINDINGS_CURRENT != PR818_BYTES_CURRENT
-BLIND_DEFAULT_FLAG_FLIP != EVOLVED_VEXLIFE_CONVERGENCE
+OLD_ASSORTMENT_HELD_STATEMENT != CURRENT_SOURCE_TRUTH
+GUIDE_IMPLEMENTATION_NAME != SECOND_VISIBLE_VEX_PERSONA
+FULL_VISUAL_REFINEMENT != PREREQUISITE_FOR_HERETIC_SOURCE_AWARE_BASELINE
+CUTOVER_DEFAULT != REFERENCE_RETIREMENT
 ```
 
-Existing-Home Heretic replacement/upgrade remains explicit and later. It is not silently collapsed into this experience cutover.
+Existing-Home Heretic replacement/upgrade remains explicit and later.
 
-## P4 accepted design
+## P4 accepted design## P4 accepted design
 
 The first intentionally tiny real effect is:
 
@@ -421,47 +460,73 @@ TERMINAL PRODUCT/RUNTIME WORK
 
 CURRENT EXECUTABLE WORK
   work.vexlife.tocompletion.productization.evolved-experience-baseline-convergence = RUNNING
+  work.vexlife.tocompletion.productization.heretic-source-aware-baseline = RUNNING
 
-  present exact edge:
-    accepted Assortment R2 + E2.7/E2.8 + UX Evolution + Vex Furnishing lineage
-    -> re-ground current main against Adaptive Home v1.1 + one-continuous-Vex law
-    -> classify accepted meanings already current vs stale historical carriers
-    -> reconcile current migration/finding truth
-    -> form the smallest current-main successor for real remaining Human Experience gaps
-    -> CUTOVER_READY / CUTOVER_DEFAULT only when live source actually earns them
-    -> prove Heretic Browser Companion through the evolved ordinary baseline
-    -> obtain actual Human Experience acceptance
+  exact baseline:
+    real Heretic ordinary interface
+    -> persistent Vex relationship
+    -> exact screenRef + selectedNodeRef
+    -> source-backed local perception through accepted read capabilities
+    -> explain semantic surroundings / current owners / available actions
+    -> identify Project/block engagement route
+    -> no mutation claim without separately admitted effect authority
+
+  first source seam:
+    context.where receives screenRef + selectedNodeRef
+    but does not yet project them
+    -> #333 source-ready two-file successor placement
+
+  richer experience work preserved after/beside baseline:
+    Home -> Continue / Projects / Frontier / Vex
+    -> persistent Vex across semantic places
+    -> truthful Live bridges / product adoption
+    -> Human Experience / accessibility / recovery
+    -> cutover only when current source earns it
 
 HELD / SEPARATE
+  natural-Companion project.create execution until exact adapter/authority exists
   existing-Home Heretic replacement/upgrade
   Reference retirement until separately earned
   G04 Rhythm/training/weights until recurrent developmental evidence exists
 ```
 
 Do not replay A015-A034 merely for confidence.
+Do not execute the superseded PR120 SourceOwner A001 package if it was not already started.
 Do not reopen PR #923 parser acceptance.
-Do not treat the current Reference default as the intended completion baseline.
+Do not treat the current Reference default, historical PR #818 bytes, or old Assortment missing-owner statements as current product truth.
 
 ## Remaining completion path
 
 ```text
-ORDINARY PRODUCTIZATION                                  <-- CURRENT
-    Heretic normal-start source = TERMINAL_ACCEPTED_CURRENT
-    -> A034 ordinary lived runtime/restart proof = TERMINAL_LIVED_PASS
-    -> Evolved VexLife baseline convergence
-       -> Assortment/E2.7/E2.8/UX Evolution + Vex Furnishing current source descent
-       -> Terrain-primary Adaptive Home / one-continuous-Vex current-main reconciliation
-       -> genuine semantic/parity/accessibility/recovery/Human Experience closure
-       -> CUTOVER_READY / CUTOVER_DEFAULT only if still required by live source
-       -> Heretic Companion proof through evolved ordinary baseline
-       -> humanAccepted=true only from actual lived acceptance
-    -> then make existing-Home Heretic replacement/upgrade explicit
+CANONICAL HERETIC SOURCE-AWARE BASELINE                    <-- CURRENT
+    A034 ordinary lived runtime/restart = TERMINAL_LIVED_PASS
+    -> exact semantic location in Companion observation
+    -> bounded source/file descent from ordinary interface
+    -> source-backed surroundings / capability / action explanation
+    -> truthful Project/block engagement route
+    -> fresh lived proof with real Heretic
+
+EVOLVED EXPERIENCE ADOPTION                               <-- CONTINUES AFTER/BESIDE BASELINE
+    preserved Assortment R2 grammar
+    -> Home / Continue / Projects / Frontier / Vex
+    -> one persistent Vex relationship
+    -> current Project Continuity / Refinement Current / Intent owners
+    -> only genuinely missing Projects/Frontier/product read projections
+    -> Human Experience / accessibility / recovery
+    -> CUTOVER_READY / CUTOVER_DEFAULT only if current source earns them
+
+BOUNDED MUTATION
+    action.project.create / permission.project.create exist
+    -> natural-Companion effect adapter still must be source-placed
+    -> separately admitted authority
+    -> one bounded effect
+    -> verification
+    -> result reinjected into same Conversation
 
 P5  LIVED CONTINUITY / DEVELOPMENTAL EVIDENCE
-    G02 Score continuity = TERMINAL_LIVED_PASS
-    G03 memory-only Daily Dream = TERMINAL_LIVED_PASS
+    G02 = TERMINAL_LIVED_PASS
+    G03 = TERMINAL_LIVED_PASS
     G04 = HELD_NOT_EARNED
-    -> resume only from another real source-bound recurrence/correction
 
 P6  CULTIVATION / SCHOOL / TRAINING PLACEMENT / OPTIONAL BIRTH
     waits on grounded developmental evidence
@@ -475,7 +540,8 @@ Nested completion truth:
 ```text
 P1-P4 lived core = TERMINAL
 ordinary Heretic source/runtime/restart path = TERMINAL_LIVED_PASS
-evolved ordinary product experience baseline = OPEN / ACTIVE
+Heretic semantic/source-aware inhabited baseline = OPEN / ACTIVE
+full evolved visual/product convergence = OPEN / ACTIVE but not prerequisite to source-aware baseline
 Reference default = CURRENT SOURCE FACT / NOT TARGET COMPLETION BASELINE
 P5 G02-G03 = TERMINAL; G04 held
 P6 = UNEARNED
@@ -491,19 +557,16 @@ VexWork
 -> project.vexlife.tocompletion
 -> work.vexlife.tocompletion.outcome
 -> CURRENT ACTIVE work:
+     work.vexlife.tocompletion.productization.heretic-source-aware-baseline
      work.vexlife.tocompletion.productization.evolved-experience-baseline-convergence
--> this README for compressed causal continuity
--> VexLife #866 for canonical ToCompletion product truth
--> VexLife #624 for UX Evolution migration/cutover law
--> VexLife #76 for E2.8 product-evolution direction
--> VexLife #418 for Experience Foundation
--> VexLife #874 for the now-awake Assortment R2 / Refinement supporting checkpoint
--> VexLife #811 for Vex Furnishing / Experience Population
--> #624 comment 6012908914 for the Furnishing ↔ UX Evolution Human Experience completion coordinate
--> #811 comment 6015223469 for Adaptive Home v1.1 / Terrain-primary law
--> #817 comment 6031153511 for the human rejection of architecture-first / split-Vex PR818 UX
--> #817 comment 6094683418 for PR818 stale/superseded current-main-successor law
--> current VexLife ux-evolution / Furnishing / Presentation source when an effect descends there
+-> this README
+-> VexLife #866
+-> #866 comment 6382448044 for the Heretic source-aware baseline
+-> Capability Assimilation #333 comment 6382565492 for the exact context.where two-file seam
+-> #811 comment 6382393438 for current Continue / Projects / Frontier owner reconciliation
+-> #624 comment 6382349733 for one-visible-Vex / Frontier Human Experience correction
+-> preserved Assortment R2 source when presentation grammar is implicated
+-> current VexLife source when an effect descends there
 ```
 
 Continuation rule:
@@ -512,19 +575,22 @@ Continuation rule:
 A034 lived proof = COMPLETED
   -> do not replay Heretic acquisition/runtime proof
 
-Assortment/Evolution lineage exists
-  != canonical product cutover already earned
+Heretic source-aware baseline
+  -> exact location first
+  -> source perception second
+  -> effect awareness third
+  -> mutation only after exact authority
+
+Assortment R2
+  = preserved interaction grammar
+  != frozen pixels
+  != old held-owner statements remaining current forever
 
 current Reference default
   = source truth about presentation selection
   != intended ToCompletion product baseline
-
-next work
-  = converge the accepted Adaptive Home / one-continuous-Vex Human Experience on current main
-  -> use #624 / #811 / rightful Presentation owners
-  -> earn cutover only after current source and lived human truth agree
 ```
 
-Do not replay P0-P4, G02/G03 host attempts, PR873/919/920/921/922/923 acceptance, or A015-A034 merely to regain confidence. Re-read historical evidence only when one current predicate requires provenance.
+Do not replay P0-P4, G02/G03 host attempts, PR873/919/920/921/922/923 acceptance, A015-A034, historical PR #818 bytes, or superseded PR120 A001 merely to regain confidence.
 
-<!-- [VXG RealForever][VEXWORK][VEXLIFE-TOCOMPLETION][EVOLVED-BASELINE] -->
+<!-- [VXG RealForever][VEXWORK][VEXLIFE-TOCOMPLETION][HERETIC-SOURCE-AWARE-BASELINE] -->
