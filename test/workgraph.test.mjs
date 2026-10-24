@@ -60,10 +60,12 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(ideaIntake.authorityDisposition, 'NO_AUTHORITY');
   assert.equal(ideaIntake.effectDisposition, 'NO_EFFECTS');
   const closedCircuit = graph.items.find((item) => item.workRef === 'work.vextreme.vexsite.localization.closed-circuit.global-core');
-  assert.equal(closedCircuit.state, 'CAPTURED');
-  assert.equal(closedCircuit.workDisposition, 'PARKED');
+  assert.equal(closedCircuit.state, 'COMPLETED');
+  assert.equal(closedCircuit.workDisposition, 'ACTIVE');
+  assert.equal(closedCircuit.parentWorkRefOrNull, 'work.vextreme.vexsite.localization.outcome');
   assert.equal(closedCircuit.authorityDisposition, 'NO_AUTHORITY');
-  assert.equal(graph.rootWorkRefs.includes(closedCircuit.workRef), true);
+  assert.equal(graph.rootWorkRefs.includes(closedCircuit.workRef), false);
+  assert.equal(graph.rootWorkRefs.includes('work.vextreme.vexsite.localization.outcome'), true);
   const historyBackfill = graph.items.find((item) => item.workRef === 'work.vexwork.history.foundational-infrastructure-backfill');
   assert.equal(historyBackfill.state, 'CAPTURED');
   assert.equal(historyBackfill.parentWorkRefOrNull, null);

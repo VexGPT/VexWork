@@ -6837,7 +6837,6 @@
     },
     {
       "project": {
-        "schemaVersion": "vexwork.project-definition/v1",
         "projectRef": "project.vextreme.vexsite-localization",
         "label": "VexSite Localization",
         "purpose": "Keep VexSite localization visible from source-lineage preservation through the canonical Global Core queue and separate generated/runtime convergence without turning VexWork into a second page, translation, generated-artifact, or browser-proof owner.",
@@ -6904,8 +6903,7 @@
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-10-24T05:28:32.000Z",
           "updatedAt": "2026-10-24T06:17:51.000Z",
-          "transitionHistory": [],
-          "schemaVersion": "vexwork.work-item/v1"
+          "transitionHistory": []
         },
         {
           "workRef": "work.vextreme.vexsite.localization.closed-circuit.global-core",
@@ -7012,8 +7010,7 @@
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-10-23T07:48:00.000Z",
           "updatedAt": "2026-10-24T06:17:51.000Z",
-          "transitionHistory": [],
-          "schemaVersion": "vexwork.work-item/v1"
+          "transitionHistory": []
         },
         {
           "workRef": "work.vextreme.vexsite.localization.presentation-source-lineage",
@@ -7153,8 +7150,7 @@
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-10-23T07:48:00.000Z",
           "updatedAt": "2026-10-24T06:17:51.000Z",
-          "transitionHistory": [],
-          "schemaVersion": "vexwork.work-item/v1"
+          "transitionHistory": []
         }
       ]
     }
