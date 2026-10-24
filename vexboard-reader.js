@@ -66,6 +66,7 @@ export const VEXBOARD_BUILTIN_BOARD_URLS = Object.freeze({
   'board.vexboard.self-map': './self-map.json',
   'board.vexboard.publish': './publish-map.json',
   'board.vexboard.prototype-demo': './prototype-demo.json',
+  'board.vexwork.form-project': './form-project-process.json',
 });
 export const VEXBOARD_BUILTIN_PROTOTYPE_URLS = Object.freeze({
   'board.vexboard.prototype-demo': './prototype-demo.prototype.json',
