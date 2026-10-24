@@ -939,6 +939,9 @@ VEXBUSINESSFACTORY-USER-DIRECTED-DISCOVERY-AND-PROMOTION.md
 
 VEXBUSINESSFACTORY-AMBIENT-DISCOVERY-AND-WHATS-NEW.md
   source-owned public updates, calm What's New projection, model-mediated contextual awareness
+
+VEX-UNIVERSE-COMPLETION-PATHWAY.md
+  dependency-ordered route from accepted architecture -> VexBoard evidence -> Vex Universe Patient 0 -> Antique Plate lived POC -> reusable profile extraction
 ~~~
 
 Related VexBoard semantic-topology/perspective/discovery patient-zero work is preserved separately in VexBoard draft PR #92 so BusinessFactory meaning does not become VexBoard-owned by implication.
