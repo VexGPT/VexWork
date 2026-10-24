@@ -8,6 +8,25 @@ import {
   normalizeBoardGraph,
   normalizeBoardProjection,
 } from './src/shared/vexboard-model.mjs';
+import {
+  BOARD_JOURNEY_SCHEMA,
+  advanceBoardJourney,
+  backBoardJourney,
+  createBoardJourney,
+  journeyChoices,
+  normalizeBoardJourney,
+  revisitBoardJourney,
+} from './src/shared/vexboard-journey.mjs';
+
+export {
+  BOARD_JOURNEY_SCHEMA,
+  advanceBoardJourney,
+  backBoardJourney,
+  createBoardJourney,
+  journeyChoices,
+  normalizeBoardJourney,
+  revisitBoardJourney,
+};
 
 export const VEXBOARD_DRAFT_SCHEMA = 'vexboard.local-draft/v1';
 export const VEXBOARD_NEIGHBORHOOD_SCHEMA = 'vexboard.board-neighborhood/v1';
