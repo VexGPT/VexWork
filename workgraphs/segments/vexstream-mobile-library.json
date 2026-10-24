@@ -623,7 +623,7 @@
       "label": "Now Playing artwork projection",
       "purpose": "Carry optional current-track artwork from VexStream's canonical library metadata into the sanitized Android mobile catalog and Media3 MediaItem metadata so player/widget surfaces can render artwork when it is actually available without inventing Android-local artwork truth.",
       "workClass": "TASK",
-      "state": "READY",
+      "state": "RUNNING",
       "workDisposition": "ACTIVE",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
@@ -645,7 +645,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-24T11:20:00.000Z",
-      "updatedAt": "2026-10-24T11:20:00.000Z"
+      "updatedAt": "2026-10-24T11:26:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -922,6 +922,22 @@
         "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md"
       ],
       "createdAt": "2026-10-24T05:00:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.now-playing-artwork-projection.running.victor-approved-20261024a",
+      "workRef": "work.vexstream.mobile-library.now-playing-artwork-projection",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Victor approved the exact playback-surface implementation envelope. Begin the bounded cross-repository artwork projection required by the full player and compact VexStream widget without widening into a second playback owner.",
+      "actorRef": "actor.local-vex-operations.vexstream-mobile-library",
+      "sourceRefs": [
+        "project.vexstream.mobile-library",
+        "proposal.local-vex-operations.android-widget-foundation.ready-active.20261024a",
+        "response.victor.android-widget-foundation.ready-active.20261024a",
+        "confirmation.local-vex-operations.android-widget-foundation.ready-active.20261024a"
+      ],
+      "createdAt": "2026-10-24T11:26:00.000Z"
     }
   ],
   "sourceRefs": [
