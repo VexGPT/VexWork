@@ -3686,13 +3686,13 @@
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-24T05:45:00.000Z",
-      "updatedAt": "2026-10-24T05:45:00.000Z",
+      "updatedAt": "2026-10-24T10:06:02.000Z",
       "workRef": "work.vex.security-assurance.spike-process",
       "parentWorkRefOrNull": "work.vex.security-assurance.outcome",
       "label": "Form reusable evidence-producing Spikes",
-      "purpose": "Dogfood and then source-place a reusable VexWork Spike process: a bounded TASK whose primary deliverable is reduced uncertainty, evidence and a decision-ready result rather than product mutation; the current Process Registry overlap in PR #103 is reconciled before registering the generic process.",
+      "purpose": "Dogfood and then source-place a reusable VexWork Spike process: a bounded TASK whose primary deliverable is reduced uncertainty, evidence and a decision-ready result rather than product mutation; merged PR #103 released the Process Registry surface, so generic registration is now available as separate READY work rather than inferred complete.",
       "workClass": "TASK",
-      "state": "WAITING_RESOURCE",
+      "state": "READY",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
       "repositoryRefs": [
@@ -6687,6 +6687,23 @@
         "project.vex-universe"
       ],
       "createdAt": "2026-10-24T03:59:29.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vex.security-assurance.spike-process.ready.process-registry-released",
+      "workRef": "work.vex.security-assurance.spike-process",
+      "priorState": "WAITING_RESOURCE",
+      "nextState": "READY",
+      "reason": "PR #103 merged and released the shared Process Registry source surface before Security Assurance became accepted on main through PR #112; the historical resource wait is therefore cleared. This transition makes Spike source placement available without claiming that process.vexwork.run-spike is registered or implemented.",
+      "actorRef": "actor.chatgpt.vex-security-assurance",
+      "sourceRefs": [
+        "github.pull.vexwork.103",
+        "git.commit.vexwork.766fda592ff825d5b2b4bb865b07e5a2fac5fa9b",
+        "github.pull.vexwork.112",
+        "git.commit.vexwork.87c675b1c304f068278940c6a7ceb6cd7f14d506",
+        "blueprint/process-registry.json"
+      ],
+      "createdAt": "2026-10-24T10:06:02.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",

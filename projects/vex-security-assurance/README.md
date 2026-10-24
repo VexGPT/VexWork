@@ -20,6 +20,53 @@ map what we are protecting and where trust changes
 
 The aim is not to claim "secure." The aim is to make security reasoning durable enough that a future Heretic instance, another model, Victor, or a security reviewer can see what is known, what is not known, why, and what evidence would change that answer.
 
+## Contextual activation — not ambient model context
+
+Security Assurance is durable source that work can **descend into when relevant**. It is not intended to occupy every Vex/Heretic/ChatGPT context window or make ordinary work continuously reason about threats.
+
+```text
+SECURITY_SOURCE != MODEL_CONTEXT
+SECURITY_CAPABILITY != CONTINUOUS_SECURITY_FOREGROUND
+WORK_RESUME != SECURITY_REVIEW
+PERIODIC_CURRENTNESS != EVERY_TASK_AUDIT
+```
+
+When VexWork resumes or enters substantial work, the security question is constructed from the **current Work outcome and the boundary actually being changed**, not from a generic checklist:
+
+> **Does this work introduce, change, or materially depend on an identity/trust, authority/effect, sensitive-data/secret, external/provider/network, model/context/memory/tool, build/release/update, or recovery/replay boundary whose failure could permit unauthorized action, disclosure, integrity loss, or material availability loss?**
+
+Disposition:
+
+```text
+NO
+  -> remain present in the ordinary work
+  -> do not load Security Assurance context
+
+YES
+  -> retrieve only the applicable Security Lens predicates
+  -> retrieve only the relevant Security Atlas neighborhood
+  -> inspect current evidence
+  -> use a bounded Spike only when a material fact is actually missing
+
+UNKNOWN
+  -> perform one bounded grounding step to determine applicability
+  -> do not turn uncertainty into an ecosystem-wide audit
+```
+
+Typical triggers are a **new or materially changed** identity/authentication boundary, effect authority, secret/private-data path, public/network/provider surface, connector, model/tool/memory capability, dependency/build/update path, or ambiguous-effect/recovery behavior.
+
+Ordinary implementation detail that does not materially change or depend on one of those boundaries is not a security trigger merely because it occurs inside a security-relevant repository.
+
+Periodic Security currentness is a separate backstop: it may revisit stale evidence, changed provider/topology facts, unresolved material UNKNOWNs or evolved baselines without injecting the full security corpus into day-to-day model memory.
+
+The permanent model orientation can therefore remain small:
+
+```text
+Vex has source-backed Security Assurance.
+Descend when current work is security-relevant.
+Model analysis is candidate reasoning, not accepted security truth.
+```
+
 ## Existing VexWork fit
 
 The Project deliberately reuses accepted foundations instead of creating a second security tracker:
@@ -68,7 +115,7 @@ The candidate process design lives in [SPIKE-DESIGN.md](./SPIKE-DESIGN.md). The 
 process.vexwork.run-spike
 ```
 
-It is **not registered yet**. Open PR #103 currently owns the Process Registry source surface for Process-to-VexBoard addressability. This Project preserves the Spike design and a dedicated Work item, then reconciles that exact shared path before generic registration rather than creating a competing Process Registry writer.
+It is **not registered yet**. PR #103 is now merged and has released the shared Process Registry source surface. Generic Spike registration remains separate successor work: available registry capacity does not imply that `process.vexwork.run-spike` has been accepted or implemented.
 
 If repeated dogfood later proves that Spikes need lifecycle/UI semantics that cannot be represented by `TASK + formationProcessRef`, that evidence can justify a future `SPIKE` workClass. The class is not added speculatively.
 
@@ -203,8 +250,8 @@ A model finding becomes durable only through evidence and the same repository/so
 Vex Security Assurance                         RUNNING
 ├─ Security atlas                              RUNNING
 ├─ Security question/evidence lens             READY
-├─ Reusable Spike process                      WAITING_RESOURCE
-│    current Process Registry overlap: PR #103
+├─ Reusable Spike process                      READY
+│    Process Registry surface released; generic process still unregistered
 ├─ Software + supply-chain security lens       DECOMPOSED
 ├─ AI / agentic / Heretic security lens        DECOMPOSED
 │    includes bounded attacker-perspective design
