@@ -47,7 +47,10 @@ function refs(values, label) {
 
 function canonicalTimestampOrNull(value, label) {
   if (value === null) return null;
-  assert(typeof value === 'string' && ISO.test(value) && new Date(value).toISOString() === value,
+  assert(typeof value === 'string' && ISO.test(value),
+    `${label} must be canonical UTC ISO or null`);
+  const parsed = new Date(value);
+  assert(!Number.isNaN(parsed.getTime()) && parsed.toISOString() === value,
     `${label} must be canonical UTC ISO or null`);
   return value;
 }
