@@ -7169,7 +7169,9 @@
           "docs/foundation/DERIVED-ATTENTION-PROJECTION.md",
           "docs/foundation/OPERATING-DOMAIN.md",
           "docs/foundation/ATTENTION-QUEUE.md",
-          "docs/process/PROMOTE-DERIVED-CONCERN.md"
+          "docs/process/PROMOTE-DERIVED-CONCERN.md",
+          "projects/vex-security-assurance/ADVERSARIAL-LENS.md",
+          "projects/vex-security-assurance/SIMULATED-ADVERSARIAL-PATIENT-ZERO-A001.md"
         ],
         "formedAt": "2026-10-24T05:45:00.000Z"
       },
@@ -7179,7 +7181,7 @@
         {
           "workRef": "work.vex.security-assurance.ai-agentic-security-lens",
           "label": "Build the AI, agentic and Heretic security lens",
-          "purpose": "Cover model/context poisoning, prompt and indirect-prompt injection, tool/effect misuse, identity/privilege abuse, memory/context integrity, data disclosure, agent control, observability, resource abuse and unsafe autonomy for Heretic and other model-mediated Vex workflows.",
+          "purpose": "Cover model/context poisoning, prompt and indirect-prompt injection, tool/effect misuse, identity/privilege abuse, memory/context integrity, data disclosure, agent control, observability, resource abuse and unsafe autonomy for Heretic and other model-mediated Vex workflows, including a bounded attacker-perspective that challenges pre-convergence identity, condition, evidence and authority assumptions through synthetic/isolated tests by default.",
           "workClass": "TASK",
           "state": "DECOMPOSED",
           "workDisposition": "ACTIVE",
@@ -7196,7 +7198,9 @@
           ],
           "sourceRefs": [
             "projects/vex-security-assurance/README.md",
-            "work.vex.security-assurance.question-lens-foundation"
+            "work.vex.security-assurance.question-lens-foundation",
+            "projects/vex-security-assurance/ADVERSARIAL-LENS.md",
+            "projects/vex-security-assurance/SIMULATED-ADVERSARIAL-PATIENT-ZERO-A001.md"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
