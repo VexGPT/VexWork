@@ -114,7 +114,19 @@ test('public workspace keeps global Parking Lot separate from Project membership
   assert.equal(workspace.parkingLot.items.every((item) => item.workDisposition === 'PARKED'), true);
   assert.equal(workspace.parkingLot.items.every((item) => item.authorityDisposition === 'NO_AUTHORITY'), true);
   assert.equal(workspace.parkingLot.items.some((item) => item.workRef === 'work.vexstream.mobile-library.keep-offline-sync'), true);
-  assert.equal(workspace.parkingLot.items.some((item) => item.workRef === 'work.vextreme.vexsite.localization.closed-circuit.global-core'), true);
+  assert.equal(workspace.parkingLot.items.some((item) => item.workRef === 'work.vextreme.vexsite.localization.closed-circuit.global-core'), false);
+});
+
+test('Security Assurance is discoverable without turning its questions or Spikes into authority', () => {
+  const workspace = buildWorkspace();
+  const security = workspace.projects.find((entry) => entry.project.projectRef === 'project.vex.security-assurance');
+  assert.ok(security);
+  assert.equal(security.summary.workItemCount, 7);
+  assert.equal(security.summary.openWorkItemCount, 7);
+  assert.equal(security.items.every((item) => item.authorityDisposition === 'NO_AUTHORITY'), true);
+  assert.equal(security.items.every((item) => item.effectDisposition === 'NO_EFFECTS'), true);
+  assert.equal(security.lanes.find((lane) => lane.laneRef === 'lane.work.active').workRefs.includes('work.vex.security-assurance.security-atlas'), true);
+  assert.equal(security.lanes.find((lane) => lane.laneRef === 'lane.work.waiting').workRefs.includes('work.vex.security-assurance.spike-process'), true);
 });
 
 test('checked-in public workspace is generated-current', () => {
