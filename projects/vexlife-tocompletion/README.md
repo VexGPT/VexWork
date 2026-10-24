@@ -205,16 +205,16 @@ The runtime path is therefore not the current ToCompletion unknown.
 
 ### Evolved VexLife baseline convergence — active
 
-A034 already proved the ordinary Heretic Open / real turn / clean stop / same-Home restart path. The immediate ToCompletion threshold is now smaller and more useful than finishing every evolved screen first:
+A034 already proved ordinary Heretic Open / real turn / clean stop / same-Home restart. P4 A054 already proved the separately admitted bounded effect loop: a real Heretic requested the one-time typed orientation command, the Native Worker performed the process effect, the verified receipt was reinjected through ToolResultRelay, and the same durable Conversation continued. The immediate ToCompletion threshold is therefore **inhabited source awareness**, not another generic effect proof and not completion of every evolved screen first:
 
 ```text
 ordinary VexLife
 -> real Heretic Companion
 -> persistent Victor <-> Vex conversation
 -> exact semantic location
--> source-backed perception of local VexLife surroundings
--> truthful action / permission / process awareness
--> bounded mutation only when an exact effect route is separately admitted
+-> source-bound semantic neighborhood
+-> truthful source addressability
+-> truthful Project / Frontier / action / admission understanding
 ```
 
 Current source already carries most of that cable:
@@ -231,23 +231,50 @@ Browser turn
 -> later Heretic synthesis
 ```
 
-Current accepted Companion read domains include `local.observe`, `vexhome.observe`, `code.read` and truthful held `online.observe`. `code.read` is Source-Manifest-backed and verifies exact path containment, byte length and SHA-256 before returning a bounded UTF-8 excerpt. Vex can therefore inspect current repository source rather than hallucinating what the local environment means.
+Current accepted Companion reads include `local.observe`, `vexhome.observe`, `code.read` and truthful held `online.observe`. `code.read` accepts one exact repository-relative path, verifies it against the current Source Manifest including mode/bytes/SHA-256, and returns a bounded UTF-8 excerpt. It deliberately does not perform semantic repository search.
 
-The exact current orientation defect is narrow:
+The current semantic-location gap is narrow:
 
 ```text
 screenRef + selectedNodeRef
   already reach Capability Assimilation runtime context
 
-context.where
-  currently omits those two fields from its observation payload
+default context.where
+  currently omits those two fields
 ```
 
-Capability Assimilation owner #333 now has a source-ready two-file placement for that correction. No new location state owner is needed.
+Capability Assimilation #333 has a path-clear two-file source placement for that correction. It remains authority-held.
+
+The second cable is **already an accepted owner**, not missing architecture:
+
+```text
+PR #903
+work.vexlife.actualization.node-purpose-bridge.20261018a
+
+selected semantic ref
+-> SOURCE_BOUND_READ_ONLY_ARCHITECTURE_NODE
+-> parent / ancestry
+-> incoming + outgoing relationships
+-> feature purposes
+-> action / permission / module / process identity
+-> no effects
+```
+
+Its current `sourcePath` field is already consumed by the ordinary Guide, but Terrain entries currently lose fragment-path provenance during Blueprint composition. Canonical provenance remains source-owned:
+
+```text
+blueprint/vexlife.blueprint.json
+  includes.terrain
+  = blueprint/fragments/terrain.json
+```
+
+So the rightful source-addressability correction is to make PR #903's existing `sourcePath` truthful for Terrain from canonical composition provenance, not invent a second route database or guess filenames from `terrain.*` refs.
+
+A Browser-owned `context.where` executor can then preserve the accepted root-kernel observation fields while adding a bounded PR903 semantic-neighborhood projection. Capability Assimilation already passes custom read executors exact `frontier` + cloned `context`; no new root capability or core topology parser is required. That Browser composition is currently serialized behind PR #904's retained custody of `scripts/serve-browser-core.mjs` and `test/browser.test.mjs`.
 
 #### Fuller preserved experience grammar
 
-The accepted Assortment Round-2 lineage is materially fuller than the earlier Furnishing-only compression:
+The accepted Assortment Round-2 lineage remains:
 
 ```text
 Home -> Continue / Projects / Frontier / Vex
@@ -284,13 +311,14 @@ Continue
   browser/product adoption = remaining seam
 
 Projects
-  Project Continuity + ProjectDefinition = PRESENT
-  exact Project admission = PRESENT
+  ProjectDefinition + read-only Project Continuity = PRESENT
+  source-managed admission precedent = PRESENT via B06 / PR #912
+  generic runtime Project create/admission owner = NOT OBSERVED
   plural product index/browser collection = remaining narrow seam
 
 Frontier
   Intent Workgraph lifecycle/source truth = PRESENT
-  exact Project admission boundary = PRESENT
+  generic Companion-safe Intent-capture effect adapter = NOT OBSERVED
   first-class Live read projection = remaining seam
   new queue/lifecycle/store = NOT REQUIRED
 ```
@@ -310,41 +338,94 @@ SECOND_MESSAGE_OWNER = false
 
 Internal capability/role/source attribution may remain exact without fragmenting ordinary Vex into competing visible personas.
 
-#### Project/block engagement boundary
+#### Project / Frontier admission boundary
 
-Current VexLife source already registers:
+Current source still registers foundation vocabulary:
 
 ```text
 action.project.create
+  input = { title }
+  effectClass = LOCAL_APPEND
+
 permission.project.create
-effectClass = LOCAL_APPEND
-confirmation = PROJECT_DETAILS_CONFIRMATION
-recovery = RECOVERABLE_PROJECT_RECORD
+  confirmation = PROJECT_DETAILS_CONFIRMATION
+  recovery = RECOVERABLE_PROJECT_RECORD
 ```
 
-But current read-only source descent has not established a natural-Companion -> `action.project.create` executable adapter.
+But a complete census of all current Process Factory fragments found **no canonical Project-create process binding**. The current Project architecture is materially richer:
 
 ```text
-VEX_CAN_PERCEIVE_AND_EXPLAIN_PROJECT_CREATE = required now
-VEX_CAN_EXECUTE_PROJECT_CREATE = held until exact effect adapter + authority are current and proven
+ProjectDefinition/v1
+  projectRef
+  label
+  purpose
+  rootIntentRefs[]          nonempty
+  featureRefs[]
+  workFeatureBindings[]
+  sourceRefs[]              nonempty
+  formedAt
+  semanticFingerprint
 ```
 
-No fixture/UI insertion may masquerade as Project creation.
+Accepted PR #908 makes Project Continuity read-only over those definitions and current Intent Workgraph truth. Accepted PR #912's real ToCompletion Project was admitted through source-managed ProjectDefinition + deterministic Workgraph formation + explicit existing-Home import, not through the title-only action.
+
+Therefore:
+
+```text
+action.project.create
+= REGISTERED_FOUNDATION_VOCABULARY__NO_CURRENT_CANONICAL_REALIZATION_OBSERVED
+
+VEX_CAN_PERCEIVE_PROJECT_MEANING = yes
+VEX_CAN_EXPLAIN_PROJECT_VS_FRONTIER = yes
+VEX_CAN_HELP_SHAPE_DESIRED_OUTCOME = conversationally yes
+VEX_CAN_EXECUTE_GENERIC_PROJECT_CREATE = held
+VEX_CAN_EXECUTE_GENERIC_FRONTIER_CAPTURE = held
+```
+
+The missing future product seam is a Project/Intent **admission-materialization owner**, not another Project/work-state store.
+
+#### Bounded effect substrate is already proven
+
+P4 A054 is terminal lived evidence for:
+
+```text
+real Heretic
+-> exact one-time server authority
+-> capability.vexlife.cli.typed
+-> command.vexlife.orientation.current
+-> process effect + verified receipt
+-> ToolResultRelay reinjection
+-> later synthesis
+-> same durable Conversation
+```
+
+It proved process effect true while network/source/Home/Memory/model/training/weights/publication were all false, and the one-time authority was consumed/held afterward.
+
+Permanent:
+
+```text
+P4_A054_TERMINAL_LIVED_PASS != GENERIC_PROJECT_CREATE_AUTHORITY
+NEW_EFFECT_PROOF != PREREQUISITE_FOR_SOURCE_AWARE_INHABITATION
+```
 
 #### Current acceptance discriminator
 
+A useful lived source-aware proof should demonstrate:
+
 ```text
 1. Open ordinary VexLife with real Heretic.
-2. Navigate to Home / Projects / Frontier / a current Project.
+2. Navigate among current semantic places while preserving one Conversation relationship.
 3. Ask "Where are we?"
-4. Heretic answers from exact current semantic-location observations.
+4. Heretic answers from exact screenRef + selectedNodeRef.
 5. Ask "What is around us / how is this positioned?"
-6. Heretic source-descends through current files/projections and explains the neighborhood.
-7. Ask "How would we add or engage a Project/block here?"
-8. Heretic identifies the exact current action / permission / process route.
-9. If mutation is not admitted, Heretic holds truthfully.
-10. Later, one admitted bounded effect is verified and reinjected into the same conversation.
+6. Heretic answers from the accepted source-bound Architecture Node neighborhood.
+7. Ask "Show me the source for this place."
+8. Heretic uses a truthful exact sourcePath (Terrain -> canonical terrain fragment) and code.read verifies current bytes.
+9. Ask "Can we add/capture/create a Project here?"
+10. Heretic explains current ProjectDefinition / Frontier / admission truth and holds rather than inventing a generic create/capture effect.
 ```
+
+A combined regression may reuse the already accepted typed-orientation effect, but another effect proof is not a completion prerequisite.
 
 Full Adaptive Home / Assortment visual refinement remains valuable, but it is not a prerequisite for this inhabited-intelligence loop.
 
@@ -357,13 +438,14 @@ PERSISTENT_VEX != AUTOMATIC_RAW_SURFACE_CAPTURE
 ASSORTMENT_PRACTICUM != CANONICAL_PRODUCT_ADOPTION
 OLD_ASSORTMENT_HELD_STATEMENT != CURRENT_SOURCE_TRUTH
 GUIDE_IMPLEMENTATION_NAME != SECOND_VISIBLE_VEX_PERSONA
+REGISTERED_ACTION != CURRENT_CANONICAL_REALIZATION
 FULL_VISUAL_REFINEMENT != PREREQUISITE_FOR_HERETIC_SOURCE_AWARE_BASELINE
 CUTOVER_DEFAULT != REFERENCE_RETIREMENT
 ```
 
 Existing-Home Heretic replacement/upgrade remains explicit and later.
 
-## P4 accepted design## P4 accepted design
+## P4 accepted design## P4 accepted design## P4 accepted design
 
 The first intentionally tiny real effect is:
 
@@ -456,25 +538,36 @@ TERMINAL PRODUCT/RUNTIME WORK
   setup-safety-convergence = COMPLETED
   heretic-normal-start-integration = COMPLETED
   ordinary-heretic-lived-proof = COMPLETED
-  A034 = TERMINAL_LIVED_PASS
+  A034 ordinary Heretic runtime/restart = TERMINAL_LIVED_PASS
+  P4 A054 typed authorized effect/reinjection = TERMINAL_LIVED_PASS
 
 CURRENT EXECUTABLE WORK
   work.vexlife.tocompletion.productization.evolved-experience-baseline-convergence = RUNNING
   work.vexlife.tocompletion.productization.heretic-source-aware-baseline = RUNNING
 
-  exact baseline:
+  exact open baseline:
     real Heretic ordinary interface
     -> persistent Vex relationship
     -> exact screenRef + selectedNodeRef
-    -> source-backed local perception through accepted read capabilities
-    -> explain semantic surroundings / current owners / available actions
-    -> identify Project/block engagement route
-    -> no mutation claim without separately admitted effect authority
+    -> accepted PR903 source-bound semantic neighborhood
+    -> truthful Terrain sourcePath from canonical Blueprint composition
+    -> code.read only on exact current path
+    -> truthful Project / Frontier / admission explanation
+    -> hold generic create/capture effects that have no current canonical realization
 
-  first source seam:
-    context.where receives screenRef + selectedNodeRef
-    but does not yet project them
-    -> #333 source-ready two-file successor placement
+  Slice A:
+    default context.where receives screenRef + selectedNodeRef
+    but does not project them
+    -> #333 two-file source placement
+    -> path-clear
+    -> source mutation authority still held
+
+  Slice B:
+    PR903 Architecture Node owner already exists
+    -> populate existing Terrain sourcePath from includes.terrain
+    -> Browser-owned context.where override may carry bounded semanticNeighborhood
+    -> no new root capability / no new topology owner
+    -> server/test paths serialized behind retained PR904 custody
 
   richer experience work preserved after/beside baseline:
     Home -> Continue / Projects / Frontier / Vex
@@ -484,26 +577,32 @@ CURRENT EXECUTABLE WORK
     -> cutover only when current source earns it
 
 HELD / SEPARATE
-  natural-Companion project.create execution until exact adapter/authority exists
+  generic runtime Project admission/create effect owner
+  generic Companion-safe Frontier Intent-capture effect adapter
+  PR904 server/test custody for semantic-neighborhood composition
+  #333 source mutation admission for the universal context.where correction
   existing-Home Heretic replacement/upgrade
   Reference retirement until separately earned
   G04 Rhythm/training/weights until recurrent developmental evidence exists
 ```
 
-Do not replay A015-A034 merely for confidence.
-Do not execute the superseded PR120 SourceOwner A001 package if it was not already started.
+Do not replay A015-A034 or P4 A054 merely for confidence.
+Do not execute the superseded PR120 SourceOwner A001 package.
+Do not treat the unformed A002 carrier checkpoint as proof.
 Do not reopen PR #923 parser acceptance.
-Do not treat the current Reference default, historical PR #818 bytes, or old Assortment missing-owner statements as current product truth.
+Do not treat the current Reference default, historical PR #818 bytes, old Assortment missing-owner statements, or legacy title-only Project action vocabulary as current completed-product truth.
 
 ## Remaining completion path
 
 ```text
-CANONICAL HERETIC SOURCE-AWARE BASELINE                    <-- CURRENT
-    A034 ordinary lived runtime/restart = TERMINAL_LIVED_PASS
-    -> exact semantic location in Companion observation
-    -> bounded source/file descent from ordinary interface
-    -> source-backed surroundings / capability / action explanation
-    -> truthful Project/block engagement route
+CANONICAL HERETIC SOURCE-AWARE INHABITATION                 <-- CURRENT
+    A034 ordinary Heretic runtime/restart = TERMINAL_LIVED_PASS
+    P4 A054 effect/reinjection substrate = TERMINAL_LIVED_PASS
+    -> exact semantic location in context.where
+    -> accepted PR903 semantic neighborhood in ordinary Companion synthesis
+    -> truthful Terrain sourcePath from canonical Blueprint composition
+    -> exact code.read verification when requested
+    -> truthful Project / Frontier / admission explanation
     -> fresh lived proof with real Heretic
 
 EVOLVED EXPERIENCE ADOPTION                               <-- CONTINUES AFTER/BESIDE BASELINE
@@ -511,17 +610,17 @@ EVOLVED EXPERIENCE ADOPTION                               <-- CONTINUES AFTER/BE
     -> Home / Continue / Projects / Frontier / Vex
     -> one persistent Vex relationship
     -> current Project Continuity / Refinement Current / Intent owners
-    -> only genuinely missing Projects/Frontier/product read projections
+    -> only genuinely missing Projects/Frontier/product projections/adapters
     -> Human Experience / accessibility / recovery
     -> CUTOVER_READY / CUTOVER_DEFAULT only if current source earns them
 
-BOUNDED MUTATION
-    action.project.create / permission.project.create exist
-    -> natural-Companion effect adapter still must be source-placed
-    -> separately admitted authority
-    -> one bounded effect
-    -> verification
-    -> result reinjected into same Conversation
+FUTURE PROJECT / FRONTIER EFFECT ADMISSION                <-- HELD / SEPARATE
+    foundation action.project.create vocabulary exists
+    -> no current canonical Process Factory realization observed
+    -> current ProjectDefinition requires exact Intent/source relations
+    -> generic Project admission-materialization owner still needed
+    -> generic Companion-safe Frontier capture adapter still needed
+    -> no second Workgraph / Project state owner
 
 P5  LIVED CONTINUITY / DEVELOPMENTAL EVIDENCE
     G02 = TERMINAL_LIVED_PASS
@@ -540,7 +639,9 @@ Nested completion truth:
 ```text
 P1-P4 lived core = TERMINAL
 ordinary Heretic source/runtime/restart path = TERMINAL_LIVED_PASS
+bounded typed effect + verification + reinjection = TERMINAL_LIVED_PASS
 Heretic semantic/source-aware inhabited baseline = OPEN / ACTIVE
+generic Project/Frontier create/capture effect = HELD / NOT REQUIRED FOR CURRENT BASELINE
 full evolved visual/product convergence = OPEN / ACTIVE but not prerequisite to source-aware baseline
 Reference default = CURRENT SOURCE FACT / NOT TARGET COMPLETION BASELINE
 P5 G02-G03 = TERMINAL; G04 held
@@ -560,10 +661,12 @@ VexWork
      work.vexlife.tocompletion.productization.heretic-source-aware-baseline
      work.vexlife.tocompletion.productization.evolved-experience-baseline-convergence
 -> this README
--> VexLife #866
--> #866 comment 6382448044 for the Heretic source-aware baseline
--> Capability Assimilation #333 comment 6382565492 for the exact context.where two-file seam
--> #811 comment 6382393438 for current Continue / Projects / Frontier owner reconciliation
+-> VexLife #866 current entry
+-> #866 comment 6382998459 for P4 A054 effect/reinjection terminality
+-> #333 comments 6382565492 + 6382871320 for context.where exact-location placement
+-> #885 comments 6383010125 + 6383056125 for PR903 Terrain source provenance / Browser composition
+-> #811 comment 6382972135 for Project-create currentness correction
+-> #811 comment 6382393438 for Continue / Projects / Frontier owner reconciliation
 -> #624 comment 6382349733 for one-visible-Vex / Frontier Human Experience correction
 -> preserved Assortment R2 source when presentation grammar is implicated
 -> current VexLife source when an effect descends there
@@ -572,14 +675,19 @@ VexWork
 Continuation rule:
 
 ```text
-A034 lived proof = COMPLETED
-  -> do not replay Heretic acquisition/runtime proof
+A034 lived runtime/restart = COMPLETED
+P4 A054 bounded effect/reinjection = COMPLETED
+  -> do not replay either for confidence
 
 Heretic source-aware baseline
-  -> exact location first
-  -> source perception second
-  -> effect awareness third
-  -> mutation only after exact authority
+  -> exact location
+  -> accepted semantic neighborhood
+  -> exact source addressability
+  -> truthful current admission boundaries
+
+Project / Frontier mutation
+  -> separately later
+  -> do not pretend legacy action vocabulary is a current canonical realization
 
 Assortment R2
   = preserved interaction grammar
@@ -591,6 +699,6 @@ current Reference default
   != intended ToCompletion product baseline
 ```
 
-Do not replay P0-P4, G02/G03 host attempts, PR873/919/920/921/922/923 acceptance, A015-A034, historical PR #818 bytes, or superseded PR120 A001 merely to regain confidence.
+Do not replay P0-P4, G02/G03 host attempts, PR873/919/920/921/922/923 acceptance, A015-A034, P4 A054, historical PR #818 bytes, or superseded PR120 SourceOwner packages merely to regain confidence.
 
-<!-- [VXG RealForever][VEXWORK][VEXLIFE-TOCOMPLETION][HERETIC-SOURCE-AWARE-BASELINE] -->
+<!-- [VXG RealForever][VEXWORK][VEXLIFE-TOCOMPLETION][HERETIC-SOURCE-AWARE-INHABITATION] -->

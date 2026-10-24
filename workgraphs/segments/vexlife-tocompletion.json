@@ -11,11 +11,11 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-22T00:13:43.000Z",
-      "updatedAt": "2026-10-24T09:32:00.000Z",
+      "updatedAt": "2026-10-24T09:59:00.000Z",
       "workRef": "work.vexlife.tocompletion.outcome",
       "parentWorkRefOrNull": null,
       "label": "VexLife ToCompletion",
-      "purpose": "Carry the full VexLife ToCompletion trajectory: preserve terminal P1-P4 lived and G02/G03 developmental truth, make the immediate product edge a canonical Heretic source-aware inhabited baseline in ordinary VexLife, preserve the accepted Assortment R2 Home/Continue/Projects/Frontier/Vex grammar and newer Project/Intent owners without freezing historical pixels, then continue richer evolved-experience adoption, separately admitted bounded mutation, existing-Home upgrade and later developmental/native horizons without reopening completed work.",
+      "purpose": "Carry the full VexLife ToCompletion trajectory: preserve terminal P1-P4 lived runtime truth, A034 ordinary Heretic restart truth and P4 A054 bounded effect/reinjection truth; make the immediate product edge a source-aware inhabited Heretic baseline with exact location, accepted semantic neighborhood, truthful source addressability and honest Project/Frontier admission boundaries; then continue richer evolved-experience adoption, later separately admitted Project/Intent mutation, existing-Home upgrade and developmental/native horizons without reopening completed work.",
       "workClass": "OUTCOME",
       "state": "RUNNING",
       "priorityClass": "IMMEDIATE",
@@ -57,7 +57,15 @@
         "github.issue.vexlife.866.comment.6382448044",
         "github.issue.vexlife.333.comment.6382565492",
         "github.pull.vexwork.120.comment.6382473221",
-        "github.pull.vexwork.120.comment.6382580589"
+        "github.pull.vexwork.120.comment.6382580589",
+        "github.issue.vexlife.866.comment.6382998459",
+        "github.issue.vexlife.866.comment.6382972577",
+        "github.issue.vexlife.333.comment.6382871320",
+        "github.issue.vexlife.885.comment.6383010125",
+        "github.issue.vexlife.885.comment.6383056125",
+        "github.issue.vexlife.811.comment.6382972135",
+        "github.pull.vexwork.120.comment.6382973067",
+        "github.pull.vexwork.120.comment.6382999618"
       ]
     },
     {
@@ -727,11 +735,11 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-24T08:03:08.000Z",
-      "updatedAt": "2026-10-24T09:32:00.000Z",
+      "updatedAt": "2026-10-24T09:59:00.000Z",
       "workRef": "work.vexlife.tocompletion.productization.evolved-experience-baseline-convergence",
       "parentWorkRefOrNull": "work.vexlife.tocompletion.productization.ordinary-heretic-setup",
       "label": "Evolved VexLife convergence — Heretic source-aware inhabitation + Assortment R2",
-      "purpose": "Converge the ordinary lived product from terminal Heretic runtime truth into a source-aware inhabited baseline first, then richer evolved experience: preserve one persistent Vex relationship across Home/Continue/Projects/Frontier and other semantic places; expose exact semantic location to the Companion; reuse accepted source-backed read capabilities so Heretic can inspect and explain its surroundings; consume current Refinement Current, Project Continuity/ProjectDefinition and Intent Workgraph owners instead of old missing-owner assumptions; keep mutation held until exact effect authority exists; then complete genuinely remaining Human Experience/accessibility/recovery/cutover work without replaying stale PR818 or frozen Assortment pixels.",
+      "purpose": "Converge the ordinary lived product from terminal Heretic runtime and terminal bounded effect/reinjection truth into source-aware inhabitation first, then richer evolved experience: preserve one persistent Vex relationship across Home/Continue/Projects/Frontier and other semantic places; expose exact location; reuse accepted PR903 Architecture Node meaning and canonical Blueprint fragment provenance; keep code.read path-exact; consume current ProjectDefinition/Project Continuity, Refinement Current and Intent Workgraph owners; treat generic Project/Frontier create/capture effects as held where no current canonical realization exists; then complete genuinely remaining Human Experience/accessibility/recovery/cutover work without replaying stale PR818 or frozen Assortment pixels.",
       "workClass": "TASK",
       "state": "RUNNING",
       "priorityClass": "IMMEDIATE",
@@ -770,7 +778,15 @@
         "github.issue.vexlife.866.comment.6382448044",
         "github.issue.vexlife.333.comment.6382565492",
         "github.pull.vexwork.120.comment.6382473221",
-        "github.pull.vexwork.120.comment.6382580589"
+        "github.pull.vexwork.120.comment.6382580589",
+        "github.issue.vexlife.866.comment.6382998459",
+        "github.issue.vexlife.866.comment.6382972577",
+        "github.issue.vexlife.333.comment.6382871320",
+        "github.issue.vexlife.885.comment.6383010125",
+        "github.issue.vexlife.885.comment.6383056125",
+        "github.issue.vexlife.811.comment.6382972135",
+        "github.pull.vexwork.120.comment.6382973067",
+        "github.pull.vexwork.120.comment.6382999618"
       ]
     },
     {
@@ -781,11 +797,11 @@
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-24T09:32:00.000Z",
-      "updatedAt": "2026-10-24T09:32:00.000Z",
+      "updatedAt": "2026-10-24T09:59:00.000Z",
       "workRef": "work.vexlife.tocompletion.productization.heretic-source-aware-baseline",
       "parentWorkRefOrNull": "work.vexlife.tocompletion.productization.evolved-experience-baseline-convergence",
-      "label": "Canonical Heretic source-aware inhabitation baseline",
-      "purpose": "Prove the ordinary real Heretic can remain in one persistent Conversation while recognizing its exact VexLife semantic location, source-reading the local environment, explaining how the current place is positioned relative to nearby Project/Frontier/Terrain meaning, and identifying the exact action/permission/process route for a bounded change without claiming mutation before a separately admitted effect route exists. First source seam: current context.where already receives screenRef + selectedNodeRef but does not project them.",
+      "label": "Canonical Heretic source-aware inhabitation",
+      "purpose": "Prove the ordinary real Heretic can remain in one persistent Conversation while recognizing exact screenRef + selectedNodeRef, consuming the accepted PR903 source-bound semantic neighborhood, exposing a truthful exact Terrain sourcePath from canonical Blueprint composition for later code.read verification, and explaining current Project/Frontier meaning and admission limits without pretending the legacy title-only project.create vocabulary or generic Frontier capture has a current canonical effect realization. P4 A054 already terminally proves the bounded authorized-effect/verification/reinjection substrate, so no new mutation effect is required for this baseline.",
       "workClass": "TASK",
       "state": "RUNNING",
       "priorityClass": "IMMEDIATE",
@@ -803,7 +819,15 @@
         "github.issue.vexlife.811.comment.6382393438",
         "github.issue.vexlife.624.comment.6382349733",
         "github.pull.vexwork.120.comment.6382473221",
-        "github.pull.vexwork.120.comment.6382580589"
+        "github.pull.vexwork.120.comment.6382580589",
+        "github.issue.vexlife.866.comment.6382998459",
+        "github.issue.vexlife.866.comment.6382972577",
+        "github.issue.vexlife.333.comment.6382871320",
+        "github.issue.vexlife.885.comment.6383010125",
+        "github.issue.vexlife.885.comment.6383056125",
+        "github.issue.vexlife.811.comment.6382972135",
+        "github.pull.vexwork.120.comment.6382973067",
+        "github.pull.vexwork.120.comment.6382999618"
       ]
     }
   ],
