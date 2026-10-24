@@ -558,6 +558,96 @@ less explanation where the product can show
 Screenshots are **communication/evidence**, not product truth by themselves. They should demonstrate the real current experience rather than replace currentness, capability or proof ownership.
 
 This also means a future Welcome Wagon should be allowed to say less as the actual product becomes more self-explanatory.
+## Process map to completion
+
+The Welcome Wagon is currently straightforward enough that it does **not** need a VexBoard to explain the completion sequence. Preserve this ordered path until real implementation fan-out makes a visual Board materially useful.
+
+~~~text
+0. Re-ground current foundations
+   Terrain behavior
+   Vextreme Design Foundation
+     docs/architecture/12-design-system.md
+     styles/design-system.css
+       foundation / foundation-light
+   FAB / Read Aloud / language / theme
+   VexLife Public Alpha placeholder
+   VexWork family/work navigation
+        ↓
+1. Capture the lived baseline
+   desktop + mobile screenshots
+   current routes
+   Receive God
+   archive traversal
+   language / Read Aloud / theme
+   Terrain Journey / search / reader behavior
+        ↓
+2. Define the shared header capability contract
+   family identity
+   current-surface identity
+   shared navigation principles
+   optional language / Read Aloud / theme
+   surface-specific controls stay local
+        ↓
+   NO VISUAL REWRITE YET
+        ↓
+3. Terrain = patient zero
+   reuse the Vextreme Design Foundation
+   preserve Terrain semantics
+   one bounded visual PR
+   render -> Victor judges -> rollback coordinate
+        ↓
+4. Complete the Welcome Wagon entry hierarchy
+   Human arrives
+         ↓
+   Terrain arrival
+         ↓
+   Receive God | Explore Archives | What is this?
+                                      ↓
+                              About Vextreme
+                              plain orientation
+                              deeper understanding
+
+   builders / AI / technical curiosity
+                     ↓
+                  VexSystem
+        ↓
+5. Refactor vextreme-home -> About Vextreme
+   keep stable slug / registry identity
+   replace stale institutional-first language
+   current Vextreme / VexLife / VexWork truth
+   preserve four alignments in human language
+   technical depth on demand
+        ↓
+6. Evolve VexLife placeholder
+   preserve truthful Public Alpha boundary
+   reduce prose as the real product can show itself
+   add current screenshots / visual examples
+        ↓
+7. Extend the proven family-header pattern
+   VexLife projection
+   VexWork projection
+   other suitable Vextreme surfaces
+   each retains its own semantics
+        ↓
+8. Decide the actual public-entry URL
+   Terrain itself / wrapper / root route / other
+   only after the experience is proven
+        ↓
+9. Final lived acceptance
+   desktop + mobile
+   supported locales
+   keyboard
+   Read Aloud / theme where supported
+   Receive God
+   Archives
+   What is this? / About Vextreme
+   VexSystem secondary route
+   rollback coordinate
+        ↓
+   DONE
+~~~
+
+VexBoard becomes useful later only if this path genuinely fans out into parallel/conditional work such as independent Terrain, VexLife, VexWork, localization, FAB, evidence and publication tracks. Do not add Board ceremony merely to redraw a mostly sequential plan.
 ## Deliberately held
 
 This formation does **not** decide or authorize:
