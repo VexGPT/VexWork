@@ -21,8 +21,8 @@ The comparison board is derived from screenshots Victor supplied while forming t
 
 ```text
 welcome-wagon-current-surfaces-comparison.webp
-sha256 = c7f247dfa22f7674ddef29bec7e98e868e3054985aefb4bab7a4e9516e54f2fd
-captureCommit = PENDING_CAPTURE_COMMIT
+sha256 = e583a34d5e6c47649868e3a447be969201f8235e86ed70b9c599aa41e06be7be
+dimensions = 400x531\nbytes = 11016\ncaptureCommit = PENDING_CAPTURE_COMMIT
 ```
 
 The board is a lightweight visual derivative, not the canonical bytes of each individual user screenshot.
