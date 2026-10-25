@@ -251,6 +251,36 @@ test('accepted VexBoard design remains held when known Android adoption blockers
   assert.equal(plan.effects.targetSourceMutationPerformed, false);
 });
 
+test('formed Android capability candidate remains non-admitted until proof/acceptance', () => {
+  const accepted = structuredClone(design);
+  accepted.authorityState = 'VEXBOARD_DESIGN_AUTHORITY';
+
+  const plan = compileVexLifeAndroidScreenDesign(
+    accepted,
+    {
+      targetCapabilityCandidates: [{
+        capabilityRef: VEXLIFE_ANDROID_DYNAMIC_TEXT_CAPABILITY_REF,
+        candidateRef: 'github.pull.vexlife-android.182',
+        candidateHeadRefOrNull:
+          'git.commit.vexlife-android.d44f4d164c4241b609ee7da843bd0f7f69166790',
+        status: 'CANDIDATE_FORMED_PROOF_PENDING',
+        sourceRefs: ['github.pull.vexlife-android.182'],
+      }],
+    },
+  );
+
+  assert.equal(plan.admission, 'IMPLEMENTATION_HELD_TARGET_CAPABILITIES');
+  const requirement = plan.targetCapabilityRequirements[0];
+  assert.equal(requirement.status, 'STANDARDIZATION_REQUIRED');
+  assert.equal(requirement.proposalStatus, 'CANDIDATE_FORMED_PROOF_PENDING');
+  assert.equal(requirement.candidateRefOrNull, 'github.pull.vexlife-android.182');
+  assert.equal(
+    requirement.candidateHeadRefOrNull,
+    'git.commit.vexlife-android.d44f4d164c4241b609ee7da843bd0f7f69166790',
+  );
+  assert.deepEqual(requirement.candidateSourceRefs, ['github.pull.vexlife-android.182']);
+});
+
 test('accepted VexBoard design remains held until required Android target capability exists', () => {
   const accepted = structuredClone(design);
   accepted.authorityState = 'VEXBOARD_DESIGN_AUTHORITY';
