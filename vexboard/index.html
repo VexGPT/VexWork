@@ -51,6 +51,7 @@ import { createCameraAnimator } from './ui/camera-animation.mjs';
 import * as Interaction from './ui/interaction.mjs';
 import * as Presentation from './ui/presentation.mjs';
 import * as AndroidProjector from '../src/core/vexboard-android-source-projector.mjs';
+import * as ScreenDesign from '../src/core/vexboard-screen-design.mjs';
 import * as AndroidPresentation from './ui/android-reference-presentation.mjs';
 
 const app=document.getElementById('app');
@@ -152,7 +153,8 @@ async function openBoard(input,{pushCurrent=false,boardRef=null,prototypeInput=n
   if(pushCurrent&&current)boardStack.push(snapshotCurrent());
   const d=Board.normalizeDraft(input),s=await Board.hydrateBoardState(d.graph,d.projection);
   const evidence=d.evidence?Evidence.normalizeBoardEvidence(d.evidence,s.graph):null;
-  current={...d,graph:s.graph,projection:s.projection,evidence};selected=null;tool='SELECT';connectFrom=null;relationshipViewMode=Presentation.defaultRelationshipViewMode(d.projection.layoutIntent);
+  const design=d.design?ScreenDesign.normalizeScreenDesign(d.design):null;
+  current={...d,graph:s.graph,projection:s.projection,evidence,design};selected=null;tool='SELECT';connectFrom=null;relationshipViewMode=Presentation.defaultRelationshipViewMode(d.projection.layoutIntent);
   prototype=prototypeInput?Board.normalizeBoardPrototype(prototypeInput,s.graph):null;
   scenario=prototype?Board.createBoardScenario(prototype,s.graph,{scenarioRef:ref('scenario.vexboard')}):null;
   interactionTrail=[];collapsed=new Set();journey=null;journeyPathwayAnalysis=null;pinnedSemanticRefs=new Set();relationalFocusMode='CONNECT';camera=Board.normalizeCamera({x:48,y:48,zoom:1});activeBoardRef=boardRef||d.draftRef;
@@ -534,6 +536,10 @@ function renderWorkspace(){
   const badge=el('span',`badge ${editable()?'draft':'readonly'}`,editable()?'Local draft · browser only':'Read-only source');bar.append(title,badge);
   const androidProfile=AndroidPresentation.androidReferenceProfileSummary(current.presentation);
   if(androidProfile)bar.append(el('span','badge',`Android ref · ${androidProfile.widthDp}×${androidProfile.heightDp}dp`));
+  if(current.design){
+    const authority=current.design.authorityState==='VEXBOARD_DESIGN_AUTHORITY'?'VexBoard design authority':'Reverse-adopted design';
+    bar.append(el('span','badge',authority));
+  }
   const zoomOut=el('button','btn','Zoom out');zoomOut.onclick=()=>zoomBy(1/1.18);const zoomIn=el('button','btn','Zoom in');zoomIn.onclick=()=>zoomBy(1.18);const fit=el('button','btn','Fit');fit.onclick=fitBoard;const reset=el('button','btn','Reset view');reset.onclick=resetView;zoomReadoutEl=el('span','zoom-readout','100%');bar.append(zoomOut,zoomIn,fit,reset,zoomReadoutEl);
   if(current.graph.relationships.some(relationship=>!['FLOW','TRANSITION'].includes(relationship.kind))){
     const edgeView=el('button','btn',relationshipViewMode==='JOURNEY'?'Journey edges':'All relationships');
