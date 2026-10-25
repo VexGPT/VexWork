@@ -475,5 +475,199 @@
         "letterSpacingSp": 0.1
       }
     }
-  }
+  },
+  "componentAssignments": [
+    {
+      "assignmentRef": "assignment.screen.home",
+      "semanticRef": "screen.home",
+      "templateRef": "component.screen",
+      "styleRef": "style.default",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": null
+    },
+    {
+      "assignmentRef": "assignment.element.home.body.vexstream",
+      "semanticRef": "element.home.body.vexstream",
+      "templateRef": "component.surface",
+      "styleRef": "style.surface.raised",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": null
+    },
+    {
+      "assignmentRef": "assignment.element.home.body.systems.vexstream-music",
+      "semanticRef": "element.home.body.systems.vexstream-music",
+      "templateRef": "component.button",
+      "styleRef": "style.action.primary",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": null
+    },
+    {
+      "assignmentRef": "assignment.element.home.body.systems",
+      "semanticRef": "element.home.body.systems",
+      "templateRef": "component.surface",
+      "styleRef": "style.surface.raised",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": null
+    },
+    {
+      "assignmentRef": "assignment.element.home.body.systems.family-conversation",
+      "semanticRef": "element.home.body.systems.family-conversation",
+      "templateRef": "component.button",
+      "styleRef": "style.action.secondary",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": null
+    },
+    {
+      "assignmentRef": "assignment.element.home.body.systems.vex-maps",
+      "semanticRef": "element.home.body.systems.vex-maps",
+      "templateRef": "component.button",
+      "styleRef": "style.action.secondary",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": null
+    },
+    {
+      "assignmentRef": "assignment.element.home.body.systems.talk-to-vex",
+      "semanticRef": "element.home.body.systems.talk-to-vex",
+      "templateRef": "component.button",
+      "styleRef": "style.action.secondary",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": null
+    },
+    {
+      "assignmentRef": "assignment.screen.vexstream-music",
+      "semanticRef": "screen.vexstream-music",
+      "templateRef": "component.screen",
+      "styleRef": "style.default",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": null
+    },
+    {
+      "assignmentRef": "assignment.element.vexstream-music.body.library.search.open",
+      "semanticRef": "element.vexstream-music.body.library.search.open",
+      "templateRef": "component.icon-button",
+      "styleRef": "style.toolbar.icon",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": "icon.search"
+    },
+    {
+      "assignmentRef": "assignment.element.vexstream-music.body.library.organization.open",
+      "semanticRef": "element.vexstream-music.body.library.organization.open",
+      "templateRef": "component.icon-button",
+      "styleRef": "style.toolbar.icon",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": "icon.menu"
+    },
+    {
+      "assignmentRef": "assignment.element.vexstream-music.body.connection.manage",
+      "semanticRef": "element.vexstream-music.body.connection.manage",
+      "templateRef": "component.icon-button",
+      "styleRef": "style.toolbar.icon",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": "icon.settings"
+    },
+    {
+      "assignmentRef": "assignment.element.vexstream-music.body.library-tabs.songs",
+      "semanticRef": "element.vexstream-music.body.library-tabs.songs",
+      "templateRef": "component.tab",
+      "styleRef": "style.navigation",
+      "selectedStyleRefOrNull": "style.action.primary",
+      "iconRefOrNull": null
+    },
+    {
+      "assignmentRef": "assignment.element.vexstream-music.body.library-tabs.albums",
+      "semanticRef": "element.vexstream-music.body.library-tabs.albums",
+      "templateRef": "component.tab",
+      "styleRef": "style.navigation",
+      "selectedStyleRefOrNull": "style.action.primary",
+      "iconRefOrNull": null
+    },
+    {
+      "assignmentRef": "assignment.element.vexstream-music.body.library-tabs.artists",
+      "semanticRef": "element.vexstream-music.body.library-tabs.artists",
+      "templateRef": "component.tab",
+      "styleRef": "style.navigation",
+      "selectedStyleRefOrNull": "style.action.primary",
+      "iconRefOrNull": null
+    },
+    {
+      "assignmentRef": "assignment.element.vexstream-music.body.library-tabs.playlists",
+      "semanticRef": "element.vexstream-music.body.library-tabs.playlists",
+      "templateRef": "component.tab",
+      "styleRef": "style.navigation",
+      "selectedStyleRefOrNull": "style.action.primary",
+      "iconRefOrNull": null
+    },
+    {
+      "assignmentRef": "assignment.element.vexstream-music.body.library-tabs.downloads",
+      "semanticRef": "element.vexstream-music.body.library-tabs.downloads",
+      "templateRef": "component.tab",
+      "styleRef": "style.navigation",
+      "selectedStyleRefOrNull": "style.action.primary",
+      "iconRefOrNull": null
+    },
+    {
+      "assignmentRef": "assignment.element.vexstream-music.body.library-actions.play-all",
+      "semanticRef": "element.vexstream-music.body.library-actions.play-all",
+      "templateRef": "component.fab",
+      "styleRef": "style.action.primary",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": "icon.play"
+    },
+    {
+      "assignmentRef": "assignment.element.vexstream-music.body.library-actions.shuffle-all",
+      "semanticRef": "element.vexstream-music.body.library-actions.shuffle-all",
+      "templateRef": "component.fab",
+      "styleRef": "style.action.secondary",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": "icon.shuffle"
+    },
+    {
+      "assignmentRef": "assignment.element.vexstream-music.body.connection.menu",
+      "semanticRef": "element.vexstream-music.body.connection.menu",
+      "templateRef": "component.modal-bottom-sheet",
+      "styleRef": "style.surface.raised",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": null
+    },
+    {
+      "assignmentRef": "assignment.element.vexstream-music.body.connection.refresh",
+      "semanticRef": "element.vexstream-music.body.connection.refresh",
+      "templateRef": "component.button",
+      "styleRef": "style.action.secondary",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": null
+    },
+    {
+      "assignmentRef": "assignment.element.vexstream-music.body.connection.library.download-all-missing",
+      "semanticRef": "element.vexstream-music.body.connection.library.download-all-missing",
+      "templateRef": "component.button",
+      "styleRef": "style.action.secondary",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": "icon.download"
+    },
+    {
+      "assignmentRef": "assignment.element.vexstream-music.body.connection.library.remove-all-downloaded",
+      "semanticRef": "element.vexstream-music.body.connection.library.remove-all-downloaded",
+      "templateRef": "component.button",
+      "styleRef": "style.action.danger",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": "icon.remove-download"
+    },
+    {
+      "assignmentRef": "assignment.element.vexstream-music.body.connection.forget.request",
+      "semanticRef": "element.vexstream-music.body.connection.forget.request",
+      "templateRef": "component.button",
+      "styleRef": "style.action.danger",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": null
+    },
+    {
+      "assignmentRef": "assignment.element.vexstream-music.body.connection.menu.close",
+      "semanticRef": "element.vexstream-music.body.connection.menu.close",
+      "templateRef": "component.button",
+      "styleRef": "style.action.secondary",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": "icon.close"
+    }
+  ]
 }
