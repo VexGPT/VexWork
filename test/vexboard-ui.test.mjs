@@ -200,7 +200,12 @@ test('right-click pin focus is browser-local diagnostic state over bounded relat
   assert.match(page, /pin-muted/);
   assert.match(page, /pinnedSemanticRefs:\[\.\.\.pinnedSemanticRefs\]/);
   assert.doesNotMatch(page, /localStorage\.(?:setItem|getItem)\([^)]*pin/i);
-  assert.doesNotMatch(page, /'CONNECT_NODES'.*togglePinnedSemanticRef/s);
+  const pinHelpers = page.slice(
+    page.indexOf('function currentRelationalFocus()'),
+    page.indexOf('function inspectorRefToken('),
+  );
+  assert.ok(pinHelpers.length > 0);
+  assert.doesNotMatch(pinHelpers, /CONNECT_NODES|Board\.applyBoardControl|\bact\(/);
   assert.doesNotMatch(page, /method:\s*['"](?:POST|PUT|PATCH|DELETE)['"]/i);
 });
 test('prototype demo drives clickable local simulation through scenario overlays and BoardJourney', () => {
