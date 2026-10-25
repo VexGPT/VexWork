@@ -5,10 +5,13 @@
 ## Human outcome
 
 Make VexStream on Android a **durable, reusable and human-navigable mobile music library** while
-keeping the accepted durable-device and one-shot MassDownload truths intact. Android now also has a
-compact **Sort by / Filter by** surface plus settings-level **Download all missing songs / Remove all
-downloaded songs** for the canonical Songs library. Continuous "Keep Offline" sync remains a
-separately governed future policy.
+keeping the accepted durable-device and one-shot MassDownload truths intact. Android has a compact
+**Sort by / Filter by** surface plus settings-level **Download all missing songs / Remove all
+downloaded songs**, but lived review reopened Library organization because there is no truthful
+freshness view for finding newly added/downloaded music. Artwork availability also remains active:
+current playback can still show placeholders, and a separate missing-artwork reconciliation control is
+now explicit Work. Continuous "Keep Offline" media-membership sync remains a separately governed
+future policy.
 
 This Project is the human/navigation owner for that outcome. Product semantics remain with
 VexLife-Android and VexStream Music.
@@ -46,14 +49,16 @@ VexStream Mobile Library                         OUTCOME
 |   +-- Songs bulk download / remove all          TASK / needs human review
 |
 +-- Library Browse & Discovery                   OUTCOME / decomposed
-|   +-- Sort / Filter library controls           TASK / needs human review
+|   +-- Sort / Filter / Recently added controls  TASK / running / lived feedback
 |
 +-- Large offline-library cold-start performance DEFECT / source fix merged / lived observation pending
 |
 +-- Playback Surfaces                            OUTCOME / decomposed
 |   +-- Now Playing artwork projection           TASK / completed / online metadata projection accepted
-|   +-- Offline artwork durability               DEFECT / running / PR #177 source candidate
-|   +-- VexStream full player                    TASK / verifying / source proven + Assurance clear / lived review next
+|   +-- Offline artwork durability               DEFECT / running
+|   +-- Current-track artwork availability       DEFECT / running / post-merge lived placeholder
+|   +-- Reconcile / sync missing artwork          TASK / decomposed / no implementation authority
+|   +-- VexStream full player                    TASK / verifying / lived artwork feedback remains
 |
 +-- MassDownload Maturity                        OUTCOME
     +-- MassDownload product implementation      TASK / completed
@@ -933,3 +938,75 @@ Fresh-instance diagnosis should capture exact before/after facts around one new-
 Then repair the smallest rightful owner. If the destructive behavior belongs to proof/install tooling,
 keep product pairing semantics intact and isolate proof builds from Victor's lived pairing rather than
 teaching the product to recover from an unauthorized credential reset.
+
+### ML-D18 — Freshness discovery is required; catalog-added and device-downloaded are different clocks
+
+Victor's lived review exposed a concrete navigation failure: after downloading new songs, there is no
+obvious way to find the fresh material again. The accepted Sort / Filter surface therefore returns
+from human review to active refinement.
+
+The word **Recently added** must not hide two distinct truths:
+
+```text
+ADDED_TO_VEXSTREAM_CATALOG
+    producer/library chronology
+    VexStream Desktop already owns Track.AddedAt
+
+DOWNLOADED_TO_THIS_ANDROID_DEVICE
+    local-copy chronology
+    Android currently carries verified copy identity, but no equivalent VexStreamTrack/offline-index
+    timestamp in the mobile contract
+```
+
+Current Desktop `Track.AddedAt` is not projected by `v2/desktop/mobile/catalog.go`, and current
+Android `VexStreamTrack` / `VexStreamOfflineIndex` do not carry either freshness clock. So this is
+not truthfully a UI-only dropdown addition.
+
+The refinement should expose the human question explicitly—at minimum a way to find newly added music
+and newly downloaded/on-device music without conflating the clocks. Sort, Filter, Search, row playback,
+Play All and Shuffle All must continue to consume one coherent organized membership.
+
+Work:
+
+```text
+work.vexstream.mobile-library.sort-filter-controls
+  WAITING_HUMAN -> RUNNING
+  label -> Sort / Filter / Recently added library controls
+```
+
+### ML-D19 — Missing-artwork reconciliation is not persistent Keep Offline sync
+
+The embedded-artwork producer and Android consumer are now accepted source, yet lived playback still
+shows placeholder artwork for observed tracks. Per-track best-effort preparation is useful, but Victor
+also needs a deliberate way to reconcile the **library's missing ancillary artwork** instead of hoping
+that each track happens to become current and self-heal.
+
+That control is separate from continuous Keep Offline / Sync:
+
+```text
+MISSING_ARTWORK_RECONCILIATION
+    current library
+    -> known artwork source + local cache present?       keep
+    -> known artwork source + local cache missing/stale  fetch/cache through rightful repository owner
+    -> no admitted artwork source                        ordinary no-art placeholder
+
+    never redownload audio
+    never make widget/full-player a fetch owner
+    bounded counts/progress/results
+
+PERSISTENT_KEEP_OFFLINE_SYNC
+    continuously mirror desired media membership as producer membership changes
+```
+
+New Work:
+
+```text
+work.vexstream.mobile-library.missing-artwork-reconciliation
+  TASK / DECOMPOSED / ACTIVE
+  dependency = work.vexstream.mobile-library.current-artwork-availability
+  authority = NO_AUTHORITY
+  effects = NO_EFFECTS
+```
+
+This preserves the product need now without silently authorizing implementation or collapsing artwork
+metadata convergence into the parked media-membership sync policy.
