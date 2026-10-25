@@ -48,7 +48,7 @@ test('VexLife Android POC snapshot projects deterministically without source eff
   );
   assert.equal(first.board.adoptionCoverage.findings.length, 5);
   assert.equal(first.board.adoptionReadiness.status, 'HELD');
-  assert.equal(first.board.adoptionReadiness.blockingFindingRefs.length, 5);
+  assert.equal(first.board.adoptionReadiness.blockingFindingRefs.length, 2);
   assert.deepEqual(
     summarizeAndroidPocAdoptionReadiness(snapshot.adoptionCoverage),
     first.board.adoptionReadiness,
@@ -58,6 +58,8 @@ test('VexLife Android POC snapshot projects deterministically without source eff
   );
   assert.equal(homeCopyFinding.ownerSemanticRef, 'element.home.body.vexstream');
   assert.equal(homeCopyFinding.kind, 'RAW_COMPOSE_NO_SEMANTIC_REF');
+  assert.equal(homeCopyFinding.blockingForPocAuthority, true);
+  assert.equal(homeCopyFinding.scopeStatus, 'IN_POC');
 
   const showQueueFinding = first.board.adoptionCoverage.findings.find(
     (entry) => entry.findingRef === 'finding.android.vexstream.show-queue-parent-drift',
@@ -68,6 +70,8 @@ test('VexLife Android POC snapshot projects deterministically without source eff
     'element.vexstream-music.body.player.queue.show',
   );
   assert.equal(showQueueFinding.kind, 'REGISTRY_RENDER_STRUCTURE_DRIFT');
+  assert.equal(showQueueFinding.blockingForPocAuthority, false);
+  assert.equal(showQueueFinding.scopeStatus, 'OUTSIDE_POC');
 
   const derivedContentCoverage = first.board.adoptionCoverage.identityExceptions.find(
     (entry) =>
