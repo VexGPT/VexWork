@@ -204,8 +204,8 @@ The two lived widget defects are now actively implemented together on Android PR
 
 ```text
 github.pull.vexlife-android.179
-head = 28ef2345492c9345eecbbe4a2a8d91c4f3ac60be
-tree = f0941d531f1348ceeac34f9332884de1506bce52
+head = 2dc060113e5e100a47bf053807376c5cd40cb639
+tree = 1226d1a1b2d7445bf76bdc8b2c97522da5dc0b2e
 
 work.android-widget-foundation.vexstream-playback-widget.state-refresh = RUNNING
 work.android-widget-foundation.vexstream-playback-widget.layout-usability = RUNNING
@@ -226,6 +226,12 @@ artwork = 60dp
 metadata + transport = centered column
 widget min geometry = 280dp x 72dp
 ```
+
+Current SourceOwner A001 formation:
+`sha256:0bab41ff8f76020e69242c6ec6abed8c2490d620115da3cee9c34a45a243198f`
+
+It supersedes the unexecuted pre-click-target-correction formation. The current candidate also keeps
+the weighted transport container non-clickable so the three 48dp Controls remain independent targets.
 
 Exact-head SourceOwner proof and fresh Assurance are the next source gates. Album-art availability
 remains a separate upstream VexStream product defect rather than being hidden inside PR #179.
