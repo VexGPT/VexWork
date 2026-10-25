@@ -355,5 +355,27 @@
       "mode": "COLUMN",
       "gapMetricRefOrNull": "containerGapVertical"
     }
-  ]
+  ],
+  "intrinsicSizes": {
+    "element.vexstream-music.body.library-tabs.songs": {
+      "widthDp": 96,
+      "heightDp": 40
+    },
+    "element.vexstream-music.body.library-tabs.albums": {
+      "widthDp": 106,
+      "heightDp": 40
+    },
+    "element.vexstream-music.body.library-tabs.artists": {
+      "widthDp": 100,
+      "heightDp": 40
+    },
+    "element.vexstream-music.body.library-tabs.playlists": {
+      "widthDp": 116,
+      "heightDp": 40
+    },
+    "element.vexstream-music.body.library-tabs.downloads": {
+      "widthDp": 130,
+      "heightDp": 40
+    }
+  }
 }
