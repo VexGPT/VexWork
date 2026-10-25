@@ -254,6 +254,340 @@ universal lens enum, viewport schema or responsive-layout compiler merely from t
 implementation should prove the smallest useful Screen-frame + lens-switch seam and let a second real
 consumer determine what deserves extraction.
 
+## Blueprint-readable system — source is an x-ray, not a prerequisite
+
+A living Blueprint should be sufficient for a human or AI to understand the application/system
+without opening implementation source merely to discover what connects to what.
+
+Source remains exact and inspectable, but it is an appendage/provenance layer around already-legible
+Blueprint meaning:
+
+~~~text
+Blueprint experience / architecture
+  -> identity
+  -> structure
+  -> interaction meaning
+  -> state / behavior
+  -> dependencies
+  -> data / storage / provider relationships
+  -> execution / proof relationships
+
+SOURCE / IMPLEMENTATION
+  -> exact target realization of those meanings
+  -> repository / file / symbol / revision
+  -> target-only mechanics and diagnostics
+~~~
+
+Permanent:
+
+~~~text
+BLUEPRINT_READABLE != SOURCE_HIDDEN
+SOURCE_AVAILABLE != SOURCE_REQUIRED_FOR_BASIC_COMPREHENSION
+COLLAPSED_RELATIONSHIP != AMBIGUOUS_RELATIONSHIP
+NOT_RENDERED_BY_DEFAULT != NONEXISTENT
+EVERY_MATERIAL_CONNECTION -> ADDRESSABLE + REVEALABLE
+~~~
+
+The ordinary surface should therefore answer questions such as:
+
+~~~text
+What Screen am I on?
+What is inside it?
+What can I do here?
+What does that action mean?
+Where can it take me?
+What truth/data does this surface depend on?
+What behavior or convergence produces that truth?
+What storage/provider/runtime owns the deeper consequence?
+What evidence proves the intended result?
+~~~
+
+without requiring the reader to reverse-engineer Kotlin, JavaScript, SQL or another target language.
+
+### Development-space grammar — forward horizontally, branch vertically, descend for architecture
+
+The VexStream patient zero is pressuring a useful spatial grammar for **digital/product development**
+views:
+
+~~~text
+X / horizontal
+  forward traversal / consequence / evolution
+
+Y / vertical
+  sibling branches / alternate paths / related optional consequences
+
+Z / depth
+  architecture beneath or behind the selected semantic coordinate
+  behavior / dependencies / data / storage / provider / source / proof
+
+T / revision-currentness
+  current / proposed / expected / observed / historical lineage
+~~~
+
+This may be rendered as ordinary 2D plus enter/reveal/overlay behavior. It does not require literal
+perspective 3D graphics.
+
+Example:
+
+~~~text
+Home 1.0
+    -> Home 1.1
+          -> VexStream Music 1.0
+                 -> Library
+                 -> Track Detail
+                 -> Player
+
+Settings
+    -> Account
+       Notifications
+       Privacy
+       Devices
+~~~
+
+The primary forward path reads left-to-right. Branches consume vertical space. Deeper implementation
+and architecture should not be forced onto that same primary plane merely because it is connected.
+
+This is a development/product projection grammar, not a universal process-map law. Physical,
+operational, instructional and other process maps may legitimately prefer compact ROW / WRAP /
+SERPENTINE or another process-specific reading order when Screens and rich surface frames are not the
+primary information.
+
+~~~text
+DIGITAL_DEVELOPMENT_LAYOUT != UNIVERSAL_PROCESS_LAYOUT
+PROCESS_MAP != SCREEN_FLOW_WITH_SCREENSHOTS_REMOVED
+SHARED_SEMANTICS MAY HAVE DIFFERENT PROJECTION_GRAMMARS
+~~~
+
+### One Screen identity may evolve through revisions
+
+A design evolution should normally preserve the stable Screen identity and attach revision/currentness
+meaning rather than minting a new product Screen for every edit.
+
+~~~text
+screen.home
+
+revision 1.0
+  accepted design
+  expected / observed evidence where available
+
+revision 1.1
+  proposed or accepted successor
+  + element.home.body.vexstream.connect
+~~~
+
+This lets a designer perceive what existed, what is changing and what the expected next state is
+without confusing revision with identity.
+
+### Unresolved interactive consequence is an explicit authoring junction
+
+When a new interactive element exists but its consequence has not yet been bound, VexBoard should be
+able to show a small explicit unresolved junction such as:
+
+~~~text
+[ Connect VexStream Music ] -> [+]
+~~~
+
+The `+` means:
+
+> this interaction identity exists, but the intended semantic consequence has not yet been selected.
+
+Useful bounded choices may include:
+
+~~~text
+Navigate
+  -> existing Screen
+  -> new Screen
+
+Present
+  -> dialog
+  -> bottom sheet
+  -> overlay / popover
+
+Local presentation
+  -> toggle
+  -> tab / swappable region
+  -> open / close
+
+Invoke
+  -> existing semantic action
+  -> new bounded semantic action
+
+Platform / external
+  -> Android/system surface
+  -> permission / picker
+  -> external intent / deep link
+
+Background / non-UI
+  -> event / receiver / callback / scheduled or service-owned intention
+
+Custom
+  -> explicit bounded meaning not covered above
+~~~
+
+This is an authoring affordance, not a new universal node enum.
+
+Permanent:
+
+~~~text
+UNRESOLVED_CONSEQUENCE != BROKEN_SOURCE
+INTERACTIVE_UI -> SHOULD_HAVE_EXPLICIT_MEANING
+INTENTION != ALWAYS_UI
+UI != ALWAYS_EFFECT
+BACKGROUND_INPUT MAY HAVE NO IMMEDIATE_SCREEN
+STATIC_UI MAY HAVE NO_ACTION
+~~~
+
+### Screen authoring should walk from intention into construction
+
+A newly formed Screen may progressively ask only for the meaning required to construct it:
+
+~~~text
+stable Screen identity
++ human purpose
++ initial composition / reusable components
++ interaction identities and consequences
++ data/state required by the surface
++ repository / service / provider relationships when real
++ persistence/storage relationship when real
++ execution/lifetime defaults
++ proof / evidence expectations
+        |
+        v
+target construction mapping
+~~~
+
+The author should not have to specify Android boilerplate merely to say that a network-backed list
+appears on a Screen. A target adapter may infer a reasonable execution/lifetime realization, while
+keeping that inference visible and overrideable:
+
+~~~text
+DEFAULTED_EXECUTION != INVISIBLE_EXECUTION
+
+repository/network read
+-> background execution by default
+-> observable state / projection
+-> foreground rendering
+
+long-lived playback
+-> service/runtime owner when required
+
+Screen-local transient selection
+-> local presentation lifetime by default
+~~~
+
+A default remains inspectable architecture, not hidden magic.
+
+### Architectural depth is progressive disclosure from the selected coordinate
+
+The ordinary Screen/design block should expose bounded depth affordances rather than dumping the whole
+application underneath every surface.
+
+For a selected `screen.vexstream-music`, the first depth reveal might show:
+
+~~~text
+Behavior
+Data / Repository
+Dependencies
+Storage
+Provider / API
+Runtime / Service
+Source
+Proof / Evidence
+~~~
+
+Selecting Data should initially answer only what this Screen consumes:
+
+~~~text
+VexStreamMusicRepository
+  state
+    connectionState
+    hubState
+    tracks[]
+    playlists[]
+
+  findNearbyVexStream()
+  refreshCatalog()
+  downloadForOffline(...)
+~~~
+
+A user may then descend:
+
+~~~text
+tracks[]
+-> VexStreamTrackState
+-> localCopy
+-> Downloaded
+-> MediaStore / local asset owner
+~~~
+
+The database/table/provider totality remains reachable but does not become the default Screen view.
+
+~~~text
+SELECTED_COORDINATE
+-> BOUNDED_RELEVANT_DEPTH
+-> EXPLICIT EXPAND / ENTER
+-> DEEPER OWNER
+
+SCREEN_DEPENDENCY_VIEW != WHOLE_DATABASE_DUMP
+FULL_SYSTEM_ADDRESSABLE != FULL_SYSTEM_SIMULTANEOUSLY_RENDERED
+~~~
+
+### Semantic action and implementation symbol remain different coordinates
+
+Implementation functions should be referencable, but target symbol names must not become universal
+product identity merely because they are convenient to display.
+
+~~~text
+action.vexstream.find-nearby
+        |
+        +-> Android implementation
+        |     PairedVexStreamMusicRepository.findNearbyVexStream(...)
+        |
+        +-> future other target implementation
+              target-native symbol
+~~~
+
+A source/detail view may show:
+
+~~~text
+semantic action / relationship
+implementation function
+parameters
+output
+fields actually consumed by the selected surface
+repository / provider dependencies
+source location + revision
+~~~
+
+This allows the application to be read from the Blueprint while still providing Android-Studio-like
+source descent when implementation detail matters.
+
+### Local custom construction may graduate into reusable Gallery vocabulary
+
+A feature may first create a custom local component:
+
+~~~text
+VexStream Track Card
+  artwork
+  title / artist
+  action menu
+~~~
+
+If another independent consumer proves the same structural/design promise, that construction may be
+promoted into a reusable Gallery/component template rather than copied.
+
+~~~text
+local custom construction
+-> second real consumer
+-> reusable component pressure
+-> accepted Gallery / template vocabulary
+-> future Screen reuse
+~~~
+
+Gallery is therefore a reusable visual/construction vocabulary, not a requirement that every local
+composition become globally reusable.
+
+
 ## Current / proposed / observed must remain visually separable
 
 The IDE should answer:
@@ -1052,8 +1386,34 @@ accepted VexLife Blueprint Source-of-Truth construction lineage
 accepted VexBoard Graph / Projection / Journey / Evidence / composition substrate
 ~~~
 
-The next implementation should prove the vertical living-Blueprint slice rather than invent another
-architecture layer from prose.
+The next implementation should first align the **current source-owned VexLife-Android / VexStream
+vertical system slice** into a Blueprint-readable map rather than invent another architecture layer
+from prose:
+
+~~~text
+screen / element identity
+-> Compose / presentation occurrence
+-> semantic intent / VexRuntime
+-> SCAE Behavior where present
+-> Convergence Relay where present
+-> repository / domain State
+-> persistence / storage / provider
+-> Android-native runtime / service
+-> Journey / FeatureWalk / visual / device proof
+~~~
+
+The immediate visual pressure from the first lived VexStream Board is also now explicit:
+
+~~~text
+development traversal -> horizontal
+branching / alternate paths -> vertical
+architecture depth -> reveal / descend from the selected coordinate
+source -> exact x-ray/provenance appendage, not a prerequisite for reading the application
+every material relationship -> addressable even when collapsed from the current view
+~~~
+
+The Screen / Design lens should then evolve as one view of that richer current map, not as an isolated
+phone mockup disconnected from behavior, data, construction and proof.
 
 ## Completion shape for the reusable IDE foundation
 
