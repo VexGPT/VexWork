@@ -827,7 +827,7 @@
       "label": "VexStream pairing reconnect continuity across new builds",
       "purpose": "Fix the lived regression where installing a newer VexLife Android build can leave the phone unable to reconnect to the Desktop's already-established VexStream pairing. Preserve pairing across ordinary data-preserving upgrades/reinstalls, distinguish product persistence from destructive test/install tooling, and keep explicit Clear Data/uninstall credential loss separate from durable downloaded-media recovery.",
       "workClass": "DEFECT",
-      "state": "VERIFYING",
+      "state": "COMPLETED",
       "workDisposition": "ACTIVE",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
@@ -854,7 +854,8 @@
         "evidence.vexlife-android.pr180.sourceowner.a001.inner.sha256.85dd83bb8db46a54f87e4faa679ea405fabffa986b0787e16bcd53515c515759",
         "evidence.vexstream.pairing-continuity.device.a003.outer.sha256.07bd56a7d0cd3a3051f6affc411731f1a63887a9266c4170e3e522fd16556a17",
         "evidence.vexstream.pairing-continuity.device.a003.inner.sha256.a830542dfb9ccd655952b99ec8d1cec10a068a3cbd8dd2da4fcab4e1fbd7672a",
-        "github.comment.vexlife-android.pr180.6395713039.device-a003-pass"
+        "github.comment.vexlife-android.pr180.6395713039.device-a003-pass",
+        "human.lived-feedback.vexstream.uninstall-reinstall-reconnect-not-preserved.20261025"
       ],
       "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
       "nextProcessRefs": [
@@ -863,7 +864,37 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-25T07:10:00.000Z",
-      "updatedAt": "2026-10-25T09:02:15.000Z"
+      "updatedAt": "2026-10-25T09:10:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexstream.mobile-library.pairing-continuity-after-uninstall-reinstall",
+      "parentWorkRefOrNull": "work.vexstream.mobile-library.outcome",
+      "label": "VexStream pairing continuity after uninstall / reinstall",
+      "purpose": "Explore a future explicit product design for reconnecting the same previously-approved Desktop after a true Android uninstall/reinstall removes app-private SharedPreferences and Android Keystore identity. Keep this separate from ordinary data-preserving upgrades/proof builds, do not weaken TLS pinning or bearer-token authority, and treat it as non-blocking experience backlog until deliberately resumed.",
+      "workClass": "DEFECT",
+      "state": "CAPTURED",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexlife-android",
+        "repo.vexstream-music"
+      ],
+      "sourceRefs": [
+        "work.vexstream.mobile-library.pairing-reconnect-build-continuity",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamConnectionStore.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/PairedVexStreamMusicRepository.kt",
+        "human.lived-feedback.vexstream.uninstall-reinstall-reconnect-not-preserved.20261025"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+      "nextProcessRefs": [
+        "process.vexlife-android.feature-authoring"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_HELD",
+      "createdAt": "2026-10-25T09:10:00.000Z",
+      "updatedAt": "2026-10-25T09:10:00.000Z"
     }
   ],
   "transitions": [
@@ -1265,6 +1296,35 @@
         "github.comment.vexlife-android.pr180.6395231779.post-merge-exact-composition"
       ],
       "createdAt": "2026-10-25T08:08:17.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.pairing-reconnect-build-continuity.completed.machine-bounded-20261025",
+      "workRef": "work.vexstream.mobile-library.pairing-reconnect-build-continuity",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "PR #180 is merged, SourceOwner passed, Assurance was CLEAR, exact current-main composition was verified, and physical A003 proved the installed package plus private VexStream pairing record survive the repository-owned connected-test path byte-for-byte. Victor clarified that a true uninstall/reinstall still loses pairing and is acceptable as a separate non-blocking future concern rather than a failure of this bounded build/proof-continuity outcome.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexlife-android.180",
+        "github.comment.vexlife-android.pr180.6395713039.device-a003-pass",
+        "human.lived-feedback.vexstream.uninstall-reinstall-reconnect-not-preserved.20261025"
+      ],
+      "createdAt": "2026-10-25T09:10:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.pairing-continuity-after-uninstall-reinstall.captured-20261025",
+      "workRef": "work.vexstream.mobile-library.pairing-continuity-after-uninstall-reinstall",
+      "priorState": "UNFORMED",
+      "nextState": "CAPTURED",
+      "reason": "Victor observed that uninstall/reinstall does not reconnect automatically, accepted that this is non-blocking for the current experience lane, and asked to return it to TODO/backlog for later. Capture it separately because uninstall intentionally destroys current app-private SharedPreferences + Android Keystore identity, unlike the now-proven ordinary build/proof continuity path.",
+      "actorRef": "actor.local-vex-operations.vexstream-mobile-library",
+      "sourceRefs": [
+        "work.vexstream.mobile-library.pairing-reconnect-build-continuity",
+        "human.lived-feedback.vexstream.uninstall-reinstall-reconnect-not-preserved.20261025"
+      ],
+      "createdAt": "2026-10-25T09:10:00.000Z"
     }
   ],
   "sourceRefs": [
