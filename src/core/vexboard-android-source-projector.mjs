@@ -1,4 +1,11 @@
 import { createBoardGraph, createBoardProjection } from './vexboard.mjs';
+import {
+  VEXBOARD_SCREEN_DESIGN_SCHEMA,
+  boundedResponsiveMetric,
+  normalizeScreenDesign,
+  resolveBoundedResponsiveMetric,
+  resolveScreenDesignBox,
+} from './vexboard-screen-design.mjs';
 
 export const VEXLIFE_ANDROID_POC_SNAPSHOT_SCHEMA = 'vexlife-android.vexboard-snapshot/poc-v1';
 export const VEXBOARD_ANDROID_REFERENCE_PRESENTATION_SCHEMA = 'vexboard.android-reference-presentation/v1';
@@ -124,7 +131,7 @@ function makePresentation(profile, hints, sourceRefs, relationshipRoutes = []) {
   });
 }
 
-function makeDraft({ draftRef, title, graph, projection, presentation, sourceRefs }) {
+function makeDraft({ draftRef, title, graph, projection, presentation, design = null, sourceRefs }) {
   return Object.freeze({
     schemaVersion: 'vexboard.local-draft/v1',
     draftRef,
@@ -135,6 +142,7 @@ function makeDraft({ draftRef, title, graph, projection, presentation, sourceRef
     graph: stripFingerprint(graph),
     projection: stripFingerprint(projection),
     presentation,
+    ...(design ? { design: normalizeScreenDesign(design) } : {}),
     sourceRefs: refs(sourceRefs, 'draft.sourceRefs'),
   });
 }
@@ -148,15 +156,119 @@ function sourceUnion(snapshot, ...groups) {
   ], 'source union');
 }
 
-function profileMetrics(profile) {
+function reverseAdoptedScreenDesign(snapshot) {
+  const profile = snapshot.referenceProfile;
+  const metric = (referenceDp, referenceExtentDp) =>
+    boundedResponsiveMetric({
+      referenceDp,
+      referenceExtentDp,
+      minDp: referenceDp,
+      maxDp: referenceDp,
+    });
+
+  const metrics = Object.freeze({
+    toolbarHeight: metric(profile.toolbarHeightDp, profile.heightDp),
+    bottomBarHeight: metric(profile.bottomBarHeightDp, profile.heightDp),
+    screenPaddingHorizontal: metric(profile.screenPaddingDp, profile.widthDp),
+    screenPaddingVertical: metric(profile.screenPaddingDp, profile.heightDp),
+    containerPadding: metric(profile.containerPaddingDp, profile.widthDp),
+    containerGap: metric(profile.containerGapDp, profile.widthDp),
+    listGap: metric(profile.listGapDp, profile.heightDp),
+  });
+
+  const shellHorizontal = {
+    size: { mode: 'FILL' },
+    bias: 0.5,
+  };
+  const shellVertical = {
+    startMargin: metrics.toolbarHeight,
+    endMargin: metrics.bottomBarHeight,
+    size: { mode: 'FILL' },
+    bias: 0.5,
+  };
+  const innerHorizontal = {
+    startMargin: metrics.screenPaddingHorizontal,
+    endMargin: metrics.screenPaddingHorizontal,
+    size: { mode: 'FILL' },
+    bias: 0.5,
+  };
+  const innerVertical = {
+    startMargin: metrics.screenPaddingVertical,
+    endMargin: metrics.screenPaddingVertical,
+    size: { mode: 'FILL' },
+    bias: 0.5,
+  };
+
+  return Object.freeze({
+    schemaVersion: VEXBOARD_SCREEN_DESIGN_SCHEMA,
+    designRef: 'design.vexlife-android.home-vexstream.reverse-adopted',
+    authorityState: 'REVERSE_ADOPTED_CANDIDATE',
+    referenceViewport: Object.freeze({
+      widthDp: profile.widthDp,
+      heightDp: profile.heightDp,
+    }),
+    metrics,
+    constraints: Object.freeze([
+      Object.freeze({
+        occurrenceRef: 'design-occurrence.home.shell-content',
+        semanticRef: snapshot.home.screenRef,
+        parentOccurrenceRefOrNull: null,
+        horizontal: shellHorizontal,
+        vertical: shellVertical,
+      }),
+      Object.freeze({
+        occurrenceRef: 'design-occurrence.home.inner-content',
+        semanticRef: snapshot.home.screenRef,
+        parentOccurrenceRefOrNull: 'design-occurrence.home.shell-content',
+        horizontal: innerHorizontal,
+        vertical: innerVertical,
+      }),
+      Object.freeze({
+        occurrenceRef: 'design-occurrence.vexstream.shell-content',
+        semanticRef: snapshot.vexStream.screenRef,
+        parentOccurrenceRefOrNull: null,
+        horizontal: shellHorizontal,
+        vertical: shellVertical,
+      }),
+      Object.freeze({
+        occurrenceRef: 'design-occurrence.vexstream.inner-content',
+        semanticRef: snapshot.vexStream.screenRef,
+        parentOccurrenceRefOrNull: 'design-occurrence.vexstream.shell-content',
+        horizontal: innerHorizontal,
+        vertical: innerVertical,
+      }),
+    ]),
+  });
+}
+
+function profileMetrics(profile, design) {
+  const viewport = { x: 0, y: 0, width: profile.widthDp, height: profile.heightDp };
+  const shell = resolveScreenDesignBox({
+    parentBoundsDp: viewport,
+    horizontal: design.constraints[0].horizontal,
+    vertical: design.constraints[0].vertical,
+  });
+  const inner = resolveScreenDesignBox({
+    parentBoundsDp: shell,
+    horizontal: design.constraints[1].horizontal,
+    vertical: design.constraints[1].vertical,
+  });
+
   return Object.freeze({
     width: scaled(profile.widthDp),
     height: scaled(profile.heightDp),
-    toolbar: scaled(profile.toolbarHeightDp),
-    padding: scaled(profile.screenPaddingDp),
-    inner: scaled(profile.containerPaddingDp),
-    gap: scaled(profile.containerGapDp),
-    listGap: scaled(profile.listGapDp),
+    toolbar: scaled(resolveBoundedResponsiveMetric(design.metrics.toolbarHeight, profile.heightDp)),
+    bottomBar: scaled(resolveBoundedResponsiveMetric(design.metrics.bottomBarHeight, profile.heightDp)),
+    padding: scaled(resolveBoundedResponsiveMetric(design.metrics.screenPaddingHorizontal, profile.widthDp)),
+    inner: scaled(resolveBoundedResponsiveMetric(design.metrics.containerPadding, profile.widthDp)),
+    gap: scaled(resolveBoundedResponsiveMetric(design.metrics.containerGap, profile.widthDp)),
+    listGap: scaled(resolveBoundedResponsiveMetric(design.metrics.listGap, profile.heightDp)),
+    content: Object.freeze({
+      x: scaled(inner.x),
+      y: scaled(inner.y),
+      width: scaled(inner.width),
+      height: scaled(inner.height),
+    }),
   });
 }
 
@@ -168,7 +280,8 @@ function addActionNodes(nodes, section, ownerScreenRef) {
 }
 
 function experienceBoard(snapshot) {
-  const p = profileMetrics(snapshot.referenceProfile);
+  const design = reverseAdoptedScreenDesign(snapshot);
+  const p = profileMetrics(snapshot.referenceProfile, design);
   const graphRef = 'graph.vexlife-android.home-vexstream.poc';
   const projectionRef = 'projection.vexlife-android.home-vexstream.poc';
   const sourceRefs = sourceUnion(snapshot, snapshot.home.sourceRefs, snapshot.vexStream.sourceRefs);
@@ -309,9 +422,9 @@ function experienceBoard(snapshot) {
   items.push(projectionItem('item.home.toolbar', homeTitleRef, 'RECTANGLE', rect(home.x, home.y, home.width, p.toolbar), layer++, 'item.home.screen'));
   hints.push(presentationHint('item.home.toolbar', 'TOOLBAR'));
 
-  const innerX = home.x + p.padding;
-  const innerWidth = home.width - (p.padding * 2);
-  let y = home.y + p.toolbar + p.padding;
+  const innerX = home.x + p.content.x;
+  const innerWidth = p.content.width;
+  let y = home.y + p.content.y;
   items.push(projectionItem('item.home.vexstream-section', snapshot.home.vexStreamSection.ref, 'RECTANGLE', rect(innerX, y, innerWidth, 230), layer++, 'item.home.screen'));
   hints.push(presentationHint('item.home.vexstream-section', 'SURFACE', 'RAISED'));
   items.push(projectionItem('item.home.vexstream-status', homeStatusRef, 'TEXT', rect(innerX + p.inner, y + 36, innerWidth - p.inner * 2, 58), layer++, 'item.home.vexstream-section'));
@@ -355,7 +468,7 @@ function experienceBoard(snapshot) {
       iconX -= iconSize + 8;
     });
 
-    const tabsY = frame.y + p.toolbar + p.padding;
+    const tabsY = frame.y + p.content.y;
     const tabGap = 5.5;
     const tabWidth = (frame.width - (p.padding * 2) - (tabGap * (snapshot.vexStream.tabs.length - 1)))
       / snapshot.vexStream.tabs.length;
@@ -442,6 +555,7 @@ function experienceBoard(snapshot) {
       fromProjectionItemRef: loadedChrome.actionItemBySemanticRef.get(sheet.triggerRef),
       toProjectionItemRef: 'item.vexstream.connection-sheet',
     }]),
+    design,
     sourceRefs,
   });
 }
