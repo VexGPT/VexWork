@@ -103,6 +103,18 @@ export function normalizeAndroidReferencePresentation(input) {
     seen.add(entry.projectionItemRef);
     if (typeof entry.role !== 'string' || !entry.role) throw new TypeError(`Android presentation role required for ${entry.projectionItemRef}`);
   }
+  if (input.relationships !== undefined) {
+    if (!Array.isArray(input.relationships)) throw new TypeError('Android presentation relationships must be an array');
+    const relationshipRefs = new Set();
+    for (const route of input.relationships) {
+      if (typeof route?.relationshipRef !== 'string' || !route.relationshipRef) throw new TypeError('Android presentation relationshipRef required');
+      if (relationshipRefs.has(route.relationshipRef)) throw new TypeError(`duplicate Android presentation relationshipRef ${route.relationshipRef}`);
+      relationshipRefs.add(route.relationshipRef);
+      if (!seen.has(route.fromProjectionItemRef) || !seen.has(route.toProjectionItemRef)) {
+        throw new TypeError(`Android presentation relationship ${route.relationshipRef} must reference known projection items`);
+      }
+    }
+  }
   return input;
 }
 
@@ -118,6 +130,12 @@ export function androidReferenceClassNames(presentationInput, projectionItemRef)
   const classes = ['android-reference', `android-role-${safe(hint.role)}`];
   if (hint.variant) classes.push(`android-variant-${safe(hint.variant)}`);
   return Object.freeze(classes);
+}
+
+export function androidReferenceRelationshipRoute(presentationInput, relationshipRef) {
+  const presentation = normalizeAndroidReferencePresentation(presentationInput);
+  if (!presentation || !Array.isArray(presentation.relationships)) return null;
+  return presentation.relationships.find((route) => route.relationshipRef === relationshipRef) ?? null;
 }
 
 export function androidReferenceProfileSummary(presentationInput) {
