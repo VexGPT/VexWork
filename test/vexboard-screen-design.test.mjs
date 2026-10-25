@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 
 import {
+  SCREEN_DESIGN_AUTHORITY_STATES,
   SCREEN_DESIGN_LAYOUT_MODES,
   VEXBOARD_SCREEN_DESIGN_SCHEMA,
   boundedResponsiveMetric,
@@ -11,6 +12,13 @@ import {
   resolveScreenDesignConstraintBox,
   screenDesignViewportProfile,
 } from '../src/core/vexboard-screen-design.mjs';
+
+test('Screen design authority states preserve reverse adoption, draft proposal and accepted authority separately', () => {
+  assert.deepEqual(
+    SCREEN_DESIGN_AUTHORITY_STATES,
+    ['REVERSE_ADOPTED_CANDIDATE', 'VEXBOARD_DESIGN_DRAFT', 'VEXBOARD_DESIGN_AUTHORITY'],
+  );
+});
 
 test('bounded responsive metrics preserve the adopted Android value at the reference width', () => {
   const margin = boundedResponsiveMetric({
