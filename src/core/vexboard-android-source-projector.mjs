@@ -4,7 +4,7 @@ import {
   normalizeScreenDesign,
   screenDesignViewportProfile,
   resolveBoundedResponsiveMetric,
-  resolveScreenDesignBox,
+  resolveScreenDesignConstraintBox,
 } from './vexboard-screen-design.mjs';
 
 export const VEXLIFE_ANDROID_POC_SNAPSHOT_SCHEMA = 'vexlife-android.vexboard-snapshot/poc-v1';
@@ -211,15 +211,15 @@ function profileMetrics(profile, design, screenKey) {
   const viewport = { x: 0, y: 0, width: profile.widthDp, height: profile.heightDp };
   const shellConstraint = screenDesignConstraint(design, `design-occurrence.${screenKey}.shell-content`);
   const innerConstraint = screenDesignConstraint(design, `design-occurrence.${screenKey}.inner-content`);
-  const shell = resolveScreenDesignBox({
+  const shell = resolveScreenDesignConstraintBox({
+    designInput: design,
     parentBoundsDp: viewport,
-    horizontal: shellConstraint.horizontal,
-    vertical: shellConstraint.vertical,
+    constraintInput: shellConstraint,
   });
-  const inner = resolveScreenDesignBox({
+  const inner = resolveScreenDesignConstraintBox({
+    designInput: design,
     parentBoundsDp: shell,
-    horizontal: innerConstraint.horizontal,
-    vertical: innerConstraint.vertical,
+    constraintInput: innerConstraint,
   });
 
   const mW = (metricRef) => scaled(resolvedDesignMetric(design, metricRef, profile.widthDp));
