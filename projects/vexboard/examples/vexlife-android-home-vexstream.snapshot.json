@@ -517,6 +517,57 @@
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt"
         ]
       }
+    ],
+    "findings": [
+      {
+        "findingRef": "finding.android.home.vexstream-copy-unaddressed",
+        "ownerSemanticRef": "element.home.body.vexstream",
+        "kind": "RAW_COMPOSE_NO_SEMANTIC_REF",
+        "summary": "Home VexStream title/status/body are visible product copy rendered with raw Compose Text and have no stable semantic identity.",
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt"
+        ]
+      },
+      {
+        "findingRef": "finding.android.home.systems-title-unaddressed",
+        "ownerSemanticRef": "element.home.body.systems",
+        "kind": "RAW_COMPOSE_NO_SEMANTIC_REF",
+        "summary": "Home Vex systems heading is visible product copy rendered with raw Compose Text and has no stable semantic identity.",
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt"
+        ]
+      },
+      {
+        "findingRef": "finding.android.vexstream.connection-sheet-parent-drift",
+        "ownerSemanticRef": "element.vexstream-music.body.connection.menu",
+        "kind": "REGISTRY_RENDER_STRUCTURE_DRIFT",
+        "summary": "Static registry parents connection-sheet buttons directly to the sheet while custom Compose renders them inside the derived content column.",
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt"
+        ]
+      },
+      {
+        "findingRef": "finding.android.vexstream.show-queue-parent-drift",
+        "ownerSemanticRef": "screen.vexstream-music",
+        "subjectSemanticRefOrNull": "element.vexstream-music.body.player.queue.show",
+        "kind": "REGISTRY_RENDER_STRUCTURE_DRIFT",
+        "summary": "Static Blueprint places ShowQueue under body.library-actions while the actual player renderer realizes it in the player control surface.",
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamPlayerPresentation.kt"
+        ]
+      },
+      {
+        "findingRef": "finding.android.vexstream.custom-design-literals",
+        "ownerSemanticRef": "screen.vexstream-music",
+        "kind": "TARGET_LOCAL_DESIGN_MEANING",
+        "summary": "Custom VexStream Compose still owns product-design dp/layout/Material role facts that must converge into VexBoard design before authority transition.",
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamLibraryPresentation.kt"
+        ]
+      }
     ]
   }
 }
