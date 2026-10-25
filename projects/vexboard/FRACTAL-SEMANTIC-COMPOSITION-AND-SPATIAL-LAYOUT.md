@@ -154,7 +154,7 @@ BOARD_GRAPH_PATCH != PROJECTION_PATCH
 
 Do **not** begin by inventing a universal composition framework.
 
-The next shared contract must be earned by two concrete consumers that are structurally different.
+The next shared contract must be earned by three concrete consumers that are structurally different.
 
 ### Consumer A — nested UI blueprint
 
@@ -235,7 +235,114 @@ reusable module identity without copied subgraphs
 
 A process must not be forced to pretend it is a Screen merely to reuse layout machinery.
 
-## What the two consumers are allowed to share
+### Consumer C — full-system anatomy and role lenses
+
+Pressure a real system slice end to end rather than treating architecture as an isolated UML drawing.
+
+A representative VexBusinessFactory-shaped patient zero should be able to expose, where actually present:
+
+```text
+intent / capability
++ UI / experience
++ strings / assets / models
++ application state
++ dependencies / services / packages
++ APIs / events / interfaces
++ request inputs / response outputs
++ transforms / joins / convergence
++ data models
++ persistence / storage
++ implementation / runtime / evidence
+```
+
+The example structure is pressure, not a required universal column layout. VexBoard should preserve the fullest truthful semantic system map, then derive simpler projections for the consumer's present question.
+
+```text
+ONE_SEMANTIC_SYSTEM_GRAPH
+        |
+        +-> full anatomy projection
+        +-> designer lens
+        +-> client/application lens
+        +-> server/API lens
+        +-> data/localization lens
+        +-> QA/evidence lens
+        +-> operations/runtime lens
+```
+
+A role lens is presentation:
+
+```text
+FULL_GRAPH != EVERYONE_SEES_EVERYTHING
+LENS != NEW_TRUTH
+LENS != COPY
+SIMPLIFY == PROJECT + FILTER + EMPHASIZE
+ROLE != FIXED_INFORMATION_DEPTH
+```
+
+A designer may emphasize UI structure, strings, assets, visible states and interaction meaning. A client developer may emphasize components, models, transforms, API contracts and bindings. A server engineer may emphasize persistence, joins/serialization, services, endpoints and request/response contracts. All remain addressable through the same stable identities.
+
+Dependencies and interfaces should remain distinguishable:
+
+```text
+DEPENDENCY != API
+API != IMPLEMENTATION
+API_INPUT != DATABASE_FIELD
+API_OUTPUT != UI_MODEL
+EXPOSES != CONSUMES
+```
+
+Use existing generic BoardGraph meaning first. Do not invent database-, API-, localization-, or framework-specific node enums merely because the full anatomy can display those domains.
+
+#### Example / placeholder data is visible context, not source truth
+
+Architecture and database-oriented boards often need representative values before a source owner has supplied real examples.
+
+VexBoard may use reusable placeholder/example data to make the system understandable, but provenance must remain explicit:
+
+```text
+OWNER_SUPPLIED_EXAMPLE
+  -> source-owned example
+
+ACCEPTED_FIXTURE_EXAMPLE
+  -> bounded accepted example for a proving fixture
+
+REUSABLE_PLACEHOLDER_PROFILE
+  -> synthetic example shape/value set for explanation
+
+MODEL_PROPOSED_EXAMPLE
+  -> synthetic/proposed until a rightful owner accepts or replaces it
+```
+
+Prefer the strongest available example source in that order. Do not silently promote a lower-authority example into product truth.
+
+```text
+EXAMPLE_DATA != CANONICAL_DATA
+PLACEHOLDER_DATA != OBSERVED_PRODUCTION_DATA
+MODEL_PROPOSED_EXAMPLE != SOURCE_ASSERTION
+EXAMPLE_VALUE_FOR != RUNTIME_DATA_FLOW
+OWNER_EXAMPLE_SUPERSEDES_PLACEHOLDER
+```
+
+A placeholder may provide reusable values such as a mock inventory item so a database/API/UI traversal is intelligible before real examples exist. It should remain visually and semantically distinguishable from actual stored/observed data. Real production records are not required to prove the VexBoard grammar.
+
+Do not add a dedicated example-data schema merely to encode one fixture. Let repeated consumers prove whether a first-class reusable example-profile contract is needed.
+
+Consumer C should pressure:
+
+```text
+same identity appearing in multiple projection occurrences
+source -> storage -> transform -> interface -> UI lineage
+dependency -> exposed interface -> consumer relationships
+bounded upstream / downstream traversal
+where-used / occurrence reveal
+role-appropriate projection without copied truth
+semantic depth independent of role
+relationship-to-occurrence pressure when endpoints have multiple visible forms
+```
+
+The full anatomy is not permission to render every possible connector simultaneously. Readability is part of correctness.
+
+## What the consumers are allowed to share
 
 The likely reusable layer is architectural, not one giant ontology:
 
@@ -367,6 +474,66 @@ runtime / evidence ref
 
 Do not jump directly to a global screenshot-hotspot system. First prove that nested identities remain resolvable and revealable after composition/layout.
 
+### Hover, context menu and pinned diagnostic focus
+
+The full system graph may contain far more relationships than should be drawn at once.
+
+Prefer an interaction grammar that reveals context on demand:
+
+```text
+hover / keyboard focus
+-> temporary reveal
+-> highlight matching visible occurrences / directly implicated relationships
+-> disappear when attention leaves
+
+right-click / context menu
+-> Pin identity
+-> optionally Pin this occurrence when occurrence-local meaning matters
+-> inspect / trace upstream / trace downstream / where used
+
+PIN_SET
+-> presentation-owned diagnostic focus set
+-> preserve selected stable refs
+-> compute a bounded relational neighborhood or connective path
+-> emphasize only the relationships needed to explain those refs together
+-> de-emphasize unrelated canvas meaning
+```
+
+Pinning is not semantic authoring:
+
+```text
+REVEAL != PIN
+PIN != SELECT
+PIN != JOURNEY
+PIN != SEMANTIC_GROUP
+PIN_SET != BOARD_GRAPH_MUTATION
+PIN_SET != SOURCE_OWNERSHIP
+COMPUTED_RELATIONAL_PATH != NEW_RELATIONSHIP
+```
+
+Default pinning should target semantic identity so every visible occurrence of that identity can participate. When debugging a projection-specific ambiguity, the interaction may explicitly pin one projection occurrence instead.
+
+Useful bounded pin-set views may eventually include:
+
+```text
+DIRECT
+  relationships directly among pinned refs
+
+CONNECT
+  smallest useful bounded semantic paths connecting pinned refs
+
+UPSTREAM
+  what produces / feeds / owns the pinned refs
+
+DOWNSTREAM
+  what consumes / renders / depends on the pinned refs
+
+OCCURRENCES
+  where the pinned identities appear in the current projection / reachable boards
+```
+
+These are interaction/view hypotheses, not a mandate to add a persisted pin schema now. First prove the behavior with current reveal, graph query and projection boundaries.
+
 ## Initial implementation sequence
 
 A fresh successor should lead from evidence, not from a preselected framework.
@@ -386,7 +553,7 @@ project.vex-universe current Work truth
 
 Use VexLife-Android Blueprint/Compose and VexLife Blueprint Source of Truth only as bounded external pressure when their exact semantics are implicated.
 
-### 2. Build two minimal proving fixtures
+### 2. Build three minimal proving fixtures
 
 Use existing BoardGraph / BoardProjection fields wherever they are sufficient.
 
@@ -495,11 +662,14 @@ A meaningful completion threshold is:
 ```text
 nested UI patient zero
 + reusable process patient zero
++ full-system anatomy / data-lineage patient zero
++ role-lens projections over shared semantic identities
 + shared stable identity/composition law
 + deterministic layout resolution
 + bounded incremental arrangement
 + connector routing proven on representative cases
 + nested inspector reveal
++ bounded hover / pin-set relational focus without semantic mutation
 + module/portal traversal preserved
 + no source-ownership drift
 + accepted source + lived browser confidence
@@ -516,6 +686,10 @@ Keep these parked unless a real consumer earns them:
 - general constraint solver;
 - giant organization BoardGraph;
 - global screenshot/mockup hotspot registry;
+- always-on rendering of every semantic relationship;
+- role-specific copied architecture graphs;
+- persisted semantic grouping merely because refs were pinned for diagnosis;
+- live production-data browsing merely to prove the visualization grammar;
 - target-repository mutation;
 - BoardPatch authorization;
 - automatic design-to-implementation code generation;
@@ -527,12 +701,15 @@ The next unconsumed engineering edge is:
 
 ```text
 current trusted VexBoard substrate
--> form minimal nested UI fixture
-+ form minimal reusable process fixture
--> compare pressure against current BoardGraph / BoardProjection
--> identify the first repeated missing composition/layout capability
--> implement only that smallest rightful seam
--> prove it against both consumers
+-> preserve PR #136 currentization as a separately provable parent
+-> prove PR #137 occurrence-local composition against:
+     Consumer A nested UI
+     Consumer B reusable process
+     Consumer C full-system anatomy / data lineage / API boundary
+-> use those consumers to identify the next repeated missing seam
+-> prefer projection / reveal / bounded relational focus before adding ontology
+-> implement only the smallest rightful seam
+-> prove that role lenses and pin/reveal behavior preserve shared identity
 ```
 
 The purpose is not to complete "layout" as an abstract subsystem.
