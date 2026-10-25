@@ -3,6 +3,7 @@ import { compileVexLifeAndroidScreenDesign } from './vexboard-android-constructi
 import {
   normalizeScreenDesign,
   screenDesignComponentAssignment,
+  screenDesignLayoutRule,
   screenDesignViewportProfile,
   resolveBoundedResponsiveMetric,
   resolveScreenDesignConstraintBox,
@@ -72,6 +73,7 @@ function normalizeSnapshot(input) {
 
   stableRef(input.home?.screenRef, 'home.screenRef');
   stableRef(input.vexStream?.screenRef, 'vexStream.screenRef');
+  stableRef(input.vexStream?.libraryActionsContainerRef, 'vexStream.libraryActionsContainerRef');
   assert(Array.isArray(input.vexStream?.states) && input.vexStream.states.length === 3,
     'VexStream POC requires exactly three library state projections');
   const stateKinds = input.vexStream.states.map((state) => state.kind).sort();
@@ -313,6 +315,25 @@ function profileMetrics(profile, design, screenKey) {
   });
 }
 
+function semanticLeaf(semanticRef) {
+  const leaf = String(semanticRef).split('.').at(-1);
+  return stableRef(leaf, 'semantic leaf');
+}
+
+function orderedDesignChildren(design, layoutRef, values, refOf) {
+  const rule = screenDesignLayoutRule(design, layoutRef);
+  if (!Array.isArray(rule.childSemanticRefs)) return [...values];
+  const byRef = new Map(values.map((value) => [refOf(value), value]));
+  assert(byRef.size === values.length, `${layoutRef} source children must have unique refs`);
+  assert(rule.childSemanticRefs.length === values.length,
+    `${layoutRef} design/source child count mismatch`);
+  return rule.childSemanticRefs.map((childRef) => {
+    const value = byRef.get(childRef);
+    assert(value, `${layoutRef} design child missing from source: ${childRef}`);
+    return value;
+  });
+}
+
 function addActionNodes(nodes, section, ownerScreenRef) {
   nodes.push(node(section.ref, 'CONTAINER', section.label, ownerScreenRef, section.sourceRefs));
   for (const action of section.actions) {
@@ -406,8 +427,21 @@ function experienceBoard(snapshot, design, viewportProfile) {
   for (const track of loaded.sampleTracks) {
     nodes.push(node(track.ref, 'REFERENCE', `${track.title}\n${track.subtitle}`, snapshot.vexStream.screenRef, track.sourceRefs));
   }
+  nodes.push(node(
+    snapshot.vexStream.libraryActionsContainerRef,
+    'CONTAINER',
+    'Library actions',
+    snapshot.vexStream.screenRef,
+    snapshot.vexStream.sourceRefs,
+  ));
   for (const action of snapshot.vexStream.libraryActions) {
-    nodes.push(node(action.ref, 'CONTROL', action.label, snapshot.vexStream.screenRef, action.sourceRefs));
+    nodes.push(node(
+      action.ref,
+      'CONTROL',
+      action.label,
+      snapshot.vexStream.libraryActionsContainerRef,
+      action.sourceRefs,
+    ));
   }
 
   const sheet = snapshot.vexStream.connectionSheet;
@@ -466,36 +500,121 @@ function experienceBoard(snapshot, design, viewportProfile) {
   const innerX = home.x + homeMetrics.content.x;
   const innerWidth = homeMetrics.content.width;
   let y = home.y + homeMetrics.content.y;
-  items.push(projectionItem('item.home.vexstream-section', snapshot.home.vexStreamSection.ref, 'RECTANGLE', rect(innerX, y, innerWidth, 230), layer++, 'item.home.screen'));
-  hints.push(componentPresentationHint(design, 'item.home.vexstream-section', snapshot.home.vexStreamSection.ref));
-  items.push(projectionItem('item.home.vexstream-status', homeStatusRef, 'TEXT', rect(innerX + homeMetrics.innerHorizontal, y + 36, innerWidth - homeMetrics.innerHorizontal * 2, 58), layer++, 'item.home.vexstream-section'));
-  hints.push(presentationHint('item.home.vexstream-status', 'TEXT', 'TITLE'));
-  items.push(projectionItem('item.home.vexstream-body', homeBodyRef, 'TEXT', rect(innerX + homeMetrics.innerHorizontal, y + 103, innerWidth - homeMetrics.innerHorizontal * 2, 70), layer++, 'item.home.vexstream-section'));
-  hints.push(presentationHint('item.home.vexstream-body', 'TEXT', 'SUPPORTING'));
-  const openAction = snapshot.home.vexStreamSection.actions[0];
-  items.push(projectionItem('item.home.vexstream-open', openAction.ref, 'RECTANGLE', rect(
-    innerX + homeMetrics.innerHorizontal,
-    y + 180,
-    innerWidth - homeMetrics.innerHorizontal * 2,
-    homeMetrics.buttonMinHeight,
-  ), layer++, 'item.home.vexstream-section'));
-  hints.push(componentPresentationHint(design, 'item.home.vexstream-open', openAction.ref));
 
-  y += 230 + homeMetrics.homeSectionGap;
-  items.push(projectionItem('item.home.systems-section', snapshot.home.systemsSection.ref, 'RECTANGLE', rect(innerX, y, innerWidth, 250), layer++, 'item.home.screen'));
-  hints.push(componentPresentationHint(design, 'item.home.systems-section', snapshot.home.systemsSection.ref));
-  let systemY = y + homeMetrics.innerVertical;
-  snapshot.home.systemsSection.actions.forEach((action, index) => {
-    const itemRef = `item.home.system-action.${index}`;
-    items.push(projectionItem(itemRef, action.ref, 'RECTANGLE', rect(
-      innerX + homeMetrics.innerHorizontal,
-      systemY,
-      innerWidth * 0.72,
-      homeMetrics.buttonMinHeight,
-    ), layer++, 'item.home.systems-section'));
-    hints.push(componentPresentationHint(design, itemRef, action.ref));
-    systemY += homeMetrics.buttonMinHeight + homeMetrics.gapVertical;
-  });
+  const homeSections = orderedDesignChildren(
+    design,
+    'layout.vexlife.home.body',
+    [
+      { semanticRef: snapshot.home.vexStreamSection.ref, kind: 'VEXSTREAM' },
+      { semanticRef: snapshot.home.systemsSection.ref, kind: 'SYSTEMS' },
+    ],
+    (section) => section.semanticRef,
+  );
+
+  for (const [sectionIndex, section] of homeSections.entries()) {
+    if (section.kind === 'VEXSTREAM') {
+      const sectionHeight = 230;
+      items.push(projectionItem(
+        'item.home.vexstream-section',
+        snapshot.home.vexStreamSection.ref,
+        'RECTANGLE',
+        rect(innerX, y, innerWidth, sectionHeight),
+        layer++,
+        'item.home.screen',
+      ));
+      hints.push(componentPresentationHint(
+        design,
+        'item.home.vexstream-section',
+        snapshot.home.vexStreamSection.ref,
+      ));
+      items.push(projectionItem(
+        'item.home.vexstream-status',
+        homeStatusRef,
+        'TEXT',
+        rect(
+          innerX + homeMetrics.innerHorizontal,
+          y + 36,
+          innerWidth - homeMetrics.innerHorizontal * 2,
+          58,
+        ),
+        layer++,
+        'item.home.vexstream-section',
+      ));
+      hints.push(presentationHint('item.home.vexstream-status', 'TEXT', 'TITLE'));
+      items.push(projectionItem(
+        'item.home.vexstream-body',
+        homeBodyRef,
+        'TEXT',
+        rect(
+          innerX + homeMetrics.innerHorizontal,
+          y + 103,
+          innerWidth - homeMetrics.innerHorizontal * 2,
+          70,
+        ),
+        layer++,
+        'item.home.vexstream-section',
+      ));
+      hints.push(presentationHint('item.home.vexstream-body', 'TEXT', 'SUPPORTING'));
+      const openAction = snapshot.home.vexStreamSection.actions[0];
+      items.push(projectionItem(
+        'item.home.vexstream-open',
+        openAction.ref,
+        'RECTANGLE',
+        rect(
+          innerX + homeMetrics.innerHorizontal,
+          y + 180,
+          innerWidth - homeMetrics.innerHorizontal * 2,
+          homeMetrics.buttonMinHeight,
+        ),
+        layer++,
+        'item.home.vexstream-section',
+      ));
+      hints.push(componentPresentationHint(design, 'item.home.vexstream-open', openAction.ref));
+      y += sectionHeight;
+    } else if (section.kind === 'SYSTEMS') {
+      const sectionHeight = 250;
+      items.push(projectionItem(
+        'item.home.systems-section',
+        snapshot.home.systemsSection.ref,
+        'RECTANGLE',
+        rect(innerX, y, innerWidth, sectionHeight),
+        layer++,
+        'item.home.screen',
+      ));
+      hints.push(componentPresentationHint(
+        design,
+        'item.home.systems-section',
+        snapshot.home.systemsSection.ref,
+      ));
+      let systemY = y + homeMetrics.innerVertical;
+      const systemActions = orderedDesignChildren(
+        design,
+        'layout.vexlife.home.systems',
+        snapshot.home.systemsSection.actions,
+        (action) => action.ref,
+      );
+      for (const action of systemActions) {
+        const itemRef = `item.home.system-action.${semanticLeaf(action.ref)}`;
+        items.push(projectionItem(
+          itemRef,
+          action.ref,
+          'RECTANGLE',
+          rect(
+            innerX + homeMetrics.innerHorizontal,
+            systemY,
+            innerWidth * 0.72,
+            homeMetrics.buttonMinHeight,
+          ),
+          layer++,
+          'item.home.systems-section',
+        ));
+        hints.push(componentPresentationHint(design, itemRef, action.ref));
+        systemY += homeMetrics.buttonMinHeight + homeMetrics.gapVertical;
+      }
+      y += sectionHeight;
+    }
+    if (sectionIndex < homeSections.length - 1) y += homeMetrics.homeSectionGap;
+  }
 
   function addVexStreamChrome(state, frame, frameItemRef) {
     const actionItemBySemanticRef = new Map();
@@ -511,8 +630,8 @@ function experienceBoard(snapshot, design, viewportProfile) {
 
     const iconSize = vexMetrics.toolbarActionSize;
     let iconX = frame.x + frame.width - vexMetrics.toolbarPaddingHorizontal - iconSize;
-    [...snapshot.vexStream.toolbarActions].reverse().forEach((action, index) => {
-      const itemRef = `${frameItemRef}.toolbar-action.${index}`;
+    [...snapshot.vexStream.toolbarActions].reverse().forEach((action) => {
+      const itemRef = `${frameItemRef}.toolbar-action.${semanticLeaf(action.ref)}`;
       items.push(projectionItem(itemRef, action.ref, 'RECTANGLE', rect(iconX, frame.y + vexMetrics.toolbarPaddingVertical, iconSize, iconSize), layer++, frameItemRef));
       hints.push(componentPresentationHint(design, itemRef, action.ref));
       actionItemBySemanticRef.set(action.ref, itemRef);
@@ -533,8 +652,14 @@ function experienceBoard(snapshot, design, viewportProfile) {
     hints.push(presentationHint(tabsViewportRef, 'SCROLL_VIEWPORT', 'HORIZONTAL'));
 
     let tabX = frame.x + vexMetrics.content.x;
-    snapshot.vexStream.tabs.forEach((tab, index) => {
-      const itemRef = `${frameItemRef}.tab.${index}`;
+    const orderedTabs = orderedDesignChildren(
+      design,
+      'layout.vexstream.library-tabs',
+      snapshot.vexStream.tabs,
+      (tab) => tab.ref,
+    );
+    for (const tab of orderedTabs) {
+      const itemRef = `${frameItemRef}.tab.${semanticLeaf(tab.ref)}`;
       const intrinsic = design.intrinsicSizes?.[tab.ref];
       assert(intrinsic, `screen design intrinsic size missing: ${tab.ref}`);
       items.push(projectionItem(
@@ -545,9 +670,10 @@ function experienceBoard(snapshot, design, viewportProfile) {
         layer++,
         tabsViewportRef,
       ));
-      hints.push(componentPresentationHint(design, itemRef, tab.ref, { selected: index === 0 }));
+      const selected = tab.ref === 'element.vexstream-music.body.library-tabs.songs';
+      hints.push(componentPresentationHint(design, itemRef, tab.ref, { selected }));
       tabX += scaled(intrinsic.widthDp) + tabGap;
-    });
+    }
     return Object.freeze({
       contentY: tabsY + vexMetrics.buttonMinHeight + vexMetrics.listGap,
       actionItemBySemanticRef,
@@ -593,9 +719,27 @@ function experienceBoard(snapshot, design, viewportProfile) {
     hints.push(presentationHint(itemRef, 'LIST_ROW', track.variant));
     loadedY += vexMetrics.trackRowHeight + vexMetrics.listGap;
   });
-  snapshot.vexStream.libraryActions.forEach((action, index) => {
-    const itemRef = `${loadedItem}.fab.${index}`;
-    items.push(projectionItem(itemRef, action.ref, 'ELLIPSE', rect(loadedFrame.x + loadedFrame.width - 54, loadedFrame.y + loadedFrame.height - 150 + (index * 58), 42, 42), layer++, loadedItem));
+  const libraryActions = orderedDesignChildren(
+    design,
+    'layout.vexstream.library-actions',
+    snapshot.vexStream.libraryActions,
+    (action) => action.ref,
+  );
+  libraryActions.forEach((action, index) => {
+    const itemRef = `${loadedItem}.fab.${semanticLeaf(action.ref)}`;
+    items.push(projectionItem(
+      itemRef,
+      action.ref,
+      'ELLIPSE',
+      rect(
+        loadedFrame.x + loadedFrame.width - 54,
+        loadedFrame.y + loadedFrame.height - 150 + (index * 58),
+        42,
+        42,
+      ),
+      layer++,
+      loadedItem,
+    ));
     hints.push(componentPresentationHint(design, itemRef, action.ref));
   });
 
@@ -604,8 +748,14 @@ function experienceBoard(snapshot, design, viewportProfile) {
   items.push(projectionItem('item.vexstream.connection-sheet', sheet.ref, 'RECTANGLE', sheetBounds, layer + 50, loadedItem));
   hints.push(componentPresentationHint(design, 'item.vexstream.connection-sheet', sheet.ref));
   let sheetY = sheetBounds.y + 46;
-  sheet.actions.forEach((action, index) => {
-    const itemRef = `item.vexstream.connection-sheet.action.${index}`;
+  const sheetActions = orderedDesignChildren(
+    design,
+    'layout.vexstream.connection-sheet',
+    sheet.actions,
+    (action) => action.ref,
+  );
+  sheetActions.forEach((action, index) => {
+    const itemRef = `item.vexstream.connection-sheet.action.${semanticLeaf(action.ref)}`;
     items.push(projectionItem(itemRef, action.ref, 'RECTANGLE', rect(
       sheetBounds.x + vexMetrics.connectionSheetPaddingHorizontal,
       sheetY,
