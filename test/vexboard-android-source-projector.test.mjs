@@ -53,6 +53,13 @@ test('VexLife Android POC snapshot projects deterministically without source eff
   );
   assert.equal(sheet.parentProjectionItemRefOrNull, 'item.vexstream.state.loaded');
 
+  const openRoute = first.board.presentation.relationships.find(
+    (route) => route.relationshipRef === 'rel.vexlife-android.vexstream.manage-connection.open',
+  );
+  assert.ok(openRoute.fromProjectionItemRef.startsWith('item.vexstream.state.loaded.toolbar-action.'),
+    'local modal edge must originate from the Loaded Screen occurrence');
+  assert.equal(openRoute.toProjectionItemRef, 'item.vexstream.connection-sheet');
+
   assert.ok(graph.relationships.some((relationship) =>
     relationship.fromRef === 'element.home.body.systems.vexstream-music'
       && relationship.toRef === 'screen.vexstream-music'
