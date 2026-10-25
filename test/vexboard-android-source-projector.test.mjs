@@ -550,13 +550,14 @@ test('VexLife Android POC depth maps truthful storage and Desktop service owners
   const labels = new Map(graph.nodes.map((node) => [node.nodeRef, node.label]));
   assert.match(
     labels.get(VEXLIFE_ANDROID_DYNAMIC_TEXT_CAPABILITY_REF),
-    /DynamicTextElement · STANDARDIZATION_REQUIRED/,
+    /DynamicTextElement · STANDARDIZATION_REQUIRED · CANDIDATE_FORMED_PROOF_PENDING/,
   );
   assert.ok(graph.relationships.some(
     (relationship) =>
       relationship.fromRef === 'plan.vexlife-android.home-vexstream.screen-design.poc' &&
       relationship.toRef === VEXLIFE_ANDROID_DYNAMIC_TEXT_CAPABILITY_REF &&
-      relationship.labelOrNull === 'target standardization required',
+      relationship.labelOrNull === 'target standardization required' &&
+      relationship.sourceRefs.includes('github.pull.vexlife-android.182'),
   ));
   assert.ok(projection.items.some(
     (item) => item.semanticRef === VEXLIFE_ANDROID_DYNAMIC_TEXT_CAPABILITY_REF,
