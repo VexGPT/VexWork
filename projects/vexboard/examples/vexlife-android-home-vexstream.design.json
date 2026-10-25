@@ -214,16 +214,10 @@
       },
       "vertical": {
         "startMargin": {
-          "preferredPercent": 0.07650273224043716,
-          "minDp": 70,
-          "maxDp": 70,
-          "referenceDp": 70
+          "metricRef": "toolbarHeight"
         },
         "endMargin": {
-          "preferredPercent": 0.07650273224043716,
-          "minDp": 70,
-          "maxDp": 70,
-          "referenceDp": 70
+          "metricRef": "bottomBarHeight"
         },
         "size": {
           "mode": "FILL"
@@ -237,16 +231,10 @@
       "parentOccurrenceRefOrNull": "design-occurrence.home.shell-content",
       "horizontal": {
         "startMargin": {
-          "preferredPercent": 0.038834951456310676,
-          "minDp": 16,
-          "maxDp": 16,
-          "referenceDp": 16
+          "metricRef": "screenPaddingHorizontal"
         },
         "endMargin": {
-          "preferredPercent": 0.038834951456310676,
-          "minDp": 16,
-          "maxDp": 16,
-          "referenceDp": 16
+          "metricRef": "screenPaddingHorizontal"
         },
         "size": {
           "mode": "FILL"
@@ -255,16 +243,10 @@
       },
       "vertical": {
         "startMargin": {
-          "preferredPercent": 0.017486338797814208,
-          "minDp": 16,
-          "maxDp": 16,
-          "referenceDp": 16
+          "metricRef": "screenPaddingVertical"
         },
         "endMargin": {
-          "preferredPercent": 0.017486338797814208,
-          "minDp": 16,
-          "maxDp": 16,
-          "referenceDp": 16
+          "metricRef": "screenPaddingVertical"
         },
         "size": {
           "mode": "FILL"
@@ -284,16 +266,10 @@
       },
       "vertical": {
         "startMargin": {
-          "preferredPercent": 0.07650273224043716,
-          "minDp": 70,
-          "maxDp": 70,
-          "referenceDp": 70
+          "metricRef": "toolbarHeight"
         },
         "endMargin": {
-          "preferredPercent": 0.07650273224043716,
-          "minDp": 70,
-          "maxDp": 70,
-          "referenceDp": 70
+          "metricRef": "bottomBarHeight"
         },
         "size": {
           "mode": "FILL"
