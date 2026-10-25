@@ -185,6 +185,10 @@ function targetCapabilityRequirement(
     purpose,
     proposalStatus,
     proposedTargetShape,
+    candidateRefOrNull = null,
+    candidateStatusOrNull = null,
+    candidateHeadRefOrNull = null,
+    candidateSourceRefs = [],
   },
 ) {
   stableRef(capabilityRef, 'target capabilityRef');
@@ -197,10 +201,14 @@ function targetCapabilityRequirement(
     purpose,
     proposalStatus,
     proposedTargetShape: Object.freeze({ ...proposedTargetShape }),
+    candidateRefOrNull,
+    candidateStatusOrNull,
+    candidateHeadRefOrNull,
+    candidateSourceRefs: Object.freeze([...new Set(candidateSourceRefs)].sort()),
   });
 }
 
-function targetCapabilityRequirements(componentMappings) {
+function targetCapabilityRequirements(componentMappings, targetCapabilityCandidates) {
   const dynamicTextConsumers = componentMappings
     .filter((entry) => entry.targetCapabilityRefOrNull === VEXLIFE_ANDROID_DYNAMIC_TEXT_CAPABILITY_REF)
     .map((entry) => entry.semanticRef);
@@ -210,6 +218,9 @@ function targetCapabilityRequirements(componentMappings) {
   const available = componentMappings
     .filter((entry) => entry.targetCapabilityRefOrNull === VEXLIFE_ANDROID_DYNAMIC_TEXT_CAPABILITY_REF)
     .every((entry) => entry.targetCapabilityStatusOrNull === 'AVAILABLE');
+  const candidate = targetCapabilityCandidates.find(
+    (entry) => entry.capabilityRef === VEXLIFE_ANDROID_DYNAMIC_TEXT_CAPABILITY_REF,
+  ) ?? null;
 
   return Object.freeze([
     targetCapabilityRequirement(
@@ -226,7 +237,14 @@ function targetCapabilityRequirements(componentMappings) {
         ],
         purpose:
           'registered stable semantic text identity whose displayed value is supplied by runtime state',
-        proposalStatus: 'PROPOSED_NOT_IN_TARGET_SOURCE',
+        proposalStatus:
+          available
+            ? 'ACCEPTED_IN_TARGET_SOURCE'
+            : candidate?.status ?? 'PROPOSED_NOT_IN_TARGET_SOURCE',
+        candidateRefOrNull: candidate?.candidateRef ?? null,
+        candidateStatusOrNull: candidate?.status ?? null,
+        candidateHeadRefOrNull: candidate?.candidateHeadRefOrNull ?? null,
+        candidateSourceRefs: candidate?.sourceRefs ?? [],
         proposedTargetShape: {
           elementType: 'DynamicTextElement',
           screenBlueprintFactory: 'dynamicTextRef',
@@ -262,12 +280,39 @@ export function compileVexLifeAndroidScreenDesign(
     planRef = 'plan.vexlife-android.home-vexstream.screen-design.poc',
     adoptionReadiness = null,
     availableTargetCapabilityRefs = [],
+    targetCapabilityCandidates = [],
   } = {},
 ) {
   const design = normalizeScreenDesign(designInput);
   stableRef(planRef, 'planRef');
   if (!Array.isArray(availableTargetCapabilityRefs)) {
     throw new TypeError('availableTargetCapabilityRefs must be an array');
+  }
+  if (!Array.isArray(targetCapabilityCandidates)) {
+    throw new TypeError('targetCapabilityCandidates must be an array');
+  }
+  const seenCapabilityCandidates = new Set();
+  for (const [index, candidate] of targetCapabilityCandidates.entries()) {
+    stableRef(candidate?.capabilityRef, `targetCapabilityCandidates[${index}].capabilityRef`);
+    stableRef(candidate?.candidateRef, `targetCapabilityCandidates[${index}].candidateRef`);
+    assert(!seenCapabilityCandidates.has(candidate.capabilityRef),
+      `duplicate target capability candidate ${candidate.capabilityRef}`);
+    seenCapabilityCandidates.add(candidate.capabilityRef);
+    assert(
+      ['CANDIDATE_FORMED_PROOF_PENDING', 'CANDIDATE_PROVEN_PENDING_ACCEPTANCE'].includes(candidate.status),
+      `target capability candidate status unsupported: ${candidate.status}`,
+    );
+    if (candidate.candidateHeadRefOrNull !== null && candidate.candidateHeadRefOrNull !== undefined) {
+      stableRef(candidate.candidateHeadRefOrNull,
+        `targetCapabilityCandidates[${index}].candidateHeadRefOrNull`);
+    }
+    if (!Array.isArray(candidate.sourceRefs ?? [])) {
+      throw new TypeError(`targetCapabilityCandidates[${index}].sourceRefs must be an array`);
+    }
+    for (const [sourceIndex, sourceRef] of (candidate.sourceRefs ?? []).entries()) {
+      stableRef(sourceRef,
+        `targetCapabilityCandidates[${index}].sourceRefs[${sourceIndex}]`);
+    }
   }
   const availableTargetCapabilities = new Set(
     availableTargetCapabilityRefs.map((capabilityRef) =>
@@ -297,7 +342,10 @@ export function compileVexLifeAndroidScreenDesign(
       (assignment) => componentMapping(design, assignment, availableTargetCapabilities),
     ),
   );
-  const capabilityRequirements = targetCapabilityRequirements(componentMappings);
+  const capabilityRequirements = targetCapabilityRequirements(
+    componentMappings,
+    targetCapabilityCandidates,
+  );
 
   const tabs = layoutRule(design, 'layout.vexstream.library-tabs');
   const songs = layoutRule(design, 'layout.vexstream.songs');
