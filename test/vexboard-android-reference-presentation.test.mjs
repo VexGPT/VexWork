@@ -5,6 +5,7 @@ import {
   ANDROID_REFERENCE_STYLE_ID,
   VEXBOARD_ANDROID_REFERENCE_PRESENTATION_SCHEMA,
   androidReferenceClassNames,
+  androidReferenceCssVariables,
   androidReferenceProfileSummary,
   androidReferenceRelationshipRoute,
   androidReferenceScrollAxis,
@@ -132,6 +133,47 @@ test('Android reference scroll viewport translates and clips occurrence-local ge
   );
 });
 
+test('Android reference styling resolves from VexBoard-owned visual tokens', () => {
+  const presentation = fixture();
+  const design = {
+    visualTokens: {
+      colors: {
+        background: '#0F1012',
+        onSurface: '#F5F5F4',
+        onSurfaceVariant: '#B7B8BF',
+        surface: '#17181C',
+        surfaceContainer: '#202126',
+        surfaceContainerLow: '#1D1B20',
+        surfaceContainerHigh: '#272930',
+        outline: '#5A5D68',
+        outlineVariant: '#383A42',
+        primary: '#F2F2EF',
+        onPrimary: '#111216',
+        primaryContainer: '#4F378B',
+        onPrimaryContainer: '#EADDFF',
+        secondaryContainer: '#4A4458',
+        onSecondaryContainer: '#E8DEF8',
+        errorContainer: '#8C1D18',
+        onErrorContainer: '#F9DEDC',
+      },
+      shapes: {
+        mediumRadiusDp: 12,
+        largeRadiusDp: 16,
+        extraLargeRadiusDp: 28,
+        fullRadius: 'FULL',
+      },
+    },
+  };
+  const vars = androidReferenceCssVariables(design, presentation);
+  assert.equal(vars['--vex-android-background'], '#0F1012');
+  assert.equal(vars['--vex-android-secondary-container'], '#4A4458');
+  assert.equal(vars['--vex-android-error-container'], '#8C1D18');
+  assert.equal(vars['--vex-android-radius-medium'], '8.64px');
+  assert.equal(vars['--vex-android-radius-large'], '11.52px');
+  assert.equal(vars['--vex-android-radius-extra-large'], '20.16px');
+  assert.equal(vars['--vex-android-radius-full'], '999px');
+});
+
 test('Android reference presentation rejects duplicate projection occurrence hints', () => {
   const invalid = fixture();
   invalid.items.push({ projectionItemRef: 'item.screen', role: 'BUTTON', variant: 'PRIMARY' });
@@ -157,6 +199,8 @@ test('Android reference stylesheet installs once and contains the Screen/modal/d
   assert.match(appended[0].textContent, /android-role-screen-frame/);
   assert.match(appended[0].textContent, /android-role-state-chip/);
   assert.match(appended[0].textContent, /android-role-scroll-viewport/);
+  assert.match(appended[0].textContent, /--vex-android-secondary-container/);
+  assert.match(appended[0].textContent, /--vex-android-radius-large/);
   assert.match(appended[0].textContent, /android-role-modal-sheet/);
   assert.match(appended[0].textContent, /android-role-api-endpoint/);
   assert.match(appended[0].textContent, /#0f1012/);
