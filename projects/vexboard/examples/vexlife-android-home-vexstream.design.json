@@ -302,6 +302,7 @@
     "dependency.androidx.compose.material3.1.4.0.palette-tokens",
     "dependency.androidx.compose.material3.1.4.0.shape-tokens",
     "dependency.androidx.compose.material3.1.4.0.sheet-bottom-tokens",
+    "dependency.androidx.compose.material3.1.4.0.type-scale-tokens",
     "git.commit.vexlife-android.255491df93835405800c93a17889c7574eb683b3",
     "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md",
     "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/preview/VexPreview.kt",
@@ -429,6 +430,48 @@
         "fontWeight": 600,
         "fontSizeSp": 10,
         "letterSpacingSp": 0.8
+      },
+      "headlineSmall": {
+        "fontFamily": "PLATFORM_DEFAULT",
+        "fontWeight": 400,
+        "fontSizeSp": 24,
+        "lineHeightSp": 32,
+        "letterSpacingSp": 0
+      },
+      "titleLarge": {
+        "fontFamily": "PLATFORM_DEFAULT",
+        "fontWeight": 400,
+        "fontSizeSp": 22,
+        "lineHeightSp": 28,
+        "letterSpacingSp": 0
+      },
+      "titleMedium": {
+        "fontFamily": "PLATFORM_DEFAULT",
+        "fontWeight": 500,
+        "fontSizeSp": 16,
+        "lineHeightSp": 24,
+        "letterSpacingSp": 0.2
+      },
+      "bodyLarge": {
+        "fontFamily": "PLATFORM_DEFAULT",
+        "fontWeight": 400,
+        "fontSizeSp": 16,
+        "lineHeightSp": 24,
+        "letterSpacingSp": 0.5
+      },
+      "bodyMedium": {
+        "fontFamily": "PLATFORM_DEFAULT",
+        "fontWeight": 400,
+        "fontSizeSp": 14,
+        "lineHeightSp": 20,
+        "letterSpacingSp": 0.2
+      },
+      "labelLarge": {
+        "fontFamily": "PLATFORM_DEFAULT",
+        "fontWeight": 500,
+        "fontSizeSp": 14,
+        "lineHeightSp": 20,
+        "letterSpacingSp": 0.1
       }
     }
   }
