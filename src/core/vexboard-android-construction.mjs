@@ -29,6 +29,12 @@ function layoutRule(design, ref) {
   return value;
 }
 
+function anchorRule(design, ref) {
+  const value = design.anchorRules?.find((rule) => rule.anchorRef === ref);
+  assert(value, `Android construction requires Screen design anchor rule ${ref}`);
+  return value;
+}
+
 function visualColor(design, ref) {
   const value = design.visualTokens?.colors?.[ref];
   assert(typeof value === 'string' && value, `Android construction requires visual color ${ref}`);
@@ -165,12 +171,21 @@ export function compileVexLifeAndroidScreenDesign(
 
   const tabs = layoutRule(design, 'layout.vexstream.library-tabs');
   const songs = layoutRule(design, 'layout.vexstream.songs');
+  const libraryActions = layoutRule(design, 'layout.vexstream.library-actions');
+  const libraryActionsAnchor = anchorRule(design, 'anchor.vexstream.library-actions');
   const connectionSheet = layoutRule(design, 'layout.vexstream.connection-sheet');
 
   assert(tabs.mode === 'SCROLL_ROW',
     'VexStream library tabs must remain SCROLL_ROW for Android construction');
   assert(songs.mode === 'SCROLL_COLUMN',
     'VexStream songs must remain SCROLL_COLUMN for Android construction');
+  assert(libraryActions.mode === 'COLUMN',
+    'VexStream library actions must remain COLUMN for Android construction');
+  assert(
+    libraryActionsAnchor.horizontalAnchor === 'END' &&
+    libraryActionsAnchor.verticalAnchor === 'BOTTOM',
+    'VexStream library actions must remain bottom-end anchored for Android construction',
+  );
   assert(connectionSheet.mode === 'COLUMN',
     'VexStream connection sheet must remain COLUMN for Android construction');
 
@@ -318,6 +333,30 @@ export function compileVexLifeAndroidScreenDesign(
       targetSymbol: 'VexStreamSongsPane LazyColumn',
       targetMeaning: 'scrolling song list + vertical item gap',
       referenceDpOrNull: metric(design, songs.gapMetricRefOrNull).referenceDp,
+    }),
+    mapping('mapping.android.vexstream.library-actions-anchor', {
+      designRefs: [
+        libraryActionsAnchor.anchorRef,
+        `metric.${libraryActionsAnchor.horizontalInsetMetricRefOrNull}`,
+        `metric.${libraryActionsAnchor.verticalInsetMetricRefOrNull}`,
+        'metric.smallFabSize',
+      ],
+      targetSourceRef:
+        'repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamLibrarySurface.kt',
+      targetSymbol: 'Scaffold.floatingActionButton',
+      targetMeaning: 'bottom-end floating action slot with VexBoard-owned bounded insets',
+      referenceDpOrNull: metric(design, 'smallFabSize').referenceDp,
+    }),
+    mapping('mapping.android.vexstream.library-actions-cluster', {
+      designRefs: [
+        libraryActions.layoutRef,
+        `metric.${libraryActions.gapMetricRefOrNull}`,
+      ],
+      targetSourceRef:
+        'repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamLibraryPresentation.kt',
+      targetSymbol: 'VexStreamLibraryFabActions',
+      targetMeaning: 'vertical FAB cluster + VexActionFab children',
+      referenceDpOrNull: metric(design, libraryActions.gapMetricRefOrNull).referenceDp,
     }),
     mapping('mapping.android.vexstream.track-card', {
       designRefs: [
