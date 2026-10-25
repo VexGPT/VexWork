@@ -7,6 +7,8 @@ import {
   androidReferenceClassNames,
   androidReferenceProfileSummary,
   androidReferenceRelationshipRoute,
+  androidReferenceScrollAxis,
+  androidReferenceScrolledOccurrence,
   installAndroidReferencePresentation,
   normalizeAndroidReferencePresentation,
 } from '../vexboard/ui/android-reference-presentation.mjs';
@@ -26,6 +28,8 @@ function fixture() {
       { projectionItemRef: 'item.sheet', role: 'MODAL_SHEET', variant: null },
       { projectionItemRef: 'item.settings', role: 'ICON_BUTTON', variant: 'Settings' },
       { projectionItemRef: 'item.condition', role: 'STATE_CHIP', variant: 'LOADED' },
+      { projectionItemRef: 'item.viewport', role: 'SCROLL_VIEWPORT', variant: 'HORIZONTAL' },
+      { projectionItemRef: 'item.tab', role: 'TAB', variant: 'DEFAULT' },
     ],
     relationships: [{
       relationshipRef: 'rel.open-sheet',
@@ -79,6 +83,55 @@ test('Android reference presentation rejects occurrence routes that do not bind 
   );
 });
 
+test('Android reference scroll viewport translates and clips occurrence-local geometry without mutation', () => {
+  const presentation = fixture();
+  assert.equal(androidReferenceScrollAxis(presentation, 'item.viewport'), 'HORIZONTAL');
+  assert.equal(androidReferenceScrollAxis(presentation, 'item.screen'), null);
+
+  const partial = androidReferenceScrolledOccurrence(
+    presentation,
+    { x: 80, y: 20, width: 80, height: 40 },
+    'item.viewport',
+    { x: 100, y: 20, width: 100, height: 40 },
+    0,
+  );
+  assert.deepEqual(partial.bounds, { x: 80, y: 20, width: 80, height: 40 });
+  assert.equal(partial.hidden, false);
+  assert.equal(partial.clipPath, 'inset(0px 0px 0px 20px)');
+
+  const scrolled = androidReferenceScrolledOccurrence(
+    presentation,
+    { x: 180, y: 20, width: 80, height: 40 },
+    'item.viewport',
+    { x: 100, y: 20, width: 100, height: 40 },
+    50,
+  );
+  assert.deepEqual(scrolled.bounds, { x: 130, y: 20, width: 80, height: 40 });
+  assert.equal(scrolled.hidden, false);
+  assert.equal(scrolled.clipPath, 'inset(0px 10px 0px 0px)');
+
+  const hidden = androidReferenceScrolledOccurrence(
+    presentation,
+    { x: 250, y: 20, width: 40, height: 40 },
+    'item.viewport',
+    { x: 100, y: 20, width: 100, height: 40 },
+    0,
+  );
+  assert.equal(hidden.hidden, true);
+  assert.equal(hidden.clipPath, null);
+
+  assert.throws(
+    () => androidReferenceScrolledOccurrence(
+      presentation,
+      { x: 100, y: 20, width: 40, height: 40 },
+      'item.viewport',
+      { x: 100, y: 20, width: 100, height: 40 },
+      -1,
+    ),
+    /scrollOffset must be a non-negative finite number/,
+  );
+});
+
 test('Android reference presentation rejects duplicate projection occurrence hints', () => {
   const invalid = fixture();
   invalid.items.push({ projectionItemRef: 'item.screen', role: 'BUTTON', variant: 'PRIMARY' });
@@ -103,6 +156,7 @@ test('Android reference stylesheet installs once and contains the Screen/modal/d
   assert.equal(appended[0].id, ANDROID_REFERENCE_STYLE_ID);
   assert.match(appended[0].textContent, /android-role-screen-frame/);
   assert.match(appended[0].textContent, /android-role-state-chip/);
+  assert.match(appended[0].textContent, /android-role-scroll-viewport/);
   assert.match(appended[0].textContent, /android-role-modal-sheet/);
   assert.match(appended[0].textContent, /android-role-api-endpoint/);
   assert.match(appended[0].textContent, /#0f1012/);
