@@ -45,6 +45,23 @@ test('VexLife Android POC snapshot projects deterministically without source eff
     first.board.adoptionCoverage.screenRealizationModes['screen.vexstream-music'],
     'CUSTOM_NATIVE_REALIZATION',
   );
+  assert.equal(first.board.adoptionCoverage.findings.length, 5);
+  const homeCopyFinding = first.board.adoptionCoverage.findings.find(
+    (entry) => entry.findingRef === 'finding.android.home.vexstream-copy-unaddressed',
+  );
+  assert.equal(homeCopyFinding.ownerSemanticRef, 'element.home.body.vexstream');
+  assert.equal(homeCopyFinding.kind, 'RAW_COMPOSE_NO_SEMANTIC_REF');
+
+  const showQueueFinding = first.board.adoptionCoverage.findings.find(
+    (entry) => entry.findingRef === 'finding.android.vexstream.show-queue-parent-drift',
+  );
+  assert.equal(showQueueFinding.ownerSemanticRef, 'screen.vexstream-music');
+  assert.equal(
+    showQueueFinding.subjectSemanticRefOrNull,
+    'element.vexstream-music.body.player.queue.show',
+  );
+  assert.equal(showQueueFinding.kind, 'REGISTRY_RENDER_STRUCTURE_DRIFT');
+
   const derivedContentCoverage = first.board.adoptionCoverage.identityExceptions.find(
     (entry) =>
       entry.semanticRef === 'element.vexstream-music.body.connection.menu.content',
