@@ -72,6 +72,15 @@ test('VexStream living Blueprint patient zero resolves through the source-owned 
   assert.equal(resolved.sourceRefs.some((ref) => ref.startsWith('git.commit.vexstream-music.')), true);
 });
 
+test('VexStream construction/evidence detail resolves as a second bounded source-owned board', () => {
+  const catalog = normalizeBoardSourceCatalog(JSON.parse(
+    fs.readFileSync(new URL('../projects/vexboard/examples/board-source-catalog.json', import.meta.url), 'utf8'),
+  ));
+  const resolved = resolveBoardSource('board.vexstream.phone-desktop-connection.construction-evidence', [catalog]);
+  assert.equal(resolved.location, './vexstream-phone-desktop-connection-construction.board.json');
+  assert.equal(resolved.sourceRefs.includes('projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md'), true);
+});
+
 test('duplicate board ownership across catalogs fails closed even when locations happen to match', () => {
   const duplicate = normalizeBoardSourceCatalog({
     schemaVersion: BOARD_SOURCE_CATALOG_SCHEMA,

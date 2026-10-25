@@ -18,6 +18,14 @@
       ]
     },
     {
+      "boardRef": "board.vexstream.phone-desktop-connection.construction-evidence",
+      "location": "./vexstream-phone-desktop-connection-construction.board.json",
+      "sourceRefs": [
+        "projects/vexboard/examples/vexstream-phone-desktop-connection-construction.board.json",
+        "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md"
+      ]
+    },
+    {
       "boardRef": "board.vexstream.phone-desktop-connection.living-blueprint",
       "location": "./vexstream-phone-desktop-connection.board.json",
       "sourceRefs": [

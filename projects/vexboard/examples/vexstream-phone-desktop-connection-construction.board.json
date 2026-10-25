@@ -1,0 +1,218 @@
+{
+  "schemaVersion": "vexboard.local-draft/v1",
+  "draftRef": "board.vexstream.phone-desktop-connection.construction-evidence",
+  "title": "VexStream Music · Construction + Evidence",
+  "mode": "READ_ONLY_SOURCE",
+  "derivedFromRefOrNull": null,
+  "savedAtOrNull": null,
+  "graph": {
+    "schemaVersion": "vexboard.board-graph/v1",
+    "graphRef": "graph.vexstream.phone-desktop-connection.construction-evidence",
+    "nodes": [
+      {
+        "nodeRef": "container.vexstream.construction.android",
+        "kind": "CONTAINER",
+        "label": "Android construction",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552"
+        ]
+      },
+      {
+        "nodeRef": "annotation.vexstream.android.semantic-ids",
+        "kind": "ANNOTATION",
+        "label": "Android semantic IDs · screen.home → element.home.body.vexstream.connect → screen.vexstream-music → element.vexstream-music.body.connection / .find / .confirm-code",
+        "parentRefOrNull": "container.vexstream.construction.android",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt",
+          "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/ScreenBlueprint.kt",
+          "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md"
+        ]
+      },
+      {
+        "nodeRef": "annotation.vexstream.android.connection-constraints",
+        "kind": "ANNOTATION",
+        "label": "Android construction · ConnectionSection fills START↔END; outer inset H12dp/V8dp; VexContainer inner padding 16dp; vertical child gap 12dp. dp values are current Android mapping, not universal Blueprint units.",
+        "parentRefOrNull": "container.vexstream.construction.android",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt",
+          "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/ElementCells.kt",
+          "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md"
+        ]
+      },
+      {
+        "nodeRef": "container.vexstream.construction.desktop",
+        "kind": "CONTAINER",
+        "label": "Desktop source condition",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15"
+        ]
+      },
+      {
+        "nodeRef": "annotation.vexstream.desktop.connection-condition",
+        "kind": "ANNOTATION",
+        "label": "Desktop construction · open() auto-starts pairing only when pairing is closed AND remembered-phone count = 0; remembered phones expose Connect another phone; pairing-ready exposes the shared six-digit code.",
+        "parentRefOrNull": "container.vexstream.construction.desktop",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+          "repo.vexstream-music:v2/web/features/phone/connection.js",
+          "repo.vexstream-music:v2/web/features/phone/presentation.js",
+          "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md"
+        ]
+      },
+      {
+        "nodeRef": "container.vexstream.construction.evidence",
+        "kind": "CONTAINER",
+        "label": "Evidence policy",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "src/shared/vexboard-evidence.mjs"
+        ]
+      },
+      {
+        "nodeRef": "annotation.vexstream.evidence.currentness",
+        "kind": "ANNOTATION",
+        "label": "Evidence · expected slots are source-addressed now. OBSERVED screenshot admission remains held until trustworthy capturedAt/provenance is available. Repository age alone does not stale evidence.",
+        "parentRefOrNull": "container.vexstream.construction.evidence",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md",
+          "src/shared/vexboard-evidence.mjs"
+        ]
+      }
+    ],
+    "relationships": [],
+    "sourceRefs": [
+      "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md",
+      "src/shared/vexboard-evidence.mjs",
+      "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+      "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15"
+    ]
+  },
+  "projection": {
+    "schemaVersion": "vexboard.board-projection/v1",
+    "projectionRef": "projection.vexstream.phone-desktop-connection.construction-evidence",
+    "graphRef": "graph.vexstream.phone-desktop-connection.construction-evidence",
+    "layoutIntent": "SYSTEM_MAP",
+    "items": [
+      {
+        "projectionItemRef": "item.vexstream.construction.android",
+        "semanticRef": "container.vexstream.construction.android",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 30,
+          "y": 40,
+          "width": 660,
+          "height": 430
+        },
+        "layer": 0,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexstream.construction.android-ids",
+        "semanticRef": "annotation.vexstream.android.semantic-ids",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 60,
+          "y": 100,
+          "width": 600,
+          "height": 135
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.vexstream.construction.android",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexstream.construction.android-constraints",
+        "semanticRef": "annotation.vexstream.android.connection-constraints",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 60,
+          "y": 270,
+          "width": 600,
+          "height": 150
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vexstream.construction.android",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexstream.construction.desktop",
+        "semanticRef": "container.vexstream.construction.desktop",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 30,
+          "y": 500,
+          "width": 660,
+          "height": 260
+        },
+        "layer": 0,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexstream.construction.desktop-condition",
+        "semanticRef": "annotation.vexstream.desktop.connection-condition",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 60,
+          "y": 560,
+          "width": 600,
+          "height": 150
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.vexstream.construction.desktop",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexstream.construction.evidence",
+        "semanticRef": "container.vexstream.construction.evidence",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 30,
+          "y": 790,
+          "width": 660,
+          "height": 260
+        },
+        "layer": 0,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexstream.construction.evidence-policy",
+        "semanticRef": "annotation.vexstream.evidence.currentness",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 60,
+          "y": 850,
+          "width": 600,
+          "height": 150
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.vexstream.construction.evidence",
+        "visible": true,
+        "locked": true
+      }
+    ],
+    "sourceRefs": [
+      "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md"
+    ]
+  }
+}
