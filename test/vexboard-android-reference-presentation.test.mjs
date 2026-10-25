@@ -25,6 +25,7 @@ function fixture() {
       { projectionItemRef: 'item.screen', role: 'SCREEN_FRAME', variant: 'LOADED' },
       { projectionItemRef: 'item.sheet', role: 'MODAL_SHEET', variant: null },
       { projectionItemRef: 'item.settings', role: 'ICON_BUTTON', variant: 'Settings' },
+      { projectionItemRef: 'item.condition', role: 'STATE_CHIP', variant: 'LOADED' },
     ],
     relationships: [{
       relationshipRef: 'rel.open-sheet',
@@ -49,6 +50,10 @@ test('Android reference presentation is occurrence-local and does not mint seman
   assert.deepEqual(
     androidReferenceClassNames(presentation, 'item.settings'),
     ['android-reference', 'android-role-icon-button', 'android-variant-settings'],
+  );
+  assert.deepEqual(
+    androidReferenceClassNames(presentation, 'item.condition'),
+    ['android-reference', 'android-role-state-chip', 'android-variant-loaded'],
   );
   assert.deepEqual(androidReferenceClassNames(presentation, 'item.unknown'), []);
 
@@ -97,6 +102,7 @@ test('Android reference stylesheet installs once and contains the Screen/modal/d
   assert.equal(appended.length, 1);
   assert.equal(appended[0].id, ANDROID_REFERENCE_STYLE_ID);
   assert.match(appended[0].textContent, /android-role-screen-frame/);
+  assert.match(appended[0].textContent, /android-role-state-chip/);
   assert.match(appended[0].textContent, /android-role-modal-sheet/);
   assert.match(appended[0].textContent, /android-role-api-endpoint/);
   assert.match(appended[0].textContent, /#0f1012/);
