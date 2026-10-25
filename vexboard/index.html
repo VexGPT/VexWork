@@ -90,6 +90,7 @@ const store=(items)=>localStorage.setItem(Board.VEXBOARD_DRAFT_STORAGE_KEY,JSON.
 const readPaletteMode=()=>{try{return Presentation.normalizePaletteMode(localStorage.getItem(Presentation.VEXBOARD_PALETTE_STORAGE_KEY))}catch{return'STANDARD'}};
 let paletteMode=readPaletteMode();
 const savedClock=(value)=>{if(!value)return'';try{return new Date(value).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}catch{return''}};
+const designAuthorityLabel=(value)=>value==='VEXBOARD_DESIGN_AUTHORITY'?'VexBoard design authority':value==='VEXBOARD_DESIGN_DRAFT'?'VexBoard design draft':'Reverse-adopted design';
 function markDraftDirty(){if(!editable())return;draftDirty=true;saveMessage='Unsaved changes'}
 const node=(r)=>current.graph.nodes.find(n=>n.nodeRef===r);
 const item=(r)=>current.projection.items.find(i=>i.projectionItemRef===r);
@@ -122,6 +123,28 @@ async function loadSourceCatalogs(){
   }));
   return sourceCatalogCache;
 }
+async function loadAndroidProjectionSourceContext(boardRef){
+  if(androidProjectionSources.has(boardRef))return androidProjectionSources.get(boardRef);
+  const sources=await loadSourceCatalogs();
+  const resolution=SourceResolver.resolveBoardSource(boardRef,sources.map(source=>source.catalog));
+  if(!resolution)return null;
+  const catalogSource=sources.find(candidate=>candidate.catalog.catalogRef===resolution.catalogRef);
+  if(!catalogSource)return null;
+  const boardUrl=new URL(resolution.location,catalogSource.catalogUrl);
+  const response=await fetch(boardUrl,{cache:'no-store'});
+  if(!response.ok)throw new Error(`${boardRef} HTTP ${response.status}`);
+  const payload=await response.json();
+  if(payload?.schemaVersion!==AndroidProjector.VEXLIFE_ANDROID_POC_SNAPSHOT_SCHEMA)return null;
+  const designLocation=AndroidProjector.androidPocDesignLocation(payload);
+  const designUrl=new URL(designLocation,boardUrl);
+  const designResponse=await fetch(designUrl,{cache:'no-store'});
+  if(!designResponse.ok)throw new Error(`${payload.designRef} HTTP ${designResponse.status}`);
+  const design=ScreenDesign.normalizeScreenDesign(await designResponse.json());
+  const context=Object.freeze({snapshot:payload,design});
+  androidProjectionSources.set(boardRef,context);
+  return context;
+}
+
 async function loadCatalogBoard(boardRef){
   const sources=await loadSourceCatalogs();
   const resolution=SourceResolver.resolveBoardSource(boardRef,sources.map(source=>source.catalog));
@@ -134,13 +157,13 @@ async function loadCatalogBoard(boardRef){
   const payload=await response.json();
   let projected=payload;
   if(payload?.schemaVersion===AndroidProjector.VEXLIFE_ANDROID_POC_SNAPSHOT_SCHEMA){
-    const designLocation=AndroidProjector.androidPocDesignLocation(payload);
-    const designUrl=new URL(designLocation,boardUrl);
-    const designResponse=await fetch(designUrl,{cache:'no-store'});
-    if(!designResponse.ok)throw new Error(`${payload.designRef} HTTP ${designResponse.status}`);
-    const design=ScreenDesign.normalizeScreenDesign(await designResponse.json());
-    androidProjectionSources.set(boardRef,Object.freeze({snapshot:payload,design}));
-    projected=AndroidProjector.projectVexLifeAndroidPocSnapshot(payload,boardRef,design).board;
+    const context=await loadAndroidProjectionSourceContext(boardRef);
+    if(!context)throw new Error(`Android projection source unavailable ${boardRef}`);
+    projected=AndroidProjector.projectVexLifeAndroidPocSnapshot(
+      context.snapshot,
+      boardRef,
+      context.design,
+    ).board;
   }
   const draft=Board.normalizeDraft(projected);
   if(draft.draftRef!==boardRef)throw new Error(`board source identity mismatch ${boardRef}`);
@@ -441,14 +464,26 @@ function designMetricText(metric){
   const preferred=Number(metric.preferredPercent)*100;
   return `${preferred.toFixed(2)}% · ${metric.minDp}–${metric.maxDp}dp · ref ${metric.referenceDp}dp`;
 }
+function designMetricRefsForSemantic(design,semanticRef){
+  const refs=new Set();
+  for(const constraint of design.constraints.filter(value=>value.semanticRef===semanticRef)){
+    for(const axis of [constraint.horizontal,constraint.vertical]){
+      for(const margin of [axis?.startMargin,axis?.endMargin])if(margin?.metricRef)refs.add(margin.metricRef);
+    }
+  }
+  for(const rule of (design.layoutRules||[]).filter(value=>value.semanticRef===semanticRef)){
+    if(rule.gapMetricRefOrNull)refs.add(rule.gapMetricRefOrNull);
+  }
+  return [...refs].sort();
+}
 function designAxisText(axis){
   if(!axis)return'—';
   const parts=[axis.size?.mode||''];
   if(axis.size?.fraction!==undefined)parts.push(`${(axis.size.fraction*100).toFixed(1)}%`);
   if(axis.size?.referenceDp!==undefined)parts.push(`${axis.size.referenceDp}dp`);
   parts.push(`bias ${Number(axis.bias??0).toFixed(2)}`);
-  if(axis.startMargin)parts.push(`start ${designMetricText(axis.startMargin)}`);
-  if(axis.endMargin)parts.push(`end ${designMetricText(axis.endMargin)}`);
+  if(axis.startMargin)parts.push(axis.startMargin.metricRef?`start @${axis.startMargin.metricRef}`:`start ${designMetricText(axis.startMargin)}`);
+  if(axis.endMargin)parts.push(axis.endMargin.metricRef?`end @${axis.endMargin.metricRef}`:`end ${designMetricText(axis.endMargin)}`);
   return parts.filter(Boolean).join(' · ');
 }
 
@@ -519,7 +554,31 @@ function inspector(side){
       dg.append(list);
     }
 
-    if(!constraints.length&&!layoutRules.length){
+    const metricRefs=designMetricRefsForSemantic(current.design,n.nodeRef);
+    if(metricRefs.length){
+      dg.append(el('div','k','Design metrics'));
+      const list=el('div','ref-list');
+      for(const metricRef of metricRefs){
+        const metric=current.design.metrics?.[metricRef];if(!metric)continue;
+        const row=el('div','ref-row');row.append(el('div','v',`${metricRef}\n${designMetricText(metric)}`));
+        if(editable()){
+          const controls=el('div','row');
+          for(const [label,field,value,scale,step] of [
+            ['Preferred %','preferredPercent',metric.preferredPercent*100,0.01,0.1],
+            ['Min dp','minDp',metric.minDp,1,1],
+            ['Max dp','maxDp',metric.maxDp,1,1],
+          ]){
+            const lab=el('label','k',label),input=document.createElement('input');input.className='number';input.type='number';input.step=String(step);input.value=String(Math.round(value*100)/100);
+            input.onchange=()=>editLocalDesignMetric(metricRef,field,Number(input.value)*scale);
+            lab.append(input);controls.append(lab);
+          }
+          row.append(controls);
+        }
+        list.append(row);
+      }
+      dg.append(list);
+    }
+    if(!constraints.length&&!layoutRules.length&&!metricRefs.length){
       dg.append(el('div','v','No direct Screen-design constraint on this semantic identity; inspect its owning Screen/container or construction/source lens.'));
     }
     side.append(dg);
@@ -628,25 +687,61 @@ function wireViewport(view,canvas){
   canvas.onclick=async e=>{if(suppressCanvasClick){suppressCanvasClick=false;return}if(editable()&&['RECTANGLE','DIAMOND','FRAME','TEXT'].includes(tool)){const point=Board.boardPointFromClient({clientX:e.clientX,clientY:e.clientY},view.getBoundingClientRect(),camera);await addShape(tool,point.x,point.y)}else if(tool!=='PAN'){selected=null;renderWorkspace();requestAnimationFrame(()=>applyCamera())}};
 }
 
-async function setAndroidViewportProfile(profileRef){
-  if(editable())return;
-  const source=androidProjectionSources.get(activeBoardRef);
-  if(!source)return;
+function androidSourceBoardRef(){
+  return current?.mode==='LOCAL_DRAFT'?(current.derivedFromRefOrNull||null):(activeBoardRef||null);
+}
+async function reprojectAndroidDesign(nextDesign,{profileRef=activeAndroidViewportProfileRef,markDirty=false}={}){
+  const sourceBoardRef=androidSourceBoardRef();
+  if(!sourceBoardRef)return false;
+  const source=await loadAndroidProjectionSourceContext(sourceBoardRef);
+  if(!source)return false;
   const projected=AndroidProjector.projectVexLifeAndroidPocSnapshot(
     source.snapshot,
-    activeBoardRef,
-    source.design,
+    sourceBoardRef,
+    nextDesign,
     profileRef,
   ).board;
   const d=Board.normalizeDraft(projected),s=await Board.hydrateBoardState(d.graph,d.projection);
   const priorSelected=selected;
   const evidence=d.evidence?Evidence.normalizeBoardEvidence(d.evidence,s.graph):null;
-  const design=d.design?ScreenDesign.normalizeScreenDesign(d.design):null;
-  current={...d,graph:s.graph,projection:s.projection,evidence,design};
+  const design=ScreenDesign.normalizeScreenDesign(nextDesign);
+  current={
+    ...current,
+    graph:s.graph,
+    projection:s.projection,
+    presentation:d.presentation,
+    design,
+    sourceRefs:d.sourceRefs,
+    evidence,
+    savedAtOrNull:markDirty?null:current.savedAtOrNull,
+  };
   selected=priorSelected&&s.projection.items.some(item=>item.projectionItemRef===priorSelected)?priorSelected:null;
-  activeAndroidViewportProfileRef=profileRef;
+  activeAndroidViewportProfileRef=profileRef??design.referenceViewport.profileRef;
   scrollOffsetsByProjectionRef=new Map();
+  if(markDirty)markDraftDirty();
   renderWorkspace();requestAnimationFrame(()=>applyCamera());
+  return true;
+}
+async function setAndroidViewportProfile(profileRef){
+  if(editable())return;
+  const source=await loadAndroidProjectionSourceContext(activeBoardRef);
+  if(!source)return;
+  await reprojectAndroidDesign(source.design,{profileRef,markDirty:false});
+}
+async function editLocalDesignMetric(metricRef,field,value){
+  if(!editable()||!current.design)return;
+  if(!Number.isFinite(value))return;
+  const next=structuredClone(current.design);
+  const metric=next.metrics?.[metricRef];if(!metric)return;
+  metric[field]=value;
+  next.authorityState='VEXBOARD_DESIGN_DRAFT';
+  try{
+    const accepted=ScreenDesign.normalizeScreenDesign(next);
+    await reprojectAndroidDesign(accepted,{markDirty:true});
+  }catch(error){
+    saveMessage=`Design edit rejected · ${error?.message||error}`;
+    renderWorkspace();requestAnimationFrame(()=>applyCamera());
+  }
 }
 
 function paletteFab(){
@@ -664,7 +759,7 @@ function renderWorkspace(){
   const androidProfile=AndroidPresentation.androidReferenceProfileSummary(current.presentation);
   if(androidProfile)bar.append(el('span','badge',`Android ref · ${androidProfile.widthDp}×${androidProfile.heightDp}dp`));
   if(current.design){
-    const authority=current.design.authorityState==='VEXBOARD_DESIGN_AUTHORITY'?'VexBoard design authority':'Reverse-adopted design';
+    const authority=designAuthorityLabel(current.design.authorityState);
     bar.append(el('span','badge',authority));
     if(!editable()&&androidProjectionSources.has(activeBoardRef)&&Array.isArray(current.design.viewportProfiles)){
       const viewportSelect=document.createElement('select');viewportSelect.className='containment-select';viewportSelect.setAttribute('aria-label','Screen design viewport');
