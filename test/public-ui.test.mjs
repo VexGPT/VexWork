@@ -7,7 +7,6 @@ import * as reader from '../workspace-reader.js';
 const page = fs.readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 
 test('VexWork Pages owns the semantic navigator and reads same-origin public workspace', () => {
-  assert.match(page, /class="brand-home" href="\.\/">VexWork<\/a>/);
   assert.match(page, /class="terrain-home" href="\.\/terrain\.html">Terrain Map<\/a>/);
   assert.match(page, /class="terrain-home" href="\.\/vexboard\/">VexBoard<\/a>/);
   assert.match(page, /const WORKSPACE_URL = '\.\/public\/workspace\.json'/);
@@ -72,8 +71,17 @@ test('dynamic VexWork strings enter through textContent, not producer HTML', () 
 });
 
 test('family navigation keeps Vextreme and VexLife as sibling destinations', () => {
-  assert.match(page, /https:\/\/vgong24\.github\.io\/Vextreme\/pages\/terrain-map\.html\?view=content&amp;profile=evolution-v1/);
+  assert.match(page, /https:\/\/vgong24\.github\.io\/Vextreme\/pages\/terrain-map\.html/);
   assert.match(page, /https:\/\/vgong24\.github\.io\/VexLife\//);
+});
+
+test('family rail keeps one fixed mark and stable context slots', () => {
+  assert.match(page, /class="family-rail"/);
+  assert.match(page, /grid-template-columns:5\.8rem \.65rem 5\.3rem \.65rem 5\.3rem/);
+  assert.match(page, /\.family-current\{font-family:Georgia/);
+  assert.doesNotMatch(page, /class="brand-home"/);
+  assert.match(page, /\.sep\{[\s\S]*text-align:center;justify-self:center/);
+  assert.match(page, /@media\(max-width:640px\)[\s\S]*grid-template-columns:4\.9rem \.65rem 4\.7rem \.65rem 4\.8rem/);
 });
 
 test('state presentation uses stable semantic color families and keeps priority separate', () => {
@@ -87,9 +95,10 @@ test('state presentation uses stable semantic color families and keeps priority 
   assert.equal(reader.priorityTone('NORMAL'), 'normal');
 });
 
-test('semantic level rail and VexWork title expose navigation home/back controls', () => {
-  assert.match(page, /class="family-current" href="\.\/"/);
-  assert.match(page, /class="brand-home" href="\.\/">VexWork<\/a>/);
+test('semantic level rail and selected VexWork family slot expose navigation home/back controls', () => {
+  assert.match(page, /class="family-current" href="\.\/" aria-current="page">VexWork<\/a>/);
+  assert.doesNotMatch(page, /class="brand-home"/);
+  assert.match(page, /class="terrain-home" href="\.\/terrain\.html">Terrain Map<\/a>/);
   assert.match(page, /data-level="PROJECTS"/);
   assert.match(page, /data-level="PROJECT"/);
 });
