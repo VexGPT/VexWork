@@ -66,6 +66,7 @@ let viewportEl=null,canvasEl=null,minimapEl=null,zoomReadoutEl=null;
 let draftDirty=false,saveMessage='',suppressCanvasClick=false;
 let pinnedSemanticRefs=new Set(),relationalFocusMode='CONNECT',pinMenuEl=null,relationshipViewMode='ALL';
 let scrollOffsetsByProjectionRef=new Map();
+let androidProjectionSources=new Map(),activeAndroidViewportProfileRef=null;
 let sourceCatalogCache=null;
 const sourceCatalogUrls=Object.freeze([
   '../projects/vexboard/examples/board-source-catalog.json',
@@ -138,6 +139,7 @@ async function loadCatalogBoard(boardRef){
     const designResponse=await fetch(designUrl,{cache:'no-store'});
     if(!designResponse.ok)throw new Error(`${payload.designRef} HTTP ${designResponse.status}`);
     const design=ScreenDesign.normalizeScreenDesign(await designResponse.json());
+    androidProjectionSources.set(boardRef,Object.freeze({snapshot:payload,design}));
     projected=AndroidProjector.projectVexLifeAndroidPocSnapshot(payload,boardRef,design).board;
   }
   const draft=Board.normalizeDraft(projected);
@@ -154,14 +156,14 @@ async function openBuiltInBoard(boardRef,{pushCurrent=false}={}){
   return openBoard(d,{pushCurrent,boardRef,prototypeInput});
 }
 
-function snapshotCurrent(){return current?{current,selected,tool,camera,collapsed:[...collapsed],journey,journeyPathwayAnalysis,prototype,scenario,interactionTrail:interactionTrail.map(entry=>({...entry})),activeBoardRef,draftDirty,saveMessage,pinnedSemanticRefs:[...pinnedSemanticRefs],relationalFocusMode,relationshipViewMode,scrollOffsets:[...scrollOffsetsByProjectionRef.entries()]}:null}
+function snapshotCurrent(){return current?{current,selected,tool,camera,collapsed:[...collapsed],journey,journeyPathwayAnalysis,prototype,scenario,interactionTrail:interactionTrail.map(entry=>({...entry})),activeBoardRef,draftDirty,saveMessage,pinnedSemanticRefs:[...pinnedSemanticRefs],relationalFocusMode,relationshipViewMode,scrollOffsets:[...scrollOffsetsByProjectionRef.entries()],androidViewportProfileRef:activeAndroidViewportProfileRef}:null}
 async function openBoard(input,{pushCurrent=false,boardRef=null,prototypeInput=null}={}){
   cameraAnimator.cancel();
   if(pushCurrent&&current)boardStack.push(snapshotCurrent());
   const d=Board.normalizeDraft(input),s=await Board.hydrateBoardState(d.graph,d.projection);
   const evidence=d.evidence?Evidence.normalizeBoardEvidence(d.evidence,s.graph):null;
   const design=d.design?ScreenDesign.normalizeScreenDesign(d.design):null;
-  current={...d,graph:s.graph,projection:s.projection,evidence,design};selected=null;tool='SELECT';connectFrom=null;relationshipViewMode=Presentation.defaultRelationshipViewMode(d.projection.layoutIntent);
+  current={...d,graph:s.graph,projection:s.projection,evidence,design};selected=null;tool='SELECT';connectFrom=null;relationshipViewMode=Presentation.defaultRelationshipViewMode(d.projection.layoutIntent);activeAndroidViewportProfileRef=d.presentation?.profileRef??null;
   prototype=prototypeInput?Board.normalizeBoardPrototype(prototypeInput,s.graph):null;
   scenario=prototype?Board.createBoardScenario(prototype,s.graph,{scenarioRef:ref('scenario.vexboard')}):null;
   interactionTrail=[];collapsed=new Set();journey=null;journeyPathwayAnalysis=null;pinnedSemanticRefs=new Set();relationalFocusMode='CONNECT';scrollOffsetsByProjectionRef=new Map();camera=Board.normalizeCamera({x:48,y:48,zoom:1});activeBoardRef=boardRef||d.draftRef;
@@ -169,7 +171,7 @@ async function openBoard(input,{pushCurrent=false,boardRef=null,prototypeInput=n
   saveMessage=d.mode==='LOCAL_DRAFT'?(d.savedAtOrNull?`Saved locally · ${savedClock(d.savedAtOrNull)}`:'Not saved locally yet'):'';
   renderWorkspace();requestAnimationFrame(()=>fitBoard());
 }
-function returnBoard(){cameraAnimator.cancel();const prior=boardStack.pop();if(!prior)return;({current,selected,tool,camera,journey,journeyPathwayAnalysis,prototype,scenario,interactionTrail,activeBoardRef,draftDirty,saveMessage,relationalFocusMode,relationshipViewMode}=prior);collapsed=new Set(prior.collapsed);pinnedSemanticRefs=new Set(prior.pinnedSemanticRefs||[]);scrollOffsetsByProjectionRef=new Map(prior.scrollOffsets||[]);connectFrom=null;closePinMenu();renderWorkspace();requestAnimationFrame(()=>applyCamera())}
+function returnBoard(){cameraAnimator.cancel();const prior=boardStack.pop();if(!prior)return;({current,selected,tool,camera,journey,journeyPathwayAnalysis,prototype,scenario,interactionTrail,activeBoardRef,draftDirty,saveMessage,relationalFocusMode,relationshipViewMode}=prior);collapsed=new Set(prior.collapsed);pinnedSemanticRefs=new Set(prior.pinnedSemanticRefs||[]);scrollOffsetsByProjectionRef=new Map(prior.scrollOffsets||[]);activeAndroidViewportProfileRef=prior.androidViewportProfileRef??null;connectFrom=null;closePinMenu();renderWorkspace();requestAnimationFrame(()=>applyCamera())}
 async function enterPortal(detailBoardRef){
   const local=drafts().find(d=>d.draftRef===detailBoardRef);
   if(local){await openBoard(local,{pushCurrent:true,boardRef:detailBoardRef});return}
@@ -183,7 +185,7 @@ async function enterPortal(detailBoardRef){
 
 function landing(){
   cameraAnimator.cancel();
-  current=null;selected=null;journey=null;journeyPathwayAnalysis=null;prototype=null;scenario=null;interactionTrail=[];pinnedSemanticRefs=new Set();relationalFocusMode='CONNECT';scrollOffsetsByProjectionRef=new Map();closePinMenu();boardStack=[];activeBoardRef=null;app.className='app';app.replaceChildren();
+  current=null;selected=null;journey=null;journeyPathwayAnalysis=null;prototype=null;scenario=null;interactionTrail=[];pinnedSemanticRefs=new Set();relationalFocusMode='CONNECT';scrollOffsetsByProjectionRef=new Map();activeAndroidViewportProfileRef=null;androidProjectionSources=new Map();closePinMenu();boardStack=[];activeBoardRef=null;app.className='app';app.replaceChildren();
   const box=el('section','landing');
   box.append(el('div','eyebrow','VexBoard canvas projection'),el('h1','','Design the map before implementation has to guess it.'),el('p','lede','Create a local semantic-board draft or inspect an existing source board through a zoomable, pannable, recursive canvas. Camera, focus and collapse are read-only view state; requesting edit still forks a browser-local draft copy rather than mutating source truth.'));
   const actions=el('div','row');
@@ -626,6 +628,27 @@ function wireViewport(view,canvas){
   canvas.onclick=async e=>{if(suppressCanvasClick){suppressCanvasClick=false;return}if(editable()&&['RECTANGLE','DIAMOND','FRAME','TEXT'].includes(tool)){const point=Board.boardPointFromClient({clientX:e.clientX,clientY:e.clientY},view.getBoundingClientRect(),camera);await addShape(tool,point.x,point.y)}else if(tool!=='PAN'){selected=null;renderWorkspace();requestAnimationFrame(()=>applyCamera())}};
 }
 
+async function setAndroidViewportProfile(profileRef){
+  if(editable())return;
+  const source=androidProjectionSources.get(activeBoardRef);
+  if(!source)return;
+  const projected=AndroidProjector.projectVexLifeAndroidPocSnapshot(
+    source.snapshot,
+    activeBoardRef,
+    source.design,
+    profileRef,
+  ).board;
+  const d=Board.normalizeDraft(projected),s=await Board.hydrateBoardState(d.graph,d.projection);
+  const priorSelected=selected;
+  const evidence=d.evidence?Evidence.normalizeBoardEvidence(d.evidence,s.graph):null;
+  const design=d.design?ScreenDesign.normalizeScreenDesign(d.design):null;
+  current={...d,graph:s.graph,projection:s.projection,evidence,design};
+  selected=priorSelected&&s.projection.items.some(item=>item.projectionItemRef===priorSelected)?priorSelected:null;
+  activeAndroidViewportProfileRef=profileRef;
+  scrollOffsetsByProjectionRef=new Map();
+  renderWorkspace();requestAnimationFrame(()=>applyCamera());
+}
+
 function paletteFab(){
   const button=el('button','palette-fab');button.type='button';button.dataset.vexboardPlane=Interaction.INTERACTION_PLANES.CHROME;button.title=`Palette: ${paletteMode.replaceAll('_',' ')} · activate to rotate`;button.setAttribute('aria-label',button.title);
   const dots=el('span','palette-dots');dots.append(el('span','palette-dot'),el('span','palette-dot'),el('span','palette-dot'));button.append(dots);
@@ -643,6 +666,14 @@ function renderWorkspace(){
   if(current.design){
     const authority=current.design.authorityState==='VEXBOARD_DESIGN_AUTHORITY'?'VexBoard design authority':'Reverse-adopted design';
     bar.append(el('span','badge',authority));
+    if(!editable()&&androidProjectionSources.has(activeBoardRef)&&Array.isArray(current.design.viewportProfiles)){
+      const viewportSelect=document.createElement('select');viewportSelect.className='containment-select';viewportSelect.setAttribute('aria-label','Screen design viewport');
+      for(const profile of current.design.viewportProfiles){
+        const option=document.createElement('option');option.value=profile.profileRef;option.textContent=profile.label;option.selected=profile.profileRef===activeAndroidViewportProfileRef;viewportSelect.append(option);
+      }
+      viewportSelect.onchange=()=>setAndroidViewportProfile(viewportSelect.value);
+      bar.append(viewportSelect);
+    }
   }
   const zoomOut=el('button','btn','Zoom out');zoomOut.onclick=()=>zoomBy(1/1.18);const zoomIn=el('button','btn','Zoom in');zoomIn.onclick=()=>zoomBy(1.18);const fit=el('button','btn','Fit');fit.onclick=fitBoard;const reset=el('button','btn','Reset view');reset.onclick=resetView;zoomReadoutEl=el('span','zoom-readout','100%');bar.append(zoomOut,zoomIn,fit,reset,zoomReadoutEl);
   if(current.graph.relationships.some(relationship=>!['FLOW','TRANSITION'].includes(relationship.kind))){
