@@ -326,6 +326,16 @@ test('local draft flow creates, forks, serializes and uses the same BoardControl
   assert.deepEqual(fork.sourceRefs, readOnly.sourceRefs);
   assert.notEqual(fork.presentation, readOnly.presentation, 'fork must retain presentation by value, not shared object identity');
   assert.notEqual(fork.design, readOnly.design, 'fork must retain design constraints by value, not shared object identity');
+
+  const forkRoundTrip = Reader.deserializeDraft(Reader.serializeDraft(fork));
+  assert.deepEqual(forkRoundTrip.presentation, fork.presentation);
+  assert.deepEqual(forkRoundTrip.design, fork.design);
+  assert.deepEqual(forkRoundTrip.sourceRefs, fork.sourceRefs);
+  const collectionRoundTrip = Reader.parseDraftCollection(JSON.stringify(
+    Reader.upsertDraft([], forkRoundTrip),
+  ));
+  assert.deepEqual(collectionRoundTrip[0].design, fork.design);
+  assert.deepEqual(collectionRoundTrip[0].presentation, fork.presentation);
 });
 
 test('shared model rejects schema drift rather than silently dropping unknown fields', () => {
