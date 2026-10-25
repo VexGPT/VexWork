@@ -4756,7 +4756,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-24T06:05:10.000Z",
-      "updatedAt": "2026-10-25T07:12:00.000Z",
+      "updatedAt": "2026-10-25T07:36:31Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "workRef": "work.vexlife.welcome-wagon.outcome",
@@ -4782,7 +4782,10 @@
         "github.pull.vextreme.400",
         "github.pull.vextreme.403",
         "github.pull.vextreme.413",
-        "github.pull.vextreme.414"
+        "github.pull.vextreme.414",
+        "github.commit.vextreme.5a27d0914591753c2e50e6b086566fc0aa85a9c3",
+        "git.tree.vextreme.c5f1ed40e1168b7bde6d65d3ee3680b6471bc78c",
+        "github.pull.vextreme.379"
       ],
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
@@ -4859,7 +4862,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-25T07:12:00.000Z",
-      "updatedAt": "2026-10-25T07:12:00.000Z",
+      "updatedAt": "2026-10-25T07:36:31Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "workRef": "work.vexlife.welcome-wagon.support-shell-context-currentness",
@@ -4867,7 +4870,7 @@
       "label": "Converge Support onto current shared shell and clean Terrain links",
       "purpose": "Resolve the lived Support-page chrome drift by moving `vex-support` onto the accepted shell-context runtime, preserving its voluntary Stripe and held-route semantics, removing retired standalone header/footer controls, and graduating shared Vextreme/Terrain home links to the clean canonical Terrain URL without taking generated/runtime custody from PR #379.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
       "repositoryRefs": [
@@ -4881,11 +4884,13 @@
         "repo.vextreme:lib/vextreme.js",
         "repo.vextreme:tests/39-vextreme-nav-links.test.js",
         "repo.vextreme:tests/43-runtime-chrome-composition.test.js",
-        "repo.vextreme:tests/54-institutional-surfaces.test.js"
+        "repo.vextreme:tests/54-institutional-surfaces.test.js",
+        "github.commit.vextreme.5a27d0914591753c2e50e6b086566fc0aa85a9c3",
+        "git.tree.vextreme.c5f1ed40e1168b7bde6d65d3ee3680b6471bc78c"
       ],
       "nextProcessRefs": [],
-      "authorityDisposition": "AUTHORIZED_BOUNDED",
-      "effectDisposition": "EFFECTS_BOUND"
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",

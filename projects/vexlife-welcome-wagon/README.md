@@ -24,7 +24,7 @@ Victor later explicitly authorized bounded Welcome Wagon implementation. Current
 slug-rename tooling                 COMPLETED  -> Vextreme #400
 canonical About identity migration  COMPLETED  -> Vextreme #403
 About / "What is this?" orientation COMPLETED  -> Vextreme #413
-Support shared-shell currentness     RUNNING    -> Vextreme #414
+Support shared-shell currentness     COMPLETED  -> Vextreme #414
 ```
 
 The overall Project outcome remains `RUNNING`. Unadmitted future design/product rows remain `CAPTURED`, `NO_AUTHORITY`, or `NO_EFFECTS` rather than being promoted merely because adjacent source has matured.
@@ -795,46 +795,43 @@ This gives each risk one rollback coordinate: **identity migration**, **page mea
 
 ## Current execution edge
 
-Victor's lived review after the accepted About integration exposed the next concrete Welcome Wagon edge rather than another abstract design question.
+The lived Support-page seam is now accepted source rather than foreground work:
 
 ```text
-work.vexlife.welcome-wagon.support-shell-context-currentness
-  -> Vextreme PR #414
-  -> Support still showed the retired standalone institutional header/footer
-  -> Support source still owned native language + Theme controls
-  -> shared Vextreme/Terrain home link still used ?view=content&profile=evolution-v1
-  -> bounded correction = Support shell-context + clean canonical Terrain home link
-  -> preserve support/payment semantics
-  -> preserve PR #379 generated/runtime ownership
+#414 Support -> shared shell + clean Terrain home URL
+  -> desktop/mobile lived proof PASS
+  -> five Stripe destinations preserved
+  -> EN/JA/ZH shared language FAB preserved
+  -> exact accepted tree c5f1ed40e1168b7bde6d65d3ee3680b6471bc78c
+  -> merged as 5a27d0914591753c2e50e6b086566fc0aa85a9c3
+  -> COMPLETED
 ```
 
-Completed predecessor rows are retained as accepted source, not reopened:
+The next concrete dependency is **not another Support redesign**. PR #379 owns the downstream generated/runtime currentization from accepted Vextreme main, including its own flat string aggregates, `sw.js`, Page Health, Terrain projection and the rest of its existing membrane.
+
+Completed Welcome Wagon source rows remain accepted and are not reopened:
 
 ```text
 #400 slug rename impact tooling                  COMPLETED / MERGED
 #403 vextreme-home -> about-vextreme migration  COMPLETED / MERGED
 #413 About Terrain-context orientation           COMPLETED / MERGED / tree-exact
+#414 Support shared-shell currentness             COMPLETED / MERGED / tree-exact
 ```
 
 ## Process map to completion
 
-The remaining path is now materially shorter than the formation-era plan:
+The remaining path after the accepted Support row is:
 
 ~~~text
-accepted source
+accepted Welcome Wagon source
   #400 rename tooling ✅
   #403 canonical About identity ✅
   #413 About / What is this? / lived orientation ✅
+  #414 Support shared shell + clean Terrain link ✅
         ↓
-current edge
-  #414 Support -> shared shell
-       + clean shared Terrain home URL
-       + preserve payment/support semantics
-       + desktop/mobile lived render
-        ↓
-generated owner
-  #379 currentizes its owned flat strings / sw.js /
-       Page Health / Terrain projections from accepted main
+current dependency owner
+  #379 rederive its generated/runtime membrane
+       from accepted Vextreme main
         ↓
 later family rollout
   project the proven header capability pattern into
