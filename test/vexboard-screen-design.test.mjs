@@ -8,6 +8,7 @@ import {
   normalizeScreenDesign,
   resolveBoundedResponsiveMetric,
   resolveScreenDesignBox,
+  resolveScreenDesignConstraintBox,
   screenDesignViewportProfile,
 } from '../src/core/vexboard-screen-design.mjs';
 
@@ -108,6 +109,50 @@ test('screen design contract keeps authority state separate from resolved projec
 
   assert.equal(design.authorityState, 'REVERSE_ADOPTED_CANDIDATE');
   assert.equal(design.constraints[0].semanticRef, 'screen.vexstream-music');
+});
+
+test('named metric references resolve constraints without duplicating responsive values', () => {
+  const design = normalizeScreenDesign({
+    schemaVersion: VEXBOARD_SCREEN_DESIGN_SCHEMA,
+    designRef: 'design.metric-ref',
+    authorityState: 'VEXBOARD_DESIGN_DRAFT',
+    referenceViewport: {
+      profileRef: 'profile.phone',
+      widthDp: 412,
+      heightDp: 915,
+    },
+    metrics: {
+      inset: boundedResponsiveMetric({
+        referenceDp: 16,
+        referenceExtentDp: 412,
+        minDp: 12,
+        maxDp: 24,
+      }),
+    },
+    constraints: [{
+      occurrenceRef: 'occ.content',
+      semanticRef: 'screen.example',
+      parentOccurrenceRefOrNull: null,
+      horizontal: {
+        startMargin: { metricRef: 'inset' },
+        endMargin: { metricRef: 'inset' },
+        size: { mode: 'FILL' },
+        bias: 0.5,
+      },
+      vertical: {
+        size: { mode: 'FILL' },
+        bias: 0.5,
+      },
+    }],
+  });
+
+  const box = resolveScreenDesignConstraintBox({
+    designInput: design,
+    parentBoundsDp: { x: 0, y: 0, width: 412, height: 915 },
+    constraintInput: design.constraints[0],
+  });
+  assert.deepEqual(box, { x: 16, y: 0, width: 380, height: 915 });
+  assert.deepEqual(design.constraints[0].horizontal.startMargin, { metricRef: 'inset' });
 });
 
 test('screen design resolves named viewport profiles without changing design identity', () => {
