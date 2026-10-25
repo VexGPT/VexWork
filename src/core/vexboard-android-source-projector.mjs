@@ -108,7 +108,7 @@ function stripFingerprint(value) {
   return copy;
 }
 
-function makePresentation(profile, hints, sourceRefs) {
+function makePresentation(profile, hints, sourceRefs, relationshipRoutes = []) {
   return Object.freeze({
     schemaVersion: VEXBOARD_ANDROID_REFERENCE_PRESENTATION_SCHEMA,
     profileRef: profile.profileRef,
@@ -119,6 +119,7 @@ function makePresentation(profile, hints, sourceRefs) {
       boardScalePerDp: DP_TO_BOARD,
     }),
     items: Object.freeze(hints.map((entry) => Object.freeze({ ...entry }))),
+    relationships: Object.freeze(relationshipRoutes.map((entry) => Object.freeze({ ...entry }))),
     sourceRefs: Object.freeze(refs(sourceRefs, 'presentation.sourceRefs')),
   });
 }
@@ -333,6 +334,7 @@ function experienceBoard(snapshot) {
   });
 
   function addVexStreamChrome(state, frame, frameItemRef) {
+    const actionItemBySemanticRef = new Map();
     items.push(projectionItem(frameItemRef, state.stateRef, 'FRAME', rect(frame.x, frame.y, frame.width, frame.height), layer++, productItemRef));
     hints.push(presentationHint(frameItemRef, 'SCREEN_FRAME', state.kind));
 
@@ -346,6 +348,7 @@ function experienceBoard(snapshot) {
       const itemRef = `${frameItemRef}.toolbar-action.${index}`;
       items.push(projectionItem(itemRef, action.ref, 'RECTANGLE', rect(iconX, frame.y + 8, iconSize, iconSize), layer++, frameItemRef));
       hints.push(presentationHint(itemRef, 'ICON_BUTTON', String(action.icon).toUpperCase()));
+      actionItemBySemanticRef.set(action.ref, itemRef);
       iconX -= iconSize + 8;
     });
 
@@ -357,24 +360,28 @@ function experienceBoard(snapshot) {
       hints.push(presentationHint(itemRef, 'TAB', index === 0 ? 'SELECTED' : 'DEFAULT'));
       tabX += 79;
     });
-    return tabsY + 54;
+    return Object.freeze({
+      contentY: tabsY + 54,
+      actionItemBySemanticRef,
+    });
   }
 
   const loadingFrame = states.LOADING;
   const loadingItem = 'item.vexstream.state.loading';
-  const loadingContentY = addVexStreamChrome(loading, loadingFrame, loadingItem);
-  items.push(projectionItem(`${loadingItem}.status`, loadingMessageRef, 'RECTANGLE', rect(loadingFrame.x + p.padding, loadingContentY + 24, loadingFrame.width - p.padding * 2, 64), layer++, loadingItem));
+  const loadingChrome = addVexStreamChrome(loading, loadingFrame, loadingItem);
+  items.push(projectionItem(`${loadingItem}.status`, loadingMessageRef, 'RECTANGLE', rect(loadingFrame.x + p.padding, loadingChrome.contentY + 24, loadingFrame.width - p.padding * 2, 64), layer++, loadingItem));
   hints.push(presentationHint(`${loadingItem}.status`, 'STATUS_ROW', 'LOADING'));
 
   const emptyFrame = states.EMPTY;
   const emptyItem = 'item.vexstream.state.empty';
-  const emptyContentY = addVexStreamChrome(empty, emptyFrame, emptyItem);
-  items.push(projectionItem(`${emptyItem}.message`, emptyMessageRef, 'TEXT', rect(emptyFrame.x + p.padding + 18, emptyContentY + 58, emptyFrame.width - p.padding * 2 - 36, 72), layer++, emptyItem));
+  const emptyChrome = addVexStreamChrome(empty, emptyFrame, emptyItem);
+  items.push(projectionItem(`${emptyItem}.message`, emptyMessageRef, 'TEXT', rect(emptyFrame.x + p.padding + 18, emptyChrome.contentY + 58, emptyFrame.width - p.padding * 2 - 36, 72), layer++, emptyItem));
   hints.push(presentationHint(`${emptyItem}.message`, 'TEXT', 'EMPTY'));
 
   const loadedFrame = states.LOADED;
   const loadedItem = 'item.vexstream.state.loaded';
-  let loadedY = addVexStreamChrome(loaded, loadedFrame, loadedItem) + 8;
+  const loadedChrome = addVexStreamChrome(loaded, loadedFrame, loadedItem);
+  let loadedY = loadedChrome.contentY + 8;
   loaded.sampleTracks.forEach((track, index) => {
     const itemRef = `${loadedItem}.track.${index}`;
     items.push(projectionItem(itemRef, track.ref, 'RECTANGLE', rect(loadedFrame.x + p.padding, loadedY, loadedFrame.width - p.padding * 2, 72), layer++, loadedItem));
@@ -424,7 +431,11 @@ function experienceBoard(snapshot) {
     title: 'VexLife Android · Home → VexStream · Screen / State POC',
     graph,
     projection,
-    presentation: makePresentation(snapshot.referenceProfile, hints, sourceRefs),
+    presentation: makePresentation(snapshot.referenceProfile, hints, sourceRefs, [{
+      relationshipRef: 'rel.vexlife-android.vexstream.manage-connection.open',
+      fromProjectionItemRef: loadedChrome.actionItemBySemanticRef.get(sheet.triggerRef),
+      toProjectionItemRef: 'item.vexstream.connection-sheet',
+    }]),
     sourceRefs,
   });
 }
