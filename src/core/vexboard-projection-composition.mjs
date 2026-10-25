@@ -76,8 +76,8 @@ function normalizeComposition(input) {
     assert(BOARD_LOCAL_BOUNDARY_POLICIES.includes(boundaryPolicy),
       `unsupported local boundary policy ${boundaryPolicy}`);
     assert(
-      boundaryPolicy === 'FAIL' || ['ROW', 'COLUMN'].includes(container.layout),
-      `boundary policy ${boundaryPolicy} requires ROW or COLUMN layout`,
+      boundaryPolicy === 'FAIL' || container.layout === 'ROW',
+      `boundary policy ${boundaryPolicy} requires ROW layout`,
     );
     return {
       containerProjectionItemRef: stableRef(
@@ -142,31 +142,25 @@ function innerContainerBounds(containerBounds, padding) {
   };
 }
 
-function createBoundaryFlowState({ layout, containerBounds, padding }) {
+function createRowBoundaryFlowState({ containerBounds, padding }) {
   const inner = innerContainerBounds(containerBounds, padding);
   return {
-    layout,
     inner,
-    lineIndex: 0,
+    rowIndex: 0,
     direction: 1,
     cursorX: inner.left,
     cursorY: inner.top,
-    lineCrossExtent: 0,
+    rowHeight: 0,
   };
 }
 
-function beginNextBoundaryLine(state, boundaryPolicy, gap) {
-  state.lineIndex += 1;
-  const reverse = boundaryPolicy === 'SERPENTINE' && state.lineIndex % 2 === 1;
+function beginNextBoundaryRow(state, boundaryPolicy, gap) {
+  state.rowIndex += 1;
+  const reverse = boundaryPolicy === 'SERPENTINE' && state.rowIndex % 2 === 1;
   state.direction = reverse ? -1 : 1;
-  if (state.layout === 'ROW') {
-    state.cursorY += state.lineCrossExtent + gap;
-    state.cursorX = reverse ? state.inner.right : state.inner.left;
-  } else {
-    state.cursorX += state.lineCrossExtent + gap;
-    state.cursorY = reverse ? state.inner.bottom : state.inner.top;
-  }
-  state.lineCrossExtent = 0;
+  state.cursorY += state.rowHeight + gap;
+  state.cursorX = reverse ? state.inner.right : state.inner.left;
+  state.rowHeight = 0;
 }
 
 function boundedRowPosition({ state, childBounds, boundaryPolicy, gap }) {
@@ -174,24 +168,11 @@ function boundedRowPosition({ state, childBounds, boundaryPolicy, gap }) {
   const wouldOverflow = state.direction === 1
     ? state.cursorX + width > state.inner.right
     : state.cursorX - width < state.inner.left;
-  if (wouldOverflow && state.lineCrossExtent > 0) beginNextBoundaryLine(state, boundaryPolicy, gap);
+  if (wouldOverflow && state.rowHeight > 0) beginNextBoundaryRow(state, boundaryPolicy, gap);
   const x = state.direction === 1 ? state.cursorX : state.cursorX - width;
   const y = state.cursorY;
   state.cursorX = state.direction === 1 ? x + width + gap : x - gap;
-  state.lineCrossExtent = Math.max(state.lineCrossExtent, childBounds.height);
-  return { x, y };
-}
-
-function boundedColumnPosition({ state, childBounds, boundaryPolicy, gap }) {
-  const height = childBounds.height;
-  const wouldOverflow = state.direction === 1
-    ? state.cursorY + height > state.inner.bottom
-    : state.cursorY - height < state.inner.top;
-  if (wouldOverflow && state.lineCrossExtent > 0) beginNextBoundaryLine(state, boundaryPolicy, gap);
-  const x = state.cursorX;
-  const y = state.direction === 1 ? state.cursorY : state.cursorY - height;
-  state.cursorY = state.direction === 1 ? y + height + gap : y - gap;
-  state.lineCrossExtent = Math.max(state.lineCrossExtent, childBounds.width);
+  state.rowHeight = Math.max(state.rowHeight, childBounds.height);
   return { x, y };
 }
 
@@ -201,8 +182,7 @@ function desiredPosition({
   if (layout === 'FREE') return { x: childBounds.x, y: childBounds.y };
   if (layout === 'STACK') return { x: containerBounds.x + padding, y: containerBounds.y + padding };
   if (boundaryPolicy !== 'FAIL') {
-    if (layout === 'ROW') return boundedRowPosition({ state: flowState, childBounds, boundaryPolicy, gap });
-    return boundedColumnPosition({ state: flowState, childBounds, boundaryPolicy, gap });
+    return boundedRowPosition({ state: flowState, childBounds, boundaryPolicy, gap });
   }
   if (layout === 'ROW') {
     const x = priorChildren.reduce(
@@ -261,8 +241,7 @@ export function resolveBoardProjectionComposition({ graph: graphInput, projectio
     const resolvedChildren = [];
     const flowState = local.boundaryPolicy === 'FAIL'
       ? null
-      : createBoundaryFlowState({
-        layout: local.layout,
+      : createRowBoundaryFlowState({
         containerBounds: container.bounds,
         padding: composition.metrics.padding,
       });
