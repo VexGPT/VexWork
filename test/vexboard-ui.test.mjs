@@ -103,6 +103,7 @@ test('built-in and patient-zero source boards preserve separate catalog ownershi
     [
       'board.vexbusinessfactory.intent-topology.patient-zero',
       'board.vexbusinessfactory.system-anatomy.patient-zero',
+      'board.vexstream.phone-desktop-connection.living-blueprint',
     ],
   );
 
