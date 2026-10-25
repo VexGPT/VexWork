@@ -152,6 +152,35 @@ test('screen design preserves scroll/layout intent independently of resolved rec
   );
 });
 
+test('screen design containment cycles fail closed', () => {
+  assert.throws(() => normalizeScreenDesign({
+    schemaVersion: VEXBOARD_SCREEN_DESIGN_SCHEMA,
+    designRef: 'design.cycle',
+    authorityState: 'VEXBOARD_DESIGN_AUTHORITY',
+    referenceViewport: {
+      profileRef: 'profile.test.phone',
+      widthDp: 412,
+      heightDp: 915,
+    },
+    constraints: [
+      {
+        occurrenceRef: 'occ.a',
+        semanticRef: 'screen.a',
+        parentOccurrenceRefOrNull: 'occ.b',
+        horizontal: { size: { mode: 'FILL' }, bias: 0 },
+        vertical: { size: { mode: 'FILL' }, bias: 0 },
+      },
+      {
+        occurrenceRef: 'occ.b',
+        semanticRef: 'screen.b',
+        parentOccurrenceRefOrNull: 'occ.a',
+        horizontal: { size: { mode: 'FILL' }, bias: 0 },
+        vertical: { size: { mode: 'FILL' }, bias: 0 },
+      },
+    ],
+  }), /containment cycle/);
+});
+
 test('screen design rejects invalid percentage and duplicate occurrence identity', () => {
   assert.throws(() => boundedResponsiveMetric({
     referenceDp: 16,
