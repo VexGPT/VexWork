@@ -377,5 +377,21 @@
       "widthDp": 130,
       "heightDp": 40
     }
-  }
+  },
+  "viewportProfiles": [
+    {
+      "profileRef": "profile.vexlife-android.phone.412x915",
+      "label": "Phone · Reference",
+      "widthDp": 412,
+      "heightDp": 915,
+      "fontScale": 1
+    },
+    {
+      "profileRef": "profile.vexlife-android.compact.360x720-large-text",
+      "label": "Compact · Large text",
+      "widthDp": 360,
+      "heightDp": 720,
+      "fontScale": 1.45
+    }
+  ]
 }
