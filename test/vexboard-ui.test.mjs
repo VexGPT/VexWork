@@ -139,6 +139,8 @@ test('VexLife Android POC is projected at source-load time and styled without ch
   assert.match(page, /VEXLIFE_ANDROID_POC_SNAPSHOT_SCHEMA/);
   assert.match(page, /projectVexLifeAndroidPocSnapshot\(source,boardRef\)/);
   assert.match(page, /AndroidPresentation\.androidReferenceClassNames\(current\.presentation,i\.projectionItemRef\)/);
+  assert.match(page, /AndroidPresentation\.androidReferenceRelationshipRoute\(current\.presentation,r\.relationshipRef\)/);
+  assert.match(page, /occurrenceRoute\?item\(occurrenceRoute\.fromProjectionItemRef\):itemFor\(r\.fromRef\)/);
   assert.match(page, /Open VexLife Android Screen POC/);
   assert.match(page, /VEXBOARD_ANDROID_POC_BOARD_REFS\.EXPERIENCE/);
   assert.doesNotMatch(page, /api\.github\.com|raw\.githubusercontent\.com/);
