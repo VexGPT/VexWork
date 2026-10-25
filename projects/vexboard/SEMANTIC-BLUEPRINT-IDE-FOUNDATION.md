@@ -588,6 +588,271 @@ Gallery is therefore a reusable visual/construction vocabulary, not a requiremen
 composition become globally reusable.
 
 
+## First reverse-adoption POC — Home -> VexStream stateful Screen + connection depth
+
+The first executable Android-to-web bridge should remain deliberately bounded.
+
+Do not begin by projecting the whole VexLife Android repository.
+
+Use this patient-zero scope:
+
+~~~text
+VexLife Android product
+  |
+  v
+Home Screen
+  |
+  | Open / Connect VexStream Music
+  v
+VexStream Music Screen
+  |
+  +-> library Loading projection
+  +-> library Ready + Empty projection
+  +-> library Ready + Loaded Songs projection
+  |
+  +-> toolbar Manage Connection
+        -> Connection modal / bottom sheet
+~~~
+
+This scope is intentionally large enough to prove:
+
+~~~text
+static Screen / Element identity
++ navigation
++ same-Screen conditional state projection
++ local presentation / modal state
++ repository State
++ local persistence / storage
++ remote Desktop service contract
++ source provenance
+~~~
+
+without requiring the first adapter to understand every VexLife feature.
+
+### Android-owned snapshot before VexBoard projection
+
+The preferred bridge is source-owned export, not Kotlin parsing in the browser:
+
+~~~text
+VexLife-Android
+
+AppScreens.registry
+  + ScreenBlueprint / ElementPlacement
+  + UIBlueprintRegistry ownership / parent / children / navigation targets
+  + stable screen.* / element.* refs
+  + VexModifier / Vex Compose identity continuity
+  + bounded feature-specific state projection where static registry data is insufficient
+
+        |
+        v
+
+deterministic neutral Android Blueprint snapshot
+
+        |
+        v
+
+VexBoard source projector
+
+        |
+        v
+
+BoardGraph + selected Screen/state projection
+~~~
+
+The first snapshot format is a proving seam, not permission to canonize one universal cross-platform
+UI schema.
+
+It should carry only meaning required by the consumer, for example:
+
+~~~text
+source repository + exact revision
+Screens
+Elements
+owner Screen
+parent / child structure
+semantic kind
+style meaning when material
+interaction intent
+navigation / presentation target
+source-native refs
+identity-coverage status
+
+bounded VexStream state facts needed by this POC
+~~~
+
+Permanent:
+
+~~~text
+WEB_PROJECTOR != KOTLIN_PARSER
+VEXBOARD != COMPOSE_RUNTIME
+ANDROID_SNAPSHOT != NEW_PRODUCT_TRUTH
+ANDROID_SOURCE_OWNER -> EXPORTED_MEANING -> VEXBOARD_PROJECTION
+~~~
+
+### Identity coverage must be truthful
+
+The current Android registry is already strong enough to enumerate static Screen/Element identity and
+navigation relationships. VexModifier / Vex Compose can carry those refs into rendered Compose/test
+tags, and feature-specific dynamic presentation may derive deterministic refs from domain identity.
+
+That does not imply every visible Compose primitive is already a semantic element.
+
+The bridge should report coverage rather than fabricate it:
+
+~~~text
+REGISTERED / SEMANTICALLY TAGGED
+  -> automatically addressable
+
+VISIBLE TARGET PRESENTATION WITHOUT A STABLE SEMANTIC REF
+  -> explicit identity-coverage gap when the distinction matters
+
+TARGET-ONLY LAYOUT / DECORATION
+  -> may remain implementation detail
+~~~
+
+Do not require stable IDs for every Spacer, anonymous measurement wrapper or target-only rendering
+detail merely to make a percentage look complete.
+
+### Same Screen, conditional branches
+
+The three VexStream library conditions are projections of one stable Screen identity:
+
+~~~text
+screen.vexstream-music
+
+Loading
+  libraryLoadState != READY
+  and no already-known playable content is available for the ordinary library surface
+
+Ready + Empty
+  libraryLoadState = READY
+  and current playable library is empty
+
+Ready + Loaded
+  libraryLoadState = READY
+  and current playable library has content
+~~~
+
+These are not three Screens.
+
+VexBoard may render them as vertical state branches from the same horizontal traversal coordinate:
+
+~~~text
+Home -> VexStream Music
+             |
+             +--◇ Loading
+             |
+             +--◇ Ready / Empty
+             |
+             +--◇ Ready / Loaded Songs
+~~~
+
+The exact visual symbol remains a presentation question, but the semantic distinction is permanent:
+
+~~~text
+NAVIGATION_BRANCH
+  -> another semantic destination
+
+STATE_BRANCH
+  -> same semantic identity under another current predicate/projection
+~~~
+
+Avoid materializing the Cartesian product of every independent VexStream state facet into one giant
+state enum. Connection, library loading, selected library surface, playback and transient presentation
+may remain distinct current facts unless a real semantic question requires their combination.
+
+### Connection modal proves local presentation + deeper architecture
+
+The VexStream toolbar's existing Manage Connection action opens one registered modal/bottom-sheet
+identity rather than navigating to another Screen.
+
+The POC should preserve that difference:
+
+~~~text
+screen.vexstream-music
+  -> element.vexstream-music.body.connection.manage
+  -> OPEN
+  -> registered ConnectionMenuSheet
+~~~
+
+The modal may then reveal the exact bounded controls that current State admits, such as Refresh when
+the Hub is ready or Reconnect when it is not, plus offline-library management and Forget/Close
+surfaces.
+
+This proves:
+
+~~~text
+NAVIGATION != LOCAL_PRESENTATION
+SCREEN != MODAL
+OPEN/CLOSE != SCREEN_TRANSITION
+~~~
+
+### Data / storage / Desktop service lineage
+
+For this POC, do not invent a generic `Database` box when the actual VexStream feature does not use
+VexLife's Room database.
+
+The current local truth is distributed across:
+
+~~~text
+VexStreamMusicRepository / VexStreamMusicState
+
+pairing / remembered route
+  -> app-private SharedPreferences
+  -> Android Keystore protected token / signing identity
+
+offline library restoration metadata
+  -> app-private versioned offline index
+
+verified audio
+  -> Android MediaStore
+
+artwork
+  -> persistent app-private files
+
+playback lifetime
+  -> Media3 / MediaSessionService
+~~~
+
+The remote producer is current VexStream Desktop's bounded mobile service:
+
+~~~text
+GET       /v1/health
+GET       /v1/pairing/info
+POST      /v1/pairing/request
+GET       /v1/pairing/status
+POST      /v1/pairing/revoke-self
+GET       /v1/catalog
+GET/HEAD  /v1/media/<trackRef>
+~~~
+
+Catalog/media access is bounded behind the remembered/pinned pairing authorization path.
+
+The web Blueprint should be able to descend from one visible Screen state through:
+
+~~~text
+Loaded Songs
+-> VexStreamMusicState.tracks
+-> VexStreamMusicRepository.refreshCatalog()
+-> paired/pinned transport
+-> Desktop /v1/catalog
+-> sanitized track projection
+
+Download / offline meaning
+-> repository
+-> Desktop /v1/media/<trackRef>
+-> exact digest + length verification
+-> MediaStore / offline index
+~~~
+
+That is enough depth to prove that the Blueprint can explain the real application architecture
+without requiring the person to open Android or Go source to discover the connection.
+
+The first web POC does not need to call a person's live LAN Desktop service directly from GitHub
+Pages. Source/contract mapping and deterministic fixtures prove the semantic bridge; a later Local Vex
+or host-qualified observation path may bind live service evidence to the same coordinates.
+
+
 ## Current / proposed / observed must remain visually separable
 
 The IDE should answer:
