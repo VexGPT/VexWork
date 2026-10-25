@@ -38,6 +38,29 @@ Descend into VexLife ToCompletion only when the current refinement names an exac
 | **Kokoro speech/read-back** | **CAPTURED / NORMAL** | Optional live Speak with bounded backfill plus per-response Read control; held behind current tool-bearing Home priority. |
 | **Later visual Home/UI** | **CAPTURED** | Refine Home, Terrain, nodes, menus and other visual neighborhoods from lived feedback without conflating presentation with capability ownership. |
 
+## First VexBoard consumer draft — VexLife product journey
+
+The first post-POC VexBoard consumer is source-placed as a read-only design/process topology draft:
+
+```text
+projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md
+projects/vexboard/examples/vexlife-product-journey.board.json
+```
+
+It combines current VexWork Work truth with explicitly non-canonical product/distribution gaps so future instances can distinguish completed/current/ready/waiting Work from source-known-but-unlived or still-unknown product journeys.
+
+VexBoard remains the projection, not the owner:
+
+```text
+VexWork / VexLife source truth
+        ↓
+VexLife product-journey design source
+        ↓
+VexBoard read-only board
+```
+
+Catalog/landing wiring is intentionally held out of this consumer candidate because active VexBoard PR #155 currently owns `projects/vexboard/examples/board-source-catalog.json` and `vexboard/index.html`. The VexBoard lane should serialize that shared integration rather than this lane racing those files.
+
 ## V0 — what is actually stable
 
 Observed lived result:

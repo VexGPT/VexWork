@@ -1,0 +1,1134 @@
+{
+  "schemaVersion": "vexboard.local-draft/v1",
+  "draftRef": "board.vexlife.product-journey.current-draft",
+  "title": "VexLife · Current Product Journey, Work Progress & Distribution Gaps",
+  "mode": "READ_ONLY_SOURCE",
+  "derivedFromRefOrNull": "project.vexlife.interface-refinement",
+  "savedAtOrNull": null,
+  "graph": {
+    "schemaVersion": "vexboard.board-graph/v1",
+    "graphRef": "graph.vexlife.product-journey.current-draft",
+    "nodes": [
+      {
+        "nodeRef": "container.vexlife.journey.initiation",
+        "kind": "CONTAINER",
+        "label": "Initiation + establishment · mixed source-known / unlived",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md",
+          "projects/vexlife-interface-refinement/README.md"
+        ]
+      },
+      {
+        "nodeRef": "container.vexlife.journey.lived-home",
+        "kind": "CONTAINER",
+        "label": "Lived VexLife Home · current product truth",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md",
+          "projects/vexlife-interface-refinement/README.md",
+          "workgraphs/segments/vexlife-interface-refinement.json"
+        ]
+      },
+      {
+        "nodeRef": "container.vexlife.journey.stability",
+        "kind": "CONTAINER",
+        "label": "Continuity + stability frontier",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md",
+          "projects/vexlife-interface-refinement/README.md",
+          "workgraphs/segments/vexlife-interface-refinement.json"
+        ]
+      },
+      {
+        "nodeRef": "container.vexlife.journey.scale-gaps",
+        "kind": "CONTAINER",
+        "label": "Distribution + scale gaps · draft concerns, not Work",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md"
+        ]
+      },
+      {
+        "nodeRef": "process.vexlife.journey.distribution-install",
+        "kind": "PROCESS",
+        "label": "UNKNOWN · distribution / install delivery",
+        "parentRefOrNull": "container.vexlife.journey.initiation",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md"
+        ]
+      },
+      {
+        "nodeRef": "process.vexlife.journey.first-run",
+        "kind": "PROCESS",
+        "label": "NOT YET LIVED · first-run initiation",
+        "parentRefOrNull": "container.vexlife.journey.initiation",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md"
+        ]
+      },
+      {
+        "nodeRef": "decision.vexlife.journey.home-exists",
+        "kind": "DECISION",
+        "label": "Vex Home already exists?",
+        "parentRefOrNull": "container.vexlife.journey.initiation",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md",
+          "projects/vexlife-interface-refinement/README.md",
+          "repo.vexlife:scripts/macos-lifecycle.mjs"
+        ]
+      },
+      {
+        "nodeRef": "process.vexlife.journey.home-establish-recover",
+        "kind": "PROCESS",
+        "label": "PARTIAL · establish / verify / recover Vex Home",
+        "parentRefOrNull": "container.vexlife.journey.initiation",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md",
+          "work.vexlife.interface-refinement.v0.lived-baseline",
+          "repo.vexlife:scripts/macos-lifecycle.mjs"
+        ]
+      },
+      {
+        "nodeRef": "decision.vexlife.journey.heretic-available",
+        "kind": "DECISION",
+        "label": "Heretic model already available?",
+        "parentRefOrNull": "container.vexlife.journey.initiation",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md",
+          "work.vexlife.interface-refinement.v0.lived-baseline",
+          "repo.vexlife:scripts/establish-heretic-runtime.mjs"
+        ]
+      },
+      {
+        "nodeRef": "process.vexlife.journey.model-acquisition",
+        "kind": "PROCESS",
+        "label": "PARTIAL · model acquisition / preservation UX",
+        "parentRefOrNull": "container.vexlife.journey.initiation",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md",
+          "project.vexlife.tocompletion",
+          "repo.vexlife:scripts/establish-heretic-runtime.mjs"
+        ]
+      },
+      {
+        "nodeRef": "process.vexlife.journey.runtime-qualification",
+        "kind": "PROCESS",
+        "label": "PROVEN CORE · retained Heretic runtime qualification",
+        "parentRefOrNull": "container.vexlife.journey.initiation",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md",
+          "work.vexlife.interface-refinement.v0.lived-baseline",
+          "repo.vexlife:src/core/heretic-persistent-runtime-owner.mjs"
+        ]
+      },
+      {
+        "nodeRef": "process.vexlife.journey.companion-ready",
+        "kind": "PROCESS",
+        "label": "PROVEN CORE · Companion READY",
+        "parentRefOrNull": "container.vexlife.journey.initiation",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md",
+          "work.vexlife.interface-refinement.v0.lived-baseline",
+          "repo.vexlife:src/core/browser-companion-bridge.mjs"
+        ]
+      },
+      {
+        "nodeRef": "work.vexlife.interface-refinement.v0.lived-baseline",
+        "kind": "REFERENCE",
+        "label": "COMPLETED · V0 first lived local-Heretic Conversation",
+        "parentRefOrNull": "container.vexlife.journey.lived-home",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md",
+          "workgraphs/segments/vexlife-interface-refinement.json",
+          "work.vexlife.interface-refinement.v0.lived-baseline",
+          "github.pull.vexlife.924"
+        ]
+      },
+      {
+        "nodeRef": "work.vexlife.interface-refinement.v1.conversation-ergonomics",
+        "kind": "REFERENCE",
+        "label": "VERIFYING · V1 conversation ergonomics + re-entry",
+        "parentRefOrNull": "container.vexlife.journey.lived-home",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md",
+          "workgraphs/segments/vexlife-interface-refinement.json",
+          "work.vexlife.interface-refinement.v1.conversation-ergonomics"
+        ]
+      },
+      {
+        "nodeRef": "work.vexlife.interface-refinement.v1-5.long-context-memory-pressure",
+        "kind": "REFERENCE",
+        "label": "VERIFYING · V1.5 long-context Memory pressure",
+        "parentRefOrNull": "container.vexlife.journey.lived-home",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md",
+          "workgraphs/segments/vexlife-interface-refinement.json",
+          "work.vexlife.interface-refinement.v1-5.long-context-memory-pressure",
+          "github.pull.vexlife.927"
+        ]
+      },
+      {
+        "nodeRef": "work.vexlife.interface-refinement.v2.streaming",
+        "kind": "REFERENCE",
+        "label": "COMPLETED · V2 progressive + adaptive streaming",
+        "parentRefOrNull": "container.vexlife.journey.lived-home",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md",
+          "workgraphs/segments/vexlife-interface-refinement.json",
+          "work.vexlife.interface-refinement.v2.streaming",
+          "github.pull.vexlife.928",
+          "github.pull.vexlife.931",
+          "github.pull.vexlife.932"
+        ]
+      },
+      {
+        "nodeRef": "annotation.vexlife.v2.lived-pass",
+        "kind": "ANNOTATION",
+        "label": "LIVED PASS · readable continuous reveal · 0 ms terminal catch-up",
+        "parentRefOrNull": "work.vexlife.interface-refinement.v2.streaming",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md",
+          "github.pull.vexlife.932.comment.6397203775"
+        ]
+      },
+      {
+        "nodeRef": "work.vexlife.interface-refinement.home-tool-capability",
+        "kind": "REFERENCE",
+        "label": "CURRENT / READY · tool-bearing VexLife Home",
+        "parentRefOrNull": "container.vexlife.journey.lived-home",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md",
+          "workgraphs/segments/vexlife-interface-refinement.json",
+          "work.vexlife.interface-refinement.home-tool-capability",
+          "github.pull.vexlife.934",
+          "github.pull.vexlife.934.comment.6404920574",
+          "relay.return.vexlife.home-tool.pr934.sourceowner.a001.54f4ecb0ca8c9b8a80b355d24dd93ed3ab901398c35c84438958388c2867b970"
+        ]
+      },
+      {
+        "nodeRef": "annotation.vexlife.home-tool.pr934",
+        "kind": "ANNOTATION",
+        "label": "PR #934 · SourceOwner PASS · fresh Assurance next",
+        "parentRefOrNull": "work.vexlife.interface-refinement.home-tool-capability",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md",
+          "github.pull.vexlife.934",
+          "github.pull.vexlife.934.comment.6404920574",
+          "relay.return.vexlife.home-tool.pr934.sourceowner.a001.54f4ecb0ca8c9b8a80b355d24dd93ed3ab901398c35c84438958388c2867b970"
+        ]
+      },
+      {
+        "nodeRef": "work.vexlife.interface-refinement.speech.kokoro-response-reading",
+        "kind": "REFERENCE",
+        "label": "CAPTURED · Kokoro live speech + response Read",
+        "parentRefOrNull": "container.vexlife.journey.lived-home",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md",
+          "workgraphs/segments/vexlife-interface-refinement.json",
+          "work.vexlife.interface-refinement.speech.kokoro-response-reading"
+        ]
+      },
+      {
+        "nodeRef": "work.vexlife.interface-refinement.later.home-ui",
+        "kind": "REFERENCE",
+        "label": "CAPTURED · later Home / navigation refinement",
+        "parentRefOrNull": "container.vexlife.journey.lived-home",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md",
+          "workgraphs/segments/vexlife-interface-refinement.json",
+          "work.vexlife.interface-refinement.later.home-ui"
+        ]
+      },
+      {
+        "nodeRef": "work.vexlife.interface-refinement.v3.resource-context-pressure-observation",
+        "kind": "REFERENCE",
+        "label": "READY · V3 resource + context pressure observation",
+        "parentRefOrNull": "container.vexlife.journey.stability",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md",
+          "workgraphs/segments/vexlife-interface-refinement.json",
+          "work.vexlife.interface-refinement.v3.resource-context-pressure-observation"
+        ]
+      },
+      {
+        "nodeRef": "work.vexlife.interface-refinement.v4.continuity-rollover",
+        "kind": "REFERENCE",
+        "label": "WAITING · V4 self-maintaining continuity rollover",
+        "parentRefOrNull": "container.vexlife.journey.stability",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md",
+          "workgraphs/segments/vexlife-interface-refinement.json",
+          "work.vexlife.interface-refinement.v4.continuity-rollover"
+        ]
+      },
+      {
+        "nodeRef": "work.vexlife.interface-refinement.v5.resource-stewardship",
+        "kind": "REFERENCE",
+        "label": "WAITING · V5 bounded host resource stewardship",
+        "parentRefOrNull": "container.vexlife.journey.stability",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md",
+          "workgraphs/segments/vexlife-interface-refinement.json",
+          "work.vexlife.interface-refinement.v5.resource-stewardship"
+        ]
+      },
+      {
+        "nodeRef": "work.vexlife.interface-refinement.v6.lived-continuity-stability",
+        "kind": "REFERENCE",
+        "label": "WAITING · V6 lived continuity stability",
+        "parentRefOrNull": "container.vexlife.journey.stability",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md",
+          "workgraphs/segments/vexlife-interface-refinement.json",
+          "work.vexlife.interface-refinement.v6.lived-continuity-stability"
+        ]
+      },
+      {
+        "nodeRef": "annotation.vexlife.journey.scale-gap-note",
+        "kind": "ANNOTATION",
+        "label": "These are product-journey gaps, not canonical Work yet.",
+        "parentRefOrNull": "container.vexlife.journey.scale-gaps",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md"
+        ]
+      },
+      {
+        "nodeRef": "gap.vexlife.journey.update-migration",
+        "kind": "REFERENCE",
+        "label": "NEEDS CURRENTNESS REVIEW · update + migration journey",
+        "parentRefOrNull": "container.vexlife.journey.scale-gaps",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md"
+        ]
+      },
+      {
+        "nodeRef": "gap.vexlife.journey.fresh-device",
+        "kind": "REFERENCE",
+        "label": "NOT YET LIVED · fresh-device initiation",
+        "parentRefOrNull": "container.vexlife.journey.scale-gaps",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md"
+        ]
+      },
+      {
+        "nodeRef": "gap.vexlife.journey.returning-device",
+        "kind": "REFERENCE",
+        "label": "PARTIAL · returning-device / retained-Home recovery",
+        "parentRefOrNull": "container.vexlife.journey.scale-gaps",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md",
+          "work.vexlife.interface-refinement.v0.lived-baseline"
+        ]
+      },
+      {
+        "nodeRef": "gap.vexlife.journey.multi-device",
+        "kind": "REFERENCE",
+        "label": "UNKNOWN · multi-device / platform scaling",
+        "parentRefOrNull": "container.vexlife.journey.scale-gaps",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md"
+        ]
+      },
+      {
+        "nodeRef": "gap.vexlife.journey.release-scale",
+        "kind": "REFERENCE",
+        "label": "UNKNOWN · repeatable release / distribution scaling",
+        "parentRefOrNull": "container.vexlife.journey.scale-gaps",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md"
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "relationshipRef": "rel.vexlife.journey.install-first-run",
+        "kind": "FLOW",
+        "fromRef": "process.vexlife.journey.distribution-install",
+        "toRef": "process.vexlife.journey.first-run",
+        "labelOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexlife.journey.first-run-home",
+        "kind": "FLOW",
+        "fromRef": "process.vexlife.journey.first-run",
+        "toRef": "decision.vexlife.journey.home-exists",
+        "labelOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexlife.journey.home-existing-recover",
+        "kind": "TRANSITION",
+        "fromRef": "decision.vexlife.journey.home-exists",
+        "toRef": "process.vexlife.journey.home-establish-recover",
+        "labelOrNull": "Yes → verify / recover",
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexlife.journey.home-new-establish",
+        "kind": "TRANSITION",
+        "fromRef": "decision.vexlife.journey.home-exists",
+        "toRef": "process.vexlife.journey.home-establish-recover",
+        "labelOrNull": "No → establish",
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexlife.journey.home-model",
+        "kind": "FLOW",
+        "fromRef": "process.vexlife.journey.home-establish-recover",
+        "toRef": "decision.vexlife.journey.heretic-available",
+        "labelOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexlife.journey.model-missing-acquire",
+        "kind": "TRANSITION",
+        "fromRef": "decision.vexlife.journey.heretic-available",
+        "toRef": "process.vexlife.journey.model-acquisition",
+        "labelOrNull": "No → acquire / preserve",
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexlife.journey.model-present-runtime",
+        "kind": "TRANSITION",
+        "fromRef": "decision.vexlife.journey.heretic-available",
+        "toRef": "process.vexlife.journey.runtime-qualification",
+        "labelOrNull": "Yes → qualify",
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexlife.journey.acquisition-runtime",
+        "kind": "FLOW",
+        "fromRef": "process.vexlife.journey.model-acquisition",
+        "toRef": "process.vexlife.journey.runtime-qualification",
+        "labelOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexlife.journey.runtime-companion",
+        "kind": "FLOW",
+        "fromRef": "process.vexlife.journey.runtime-qualification",
+        "toRef": "process.vexlife.journey.companion-ready",
+        "labelOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexlife.journey.companion-v0",
+        "kind": "FLOW",
+        "fromRef": "process.vexlife.journey.companion-ready",
+        "toRef": "work.vexlife.interface-refinement.v0.lived-baseline",
+        "labelOrNull": "first lived Conversation",
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexlife.journey.v0-v1",
+        "kind": "FLOW",
+        "fromRef": "work.vexlife.interface-refinement.v0.lived-baseline",
+        "toRef": "work.vexlife.interface-refinement.v1.conversation-ergonomics",
+        "labelOrNull": "refine re-entry",
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexlife.journey.v1-v2",
+        "kind": "FLOW",
+        "fromRef": "work.vexlife.interface-refinement.v1.conversation-ergonomics",
+        "toRef": "work.vexlife.interface-refinement.v2.streaming",
+        "labelOrNull": "natural response",
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexlife.journey.v2-home-tool",
+        "kind": "FLOW",
+        "fromRef": "work.vexlife.interface-refinement.v2.streaming",
+        "toRef": "work.vexlife.interface-refinement.home-tool-capability",
+        "labelOrNull": "current foreground",
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexlife.journey.home-speech",
+        "kind": "REFERENCE",
+        "fromRef": "work.vexlife.interface-refinement.home-tool-capability",
+        "toRef": "work.vexlife.interface-refinement.speech.kokoro-response-reading",
+        "labelOrNull": "later presentation",
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexlife.journey.home-ui",
+        "kind": "REFERENCE",
+        "fromRef": "work.vexlife.interface-refinement.home-tool-capability",
+        "toRef": "work.vexlife.interface-refinement.later.home-ui",
+        "labelOrNull": "later presentation",
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexlife.journey.v15-v3",
+        "kind": "REFERENCE",
+        "fromRef": "work.vexlife.interface-refinement.v1-5.long-context-memory-pressure",
+        "toRef": "work.vexlife.interface-refinement.v3.resource-context-pressure-observation",
+        "labelOrNull": "DEPENDS_ON",
+        "sourceRefs": [
+          "workgraphs/segments/vexlife-interface-refinement.json"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexlife.journey.v2-v4",
+        "kind": "REFERENCE",
+        "fromRef": "work.vexlife.interface-refinement.v2.streaming",
+        "toRef": "work.vexlife.interface-refinement.v4.continuity-rollover",
+        "labelOrNull": "DEPENDS_ON",
+        "sourceRefs": [
+          "workgraphs/segments/vexlife-interface-refinement.json"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexlife.journey.v3-v4",
+        "kind": "REFERENCE",
+        "fromRef": "work.vexlife.interface-refinement.v3.resource-context-pressure-observation",
+        "toRef": "work.vexlife.interface-refinement.v4.continuity-rollover",
+        "labelOrNull": "DEPENDS_ON",
+        "sourceRefs": [
+          "workgraphs/segments/vexlife-interface-refinement.json"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexlife.journey.v3-v5",
+        "kind": "REFERENCE",
+        "fromRef": "work.vexlife.interface-refinement.v3.resource-context-pressure-observation",
+        "toRef": "work.vexlife.interface-refinement.v5.resource-stewardship",
+        "labelOrNull": "DEPENDS_ON",
+        "sourceRefs": [
+          "workgraphs/segments/vexlife-interface-refinement.json"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexlife.journey.v2-v6",
+        "kind": "REFERENCE",
+        "fromRef": "work.vexlife.interface-refinement.v2.streaming",
+        "toRef": "work.vexlife.interface-refinement.v6.lived-continuity-stability",
+        "labelOrNull": "DEPENDS_ON",
+        "sourceRefs": [
+          "workgraphs/segments/vexlife-interface-refinement.json"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexlife.journey.v4-v6",
+        "kind": "REFERENCE",
+        "fromRef": "work.vexlife.interface-refinement.v4.continuity-rollover",
+        "toRef": "work.vexlife.interface-refinement.v6.lived-continuity-stability",
+        "labelOrNull": "DEPENDS_ON",
+        "sourceRefs": [
+          "workgraphs/segments/vexlife-interface-refinement.json"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexlife.journey.v5-v6",
+        "kind": "REFERENCE",
+        "fromRef": "work.vexlife.interface-refinement.v5.resource-stewardship",
+        "toRef": "work.vexlife.interface-refinement.v6.lived-continuity-stability",
+        "labelOrNull": "DEPENDS_ON",
+        "sourceRefs": [
+          "workgraphs/segments/vexlife-interface-refinement.json"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexlife.journey.install-release-gap",
+        "kind": "REFERENCE",
+        "fromRef": "process.vexlife.journey.distribution-install",
+        "toRef": "gap.vexlife.journey.release-scale",
+        "labelOrNull": "unproven scale",
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexlife.journey.first-run-fresh-device",
+        "kind": "REFERENCE",
+        "fromRef": "process.vexlife.journey.first-run",
+        "toRef": "gap.vexlife.journey.fresh-device",
+        "labelOrNull": "lived gap",
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexlife.journey.home-returning",
+        "kind": "REFERENCE",
+        "fromRef": "process.vexlife.journey.home-establish-recover",
+        "toRef": "gap.vexlife.journey.returning-device",
+        "labelOrNull": "partial recovery",
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexlife.journey.home-update",
+        "kind": "REFERENCE",
+        "fromRef": "process.vexlife.journey.home-establish-recover",
+        "toRef": "gap.vexlife.journey.update-migration",
+        "labelOrNull": "currentness gap",
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexlife.journey.home-multidevice",
+        "kind": "REFERENCE",
+        "fromRef": "work.vexlife.interface-refinement.home-tool-capability",
+        "toRef": "gap.vexlife.journey.multi-device",
+        "labelOrNull": "future scale",
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md"
+        ]
+      }
+    ],
+    "sourceRefs": [
+      "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md",
+      "projects/vexlife-interface-refinement/README.md",
+      "workgraphs/segments/vexlife-interface-refinement.json",
+      "project.vexlife.interface-refinement",
+      "github.pull.vexlife.934",
+      "github.pull.vexlife.934.comment.6404920574",
+      "relay.return.vexlife.home-tool.pr934.sourceowner.a001.54f4ecb0ca8c9b8a80b355d24dd93ed3ab901398c35c84438958388c2867b970"
+    ]
+  },
+  "projection": {
+    "schemaVersion": "vexboard.board-projection/v1",
+    "projectionRef": "projection.vexlife.product-journey.current-draft",
+    "graphRef": "graph.vexlife.product-journey.current-draft",
+    "layoutIntent": "SYSTEM_MAP",
+    "items": [
+      {
+        "projectionItemRef": "item.vexlife.journey.initiation",
+        "semanticRef": "container.vexlife.journey.initiation",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 20,
+          "y": 70,
+          "width": 430,
+          "height": 960
+        },
+        "layer": 0,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexlife.journey.lived-home",
+        "semanticRef": "container.vexlife.journey.lived-home",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 470,
+          "y": 70,
+          "width": 520,
+          "height": 960
+        },
+        "layer": 0,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexlife.journey.stability",
+        "semanticRef": "container.vexlife.journey.stability",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 1010,
+          "y": 70,
+          "width": 430,
+          "height": 960
+        },
+        "layer": 0,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexlife.journey.scale-gaps",
+        "semanticRef": "container.vexlife.journey.scale-gaps",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 1460,
+          "y": 70,
+          "width": 600,
+          "height": 960
+        },
+        "layer": 0,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexlife.journey.distribution-install",
+        "semanticRef": "process.vexlife.journey.distribution-install",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 70,
+          "y": 125,
+          "width": 330,
+          "height": 64
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vexlife.journey.initiation",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexlife.journey.first-run",
+        "semanticRef": "process.vexlife.journey.first-run",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 70,
+          "y": 215,
+          "width": 330,
+          "height": 64
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vexlife.journey.initiation",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexlife.journey.home-exists",
+        "semanticRef": "decision.vexlife.journey.home-exists",
+        "shapeKind": "DIAMOND",
+        "bounds": {
+          "x": 95,
+          "y": 300,
+          "width": 280,
+          "height": 100
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vexlife.journey.initiation",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexlife.journey.home-establish-recover",
+        "semanticRef": "process.vexlife.journey.home-establish-recover",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 70,
+          "y": 430,
+          "width": 330,
+          "height": 70
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vexlife.journey.initiation",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexlife.journey.heretic-available",
+        "semanticRef": "decision.vexlife.journey.heretic-available",
+        "shapeKind": "DIAMOND",
+        "bounds": {
+          "x": 95,
+          "y": 530,
+          "width": 280,
+          "height": 100
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vexlife.journey.initiation",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexlife.journey.model-acquisition",
+        "semanticRef": "process.vexlife.journey.model-acquisition",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 70,
+          "y": 655,
+          "width": 330,
+          "height": 64
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vexlife.journey.initiation",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexlife.journey.runtime-qualification",
+        "semanticRef": "process.vexlife.journey.runtime-qualification",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 70,
+          "y": 750,
+          "width": 330,
+          "height": 64
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vexlife.journey.initiation",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexlife.journey.companion-ready",
+        "semanticRef": "process.vexlife.journey.companion-ready",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 70,
+          "y": 845,
+          "width": 330,
+          "height": 64
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vexlife.journey.initiation",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexlife.v0",
+        "semanticRef": "work.vexlife.interface-refinement.v0.lived-baseline",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 515,
+          "y": 125,
+          "width": 430,
+          "height": 70
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vexlife.journey.lived-home",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexlife.v1",
+        "semanticRef": "work.vexlife.interface-refinement.v1.conversation-ergonomics",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 515,
+          "y": 240,
+          "width": 430,
+          "height": 70
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vexlife.journey.lived-home",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexlife.v15",
+        "semanticRef": "work.vexlife.interface-refinement.v1-5.long-context-memory-pressure",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 745,
+          "y": 350,
+          "width": 200,
+          "height": 90
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vexlife.journey.lived-home",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexlife.v2",
+        "semanticRef": "work.vexlife.interface-refinement.v2.streaming",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 515,
+          "y": 350,
+          "width": 200,
+          "height": 90
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vexlife.journey.lived-home",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexlife.v2-pass",
+        "semanticRef": "annotation.vexlife.v2.lived-pass",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 530,
+          "y": 405,
+          "width": 170,
+          "height": 34
+        },
+        "layer": 3,
+        "parentProjectionItemRefOrNull": "item.vexlife.v2",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexlife.home-tool",
+        "semanticRef": "work.vexlife.interface-refinement.home-tool-capability",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 515,
+          "y": 500,
+          "width": 430,
+          "height": 125
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vexlife.journey.lived-home",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexlife.home-tool-pr934",
+        "semanticRef": "annotation.vexlife.home-tool.pr934",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 540,
+          "y": 570,
+          "width": 380,
+          "height": 38
+        },
+        "layer": 3,
+        "parentProjectionItemRefOrNull": "item.vexlife.home-tool",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexlife.speech",
+        "semanticRef": "work.vexlife.interface-refinement.speech.kokoro-response-reading",
+        "shapeKind": "ELLIPSE",
+        "bounds": {
+          "x": 515,
+          "y": 700,
+          "width": 200,
+          "height": 80
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vexlife.journey.lived-home",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexlife.home-ui",
+        "semanticRef": "work.vexlife.interface-refinement.later.home-ui",
+        "shapeKind": "ELLIPSE",
+        "bounds": {
+          "x": 745,
+          "y": 700,
+          "width": 200,
+          "height": 80
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vexlife.journey.lived-home",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexlife.v3",
+        "semanticRef": "work.vexlife.interface-refinement.v3.resource-context-pressure-observation",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1050,
+          "y": 180,
+          "width": 350,
+          "height": 80
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vexlife.journey.stability",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexlife.v4",
+        "semanticRef": "work.vexlife.interface-refinement.v4.continuity-rollover",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1050,
+          "y": 365,
+          "width": 160,
+          "height": 105
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vexlife.journey.stability",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexlife.v5",
+        "semanticRef": "work.vexlife.interface-refinement.v5.resource-stewardship",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1240,
+          "y": 365,
+          "width": 160,
+          "height": 105
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vexlife.journey.stability",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexlife.v6",
+        "semanticRef": "work.vexlife.interface-refinement.v6.lived-continuity-stability",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1100,
+          "y": 610,
+          "width": 250,
+          "height": 100
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vexlife.journey.stability",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexlife.scale-note",
+        "semanticRef": "annotation.vexlife.journey.scale-gap-note",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 1510,
+          "y": 120,
+          "width": 500,
+          "height": 46
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vexlife.journey.scale-gaps",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexlife.gap-update",
+        "semanticRef": "gap.vexlife.journey.update-migration",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1510,
+          "y": 210,
+          "width": 500,
+          "height": 72
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vexlife.journey.scale-gaps",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexlife.gap-fresh",
+        "semanticRef": "gap.vexlife.journey.fresh-device",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1510,
+          "y": 330,
+          "width": 235,
+          "height": 82
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vexlife.journey.scale-gaps",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexlife.gap-returning",
+        "semanticRef": "gap.vexlife.journey.returning-device",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1775,
+          "y": 330,
+          "width": 235,
+          "height": 82
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vexlife.journey.scale-gaps",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexlife.gap-multidevice",
+        "semanticRef": "gap.vexlife.journey.multi-device",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1510,
+          "y": 490,
+          "width": 235,
+          "height": 82
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vexlife.journey.scale-gaps",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexlife.gap-release",
+        "semanticRef": "gap.vexlife.journey.release-scale",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1775,
+          "y": 490,
+          "width": 235,
+          "height": 82
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vexlife.journey.scale-gaps",
+        "visible": true,
+        "locked": true
+      }
+    ],
+    "sourceRefs": [
+      "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md",
+      "projects/vexboard/examples/vexlife-product-journey.board.json"
+    ]
+  }
+}
