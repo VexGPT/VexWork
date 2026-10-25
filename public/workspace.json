@@ -9601,7 +9601,7 @@
         {
           "workRef": "work.vexlife.interface-refinement.v2.streaming",
           "label": "V2 — progressive streamed Vex responses",
-          "purpose": "Make local Heretic replies appear progressively in the Vex interface and continue to model completion without committing partial text as durable Conversation truth. Final response/head persistence remains atomic after full completion; interrupted streams remain typed incomplete UI state.",
+          "purpose": "Make local Heretic replies appear progressively in the Vex interface and continue naturally beyond MLX-LM 0.32.0's implicit 512-token default under an explicit source-owned completion budget. Partial chunks stay ephemeral; final response/head persistence remains atomic after full completion; interrupted streams remain typed incomplete UI state.",
           "workClass": "TASK",
           "state": "WAITING_DEPENDENCIES",
           "workDisposition": "ACTIVE",
@@ -9619,7 +9619,8 @@
             "repo.vexlife:src/core/lived-companion-connection.mjs",
             "repo.vexlife:scripts/serve-browser-core.mjs",
             "repo.vexlife:reference/browser/modules/chat-controller.js",
-            "projects/vexlife-interface-refinement/README.md"
+            "projects/vexlife-interface-refinement/README.md",
+            "github.source.mlx-lm.v0.32.0.server"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
