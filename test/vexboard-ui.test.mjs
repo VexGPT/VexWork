@@ -174,6 +174,9 @@ test('VexLife Android POC is projected at source-load time and styled without ch
   assert.match(page, /entry=>entry\.ownerSemanticRef===n\.nodeRef\|\|entry\.subjectSemanticRefOrNull===n\.nodeRef/);
   assert.match(page, /finding\.kind/);
   assert.match(page, /finding\.summary/);
+  assert.match(page, /finding\.blockingForPocAuthority/);
+  assert.match(page, /BLOCKS POC AUTHORITY/);
+  assert.match(page, /finding\.scopeStatus/);
   assert.match(page, /DERIVED_CUSTOM_PRESENTATION|exception\.origin/);
   assert.match(page, /Screen Design/);
   assert.match(page, /function designMetricText\(/);
