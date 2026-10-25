@@ -296,6 +296,12 @@
     }
   ],
   "sourceRefs": [
+    "androidx.compose.material3:material3@1.4.0#ColorDarkTokens",
+    "androidx.compose.material3:material3@1.4.0#FilledCardTokens",
+    "androidx.compose.material3:material3@1.4.0#PaletteTokens",
+    "androidx.compose.material3:material3@1.4.0#ShapeTokens",
+    "androidx.compose.material3:material3@1.4.0#SheetBottomTokens",
+    "androidx.compose:compose-bom@2026.09.00",
     "git.commit.vexlife-android.255491df93835405800c93a17889c7574eb683b3",
     "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md",
     "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/preview/VexPreview.kt",
@@ -369,5 +375,61 @@
       "heightDp": 720,
       "fontScale": 1.45
     }
-  ]
+  ],
+  "visualTokens": {
+    "framework": {
+      "composeBom": "2026.09.00",
+      "material3": "1.4.0"
+    },
+    "colors": {
+      "primary": "#F2F2EF",
+      "onPrimary": "#111216",
+      "primaryContainer": "#4F378B",
+      "onPrimaryContainer": "#EADDFF",
+      "secondary": "#9BB7D4",
+      "onSecondary": "#111216",
+      "secondaryContainer": "#4A4458",
+      "onSecondaryContainer": "#E8DEF8",
+      "tertiary": "#E9C46A",
+      "background": "#0F1012",
+      "onBackground": "#F5F5F4",
+      "surface": "#17181C",
+      "onSurface": "#F5F5F4",
+      "surfaceVariant": "#202126",
+      "onSurfaceVariant": "#B7B8BF",
+      "surfaceContainer": "#202126",
+      "surfaceContainerLow": "#1D1B20",
+      "surfaceContainerHigh": "#272930",
+      "outline": "#5A5D68",
+      "outlineVariant": "#383A42",
+      "errorContainer": "#8C1D18",
+      "onErrorContainer": "#F9DEDC"
+    },
+    "shapes": {
+      "mediumRadiusDp": 12,
+      "largeRadiusDp": 16,
+      "extraLargeRadiusDp": 28,
+      "fullRadius": "FULL"
+    },
+    "typography": {
+      "headlineLarge": {
+        "fontFamily": "SERIF",
+        "fontWeight": 700,
+        "fontSizeSp": 30,
+        "lineHeightSp": 34
+      },
+      "headlineMedium": {
+        "fontFamily": "SERIF",
+        "fontWeight": 700,
+        "fontSizeSp": 24,
+        "lineHeightSp": 28
+      },
+      "labelSmall": {
+        "fontFamily": "MONOSPACE",
+        "fontWeight": 600,
+        "fontSizeSp": 10,
+        "letterSpacingSp": 0.8
+      }
+    }
+  }
 }
