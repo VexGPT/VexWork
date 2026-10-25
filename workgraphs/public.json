@@ -5023,11 +5023,15 @@
         "github.issue.vexlife.866",
         "github.pull.vexlife.924",
         "github.commit.vexlife.8f1e9fd9e3f38f8dc23296257df718fca9806988",
-        "projects/vexlife-interface-refinement/README.md"
+        "projects/vexlife-interface-refinement/README.md",
+        "repo.vexlife:scripts/macos-lifecycle.mjs",
+        "repo.vexlife:scripts/establish-heretic-runtime.mjs",
+        "repo.vexlife:scripts/serve-browser.mjs",
+        "artifact.vexlife.interface-refinement.v0.a006.sha256.1785e7f313c8a260d851634891b408e74f4037fa52dfe402d8b75e022558440f"
       ],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
-      "semanticFingerprint": "0d43b696969c794697975d49d4d80a09440e248a54da2f7d6c43286b762fe28e"
+      "semanticFingerprint": "c7145cb2e959b9015b3faf45960e539652a327bfa0a00f2ac97d37975e8d374d"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -7583,5 +7587,5 @@
     "projects/vexlife-interface-refinement/README.md"
   ],
   "formedAt": "2026-10-21T01:45:00.000Z",
-  "semanticFingerprint": "09e6d37655d409e600365df30d8a04304290da0ecb7dfcfcc88876c47f2daf50"
+  "semanticFingerprint": "514406786fdc1f358e658c00a433c2c820677ad693ae24b00a9e159626f33c28"
 }
