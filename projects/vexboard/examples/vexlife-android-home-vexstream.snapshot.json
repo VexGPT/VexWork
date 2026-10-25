@@ -1,0 +1,424 @@
+{
+  "schemaVersion": "vexlife-android.vexboard-snapshot/poc-v1",
+  "snapshotRef": "snapshot.vexlife-android.home-vexstream.255491df93835405800c93a17889c7574eb683b3",
+  "productRef": "product.vexlife-android",
+  "label": "VexLife Android",
+  "sourceRevisionRef": "git.commit.vexlife-android.255491df93835405800c93a17889c7574eb683b3",
+  "sourceRefs": [
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/AppScreens.kt",
+    "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/ScreenBlueprint.kt",
+    "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/BlueprintRegistry.kt",
+    "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/VexModifier.kt"
+  ],
+  "referenceProfile": {
+    "profileRef": "profile.vexlife-android.phone.412x915",
+    "widthDp": 412,
+    "heightDp": 915,
+    "toolbarHeightDp": 70,
+    "bottomBarHeightDp": 70,
+    "screenPaddingDp": 16,
+    "containerPaddingDp": 16,
+    "containerGapDp": 12,
+    "listGapDp": 8
+  },
+  "home": {
+    "screenRef": "screen.home",
+    "label": "Home",
+    "sourceRefs": [
+      "git.commit.vexlife-android.255491df93835405800c93a17889c7574eb683b3",
+      "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt"
+    ],
+    "vexStreamSection": {
+      "ref": "element.home.body.vexstream",
+      "label": "VexStream Music",
+      "status": "VexStream offline · downloaded music is still available",
+      "body": "Browse your library, continue playback, manage the queue, or download music for offline listening.",
+      "sourceRefs": [
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt",
+        "repo.vexlife-android:app/src/main/res/values/strings.xml"
+      ],
+      "actions": [
+        {
+          "ref": "element.home.body.systems.vexstream-music",
+          "label": "Open VexStream Music",
+          "targetScreenRefOrNull": "screen.vexstream-music",
+          "sourceRefs": [
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt"
+          ]
+        }
+      ]
+    },
+    "systemsSection": {
+      "ref": "element.home.body.systems",
+      "label": "Vex systems",
+      "sourceRefs": [
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt"
+      ],
+      "actions": [
+        {
+          "ref": "element.home.body.systems.family-conversation",
+          "label": "Family Conversation",
+          "targetScreenRefOrNull": "screen.family-conversation",
+          "sourceRefs": [
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt"
+          ]
+        },
+        {
+          "ref": "element.home.body.systems.vex-maps",
+          "label": "VexMaps",
+          "targetScreenRefOrNull": "screen.vex-maps",
+          "sourceRefs": [
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt"
+          ]
+        },
+        {
+          "ref": "element.home.body.systems.talk-to-vex",
+          "label": "Talk to Vex",
+          "targetScreenRefOrNull": "screen.talk-to-vex",
+          "sourceRefs": [
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt"
+          ]
+        }
+      ]
+    }
+  },
+  "vexStream": {
+    "screenRef": "screen.vexstream-music",
+    "label": "VexStream",
+    "sourceRefs": [
+      "git.commit.vexlife-android.255491df93835405800c93a17889c7574eb683b3",
+      "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt",
+      "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamLibrarySurface.kt",
+      "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamLibraryPresentation.kt"
+    ],
+    "toolbarActions": [
+      {
+        "ref": "element.vexstream-music.body.library.search.open",
+        "label": "Search library",
+        "icon": "Search",
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt"
+        ]
+      },
+      {
+        "ref": "element.vexstream-music.body.library.organization.open",
+        "label": "Organize library",
+        "icon": "Menu",
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt"
+        ]
+      },
+      {
+        "ref": "element.vexstream-music.body.connection.manage",
+        "label": "Manage VexStream connection",
+        "icon": "Settings",
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt"
+        ]
+      }
+    ],
+    "tabsContainerRef": "element.vexstream-music.body.library-tabs",
+    "tabs": [
+      {
+        "ref": "element.vexstream-music.body.library-tabs.songs",
+        "label": "Songs",
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt"
+        ]
+      },
+      {
+        "ref": "element.vexstream-music.body.library-tabs.albums",
+        "label": "Albums",
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt"
+        ]
+      },
+      {
+        "ref": "element.vexstream-music.body.library-tabs.artists",
+        "label": "Artists",
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt"
+        ]
+      },
+      {
+        "ref": "element.vexstream-music.body.library-tabs.playlists",
+        "label": "Playlists",
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt"
+        ]
+      },
+      {
+        "ref": "element.vexstream-music.body.library-tabs.downloads",
+        "label": "Downloads",
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt"
+        ]
+      }
+    ],
+    "libraryActions": [
+      {
+        "ref": "element.vexstream-music.body.library-actions.play-all",
+        "label": "Play all",
+        "icon": "Play",
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt"
+        ]
+      },
+      {
+        "ref": "element.vexstream-music.body.library-actions.shuffle-all",
+        "label": "Shuffle all",
+        "icon": "Shuffle",
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt"
+        ]
+      }
+    ],
+    "states": [
+      {
+        "stateRef": "state.vexstream.library.loading",
+        "label": "Loading",
+        "kind": "LOADING",
+        "message": "Restoring downloaded music…",
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamLibraryProjection.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamLibraryPresentation.kt"
+        ]
+      },
+      {
+        "stateRef": "state.vexstream.library.empty",
+        "label": "Ready · Empty",
+        "kind": "EMPTY",
+        "message": "No songs are available yet.",
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamLibraryProjection.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamLibraryPresentation.kt"
+        ]
+      },
+      {
+        "stateRef": "state.vexstream.library.loaded",
+        "label": "Ready · Loaded Songs",
+        "kind": "LOADED",
+        "message": "Source-owned preview tracks",
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamLibraryPresentation.kt"
+        ],
+        "sampleTracks": [
+          {
+            "ref": "reference.vexstream.preview.track.streamed",
+            "title": "VexStream Mobile",
+            "subtitle": "Vex · Desktop Hub",
+            "variant": "HUB_ONLY",
+            "sourceRefs": [
+              "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt"
+            ]
+          },
+          {
+            "ref": "reference.vexstream.preview.track.downloaded",
+            "title": "Take It With You",
+            "subtitle": "Vex · Downloaded · available offline",
+            "variant": "HUB_AND_LOCAL",
+            "sourceRefs": [
+              "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt"
+            ]
+          }
+        ]
+      }
+    ],
+    "connectionSheet": {
+      "ref": "element.vexstream-music.body.connection.menu",
+      "label": "VexStream connection",
+      "triggerRef": "element.vexstream-music.body.connection.manage",
+      "sourceRefs": [
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt"
+      ],
+      "actions": [
+        {
+          "ref": "element.vexstream-music.body.connection.refresh",
+          "label": "Refresh library",
+          "variant": "SECONDARY",
+          "sourceRefs": [
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt"
+          ]
+        },
+        {
+          "ref": "element.vexstream-music.body.connection.library.download-all-missing",
+          "label": "Download all missing songs",
+          "variant": "SECONDARY",
+          "sourceRefs": [
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt"
+          ]
+        },
+        {
+          "ref": "element.vexstream-music.body.connection.library.remove-all-downloaded",
+          "label": "Remove all downloaded songs",
+          "variant": "DANGER",
+          "sourceRefs": [
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt"
+          ]
+        },
+        {
+          "ref": "element.vexstream-music.body.connection.forget.request",
+          "label": "Forget VexStream computer",
+          "variant": "DANGER",
+          "sourceRefs": [
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt"
+          ]
+        },
+        {
+          "ref": "element.vexstream-music.body.connection.menu.close",
+          "label": "Close",
+          "variant": "SECONDARY",
+          "sourceRefs": [
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt"
+          ]
+        }
+      ]
+    }
+  },
+  "depth": {
+    "sourceRefs": [
+      "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/README.md",
+      "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/AppRepositories.kt"
+    ],
+    "repository": {
+      "ref": "reference.vexstream.repository",
+      "label": "VexStreamMusicRepository · PairedVexStreamMusicRepository",
+      "sourceRefs": [
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicRepository.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/PairedVexStreamMusicRepository.kt"
+      ]
+    },
+    "state": {
+      "ref": "reference.vexstream.music-state",
+      "label": "VexStreamMusicState · connection / hub / library / tracks / playlists",
+      "sourceRefs": [
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt"
+      ]
+    },
+    "connectionStore": {
+      "ref": "reference.vexstream.connection-store",
+      "label": "SharedPreferences · remembered route + encrypted bearer",
+      "variant": "LOCAL_STORE",
+      "sourceRefs": [
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamConnectionStore.kt"
+      ]
+    },
+    "keystore": {
+      "ref": "reference.android.keystore.vexstream",
+      "label": "Android Keystore · token encryption + device signing key",
+      "variant": "SECURE_STORE",
+      "sourceRefs": [
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamConnectionStore.kt"
+      ]
+    },
+    "offlineIndex": {
+      "ref": "reference.vexstream.offline-index",
+      "label": "App-private offline index · versioned restored metadata",
+      "variant": "LOCAL_STORE",
+      "sourceRefs": [
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamOfflineIndex.kt"
+      ]
+    },
+    "mediaStore": {
+      "ref": "reference.android.mediastore.vexstream",
+      "label": "Android MediaStore · verified VexStream audio",
+      "variant": "PLATFORM_STORE",
+      "sourceRefs": [
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamDeviceMediaStore.kt"
+      ]
+    },
+    "artworkStore": {
+      "ref": "reference.vexstream.artwork-store",
+      "label": "App-private artwork files",
+      "variant": "LOCAL_STORE",
+      "sourceRefs": [
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamArtworkStore.kt"
+      ]
+    },
+    "playbackService": {
+      "ref": "reference.vexstream.playback-service",
+      "label": "MediaSessionService · ExoPlayer playback lifetime",
+      "variant": "ANDROID_SERVICE",
+      "sourceRefs": [
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/media/vexstream/VexStreamPlaybackService.kt"
+      ]
+    },
+    "roomDatabase": {
+      "ref": "reference.vexlife.room-database.non-owner",
+      "label": "VexLife Room DB · exists, but VexStream is not stored here",
+      "variant": "NON_OWNER",
+      "sourceRefs": [
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/VexLifeDatabase.kt"
+      ]
+    },
+    "desktop": {
+      "ref": "reference.vexstream.desktop-mobile-service",
+      "label": "VexStream Desktop · bounded TLS mobile service",
+      "sourceRefs": [
+        "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+        "repo.vexstream-music:v2/desktop/mobile/service.go",
+        "repo.vexstream-music:docs/architecture/MOBILE-BRIDGE-V1.md"
+      ],
+      "endpoints": [
+        {
+          "ref": "reference.vexstream.desktop.endpoint.health",
+          "label": "GET /v1/health",
+          "method": "GET",
+          "sourceRefs": [
+            "repo.vexstream-music:v2/desktop/mobile/service.go",
+            "repo.vexstream-music:v2/desktop/mobile/service.go"
+          ]
+        },
+        {
+          "ref": "reference.vexstream.desktop.endpoint.pairing-info",
+          "label": "GET /v1/pairing/info",
+          "method": "GET",
+          "sourceRefs": [
+            "repo.vexstream-music:v2/desktop/mobile/service.go",
+            "repo.vexstream-music:v2/desktop/mobile/pairing.go"
+          ]
+        },
+        {
+          "ref": "reference.vexstream.desktop.endpoint.pairing-request",
+          "label": "POST /v1/pairing/request",
+          "method": "POST",
+          "sourceRefs": [
+            "repo.vexstream-music:v2/desktop/mobile/service.go",
+            "repo.vexstream-music:v2/desktop/mobile/pairing.go"
+          ]
+        },
+        {
+          "ref": "reference.vexstream.desktop.endpoint.pairing-status",
+          "label": "GET /v1/pairing/status",
+          "method": "GET",
+          "sourceRefs": [
+            "repo.vexstream-music:v2/desktop/mobile/service.go",
+            "repo.vexstream-music:v2/desktop/mobile/pairing.go"
+          ]
+        },
+        {
+          "ref": "reference.vexstream.desktop.endpoint.catalog",
+          "label": "GET /v1/catalog",
+          "method": "GET",
+          "sourceRefs": [
+            "repo.vexstream-music:v2/desktop/mobile/service.go",
+            "repo.vexstream-music:v2/desktop/mobile/catalog.go"
+          ]
+        },
+        {
+          "ref": "reference.vexstream.desktop.endpoint.media",
+          "label": "GET/HEAD /v1/media/<trackRef>",
+          "method": "GET_HEAD",
+          "sourceRefs": [
+            "repo.vexstream-music:v2/desktop/mobile/service.go",
+            "repo.vexstream-music:v2/desktop/mobile/catalog.go"
+          ]
+        }
+      ]
+    }
+  }
+}
