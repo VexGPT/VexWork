@@ -306,36 +306,12 @@
       "semanticRef": "screen.vexstream-music",
       "parentOccurrenceRefOrNull": "design-occurrence.vexstream.shell-content",
       "horizontal": {
-        "startMargin": {
-          "preferredPercent": 0.038834951456310676,
-          "minDp": 16,
-          "maxDp": 16,
-          "referenceDp": 16
-        },
-        "endMargin": {
-          "preferredPercent": 0.038834951456310676,
-          "minDp": 16,
-          "maxDp": 16,
-          "referenceDp": 16
-        },
         "size": {
           "mode": "FILL"
         },
         "bias": 0.5
       },
       "vertical": {
-        "startMargin": {
-          "preferredPercent": 0.017486338797814208,
-          "minDp": 16,
-          "maxDp": 16,
-          "referenceDp": 16
-        },
-        "endMargin": {
-          "preferredPercent": 0.017486338797814208,
-          "minDp": 16,
-          "maxDp": 16,
-          "referenceDp": 16
-        },
         "size": {
           "mode": "FILL"
         },
