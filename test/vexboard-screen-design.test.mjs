@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 
 import {
+  SCREEN_DESIGN_LAYOUT_MODES,
   VEXBOARD_SCREEN_DESIGN_SCHEMA,
   boundedResponsiveMetric,
   normalizeScreenDesign,
@@ -106,6 +107,49 @@ test('screen design contract keeps authority state separate from resolved projec
 
   assert.equal(design.authorityState, 'REVERSE_ADOPTED_CANDIDATE');
   assert.equal(design.constraints[0].semanticRef, 'screen.vexstream-music');
+});
+
+test('screen design preserves scroll/layout intent independently of resolved rectangles', () => {
+  assert.deepEqual(
+    SCREEN_DESIGN_LAYOUT_MODES,
+    ['FREE', 'ROW', 'COLUMN', 'STACK', 'SCROLL_ROW', 'SCROLL_COLUMN'],
+  );
+
+  const design = normalizeScreenDesign({
+    schemaVersion: VEXBOARD_SCREEN_DESIGN_SCHEMA,
+    designRef: 'design.layout-proof',
+    authorityState: 'VEXBOARD_DESIGN_AUTHORITY',
+    referenceViewport: {
+      profileRef: 'profile.test.phone',
+      widthDp: 412,
+      heightDp: 915,
+    },
+    metrics: {
+      tabGap: boundedResponsiveMetric({
+        referenceDp: 8,
+        referenceExtentDp: 412,
+        minDp: 8,
+        maxDp: 8,
+      }),
+    },
+    constraints: [],
+    layoutRules: [{
+      layoutRef: 'layout.tabs',
+      semanticRef: 'element.example.tabs',
+      mode: 'SCROLL_ROW',
+      gapMetricRefOrNull: 'tabGap',
+    }],
+  });
+
+  assert.equal(design.layoutRules[0].mode, 'SCROLL_ROW');
+  assert.equal(design.layoutRules[0].gapMetricRefOrNull, 'tabGap');
+
+  const invalid = structuredClone(design);
+  invalid.layoutRules[0].gapMetricRefOrNull = 'missingMetric';
+  assert.throws(
+    () => normalizeScreenDesign(invalid),
+    /gapMetricRefOrNull missing metric missingMetric/,
+  );
 });
 
 test('screen design rejects invalid percentage and duplicate occurrence identity', () => {
