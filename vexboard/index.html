@@ -136,7 +136,12 @@ function landing(){
   const create=el('button','btn primary','Create new');create.onclick=async()=>openBoard(await Board.createBlankDraft({draftRef:ref('draft.vexboard')}));
   const open=el('button','btn violet','Open VexBoard self-map');open.onclick=async()=>openBuiltInBoard('board.vexboard.self-map');
   const simulate=el('button','btn violet','Open prototype demo');simulate.onclick=async()=>openBuiltInBoard('board.vexboard.prototype-demo');
-  actions.append(create,open,simulate);box.append(actions,el('h2','','Local drafts'));
+  actions.append(create,open,simulate);
+  const examples=el('div','row');
+  const anatomy=el('button','btn','Open system anatomy example');anatomy.onclick=async()=>openBuiltInBoard('board.vexbusinessfactory.system-anatomy.patient-zero');
+  const intent=el('button','btn','Open intent topology example');intent.onclick=async()=>openBuiltInBoard('board.vexbusinessfactory.intent-topology.patient-zero');
+  examples.append(anatomy,intent);
+  box.append(actions,el('h2','','Source examples'),examples,el('h2','','Local drafts'));
   const list=el('div','cards');
   for(const d of drafts()){const c=el('article','card');c.append(el('div','tiny',d.mode),el('h3','',d.title),el('p','',d.derivedFromRefOrNull?`Forked from ${d.derivedFromRefOrNull}`:'Independent local draft'));const b=el('button','btn','Resume draft');b.onclick=()=>openBoard(d,{boardRef:d.draftRef});c.append(b);list.append(c)}
   if(!drafts().length){const c=el('article','card');c.append(el('div','tiny','No drafts yet'),el('h3','','Start with Create new'),el('p','','Browser-local proving copies · not source truth.'));list.append(c)}

@@ -10,11 +10,16 @@ const selfMap = JSON.parse(fs.readFileSync(new URL('../vexboard/self-map.json', 
 const publishMap = JSON.parse(fs.readFileSync(new URL('../vexboard/publish-map.json', import.meta.url), 'utf8'));
 const prototypeDemo = JSON.parse(fs.readFileSync(new URL('../vexboard/prototype-demo.json', import.meta.url), 'utf8'));
 const prototypeDefinition = JSON.parse(fs.readFileSync(new URL('../vexboard/prototype-demo.prototype.json', import.meta.url), 'utf8'));
+const systemAnatomy = JSON.parse(fs.readFileSync(new URL('../projects/vexboard/examples/vexbusinessfactory-system-anatomy.board.json', import.meta.url), 'utf8'));
+const intentTopology = JSON.parse(fs.readFileSync(new URL('../projects/vexboard/examples/vexbusinessfactory-intent-topology.board.json', import.meta.url), 'utf8'));
 
 test('VexBoard Pages entry exposes create/open/read-only/fork/save-draft workflow', () => {
   assert.match(page, /Create new/);
   assert.match(page, /Open VexBoard self-map/);
   assert.match(page, /Open prototype demo/);
+  assert.match(page, /Source examples/);
+  assert.match(page, /Open system anatomy example/);
+  assert.match(page, /Open intent topology example/);
   assert.match(page, /Request edit → draft copy/);
   assert.match(page, /Save draft/);
   assert.match(page, /Browser-local proving copies · not source truth/);
@@ -64,8 +69,8 @@ test('Context Inspector remains identity-first and includes bounded neighborhood
   assert.match(page, /Board\.queryBoardNeighborhood/);
 });
 
-test('self-map and publish-map are valid read-only built-in boards with reciprocal portal routing', () => {
-  for (const source of [selfMap, publishMap]) {
+test('built-in and patient-zero source boards preserve canonical board identity and read-only routing', () => {
+  for (const source of [selfMap, publishMap, systemAnatomy, intentTopology]) {
     assert.equal(source.schemaVersion, Reader.VEXBOARD_DRAFT_SCHEMA);
     assert.equal(source.mode, 'READ_ONLY_SOURCE');
     const graph = normalizeBoardGraph(source.graph);
@@ -81,6 +86,16 @@ test('self-map and publish-map are valid read-only built-in boards with reciproc
   assert.equal(Reader.builtinBoardUrl('board.vexboard.self-map'), './self-map.json');
   assert.equal(Reader.builtinBoardUrl('board.vexboard.publish'), './publish-map.json');
   assert.equal(Reader.builtinBoardUrl('board.vexboard.prototype-demo'), './prototype-demo.json');
+  assert.equal(
+    Reader.builtinBoardUrl('board.vexbusinessfactory.system-anatomy.patient-zero'),
+    '../projects/vexboard/examples/vexbusinessfactory-system-anatomy.board.json',
+  );
+  assert.equal(
+    Reader.builtinBoardUrl('board.vexbusinessfactory.intent-topology.patient-zero'),
+    '../projects/vexboard/examples/vexbusinessfactory-intent-topology.board.json',
+  );
+  assert.equal(systemAnatomy.draftRef, 'board.vexbusinessfactory.system-anatomy.patient-zero');
+  assert.equal(intentTopology.draftRef, 'board.vexbusinessfactory.intent-topology.patient-zero');
   assert.equal(Reader.builtinPrototypeUrl('board.vexboard.prototype-demo'), './prototype-demo.prototype.json');
   assert.equal(Reader.builtinPrototypeUrl('board.vexboard.self-map'), null);
   const publishGraph = normalizeBoardGraph(publishMap.graph);

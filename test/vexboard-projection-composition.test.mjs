@@ -549,4 +549,134 @@ test('one full system graph supports designer, client-dev and server/API lenses 
   );
 });
 
+
+test('recursive local composition resolves six nested boundaries without a global layout owner', () => {
+  const nodes = [
+    { nodeRef: 'node.scale.root', kind: 'CONTAINER', label: 'Root', parentRefOrNull: null, detailBoardRefOrNull: null, sourceRefs: [] },
+  ];
+  for (let depth = 1; depth <= 5; depth += 1) {
+    nodes.push({
+      nodeRef: `node.scale.c${depth}`,
+      kind: 'CONTAINER',
+      label: `Container ${depth}`,
+      parentRefOrNull: depth === 1 ? 'node.scale.root' : `node.scale.c${depth - 1}`,
+      detailBoardRefOrNull: null,
+      sourceRefs: [],
+    });
+  }
+  nodes.push({
+    nodeRef: 'node.scale.leaf',
+    kind: 'ARTIFACT',
+    label: 'Deep leaf',
+    parentRefOrNull: 'node.scale.c5',
+    detailBoardRefOrNull: null,
+    sourceRefs: [],
+  });
+
+  const graph = createBoardGraph({
+    schemaVersion: BOARD_GRAPH_SCHEMA,
+    graphRef: 'graph.vexboard.composition.recursive-scale',
+    nodes,
+    relationships: [],
+    sourceRefs: [],
+  });
+
+  const items = [
+    {
+      projectionItemRef: 'item.scale.root',
+      semanticRef: 'node.scale.root',
+      shapeKind: 'FRAME',
+      bounds: { x: 0, y: 0, width: 1000, height: 1000 },
+      layer: 0,
+      parentProjectionItemRefOrNull: null,
+      visible: true,
+      locked: false,
+    },
+  ];
+  for (let depth = 1; depth <= 5; depth += 1) {
+    items.push({
+      projectionItemRef: `item.scale.c${depth}`,
+      semanticRef: `node.scale.c${depth}`,
+      shapeKind: 'FRAME',
+      bounds: { x: 700, y: 700, width: 1000 - depth * 100, height: 1000 - depth * 100 },
+      layer: depth,
+      parentProjectionItemRefOrNull: depth === 1 ? 'item.scale.root' : `item.scale.c${depth - 1}`,
+      visible: true,
+      locked: false,
+    });
+  }
+  items.push({
+    projectionItemRef: 'item.scale.leaf',
+    semanticRef: 'node.scale.leaf',
+    shapeKind: 'RECTANGLE',
+    bounds: { x: 700, y: 700, width: 100, height: 60 },
+    layer: 99,
+    parentProjectionItemRefOrNull: 'item.scale.c5',
+    visible: true,
+    locked: false,
+  });
+
+  const projection = createBoardProjection({
+    schemaVersion: BOARD_PROJECTION_SCHEMA,
+    projectionRef: 'projection.vexboard.composition.recursive-scale',
+    graphRef: graph.graphRef,
+    layoutIntent: 'SYSTEM_MAP',
+    items,
+    sourceRefs: [],
+  }, graph);
+
+  const containers = [
+    {
+      containerProjectionItemRef: 'item.scale.root',
+      layout: 'COLUMN',
+      orderedChildProjectionItemRefs: ['item.scale.c1'],
+    },
+  ];
+  for (let depth = 1; depth <= 4; depth += 1) {
+    containers.push({
+      containerProjectionItemRef: `item.scale.c${depth}`,
+      layout: 'COLUMN',
+      orderedChildProjectionItemRefs: [`item.scale.c${depth + 1}`],
+    });
+  }
+  containers.push({
+    containerProjectionItemRef: 'item.scale.c5',
+    layout: 'COLUMN',
+    orderedChildProjectionItemRefs: ['item.scale.leaf'],
+  });
+
+  const composition = compositionFor(graph, projection, {
+    compositionRef: 'composition.vexboard.recursive-scale.001',
+    containers,
+    padding: 10,
+    gap: 4,
+  });
+
+  const first = resolveBoardProjectionComposition({ graph, projection, composition });
+  const second = resolveBoardProjectionComposition({ graph, projection, composition });
+
+  assert.deepEqual(first, second);
+  assert.equal(first.graph.semanticFingerprint, graph.semanticFingerprint);
+  assert.equal(first.effects.graphChanged, false);
+  assert.equal(first.effects.externalEffectsPerformed, false);
+
+  for (let depth = 1; depth <= 5; depth += 1) {
+    assert.deepEqual(
+      {
+        x: byItem(first.projection, `item.scale.c${depth}`).bounds.x,
+        y: byItem(first.projection, `item.scale.c${depth}`).bounds.y,
+      },
+      { x: depth * 10, y: depth * 10 },
+    );
+  }
+  assert.deepEqual(
+    {
+      x: byItem(first.projection, 'item.scale.leaf').bounds.x,
+      y: byItem(first.projection, 'item.scale.leaf').bounds.y,
+    },
+    { x: 60, y: 60 },
+  );
+  assert.equal(byItem(first.projection, 'item.scale.leaf').layer, 99);
+});
+
 // [VXG RealForever][VEXWORK][VEXBOARD][PROJECTION-COMPOSITION][TEST]

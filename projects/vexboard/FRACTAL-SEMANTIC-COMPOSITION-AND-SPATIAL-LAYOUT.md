@@ -534,6 +534,63 @@ OCCURRENCES
 
 These are interaction/view hypotheses, not a mandate to add a persisted pin schema now. First prove the behavior with current reveal, graph query and projection boundaries.
 
+### Lived checkpoint — relational focus + fractal scale posture
+
+The composition and focus hypotheses have now crossed source and lived thresholds:
+
+```text
+PR #137
+  occurrence-local FREE / ROW / COLUMN / STACK composition
+  nested UI + reusable process + full-system anatomy consumers
+  role-lens / repeated-occurrence proof
+  merge = ab7cd6cb84c7cecb7aaa92bc72045ca9b254811c
+
+PR #142
+  bounded multi-ID relational focus
+  DIRECT / CONNECT / UPSTREAM / DOWNSTREAM / OCCURRENCES
+  semantic-ID pinning != projection-occurrence selection
+  browser-local context-menu + inspector controls
+  merge = 80dbe6cdc71000171733481732cf5df6c5578783
+```
+
+Victor then exercised deployed VexBoard on the self-map and supplied lived browser evidence:
+
+```text
+zoom = 35%
+mode = READ_ONLY_SOURCE
+pinned semantic identity = node.vexboard.read-only
+focus mode = UPSTREAM
+result = 3 nodes / 2 relationships / 3 occurrences
+human disposition = "pretty good ... continue"
+```
+
+The accepted meaning is bounded:
+
+```text
+LIVED_PIN_FOCUS_USABLE = ACCEPTED_ENOUGH_TO_CONTINUE
+ARBITRARY_GRAPH_SCALE = NOT_YET_PROVEN
+RELATIONSHIP_TO_EXACT_OCCURRENCE_PORT = NOT_YET_PROVEN
+```
+
+Scaling should remain fractal unless real pressure disproves it:
+
+```text
+SCALE
+  = local composition
+  + semantic containment
+  + portal / detail-board descent
+  + role / depth projections
+  + zoom / collapse
+  + bounded relational focus
+
+SCALE != ONE_MEGA_CANVAS
+SCALE != ALWAYS_RENDER_EVERY_RELATIONSHIP
+SCALE != GLOBAL_LAYOUT_OWNER
+LOCAL_RECURSION != COPIED_SEMANTIC_TRUTH
+```
+
+Before adding a new scale primitive, pressure the accepted resolver with deeper nesting and make representative source examples easy to open in the lived UI. If existing local composition remains deterministic, prefer that evidence over speculative machinery.
+
 ## Initial implementation sequence
 
 A fresh successor should lead from evidence, not from a preselected framework.
@@ -700,17 +757,18 @@ Keep these parked unless a real consumer earns them:
 The next unconsumed engineering edge is:
 
 ```text
-current trusted VexBoard substrate
--> preserve PR #136 currentization as a separately provable parent
--> prove PR #137 occurrence-local composition against:
-     Consumer A nested UI
-     Consumer B reusable process
-     Consumer C full-system anatomy / data lineage / API boundary
--> use those consumers to identify the next repeated missing seam
--> prefer projection / reveal / bounded relational focus before adding ontology
--> implement only the smallest rightful seam
--> prove that role lenses and pin/reveal behavior preserve shared identity
+accepted PR #137 occurrence-local composition
++ accepted/lived PR #142 bounded relational focus
+-> expose existing patient-zero source boards directly in VexBoard
+-> prove deeper recursive local composition without adding a new schema
+-> use lived examples to pressure the next real failure
+-> only then consider:
+     exact relationship-to-occurrence / port routing
+     local incremental collision repair
+     richer connector routing
 ```
+
+The expected scaling model is recursive locality, not a new global owner. A new primitive is justified only when the representative examples or deeper recursion prove the current composition/query boundaries insufficient.
 
 The purpose is not to complete "layout" as an abstract subsystem.
 
