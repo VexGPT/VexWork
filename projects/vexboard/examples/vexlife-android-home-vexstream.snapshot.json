@@ -282,7 +282,8 @@
           ]
         }
       ]
-    }
+    },
+    "libraryActionsContainerRef": "element.vexstream-music.body.library-actions"
   },
   "depth": {
     "sourceRefs": [
