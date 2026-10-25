@@ -130,6 +130,29 @@ test('VexLife Android POC snapshot projects deterministically without source eff
     'SCROLL_ROW',
   );
 
+  const loadedFrame = projection.items.find(
+    (item) => item.projectionItemRef === 'item.vexstream.state.loaded',
+  );
+  const playFab = projection.items.find(
+    (item) => item.projectionItemRef === 'item.vexstream.state.loaded.fab.play-all',
+  );
+  const shuffleFab = projection.items.find(
+    (item) => item.projectionItemRef === 'item.vexstream.state.loaded.fab.shuffle-all',
+  );
+  assert.ok(Math.abs(playFab.bounds.width - 28.8) < 0.001);
+  assert.ok(Math.abs(playFab.bounds.height - 28.8) < 0.001);
+  assert.ok(Math.abs(shuffleFab.bounds.y - playFab.bounds.y - 36) < 0.001);
+  assert.ok(Math.abs(
+    (loadedFrame.bounds.x + loadedFrame.bounds.width) -
+    (playFab.bounds.x + playFab.bounds.width) -
+    11.52
+  ) < 0.001);
+  assert.ok(Math.abs(
+    (loadedFrame.bounds.y + loadedFrame.bounds.height) -
+    (shuffleFab.bounds.y + shuffleFab.bounds.height) -
+    11.52
+  ) < 0.001);
+
   const sheet = projection.items.find(
     (item) => item.projectionItemRef === 'item.vexstream.connection-sheet',
   );
