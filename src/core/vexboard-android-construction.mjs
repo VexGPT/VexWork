@@ -29,6 +29,18 @@ function layoutRule(design, ref) {
   return value;
 }
 
+function visualColor(design, ref) {
+  const value = design.visualTokens?.colors?.[ref];
+  assert(typeof value === 'string' && value, `Android construction requires visual color ${ref}`);
+  return value;
+}
+
+function visualShape(design, ref) {
+  const value = design.visualTokens?.shapes?.[ref];
+  assert(value !== undefined && value !== null, `Android construction requires visual shape ${ref}`);
+  return value;
+}
+
 function mapping(mappingRef, {
   designRefs,
   targetSourceRef,
@@ -55,6 +67,17 @@ export function compileVexLifeAndroidScreenDesign(
   const design = normalizeScreenDesign(designInput);
   stableRef(planRef, 'planRef');
 
+  for (const colorRef of [
+    'background', 'onBackground', 'surface', 'onSurface', 'surfaceContainer',
+    'surfaceContainerLow', 'surfaceContainerHigh', 'outline', 'outlineVariant',
+    'primary', 'onPrimary', 'primaryContainer', 'onPrimaryContainer',
+    'secondary', 'onSecondary', 'secondaryContainer', 'onSecondaryContainer',
+    'tertiary', 'errorContainer', 'onErrorContainer',
+  ]) visualColor(design, colorRef);
+  for (const shapeRef of [
+    'mediumRadiusDp', 'largeRadiusDp', 'extraLargeRadiusDp', 'fullRadius',
+  ]) visualShape(design, shapeRef);
+
   const tabs = layoutRule(design, 'layout.vexstream.library-tabs');
   const songs = layoutRule(design, 'layout.vexstream.songs');
   const connectionSheet = layoutRule(design, 'layout.vexstream.connection-sheet');
@@ -67,6 +90,59 @@ export function compileVexLifeAndroidScreenDesign(
     'VexStream connection sheet must remain COLUMN for Android construction');
 
   const mappings = [
+    mapping('mapping.android.theme.dark-colors', {
+      designRefs: [
+        'visual.color.background',
+        'visual.color.onBackground',
+        'visual.color.surface',
+        'visual.color.onSurface',
+        'visual.color.surfaceContainer',
+        'visual.color.surfaceContainerHigh',
+        'visual.color.outline',
+        'visual.color.outlineVariant',
+        'visual.color.primary',
+        'visual.color.onPrimary',
+        'visual.color.secondary',
+        'visual.color.onSecondary',
+        'visual.color.tertiary',
+      ],
+      targetSourceRef:
+        'repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeTheme.kt',
+      targetSymbol: 'DarkColors',
+      targetMeaning: 'explicit VexLife dark color scheme',
+      referenceDpOrNull: null,
+    }),
+    mapping('mapping.android.theme.material-default-colors', {
+      designRefs: [
+        'visual.color.primaryContainer',
+        'visual.color.onPrimaryContainer',
+        'visual.color.secondaryContainer',
+        'visual.color.onSecondaryContainer',
+        'visual.color.errorContainer',
+        'visual.color.onErrorContainer',
+        'visual.color.surfaceContainerLow',
+      ],
+      targetSourceRef:
+        'repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeTheme.kt',
+      targetSymbol: 'DarkColors inherited Material3 roles',
+      targetMeaning:
+        'pin inherited Material3 roles explicitly if VexBoard design diverges from dependency defaults',
+      referenceDpOrNull: null,
+    }),
+    mapping('mapping.android.theme.shapes', {
+      designRefs: [
+        'visual.shape.mediumRadiusDp',
+        'visual.shape.largeRadiusDp',
+        'visual.shape.extraLargeRadiusDp',
+        'visual.shape.fullRadius',
+      ],
+      targetSourceRef:
+        'repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeTheme.kt',
+      targetSymbol: 'MaterialTheme shapes / component shape mappings',
+      targetMeaning:
+        'VexBoard-owned component corner geometry',
+      referenceDpOrNull: Number(visualShape(design, 'largeRadiusDp')),
+    }),
     mapping('mapping.android.shell.toolbar-height', {
       designRefs: ['metric.toolbarHeight'],
       targetSourceRef:
