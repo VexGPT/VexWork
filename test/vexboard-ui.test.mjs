@@ -215,8 +215,11 @@ test('right-click pin focus is browser-local diagnostic state over bounded relat
 
   const contextMenuOwner = page.split('\n').find((line) => line.includes('s.oncontextmenu='));
   assert.ok(contextMenuOwner);
-  assert.match(contextMenuOwner, /openPinMenu\(e\.clientX,e\.clientY,n\.nodeRef\)/);
-  assert.doesNotMatch(contextMenuOwner, /n\.label|projectionItemRef/);
+  assert.match(contextMenuOwner, /selected=i\.projectionItemRef/);
+  const pinCall = contextMenuOwner.match(/openPinMenu\(([^)]*)\)/);
+  assert.ok(pinCall);
+  assert.equal(pinCall[1], 'e.clientX,e.clientY,n.nodeRef');
+  assert.doesNotMatch(pinCall[1], /n\.label|projectionItemRef/);
   assert.doesNotMatch(page, /method:\s*['"](?:POST|PUT|PATCH|DELETE)['"]/i);
 });
 test('prototype demo drives clickable local simulation through scenario overlays and BoardJourney', () => {
