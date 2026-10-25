@@ -320,6 +320,12 @@ function semanticLeaf(semanticRef) {
   return stableRef(leaf, 'semantic leaf');
 }
 
+function semanticTail(semanticRef, prefix) {
+  const value = String(semanticRef);
+  assert(value.startsWith(prefix), `semantic ref ${value} must start with ${prefix}`);
+  return stableRef(value.slice(prefix.length), 'semantic tail');
+}
+
 function orderedDesignChildren(design, layoutRef, values, refOf) {
   const rule = screenDesignLayoutRule(design, layoutRef);
   if (!Array.isArray(rule.childSemanticRefs)) return [...values];
@@ -631,7 +637,10 @@ function experienceBoard(snapshot, design, viewportProfile) {
     const iconSize = vexMetrics.toolbarActionSize;
     let iconX = frame.x + frame.width - vexMetrics.toolbarPaddingHorizontal - iconSize;
     [...snapshot.vexStream.toolbarActions].reverse().forEach((action) => {
-      const itemRef = `${frameItemRef}.toolbar-action.${semanticLeaf(action.ref)}`;
+      const itemRef = `${frameItemRef}.toolbar-action.${semanticTail(
+        action.ref,
+        'element.vexstream-music.body.',
+      )}`;
       items.push(projectionItem(itemRef, action.ref, 'RECTANGLE', rect(iconX, frame.y + vexMetrics.toolbarPaddingVertical, iconSize, iconSize), layer++, frameItemRef));
       hints.push(componentPresentationHint(design, itemRef, action.ref));
       actionItemBySemanticRef.set(action.ref, itemRef);
