@@ -526,6 +526,9 @@ function inspector(side){
     const exception=current.adoptionCoverage.identityExceptions?.find(
       entry=>entry.semanticRef===n.nodeRef,
     )??null;
+    const findings=(current.adoptionCoverage.findings||[]).filter(
+      entry=>entry.ownerSemanticRef===n.nodeRef||entry.subjectSemanticRefOrNull===n.nodeRef,
+    );
     if(screenMode){
       const kv=el('div','kv');kv.append(
         el('div','k','realization'),
@@ -545,8 +548,27 @@ function inspector(side){
         ag.append(el('div','k','Coverage source'),list);
       }
     }
-    if(!screenMode&&!exception){
-      ag.append(el('div','v','No Android adoption exception on this identity.'));
+    if(findings.length){
+      ag.append(el('div','k','Findings'));
+      const list=el('div','ref-list');
+      for(const finding of findings){
+        const row=el('div','ref-row');
+        row.append(
+          el('div','tiny',finding.kind),
+          el('div','v',finding.summary),
+        );
+        if(finding.subjectSemanticRefOrNull){
+          row.append(inspectorRefToken(
+            finding.subjectSemanticRefOrNull,
+            {semanticRefs:[finding.subjectSemanticRefOrNull]},
+          ));
+        }
+        list.append(row);
+      }
+      ag.append(list);
+    }
+    if(!screenMode&&!exception&&!findings.length){
+      ag.append(el('div','v','No Android adoption exception or finding on this identity.'));
     }
     side.append(ag);
   }
