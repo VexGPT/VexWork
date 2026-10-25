@@ -27,7 +27,7 @@ function fixture() {
     items: [
       { projectionItemRef: 'item.screen', role: 'SCREEN_FRAME', variant: 'LOADED' },
       { projectionItemRef: 'item.sheet', role: 'MODAL_SHEET', variant: null },
-      { projectionItemRef: 'item.settings', role: 'ICON_BUTTON', variant: 'Settings' },
+      { projectionItemRef: 'item.settings', role: 'ICON_BUTTON', variant: 'Settings', styleRef: 'style.toolbar.icon' },
       { projectionItemRef: 'item.condition', role: 'STATE_CHIP', variant: 'LOADED' },
       { projectionItemRef: 'item.viewport', role: 'SCROLL_VIEWPORT', variant: 'HORIZONTAL' },
       { projectionItemRef: 'item.tab', role: 'TAB', variant: 'DEFAULT' },
@@ -54,7 +54,7 @@ test('Android reference presentation is occurrence-local and does not mint seman
   );
   assert.deepEqual(
     androidReferenceClassNames(presentation, 'item.settings'),
-    ['android-reference', 'android-role-icon-button', 'android-variant-settings'],
+    ['android-reference', 'android-role-icon-button', 'android-variant-settings', 'android-style-toolbar-icon'],
   );
   assert.deepEqual(
     androidReferenceClassNames(presentation, 'item.condition'),
