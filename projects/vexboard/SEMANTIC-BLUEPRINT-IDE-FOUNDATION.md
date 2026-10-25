@@ -219,6 +219,138 @@ SOURCE
 This creates a path for screenshot comparison that does not require screenshots, source annotations
 and process topology to occupy the same visual plane simultaneously.
 
+### Design authority transition — reverse adoption is temporary
+
+For an existing application, VexBoard may begin by reverse-adopting accepted target source. That is a
+migration/bootstrap condition, not the intended permanent design authority.
+
+The trajectory is:
+
+~~~text
+existing target implementation
+-> reverse-adopt stable identity + layout + style + behavior relationships
+-> reconcile until VexBoard can reproduce the accepted target design
+-> explicitly accept / publish the VexBoard design revision
+-> VEXBOARD DESIGN becomes the authoritative presentation / UX Blueprint
+-> target adapter consumes that Blueprint
+-> target-native source / renderer realizes it
+-> observed target UI returns as evidence
+~~~
+
+After that transition, ordinary design evolution should flow forward:
+
+~~~text
+VexBoard accepted design
+-> deterministic target mapping
+-> Android ScreenBlueprint / Elements / Vex Compose / Compose realization
+-> build / render
+-> observed evidence
+-> compare to the same VexBoard design coordinates
+~~~
+
+The target repository still owns its target-native implementation, build, runtime and proof boundaries.
+It does not independently redesign an accepted VexBoard-owned Screen while claiming to remain current
+to that Blueprint.
+
+~~~text
+REVERSE_ADOPTION != PERMANENT_DESIGN_AUTHORITY
+TARGET_IMPLEMENTATION_OWNER != UX_DESIGN_OWNER
+TARGET_RENDERER != DESIGN_SOURCE_OF_TRUTH
+ACCEPTED_VEXBOARD_DESIGN -> TARGET_REALIZATION
+TARGET_REALIZATION -> OBSERVED_EVIDENCE
+~~~
+
+This is the source-of-truth transition the VexStream patient zero is intended to prove.
+
+### Constraint bias, percentages and bounded margins are design meaning
+
+A Screen frame should not merely store one resolved `x / y / width / height` snapshot.
+
+For responsive/adaptable UI, VexBoard needs enough portable constraint meaning to reconstruct the
+surface at another compatible viewport and to form target-native layout source.
+
+A useful pressure model is:
+
+~~~text
+parent content box
++ semantic containment / order
++ edge anchors
++ horizontal / vertical bias
++ percentage / fractional sizing
++ bounded margins / padding
++ min / max size
++ content / fill / fixed / aspect sizing
++ row / column / stack / scroll meaning
++ alignment / baseline when earned
+        |
+        v
+resolved occurrence bounds for this viewport
+~~~
+
+Percentages are especially useful as normalized intent when the relationship really scales with the
+container. Margins and touch/readability boundaries should be bounded rather than allowed to grow or
+shrink without limit.
+
+Example pressure:
+
+~~~text
+horizontal:
+  START -> parent.START
+  END   -> parent.END
+  bias  = 0.50
+  width = 100% of admitted inner width
+
+outer margin:
+  preferred = 3.88% of reference width
+  min = target-admitted compact margin
+  max = target-admitted spacious margin
+
+child:
+  width = 72% of parent inner width
+  START anchored
+  height = CONTENT
+~~~
+
+The exact numbers are design data, not universal constants. Reverse adoption may initialize them from
+the accepted Android realization; once the VexBoard revision is accepted, the VexBoard constraint is
+the owner and Android becomes a target mapping.
+
+For an existing fixed Android margin such as 16dp, reverse adoption may initially admit an exact
+bounded value:
+
+~~~text
+preferredPercent = 16 / 412
+minDp = 16
+maxDp = 16
+~~~
+
+That reproduces the current reference viewport exactly without pretending the fixed target value is
+already a cross-device responsive rule. A designer can later widen the admitted bounds deliberately.
+
+Permanent:
+
+~~~text
+AUTHORED_CONSTRAINTS -> RESOLVED_GEOMETRY
+RESOLVED_GEOMETRY != AUTHORED_CONSTRAINTS
+
+PERCENTAGE != UNBOUNDED_SCALING
+REFERENCE_DP != UNIVERSAL_DP
+TARGET_DP != PORTABLE_IDENTITY
+
+VEXBOARD_SCREEN_DESIGN
+  = semantic structure
+  + design tokens
+  + portable / target-qualified constraints
+  + state-conditioned presentation
+
+ANDROID_LAYOUT
+  = one target realization of that accepted design
+~~~
+
+A long-term VexBoard Screen renderer therefore **is** a real design renderer. Avoiding a second copy of
+Compose means avoiding Android framework semantics as the portable owner; it does not mean avoiding
+the rendering capability required for VexBoard to be design-authoritative.
+
 ### Default lens should follow the human question
 
 A Board may expose several lenses while choosing one primary default for the current task.
@@ -629,12 +761,13 @@ static Screen / Element identity
 
 without requiring the first adapter to understand every VexLife feature.
 
-### Android-owned snapshot before VexBoard projection
+### Android reverse-adoption bridge before VexBoard becomes design-authoritative
 
-The preferred bridge is source-owned export, not Kotlin parsing in the browser:
+For this existing-system patient zero, source-owned Android export is preferred over Kotlin parsing in
+the browser:
 
 ~~~text
-VexLife-Android
+VexLife-Android accepted current source
 
 AppScreens.registry
   + ScreenBlueprint / ElementPlacement
@@ -642,22 +775,44 @@ AppScreens.registry
   + stable screen.* / element.* refs
   + VexModifier / Vex Compose identity continuity
   + bounded feature-specific state projection where static registry data is insufficient
+  + target layout/style facts needed to recover the current design
 
         |
         v
 
-deterministic neutral Android Blueprint snapshot
+deterministic neutral Android adoption snapshot
 
         |
         v
 
-VexBoard source projector
+VexBoard reverse-adoption mapper
 
         |
         v
 
-BoardGraph + selected Screen/state projection
+VexBoard semantic graph
++ VexBoard Screen Design constraints
++ reference projection
+        |
+        v
+
+reconcile against accepted Android visual/runtime evidence
+        |
+        v
+
+explicit design-authority transition
+        |
+        v
+
+VexBoard accepted Screen Design
+        |
+        +-> VexBoard web/design renderer
+        +-> Android construction adapter
+              -> ScreenBlueprint / Elements / Vex Compose / Compose
 ~~~
+
+The snapshot is therefore an **import/migration carrier**. It must not become a permanent second design
+truth beside VexBoard.
 
 The first snapshot format is a proving seam, not permission to canonize one universal cross-platform
 UI schema.
@@ -684,9 +839,14 @@ Permanent:
 
 ~~~text
 WEB_PROJECTOR != KOTLIN_PARSER
-VEXBOARD != COMPOSE_RUNTIME
+VEXBOARD_RENDERER != COMPOSE_RUNTIME
 ANDROID_SNAPSHOT != NEW_PRODUCT_TRUTH
-ANDROID_SOURCE_OWNER -> EXPORTED_MEANING -> VEXBOARD_PROJECTION
+
+BEFORE_AUTHORITY_TRANSITION:
+ANDROID_SOURCE_OWNER -> EXPORTED_MEANING -> VEXBOARD_REVERSE_ADOPTION
+
+AFTER_ACCEPTED_TRANSITION:
+VEXBOARD_DESIGN_OWNER -> ANDROID_TARGET_ADAPTER -> ANDROID_REALIZATION
 ~~~
 
 ### Identity coverage must be truthful
