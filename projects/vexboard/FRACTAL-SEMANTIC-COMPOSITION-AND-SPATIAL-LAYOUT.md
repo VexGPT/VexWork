@@ -392,6 +392,57 @@ stable incremental arrangement
 + resolved geometry
 ```
 
+### Width-bounded local continuation is a foundation constraint
+
+Local composition must not assume that a ROW or COLUMN can propagate forever in one direction.
+
+The container's current projection bounds are already the local spatial constraint. When an explicitly
+bounded flow reaches that edge, the resolver may continue inside the same container without changing
+BoardGraph containment, relationship meaning, or structural order.
+
+The first earned continuation policies are deliberately small:
+
+```text
+FAIL
+  preserve the original behavior
+  -> a linear ROW/COLUMN that exceeds its container fails closed
+
+WRAP
+  preserve ordered children
+  -> start the next local row / column at the normal leading edge
+
+SERPENTINE
+  preserve ordered children
+  -> alternate local reading direction on each new row / column
+  -> useful for zig-zag / course / process flows where returning to the far edge would waste space
+```
+
+Permanent:
+
+```text
+CONTAINER_BOUNDS = LOCAL_PROJECTION_CONSTRAINT
+BOUNDARY_CONTINUATION != SEMANTIC_REPARENT
+BOUNDARY_CONTINUATION != STRUCTURAL_REORDER
+SERPENTINE_DIRECTION != FLOW_DIRECTION
+RESOLVED_PATH_SHAPE != PROCESS_TRUTH
+```
+
+A spiral, radial sweep, obstacle-aware continuation, or another path shape may be added later when a
+real consumer earns it. The foundation seam is **explicit local boundary policy**, not a promise that
+one algorithm is correct for every map.
+
+This keeps the small-system and large-system cases on the same contract:
+
+```text
+few children
+-> ordinary local ROW / COLUMN
+
+many children inside bounded container
+-> same stable identities + same structural order
+-> local continuation strategy
+-> no giant horizontal canvas required
+```
+
 ### Stable rhythm before cleverness
 
 Prefer a projection-owned metric profile over continuous global averaging:
@@ -447,6 +498,71 @@ lens reading direction           preferred when applicable
 ```
 
 Do not freeze arbitrary numeric weights before proving cases earn them.
+
+## Screenshot / image evidence can seed a process without becoming the process owner
+
+Composition-first authoring solves the greenfield case well: describe the intended system, then build
+the semantic structure directly.
+
+A different consumer is equally important for onboarding, training, migration and process discovery:
+
+> A person already has screenshots, website steps, slides, diagrams, or photographed instructions and
+> wants VexBoard to turn that visual evidence into an inspectable process flow.
+
+Treat that as **evidence-to-semantics interpretation**, not image-to-truth conversion.
+
+A bounded route is:
+
+```text
+image / screenshot / page capture
++ source URL / document / course identity when available
++ explicit sequence or grouping evidence when available
+        |
+        v
+visual observations
+  regions
+  visible controls
+  text / labels
+  apparent states
+  candidate step boundaries
+        |
+        v
+PROPOSED semantic mapping
+  SCENE / CONTROL / PROCESS / DECISION / ARTIFACT / REFERENCE
+  candidate FLOW / TRANSITION / REFERENCE relationships
+        |
+        v
+review / reconcile against source context
+        |
+        v
+accepted BoardGraph + BoardProjection
+        |
+        +-> retain image provenance
+        +-> retain occurrence-local image-region anchors when useful
+        +-> preserve uncertainty instead of fabricating hidden behavior
+```
+
+Permanent:
+
+```text
+SCREENSHOT != BOARD_GRAPH
+PIXEL_REGION != SEMANTIC_IDENTITY
+VISIBLE_ORDER != PROVEN_PROCESS_ORDER
+IMAGE_INFERENCE != SOURCE_ASSERTION
+IMAGE_REGION_ANCHOR = PROJECTION / EVIDENCE COORDINATE
+ACCEPTED_MAPPING -> MAY_CREATE_OR_BIND_STABLE_SEMANTIC_IDENTITY
+```
+
+This makes a course-shaped example such as **"How to build your business"** natural without requiring a
+special business-course ontology. A course can be a bounded process / Journey whose steps link to
+source screenshots or webpages; each screenshot may explain one or more scenes, controls, decisions,
+or artifacts. If a screenshot is only illustrative, it remains a REFERENCE/ARTIFACT source rather than
+silently asserting runtime behavior.
+
+The first image-mapping implementation should be earned from real examples. Do not add a universal
+OCR schema, screenshot hotspot registry, or computer-vision ontology before actual image consumers
+show which coordinates repeat. Existing stable refs, generic node kinds, sourceRefs, relationships,
+projection occurrences, and reveal behavior should be reused first.
 
 ## The inspector reveal is the seed of a larger reflex
 
