@@ -77,6 +77,7 @@ test('family navigation keeps Vextreme and VexLife as sibling destinations', () 
 
 test('family rail keeps one fixed mark and stable context slots', () => {
   assert.match(page, /class="family-rail"/);
+  assert.match(page, /\.family-rail\{[^}]*min-height:76px;[^}]*padding:0/);
   assert.match(page, /grid-template-columns:5\.8rem \.65rem 5\.3rem \.65rem 5\.3rem/);
   assert.match(page, /\.family a\{[^}]*text-align:center/);
   assert.match(page, /\.family-current\{font-family:Georgia/);
