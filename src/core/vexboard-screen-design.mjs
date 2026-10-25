@@ -193,6 +193,17 @@ export function normalizeScreenDesign(input) {
       normalizeBoundedMetric(metric, `screen design metrics.${key}`);
     }
   }
+  if (input.intrinsicSizes !== undefined) {
+    assert(input.intrinsicSizes && typeof input.intrinsicSizes === 'object' && !Array.isArray(input.intrinsicSizes),
+      'screen design intrinsicSizes must be one object');
+    for (const [semanticRef, size] of Object.entries(input.intrinsicSizes)) {
+      assert(semanticRef, 'screen design intrinsicSizes key required');
+      assert(size && typeof size === 'object' && !Array.isArray(size),
+        `screen design intrinsicSizes.${semanticRef} must be one object`);
+      positive(size.widthDp, `screen design intrinsicSizes.${semanticRef}.widthDp`);
+      positive(size.heightDp, `screen design intrinsicSizes.${semanticRef}.heightDp`);
+    }
+  }
 
   const occurrences = new Set();
   for (const [index, constraint] of input.constraints.entries()) {
