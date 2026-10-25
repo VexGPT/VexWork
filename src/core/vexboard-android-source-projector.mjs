@@ -756,7 +756,9 @@ function experienceBoard(snapshot, design, viewportProfile) {
     for (const [index, entry] of ordered.entries()) {
       const itemRef = entry.kind === 'TEXT'
         ? `${sectionItemRef}.text.${semanticLeaf(entry.ref)}`
-        : `${sectionItemRef}.action.${semanticLeaf(entry.ref)}`;
+        : sectionRef === snapshot.home.vexStreamSection.ref
+          ? 'item.home.vexstream-open'
+          : `item.home.system-action.${semanticLeaf(entry.ref)}`;
       const childHeight = scaled(heightsDp[index]);
       if (entry.kind === 'TEXT') {
         items.push(projectionItem(
