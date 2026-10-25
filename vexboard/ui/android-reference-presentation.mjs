@@ -57,6 +57,10 @@ const CSS = `
 .shape.android-role-icon-button.android-variant-menu::after { content:"☰"; }
 .shape.android-role-icon-button.android-variant-settings::after { content:"⚙"; }
 .shape.android-role-icon-button>.shape-label { display:none; }
+.shape.android-role-scroll-viewport {
+  background:transparent;border:0;border-radius:0;box-shadow:none;padding:0;overflow:hidden;
+}
+.shape.android-role-scroll-viewport>.shape-label { display:none; }
 .shape.android-role-tab { border-radius:999px;box-shadow:none;font-size:11px;font-weight:750; }
 .shape.android-role-tab.android-variant-selected { background:#f2f2ef;border-color:#f2f2ef;color:#111216; }
 .shape.android-role-tab.android-variant-default { background:#0f1012;border:1px solid #5a5d68;color:#b7b8bf; }
@@ -140,6 +144,53 @@ export function androidReferenceRelationshipRoute(presentationInput, relationshi
   const presentation = normalizeAndroidReferencePresentation(presentationInput);
   if (!presentation || !Array.isArray(presentation.relationships)) return null;
   return presentation.relationships.find((route) => route.relationshipRef === relationshipRef) ?? null;
+}
+
+export function androidReferenceScrollAxis(presentationInput, projectionItemRef) {
+  const hint = androidReferenceHint(presentationInput, projectionItemRef);
+  if (hint?.role !== 'SCROLL_VIEWPORT') return null;
+  return hint.variant === 'VERTICAL' ? 'VERTICAL' : 'HORIZONTAL';
+}
+
+export function androidReferenceScrolledOccurrence(
+  presentationInput,
+  itemBounds,
+  parentProjectionItemRef,
+  parentBounds,
+  scrollOffset = 0,
+) {
+  const axis = parentProjectionItemRef
+    ? androidReferenceScrollAxis(presentationInput, parentProjectionItemRef)
+    : null;
+  if (!axis) return null;
+  if (!itemBounds || !parentBounds) throw new TypeError('scroll occurrence bounds required');
+  if (typeof scrollOffset !== 'number' || !Number.isFinite(scrollOffset) || scrollOffset < 0) {
+    throw new TypeError('scrollOffset must be a non-negative finite number');
+  }
+
+  const bounds = {
+    ...itemBounds,
+    x: itemBounds.x - (axis === 'HORIZONTAL' ? scrollOffset : 0),
+    y: itemBounds.y - (axis === 'VERTICAL' ? scrollOffset : 0),
+  };
+  const leftCut = Math.max(0, parentBounds.x - bounds.x);
+  const topCut = Math.max(0, parentBounds.y - bounds.y);
+  const rightCut = Math.max(0, (bounds.x + bounds.width) - (parentBounds.x + parentBounds.width));
+  const bottomCut = Math.max(0, (bounds.y + bounds.height) - (parentBounds.y + parentBounds.height));
+  const hidden =
+    leftCut >= bounds.width ||
+    rightCut >= bounds.width ||
+    topCut >= bounds.height ||
+    bottomCut >= bounds.height;
+
+  return Object.freeze({
+    axis,
+    bounds: Object.freeze(bounds),
+    hidden,
+    clipPath: hidden
+      ? null
+      : `inset(${topCut}px ${rightCut}px ${bottomCut}px ${leftCut}px)`,
+  });
 }
 
 export function androidReferenceProfileSummary(presentationInput) {
