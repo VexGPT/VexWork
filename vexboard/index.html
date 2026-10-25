@@ -532,6 +532,8 @@ function renderWorkspace(){
   if(boardStack.length){const back=el('button','btn','↩ Return');back.onclick=returnBoard;bar.append(back)}
   const title=document.createElement('input');title.className='title';title.value=current.title;title.disabled=!editable();title.onchange=()=>{current={...current,title:title.value.trim()||'Untitled VexBoard'};markDraftDirty();renderWorkspace();requestAnimationFrame(()=>applyCamera())};
   const badge=el('span',`badge ${editable()?'draft':'readonly'}`,editable()?'Local draft · browser only':'Read-only source');bar.append(title,badge);
+  const androidProfile=AndroidPresentation.androidReferenceProfileSummary(current.presentation);
+  if(androidProfile)bar.append(el('span','badge',`Android ref · ${androidProfile.widthDp}×${androidProfile.heightDp}dp`));
   const zoomOut=el('button','btn','Zoom out');zoomOut.onclick=()=>zoomBy(1/1.18);const zoomIn=el('button','btn','Zoom in');zoomIn.onclick=()=>zoomBy(1.18);const fit=el('button','btn','Fit');fit.onclick=fitBoard;const reset=el('button','btn','Reset view');reset.onclick=resetView;zoomReadoutEl=el('span','zoom-readout','100%');bar.append(zoomOut,zoomIn,fit,reset,zoomReadoutEl);
   if(current.graph.relationships.some(relationship=>!['FLOW','TRANSITION'].includes(relationship.kind))){
     const edgeView=el('button','btn',relationshipViewMode==='JOURNEY'?'Journey edges':'All relationships');
