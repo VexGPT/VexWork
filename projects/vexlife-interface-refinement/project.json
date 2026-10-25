@@ -2,7 +2,7 @@
   "schemaVersion": "vexwork.project-definition/v1",
   "projectRef": "project.vexlife.interface-refinement",
   "label": "VexLife Interface Refinement",
-  "purpose": "Evolve the first human-lived VexLife ↔ local Heretic conversation into an increasingly natural, re-enterable and responsive interface. Treat the lived V0 connection as provenance, always enter through the highest current refinement version, and use ToCompletion only when a current version names an exact dependency.",
+  "purpose": "Evolve the first human-lived VexLife ↔ local Heretic conversation into an increasingly natural, tool-capable, re-enterable and self-maintaining Home. Treat V0 as provenance, start every fresh instance from the highest current refinement, and descend into ToCompletion only when a current work item names an exact dependency.",
   "rootWorkRefs": [
     "work.vexlife.interface-refinement.outcome"
   ],
@@ -18,7 +18,13 @@
     "github.pull.vexlife.904",
     "github.commit.vexlife.8f1e9fd9e3f38f8dc23296257df718fca9806988",
     "docs/process/FORM-PROJECT.md",
-    "github.pull.vexlife.925"
+    "github.pull.vexlife.925",
+    "github.pull.vexlife.928",
+    "github.pull.vexlife.931",
+    "github.pull.vexlife.932",
+    "github.commit.vexlife.1a9a131e54ff6b735d64812e213e26315770bc96",
+    "github.pull.vexlife.932.comment.6397203775",
+    "artifact.vexlife.interface-refinement.v2.a005.return.sha256.05b3536ff2273242869ac8344387c7f940aa30771439e22b1823cd8479811fff"
   ],
   "formedAt": "2026-10-25T01:23:08.000Z"
 }

@@ -9,11 +9,11 @@
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
       "createdAt": "2026-10-25T01:23:08.000Z",
-      "updatedAt": "2026-10-25T05:24:00.000Z",
+      "updatedAt": "2026-10-25T11:39:33.055Z",
       "workRef": "work.vexlife.interface-refinement.outcome",
       "parentWorkRefOrNull": null,
       "label": "VexLife Interface Refinement",
-      "purpose": "Carry the current lived interface forward from the first working Victor ↔ local Heretic VexLife conversation. Latest-version truth is the entry point; V0 is an addressable ancestor, not a reset target.",
+      "purpose": "Carry the current lived interface forward from the first working Victor ↔ local Heretic VexLife conversation into a natural, tool-capable, re-enterable and self-maintaining VexLife Home. Latest-version truth is the entry point; V0 is an addressable ancestor, not a reset target.",
       "workClass": "OUTCOME",
       "state": "RUNNING",
       "priorityClass": "IMMEDIATE",
@@ -124,13 +124,13 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-10-25T01:23:08.000Z",
-      "updatedAt": "2026-10-25T05:24:00.000Z",
+      "updatedAt": "2026-10-25T11:39:33.055Z",
       "workRef": "work.vexlife.interface-refinement.v2.streaming",
       "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
-      "label": "V2 — progressive streamed Vex responses",
-      "purpose": "Make local Heretic replies appear progressively and replace the accidental MLX-LM completion default with an explicit source-owned output policy. Chunks remain ephemeral; only a completed final response advances durable Conversation truth. PR #904 is now accepted current, so implementation is unblocked.",
+      "label": "V2 — progressive + adaptive streamed Vex responses",
+      "purpose": "Make local Heretic replies progressively visible under an explicit source-owned completion policy, project that progress into the actual Evolution Conversation, and smooth provider chunk cadence through a bounded adaptive human-consumption reveal without backpressuring inference. Partial progress remains ephemeral; one completed final response advances durable Conversation truth. PRs #928, #931 and #932 are accepted source, and A005 is terminal human-lived PASS.",
       "workClass": "TASK",
-      "state": "READY",
+      "state": "COMPLETED",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [
         "work.vexlife.interface-refinement.dependency.conversation-core-pr904"
@@ -145,7 +145,49 @@
         "repo.vexlife:scripts/serve-browser-core.mjs",
         "repo.vexlife:reference/browser/modules/chat-controller.js",
         "projects/vexlife-interface-refinement/README.md",
-        "github.source.mlx-lm.v0.32.0.server"
+        "github.source.mlx-lm.v0.32.0.server",
+        "github.pull.vexlife.928",
+        "github.pull.vexlife.931",
+        "github.pull.vexlife.932",
+        "github.commit.vexlife.1a9a131e54ff6b735d64812e213e26315770bc96",
+        "github.pull.vexlife.932.comment.6397203775",
+        "artifact.vexlife.interface-refinement.v2.a005.return.sha256.05b3536ff2273242869ac8344387c7f940aa30771439e22b1823cd8479811fff"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "createdAt": "2026-10-25T11:39:33.055Z",
+      "updatedAt": "2026-10-25T11:39:33.055Z",
+      "workRef": "work.vexlife.interface-refinement.home-tool-capability",
+      "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
+      "label": "Current — tool-bearing VexLife Home",
+      "purpose": "Make the lived Evolution Conversation the ordinary VexLife Home where Vex can perceive current Intent/Workgraph context, discover only source-admitted capabilities, exercise at least one bounded source-backed read/tool path through the accepted Intent Scheduler / capability-lease / ToolResultRelay seams, receive the bounded observation back into context, and explain the result conversationally. Compose existing capability owners before adding new tools. MODEL_PROPOSAL != EFFECT_AUTHORITY; CAPABILITY_DISCOVERY != ARBITRARY_ACCESS; TOOL_OBSERVATION != MEMORY_PROMOTION.",
+      "workClass": "TASK",
+      "state": "READY",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexlife.interface-refinement.v2.streaming"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-interface-refinement/README.md",
+        "github.commit.vexlife.1a9a131e54ff6b735d64812e213e26315770bc96",
+        "repo.vexlife:src/core/intent-workgraph.mjs",
+        "repo.vexlife:src/core/intent-scheduler.mjs",
+        "repo.vexlife:src/core/capability.mjs",
+        "repo.vexlife:src/core/capability-assimilation-runtime.mjs",
+        "repo.vexlife:src/core/tool-result-relay.mjs",
+        "repo.vexlife:src/core/vex-self-capability-frame.mjs",
+        "repo.vexlife:src/core/browser-companion-bridge.mjs",
+        "projects/vex-security-assurance/README.md",
+        "github.pull.vexlife.932.comment.6397203775"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
@@ -155,12 +197,39 @@
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
+      "createdAt": "2026-10-25T11:39:33.055Z",
+      "updatedAt": "2026-10-25T11:39:33.055Z",
+      "workRef": "work.vexlife.interface-refinement.speech.kokoro-response-reading",
+      "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
+      "label": "Later — Kokoro live speech + response Read control",
+      "purpose": "Capture the user-controlled speech refinement without stealing current foreground: an optional Speak toggle may begin Kokoro playback while already-received response text is still arriving, with bounded backfill from text that arrived before speech began, and each completed response may expose a Read control. Speech is a presentation consumer: it must not block generation, fabricate unseen text, mutate durable Conversation truth or silently become always-on.",
+      "workClass": "POTENTIAL",
+      "state": "CAPTURED",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-interface-refinement/README.md",
+        "repo.vexlife:src/core/companion-voice-playback.mjs",
+        "repo.vextreme:widgets/fab-read-aloud.js",
+        "human.lived-feedback.vexlife.interface-refinement.20261025"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
       "createdAt": "2026-10-25T01:23:08.000Z",
-      "updatedAt": "2026-10-25T01:23:08.000Z",
+      "updatedAt": "2026-10-25T11:39:33.055Z",
       "workRef": "work.vexlife.interface-refinement.later.home-ui",
       "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
       "label": "Later — refine Home/navigation from lived feedback",
-      "purpose": "Treat the current Terrain nodes, menus and example screens as capability scaffolding rather than final design. Refine Home/navigation only from lived use and current product intention; do not search history merely to recover a supposedly lost final UI.",
+      "purpose": "Treat the current Terrain nodes, menus and example screens as capability scaffolding rather than final visual design. Refine Home/navigation only from lived use and current product intention; do not search history merely to recover a supposedly lost final UI. This presentation work is separate from the current tool-bearing Home capability work, which owns lawful capability use through the lived Vex Conversation.",
       "workClass": "POTENTIAL",
       "state": "CAPTURED",
       "priorityClass": "NORMAL",
@@ -211,7 +280,7 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-10-25T05:24:00.000Z",
-      "updatedAt": "2026-10-25T05:24:00.000Z",
+      "updatedAt": "2026-10-25T11:39:33.055Z",
       "workRef": "work.vexlife.interface-refinement.v3.resource-context-pressure-observation",
       "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
       "label": "V3 — resource and context pressure observation",
@@ -231,7 +300,9 @@
         "repo.vexlife:src/core/continuity-stream-adapter.mjs",
         "repo.vexlife:src/core/heretic-persistent-runtime-owner.mjs",
         "projects/vexlife-interface-refinement/README.md",
-        "projects/vex-security-assurance/README.md"
+        "projects/vex-security-assurance/README.md",
+        "github.commit.vexlife.1a9a131e54ff6b735d64812e213e26315770bc96",
+        "github.pull.vexlife.932.comment.6397203775"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
@@ -336,7 +407,13 @@
     "github.pull.vexlife.904",
     "github.pull.vexlife.927",
     "github.commit.vexlife.162a865b7ebc1c5b51763a15b87ae2ec0637e94a",
-    "projects/vex-security-assurance/README.md"
+    "projects/vex-security-assurance/README.md",
+    "github.pull.vexlife.928",
+    "github.pull.vexlife.931",
+    "github.pull.vexlife.932",
+    "github.commit.vexlife.1a9a131e54ff6b735d64812e213e26315770bc96",
+    "github.pull.vexlife.932.comment.6397203775",
+    "artifact.vexlife.interface-refinement.v2.a005.return.sha256.05b3536ff2273242869ac8344387c7f940aa30771439e22b1823cd8479811fff"
   ],
   "formedAt": "2026-10-25T01:23:08.000Z"
 }
