@@ -3934,10 +3934,25 @@ export/reload of media bindings.
 
 ### Phase 2F — existing-system reverse adoption
 
-Source-bound adapters that project accepted existing design/implementation systems into VexBoard
-without taking ownership. First proving candidates should include VexLife Universal Blueprint /
-Presentation Graph and one Vextreme page/localization surface. Establish stable identity mapping,
-source/proof backlinks and safe future BoardPatch -> rightful source-change proposal routes.
+Source-bound adapters import accepted existing design/implementation systems into VexBoard without
+silently claiming authority during migration. First proving candidates should include VexLife
+Universal Blueprint / Presentation Graph and one Vextreme page/localization surface. Establish stable
+identity mapping, source/proof backlinks, recovered layout/design constraints, and an explicit
+authority-transition threshold.
+
+For a Screen/design domain intentionally converged into VexBoard:
+
+```text
+accepted target design/source
+-> reverse-adopt
+-> reconcile 1:1
+-> explicit Blueprint acceptance
+-> VexBoard becomes design/presentation authority
+-> target adapter realizes later changes
+```
+
+The target repository continues to own target-native implementation/build/runtime/proof; it does not
+remain an independent UX design owner for an accepted VexBoard-owned Screen.
 
 ### Phase 2G — Context Inspector and documentation/source traversal
 
@@ -3970,9 +3985,21 @@ and immutable/versioned Board release fingerprints.
 
 ### Phase 3C — target blueprint compilation
 
-Target-specific adapters that translate a published Board revision into a reviewable implementation
-plan/source candidate while preserving the target repository's own source, localization, asset,
-validation and lifecycle ownership. Vextreme is a strong future proving target because its page,
+Target-specific adapters translate a published Board revision into a reviewable target realization.
+For design-authoritative VexBoard domains, the published Board revision owns the intended presentation
+and structural design; the target repository owns the generated/mapped target-native implementation,
+localization/asset integration, validation, build and lifecycle proof.
+
+```text
+PUBLISHED_VEXBOARD_DESIGN
+-> TARGET_ADAPTER
+-> TARGET_NATIVE_SOURCE
+-> TARGET_RENDER
+-> OBSERVED_EVIDENCE
+```
+
+The adapter may fail closed on an unsupported target capability, but the target must not silently
+redesign the accepted Blueprint. Vextreme is a strong future proving target because its page,
 viewmodel/index, localization and Vextreme-Assets contracts are already source-addressable.
 
 ### Phase 4 — AI BoardPatch authoring
