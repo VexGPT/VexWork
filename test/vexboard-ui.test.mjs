@@ -184,6 +184,44 @@ test('Context Inspector refs reveal matching canvas objects and relationships wi
   assert.doesNotMatch(page, /'SET_CONTAINMENT'.*inspector-reveal/s);
 });
 
+test('right-click pin focus is browser-local diagnostic state over bounded relational queries', () => {
+  assert.match(page, /let pinnedSemanticRefs=new Set\(\),relationalFocusMode='CONNECT',pinMenuEl=null/);
+  assert.match(page, /function currentRelationalFocus\(\)/);
+  assert.match(page, /Board\.queryBoardRelationalFocus\(current/);
+  assert.match(page, /s\.oncontextmenu=\(e\)=>\{e\.preventDefault\(\);e\.stopPropagation\(\)/);
+  assert.match(page, /Pin identity/);
+  assert.match(page, /Unpin identity/);
+  assert.match(page, /Trace upstream/);
+  assert.match(page, /Trace downstream/);
+  assert.match(page, /Occurrences only/);
+  assert.match(page, /Pinned relational focus/);
+  assert.match(page, /pin-seed/);
+  assert.match(page, /pin-focus/);
+  assert.match(page, /pin-muted/);
+  assert.match(page, /pinnedSemanticRefs:\[\.\.\.pinnedSemanticRefs\]/);
+  assert.doesNotMatch(page, /localStorage\.(?:setItem|getItem)\([^)]*pin/i);
+  const togglePinOwner = page.split('\n').find((line) => line.includes('function togglePinnedSemanticRef('));
+  assert.ok(togglePinOwner);
+  assert.match(togglePinOwner, /pinnedSemanticRefs/);
+  assert.match(togglePinOwner, /renderWorkspace\(\)/);
+  assert.doesNotMatch(togglePinOwner, /CONNECT_NODES|Board\.applyBoardControl|\bact\(/);
+
+  const openPinStart = page.indexOf('function openPinMenu(');
+  const openPinEnd = page.indexOf("document.addEventListener('pointerdown'", openPinStart);
+  assert.ok(openPinStart >= 0 && openPinEnd > openPinStart);
+  const openPinOwner = page.slice(openPinStart, openPinEnd);
+  assert.match(openPinOwner, /togglePinnedSemanticRef\(semanticRef\)/);
+  assert.doesNotMatch(openPinOwner, /CONNECT_NODES|Board\.applyBoardControl|\bact\(/);
+
+  const contextMenuOwner = page.split('\n').find((line) => line.includes('s.oncontextmenu='));
+  assert.ok(contextMenuOwner);
+  assert.match(contextMenuOwner, /selected=i\.projectionItemRef/);
+  const pinCall = contextMenuOwner.match(/openPinMenu\(([^)]*)\)/);
+  assert.ok(pinCall);
+  assert.equal(pinCall[1], 'e.clientX,e.clientY,n.nodeRef');
+  assert.doesNotMatch(pinCall[1], /n\.label|projectionItemRef/);
+  assert.doesNotMatch(page, /method:\s*['"](?:POST|PUT|PATCH|DELETE)['"]/i);
+});
 test('prototype demo drives clickable local simulation through scenario overlays and BoardJourney', () => {
   const graph = normalizeBoardGraph(prototypeDemo.graph);
   const projection = normalizeBoardProjection(prototypeDemo.projection, graph);
