@@ -48,6 +48,73 @@ function visualTypography(design, ref) {
   return value;
 }
 
+function componentTarget(templateRef) {
+  const targets = {
+    'component.screen': {
+      targetSourceRef:
+        'repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/AppScreenBlueprint.kt',
+      targetSymbol: 'AppScreenBlueprint / ScreenBlueprint',
+      targetMeaning: 'registered Android Screen blueprint and structural tree',
+    },
+    'component.surface': {
+      targetSourceRef:
+        'repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/ElementCells.kt',
+      targetSymbol: 'VexContainer',
+      targetMeaning: 'registered semantic Surface/Column container',
+    },
+    'component.button': {
+      targetSourceRef:
+        'repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/ElementCells.kt',
+      targetSymbol: 'VexButton',
+      targetMeaning: 'registered semantic ButtonElement realization',
+    },
+    'component.icon-button': {
+      targetSourceRef:
+        'repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/ElementCells.kt',
+      targetSymbol: 'VexIconButton',
+      targetMeaning: 'registered semantic icon-button realization',
+    },
+    'component.tab': {
+      targetSourceRef:
+        'repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamLibraryPresentation.kt',
+      targetSymbol: 'VexButton in VexStreamLibraryTabs',
+      targetMeaning: 'navigation-style tab with selected-style override',
+    },
+    'component.fab': {
+      targetSourceRef:
+        'repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/ElementCells.kt',
+      targetSymbol: 'VexActionFab',
+      targetMeaning: 'registered semantic small floating action button',
+    },
+    'component.modal-bottom-sheet': {
+      targetSourceRef:
+        'repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/VexComposeMaterial.kt',
+      targetSymbol: 'VexModalBottomSheet',
+      targetMeaning: 'registered semantic Material modal bottom sheet',
+    },
+  };
+  const target = targets[templateRef];
+  assert(target, `Android construction unsupported component template ${templateRef}`);
+  return target;
+}
+
+function componentMapping(assignment) {
+  const target = componentTarget(assignment.templateRef);
+  return Object.freeze({
+    mappingRef: stableRef(
+      `mapping.android.component.${assignment.semanticRef.replaceAll(':', '.').replaceAll('/', '.')}`,
+      'component mappingRef',
+    ),
+    assignmentRef: assignment.assignmentRef,
+    semanticRef: assignment.semanticRef,
+    templateRef: assignment.templateRef,
+    styleRef: assignment.styleRef,
+    selectedStyleRefOrNull: assignment.selectedStyleRefOrNull,
+    iconRefOrNull: assignment.iconRefOrNull,
+    ...target,
+  });
+}
+
 function mapping(mappingRef, {
   designRefs,
   targetSourceRef,
@@ -89,6 +156,12 @@ export function compileVexLifeAndroidScreenDesign(
     'titleLarge', 'titleMedium', 'bodyLarge', 'bodyMedium',
     'labelLarge', 'labelSmall',
   ]) visualTypography(design, typographyRef);
+
+  assert(Array.isArray(design.componentAssignments) && design.componentAssignments.length,
+    'Android construction requires VexBoard component assignments');
+  const componentMappings = Object.freeze(
+    design.componentAssignments.map(componentMapping),
+  );
 
   const tabs = layoutRule(design, 'layout.vexstream.library-tabs');
   const songs = layoutRule(design, 'layout.vexstream.songs');
@@ -291,6 +364,7 @@ export function compileVexLifeAndroidScreenDesign(
           ? 'PREVIEW_ONLY_DESIGN_DRAFT'
           : 'PREVIEW_ONLY_REVERSE_ADOPTION',
     mappings: Object.freeze(mappings),
+    componentMappings,
     sourceRefs: Object.freeze([...(design.sourceRefs ?? [])]),
     effects: Object.freeze({
       targetSourceMutationPerformed: false,
