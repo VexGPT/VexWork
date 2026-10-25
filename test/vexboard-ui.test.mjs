@@ -4,6 +4,10 @@ import test from 'node:test';
 
 import * as Reader from '../vexboard-reader.js';
 import { normalizeBoardGraph, normalizeBoardProjection } from '../src/shared/vexboard-model.mjs';
+import {
+  normalizeBoardSourceCatalog,
+  resolveBoardSource,
+} from '../src/shared/vexboard-source-resolver.mjs';
 
 const page = fs.readFileSync(new URL('../vexboard/index.html', import.meta.url), 'utf8');
 const selfMap = JSON.parse(fs.readFileSync(new URL('../vexboard/self-map.json', import.meta.url), 'utf8'));
@@ -12,6 +16,7 @@ const prototypeDemo = JSON.parse(fs.readFileSync(new URL('../vexboard/prototype-
 const prototypeDefinition = JSON.parse(fs.readFileSync(new URL('../vexboard/prototype-demo.prototype.json', import.meta.url), 'utf8'));
 const systemAnatomy = JSON.parse(fs.readFileSync(new URL('../projects/vexboard/examples/vexbusinessfactory-system-anatomy.board.json', import.meta.url), 'utf8'));
 const intentTopology = JSON.parse(fs.readFileSync(new URL('../projects/vexboard/examples/vexbusinessfactory-intent-topology.board.json', import.meta.url), 'utf8'));
+const patientZeroCatalog = JSON.parse(fs.readFileSync(new URL('../projects/vexboard/examples/board-source-catalog.json', import.meta.url), 'utf8'));
 
 test('VexBoard Pages entry exposes create/open/read-only/fork/save-draft workflow', () => {
   assert.match(page, /Create new/);
@@ -69,7 +74,7 @@ test('Context Inspector remains identity-first and includes bounded neighborhood
   assert.match(page, /Board\.queryBoardNeighborhood/);
 });
 
-test('built-in and patient-zero source boards preserve canonical board identity and read-only routing', () => {
+test('built-in and patient-zero source boards preserve separate catalog ownership and canonical identity', () => {
   for (const source of [selfMap, publishMap, systemAnatomy, intentTopology]) {
     assert.equal(source.schemaVersion, Reader.VEXBOARD_DRAFT_SCHEMA);
     assert.equal(source.mode, 'READ_ONLY_SOURCE');
@@ -78,24 +83,46 @@ test('built-in and patient-zero source boards preserve canonical board identity 
     assert.ok(graph.nodes.length > 0);
     assert.ok(projection.items.length > 0);
   }
+
   const selfGraph = normalizeBoardGraph(selfMap.graph);
   assert.ok(selfGraph.nodes.some((node) => node.nodeRef === 'node.vexboard.create-new'));
   assert.ok(selfGraph.nodes.some((node) => node.nodeRef === 'node.vexboard.request-edit'));
   assert.ok(selfGraph.nodes.some((node) => node.nodeRef === 'node.vexboard.save-draft'));
   assert.ok(selfGraph.nodes.some((node) => node.detailBoardRefOrNull === 'board.vexboard.publish'));
+
   assert.equal(Reader.builtinBoardUrl('board.vexboard.self-map'), './self-map.json');
   assert.equal(Reader.builtinBoardUrl('board.vexboard.publish'), './publish-map.json');
   assert.equal(Reader.builtinBoardUrl('board.vexboard.prototype-demo'), './prototype-demo.json');
-  assert.equal(
-    Reader.builtinBoardUrl('board.vexbusinessfactory.system-anatomy.patient-zero'),
-    '../projects/vexboard/examples/vexbusinessfactory-system-anatomy.board.json',
+  assert.equal(Reader.builtinBoardUrl('board.vexbusinessfactory.system-anatomy.patient-zero'), null);
+  assert.equal(Reader.builtinBoardUrl('board.vexbusinessfactory.intent-topology.patient-zero'), null);
+
+  const catalog = normalizeBoardSourceCatalog(patientZeroCatalog);
+  assert.equal(catalog.catalogRef, 'catalog.vexboard.patient-zero-examples');
+  assert.deepEqual(
+    catalog.entries.map((entry) => entry.boardRef),
+    [
+      'board.vexbusinessfactory.intent-topology.patient-zero',
+      'board.vexbusinessfactory.system-anatomy.patient-zero',
+    ],
   );
-  assert.equal(
-    Reader.builtinBoardUrl('board.vexbusinessfactory.intent-topology.patient-zero'),
-    '../projects/vexboard/examples/vexbusinessfactory-intent-topology.board.json',
-  );
-  assert.equal(systemAnatomy.draftRef, 'board.vexbusinessfactory.system-anatomy.patient-zero');
-  assert.equal(intentTopology.draftRef, 'board.vexbusinessfactory.intent-topology.patient-zero');
+
+  const anatomyResolution = resolveBoardSource(systemAnatomy.draftRef, [catalog]);
+  assert.equal(anatomyResolution.catalogRef, catalog.catalogRef);
+  assert.equal(anatomyResolution.location, './vexbusinessfactory-system-anatomy.board.json');
+  assert.equal(anatomyResolution.boardRef, systemAnatomy.draftRef);
+
+  const intentResolution = resolveBoardSource(intentTopology.draftRef, [catalog]);
+  assert.equal(intentResolution.catalogRef, catalog.catalogRef);
+  assert.equal(intentResolution.location, './vexbusinessfactory-intent-topology.board.json');
+  assert.equal(intentResolution.boardRef, intentTopology.draftRef);
+
+  assert.match(page, /vexboard-source-resolver\.mjs/);
+  assert.match(page, /function loadSourceCatalogs\(\)/);
+  assert.match(page, /SourceResolver\.resolveBoardSource/);
+  assert.match(page, /draft\.draftRef!==boardRef/);
+  assert.match(page, /openCatalogBoard\('board\.vexbusinessfactory\.system-anatomy\.patient-zero'\)/);
+  assert.match(page, /openCatalogBoard\('board\.vexbusinessfactory\.intent-topology\.patient-zero'\)/);
+
   assert.equal(Reader.builtinPrototypeUrl('board.vexboard.prototype-demo'), './prototype-demo.prototype.json');
   assert.equal(Reader.builtinPrototypeUrl('board.vexboard.self-map'), null);
   const publishGraph = normalizeBoardGraph(publishMap.graph);
