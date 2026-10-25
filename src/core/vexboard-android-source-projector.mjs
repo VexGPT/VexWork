@@ -79,6 +79,10 @@ function normalizeSnapshot(input) {
   return structuredClone(input);
 }
 
+export function androidPocDesignLocation(snapshotInput) {
+  return normalizeSnapshot(snapshotInput).designLocation;
+}
+
 const scaled = (dp) => Math.round(dp * DP_TO_BOARD * 10) / 10;
 const rect = (x, y, width, height) => ({ x, y, width, height });
 
