@@ -103,6 +103,7 @@ test('built-in and patient-zero source boards preserve separate catalog ownershi
     [
       'board.vexbusinessfactory.intent-topology.patient-zero',
       'board.vexbusinessfactory.system-anatomy.patient-zero',
+      'board.vexstream.phone-desktop-connection.living-blueprint',
     ],
   );
 
@@ -380,3 +381,13 @@ test('prototype UI preserves the explicit interaction path beside BoardJourney a
     assert.match(returnBoardLine, new RegExp(field));
   }
 });
+test('VexStream living Blueprint is source-discoverable and Inspector consumes BoardEvidence without inventing observed proof', () => {
+  assert.match(page, /Open VexStream living Blueprint/);
+  assert.match(page, /board\.vexstream\.phone-desktop-connection\.living-blueprint/);
+  assert.match(page, /vexboard-evidence\.mjs/);
+  assert.match(page, /Evidence\.normalizeBoardEvidence/);
+  assert.match(page, /Evidence\.evidenceForSemanticRef/);
+  assert.match(page, /Evidence · expected \/ observed/);
+  assert.match(page, /Expected slot only · no artifact admitted yet\./);
+});
+
