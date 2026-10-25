@@ -2,6 +2,7 @@ import { createBoardGraph, createBoardProjection } from './vexboard.mjs';
 import { compileVexLifeAndroidScreenDesign } from './vexboard-android-construction.mjs';
 import {
   normalizeScreenDesign,
+  screenDesignComponentAssignment,
   screenDesignViewportProfile,
   resolveBoundedResponsiveMetric,
   resolveScreenDesignConstraintBox,
@@ -122,8 +123,47 @@ function projectionItem(projectionItemRef, semanticRef, shapeKind, bounds, layer
   };
 }
 
-function presentationHint(projectionItemRef, role, variant = null) {
-  return { projectionItemRef, role, variant };
+function presentationHint(projectionItemRef, role, variant = null, styleRef = null) {
+  return { projectionItemRef, role, variant, styleRef };
+}
+
+function componentPresentationHint(design, projectionItemRef, semanticRef, { selected = false } = {}) {
+  const assignment = screenDesignComponentAssignment(design, semanticRef);
+  const styleRef = selected && assignment.selectedStyleRefOrNull
+    ? assignment.selectedStyleRefOrNull
+    : assignment.styleRef;
+  const iconVariant = assignment.iconRefOrNull
+    ? assignment.iconRefOrNull.split('.').at(-1).toUpperCase()
+    : null;
+  const templateRoles = {
+    'component.surface': 'SURFACE',
+    'component.button': 'BUTTON',
+    'component.icon-button': 'ICON_BUTTON',
+    'component.tab': 'TAB',
+    'component.fab': 'FAB',
+    'component.modal-bottom-sheet': 'MODAL_SHEET',
+  };
+  const role = templateRoles[assignment.templateRef];
+  assert(role, `Android presentation template unsupported: ${assignment.templateRef}`);
+
+  let variant = null;
+  if (assignment.templateRef === 'component.icon-button' || assignment.templateRef === 'component.fab') {
+    variant = iconVariant;
+  } else if (assignment.templateRef === 'component.tab') {
+    variant = selected ? 'SELECTED' : 'DEFAULT';
+  } else if (styleRef === 'style.surface.raised') {
+    variant = 'RAISED';
+  } else if (styleRef === 'style.action.primary') {
+    variant = 'PRIMARY';
+  } else if (styleRef === 'style.action.secondary') {
+    variant = 'SECONDARY';
+  } else if (styleRef === 'style.action.danger') {
+    variant = 'DANGER';
+  } else if (styleRef === 'style.navigation') {
+    variant = 'NAVIGATION';
+  }
+
+  return presentationHint(projectionItemRef, role, variant, styleRef);
 }
 
 function stripFingerprint(value) {
@@ -427,7 +467,7 @@ function experienceBoard(snapshot, design, viewportProfile) {
   const innerWidth = homeMetrics.content.width;
   let y = home.y + homeMetrics.content.y;
   items.push(projectionItem('item.home.vexstream-section', snapshot.home.vexStreamSection.ref, 'RECTANGLE', rect(innerX, y, innerWidth, 230), layer++, 'item.home.screen'));
-  hints.push(presentationHint('item.home.vexstream-section', 'SURFACE', 'RAISED'));
+  hints.push(componentPresentationHint(design, 'item.home.vexstream-section', snapshot.home.vexStreamSection.ref));
   items.push(projectionItem('item.home.vexstream-status', homeStatusRef, 'TEXT', rect(innerX + homeMetrics.innerHorizontal, y + 36, innerWidth - homeMetrics.innerHorizontal * 2, 58), layer++, 'item.home.vexstream-section'));
   hints.push(presentationHint('item.home.vexstream-status', 'TEXT', 'TITLE'));
   items.push(projectionItem('item.home.vexstream-body', homeBodyRef, 'TEXT', rect(innerX + homeMetrics.innerHorizontal, y + 103, innerWidth - homeMetrics.innerHorizontal * 2, 70), layer++, 'item.home.vexstream-section'));
@@ -439,11 +479,11 @@ function experienceBoard(snapshot, design, viewportProfile) {
     innerWidth - homeMetrics.innerHorizontal * 2,
     homeMetrics.buttonMinHeight,
   ), layer++, 'item.home.vexstream-section'));
-  hints.push(presentationHint('item.home.vexstream-open', 'BUTTON', 'PRIMARY'));
+  hints.push(componentPresentationHint(design, 'item.home.vexstream-open', openAction.ref));
 
   y += 230 + homeMetrics.homeSectionGap;
   items.push(projectionItem('item.home.systems-section', snapshot.home.systemsSection.ref, 'RECTANGLE', rect(innerX, y, innerWidth, 250), layer++, 'item.home.screen'));
-  hints.push(presentationHint('item.home.systems-section', 'SURFACE', 'RAISED'));
+  hints.push(componentPresentationHint(design, 'item.home.systems-section', snapshot.home.systemsSection.ref));
   let systemY = y + homeMetrics.innerVertical;
   snapshot.home.systemsSection.actions.forEach((action, index) => {
     const itemRef = `item.home.system-action.${index}`;
@@ -453,7 +493,7 @@ function experienceBoard(snapshot, design, viewportProfile) {
       innerWidth * 0.72,
       homeMetrics.buttonMinHeight,
     ), layer++, 'item.home.systems-section'));
-    hints.push(presentationHint(itemRef, 'BUTTON', 'SECONDARY'));
+    hints.push(componentPresentationHint(design, itemRef, action.ref));
     systemY += homeMetrics.buttonMinHeight + homeMetrics.gapVertical;
   });
 
@@ -474,7 +514,7 @@ function experienceBoard(snapshot, design, viewportProfile) {
     [...snapshot.vexStream.toolbarActions].reverse().forEach((action, index) => {
       const itemRef = `${frameItemRef}.toolbar-action.${index}`;
       items.push(projectionItem(itemRef, action.ref, 'RECTANGLE', rect(iconX, frame.y + vexMetrics.toolbarPaddingVertical, iconSize, iconSize), layer++, frameItemRef));
-      hints.push(presentationHint(itemRef, 'ICON_BUTTON', String(action.icon).toUpperCase()));
+      hints.push(componentPresentationHint(design, itemRef, action.ref));
       actionItemBySemanticRef.set(action.ref, itemRef);
       iconX -= iconSize + vexMetrics.toolbarGapHorizontal;
     });
@@ -505,7 +545,7 @@ function experienceBoard(snapshot, design, viewportProfile) {
         layer++,
         tabsViewportRef,
       ));
-      hints.push(presentationHint(itemRef, 'TAB', index === 0 ? 'SELECTED' : 'DEFAULT'));
+      hints.push(componentPresentationHint(design, itemRef, tab.ref, { selected: index === 0 }));
       tabX += scaled(intrinsic.widthDp) + tabGap;
     });
     return Object.freeze({
@@ -556,13 +596,13 @@ function experienceBoard(snapshot, design, viewportProfile) {
   snapshot.vexStream.libraryActions.forEach((action, index) => {
     const itemRef = `${loadedItem}.fab.${index}`;
     items.push(projectionItem(itemRef, action.ref, 'ELLIPSE', rect(loadedFrame.x + loadedFrame.width - 54, loadedFrame.y + loadedFrame.height - 150 + (index * 58), 42, 42), layer++, loadedItem));
-    hints.push(presentationHint(itemRef, 'FAB', action.icon));
+    hints.push(componentPresentationHint(design, itemRef, action.ref));
   });
 
   // Show the modal as an overlay occurrence of the same Screen, not a navigation destination.
   const sheetBounds = rect(loadedFrame.x + 8, loadedFrame.y + 318, loadedFrame.width - 16, loadedFrame.height - 326);
   items.push(projectionItem('item.vexstream.connection-sheet', sheet.ref, 'RECTANGLE', sheetBounds, layer + 50, loadedItem));
-  hints.push(presentationHint('item.vexstream.connection-sheet', 'MODAL_SHEET'));
+  hints.push(componentPresentationHint(design, 'item.vexstream.connection-sheet', sheet.ref));
   let sheetY = sheetBounds.y + 46;
   sheet.actions.forEach((action, index) => {
     const itemRef = `item.vexstream.connection-sheet.action.${index}`;
@@ -572,7 +612,7 @@ function experienceBoard(snapshot, design, viewportProfile) {
       sheetBounds.width - (vexMetrics.connectionSheetPaddingHorizontal * 2),
       vexMetrics.buttonMinHeight,
     ), layer + 60 + index, 'item.vexstream.connection-sheet'));
-    hints.push(presentationHint(itemRef, 'BUTTON', action.variant));
+    hints.push(componentPresentationHint(design, itemRef, action.ref));
     sheetY += vexMetrics.buttonMinHeight + vexMetrics.gapVertical;
   });
   layer += 80;
