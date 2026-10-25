@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import test from 'node:test';
 
 import {
+  BOARD_LOCAL_BOUNDARY_POLICIES,
   BOARD_LOCAL_LAYOUT_MODES,
   BOARD_PROJECTION_COMPOSITION_SCHEMA,
   BOARD_PROJECTION_COMPOSITION_RESULT_SCHEMA,
@@ -12,6 +13,7 @@ import { createBoardGraph, createBoardProjection } from '../src/core/vexboard.mj
 import { BOARD_GRAPH_SCHEMA, BOARD_PROJECTION_SCHEMA } from '../src/shared/vexboard-model.mjs';
 
 const read = (relative) => JSON.parse(fs.readFileSync(new URL(`../${relative}`, import.meta.url), 'utf8'));
+const BOUNDARY_POLICY_LAYOUT_ERROR_MESSAGE = 'boundary policy WRAP requires ROW layout';
 
 function uiGraphInput() {
   const node = (nodeRef, kind, label, parentRefOrNull = null) => ({
@@ -311,10 +313,259 @@ test('projection composition fails closed on stale inputs, incomplete structural
   );
 });
 
-test('local layout mode vocabulary remains intentionally bounded', () => {
+test('local layout and boundary vocabularies remain intentionally bounded', () => {
   assert.deepEqual(BOARD_LOCAL_LAYOUT_MODES, ['FREE', 'ROW', 'COLUMN', 'STACK']);
+  assert.deepEqual(BOARD_LOCAL_BOUNDARY_POLICIES, ['FAIL', 'WRAP', 'SERPENTINE']);
 });
 
+
+
+test('width-bounded ROW wrapping continues downward locally without changing BoardGraph truth', () => {
+  const children = Array.from({ length: 5 }, (_, index) => ({
+    nodeRef: `node.width.child-${index + 1}`,
+    kind: 'PROCESS',
+    label: `Step ${index + 1}`,
+    parentRefOrNull: 'node.width.container',
+    detailBoardRefOrNull: null,
+    sourceRefs: [],
+  }));
+  const graph = createBoardGraph({
+    schemaVersion: BOARD_GRAPH_SCHEMA,
+    graphRef: 'graph.vexboard.composition.width-bound',
+    nodes: [{
+      nodeRef: 'node.width.container',
+      kind: 'CONTAINER',
+      label: 'Width-bounded flow',
+      parentRefOrNull: null,
+      detailBoardRefOrNull: null,
+      sourceRefs: [],
+    }, ...children],
+    relationships: [],
+    sourceRefs: [],
+  });
+  const projection = createBoardProjection({
+    schemaVersion: BOARD_PROJECTION_SCHEMA,
+    projectionRef: 'projection.vexboard.composition.width-bound',
+    graphRef: graph.graphRef,
+    layoutIntent: 'SCREEN_FLOW',
+    items: [{
+      projectionItemRef: 'item.width.container',
+      semanticRef: 'node.width.container',
+      shapeKind: 'FRAME',
+      bounds: { x: 0, y: 0, width: 300, height: 220 },
+      layer: 0,
+      parentProjectionItemRefOrNull: null,
+      visible: true,
+      locked: false,
+    }, ...children.map((child, index) => ({
+      projectionItemRef: `item.width.child-${index + 1}`,
+      semanticRef: child.nodeRef,
+      shapeKind: 'RECTANGLE',
+      bounds: { x: 200, y: 160, width: 90, height: 40 },
+      layer: index + 1,
+      parentProjectionItemRefOrNull: 'item.width.container',
+      visible: true,
+      locked: false,
+    }))],
+    sourceRefs: [],
+  }, graph);
+  const ordered = children.map((_, index) => `item.width.child-${index + 1}`);
+  const composition = compositionFor(graph, projection, {
+    compositionRef: 'composition.vexboard.width-bound.wrap.001',
+    padding: 20,
+    gap: 10,
+    containers: [{
+      containerProjectionItemRef: 'item.width.container',
+      layout: 'ROW',
+      boundaryPolicy: 'WRAP',
+      orderedChildProjectionItemRefs: ordered,
+    }],
+  });
+
+  const result = resolveBoardProjectionComposition({ graph, projection, composition });
+  assert.equal(result.graph.semanticFingerprint, graph.semanticFingerprint);
+  assert.equal(result.effects.graphChanged, false);
+  assert.deepEqual(
+    ordered.map((ref) => {
+      const bounds = byItem(result.projection, ref).bounds;
+      return [bounds.x, bounds.y];
+    }),
+    [[20, 20], [120, 20], [20, 70], [120, 70], [20, 120]],
+  );
+});
+
+test('width-bound wrapping preserves exact fit and uses the tallest prior-row child for heterogeneous spacing', () => {
+  const childSpecs = [
+    { ref: 'a', width: 90, height: 30 },
+    { ref: 'b', width: 90, height: 60 },
+    { ref: 'c', width: 90, height: 40 },
+    { ref: 'd', width: 70, height: 35 },
+  ];
+  const graph = createBoardGraph({
+    schemaVersion: BOARD_GRAPH_SCHEMA,
+    graphRef: 'graph.vexboard.composition.width-bound.heterogeneous',
+    nodes: [{
+      nodeRef: 'node.width.heterogeneous',
+      kind: 'CONTAINER',
+      label: 'Heterogeneous width-bound flow',
+      parentRefOrNull: null,
+      detailBoardRefOrNull: null,
+      sourceRefs: [],
+    }, ...childSpecs.map(({ ref }) => ({
+      nodeRef: `node.width.heterogeneous.${ref}`,
+      kind: 'PROCESS',
+      label: `Step ${ref.toUpperCase()}`,
+      parentRefOrNull: 'node.width.heterogeneous',
+      detailBoardRefOrNull: null,
+      sourceRefs: [],
+    }))],
+    relationships: [],
+    sourceRefs: [],
+  });
+  const projection = createBoardProjection({
+    schemaVersion: BOARD_PROJECTION_SCHEMA,
+    projectionRef: 'projection.vexboard.composition.width-bound.heterogeneous',
+    graphRef: graph.graphRef,
+    layoutIntent: 'SCREEN_FLOW',
+    items: [{
+      projectionItemRef: 'item.width.heterogeneous',
+      semanticRef: 'node.width.heterogeneous',
+      shapeKind: 'FRAME',
+      bounds: { x: 0, y: 0, width: 330, height: 250 },
+      layer: 0,
+      parentProjectionItemRefOrNull: null,
+      visible: true,
+      locked: false,
+    }, ...childSpecs.map(({ ref, width, height }, index) => ({
+      projectionItemRef: `item.width.heterogeneous.${ref}`,
+      semanticRef: `node.width.heterogeneous.${ref}`,
+      shapeKind: 'RECTANGLE',
+      bounds: { x: 200, y: 160, width, height },
+      layer: index + 1,
+      parentProjectionItemRefOrNull: 'item.width.heterogeneous',
+      visible: true,
+      locked: false,
+    }))],
+    sourceRefs: [],
+  }, graph);
+  const ordered = childSpecs.map(({ ref }) => `item.width.heterogeneous.${ref}`);
+  const composition = compositionFor(graph, projection, {
+    compositionRef: 'composition.vexboard.width-bound.heterogeneous.001',
+    padding: 20,
+    gap: 10,
+    containers: [{
+      containerProjectionItemRef: 'item.width.heterogeneous',
+      layout: 'ROW',
+      boundaryPolicy: 'WRAP',
+      orderedChildProjectionItemRefs: ordered,
+    }],
+  });
+
+  const result = resolveBoardProjectionComposition({ graph, projection, composition });
+  assert.equal(result.graph.semanticFingerprint, graph.semanticFingerprint);
+  assert.equal(result.effects.graphChanged, false);
+  assert.deepEqual(
+    ordered.map((ref) => {
+      const bounds = byItem(result.projection, ref).bounds;
+      return [bounds.x, bounds.y];
+    }),
+    [[20, 20], [120, 20], [220, 20], [20, 90]],
+  );
+});
+
+test('SERPENTINE width continuation alternates local row direction without changing structural order', () => {
+  const children = Array.from({ length: 5 }, (_, index) => ({
+    nodeRef: `node.serp.child-${index + 1}`,
+    kind: 'PROCESS',
+    label: `Step ${index + 1}`,
+    parentRefOrNull: 'node.serp.container',
+    detailBoardRefOrNull: null,
+    sourceRefs: [],
+  }));
+  const graph = createBoardGraph({
+    schemaVersion: BOARD_GRAPH_SCHEMA,
+    graphRef: 'graph.vexboard.composition.serpentine',
+    nodes: [{
+      nodeRef: 'node.serp.container',
+      kind: 'CONTAINER',
+      label: 'Serpentine flow',
+      parentRefOrNull: null,
+      detailBoardRefOrNull: null,
+      sourceRefs: [],
+    }, ...children],
+    relationships: [],
+    sourceRefs: [],
+  });
+  const projection = createBoardProjection({
+    schemaVersion: BOARD_PROJECTION_SCHEMA,
+    projectionRef: 'projection.vexboard.composition.serpentine',
+    graphRef: graph.graphRef,
+    layoutIntent: 'SCREEN_FLOW',
+    items: [{
+      projectionItemRef: 'item.serp.container',
+      semanticRef: 'node.serp.container',
+      shapeKind: 'FRAME',
+      bounds: { x: 0, y: 0, width: 300, height: 220 },
+      layer: 0,
+      parentProjectionItemRefOrNull: null,
+      visible: true,
+      locked: false,
+    }, ...children.map((child, index) => ({
+      projectionItemRef: `item.serp.child-${index + 1}`,
+      semanticRef: child.nodeRef,
+      shapeKind: 'RECTANGLE',
+      bounds: { x: 200, y: 160, width: 90, height: 40 },
+      layer: index + 1,
+      parentProjectionItemRefOrNull: 'item.serp.container',
+      visible: true,
+      locked: false,
+    }))],
+    sourceRefs: [],
+  }, graph);
+  const ordered = children.map((_, index) => `item.serp.child-${index + 1}`);
+  const composition = compositionFor(graph, projection, {
+    compositionRef: 'composition.vexboard.width-bound.serpentine.001',
+    padding: 20,
+    gap: 10,
+    containers: [{
+      containerProjectionItemRef: 'item.serp.container',
+      layout: 'ROW',
+      boundaryPolicy: 'SERPENTINE',
+      orderedChildProjectionItemRefs: ordered,
+    }],
+  });
+
+  const result = resolveBoardProjectionComposition({ graph, projection, composition });
+  assert.deepEqual(
+    ordered.map((ref) => {
+      const bounds = byItem(result.projection, ref).bounds;
+      return [bounds.x, bounds.y];
+    }),
+    [[20, 20], [120, 20], [190, 70], [90, 70], [20, 120]],
+  );
+  assert.deepEqual(
+    graph.nodes.filter((node) => node.parentRefOrNull === 'node.serp.container').map((node) => node.nodeRef),
+    children.map((child) => child.nodeRef),
+  );
+});
+
+test('boundary continuation is opt-in and rejects unsupported layout combinations', () => {
+  const graph = createBoardGraph(processGraphInput());
+  const projection = createBoardProjection(processProjectionInput(), graph);
+  const invalid = compositionFor(graph, projection, {
+    compositionRef: 'composition.vexboard.boundary-policy.invalid.001',
+    containers: [{
+      containerProjectionItemRef: 'item.fulfillment',
+      layout: 'STACK',
+      boundaryPolicy: 'WRAP',
+      orderedChildProjectionItemRefs: ['item.validate', 'item.payment.fulfillment', 'item.delivery'],
+    }],
+  });
+  assert.throws(
+    () => resolveBoardProjectionComposition({ graph, projection, composition: invalid }),
+    (error) => error instanceof TypeError && error.message === BOUNDARY_POLICY_LAYOUT_ERROR_MESSAGE,
+  );
+});
 
 test('VexBusinessFactory system-anatomy patient zero composes source, storage, convergence and UI without collapsing identity into form', () => {
   const draft = read('projects/vexboard/examples/vexbusinessfactory-system-anatomy.board.json');
