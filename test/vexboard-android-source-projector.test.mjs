@@ -61,6 +61,23 @@ test('VexLife Android POC snapshot projects deterministically without source eff
     );
   }
 
+  const homeOpenHint = first.board.presentation.items.find(
+    (entry) => entry.projectionItemRef === 'item.home.vexstream-open',
+  );
+  assert.equal(homeOpenHint.styleRef, 'style.action.primary');
+  assert.equal(homeOpenHint.role, 'BUTTON');
+
+  const selectedTabHint = first.board.presentation.items.find(
+    (entry) => entry.projectionItemRef === 'item.vexstream.state.loaded.tab.0',
+  );
+  const defaultTabHint = first.board.presentation.items.find(
+    (entry) => entry.projectionItemRef === 'item.vexstream.state.loaded.tab.1',
+  );
+  assert.equal(selectedTabHint.styleRef, 'style.action.primary');
+  assert.equal(selectedTabHint.variant, 'SELECTED');
+  assert.equal(defaultTabHint.styleRef, 'style.navigation');
+  assert.equal(defaultTabHint.variant, 'DEFAULT');
+
   const manageOccurrences = projection.items.filter(
     (item) => item.semanticRef === 'element.vexstream-music.body.connection.manage',
   );
