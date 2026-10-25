@@ -20,7 +20,9 @@
     "projects/vexlife-welcome-wagon/README.md",
     "project.vexlife-android.current-state-refinement",
     "projects/vexlife-android-current-state-refinement/README.md",
-    "project.android-widget-foundation"
+    "project.android-widget-foundation",
+    "project.vexlife.interface-refinement",
+    "projects/vexlife-interface-refinement/README.md"
   ],
   "compatibilityOrder": {
     "itemWorkRefs": [
@@ -138,7 +140,13 @@
       "work.android-proof-orchestration.device-lease-queue",
       "work.android-widget-foundation.outcome",
       "work.android-widget-foundation.semantic-widget-surface",
-      "work.android-widget-foundation.vexstream-playback-widget"
+      "work.android-widget-foundation.vexstream-playback-widget",
+      "work.vexlife.interface-refinement.outcome",
+      "work.vexlife.interface-refinement.v0.lived-baseline",
+      "work.vexlife.interface-refinement.v1.conversation-ergonomics",
+      "work.vexlife.interface-refinement.dependency.conversation-core-pr904",
+      "work.vexlife.interface-refinement.v2.streaming",
+      "work.vexlife.interface-refinement.later.home-ui"
     ],
     "transitionRefs": [
       "transition.vexwork.foundation.portable-workgraph.completed.pr1",
@@ -278,7 +286,8 @@
       "work.vexboard.outcome",
       "work.vexlife.blueprint-source-of-truth.outcome",
       "work.android-proof-orchestration.outcome",
-      "work.android-widget-foundation.outcome"
+      "work.android-widget-foundation.outcome",
+      "work.vexlife.interface-refinement.outcome"
     ],
     "sourceRefs": [
       "project.vexwork.foundation",
@@ -293,7 +302,9 @@
       "project.vexlife.blueprint-source-of-truth",
       "projects/vexlife-blueprint-source-of-truth/README.md",
       "project.android-proof-orchestration",
-      "project.android-widget-foundation"
+      "project.android-widget-foundation",
+      "project.vexlife.interface-refinement",
+      "projects/vexlife-interface-refinement/README.md"
     ]
   },
   "formedAt": "2026-10-21T01:45:00.000Z"
