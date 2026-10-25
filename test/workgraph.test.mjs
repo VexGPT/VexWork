@@ -34,7 +34,7 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   const operationalConsoleProject = createProject(operationalConsoleProjectSource);
   assert.equal(projectWorkRefs(operationalConsoleProject, graph).length, 24);
   const vexboardProject = createProject(vexboardProjectSource);
-  assert.equal(projectWorkRefs(vexboardProject, graph).length, 8);
+  assert.equal(projectWorkRefs(vexboardProject, graph).length, 9);
   const blueprintProject = createProject(blueprintProjectSource);
   assert.equal(projectWorkRefs(blueprintProject, graph).length, 14);
   const androidProofProject = createProject(androidProofProjectSource);
@@ -118,6 +118,8 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   const vexboardJourney = graph.items.find((item) => item.workRef === 'work.vexboard.boardjourney-simulation');
   const vexboardBoardPatch = graph.items.find((item) => item.workRef === 'work.vexboard.boardpatch-authoring');
   const vexboardProjectors = graph.items.find((item) => item.workRef === 'work.vexboard.source-projectors');
+  const vexboardRefinement = graph.items.find((item) => item.workRef === 'work.vexboard.usability-refinement');
+  const vexboardComposition = graph.items.find((item) => item.workRef === 'work.vexboard.fractal-semantic-composition-spatial-layout');
   assert.equal(vexboardRoot.state, 'DECOMPOSED');
   assert.equal(vexboardArchitecture.state, 'COMPLETED');
   assert.equal(vexboardContract.state, 'COMPLETED');
@@ -148,6 +150,13 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(vexboardProjectors.sourceRefs.includes('github.pull.vexwork.115'), true);
   assert.equal(vexboardProjectors.sourceRefs.includes('src/shared/vexboard-source-resolver.mjs'), true);
   assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexboard.source-projectors.running.pr108'));
+  assert.equal(vexboardRefinement.state, 'COMPLETED');
+  assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexboard.usability-refinement.completed.lived-acceptance-pr135'));
+  assert.equal(vexboardComposition.state, 'RUNNING');
+  assert.equal(vexboardComposition.authorityDisposition, 'AUTHORIZED_BOUNDED');
+  assert.equal(vexboardComposition.effectDisposition, 'EFFECTS_BOUND');
+  assert.equal(vexboardComposition.sourceRefs.includes('projects/vexboard/FRACTAL-SEMANTIC-COMPOSITION-AND-SPATIAL-LAYOUT.md'), true);
+  assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexboard.fractal-semantic-composition-spatial-layout.running.successor-authorization'));
   assert.equal(vexboardContract.sourceRefs.includes('src/shared/vexboard-model.mjs'), true);
   assert.equal(vexboardContract.sourceRefs.includes('vexboard/index.html'), true);
   assert.equal(vexboardContract.sourceRefs.includes('vexboard/self-map.json'), true);

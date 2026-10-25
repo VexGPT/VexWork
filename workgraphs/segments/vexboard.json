@@ -225,7 +225,7 @@
       "label": "Canvas interaction and visual affordance refinement",
       "purpose": "Make VexBoard predictable in lived use by refining primary-drag navigation, shape-safe labels, explicit frame/container and canvas-boundary cues, trustworthy browser-local draft-save feedback, and accessible deterministic path/branch presentation without changing BoardGraph meaning or adding server persistence.",
       "workClass": "TASK",
-      "state": "VERIFYING",
+      "state": "COMPLETED",
       "workDisposition": "ACTIVE",
       "priorityClass": "NORMAL",
       "dependencyRefs": [
@@ -247,7 +247,12 @@
         "test/vexboard-presentation.test.mjs",
         "github.pull.vexwork.123",
         "git.commit.vexwork.1da54247e5114777d0107b7174bf9fc3fbb19a2e",
-        "relay.return.vexboard.pr123.source-owner.a003.42f0d4132107017cf90b8de0f8b18443747a61329722a9897a601bec10c05f58"
+        "relay.return.vexboard.pr123.source-owner.a003.42f0d4132107017cf90b8de0f8b18443747a61329722a9897a601bec10c05f58",
+        "github.pull.vexwork.131",
+        "git.commit.vexwork.8b95e74cab6eff8d4ddf4fe069c79c441aa1c6d7",
+        "github.pull.vexwork.135",
+        "git.commit.vexwork.dacc623f2217200a98c110bdb981eed7d731019d",
+        "relay.return.vexboard.pr135.source-owner.a004.376eb528fed45229520fe590c7e1f1fb74e371c83158bf7fc3492d4e8abb1773"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [
@@ -256,7 +261,46 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-24T08:19:00.000Z",
-      "updatedAt": "2026-10-24T09:15:36.000Z"
+      "updatedAt": "2026-10-24T12:07:16.171Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexboard.fractal-semantic-composition-spatial-layout",
+      "parentWorkRefOrNull": "work.vexboard.outcome",
+      "label": "Fractal semantic composition and spatial layout",
+      "purpose": "Use one nested UI blueprint and one reusable process blueprint to earn the smallest reusable VexBoard composition and spatial-layout substrate: stable nested identity, authored layout intent distinct from resolved geometry, reusable module/portal relationships, bounded where-used traversal, stable incremental arrangement, and connector routing without making visual form, target-platform APIs, or VexBoard itself the semantic owner.",
+      "workClass": "OUTCOME",
+      "state": "RUNNING",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexboard.boardgraph-contract",
+        "work.vexboard.canvas-projection",
+        "work.vexboard.boardjourney-simulation",
+        "work.vexboard.usability-refinement"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/vexboard/FRACTAL-SEMANTIC-COMPOSITION-AND-SPATIAL-LAYOUT.md",
+        "projects/vexboard/README.md",
+        "github.pull.vexwork.135",
+        "git.commit.vexwork.dacc623f2217200a98c110bdb981eed7d731019d",
+        "work.vexboard.source-projectors",
+        "work.vexboard.boardpatch-authoring",
+        "project.vex-universe",
+        "work.vex-universe.journey-evidence-patient-zero",
+        "project.vexlife.blueprint-source-of-truth"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [
+        "process.vexwork.quality-review"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-24T12:07:17.171Z",
+      "updatedAt": "2026-10-24T12:07:17.171Z"
     }
   ],
   "transitions": [
@@ -494,6 +538,41 @@
         "relay.return.vexboard.pr123.source-owner.a003.42f0d4132107017cf90b8de0f8b18443747a61329722a9897a601bec10c05f58"
       ],
       "createdAt": "2026-10-24T09:15:36.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.usability-refinement.completed.lived-acceptance-pr135",
+      "workRef": "work.vexboard.usability-refinement",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "Victor completed the lived Pages/browser pass after PR #135 and explicitly accepted the canvas interaction, visual affordance, Journey Back/Clear behavior and inspector-to-canvas reveal as solid enough to solidify; the usability-refinement threshold is therefore complete rather than remaining open for indefinite polish.",
+      "actorRef": "actor.chatgpt.vexboard.usability-refinement",
+      "sourceRefs": [
+        "github.pull.vexwork.131",
+        "git.commit.vexwork.8b95e74cab6eff8d4ddf4fe069c79c441aa1c6d7",
+        "github.pull.vexwork.135",
+        "git.commit.vexwork.dacc623f2217200a98c110bdb981eed7d731019d",
+        "projects/vexboard/FRACTAL-SEMANTIC-COMPOSITION-AND-SPATIAL-LAYOUT.md"
+      ],
+      "createdAt": "2026-10-24T12:07:16.171Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.fractal-semantic-composition-spatial-layout.running.successor-authorization",
+      "workRef": "work.vexboard.fractal-semantic-composition-spatial-layout",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "After accepting the lived VexBoard usability substrate, Victor explicitly approved continuing the foundation through a successor lane. The bounded foreground is to let real nested-UI and reusable-process consumers pressure the smallest shared identity/composition/layout/resolution seams that advance VexBoard toward its role in the Vex Universe completion pathway.",
+      "actorRef": "actor.chatgpt.vexboard.fractal-composition-spatial-layout",
+      "sourceRefs": [
+        "projects/vexboard/FRACTAL-SEMANTIC-COMPOSITION-AND-SPATIAL-LAYOUT.md",
+        "projects/vexboard/README.md",
+        "github.pull.vexwork.135",
+        "git.commit.vexwork.dacc623f2217200a98c110bdb981eed7d731019d",
+        "project.vex-universe",
+        "work.vex-universe.journey-evidence-patient-zero"
+      ],
+      "createdAt": "2026-10-24T12:07:17.171Z"
     }
   ],
   "sourceRefs": [

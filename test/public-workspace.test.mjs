@@ -145,13 +145,13 @@ test('Connected Services is discoverable as a real Project with the current live
   assert.equal(workspace.parkingLot.items.some((item) => item.workRef === 'work.vexlife.connected-services.guided-onboarding'), true);
 });
 
-test('VexBoard projects completed navigation foundations with Source Projectors active and BoardPatch still ready', () => {
+test('VexBoard projects completed navigation/usability foundations with Source Projectors and fractal composition active', () => {
   const workspace = buildWorkspace();
   const vexboard = workspace.projects.find((entry) => entry.project.projectRef === 'project.vexboard');
   assert.ok(vexboard);
-  assert.equal(vexboard.summary.workItemCount, 8);
+  assert.equal(vexboard.summary.workItemCount, 9);
   assert.equal(vexboard.summary.openWorkItemCount, 4);
-  assert.equal(vexboard.summary.completedCount, 4);
+  assert.equal(vexboard.summary.completedCount, 5);
   assert.equal(vexboard.items.find((item) => item.workRef === 'work.vexboard.project-architecture').state, 'COMPLETED');
   const boardgraph = vexboard.items.find((item) => item.workRef === 'work.vexboard.boardgraph-contract');
   const canvas = vexboard.items.find((item) => item.workRef === 'work.vexboard.canvas-projection');
@@ -159,28 +159,38 @@ test('VexBoard projects completed navigation foundations with Source Projectors 
   const boardpatch = vexboard.items.find((item) => item.workRef === 'work.vexboard.boardpatch-authoring');
   const refinement = vexboard.items.find((item) => item.workRef === 'work.vexboard.usability-refinement');
   const projectors = vexboard.items.find((item) => item.workRef === 'work.vexboard.source-projectors');
+  const composition = vexboard.items.find((item) => item.workRef === 'work.vexboard.fractal-semantic-composition-spatial-layout');
   assert.deepEqual([boardgraph.state, canvas.state, journey.state], ['COMPLETED', 'COMPLETED', 'COMPLETED']);
   assert.equal(canvas.authorityDisposition, 'AUTHORIZED_BOUNDED');
   assert.equal(canvas.effectDisposition, 'EFFECTS_BOUND');
   assert.equal(journey.authorityDisposition, 'AUTHORIZED_BOUNDED');
   assert.equal(journey.effectDisposition, 'EFFECTS_BOUND');
-  assert.deepEqual([boardpatch.state, refinement.state, projectors.state], ['READY', 'VERIFYING', 'RUNNING']);
+  assert.deepEqual([boardpatch.state, refinement.state, projectors.state, composition.state], ['READY', 'COMPLETED', 'RUNNING', 'RUNNING']);
   assert.equal(refinement.authorityDisposition, 'AUTHORIZED_BOUNDED');
   assert.equal(refinement.effectDisposition, 'EFFECTS_BOUND');
   assert.equal(refinement.sourceRefs.includes('projects/vexboard/CANVAS-INTERACTION-AND-VISUAL-AFFORDANCE-REFINEMENT.md'), true);
-  assert.deepEqual([boardpatch.authorityDisposition, projectors.authorityDisposition], ['NO_AUTHORITY', 'AUTHORIZED_BOUNDED']);
-  assert.deepEqual([boardpatch.effectDisposition, projectors.effectDisposition], ['NO_EFFECTS', 'EFFECTS_BOUND']);
+  assert.deepEqual(
+    [boardpatch.authorityDisposition, projectors.authorityDisposition, composition.authorityDisposition],
+    ['NO_AUTHORITY', 'AUTHORIZED_BOUNDED', 'AUTHORIZED_BOUNDED'],
+  );
+  assert.deepEqual(
+    [boardpatch.effectDisposition, projectors.effectDisposition, composition.effectDisposition],
+    ['NO_EFFECTS', 'EFFECTS_BOUND', 'EFFECTS_BOUND'],
+  );
   assert.equal(projectors.sourceRefs.includes('github.pull.vexwork.108'), true);
   assert.equal(projectors.sourceRefs.includes('src/core/vexboard-source-projectors.mjs'), true);
   assert.equal(projectors.sourceRefs.includes('github.pull.vexwork.110'), true);
   assert.equal(projectors.sourceRefs.includes('src/shared/vexboard-evidence.mjs'), true);
   assert.equal(projectors.sourceRefs.includes('github.pull.vexwork.115'), true);
   assert.equal(projectors.sourceRefs.includes('src/shared/vexboard-source-resolver.mjs'), true);
+  assert.equal(composition.sourceRefs.includes('projects/vexboard/FRACTAL-SEMANTIC-COMPOSITION-AND-SPATIAL-LAYOUT.md'), true);
   assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.done').workRefs.includes(canvas.workRef), true);
   assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.done').workRefs.includes(journey.workRef), true);
+  assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.done').workRefs.includes(refinement.workRef), true);
   assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.ready').workRefs.includes(boardpatch.workRef), true);
-  assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.verify').workRefs.includes(refinement.workRef), true);
+  assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.verify').workRefs.includes(refinement.workRef), false);
   assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.active').workRefs.includes(projectors.workRef), true);
+  assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.active').workRefs.includes(composition.workRef), true);
   assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.ready').workRefs.includes(projectors.workRef), false);
   assert.equal(vexboard.project.sourceRefs.includes('projects/vexboard/README.md'), true);
 });

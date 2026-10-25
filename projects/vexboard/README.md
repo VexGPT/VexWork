@@ -806,6 +806,59 @@ BOARD_JOURNEY != CAMERA_HISTORY
 ATLAS_PROJECTION != COPIED_ATLAS_TRUTH
 ```
 
+### Accepted lived substrate + successor frontier — October 24, 2026
+
+The lived usability threshold is accepted through PRs #131 and #135.
+
+```text
+work.vexboard.usability-refinement
+  COMPLETED
+
+PR #131
+  interaction-plane / click-vs-drag arbitration
+  merge = 8b95e74cab6eff8d4ddf4fe069c79c441aa1c6d7
+
+PR #135
+  visible DIAMOND boundary
+  Journey Back = pop
+  Clear Journey
+  inspector ref -> transient canvas reveal
+  merge = dacc623f2217200a98c110bdb981eed7d731019d
+  SourceOwner A004 = 66 / 66 focused + 371 / 371 full review PASS
+  lived browser acceptance = accepted enough to solidify
+```
+
+The successor foreground is now:
+
+```text
+work.vexboard.fractal-semantic-composition-spatial-layout
+  RUNNING / AUTHORIZED_BOUNDED / EFFECTS_BOUND
+```
+
+Its job is to let two real consumers — one nested UI blueprint and one reusable process blueprint —
+pressure the smallest shared stable-identity, composition, layout-resolution, local-arrangement and
+connector-routing seams.
+
+This is deliberately **not** BoardPatch authorization and not a new universal schema.
+
+```text
+nested UI consumer
++ reusable process consumer
+-> repeated composition/layout pressure
+-> smallest shared VexBoard seam
+-> deterministic nested resolution
+-> stable incremental arrangement
+-> connector routing
+-> reusable/fractal modules
+-> Vex Universe / other consumers may consume the accepted substrate
+```
+
+Current Vex Universe source remains separately owned. Its READY
+`work.vex-universe.journey-evidence-patient-zero` is one future integration consumer, not VexBoard's
+new lifecycle owner.
+
+See `projects/vexboard/FRACTAL-SEMANTIC-COMPOSITION-AND-SPATIAL-LAYOUT.md` for the bounded successor contract.
+
 ## Fractal semantic identity — one thing, many forms
 
 The deeper convergence is not UI reuse or process reuse as separate product ideas. It is the ability
