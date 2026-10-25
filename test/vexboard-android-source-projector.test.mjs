@@ -140,7 +140,7 @@ test('VexLife Android POC snapshot projects deterministically without source eff
   );
   assert.equal(
     openRoute.fromProjectionItemRef,
-    'item.vexstream.state.loaded.toolbar-action.manage',
+    'item.vexstream.state.loaded.toolbar-action.connection.manage',
     'local modal edge must originate from the stable Loaded Manage Connection occurrence',
   );
   assert.equal(openRoute.toProjectionItemRef, 'item.vexstream.connection-sheet');
