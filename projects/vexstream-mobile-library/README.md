@@ -673,6 +673,25 @@ consumers.
 
 ### Pairing continuity through proof builds
 
+Post-merge device A003 = **PASS**:
+
+```text
+outer RETURN = sha256:07bd56a7d0cd3a3051f6affc411731f1a63887a9266c4170e3e522fd16556a17
+inner RETURN = sha256:a830542dfb9ccd655952b99ec8d1cec10a068a3cbd8dd2da4fcab4e1fbd7672a
+
+pre-existing private pairing record = PRESENT
+focused connected tests = 3 / 3 PASS
+target package after proof = INSTALLED
+pairing record after proof = PRESENT
+pairing record byte-exact before/after = PASS
+MainActivity launch Status = ok
+credentials serialized into evidence = NO
+```
+
+Machine proof is therefore complete. The Work remains **VERIFYING** only for Victor's final lived
+reconnect to the same Desktop without re-pairing.
+
+
 The reconnect defect is also now causally narrowed.
 
 Product source already persists pairing in app-private SharedPreferences plus Android Keystore, and
