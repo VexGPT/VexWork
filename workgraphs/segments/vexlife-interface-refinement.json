@@ -54,7 +54,11 @@
         "github.issue.vexlife.866",
         "github.pull.vexlife.924",
         "github.commit.vexlife.8f1e9fd9e3f38f8dc23296257df718fca9806988",
-        "projects/vexlife-interface-refinement/README.md"
+        "projects/vexlife-interface-refinement/README.md",
+        "repo.vexlife:scripts/macos-lifecycle.mjs",
+        "repo.vexlife:scripts/establish-heretic-runtime.mjs",
+        "repo.vexlife:scripts/serve-browser.mjs",
+        "artifact.vexlife.interface-refinement.v0.a006.sha256.1785e7f313c8a260d851634891b408e74f4037fa52dfe402d8b75e022558440f"
       ],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS"
