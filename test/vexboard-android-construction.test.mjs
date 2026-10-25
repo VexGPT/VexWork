@@ -49,6 +49,22 @@ test('Android construction plan consumes VexBoard design without target effects'
 
   assert.equal(plan.componentMappings.length, design.componentAssignments.length);
 
+  const homeTitle = plan.componentMappings.find(
+    (entry) => entry.semanticRef === 'element.home.body.vexstream.title',
+  );
+  assert.equal(homeTitle.targetSymbol, 'VexText');
+  assert.equal(homeTitle.identityStateOrNull, 'VEXBOARD_PROPOSED');
+  assert.equal(
+    homeTitle.targetOwnerSourceRefOrNull,
+    'repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt',
+  );
+
+  const systemsTitle = plan.componentMappings.find(
+    (entry) => entry.semanticRef === 'element.home.body.systems.title',
+  );
+  assert.equal(systemsTitle.targetSymbol, 'VexText');
+  assert.equal(systemsTitle.identityStateOrNull, 'VEXBOARD_PROPOSED');
+
   const homeOpen = plan.componentMappings.find(
     (entry) => entry.semanticRef === 'element.home.body.systems.vexstream-music',
   );
