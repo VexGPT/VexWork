@@ -56,6 +56,45 @@ surface      = Evolution Conversation / Vex
 
 The recovery packages used to reach this point are historical diagnostic/proof carriers, not the canonical product entry. Current source owners remain the macOS lifecycle, Heretic runtime establishment, browser server and Conversation source in VexLife.
 
+### V0 operational source map
+
+Do **not** search old chat history for A00x ZIPs merely to start from V0. The lived proof carrier that finally exposed the stable connection is provenance; the reusable entry is the current repository-owned composition:
+
+```text
+VexLife current source
+  scripts/macos-lifecycle.mjs
+    -> preserve/inspect/start the current Vex Home
+    -> dispatch accepted Heretic establishment when config/model identity is Heretic
+    -> start the VexLife browser on 127.0.0.1:18110
+
+  scripts/establish-heretic-runtime.mjs
+    -> exact local Heretic model + Python/MLX environment
+    -> acquisition disabled unless separately authorized
+    -> persistent runtime owner / 127.0.0.1:8765
+
+  scripts/serve-browser.mjs
+    -> VexLife browser / Companion bridge
+
+  reference/browser/
+    -> current human interface
+```
+
+V0 lived-proof provenance:
+
+```text
+proof carrier =
+  VEXLIFE-OPEN-HERETIC-A006
+  sha256 1785e7f313c8a260d851634891b408e74f4037fa52dfe402d8b75e022558440f
+
+what it established =
+  current Home + exact local Heretic + current runtime/browser
+  -> visible Evolution Conversation
+  -> Victor typed natural messages
+  -> CURRENT_LOCAL_MODEL responses visibly rendered
+```
+
+The A006 bytes are **not** a required dependency for future startup and should not be replayed as a ritual. If current source evolves, follow the highest current refinement version and its current source refs.
+
 ## V1 — current refinement
 
 The first lived feedback is intentionally small:
