@@ -523,23 +523,31 @@
         "findingRef": "finding.android.home.vexstream-copy-unaddressed",
         "ownerSemanticRef": "element.home.body.vexstream",
         "kind": "RAW_COMPOSE_NO_SEMANTIC_REF",
-        "summary": "Home VexStream title/status/body are visible product copy rendered with raw Compose Text and have no stable semantic identity.",
+        "summary": "Android Home still renders VexStream copy as raw Compose Text, but VexBoard now owns proposed semantic text identities and design roles for the POC.",
         "sourceRefs": [
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt"
         ],
-        "blockingForPocAuthority": true,
-        "scopeStatus": "IN_POC"
+        "blockingForPocAuthority": false,
+        "scopeStatus": "IN_POC_MAPPED_TARGET_DEBT",
+        "mappedByDesignSemanticRefs": [
+          "element.home.body.vexstream.title",
+          "element.home.body.vexstream.status",
+          "element.home.body.vexstream.body"
+        ]
       },
       {
         "findingRef": "finding.android.home.systems-title-unaddressed",
         "ownerSemanticRef": "element.home.body.systems",
         "kind": "RAW_COMPOSE_NO_SEMANTIC_REF",
-        "summary": "Home Vex systems heading is visible product copy rendered with raw Compose Text and has no stable semantic identity.",
+        "summary": "Android Home still renders the Vex systems heading as raw Compose Text, but VexBoard now owns a proposed semantic text identity and design role for the POC.",
         "sourceRefs": [
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt"
         ],
-        "blockingForPocAuthority": true,
-        "scopeStatus": "IN_POC"
+        "blockingForPocAuthority": false,
+        "scopeStatus": "IN_POC_MAPPED_TARGET_DEBT",
+        "mappedByDesignSemanticRefs": [
+          "element.home.body.systems.title"
+        ]
       },
       {
         "findingRef": "finding.android.vexstream.connection-sheet-parent-drift",
