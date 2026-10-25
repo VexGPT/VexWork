@@ -152,6 +152,11 @@ test('VexLife Android POC is projected at source-load time and styled without ch
   assert.match(page, /VexBoard design authority/);
   assert.match(page, /VexBoard design draft/);
   assert.match(page, /function editLocalDesignMetric\(/);
+  assert.match(page, /function editLocalComponentAssignment\(/);
+  assert.match(page, /function designStyleRefs\(/);
+  assert.match(page, /Component assignment/);
+  assert.match(page, /componentAssignment\.styleRef/);
+  assert.match(page, /editLocalComponentAssignment\(n\.nodeRef,'styleRef',styleSelect\.value\)/);
   assert.match(page, /next\.authorityState='VEXBOARD_DESIGN_DRAFT'/);
   assert.match(page, /function reprojectAndroidDesign\(/);
   assert.match(page, /Design metrics/);
