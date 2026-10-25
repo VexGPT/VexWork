@@ -68,8 +68,6 @@ export const VEXBOARD_BUILTIN_BOARD_URLS = Object.freeze({
   'board.vexboard.self-map': './self-map.json',
   'board.vexboard.publish': './publish-map.json',
   'board.vexboard.prototype-demo': './prototype-demo.json',
-  'board.vexbusinessfactory.intent-topology.patient-zero': '../projects/vexboard/examples/vexbusinessfactory-intent-topology.board.json',
-  'board.vexbusinessfactory.system-anatomy.patient-zero': '../projects/vexboard/examples/vexbusinessfactory-system-anatomy.board.json',
 });
 export const VEXBOARD_BUILTIN_PROTOTYPE_URLS = Object.freeze({
   'board.vexboard.prototype-demo': './prototype-demo.prototype.json',
