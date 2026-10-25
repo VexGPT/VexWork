@@ -65,6 +65,7 @@ let activeBoardRef=null;
 let viewportEl=null,canvasEl=null,minimapEl=null,zoomReadoutEl=null;
 let draftDirty=false,saveMessage='',suppressCanvasClick=false;
 let pinnedSemanticRefs=new Set(),relationalFocusMode='CONNECT',pinMenuEl=null,relationshipViewMode='ALL';
+let scrollOffsetsByProjectionRef=new Map();
 let sourceCatalogCache=null;
 const sourceCatalogUrls=Object.freeze([
   '../projects/vexboard/examples/board-source-catalog.json',
@@ -153,7 +154,7 @@ async function openBuiltInBoard(boardRef,{pushCurrent=false}={}){
   return openBoard(d,{pushCurrent,boardRef,prototypeInput});
 }
 
-function snapshotCurrent(){return current?{current,selected,tool,camera,collapsed:[...collapsed],journey,journeyPathwayAnalysis,prototype,scenario,interactionTrail:interactionTrail.map(entry=>({...entry})),activeBoardRef,draftDirty,saveMessage,pinnedSemanticRefs:[...pinnedSemanticRefs],relationalFocusMode,relationshipViewMode}:null}
+function snapshotCurrent(){return current?{current,selected,tool,camera,collapsed:[...collapsed],journey,journeyPathwayAnalysis,prototype,scenario,interactionTrail:interactionTrail.map(entry=>({...entry})),activeBoardRef,draftDirty,saveMessage,pinnedSemanticRefs:[...pinnedSemanticRefs],relationalFocusMode,relationshipViewMode,scrollOffsets:[...scrollOffsetsByProjectionRef.entries()]}:null}
 async function openBoard(input,{pushCurrent=false,boardRef=null,prototypeInput=null}={}){
   cameraAnimator.cancel();
   if(pushCurrent&&current)boardStack.push(snapshotCurrent());
@@ -163,12 +164,12 @@ async function openBoard(input,{pushCurrent=false,boardRef=null,prototypeInput=n
   current={...d,graph:s.graph,projection:s.projection,evidence,design};selected=null;tool='SELECT';connectFrom=null;relationshipViewMode=Presentation.defaultRelationshipViewMode(d.projection.layoutIntent);
   prototype=prototypeInput?Board.normalizeBoardPrototype(prototypeInput,s.graph):null;
   scenario=prototype?Board.createBoardScenario(prototype,s.graph,{scenarioRef:ref('scenario.vexboard')}):null;
-  interactionTrail=[];collapsed=new Set();journey=null;journeyPathwayAnalysis=null;pinnedSemanticRefs=new Set();relationalFocusMode='CONNECT';camera=Board.normalizeCamera({x:48,y:48,zoom:1});activeBoardRef=boardRef||d.draftRef;
+  interactionTrail=[];collapsed=new Set();journey=null;journeyPathwayAnalysis=null;pinnedSemanticRefs=new Set();relationalFocusMode='CONNECT';scrollOffsetsByProjectionRef=new Map();camera=Board.normalizeCamera({x:48,y:48,zoom:1});activeBoardRef=boardRef||d.draftRef;
   draftDirty=d.mode==='LOCAL_DRAFT'&&!d.savedAtOrNull;
   saveMessage=d.mode==='LOCAL_DRAFT'?(d.savedAtOrNull?`Saved locally · ${savedClock(d.savedAtOrNull)}`:'Not saved locally yet'):'';
   renderWorkspace();requestAnimationFrame(()=>fitBoard());
 }
-function returnBoard(){cameraAnimator.cancel();const prior=boardStack.pop();if(!prior)return;({current,selected,tool,camera,journey,journeyPathwayAnalysis,prototype,scenario,interactionTrail,activeBoardRef,draftDirty,saveMessage,relationalFocusMode,relationshipViewMode}=prior);collapsed=new Set(prior.collapsed);pinnedSemanticRefs=new Set(prior.pinnedSemanticRefs||[]);connectFrom=null;closePinMenu();renderWorkspace();requestAnimationFrame(()=>applyCamera())}
+function returnBoard(){cameraAnimator.cancel();const prior=boardStack.pop();if(!prior)return;({current,selected,tool,camera,journey,journeyPathwayAnalysis,prototype,scenario,interactionTrail,activeBoardRef,draftDirty,saveMessage,relationalFocusMode,relationshipViewMode}=prior);collapsed=new Set(prior.collapsed);pinnedSemanticRefs=new Set(prior.pinnedSemanticRefs||[]);scrollOffsetsByProjectionRef=new Map(prior.scrollOffsets||[]);connectFrom=null;closePinMenu();renderWorkspace();requestAnimationFrame(()=>applyCamera())}
 async function enterPortal(detailBoardRef){
   const local=drafts().find(d=>d.draftRef===detailBoardRef);
   if(local){await openBoard(local,{pushCurrent:true,boardRef:detailBoardRef});return}
@@ -182,7 +183,7 @@ async function enterPortal(detailBoardRef){
 
 function landing(){
   cameraAnimator.cancel();
-  current=null;selected=null;journey=null;journeyPathwayAnalysis=null;prototype=null;scenario=null;interactionTrail=[];pinnedSemanticRefs=new Set();relationalFocusMode='CONNECT';closePinMenu();boardStack=[];activeBoardRef=null;app.className='app';app.replaceChildren();
+  current=null;selected=null;journey=null;journeyPathwayAnalysis=null;prototype=null;scenario=null;interactionTrail=[];pinnedSemanticRefs=new Set();relationalFocusMode='CONNECT';scrollOffsetsByProjectionRef=new Map();closePinMenu();boardStack=[];activeBoardRef=null;app.className='app';app.replaceChildren();
   const box=el('section','landing');
   box.append(el('div','eyebrow','VexBoard canvas projection'),el('h1','','Design the map before implementation has to guess it.'),el('p','lede','Create a local semantic-board draft or inspect an existing source board through a zoomable, pannable, recursive canvas. Camera, focus and collapse are read-only view state; requesting edit still forks a browser-local draft copy rather than mutating source truth.'));
   const actions=el('div','row');
@@ -321,6 +322,27 @@ function renderPrototypeOverlays(view){
   view.append(layer);
 }
 
+function scrollViewportMaximum(viewportItem){
+  const axis=AndroidPresentation.androidReferenceScrollAxis(current.presentation,viewportItem.projectionItemRef);
+  if(!axis)return 0;
+  const children=current.projection.items.filter(item=>item.parentProjectionItemRefOrNull===viewportItem.projectionItemRef&&item.visible);
+  if(!children.length)return 0;
+  if(axis==='HORIZONTAL'){
+    const right=Math.max(...children.map(child=>child.bounds.x+child.bounds.width));
+    return Math.max(0,right-(viewportItem.bounds.x+viewportItem.bounds.width));
+  }
+  const bottom=Math.max(...children.map(child=>child.bounds.y+child.bounds.height));
+  return Math.max(0,bottom-(viewportItem.bounds.y+viewportItem.bounds.height));
+}
+function scrollViewportBy(projectionItemRef,delta){
+  const viewport=item(projectionItemRef);if(!viewport)return;
+  const max=scrollViewportMaximum(viewport),prior=scrollOffsetsByProjectionRef.get(projectionItemRef)||0;
+  const next=Math.max(0,Math.min(max,prior+delta));
+  if(next===prior)return;
+  scrollOffsetsByProjectionRef.set(projectionItemRef,next);
+  renderWorkspace();requestAnimationFrame(()=>applyCamera());
+}
+
 function renderCanvas(canvas){
   const shown=visibleItems(),visibleSemanticRefs=new Set(shown.map(i=>i.semanticRef)),presentation=Presentation.deriveBranchPresentation(current.graph),focus=currentRelationalFocus(),focusNodeRefs=new Set(focus?.nodes.map(value=>value.nodeRef)||[]),extent=Presentation.canvasExtent(shown);
   Object.assign(canvas.style,{width:`${extent.width}px`,height:`${extent.height}px`});
@@ -331,7 +353,29 @@ function renderCanvas(canvas){
     const canSimulate=n.kind==='CONTROL'&&prototype&&journey?.currentRef===n.nodeRef,role=Presentation.semanticRole(current.graph,n.nodeRef),accent=presentation.nodeAccentByRef[n.nodeRef];
     const parentProjection=i.parentProjectionItemRefOrNull?item(i.parentProjectionItemRefOrNull):null,parentNode=parentProjection?node(parentProjection.semanticRef):null;
     const hasContainedChildren=current.graph.nodes.some(candidate=>candidate.parentRefOrNull===n.nodeRef),classes=[`shape ${i.shapeKind}`,`role-${role}`,`kind-${n.kind}`,...AndroidPresentation.androidReferenceClassNames(current.presentation,i.projectionItemRef)];if(hasContainedChildren)classes.push('has-contained-children');if(parentNode&&n.kind==='CONTROL')classes.push('nested-control');if(selected===i.projectionItemRef)classes.push('selected');if(canSimulate)classes.push('simulatable');if(Number.isInteger(accent))classes.push(`branch-${accent}`);if(parentNode)classes.push('contained');if(editable()&&!i.locked)classes.push('draggable');if(focus){if(pinnedSemanticRefs.has(n.nodeRef))classes.push('pin-seed');else if(focusNodeRefs.has(n.nodeRef))classes.push('pin-focus');else classes.push('pin-muted')}
-    const s=el('div',classes.join(' '));s.dataset.vexboardPlane=Interaction.INTERACTION_PLANES.OBJECT;s.dataset.semanticRef=n.nodeRef;s.dataset.projectionItemRef=i.projectionItemRef;Object.assign(s.style,{left:`${i.bounds.x}px`,top:`${i.bounds.y}px`,width:`${i.bounds.width}px`,height:`${i.bounds.height}px`,zIndex:String(i.layer+10)});
+    const scrollOccurrence=AndroidPresentation.androidReferenceScrolledOccurrence(
+      current.presentation,
+      i.bounds,
+      i.parentProjectionItemRefOrNull,
+      parentProjection?.bounds??null,
+      i.parentProjectionItemRefOrNull?(scrollOffsetsByProjectionRef.get(i.parentProjectionItemRefOrNull)||0):0,
+    );
+    const displayBounds=scrollOccurrence?.bounds??i.bounds;
+    const s=el('div',classes.join(' '));s.dataset.vexboardPlane=Interaction.INTERACTION_PLANES.OBJECT;s.dataset.semanticRef=n.nodeRef;s.dataset.projectionItemRef=i.projectionItemRef;Object.assign(s.style,{left:`${displayBounds.x}px`,top:`${displayBounds.y}px`,width:`${displayBounds.width}px`,height:`${displayBounds.height}px`,zIndex:String(i.layer+10)});
+    if(scrollOccurrence){if(scrollOccurrence.hidden)s.style.display='none';else if(scrollOccurrence.clipPath)s.style.clipPath=scrollOccurrence.clipPath}
+    const scrollAxis=AndroidPresentation.androidReferenceScrollAxis(current.presentation,i.projectionItemRef);
+    if(scrollAxis){
+      const max=scrollViewportMaximum(i),offset=scrollOffsetsByProjectionRef.get(i.projectionItemRef)||0;
+      s.title=`${scrollAxis==='HORIZONTAL'?'Horizontal':'Vertical'} design viewport · scroll ${Math.round(offset)} / ${Math.round(max)}`;
+      s.setAttribute('aria-label',s.title);
+      s.onwheel=(event)=>{
+        const delta=scrollAxis==='HORIZONTAL'
+          ?(Math.abs(event.deltaX)>Math.abs(event.deltaY)?event.deltaX:event.deltaY)
+          :event.deltaY;
+        if(!delta)return;
+        event.preventDefault();event.stopPropagation();scrollViewportBy(i.projectionItemRef,delta);
+      };
+    }
     s.append(el('span','shape-label',n.label));
     const marker=Presentation.roleMarker(role);if(marker)s.append(el('span','role-marker',marker));
     if(!['PROCESS','DECISION','CONTAINER'].includes(n.kind))s.append(el('span','kind-marker',n.kind));
