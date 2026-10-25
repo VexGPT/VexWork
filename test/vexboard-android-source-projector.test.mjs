@@ -37,6 +37,28 @@ test('VexLife Android POC snapshot projects deterministically without source eff
 
   const graph = createBoardGraph(first.board.graph);
   const projection = createBoardProjection(first.board.projection, graph);
+  assert.equal(
+    first.board.adoptionCoverage.screenRealizationModes['screen.home'],
+    'CUSTOM_NATIVE_REALIZATION',
+  );
+  assert.equal(
+    first.board.adoptionCoverage.screenRealizationModes['screen.vexstream-music'],
+    'CUSTOM_NATIVE_REALIZATION',
+  );
+  const derivedContentCoverage = first.board.adoptionCoverage.identityExceptions.find(
+    (entry) =>
+      entry.semanticRef === 'element.vexstream-music.body.connection.menu.content',
+  );
+  assert.deepEqual(
+    {
+      origin: derivedContentCoverage.origin,
+      staticRegistryStatus: derivedContentCoverage.staticRegistryStatus,
+    },
+    {
+      origin: 'DERIVED_CUSTOM_PRESENTATION',
+      staticRegistryStatus: 'UNREGISTERED_STATIC',
+    },
+  );
   assert.equal(graph.nodes.some((node) => node.nodeRef === 'screen.home'), true);
   assert.equal(graph.nodes.some((node) => node.nodeRef === 'screen.vexstream-music'), true);
   assert.equal(graph.nodes.some((node) => node.nodeRef === 'state.vexstream.library.loading'), true);
