@@ -42,6 +42,16 @@ test('VexLife Android POC snapshot projects deterministically without source eff
   assert.equal(graph.nodes.some((node) => node.nodeRef === 'state.vexstream.library.loading'), true);
   assert.equal(graph.nodes.some((node) => node.nodeRef === 'state.vexstream.library.empty'), true);
   assert.equal(graph.nodes.some((node) => node.nodeRef === 'state.vexstream.library.loaded'), true);
+  const libraryActionsContainer = graph.nodes.find(
+    (node) => node.nodeRef === 'element.vexstream-music.body.library-actions',
+  );
+  assert.equal(libraryActionsContainer.kind, 'CONTAINER');
+  assert.equal(
+    graph.nodes.find(
+      (node) => node.nodeRef === 'element.vexstream-music.body.library-actions.play-all',
+    ).parentRefOrNull,
+    libraryActionsContainer.nodeRef,
+  );
 
   const screenOccurrences = projection.items.filter(
     (item) => item.semanticRef === 'screen.vexstream-music',
@@ -68,10 +78,10 @@ test('VexLife Android POC snapshot projects deterministically without source eff
   assert.equal(homeOpenHint.role, 'BUTTON');
 
   const selectedTabHint = first.board.presentation.items.find(
-    (entry) => entry.projectionItemRef === 'item.vexstream.state.loaded.tab.0',
+    (entry) => entry.projectionItemRef === 'item.vexstream.state.loaded.tab.songs',
   );
   const defaultTabHint = first.board.presentation.items.find(
-    (entry) => entry.projectionItemRef === 'item.vexstream.state.loaded.tab.1',
+    (entry) => entry.projectionItemRef === 'item.vexstream.state.loaded.tab.albums',
   );
   assert.equal(selectedTabHint.styleRef, 'style.action.primary');
   assert.equal(selectedTabHint.variant, 'SELECTED');
@@ -128,8 +138,11 @@ test('VexLife Android POC snapshot projects deterministically without source eff
   const openRoute = first.board.presentation.relationships.find(
     (route) => route.relationshipRef === 'rel.vexlife-android.vexstream.manage-connection.open',
   );
-  assert.ok(openRoute.fromProjectionItemRef.startsWith('item.vexstream.state.loaded.toolbar-action.'),
-    'local modal edge must originate from the Loaded Screen occurrence');
+  assert.equal(
+    openRoute.fromProjectionItemRef,
+    'item.vexstream.state.loaded.toolbar-action.manage',
+    'local modal edge must originate from the stable Loaded Manage Connection occurrence',
+  );
   assert.equal(openRoute.toProjectionItemRef, 'item.vexstream.connection-sheet');
 
   assert.ok(graph.relationships.some((relationship) =>
@@ -152,6 +165,62 @@ test('VexLife Android POC snapshot projects deterministically without source eff
   }
   assert.equal(stateEdges.every((relationship) => relationship.kind === 'REFERENCE'), true,
     'state branches must not pretend to be Screen navigation');
+});
+
+test('design-authored child order moves stable occurrences without reminting them', () => {
+  const baseline = projectVexLifeAndroidPocSnapshot(
+    snapshot,
+    VEXBOARD_ANDROID_POC_BOARD_REFS.EXPERIENCE,
+    design,
+  ).board;
+
+  const reorderedDesign = structuredClone(design);
+  reorderedDesign.authorityState = 'VEXBOARD_DESIGN_DRAFT';
+  const systems = reorderedDesign.layoutRules.find(
+    (rule) => rule.layoutRef === 'layout.vexlife.home.systems',
+  );
+  systems.childSemanticRefs = [
+    'element.home.body.systems.vex-maps',
+    'element.home.body.systems.family-conversation',
+    'element.home.body.systems.talk-to-vex',
+  ];
+
+  const reordered = projectVexLifeAndroidPocSnapshot(
+    snapshot,
+    VEXBOARD_ANDROID_POC_BOARD_REFS.EXPERIENCE,
+    reorderedDesign,
+  ).board;
+
+  const refs = {
+    family: 'item.home.system-action.family-conversation',
+    maps: 'item.home.system-action.vex-maps',
+    talk: 'item.home.system-action.talk-to-vex',
+  };
+
+  const baselineByRef = new Map(
+    baseline.projection.items
+      .filter((item) => Object.values(refs).includes(item.projectionItemRef))
+      .map((item) => [item.projectionItemRef, item]),
+  );
+  const reorderedByRef = new Map(
+    reordered.projection.items
+      .filter((item) => Object.values(refs).includes(item.projectionItemRef))
+      .map((item) => [item.projectionItemRef, item]),
+  );
+
+  assert.equal(baselineByRef.get(refs.family).semanticRef, 'element.home.body.systems.family-conversation');
+  assert.equal(reorderedByRef.get(refs.family).semanticRef, 'element.home.body.systems.family-conversation');
+  assert.equal(baselineByRef.get(refs.maps).semanticRef, 'element.home.body.systems.vex-maps');
+  assert.equal(reorderedByRef.get(refs.maps).semanticRef, 'element.home.body.systems.vex-maps');
+
+  assert.ok(baselineByRef.get(refs.family).bounds.y < baselineByRef.get(refs.maps).bounds.y);
+  assert.ok(reorderedByRef.get(refs.maps).bounds.y < reorderedByRef.get(refs.family).bounds.y);
+  assert.equal(
+    reordered.projection.items.find(
+      (item) => item.semanticRef === 'element.home.body.systems.vex-maps',
+    ).projectionItemRef,
+    refs.maps,
+  );
 });
 
 test('component style edit changes web presentation from VexBoard design without mutating Android adoption facts', () => {
