@@ -353,12 +353,15 @@ function experienceBoard(snapshot) {
     });
 
     const tabsY = frame.y + p.toolbar + p.padding;
+    const tabGap = 5.5;
+    const tabWidth = (frame.width - (p.padding * 2) - (tabGap * (snapshot.vexStream.tabs.length - 1)))
+      / snapshot.vexStream.tabs.length;
     let tabX = frame.x + p.padding;
     snapshot.vexStream.tabs.forEach((tab, index) => {
       const itemRef = `${frameItemRef}.tab.${index}`;
-      items.push(projectionItem(itemRef, tab.ref, 'RECTANGLE', rect(tabX, tabsY, 72, 36), layer++, frameItemRef));
+      items.push(projectionItem(itemRef, tab.ref, 'RECTANGLE', rect(tabX, tabsY, tabWidth, 36), layer++, frameItemRef));
       hints.push(presentationHint(itemRef, 'TAB', index === 0 ? 'SELECTED' : 'DEFAULT'));
-      tabX += 79;
+      tabX += tabWidth + tabGap;
     });
     return Object.freeze({
       contentY: tabsY + 54,
