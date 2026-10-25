@@ -69,7 +69,7 @@ This is interface refinement, not a redesign of Conversation semantics or model 
 
 ## V2 — streaming contract
 
-Current VexLife buffers the local model HTTP response before the browser renders it. V2 should change the experience without weakening durable truth:
+Current VexLife buffers the local model HTTP response before the browser renders it. The pinned Heretic runtime uses MLX-LM 0.32.0, whose server defaults `stream=false` and `max_tokens=512` when VexLife omits those request fields. V2 should change the experience **and** replace that accidental small default with an explicit source-owned completion policy, without weakening durable truth:
 
 ```text
 Heretic token/chunk output
@@ -79,6 +79,7 @@ Heretic token/chunk output
 -> durable Conversation response/head commits atomically
 
 PARTIAL_STREAM != DURABLE_COMPANION_MESSAGE
+IMPLICIT_MLX_512_DEFAULT != INTENDED_VEX_COMPLETION_POLICY
 INTERRUPTED_STREAM != COMPLETED_TURN
 VISIBLE_PROGRESS != FINAL_CONVERSATION_HEAD
 ```
@@ -93,6 +94,8 @@ src/core/lived-companion.mjs
 ```
 
 Do not create a competing writer. Re-ground #904 and integrate V2 after that current Conversation-core ownership releases or lands.
+
+Pinned runtime source for this finding: `ml-explore/mlx-lm@v0.32.0:mlx_lm/SERVER.md`. The goal is not an unbounded runaway generator; it is to let Vex finish naturally under an explicit, inspectable completion budget with cancellation/recovery semantics rather than inheriting an accidental 512-token default.
 
 ## Current UI posture
 
