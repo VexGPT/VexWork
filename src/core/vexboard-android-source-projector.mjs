@@ -5,6 +5,7 @@ import {
   screenDesignAnchorRule,
   screenDesignComponentAssignment,
   screenDesignLayoutRule,
+  screenDesignSemanticElement,
   screenDesignViewportProfile,
   screenDesignVisualDimension,
   resolveBoundedResponsiveMetric,
@@ -127,6 +128,14 @@ function normalizeAdoptionCoverage(input) {
       ['IN_POC', 'IN_POC_MAPPED_TARGET_DEBT', 'OUTSIDE_POC'].includes(finding.scopeStatus),
       `Android adoption findings[${index}].scopeStatus unsupported`,
     );
+    if (finding.mappedByDesignSemanticRefs !== undefined) {
+      assert(Array.isArray(finding.mappedByDesignSemanticRefs),
+        `Android adoption findings[${index}].mappedByDesignSemanticRefs must be an array`);
+      refs(
+        finding.mappedByDesignSemanticRefs,
+        `Android adoption findings[${index}].mappedByDesignSemanticRefs`,
+      );
+    }
     text(finding.summary, `Android adoption findings[${index}].summary`);
     refs(finding.sourceRefs ?? [], `Android adoption findings[${index}].sourceRefs`);
   }
@@ -474,6 +483,26 @@ function orderedDesignChildren(design, layoutRef, values, refOf) {
   });
 }
 
+function designTextHeightDp(design, semanticRef, fontScale) {
+  const element = screenDesignSemanticElement(design, semanticRef);
+  const assignment = screenDesignComponentAssignment(design, semanticRef);
+  assert(assignment.templateRef === 'component.text',
+    `design text component required: ${semanticRef}`);
+  assert(assignment.typographyRefOrNull,
+    `design text typography required: ${semanticRef}`);
+  const typography = design.visualTokens?.typography?.[assignment.typographyRefOrNull];
+  assert(typography, `design typography missing: ${assignment.typographyRefOrNull}`);
+  return Number(typography.lineHeightSp ?? typography.fontSizeSp) *
+    Number(fontScale ?? 1) *
+    Number(element.referenceLineCount);
+}
+
+function designIntrinsicSize(design, semanticRef) {
+  const value = design.intrinsicSizes?.[semanticRef];
+  assert(value, `screen design intrinsic size missing: ${semanticRef}`);
+  return value;
+}
+
 function addActionNodes(nodes, section, ownerScreenRef) {
   nodes.push(node(section.ref, 'CONTAINER', section.label, ownerScreenRef, section.sourceRefs));
   for (const action of section.actions) {
@@ -527,11 +556,22 @@ function experienceBoard(snapshot, design, viewportProfile) {
   }
 
   const homeTitleRef = 'annotation.vexlife-android.home.toolbar-title';
-  const homeStatusRef = 'annotation.vexlife-android.home.vexstream-status';
-  const homeBodyRef = 'annotation.vexlife-android.home.vexstream-body';
-  nodes.push(node(homeTitleRef, 'ANNOTATION', snapshot.home.label, snapshot.home.screenRef, snapshot.home.sourceRefs));
-  nodes.push(node(homeStatusRef, 'ANNOTATION', snapshot.home.vexStreamSection.status, snapshot.home.vexStreamSection.ref, snapshot.home.vexStreamSection.sourceRefs));
-  nodes.push(node(homeBodyRef, 'ANNOTATION', snapshot.home.vexStreamSection.body, snapshot.home.vexStreamSection.ref, snapshot.home.vexStreamSection.sourceRefs));
+  nodes.push(node(
+    homeTitleRef,
+    'ANNOTATION',
+    snapshot.home.label,
+    snapshot.home.screenRef,
+    snapshot.home.sourceRefs,
+  ));
+  for (const element of design.semanticElements ?? []) {
+    nodes.push(node(
+      element.semanticRef,
+      'ANNOTATION',
+      element.label,
+      element.parentSemanticRef,
+      element.sourceRefs?.length ? element.sourceRefs : design.sourceRefs ?? [],
+    ));
+  }
 
   const vexTitleRef = 'annotation.vexstream.toolbar-title';
   nodes.push(node(vexTitleRef, 'ANNOTATION', snapshot.vexStream.label, snapshot.vexStream.screenRef, snapshot.vexStream.sourceRefs));
@@ -667,109 +707,133 @@ function experienceBoard(snapshot, design, viewportProfile) {
     (section) => section.semanticRef,
   );
 
-  for (const [sectionIndex, section] of homeSections.entries()) {
-    if (section.kind === 'VEXSTREAM') {
-      const sectionHeight = 230;
-      items.push(projectionItem(
-        'item.home.vexstream-section',
-        snapshot.home.vexStreamSection.ref,
-        'RECTANGLE',
-        rect(innerX, y, innerWidth, sectionHeight),
-        layer++,
-        'item.home.screen',
-      ));
-      hints.push(componentPresentationHint(
-        design,
-        'item.home.vexstream-section',
-        snapshot.home.vexStreamSection.ref,
-      ));
-      items.push(projectionItem(
-        'item.home.vexstream-status',
-        homeStatusRef,
-        'TEXT',
-        rect(
-          innerX + homeMetrics.innerHorizontal,
-          y + 36,
-          innerWidth - homeMetrics.innerHorizontal * 2,
-          58,
-        ),
-        layer++,
-        'item.home.vexstream-section',
-      ));
-      hints.push(presentationHint('item.home.vexstream-status', 'TEXT', 'TITLE'));
-      items.push(projectionItem(
-        'item.home.vexstream-body',
-        homeBodyRef,
-        'TEXT',
-        rect(
-          innerX + homeMetrics.innerHorizontal,
-          y + 103,
-          innerWidth - homeMetrics.innerHorizontal * 2,
-          70,
-        ),
-        layer++,
-        'item.home.vexstream-section',
-      ));
-      hints.push(presentationHint('item.home.vexstream-body', 'TEXT', 'SUPPORTING'));
-      const openAction = snapshot.home.vexStreamSection.actions[0];
-      items.push(projectionItem(
-        'item.home.vexstream-open',
-        openAction.ref,
-        'RECTANGLE',
-        rect(
-          innerX + homeMetrics.innerHorizontal,
-          y + 180,
-          innerWidth - homeMetrics.innerHorizontal * 2,
-          homeMetrics.buttonMinHeight,
-        ),
-        layer++,
-        'item.home.vexstream-section',
-      ));
-      hints.push(componentPresentationHint(design, 'item.home.vexstream-open', openAction.ref));
-      y += sectionHeight;
-    } else if (section.kind === 'SYSTEMS') {
-      const sectionHeight = 250;
-      items.push(projectionItem(
-        'item.home.systems-section',
-        snapshot.home.systemsSection.ref,
-        'RECTANGLE',
-        rect(innerX, y, innerWidth, sectionHeight),
-        layer++,
-        'item.home.screen',
-      ));
-      hints.push(componentPresentationHint(
-        design,
-        'item.home.systems-section',
-        snapshot.home.systemsSection.ref,
-      ));
-      let systemY = y + homeMetrics.innerVertical;
-      const systemActions = orderedDesignChildren(
-        design,
-        'layout.vexlife.home.systems',
-        snapshot.home.systemsSection.actions,
-        (action) => action.ref,
-      );
-      for (const action of systemActions) {
-        const itemRef = `item.home.system-action.${semanticLeaf(action.ref)}`;
+  function homeChildHeightDp(entry) {
+    if (entry.kind === 'TEXT') {
+      return designTextHeightDp(design, entry.ref, viewportProfile.fontScale ?? 1);
+    }
+    return Number(designIntrinsicSize(design, entry.ref).heightDp);
+  }
+
+  function renderHomeSection({
+    sectionRef,
+    sectionItemRef,
+    layoutRef,
+    sourceChildren,
+  }) {
+    const ordered = orderedDesignChildren(
+      design,
+      layoutRef,
+      sourceChildren,
+      (entry) => entry.ref,
+    );
+    const heightsDp = ordered.map(homeChildHeightDp);
+    const contentHeightDp =
+      heightsDp.reduce((sum, value) => sum + value, 0) +
+      (Math.max(0, ordered.length - 1) *
+        resolveBoundedResponsiveMetric(
+          design.metrics.containerGapVertical,
+          viewportProfile.heightDp,
+        ));
+    const sectionHeight =
+      (homeMetrics.innerVertical * 2) +
+      scaled(contentHeightDp);
+
+    items.push(projectionItem(
+      sectionItemRef,
+      sectionRef,
+      'RECTANGLE',
+      rect(innerX, y, innerWidth, sectionHeight),
+      layer++,
+      'item.home.screen',
+    ));
+    hints.push(componentPresentationHint(
+      design,
+      sectionItemRef,
+      sectionRef,
+    ));
+
+    let childY = y + homeMetrics.innerVertical;
+    for (const [index, entry] of ordered.entries()) {
+      const itemRef = entry.kind === 'TEXT'
+        ? `${sectionItemRef}.text.${semanticLeaf(entry.ref)}`
+        : `${sectionItemRef}.action.${semanticLeaf(entry.ref)}`;
+      const childHeight = scaled(heightsDp[index]);
+      if (entry.kind === 'TEXT') {
         items.push(projectionItem(
           itemRef,
-          action.ref,
+          entry.ref,
+          'TEXT',
+          rect(
+            innerX + homeMetrics.innerHorizontal,
+            childY,
+            innerWidth - (homeMetrics.innerHorizontal * 2),
+            childHeight,
+          ),
+          layer++,
+          sectionItemRef,
+        ));
+      } else {
+        const intrinsic = designIntrinsicSize(design, entry.ref);
+        items.push(projectionItem(
+          itemRef,
+          entry.ref,
           'RECTANGLE',
           rect(
             innerX + homeMetrics.innerHorizontal,
-            systemY,
-            innerWidth * 0.72,
-            homeMetrics.buttonMinHeight,
+            childY,
+            scaled(intrinsic.widthDp),
+            childHeight,
           ),
           layer++,
-          'item.home.systems-section',
+          sectionItemRef,
         ));
-        hints.push(componentPresentationHint(design, itemRef, action.ref));
-        systemY += homeMetrics.buttonMinHeight + homeMetrics.gapVertical;
       }
-      y += sectionHeight;
+      hints.push(componentPresentationHint(design, itemRef, entry.ref));
+      childY += childHeight;
+      if (index < ordered.length - 1) childY += homeMetrics.gapVertical;
     }
-    if (sectionIndex < homeSections.length - 1) y += homeMetrics.homeSectionGap;
+
+    return sectionHeight;
+  }
+
+  for (const [sectionIndex, section] of homeSections.entries()) {
+    if (section.kind === 'VEXSTREAM') {
+      const sourceChildren = [
+        ...[
+          'element.home.body.vexstream.title',
+          'element.home.body.vexstream.status',
+          'element.home.body.vexstream.body',
+        ].map((ref) => ({ ref, kind: 'TEXT' })),
+        {
+          ...snapshot.home.vexStreamSection.actions[0],
+          ref: snapshot.home.vexStreamSection.actions[0].ref,
+          kind: 'ACTION',
+        },
+      ];
+      y += renderHomeSection({
+        sectionRef: snapshot.home.vexStreamSection.ref,
+        sectionItemRef: 'item.home.vexstream-section',
+        layoutRef: 'layout.vexlife.home.vexstream',
+        sourceChildren,
+      });
+    } else if (section.kind === 'SYSTEMS') {
+      const sourceChildren = [
+        { ref: 'element.home.body.systems.title', kind: 'TEXT' },
+        ...snapshot.home.systemsSection.actions.map((action) => ({
+          ...action,
+          kind: 'ACTION',
+        })),
+      ];
+      y += renderHomeSection({
+        sectionRef: snapshot.home.systemsSection.ref,
+        sectionItemRef: 'item.home.systems-section',
+        layoutRef: 'layout.vexlife.home.systems',
+        sourceChildren,
+      });
+    }
+    if (sectionIndex < homeSections.length - 1) {
+      y += homeMetrics.homeSectionGap;
+    }
   }
 
   function addVexStreamChrome(state, frame, frameItemRef) {
