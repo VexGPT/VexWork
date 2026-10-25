@@ -4249,30 +4249,44 @@ projection layout intent
 
 The patient zero should therefore pressure the smallest **portable presentation-constraint seam** between semantic Blueprint and target construction. This is conceptual architecture until the real consumer proves the exact wire shape; do not mint a universal layout schema from prose.
 
-The design source should prefer relationships such as:
+The design source should prefer relationships and anchors such as:
 
 ~~~text
 semantic structure
   parent / child
-  order
+  ordered siblings
   reusable component / instance
 
 container composition
   row / column / stack / scroll / overlay where earned
 
+anchor vocabulary
+  START / END
+  TOP / BOTTOM
+  BASELINE when text alignment materially matters
+  CENTER_HORIZONTAL / CENTER_VERTICAL when earned
+
+constraint relationships
+  child.START  -> parent.START
+  child.END    -> parent.END
+  child.TOP    -> sibling.BOTTOM
+  child.START  -> sibling.END
+  text.BASELINE -> peer.BASELINE
+  margins / gaps belong to the relationship or reusable metric
+
 spacing
   outer inset / container padding
-  child gap
-  label / connector / content padding
+  anchor margin / sibling gap
+  content / label padding
   preferably through stable design metrics/tokens where reuse exists
 
 alignment / distribution
-  main-axis arrangement
-  cross-axis alignment
+  start / center / end
+  space-between / chain / weighted distribution when earned
 
 child sizing
-  content / wrap
-  fill available axis
+  CONTENT / WRAP
+  FILL / MATCH_CONSTRAINT-like available-axis behavior
   flexible weight / proportion
   minimum / maximum bounds
   aspect ratio where meaningful
@@ -4284,6 +4298,25 @@ style intent
   semantic surface / action / typography role
   not hard-coded target color or widget identity
 ~~~
+
+Use `START / END` rather than physical `LEFT / RIGHT` where the relationship is directional-but-localizable. This keeps the Blueprint natural for Compose/ConstraintLayout-style construction and avoids encoding left-to-right assumptions into portable design meaning.
+
+Prefer an anchor relationship over editing-history language:
+
+~~~text
+button.TOP -> explanation.BOTTOM + spacing.medium
+button.START -> container.START
+button.END -> container.END
+
+rather than:
+
+"put the button after the explanation"
+or
+button.x = 42
+button.y = 318
+~~~
+
+The anchor says what must remain true. The target layout engine decides the measured position.
 
 A VexBoard canvas may still resolve those relationships into exact x/y/width/height so the design is visible and manipulable. Those solved bounds are ordinarily **projection output**, not the portable construction contract.
 
@@ -4332,6 +4365,109 @@ product / behavior meaning
 ~~~
 
 For an existing feature such as VexStream, current source remains authoritative while VexBoard reverse-adopts it. A future authority transition from source-projected design to published design-owned presentation must be explicit; visual similarity alone cannot silently transfer ownership.
+
+
+### VexBoard as a scoped development IDE
+
+The same substrate can project the **development process** used to evolve a feature without making VexBoard a second lifecycle or process owner.
+
+VexWork already routes Android feature evolution through:
+
+~~~text
+process.vexlife-android.feature-authoring
+-> repo.vexlife-android
+-> docs/features/README.md
+-> docs/foundation/FEATURE-EXPERIENCE-LANGUAGE.md
+~~~
+
+A future VexBoard proving consumer may give that source-owned process a Board projection so a human can work through development perceptually:
+
+~~~text
+current accepted Screen
+  -> inspect its semantic / source / construction neighborhood
+  -> draft one bounded Screen or flow branch
+  -> add one CONTROL on the current Screen
+  -> connect that CONTROL to the new flow
+  -> enter the new branch
+  -> author / inspect / simulate only the relevant neighborhood
+  -> Back / Return to the branch origin
+  -> construct target source
+  -> verify / observe
+  -> compare evidence
+~~~
+
+The IDE should not require the entire application map to remain visible. Bounded neighborhood projection plus BoardJourney provides the ordinary scoped experience:
+
+~~~text
+                   hidden wider application
+
+                         ...
+                          |
+                          v
+              [ current accepted Screen ]
+                       |
+                  new CONTROL
+                       |
+                       v
+                [ new flow entry ]
+                       |
+                       v
+                [ draft Screen ]
+                       |
+                    ENTER
+                       v
+                 deeper branch
+
+BoardJourney:
+  current accepted Screen
+  -> new flow entry
+  -> draft Screen
+
+Back:
+  draft Screen
+  -> new flow entry
+  -> current accepted Screen
+~~~
+
+The human can zoom out or follow backlinks when wider context matters, but ordinary authoring stays local.
+
+This makes VexBoard useful as an IDE-like coordination surface across several rightful owners:
+
+~~~text
+PRODUCT VIEW
+  current feature / Screen / behavior meaning
+
+DESIGN VIEW
+  published or working UX Blueprint + portable constraints
+
+CONSTRUCTION VIEW
+  target mappings + generated/native source bindings
+
+SOURCE VIEW
+  exact repository refs / implementation coordinates
+
+EVIDENCE VIEW
+  expected render + observed screenshots / lived proof
+
+WORK VIEW
+  VexWork currentness / dependencies / active changes
+
+PROCESS VIEW
+  repository-owned feature-authoring / review / release route
+~~~
+
+These are lenses over connected identities, not one mega-state.
+
+~~~text
+DEVELOPMENT_PROCESS_BOARD != PROCESS_OWNER
+WORK_VIEW != WORKGRAPH_OWNER
+SOURCE_VIEW != SOURCE_OWNER
+IDE_SCOPE != WHOLE_APPLICATION_DUPLICATION
+LOCAL_AUTHORING_NEIGHBORHOOD != LOSS_OF_WIDER_GRAPH
+BACK_FROM_BRANCH != CAMERA_BACK
+~~~
+
+This self-hosting pattern is a strong later proving case for VexBoard: use VexBoard to perceive and carry the process of evolving a VexBoard-addressable product while all lifecycle, product, source and proof owners remain distinct.
 
 
 ### Living-source comparison and evidence freshness
