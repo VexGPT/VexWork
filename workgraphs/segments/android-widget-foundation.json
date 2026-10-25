@@ -138,10 +138,10 @@
       "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.android-widget-foundation.vexstream-playback-widget.state-refresh",
       "parentWorkRefOrNull": "work.android-widget-foundation.vexstream-playback-widget",
-      "label": "VexStream widget live State refresh",
-      "purpose": "Fix the lived launcher defect where widget Controls act on current Playback/Queue truth but the displayed track/playback projection can remain stale. Refresh the Glance surface from the newest canonical Media3/VexStream State whenever current item, play/pause, queue availability or related display truth changes, without making the widget another State owner.",
+      "label": "VexStream widget currentness convergence",
+      "purpose": "Repair the lived remote-surface currentness defect where Playback/Queue Controls still route through the rightful SCAE families but the Glance widget can fall back to generic or stale presentation while the Full Player already observes current Media3 truth. Establish a bounded patient-zero convergence relationship between canonical provider/read truth and rendered widget projection so provider changes drive widget refresh/currentness and widget interactions return through existing Controls before the next projection converges, without making the widget a State owner or prematurely extracting a generic Widget Relay.",
       "workClass": "DEFECT",
-      "state": "VERIFYING",
+      "state": "FAILED_RECOVERABLE",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.android-widget-foundation.semantic-widget-surface"
@@ -171,13 +171,17 @@
         "evidence.vexstream.widget.pr179.sourceowner.a001.outer.sha256.acba343b6e3b3884d9dcb1631ff01825845a5c59c550e3a12ed7e80122c1226b",
         "evidence.vexstream.widget.pr179.sourceowner.a002.outer.sha256.71eaa323127b52b87a98e4d52c4d8e7e23405a8b2ebf9c5a91bdd974697f7f31",
         "evidence.vexstream.widget.pr179.sourceowner.a002.inner.sha256.a7887241d85d5ff49adf1bdb28361fb5455ac40e33457a9b3e470a7ab0c35789",
-        "github.review.vexlife-android.pr179.5642157438.assurance-clear"
+        "github.review.vexlife-android.pr179.5642157438.assurance-clear",
+        "human.lived-feedback.android-widget-foundation.currentness-convergence.20261025a",
+        "github.commit.vexlife-android.6f5b2dc6cdbf284b84cb590ba5b1016af3d33939",
+        "repo.vexlife-android:architecture/behavior/README.md",
+        "repo.vexlife-android:architecture/widget/src/main/kotlin/com/vextreme/vexlife/android/widget/VexGlanceAppWidget.kt"
       ],
       "nextProcessRefs": [
         "process.vexlife-android.feature-authoring"
       ],
       "createdAt": "2026-10-25T07:10:00.000Z",
-      "updatedAt": "2026-10-25T07:59:11.000Z"
+      "updatedAt": "2026-10-25T12:12:29.462Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -360,6 +364,22 @@
         "github.comment.vexlife-android.pr179.6395146346.post-merge-tree-exact"
       ],
       "createdAt": "2026-10-25T07:59:11.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.android-widget-foundation.vexstream-playback-widget.state-refresh.failed-recoverable.lived-currentness-20261025a",
+      "workRef": "work.android-widget-foundation.vexstream-playback-widget.state-refresh",
+      "priorState": "VERIFYING",
+      "nextState": "FAILED_RECOVERABLE",
+      "reason": "Victor's physical re-review showed the Full Player already carrying current track truth while the launcher widget rendered its generic fallback projection with no artist and disabled transport controls. This disproves lived convergence of the PR #179 refresh strategy. Playback/Queue command routing remains SCAE-shaped; the recoverable defect is the missing explicit currentness relationship between provider observation and remote Glance projection.",
+      "actorRef": "actor.local-vex-operations.android-widget-foundation",
+      "sourceRefs": [
+        "human.lived-feedback.android-widget-foundation.currentness-convergence.20261025a",
+        "projects/android-widget-foundation/README.md",
+        "repo.vexlife-android:architecture/behavior/README.md",
+        "github.commit.vexlife-android.6f5b2dc6cdbf284b84cb590ba5b1016af3d33939"
+      ],
+      "createdAt": "2026-10-25T12:12:29.462Z"
     }
   ],
   "sourceRefs": [
