@@ -171,7 +171,9 @@ export function compileVexLifeAndroidScreenDesign(
     admission:
       design.authorityState === 'VEXBOARD_DESIGN_AUTHORITY'
         ? 'IMPLEMENTATION_ELIGIBLE'
-        : 'PREVIEW_ONLY_REVERSE_ADOPTION',
+        : design.authorityState === 'VEXBOARD_DESIGN_DRAFT'
+          ? 'PREVIEW_ONLY_DESIGN_DRAFT'
+          : 'PREVIEW_ONLY_REVERSE_ADOPTION',
     mappings: Object.freeze(mappings),
     sourceRefs: Object.freeze([...(design.sourceRefs ?? [])]),
     effects: Object.freeze({
