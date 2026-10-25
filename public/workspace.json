@@ -5760,7 +5760,6 @@
     },
     {
       "project": {
-        "schemaVersion": "vexwork.project-definition/v1",
         "projectRef": "project.vexboard",
         "label": "VexBoard Semantic Canvas",
         "purpose": "Let a human and AI use one scalable semantic Blueprint IDE to design, inspect, traverse, refine, reuse, construct and verify interactive experiences, processes and systems through bounded semantic neighborhoods and multiple truthful lenses, while projecting accepted external truth without becoming its second semantic, lifecycle, process, source, evidence or target-runtime owner.",
@@ -5987,8 +5986,7 @@
               ],
               "createdAt": "2026-10-24T02:41:33.000Z"
             }
-          ],
-          "schemaVersion": "vexwork.work-item/v1"
+          ]
         },
         {
           "workRef": "work.vexboard.canvas-projection",
@@ -6142,8 +6140,7 @@
               ],
               "createdAt": "2026-10-24T12:07:17.171Z"
             }
-          ],
-          "schemaVersion": "vexwork.work-item/v1"
+          ]
         },
         {
           "workRef": "work.vexboard.later.businessfactory-guided-company-formation",
@@ -6303,8 +6300,7 @@
               ],
               "createdAt": "2026-10-24T05:21:11.000Z"
             }
-          ],
-          "schemaVersion": "vexwork.work-item/v1"
+          ]
         },
         {
           "workRef": "work.vexboard.usability-refinement",
@@ -6456,8 +6452,7 @@
               ],
               "createdAt": "2026-10-25T05:52:16.000Z"
             }
-          ],
-          "schemaVersion": "vexwork.work-item/v1"
+          ]
         }
       ],
       "lanes": [
