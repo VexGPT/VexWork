@@ -2829,11 +2829,12 @@
         "repo.vexwork"
       ],
       "sourceRefs": [
-        "projects/vexboard/README.md"
+        "projects/vexboard/README.md",
+        "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md"
       ],
       "nextProcessRefs": [],
       "createdAt": "2026-10-23T00:14:29.000Z",
-      "updatedAt": "2026-10-24T02:41:33.000Z"
+      "updatedAt": "2026-10-25T06:08:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -2869,11 +2870,12 @@
         "github.pull.vexwork.115",
         "git.commit.vexwork.a4023a83039924fdbd8384008543f23587e4bc94",
         "src/shared/vexboard-source-resolver.mjs",
-        "test/vexboard-source-resolver.test.mjs"
+        "test/vexboard-source-resolver.test.mjs",
+        "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md"
       ],
       "nextProcessRefs": [],
       "createdAt": "2026-10-23T00:14:29.000Z",
-      "updatedAt": "2026-10-24T06:38:19.000Z"
+      "updatedAt": "2026-10-25T06:08:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -4111,7 +4113,8 @@
         "work.vexboard.boardpatch-authoring",
         "project.vex-universe",
         "work.vex-universe.journey-evidence-patient-zero",
-        "project.vexlife.blueprint-source-of-truth"
+        "project.vexlife.blueprint-source-of-truth",
+        "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [
@@ -4120,7 +4123,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-24T12:07:17.171Z",
-      "updatedAt": "2026-10-25T02:55:00.000Z"
+      "updatedAt": "2026-10-25T06:08:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -4199,10 +4202,10 @@
       "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vexboard.vexstream-screenshot-pilot",
       "parentWorkRefOrNull": "work.vexboard.outcome",
-      "label": "VexStream screenshot-to-process pilot",
-      "purpose": "Use a real VexStream phone-to-desktop connection walkthrough as the first screenshot evidence patient zero: map ordered user-supplied screenshots into visible observations, proposed semantic correspondences, BoardGraph/BoardProjection/BoardJourney meaning, and scalable evidence presentation while VexStream/VexLife remain owners of product, UI, connection, and provider truth. The pilot should pressure evidence-rail versus optional canvas-pinning behavior without inventing a universal OCR, hotspot, or image ontology from one example.",
+      "label": "VexStream living Blueprint screenshot pilot",
+      "purpose": "Use the real VexStream phone-to-desktop walkthrough and supplied screenshots as the first living Blueprint patient zero: reconcile observed evidence with current VexStream Desktop / VexLife Android source, project one stable feature journey through BoardGraph / BoardProjection / BoardJourney / BoardEvidence, and pressure the convergence with VexLife Blueprint Source of Truth from portable semantic meaning through design-authoritative relationship/constraint-based UX composition, deterministic target construction mapping and target-native realization to expected-versus-observed currentness. Preserve product/source ownership, prevent target implementations from independently redesigning accepted Blueprint presentation, treat VLBSoT refs as accepted lineage rather than blocking dependencies or automatic lane reactivation, and earn only the smallest reusable feature/design/source/evidence/currentness seams.",
       "workClass": "TASK",
-      "state": "WAITING_HUMAN",
+      "state": "RUNNING",
       "workDisposition": "ACTIVE",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [
@@ -4226,7 +4229,13 @@
         "github.pull.vexwork.146",
         "git.commit.vexwork.4de96957aaa38cf1560a5e5388898382acbaa799",
         "work.vexstream.mobile-library.outcome",
-        "projects/vexstream-mobile-library/README.md"
+        "projects/vexstream-mobile-library/README.md",
+        "project.vexlife.blueprint-source-of-truth",
+        "projects/vexlife-blueprint-source-of-truth/README.md",
+        "work.vexlife.blueprint-source-of-truth.play-pause-practicum",
+        "work.vexlife.blueprint-source-of-truth.reusable-v1",
+        "work.vexlife.blueprint-source-of-truth.total-feature-capacity",
+        "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [
@@ -4235,7 +4244,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-25T04:00:00.000Z",
-      "updatedAt": "2026-10-25T04:00:00.000Z"
+      "updatedAt": "2026-10-25T06:08:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -7575,6 +7584,21 @@
         "projects/vexboard/FRACTAL-SEMANTIC-COMPOSITION-AND-SPATIAL-LAYOUT.md"
       ],
       "createdAt": "2026-10-24T12:07:16.171Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.vexstream-screenshot-pilot.running.living-blueprint-evidence",
+      "workRef": "work.vexboard.vexstream-screenshot-pilot",
+      "priorState": "WAITING_HUMAN",
+      "nextState": "RUNNING",
+      "reason": "Victor supplied the real VexStream phone-to-desktop screenshot set, including the remembered-phone conditional entry, satisfying the human evidence predicate. The patient zero is now active and explicitly carries the accepted VexLife Blueprint Source-of-Truth construction/proof lineage so the work can prove a living semantic -> target construction -> expected/observed comparison slice without transferring product ownership or reactivating the paused VLBSoT Project.",
+      "actorRef": "actor.chatgpt.vexboard.vexstream-screenshot-pilot",
+      "sourceRefs": [
+        "projects/vexboard/README.md",
+        "project.vexlife.blueprint-source-of-truth",
+        "projects/vexlife-blueprint-source-of-truth/README.md"
+      ],
+      "createdAt": "2026-10-25T05:52:16.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",

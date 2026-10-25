@@ -152,7 +152,7 @@ test('VexBoard projects completed navigation/usability foundations with Source P
   assert.equal(vexboard.summary.workItemCount, 11);
   assert.equal(vexboard.summary.openWorkItemCount, 6);
   assert.equal(vexboard.summary.potentialCount, 1);
-  assert.equal(vexboard.summary.needsHumanCount, 1);
+  assert.equal(vexboard.summary.needsHumanCount, 0);
   assert.equal(vexboard.summary.completedCount, 5);
   assert.equal(vexboard.items.find((item) => item.workRef === 'work.vexboard.project-architecture').state, 'COMPLETED');
   const boardgraph = vexboard.items.find((item) => item.workRef === 'work.vexboard.boardgraph-contract');
@@ -188,9 +188,12 @@ test('VexBoard projects completed navigation/usability foundations with Source P
   assert.equal(projectors.sourceRefs.includes('github.pull.vexwork.115'), true);
   assert.equal(projectors.sourceRefs.includes('src/shared/vexboard-source-resolver.mjs'), true);
   assert.equal(composition.sourceRefs.includes('projects/vexboard/FRACTAL-SEMANTIC-COMPOSITION-AND-SPATIAL-LAYOUT.md'), true);
+  assert.equal(screenshotPilot.sourceRefs.includes('project.vexlife.blueprint-source-of-truth'), true);
+  assert.equal(screenshotPilot.sourceRefs.includes('projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md'), true);
+  assert.equal(screenshotPilot.sourceRefs.includes('work.vexlife.blueprint-source-of-truth.reusable-v1'), true);
   assert.deepEqual(
     [screenshotPilot.state, screenshotPilot.priorityClass, screenshotPilot.authorityDisposition, screenshotPilot.effectDisposition],
-    ['WAITING_HUMAN', 'IMMEDIATE', 'AUTHORIZED_BOUNDED', 'EFFECTS_BOUND'],
+    ['RUNNING', 'IMMEDIATE', 'AUTHORIZED_BOUNDED', 'EFFECTS_BOUND'],
   );
   assert.deepEqual(
     [businessGraduation.workClass, businessGraduation.state, businessGraduation.priorityClass, businessGraduation.authorityDisposition, businessGraduation.effectDisposition],
@@ -203,16 +206,18 @@ test('VexBoard projects completed navigation/usability foundations with Source P
   assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.verify').workRefs.includes(refinement.workRef), false);
   assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.active').workRefs.includes(projectors.workRef), true);
   assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.active').workRefs.includes(composition.workRef), true);
+  assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.active').workRefs.includes(screenshotPilot.workRef), true);
   assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.ready').workRefs.includes(projectors.workRef), false);
   assert.deepEqual(
     vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.needs-human').workRefs,
-    [screenshotPilot.workRef],
+    [],
   );
   assert.equal(
     vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.intake').workRefs.includes(businessGraduation.workRef),
     true,
   );
   assert.equal(vexboard.project.sourceRefs.includes('projects/vexboard/README.md'), true);
+  assert.equal(vexboard.project.sourceRefs.includes('projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md'), true);
 });
 
 // [VXG RealForever]

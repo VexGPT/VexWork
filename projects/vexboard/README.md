@@ -76,28 +76,40 @@ READY
 AUTHORIZED
 ```
 
-## Current priority ladder — VexStream screenshot patient zero
+## Current priority ladder — VexStream living Blueprint patient zero
 
-The current foreground is no longer another abstract screenshot design exercise. The first real screenshot/evidence consumer is a bounded VexStream patient zero:
+The screenshot human predicate is now satisfied. The current foreground is a real VexStream patient zero that must prove more than screenshot placement: it should pressure one **living Blueprint vertical slice** across source-owned meaning, VexBoard perception, target construction lineage and observed evidence.
 
 ```text
 CURRENT / IMMEDIATE
 work.vexboard.vexstream-screenshot-pilot
--> Victor supplies a small ordered set of real VexStream Music screenshots
--> initial scenario: connect a phone to a desktop for VexStream Music use
--> VexBoard maps visible observations into proposed semantic correspondences
--> accepted process meaning remains separate from screenshot pixels
--> exercise BoardGraph + BoardProjection + BoardJourney + evidence presentation together
+-> Victor supplied the real cross-device screenshot set
+-> scenario: connect a VexLife Android phone to VexStream Desktop
+-> preserve one add/connect-phone intention across conditional current states
+   no remembered phone -> pairing window may start automatically
+   remembered phone -> Connect another phone -> same bounded pairing window
+-> map visible observations into proposed semantic correspondences
+-> reconcile accepted meaning against current VexStream Desktop / VexLife Android source
+-> exercise BoardGraph + BoardProjection + BoardJourney + BoardEvidence together
+-> pressure one living Blueprint vertical slice:
+   source-owned semantic feature meaning
+   -> VexBoard semantic/spatial projection
+   -> deterministic target construction/mapping lineage
+   -> target-native source realization
+   -> expected/reference render
+   -> observed screenshot evidence
+   -> derived currentness / drift comparison
 
 NEAR TERM
--> use the lived pilot to decide which screenshot/evidence behaviors actually repeat
--> test evidence-rail/sidebar as the scalable default
--> test optional canvas pinning as a projection-local convenience
--> only then stabilize reusable image-region / evidence coordinates that the pilot genuinely earns
+-> build the VexStream Phone <-> Desktop Feature Board from current source + evidence
+-> add evidence-rail / inspector presentation before persisted screenshot-placement architecture
+-> compare expected current render against observed evidence at stable semantic coordinates
+-> add explicit Android and Desktop source adapters before extracting a generic feature projector
+-> let repeated consumers earn any reusable feature/currentness contract
 
 LATER / CAPTURED
 work.vexboard.later.businessfactory-guided-company-formation
--> after screenshot/evidence mapping and reusable templates are stable
+-> after living screenshot/evidence mapping and reusable templates are stable
 -> after BusinessFactory business structure, patterns, processes and end-to-end journeys are sufficiently mapped
 -> use the combined substrate as a graduation scenario:
    guide a person from zero through creating a company
@@ -105,7 +117,67 @@ work.vexboard.later.businessfactory-guided-company-formation
    ask for protected registration/provider actions only when genuinely human-bound
 ```
 
-The VexStream pilot owns **the mapping experiment**, not VexStream product truth:
+### Blueprint Source-of-Truth convergence carried by this pilot
+
+This pilot consumes the accepted **VexLife Blueprint Source of Truth** trajectory as construction/proof lineage rather than rediscovering that architecture from screenshots:
+
+```text
+project.vexlife.blueprint-source-of-truth
+work.vexlife.blueprint-source-of-truth.play-pause-practicum
+work.vexlife.blueprint-source-of-truth.reusable-v1
+work.vexlife.blueprint-source-of-truth.total-feature-capacity
+```
+
+That trajectory already proved the reusable direction:
+
+```text
+one product/software intention
+-> portable semantic meaning
+-> deterministic representation
+-> platform-specific realization
+-> construction / semantic / native proof
+-> bounded reverse observation
+```
+
+VexBoard supplies the complementary reusable surface:
+
+```text
+semantic meaning
+-> human/AI visual authoring + inspection
+-> stable spatial projection
+-> Journey / conditions / evidence
+-> published Blueprint revision
+-> target construction mapping
+-> accepted target source
+-> expected/lived projection back into VexBoard
+-> comparison / currentness / drift
+```
+
+For an existing source-owned feature such as VexStream:
+
+```text
+VexLife / VexStream source meaning
+-> source projector / reverse adoption
+-> VexBoard living Feature Board
+-> construction lineage + expected target render
+-> observed evidence
+```
+
+For a future VexBoard-authored system:
+
+```text
+published VexBoard Blueprint
+-> target adapter/compiler
+-> reviewable target source candidate
+-> target repository validation/lifecycle
+-> source/lived projection back into VexBoard
+```
+
+These Blueprint Source-of-Truth refs are **lineage and architectural pressure**, not blocking dependencies and not an automatic reactivation of the paused VLBSoT Project.
+
+The pilot may treat a rightful product **Feature identity** as a discoverable semantic root for projections, journeys, construction targets, source bindings, evidence and Work. That does **not** require adding `FEATURE` to the VexWork Workgraph class vocabulary. Projects remain human-outcome groupings; product repositories remain owners of feature/product meaning.
+
+The VexStream pilot owns **the mapping/evidence/convergence experiment**, not VexStream product truth:
 
 ```text
 VEXSTREAM_SCREENSHOT_PILOT != VEXSTREAM_PRODUCT_OWNER
@@ -114,9 +186,18 @@ VISIBLE_REGION != SEMANTIC_IDENTITY
 PROPOSED_MAPPING != ACCEPTED_MAPPING
 EVIDENCE_RAIL != REQUIRED_FINAL_UI
 PIN_TO_CANVAS != SEMANTIC_REPARENT
+
+VEXBOARD_PROJECTION != PORTABLE_PRODUCT_MEANING
+TARGET_MAPPING != TARGET_SOURCE_AUTHORITY
+EXPECTED_RENDER != OBSERVED_RENDER
+OBSERVED_SCREENSHOT != PRODUCT_ACCEPTANCE
+
+REPOSITORY_COMMIT_CHANGED != SCREENSHOT_STALE
+RELEVANT_SEMANTIC_OR_CONSTRUCTION_DEPENDENCY_CHANGED
+  -> MAY_INVALIDATE_EXPECTED/OBSERVED COMPARISON
 ```
 
-The current presentation hypothesis is intentionally provisional:
+The current presentation hypothesis remains provisional:
 
 ```text
 many screenshots
@@ -125,13 +206,36 @@ many screenshots
 one screenshot needs spatial comparison
 -> optional projection-local pin near the implicated node
 
+current source + construction mapping
+-> expected/reference representation
+
+observed evidence
+-> compare against that relevant current representation
+
 pilot evidence
--> decide whether those behaviors deserve a reusable contract
+-> decide which behavior deserves a reusable contract
 ```
 
-Do not introduce a universal OCR ontology, screenshot-hotspot registry, image-specific node typology, or BusinessFactory onboarding framework merely to complete this pilot.
+Do not introduce a universal OCR ontology, screenshot-hotspot registry, image-specific node typology, generic Feature ontology, or whole-product construction framework merely to complete this pilot.
 
-The eventual "start a business from the beginning" experience is strategically important, but it is **not current implementation scope or authority**. It is preserved now so future work can see the intended graduation path without pulling that complexity into the screenshot patient zero.
+The eventual "start a business from the beginning" experience remains strategically important, but it is **not current implementation scope or authority**. It is preserved so future work can see the graduation path without pulling that complexity into this patient zero.
+
+## Reusable Semantic Blueprint IDE foundation
+
+The reusable IDE/construction pattern, recursive category examples, scoped-neighborhood behavior and
+future-instance starting procedure now live in:
+
+~~~text
+projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md
+~~~
+
+Use that companion when the question is broader than the current VexStream patient zero: how the same
+VexBoard substrate applies to software feature evolution, source-projected development processes,
+operations, architecture, Work/Projects, localization/content, evidence/currentness, later
+BusinessFactory company formation, and VexBoard self-hosting.
+
+The companion is architecture source, not a new wire schema or second owner.
+
 
 ## Human outcome
 
@@ -4117,6 +4221,315 @@ expected evidence slot
 VexBoard presentation may later render placeholders, galleries and expected-vs-observed comparisons. That
 UI should be added only after the current single-file browser surface is decomposed enough that evidence
 presentation does not enlarge `vexboard/index.html` into another semantic owner.
+### Design-authoritative construction — relationships and constraints, not copied pixels
+
+The living Blueprint should carry enough UX / presentation design meaning that a target adapter **realizes the accepted design instead of redesigning it independently**.
+
+Current VexLife-Android already proves part of this law:
+
+~~~text
+ScreenBlueprint
+  declares one structural tree
+-> VexElementTree / Vex Compose
+  renders that same structure
+-> Compose
+  remains the Android rendering engine
+~~~
+
+The Android repository explicitly avoids a second handwritten Compose reconstruction for ordinary Screen Blueprint structure. Its current Elements foundation also preserves semantic identity through `VexModifier` / `VexComposeScope`.
+
+The remaining convergence pressure is that important design relationships can still live only in target-local Compose calls, for example:
+
+~~~text
+padding(...)
+Arrangement.spacedBy(...)
+Arrangement.SpaceBetween
+Alignment.*
+fillMaxWidth()
+weight(...)
+minimum / maximum sizing
+aspect ratio / content fit
+~~~
+
+VexBoard already owns complementary projection/composition behavior:
+
+~~~text
+ROW / COLUMN / STACK / FREE
+ordered children
+container padding
+child gap
+container bounds
+WRAP / SERPENTINE boundary continuation
+anchors / locks
+projection layout intent
+~~~
+
+The patient zero should therefore pressure the smallest **portable presentation-constraint seam** between semantic Blueprint and target construction. This is conceptual architecture until the real consumer proves the exact wire shape; do not mint a universal layout schema from prose.
+
+The design source should prefer relationships and anchors such as:
+
+~~~text
+semantic structure
+  parent / child
+  ordered siblings
+  reusable component / instance
+
+container composition
+  row / column / stack / scroll / overlay where earned
+
+anchor vocabulary
+  START / END
+  TOP / BOTTOM
+  BASELINE when text alignment materially matters
+  CENTER_HORIZONTAL / CENTER_VERTICAL when earned
+
+constraint relationships
+  child.START  -> parent.START
+  child.END    -> parent.END
+  child.TOP    -> sibling.BOTTOM
+  child.START  -> sibling.END
+  text.BASELINE -> peer.BASELINE
+  margins / gaps belong to the relationship or reusable metric
+
+spacing
+  outer inset / container padding
+  anchor margin / sibling gap
+  content / label padding
+  preferably through stable design metrics/tokens where reuse exists
+
+alignment / distribution
+  start / center / end
+  space-between / chain / weighted distribution when earned
+
+child sizing
+  CONTENT / WRAP
+  FILL / MATCH_CONSTRAINT-like available-axis behavior
+  flexible weight / proportion
+  minimum / maximum bounds
+  aspect ratio where meaningful
+
+adaptive behavior
+  size-class / viewport-dependent variant only when a real target proves the need
+
+style intent
+  semantic surface / action / typography role
+  not hard-coded target color or widget identity
+~~~
+
+Use `START / END` rather than physical `LEFT / RIGHT` where the relationship is directional-but-localizable. This keeps the Blueprint natural for Compose/ConstraintLayout-style construction and avoids encoding left-to-right assumptions into portable design meaning.
+
+Prefer an anchor relationship over editing-history language:
+
+~~~text
+button.TOP -> explanation.BOTTOM + spacing.medium
+button.START -> container.START
+button.END -> container.END
+
+rather than:
+
+"put the button after the explanation"
+or
+button.x = 42
+button.y = 318
+~~~
+
+The anchor says what must remain true. The target layout engine decides the measured position.
+
+A VexBoard canvas may still resolve those relationships into exact x/y/width/height so the design is visible and manipulable. Those solved bounds are ordinarily **projection output**, not the portable construction contract.
+
+~~~text
+CANVAS_XY != PORTABLE_LAYOUT_INTENT
+CANVAS_PIXEL_DISTANCE != TARGET_NATIVE_PIXEL_DISTANCE
+PUBLISHED_UI_BLUEPRINT != SCREENSHOT
+TARGET_ADAPTER != TARGET_DESIGNER
+TARGET_RENDERER != BLUEPRINT_OWNER
+
+PORTABLE_CONSTRAINTS
+-> target mapping
+-> Android density-independent / Compose realization
+-> native measured pixels
+
+ABSOLUTE_BOUNDS
+-> useful projection / preview geometry
+-> target-specific only when explicitly owned as such
+~~~
+
+For the current VexStream Android connection card, source already exposes a concrete proving slice:
+
+~~~text
+ConnectionSection
+-> full-width raised surface
+-> outer screen-relative inset
+-> vertical child composition
+-> inner container padding
+-> repeated child spacing
+-> heading / supporting-text hierarchy
+-> Find VexStream action with content-sized button presentation
+~~~
+
+Today parts of that meaning are split between the Screen Blueprint and Compose realization. The living-Blueprint pilot should reverse-adopt the current accepted appearance/relationships, then determine the smallest design contract that can become the shared source for future construction without forcing Android-specific `dp`, CSS pixels, iOS points, or canvas coordinates to become universal semantic identity.
+
+For an accepted future Blueprint-authored feature:
+
+~~~text
+product / behavior meaning
++ published VexBoard UX / presentation Blueprint
+-> target construction adapter
+-> VexLife Android Screen Blueprint / Elements
+-> Compose realization
+-> expected native render
+-> observed evidence
+~~~
+
+For an existing feature such as VexStream, current source remains authoritative while VexBoard reverse-adopts it. A future authority transition from source-projected design to published design-owned presentation must be explicit; visual similarity alone cannot silently transfer ownership.
+
+
+### VexBoard as a scoped development IDE
+
+The same substrate can project the **development process** used to evolve a feature without making VexBoard a second lifecycle or process owner.
+
+VexWork already routes Android feature evolution through:
+
+~~~text
+process.vexlife-android.feature-authoring
+-> repo.vexlife-android
+-> docs/features/README.md
+-> docs/foundation/FEATURE-EXPERIENCE-LANGUAGE.md
+~~~
+
+A future VexBoard proving consumer may give that source-owned process a Board projection so a human can work through development perceptually:
+
+~~~text
+current accepted Screen
+  -> inspect its semantic / source / construction neighborhood
+  -> draft one bounded Screen or flow branch
+  -> add one CONTROL on the current Screen
+  -> connect that CONTROL to the new flow
+  -> enter the new branch
+  -> author / inspect / simulate only the relevant neighborhood
+  -> Back / Return to the branch origin
+  -> construct target source
+  -> verify / observe
+  -> compare evidence
+~~~
+
+The IDE should not require the entire application map to remain visible. Bounded neighborhood projection plus BoardJourney provides the ordinary scoped experience:
+
+~~~text
+                   hidden wider application
+
+                         ...
+                          |
+                          v
+              [ current accepted Screen ]
+                       |
+                  new CONTROL
+                       |
+                       v
+                [ new flow entry ]
+                       |
+                       v
+                [ draft Screen ]
+                       |
+                    ENTER
+                       v
+                 deeper branch
+
+BoardJourney:
+  current accepted Screen
+  -> new flow entry
+  -> draft Screen
+
+Back:
+  draft Screen
+  -> new flow entry
+  -> current accepted Screen
+~~~
+
+The human can zoom out or follow backlinks when wider context matters, but ordinary authoring stays local.
+
+This makes VexBoard useful as an IDE-like coordination surface across several rightful owners:
+
+~~~text
+PRODUCT VIEW
+  current feature / Screen / behavior meaning
+
+DESIGN VIEW
+  published or working UX Blueprint + portable constraints
+
+CONSTRUCTION VIEW
+  target mappings + generated/native source bindings
+
+SOURCE VIEW
+  exact repository refs / implementation coordinates
+
+EVIDENCE VIEW
+  expected render + observed screenshots / lived proof
+
+WORK VIEW
+  VexWork currentness / dependencies / active changes
+
+PROCESS VIEW
+  repository-owned feature-authoring / review / release route
+~~~
+
+These are lenses over connected identities, not one mega-state.
+
+~~~text
+DEVELOPMENT_PROCESS_BOARD != PROCESS_OWNER
+WORK_VIEW != WORKGRAPH_OWNER
+SOURCE_VIEW != SOURCE_OWNER
+IDE_SCOPE != WHOLE_APPLICATION_DUPLICATION
+LOCAL_AUTHORING_NEIGHBORHOOD != LOSS_OF_WIDER_GRAPH
+BACK_FROM_BRANCH != CAMERA_BACK
+~~~
+
+This self-hosting pattern is a strong later proving case for VexBoard: use VexBoard to perceive and carry the process of evolving a VexBoard-addressable product while all lifecycle, product, source and proof owners remain distinct.
+
+
+### Living-source comparison and evidence freshness
+
+For a source-backed feature, evidence currentness should be derived from the **relevant semantic / construction / render dependency**, not from repository recency alone.
+
+Conceptually:
+
+~~~text
+source-owned semantic identity
++ current target construction mapping
++ current expected/reference representation
++ observed BoardEvidence artifact
+-> bounded comparison finding
+
+same relevant meaning/render binding
+  -> evidence may remain current
+
+relevant semantic or construction dependency changed
+  -> observed artifact becomes historical/stale for that coordinate
+
+current expected representation differs from a current lived observation
+  -> observed drift / possible regression
+
+required binding unavailable
+  -> currentness remains unknown
+~~~
+
+A screenshot becoming historical does not make it bad evidence. It preserves what was actually seen against an older source/mapping revision.
+
+Any labels such as `CURRENT`, `HISTORICAL_SOURCE`, `OBSERVED_DRIFT` or `UNKNOWN` remain presentation findings until repeated consumers earn a reusable wire contract. Do not add freshness fields to every screenshot merely because this patient zero needs a visible comparison.
+
+The target-specific renderer remains the rightful expected-visual owner where pixel/native fidelity matters:
+
+~~~text
+VexBoard semantic Blueprint
+-> target construction mapping
+-> target-native source / renderer
+-> expected/reference visual
+-> BoardEvidence comparison
+
+VEXBOARD_SEMANTIC_PROJECTION != ANDROID_COMPOSE_RENDERER
+VEXBOARD_SEMANTIC_PROJECTION != DESKTOP_BROWSER_RENDERER
+~~~
+
 ### Presentation decomposition before evidence UI
 
 The current browser proving surface is still concentrated in `vexboard/index.html`. That is acceptable for
