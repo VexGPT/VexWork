@@ -163,9 +163,17 @@ export function normalizeScreenDesign(input) {
   assert(typeof input.designRef === 'string' && input.designRef, 'screen design designRef required');
   assert(SCREEN_DESIGN_AUTHORITY_STATES.includes(input.authorityState), 'screen design authorityState unsupported');
   assert(input.referenceViewport && typeof input.referenceViewport === 'object', 'screen design referenceViewport required');
+  assert(typeof input.referenceViewport.profileRef === 'string' && input.referenceViewport.profileRef,
+    'referenceViewport.profileRef required');
   positive(input.referenceViewport.widthDp, 'referenceViewport.widthDp');
   positive(input.referenceViewport.heightDp, 'referenceViewport.heightDp');
   assert(Array.isArray(input.constraints), 'screen design constraints must be an array');
+  if (input.sourceRefs !== undefined) {
+    assert(Array.isArray(input.sourceRefs), 'screen design sourceRefs must be an array');
+    for (const [index, sourceRef] of input.sourceRefs.entries()) {
+      assert(typeof sourceRef === 'string' && sourceRef, `screen design sourceRefs[${index}] required`);
+    }
+  }
   if (input.metrics !== undefined) {
     assert(input.metrics && typeof input.metrics === 'object' && !Array.isArray(input.metrics),
       'screen design metrics must be one object');
@@ -195,7 +203,22 @@ export function normalizeScreenDesign(input) {
     }
   }
 
-  return input;
+  const byOccurrenceRef = new Set(input.constraints.map((constraint) => constraint.occurrenceRef));
+  for (const constraint of input.constraints) {
+    if (
+      constraint.parentOccurrenceRefOrNull !== null &&
+      !byOccurrenceRef.has(constraint.parentOccurrenceRefOrNull)
+    ) {
+      throw new TypeError(
+        `screen design occurrence ${constraint.occurrenceRef} parent missing: ${constraint.parentOccurrenceRefOrNull}`,
+      );
+    }
+    if (constraint.parentOccurrenceRefOrNull === constraint.occurrenceRef) {
+      throw new TypeError(`screen design occurrence ${constraint.occurrenceRef} cannot parent itself`);
+    }
+  }
+
+  return structuredClone(input);
 }
 
 // [VXG RealForever][VEXWORK][VEXBOARD][SCREEN-DESIGN][POC]
