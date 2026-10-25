@@ -534,6 +534,9 @@ export async function forkReadOnlyBoard(source, { draftRef, title = null }) {
     ...(accepted.adoptionCoverage
       ? { adoptionCoverage: structuredClone(accepted.adoptionCoverage) }
       : {}),
+    ...(accepted.adoptionReadiness
+      ? { adoptionReadiness: structuredClone(accepted.adoptionReadiness) }
+      : {}),
     ...(Array.isArray(accepted.sourceRefs) ? { sourceRefs: structuredClone(accepted.sourceRefs) } : {}),
   });
 }
