@@ -176,6 +176,31 @@ test('local VexBoard design draft remains non-implementing until explicit accept
   });
 });
 
+test('accepted VexBoard design remains held when known Android adoption blockers remain', () => {
+  const accepted = structuredClone(design);
+  accepted.authorityState = 'VEXBOARD_DESIGN_AUTHORITY';
+  const readiness = {
+    schemaVersion: 'vexlife-android.vexboard-adoption-readiness/poc-v1',
+    status: 'HELD',
+    blockingFindingRefs: [
+      'finding.android.home.vexstream-copy-unaddressed',
+      'finding.android.vexstream.show-queue-parent-drift',
+    ],
+    identityExceptionCount: 5,
+    findingCount: 5,
+  };
+
+  const plan = compileVexLifeAndroidScreenDesign(
+    accepted,
+    { adoptionReadiness: readiness },
+  );
+
+  assert.equal(plan.designAuthorityState, 'VEXBOARD_DESIGN_AUTHORITY');
+  assert.equal(plan.admission, 'IMPLEMENTATION_HELD_ADOPTION_GAPS');
+  assert.deepEqual(plan.adoptionReadiness, readiness);
+  assert.equal(plan.effects.targetSourceMutationPerformed, false);
+});
+
 test('accepted VexBoard design becomes Android implementation eligible without changing the adoption snapshot', () => {
   const accepted = structuredClone(design);
   accepted.authorityState = 'VEXBOARD_DESIGN_AUTHORITY';
