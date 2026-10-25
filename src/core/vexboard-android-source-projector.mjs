@@ -121,6 +121,12 @@ function normalizeAdoptionCoverage(input) {
       ].includes(finding.kind),
       `Android adoption finding kind unsupported: ${finding.kind}`,
     );
+    assert(typeof finding.blockingForPocAuthority === 'boolean',
+      `Android adoption findings[${index}].blockingForPocAuthority required`);
+    assert(
+      ['IN_POC', 'IN_POC_MAPPED_TARGET_DEBT', 'OUTSIDE_POC'].includes(finding.scopeStatus),
+      `Android adoption findings[${index}].scopeStatus unsupported`,
+    );
     text(finding.summary, `Android adoption findings[${index}].summary`);
     refs(finding.sourceRefs ?? [], `Android adoption findings[${index}].sourceRefs`);
   }
@@ -159,13 +165,8 @@ function normalizeSnapshot(input) {
 
 export function summarizeAndroidPocAdoptionReadiness(coverageInput) {
   const coverage = normalizeAdoptionCoverage(coverageInput);
-  const blockingKinds = new Set([
-    'RAW_COMPOSE_NO_SEMANTIC_REF',
-    'REGISTRY_RENDER_STRUCTURE_DRIFT',
-    'TARGET_LOCAL_DESIGN_MEANING',
-  ]);
   const blockingFindings = (coverage.findings ?? []).filter(
-    (finding) => blockingKinds.has(finding.kind),
+    (finding) => finding.blockingForPocAuthority === true,
   );
   return Object.freeze({
     schemaVersion: 'vexlife-android.vexboard-adoption-readiness/poc-v1',
