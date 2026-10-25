@@ -257,7 +257,8 @@ function renderEdges(svg,visibleSemanticRefs,presentation,focus){
   for(const r of current.graph.relationships){
     if(!Presentation.relationshipVisibleInMode(current.graph,r,relationshipViewMode))continue;
     if(!visibleSemanticRefs.has(r.fromRef)||!visibleSemanticRefs.has(r.toRef))continue;
-    const a=itemFor(r.fromRef),b=itemFor(r.toRef);if(!a||!b)continue;
+    const occurrenceRoute=AndroidPresentation.androidReferenceRelationshipRoute(current.presentation,r.relationshipRef);
+    const a=occurrenceRoute?item(occurrenceRoute.fromProjectionItemRef):itemFor(r.fromRef),b=occurrenceRoute?item(occurrenceRoute.toProjectionItemRef):itemFor(r.toRef);if(!a||!b)continue;
     const route=Presentation.relationshipRoute(a.bounds,b.bounds),accent=presentation.relationshipAccentByRef[r.relationshipRef];
     const classes=['edge',r.kind.toLowerCase()];if(Number.isInteger(accent))classes.push(`branch-${accent}`);if(focus){if(focus.relationships.some(value=>value.relationshipRef===r.relationshipRef))classes.push('pin-focus');else classes.push('pin-muted')}
     const l=document.createElementNS('http://www.w3.org/2000/svg','polyline');l.setAttribute('class',classes.join(' '));l.dataset.relationshipRef=r.relationshipRef;l.setAttribute('points',route.points.map(point=>`${point.x},${point.y}`).join(' '));l.setAttribute('marker-end','url(#vexboard-arrow)');svg.append(l);
