@@ -45,6 +45,7 @@
 <main id="app" class="app"></main>
 <script type="module">
 import * as Board from '../vexboard-reader.js';
+import * as SourceResolver from '../src/shared/vexboard-source-resolver.mjs';
 import { createCameraAnimator } from './ui/camera-animation.mjs';
 import * as Interaction from './ui/interaction.mjs';
 import * as Presentation from './ui/presentation.mjs';
@@ -60,6 +61,10 @@ let activeBoardRef=null;
 let viewportEl=null,canvasEl=null,minimapEl=null,zoomReadoutEl=null;
 let draftDirty=false,saveMessage='',suppressCanvasClick=false;
 let pinnedSemanticRefs=new Set(),relationalFocusMode='CONNECT',pinMenuEl=null;
+let sourceCatalogCache=null;
+const sourceCatalogUrls=Object.freeze([
+  '../projects/vexboard/examples/board-source-catalog.json',
+]);
 const reducedMotion=globalThis.matchMedia?.('(prefers-reduced-motion: reduce)')||null;
 const cameraAnimator=createCameraAnimator({
   normalizeCamera:Board.normalizeCamera,
@@ -98,6 +103,35 @@ async function loadBuiltInPrototype(boardRef){
   const response=await fetch(url,{cache:'no-store'});
   if(!response.ok)throw new Error(`${boardRef} prototype HTTP ${response.status}`);
   return response.json();
+}
+async function loadSourceCatalogs(){
+  if(sourceCatalogCache)return sourceCatalogCache;
+  sourceCatalogCache=await Promise.all(sourceCatalogUrls.map(async(catalogUrl)=>{
+    const response=await fetch(catalogUrl,{cache:'no-store'});
+    if(!response.ok)throw new Error(`board source catalog HTTP ${response.status}`);
+    return Object.freeze({
+      catalog:SourceResolver.normalizeBoardSourceCatalog(await response.json()),
+      catalogUrl:new URL(catalogUrl,document.baseURI),
+    });
+  }));
+  return sourceCatalogCache;
+}
+async function loadCatalogBoard(boardRef){
+  const sources=await loadSourceCatalogs();
+  const resolution=SourceResolver.resolveBoardSource(boardRef,sources.map(source=>source.catalog));
+  if(!resolution)throw new Error(`unknown source-owned board ${boardRef}`);
+  const source=sources.find(candidate=>candidate.catalog.catalogRef===resolution.catalogRef);
+  if(!source)throw new Error(`source catalog unavailable ${resolution.catalogRef}`);
+  const boardUrl=new URL(resolution.location,source.catalogUrl);
+  const response=await fetch(boardUrl,{cache:'no-store'});
+  if(!response.ok)throw new Error(`${boardRef} HTTP ${response.status}`);
+  const draft=Board.normalizeDraft(await response.json());
+  if(draft.draftRef!==boardRef)throw new Error(`board source identity mismatch ${boardRef}`);
+  return draft;
+}
+async function openCatalogBoard(boardRef,{pushCurrent=false}={}){
+  const d=await loadCatalogBoard(boardRef);
+  return openBoard(d,{pushCurrent,boardRef,prototypeInput:null});
 }
 async function selfMap(){return loadBuiltIn('board.vexboard.self-map')}
 async function openBuiltInBoard(boardRef,{pushCurrent=false}={}){
@@ -138,8 +172,8 @@ function landing(){
   const simulate=el('button','btn violet','Open prototype demo');simulate.onclick=async()=>openBuiltInBoard('board.vexboard.prototype-demo');
   actions.append(create,open,simulate);
   const examples=el('div','row');
-  const anatomy=el('button','btn','Open system anatomy example');anatomy.onclick=async()=>openBuiltInBoard('board.vexbusinessfactory.system-anatomy.patient-zero');
-  const intent=el('button','btn','Open intent topology example');intent.onclick=async()=>openBuiltInBoard('board.vexbusinessfactory.intent-topology.patient-zero');
+  const anatomy=el('button','btn','Open system anatomy example');anatomy.onclick=async()=>openCatalogBoard('board.vexbusinessfactory.system-anatomy.patient-zero');
+  const intent=el('button','btn','Open intent topology example');intent.onclick=async()=>openCatalogBoard('board.vexbusinessfactory.intent-topology.patient-zero');
   examples.append(anatomy,intent);
   box.append(actions,el('h2','','Source examples'),examples,el('h2','','Local drafts'));
   const list=el('div','cards');
