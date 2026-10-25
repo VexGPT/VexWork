@@ -5093,7 +5093,7 @@
       "workRef": "work.vexlife.interface-refinement.v2.streaming",
       "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
       "label": "V2 — progressive streamed Vex responses",
-      "purpose": "Make local Heretic replies appear progressively in the Vex interface and continue to model completion without committing partial text as durable Conversation truth. Final response/head persistence remains atomic after full completion; interrupted streams remain typed incomplete UI state.",
+      "purpose": "Make local Heretic replies appear progressively in the Vex interface and continue naturally beyond MLX-LM 0.32.0's implicit 512-token default under an explicit source-owned completion budget. Partial chunks stay ephemeral; final response/head persistence remains atomic after full completion; interrupted streams remain typed incomplete UI state.",
       "workClass": "TASK",
       "state": "WAITING_DEPENDENCIES",
       "priorityClass": "HIGH",
@@ -5108,11 +5108,12 @@
         "repo.vexlife:src/core/lived-companion-connection.mjs",
         "repo.vexlife:scripts/serve-browser-core.mjs",
         "repo.vexlife:reference/browser/modules/chat-controller.js",
-        "projects/vexlife-interface-refinement/README.md"
+        "projects/vexlife-interface-refinement/README.md",
+        "github.source.mlx-lm.v0.32.0.server"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
-      "semanticFingerprint": "d74d9fc03ebfffc90d574fc056799c76a6fba1fced2b36a093d10bc6b9f5c49e"
+      "semanticFingerprint": "65700ada06cdec62f166f05d53a403f7f4ee729612c04dcb1e2c049a4c6400c4"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -7582,5 +7583,5 @@
     "projects/vexlife-interface-refinement/README.md"
   ],
   "formedAt": "2026-10-21T01:45:00.000Z",
-  "semanticFingerprint": "11d7fa5b871666ccfd88e856a173bc99fa5640b0ca6740b608b6b4af8e5c1400"
+  "semanticFingerprint": "09e6d37655d409e600365df30d8a04304290da0ecb7dfcfcc88876c47f2daf50"
 }
