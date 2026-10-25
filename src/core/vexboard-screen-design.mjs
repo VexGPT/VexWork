@@ -215,7 +215,9 @@ export function normalizeScreenDesign(input) {
     }
   }
 
-  const byOccurrenceRef = new Set(input.constraints.map((constraint) => constraint.occurrenceRef));
+  const byOccurrenceRef = new Map(
+    input.constraints.map((constraint) => [constraint.occurrenceRef, constraint]),
+  );
   for (const constraint of input.constraints) {
     if (
       constraint.parentOccurrenceRefOrNull !== null &&
@@ -229,6 +231,21 @@ export function normalizeScreenDesign(input) {
       throw new TypeError(`screen design occurrence ${constraint.occurrenceRef} cannot parent itself`);
     }
   }
+
+  const visiting = new Set();
+  const visited = new Set();
+  function visitOccurrence(occurrenceRef) {
+    if (visiting.has(occurrenceRef)) {
+      throw new TypeError(`screen design containment cycle detected at ${occurrenceRef}`);
+    }
+    if (visited.has(occurrenceRef)) return;
+    visiting.add(occurrenceRef);
+    const parentRef = byOccurrenceRef.get(occurrenceRef)?.parentOccurrenceRefOrNull ?? null;
+    if (parentRef) visitOccurrence(parentRef);
+    visiting.delete(occurrenceRef);
+    visited.add(occurrenceRef);
+  }
+  for (const occurrenceRef of byOccurrenceRef.keys()) visitOccurrence(occurrenceRef);
 
   if (input.layoutRules !== undefined) {
     const layoutRefs = new Set();
