@@ -54,6 +54,9 @@ test('Android construction plan consumes VexBoard design without target effects'
   );
   assert.equal(homeTitle.targetSymbol, 'VexText');
   assert.equal(homeTitle.identityStateOrNull, 'VEXBOARD_PROPOSED');
+  assert.equal(homeTitle.contentModeOrNull, 'STATIC_LOCALIZED');
+  assert.equal(homeTitle.targetIdentityStrategyOrNull, 'REGISTER_STATIC_TEXT_ELEMENT');
+  assert.equal(homeTitle.targetCapabilityStatusOrNull, 'AVAILABLE');
   assert.equal(
     homeTitle.targetOwnerSourceRefOrNull,
     'repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt',
@@ -64,6 +67,20 @@ test('Android construction plan consumes VexBoard design without target effects'
   );
   assert.equal(systemsTitle.targetSymbol, 'VexText');
   assert.equal(systemsTitle.identityStateOrNull, 'VEXBOARD_PROPOSED');
+  assert.equal(systemsTitle.contentModeOrNull, 'STATIC_LOCALIZED');
+
+  const homeStatus = plan.componentMappings.find(
+    (entry) => entry.semanticRef === 'element.home.body.vexstream.status',
+  );
+  assert.equal(homeStatus.contentModeOrNull, 'DYNAMIC_RUNTIME');
+  assert.equal(homeStatus.targetIdentityStrategyOrNull, 'ADD_DYNAMIC_TEXT_IDENTITY');
+  assert.equal(homeStatus.targetCapabilityStatusOrNull, 'STANDARDIZATION_REQUIRED');
+
+  const homeBody = plan.componentMappings.find(
+    (entry) => entry.semanticRef === 'element.home.body.vexstream.body',
+  );
+  assert.equal(homeBody.contentModeOrNull, 'DYNAMIC_RUNTIME');
+  assert.equal(homeBody.targetCapabilityStatusOrNull, 'STANDARDIZATION_REQUIRED');
 
   const homeOpen = plan.componentMappings.find(
     (entry) => entry.semanticRef === 'element.home.body.systems.vexstream-music',
