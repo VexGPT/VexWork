@@ -2,6 +2,7 @@ import { createBoardGraph, createBoardProjection } from './vexboard.mjs';
 import { compileVexLifeAndroidScreenDesign } from './vexboard-android-construction.mjs';
 import {
   normalizeScreenDesign,
+  screenDesignViewportProfile,
   resolveBoundedResponsiveMetric,
   resolveScreenDesignBox,
 } from './vexboard-screen-design.mjs';
@@ -278,9 +279,9 @@ function addActionNodes(nodes, section, ownerScreenRef) {
   }
 }
 
-function experienceBoard(snapshot, design) {
-  const homeMetrics = profileMetrics(snapshot.referenceProfile, design, 'home');
-  const vexMetrics = profileMetrics(snapshot.referenceProfile, design, 'vexstream');
+function experienceBoard(snapshot, design, viewportProfile) {
+  const homeMetrics = profileMetrics(viewportProfile, design, 'home');
+  const vexMetrics = profileMetrics(viewportProfile, design, 'vexstream');
   const graphRef = 'graph.vexlife-android.home-vexstream.poc';
   const projectionRef = 'projection.vexlife-android.home-vexstream.poc';
   const sourceRefs = sourceUnion(snapshot, design, snapshot.home.sourceRefs, snapshot.vexStream.sourceRefs);
@@ -599,7 +600,7 @@ function experienceBoard(snapshot, design) {
     title: 'VexLife Android · Home → VexStream · Screen / State POC',
     graph,
     projection,
-    presentation: makePresentation(snapshot.referenceProfile, hints, sourceRefs, [{
+    presentation: makePresentation(viewportProfile, hints, sourceRefs, [{
       relationshipRef: 'rel.vexlife-android.vexstream.manage-connection.open',
       fromProjectionItemRef: loadedChrome.actionItemBySemanticRef.get(sheet.triggerRef),
       toProjectionItemRef: 'item.vexstream.connection-sheet',
@@ -609,7 +610,7 @@ function experienceBoard(snapshot, design) {
   });
 }
 
-function depthBoard(snapshot, design) {
+function depthBoard(snapshot, design, viewportProfile) {
   const constructionPlan = compileVexLifeAndroidScreenDesign(design);
   const graphRef = 'graph.vexlife-android.vexstream-depth.poc';
   const projectionRef = 'projection.vexlife-android.vexstream-depth.poc';
@@ -741,7 +742,7 @@ function depthBoard(snapshot, design) {
     title: 'VexLife Android · VexStream · Data / Storage / Desktop Service Depth',
     graph,
     projection,
-    presentation: makePresentation(snapshot.referenceProfile, hints, sourceRefs),
+    presentation: makePresentation(viewportProfile, hints, sourceRefs),
     design,
     sourceRefs,
   });
@@ -751,21 +752,24 @@ export function projectVexLifeAndroidPocSnapshot(
   snapshotInput,
   boardRef = VEXBOARD_ANDROID_POC_BOARD_REFS.EXPERIENCE,
   designInput = null,
+  viewportProfileRefOrNull = null,
 ) {
   const snapshot = normalizeSnapshot(snapshotInput);
   stableRef(boardRef, 'boardRef');
   assert(designInput, 'VexLife Android POC requires one VexBoard Screen design');
   const design = designForSnapshot(snapshot, designInput);
+  const viewportProfile = screenDesignViewportProfile(design, viewportProfileRefOrNull);
 
   let board;
-  if (boardRef === VEXBOARD_ANDROID_POC_BOARD_REFS.EXPERIENCE) board = experienceBoard(snapshot, design);
-  else if (boardRef === VEXBOARD_ANDROID_POC_BOARD_REFS.DEPTH) board = depthBoard(snapshot, design);
+  if (boardRef === VEXBOARD_ANDROID_POC_BOARD_REFS.EXPERIENCE) board = experienceBoard(snapshot, design, viewportProfile);
+  else if (boardRef === VEXBOARD_ANDROID_POC_BOARD_REFS.DEPTH) board = depthBoard(snapshot, design, viewportProfile);
   else throw new TypeError(`unsupported VexLife Android POC boardRef ${boardRef}`);
 
   return Object.freeze({
     schemaVersion: 'vexboard.android-poc-projection/v1',
     snapshotRef: snapshot.snapshotRef,
     boardRef,
+    viewportProfileRef: viewportProfile.profileRef,
     board,
     effects: Object.freeze({
       sourceMutationPerformed: false,
