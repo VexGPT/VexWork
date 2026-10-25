@@ -851,7 +851,10 @@
         "github.comment.vexlife-android.pr180.6395231779.post-merge-exact-composition",
         "github.review.vexlife-android.pr180.5642181507.assurance-clear",
         "evidence.vexlife-android.pr180.sourceowner.a001.outer.sha256.90597e30a77566d32b70dbee298a93b1faa4d5ec5dace51d157ee4482d7b4207",
-        "evidence.vexlife-android.pr180.sourceowner.a001.inner.sha256.85dd83bb8db46a54f87e4faa679ea405fabffa986b0787e16bcd53515c515759"
+        "evidence.vexlife-android.pr180.sourceowner.a001.inner.sha256.85dd83bb8db46a54f87e4faa679ea405fabffa986b0787e16bcd53515c515759",
+        "evidence.vexstream.pairing-continuity.device.a003.outer.sha256.07bd56a7d0cd3a3051f6affc411731f1a63887a9266c4170e3e522fd16556a17",
+        "evidence.vexstream.pairing-continuity.device.a003.inner.sha256.a830542dfb9ccd655952b99ec8d1cec10a068a3cbd8dd2da4fcab4e1fbd7672a",
+        "github.comment.vexlife-android.pr180.6395713039.device-a003-pass"
       ],
       "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
       "nextProcessRefs": [
@@ -860,7 +863,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-25T07:10:00.000Z",
-      "updatedAt": "2026-10-25T08:08:17.000Z"
+      "updatedAt": "2026-10-25T09:02:15.000Z"
     }
   ],
   "transitions": [
