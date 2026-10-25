@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "vexboard.board-source-catalog/v1",
+  "catalogRef": "catalog.vexboard.patient-zero-examples",
+  "entries": [
+    {
+      "boardRef": "board.vexbusinessfactory.intent-topology.patient-zero",
+      "location": "./vexbusinessfactory-intent-topology.board.json",
+      "sourceRefs": [
+        "projects/vexboard/examples/vexbusinessfactory-intent-topology.board.json"
+      ]
+    },
+    {
+      "boardRef": "board.vexbusinessfactory.system-anatomy.patient-zero",
+      "location": "./vexbusinessfactory-system-anatomy.board.json",
+      "sourceRefs": [
+        "github.issue.vexwork.138",
+        "projects/vexboard/examples/vexbusinessfactory-system-anatomy.board.json"
+      ]
+    }
+  ],
+  "sourceRefs": [
+    "projects/vexboard/FRACTAL-SEMANTIC-COMPOSITION-AND-SPATIAL-LAYOUT.md"
+  ]
+}
