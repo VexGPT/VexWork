@@ -150,6 +150,13 @@ test('VexLife Android POC is projected at source-load time and styled without ch
   assert.match(page, /ScreenDesign\.normalizeScreenDesign\(d\.design\)/);
   assert.match(page, /Reverse-adopted design/);
   assert.match(page, /VexBoard design authority/);
+  assert.match(page, /VexBoard design draft/);
+  assert.match(page, /function editLocalDesignMetric\(/);
+  assert.match(page, /next\.authorityState='VEXBOARD_DESIGN_DRAFT'/);
+  assert.match(page, /function reprojectAndroidDesign\(/);
+  assert.match(page, /Design metrics/);
+  assert.match(page, /Preferred %/);
+  assert.match(page, /Design edit rejected/);
   assert.match(page, /Screen Design/);
   assert.match(page, /function designMetricText\(/);
   assert.match(page, /function designAxisText\(/);
