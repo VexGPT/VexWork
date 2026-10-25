@@ -817,7 +817,11 @@
         "github.commit.vexstream-music.8a740811587b4038730cceb12484b47a3a890de9",
         "evidence.vexstream-music.pr12.sourceowner.a001.outer.sha256.95c610090cd774ddd84288d4b2d3e7d1612d363f4813b38f11ee3586de5329f0",
         "evidence.vexstream-music.pr12.sourceowner.a001.inner.sha256.f3e5d225b2be51adf7f9e3fce03a10210cd8b5436c8721398f68cd269fc9b81b",
-        "github.comment.vexstream-music.pr12.6396181090.sourceowner-a001-safe-failure"
+        "github.comment.vexstream-music.pr12.6396181090.sourceowner-a001-safe-failure",
+        "github.commit.vexstream-music.3d983aad99bf1c66a0a747978732ff547d350cf7",
+        "evidence.vexstream-music.pr12.sourceowner.a002.outer.sha256.51bf51e9a6125cf0e69470d57db97c2037673874e74e4e0e82abe84e4731d8eb",
+        "evidence.vexstream-music.pr12.sourceowner.a002.inner.sha256.b34e7e647a4c3f89b3fd2c44e3b856720abd6103871dc7787ca37ab847e293d9",
+        "github.comment.vexstream-music.pr12.6396216345.sourceowner-a002-safe-failure"
       ],
       "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
       "nextProcessRefs": [
@@ -826,7 +830,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-25T07:10:00.000Z",
-      "updatedAt": "2026-10-25T09:52:47.000Z"
+      "updatedAt": "2026-10-25T09:56:36.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
