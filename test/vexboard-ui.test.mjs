@@ -200,12 +200,23 @@ test('right-click pin focus is browser-local diagnostic state over bounded relat
   assert.match(page, /pin-muted/);
   assert.match(page, /pinnedSemanticRefs:\[\.\.\.pinnedSemanticRefs\]/);
   assert.doesNotMatch(page, /localStorage\.(?:setItem|getItem)\([^)]*pin/i);
-  const pinHelpers = page.slice(
-    page.indexOf('function currentRelationalFocus()'),
-    page.indexOf('function inspectorRefToken('),
-  );
-  assert.ok(pinHelpers.length > 0);
-  assert.doesNotMatch(pinHelpers, /CONNECT_NODES|Board\.applyBoardControl|\bact\(/);
+  const togglePinOwner = page.split('\n').find((line) => line.includes('function togglePinnedSemanticRef('));
+  assert.ok(togglePinOwner);
+  assert.match(togglePinOwner, /pinnedSemanticRefs/);
+  assert.match(togglePinOwner, /renderWorkspace\(\)/);
+  assert.doesNotMatch(togglePinOwner, /CONNECT_NODES|Board\.applyBoardControl|\bact\(/);
+
+  const openPinStart = page.indexOf('function openPinMenu(');
+  const openPinEnd = page.indexOf("document.addEventListener('pointerdown'", openPinStart);
+  assert.ok(openPinStart >= 0 && openPinEnd > openPinStart);
+  const openPinOwner = page.slice(openPinStart, openPinEnd);
+  assert.match(openPinOwner, /togglePinnedSemanticRef\(semanticRef\)/);
+  assert.doesNotMatch(openPinOwner, /CONNECT_NODES|Board\.applyBoardControl|\bact\(/);
+
+  const contextMenuOwner = page.split('\n').find((line) => line.includes('s.oncontextmenu='));
+  assert.ok(contextMenuOwner);
+  assert.match(contextMenuOwner, /openPinMenu\(e\.clientX,e\.clientY,n\.nodeRef\)/);
+  assert.doesNotMatch(contextMenuOwner, /n\.label|projectionItemRef/);
   assert.doesNotMatch(page, /method:\s*['"](?:POST|PUT|PATCH|DELETE)['"]/i);
 });
 test('prototype demo drives clickable local simulation through scenario overlays and BoardJourney', () => {
