@@ -14,6 +14,7 @@ import {
   resolveScreenDesignConstraintBox,
   screenDesignViewportProfile,
   screenDesignComponentAssignment,
+  screenDesignSemanticElement,
 } from '../src/core/vexboard-screen-design.mjs';
 
 test('Screen design authority states preserve reverse adoption, draft proposal and accepted authority separately', () => {
@@ -206,6 +207,66 @@ test('screen design resolves named viewport profiles without changing design ide
   assert.throws(
     () => screenDesignViewportProfile(design, 'profile.missing'),
     /unknown screen design viewport profile/,
+  );
+});
+
+test('screen design can mint proposed semantic elements before target registration catches up', () => {
+  const design = normalizeScreenDesign({
+    schemaVersion: VEXBOARD_SCREEN_DESIGN_SCHEMA,
+    designRef: 'design.proposed-elements',
+    authorityState: 'VEXBOARD_DESIGN_DRAFT',
+    referenceViewport: {
+      profileRef: 'profile.phone',
+      widthDp: 412,
+      heightDp: 915,
+    },
+    constraints: [],
+    visualTokens: {
+      colors: { onSurface: '#FFFFFF' },
+      shapes: {},
+      dimensions: {},
+      typography: {
+        headlineSmall: {
+          fontFamily: 'PLATFORM_DEFAULT',
+          fontWeight: 400,
+          fontSizeSp: 24,
+          lineHeightSp: 32,
+        },
+      },
+    },
+    semanticElements: [{
+      semanticRef: 'element.example.title',
+      parentSemanticRef: 'element.example.surface',
+      kind: 'TEXT',
+      identityState: 'VEXBOARD_PROPOSED',
+      label: 'Example',
+      referenceLineCount: 1,
+      sourceRefs: ['repo.example:source'],
+    }],
+    componentAssignments: [{
+      assignmentRef: 'assignment.element.example.title',
+      semanticRef: 'element.example.title',
+      templateRef: 'component.text',
+      styleRef: 'style.default',
+      selectedStyleRefOrNull: null,
+      iconRefOrNull: null,
+      typographyRefOrNull: 'headlineSmall',
+      colorRefOrNull: 'onSurface',
+    }],
+  });
+
+  assert.deepEqual(screenDesignSemanticElement(design, 'element.example.title'), {
+    semanticRef: 'element.example.title',
+    parentSemanticRef: 'element.example.surface',
+    kind: 'TEXT',
+    identityState: 'VEXBOARD_PROPOSED',
+    label: 'Example',
+    referenceLineCount: 1,
+    sourceRefs: ['repo.example:source'],
+  });
+  assert.equal(
+    screenDesignComponentAssignment(design, 'element.example.title').templateRef,
+    'component.text',
   );
 });
 
