@@ -48,6 +48,20 @@ test('VexLife Android POC snapshot projects deterministically without source eff
   );
   assert.equal(songsOccurrences.length, 3, 'one semantic tab should have state-local projection occurrences');
 
+  for (const frameRef of [
+    'item.vexstream.state.loading',
+    'item.vexstream.state.empty',
+    'item.vexstream.state.loaded',
+  ]) {
+    const frame = projection.items.find((item) => item.projectionItemRef === frameRef);
+    const tabs = projection.items.filter((item) => item.projectionItemRef.startsWith(`${frameRef}.tab.`));
+    assert.equal(tabs.length, 5);
+    assert.equal(tabs.every((tab) =>
+      tab.bounds.x >= frame.bounds.x
+        && tab.bounds.x + tab.bounds.width <= frame.bounds.x + frame.bounds.width), true,
+    'reference tab projection must remain inside the bounded Screen frame');
+  }
+
   const sheet = projection.items.find(
     (item) => item.projectionItemRef === 'item.vexstream.connection-sheet',
   );
