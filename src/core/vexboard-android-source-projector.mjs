@@ -630,6 +630,7 @@ function depthBoard(snapshot, design) {
     graph,
     projection,
     presentation: makePresentation(snapshot.referenceProfile, hints, sourceRefs),
+    design,
     sourceRefs,
   });
 }
