@@ -10,6 +10,7 @@ import {
   normalizeScreenDesign,
   resolveBoundedResponsiveMetric,
   resolveScreenDesignBox,
+  resolveScreenDesignAnchorBox,
   resolveScreenDesignConstraintBox,
   screenDesignViewportProfile,
   screenDesignComponentAssignment,
@@ -254,6 +255,57 @@ test('screen design owns reusable component/template assignments and state-condi
     () => normalizeScreenDesign(duplicate),
     /duplicate screen design component semanticRef/,
   );
+});
+
+test('anchor rules resolve bounded bottom-end placement from design metrics', () => {
+  const design = normalizeScreenDesign({
+    schemaVersion: VEXBOARD_SCREEN_DESIGN_SCHEMA,
+    designRef: 'design.anchor-proof',
+    authorityState: 'VEXBOARD_DESIGN_DRAFT',
+    referenceViewport: {
+      profileRef: 'profile.phone',
+      widthDp: 412,
+      heightDp: 915,
+    },
+    metrics: {
+      insetH: boundedResponsiveMetric({
+        referenceDp: 16,
+        referenceExtentDp: 412,
+        minDp: 16,
+        maxDp: 16,
+      }),
+      insetV: boundedResponsiveMetric({
+        referenceDp: 16,
+        referenceExtentDp: 845,
+        minDp: 16,
+        maxDp: 16,
+      }),
+    },
+    constraints: [],
+    anchorRules: [{
+      anchorRef: 'anchor.fab',
+      semanticRef: 'element.fab-cluster',
+      parentSemanticRef: 'screen.example',
+      horizontalAnchor: 'END',
+      verticalAnchor: 'BOTTOM',
+      horizontalInsetMetricRefOrNull: 'insetH',
+      verticalInsetMetricRefOrNull: 'insetV',
+    }],
+  });
+
+  const box = resolveScreenDesignAnchorBox({
+    designInput: design,
+    anchorRuleInput: design.anchorRules[0],
+    parentBoundsDp: { x: 0, y: 70, width: 412, height: 845 },
+    widthDp: 40,
+    heightDp: 90,
+  });
+  assert.deepEqual(box, {
+    x: 356,
+    y: 809,
+    width: 40,
+    height: 90,
+  });
 });
 
 test('screen design preserves scroll/layout intent independently of resolved rectangles', () => {
