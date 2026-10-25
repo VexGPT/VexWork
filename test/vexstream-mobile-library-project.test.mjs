@@ -15,7 +15,7 @@ const policy = createProjectAgencyPolicy(read('projects/vexstream-mobile-library
 
 test('VexStream Mobile Library is the first external Project over the shared Workgraph', () => {
   const refs = projectWorkRefs(project, graph);
-  assert.equal(refs.length, 18);
+  assert.equal(refs.length, 23);
   assert.equal(refs.includes('work.vexstream.mobile-library.outcome'), true);
   assert.equal(refs.includes('work.vexstream.mobile-library.download-experience'), true);
   assert.equal(refs.includes('work.vexstream.mobile-library.massdownload-maturity'), true);
@@ -36,6 +36,8 @@ test('VexStream Mobile Library is the first external Project over the shared Wor
     'work.vexstream.mobile-library.large-offline-startup-performance',
     'work.vexstream.mobile-library.library-browse-discovery',
     'work.vexstream.mobile-library.massdownload-maturity',
+    'work.vexstream.mobile-library.pairing-continuity-after-uninstall-reinstall',
+    'work.vexstream.mobile-library.pairing-reconnect-build-continuity',
     'work.vexstream.mobile-library.playback-surfaces',
   ]);
 
@@ -44,8 +46,11 @@ test('VexStream Mobile Library is the first external Project over the shared Wor
   ]);
 
   assert.deepEqual(childRefs(graph, 'work.vexstream.mobile-library.playback-surfaces'), [
+    'work.vexstream.mobile-library.current-artwork-availability',
     'work.vexstream.mobile-library.full-player',
+    'work.vexstream.mobile-library.missing-artwork-reconciliation',
     'work.vexstream.mobile-library.now-playing-artwork-projection',
+    'work.vexstream.mobile-library.offline-artwork-durability',
   ]);
 
   assert.deepEqual(childRefs(graph, 'work.vexstream.mobile-library.durable-device-library'), [
@@ -71,7 +76,7 @@ test('Mobile Library Board separates terminal MassDownload from the paused Queue
   const active = board.lanes.find((lane) => lane.laneRef === 'lane.work.active');
   const waiting = board.lanes.find((lane) => lane.laneRef === 'lane.work.waiting');
 
-  assert.equal(board.lanes.flatMap((lane) => lane.cards).length, 18);
+  assert.equal(board.lanes.flatMap((lane) => lane.cards).length, 23);
   assert.equal(done.cards.some((card) => card.workRef === 'work.vexstream.mobile-library.massdownload-product'), true);
   assert.equal(done.cards.some((card) => card.workRef === 'work.vexstream.mobile-library.massdownload-e2e'), true);
   assert.equal(active.cards.some((card) => card.workRef === 'work.vexstream.mobile-library.track-menu-presentation-defect'), false);
@@ -134,14 +139,14 @@ test('durable device library is terminal without closing separate Mobile Library
   assert.equal(intake.cards.some((card) => card.workRef === 'work.vexstream.mobile-library.download-experience'), true);
   assert.equal(waiting.cards.some((card) => card.workRef === 'work.vexstream.mobile-library.track-menu-presentation-defect'), true);
 });
-test('Sort / Filter source and proof are merged while human Verify entry remains protected', () => {
+test('Sort / Filter returns to active refinement when lived review cannot find fresh music', () => {
   const browse = graph.items.find((candidate) => candidate.workRef === 'work.vexstream.mobile-library.library-browse-discovery');
   const controls = graph.items.find((candidate) => candidate.workRef === 'work.vexstream.mobile-library.sort-filter-controls');
   assert.ok(browse);
   assert.ok(controls);
   assert.equal(browse.state, 'DECOMPOSED');
   assert.equal(controls.parentWorkRefOrNull, browse.workRef);
-  assert.equal(controls.state, 'WAITING_HUMAN');
+  assert.equal(controls.state, 'RUNNING');
   assert.equal(controls.authorityDisposition, 'AUTHORIZED_BOUNDED');
   assert.equal(controls.effectDisposition, 'EFFECTS_BOUND');
   assert.equal(controls.sourceRefs.includes('github.issue.vexlife-android.163'), true);
@@ -152,12 +157,15 @@ test('Sort / Filter source and proof are merged while human Verify entry remains
   assert.equal(durable.state, 'COMPLETED');
 
   const board = projectWorkBoard({ project, graph, view, registry });
-  const needsHuman = board.lanes.find((lane) => lane.laneRef === 'lane.work.needs-human');
+  const active = board.lanes.find((lane) => lane.laneRef === 'lane.work.active');
   const done = board.lanes.find((lane) => lane.laneRef === 'lane.work.done');
-  assert.equal(needsHuman.cards.some((card) => card.workRef === controls.workRef), true);
+  assert.equal(active.cards.some((card) => card.workRef === controls.workRef), true);
   assert.equal(done.cards.some((card) => card.workRef === durable.workRef), true);
+  assert.equal(controls.label, 'Sort / Filter / Recently added library controls');
+  assert.equal(controls.priorityClass, 'HIGH');
+  assert.equal(controls.sourceRefs.includes('human.lived-feedback.vexstream.mobile-library.recently-added.20261025a'), true);
   const history = graph.transitions.filter((transition) => transition.workRef === controls.workRef);
-  assert.deepEqual(history.slice(-2).map((transition) => [transition.priorState, transition.nextState]), [['WAITING_TOOL', 'RUNNING'], ['RUNNING', 'WAITING_HUMAN']]);
+  assert.deepEqual(history.slice(-2).map((transition) => [transition.priorState, transition.nextState]), [['RUNNING', 'WAITING_HUMAN'], ['WAITING_HUMAN', 'RUNNING']]);
 });
 
 test('Songs bulk download and remove-all is merged/proven and waits on human review without fabricated history', () => {
@@ -176,7 +184,7 @@ test('large offline library startup performance is a bounded active defect', () 
   const item = graph.items.find((candidate) => candidate.workRef === 'work.vexstream.mobile-library.large-offline-startup-performance');
   assert.ok(item);
   assert.equal(item.workClass, 'DEFECT');
-  assert.equal(item.state, 'DECOMPOSED');
+  assert.equal(item.state, 'WAITING_HUMAN');
   assert.equal(item.workDisposition, 'ACTIVE');
   assert.equal(item.priorityClass, 'HIGH');
   assert.equal(item.sourceRefs.includes('github.issue.vexlife-android.168'), true);
@@ -184,16 +192,28 @@ test('large offline library startup performance is a bounded active defect', () 
   assert.equal(item.effectDisposition, 'EFFECTS_BOUND');
   assert.deepEqual(item.dependencyRefs, ['work.vexstream.mobile-library.durable-device-library']);
 });
-test('Playback Surfaces keeps artwork projection ahead of the full-player destination', () => {
+test('Playback Surfaces separates accepted projection from lived artwork convergence and reconciliation', () => {
   const outcome = graph.items.find((candidate) => candidate.workRef === 'work.vexstream.mobile-library.playback-surfaces');
   const artwork = graph.items.find((candidate) => candidate.workRef === 'work.vexstream.mobile-library.now-playing-artwork-projection');
   const player = graph.items.find((candidate) => candidate.workRef === 'work.vexstream.mobile-library.full-player');
+  const offlineArtwork = graph.items.find((candidate) => candidate.workRef === 'work.vexstream.mobile-library.offline-artwork-durability');
+  const currentArtwork = graph.items.find((candidate) => candidate.workRef === 'work.vexstream.mobile-library.current-artwork-availability');
+  const reconcile = graph.items.find((candidate) => candidate.workRef === 'work.vexstream.mobile-library.missing-artwork-reconciliation');
   assert.ok(outcome);
   assert.ok(artwork);
   assert.ok(player);
+  assert.ok(offlineArtwork);
+  assert.ok(currentArtwork);
+  assert.ok(reconcile);
   assert.equal(outcome.state, 'DECOMPOSED');
-  assert.equal(artwork.state, 'READY');
-  assert.equal(player.state, 'WAITING_DEPENDENCIES');
+  assert.equal(artwork.state, 'COMPLETED');
+  assert.equal(player.state, 'VERIFYING');
+  assert.equal(offlineArtwork.state, 'RUNNING');
+  assert.equal(currentArtwork.state, 'RUNNING');
+  assert.equal(reconcile.state, 'DECOMPOSED');
+  assert.equal(reconcile.authorityDisposition, 'NO_AUTHORITY');
+  assert.equal(reconcile.effectDisposition, 'NO_EFFECTS');
+  assert.deepEqual(reconcile.dependencyRefs, [currentArtwork.workRef]);
   assert.deepEqual(player.dependencyRefs, [artwork.workRef]);
   assert.equal(artwork.repositoryRefs.includes('repo.vexstream-music'), true);
   assert.equal(artwork.repositoryRefs.includes('repo.vexlife-android'), true);
@@ -240,7 +260,9 @@ test('Mobile Library Project keeps a human audit/decision front door beside grap
   assert.match(readme, /ML-D12 — Sort \/ Filter Android source and proof are accepted; human Verify entry remains/);
   assert.match(readme, /ML-D13 — Songs bulk management is merged\/proven and waiting on lived review/);
   assert.match(readme, /ML-D14 — Large offline libraries exposed a cold-start performance defect/);
-  assert.match(readme, /ML-D15 — Playback surfaces reuse existing Behavior owners; Android Widget work stays cross-cutting/);
+  assert.match(readme, /ML-D15 — Full Player is one Now Playing sheet; Android Widget work stays cross-cutting/);
+  assert.match(readme, /ML-D18 — Freshness discovery is required; catalog-added and device-downloaded are different clocks/);
+  assert.match(readme, /ML-D19 — Missing-artwork reconciliation is not persistent Keep Offline sync/);
   assert.match(readme, /Android issue #168/);
   assert.match(readme, /PR #166 merged/);
   assert.match(readme, /PR #167/);
