@@ -811,7 +811,9 @@
         "github.pull.vexstream-music.12",
         "github.commit.vexstream-music.f2f7c17ae8fb663686073056d6b18520a106244d",
         "github.pull.vexlife-android.181",
-        "github.commit.vexlife-android.9e3c55c8367734c5143168ad5ab9c19594460369"
+        "github.commit.vexlife-android.9e3c55c8367734c5143168ad5ab9c19594460369",
+        "github.commit.vexstream-music.9ae1f02e8c6ccd5774050e50a493a4a0c8b2d11a",
+        "github.pull.vexstream-music.12.corrected-v3-compatible"
       ],
       "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
       "nextProcessRefs": [
@@ -820,7 +822,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-25T07:10:00.000Z",
-      "updatedAt": "2026-10-25T09:40:00.000Z"
+      "updatedAt": "2026-10-25T09:43:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
