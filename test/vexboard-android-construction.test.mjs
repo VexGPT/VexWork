@@ -24,6 +24,17 @@ test('Android construction plan consumes VexBoard design without target effects'
     externalEffectsPerformed: false,
   });
 
+  const theme = plan.mappings.find(
+    (entry) => entry.mappingRef === 'mapping.android.theme.dark-colors',
+  );
+  assert.match(theme.targetSymbol, /DarkColors/);
+  assert.ok(theme.designRefs.includes('visual.color.background'));
+
+  const shapes = plan.mappings.find(
+    (entry) => entry.mappingRef === 'mapping.android.theme.shapes',
+  );
+  assert.equal(shapes.referenceDpOrNull, 16);
+
   const toolbar = plan.mappings.find(
     (entry) => entry.mappingRef === 'mapping.android.shell.toolbar-height',
   );
@@ -72,7 +83,7 @@ test('accepted VexBoard design becomes Android implementation eligible without c
   assert.equal(plan.designAuthorityState, 'VEXBOARD_DESIGN_AUTHORITY');
   assert.equal(plan.admission, 'IMPLEMENTATION_ELIGIBLE');
   assert.equal(plan.targetRef, 'target.vexlife-android.compose');
-  assert.equal(plan.mappings.length >= 8, true);
+  assert.equal(plan.mappings.length >= 12, true);
 });
 
 test('Android construction fails closed when required VexBoard layout meaning is lost', () => {
