@@ -124,13 +124,15 @@
         "human.lived-feedback.android-widget-foundation.vexstream-playback-widget.20261025",
         "evidence.private.local-vex.widget-home.sha256.f96a84375afd3804a706f532ae95731c2d3d05641a9fe761aecee465e244a3b5",
         "evidence.private.local-vex.full-player.sha256.dac704615d19231a315dd3e0869219216858206ab4d54cce9acc99afc4d0a8e1",
-        "evidence.private.local-vex.widget-layout-reference.sha256.4f8c864f69b7a89540e7ac745bb997a60115830f3260ae60adfb5e52ba060c09"
+        "evidence.private.local-vex.widget-layout-reference.sha256.4f8c864f69b7a89540e7ac745bb997a60115830f3260ae60adfb5e52ba060c09",
+        "github.pull.vexlife-android.179",
+        "github.commit.vexlife-android.28ef2345492c9345eecbbe4a2a8d91c4f3ac60be"
       ],
       "nextProcessRefs": [
         "process.vexlife-android.feature-authoring"
       ],
       "createdAt": "2026-10-24T11:20:00.000Z",
-      "updatedAt": "2026-10-25T07:10:00.000Z"
+      "updatedAt": "2026-10-25T07:25:02.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -139,7 +141,7 @@
       "label": "VexStream widget live State refresh",
       "purpose": "Fix the lived launcher defect where widget Controls act on current Playback/Queue truth but the displayed track/playback projection can remain stale. Refresh the Glance surface from the newest canonical Media3/VexStream State whenever current item, play/pause, queue availability or related display truth changes, without making the widget another State owner.",
       "workClass": "DEFECT",
-      "state": "READY",
+      "state": "RUNNING",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.android-widget-foundation.semantic-widget-surface"
@@ -160,13 +162,15 @@
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/queue/Media3VexStreamQueueConnection.kt",
         "github.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
         "human.lived-feedback.android-widget-foundation.vexstream-playback-widget.20261025",
-        "evidence.private.local-vex.widget-home.sha256.f96a84375afd3804a706f532ae95731c2d3d05641a9fe761aecee465e244a3b5"
+        "evidence.private.local-vex.widget-home.sha256.f96a84375afd3804a706f532ae95731c2d3d05641a9fe761aecee465e244a3b5",
+        "github.pull.vexlife-android.179",
+        "github.commit.vexlife-android.28ef2345492c9345eecbbe4a2a8d91c4f3ac60be"
       ],
       "nextProcessRefs": [
         "process.vexlife-android.feature-authoring"
       ],
       "createdAt": "2026-10-25T07:10:00.000Z",
-      "updatedAt": "2026-10-25T07:10:00.000Z"
+      "updatedAt": "2026-10-25T07:25:02.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -175,7 +179,7 @@
       "label": "VexStream widget centered controls and touch targets",
       "purpose": "Refine the lived home-screen widget so the transport Controls form a centered, balanced interaction cluster with larger reliable touch targets and useful horizontal resize behavior, while preserving compact artwork/title context and existing Playback/Queue ownership.",
       "workClass": "DEFECT",
-      "state": "READY",
+      "state": "RUNNING",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.android-widget-foundation.semantic-widget-surface"
@@ -194,13 +198,15 @@
         "repo.vexlife-android:app/src/main/res/xml/vexstream_playback_widget_info.xml",
         "human.lived-feedback.android-widget-foundation.vexstream-playback-widget.20261025",
         "evidence.private.local-vex.widget-home.sha256.f96a84375afd3804a706f532ae95731c2d3d05641a9fe761aecee465e244a3b5",
-        "evidence.private.local-vex.widget-layout-reference.sha256.4f8c864f69b7a89540e7ac745bb997a60115830f3260ae60adfb5e52ba060c09"
+        "evidence.private.local-vex.widget-layout-reference.sha256.4f8c864f69b7a89540e7ac745bb997a60115830f3260ae60adfb5e52ba060c09",
+        "github.pull.vexlife-android.179",
+        "github.commit.vexlife-android.28ef2345492c9345eecbbe4a2a8d91c4f3ac60be"
       ],
       "nextProcessRefs": [
         "process.vexlife-android.feature-authoring"
       ],
       "createdAt": "2026-10-25T07:10:00.000Z",
-      "updatedAt": "2026-10-25T07:10:00.000Z"
+      "updatedAt": "2026-10-25T07:25:02.000Z"
     }
   ],
   "transitions": [
@@ -280,6 +286,36 @@
         "github.pull.vexlife-android.178"
       ],
       "createdAt": "2026-10-25T05:09:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.android-widget-foundation.vexstream-playback-widget.state-refresh.running.pr179",
+      "workRef": "work.android-widget-foundation.vexstream-playback-widget.state-refresh",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Victor explicitly resumed the lived widget completion work after physical launcher feedback. Android PR #179 now owns the bounded State-refresh correction: global widget refresh plus one bounded canonical Media3 convergence re-read without introducing widget-owned State.",
+      "actorRef": "actor.local-vex-operations.android-widget-foundation",
+      "sourceRefs": [
+        "human.lived-feedback.android-widget-foundation.vexstream-playback-widget.20261025",
+        "github.pull.vexlife-android.179",
+        "github.commit.vexlife-android.28ef2345492c9345eecbbe4a2a8d91c4f3ac60be"
+      ],
+      "createdAt": "2026-10-25T07:25:02.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.android-widget-foundation.vexstream-playback-widget.layout-usability.running.pr179",
+      "workRef": "work.android-widget-foundation.vexstream-playback-widget.layout-usability",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Victor explicitly resumed the lived widget completion work and requested centered, larger transport Controls. Android PR #179 now owns that bounded launcher geometry/touch-target correction.",
+      "actorRef": "actor.local-vex-operations.android-widget-foundation",
+      "sourceRefs": [
+        "human.lived-feedback.android-widget-foundation.vexstream-playback-widget.20261025",
+        "github.pull.vexlife-android.179",
+        "github.commit.vexlife-android.28ef2345492c9345eecbbe4a2a8d91c4f3ac60be"
+      ],
+      "createdAt": "2026-10-25T07:25:02.000Z"
     }
   ],
   "sourceRefs": [
