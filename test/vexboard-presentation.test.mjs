@@ -5,10 +5,15 @@ import test from 'node:test';
 import {
   DEFAULT_CANVAS_EXTENT,
   PALETTE_MODES,
+  RELATIONSHIP_VIEW_MODES,
   canvasExtent,
+  defaultRelationshipViewMode,
   deriveBranchPresentation,
   nextPaletteMode,
   normalizePaletteMode,
+  normalizeRelationshipViewMode,
+  relationshipRoute,
+  relationshipVisibleInMode,
   roleMarker,
   semanticRole,
 } from '../vexboard/ui/presentation.mjs';
@@ -132,4 +137,47 @@ test('canvas extent accepts explicit boundary policy for focused consumers', () 
   assert.deepEqual(canvasExtent([
     { bounds: { x: 120, y: 90, width: 80, height: 50 } },
   ], { minimumWidth: 100, minimumHeight: 80, padding: 20 }), { width: 220, height: 160 });
+});
+
+
+test('swimlane boards default to journey relationships and hide contained control hops without deleting semantics', () => {
+  const graph = {
+    nodes: [
+      { nodeRef: 'scene.a', kind: 'SCENE', parentRefOrNull: null },
+      { nodeRef: 'control.a', kind: 'CONTROL', parentRefOrNull: 'scene.a' },
+      { nodeRef: 'scene.b', kind: 'SCENE', parentRefOrNull: null },
+      { nodeRef: 'annotation.a', kind: 'ANNOTATION', parentRefOrNull: null },
+    ],
+    relationships: [
+      { relationshipRef: 'rel.internal', kind: 'FLOW', fromRef: 'scene.a', toRef: 'control.a' },
+      { relationshipRef: 'rel.next', kind: 'TRANSITION', fromRef: 'control.a', toRef: 'scene.b' },
+      { relationshipRef: 'rel.reference', kind: 'REFERENCE', fromRef: 'annotation.a', toRef: 'scene.b' },
+    ],
+  };
+  assert.deepEqual(RELATIONSHIP_VIEW_MODES, ['JOURNEY', 'ALL']);
+  assert.equal(defaultRelationshipViewMode('SWIMLANE'), 'JOURNEY');
+  assert.equal(defaultRelationshipViewMode('SYSTEM_MAP'), 'ALL');
+  assert.equal(normalizeRelationshipViewMode('bogus'), 'ALL');
+  assert.equal(relationshipVisibleInMode(graph, graph.relationships[0], 'JOURNEY'), false);
+  assert.equal(relationshipVisibleInMode(graph, graph.relationships[1], 'JOURNEY'), true);
+  assert.equal(relationshipVisibleInMode(graph, graph.relationships[2], 'JOURNEY'), false);
+  assert.equal(relationshipVisibleInMode(graph, graph.relationships[2], 'ALL'), true);
+});
+
+test('relationship routing uses edge ports and orthogonal elbows rather than center-to-center diagonals', () => {
+  const vertical = relationshipRoute(
+    { x: 100, y: 100, width: 200, height: 80 },
+    { x: 140, y: 300, width: 200, height: 80 },
+  );
+  assert.deepEqual(vertical.points[0], { x: 200, y: 180 });
+  assert.deepEqual(vertical.points.at(-1), { x: 240, y: 300 });
+  assert.equal(vertical.points[1].y, vertical.points[2].y);
+
+  const horizontal = relationshipRoute(
+    { x: 100, y: 100, width: 100, height: 80 },
+    { x: 400, y: 160, width: 100, height: 80 },
+  );
+  assert.deepEqual(horizontal.points[0], { x: 200, y: 140 });
+  assert.deepEqual(horizontal.points.at(-1), { x: 400, y: 200 });
+  assert.equal(horizontal.points[1].x, horizontal.points[2].x);
 });

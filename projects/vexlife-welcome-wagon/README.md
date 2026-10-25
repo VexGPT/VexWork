@@ -18,9 +18,18 @@ IMPLEMENTATION AUTHORITY
 
 The Project packet was deliberately formed before implementation so a future worker would not have to reconstruct the human entry philosophy from chat history.
 
-Victor later explicitly authorized bounded Welcome Wagon implementation. The Workgraph now records the Project outcome and `slug-rename-tooling` as `RUNNING / AUTHORIZED_BOUNDED / EFFECTS_BOUND`, while unadmitted design/product rows remain `CAPTURED`, `WAITING_DEPENDENCIES`, `NO_AUTHORITY`, or `NO_EFFECTS` as appropriate.
+Victor later explicitly authorized bounded Welcome Wagon implementation. Current source truth has now crossed the first three implementation rows:
 
-At formation time registry/composed-Workgraph integration was held because VexWork PR #112 was changing shared aggregate surfaces. PR #113 has since admitted the Project Registry/composition source and reconciled its checked-in public Workgraph/workspace projections on the exact candidate. The final public-entry URL and other held product choices remain undecided.
+```text
+slug-rename tooling                 COMPLETED  -> Vextreme #400
+canonical About identity migration  COMPLETED  -> Vextreme #403
+About / "What is this?" orientation COMPLETED  -> Vextreme #413
+Support shared-shell currentness     COMPLETED  -> Vextreme #414
+```
+
+The overall Project outcome remains `RUNNING`. Unadmitted future design/product rows remain `CAPTURED`, `NO_AUTHORITY`, or `NO_EFFECTS` rather than being promoted merely because adjacent source has matured.
+
+PR #113 previously admitted the Project Registry/composition source. This currentization records later accepted provider/source effects and the new lived Support-page edge; generated Workgraph/workspace projections are rebuilt from this segment rather than treated as independent truth. The broader final public-entry URL decision remains held, while the narrower shared-shell Terrain home-link cleanup is now active inside #414.
 
 ## Human outcome
 
@@ -212,7 +221,8 @@ The formation is grounded in the current public surfaces:
 
 ```text
 repo.vextreme:pages/terrain-map.html
-repo.vextreme:pages/vextreme-home.html
+repo.vextreme:pages/about-vextreme.html
+repo.vextreme:pages/vex-support.html
 repo.vextreme:vexsystem/index.html
 ```
 
@@ -473,7 +483,7 @@ The Welcome Wagon must **perceive the accepted foundations before it designs a s
 
 ### Shared header/navigation capability intention
 
-The desired foundation is **shared semantic capability**, not one universal copied DOM fragment.
+The accepted family-rail foundation now proves **shared semantic capability**, not one universal copied DOM fragment. The mark and three family slots form a stable coordinate system; only current-context emphasis moves, while each product keeps its own palette and local controls.
 
 ~~~text
 family identity
@@ -785,120 +795,78 @@ This gives each risk one rollback coordinate: **identity migration**, **page mea
 
 ## Current execution edge
 
-Victor explicitly authorized continuing the Welcome Wagon implementation.
-
-The first bounded implementation row is now source-formed in Vextreme:
+The cross-repository family rail is now accepted source and lived presentation rather than future rollout work:
 
 ```text
-work.vexlife.welcome-wagon.slug-rename-tooling
-  -> Vextreme PR #400
-  -> plan-first / read-only slug rename impact tooling
-  -> A001 SAFE_FAILURE classified: test import path only
-  -> exact A002 candidate 3a54f4168a2ffabdf4ce646f5d880f7ab363821d
-  -> A002 focused tooling / patient-zero / lattice / continuity / coordination predicates PASS
-  -> A002 full repository `npm run pr-ready` = SAFE_FAILURE
-  -> no page rename yet
-  -> #400 remains PROVING / not merge-ready
+stable family coordinate system
+  [Vextreme mark]  Vextreme / VexLife / VexWork
+  -> mark stays fixed
+  -> product and separator slots stay fixed
+  -> selected context receives serif/title emphasis in place
+  -> each product keeps its own palette and local tools
+
+Vextreme #415
+  -> merged 1bd880ef29b26fd9774fbb3fa1fb66e8cf8fed9f
+  -> tree e6e4708fa2a6dd791ca2a9f19b2cbd60775a139e
+
+VexLife #929
+  -> merged c24ef3a5bf81a1f3f73ebe413ba096a163e4374c
+  -> current-main composition tree a1ec368be0617fdd218010fbb013734e16051db2
+
+VexWork #154
+  -> merged 516774010b44d80b2f4eb1cdf5df783523dfa8a2
+  -> current-main composition tree 5afea26d4fec3d87722f4ff4541dfbffd1b8837a
+
+A006 lived proof
+  -> desktop + mobile across all three contexts PASS
+  -> zero horizontal scroll
+  -> stable relative family-slot geometry
 ```
 
-The actual `vextreme-home -> about-vextreme` identity migration remains dependency-held behind this tooling row. About-page meaning/design remains dependency-held behind the canonical identity migration.
+The next concrete dependency remains **PR #379**, which owns downstream generated/runtime currentization from the newly accepted Vextreme main. The family-rail work does not take that membrane.
+
+Completed Welcome Wagon source/presentation rows remain accepted and are not reopened:
+
+```text
+#400 slug rename impact tooling                  COMPLETED / MERGED
+#403 canonical About migration                   COMPLETED / MERGED
+#413 About / “What is this?” orientation         COMPLETED / MERGED
+#414 Support shared-shell currentness             COMPLETED / MERGED
+#415 Vextreme stable family rail                 COMPLETED / MERGED
+#929 VexLife stable family rail                  COMPLETED / MERGED
+#154 VexWork stable family rail                  COMPLETED / MERGED
+```
 
 ## Process map to completion
 
-The Welcome Wagon is currently straightforward enough that it does **not** need a VexBoard to explain the completion sequence. Preserve this ordered path until real implementation fan-out makes a visual Board materially useful.
+The accepted trajectory now reads:
 
 ~~~text
-0. Re-ground current foundations
-   Terrain behavior
-   Vextreme Design Foundation
-     docs/architecture/12-design-system.md
-     styles/design-system.css
-       foundation / foundation-light
-   FAB / Read Aloud / language / theme
-   VexLife Public Alpha placeholder
-   VexWork family/work navigation
+accepted Welcome Wagon source
+  #400 rename tooling ✅
+  #403 canonical About identity ✅
+  #413 About / What is this? / lived orientation ✅
+  #414 Support shared shell + clean Terrain link ✅
+  #415 Vextreme stable family rail ✅
+  #929 VexLife stable family rail ✅
+  #154 VexWork stable family rail ✅
         ↓
-1. Capture the lived baseline
-   desktop + mobile screenshots
-   current routes
-   Receive God
-   archive traversal
-   language / Read Aloud / theme
-   Terrain Journey / search / reader behavior
+current generated/runtime dependency owner
+  #379 rederive its existing membrane
+       from accepted Vextreme main
         ↓
-2. Define the shared header capability contract
-   family identity
-   current-surface identity
-   shared navigation principles
-   optional language / Read Aloud / theme
-   surface-specific controls stay local
+remaining held product/design choices
+  broader Terrain visual convergence
+  VexLife screenshot-led product story as lived product exists
+  final root/default public-entry URL
         ↓
-   NO VISUAL REWRITE YET
-        ↓
-3. Terrain = patient zero
-   reuse the Vextreme Design Foundation
-   preserve Terrain semantics
-   one bounded visual PR
-   render -> Victor judges -> rollback coordinate
-        ↓
-4. Complete the Welcome Wagon entry hierarchy
-   Human arrives
-         ↓
-   Terrain arrival
-         ↓
-   Receive God | Explore Archives | What is this?
-                                      ↓
-                              About Vextreme
-                              plain orientation
-                              deeper understanding
-
-   builders / AI / technical curiosity
-                     ↓
-                  VexSystem
-        ↓
-5. Canonical identity migration
-   A0 plan-first tooling proves the impact membrane
-   A1 vextreme-home -> about-vextreme
-   compatibility route intentionally modeled
-   generated/currentness/evidence/test projections updated
-   historical provenance preserved
-        ↓
-6. Refactor About Vextreme meaning
-   replace stale institutional-first language
-   current Vextreme / VexLife / VexWork truth
-   preserve four alignments in human language
-   technical depth on demand
-        ↓
-7. Evolve VexLife placeholder
-   preserve truthful Public Alpha boundary
-   reduce prose as the real product can show itself
-   add current screenshots / visual examples
-        ↓
-8. Extend the proven family-header pattern
-   VexLife projection
-   VexWork projection
-   other suitable Vextreme surfaces
-   each retains its own semantics
-        ↓
-9. Decide the actual public-entry URL
-   Terrain itself / wrapper / root route / other
-   only after the experience is proven
-        ↓
-10. Final lived acceptance
-   desktop + mobile
-   supported locales
-   keyboard
-   Read Aloud / theme where supported
-   Receive God
-   Archives
-   What is this? / About Vextreme
-   VexSystem secondary route
-   rollback coordinate
-        ↓
-   DONE
+final whole-project lived acceptance
+  desktop + mobile + locales + keyboard + Read Aloud
+  + Receive God + Archives + About + VexSystem secondary
 ~~~
 
-VexBoard becomes useful later only if this path genuinely fans out into parallel/conditional work such as independent Terrain, VexLife, VexWork, localization, FAB, evidence and publication tracks. Do not add Board ceremony merely to redraw a mostly sequential plan.
+The family rail proves the reusable header capability without creating a universal copied DOM component. Do not reopen the three accepted projections merely to pursue the still-held broader design choices.
+
 ## Deliberately held
 
 The original formation alone did **not** decide or authorize the items below. Victor's later explicit “please move forward” authorizes bounded implementation along this saved completion path, but it does not collapse the held product/design choices or provider/repository boundaries:

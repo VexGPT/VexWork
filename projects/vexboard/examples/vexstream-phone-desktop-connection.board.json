@@ -1,0 +1,966 @@
+{
+  "schemaVersion": "vexboard.local-draft/v1",
+  "draftRef": "board.vexstream.phone-desktop-connection.living-blueprint",
+  "title": "VexStream Music · Phone ↔ Desktop Connection · Living Blueprint",
+  "mode": "READ_ONLY_SOURCE",
+  "derivedFromRefOrNull": null,
+  "savedAtOrNull": null,
+  "graph": {
+    "schemaVersion": "vexboard.board-graph/v1",
+    "graphRef": "graph.vexstream.phone-desktop-connection.living-blueprint",
+    "nodes": [
+      {
+        "nodeRef": "container.vexstream.desktop",
+        "kind": "CONTAINER",
+        "label": "Desktop · VexStream Music",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+          "repo.vexstream-music:v2/web/features/phone/connection.js",
+          "repo.vexstream-music:v2/web/features/phone/presentation.js",
+          "repo.vexstream-music:docs/architecture/MOBILE-BRIDGE-V1.md"
+        ]
+      },
+      {
+        "nodeRef": "container.vexstream.android",
+        "kind": "CONTAINER",
+        "label": "Android · VexLife",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt"
+        ]
+      },
+      {
+        "nodeRef": "container.vexstream.android-os",
+        "kind": "CONTAINER",
+        "label": "Android OS · platform-owned",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md"
+        ]
+      },
+      {
+        "nodeRef": "scene.vexstream.desktop.library",
+        "kind": "SCENE",
+        "label": "Desktop library · phone control",
+        "parentRefOrNull": "container.vexstream.desktop",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+          "repo.vexstream-music:v2/web/features/phone/presentation.js"
+        ]
+      },
+      {
+        "nodeRef": "control.vexstream.desktop.open-phone",
+        "kind": "CONTROL",
+        "label": "Open Phone Connection",
+        "parentRefOrNull": "scene.vexstream.desktop.library",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+          "repo.vexstream-music:v2/web/features/phone/connection.js",
+          "repo.vexstream-music:v2/web/features/phone/presentation.js"
+        ]
+      },
+      {
+        "nodeRef": "scene.vexstream.desktop.phone-connection",
+        "kind": "SCENE",
+        "label": "Phone Connection · current pairing state",
+        "parentRefOrNull": "container.vexstream.desktop",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+          "repo.vexstream-music:v2/web/features/phone/connection.js",
+          "repo.vexstream-music:v2/web/features/phone/presentation.js"
+        ]
+      },
+      {
+        "nodeRef": "decision.vexstream.desktop.remembered-phone",
+        "kind": "DECISION",
+        "label": "Remembered phone exists?",
+        "parentRefOrNull": "container.vexstream.desktop",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+          "repo.vexstream-music:v2/web/features/phone/connection.js",
+          "repo.vexstream-music:v2/web/features/phone/presentation.js"
+        ]
+      },
+      {
+        "nodeRef": "control.vexstream.desktop.connect-another",
+        "kind": "CONTROL",
+        "label": "Connect another phone",
+        "parentRefOrNull": "container.vexstream.desktop",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+          "repo.vexstream-music:v2/web/features/phone/connection.js",
+          "repo.vexstream-music:v2/web/features/phone/presentation.js"
+        ]
+      },
+      {
+        "nodeRef": "scene.vexstream.desktop.pairing-ready",
+        "kind": "SCENE",
+        "label": "Ready to pair · six-digit code",
+        "parentRefOrNull": "container.vexstream.desktop",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+          "repo.vexstream-music:v2/web/features/phone/connection.js",
+          "repo.vexstream-music:v2/web/features/phone/presentation.js"
+        ]
+      },
+      {
+        "nodeRef": "scene.vexstream.desktop.pending-approval",
+        "kind": "SCENE",
+        "label": "Waiting for your approval · pending device",
+        "parentRefOrNull": "container.vexstream.desktop",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+          "repo.vexstream-music:v2/web/features/phone/presentation.js"
+        ]
+      },
+      {
+        "nodeRef": "control.vexstream.desktop.allow",
+        "kind": "CONTROL",
+        "label": "Allow",
+        "parentRefOrNull": "scene.vexstream.desktop.pending-approval",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+          "repo.vexstream-music:v2/web/features/phone/connection.js",
+          "repo.vexstream-music:v2/web/features/phone/presentation.js"
+        ]
+      },
+      {
+        "nodeRef": "scene.vexstream.android.home",
+        "kind": "SCENE",
+        "label": "VexLife Home · VexStream Music",
+        "parentRefOrNull": "container.vexstream.android",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt"
+        ]
+      },
+      {
+        "nodeRef": "control.vexstream.android.connect-vexstream",
+        "kind": "CONTROL",
+        "label": "Connect VexStream Music",
+        "parentRefOrNull": "scene.vexstream.android.home",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt"
+        ]
+      },
+      {
+        "nodeRef": "scene.vexstream.android.not-paired",
+        "kind": "SCENE",
+        "label": "VexStream Music · NotPaired",
+        "parentRefOrNull": "container.vexstream.android",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt"
+        ]
+      },
+      {
+        "nodeRef": "control.vexstream.android.find-nearby",
+        "kind": "CONTROL",
+        "label": "Find VexStream",
+        "parentRefOrNull": "scene.vexstream.android.not-paired",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt"
+        ]
+      },
+      {
+        "nodeRef": "scene.vexstream.android.searching",
+        "kind": "SCENE",
+        "label": "VexStream Music · Searching",
+        "parentRefOrNull": "container.vexstream.android",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt"
+        ]
+      },
+      {
+        "nodeRef": "scene.vexstream.android.confirm-code",
+        "kind": "SCENE",
+        "label": "ConfirmCode · compare six-digit code",
+        "parentRefOrNull": "container.vexstream.android",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt"
+        ]
+      },
+      {
+        "nodeRef": "control.vexstream.android.request-access",
+        "kind": "CONTROL",
+        "label": "Codes match · Request access",
+        "parentRefOrNull": "scene.vexstream.android.confirm-code",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt"
+        ]
+      },
+      {
+        "nodeRef": "scene.vexstream.android.waiting-approval",
+        "kind": "SCENE",
+        "label": "WaitingForDesktopApproval",
+        "parentRefOrNull": "container.vexstream.android",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt"
+        ]
+      },
+      {
+        "nodeRef": "scene.vexstream.android.paired-library",
+        "kind": "SCENE",
+        "label": "Paired · library/catalog visible",
+        "parentRefOrNull": "container.vexstream.android",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt"
+        ]
+      },
+      {
+        "nodeRef": "reference.vexstream.android-os.media-permission",
+        "kind": "REFERENCE",
+        "label": "Android OS media permission · adjacent platform surface",
+        "parentRefOrNull": "container.vexstream.android-os",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md"
+        ]
+      },
+      {
+        "nodeRef": "portal.vexstream.construction-evidence",
+        "kind": "PORTAL",
+        "label": "Construction + evidence detail",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": "board.vexstream.phone-desktop-connection.construction-evidence",
+        "sourceRefs": [
+          "projects/vexboard/examples/vexstream-phone-desktop-connection-construction.board.json",
+          "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md",
+          "src/shared/vexboard-evidence.mjs"
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "relationshipRef": "rel.vexstream.desktop.library-open-phone",
+        "kind": "FLOW",
+        "fromRef": "scene.vexstream.desktop.library",
+        "toRef": "control.vexstream.desktop.open-phone",
+        "labelOrNull": "Phone",
+        "sourceRefs": [
+          "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+          "repo.vexstream-music:v2/web/features/phone/presentation.js"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexstream.desktop.open-phone-connection",
+        "kind": "TRANSITION",
+        "fromRef": "control.vexstream.desktop.open-phone",
+        "toRef": "scene.vexstream.desktop.phone-connection",
+        "labelOrNull": "Open",
+        "sourceRefs": [
+          "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+          "repo.vexstream-music:v2/web/features/phone/connection.js"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexstream.desktop.connection-condition",
+        "kind": "FLOW",
+        "fromRef": "scene.vexstream.desktop.phone-connection",
+        "toRef": "decision.vexstream.desktop.remembered-phone",
+        "labelOrNull": "Pairing state",
+        "sourceRefs": [
+          "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+          "repo.vexstream-music:v2/web/features/phone/connection.js"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexstream.desktop.no-remembered-ready",
+        "kind": "TRANSITION",
+        "fromRef": "decision.vexstream.desktop.remembered-phone",
+        "toRef": "scene.vexstream.desktop.pairing-ready",
+        "labelOrNull": "No remembered → auto-start",
+        "sourceRefs": [
+          "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+          "repo.vexstream-music:v2/web/features/phone/connection.js"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexstream.desktop.remembered-connect-another",
+        "kind": "TRANSITION",
+        "fromRef": "decision.vexstream.desktop.remembered-phone",
+        "toRef": "control.vexstream.desktop.connect-another",
+        "labelOrNull": "Remembered",
+        "sourceRefs": [
+          "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+          "repo.vexstream-music:v2/web/features/phone/presentation.js"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexstream.desktop.connect-another-ready",
+        "kind": "TRANSITION",
+        "fromRef": "control.vexstream.desktop.connect-another",
+        "toRef": "scene.vexstream.desktop.pairing-ready",
+        "labelOrNull": "Start pairing",
+        "sourceRefs": [
+          "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+          "repo.vexstream-music:v2/web/features/phone/connection.js"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexstream.desktop.ready-android-home",
+        "kind": "FLOW",
+        "fromRef": "scene.vexstream.desktop.pairing-ready",
+        "toRef": "scene.vexstream.android.home",
+        "labelOrNull": "Continue on phone",
+        "sourceRefs": [
+          "repo.vexstream-music:docs/architecture/MOBILE-BRIDGE-V1.md",
+          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexstream.android.home-connect",
+        "kind": "FLOW",
+        "fromRef": "scene.vexstream.android.home",
+        "toRef": "control.vexstream.android.connect-vexstream",
+        "labelOrNull": "Connect",
+        "sourceRefs": [
+          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexstream.android.connect-not-paired",
+        "kind": "TRANSITION",
+        "fromRef": "control.vexstream.android.connect-vexstream",
+        "toRef": "scene.vexstream.android.not-paired",
+        "labelOrNull": "Open VexStream",
+        "sourceRefs": [
+          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexstream.android.not-paired-find",
+        "kind": "FLOW",
+        "fromRef": "scene.vexstream.android.not-paired",
+        "toRef": "control.vexstream.android.find-nearby",
+        "labelOrNull": "Find",
+        "sourceRefs": [
+          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexstream.android.find-searching",
+        "kind": "TRANSITION",
+        "fromRef": "control.vexstream.android.find-nearby",
+        "toRef": "scene.vexstream.android.searching",
+        "labelOrNull": "Search",
+        "sourceRefs": [
+          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexstream.android.searching-confirm-code",
+        "kind": "TRANSITION",
+        "fromRef": "scene.vexstream.android.searching",
+        "toRef": "scene.vexstream.android.confirm-code",
+        "labelOrNull": "Found",
+        "sourceRefs": [
+          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexstream.shared-pairing-code",
+        "kind": "REFERENCE",
+        "fromRef": "scene.vexstream.desktop.pairing-ready",
+        "toRef": "scene.vexstream.android.confirm-code",
+        "labelOrNull": "Same code",
+        "sourceRefs": [
+          "repo.vexstream-music:docs/architecture/MOBILE-BRIDGE-V1.md",
+          "repo.vexstream-music:v2/web/features/phone/presentation.js",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexstream.android.confirm-request",
+        "kind": "FLOW",
+        "fromRef": "scene.vexstream.android.confirm-code",
+        "toRef": "control.vexstream.android.request-access",
+        "labelOrNull": "Codes match",
+        "sourceRefs": [
+          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexstream.android.request-waiting",
+        "kind": "TRANSITION",
+        "fromRef": "control.vexstream.android.request-access",
+        "toRef": "scene.vexstream.android.waiting-approval",
+        "labelOrNull": "Request access",
+        "sourceRefs": [
+          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexstream.approval-checkpoint",
+        "kind": "FLOW",
+        "fromRef": "scene.vexstream.android.waiting-approval",
+        "toRef": "scene.vexstream.desktop.pending-approval",
+        "labelOrNull": "Approve on desktop",
+        "sourceRefs": [
+          "repo.vexstream-music:docs/architecture/MOBILE-BRIDGE-V1.md",
+          "repo.vexstream-music:v2/web/features/phone/presentation.js",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexstream.desktop.pending-allow",
+        "kind": "FLOW",
+        "fromRef": "scene.vexstream.desktop.pending-approval",
+        "toRef": "control.vexstream.desktop.allow",
+        "labelOrNull": "Allow",
+        "sourceRefs": [
+          "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+          "repo.vexstream-music:v2/web/features/phone/connection.js",
+          "repo.vexstream-music:v2/web/features/phone/presentation.js"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexstream.desktop.allow-paired",
+        "kind": "TRANSITION",
+        "fromRef": "control.vexstream.desktop.allow",
+        "toRef": "scene.vexstream.android.paired-library",
+        "labelOrNull": "Paired",
+        "sourceRefs": [
+          "repo.vexstream-music:docs/architecture/MOBILE-BRIDGE-V1.md",
+          "repo.vexstream-music:v2/web/features/phone/connection.js",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexstream.android.paired-os-permission",
+        "kind": "REFERENCE",
+        "fromRef": "scene.vexstream.android.paired-library",
+        "toRef": "reference.vexstream.android-os.media-permission",
+        "labelOrNull": "OS permission overlay",
+        "sourceRefs": [
+          "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md"
+        ]
+      }
+    ],
+    "sourceRefs": [
+      "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md",
+      "src/shared/vexboard-evidence.mjs",
+      "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+      "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt",
+      "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt",
+      "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt",
+      "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt",
+      "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/ElementCells.kt",
+      "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/ScreenBlueprint.kt",
+      "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+      "repo.vexstream-music:v2/web/features/phone/connection.js",
+      "repo.vexstream-music:v2/web/features/phone/presentation.js",
+      "repo.vexstream-music:docs/architecture/MOBILE-BRIDGE-V1.md"
+    ]
+  },
+  "projection": {
+    "schemaVersion": "vexboard.board-projection/v1",
+    "projectionRef": "projection.vexstream.phone-desktop-connection.living-blueprint",
+    "graphRef": "graph.vexstream.phone-desktop-connection.living-blueprint",
+    "layoutIntent": "SWIMLANE",
+    "items": [
+      {
+        "projectionItemRef": "item.vexstream.desktop",
+        "semanticRef": "container.vexstream.desktop",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 20,
+          "y": 40,
+          "width": 340,
+          "height": 1160
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vexstream.android",
+        "semanticRef": "container.vexstream.android",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 380,
+          "y": 40,
+          "width": 340,
+          "height": 1160
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vexstream.android-os",
+        "semanticRef": "container.vexstream.android-os",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 740,
+          "y": 805,
+          "width": 260,
+          "height": 310
+        },
+        "layer": 3,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vexstream.desktop.library",
+        "semanticRef": "scene.vexstream.desktop.library",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 45,
+          "y": 90,
+          "width": 290,
+          "height": 145
+        },
+        "layer": 5,
+        "parentProjectionItemRefOrNull": "item.vexstream.desktop",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexstream.desktop.open-phone",
+        "semanticRef": "control.vexstream.desktop.open-phone",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 70,
+          "y": 165,
+          "width": 240,
+          "height": 50
+        },
+        "layer": 6,
+        "parentProjectionItemRefOrNull": "item.vexstream.desktop.library",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexstream.desktop.phone-connection",
+        "semanticRef": "scene.vexstream.desktop.phone-connection",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 45,
+          "y": 270,
+          "width": 290,
+          "height": 90
+        },
+        "layer": 7,
+        "parentProjectionItemRefOrNull": "item.vexstream.desktop",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexstream.desktop.remembered-phone",
+        "semanticRef": "decision.vexstream.desktop.remembered-phone",
+        "shapeKind": "DIAMOND",
+        "bounds": {
+          "x": 70,
+          "y": 395,
+          "width": 240,
+          "height": 110
+        },
+        "layer": 8,
+        "parentProjectionItemRefOrNull": "item.vexstream.desktop",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexstream.desktop.connect-another",
+        "semanticRef": "control.vexstream.desktop.connect-another",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 70,
+          "y": 535,
+          "width": 240,
+          "height": 55
+        },
+        "layer": 9,
+        "parentProjectionItemRefOrNull": "item.vexstream.desktop",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexstream.desktop.pairing-ready",
+        "semanticRef": "scene.vexstream.desktop.pairing-ready",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 45,
+          "y": 625,
+          "width": 290,
+          "height": 120
+        },
+        "layer": 10,
+        "parentProjectionItemRefOrNull": "item.vexstream.desktop",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexstream.desktop.pending-approval",
+        "semanticRef": "scene.vexstream.desktop.pending-approval",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 45,
+          "y": 790,
+          "width": 290,
+          "height": 155
+        },
+        "layer": 11,
+        "parentProjectionItemRefOrNull": "item.vexstream.desktop",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexstream.desktop.allow",
+        "semanticRef": "control.vexstream.desktop.allow",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 70,
+          "y": 875,
+          "width": 240,
+          "height": 50
+        },
+        "layer": 12,
+        "parentProjectionItemRefOrNull": "item.vexstream.desktop.pending-approval",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexstream.android.home",
+        "semanticRef": "scene.vexstream.android.home",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 405,
+          "y": 90,
+          "width": 290,
+          "height": 145
+        },
+        "layer": 13,
+        "parentProjectionItemRefOrNull": "item.vexstream.android",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexstream.android.connect-vexstream",
+        "semanticRef": "control.vexstream.android.connect-vexstream",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 430,
+          "y": 165,
+          "width": 240,
+          "height": 50
+        },
+        "layer": 14,
+        "parentProjectionItemRefOrNull": "item.vexstream.android.home",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexstream.android.not-paired",
+        "semanticRef": "scene.vexstream.android.not-paired",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 405,
+          "y": 275,
+          "width": 290,
+          "height": 145
+        },
+        "layer": 15,
+        "parentProjectionItemRefOrNull": "item.vexstream.android",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexstream.android.find-nearby",
+        "semanticRef": "control.vexstream.android.find-nearby",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 430,
+          "y": 350,
+          "width": 240,
+          "height": 50
+        },
+        "layer": 16,
+        "parentProjectionItemRefOrNull": "item.vexstream.android.not-paired",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexstream.android.searching",
+        "semanticRef": "scene.vexstream.android.searching",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 405,
+          "y": 465,
+          "width": 290,
+          "height": 75
+        },
+        "layer": 17,
+        "parentProjectionItemRefOrNull": "item.vexstream.android",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexstream.android.confirm-code",
+        "semanticRef": "scene.vexstream.android.confirm-code",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 405,
+          "y": 580,
+          "width": 290,
+          "height": 160
+        },
+        "layer": 18,
+        "parentProjectionItemRefOrNull": "item.vexstream.android",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexstream.android.request-access",
+        "semanticRef": "control.vexstream.android.request-access",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 430,
+          "y": 665,
+          "width": 240,
+          "height": 55
+        },
+        "layer": 19,
+        "parentProjectionItemRefOrNull": "item.vexstream.android.confirm-code",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexstream.android.waiting-approval",
+        "semanticRef": "scene.vexstream.android.waiting-approval",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 405,
+          "y": 790,
+          "width": 290,
+          "height": 95
+        },
+        "layer": 20,
+        "parentProjectionItemRefOrNull": "item.vexstream.android",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexstream.android.paired-library",
+        "semanticRef": "scene.vexstream.android.paired-library",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 405,
+          "y": 945,
+          "width": 290,
+          "height": 120
+        },
+        "layer": 21,
+        "parentProjectionItemRefOrNull": "item.vexstream.android",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexstream.android-os.media-permission",
+        "semanticRef": "reference.vexstream.android-os.media-permission",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 765,
+          "y": 885,
+          "width": 210,
+          "height": 120
+        },
+        "layer": 22,
+        "parentProjectionItemRefOrNull": "item.vexstream.android-os",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexstream.portal.construction-evidence",
+        "semanticRef": "portal.vexstream.construction-evidence",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 740,
+          "y": 120,
+          "width": 260,
+          "height": 100
+        },
+        "layer": 40,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      }
+    ],
+    "sourceRefs": [
+      "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md",
+      "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+      "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15"
+    ]
+  },
+  "evidence": {
+    "schemaVersion": "vexboard.board-evidence/v1",
+    "evidenceSetRef": "evidence-set.vexstream.phone-desktop-connection.living-blueprint",
+    "boardRef": "board.vexstream.phone-desktop-connection.living-blueprint",
+    "graphRef": "graph.vexstream.phone-desktop-connection.living-blueprint",
+    "slots": [
+      {
+        "slotRef": "evidence-slot.vexstream.desktop-library",
+        "semanticRef": "scene.vexstream.desktop.library",
+        "expectation": "Expected visual: VexStream Desktop library exposes the phone/device connection control.",
+        "sourceRefs": [
+          "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+          "repo.vexstream-music:v2/web/features/phone/presentation.js"
+        ]
+      },
+      {
+        "slotRef": "evidence-slot.vexstream.desktop-phone-connection",
+        "semanticRef": "scene.vexstream.desktop.phone-connection",
+        "expectation": "Expected visual: Phone Connection reflects current remembered/pairing state without claiming another product owner.",
+        "sourceRefs": [
+          "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+          "repo.vexstream-music:v2/web/features/phone/connection.js",
+          "repo.vexstream-music:v2/web/features/phone/presentation.js"
+        ]
+      },
+      {
+        "slotRef": "evidence-slot.vexstream.desktop-pairing-ready",
+        "semanticRef": "scene.vexstream.desktop.pairing-ready",
+        "expectation": "Expected visual: Ready to pair for 5 minutes shows the current six-digit confirmation code and phone instructions.",
+        "sourceRefs": [
+          "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+          "repo.vexstream-music:v2/web/features/phone/presentation.js"
+        ]
+      },
+      {
+        "slotRef": "evidence-slot.vexstream.android-home",
+        "semanticRef": "scene.vexstream.android.home",
+        "expectation": "Expected visual: VexLife Home exposes Connect VexStream Music when the local connection is not paired.",
+        "sourceRefs": [
+          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt"
+        ]
+      },
+      {
+        "slotRef": "evidence-slot.vexstream.android-not-paired",
+        "semanticRef": "scene.vexstream.android.not-paired",
+        "expectation": "Expected visual: VexStream Music NotPaired presentation exposes Find VexStream.",
+        "sourceRefs": [
+          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt"
+        ]
+      },
+      {
+        "slotRef": "evidence-slot.vexstream.android-confirm-code",
+        "semanticRef": "scene.vexstream.android.confirm-code",
+        "expectation": "Expected visual: ConfirmCode shows the selected desktop name, six-digit code, and Codes match / Request access control.",
+        "sourceRefs": [
+          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt"
+        ]
+      },
+      {
+        "slotRef": "evidence-slot.vexstream.android-waiting-approval",
+        "semanticRef": "scene.vexstream.android.waiting-approval",
+        "expectation": "Expected visual: Android shows WaitingForDesktopApproval after Request access.",
+        "sourceRefs": [
+          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt"
+        ]
+      },
+      {
+        "slotRef": "evidence-slot.vexstream.desktop-pending-approval",
+        "semanticRef": "scene.vexstream.desktop.pending-approval",
+        "expectation": "Expected visual: Desktop shows the pending VexLife phone with Deny and Allow controls.",
+        "sourceRefs": [
+          "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+          "repo.vexstream-music:v2/web/features/phone/presentation.js"
+        ]
+      },
+      {
+        "slotRef": "evidence-slot.vexstream.android-paired-library",
+        "semanticRef": "scene.vexstream.android.paired-library",
+        "expectation": "Expected visual: after approval Android is Paired and library/catalog presentation may populate independently of the adjacent OS permission surface.",
+        "sourceRefs": [
+          "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt"
+        ]
+      },
+      {
+        "slotRef": "evidence-slot.vexstream.android-os-media-permission",
+        "semanticRef": "reference.vexstream.android-os.media-permission",
+        "expectation": "Expected observation: an Android OS media permission surface may overlay the paired library; it is platform-owned and is not modeled as the prerequisite for remote catalog visibility.",
+        "sourceRefs": [
+          "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md"
+        ]
+      }
+    ],
+    "artifacts": [],
+    "sourceRefs": [
+      "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md",
+      "src/shared/vexboard-evidence.mjs",
+      "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+      "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15"
+    ]
+  }
+}

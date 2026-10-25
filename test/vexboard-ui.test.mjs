@@ -103,6 +103,8 @@ test('built-in and patient-zero source boards preserve separate catalog ownershi
     [
       'board.vexbusinessfactory.intent-topology.patient-zero',
       'board.vexbusinessfactory.system-anatomy.patient-zero',
+      'board.vexstream.phone-desktop-connection.construction-evidence',
+      'board.vexstream.phone-desktop-connection.living-blueprint',
     ],
   );
 
@@ -379,4 +381,28 @@ test('prototype UI preserves the explicit interaction path beside BoardJourney a
   for (const field of ['interactionTrail', 'activeBoardRef', 'draftDirty', 'saveMessage']) {
     assert.match(returnBoardLine, new RegExp(field));
   }
+});
+test('VexStream living Blueprint is source-discoverable and Inspector consumes BoardEvidence without inventing observed proof', () => {
+  assert.match(page, /Open VexStream living Blueprint/);
+  assert.match(page, /board\.vexstream\.phone-desktop-connection\.living-blueprint/);
+  assert.match(page, /vexboard-evidence\.mjs/);
+  assert.match(page, /Evidence\.normalizeBoardEvidence/);
+  assert.match(page, /Evidence\.evidenceForSemanticRef/);
+  assert.match(page, /Evidence · expected \/ observed/);
+  assert.match(page, /Expected slot only · no artifact admitted yet\./);
+});
+
+
+
+test('swimlane journey view prioritizes the product path while preserving full relationships in Inspector', () => {
+  assert.match(page, /relationshipViewMode/);
+  assert.match(page, /Presentation\.defaultRelationshipViewMode/);
+  assert.match(page, /Presentation\.relationshipVisibleInMode/);
+  assert.match(page, /Presentation\.relationshipRoute/);
+  assert.match(page, /Journey edges/);
+  assert.match(page, /All relationships/);
+  assert.match(page, /createElementNS\('http:\/\/www\.w3\.org\/2000\/svg','polyline'\)/);
+  assert.match(page, /nested-control/);
+  assert.match(page, /has-contained-children/);
+  assert.match(page, /openCatalogBoard\(detailBoardRef,\{pushCurrent:true\}\)/);
 });

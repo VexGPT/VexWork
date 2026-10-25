@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
 import test from 'node:test';
 
 import { VEXBOARD_BUILTIN_BOARD_URLS } from '../vexboard-reader.js';
@@ -58,6 +59,26 @@ test('one boardRef resolves across multiple source-owned catalogs without making
     'process.vexwork.form-project',
   ]);
   assert.equal(resolveBoardSource('board.unknown', [builtinCatalog(), vexworkCatalog()]), null);
+});
+
+test('VexStream living Blueprint patient zero resolves through the source-owned example catalog', () => {
+  const catalog = normalizeBoardSourceCatalog(JSON.parse(
+    fs.readFileSync(new URL('../projects/vexboard/examples/board-source-catalog.json', import.meta.url), 'utf8'),
+  ));
+  const resolved = resolveBoardSource('board.vexstream.phone-desktop-connection.living-blueprint', [catalog]);
+  assert.equal(resolved.location, './vexstream-phone-desktop-connection.board.json');
+  assert.equal(resolved.sourceRefs.includes('projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md'), true);
+  assert.equal(resolved.sourceRefs.some((ref) => ref.startsWith('git.commit.vexlife-android.')), true);
+  assert.equal(resolved.sourceRefs.some((ref) => ref.startsWith('git.commit.vexstream-music.')), true);
+});
+
+test('VexStream construction/evidence detail resolves as a second bounded source-owned board', () => {
+  const catalog = normalizeBoardSourceCatalog(JSON.parse(
+    fs.readFileSync(new URL('../projects/vexboard/examples/board-source-catalog.json', import.meta.url), 'utf8'),
+  ));
+  const resolved = resolveBoardSource('board.vexstream.phone-desktop-connection.construction-evidence', [catalog]);
+  assert.equal(resolved.location, './vexstream-phone-desktop-connection-construction.board.json');
+  assert.equal(resolved.sourceRefs.includes('projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md'), true);
 });
 
 test('duplicate board ownership across catalogs fails closed even when locations happen to match', () => {

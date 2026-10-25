@@ -1,4 +1,5 @@
 export const PALETTE_MODES = Object.freeze(['STANDARD', 'COLOR_SAFE', 'HIGH_CONTRAST']);
+export const RELATIONSHIP_VIEW_MODES = Object.freeze(['JOURNEY', 'ALL']);
 export const VEXBOARD_PALETTE_STORAGE_KEY = 'vexboard.palette-mode/v1';
 export const DEFAULT_CANVAS_EXTENT = Object.freeze({
   minimumWidth: 720,
@@ -98,6 +99,52 @@ function compareText(left, right) {
 
 export function normalizePaletteMode(value) {
   return PALETTE_MODES.includes(value) ? value : 'STANDARD';
+}
+
+export function normalizeRelationshipViewMode(value) {
+  return RELATIONSHIP_VIEW_MODES.includes(value) ? value : 'ALL';
+}
+
+export function defaultRelationshipViewMode(layoutIntent) {
+  return layoutIntent === 'SWIMLANE' ? 'JOURNEY' : 'ALL';
+}
+
+export function relationshipVisibleInMode(graph, relationship, modeInput) {
+  assertGraph(graph);
+  const mode = normalizeRelationshipViewMode(modeInput);
+  if (mode === 'ALL') return true;
+  if (!FLOW_KINDS.has(relationship.kind)) return false;
+  const target = graph.nodes.find((node) => node.nodeRef === relationship.toRef);
+  if (target?.parentRefOrNull === relationship.fromRef && target.kind === 'CONTROL') return false;
+  return true;
+}
+
+function center(bounds) {
+  return Object.freeze({ x: bounds.x + bounds.width / 2, y: bounds.y + bounds.height / 2 });
+}
+
+export function relationshipRoute(fromBounds, toBounds) {
+  const from = center(fromBounds);
+  const to = center(toBounds);
+  const dx = to.x - from.x;
+  const dy = to.y - from.y;
+  const horizontal = Math.abs(dx) > Math.abs(dy);
+  if (horizontal) {
+    const start = Object.freeze({ x: dx >= 0 ? fromBounds.x + fromBounds.width : fromBounds.x, y: from.y });
+    const end = Object.freeze({ x: dx >= 0 ? toBounds.x : toBounds.x + toBounds.width, y: to.y });
+    const midX = (start.x + end.x) / 2;
+    return Object.freeze({
+      points: Object.freeze([start, Object.freeze({ x: midX, y: start.y }), Object.freeze({ x: midX, y: end.y }), end]),
+      labelPoint: Object.freeze({ x: midX, y: (start.y + end.y) / 2 - 6 }),
+    });
+  }
+  const start = Object.freeze({ x: from.x, y: dy >= 0 ? fromBounds.y + fromBounds.height : fromBounds.y });
+  const end = Object.freeze({ x: to.x, y: dy >= 0 ? toBounds.y : toBounds.y + toBounds.height });
+  const midY = (start.y + end.y) / 2;
+  return Object.freeze({
+    points: Object.freeze([start, Object.freeze({ x: start.x, y: midY }), Object.freeze({ x: end.x, y: midY }), end]),
+    labelPoint: Object.freeze({ x: (start.x + end.x) / 2, y: midY - 6 }),
+  });
 }
 
 export function nextPaletteMode(value) {

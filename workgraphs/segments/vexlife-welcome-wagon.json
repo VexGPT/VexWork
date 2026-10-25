@@ -6,7 +6,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-24T06:05:10.000Z",
-      "updatedAt": "2026-10-24T06:43:34.000Z",
+      "updatedAt": "2026-10-25T09:45:00.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "workRef": "work.vexlife.welcome-wagon.outcome",
@@ -26,9 +26,25 @@
         "project.vexlife.welcome-wagon",
         "projects/vexlife-welcome-wagon/README.md",
         "repo.vextreme:pages/terrain-map.html",
-        "repo.vextreme:pages/vextreme-home.html",
+        "repo.vextreme:pages/about-vextreme.html",
         "repo.vextreme:vexsystem/index.html",
-        "github.pull.vexwork.113"
+        "github.pull.vexwork.113",
+        "github.pull.vextreme.400",
+        "github.pull.vextreme.403",
+        "github.pull.vextreme.413",
+        "github.pull.vextreme.414",
+        "github.commit.vextreme.5a27d0914591753c2e50e6b086566fc0aa85a9c3",
+        "git.tree.vextreme.c5f1ed40e1168b7bde6d65d3ee3680b6471bc78c",
+        "github.pull.vextreme.379",
+        "github.pull.vextreme.415",
+        "github.commit.vextreme.1bd880ef29b26fd9774fbb3fa1fb66e8cf8fed9f",
+        "git.tree.vextreme.e6e4708fa2a6dd791ca2a9f19b2cbd60775a139e",
+        "github.pull.vexlife.929",
+        "github.commit.vexlife.c24ef3a5bf81a1f3f73ebe413ba096a163e4374c",
+        "git.tree.vexlife.a1ec368be0617fdd218010fbb013734e16051db2",
+        "github.pull.vexwork.154",
+        "github.commit.vexwork.516774010b44d80b2f4eb1cdf5df783523dfa8a2",
+        "git.tree.vexwork.5afea26d4fec3d87722f4ff4541dfbffd1b8837a"
       ],
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
@@ -63,7 +79,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-24T06:05:10.000Z",
-      "updatedAt": "2026-10-24T06:05:10.000Z",
+      "updatedAt": "2026-10-25T07:12:00.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "workRef": "work.vexlife.welcome-wagon.what-is-this",
@@ -71,7 +87,7 @@
       "label": "Plain-human \"What is this?\" orientation",
       "purpose": "Provide a short human orientation route for visitors who do not yet understand Vextreme, VexLife, Terrain or VexSystem, using ordinary language before deeper institutional or technical vocabulary.",
       "workClass": "POTENTIAL",
-      "state": "CAPTURED",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
       "repositoryRefs": [
@@ -81,7 +97,10 @@
       "sourceRefs": [
         "projects/vexlife-welcome-wagon/README.md",
         "repo.vextreme:pages/terrain-map.html",
-        "repo.vextreme:pages/vextreme-home.html"
+        "repo.vextreme:pages/vextreme-home.html",
+        "github.pull.vextreme.413",
+        "github.commit.vextreme.cb51e541e94cfb8ad5d93de194d06e1407c1c565",
+        "repo.vextreme:pages/about-vextreme.html"
       ],
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
@@ -117,15 +136,15 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-24T06:05:10.000Z",
-      "updatedAt": "2026-10-24T06:43:34.000Z",
+      "updatedAt": "2026-10-25T07:12:00.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "workRef": "work.vexlife.welcome-wagon.vextreme-home-role",
       "parentWorkRefOrNull": "work.vexlife.welcome-wagon.outcome",
-      "label": "Refactor the canonical About Vextreme surface after slug migration",
-      "purpose": "Treat `vextreme-home` as the current pre-migration institutional identity only; after the dependency-held canonical migration to `about-vextreme`, refactor that canonical About Vextreme surface to answer “What is this?” in plain language in the first viewport, explain Vextreme/VexLife/VexWork with current truth, retain the four alignments in human language, move Build Health/VexSystem/Covenant/source into deeper on-demand routes, and avoid competing with Terrain as the accepted public front door.",
+      "label": "About Vextreme as Terrain-context human orientation",
+      "purpose": "Keep canonical `about-vextreme` as the plain-human “What is this?” orientation surface inside Terrain's shared shell context, with ordinary agency before technical depth, truthful Vextreme/VexLife/VexWork relationships, and God/Receive God stated as a voluntary doorway rather than a prerequisite.",
       "workClass": "POTENTIAL",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "COMPLETED",
       "priorityClass": "NORMAL",
       "dependencyRefs": [
         "work.vexlife.welcome-wagon.about-vextreme-slug-migration"
@@ -142,7 +161,10 @@
         "repo.vextreme:index.html",
         "repo.vextreme:pages/vextreme-covenant.html",
         "repo.vexlife:README.md",
-        "repo.vexwork:README.md"
+        "repo.vexwork:README.md",
+        "github.pull.vextreme.413",
+        "github.commit.vextreme.cb51e541e94cfb8ad5d93de194d06e1407c1c565",
+        "repo.vextreme:pages/about-vextreme.html"
       ],
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
@@ -179,15 +201,15 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-24T06:05:10.000Z",
-      "updatedAt": "2026-10-24T06:05:10.000Z",
+      "updatedAt": "2026-10-25T09:45:00.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "workRef": "work.vexlife.welcome-wagon.shared-header-capability-map",
       "parentWorkRefOrNull": "work.vexlife.welcome-wagon.outcome",
-      "label": "Map the reusable family header and FAB capability foundation",
-      "purpose": "Map the accepted Vextreme, Terrain, VexLife and VexWork header/navigation foundations into a reusable semantic capability contract covering family identity, current-surface identity, primary navigation, language, Read Aloud, theme and surface-specific controls without forcing one identical DOM/header implementation across repositories.",
+      "label": "Establish the reusable family header capability contract",
+      "purpose": "Establish one stable cross-product family coordinate system — fixed Vextreme mark, fixed Vextreme / VexLife / VexWork slots, and selected-context emphasis in place — while preserving local palettes, language/accessibility controls, Terrain/Spiral behavior and VexWork tools rather than forcing one identical DOM/header implementation across repositories.",
       "workClass": "POTENTIAL",
-      "state": "CAPTURED",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
       "repositoryRefs": [
@@ -198,14 +220,23 @@
       "sourceRefs": [
         "projects/vexlife-welcome-wagon/README.md",
         "repo.vextreme:pages/terrain-map.html",
-        "repo.vextreme:pages/vextreme-home.html",
+        "repo.vextreme:pages/about-vextreme.html",
         "repo.vextreme:widgets/vex-fab.js",
         "repo.vextreme:widgets/fab-lang.js",
         "repo.vextreme:widgets/fab-read-aloud.js",
         "repo.vextreme:widgets/vex-institutional.js",
         "repo.vextreme:lib/vextreme.js",
         "repo.vexlife:pages/vexlife-onboarding.html",
-        "repo.vexwork:index.html"
+        "repo.vexwork:index.html",
+        "github.pull.vextreme.415",
+        "github.commit.vextreme.1bd880ef29b26fd9774fbb3fa1fb66e8cf8fed9f",
+        "git.tree.vextreme.e6e4708fa2a6dd791ca2a9f19b2cbd60775a139e",
+        "github.pull.vexlife.929",
+        "github.commit.vexlife.c24ef3a5bf81a1f3f73ebe413ba096a163e4374c",
+        "git.tree.vexlife.a1ec368be0617fdd218010fbb013734e16051db2",
+        "github.pull.vexwork.154",
+        "github.commit.vexwork.516774010b44d80b2f4eb1cdf5df783523dfa8a2",
+        "git.tree.vexwork.5afea26d4fec3d87722f4ff4541dfbffd1b8837a"
       ],
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
@@ -298,7 +329,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-24T06:05:10.000Z",
-      "updatedAt": "2026-10-24T06:43:34.000Z",
+      "updatedAt": "2026-10-25T07:12:00.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "workRef": "work.vexlife.welcome-wagon.about-vextreme-slug-migration",
@@ -306,7 +337,7 @@
       "label": "Rename `vextreme-home` to canonical `about-vextreme` safely",
       "purpose": "Migrate the registered institutional page identity from vextreme-home to about-vextreme through a machine-derived impact set, preserving historical/provenance references, updating live links/generated projections/evidence/tests, and retaining a deliberate compatibility route for the old public URL when repository constraints allow it.",
       "workClass": "POTENTIAL",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexlife.welcome-wagon.slug-rename-tooling"
@@ -321,7 +352,10 @@
         "repo.vextreme:data/status/tech-debt.json",
         "repo.vextreme:index.html",
         "repo.vextreme:tests/54-institutional-surfaces.test.js",
-        "repo.vextreme:tests/55-build-sitemap.test.js"
+        "repo.vextreme:tests/55-build-sitemap.test.js",
+        "github.pull.vextreme.403",
+        "github.commit.vextreme.2b6753cbaa1e6c85301e1dd546d7e6a11c56f007",
+        "repo.vextreme:pages/about-vextreme.html"
       ],
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
@@ -330,7 +364,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-24T06:05:10.000Z",
-      "updatedAt": "2026-10-24T07:04:24.000Z",
+      "updatedAt": "2026-10-25T07:12:00.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "workRef": "work.vexlife.welcome-wagon.slug-rename-tooling",
@@ -338,7 +372,7 @@
       "label": "Add plan-first page-slug rename impact tooling",
       "purpose": "Close or materially reduce Vextreme td-004 by providing a deterministic plan-first rename tool that discovers and classifies live owner, live reference, generated, evidence, test and historical-provenance references before mutation so future page identity changes are source-derived rather than grep-by-assumption.",
       "workClass": "POTENTIAL",
-      "state": "RUNNING",
+      "state": "COMPLETED",
       "priorityClass": "NORMAL",
       "dependencyRefs": [],
       "repositoryRefs": [
@@ -353,11 +387,45 @@
         "github.pull.vexwork.113",
         "github.pull.vextreme.400",
         "github.commit.vextreme.3a54f4168a2ffabdf4ce646f5d880f7ab363821d",
-        "relay.return.vextreme.welcome-wagon.slug-rename-tooling.source-owner.mac-a001.safe-failure"
+        "relay.return.vextreme.welcome-wagon.slug-rename-tooling.source-owner.mac-a001.safe-failure",
+        "github.commit.vextreme.cd495440531286dac97709b90f7b4083e9b7ecc3"
       ],
       "nextProcessRefs": [],
-      "authorityDisposition": "AUTHORIZED_BOUNDED",
-      "effectDisposition": "EFFECTS_BOUND"
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-10-25T07:12:00.000Z",
+      "updatedAt": "2026-10-25T07:36:31Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "workRef": "work.vexlife.welcome-wagon.support-shell-context-currentness",
+      "parentWorkRefOrNull": "work.vexlife.welcome-wagon.outcome",
+      "label": "Converge Support onto current shared shell and clean Terrain links",
+      "purpose": "Resolve the lived Support-page chrome drift by moving `vex-support` onto the accepted shell-context runtime, preserving its voluntary Stripe and held-route semantics, removing retired standalone header/footer controls, and graduating shared Vextreme/Terrain home links to the clean canonical Terrain URL without taking generated/runtime custody from PR #379.",
+      "workClass": "TASK",
+      "state": "COMPLETED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vextreme"
+      ],
+      "sourceRefs": [
+        "github.pull.vextreme.414",
+        "repo.vextreme:pages/vex-support.html",
+        "repo.vextreme:config/institutional-surfaces.json",
+        "repo.vextreme:lib/vextreme.js",
+        "repo.vextreme:tests/39-vextreme-nav-links.test.js",
+        "repo.vextreme:tests/43-runtime-chrome-composition.test.js",
+        "repo.vextreme:tests/54-institutional-surfaces.test.js",
+        "github.commit.vextreme.5a27d0914591753c2e50e6b086566fc0aa85a9c3",
+        "git.tree.vextreme.c5f1ed40e1168b7bde6d65d3ee3680b6471bc78c"
+      ],
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
     }
   ],
   "transitions": [],
