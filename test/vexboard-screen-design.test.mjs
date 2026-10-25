@@ -3,6 +3,7 @@ import test from 'node:test';
 
 import {
   SCREEN_DESIGN_AUTHORITY_STATES,
+  SCREEN_DESIGN_COMPONENT_TEMPLATES,
   SCREEN_DESIGN_LAYOUT_MODES,
   VEXBOARD_SCREEN_DESIGN_SCHEMA,
   boundedResponsiveMetric,
@@ -11,6 +12,7 @@ import {
   resolveScreenDesignBox,
   resolveScreenDesignConstraintBox,
   screenDesignViewportProfile,
+  screenDesignComponentAssignment,
 } from '../src/core/vexboard-screen-design.mjs';
 
 test('Screen design authority states preserve reverse adoption, draft proposal and accepted authority separately', () => {
@@ -203,6 +205,54 @@ test('screen design resolves named viewport profiles without changing design ide
   assert.throws(
     () => screenDesignViewportProfile(design, 'profile.missing'),
     /unknown screen design viewport profile/,
+  );
+});
+
+test('screen design owns reusable component/template assignments and state-conditioned style variants', () => {
+  assert.ok(SCREEN_DESIGN_COMPONENT_TEMPLATES.includes('component.button'));
+  assert.ok(SCREEN_DESIGN_COMPONENT_TEMPLATES.includes('component.modal-bottom-sheet'));
+
+  const design = normalizeScreenDesign({
+    schemaVersion: VEXBOARD_SCREEN_DESIGN_SCHEMA,
+    designRef: 'design.components',
+    authorityState: 'VEXBOARD_DESIGN_DRAFT',
+    referenceViewport: {
+      profileRef: 'profile.phone',
+      widthDp: 412,
+      heightDp: 915,
+    },
+    constraints: [],
+    componentAssignments: [{
+      assignmentRef: 'assignment.tab',
+      semanticRef: 'element.example.tab',
+      templateRef: 'component.tab',
+      styleRef: 'style.navigation',
+      selectedStyleRefOrNull: 'style.action.primary',
+      iconRefOrNull: null,
+    }],
+  });
+
+  assert.deepEqual(screenDesignComponentAssignment(design, 'element.example.tab'), {
+    assignmentRef: 'assignment.tab',
+    semanticRef: 'element.example.tab',
+    templateRef: 'component.tab',
+    styleRef: 'style.navigation',
+    selectedStyleRefOrNull: 'style.action.primary',
+    iconRefOrNull: null,
+  });
+
+  const duplicate = structuredClone(design);
+  duplicate.componentAssignments.push({
+    assignmentRef: 'assignment.tab.2',
+    semanticRef: 'element.example.tab',
+    templateRef: 'component.button',
+    styleRef: 'style.action.primary',
+    selectedStyleRefOrNull: null,
+    iconRefOrNull: null,
+  });
+  assert.throws(
+    () => normalizeScreenDesign(duplicate),
+    /duplicate screen design component semanticRef/,
   );
 });
 
