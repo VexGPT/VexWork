@@ -531,6 +531,33 @@ function inspector(side){
     ];
     for(const [k,v] of designRows){dkv.append(el('div','k',k),el('div','v',String(v)))}dg.append(dkv);
 
+    const componentAssignment=(current.design.componentAssignments||[]).find(value=>value.semanticRef===n.nodeRef)||null;
+    if(componentAssignment){
+      dg.append(el('div','k','Component assignment'));
+      const componentKv=el('div','kv');
+      for(const [k,v] of [
+        ['template',componentAssignment.templateRef],
+        ['style',componentAssignment.styleRef],
+        ['selected',componentAssignment.selectedStyleRefOrNull||'None'],
+        ['icon',componentAssignment.iconRefOrNull||'None'],
+      ])componentKv.append(el('div','k',k),el('div','v',String(v)));
+      dg.append(componentKv);
+
+      if(editable()){
+        const styleRefs=designStyleRefs(current.design),controls=el('div','row');
+        const styleLabel=el('label','k','Style'),styleSelect=document.createElement('select');styleSelect.className='containment-select';
+        for(const styleRef of styleRefs){const option=document.createElement('option');option.value=styleRef;option.textContent=styleRef;option.selected=styleRef===componentAssignment.styleRef;styleSelect.append(option)}
+        styleSelect.onchange=()=>editLocalComponentAssignment(n.nodeRef,'styleRef',styleSelect.value);styleLabel.append(styleSelect);controls.append(styleLabel);
+
+        if(componentAssignment.selectedStyleRefOrNull){
+          const selectedLabel=el('label','k','Selected'),selectedSelect=document.createElement('select');selectedSelect.className='containment-select';
+          for(const styleRef of styleRefs){const option=document.createElement('option');option.value=styleRef;option.textContent=styleRef;option.selected=styleRef===componentAssignment.selectedStyleRefOrNull;selectedSelect.append(option)}
+          selectedSelect.onchange=()=>editLocalComponentAssignment(n.nodeRef,'selectedStyleRefOrNull',selectedSelect.value);selectedLabel.append(selectedSelect);controls.append(selectedLabel);
+        }
+        dg.append(controls);
+      }
+    }
+
     const constraints=current.design.constraints.filter(value=>value.semanticRef===n.nodeRef);
     if(constraints.length){
       dg.append(el('div','k','Constraints'));
@@ -578,7 +605,7 @@ function inspector(side){
       }
       dg.append(list);
     }
-    if(!constraints.length&&!layoutRules.length&&!metricRefs.length){
+    if(!componentAssignment&&!constraints.length&&!layoutRules.length&&!metricRefs.length){
       dg.append(el('div','v','No direct Screen-design constraint on this semantic identity; inspect its owning Screen/container or construction/source lens.'));
     }
     side.append(dg);
@@ -728,6 +755,29 @@ async function setAndroidViewportProfile(profileRef){
   if(!source)return;
   await reprojectAndroidDesign(source.design,{profileRef,markDirty:false});
 }
+function designStyleRefs(design){
+  const refs=new Set();
+  for(const assignment of design.componentAssignments||[]){
+    if(assignment.styleRef)refs.add(assignment.styleRef);
+    if(assignment.selectedStyleRefOrNull)refs.add(assignment.selectedStyleRefOrNull);
+  }
+  return [...refs].sort();
+}
+async function editLocalComponentAssignment(semanticRef,field,value){
+  if(!editable()||!current.design)return;
+  const next=structuredClone(current.design);
+  const assignment=next.componentAssignments?.find(entry=>entry.semanticRef===semanticRef);if(!assignment)return;
+  assignment[field]=value||null;
+  next.authorityState='VEXBOARD_DESIGN_DRAFT';
+  try{
+    const accepted=ScreenDesign.normalizeScreenDesign(next);
+    await reprojectAndroidDesign(accepted,{markDirty:true});
+  }catch(error){
+    saveMessage=`Design edit rejected · ${error?.message||error}`;
+    renderWorkspace();requestAnimationFrame(()=>applyCamera());
+  }
+}
+
 async function editLocalDesignMetric(metricRef,field,value){
   if(!editable()||!current.design)return;
   if(!Number.isFinite(value))return;
