@@ -103,6 +103,8 @@ test('built-in and patient-zero source boards preserve separate catalog ownershi
     [
       'board.vexbusinessfactory.intent-topology.patient-zero',
       'board.vexbusinessfactory.system-anatomy.patient-zero',
+      'board.vexlife-android.home-vexstream.poc',
+      'board.vexlife-android.vexstream-depth.poc',
       'board.vexstream.phone-desktop-connection.construction-evidence',
       'board.vexstream.phone-desktop-connection.living-blueprint',
     ],
@@ -129,6 +131,18 @@ test('built-in and patient-zero source boards preserve separate catalog ownershi
   assert.equal(Reader.builtinPrototypeUrl('board.vexboard.self-map'), null);
   const publishGraph = normalizeBoardGraph(publishMap.graph);
   assert.ok(publishGraph.nodes.some((node) => node.detailBoardRefOrNull === 'board.vexboard.self-map'));
+});
+
+test('VexLife Android POC is projected at source-load time and styled without changing universal Board schemas', () => {
+  assert.match(page, /vexboard-android-source-projector\.mjs/);
+  assert.match(page, /android-reference-presentation\.mjs/);
+  assert.match(page, /VEXLIFE_ANDROID_POC_SNAPSHOT_SCHEMA/);
+  assert.match(page, /projectVexLifeAndroidPocSnapshot\(source,boardRef\)/);
+  assert.match(page, /AndroidPresentation\.androidReferenceClassNames\(current\.presentation,i\.projectionItemRef\)/);
+  assert.match(page, /Open VexLife Android Screen POC/);
+  assert.match(page, /VEXBOARD_ANDROID_POC_BOARD_REFS\.EXPERIENCE/);
+  assert.doesNotMatch(page, /api\.github\.com|raw\.githubusercontent\.com/);
+  assert.doesNotMatch(page, /method:\s*['"](?:POST|PUT|PATCH|DELETE)['"]/i);
 });
 
 test('draft reader keeps read-only source separate from editable local fork', async () => {
