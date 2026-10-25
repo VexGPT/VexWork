@@ -564,7 +564,11 @@ function inspector(side){
       for(const finding of findings){
         const row=el('div','ref-row');
         row.append(
-          el('div','tiny',finding.kind),
+          el(
+            'div',
+            'tiny',
+            `${finding.kind} · ${finding.blockingForPocAuthority?'BLOCKS POC AUTHORITY':finding.scopeStatus}`,
+          ),
           el('div','v',finding.summary),
         );
         if(finding.subjectSemanticRefOrNull){
