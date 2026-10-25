@@ -394,7 +394,7 @@ stable incremental arrangement
 
 ### Width-bounded local continuation is a foundation constraint
 
-Local composition must not assume that a ROW or COLUMN can propagate forever in one direction.
+Local composition must not assume that a horizontal ROW can propagate forever in one direction.
 
 The container's current projection bounds are already the local spatial constraint. When an explicitly
 bounded flow reaches that edge, the resolver may continue inside the same container without changing
@@ -405,15 +405,15 @@ The first earned continuation policies are deliberately small:
 ```text
 FAIL
   preserve the original behavior
-  -> a linear ROW/COLUMN that exceeds its container fails closed
+  -> a linear ROW that exceeds its container fails closed
 
 WRAP
   preserve ordered children
-  -> start the next local row / column at the normal leading edge
+  -> start the next local row at the normal leading edge
 
 SERPENTINE
   preserve ordered children
-  -> alternate local reading direction on each new row / column
+  -> alternate local reading direction on each new row
   -> useful for zig-zag / course / process flows where returning to the far edge would waste space
 ```
 
@@ -427,6 +427,10 @@ SERPENTINE_DIRECTION != FLOW_DIRECTION
 RESOLVED_PATH_SHAPE != PROCESS_TRUTH
 ```
 
+
+The current observed pressure is horizontal width exhaustion. COLUMN boundary continuation is deliberately
+not generalized here; a real vertical-flow consumer must earn that additional policy surface later.
+
 A spiral, radial sweep, obstacle-aware continuation, or another path shape may be added later when a
 real consumer earns it. The foundation seam is **explicit local boundary policy**, not a promise that
 one algorithm is correct for every map.
@@ -435,7 +439,7 @@ This keeps the small-system and large-system cases on the same contract:
 
 ```text
 few children
--> ordinary local ROW / COLUMN
+-> ordinary local ROW
 
 many children inside bounded container
 -> same stable identities + same structural order
