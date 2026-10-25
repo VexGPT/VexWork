@@ -14,6 +14,8 @@ import {
 
 export const VEXLIFE_ANDROID_POC_SNAPSHOT_SCHEMA = 'vexlife-android.vexboard-snapshot/poc-v1';
 export const VEXBOARD_ANDROID_REFERENCE_PRESENTATION_SCHEMA = 'vexboard.android-reference-presentation/v1';
+export const VEXLIFE_ANDROID_ADOPTION_COVERAGE_SCHEMA =
+  'vexlife-android.vexboard-adoption-coverage/poc-v1';
 export const VEXBOARD_ANDROID_POC_BOARD_REFS = Object.freeze({
   EXPERIENCE: 'board.vexlife-android.home-vexstream.poc',
   DEPTH: 'board.vexlife-android.vexstream-depth.poc',
@@ -57,6 +59,47 @@ function relativeJsonLocation(value, label) {
   return value;
 }
 
+function normalizeAdoptionCoverage(input) {
+  assert(
+    input?.schemaVersion === VEXLIFE_ANDROID_ADOPTION_COVERAGE_SCHEMA,
+    'VexLife Android adoption coverage schema mismatch',
+  );
+  assert(
+    input.screenRealizationModes &&
+    typeof input.screenRealizationModes === 'object' &&
+    !Array.isArray(input.screenRealizationModes),
+    'Android adoption screenRealizationModes required',
+  );
+  for (const [screenRef, mode] of Object.entries(input.screenRealizationModes)) {
+    stableRef(screenRef, 'Android adoption screenRef');
+    assert(
+      ['GENERIC_BLUEPRINT_TREE', 'CUSTOM_NATIVE_REALIZATION', 'GENERATED_FROM_VEXBOARD_DESIGN']
+        .includes(mode),
+      `Android adoption realization mode unsupported: ${mode}`,
+    );
+  }
+  assert(Array.isArray(input.identityExceptions), 'Android adoption identityExceptions required');
+  const seen = new Set();
+  for (const [index, entry] of input.identityExceptions.entries()) {
+    stableRef(entry?.semanticRef, `Android adoption identityExceptions[${index}].semanticRef`);
+    assert(!seen.has(entry.semanticRef),
+      `duplicate Android adoption identity exception ${entry.semanticRef}`);
+    seen.add(entry.semanticRef);
+    assert(
+      ['DERIVED_CUSTOM_PRESENTATION', 'DYNAMIC_DOMAIN_OCCURRENCE', 'TARGET_ONLY_DECORATION']
+        .includes(entry.origin),
+      `Android adoption identity origin unsupported: ${entry.origin}`,
+    );
+    assert(
+      ['REGISTERED_STATIC', 'UNREGISTERED_STATIC', 'NOT_APPLICABLE']
+        .includes(entry.staticRegistryStatus),
+      `Android adoption static registry status unsupported: ${entry.staticRegistryStatus}`,
+    );
+    refs(entry.sourceRefs ?? [], `Android adoption identityExceptions[${index}].sourceRefs`);
+  }
+  return structuredClone(input);
+}
+
 function normalizeSnapshot(input) {
   assert(input?.schemaVersion === VEXLIFE_ANDROID_POC_SNAPSHOT_SCHEMA, 'VexLife Android snapshot schema mismatch');
   stableRef(input.snapshotRef, 'snapshotRef');
@@ -82,6 +125,7 @@ function normalizeSnapshot(input) {
   const stateKinds = input.vexStream.states.map((state) => state.kind).sort();
   assert(JSON.stringify(stateKinds) === JSON.stringify(['EMPTY', 'LOADED', 'LOADING']),
     'VexStream POC state kinds must be LOADING / EMPTY / LOADED');
+  normalizeAdoptionCoverage(input.adoptionCoverage);
 
   return structuredClone(input);
 }
@@ -214,7 +258,16 @@ function makePresentation(profile, hints, sourceRefs, relationshipRoutes = []) {
   });
 }
 
-function makeDraft({ draftRef, title, graph, projection, presentation, design = null, sourceRefs }) {
+function makeDraft({
+  draftRef,
+  title,
+  graph,
+  projection,
+  presentation,
+  design = null,
+  adoptionCoverage = null,
+  sourceRefs,
+}) {
   return Object.freeze({
     schemaVersion: 'vexboard.local-draft/v1',
     draftRef,
@@ -226,6 +279,7 @@ function makeDraft({ draftRef, title, graph, projection, presentation, design = 
     projection: stripFingerprint(projection),
     presentation,
     ...(design ? { design: normalizeScreenDesign(design) } : {}),
+    ...(adoptionCoverage ? { adoptionCoverage: normalizeAdoptionCoverage(adoptionCoverage) } : {}),
     sourceRefs: refs(sourceRefs, 'draft.sourceRefs'),
   });
 }
@@ -977,6 +1031,7 @@ function experienceBoard(snapshot, design, viewportProfile) {
       toProjectionItemRef: 'item.vexstream.connection-sheet',
     }]),
     design,
+    adoptionCoverage: snapshot.adoptionCoverage,
     sourceRefs,
   });
 }
@@ -1115,6 +1170,7 @@ function depthBoard(snapshot, design, viewportProfile) {
     projection,
     presentation: makePresentation(viewportProfile, hints, sourceRefs),
     design,
+    adoptionCoverage: snapshot.adoptionCoverage,
     sourceRefs,
   });
 }
