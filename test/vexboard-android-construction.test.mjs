@@ -4,6 +4,7 @@ import test from 'node:test';
 
 import {
   VEXBOARD_ANDROID_CONSTRUCTION_PLAN_SCHEMA,
+  VEXLIFE_ANDROID_DYNAMIC_TEXT_CAPABILITY_REF,
   compileVexLifeAndroidScreenDesign,
 } from '../src/core/vexboard-android-construction.mjs';
 
@@ -73,14 +74,30 @@ test('Android construction plan consumes VexBoard design without target effects'
     (entry) => entry.semanticRef === 'element.home.body.vexstream.status',
   );
   assert.equal(homeStatus.contentModeOrNull, 'DYNAMIC_RUNTIME');
-  assert.equal(homeStatus.targetIdentityStrategyOrNull, 'ADD_DYNAMIC_TEXT_IDENTITY');
+  assert.equal(homeStatus.targetIdentityStrategyOrNull, 'REGISTER_DYNAMIC_TEXT_ELEMENT');
+  assert.equal(homeStatus.targetCapabilityRefOrNull, VEXLIFE_ANDROID_DYNAMIC_TEXT_CAPABILITY_REF);
   assert.equal(homeStatus.targetCapabilityStatusOrNull, 'STANDARDIZATION_REQUIRED');
 
   const homeBody = plan.componentMappings.find(
     (entry) => entry.semanticRef === 'element.home.body.vexstream.body',
   );
   assert.equal(homeBody.contentModeOrNull, 'DYNAMIC_RUNTIME');
+  assert.equal(homeBody.targetCapabilityRefOrNull, VEXLIFE_ANDROID_DYNAMIC_TEXT_CAPABILITY_REF);
   assert.equal(homeBody.targetCapabilityStatusOrNull, 'STANDARDIZATION_REQUIRED');
+
+  assert.equal(plan.targetCapabilityRequirements.length, 1);
+  const dynamicTextRequirement = plan.targetCapabilityRequirements[0];
+  assert.equal(dynamicTextRequirement.capabilityRef, VEXLIFE_ANDROID_DYNAMIC_TEXT_CAPABILITY_REF);
+  assert.equal(dynamicTextRequirement.status, 'STANDARDIZATION_REQUIRED');
+  assert.deepEqual(dynamicTextRequirement.requiredBySemanticRefs, [
+    'element.home.body.vexstream.body',
+    'element.home.body.vexstream.status',
+  ]);
+  assert.equal(dynamicTextRequirement.proposalStatus, 'PROPOSED_NOT_IN_TARGET_SOURCE');
+  assert.equal(dynamicTextRequirement.proposedTargetShape.elementType, 'DynamicTextElement');
+  assert.equal(dynamicTextRequirement.proposedTargetShape.screenBlueprintFactory, 'dynamicTextRef');
+  assert.equal(dynamicTextRequirement.proposedTargetShape.composeCell, 'VexText(element, text)');
+  assert.equal(dynamicTextRequirement.proposedTargetShape.invariant, 'TEXT_IDENTITY != TEXT_VALUE');
 
   const homeOpen = plan.componentMappings.find(
     (entry) => entry.semanticRef === 'element.home.body.systems.vexstream-music',
@@ -234,16 +251,35 @@ test('accepted VexBoard design remains held when known Android adoption blockers
   assert.equal(plan.effects.targetSourceMutationPerformed, false);
 });
 
-test('accepted VexBoard design becomes Android implementation eligible without changing the adoption snapshot', () => {
+test('accepted VexBoard design remains held until required Android target capability exists', () => {
   const accepted = structuredClone(design);
   accepted.authorityState = 'VEXBOARD_DESIGN_AUTHORITY';
 
   const plan = compileVexLifeAndroidScreenDesign(accepted);
 
   assert.equal(plan.designAuthorityState, 'VEXBOARD_DESIGN_AUTHORITY');
+  assert.equal(plan.admission, 'IMPLEMENTATION_HELD_TARGET_CAPABILITIES');
+  assert.equal(plan.targetCapabilityRequirements[0].status, 'STANDARDIZATION_REQUIRED');
+  assert.equal(plan.effects.targetSourceMutationPerformed, false);
+});
+
+test('accepted VexBoard design becomes Android implementation eligible once target capability is admitted', () => {
+  const accepted = structuredClone(design);
+  accepted.authorityState = 'VEXBOARD_DESIGN_AUTHORITY';
+
+  const plan = compileVexLifeAndroidScreenDesign(
+    accepted,
+    { availableTargetCapabilityRefs: [VEXLIFE_ANDROID_DYNAMIC_TEXT_CAPABILITY_REF] },
+  );
+
+  assert.equal(plan.designAuthorityState, 'VEXBOARD_DESIGN_AUTHORITY');
   assert.equal(plan.admission, 'IMPLEMENTATION_ELIGIBLE');
   assert.equal(plan.targetRef, 'target.vexlife-android.compose');
+  assert.equal(plan.targetCapabilityRequirements[0].status, 'AVAILABLE');
   assert.equal(plan.mappings.length >= 16, true);
+  assert.equal(plan.componentMappings.find(
+    (entry) => entry.semanticRef === 'element.home.body.vexstream.status',
+  ).targetCapabilityStatusOrNull, 'AVAILABLE');
 });
 
 test('Android construction fails closed when required VexBoard layout meaning is lost', () => {
