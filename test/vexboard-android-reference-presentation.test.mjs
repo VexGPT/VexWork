@@ -6,6 +6,7 @@ import {
   VEXBOARD_ANDROID_REFERENCE_PRESENTATION_SCHEMA,
   androidReferenceClassNames,
   androidReferenceProfileSummary,
+  androidReferenceRelationshipRoute,
   installAndroidReferencePresentation,
   normalizeAndroidReferencePresentation,
 } from '../vexboard/ui/android-reference-presentation.mjs';
@@ -25,6 +26,11 @@ function fixture() {
       { projectionItemRef: 'item.sheet', role: 'MODAL_SHEET', variant: null },
       { projectionItemRef: 'item.settings', role: 'ICON_BUTTON', variant: 'Settings' },
     ],
+    relationships: [{
+      relationshipRef: 'rel.open-sheet',
+      fromProjectionItemRef: 'item.settings',
+      toProjectionItemRef: 'item.sheet',
+    }],
     sourceRefs: [],
   };
 }
@@ -52,6 +58,20 @@ test('Android reference presentation is occurrence-local and does not mint seman
     heightDp: 915,
     boardScalePerDp: 0.72,
   });
+  assert.deepEqual(androidReferenceRelationshipRoute(presentation, 'rel.open-sheet'), {
+    relationshipRef: 'rel.open-sheet',
+    fromProjectionItemRef: 'item.settings',
+    toProjectionItemRef: 'item.sheet',
+  });
+});
+
+test('Android reference presentation rejects occurrence routes that do not bind visible projection items', () => {
+  const invalid = fixture();
+  invalid.relationships[0].fromProjectionItemRef = 'item.missing';
+  assert.throws(
+    () => normalizeAndroidReferencePresentation(invalid),
+    /must reference known projection items/,
+  );
 });
 
 test('Android reference presentation rejects duplicate projection occurrence hints', () => {
