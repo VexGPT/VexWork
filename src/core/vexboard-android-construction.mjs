@@ -123,8 +123,14 @@ function componentTarget(templateRef) {
   return target;
 }
 
-function componentMapping(assignment) {
+function componentMapping(design, assignment) {
   const target = componentTarget(assignment.templateRef);
+  const proposed = design.semanticElements?.find(
+    (entry) => entry.semanticRef === assignment.semanticRef,
+  ) ?? null;
+  const targetOwnerSourceRefOrNull = proposed?.sourceRefs?.find(
+    (sourceRef) => sourceRef.startsWith('repo.vexlife-android:'),
+  ) ?? null;
   return Object.freeze({
     mappingRef: stableRef(
       `mapping.android.component.${assignment.semanticRef.replaceAll(':', '.').replaceAll('/', '.')}`,
@@ -138,6 +144,8 @@ function componentMapping(assignment) {
     iconRefOrNull: assignment.iconRefOrNull,
     typographyRefOrNull: assignment.typographyRefOrNull ?? null,
     colorRefOrNull: assignment.colorRefOrNull ?? null,
+    identityStateOrNull: proposed?.identityState ?? null,
+    targetOwnerSourceRefOrNull,
     ...target,
   });
 }
@@ -188,7 +196,7 @@ export function compileVexLifeAndroidScreenDesign(
   assert(Array.isArray(design.componentAssignments) && design.componentAssignments.length,
     'Android construction requires VexBoard component assignments');
   const componentMappings = Object.freeze(
-    design.componentAssignments.map(componentMapping),
+    design.componentAssignments.map((assignment) => componentMapping(design, assignment)),
   );
 
   const tabs = layoutRule(design, 'layout.vexstream.library-tabs');
