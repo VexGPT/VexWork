@@ -40,9 +40,7 @@ const CSS = `
 .shape.android-role-surface {
   background:var(--vex-android-surface-container-high,#272930);border:1px solid var(--vex-android-outline-variant,#383a42);border-radius:var(--vex-android-radius-large,12px);box-shadow:none;color:var(--vex-android-on-surface,#f5f5f4);
 }
-.shape.android-role-surface>.shape-label {
-  font-family:var(--vex-android-headline-small-family,system-ui);font-size:var(--vex-android-headline-small-size,17px);line-height:var(--vex-android-headline-small-line,22px);font-weight:var(--vex-android-headline-small-weight,400);
-}
+.shape.android-role-surface>.shape-label { display:none; }
 .shape.android-role-content-column {
   background:transparent;border:0;border-radius:0;box-shadow:none;padding:0;overflow:visible;
 }
