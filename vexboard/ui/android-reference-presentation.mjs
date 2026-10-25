@@ -19,11 +19,11 @@ const CSS = `
   background:#fafaf9;color:#57534e;font:700 9px ui-monospace,monospace;letter-spacing:.04em;text-transform:uppercase;
 }
 .shape.android-role-screen-frame {
-  background:#0f1012;border:2px solid #383a42;border-radius:28px;box-shadow:0 16px 40px #0004;color:#f5f5f4;padding:0;
+  background:var(--vex-android-background,#0f1012);border:2px solid var(--vex-android-outline-variant,#383a42);border-radius:var(--vex-android-radius-extra-large,20px);box-shadow:0 16px 40px #0004;color:var(--vex-android-on-surface,#f5f5f4);padding:0;
 }
 .shape.android-role-screen-frame>.shape-label {
-  position:absolute;right:10px;bottom:9px;width:auto;padding:3px 7px;border:1px solid #5a5d68;border-radius:999px;
-  background:#17181ce8;color:#b7b8bf;font:700 8px ui-monospace,monospace;text-transform:uppercase;letter-spacing:.05em;
+  position:absolute;right:10px;bottom:9px;width:auto;padding:3px 7px;border:1px solid var(--vex-android-outline,#5a5d68);border-radius:999px;
+  background:var(--vex-android-surface,#17181c);color:var(--vex-android-on-surface-variant,#b7b8bf);font:700 8px ui-monospace,monospace;text-transform:uppercase;letter-spacing:.05em;
 }
 .shape.android-role-screen-anchor {
   background:#f5f3ff;border:2px solid #7c3aed;border-radius:14px;color:#4c1d95;font-weight:800;
@@ -33,24 +33,24 @@ const CSS = `
   font:800 9px ui-monospace,monospace;letter-spacing:.03em;text-transform:uppercase;padding:2px 9px;
 }
 .shape.android-role-toolbar {
-  background:#17181c;border:0;border-bottom:1px solid #383a42;border-radius:26px 26px 0 0;box-shadow:none;color:#f5f5f4;
+  background:var(--vex-android-surface,#17181c);border:0;border-bottom:1px solid var(--vex-android-outline-variant,#383a42);border-radius:var(--vex-android-radius-extra-large,20px) var(--vex-android-radius-extra-large,20px) 0 0;box-shadow:none;color:var(--vex-android-on-surface,#f5f5f4);
   justify-content:flex-start;text-align:left;padding:0 18px;font-size:22px;font-weight:650;
 }
 .shape.android-role-surface {
-  background:#272930;border:1px solid #383a42;border-radius:18px;box-shadow:none;color:#f5f5f4;
+  background:var(--vex-android-surface-container-high,#272930);border:1px solid var(--vex-android-outline-variant,#383a42);border-radius:var(--vex-android-radius-large,12px);box-shadow:none;color:var(--vex-android-on-surface,#f5f5f4);
 }
-.shape.android-role-text { border:0;background:transparent;box-shadow:none;color:#f5f5f4;justify-content:flex-start;text-align:left;white-space:pre-line; }
+.shape.android-role-text { border:0;background:transparent;box-shadow:none;color:var(--vex-android-on-surface,#f5f5f4);justify-content:flex-start;text-align:left;white-space:pre-line; }
 .shape.android-role-text.android-variant-title { font-size:15px;font-weight:750;line-height:1.35; }
-.shape.android-role-text.android-variant-supporting { color:#b7b8bf;font-size:11px;line-height:1.45; }
-.shape.android-role-text.android-variant-empty { color:#b7b8bf;font-size:13px; }
+.shape.android-role-text.android-variant-supporting { color:var(--vex-android-on-surface-variant,#b7b8bf);font-size:11px;line-height:1.45; }
+.shape.android-role-text.android-variant-empty { color:var(--vex-android-on-surface-variant,#b7b8bf);font-size:13px; }
 .shape.android-role-button {
-  border-radius:999px;box-shadow:none;font-size:11px;font-weight:750;padding:6px 12px;
+  border-radius:var(--vex-android-radius-full,999px);box-shadow:none;font-size:11px;font-weight:750;padding:6px 12px;
 }
-.shape.android-role-button.android-variant-primary { background:#f2f2ef;border-color:#f2f2ef;color:#111216; }
-.shape.android-role-button.android-variant-secondary { background:#51495f;border-color:#51495f;color:#f5f5f4; }
-.shape.android-role-button.android-variant-danger { background:#5a3036;border-color:#7f454d;color:#ffe9eb; }
+.shape.android-role-button.android-variant-primary { background:var(--vex-android-primary,#f2f2ef);border-color:var(--vex-android-primary,#f2f2ef);color:var(--vex-android-on-primary,#111216); }
+.shape.android-role-button.android-variant-secondary { background:var(--vex-android-secondary-container,#4a4458);border-color:var(--vex-android-secondary-container,#4a4458);color:var(--vex-android-on-secondary-container,#e8def8); }
+.shape.android-role-button.android-variant-danger { background:var(--vex-android-error-container,#8c1d18);border-color:var(--vex-android-error-container,#8c1d18);color:var(--vex-android-on-error-container,#f9dedc); }
 .shape.android-role-icon-button {
-  border:0;border-radius:999px;background:transparent;box-shadow:none;color:#f5f5f4;padding:0;font-size:0;
+  border:0;border-radius:var(--vex-android-radius-full,999px);background:transparent;box-shadow:none;color:var(--vex-android-on-surface,#f5f5f4);padding:0;font-size:0;
 }
 .shape.android-role-icon-button::after { font-size:20px;line-height:1; }
 .shape.android-role-icon-button.android-variant-search::after { content:"⌕"; }
@@ -61,31 +61,31 @@ const CSS = `
   background:transparent;border:0;border-radius:0;box-shadow:none;padding:0;overflow:hidden;
 }
 .shape.android-role-scroll-viewport>.shape-label { display:none; }
-.shape.android-role-tab { border-radius:999px;box-shadow:none;font-size:11px;font-weight:750; }
-.shape.android-role-tab.android-variant-selected { background:#f2f2ef;border-color:#f2f2ef;color:#111216; }
-.shape.android-role-tab.android-variant-default { background:#0f1012;border:1px solid #5a5d68;color:#b7b8bf; }
+.shape.android-role-tab { border-radius:var(--vex-android-radius-full,999px);box-shadow:none;font-size:11px;font-weight:750; }
+.shape.android-role-tab.android-variant-selected { background:var(--vex-android-primary,#f2f2ef);border-color:var(--vex-android-primary,#f2f2ef);color:var(--vex-android-on-primary,#111216); }
+.shape.android-role-tab.android-variant-default { background:transparent;border:1px solid var(--vex-android-outline,#5a5d68);color:var(--vex-android-primary,#f2f2ef); }
 .shape.android-role-status-row {
-  background:#17181c;border:0;border-radius:12px;box-shadow:none;color:#b7b8bf;justify-content:flex-start;text-align:left;padding-left:18px;
+  background:transparent;border:0;border-radius:var(--vex-android-radius-medium,9px);box-shadow:none;color:var(--vex-android-on-surface-variant,#b7b8bf);justify-content:flex-start;text-align:left;padding-left:18px;
 }
-.shape.android-role-status-row.android-variant-loading::before { content:"◌";font-size:18px;margin-right:10px;color:#f2f2ef; }
+.shape.android-role-status-row.android-variant-loading::before { content:"◌";font-size:18px;margin-right:10px;color:var(--vex-android-primary,#f2f2ef); }
 .shape.android-role-list-row {
-  background:#17181c;border:0;border-radius:14px;box-shadow:none;color:#f5f5f4;justify-content:flex-start;text-align:left;
+  background:#17181c;border:0;border-radius:14px;box-shadow:none;color:var(--vex-android-on-surface,#f5f5f4);justify-content:flex-start;text-align:left;
   white-space:pre-line;padding:12px 14px 12px 48px;font-size:11px;line-height:1.35;
 }
-.shape.android-role-list-row::before { content:"♪";position:absolute;left:16px;font-size:22px;color:#f2f2ef; }
-.shape.android-role-list-row.android-variant-hub-and-local { outline:1px solid #51495f; }
+.shape.android-role-list-row::before { content:"♪";position:absolute;left:16px;font-size:22px;color:var(--vex-android-primary,#f2f2ef); }
+.shape.android-role-list-row.android-variant-hub-and-local { outline:1px solid var(--vex-android-secondary-container,#4a4458); }
 .shape.android-role-fab {
-  background:#5b3ca6;border:0;border-radius:14px;box-shadow:0 7px 18px #0005;color:#fff;font-size:0;padding:0;
+  background:var(--vex-android-primary-container,#4f378b);border:0;border-radius:var(--vex-android-radius-large,12px);box-shadow:0 7px 18px #0005;color:var(--vex-android-on-primary-container,#eaddff);font-size:0;padding:0;
 }
 .shape.android-role-fab::after { font-size:18px; }
 .shape.android-role-fab.android-variant-play::after { content:"▶"; }
 .shape.android-role-fab.android-variant-shuffle::after { content:"↝"; }
 .shape.android-role-fab>.shape-label { display:none; }
 .shape.android-role-modal-sheet {
-  background:#202126;border:1px solid #5a5d68;border-radius:24px 24px 12px 12px;box-shadow:0 -12px 32px #0008;color:#f5f5f4;padding:16px 12px;
+  background:var(--vex-android-surface-container-low,#1d1b20);border:1px solid var(--vex-android-outline,#5a5d68);border-radius:var(--vex-android-radius-extra-large,20px) var(--vex-android-radius-extra-large,20px) 0 0;box-shadow:0 -12px 32px #0008;color:var(--vex-android-on-surface,#f5f5f4);padding:16px 12px;
 }
 .shape.android-role-modal-sheet>.shape-label {
-  position:absolute;left:18px;top:12px;width:auto;font-size:15px;font-weight:800;color:#f5f5f4;
+  position:absolute;left:18px;top:12px;width:auto;font-size:15px;font-weight:800;color:var(--vex-android-on-surface,#f5f5f4);
 }
 .shape.android-role-depth-portal {
   background:#eef2ff;border:2px solid #6366f1;border-radius:14px;color:#3730a3;font-weight:800;
@@ -190,6 +190,46 @@ export function androidReferenceScrolledOccurrence(
     clipPath: hidden
       ? null
       : `inset(${topCut}px ${rightCut}px ${bottomCut}px ${leftCut}px)`,
+  });
+}
+
+function requiredVisualToken(designInput, group, tokenRef) {
+  const value = designInput?.visualTokens?.[group]?.[tokenRef];
+  if (value === undefined || value === null) {
+    throw new TypeError(`Android reference visual token missing: ${group}.${tokenRef}`);
+  }
+  return value;
+}
+
+export function androidReferenceCssVariables(designInput, presentationInput) {
+  const presentation = normalizeAndroidReferencePresentation(presentationInput);
+  if (!presentation) return Object.freeze({});
+  const scale = Number(presentation.referenceViewport?.boardScalePerDp ?? 1);
+  if (!Number.isFinite(scale) || scale <= 0) throw new TypeError('Android presentation boardScalePerDp invalid');
+  const color = (ref) => requiredVisualToken(designInput, 'colors', ref);
+  const shape = (ref) => requiredVisualToken(designInput, 'shapes', ref);
+  return Object.freeze({
+    '--vex-android-background': color('background'),
+    '--vex-android-on-surface': color('onSurface'),
+    '--vex-android-on-surface-variant': color('onSurfaceVariant'),
+    '--vex-android-surface': color('surface'),
+    '--vex-android-surface-container': color('surfaceContainer'),
+    '--vex-android-surface-container-low': color('surfaceContainerLow'),
+    '--vex-android-surface-container-high': color('surfaceContainerHigh'),
+    '--vex-android-outline': color('outline'),
+    '--vex-android-outline-variant': color('outlineVariant'),
+    '--vex-android-primary': color('primary'),
+    '--vex-android-on-primary': color('onPrimary'),
+    '--vex-android-primary-container': color('primaryContainer'),
+    '--vex-android-on-primary-container': color('onPrimaryContainer'),
+    '--vex-android-secondary-container': color('secondaryContainer'),
+    '--vex-android-on-secondary-container': color('onSecondaryContainer'),
+    '--vex-android-error-container': color('errorContainer'),
+    '--vex-android-on-error-container': color('onErrorContainer'),
+    '--vex-android-radius-medium': `${Number(shape('mediumRadiusDp')) * scale}px`,
+    '--vex-android-radius-large': `${Number(shape('largeRadiusDp')) * scale}px`,
+    '--vex-android-radius-extra-large': `${Number(shape('extraLargeRadiusDp')) * scale}px`,
+    '--vex-android-radius-full': '999px',
   });
 }
 
