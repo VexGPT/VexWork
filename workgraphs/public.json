@@ -16,6 +16,7 @@
     "work.vexlife.blueprint-source-of-truth.outcome",
     "work.android-proof-orchestration.outcome",
     "work.android-widget-foundation.outcome",
+    "work.vexlife.interface-refinement.outcome",
     "work.vex-universe.outcome",
     "work.vex.security-assurance.outcome",
     "work.vexlife-android.current-state-refinement.outcome",
@@ -3502,6 +3503,174 @@
       ],
       "createdAt": "2026-10-24T11:20:00.000Z",
       "updatedAt": "2026-10-24T11:20:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "nextProcessRefs": [],
+      "createdAt": "2026-10-25T01:23:08.000Z",
+      "updatedAt": "2026-10-25T01:23:08.000Z",
+      "workRef": "work.vexlife.interface-refinement.outcome",
+      "parentWorkRefOrNull": null,
+      "label": "VexLife Interface Refinement",
+      "purpose": "Carry the current lived interface forward from the first working Victor ↔ local Heretic VexLife conversation. Latest-version truth is the entry point; V0 is an addressable ancestor, not a reset target.",
+      "workClass": "OUTCOME",
+      "state": "RUNNING",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "project.vexlife.interface-refinement",
+        "projects/vexlife-interface-refinement/README.md",
+        "project.vexlife.tocompletion",
+        "github.commit.vexlife.8f1e9fd9e3f38f8dc23296257df718fca9806988"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "createdAt": "2026-10-25T01:23:08.000Z",
+      "updatedAt": "2026-10-25T01:23:08.000Z",
+      "workRef": "work.vexlife.interface-refinement.v0.lived-baseline",
+      "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
+      "label": "V0 — first lived local-Heretic interface baseline",
+      "purpose": "Preserve the first human-seen VexLife interface where Victor could type natural messages to the local Heretic model and read real replies through the Vex Conversation surface. V0 proves connection and provides provenance; later versions supersede its interface/entry details.",
+      "workClass": "TASK",
+      "state": "COMPLETED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "project.vexlife.tocompletion",
+        "github.issue.vexlife.866",
+        "github.pull.vexlife.924",
+        "github.commit.vexlife.8f1e9fd9e3f38f8dc23296257df718fca9806988",
+        "projects/vexlife-interface-refinement/README.md",
+        "repo.vexlife:scripts/macos-lifecycle.mjs",
+        "repo.vexlife:scripts/establish-heretic-runtime.mjs",
+        "repo.vexlife:scripts/serve-browser.mjs",
+        "artifact.vexlife.interface-refinement.v0.a006.sha256.1785e7f313c8a260d851634891b408e74f4037fa52dfe402d8b75e022558440f"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "createdAt": "2026-10-25T01:23:08.000Z",
+      "updatedAt": "2026-10-25T01:57:00.000Z",
+      "workRef": "work.vexlife.interface-refinement.v1.conversation-ergonomics",
+      "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
+      "label": "V1 — conversation ergonomics and re-entry",
+      "purpose": "Make the proven Vex relationship easy to return to and natural to type in: Enter sends, Shift+Enter inserts a newline, and ordinary interface controls can re-enter the canonical local Vex Conversation without a special proof URL or historical package.",
+      "workClass": "TASK",
+      "state": "VERIFYING",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "github.commit.vexlife.8f1e9fd9e3f38f8dc23296257df718fca9806988",
+        "repo.vexlife:reference/browser/app.js",
+        "repo.vexlife:reference/browser/evolution/conversation-projection.js",
+        "projects/vexlife-interface-refinement/README.md",
+        "github.pull.vexlife.925"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "createdAt": "2026-10-25T01:23:08.000Z",
+      "updatedAt": "2026-10-25T01:23:08.000Z",
+      "workRef": "work.vexlife.interface-refinement.dependency.conversation-core-pr904",
+      "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
+      "label": "Conversation-core currentization dependency — PR #904",
+      "purpose": "Preserve the current Conversation-first durable Send candidate as the rightful owner of chat-controller, Browser Companion bridge, Lived Companion and server composition paths required by progressive response streaming. Do not create a competing writer over those paths.",
+      "workClass": "TASK",
+      "state": "VERIFYING",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "github.pull.vexlife.904"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "createdAt": "2026-10-25T01:23:08.000Z",
+      "updatedAt": "2026-10-25T01:23:08.000Z",
+      "workRef": "work.vexlife.interface-refinement.v2.streaming",
+      "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
+      "label": "V2 — progressive streamed Vex responses",
+      "purpose": "Make local Heretic replies appear progressively in the Vex interface and continue naturally beyond MLX-LM 0.32.0's implicit 512-token default under an explicit source-owned completion budget. Partial chunks stay ephemeral; final response/head persistence remains atomic after full completion; interrupted streams remain typed incomplete UI state.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.interface-refinement.dependency.conversation-core-pr904"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "github.pull.vexlife.904",
+        "repo.vexlife:src/core/lived-companion-connection.mjs",
+        "repo.vexlife:scripts/serve-browser-core.mjs",
+        "repo.vexlife:reference/browser/modules/chat-controller.js",
+        "projects/vexlife-interface-refinement/README.md",
+        "github.source.mlx-lm.v0.32.0.server"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "createdAt": "2026-10-25T01:23:08.000Z",
+      "updatedAt": "2026-10-25T01:23:08.000Z",
+      "workRef": "work.vexlife.interface-refinement.later.home-ui",
+      "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
+      "label": "Later — refine Home/navigation from lived feedback",
+      "purpose": "Treat the current Terrain nodes, menus and example screens as capability scaffolding rather than final design. Refine Home/navigation only from lived use and current product intention; do not search history merely to recover a supposedly lost final UI.",
+      "workClass": "POTENTIAL",
+      "state": "CAPTURED",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-interface-refinement/README.md",
+        "github.commit.vexlife.8f1e9fd9e3f38f8dc23296257df718fca9806988"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -7403,6 +7572,8 @@
     "projects/vexlife-blueprint-source-of-truth/README.md",
     "project.android-proof-orchestration",
     "project.android-widget-foundation",
+    "project.vexlife.interface-refinement",
+    "projects/vexlife-interface-refinement/README.md",
     "project.vex-universe",
     "project.vexlife-android.current-state-refinement",
     "project.vexlife.welcome-wagon",

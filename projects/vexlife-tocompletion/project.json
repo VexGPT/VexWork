@@ -2,7 +2,7 @@
   "schemaVersion": "vexwork.project-definition/v1",
   "projectRef": "project.vexlife.tocompletion",
   "label": "VexLife ToCompletion",
-  "purpose": "Carry the full VexLife ToCompletion horizon while making the current unfinished edge obvious: P1-P4 lived core is terminal, G02/G03 developmental continuity is terminal and evidence-gated before G04, setup safety is terminal accepted through PR873, and ordinary fresh-user productization is now actively wiring normal start into the accepted Heretic establishment composition before explicit existing-Home upgrade and whole-product horizons.",
+  "purpose": "Historical/provenance Project for the VexLife ToCompletion trajectory that established Heretic runtime, lived Conversation, restart durability, typed effects, learning placement and productization evidence. Current lived interface evolution continues in project.vexlife.interface-refinement; fresh instances should not use ToCompletion as the default current entry unless the latest refinement version names an exact dependency.",
   "rootWorkRefs": [
     "work.vexlife.tocompletion.outcome"
   ],
@@ -24,7 +24,9 @@
     "github.pull.vexlife.873",
     "github.issue.vexlife.866.comment.6357923021",
     "github.issue.vexlife.866.comment.6360434385",
-    "git.commit.vexlife.85ef85dfa4852154e522deadc45707b03cf74221"
+    "git.commit.vexlife.85ef85dfa4852154e522deadc45707b03cf74221",
+    "project.vexlife.interface-refinement",
+    "projects/vexlife-interface-refinement/README.md"
   ],
   "formedAt": "2026-10-22T00:13:43.000Z"
 }

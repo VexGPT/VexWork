@@ -1,4 +1,8 @@
-# VexLife ToCompletion — trajectory and architecture
+# VexLife ToCompletion — Provenance
+
+> **Current interface work has moved to [VexLife Interface Refinement](../vexlife-interface-refinement/README.md).**
+>
+> This Project remains the durable provenance for the long ToCompletion trajectory. Do **not** reconstruct it as the default current interface entry. Start from the highest current Interface Refinement version and descend here only when that version names an exact dependency or a contradiction requires provenance.
 
 `[VXG RealForever]`
 
