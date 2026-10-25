@@ -811,7 +811,7 @@
       "label": "VexStream full player",
       "purpose": "Add a dedicated Android full-player destination using current Playback, Queue and Repeat State/Control/Act/Effect owners: artwork/title/artist, previous/play-pause/next, shuffle/repeat, progress, upward queue access, and large horizontal previous/next gestures suitable for low-precision interaction without creating a second player truth owner.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "READY",
       "workDisposition": "ACTIVE",
       "priorityClass": "HIGH",
       "dependencyRefs": [
@@ -836,7 +836,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-24T11:20:00.000Z",
-      "updatedAt": "2026-10-24T11:20:00.000Z"
+      "updatedAt": "2026-10-25T00:50:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -7086,6 +7086,23 @@
         "relay.return.vexboard.pr123.source-owner.a003.42f0d4132107017cf90b8de0f8b18443747a61329722a9897a601bec10c05f58"
       ],
       "createdAt": "2026-10-24T09:15:36.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.full-player.ready.artwork-source-integrated-20261024",
+      "workRef": "work.vexstream.mobile-library.full-player",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "VexStream Music PR #10 and VexLife Android PR #172 are merged with exact tree identity, so the full-player implementation now has accepted optional artwork projection through Android Media3 playback/read truth. This removes the source dependency hold without entering the protected Active phase.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexstream-music.10",
+        "github.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+        "github.pull.vexlife-android.172",
+        "github.commit.vexlife-android.28f3815c6d3d145a7c3d4fea23fbc8b96f3e9ca2",
+        "work.vexstream.mobile-library.now-playing-artwork-projection"
+      ],
+      "createdAt": "2026-10-25T00:50:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
