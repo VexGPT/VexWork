@@ -1179,10 +1179,20 @@ function depthBoard(snapshot, design, viewportProfile) {
     label: `Android construction plan · ${constructionPlan.admission}`,
     sourceRefs: constructionPlan.sourceRefs,
   };
+  const capabilityNodes = constructionPlan.targetCapabilityRequirements.map((requirement) => ({
+    ref: requirement.capabilityRef,
+    label:
+      `Android target capability · ${requirement.proposedTargetShape.elementType} · ${requirement.status}`,
+    sourceRefs: [
+      requirement.ownerSourceRef,
+      ...requirement.supportSourceRefs,
+    ],
+  }));
 
   const entries = [
     designNode,
     constructionNode,
+    ...capabilityNodes,
     snapshot.depth.repository,
     snapshot.depth.state,
     snapshot.depth.connectionStore,
@@ -1222,6 +1232,19 @@ function depthBoard(snapshot, design, viewportProfile) {
   for (const [suffix, kind, fromRef, toRef, label] of edgeSpecs) {
     relationships.push(rel(`rel.vexlife-android.depth.${suffix}`, kind, fromRef, toRef, label, sourceRefs));
   }
+  for (const requirement of constructionPlan.targetCapabilityRequirements) {
+    relationships.push(rel(
+      `rel.vexlife-android.depth.capability.${requirement.capabilityRef.split('.').at(-1)}`,
+      'REFERENCE',
+      constructionPlan.planRef,
+      requirement.capabilityRef,
+      requirement.status === 'AVAILABLE' ? 'target capability available' : 'target standardization required',
+      [
+        requirement.ownerSourceRef,
+        ...requirement.supportSourceRefs,
+      ],
+    ));
+  }
   for (const endpoint of snapshot.depth.desktop.endpoints) {
     relationships.push(rel(
       `rel.vexlife-android.depth.desktop.${endpoint.ref.split('.').at(-1)}`,
@@ -1239,6 +1262,21 @@ function depthBoard(snapshot, design, viewportProfile) {
   hints.push(presentationHint('item.depth.design', 'ARCH_NODE', 'DESIGN'));
   items.push(projectionItem('item.depth.construction', constructionPlan.planRef, 'RECTANGLE', rect(720, 90, 320, 110), layer++));
   hints.push(presentationHint('item.depth.construction', 'ARCH_NODE', constructionPlan.admission));
+  constructionPlan.targetCapabilityRequirements.forEach((requirement, index) => {
+    const itemRef = `item.depth.capability.${index}`;
+    items.push(projectionItem(
+      itemRef,
+      requirement.capabilityRef,
+      'RECTANGLE',
+      rect(60, 90 + (index * 130), 300, 110),
+      layer++,
+    ));
+    hints.push(presentationHint(
+      itemRef,
+      'ARCH_NODE',
+      requirement.status,
+    ));
+  });
   items.push(projectionItem('item.depth.repository', R, 'RECTANGLE', rect(380, 380, 290, 170), layer++));
   hints.push(presentationHint('item.depth.repository', 'ARCH_NODE', 'REPOSITORY'));
   items.push(projectionItem('item.depth.state', S, 'RECTANGLE', rect(420, 610, 220, 105), layer++));
