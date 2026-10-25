@@ -1559,16 +1559,18 @@
             "work.vexstream.mobile-library.pairing-reconnect-build-continuity",
             "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamConnectionStore.kt",
             "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/PairedVexStreamMusicRepository.kt",
-            "human.lived-feedback.vexstream.uninstall-reinstall-reconnect-not-preserved.20261025"
+            "human.lived-feedback.vexstream.uninstall-reinstall-reconnect-not-preserved.20261025",
+            "github.comment.vexwork.pr140.6404819692",
+            "evidence.vexwork.pr140.sourceowner.a002.outer.sha256.ea56d1e35c6c2ce8e5bbc26acba1f9f4512c13416a7f9acef0f76f69a210838a"
           ],
           "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
           "nextProcessRefs": [
             "process.vexlife-android.feature-authoring"
           ],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
-          "effectDisposition": "EFFECTS_HELD",
+          "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-10-25T09:10:00.000Z",
-          "updatedAt": "2026-10-25T09:10:00.000Z",
+          "updatedAt": "2026-10-25T23:30:00.000Z",
           "transitionHistory": [
             {
               "transitionRef": "transition.vexstream.mobile-library.pairing-continuity-after-uninstall-reinstall.captured-20261025",
