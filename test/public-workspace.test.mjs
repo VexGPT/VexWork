@@ -149,8 +149,10 @@ test('VexBoard projects completed navigation/usability foundations with Source P
   const workspace = buildWorkspace();
   const vexboard = workspace.projects.find((entry) => entry.project.projectRef === 'project.vexboard');
   assert.ok(vexboard);
-  assert.equal(vexboard.summary.workItemCount, 9);
-  assert.equal(vexboard.summary.openWorkItemCount, 4);
+  assert.equal(vexboard.summary.workItemCount, 11);
+  assert.equal(vexboard.summary.openWorkItemCount, 6);
+  assert.equal(vexboard.summary.potentialCount, 1);
+  assert.equal(vexboard.summary.needsHumanCount, 1);
   assert.equal(vexboard.summary.completedCount, 5);
   assert.equal(vexboard.items.find((item) => item.workRef === 'work.vexboard.project-architecture').state, 'COMPLETED');
   const boardgraph = vexboard.items.find((item) => item.workRef === 'work.vexboard.boardgraph-contract');
@@ -160,6 +162,8 @@ test('VexBoard projects completed navigation/usability foundations with Source P
   const refinement = vexboard.items.find((item) => item.workRef === 'work.vexboard.usability-refinement');
   const projectors = vexboard.items.find((item) => item.workRef === 'work.vexboard.source-projectors');
   const composition = vexboard.items.find((item) => item.workRef === 'work.vexboard.fractal-semantic-composition-spatial-layout');
+  const screenshotPilot = vexboard.items.find((item) => item.workRef === 'work.vexboard.vexstream-screenshot-pilot');
+  const businessGraduation = vexboard.items.find((item) => item.workRef === 'work.vexboard.later.businessfactory-guided-company-formation');
   assert.deepEqual([boardgraph.state, canvas.state, journey.state], ['COMPLETED', 'COMPLETED', 'COMPLETED']);
   assert.equal(canvas.authorityDisposition, 'AUTHORIZED_BOUNDED');
   assert.equal(canvas.effectDisposition, 'EFFECTS_BOUND');
@@ -184,6 +188,14 @@ test('VexBoard projects completed navigation/usability foundations with Source P
   assert.equal(projectors.sourceRefs.includes('github.pull.vexwork.115'), true);
   assert.equal(projectors.sourceRefs.includes('src/shared/vexboard-source-resolver.mjs'), true);
   assert.equal(composition.sourceRefs.includes('projects/vexboard/FRACTAL-SEMANTIC-COMPOSITION-AND-SPATIAL-LAYOUT.md'), true);
+  assert.deepEqual(
+    [screenshotPilot.state, screenshotPilot.priorityClass, screenshotPilot.authorityDisposition, screenshotPilot.effectDisposition],
+    ['WAITING_HUMAN', 'IMMEDIATE', 'AUTHORIZED_BOUNDED', 'EFFECTS_BOUND'],
+  );
+  assert.deepEqual(
+    [businessGraduation.workClass, businessGraduation.state, businessGraduation.priorityClass, businessGraduation.authorityDisposition, businessGraduation.effectDisposition],
+    ['POTENTIAL', 'CAPTURED', 'LOW', 'NO_AUTHORITY', 'NO_EFFECTS'],
+  );
   assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.done').workRefs.includes(canvas.workRef), true);
   assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.done').workRefs.includes(journey.workRef), true);
   assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.done').workRefs.includes(refinement.workRef), true);
@@ -192,6 +204,14 @@ test('VexBoard projects completed navigation/usability foundations with Source P
   assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.active').workRefs.includes(projectors.workRef), true);
   assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.active').workRefs.includes(composition.workRef), true);
   assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.ready').workRefs.includes(projectors.workRef), false);
+  assert.deepEqual(
+    vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.needs-human').workRefs,
+    [screenshotPilot.workRef],
+  );
+  assert.equal(
+    vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.intake').workRefs.includes(businessGraduation.workRef),
+    true,
+  );
   assert.equal(vexboard.project.sourceRefs.includes('projects/vexboard/README.md'), true);
 });
 
