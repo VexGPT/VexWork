@@ -16,8 +16,6 @@ import {
   journeyChoices,
   normalizeBoardJourney,
   revisitBoardJourney,
-  BOARD_JOURNEY_PATHWAY_ANALYSIS_SCHEMA,
-  calculateBoardJourneyPathways,
 } from './src/shared/vexboard-journey.mjs';
 import {
   BOARD_JOURNEY_PATHWAY_ANALYSIS_SCHEMA,
@@ -49,6 +47,8 @@ export {
   journeyChoices,
   normalizeBoardJourney,
   revisitBoardJourney,
+  BOARD_JOURNEY_PATHWAY_ANALYSIS_SCHEMA,
+  calculateBoardJourneyPathways,
   BOARD_CONDITION_OPERATORS,
   BOARD_CONDITION_STATES,
   BOARD_INTERACTION_TRIGGERS,
