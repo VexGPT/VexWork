@@ -8,6 +8,7 @@ import {
   VEXLIFE_ANDROID_POC_SNAPSHOT_SCHEMA,
   androidPocDesignLocation,
   projectVexLifeAndroidPocSnapshot,
+  summarizeAndroidPocAdoptionReadiness,
 } from '../src/core/vexboard-android-source-projector.mjs';
 
 const snapshot = JSON.parse(fs.readFileSync(
@@ -46,6 +47,12 @@ test('VexLife Android POC snapshot projects deterministically without source eff
     'CUSTOM_NATIVE_REALIZATION',
   );
   assert.equal(first.board.adoptionCoverage.findings.length, 5);
+  assert.equal(first.board.adoptionReadiness.status, 'HELD');
+  assert.equal(first.board.adoptionReadiness.blockingFindingRefs.length, 5);
+  assert.deepEqual(
+    summarizeAndroidPocAdoptionReadiness(snapshot.adoptionCoverage),
+    first.board.adoptionReadiness,
+  );
   const homeCopyFinding = first.board.adoptionCoverage.findings.find(
     (entry) => entry.findingRef === 'finding.android.home.vexstream-copy-unaddressed',
   );
