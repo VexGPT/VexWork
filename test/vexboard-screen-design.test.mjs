@@ -88,7 +88,7 @@ test('screen design contract keeps authority state separate from resolved projec
     schemaVersion: VEXBOARD_SCREEN_DESIGN_SCHEMA,
     designRef: 'design.vexstream.screen.poc',
     authorityState: 'REVERSE_ADOPTED_CANDIDATE',
-    referenceViewport: { widthDp: 412, heightDp: 915 },
+    referenceViewport: { profileRef: 'profile.test.phone', widthDp: 412, heightDp: 915 },
     constraints: [{
       occurrenceRef: 'design-occurrence.vexstream.content',
       semanticRef: 'screen.vexstream-music',
@@ -118,7 +118,7 @@ test('screen design rejects invalid percentage and duplicate occurrence identity
     schemaVersion: VEXBOARD_SCREEN_DESIGN_SCHEMA,
     designRef: 'design.bad',
     authorityState: 'VEXBOARD_DESIGN_AUTHORITY',
-    referenceViewport: { widthDp: 412, heightDp: 915 },
+    referenceViewport: { profileRef: 'profile.test.phone', widthDp: 412, heightDp: 915 },
     constraints: [
       {
         occurrenceRef: 'occ.same',
