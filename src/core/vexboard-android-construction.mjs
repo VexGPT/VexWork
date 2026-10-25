@@ -163,6 +163,7 @@ export function compileVexLifeAndroidScreenDesign(
   designInput,
   {
     planRef = 'plan.vexlife-android.home-vexstream.screen-design.poc',
+    adoptionReadiness = null,
   } = {},
 ) {
   const design = normalizeScreenDesign(designInput);
@@ -430,10 +431,15 @@ export function compileVexLifeAndroidScreenDesign(
     targetProfileRef: design.referenceViewport.profileRef,
     admission:
       design.authorityState === 'VEXBOARD_DESIGN_AUTHORITY'
-        ? 'IMPLEMENTATION_ELIGIBLE'
+        ? adoptionReadiness?.status === 'HELD'
+          ? 'IMPLEMENTATION_HELD_ADOPTION_GAPS'
+          : 'IMPLEMENTATION_ELIGIBLE'
         : design.authorityState === 'VEXBOARD_DESIGN_DRAFT'
           ? 'PREVIEW_ONLY_DESIGN_DRAFT'
           : 'PREVIEW_ONLY_REVERSE_ADOPTION',
+    adoptionReadiness: adoptionReadiness
+      ? Object.freeze(structuredClone(adoptionReadiness))
+      : null,
     mappings: Object.freeze(mappings),
     componentMappings,
     sourceRefs: Object.freeze([...(design.sourceRefs ?? [])]),
