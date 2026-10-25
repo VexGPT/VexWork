@@ -189,6 +189,7 @@ test('VexBoard projects completed navigation/usability foundations with Source P
   assert.equal(projectors.sourceRefs.includes('src/shared/vexboard-source-resolver.mjs'), true);
   assert.equal(composition.sourceRefs.includes('projects/vexboard/FRACTAL-SEMANTIC-COMPOSITION-AND-SPATIAL-LAYOUT.md'), true);
   assert.equal(screenshotPilot.sourceRefs.includes('project.vexlife.blueprint-source-of-truth'), true);
+  assert.equal(screenshotPilot.sourceRefs.includes('projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md'), true);
   assert.equal(screenshotPilot.sourceRefs.includes('work.vexlife.blueprint-source-of-truth.reusable-v1'), true);
   assert.deepEqual(
     [screenshotPilot.state, screenshotPilot.priorityClass, screenshotPilot.authorityDisposition, screenshotPilot.effectDisposition],
@@ -216,6 +217,7 @@ test('VexBoard projects completed navigation/usability foundations with Source P
     true,
   );
   assert.equal(vexboard.project.sourceRefs.includes('projects/vexboard/README.md'), true);
+  assert.equal(vexboard.project.sourceRefs.includes('projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md'), true);
 });
 
 // [VXG RealForever]

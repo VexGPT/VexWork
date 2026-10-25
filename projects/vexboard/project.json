@@ -2,7 +2,7 @@
   "schemaVersion": "vexwork.project-definition/v1",
   "projectRef": "project.vexboard",
   "label": "VexBoard Semantic Canvas",
-  "purpose": "Let a human and AI design, inspect, traverse, refine, reuse and discuss interactive experiences, processes and systems on one scalable semantic canvas, while allowing the same substrate to project accepted external truth without becoming its second semantic owner.",
+  "purpose": "Let a human and AI use one scalable semantic Blueprint IDE to design, inspect, traverse, refine, reuse, construct and verify interactive experiences, processes and systems through bounded semantic neighborhoods and multiple truthful lenses, while projecting accepted external truth without becoming its second semantic, lifecycle, process, source, evidence or target-runtime owner.",
   "rootWorkRefs": [
     "work.vexboard.outcome"
   ],
@@ -11,6 +11,7 @@
   ],
   "sourceRefs": [
     "projects/vexboard/README.md",
+    "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md",
     "docs/foundation/PROJECTS.md",
     "docs/foundation/WORK-BOARD.md",
     "docs/foundation/PROCESS-MAP.md",

@@ -220,6 +220,23 @@ Do not introduce a universal OCR ontology, screenshot-hotspot registry, image-sp
 
 The eventual "start a business from the beginning" experience remains strategically important, but it is **not current implementation scope or authority**. It is preserved so future work can see the graduation path without pulling that complexity into this patient zero.
 
+## Reusable Semantic Blueprint IDE foundation
+
+The reusable IDE/construction pattern, recursive category examples, scoped-neighborhood behavior and
+future-instance starting procedure now live in:
+
+~~~text
+projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md
+~~~
+
+Use that companion when the question is broader than the current VexStream patient zero: how the same
+VexBoard substrate applies to software feature evolution, source-projected development processes,
+operations, architecture, Work/Projects, localization/content, evidence/currentness, later
+BusinessFactory company formation, and VexBoard self-hosting.
+
+The companion is architecture source, not a new wire schema or second owner.
+
+
 ## Human outcome
 
 A person should be able to describe a website, application, process, operating system, or work journey to AI and receive a navigable visual blueprint **before** expensive implementation begins.
