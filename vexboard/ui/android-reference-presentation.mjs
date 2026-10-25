@@ -65,7 +65,7 @@ const CSS = `
   white-space:pre-line;padding:12px 14px 12px 48px;font-size:11px;line-height:1.35;
 }
 .shape.android-role-list-row::before { content:"♪";position:absolute;left:16px;font-size:22px;color:#f2f2ef; }
-.shape.android-role-list-row.android-variant-hub_and_local { outline:1px solid #51495f; }
+.shape.android-role-list-row.android-variant-hub-and-local { outline:1px solid #51495f; }
 .shape.android-role-fab {
   background:#5b3ca6;border:0;border-radius:14px;box-shadow:0 7px 18px #0005;color:#fff;font-size:0;padding:0;
 }
@@ -73,23 +73,23 @@ const CSS = `
 .shape.android-role-fab.android-variant-play::after { content:"▶"; }
 .shape.android-role-fab.android-variant-shuffle::after { content:"↝"; }
 .shape.android-role-fab>.shape-label { display:none; }
-.shape.android-role-modal_sheet {
+.shape.android-role-modal-sheet {
   background:#202126;border:1px solid #5a5d68;border-radius:24px 24px 12px 12px;box-shadow:0 -12px 32px #0008;color:#f5f5f4;padding:16px 12px;
 }
-.shape.android-role-modal_sheet>.shape-label {
+.shape.android-role-modal-sheet>.shape-label {
   position:absolute;left:18px;top:12px;width:auto;font-size:15px;font-weight:800;color:#f5f5f4;
 }
-.shape.android-role-depth_portal {
+.shape.android-role-depth-portal {
   background:#eef2ff;border:2px solid #6366f1;border-radius:14px;color:#3730a3;font-weight:800;
 }
-.shape.android-role-arch_node { background:#fff;border:1px solid #cbd5e1;border-radius:12px;color:#1c1917;box-shadow:0 4px 14px #0001; }
-.shape.android-role-arch_node.android-variant-non_owner { border-style:dashed;color:#78716c;background:#fafaf9; }
-.shape.android-role-arch_group { background:#f8fafc;border:2px dashed #94a3b8;border-radius:16px;color:#334155;align-items:flex-start;justify-content:flex-start; }
-.shape.android-role-api_endpoint { background:#eff6ff;border:1px solid #93c5fd;border-radius:10px;color:#1e3a8a;justify-content:flex-start;text-align:left;padding-left:12px;font:700 10px ui-monospace,monospace; }
+.shape.android-role-arch-node { background:#fff;border:1px solid #cbd5e1;border-radius:12px;color:#1c1917;box-shadow:0 4px 14px #0001; }
+.shape.android-role-arch-node.android-variant-non-owner { border-style:dashed;color:#78716c;background:#fafaf9; }
+.shape.android-role-arch-group { background:#f8fafc;border:2px dashed #94a3b8;border-radius:16px;color:#334155;align-items:flex-start;justify-content:flex-start; }
+.shape.android-role-api-endpoint { background:#eff6ff;border:1px solid #93c5fd;border-radius:10px;color:#1e3a8a;justify-content:flex-start;text-align:left;padding-left:12px;font:700 10px ui-monospace,monospace; }
 `;
 
 function safe(value) {
-  return String(value ?? '').trim().replace(SAFE, '_').replace(/^_+|_+$/g, '').toLowerCase();
+  return String(value ?? '').trim().replaceAll('_', '-').replace(SAFE, '-').replace(/^-+|-+$/g, '').toLowerCase();
 }
 
 export function normalizeAndroidReferencePresentation(input) {
