@@ -6,6 +6,7 @@ import { createBoardGraph, createBoardProjection } from '../src/core/vexboard.mj
 import {
   VEXBOARD_ANDROID_POC_BOARD_REFS,
   VEXLIFE_ANDROID_POC_SNAPSHOT_SCHEMA,
+  androidPocDesignLocation,
   projectVexLifeAndroidPocSnapshot,
 } from '../src/core/vexboard-android-source-projector.mjs';
 
@@ -206,6 +207,20 @@ test('VexLife Android POC depth maps truthful storage and Desktop service owners
     (node) => node.nodeRef === 'portal.vexlife-android.vexstream-depth',
   );
   assert.equal(portal.detailBoardRefOrNull, VEXBOARD_ANDROID_POC_BOARD_REFS.DEPTH);
+});
+
+test('Android POC design source location fails closed before browser fetch', () => {
+  assert.equal(
+    androidPocDesignLocation(snapshot),
+    './vexlife-android-home-vexstream.design.json',
+  );
+
+  const invalid = structuredClone(snapshot);
+  invalid.designLocation = './../escape.design.json';
+  assert.throws(
+    () => androidPocDesignLocation(invalid),
+    /stay inside its source root/,
+  );
 });
 
 test('VexLife Android POC snapshot fails closed when the bounded three-state contract drifts', () => {
