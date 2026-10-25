@@ -397,7 +397,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-25T07:12:00.000Z",
-      "updatedAt": "2026-10-25T07:36:31Z",
+      "updatedAt": "2026-10-25T07:36:31.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "workRef": "work.vexlife.welcome-wagon.support-shell-context-currentness",
