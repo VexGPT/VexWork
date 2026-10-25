@@ -662,6 +662,9 @@ Active owner:
 ```text
 work.vexstream.mobile-library.current-artwork-availability = RUNNING
 github.issue.vexstream-music.11
+github.pull.vexstream-music.12
+head = f2f7c17ae8fb663686073056d6b18520a106244d
+tree = 8a408e315de793f06b4b9f0b943f2c829f00c81d
 ```
 
 The intended repair must keep filesystem/library as metadata owner, use an authenticated/pinned
