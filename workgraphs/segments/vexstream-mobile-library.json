@@ -323,12 +323,12 @@
       "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vexstream.mobile-library.sort-filter-controls",
       "parentWorkRefOrNull": "work.vexstream.mobile-library.library-browse-discovery",
-      "label": "Sort / Filter library controls",
-      "purpose": "Present one compact VexStream library organization surface that keeps Sort by and Filter by distinct, uses field-appropriate controls, composes with Search, and makes visible rows plus row playback / Play All / Shuffle All consume the same current filtered listening membership.",
+      "label": "Sort / Filter / Recently added library controls",
+      "purpose": "Present one compact VexStream library organization surface that keeps Sort by, Filter by, Search and freshness discovery distinct while making visible rows plus row playback / Play All / Shuffle All consume the same current organized membership. Lived feedback requires a truthful way to find fresh music: 'added to the VexStream catalog' and 'downloaded to this Android device' are separate clocks and must not be collapsed into one misleading Recently added label.",
       "workClass": "TASK",
-      "state": "WAITING_HUMAN",
+      "state": "RUNNING",
       "workDisposition": "ACTIVE",
-      "priorityClass": "NORMAL",
+      "priorityClass": "HIGH",
       "dependencyRefs": [],
       "repositoryRefs": [
         "repo.vexlife-android",
@@ -349,7 +349,11 @@
         "repo.vexstream-music:mobile_bridge.go",
         "github.pull.vexlife-android.165",
         "github.commit.vexlife-android.01432d594172829c2da22e3bddcb09c073c97c16",
-        "evidence.vexstream.mobile-library.sort-filter.a011.return.sha256.ebd1e85886d471375260a35d92d641b38cb292016a1154455e92a9892c412d0a"
+        "evidence.vexstream.mobile-library.sort-filter.a011.return.sha256.ebd1e85886d471375260a35d92d641b38cb292016a1154455e92a9892c412d0a",
+        "human.lived-feedback.vexstream.mobile-library.recently-added.20261025a",
+        "repo.vexstream-music:v2/desktop/mobile/catalog.go",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamOfflineIndex.kt"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [
@@ -358,7 +362,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-23T08:02:00.000Z",
-      "updatedAt": "2026-10-24T05:00:00.000Z"
+      "updatedAt": "2026-10-25T12:12:29.462Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -781,7 +785,7 @@
       "workRef": "work.vexstream.mobile-library.current-artwork-availability",
       "parentWorkRefOrNull": "work.vexstream.mobile-library.playback-surfaces",
       "label": "Current-track artwork availability and convergence",
-      "purpose": "Fix the lived playback-surface gap where the Full Player and home-screen widget still show generic artwork placeholders. Determine whether current-track artwork is absent at the VexStream producer, lost in Android catalog/Media3 projection, not cached by the rightful artwork owner, or not consumed by the surface; make current admitted artwork converge without making the widget an artwork fetcher or changing media identity.",
+      "purpose": "Fix the lived playback-surface gap where the Full Player and home-screen widget still show generic artwork placeholders even after the embedded-artwork Desktop producer and Android consumer were accepted and merged. Distinguish tracks that genuinely have no admitted artwork from tracks whose known artwork source failed to reach/cache/project into current playback; make current admitted artwork converge without making the widget an artwork fetcher or changing media identity, and expose the per-track truth needed by a separate user-invoked missing-artwork reconciliation path.",
       "workClass": "DEFECT",
       "state": "RUNNING",
       "workDisposition": "ACTIVE",
@@ -825,7 +829,11 @@
         "github.commit.vexstream-music.746e17cb843a8093a98b6bee772acb6b361e4f47",
         "evidence.vexstream-music.pr12.sourceowner.a003.outer.sha256.a6dc324254a682afd9186210f4504db2bb9418fcd34b6a37c62ba12ecdef4d14",
         "evidence.vexstream-music.pr12.sourceowner.a003.inner.sha256.87274fec8087bb2637db5b4eb738704277c2957e1c79b48f6baee93f02324ceb",
-        "github.comment.vexstream-music.pr12.6396351114.sourceowner-a003-gofmt"
+        "github.comment.vexstream-music.pr12.6396351114.sourceowner-a003-gofmt",
+        "github.commit.vexstream-music.ed0ecba9b35459fd03aa3bbaede9e4cea8b694f7",
+        "github.commit.vexlife-android.6f5b2dc6cdbf284b84cb590ba5b1016af3d33939",
+        "evidence.vexstream.embedded-artwork.postmerge-prep.a001.outer.sha256.9c0f171a1c3528644d4389e4fd5c4313c1ffe4de9dffacc1358fb8d6ade1ff92",
+        "human.lived-feedback.vexstream.artwork-placeholder-postmerge.20261025a"
       ],
       "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
       "nextProcessRefs": [
@@ -834,7 +842,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-25T07:10:00.000Z",
-      "updatedAt": "2026-10-25T10:11:10.000Z"
+      "updatedAt": "2026-10-25T12:12:29.462Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -911,6 +919,44 @@
       "effectDisposition": "EFFECTS_HELD",
       "createdAt": "2026-10-25T09:10:00.000Z",
       "updatedAt": "2026-10-25T09:10:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexstream.mobile-library.missing-artwork-reconciliation",
+      "parentWorkRefOrNull": "work.vexstream.mobile-library.playback-surfaces",
+      "label": "Reconcile / sync missing artwork",
+      "purpose": "Provide a deliberate user-invoked reconciliation path for artwork that is missing locally even though the current VexStream/Android truth admits an artwork source. Classify the current library into known-artwork-present, known-artwork-missing/stale, and genuinely-no-artwork; fetch/cache only the missing ancillary artwork through existing repository/producer owners; report bounded counts/progress/results; never redownload audio or make the Full Player/widget network owners. Keep this separate from persistent Keep Offline / Sync, which governs media membership rather than artwork metadata.",
+      "workClass": "TASK",
+      "state": "DECOMPOSED",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexstream.mobile-library.current-artwork-availability"
+      ],
+      "repositoryRefs": [
+        "repo.vexstream-music",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "work.vexstream.mobile-library.current-artwork-availability",
+        "projects/vexstream-mobile-library/README.md",
+        "human.lived-feedback.vexstream.missing-artwork-reconciliation.20261025a",
+        "github.pull.vexstream-music.12",
+        "github.commit.vexstream-music.ed0ecba9b35459fd03aa3bbaede9e4cea8b694f7",
+        "github.pull.vexlife-android.181",
+        "github.commit.vexlife-android.6f5b2dc6cdbf284b84cb590ba5b1016af3d33939",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicRepository.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/PairedVexStreamMusicRepository.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamArtworkStore.kt"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+      "nextProcessRefs": [
+        "process.vexlife-android.feature-authoring"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-25T12:12:29.462Z",
+      "updatedAt": "2026-10-25T12:12:29.462Z"
     }
   ],
   "transitions": [
@@ -1341,6 +1387,22 @@
         "human.lived-feedback.vexstream.uninstall-reinstall-reconnect-not-preserved.20261025"
       ],
       "createdAt": "2026-10-25T09:10:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.sort-filter.running.recently-added-feedback-20261025a",
+      "workRef": "work.vexstream.mobile-library.sort-filter-controls",
+      "priorState": "WAITING_HUMAN",
+      "nextState": "RUNNING",
+      "reason": "Victor's lived review found the accepted Sort / Filter surface insufficient for finding fresh downloads because it exposes no Recently added/freshness dimension. Return the already-authorized work to Active so the feature can distinguish producer catalog AddedAt from Android local-download freshness and make new music discoverable without conflating the two clocks.",
+      "actorRef": "actor.local-vex-operations.vexstream-mobile-library",
+      "sourceRefs": [
+        "human.lived-feedback.vexstream.mobile-library.recently-added.20261025a",
+        "projects/vexstream-mobile-library/README.md",
+        "repo.vexstream-music:v2/desktop/library/model.go",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt"
+      ],
+      "createdAt": "2026-10-25T12:12:29.462Z"
     }
   ],
   "sourceRefs": [
