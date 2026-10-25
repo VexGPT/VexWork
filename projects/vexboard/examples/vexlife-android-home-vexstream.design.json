@@ -199,6 +199,30 @@
       "minDp": 20,
       "maxDp": 20,
       "referenceDp": 20
+    },
+    "scaffoldFabInsetHorizontal": {
+      "preferredPercent": 0.038834951456310676,
+      "minDp": 16,
+      "maxDp": 16,
+      "referenceDp": 16
+    },
+    "scaffoldFabInsetVertical": {
+      "preferredPercent": 0.01893491124260355,
+      "minDp": 16,
+      "maxDp": 16,
+      "referenceDp": 16
+    },
+    "libraryFabGapVertical": {
+      "preferredPercent": 0.01092896174863388,
+      "minDp": 10,
+      "maxDp": 10,
+      "referenceDp": 10
+    },
+    "smallFabSize": {
+      "preferredPercent": 0.0970873786407767,
+      "minDp": 40,
+      "maxDp": 40,
+      "referenceDp": 40
     }
   },
   "constraints": [
@@ -296,6 +320,7 @@
     "dependency.androidx.compose.compose-bom.2026.09.00",
     "dependency.androidx.compose.material3.1.4.0.color-dark-tokens",
     "dependency.androidx.compose.material3.1.4.0.fab-primary-small-tokens",
+    "dependency.androidx.compose.material3.1.4.0.fab-small-tokens",
     "dependency.androidx.compose.material3.1.4.0.filled-card-tokens",
     "dependency.androidx.compose.material3.1.4.0.palette-tokens",
     "dependency.androidx.compose.material3.1.4.0.scaffold",
@@ -371,8 +396,8 @@
     {
       "layoutRef": "layout.vexstream.library-actions",
       "semanticRef": "element.vexstream-music.body.library-actions",
-      "mode": "ROW",
-      "gapMetricRefOrNull": "containerGapVertical",
+      "mode": "COLUMN",
+      "gapMetricRefOrNull": "libraryFabGapVertical",
       "childSemanticRefs": [
         "element.vexstream-music.body.library-actions.play-all",
         "element.vexstream-music.body.library-actions.shuffle-all"
@@ -398,6 +423,14 @@
     },
     "element.vexstream-music.body.library-tabs.downloads": {
       "widthDp": 130,
+      "heightDp": 40
+    },
+    "element.vexstream-music.body.library-actions.play-all": {
+      "widthDp": 40,
+      "heightDp": 40
+    },
+    "element.vexstream-music.body.library-actions.shuffle-all": {
+      "widthDp": 40,
       "heightDp": 40
     }
   },
@@ -707,6 +740,17 @@
       "styleRef": "style.action.secondary",
       "selectedStyleRefOrNull": null,
       "iconRefOrNull": "icon.close"
+    }
+  ],
+  "anchorRules": [
+    {
+      "anchorRef": "anchor.vexstream.library-actions",
+      "semanticRef": "element.vexstream-music.body.library-actions",
+      "parentSemanticRef": "screen.vexstream-music",
+      "horizontalAnchor": "END",
+      "verticalAnchor": "BOTTOM",
+      "horizontalInsetMetricRefOrNull": "scaffoldFabInsetHorizontal",
+      "verticalInsetMetricRefOrNull": "scaffoldFabInsetVertical"
     }
   ]
 }
