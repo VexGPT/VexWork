@@ -13,7 +13,7 @@ import { createBoardGraph, createBoardProjection } from '../src/core/vexboard.mj
 import { BOARD_GRAPH_SCHEMA, BOARD_PROJECTION_SCHEMA } from '../src/shared/vexboard-model.mjs';
 
 const read = (relative) => JSON.parse(fs.readFileSync(new URL(`../${relative}`, import.meta.url), 'utf8'));
-const BOUNDARY_POLICY_LAYOUT_ERROR_MESSAGE = 'boundary policy WRAP requires ROW or COLUMN layout';
+const BOUNDARY_POLICY_LAYOUT_ERROR_MESSAGE = 'boundary policy WRAP requires ROW layout';
 
 function uiGraphInput() {
   const node = (nodeRef, kind, label, parentRefOrNull = null) => ({
@@ -391,6 +391,85 @@ test('width-bounded ROW wrapping continues downward locally without changing Boa
       return [bounds.x, bounds.y];
     }),
     [[20, 20], [120, 20], [20, 70], [120, 70], [20, 120]],
+  );
+});
+
+test('width-bound wrapping preserves exact fit and uses the tallest prior-row child for heterogeneous spacing', () => {
+  const childSpecs = [
+    { ref: 'a', width: 90, height: 30 },
+    { ref: 'b', width: 90, height: 60 },
+    { ref: 'c', width: 90, height: 40 },
+    { ref: 'd', width: 70, height: 35 },
+  ];
+  const graph = createBoardGraph({
+    schemaVersion: BOARD_GRAPH_SCHEMA,
+    graphRef: 'graph.vexboard.composition.width-bound.heterogeneous',
+    nodes: [{
+      nodeRef: 'node.width.heterogeneous',
+      kind: 'CONTAINER',
+      label: 'Heterogeneous width-bound flow',
+      parentRefOrNull: null,
+      detailBoardRefOrNull: null,
+      sourceRefs: [],
+    }, ...childSpecs.map(({ ref }) => ({
+      nodeRef: `node.width.heterogeneous.${ref}`,
+      kind: 'PROCESS',
+      label: `Step ${ref.toUpperCase()}`,
+      parentRefOrNull: 'node.width.heterogeneous',
+      detailBoardRefOrNull: null,
+      sourceRefs: [],
+    }))],
+    relationships: [],
+    sourceRefs: [],
+  });
+  const projection = createBoardProjection({
+    schemaVersion: BOARD_PROJECTION_SCHEMA,
+    projectionRef: 'projection.vexboard.composition.width-bound.heterogeneous',
+    graphRef: graph.graphRef,
+    layoutIntent: 'SCREEN_FLOW',
+    items: [{
+      projectionItemRef: 'item.width.heterogeneous',
+      semanticRef: 'node.width.heterogeneous',
+      shapeKind: 'FRAME',
+      bounds: { x: 0, y: 0, width: 330, height: 250 },
+      layer: 0,
+      parentProjectionItemRefOrNull: null,
+      visible: true,
+      locked: false,
+    }, ...childSpecs.map(({ ref, width, height }, index) => ({
+      projectionItemRef: `item.width.heterogeneous.${ref}`,
+      semanticRef: `node.width.heterogeneous.${ref}`,
+      shapeKind: 'RECTANGLE',
+      bounds: { x: 200, y: 160, width, height },
+      layer: index + 1,
+      parentProjectionItemRefOrNull: 'item.width.heterogeneous',
+      visible: true,
+      locked: false,
+    }))],
+    sourceRefs: [],
+  }, graph);
+  const ordered = childSpecs.map(({ ref }) => `item.width.heterogeneous.${ref}`);
+  const composition = compositionFor(graph, projection, {
+    compositionRef: 'composition.vexboard.width-bound.heterogeneous.001',
+    padding: 20,
+    gap: 10,
+    containers: [{
+      containerProjectionItemRef: 'item.width.heterogeneous',
+      layout: 'ROW',
+      boundaryPolicy: 'WRAP',
+      orderedChildProjectionItemRefs: ordered,
+    }],
+  });
+
+  const result = resolveBoardProjectionComposition({ graph, projection, composition });
+  assert.equal(result.graph.semanticFingerprint, graph.semanticFingerprint);
+  assert.equal(result.effects.graphChanged, false);
+  assert.deepEqual(
+    ordered.map((ref) => {
+      const bounds = byItem(result.projection, ref).bounds;
+      return [bounds.x, bounds.y];
+    }),
+    [[20, 20], [120, 20], [220, 20], [20, 90]],
   );
 });
 
