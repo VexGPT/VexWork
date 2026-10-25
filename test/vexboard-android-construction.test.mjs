@@ -35,6 +35,18 @@ test('Android construction plan consumes VexBoard design without target effects'
   );
   assert.equal(shapes.referenceDpOrNull, 16);
 
+  const explicitTypography = plan.mappings.find(
+    (entry) => entry.mappingRef === 'mapping.android.theme.typography-explicit',
+  );
+  assert.equal(explicitTypography.referenceDpOrNull, 24);
+  assert.match(explicitTypography.targetSymbol, /VexTypography/);
+
+  const inheritedTypography = plan.mappings.find(
+    (entry) => entry.mappingRef === 'mapping.android.theme.typography-material-defaults',
+  );
+  assert.equal(inheritedTypography.referenceDpOrNull, 22);
+  assert.ok(inheritedTypography.designRefs.includes('visual.typography.titleLarge'));
+
   const toolbar = plan.mappings.find(
     (entry) => entry.mappingRef === 'mapping.android.shell.toolbar-height',
   );
@@ -83,7 +95,7 @@ test('accepted VexBoard design becomes Android implementation eligible without c
   assert.equal(plan.designAuthorityState, 'VEXBOARD_DESIGN_AUTHORITY');
   assert.equal(plan.admission, 'IMPLEMENTATION_ELIGIBLE');
   assert.equal(plan.targetRef, 'target.vexlife-android.compose');
-  assert.equal(plan.mappings.length >= 12, true);
+  assert.equal(plan.mappings.length >= 14, true);
 });
 
 test('Android construction fails closed when required VexBoard layout meaning is lost', () => {
