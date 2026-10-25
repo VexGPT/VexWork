@@ -236,6 +236,61 @@ the weighted transport container non-clickable so the three 48dp Controls remain
 Exact-head SourceOwner proof and fresh Assurance are the next source gates. Album-art availability
 remains a separate upstream VexStream product defect rather than being hidden inside PR #179.
 
+
+## Lived re-review — widget currentness is a Convergence problem
+
+The later physical review after accepted Android artwork source exposed a stronger form of the
+state-refresh defect. The Full Player was already showing the current track while the launcher widget
+rendered its generic fallback projection: `VexStream` title, no artist, note placeholder and disabled
+transport Controls.
+
+That means the missing behavior is not merely "refresh one more time." Current source already has the
+right **local SCAE command path**:
+
+```text
+widget ActionRef
+-> existing Playback / Queue Control
+-> current State resolves Act
+-> Behavior selects Effect
+-> Media3 Connection realizes it
+-> provider observation reconciles State
+```
+
+What is not yet explicit is the relationship between canonical provider/read truth and the remote
+Glance rendering:
+
+```text
+Media3 / PlaybackService current truth
+        +
+last rendered widget projection
+        |
+        v
+currentness / convergence relationship
+        |
+        +-- provider changed -> widget refresh owed
+        +-- widget interaction -> existing Control -> provider change
+        +-- provider observation -> next widget projection owed
+        +-- rendered current -> convergence satisfied
+```
+
+The PR #179 `updateAll() -> 250 ms -> updateAll()` behavior is useful retry mechanics, but lived
+review proves it is not sufficient by itself as currentness truth. A failed/absent MediaController read
+can leave the widget on its generic fallback even while Full Player already observes current playback.
+
+The next correction should therefore treat this as a **patient-zero Convergence Relay question**:
+keep Playback/Queue as the only semantic State/Control/Act/Effect owners, make widget rendered-current
+status explicit enough to retry/reconcile when provider truth is newer, and route widget interaction
+back through those existing Controls. Do **not** extract a generic Widget Relay framework until a
+second real remote-surface consumer proves the same reusable contract.
+
+Work truth after this lived feedback:
+
+```text
+work.android-widget-foundation.vexstream-playback-widget.state-refresh
+  -> FAILED_RECOVERABLE
+  -> label: VexStream widget currentness convergence
+```
+
 ## What this Project does not own
 
 - VexStream catalog/media identity;
