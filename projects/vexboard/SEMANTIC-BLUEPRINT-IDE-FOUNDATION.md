@@ -849,6 +849,223 @@ AFTER_ACCEPTED_TRANSITION:
 VEXBOARD_DESIGN_OWNER -> ANDROID_TARGET_ADAPTER -> ANDROID_REALIZATION
 ~~~
 
+### Android adoption audit — keep the good foundation, standardize the mapping debt
+
+The VexLife-Android patient zero does **not** require replacing the Android UI foundation.
+
+Several existing Android seams are already the right long-term building blocks:
+
+~~~text
+UIBlueprintRegistry
+  -> stable Screen / Element identity
+  -> parent / child / owner Screen
+  -> semantic style
+  -> local/open/close/swap/navigation intent validation
+
+VexModifier
+  -> rendered semantic/test identity
+
+VexComposeScope
+  -> deterministic nested custom-Compose identity
+
+VexElementStyles
+  -> semantic style vocabulary rather than raw visual tokens
+
+VexElementTree / Vex-owned cells
+  -> target-native realization for ordinary Blueprint-rendered Screens
+
+sourceAlignmentReport / verifySourceAlignment
+  -> repository-owned convention validation
+
+vexComposeMigrationReport
+  -> existing advisory raw-Compose migration debt surface
+
+ScreenCrawler
+  -> stable scenario / Screen / semantic evidence identity + screenshot SHA
+~~~
+
+Do not replace these with a second VexBoard-specific Android framework merely because reverse adoption exposes gaps.
+
+The observed debt is narrower: **custom Screen realization can preserve semantic identity while still keeping product-design meaning in target-only Compose source.**
+
+The current VexStream Screen demonstrates the seam:
+
+~~~text
+ScreenBlueprint.content
+  -> static semantic registration tree
+
+renderContent()
+  -> custom VexStreamLibrarySurface
+  -> Scaffold / Column / Box / LazyColumn
+  -> target dp values
+  -> target MaterialTheme typography/color overrides
+  -> state-conditioned native composition
+~~~
+
+That split is acceptable while Android owns the accepted current implementation. It becomes mapping debt once VexBoard is intended to own the Screen design.
+
+Permanent distinction:
+
+~~~text
+RAW_COMPOSE != AUTOMATIC_DEBT
+
+PLATFORM_NATIVE_MECHANIC
+  -> may remain target-owned
+  -> e.g. drag mechanics, MediaSession, native sheet physics, Android platform integration
+
+PRODUCT_DESIGN_MEANING
+  -> must become addressable upstream before VexBoard design authority
+  -> e.g. component assignment, stable child order, padding/gap, anchors, viewport behavior,
+     typography role, semantic style, state-conditioned visibility/presentation
+~~~
+
+#### Observed standardization seams
+
+1. **Custom realization mode should be explicit and inspectable**
+
+Today a custom Screen is discoverable by reading/overriding renderContent, but the registry does not carry an explicit realization-mode fact.
+
+A future Android adoption/export seam should be able to distinguish at machine level:
+
+~~~text
+GENERIC_BLUEPRINT_TREE
+CUSTOM_NATIVE_REALIZATION
+GENERATED_FROM_VEXBOARD_DESIGN
+~~~
+
+without source-text heuristics.
+
+2. **Static registry coverage and runtime-derived Vex Compose coverage are different**
+
+UIBlueprintRegistry can enumerate registered static elements. VexComposeScope can also form deterministic nested runtime refs such as custom sheet text/content children.
+
+Those runtime-derived refs are useful and truthful, but are not automatically enumerable through the static registry.
+
+The export/inspection layer should report that distinction rather than pretending one set is total:
+
+~~~text
+REGISTERED_STATIC
+DERIVED_CUSTOM_PRESENTATION
+DYNAMIC_DOMAIN_OCCURRENCE
+TARGET_ONLY_DECORATION
+~~~
+
+When a derived custom child carries product meaning that VexBoard should author later, either promote it into the authoritative design/component tree or expose it through one bounded dynamic-presentation template/manifest. Do not hand-copy its string ref into VexBoard.
+
+3. **Target layout literals should migrate by meaning, not by blanket ban**
+
+Current VexStream custom presentation legitimately contains direct target facts such as 8.dp, 10.dp, 12.dp, 20.dp, native Scaffold, LazyColumn, Row, and Material typography roles.
+
+During reverse adoption these are target facts to recover.
+
+After VexBoard accepts design authority, product-design values should be produced from the accepted VexBoard design / Android adapter. Target-only mechanics may remain local.
+
+The existing vexComposeMigrationReport is the rightful repository-owned place to expose this debt. Do not create a parallel VexBoard linter.
+
+4. **Static semantic tree must not be mistaken for exact rendered layout on custom Screens**
+
+For ordinary Screens, ScreenBlueprint.content -> VexElementTree is both semantic structure and visible construction.
+
+For a custom Screen such as VexStream, content is currently registry/action coverage while custom Compose owns the visible realization.
+
+Therefore:
+
+~~~text
+CUSTOM_SCREEN_REGISTRY_TREE != PROVEN_PIXEL / LAYOUT TREE
+~~~
+
+Reverse adoption must reconcile both sources plus lived evidence. After design authority transitions, the intended direction becomes:
+
+~~~text
+VEXBOARD_SCREEN_DESIGN
+-> ANDROID_TARGET_ADAPTER
+-> ScreenBlueprint / registered identities
++ target-native custom realization where required
+-> observed evidence
+~~~
+
+not two independently authored product layouts.
+
+5. **A deterministic Android adoption exporter should replace manual source hunting**
+
+The desired exporter is a build/tooling surface over existing owners, not a runtime dependency:
+
+~~~text
+AppScreens.registry
++ explicit realization mode
++ bounded feature state adapter
++ target-qualified presentation facts needed only for adoption
++ source revision
+        |
+        v
+deterministic adoption snapshot
+~~~
+
+Stable ordering and exact refs should make repeated VexBoard imports diffable and cheap.
+
+6. **ScreenCrawler should emit a durable evidence receipt, not only PNG + log text**
+
+Current crawler evidence already has stable semantic identity and computes screenshot SHA-256.
+
+To satisfy trustworthy VexBoard OBSERVED evidence, the capture path should eventually emit a durable machine-readable receipt alongside the PNG containing at least:
+
+~~~text
+scenarioRef
+evidenceRef
+screenId
+semanticRefOrNull
+configurationRef
+sourceRef / exact source revision
+capturedAt
+contentSha256
+artifact path / media identity
+~~~
+
+Then:
+
+~~~text
+ANDROID_SCREENCRAWLER_RECEIPT
+-> BoardEvidence OBSERVED
+~~~
+
+can be admitted without guessing capture time from upload/filesystem/event timestamps.
+
+#### Standardization posture
+
+Extend existing Android repository-owned enforcement incrementally:
+
+~~~text
+sourceAlignmentReport / verifySourceAlignment
+  -> Screen registration / preview / source conventions
+
+vexComposeMigrationReport
+  -> advisory migration debt
+  -> progressively enforce only areas intentionally converged
+
+AppBlueprintTest
+  -> registry / ownership / intent / inherited identity contracts
+
+ScreenCrawler
+  -> lived evidence + durable provenance receipt
+
+VexBoard Android adapter
+  -> accepted design -> target construction mapping
+~~~
+
+Do not immediately ban every raw Compose import or move every target mechanic into VexBoard.
+
+Escalate only repeated/product-design meaning that the VexBoard round trip proves must be shared.
+
+~~~text
+STANDARDIZE_MAPPING_SEAMS
+!=
+REIMPLEMENT_ANDROID_IN_VEXBOARD
+
+VEXBOARD_OWNS_DESIGN_MEANING
+ANDROID_OWNS_TARGET_REALIZATION
+EACH_SIDE_EXPOSES_ENOUGH_PROOF_TO_COMPARE_THEM
+~~~
+
 ### Identity coverage must be truthful
 
 The current Android registry is already strong enough to enumerate static Screen/Element identity and
