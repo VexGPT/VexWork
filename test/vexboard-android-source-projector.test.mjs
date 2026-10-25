@@ -137,6 +137,45 @@ test('VexLife Android POC snapshot projects deterministically without source eff
     'state branches must not pretend to be Screen navigation');
 });
 
+test('same VexBoard design resolves into a second viewport without reminting Screen identity', () => {
+  const reference = projectVexLifeAndroidPocSnapshot(
+    snapshot,
+    VEXBOARD_ANDROID_POC_BOARD_REFS.EXPERIENCE,
+    design,
+    'profile.vexlife-android.phone.412x915',
+  );
+  const compact = projectVexLifeAndroidPocSnapshot(
+    snapshot,
+    VEXBOARD_ANDROID_POC_BOARD_REFS.EXPERIENCE,
+    design,
+    'profile.vexlife-android.compact.360x720-large-text',
+  );
+
+  assert.equal(reference.viewportProfileRef, 'profile.vexlife-android.phone.412x915');
+  assert.equal(compact.viewportProfileRef, 'profile.vexlife-android.compact.360x720-large-text');
+  assert.deepEqual(reference.board.graph, compact.board.graph);
+  assert.equal(reference.board.design.designRef, compact.board.design.designRef);
+
+  const referenceFrame = reference.board.projection.items.find(
+    (item) => item.projectionItemRef === 'item.vexstream.state.loaded',
+  );
+  const compactFrame = compact.board.projection.items.find(
+    (item) => item.projectionItemRef === 'item.vexstream.state.loaded',
+  );
+  assert.ok(compactFrame.bounds.width < referenceFrame.bounds.width);
+  assert.ok(compactFrame.bounds.height < referenceFrame.bounds.height);
+  assert.equal(compact.board.presentation.referenceViewport.widthDp, 360);
+  assert.equal(compact.board.presentation.referenceViewport.heightDp, 720);
+
+  const referenceScreens = reference.board.projection.items.filter(
+    (item) => item.semanticRef === 'screen.vexstream-music',
+  ).map((item) => item.projectionItemRef);
+  const compactScreens = compact.board.projection.items.filter(
+    (item) => item.semanticRef === 'screen.vexstream-music',
+  ).map((item) => item.projectionItemRef);
+  assert.deepEqual(compactScreens, referenceScreens);
+});
+
 test('VexBoard Screen design changes resolved geometry while the Android adoption snapshot stays fixed', () => {
   const baseline = projectVexLifeAndroidPocSnapshot(
     snapshot,
