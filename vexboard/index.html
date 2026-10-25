@@ -597,6 +597,16 @@ function inspector(side){
     ];
     for(const [k,v] of designRows){dkv.append(el('div','k',k),el('div','v',String(v)))}dg.append(dkv);
 
+    const semanticElement=(current.design.semanticElements||[]).find(value=>value.semanticRef===n.nodeRef)||null;
+    if(semanticElement){
+      const elementKv=el('div','kv');elementKv.append(
+        el('div','k','identity'),el('div','v',semanticElement.identityState),
+        el('div','k','design parent'),el('div','v',semanticElement.parentSemanticRef),
+        el('div','k','reference lines'),el('div','v',String(semanticElement.referenceLineCount)),
+      );
+      dg.append(el('div','k','Proposed semantic element'),elementKv);
+    }
+
     const componentAssignment=(current.design.componentAssignments||[]).find(value=>value.semanticRef===n.nodeRef)||null;
     if(componentAssignment){
       dg.append(el('div','k','Component assignment'));
