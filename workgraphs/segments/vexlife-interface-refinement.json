@@ -9,7 +9,7 @@
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
       "createdAt": "2026-10-25T01:23:08.000Z",
-      "updatedAt": "2026-10-25T01:23:08.000Z",
+      "updatedAt": "2026-10-25T05:24:00.000Z",
       "workRef": "work.vexlife.interface-refinement.outcome",
       "parentWorkRefOrNull": null,
       "label": "VexLife Interface Refinement",
@@ -26,7 +26,7 @@
         "project.vexlife.interface-refinement",
         "projects/vexlife-interface-refinement/README.md",
         "project.vexlife.tocompletion",
-        "github.commit.vexlife.8f1e9fd9e3f38f8dc23296257df718fca9806988"
+        "github.commit.vexlife.162a865b7ebc1c5b51763a15b87ae2ec0637e94a"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
@@ -69,7 +69,7 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-10-25T01:23:08.000Z",
-      "updatedAt": "2026-10-25T01:57:00.000Z",
+      "updatedAt": "2026-10-25T05:24:00.000Z",
       "workRef": "work.vexlife.interface-refinement.v1.conversation-ergonomics",
       "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
       "label": "V1 — conversation ergonomics and re-entry",
@@ -82,11 +82,13 @@
         "repo.vexlife"
       ],
       "sourceRefs": [
-        "github.commit.vexlife.8f1e9fd9e3f38f8dc23296257df718fca9806988",
+        "github.pull.vexlife.925",
+        "github.pull.vexlife.926",
+        "github.commit.vexlife.81336b7cf34760f55f9fe1ac1f4bbd3ecc94acb2",
         "repo.vexlife:reference/browser/app.js",
         "repo.vexlife:reference/browser/evolution/conversation-projection.js",
         "projects/vexlife-interface-refinement/README.md",
-        "github.pull.vexlife.925"
+        "human.lived-feedback.vexlife.interface-refinement.20261025"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
@@ -97,20 +99,21 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-10-25T01:23:08.000Z",
-      "updatedAt": "2026-10-25T01:23:08.000Z",
+      "updatedAt": "2026-10-25T05:24:00.000Z",
       "workRef": "work.vexlife.interface-refinement.dependency.conversation-core-pr904",
       "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
       "label": "Conversation-core currentization dependency — PR #904",
-      "purpose": "Preserve the current Conversation-first durable Send candidate as the rightful owner of chat-controller, Browser Companion bridge, Lived Companion and server composition paths required by progressive response streaming. Do not create a competing writer over those paths.",
+      "purpose": "Record that the Conversation-first durable Send/currentization owner has landed on VexLife main and released the chat-controller, Browser Companion bridge, Lived Companion and server-composition paths previously blocking progressive streaming.",
       "workClass": "TASK",
-      "state": "VERIFYING",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
       "repositoryRefs": [
         "repo.vexlife"
       ],
       "sourceRefs": [
-        "github.pull.vexlife.904"
+        "github.pull.vexlife.904",
+        "github.commit.vexlife.ae43e5d707fc2589576899ed60cd4137702b22b0"
       ],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS"
@@ -121,14 +124,14 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-10-25T01:23:08.000Z",
-      "updatedAt": "2026-10-25T01:23:08.000Z",
+      "updatedAt": "2026-10-25T05:24:00.000Z",
       "workRef": "work.vexlife.interface-refinement.v2.streaming",
       "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
       "label": "V2 — progressive streamed Vex responses",
-      "purpose": "Make local Heretic replies appear progressively in the Vex interface and continue naturally beyond MLX-LM 0.32.0's implicit 512-token default under an explicit source-owned completion budget. Partial chunks stay ephemeral; final response/head persistence remains atomic after full completion; interrupted streams remain typed incomplete UI state.",
+      "purpose": "Make local Heretic replies appear progressively and replace the accidental MLX-LM completion default with an explicit source-owned output policy. Chunks remain ephemeral; only a completed final response advances durable Conversation truth. PR #904 is now accepted current, so implementation is unblocked.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
-      "priorityClass": "HIGH",
+      "state": "READY",
+      "priorityClass": "IMMEDIATE",
       "dependencyRefs": [
         "work.vexlife.interface-refinement.dependency.conversation-core-pr904"
       ],
@@ -137,6 +140,7 @@
       ],
       "sourceRefs": [
         "github.pull.vexlife.904",
+        "github.commit.vexlife.ae43e5d707fc2589576899ed60cd4137702b22b0",
         "repo.vexlife:src/core/lived-companion-connection.mjs",
         "repo.vexlife:scripts/serve-browser-core.mjs",
         "repo.vexlife:reference/browser/modules/chat-controller.js",
@@ -170,6 +174,158 @@
       ],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "createdAt": "2026-10-25T05:24:00.000Z",
+      "updatedAt": "2026-10-25T05:24:00.000Z",
+      "workRef": "work.vexlife.interface-refinement.v1-5.long-context-memory-pressure",
+      "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
+      "label": "V1.5 — long-context Memory pressure",
+      "purpose": "Carry the lived context-cap finding into accepted product source: 192K active input, 16K reserved output, 208K hard Context Lease, up to 100K/100-page current attributed Memory, dynamic Memory yielding, and explicit zero-headroom handling without silent Memory promotion.",
+      "workClass": "TASK",
+      "state": "VERIFYING",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "github.pull.vexlife.927",
+        "github.commit.vexlife.162a865b7ebc1c5b51763a15b87ae2ec0637e94a",
+        "repo.vexlife:src/core/browser-prompt-context-runtime.mjs",
+        "repo.vexlife:src/core/living-journal-memory-projection.mjs",
+        "repo.vexlife:src/core/daily-memory-dream.mjs",
+        "repo.vexlife:src/core/score-context-continuity.mjs",
+        "human.lived-feedback.vexlife.interface-refinement.20261025"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "createdAt": "2026-10-25T05:24:00.000Z",
+      "updatedAt": "2026-10-25T05:24:00.000Z",
+      "workRef": "work.vexlife.interface-refinement.v3.resource-context-pressure-observation",
+      "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
+      "label": "V3 — resource and context pressure observation",
+      "purpose": "Give VexLife one system-owned read-only pressure projection over context usage/headroom, Memory inclusion/bounding, output reserve, lease age/currentness and host resource/runtime health. Produce NORMAL/WATCH/CHECKPOINT_RECOMMENDED/ROLLOVER_REQUIRED/RESOURCE_ATTENTION meaning from source-managed policy with hysteresis. The model may receive a small truthful pressure packet; observation grants no cleanup, Memory-promotion or process-kill authority.",
+      "workClass": "TASK",
+      "state": "READY",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.interface-refinement.v1-5.long-context-memory-pressure"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "repo.vexlife:src/core/browser-prompt-context-runtime.mjs",
+        "repo.vexlife:src/core/context-lease.mjs",
+        "repo.vexlife:src/core/continuity-stream-adapter.mjs",
+        "repo.vexlife:src/core/heretic-persistent-runtime-owner.mjs",
+        "projects/vexlife-interface-refinement/README.md",
+        "projects/vex-security-assurance/README.md"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "createdAt": "2026-10-25T05:24:00.000Z",
+      "updatedAt": "2026-10-25T05:24:00.000Z",
+      "workRef": "work.vexlife.interface-refinement.v4.continuity-rollover",
+      "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
+      "label": "V4 — self-maintaining continuity rollover",
+      "purpose": "Turn context pressure into graceful continuity rather than a sudden stop: form a compact working checkpoint from current intent/open loops/source refs and exact owner truth, optionally route already-accepted/consented semantic Memory through its rightful Score/Daily Memory owners, then start a fresh prompt/context lease from the newest checkpoint plus relevant Memory. Checkpoints supersede instead of recursively stacking summaries. Pressure-triggered checkpointing is not automatic semantic Memory promotion.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.interface-refinement.v2.streaming",
+        "work.vexlife.interface-refinement.v3.resource-context-pressure-observation"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "repo.vexlife:src/core/continuity-stream-adapter.mjs",
+        "repo.vexlife:src/core/score-context-continuity.mjs",
+        "repo.vexlife:src/core/daily-memory-dream.mjs",
+        "repo.vexlife:src/core/living-journal-memory-projection.mjs",
+        "repo.vexlife:src/core/browser-prompt-context-runtime.mjs",
+        "projects/vexlife-interface-refinement/README.md"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "createdAt": "2026-10-25T05:24:00.000Z",
+      "updatedAt": "2026-10-25T05:24:00.000Z",
+      "workRef": "work.vexlife.interface-refinement.v5.resource-stewardship",
+      "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
+      "label": "V5 — bounded host resource stewardship",
+      "purpose": "Let the system detect and recover exact stale Vex-owned processes/resources without becoming a general process killer. Automatic cleanup requires source-backed ownership identity plus stale/abandoned state and no active lease. PID or high CPU/RAM alone is never authority. Unknown/unowned processes, ambiguous ownership, destructive cleanup or user workload interference must become an explicit human proposal/approval boundary.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.interface-refinement.v3.resource-context-pressure-observation"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "repo.vexlife:src/core/heretic-persistent-runtime-owner.mjs",
+        "repo.vexlife:scripts/macos-lifecycle.mjs",
+        "repo.vexlife:src/core/context-lease.mjs",
+        "projects/vex-security-assurance/README.md",
+        "projects/vexlife-interface-refinement/README.md"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "createdAt": "2026-10-25T05:24:00.000Z",
+      "updatedAt": "2026-10-25T05:24:00.000Z",
+      "workRef": "work.vexlife.interface-refinement.v6.lived-continuity-stability",
+      "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
+      "label": "V6 — lived continuity stability",
+      "purpose": "Prove the product can sustain a long real Victor ↔ local-Heretic session through progressive responses, rising context pressure, Memory bounding, checkpoint/rollover, restart/re-entry and owned-resource recovery without silent context loss, recursive summary stacking, arbitrary model cutoff or unauthorized cleanup.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.interface-refinement.v2.streaming",
+        "work.vexlife.interface-refinement.v4.continuity-rollover",
+        "work.vexlife.interface-refinement.v5.resource-stewardship"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-interface-refinement/README.md",
+        "github.commit.vexlife.162a865b7ebc1c5b51763a15b87ae2ec0637e94a"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND"
     }
   ],
   "transitions": [],
@@ -178,7 +334,9 @@
     "projects/vexlife-interface-refinement/README.md",
     "project.vexlife.tocompletion",
     "github.pull.vexlife.904",
-    "github.commit.vexlife.8f1e9fd9e3f38f8dc23296257df718fca9806988"
+    "github.pull.vexlife.927",
+    "github.commit.vexlife.162a865b7ebc1c5b51763a15b87ae2ec0637e94a",
+    "projects/vex-security-assurance/README.md"
   ],
   "formedAt": "2026-10-25T01:23:08.000Z"
 }
