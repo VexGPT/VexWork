@@ -911,7 +911,8 @@
       "sourceRefs": [
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt",
         "repo.vexlife-android:app/src/main/res/values/strings.xml"
-      ]
+      ],
+      "contentMode": "STATIC_LOCALIZED"
     },
     {
       "semanticRef": "element.home.body.vexstream.status",
@@ -923,7 +924,8 @@
       "sourceRefs": [
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt",
         "repo.vexlife-android:app/src/main/res/values/strings.xml"
-      ]
+      ],
+      "contentMode": "DYNAMIC_RUNTIME"
     },
     {
       "semanticRef": "element.home.body.vexstream.body",
@@ -935,7 +937,8 @@
       "sourceRefs": [
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt",
         "repo.vexlife-android:app/src/main/res/values/strings.xml"
-      ]
+      ],
+      "contentMode": "DYNAMIC_RUNTIME"
     },
     {
       "semanticRef": "element.home.body.systems.title",
@@ -947,7 +950,8 @@
       "sourceRefs": [
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt",
         "repo.vexlife-android:app/src/main/res/values/strings.xml"
-      ]
+      ],
+      "contentMode": "STATIC_LOCALIZED"
     }
   ]
 }
