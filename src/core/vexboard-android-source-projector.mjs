@@ -1275,6 +1275,7 @@ function depthBoard(snapshot, design, viewportProfile) {
       [
         requirement.ownerSourceRef,
         ...requirement.supportSourceRefs,
+        ...requirement.candidateSourceRefs,
       ],
     ));
   }
