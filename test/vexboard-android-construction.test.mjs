@@ -47,6 +47,35 @@ test('Android construction plan consumes VexBoard design without target effects'
   assert.equal(inheritedTypography.referenceDpOrNull, 22);
   assert.ok(inheritedTypography.designRefs.includes('visual.typography.titleLarge'));
 
+  assert.equal(plan.componentMappings.length, design.componentAssignments.length);
+
+  const homeOpen = plan.componentMappings.find(
+    (entry) => entry.semanticRef === 'element.home.body.systems.vexstream-music',
+  );
+  assert.equal(homeOpen.templateRef, 'component.button');
+  assert.equal(homeOpen.styleRef, 'style.action.primary');
+  assert.equal(homeOpen.targetSymbol, 'VexButton');
+
+  const manage = plan.componentMappings.find(
+    (entry) => entry.semanticRef === 'element.vexstream-music.body.connection.manage',
+  );
+  assert.equal(manage.templateRef, 'component.icon-button');
+  assert.equal(manage.iconRefOrNull, 'icon.settings');
+  assert.equal(manage.targetSymbol, 'VexIconButton');
+
+  const songsTab = plan.componentMappings.find(
+    (entry) => entry.semanticRef === 'element.vexstream-music.body.library-tabs.songs',
+  );
+  assert.equal(songsTab.templateRef, 'component.tab');
+  assert.equal(songsTab.styleRef, 'style.navigation');
+  assert.equal(songsTab.selectedStyleRefOrNull, 'style.action.primary');
+  assert.match(songsTab.targetSymbol, /VexButton/);
+
+  const sheet = plan.componentMappings.find(
+    (entry) => entry.semanticRef === 'element.vexstream-music.body.connection.menu',
+  );
+  assert.equal(sheet.targetSymbol, 'VexModalBottomSheet');
+
   const toolbar = plan.mappings.find(
     (entry) => entry.mappingRef === 'mapping.android.shell.toolbar-height',
   );
