@@ -31,6 +31,9 @@ export const SCREEN_DESIGN_COMPONENT_TEMPLATES = Object.freeze([
   'component.modal-bottom-sheet',
 ]);
 
+export const SCREEN_DESIGN_HORIZONTAL_ANCHORS = Object.freeze(['START', 'CENTER', 'END']);
+export const SCREEN_DESIGN_VERTICAL_ANCHORS = Object.freeze(['TOP', 'CENTER', 'BOTTOM']);
+
 function assert(condition, message) {
   if (!condition) throw new TypeError(message);
 }
@@ -82,6 +85,13 @@ function normalizeBoundedMetric(metric, label) {
   positive(metric?.referenceDp, `${label}.referenceDp`);
   assert(metric.minDp <= metric.maxDp, `${label}.minDp must be <= maxDp`);
   return metric;
+}
+
+export function screenDesignAnchorRule(designInput, anchorRef) {
+  const design = normalizeScreenDesign(designInput);
+  const rule = design.anchorRules?.find((entry) => entry.anchorRef === anchorRef);
+  if (!rule) throw new TypeError(`unknown screen design anchor rule ${anchorRef}`);
+  return Object.freeze(structuredClone(rule));
 }
 
 export function screenDesignLayoutRule(designInput, layoutRef) {
@@ -251,6 +261,52 @@ export function resolveScreenDesignConstraintBox({
   });
 }
 
+export function resolveScreenDesignAnchorBox({
+  designInput,
+  anchorRuleInput,
+  parentBoundsDp,
+  widthDp,
+  heightDp,
+}) {
+  const design = normalizeScreenDesign(designInput);
+  if (!anchorRuleInput || typeof anchorRuleInput !== 'object') {
+    throw new TypeError('anchorRuleInput required');
+  }
+  positive(widthDp, 'anchor widthDp');
+  positive(heightDp, 'anchor heightDp');
+  const horizontalInsetDp = anchorRuleInput.horizontalInsetMetricRefOrNull
+    ? resolveBoundedResponsiveMetric(
+        screenDesignMetric(design, anchorRuleInput.horizontalInsetMetricRefOrNull),
+        parentBoundsDp.width,
+      )
+    : 0;
+  const verticalInsetDp = anchorRuleInput.verticalInsetMetricRefOrNull
+    ? resolveBoundedResponsiveMetric(
+        screenDesignMetric(design, anchorRuleInput.verticalInsetMetricRefOrNull),
+        parentBoundsDp.height,
+      )
+    : 0;
+
+  let x;
+  if (anchorRuleInput.horizontalAnchor === 'START') x = parentBoundsDp.x + horizontalInsetDp;
+  else if (anchorRuleInput.horizontalAnchor === 'CENTER') x = parentBoundsDp.x + ((parentBoundsDp.width - widthDp) / 2);
+  else x = parentBoundsDp.x + parentBoundsDp.width - horizontalInsetDp - widthDp;
+
+  let y;
+  if (anchorRuleInput.verticalAnchor === 'TOP') y = parentBoundsDp.y + verticalInsetDp;
+  else if (anchorRuleInput.verticalAnchor === 'CENTER') y = parentBoundsDp.y + ((parentBoundsDp.height - heightDp) / 2);
+  else y = parentBoundsDp.y + parentBoundsDp.height - verticalInsetDp - heightDp;
+
+  assert(x >= parentBoundsDp.x - 1e-9 && y >= parentBoundsDp.y - 1e-9,
+    'anchored design box starts outside parent bounds');
+  assert(x + widthDp <= parentBoundsDp.x + parentBoundsDp.width + 1e-9,
+    'anchored design box exceeds parent width');
+  assert(y + heightDp <= parentBoundsDp.y + parentBoundsDp.height + 1e-9,
+    'anchored design box exceeds parent height');
+
+  return Object.freeze({ x, y, width: widthDp, height: heightDp });
+}
+
 export function screenDesignViewportProfile(designInput, profileRefOrNull = null) {
   const design = normalizeScreenDesign(designInput);
   const profileRef = profileRefOrNull ?? design.referenceViewport.profileRef;
@@ -306,6 +362,35 @@ export function normalizeScreenDesign(input) {
   if (input.layoutRules !== undefined) {
     assert(Array.isArray(input.layoutRules), 'screen design layoutRules must be an array');
   }
+  if (input.anchorRules !== undefined) {
+    assert(Array.isArray(input.anchorRules), 'screen design anchorRules must be an array');
+  }
+  if (input.anchorRules !== undefined) {
+    const anchorRefs = new Set();
+    for (const [index, rule] of input.anchorRules.entries()) {
+      const label = `screen design anchorRules[${index}]`;
+      assert(typeof rule?.anchorRef === 'string' && rule.anchorRef, `${label}.anchorRef required`);
+      assert(!anchorRefs.has(rule.anchorRef), `duplicate screen design anchorRef ${rule.anchorRef}`);
+      anchorRefs.add(rule.anchorRef);
+      assert(typeof rule.semanticRef === 'string' && rule.semanticRef, `${label}.semanticRef required`);
+      assert(typeof rule.parentSemanticRef === 'string' && rule.parentSemanticRef,
+        `${label}.parentSemanticRef required`);
+      assert(SCREEN_DESIGN_HORIZONTAL_ANCHORS.includes(rule.horizontalAnchor),
+        `${label}.horizontalAnchor unsupported`);
+      assert(SCREEN_DESIGN_VERTICAL_ANCHORS.includes(rule.verticalAnchor),
+        `${label}.verticalAnchor unsupported`);
+      for (const [field, metricRef] of [
+        ['horizontalInsetMetricRefOrNull', rule.horizontalInsetMetricRefOrNull],
+        ['verticalInsetMetricRefOrNull', rule.verticalInsetMetricRefOrNull],
+      ]) {
+        if (metricRef === null) continue;
+        assert(typeof metricRef === 'string' && metricRef, `${label}.${field} invalid`);
+        assert(input.metrics && Object.hasOwn(input.metrics, metricRef),
+          `${label}.${field} missing metric ${metricRef}`);
+      }
+    }
+  }
+
   if (input.componentAssignments !== undefined) {
     assert(Array.isArray(input.componentAssignments),
       'screen design componentAssignments must be an array');
