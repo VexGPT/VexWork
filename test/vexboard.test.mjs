@@ -308,6 +308,13 @@ test('local draft flow creates, forks, serializes and uses the same BoardControl
       schemaVersion: 'vexboard.test-presentation/v1',
       profileRef: 'profile.test',
     },
+    design: {
+      schemaVersion: 'vexboard.screen-design/poc-v1',
+      designRef: 'design.test',
+      authorityState: 'REVERSE_ADOPTED_CANDIDATE',
+      referenceViewport: { widthDp: 412, heightDp: 915 },
+      constraints: [],
+    },
     sourceRefs: ['repo.test:source'],
   };
   const fork = await Reader.forkReadOnlyBoard(readOnly, { draftRef: 'draft.fork' });
@@ -315,8 +322,10 @@ test('local draft flow creates, forks, serializes and uses the same BoardControl
   assert.equal(fork.mode, 'LOCAL_DRAFT');
   assert.equal(fork.graph.semanticFingerprint, roundTrip.graph.semanticFingerprint);
   assert.deepEqual(fork.presentation, readOnly.presentation);
+  assert.deepEqual(fork.design, readOnly.design);
   assert.deepEqual(fork.sourceRefs, readOnly.sourceRefs);
   assert.notEqual(fork.presentation, readOnly.presentation, 'fork must retain presentation by value, not shared object identity');
+  assert.notEqual(fork.design, readOnly.design, 'fork must retain design constraints by value, not shared object identity');
 });
 
 test('shared model rejects schema drift rather than silently dropping unknown fields', () => {
