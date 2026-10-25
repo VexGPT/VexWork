@@ -21,6 +21,16 @@ export const SCREEN_DESIGN_LAYOUT_MODES = Object.freeze([
   'SCROLL_COLUMN',
 ]);
 
+export const SCREEN_DESIGN_COMPONENT_TEMPLATES = Object.freeze([
+  'component.screen',
+  'component.surface',
+  'component.button',
+  'component.icon-button',
+  'component.tab',
+  'component.fab',
+  'component.modal-bottom-sheet',
+]);
+
 function assert(condition, message) {
   if (!condition) throw new TypeError(message);
 }
@@ -72,6 +82,13 @@ function normalizeBoundedMetric(metric, label) {
   positive(metric?.referenceDp, `${label}.referenceDp`);
   assert(metric.minDp <= metric.maxDp, `${label}.minDp must be <= maxDp`);
   return metric;
+}
+
+export function screenDesignComponentAssignment(designInput, semanticRef) {
+  const design = normalizeScreenDesign(designInput);
+  const assignment = design.componentAssignments?.find((entry) => entry.semanticRef === semanticRef);
+  if (!assignment) throw new TypeError(`unknown screen design component assignment ${semanticRef}`);
+  return Object.freeze(structuredClone(assignment));
 }
 
 export function screenDesignMetric(designInput, metricRef) {
@@ -282,6 +299,10 @@ export function normalizeScreenDesign(input) {
   if (input.layoutRules !== undefined) {
     assert(Array.isArray(input.layoutRules), 'screen design layoutRules must be an array');
   }
+  if (input.componentAssignments !== undefined) {
+    assert(Array.isArray(input.componentAssignments),
+      'screen design componentAssignments must be an array');
+  }
   if (input.visualTokens !== undefined) {
     assert(input.visualTokens && typeof input.visualTokens === 'object' && !Array.isArray(input.visualTokens),
       'screen design visualTokens must be one object');
@@ -396,6 +417,36 @@ export function normalizeScreenDesign(input) {
     visited.add(occurrenceRef);
   }
   for (const occurrenceRef of byOccurrenceRef.keys()) visitOccurrence(occurrenceRef);
+
+  if (input.componentAssignments !== undefined) {
+    const assignmentRefs = new Set();
+    const semanticRefs = new Set();
+    for (const [index, assignment] of input.componentAssignments.entries()) {
+      const label = `screen design componentAssignments[${index}]`;
+      assert(typeof assignment?.assignmentRef === 'string' && assignment.assignmentRef,
+        `${label}.assignmentRef required`);
+      assert(!assignmentRefs.has(assignment.assignmentRef),
+        `duplicate screen design component assignmentRef ${assignment.assignmentRef}`);
+      assignmentRefs.add(assignment.assignmentRef);
+      assert(typeof assignment.semanticRef === 'string' && assignment.semanticRef,
+        `${label}.semanticRef required`);
+      assert(!semanticRefs.has(assignment.semanticRef),
+        `duplicate screen design component semanticRef ${assignment.semanticRef}`);
+      semanticRefs.add(assignment.semanticRef);
+      assert(SCREEN_DESIGN_COMPONENT_TEMPLATES.includes(assignment.templateRef),
+        `${label}.templateRef unsupported`);
+      assert(typeof assignment.styleRef === 'string' && assignment.styleRef,
+        `${label}.styleRef required`);
+      if (assignment.selectedStyleRefOrNull !== null) {
+        assert(typeof assignment.selectedStyleRefOrNull === 'string' && assignment.selectedStyleRefOrNull,
+          `${label}.selectedStyleRefOrNull invalid`);
+      }
+      if (assignment.iconRefOrNull !== null) {
+        assert(typeof assignment.iconRefOrNull === 'string' && assignment.iconRefOrNull,
+          `${label}.iconRefOrNull invalid`);
+      }
+    }
+  }
 
   if (input.layoutRules !== undefined) {
     const layoutRefs = new Set();
