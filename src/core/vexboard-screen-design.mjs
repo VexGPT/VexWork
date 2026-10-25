@@ -84,6 +84,13 @@ function normalizeBoundedMetric(metric, label) {
   return metric;
 }
 
+export function screenDesignLayoutRule(designInput, layoutRef) {
+  const design = normalizeScreenDesign(designInput);
+  const rule = design.layoutRules?.find((entry) => entry.layoutRef === layoutRef);
+  if (!rule) throw new TypeError(`unknown screen design layout rule ${layoutRef}`);
+  return Object.freeze(structuredClone(rule));
+}
+
 export function screenDesignComponentAssignment(designInput, semanticRef) {
   const design = normalizeScreenDesign(designInput);
   const assignment = design.componentAssignments?.find((entry) => entry.semanticRef === semanticRef);
@@ -457,6 +464,17 @@ export function normalizeScreenDesign(input) {
       layoutRefs.add(rule.layoutRef);
       assert(typeof rule.semanticRef === 'string' && rule.semanticRef, `${label}.semanticRef required`);
       assert(SCREEN_DESIGN_LAYOUT_MODES.includes(rule.mode), `${label}.mode unsupported`);
+      if (rule.childSemanticRefs !== undefined) {
+        assert(Array.isArray(rule.childSemanticRefs), `${label}.childSemanticRefs must be an array`);
+        const children = new Set();
+        for (const [childIndex, childRef] of rule.childSemanticRefs.entries()) {
+          assert(typeof childRef === 'string' && childRef,
+            `${label}.childSemanticRefs[${childIndex}] required`);
+          assert(!children.has(childRef),
+            `${label}.childSemanticRefs duplicate ${childRef}`);
+          children.add(childRef);
+        }
+      }
       if (rule.gapMetricRefOrNull !== null) {
         assert(typeof rule.gapMetricRefOrNull === 'string' && rule.gapMetricRefOrNull,
           `${label}.gapMetricRefOrNull invalid`);
