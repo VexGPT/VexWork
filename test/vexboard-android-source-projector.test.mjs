@@ -13,12 +13,16 @@ const snapshot = JSON.parse(fs.readFileSync(
   new URL('../projects/vexboard/examples/vexlife-android-home-vexstream.snapshot.json', import.meta.url),
   'utf8',
 ));
+const design = JSON.parse(fs.readFileSync(
+  new URL('../projects/vexboard/examples/vexlife-android-home-vexstream.design.json', import.meta.url),
+  'utf8',
+));
 
 test('VexLife Android POC snapshot projects deterministically without source effects', () => {
   assert.equal(snapshot.schemaVersion, VEXLIFE_ANDROID_POC_SNAPSHOT_SCHEMA);
 
-  const first = projectVexLifeAndroidPocSnapshot(snapshot, VEXBOARD_ANDROID_POC_BOARD_REFS.EXPERIENCE);
-  const second = projectVexLifeAndroidPocSnapshot(snapshot, VEXBOARD_ANDROID_POC_BOARD_REFS.EXPERIENCE);
+  const first = projectVexLifeAndroidPocSnapshot(snapshot, VEXBOARD_ANDROID_POC_BOARD_REFS.EXPERIENCE, design);
+  const second = projectVexLifeAndroidPocSnapshot(snapshot, VEXBOARD_ANDROID_POC_BOARD_REFS.EXPERIENCE, design);
 
   assert.deepEqual(first, second);
   assert.deepEqual(first.effects, {
@@ -114,8 +118,62 @@ test('VexLife Android POC snapshot projects deterministically without source eff
     'state branches must not pretend to be Screen navigation');
 });
 
+test('VexBoard Screen design changes resolved geometry while the Android adoption snapshot stays fixed', () => {
+  const baseline = projectVexLifeAndroidPocSnapshot(
+    snapshot,
+    VEXBOARD_ANDROID_POC_BOARD_REFS.EXPERIENCE,
+    design,
+  ).board;
+
+  const changedDesign = structuredClone(design);
+  changedDesign.authorityState = 'VEXBOARD_DESIGN_AUTHORITY';
+  changedDesign.metrics.screenPaddingHorizontal = {
+    preferredPercent: 24 / 412,
+    minDp: 24,
+    maxDp: 24,
+    referenceDp: 24,
+  };
+  for (const occurrenceRef of [
+    'design-occurrence.home.inner-content',
+    'design-occurrence.vexstream.inner-content',
+  ]) {
+    const constraint = changedDesign.constraints.find((entry) => entry.occurrenceRef === occurrenceRef);
+    constraint.horizontal.startMargin = structuredClone(changedDesign.metrics.screenPaddingHorizontal);
+    constraint.horizontal.endMargin = structuredClone(changedDesign.metrics.screenPaddingHorizontal);
+  }
+
+  const changed = projectVexLifeAndroidPocSnapshot(
+    snapshot,
+    VEXBOARD_ANDROID_POC_BOARD_REFS.EXPERIENCE,
+    changedDesign,
+  ).board;
+
+  const baselineHome = baseline.projection.items.find(
+    (item) => item.projectionItemRef === 'item.home.vexstream-section',
+  );
+  const changedHome = changed.projection.items.find(
+    (item) => item.projectionItemRef === 'item.home.vexstream-section',
+  );
+
+  assert.equal(baseline.design.authorityState, 'REVERSE_ADOPTED_CANDIDATE');
+  assert.equal(changed.design.authorityState, 'VEXBOARD_DESIGN_AUTHORITY');
+  assert.ok(changedHome.bounds.x > baselineHome.bounds.x);
+  assert.ok(changedHome.bounds.width < baselineHome.bounds.width);
+  assert.deepEqual(snapshot.referenceProfile, {
+    profileRef: 'profile.vexlife-android.phone.412x915',
+    widthDp: 412,
+    heightDp: 915,
+    toolbarHeightDp: 70,
+    bottomBarHeightDp: 70,
+    screenPaddingDp: 16,
+    containerPaddingDp: 16,
+    containerGapDp: 12,
+    listGapDp: 8,
+  }, 'Android adoption facts remain unchanged while VexBoard design changes');
+});
+
 test('VexLife Android POC depth maps truthful storage and Desktop service ownership', () => {
-  const projected = projectVexLifeAndroidPocSnapshot(snapshot, VEXBOARD_ANDROID_POC_BOARD_REFS.DEPTH);
+  const projected = projectVexLifeAndroidPocSnapshot(snapshot, VEXBOARD_ANDROID_POC_BOARD_REFS.DEPTH, design);
   assert.deepEqual(projected.effects, {
     sourceMutationPerformed: false,
     externalEffectsPerformed: false,
@@ -143,7 +201,7 @@ test('VexLife Android POC depth maps truthful storage and Desktop service owners
   assert.ok(endpointLabels.includes('GET /v1/catalog'));
   assert.ok(endpointLabels.includes('GET/HEAD /v1/media/<trackRef>'));
 
-  const experience = projectVexLifeAndroidPocSnapshot(snapshot).board;
+  const experience = projectVexLifeAndroidPocSnapshot(snapshot, VEXBOARD_ANDROID_POC_BOARD_REFS.EXPERIENCE, design).board;
   const portal = experience.graph.nodes.find(
     (node) => node.nodeRef === 'portal.vexlife-android.vexstream-depth',
   );
@@ -154,7 +212,7 @@ test('VexLife Android POC snapshot fails closed when the bounded three-state con
   const invalid = structuredClone(snapshot);
   invalid.vexStream.states = invalid.vexStream.states.slice(0, 2);
   assert.throws(
-    () => projectVexLifeAndroidPocSnapshot(invalid),
+    () => projectVexLifeAndroidPocSnapshot(invalid, VEXBOARD_ANDROID_POC_BOARD_REFS.EXPERIENCE, design),
     /requires exactly three library state projections/,
   );
 });
