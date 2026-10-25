@@ -586,6 +586,22 @@
         "blockingForPocAuthority": false,
         "scopeStatus": "OUTSIDE_POC"
       }
+    ],
+    "targetCapabilityCandidates": [
+      {
+        "capabilityRef": "capability.vexlife-android.elements.dynamic-text-identity",
+        "candidateRef": "github.pull.vexlife-android.182",
+        "candidateHeadRefOrNull": "git.commit.vexlife-android.d44f4d164c4241b609ee7da843bd0f7f69166790",
+        "status": "CANDIDATE_FORMED_PROOF_PENDING",
+        "sourceRefs": [
+          "github.pull.vexlife-android.182",
+          "git.commit.vexlife-android.d44f4d164c4241b609ee7da843bd0f7f69166790",
+          "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/ElementModel.kt",
+          "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/ScreenBlueprint.kt",
+          "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/ElementCells.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt"
+        ]
+      }
     ]
   }
 }
