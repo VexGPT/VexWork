@@ -785,7 +785,12 @@ function renderWorkspace(){
   app.append(bar);
   const work=el('div','work'),tools=el('aside','tools'),disabled=!editable();tools.append(toolButton('Select','SELECT'),toolButton('Pan','PAN'),toolButton('Box','RECTANGLE',disabled),toolButton('Decision','DIAMOND',disabled),toolButton('Frame','FRAME',disabled),toolButton('Text','TEXT',disabled),toolButton('Connect','CONNECT',disabled));
   const paletteClass=`palette-${paletteMode.toLowerCase().replaceAll('_','-')}`;
-  viewportEl=el('section',`viewport ${paletteClass}${['SELECT','PAN'].includes(tool)?' pan-ready':''}`);canvasEl=el('div','canvas');renderCanvas(canvasEl);viewportEl.append(canvasEl);minimapEl=el('div','minimap');minimapEl.dataset.vexboardPlane=Interaction.INTERACTION_PLANES.CHROME;minimapEl.setAttribute('aria-label','Canvas minimap');viewportEl.append(minimapEl,paletteFab());renderPrototypeOverlays(viewportEl);wireViewport(viewportEl,canvasEl);
+  viewportEl=el('section',`viewport ${paletteClass}${['SELECT','PAN'].includes(tool)?' pan-ready':''}`);
+  if(current.design&&current.presentation){
+    const cssVars=AndroidPresentation.androidReferenceCssVariables(current.design,current.presentation);
+    for(const [name,value] of Object.entries(cssVars))viewportEl.style.setProperty(name,String(value));
+  }
+  canvasEl=el('div','canvas');renderCanvas(canvasEl);viewportEl.append(canvasEl);minimapEl=el('div','minimap');minimapEl.dataset.vexboardPlane=Interaction.INTERACTION_PLANES.CHROME;minimapEl.setAttribute('aria-label','Canvas minimap');viewportEl.append(minimapEl,paletteFab());renderPrototypeOverlays(viewportEl);wireViewport(viewportEl,canvasEl);
   const side=el('aside','inspector');inspector(side);work.append(tools,viewportEl,side);app.append(work);applyCamera();
 }
 
