@@ -31,6 +31,15 @@ function fixture() {
       { projectionItemRef: 'item.condition', role: 'STATE_CHIP', variant: 'LOADED' },
       { projectionItemRef: 'item.viewport', role: 'SCROLL_VIEWPORT', variant: 'HORIZONTAL' },
       { projectionItemRef: 'item.tab', role: 'TAB', variant: 'DEFAULT' },
+      { projectionItemRef: 'item.content', role: 'CONTENT_COLUMN', variant: null, styleRef: 'style.default' },
+      {
+        projectionItemRef: 'item.sheet-title',
+        role: 'TEXT',
+        variant: 'HEADLINE_SMALL',
+        styleRef: 'style.default',
+        typographyRef: 'headlineSmall',
+        colorRef: 'onSurface',
+      },
     ],
     relationships: [{
       relationshipRef: 'rel.open-sheet',
@@ -59,6 +68,21 @@ test('Android reference presentation is occurrence-local and does not mint seman
   assert.deepEqual(
     androidReferenceClassNames(presentation, 'item.condition'),
     ['android-reference', 'android-role-state-chip', 'android-variant-loaded'],
+  );
+  assert.deepEqual(
+    androidReferenceClassNames(presentation, 'item.content'),
+    ['android-reference', 'android-role-content-column', 'android-style-default'],
+  );
+  assert.deepEqual(
+    androidReferenceClassNames(presentation, 'item.sheet-title'),
+    [
+      'android-reference',
+      'android-role-text',
+      'android-variant-headline-small',
+      'android-style-default',
+      'android-type-headline-small',
+      'android-color-on-surface',
+    ],
   );
   assert.deepEqual(androidReferenceClassNames(presentation, 'item.unknown'), []);
 
@@ -156,6 +180,12 @@ test('Android reference styling resolves from VexBoard-owned visual tokens', () 
         errorContainer: '#8C1D18',
         onErrorContainer: '#F9DEDC',
       },
+      dimensions: {
+        bottomSheetMaxWidthDp: 640,
+        bottomSheetDragHandleWidthDp: 32,
+        bottomSheetDragHandleHeightDp: 4,
+        bottomSheetDragHandleVerticalPaddingDp: 22,
+      },
       shapes: {
         mediumRadiusDp: 12,
         largeRadiusDp: 16,
@@ -168,6 +198,7 @@ test('Android reference styling resolves from VexBoard-owned visual tokens', () 
         titleMedium: { fontFamily: 'PLATFORM_DEFAULT', fontWeight: 500, fontSizeSp: 16, lineHeightSp: 24 },
         bodyLarge: { fontFamily: 'PLATFORM_DEFAULT', fontWeight: 400, fontSizeSp: 16, lineHeightSp: 24 },
         bodyMedium: { fontFamily: 'PLATFORM_DEFAULT', fontWeight: 400, fontSizeSp: 14, lineHeightSp: 20 },
+        bodySmall: { fontFamily: 'PLATFORM_DEFAULT', fontWeight: 400, fontSizeSp: 12, lineHeightSp: 16 },
         labelLarge: { fontFamily: 'PLATFORM_DEFAULT', fontWeight: 500, fontSizeSp: 14, lineHeightSp: 20 },
         labelSmall: { fontFamily: 'MONOSPACE', fontWeight: 600, fontSizeSp: 10, letterSpacingSp: 0.8 },
       },
@@ -181,6 +212,11 @@ test('Android reference styling resolves from VexBoard-owned visual tokens', () 
   assert.equal(vars['--vex-android-radius-large'], '11.52px');
   assert.equal(vars['--vex-android-radius-extra-large'], '20.16px');
   assert.equal(vars['--vex-android-radius-full'], '999px');
+  assert.equal(vars['--vex-android-sheet-handle-width'], '23.04px');
+  assert.equal(vars['--vex-android-sheet-handle-height'], '2.88px');
+  assert.equal(vars['--vex-android-sheet-handle-padding'], '15.84px');
+  assert.equal(vars['--vex-android-body-small-size'], '8.64px');
+  assert.equal(vars['--vex-android-body-small-line'], '11.52px');
   assert.equal(vars['--vex-android-title-large-size'], '15.84px');
   assert.equal(vars['--vex-android-title-large-line'], '20.16px');
   assert.equal(vars['--vex-android-title-large-weight'], '400');
@@ -220,6 +256,9 @@ test('Android reference stylesheet installs once and contains the Screen/modal/d
   assert.match(appended[0].textContent, /--vex-android-secondary-container/);
   assert.match(appended[0].textContent, /--vex-android-radius-large/);
   assert.match(appended[0].textContent, /android-role-modal-sheet/);
+  assert.match(appended[0].textContent, /android-role-content-column/);
+  assert.match(appended[0].textContent, /android-variant-body-small/);
+  assert.match(appended[0].textContent, /--vex-android-sheet-handle-width/);
   assert.match(appended[0].textContent, /android-role-api-endpoint/);
   assert.match(appended[0].textContent, /#0f1012/);
 });
