@@ -157,6 +157,61 @@ test('VexLife Android POC snapshot projects deterministically without source eff
     (item) => item.projectionItemRef === 'item.vexstream.connection-sheet',
   );
   assert.equal(sheet.parentProjectionItemRefOrNull, 'item.vexstream.state.loaded');
+  assert.ok(Math.abs(sheet.bounds.width - (412 * 0.72)) < 0.001);
+  assert.ok(Math.abs(sheet.bounds.height - (460 * 0.72)) < 0.001);
+  assert.ok(Math.abs(
+    (loadedFrame.bounds.y + loadedFrame.bounds.height) -
+    (sheet.bounds.y + sheet.bounds.height)
+  ) < 0.001);
+
+  const sheetContent = projection.items.find(
+    (item) => item.projectionItemRef === 'item.vexstream.connection-sheet.content',
+  );
+  assert.equal(
+    sheetContent.semanticRef,
+    'element.vexstream-music.body.connection.menu.content',
+  );
+  assert.equal(sheetContent.parentProjectionItemRefOrNull, sheet.projectionItemRef);
+
+  const titleItem = projection.items.find(
+    (item) => item.semanticRef ===
+      'element.vexstream-music.body.connection.menu.content.title',
+  );
+  assert.equal(titleItem.parentProjectionItemRefOrNull, sheetContent.projectionItemRef);
+  const titleHint = first.board.presentation.items.find(
+    (entry) => entry.projectionItemRef === titleItem.projectionItemRef,
+  );
+  assert.equal(titleHint.typographyRef, 'headlineSmall');
+  assert.equal(titleHint.colorRef, 'onSurface');
+
+  const refreshNode = graph.nodes.find(
+    (node) => node.nodeRef === 'element.vexstream-music.body.connection.refresh',
+  );
+  const refreshItem = projection.items.find(
+    (item) => item.semanticRef === refreshNode.nodeRef,
+  );
+  assert.equal(
+    refreshNode.parentRefOrNull,
+    'element.vexstream-music.body.connection.menu',
+    'static Android registry currently parents the button directly to the sheet',
+  );
+  assert.equal(
+    refreshItem.parentProjectionItemRefOrNull,
+    sheetContent.projectionItemRef,
+    'VexBoard layout parent follows the rendered custom content column',
+  );
+
+  const contentNode = graph.nodes.find(
+    (node) => node.nodeRef === 'element.vexstream-music.body.connection.menu.content',
+  );
+  assert.equal(contentNode.kind, 'CONTAINER');
+  assert.equal(
+    graph.nodes.find(
+      (node) => node.nodeRef ===
+        'element.vexstream-music.body.connection.menu.content.library-download-status',
+    ).parentRefOrNull,
+    contentNode.nodeRef,
+  );
 
   const openRoute = first.board.presentation.relationships.find(
     (route) => route.relationshipRef === 'rel.vexlife-android.vexstream.manage-connection.open',
@@ -320,6 +375,15 @@ test('same VexBoard design resolves into a second viewport without reminting Scr
   assert.ok(compactFrame.bounds.height < referenceFrame.bounds.height);
   assert.equal(compact.board.presentation.referenceViewport.widthDp, 360);
   assert.equal(compact.board.presentation.referenceViewport.heightDp, 720);
+  const referenceSheet = reference.board.projection.items.find(
+    (item) => item.projectionItemRef === 'item.vexstream.connection-sheet',
+  );
+  const compactSheet = compact.board.projection.items.find(
+    (item) => item.projectionItemRef === 'item.vexstream.connection-sheet',
+  );
+  assert.ok(compactSheet.bounds.width < referenceSheet.bounds.width);
+  assert.ok(compactSheet.bounds.height > referenceSheet.bounds.height,
+    'large-text compact viewport should make content-driven sheet taller in Board units');
 
   const referenceScreens = reference.board.projection.items.filter(
     (item) => item.semanticRef === 'screen.vexstream-music',
