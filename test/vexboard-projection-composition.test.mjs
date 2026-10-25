@@ -321,9 +321,9 @@ test('local layout and boundary vocabularies remain intentionally bounded', () =
 
 test('width-bounded ROW wrapping continues downward locally without changing BoardGraph truth', () => {
   const children = Array.from({ length: 5 }, (_, index) => ({
-    nodeRef: \`node.width.child-\${index + 1}\`,
+    nodeRef: `node.width.child-${index + 1}`,
     kind: 'PROCESS',
-    label: \`Step \${index + 1}\`,
+    label: `Step ${index + 1}`,
     parentRefOrNull: 'node.width.container',
     detailBoardRefOrNull: null,
     sourceRefs: [],
@@ -357,7 +357,7 @@ test('width-bounded ROW wrapping continues downward locally without changing Boa
       visible: true,
       locked: false,
     }, ...children.map((child, index) => ({
-      projectionItemRef: \`item.width.child-\${index + 1}\`,
+      projectionItemRef: `item.width.child-${index + 1}`,
       semanticRef: child.nodeRef,
       shapeKind: 'RECTANGLE',
       bounds: { x: 200, y: 160, width: 90, height: 40 },
@@ -368,7 +368,7 @@ test('width-bounded ROW wrapping continues downward locally without changing Boa
     }))],
     sourceRefs: [],
   }, graph);
-  const ordered = children.map((_, index) => \`item.width.child-\${index + 1}\`);
+  const ordered = children.map((_, index) => `item.width.child-${index + 1}`);
   const composition = compositionFor(graph, projection, {
     compositionRef: 'composition.vexboard.width-bound.wrap.001',
     padding: 20,
@@ -395,9 +395,9 @@ test('width-bounded ROW wrapping continues downward locally without changing Boa
 
 test('SERPENTINE width continuation alternates local row direction without changing structural order', () => {
   const children = Array.from({ length: 5 }, (_, index) => ({
-    nodeRef: \`node.serp.child-\${index + 1}\`,
+    nodeRef: `node.serp.child-${index + 1}`,
     kind: 'PROCESS',
-    label: \`Step \${index + 1}\`,
+    label: `Step ${index + 1}`,
     parentRefOrNull: 'node.serp.container',
     detailBoardRefOrNull: null,
     sourceRefs: [],
@@ -431,7 +431,7 @@ test('SERPENTINE width continuation alternates local row direction without chang
       visible: true,
       locked: false,
     }, ...children.map((child, index) => ({
-      projectionItemRef: \`item.serp.child-\${index + 1}\`,
+      projectionItemRef: `item.serp.child-${index + 1}`,
       semanticRef: child.nodeRef,
       shapeKind: 'RECTANGLE',
       bounds: { x: 200, y: 160, width: 90, height: 40 },
@@ -442,7 +442,7 @@ test('SERPENTINE width continuation alternates local row direction without chang
     }))],
     sourceRefs: [],
   }, graph);
-  const ordered = children.map((_, index) => \`item.serp.child-\${index + 1}\`);
+  const ordered = children.map((_, index) => `item.serp.child-${index + 1}`);
   const composition = compositionFor(graph, projection, {
     compositionRef: 'composition.vexboard.width-bound.serpentine.001',
     padding: 20,
