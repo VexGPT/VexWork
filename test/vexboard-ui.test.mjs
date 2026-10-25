@@ -164,6 +164,10 @@ test('VexLife Android POC is projected at source-load time and styled without ch
   assert.match(page, /Design edit rejected/);
   assert.match(page, /AndroidPresentation\.androidReferenceCssVariables\(current\.design,current\.presentation\)/);
   assert.match(page, /viewportEl\.style\.setProperty\(name,String\(value\)\)/);
+  assert.match(page, /Android Adoption/);
+  assert.match(page, /current\.adoptionCoverage\.screenRealizationModes/);
+  assert.match(page, /current\.adoptionCoverage\.identityExceptions/);
+  assert.match(page, /DERIVED_CUSTOM_PRESENTATION|exception\.origin/);
   assert.match(page, /Screen Design/);
   assert.match(page, /function designMetricText\(/);
   assert.match(page, /function designAxisText\(/);
