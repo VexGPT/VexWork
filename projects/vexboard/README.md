@@ -4204,6 +4204,136 @@ expected evidence slot
 VexBoard presentation may later render placeholders, galleries and expected-vs-observed comparisons. That
 UI should be added only after the current single-file browser surface is decomposed enough that evidence
 presentation does not enlarge `vexboard/index.html` into another semantic owner.
+### Design-authoritative construction — relationships and constraints, not copied pixels
+
+The living Blueprint should carry enough UX / presentation design meaning that a target adapter **realizes the accepted design instead of redesigning it independently**.
+
+Current VexLife-Android already proves part of this law:
+
+~~~text
+ScreenBlueprint
+  declares one structural tree
+-> VexElementTree / Vex Compose
+  renders that same structure
+-> Compose
+  remains the Android rendering engine
+~~~
+
+The Android repository explicitly avoids a second handwritten Compose reconstruction for ordinary Screen Blueprint structure. Its current Elements foundation also preserves semantic identity through `VexModifier` / `VexComposeScope`.
+
+The remaining convergence pressure is that important design relationships can still live only in target-local Compose calls, for example:
+
+~~~text
+padding(...)
+Arrangement.spacedBy(...)
+Arrangement.SpaceBetween
+Alignment.*
+fillMaxWidth()
+weight(...)
+minimum / maximum sizing
+aspect ratio / content fit
+~~~
+
+VexBoard already owns complementary projection/composition behavior:
+
+~~~text
+ROW / COLUMN / STACK / FREE
+ordered children
+container padding
+child gap
+container bounds
+WRAP / SERPENTINE boundary continuation
+anchors / locks
+projection layout intent
+~~~
+
+The patient zero should therefore pressure the smallest **portable presentation-constraint seam** between semantic Blueprint and target construction. This is conceptual architecture until the real consumer proves the exact wire shape; do not mint a universal layout schema from prose.
+
+The design source should prefer relationships such as:
+
+~~~text
+semantic structure
+  parent / child
+  order
+  reusable component / instance
+
+container composition
+  row / column / stack / scroll / overlay where earned
+
+spacing
+  outer inset / container padding
+  child gap
+  label / connector / content padding
+  preferably through stable design metrics/tokens where reuse exists
+
+alignment / distribution
+  main-axis arrangement
+  cross-axis alignment
+
+child sizing
+  content / wrap
+  fill available axis
+  flexible weight / proportion
+  minimum / maximum bounds
+  aspect ratio where meaningful
+
+adaptive behavior
+  size-class / viewport-dependent variant only when a real target proves the need
+
+style intent
+  semantic surface / action / typography role
+  not hard-coded target color or widget identity
+~~~
+
+A VexBoard canvas may still resolve those relationships into exact x/y/width/height so the design is visible and manipulable. Those solved bounds are ordinarily **projection output**, not the portable construction contract.
+
+~~~text
+CANVAS_XY != PORTABLE_LAYOUT_INTENT
+CANVAS_PIXEL_DISTANCE != TARGET_NATIVE_PIXEL_DISTANCE
+PUBLISHED_UI_BLUEPRINT != SCREENSHOT
+TARGET_ADAPTER != TARGET_DESIGNER
+TARGET_RENDERER != BLUEPRINT_OWNER
+
+PORTABLE_CONSTRAINTS
+-> target mapping
+-> Android density-independent / Compose realization
+-> native measured pixels
+
+ABSOLUTE_BOUNDS
+-> useful projection / preview geometry
+-> target-specific only when explicitly owned as such
+~~~
+
+For the current VexStream Android connection card, source already exposes a concrete proving slice:
+
+~~~text
+ConnectionSection
+-> full-width raised surface
+-> outer screen-relative inset
+-> vertical child composition
+-> inner container padding
+-> repeated child spacing
+-> heading / supporting-text hierarchy
+-> Find VexStream action with content-sized button presentation
+~~~
+
+Today parts of that meaning are split between the Screen Blueprint and Compose realization. The living-Blueprint pilot should reverse-adopt the current accepted appearance/relationships, then determine the smallest design contract that can become the shared source for future construction without forcing Android-specific `dp`, CSS pixels, iOS points, or canvas coordinates to become universal semantic identity.
+
+For an accepted future Blueprint-authored feature:
+
+~~~text
+product / behavior meaning
++ published VexBoard UX / presentation Blueprint
+-> target construction adapter
+-> VexLife Android Screen Blueprint / Elements
+-> Compose realization
+-> expected native render
+-> observed evidence
+~~~
+
+For an existing feature such as VexStream, current source remains authoritative while VexBoard reverse-adopts it. A future authority transition from source-projected design to published design-owned presentation must be explicit; visual similarity alone cannot silently transfer ownership.
+
+
 ### Living-source comparison and evidence freshness
 
 For a source-backed feature, evidence currentness should be derived from the **relevant semantic / construction / render dependency**, not from repository recency alone.
