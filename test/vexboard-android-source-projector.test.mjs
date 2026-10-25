@@ -47,8 +47,8 @@ test('VexLife Android POC snapshot projects deterministically without source eff
     'CUSTOM_NATIVE_REALIZATION',
   );
   assert.equal(first.board.adoptionCoverage.findings.length, 5);
-  assert.equal(first.board.adoptionReadiness.status, 'HELD');
-  assert.equal(first.board.adoptionReadiness.blockingFindingRefs.length, 2);
+  assert.equal(first.board.adoptionReadiness.status, 'CLEAR');
+  assert.deepEqual(first.board.adoptionReadiness.blockingFindingRefs, []);
   assert.deepEqual(
     summarizeAndroidPocAdoptionReadiness(snapshot.adoptionCoverage),
     first.board.adoptionReadiness,
@@ -58,8 +58,13 @@ test('VexLife Android POC snapshot projects deterministically without source eff
   );
   assert.equal(homeCopyFinding.ownerSemanticRef, 'element.home.body.vexstream');
   assert.equal(homeCopyFinding.kind, 'RAW_COMPOSE_NO_SEMANTIC_REF');
-  assert.equal(homeCopyFinding.blockingForPocAuthority, true);
-  assert.equal(homeCopyFinding.scopeStatus, 'IN_POC');
+  assert.equal(homeCopyFinding.blockingForPocAuthority, false);
+  assert.equal(homeCopyFinding.scopeStatus, 'IN_POC_MAPPED_TARGET_DEBT');
+  assert.deepEqual(homeCopyFinding.mappedByDesignSemanticRefs, [
+    'element.home.body.vexstream.title',
+    'element.home.body.vexstream.status',
+    'element.home.body.vexstream.body',
+  ]);
 
   const showQueueFinding = first.board.adoptionCoverage.findings.find(
     (entry) => entry.findingRef === 'finding.android.vexstream.show-queue-parent-drift',
@@ -120,6 +125,44 @@ test('VexLife Android POC snapshot projects deterministically without source eff
       'state-specific phone frames must remain projections of the same semantic Screen',
     );
   }
+
+  for (const proposedRef of [
+    'element.home.body.vexstream.title',
+    'element.home.body.vexstream.status',
+    'element.home.body.vexstream.body',
+    'element.home.body.systems.title',
+  ]) {
+    assert.ok(graph.nodes.some((node) => node.nodeRef === proposedRef));
+    assert.equal(projection.items.filter((item) => item.semanticRef === proposedRef).length, 1);
+  }
+
+  const homeVexStreamSection = projection.items.find(
+    (item) => item.projectionItemRef === 'item.home.vexstream-section',
+  );
+  const homeSystemsSection = projection.items.find(
+    (item) => item.projectionItemRef === 'item.home.systems-section',
+  );
+  assert.ok(Math.abs(homeVexStreamSection.bounds.height - 187.2) < 0.001);
+  assert.ok(Math.abs(homeSystemsSection.bounds.height - 158.4) < 0.001);
+
+  const homeVexStreamTitle = projection.items.find(
+    (item) => item.semanticRef === 'element.home.body.vexstream.title',
+  );
+  const homeSystemsTitle = projection.items.find(
+    (item) => item.semanticRef === 'element.home.body.systems.title',
+  );
+  assert.equal(
+    first.board.presentation.items.find(
+      (entry) => entry.projectionItemRef === homeVexStreamTitle.projectionItemRef,
+    ).typographyRef,
+    'headlineSmall',
+  );
+  assert.equal(
+    first.board.presentation.items.find(
+      (entry) => entry.projectionItemRef === homeSystemsTitle.projectionItemRef,
+    ).typographyRef,
+    'headlineSmall',
+  );
 
   const homeOpenHint = first.board.presentation.items.find(
     (entry) => entry.projectionItemRef === 'item.home.vexstream-open',
@@ -308,6 +351,7 @@ test('design-authored child order moves stable occurrences without reminting the
     (rule) => rule.layoutRef === 'layout.vexlife.home.systems',
   );
   systems.childSemanticRefs = [
+    'element.home.body.systems.title',
     'element.home.body.systems.vex-maps',
     'element.home.body.systems.family-conversation',
     'element.home.body.systems.talk-to-vex',
