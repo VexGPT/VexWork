@@ -759,7 +759,8 @@ The current experience lane does **not** treat this as a blocker. It is retained
 work.vexstream.mobile-library.pairing-continuity-after-uninstall-reinstall
 state = CAPTURED
 priority = NORMAL
-effectDisposition = EFFECTS_HELD
+authorityDisposition = AUTHORIZED_BOUNDED
+effectDisposition = NO_EFFECTS
 ```
 
 Do not reopen PR #180 or weaken current pairing authority to solve that future question.
