@@ -11,6 +11,15 @@ export const SCREEN_DESIGN_SIZE_MODES = Object.freeze([
   'CONTENT_REFERENCE',
 ]);
 
+export const SCREEN_DESIGN_LAYOUT_MODES = Object.freeze([
+  'FREE',
+  'ROW',
+  'COLUMN',
+  'STACK',
+  'SCROLL_ROW',
+  'SCROLL_COLUMN',
+]);
+
 function assert(condition, message) {
   if (!condition) throw new TypeError(message);
 }
@@ -168,6 +177,9 @@ export function normalizeScreenDesign(input) {
   positive(input.referenceViewport.widthDp, 'referenceViewport.widthDp');
   positive(input.referenceViewport.heightDp, 'referenceViewport.heightDp');
   assert(Array.isArray(input.constraints), 'screen design constraints must be an array');
+  if (input.layoutRules !== undefined) {
+    assert(Array.isArray(input.layoutRules), 'screen design layoutRules must be an array');
+  }
   if (input.sourceRefs !== undefined) {
     assert(Array.isArray(input.sourceRefs), 'screen design sourceRefs must be an array');
     for (const [index, sourceRef] of input.sourceRefs.entries()) {
@@ -215,6 +227,24 @@ export function normalizeScreenDesign(input) {
     }
     if (constraint.parentOccurrenceRefOrNull === constraint.occurrenceRef) {
       throw new TypeError(`screen design occurrence ${constraint.occurrenceRef} cannot parent itself`);
+    }
+  }
+
+  if (input.layoutRules !== undefined) {
+    const layoutRefs = new Set();
+    for (const [index, rule] of input.layoutRules.entries()) {
+      const label = `screen design layoutRules[${index}]`;
+      assert(typeof rule?.layoutRef === 'string' && rule.layoutRef, `${label}.layoutRef required`);
+      assert(!layoutRefs.has(rule.layoutRef), `duplicate screen design layoutRef ${rule.layoutRef}`);
+      layoutRefs.add(rule.layoutRef);
+      assert(typeof rule.semanticRef === 'string' && rule.semanticRef, `${label}.semanticRef required`);
+      assert(SCREEN_DESIGN_LAYOUT_MODES.includes(rule.mode), `${label}.mode unsupported`);
+      if (rule.gapMetricRefOrNull !== null) {
+        assert(typeof rule.gapMetricRefOrNull === 'string' && rule.gapMetricRefOrNull,
+          `${label}.gapMetricRefOrNull invalid`);
+        assert(input.metrics && Object.hasOwn(input.metrics, rule.gapMetricRefOrNull),
+          `${label}.gapMetricRefOrNull missing metric ${rule.gapMetricRefOrNull}`);
+      }
     }
   }
 
