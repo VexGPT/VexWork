@@ -193,6 +193,12 @@
       "minDp": 2,
       "maxDp": 2,
       "referenceDp": 2
+    },
+    "emptyMessagePadding": {
+      "preferredPercent": 0.04854368932038835,
+      "minDp": 20,
+      "maxDp": 20,
+      "referenceDp": 20
     }
   },
   "constraints": [
