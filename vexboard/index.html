@@ -389,6 +389,21 @@ function reducedJourneySnapshotText(){
     return `${node(entry.semanticRef)?.label||entry.semanticRef} · ${entry.navigationKind}`;
   }).join('\n');
 }
+function designMetricText(metric){
+  if(!metric)return'';
+  const preferred=Number(metric.preferredPercent)*100;
+  return `${preferred.toFixed(2)}% · ${metric.minDp}–${metric.maxDp}dp · ref ${metric.referenceDp}dp`;
+}
+function designAxisText(axis){
+  if(!axis)return'—';
+  const parts=[axis.size?.mode||''];
+  if(axis.size?.fraction!==undefined)parts.push(`${(axis.size.fraction*100).toFixed(1)}%`);
+  if(axis.size?.referenceDp!==undefined)parts.push(`${axis.size.referenceDp}dp`);
+  parts.push(`bias ${Number(axis.bias??0).toFixed(2)}`);
+  if(axis.startMargin)parts.push(`start ${designMetricText(axis.startMargin)}`);
+  if(axis.endMargin)parts.push(`end ${designMetricText(axis.endMargin)}`);
+  return parts.filter(Boolean).join(' · ');
+}
 
 function inspector(side){
   side.replaceChildren();const i=selected?item(selected):null,n=i?node(i.semanticRef):null;
@@ -423,6 +438,45 @@ function inspector(side){
     }
   }
   side.append(g);
+  if(current.design){
+    const dg=el('div','group');dg.append(el('h3','','Screen Design'));
+    const dkv=el('div','kv');
+    const designRows=[
+      ['authority',current.design.authorityState],
+      ['designRef',current.design.designRef],
+      ['profile',current.design.referenceViewport.profileRef],
+      ['viewport',`${current.design.referenceViewport.widthDp}×${current.design.referenceViewport.heightDp}dp`],
+    ];
+    for(const [k,v] of designRows){dkv.append(el('div','k',k),el('div','v',String(v)))}dg.append(dkv);
+
+    const constraints=current.design.constraints.filter(value=>value.semanticRef===n.nodeRef);
+    if(constraints.length){
+      dg.append(el('div','k','Constraints'));
+      const list=el('div','ref-list');
+      for(const constraint of constraints){
+        const row=el('div','ref-row');
+        row.append(el('div','v',`${constraint.occurrenceRef}\nH: ${designAxisText(constraint.horizontal)}\nV: ${designAxisText(constraint.vertical)}`));
+        list.append(row);
+      }
+      dg.append(list);
+    }
+
+    const layoutRules=(current.design.layoutRules||[]).filter(value=>value.semanticRef===n.nodeRef);
+    if(layoutRules.length){
+      dg.append(el('div','k','Layout rules'));
+      const list=el('div','ref-list');
+      for(const rule of layoutRules){
+        const metric=rule.gapMetricRefOrNull?current.design.metrics?.[rule.gapMetricRefOrNull]:null;
+        list.append(el('div','ref-row',`${rule.layoutRef}\n${rule.mode}${metric?` · gap ${designMetricText(metric)}`:''}`));
+      }
+      dg.append(list);
+    }
+
+    if(!constraints.length&&!layoutRules.length){
+      dg.append(el('div','v','No direct Screen-design constraint on this semantic identity; inspect its owning Screen/container or construction/source lens.'));
+    }
+    side.append(dg);
+  }
   const fg=el('div','group');fg.append(el('h3','','Pinned relational focus'));
   if(!pinnedSemanticRefs.size)fg.append(el('div','v','Right-click an object or use Pin identity to hold stable refs in diagnostic focus.'));
   else{
