@@ -6438,9 +6438,7 @@
           "updatedAt": "2026-10-25T06:08:00.000Z",
           "transitionHistory": [
             {
-              "schemaVersion": "vexwork.work-transition/v1",
               "transitionRef": "transition.vexboard.vexstream-screenshot-pilot.running.living-blueprint-evidence",
-              "workRef": "work.vexboard.vexstream-screenshot-pilot",
               "priorState": "WAITING_HUMAN",
               "nextState": "RUNNING",
               "reason": "Victor supplied the real VexStream phone-to-desktop screenshot set, including the remembered-phone conditional entry, satisfying the human evidence predicate. The patient zero is now active and explicitly carries the accepted VexLife Blueprint Source-of-Truth construction/proof lineage so the work can prove a living semantic -> target construction -> expected/observed comparison slice without transferring product ownership or reactivating the paused VLBSoT Project.",
@@ -6480,9 +6478,9 @@
           "laneRef": "lane.work.active",
           "label": "Active",
           "workRefs": [
+            "work.vexboard.vexstream-screenshot-pilot",
             "work.vexboard.fractal-semantic-composition-spatial-layout",
-            "work.vexboard.source-projectors",
-            "work.vexboard.vexstream-screenshot-pilot"
+            "work.vexboard.source-projectors"
           ]
         },
         {
