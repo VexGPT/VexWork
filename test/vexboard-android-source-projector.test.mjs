@@ -191,14 +191,6 @@ test('VexBoard Screen design changes resolved geometry while the Android adoptio
     maxDp: 24,
     referenceDp: 24,
   };
-  for (const occurrenceRef of [
-    'design-occurrence.home.inner-content',
-    'design-occurrence.vexstream.inner-content',
-  ]) {
-    const constraint = changedDesign.constraints.find((entry) => entry.occurrenceRef === occurrenceRef);
-    constraint.horizontal.startMargin = structuredClone(changedDesign.metrics.screenPaddingHorizontal);
-    constraint.horizontal.endMargin = structuredClone(changedDesign.metrics.screenPaddingHorizontal);
-  }
 
   const changed = projectVexLifeAndroidPocSnapshot(
     snapshot,
