@@ -124,15 +124,20 @@ async function loadCatalogBoard(boardRef){
   const sources=await loadSourceCatalogs();
   const resolution=SourceResolver.resolveBoardSource(boardRef,sources.map(source=>source.catalog));
   if(!resolution)throw new Error(`unknown source-owned board ${boardRef}`);
-  const source=sources.find(candidate=>candidate.catalog.catalogRef===resolution.catalogRef);
-  if(!source)throw new Error(`source catalog unavailable ${resolution.catalogRef}`);
-  const boardUrl=new URL(resolution.location,source.catalogUrl);
+  const catalogSource=sources.find(candidate=>candidate.catalog.catalogRef===resolution.catalogRef);
+  if(!catalogSource)throw new Error(`source catalog unavailable ${resolution.catalogRef}`);
+  const boardUrl=new URL(resolution.location,catalogSource.catalogUrl);
   const response=await fetch(boardUrl,{cache:'no-store'});
   if(!response.ok)throw new Error(`${boardRef} HTTP ${response.status}`);
-  const source=await response.json();
-  const projected=source?.schemaVersion===AndroidProjector.VEXLIFE_ANDROID_POC_SNAPSHOT_SCHEMA
-    ?AndroidProjector.projectVexLifeAndroidPocSnapshot(source,boardRef).board
-    :source;
+  const payload=await response.json();
+  let projected=payload;
+  if(payload?.schemaVersion===AndroidProjector.VEXLIFE_ANDROID_POC_SNAPSHOT_SCHEMA){
+    const designUrl=new URL(payload.designLocation,boardUrl);
+    const designResponse=await fetch(designUrl,{cache:'no-store'});
+    if(!designResponse.ok)throw new Error(`${payload.designRef} HTTP ${designResponse.status}`);
+    const design=ScreenDesign.normalizeScreenDesign(await designResponse.json());
+    projected=AndroidProjector.projectVexLifeAndroidPocSnapshot(payload,boardRef,design).board;
+  }
   const draft=Board.normalizeDraft(projected);
   if(draft.draftRef!==boardRef)throw new Error(`board source identity mismatch ${boardRef}`);
   return draft;
