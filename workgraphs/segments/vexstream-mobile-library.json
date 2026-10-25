@@ -1378,20 +1378,6 @@
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vexstream.mobile-library.pairing-continuity-after-uninstall-reinstall.captured-20261025",
-      "workRef": "work.vexstream.mobile-library.pairing-continuity-after-uninstall-reinstall",
-      "priorState": "UNFORMED",
-      "nextState": "CAPTURED",
-      "reason": "Victor observed that uninstall/reinstall does not reconnect automatically, accepted that this is non-blocking for the current experience lane, and asked to return it to TODO/backlog for later. Capture it separately because uninstall intentionally destroys current app-private SharedPreferences + Android Keystore identity, unlike the now-proven ordinary build/proof continuity path.",
-      "actorRef": "actor.local-vex-operations.vexstream-mobile-library",
-      "sourceRefs": [
-        "work.vexstream.mobile-library.pairing-reconnect-build-continuity",
-        "human.lived-feedback.vexstream.uninstall-reinstall-reconnect-not-preserved.20261025"
-      ],
-      "createdAt": "2026-10-25T09:10:00.000Z"
-    },
-    {
-      "schemaVersion": "vexwork.work-transition/v1",
       "transitionRef": "transition.vexstream.mobile-library.sort-filter.running.recently-added-feedback-20261025a",
       "workRef": "work.vexstream.mobile-library.sort-filter-controls",
       "priorState": "WAITING_HUMAN",
