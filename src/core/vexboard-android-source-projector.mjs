@@ -6,6 +6,7 @@ import {
   screenDesignComponentAssignment,
   screenDesignLayoutRule,
   screenDesignViewportProfile,
+  screenDesignVisualDimension,
   resolveBoundedResponsiveMetric,
   resolveScreenDesignAnchorBox,
   resolveScreenDesignConstraintBox,
@@ -127,8 +128,15 @@ function projectionItem(projectionItemRef, semanticRef, shapeKind, bounds, layer
   };
 }
 
-function presentationHint(projectionItemRef, role, variant = null, styleRef = null) {
-  return { projectionItemRef, role, variant, styleRef };
+function presentationHint(
+  projectionItemRef,
+  role,
+  variant = null,
+  styleRef = null,
+  typographyRef = null,
+  colorRef = null,
+) {
+  return { projectionItemRef, role, variant, styleRef, typographyRef, colorRef };
 }
 
 function componentPresentationHint(design, projectionItemRef, semanticRef, { selected = false } = {}) {
@@ -141,6 +149,8 @@ function componentPresentationHint(design, projectionItemRef, semanticRef, { sel
     : null;
   const templateRoles = {
     'component.surface': 'SURFACE',
+    'component.column': 'CONTENT_COLUMN',
+    'component.text': 'TEXT',
     'component.button': 'BUTTON',
     'component.icon-button': 'ICON_BUTTON',
     'component.tab': 'TAB',
@@ -153,6 +163,10 @@ function componentPresentationHint(design, projectionItemRef, semanticRef, { sel
   let variant = null;
   if (assignment.templateRef === 'component.icon-button' || assignment.templateRef === 'component.fab') {
     variant = iconVariant;
+  } else if (assignment.templateRef === 'component.text') {
+    variant = assignment.typographyRefOrNull
+      ? String(assignment.typographyRefOrNull).replace(/[A-Z]/g, (match) => '_' + match).toUpperCase()
+      : null;
   } else if (assignment.templateRef === 'component.tab') {
     variant = selected ? 'SELECTED' : 'DEFAULT';
   } else if (styleRef === 'style.surface.raised') {
@@ -167,7 +181,14 @@ function componentPresentationHint(design, projectionItemRef, semanticRef, { sel
     variant = 'NAVIGATION';
   }
 
-  return presentationHint(projectionItemRef, role, variant, styleRef);
+  return presentationHint(
+    projectionItemRef,
+    role,
+    variant,
+    styleRef,
+    assignment.typographyRefOrNull ?? null,
+    assignment.colorRefOrNull ?? null,
+  );
 }
 
 function stripFingerprint(value) {
@@ -460,6 +481,22 @@ function experienceBoard(snapshot, design, viewportProfile) {
 
   const sheet = snapshot.vexStream.connectionSheet;
   nodes.push(node(sheet.ref, 'CONTAINER', sheet.label, snapshot.vexStream.screenRef, sheet.sourceRefs));
+  nodes.push(node(
+    sheet.content.ref,
+    'CONTAINER',
+    'Connection sheet content',
+    sheet.ref,
+    sheet.content.sourceRefs,
+  ));
+  for (const textItem of sheet.content.texts) {
+    nodes.push(node(
+      textItem.ref,
+      'ANNOTATION',
+      textItem.label,
+      sheet.content.ref,
+      sheet.content.sourceRefs,
+    ));
+  }
   for (const action of sheet.actions) {
     nodes.push(node(action.ref, 'CONTROL', action.label, sheet.ref, action.sourceRefs));
   }
@@ -782,29 +819,133 @@ function experienceBoard(snapshot, design, viewportProfile) {
     fabY += scaled(fabSizeDp + fabGapDp);
   }
 
-  // Show the modal as an overlay occurrence of the same Screen, not a navigation destination.
-  const sheetBounds = rect(loadedFrame.x + 8, loadedFrame.y + 318, loadedFrame.width - 16, loadedFrame.height - 326);
-  items.push(projectionItem('item.vexstream.connection-sheet', sheet.ref, 'RECTANGLE', sheetBounds, layer + 50, loadedItem));
-  hints.push(componentPresentationHint(design, 'item.vexstream.connection-sheet', sheet.ref));
-  let sheetY = sheetBounds.y + 46;
-  const sheetActions = orderedDesignChildren(
+  // Connection sheet: content-driven VexBoard design, bottom-anchored target overlay.
+  const sheetLayout = screenDesignLayoutRule(design, 'layout.vexstream.connection-sheet');
+  const sheetAnchor = screenDesignAnchorRule(design, 'anchor.vexstream.connection-sheet');
+  const sheetMaxWidthDp = screenDesignVisualDimension(design, 'bottomSheetMaxWidthDp');
+  const handleHeightDp = screenDesignVisualDimension(design, 'bottomSheetDragHandleHeightDp');
+  const handleVerticalPaddingDp =
+    screenDesignVisualDimension(design, 'bottomSheetDragHandleVerticalPaddingDp');
+  const sheetWidthDp = Math.min(viewportProfile.widthDp, sheetMaxWidthDp);
+  const sheetHorizontalPaddingDp = resolveBoundedResponsiveMetric(
+    design.metrics.connectionSheetPaddingHorizontal,
+    viewportProfile.widthDp,
+  );
+  const sheetBottomPaddingDp = resolveBoundedResponsiveMetric(
+    design.metrics.connectionSheetPaddingBottom,
+    viewportProfile.heightDp,
+  );
+  const sheetGapDp = resolveBoundedResponsiveMetric(
+    design.metrics[sheetLayout.gapMetricRefOrNull],
+    viewportProfile.heightDp,
+  );
+  const buttonHeightDp = resolveBoundedResponsiveMetric(
+    design.metrics.materialButtonMinHeight,
+    viewportProfile.heightDp,
+  );
+  const fontScale = viewportProfile.fontScale ?? 1;
+  const sourceChildren = [
+    ...sheet.content.texts.map((entry) => ({ ...entry, kind: 'TEXT' })),
+    ...sheet.actions.map((entry) => ({ ...entry, kind: 'ACTION' })),
+  ];
+  const sheetChildren = orderedDesignChildren(
     design,
     'layout.vexstream.connection-sheet',
-    sheet.actions,
-    (action) => action.ref,
+    sourceChildren,
+    (entry) => entry.ref,
   );
-  sheetActions.forEach((action, index) => {
-    const itemRef = `item.vexstream.connection-sheet.action.${semanticLeaf(action.ref)}`;
-    items.push(projectionItem(itemRef, action.ref, 'RECTANGLE', rect(
-      sheetBounds.x + vexMetrics.connectionSheetPaddingHorizontal,
-      sheetY,
-      sheetBounds.width - (vexMetrics.connectionSheetPaddingHorizontal * 2),
-      vexMetrics.buttonMinHeight,
-    ), layer + 60 + index, 'item.vexstream.connection-sheet'));
-    hints.push(componentPresentationHint(design, itemRef, action.ref));
-    sheetY += vexMetrics.buttonMinHeight + vexMetrics.gapVertical;
+  const childHeightDp = (entry) => {
+    if (entry.kind === 'ACTION') return buttonHeightDp;
+    const assignment = screenDesignComponentAssignment(design, entry.ref);
+    const typographyRef = assignment.typographyRefOrNull;
+    assert(typographyRef, `sheet text typography missing: ${entry.ref}`);
+    const typography = design.visualTokens.typography[typographyRef];
+    return Number(typography.lineHeightSp ?? typography.fontSizeSp) * fontScale;
+  };
+  const childHeightsDp = sheetChildren.map(childHeightDp);
+  const dragHandleAreaDp = handleHeightDp + (handleVerticalPaddingDp * 2);
+  const sheetContentHeightDp =
+    childHeightsDp.reduce((sum, value) => sum + value, 0) +
+    (Math.max(0, sheetChildren.length - 1) * sheetGapDp) +
+    sheetBottomPaddingDp;
+  const sheetHeightDp = dragHandleAreaDp + sheetContentHeightDp;
+  const sheetDp = resolveScreenDesignAnchorBox({
+    designInput: design,
+    anchorRuleInput: sheetAnchor,
+    parentBoundsDp: {
+      x: 0,
+      y: 0,
+      width: viewportProfile.widthDp,
+      height: viewportProfile.heightDp,
+    },
+    widthDp: sheetWidthDp,
+    heightDp: sheetHeightDp,
   });
-  layer += 80;
+  const sheetBounds = rect(
+    loadedFrame.x + scaled(sheetDp.x),
+    loadedFrame.y + scaled(sheetDp.y),
+    scaled(sheetDp.width),
+    scaled(sheetDp.height),
+  );
+  items.push(projectionItem(
+    'item.vexstream.connection-sheet',
+    sheet.ref,
+    'RECTANGLE',
+    sheetBounds,
+    layer + 50,
+    loadedItem,
+  ));
+  hints.push(componentPresentationHint(
+    design,
+    'item.vexstream.connection-sheet',
+    sheet.ref,
+  ));
+
+  const sheetContentItemRef = 'item.vexstream.connection-sheet.content';
+  const sheetContentBounds = rect(
+    sheetBounds.x + scaled(sheetHorizontalPaddingDp),
+    sheetBounds.y + scaled(dragHandleAreaDp),
+    sheetBounds.width - (scaled(sheetHorizontalPaddingDp) * 2),
+    scaled(sheetContentHeightDp - sheetBottomPaddingDp),
+  );
+  items.push(projectionItem(
+    sheetContentItemRef,
+    sheet.content.ref,
+    'RECTANGLE',
+    sheetContentBounds,
+    layer + 51,
+    'item.vexstream.connection-sheet',
+  ));
+  hints.push(componentPresentationHint(
+    design,
+    sheetContentItemRef,
+    sheet.content.ref,
+  ));
+
+  let sheetY = sheetContentBounds.y;
+  sheetChildren.forEach((entry, index) => {
+    const isAction = entry.kind === 'ACTION';
+    const itemRef = isAction
+      ? `item.vexstream.connection-sheet.action.${semanticLeaf(entry.ref)}`
+      : `item.vexstream.connection-sheet.text.${semanticLeaf(entry.ref)}`;
+    const heightDp = childHeightsDp[index];
+    items.push(projectionItem(
+      itemRef,
+      entry.ref,
+      isAction ? 'RECTANGLE' : 'TEXT',
+      rect(
+        sheetContentBounds.x,
+        sheetY,
+        sheetContentBounds.width,
+        scaled(heightDp),
+      ),
+      layer + 60 + index,
+      sheetContentItemRef,
+    ));
+    hints.push(componentPresentationHint(design, itemRef, entry.ref));
+    sheetY += scaled(heightDp + sheetGapDp);
+  });
+  layer += 90;
 
   items.push(projectionItem('item.vexstream.depth-portal', portalRef, 'RECTANGLE', rect(460, 1230, 230, 80), layer++, productItemRef));
   hints.push(presentationHint('item.vexstream.depth-portal', 'DEPTH_PORTAL'));
