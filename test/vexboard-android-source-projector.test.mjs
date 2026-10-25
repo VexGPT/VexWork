@@ -38,6 +38,24 @@ test('VexLife Android POC snapshot projects deterministically without source eff
   assert.equal(graph.nodes.some((node) => node.nodeRef === 'state.vexstream.library.empty'), true);
   assert.equal(graph.nodes.some((node) => node.nodeRef === 'state.vexstream.library.loaded'), true);
 
+  const screenOccurrences = projection.items.filter(
+    (item) => item.semanticRef === 'screen.vexstream-music',
+  );
+  assert.equal(screenOccurrences.length, 4,
+    'one VexStream Screen identity should have one journey anchor plus three state-specific surface occurrences');
+
+  for (const frameRef of [
+    'item.vexstream.state.loading',
+    'item.vexstream.state.empty',
+    'item.vexstream.state.loaded',
+  ]) {
+    assert.equal(
+      projection.items.find((item) => item.projectionItemRef === frameRef).semanticRef,
+      'screen.vexstream-music',
+      'state-specific phone frames must remain projections of the same semantic Screen',
+    );
+  }
+
   const manageOccurrences = projection.items.filter(
     (item) => item.semanticRef === 'element.vexstream-music.body.connection.manage',
   );
@@ -84,6 +102,14 @@ test('VexLife Android POC snapshot projects deterministically without source eff
       && relationship.toRef.startsWith('state.vexstream.library.'),
   );
   assert.equal(stateEdges.length, 3);
+  for (const stateRef of [
+    'state.vexstream.library.loading',
+    'state.vexstream.library.empty',
+    'state.vexstream.library.loaded',
+  ]) {
+    assert.equal(projection.items.filter((item) => item.semanticRef === stateRef).length, 1,
+      'each condition should have one visible state coordinate beside its Screen occurrence');
+  }
   assert.equal(stateEdges.every((relationship) => relationship.kind === 'REFERENCE'), true,
     'state branches must not pretend to be Screen navigation');
 });
