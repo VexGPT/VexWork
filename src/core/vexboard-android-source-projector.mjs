@@ -97,6 +97,33 @@ function normalizeAdoptionCoverage(input) {
     );
     refs(entry.sourceRefs ?? [], `Android adoption identityExceptions[${index}].sourceRefs`);
   }
+
+  assert(Array.isArray(input.findings ?? []), 'Android adoption findings must be an array');
+  const findingRefs = new Set();
+  for (const [index, finding] of (input.findings ?? []).entries()) {
+    stableRef(finding?.findingRef, `Android adoption findings[${index}].findingRef`);
+    assert(!findingRefs.has(finding.findingRef),
+      `duplicate Android adoption finding ${finding.findingRef}`);
+    findingRefs.add(finding.findingRef);
+    stableRef(finding.ownerSemanticRef, `Android adoption findings[${index}].ownerSemanticRef`);
+    if (finding.subjectSemanticRefOrNull !== undefined && finding.subjectSemanticRefOrNull !== null) {
+      stableRef(
+        finding.subjectSemanticRefOrNull,
+        `Android adoption findings[${index}].subjectSemanticRefOrNull`,
+      );
+    }
+    assert(
+      [
+        'RAW_COMPOSE_NO_SEMANTIC_REF',
+        'REGISTRY_RENDER_STRUCTURE_DRIFT',
+        'TARGET_LOCAL_DESIGN_MEANING',
+        'EVIDENCE_PROVENANCE_GAP',
+      ].includes(finding.kind),
+      `Android adoption finding kind unsupported: ${finding.kind}`,
+    );
+    text(finding.summary, `Android adoption findings[${index}].summary`);
+    refs(finding.sourceRefs ?? [], `Android adoption findings[${index}].sourceRefs`);
+  }
   return structuredClone(input);
 }
 
