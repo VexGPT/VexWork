@@ -133,7 +133,13 @@ const CSS = `
 `;
 
 function safe(value) {
-  return String(value ?? '').trim().replaceAll('_', '-').replace(SAFE, '-').replace(/^-+|-+$/g, '').toLowerCase();
+  return String(value ?? '')
+    .trim()
+    .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+    .replaceAll('_', '-')
+    .replace(SAFE, '-')
+    .replace(/^-+|-+$/g, '')
+    .toLowerCase();
 }
 
 export function normalizeAndroidReferencePresentation(input) {
