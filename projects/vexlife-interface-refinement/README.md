@@ -25,7 +25,7 @@ Descend into VexLife ToCompletion only when the latest refinement version names 
 | Version | State | Meaning |
 |---|---|---|
 | **V0** | **PROVEN** | First human-lived Victor ↔ local Heretic conversation through VexLife. Connection/runtime is the stability anchor, not the surrounding placeholder UI. |
-| **V1** | **CURRENT / RUNNING** | Conversation ergonomics and ordinary re-entry: Enter sends, Shift+Enter creates a newline, and the interface can return to the canonical Vex conversation without a special proof URL. Current source candidate: VexLife PR #925. |
+| **V1** | **CURRENT / VERIFYING** | Conversation ergonomics and ordinary re-entry: Enter sends, Shift+Enter creates a newline, and the interface can return to the canonical Vex conversation without a special proof URL. Current source candidate: VexLife PR #925. |
 | **V2** | **NEXT / WAITING DEPENDENCY** | Progressive streamed model output with final-only durable Conversation commit. Requires the current Conversation-core candidate in VexLife PR #904 to release/land its owned paths. |
 | **Later** | **CAPTURED** | Refine Home, Terrain, nodes, menus and other interface neighborhoods from lived feedback. Current maps/screens are scaffolding, not a recovered final design. |
 
