@@ -198,6 +198,38 @@ current main / current Work truth
 -> only then complete the widget Work
 ```
 
+## Current correction — PR #179
+
+The two lived widget defects are now actively implemented together on Android PR #179:
+
+```text
+github.pull.vexlife-android.179
+head = 28ef2345492c9345eecbbe4a2a8d91c4f3ac60be
+tree = f0941d531f1348ceeac34f9332884de1506bce52
+
+work.android-widget-foundation.vexstream-playback-widget.state-refresh = RUNNING
+work.android-widget-foundation.vexstream-playback-widget.layout-usability = RUNNING
+```
+
+The correction keeps Playback/Queue/Media3 as the only current-truth owners. Widget refresh performs
+an immediate provider render followed by one bounded 250 ms canonical Media3 re-read, matching the
+Full Player's existing playing-state read cadence rather than introducing widget-owned State/cache.
+A widget Control refreshes all widget instances because playback truth is global.
+
+Lived geometry correction:
+
+```text
+transport touch target = 48dp
+transport glyph = 24sp
+explicit gap = 6dp
+artwork = 60dp
+metadata + transport = centered column
+widget min geometry = 280dp x 72dp
+```
+
+Exact-head SourceOwner proof and fresh Assurance are the next source gates. Album-art availability
+remains a separate upstream VexStream product defect rather than being hidden inside PR #179.
+
 ## What this Project does not own
 
 - VexStream catalog/media identity;
