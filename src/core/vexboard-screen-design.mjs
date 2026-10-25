@@ -103,6 +103,13 @@ export function screenDesignLayoutRule(designInput, layoutRef) {
   return Object.freeze(structuredClone(rule));
 }
 
+export function screenDesignSemanticElement(designInput, semanticRef) {
+  const design = normalizeScreenDesign(designInput);
+  const element = design.semanticElements?.find((entry) => entry.semanticRef === semanticRef);
+  if (!element) throw new TypeError(`unknown screen design semantic element ${semanticRef}`);
+  return Object.freeze(structuredClone(element));
+}
+
 export function screenDesignVisualDimension(designInput, tokenRef) {
   const design = normalizeScreenDesign(designInput);
   const value = design.visualTokens?.dimensions?.[tokenRef];
@@ -402,9 +409,40 @@ export function normalizeScreenDesign(input) {
     }
   }
 
+  if (input.semanticElements !== undefined) {
+    const semanticRefs = new Set();
+    for (const [index, element] of input.semanticElements.entries()) {
+      const label = `screen design semanticElements[${index}]`;
+      assert(typeof element?.semanticRef === 'string' && element.semanticRef,
+        `${label}.semanticRef required`);
+      assert(!semanticRefs.has(element.semanticRef),
+        `duplicate screen design semantic element ${element.semanticRef}`);
+      semanticRefs.add(element.semanticRef);
+      assert(typeof element.parentSemanticRef === 'string' && element.parentSemanticRef,
+        `${label}.parentSemanticRef required`);
+      assert(element.kind === 'TEXT', `${label}.kind unsupported`);
+      assert(element.identityState === 'VEXBOARD_PROPOSED',
+        `${label}.identityState unsupported`);
+      assert(typeof element.label === 'string' && element.label,
+        `${label}.label required`);
+      assert(Number.isInteger(element.referenceLineCount) && element.referenceLineCount > 0,
+        `${label}.referenceLineCount must be a positive integer`);
+      if (element.sourceRefs !== undefined) {
+        assert(Array.isArray(element.sourceRefs), `${label}.sourceRefs must be an array`);
+        for (const sourceRef of element.sourceRefs) {
+          assert(typeof sourceRef === 'string' && sourceRef, `${label}.sourceRef required`);
+        }
+      }
+    }
+  }
+
   if (input.componentAssignments !== undefined) {
     assert(Array.isArray(input.componentAssignments),
       'screen design componentAssignments must be an array');
+  }
+  if (input.semanticElements !== undefined) {
+    assert(Array.isArray(input.semanticElements),
+      'screen design semanticElements must be an array');
   }
   if (input.visualTokens !== undefined) {
     assert(input.visualTokens && typeof input.visualTokens === 'object' && !Array.isArray(input.visualTokens),
