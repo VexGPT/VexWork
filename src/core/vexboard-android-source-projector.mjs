@@ -139,6 +139,7 @@ function makePresentation(profile, hints, sourceRefs, relationshipRoutes = []) {
     referenceViewport: Object.freeze({
       widthDp: profile.widthDp,
       heightDp: profile.heightDp,
+      fontScale: profile.fontScale ?? 1,
       densityIndependent: true,
       boardScalePerDp: DP_TO_BOARD,
     }),
