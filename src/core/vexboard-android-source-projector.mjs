@@ -2,10 +2,12 @@ import { createBoardGraph, createBoardProjection } from './vexboard.mjs';
 import { compileVexLifeAndroidScreenDesign } from './vexboard-android-construction.mjs';
 import {
   normalizeScreenDesign,
+  screenDesignAnchorRule,
   screenDesignComponentAssignment,
   screenDesignLayoutRule,
   screenDesignViewportProfile,
   resolveBoundedResponsiveMetric,
+  resolveScreenDesignAnchorBox,
   resolveScreenDesignConstraintBox,
 } from './vexboard-screen-design.mjs';
 
@@ -311,6 +313,12 @@ function profileMetrics(profile, design, screenKey) {
       y: scaled(inner.y),
       width: scaled(inner.width),
       height: scaled(inner.height),
+    }),
+    contentDp: Object.freeze({
+      x: inner.x,
+      y: inner.y,
+      width: inner.width,
+      height: inner.height,
     }),
   });
 }
@@ -734,23 +742,45 @@ function experienceBoard(snapshot, design, viewportProfile) {
     snapshot.vexStream.libraryActions,
     (action) => action.ref,
   );
-  libraryActions.forEach((action, index) => {
+  const fabAnchorRule = screenDesignAnchorRule(design, 'anchor.vexstream.library-actions');
+  const fabSizeDp = resolveBoundedResponsiveMetric(
+    design.metrics.smallFabSize,
+    viewportProfile.widthDp,
+  );
+  const fabGapDp = resolveBoundedResponsiveMetric(
+    design.metrics.libraryFabGapVertical,
+    viewportProfile.heightDp,
+  );
+  const fabClusterHeightDp =
+    (libraryActions.length * fabSizeDp) +
+    (Math.max(0, libraryActions.length - 1) * fabGapDp);
+  const fabClusterDp = resolveScreenDesignAnchorBox({
+    designInput: design,
+    anchorRuleInput: fabAnchorRule,
+    parentBoundsDp: vexMetrics.contentDp,
+    widthDp: fabSizeDp,
+    heightDp: fabClusterHeightDp,
+  });
+  const fabX = loadedFrame.x + scaled(fabClusterDp.x);
+  let fabY = loadedFrame.y + scaled(fabClusterDp.y);
+  for (const action of libraryActions) {
     const itemRef = `${loadedItem}.fab.${semanticLeaf(action.ref)}`;
     items.push(projectionItem(
       itemRef,
       action.ref,
       'ELLIPSE',
       rect(
-        loadedFrame.x + loadedFrame.width - 54,
-        loadedFrame.y + loadedFrame.height - 150 + (index * 58),
-        42,
-        42,
+        fabX,
+        fabY,
+        scaled(fabSizeDp),
+        scaled(fabSizeDp),
       ),
       layer++,
       loadedItem,
     ));
     hints.push(componentPresentationHint(design, itemRef, action.ref));
-  });
+    fabY += scaled(fabSizeDp + fabGapDp);
+  }
 
   // Show the modal as an overlay occurrence of the same Screen, not a navigation destination.
   const sheetBounds = rect(loadedFrame.x + 8, loadedFrame.y + 318, loadedFrame.width - 16, loadedFrame.height - 326);
