@@ -335,7 +335,10 @@ function experienceBoard(snapshot) {
 
   function addVexStreamChrome(state, frame, frameItemRef) {
     const actionItemBySemanticRef = new Map();
-    items.push(projectionItem(frameItemRef, state.stateRef, 'FRAME', rect(frame.x, frame.y, frame.width, frame.height), layer++, productItemRef));
+    const stateChipItemRef = `${frameItemRef}.condition`;
+    items.push(projectionItem(stateChipItemRef, state.stateRef, 'RECTANGLE', rect(frame.x + 8, frame.y - 28, 150, 24), layer++, productItemRef));
+    hints.push(presentationHint(stateChipItemRef, 'STATE_CHIP', state.kind));
+    items.push(projectionItem(frameItemRef, snapshot.vexStream.screenRef, 'FRAME', rect(frame.x, frame.y, frame.width, frame.height), layer++, productItemRef));
     hints.push(presentationHint(frameItemRef, 'SCREEN_FRAME', state.kind));
 
     const titleItem = `${frameItemRef}.toolbar`;
