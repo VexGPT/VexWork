@@ -25,8 +25,11 @@ Descend into VexLife ToCompletion only when the latest refinement version names 
 | Version | State | Meaning |
 |---|---|---|
 | **V0** | **PROVEN** | First human-lived Victor ↔ local Heretic conversation through VexLife. Connection/runtime is the stability anchor, not the surrounding placeholder UI. |
-| **V1** | **CURRENT / VERIFYING** | Conversation ergonomics and ordinary re-entry: Enter sends, Shift+Enter creates a newline, and the interface can return to the canonical Vex conversation without a special proof URL. Current source candidate: VexLife PR #925. |
-| **V2** | **NEXT / WAITING DEPENDENCY** | Progressive streamed model output with final-only durable Conversation commit. Requires the current Conversation-core candidate in VexLife PR #904 to release/land its owned paths. |
+| **V1** | **VERIFYING** | Conversation ergonomics and ordinary re-entry are merged and human-lived; formal lived closure still remains separate from source acceptance. |
+| **V1.5** | **CURRENT / VERIFYING** | Long-context Memory pressure policy is merged: 192K input, 16K output reserve, 208K hard lease, up to 100K/100-page current attributed Memory, dynamic Memory yielding and zero-headroom handling. |
+| **V2** | **NEXT / READY** | Progressive streamed model output plus an explicit source-owned completion/output policy. PR #904 is merged, so the prior Conversation-core dependency is released. |
+| **V3–V5** | **STABILITY FRONTIER** | System-owned pressure observation, graceful continuity rollover and bounded host resource stewardship. The system may observe and checkpoint automatically; semantic Memory promotion and ambiguous/destructive cleanup remain separately governed. |
+| **V6** | **WAITING DEPENDENCIES** | Long lived stability proof across streaming, pressure, rollover, restart/re-entry and exact-owned resource recovery. |
 | **Later** | **CAPTURED** | Refine Home, Terrain, nodes, menus and other interface neighborhoods from lived feedback. Current maps/screens are scaffolding, not a recovered final design. |
 
 A later V3/V4/... becomes the entry point when it is current. Do not tell a fresh instance to reconstruct V0 just because V0 is the earliest version.
@@ -104,11 +107,33 @@ The first lived feedback is intentionally small:
 3. **Conversation is re-enterable through ordinary VexLife interface controls.**
 4. Re-entry selects the canonical Self Development → Open conversation → Vex relationship and opens the current Evolution Conversation when that local projection is available.
 
-This is interface refinement, not a redesign of Conversation semantics or model ownership. The exact current source candidate is `github.pull.vexlife.925`; resume that candidate before forming another V1 writer.
+This is interface refinement, not a redesign of Conversation semantics or model ownership. V1 source is merged through PR #925 with the cold-Heretic qualification correction in PR #926. Lived use is now the authority for the next refinement edge rather than historical proof-package replay.
+
+## V1.5 — long-context Memory pressure
+
+Human-lived use exposed that the previously merged 4K Context Lease was a product ceiling rather than the local model's useful working range. PR #927 is now merged on VexLife main and establishes the current source policy:
+
+```text
+active input budget    192,000
+reserved output         16,000
+hard Context Lease     208,000
+Memory allowance       100,000 max
+Memory pages               100
+```
+
+Memory competes dynamically with the live conversation. When immediate conversation consumes the available input budget, Memory is bounded out instead of forcing an invalid packet or silently stealing output reserve. This is prompt/context policy, not model-weight memory and not permission to dump whole history into the model.
+
+Permanent distinction:
+
+```text
+MODEL != DURABLE_MEMORY_OWNER
+CONTEXT_PRESSURE != MEMORY_PROMOTION_AUTHORITY
+LARGE_CONTEXT != WHOLE_TRANSCRIPT_FOREVER
+```
 
 ## V2 — streaming contract
 
-Current VexLife buffers the local model HTTP response before the browser renders it. The pinned Heretic runtime uses MLX-LM 0.32.0, whose server defaults `stream=false` and `max_tokens=512` when VexLife omits those request fields. V2 should change the experience **and** replace that accidental small default with an explicit source-owned completion policy, without weakening durable truth:
+PR #904 is merged and its Conversation-core ownership has released, so V2 is now READY. Current VexLife still buffers the local model HTTP response before the browser renders it. The pinned Heretic runtime uses MLX-LM 0.32.0, whose server defaults `stream=false` and `max_tokens=512` when VexLife omits those request fields. V2 should change the experience **and** replace that accidental small default with an explicit source-owned completion policy, without weakening durable truth:
 
 ```text
 Heretic token/chunk output
@@ -123,7 +148,7 @@ INTERRUPTED_STREAM != COMPLETED_TURN
 VISIBLE_PROGRESS != FINAL_CONVERSATION_HEAD
 ```
 
-The implementation crosses paths currently owned by VexLife PR #904:
+The implementation crosses the Conversation paths now accepted through VexLife PR #904:
 
 ```text
 reference/browser/modules/chat-controller.js
@@ -132,9 +157,128 @@ src/core/browser-companion-bridge.mjs
 src/core/lived-companion.mjs
 ```
 
-Do not create a competing writer. Re-ground #904 and integrate V2 after that current Conversation-core ownership releases or lands.
+Re-ground current main before authoring, then evolve those accepted paths rather than reconstructing the pre-#904 candidate.
 
 Pinned runtime source for this finding: `ml-explore/mlx-lm@v0.32.0:mlx_lm/SERVER.md`. The goal is not an unbounded runaway generator; it is to let Vex finish naturally under an explicit, inspectable completion budget with cancellation/recovery semantics rather than inheriting an accidental 512-token default.
+
+## Stability frontier — self-maintaining continuity
+
+The target is not an infinite prompt. The target is a Vex that remains continuous while finite model, context and host resources change underneath it.
+
+### Ownership
+
+```text
+Conversation
+  exact durable turn history
+
+Score / semantic authority
+  accepted statements, corrections, supersessions, consent
+
+Daily Memory / Living Journal
+  durable bounded continuity Memory
+
+Prompt Context Runtime
+  selects exact recent context + relevant current Memory for this turn
+
+Heretic
+  reasons over the supplied context
+  does not own durable Memory
+```
+
+The model may help judge what working information appears important, but model output is candidate reasoning. It may not silently promote its own text into durable Memory.
+
+### V3 — resource/context pressure observation
+
+The system should own a small current pressure projection rather than expecting Heretic to infer resource state indirectly. Inputs may include:
+
+```text
+context budget used / remaining / projected-next-turn headroom
+reserved output budget
+Memory included / bounded-out state
+Context Lease age / currentness
+model/browser runtime ownership + liveness
+host memory pressure / free disk / accelerator pressure when source-observable
+owned port/process conflicts
+```
+
+Source-managed policy should derive states such as:
+
+```text
+NORMAL
+WATCH
+CHECKPOINT_RECOMMENDED
+ROLLOVER_REQUIRED
+RESOURCE_ATTENTION
+```
+
+Exact numeric thresholds are implementation policy to be measured and tested rather than guessed into VexWork. Use hysteresis so state does not flap around one boundary.
+
+A small model-readable pressure packet may tell Vex that context or Memory was bounded. It must not expose unnecessary private host detail and does not grant cleanup authority.
+
+### V4 — continuity rollover
+
+Pressure-triggered rollover should preserve current work without recursively stacking summaries:
+
+```text
+current exact Conversation + Intent/open loops + accepted source truth
+-> form one current working checkpoint
+-> optionally route already accepted/consented semantic Memory through its rightful owner
+-> supersede the prior working checkpoint
+-> start a fresh Context Lease from newest checkpoint + relevant Memory
+```
+
+Permanent laws:
+
+```text
+CHECKPOINT != SEMANTIC_MEMORY_PROMOTION
+PRESSURE_TRIGGER != SEMANTIC_ACCEPTANCE
+ROLLOVER != NEW_COMPANION_IDENTITY
+NEW_CHECKPOINT_SUPERSEDES_OLD != APPEND_SUMMARY_OF_SUMMARY_FOREVER
+CURRENT_CHECKPOINT + SOURCE_REFS > RECURSIVE_CONTEXT_STACK
+```
+
+A working checkpoint may capture current intent, decisions, open loops, active source refs and recovery coordinates without claiming those facts are autobiographical/durable Memory. Durable Memory still requires its existing Score/semantic-acceptance/consent path. If that path is not current, rollover should still work and Memory promotion remains held.
+
+### V5 — bounded host resource stewardship
+
+The system may observe resource pressure, but pressure alone is never permission to terminate processes.
+
+```text
+HIGH_CPU_OR_RAM != KILL_AUTHORITY
+PID_MATCH != PROCESS_OWNERSHIP
+```
+
+Automatic cleanup is appropriate only when source-backed evidence proves an exact Vex-owned resource is stale/abandoned and no active lease/current owner still requires it. Process identity should bind more than a PID: owner/runtime receipt, executable/runtime identity, expected endpoint/port and lifecycle generation as available.
+
+```text
+EXACT_VEX_OWNED + STALE/ABANDONED + NO_ACTIVE_LEASE
+-> source-managed automatic cleanup may be admitted
+
+UNOWNED | UNKNOWN | AMBIGUOUS | USER_WORKLOAD
+-> no automatic termination
+-> form a specific cleanup proposal
+-> Victor approval when destructive/ambiguous
+```
+
+Cleanup remains with the rightful runtime/lifecycle owner; a resource observer does not become a universal process manager.
+
+### V6 — lived stability threshold
+
+The continuity layer is not stable merely because its unit tests are green. The final threshold is a long lived Victor ↔ Vex session that proves:
+
+```text
+progressive responses
++ explicit output policy
++ rising context pressure
++ truthful Memory bounding
++ checkpoint before exhaustion
++ non-stacking rollover
++ restart/re-entry
++ exact-owned stale-resource recovery
+-> same conversational trajectory continues
+```
+
+No sudden context cliff, no silent loss, no invented Memory, no recursive-summary drift and no unauthorized host cleanup.
 
 ## Current UI posture
 
