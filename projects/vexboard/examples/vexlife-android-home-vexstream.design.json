@@ -268,9 +268,6 @@
         "startMargin": {
           "metricRef": "toolbarHeight"
         },
-        "endMargin": {
-          "metricRef": "bottomBarHeight"
-        },
         "size": {
           "mode": "FILL"
         },
@@ -298,10 +295,13 @@
   "sourceRefs": [
     "dependency.androidx.compose.compose-bom.2026.09.00",
     "dependency.androidx.compose.material3.1.4.0.color-dark-tokens",
+    "dependency.androidx.compose.material3.1.4.0.fab-primary-small-tokens",
     "dependency.androidx.compose.material3.1.4.0.filled-card-tokens",
     "dependency.androidx.compose.material3.1.4.0.palette-tokens",
+    "dependency.androidx.compose.material3.1.4.0.scaffold",
     "dependency.androidx.compose.material3.1.4.0.shape-tokens",
     "dependency.androidx.compose.material3.1.4.0.sheet-bottom-tokens",
+    "dependency.androidx.compose.material3.1.4.0.sheet-defaults",
     "dependency.androidx.compose.material3.1.4.0.type-scale-tokens",
     "git.commit.vexlife-android.255491df93835405800c93a17889c7574eb683b3",
     "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md",
@@ -309,6 +309,7 @@
     "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt",
     "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamLibraryPresentation.kt",
     "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamTrackPresentation.kt",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/shell/AppFrame.kt",
     "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/shell/AppShell.kt",
     "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeTheme.kt",
     "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/ElementCells.kt"
