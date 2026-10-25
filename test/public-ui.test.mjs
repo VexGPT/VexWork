@@ -94,9 +94,10 @@ test('state presentation uses stable semantic color families and keeps priority 
   assert.equal(reader.priorityTone('NORMAL'), 'normal');
 });
 
-test('semantic level rail and VexWork title expose navigation home/back controls', () => {
-  assert.match(page, /class="family-current" href="\.\/"/);
-  assert.match(page, /class="brand-home" href="\.\/">VexWork<\/a>/);
+test('semantic level rail and selected VexWork family slot expose navigation home/back controls', () => {
+  assert.match(page, /class="family-current" href="\.\/" aria-current="page">VexWork<\/a>/);
+  assert.doesNotMatch(page, /class="brand-home"/);
+  assert.match(page, /class="terrain-home" href="\.\/terrain\.html">Terrain Map<\/a>/);
   assert.match(page, /data-level="PROJECTS"/);
   assert.match(page, /data-level="PROJECT"/);
 });
