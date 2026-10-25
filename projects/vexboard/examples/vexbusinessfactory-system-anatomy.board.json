@@ -1,0 +1,780 @@
+{
+  "schemaVersion": "vexboard.local-draft/v1",
+  "draftRef": "board.vexbusinessfactory.system-anatomy.patient-zero",
+  "title": "VexBusinessFactory — System Anatomy / Data Lineage",
+  "mode": "READ_ONLY_SOURCE",
+  "derivedFromRefOrNull": null,
+  "savedAtOrNull": null,
+  "graph": {
+    "schemaVersion": "vexboard.board-graph/v1",
+    "graphRef": "graph.vexbusinessfactory.system-anatomy.patient-zero",
+    "nodes": [
+      {
+        "nodeRef": "node.vbf.system-anatomy",
+        "kind": "CONTAINER",
+        "label": "System Anatomy",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.issue.vexwork.138"
+        ]
+      },
+      {
+        "nodeRef": "node.vbf.source",
+        "kind": "CONTAINER",
+        "label": "Source of Truth",
+        "parentRefOrNull": "node.vbf.system-anatomy",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.issue.vexwork.138"
+        ]
+      },
+      {
+        "nodeRef": "node.vbf.storage",
+        "kind": "CONTAINER",
+        "label": "Storage / Schema",
+        "parentRefOrNull": "node.vbf.system-anatomy",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.issue.vexwork.138"
+        ]
+      },
+      {
+        "nodeRef": "node.vbf.convergence",
+        "kind": "CONTAINER",
+        "label": "Convergence / Transformation",
+        "parentRefOrNull": "node.vbf.system-anatomy",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.issue.vexwork.138"
+        ]
+      },
+      {
+        "nodeRef": "node.vbf.presentation",
+        "kind": "CONTAINER",
+        "label": "Presentation / UI",
+        "parentRefOrNull": "node.vbf.system-anatomy",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.issue.vexwork.138"
+        ]
+      },
+      {
+        "nodeRef": "node.vbf.string.inventory-buy",
+        "kind": "ARTIFACT",
+        "label": "string.inventory.buy = “Buy {itemTitle}”",
+        "parentRefOrNull": "node.vbf.source",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.issue.vexwork.138"
+        ]
+      },
+      {
+        "nodeRef": "node.vbf.asset.inventory-icon",
+        "kind": "ARTIFACT",
+        "label": "asset.inventory.icon",
+        "parentRefOrNull": "node.vbf.source",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.issue.vexwork.138"
+        ]
+      },
+      {
+        "nodeRef": "node.vbf.db.product-title",
+        "kind": "ARTIFACT",
+        "label": "product.title",
+        "parentRefOrNull": "node.vbf.storage",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.issue.vexwork.138"
+        ]
+      },
+      {
+        "nodeRef": "node.vbf.db.inventory-item-name",
+        "kind": "ARTIFACT",
+        "label": "inventory.itemName",
+        "parentRefOrNull": "node.vbf.storage",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.issue.vexwork.138"
+        ]
+      },
+      {
+        "nodeRef": "node.vbf.db.inventory-quantity",
+        "kind": "ARTIFACT",
+        "label": "inventory.quantity",
+        "parentRefOrNull": "node.vbf.storage",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.issue.vexwork.138"
+        ]
+      },
+      {
+        "nodeRef": "node.vbf.process.inventory-join",
+        "kind": "PROCESS",
+        "label": "Join product + inventory",
+        "parentRefOrNull": "node.vbf.convergence",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.issue.vexwork.138"
+        ]
+      },
+      {
+        "nodeRef": "node.vbf.model.inventory-item",
+        "kind": "ARTIFACT",
+        "label": "InventoryItem { itemTitle, quantity }",
+        "parentRefOrNull": "node.vbf.convergence",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.issue.vexwork.138"
+        ]
+      },
+      {
+        "nodeRef": "node.vbf.process.buy-label-format",
+        "kind": "PROCESS",
+        "label": "Format localized Buy label",
+        "parentRefOrNull": "node.vbf.convergence",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.issue.vexwork.138"
+        ]
+      },
+      {
+        "nodeRef": "node.vbf.text.buy-item-title",
+        "kind": "ARTIFACT",
+        "label": "Rendered text · Buy {itemTitle}",
+        "parentRefOrNull": "node.vbf.convergence",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.issue.vexwork.138"
+        ]
+      },
+      {
+        "nodeRef": "node.vbf.ui.inventory-block",
+        "kind": "CONTAINER",
+        "label": "InventoryBlock",
+        "parentRefOrNull": "node.vbf.presentation",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.issue.vexwork.138"
+        ]
+      },
+      {
+        "nodeRef": "node.vbf.ui.buy",
+        "kind": "CONTROL",
+        "label": "Buy {itemTitle}",
+        "parentRefOrNull": "node.vbf.ui.inventory-block",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.issue.vexwork.138"
+        ]
+      },
+      {
+        "nodeRef": "node.vbf.interfaces",
+        "kind": "CONTAINER",
+        "label": "Dependencies / APIs",
+        "parentRefOrNull": "node.vbf.system-anatomy",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.issue.vexwork.138"
+        ]
+      },
+      {
+        "nodeRef": "node.vbf.dependency.inventory-service",
+        "kind": "REFERENCE",
+        "label": "Dependency · Inventory Service",
+        "parentRefOrNull": "node.vbf.interfaces",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.issue.vexwork.138"
+        ]
+      },
+      {
+        "nodeRef": "node.vbf.api.inventory-read",
+        "kind": "REFERENCE",
+        "label": "API · GET /inventory/{productId}",
+        "parentRefOrNull": "node.vbf.interfaces",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.issue.vexwork.138"
+        ]
+      },
+      {
+        "nodeRef": "node.vbf.api.input.product-id",
+        "kind": "ARTIFACT",
+        "label": "Request · productId",
+        "parentRefOrNull": "node.vbf.interfaces",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.issue.vexwork.138"
+        ]
+      },
+      {
+        "nodeRef": "node.vbf.api.output.inventory-record",
+        "kind": "ARTIFACT",
+        "label": "Response · InventoryRecord { itemName, quantity }",
+        "parentRefOrNull": "node.vbf.interfaces",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.issue.vexwork.138"
+        ]
+      },
+      {
+        "nodeRef": "node.vbf.example.inventory-basic",
+        "kind": "ARTIFACT",
+        "label": "Synthetic placeholder · inventory/basic · { productId: example-001, title: Vextreme Assets, itemName: Vextreme Assets, quantity: 12 }",
+        "parentRefOrNull": "node.vbf.storage",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.issue.vexwork.138"
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "relationshipRef": "rel.vbf.product-title.join",
+        "kind": "DATA",
+        "fromRef": "node.vbf.db.product-title",
+        "toRef": "node.vbf.process.inventory-join",
+        "labelOrNull": "INPUT_TITLE",
+        "sourceRefs": [
+          "github.issue.vexwork.138"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vbf.join.model",
+        "kind": "DATA",
+        "fromRef": "node.vbf.process.inventory-join",
+        "toRef": "node.vbf.model.inventory-item",
+        "labelOrNull": "OUTPUT_MODEL",
+        "sourceRefs": [
+          "github.issue.vexwork.138"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vbf.model.format",
+        "kind": "DATA",
+        "fromRef": "node.vbf.model.inventory-item",
+        "toRef": "node.vbf.process.buy-label-format",
+        "labelOrNull": "ITEM_ARGUMENTS",
+        "sourceRefs": [
+          "github.issue.vexwork.138"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vbf.string.format",
+        "kind": "DATA",
+        "fromRef": "node.vbf.string.inventory-buy",
+        "toRef": "node.vbf.process.buy-label-format",
+        "labelOrNull": "FORMAT_STRING",
+        "sourceRefs": [
+          "github.issue.vexwork.138"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vbf.format.text",
+        "kind": "DATA",
+        "fromRef": "node.vbf.process.buy-label-format",
+        "toRef": "node.vbf.text.buy-item-title",
+        "labelOrNull": "OUTPUT_TEXT",
+        "sourceRefs": [
+          "github.issue.vexwork.138"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vbf.text.ui",
+        "kind": "DATA",
+        "fromRef": "node.vbf.text.buy-item-title",
+        "toRef": "node.vbf.ui.buy",
+        "labelOrNull": "RENDERS_AS",
+        "sourceRefs": [
+          "github.issue.vexwork.138"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vbf.asset.ui",
+        "kind": "REFERENCE",
+        "fromRef": "node.vbf.asset.inventory-icon",
+        "toRef": "node.vbf.ui.buy",
+        "labelOrNull": "USES_ASSET",
+        "sourceRefs": [
+          "github.issue.vexwork.138"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vbf.dependency.exposes-api",
+        "kind": "REFERENCE",
+        "fromRef": "node.vbf.dependency.inventory-service",
+        "toRef": "node.vbf.api.inventory-read",
+        "labelOrNull": "EXPOSES_API",
+        "sourceRefs": [
+          "github.issue.vexwork.138"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vbf.api-input.endpoint",
+        "kind": "DATA",
+        "fromRef": "node.vbf.api.input.product-id",
+        "toRef": "node.vbf.api.inventory-read",
+        "labelOrNull": "REQUEST_INPUT",
+        "sourceRefs": [
+          "github.issue.vexwork.138"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vbf.endpoint.api-output",
+        "kind": "DATA",
+        "fromRef": "node.vbf.api.inventory-read",
+        "toRef": "node.vbf.api.output.inventory-record",
+        "labelOrNull": "RESPONSE_OUTPUT",
+        "sourceRefs": [
+          "github.issue.vexwork.138"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vbf.item-name.api-output",
+        "kind": "DATA",
+        "fromRef": "node.vbf.db.inventory-item-name",
+        "toRef": "node.vbf.api.output.inventory-record",
+        "labelOrNull": "SERIALIZES_ITEM_NAME",
+        "sourceRefs": [
+          "github.issue.vexwork.138"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vbf.quantity.api-output",
+        "kind": "DATA",
+        "fromRef": "node.vbf.db.inventory-quantity",
+        "toRef": "node.vbf.api.output.inventory-record",
+        "labelOrNull": "SERIALIZES_QUANTITY",
+        "sourceRefs": [
+          "github.issue.vexwork.138"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vbf.api-output.join",
+        "kind": "DATA",
+        "fromRef": "node.vbf.api.output.inventory-record",
+        "toRef": "node.vbf.process.inventory-join",
+        "labelOrNull": "REMOTE_INVENTORY_INPUT",
+        "sourceRefs": [
+          "github.issue.vexwork.138"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vbf.example.product-id",
+        "kind": "REFERENCE",
+        "fromRef": "node.vbf.example.inventory-basic",
+        "toRef": "node.vbf.api.input.product-id",
+        "labelOrNull": "EXAMPLE_VALUE_FOR",
+        "sourceRefs": [
+          "github.issue.vexwork.138"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vbf.example.product-title",
+        "kind": "REFERENCE",
+        "fromRef": "node.vbf.example.inventory-basic",
+        "toRef": "node.vbf.db.product-title",
+        "labelOrNull": "EXAMPLE_VALUE_FOR",
+        "sourceRefs": [
+          "github.issue.vexwork.138"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vbf.example.item-name",
+        "kind": "REFERENCE",
+        "fromRef": "node.vbf.example.inventory-basic",
+        "toRef": "node.vbf.db.inventory-item-name",
+        "labelOrNull": "EXAMPLE_VALUE_FOR",
+        "sourceRefs": [
+          "github.issue.vexwork.138"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vbf.example.quantity",
+        "kind": "REFERENCE",
+        "fromRef": "node.vbf.example.inventory-basic",
+        "toRef": "node.vbf.db.inventory-quantity",
+        "labelOrNull": "EXAMPLE_VALUE_FOR",
+        "sourceRefs": [
+          "github.issue.vexwork.138"
+        ]
+      }
+    ],
+    "sourceRefs": [
+      "github.issue.vexwork.138"
+    ]
+  },
+  "projection": {
+    "schemaVersion": "vexboard.board-projection/v1",
+    "projectionRef": "projection.vexbusinessfactory.system-anatomy.patient-zero",
+    "graphRef": "graph.vexbusinessfactory.system-anatomy.patient-zero",
+    "layoutIntent": "SYSTEM_MAP",
+    "items": [
+      {
+        "projectionItemRef": "item.vbf.system-anatomy",
+        "semanticRef": "node.vbf.system-anatomy",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 1876,
+          "height": 760
+        },
+        "layer": 0,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vbf.source",
+        "semanticRef": "node.vbf.source",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 840,
+          "y": 500,
+          "width": 340,
+          "height": 680
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.vbf.system-anatomy",
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vbf.storage",
+        "semanticRef": "node.vbf.storage",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 40,
+          "y": 420,
+          "width": 340,
+          "height": 680
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vbf.system-anatomy",
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vbf.convergence",
+        "semanticRef": "node.vbf.convergence",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 430,
+          "y": 90,
+          "width": 340,
+          "height": 680
+        },
+        "layer": 3,
+        "parentProjectionItemRefOrNull": "item.vbf.system-anatomy",
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vbf.presentation",
+        "semanticRef": "node.vbf.presentation",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 1150,
+          "y": 100,
+          "width": 340,
+          "height": 680
+        },
+        "layer": 4,
+        "parentProjectionItemRefOrNull": "item.vbf.system-anatomy",
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vbf.string.inventory-buy.source",
+        "semanticRef": "node.vbf.string.inventory-buy",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 900,
+          "y": 560,
+          "width": 280,
+          "height": 74
+        },
+        "layer": 5,
+        "parentProjectionItemRefOrNull": "item.vbf.source",
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vbf.asset.inventory-icon.source",
+        "semanticRef": "node.vbf.asset.inventory-icon",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 900,
+          "y": 660,
+          "width": 280,
+          "height": 74
+        },
+        "layer": 6,
+        "parentProjectionItemRefOrNull": "item.vbf.source",
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vbf.db.product-title",
+        "semanticRef": "node.vbf.db.product-title",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 80,
+          "y": 480,
+          "width": 280,
+          "height": 74
+        },
+        "layer": 7,
+        "parentProjectionItemRefOrNull": "item.vbf.storage",
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vbf.db.inventory-item-name",
+        "semanticRef": "node.vbf.db.inventory-item-name",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 80,
+          "y": 580,
+          "width": 280,
+          "height": 74
+        },
+        "layer": 8,
+        "parentProjectionItemRefOrNull": "item.vbf.storage",
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vbf.db.inventory-quantity",
+        "semanticRef": "node.vbf.db.inventory-quantity",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 80,
+          "y": 680,
+          "width": 280,
+          "height": 74
+        },
+        "layer": 9,
+        "parentProjectionItemRefOrNull": "item.vbf.storage",
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vbf.process.inventory-join",
+        "semanticRef": "node.vbf.process.inventory-join",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 470,
+          "y": 130,
+          "width": 280,
+          "height": 90
+        },
+        "layer": 10,
+        "parentProjectionItemRefOrNull": "item.vbf.convergence",
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vbf.model.inventory-item",
+        "semanticRef": "node.vbf.model.inventory-item",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 470,
+          "y": 240,
+          "width": 280,
+          "height": 100
+        },
+        "layer": 11,
+        "parentProjectionItemRefOrNull": "item.vbf.convergence",
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vbf.process.buy-label-format",
+        "semanticRef": "node.vbf.process.buy-label-format",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 470,
+          "y": 360,
+          "width": 280,
+          "height": 90
+        },
+        "layer": 12,
+        "parentProjectionItemRefOrNull": "item.vbf.convergence",
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vbf.text.buy-item-title.transform",
+        "semanticRef": "node.vbf.text.buy-item-title",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 470,
+          "y": 470,
+          "width": 280,
+          "height": 74
+        },
+        "layer": 13,
+        "parentProjectionItemRefOrNull": "item.vbf.convergence",
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vbf.ui.inventory-block",
+        "semanticRef": "node.vbf.ui.inventory-block",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 1170,
+          "y": 150,
+          "width": 300,
+          "height": 500
+        },
+        "layer": 14,
+        "parentProjectionItemRefOrNull": "item.vbf.presentation",
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vbf.ui.buy",
+        "semanticRef": "node.vbf.ui.buy",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1190,
+          "y": 190,
+          "width": 250,
+          "height": 76
+        },
+        "layer": 30,
+        "parentProjectionItemRefOrNull": "item.vbf.ui.inventory-block",
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vbf.string.inventory-buy.ui",
+        "semanticRef": "node.vbf.string.inventory-buy",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 1190,
+          "y": 290,
+          "width": 250,
+          "height": 54
+        },
+        "layer": 15,
+        "parentProjectionItemRefOrNull": "item.vbf.ui.inventory-block",
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vbf.text.buy-item-title.ui",
+        "semanticRef": "node.vbf.text.buy-item-title",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 1190,
+          "y": 370,
+          "width": 250,
+          "height": 54
+        },
+        "layer": 16,
+        "parentProjectionItemRefOrNull": "item.vbf.ui.inventory-block",
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vbf.interfaces",
+        "semanticRef": "node.vbf.interfaces",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 790,
+          "y": 80,
+          "width": 340,
+          "height": 680
+        },
+        "layer": 4,
+        "parentProjectionItemRefOrNull": "item.vbf.system-anatomy",
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vbf.dependency.inventory-service",
+        "semanticRef": "node.vbf.dependency.inventory-service",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 810,
+          "y": 120,
+          "width": 300,
+          "height": 74
+        },
+        "layer": 17,
+        "parentProjectionItemRefOrNull": "item.vbf.interfaces",
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vbf.api.inventory-read",
+        "semanticRef": "node.vbf.api.inventory-read",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 810,
+          "y": 210,
+          "width": 300,
+          "height": 90
+        },
+        "layer": 18,
+        "parentProjectionItemRefOrNull": "item.vbf.interfaces",
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vbf.api.input.product-id",
+        "semanticRef": "node.vbf.api.input.product-id",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 810,
+          "y": 320,
+          "width": 300,
+          "height": 64
+        },
+        "layer": 19,
+        "parentProjectionItemRefOrNull": "item.vbf.interfaces",
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vbf.api.output.inventory-record",
+        "semanticRef": "node.vbf.api.output.inventory-record",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 810,
+          "y": 400,
+          "width": 300,
+          "height": 100
+        },
+        "layer": 20,
+        "parentProjectionItemRefOrNull": "item.vbf.interfaces",
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vbf.example.inventory-basic",
+        "semanticRef": "node.vbf.example.inventory-basic",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 80,
+          "y": 780,
+          "width": 280,
+          "height": 110
+        },
+        "layer": 21,
+        "parentProjectionItemRefOrNull": "item.vbf.storage",
+        "visible": true,
+        "locked": false
+      }
+    ],
+    "sourceRefs": [
+      "github.issue.vexwork.138"
+    ]
+  }
+}
