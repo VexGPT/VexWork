@@ -396,6 +396,7 @@
       "mode": "COLUMN",
       "gapMetricRefOrNull": "containerGapVertical",
       "childSemanticRefs": [
+        "element.home.body.systems.title",
         "element.home.body.systems.family-conversation",
         "element.home.body.systems.vex-maps",
         "element.home.body.systems.talk-to-vex"
@@ -409,6 +410,18 @@
       "childSemanticRefs": [
         "element.vexstream-music.body.library-actions.play-all",
         "element.vexstream-music.body.library-actions.shuffle-all"
+      ]
+    },
+    {
+      "layoutRef": "layout.vexlife.home.vexstream",
+      "semanticRef": "element.home.body.vexstream",
+      "mode": "COLUMN",
+      "gapMetricRefOrNull": "containerGapVertical",
+      "childSemanticRefs": [
+        "element.home.body.vexstream.title",
+        "element.home.body.vexstream.status",
+        "element.home.body.vexstream.body",
+        "element.home.body.systems.vexstream-music"
       ]
     }
   ],
@@ -439,6 +452,22 @@
     },
     "element.vexstream-music.body.library-actions.shuffle-all": {
       "widthDp": 40,
+      "heightDp": 40
+    },
+    "element.home.body.systems.vexstream-music": {
+      "widthDp": 226,
+      "heightDp": 40
+    },
+    "element.home.body.systems.family-conversation": {
+      "widthDp": 202,
+      "heightDp": 40
+    },
+    "element.home.body.systems.vex-maps": {
+      "widthDp": 121,
+      "heightDp": 40
+    },
+    "element.home.body.systems.talk-to-vex": {
+      "widthDp": 133,
       "heightDp": 40
     }
   },
@@ -809,6 +838,46 @@
       "iconRefOrNull": null,
       "typographyRefOrNull": "bodySmall",
       "colorRefOrNull": "onSurfaceVariant"
+    },
+    {
+      "assignmentRef": "assignment.element.home.body.vexstream.title",
+      "semanticRef": "element.home.body.vexstream.title",
+      "templateRef": "component.text",
+      "styleRef": "style.default",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": null,
+      "typographyRefOrNull": "headlineSmall",
+      "colorRefOrNull": "onSurface"
+    },
+    {
+      "assignmentRef": "assignment.element.home.body.vexstream.status",
+      "semanticRef": "element.home.body.vexstream.status",
+      "templateRef": "component.text",
+      "styleRef": "style.default",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": null,
+      "typographyRefOrNull": "titleMedium",
+      "colorRefOrNull": "onSurface"
+    },
+    {
+      "assignmentRef": "assignment.element.home.body.vexstream.body",
+      "semanticRef": "element.home.body.vexstream.body",
+      "templateRef": "component.text",
+      "styleRef": "style.default",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": null,
+      "typographyRefOrNull": "bodyLarge",
+      "colorRefOrNull": "onSurfaceVariant"
+    },
+    {
+      "assignmentRef": "assignment.element.home.body.systems.title",
+      "semanticRef": "element.home.body.systems.title",
+      "templateRef": "component.text",
+      "styleRef": "style.default",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": null,
+      "typographyRefOrNull": "headlineSmall",
+      "colorRefOrNull": "onSurface"
     }
   ],
   "anchorRules": [
@@ -829,6 +898,56 @@
       "verticalAnchor": "BOTTOM",
       "horizontalInsetMetricRefOrNull": null,
       "verticalInsetMetricRefOrNull": null
+    }
+  ],
+  "semanticElements": [
+    {
+      "semanticRef": "element.home.body.vexstream.title",
+      "parentSemanticRef": "element.home.body.vexstream",
+      "kind": "TEXT",
+      "identityState": "VEXBOARD_PROPOSED",
+      "label": "VexStream Music",
+      "referenceLineCount": 1,
+      "sourceRefs": [
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt",
+        "repo.vexlife-android:app/src/main/res/values/strings.xml"
+      ]
+    },
+    {
+      "semanticRef": "element.home.body.vexstream.status",
+      "parentSemanticRef": "element.home.body.vexstream",
+      "kind": "TEXT",
+      "identityState": "VEXBOARD_PROPOSED",
+      "label": "VexStream offline · downloaded music is still available",
+      "referenceLineCount": 2,
+      "sourceRefs": [
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt",
+        "repo.vexlife-android:app/src/main/res/values/strings.xml"
+      ]
+    },
+    {
+      "semanticRef": "element.home.body.vexstream.body",
+      "parentSemanticRef": "element.home.body.vexstream",
+      "kind": "TEXT",
+      "identityState": "VEXBOARD_PROPOSED",
+      "label": "Browse your library, continue playback, manage the queue, or download music for offline listening.",
+      "referenceLineCount": 3,
+      "sourceRefs": [
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt",
+        "repo.vexlife-android:app/src/main/res/values/strings.xml"
+      ]
+    },
+    {
+      "semanticRef": "element.home.body.systems.title",
+      "parentSemanticRef": "element.home.body.systems",
+      "kind": "TEXT",
+      "identityState": "VEXBOARD_PROPOSED",
+      "label": "Vex systems",
+      "referenceLineCount": 1,
+      "sourceRefs": [
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt",
+        "repo.vexlife-android:app/src/main/res/values/strings.xml"
+      ]
     }
   ]
 }
