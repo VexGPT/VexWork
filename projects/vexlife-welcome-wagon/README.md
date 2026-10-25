@@ -483,7 +483,7 @@ The Welcome Wagon must **perceive the accepted foundations before it designs a s
 
 ### Shared header/navigation capability intention
 
-The desired foundation is **shared semantic capability**, not one universal copied DOM fragment.
+The accepted family-rail foundation now proves **shared semantic capability**, not one universal copied DOM fragment. The mark and three family slots form a stable coordinate system; only current-context emphasis moves, while each product keeps its own palette and local controls.
 
 ~~~text
 family identity
@@ -795,32 +795,51 @@ This gives each risk one rollback coordinate: **identity migration**, **page mea
 
 ## Current execution edge
 
-The lived Support-page seam is now accepted source rather than foreground work:
+The cross-repository family rail is now accepted source and lived presentation rather than future rollout work:
 
 ```text
-#414 Support -> shared shell + clean Terrain home URL
-  -> desktop/mobile lived proof PASS
-  -> five Stripe destinations preserved
-  -> EN/JA/ZH shared language FAB preserved
-  -> exact accepted tree c5f1ed40e1168b7bde6d65d3ee3680b6471bc78c
-  -> merged as 5a27d0914591753c2e50e6b086566fc0aa85a9c3
-  -> COMPLETED
+stable family coordinate system
+  [Vextreme mark]  Vextreme / VexLife / VexWork
+  -> mark stays fixed
+  -> product and separator slots stay fixed
+  -> selected context receives serif/title emphasis in place
+  -> each product keeps its own palette and local tools
+
+Vextreme #415
+  -> merged 1bd880ef29b26fd9774fbb3fa1fb66e8cf8fed9f
+  -> tree e6e4708fa2a6dd791ca2a9f19b2cbd60775a139e
+
+VexLife #929
+  -> merged c24ef3a5bf81a1f3f73ebe413ba096a163e4374c
+  -> current-main composition tree a1ec368be0617fdd218010fbb013734e16051db2
+
+VexWork #154
+  -> merged 516774010b44d80b2f4eb1cdf5df783523dfa8a2
+  -> current-main composition tree 5afea26d4fec3d87722f4ff4541dfbffd1b8837a
+
+A006 lived proof
+  -> desktop + mobile across all three contexts PASS
+  -> zero horizontal scroll
+  -> stable relative family-slot geometry
 ```
 
-The next concrete dependency is **not another Support redesign**. PR #379 owns the downstream generated/runtime currentization from accepted Vextreme main, including its own flat string aggregates, `sw.js`, Page Health, Terrain projection and the rest of its existing membrane.
+The next concrete dependency remains **PR #379**, which owns downstream generated/runtime currentization from the newly accepted Vextreme main. The family-rail work does not take that membrane.
 
-Completed Welcome Wagon source rows remain accepted and are not reopened:
+Completed Welcome Wagon source/presentation rows remain accepted and are not reopened:
 
 ```text
 #400 slug rename impact tooling                  COMPLETED / MERGED
-#403 vextreme-home -> about-vextreme migration  COMPLETED / MERGED
-#413 About Terrain-context orientation           COMPLETED / MERGED / tree-exact
-#414 Support shared-shell currentness             COMPLETED / MERGED / tree-exact
+#403 canonical About migration                   COMPLETED / MERGED
+#413 About / “What is this?” orientation         COMPLETED / MERGED
+#414 Support shared-shell currentness             COMPLETED / MERGED
+#415 Vextreme stable family rail                 COMPLETED / MERGED
+#929 VexLife stable family rail                  COMPLETED / MERGED
+#154 VexWork stable family rail                  COMPLETED / MERGED
 ```
 
 ## Process map to completion
 
-The remaining path after the accepted Support row is:
+The accepted trajectory now reads:
 
 ~~~text
 accepted Welcome Wagon source
@@ -828,24 +847,25 @@ accepted Welcome Wagon source
   #403 canonical About identity ✅
   #413 About / What is this? / lived orientation ✅
   #414 Support shared shell + clean Terrain link ✅
+  #415 Vextreme stable family rail ✅
+  #929 VexLife stable family rail ✅
+  #154 VexWork stable family rail ✅
         ↓
-current dependency owner
-  #379 rederive its generated/runtime membrane
+current generated/runtime dependency owner
+  #379 rederive its existing membrane
        from accepted Vextreme main
         ↓
-later family rollout
-  project the proven header capability pattern into
-  VexLife / VexWork only where source ownership and lived need earn it
+remaining held product/design choices
+  broader Terrain visual convergence
+  VexLife screenshot-led product story as lived product exists
+  final root/default public-entry URL
         ↓
-final public-entry decision
-  decide root/default URL only after the experience is proven
-        ↓
-final lived acceptance
+final whole-project lived acceptance
   desktop + mobile + locales + keyboard + Read Aloud
   + Receive God + Archives + About + VexSystem secondary
 ~~~
 
-VexBoard becomes useful only when this genuinely fans out into parallel/conditional work; do not add Board ceremony to redraw a mostly sequential remaining path.
+The family rail proves the reusable header capability without creating a universal copied DOM component. Do not reopen the three accepted projections merely to pursue the still-held broader design choices.
 
 ## Deliberately held
 
