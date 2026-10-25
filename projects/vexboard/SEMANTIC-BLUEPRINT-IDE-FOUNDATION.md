@@ -974,6 +974,46 @@ Therefore:
 CUSTOM_SCREEN_REGISTRY_TREE != PROVEN_PIXEL / LAYOUT TREE
 ~~~
 
+Concrete VexStream pressure already proves this is not theoretical:
+
+~~~text
+ConnectionMenuSheet
+  static registry:
+    buttons -> direct children of sheet
+
+  rendered custom Compose:
+    sheet
+      -> derived content column
+          -> title / paired-name / status / download-summary
+          -> buttons visually arranged in that same column
+
+ShowQueue
+  static registry:
+    body.library-actions
+      -> PlayAll
+      -> ShuffleAll
+      -> ShowQueue
+
+  rendered custom Compose:
+    library FAB cluster
+      -> PlayAll
+      -> ShuffleAll
+
+    player controls
+      -> ... 
+      -> ShowQueue
+~~~
+
+These are not reasons to discard the registry. They are migration findings:
+
+- the connection-sheet content container/text identities should be promoted into static registration
+  when Android is normalized to the accepted VexBoard design;
+- ShowQueue should have one static structural parent matching the accepted rendered/product design
+  instead of remaining under a convenience group that no longer matches the real surface.
+
+Reverse adoption may temporarily preserve both semantic and layout parent truth separately so no
+relationship is falsified.
+
 Reverse adoption must reconcile both sources plus lived evidence. After design authority transitions, the intended direction becomes:
 
 ~~~text
