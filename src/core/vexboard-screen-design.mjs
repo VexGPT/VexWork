@@ -55,12 +55,18 @@ export function boundedResponsiveMetric({
   });
 }
 
+function normalizeBoundedMetric(metric, label) {
+  unitInterval(metric?.preferredPercent, `${label}.preferredPercent`);
+  positive(metric?.minDp, `${label}.minDp`);
+  positive(metric?.maxDp, `${label}.maxDp`);
+  positive(metric?.referenceDp, `${label}.referenceDp`);
+  assert(metric.minDp <= metric.maxDp, `${label}.minDp must be <= maxDp`);
+  return metric;
+}
+
 export function resolveBoundedResponsiveMetric(metric, actualExtentDp) {
   positive(actualExtentDp, 'actualExtentDp');
-  unitInterval(metric?.preferredPercent, 'metric.preferredPercent');
-  positive(metric?.minDp, 'metric.minDp');
-  positive(metric?.maxDp, 'metric.maxDp');
-  assert(metric.minDp <= metric.maxDp, 'metric minDp must be <= maxDp');
+  normalizeBoundedMetric(metric, 'metric');
   return clamp(actualExtentDp * metric.preferredPercent, metric.minDp, metric.maxDp);
 }
 
@@ -160,6 +166,13 @@ export function normalizeScreenDesign(input) {
   positive(input.referenceViewport.widthDp, 'referenceViewport.widthDp');
   positive(input.referenceViewport.heightDp, 'referenceViewport.heightDp');
   assert(Array.isArray(input.constraints), 'screen design constraints must be an array');
+  if (input.metrics !== undefined) {
+    assert(input.metrics && typeof input.metrics === 'object' && !Array.isArray(input.metrics),
+      'screen design metrics must be one object');
+    for (const [key, metric] of Object.entries(input.metrics)) {
+      normalizeBoundedMetric(metric, `screen design metrics.${key}`);
+    }
+  }
 
   const occurrences = new Set();
   for (const [index, constraint] of input.constraints.entries()) {
