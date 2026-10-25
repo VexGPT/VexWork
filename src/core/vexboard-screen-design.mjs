@@ -1,6 +1,7 @@
 export const VEXBOARD_SCREEN_DESIGN_SCHEMA = 'vexboard.screen-design/poc-v1';
 export const SCREEN_DESIGN_AUTHORITY_STATES = Object.freeze([
   'REVERSE_ADOPTED_CANDIDATE',
+  'VEXBOARD_DESIGN_DRAFT',
   'VEXBOARD_DESIGN_AUTHORITY',
 ]);
 
@@ -71,6 +72,39 @@ function normalizeBoundedMetric(metric, label) {
   positive(metric?.referenceDp, `${label}.referenceDp`);
   assert(metric.minDp <= metric.maxDp, `${label}.minDp must be <= maxDp`);
   return metric;
+}
+
+export function screenDesignMetric(designInput, metricRef) {
+  const design = normalizeScreenDesign(designInput);
+  const metric = design.metrics?.[metricRef];
+  if (!metric) throw new TypeError(`unknown screen design metric ${metricRef}`);
+  return Object.freeze(structuredClone(metric));
+}
+
+function normalizeMarginSpec(spec, label, metrics) {
+  if (!spec) return spec;
+  if (
+    typeof spec === 'object' &&
+    !Array.isArray(spec) &&
+    Object.keys(spec).length === 1 &&
+    typeof spec.metricRef === 'string'
+  ) {
+    assert(metrics && Object.hasOwn(metrics, spec.metricRef),
+      `${label}.metricRef missing metric ${spec.metricRef}`);
+    return spec;
+  }
+  normalizeBoundedMetric(spec, label);
+  return spec;
+}
+
+function resolveMarginSpec(design, spec, label) {
+  if (!spec) return undefined;
+  if (typeof spec.metricRef === 'string') {
+    const metric = design.metrics?.[spec.metricRef];
+    assert(metric, `${label}.metricRef missing metric ${spec.metricRef}`);
+    return metric;
+  }
+  return spec;
 }
 
 export function resolveBoundedResponsiveMetric(metric, actualExtentDp) {
@@ -164,6 +198,32 @@ export function resolveScreenDesignBox({
     y: y.startDp,
     width: x.sizeDp,
     height: y.sizeDp,
+  });
+}
+
+export function resolveScreenDesignConstraintBox({
+  designInput,
+  parentBoundsDp,
+  constraintInput,
+}) {
+  const design = normalizeScreenDesign(designInput);
+  if (!constraintInput || typeof constraintInput !== 'object') {
+    throw new TypeError('constraintInput required');
+  }
+  const horizontal = {
+    ...constraintInput.horizontal,
+    startMargin: resolveMarginSpec(design, constraintInput.horizontal?.startMargin, 'horizontal.startMargin'),
+    endMargin: resolveMarginSpec(design, constraintInput.horizontal?.endMargin, 'horizontal.endMargin'),
+  };
+  const vertical = {
+    ...constraintInput.vertical,
+    startMargin: resolveMarginSpec(design, constraintInput.vertical?.startMargin, 'vertical.startMargin'),
+    endMargin: resolveMarginSpec(design, constraintInput.vertical?.endMargin, 'vertical.endMargin'),
+  };
+  return resolveScreenDesignBox({
+    parentBoundsDp,
+    horizontal,
+    vertical,
   });
 }
 
@@ -261,10 +321,14 @@ export function normalizeScreenDesign(input) {
     if (constraint.horizontal) {
       normalizeSizeSpec(constraint.horizontal.size, `${label}.horizontal.size`);
       unitInterval(constraint.horizontal.bias ?? 0, `${label}.horizontal.bias`);
+      normalizeMarginSpec(constraint.horizontal.startMargin, `${label}.horizontal.startMargin`, input.metrics);
+      normalizeMarginSpec(constraint.horizontal.endMargin, `${label}.horizontal.endMargin`, input.metrics);
     }
     if (constraint.vertical) {
       normalizeSizeSpec(constraint.vertical.size, `${label}.vertical.size`);
       unitInterval(constraint.vertical.bias ?? 0, `${label}.vertical.bias`);
+      normalizeMarginSpec(constraint.vertical.startMargin, `${label}.vertical.startMargin`, input.metrics);
+      normalizeMarginSpec(constraint.vertical.endMargin, `${label}.vertical.endMargin`, input.metrics);
     }
   }
 
