@@ -111,6 +111,149 @@ EVIDENCE_VIEW != PRODUCT_ACCEPTANCE
 CONSTRUCTION_VIEW != TARGET_AUTHORITY
 ~~~
 
+## Identity overlays — one coordinate, switchable view lenses
+
+A human should not have to read the same feature three or four times merely because process, design,
+evidence and construction all matter.
+
+The preferred interaction is closer to a map changing between street, satellite and terrain views:
+
+~~~text
+one stable semantic identity / neighborhood
+        |
+        +-> JOURNEY view
+        |     process / interaction path
+        |
+        +-> SCREEN / DESIGN view
+        |     bounded surface frame + controls + constraints
+        |
+        +-> EVIDENCE view
+        |     expected / reference / observed visuals aligned to the same identities
+        |
+        +-> CONSTRUCTION view
+        |     portable intent -> target mapping -> target renderer/source
+        |
+        +-> SOURCE / DIAGNOSTIC view
+              exact refs, relationships, ownership and proof
+~~~
+
+The user may switch the primary lens, optionally layer bounded overlays, and return without reminting
+the feature or losing the selected semantic coordinate.
+
+~~~text
+IDENTITY_OVERLAY != NEW_SEMANTIC_IDENTITY
+VIEW_LENS != DUPLICATED_BOARD
+LENS_SWITCH != SOURCE_MUTATION
+LENS_SWITCH != CAMERA_HISTORY
+PALETTE_MODE != VIEW_LENS
+SCREENSHOT_LAYER != BOARDGRAPH_NODE_KIND
+~~~
+
+The existing color/palette control is a useful interaction precedent because it already teaches that
+the same Board can be presented differently without changing semantic truth. A future lens selector
+may live near that surface, but palette remains a visual-accessibility preference while a lens changes
+which truthful projection is emphasized.
+
+### Screen / surface frame is the visual-design starting container
+
+When the selected lens is Screen / Design, authoring should begin with a bounded surface rather than
+placing controls directly onto an effectively infinite process canvas.
+
+~~~text
+semantic Screen identity
+        +
+reference / target viewport profile
+        |
+        v
+bounded Screen frame
+        |
+        +-> child controls / regions
+        +-> START / END / TOP / BOTTOM / BASELINE constraints
+        +-> spacing / sizing / containment relationships
+        |
+        v
+resolved visual projection
+~~~
+
+The frame answers a practical design question:
+
+> What surface am I designing inside?
+
+The viewport/profile may be target-specific when the design is intentionally target-specific, or may
+represent a portable size/aspect class when the Blueprint is still target-neutral. Exact physical
+pixels are not automatically canonical meaning.
+
+~~~text
+SCREEN_FRAME != PHYSICAL_DEVICE
+VIEWPORT_PROFILE != PRODUCT_IDENTITY
+REFERENCE_BOUNDS != PORTABLE_LAYOUT_INTENT
+TARGET_LOGICAL_SIZE != PHYSICAL_PIXEL_SIZE
+~~~
+
+One semantic Screen may therefore be projected through more than one viewport profile without
+creating multiple Screens:
+
+~~~text
+screen.vexstream-music
+
+JOURNEY
+  where this Screen participates in the phone <-> desktop experience
+
+SCREEN / DESIGN
+  phone portrait reference frame
+  -> connection surface
+  -> Find VexStream
+  -> Confirm code
+  -> layout constraints
+
+EVIDENCE
+  reference visual / observed screenshot aligned to those same semantic coordinates
+
+CONSTRUCTION
+  ScreenBlueprint / Elements -> Vex Compose / Compose
+
+SOURCE
+  exact repository / file / symbol ownership
+~~~
+
+This creates a path for screenshot comparison that does not require screenshots, source annotations
+and process topology to occupy the same visual plane simultaneously.
+
+### Default lens should follow the human question
+
+A Board may expose several lenses while choosing one primary default for the current task.
+
+Examples:
+
+~~~text
+"How does pairing work?"
+-> JOURNEY
+
+"How should this Android Screen be arranged?"
+-> SCREEN / DESIGN
+
+"Does the device still look like the accepted design?"
+-> EVIDENCE
+
+"Where does this control come from in source?"
+-> CONSTRUCTION / SOURCE
+~~~
+
+The user can switch views without losing selected identity or BoardJourney context.
+
+~~~text
+SAME_IDENTITY
++ DIFFERENT_QUESTION
+-> DIFFERENT_LENS
+not
+-> DUPLICATED_SEMANTIC_CONTENT
+~~~
+
+This is currently a foundation direction pressured by the VexStream patient zero. Do not yet mint one
+universal lens enum, viewport schema or responsive-layout compiler merely from this example. The next
+implementation should prove the smallest useful Screen-frame + lens-switch seam and let a second real
+consumer determine what deserves extraction.
+
 ## Current / proposed / observed must remain visually separable
 
 The IDE should answer:
