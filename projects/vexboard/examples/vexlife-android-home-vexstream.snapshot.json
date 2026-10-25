@@ -5,6 +5,7 @@
   "label": "VexLife Android",
   "sourceRevisionRef": "git.commit.vexlife-android.255491df93835405800c93a17889c7574eb683b3",
   "sourceRefs": [
+    "projects/vexboard/examples/vexlife-android-home-vexstream.design.json",
     "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/preview/VexPreview.kt",
     "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/AppScreens.kt",
     "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeTheme.kt",
@@ -424,5 +425,7 @@
         }
       ]
     }
-  }
+  },
+  "designRef": "design.vexlife-android.home-vexstream.reverse-adopted",
+  "designLocation": "./vexlife-android-home-vexstream.design.json"
 }
