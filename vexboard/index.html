@@ -132,7 +132,8 @@ async function loadCatalogBoard(boardRef){
   const payload=await response.json();
   let projected=payload;
   if(payload?.schemaVersion===AndroidProjector.VEXLIFE_ANDROID_POC_SNAPSHOT_SCHEMA){
-    const designUrl=new URL(payload.designLocation,boardUrl);
+    const designLocation=AndroidProjector.androidPocDesignLocation(payload);
+    const designUrl=new URL(designLocation,boardUrl);
     const designResponse=await fetch(designUrl,{cache:'no-store'});
     if(!designResponse.ok)throw new Error(`${payload.designRef} HTTP ${designResponse.status}`);
     const design=ScreenDesign.normalizeScreenDesign(await designResponse.json());
