@@ -50,6 +50,8 @@ import * as Evidence from '../src/shared/vexboard-evidence.mjs';
 import { createCameraAnimator } from './ui/camera-animation.mjs';
 import * as Interaction from './ui/interaction.mjs';
 import * as Presentation from './ui/presentation.mjs';
+import * as AndroidProjector from '../src/core/vexboard-android-source-projector.mjs';
+import * as AndroidPresentation from './ui/android-reference-presentation.mjs';
 
 const app=document.getElementById('app');
 let current=null,selected=null,tool='SELECT',connectFrom=null;
@@ -126,7 +128,11 @@ async function loadCatalogBoard(boardRef){
   const boardUrl=new URL(resolution.location,source.catalogUrl);
   const response=await fetch(boardUrl,{cache:'no-store'});
   if(!response.ok)throw new Error(`${boardRef} HTTP ${response.status}`);
-  const draft=Board.normalizeDraft(await response.json());
+  const source=await response.json();
+  const projected=source?.schemaVersion===AndroidProjector.VEXLIFE_ANDROID_POC_SNAPSHOT_SCHEMA
+    ?AndroidProjector.projectVexLifeAndroidPocSnapshot(source,boardRef).board
+    :source;
+  const draft=Board.normalizeDraft(projected);
   if(draft.draftRef!==boardRef)throw new Error(`board source identity mismatch ${boardRef}`);
   return draft;
 }
@@ -180,7 +186,8 @@ function landing(){
   const anatomy=el('button','btn','Open system anatomy example');anatomy.onclick=async()=>openCatalogBoard('board.vexbusinessfactory.system-anatomy.patient-zero');
   const intent=el('button','btn','Open intent topology example');intent.onclick=async()=>openCatalogBoard('board.vexbusinessfactory.intent-topology.patient-zero');
   const vexstream=el('button','btn violet','Open VexStream living Blueprint');vexstream.onclick=async()=>openCatalogBoard('board.vexstream.phone-desktop-connection.living-blueprint');
-  examples.append(anatomy,intent,vexstream);
+  const androidPoc=el('button','btn violet','Open VexLife Android Screen POC');androidPoc.onclick=async()=>openCatalogBoard(AndroidProjector.VEXBOARD_ANDROID_POC_BOARD_REFS.EXPERIENCE);
+  examples.append(anatomy,intent,vexstream,androidPoc);
   box.append(actions,el('h2','','Source examples'),examples,el('h2','','Local drafts'));
   const list=el('div','cards');
   for(const d of drafts()){const c=el('article','card');c.append(el('div','tiny',d.mode),el('h3','',d.title),el('p','',d.derivedFromRefOrNull?`Forked from ${d.derivedFromRefOrNull}`:'Independent local draft'));const b=el('button','btn','Resume draft');b.onclick=()=>openBoard(d,{boardRef:d.draftRef});c.append(b);list.append(c)}
@@ -314,7 +321,7 @@ function renderCanvas(canvas){
     const n=node(i.semanticRef);if(!n)continue;
     const canSimulate=n.kind==='CONTROL'&&prototype&&journey?.currentRef===n.nodeRef,role=Presentation.semanticRole(current.graph,n.nodeRef),accent=presentation.nodeAccentByRef[n.nodeRef];
     const parentProjection=i.parentProjectionItemRefOrNull?item(i.parentProjectionItemRefOrNull):null,parentNode=parentProjection?node(parentProjection.semanticRef):null;
-    const hasContainedChildren=current.graph.nodes.some(candidate=>candidate.parentRefOrNull===n.nodeRef),classes=[`shape ${i.shapeKind}`,`role-${role}`,`kind-${n.kind}`];if(hasContainedChildren)classes.push('has-contained-children');if(parentNode&&n.kind==='CONTROL')classes.push('nested-control');if(selected===i.projectionItemRef)classes.push('selected');if(canSimulate)classes.push('simulatable');if(Number.isInteger(accent))classes.push(`branch-${accent}`);if(parentNode)classes.push('contained');if(editable()&&!i.locked)classes.push('draggable');if(focus){if(pinnedSemanticRefs.has(n.nodeRef))classes.push('pin-seed');else if(focusNodeRefs.has(n.nodeRef))classes.push('pin-focus');else classes.push('pin-muted')}
+    const hasContainedChildren=current.graph.nodes.some(candidate=>candidate.parentRefOrNull===n.nodeRef),classes=[`shape ${i.shapeKind}`,`role-${role}`,`kind-${n.kind}`,...AndroidPresentation.androidReferenceClassNames(current.presentation,i.projectionItemRef)];if(hasContainedChildren)classes.push('has-contained-children');if(parentNode&&n.kind==='CONTROL')classes.push('nested-control');if(selected===i.projectionItemRef)classes.push('selected');if(canSimulate)classes.push('simulatable');if(Number.isInteger(accent))classes.push(`branch-${accent}`);if(parentNode)classes.push('contained');if(editable()&&!i.locked)classes.push('draggable');if(focus){if(pinnedSemanticRefs.has(n.nodeRef))classes.push('pin-seed');else if(focusNodeRefs.has(n.nodeRef))classes.push('pin-focus');else classes.push('pin-muted')}
     const s=el('div',classes.join(' '));s.dataset.vexboardPlane=Interaction.INTERACTION_PLANES.OBJECT;s.dataset.semanticRef=n.nodeRef;s.dataset.projectionItemRef=i.projectionItemRef;Object.assign(s.style,{left:`${i.bounds.x}px`,top:`${i.bounds.y}px`,width:`${i.bounds.width}px`,height:`${i.bounds.height}px`,zIndex:String(i.layer+10)});
     s.append(el('span','shape-label',n.label));
     const marker=Presentation.roleMarker(role);if(marker)s.append(el('span','role-marker',marker));
