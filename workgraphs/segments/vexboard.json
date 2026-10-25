@@ -268,7 +268,7 @@
       "workRef": "work.vexboard.fractal-semantic-composition-spatial-layout",
       "parentWorkRefOrNull": "work.vexboard.outcome",
       "label": "Fractal semantic composition and spatial layout",
-      "purpose": "Advance VexBoard as a fractal semantic canvas through accepted occurrence-local composition, recursive-local scale, bounded relational focus, source-owned board resolution, and derived Journey pathway reduction, while preserving stable semantic identity, raw traversal evidence, source ownership, and visual/projection separation; use lived consumer pressure to earn the next local arrangement, connector/occurrence-routing, and process-analysis seams without creating a global layout or truth owner.",
+      "purpose": "Advance VexBoard as a fractal semantic canvas through accepted occurrence-local composition, recursive-local scale, bounded relational focus, source-owned board resolution, and derived Journey pathway reduction, while preserving stable semantic identity, raw traversal evidence, source ownership, and visual/projection separation; use lived consumer pressure to earn the next local arrangement, connector/occurrence-routing, and process-analysis seams, including width-bounded adaptive local arrangement when a container can no longer continue in one horizontal run, while allowing earned path shapes such as wrap, zig-zag, spiral, or other local strategies to remain projection decisions rather than semantic truth.",
       "workClass": "OUTCOME",
       "state": "RUNNING",
       "workDisposition": "ACTIVE",
@@ -315,7 +315,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-24T12:07:17.171Z",
-      "updatedAt": "2026-10-25T02:41:27.000Z"
+      "updatedAt": "2026-10-25T02:55:00.000Z"
     }
   ],
   "transitions": [
