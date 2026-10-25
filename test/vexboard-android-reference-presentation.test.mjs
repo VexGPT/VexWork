@@ -162,6 +162,15 @@ test('Android reference styling resolves from VexBoard-owned visual tokens', () 
         extraLargeRadiusDp: 28,
         fullRadius: 'FULL',
       },
+      typography: {
+        headlineSmall: { fontFamily: 'PLATFORM_DEFAULT', fontWeight: 400, fontSizeSp: 24, lineHeightSp: 32 },
+        titleLarge: { fontFamily: 'PLATFORM_DEFAULT', fontWeight: 400, fontSizeSp: 22, lineHeightSp: 28 },
+        titleMedium: { fontFamily: 'PLATFORM_DEFAULT', fontWeight: 500, fontSizeSp: 16, lineHeightSp: 24 },
+        bodyLarge: { fontFamily: 'PLATFORM_DEFAULT', fontWeight: 400, fontSizeSp: 16, lineHeightSp: 24 },
+        bodyMedium: { fontFamily: 'PLATFORM_DEFAULT', fontWeight: 400, fontSizeSp: 14, lineHeightSp: 20 },
+        labelLarge: { fontFamily: 'PLATFORM_DEFAULT', fontWeight: 500, fontSizeSp: 14, lineHeightSp: 20 },
+        labelSmall: { fontFamily: 'MONOSPACE', fontWeight: 600, fontSizeSp: 10, letterSpacingSp: 0.8 },
+      },
     },
   };
   const vars = androidReferenceCssVariables(design, presentation);
@@ -172,6 +181,15 @@ test('Android reference styling resolves from VexBoard-owned visual tokens', () 
   assert.equal(vars['--vex-android-radius-large'], '11.52px');
   assert.equal(vars['--vex-android-radius-extra-large'], '20.16px');
   assert.equal(vars['--vex-android-radius-full'], '999px');
+  assert.equal(vars['--vex-android-title-large-size'], '15.84px');
+  assert.equal(vars['--vex-android-title-large-line'], '20.16px');
+  assert.equal(vars['--vex-android-title-large-weight'], '400');
+
+  const largeTextPresentation = structuredClone(presentation);
+  largeTextPresentation.referenceViewport.fontScale = 1.45;
+  const largeVars = androidReferenceCssVariables(design, largeTextPresentation);
+  assert.equal(largeVars['--vex-android-title-large-size'], String(22 * 1.45 * 0.72) + 'px');
+  assert.equal(largeVars['--vex-android-body-medium-line'], String(20 * 1.45 * 0.72) + 'px');
 });
 
 test('Android reference presentation rejects duplicate projection occurrence hints', () => {
