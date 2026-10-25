@@ -85,7 +85,8 @@
           ]
         }
       ]
-    }
+    },
+    "realizationMode": "CUSTOM_NATIVE_REALIZATION"
   },
   "vexStream": {
     "screenRef": "screen.vexstream-music",
@@ -317,7 +318,8 @@
         ]
       }
     },
-    "libraryActionsContainerRef": "element.vexstream-music.body.library-actions"
+    "libraryActionsContainerRef": "element.vexstream-music.body.library-actions",
+    "realizationMode": "CUSTOM_NATIVE_REALIZATION"
   },
   "depth": {
     "sourceRefs": [
@@ -462,5 +464,59 @@
     }
   },
   "designRef": "design.vexlife-android.home-vexstream.reverse-adopted",
-  "designLocation": "./vexlife-android-home-vexstream.design.json"
+  "designLocation": "./vexlife-android-home-vexstream.design.json",
+  "adoptionCoverage": {
+    "schemaVersion": "vexlife-android.vexboard-adoption-coverage/poc-v1",
+    "screenRealizationModes": {
+      "screen.home": "CUSTOM_NATIVE_REALIZATION",
+      "screen.vexstream-music": "CUSTOM_NATIVE_REALIZATION"
+    },
+    "identityExceptions": [
+      {
+        "semanticRef": "element.vexstream-music.body.connection.menu.content",
+        "origin": "DERIVED_CUSTOM_PRESENTATION",
+        "staticRegistryStatus": "UNREGISTERED_STATIC",
+        "sourceRefs": [
+          "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/VexComposeScope.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt"
+        ]
+      },
+      {
+        "semanticRef": "element.vexstream-music.body.connection.menu.content.title",
+        "origin": "DERIVED_CUSTOM_PRESENTATION",
+        "staticRegistryStatus": "UNREGISTERED_STATIC",
+        "sourceRefs": [
+          "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/VexComposeScope.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt"
+        ]
+      },
+      {
+        "semanticRef": "element.vexstream-music.body.connection.menu.content.paired-name",
+        "origin": "DERIVED_CUSTOM_PRESENTATION",
+        "staticRegistryStatus": "UNREGISTERED_STATIC",
+        "sourceRefs": [
+          "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/VexComposeScope.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt"
+        ]
+      },
+      {
+        "semanticRef": "element.vexstream-music.body.connection.menu.content.status",
+        "origin": "DERIVED_CUSTOM_PRESENTATION",
+        "staticRegistryStatus": "UNREGISTERED_STATIC",
+        "sourceRefs": [
+          "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/VexComposeScope.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt"
+        ]
+      },
+      {
+        "semanticRef": "element.vexstream-music.body.connection.menu.content.library-download-status",
+        "origin": "DERIVED_CUSTOM_PRESENTATION",
+        "staticRegistryStatus": "UNREGISTERED_STATIC",
+        "sourceRefs": [
+          "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/VexComposeScope.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt"
+        ]
+      }
+    ]
+  }
 }
