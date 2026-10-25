@@ -34,17 +34,28 @@ const CSS = `
 }
 .shape.android-role-toolbar {
   background:var(--vex-android-surface,#17181c);border:0;border-bottom:1px solid var(--vex-android-outline-variant,#383a42);border-radius:var(--vex-android-radius-extra-large,20px) var(--vex-android-radius-extra-large,20px) 0 0;box-shadow:none;color:var(--vex-android-on-surface,#f5f5f4);
-  justify-content:flex-start;text-align:left;padding:0 18px;font-size:22px;font-weight:650;
+  justify-content:flex-start;text-align:left;padding:0 18px;
+  font-family:var(--vex-android-title-large-family,system-ui);font-size:var(--vex-android-title-large-size,16px);line-height:var(--vex-android-title-large-line,20px);font-weight:var(--vex-android-title-large-weight,400);
 }
 .shape.android-role-surface {
   background:var(--vex-android-surface-container-high,#272930);border:1px solid var(--vex-android-outline-variant,#383a42);border-radius:var(--vex-android-radius-large,12px);box-shadow:none;color:var(--vex-android-on-surface,#f5f5f4);
 }
+.shape.android-role-surface>.shape-label {
+  font-family:var(--vex-android-headline-small-family,system-ui);font-size:var(--vex-android-headline-small-size,17px);line-height:var(--vex-android-headline-small-line,22px);font-weight:var(--vex-android-headline-small-weight,400);
+}
 .shape.android-role-text { border:0;background:transparent;box-shadow:none;color:var(--vex-android-on-surface,#f5f5f4);justify-content:flex-start;text-align:left;white-space:pre-line; }
-.shape.android-role-text.android-variant-title { font-size:15px;font-weight:750;line-height:1.35; }
-.shape.android-role-text.android-variant-supporting { color:var(--vex-android-on-surface-variant,#b7b8bf);font-size:11px;line-height:1.45; }
-.shape.android-role-text.android-variant-empty { color:var(--vex-android-on-surface-variant,#b7b8bf);font-size:13px; }
+.shape.android-role-text.android-variant-title {
+  font-family:var(--vex-android-title-medium-family,system-ui);font-size:var(--vex-android-title-medium-size,12px);line-height:var(--vex-android-title-medium-line,17px);font-weight:var(--vex-android-title-medium-weight,500);
+}
+.shape.android-role-text.android-variant-supporting {
+  color:var(--vex-android-on-surface-variant,#b7b8bf);font-family:var(--vex-android-body-large-family,system-ui);font-size:var(--vex-android-body-large-size,12px);line-height:var(--vex-android-body-large-line,17px);font-weight:var(--vex-android-body-large-weight,400);
+}
+.shape.android-role-text.android-variant-empty {
+  color:var(--vex-android-on-surface-variant,#b7b8bf);font-family:var(--vex-android-body-large-family,system-ui);font-size:var(--vex-android-body-large-size,12px);line-height:var(--vex-android-body-large-line,17px);font-weight:var(--vex-android-body-large-weight,400);
+}
 .shape.android-role-button {
-  border-radius:var(--vex-android-radius-full,999px);box-shadow:none;font-size:11px;font-weight:750;padding:6px 12px;
+  border-radius:var(--vex-android-radius-full,999px);box-shadow:none;padding:6px 12px;
+  font-family:var(--vex-android-label-large-family,system-ui);font-size:var(--vex-android-label-large-size,10px);line-height:var(--vex-android-label-large-line,14px);font-weight:var(--vex-android-label-large-weight,500);
 }
 .shape.android-role-button.android-variant-primary { background:var(--vex-android-primary,#f2f2ef);border-color:var(--vex-android-primary,#f2f2ef);color:var(--vex-android-on-primary,#111216); }
 .shape.android-role-button.android-variant-secondary { background:var(--vex-android-secondary-container,#4a4458);border-color:var(--vex-android-secondary-container,#4a4458);color:var(--vex-android-on-secondary-container,#e8def8); }
@@ -61,11 +72,15 @@ const CSS = `
   background:transparent;border:0;border-radius:0;box-shadow:none;padding:0;overflow:hidden;
 }
 .shape.android-role-scroll-viewport>.shape-label { display:none; }
-.shape.android-role-tab { border-radius:var(--vex-android-radius-full,999px);box-shadow:none;font-size:11px;font-weight:750; }
+.shape.android-role-tab {
+  border-radius:var(--vex-android-radius-full,999px);box-shadow:none;
+  font-family:var(--vex-android-label-large-family,system-ui);font-size:var(--vex-android-label-large-size,10px);line-height:var(--vex-android-label-large-line,14px);font-weight:var(--vex-android-label-large-weight,500);
+}
 .shape.android-role-tab.android-variant-selected { background:var(--vex-android-primary,#f2f2ef);border-color:var(--vex-android-primary,#f2f2ef);color:var(--vex-android-on-primary,#111216); }
 .shape.android-role-tab.android-variant-default { background:transparent;border:1px solid var(--vex-android-outline,#5a5d68);color:var(--vex-android-primary,#f2f2ef); }
 .shape.android-role-status-row {
   background:transparent;border:0;border-radius:var(--vex-android-radius-medium,9px);box-shadow:none;color:var(--vex-android-on-surface-variant,#b7b8bf);justify-content:flex-start;text-align:left;padding-left:18px;
+  font-family:var(--vex-android-body-medium-family,system-ui);font-size:var(--vex-android-body-medium-size,10px);line-height:var(--vex-android-body-medium-line,14px);font-weight:var(--vex-android-body-medium-weight,400);
 }
 .shape.android-role-status-row.android-variant-loading::before { content:"◌";font-size:18px;margin-right:10px;color:var(--vex-android-primary,#f2f2ef); }
 .shape.android-role-list-row {
@@ -85,7 +100,8 @@ const CSS = `
   background:var(--vex-android-surface-container-low,#1d1b20);border:1px solid var(--vex-android-outline,#5a5d68);border-radius:var(--vex-android-radius-extra-large,20px) var(--vex-android-radius-extra-large,20px) 0 0;box-shadow:0 -12px 32px #0008;color:var(--vex-android-on-surface,#f5f5f4);padding:16px 12px;
 }
 .shape.android-role-modal-sheet>.shape-label {
-  position:absolute;left:18px;top:12px;width:auto;font-size:15px;font-weight:800;color:var(--vex-android-on-surface,#f5f5f4);
+  position:absolute;left:18px;top:12px;width:auto;color:var(--vex-android-on-surface,#f5f5f4);
+  font-family:var(--vex-android-headline-small-family,system-ui);font-size:var(--vex-android-headline-small-size,17px);line-height:var(--vex-android-headline-small-line,22px);font-weight:var(--vex-android-headline-small-weight,400);
 }
 .shape.android-role-depth-portal {
   background:#eef2ff;border:2px solid #6366f1;border-radius:14px;color:#3730a3;font-weight:800;
@@ -208,7 +224,31 @@ export function androidReferenceCssVariables(designInput, presentationInput) {
   if (!Number.isFinite(scale) || scale <= 0) throw new TypeError('Android presentation boardScalePerDp invalid');
   const color = (ref) => requiredVisualToken(designInput, 'colors', ref);
   const shape = (ref) => requiredVisualToken(designInput, 'shapes', ref);
+  const typography = (ref) => requiredVisualToken(designInput, 'typography', ref);
+  const fontScale = Number(presentation.referenceViewport?.fontScale ?? 1);
+  if (!Number.isFinite(fontScale) || fontScale <= 0) throw new TypeError('Android presentation fontScale invalid');
+  const fontFamily = (token) =>
+    token.fontFamily === 'SERIF'
+      ? 'Georgia, serif'
+      : token.fontFamily === 'MONOSPACE'
+        ? 'ui-monospace, SFMono-Regular, Menlo, monospace'
+        : 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+  const textVars = {};
+  for (const ref of [
+    'headlineSmall', 'titleLarge', 'titleMedium', 'bodyLarge',
+    'bodyMedium', 'labelLarge', 'labelSmall',
+  ]) {
+    const token = typography(ref);
+    const prefix = `--vex-android-${ref.replace(/[A-Z]/g, (match) => `-${match.toLowerCase()}`)}`;
+    textVars[`${prefix}-family`] = fontFamily(token);
+    textVars[`${prefix}-size`] = `${Number(token.fontSizeSp) * fontScale * scale}px`;
+    if (token.lineHeightSp !== undefined) {
+      textVars[`${prefix}-line`] = `${Number(token.lineHeightSp) * fontScale * scale}px`;
+    }
+    textVars[`${prefix}-weight`] = String(token.fontWeight);
+  }
   return Object.freeze({
+    ...textVars,
     '--vex-android-background': color('background'),
     '--vex-android-on-surface': color('onSurface'),
     '--vex-android-on-surface-variant': color('onSurfaceVariant'),
