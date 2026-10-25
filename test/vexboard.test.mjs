@@ -357,6 +357,82 @@ test('bounded neighborhood query follows relationships and containment determini
   assert.throws(() => Reader.queryBoardNeighborhood({ graph, projection }, { semanticRef: 'node.missing' }), /unknown semanticRef/);
 });
 
+test('multi-ID relational focus connects, traces and projects repeated occurrences without semantic mutation', () => {
+  const graph = baseGraph();
+  graph.nodes.push(
+    { nodeRef: 'node.c', kind: 'ARTIFACT', label: 'C', parentRefOrNull: null, detailBoardRefOrNull: null, sourceRefs: ['source.c'] },
+    { nodeRef: 'node.d', kind: 'ARTIFACT', label: 'D', parentRefOrNull: null, detailBoardRefOrNull: null, sourceRefs: ['source.d'] },
+  );
+  graph.relationships = [
+    { relationshipRef: 'rel.a-b', kind: 'DATA', fromRef: 'node.a', toRef: 'node.b', labelOrNull: 'A_TO_B', sourceRefs: ['source.a-b'] },
+    { relationshipRef: 'rel.b-c', kind: 'DATA', fromRef: 'node.b', toRef: 'node.c', labelOrNull: 'B_TO_C', sourceRefs: ['source.b-c'] },
+    { relationshipRef: 'rel.a-d', kind: 'REFERENCE', fromRef: 'node.a', toRef: 'node.d', labelOrNull: 'A_TO_D', sourceRefs: ['source.a-d'] },
+  ];
+  const projection = baseProjection();
+  projection.items.push(
+    { projectionItemRef: 'item.b.second', semanticRef: 'node.b', shapeKind: 'RECTANGLE', bounds: { x: 260, y: 180, width: 160, height: 80 }, layer: 4, parentProjectionItemRefOrNull: null, visible: true, locked: false },
+    { projectionItemRef: 'item.c', semanticRef: 'node.c', shapeKind: 'RECTANGLE', bounds: { x: 520, y: 0, width: 160, height: 80 }, layer: 0, parentProjectionItemRefOrNull: null, visible: true, locked: false },
+    { projectionItemRef: 'item.d', semanticRef: 'node.d', shapeKind: 'RECTANGLE', bounds: { x: 0, y: 180, width: 160, height: 80 }, layer: 0, parentProjectionItemRefOrNull: null, visible: true, locked: false },
+  );
+  const before = JSON.stringify({ graph, projection });
+
+  const connected = Reader.queryBoardRelationalFocus(
+    { graph, projection },
+    { semanticRefs: ['node.c', 'node.a'], mode: 'CONNECT', maxDepth: 4, maxNodes: 10 },
+  );
+  assert.equal(connected.schemaVersion, Reader.VEXBOARD_RELATIONAL_FOCUS_SCHEMA);
+  assert.deepEqual(connected.pinnedRefs, ['node.a', 'node.c']);
+  assert.deepEqual(connected.nodes.map((node) => node.nodeRef), ['node.a', 'node.b', 'node.c']);
+  assert.deepEqual(connected.relationships.map((relationship) => relationship.relationshipRef), ['rel.a-b', 'rel.b-c']);
+  assert.deepEqual(
+    connected.projectionItems.filter((item) => item.semanticRef === 'node.b').map((item) => item.projectionItemRef),
+    ['item.b', 'item.b.second'],
+  );
+  assert.deepEqual(connected.unconnectedRefs, []);
+  assert.equal(connected.truncated, false);
+
+  const direct = Reader.queryBoardRelationalFocus(
+    { graph, projection },
+    { semanticRefs: ['node.a', 'node.c'], mode: 'DIRECT' },
+  );
+  assert.deepEqual(direct.nodes.map((node) => node.nodeRef), ['node.a', 'node.c']);
+  assert.deepEqual(direct.relationships, []);
+
+  const downstream = Reader.queryBoardRelationalFocus(
+    { graph, projection },
+    { semanticRefs: ['node.a'], mode: 'DOWNSTREAM', maxDepth: 2, maxNodes: 10 },
+  );
+  assert.deepEqual(downstream.nodes.map((node) => node.nodeRef), ['node.a', 'node.b', 'node.c', 'node.d']);
+  assert.deepEqual(downstream.relationships.map((relationship) => relationship.relationshipRef), ['rel.a-b', 'rel.a-d', 'rel.b-c']);
+
+  const upstream = Reader.queryBoardRelationalFocus(
+    { graph, projection },
+    { semanticRefs: ['node.c'], mode: 'UPSTREAM', maxDepth: 2, maxNodes: 10 },
+  );
+  assert.deepEqual(upstream.nodes.map((node) => node.nodeRef), ['node.a', 'node.b', 'node.c']);
+  assert.deepEqual(upstream.relationships.map((relationship) => relationship.relationshipRef), ['rel.a-b', 'rel.b-c']);
+
+  const occurrences = Reader.queryBoardRelationalFocus(
+    { graph, projection },
+    { semanticRefs: ['node.b'], mode: 'OCCURRENCES' },
+  );
+  assert.equal(occurrences.relationships.length, 0);
+  assert.deepEqual(occurrences.projectionItems.map((item) => item.projectionItemRef), ['item.b', 'item.b.second']);
+
+  assert.equal(JSON.stringify({ graph, projection }), before);
+  assert.throws(
+    () => Reader.queryBoardRelationalFocus({ graph, projection }, { semanticRefs: ['node.a', 'node.a'] }),
+    /semanticRefs must be unique/,
+  );
+  assert.throws(
+    () => Reader.queryBoardRelationalFocus({ graph, projection }, { semanticRefs: ['node.missing'] }),
+    /unknown semanticRef/,
+  );
+  assert.throws(
+    () => Reader.queryBoardRelationalFocus({ graph, projection }, { semanticRefs: ['node.a'], mode: 'EVERYTHING' }),
+    /unsupported relational focus mode/,
+  );
+});
 test('built-in board routing is explicit and fail-closed for unknown portal targets', () => {
   assert.equal(Reader.builtinBoardUrl('board.vexboard.self-map'), './self-map.json');
   assert.equal(Reader.builtinBoardUrl('board.vexboard.publish'), './publish-map.json');

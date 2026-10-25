@@ -38,7 +38,7 @@
 .save-status{min-width:116px;color:#78716c;font:700 8px ui-monospace,monospace;line-height:1.25}.save-status.dirty{color:#b45309}.save-status.error{color:#b91c1c}.save-status.saved{color:#15803d}
 .containment-row{display:grid;grid-template-columns:82px minmax(0,1fr);gap:6px;align-items:center;margin-top:8px}.containment-select{min-width:0;border:1px solid #d6d3d1;border-radius:6px;background:#fff;padding:6px;font-size:10px}
 @media(max-width:850px){.work{grid-template-columns:62px minmax(0,1fr)}.inspector{display:none}.minimap{width:150px;height:94px}}
-</style>
+.shape.pin-muted{opacity:.2}.edge.pin-muted,.edge-label.pin-muted{opacity:.12}.shape.pin-focus{box-shadow:0 0 0 3px #0f766e33,0 3px 12px #00000010}.shape.pin-seed{outline:3px solid #0f766e55;outline-offset:3px}.edge.pin-focus{stroke:#0f766e!important;stroke-width:4}.edge-label.pin-focus{fill:#115e59;stroke:#ccfbf1;stroke-width:5px}.pin-menu{position:fixed;z-index:200;min-width:190px;padding:6px;border:1px solid #d6d3d1;border-radius:9px;background:#fff;box-shadow:0 12px 32px #0003;display:flex;flex-direction:column;gap:4px}.pin-menu button{text-align:left}.pin-mode-active{border-color:#5eead4!important;background:#f0fdfa!important;color:#115e59!important}.pin-list{display:flex;flex-direction:column;gap:5px}.pin-row{display:flex;align-items:center;gap:5px}.pin-row .ref-token{flex:1}</style>
 </head>
 <body>
 <header class="top"><strong>VexBoard</strong><span class="tiny">semantic canvas proving ground</span><a href="../">← VexWork</a></header>
@@ -59,6 +59,7 @@ let boardStack=[];
 let activeBoardRef=null;
 let viewportEl=null,canvasEl=null,minimapEl=null,zoomReadoutEl=null;
 let draftDirty=false,saveMessage='',suppressCanvasClick=false;
+let pinnedSemanticRefs=new Set(),relationalFocusMode='CONNECT',pinMenuEl=null;
 const reducedMotion=globalThis.matchMedia?.('(prefers-reduced-motion: reduce)')||null;
 const cameraAnimator=createCameraAnimator({
   normalizeCamera:Board.normalizeCamera,
@@ -104,7 +105,7 @@ async function openBuiltInBoard(boardRef,{pushCurrent=false}={}){
   return openBoard(d,{pushCurrent,boardRef,prototypeInput});
 }
 
-function snapshotCurrent(){return current?{current,selected,tool,camera,collapsed:[...collapsed],journey,prototype,scenario,interactionTrail:interactionTrail.map(entry=>({...entry})),activeBoardRef,draftDirty,saveMessage}:null}
+function snapshotCurrent(){return current?{current,selected,tool,camera,collapsed:[...collapsed],journey,prototype,scenario,interactionTrail:interactionTrail.map(entry=>({...entry})),activeBoardRef,draftDirty,saveMessage,pinnedSemanticRefs:[...pinnedSemanticRefs],relationalFocusMode}:null}
 async function openBoard(input,{pushCurrent=false,boardRef=null,prototypeInput=null}={}){
   cameraAnimator.cancel();
   if(pushCurrent&&current)boardStack.push(snapshotCurrent());
@@ -112,12 +113,12 @@ async function openBoard(input,{pushCurrent=false,boardRef=null,prototypeInput=n
   current={...d,graph:s.graph,projection:s.projection};selected=null;tool='SELECT';connectFrom=null;
   prototype=prototypeInput?Board.normalizeBoardPrototype(prototypeInput,s.graph):null;
   scenario=prototype?Board.createBoardScenario(prototype,s.graph,{scenarioRef:ref('scenario.vexboard')}):null;
-  interactionTrail=[];collapsed=new Set();journey=null;camera=Board.normalizeCamera({x:48,y:48,zoom:1});activeBoardRef=boardRef||d.draftRef;
+  interactionTrail=[];collapsed=new Set();journey=null;pinnedSemanticRefs=new Set();relationalFocusMode='CONNECT';camera=Board.normalizeCamera({x:48,y:48,zoom:1});activeBoardRef=boardRef||d.draftRef;
   draftDirty=d.mode==='LOCAL_DRAFT'&&!d.savedAtOrNull;
   saveMessage=d.mode==='LOCAL_DRAFT'?(d.savedAtOrNull?`Saved locally · ${savedClock(d.savedAtOrNull)}`:'Not saved locally yet'):'';
   renderWorkspace();requestAnimationFrame(()=>fitBoard());
 }
-function returnBoard(){cameraAnimator.cancel();const prior=boardStack.pop();if(!prior)return;({current,selected,tool,camera,journey,prototype,scenario,interactionTrail,activeBoardRef,draftDirty,saveMessage}=prior);collapsed=new Set(prior.collapsed);connectFrom=null;renderWorkspace();requestAnimationFrame(()=>applyCamera())}
+function returnBoard(){cameraAnimator.cancel();const prior=boardStack.pop();if(!prior)return;({current,selected,tool,camera,journey,prototype,scenario,interactionTrail,activeBoardRef,draftDirty,saveMessage,relationalFocusMode}=prior);collapsed=new Set(prior.collapsed);pinnedSemanticRefs=new Set(prior.pinnedSemanticRefs||[]);connectFrom=null;closePinMenu();renderWorkspace();requestAnimationFrame(()=>applyCamera())}
 async function enterPortal(detailBoardRef){
   const local=drafts().find(d=>d.draftRef===detailBoardRef);
   if(local){await openBoard(local,{pushCurrent:true,boardRef:detailBoardRef});return}
@@ -128,7 +129,7 @@ async function enterPortal(detailBoardRef){
 
 function landing(){
   cameraAnimator.cancel();
-  current=null;selected=null;journey=null;prototype=null;scenario=null;interactionTrail=[];boardStack=[];activeBoardRef=null;app.className='app';app.replaceChildren();
+  current=null;selected=null;journey=null;prototype=null;scenario=null;interactionTrail=[];pinnedSemanticRefs=new Set();relationalFocusMode='CONNECT';closePinMenu();boardStack=[];activeBoardRef=null;app.className='app';app.replaceChildren();
   const box=el('section','landing');
   box.append(el('div','eyebrow','VexBoard canvas projection'),el('h1','','Design the map before implementation has to guess it.'),el('p','lede','Create a local semantic-board draft or inspect an existing source board through a zoomable, pannable, recursive canvas. Camera, focus and collapse are read-only view state; requesting edit still forks a browser-local draft copy rather than mutating source truth.'));
   const actions=el('div','row');
@@ -172,13 +173,31 @@ function setInspectorReveal({semanticRefs=[],projectionRefs=[],relationshipRefs=
     if(semantic.has(target.dataset.semanticRef)||projection.has(target.dataset.projectionItemRef)||relationship.has(target.dataset.relationshipRef))target.classList.add('inspector-reveal');
   }
 }
+function currentRelationalFocus(){
+  if(!current||!pinnedSemanticRefs.size)return null;
+  return Board.queryBoardRelationalFocus(current,{semanticRefs:[...pinnedSemanticRefs],mode:relationalFocusMode,maxDepth:6,maxNodes:60});
+}
+function setRelationalFocusMode(mode){if(!Board.VEXBOARD_RELATIONAL_FOCUS_MODES.includes(mode))return;relationalFocusMode=mode;renderWorkspace();requestAnimationFrame(()=>applyCamera())}
+function togglePinnedSemanticRef(semanticRef){if(pinnedSemanticRefs.has(semanticRef))pinnedSemanticRefs.delete(semanticRef);else pinnedSemanticRefs.add(semanticRef);closePinMenu();renderWorkspace();requestAnimationFrame(()=>applyCamera())}
+function clearPinnedSemanticRefs(){pinnedSemanticRefs.clear();closePinMenu();renderWorkspace();requestAnimationFrame(()=>applyCamera())}
+function closePinMenu(){if(pinMenuEl){pinMenuEl.remove();pinMenuEl=null}}
+function openPinMenu(clientX,clientY,semanticRef){
+  closePinMenu();
+  const menu=el('div','pin-menu');menu.dataset.vexboardPlane=Interaction.INTERACTION_PLANES.CHROME;Object.assign(menu.style,{left:`${clientX}px`,top:`${clientY}px`});
+  const toggle=el('button','btn',pinnedSemanticRefs.has(semanticRef)?'Unpin identity':'Pin identity');toggle.onclick=()=>togglePinnedSemanticRef(semanticRef);menu.append(toggle);
+  for(const [label,mode] of [['Connect pinned','CONNECT'],['Direct only','DIRECT'],['Trace upstream','UPSTREAM'],['Trace downstream','DOWNSTREAM'],['Occurrences only','OCCURRENCES']]){const button=el('button',`btn${relationalFocusMode===mode?' pin-mode-active':''}`,label);button.onclick=()=>{if(!pinnedSemanticRefs.has(semanticRef))pinnedSemanticRefs.add(semanticRef);relationalFocusMode=mode;closePinMenu();renderWorkspace();requestAnimationFrame(()=>applyCamera())};menu.append(button)}
+  if(pinnedSemanticRefs.size){const clear=el('button','btn','Clear pins');clear.onclick=clearPinnedSemanticRefs;menu.append(clear)}
+  document.body.append(menu);pinMenuEl=menu;
+}
+document.addEventListener('pointerdown',(event)=>{if(pinMenuEl&&!pinMenuEl.contains(event.target))closePinMenu()},true);
+document.addEventListener('keydown',(event)=>{if(event.key==='Escape')closePinMenu()});
 function inspectorRefToken(value,{semanticRefs=[],projectionRefs=[],relationshipRefs=[]}={}){
   const token=el('span','ref-token',value);token.tabIndex=0;token.title='Hover or focus to reveal on canvas';token.setAttribute('aria-label',`Reveal ${value} on canvas`);
   const reveal=()=>setInspectorReveal({semanticRefs,projectionRefs,relationshipRefs});
   token.onmouseenter=reveal;token.onfocus=reveal;token.onmouseleave=clearInspectorReveal;token.onblur=clearInspectorReveal;return token;
 }
 
-function renderEdges(svg,visibleSemanticRefs,presentation){
+function renderEdges(svg,visibleSemanticRefs,presentation,focus){
   const defs=document.createElementNS('http://www.w3.org/2000/svg','defs');
   const marker=document.createElementNS('http://www.w3.org/2000/svg','marker');
   marker.setAttribute('id','vexboard-arrow');marker.setAttribute('viewBox','0 0 10 10');marker.setAttribute('refX','8');marker.setAttribute('refY','5');marker.setAttribute('markerWidth','5');marker.setAttribute('markerHeight','5');marker.setAttribute('orient','auto-start-reverse');
@@ -188,10 +207,10 @@ function renderEdges(svg,visibleSemanticRefs,presentation){
     const a=itemFor(r.fromRef),b=itemFor(r.toRef);if(!a||!b)continue;
     const x1=a.bounds.x+a.bounds.width/2,y1=a.bounds.y+a.bounds.height/2,x2=b.bounds.x+b.bounds.width/2,y2=b.bounds.y+b.bounds.height/2;
     const accent=presentation.relationshipAccentByRef[r.relationshipRef];
-    const classes=['edge',r.kind.toLowerCase()];if(Number.isInteger(accent))classes.push(`branch-${accent}`);
+    const classes=['edge',r.kind.toLowerCase()];if(Number.isInteger(accent))classes.push(`branch-${accent}`);if(focus){if(focus.relationships.some(value=>value.relationshipRef===r.relationshipRef))classes.push('pin-focus');else classes.push('pin-muted')}
     const l=document.createElementNS('http://www.w3.org/2000/svg','line');l.setAttribute('class',classes.join(' '));l.dataset.relationshipRef=r.relationshipRef;l.setAttribute('x1',x1);l.setAttribute('y1',y1);l.setAttribute('x2',x2);l.setAttribute('y2',y2);l.setAttribute('marker-end','url(#vexboard-arrow)');svg.append(l);
     if(r.labelOrNull){
-      const label=document.createElementNS('http://www.w3.org/2000/svg','text');label.classList.add('edge-label');label.dataset.relationshipRef=r.relationshipRef;label.setAttribute('x',String((x1+x2)/2));label.setAttribute('y',String((y1+y2)/2-5));label.setAttribute('text-anchor','middle');label.textContent=r.labelOrNull;svg.append(label);
+      const label=document.createElementNS('http://www.w3.org/2000/svg','text');label.classList.add('edge-label');if(focus){if(focus.relationships.some(value=>value.relationshipRef===r.relationshipRef))label.classList.add('pin-focus');else label.classList.add('pin-muted')}label.dataset.relationshipRef=r.relationshipRef;label.setAttribute('x',String((x1+x2)/2));label.setAttribute('y',String((y1+y2)/2-5));label.setAttribute('text-anchor','middle');label.textContent=r.labelOrNull;svg.append(label);
     }
   }
 }
@@ -242,15 +261,15 @@ function renderPrototypeOverlays(view){
 }
 
 function renderCanvas(canvas){
-  const shown=visibleItems(),visibleSemanticRefs=new Set(shown.map(i=>i.semanticRef)),presentation=Presentation.deriveBranchPresentation(current.graph),extent=Presentation.canvasExtent(shown);
+  const shown=visibleItems(),visibleSemanticRefs=new Set(shown.map(i=>i.semanticRef)),presentation=Presentation.deriveBranchPresentation(current.graph),focus=currentRelationalFocus(),focusNodeRefs=new Set(focus?.nodes.map(value=>value.nodeRef)||[]),extent=Presentation.canvasExtent(shown);
   Object.assign(canvas.style,{width:`${extent.width}px`,height:`${extent.height}px`});
   canvas.append(el('div','canvas-boundary-label','Board canvas'));
-  const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.classList.add('edges');svg.setAttribute('width',String(extent.width));svg.setAttribute('height',String(extent.height));renderEdges(svg,visibleSemanticRefs,presentation);canvas.append(svg);
+  const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.classList.add('edges');svg.setAttribute('width',String(extent.width));svg.setAttribute('height',String(extent.height));renderEdges(svg,visibleSemanticRefs,presentation,focus);canvas.append(svg);
   for(const i of [...shown].sort((a,b)=>a.layer-b.layer)){
     const n=node(i.semanticRef);if(!n)continue;
     const canSimulate=n.kind==='CONTROL'&&prototype&&journey?.currentRef===n.nodeRef,role=Presentation.semanticRole(current.graph,n.nodeRef),accent=presentation.nodeAccentByRef[n.nodeRef];
     const parentProjection=i.parentProjectionItemRefOrNull?item(i.parentProjectionItemRefOrNull):null,parentNode=parentProjection?node(parentProjection.semanticRef):null;
-    const classes=[`shape ${i.shapeKind}`,`role-${role}`];if(selected===i.projectionItemRef)classes.push('selected');if(canSimulate)classes.push('simulatable');if(Number.isInteger(accent))classes.push(`branch-${accent}`);if(parentNode)classes.push('contained');if(editable()&&!i.locked)classes.push('draggable');
+    const classes=[`shape ${i.shapeKind}`,`role-${role}`];if(selected===i.projectionItemRef)classes.push('selected');if(canSimulate)classes.push('simulatable');if(Number.isInteger(accent))classes.push(`branch-${accent}`);if(parentNode)classes.push('contained');if(editable()&&!i.locked)classes.push('draggable');if(focus){if(pinnedSemanticRefs.has(n.nodeRef))classes.push('pin-seed');else if(focusNodeRefs.has(n.nodeRef))classes.push('pin-focus');else classes.push('pin-muted')}
     const s=el('div',classes.join(' '));s.dataset.vexboardPlane=Interaction.INTERACTION_PLANES.OBJECT;s.dataset.semanticRef=n.nodeRef;s.dataset.projectionItemRef=i.projectionItemRef;Object.assign(s.style,{left:`${i.bounds.x}px`,top:`${i.bounds.y}px`,width:`${i.bounds.width}px`,height:`${i.bounds.height}px`,zIndex:String(i.layer+10)});
     s.append(el('span','shape-label',n.label));
     const marker=Presentation.roleMarker(role);if(marker)s.append(el('span','role-marker',marker));
@@ -258,6 +277,7 @@ function renderCanvas(canvas){
     if(presentation.hasBranching&&Number.isInteger(accent))s.append(el('span','branch-marker',`Path ${String.fromCharCode(65+accent)}`));
     if(parentNode)s.append(el('span','contained-marker',`in ${parentNode.label}`));
     let suppressShapeClick=false;
+    s.oncontextmenu=(e)=>{e.preventDefault();e.stopPropagation();selected=i.projectionItemRef;openPinMenu(e.clientX,e.clientY,n.nodeRef)};
     s.onclick=async(e)=>{e.stopPropagation();if(suppressShapeClick){suppressShapeClick=false;return}if(tool==='CONNECT'&&editable()){if(!connectFrom){connectFrom=i.projectionItemRef;selected=i.projectionItemRef;renderWorkspace();requestAnimationFrame(()=>applyCamera());return}const from=item(connectFrom);connectFrom=null;if(from&&from.semanticRef!==i.semanticRef)await act('CONNECT_NODES',{relationship:{relationshipRef:ref('rel.vexboard'),kind:'FLOW',fromRef:from.semanticRef,toRef:i.semanticRef,labelOrNull:null,sourceRefs:[]}});tool='SELECT';selected=i.projectionItemRef;renderWorkspace();requestAnimationFrame(()=>applyCamera());return}if(tool==='SELECT'&&tryClickableControl(n.nodeRef))return;selected=i.projectionItemRef;renderWorkspace();requestAnimationFrame(()=>applyCamera())};
     if(editable()&&tool==='SELECT'&&!i.locked)s.onpointerdown=(e)=>{
       if(!Interaction.shouldStartObjectMove({tool,editable:editable(),locked:i.locked,targetPlane:Interaction.INTERACTION_PLANES.OBJECT,button:e.button}))return;
@@ -315,7 +335,7 @@ function inspector(side){
     ['board',activeBoardRef||current.draftRef,null],
   ];
   for(const [k,v,reveal] of identityRows){kv.append(el('div','k',k));const value=el('div','v');value.append(reveal?inspectorRefToken(String(v),reveal):document.createTextNode(String(v)));kv.append(value)}g.append(kv);
-  const nav=el('div','row');const focus=el('button','btn','Focus selected');focus.onclick=()=>focusSelected({animate:true});nav.append(focus);
+  const nav=el('div','row');const focus=el('button','btn','Focus selected');focus.onclick=()=>focusSelected({animate:true});nav.append(focus);const pin=el('button','btn',pinnedSemanticRefs.has(n.nodeRef)?'Unpin identity':'Pin identity');pin.onclick=()=>togglePinnedSemanticRef(n.nodeRef);nav.append(pin);
   const children=current.graph.nodes.filter(candidate=>candidate.parentRefOrNull===n.nodeRef);
   if(children.length){const toggle=el('button','btn',collapsed.has(n.nodeRef)?'Expand children':'Collapse children');toggle.onclick=()=>{collapsed.has(n.nodeRef)?collapsed.delete(n.nodeRef):collapsed.add(n.nodeRef);renderWorkspace();requestAnimationFrame(()=>applyCamera())};nav.append(toggle)}
   if(n.detailBoardRefOrNull){const enter=el('button','btn violet','Enter portal');enter.disabled=!Board.builtinBoardUrl(n.detailBoardRefOrNull)&&!drafts().some(d=>d.draftRef===n.detailBoardRefOrNull);enter.onclick=()=>enterPortal(n.detailBoardRefOrNull);nav.append(enter)}
@@ -334,6 +354,19 @@ function inspector(side){
     }
   }
   side.append(g);
+  const fg=el('div','group');fg.append(el('h3','','Pinned relational focus'));
+  if(!pinnedSemanticRefs.size)fg.append(el('div','v','Right-click an object or use Pin identity to hold stable refs in diagnostic focus.'));
+  else{
+    const modeRow=el('div','row');
+    for(const [label,mode] of [['Connect','CONNECT'],['Direct','DIRECT'],['Upstream','UPSTREAM'],['Downstream','DOWNSTREAM'],['Occurrences','OCCURRENCES']]){const button=el('button',`btn${relationalFocusMode===mode?' pin-mode-active':''}`,label);button.onclick=()=>setRelationalFocusMode(mode);modeRow.append(button)}
+    fg.append(modeRow);
+    const list=el('div','pin-list');
+    for(const pinnedRef of [...pinnedSemanticRefs].sort()){const row=el('div','pin-row');row.append(inspectorRefToken(pinnedRef,{semanticRefs:[pinnedRef]}));const remove=el('button','btn','×');remove.setAttribute('aria-label',`Unpin ${pinnedRef}`);remove.onclick=()=>togglePinnedSemanticRef(pinnedRef);row.append(remove);list.append(row)}
+    fg.append(list);
+    const focus=currentRelationalFocus(),summary=el('div','v',`${focus.nodes.length} node(s) · ${focus.relationships.length} relationship(s) · ${focus.projectionItems.length} occurrence(s)${focus.unconnectedRefs.length?`\nUnconnected: ${focus.unconnectedRefs.join(', ')}`:''}${focus.truncated?'\nBounded result truncated':''}`);
+    const clear=el('button','btn','Clear pins');clear.onclick=clearPinnedSemanticRefs;fg.append(summary,clear);
+  }
+  side.append(fg);
   const rel=current.graph.relationships.filter(r=>r.fromRef===n.nodeRef||r.toRef===n.nodeRef),rg=el('div','group');rg.append(el('h3','','Relationships'));
   if(rel.length){const list=el('div','ref-list');for(const r of rel){const row=el('div','ref-row');row.append(inspectorRefToken(r.relationshipRef,{semanticRefs:[r.fromRef,r.toRef],relationshipRefs:[r.relationshipRef]}),document.createElement('br'),inspectorRefToken(r.fromRef,{semanticRefs:[r.fromRef]}),el('span','ref-arrow','→'),inspectorRefToken(r.toRef,{semanticRefs:[r.toRef]}));list.append(row)}rg.append(list)}else rg.append(el('div','v','No relationships yet.'));side.append(rg);
   const q=Board.queryBoardNeighborhood(current,{semanticRef:n.nodeRef,depth:1,maxNodes:12}),qg=el('div','group');qg.append(el('h3','','Neighborhood · bounded query'));const qList=el('div','ref-list');for(const value of q.nodes)qList.append(inspectorRefToken(value.nodeRef,{semanticRefs:[value.nodeRef]}));qg.append(qList,el('div','v',`\n${q.relationships.length} relationship(s) · depth ${q.depth}`));side.append(qg);
