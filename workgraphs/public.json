@@ -5051,11 +5051,12 @@
         "github.commit.vexlife.8f1e9fd9e3f38f8dc23296257df718fca9806988",
         "repo.vexlife:reference/browser/app.js",
         "repo.vexlife:reference/browser/evolution/conversation-projection.js",
-        "projects/vexlife-interface-refinement/README.md"
+        "projects/vexlife-interface-refinement/README.md",
+        "github.pull.vexlife.925"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
-      "semanticFingerprint": "1a71f751859355837d7a9135fea7fb274cc2544e52d6dddd6140c11b91891057"
+      "semanticFingerprint": "093e52c2989ab2b47d0f03b59436147aa9307c552ce72ad2b001148407df03ee"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -7581,5 +7582,5 @@
     "projects/vexlife-interface-refinement/README.md"
   ],
   "formedAt": "2026-10-21T01:45:00.000Z",
-  "semanticFingerprint": "089f5003b41ebd95f866067080790412407c7bbdc69db2becdbf4bf39b05ab54"
+  "semanticFingerprint": "11d7fa5b871666ccfd88e856a173bc99fa5640b0ca6740b608b6b4af8e5c1400"
 }
