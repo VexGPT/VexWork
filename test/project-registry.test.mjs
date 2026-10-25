@@ -11,7 +11,7 @@ test('Project Registry locates Projects without owning their WorkState', () => {
   const validation = validateProjectRegistry(registry);
   assert.equal(validation.ok, true, validation.errors.join('\n'));
   const projection = projectProjectRegistry(registry);
-  assert.equal(projection.projects.length, 14);
+  assert.equal(projection.projects.length, 15);
   assert.equal(projection.projects[0].projectRef, 'project.vexwork.foundation');
   assert.equal(projection.projects[0].workgraphRef, 'workgraph.vexwork.foundation');
   assert.equal(projection.projects[0].workgraphPath, 'workgraphs/public.json');

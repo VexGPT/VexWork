@@ -9676,8 +9676,8 @@
           "laneRef": "lane.work.verify",
           "label": "Verify",
           "workRefs": [
-            "work.vexlife.interface-refinement.dependency.conversation-core-pr904",
-            "work.vexlife.interface-refinement.v1.conversation-ergonomics"
+            "work.vexlife.interface-refinement.v1.conversation-ergonomics",
+            "work.vexlife.interface-refinement.dependency.conversation-core-pr904"
           ]
         },
         {
