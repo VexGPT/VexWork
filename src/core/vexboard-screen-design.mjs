@@ -282,6 +282,39 @@ export function normalizeScreenDesign(input) {
   if (input.layoutRules !== undefined) {
     assert(Array.isArray(input.layoutRules), 'screen design layoutRules must be an array');
   }
+  if (input.visualTokens !== undefined) {
+    assert(input.visualTokens && typeof input.visualTokens === 'object' && !Array.isArray(input.visualTokens),
+      'screen design visualTokens must be one object');
+    const colors = input.visualTokens.colors ?? {};
+    assert(colors && typeof colors === 'object' && !Array.isArray(colors),
+      'screen design visualTokens.colors must be one object');
+    for (const [tokenRef, value] of Object.entries(colors)) {
+      assert(typeof value === 'string' && /^#[0-9A-Fa-f]{6}$/.test(value),
+        `screen design visual color ${tokenRef} must be #RRGGBB`);
+    }
+    const shapes = input.visualTokens.shapes ?? {};
+    assert(shapes && typeof shapes === 'object' && !Array.isArray(shapes),
+      'screen design visualTokens.shapes must be one object');
+    for (const [tokenRef, value] of Object.entries(shapes)) {
+      if (value === 'FULL') continue;
+      positive(value, `screen design visual shape ${tokenRef}`);
+    }
+    const typography = input.visualTokens.typography ?? {};
+    assert(typography && typeof typography === 'object' && !Array.isArray(typography),
+      'screen design visualTokens.typography must be one object');
+    for (const [tokenRef, value] of Object.entries(typography)) {
+      assert(value && typeof value === 'object' && !Array.isArray(value),
+        `screen design visual typography ${tokenRef} must be one object`);
+      assert(typeof value.fontFamily === 'string' && value.fontFamily,
+        `screen design visual typography ${tokenRef}.fontFamily required`);
+      positive(value.fontWeight, `screen design visual typography ${tokenRef}.fontWeight`);
+      positive(value.fontSizeSp, `screen design visual typography ${tokenRef}.fontSizeSp`);
+      if (value.lineHeightSp !== undefined) positive(value.lineHeightSp,
+        `screen design visual typography ${tokenRef}.lineHeightSp`);
+      if (value.letterSpacingSp !== undefined) finite(value.letterSpacingSp,
+        `screen design visual typography ${tokenRef}.letterSpacingSp`);
+    }
+  }
   if (input.sourceRefs !== undefined) {
     assert(Array.isArray(input.sourceRefs), 'screen design sourceRefs must be an array');
     for (const [index, sourceRef] of input.sourceRefs.entries()) {
