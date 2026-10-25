@@ -423,6 +423,10 @@ export function normalizeScreenDesign(input) {
       assert(element.kind === 'TEXT', `${label}.kind unsupported`);
       assert(element.identityState === 'VEXBOARD_PROPOSED',
         `${label}.identityState unsupported`);
+      assert(
+        ['STATIC_LOCALIZED', 'DYNAMIC_RUNTIME'].includes(element.contentMode),
+        `${label}.contentMode unsupported`,
+      );
       assert(typeof element.label === 'string' && element.label,
         `${label}.label required`);
       assert(Number.isInteger(element.referenceLineCount) && element.referenceLineCount > 0,
