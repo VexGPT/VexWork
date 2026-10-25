@@ -74,6 +74,63 @@ READY
 AUTHORIZED
 ```
 
+## Current priority ladder — VexStream screenshot patient zero
+
+The current foreground is no longer another abstract screenshot design exercise. The first real screenshot/evidence consumer is a bounded VexStream patient zero:
+
+```text
+CURRENT / IMMEDIATE
+work.vexboard.vexstream-screenshot-pilot
+-> Victor supplies a small ordered set of real VexStream Music screenshots
+-> initial scenario: connect a phone to a desktop for VexStream Music use
+-> VexBoard maps visible observations into proposed semantic correspondences
+-> accepted process meaning remains separate from screenshot pixels
+-> exercise BoardGraph + BoardProjection + BoardJourney + evidence presentation together
+
+NEAR TERM
+-> use the lived pilot to decide which screenshot/evidence behaviors actually repeat
+-> test evidence-rail/sidebar as the scalable default
+-> test optional canvas pinning as a projection-local convenience
+-> only then stabilize reusable image-region / evidence coordinates that the pilot genuinely earns
+
+LATER / CAPTURED
+work.vexboard.later.businessfactory-guided-company-formation
+-> after screenshot/evidence mapping and reusable templates are stable
+-> after BusinessFactory business structure, patterns, processes and end-to-end journeys are sufficiently mapped
+-> use the combined substrate as a graduation scenario:
+   guide a person from zero through creating a company
+   preserve user data, screenshots, documents and assets with their rightful owners
+   ask for protected registration/provider actions only when genuinely human-bound
+```
+
+The VexStream pilot owns **the mapping experiment**, not VexStream product truth:
+
+```text
+VEXSTREAM_SCREENSHOT_PILOT != VEXSTREAM_PRODUCT_OWNER
+SCREENSHOT != PROCESS_TRUTH
+VISIBLE_REGION != SEMANTIC_IDENTITY
+PROPOSED_MAPPING != ACCEPTED_MAPPING
+EVIDENCE_RAIL != REQUIRED_FINAL_UI
+PIN_TO_CANVAS != SEMANTIC_REPARENT
+```
+
+The current presentation hypothesis is intentionally provisional:
+
+```text
+many screenshots
+-> evidence rail / inspector as ordinary scalable home
+
+one screenshot needs spatial comparison
+-> optional projection-local pin near the implicated node
+
+pilot evidence
+-> decide whether those behaviors deserve a reusable contract
+```
+
+Do not introduce a universal OCR ontology, screenshot-hotspot registry, image-specific node typology, or BusinessFactory onboarding framework merely to complete this pilot.
+
+The eventual "start a business from the beginning" experience is strategically important, but it is **not current implementation scope or authority**. It is preserved now so future work can see the intended graduation path without pulling that complexity into the screenshot patient zero.
+
 ## Human outcome
 
 A person should be able to describe a website, application, process, operating system, or work journey to AI and receive a navigable visual blueprint **before** expensive implementation begins.
