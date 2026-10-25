@@ -259,11 +259,11 @@ test('Mobile Library Project keeps a human audit/decision front door beside grap
   assert.match(readme, /ML-D11 — User-authored tags and dynamic stations remain separate future Work/);
   assert.match(readme, /ML-D12 — Sort \/ Filter Android source and proof are accepted; human Verify entry remains/);
   assert.match(readme, /ML-D13 — Songs bulk management is merged\/proven and waiting on lived review/);
-  assert.match(readme, /ML-D14 — Large offline libraries exposed a cold-start performance defect/);
+  assert.match(readme, /ML-D14 — Large offline startup source correction is merged; lived observation remains/);
   assert.match(readme, /ML-D15 — Full Player is one Now Playing sheet; Android Widget work stays cross-cutting/);
   assert.match(readme, /ML-D18 — Freshness discovery is required; catalog-added and device-downloaded are different clocks/);
   assert.match(readme, /ML-D19 — Missing-artwork reconciliation is not persistent Keep Offline sync/);
-  assert.match(readme, /Android issue #168/);
+  assert.match(readme, /issue #168/);
   assert.match(readme, /PR #166 merged/);
   assert.match(readme, /PR #167/);
   assert.match(readme, /CLEAR_DATA_LIVED_PROOF_COMPLETE/);
