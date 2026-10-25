@@ -153,6 +153,7 @@ export function androidReferenceClassNames(presentationInput, projectionItemRef)
   if (!hint) return Object.freeze([]);
   const classes = ['android-reference', `android-role-${safe(hint.role)}`];
   if (hint.variant) classes.push(`android-variant-${safe(hint.variant)}`);
+  if (hint.styleRef) classes.push(`android-style-${safe(String(hint.styleRef).replace(/^style\./, ''))}`);
   return Object.freeze(classes);
 }
 
