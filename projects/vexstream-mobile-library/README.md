@@ -633,6 +633,73 @@ ARTWORK_URI != MEDIA_IDENTITY
 EXTERNAL_ACTIVITY_ENTRY != SECOND_NAVIGATION_TRUTH
 ```
 
+## Current active defects — artwork + build continuity
+
+### Embedded artwork producer edge
+
+Source descent reached the current VexStream Desktop owner and resolved the first artwork question:
+
+```text
+repo.vexstream-music = vgong24/VexstreamMusic
+main = 6ab8fef3e0acdf3a919fc64f9e28e3758060ec15
+
+v2/desktop/library/filesystem/metadata.go
+    parses ID3 text:
+      TIT2 / TPE1 / TALB / TCON / TDRC / TYER
+    does NOT parse:
+      APIC embedded cover art
+
+v2/desktop/mobile/catalog.go
+    artworkUrl = projectArtworkURL(Track.ThumbnailURL)
+    accepts only existing external HTTPS thumbnail URLs
+```
+
+So the lived placeholder for ordinary filesystem MP3s is currently an **upstream producer-stage
+gap**, not evidence that Android never implemented artwork presentation.
+
+Active owner:
+
+```text
+work.vexstream.mobile-library.current-artwork-availability = RUNNING
+github.issue.vexstream-music.11
+```
+
+The intended repair must keep filesystem/library as metadata owner, use an authenticated/pinned
+mobile artwork projection for Desktop-served embedded art, and preserve Android/widget as bounded
+consumers.
+
+### Pairing continuity through proof builds
+
+The reconnect defect is also now causally narrowed.
+
+Product source already persists pairing in app-private SharedPreferences plus Android Keystore, and
+`reconnectPairedVexStream()` reuses the remembered pinned certificate/token. The destructive edge
+was repository proof tooling:
+
+```text
+AGP connected instrumentation default
+    -> uninstall test-installed APKs after run
+    -> app-private pairing + Keystore identity erased
+
+ordinary adb install -r
+    -> data-preserving reinstall
+```
+
+The repository did not bind AGP's data-preserving switch. Android PR #180 now does:
+
+```text
+android.injected.androidTest.leaveApksInstalledAfterRun=true
+
+github.pull.vexlife-android.180
+head = ec12655534a5cb0249a01f4e5c8e02e3d97cc329
+tree = 6d08f6aec82fb2ecd797e1397d9c2185a658ca05
+
+work.vexstream.mobile-library.pairing-reconnect-build-continuity = RUNNING
+```
+
+PR #180 also makes `vexFoundationHealth` guard that invariant and documents destructive proof as an
+explicitly isolated effect rather than a routine teardown.
+
 ## Work-state and agency safety
 
 This Project has:
