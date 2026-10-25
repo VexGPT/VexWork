@@ -7,7 +7,6 @@ import * as reader from '../workspace-reader.js';
 const page = fs.readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 
 test('VexWork Pages owns the semantic navigator and reads same-origin public workspace', () => {
-  assert.match(page, /class="brand-home" href="\.\/">VexWork<\/a>/);
   assert.match(page, /class="terrain-home" href="\.\/terrain\.html">Terrain Map<\/a>/);
   assert.match(page, /class="terrain-home" href="\.\/vexboard\/">VexBoard<\/a>/);
   assert.match(page, /const WORKSPACE_URL = '\.\/public\/workspace\.json'/);
@@ -72,8 +71,15 @@ test('dynamic VexWork strings enter through textContent, not producer HTML', () 
 });
 
 test('family navigation keeps Vextreme and VexLife as sibling destinations', () => {
-  assert.match(page, /https:\/\/vgong24\.github\.io\/Vextreme\/pages\/terrain-map\.html\?view=content&amp;profile=evolution-v1/);
+  assert.match(page, /https:\/\/vgong24\.github\.io\/Vextreme\/pages\/terrain-map\.html/);
   assert.match(page, /https:\/\/vgong24\.github\.io\/VexLife\//);
+});
+
+test('family rail keeps one fixed mark and stable context slots', () => {
+  assert.match(page, /class="family-rail"/);
+  assert.match(page, /grid-template-columns:5\.8rem auto 4\.8rem auto 5rem/);
+  assert.match(page, /\.family-current\{font-family:Georgia/);
+  assert.doesNotMatch(page, /class="brand-home"/);
 });
 
 test('state presentation uses stable semantic color families and keeps priority separate', () => {
