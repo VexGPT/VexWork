@@ -81,7 +81,8 @@
         "github.commit.vexlife.8f1e9fd9e3f38f8dc23296257df718fca9806988",
         "repo.vexlife:reference/browser/app.js",
         "repo.vexlife:reference/browser/evolution/conversation-projection.js",
-        "projects/vexlife-interface-refinement/README.md"
+        "projects/vexlife-interface-refinement/README.md",
+        "github.pull.vexlife.925"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
