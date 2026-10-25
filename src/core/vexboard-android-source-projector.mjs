@@ -479,18 +479,37 @@ function experienceBoard(snapshot, design) {
 
     const tabsY = frame.y + vexMetrics.content.y;
     const tabGap = vexMetrics.tabGapHorizontal;
-    const tabWidth = (vexMetrics.content.width - (tabGap * (snapshot.vexStream.tabs.length - 1)))
-      / snapshot.vexStream.tabs.length;
+    const tabsViewportRef = `${frameItemRef}.tabs-viewport`;
+    items.push(projectionItem(
+      tabsViewportRef,
+      snapshot.vexStream.tabsContainerRef,
+      'RECTANGLE',
+      rect(frame.x + vexMetrics.content.x, tabsY, vexMetrics.content.width, vexMetrics.buttonMinHeight),
+      layer++,
+      frameItemRef,
+    ));
+    hints.push(presentationHint(tabsViewportRef, 'SCROLL_VIEWPORT', 'HORIZONTAL'));
+
     let tabX = frame.x + vexMetrics.content.x;
     snapshot.vexStream.tabs.forEach((tab, index) => {
       const itemRef = `${frameItemRef}.tab.${index}`;
-      items.push(projectionItem(itemRef, tab.ref, 'RECTANGLE', rect(tabX, tabsY, tabWidth, vexMetrics.buttonMinHeight), layer++, frameItemRef));
+      const intrinsic = design.intrinsicSizes?.[tab.ref];
+      assert(intrinsic, `screen design intrinsic size missing: ${tab.ref}`);
+      items.push(projectionItem(
+        itemRef,
+        tab.ref,
+        'RECTANGLE',
+        rect(tabX, tabsY, scaled(intrinsic.widthDp), scaled(intrinsic.heightDp)),
+        layer++,
+        tabsViewportRef,
+      ));
       hints.push(presentationHint(itemRef, 'TAB', index === 0 ? 'SELECTED' : 'DEFAULT'));
-      tabX += tabWidth + tabGap;
+      tabX += scaled(intrinsic.widthDp) + tabGap;
     });
     return Object.freeze({
       contentY: tabsY + vexMetrics.buttonMinHeight + vexMetrics.listGap,
       actionItemBySemanticRef,
+      tabsViewportRef,
     });
   }
 
