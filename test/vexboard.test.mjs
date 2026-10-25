@@ -299,11 +299,24 @@ test('local draft flow creates, forks, serializes and uses the same BoardControl
   const changed = { ...draft, graph: state.graph, projection: state.projection, savedAtOrNull: '2026-10-23T03:15:00.000Z' };
   const roundTrip = Reader.deserializeDraft(Reader.serializeDraft(changed));
   assert.equal(roundTrip.graph.nodes[0].nodeRef, 'node.hello');
-  const readOnly = { ...roundTrip, draftRef: 'board.self-map', title: 'Self map', mode: 'READ_ONLY_SOURCE' };
+  const readOnly = {
+    ...roundTrip,
+    draftRef: 'board.self-map',
+    title: 'Self map',
+    mode: 'READ_ONLY_SOURCE',
+    presentation: {
+      schemaVersion: 'vexboard.test-presentation/v1',
+      profileRef: 'profile.test',
+    },
+    sourceRefs: ['repo.test:source'],
+  };
   const fork = await Reader.forkReadOnlyBoard(readOnly, { draftRef: 'draft.fork' });
   assert.equal(fork.derivedFromRefOrNull, 'board.self-map');
   assert.equal(fork.mode, 'LOCAL_DRAFT');
   assert.equal(fork.graph.semanticFingerprint, roundTrip.graph.semanticFingerprint);
+  assert.deepEqual(fork.presentation, readOnly.presentation);
+  assert.deepEqual(fork.sourceRefs, readOnly.sourceRefs);
+  assert.notEqual(fork.presentation, readOnly.presentation, 'fork must retain presentation by value, not shared object identity');
 });
 
 test('shared model rejects schema drift rather than silently dropping unknown fields', () => {
