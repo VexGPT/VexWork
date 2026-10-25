@@ -24,6 +24,8 @@ export const SCREEN_DESIGN_LAYOUT_MODES = Object.freeze([
 export const SCREEN_DESIGN_COMPONENT_TEMPLATES = Object.freeze([
   'component.screen',
   'component.surface',
+  'component.column',
+  'component.text',
   'component.button',
   'component.icon-button',
   'component.tab',
@@ -536,6 +538,24 @@ export function normalizeScreenDesign(input) {
       if (assignment.iconRefOrNull !== null) {
         assert(typeof assignment.iconRefOrNull === 'string' && assignment.iconRefOrNull,
           `${label}.iconRefOrNull invalid`);
+      }
+      if (assignment.typographyRefOrNull !== undefined && assignment.typographyRefOrNull !== null) {
+        assert(typeof assignment.typographyRefOrNull === 'string' && assignment.typographyRefOrNull,
+          `${label}.typographyRefOrNull invalid`);
+        assert(
+          input.visualTokens?.typography &&
+          Object.hasOwn(input.visualTokens.typography, assignment.typographyRefOrNull),
+          `${label}.typographyRefOrNull missing typography ${assignment.typographyRefOrNull}`,
+        );
+      }
+      if (assignment.colorRefOrNull !== undefined && assignment.colorRefOrNull !== null) {
+        assert(typeof assignment.colorRefOrNull === 'string' && assignment.colorRefOrNull,
+          `${label}.colorRefOrNull invalid`);
+        assert(
+          input.visualTokens?.colors &&
+          Object.hasOwn(input.visualTokens.colors, assignment.colorRefOrNull),
+          `${label}.colorRefOrNull missing color ${assignment.colorRefOrNull}`,
+        );
       }
     }
   }
