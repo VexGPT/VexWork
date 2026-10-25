@@ -6,6 +6,9 @@ export const VEXBOARD_ANDROID_CONSTRUCTION_PLAN_SCHEMA =
 export const VEXLIFE_ANDROID_TARGET_REF =
   'target.vexlife-android.compose';
 
+export const VEXLIFE_ANDROID_DYNAMIC_TEXT_CAPABILITY_REF =
+  'capability.vexlife-android.elements.dynamic-text-identity';
+
 const REF = /^[A-Za-z0-9][A-Za-z0-9._:/-]*$/u;
 
 function assert(condition, message) {
@@ -123,7 +126,7 @@ function componentTarget(templateRef) {
   return target;
 }
 
-function componentMapping(design, assignment) {
+function componentMapping(design, assignment, availableTargetCapabilities) {
   const target = componentTarget(assignment.templateRef);
   const proposed = design.semanticElements?.find(
     (entry) => entry.semanticRef === assignment.semanticRef,
@@ -135,11 +138,17 @@ function componentMapping(design, assignment) {
     proposed?.kind === 'TEXT'
       ? proposed.contentMode === 'STATIC_LOCALIZED'
         ? 'REGISTER_STATIC_TEXT_ELEMENT'
-        : 'ADD_DYNAMIC_TEXT_IDENTITY'
+        : 'REGISTER_DYNAMIC_TEXT_ELEMENT'
+      : null;
+  const targetCapabilityRefOrNull =
+    targetIdentityStrategyOrNull === 'REGISTER_DYNAMIC_TEXT_ELEMENT'
+      ? VEXLIFE_ANDROID_DYNAMIC_TEXT_CAPABILITY_REF
       : null;
   const targetCapabilityStatusOrNull =
-    targetIdentityStrategyOrNull === 'ADD_DYNAMIC_TEXT_IDENTITY'
-      ? 'STANDARDIZATION_REQUIRED'
+    targetCapabilityRefOrNull
+      ? availableTargetCapabilities.has(targetCapabilityRefOrNull)
+        ? 'AVAILABLE'
+        : 'STANDARDIZATION_REQUIRED'
       : targetIdentityStrategyOrNull
         ? 'AVAILABLE'
         : null;
@@ -159,10 +168,75 @@ function componentMapping(design, assignment) {
     identityStateOrNull: proposed?.identityState ?? null,
     contentModeOrNull: proposed?.contentMode ?? null,
     targetIdentityStrategyOrNull,
+    targetCapabilityRefOrNull,
     targetCapabilityStatusOrNull,
     targetOwnerSourceRefOrNull,
     ...target,
   });
+}
+
+function targetCapabilityRequirement(
+  capabilityRef,
+  {
+    status,
+    requiredBySemanticRefs,
+    ownerSourceRef,
+    supportSourceRefs = [],
+    purpose,
+    proposalStatus,
+    proposedTargetShape,
+  },
+) {
+  stableRef(capabilityRef, 'target capabilityRef');
+  return Object.freeze({
+    capabilityRef,
+    status,
+    requiredBySemanticRefs: Object.freeze([...new Set(requiredBySemanticRefs)].sort()),
+    ownerSourceRef,
+    supportSourceRefs: Object.freeze([...new Set(supportSourceRefs)].sort()),
+    purpose,
+    proposalStatus,
+    proposedTargetShape: Object.freeze({ ...proposedTargetShape }),
+  });
+}
+
+function targetCapabilityRequirements(componentMappings) {
+  const dynamicTextConsumers = componentMappings
+    .filter((entry) => entry.targetCapabilityRefOrNull === VEXLIFE_ANDROID_DYNAMIC_TEXT_CAPABILITY_REF)
+    .map((entry) => entry.semanticRef);
+
+  if (!dynamicTextConsumers.length) return Object.freeze([]);
+
+  const available = componentMappings
+    .filter((entry) => entry.targetCapabilityRefOrNull === VEXLIFE_ANDROID_DYNAMIC_TEXT_CAPABILITY_REF)
+    .every((entry) => entry.targetCapabilityStatusOrNull === 'AVAILABLE');
+
+  return Object.freeze([
+    targetCapabilityRequirement(
+      VEXLIFE_ANDROID_DYNAMIC_TEXT_CAPABILITY_REF,
+      {
+        status: available ? 'AVAILABLE' : 'STANDARDIZATION_REQUIRED',
+        requiredBySemanticRefs: dynamicTextConsumers,
+        ownerSourceRef:
+          'repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/ElementModel.kt',
+        supportSourceRefs: [
+          'repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/ScreenBlueprint.kt',
+          'repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/ElementCells.kt',
+          'repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/VexComposeCells.kt',
+        ],
+        purpose:
+          'registered stable semantic text identity whose displayed value is supplied by runtime state',
+        proposalStatus: 'PROPOSED_NOT_IN_TARGET_SOURCE',
+        proposedTargetShape: {
+          elementType: 'DynamicTextElement',
+          screenBlueprintFactory: 'dynamicTextRef',
+          layoutPlacement: 'dynamicText',
+          composeCell: 'VexText(element, text)',
+          invariant: 'TEXT_IDENTITY != TEXT_VALUE',
+        },
+      },
+    ),
+  ]);
 }
 
 function mapping(mappingRef, {
@@ -187,10 +261,18 @@ export function compileVexLifeAndroidScreenDesign(
   {
     planRef = 'plan.vexlife-android.home-vexstream.screen-design.poc',
     adoptionReadiness = null,
+    availableTargetCapabilityRefs = [],
   } = {},
 ) {
   const design = normalizeScreenDesign(designInput);
   stableRef(planRef, 'planRef');
+  if (!Array.isArray(availableTargetCapabilityRefs)) {
+    throw new TypeError('availableTargetCapabilityRefs must be an array');
+  }
+  const availableTargetCapabilities = new Set(
+    availableTargetCapabilityRefs.map((capabilityRef) =>
+      stableRef(capabilityRef, 'available target capabilityRef')),
+  );
 
   for (const colorRef of [
     'background', 'onBackground', 'surface', 'onSurface', 'surfaceContainer',
@@ -211,8 +293,11 @@ export function compileVexLifeAndroidScreenDesign(
   assert(Array.isArray(design.componentAssignments) && design.componentAssignments.length,
     'Android construction requires VexBoard component assignments');
   const componentMappings = Object.freeze(
-    design.componentAssignments.map((assignment) => componentMapping(design, assignment)),
+    design.componentAssignments.map(
+      (assignment) => componentMapping(design, assignment, availableTargetCapabilities),
+    ),
   );
+  const capabilityRequirements = targetCapabilityRequirements(componentMappings);
 
   const tabs = layoutRule(design, 'layout.vexstream.library-tabs');
   const songs = layoutRule(design, 'layout.vexstream.songs');
@@ -456,7 +541,9 @@ export function compileVexLifeAndroidScreenDesign(
       design.authorityState === 'VEXBOARD_DESIGN_AUTHORITY'
         ? adoptionReadiness?.status === 'HELD'
           ? 'IMPLEMENTATION_HELD_ADOPTION_GAPS'
-          : 'IMPLEMENTATION_ELIGIBLE'
+          : capabilityRequirements.some((entry) => entry.status !== 'AVAILABLE')
+            ? 'IMPLEMENTATION_HELD_TARGET_CAPABILITIES'
+            : 'IMPLEMENTATION_ELIGIBLE'
         : design.authorityState === 'VEXBOARD_DESIGN_DRAFT'
           ? 'PREVIEW_ONLY_DESIGN_DRAFT'
           : 'PREVIEW_ONLY_REVERSE_ADOPTION',
@@ -465,6 +552,7 @@ export function compileVexLifeAndroidScreenDesign(
       : null,
     mappings: Object.freeze(mappings),
     componentMappings,
+    targetCapabilityRequirements: capabilityRequirements,
     sourceRefs: Object.freeze([...(design.sourceRefs ?? [])]),
     effects: Object.freeze({
       targetSourceMutationPerformed: false,
