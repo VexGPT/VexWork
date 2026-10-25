@@ -9578,7 +9578,7 @@
           "label": "V1 — conversation ergonomics and re-entry",
           "purpose": "Make the proven Vex relationship easy to return to and natural to type in: Enter sends, Shift+Enter inserts a newline, and ordinary interface controls can re-enter the canonical local Vex Conversation without a special proof URL or historical package.",
           "workClass": "TASK",
-          "state": "RUNNING",
+          "state": "VERIFYING",
           "workDisposition": "ACTIVE",
           "priorityClass": "IMMEDIATE",
           "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
@@ -9599,7 +9599,7 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-25T01:23:08.000Z",
-          "updatedAt": "2026-10-25T01:23:08.000Z",
+          "updatedAt": "2026-10-25T01:57:00.000Z",
           "transitionHistory": []
         },
         {
@@ -9659,8 +9659,7 @@
           "laneRef": "lane.work.active",
           "label": "Active",
           "workRefs": [
-            "work.vexlife.interface-refinement.outcome",
-            "work.vexlife.interface-refinement.v1.conversation-ergonomics"
+            "work.vexlife.interface-refinement.outcome"
           ]
         },
         {
@@ -9677,7 +9676,8 @@
           "laneRef": "lane.work.verify",
           "label": "Verify",
           "workRefs": [
-            "work.vexlife.interface-refinement.dependency.conversation-core-pr904"
+            "work.vexlife.interface-refinement.dependency.conversation-core-pr904",
+            "work.vexlife.interface-refinement.v1.conversation-ergonomics"
           ]
         },
         {
