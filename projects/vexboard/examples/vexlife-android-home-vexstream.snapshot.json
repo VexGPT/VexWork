@@ -1,9 +1,9 @@
 {
   "schemaVersion": "vexlife-android.vexboard-snapshot/poc-v1",
-  "snapshotRef": "snapshot.vexlife-android.home-vexstream.255491df93835405800c93a17889c7574eb683b3",
+  "snapshotRef": "snapshot.vexlife-android.home-vexstream.6f5b2dc6cdbf284b84cb590ba5b1016af3d33939",
   "productRef": "product.vexlife-android",
   "label": "VexLife Android",
-  "sourceRevisionRef": "git.commit.vexlife-android.255491df93835405800c93a17889c7574eb683b3",
+  "sourceRevisionRef": "git.commit.vexlife-android.6f5b2dc6cdbf284b84cb590ba5b1016af3d33939",
   "sourceRefs": [
     "projects/vexboard/examples/vexlife-android-home-vexstream.design.json",
     "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/preview/VexPreview.kt",
@@ -30,7 +30,7 @@
     "screenRef": "screen.home",
     "label": "Home",
     "sourceRefs": [
-      "git.commit.vexlife-android.255491df93835405800c93a17889c7574eb683b3",
+      "git.commit.vexlife-android.6f5b2dc6cdbf284b84cb590ba5b1016af3d33939",
       "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt"
     ],
     "vexStreamSection": {
@@ -92,7 +92,7 @@
     "screenRef": "screen.vexstream-music",
     "label": "VexStream",
     "sourceRefs": [
-      "git.commit.vexlife-android.255491df93835405800c93a17889c7574eb683b3",
+      "git.commit.vexlife-android.6f5b2dc6cdbf284b84cb590ba5b1016af3d33939",
       "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt",
       "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamLibrarySurface.kt",
       "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamLibraryPresentation.kt"
