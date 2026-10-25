@@ -88,6 +88,18 @@ test('Android construction plan consumes VexBoard design without target effects'
   assert.match(tabs.targetMeaning, /horizontalScroll Row/);
   assert.equal(tabs.referenceDpOrNull, 8);
 
+  const fabAnchor = plan.mappings.find(
+    (entry) => entry.mappingRef === 'mapping.android.vexstream.library-actions-anchor',
+  );
+  assert.equal(fabAnchor.targetSymbol, 'Scaffold.floatingActionButton');
+  assert.equal(fabAnchor.referenceDpOrNull, 40);
+
+  const fabCluster = plan.mappings.find(
+    (entry) => entry.mappingRef === 'mapping.android.vexstream.library-actions-cluster',
+  );
+  assert.equal(fabCluster.targetSymbol, 'VexStreamLibraryFabActions');
+  assert.equal(fabCluster.referenceDpOrNull, 10);
+
   const track = plan.mappings.find(
     (entry) => entry.mappingRef === 'mapping.android.vexstream.track-card',
   );
@@ -147,7 +159,7 @@ test('accepted VexBoard design becomes Android implementation eligible without c
   assert.equal(plan.designAuthorityState, 'VEXBOARD_DESIGN_AUTHORITY');
   assert.equal(plan.admission, 'IMPLEMENTATION_ELIGIBLE');
   assert.equal(plan.targetRef, 'target.vexlife-android.compose');
-  assert.equal(plan.mappings.length >= 14, true);
+  assert.equal(plan.mappings.length >= 16, true);
 });
 
 test('Android construction fails closed when required VexBoard layout meaning is lost', () => {
