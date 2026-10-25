@@ -688,8 +688,22 @@ MainActivity launch Status = ok
 credentials serialized into evidence = NO
 ```
 
-Machine proof is therefore complete. The Work remains **VERIFYING** only for Victor's final lived
-reconnect to the same Desktop without re-pairing.
+Machine proof is complete, and Victor clarified the human boundary afterward: ordinary
+data-preserving build/proof continuity is the outcome this Work owned. A true app uninstall/reinstall
+still loses the app-private pairing/Keystore identity, but that is acceptable as a separate
+non-blocking future concern rather than a failure of PR #180.
+
+Therefore:
+
+```text
+work.vexstream.mobile-library.pairing-reconnect-build-continuity = COMPLETED
+
+work.vexstream.mobile-library.pairing-continuity-after-uninstall-reinstall
+    = CAPTURED / TODO / NON-BLOCKING
+```
+
+The future item must not weaken TLS pinning or pretend deleted Android Keystore identity survived.
+It exists only so a deliberate cross-uninstall continuity design can be revisited later.
 
 
 The reconnect defect is also now causally narrowed.
@@ -716,11 +730,34 @@ github.pull.vexlife-android.180
 head = ec12655534a5cb0249a01f4e5c8e02e3d97cc329
 tree = 6d08f6aec82fb2ecd797e1397d9c2185a658ca05
 
-work.vexstream.mobile-library.pairing-reconnect-build-continuity = RUNNING
+work.vexstream.mobile-library.pairing-reconnect-build-continuity = COMPLETED
 ```
 
 PR #180 also makes `vexFoundationHealth` guard that invariant and documents destructive proof as an
 explicitly isolated effect rather than a routine teardown.
+
+### Uninstall/reinstall pairing continuity is deliberately backlog
+
+Victor confirmed that after an actual Android **uninstall + reinstall**, VexLife does not retain the
+previous VexStream pairing. That is consistent with the current storage boundary:
+
+```text
+uninstall
+-> app-private SharedPreferences removed
+-> Android Keystore aliases removed
+-> remembered bearer / pinned pairing identity unavailable
+```
+
+The current experience lane does **not** treat this as a blocker. It is retained for later as:
+
+```text
+work.vexstream.mobile-library.pairing-continuity-after-uninstall-reinstall
+state = CAPTURED
+priority = NORMAL
+effectDisposition = EFFECTS_HELD
+```
+
+Do not reopen PR #180 or weaken current pairing authority to solve that future question.
 
 ## Work-state and agency safety
 
