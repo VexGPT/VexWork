@@ -4,35 +4,39 @@
 
 ## Current entry
 
-This Project begins **after VexLife successfully reached a human-lived local-model connection**.
+V2 is now **terminally lived-proven** on accepted VexLife source. A fresh instance must not restart from V0, reconstruct streaming, or replay the A004/A005 proof carriers merely to establish currentness.
 
-Victor can open the local VexLife browser surface, type naturally to **Vex**, and receive real responses from the locally installed Heretic model. That lived connection is **V0**.
+The current human/product priority is the **tool-bearing VexLife Home**: use the lived Evolution Conversation as the ordinary place where Vex can perceive current intent, discover already-admitted capabilities, perform bounded source-backed reads/tool work through rightful owners, receive the result back into context, and continue the conversation.
 
-The rule for every fresh instance is:
+The stability trajectory remains live in parallel: **V3 resource/context pressure observation is READY** and is the next continuity-frontier edge. Kokoro streaming speech/read-back is deliberately captured behind the current Home/tool priority.
 
 ```text
 START_FROM_HIGHEST_CURRENT_REFINEMENT_VERSION
-V0 = FIRST_PROVEN_CONNECTION / PROVENANCE ANCHOR
-V0 != PERPETUAL_RESET_POINT
+V0 = FIRST_PROVEN_CONNECTION / PROVENANCE_ANCHOR
+V2 = TERMINAL_LIVED_STREAMING_BASELINE
+CURRENT_FOREGROUND = TOOL_BEARING_VEXLIFE_HOME
+PARALLEL_STABILITY_EDGE = V3_RESOURCE_CONTEXT_PRESSURE
+KOKORO_SPEECH = CAPTURED_LATER_PRESENTATION_ENHANCEMENT
 TOCOMPLETION = PROVENANCE_CONTEXT
 TOCOMPLETION != CURRENT_INTERFACE_ENTRY
 ```
 
-Descend into VexLife ToCompletion only when the latest refinement version names an exact dependency or a contradiction requires provenance.
+Descend into VexLife ToCompletion only when the current refinement names an exact dependency or a contradiction requires provenance.
 
 ## Version line
 
-| Version | State | Meaning |
+| Version / edge | State | Meaning |
 |---|---|---|
 | **V0** | **PROVEN** | First human-lived Victor ↔ local Heretic conversation through VexLife. Connection/runtime is the stability anchor, not the surrounding placeholder UI. |
-| **V1** | **VERIFYING** | Conversation ergonomics and ordinary re-entry are merged and human-lived; formal lived closure still remains separate from source acceptance. |
+| **V1** | **VERIFYING** | Conversation ergonomics and ordinary re-entry are merged and human-lived; formal lived closure remains separate from later accepted refinements. |
 | **V1.5** | **CURRENT / VERIFYING** | Long-context Memory pressure policy is merged: 192K input, 16K output reserve, 208K hard lease, up to 100K/100-page current attributed Memory, dynamic Memory yielding and zero-headroom handling. |
-| **V2** | **NEXT / READY** | Progressive streamed model output plus an explicit source-owned completion/output policy. PR #904 is merged, so the prior Conversation-core dependency is released. |
-| **V3–V5** | **STABILITY FRONTIER** | System-owned pressure observation, graceful continuity rollover and bounded host resource stewardship. The system may observe and checkpoint automatically; semantic Memory promotion and ambiguous/destructive cleanup remain separately governed. |
+| **V2** | **PROVEN / COMPLETED** | Explicit output policy + provider streaming + Evolution projection + adaptive human-consumption reveal are accepted source and terminal human-lived PASS. |
+| **Tool-bearing Home** | **READY / IMMEDIATE** | Make the lived Vex Conversation the ordinary Home for lawful Intent/capability/tool reads and bounded ToolResultRelay reinjection without granting model effect authority. |
+| **V3** | **READY / HIGH** | System-owned read-only context/resource pressure projection with source-managed policy and hysteresis. |
+| **V4–V5** | **WAITING DEPENDENCIES** | Continuity rollover and exact-owned resource stewardship remain behind their named prerequisites. |
 | **V6** | **WAITING DEPENDENCIES** | Long lived stability proof across streaming, pressure, rollover, restart/re-entry and exact-owned resource recovery. |
-| **Later** | **CAPTURED** | Refine Home, Terrain, nodes, menus and other interface neighborhoods from lived feedback. Current maps/screens are scaffolding, not a recovered final design. |
-
-A later V3/V4/... becomes the entry point when it is current. Do not tell a fresh instance to reconstruct V0 just because V0 is the earliest version.
+| **Kokoro speech/read-back** | **CAPTURED / NORMAL** | Optional live Speak with bounded backfill plus per-response Read control; held behind current tool-bearing Home priority. |
+| **Later visual Home/UI** | **CAPTURED** | Refine Home, Terrain, nodes, menus and other visual neighborhoods from lived feedback without conflating presentation with capability ownership. |
 
 ## V0 — what is actually stable
 
@@ -98,7 +102,7 @@ what it established =
 
 The A006 bytes are **not** a required dependency for future startup and should not be replayed as a ritual. If current source evolves, follow the highest current refinement version and its current source refs.
 
-## V1 — current refinement
+## V1 — conversation ergonomics predecessor
 
 The first lived feedback is intentionally small:
 
@@ -131,35 +135,138 @@ CONTEXT_PRESSURE != MEMORY_PROMOTION_AUTHORITY
 LARGE_CONTEXT != WHOLE_TRANSCRIPT_FOREVER
 ```
 
-## V2 — streaming contract
+## V2 — progressive + adaptive streaming — terminal lived PASS
 
-PR #904 is merged and its Conversation-core ownership has released, so V2 is now READY. Current VexLife still buffers the local model HTTP response before the browser renders it. The pinned Heretic runtime uses MLX-LM 0.32.0, whose server defaults `stream=false` and `max_tokens=512` when VexLife omits those request fields. V2 should change the experience **and** replace that accidental small default with an explicit source-owned completion policy, without weakening durable truth:
+V2 is no longer a planned streaming contract. It is accepted source plus lived product evidence.
+
+Accepted source lineage:
 
 ```text
-Heretic token/chunk output
--> progressive EPHEMERAL visible response
--> stream completes
--> one canonical final model response
--> durable Conversation response/head commits atomically
+PR #928
+  -> explicit 16K source-owned output policy
+  -> provider streaming / NDJSON DELTA + FINAL transport
+  -> partial progress remains EPHEMERAL_LOCAL_MODEL_PROGRESS
 
+PR #931
+  -> projects canonical ephemeral stream progress into the actual Evolution Conversation
+  -> presentation-only row carries no durable messageRef or Conversation head
+
+PR #932
+  -> separates provider arrival clock from human reveal clock
+  -> consumes provider deltas without waiting for paint
+  -> adaptive reveal follows measured arrival rate
+  -> backlog pressure accelerates catch-up
+  -> provider completion fast-drains remaining presentation backlog
+  -> accepted main 1a9a131e54ff6b735d64812e213e26315770bc96
+  -> tree 3fc423469ede6b061f7e549b056ab574b9035d63
+```
+
+A005 then proved the actual local-Heretic / Evolution experience:
+
+```text
+human lived witness                       PASS
+provider DELTA frames                    1178
+Evolution progressive visible states     4595
+provider median interval                 70.1 ms
+provider median delta                    4 code points
+visible reveal median interval           14.5 ms
+visible reveal median increment          1 code point
+first visible latency                     3.1 ms
+terminal -> last-visible catch-up          0 ms
+terminal -> final Evolution settle         8.2 ms
+visible prefix violations                  0
+Evolution final rows                       1
+canonical durable final rows               1
+```
+
+Victor's lived result was that the rate feels natural, the response remains readable as it builds, and line/new-line progression remains natural.
+
+Permanent:
+
+```text
+PROVIDER_DELTA != VISIBLE_REVEAL_STEP
+VISIBLE_PREFIX ⊆ RECEIVED_PROVIDER_TEXT
+PRESENTATION_BACKLOG != MODEL_BACKPRESSURE
 PARTIAL_STREAM != DURABLE_COMPANION_MESSAGE
-IMPLICIT_MLX_512_DEFAULT != INTENDED_VEX_COMPLETION_POLICY
-INTERRUPTED_STREAM != COMPLETED_TURN
 VISIBLE_PROGRESS != FINAL_CONVERSATION_HEAD
+TERMINAL_REVEAL_CONVERGENCE != NEW_DURABLE_EVENT
 ```
 
-The implementation crosses the Conversation paths now accepted through VexLife PR #904:
+Do not replay A004/A005 or reopen V2 merely to re-establish current entry. Reopen streaming only for a new evidence-backed regression or a genuinely new semantic requirement.
+
+## Current foreground — tool-bearing VexLife Home
+
+The next product priority is to make the **actual lived Conversation** the useful Home for Vex's already-accepted capability substrate.
+
+Current VexLife source already owns distinct seams for:
 
 ```text
-reference/browser/modules/chat-controller.js
-scripts/serve-browser-core.mjs
-src/core/browser-companion-bridge.mjs
-src/core/lived-companion.mjs
+Intent Workgraph
+Intent Scheduler
+capability definitions / assimilation
+Vex self-capability framing
+ToolResultRelay
+bounded Context Lease reinjection
+Browser Companion / durable Conversation
 ```
 
-Re-ground current main before authoring, then evolve those accepted paths rather than reconstructing the pre-#904 candidate.
+The work is to compose those owners into one lived journey, not invent a second tool framework:
 
-Pinned runtime source for this finding: `ml-explore/mlx-lm@v0.32.0:mlx_lm/SERVER.md`. The goal is not an unbounded runaway generator; it is to let Vex finish naturally under an explicit, inspectable completion budget with cancellation/recovery semantics rather than inheriting an accidental 512-token default.
+```text
+Victor asks / current Intent is perceived
+        ↓
+Vex sees only source-admitted capability meaning
+        ↓
+one bounded read/tool act is proposed
+        ↓
+rightful scheduler / leases / effect owner admit or hold it
+        ↓
+ToolResultRelay accepts one bounded observation
+        ↓
+observation is reinjected into current context
+        ↓
+Vex explains / continues in the same Conversation
+```
+
+Required non-collapse:
+
+```text
+MODEL_PROPOSAL != EFFECT_AUTHORITY
+CAPABILITY_DISCOVERY != ARBITRARY_FILESYSTEM_OR_PROVIDER_ACCESS
+TOOL_RESULT != RAW_LOG_DUMP
+TOOL_OBSERVATION != DURABLE_MEMORY_PROMOTION
+CONVERSATION_HOME != UNIVERSAL_EFFECT_OWNER
+```
+
+The first threshold should prove at least one **source-backed bounded read** end to end through the normal VexLife Home before broadening capability families.
+
+## Captured later — Kokoro live speech and response Read control
+
+Speech is deliberately saved without stealing the foreground.
+
+Desired experience:
+
+```text
+Speak toggle ON while response is arriving
+  -> Kokoro may begin from already-received text
+  -> bounded backfill covers text that arrived before speech began
+  -> speech continues as later text arrives
+
+completed response
+  -> Read control can speak that exact response on demand
+```
+
+Speech remains a presentation consumer:
+
+```text
+SPEECH_CLOCK != MODEL_NETWORK_CLOCK
+SPEECH_CLOCK != TEXT_REVEAL_CLOCK
+SPEECH_BACKFILL != SYNTHETIC_RESPONSE_TEXT
+SPEECH != DURABLE_CONVERSATION_TRUTH
+SPEECH_TOGGLE != ALWAYS_ON_AUTHORITY
+```
+
+Reuse VexLife's existing Companion voice playback and Vextreme/Kokoro Read Aloud precedent when this edge becomes foreground.
 
 ## Stability frontier — self-maintaining continuity
 
