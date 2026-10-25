@@ -316,6 +316,76 @@
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-24T12:07:17.171Z",
       "updatedAt": "2026-10-25T02:55:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexboard.vexstream-screenshot-pilot",
+      "parentWorkRefOrNull": "work.vexboard.outcome",
+      "label": "VexStream screenshot-to-process pilot",
+      "purpose": "Use a real VexStream phone-to-desktop connection walkthrough as the first screenshot evidence patient zero: map ordered user-supplied screenshots into visible observations, proposed semantic correspondences, BoardGraph/BoardProjection/BoardJourney meaning, and scalable evidence presentation while VexStream/VexLife remain owners of product, UI, connection, and provider truth. The pilot should pressure evidence-rail versus optional canvas-pinning behavior without inventing a universal OCR, hotspot, or image ontology from one example.",
+      "workClass": "TASK",
+      "state": "WAITING_HUMAN",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexboard.boardgraph-contract",
+        "work.vexboard.canvas-projection",
+        "work.vexboard.boardjourney-simulation",
+        "work.vexboard.usability-refinement"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexstream-music",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "projects/vexboard/README.md",
+        "projects/vexboard/FRACTAL-SEMANTIC-COMPOSITION-AND-SPATIAL-LAYOUT.md",
+        "src/shared/vexboard-evidence.mjs",
+        "src/shared/vexboard-source-resolver.mjs",
+        "work.vexboard.source-projectors",
+        "work.vexboard.fractal-semantic-composition-spatial-layout",
+        "github.pull.vexwork.146",
+        "git.commit.vexwork.4de96957aaa38cf1560a5e5388898382acbaa799",
+        "work.vexstream.mobile-library.outcome",
+        "projects/vexstream-mobile-library/README.md"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [
+        "process.vexwork.quality-review"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-25T04:00:00.000Z",
+      "updatedAt": "2026-10-25T04:00:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexboard.later.businessfactory-guided-company-formation",
+      "parentWorkRefOrNull": "work.vexboard.outcome",
+      "label": "Later — BusinessFactory guided company formation",
+      "purpose": "Preserve the eventual graduation scenario for VexBoard + BusinessFactory: after screenshot/evidence mapping and reusable templates are stable, and after the business structure, patterns, processes, and end-to-end journeys are sufficiently mapped, guide a person from zero through creating a company while preserving their data, screenshots, documents, and assets with rightful owners and surfacing protected registration/provider actions only when genuinely human-bound. This is strategic later context, not current implementation scope or authority.",
+      "workClass": "POTENTIAL",
+      "state": "CAPTURED",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "LOW",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/vexboard/README.md",
+        "work.vexboard.vexstream-screenshot-pilot",
+        "work.vex-universe.businessfactory-convergence",
+        "projects/vexwork-operational-console/BUSINESS-OPERATING-PROCESS-MAP.md",
+        "projects/vexwork-operational-console/VEX-UNIVERSE-COMPLETION-PATHWAY.md"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-25T04:00:00.000Z",
+      "updatedAt": "2026-10-25T04:00:00.000Z"
     }
   ],
   "transitions": [
