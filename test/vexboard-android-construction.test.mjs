@@ -95,6 +95,29 @@ test('Android construction plan consumes VexBoard design without target effects'
   assert.match(track.targetSymbol, /VexStreamTrackCard/);
 });
 
+test('component style edit changes Android mapping while preserving target symbol identity', () => {
+  const changed = structuredClone(design);
+  changed.authorityState = 'VEXBOARD_DESIGN_DRAFT';
+  changed.componentAssignments.find(
+    (entry) => entry.semanticRef === 'element.home.body.systems.vex-maps',
+  ).styleRef = 'style.action.primary';
+
+  const baselinePlan = compileVexLifeAndroidScreenDesign(design);
+  const changedPlan = compileVexLifeAndroidScreenDesign(changed);
+  const baseline = baselinePlan.componentMappings.find(
+    (entry) => entry.semanticRef === 'element.home.body.systems.vex-maps',
+  );
+  const updated = changedPlan.componentMappings.find(
+    (entry) => entry.semanticRef === 'element.home.body.systems.vex-maps',
+  );
+
+  assert.equal(baseline.targetSymbol, 'VexButton');
+  assert.equal(updated.targetSymbol, 'VexButton');
+  assert.equal(baseline.styleRef, 'style.action.secondary');
+  assert.equal(updated.styleRef, 'style.action.primary');
+  assert.equal(changedPlan.admission, 'PREVIEW_ONLY_DESIGN_DRAFT');
+});
+
 test('local VexBoard design draft remains non-implementing until explicit acceptance', () => {
   const draft = structuredClone(design);
   draft.authorityState = 'VEXBOARD_DESIGN_DRAFT';
