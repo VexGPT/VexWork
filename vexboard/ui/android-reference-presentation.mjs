@@ -28,6 +28,10 @@ const CSS = `
 .shape.android-role-screen-anchor {
   background:#f5f3ff;border:2px solid #7c3aed;border-radius:14px;color:#4c1d95;font-weight:800;
 }
+.shape.android-role-state-chip {
+  background:#fff7ed;border:1px solid #fdba74;border-radius:999px;box-shadow:none;color:#9a3412;
+  font:800 9px ui-monospace,monospace;letter-spacing:.03em;text-transform:uppercase;padding:2px 9px;
+}
 .shape.android-role-toolbar {
   background:#17181c;border:0;border-bottom:1px solid #383a42;border-radius:26px 26px 0 0;box-shadow:none;color:#f5f5f4;
   justify-content:flex-start;text-align:left;padding:0 18px;font-size:22px;font-weight:650;
