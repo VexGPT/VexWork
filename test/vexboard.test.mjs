@@ -312,7 +312,7 @@ test('local draft flow creates, forks, serializes and uses the same BoardControl
       schemaVersion: 'vexboard.screen-design/poc-v1',
       designRef: 'design.test',
       authorityState: 'REVERSE_ADOPTED_CANDIDATE',
-      referenceViewport: { widthDp: 412, heightDp: 915 },
+      referenceViewport: { profileRef: 'profile.test.phone', widthDp: 412, heightDp: 915 },
       constraints: [],
     },
     sourceRefs: ['repo.test:source'],
