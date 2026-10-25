@@ -15,6 +15,8 @@ BoardJourney + simulation             COMPLETED
 animated semantic traversal           ACCEPTED / PR #98 MERGED
 BoardPatch                            READY / NO_AUTHORITY / NO_EFFECTS
 Source Projectors                     RUNNING / AUTHORIZED_BOUNDED / EFFECTS_BOUND
+VexStream screenshot pilot            WAITING_HUMAN / IMMEDIATE
+BusinessFactory company formation     CAPTURED / LATER / NO_AUTHORITY
 VexBoard root                         DECOMPOSED
 ```
 
