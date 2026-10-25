@@ -3,6 +3,7 @@ import { createBoardGraph, createBoardProjection } from './vexboard.mjs';
 export const BOARD_PROJECTION_COMPOSITION_SCHEMA = 'vexboard.projection-composition/v1';
 export const BOARD_PROJECTION_COMPOSITION_RESULT_SCHEMA = 'vexboard.projection-composition-result/v1';
 export const BOARD_LOCAL_LAYOUT_MODES = Object.freeze(['FREE', 'ROW', 'COLUMN', 'STACK']);
+export const BOARD_LOCAL_BOUNDARY_POLICIES = Object.freeze(['FAIL', 'WRAP', 'SERPENTINE']);
 
 const REF = /^[A-Za-z0-9][A-Za-z0-9._:/-]*$/u;
 const HEX64 = /^[0-9a-f]{64}$/u;
@@ -58,17 +59,33 @@ function normalizeComposition(input) {
   assert(Array.isArray(input.containers), 'projection composition containers must be an array');
 
   const containers = input.containers.map((container, index) => {
-    exactKeys(container, [
+    assert(isObject(container), `projection composition containers[${index}] must be one object`);
+    const legacyKeys = [
       'containerProjectionItemRef', 'layout', 'orderedChildProjectionItemRefs',
-    ], `projection composition containers[${index}]`);
+    ].sort(compareCanonicalText);
+    const boundedKeys = [...legacyKeys, 'boundaryPolicy'].sort(compareCanonicalText);
+    const actualKeys = Object.keys(container).sort(compareCanonicalText);
+    assert(
+      JSON.stringify(actualKeys) === JSON.stringify(legacyKeys)
+        || JSON.stringify(actualKeys) === JSON.stringify(boundedKeys),
+      `projection composition containers[${index}] schema drift`,
+    );
     assert(BOARD_LOCAL_LAYOUT_MODES.includes(container.layout),
       `unsupported local layout mode ${container.layout}`);
+    const boundaryPolicy = container.boundaryPolicy ?? 'FAIL';
+    assert(BOARD_LOCAL_BOUNDARY_POLICIES.includes(boundaryPolicy),
+      `unsupported local boundary policy ${boundaryPolicy}`);
+    assert(
+      boundaryPolicy === 'FAIL' || ['ROW', 'COLUMN'].includes(container.layout),
+      `boundary policy ${boundaryPolicy} requires ROW or COLUMN layout`,
+    );
     return {
       containerProjectionItemRef: stableRef(
         container.containerProjectionItemRef,
         `projection composition containers[${index}].containerProjectionItemRef`,
       ),
       layout: container.layout,
+      boundaryPolicy,
       orderedChildProjectionItemRefs: refList(
         container.orderedChildProjectionItemRefs,
         `projection composition containers[${index}].orderedChildProjectionItemRefs`,
@@ -116,9 +133,77 @@ function sameRefSet(left, right) {
   return right.every((ref) => expected.has(ref));
 }
 
-function desiredPosition({ layout, containerBounds, childBounds, index, priorChildren, padding, gap }) {
+function innerContainerBounds(containerBounds, padding) {
+  return {
+    left: containerBounds.x + padding,
+    top: containerBounds.y + padding,
+    right: containerBounds.x + containerBounds.width - padding,
+    bottom: containerBounds.y + containerBounds.height - padding,
+  };
+}
+
+function createBoundaryFlowState({ layout, containerBounds, padding }) {
+  const inner = innerContainerBounds(containerBounds, padding);
+  return {
+    layout,
+    inner,
+    lineIndex: 0,
+    direction: 1,
+    cursorX: inner.left,
+    cursorY: inner.top,
+    lineCrossExtent: 0,
+  };
+}
+
+function beginNextBoundaryLine(state, boundaryPolicy, gap) {
+  state.lineIndex += 1;
+  const reverse = boundaryPolicy === 'SERPENTINE' && state.lineIndex % 2 === 1;
+  state.direction = reverse ? -1 : 1;
+  if (state.layout === 'ROW') {
+    state.cursorY += state.lineCrossExtent + gap;
+    state.cursorX = reverse ? state.inner.right : state.inner.left;
+  } else {
+    state.cursorX += state.lineCrossExtent + gap;
+    state.cursorY = reverse ? state.inner.bottom : state.inner.top;
+  }
+  state.lineCrossExtent = 0;
+}
+
+function boundedRowPosition({ state, childBounds, boundaryPolicy, gap }) {
+  const width = childBounds.width;
+  const wouldOverflow = state.direction === 1
+    ? state.cursorX + width > state.inner.right
+    : state.cursorX - width < state.inner.left;
+  if (wouldOverflow && state.lineCrossExtent > 0) beginNextBoundaryLine(state, boundaryPolicy, gap);
+  const x = state.direction === 1 ? state.cursorX : state.cursorX - width;
+  const y = state.cursorY;
+  state.cursorX = state.direction === 1 ? x + width + gap : x - gap;
+  state.lineCrossExtent = Math.max(state.lineCrossExtent, childBounds.height);
+  return { x, y };
+}
+
+function boundedColumnPosition({ state, childBounds, boundaryPolicy, gap }) {
+  const height = childBounds.height;
+  const wouldOverflow = state.direction === 1
+    ? state.cursorY + height > state.inner.bottom
+    : state.cursorY - height < state.inner.top;
+  if (wouldOverflow && state.lineCrossExtent > 0) beginNextBoundaryLine(state, boundaryPolicy, gap);
+  const x = state.cursorX;
+  const y = state.direction === 1 ? state.cursorY : state.cursorY - height;
+  state.cursorY = state.direction === 1 ? y + height + gap : y - gap;
+  state.lineCrossExtent = Math.max(state.lineCrossExtent, childBounds.width);
+  return { x, y };
+}
+
+function desiredPosition({
+  layout, boundaryPolicy, containerBounds, childBounds, priorChildren, padding, gap, flowState,
+}) {
   if (layout === 'FREE') return { x: childBounds.x, y: childBounds.y };
   if (layout === 'STACK') return { x: containerBounds.x + padding, y: containerBounds.y + padding };
+  if (boundaryPolicy !== 'FAIL') {
+    if (layout === 'ROW') return boundedRowPosition({ state: flowState, childBounds, boundaryPolicy, gap });
+    return boundedColumnPosition({ state: flowState, childBounds, boundaryPolicy, gap });
+  }
   if (layout === 'ROW') {
     const x = priorChildren.reduce(
       (cursor, child) => cursor + child.bounds.width + gap,
@@ -174,18 +259,26 @@ export function resolveBoardProjectionComposition({ graph: graphInput, projectio
       `projection composition children for ${container.projectionItemRef} must exactly cover direct projection children`);
 
     const resolvedChildren = [];
+    const flowState = local.boundaryPolicy === 'FAIL'
+      ? null
+      : createBoundaryFlowState({
+        layout: local.layout,
+        containerBounds: container.bounds,
+        padding: composition.metrics.padding,
+      });
     for (let index = 0; index < local.orderedChildProjectionItemRefs.length; index += 1) {
       const childRef = local.orderedChildProjectionItemRefs[index];
       const child = byItemRef.get(childRef);
       assert(child, `unknown child projectionItemRef ${childRef}`);
       const desired = desiredPosition({
         layout: local.layout,
+        boundaryPolicy: local.boundaryPolicy,
         containerBounds: container.bounds,
         childBounds: child.bounds,
-        index,
         priorChildren: resolvedChildren,
         padding: composition.metrics.padding,
         gap: composition.metrics.gap,
+        flowState,
       });
       const changed = desired.x !== child.bounds.x || desired.y !== child.bounds.y;
       assert(!changed || !child.locked,
