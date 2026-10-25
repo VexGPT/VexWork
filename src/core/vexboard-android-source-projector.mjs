@@ -426,18 +426,28 @@ function experienceBoard(snapshot, design) {
   items.push(projectionItem('item.home.vexstream-body', homeBodyRef, 'TEXT', rect(innerX + homeMetrics.innerHorizontal, y + 103, innerWidth - homeMetrics.innerHorizontal * 2, 70), layer++, 'item.home.vexstream-section'));
   hints.push(presentationHint('item.home.vexstream-body', 'TEXT', 'SUPPORTING'));
   const openAction = snapshot.home.vexStreamSection.actions[0];
-  items.push(projectionItem('item.home.vexstream-open', openAction.ref, 'RECTANGLE', rect(innerX + homeMetrics.innerHorizontal, y + 180, innerWidth - homeMetrics.innerHorizontal * 2, 38), layer++, 'item.home.vexstream-section'));
+  items.push(projectionItem('item.home.vexstream-open', openAction.ref, 'RECTANGLE', rect(
+    innerX + homeMetrics.innerHorizontal,
+    y + 180,
+    innerWidth - homeMetrics.innerHorizontal * 2,
+    homeMetrics.buttonMinHeight,
+  ), layer++, 'item.home.vexstream-section'));
   hints.push(presentationHint('item.home.vexstream-open', 'BUTTON', 'PRIMARY'));
 
   y += 230 + homeMetrics.homeSectionGap;
   items.push(projectionItem('item.home.systems-section', snapshot.home.systemsSection.ref, 'RECTANGLE', rect(innerX, y, innerWidth, 250), layer++, 'item.home.screen'));
   hints.push(presentationHint('item.home.systems-section', 'SURFACE', 'RAISED'));
-  let systemY = y + 52;
+  let systemY = y + homeMetrics.innerVertical;
   snapshot.home.systemsSection.actions.forEach((action, index) => {
     const itemRef = `item.home.system-action.${index}`;
-    items.push(projectionItem(itemRef, action.ref, 'RECTANGLE', rect(innerX + homeMetrics.innerHorizontal, systemY, innerWidth * 0.72, 40), layer++, 'item.home.systems-section'));
+    items.push(projectionItem(itemRef, action.ref, 'RECTANGLE', rect(
+      innerX + homeMetrics.innerHorizontal,
+      systemY,
+      innerWidth * 0.72,
+      homeMetrics.buttonMinHeight,
+    ), layer++, 'item.home.systems-section'));
     hints.push(presentationHint(itemRef, 'BUTTON', 'SECONDARY'));
-    systemY += 58;
+    systemY += homeMetrics.buttonMinHeight + homeMetrics.gapVertical;
   });
 
   function addVexStreamChrome(state, frame, frameItemRef) {
@@ -464,9 +474,9 @@ function experienceBoard(snapshot, design) {
 
     const tabsY = frame.y + vexMetrics.content.y;
     const tabGap = vexMetrics.tabGapHorizontal;
-    const tabWidth = (frame.width - (vexMetrics.padding * 2) - (tabGap * (snapshot.vexStream.tabs.length - 1)))
+    const tabWidth = (vexMetrics.content.width - (tabGap * (snapshot.vexStream.tabs.length - 1)))
       / snapshot.vexStream.tabs.length;
-    let tabX = frame.x + vexMetrics.padding;
+    let tabX = frame.x + vexMetrics.content.x;
     snapshot.vexStream.tabs.forEach((tab, index) => {
       const itemRef = `${frameItemRef}.tab.${index}`;
       items.push(projectionItem(itemRef, tab.ref, 'RECTANGLE', rect(tabX, tabsY, tabWidth, vexMetrics.buttonMinHeight), layer++, frameItemRef));
