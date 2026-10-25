@@ -157,6 +157,27 @@ function normalizeSnapshot(input) {
   return structuredClone(input);
 }
 
+export function summarizeAndroidPocAdoptionReadiness(coverageInput) {
+  const coverage = normalizeAdoptionCoverage(coverageInput);
+  const blockingKinds = new Set([
+    'RAW_COMPOSE_NO_SEMANTIC_REF',
+    'REGISTRY_RENDER_STRUCTURE_DRIFT',
+    'TARGET_LOCAL_DESIGN_MEANING',
+  ]);
+  const blockingFindings = (coverage.findings ?? []).filter(
+    (finding) => blockingKinds.has(finding.kind),
+  );
+  return Object.freeze({
+    schemaVersion: 'vexlife-android.vexboard-adoption-readiness/poc-v1',
+    status: blockingFindings.length ? 'HELD' : 'CLEAR',
+    blockingFindingRefs: Object.freeze(
+      blockingFindings.map((finding) => finding.findingRef).sort(),
+    ),
+    identityExceptionCount: coverage.identityExceptions.length,
+    findingCount: (coverage.findings ?? []).length,
+  });
+}
+
 export function androidPocDesignLocation(snapshotInput) {
   return normalizeSnapshot(snapshotInput).designLocation;
 }
@@ -293,6 +314,7 @@ function makeDraft({
   presentation,
   design = null,
   adoptionCoverage = null,
+  adoptionReadiness = null,
   sourceRefs,
 }) {
   return Object.freeze({
@@ -307,6 +329,7 @@ function makeDraft({
     presentation,
     ...(design ? { design: normalizeScreenDesign(design) } : {}),
     ...(adoptionCoverage ? { adoptionCoverage: normalizeAdoptionCoverage(adoptionCoverage) } : {}),
+    ...(adoptionReadiness ? { adoptionReadiness: structuredClone(adoptionReadiness) } : {}),
     sourceRefs: refs(sourceRefs, 'draft.sourceRefs'),
   });
 }
@@ -1059,12 +1082,17 @@ function experienceBoard(snapshot, design, viewportProfile) {
     }]),
     design,
     adoptionCoverage: snapshot.adoptionCoverage,
+    adoptionReadiness: summarizeAndroidPocAdoptionReadiness(snapshot.adoptionCoverage),
     sourceRefs,
   });
 }
 
 function depthBoard(snapshot, design, viewportProfile) {
-  const constructionPlan = compileVexLifeAndroidScreenDesign(design);
+  const adoptionReadiness = summarizeAndroidPocAdoptionReadiness(snapshot.adoptionCoverage);
+  const constructionPlan = compileVexLifeAndroidScreenDesign(
+    design,
+    { adoptionReadiness },
+  );
   const graphRef = 'graph.vexlife-android.vexstream-depth.poc';
   const projectionRef = 'projection.vexlife-android.vexstream-depth.poc';
   const sourceRefs = sourceUnion(snapshot, design, snapshot.depth.sourceRefs, snapshot.depth.desktop.sourceRefs);
@@ -1198,6 +1226,7 @@ function depthBoard(snapshot, design, viewportProfile) {
     presentation: makePresentation(viewportProfile, hints, sourceRefs),
     design,
     adoptionCoverage: snapshot.adoptionCoverage,
+    adoptionReadiness,
     sourceRefs,
   });
 }
