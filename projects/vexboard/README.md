@@ -76,28 +76,40 @@ READY
 AUTHORIZED
 ```
 
-## Current priority ladder — VexStream screenshot patient zero
+## Current priority ladder — VexStream living Blueprint patient zero
 
-The current foreground is no longer another abstract screenshot design exercise. The first real screenshot/evidence consumer is a bounded VexStream patient zero:
+The screenshot human predicate is now satisfied. The current foreground is a real VexStream patient zero that must prove more than screenshot placement: it should pressure one **living Blueprint vertical slice** across source-owned meaning, VexBoard perception, target construction lineage and observed evidence.
 
 ```text
 CURRENT / IMMEDIATE
 work.vexboard.vexstream-screenshot-pilot
--> Victor supplies a small ordered set of real VexStream Music screenshots
--> initial scenario: connect a phone to a desktop for VexStream Music use
--> VexBoard maps visible observations into proposed semantic correspondences
--> accepted process meaning remains separate from screenshot pixels
--> exercise BoardGraph + BoardProjection + BoardJourney + evidence presentation together
+-> Victor supplied the real cross-device screenshot set
+-> scenario: connect a VexLife Android phone to VexStream Desktop
+-> preserve one add/connect-phone intention across conditional current states
+   no remembered phone -> pairing window may start automatically
+   remembered phone -> Connect another phone -> same bounded pairing window
+-> map visible observations into proposed semantic correspondences
+-> reconcile accepted meaning against current VexStream Desktop / VexLife Android source
+-> exercise BoardGraph + BoardProjection + BoardJourney + BoardEvidence together
+-> pressure one living Blueprint vertical slice:
+   source-owned semantic feature meaning
+   -> VexBoard semantic/spatial projection
+   -> deterministic target construction/mapping lineage
+   -> target-native source realization
+   -> expected/reference render
+   -> observed screenshot evidence
+   -> derived currentness / drift comparison
 
 NEAR TERM
--> use the lived pilot to decide which screenshot/evidence behaviors actually repeat
--> test evidence-rail/sidebar as the scalable default
--> test optional canvas pinning as a projection-local convenience
--> only then stabilize reusable image-region / evidence coordinates that the pilot genuinely earns
+-> build the VexStream Phone <-> Desktop Feature Board from current source + evidence
+-> add evidence-rail / inspector presentation before persisted screenshot-placement architecture
+-> compare expected current render against observed evidence at stable semantic coordinates
+-> add explicit Android and Desktop source adapters before extracting a generic feature projector
+-> let repeated consumers earn any reusable feature/currentness contract
 
 LATER / CAPTURED
 work.vexboard.later.businessfactory-guided-company-formation
--> after screenshot/evidence mapping and reusable templates are stable
+-> after living screenshot/evidence mapping and reusable templates are stable
 -> after BusinessFactory business structure, patterns, processes and end-to-end journeys are sufficiently mapped
 -> use the combined substrate as a graduation scenario:
    guide a person from zero through creating a company
@@ -105,7 +117,67 @@ work.vexboard.later.businessfactory-guided-company-formation
    ask for protected registration/provider actions only when genuinely human-bound
 ```
 
-The VexStream pilot owns **the mapping experiment**, not VexStream product truth:
+### Blueprint Source-of-Truth convergence carried by this pilot
+
+This pilot consumes the accepted **VexLife Blueprint Source of Truth** trajectory as construction/proof lineage rather than rediscovering that architecture from screenshots:
+
+```text
+project.vexlife.blueprint-source-of-truth
+work.vexlife.blueprint-source-of-truth.play-pause-practicum
+work.vexlife.blueprint-source-of-truth.reusable-v1
+work.vexlife.blueprint-source-of-truth.total-feature-capacity
+```
+
+That trajectory already proved the reusable direction:
+
+```text
+one product/software intention
+-> portable semantic meaning
+-> deterministic representation
+-> platform-specific realization
+-> construction / semantic / native proof
+-> bounded reverse observation
+```
+
+VexBoard supplies the complementary reusable surface:
+
+```text
+semantic meaning
+-> human/AI visual authoring + inspection
+-> stable spatial projection
+-> Journey / conditions / evidence
+-> published Blueprint revision
+-> target construction mapping
+-> accepted target source
+-> expected/lived projection back into VexBoard
+-> comparison / currentness / drift
+```
+
+For an existing source-owned feature such as VexStream:
+
+```text
+VexLife / VexStream source meaning
+-> source projector / reverse adoption
+-> VexBoard living Feature Board
+-> construction lineage + expected target render
+-> observed evidence
+```
+
+For a future VexBoard-authored system:
+
+```text
+published VexBoard Blueprint
+-> target adapter/compiler
+-> reviewable target source candidate
+-> target repository validation/lifecycle
+-> source/lived projection back into VexBoard
+```
+
+These Blueprint Source-of-Truth refs are **lineage and architectural pressure**, not blocking dependencies and not an automatic reactivation of the paused VLBSoT Project.
+
+The pilot may treat a rightful product **Feature identity** as a discoverable semantic root for projections, journeys, construction targets, source bindings, evidence and Work. That does **not** require adding `FEATURE` to the VexWork Workgraph class vocabulary. Projects remain human-outcome groupings; product repositories remain owners of feature/product meaning.
+
+The VexStream pilot owns **the mapping/evidence/convergence experiment**, not VexStream product truth:
 
 ```text
 VEXSTREAM_SCREENSHOT_PILOT != VEXSTREAM_PRODUCT_OWNER
@@ -114,9 +186,18 @@ VISIBLE_REGION != SEMANTIC_IDENTITY
 PROPOSED_MAPPING != ACCEPTED_MAPPING
 EVIDENCE_RAIL != REQUIRED_FINAL_UI
 PIN_TO_CANVAS != SEMANTIC_REPARENT
+
+VEXBOARD_PROJECTION != PORTABLE_PRODUCT_MEANING
+TARGET_MAPPING != TARGET_SOURCE_AUTHORITY
+EXPECTED_RENDER != OBSERVED_RENDER
+OBSERVED_SCREENSHOT != PRODUCT_ACCEPTANCE
+
+REPOSITORY_COMMIT_CHANGED != SCREENSHOT_STALE
+RELEVANT_SEMANTIC_OR_CONSTRUCTION_DEPENDENCY_CHANGED
+  -> MAY_INVALIDATE_EXPECTED/OBSERVED COMPARISON
 ```
 
-The current presentation hypothesis is intentionally provisional:
+The current presentation hypothesis remains provisional:
 
 ```text
 many screenshots
@@ -125,13 +206,19 @@ many screenshots
 one screenshot needs spatial comparison
 -> optional projection-local pin near the implicated node
 
+current source + construction mapping
+-> expected/reference representation
+
+observed evidence
+-> compare against that relevant current representation
+
 pilot evidence
--> decide whether those behaviors deserve a reusable contract
+-> decide which behavior deserves a reusable contract
 ```
 
-Do not introduce a universal OCR ontology, screenshot-hotspot registry, image-specific node typology, or BusinessFactory onboarding framework merely to complete this pilot.
+Do not introduce a universal OCR ontology, screenshot-hotspot registry, image-specific node typology, generic Feature ontology, or whole-product construction framework merely to complete this pilot.
 
-The eventual "start a business from the beginning" experience is strategically important, but it is **not current implementation scope or authority**. It is preserved now so future work can see the intended graduation path without pulling that complexity into the screenshot patient zero.
+The eventual "start a business from the beginning" experience remains strategically important, but it is **not current implementation scope or authority**. It is preserved so future work can see the graduation path without pulling that complexity into this patient zero.
 
 ## Human outcome
 
@@ -4117,6 +4204,49 @@ expected evidence slot
 VexBoard presentation may later render placeholders, galleries and expected-vs-observed comparisons. That
 UI should be added only after the current single-file browser surface is decomposed enough that evidence
 presentation does not enlarge `vexboard/index.html` into another semantic owner.
+### Living-source comparison and evidence freshness
+
+For a source-backed feature, evidence currentness should be derived from the **relevant semantic / construction / render dependency**, not from repository recency alone.
+
+Conceptually:
+
+~~~text
+source-owned semantic identity
++ current target construction mapping
++ current expected/reference representation
++ observed BoardEvidence artifact
+-> bounded comparison finding
+
+same relevant meaning/render binding
+  -> evidence may remain current
+
+relevant semantic or construction dependency changed
+  -> observed artifact becomes historical/stale for that coordinate
+
+current expected representation differs from a current lived observation
+  -> observed drift / possible regression
+
+required binding unavailable
+  -> currentness remains unknown
+~~~
+
+A screenshot becoming historical does not make it bad evidence. It preserves what was actually seen against an older source/mapping revision.
+
+Any labels such as `CURRENT`, `HISTORICAL_SOURCE`, `OBSERVED_DRIFT` or `UNKNOWN` remain presentation findings until repeated consumers earn a reusable wire contract. Do not add freshness fields to every screenshot merely because this patient zero needs a visible comparison.
+
+The target-specific renderer remains the rightful expected-visual owner where pixel/native fidelity matters:
+
+~~~text
+VexBoard semantic Blueprint
+-> target construction mapping
+-> target-native source / renderer
+-> expected/reference visual
+-> BoardEvidence comparison
+
+VEXBOARD_SEMANTIC_PROJECTION != ANDROID_COMPOSE_RENDERER
+VEXBOARD_SEMANTIC_PROJECTION != DESKTOP_BROWSER_RENDERER
+~~~
+
 ### Presentation decomposition before evidence UI
 
 The current browser proving surface is still concentrated in `vexboard/index.html`. That is acceptable for

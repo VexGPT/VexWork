@@ -4195,10 +4195,10 @@
       "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vexboard.vexstream-screenshot-pilot",
       "parentWorkRefOrNull": "work.vexboard.outcome",
-      "label": "VexStream screenshot-to-process pilot",
-      "purpose": "Use a real VexStream phone-to-desktop connection walkthrough as the first screenshot evidence patient zero: map ordered user-supplied screenshots into visible observations, proposed semantic correspondences, BoardGraph/BoardProjection/BoardJourney meaning, and scalable evidence presentation while VexStream/VexLife remain owners of product, UI, connection, and provider truth. The pilot should pressure evidence-rail versus optional canvas-pinning behavior without inventing a universal OCR, hotspot, or image ontology from one example.",
+      "label": "VexStream living Blueprint screenshot pilot",
+      "purpose": "Use the real VexStream phone-to-desktop walkthrough and supplied screenshots as the first living Blueprint patient zero: reconcile observed evidence with current VexStream Desktop / VexLife Android source, project one stable feature journey through BoardGraph / BoardProjection / BoardJourney / BoardEvidence, and pressure the convergence with VexLife Blueprint Source of Truth from portable semantic meaning through deterministic target construction mapping and target-native realization to expected-versus-observed currentness. Preserve product/source ownership, treat VLBSoT refs as accepted lineage rather than blocking dependencies or automatic lane reactivation, and earn only the smallest reusable feature/source/evidence/currentness seams.",
       "workClass": "TASK",
-      "state": "WAITING_HUMAN",
+      "state": "RUNNING",
       "workDisposition": "ACTIVE",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [
@@ -4222,7 +4222,12 @@
         "github.pull.vexwork.146",
         "git.commit.vexwork.4de96957aaa38cf1560a5e5388898382acbaa799",
         "work.vexstream.mobile-library.outcome",
-        "projects/vexstream-mobile-library/README.md"
+        "projects/vexstream-mobile-library/README.md",
+        "project.vexlife.blueprint-source-of-truth",
+        "projects/vexlife-blueprint-source-of-truth/README.md",
+        "work.vexlife.blueprint-source-of-truth.play-pause-practicum",
+        "work.vexlife.blueprint-source-of-truth.reusable-v1",
+        "work.vexlife.blueprint-source-of-truth.total-feature-capacity"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [
@@ -4231,7 +4236,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-25T04:00:00.000Z",
-      "updatedAt": "2026-10-25T04:00:00.000Z"
+      "updatedAt": "2026-10-25T05:52:16.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -7641,6 +7646,21 @@
         "github.commit.antique-plate-storefront.bcadd970f7c45898e008bc1b1e5246e5005a253b"
       ],
       "createdAt": "2026-10-23T06:55:30.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.vexstream-screenshot-pilot.running.living-blueprint-evidence",
+      "workRef": "work.vexboard.vexstream-screenshot-pilot",
+      "priorState": "WAITING_HUMAN",
+      "nextState": "RUNNING",
+      "reason": "Victor supplied the real VexStream phone-to-desktop screenshot set, including the remembered-phone conditional entry, satisfying the human evidence predicate. The patient zero is now active and explicitly carries the accepted VexLife Blueprint Source-of-Truth construction/proof lineage so the work can prove a living semantic -> target construction -> expected/observed comparison slice without transferring product ownership or reactivating the paused VLBSoT Project.",
+      "actorRef": "actor.chatgpt.vexboard.vexstream-screenshot-pilot",
+      "sourceRefs": [
+        "projects/vexboard/README.md",
+        "project.vexlife.blueprint-source-of-truth",
+        "projects/vexlife-blueprint-source-of-truth/README.md"
+      ],
+      "createdAt": "2026-10-25T05:52:16.000Z"
     }
   ],
   "sourceRefs": [
