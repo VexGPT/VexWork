@@ -8,6 +8,7 @@ import {
   normalizeScreenDesign,
   resolveBoundedResponsiveMetric,
   resolveScreenDesignBox,
+  screenDesignViewportProfile,
 } from '../src/core/vexboard-screen-design.mjs';
 
 test('bounded responsive metrics preserve the adopted Android value at the reference width', () => {
@@ -107,6 +108,49 @@ test('screen design contract keeps authority state separate from resolved projec
 
   assert.equal(design.authorityState, 'REVERSE_ADOPTED_CANDIDATE');
   assert.equal(design.constraints[0].semanticRef, 'screen.vexstream-music');
+});
+
+test('screen design resolves named viewport profiles without changing design identity', () => {
+  const design = normalizeScreenDesign({
+    schemaVersion: VEXBOARD_SCREEN_DESIGN_SCHEMA,
+    designRef: 'design.viewport-proof',
+    authorityState: 'VEXBOARD_DESIGN_AUTHORITY',
+    referenceViewport: {
+      profileRef: 'profile.phone',
+      widthDp: 412,
+      heightDp: 915,
+    },
+    viewportProfiles: [
+      {
+        profileRef: 'profile.phone',
+        label: 'Phone',
+        widthDp: 412,
+        heightDp: 915,
+        fontScale: 1,
+      },
+      {
+        profileRef: 'profile.compact',
+        label: 'Compact',
+        widthDp: 360,
+        heightDp: 720,
+        fontScale: 1.45,
+      },
+    ],
+    constraints: [],
+  });
+
+  assert.deepEqual(screenDesignViewportProfile(design, 'profile.compact'), {
+    profileRef: 'profile.compact',
+    label: 'Compact',
+    widthDp: 360,
+    heightDp: 720,
+    fontScale: 1.45,
+  });
+  assert.equal(screenDesignViewportProfile(design).profileRef, 'profile.phone');
+  assert.throws(
+    () => screenDesignViewportProfile(design, 'profile.missing'),
+    /unknown screen design viewport profile/,
+  );
 });
 
 test('screen design preserves scroll/layout intent independently of resolved rectangles', () => {
