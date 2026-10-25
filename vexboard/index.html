@@ -522,6 +522,16 @@ function inspector(side){
   side.append(g);
   if(current.adoptionCoverage){
     const ag=el('div','group');ag.append(el('h3','','Android Adoption'));
+    if(current.adoptionReadiness){
+      const readiness=el('div','kv');
+      readiness.append(
+        el('div','k','readiness'),
+        el('div','v',current.adoptionReadiness.status),
+        el('div','k','blockers'),
+        el('div','v',String(current.adoptionReadiness.blockingFindingRefs?.length??0)),
+      );
+      ag.append(readiness);
+    }
     const screenMode=current.adoptionCoverage.screenRealizationModes?.[n.nodeRef]??null;
     const exception=current.adoptionCoverage.identityExceptions?.find(
       entry=>entry.semanticRef===n.nodeRef,
@@ -860,6 +870,13 @@ function renderWorkspace(){
   const badge=el('span',`badge ${editable()?'draft':'readonly'}`,editable()?'Local draft · browser only':'Read-only source');bar.append(title,badge);
   const androidProfile=AndroidPresentation.androidReferenceProfileSummary(current.presentation);
   if(androidProfile)bar.append(el('span','badge',`Android ref · ${androidProfile.widthDp}×${androidProfile.heightDp}dp`));
+  if(current.adoptionReadiness){
+    bar.append(el(
+      'span',
+      `badge ${current.adoptionReadiness.status==='CLEAR'?'draft':'readonly'}`,
+      `Android adoption · ${current.adoptionReadiness.status}`,
+    ));
+  }
   if(current.design){
     const authority=designAuthorityLabel(current.design.authorityState);
     bar.append(el('span','badge',authority));
