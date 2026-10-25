@@ -783,7 +783,7 @@
       "label": "Current-track artwork availability and convergence",
       "purpose": "Fix the lived playback-surface gap where the Full Player and home-screen widget still show generic artwork placeholders. Determine whether current-track artwork is absent at the VexStream producer, lost in Android catalog/Media3 projection, not cached by the rightful artwork owner, or not consumed by the surface; make current admitted artwork converge without making the widget an artwork fetcher or changing media identity.",
       "workClass": "DEFECT",
-      "state": "READY",
+      "state": "RUNNING",
       "workDisposition": "ACTIVE",
       "priorityClass": "HIGH",
       "dependencyRefs": [
@@ -805,7 +805,9 @@
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/widget/vexstream/VexStreamPlaybackWidget.kt",
         "human.lived-feedback.vexstream.artwork-availability.20261025",
         "evidence.private.local-vex.full-player.sha256.dac704615d19231a315dd3e0869219216858206ab4d54cce9acc99afc4d0a8e1",
-        "evidence.private.local-vex.widget-home.sha256.f96a84375afd3804a706f532ae95731c2d3d05641a9fe761aecee465e244a3b5"
+        "evidence.private.local-vex.widget-home.sha256.f96a84375afd3804a706f532ae95731c2d3d05641a9fe761aecee465e244a3b5",
+        "github.issue.vexstream-music.11",
+        "repo.vexstream-music:v2/desktop/library/filesystem/metadata.go"
       ],
       "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
       "nextProcessRefs": [
@@ -814,7 +816,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-25T07:10:00.000Z",
-      "updatedAt": "2026-10-25T07:10:00.000Z"
+      "updatedAt": "2026-10-25T07:25:37.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -823,7 +825,7 @@
       "label": "VexStream pairing reconnect continuity across new builds",
       "purpose": "Fix the lived regression where installing a newer VexLife Android build can leave the phone unable to reconnect to the Desktop's already-established VexStream pairing. Preserve pairing across ordinary data-preserving upgrades/reinstalls, distinguish product persistence from destructive test/install tooling, and keep explicit Clear Data/uninstall credential loss separate from durable downloaded-media recovery.",
       "workClass": "DEFECT",
-      "state": "READY",
+      "state": "RUNNING",
       "workDisposition": "ACTIVE",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
@@ -837,7 +839,11 @@
         "repo.vexlife-android:app/build.gradle.kts",
         "repo.vexlife-android:docs/foundation/ANDROID-HOST-PROOF.md",
         "work.vexstream.mobile-library.durable-device-library",
-        "human.lived-feedback.vexstream.pairing-reconnect-build-continuity.20261025"
+        "human.lived-feedback.vexstream.pairing-reconnect-build-continuity.20261025",
+        "github.pull.vexlife-android.180",
+        "github.commit.vexlife-android.ec12655534a5cb0249a01f4e5c8e02e3d97cc329",
+        "repo.vexlife-android:gradle.properties",
+        "repo.vexlife-android:gradle/test-foundation.gradle.kts"
       ],
       "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
       "nextProcessRefs": [
@@ -846,7 +852,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-25T07:10:00.000Z",
-      "updatedAt": "2026-10-25T07:10:00.000Z"
+      "updatedAt": "2026-10-25T07:25:05.000Z"
     }
   ],
   "transitions": [
@@ -1203,6 +1209,36 @@
         "github.pull.vexlife-android.177"
       ],
       "createdAt": "2026-10-25T03:50:45.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.current-artwork-availability.running.issue11",
+      "workRef": "work.vexstream.mobile-library.current-artwork-availability",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Source descent reached the VexStream Desktop filesystem owner and confirmed the lived placeholder is upstream for ordinary MP3s: ID3 text frames are parsed but APIC embedded cover art is not. VexstreamMusic issue #11 now owns the cross-repository producer/mobile artwork correction.",
+      "actorRef": "actor.local-vex-operations.vexstream-mobile-library",
+      "sourceRefs": [
+        "github.issue.vexstream-music.11",
+        "repo.vexstream-music:v2/desktop/library/filesystem/metadata.go",
+        "human.lived-feedback.vexstream.artwork-availability.20261025"
+      ],
+      "createdAt": "2026-10-25T07:25:37.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.pairing-reconnect-build-continuity.running.pr180",
+      "workRef": "work.vexstream.mobile-library.pairing-reconnect-build-continuity",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Causal grounding confirmed product pairing already persists in SharedPreferences + Android Keystore while the repository lacked AGP's leave-APKs-installed connected-test setting. Android PR #180 now owns the proof-substrate correction so connected proof does not erase Victor's lived pairing.",
+      "actorRef": "actor.local-vex-operations.vexstream-mobile-library",
+      "sourceRefs": [
+        "github.pull.vexlife-android.180",
+        "github.commit.vexlife-android.ec12655534a5cb0249a01f4e5c8e02e3d97cc329",
+        "human.lived-feedback.vexstream.pairing-reconnect-build-continuity.20261025"
+      ],
+      "createdAt": "2026-10-25T07:25:05.000Z"
     }
   ],
   "sourceRefs": [
