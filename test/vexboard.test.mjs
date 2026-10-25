@@ -315,6 +315,18 @@ test('local draft flow creates, forks, serializes and uses the same BoardControl
       referenceViewport: { profileRef: 'profile.test.phone', widthDp: 412, heightDp: 915 },
       constraints: [],
     },
+    adoptionCoverage: {
+      schemaVersion: 'vexlife-android.vexboard-adoption-coverage/poc-v1',
+      screenRealizationModes: {
+        'screen.test': 'CUSTOM_NATIVE_REALIZATION',
+      },
+      identityExceptions: [{
+        semanticRef: 'element.test.derived',
+        origin: 'DERIVED_CUSTOM_PRESENTATION',
+        staticRegistryStatus: 'UNREGISTERED_STATIC',
+        sourceRefs: ['repo.test:source'],
+      }],
+    },
     sourceRefs: ['repo.test:source'],
   };
   const fork = await Reader.forkReadOnlyBoard(readOnly, { draftRef: 'draft.fork' });
@@ -323,19 +335,27 @@ test('local draft flow creates, forks, serializes and uses the same BoardControl
   assert.equal(fork.graph.semanticFingerprint, roundTrip.graph.semanticFingerprint);
   assert.deepEqual(fork.presentation, readOnly.presentation);
   assert.deepEqual(fork.design, readOnly.design);
+  assert.deepEqual(fork.adoptionCoverage, readOnly.adoptionCoverage);
   assert.deepEqual(fork.sourceRefs, readOnly.sourceRefs);
   assert.notEqual(fork.presentation, readOnly.presentation, 'fork must retain presentation by value, not shared object identity');
   assert.notEqual(fork.design, readOnly.design, 'fork must retain design constraints by value, not shared object identity');
+  assert.notEqual(
+    fork.adoptionCoverage,
+    readOnly.adoptionCoverage,
+    'fork must retain adoption coverage by value, not shared object identity',
+  );
 
   const forkRoundTrip = Reader.deserializeDraft(Reader.serializeDraft(fork));
   assert.deepEqual(forkRoundTrip.presentation, fork.presentation);
   assert.deepEqual(forkRoundTrip.design, fork.design);
+  assert.deepEqual(forkRoundTrip.adoptionCoverage, fork.adoptionCoverage);
   assert.deepEqual(forkRoundTrip.sourceRefs, fork.sourceRefs);
   const collectionRoundTrip = Reader.parseDraftCollection(JSON.stringify(
     Reader.upsertDraft([], forkRoundTrip),
   ));
   assert.deepEqual(collectionRoundTrip[0].design, fork.design);
   assert.deepEqual(collectionRoundTrip[0].presentation, fork.presentation);
+  assert.deepEqual(collectionRoundTrip[0].adoptionCoverage, fork.adoptionCoverage);
 });
 
 test('shared model rejects schema drift rather than silently dropping unknown fields', () => {
