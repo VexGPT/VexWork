@@ -154,6 +154,51 @@ test('VexLife Android POC snapshot projects deterministically without source eff
     'state branches must not pretend to be Screen navigation');
 });
 
+test('component style edit changes web presentation from VexBoard design without mutating Android adoption facts', () => {
+  const baseline = projectVexLifeAndroidPocSnapshot(
+    snapshot,
+    VEXBOARD_ANDROID_POC_BOARD_REFS.EXPERIENCE,
+    design,
+  ).board;
+  const changedDesign = structuredClone(design);
+  changedDesign.authorityState = 'VEXBOARD_DESIGN_DRAFT';
+  changedDesign.componentAssignments.find(
+    (entry) => entry.semanticRef === 'element.home.body.systems.vex-maps',
+  ).styleRef = 'style.action.primary';
+
+  const changed = projectVexLifeAndroidPocSnapshot(
+    snapshot,
+    VEXBOARD_ANDROID_POC_BOARD_REFS.EXPERIENCE,
+    changedDesign,
+  ).board;
+
+  const baselineItem = baseline.projection.items.find(
+    (item) => item.semanticRef === 'element.home.body.systems.vex-maps',
+  );
+  const changedItem = changed.projection.items.find(
+    (item) => item.semanticRef === 'element.home.body.systems.vex-maps',
+  );
+  assert.equal(changedItem.projectionItemRef, baselineItem.projectionItemRef);
+
+  const baselineHint = baseline.presentation.items.find(
+    (entry) => entry.projectionItemRef === baselineItem.projectionItemRef,
+  );
+  const changedHint = changed.presentation.items.find(
+    (entry) => entry.projectionItemRef === changedItem.projectionItemRef,
+  );
+  assert.equal(baselineHint.styleRef, 'style.action.secondary');
+  assert.equal(baselineHint.variant, 'SECONDARY');
+  assert.equal(changedHint.styleRef, 'style.action.primary');
+  assert.equal(changedHint.variant, 'PRIMARY');
+
+  assert.equal(
+    snapshot.home.systemsSection.actions.find(
+      (entry) => entry.ref === 'element.home.body.systems.vex-maps',
+    ).label,
+    'VexMaps',
+  );
+});
+
 test('same VexBoard design resolves into a second viewport without reminting Screen identity', () => {
   const reference = projectVexLifeAndroidPocSnapshot(
     snapshot,
