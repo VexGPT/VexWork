@@ -131,6 +131,18 @@ function componentMapping(design, assignment) {
   const targetOwnerSourceRefOrNull = proposed?.sourceRefs?.find(
     (sourceRef) => sourceRef.startsWith('repo.vexlife-android:'),
   ) ?? null;
+  const targetIdentityStrategyOrNull =
+    proposed?.kind === 'TEXT'
+      ? proposed.contentMode === 'STATIC_LOCALIZED'
+        ? 'REGISTER_STATIC_TEXT_ELEMENT'
+        : 'ADD_DYNAMIC_TEXT_IDENTITY'
+      : null;
+  const targetCapabilityStatusOrNull =
+    targetIdentityStrategyOrNull === 'ADD_DYNAMIC_TEXT_IDENTITY'
+      ? 'STANDARDIZATION_REQUIRED'
+      : targetIdentityStrategyOrNull
+        ? 'AVAILABLE'
+        : null;
   return Object.freeze({
     mappingRef: stableRef(
       `mapping.android.component.${assignment.semanticRef.replaceAll(':', '.').replaceAll('/', '.')}`,
@@ -145,6 +157,9 @@ function componentMapping(design, assignment) {
     typographyRefOrNull: assignment.typographyRefOrNull ?? null,
     colorRefOrNull: assignment.colorRefOrNull ?? null,
     identityStateOrNull: proposed?.identityState ?? null,
+    contentModeOrNull: proposed?.contentMode ?? null,
+    targetIdentityStrategyOrNull,
+    targetCapabilityStatusOrNull,
     targetOwnerSourceRefOrNull,
     ...target,
   });
