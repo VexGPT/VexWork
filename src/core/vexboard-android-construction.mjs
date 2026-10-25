@@ -41,6 +41,13 @@ function visualShape(design, ref) {
   return value;
 }
 
+function visualTypography(design, ref) {
+  const value = design.visualTokens?.typography?.[ref];
+  assert(value && typeof value === 'object',
+    `Android construction requires visual typography ${ref}`);
+  return value;
+}
+
 function mapping(mappingRef, {
   designRefs,
   targetSourceRef,
@@ -77,6 +84,11 @@ export function compileVexLifeAndroidScreenDesign(
   for (const shapeRef of [
     'mediumRadiusDp', 'largeRadiusDp', 'extraLargeRadiusDp', 'fullRadius',
   ]) visualShape(design, shapeRef);
+  for (const typographyRef of [
+    'headlineLarge', 'headlineMedium', 'headlineSmall',
+    'titleLarge', 'titleMedium', 'bodyLarge', 'bodyMedium',
+    'labelLarge', 'labelSmall',
+  ]) visualTypography(design, typographyRef);
 
   const tabs = layoutRule(design, 'layout.vexstream.library-tabs');
   const songs = layoutRule(design, 'layout.vexstream.songs');
@@ -142,6 +154,34 @@ export function compileVexLifeAndroidScreenDesign(
       targetMeaning:
         'VexBoard-owned component corner geometry',
       referenceDpOrNull: Number(visualShape(design, 'largeRadiusDp')),
+    }),
+    mapping('mapping.android.theme.typography-explicit', {
+      designRefs: [
+        'visual.typography.headlineLarge',
+        'visual.typography.headlineMedium',
+        'visual.typography.labelSmall',
+      ],
+      targetSourceRef:
+        'repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeTheme.kt',
+      targetSymbol: 'VexTypography explicit overrides',
+      targetMeaning: 'VexLife-authored typography roles',
+      referenceDpOrNull: Number(visualTypography(design, 'headlineMedium').fontSizeSp),
+    }),
+    mapping('mapping.android.theme.typography-material-defaults', {
+      designRefs: [
+        'visual.typography.headlineSmall',
+        'visual.typography.titleLarge',
+        'visual.typography.titleMedium',
+        'visual.typography.bodyLarge',
+        'visual.typography.bodyMedium',
+        'visual.typography.labelLarge',
+      ],
+      targetSourceRef:
+        'repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeTheme.kt',
+      targetSymbol: 'VexTypography inherited Material3 roles',
+      targetMeaning:
+        'pin inherited Material3 typography explicitly if VexBoard design diverges from dependency defaults',
+      referenceDpOrNull: Number(visualTypography(design, 'titleLarge').fontSizeSp),
     }),
     mapping('mapping.android.shell.toolbar-height', {
       designRefs: ['metric.toolbarHeight'],
