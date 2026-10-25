@@ -164,6 +164,11 @@ test('VexLife Android POC is projected at source-load time and styled without ch
   assert.match(page, /scrollOffsets:\[\.\.\.scrollOffsetsByProjectionRef\.entries\(\)\]/);
   assert.match(page, /scrollOffsetsByProjectionRef=new Map\(prior\.scrollOffsets\|\|\[\]\)/);
   assert.doesNotMatch(page, /localStorage\.(?:setItem|getItem)\([^)]*scroll/i);
+  assert.match(page, /let androidProjectionSources=new Map\(\),activeAndroidViewportProfileRef=null/);
+  assert.match(page, /function setAndroidViewportProfile\(/);
+  assert.match(page, /Screen design viewport/);
+  assert.match(page, /viewportSelect\.onchange=\(\)=>setAndroidViewportProfile\(viewportSelect\.value\)/);
+  assert.match(page, /androidViewportProfileRef:activeAndroidViewportProfileRef/);
   assert.match(page, /Open VexLife Android Screen POC/);
   assert.match(page, /VEXBOARD_ANDROID_POC_BOARD_REFS\.EXPERIENCE/);
   assert.doesNotMatch(page, /api\.github\.com|raw\.githubusercontent\.com/);
