@@ -391,3 +391,17 @@ test('VexStream living Blueprint is source-discoverable and Inspector consumes B
   assert.match(page, /Expected slot only · no artifact admitted yet\./);
 });
 
+
+
+test('swimlane journey view prioritizes the product path while preserving full relationships in Inspector', () => {
+  assert.match(page, /relationshipViewMode/);
+  assert.match(page, /Presentation\.defaultRelationshipViewMode/);
+  assert.match(page, /Presentation\.relationshipVisibleInMode/);
+  assert.match(page, /Presentation\.relationshipRoute/);
+  assert.match(page, /Journey edges/);
+  assert.match(page, /All relationships/);
+  assert.match(page, /createElementNS\('http:\/\/www\.w3\.org\/2000\/svg','polyline'\)/);
+  assert.match(page, /nested-control/);
+  assert.match(page, /has-contained-children/);
+  assert.match(page, /openCatalogBoard\(detailBoardRef,\{pushCurrent:true\}\)/);
+});
