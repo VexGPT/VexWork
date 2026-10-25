@@ -807,7 +807,9 @@
         "evidence.private.local-vex.full-player.sha256.dac704615d19231a315dd3e0869219216858206ab4d54cce9acc99afc4d0a8e1",
         "evidence.private.local-vex.widget-home.sha256.f96a84375afd3804a706f532ae95731c2d3d05641a9fe761aecee465e244a3b5",
         "github.issue.vexstream-music.11",
-        "repo.vexstream-music:v2/desktop/library/filesystem/metadata.go"
+        "repo.vexstream-music:v2/desktop/library/filesystem/metadata.go",
+        "github.pull.vexstream-music.12",
+        "github.commit.vexstream-music.f2f7c17ae8fb663686073056d6b18520a106244d"
       ],
       "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
       "nextProcessRefs": [
@@ -816,7 +818,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-25T07:10:00.000Z",
-      "updatedAt": "2026-10-25T07:25:37.000Z"
+      "updatedAt": "2026-10-25T07:42:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
