@@ -195,6 +195,12 @@ function designForSnapshot(snapshot, designInput) {
   return design;
 }
 
+function resolvedDesignMetric(design, metricRef, actualExtentDp) {
+  const metric = design.metrics?.[metricRef];
+  assert(metric, `screen design metric missing: ${metricRef}`);
+  return resolveBoundedResponsiveMetric(metric, actualExtentDp);
+}
+
 function profileMetrics(profile, design, screenKey) {
   const viewport = { x: 0, y: 0, width: profile.widthDp, height: profile.heightDp };
   const shellConstraint = screenDesignConstraint(design, `design-occurrence.${screenKey}.shell-content`);
@@ -210,16 +216,47 @@ function profileMetrics(profile, design, screenKey) {
     vertical: innerConstraint.vertical,
   });
 
+  const mW = (metricRef) => scaled(resolvedDesignMetric(design, metricRef, profile.widthDp));
+  const mH = (metricRef) => scaled(resolvedDesignMetric(design, metricRef, profile.heightDp));
+  const trackRowHeightDp =
+    (resolvedDesignMetric(design, 'trackOuterPaddingVertical', profile.heightDp) * 2)
+    + (resolvedDesignMetric(design, 'trackInnerPaddingVertical', profile.heightDp) * 2)
+    + resolvedDesignMetric(design, 'trackArtworkSize', profile.widthDp);
+
   return Object.freeze({
     width: scaled(profile.widthDp),
     height: scaled(profile.heightDp),
-    toolbar: scaled(resolveBoundedResponsiveMetric(design.metrics.toolbarHeight, profile.heightDp)),
-    bottomBar: scaled(resolveBoundedResponsiveMetric(design.metrics.bottomBarHeight, profile.heightDp)),
-    padding: scaled(resolveBoundedResponsiveMetric(design.metrics.screenPaddingHorizontal, profile.widthDp)),
-    innerHorizontal: scaled(resolveBoundedResponsiveMetric(design.metrics.containerPaddingHorizontal, profile.widthDp)),
-    innerVertical: scaled(resolveBoundedResponsiveMetric(design.metrics.containerPaddingVertical, profile.heightDp)),
-    gapVertical: scaled(resolveBoundedResponsiveMetric(design.metrics.containerGapVertical, profile.heightDp)),
-    listGap: scaled(resolveBoundedResponsiveMetric(design.metrics.listGapVertical, profile.heightDp)),
+    toolbar: mH('toolbarHeight'),
+    bottomBar: mH('bottomBarHeight'),
+    screenPaddingHorizontal: mW('screenPaddingHorizontal'),
+    screenPaddingVertical: mH('screenPaddingVertical'),
+    innerHorizontal: mW('containerPaddingHorizontal'),
+    innerVertical: mH('containerPaddingVertical'),
+    gapVertical: mH('containerGapVertical'),
+    listGap: mH('listGapVertical'),
+    homeSectionGap: mH('homeSectionGapVertical'),
+    toolbarPaddingHorizontal: mW('toolbarPaddingHorizontal'),
+    toolbarPaddingVertical: mH('toolbarPaddingVertical'),
+    toolbarGapHorizontal: mW('toolbarGapHorizontal'),
+    toolbarActionSize: mW('toolbarActionSize'),
+    tabGapHorizontal: mW('tabGapHorizontal'),
+    tabColumnGapVertical: mH('tabColumnGapVertical'),
+    buttonMinHeight: mH('materialButtonMinHeight'),
+    connectionSheetPaddingHorizontal: mW('connectionSheetPaddingHorizontal'),
+    connectionSheetPaddingBottom: mH('connectionSheetPaddingBottom'),
+    loadingStatusPaddingHorizontal: mW('loadingStatusPaddingHorizontal'),
+    loadingStatusPaddingVertical: mH('loadingStatusPaddingVertical'),
+    loadingStatusGapHorizontal: mW('loadingStatusGapHorizontal'),
+    loadingProgressSize: mW('loadingProgressSize'),
+    emptyMessagePadding: mW('emptyMessagePadding'),
+    trackOuterPaddingHorizontal: mW('trackOuterPaddingHorizontal'),
+    trackOuterPaddingVertical: mH('trackOuterPaddingVertical'),
+    trackInnerPaddingHorizontal: mW('trackInnerPaddingHorizontal'),
+    trackInnerPaddingVertical: mH('trackInnerPaddingVertical'),
+    trackRowGapHorizontal: mW('trackRowGapHorizontal'),
+    trackArtworkSize: mW('trackArtworkSize'),
+    trackCopyGapVertical: mH('trackCopyGapVertical'),
+    trackRowHeight: scaled(trackRowHeightDp),
     content: Object.freeze({
       x: scaled(inner.x),
       y: scaled(inner.y),
@@ -392,7 +429,7 @@ function experienceBoard(snapshot, design) {
   items.push(projectionItem('item.home.vexstream-open', openAction.ref, 'RECTANGLE', rect(innerX + homeMetrics.innerHorizontal, y + 180, innerWidth - homeMetrics.innerHorizontal * 2, 38), layer++, 'item.home.vexstream-section'));
   hints.push(presentationHint('item.home.vexstream-open', 'BUTTON', 'PRIMARY'));
 
-  y += 246;
+  y += 230 + homeMetrics.homeSectionGap;
   items.push(projectionItem('item.home.systems-section', snapshot.home.systemsSection.ref, 'RECTANGLE', rect(innerX, y, innerWidth, 250), layer++, 'item.home.screen'));
   hints.push(presentationHint('item.home.systems-section', 'SURFACE', 'RAISED'));
   let systemY = y + 52;
@@ -415,29 +452,29 @@ function experienceBoard(snapshot, design) {
     items.push(projectionItem(titleItem, vexTitleRef, 'RECTANGLE', rect(frame.x, frame.y, frame.width, vexMetrics.toolbar), layer++, frameItemRef));
     hints.push(presentationHint(titleItem, 'TOOLBAR'));
 
-    const iconSize = 34;
-    let iconX = frame.x + frame.width - vexMetrics.padding - iconSize;
+    const iconSize = vexMetrics.toolbarActionSize;
+    let iconX = frame.x + frame.width - vexMetrics.toolbarPaddingHorizontal - iconSize;
     [...snapshot.vexStream.toolbarActions].reverse().forEach((action, index) => {
       const itemRef = `${frameItemRef}.toolbar-action.${index}`;
-      items.push(projectionItem(itemRef, action.ref, 'RECTANGLE', rect(iconX, frame.y + 8, iconSize, iconSize), layer++, frameItemRef));
+      items.push(projectionItem(itemRef, action.ref, 'RECTANGLE', rect(iconX, frame.y + vexMetrics.toolbarPaddingVertical, iconSize, iconSize), layer++, frameItemRef));
       hints.push(presentationHint(itemRef, 'ICON_BUTTON', String(action.icon).toUpperCase()));
       actionItemBySemanticRef.set(action.ref, itemRef);
-      iconX -= iconSize + 8;
+      iconX -= iconSize + vexMetrics.toolbarGapHorizontal;
     });
 
     const tabsY = frame.y + vexMetrics.content.y;
-    const tabGap = 5.5;
+    const tabGap = vexMetrics.tabGapHorizontal;
     const tabWidth = (frame.width - (vexMetrics.padding * 2) - (tabGap * (snapshot.vexStream.tabs.length - 1)))
       / snapshot.vexStream.tabs.length;
     let tabX = frame.x + vexMetrics.padding;
     snapshot.vexStream.tabs.forEach((tab, index) => {
       const itemRef = `${frameItemRef}.tab.${index}`;
-      items.push(projectionItem(itemRef, tab.ref, 'RECTANGLE', rect(tabX, tabsY, tabWidth, 36), layer++, frameItemRef));
+      items.push(projectionItem(itemRef, tab.ref, 'RECTANGLE', rect(tabX, tabsY, tabWidth, vexMetrics.buttonMinHeight), layer++, frameItemRef));
       hints.push(presentationHint(itemRef, 'TAB', index === 0 ? 'SELECTED' : 'DEFAULT'));
       tabX += tabWidth + tabGap;
     });
     return Object.freeze({
-      contentY: tabsY + 54,
+      contentY: tabsY + vexMetrics.buttonMinHeight + vexMetrics.listGap,
       actionItemBySemanticRef,
     });
   }
@@ -445,24 +482,40 @@ function experienceBoard(snapshot, design) {
   const loadingFrame = states.LOADING;
   const loadingItem = 'item.vexstream.state.loading';
   const loadingChrome = addVexStreamChrome(loading, loadingFrame, loadingItem);
-  items.push(projectionItem(`${loadingItem}.status`, loadingMessageRef, 'RECTANGLE', rect(loadingFrame.x + vexMetrics.padding, loadingChrome.contentY + 24, loadingFrame.width - vexMetrics.padding * 2, 64), layer++, loadingItem));
+  const loadingStatusHeight = vexMetrics.loadingProgressSize + (vexMetrics.loadingStatusPaddingVertical * 2);
+  items.push(projectionItem(`${loadingItem}.status`, loadingMessageRef, 'RECTANGLE', rect(
+    loadingFrame.x,
+    loadingChrome.contentY,
+    loadingFrame.width,
+    loadingStatusHeight,
+  ), layer++, loadingItem));
   hints.push(presentationHint(`${loadingItem}.status`, 'STATUS_ROW', 'LOADING'));
 
   const emptyFrame = states.EMPTY;
   const emptyItem = 'item.vexstream.state.empty';
   const emptyChrome = addVexStreamChrome(empty, emptyFrame, emptyItem);
-  items.push(projectionItem(`${emptyItem}.message`, emptyMessageRef, 'TEXT', rect(emptyFrame.x + vexMetrics.padding + 18, emptyChrome.contentY + 58, emptyFrame.width - vexMetrics.padding * 2 - 36, 72), layer++, emptyItem));
+  items.push(projectionItem(`${emptyItem}.message`, emptyMessageRef, 'TEXT', rect(
+    emptyFrame.x + vexMetrics.emptyMessagePadding,
+    emptyChrome.contentY + vexMetrics.emptyMessagePadding,
+    emptyFrame.width - (vexMetrics.emptyMessagePadding * 2),
+    vexMetrics.buttonMinHeight,
+  ), layer++, emptyItem));
   hints.push(presentationHint(`${emptyItem}.message`, 'TEXT', 'EMPTY'));
 
   const loadedFrame = states.LOADED;
   const loadedItem = 'item.vexstream.state.loaded';
   const loadedChrome = addVexStreamChrome(loaded, loadedFrame, loadedItem);
-  let loadedY = loadedChrome.contentY + 8;
+  let loadedY = loadedChrome.contentY;
   loaded.sampleTracks.forEach((track, index) => {
     const itemRef = `${loadedItem}.track.${index}`;
-    items.push(projectionItem(itemRef, track.ref, 'RECTANGLE', rect(loadedFrame.x + vexMetrics.padding, loadedY, loadedFrame.width - vexMetrics.padding * 2, 72), layer++, loadedItem));
+    items.push(projectionItem(itemRef, track.ref, 'RECTANGLE', rect(
+      loadedFrame.x + vexMetrics.trackOuterPaddingHorizontal,
+      loadedY,
+      loadedFrame.width - (vexMetrics.trackOuterPaddingHorizontal * 2),
+      vexMetrics.trackRowHeight,
+    ), layer++, loadedItem));
     hints.push(presentationHint(itemRef, 'LIST_ROW', track.variant));
-    loadedY += 72 + vexMetrics.listGap;
+    loadedY += vexMetrics.trackRowHeight + vexMetrics.listGap;
   });
   snapshot.vexStream.libraryActions.forEach((action, index) => {
     const itemRef = `${loadedItem}.fab.${index}`;
@@ -477,9 +530,14 @@ function experienceBoard(snapshot, design) {
   let sheetY = sheetBounds.y + 46;
   sheet.actions.forEach((action, index) => {
     const itemRef = `item.vexstream.connection-sheet.action.${index}`;
-    items.push(projectionItem(itemRef, action.ref, 'RECTANGLE', rect(sheetBounds.x + 16, sheetY, sheetBounds.width - 32, 38), layer + 60 + index, 'item.vexstream.connection-sheet'));
+    items.push(projectionItem(itemRef, action.ref, 'RECTANGLE', rect(
+      sheetBounds.x + vexMetrics.connectionSheetPaddingHorizontal,
+      sheetY,
+      sheetBounds.width - (vexMetrics.connectionSheetPaddingHorizontal * 2),
+      vexMetrics.buttonMinHeight,
+    ), layer + 60 + index, 'item.vexstream.connection-sheet'));
     hints.push(presentationHint(itemRef, 'BUTTON', action.variant));
-    sheetY += 47;
+    sheetY += vexMetrics.buttonMinHeight + vexMetrics.gapVertical;
   });
   layer += 80;
 
