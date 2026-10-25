@@ -167,6 +167,26 @@ export function resolveScreenDesignBox({
   });
 }
 
+export function screenDesignViewportProfile(designInput, profileRefOrNull = null) {
+  const design = normalizeScreenDesign(designInput);
+  const profileRef = profileRefOrNull ?? design.referenceViewport.profileRef;
+  if (Array.isArray(design.viewportProfiles)) {
+    const profile = design.viewportProfiles.find((entry) => entry.profileRef === profileRef);
+    if (!profile) throw new TypeError(`unknown screen design viewport profile ${profileRef}`);
+    return Object.freeze(structuredClone(profile));
+  }
+  if (profileRef !== design.referenceViewport.profileRef) {
+    throw new TypeError(`unknown screen design viewport profile ${profileRef}`);
+  }
+  return Object.freeze({
+    profileRef: design.referenceViewport.profileRef,
+    label: 'Reference viewport',
+    widthDp: design.referenceViewport.widthDp,
+    heightDp: design.referenceViewport.heightDp,
+    fontScale: 1,
+  });
+}
+
 export function normalizeScreenDesign(input) {
   assert(input?.schemaVersion === VEXBOARD_SCREEN_DESIGN_SCHEMA, 'screen design schema mismatch');
   assert(typeof input.designRef === 'string' && input.designRef, 'screen design designRef required');
@@ -176,6 +196,28 @@ export function normalizeScreenDesign(input) {
     'referenceViewport.profileRef required');
   positive(input.referenceViewport.widthDp, 'referenceViewport.widthDp');
   positive(input.referenceViewport.heightDp, 'referenceViewport.heightDp');
+  if (input.viewportProfiles !== undefined) {
+    assert(Array.isArray(input.viewportProfiles), 'screen design viewportProfiles must be an array');
+    const profileRefs = new Set();
+    for (const [index, profile] of input.viewportProfiles.entries()) {
+      const label = `screen design viewportProfiles[${index}]`;
+      assert(typeof profile?.profileRef === 'string' && profile.profileRef, `${label}.profileRef required`);
+      assert(!profileRefs.has(profile.profileRef), `duplicate screen design viewport profileRef ${profile.profileRef}`);
+      profileRefs.add(profile.profileRef);
+      assert(typeof profile.label === 'string' && profile.label, `${label}.label required`);
+      positive(profile.widthDp, `${label}.widthDp`);
+      positive(profile.heightDp, `${label}.heightDp`);
+      positive(profile.fontScale ?? 1, `${label}.fontScale`);
+    }
+    const referenceProfile = input.viewportProfiles.find(
+      (profile) => profile.profileRef === input.referenceViewport.profileRef,
+    );
+    assert(referenceProfile, 'screen design referenceViewport profileRef missing from viewportProfiles');
+    assert(referenceProfile.widthDp === input.referenceViewport.widthDp,
+      'screen design referenceViewport width does not match viewport profile');
+    assert(referenceProfile.heightDp === input.referenceViewport.heightDp,
+      'screen design referenceViewport height does not match viewport profile');
+  }
   assert(Array.isArray(input.constraints), 'screen design constraints must be an array');
   if (input.layoutRules !== undefined) {
     assert(Array.isArray(input.layoutRules), 'screen design layoutRules must be an array');
