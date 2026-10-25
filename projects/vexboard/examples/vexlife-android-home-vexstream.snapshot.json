@@ -526,7 +526,9 @@
         "summary": "Home VexStream title/status/body are visible product copy rendered with raw Compose Text and have no stable semantic identity.",
         "sourceRefs": [
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt"
-        ]
+        ],
+        "blockingForPocAuthority": true,
+        "scopeStatus": "IN_POC"
       },
       {
         "findingRef": "finding.android.home.systems-title-unaddressed",
@@ -535,7 +537,9 @@
         "summary": "Home Vex systems heading is visible product copy rendered with raw Compose Text and has no stable semantic identity.",
         "sourceRefs": [
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt"
-        ]
+        ],
+        "blockingForPocAuthority": true,
+        "scopeStatus": "IN_POC"
       },
       {
         "findingRef": "finding.android.vexstream.connection-sheet-parent-drift",
@@ -545,7 +549,9 @@
         "sourceRefs": [
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt"
-        ]
+        ],
+        "blockingForPocAuthority": false,
+        "scopeStatus": "IN_POC_MAPPED_TARGET_DEBT"
       },
       {
         "findingRef": "finding.android.vexstream.show-queue-parent-drift",
@@ -556,7 +562,9 @@
         "sourceRefs": [
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamPlayerPresentation.kt"
-        ]
+        ],
+        "blockingForPocAuthority": false,
+        "scopeStatus": "OUTSIDE_POC"
       },
       {
         "findingRef": "finding.android.vexstream.custom-design-literals",
@@ -566,7 +574,9 @@
         "sourceRefs": [
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamLibraryPresentation.kt"
-        ]
+        ],
+        "blockingForPocAuthority": false,
+        "scopeStatus": "OUTSIDE_POC"
       }
     ]
   }
