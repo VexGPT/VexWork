@@ -13,6 +13,7 @@ import { createBoardGraph, createBoardProjection } from '../src/core/vexboard.mj
 import { BOARD_GRAPH_SCHEMA, BOARD_PROJECTION_SCHEMA } from '../src/shared/vexboard-model.mjs';
 
 const read = (relative) => JSON.parse(fs.readFileSync(new URL(`../${relative}`, import.meta.url), 'utf8'));
+const BOUNDARY_POLICY_LAYOUT_ERROR_MESSAGE = 'boundary policy WRAP requires ROW or COLUMN layout';
 
 function uiGraphInput() {
   const node = (nodeRef, kind, label, parentRefOrNull = null) => ({
@@ -483,7 +484,7 @@ test('boundary continuation is opt-in and rejects unsupported layout combination
   });
   assert.throws(
     () => resolveBoardProjectionComposition({ graph, projection, composition: invalid }),
-    /boundary policy WRAP requires ROW or COLUMN layout/,
+    (error) => error instanceof TypeError && error.message === BOUNDARY_POLICY_LAYOUT_ERROR_MESSAGE,
   );
 });
 
