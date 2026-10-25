@@ -76,14 +76,32 @@ test('VexLife Android POC snapshot projects deterministically without source eff
     'item.vexstream.state.empty',
     'item.vexstream.state.loaded',
   ]) {
-    const frame = projection.items.find((item) => item.projectionItemRef === frameRef);
-    const tabs = projection.items.filter((item) => item.projectionItemRef.startsWith(`${frameRef}.tab.`));
+    const viewport = projection.items.find(
+      (item) => item.projectionItemRef === `${frameRef}.tabs-viewport`,
+    );
+    const tabs = projection.items.filter((item) =>
+      item.parentProjectionItemRefOrNull === viewport.projectionItemRef);
     assert.equal(tabs.length, 5);
     assert.equal(tabs.every((tab) =>
-      tab.bounds.x >= frame.bounds.x
-        && tab.bounds.x + tab.bounds.width <= frame.bounds.x + frame.bounds.width), true,
-    'reference tab projection must remain inside the bounded Screen frame');
+      tab.parentProjectionItemRefOrNull === viewport.projectionItemRef), true);
+    assert.ok(
+      Math.max(...tabs.map((tab) => tab.bounds.x + tab.bounds.width))
+        > viewport.bounds.x + viewport.bounds.width,
+      'reverse-adopted SCROLL_ROW should overflow its bounded viewport rather than squeeze all tabs',
+    );
+    const viewportHint = first.board.presentation.items.find(
+      (entry) => entry.projectionItemRef === viewport.projectionItemRef,
+    );
+    assert.equal(viewportHint.role, 'SCROLL_VIEWPORT');
+    assert.equal(viewportHint.variant, 'HORIZONTAL');
   }
+
+  assert.equal(
+    first.board.design.layoutRules.find(
+      (rule) => rule.layoutRef === 'layout.vexstream.library-tabs',
+    ).mode,
+    'SCROLL_ROW',
+  );
 
   const sheet = projection.items.find(
     (item) => item.projectionItemRef === 'item.vexstream.connection-sheet',
