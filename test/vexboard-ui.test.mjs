@@ -149,6 +149,12 @@ test('VexLife Android POC is projected at source-load time and styled without ch
   assert.match(page, /ScreenDesign\.normalizeScreenDesign\(d\.design\)/);
   assert.match(page, /Reverse-adopted design/);
   assert.match(page, /VexBoard design authority/);
+  assert.match(page, /Screen Design/);
+  assert.match(page, /function designMetricText\(/);
+  assert.match(page, /function designAxisText\(/);
+  assert.match(page, /current\.design\.constraints\.filter\(value=>value\.semanticRef===n\.nodeRef\)/);
+  assert.match(page, /current\.design\.layoutRules\|\|\[\]/);
+  assert.match(page, /preferred\.toFixed\(2\)/);
   assert.match(page, /Open VexLife Android Screen POC/);
   assert.match(page, /VEXBOARD_ANDROID_POC_BOARD_REFS\.EXPERIENCE/);
   assert.doesNotMatch(page, /api\.github\.com|raw\.githubusercontent\.com/);
