@@ -99,6 +99,34 @@ function normalizeAdoptionCoverage(input) {
     refs(entry.sourceRefs ?? [], `Android adoption identityExceptions[${index}].sourceRefs`);
   }
 
+  assert(Array.isArray(input.targetCapabilityCandidates ?? []),
+    'Android adoption targetCapabilityCandidates must be an array');
+  const candidateCapabilities = new Set();
+  for (const [index, candidate] of (input.targetCapabilityCandidates ?? []).entries()) {
+    stableRef(candidate?.capabilityRef,
+      `Android adoption targetCapabilityCandidates[${index}].capabilityRef`);
+    stableRef(candidate?.candidateRef,
+      `Android adoption targetCapabilityCandidates[${index}].candidateRef`);
+    assert(!candidateCapabilities.has(candidate.capabilityRef),
+      `duplicate Android adoption target capability candidate ${candidate.capabilityRef}`);
+    candidateCapabilities.add(candidate.capabilityRef);
+    assert(
+      ['CANDIDATE_FORMED_PROOF_PENDING', 'CANDIDATE_PROVEN_PENDING_ACCEPTANCE']
+        .includes(candidate.status),
+      `Android adoption target capability candidate status unsupported: ${candidate.status}`,
+    );
+    if (candidate.candidateHeadRefOrNull !== null && candidate.candidateHeadRefOrNull !== undefined) {
+      stableRef(
+        candidate.candidateHeadRefOrNull,
+        `Android adoption targetCapabilityCandidates[${index}].candidateHeadRefOrNull`,
+      );
+    }
+    refs(
+      candidate.sourceRefs ?? [],
+      `Android adoption targetCapabilityCandidates[${index}].sourceRefs`,
+    );
+  }
+
   assert(Array.isArray(input.findings ?? []), 'Android adoption findings must be an array');
   const findingRefs = new Set();
   for (const [index, finding] of (input.findings ?? []).entries()) {
@@ -1158,7 +1186,10 @@ function depthBoard(snapshot, design, viewportProfile) {
   const adoptionReadiness = summarizeAndroidPocAdoptionReadiness(snapshot.adoptionCoverage);
   const constructionPlan = compileVexLifeAndroidScreenDesign(
     design,
-    { adoptionReadiness },
+    {
+      adoptionReadiness,
+      targetCapabilityCandidates: snapshot.adoptionCoverage.targetCapabilityCandidates ?? [],
+    },
   );
   const graphRef = 'graph.vexlife-android.vexstream-depth.poc';
   const projectionRef = 'projection.vexlife-android.vexstream-depth.poc';
@@ -1182,10 +1213,12 @@ function depthBoard(snapshot, design, viewportProfile) {
   const capabilityNodes = constructionPlan.targetCapabilityRequirements.map((requirement) => ({
     ref: requirement.capabilityRef,
     label:
-      `Android target capability · ${requirement.proposedTargetShape.elementType} · ${requirement.status}`,
+      `Android target capability · ${requirement.proposedTargetShape.elementType} · ${requirement.status}` +
+      (requirement.candidateStatusOrNull ? ` · ${requirement.candidateStatusOrNull}` : ''),
     sourceRefs: [
       requirement.ownerSourceRef,
       ...requirement.supportSourceRefs,
+      ...requirement.candidateSourceRefs,
     ],
   }));
 
