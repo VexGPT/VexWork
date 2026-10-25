@@ -16,7 +16,13 @@ import {
   journeyChoices,
   normalizeBoardJourney,
   revisitBoardJourney,
+  BOARD_JOURNEY_PATHWAY_ANALYSIS_SCHEMA,
+  calculateBoardJourneyPathways,
 } from './src/shared/vexboard-journey.mjs';
+import {
+  BOARD_JOURNEY_PATHWAY_ANALYSIS_SCHEMA,
+  calculateBoardJourneyPathways,
+} from './src/shared/vexboard-journey-pathway-analysis.mjs';
 
 import {
   BOARD_CONDITION_OPERATORS,

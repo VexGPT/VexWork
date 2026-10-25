@@ -54,7 +54,7 @@ const app=document.getElementById('app');
 let current=null,selected=null,tool='SELECT',connectFrom=null;
 let camera=Board.normalizeCamera({x:48,y:48,zoom:1});
 let collapsed=new Set();
-let journey=null;
+let journey=null,journeyPathwayAnalysis=null;
 let prototype=null,scenario=null,interactionTrail=[];
 let boardStack=[];
 let activeBoardRef=null;
@@ -139,7 +139,7 @@ async function openBuiltInBoard(boardRef,{pushCurrent=false}={}){
   return openBoard(d,{pushCurrent,boardRef,prototypeInput});
 }
 
-function snapshotCurrent(){return current?{current,selected,tool,camera,collapsed:[...collapsed],journey,prototype,scenario,interactionTrail:interactionTrail.map(entry=>({...entry})),activeBoardRef,draftDirty,saveMessage,pinnedSemanticRefs:[...pinnedSemanticRefs],relationalFocusMode}:null}
+function snapshotCurrent(){return current?{current,selected,tool,camera,collapsed:[...collapsed],journey,journeyPathwayAnalysis,prototype,scenario,interactionTrail:interactionTrail.map(entry=>({...entry})),activeBoardRef,draftDirty,saveMessage,pinnedSemanticRefs:[...pinnedSemanticRefs],relationalFocusMode}:null}
 async function openBoard(input,{pushCurrent=false,boardRef=null,prototypeInput=null}={}){
   cameraAnimator.cancel();
   if(pushCurrent&&current)boardStack.push(snapshotCurrent());
@@ -147,12 +147,12 @@ async function openBoard(input,{pushCurrent=false,boardRef=null,prototypeInput=n
   current={...d,graph:s.graph,projection:s.projection};selected=null;tool='SELECT';connectFrom=null;
   prototype=prototypeInput?Board.normalizeBoardPrototype(prototypeInput,s.graph):null;
   scenario=prototype?Board.createBoardScenario(prototype,s.graph,{scenarioRef:ref('scenario.vexboard')}):null;
-  interactionTrail=[];collapsed=new Set();journey=null;pinnedSemanticRefs=new Set();relationalFocusMode='CONNECT';camera=Board.normalizeCamera({x:48,y:48,zoom:1});activeBoardRef=boardRef||d.draftRef;
+  interactionTrail=[];collapsed=new Set();journey=null;journeyPathwayAnalysis=null;pinnedSemanticRefs=new Set();relationalFocusMode='CONNECT';camera=Board.normalizeCamera({x:48,y:48,zoom:1});activeBoardRef=boardRef||d.draftRef;
   draftDirty=d.mode==='LOCAL_DRAFT'&&!d.savedAtOrNull;
   saveMessage=d.mode==='LOCAL_DRAFT'?(d.savedAtOrNull?`Saved locally · ${savedClock(d.savedAtOrNull)}`:'Not saved locally yet'):'';
   renderWorkspace();requestAnimationFrame(()=>fitBoard());
 }
-function returnBoard(){cameraAnimator.cancel();const prior=boardStack.pop();if(!prior)return;({current,selected,tool,camera,journey,prototype,scenario,interactionTrail,activeBoardRef,draftDirty,saveMessage,relationalFocusMode}=prior);collapsed=new Set(prior.collapsed);pinnedSemanticRefs=new Set(prior.pinnedSemanticRefs||[]);connectFrom=null;closePinMenu();renderWorkspace();requestAnimationFrame(()=>applyCamera())}
+function returnBoard(){cameraAnimator.cancel();const prior=boardStack.pop();if(!prior)return;({current,selected,tool,camera,journey,journeyPathwayAnalysis,prototype,scenario,interactionTrail,activeBoardRef,draftDirty,saveMessage,relationalFocusMode}=prior);collapsed=new Set(prior.collapsed);pinnedSemanticRefs=new Set(prior.pinnedSemanticRefs||[]);connectFrom=null;closePinMenu();renderWorkspace();requestAnimationFrame(()=>applyCamera())}
 async function enterPortal(detailBoardRef){
   const local=drafts().find(d=>d.draftRef===detailBoardRef);
   if(local){await openBoard(local,{pushCurrent:true,boardRef:detailBoardRef});return}
@@ -163,7 +163,7 @@ async function enterPortal(detailBoardRef){
 
 function landing(){
   cameraAnimator.cancel();
-  current=null;selected=null;journey=null;prototype=null;scenario=null;interactionTrail=[];pinnedSemanticRefs=new Set();relationalFocusMode='CONNECT';closePinMenu();boardStack=[];activeBoardRef=null;app.className='app';app.replaceChildren();
+  current=null;selected=null;journey=null;journeyPathwayAnalysis=null;prototype=null;scenario=null;interactionTrail=[];pinnedSemanticRefs=new Set();relationalFocusMode='CONNECT';closePinMenu();boardStack=[];activeBoardRef=null;app.className='app';app.replaceChildren();
   const box=el('section','landing');
   box.append(el('div','eyebrow','VexBoard canvas projection'),el('h1','','Design the map before implementation has to guess it.'),el('p','lede','Create a local semantic-board draft or inspect an existing source board through a zoomable, pannable, recursive canvas. Camera, focus and collapse are read-only view state; requesting edit still forks a browser-local draft copy rather than mutating source truth.'));
   const actions=el('div','row');
@@ -353,12 +353,21 @@ function renderMinimap(){
   Object.assign(frame.style,{left:`${v.x/width*miniW}px`,top:`${v.y/height*miniH}px`,width:`${v.width/width*miniW}px`,height:`${v.height/height*miniH}px`});minimapEl.append(frame);
 }
 function journeyBoardRef(){return activeBoardRef||current?.draftRef||null}
-function applyJourney(next){journey=next;const target=itemFor(journey.currentRef);if(target)selected=target.projectionItemRef;renderWorkspace();focusSelected({animate:true})}
+function applyJourney(next){journey=next;journeyPathwayAnalysis=null;const target=itemFor(journey.currentRef);if(target)selected=target.projectionItemRef;renderWorkspace();focusSelected({animate:true})}
 function startJourneyAt(semanticRef){interactionTrail=[];applyJourney(Board.createBoardJourney(current.graph,{journeyRef:ref('journey.vexboard'),boardRef:journeyBoardRef(),startRef:semanticRef}))}
 function followJourney(relationshipRef){applyJourney(Board.advanceBoardJourney(current.graph,journey,relationshipRef))}
 function backJourney(){applyJourney(Board.backBoardJourney(current.graph,journey))}
-function clearJourney(){journey=null;interactionTrail=[];clearInspectorReveal();renderWorkspace();requestAnimationFrame(()=>applyCamera())}
+function clearJourney(){journey=null;journeyPathwayAnalysis=null;interactionTrail=[];clearInspectorReveal();renderWorkspace();requestAnimationFrame(()=>applyCamera())}
 function revisitJourney(sequence){applyJourney(Board.revisitBoardJourney(current.graph,journey,sequence))}
+function calculateJourneyPathways(){if(!journey)return;journeyPathwayAnalysis=Board.calculateBoardJourneyPathways(current.graph,journey);renderWorkspace();requestAnimationFrame(()=>applyCamera())}
+function pathwayMotifText(motif){return motif.semanticRefs.map(refValue=>node(refValue)?.label||refValue).join(' → ')}
+function reducedJourneySnapshotText(){
+  if(!journeyPathwayAnalysis)return'';
+  return journeyPathwayAnalysis.reducedWalk.map(entry=>{
+    if(entry.kind==='LOOP_REF'){const motif=journeyPathwayAnalysis.motifs.find(value=>value.motifRef===entry.motifRef);return `↻ ${entry.label} · occurrence ${entry.occurrenceIndex}${motif?.occurrenceCount>1?` / ${motif.occurrenceCount}`:''}`}
+    return `${node(entry.semanticRef)?.label||entry.semanticRef} · ${entry.navigationKind}`;
+  }).join('\n');
+}
 
 function inspector(side){
   side.replaceChildren();const i=selected?item(selected):null,n=i?node(i.semanticRef):null;
@@ -436,7 +445,26 @@ function inspector(side){
     const currentNode=node(journey.currentRef),summary=el('div','v',`Current: ${currentNode?.label||journey.currentRef}\n${journey.steps.length} step(s) · ${journey.returnStack.length} return point(s)`);jg.append(summary);
     const stack=el('div','journey-stack');for(const step of journey.steps){const stepNode=node(step.semanticRef),button=el('button',`journey-step${step.sequence===journey.steps.length-1?' current':''}`,`${step.sequence+1}. ${stepNode?.label||step.semanticRef} · ${step.navigationKind}`);button.disabled=step.sequence===journey.steps.length-1;button.onmouseenter=()=>setInspectorReveal({semanticRefs:[step.semanticRef]});button.onmouseleave=clearInspectorReveal;button.onfocus=()=>setInspectorReveal({semanticRefs:[step.semanticRef]});button.onblur=clearInspectorReveal;button.onclick=()=>revisitJourney(step.sequence);stack.append(button)}jg.append(stack);
     const choices=Board.journeyChoices(current.graph,journey);for(const choice of choices){const target=node(choice.toRef),label=choice.labelOrNull||`${choice.kind} → ${target?.label||choice.toRef}`,button=el('button','btn journey-choice',label);button.onmouseenter=()=>setInspectorReveal({semanticRefs:[choice.fromRef,choice.toRef],relationshipRefs:[choice.relationshipRef]});button.onmouseleave=clearInspectorReveal;button.onfocus=()=>setInspectorReveal({semanticRefs:[choice.fromRef,choice.toRef],relationshipRefs:[choice.relationshipRef]});button.onblur=clearInspectorReveal;button.onclick=()=>followJourney(choice.relationshipRef);jg.append(button)}
-    const journeyActions=el('div','row');if(journey.returnStack.length){const back=el('button','btn','Back');back.onclick=backJourney;journeyActions.append(back)}const clear=el('button','btn','Clear journey');clear.onclick=clearJourney;journeyActions.append(clear);jg.append(journeyActions);
+    const journeyActions=el('div','row');
+    if(journey.returnStack.length){const back=el('button','btn','Back');back.onclick=backJourney;journeyActions.append(back)}
+    const calculate=el('button','btn violet','Calculate pathways');calculate.disabled=journey.steps.length<2;calculate.onclick=calculateJourneyPathways;
+    const clear=el('button','btn','Clear journey');clear.onclick=clearJourney;journeyActions.append(calculate,clear);jg.append(journeyActions);
+    if(journeyPathwayAnalysis){
+      const repeated=journeyPathwayAnalysis.repeatedMotifRefs.length;
+      jg.append(el('div','v',`Pathway reduction\n${journeyPathwayAnalysis.motifs.length} closed motif(s) · ${repeated} repeated reduction candidate(s)\nRaw history preserved: ${journeyPathwayAnalysis.rawStepCount} step(s)`));
+      if(journeyPathwayAnalysis.motifs.length){
+        const motifList=el('div','journey-stack');
+        for(const motif of journeyPathwayAnalysis.motifs){
+          const repeatedMark=motif.occurrenceCount>1?' · reduction candidate':'';
+          const button=el('button','journey-step',`↻ ${motif.label} ×${motif.occurrenceCount}${repeatedMark}\n${pathwayMotifText(motif)}`);
+          const reveal=()=>setInspectorReveal({semanticRefs:motif.semanticRefs,relationshipRefs:motif.relationshipRefs});
+          button.onmouseenter=reveal;button.onfocus=reveal;button.onmouseleave=clearInspectorReveal;button.onblur=clearInspectorReveal;
+          motifList.append(button);
+        }
+        jg.append(motifList);
+      }
+      jg.append(el('div','v',`Reduced walk snapshot\n${reducedJourneySnapshotText()}`));
+    }
     if(!choices.length)jg.append(el('div','empty','No outgoing relationship from the current semantic coordinate.'));
   }
   side.append(jg);

@@ -591,6 +591,75 @@ LOCAL_RECURSION != COPIED_SEMANTIC_TRUTH
 
 Before adding a new scale primitive, pressure the accepted resolver with deeper nesting and make representative source examples easy to open in the lived UI. If existing local composition remains deterministic, prefer that evidence over speculative machinery.
 
+### Journey pathway calculation and reduction snapshots
+
+Flow loops are already valid BoardJourney history and meaningful repeated visits must remain exact raw evidence.
+
+The next useful analytical layer is therefore derived rather than destructive:
+
+```text
+RAW_BOARD_JOURNEY
+  -> exact traversal evidence
+  -> repeated visits remain literal
+
+CALCULATE_PATHWAYS
+  -> derive closed ordered relationship motifs
+  -> intern repeated motifs inside one analysis snapshot
+  -> form a reduced walk that references motif identity
+  -> preserve expandability back to raw occurrences
+```
+
+Permanent distinctions:
+
+```text
+RAW_JOURNEY != REDUCED_JOURNEY
+LOOP_MOTIF != LOOP_OCCURRENCE
+LOOP_LABEL != LOOP_IDENTITY
+LOOP_REFERENCE != DELETED_EVIDENCE
+SAME_NODE_SEQUENCE != SAME_RELATIONSHIP_SEQUENCE
+REPEATED_PATTERN != WASTE
+REDUCTION_CANDIDATE != AUTOMATIC_PROCESS_JUDGMENT
+CALCULATE_PATHWAYS != JOURNEY_MUTATION
+```
+
+Motif recognition should use exact ordered semantic traversal coordinates, especially `relationshipRef` order, rather than labels or visual node names.
+
+Example:
+
+```text
+raw:
+  a -> b -> d -> a
+  a -> c -> d -> a
+  a -> b -> d -> a
+
+derived motifs:
+  Loop 1 = [rel.a-b, rel.b-d, rel.d-a]  x2
+  Loop 2 = [rel.a-c, rel.c-d, rel.d-a]  x1
+
+reduced walk snapshot:
+  Start a
+  -> Loop 1 occurrence 1
+  -> Loop 2 occurrence 1
+  -> Loop 1 occurrence 2
+```
+
+A `Calculate pathways` action may expose this as an ephemeral analysis of the current Journey.
+
+The existing reveal/highlight system is the preferred presentation seam:
+
+```text
+hover/focus Loop 1
+-> highlight motif semantic refs
+-> highlight exact motif relationship refs
+-> retain the surrounding board for context
+```
+
+This supports future company/process analysis such as repeated rework, retry, approval, quality or operational patterns without prematurely declaring those repetitions waste. Source-owned duration, actor, condition, outcome or policy evidence may later strengthen interpretation.
+
+A useful company-facing framing is:
+
+> reveal repeated ordered process motifs, show where they recur in the real map, and expose reduction opportunities without erasing the underlying journey evidence.
+
 ## Initial implementation sequence
 
 A fresh successor should lead from evidence, not from a preselected framework.
@@ -757,15 +826,18 @@ Keep these parked unless a real consumer earns them:
 The next unconsumed engineering edge is:
 
 ```text
-accepted PR #137 occurrence-local composition
-+ accepted/lived PR #142 bounded relational focus
--> expose existing patient-zero source boards directly in VexBoard
--> prove deeper recursive local composition without adding a new schema
--> use lived examples to pressure the next real failure
+accepted occurrence-local composition
++ accepted/lived bounded relational focus
++ accepted source-owned examples / recursive-local scale pressure
+-> preserve raw BoardJourney loop evidence
+-> derive first bounded Calculate pathways / reduction snapshot
+-> reuse reveal/highlight for motif inspection
+-> pressure real repeated-process examples
 -> only then consider:
+     nested motif reduction
+     expected-vs-observed pathway coverage
      exact relationship-to-occurrence / port routing
      local incremental collision repair
-     richer connector routing
 ```
 
 The expected scaling model is recursive locality, not a new global owner. A new primitive is justified only when the representative examples or deeper recursion prove the current composition/query boundaries insufficient.
