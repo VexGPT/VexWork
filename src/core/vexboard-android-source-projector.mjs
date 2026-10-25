@@ -1,4 +1,5 @@
 import { createBoardGraph, createBoardProjection } from './vexboard.mjs';
+import { compileVexLifeAndroidScreenDesign } from './vexboard-android-construction.mjs';
 import {
   normalizeScreenDesign,
   resolveBoundedResponsiveMetric,
@@ -586,6 +587,7 @@ function experienceBoard(snapshot, design) {
 }
 
 function depthBoard(snapshot, design) {
+  const constructionPlan = compileVexLifeAndroidScreenDesign(design);
   const graphRef = 'graph.vexlife-android.vexstream-depth.poc';
   const projectionRef = 'projection.vexlife-android.vexstream-depth.poc';
   const sourceRefs = sourceUnion(snapshot, design, snapshot.depth.sourceRefs, snapshot.depth.desktop.sourceRefs);
@@ -595,7 +597,20 @@ function depthBoard(snapshot, design) {
   const hints = [];
   let layer = 1;
 
+  const designNode = {
+    ref: design.designRef,
+    label: `VexBoard Screen Design · ${design.authorityState}`,
+    sourceRefs: design.sourceRefs ?? [],
+  };
+  const constructionNode = {
+    ref: constructionPlan.planRef,
+    label: `Android construction plan · ${constructionPlan.admission}`,
+    sourceRefs: constructionPlan.sourceRefs,
+  };
+
   const entries = [
+    designNode,
+    constructionNode,
     snapshot.depth.repository,
     snapshot.depth.state,
     snapshot.depth.connectionStore,
@@ -620,6 +635,8 @@ function depthBoard(snapshot, design) {
   const S = snapshot.depth.state.ref;
   const screen = snapshot.vexStream.screenRef;
   const edgeSpecs = [
+    ['screen-design','REFERENCE',screen,design.designRef,'design source'],
+    ['design-construction','REFERENCE',design.designRef,constructionPlan.planRef,'Android target mapping'],
     ['screen-repository','DATA',screen,R,'observes / requests'],
     ['repository-state','DATA',R,S,'StateFlow'],
     ['repository-connection','DATA',R,snapshot.depth.connectionStore.ref,'remembered pairing'],
@@ -646,6 +663,10 @@ function depthBoard(snapshot, design) {
 
   items.push(projectionItem('item.depth.screen', screen, 'RECTANGLE', rect(60, 420, 240, 100), layer++));
   hints.push(presentationHint('item.depth.screen', 'ARCH_NODE', 'SCREEN'));
+  items.push(projectionItem('item.depth.design', design.designRef, 'RECTANGLE', rect(360, 90, 300, 110), layer++));
+  hints.push(presentationHint('item.depth.design', 'ARCH_NODE', 'DESIGN'));
+  items.push(projectionItem('item.depth.construction', constructionPlan.planRef, 'RECTANGLE', rect(720, 90, 320, 110), layer++));
+  hints.push(presentationHint('item.depth.construction', 'ARCH_NODE', constructionPlan.admission));
   items.push(projectionItem('item.depth.repository', R, 'RECTANGLE', rect(380, 380, 290, 170), layer++));
   hints.push(presentationHint('item.depth.repository', 'ARCH_NODE', 'REPOSITORY'));
   items.push(projectionItem('item.depth.state', S, 'RECTANGLE', rect(420, 610, 220, 105), layer++));
