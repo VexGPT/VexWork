@@ -103,6 +103,15 @@ export function screenDesignLayoutRule(designInput, layoutRef) {
   return Object.freeze(structuredClone(rule));
 }
 
+export function screenDesignVisualDimension(designInput, tokenRef) {
+  const design = normalizeScreenDesign(designInput);
+  const value = design.visualTokens?.dimensions?.[tokenRef];
+  if (value === undefined || value === null) {
+    throw new TypeError(`unknown screen design visual dimension ${tokenRef}`);
+  }
+  return Number(value);
+}
+
 export function screenDesignComponentAssignment(designInput, semanticRef) {
   const design = normalizeScreenDesign(designInput);
   const assignment = design.componentAssignments?.find((entry) => entry.semanticRef === semanticRef);
@@ -413,6 +422,12 @@ export function normalizeScreenDesign(input) {
     for (const [tokenRef, value] of Object.entries(shapes)) {
       if (value === 'FULL') continue;
       positive(value, `screen design visual shape ${tokenRef}`);
+    }
+    const dimensions = input.visualTokens.dimensions ?? {};
+    assert(dimensions && typeof dimensions === 'object' && !Array.isArray(dimensions),
+      'screen design visualTokens.dimensions must be one object');
+    for (const [tokenRef, value] of Object.entries(dimensions)) {
+      positive(value, `screen design visual dimension ${tokenRef}`);
     }
     const typography = input.visualTokens.typography ?? {};
     assert(typography && typeof typography === 'object' && !Array.isArray(typography),
