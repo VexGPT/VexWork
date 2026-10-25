@@ -520,6 +520,36 @@ function inspector(side){
     }
   }
   side.append(g);
+  if(current.adoptionCoverage){
+    const ag=el('div','group');ag.append(el('h3','','Android Adoption'));
+    const screenMode=current.adoptionCoverage.screenRealizationModes?.[n.nodeRef]??null;
+    const exception=current.adoptionCoverage.identityExceptions?.find(
+      entry=>entry.semanticRef===n.nodeRef,
+    )??null;
+    if(screenMode){
+      const kv=el('div','kv');kv.append(
+        el('div','k','realization'),
+        el('div','v',screenMode),
+      );ag.append(kv);
+    }
+    if(exception){
+      const kv=el('div','kv');kv.append(
+        el('div','k','origin'),el('div','v',exception.origin),
+        el('div','k','registry'),el('div','v',exception.staticRegistryStatus),
+      );ag.append(kv);
+      if(exception.sourceRefs?.length){
+        const list=el('div','ref-list');
+        for(const sourceRef of exception.sourceRefs){
+          list.append(el('div','ref-row',sourceRef));
+        }
+        ag.append(el('div','k','Coverage source'),list);
+      }
+    }
+    if(!screenMode&&!exception){
+      ag.append(el('div','v','No Android adoption exception on this identity.'));
+    }
+    side.append(ag);
+  }
   if(current.design){
     const dg=el('div','group');dg.append(el('h3','','Screen Design'));
     const dkv=el('div','kv');
