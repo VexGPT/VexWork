@@ -257,6 +257,7 @@ test('Android reference stylesheet installs once and contains the Screen/modal/d
   assert.match(appended[0].textContent, /--vex-android-radius-large/);
   assert.match(appended[0].textContent, /android-role-modal-sheet/);
   assert.match(appended[0].textContent, /android-role-content-column/);
+  assert.match(appended[0].textContent, /android-role-surface>\.shape-label \{ display:none; \}/);
   assert.match(appended[0].textContent, /android-variant-body-small/);
   assert.match(appended[0].textContent, /--vex-android-sheet-handle-width/);
   assert.match(appended[0].textContent, /android-role-api-endpoint/);
