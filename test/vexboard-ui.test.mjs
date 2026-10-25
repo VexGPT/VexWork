@@ -198,7 +198,7 @@ test('BoardJourney UI keeps semantic walk state distinct from camera navigation 
   assert.match(page, /BoardJourney · semantic walk/);
   assert.match(page, /Start journey here/);
   assert.match(page, /Clear journey/);
-  assert.match(page, /function clearJourney\(\)\{journey=null;interactionTrail=\[\]/);
+  assert.match(page, /function clearJourney\(\)\{journey=null;journeyPathwayAnalysis=null;interactionTrail=\[\]/);
   assert.match(page, /Board\.createBoardJourney/);
   assert.match(page, /Board\.advanceBoardJourney/);
   assert.match(page, /Board\.backBoardJourney/);
@@ -209,6 +209,35 @@ test('BoardJourney UI keeps semantic walk state distinct from camera navigation 
 });
 
 
+test('Calculate pathways derives a reduction snapshot without rewriting raw BoardJourney truth', () => {
+  assert.equal(typeof Reader.calculateBoardJourneyPathways, 'function');
+  assert.match(page, /Calculate pathways/);
+  assert.match(page, /Pathway reduction/);
+  assert.match(page, /Reduced walk snapshot/);
+  assert.match(page, /repeated reduction candidate\(s\)/);
+
+  const calculateOwner = page.split('\n').find((line) => line.includes('function calculateJourneyPathways('));
+  assert.ok(calculateOwner);
+  assert.match(calculateOwner, /journeyPathwayAnalysis=Board\.calculateBoardJourneyPathways\(current\.graph,journey/);
+  assert.doesNotMatch(calculateOwner, /journey=/);
+
+  const applyJourneyOwner = page.split('\n').find((line) => line.includes('function applyJourney('));
+  assert.ok(applyJourneyOwner);
+  assert.match(applyJourneyOwner, /journeyPathwayAnalysis=null/);
+
+  const pathwayStart = page.indexOf('if(journeyPathwayAnalysis){');
+  const pathwayEnd = page.indexOf("if(!choices.length)jg.append", pathwayStart);
+  assert.ok(pathwayStart >= 0 && pathwayEnd > pathwayStart);
+  const pathwayOwner = page.slice(pathwayStart, pathwayEnd);
+  assert.match(pathwayOwner, /setInspectorReveal\(\{semanticRefs:motif\.semanticRefs,relationshipRefs:motif\.relationshipRefs\}\)/);
+  assert.match(pathwayOwner, /motif\.occurrenceCount>1\?' · reduction candidate'/);
+  assert.doesNotMatch(pathwayOwner, /Board\.applyBoardControl|CONNECT_NODES|\bact\(/);
+
+  const snapshotOwner = page.split('\n').find((line) => line.includes('function snapshotCurrent()'));
+  assert.ok(snapshotOwner);
+  assert.match(snapshotOwner, /journeyPathwayAnalysis/);
+  assert.doesNotMatch(page, /localStorage\.(?:setItem|getItem)\([^)]*pathway/i);
+});
 test('Context Inspector refs reveal matching canvas objects and relationships without semantic mutation', () => {
   assert.match(page, /function inspectorRefToken\(/);
   assert.match(page, /function setInspectorReveal\(/);
