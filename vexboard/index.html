@@ -46,6 +46,7 @@
 <script type="module">
 import * as Board from '../vexboard-reader.js';
 import * as SourceResolver from '../src/shared/vexboard-source-resolver.mjs';
+import * as Evidence from '../src/shared/vexboard-evidence.mjs';
 import { createCameraAnimator } from './ui/camera-animation.mjs';
 import * as Interaction from './ui/interaction.mjs';
 import * as Presentation from './ui/presentation.mjs';
@@ -144,7 +145,8 @@ async function openBoard(input,{pushCurrent=false,boardRef=null,prototypeInput=n
   cameraAnimator.cancel();
   if(pushCurrent&&current)boardStack.push(snapshotCurrent());
   const d=Board.normalizeDraft(input),s=await Board.hydrateBoardState(d.graph,d.projection);
-  current={...d,graph:s.graph,projection:s.projection};selected=null;tool='SELECT';connectFrom=null;
+  const evidence=d.evidence?Evidence.normalizeBoardEvidence(d.evidence,s.graph):null;
+  current={...d,graph:s.graph,projection:s.projection,evidence};selected=null;tool='SELECT';connectFrom=null;
   prototype=prototypeInput?Board.normalizeBoardPrototype(prototypeInput,s.graph):null;
   scenario=prototype?Board.createBoardScenario(prototype,s.graph,{scenarioRef:ref('scenario.vexboard')}):null;
   interactionTrail=[];collapsed=new Set();journey=null;journeyPathwayAnalysis=null;pinnedSemanticRefs=new Set();relationalFocusMode='CONNECT';camera=Board.normalizeCamera({x:48,y:48,zoom:1});activeBoardRef=boardRef||d.draftRef;
@@ -174,7 +176,8 @@ function landing(){
   const examples=el('div','row');
   const anatomy=el('button','btn','Open system anatomy example');anatomy.onclick=async()=>openCatalogBoard('board.vexbusinessfactory.system-anatomy.patient-zero');
   const intent=el('button','btn','Open intent topology example');intent.onclick=async()=>openCatalogBoard('board.vexbusinessfactory.intent-topology.patient-zero');
-  examples.append(anatomy,intent);
+  const vexstream=el('button','btn violet','Open VexStream living Blueprint');vexstream.onclick=async()=>openCatalogBoard('board.vexstream.phone-desktop-connection.living-blueprint');
+  examples.append(anatomy,intent,vexstream);
   box.append(actions,el('h2','','Source examples'),examples,el('h2','','Local drafts'));
   const list=el('div','cards');
   for(const d of drafts()){const c=el('article','card');c.append(el('div','tiny',d.mode),el('h3','',d.title),el('p','',d.derivedFromRefOrNull?`Forked from ${d.derivedFromRefOrNull}`:'Independent local draft'));const b=el('button','btn','Resume draft');b.onclick=()=>openBoard(d,{boardRef:d.draftRef});c.append(b);list.append(c)}
@@ -468,6 +471,24 @@ function inspector(side){
     if(!choices.length)jg.append(el('div','empty','No outgoing relationship from the current semantic coordinate.'));
   }
   side.append(jg);
+  if(current.evidence){
+    const slots=Evidence.evidenceForSemanticRef(current.evidence,current.graph,n.nodeRef);
+    if(slots.length){
+      const eg=el('div','group');eg.append(el('h3','','Evidence · expected / observed'));
+      for(const slot of slots){
+        const block=el('div','ref-row');block.append(inspectorRefToken(slot.slotRef,{semanticRefs:[slot.semanticRef]}),el('div','v',slot.expectation));
+        if(slot.artifacts.length){
+          const artifacts=el('div','ref-list');
+          for(const artifact of slot.artifacts){
+            const row=el('div','ref-row');row.append(el('span','badge '+(artifact.role==='OBSERVED'?'draft':'readonly'),artifact.role),document.createTextNode(' '),inspectorRefToken(artifact.artifactRef),el('div','v',artifact.assetRef+(artifact.capturedAtOrNull?'\n'+artifact.capturedAtOrNull:'')));artifacts.append(row);
+          }
+          block.append(artifacts);
+        }else block.append(el('div','empty','Expected slot only · no artifact admitted yet.'));
+        eg.append(block);
+      }
+      side.append(eg);
+    }
+  }
   const sg=el('div','group');sg.append(el('h3','','Source refs'),el('div','v',n.sourceRefs.length?n.sourceRefs.join('\n'):'Local draft object · no source binding'));side.append(sg);
 }
 

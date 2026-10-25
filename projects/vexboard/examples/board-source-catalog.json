@@ -16,9 +16,20 @@
         "github.issue.vexwork.138",
         "projects/vexboard/examples/vexbusinessfactory-system-anatomy.board.json"
       ]
+    },
+    {
+      "boardRef": "board.vexstream.phone-desktop-connection.living-blueprint",
+      "location": "./vexstream-phone-desktop-connection.board.json",
+      "sourceRefs": [
+        "projects/vexboard/examples/vexstream-phone-desktop-connection.board.json",
+        "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md",
+        "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+        "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15"
+      ]
     }
   ],
   "sourceRefs": [
-    "projects/vexboard/FRACTAL-SEMANTIC-COMPOSITION-AND-SPATIAL-LAYOUT.md"
+    "projects/vexboard/FRACTAL-SEMANTIC-COMPOSITION-AND-SPATIAL-LAYOUT.md",
+    "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md"
   ]
 }
