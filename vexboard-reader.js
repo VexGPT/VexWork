@@ -60,6 +60,8 @@ export {
 
 export const VEXBOARD_DRAFT_SCHEMA = 'vexboard.local-draft/v1';
 export const VEXBOARD_NEIGHBORHOOD_SCHEMA = 'vexboard.board-neighborhood/v1';
+export const VEXBOARD_RELATIONAL_FOCUS_SCHEMA = 'vexboard.relational-focus/v1';
+export const VEXBOARD_RELATIONAL_FOCUS_MODES = Object.freeze(['DIRECT', 'CONNECT', 'UPSTREAM', 'DOWNSTREAM', 'OCCURRENCES']);
 export const VEXBOARD_SELF_MAP_URL = './self-map.json';
 export const VEXBOARD_DRAFT_STORAGE_KEY = 'vexboard.local-drafts/v1';
 export const VEXBOARD_BUILTIN_BOARD_URLS = Object.freeze({
@@ -300,6 +302,158 @@ export function queryBoardNeighborhood(state, options) {
     nodes,
     relationships,
     projectionItems: items,
+    sourceRefs,
+  });
+}
+
+
+function normalizeRelationalFocusRefs(values, byRef) {
+  if (!Array.isArray(values) || values.length < 1 || values.length > 12) {
+    throw new TypeError('semanticRefs must contain from 1 to 12 refs');
+  }
+  if (values.some((value) => typeof value !== 'string' || !value)) {
+    throw new TypeError('semanticRefs must contain stable refs');
+  }
+  if (new Set(values).size !== values.length) throw new TypeError('semanticRefs must be unique');
+  const refs = [...values].sort();
+  for (const ref of refs) if (!byRef.has(ref)) throw new TypeError(`unknown semanticRef ${ref}`);
+  return refs;
+}
+
+function relationshipAdjacency(graph, direction = 'BOTH') {
+  const adjacency = new Map(graph.nodes.map((node) => [node.nodeRef, []]));
+  for (const relationship of graph.relationships) {
+    if (direction !== 'UPSTREAM') {
+      adjacency.get(relationship.fromRef).push({ nextRef: relationship.toRef, relationshipRef: relationship.relationshipRef });
+    }
+    if (direction !== 'DOWNSTREAM') {
+      adjacency.get(relationship.toRef).push({ nextRef: relationship.fromRef, relationshipRef: relationship.relationshipRef });
+    }
+  }
+  for (const entries of adjacency.values()) {
+    entries.sort((left, right) =>
+      left.nextRef.localeCompare(right.nextRef) || left.relationshipRef.localeCompare(right.relationshipRef));
+  }
+  return adjacency;
+}
+
+function shortestRelationshipPath(graph, startRef, targetRef, maxDepth) {
+  if (startRef === targetRef) return { nodeRefs: [startRef], relationshipRefs: [] };
+  const adjacency = relationshipAdjacency(graph, 'BOTH');
+  const queue = [startRef];
+  const seen = new Map([[startRef, { depth: 0, priorRef: null, relationshipRef: null }]]);
+  while (queue.length) {
+    const ref = queue.shift();
+    const state = seen.get(ref);
+    if (state.depth >= maxDepth) continue;
+    for (const edge of adjacency.get(ref)) {
+      if (seen.has(edge.nextRef)) continue;
+      seen.set(edge.nextRef, { depth: state.depth + 1, priorRef: ref, relationshipRef: edge.relationshipRef });
+      if (edge.nextRef === targetRef) {
+        const nodeRefs = [targetRef];
+        const relationshipRefs = [];
+        let cursor = targetRef;
+        while (cursor !== startRef) {
+          const step = seen.get(cursor);
+          relationshipRefs.push(step.relationshipRef);
+          cursor = step.priorRef;
+          nodeRefs.push(cursor);
+        }
+        return { nodeRefs: nodeRefs.reverse(), relationshipRefs: relationshipRefs.reverse() };
+      }
+      queue.push(edge.nextRef);
+    }
+  }
+  return null;
+}
+
+export function queryBoardRelationalFocus(state, options = {}) {
+  const graph = normalizeBoardGraph(stripFingerprint(state?.graph));
+  const projection = normalizeBoardProjection(stripFingerprint(state?.projection), graph);
+  const byRef = new Map(graph.nodes.map((node) => [node.nodeRef, node]));
+  const semanticRefs = normalizeRelationalFocusRefs(options.semanticRefs, byRef);
+  const mode = options.mode ?? 'CONNECT';
+  const maxDepth = options.maxDepth ?? 6;
+  const maxNodes = options.maxNodes ?? 60;
+  if (!VEXBOARD_RELATIONAL_FOCUS_MODES.includes(mode)) throw new TypeError(`unsupported relational focus mode ${mode}`);
+  if (!Number.isInteger(maxDepth) || maxDepth < 1 || maxDepth > 8) throw new TypeError('maxDepth must be an integer from 1 to 8');
+  if (!Number.isInteger(maxNodes) || maxNodes < semanticRefs.length || maxNodes > 100) {
+    throw new TypeError('maxNodes must be an integer from semanticRefs.length to 100');
+  }
+
+  const selectedNodeRefs = new Set(semanticRefs);
+  const selectedRelationshipRefs = new Set();
+  const unconnectedRefs = [];
+  let truncated = false;
+
+  const admitNode = (ref) => {
+    if (selectedNodeRefs.has(ref)) return true;
+    if (selectedNodeRefs.size >= maxNodes) { truncated = true; return false; }
+    selectedNodeRefs.add(ref);
+    return true;
+  };
+
+  if (mode === 'DIRECT') {
+    const pinned = new Set(semanticRefs);
+    for (const relationship of graph.relationships) {
+      if (pinned.has(relationship.fromRef) && pinned.has(relationship.toRef)) {
+        selectedRelationshipRefs.add(relationship.relationshipRef);
+      }
+    }
+  } else if (mode === 'CONNECT') {
+    const anchor = semanticRefs[0];
+    for (const target of semanticRefs.slice(1)) {
+      const path = shortestRelationshipPath(graph, anchor, target, maxDepth);
+      if (!path) { unconnectedRefs.push(target); continue; }
+      const extra = path.nodeRefs.filter((ref) => !selectedNodeRefs.has(ref));
+      if (selectedNodeRefs.size + extra.length > maxNodes) { truncated = true; unconnectedRefs.push(target); continue; }
+      for (const ref of path.nodeRefs) selectedNodeRefs.add(ref);
+      for (const ref of path.relationshipRefs) selectedRelationshipRefs.add(ref);
+    }
+  } else if (mode === 'UPSTREAM' || mode === 'DOWNSTREAM') {
+    const adjacency = relationshipAdjacency(graph, mode);
+    const seenDepth = new Map(semanticRefs.map((ref) => [ref, 0]));
+    const queue = [...semanticRefs];
+    while (queue.length) {
+      const ref = queue.shift();
+      const depth = seenDepth.get(ref);
+      if (depth >= maxDepth) continue;
+      for (const edge of adjacency.get(ref)) {
+        if (seenDepth.has(edge.nextRef)) {
+          selectedRelationshipRefs.add(edge.relationshipRef);
+          continue;
+        }
+        if (!admitNode(edge.nextRef)) break;
+        selectedRelationshipRefs.add(edge.relationshipRef);
+        seenDepth.set(edge.nextRef, depth + 1);
+        queue.push(edge.nextRef);
+      }
+      if (truncated) break;
+    }
+  }
+
+  const nodes = graph.nodes.filter((node) => selectedNodeRefs.has(node.nodeRef));
+  const relationships = graph.relationships.filter((relationship) =>
+    selectedRelationshipRefs.has(relationship.relationshipRef));
+  const projectionItems = projection.items.filter((item) => selectedNodeRefs.has(item.semanticRef));
+  const sourceRefs = [...new Set([
+    ...graph.sourceRefs,
+    ...nodes.flatMap((node) => node.sourceRefs),
+    ...relationships.flatMap((relationship) => relationship.sourceRefs),
+    ...projection.sourceRefs,
+  ])].sort();
+
+  return freezeBoardValue({
+    schemaVersion: VEXBOARD_RELATIONAL_FOCUS_SCHEMA,
+    graphRef: graph.graphRef,
+    projectionRef: projection.projectionRef,
+    mode,
+    pinnedRefs: semanticRefs,
+    nodes,
+    relationships,
+    projectionItems,
+    unconnectedRefs: [...unconnectedRefs].sort(),
+    truncated,
     sourceRefs,
   });
 }
