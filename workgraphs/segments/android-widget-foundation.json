@@ -141,7 +141,7 @@
       "label": "VexStream widget live State refresh",
       "purpose": "Fix the lived launcher defect where widget Controls act on current Playback/Queue truth but the displayed track/playback projection can remain stale. Refresh the Glance surface from the newest canonical Media3/VexStream State whenever current item, play/pause, queue availability or related display truth changes, without making the widget another State owner.",
       "workClass": "DEFECT",
-      "state": "RUNNING",
+      "state": "VERIFYING",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.android-widget-foundation.semantic-widget-surface"
@@ -165,13 +165,19 @@
         "evidence.private.local-vex.widget-home.sha256.f96a84375afd3804a706f532ae95731c2d3d05641a9fe761aecee465e244a3b5",
         "github.pull.vexlife-android.179",
         "github.commit.vexlife-android.2dc060113e5e100a47bf053807376c5cd40cb639",
-        "evidence.vexstream.widget.pr179.sourceowner.a001.formation.sha256.0bab41ff8f76020e69242c6ec6abed8c2490d620115da3cee9c34a45a243198f"
+        "evidence.vexstream.widget.pr179.sourceowner.a001.formation.sha256.0bab41ff8f76020e69242c6ec6abed8c2490d620115da3cee9c34a45a243198f",
+        "github.commit.vexlife-android.d0e698d564cdfe78de008d4261f8113aa5c2505c",
+        "github.comment.vexlife-android.pr179.6395146346.post-merge-tree-exact",
+        "evidence.vexstream.widget.pr179.sourceowner.a001.outer.sha256.acba343b6e3b3884d9dcb1631ff01825845a5c59c550e3a12ed7e80122c1226b",
+        "evidence.vexstream.widget.pr179.sourceowner.a002.outer.sha256.71eaa323127b52b87a98e4d52c4d8e7e23405a8b2ebf9c5a91bdd974697f7f31",
+        "evidence.vexstream.widget.pr179.sourceowner.a002.inner.sha256.a7887241d85d5ff49adf1bdb28361fb5455ac40e33457a9b3e470a7ab0c35789",
+        "github.review.vexlife-android.pr179.5642157438.assurance-clear"
       ],
       "nextProcessRefs": [
         "process.vexlife-android.feature-authoring"
       ],
       "createdAt": "2026-10-25T07:10:00.000Z",
-      "updatedAt": "2026-10-25T07:43:00.000Z"
+      "updatedAt": "2026-10-25T07:59:11.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -180,7 +186,7 @@
       "label": "VexStream widget centered controls and touch targets",
       "purpose": "Refine the lived home-screen widget so the transport Controls form a centered, balanced interaction cluster with larger reliable touch targets and useful horizontal resize behavior, while preserving compact artwork/title context and existing Playback/Queue ownership.",
       "workClass": "DEFECT",
-      "state": "RUNNING",
+      "state": "VERIFYING",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.android-widget-foundation.semantic-widget-surface"
@@ -202,13 +208,19 @@
         "evidence.private.local-vex.widget-layout-reference.sha256.4f8c864f69b7a89540e7ac745bb997a60115830f3260ae60adfb5e52ba060c09",
         "github.pull.vexlife-android.179",
         "github.commit.vexlife-android.2dc060113e5e100a47bf053807376c5cd40cb639",
-        "evidence.vexstream.widget.pr179.sourceowner.a001.formation.sha256.0bab41ff8f76020e69242c6ec6abed8c2490d620115da3cee9c34a45a243198f"
+        "evidence.vexstream.widget.pr179.sourceowner.a001.formation.sha256.0bab41ff8f76020e69242c6ec6abed8c2490d620115da3cee9c34a45a243198f",
+        "github.commit.vexlife-android.d0e698d564cdfe78de008d4261f8113aa5c2505c",
+        "github.comment.vexlife-android.pr179.6395146346.post-merge-tree-exact",
+        "evidence.vexstream.widget.pr179.sourceowner.a001.outer.sha256.acba343b6e3b3884d9dcb1631ff01825845a5c59c550e3a12ed7e80122c1226b",
+        "evidence.vexstream.widget.pr179.sourceowner.a002.outer.sha256.71eaa323127b52b87a98e4d52c4d8e7e23405a8b2ebf9c5a91bdd974697f7f31",
+        "evidence.vexstream.widget.pr179.sourceowner.a002.inner.sha256.a7887241d85d5ff49adf1bdb28361fb5455ac40e33457a9b3e470a7ab0c35789",
+        "github.review.vexlife-android.pr179.5642157438.assurance-clear"
       ],
       "nextProcessRefs": [
         "process.vexlife-android.feature-authoring"
       ],
       "createdAt": "2026-10-25T07:10:00.000Z",
-      "updatedAt": "2026-10-25T07:43:00.000Z"
+      "updatedAt": "2026-10-25T07:59:11.000Z"
     }
   ],
   "transitions": [
@@ -318,6 +330,36 @@
         "github.commit.vexlife-android.2dc060113e5e100a47bf053807376c5cd40cb639"
       ],
       "createdAt": "2026-10-25T07:25:02.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.android-widget-foundation.vexstream-playback-widget.state-refresh.verifying.pr179-tree-exact",
+      "workRef": "work.android-widget-foundation.vexstream-playback-widget.state-refresh",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "PR #179 composed SourceOwner passed, fresh Assurance was CLEAR, and merge d0e698d564cdfe78de008d4261f8113aa5c2505c produced the exact assured tree. Hold completion until Victor re-reviews launcher state convergence on the physical device.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexlife-android.179",
+        "github.commit.vexlife-android.d0e698d564cdfe78de008d4261f8113aa5c2505c",
+        "github.comment.vexlife-android.pr179.6395146346.post-merge-tree-exact"
+      ],
+      "createdAt": "2026-10-25T07:59:11.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.android-widget-foundation.vexstream-playback-widget.layout-usability.verifying.pr179-tree-exact",
+      "workRef": "work.android-widget-foundation.vexstream-playback-widget.layout-usability",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "PR #179 composed SourceOwner passed, fresh Assurance was CLEAR, and the exact assured layout/touch-target tree is now on Android main. Hold completion until Victor re-reviews centered controls, touch comfort, and resize behavior on the physical launcher.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexlife-android.179",
+        "github.commit.vexlife-android.d0e698d564cdfe78de008d4261f8113aa5c2505c",
+        "github.comment.vexlife-android.pr179.6395146346.post-merge-tree-exact"
+      ],
+      "createdAt": "2026-10-25T07:59:11.000Z"
     }
   ],
   "sourceRefs": [
