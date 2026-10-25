@@ -54,6 +54,13 @@ function visualTypography(design, ref) {
   return value;
 }
 
+function visualDimension(design, ref) {
+  const value = design.visualTokens?.dimensions?.[ref];
+  assert(typeof value === 'number' && Number.isFinite(value) && value > 0,
+    `Android construction requires visual dimension ${ref}`);
+  return value;
+}
+
 function componentTarget(templateRef) {
   const targets = {
     'component.screen': {
@@ -67,6 +74,18 @@ function componentTarget(templateRef) {
         'repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/ElementCells.kt',
       targetSymbol: 'VexContainer',
       targetMeaning: 'registered semantic Surface/Column container',
+    },
+    'component.column': {
+      targetSourceRef:
+        'repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/VexComposeCells.kt',
+      targetSymbol: 'VexColumn',
+      targetMeaning: 'nested semantic column with inherited Vex Compose identity',
+    },
+    'component.text': {
+      targetSourceRef:
+        'repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/VexComposeCells.kt',
+      targetSymbol: 'VexText',
+      targetMeaning: 'nested semantic text with VexBoard-owned typography/color role',
     },
     'component.button': {
       targetSourceRef:
@@ -117,6 +136,8 @@ function componentMapping(assignment) {
     styleRef: assignment.styleRef,
     selectedStyleRefOrNull: assignment.selectedStyleRefOrNull,
     iconRefOrNull: assignment.iconRefOrNull,
+    typographyRefOrNull: assignment.typographyRefOrNull ?? null,
+    colorRefOrNull: assignment.colorRefOrNull ?? null,
     ...target,
   });
 }
@@ -159,7 +180,7 @@ export function compileVexLifeAndroidScreenDesign(
   ]) visualShape(design, shapeRef);
   for (const typographyRef of [
     'headlineLarge', 'headlineMedium', 'headlineSmall',
-    'titleLarge', 'titleMedium', 'bodyLarge', 'bodyMedium',
+    'titleLarge', 'titleMedium', 'bodyLarge', 'bodyMedium', 'bodySmall',
     'labelLarge', 'labelSmall',
   ]) visualTypography(design, typographyRef);
 
@@ -174,6 +195,7 @@ export function compileVexLifeAndroidScreenDesign(
   const libraryActions = layoutRule(design, 'layout.vexstream.library-actions');
   const libraryActionsAnchor = anchorRule(design, 'anchor.vexstream.library-actions');
   const connectionSheet = layoutRule(design, 'layout.vexstream.connection-sheet');
+  const connectionSheetAnchor = anchorRule(design, 'anchor.vexstream.connection-sheet');
 
   assert(tabs.mode === 'SCROLL_ROW',
     'VexStream library tabs must remain SCROLL_ROW for Android construction');
@@ -188,6 +210,11 @@ export function compileVexLifeAndroidScreenDesign(
   );
   assert(connectionSheet.mode === 'COLUMN',
     'VexStream connection sheet must remain COLUMN for Android construction');
+  assert(
+    connectionSheetAnchor.horizontalAnchor === 'CENTER' &&
+    connectionSheetAnchor.verticalAnchor === 'BOTTOM',
+    'VexStream connection sheet must remain bottom-centered for Android construction',
+  );
 
   const mappings = [
     mapping('mapping.android.theme.dark-colors', {
@@ -376,16 +403,21 @@ export function compileVexLifeAndroidScreenDesign(
     }),
     mapping('mapping.android.vexstream.connection-sheet', {
       designRefs: [
+        connectionSheetAnchor.anchorRef,
         connectionSheet.layoutRef,
         'metric.connectionSheetPaddingHorizontal',
         'metric.connectionSheetPaddingBottom',
         `metric.${connectionSheet.gapMetricRefOrNull}`,
+        'visual.dimension.bottomSheetMaxWidthDp',
+        'visual.dimension.bottomSheetDragHandleWidthDp',
+        'visual.dimension.bottomSheetDragHandleHeightDp',
+        'visual.dimension.bottomSheetDragHandleVerticalPaddingDp',
       ],
       targetSourceRef:
         'repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt',
-      targetSymbol: 'VexStreamConnectionMenuSheet',
-      targetMeaning: 'modal sheet content column padding + vertical gap',
-      referenceDpOrNull: metric(design, 'connectionSheetPaddingHorizontal').referenceDp,
+      targetSymbol: 'VexStreamConnectionMenuSheet + VexModalBottomSheet',
+      targetMeaning: 'bottom-centered content-driven modal sheet with VexBoard-owned content order/roles',
+      referenceDpOrNull: visualDimension(design, 'bottomSheetMaxWidthDp'),
     }),
   ];
 
