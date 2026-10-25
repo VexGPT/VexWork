@@ -1070,6 +1070,75 @@ ANDROID_SCREENCRAWLER_RECEIPT
 
 can be admitted without guessing capture time from upload/filesystem/event timestamps.
 
+7. **Android needs a static identity primitive for dynamic runtime text**
+
+The current Android element model has a static `TextElement` whose content is a fixed string resource,
+and custom `VexText(id = ..., text = runtimeValue)` can derive a stable nested ref at render time.
+
+That leaves a gap for product meaning such as:
+
+~~~text
+Home VexStream status
+  -> "Connected to <device>"
+  -> "VexStream offline ..."
+
+connection sheet paired name
+connection status
+download summary
+~~~
+
+These are one stable semantic text object whose **value** is runtime-owned.
+
+The VexBoard design can already model that distinction:
+
+~~~text
+identity
+  element.home.body.vexstream.status
+
+component
+  component.text
+
+content mode
+  DYNAMIC_RUNTIME
+
+typography / color
+  design-owned
+
+value
+  runtime State / formatter owned
+~~~
+
+The Android target should eventually have one registry-capable dynamic-text identity primitive rather
+than forcing every dynamic text either into a fake static string resource or an unregistered runtime
+VexText child.
+
+A useful target shape is conceptually:
+
+~~~text
+DynamicTextElement
+  stable elementId
+  semantic text role / style
+  no stored runtime value
+~~~
+
+with the actual value still supplied by the Screen/runtime renderer.
+
+Permanent:
+
+~~~text
+TEXT_IDENTITY != TEXT_VALUE
+
+STATIC_LOCALIZED_TEXT
+  -> may bind a string resource in the Blueprint
+
+DYNAMIC_RUNTIME_TEXT
+  -> stable registered identity
+  -> runtime value supplied separately
+~~~
+
+This standardization reduces VexBoard round-trip debt without moving application State into the
+static Blueprint.
+
 #### Standardization posture
 
 Extend existing Android repository-owned enforcement incrementally:
