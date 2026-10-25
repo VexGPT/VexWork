@@ -319,13 +319,24 @@
       "layoutRef": "layout.vexlife.home.body",
       "semanticRef": "screen.home",
       "mode": "SCROLL_COLUMN",
-      "gapMetricRefOrNull": "homeSectionGapVertical"
+      "gapMetricRefOrNull": "homeSectionGapVertical",
+      "childSemanticRefs": [
+        "element.home.body.vexstream",
+        "element.home.body.systems"
+      ]
     },
     {
       "layoutRef": "layout.vexstream.library-tabs",
       "semanticRef": "element.vexstream-music.body.library-tabs",
       "mode": "SCROLL_ROW",
-      "gapMetricRefOrNull": "tabGapHorizontal"
+      "gapMetricRefOrNull": "tabGapHorizontal",
+      "childSemanticRefs": [
+        "element.vexstream-music.body.library-tabs.songs",
+        "element.vexstream-music.body.library-tabs.albums",
+        "element.vexstream-music.body.library-tabs.artists",
+        "element.vexstream-music.body.library-tabs.playlists",
+        "element.vexstream-music.body.library-tabs.downloads"
+      ]
     },
     {
       "layoutRef": "layout.vexstream.songs",
@@ -337,7 +348,35 @@
       "layoutRef": "layout.vexstream.connection-sheet",
       "semanticRef": "element.vexstream-music.body.connection.menu",
       "mode": "COLUMN",
-      "gapMetricRefOrNull": "containerGapVertical"
+      "gapMetricRefOrNull": "containerGapVertical",
+      "childSemanticRefs": [
+        "element.vexstream-music.body.connection.refresh",
+        "element.vexstream-music.body.connection.library.download-all-missing",
+        "element.vexstream-music.body.connection.library.remove-all-downloaded",
+        "element.vexstream-music.body.connection.forget.request",
+        "element.vexstream-music.body.connection.menu.close"
+      ]
+    },
+    {
+      "layoutRef": "layout.vexlife.home.systems",
+      "semanticRef": "element.home.body.systems",
+      "mode": "COLUMN",
+      "gapMetricRefOrNull": "containerGapVertical",
+      "childSemanticRefs": [
+        "element.home.body.systems.family-conversation",
+        "element.home.body.systems.vex-maps",
+        "element.home.body.systems.talk-to-vex"
+      ]
+    },
+    {
+      "layoutRef": "layout.vexstream.library-actions",
+      "semanticRef": "element.vexstream-music.body.library-actions",
+      "mode": "ROW",
+      "gapMetricRefOrNull": "containerGapVertical",
+      "childSemanticRefs": [
+        "element.vexstream-music.body.library-actions.play-all",
+        "element.vexstream-music.body.library-actions.shuffle-all"
+      ]
     }
   ],
   "intrinsicSizes": {
