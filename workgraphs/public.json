@@ -5039,13 +5039,13 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-10-25T01:23:08.000Z",
-      "updatedAt": "2026-10-25T01:23:08.000Z",
+      "updatedAt": "2026-10-25T01:57:00.000Z",
       "workRef": "work.vexlife.interface-refinement.v1.conversation-ergonomics",
       "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
       "label": "V1 — conversation ergonomics and re-entry",
       "purpose": "Make the proven Vex relationship easy to return to and natural to type in: Enter sends, Shift+Enter inserts a newline, and ordinary interface controls can re-enter the canonical local Vex Conversation without a special proof URL or historical package.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "VERIFYING",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [],
       "repositoryRefs": [
@@ -5060,7 +5060,7 @@
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
-      "semanticFingerprint": "093e52c2989ab2b47d0f03b59436147aa9307c552ce72ad2b001148407df03ee"
+      "semanticFingerprint": "3ad2261dcacefb18110559a04a716aac3435c9f6993f624f2c40ba90056fdc59"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -7587,5 +7587,5 @@
     "projects/vexlife-interface-refinement/README.md"
   ],
   "formedAt": "2026-10-21T01:45:00.000Z",
-  "semanticFingerprint": "514406786fdc1f358e658c00a433c2c820677ad693ae24b00a9e159626f33c28"
+  "semanticFingerprint": "2a80ac632b29c2350d3c05b74d7aad3d1ec4b7b7387577292286ada6e83dda46"
 }
