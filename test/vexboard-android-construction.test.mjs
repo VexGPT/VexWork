@@ -76,6 +76,24 @@ test('Android construction plan consumes VexBoard design without target effects'
   );
   assert.equal(sheet.targetSymbol, 'VexModalBottomSheet');
 
+  const sheetContent = plan.componentMappings.find(
+    (entry) => entry.semanticRef === 'element.vexstream-music.body.connection.menu.content',
+  );
+  assert.equal(sheetContent.targetSymbol, 'VexColumn');
+
+  const sheetTitle = plan.componentMappings.find(
+    (entry) => entry.semanticRef === 'element.vexstream-music.body.connection.menu.content.title',
+  );
+  assert.equal(sheetTitle.targetSymbol, 'VexText');
+  assert.equal(sheetTitle.typographyRefOrNull, 'headlineSmall');
+  assert.equal(sheetTitle.colorRefOrNull, 'onSurface');
+
+  const sheetStatus = plan.componentMappings.find(
+    (entry) => entry.semanticRef === 'element.vexstream-music.body.connection.menu.content.status',
+  );
+  assert.equal(sheetStatus.typographyRefOrNull, 'bodyLarge');
+  assert.equal(sheetStatus.colorRefOrNull, 'onSurfaceVariant');
+
   const toolbar = plan.mappings.find(
     (entry) => entry.mappingRef === 'mapping.android.shell.toolbar-height',
   );
@@ -99,6 +117,14 @@ test('Android construction plan consumes VexBoard design without target effects'
   );
   assert.equal(fabCluster.targetSymbol, 'VexStreamLibraryFabActions');
   assert.equal(fabCluster.referenceDpOrNull, 10);
+
+  const connectionSheet = plan.mappings.find(
+    (entry) => entry.mappingRef === 'mapping.android.vexstream.connection-sheet',
+  );
+  assert.equal(connectionSheet.referenceDpOrNull, 640);
+  assert.match(connectionSheet.targetSymbol, /VexModalBottomSheet/);
+  assert.ok(connectionSheet.designRefs.includes('anchor.vexstream.connection-sheet'));
+  assert.ok(connectionSheet.designRefs.includes('visual.dimension.bottomSheetDragHandleHeightDp'));
 
   const track = plan.mappings.find(
     (entry) => entry.mappingRef === 'mapping.android.vexstream.track-card',
