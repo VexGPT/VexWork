@@ -281,7 +281,41 @@
             "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamMusicScreen.kt"
           ]
         }
-      ]
+      ],
+      "content": {
+        "ref": "element.vexstream-music.body.connection.menu.content",
+        "identityOrigin": "DERIVED_CUSTOM_PRESENTATION",
+        "sourceRefs": [
+          "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/VexComposeScope.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt"
+        ],
+        "texts": [
+          {
+            "ref": "element.vexstream-music.body.connection.menu.content.title",
+            "label": "VexStream connection",
+            "typographyRef": "headlineSmall",
+            "colorRef": "onSurface"
+          },
+          {
+            "ref": "element.vexstream-music.body.connection.menu.content.paired-name",
+            "label": "VexStream on Home PC",
+            "typographyRef": "titleMedium",
+            "colorRef": "onSurface"
+          },
+          {
+            "ref": "element.vexstream-music.body.connection.menu.content.status",
+            "label": "Connected",
+            "typographyRef": "bodyLarge",
+            "colorRef": "onSurfaceVariant"
+          },
+          {
+            "ref": "element.vexstream-music.body.connection.menu.content.library-download-status",
+            "label": "1 of 2 songs on this phone · 1 ready to download",
+            "typographyRef": "bodySmall",
+            "colorRef": "onSurfaceVariant"
+          }
+        ]
+      }
     },
     "libraryActionsContainerRef": "element.vexstream-music.body.library-actions"
   },
