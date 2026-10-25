@@ -43,6 +43,26 @@ test('Android construction plan consumes VexBoard design without target effects'
   assert.match(track.targetSymbol, /VexStreamTrackCard/);
 });
 
+test('local VexBoard design draft remains non-implementing until explicit acceptance', () => {
+  const draft = structuredClone(design);
+  draft.authorityState = 'VEXBOARD_DESIGN_DRAFT';
+  draft.metrics.screenPaddingHorizontal = {
+    preferredPercent: 24 / 412,
+    minDp: 24,
+    maxDp: 24,
+    referenceDp: 24,
+  };
+
+  const plan = compileVexLifeAndroidScreenDesign(draft);
+
+  assert.equal(plan.designAuthorityState, 'VEXBOARD_DESIGN_DRAFT');
+  assert.equal(plan.admission, 'PREVIEW_ONLY_DESIGN_DRAFT');
+  assert.deepEqual(plan.effects, {
+    targetSourceMutationPerformed: false,
+    externalEffectsPerformed: false,
+  });
+});
+
 test('accepted VexBoard design becomes Android implementation eligible without changing the adoption snapshot', () => {
   const accepted = structuredClone(design);
   accepted.authorityState = 'VEXBOARD_DESIGN_AUTHORITY';
