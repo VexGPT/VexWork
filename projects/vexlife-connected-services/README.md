@@ -39,8 +39,8 @@ The program intentionally learns from real consumers before extracting more arch
 | VCS-01 three-consumer comparison | COMPLETED | Compared Maps, Conversation and VexStream to isolate truly shared concerns. |
 | VCS-02 minimum shared contract | COMPLETED | Authentication/session, reachability, capability addressing and currentness boundary established. |
 | VCS-03 Maps engine realization | COMPLETED | Shared boundary exercised against a real replaceable provider engine. |
-| **VCS-04 Conversation adoption** | **RUNNING** | Current lived adoption through read, Send/Companion and restart/no-duplicate proof. |
-| VCS-05 VexStream stress | WAITING | Long-lived media pressure follows VCS-04. |
+| **VCS-04 Conversation adoption** | **COMPLETED** | L1-L11 lived acceptance and terminal Android/VexWork source-currentness are closed. |
+| **VCS-05 VexStream stress** | **READY** | Current foreground: long-lived media delivery, range, throughput, reconnect and backpressure pressure. |
 | VCS-06 VexArchitecture extraction | WAITING | Extract only patterns earned by multiple real consumers. |
 | VCS-07 deployment choices | WAITING | Deployment comes after runtime semantics stabilize. |
 
@@ -169,7 +169,7 @@ PR154 = TERMINAL_ACCEPTED_CURRENT
 
 Eleven candidate-path blobs landed byte-identically. `strings.xml` is the intentional three-way composition point because current main also changed that shared resource after PR154's fixed base; the final blob is exactly the A041-proven composed blob and preserves both current-main content and PR154's `conversation_message` / `conversation_send` resources.
 
-No further Android/Home/Family/Heretic replay is owed. The only remaining VCS-04 verification is VexWork's own canonical source + generated projection closure.
+No further Android/Home/Family/Heretic replay is owed. VCS-04 is terminal; VexWork projection publication is part of this PR's repository integration, not a remaining product predicate.
 
 Durable terminal Android evidence:
 
@@ -201,7 +201,7 @@ For ordinary continuation:
 ```text
 this README
 -> public/workspace.json / VexWork UI
--> work.vexlife.connected-services.vcs04.phase3.host-to-android-l1-l5
+-> work.vexlife.connected-services.vcs05-stream-stress
 -> docs/lineage/VEXLIFE-CONNECTED-SERVICES.md only when causal history is needed
 -> target repository current source only for the next effect
 ```
