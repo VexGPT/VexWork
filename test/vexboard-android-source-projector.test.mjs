@@ -550,7 +550,7 @@ test('VexLife Android POC depth maps truthful storage and Desktop service owners
   const labels = new Map(graph.nodes.map((node) => [node.nodeRef, node.label]));
   assert.match(
     labels.get(VEXLIFE_ANDROID_TEXT_VALUE_RESOLUTION_CAPABILITY_REF),
-    /TextElement · STANDARDIZATION_REQUIRED · CANDIDATE_FORMED_PROOF_PENDING/,
+    /TextElement · STANDARDIZATION_REQUIRED · CANDIDATE_PROVEN_PENDING_ACCEPTANCE/,
   );
   assert.ok(graph.relationships.some(
     (relationship) =>
