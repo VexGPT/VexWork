@@ -589,13 +589,13 @@
     ],
     "targetCapabilityCandidates": [
       {
-        "capabilityRef": "capability.vexlife-android.elements.dynamic-text-identity",
+        "capabilityRef": "capability.vexlife-android.elements.text-value-resolution",
         "candidateRef": "github.pull.vexlife-android.182",
-        "candidateHeadRefOrNull": "git.commit.vexlife-android.d44f4d164c4241b609ee7da843bd0f7f69166790",
+        "candidateHeadRefOrNull": "git.commit.vexlife-android.6efb978584de7e4f07257094c5e9e541c17d844c",
         "status": "CANDIDATE_FORMED_PROOF_PENDING",
         "sourceRefs": [
           "github.pull.vexlife-android.182",
-          "git.commit.vexlife-android.d44f4d164c4241b609ee7da843bd0f7f69166790",
+          "git.commit.vexlife-android.6efb978584de7e4f07257094c5e9e541c17d844c",
           "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/ElementModel.kt",
           "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/ScreenBlueprint.kt",
           "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/ElementCells.kt",
