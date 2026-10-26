@@ -69,6 +69,18 @@ Events Simulator (later extension)
 That makes Debug Menu a better first proof of the reusable construction loop without losing the
 deeper VexUniverse requirement.
 
+## Intent correction — shared live language
+
+An earlier draft of this Project over-separated "portable VexBoard meaning" from Android
+`ElementIntent` meaning. That framing was too strong and contradicted the intended authoring model:
+VexBoard is developing a readable typed semantic language that Android should be able to realize
+without duplicating semantic interpretation. Existing Android language is evidence and implementation
+pressure; the living Blueprint determines which meanings become reusable across realms.
+
+Likewise, the initial draft prematurely named three Debug Menu controls as the pilot. Current work is
+deliberately slower: one human feature request, one grounded terrain edge, one identifier/meaning
+question at a time.
+
 ## Naming checkpoint — do not regress the language
 
 This Project is formed from the current VexBoard foundational-language refinement successor and its
@@ -90,14 +102,16 @@ UIBlueprintRegistry
 
 ElementIntent
   existing Android target/runtime request union
-  != universal portable Origin language
-  != VexAct
+  current evidence/reference for reusable intention language
+  DO NOT pre-classify as Android-only
+  DO NOT rename wholesale into a universal abstraction
+  let live Blueprint pressure reveal which typed meanings should be shared across realms
 
 typed NavigateTo / NavigateBack
-  may remain typed navigation
+  readable typed intention language that VexBoard and Android should be able to share/realize directly
 
 typed Open / Close / selection
-  may remain presentation mechanics
+  candidate reusable typed intention language where the same meaning survives realms
 
 SCAE
   applies when a real Behavior question earns State / Control / resolved Act / Effect depth
@@ -107,9 +121,10 @@ The user-facing Project label intentionally retains **Blueprints** because it na
 experience/trajectory. It does not reverse the current `Blueprint -> Origin` naming refinement for new
 canonical semantic-source types.
 
-Exact current Android symbols such as `AppScreenBlueprint` may appear in SOURCE / CONSTRUCTION lenses
-because they are real target coordinates. They must not be presented as the new portable/canonical
-language merely because the adapter points to them.
+Exact current Android symbols such as `AppScreenBlueprint` remain real source coordinates and may
+appear in SOURCE / CONSTRUCTION lenses. Their existence does not decide the reusable language either
+way. Where Android already expresses the same readable semantic intention VexBoard needs, prefer
+shared meaning over inventing a second translation layer.
 
 Do not mechanically rename existing `*Ref`, `*Element`, `UIBlueprintRegistry`, `ElementIntent`, or
 other accepted/migration source. Classify the responsibility first.
@@ -150,14 +165,18 @@ Room/DAO/table semantics without GitHub archaeology.
 
 ## Construction law
 
-The target adapter should behave like a compiler for supported meaning:
+The realm/target construction path should behave like a compiler for supported meaning, not a second
+semantic interpreter:
 
 ```text
-same accepted Origin/design
-+ same target adapter contract
--> deterministic target semantic plan
--> deterministic target-native source candidate
+same accepted typed Blueprint intention
++ same target realization contract
+-> deterministic target semantic/source realization
 ```
+
+A settled expression such as `Act.NavigateTo(screenId = ...)` should not require another AI or target
+layer to rediscover what "navigate to this Screen" meant. Target-specific mechanics may differ; the
+settled semantic intention should remain readable and shared.
 
 The adapter may create new source files or modify existing target-owned files. Source placement,
 registration, resource placement and generated/test ownership belong to the adapter contract rather
@@ -275,17 +294,21 @@ rather than permission to guess.
 work.vexsync.debugmenu-blueprints.origin-language-contract
 ```
 
-First finish the source-grounded portable/target naming and construction boundary using Debug Menu
-pressure. Then prove the smallest three-control round trip:
+First discover the live typed language through one feature request at a time. The current specimen is
+the dark/light theme request and its Home -> developer entry -> Debug Menu terrain. Do not pre-form the
+rest of Debug Menu merely because current Android already contains more controls.
+
+The immediate work is:
 
 ```text
-Dark Mode
-Show Log History
-Reset Log History
+human request
+-> translated intention + expected return
+-> Builder grounds/creates required coordinates
+-> typed live Blueprint path
+-> only then compare/map current Android realization
 ```
 
-Only after that should the Project generalize target construction/test generation and the one-action
-PR loop.
+Additional Debug Menu controls become consumers only when the living Blueprint reaches them.
 
 VexStream remains an important harder secondary consumer after the Debug Menu compiler path proves it
 is genuinely reusable rather than Debug-specific.
@@ -295,8 +318,8 @@ is genuinely reusable rather than Debug-specific.
 ```text
 PROJECT_FORMATION != TARGET_IMPLEMENTATION_AUTHORITY
 VEXBOARD_HUB != OWNER_OF_EVERY_SOURCE
-PORTABLE_ORIGIN != ANDROID ELEMENTINTENT
-TARGET_SYMBOL_VISIBILITY != TARGET_SYMBOL_AS_PORTABLE_LANGUAGE
+SHARED_INTENTION_MEANING != TARGET_SPECIFIC_MECHANICS
+ANDROID_REALIZATION SHOULD NOT REQUIRE REINTERPRETING SETTLED BLUEPRINT MEANING
 GENERATED_SOURCE != ACCEPTED_SOURCE
 COMPILER_PASS != SEMANTIC_EQUIVALENCE
 SEMANTIC_EQUIVALENCE != LIVED_NATIVE_PROOF
