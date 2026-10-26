@@ -1,4 +1,4 @@
-# VexBoard — Semantic Blueprint IDE Foundation
+# VexBoard — Semantic Origin IDE Foundation
 
 [VXG RealForever]
 
@@ -6,7 +6,7 @@
 
 VexBoard began as a semantic canvas and now has enough real consumer pressure to make a larger reusable pattern explicit:
 
-> VexBoard is a living semantic Blueprint IDE: one bounded visual/perceptual surface where a human and AI can understand current truth, author intended meaning, traverse scoped neighborhoods, construct target realizations, inspect source/work/process context, and compare evidence without collapsing those rightful owners into one mega-state.
+> VexBoard is a living semantic Origin IDE: one bounded visual/perceptual surface where a human and AI can understand current truth, author intended meaning, traverse scoped neighborhoods, construct target realizations, inspect source/work/process context, and compare evidence without collapsing those rightful owners into one mega-state.
 
 This document owns that reusable architectural pattern and its worked examples.
 
@@ -34,7 +34,7 @@ bounded neighborhood + selected lens
         +-> inspect Work / Process / proof
         |
         v
-published / accepted Blueprint meaning
+published / accepted Origin meaning
         |
         v
 target construction mapping
@@ -66,6 +66,217 @@ SAME_RECURSIVE_IDE_PATTERN
 != SAME_TARGET_ADAPTER
 != ONE_MEGA_BOARD
 ~~~
+
+## Origin vocabulary — one truth, reusable name, scoped realizations
+
+`Origin` replaces `Blueprint` as the intended name for the **canonical reusable semantic source**.
+
+The reason is structural, not cosmetic:
+
+~~~text
+Blueprint
+  can sound like a design artifact copied into implementations
+
+Origin
+  names the authoritative semantic beginning
+  from which realizations / projections / observations descend
+~~~
+
+The durable law is:
+
+~~~text
+ORIGIN
+  canonical identity
+  intention / meaning
+  reusable semantic contract
+  rightful relationships
+  provenance / currentness
+        |
+        +-> Android realization
+        +-> Desktop realization
+        +-> Web realization
+        +-> VexBoard projection / authoring surface
+        +-> tests / evidence / translation projections
+
+REALIZATION
+  keeps the reusable semantic name
+  adds environment-specific mechanics
+  remains traversable back to Origin
+~~~
+
+Conceptual naming grammar:
+
+~~~text
+origin.vexlife.vexstream.ConnectionStatusOrigin
+
+android.vexlife.vexstream.ConnectionStatus
+desktop.vexlife.vexstream.ConnectionStatus
+web.vexlife.vexstream.ConnectionStatus
+~~~
+
+The stable reusable noun is `ConnectionStatus`. The namespace says where the realization lives.
+The `Origin` postfix says that coordinate owns the canonical reusable definition.
+
+~~~text
+SAME ORIGIN
++ DIFFERENT TARGET
+-> SAME REUSABLE SEMANTIC NAME
+-> DIFFERENT REALIZATION SCOPE
+
+TARGET DIFFERENCE
+!= NEW SEMANTIC NOUN
+~~~
+
+Do not mechanically suffix every internal concept with `Origin`. Use it when a name distinguishes the
+authoritative reusable definition from downstream realizations. State / Control / Act / Effect and other
+already-clear semantic roles do not gain an `Origin` suffix merely for symmetry.
+
+### Current `Blueprint` names are migration evidence, not future naming law
+
+Existing source names such as Android `ScreenBlueprint`, historical VexLife Blueprint Source-of-Truth
+Project refs, and this file's repository path remain current source coordinates until a bounded migration
+changes them safely.
+
+They do **not** grant permission to keep minting new canonical `*Blueprint` names.
+
+~~~text
+EXISTING_BLUEPRINT_SYMBOL
+= CURRENT / HISTORICAL SOURCE COORDINATE
+
+NEW CANONICAL SEMANTIC SOURCE
+-> PREFER ORIGIN VOCABULARY
+
+MIGRATION
+-> preserve lineage
+-> do not maintain permanent duplicate Origin + Blueprint truth models
+~~~
+
+The implementation should migrate only after the semantic model is settled enough that renaming does not
+become another churn cycle.
+
+### Origin identity, namespace and physical files are different axes
+
+A semantic coordinate must not become dependent on one repository folder layout.
+
+~~~text
+Origin identity
+  what reusable meaning this is
+
+namespace / scope
+  product + domain + realization plane
+
+physical source file
+  how maintainers organize source today
+
+distribution / vendor packet
+  how a consumer receives a useful batch
+
+target resource
+  how one platform realizes the Origin
+~~~
+
+These may correlate, but they are not the same owner.
+
+A package move, file split, repository migration or vendor-batch boundary must not silently remint the
+semantic Origin.
+
+~~~text
+SEMANTIC_IDENTITY != FILE_PATH
+SEMANTIC_IDENTITY != PACKAGE_LAYOUT
+PACKAGE_LAYOUT != TRANSLATION_BATCH
+TRANSLATION_BATCH != CANONICAL_OWNER
+TARGET_RESOURCE_ID != ORIGIN_IDENTITY
+~~~
+
+### Localization — source can be sharded while vendor work stays bulk
+
+The current Vextreme localization system already demonstrates a useful scalable pattern:
+
+~~~text
+data/strings/source/**
+  canonical source split by semantic/page/common scope
+
+translation campaign/program
+  reads canonical keys across those source files
+  selects deterministic bounded rows
+  exports bulk CSV packets per target language
+
+compiled scopes
+  emit target/read-optimized locale bundles
+~~~
+
+Therefore Origin adoption should **not** require one translation file per package nor force a vendor to
+translate package-by-package.
+
+A future Origin-backed content path may look conceptually like:
+
+~~~text
+origin.vexlife.vexstream.message.ConnectionStatusOrigin
+        |
+        +-> canonical source-language text + parameters + context
+        +-> locale translations
+        |
+        +-> generated vendor campaign
+        |     hundreds / thousands of Origin keys across scopes
+        |
+        +-> Android mapping
+        |     R.string.vexstream_connection_status
+        |
+        +-> Desktop mapping
+        |     native locale/resource coordinate
+        |
+        +-> Web mapping
+              locale bundle coordinate
+~~~
+
+Physical source may be organized by product/domain/package because that helps maintainers. A translation
+exporter may flatten any admitted set of Origins into one bulk packet, preserving stable IDs, source
+preimage/hash, placeholders, context and return placement.
+
+~~~text
+ORGANIZE SOURCE FOR OWNERSHIP / MAINTENANCE
+PROJECT TRANSLATION WORK FOR THE TRANSLATOR / VENDOR
+COMPILE TARGET RESOURCES FOR THE TARGET
+
+ONE CANONICAL IDENTITY GRAPH
+MANY FIT-FOR-PURPOSE PROJECTIONS
+~~~
+
+Android's default `res/values/strings.xml` is currently a target-local source/resource surface. It should
+be able to become a generated/mapped realization of canonical Origin content without forcing Android's
+physical XML organization onto Desktop, Web, Vextreme or the canonical content owner.
+
+### Remaining long-term questions Origin does not answer alone
+
+The following remain deliberate design questions. Do not patch around them with new nouns:
+
+1. **Evolution / revision** — the same Origin may evolve. A realization needs enough lineage/currentness
+   to say which accepted Origin revision it realizes without reminting semantic identity for every edit.
+
+2. **Semantic reuse versus identical wording** — two messages that both say `Close` are not automatically
+   one Origin. Reuse requires shared meaning/context, not text equality. Conversely, one Origin may have
+   different locale wording or target presentation without becoming separate semantic truth.
+
+3. **Lawful target specialization** — a target may need native behavior, accessibility wording, size,
+   interaction or platform affordances. The adapter must distinguish lawful realization variance from an
+   independent product/design fork.
+
+4. **Bindings are orthogonal** — State/data may select a content Origin, supply parameters, alter
+   visibility/style/selection, or drive another property. Do not create `DynamicX` semantic subclasses
+   for each value source.
+
+5. **Reachability / packaging** — a target should consume the reachable Origin closure it needs rather
+   than shipping one universe-wide bundle merely because a universal graph exists.
+
+6. **Mutation authority** — a downstream realization may propose a change, but it does not silently
+   become canonical. The rightful Origin owner accepts the change, then propagation updates descendants.
+
+7. **Migration / rename lineage** — readable names may improve over time. A rename needs explicit lineage
+   so old target mappings/evidence remain resolvable; aliases/migrations are compatibility evidence, not a
+   second permanent identity.
+
+These questions should be solved through real consumer pressure and existing rightful owners before new
+framework layers are admitted.
 
 ## One identity, many lenses
 
