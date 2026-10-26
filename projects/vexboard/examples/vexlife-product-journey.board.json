@@ -265,37 +265,45 @@
       {
         "nodeRef": "work.vexlife.interface-refinement.v3.resource-context-pressure-observation",
         "kind": "REFERENCE",
-        "label": "CURRENT / READY · V3 resource + context pressure observation",
+        "label": "COMPLETED / A005 LIVED PASS · V3 resource + context pressure",
         "parentRefOrNull": "container.vexlife.journey.stability",
         "detailBoardRefOrNull": null,
         "sourceRefs": [
           "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md",
           "workgraphs/segments/vexlife-interface-refinement.json",
-          "work.vexlife.interface-refinement.v3.resource-context-pressure-observation"
+          "work.vexlife.interface-refinement.v3.resource-context-pressure-observation",
+          "github.pull.vexlife.936",
+          "github.commit.vexlife.9f2e97d3ef14599eac4e659181392c1e706dc758",
+          "github.pull.vexlife.936.comment.6412567207",
+          "artifact.vexlife.interface-refinement.v3.lived-pressure.a005.return.sha256.1812d529d99ad89b368e84939835f355065adcb6d96d6c7bda5d975edb6ff6f3"
         ]
       },
       {
         "nodeRef": "work.vexlife.interface-refinement.v4.continuity-rollover",
         "kind": "REFERENCE",
-        "label": "WAITING · V4 self-maintaining continuity rollover",
+        "label": "CURRENT / READY / IMMEDIATE · V4 continuity rollover",
         "parentRefOrNull": "container.vexlife.journey.stability",
         "detailBoardRefOrNull": null,
         "sourceRefs": [
           "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md",
           "workgraphs/segments/vexlife-interface-refinement.json",
-          "work.vexlife.interface-refinement.v4.continuity-rollover"
+          "work.vexlife.interface-refinement.v4.continuity-rollover",
+          "github.pull.vexlife.936.comment.6412567207",
+          "artifact.vexlife.interface-refinement.v3.lived-pressure.a005.return.sha256.1812d529d99ad89b368e84939835f355065adcb6d96d6c7bda5d975edb6ff6f3"
         ]
       },
       {
         "nodeRef": "work.vexlife.interface-refinement.v5.resource-stewardship",
         "kind": "REFERENCE",
-        "label": "WAITING · V5 bounded host resource stewardship",
+        "label": "READY / HIGH · V5 exact-owned resource stewardship",
         "parentRefOrNull": "container.vexlife.journey.stability",
         "detailBoardRefOrNull": null,
         "sourceRefs": [
           "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md",
           "workgraphs/segments/vexlife-interface-refinement.json",
-          "work.vexlife.interface-refinement.v5.resource-stewardship"
+          "work.vexlife.interface-refinement.v5.resource-stewardship",
+          "github.pull.vexlife.936.comment.6412567207",
+          "artifact.vexlife.interface-refinement.v3.lived-pressure.a005.return.sha256.1812d529d99ad89b368e84939835f355065adcb6d96d6c7bda5d975edb6ff6f3"
         ]
       },
       {
@@ -651,7 +659,11 @@
       "project.vexlife.interface-refinement",
       "github.pull.vexlife.934",
       "github.pull.vexlife.934.comment.6404920574",
-      "relay.return.vexlife.home-tool.pr934.sourceowner.a001.54f4ecb0ca8c9b8a80b355d24dd93ed3ab901398c35c84438958388c2867b970"
+      "relay.return.vexlife.home-tool.pr934.sourceowner.a001.54f4ecb0ca8c9b8a80b355d24dd93ed3ab901398c35c84438958388c2867b970",
+      "github.pull.vexlife.936",
+      "github.commit.vexlife.9f2e97d3ef14599eac4e659181392c1e706dc758",
+      "github.pull.vexlife.936.comment.6412567207",
+      "artifact.vexlife.interface-refinement.v3.lived-pressure.a005.return.sha256.1812d529d99ad89b368e84939835f355065adcb6d96d6c7bda5d975edb6ff6f3"
     ]
   },
   "projection": {
