@@ -171,7 +171,7 @@
       "workRef": "work.vextreme.vexsite.localization.next-domain.covenant-ja-zh",
       "parentWorkRefOrNull": "work.vextreme.vexsite.localization.outcome",
       "label": "Localize Vextreme Covenant into JA / ZH",
-      "purpose": "Project the admitted Vextreme Covenant JA/ZH successor on PR #423. Canonical translation source authoring is complete at the final immutable 420-identity / 840-target-cell review freeze, with the Covenant page differing from accepted main only by two durable static colophon boundary sentences. Registry promotion, generated/runtime consequences and lived evidence remain held pending separate exact-source TRANSLATION_CLEAR_JA and TRANSLATION_CLEAR_ZH dispositions.",
+      "purpose": "Project the admitted Vextreme Covenant JA/ZH successor on PR #423. Canonical translation source authoring is complete at the refined immutable 420-identity / 840-target-cell review freeze; author-side QA preserved the Chinese charter/constitution distinction and removed one generic English-leakage phrase, while registry promotion, generated/runtime consequences and lived evidence remain held pending separate exact-source TRANSLATION_CLEAR_JA and TRANSLATION_CLEAR_ZH dispositions.",
       "workClass": "TASK",
       "state": "VERIFYING",
       "workDisposition": "ACTIVE",
@@ -184,20 +184,21 @@
       ],
       "sourceRefs": [
         "github.pull.vextreme.423",
-        "github.issue-comment.vextreme.423.6414392367",
+        "github.issue-comment.vextreme.423.6430161668",
         "github.pull.vextreme.312",
         "github.pull.vextreme.148",
         "repo.vextreme:config/institutional-surfaces.json",
         "repo.vextreme:data/strings/source/institution.json",
         "repo.vextreme:docs/architecture/06-i18n.md",
-        "git.commit.vextreme.ac2e181bfd547f32f83d1ab3e7d6174900e964fa"
+        "git.commit.vextreme.ac2e181bfd547f32f83d1ab3e7d6174900e964fa",
+        "git.commit.vextreme.d02d450cac706d23913ad2b3bb12113d4ae0b333"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-26T07:30:02.000Z",
-      "updatedAt": "2026-10-26T10:50:00.000Z"
+      "updatedAt": "2026-10-26T23:56:00.000Z"
     }
   ],
   "transitions": [
@@ -279,11 +280,12 @@
       "workRef": "work.vextreme.vexsite.localization.next-domain.covenant-ja-zh",
       "priorState": "RUNNING",
       "nextState": "VERIFYING",
-      "reason": "PR #423 reached the final immutable 420-identity / 840-target-cell JA/ZH review freeze at ad8315d6; all 431 Covenant page bindings resolve in EN/JA/ZH while registry promotion remains held pending separate exact-source JA and ZH semantic review.",
+      "reason": "PR #423 reached the refined immutable 420-identity / 840-target-cell JA/ZH review freeze at d02d450c; all 431 Covenant page bindings resolve in EN/JA/ZH, author-side terminology QA is closed, and registry promotion remains held pending separate exact-source JA and ZH semantic review.",
       "actorRef": "actor.chatgpt.vexsite-localization",
       "sourceRefs": [
         "github.pull.vextreme.423",
-        "github.issue-comment.vextreme.423.6414392367"
+        "github.issue-comment.vextreme.423.6430161668",
+        "git.commit.vextreme.d02d450cac706d23913ad2b3bb12113d4ae0b333"
       ],
       "createdAt": "2026-10-26T10:40:00.000Z"
     }
@@ -300,8 +302,9 @@
     "repo.vextreme:data/strings/source/institution.json",
     "repo.vextreme:docs/architecture/06-i18n.md",
     "github.pull.vextreme.423",
-    "github.issue-comment.vextreme.423.6414392367",
-    "git.commit.vextreme.ac2e181bfd547f32f83d1ab3e7d6174900e964fa"
+    "github.issue-comment.vextreme.423.6430161668",
+    "git.commit.vextreme.ac2e181bfd547f32f83d1ab3e7d6174900e964fa",
+    "git.commit.vextreme.d02d450cac706d23913ad2b3bb12113d4ae0b333"
   ],
   "formedAt": "2026-10-23T07:48:00.000Z"
 }
