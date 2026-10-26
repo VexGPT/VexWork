@@ -212,9 +212,9 @@
       "workRef": "work.vexlife.connected-services.vcs05-stream-stress",
       "parentWorkRefOrNull": "work.vexlife.connected-services.outcome",
       "label": "VCS-05 — VexStream adoption / streaming stress",
-      "purpose": "Stress the accepted Connected Services control-plane boundary against VexStream's current feature-owned Range/media data plane, beginning with deterministic larger/non-monotonic local Range demand before any streaming extension is generalized.",
+      "purpose": "Complete VexStream adoption/stress by proving the current feature-owned media data plane under larger/non-monotonic Range demand, consuming existing terminal restart/reconnect lived evidence, and preserving the conclusion that no new generic streaming transport is earned for Connected Services.",
       "workClass": "OUTCOME",
-      "state": "RUNNING",
+      "state": "COMPLETED",
       "workDisposition": "ACTIVE",
       "priorityClass": "HIGH",
       "dependencyRefs": [
@@ -233,14 +233,18 @@
         "github.pull.vexwork.132.comment.6406959147",
         "github.pull.vexwork.132.comment.6407072302",
         "github.issue.vexlife.899.comment.6407174402",
-        "github.pull.vexstream-music.15"
+        "github.pull.vexstream-music.15",
+        "github.pull.vexstream-music.15.comment.6408128854",
+        "github.pull.vexstream-music.15.comment.6408146238",
+        "github.issue.vexlife.899.comment.6408187503",
+        "github.pull.vexlife-android.148"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-21T23:56:41.000Z",
-      "updatedAt": "2026-10-26T03:02:00.000Z"
+      "updatedAt": "2026-10-26T04:19:46.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -249,7 +253,7 @@
       "label": "VCS-06 — VexArchitecture extraction",
       "purpose": "Extract only the recurring Connected Services architecture earned by multiple real consumers, preserving questions, ownership and proof obligations rather than copying one implementation.",
       "workClass": "OUTCOME",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "READY",
       "workDisposition": "ACTIVE",
       "priorityClass": "NORMAL",
       "dependencyRefs": [
@@ -260,14 +264,16 @@
       ],
       "sourceRefs": [
         "docs/lineage/VEXLIFE-CONNECTED-SERVICES.md",
-        "github.issue.vexlife.899"
+        "github.issue.vexlife.899",
+        "github.issue.vexlife.899.comment.6408187503",
+        "github.pull.vexstream-music.15.comment.6408146238"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-21T23:56:41.000Z",
-      "updatedAt": "2026-10-21T23:56:41.000Z"
+      "updatedAt": "2026-10-26T04:19:47.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -1133,6 +1139,36 @@
         "github.pull.vexstream-music.15"
       ],
       "createdAt": "2026-10-26T03:02:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.connected-services.vcs05.completed.range-stress-and-reconnect",
+      "workRef": "work.vexlife.connected-services.vcs05-stream-stress",
+      "priorState": "RUNNING",
+      "nextState": "COMPLETED",
+      "reason": "VCS-05 completed after PR15 proved larger sequential and non-monotonic local Range demand, terminal MassDownload evidence supplied real Desktop stop/Android restart/Desktop restart/reconnect continuity, and current source review confirmed streaming-specific media/backpressure/playback state remains VexStream-owned rather than requiring a new generic Connected Services transport.",
+      "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexstream-music.15.comment.6408128854",
+        "github.pull.vexstream-music.15.comment.6408146238",
+        "github.issue.vexlife.899.comment.6408187503",
+        "github.pull.vexlife-android.148"
+      ],
+      "createdAt": "2026-10-26T04:19:46.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.connected-services.vcs06.ready.after-vcs05-terminal",
+      "workRef": "work.vexlife.connected-services.vcs06-architecture-extraction",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "Three real consumers have now pressured and accepted the shared Connected Services boundary. VCS-06 may extract only the recurring architecture, preserving VexStream's feature-owned media data plane and the no-generic-streaming-extension result.",
+      "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.issue.vexlife.899.comment.6408187503",
+        "github.pull.vexstream-music.15.comment.6408146238"
+      ],
+      "createdAt": "2026-10-26T04:19:47.000Z"
     }
   ],
   "sourceRefs": [
