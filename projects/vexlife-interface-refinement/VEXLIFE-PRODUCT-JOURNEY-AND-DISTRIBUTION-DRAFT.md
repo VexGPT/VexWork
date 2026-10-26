@@ -35,9 +35,9 @@ The current accepted VexWork/product evidence is:
 ```text
 V2 progressive/adaptive streaming     COMPLETED / human-lived PASS
 tool-bearing VexLife Home             COMPLETED / A006 terminal product PASS
-V3 resource/context pressure          CURRENT / READY / HIGH
-V4 continuity rollover                WAITING_DEPENDENCIES
-V5 bounded resource stewardship       WAITING_DEPENDENCIES
+V3 resource/context pressure          COMPLETED / A005 terminal lived PASS
+V4 continuity rollover                READY / IMMEDIATE / CURRENT FOREGROUND
+V5 bounded resource stewardship       READY / HIGH / PARALLEL
 V6 lived continuity stability         WAITING_DEPENDENCIES
 Kokoro live speech/read-back          CAPTURED / NORMAL
 later Home/navigation refinement      CAPTURED / NORMAL
@@ -131,7 +131,16 @@ normal Evolution Conversation
 Evidence:
 `artifact.vexlife.interface-refinement.home-tool.a006.return.sha256.a6ac642b7455f8ca1c677e7ec955d1ac1e977d167b3ba36257c3f067a4a5cf63`
 
-The next current product/stability edge is V3 resource/context pressure observation, not a broader arbitrary tool expansion.
+V3 resource/context pressure is now terminally lived-proven. The current product/stability foreground is V4 continuity rollover; V5 resource stewardship is dependency-released in parallel.
+
+### V3 terminal lived pressure evidence
+
+Accepted VexLife PR #936 is merged at `9f2e97d3ef14599eac4e659181392c1e706dc758`. A005 then proved two real streamed Heretic turns on the canonical V1 Conversation route. The second turn carried a provider-bound prompt receipt, a CURRENT/ACTIVE Context Lease, READY/EXACT_OWNED/HEALTHY/CURRENT Companion runtime truth, and a self-validating `SOURCE_BOUND_RESOURCE_CONTEXT_PRESSURE` projection. The fresh proof Home truthfully projected `NORMAL`; all protected pressure effects remained false.
+
+Canonical evidence:
+`artifact.vexlife.interface-refinement.v3.lived-pressure.a005.return.sha256.1812d529d99ad89b368e84939835f355065adcb6d96d6c7bda5d975edb6ff6f3`
+
+This releases V4 continuity rollover and V5 resource stewardship without conflating observation with either effect.
 
 ### 3. Continuity / stability frontier
 
