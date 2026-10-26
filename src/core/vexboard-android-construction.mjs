@@ -6,8 +6,8 @@ export const VEXBOARD_ANDROID_CONSTRUCTION_PLAN_SCHEMA =
 export const VEXLIFE_ANDROID_TARGET_REF =
   'target.vexlife-android.compose';
 
-export const VEXLIFE_ANDROID_DYNAMIC_TEXT_CAPABILITY_REF =
-  'capability.vexlife-android.elements.dynamic-text-identity';
+export const VEXLIFE_ANDROID_TEXT_VALUE_RESOLUTION_CAPABILITY_REF =
+  'capability.vexlife-android.elements.text-value-resolution';
 
 const REF = /^[A-Za-z0-9][A-Za-z0-9._:/-]*$/u;
 
@@ -86,9 +86,9 @@ function componentTarget(templateRef) {
     },
     'component.text': {
       targetSourceRef:
-        'repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/VexComposeCells.kt',
+        'repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/ElementCells.kt',
       targetSymbol: 'VexText',
-      targetMeaning: 'nested semantic text with VexBoard-owned typography/color role',
+      targetMeaning: 'registered Android realization of one VexText Origin with mapped or bound value',
     },
     'component.button': {
       targetSourceRef:
@@ -134,15 +134,29 @@ function componentMapping(design, assignment, availableTargetCapabilities) {
   const targetOwnerSourceRefOrNull = proposed?.sourceRefs?.find(
     (sourceRef) => sourceRef.startsWith('repo.vexlife-android:'),
   ) ?? null;
+
+  const contentOriginsByRef = new Map(
+    (design.contentOrigins?.origins ?? []).map((origin) => [origin.originRef, origin]),
+  );
+  const targetContentRealizationRefs = proposed?.contentOriginRefs
+    ? [...new Set(proposed.contentOriginRefs.flatMap(
+      (originRef) => contentOriginsByRef.get(originRef)?.targetRealizationRefs ?? [],
+    ))].sort()
+    : [];
+
   const targetIdentityStrategyOrNull =
     proposed?.kind === 'TEXT'
-      ? proposed.contentMode === 'STATIC_LOCALIZED'
-        ? 'REGISTER_STATIC_TEXT_ELEMENT'
-        : 'REGISTER_DYNAMIC_TEXT_ELEMENT'
+      ? 'REGISTER_TEXT_ELEMENT'
+      : null;
+  const targetValueStrategyOrNull =
+    proposed?.kind === 'TEXT'
+      ? proposed.valueBindingRefOrNull
+        ? 'RUNTIME_BOUND_VALUE'
+        : 'ANDROID_RESOURCE_MAPPING'
       : null;
   const targetCapabilityRefOrNull =
-    targetIdentityStrategyOrNull === 'REGISTER_DYNAMIC_TEXT_ELEMENT'
-      ? VEXLIFE_ANDROID_DYNAMIC_TEXT_CAPABILITY_REF
+    targetValueStrategyOrNull === 'RUNTIME_BOUND_VALUE'
+      ? VEXLIFE_ANDROID_TEXT_VALUE_RESOLUTION_CAPABILITY_REF
       : null;
   const targetCapabilityStatusOrNull =
     targetCapabilityRefOrNull
@@ -152,6 +166,7 @@ function componentMapping(design, assignment, availableTargetCapabilities) {
       : targetIdentityStrategyOrNull
         ? 'AVAILABLE'
         : null;
+
   return Object.freeze({
     mappingRef: stableRef(
       `mapping.android.component.${assignment.semanticRef.replaceAll(':', '.').replaceAll('/', '.')}`,
@@ -166,8 +181,12 @@ function componentMapping(design, assignment, availableTargetCapabilities) {
     typographyRefOrNull: assignment.typographyRefOrNull ?? null,
     colorRefOrNull: assignment.colorRefOrNull ?? null,
     identityStateOrNull: proposed?.identityState ?? null,
-    contentModeOrNull: proposed?.contentMode ?? null,
+    originFormOrNull: proposed?.originForm ?? null,
+    contentOriginRefs: Object.freeze([...(proposed?.contentOriginRefs ?? [])]),
+    valueBindingRefOrNull: proposed?.valueBindingRefOrNull ?? null,
+    targetContentRealizationRefs: Object.freeze(targetContentRealizationRefs),
     targetIdentityStrategyOrNull,
+    targetValueStrategyOrNull,
     targetCapabilityRefOrNull,
     targetCapabilityStatusOrNull,
     targetOwnerSourceRefOrNull,
@@ -209,34 +228,35 @@ function targetCapabilityRequirement(
 }
 
 function targetCapabilityRequirements(componentMappings, targetCapabilityCandidates) {
-  const dynamicTextConsumers = componentMappings
-    .filter((entry) => entry.targetCapabilityRefOrNull === VEXLIFE_ANDROID_DYNAMIC_TEXT_CAPABILITY_REF)
+  const runtimeBoundTextConsumers = componentMappings
+    .filter((entry) =>
+      entry.targetCapabilityRefOrNull === VEXLIFE_ANDROID_TEXT_VALUE_RESOLUTION_CAPABILITY_REF)
     .map((entry) => entry.semanticRef);
 
-  if (!dynamicTextConsumers.length) return Object.freeze([]);
+  if (!runtimeBoundTextConsumers.length) return Object.freeze([]);
 
   const available = componentMappings
-    .filter((entry) => entry.targetCapabilityRefOrNull === VEXLIFE_ANDROID_DYNAMIC_TEXT_CAPABILITY_REF)
+    .filter((entry) =>
+      entry.targetCapabilityRefOrNull === VEXLIFE_ANDROID_TEXT_VALUE_RESOLUTION_CAPABILITY_REF)
     .every((entry) => entry.targetCapabilityStatusOrNull === 'AVAILABLE');
   const candidate = targetCapabilityCandidates.find(
-    (entry) => entry.capabilityRef === VEXLIFE_ANDROID_DYNAMIC_TEXT_CAPABILITY_REF,
+    (entry) => entry.capabilityRef === VEXLIFE_ANDROID_TEXT_VALUE_RESOLUTION_CAPABILITY_REF,
   ) ?? null;
 
   return Object.freeze([
     targetCapabilityRequirement(
-      VEXLIFE_ANDROID_DYNAMIC_TEXT_CAPABILITY_REF,
+      VEXLIFE_ANDROID_TEXT_VALUE_RESOLUTION_CAPABILITY_REF,
       {
         status: available ? 'AVAILABLE' : 'STANDARDIZATION_REQUIRED',
-        requiredBySemanticRefs: dynamicTextConsumers,
+        requiredBySemanticRefs: runtimeBoundTextConsumers,
         ownerSourceRef:
           'repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/ElementModel.kt',
         supportSourceRefs: [
           'repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/ScreenBlueprint.kt',
           'repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/ElementCells.kt',
-          'repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/VexComposeCells.kt',
         ],
         purpose:
-          'registered stable semantic text identity whose displayed value is supplied by runtime state',
+          'one registered TextElement identity resolves from either Android resource mapping or a current runtime binding without minting a second semantic element type',
         proposalStatus:
           available
             ? 'ACCEPTED_IN_TARGET_SOURCE'
@@ -246,11 +266,11 @@ function targetCapabilityRequirements(componentMappings, targetCapabilityCandida
         candidateHeadRefOrNull: candidate?.candidateHeadRefOrNull ?? null,
         candidateSourceRefs: candidate?.sourceRefs ?? [],
         proposedTargetShape: {
-          elementType: 'DynamicTextElement',
-          screenBlueprintFactory: 'dynamicTextRef',
-          layoutPlacement: 'dynamicText',
-          composeCell: 'VexText(element, text)',
-          invariant: 'TEXT_IDENTITY != TEXT_VALUE',
+          elementType: 'TextElement',
+          screenBlueprintFactory: 'textRef',
+          layoutPlacement: 'text',
+          composeCell: 'VexText(element, text?)',
+          invariant: 'TEXT_IDENTITY != VALUE_SOURCE',
         },
       },
     ),
