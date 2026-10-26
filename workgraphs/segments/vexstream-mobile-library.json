@@ -252,7 +252,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-21T08:41:00.000Z",
-      "updatedAt": "2026-10-26T23:38:00.000Z",
+      "updatedAt": "2026-10-26T23:43:36.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "workRef": "work.vexstream.mobile-library.contextual-download-missing",
@@ -284,7 +284,9 @@
         "evidence.vexstream.mobile-library.pr187.sourceowner.a003.outer.sha256.98505cd4777743af508d02bd20e4c44e1faf32bfd2b779f6689214ff392abb5c",
         "transition-proposal.vexstream.mobile-library.contextual-download-missing.active-verify.20261026a",
         "human-transition-response.vexstream.mobile-library.contextual-download-missing.approved.20261026a",
-        "ai-transition-confirmation.vexstream.mobile-library.contextual-download-missing.commit.20261026a"
+        "ai-transition-confirmation.vexstream.mobile-library.contextual-download-missing.commit.20261026a",
+        "github.commit.vexlife-android.2480ac771dfcfb20bafdc6a61da5f7081b399c56",
+        "evidence.vexstream.mobile-library.pr187.postmerge.exact-tree.20261026a"
       ],
       "nextProcessRefs": [
         "process.vexlife-android.feature-authoring"
