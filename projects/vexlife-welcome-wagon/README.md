@@ -953,13 +953,29 @@ CHUNK P3 — VEX RELAY PUBLICATION
   -> no custom GitHub Actions build/deploy dependency
 
 CHUNK P4 — PAGES SOURCE SWITCH + LIVE PUBLIC VERIFICATION
-  CURRENT
-  -> connected GitHub provider cannot perform repository Pages settings mutation
-  -> exact held effect: configure Pages source to branch vexlife-pages / root
-  -> after source switch, verify live root renders stable family rail
+  CURRENT / DEPLOYMENT GREEN / LIVED RENDER PENDING
+  -> Victor executed the one-time Pages source switch successfully
+     BEFORE=workflow|main|/
+     AFTER=legacy|vexlife-pages|/
+     PAGES_SOURCE_SWITCH=PASS
+  -> first branch-source deployment did not start because the proven publication commit predated the source switch
+  -> exact byte-preserving post-switch trigger commit created
+     head 00a843fe5a320719ae16eb9e2baaece6adc0da2b
+     parent 51e22e1783f4348f88b3c3460c5d3136c0b081a4
+     tree 1858b69d68c86670ff77b618f8af16aa35f317f4
+     public bytes changed = false
+  -> GitHub built-in branch-source Pages run 40267497453
+     event dynamic
+     build SUCCESS
+     deploy SUCCESS
+     report-build-status SUCCESS
+     overall SUCCESS
+  -> custom .github/workflows/pages.yml was not used for the build/proof/publication transaction
+  -> accepted VexLife main remains 31c9198101f4c8a0170cb76b57547ae1d737b05f
+  -> verify live root renders stable family rail
   -> verify no standalone VexLife brand-lockup
   -> verify VexLife remains selected in the middle family slot
-  -> record public deployment current only after live readback
+  -> record lived public deployment current only after human-visible live readback
   -> then close the public optical acceptance edge
 ```
 
@@ -986,7 +1002,11 @@ Vex Relay publication
   A002 RETURN PASS
   publication branch 51e22e1783f4348f88b3c3460c5d3136c0b081a4 ✅
         ↓
-one-time Pages branch-source switch
+one-time Pages branch-source switch ✅
+        ↓
+post-switch branch trigger 00a843fe… (same tree) ✅
+        ↓
+GitHub built-in Pages deployment run 40267497453 SUCCESS ✅
         ↓
 live public verification
         ↓
@@ -1003,7 +1023,7 @@ remaining deliberately held product/design choices
 final whole-project lived acceptance
 ~~~
 
-The family-header **design/source** remains settled. The publication artifact is proven and pushed; the current unfinished edge is the one-time Pages source switch followed by live VexLife verification.
+The family-header **design/source** remains settled. The publication artifact is proven, the branch-source switch is complete, and GitHub's built-in Pages deployment is green. The only unfinished edge is human-visible live VexLife verification.
 ## Deliberately held
 
 The original formation alone did **not** decide or authorize the items below. Victor's later explicit “please move forward” authorizes bounded implementation along this saved completion path, but it does not collapse the held product/design choices or provider/repository boundaries:
