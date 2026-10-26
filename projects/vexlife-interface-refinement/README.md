@@ -4,18 +4,20 @@
 
 ## Current entry
 
-V2 is now **terminally lived-proven** on accepted VexLife source. A fresh instance must not restart from V0, reconstruct streaming, or replay the A004/A005 proof carriers merely to establish currentness.
+The first bounded **tool-bearing VexLife Home** threshold and **V3 resource/context pressure observation** are now terminally product-proven on accepted VexLife source. A fresh instance must not replay Home A006, PR #936, or the V3 lived-pressure A001–A005 carriers merely to establish currentness.
 
-The **tool-bearing VexLife Home is now terminally proven at its first bounded threshold**. A006 used the normal Evolution Conversation with the real local Heretic runtime, selected `capability.vexlife.code.read`, reinjected the source observation through ToolResultRelay, projected the truthful Heretic/MLX model connection plus bounded self-capability frame, durably read back the same Conversation, and proved same-idempotency recovery without model replay or duplicate append.
+The current foreground is **V4 self-maintaining continuity rollover**: use the now-proven pressure signal to form one bounded current working checkpoint, supersede prior working checkpoints instead of recursively stacking summaries, and start a fresh Context Lease without silently promoting model output into durable Memory.
 
-The current human/product priority is now **V3 resource/context pressure observation**: give VexLife one truthful read-only pressure projection before continuity rollover or resource stewardship can advance. Kokoro streaming speech/read-back and later Home/navigation presentation remain captured behind the continuity frontier.
+**V5 bounded host resource stewardship is dependency-released and READY in parallel**, because V3 is complete, but it is not the current foreground. Cleanup/process authority remains with the rightful exact-owned runtime/lifecycle owner.
 
 ```text
 START_FROM_HIGHEST_CURRENT_REFINEMENT_VERSION
 V0 = FIRST_PROVEN_CONNECTION / PROVENANCE_ANCHOR
 V2 = TERMINAL_LIVED_STREAMING_BASELINE
-COMPLETED_THRESHOLD = TOOL_BEARING_VEXLIFE_HOME_A006
-CURRENT_FOREGROUND = V3_RESOURCE_CONTEXT_PRESSURE
+TOOL_BEARING_HOME = TERMINAL_PRODUCT_PROVEN
+V3 = TERMINAL_LIVED_RESOURCE_CONTEXT_PRESSURE
+CURRENT_FOREGROUND = V4_CONTINUITY_ROLLOVER
+V5 = READY_PARALLEL_RESOURCE_STEWARDSHIP
 KOKORO_SPEECH = CAPTURED_LATER_PRESENTATION_ENHANCEMENT
 TOCOMPLETION = PROVENANCE_CONTEXT
 TOCOMPLETION != CURRENT_INTERFACE_ENTRY
@@ -32,10 +34,11 @@ Descend into VexLife ToCompletion only when the current refinement names an exac
 | **V1.5** | **CURRENT / VERIFYING** | Long-context Memory pressure policy is merged: 192K input, 16K output reserve, 208K hard lease, up to 100K/100-page current attributed Memory, dynamic Memory yielding and zero-headroom handling. |
 | **V2** | **PROVEN / COMPLETED** | Explicit output policy + provider streaming + Evolution projection + adaptive human-consumption reveal are accepted source and terminal human-lived PASS. |
 | **Tool-bearing Home** | **PROVEN / COMPLETED** | A006 terminally proves one lawful source-backed CODE read through the normal Evolution Conversation, ToolResultRelay reinjection, truthful Heretic/MLX model/self projection, durable readback and same-idempotency no-replay recovery. |
-| **V3** | **CURRENT / READY / HIGH** | Current foreground: system-owned read-only context/resource pressure projection with source-managed policy and hysteresis. |
-| **V4–V5** | **WAITING DEPENDENCIES** | Continuity rollover and exact-owned resource stewardship remain behind their named prerequisites. |
+| **V3** | **PROVEN / COMPLETED** | Accepted read-only resource/context pressure source plus lived A005 two-turn proof: current prompt/lease/runtime truth → self-validating pressure projection with every protected effect held false. |
+| **V4** | **READY / IMMEDIATE** | Current foreground: form/supersede one working checkpoint and re-enter a fresh Context Lease without recursive summary stacking or silent semantic Memory promotion. |
+| **V5** | **READY / HIGH** | Dependency released in parallel: exact-owned stale-resource stewardship remains separate from V4 and never derives process-kill authority from pressure alone. |
 | **V6** | **WAITING DEPENDENCIES** | Long lived stability proof across streaming, pressure, rollover, restart/re-entry and exact-owned resource recovery. |
-| **Kokoro speech/read-back** | **CAPTURED / NORMAL** | Optional live Speak with bounded backfill plus per-response Read control; held behind current tool-bearing Home priority. |
+| **Kokoro speech/read-back** | **CAPTURED / NORMAL** | Optional live Speak with bounded backfill plus per-response Read control; held behind the current V4 continuity foreground. |
 | **Later visual Home/UI** | **CAPTURED** | Refine Home, Terrain, nodes, menus and other visual neighborhoods from lived feedback without conflating presentation with capability ownership. |
 
 ## First VexBoard consumer draft — VexLife product journey
@@ -274,7 +277,7 @@ HERETIC_MLX != LEGACY_LLAMA_CPP_OPERATIONAL_PROFILE
 This completes the **first** lawful tool-bearing Home threshold. It does not imply arbitrary tool families,
 Memory promotion, host cleanup authority, distribution completeness, or V3–V6 continuity stability.
 
-The current foreground is now **V3 resource/context pressure observation**.
+The next continuity edge after this completed Home threshold was V3; V3 is now terminally lived-proven, so the current foreground is **V4 continuity rollover**.
 
 ## Captured later — Kokoro live speech and response Read control
 
@@ -330,35 +333,44 @@ Heretic
 
 The model may help judge what working information appears important, but model output is candidate reasoning. It may not silently promote its own text into durable Memory.
 
-### V3 — resource/context pressure observation
+### V3 — resource/context pressure observation — terminal lived PASS
 
-The system should own a small current pressure projection rather than expecting Heretic to infer resource state indirectly. Inputs may include:
+V3 is accepted source plus lived product evidence.
 
+Accepted source:
 ```text
-context budget used / remaining / projected-next-turn headroom
-reserved output budget
-Memory included / bounded-out state
-Context Lease age / currentness
-model/browser runtime ownership + liveness
-host memory pressure / free disk / accelerator pressure when source-observable
-owned port/process conflicts
+PR #936 merge = 9f2e97d3ef14599eac4e659181392c1e706dc758
+tree          = b493d22990b1d78833c4d52bda7fef917b816aaf
 ```
 
-Source-managed policy should derive states such as:
+Terminal lived A005 RETURN:
+`1812d529d99ad89b368e84939835f355065adcb6d96d6c7bda5d975edb6ff6f3`
+
+The lived proof used the ordinary canonical Self Development → Open conversation → Vex binding and the existing live Heretic runtime. A fresh temporary Home performed two real streamed turns. Turn 1 correctly had no prior prompt materialization. Turn 2 carried the immediate prior completed turn into a provider-bound prompt receipt, a CURRENT / ACTIVE Context Lease, READY / EXACT_OWNED / HEALTHY / CURRENT Companion runtime truth, and a self-validating `SOURCE_BOUND_RESOURCE_CONTEXT_PRESSURE` projection.
 
 ```text
-NORMAL
-WATCH
-CHECKPOINT_RECOMMENDED
-ROLLOVER_REQUIRED
-RESOURCE_ATTENTION
+pressure state             NORMAL
+input budget              192000
+materialized input            71
+input headroom            191929
+reserved output            16000
+hard limit                208000
+durable Conversation           4 messages
+real Heretic chat calls        4 across both turns
 ```
 
-Exact numeric thresholds are implementation policy to be measured and tested rather than guessed into VexWork. Use hysteresis so state does not flap around one boundary.
+Every protected pressure effect remained false, including checkpoint, rollover, cleanup, process kill, Memory promotion, Home mutation, training and model-weight mutation.
 
-A small model-readable pressure packet may tell Vex that context or Memory was bounded. It must not expose unnecessary private host detail and does not grant cleanup authority.
+Artificial context inflation merely to force WATCH/CHECKPOINT/ROLLOVER was intentionally not performed; accepted source tests already prove those policy states and hysteresis.
 
-### V4 — continuity rollover
+```text
+PRESSURE_OBSERVATION != CHECKPOINT_EFFECT
+PRESSURE_OBSERVATION != MEMORY_PROMOTION
+RESOURCE_ATTENTION != PROCESS_KILL_AUTHORITY
+ROLLOVER_REQUIRED != SILENT_ROLLOVER_EFFECT
+```
+
+### V4 — continuity rollover — current foreground
 
 Pressure-triggered rollover should preserve current work without recursively stacking summaries:
 
@@ -382,9 +394,9 @@ CURRENT_CHECKPOINT + SOURCE_REFS > RECURSIVE_CONTEXT_STACK
 
 A working checkpoint may capture current intent, decisions, open loops, active source refs and recovery coordinates without claiming those facts are autobiographical/durable Memory. Durable Memory still requires its existing Score/semantic-acceptance/consent path. If that path is not current, rollover should still work and Memory promotion remains held.
 
-### V5 — bounded host resource stewardship
+### V5 — bounded host resource stewardship — dependency released / parallel READY
 
-The system may observe resource pressure, but pressure alone is never permission to terminate processes.
+V3 completion releases this Work item from dependency waiting, but V4 remains the current foreground. The system may observe resource pressure, but pressure alone is never permission to terminate processes.
 
 ```text
 HIGH_CPU_OR_RAM != KILL_AUTHORITY
