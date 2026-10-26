@@ -900,81 +900,6 @@
       "verticalInsetMetricRefOrNull": null
     }
   ],
-  "contentCatalog": {
-    "authorityState": "REVERSE_ADOPTED_CANDIDATE",
-    "canonicalOwnerRefOrNull": null,
-    "defaultLocale": "en-US",
-    "messages": [
-      {
-        "contentRef": "message.vexstream.home.title",
-        "defaultText": "VexStream Music",
-        "parameterRefs": [],
-        "targetContentRefs": [
-          "android.string.home_vexstream_music"
-        ],
-        "sourceRefs": [
-          "repo.vexlife-android:app/src/main/res/values/strings.xml"
-        ]
-      },
-      {
-        "contentRef": "message.vexstream.home.connected",
-        "defaultText": "Connected to {deviceDisplayName}",
-        "parameterRefs": [
-          "parameter.device-display-name"
-        ],
-        "targetContentRefs": [
-          "android.string.home_vexstream_connected"
-        ],
-        "sourceRefs": [
-          "repo.vexlife-android:app/src/main/res/values/strings.xml"
-        ]
-      },
-      {
-        "contentRef": "message.vexstream.home.offline",
-        "defaultText": "VexStream offline · downloaded music is still available",
-        "parameterRefs": [],
-        "targetContentRefs": [
-          "android.string.home_vexstream_offline"
-        ],
-        "sourceRefs": [
-          "repo.vexlife-android:app/src/main/res/values/strings.xml"
-        ]
-      },
-      {
-        "contentRef": "message.vexstream.home.disconnected-body",
-        "defaultText": "Your music from your VexStream computer, ready to stream or keep offline on this phone.",
-        "parameterRefs": [],
-        "targetContentRefs": [
-          "android.string.home_vexstream_disconnected_body"
-        ],
-        "sourceRefs": [
-          "repo.vexlife-android:app/src/main/res/values/strings.xml"
-        ]
-      },
-      {
-        "contentRef": "message.vexstream.home.connected-body",
-        "defaultText": "Browse your library, continue playback, manage the queue, or download music for offline listening.",
-        "parameterRefs": [],
-        "targetContentRefs": [
-          "android.string.home_vexstream_connected_body"
-        ],
-        "sourceRefs": [
-          "repo.vexlife-android:app/src/main/res/values/strings.xml"
-        ]
-      },
-      {
-        "contentRef": "message.home.systems.title",
-        "defaultText": "Vex systems",
-        "parameterRefs": [],
-        "targetContentRefs": [
-          "android.string.home_systems_title"
-        ],
-        "sourceRefs": [
-          "repo.vexlife-android:app/src/main/res/values/strings.xml"
-        ]
-      }
-    ]
-  },
   "semanticElements": [
     {
       "semanticRef": "element.home.body.vexstream.title",
@@ -987,11 +912,11 @@
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt",
         "repo.vexlife-android:app/src/main/res/values/strings.xml"
       ],
-      "blueprintForm": "VexTextBlueprint",
-      "contentRefs": [
-        "message.vexstream.home.title"
-      ],
-      "valueBindingRefOrNull": null
+      "valueBindingRefOrNull": null,
+      "originForm": "VexTextOrigin",
+      "contentOriginRefs": [
+        "origin.vexlife.vexstream.message.home.title"
+      ]
     },
     {
       "semanticRef": "element.home.body.vexstream.status",
@@ -1004,12 +929,12 @@
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt",
         "repo.vexlife-android:app/src/main/res/values/strings.xml"
       ],
-      "blueprintForm": "VexTextBlueprint",
-      "contentRefs": [
-        "message.vexstream.home.connected",
-        "message.vexstream.home.offline"
-      ],
-      "valueBindingRefOrNull": "binding.vexstream.home.status-message"
+      "valueBindingRefOrNull": "binding.vexstream.home.status-message",
+      "originForm": "VexTextOrigin",
+      "contentOriginRefs": [
+        "origin.vexlife.vexstream.message.home.connected",
+        "origin.vexlife.vexstream.message.home.offline"
+      ]
     },
     {
       "semanticRef": "element.home.body.vexstream.body",
@@ -1022,12 +947,12 @@
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt",
         "repo.vexlife-android:app/src/main/res/values/strings.xml"
       ],
-      "blueprintForm": "VexTextBlueprint",
-      "contentRefs": [
-        "message.vexstream.home.disconnected-body",
-        "message.vexstream.home.connected-body"
-      ],
-      "valueBindingRefOrNull": "binding.vexstream.home.body-message"
+      "valueBindingRefOrNull": "binding.vexstream.home.body-message",
+      "originForm": "VexTextOrigin",
+      "contentOriginRefs": [
+        "origin.vexlife.vexstream.message.home.disconnected-body",
+        "origin.vexlife.vexstream.message.home.connected-body"
+      ]
     },
     {
       "semanticRef": "element.home.body.systems.title",
@@ -1040,11 +965,86 @@
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt",
         "repo.vexlife-android:app/src/main/res/values/strings.xml"
       ],
-      "blueprintForm": "VexTextBlueprint",
-      "contentRefs": [
-        "message.home.systems.title"
-      ],
-      "valueBindingRefOrNull": null
+      "valueBindingRefOrNull": null,
+      "originForm": "VexTextOrigin",
+      "contentOriginRefs": [
+        "origin.vexlife.message.home.systems.title"
+      ]
     }
-  ]
+  ],
+  "contentOrigins": {
+    "authorityState": "REVERSE_ADOPTED_CANDIDATE",
+    "canonicalOwnerRefOrNull": null,
+    "defaultLocale": "en-US",
+    "origins": [
+      {
+        "originRef": "origin.vexlife.vexstream.message.home.title",
+        "defaultText": "VexStream Music",
+        "parameterRefs": [],
+        "targetRealizationRefs": [
+          "android.vexlife.string.home_vexstream_music"
+        ],
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/res/values/strings.xml"
+        ]
+      },
+      {
+        "originRef": "origin.vexlife.vexstream.message.home.connected",
+        "defaultText": "Connected to {deviceDisplayName}",
+        "parameterRefs": [
+          "parameter.device-display-name"
+        ],
+        "targetRealizationRefs": [
+          "android.vexlife.string.home_vexstream_connected"
+        ],
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/res/values/strings.xml"
+        ]
+      },
+      {
+        "originRef": "origin.vexlife.vexstream.message.home.offline",
+        "defaultText": "VexStream offline · downloaded music is still available",
+        "parameterRefs": [],
+        "targetRealizationRefs": [
+          "android.vexlife.string.home_vexstream_offline"
+        ],
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/res/values/strings.xml"
+        ]
+      },
+      {
+        "originRef": "origin.vexlife.vexstream.message.home.disconnected-body",
+        "defaultText": "Your music from your VexStream computer, ready to stream or keep offline on this phone.",
+        "parameterRefs": [],
+        "targetRealizationRefs": [
+          "android.vexlife.string.home_vexstream_disconnected_body"
+        ],
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/res/values/strings.xml"
+        ]
+      },
+      {
+        "originRef": "origin.vexlife.vexstream.message.home.connected-body",
+        "defaultText": "Browse your library, continue playback, manage the queue, or download music for offline listening.",
+        "parameterRefs": [],
+        "targetRealizationRefs": [
+          "android.vexlife.string.home_vexstream_connected_body"
+        ],
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/res/values/strings.xml"
+        ]
+      },
+      {
+        "originRef": "origin.vexlife.message.home.systems.title",
+        "defaultText": "Vex systems",
+        "parameterRefs": [],
+        "targetRealizationRefs": [
+          "android.vexlife.string.home_systems_title"
+        ],
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/res/values/strings.xml"
+        ]
+      }
+    ]
+  }
 }
