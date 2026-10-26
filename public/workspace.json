@@ -5762,7 +5762,7 @@
       "project": {
         "projectRef": "project.vexboard",
         "label": "VexBoard Semantic Canvas",
-        "purpose": "Let a human and AI use one scalable semantic Blueprint IDE to design, inspect, traverse, refine, reuse, construct and verify interactive experiences, processes and systems through bounded semantic neighborhoods and multiple truthful lenses, while projecting accepted external truth without becoming its second semantic, lifecycle, process, source, evidence or target-runtime owner.",
+        "purpose": "Let a human and AI use one scalable semantic Origin IDE to design, inspect, traverse, refine, reuse, construct and verify interactive experiences, processes and systems through bounded semantic neighborhoods and multiple truthful lenses, while projecting accepted external truth without becoming its second semantic, lifecycle, process, source, evidence or target-runtime owner.",
         "rootWorkRefs": [
           "work.vexboard.outcome"
         ],
@@ -6189,6 +6189,7 @@
             "work.vexboard.later.businessfactory-guided-company-formation",
             "work.vexboard.project-architecture",
             "work.vexboard.source-projectors",
+            "work.vexboard.tech-debt.origin-rename-propagation",
             "work.vexboard.usability-refinement",
             "work.vexboard.vexstream-screenshot-pilot"
           ],
@@ -6303,6 +6304,35 @@
           ]
         },
         {
+          "workRef": "work.vexboard.tech-debt.origin-rename-propagation",
+          "label": "Tech debt — Origin rename propagation through mapped descendants",
+          "purpose": "Preserve the low-priority future need for VexBoard to traverse an accepted Origin's existing semantic, process, source and realization relationships when its reusable name changes: first expose the complete downstream rename plan and support bounded manual propagation, then use the observed process to earn autonomous BoardPatch-style propagation with lineage/currentness proof. The Origin is the design truth; repository placement is secondary, so this does not imply repository fragmentation or a parallel rename registry.",
+          "workClass": "POTENTIAL",
+          "state": "CAPTURED",
+          "workDisposition": "PARKED",
+          "priorityClass": "LOW",
+          "parentWorkRefOrNull": "work.vexboard.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md",
+            "projects/vexboard/README.md",
+            "docs/foundation/PROCESS-MAP.md",
+            "work.vexboard.boardpatch-authoring",
+            "work.vexboard.source-projectors"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-26T01:57:41.000Z",
+          "updatedAt": "2026-10-26T01:57:41.000Z",
+          "transitionHistory": []
+        },
+        {
           "workRef": "work.vexboard.usability-refinement",
           "label": "Canvas interaction and visual affordance refinement",
           "purpose": "Make VexBoard predictable in lived use by refining primary-drag navigation, shape-safe labels, explicit frame/container and canvas-boundary cues, trustworthy browser-local draft-save feedback, and accessible deterministic path/branch presentation without changing BoardGraph meaning or adding server persistence.",
@@ -6391,8 +6421,8 @@
         },
         {
           "workRef": "work.vexboard.vexstream-screenshot-pilot",
-          "label": "VexStream living Blueprint screenshot pilot",
-          "purpose": "Use the real VexStream phone-to-desktop walkthrough and supplied screenshots as the first living Blueprint patient zero: reconcile observed evidence with current VexStream Desktop / VexLife Android source, project one stable feature journey through BoardGraph / BoardProjection / BoardJourney / BoardEvidence, and pressure the convergence with VexLife Blueprint Source of Truth from portable semantic meaning through design-authoritative relationship/constraint-based UX composition, deterministic target construction mapping and target-native realization to expected-versus-observed currentness. Preserve product/source ownership, prevent target implementations from independently redesigning accepted Blueprint presentation, treat VLBSoT refs as accepted lineage rather than blocking dependencies or automatic lane reactivation, and earn only the smallest reusable feature/design/source/evidence/currentness seams.",
+          "label": "VexStream living Origin screenshot pilot",
+          "purpose": "Use the real VexStream phone-to-desktop walkthrough and supplied screenshots as the first living Origin patient zero: reconcile observed evidence with current VexStream Desktop / VexLife Android source, project one stable feature journey through BoardGraph / BoardProjection / BoardJourney / BoardEvidence, and pressure the convergence with the accepted VexLife Blueprint Source of Truth lineage from portable semantic meaning through design-authoritative relationship/constraint-based UX composition, deterministic target construction mapping and target-native realization to expected-versus-observed currentness. Preserve product/source ownership, prevent target implementations from independently redesigning accepted Origin presentation, treat VLBSoT refs as accepted historical lineage rather than blocking dependencies or automatic lane reactivation, and earn only the smallest reusable feature/design/source/evidence/currentness seams.",
           "workClass": "TASK",
           "state": "RUNNING",
           "workDisposition": "ACTIVE",
@@ -6459,7 +6489,8 @@
           "label": "Intake",
           "workRefs": [
             "work.vexboard.outcome",
-            "work.vexboard.later.businessfactory-guided-company-formation"
+            "work.vexboard.later.businessfactory-guided-company-formation",
+            "work.vexboard.tech-debt.origin-rename-propagation"
           ]
         },
         {
@@ -6521,12 +6552,12 @@
         }
       ],
       "summary": {
-        "workItemCount": 11,
-        "openWorkItemCount": 6,
+        "workItemCount": 12,
+        "openWorkItemCount": 7,
         "outcomeCount": 3,
         "taskCount": 7,
         "defectCount": 0,
-        "potentialCount": 1,
+        "potentialCount": 2,
         "needsHumanCount": 0,
         "completedCount": 5
       },
@@ -6549,6 +6580,7 @@
             "work.vexboard.later.businessfactory-guided-company-formation",
             "work.vexboard.project-architecture",
             "work.vexboard.source-projectors",
+            "work.vexboard.tech-debt.origin-rename-propagation",
             "work.vexboard.usability-refinement",
             "work.vexboard.vexstream-screenshot-pilot"
           ],
@@ -10216,6 +10248,36 @@
   ],
   "parkingLot": {
     "items": [
+      {
+        "workRef": "work.vexboard.tech-debt.origin-rename-propagation",
+        "label": "Tech debt — Origin rename propagation through mapped descendants",
+        "purpose": "Preserve the low-priority future need for VexBoard to traverse an accepted Origin's existing semantic, process, source and realization relationships when its reusable name changes: first expose the complete downstream rename plan and support bounded manual propagation, then use the observed process to earn autonomous BoardPatch-style propagation with lineage/currentness proof. The Origin is the design truth; repository placement is secondary, so this does not imply repository fragmentation or a parallel rename registry.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "LOW",
+        "parentWorkRefOrNull": "work.vexboard.outcome",
+        "childWorkRefs": [],
+        "dependencyRefs": [],
+        "repositoryRefs": [
+          "repo.vexwork"
+        ],
+        "sourceRefs": [
+          "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md",
+          "projects/vexboard/README.md",
+          "docs/foundation/PROCESS-MAP.md",
+          "work.vexboard.boardpatch-authoring",
+          "work.vexboard.source-projectors"
+        ],
+        "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+        "nextProcessRefs": [],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "createdAt": "2026-10-26T01:57:41.000Z",
+        "updatedAt": "2026-10-26T01:57:41.000Z",
+        "transitionHistory": [],
+        "graphRef": "workgraph.vexwork.foundation"
+      },
       {
         "workRef": "work.vexstream.mobile-library.tag-topology-stations",
         "label": "User tag topology / dynamic stations",
