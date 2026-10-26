@@ -117,17 +117,27 @@ A020's outer SAFE_FAILURE was cleanup-only. A021 observed the exact A020 port-10
 Phase 3 = COMPLETED
 ```
 
-### Phase 4 — current
+### Phase 4 — completed
 
-The next acceptance slice is deliberately two effects rather than one disguised transaction:
+A019 had already established L6 and L8. A037 closed the one remaining predicate, L7, against current accepted VexLife owner source and the exact live qualified Heretic runtime:
 
 ```text
-L6 one durable human Send exactly once
-L7 separate Companion/model response
-L8 model failure does not erase human append
+L6 one durable human Send exactly once              PASS
+L7 separate real Companion/Heretic response         PASS
+L8 model failure does not erase human append        PASS
 ```
 
-Accepted Family Conversation law keeps ordinary human delivery and AI attention separate. The Family Companion runtime consumes a persisted Family trigger and owns its own queue/model/durable-response semantics. Phase 4 must preserve that separation while connecting the installed Android Send path to the current Home-owned producer.
+A037 performed exactly one real `/v1/chat/completions` request, durably persisted the canonical HUMAN request and COMPANION response, then instantiated a fresh bridge and replayed the same idempotency key. The retry recovered the completed pair with `modelCallPerformed=false`, no second HTTP model call, and exactly two canonical messages. The temporary proof Home was deleted; ordinary product Home, runtime start/stop, Memory, training and weights were untouched.
+
+Canonical Workgraph truth:
+
+```text
+work.vexlife.connected-services.vcs04.phase4.send-failure-separation = COMPLETED
+work.vexlife.connected-services.vcs04.phase4.companion-response      = COMPLETED
+parent Phase 4                                                       = COMPLETED
+```
+
+Family Conversation law remains unchanged:
 
 ```text
 HUMAN_MESSAGE_DELIVERY != AI_ATTENTION
@@ -135,12 +145,76 @@ MODEL_BUSY != FAMILY_CHAT_BLOCKED
 HUMAN_APPEND_DURABLE != MODEL_RESPONSE_SUCCEEDED
 ```
 
-Current canonical Work item:
+### Phase 5 — completed
+
+A022/A023 completed the restart/no-duplicate slice against the already-proven durable human append:
 
 ```text
-work.vexlife.connected-services.vcs04.phase4-send-companion = READY
+L9  same-session Android observation       PASS
+L10 real Android process restart           PASS
+L11 no duplicate append/model replay       PASS
+temporary private Serve cleanup            CLOSED
 ```
 
+A022 proved the same canonical message survived real Android process death/relaunch with count 1 and without a second append/model replay. A023 then closed the exact temporary Serve effect without product replay.
+
+### Phase 6 — verifying
+
+With L1-L11 complete, foreground responsibility is source/currentness convergence rather than another lived Conversation attempt.
+
+Exact VexLife-Android candidate:
+
+```text
+PR #154
+head=2d67682af1617aab0886784dc45704804303a183
+tree=9e378c9d53d98546b43564e1beec7c022d9a1db3
+changed paths=12
+```
+
+The required sequence is:
+
+```text
+live Android main
++ exact PR154
+-> CurrentMainCompositionProof
+-> exact synthetic merge tree
+-> vexVerifyLocal
+-> fresh affected Assurance
+-> Formal Review / READY / OwnerMergeDuty as actually required
+-> ordinary expected-head merge
+-> actual merge tree must equal the proven synthetic tree
+-> post-merge currentness
+-> VexWork / VCS-04 terminal convergence
+```
+
+A038 stopped before inner task compilation with `MANIFEST_CURRENT_LIFECYCLE_STATE`; its invalid task-local value was `INTEGRATION_CURRENTNESS_PENDING`. No candidate proof or product/provider mutation ran.
+
+A039/A040 remain durable proof-harness history. A041 then completed the real current-main composition proof:
+
+```text
+main=6f5b2dc6cdbf284b84cb590ba5b1016af3d33939
+candidate=2d67682af1617aab0886784dc45704804303a183
+syntheticTree=b0c80df03471a5f79832ebd7b68845fdb91966b7
+vexVerifyLocal=PASS
+candidate/harness/environment/unknown findings=0/0/0/0
+```
+
+Fresh Independent Assurance returned `CLEAR_ON_EXACT_HEAD`; Formal Review returned `APPROVE_EXACT_HEAD`. Owner Merge Duty then merged PR154 as `9104d232086afd888700c3317ab79c2a8b87239b`.
+
+Post-merge verification proved:
+
+```text
+current main = merge commit 9104d232086afd888700c3317ab79c2a8b87239b
+ordered parents = 6f5b2dc6cdbf284b84cb590ba5b1016af3d33939, 2d67682af1617aab0886784dc45704804303a183
+actual merge tree = b0c80df03471a5f79832ebd7b68845fdb91966b7
+A041 proven tree = b0c80df03471a5f79832ebd7b68845fdb91966b7
+tree match = true
+commit verification = valid
+```
+
+One shared `strings.xml` blob is a valid three-way composition rather than the candidate blob verbatim; it is exactly the A041-proven composed blob and retains current-main strings plus PR154's Conversation composer strings.
+
+PR154 is therefore `TERMINAL_ACCEPTED_CURRENT`. No further Conversation lived behavior proof is required unless future source changes invalidate the accepted evidence. Phase 6 now verifies VexWork's own terminal projection/currentness only.
 ## Recovery appendix — attempt lineage
 
 Attempt identities are evidence/recovery history, not canonical Work items.
@@ -236,10 +310,15 @@ Current truth:
 Phase 1 = COMPLETED
 Phase 2 = COMPLETED
 Phase 3 = COMPLETED
+Phase 4 = COMPLETED
+  Phase 4A durable Send + failure separation = COMPLETED
+  Phase 4B separate durable Companion response (L7) = COMPLETED
+Phase 5 = COMPLETED
+Phase 6 = VERIFYING
 PR #917 source defect = COMPLETED / accepted-current
-work.vexlife.connected-services.vcs04.phase3.host-to-android-l1-l5 = COMPLETED
-Phase 4 = READY
-work.vexlife.connected-services.vcs04.phase4-send-companion = READY
+PR #904 source/lifecycle = TERMINAL_ACCEPTED_CURRENT / custody RELEASED
+PR #154 source/currentness = TERMINAL_ACCEPTED_CURRENT @ 9104d232086afd888700c3317ab79c2a8b87239b
+current lived gap = NONE
 ```
 
 <!-- [VXG RealForever][VEXWORK][LINEAGE][VEXLIFE-CONNECTED-SERVICES] -->
