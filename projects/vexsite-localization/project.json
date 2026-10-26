@@ -2,7 +2,7 @@
   "schemaVersion": "vexwork.project-definition/v1",
   "projectRef": "project.vextreme.vexsite-localization",
   "label": "VexSite Localization",
-  "purpose": "Keep VexSite localization visible from source-lineage preservation through the canonical Global Core queue and separate generated/runtime convergence without turning VexWork into a second page, translation, generated-artifact, or browser-proof owner.",
+  "purpose": "Keep VexSite localization visible across completed source-lineage/source-queue phases, current generated/runtime convergence, and evidence-backed next-domain selection without turning VexWork into a second page, translation, generated-artifact, or browser-proof owner.",
   "rootWorkRefs": [
     "work.vextreme.vexsite.localization.outcome"
   ],
@@ -16,14 +16,12 @@
     "projects/vexwork-operational-console/VEXSITE-LOCALIZATION-LENS.md",
     "github.issue.vextreme.273",
     "github.issue-comment.vextreme.273.6379017700",
-    "github.issue-comment.vextreme.273.6379565128",
-    "github.issue-comment.vextreme.273.6380410929",
-    "github.issue-comment.vextreme.273.6380816622",
+    "github.issue-comment.vextreme.273.6381469215",
     "github.pull.vextreme.379",
-    "github.pull.vextreme.395",
-    "github.pull.vextreme.397",
-    "github.pull.vextreme.398",
-    "github.pull.vextreme.399",
+    "github.pull.vextreme.401",
+    "github.pull.vextreme.417",
+    "repo.vextreme:config/institutional-surfaces.json",
+    "repo.vextreme:data/strings/source/institution.json",
     "repo.vextreme:docs/architecture/06-i18n.md"
   ],
   "formedAt": "2026-10-23T07:48:00.000Z"
