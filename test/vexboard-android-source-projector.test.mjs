@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import test from 'node:test';
 
 import { createBoardGraph, createBoardProjection } from '../src/core/vexboard.mjs';
-import { VEXLIFE_ANDROID_DYNAMIC_TEXT_CAPABILITY_REF } from '../src/core/vexboard-android-construction.mjs';
+import { VEXLIFE_ANDROID_TEXT_VALUE_RESOLUTION_CAPABILITY_REF } from '../src/core/vexboard-android-construction.mjs';
 import {
   VEXBOARD_ANDROID_POC_BOARD_REFS,
   VEXLIFE_ANDROID_POC_SNAPSHOT_SCHEMA,
@@ -549,18 +549,18 @@ test('VexLife Android POC depth maps truthful storage and Desktop service owners
 
   const labels = new Map(graph.nodes.map((node) => [node.nodeRef, node.label]));
   assert.match(
-    labels.get(VEXLIFE_ANDROID_DYNAMIC_TEXT_CAPABILITY_REF),
-    /DynamicTextElement · STANDARDIZATION_REQUIRED · CANDIDATE_FORMED_PROOF_PENDING/,
+    labels.get(VEXLIFE_ANDROID_TEXT_VALUE_RESOLUTION_CAPABILITY_REF),
+    /TextElement · STANDARDIZATION_REQUIRED · CANDIDATE_FORMED_PROOF_PENDING/,
   );
   assert.ok(graph.relationships.some(
     (relationship) =>
       relationship.fromRef === 'plan.vexlife-android.home-vexstream.screen-design.poc' &&
-      relationship.toRef === VEXLIFE_ANDROID_DYNAMIC_TEXT_CAPABILITY_REF &&
+      relationship.toRef === VEXLIFE_ANDROID_TEXT_VALUE_RESOLUTION_CAPABILITY_REF &&
       relationship.labelOrNull === 'target standardization required' &&
       relationship.sourceRefs.includes('github.pull.vexlife-android.182'),
   ));
   assert.ok(projection.items.some(
-    (item) => item.semanticRef === VEXLIFE_ANDROID_DYNAMIC_TEXT_CAPABILITY_REF,
+    (item) => item.semanticRef === VEXLIFE_ANDROID_TEXT_VALUE_RESOLUTION_CAPABILITY_REF,
   ));
   assert.match(labels.get('reference.vexstream.connection-store'), /SharedPreferences/);
   assert.match(labels.get('reference.android.keystore.vexstream'), /Android Keystore/);
