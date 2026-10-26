@@ -190,6 +190,22 @@
   "parkingLot": {
     "items": [
       {
+        "workRef": "work.vexboard.vexstream-origin-roundtrip-review",
+        "label": "Independent review — VexStream Origin round-trip architecture",
+        "purpose": "Preserve a later independent review edge for the VexStream living-Origin round trip once the implementation/proof foundation is mature enough to review meaningfully. When activated, pressure-test Origin naming/lineage, content-Origin versus value-binding separation, target realization leakage, construction-admission boundaries, evidence/currentness semantics, duplicated truth and unjustified abstractions. This is deliberately parked while #182/#183 target proof and Origin round-trip construction are still forming; it is advisory evidence and grants no source mutation, approval, merge or Origin-authority acceptance.",
+        "workClass": "TASK",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "LOW",
+        "repositoryRefs": [
+          "repo.vexwork",
+          "repo.vexlife-android"
+        ],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "updatedAt": "2026-10-26T03:35:00.000Z"
+      },
+      {
         "workRef": "work.vexboard.tech-debt.origin-rename-propagation",
         "label": "Tech debt — Origin rename propagation through mapped descendants",
         "purpose": "Preserve the low-priority future need for VexBoard to traverse an accepted Origin's existing semantic, process, source and realization relationships when its reusable name changes: first expose the complete downstream rename plan and support bounded manual propagation, then use the observed process to earn autonomous BoardPatch-style propagation with lineage/currentness proof. The Origin is the design truth; repository placement is secondary, so this does not imply repository fragmentation or a parallel rename registry.",
@@ -301,7 +317,7 @@
   "summary": {
     "projectWorkItemCount": 8,
     "openProjectWorkItemCount": 0,
-    "parkingLotItemCount": 7
+    "parkingLotItemCount": 8
   },
   "effects": false,
   "executionAuthority": "NONE"
