@@ -781,7 +781,7 @@
       "label": "Now Playing artwork projection",
       "purpose": "Carry optional current-track artwork from VexStream's canonical library metadata into the sanitized Android mobile catalog and Media3 MediaItem metadata so player/widget surfaces can render artwork when it is actually available without inventing Android-local artwork truth.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "COMPLETED",
       "workDisposition": "ACTIVE",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
@@ -794,7 +794,11 @@
         "repo.vexstream-music:v2/desktop/library/model.go",
         "repo.vexstream-music:v2/desktop/mobile/catalog.go",
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamHubContract.kt",
-        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamPlayback.kt"
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamPlayback.kt",
+        "github.pull.vexstream-music.10",
+        "github.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+        "github.pull.vexlife-android.172",
+        "github.commit.vexlife-android.28f3815c6d3d145a7c3d4fea23fbc8b96f3e9ca2"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [
@@ -803,16 +807,16 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-24T11:20:00.000Z",
-      "updatedAt": "2026-10-24T11:26:00.000Z"
+      "updatedAt": "2026-10-25T03:50:46.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vexstream.mobile-library.full-player",
       "parentWorkRefOrNull": "work.vexstream.mobile-library.playback-surfaces",
       "label": "VexStream full player",
-      "purpose": "Add a dedicated Android full-player destination using current Playback, Queue and Repeat State/Control/Act/Effect owners: artwork/title/artist, previous/play-pause/next, shuffle/repeat, progress, upward queue access, and large horizontal previous/next gestures suitable for low-precision interaction without creating a second player truth owner.",
+      "purpose": "Add one full-height Android Now Playing modal bottom sheet that expands from the current mini-player and composes current Playback, Queue and Repeat State/Control/Act/Effect owners: optional artwork, title/artist, previous/play-pause/next, shuffle/repeat, progress, large horizontal previous/next gestures, and an in-sheet Queue view/reveal without creating a second player or queue truth owner.",
       "workClass": "TASK",
-      "state": "READY",
+      "state": "VERIFYING",
       "workDisposition": "ACTIVE",
       "priorityClass": "HIGH",
       "dependencyRefs": [
@@ -828,7 +832,38 @@
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/VexStreamPlaybackControl.kt",
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/queue/VexStreamQueueControl.kt",
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/repeat/VexStreamRepeatControl.kt",
-        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/MainActivity.kt"
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/MainActivity.kt",
+        "github.pull.vexlife-android.175",
+        "github.comment.vexlife-android.pr175.6392215069.assurance-changes-requested",
+        "github.commit.vexlife-android.105754d15674c070c7655ead8170f5065def796a",
+        "github.comment.vexlife-android.pr175.6392228854.assurance-correction",
+        "evidence.vexstream.full-player.pr175.sourceowner.a003.formed.sha256.2a7f35f38d38014d2baa385f69e1d2877bba3fc64cfc1e464621f178e7279587",
+        "evidence.vexstream.full-player.pr175.sourceowner.a003.return.sha256.7867a8cac9cf3f434b1e2149e464f8805eaf9f172223bf85fe6df65b99fe00aa",
+        "evidence.vexstream.full-player.pr175.sourceowner.a003.inner-return.sha256.cfe2f2fcc5ab79ae5a745a32af7d8b5beb03b3981b3f994974721a2824cbadd5",
+        "github.comment.vexlife-android.pr175.6392257378.assurance-clear",
+        "github.commit.vexlife-android.92e18331e59b55993dc2479f86fa8418c0dfdf3b",
+        "github.comment.vexlife-android.pr175.6392337226.post-merge-exact",
+        "github.comment.vexlife-android.pr175.6392565827.verify-tap-latency",
+        "github.pull.vexlife-android.176",
+        "evidence.vexstream.full-player.pr176.tap-latency.sourceowner.a001.return.sha256.361b9359a05793ab720a658f72122977f21d75d884c272f1d3d4760edbcd9043",
+        "github.comment.vexlife-android.pr176.6392640951.sourceowner-a001-failure-a002-formation",
+        "evidence.vexstream.full-player.pr176.tap-latency.sourceowner.a002.return.sha256.6600a4f7cfeff97e05220eab438a9aea518461519c9cba569d998a4cd4865adc",
+        "evidence.vexstream.full-player.pr176.tap-latency.sourceowner.a002.inner-return.sha256.30203055089bfe4e4a19f2ca2dd900afba733fc476c8116db02cb1d2bbb80c30",
+        "github.comment.vexlife-android.pr176.6392678923.assurance-changes-requested",
+        "github.comment.vexlife-android.pr176.6392695842.assurance-correction",
+        "github.commit.vexlife-android.40948a92d6139cc18cfb246a79c53255f6dff61c",
+        "evidence.vexstream.full-player.pr176.tap-latency.sourceowner.a003.formed.sha256.d660b472b5a0f55cd71ce498d6f5504b18749bc2853aeadda7e3f202db0cb9a0",
+        "evidence.vexstream.full-player.pr176.tap-latency.sourceowner.a003.return.sha256.26ca7db7914b69d40637036fa56fe4eb3a42c2737ecd891016215a23aca8ec10",
+        "evidence.vexstream.full-player.pr176.tap-latency.sourceowner.a003.inner-return.sha256.e926152acf3c22937da7c43a4b8e95ff35315390747b5237b17ca301b6f73080",
+        "github.comment.vexlife-android.pr176.6392799846.assurance-latency-changes-requested",
+        "github.comment.vexlife-android.pr176.6392819371.assurance-latency-correction",
+        "github.commit.vexlife-android.ad2f7bc6635c639acbfe92f7ceafb111772157ea",
+        "evidence.vexstream.full-player.pr176.tap-latency.sourceowner.a004.formed.sha256.cef0a3e5c07bd56fc534725c35f2cc920ce8a5b736a9d9b8a23c33dc474a24e7",
+        "evidence.vexstream.full-player.pr176.tap-latency.sourceowner.a004.return.sha256.5ba701381ff452577559814b332f447e29dfbd038d59806eabaafcfaa1c9afd5",
+        "evidence.vexstream.full-player.pr176.tap-latency.sourceowner.a004.inner-return.sha256.1da280856aa3a5713578e841c15f2990a665070deefd35209db3a843cfdb2f2a",
+        "github.comment.vexlife-android.pr176.6392897401.assurance-clear",
+        "github.commit.vexlife-android.b6cd02f00f2d867068f7f760027d65583b567dd7",
+        "github.comment.vexlife-android.pr176.6392919060.post-merge-exact"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [
@@ -837,7 +872,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-24T11:20:00.000Z",
-      "updatedAt": "2026-10-25T00:50:00.000Z"
+      "updatedAt": "2026-10-25T03:21:45.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -3449,9 +3484,9 @@
       "workRef": "work.android-widget-foundation.semantic-widget-surface",
       "parentWorkRefOrNull": "work.android-widget-foundation.outcome",
       "label": "Reusable semantic App Widget surface",
-      "purpose": "Implement the smallest reusable Android App Widget foundation: Compose-first Glance rendering, explicit widget projection data, AppWidget receiver lifecycle, direct Activity deep links, and bounded callback/control dispatch that never lets widget code own domain truth or mutate providers directly.",
+      "purpose": "Implement the smallest reusable Android App Widget foundation: Compose-first Glance projection boundaries, stable widget interaction identity, and bounded callback/control dispatch that never lets widget code own domain truth or mutate providers directly; concrete receiver registration and Activity/deep-link entry remain with each product widget consumer until repeated pressure earns shared source.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
@@ -3465,26 +3500,42 @@
         "projects/android-widget-foundation/README.md",
         "repo.vexlife-android:app/src/main/AndroidManifest.xml",
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/MainActivity.kt",
-        "repo.vexlife-android:docs/CULTURE.md"
+        "repo.vexlife-android:docs/CULTURE.md",
+        "github.pull.vexlife-android.174",
+        "repo.vexlife-android:architecture/widget/README.md",
+        "github.commit.vexlife-android.b6cd02f00f2d867068f7f760027d65583b567dd7",
+        "github.commit.vexlife-android.3bea64b47c0577a641fff1930ab00686686b85f2",
+        "evidence.android-widget-foundation.pr174.sourceowner.a001.historical.sha256.e84eb4f4f83409eb75260844bc040e6bc09769d08647bc16eb2210cf33beaa93",
+        "evidence.android-widget-foundation.pr174.sourceowner.a002.formation.sha256.8d566b831770f72d14583d8c901634b5c4e2c6e3ec268e9c33f543f5f2c18b02",
+        "evidence.android-widget-foundation.pr174.sourceowner.a002.return.sha256.dbe67f54c123dae1ea1a8befdbb8f6c2018b2f937ef3f90ee7249a175c8c73a5",
+        "evidence.android-widget-foundation.pr174.sourceowner.a002.inner-return.sha256.daa5d1a939aa9aab94492ba56c97cfaf701ec1b73697628c2f7bc6d6224952ec",
+        "github.comment.vexlife-android.pr174.6393014999.sourceowner-a002-failure-a003-correction",
+        "github.commit.vexlife-android.ce6cbbefb2abd755811e5c7a066d7dd9fe6b6eff",
+        "evidence.android-widget-foundation.pr174.sourceowner.a003.formation.sha256.f2b65adbaef26e28ef8b5dbb7b3bbcfe9d80e359675fb5721b1386a23bd74667",
+        "github.comment.vexlife-android.pr174.6393024753.sourceowner-a003-formation",
+        "evidence.android-widget-foundation.pr174.sourceowner.a003.return.sha256.f7befd6425a4558da051bf48c795a246404b7306c7cd85246529750ac6b8be92",
+        "evidence.android-widget-foundation.pr174.sourceowner.a003.inner-return.sha256.58b673c9bc63f21ca691a025e4b8a5704488a0b596ceca43ad4a965d3030d973",
+        "github.comment.vexlife-android.pr174.6393072528.assurance-clear",
+        "github.commit.vexlife-android.082cc4689bc9b951621727b91cdcf0a63a8bbc2e",
+        "github.comment.vexlife-android.pr174.6393084696.post-merge-tree-exact"
       ],
       "nextProcessRefs": [
         "process.vexlife-android.feature-authoring"
       ],
       "createdAt": "2026-10-24T11:20:00.000Z",
-      "updatedAt": "2026-10-24T11:26:00.000Z"
+      "updatedAt": "2026-10-25T03:42:52.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.android-widget-foundation.vexstream-playback-widget",
       "parentWorkRefOrNull": "work.android-widget-foundation.outcome",
       "label": "VexStream playback widget",
-      "purpose": "Use the widget foundation as patient zero: project current VexStream artwork when available, title/artist and Previous/Play-Pause/Next availability into a compact home-screen widget; tapping the artwork/content area opens the VexStream full player; controls route through existing Playback and Queue semantics.",
+      "purpose": "Use the widget foundation as patient zero: project current VexStream artwork when available, title/artist and Previous/Play-Pause/Next availability into one compact home-screen row; tapping the artwork/content area enters the registered VexStream Screen and opens the full-player sheet; controls route through existing Playback/Queue semantics, while the concrete receiver and Activity intent stay product-owned.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "RUNNING",
       "priorityClass": "HIGH",
       "dependencyRefs": [
-        "work.android-widget-foundation.semantic-widget-surface",
-        "work.vexstream.mobile-library.full-player"
+        "work.android-widget-foundation.semantic-widget-surface"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
@@ -3498,13 +3549,37 @@
         "work.vexstream.mobile-library.full-player",
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/VexStreamPlaybackControl.kt",
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/queue/VexStreamQueueControl.kt",
-        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/media/vexstream/VexStreamPlaybackService.kt"
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/media/vexstream/VexStreamPlaybackService.kt",
+        "github.pull.vexlife-android.175",
+        "github.commit.vexlife-android.92e18331e59b55993dc2479f86fa8418c0dfdf3b",
+        "github.pull.vexlife-android.176",
+        "github.commit.vexlife-android.b6cd02f00f2d867068f7f760027d65583b567dd7",
+        "github.pull.vexlife-android.174",
+        "github.commit.vexlife-android.082cc4689bc9b951621727b91cdcf0a63a8bbc2e",
+        "github.pull.vexlife-android.177",
+        "github.commit.vexlife-android.c5c2014733572da22cb320ec32801f10bcbedf65",
+        "github.pull.vexlife-android.178",
+        "github.commit.vexlife-android.e9eb285792b672f2f9d4cf53d1c77adfaa3d8fe8",
+        "github.commit.vexlife-android.b85299ad982964d742c4be815c121d0125f7857d",
+        "evidence.vexstream.playback-widget.pr178.sourceowner.a001.formation.sha256.c088164ac09edb12147e0951f4a01ad78b315437e0084a1d99a0aa887e4000ef",
+        "github.comment.vexlife-android.pr178.6393823908.sourceowner-a001-formation",
+        "github.commit.vexlife-android.8798bb5c03669688bf4662877dc75a16d6b03205",
+        "github.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+        "evidence.vexstream.playback-widget.device.a006.outer.sha256.25f8e81d78fc8b1f5f79ad46a758c6d0ca14cd749784d81a1f6a8b21ba1cf593",
+        "evidence.vexstream.playback-widget.device.a006.inner.sha256.787127ec75c78964564a5f8b1425f7f80b2e0cbf276f22266007aa6ccba45861",
+        "github.comment.vexlife-android.pr178.6394664000.device-a006-pass",
+        "human.lived-feedback.android-widget-foundation.vexstream-playback-widget.20261025",
+        "evidence.private.local-vex.widget-home.sha256.f96a84375afd3804a706f532ae95731c2d3d05641a9fe761aecee465e244a3b5",
+        "evidence.private.local-vex.full-player.sha256.dac704615d19231a315dd3e0869219216858206ab4d54cce9acc99afc4d0a8e1",
+        "evidence.private.local-vex.widget-layout-reference.sha256.4f8c864f69b7a89540e7ac745bb997a60115830f3260ae60adfb5e52ba060c09",
+        "github.pull.vexlife-android.179",
+        "github.commit.vexlife-android.2dc060113e5e100a47bf053807376c5cd40cb639"
       ],
       "nextProcessRefs": [
         "process.vexlife-android.feature-authoring"
       ],
       "createdAt": "2026-10-24T11:20:00.000Z",
-      "updatedAt": "2026-10-24T11:20:00.000Z"
+      "updatedAt": "2026-10-25T07:43:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -3683,6 +3758,98 @@
       ],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.android-widget-foundation.vexstream-playback-widget.layout-usability",
+      "parentWorkRefOrNull": "work.android-widget-foundation.vexstream-playback-widget",
+      "label": "VexStream widget centered controls and touch targets",
+      "purpose": "Refine the lived home-screen widget so the transport Controls form a centered, balanced interaction cluster with larger reliable touch targets and useful horizontal resize behavior, while preserving compact artwork/title context and existing Playback/Queue ownership.",
+      "workClass": "DEFECT",
+      "state": "VERIFYING",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.android-widget-foundation.semantic-widget-surface"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "work.android-widget-foundation.vexstream-playback-widget",
+        "projects/android-widget-foundation/README.md",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/widget/vexstream/VexStreamPlaybackWidget.kt",
+        "repo.vexlife-android:app/src/main/res/xml/vexstream_playback_widget_info.xml",
+        "human.lived-feedback.android-widget-foundation.vexstream-playback-widget.20261025",
+        "evidence.private.local-vex.widget-home.sha256.f96a84375afd3804a706f532ae95731c2d3d05641a9fe761aecee465e244a3b5",
+        "evidence.private.local-vex.widget-layout-reference.sha256.4f8c864f69b7a89540e7ac745bb997a60115830f3260ae60adfb5e52ba060c09",
+        "github.pull.vexlife-android.179",
+        "github.commit.vexlife-android.2dc060113e5e100a47bf053807376c5cd40cb639",
+        "evidence.vexstream.widget.pr179.sourceowner.a001.formation.sha256.0bab41ff8f76020e69242c6ec6abed8c2490d620115da3cee9c34a45a243198f",
+        "github.commit.vexlife-android.d0e698d564cdfe78de008d4261f8113aa5c2505c",
+        "github.comment.vexlife-android.pr179.6395146346.post-merge-tree-exact",
+        "evidence.vexstream.widget.pr179.sourceowner.a001.outer.sha256.acba343b6e3b3884d9dcb1631ff01825845a5c59c550e3a12ed7e80122c1226b",
+        "evidence.vexstream.widget.pr179.sourceowner.a002.outer.sha256.71eaa323127b52b87a98e4d52c4d8e7e23405a8b2ebf9c5a91bdd974697f7f31",
+        "evidence.vexstream.widget.pr179.sourceowner.a002.inner.sha256.a7887241d85d5ff49adf1bdb28361fb5455ac40e33457a9b3e470a7ab0c35789",
+        "github.review.vexlife-android.pr179.5642157438.assurance-clear"
+      ],
+      "nextProcessRefs": [
+        "process.vexlife-android.feature-authoring"
+      ],
+      "createdAt": "2026-10-25T07:10:00.000Z",
+      "updatedAt": "2026-10-25T07:59:11.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.android-widget-foundation.vexstream-playback-widget.state-refresh",
+      "parentWorkRefOrNull": "work.android-widget-foundation.vexstream-playback-widget",
+      "label": "VexStream widget currentness convergence",
+      "purpose": "Repair the lived remote-surface currentness defect where Playback/Queue Controls still route through the rightful SCAE families but the Glance widget can fall back to generic or stale presentation while the Full Player already observes current Media3 truth. Establish a bounded patient-zero convergence relationship between canonical provider/read truth and rendered widget projection so provider changes drive widget refresh/currentness and widget interactions return through existing Controls before the next projection converges, without making the widget a State owner or prematurely extracting a generic Widget Relay.",
+      "workClass": "DEFECT",
+      "state": "FAILED_RECOVERABLE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.android-widget-foundation.semantic-widget-surface"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "work.android-widget-foundation.vexstream-playback-widget",
+        "projects/android-widget-foundation/README.md",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/widget/vexstream/VexStreamPlaybackWidget.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/media/vexstream/VexStreamPlaybackService.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/Media3VexStreamPlaybackConnection.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/queue/Media3VexStreamQueueConnection.kt",
+        "github.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+        "human.lived-feedback.android-widget-foundation.vexstream-playback-widget.20261025",
+        "evidence.private.local-vex.widget-home.sha256.f96a84375afd3804a706f532ae95731c2d3d05641a9fe761aecee465e244a3b5",
+        "github.pull.vexlife-android.179",
+        "github.commit.vexlife-android.2dc060113e5e100a47bf053807376c5cd40cb639",
+        "evidence.vexstream.widget.pr179.sourceowner.a001.formation.sha256.0bab41ff8f76020e69242c6ec6abed8c2490d620115da3cee9c34a45a243198f",
+        "github.commit.vexlife-android.d0e698d564cdfe78de008d4261f8113aa5c2505c",
+        "github.comment.vexlife-android.pr179.6395146346.post-merge-tree-exact",
+        "evidence.vexstream.widget.pr179.sourceowner.a001.outer.sha256.acba343b6e3b3884d9dcb1631ff01825845a5c59c550e3a12ed7e80122c1226b",
+        "evidence.vexstream.widget.pr179.sourceowner.a002.outer.sha256.71eaa323127b52b87a98e4d52c4d8e7e23405a8b2ebf9c5a91bdd974697f7f31",
+        "evidence.vexstream.widget.pr179.sourceowner.a002.inner.sha256.a7887241d85d5ff49adf1bdb28361fb5455ac40e33457a9b3e470a7ab0c35789",
+        "github.review.vexlife-android.pr179.5642157438.assurance-clear",
+        "human.lived-feedback.android-widget-foundation.currentness-convergence.20261025a",
+        "github.commit.vexlife-android.6f5b2dc6cdbf284b84cb590ba5b1016af3d33939",
+        "repo.vexlife-android:architecture/behavior/README.md",
+        "repo.vexlife-android:architecture/widget/src/main/kotlin/com/vextreme/vexlife/android/widget/VexGlanceAppWidget.kt"
+      ],
+      "nextProcessRefs": [
+        "process.vexlife-android.feature-authoring"
+      ],
+      "createdAt": "2026-10-25T07:10:00.000Z",
+      "updatedAt": "2026-10-25T12:12:29.462Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -4366,13 +4533,13 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-24T08:50:00.000Z",
-      "updatedAt": "2026-10-24T08:50:00.000Z",
+      "updatedAt": "2026-10-25T03:21:45.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "workRef": "work.vexlife-android.current-state-refinement.scalability-scae-audit",
       "parentWorkRefOrNull": "work.vexlife-android.current-state-refinement.outcome",
       "label": "Cross-feature scalability and SCAE placement audit",
-      "purpose": "Review current Android feature boundaries for scale-amplified work and misplaced execution: distinguish rightful State/Control/Act/Effect ownership from expensive I/O or whole-state work performed at the wrong lifecycle/thread boundary, beginning with the VexStream 785-song startup evidence and extending only where source shows the same class.",
+      "purpose": "Review current Android feature boundaries for scale-amplified work and misplaced execution: distinguish rightful State/Control/Act/Effect ownership from expensive I/O or whole-state work performed at the wrong lifecycle/thread boundary. The initiating 785-song startup finding is source-corrected/merged; Full Player Verify feedback independently exposed the same placement/amplification class in Track activation and is now corrected/merged. Continue this broader audit only where current source shows the same class.",
       "workClass": "TASK",
       "state": "RUNNING",
       "priorityClass": "HIGH",
@@ -4387,7 +4554,14 @@
         "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexBehaviorDocs.kt",
         "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt",
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt",
-        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/AppRepositories.kt"
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/AppRepositories.kt",
+        "github.pull.vexlife-android.169",
+        "github.pull.vexlife-android.171",
+        "github.pull.vexlife-android.176",
+        "github.commit.vexlife-android.ad2f7bc6635c639acbfe92f7ceafb111772157ea",
+        "github.comment.vexlife-android.pr176.6392897401.assurance-clear",
+        "github.commit.vexlife-android.b6cd02f00f2d867068f7f760027d65583b567dd7",
+        "github.comment.vexlife-android.pr176.6392919060.post-merge-exact"
       ],
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
@@ -4951,7 +5125,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-25T07:12:00.000Z",
-      "updatedAt": "2026-10-25T07:36:31Z",
+      "updatedAt": "2026-10-25T07:36:31.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "workRef": "work.vexlife.welcome-wagon.support-shell-context-currentness",
@@ -5187,12 +5361,76 @@
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexstream.mobile-library.current-artwork-availability",
+      "parentWorkRefOrNull": "work.vexstream.mobile-library.playback-surfaces",
+      "label": "Current-track artwork availability and convergence",
+      "purpose": "Fix the lived playback-surface gap where the Full Player and home-screen widget still show generic artwork placeholders even after the embedded-artwork Desktop producer and Android consumer were accepted and merged. Distinguish tracks that genuinely have no admitted artwork from tracks whose known artwork source failed to reach/cache/project into current playback; make current admitted artwork converge without making the widget an artwork fetcher or changing media identity, and expose the per-track truth needed by a separate user-invoked missing-artwork reconciliation path.",
+      "workClass": "DEFECT",
+      "state": "RUNNING",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexstream.mobile-library.now-playing-artwork-projection"
+      ],
+      "repositoryRefs": [
+        "repo.vexstream-music",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "work.vexstream.mobile-library.now-playing-artwork-projection",
+        "work.vexstream.mobile-library.offline-artwork-durability",
+        "projects/vexstream-mobile-library/README.md",
+        "repo.vexstream-music:v2/desktop/library/model.go",
+        "repo.vexstream-music:v2/desktop/mobile/catalog.go",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamArtworkStore.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/PairedVexStreamMusicRepository.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamPlayerPresentation.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/widget/vexstream/VexStreamPlaybackWidget.kt",
+        "human.lived-feedback.vexstream.artwork-availability.20261025",
+        "evidence.private.local-vex.full-player.sha256.dac704615d19231a315dd3e0869219216858206ab4d54cce9acc99afc4d0a8e1",
+        "evidence.private.local-vex.widget-home.sha256.f96a84375afd3804a706f532ae95731c2d3d05641a9fe761aecee465e244a3b5",
+        "github.issue.vexstream-music.11",
+        "repo.vexstream-music:v2/desktop/library/filesystem/metadata.go",
+        "github.pull.vexstream-music.12",
+        "github.commit.vexstream-music.f2f7c17ae8fb663686073056d6b18520a106244d",
+        "github.pull.vexlife-android.181",
+        "github.commit.vexlife-android.9e3c55c8367734c5143168ad5ab9c19594460369",
+        "github.commit.vexstream-music.9ae1f02e8c6ccd5774050e50a493a4a0c8b2d11a",
+        "github.pull.vexstream-music.12.corrected-v3-compatible",
+        "github.commit.vexstream-music.8a740811587b4038730cceb12484b47a3a890de9",
+        "evidence.vexstream-music.pr12.sourceowner.a001.outer.sha256.95c610090cd774ddd84288d4b2d3e7d1612d363f4813b38f11ee3586de5329f0",
+        "evidence.vexstream-music.pr12.sourceowner.a001.inner.sha256.f3e5d225b2be51adf7f9e3fce03a10210cd8b5436c8721398f68cd269fc9b81b",
+        "github.comment.vexstream-music.pr12.6396181090.sourceowner-a001-safe-failure",
+        "github.commit.vexstream-music.3d983aad99bf1c66a0a747978732ff547d350cf7",
+        "evidence.vexstream-music.pr12.sourceowner.a002.outer.sha256.51bf51e9a6125cf0e69470d57db97c2037673874e74e4e0e82abe84e4731d8eb",
+        "evidence.vexstream-music.pr12.sourceowner.a002.inner.sha256.b34e7e647a4c3f89b3fd2c44e3b856720abd6103871dc7787ca37ab847e293d9",
+        "github.comment.vexstream-music.pr12.6396216345.sourceowner-a002-safe-failure",
+        "github.commit.vexstream-music.746e17cb843a8093a98b6bee772acb6b361e4f47",
+        "evidence.vexstream-music.pr12.sourceowner.a003.outer.sha256.a6dc324254a682afd9186210f4504db2bb9418fcd34b6a37c62ba12ecdef4d14",
+        "evidence.vexstream-music.pr12.sourceowner.a003.inner.sha256.87274fec8087bb2637db5b4eb738704277c2957e1c79b48f6baee93f02324ceb",
+        "github.comment.vexstream-music.pr12.6396351114.sourceowner-a003-gofmt",
+        "github.commit.vexstream-music.ed0ecba9b35459fd03aa3bbaede9e4cea8b694f7",
+        "github.commit.vexlife-android.6f5b2dc6cdbf284b84cb590ba5b1016af3d33939",
+        "evidence.vexstream.embedded-artwork.postmerge-prep.a001.outer.sha256.9c0f171a1c3528644d4389e4fd5c4313c1ffe4de9dffacc1358fb8d6ade1ff92",
+        "human.lived-feedback.vexstream.artwork-placeholder-postmerge.20261025a"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+      "nextProcessRefs": [
+        "process.vexlife-android.feature-authoring"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-25T07:10:00.000Z",
+      "updatedAt": "2026-10-25T12:12:29.462Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vexstream.mobile-library.large-offline-startup-performance",
       "parentWorkRefOrNull": "work.vexstream.mobile-library.outcome",
       "label": "Large offline library cold-start performance",
-      "purpose": "Measure and resolve the noticeably slow Android cold launch observed with 785 downloaded VexStream songs, identifying which startup phase/thread owns the delay while preserving exact local-media integrity and durable-device recovery semantics.",
+      "purpose": "Resolve the 785-song Android cold-launch defect without weakening local-media integrity: the integrity-preserving source correction is merged, and the remaining obligation is Victor's lived current-main startup observation while broader cross-feature scalability/SCAE review remains separate.",
       "workClass": "DEFECT",
-      "state": "DECOMPOSED",
+      "state": "WAITING_HUMAN",
       "workDisposition": "ACTIVE",
       "priorityClass": "HIGH",
       "dependencyRefs": [
@@ -5212,7 +5450,10 @@
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamDeviceMediaStore.kt",
         "repo.vexlife-android:architecture/logging/README.md",
         "repo.vexlife-android:docs/foundation/ANDROID-HOST-PROOF.md",
-        "repo.vexlife-android:docs/foundation/test-proof/README.md"
+        "repo.vexlife-android:docs/foundation/test-proof/README.md",
+        "github.pull.vexlife-android.169",
+        "github.commit.vexlife-android.dbce2fac5eeace83774c71a837904fd7340bb8dc",
+        "github.pull.vexlife-android.171"
       ],
       "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
       "nextProcessRefs": [
@@ -5221,7 +5462,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-24T07:16:00.000Z",
-      "updatedAt": "2026-10-24T07:16:00.000Z"
+      "updatedAt": "2026-10-25T00:59:26.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -5259,14 +5500,187 @@
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
-      "workRef": "work.vexstream.mobile-library.sort-filter-controls",
-      "parentWorkRefOrNull": "work.vexstream.mobile-library.library-browse-discovery",
-      "label": "Sort / Filter library controls",
-      "purpose": "Present one compact VexStream library organization surface that keeps Sort by and Filter by distinct, uses field-appropriate controls, composes with Search, and makes visible rows plus row playback / Play All / Shuffle All consume the same current filtered listening membership.",
+      "workRef": "work.vexstream.mobile-library.missing-artwork-reconciliation",
+      "parentWorkRefOrNull": "work.vexstream.mobile-library.playback-surfaces",
+      "label": "Reconcile / sync missing artwork",
+      "purpose": "Provide a deliberate user-invoked reconciliation path for artwork that is missing locally even though the current VexStream/Android truth admits an artwork source. Classify the current library into known-artwork-present, known-artwork-missing/stale, and genuinely-no-artwork; fetch/cache only the missing ancillary artwork through existing repository/producer owners; report bounded counts/progress/results; never redownload audio or make the Full Player/widget network owners. Keep this separate from persistent Keep Offline / Sync, which governs media membership rather than artwork metadata.",
       "workClass": "TASK",
-      "state": "WAITING_HUMAN",
+      "state": "DECOMPOSED",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexstream.mobile-library.current-artwork-availability"
+      ],
+      "repositoryRefs": [
+        "repo.vexstream-music",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "work.vexstream.mobile-library.current-artwork-availability",
+        "projects/vexstream-mobile-library/README.md",
+        "human.lived-feedback.vexstream.missing-artwork-reconciliation.20261025a",
+        "github.pull.vexstream-music.12",
+        "github.commit.vexstream-music.ed0ecba9b35459fd03aa3bbaede9e4cea8b694f7",
+        "github.pull.vexlife-android.181",
+        "github.commit.vexlife-android.6f5b2dc6cdbf284b84cb590ba5b1016af3d33939",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicRepository.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/PairedVexStreamMusicRepository.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamArtworkStore.kt"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+      "nextProcessRefs": [
+        "process.vexlife-android.feature-authoring"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-25T12:12:29.462Z",
+      "updatedAt": "2026-10-25T12:12:29.462Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexstream.mobile-library.offline-artwork-durability",
+      "parentWorkRefOrNull": "work.vexstream.mobile-library.playback-surfaces",
+      "label": "Offline artwork durability",
+      "purpose": "Fix the observed Android experience where downloaded/local-only VexStream songs lose available cover art across restart or render generic placeholders: persist the admitted artwork source, keep a bounded app-private companion image for downloaded media, prefer local artwork in track/full-player presentation, and preserve audio integrity as independent truth.",
+      "workClass": "DEFECT",
+      "state": "RUNNING",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexstream.mobile-library.now-playing-artwork-projection"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "work.vexstream.mobile-library.now-playing-artwork-projection",
+        "repo.vexstream-music:v2/desktop/mobile/catalog.go",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamOfflineIndex.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamArtworkStore.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamTrackPresentation.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamPlayerPresentation.kt",
+        "github.pull.vexlife-android.177",
+        "github.commit.vexlife-android.082cc4689bc9b951621727b91cdcf0a63a8bbc2e",
+        "github.commit.vexlife-android.e0f2ae8c5fe9b3d0aa90f5c1b142bf24bb85bb8d",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicRepository.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt",
+        "github.commit.vexlife-android.b70fd90a4de27fad9eb7e450f58cff444ecdf798",
+        "evidence.vexstream.offline-artwork.pr177.sourceowner.a001.formation.sha256.fd523505f6378f41ec4aa2dd96ec2ef3ae98e73e2eec261558e46d281b41b8a1",
+        "github.comment.vexlife-android.pr177.6393241348.sourceowner-a001-formation",
+        "github.comment.vexlife-android.pr177.6393294005.sourceowner-a001-safe-failure-a002-formation",
+        "evidence.vexstream.offline-artwork.pr177.sourceowner.a002.formation.sha256.a48d81d60eed0e212488631153f0cf1053136fb5d9a4a810a3b23e12b0c655d0",
+        "evidence.vexstream.offline-artwork.pr177.sourceowner.a002.return.sha256.a3dda4c1407db167d25cb5d24ddca86a13deb6173ef9ce1719c485172a12c5a5",
+        "evidence.vexstream.offline-artwork.pr177.sourceowner.a002.inner-return.sha256.3347f8b403141b7cce7167cb0c1ef7970db5d315ee9f13f2e4c1088e966f46ef",
+        "github.comment.vexlife-android.pr177.6393635966.assurance-changes-requested",
+        "github.commit.vexlife-android.47d76bee1e1308df82d4caabf0afffa230e128dc",
+        "github.comment.vexlife-android.pr177.6393654448.assurance-correction-a003-formation",
+        "evidence.vexstream.offline-artwork.pr177.sourceowner.a003.formation.sha256.98043777e9ad3428681f46291e8e111412705e8a777d92bbc571c5ff448c6c19",
+        "evidence.vexstream.offline-artwork.pr177.sourceowner.a003.return.sha256.2443f793062ff20cab1b8b5a864a6977963814cdc26e72b7923654cecb3f2b6c",
+        "evidence.vexstream.offline-artwork.pr177.sourceowner.a003.inner-return.sha256.870f05c20d6119319a4bb680d0153679d5dec25578fbae14316cd71176d4f45c",
+        "github.comment.vexlife-android.pr177.6393677656.assurance-clear",
+        "github.commit.vexlife-android.c5c2014733572da22cb320ec32801f10bcbedf65",
+        "github.comment.vexlife-android.pr177.6393685461.post-merge-tree-exact",
+        "human.lived-feedback.vexstream.artwork-availability.20261025",
+        "evidence.private.local-vex.full-player.sha256.dac704615d19231a315dd3e0869219216858206ab4d54cce9acc99afc4d0a8e1",
+        "evidence.private.local-vex.widget-home.sha256.f96a84375afd3804a706f532ae95731c2d3d05641a9fe761aecee465e244a3b5"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+      "nextProcessRefs": [
+        "process.vexlife-android.feature-authoring"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-25T03:50:45.000Z",
+      "updatedAt": "2026-10-25T07:10:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexstream.mobile-library.pairing-continuity-after-uninstall-reinstall",
+      "parentWorkRefOrNull": "work.vexstream.mobile-library.outcome",
+      "label": "VexStream pairing continuity after uninstall / reinstall",
+      "purpose": "Explore a future explicit product design for reconnecting the same previously-approved Desktop after a true Android uninstall/reinstall removes app-private SharedPreferences and Android Keystore identity. Keep this separate from ordinary data-preserving upgrades/proof builds, do not weaken TLS pinning or bearer-token authority, and treat it as non-blocking experience backlog until deliberately resumed.",
+      "workClass": "DEFECT",
+      "state": "CAPTURED",
       "workDisposition": "ACTIVE",
       "priorityClass": "NORMAL",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexlife-android",
+        "repo.vexstream-music"
+      ],
+      "sourceRefs": [
+        "work.vexstream.mobile-library.pairing-reconnect-build-continuity",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamConnectionStore.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/PairedVexStreamMusicRepository.kt",
+        "human.lived-feedback.vexstream.uninstall-reinstall-reconnect-not-preserved.20261025",
+        "github.comment.vexwork.pr140.6404819692",
+        "evidence.vexwork.pr140.sourceowner.a002.outer.sha256.ea56d1e35c6c2ce8e5bbc26acba1f9f4512c13416a7f9acef0f76f69a210838a"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+      "nextProcessRefs": [
+        "process.vexlife-android.feature-authoring"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-25T09:10:00.000Z",
+      "updatedAt": "2026-10-25T23:30:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexstream.mobile-library.pairing-reconnect-build-continuity",
+      "parentWorkRefOrNull": "work.vexstream.mobile-library.outcome",
+      "label": "VexStream pairing reconnect continuity across new builds",
+      "purpose": "Fix the lived regression where installing a newer VexLife Android build can leave the phone unable to reconnect to the Desktop's already-established VexStream pairing. Preserve pairing across ordinary data-preserving upgrades/reinstalls, distinguish product persistence from destructive test/install tooling, and keep explicit Clear Data/uninstall credential loss separate from durable downloaded-media recovery.",
+      "workClass": "DEFECT",
+      "state": "COMPLETED",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "projects/vexstream-mobile-library/README.md",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamConnectionStore.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/PairedVexStreamMusicRepository.kt",
+        "repo.vexlife-android:app/build.gradle.kts",
+        "repo.vexlife-android:docs/foundation/ANDROID-HOST-PROOF.md",
+        "work.vexstream.mobile-library.durable-device-library",
+        "human.lived-feedback.vexstream.pairing-reconnect-build-continuity.20261025",
+        "github.pull.vexlife-android.180",
+        "github.commit.vexlife-android.ec12655534a5cb0249a01f4e5c8e02e3d97cc329",
+        "repo.vexlife-android:gradle.properties",
+        "repo.vexlife-android:gradle/test-foundation.gradle.kts",
+        "evidence.vexstream.pairing-continuity.pr180.sourceowner.a001.formation.sha256.a8a3911504fa147f02b004f0ac496c573556b857461b9aba552d74a23ddabe44",
+        "github.commit.vexlife-android.255491df93835405800c93a17889c7574eb683b3",
+        "github.comment.vexlife-android.pr180.6395231779.post-merge-exact-composition",
+        "github.review.vexlife-android.pr180.5642181507.assurance-clear",
+        "evidence.vexlife-android.pr180.sourceowner.a001.outer.sha256.90597e30a77566d32b70dbee298a93b1faa4d5ec5dace51d157ee4482d7b4207",
+        "evidence.vexlife-android.pr180.sourceowner.a001.inner.sha256.85dd83bb8db46a54f87e4faa679ea405fabffa986b0787e16bcd53515c515759",
+        "evidence.vexstream.pairing-continuity.device.a003.outer.sha256.07bd56a7d0cd3a3051f6affc411731f1a63887a9266c4170e3e522fd16556a17",
+        "evidence.vexstream.pairing-continuity.device.a003.inner.sha256.a830542dfb9ccd655952b99ec8d1cec10a068a3cbd8dd2da4fcab4e1fbd7672a",
+        "github.comment.vexlife-android.pr180.6395713039.device-a003-pass",
+        "human.lived-feedback.vexstream.uninstall-reinstall-reconnect-not-preserved.20261025"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+      "nextProcessRefs": [
+        "process.vexlife-android.feature-authoring"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-25T07:10:00.000Z",
+      "updatedAt": "2026-10-25T09:10:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexstream.mobile-library.sort-filter-controls",
+      "parentWorkRefOrNull": "work.vexstream.mobile-library.library-browse-discovery",
+      "label": "Sort / Filter / Recently added library controls",
+      "purpose": "Present one compact VexStream library organization surface that keeps Sort by, Filter by, Search and freshness discovery distinct while making visible rows plus row playback / Play All / Shuffle All consume the same current organized membership. Lived feedback requires a truthful way to find fresh music: 'added to the VexStream catalog' and 'downloaded to this Android device' are separate clocks and must not be collapsed into one misleading Recently added label.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
       "dependencyRefs": [],
       "repositoryRefs": [
         "repo.vexlife-android",
@@ -5287,7 +5701,11 @@
         "repo.vexstream-music:mobile_bridge.go",
         "github.pull.vexlife-android.165",
         "github.commit.vexlife-android.01432d594172829c2da22e3bddcb09c073c97c16",
-        "evidence.vexstream.mobile-library.sort-filter.a011.return.sha256.ebd1e85886d471375260a35d92d641b38cb292016a1154455e92a9892c412d0a"
+        "evidence.vexstream.mobile-library.sort-filter.a011.return.sha256.ebd1e85886d471375260a35d92d641b38cb292016a1154455e92a9892c412d0a",
+        "human.lived-feedback.vexstream.mobile-library.recently-added.20261025a",
+        "repo.vexstream-music:v2/desktop/mobile/catalog.go",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamOfflineIndex.kt"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [
@@ -5296,7 +5714,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-23T08:02:00.000Z",
-      "updatedAt": "2026-10-24T05:00:00.000Z"
+      "updatedAt": "2026-10-25T12:12:29.462Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -7267,6 +7685,143 @@
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.android-widget-foundation.semantic-widget-surface.verifying.a003-assurance-clear",
+      "workRef": "work.android-widget-foundation.semantic-widget-surface",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Exact corrected-head SourceOwner A003 passed the focused widget tests, repository vexVerifyLocal + AndroidTest assembly, exact nine-path/head/tree checks and current dependency composition; fresh Independent Assurance then found no blocking semantic defect.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexlife-android.174",
+        "evidence.android-widget-foundation.pr174.sourceowner.a003.return.sha256.f7befd6425a4558da051bf48c795a246404b7306c7cd85246529750ac6b8be92",
+        "github.comment.vexlife-android.pr174.6393072528.assurance-clear"
+      ],
+      "createdAt": "2026-10-25T03:42:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.android-widget-foundation.semantic-widget-surface.completed.pr174-tree-exact",
+      "workRef": "work.android-widget-foundation.semantic-widget-surface",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "PR #174 merged onto current Android main and the accepted merge tree exactly equals the A003-proven candidate tree, completing the reusable semantic widget substrate without expanding product ownership.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexlife-android.174",
+        "github.commit.vexlife-android.082cc4689bc9b951621727b91cdcf0a63a8bbc2e",
+        "github.comment.vexlife-android.pr174.6393084696.post-merge-tree-exact"
+      ],
+      "createdAt": "2026-10-25T03:42:52.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.android-widget-foundation.vexstream-playback-widget.ready.pr174-integrated",
+      "workRef": "work.android-widget-foundation.vexstream-playback-widget",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "The reusable widget substrate is accepted source on Android main, and the VexStream Full Player app-entry dependency was already source-satisfied. The patient-zero VexStream widget therefore has no remaining construction dependency.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "work.android-widget-foundation.semantic-widget-surface",
+        "github.commit.vexlife-android.082cc4689bc9b951621727b91cdcf0a63a8bbc2e",
+        "work.vexstream.mobile-library.full-player"
+      ],
+      "createdAt": "2026-10-25T03:43:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.android-widget-foundation.vexstream-playback-widget.running.patient-zero-envelope-20261024a",
+      "workRef": "work.android-widget-foundation.vexstream-playback-widget",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "The reusable widget substrate is integrated, offline artwork durability is now accepted Android source, and Victor's already-approved compact one-row VexStream patient-zero envelope remains current. Begin the concrete product widget on PR #178 without widening generic widget ownership.",
+      "actorRef": "actor.local-vex-operations.android-widget-foundation",
+      "sourceRefs": [
+        "response.victor.android-widget-foundation.ready-active.20261024a",
+        "work.android-widget-foundation.semantic-widget-surface",
+        "github.commit.vexlife-android.c5c2014733572da22cb320ec32801f10bcbedf65",
+        "github.pull.vexlife-android.178"
+      ],
+      "createdAt": "2026-10-25T05:09:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.android-widget-foundation.vexstream-playback-widget.layout-usability.running.pr179",
+      "workRef": "work.android-widget-foundation.vexstream-playback-widget.layout-usability",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Victor explicitly resumed the lived widget completion work and requested centered, larger transport Controls. Android PR #179 now owns that bounded launcher geometry/touch-target correction.",
+      "actorRef": "actor.local-vex-operations.android-widget-foundation",
+      "sourceRefs": [
+        "human.lived-feedback.android-widget-foundation.vexstream-playback-widget.20261025",
+        "github.pull.vexlife-android.179",
+        "github.commit.vexlife-android.2dc060113e5e100a47bf053807376c5cd40cb639"
+      ],
+      "createdAt": "2026-10-25T07:25:02.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.android-widget-foundation.vexstream-playback-widget.layout-usability.verifying.pr179-tree-exact",
+      "workRef": "work.android-widget-foundation.vexstream-playback-widget.layout-usability",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "PR #179 composed SourceOwner passed, fresh Assurance was CLEAR, and the exact assured layout/touch-target tree is now on Android main. Hold completion until Victor re-reviews centered controls, touch comfort, and resize behavior on the physical launcher.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexlife-android.179",
+        "github.commit.vexlife-android.d0e698d564cdfe78de008d4261f8113aa5c2505c",
+        "github.comment.vexlife-android.pr179.6395146346.post-merge-tree-exact"
+      ],
+      "createdAt": "2026-10-25T07:59:11.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.android-widget-foundation.vexstream-playback-widget.state-refresh.running.pr179",
+      "workRef": "work.android-widget-foundation.vexstream-playback-widget.state-refresh",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Victor explicitly resumed the lived widget completion work after physical launcher feedback. Android PR #179 now owns the bounded State-refresh correction: global widget refresh plus one bounded canonical Media3 convergence re-read without introducing widget-owned State.",
+      "actorRef": "actor.local-vex-operations.android-widget-foundation",
+      "sourceRefs": [
+        "human.lived-feedback.android-widget-foundation.vexstream-playback-widget.20261025",
+        "github.pull.vexlife-android.179",
+        "github.commit.vexlife-android.2dc060113e5e100a47bf053807376c5cd40cb639"
+      ],
+      "createdAt": "2026-10-25T07:25:02.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.android-widget-foundation.vexstream-playback-widget.state-refresh.verifying.pr179-tree-exact",
+      "workRef": "work.android-widget-foundation.vexstream-playback-widget.state-refresh",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "PR #179 composed SourceOwner passed, fresh Assurance was CLEAR, and merge d0e698d564cdfe78de008d4261f8113aa5c2505c produced the exact assured tree. Hold completion until Victor re-reviews launcher state convergence on the physical device.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexlife-android.179",
+        "github.commit.vexlife-android.d0e698d564cdfe78de008d4261f8113aa5c2505c",
+        "github.comment.vexlife-android.pr179.6395146346.post-merge-tree-exact"
+      ],
+      "createdAt": "2026-10-25T07:59:11.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.android-widget-foundation.vexstream-playback-widget.state-refresh.failed-recoverable.lived-currentness-20261025a",
+      "workRef": "work.android-widget-foundation.vexstream-playback-widget.state-refresh",
+      "priorState": "VERIFYING",
+      "nextState": "FAILED_RECOVERABLE",
+      "reason": "Victor's physical re-review showed the Full Player already carrying current track truth while the launcher widget rendered its generic fallback projection with no artist and disabled transport controls. This disproves lived convergence of the PR #179 refresh strategy. Playback/Queue command routing remains SCAE-shaped; the recoverable defect is the missing explicit currentness relationship between provider observation and remote Glance projection.",
+      "actorRef": "actor.local-vex-operations.android-widget-foundation",
+      "sourceRefs": [
+        "human.lived-feedback.android-widget-foundation.currentness-convergence.20261025a",
+        "projects/android-widget-foundation/README.md",
+        "repo.vexlife-android:architecture/behavior/README.md",
+        "github.commit.vexlife-android.6f5b2dc6cdbf284b84cb590ba5b1016af3d33939"
+      ],
+      "createdAt": "2026-10-25T12:12:29.462Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
       "transitionRef": "transition.vex-universe.businessfactory-convergence.ready.pr90-cleared",
       "workRef": "work.vex-universe.businessfactory-convergence",
       "priorState": "WAITING_RESOURCE",
@@ -7741,6 +8296,21 @@
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.current-artwork-availability.running.issue11",
+      "workRef": "work.vexstream.mobile-library.current-artwork-availability",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Source descent reached the VexStream Desktop filesystem owner and confirmed the lived placeholder is upstream for ordinary MP3s: ID3 text frames are parsed but APIC embedded cover art is not. VexstreamMusic issue #11 now owns the cross-repository producer/mobile artwork correction.",
+      "actorRef": "actor.local-vex-operations.vexstream-mobile-library",
+      "sourceRefs": [
+        "github.issue.vexstream-music.11",
+        "repo.vexstream-music:v2/desktop/library/filesystem/metadata.go",
+        "human.lived-feedback.vexstream.artwork-availability.20261025"
+      ],
+      "createdAt": "2026-10-25T07:25:37.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
       "transitionRef": "transition.vexstream.mobile-library.full-player.ready.artwork-source-integrated-20261024",
       "workRef": "work.vexstream.mobile-library.full-player",
       "priorState": "WAITING_DEPENDENCIES",
@@ -7758,6 +8328,41 @@
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.full-player.running.victor-approved-20261024a",
+      "workRef": "work.vexstream.mobile-library.full-player",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Victor approved the exact Full Player Active envelope: one full-height Now Playing modal sheet opened from the Mini Player, with Queue composed/revealed inside that same transient surface while existing Playback, Queue and Repeat semantic owners remain authoritative; the Android home-screen widget stays downstream.",
+      "actorRef": "actor.local-vex-operations.vexstream-mobile-library",
+      "sourceRefs": [
+        "project.vexstream.mobile-library",
+        "proposal.local-vex-operations.vexstream-full-player.ready-active.20261024a",
+        "response.victor.vexstream-full-player.ready-active.20261024a",
+        "confirmation.local-vex-operations.vexstream-full-player.ready-active.20261024a"
+      ],
+      "createdAt": "2026-10-25T01:20:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.full-player.verifying.victor-approved-20261024b",
+      "workRef": "work.vexstream.mobile-library.full-player",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Victor approved the exact Full Player Active -> Verify envelope after corrected-head SourceOwner A003 PASS and fresh Independent Assurance CLEAR. Verify is bounded to lived Android review of the one Full Player Now Playing/Queue sheet; widget realization remains downstream.",
+      "actorRef": "actor.local-vex-operations.vexstream-mobile-library",
+      "sourceRefs": [
+        "github.pull.vexlife-android.175",
+        "github.commit.vexlife-android.105754d15674c070c7655ead8170f5065def796a",
+        "evidence.vexstream.full-player.pr175.sourceowner.a003.return.sha256.7867a8cac9cf3f434b1e2149e464f8805eaf9f172223bf85fe6df65b99fe00aa",
+        "github.comment.vexlife-android.pr175.6392257378.assurance-clear",
+        "proposal.local-vex-operations.vexstream-full-player.active-verify.20261024b",
+        "response.victor.vexstream-full-player.active-verify-standing-approval.20261024b",
+        "confirmation.local-vex-operations.vexstream-full-player.active-verify.20261024b"
+      ],
+      "createdAt": "2026-10-25T02:12:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
       "transitionRef": "transition.vexstream.mobile-library.now-playing-artwork-projection.running.victor-approved-20261024a",
       "workRef": "work.vexstream.mobile-library.now-playing-artwork-projection",
       "priorState": "READY",
@@ -7771,6 +8376,97 @@
         "confirmation.local-vex-operations.android-widget-foundation.ready-active.20261024a"
       ],
       "createdAt": "2026-10-24T11:26:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.now-playing-artwork-projection.verifying.accepted-source-currentization",
+      "workRef": "work.vexstream.mobile-library.now-playing-artwork-projection",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "The admitted VexStream Desktop artworkUrl projection and Android Media3 artwork propagation are both present as accepted merged source; currentization moves the original online artwork-projection task into source verification without conflating it with the newly observed offline durability gap.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexstream-music.10",
+        "github.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+        "github.pull.vexlife-android.172",
+        "github.commit.vexlife-android.28f3815c6d3d145a7c3d4fea23fbc8b96f3e9ca2"
+      ],
+      "createdAt": "2026-10-25T03:50:45.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.now-playing-artwork-projection.completed.accepted-source-currentization",
+      "workRef": "work.vexstream.mobile-library.now-playing-artwork-projection",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "The original task's bounded outcome is present in accepted source: canonical optional artwork metadata crosses the sanitized mobile catalog and reaches Media3. Offline artwork persistence and row rendering are now tracked separately as an observed durability defect.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+        "github.commit.vexlife-android.28f3815c6d3d145a7c3d4fea23fbc8b96f3e9ca2",
+        "github.pull.vexlife-android.177"
+      ],
+      "createdAt": "2026-10-25T03:50:46.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.offline-artwork-durability.running.victor-requested-20261024a",
+      "workRef": "work.vexstream.mobile-library.offline-artwork-durability",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Victor explicitly reported that downloaded/synced songs lose their album/track artwork and asked to improve the offline experience, including deciding where durable image assets should live. That human request authorizes the bounded Android offline-artwork repair without widening into unrelated producer metadata invention.",
+      "actorRef": "actor.local-vex-operations.vexstream-mobile-library",
+      "sourceRefs": [
+        "project.vexstream.mobile-library",
+        "response.victor.vexstream-offline-artwork.ready-active.20261024a",
+        "github.pull.vexlife-android.177"
+      ],
+      "createdAt": "2026-10-25T03:50:45.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.pairing-reconnect-build-continuity.running.pr180",
+      "workRef": "work.vexstream.mobile-library.pairing-reconnect-build-continuity",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Causal grounding confirmed product pairing already persists in SharedPreferences + Android Keystore while the repository lacked AGP's leave-APKs-installed connected-test setting. Android PR #180 now owns the proof-substrate correction so connected proof does not erase Victor's lived pairing.",
+      "actorRef": "actor.local-vex-operations.vexstream-mobile-library",
+      "sourceRefs": [
+        "github.pull.vexlife-android.180",
+        "github.commit.vexlife-android.ec12655534a5cb0249a01f4e5c8e02e3d97cc329",
+        "human.lived-feedback.vexstream.pairing-reconnect-build-continuity.20261025"
+      ],
+      "createdAt": "2026-10-25T07:25:05.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.pairing-reconnect-build-continuity.verifying.pr180-integrated",
+      "workRef": "work.vexstream.mobile-library.pairing-reconnect-build-continuity",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "PR #180 exact-head SourceOwner passed, fresh Assurance was CLEAR, and merge 255491df93835405800c93a17889c7574eb683b3 exactly composed current PR #179 main with the four proven Test/Proof blobs. Hold completion until a physical connected-test run proves an already-established VexStream pairing survives the repository-owned device-proof path.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexlife-android.180",
+        "github.commit.vexlife-android.255491df93835405800c93a17889c7574eb683b3",
+        "github.comment.vexlife-android.pr180.6395231779.post-merge-exact-composition"
+      ],
+      "createdAt": "2026-10-25T08:08:17.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.pairing-reconnect-build-continuity.completed.machine-bounded-20261025",
+      "workRef": "work.vexstream.mobile-library.pairing-reconnect-build-continuity",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "PR #180 is merged, SourceOwner passed, Assurance was CLEAR, exact current-main composition was verified, and physical A003 proved the installed package plus private VexStream pairing record survive the repository-owned connected-test path byte-for-byte. Victor clarified that a true uninstall/reinstall still loses pairing and is acceptable as a separate non-blocking future concern rather than a failure of this bounded build/proof-continuity outcome.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexlife-android.180",
+        "github.comment.vexlife-android.pr180.6395713039.device-a003-pass",
+        "human.lived-feedback.vexstream.uninstall-reinstall-reconnect-not-preserved.20261025"
+      ],
+      "createdAt": "2026-10-25T09:10:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
@@ -7878,6 +8574,22 @@
         "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md"
       ],
       "createdAt": "2026-10-24T05:00:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.sort-filter.running.recently-added-feedback-20261025a",
+      "workRef": "work.vexstream.mobile-library.sort-filter-controls",
+      "priorState": "WAITING_HUMAN",
+      "nextState": "RUNNING",
+      "reason": "Victor's lived review found the accepted Sort / Filter surface insufficient for finding fresh downloads because it exposes no Recently added/freshness dimension. Return the already-authorized work to Active so the feature can distinguish producer catalog AddedAt from Android local-download freshness and make new music discoverable without conflating the two clocks.",
+      "actorRef": "actor.local-vex-operations.vexstream-mobile-library",
+      "sourceRefs": [
+        "human.lived-feedback.vexstream.mobile-library.recently-added.20261025a",
+        "projects/vexstream-mobile-library/README.md",
+        "repo.vexstream-music:v2/desktop/library/model.go",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt"
+      ],
+      "createdAt": "2026-10-25T12:12:29.462Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
