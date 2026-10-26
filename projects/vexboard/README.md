@@ -282,7 +282,12 @@ Origin until a bounded path migration is earned). The current POC should encode 
 Origin/binding/mapping lineage needed to prove this path; a universal content registry is not implied
 until a rightful repeated consumer earns that owner.
 
-The current naming/composition direction is now explicit:
+The current naming/composition hypothesis is captured here for continuity and is explicitly revisitable:
+
+> The examples below are not a freeze list. Future implementation/review should challenge them when new
+> evidence exposes a clearer noun, boundary, or decomposition; preserving reasoning matters more than
+> preserving any proposed spelling.
+
 
 ~~~text
 identity     -> ID
@@ -306,14 +311,14 @@ target custom UI
 
 Android ElementIntent
   -> current migration grammar
-  -> DO NOT rename wholesale to VexAct
-  -> decompose through State / Control / Act / Effect where Behavior actually applies
+  -> wholesale rename to VexAct is not supported by current evidence
+  -> current candidate is to separate typed navigation/presentation from SCAE where Behavior applies
 ~~~
 
-The current Android `AppBlueprint` is shell + registered Screen UI composition, so it is not evidence
-that the whole application should be named from that class. A future whole-application Origin may own
-Features, services, background behavior, widgets and UI while a target `VexAppUI` realizes only the
-application UI composition.
+The current Android `AppBlueprint` is shell + registered Screen UI composition, so this checkpoint does
+not treat it as evidence for the whole-application name. `VexAppUI` is a current candidate, while a future
+whole-application Origin may own Features, services, background behavior, widgets and UI. These names
+remain open to refactor if a later consumer proves a clearer boundary.
 
 The pilot may treat a rightful product **Feature identity** as a discoverable semantic root for projections, journeys, construction targets, source bindings, evidence and Work. That does **not** require adding `FEATURE` to the VexWork Workgraph class vocabulary. Projects remain human-outcome groupings; product repositories remain owners of feature/product meaning.
 

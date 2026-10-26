@@ -154,12 +154,16 @@ MIGRATION
 The implementation should migrate only after the semantic model is settled enough that renaming does not
 become another churn cycle.
 
-### Identity and address vocabulary — ID, URI and Key are different roles
+### Identity and address vocabulary — current working model
+
+This section records the strongest naming model earned by the current patient zero. It is **not a protected
+final vocabulary**. A later consumer, platform, or simpler model may refactor these names if it preserves
+or improves the underlying distinctions and lineage.
 
 The current source contains many established `*Ref` fields. Those are migration coordinates, not a
 requirement that new semantic models continue treating `Ref` as a fourth identity primitive.
 
-The intended long-term vocabulary is:
+The current working vocabulary is:
 
 ~~~text
 ID
@@ -210,16 +214,16 @@ ID != KEY
 
 MOVE_SOURCE
 -> URI MAY CHANGE
--> ID MUST NOT SILENTLY CHANGE
+-> current expectation: ID remains stable unless the semantic identity itself is intentionally reminted
 ~~~
 
-`URI` is preferred over a bespoke `Locator` abstraction because it is already an established,
-cross-platform engineering form with mature API support and can express file, provider, content,
-network or other address schemes without confusing addressability with semantic identity.
+The current preference is `URI` rather than a bespoke `Locator` abstraction because URI is already an
+established, cross-platform engineering form with mature API support and can express file, provider,
+content, network or other address schemes without confusing addressability with semantic identity.
 
-Do not mechanically rename every existing `*Ref` field in one migration. Classify each field first:
-identity -> `*Id`; address -> `*Uri`; true lookup key -> `*Key`. Existing accepted schemas remain
-valid until a bounded versioned migration earns the change.
+Any future `*Ref` migration should classify each field by actual role rather than mechanically rename it:
+identity -> `*Id`; address -> `*Uri`; true lookup key -> `*Key`. Existing accepted schemas remain valid
+until a bounded versioned migration earns a different representation.
 
 ### Application composition — hierarchical ownership, flat indexes, nested presentation
 
@@ -239,12 +243,12 @@ VexAppUI
   -> Feature-contributed Screens
 ~~~
 
-The current Android `AppBlueprint` owns only shell + registered Screens. It therefore must not be
-renamed to `VexApplication` merely because it sits near the app root. `VexAppUI` is the stronger
-long-term conceptual fit unless future source proves a broader responsibility.
+The current Android `AppBlueprint` owns only shell + registered Screens. That current responsibility does
+not justify treating it as the whole `VexApplication`. `VexAppUI` is the strongest name candidate from
+this checkpoint, but future source may earn a different boundary or name.
 
-Use the repository's existing **Feature** vocabulary before inventing a parallel generic `Domain`
-layer merely to distribute registration:
+The current repository language favors the existing **Feature** vocabulary before adding a parallel
+generic `Domain` layer merely for distributed registration:
 
 ~~~text
 VexApplicationOrigin
@@ -282,17 +286,18 @@ HIERARCHICAL_OWNERSHIP
 != FLAT_RUNTIME_INDEX
 ~~~
 
-Do not jump immediately to magical classpath/source discovery. First let Features own bounded explicit
-registrations and let application composition aggregate them. More automatic distributed discovery is
-earned only if real parallel-work pressure proves the remaining aggregation point is itself harmful.
+The current smallest scalable candidate is Feature-owned bounded registration aggregated by application
+composition. Automatic classpath/source discovery remains an open later option if real parallel-work
+pressure shows the remaining aggregation point is itself harmful.
 
-#### Screen means a sovereign full-page destination
+#### Screen — current working definition
 
-`Screen` is not a synonym for any container that owns children.
+The current patient zero uses `Screen` for a sovereign full-page / destination context rather than every
+container that owns children. This definition is intentionally revisitable if later product/platform
+pressure proves a better boundary.
 
-A Screen is a sovereign full-page / destination context in the product experience. Android may realize
-that Screen through an Activity, Fragment, Compose navigation destination or another target-native
-mechanism without changing the portable meaning.
+Android may realize that Screen through an Activity, Fragment, Compose navigation destination or another
+target-native mechanism without requiring the portable name to mirror that implementation.
 
 ~~~text
 ArticleDetailScreenOrigin
@@ -311,10 +316,8 @@ weakening the Screen definition.
 
 #### Familiar-form realization naming
 
-Custom target UI should inherit established human/platform vocabulary where that vocabulary truthfully
-describes the realized form.
-
-Prefer:
+Current naming pressure favors established human/platform vocabulary where it truthfully describes the
+realized form. Examples:
 
 ~~~text
 VexConnectionBottomSheet
@@ -326,18 +329,16 @@ VexSearchBar
 VexNowPlayingPanel
 ~~~
 
-over newly invented abstraction names whose primary meaning is implementation mechanics.
-
-The grammar is:
+These currently read more clearly than newly invented abstraction names whose primary meaning is
+implementation mechanics. The working grammar is:
 
 ~~~text
 Vex + semantic/product meaning + familiar form
 ~~~
 
-A target-native form such as `BottomSheet`, `Alert`, `Widget`, `Row` or `Panel` is healthy when
-it names the target realization honestly. It becomes architectural leakage only if that target form is
-promoted into the portable Origin contract without product/design authority requiring the same form
-across targets.
+A target-native form such as `BottomSheet`, `Alert`, `Widget`, `Row` or `Panel` can be useful when it
+names the target realization honestly. Whether that form belongs in portable Origin meaning remains a
+separate design decision and may evolve with later product/target evidence.
 
 ~~~text
 PORTABLE_MEANING
@@ -1612,7 +1613,7 @@ VexElementTree.textValue(TextElement)
   -> nullable current-value resolver
 ~~~
 
-Permanent:
+Current distinctions supported by the #182 patient zero:
 
 ~~~text
 VEX_TEXT_IDENTITY != CONTENT_ORIGIN
@@ -1633,11 +1634,11 @@ TextElement
 != PORTABLE_ORIGIN_OWNER
 ~~~
 
-This correction generalizes carefully: styles, assets, behavior, data bindings and other reusable
-meaning should remain source-addressable and mapped to target realizations where a real consumer earns
-that contract. Do not predeclare one giant universal schema merely from this text example.
+This correction currently suggests the same separation may be useful for styles, assets, behavior, data
+bindings and other reusable meaning when real consumers earn it. This text example does not by itself
+justify a giant universal schema, and later evidence may reshape the boundary.
 
-#### Control / Act / Effect — do not turn ordinary navigation into opaque Act IDs
+#### Control / Act / Effect — current boundary hypothesis for navigation and behavior
 
 The accepted VexLife semantic law distinguishes State, Control, resolved Act, Effect and Projection,
 but those roles are **not a mandatory five-step wrapper around every interaction**.
@@ -1670,25 +1671,25 @@ ElementIntent.LocalEffect
 ElementIntent.Sequence(...)
 ~~~
 
-Do **not** solve this by either:
+Two transformations currently look unsupported by the evidence:
 
 ~~~text
 ElementIntent -> VexAct
 ~~~
 
-or:
+and:
 
 ~~~text
 NavigateTo(Screen)
 -> ActId("act.some-domain.request-screen")
 ~~~
 
-merely to force ordinary navigation through a semantic string identity.
+when their only purpose is forcing ordinary navigation through a semantic string identity.
 
-An ID identifies a semantic object. It must not replace a useful typed function/relationship merely
-because IDs are portable.
+An ID identifies a semantic object; portability alone does not establish that it should replace a useful
+typed function/relationship.
 
-Permanent distinctions:
+Current distinctions supported by accepted SCAE plus the Android navigation source:
 
 ~~~text
 ID != EXECUTION_MECHANISM
@@ -1723,12 +1724,13 @@ or in a target-native implementation:
 navigation.push(articleDetailScreen)
 ~~~
 
-No invented `act.news.read-article` is required merely to replace `NavigateTo(articleDetailScreen)`.
+When the only truthful relationship is direct navigation, an extra `act.news.read-article` identity does
+not currently add useful meaning over `NavigateTo(articleDetailScreen)`.
 
 Likewise, opening/closing a dialog, selecting a local tab, or dismissing a sheet may remain typed
 presentation operations when no portable Behavior owns a distinct semantic question.
 
-The durable movement is therefore:
+The current decomposition candidate is therefore:
 
 ~~~text
 current ElementIntent mixed union
@@ -1785,9 +1787,10 @@ State = authentication required
 -> Effect may request authentication presentation
 ~~~
 
-Whether an explicit Act identity is useful is a **behavior-model decision**, not a navigation
-requirement. If the only truthful relationship is "this control opens this registered Screen", keep
-the typed navigation relationship and do not invent an Act.
+Whether an explicit Act identity is useful is currently treated as a **behavior-model decision**, not a
+navigation requirement. If the only observed relationship is "this control opens this registered
+Screen", the typed navigation relationship is presently sufficient; later behavior pressure may earn a
+separate Act.
 
 ##### Current migration interpretation
 
@@ -1829,9 +1832,10 @@ Sequence
   presentation-only sequences may remain typed local runtime composition
 ~~~
 
-The UI should be semantically **narrow**, not stringly typed. A Control identifies the affordance/request;
-typed navigation/presentation owners keep their established mechanics; rightful Behavior resolves Acts
-only when semantic behavior actually exists.
+The current direction favors a semantically narrow, type-safe UI boundary: a Control identifies the
+affordance/request; typed navigation/presentation owners keep their established mechanics; Behavior
+resolves Acts where a real semantic behavior question exists. Later evidence may legitimately refactor
+this split.
 
 ##### IDs and generated target types
 
@@ -1849,6 +1853,11 @@ target code
 
 Likewise a `screenId` identifies the Screen while target code may hold a typed `VexScreen` object.
 The semantic graph needs stable IDs; engineers do not need to abandon type-safe APIs to obtain them.
+
+> **Refactorability note:** names and decomposition examples in this section are current architectural
+> hypotheses, not protected interfaces. Future work should re-evaluate them when a new consumer exposes
+> a simpler or more truthful model. Preserve accepted evidence and semantic distinctions; do not preserve
+> a proposed noun merely because this document once proposed it.
 
 #### Standardization posture
 
