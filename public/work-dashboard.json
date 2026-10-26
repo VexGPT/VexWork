@@ -190,6 +190,21 @@
   "parkingLot": {
     "items": [
       {
+        "workRef": "work.vexboard.tech-debt.origin-rename-propagation",
+        "label": "Tech debt — Origin rename propagation through mapped descendants",
+        "purpose": "Preserve the low-priority future need for VexBoard to traverse an accepted Origin's existing semantic, process, source and realization relationships when its reusable name changes: first expose the complete downstream rename plan and support bounded manual propagation, then use the observed process to earn autonomous BoardPatch-style propagation with lineage/currentness proof. The Origin is the design truth; repository placement is secondary, so this does not imply repository fragmentation or a parallel rename registry.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "LOW",
+        "repositoryRefs": [
+          "repo.vexwork"
+        ],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "updatedAt": "2026-10-26T01:57:41.000Z"
+      },
+      {
         "workRef": "work.vexstream.mobile-library.tag-topology-stations",
         "label": "User tag topology / dynamic stations",
         "purpose": "Preserve the future product question of user-authored music tags that remain distinct from imported source tags/categories and can drive reusable dynamic stations or smart-playlist rules without pre-deciding identity attachment, persistence ownership, rule language, or playlist materialization.",
@@ -286,7 +301,7 @@
   "summary": {
     "projectWorkItemCount": 8,
     "openProjectWorkItemCount": 0,
-    "parkingLotItemCount": 6
+    "parkingLotItemCount": 7
   },
   "effects": false,
   "executionAuthority": "NONE"
