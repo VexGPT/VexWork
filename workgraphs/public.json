@@ -4234,6 +4234,43 @@
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexboard.vexstream-origin-roundtrip-review",
+      "parentWorkRefOrNull": "work.vexboard.vexstream-screenshot-pilot",
+      "label": "Independent review — VexStream Origin round-trip architecture",
+      "purpose": "Give a fresh independent reviewer a bounded, read-only lane to pressure-test the VexStream living-Origin round trip without becoming a second source owner. Review the Origin naming/lineage law, content-Origin versus value-binding separation, Android TextElement realization, deterministic Android registry projection, construction-admission boundary, evidence/currentness semantics, and whether any target-specific convenience is accidentally hardening into portable ontology. Feedback should identify concrete semantic gaps, duplicated truth, target leakage, unjustified abstractions, or proof holes; it is advisory evidence and does not itself grant source mutation, approval, merge, or Origin-authority acceptance.",
+      "workClass": "TASK",
+      "state": "READY",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "work.vexboard.vexstream-screenshot-pilot",
+        "projects/vexboard/README.md",
+        "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md",
+        "projects/vexboard/examples/vexlife-android-home-vexstream.design.json",
+        "projects/vexboard/examples/vexlife-android-home-vexstream.snapshot.json",
+        "src/core/vexboard-screen-design.mjs",
+        "src/core/vexboard-android-construction.mjs",
+        "src/core/vexboard-android-source-projector.mjs",
+        "github.pull.vexlife-android.182",
+        "github.pull.vexlife-android.183",
+        "github.pull.vexwork.155"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [
+        "process.vexwork.quality-review"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-26T03:10:45.000Z",
+      "updatedAt": "2026-10-26T03:10:45.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vexboard.vexstream-screenshot-pilot",
       "parentWorkRefOrNull": "work.vexboard.outcome",
       "label": "VexStream living Origin screenshot pilot",
