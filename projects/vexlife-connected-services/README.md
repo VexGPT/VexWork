@@ -40,7 +40,7 @@ The program intentionally learns from real consumers before extracting more arch
 | VCS-02 minimum shared contract | COMPLETED | Authentication/session, reachability, capability addressing and currentness boundary established. |
 | VCS-03 Maps engine realization | COMPLETED | Shared boundary exercised against a real replaceable provider engine. |
 | **VCS-04 Conversation adoption** | **COMPLETED** | L1-L11 lived acceptance and terminal Android/VexWork source-currentness are closed. |
-| **VCS-05 VexStream stress** | **RUNNING** | Current foreground: test the existing VexStream local Range/media data plane under larger and non-monotonic demand before generalizing streaming mechanics. |
+| **VCS-05 VexStream stress** | **COMPLETED** | Local Range/media pressure, restart/reconnect continuity, and ownership separation are proven; no new generic streaming transport was earned. |
 | VCS-06 VexArchitecture extraction | WAITING | Extract only patterns earned by multiple real consumers. |
 | VCS-07 deployment choices | WAITING | Deployment comes after runtime semantics stabilize. |
 
@@ -194,42 +194,42 @@ A003 regenerated the current Connected Services projections after the two stale 
 
 No Android/Home/Family/Heretic replay is owed. The foreground Connected Services edge is now `work.vexlife.connected-services.vcs05-stream-stress`.
 
-## VCS-05 current edge
+## VCS-05 terminal result
 
-VCS-05 begins with proof, not abstraction.
-
-Current exact source:
+VCS-05 proved the current VexStream streaming/data-plane pressure without widening the shared Connected Services contract.
 
 ```text
-VexStreamMusic main = ed0ecba9b35459fd03aa3bbaede9e4cea8b694f7
-VexLife-Android main = b2a0f86ed281c5b67eab3b4fd3b6b32181262988
-VexStream stress PR = github.pull.vexstream-music.15
+VexStream PR15 = MERGED / POST_MERGE_VERIFIED @ fbe2060dae75efaae069f777d4346b45b251a754
+A003 focused Range stress = PASS
+4 MiB media = sequential / forward seek / backward seek / tail Range PASS
+terminal MassDownload = Desktop stop -> LOCAL_ONLY -> Android restart -> Desktop restart -> reconnect HUB_AND_LOCAL
 ```
 
-Current ownership finding:
+Current architecture judgment:
 
 ```text
 Connected Services shared/control plane
-  reachability / session / admission / route currentness / correlation
+  reachability / session / admission / route currentness / correlation / typed transport availability
 
 VexStream-owned data plane
-  HTTP Range media bytes / Media3 demand / media identity / playback / download state
+  HTTP Range / Media3 demand-backpressure / media identity / playback / offline-copy state
 ```
 
-The first candidate changes only `v2/desktop/mobile/catalog_test.go`. It creates a 4 MiB deterministic media file and drives the existing `mobileMedia` handler through sequential ranges, a forward seek, a backward seek and a tail range over a real `httptest` HTTP server. Every response must remain HTTP 206 with `Accept-Ranges: bytes`, exact `Content-Range`, and exact requested bytes. Elapsed time is logged as evidence only; no throughput SLO is invented.
+No new generic streaming transport, generic backpressure owner, remote relay media producer acceptance, or Maps/Conversation streaming widening was earned. Android remote 256 KiB source remains architecture pressure only until a rightful producer is accepted.
 
-Still held:
+## VCS-06 current edge
+
+Three real consumers have now earned architecture extraction:
 
 ```text
-generic streaming/session contract
-generic media backpressure contract
-remote relay media producer acceptance
-SDK/VexArchitecture extraction
-Maps/Conversation streaming changes
-Android production mutation
+Maps
+Conversation
+VexStream
+-> extract only stable recurring ownership/contracts/proof obligations
 ```
 
-Current Android remote 256 KiB request/response source remains architectural pressure only: current VexStream Desktop main has no matching remote/relay gateway producer.
+Do not copy VexStream's Range/media plane into a universal template. Cross-product reusable architecture is expected to land in Vextreme-SDK only after exact source placement/authority is established.
+
 ## Read next
 
 For ordinary continuation:
@@ -237,8 +237,7 @@ For ordinary continuation:
 ```text
 this README
 -> public/workspace.json / VexWork UI
--> work.vexlife.connected-services.vcs05-stream-stress
--> github.pull.vexstream-music.15
+-> work.vexlife.connected-services.vcs06-architecture-extraction
 -> docs/lineage/VEXLIFE-CONNECTED-SERVICES.md only when causal history is needed
 -> target repository current source only for the next effect
 ```
