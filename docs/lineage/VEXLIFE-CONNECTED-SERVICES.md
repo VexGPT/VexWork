@@ -217,42 +217,68 @@ One shared `strings.xml` blob is a valid three-way composition rather than the c
 PR154 is therefore `TERMINAL_ACCEPTED_CURRENT`. No further Conversation lived behavior proof is required unless future source changes invalidate the accepted evidence.
 
 A003 regenerated the current Connected Services projections and reached the full deterministic VexWork review. The only discovered VexWork source defect was two stale tests that still expected the pre-split Project cardinality/state. After repairing those rightful tests, A003 passed the generator/review closure. Phase 6 and VCS-04 therefore complete, releasing VCS-05 to READY.
-### VCS-05 — running
+### VCS-05 — completed
 
-VCS-05 begins from current source rather than historical VexStream transport assumptions.
+VCS-05 closed by stressing the already-real VexStream consumer rather than inventing a streaming abstraction first.
 
-Current source descent established:
-
-```text
-VexStreamMusic main = ed0ecba9b35459fd03aa3bbaede9e4cea8b694f7
-VexLife-Android main = b2a0f86ed281c5b67eab3b4fd3b6b32181262988
-
-local producer:
-  GET/HEAD /v1/media/<track>
-  Accept-Ranges: bytes
-  Go http.ServeContent
-
-Android local consumer:
-  opaque vexstream:// identity
-  pinned TLS + bearer resolved at data boundary
-  Media3 DataSpec position/length -> HTTP Range
-
-Android remote source:
-  repeated 256 KiB encrypted Range request/response chunks
-  no current VexStream Desktop remote/relay producer implementation
-```
-
-Therefore the current first stress claim is local and test-only. VexStream PR #15 adds no production source and asks whether the existing Range path preserves exact bytes across larger sequential and non-monotonic demand. This intentionally keeps control-plane/session concerns separate from VexStream's media data plane until stress proves a missing shared contract.
-
-Permanent distinctions:
+Accepted current evidence:
 
 ```text
-LOCAL_VEXSTREAM_PAIRING != HOME_AUTHORITY
-RANGE_MEDIA != CATALOG_CURRENTNESS
-PLAYBACK_STATE != CONNECTED_SERVICE_STATE
-MEDIA_BACKPRESSURE != GENERIC_REQUEST_CURRENTNESS
-REMOTE_TRANSPORT_SOURCE != REMOTE_PRODUCER_ACCEPTANCE
+VexStream PR15 A003
+  4 MiB deterministic media
+  sequential 512 KiB Range
+  forward seek
+  backward seek
+  tail Range
+  exact 206 / Content-Range / bytes
+  full V4 verify:local PASS
+  merge fbe2060dae75efaae069f777d4346b45b251a754
+
+terminal Android MassDownload A012
+  real Desktop stop
+  exact tracks LOCAL_ONLY
+  local Media3 playback
+  real Android process stop/restart
+  exact local refs restored
+  Desktop restart
+  reconnect
+  exact refs HUB_AND_LOCAL
 ```
+
+Current source review preserved the reconnect law:
+- remembered routes are tried first;
+- authorization revocation does not silently rebind;
+- nearby discovery is bounded route recovery;
+- a rediscovered route is accepted only for the same pinned certificate.
+
+The current production reconnect algorithm is materially unchanged from the terminal lived proof; later source only wrapped operations/loading projection around the same logic.
+
+Terminal VCS-05 architecture result:
+
+```text
+shared Connected Services = control plane
+  identity/session relationship
+  reachability / route currentness
+  admission
+  request correlation
+  typed availability/failure
+  reconnect/recovery
+
+VexStream = feature-owned media data plane
+  Range
+  Media3 demand/backpressure
+  media digest + length
+  playback
+  download/offline state
+  throughput/large-payload realization
+```
+
+No new generic streaming contract is earned. Remote direct/relay Android source is not accepted producer evidence because current accepted Desktop does not provide the corresponding remote/relay realization.
+
+### VCS-06 — ready
+
+Maps, Conversation and VexStream now provide three accepted consumer shapes. VCS-06 may extract the recurring architecture while preserving each semantic/data-plane owner and without authorizing SDK mutation merely from this transition.
+
 ## Recovery appendix — attempt lineage
 
 Attempt identities are evidence/recovery history, not canonical Work items.
