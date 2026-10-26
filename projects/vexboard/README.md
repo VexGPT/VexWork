@@ -175,31 +175,45 @@ published VexBoard Blueprint
 
 These Blueprint Source-of-Truth refs are **lineage and architectural pressure**, not blocking dependencies and not an automatic reactivation of the paused VLBSoT Project.
 
-### Source propagation law — canonical meaning reaches the endpoint
+### Origin propagation law — canonical meaning reaches the endpoint
 
-The VexStream patient zero also corrects an earlier target-centric assumption: Android resources,
-Compose literals and similar endpoint values are not automatically the portable source of truth merely
-because reverse adoption discovers them first.
+The VexStream patient zero corrects an earlier target-centric assumption: Android resources, Compose
+literals and similar endpoint values are not automatically the portable source of truth merely because
+reverse adoption discovers them first.
+
+`Origin` is now the intended canonical naming boundary:
+
+~~~text
+origin.vexlife.vexstream.ConnectionStatusOrigin
+        |
+        +-> android.vexlife.vexstream.ConnectionStatus
+        +-> desktop.vexlife.vexstream.ConnectionStatus
+        +-> web.vexlife.vexstream.ConnectionStatus
+~~~
+
+The descendant keeps the reusable semantic name; its scope/namespace says where it is realized. Existing
+`*Blueprint` source names remain migration coordinates only and should not be copied forward as the
+canonical naming law.
 
 For reusable content:
 
 ~~~text
-canonical message/content ref
+canonical message/content Origin
 -> locale/translation source
--> VexTextBlueprint usage
+-> semantic Origin usage
 -> target adapter
 -> Android R.string / web locale key / desktop resource
 -> rendered value
 -> observed evidence
 ~~~
 
-For state-conditioned text, the State/data binding selects a canonical message or supplies its
-parameters. It does not create a separate "dynamic text" ontology:
+For state-conditioned text, State/data bindings select a content Origin or supply its parameters. They do
+not create a separate "dynamic text" ontology.
 
 ~~~text
-VexTextBlueprint
-  semanticRef = stable element identity
-  contentRefs = stable reusable message identities
+Vex element/text Origin
+  semanticRef = stable identity
+  contentRefs = stable reusable message Origins
   valueBindingRef = optional current selection / parameter binding
 
 !=
@@ -207,19 +221,20 @@ VexTextBlueprint
 DynamicTextElement as portable product meaning
 ~~~
 
-The existing Android `DynamicTextElement` candidate is therefore a target-side realization seam needed
-to preserve stable Android registry identity when current State supplies the rendered value. It is not
-the naming pattern VexBoard should propagate into every platform.
+The earlier Android `DynamicTextElement` candidate was useful experimental pressure but is **not** a
+long-term semantic type. The Android candidate is being revised around one text identity whose value may
+come from a mapped Android resource or from current runtime binding. Preserve the lesson; do not preserve
+the experimental noun merely because source was already written.
 
-The same provenance rule should be visible in both directions:
+The same provenance rule must be visible in both directions:
 
 ~~~text
 reverse adoption
   target-native value
-  -> recover proposed canonical meaning
+  -> recover proposed Origin meaning
 
 accepted forward authority
-  canonical meaning
+  Origin
   -> mapped target realizations
 
 endpoint-only manual change
@@ -227,15 +242,41 @@ endpoint-only manual change
   -> never silent canonical replacement
 ~~~
 
-This is the long-term reason mappings must remain traversable. A fresh worker should be able to start
-from a rendered string/component/style/asset/behavior coordinate and reach its rightful semantic owner,
-or start from canonical truth and enumerate its downstream realizations, without source archaeology or
-per-platform retranslation.
+For localization, **semantic scope, physical files and vendor packets are separate axes**. Vextreme
+already demonstrates this well: canonical string source is sharded under `data/strings/source/**` by
+meaningful scope, while translation campaign/program tooling reads those canonical keys across files,
+forms deterministic bulk CSV packets, and compiled outputs become per-locale/read-optimized bundles.
 
-The detailed worked content example and naming distinction live in
-`SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md`. The current POC should encode only the smallest message/binding
-lineage needed to prove this path; a universal localization/content registry is not implied until a
-rightful repeated consumer earns that owner.
+Therefore:
+
+~~~text
+source files
+  organize for rightful owners / maintainers
+
+Origin IDs
+  preserve stable semantic identity
+
+vendor translation batches
+  may flatten hundreds or thousands of Origins across scopes
+
+target resources
+  compile/project only what that target needs
+~~~
+
+Do not force a translation vendor to consume one package/file at a time merely because source is
+organized that way. Do not force maintainers into one enormous locale file merely because a vendor needs
+bulk delivery.
+
+This is the long-term reason mappings must remain traversable. A fresh worker should be able to start
+from a rendered string/component/style/asset/behavior coordinate and reach its rightful Origin, or start
+from Origin and enumerate downstream realizations, without source archaeology or per-platform
+retranslation.
+
+The detailed naming, localization and unresolved scaling constraints live in the current architecture
+source at `SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md` (legacy filename; its canonical vocabulary is now
+Origin until a bounded path migration is earned). The current POC should encode only the smallest
+Origin/binding/mapping lineage needed to prove this path; a universal content registry is not implied
+until a rightful repeated consumer earns that owner.
 
 The pilot may treat a rightful product **Feature identity** as a discoverable semantic root for projections, journeys, construction targets, source bindings, evidence and Work. That does **not** require adding `FEATURE` to the VexWork Workgraph class vocabulary. Projects remain human-outcome groupings; product repositories remain owners of feature/product meaning.
 
@@ -282,7 +323,7 @@ Do not introduce a universal OCR ontology, screenshot-hotspot registry, image-sp
 
 The eventual "start a business from the beginning" experience remains strategically important, but it is **not current implementation scope or authority**. It is preserved so future work can see the graduation path without pulling that complexity into this patient zero.
 
-## Reusable Semantic Blueprint IDE foundation
+## Reusable Semantic Origin IDE foundation
 
 The reusable IDE/construction pattern, recursive category examples, scoped-neighborhood behavior and
 future-instance starting procedure now live in:
@@ -301,9 +342,9 @@ The companion is architecture source, not a new wire schema or second owner.
 
 ## Human outcome
 
-A person should be able to describe a website, application, process, operating system, or work journey to AI and receive a navigable visual blueprint **before** expensive implementation begins.
+A person should be able to describe a website, application, process, operating system, or work journey to AI and receive a navigable visual Origin **before** expensive implementation begins.
 
-The blueprint should not be a pile of rectangles. It should preserve what each thing means, what it contains, what happens when it is used, which conditions alter the path, where deeper detail lives, and which current source owns projected truth.
+The Origin should not be a pile of rectangles. It should preserve what each thing means, what it contains, what happens when it is used, which conditions alter the path, where deeper detail lives, and which current source owns projected truth.
 
 > **VexBoard lets a human and AI design, inspect, traverse, refine, reuse, and discuss interactive systems on one scalable semantic canvas—and lets the same canvas project already-existing processes or work without becoming their second source of truth.**
 
@@ -311,7 +352,7 @@ The desired experience is:
 
 ```text
 human intention
--> AI-authored semantic blueprint
+-> AI-authored semantic Origin
 -> spatially clear canvas
 -> enter / expand / condense meaningful depth
 -> walk the intended experience or process
