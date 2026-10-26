@@ -40,7 +40,7 @@ The program intentionally learns from real consumers before extracting more arch
 | VCS-02 minimum shared contract | COMPLETED | Authentication/session, reachability, capability addressing and currentness boundary established. |
 | VCS-03 Maps engine realization | COMPLETED | Shared boundary exercised against a real replaceable provider engine. |
 | **VCS-04 Conversation adoption** | **COMPLETED** | L1-L11 lived acceptance and terminal Android/VexWork source-currentness are closed. |
-| **VCS-05 VexStream stress** | **READY** | Current foreground: long-lived media delivery, range, throughput, reconnect and backpressure pressure. |
+| **VCS-05 VexStream stress** | **RUNNING** | Current foreground: test the existing VexStream local Range/media data plane under larger and non-monotonic demand before generalizing streaming mechanics. |
 | VCS-06 VexArchitecture extraction | WAITING | Extract only patterns earned by multiple real consumers. |
 | VCS-07 deployment choices | WAITING | Deployment comes after runtime semantics stabilize. |
 
@@ -194,6 +194,42 @@ A003 regenerated the current Connected Services projections after the two stale 
 
 No Android/Home/Family/Heretic replay is owed. The foreground Connected Services edge is now `work.vexlife.connected-services.vcs05-stream-stress`.
 
+## VCS-05 current edge
+
+VCS-05 begins with proof, not abstraction.
+
+Current exact source:
+
+```text
+VexStreamMusic main = ed0ecba9b35459fd03aa3bbaede9e4cea8b694f7
+VexLife-Android main = b2a0f86ed281c5b67eab3b4fd3b6b32181262988
+VexStream stress PR = github.pull.vexstream-music.15
+```
+
+Current ownership finding:
+
+```text
+Connected Services shared/control plane
+  reachability / session / admission / route currentness / correlation
+
+VexStream-owned data plane
+  HTTP Range media bytes / Media3 demand / media identity / playback / download state
+```
+
+The first candidate changes only `v2/desktop/mobile/catalog_test.go`. It creates a 4 MiB deterministic media file and drives the existing `mobileMedia` handler through sequential ranges, a forward seek, a backward seek and a tail range over a real `httptest` HTTP server. Every response must remain HTTP 206 with `Accept-Ranges: bytes`, exact `Content-Range`, and exact requested bytes. Elapsed time is logged as evidence only; no throughput SLO is invented.
+
+Still held:
+
+```text
+generic streaming/session contract
+generic media backpressure contract
+remote relay media producer acceptance
+SDK/VexArchitecture extraction
+Maps/Conversation streaming changes
+Android production mutation
+```
+
+Current Android remote 256 KiB request/response source remains architectural pressure only: current VexStream Desktop main has no matching remote/relay gateway producer.
 ## Read next
 
 For ordinary continuation:
@@ -202,6 +238,7 @@ For ordinary continuation:
 this README
 -> public/workspace.json / VexWork UI
 -> work.vexlife.connected-services.vcs05-stream-stress
+-> github.pull.vexstream-music.15
 -> docs/lineage/VEXLIFE-CONNECTED-SERVICES.md only when causal history is needed
 -> target repository current source only for the next effect
 ```

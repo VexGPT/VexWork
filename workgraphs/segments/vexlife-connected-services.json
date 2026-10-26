@@ -212,9 +212,9 @@
       "workRef": "work.vexlife.connected-services.vcs05-stream-stress",
       "parentWorkRefOrNull": "work.vexlife.connected-services.outcome",
       "label": "VCS-05 — VexStream adoption / streaming stress",
-      "purpose": "Stress the accepted request/response Connected Services boundary against long-lived media delivery, range, throughput, reconnect and backpressure pressure before any streaming extension is generalized.",
+      "purpose": "Stress the accepted Connected Services control-plane boundary against VexStream's current feature-owned Range/media data plane, beginning with deterministic larger/non-monotonic local Range demand before any streaming extension is generalized.",
       "workClass": "OUTCOME",
-      "state": "READY",
+      "state": "RUNNING",
       "workDisposition": "ACTIVE",
       "priorityClass": "HIGH",
       "dependencyRefs": [
@@ -222,7 +222,8 @@
       ],
       "repositoryRefs": [
         "repo.vexlife",
-        "repo.vexlife-android"
+        "repo.vexlife-android",
+        "repo.vexstream-music"
       ],
       "sourceRefs": [
         "docs/lineage/VEXLIFE-CONNECTED-SERVICES.md",
@@ -230,14 +231,16 @@
         "github.pull.vexwork.132.comment.6406878192",
         "github.issue.vexlife.899.comment.6406486260",
         "github.pull.vexwork.132.comment.6406959147",
-        "github.pull.vexwork.132.comment.6407072302"
+        "github.pull.vexwork.132.comment.6407072302",
+        "github.issue.vexlife.899.comment.6407174402",
+        "github.pull.vexstream-music.15"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-21T23:56:41.000Z",
-      "updatedAt": "2026-10-26T02:09:00.000Z"
+      "updatedAt": "2026-10-26T03:02:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -1116,6 +1119,20 @@
         "github.pull.vexwork.132.comment.6407072302"
       ],
       "createdAt": "2026-10-26T02:09:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.connected-services.vcs05.running.range-stress-pr15",
+      "workRef": "work.vexlife.connected-services.vcs05-stream-stress",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Current-source descent established the VexStream control-plane/data-plane split, and VexStream PR #15 now owns the first real execution edge: a test-only current-main stress of the existing local HTTP Range producer with larger sequential, forward-seek, backward-seek and tail demand.",
+      "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.issue.vexlife.899.comment.6407174402",
+        "github.pull.vexstream-music.15"
+      ],
+      "createdAt": "2026-10-26T03:02:00.000Z"
     }
   ],
   "sourceRefs": [

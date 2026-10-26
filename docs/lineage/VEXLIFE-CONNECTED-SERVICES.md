@@ -217,6 +217,42 @@ One shared `strings.xml` blob is a valid three-way composition rather than the c
 PR154 is therefore `TERMINAL_ACCEPTED_CURRENT`. No further Conversation lived behavior proof is required unless future source changes invalidate the accepted evidence.
 
 A003 regenerated the current Connected Services projections and reached the full deterministic VexWork review. The only discovered VexWork source defect was two stale tests that still expected the pre-split Project cardinality/state. After repairing those rightful tests, A003 passed the generator/review closure. Phase 6 and VCS-04 therefore complete, releasing VCS-05 to READY.
+### VCS-05 — running
+
+VCS-05 begins from current source rather than historical VexStream transport assumptions.
+
+Current source descent established:
+
+```text
+VexStreamMusic main = ed0ecba9b35459fd03aa3bbaede9e4cea8b694f7
+VexLife-Android main = b2a0f86ed281c5b67eab3b4fd3b6b32181262988
+
+local producer:
+  GET/HEAD /v1/media/<track>
+  Accept-Ranges: bytes
+  Go http.ServeContent
+
+Android local consumer:
+  opaque vexstream:// identity
+  pinned TLS + bearer resolved at data boundary
+  Media3 DataSpec position/length -> HTTP Range
+
+Android remote source:
+  repeated 256 KiB encrypted Range request/response chunks
+  no current VexStream Desktop remote/relay producer implementation
+```
+
+Therefore the current first stress claim is local and test-only. VexStream PR #15 adds no production source and asks whether the existing Range path preserves exact bytes across larger sequential and non-monotonic demand. This intentionally keeps control-plane/session concerns separate from VexStream's media data plane until stress proves a missing shared contract.
+
+Permanent distinctions:
+
+```text
+LOCAL_VEXSTREAM_PAIRING != HOME_AUTHORITY
+RANGE_MEDIA != CATALOG_CURRENTNESS
+PLAYBACK_STATE != CONNECTED_SERVICE_STATE
+MEDIA_BACKPRESSURE != GENERIC_REQUEST_CURRENTNESS
+REMOTE_TRANSPORT_SOURCE != REMOTE_PRODUCER_ACCEPTANCE
+```
 ## Recovery appendix — attempt lineage
 
 Attempt identities are evidence/recovery history, not canonical Work items.
