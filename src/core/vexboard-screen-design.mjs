@@ -110,6 +110,13 @@ export function screenDesignSemanticElement(designInput, semanticRef) {
   return Object.freeze(structuredClone(element));
 }
 
+export function screenDesignContentMessage(designInput, contentRef) {
+  const design = normalizeScreenDesign(designInput);
+  const message = design.contentCatalog?.messages?.find((entry) => entry.contentRef === contentRef);
+  if (!message) throw new TypeError(`unknown screen design content message ${contentRef}`);
+  return Object.freeze(structuredClone(message));
+}
+
 export function screenDesignVisualDimension(designInput, tokenRef) {
   const design = normalizeScreenDesign(designInput);
   const value = design.visualTokens?.dimensions?.[tokenRef];
@@ -409,6 +416,52 @@ export function normalizeScreenDesign(input) {
     }
   }
 
+  const contentRefs = new Set();
+  if (input.contentCatalog !== undefined) {
+    assert(input.contentCatalog && typeof input.contentCatalog === 'object' &&
+      !Array.isArray(input.contentCatalog), 'screen design contentCatalog must be one object');
+    assert(SCREEN_DESIGN_AUTHORITY_STATES.includes(input.contentCatalog.authorityState),
+      'screen design contentCatalog.authorityState unsupported');
+    assert(
+      input.contentCatalog.canonicalOwnerRefOrNull === null ||
+      (typeof input.contentCatalog.canonicalOwnerRefOrNull === 'string' &&
+        input.contentCatalog.canonicalOwnerRefOrNull),
+      'screen design contentCatalog.canonicalOwnerRefOrNull must be null or one ref',
+    );
+    assert(typeof input.contentCatalog.defaultLocale === 'string' &&
+      input.contentCatalog.defaultLocale,
+    'screen design contentCatalog.defaultLocale required');
+    assert(Array.isArray(input.contentCatalog.messages),
+      'screen design contentCatalog.messages must be an array');
+    for (const [index, message] of input.contentCatalog.messages.entries()) {
+      const label = `screen design contentCatalog.messages[${index}]`;
+      assert(typeof message?.contentRef === 'string' && message.contentRef,
+        `${label}.contentRef required`);
+      assert(!contentRefs.has(message.contentRef),
+        `duplicate screen design content message ${message.contentRef}`);
+      contentRefs.add(message.contentRef);
+      assert(typeof message.defaultText === 'string' && message.defaultText,
+        `${label}.defaultText required`);
+      assert(Array.isArray(message.parameterRefs ?? []),
+        `${label}.parameterRefs must be an array`);
+      for (const parameterRef of message.parameterRefs ?? []) {
+        assert(typeof parameterRef === 'string' && parameterRef,
+          `${label}.parameterRef required`);
+      }
+      assert(Array.isArray(message.targetContentRefs ?? []),
+        `${label}.targetContentRefs must be an array`);
+      for (const targetContentRef of message.targetContentRefs ?? []) {
+        assert(typeof targetContentRef === 'string' && targetContentRef,
+          `${label}.targetContentRef required`);
+      }
+      assert(Array.isArray(message.sourceRefs ?? []),
+        `${label}.sourceRefs must be an array`);
+      for (const sourceRef of message.sourceRefs ?? []) {
+        assert(typeof sourceRef === 'string' && sourceRef, `${label}.sourceRef required`);
+      }
+    }
+  }
+
   if (input.semanticElements !== undefined) {
     const semanticRefs = new Set();
     for (const [index, element] of input.semanticElements.entries()) {
@@ -421,11 +474,23 @@ export function normalizeScreenDesign(input) {
       assert(typeof element.parentSemanticRef === 'string' && element.parentSemanticRef,
         `${label}.parentSemanticRef required`);
       assert(element.kind === 'TEXT', `${label}.kind unsupported`);
+      assert(element.blueprintForm === 'VexTextBlueprint',
+        `${label}.blueprintForm unsupported`);
       assert(element.identityState === 'VEXBOARD_PROPOSED',
         `${label}.identityState unsupported`);
+      assert(Array.isArray(element.contentRefs) && element.contentRefs.length > 0,
+        `${label}.contentRefs must be a non-empty array`);
+      assert(input.contentCatalog !== undefined,
+        `${label}.contentRefs require contentCatalog`);
+      for (const contentRef of element.contentRefs) {
+        assert(typeof contentRef === 'string' && contentRef, `${label}.contentRef required`);
+        assert(contentRefs.has(contentRef),
+          `${label}.contentRef missing contentCatalog message ${contentRef}`);
+      }
       assert(
-        ['STATIC_LOCALIZED', 'DYNAMIC_RUNTIME'].includes(element.contentMode),
-        `${label}.contentMode unsupported`,
+        element.valueBindingRefOrNull === null ||
+          (typeof element.valueBindingRefOrNull === 'string' && element.valueBindingRefOrNull),
+        `${label}.valueBindingRefOrNull must be null or one ref`,
       );
       assert(typeof element.label === 'string' && element.label,
         `${label}.label required`);
