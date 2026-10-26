@@ -172,7 +172,7 @@
       "label": "VCS-04 — Conversation adoption",
       "purpose": "Complete the lived Android Conversation path through private device possession, bounded remote session, current Family authority, durable read/Send/Companion behavior and restart without duplicates.",
       "workClass": "OUTCOME",
-      "state": "VERIFYING",
+      "state": "COMPLETED",
       "workDisposition": "ACTIVE",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [
@@ -195,14 +195,15 @@
         "github.pull.vexlife-android.154.comment.6406478107",
         "github.pull.vexlife-android.154.comment.6406485875",
         "github.issue.vexlife.899.comment.6406486260",
-        "github.commit.vexlife-android.9104d232086afd888700c3317ab79c2a8b87239b"
+        "github.commit.vexlife-android.9104d232086afd888700c3317ab79c2a8b87239b",
+        "github.pull.vexwork.132.comment.6406878192"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-21T23:56:41.000Z",
-      "updatedAt": "2026-10-26T01:56:00.000Z"
+      "updatedAt": "2026-10-26T02:09:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -211,7 +212,7 @@
       "label": "VCS-05 — VexStream adoption / streaming stress",
       "purpose": "Stress the accepted request/response Connected Services boundary against long-lived media delivery, range, throughput, reconnect and backpressure pressure before any streaming extension is generalized.",
       "workClass": "OUTCOME",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "READY",
       "workDisposition": "ACTIVE",
       "priorityClass": "HIGH",
       "dependencyRefs": [
@@ -223,14 +224,16 @@
       ],
       "sourceRefs": [
         "docs/lineage/VEXLIFE-CONNECTED-SERVICES.md",
-        "github.issue.vexlife.899"
+        "github.issue.vexlife.899",
+        "github.pull.vexwork.132.comment.6406878192",
+        "github.issue.vexlife.899.comment.6406486260"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-21T23:56:41.000Z",
-      "updatedAt": "2026-10-21T23:56:41.000Z"
+      "updatedAt": "2026-10-26T02:09:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -439,9 +442,9 @@
       "workRef": "work.vexlife.connected-services.vcs04.phase6-terminal-currentness",
       "parentWorkRefOrNull": "work.vexlife.connected-services.vcs04-conversation-adoption",
       "label": "Phase 6 — VCS-04 terminal currentness",
-      "purpose": "Verify VCS-04 terminal convergence now that lived L1-L11 and Android source/lifecycle are accepted-current: preserve PR154's exact post-merge truth, regenerate/check VexWork projections from canonical source, then close VCS-04 and release VCS-05 without replaying product behavior.",
+      "purpose": "Terminally converge VCS-04 source/currentness after the complete lived L1-L11 matrix, Android PR154 exact accepted merge, and VexWork generator/review closure; no product replay remains.",
       "workClass": "OUTCOME",
-      "state": "VERIFYING",
+      "state": "COMPLETED",
       "workDisposition": "ACTIVE",
       "priorityClass": "NORMAL",
       "dependencyRefs": [
@@ -470,14 +473,15 @@
         "github.pull.vexlife-android.154.comment.6406478107",
         "github.pull.vexlife-android.154.comment.6406485875",
         "github.issue.vexlife.899.comment.6406486260",
-        "github.commit.vexlife-android.9104d232086afd888700c3317ab79c2a8b87239b"
+        "github.commit.vexlife-android.9104d232086afd888700c3317ab79c2a8b87239b",
+        "github.pull.vexwork.132.comment.6406878192"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-21T23:56:41.000Z",
-      "updatedAt": "2026-10-26T01:56:00.000Z"
+      "updatedAt": "2026-10-26T02:09:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -1058,6 +1062,48 @@
         "github.commit.vexlife-android.9104d232086afd888700c3317ab79c2a8b87239b"
       ],
       "createdAt": "2026-10-26T01:56:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.connected-services.vcs04.phase6.completed.vexwork-a003",
+      "workRef": "work.vexlife.connected-services.vcs04.phase6-terminal-currentness",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "A003 regenerated the exact Connected Services projections and full deterministic VexWork review passed after the two stale Project assertions were repaired; Android PR154 was already terminal accepted current. Phase 6 has no remaining source/currentness predicate.",
+      "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.132.comment.6406878192",
+        "github.issue.vexlife.899.comment.6406486260"
+      ],
+      "createdAt": "2026-10-26T02:09:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.connected-services.vcs04.completed.phase6-terminal",
+      "workRef": "work.vexlife.connected-services.vcs04-conversation-adoption",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "VCS-04 is terminal: L1-L11 passed, Phase 4 and Phase 5 are complete, Android Family Send source is accepted-current, and Phase 6 VexWork currentness closure passed.",
+      "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.132.comment.6406878192",
+        "github.issue.vexlife.899.comment.6406486260"
+      ],
+      "createdAt": "2026-10-26T02:09:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.connected-services.vcs05.ready.after-vcs04-terminal",
+      "workRef": "work.vexlife.connected-services.vcs05-stream-stress",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "VCS-04 completed its lived, source, integration and VexWork terminal predicates, satisfying the only dependency for VCS-05 VexStream adoption / streaming stress.",
+      "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexwork.132.comment.6406878192",
+        "github.issue.vexlife.899.comment.6406486260"
+      ],
+      "createdAt": "2026-10-26T02:09:00.000Z"
     }
   ],
   "sourceRefs": [
