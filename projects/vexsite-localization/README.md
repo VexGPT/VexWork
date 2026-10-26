@@ -77,16 +77,21 @@ complete publishable Covenant source identities = 420
   shared root-navigation identity                 = 1
 
 PR #423 exact source freeze
-  head = 761d70ac823297b249f05f70e7f75d534bef51df
-  tree = 8f72565d5b3120cb1ea4e3665b63a09822828998
-  source blob = d0e7c4f3ee8108aba096e8af7126c72319818cc2
-  source SHA-256 = 723f0f5ef8a39922c78164b8287151a0445dd8f8ba13a459f95379db70ce151e
+  head = ad8315d626355bbdb0e286fdbc7577904edbfa16
+  tree = bc56b181c28deb7448ff14a193028ee790f30e2c
+  source blob = ba49485149013e0d040b26672505e325d4d29f72
+  source SHA-256 = d31d00a074b6168042d349f1272ffcdfa8928c74f3a0d4ebe953bf4bf185ef61
 
 source coverage
   JA = 420 / 420
   ZH = 420 / 420
   target cells = 840 / 840
   Covenant page unique bindings = 431 / 431 resolvable in EN/JA/ZH
+
+final authored membrane
+  data/strings/source/institution.json
+  pages/vextreme-covenant.html
+  page delta from accepted main = two durable static colophon boundary sentences
 ```
 
 This does **not** mean JA/ZH are published. The institutional contract intentionally keeps the registry EN-required while the new locales remain planned until two separate exact-source semantic review dispositions are bound to the same immutable source artifact:
