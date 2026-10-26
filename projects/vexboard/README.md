@@ -365,6 +365,64 @@ Do not introduce a universal OCR ontology, screenshot-hotspot registry, image-sp
 
 The eventual "start a business from the beginning" experience remains strategically important, but it is **not current implementation scope or authority**. It is preserved so future work can see the graduation path without pulling that complexity into this patient zero.
 
+## Current refinement checkpoint — foundational language before more target proof
+
+The VexStream patient zero exposed enough reusable naming/composition pressure that the immediate sub-edge
+is temporarily **language refinement before additional target-proof formation**.
+
+This is not a new Project, Work item, lifecycle phase or frozen architecture. It is a bounded checkpoint
+inside the active VexStream living-Origin pilot so new target source does not accidentally harden names
+that are still being understood.
+
+Current questions being pressure-tested include:
+
+~~~text
+identity / address / lookup
+  ID vs URI vs Key
+  existing *Ref source remains migration evidence
+
+application composition
+  whole Application Origin vs App UI composition
+  Application -> Feature ownership -> sovereign Screens
+  hierarchical authoring vs flat runtime Screen index vs nested visual composition
+
+Screen boundary
+  full-page/destination current working definition
+  tab/feed/panel/container must not become Screen merely because it has children
+
+target naming
+  Vex + semantic/product meaning + familiar form
+  while keeping target form separate from portable meaning unless design owns it
+
+behavior
+  current ElementIntent is a mixed Android migration grammar
+  typed navigation/presentation should not be replaced by opaque ActId strings merely for uniformity
+  SCAE applies when a real Behavior question exists
+  accepted SCAE already permits resolvedAct/effect to be absent
+
+type pressure
+  DynamicTextElement lesson generalizes carefully
+  SwappableContainerElement / ScrollableColumnElement and the broader *Element family remain questions,
+  not automatic rename instructions
+~~~
+
+A fresh instance should challenge these hypotheses with real source and edge cases. If a simpler or more
+truthful model emerges, current terminology should be refactored rather than protected because it appears
+in this checkpoint.
+
+Once this foundational language is coherent enough for the next concrete consumer:
+
+~~~text
+1. currentize the patient-zero design/construction/projection source to the refined language;
+2. revisit new/unaccepted Android PR #183 names/shape if the refinement changes them;
+3. prove the exact resulting #183 stacked candidate;
+4. continue the Origin -> construction -> target realization -> source/evidence round trip;
+5. only later activate independent review and integration/merge currentness.
+~~~
+
+PR #182's exact-head SourceOwner evidence remains valid while this language work proceeds.
+Independent review remains parked.
+
 ## Reusable Semantic Origin IDE foundation
 
 The reusable IDE/construction pattern, recursive category examples, scoped-neighborhood behavior and
