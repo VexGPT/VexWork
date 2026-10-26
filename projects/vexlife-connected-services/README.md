@@ -40,7 +40,7 @@ The program intentionally learns from real consumers before extracting more arch
 | VCS-02 minimum shared contract | COMPLETED | Authentication/session, reachability, capability addressing and currentness boundary established. |
 | VCS-03 Maps engine realization | COMPLETED | Shared boundary exercised against a real replaceable provider engine. |
 | **VCS-04 Conversation adoption** | **COMPLETED** | L1-L11 lived acceptance and terminal Android/VexWork source-currentness are closed. |
-| **VCS-05 VexStream stress** | **READY** | Current foreground: long-lived media delivery, range, throughput, reconnect and backpressure pressure. |
+| **VCS-05 VexStream stress** | **COMPLETED** | Local Range/media pressure, restart/reconnect continuity, and ownership separation are proven; no new generic streaming transport was earned. |
 | VCS-06 VexArchitecture extraction | WAITING | Extract only patterns earned by multiple real consumers. |
 | VCS-07 deployment choices | WAITING | Deployment comes after runtime semantics stabilize. |
 
@@ -194,6 +194,42 @@ A003 regenerated the current Connected Services projections after the two stale 
 
 No Android/Home/Family/Heretic replay is owed. The foreground Connected Services edge is now `work.vexlife.connected-services.vcs05-stream-stress`.
 
+## VCS-05 terminal result
+
+VCS-05 proved the current VexStream streaming/data-plane pressure without widening the shared Connected Services contract.
+
+```text
+VexStream PR15 = MERGED / POST_MERGE_VERIFIED @ fbe2060dae75efaae069f777d4346b45b251a754
+A003 focused Range stress = PASS
+4 MiB media = sequential / forward seek / backward seek / tail Range PASS
+terminal MassDownload = Desktop stop -> LOCAL_ONLY -> Android restart -> Desktop restart -> reconnect HUB_AND_LOCAL
+```
+
+Current architecture judgment:
+
+```text
+Connected Services shared/control plane
+  reachability / session / admission / route currentness / correlation / typed transport availability
+
+VexStream-owned data plane
+  HTTP Range / Media3 demand-backpressure / media identity / playback / offline-copy state
+```
+
+No new generic streaming transport, generic backpressure owner, remote relay media producer acceptance, or Maps/Conversation streaming widening was earned. Android remote 256 KiB source remains architecture pressure only until a rightful producer is accepted.
+
+## VCS-06 current edge
+
+Three real consumers have now earned architecture extraction:
+
+```text
+Maps
+Conversation
+VexStream
+-> extract only stable recurring ownership/contracts/proof obligations
+```
+
+Do not copy VexStream's Range/media plane into a universal template. Cross-product reusable architecture is expected to land in Vextreme-SDK only after exact source placement/authority is established.
+
 ## Read next
 
 For ordinary continuation:
@@ -201,7 +237,7 @@ For ordinary continuation:
 ```text
 this README
 -> public/workspace.json / VexWork UI
--> work.vexlife.connected-services.vcs05-stream-stress
+-> work.vexlife.connected-services.vcs06-architecture-extraction
 -> docs/lineage/VEXLIFE-CONNECTED-SERVICES.md only when causal history is needed
 -> target repository current source only for the next effect
 ```

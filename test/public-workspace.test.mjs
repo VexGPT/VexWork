@@ -124,7 +124,7 @@ test('checked-in public workspace is generated-current', () => {
 // [VXG RealForever]
 
 
-test('Connected Services projects terminal VCS-04 and releases VCS-05', () => {
+test('Connected Services completes VCS-05 and releases VCS-06 architecture extraction', () => {
   const workspace = buildWorkspace();
   const connected = workspace.projects.find((entry) => entry.project.projectRef === 'project.vexlife.connected-services');
   assert.ok(connected);
@@ -141,18 +141,21 @@ test('Connected Services projects terminal VCS-04 and releases VCS-05', () => {
   const phase5 = connected.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs04.phase5-restart-no-duplicates');
   const phase6 = connected.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs04.phase6-terminal-currentness');
   const vcs05 = connected.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs05-stream-stress');
+  const vcs06 = connected.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs06-architecture-extraction');
   assert.deepEqual([phase1.state, phase2.state, phase3.state], ['COMPLETED', 'COMPLETED', 'COMPLETED']);
   assert.equal(defect.state, 'COMPLETED');
   assert.equal(lived.state, 'COMPLETED');
   assert.deepEqual(lived.dependencyRefs, [defect.workRef]);
   assert.deepEqual([phase4.state, sendFailure.state, companion.state, phase5.state], ['COMPLETED', 'COMPLETED', 'COMPLETED', 'COMPLETED']);
   assert.deepEqual([vcs04.state, phase6.state], ['COMPLETED', 'COMPLETED']);
-  assert.equal(vcs05.state, 'READY');
+  assert.equal(vcs05.state, 'COMPLETED');
+  assert.equal(vcs06.state, 'READY');
   const done = connected.lanes.find((lane) => lane.laneRef === 'lane.work.done').workRefs;
   const ready = connected.lanes.find((lane) => lane.laneRef === 'lane.work.ready').workRefs;
   assert.equal(done.includes(vcs04.workRef), true);
   assert.equal(done.includes(phase6.workRef), true);
-  assert.equal(ready.includes(vcs05.workRef), true);
+  assert.equal(done.includes(vcs05.workRef), true);
+  assert.equal(ready.includes(vcs06.workRef), true);
   assert.equal(connected.items.some((item) => item.workRef === 'work.vexlife.connected-services.guided-onboarding'), false);
   assert.equal(workspace.parkingLot.items.some((item) => item.workRef === 'work.vexlife.connected-services.guided-onboarding'), true);
 });
