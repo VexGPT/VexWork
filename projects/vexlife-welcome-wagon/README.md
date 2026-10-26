@@ -931,26 +931,36 @@ CHUNK P2 — ESTABLISH PUBLICATION SUBSTRATE
   -> no live Pages source switch performed yet
 
 CHUNK P3 — VEX RELAY PUBLICATION
-  CURRENT / A002 FORMED
-  -> current VexLife main 31c9198101f4c8a0170cb76b57547ae1d737b05f
+  COMPLETE
+  -> current VexLife main preserved at 31c9198101f4c8a0170cb76b57547ae1d737b05f
   -> current source tree 3f147418b2885721787ed482d67aecf13ae32cee
-  -> exact 35-file generated public membrane
-  -> digest-bound Mac package A002
-     sha256 fbd309ed3931d608316e0c6460c6a407fe5f74a6e3822615e68f32ad6aad4efd
-     expires 2026-10-27T03:58:30Z
-  -> Vex Relay builds current artifact, proves public safety and family-header semantics,
-     commits with DCO, reviews the exact local candidate, and non-force pushes vexlife-pages
+  -> A002 canonical RETURN PASS
+     sha256 ba8bea89aca71bf11cf6b1315a01e65090f8aae117d5945830c8cd524e007693
+  -> build PASS
+  -> public-safety PASS
+  -> exact 35-file public membrane PASS
+  -> family-header publication proof PASS
+  -> DCO publication commit
+     head 51e22e1783f4348f88b3c3460c5d3136c0b081a4
+     tree 1858b69d68c86670ff77b618f8af16aa35f317f4
+     parent 3627585ffddf940147562e82bc6e496291ce3389
+  -> local review snapshot PASS
+  -> non-force push vexlife-pages PASS
+  -> provider readback confirms vexlife-pages at exact head/tree
+  -> accepted main remains unchanged
+  -> no candidate / harness / environment / unknown findings
   -> no Local Workspace
   -> no custom GitHub Actions build/deploy dependency
-  -> one host execution + canonical RETURN is the current human boundary
-  -> Pages branch-source configuration remains held until the publication branch is proven
 
-CHUNK P4 — LIVE PUBLIC VERIFICATION + WRITEBACK
-  AFTER P3 + PAGES SOURCE SWITCH
-  -> verify live root renders stable family rail
+CHUNK P4 — PAGES SOURCE SWITCH + LIVE PUBLIC VERIFICATION
+  CURRENT
+  -> connected GitHub provider cannot perform repository Pages settings mutation
+  -> exact held effect: configure Pages source to branch vexlife-pages / root
+  -> after source switch, verify live root renders stable family rail
   -> verify no standalone VexLife brand-lockup
-  -> record public deployment current
-  -> only then close the public optical acceptance edge
+  -> verify VexLife remains selected in the middle family slot
+  -> record public deployment current only after live readback
+  -> then close the public optical acceptance edge
 ```
 
 A fresh conversation must resume from the first incomplete publication chunk rather than reopening #929/#933 or redefining the family-header contract.
@@ -973,7 +983,8 @@ dedicated publication substrate
   exact accepted main -> existing builder -> vexlife-pages
         ↓
 Vex Relay publication
-  A002 formed / host execution pending
+  A002 RETURN PASS
+  publication branch 51e22e1783f4348f88b3c3460c5d3136c0b081a4 ✅
         ↓
 one-time Pages branch-source switch
         ↓
@@ -992,7 +1003,7 @@ remaining deliberately held product/design choices
 final whole-project lived acceptance
 ~~~
 
-The family-header **design/source** remains settled. The current unfinished edge is publication currentness for VexLife.
+The family-header **design/source** remains settled. The publication artifact is proven and pushed; the current unfinished edge is the one-time Pages source switch followed by live VexLife verification.
 ## Deliberately held
 
 The original formation alone did **not** decide or authorize the items below. Victor's later explicit “please move forward” authorizes bounded implementation along this saved completion path, but it does not collapse the held product/design choices or provider/repository boundaries:
