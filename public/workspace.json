@@ -8942,14 +8942,27 @@
             "git.tree.vexlife.a1ec368be0617fdd218010fbb013734e16051db2",
             "github.pull.vexwork.154",
             "github.commit.vexwork.516774010b44d80b2f4eb1cdf5df783523dfa8a2",
-            "git.tree.vexwork.5afea26d4fec3d87722f4ff4541dfbffd1b8837a"
+            "git.tree.vexwork.5afea26d4fec3d87722f4ff4541dfbffd1b8837a",
+            "github.pull.vextreme.416",
+            "github.commit.vextreme.f4e99059fbfd5609807898c73a32805314cc7fba",
+            "git.tree.vextreme.8666c121c896d143bf627ce7eb71a50281aba18a",
+            "github.pull.vexlife.933",
+            "github.commit.vexlife.253018beee0189d64d9e7570fc6c3c6623342661",
+            "git.tree.vexlife.78de9174c915f5e67d308bc57a091416ff196f44",
+            "github.pull.vexwork.157",
+            "github.commit.vexwork.16a8a9bb2d8ace7e0582a8d6b4b61e5ac5ad5a75",
+            "git.tree.vexwork.a56d8c4017f277c8f31865e06e72a03bdfb30f6e",
+            "github.commit.vexlife.51e22e1783f4348f88b3c3460c5d3136c0b081a4",
+            "github.commit.vexlife.00a843fe5a320719ae16eb9e2baaece6adc0da2b",
+            "git.tree.vexlife.1858b69d68c86670ff77b618f8af16aa35f317f4",
+            "github.pull.vexwork.169"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-24T06:05:10.000Z",
-          "updatedAt": "2026-10-25T09:45:00.000Z",
+          "updatedAt": "2026-10-26T04:15:48.000Z",
           "transitionHistory": []
         },
         {
@@ -9223,7 +9236,7 @@
           "label": "One-PR reversible visual rollout and rollback membrane",
           "purpose": "Keep material Welcome Wagon/header presentation experiments bounded enough that Victor can judge the rendered result after merge and one coherent PR can revert a bad visual move without unwinding unrelated route, Journey, localization, accessibility or product semantics.",
           "workClass": "POTENTIAL",
-          "state": "CAPTURED",
+          "state": "COMPLETED",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vexlife.welcome-wagon.outcome",
@@ -9235,14 +9248,27 @@
             "repo.vexlife"
           ],
           "sourceRefs": [
-            "projects/vexlife-welcome-wagon/README.md"
+            "projects/vexlife-welcome-wagon/README.md",
+            "github.pull.vextreme.416",
+            "github.commit.vextreme.f4e99059fbfd5609807898c73a32805314cc7fba",
+            "git.tree.vextreme.8666c121c896d143bf627ce7eb71a50281aba18a",
+            "github.pull.vexlife.933",
+            "github.commit.vexlife.253018beee0189d64d9e7570fc6c3c6623342661",
+            "git.tree.vexlife.78de9174c915f5e67d308bc57a091416ff196f44",
+            "github.pull.vexwork.157",
+            "github.commit.vexwork.16a8a9bb2d8ace7e0582a8d6b4b61e5ac5ad5a75",
+            "git.tree.vexwork.a56d8c4017f277c8f31865e06e72a03bdfb30f6e",
+            "github.commit.vexlife.51e22e1783f4348f88b3c3460c5d3136c0b081a4",
+            "github.commit.vexlife.00a843fe5a320719ae16eb9e2baaece6adc0da2b",
+            "git.tree.vexlife.1858b69d68c86670ff77b618f8af16aa35f317f4",
+            "github.pull.vexwork.169"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
           "authorityDisposition": "NO_AUTHORITY",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-10-24T06:05:10.000Z",
-          "updatedAt": "2026-10-24T06:05:10.000Z",
+          "updatedAt": "2026-10-26T04:15:48.000Z",
           "transitionHistory": []
         },
         {
@@ -9285,7 +9311,6 @@
             "work.vexlife.welcome-wagon.human-language-currentness",
             "work.vexlife.welcome-wagon.terrain-design-convergence",
             "work.vexlife.welcome-wagon.terrain-front-door",
-            "work.vexlife.welcome-wagon.visual-rollout-rollback",
             "work.vexlife.welcome-wagon.vexlife-placeholder-visual-story",
             "work.vexlife.welcome-wagon.vexsystem-secondary"
           ]
@@ -9333,10 +9358,11 @@
           "workRefs": [
             "work.vexlife.welcome-wagon.about-vextreme-slug-migration",
             "work.vexlife.welcome-wagon.shared-header-capability-map",
-            "work.vexlife.welcome-wagon.support-shell-context-currentness",
-            "work.vexlife.welcome-wagon.what-is-this",
             "work.vexlife.welcome-wagon.slug-rename-tooling",
-            "work.vexlife.welcome-wagon.vextreme-home-role"
+            "work.vexlife.welcome-wagon.support-shell-context-currentness",
+            "work.vexlife.welcome-wagon.vextreme-home-role",
+            "work.vexlife.welcome-wagon.visual-rollout-rollback",
+            "work.vexlife.welcome-wagon.what-is-this"
           ]
         },
         {
@@ -9347,13 +9373,13 @@
       ],
       "summary": {
         "workItemCount": 13,
-        "openWorkItemCount": 7,
+        "openWorkItemCount": 6,
         "outcomeCount": 1,
         "taskCount": 1,
         "defectCount": 0,
         "potentialCount": 11,
         "needsHumanCount": 0,
-        "completedCount": 6
+        "completedCount": 7
       },
       "rootItems": [
         {
@@ -9407,14 +9433,27 @@
             "git.tree.vexlife.a1ec368be0617fdd218010fbb013734e16051db2",
             "github.pull.vexwork.154",
             "github.commit.vexwork.516774010b44d80b2f4eb1cdf5df783523dfa8a2",
-            "git.tree.vexwork.5afea26d4fec3d87722f4ff4541dfbffd1b8837a"
+            "git.tree.vexwork.5afea26d4fec3d87722f4ff4541dfbffd1b8837a",
+            "github.pull.vextreme.416",
+            "github.commit.vextreme.f4e99059fbfd5609807898c73a32805314cc7fba",
+            "git.tree.vextreme.8666c121c896d143bf627ce7eb71a50281aba18a",
+            "github.pull.vexlife.933",
+            "github.commit.vexlife.253018beee0189d64d9e7570fc6c3c6623342661",
+            "git.tree.vexlife.78de9174c915f5e67d308bc57a091416ff196f44",
+            "github.pull.vexwork.157",
+            "github.commit.vexwork.16a8a9bb2d8ace7e0582a8d6b4b61e5ac5ad5a75",
+            "git.tree.vexwork.a56d8c4017f277c8f31865e06e72a03bdfb30f6e",
+            "github.commit.vexlife.51e22e1783f4348f88b3c3460c5d3136c0b081a4",
+            "github.commit.vexlife.00a843fe5a320719ae16eb9e2baaece6adc0da2b",
+            "git.tree.vexlife.1858b69d68c86670ff77b618f8af16aa35f317f4",
+            "github.pull.vexwork.169"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-24T06:05:10.000Z",
-          "updatedAt": "2026-10-25T09:45:00.000Z",
+          "updatedAt": "2026-10-26T04:15:48.000Z",
           "transitionHistory": []
         }
       ]
