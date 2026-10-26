@@ -196,7 +196,9 @@
         "github.pull.vexlife-android.154.comment.6406485875",
         "github.issue.vexlife.899.comment.6406486260",
         "github.commit.vexlife-android.9104d232086afd888700c3317ab79c2a8b87239b",
-        "github.pull.vexwork.132.comment.6406878192"
+        "github.pull.vexwork.132.comment.6406878192",
+        "github.pull.vexwork.132.comment.6406959147",
+        "github.pull.vexwork.132.comment.6407072302"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
@@ -226,7 +228,9 @@
         "docs/lineage/VEXLIFE-CONNECTED-SERVICES.md",
         "github.issue.vexlife.899",
         "github.pull.vexwork.132.comment.6406878192",
-        "github.issue.vexlife.899.comment.6406486260"
+        "github.issue.vexlife.899.comment.6406486260",
+        "github.pull.vexwork.132.comment.6406959147",
+        "github.pull.vexwork.132.comment.6407072302"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
@@ -474,7 +478,9 @@
         "github.pull.vexlife-android.154.comment.6406485875",
         "github.issue.vexlife.899.comment.6406486260",
         "github.commit.vexlife-android.9104d232086afd888700c3317ab79c2a8b87239b",
-        "github.pull.vexwork.132.comment.6406878192"
+        "github.pull.vexwork.132.comment.6406878192",
+        "github.pull.vexwork.132.comment.6406959147",
+        "github.pull.vexwork.132.comment.6407072302"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
@@ -1073,7 +1079,9 @@
       "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
       "sourceRefs": [
         "github.pull.vexwork.132.comment.6406878192",
-        "github.issue.vexlife.899.comment.6406486260"
+        "github.issue.vexlife.899.comment.6406486260",
+        "github.pull.vexwork.132.comment.6406959147",
+        "github.pull.vexwork.132.comment.6407072302"
       ],
       "createdAt": "2026-10-26T02:09:00.000Z"
     },
@@ -1087,7 +1095,9 @@
       "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
       "sourceRefs": [
         "github.pull.vexwork.132.comment.6406878192",
-        "github.issue.vexlife.899.comment.6406486260"
+        "github.issue.vexlife.899.comment.6406486260",
+        "github.pull.vexwork.132.comment.6406959147",
+        "github.pull.vexwork.132.comment.6407072302"
       ],
       "createdAt": "2026-10-26T02:09:00.000Z"
     },
@@ -1101,7 +1111,9 @@
       "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
       "sourceRefs": [
         "github.pull.vexwork.132.comment.6406878192",
-        "github.issue.vexlife.899.comment.6406486260"
+        "github.issue.vexlife.899.comment.6406486260",
+        "github.pull.vexwork.132.comment.6406959147",
+        "github.pull.vexwork.132.comment.6407072302"
       ],
       "createdAt": "2026-10-26T02:09:00.000Z"
     }
