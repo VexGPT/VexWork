@@ -110,11 +110,11 @@ export function screenDesignSemanticElement(designInput, semanticRef) {
   return Object.freeze(structuredClone(element));
 }
 
-export function screenDesignContentMessage(designInput, contentRef) {
+export function screenDesignContentOrigin(designInput, originRef) {
   const design = normalizeScreenDesign(designInput);
-  const message = design.contentCatalog?.messages?.find((entry) => entry.contentRef === contentRef);
-  if (!message) throw new TypeError(`unknown screen design content message ${contentRef}`);
-  return Object.freeze(structuredClone(message));
+  const origin = design.contentOrigins?.origins?.find((entry) => entry.originRef === originRef);
+  if (!origin) throw new TypeError(`unknown screen design content Origin ${originRef}`);
+  return Object.freeze(structuredClone(origin));
 }
 
 export function screenDesignVisualDimension(designInput, tokenRef) {
@@ -416,47 +416,47 @@ export function normalizeScreenDesign(input) {
     }
   }
 
-  const contentRefs = new Set();
-  if (input.contentCatalog !== undefined) {
-    assert(input.contentCatalog && typeof input.contentCatalog === 'object' &&
-      !Array.isArray(input.contentCatalog), 'screen design contentCatalog must be one object');
-    assert(SCREEN_DESIGN_AUTHORITY_STATES.includes(input.contentCatalog.authorityState),
-      'screen design contentCatalog.authorityState unsupported');
+  const contentOriginRefs = new Set();
+  if (input.contentOrigins !== undefined) {
+    assert(input.contentOrigins && typeof input.contentOrigins === 'object' &&
+      !Array.isArray(input.contentOrigins), 'screen design contentOrigins must be one object');
+    assert(SCREEN_DESIGN_AUTHORITY_STATES.includes(input.contentOrigins.authorityState),
+      'screen design contentOrigins.authorityState unsupported');
     assert(
-      input.contentCatalog.canonicalOwnerRefOrNull === null ||
-      (typeof input.contentCatalog.canonicalOwnerRefOrNull === 'string' &&
-        input.contentCatalog.canonicalOwnerRefOrNull),
-      'screen design contentCatalog.canonicalOwnerRefOrNull must be null or one ref',
+      input.contentOrigins.canonicalOwnerRefOrNull === null ||
+      (typeof input.contentOrigins.canonicalOwnerRefOrNull === 'string' &&
+        input.contentOrigins.canonicalOwnerRefOrNull),
+      'screen design contentOrigins.canonicalOwnerRefOrNull must be null or one ref',
     );
-    assert(typeof input.contentCatalog.defaultLocale === 'string' &&
-      input.contentCatalog.defaultLocale,
-    'screen design contentCatalog.defaultLocale required');
-    assert(Array.isArray(input.contentCatalog.messages),
-      'screen design contentCatalog.messages must be an array');
-    for (const [index, message] of input.contentCatalog.messages.entries()) {
-      const label = `screen design contentCatalog.messages[${index}]`;
-      assert(typeof message?.contentRef === 'string' && message.contentRef,
-        `${label}.contentRef required`);
-      assert(!contentRefs.has(message.contentRef),
-        `duplicate screen design content message ${message.contentRef}`);
-      contentRefs.add(message.contentRef);
-      assert(typeof message.defaultText === 'string' && message.defaultText,
+    assert(typeof input.contentOrigins.defaultLocale === 'string' &&
+      input.contentOrigins.defaultLocale,
+    'screen design contentOrigins.defaultLocale required');
+    assert(Array.isArray(input.contentOrigins.origins),
+      'screen design contentOrigins.origins must be an array');
+    for (const [index, origin] of input.contentOrigins.origins.entries()) {
+      const label = `screen design contentOrigins.origins[${index}]`;
+      assert(typeof origin?.originRef === 'string' && origin.originRef,
+        `${label}.originRef required`);
+      assert(!contentOriginRefs.has(origin.originRef),
+        `duplicate screen design content Origin ${origin.originRef}`);
+      contentOriginRefs.add(origin.originRef);
+      assert(typeof origin.defaultText === 'string' && origin.defaultText,
         `${label}.defaultText required`);
-      assert(Array.isArray(message.parameterRefs ?? []),
+      assert(Array.isArray(origin.parameterRefs ?? []),
         `${label}.parameterRefs must be an array`);
-      for (const parameterRef of message.parameterRefs ?? []) {
+      for (const parameterRef of origin.parameterRefs ?? []) {
         assert(typeof parameterRef === 'string' && parameterRef,
           `${label}.parameterRef required`);
       }
-      assert(Array.isArray(message.targetContentRefs ?? []),
-        `${label}.targetContentRefs must be an array`);
-      for (const targetContentRef of message.targetContentRefs ?? []) {
-        assert(typeof targetContentRef === 'string' && targetContentRef,
-          `${label}.targetContentRef required`);
+      assert(Array.isArray(origin.targetRealizationRefs ?? []),
+        `${label}.targetRealizationRefs must be an array`);
+      for (const targetRef of origin.targetRealizationRefs ?? []) {
+        assert(typeof targetRef === 'string' && targetRef,
+          `${label}.targetRealizationRef required`);
       }
-      assert(Array.isArray(message.sourceRefs ?? []),
+      assert(Array.isArray(origin.sourceRefs ?? []),
         `${label}.sourceRefs must be an array`);
-      for (const sourceRef of message.sourceRefs ?? []) {
+      for (const sourceRef of origin.sourceRefs ?? []) {
         assert(typeof sourceRef === 'string' && sourceRef, `${label}.sourceRef required`);
       }
     }
@@ -474,18 +474,18 @@ export function normalizeScreenDesign(input) {
       assert(typeof element.parentSemanticRef === 'string' && element.parentSemanticRef,
         `${label}.parentSemanticRef required`);
       assert(element.kind === 'TEXT', `${label}.kind unsupported`);
-      assert(element.blueprintForm === 'VexTextBlueprint',
-        `${label}.blueprintForm unsupported`);
+      assert(element.originForm === 'VexTextOrigin',
+        `${label}.originForm unsupported`);
       assert(element.identityState === 'VEXBOARD_PROPOSED',
         `${label}.identityState unsupported`);
-      assert(Array.isArray(element.contentRefs) && element.contentRefs.length > 0,
-        `${label}.contentRefs must be a non-empty array`);
-      assert(input.contentCatalog !== undefined,
-        `${label}.contentRefs require contentCatalog`);
-      for (const contentRef of element.contentRefs) {
-        assert(typeof contentRef === 'string' && contentRef, `${label}.contentRef required`);
-        assert(contentRefs.has(contentRef),
-          `${label}.contentRef missing contentCatalog message ${contentRef}`);
+      assert(Array.isArray(element.contentOriginRefs) && element.contentOriginRefs.length > 0,
+        `${label}.contentOriginRefs must be a non-empty array`);
+      assert(input.contentOrigins !== undefined,
+        `${label}.contentOriginRefs require contentOrigins`);
+      for (const originRef of element.contentOriginRefs) {
+        assert(typeof originRef === 'string' && originRef, `${label}.contentOriginRef required`);
+        assert(contentOriginRefs.has(originRef),
+          `${label}.contentOriginRef missing content Origin ${originRef}`);
       }
       assert(
         element.valueBindingRefOrNull === null ||
