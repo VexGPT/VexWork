@@ -30,7 +30,7 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   const toCompletionProject = createProject(toCompletionProjectSource);
   assert.equal(projectWorkRefs(toCompletionProject, graph).length, 21);
   const connectedServicesProject = createProject(connectedServicesProjectSource);
-  assert.equal(projectWorkRefs(connectedServicesProject, graph).length, 19);
+  assert.equal(projectWorkRefs(connectedServicesProject, graph).length, 21);
   const operationalConsoleProject = createProject(operationalConsoleProjectSource);
   assert.equal(projectWorkRefs(operationalConsoleProject, graph).length, 24);
   const vexboardProject = createProject(vexboardProjectSource);
@@ -282,6 +282,14 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(connectedPhase3Defect.state, 'COMPLETED');
   assert.equal(connectedPhase3Lived.state, 'COMPLETED');
   assert.deepEqual(connectedPhase3Lived.dependencyRefs, [connectedPhase3Defect.workRef]);
+  const connectedVcs04 = graph.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs04-conversation-adoption');
+  const connectedPhase4 = graph.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs04.phase4-send-companion');
+  const connectedPhase5 = graph.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs04.phase5-restart-no-duplicates');
+  const connectedPhase6 = graph.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs04.phase6-terminal-currentness');
+  const connectedVcs05 = graph.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs05-stream-stress');
+  assert.deepEqual([connectedPhase4.state, connectedPhase5.state, connectedPhase6.state, connectedVcs04.state], ['COMPLETED', 'COMPLETED', 'COMPLETED', 'COMPLETED']);
+  assert.equal(connectedVcs05.state, 'READY');
+  assert.deepEqual(connectedVcs05.dependencyRefs, [connectedVcs04.workRef]);
 
   const operationalOutcome = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.outcome');
   const derivedFoundation = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.derived-work-foundation');

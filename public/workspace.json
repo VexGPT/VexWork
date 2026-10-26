@@ -3600,7 +3600,7 @@
           "label": "VCS-04 — Conversation adoption",
           "purpose": "Complete the lived Android Conversation path through private device possession, bounded remote session, current Family authority, durable read/Send/Companion behavior and restart without duplicates.",
           "workClass": "OUTCOME",
-          "state": "RUNNING",
+          "state": "COMPLETED",
           "workDisposition": "ACTIVE",
           "priorityClass": "IMMEDIATE",
           "parentWorkRefOrNull": "work.vexlife.connected-services.outcome",
@@ -3621,15 +3621,56 @@
           ],
           "sourceRefs": [
             "docs/lineage/VEXLIFE-CONNECTED-SERVICES.md",
-            "github.issue.vexlife.899"
+            "github.issue.vexlife.899",
+            "github.issue.vexlife.899.comment.6394144708",
+            "github.issue.vexlife.899.comment.6394295259",
+            "github.issue.vexlife.899.comment.6406008167",
+            "github.issue.vexlife.899.comment.6406215255",
+            "github.issue.vexlife.899.comment.6406466529",
+            "github.pull.vexlife-android.154.comment.6406466909",
+            "github.pull.vexlife-android.154.comment.6406473728",
+            "github.pull.vexlife-android.154.comment.6406478107",
+            "github.pull.vexlife-android.154.comment.6406485875",
+            "github.issue.vexlife.899.comment.6406486260",
+            "github.commit.vexlife-android.9104d232086afd888700c3317ab79c2a8b87239b",
+            "github.pull.vexwork.132.comment.6406878192",
+            "github.pull.vexwork.132.comment.6406959147",
+            "github.pull.vexwork.132.comment.6407072302"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-21T23:56:41.000Z",
-          "updatedAt": "2026-10-21T23:56:41.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-10-26T02:09:00.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexlife.connected-services.vcs04.verifying.pr154-terminal",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "The lived Conversation matrix L1-L11 is complete and the Android Family Send source is TERMINAL_ACCEPTED_CURRENT at merge 9104d232. VCS-04 is now verifying only its VexWork terminal/current projection before completion.",
+              "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.issue.vexlife.899.comment.6406486260",
+                "github.commit.vexlife-android.9104d232086afd888700c3317ab79c2a8b87239b"
+              ],
+              "createdAt": "2026-10-26T01:56:00.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.connected-services.vcs04.completed.phase6-terminal",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "VCS-04 is terminal: L1-L11 passed, Phase 4 and Phase 5 are complete, Android Family Send source is accepted-current, and Phase 6 VexWork currentness closure passed.",
+              "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vexwork.132.comment.6406878192",
+                "github.issue.vexlife.899.comment.6406486260",
+                "github.pull.vexwork.132.comment.6406959147",
+                "github.pull.vexwork.132.comment.6407072302"
+              ],
+              "createdAt": "2026-10-26T02:09:00.000Z"
+            }
+          ]
         },
         {
           "workRef": "work.vexlife.connected-services.vcs04.phase1-prechallenge",
@@ -4036,13 +4077,16 @@
         {
           "workRef": "work.vexlife.connected-services.vcs04.phase4-send-companion",
           "label": "Phase 4 — durable Send and separate Companion",
-          "purpose": "Prove one durable human Send exactly once, then a separately admitted Companion/model response whose failure cannot erase the human append.",
+          "purpose": "Preserve the completed Phase-4 lived truth: L6 durable human Send exactly once, L7 one separately admitted real Companion/Heretic response durably persisted with same-idempotency recovery and no second model call, and L8 failure separation.",
           "workClass": "OUTCOME",
-          "state": "READY",
+          "state": "COMPLETED",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vexlife.connected-services.vcs04-conversation-adoption",
-          "childWorkRefs": [],
+          "childWorkRefs": [
+            "work.vexlife.connected-services.vcs04.phase4.companion-response",
+            "work.vexlife.connected-services.vcs04.phase4.send-failure-separation"
+          ],
           "dependencyRefs": [
             "work.vexlife.connected-services.vcs04.phase3-fresh-user-family"
           ],
@@ -4052,14 +4096,19 @@
           ],
           "sourceRefs": [
             "docs/lineage/VEXLIFE-CONNECTED-SERVICES.md",
-            "github.issue.vexlife.899"
+            "github.issue.vexlife.899",
+            "github.issue.vexlife.899.comment.6354504738",
+            "github.issue.vexlife.899.comment.6355292731",
+            "github.pull.vexlife.904",
+            "github.issue.vexlife.885.comment.6383114606",
+            "github.issue.vexlife.899.comment.6394144708"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-21T23:56:41.000Z",
-          "updatedAt": "2026-10-22T04:21:02.000Z",
+          "updatedAt": "2026-10-25T06:09:03.000Z",
           "transitionHistory": [
             {
               "transitionRef": "transition.vexlife.connected-services.vcs04.phase4.ready.after-phase3",
@@ -4072,48 +4121,212 @@
                 "github.issue.vexlife.899.comment.6332564149"
               ],
               "createdAt": "2026-10-22T04:21:02.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.connected-services.vcs04.phase4.running.a019-partial-proof",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "A019 proved L6 exactly-once durable Send and L8 failure separation. Phase 4 remains RUNNING because L7 separate durable Companion/model response is still unproven.",
+              "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.issue.vexlife.899.comment.6354504738"
+              ],
+              "createdAt": "2026-10-22T22:10:00.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.connected-services.vcs04.phase4.verifying.a037",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "A037 closes the only remaining Phase-4 child predicate after A019 had already proven L6 and L8.",
+              "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.issue.vexlife.899.comment.6394144708"
+              ],
+              "createdAt": "2026-10-25T06:09:02.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.connected-services.vcs04.phase4.completed.a037",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "The lived Phase-4 matrix L6-L8 is complete: durable exactly-once human Send, real separate durable Companion response, and failure separation are all proven.",
+              "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.issue.vexlife.899.comment.6394144708"
+              ],
+              "createdAt": "2026-10-25T06:09:03.000Z"
             }
           ]
         },
         {
+          "workRef": "work.vexlife.connected-services.vcs04.phase4.companion-response",
+          "label": "Phase 4B — separate durable Companion response (L7)",
+          "purpose": "Preserve A037's completed L7 proof: one separately admitted real Companion/Heretic response becomes durable beside the canonical human request, and a fresh-bridge same-idempotency retry recovers the completed pair without a second model call or duplicate canonical messages.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": "work.vexlife.connected-services.vcs04.phase4-send-companion",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.connected-services.vcs04.phase4.send-failure-separation"
+          ],
+          "repositoryRefs": [
+            "repo.vexlife"
+          ],
+          "sourceRefs": [
+            "github.issue.vexlife.899",
+            "github.pull.vexlife.904",
+            "github.issue.vexlife.885.comment.6334551368",
+            "github.issue.vexlife.885.comment.6383114606",
+            "github.issue.vexlife.899.comment.6359437569",
+            "github.issue.vexlife.899.comment.6394144708"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-24T10:55:00.000Z",
+          "updatedAt": "2026-10-25T06:09:01.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexlife.connected-services.vcs04.phase4.companion-response.verifying.a037",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "Currentization consumes A037 exact L7 evidence: one real Heretic call produced the durable HUMAN + COMPANION pair and the fresh-bridge same-idempotency retry performed no second model call.",
+              "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.issue.vexlife.899.comment.6394144708"
+              ],
+              "createdAt": "2026-10-25T06:09:00.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.connected-services.vcs04.phase4.companion-response.completed.a037",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "A037 readback and retry predicates close L7 without replay: canonical message count remains exactly two, request/response refs are stable, and temporary proof Home cleanup passed.",
+              "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.issue.vexlife.899.comment.6394144708"
+              ],
+              "createdAt": "2026-10-25T06:09:01.000Z"
+            }
+          ]
+        },
+        {
+          "workRef": "work.vexlife.connected-services.vcs04.phase4.send-failure-separation",
+          "label": "Phase 4A — durable Send + failure separation",
+          "purpose": "Preserve the completed A019 lived proof that one installed Android human Send appends exactly once and remains durable when Companion/model completion is unavailable or fails; this closes L6 and L8 without claiming L7.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": "work.vexlife.connected-services.vcs04.phase4-send-companion",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.connected-services.vcs04.phase3-fresh-user-family"
+          ],
+          "repositoryRefs": [
+            "repo.vexlife",
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "github.issue.vexlife.899.comment.6354504738"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-22T22:10:00.000Z",
+          "updatedAt": "2026-10-22T22:10:00.000Z",
+          "transitionHistory": []
+        },
+        {
           "workRef": "work.vexlife.connected-services.vcs04.phase5-restart-no-duplicates",
           "label": "Phase 5 — restart and no duplicates",
-          "purpose": "Prove same-session observation, a real Android process restart, and absence of duplicate human append or model replay.",
+          "purpose": "Preserve the completed A022/A023 lived proof that the A019 durable human message survives same-session observation and a real Android process restart with exactly one canonical append, no duplicate append, and no model replay; temporary private Serve cleanup is closed.",
           "workClass": "OUTCOME",
-          "state": "WAITING_DEPENDENCIES",
+          "state": "COMPLETED",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vexlife.connected-services.vcs04-conversation-adoption",
           "childWorkRefs": [],
           "dependencyRefs": [
-            "work.vexlife.connected-services.vcs04.phase4-send-companion"
+            "work.vexlife.connected-services.vcs04.phase4.send-failure-separation"
           ],
           "repositoryRefs": [
             "repo.vexlife-android"
           ],
           "sourceRefs": [
             "docs/lineage/VEXLIFE-CONNECTED-SERVICES.md",
-            "github.issue.vexlife.899"
+            "github.issue.vexlife.899.comment.6354504738",
+            "github.issue.vexlife.899.comment.6354734101",
+            "github.issue.vexlife.899.comment.6354815441"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-21T23:56:41.000Z",
-          "updatedAt": "2026-10-21T23:56:41.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-10-24T10:55:00.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexlife.connected-services.vcs04.phase5.ready.a019-send-checkpoint",
+              "priorState": "WAITING_DEPENDENCIES",
+              "nextState": "READY",
+              "reason": "A019 established the durable exactly-once human-message checkpoint actually required by restart/no-duplicate proof; L7 was not a prerequisite for this restart slice.",
+              "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.issue.vexlife.899.comment.6354504738"
+              ],
+              "createdAt": "2026-10-22T22:10:01.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.connected-services.vcs04.phase5.running.a020",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "Phase 5 entered execution after the durable Send checkpoint; A020 began the restart proof corridor even though its transform stopped before product restart.",
+              "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.issue.vexlife.899.comment.6354611972"
+              ],
+              "createdAt": "2026-10-22T22:20:00.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.connected-services.vcs04.phase5.verifying.a022",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "A022 proved same-session visibility, real Android process restart, canonical message survival, and no duplicate append/model replay; only the attempt-owned private Serve cleanup remained.",
+              "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.issue.vexlife.899.comment.6354734101"
+              ],
+              "createdAt": "2026-10-22T23:06:00.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.connected-services.vcs04.phase5.completed.a023-cleanup",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "A023 closed A022's exact temporary private Serve effect without product replay, completing the restart/no-duplicate slice.",
+              "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.issue.vexlife.899.comment.6354815441"
+              ],
+              "createdAt": "2026-10-22T23:20:00.000Z"
+            }
+          ]
         },
         {
           "workRef": "work.vexlife.connected-services.vcs04.phase6-terminal-currentness",
           "label": "Phase 6 — VCS-04 terminal currentness",
-          "purpose": "Re-ground current source/lifecycle evidence only after the lived predicates are complete and close the VCS-04 acceptance contract without confusing it with parent-program terminality.",
+          "purpose": "Terminally converge VCS-04 source/currentness after the complete lived L1-L11 matrix, Android PR154 exact accepted merge, and VexWork generator/review closure; no product replay remains.",
           "workClass": "OUTCOME",
-          "state": "WAITING_DEPENDENCIES",
+          "state": "COMPLETED",
           "workDisposition": "ACTIVE",
           "priorityClass": "NORMAL",
           "parentWorkRefOrNull": "work.vexlife.connected-services.vcs04-conversation-adoption",
           "childWorkRefs": [],
           "dependencyRefs": [
+            "work.vexlife.connected-services.vcs04.phase4-send-companion",
             "work.vexlife.connected-services.vcs04.phase5-restart-no-duplicates"
           ],
           "repositoryRefs": [
@@ -4123,22 +4336,93 @@
           ],
           "sourceRefs": [
             "docs/lineage/VEXLIFE-CONNECTED-SERVICES.md",
-            "github.issue.vexlife.899"
+            "github.issue.vexlife.899",
+            "github.pull.vexlife.904",
+            "github.issue.vexlife.885.comment.6383114606",
+            "github.issue.vexlife.899.comment.6394144708",
+            "github.pull.vexlife-android.154",
+            "github.issue.vexlife.899.comment.6394224145",
+            "github.issue.vexlife.899.comment.6394295259",
+            "github.issue.vexlife.899.comment.6406008167",
+            "github.issue.vexlife.899.comment.6406215255",
+            "github.issue.vexlife.899.comment.6406466529",
+            "github.pull.vexlife-android.154.comment.6406466909",
+            "github.pull.vexlife-android.154.comment.6406473728",
+            "github.pull.vexlife-android.154.comment.6406478107",
+            "github.pull.vexlife-android.154.comment.6406485875",
+            "github.issue.vexlife.899.comment.6406486260",
+            "github.commit.vexlife-android.9104d232086afd888700c3317ab79c2a8b87239b",
+            "github.pull.vexwork.132.comment.6406878192",
+            "github.pull.vexwork.132.comment.6406959147",
+            "github.pull.vexwork.132.comment.6407072302"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-21T23:56:41.000Z",
-          "updatedAt": "2026-10-21T23:56:41.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-10-26T02:09:00.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexlife.connected-services.vcs04.phase6.ready.a037-lived-complete",
+              "priorState": "WAITING_DEPENDENCIES",
+              "nextState": "READY",
+              "reason": "A037 completed Phase 4 while Phase 5 was already complete, satisfying the lived prerequisites for terminal source/currentness convergence.",
+              "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.issue.vexlife.899.comment.6394144708"
+              ],
+              "createdAt": "2026-10-25T06:09:04.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.connected-services.vcs04.phase6.running.pr154-current-main",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "Phase 6 is actively proving VexLife-Android PR154 against live current main. A038 failed at invalid Relay lifecycle formation; A039 stopped harness-only because the inner proof member was omitted; A040 then formed synthetic tree b0c80df03471a5f79832ebd7b68845fdb91966b7 and passed composed Action/Screen guards but stopped before Gradle on the stale harness token family_room_send. A041 corrects only that guard to the exact candidate resource conversation_send.",
+              "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.issue.vexlife.899.comment.6394224145",
+                "github.issue.vexlife.899.comment.6394295259",
+                "github.issue.vexlife.899.comment.6406008167",
+                "github.issue.vexlife.899.comment.6406215255"
+              ],
+              "createdAt": "2026-10-25T06:09:05.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.connected-services.vcs04.phase6.verifying.pr154-terminal",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "A041 proved PR154 against live Android main; fresh Assurance and Formal Review cleared the exact head; Owner Merge Duty merged it; post-merge verification found current main 9104d232 with the exact A041-proven tree. Only VexWork's own generated/currentness closure remains.",
+              "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.issue.vexlife.899.comment.6406466529",
+                "github.pull.vexlife-android.154.comment.6406485875",
+                "github.issue.vexlife.899.comment.6406486260"
+              ],
+              "createdAt": "2026-10-26T01:56:00.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.connected-services.vcs04.phase6.completed.vexwork-a003",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "A003 regenerated the exact Connected Services projections and full deterministic VexWork review passed after the two stale Project assertions were repaired; Android PR154 was already terminal accepted current. Phase 6 has no remaining source/currentness predicate.",
+              "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vexwork.132.comment.6406878192",
+                "github.issue.vexlife.899.comment.6406486260",
+                "github.pull.vexwork.132.comment.6406959147",
+                "github.pull.vexwork.132.comment.6407072302"
+              ],
+              "createdAt": "2026-10-26T02:09:00.000Z"
+            }
+          ]
         },
         {
           "workRef": "work.vexlife.connected-services.vcs05-stream-stress",
           "label": "VCS-05 — VexStream adoption / streaming stress",
           "purpose": "Stress the accepted request/response Connected Services boundary against long-lived media delivery, range, throughput, reconnect and backpressure pressure before any streaming extension is generalized.",
           "workClass": "OUTCOME",
-          "state": "WAITING_DEPENDENCIES",
+          "state": "READY",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vexlife.connected-services.outcome",
@@ -4152,15 +4436,34 @@
           ],
           "sourceRefs": [
             "docs/lineage/VEXLIFE-CONNECTED-SERVICES.md",
-            "github.issue.vexlife.899"
+            "github.issue.vexlife.899",
+            "github.pull.vexwork.132.comment.6406878192",
+            "github.issue.vexlife.899.comment.6406486260",
+            "github.pull.vexwork.132.comment.6406959147",
+            "github.pull.vexwork.132.comment.6407072302"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-21T23:56:41.000Z",
-          "updatedAt": "2026-10-21T23:56:41.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-10-26T02:09:00.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexlife.connected-services.vcs05.ready.after-vcs04-terminal",
+              "priorState": "WAITING_DEPENDENCIES",
+              "nextState": "READY",
+              "reason": "VCS-04 completed its lived, source, integration and VexWork terminal predicates, satisfying the only dependency for VCS-05 VexStream adoption / streaming stress.",
+              "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+              "sourceRefs": [
+                "github.pull.vexwork.132.comment.6406878192",
+                "github.issue.vexlife.899.comment.6406486260",
+                "github.pull.vexwork.132.comment.6406959147",
+                "github.pull.vexwork.132.comment.6407072302"
+              ],
+              "createdAt": "2026-10-26T02:09:00.000Z"
+            }
+          ]
         },
         {
           "workRef": "work.vexlife.connected-services.vcs06-architecture-extraction",
@@ -4229,9 +4532,6 @@
           "laneRef": "lane.work.planned",
           "label": "Planned",
           "workRefs": [
-            "work.vexlife.connected-services.vcs04.phase5-restart-no-duplicates",
-            "work.vexlife.connected-services.vcs05-stream-stress",
-            "work.vexlife.connected-services.vcs04.phase6-terminal-currentness",
             "work.vexlife.connected-services.vcs06-architecture-extraction",
             "work.vexlife.connected-services.vcs07-deployment-choices"
           ]
@@ -4240,15 +4540,14 @@
           "laneRef": "lane.work.ready",
           "label": "Ready",
           "workRefs": [
-            "work.vexlife.connected-services.vcs04.phase4-send-companion"
+            "work.vexlife.connected-services.vcs05-stream-stress"
           ]
         },
         {
           "laneRef": "lane.work.active",
           "label": "Active",
           "workRefs": [
-            "work.vexlife.connected-services.outcome",
-            "work.vexlife.connected-services.vcs04-conversation-adoption"
+            "work.vexlife.connected-services.outcome"
           ]
         },
         {
@@ -4275,17 +4574,23 @@
           "laneRef": "lane.work.done",
           "label": "Done",
           "workRefs": [
+            "work.vexlife.connected-services.vcs04-conversation-adoption",
             "work.vexlife.connected-services.vcs04.phase1-prechallenge",
             "work.vexlife.connected-services.vcs04.phase1.android-observability-source",
             "work.vexlife.connected-services.vcs04.phase1.private-serve-ingress",
             "work.vexlife.connected-services.vcs04.phase3.host-to-android-l1-l5",
             "work.vexlife.connected-services.vcs04.phase3.owner-only-family-readability",
+            "work.vexlife.connected-services.vcs04.phase4.companion-response",
+            "work.vexlife.connected-services.vcs04.phase4.send-failure-separation",
             "work.vexlife.connected-services.vcs00-maps-home-admission",
             "work.vexlife.connected-services.vcs01-consumer-comparison",
             "work.vexlife.connected-services.vcs02-shared-contract",
             "work.vexlife.connected-services.vcs03-maps-engine",
             "work.vexlife.connected-services.vcs04.phase2-fixture-l1-l5",
-            "work.vexlife.connected-services.vcs04.phase3-fresh-user-family"
+            "work.vexlife.connected-services.vcs04.phase3-fresh-user-family",
+            "work.vexlife.connected-services.vcs04.phase4-send-companion",
+            "work.vexlife.connected-services.vcs04.phase5-restart-no-duplicates",
+            "work.vexlife.connected-services.vcs04.phase6-terminal-currentness"
           ]
         },
         {
@@ -4295,14 +4600,14 @@
         }
       ],
       "summary": {
-        "workItemCount": 19,
-        "openWorkItemCount": 8,
+        "workItemCount": 21,
+        "openWorkItemCount": 4,
         "outcomeCount": 15,
-        "taskCount": 3,
+        "taskCount": 5,
         "defectCount": 1,
         "potentialCount": 0,
         "needsHumanCount": 0,
-        "completedCount": 11
+        "completedCount": 17
       },
       "rootItems": [
         {
