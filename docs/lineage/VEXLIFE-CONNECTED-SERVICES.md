@@ -158,7 +158,7 @@ temporary private Serve cleanup            CLOSED
 
 A022 proved the same canonical message survived real Android process death/relaunch with count 1 and without a second append/model replay. A023 then closed the exact temporary Serve effect without product replay.
 
-### Phase 6 — verifying
+### Phase 6 — terminal
 
 With L1-L11 complete, foreground responsibility is source/currentness convergence rather than another lived Conversation attempt.
 
@@ -214,7 +214,9 @@ commit verification = valid
 
 One shared `strings.xml` blob is a valid three-way composition rather than the candidate blob verbatim; it is exactly the A041-proven composed blob and retains current-main strings plus PR154's Conversation composer strings.
 
-PR154 is therefore `TERMINAL_ACCEPTED_CURRENT`. No further Conversation lived behavior proof is required unless future source changes invalidate the accepted evidence. Phase 6 now verifies VexWork's own terminal projection/currentness only.
+PR154 is therefore `TERMINAL_ACCEPTED_CURRENT`. No further Conversation lived behavior proof is required unless future source changes invalidate the accepted evidence.
+
+A003 regenerated the current Connected Services projections and reached the full deterministic VexWork review. The only discovered VexWork source defect was two stale tests that still expected the pre-split Project cardinality/state. After repairing those rightful tests, A003 passed the generator/review closure. Phase 6 and VCS-04 therefore complete, releasing VCS-05 to READY.
 ## Recovery appendix — attempt lineage
 
 Attempt identities are evidence/recovery history, not canonical Work items.
@@ -314,10 +316,12 @@ Phase 4 = COMPLETED
   Phase 4A durable Send + failure separation = COMPLETED
   Phase 4B separate durable Companion response (L7) = COMPLETED
 Phase 5 = COMPLETED
-Phase 6 = VERIFYING
+Phase 6 = COMPLETED
 PR #917 source defect = COMPLETED / accepted-current
 PR #904 source/lifecycle = TERMINAL_ACCEPTED_CURRENT / custody RELEASED
 PR #154 source/currentness = TERMINAL_ACCEPTED_CURRENT @ 9104d232086afd888700c3317ab79c2a8b87239b
+VCS-04 = COMPLETED
+VCS-05 = READY
 current lived gap = NONE
 ```
 
