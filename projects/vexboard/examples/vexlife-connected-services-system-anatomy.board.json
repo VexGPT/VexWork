@@ -37,7 +37,7 @@
       {
         "nodeRef": "annotation.vcs.work-overlay",
         "kind": "ANNOTATION",
-        "label": "Work overlay · VCS-04 TERMINAL_ACCEPTED_CURRENT · VCS-05 terminal evidence accepted / VexWork terminal currentization pending PR162 · VCS-06 source-formed READY pending PR162 acceptance",
+        "label": "Work overlay · VCS-04 TERMINAL_ACCEPTED_CURRENT · VCS-05 TERMINAL_ACCEPTED_CURRENT · VCS-06 READY_ACCEPTED_CURRENT · SDK source placement held on current-entry reverify",
         "parentRefOrNull": "container.vcs.system",
         "detailBoardRefOrNull": null,
         "sourceRefs": [
@@ -50,7 +50,11 @@
           "github.issue.vexlife.899.comment.6407174402",
           "github.pull.vexstream-music.15.comment.6408146238",
           "github.issue.vexlife.899.comment.6408187503",
-          "github.pull.vexwork.162.comment.6408252885"
+          "github.pull.vexwork.162.comment.6408252885",
+          "github.commit.vexwork.eb895352768c08dde1d9114c6b462c19e9f79521",
+          "github.pull.vexwork.162.comment.6408965424",
+          "github.issue.vexlife.899.comment.6408966128",
+          "github.issue.vextreme-sdk.223.comment.6408985732"
         ]
       },
       {
@@ -415,7 +419,7 @@
       {
         "nodeRef": "process.vcs.target.streaming-extension",
         "kind": "PROCESS",
-        "label": "COMPLETED VCS-05 · local Range + restart/reconnect pressure accepted; no generic streaming/backpressure extension earned",
+        "label": "TERMINAL_ACCEPTED_CURRENT VCS-05 · local Range + restart/reconnect pressure accepted; no generic streaming/backpressure extension earned",
         "parentRefOrNull": "container.vcs.target",
         "detailBoardRefOrNull": null,
         "sourceRefs": [
@@ -427,13 +431,15 @@
           "github.issue.vexlife.899.comment.6407174402",
           "github.pull.vexstream-music.15.comment.6408146238",
           "github.issue.vexlife.899.comment.6408187503",
-          "github.pull.vexlife-android.148"
+          "github.pull.vexlife-android.148",
+          "github.commit.vexwork.eb895352768c08dde1d9114c6b462c19e9f79521",
+          "github.pull.vexwork.162.comment.6408965424"
         ]
       },
       {
         "nodeRef": "reference.vcs.target.architecture-extraction",
         "kind": "REFERENCE",
-        "label": "SOURCE-FORMED READY VCS-06 · extract only recurring cross-consumer ownership/contracts/proof; accepted-current pending VexWork PR162",
+        "label": "READY_ACCEPTED_CURRENT VCS-06 · extract only recurring cross-consumer ownership/contracts/proof; SDK authoring held until current-entry reverify",
         "parentRefOrNull": "container.vcs.target",
         "detailBoardRefOrNull": null,
         "sourceRefs": [
@@ -441,7 +447,11 @@
           "github.issue.vexlife.899",
           "github.issue.vexlife.899.comment.6408187503",
           "github.pull.vexwork.162",
-          "github.pull.vexwork.162.comment.6408252885"
+          "github.pull.vexwork.162.comment.6408252885",
+          "github.commit.vexwork.eb895352768c08dde1d9114c6b462c19e9f79521",
+          "github.pull.vexwork.162.comment.6408965424",
+          "github.issue.vexlife.899.comment.6408419533",
+          "github.issue.vextreme-sdk.223.comment.6408985732"
         ]
       },
       {
