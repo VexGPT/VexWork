@@ -9268,7 +9268,7 @@
         {
           "workRef": "work.vexlife-android.current-state-refinement.scalability-scae-audit",
           "label": "Cross-feature scalability and SCAE placement audit",
-          "purpose": "Review current Android feature boundaries for scale-amplified work and misplaced execution: distinguish rightful State/Control/Act/Effect ownership from expensive I/O or whole-state work performed at the wrong lifecycle/thread boundary, beginning with the VexStream 785-song startup evidence and extending only where source shows the same class.",
+          "purpose": "Review current Android feature boundaries for scale-amplified work and misplaced execution: distinguish rightful State/Control/Act/Effect ownership from expensive I/O or whole-state work performed at the wrong lifecycle/thread boundary. The initiating 785-song startup finding is source-corrected/merged; Full Player Verify feedback independently exposed the same placement/amplification class in Track activation and is now corrected/merged. Continue this broader audit only where current source shows the same class.",
           "workClass": "TASK",
           "state": "RUNNING",
           "workDisposition": "ACTIVE",
@@ -9286,14 +9286,21 @@
             "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexBehaviorDocs.kt",
             "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt",
             "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt",
-            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/AppRepositories.kt"
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/AppRepositories.kt",
+            "github.pull.vexlife-android.169",
+            "github.pull.vexlife-android.171",
+            "github.pull.vexlife-android.176",
+            "github.commit.vexlife-android.ad2f7bc6635c639acbfe92f7ceafb111772157ea",
+            "github.comment.vexlife-android.pr176.6392897401.assurance-clear",
+            "github.commit.vexlife-android.b6cd02f00f2d867068f7f760027d65583b567dd7",
+            "github.comment.vexlife-android.pr176.6392919060.post-merge-exact"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-10-24T08:50:00.000Z",
-          "updatedAt": "2026-10-24T08:50:00.000Z",
+          "updatedAt": "2026-10-25T03:21:45.000Z",
           "transitionHistory": []
         },
         {
