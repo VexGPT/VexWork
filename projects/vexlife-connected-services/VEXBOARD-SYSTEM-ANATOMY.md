@@ -74,7 +74,7 @@ Current examples:
 Maps          CURRENT typed feature client
 Conversation  CURRENT/LIVED TERMINAL · VCS-04 accepted-current across Android + VexWork
 VexStream     CURRENT feature-owned local pairing/catalog/Range-media transport
-              VCS-05 RUNNING stress edge · shared streaming extension NOT YET earned
+              VCS-05 TERMINAL_ACCEPTED_CURRENT · no generic shared streaming extension earned
 ~~~
 
 ### 2. Shared Connected Services substrate
@@ -373,7 +373,7 @@ Then choose the question:
 -> VCS-05 accepted result: keep media Range/backpressure/playback in VexStream; no generic streaming extension earned
 
 "What is next?"
--> VCS-06 architecture extraction · source-formed READY, accepted-current pending VexWork PR162
+-> VCS-06 architecture extraction · READY_ACCEPTED_CURRENT; SDK source placement/current-entry reverify pending
 
 "Where can this run eventually?"
 -> completed-target deployment region
