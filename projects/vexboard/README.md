@@ -282,6 +282,39 @@ Origin until a bounded path migration is earned). The current POC should encode 
 Origin/binding/mapping lineage needed to prove this path; a universal content registry is not implied
 until a rightful repeated consumer earns that owner.
 
+The current naming/composition direction is now explicit:
+
+~~~text
+identity     -> ID
+address      -> URI
+lookup       -> KEY
+generic Ref  -> migration vocabulary; classify before renaming
+
+VexApplicationOrigin
+  -> Feature Origins
+      -> sovereign Screen Origins
+      -> services / behavior / other feature-owned meaning
+
+authored ownership may be hierarchical
+runtime Screen index may be flat
+visual composition may be nested
+Screen = full-page/destination, not generic child container
+
+target custom UI
+  -> Vex + semantic meaning + familiar form
+  -> e.g. VexConnectionBottomSheet / VexPlaybackWidget
+
+Android ElementIntent
+  -> current migration grammar
+  -> DO NOT rename wholesale to VexAct
+  -> decompose through State / Control / Act / Effect where Behavior actually applies
+~~~
+
+The current Android `AppBlueprint` is shell + registered Screen UI composition, so it is not evidence
+that the whole application should be named from that class. A future whole-application Origin may own
+Features, services, background behavior, widgets and UI while a target `VexAppUI` realizes only the
+application UI composition.
+
 The pilot may treat a rightful product **Feature identity** as a discoverable semantic root for projections, journeys, construction targets, source bindings, evidence and Work. That does **not** require adding `FEATURE` to the VexWork Workgraph class vocabulary. Projects remain human-outcome groupings; product repositories remain owners of feature/product meaning.
 
 The VexStream pilot owns **the mapping/evidence/convergence experiment**, not VexStream product truth:

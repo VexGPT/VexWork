@@ -154,6 +154,203 @@ MIGRATION
 The implementation should migrate only after the semantic model is settled enough that renaming does not
 become another churn cycle.
 
+### Identity and address vocabulary — ID, URI and Key are different roles
+
+The current source contains many established `*Ref` fields. Those are migration coordinates, not a
+requirement that new semantic models continue treating `Ref` as a fourth identity primitive.
+
+The intended long-term vocabulary is:
+
+~~~text
+ID
+  what semantic thing this is
+  stable across movement / storage / provider changes
+
+URI
+  how or where a thing can be addressed / resolved
+  may change while identity stays the same
+
+KEY
+  an actual lookup / resource / map key
+  use only when key semantics are real
+
+REF
+  current / historical compatibility vocabulary
+  new semantic source should prefer ID unless the value is actually a URI or Key
+~~~
+
+Examples:
+
+~~~text
+originId
+contentOriginIds
+valueBindingId
+screenId
+controlId
+actId
+effectId
+
+sourceUri
+artifactUri
+evidenceUri
+providerUri
+
+resourceKey
+translationKey
+mapKey
+~~~
+
+A relationship to another semantic object still carries that object's **ID**. It does not need a
+different noun merely because the ID appears in another object.
+
+~~~text
+OBJECT_IDENTITY != OBJECT_ADDRESS
+ID != URI
+ID != KEY
+
+MOVE_SOURCE
+-> URI MAY CHANGE
+-> ID MUST NOT SILENTLY CHANGE
+~~~
+
+`URI` is preferred over a bespoke `Locator` abstraction because it is already an established,
+cross-platform engineering form with mature API support and can express file, provider, content,
+network or other address schemes without confusing addressability with semantic identity.
+
+Do not mechanically rename every existing `*Ref` field in one migration. Classify each field first:
+identity -> `*Id`; address -> `*Uri`; true lookup key -> `*Key`. Existing accepted schemas remain
+valid until a bounded versioned migration earns the change.
+
+### Application composition — hierarchical ownership, flat indexes, nested presentation
+
+A whole application Origin and its UI composition are different scopes.
+
+~~~text
+VexApplicationOrigin
+  whole application meaning
+  -> Features
+  -> services / processes / background behavior
+  -> UI
+  -> widgets / notifications / other admitted surfaces
+
+VexAppUI
+  application UI composition only
+  -> shell / navigation surface
+  -> Feature-contributed Screens
+~~~
+
+The current Android `AppBlueprint` owns only shell + registered Screens. It therefore must not be
+renamed to `VexApplication` merely because it sits near the app root. `VexAppUI` is the stronger
+long-term conceptual fit unless future source proves a broader responsibility.
+
+Use the repository's existing **Feature** vocabulary before inventing a parallel generic `Domain`
+layer merely to distribute registration:
+
+~~~text
+VexApplicationOrigin
+  |
+  +-> MusicFeatureOrigin
+  |     +-> MusicHomeScreenOrigin
+  |     +-> NowPlayingScreenOrigin
+  |     +-> ArtistDetailScreenOrigin
+  |
+  +-> SettingsFeatureOrigin
+  |     +-> SettingsScreenOrigin
+  |     +-> PrivacyScreenOrigin
+  |
+  +-> MapsFeatureOrigin
+        +-> MapsScreenOrigin
+        +-> ...
+~~~
+
+Parallel feature work should normally mutate the feature-owned source rather than one giant root Screen
+list. The application composition should aggregate Feature contributions. A runtime/router may then
+derive the complete flat Screen index needed for deep links, navigation and Back behavior.
+
+~~~text
+AUTHORING_OWNERSHIP
+  may be hierarchical
+
+RUNTIME_ROUTING_INDEX
+  may be flat
+
+VISUAL_COMPOSITION
+  may be nested
+
+HIERARCHICAL_OWNERSHIP
+!= NESTED_VISUAL_SURFACE
+!= FLAT_RUNTIME_INDEX
+~~~
+
+Do not jump immediately to magical classpath/source discovery. First let Features own bounded explicit
+registrations and let application composition aggregate them. More automatic distributed discovery is
+earned only if real parallel-work pressure proves the remaining aggregation point is itself harmful.
+
+#### Screen means a sovereign full-page destination
+
+`Screen` is not a synonym for any container that owns children.
+
+A Screen is a sovereign full-page / destination context in the product experience. Android may realize
+that Screen through an Activity, Fragment, Compose navigation destination or another target-native
+mechanism without changing the portable meaning.
+
+~~~text
+ArticleDetailScreenOrigin
+  full-page destination
+  -> Screen
+
+Home "For You" tab / Following feed
+  internal Home presentation/content
+  -> not automatically Screens
+~~~
+
+If a supposedly nested child is independently navigable as a full destination, it may be another
+Feature-owned Screen and still flatten into the runtime Screen index. If it is merely a tab, panel,
+feed or section inside the current Screen, name the familiar form it actually represents instead of
+weakening the Screen definition.
+
+#### Familiar-form realization naming
+
+Custom target UI should inherit established human/platform vocabulary where that vocabulary truthfully
+describes the realized form.
+
+Prefer:
+
+~~~text
+VexConnectionBottomSheet
+VexDeleteAlert
+VexPlaybackWidget
+VexTrackRow
+VexLibraryCard
+VexSearchBar
+VexNowPlayingPanel
+~~~
+
+over newly invented abstraction names whose primary meaning is implementation mechanics.
+
+The grammar is:
+
+~~~text
+Vex + semantic/product meaning + familiar form
+~~~
+
+A target-native form such as `BottomSheet`, `Alert`, `Widget`, `Row` or `Panel` is healthy when
+it names the target realization honestly. It becomes architectural leakage only if that target form is
+promoted into the portable Origin contract without product/design authority requiring the same form
+across targets.
+
+~~~text
+PORTABLE_MEANING
+!= TARGET_FORM
+
+TARGET_FORM
+MAY BE PART OF PORTABLE DESIGN
+ONLY WHEN THE PRODUCT/DESIGN CONTRACT ACTUALLY OWNS IT
+~~~
+
+This keeps custom Composables familiar to engineers without minting a unique Vex container taxonomy for
+behavior that established UI language already names well.
+
 ### Origin identity, namespace and physical files are different axes
 
 A semantic coordinate must not become dependent on one repository folder layout.
@@ -1439,6 +1636,113 @@ TextElement
 This correction generalizes carefully: styles, assets, behavior, data bindings and other reusable
 meaning should remain source-addressable and mapped to target realizations where a real consumer earns
 that contract. Do not predeclare one giant universal schema merely from this text example.
+
+#### Control / Act / Effect — dismantle the mixed `ElementIntent` grammar, do not rename it
+
+The accepted VexLife semantic law already distinguishes:
+
+~~~text
+State
+-> Control
+-> resolved Act
+-> Effect
+-> resulting State / Projection
+~~~
+
+The current Android `ElementIntent` is real repository code and remains valid migration source today,
+but it mixes several semantic roles:
+
+~~~text
+ElementIntent.NavigateTo(...)
+ElementIntent.NavigateBack
+ElementIntent.Open(...)
+ElementIntent.Close(...)
+ElementIntent.Toggle(...)
+ElementIntent.SwapTo(...)
+ElementIntent.Invoke(ActionKey)
+ElementIntent.LocalEffect
+ElementIntent.Sequence(...)
+~~~
+
+Do **not** solve this by mechanically renaming `ElementIntent` to `VexAct`. The mixed grammar should
+instead be decomposed case-by-case as target adoption earns the portable relationship.
+
+Permanent behavioral distinctions:
+
+~~~text
+CONTROL_IDENTITY != RESOLVED_ACT
+ACT != EFFECT
+CONTROL_FORM != BUSINESS_BEHAVIOR
+PRESENTATION_MECHANIC != PORTABLE_ACT
+~~~
+
+A stable Control can resolve to different Acts under different State:
+
+~~~text
+State = paused
+Control = play-pause
+-> Act = play
+-> Effect = request-play
+
+State = playing
+same Control = play-pause
+-> Act = pause
+-> Effect = request-pause
+~~~
+
+This is the same architectural lesson as text value resolution:
+
+~~~text
+TEXT_IDENTITY != CURRENT_VALUE
+CONTROL_IDENTITY != RESOLVED_ACT
+CONTAINER_IDENTITY != SELECTED_CHILD
+SCREEN_IDENTITY != CURRENT_NAVIGATION_STATE
+~~~
+
+Current migration interpretation:
+
+~~~text
+ActionElement
+  closest long-term role: Control
+  target rendering form may still be Button / Toggle / another familiar UI control
+
+ElementIntent.Invoke(ActionKey)
+  closest current shape to Control -> Act
+  ActionKey currently wraps an actionId
+  long-term semantic source should prefer direct actId / Act identity when the migration is earned
+
+NavigateTo / NavigateBack
+  navigation request grammar
+  may resolve through State -> Act -> navigation Effect
+  destination is not automatically owned by the Control
+
+Toggle
+  control/presentation form is not itself the semantic Act
+  behavior resolves what change means under current State
+
+SwapTo
+  selection/presentation-state relationship
+  pressure against making "swappable" a permanent container ontology
+  prefer ordinary container identity + selected-child State/binding when that model is earned
+
+LocalEffect
+  migration escape hatch for target-local ownership
+  long-term should become either an explicit Effect relationship or an honestly target-local callback
+  rather than a permanent portable semantic noun
+
+Sequence
+  pressure toward Behavior / Process composition
+  an individual UI Control should not become the universal owner of arbitrary semantic orchestration
+~~~
+
+The UI should be semantically **narrow**, not omniscient: a Control identifies the human affordance /
+request; rightful Behavior resolves the Act when that semantic layer exists; the rightful runtime owner
+attempts the Effect.
+
+That does not mean every popup, animation or target-local presentation change needs a globally
+addressable SCAE row. The repository Feature language already says **Act, when Behavior applies**.
+Presentation-only mechanics may remain presentation-local until a real semantic consumer earns stronger
+portable meaning.
 
 #### Standardization posture
 
