@@ -37,7 +37,7 @@
       {
         "nodeRef": "annotation.vcs.work-overlay",
         "kind": "ANNOTATION",
-        "label": "Work overlay · VCS-04 TERMINAL_ACCEPTED_CURRENT · VCS-05 local Range stress active via VexStream PR15 / VexWork PR162 · VCS-06/07 remain dependency-held",
+        "label": "Work overlay · VCS-04 TERMINAL_ACCEPTED_CURRENT · VCS-05 terminal evidence accepted / VexWork terminal currentization pending PR162 · VCS-06 source-formed READY pending PR162 acceptance",
         "parentRefOrNull": "container.vcs.system",
         "detailBoardRefOrNull": null,
         "sourceRefs": [
@@ -47,7 +47,10 @@
           "github.commit.vexwork.470570726137d0f78a90ff0945850bf29de46a41",
           "github.pull.vexstream-music.15",
           "github.pull.vexwork.162",
-          "github.issue.vexlife.899.comment.6407174402"
+          "github.issue.vexlife.899.comment.6407174402",
+          "github.pull.vexstream-music.15.comment.6408146238",
+          "github.issue.vexlife.899.comment.6408187503",
+          "github.pull.vexwork.162.comment.6408252885"
         ]
       },
       {
@@ -136,7 +139,7 @@
       {
         "nodeRef": "reference.vcs.client.vexstream",
         "kind": "REFERENCE",
-        "label": "CURRENT FEATURE-OWNED · VexStream local pairing/catalog/Range-media client · VCS-05 stress foreground",
+        "label": "CURRENT FEATURE-OWNED · VexStream local pairing/catalog/Range-media client · VCS-05 Range stress accepted",
         "parentRefOrNull": "container.vcs.clients",
         "detailBoardRefOrNull": null,
         "sourceRefs": [
@@ -144,7 +147,9 @@
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/README.md",
           "github.issue.vexlife.899",
           "github.pull.vexstream-music.15",
-          "github.issue.vexlife.899.comment.6407174402"
+          "github.issue.vexlife.899.comment.6407174402",
+          "github.pull.vexstream-music.15.comment.6408146238",
+          "github.commit.vexstream-music.fbe2060dae75efaae069f777d4346b45b251a754"
         ]
       },
       {
@@ -258,7 +263,7 @@
       {
         "nodeRef": "reference.vcs.home.vexstream-target",
         "kind": "REFERENCE",
-        "label": "TARGET / NOT YET EARNED · shared Home/Connected Services VexStream boundary after VCS-05 proves a missing shared contract",
+        "label": "HELD FUTURE OPTION · VCS-05 did not earn a generic shared VexStream media/streaming service boundary",
         "parentRefOrNull": "container.vcs.home",
         "detailBoardRefOrNull": null,
         "sourceRefs": [
@@ -266,7 +271,9 @@
           "github.issue.vexlife.899",
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/README.md",
           "github.pull.vexstream-music.15",
-          "github.issue.vexlife.899.comment.6407174402"
+          "github.issue.vexlife.899.comment.6407174402",
+          "github.issue.vexlife.899.comment.6408187503",
+          "github.pull.vexstream-music.15.comment.6408146238"
         ]
       },
       {
@@ -408,7 +415,7 @@
       {
         "nodeRef": "process.vcs.target.streaming-extension",
         "kind": "PROCESS",
-        "label": "RUNNING VCS-05 · stress current local Range/media demand first; earn only missing shared longevity/backpressure/reconnect/large-payload contracts",
+        "label": "COMPLETED VCS-05 · local Range + restart/reconnect pressure accepted; no generic streaming/backpressure extension earned",
         "parentRefOrNull": "container.vcs.target",
         "detailBoardRefOrNull": null,
         "sourceRefs": [
@@ -417,18 +424,24 @@
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/README.md",
           "github.pull.vexstream-music.15",
           "github.pull.vexwork.162",
-          "github.issue.vexlife.899.comment.6407174402"
+          "github.issue.vexlife.899.comment.6407174402",
+          "github.pull.vexstream-music.15.comment.6408146238",
+          "github.issue.vexlife.899.comment.6408187503",
+          "github.pull.vexlife-android.148"
         ]
       },
       {
         "nodeRef": "reference.vcs.target.architecture-extraction",
         "kind": "REFERENCE",
-        "label": "TARGET VCS-06 · extract recurring architecture only after multiple accepted consumers prove it",
+        "label": "SOURCE-FORMED READY VCS-06 · extract only recurring cross-consumer ownership/contracts/proof; accepted-current pending VexWork PR162",
         "parentRefOrNull": "container.vcs.target",
         "detailBoardRefOrNull": null,
         "sourceRefs": [
           "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
-          "github.issue.vexlife.899"
+          "github.issue.vexlife.899",
+          "github.issue.vexlife.899.comment.6408187503",
+          "github.pull.vexwork.162",
+          "github.pull.vexwork.162.comment.6408252885"
         ]
       },
       {
@@ -944,7 +957,9 @@
       "github.pull.vexlife-android.154",
       "github.pull.vexstream-music.15",
       "github.pull.vexwork.162",
-      "github.commit.vexwork.470570726137d0f78a90ff0945850bf29de46a41"
+      "github.commit.vexwork.470570726137d0f78a90ff0945850bf29de46a41",
+      "github.pull.vexstream-music.15.comment.6408146238",
+      "github.issue.vexlife.899.comment.6408187503"
     ]
   },
   "projection": {
