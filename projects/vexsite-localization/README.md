@@ -44,68 +44,61 @@ There is therefore **no current "next Conversations-with-God page"** to invent i
 
 Vextreme issue #273 remains the canonical source/scheduler authority. If that repository later admits another source queue, VexWork should project that new truth rather than extrapolating from this completed one.
 
-## Immediate foreground — generated/runtime convergence
+## Completed phase — generated/runtime convergence
 
-Source completion is not generated/runtime completion.
-
-The existing broad Vextreme generated/runtime owner remains:
+The broad generated/runtime owner PR #379 is now terminal/current.
 
 ```text
-github.pull.vextreme.379
+PR #379 merge/main = ac2e181bfd547f32f83d1ab3e7d6174900e964fa
+merge tree = 21ced0782c40c76ae5761f9320abd1a58a47f95a
+generated path membrane = 265
+candidate -> merge byte delta = 0
+post-merge verification = PASS
 ```
 
-Future instances should:
+The A011→A015 proof chain established current deterministic generation, runtime/cache composition, repository tests and non-test review gates. A017 published the exact proven bytes without regeneration, and the merge tree exactly matched the reviewed candidate.
+
+Future instances must treat historical PR #379 discovery carriers as terminal evidence, not as work to replay.
+
+## Immediate foreground — Vextreme Covenant JA / ZH
+
+Fresh Vextreme grounding after PR #379 confirmed the previously captured Covenant candidate and admitted it as source work on PR #423.
+
+Current Vextreme source truth:
 
 ```text
-re-ground PR #379 against live Vextreme main
--> preserve its existing generated/runtime custody
--> run current repository-owned generation/proof
--> materialize only the exact deterministic current output
--> complete SourceOwner / Assurance / READY / merge / post-merge if earned
-```
-
-Do **not** replay historical A007/A008 or another digest-bound carrier merely because it appears in chat/PR history. Those attempts were formed against older accepted-main states. Vextreme has since advanced through Welcome Wagon source/runtime changes, so current provider state must be re-observed before a fresh PR #379 proof/materialization attempt is formed.
-
-As of the 2026-10-26 phase checkpoint, Vextreme main has advanced through Welcome Wagon PR #417 while PR #379 is still open/draft/content-neutral. That checkpoint explains why re-grounding is required; it is not a forever-current commit pin.
-
-## Captured next-domain candidate — Vextreme Covenant JA / ZH
-
-Once generated/runtime convergence is terminal/current, the strongest current repository-declared next localization candidate is the Vextreme Covenant institutional surface.
-
-Current evidence:
-
-```text
-about-vextreme
-  requiredLocales = [en, ja, zh]
-  plannedLocales  = []
-
-vex-support
-  requiredLocales = [en, ja, zh]
-  plannedLocales  = []
-
 vextreme-covenant
   requiredLocales = [en]
   plannedLocales  = [ja, zh]
+  runtime         = standalone institutional
 
-current Covenant source coverage
-  EN = 420 / 420 identities
-  JA = 0 / 420
-  ZH = 0 / 420
-  planned target cells = 840
+complete publishable Covenant source identities = 420
+  Covenant-owned institution.covenant.* identities = 419
+  shared root-navigation identity                 = 1
+
+PR #423 exact source freeze
+  head = 761d70ac823297b249f05f70e7f75d534bef51df
+  tree = 8f72565d5b3120cb1ea4e3665b63a09822828998
+  source blob = d0e7c4f3ee8108aba096e8af7126c72319818cc2
+  source SHA-256 = 723f0f5ef8a39922c78164b8287151a0445dd8f8ba13a459f95379db70ce151e
+
+source coverage
+  JA = 420 / 420
+  ZH = 420 / 420
+  target cells = 840 / 840
+  Covenant page unique bindings = 431 / 431 resolvable in EN/JA/ZH
 ```
 
-This is a **VexWork planning candidate only**, not Vextreme source admission or implementation authority.
-
-Before authoring it, a future worker must re-ground:
+This does **not** mean JA/ZH are published. The institutional contract intentionally keeps the registry EN-required while the new locales remain planned until two separate exact-source semantic review dispositions are bound to the same immutable source artifact:
 
 ```text
-config/institutional-surfaces.json
-data/strings/source/institution.json
-docs/architecture/06-i18n.md
-live Vextreme coordination / source authority
+TRANSLATION_CLEAR_JA
+TRANSLATION_CLEAR_ZH
 ```
 
-If those sources still support the same phase, admit one Covenant localization outcome and progress it in semantic chunks while keeping the final locale-completeness gate whole. Do not create hundreds of per-string or per-section Work items just to mirror translation activity.
+Only after both clear may Vextreme promote `requiredLocales`, compile/generated consequences, expose JA/ZH in the selector, and form the complete lived evidence matrix.
+
+PR #423 is Vextreme source authority. VexWork only projects its current work state and must not become a second translation registry.
 
 ## Efficiency rule for future instances
 
@@ -142,4 +135,4 @@ CAPTURED NEXT DOMAIN != ADMITTED VEXTREME WORK
 
 Vextreme owns page identity, source strings, localization semantics, generators, browser behavior and proof. VexWork owns only the durable work grouping and navigation needed to keep the trajectory understandable.
 
-<!-- [VXG RealForever][VEXSITE-LOCALIZATION][PROJECT][SOURCE-QUEUE-COMPLETE][GENERATED-RUNTIME-FOREGROUND][COVENANT-CANDIDATE] -->
+<!-- [VXG RealForever][VEXSITE-LOCALIZATION][PROJECT][SOURCE-QUEUE-COMPLETE][GENERATED-RUNTIME-COMPLETE][COVENANT-JA-ZH-VERIFYING] -->
