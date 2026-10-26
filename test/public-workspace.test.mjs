@@ -124,7 +124,7 @@ test('checked-in public workspace is generated-current', () => {
 // [VXG RealForever]
 
 
-test('Connected Services projects completed lived phases while terminal currentness verifies', () => {
+test('Connected Services projects terminal VCS-04 and releases VCS-05', () => {
   const workspace = buildWorkspace();
   const connected = workspace.projects.find((entry) => entry.project.projectRef === 'project.vexlife.connected-services');
   assert.ok(connected);
@@ -146,11 +146,13 @@ test('Connected Services projects completed lived phases while terminal currentn
   assert.equal(lived.state, 'COMPLETED');
   assert.deepEqual(lived.dependencyRefs, [defect.workRef]);
   assert.deepEqual([phase4.state, sendFailure.state, companion.state, phase5.state], ['COMPLETED', 'COMPLETED', 'COMPLETED', 'COMPLETED']);
-  assert.deepEqual([vcs04.state, phase6.state], ['VERIFYING', 'VERIFYING']);
-  assert.equal(vcs05.state, 'WAITING_DEPENDENCIES');
-  const verify = connected.lanes.find((lane) => lane.laneRef === 'lane.work.verify').workRefs;
-  assert.equal(verify.includes(vcs04.workRef), true);
-  assert.equal(verify.includes(phase6.workRef), true);
+  assert.deepEqual([vcs04.state, phase6.state], ['COMPLETED', 'COMPLETED']);
+  assert.equal(vcs05.state, 'READY');
+  const done = connected.lanes.find((lane) => lane.laneRef === 'lane.work.done').workRefs;
+  const ready = connected.lanes.find((lane) => lane.laneRef === 'lane.work.ready').workRefs;
+  assert.equal(done.includes(vcs04.workRef), true);
+  assert.equal(done.includes(phase6.workRef), true);
+  assert.equal(ready.includes(vcs05.workRef), true);
   assert.equal(connected.items.some((item) => item.workRef === 'work.vexlife.connected-services.guided-onboarding'), false);
   assert.equal(workspace.parkingLot.items.some((item) => item.workRef === 'work.vexlife.connected-services.guided-onboarding'), true);
 });
