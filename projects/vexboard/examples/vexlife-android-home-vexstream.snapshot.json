@@ -592,7 +592,7 @@
         "capabilityRef": "capability.vexlife-android.elements.text-value-resolution",
         "candidateRef": "github.pull.vexlife-android.182",
         "candidateHeadRefOrNull": "git.commit.vexlife-android.56fdc3e385e81dadcb2300dba12c4c0735810e3e",
-        "status": "CANDIDATE_FORMED_PROOF_PENDING",
+        "status": "CANDIDATE_PROVEN_PENDING_ACCEPTANCE",
         "sourceRefs": [
           "github.pull.vexlife-android.182",
           "git.commit.vexlife-android.56fdc3e385e81dadcb2300dba12c4c0735810e3e",
