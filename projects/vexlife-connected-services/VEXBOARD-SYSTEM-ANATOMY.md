@@ -247,13 +247,58 @@ feature reports failure
 A future VexBoard operations presentation may project live AVAILABLE / OFF / DEGRADED / UNKNOWN observations, but those must remain derived observations with exact source/currentness and must not make VexBoard the Start/Stop/Forget/Revoke authority.
 ## Completed-target frontier
 
-### VCS-05 — streaming stress/adoption — RUNNING
+### VCS-05 — completed streaming stress/adoption
 
-Current execution begins deliberately at the feature-owned local data plane, not by inventing a shared streaming framework. `github.pull.vexstream-music.15` changes only the V4 mobile Range test and stresses the existing `mobileMedia` producer with larger sequential, forward-seek, backward-seek, and tail Range demand. The first host attempt reached the focused Go proof and exited 1; A002 is the diagnostic-proof retry on the same immutable candidate. Until that evidence is consumed, no new shared streaming/backpressure contract is earned.
+Accepted evidence now covers the pressure that could have required a shared streaming extension:
+
+~~~text
+4 MiB local media
+-> sequential Range
+-> forward seek
+-> backward seek
+-> tail Range
+-> exact bytes
+
+terminal Android lived continuity
+-> Desktop stop
+-> LOCAL_ONLY playback
+-> real Android process restart
+-> Desktop restart
+-> reconnect
+-> HUB_AND_LOCAL
+~~~
+
+The architectural result is deliberately a **non-expansion**:
+
+~~~text
+Connected Services shared/control plane
+    identity/session
+    reachability / route currentness
+    admission
+    correlation
+    typed availability/failure
+    reconnect/recovery
+
+VexStream-owned media/data plane
+    HTTP Range
+    Media3 demand/backpressure
+    media identity
+    playback
+    download/offline state
+    throughput / large-payload realization
+~~~
+
+Therefore VCS-05 did **not** earn a generic shared streaming transport, generic media-backpressure owner, or a reason to widen Maps/Conversation.
+
+Android remote direct/relay source remains architectural pressure only. Current accepted VexStream Desktop does not provide the matching accepted remote/relay producer, so:
+
+~~~text
+REMOTE_TRANSPORT_SOURCE != REMOTE_PRODUCER_ACCEPTANCE
+~~~
 
 ### VCS-06 — architecture extraction
 
-Only after multiple real consumers have accepted implementations should the recurring pattern be extracted as reusable architecture. The extraction should preserve semantic owner, authority owner, transport owner, feature client, currentness owner, provider/engine boundary, and proof obligations. It should not copy one consumer's implementation and call it universal.
+Multiple real consumers have now accepted enough implementation/behavior to admit VCS-06 as the next extraction edge. VexWork PR #162 source-forms that READY transition; accepted-current status remains pending its generated/currentness closure. The recurring pattern should be extracted as reusable architecture only from what is actually shared. The extraction should preserve semantic owner, authority owner, transport owner, feature client, currentness owner, provider/engine boundary, and proof obligations. It should not copy one consumer's implementation and call it universal.
 
 ### VCS-07 — deployment choices
 
@@ -324,8 +369,11 @@ Then choose the question:
 "Why is AI separate from Send?"
 -> Family Conversation neighborhood
 
-"How will VexStream fit?"
--> compare current feature-owned VexStream transport with TARGET VCS-05
+"What did VexStream teach us?"
+-> VCS-05 accepted result: keep media Range/backpressure/playback in VexStream; no generic streaming extension earned
+
+"What is next?"
+-> VCS-06 architecture extraction · source-formed READY, accepted-current pending VexWork PR162
 
 "Where can this run eventually?"
 -> completed-target deployment region
@@ -409,11 +457,9 @@ Primary architecture/currentness sources:
 github.issue.vexlife.899
 repo.vexlife:docs/VEXLIFE-CONNECTED-SERVICES.md
 project.vexlife.connected-services
-github.commit.vexlife-android.9104d232086afd888700c3317ab79c2a8b87239b
-github.commit.vexwork.470570726137d0f78a90ff0945850bf29de46a41
-github.pull.vexstream-music.15
+github.pull.vexstream-music.15.comment.6408146238
+github.issue.vexlife.899.comment.6408187503
 github.pull.vexwork.162
-github.issue.vexlife.899.comment.6407174402
 ~~~
 
 <!-- [VXG RealForever][VEXWORK][VEXBOARD][VEXLIFE-CONNECTED-SERVICES][SYSTEM-ANATOMY] -->
