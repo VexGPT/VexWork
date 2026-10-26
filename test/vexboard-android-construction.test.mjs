@@ -4,7 +4,7 @@ import test from 'node:test';
 
 import {
   VEXBOARD_ANDROID_CONSTRUCTION_PLAN_SCHEMA,
-  VEXLIFE_ANDROID_DYNAMIC_TEXT_CAPABILITY_REF,
+  VEXLIFE_ANDROID_TEXT_VALUE_RESOLUTION_CAPABILITY_REF,
   compileVexLifeAndroidScreenDesign,
 } from '../src/core/vexboard-android-construction.mjs';
 
@@ -55,8 +55,14 @@ test('Android construction plan consumes VexBoard design without target effects'
   );
   assert.equal(homeTitle.targetSymbol, 'VexText');
   assert.equal(homeTitle.identityStateOrNull, 'VEXBOARD_PROPOSED');
-  assert.equal(homeTitle.contentModeOrNull, 'STATIC_LOCALIZED');
-  assert.equal(homeTitle.targetIdentityStrategyOrNull, 'REGISTER_STATIC_TEXT_ELEMENT');
+  assert.equal(homeTitle.originFormOrNull, 'VexTextOrigin');
+  assert.deepEqual(homeTitle.contentOriginRefs, ['origin.vexlife.vexstream.message.home.title']);
+  assert.equal(homeTitle.valueBindingRefOrNull, null);
+  assert.deepEqual(homeTitle.targetContentRealizationRefs, [
+    'android.vexlife.string.home_vexstream_music',
+  ]);
+  assert.equal(homeTitle.targetIdentityStrategyOrNull, 'REGISTER_TEXT_ELEMENT');
+  assert.equal(homeTitle.targetValueStrategyOrNull, 'ANDROID_RESOURCE_MAPPING');
   assert.equal(homeTitle.targetCapabilityStatusOrNull, 'AVAILABLE');
   assert.equal(
     homeTitle.targetOwnerSourceRefOrNull,
@@ -67,37 +73,59 @@ test('Android construction plan consumes VexBoard design without target effects'
     (entry) => entry.semanticRef === 'element.home.body.systems.title',
   );
   assert.equal(systemsTitle.targetSymbol, 'VexText');
-  assert.equal(systemsTitle.identityStateOrNull, 'VEXBOARD_PROPOSED');
-  assert.equal(systemsTitle.contentModeOrNull, 'STATIC_LOCALIZED');
+  assert.equal(systemsTitle.originFormOrNull, 'VexTextOrigin');
+  assert.equal(systemsTitle.targetIdentityStrategyOrNull, 'REGISTER_TEXT_ELEMENT');
+  assert.equal(systemsTitle.targetValueStrategyOrNull, 'ANDROID_RESOURCE_MAPPING');
 
   const homeStatus = plan.componentMappings.find(
     (entry) => entry.semanticRef === 'element.home.body.vexstream.status',
   );
-  assert.equal(homeStatus.contentModeOrNull, 'DYNAMIC_RUNTIME');
-  assert.equal(homeStatus.targetIdentityStrategyOrNull, 'REGISTER_DYNAMIC_TEXT_ELEMENT');
-  assert.equal(homeStatus.targetCapabilityRefOrNull, VEXLIFE_ANDROID_DYNAMIC_TEXT_CAPABILITY_REF);
+  assert.deepEqual(homeStatus.contentOriginRefs, [
+    'origin.vexlife.vexstream.message.home.connected',
+    'origin.vexlife.vexstream.message.home.offline',
+  ]);
+  assert.equal(homeStatus.valueBindingRefOrNull, 'binding.vexstream.home.status-message');
+  assert.equal(homeStatus.targetIdentityStrategyOrNull, 'REGISTER_TEXT_ELEMENT');
+  assert.equal(homeStatus.targetValueStrategyOrNull, 'RUNTIME_BOUND_VALUE');
+  assert.deepEqual(homeStatus.targetContentRealizationRefs, [
+    'android.vexlife.string.home_vexstream_connected',
+    'android.vexlife.string.home_vexstream_offline',
+  ]);
+  assert.equal(
+    homeStatus.targetCapabilityRefOrNull,
+    VEXLIFE_ANDROID_TEXT_VALUE_RESOLUTION_CAPABILITY_REF,
+  );
   assert.equal(homeStatus.targetCapabilityStatusOrNull, 'STANDARDIZATION_REQUIRED');
 
   const homeBody = plan.componentMappings.find(
     (entry) => entry.semanticRef === 'element.home.body.vexstream.body',
   );
-  assert.equal(homeBody.contentModeOrNull, 'DYNAMIC_RUNTIME');
-  assert.equal(homeBody.targetCapabilityRefOrNull, VEXLIFE_ANDROID_DYNAMIC_TEXT_CAPABILITY_REF);
+  assert.equal(homeBody.valueBindingRefOrNull, 'binding.vexstream.home.body-message');
+  assert.equal(homeBody.targetIdentityStrategyOrNull, 'REGISTER_TEXT_ELEMENT');
+  assert.equal(homeBody.targetValueStrategyOrNull, 'RUNTIME_BOUND_VALUE');
+  assert.equal(
+    homeBody.targetCapabilityRefOrNull,
+    VEXLIFE_ANDROID_TEXT_VALUE_RESOLUTION_CAPABILITY_REF,
+  );
   assert.equal(homeBody.targetCapabilityStatusOrNull, 'STANDARDIZATION_REQUIRED');
 
   assert.equal(plan.targetCapabilityRequirements.length, 1);
-  const dynamicTextRequirement = plan.targetCapabilityRequirements[0];
-  assert.equal(dynamicTextRequirement.capabilityRef, VEXLIFE_ANDROID_DYNAMIC_TEXT_CAPABILITY_REF);
-  assert.equal(dynamicTextRequirement.status, 'STANDARDIZATION_REQUIRED');
-  assert.deepEqual(dynamicTextRequirement.requiredBySemanticRefs, [
+  const textValueRequirement = plan.targetCapabilityRequirements[0];
+  assert.equal(
+    textValueRequirement.capabilityRef,
+    VEXLIFE_ANDROID_TEXT_VALUE_RESOLUTION_CAPABILITY_REF,
+  );
+  assert.equal(textValueRequirement.status, 'STANDARDIZATION_REQUIRED');
+  assert.deepEqual(textValueRequirement.requiredBySemanticRefs, [
     'element.home.body.vexstream.body',
     'element.home.body.vexstream.status',
   ]);
-  assert.equal(dynamicTextRequirement.proposalStatus, 'PROPOSED_NOT_IN_TARGET_SOURCE');
-  assert.equal(dynamicTextRequirement.proposedTargetShape.elementType, 'DynamicTextElement');
-  assert.equal(dynamicTextRequirement.proposedTargetShape.screenBlueprintFactory, 'dynamicTextRef');
-  assert.equal(dynamicTextRequirement.proposedTargetShape.composeCell, 'VexText(element, text)');
-  assert.equal(dynamicTextRequirement.proposedTargetShape.invariant, 'TEXT_IDENTITY != TEXT_VALUE');
+  assert.equal(textValueRequirement.proposalStatus, 'PROPOSED_NOT_IN_TARGET_SOURCE');
+  assert.equal(textValueRequirement.proposedTargetShape.elementType, 'TextElement');
+  assert.equal(textValueRequirement.proposedTargetShape.screenBlueprintFactory, 'textRef');
+  assert.equal(textValueRequirement.proposedTargetShape.layoutPlacement, 'text');
+  assert.equal(textValueRequirement.proposedTargetShape.composeCell, 'VexText(element, text?)');
+  assert.equal(textValueRequirement.proposedTargetShape.invariant, 'TEXT_IDENTITY != VALUE_SOURCE');
 
   const homeOpen = plan.componentMappings.find(
     (entry) => entry.semanticRef === 'element.home.body.systems.vexstream-music',
@@ -259,10 +287,10 @@ test('formed Android capability candidate remains non-admitted until proof/accep
     accepted,
     {
       targetCapabilityCandidates: [{
-        capabilityRef: VEXLIFE_ANDROID_DYNAMIC_TEXT_CAPABILITY_REF,
+        capabilityRef: VEXLIFE_ANDROID_TEXT_VALUE_RESOLUTION_CAPABILITY_REF,
         candidateRef: 'github.pull.vexlife-android.182',
         candidateHeadRefOrNull:
-          'git.commit.vexlife-android.d44f4d164c4241b609ee7da843bd0f7f69166790',
+          'git.commit.vexlife-android.6efb978584de7e4f07257094c5e9e541c17d844c',
         status: 'CANDIDATE_FORMED_PROOF_PENDING',
         sourceRefs: ['github.pull.vexlife-android.182'],
       }],
@@ -276,7 +304,7 @@ test('formed Android capability candidate remains non-admitted until proof/accep
   assert.equal(requirement.candidateRefOrNull, 'github.pull.vexlife-android.182');
   assert.equal(
     requirement.candidateHeadRefOrNull,
-    'git.commit.vexlife-android.d44f4d164c4241b609ee7da843bd0f7f69166790',
+    'git.commit.vexlife-android.6efb978584de7e4f07257094c5e9e541c17d844c',
   );
   assert.deepEqual(requirement.candidateSourceRefs, ['github.pull.vexlife-android.182']);
 });
@@ -299,7 +327,7 @@ test('accepted VexBoard design becomes Android implementation eligible once targ
 
   const plan = compileVexLifeAndroidScreenDesign(
     accepted,
-    { availableTargetCapabilityRefs: [VEXLIFE_ANDROID_DYNAMIC_TEXT_CAPABILITY_REF] },
+    { availableTargetCapabilityRefs: [VEXLIFE_ANDROID_TEXT_VALUE_RESOLUTION_CAPABILITY_REF] },
   );
 
   assert.equal(plan.designAuthorityState, 'VEXBOARD_DESIGN_AUTHORITY');
