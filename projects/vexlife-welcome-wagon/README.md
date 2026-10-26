@@ -795,123 +795,95 @@ This gives each risk one rollback coordinate: **identity migration**, **page mea
 
 ## Current execution edge
 
-The accepted A006 family rail remains valid. Victor's lived review then exposed two bounded presentation defects inside that already-proven coordinate contract:
+The cross-context optical/header refinement is now **accepted merged source with lived PASS**.
 
-- family words were left-aligned inside fixed-width context slots, making separator whitespace read unevenly;
-- Vextreme and VexWork used materially tighter desktop family-header rows than VexLife.
+Victor's exact lived verdict on the immutable candidates was:
 
-Three deliberately small draft candidates now carry that optical refinement without changing family order, destinations, product-local controls, Workgraph lifecycle meaning, or the broader held product/design choices:
+```text
+PASS
+experience="feels perfect"
+```
+
+That verdict was bound to these exact candidate heads:
 
 ```text
 Vextreme #416
-  head 912a3bd7eeb8414d1757eb80767a82f5070ee96a
-  -> 76px desktop content row / 77px outer shared shell
-  -> centered family labels in the accepted fixed slots
-  -> Terrain viewport + Spiral/FAB geometry currentized to the same shell datum
-  -> exact source/header/Terrain proof established; inherited repository reds remain baseline debt
+  head  912a3bd7eeb8414d1757eb80767a82f5070ee96a
+  tree  8666c121c896d143bf627ce7eb71a50281aba18a
 
 VexLife #933
-  head d3a2370815a5c5608ab87942888b5fd7246defa6
-  -> existing 4.75rem / 76px desktop header remains the reference datum
-  -> centered family labels in the accepted fixed slots
-  -> Source Manifest consequences remain limited to the CSS/test buckets
-  -> candidate-local/source-manifest proof established; inherited Q3-05 browser debt remains foreign to this visual move
+  head  d3a2370815a5c5608ab87942888b5fd7246defa6
+  tree  fd69ff56902afd34184cca60c21c91c4a86f30fd
 
 VexWork #157
-  head 19265a4b290514ca82348051445747b930e132a7
-  -> family rail min-height = 76px; padding = 0
-  -> centered family labels in the accepted fixed slots
-  -> toolbar/search remains product-local below the family band
-  -> exact-branch structural/source proof established
+  head  19265a4b290514ca82348051445747b930e132a7
+  tree  6b843b460b0b107ce459db6b55b2297f175d3d9a
 ```
 
-The current exact cross-context review packet is therefore:
+Fresh exact-head semantic Assurance then cleared all three unchanged candidates. Repository-specific current-main composition was proven without GitHub Actions and without a Local Workspace by applying only each candidate's exact blobs to the then-current main tree.
+
+The resulting merges are exact:
 
 ```text
-Vextreme  912a3bd7eeb8414d1757eb80767a82f5070ee96a
-VexLife   d3a2370815a5c5608ab87942888b5fd7246defa6
-VexWork   19265a4b290514ca82348051445747b930e132a7
+Vextreme #416
+  merge f4e99059fbfd5609807898c73a32805314cc7fba
+  parents
+    1bd880ef29b26fd9774fbb3fa1fb66e8cf8fed9f
+    912a3bd7eeb8414d1757eb80767a82f5070ee96a
+  tree 8666c121c896d143bf627ce7eb71a50281aba18a
+  expected tree match = true
+
+VexLife #933
+  merge 253018beee0189d64d9e7570fc6c3c6623342661
+  parents
+    826fbd6cfdcd5275d2da30511c1caff4e73495a6
+    d3a2370815a5c5608ab87942888b5fd7246defa6
+  tree 78de9174c915f5e67d308bc57a091416ff196f44
+  expected tree match = true
+
+VexWork #157
+  merge 16a8a9bb2d8ace7e0582a8d6b4b61e5ac5ad5a75
+  parents
+    d2a3aa8655c67ef377d22b2bfa32a85a67cd914a
+    19265a4b290514ca82348051445747b930e132a7
+  tree a56d8c4017f277c8f31865e06e72a03bdfb30f6e
+  expected tree match = true
 ```
 
-Immutable candidate review surfaces:
+The reviewed candidate-owned visual bytes are therefore the bytes carried by the proven merged compositions. A repeat human review is not required merely because lifecycle state advanced.
 
-- Vextreme Terrain: https://rawcdn.githack.com/vgong24/Vextreme/912a3bd7eeb8414d1757eb80767a82f5070ee96a/pages/terrain-map.html
-- VexLife Public Alpha: https://rawcdn.githack.com/vgong24/VexLife/d3a2370815a5c5608ab87942888b5fd7246defa6/pages/vexlife-onboarding.html
-- VexWork: https://rawcdn.githack.com/VexGPT/VexWork/19265a4b290514ca82348051445747b930e132a7/index.html
+Public GitHub Pages deployment currentness was not independently readable through the available web surface in the accepting session. That narrow observation remains separate from exact merged-source acceptance and lived candidate acceptance; do not convert it into a source rollback or replay requirement.
 
-The source/proof edge is complete enough for lived review. The **one current product predicate** is:
+### Optical-refinement chunk closure
+
+The interruption-resistant chunk sequence introduced by VexWork #161 is now fully consumed:
 
 ```text
-Victor lived optical verdict
-  -> same 76px desktop family-header breathing datum feels right across all three contexts
-  -> fixed Vextreme / VexLife / VexWork slot geometry reads balanced
-  -> current context remains emphasized in place
-  -> each product keeps its own palette and local controls
-  -> Vextreme Spiral/FAB relationship feels improved rather than crowded
-  -> no unwanted horizontal / slot movement is perceived when changing family context
+CHUNK 1 — LIVED_OPTICAL_REVIEW
+  COMPLETE
+  -> Victor PASS: experience feels perfect
+
+CHUNK 2 — FRESH EXACT-HEAD ASSURANCE
+  COMPLETE
+  -> #416 CLEAR_ON_EXACT_HEAD
+  -> #933 CLEAR_ON_EXACT_HEAD
+  -> #157 CLEAR_ON_EXACT_HEAD
+
+CHUNK 3 — REPOSITORY INTEGRATION / LIFECYCLE
+  COMPLETE
+  -> exact live-main compositions proven
+  -> ordinary expected-head merges performed
+  -> actual merge trees == expected merge trees
+
+CHUNK 4 — LIVED ACCEPTANCE + VEXWORK TRUTH WRITEBACK
+  COMPLETE
+  -> lived PASS carried forward because reviewed bytes landed unchanged
+  -> this current-entry update records the terminal optical checkpoint
 ```
 
-Existing public Pages may still show accepted-main/deployment bytes. The immutable links above are the candidate review coordinates; **preview availability != merge/deployment**.
+A response interruption, fresh conversation, or later provider movement does **not** reopen these completed chunks unless the accepted source itself materially changes.
 
-PR #379 remains the separate owner of its existing downstream generated/runtime currentization membrane from accepted Vextreme main. The optical refinement does not take that custody and #379's existence does not block the lived review of #416/#933/#157.
-
-### Chunked continuation — interruption-resistant current entry
-
-This is a compact execution projection over the existing Welcome Wagon outcome, **not** a new lifecycle, authority owner, process foundation, or permission grant. Its purpose is to let a fresh instance resume one bounded edge without reconstructing this thread or replaying already-valid proof.
-
-```text
-CHUNK 1 — LIVED_OPTICAL_REVIEW                         CURRENT
-  inputs:
-    Vextreme #416 @ 912a3bd7eeb8414d1757eb80767a82f5070ee96a
-    VexLife  #933 @ d3a2370815a5c5608ab87942888b5fd7246defa6
-    VexWork  #157 @ 19265a4b290514ca82348051445747b930e132a7
-  do:
-    use the immutable browser previews above
-    obtain Victor's lived optical verdict
-  do not:
-    depend on GitHub Actions
-    allocate a Local Workspace
-    replay already-supported source/header proof
-  completion:
-    PASS
-    OR one exact visual defect / affected context
-
-CHUNK 2 — FRESH EXACT-HEAD ASSURANCE                  AFTER CHUNK 1 PASS
-  bind:
-    source.vexrelay.current-contract/v1
-    the exact unchanged candidate head for each repository
-  do:
-    fresh read-only semantic Assurance using the current admitted Relay/provider route
-  do not:
-    convert old hosted/structural evidence into fresh Assurance by assertion
-    mutate candidate source merely because main moved
-  completion:
-    CLEAR_ON_EXACT_HEAD
-    OR exact CHANGES_REQUIRED / missing-evidence edge
-
-CHUNK 3 — REPOSITORY INTEGRATION / LIFECYCLE          AFTER CLEAR
-  do:
-    rebind current main at integration time
-    preserve each repository's own lifecycle/merge authority and ordering
-    integrate by ordinary expected-head / non-force rules
-  do not:
-    use VexRelay RUN as a merge/approval/READY substitute
-    chase moving main during already-sufficient source-owner proof
-  completion:
-    exact merged head/tree plus required post-merge evidence
-
-CHUNK 4 — LIVED ACCEPTANCE + VEXWORK TRUTH WRITEBACK  AFTER MERGE
-  do:
-    review the merged/public result when that surface is actually current
-    update only material Project/Work truth
-    preserve the still-held broader Terrain/default-route/VexLife-story decisions
-  completion:
-    optical refinement accepted or one exact bounded correction reopened
-```
-
-At every chunk boundary preserve the exact completed effect and next predicate before descending further. A response interruption, fresh conversation, or provider/tool readback failure does **not** reopen earlier accepted source work by itself.
-
-Completed Welcome Wagon source/presentation rows remain accepted and are not reopened:
+Completed Welcome Wagon source/presentation rows now include:
 
 ```text
 #400 slug rename impact tooling                  COMPLETED / MERGED
@@ -921,7 +893,12 @@ Completed Welcome Wagon source/presentation rows remain accepted and are not reo
 #415 Vextreme stable family rail                 COMPLETED / MERGED
 #929 VexLife stable family rail                  COMPLETED / MERGED
 #154 VexWork stable family rail                  COMPLETED / MERGED
+#416 Vextreme optical/header refinement          COMPLETED / MERGED / LIVED PASS
+#933 VexLife optical refinement                  COMPLETED / MERGED / LIVED PASS
+#157 VexWork optical/header refinement           COMPLETED / MERGED / LIVED PASS
 ```
+
+PR #379 remains a separate existing owner of its generated/runtime membrane. Its work is not absorbed by the Welcome Wagon optical refinement and should re-ground from accepted Vextreme main when that lane continues.
 
 ## Process map to completion
 
@@ -934,33 +911,25 @@ accepted Welcome Wagon source
   #413 About / What is this? / lived orientation ✅
   #414 Support shared shell + clean Terrain link ✅
   #415 / #929 / #154 stable family rail ✅
+  #416 / #933 / #157 optical/header refinement ✅
+       lived cross-context verdict = PASS
+       exact merged compositions = PASS
         ↓
-bounded optical/header refinement
-  #416 Vextreme
-  #933 VexLife
-  #157 VexWork
+parallel existing generated/runtime owner
+  #379 re-ground from accepted Vextreme main
+       within its own membrane
         ↓
-CURRENT: Victor lived optical verdict on exact immutable heads
-        ↓
-fresh exact-head Assurance
-        ↓
-repository-specific lifecycle / integration / post-merge proof
-        ↓
-parallel existing dependency owner
-  #379 rederive its existing generated/runtime membrane
-       from accepted Vextreme main
-        ↓
-remaining held product/design choices
+remaining deliberately held product/design choices
   broader Terrain visual convergence
   VexLife screenshot-led product story as lived product exists
   final root/default public-entry URL
         ↓
-final whole-project lived acceptance
+final whole-project lived acceptance when those held choices are actually admitted
   desktop + mobile + locales + keyboard + Read Aloud
   + Receive God + Archives + About + VexSystem secondary
 ~~~
 
-The family rail proves the reusable header capability without creating a universal copied DOM component. The optical refinement remains one reversible presentation move across three rightful product projections; it does not reopen the accepted underlying family-coordinate contract.
+The family rail and optical refinement are now settled source/presentation foundation. Do not reopen them merely to pursue the still-held broader design choices.
 
 ## Deliberately held
 
