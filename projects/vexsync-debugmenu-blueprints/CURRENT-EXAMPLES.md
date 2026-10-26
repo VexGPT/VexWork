@@ -22,6 +22,54 @@ CURRENT EXAMPLE
 As the VexSync process is discovered, this file may be refined or superseded. The durable Project
 README remains the project entry.
 
+## Current checkpoint correction
+
+The shorter sentence:
+
+> As a user I want to be able to toggle/switch between dark and light mode in the Debug Menu.
+
+is useful human-goal language, but **by itself is not the complete current example** when no prior
+application foundation is assumed. A first-principles Builder still needs enough terrain to know how
+the person reaches Debug Menu.
+
+Victor's richer current example supplies additional clues such as:
+
+~~~text
+UserClick on {missing button} from Home
+-> [HomeScreen](buttonid: ??)
+
+NavigateTo <DebugMenuScreen>
+
+clicks on { id for dark mode }
+
+effect { calls the function }
+
+OriginIntent.NavigateTo(DebugMenuScreen(id:???))
+
+[DebugMenuScreen::id???]
+[DebugMenuScreen::click("dark mode toggle":id???)]
+
+[effect:
+  state<lightmode>
+  -> state<darkmode>
+]
+
+Result:
+  "???"
+~~~
+
+This remains exploratory pseudocode, but it is the **current checkpoint** because it exposes the
+start terrain, destination, unresolved identifiers, intended interaction, missing HOW, and expected
+return shape.
+
+If the human had supplied only the shorter sentence and Debug Menu did not already exist, the request
+phase should return the exact missing question (for example, "from which Screen/how does the user
+reach Debug Menu?") rather than silently assuming a traversable Debug Menu.
+
+If the human supplies Home/FAB/DebugMenu clues, the Builder uses those clues to ground or create the
+next required coordinates. It should not demand unrelated details such as every other FAB option
+before those details are relevant.
+
 ---
 
 # Current phase model
@@ -180,6 +228,15 @@ The Builder's first job is **not to invent source**. It asks:
 > What do we already know, what coordinates are implied, and what current truth already maps to this
 > intention?
 
+The working language is IDE-assisted and typed, not static prose. Specific expressions such as
+`UserClick(...)`, `Act.NavigateTo(...)`, or a future state-changing Act are valuable because the
+authoring surface can constrain valid parameters, reveal missing IDs, offer existing coordinates, and
+prevent category mistakes. Do not replace a supplied specific interaction such as Click with a vaguer
+verb such as Activate merely for abstraction.
+
+The reuse goal is that Android can realize the same settled semantic expression without another layer
+or another AI having to decipher what the author meant.
+
 ## Current dark/light example — intentionally incomplete
 
 Victor's developing pseudocode, preserved as discovery pressure:
@@ -328,16 +385,20 @@ State -> Control -> Act -> Effect
 
 Instead ask whether the current feature question actually needs Behavior resolution.
 
-Current dark/light pressure suggests at least:
+Current dark/light pressure suggests a causal shape, but Victor's provisional typed form must be
+allowed to pressure the design directly:
 
 ~~~text
-current theme truth
-+ a human-facing theme-selection Control
--> intended theme meaning
--> runtime realization
+UserClick(controlId = ???)
+-> Act.RotateStateFor(target = ???, values = ???)
+-> Effect = ???
+-> Result = ???
 ~~~
 
-But the exact roles, names, States, Acts, Effects, and ownership are **not settled by this example**.
+The exact roles, names, States, Acts, Effects, and ownership are **not settled by this example**.
+Neither is `Act.RotateStateFor` rejected merely because it is provisional. The Builder asks what
+typed meaning it gives the IDE, whether current truth already has an equivalent, and whether the
+target can realize it without semantic reinterpretation.
 
 Important correction from the checkpoint:
 
