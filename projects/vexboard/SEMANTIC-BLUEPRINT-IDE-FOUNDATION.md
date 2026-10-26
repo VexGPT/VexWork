@@ -1284,55 +1284,55 @@ ANDROID_SCREENCRAWLER_RECEIPT
 
 can be admitted without guessing capture time from upload/filesystem/event timestamps.
 
-7. **Canonical content identity is upstream of target string resources**
+7. **Canonical content Origin is upstream of target string resources**
 
 The current Android element model exposed a real registration gap, but the first interpretation mixed
 two different questions:
 
 ~~~text
 WHAT IS THIS?
-  a stable Vex text-bearing semantic object / Blueprint form
+  one stable Vex text Origin / semantic identity
 
 WHERE DOES ITS CURRENT VALUE COME FROM?
-  one canonical message
-  one of several canonical message variants selected by State
+  one canonical content Origin
+  one of several content Origins selected by State
   parameters supplied by current State/data
 ~~~
 
-The Vex ontology should not make `dynamic` part of the identity merely because a value is selected or
-parameterized at runtime.
+The Vex ontology must not make `dynamic` part of element identity merely because a value is selected
+or parameterized at runtime.
 
-Use the naming role explicitly:
+Use the naming roles explicitly:
 
 ~~~text
 VexText
   reusable Vex semantic/construction primitive
 
-VexTextBlueprint
-  authored Blueprint form of that primitive
+VexTextOrigin
+  canonical authored Origin form of that primitive
 
-message.* / content.*
-  stable content meaning and translation identity
+origin.*.message.*
+  stable content meaning / translation identity
 
 binding.*
-  current State/data -> message selection / parameters / element property
+  current State/data -> content selection / parameters / element property
 
 target-local resource
   Android R.string / web locale key / another native realization
 ~~~
 
-The generic `VexElementBlueprint` envelope may be earned later if repeated component families need the
+A generic `VexElementOrigin` envelope may be earned later if repeated component families need the
 same structural contract. Do not mint a class merely to fill a naming grammar.
 
 For the Home patient zero:
 
 ~~~text
-VexTextBlueprint
+VexTextOrigin
   semanticRef = element.home.body.vexstream.status
 
-  contentRefs =
-    message.vexstream.home.connected
-    message.vexstream.home.offline
+  contentOriginRefs =
+    origin.vexlife.vexstream.message.home.connected
+    origin.vexlife.vexstream.message.home.offline
 
   valueBindingRef =
     binding.vexstream.home.status-message
@@ -1343,14 +1343,14 @@ VexTextBlueprint
 
 The binding owns **selection and parameters**, not the message wording itself. A connected status may
 bind a current device display name into the canonical connected message; the offline branch may select
-another canonical message. Both remain source-addressable content identities.
+another content Origin. Both remain source-addressable Origins.
 
-The scalable content path is therefore:
+The scalable path is therefore:
 
 ~~~text
-canonical message/content identity
+canonical content Origin
   -> locale variants / translation source
-  -> Blueprint usage ref
+  -> Origin usage ref
   -> target adapter
   -> target-native resource/key
   -> rendered value
@@ -1360,31 +1360,32 @@ canonical message/content identity
 For Android specifically:
 
 ~~~text
-message.vexstream.home.connected
+origin.vexlife.vexstream.message.home.connected
   -> Android adapter mapping
+  -> android.vexlife.string.home_vexstream_connected
   -> R.string.home_vexstream_connected
   -> stringResource(...)
   -> rendered VexText
 ~~~
 
 `R.string.home_vexstream_connected` is a **target realization coordinate**, not the portable content
-identity. The same canonical message may map to a web locale bundle, desktop resource, accessibility
-surface, or another project without re-translating the same semantic message independently.
+Origin. The same Origin may map to a web locale bundle, desktop resource, accessibility surface, or
+another project without re-translating the same semantic message independently.
 
 During reverse adoption, Android resources may supply the currently accepted wording from which proposed
-canonical message identities are recovered:
+content Origins are recovered:
 
 ~~~text
 accepted Android resource
 -> reverse-adopt meaning + wording + parameters
--> proposed canonical message/content ref
+-> proposed content Origin
 -> reconcile reuse / translation ownership
 ~~~
 
 After the authority threshold crosses, ordinary direction reverses:
 
 ~~~text
-accepted canonical message/content source
+accepted content Origin
 -> translation/currentness
 -> target adapters
 -> Android/web/desktop resource projections
@@ -1392,36 +1393,50 @@ accepted canonical message/content source
 ~~~
 
 A manual endpoint-only wording edit is then **drift or an upstream change proposal**, not silent new
-truth. A legitimate wording change should move to the rightful canonical content owner and propagate
-back through every mapped target.
+truth. A legitimate wording change should move to the rightful Origin owner and propagate through
+mapped targets.
 
-The current Android PR #182 `DynamicTextElement` remains a useful **target-side compatibility seam**:
-Android needs a statically registered identity whose current text value can be supplied by runtime
-State. That class name describes the present Android implementation shape; it does not define the
-portable Vex ontology.
+Android PR #182 now realizes the same law without a `DynamicTextElement` subtype:
+
+~~~text
+TextElement
+  stable elementId
+  TextRole / style
+  optional Android textRes mapping
+  no runtime/domain value storage
+
+VexText(element)
+  -> resource-mapped value
+
+VexText(element, text = currentValue)
+  -> State/data-bound value
+
+VexElementTree.textValue(TextElement)
+  -> nullable current-value resolver
+~~~
 
 Permanent:
 
 ~~~text
-VEX_TEXT_IDENTITY != CONTENT_IDENTITY
-CONTENT_IDENTITY != TARGET_RESOURCE_ID
-CONTENT_IDENTITY != CURRENT_RENDERED_VALUE
+VEX_TEXT_IDENTITY != CONTENT_ORIGIN
+CONTENT_ORIGIN != TARGET_RESOURCE_ID
+CONTENT_ORIGIN != CURRENT_RENDERED_VALUE
 VALUE_BINDING != ELEMENT_IDENTITY
-RUNTIME_SELECTION != DYNAMIC_ELEMENT_ONTOLOGY
+VALUE_SOURCE != ELEMENT_TYPE
 
-CANONICAL_CONTENT
+CANONICAL_ORIGIN
 -> TARGET_REALIZATIONS
 -> OBSERVED_EVIDENCE
 
 TARGET_ENDPOINT_EDIT
-!= CANONICAL_TRUTH_CHANGE
+!= CANONICAL_ORIGIN_CHANGE
 
-DynamicTextElement
-= CURRENT_ANDROID_REALIZATION_SEAM
-!= VEX_BLUEPRINT_NAMING_LAW
+TextElement
+= CURRENT_ANDROID_TEXT_REALIZATION
+!= PORTABLE_ORIGIN_OWNER
 ~~~
 
-This correction also generalizes carefully: styles, assets, behavior, data bindings and other reusable
+This correction generalizes carefully: styles, assets, behavior, data bindings and other reusable
 meaning should remain source-addressable and mapped to target realizations where a real consumer earns
 that contract. Do not predeclare one giant universal schema merely from this text example.
 
