@@ -15,7 +15,7 @@ BoardJourney + simulation             COMPLETED
 animated semantic traversal           ACCEPTED / PR #98 MERGED
 BoardPatch                            READY / NO_AUTHORITY / NO_EFFECTS
 Source Projectors                     RUNNING / AUTHORIZED_BOUNDED / EFFECTS_BOUND
-VexStream screenshot pilot            WAITING_HUMAN / IMMEDIATE
+VexStream screenshot pilot            RUNNING / IMMEDIATE / AUTHORIZED_BOUNDED
 BusinessFactory company formation     CAPTURED / LATER / NO_AUTHORITY
 VexBoard root                         DECOMPOSED
 ```
@@ -174,6 +174,68 @@ published VexBoard Blueprint
 ```
 
 These Blueprint Source-of-Truth refs are **lineage and architectural pressure**, not blocking dependencies and not an automatic reactivation of the paused VLBSoT Project.
+
+### Source propagation law — canonical meaning reaches the endpoint
+
+The VexStream patient zero also corrects an earlier target-centric assumption: Android resources,
+Compose literals and similar endpoint values are not automatically the portable source of truth merely
+because reverse adoption discovers them first.
+
+For reusable content:
+
+~~~text
+canonical message/content ref
+-> locale/translation source
+-> VexTextBlueprint usage
+-> target adapter
+-> Android R.string / web locale key / desktop resource
+-> rendered value
+-> observed evidence
+~~~
+
+For state-conditioned text, the State/data binding selects a canonical message or supplies its
+parameters. It does not create a separate "dynamic text" ontology:
+
+~~~text
+VexTextBlueprint
+  semanticRef = stable element identity
+  contentRefs = stable reusable message identities
+  valueBindingRef = optional current selection / parameter binding
+
+!=
+
+DynamicTextElement as portable product meaning
+~~~
+
+The existing Android `DynamicTextElement` candidate is therefore a target-side realization seam needed
+to preserve stable Android registry identity when current State supplies the rendered value. It is not
+the naming pattern VexBoard should propagate into every platform.
+
+The same provenance rule should be visible in both directions:
+
+~~~text
+reverse adoption
+  target-native value
+  -> recover proposed canonical meaning
+
+accepted forward authority
+  canonical meaning
+  -> mapped target realizations
+
+endpoint-only manual change
+  -> drift or upstream change proposal
+  -> never silent canonical replacement
+~~~
+
+This is the long-term reason mappings must remain traversable. A fresh worker should be able to start
+from a rendered string/component/style/asset/behavior coordinate and reach its rightful semantic owner,
+or start from canonical truth and enumerate its downstream realizations, without source archaeology or
+per-platform retranslation.
+
+The detailed worked content example and naming distinction live in
+`SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md`. The current POC should encode only the smallest message/binding
+lineage needed to prove this path; a universal localization/content registry is not implied until a
+rightful repeated consumer earns that owner.
 
 The pilot may treat a rightful product **Feature identity** as a discoverable semantic root for projections, journeys, construction targets, source bindings, evidence and Work. That does **not** require adding `FEATURE` to the VexWork Workgraph class vocabulary. Projects remain human-outcome groupings; product repositories remain owners of feature/product meaning.
 
