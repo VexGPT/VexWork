@@ -46,23 +46,22 @@ test('Operational Console keeps Terrain review while Antique Plate becomes the n
   assert.equal(antique.currentItems[0].state, 'RUNNING');
 });
 
-test('Connected Services Roadmap advances to VCS-05 after terminal VCS-04', () => {
+test('Connected Services Roadmap advances to VCS-06 after terminal VCS-05', () => {
   const p = project('project.vexlife.connected-services');
   const roadmap = projectScopeRoadmap(p, { maxSteps: 4 });
-  const row = roadmap.rows.find((candidate) => candidate.scopeRef === 'work.vexlife.connected-services.vcs05-stream-stress');
+  const row = roadmap.rows.find((candidate) => candidate.scopeRef === 'work.vexlife.connected-services.vcs06-architecture-extraction');
   assert.ok(row);
   assert.deepEqual(row.priorItems.map((item) => item.workRef), [
-    'work.vexlife.connected-services.vcs04-conversation-adoption',
+    'work.vexlife.connected-services.vcs05-stream-stress',
   ]);
   assert.deepEqual(
     row.steps.map((step) => step.items.map((item) => item.workRef)),
     [
-      ['work.vexlife.connected-services.vcs05-stream-stress'],
       ['work.vexlife.connected-services.vcs06-architecture-extraction'],
       ['work.vexlife.connected-services.vcs07-deployment-choices'],
     ],
   );
-  assert.deepEqual(row.steps.map((step) => step.basis), ['CURRENT', 'DEPENDENCY', 'DEPENDENCY']);
+  assert.deepEqual(row.steps.map((step) => step.basis), ['CURRENT', 'DEPENDENCY']);
 });
 
 test('ToCompletion Roadmap keeps ordinary productization current while developmental and lateral scopes remain unsequenced', () => {
