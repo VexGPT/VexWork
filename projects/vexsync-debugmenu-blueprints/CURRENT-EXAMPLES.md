@@ -19,6 +19,156 @@ CURRENT EXAMPLE
 != PROOF
 ~~~
 
+## How this companion is read
+
+This file is the **causal exemplar and evolution companion** to the project README.
+
+~~~text
+README.md
+  = canonical VexSync current entry / process map
+
+CURRENT-EXAMPLES.md
+  = worked examples + causal evolution + rejected alternatives + open pressure
+  != an independent currentness oracle
+~~~
+
+A fresh instance starts from the README and comes here for the examples the current edge names. An older
+fragment, sibling candidate or historical proposal remains useful only under its actual status.
+
+For each material exemplar, preserve enough of this shape to stop future reconstruction:
+
+~~~text
+human pressure / original question
+-> prior relevant examples already inherited
+-> observed source / terrain
+-> exact ambiguity exposed
+-> candidates considered
+-> failure / pressure that discriminated them
+-> current surviving model
+-> what was rejected or superseded and why
+-> source/evidence coordinates
+-> currentness status
+-> reopen condition
+-> next unresolved edge
+~~~
+
+The purpose is causal continuity, not private chain-of-thought. Preserve the externally useful reasons,
+examples, counterexamples and evidence that explain why the current model exists.
+
+## Inherited exemplar 1 — Origin postfix / same noun across target realizations
+
+**Currentness:** `CURRENT_SIBLING_CANDIDATE_REFERENCE`.
+
+**Source coordinate:** VexBoard PR #155,
+`projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md`.
+
+**Important boundary:** PR #155 remains draft/unmerged. This is current VexBoard candidate reasoning,
+not accepted VexWork-main doctrine.
+
+The worked example is:
+
+~~~text
+origin.vexlife.vexstream.ConnectionStatusOrigin
+
+android.vexlife.vexstream.ConnectionStatus
+desktop.vexlife.vexstream.ConnectionStatus
+web.vexlife.vexstream.ConnectionStatus
+~~~
+
+The reasoning carried by the example is:
+
+~~~text
+ConnectionStatus
+  = reusable semantic noun
+
+namespace/scope
+  = where that definition or realization lives
+
+Origin postfix
+  = marks the canonical reusable definition when the distinction is needed
+
+SAME ORIGIN
++ DIFFERENT TARGET
+-> SAME REUSABLE SEMANTIC NAME
+-> DIFFERENT REALIZATION SCOPE
+
+TARGET DIFFERENCE
+!= NEW SEMANTIC NOUN
+~~~
+
+Why this matters for later naming work:
+
+- the target does not get to rename reusable meaning merely because its mechanics differ;
+- the `Origin` postfix has a specific boundary job rather than being a decoration;
+- already-clear semantic roles do not gain `Origin` merely for symmetry;
+- a new specimen should test whether this pattern applies before inventing another canonical/target
+  naming scheme.
+
+**Reopen condition:** materially different consumer evidence shows that preserving the same reusable noun
+across canonical definition and target realizations creates a false semantic equivalence or that the
+postfix no longer identifies the rightful boundary.
+
+## Inherited exemplar 2 — navigation -> ActId was pressure-tested and rejected
+
+**Currentness:** `CURRENT_SIBLING_CANDIDATE_REFERENCE`.
+
+**Source coordinate:** VexBoard PR #155 Origin/foundational-language candidate plus its preserved naming
+evolution.
+
+Earlier reasoning tried to improve semantic architecture by converting familiar navigation into an Act
+identity:
+
+~~~text
+NavigateTo(Screen)
+-> ActId("act...")
+~~~
+
+The article example exposed the ambiguity. A name such as:
+
+~~~text
+act.news.read-article
+~~~
+
+could mean fetch, parse, display, navigate, mark-read, or text-to-speech. Renaming it to
+`request-article-view` added words without fixing the category error.
+
+The surviving distinction is:
+
+~~~text
+ID
+  identifies something
+
+NavigateTo / Navigation.Open
+  expresses a typed relationship / operation
+
+ID != EXECUTION_MECHANISM
+TYPED_NAVIGATION_OPERATION != ACT_ID
+PRESENTATION_OPERATION != PORTABLE_ACT
+~~~
+
+SCAE depth remains available when a real Behavior question earns it. The Play/Pause specimen is useful
+because the same physical Control has materially different semantic meaning under different State. A
+simple article-card -> ArticleDetail relationship does not earn an Act merely for ceremony.
+
+**Rejected:** mandatory conversion of ordinary navigation into opaque `ActId` values.
+
+**Reopen condition:** a later specimen demonstrates a distinct independently addressable semantic Act
+whose meaning cannot be carried truthfully by the typed relationship plus its rightful behavior owner.
+
+## Inherited exemplar 3 — this Debug Menu specimen builds on those lessons
+
+The current Debug Menu work therefore begins with inherited pressure already available:
+
+~~~text
+Origin/realization naming has a real worked example
+typed navigation has survived an ActId failure case
+IDs are not automatically operations
+target mechanics do not automatically become portable meaning
+~~~
+
+The job here is not to re-derive those from scratch. It is to see what the theme-selection specimen
+preserves, challenges, or adds.
+
 ## Method checkpoint
 
 The strongest method discovered so far is:
