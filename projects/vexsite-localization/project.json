@@ -2,7 +2,7 @@
   "schemaVersion": "vexwork.project-definition/v1",
   "projectRef": "project.vextreme.vexsite-localization",
   "label": "VexSite Localization",
-  "purpose": "Keep VexSite localization visible across completed source-lineage/source-queue phases, current generated/runtime convergence, and evidence-backed next-domain selection without turning VexWork into a second page, translation, generated-artifact, or browser-proof owner.",
+  "purpose": "Keep VexSite localization visible across completed source-lineage/source-queue and generated/runtime phases plus the active Covenant JA/ZH exact-source review frontier, without turning VexWork into a second page, translation, generated-artifact, or browser-proof owner.",
   "rootWorkRefs": [
     "work.vextreme.vexsite.localization.outcome"
   ],
@@ -22,7 +22,12 @@
     "github.pull.vextreme.417",
     "repo.vextreme:config/institutional-surfaces.json",
     "repo.vextreme:data/strings/source/institution.json",
-    "repo.vextreme:docs/architecture/06-i18n.md"
+    "repo.vextreme:docs/architecture/06-i18n.md",
+    "github.pull.vextreme.423",
+    "github.issue-comment.vextreme.423.6414052729",
+    "git.commit.vextreme.ac2e181bfd547f32f83d1ab3e7d6174900e964fa",
+    "github.pull.vextreme.312",
+    "github.pull.vextreme.148"
   ],
   "formedAt": "2026-10-23T07:48:00.000Z"
 }
