@@ -47,7 +47,7 @@ VexStream Mobile Library                         OUTCOME
 |   +-- Clear-data durability lived proof        TASK / completed
 |
 +-- Contextual Download Experience               OUTCOME / decomposed
-|   +-- Songs missing-content update / remove all TASK / running / lived refinement
+|   +-- Songs missing-content update / remove all TASK / verifying / merged / lived proof pending
 |
 +-- Library Browse & Discovery                   OUTCOME / decomposed
 |   +-- Sort / Filter / Recently added controls  TASK / running / lived feedback
@@ -253,8 +253,33 @@ download calls. The button remains one-shot; it does not create durable desired-
 background convergence, or persistent Keep Offline.
 
 PR #167 merged at `8213ae7befe08bc0a21c76bd70e7c8790e5bcf9f`; A003 passed focused/local
-proof plus exactly one three-song connected Journey and fresh Assurance. PR #187 is the current
-lived-feedback candidate and still requires its own exact source/proof/acceptance path.
+proof plus exactly one three-song connected Journey and fresh Assurance.
+
+The lived-feedback refinement is now accepted Android source through PR #187:
+
+```text
+SourceOwner A003 outer RETURN
+  = 98505cd4777743af508d02bd20e4c44e1faf32bfd2b779f6689214ff392abb5c
+
+reviewed head
+  = 0c6125268050ec1301d2896986a52322002922d2
+
+reviewed / merged tree
+  = aabdea09c76ef7ee46360c0210d5117f26ad80fa
+
+merge
+  = 2480ac771dfcfb20bafdc6a61da5f7081b399c56
+
+ordered parents
+  = a7301566c9131ff71d4b8ede128b3607d7fefd26
+  -> 0c6125268050ec1301d2896986a52322002922d2
+
+all seven candidate blobs
+  = exact post-merge match
+```
+
+The protected Active -> Verify handshake is approved and committed. Product source is merged; the
+remaining predicate is lived Android proof of the one-shot update on the real library.
 
 ### ML-D5 — One-shot Download missing is not persistent Keep Offline
 
@@ -1034,11 +1059,14 @@ inside its already-authorized bounded envelope and moves the separate artwork-re
 from `DECOMPOSED` to `CANCELLED`. The cancellation removes a duplicate implementation owner; it
 does **not** cancel the artwork requirement.
 
-Current Android candidate:
+Accepted Android source:
 
 ```text
 github.pull.vexlife-android.187
+github.commit.vexlife-android.2480ac771dfcfb20bafdc6a61da5f7081b399c56
 work owner = work.vexstream.mobile-library.contextual-download-missing
+state = VERIFYING
+remaining = lived phone proof
 ```
 
 Current-track Media3 metadata convergence remains separately owned by
