@@ -23,6 +23,158 @@ The project exists to prove that process through a real specimen. It is not a cl
 VexUniverse construction architecture, intent ontology, compiler, proof generator or deployment loop is
 already known.
 
+## Current-entry contract — read this before sibling fragments
+
+This README is the **canonical current entry for this VexSync process specimen**.
+
+It does not replace the rightful source owners behind the evidence it references. Instead, it tells a
+fresh instance which material is current for this process, what status that material actually has, and
+which older/sibling fragments are evidence or provenance rather than independent starting points.
+
+~~~text
+projects/vexsync-debugmenu-blueprints/README.md
+  = VEXSYNC CANONICAL CURRENT ENTRY / PROCESS MAP
+
+projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md
+  = subordinate causal exemplar + evolution record
+  = read through this README
+  != independent currentness oracle
+
+VexBoard PR #155 / its Origin foundation
+  = CURRENT SIBLING CANDIDATE REFERENCE
+  = useful semantic pressure + live worked examples
+  != accepted VexWork main
+  != automatic VexSync process authority
+
+current accepted Android source
+  = CURRENT TARGET OBSERVATION
+  = realization/reference evidence
+  != automatic portable Origin law
+
+older transcripts / predecessor examples / superseded proposals
+  = PROVENANCE when still useful
+  != current merely because they exist
+~~~
+
+A fresh instance must not reconstruct the process from whichever fragment it finds first. Start here,
+then consume the exact relevant exemplar/evidence named by the current edge.
+
+### Currentness labels used by this project
+
+~~~text
+CURRENT_PROJECT_RULE
+  current VexSync process rule carried by this project entry
+
+CURRENT_SIBLING_CANDIDATE_REFERENCE
+  current useful candidate in another still-unaccepted source surface
+
+CURRENT_TARGET_OBSERVATION
+  grounded current target/source behavior used as evidence
+
+CURRENT_WORKING_MODEL
+  best present semantic/design explanation; intentionally refactorable
+
+OPEN_QUESTION
+  unresolved meaning whose dependent effect remains held
+
+REJECTED
+  explored direction whose failure/pressure should prevent casual reinvention
+
+SUPERSEDED
+  older model replaced by a later better-supported model
+~~~
+
+"Current" is always scoped by one of these meanings. File age, prose confidence, an old PR body, or a
+historical example does not promote itself.
+
+## Established exemplars inherited before extending the language
+
+The Debug Menu specimen is not semantically isolated. Before inventing a noun, class, family or
+relationship for a new edge, consume relevant already-earned examples.
+
+### Exemplar A — Origin postfix / same semantic noun across realizations
+
+**Status:** `CURRENT_SIBLING_CANDIDATE_REFERENCE` from VexBoard PR #155; useful current candidate
+pressure, still unmerged and therefore not accepted VexWork main.
+
+~~~text
+origin.vexlife.vexstream.ConnectionStatusOrigin
+
+android.vexlife.vexstream.ConnectionStatus
+desktop.vexlife.vexstream.ConnectionStatus
+web.vexlife.vexstream.ConnectionStatus
+~~~
+
+What that specimen currently teaches:
+
+~~~text
+ConnectionStatus
+  = reusable semantic noun
+
+origin / android / desktop / web
+  = scope in which the semantic thing is defined or realized
+
+Origin postfix
+  = distinguishes the canonical reusable definition when that distinction is useful
+
+same Origin + different target
+  -> same reusable semantic noun
+  -> different realization scope
+
+target difference
+  != permission to mint a new semantic noun
+~~~
+
+It does **not** establish that every semantic role receives an `Origin` suffix or that a universal
+`OriginIntent` family already exists.
+
+### Exemplar B — typed navigation survived the ActId pressure test
+
+**Status:** `CURRENT_SIBLING_CANDIDATE_REFERENCE` from VexBoard PR #155; still refactorable with
+new evidence.
+
+The explored conversion:
+
+~~~text
+NavigateTo(Screen)
+-> ActId("act.something")
+~~~
+
+was rejected because identity and typed execution/relationship meaning answer different questions, and
+the article example made the resulting Act names ambiguous.
+
+Current working distinction:
+
+~~~text
+ID != EXECUTION_MECHANISM
+TYPED_NAVIGATION_OPERATION != ACT_ID
+PRESENTATION_OPERATION != PORTABLE_ACT
+
+if the truthful edge is NavigateTo(Screen)
+  -> preserve NavigateTo(Screen)
+
+only add Behavior / Act / Effect depth
+  when the specimen exposes a real semantic question that benefits from it
+~~~
+
+This reasoning is inherited input to the Debug Menu specimen. Do not reopen it from zero merely because
+a fresh instance prefers another abstraction name; reopen it when a new specimen materially challenges
+the distinction.
+
+### Cumulative-development rule
+
+~~~text
+relevant established exemplars
++ new human pressure
++ current source terrain
+-> identify the next unresolved edge
+-> reuse what still fits
+-> challenge only what the new evidence challenges
+-> preserve the causal delta
+~~~
+
+This is specimen-first development, **not specimen-isolated development**.
+
 ## Why Debug Menu is the first specimen
 
 The current request is intentionally ordinary:
