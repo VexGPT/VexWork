@@ -287,9 +287,12 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   const connectedPhase5 = graph.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs04.phase5-restart-no-duplicates');
   const connectedPhase6 = graph.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs04.phase6-terminal-currentness');
   const connectedVcs05 = graph.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs05-stream-stress');
+  const connectedVcs06 = graph.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs06-architecture-extraction');
   assert.deepEqual([connectedPhase4.state, connectedPhase5.state, connectedPhase6.state, connectedVcs04.state], ['COMPLETED', 'COMPLETED', 'COMPLETED', 'COMPLETED']);
-  assert.equal(connectedVcs05.state, 'READY');
+  assert.equal(connectedVcs05.state, 'COMPLETED');
+  assert.equal(connectedVcs06.state, 'READY');
   assert.deepEqual(connectedVcs05.dependencyRefs, [connectedVcs04.workRef]);
+  assert.deepEqual(connectedVcs06.dependencyRefs, [connectedVcs05.workRef]);
 
   const operationalOutcome = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.outcome');
   const derivedFoundation = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.derived-work-foundation');
