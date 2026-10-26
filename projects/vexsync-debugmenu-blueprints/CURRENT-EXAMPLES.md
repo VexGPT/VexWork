@@ -4,12 +4,12 @@
 
 ## Status
 
-This is a **current discovery companion**, not an accepted schema, final process, canonical naming source,
-or completed feature example.
+This is a current discovery companion, not an accepted schema, final process, canonical naming source or
+completed feature example.
 
-Its job is to preserve examples exactly far enough that a future Victor/AI pair can continue the
-reasoning without accidentally promoting illustrative pseudocode, guessed identifiers, or missing
-implementation details into architecture.
+Its purpose is to preserve enough of the evolving reasoning that a future Victor/AI pair can continue
+without turning illustrative pseudocode, guessed identifiers or missing implementation details into
+architecture.
 
 ~~~text
 CURRENT EXAMPLE
@@ -19,256 +19,159 @@ CURRENT EXAMPLE
 != PROOF
 ~~~
 
-As the VexSync process is discovered, this file may be refined or superseded. The durable Project
-README remains the project entry.
+## Method checkpoint
 
-## Current checkpoint correction
-
-The shorter sentence:
-
-> As a user I want to be able to toggle/switch between dark and light mode in the Debug Menu.
-
-is useful human-goal language, but **by itself is not the complete current example** when no prior
-application foundation is assumed. A first-principles Builder still needs enough terrain to know how
-the person reaches Debug Menu.
-
-Victor's richer current example supplies additional clues such as:
+The strongest method discovered so far is:
 
 ~~~text
-UserClick on {missing button} from Home
--> [HomeScreen](buttonid: ??)
-
-NavigateTo <DebugMenuScreen>
-
-clicks on { id for dark mode }
-
-effect { calls the function }
-
-OriginIntent.NavigateTo(DebugMenuScreen(id:???))
-
-[DebugMenuScreen::id???]
-[DebugMenuScreen::click("dark mode toggle":id???)]
-
-[effect:
-  state<lightmode>
-  -> state<darkmode>
-]
-
-Result:
-  "???"
+build the meaningful thing first
+-> let real pressure reveal missing language
+-> name/formalize repeated patterns after evidence
 ~~~
 
-This remains exploratory pseudocode, but it is the **current checkpoint** because it exposes the
-start terrain, destination, unresolved identifiers, intended interaction, missing HOW, and expected
-return shape.
+The current V2/Debug Menu specimen is therefore a language laboratory, not the consumer of a
+predeclared universal intent/behavior/target schema.
 
-If the human had supplied only the shorter sentence and Debug Menu did not already exist, the request
-phase should return the exact missing question (for example, "from which Screen/how does the user
-reach Debug Menu?") rather than silently assuming a traversable Debug Menu.
+## Terrain before in-betweens
 
-If the human supplies Home/FAB/DebugMenu clues, the Builder uses those clues to ground or create the
-next required coordinates. It should not demand unrelated details such as every other FAB option
-before those details are relevant.
-
----
-
-# Current phase model
-
-Only the phases below have been meaningfully pressured so far.
+The earlier discussion correctly slowed the process to the endpoints:
 
 ~~~text
-PHASE 1 — FEATURE REQUEST
-  understand the human request
-  translate enough meaning to know the intended result
-  expose missing questions without inventing answers
+KNOWN START
+  Home / current reference
 
-        ↓
+KNOWN ENTRY AFFORDANCE
+  shell FAB / developer entry clue
 
-PHASE 2 — BUILDER ENTRY
-  consume the translated request
-  ground current truth
-  identify/reuse existing semantic coordinates where possible
-  expose the missing HOW
-  decide the smallest truthful next design question
+KNOWN DESTINATION
+  Debug Menu / draft design context
 
-        ↓
-
-LATER PHASES
-  intentionally not frozen here yet
+UNKNOWN
+  the exact semantic terrain between them
 ~~~
 
-Do not infer later construction/test/PR phases merely because the eventual VexSync outcome includes
-them. Let the living Blueprint and real target pressure reveal those boundaries.
-
----
-
-# Phase 1 — Feature Request
-
-## Human input
-
-Start from ordinary human experience language.
-
-Current example:
-
-> As a user I want to be able to toggle/switch between dark and light mode in the Debug Menu.
-
-This sentence is **not a completed feature specification**. It gives enough meaning to identify a goal
-and a destination/context, while leaving other parts unresolved.
-
-## Function-call analogy
-
-Treat the feature request like a semantic function call:
+The rule was:
 
 ~~~text
-request(parameters...) -> return
+lock one known coordinate
+-> discover only its immediate result
+-> lock that result
+-> ask the next question
+-> repeat
 ~~~
 
-Where:
+Do not fill several unknown edges at once merely because a plausible implementation exists.
+
+## What Builder investigation grounded from current Android
+
+The first unknown can now be answered from current accepted Android source:
 
 ~~~text
-parameters
-  what the human actually supplied or what current truth can establish
+AppShell.Elements.Add
+  id = element.shell.fab.add
+  current behavior = toggle(FabOptions)
 
-return
-  the intended human-visible/product result
+FabOptions
+  id = element.shell.fab-options
+  contains DebugMenu / Gallery / UserProfile options
 
-implementation / HOW
-  may still be unresolved
-  belongs to Builder investigation when the human does not need to know it
+AppShell.Elements.DebugMenu
+  id = element.debug-menu
+  current behavior =
+    close(FabOptions)
+    then navigateTo(DebugMenuScreen)
+
+DebugMenuScreen
+  screenId = screen.debug-menu
 ~~~
 
-For the current dark/light example:
+This is the current reference terrain.
+
+It is not automatically the future V2 design. Its value is that the Builder learned the path from source
+rather than asking Victor to know target mechanics or inventing an intermediate surface.
+
+## Phase 1 — Feature Request
+
+Human input:
+
+> As a user I want to be able to switch between dark and light mode in the Debug Menu.
+
+Current interpretation:
 
 ~~~text
-request
-  actor = User
-  goal = choose/change application theme mode
-  context/destination = Debug Menu
-  desired interaction = toggle/switch/select between theme modes
+WHO
+  User
 
-return
-  the application reflects the selected theme mode
-~~~
-
-The request does **not** yet establish:
-
-~~~text
-how the user reaches Debug Menu
-which exact Control already exists
-which stable IDs already exist
-whether a new ID is needed
-which target function is called
-which State owner owns theme truth
-which dependency/runtime realizes the change
-whether SCAE depth is required
-what exact Android/Web realization exists
-~~~
-
-Those are not permission to guess.
-
-## Request-phase output
-
-The current working output is conceptually:
-
-~~~text
 GOAL
-  human-written story
-  +
-  translated semantic intention/result
+  choose/change application theme mode
 
-KNOWN
-  actor
-  desired outcome
-  known terrain/context
-  explicitly supplied controls/relationships
+CONTEXT
+  Debug Menu
 
-MISSING
-  unanswered semantic questions
-  unresolved coordinates
-  unresolved HOW
+DESIRED INTERACTION
+  theme mode selection/control
+  exact form still design pressure
 
 RETURN
-  what successful completion means for the human
+  application reflects the selected theme mode
 ~~~
 
-No final machine schema is admitted yet.
+This is sufficient to understand the screen-local goal.
+
+It is not, by itself, sufficient to claim a complete start-to-destination Journey.
 
 ### Scope-sensitive completeness
 
-A request can be complete enough for one question and incomplete for another.
-
-Example:
-
 ~~~text
-"As a user I want to switch dark/light mode in Debug Menu."
-
-enough to understand:
-  desired Debug Menu capability
-
-not enough to construct:
-  the complete Home -> Debug Menu human Journey
+known feature meaning
++ missing dependent edge
+-> preserve known meaning
+-> hold only the dependent claim
 ~~~
 
-Do not discard valid understanding because another dependent edge is missing.
+Do not reject the whole feature.
+Do not silently infer the missing path.
+
+## Function-call analogy
+
+Use this only as a thinking aid:
 
 ~~~text
-KNOWN MEANING
-+ MISSING DEPENDENT EDGE
--> HOLD ONLY THE DEPENDENT CLAIM
+request(parameters / context)
+-> return
 ~~~
 
----
+The human usually owns:
+- intention;
+- constraints they care about;
+- expected human-visible result.
 
-# Phase 2 — Builder Entry
+The Builder/architect owns investigation of the implementation HOW when current source can answer it.
 
-The Builder receives the human story plus the translated intention/result.
+A human should not need to know which function, repository, State owner or target dependency implements
+their request.
 
-The Builder's first job is **not to invent source**. It asks:
+## Phase 2 — Builder Entry
 
-> What do we already know, what coordinates are implied, and what current truth already maps to this
-> intention?
+Builder receives:
+- human story;
+- translated intention/result;
+- known terrain;
+- explicit unknowns.
 
-The working language is IDE-assisted and typed, not static prose. Specific expressions such as
-`UserClick(...)`, `Act.NavigateTo(...)`, or a future state-changing Act are valuable because the
-authoring surface can constrain valid parameters, reveal missing IDs, offer existing coordinates, and
-prevent category mistakes. Do not replace a supplied specific interaction such as Click with a vaguer
-verb such as Activate merely for abstraction.
-
-The reuse goal is that Android can realize the same settled semantic expression without another layer
-or another AI having to decipher what the author meant.
-
-## Current dark/light example — intentionally incomplete
-
-Victor's developing pseudocode, preserved as discovery pressure:
+Then asks:
 
 ~~~text
-"UserClick on {missing button} from Home"
--> [HomeScreen](buttonid: ??)
-
-NavigateTo <DebugMenuScreen>
-
-clicks on { id for dark mode }
-
-effect { calls the function }
-
-OriginIntent.NavigateTo(DebugMenuScreen(id:???))
-
-[DebugMenuScreen::id???]
-
-[DebugMenuScreen::click("dark mode toggle":id???)]
-
-[effect:
-  state<lightmode>
-  -> state<darkmode>
-]
-
-Result:
-  "???"
+What current identities already exist?
+What source owner already owns this truth?
+What current typed relationship already expresses the meaning?
+What is still unknown?
+Does a new identity/capability actually need to exist?
 ~~~
 
-This is **not accepted syntax**. Its value is the questions it exposes.
+Search and source reading are evidence gathering, not semantic proof.
 
-## Identifier discipline
+### Identifier discipline
 
 Do not jump from:
 
@@ -276,264 +179,170 @@ Do not jump from:
 "dark mode control"
 ~~~
 
-to:
+to guessed resource IDs, element IDs, Origin names or Control IDs.
+
+Current Android already grounds:
 
 ~~~text
-R.id.dark_mode_toggle
-element.debug-menu.dark-mode
-darkModeToggle
+DebugMenuScreen.DarkMode
+-> element.debug-menu.body.dark-mode
 ~~~
 
-without grounding.
+so a Builder should reuse that coordinate as reference evidence rather than invent a parallel one.
 
-The Builder should first ask:
+## Current dark-mode HOW discovered from source
+
+Current Android shows:
 
 ~~~text
-Do we already have a semantic identity for this intention?
-Do we already have a Screen identity for Debug Menu?
-Do we already have a Home control that enters the relevant developer surface?
-Does current source already own theme State?
-Does a current Control / Behavior / Act / Effect family already express this?
+DebugMenuScreen.DarkMode
+  -> invoke(AppActions.ToggleDarkMode)
+
+AppActions.ToggleDarkMode
+  -> action.theme.dark-mode.toggle
+
+DebugMenuScreen appAction registration
+  -> context.toggleDarkMode()
+
+VexLifeSession
+  owns darkTheme
+  toggleDarkMode()
+  -> darkTheme = !darkTheme
 ~~~
 
-Investigation may use intention-oriented search terms such as:
+This answers the current target HOW.
+
+It does not settle the future semantic design.
+
+The next useful questions are now evidence-based:
 
 ~~~text
-dark
-light
-theme
-debug
-developer
-appearance
-mode
+Is theme meaning truly binary?
+Should Auto/System exist?
+Is "toggle" merely the current Control form?
+Is the intended semantic relationship better expressed as selecting a theme mode?
+Does State-dependent Behavior earn SCAE depth?
+What is portable meaning versus Android/session realization?
 ~~~
 
-but textual similarity is evidence for discovery, not proof of semantic equivalence.
+Those are the next design questions; the current Boolean is not an automatic portable law.
 
-### Current decision rule
+## Relationship-language discovery
+
+Earlier shorthand explored OriginIntent.NavigateTo, Act.NavigateTo and UserClick.
+
+Treat those as candidate notation, not accepted families.
+
+The current rule is smaller:
 
 ~~~text
-existing truthful coordinate found
--> reuse / map it
+if the edge means NavigateTo
+-> use NavigateTo
 
-no truthful coordinate found
--> ask whether a new semantic identity is actually required
+if a later edge means Present
+-> use Present
 
-new identity required
--> form the smallest rightful one from the human intention
+if a later edge means Set / Select / Clear
+-> use the smallest truthful verb
 
-not enough evidence
--> keep UNKNOWN / missing question visible
+if several independent examples reveal a reusable family
+-> then consider naming/formalizing that family
 ~~~
 
-## Missing HOW is Builder work
+Do not build a universal intent system before the specimens demand it.
 
-A human may know:
+## IDs are earned too
+
+Do not pre-create ActId, IntentId, EffectId, RelationshipId or ControlId merely because future systems
+might reference them.
+
+Ask:
+
+> Does this semantic thing need to live independently and be addressed independently?
+
+If not, a typed relationship between already-addressable coordinates may be enough.
+
+## SCAE discovery
+
+Do not automatically translate every interaction into State -> Control -> Act -> Effect.
+
+Use that depth when a real Behavior question benefits from it.
+
+For the current theme specimen, the target currently has a toggle-shaped Control and a Boolean session
+State. That is evidence, not a final portable model.
+
+The Builder should first understand the intended theme truth, then decide whether the smallest truthful
+semantic relationship is direct selection/state change or a deeper Behavior/Act/Effect model.
+
+## Illustrative registry pseudocode — still not admitted
+
+Exploratory registry/create-new-object pseudocode represents one desired Builder capability:
 
 ~~~text
-input:
-  choose Dark mode
-
-return:
-  application becomes Dark mode
+missing semantic object
++ no truthful existing coordinate
++ new independently addressable meaning required
+-> form/register the smallest new coordinate
 ~~~
 
-without knowing:
+It does not establish a global registry class, constructor API, ID format or target source architecture.
+
+## Current living specimen
 
 ~~~text
-which function?
-through which dependency?
-through which State owner?
-through which runtime/system?
-with which Android implementation?
+HUMAN REQUEST
+  choose dark/light theme from Debug Menu
+
+CURRENT REFERENCE TERRAIN
+  Home/current shell
+  -> More/Add FAB
+  -> FAB-options presentation
+  -> Debug Menu option
+  -> screen.debug-menu
+
+CURRENT TARGET CONTROL
+  element.debug-menu.body.dark-mode
+
+CURRENT TARGET HOW
+  action.theme.dark-mode.toggle
+  -> VexLifeSession.toggleDarkMode()
+  -> darkTheme = !darkTheme
+
+ORIGIN / V2 DESIGN
+  still being formed
+
+NEXT QUESTION
+  What is the smallest truthful theme-selection meaning we actually want to author,
+  independent of accidental current Android mechanics?
 ~~~
 
-That does not make the human request invalid.
-
-It creates a Builder question:
-
-~~~text
-DESIRED RESULT KNOWN
-IMPLEMENTATION HOW UNKNOWN
--> INVESTIGATE CURRENT TRUTH
-~~~
-
-Then:
-
-~~~text
-existing system already realizes the meaning?
-  YES
-    -> bind the Blueprint intention to that existing owner/realization
-
-  NO
-    -> determine the smallest new capability/owner/source needed
-    -> do not manufacture a parallel system merely to satisfy the diagram
-~~~
-
-The Builder is responsible for returning the answer in ordinary meaning. The human does not need to
-supply target architecture merely to request a feature.
-
----
-
-# SCAE at Builder Entry
-
-Do not automatically convert every interaction into:
-
-~~~text
-State -> Control -> Act -> Effect
-~~~
-
-Instead ask whether the current feature question actually needs Behavior resolution.
-
-Current dark/light pressure suggests a causal shape, but Victor's provisional typed form must be
-allowed to pressure the design directly:
-
-~~~text
-UserClick(controlId = ???)
--> Act.RotateStateFor(target = ???, values = ???)
--> Effect = ???
--> Result = ???
-~~~
-
-The exact roles, names, States, Acts, Effects, and ownership are **not settled by this example**.
-Neither is `Act.RotateStateFor` rejected merely because it is provisional. The Builder asks what
-typed meaning it gives the IDE, whether current truth already has an equivalent, and whether the
-target can realize it without semantic reinterpretation.
-
-Important correction from the checkpoint:
-
-~~~text
-visual Toggle/Switch form
-!= Boolean-only semantic model
-!= automatically one generic Toggle Act
-~~~
-
-The eventual theme model may have more than two meaningful values, for example:
-
-~~~text
-Dark
-Light
-Auto / System
-~~~
-
-if real product/current-source pressure earns them.
-
-Do not freeze those example values into the feature until current truth/design intention establishes
-them.
-
----
-
-# Illustrative registry pseudocode — NOT admitted
-
-Victor used an intentionally exploratory shape similar to:
-
-~~~text
-UIElementRegistry.createNewButton(...)
-UIElementRegister.createNewScreen(...)
-~~~
-
-This illustrates a desired **Builder capability**:
-
-~~~text
-missing identity
-+ no current truthful match
-+ new semantic object actually required
--> create/register the new coordinate from the intention
-~~~
-
-It does **not** establish:
-
-- a class named UIElementRegistry;
-- a global UI registry architecture;
-- a createNewButton API;
-- a Screen constructor;
-- an ID format;
-- a target-specific resource ID;
-- a final State representation.
-
-The Blueprint should reveal which of those structures are actually needed.
-
----
-
-# Current terrain checkpoint
-
-At this point the terrain is intentionally incomplete.
-
-~~~text
-[Home]
-   |
-   | UserClick on {missing / not-yet-grounded control}
-   v
-  ???
-
-   |
-   | NavigateTo? / another relationship?
-   v
-
-[Debug Menu]
-   |
-   | theme-mode Control identity ???
-   v
-intended theme result
-~~~
-
-Known:
-
-~~~text
-starting human terrain
-  Home
-
-desired feature context
-  Debug Menu
-
-feature goal
-  choose/change theme mode
-
-human return
-  application reflects chosen theme
-~~~
-
-Not yet settled:
-
-~~~text
-Home entry Control identity
-intermediate developer surface, if any
-Debug Menu stable identity
-theme Control identity
-exact relationship verbs
-theme State owner
-Behavior/SCAE depth
-target implementation
-~~~
-
-Do not fill these blanks merely to make the diagram look complete.
-
----
-
-# Working discipline
+## Working discipline
 
 For each next step:
 
 ~~~text
 1. perceive what is actually supplied
 2. extract the smallest truthful meaning
-3. list identifiers already required by that meaning
-4. ground whether those identities/owners already exist
-5. preserve unresolved blanks explicitly
-6. answer only the next missing question
-7. update the living Blueprint
-8. let repeated pressure reveal reusable language
+3. lock known terrain endpoints
+4. identify only the next missing edge
+5. ground current identities/owners/source
+6. preserve unresolved blanks
+7. answer/design only that next edge
+8. update the living Blueprint
+9. repeat
+10. after repeated pressure, recognize reusable language
 ~~~
 
-The goal is systematic convergence:
+The desired convergence is:
 
 ~~~text
-meaning
--> coordinate
+human intention
+-> living terrain
 -> current truth
--> missing HOW
+-> next missing semantic question
 -> Builder investigation
--> next truthful relationship
+-> smallest truthful relationship
+-> repeat
 ~~~
 
 not:
@@ -541,9 +350,10 @@ not:
 ~~~text
 idea
 -> guessed IDs
--> guessed classes
--> guessed architecture
--> repair the mess later
+-> guessed ontology
+-> guessed compiler
+-> multiple speculative phases
+-> repair later
 ~~~
 
-<!-- [VXG RealForever][VEXSYNC][CURRENT-EXAMPLES][DISCOVERY-CHECKPOINT] -->
+<!-- [VXG RealForever][VEXSYNC][CURRENT-EXAMPLES][PROCESS-DISCOVERY] -->

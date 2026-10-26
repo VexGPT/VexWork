@@ -5908,46 +5908,16 @@
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
-      "workRef": "work.vexsync.debugmenu-blueprints.android-construction-proof",
-      "parentWorkRefOrNull": "work.vexsync.debugmenu-blueprints.outcome",
-      "label": "Generic Android construction and pathway-derived proof",
-      "purpose": "After the first feature path proves the shared language, generalize only the earned mappings into deterministic Android construction so the same readable typed Blueprint expressions can create or modify rightful target-native source and derive tests without a second semantic reinterpretation step; expose unsupported target capabilities explicitly and prove reverse semantic equivalence.",
-      "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
-      "workDisposition": "ACTIVE",
-      "priorityClass": "HIGH",
-      "dependencyRefs": [
-        "work.vexsync.debugmenu-blueprints.debugmenu-origin-roundtrip"
-      ],
-      "repositoryRefs": [
-        "repo.vexwork",
-        "repo.vexlife-android"
-      ],
-      "sourceRefs": [
-        "projects/vexsync-debugmenu-blueprints/README.md",
-        "project.vexboard",
-        "project.vexlife.blueprint-source-of-truth",
-        "project.android-proof-orchestration"
-      ],
-      "formationProcessRefOrNull": null,
-      "nextProcessRefs": [],
-      "authorityDisposition": "NO_AUTHORITY",
-      "effectDisposition": "NO_EFFECTS",
-      "createdAt": "2026-10-26T07:26:46.000Z",
-      "updatedAt": "2026-10-26T07:26:46.000Z"
-    },
-    {
-      "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vexsync.debugmenu-blueprints.debugmenu-origin-roundtrip",
       "parentWorkRefOrNull": "work.vexsync.debugmenu-blueprints.outcome",
-      "label": "Debug Menu first-principles feature round trip",
-      "purpose": "Starting from the current dark/light-mode request, build the Home -> developer entry -> Debug Menu terrain one semantic edge at a time; ground or form Screen/Control/State identities from human intent, preserve unresolved HOW until Builder investigation answers it, then compare the resulting typed Blueprint with current Android and prove two-way semantic/source addressability before adding unrelated Debug Menu controls.",
+      "label": "Build the first Debug Menu Origin <-> Android round trip",
+      "purpose": "After the Feature Request -> Builder specimen is grounded enough, author the first bounded Debug Menu semantic terrain one truthful edge at a time, compare/map that meaning to current Android without requiring a second semantic reinterpretation, expose unsupported target capabilities rather than guessing, and project the resulting source/evidence back to the same coordinates before generalizing the process.",
       "workClass": "TASK",
       "state": "WAITING_DEPENDENCIES",
       "workDisposition": "ACTIVE",
       "priorityClass": "HIGH",
       "dependencyRefs": [
-        "work.vexsync.debugmenu-blueprints.origin-language-contract"
+        "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery"
       ],
       "repositoryRefs": [
         "repo.vexwork",
@@ -5955,27 +5925,29 @@
       ],
       "sourceRefs": [
         "projects/vexsync-debugmenu-blueprints/README.md",
+        "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+        "project.vexboard",
+        "project.vex-universe",
+        "github.pull.vexlife-android.182",
+        "github.pull.vexlife-android.183",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/shell/AppShell.kt",
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/debug/DebugMenuScreen.kt",
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/runtime/AppActions.kt",
-        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/loghistory/LogHistoryRepository.kt",
-        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/loghistory/RoomLogHistoryRepository.kt",
-        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/loghistory/LogHistoryDao.kt",
-        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/loghistory/LogHistoryEntity.kt",
-        "project.vex-universe"
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-26T07:26:46.000Z",
-      "updatedAt": "2026-10-26T07:26:46.000Z"
+      "updatedAt": "2026-10-26T09:30:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
-      "workRef": "work.vexsync.debugmenu-blueprints.origin-language-contract",
+      "workRef": "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery",
       "parentWorkRefOrNull": "work.vexsync.debugmenu-blueprints.outcome",
-      "label": "Discover shared live intention language through Debug Menu",
-      "purpose": "Use the current dark/light-mode feature request to discover the smallest readable typed language that Victor, AI, VexBoard and Android can share without duplicating semantic interpretation: preserve specific interactions such as UserClick and typed intentions such as NavigateTo, ground or create identities only when required, keep missing HOW explicit, and let the living Blueprint earn names/roles instead of pre-separating VexBoard language from Android language.",
+      "label": "Discover Feature Request -> Builder process through one Debug Menu specimen",
+      "purpose": "Use the dark/light-theme request as the first live process specimen: preserve the human goal/return, hold only dependent unknowns, lock known terrain endpoints before filling the middle, investigate current Android identities/owners/HOW before creating new source, and let relationship names/IDs/phases emerge only when the living specimen earns them.",
       "workClass": "TASK",
       "state": "READY",
       "workDisposition": "ACTIVE",
@@ -5987,25 +5959,28 @@
       ],
       "sourceRefs": [
         "projects/vexsync-debugmenu-blueprints/README.md",
+        "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
         "project.vexboard",
         "github.pull.vexwork.155",
-        "github.pull.vexlife-android.182",
-        "github.pull.vexlife-android.183",
-        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/debug/DebugMenuScreen.kt"
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/shell/AppShell.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/debug/DebugMenuScreen.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/runtime/AppActions.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-26T07:26:46.000Z",
-      "updatedAt": "2026-10-26T07:26:46.000Z"
+      "updatedAt": "2026-10-26T09:30:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vexsync.debugmenu-blueprints.outcome",
       "parentWorkRefOrNull": null,
       "label": "VexSync DebugMenu Blueprints",
-      "purpose": "Make VexBoard a design-authoritative authoring hub for a bounded VexLife Android patient zero: author semantic meaning/design/pathways once, compile supported Android source and tests through deterministic adapters, form a reviewable PR, and preserve deep source/runtime/data/evidence round-trip addressability.",
+      "purpose": "Discover and prove a reusable feature-building process on one bounded Debug Menu specimen: translate ordinary human intention into truthful living terrain, ground current identities/owners before creating new ones, let reusable semantic language emerge from real pressure, and use the resulting process to prove a first VexBoard/Origin <-> current Android round trip without predeclaring later compiler or deployment phases.",
       "workClass": "OUTCOME",
       "state": "RUNNING",
       "workDisposition": "ACTIVE",
@@ -6018,48 +5993,18 @@
       "sourceRefs": [
         "project.vexsync.debugmenu-blueprints",
         "projects/vexsync-debugmenu-blueprints/README.md",
+        "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
         "project.vexboard",
         "project.vex-universe",
         "project.vexlife.blueprint-source-of-truth",
-        "project.vexlife-android.current-state-refinement",
-        "project.android-proof-orchestration"
+        "project.vexlife-android.current-state-refinement"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-26T07:26:46.000Z",
-      "updatedAt": "2026-10-26T07:26:46.000Z"
-    },
-    {
-      "schemaVersion": "vexwork.work-item/v1",
-      "workRef": "work.vexsync.debugmenu-blueprints.save-apply-pr-loop",
-      "parentWorkRefOrNull": "work.vexsync.debugmenu-blueprints.outcome",
-      "label": "One-action save, target candidate, proof and PR loop",
-      "purpose": "Close the authoring product loop so Victor + AI can save/publish one accepted VexBoard design, automatically validate it, compile supported Android source changes and pathway-derived tests, run the admitted proof, reverse-project the candidate, and form/update a reviewable PR while exposing only the real remaining integration/deployment boundary.",
-      "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
-      "workDisposition": "ACTIVE",
-      "priorityClass": "HIGH",
-      "dependencyRefs": [
-        "work.vexsync.debugmenu-blueprints.android-construction-proof"
-      ],
-      "repositoryRefs": [
-        "repo.vexwork",
-        "repo.vexlife-android"
-      ],
-      "sourceRefs": [
-        "projects/vexsync-debugmenu-blueprints/README.md",
-        "project.vexboard",
-        "project.vex-universe",
-        "project.vexlife.blueprint-source-of-truth"
-      ],
-      "formationProcessRefOrNull": null,
-      "nextProcessRefs": [],
-      "authorityDisposition": "NO_AUTHORITY",
-      "effectDisposition": "NO_EFFECTS",
-      "createdAt": "2026-10-26T07:26:46.000Z",
-      "updatedAt": "2026-10-26T07:26:46.000Z"
+      "updatedAt": "2026-10-26T09:30:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
