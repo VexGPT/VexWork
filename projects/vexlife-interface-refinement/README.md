@@ -6,16 +6,16 @@
 
 V2 is now **terminally lived-proven** on accepted VexLife source. A fresh instance must not restart from V0, reconstruct streaming, or replay the A004/A005 proof carriers merely to establish currentness.
 
-The current human/product priority is the **tool-bearing VexLife Home**: use the lived Evolution Conversation as the ordinary place where Vex can perceive current intent, discover already-admitted capabilities, perform bounded source-backed reads/tool work through rightful owners, receive the result back into context, and continue the conversation.
+The **tool-bearing VexLife Home is now terminally proven at its first bounded threshold**. A006 used the normal Evolution Conversation with the real local Heretic runtime, selected `capability.vexlife.code.read`, reinjected the source observation through ToolResultRelay, projected the truthful Heretic/MLX model connection plus bounded self-capability frame, durably read back the same Conversation, and proved same-idempotency recovery without model replay or duplicate append.
 
-The stability trajectory remains live in parallel: **V3 resource/context pressure observation is READY** and is the next continuity-frontier edge. Kokoro streaming speech/read-back is deliberately captured behind the current Home/tool priority.
+The current human/product priority is now **V3 resource/context pressure observation**: give VexLife one truthful read-only pressure projection before continuity rollover or resource stewardship can advance. Kokoro streaming speech/read-back and later Home/navigation presentation remain captured behind the continuity frontier.
 
 ```text
 START_FROM_HIGHEST_CURRENT_REFINEMENT_VERSION
 V0 = FIRST_PROVEN_CONNECTION / PROVENANCE_ANCHOR
 V2 = TERMINAL_LIVED_STREAMING_BASELINE
-CURRENT_FOREGROUND = TOOL_BEARING_VEXLIFE_HOME
-PARALLEL_STABILITY_EDGE = V3_RESOURCE_CONTEXT_PRESSURE
+COMPLETED_THRESHOLD = TOOL_BEARING_VEXLIFE_HOME_A006
+CURRENT_FOREGROUND = V3_RESOURCE_CONTEXT_PRESSURE
 KOKORO_SPEECH = CAPTURED_LATER_PRESENTATION_ENHANCEMENT
 TOCOMPLETION = PROVENANCE_CONTEXT
 TOCOMPLETION != CURRENT_INTERFACE_ENTRY
@@ -31,8 +31,8 @@ Descend into VexLife ToCompletion only when the current refinement names an exac
 | **V1** | **VERIFYING** | Conversation ergonomics and ordinary re-entry are merged and human-lived; formal lived closure remains separate from later accepted refinements. |
 | **V1.5** | **CURRENT / VERIFYING** | Long-context Memory pressure policy is merged: 192K input, 16K output reserve, 208K hard lease, up to 100K/100-page current attributed Memory, dynamic Memory yielding and zero-headroom handling. |
 | **V2** | **PROVEN / COMPLETED** | Explicit output policy + provider streaming + Evolution projection + adaptive human-consumption reveal are accepted source and terminal human-lived PASS. |
-| **Tool-bearing Home** | **READY / IMMEDIATE** | Make the lived Vex Conversation the ordinary Home for lawful Intent/capability/tool reads and bounded ToolResultRelay reinjection without granting model effect authority. |
-| **V3** | **READY / HIGH** | System-owned read-only context/resource pressure projection with source-managed policy and hysteresis. |
+| **Tool-bearing Home** | **PROVEN / COMPLETED** | A006 terminally proves one lawful source-backed CODE read through the normal Evolution Conversation, ToolResultRelay reinjection, truthful Heretic/MLX model/self projection, durable readback and same-idempotency no-replay recovery. |
+| **V3** | **CURRENT / READY / HIGH** | Current foreground: system-owned read-only context/resource pressure projection with source-managed policy and hysteresis. |
 | **V4–V5** | **WAITING DEPENDENCIES** | Continuity rollover and exact-owned resource stewardship remain behind their named prerequisites. |
 | **V6** | **WAITING DEPENDENCIES** | Long lived stability proof across streaming, pressure, rollover, restart/re-entry and exact-owned resource recovery. |
 | **Kokoro speech/read-back** | **CAPTURED / NORMAL** | Optional live Speak with bounded backfill plus per-response Read control; held behind current tool-bearing Home priority. |
@@ -217,41 +217,50 @@ TERMINAL_REVEAL_CONVERGENCE != NEW_DURABLE_EVENT
 
 Do not replay A004/A005 or reopen V2 merely to re-establish current entry. Reopen streaming only for a new evidence-backed regression or a genuinely new semantic requirement.
 
-## Current foreground — tool-bearing VexLife Home
+## Tool-bearing VexLife Home — terminal A006 PASS
 
-The next product priority is to make the **actual lived Conversation** the useful Home for Vex's already-accepted capability substrate.
+The first bounded tool-bearing Home threshold is complete on accepted VexLife source.
 
-Current VexLife source already owns distinct seams for:
-
-```text
-Intent Workgraph
-Intent Scheduler
-capability definitions / assimilation
-Vex self-capability framing
-ToolResultRelay
-bounded Context Lease reinjection
-Browser Companion / durable Conversation
-```
-
-The work is to compose those owners into one lived journey, not invent a second tool framework:
+Accepted source lineage:
 
 ```text
-Victor asks / current Intent is perceived
-        ↓
-Vex sees only source-admitted capability meaning
-        ↓
-one bounded read/tool act is proposed
-        ↓
-rightful scheduler / leases / effect owner admit or hold it
-        ↓
-ToolResultRelay accepts one bounded observation
-        ↓
-observation is reinjected into current context
-        ↓
-Vex explains / continues in the same Conversation
+PR #934
+  -> capability-observation currentness repaired before lived tool use
+
+PR #935
+  -> Heretic/MLX model-connection source currentized
+  -> exact head SourceOwner PASS
+  -> fresh Independent Assurance CLEAR
+  -> merged as 31c9198101f4c8a0170cb76b57547ae1d737b05f
+  -> post-merge candidate-to-main file delta = zero
 ```
 
-Required non-collapse:
+A006 then proved the real normal-Conversation composition:
+
+```text
+normal Evolution Conversation                  PASS
+canonical Self Development direct binding      PASS
+real local Heretic request formation           PASS
+capability.vexlife.code.read                    PASS
+Intent Scheduler bounded dispatch              PASS
+ToolResultRelay observation reinjection         PASS
+source observation in later Heretic synthesis  PASS
+truthful Heretic/MLX modelConnectionProjection PASS
+bounded selfCapabilityFrame                    PASS
+same-Conversation durable readback              PASS
+same-idempotency retry / no model replay        PASS
+duplicate message append                        NONE
+external effect authority                       false
+```
+
+Canonical evidence:
+
+`artifact.vexlife.interface-refinement.home-tool.a006.return.sha256.a6ac642b7455f8ca1c677e7ec955d1ac1e977d167b3ba36257c3f067a4a5cf63`
+
+The retry returned the exact same human/Companion message refs with `actualHttpCall=false`,
+`modelCallPerformed=false`, `recoveredCompletedTurn=true`, and message count unchanged at two.
+
+Required non-collapse remains permanent:
 
 ```text
 MODEL_PROPOSAL != EFFECT_AUTHORITY
@@ -259,9 +268,13 @@ CAPABILITY_DISCOVERY != ARBITRARY_FILESYSTEM_OR_PROVIDER_ACCESS
 TOOL_RESULT != RAW_LOG_DUMP
 TOOL_OBSERVATION != DURABLE_MEMORY_PROMOTION
 CONVERSATION_HOME != UNIVERSAL_EFFECT_OWNER
+HERETIC_MLX != LEGACY_LLAMA_CPP_OPERATIONAL_PROFILE
 ```
 
-The first threshold should prove at least one **source-backed bounded read** end to end through the normal VexLife Home before broadening capability families.
+This completes the **first** lawful tool-bearing Home threshold. It does not imply arbitrary tool families,
+Memory promotion, host cleanup authority, distribution completeness, or V3–V6 continuity stability.
+
+The current foreground is now **V3 resource/context pressure observation**.
 
 ## Captured later — Kokoro live speech and response Read control
 

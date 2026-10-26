@@ -162,13 +162,13 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-10-25T11:39:33.055Z",
-      "updatedAt": "2026-10-25T11:39:33.055Z",
+      "updatedAt": "2026-10-26T03:44:02.000Z",
       "workRef": "work.vexlife.interface-refinement.home-tool-capability",
       "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
-      "label": "Current — tool-bearing VexLife Home",
-      "purpose": "Make the lived Evolution Conversation the ordinary VexLife Home where Vex can perceive current Intent/Workgraph context, discover only source-admitted capabilities, exercise at least one bounded source-backed read/tool path through the accepted Intent Scheduler / capability-lease / ToolResultRelay seams, receive the bounded observation back into context, and explain the result conversationally. Compose existing capability owners before adding new tools. MODEL_PROPOSAL != EFFECT_AUTHORITY; CAPABILITY_DISCOVERY != ARBITRARY_ACCESS; TOOL_OBSERVATION != MEMORY_PROMOTION.",
+      "label": "Completed — tool-bearing VexLife Home",
+      "purpose": "Make the lived Evolution Conversation the ordinary VexLife Home where Vex can perceive current Intent/Workgraph context, discover only source-admitted capabilities, exercise at least one bounded source-backed read/tool path through the accepted Intent Scheduler / capability-lease / ToolResultRelay seams, receive the bounded observation back into context, and explain the result conversationally. A006 terminally proves the first threshold on accepted Heretic/MLX source, including truthful model/self projection, durable readback and same-idempotency no-replay recovery. MODEL_PROPOSAL != EFFECT_AUTHORITY; CAPABILITY_DISCOVERY != ARBITRARY_ACCESS; TOOL_OBSERVATION != MEMORY_PROMOTION.",
       "workClass": "TASK",
-      "state": "READY",
+      "state": "COMPLETED",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [
         "work.vexlife.interface-refinement.v2.streaming"
@@ -187,10 +187,15 @@
         "repo.vexlife:src/core/vex-self-capability-frame.mjs",
         "repo.vexlife:src/core/browser-companion-bridge.mjs",
         "projects/vex-security-assurance/README.md",
-        "github.pull.vexlife.932.comment.6397203775"
+        "github.pull.vexlife.932.comment.6397203775",
+        "github.pull.vexlife.934",
+        "github.pull.vexlife.935",
+        "github.commit.vexlife.31c9198101f4c8a0170cb76b57547ae1d737b05f",
+        "github.pull.vexlife.935.comment.6407755531",
+        "artifact.vexlife.interface-refinement.home-tool.a006.return.sha256.a6ac642b7455f8ca1c677e7ec955d1ac1e977d167b3ba36257c3f067a4a5cf63"
       ],
-      "authorityDisposition": "AUTHORIZED_BOUNDED",
-      "effectDisposition": "EFFECTS_BOUND"
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -399,7 +404,56 @@
       "effectDisposition": "EFFECTS_BOUND"
     }
   ],
-  "transitions": [],
+  "transitions": [
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.interface-refinement.home-tool.ready-running.a006-currentization",
+      "workRef": "work.vexlife.interface-refinement.home-tool-capability",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Currentize the already-executed bounded Home/tool implementation and lived product proof trajectory before recording verification/completion.",
+      "actorRef": "actor.chatgpt.vexlife.interface-refinement",
+      "sourceRefs": [
+        "github.pull.vexlife.935",
+        "github.commit.vexlife.31c9198101f4c8a0170cb76b57547ae1d737b05f",
+        "github.pull.vexlife.935.comment.6407755531",
+        "artifact.vexlife.interface-refinement.home-tool.a006.return.sha256.a6ac642b7455f8ca1c677e7ec955d1ac1e977d167b3ba36257c3f067a4a5cf63"
+      ],
+      "createdAt": "2026-10-26T03:44:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.interface-refinement.home-tool.running-verifying.a006-currentization",
+      "workRef": "work.vexlife.interface-refinement.home-tool-capability",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "PR #935 source lifecycle completed and A006 exercised the accepted normal Conversation/tool path against current Heretic source.",
+      "actorRef": "actor.chatgpt.vexlife.interface-refinement",
+      "sourceRefs": [
+        "github.pull.vexlife.935",
+        "github.commit.vexlife.31c9198101f4c8a0170cb76b57547ae1d737b05f",
+        "github.pull.vexlife.935.comment.6407755531",
+        "artifact.vexlife.interface-refinement.home-tool.a006.return.sha256.a6ac642b7455f8ca1c677e7ec955d1ac1e977d167b3ba36257c3f067a4a5cf63"
+      ],
+      "createdAt": "2026-10-26T03:44:01.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.interface-refinement.home-tool.verifying-completed.a006-currentization",
+      "workRef": "work.vexlife.interface-refinement.home-tool-capability",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "A006 terminally passed the first bounded tool-bearing Home threshold, including truthful model/self projection, durable Conversation readback and same-idempotency no-replay recovery.",
+      "actorRef": "actor.chatgpt.vexlife.interface-refinement",
+      "sourceRefs": [
+        "github.pull.vexlife.935",
+        "github.commit.vexlife.31c9198101f4c8a0170cb76b57547ae1d737b05f",
+        "github.pull.vexlife.935.comment.6407755531",
+        "artifact.vexlife.interface-refinement.home-tool.a006.return.sha256.a6ac642b7455f8ca1c677e7ec955d1ac1e977d167b3ba36257c3f067a4a5cf63"
+      ],
+      "createdAt": "2026-10-26T03:44:02.000Z"
+    }
+  ],
   "sourceRefs": [
     "project.vexlife.interface-refinement",
     "projects/vexlife-interface-refinement/README.md",

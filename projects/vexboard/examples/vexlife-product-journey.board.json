@@ -213,7 +213,7 @@
       {
         "nodeRef": "work.vexlife.interface-refinement.home-tool-capability",
         "kind": "REFERENCE",
-        "label": "CURRENT / READY · tool-bearing VexLife Home",
+        "label": "COMPLETED / A006 PASS · tool-bearing VexLife Home",
         "parentRefOrNull": "container.vexlife.journey.lived-home",
         "detailBoardRefOrNull": null,
         "sourceRefs": [
@@ -228,7 +228,7 @@
       {
         "nodeRef": "annotation.vexlife.home-tool.pr934",
         "kind": "ANNOTATION",
-        "label": "PR #934 · SourceOwner PASS · fresh Assurance next",
+        "label": "PR #934 currentness predecessor · accepted; A006 closes Home threshold",
         "parentRefOrNull": "work.vexlife.interface-refinement.home-tool-capability",
         "detailBoardRefOrNull": null,
         "sourceRefs": [
@@ -265,7 +265,7 @@
       {
         "nodeRef": "work.vexlife.interface-refinement.v3.resource-context-pressure-observation",
         "kind": "REFERENCE",
-        "label": "READY · V3 resource + context pressure observation",
+        "label": "CURRENT / READY · V3 resource + context pressure observation",
         "parentRefOrNull": "container.vexlife.journey.stability",
         "detailBoardRefOrNull": null,
         "sourceRefs": [
@@ -498,7 +498,7 @@
         "kind": "FLOW",
         "fromRef": "work.vexlife.interface-refinement.v2.streaming",
         "toRef": "work.vexlife.interface-refinement.home-tool-capability",
-        "labelOrNull": "current foreground",
+        "labelOrNull": "completed Home threshold",
         "sourceRefs": [
           "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md"
         ]

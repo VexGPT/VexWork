@@ -30,12 +30,12 @@ CURRENT_WORK_STATE != PRODUCT_COMPLETENESS
 
 ## Current product truth
 
-The current accepted VexWork entry is:
+The current accepted VexWork/product evidence is:
 
 ```text
 V2 progressive/adaptive streaming     COMPLETED / human-lived PASS
-tool-bearing VexLife Home             READY / IMMEDIATE
-V3 resource/context pressure          READY / HIGH
+tool-bearing VexLife Home             COMPLETED / A006 terminal product PASS
+V3 resource/context pressure          CURRENT / READY / HIGH
 V4 continuity rollover                WAITING_DEPENDENCIES
 V5 bounded resource stewardship       WAITING_DEPENDENCIES
 V6 lived continuity stability         WAITING_DEPENDENCIES
@@ -43,9 +43,30 @@ Kokoro live speech/read-back          CAPTURED / NORMAL
 later Home/navigation refinement      CAPTURED / NORMAL
 ```
 
-PR #934 is a bounded currentness repair inside the tool-bearing Home trajectory. Its Relay SourceOwner A001
-returned PASS on exact head `eb5496ff6de953d4dbb484c9f2a84cad2322605a` / tree
-`2316ac69594823cac6db85e5472bfb22d119fb83`; fresh Independent Assurance remains the next source lifecycle edge.
+The Home/tool source-currentness lineage is now accepted rather than pending:
+
+```text
+PR #934
+  capability-observation currentness repair
+
+PR #935
+  truthful Heretic/MLX model-connection + bounded self-capability projection
+  merged as 31c9198101f4c8a0170cb76b57547ae1d737b05f
+  post-merge candidate-to-main file delta = zero
+
+A006
+  normal Evolution Conversation
+  -> capability.vexlife.code.read
+  -> Intent Scheduler
+  -> ToolResultRelay reinjection
+  -> later Heretic synthesis
+  -> truthful Heretic model/self projection
+  -> durable same-Conversation readback
+  -> same-idempotency recovery without model replay or duplicate append
+```
+
+Canonical A006 evidence:
+`artifact.vexlife.interface-refinement.home-tool.a006.return.sha256.a6ac642b7455f8ca1c677e7ec955d1ac1e977d167b3ba36257c3f067a4a5cf63`
 
 ## Journey draft
 
@@ -86,24 +107,31 @@ V1 conversation ergonomics + re-entry
         ↓
 V2 progressive/adaptive streaming
         ↓
-CURRENT: tool-bearing VexLife Home
+COMPLETED: first tool-bearing VexLife Home threshold
 ```
 
-V1.5 long-context Memory pressure is a parallel continuity foundation rather than a simple visual successor to V1.
+V1.5 long-context Memory pressure remains the parallel continuity foundation feeding the current V3 frontier.
 
-The current Home/tool threshold is:
+A006 terminally proves the first Home/tool threshold:
 
 ```text
 normal Evolution Conversation
-→ Vex perceives current intent/capability meaning
-→ one source-admitted bounded READ_ONLY capability
-→ rightful scheduler / capability lease
-→ server-owned executor
+→ real Heretic request formation
+→ one source-admitted capability.vexlife.code.read
+→ rightful scheduler / bounded read executor
 → ToolResultRelay
-→ bounded observation reinjected into current context
+→ bounded source observation reinjected
 → later Heretic synthesis
-→ conversational answer in the same Home
+→ truthful Heretic/MLX modelConnectionProjection
+→ bounded selfCapabilityFrame with no effect authority
+→ conversational answer in the same durable Home
+→ same-idempotency recovery without HTTP/model replay or duplicate append
 ```
+
+Evidence:
+`artifact.vexlife.interface-refinement.home-tool.a006.return.sha256.a6ac642b7455f8ca1c677e7ec955d1ac1e977d167b3ba36257c3f067a4a5cf63`
+
+The next current product/stability edge is V3 resource/context pressure observation, not a broader arbitrary tool expansion.
 
 ### 3. Continuity / stability frontier
 
