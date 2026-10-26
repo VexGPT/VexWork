@@ -1637,46 +1637,118 @@ This correction generalizes carefully: styles, assets, behavior, data bindings a
 meaning should remain source-addressable and mapped to target realizations where a real consumer earns
 that contract. Do not predeclare one giant universal schema merely from this text example.
 
-#### Control / Act / Effect — dismantle the mixed `ElementIntent` grammar, do not rename it
+#### Control / Act / Effect — do not turn ordinary navigation into opaque Act IDs
 
-The accepted VexLife semantic law already distinguishes:
+The accepted VexLife semantic law distinguishes State, Control, resolved Act, Effect and Projection,
+but those roles are **not a mandatory five-step wrapper around every interaction**.
+
+The accepted behavior rows already prove this by allowing `resolvedAct = null` and `effect = null`
+when no semantic Act/Effect is admitted. The repository Feature language is explicit: **Act, when
+Behavior applies**.
 
 ~~~text
-State
--> Control
--> resolved Act
--> Effect
--> resulting State / Projection
+SCAE
+= semantic behavior law when a real behavior question exists
+!= mandatory indirection for every click / route / popup / presentation change
 ~~~
 
-The current Android `ElementIntent` is real repository code and remains valid migration source today,
-but it mixes several semantic roles:
+The current Android `ElementIntent` is real repository code and remains valid migration source today.
+It currently mixes several runtime request families:
 
 ~~~text
 ElementIntent.NavigateTo(...)
 ElementIntent.NavigateBack
+
 ElementIntent.Open(...)
 ElementIntent.Close(...)
 ElementIntent.Toggle(...)
 ElementIntent.SwapTo(...)
+
 ElementIntent.Invoke(ActionKey)
+
 ElementIntent.LocalEffect
 ElementIntent.Sequence(...)
 ~~~
 
-Do **not** solve this by mechanically renaming `ElementIntent` to `VexAct`. The mixed grammar should
-instead be decomposed case-by-case as target adoption earns the portable relationship.
-
-Permanent behavioral distinctions:
+Do **not** solve this by either:
 
 ~~~text
-CONTROL_IDENTITY != RESOLVED_ACT
-ACT != EFFECT
-CONTROL_FORM != BUSINESS_BEHAVIOR
-PRESENTATION_MECHANIC != PORTABLE_ACT
+ElementIntent -> VexAct
 ~~~
 
-A stable Control can resolve to different Acts under different State:
+or:
+
+~~~text
+NavigateTo(Screen)
+-> ActId("act.some-domain.request-screen")
+~~~
+
+merely to force ordinary navigation through a semantic string identity.
+
+An ID identifies a semantic object. It must not replace a useful typed function/relationship merely
+because IDs are portable.
+
+Permanent distinctions:
+
+~~~text
+ID != EXECUTION_MECHANISM
+
+CONTROL_IDENTITY != RESOLVED_ACT
+ACT != EFFECT
+
+TYPED_NAVIGATION_OPERATION != ACT_ID
+PRESENTATION_OPERATION != PORTABLE_ACT
+CONTROL_FORM != BUSINESS_BEHAVIOR
+
+SCREEN_IDENTITY != CURRENT_NAVIGATION_STATE
+CONTAINER_IDENTITY != SELECTED_CHILD
+TEXT_IDENTITY != CURRENT_VALUE
+~~~
+
+##### Typed presentation/navigation stays typed
+
+Simple navigation can remain an explicit typed relationship or runtime operation:
+
+~~~text
+Control activation
+-> Navigation.Open(ScreenId, arguments)
+
+Navigation owner
+-> updates navigation State / Back stack
+~~~
+
+or in a target-native implementation:
+
+~~~text
+navigation.push(articleDetailScreen)
+~~~
+
+No invented `act.news.read-article` is required merely to replace `NavigateTo(articleDetailScreen)`.
+
+Likewise, opening/closing a dialog, selecting a local tab, or dismissing a sheet may remain typed
+presentation operations when no portable Behavior owns a distinct semantic question.
+
+The durable movement is therefore:
+
+~~~text
+current ElementIntent mixed union
+
+-> separate typed runtime request families
+
+   Navigation operation
+   Presentation operation
+   Behavior/SCAE resolution
+   explicit target-local callback where truly target-local
+~~~
+
+rather than one universal string-ID dispatcher.
+
+##### SCAE begins where Behavior actually has meaning
+
+A stable Control can resolve through semantic Behavior when current State changes what the interaction
+*means*, whether it is admitted, or which rightful Effect should be requested.
+
+Accepted example:
 
 ~~~text
 State = paused
@@ -1688,61 +1760,95 @@ State = playing
 same Control = play-pause
 -> Act = pause
 -> Effect = request-pause
+
+State = unavailable
+same Control = play-pause
+-> Act = null
+-> Effect = null
+-> admission = denied
 ~~~
 
-This is the same architectural lesson as text value resolution:
+That is a real semantic resolution problem and earns SCAE.
+
+A gated article interaction might also earn Behavior, but the naming must describe real product
+meaning rather than manufacture an Act merely because the final runtime operation is navigation:
 
 ~~~text
-TEXT_IDENTITY != CURRENT_VALUE
-CONTROL_IDENTITY != RESOLVED_ACT
-CONTAINER_IDENTITY != SELECTED_CHILD
-SCREEN_IDENTITY != CURRENT_NAVIGATION_STATE
+Control = article-card / open article
+
+State = admitted
+-> Behavior may allow a semantic article-view/open Act
+-> Effect may request presentation of Article Detail
+
+State = authentication required
+-> Behavior may deny/defer that Act
+-> Effect may request authentication presentation
 ~~~
 
-Current migration interpretation:
+Whether an explicit Act identity is useful is a **behavior-model decision**, not a navigation
+requirement. If the only truthful relationship is "this control opens this registered Screen", keep
+the typed navigation relationship and do not invent an Act.
+
+##### Current migration interpretation
 
 ~~~text
 ActionElement
-  closest long-term role: Control
-  target rendering form may still be Button / Toggle / another familiar UI control
+  pressure toward Control identity
+  but target rendering form remains Button / Toggle / another familiar control
 
 ElementIntent.Invoke(ActionKey)
-  closest current shape to Control -> Act
-  ActionKey currently wraps an actionId
-  long-term semantic source should prefer direct actId / Act identity when the migration is earned
+  closest current shape to portable Behavior dispatch
+  ActionKey currently wraps actionId
+  when a real SCAE Act exists, migrate toward typed/direct Act identity rather than wrapper-on-wrapper
 
 NavigateTo / NavigateBack
-  navigation request grammar
-  may resolve through State -> Act -> navigation Effect
-  destination is not automatically owned by the Control
+  navigation-owner requests
+  should remain typed navigation semantics unless real Behavior pressure earns SCAE
+
+Open / Close
+  presentation-owner requests
+  usually presentation mechanics unless product meaning earns portable Behavior
 
 Toggle
-  control/presentation form is not itself the semantic Act
-  behavior resolves what change means under current State
+  distinguish the visual Toggle control from the semantic behavior it may request
+  do not assume every toggle-shaped control owns a generic Toggle Act
 
 SwapTo
   selection/presentation-state relationship
-  pressure against making "swappable" a permanent container ontology
-  prefer ordinary container identity + selected-child State/binding when that model is earned
+  pressure against permanent SwappableContainer ontology
+  ordinary container + selected-child State/binding may be the cleaner long-term model
 
 LocalEffect
   migration escape hatch for target-local ownership
-  long-term should become either an explicit Effect relationship or an honestly target-local callback
-  rather than a permanent portable semantic noun
+  long-term should become either an explicit Effect when semantic meaning exists or an honestly
+  target-local callback when it does not
 
 Sequence
-  pressure toward Behavior / Process composition
-  an individual UI Control should not become the universal owner of arbitrary semantic orchestration
+  do not let a UI Control become the universal owner of arbitrary orchestration
+  semantic sequences belong to Behavior / Process when portable meaning exists
+  presentation-only sequences may remain typed local runtime composition
 ~~~
 
-The UI should be semantically **narrow**, not omniscient: a Control identifies the human affordance /
-request; rightful Behavior resolves the Act when that semantic layer exists; the rightful runtime owner
-attempts the Effect.
+The UI should be semantically **narrow**, not stringly typed. A Control identifies the affordance/request;
+typed navigation/presentation owners keep their established mechanics; rightful Behavior resolves Acts
+only when semantic behavior actually exists.
 
-That does not mean every popup, animation or target-local presentation change needs a globally
-addressable SCAE row. The repository Feature language already says **Act, when Behavior applies**.
-Presentation-only mechanics may remain presentation-local until a real semantic consumer earns stronger
-portable meaning.
+##### IDs and generated target types
+
+Portable semantic identities may be serialized as IDs without requiring target code to pass raw Strings.
+
+For example, an accepted portable `actId` may generate or bind to a target-native typed value:
+
+~~~text
+portable identity
+  act.vexstream.playback.play
+
+target code
+  VexStreamPlaybackAct.Play
+~~~
+
+Likewise a `screenId` identifies the Screen while target code may hold a typed `VexScreen` object.
+The semantic graph needs stable IDs; engineers do not need to abandon type-safe APIs to obtain them.
 
 #### Standardization posture
 
