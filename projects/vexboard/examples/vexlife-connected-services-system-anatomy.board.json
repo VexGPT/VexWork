@@ -1,0 +1,1652 @@
+{
+  "schemaVersion": "vexboard.local-draft/v1",
+  "draftRef": "board.vexlife.connected-services.system-anatomy.current-target",
+  "title": "VexLife Connected Services · Current + Target + Operations Anatomy",
+  "mode": "READ_ONLY_SOURCE",
+  "derivedFromRefOrNull": "project.vexlife.connected-services",
+  "savedAtOrNull": null,
+  "graph": {
+    "schemaVersion": "vexboard.board-graph/v1",
+    "graphRef": "graph.vexlife.connected-services.system-anatomy.current-target",
+    "nodes": [
+      {
+        "nodeRef": "container.vcs.system",
+        "kind": "CONTAINER",
+        "label": "VexLife Connected Services · current + completed-target anatomy",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "github.issue.vexlife.899",
+          "repo.vexlife:docs/VEXLIFE-CONNECTED-SERVICES.md",
+          "project.vexlife.connected-services"
+        ]
+      },
+      {
+        "nodeRef": "annotation.vcs.legend",
+        "kind": "ANNOTATION",
+        "label": "Legend · CURRENT/LIVED = accepted or observed · RUNNING STRESS = active proof edge, not yet generalized · TARGET = intended, not yet current",
+        "parentRefOrNull": "container.vcs.system",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "repo.vexlife:docs/VEXLIFE-CONNECTED-SERVICES.md",
+          "github.pull.vexstream-music.15"
+        ]
+      },
+      {
+        "nodeRef": "annotation.vcs.work-overlay",
+        "kind": "ANNOTATION",
+        "label": "Work overlay · VCS-04 TERMINAL_ACCEPTED_CURRENT · VCS-05 terminal evidence accepted / VexWork terminal currentization pending PR162 · VCS-06 source-formed READY pending PR162 acceptance",
+        "parentRefOrNull": "container.vcs.system",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "github.issue.vexlife.899",
+          "github.pull.vexwork.132",
+          "github.commit.vexwork.470570726137d0f78a90ff0945850bf29de46a41",
+          "github.pull.vexstream-music.15",
+          "github.pull.vexwork.162",
+          "github.issue.vexlife.899.comment.6407174402",
+          "github.pull.vexstream-music.15.comment.6408146238",
+          "github.issue.vexlife.899.comment.6408187503",
+          "github.pull.vexwork.162.comment.6408252885"
+        ]
+      },
+      {
+        "nodeRef": "container.vcs.clients",
+        "kind": "CONTAINER",
+        "label": "Feature surfaces + typed clients",
+        "parentRefOrNull": "container.vcs.system",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "repo.vexlife:docs/VEXLIFE-CONNECTED-SERVICES.md"
+        ]
+      },
+      {
+        "nodeRef": "container.vcs.substrate",
+        "kind": "CONTAINER",
+        "label": "Shared Connected Services substrate",
+        "parentRefOrNull": "container.vcs.system",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "repo.vexlife:docs/VEXLIFE-CONNECTED-SERVICES.md"
+        ]
+      },
+      {
+        "nodeRef": "container.vcs.home",
+        "kind": "CONTAINER",
+        "label": "Home authority + admitted services",
+        "parentRefOrNull": "container.vcs.system",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "repo.vexlife:docs/VEXLIFE-CONNECTED-SERVICES.md",
+          "repo.vexlife:docs/VEXHOME-HOSTED-CAPABILITIES.md"
+        ]
+      },
+      {
+        "nodeRef": "container.vcs.features",
+        "kind": "CONTAINER",
+        "label": "Feature semantic owners + replaceable realizations",
+        "parentRefOrNull": "container.vcs.system",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "repo.vexlife:docs/VEXLIFE-CONNECTED-SERVICES.md"
+        ]
+      },
+      {
+        "nodeRef": "container.vcs.target",
+        "kind": "CONTAINER",
+        "label": "Completed-target frontier · not yet current",
+        "parentRefOrNull": "container.vcs.system",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "github.issue.vexlife.899"
+        ]
+      },
+      {
+        "nodeRef": "reference.vcs.client.maps",
+        "kind": "REFERENCE",
+        "label": "CURRENT · Maps typed feature client · Maps owns query/result meaning",
+        "parentRefOrNull": "container.vcs.clients",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "repo.vexlife:docs/VEXLIFE-CONNECTED-SERVICES.md",
+          "repo.vexlife:src/core/home-maps-place-search.mjs"
+        ]
+      },
+      {
+        "nodeRef": "reference.vcs.client.conversation",
+        "kind": "REFERENCE",
+        "label": "CURRENT/LIVED TERMINAL · Android Family Conversation connected-service client · VCS-04 accepted current",
+        "parentRefOrNull": "container.vcs.clients",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/conversation/VexFamilyConversationConnectedServiceClient.kt",
+          "github.pull.vexlife-android.154",
+          "github.issue.vexlife.899.comment.6394144708",
+          "github.commit.vexlife-android.9104d232086afd888700c3317ab79c2a8b87239b",
+          "github.commit.vexwork.470570726137d0f78a90ff0945850bf29de46a41"
+        ]
+      },
+      {
+        "nodeRef": "reference.vcs.client.vexstream",
+        "kind": "REFERENCE",
+        "label": "CURRENT FEATURE-OWNED · VexStream local pairing/catalog/Range-media client · VCS-05 Range stress accepted",
+        "parentRefOrNull": "container.vcs.clients",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/README.md",
+          "github.issue.vexlife.899",
+          "github.pull.vexstream-music.15",
+          "github.issue.vexlife.899.comment.6407174402",
+          "github.pull.vexstream-music.15.comment.6408146238",
+          "github.commit.vexstream-music.fbe2060dae75efaae069f777d4346b45b251a754"
+        ]
+      },
+      {
+        "nodeRef": "annotation.vcs.client-law",
+        "kind": "ANNOTATION",
+        "label": "Feature intent does not author device, membership, lease, revocation, provider or Home authority",
+        "parentRefOrNull": "container.vcs.clients",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "repo.vexlife:docs/VEXLIFE-CONNECTED-SERVICES.md"
+        ]
+      },
+      {
+        "nodeRef": "process.vcs.device-possession",
+        "kind": "PROCESS",
+        "label": "CURRENT/LIVED · trusted device possession",
+        "parentRefOrNull": "container.vcs.substrate",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/connectedservices/VexHomeDevicePossession.kt",
+          "repo.vexlife:docs/VEXLIFE-CONNECTED-SERVICES.md"
+        ]
+      },
+      {
+        "nodeRef": "process.vcs.private-reachability",
+        "kind": "PROCESS",
+        "label": "CURRENT/LIVED · private reachability + route selection",
+        "parentRefOrNull": "container.vcs.substrate",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/connectedservices/VexPrivateHomeGatewayConnection.kt",
+          "repo.vexlife:docs/VEXLIFE-CONNECTED-SERVICES.md"
+        ]
+      },
+      {
+        "nodeRef": "process.vcs.remote-session",
+        "kind": "PROCESS",
+        "label": "CURRENT/LIVED · bounded remote authenticated Home session",
+        "parentRefOrNull": "container.vcs.substrate",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "repo.vexlife:docs/HOME-BRIDGE-REMOTE-AUTHENTICATED-SESSION.md",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/connectedservices/VexPrivateHomeGatewayConnection.kt",
+          "repo.vexlife:docs/VEXLIFE-CONNECTED-SERVICES.md"
+        ]
+      },
+      {
+        "nodeRef": "process.vcs.transport",
+        "kind": "PROCESS",
+        "label": "CURRENT CONTRACT · transport correlation + availability/failure + route refresh/reconnect",
+        "parentRefOrNull": "container.vcs.substrate",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "repo.vexlife:docs/VEXLIFE-CONNECTED-SERVICES.md"
+        ]
+      },
+      {
+        "nodeRef": "annotation.vcs.substrate-law",
+        "kind": "ANNOTATION",
+        "label": "IDENTITY ≠ REACHABILITY · RECONNECT ≠ REAUTHORIZE · TRANSPORT CORRELATION ≠ FEATURE CURRENTNESS",
+        "parentRefOrNull": "container.vcs.substrate",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "repo.vexlife:docs/VEXLIFE-CONNECTED-SERVICES.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.vcs.home-authority",
+        "kind": "REFERENCE",
+        "label": "CURRENT · Home Bridge/rightful authority · identity + membership + lease + revocation + exact capability admission",
+        "parentRefOrNull": "container.vcs.home",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "repo.vexlife:docs/VEXLIFE-CONNECTED-SERVICES.md",
+          "repo.vexlife:docs/HOME-BRIDGE-SESSION-AUTHORITY.md",
+          "repo.vexlife:docs/VEXHOME-HOSTED-CAPABILITIES.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.vcs.home.maps",
+        "kind": "REFERENCE",
+        "label": "CURRENT · Home Maps place-search service",
+        "parentRefOrNull": "container.vcs.home",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "repo.vexlife:src/core/home-maps-place-search.mjs",
+          "repo.vexlife:docs/VEXLIFE-CONNECTED-SERVICES.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.vcs.home.conversation",
+        "kind": "REFERENCE",
+        "label": "CURRENT/LIVED · Home Family Conversation service",
+        "parentRefOrNull": "container.vcs.home",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "repo.vexlife:docs/SERVER-FAMILY-CONVERSATION-CAPABILITY.md",
+          "repo.vexlife:docs/VEXLIFE-CONNECTED-SERVICES.md",
+          "github.issue.vexlife.899.comment.6394144708"
+        ]
+      },
+      {
+        "nodeRef": "reference.vcs.home.vexstream-target",
+        "kind": "REFERENCE",
+        "label": "HELD FUTURE OPTION · VCS-05 did not earn a generic shared VexStream media/streaming service boundary",
+        "parentRefOrNull": "container.vcs.home",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "github.issue.vexlife.899",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/README.md",
+          "github.pull.vexstream-music.15",
+          "github.issue.vexlife.899.comment.6407174402",
+          "github.issue.vexlife.899.comment.6408187503",
+          "github.pull.vexstream-music.15.comment.6408146238"
+        ]
+      },
+      {
+        "nodeRef": "container.vcs.feature.maps",
+        "kind": "CONTAINER",
+        "label": "Maps · semantic owner",
+        "parentRefOrNull": "container.vcs.features",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "repo.vexlife:docs/VEXLIFE-CONNECTED-SERVICES.md",
+          "repo.vexlife:src/core/home-maps-place-search.mjs"
+        ]
+      },
+      {
+        "nodeRef": "reference.vcs.maps.semantics",
+        "kind": "REFERENCE",
+        "label": "CURRENT · place-search intent/result currentness stays Maps-owned",
+        "parentRefOrNull": "container.vcs.feature.maps",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "repo.vexlife:docs/VEXLIFE-CONNECTED-SERVICES.md",
+          "repo.vexlife:src/core/home-maps-place-search.mjs"
+        ]
+      },
+      {
+        "nodeRef": "reference.vcs.maps.provider",
+        "kind": "REFERENCE",
+        "label": "CURRENT REPLACEABLE ENGINE · Photon + OpenStreetMap realization",
+        "parentRefOrNull": "container.vcs.feature.maps",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "repo.vexlife:src/core/home-maps-photon-place-search.mjs",
+          "github.issue.vexlife.899"
+        ]
+      },
+      {
+        "nodeRef": "container.vcs.feature.conversation",
+        "kind": "CONTAINER",
+        "label": "Family Conversation · semantic owner",
+        "parentRefOrNull": "container.vcs.features",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "repo.vexlife:docs/VEXLIFE-CONNECTED-SERVICES.md",
+          "repo.vexlife:docs/SERVER-FAMILY-CONVERSATION-CAPABILITY.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.vcs.conversation.semantics",
+        "kind": "REFERENCE",
+        "label": "CURRENT/LIVED · Family identity/membership/history + durable HUMAN message semantics/store",
+        "parentRefOrNull": "container.vcs.feature.conversation",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "repo.vexlife:src/core/family-conversation.mjs",
+          "repo.vexlife:src/core/conversation-store.mjs",
+          "repo.vexlife:docs/SERVER-FAMILY-CONVERSATION-CAPABILITY.md",
+          "github.issue.vexlife.899.comment.6394144708"
+        ]
+      },
+      {
+        "nodeRef": "process.vcs.conversation.companion",
+        "kind": "PROCESS",
+        "label": "CURRENT/LIVED · separate Family Companion trigger/queue/runtime",
+        "parentRefOrNull": "container.vcs.feature.conversation",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "repo.vexlife:docs/VEX-FAMILY-COMPANION-RUNTIME.md",
+          "github.issue.vexlife.899.comment.6394144708"
+        ]
+      },
+      {
+        "nodeRef": "reference.vcs.conversation.heretic",
+        "kind": "REFERENCE",
+        "label": "CURRENT/LIVED · Heretic model runtime · model output only, not Conversation authority",
+        "parentRefOrNull": "container.vcs.feature.conversation",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "repo.vexlife:src/core/heretic-persistent-runtime-owner.mjs",
+          "github.issue.vexlife.899.comment.6394144708"
+        ]
+      },
+      {
+        "nodeRef": "annotation.vcs.conversation-law",
+        "kind": "ANNOTATION",
+        "label": "HUMAN_MESSAGE_DELIVERY ≠ AI_ATTENTION · model failure does not erase the durable human append",
+        "parentRefOrNull": "container.vcs.feature.conversation",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "repo.vexlife:docs/VEX-FAMILY-COMPANION-RUNTIME.md",
+          "github.issue.vexlife.899.comment.6394144708"
+        ]
+      },
+      {
+        "nodeRef": "container.vcs.feature.vexstream",
+        "kind": "CONTAINER",
+        "label": "VexStream · semantic owner",
+        "parentRefOrNull": "container.vcs.features",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "github.issue.vexlife.899",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/README.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.vcs.vexstream.semantics",
+        "kind": "REFERENCE",
+        "label": "CURRENT FEATURE TRUTH · catalog/media/range/offline-copy/playback meaning stays VexStream-owned",
+        "parentRefOrNull": "container.vcs.feature.vexstream",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/README.md",
+          "repo.vexlife:docs/VEXLIFE-CONNECTED-SERVICES.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.vcs.vexstream.current-transport",
+        "kind": "REFERENCE",
+        "label": "CURRENT DISTINCT REALIZATION · same-Wi-Fi pairing + pinned TLS + direct HTTP Range media; feature-owned, not generic Connected Services authority",
+        "parentRefOrNull": "container.vcs.feature.vexstream",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/README.md",
+          "github.issue.vexlife.899",
+          "github.pull.vexstream-music.15",
+          "repo.vexstream-music:v2/desktop/mobile/catalog.go"
+        ]
+      },
+      {
+        "nodeRef": "process.vcs.target.streaming-extension",
+        "kind": "PROCESS",
+        "label": "COMPLETED VCS-05 · local Range + restart/reconnect pressure accepted; no generic streaming/backpressure extension earned",
+        "parentRefOrNull": "container.vcs.target",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "github.issue.vexlife.899",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/README.md",
+          "github.pull.vexstream-music.15",
+          "github.pull.vexwork.162",
+          "github.issue.vexlife.899.comment.6407174402",
+          "github.pull.vexstream-music.15.comment.6408146238",
+          "github.issue.vexlife.899.comment.6408187503",
+          "github.pull.vexlife-android.148"
+        ]
+      },
+      {
+        "nodeRef": "reference.vcs.target.architecture-extraction",
+        "kind": "REFERENCE",
+        "label": "SOURCE-FORMED READY VCS-06 · extract only recurring cross-consumer ownership/contracts/proof; accepted-current pending VexWork PR162",
+        "parentRefOrNull": "container.vcs.target",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "github.issue.vexlife.899",
+          "github.issue.vexlife.899.comment.6408187503",
+          "github.pull.vexwork.162",
+          "github.pull.vexwork.162.comment.6408252885"
+        ]
+      },
+      {
+        "nodeRef": "container.vcs.target.deployment",
+        "kind": "CONTAINER",
+        "label": "TARGET VCS-07 · deployment realization choices",
+        "parentRefOrNull": "container.vcs.target",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "github.issue.vexlife.899"
+        ]
+      },
+      {
+        "nodeRef": "reference.vcs.deploy.same-machine",
+        "kind": "REFERENCE",
+        "label": "TARGET OPTION · same-machine VexHome",
+        "parentRefOrNull": "container.vcs.target.deployment",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "github.issue.vexlife.899"
+        ]
+      },
+      {
+        "nodeRef": "reference.vcs.deploy.owned-machine",
+        "kind": "REFERENCE",
+        "label": "TARGET OPTION · sibling process/container or another owned machine",
+        "parentRefOrNull": "container.vcs.target.deployment",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "github.issue.vexlife.899"
+        ]
+      },
+      {
+        "nodeRef": "reference.vcs.deploy.vps-cloud",
+        "kind": "REFERENCE",
+        "label": "TARGET OPTION · user-selected VPS/cloud",
+        "parentRefOrNull": "container.vcs.target.deployment",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "github.issue.vexlife.899"
+        ]
+      },
+      {
+        "nodeRef": "reference.vcs.deploy.managed",
+        "kind": "REFERENCE",
+        "label": "TARGET OPTION · optional future Vextreme-managed host",
+        "parentRefOrNull": "container.vcs.target.deployment",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "github.issue.vexlife.899"
+        ]
+      },
+      {
+        "nodeRef": "annotation.vcs.target-law",
+        "kind": "ANNOTATION",
+        "label": "DEPLOYMENT LOCATION ≠ SEMANTIC OWNER · provider/vendor choice cannot become feature or Home authority",
+        "parentRefOrNull": "container.vcs.target",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "github.issue.vexlife.899",
+          "repo.vexlife:docs/VEXLIFE-CONNECTED-SERVICES.md"
+        ]
+      },
+      {
+        "nodeRef": "container.vcs.operations",
+        "kind": "CONTAINER",
+        "label": "Operations lens · availability vs retained truth vs destructive reset",
+        "parentRefOrNull": "container.vcs.system",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "github.issue.vexlife.899",
+          "project.vexlife.connected-services",
+          "github.issue.vexlife.899.comment.6407174402"
+        ]
+      },
+      {
+        "nodeRef": "reference.vcs.ops.runtime-availability",
+        "kind": "REFERENCE",
+        "label": "RUNTIME AVAILABILITY · process/network/route may be OFF · DEGRADED · UNKNOWN without erasing durable source or feature truth",
+        "parentRefOrNull": "container.vcs.operations",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "github.issue.vexlife.899",
+          "project.vexlife.connected-services",
+          "repo.vexlife:docs/VEXLIFE-CONNECTED-SERVICES.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.vcs.ops.retained-state",
+        "kind": "REFERENCE",
+        "label": "RETAINED DURABLE STATE · Work/source, Conversation history, VexStream library/offline copies and remembered pairing survive ordinary runtime stop",
+        "parentRefOrNull": "container.vcs.operations",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "github.issue.vexlife.899",
+          "project.vexlife.connected-services",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/README.md",
+          "github.issue.vexlife.899.comment.6406486260"
+        ]
+      },
+      {
+        "nodeRef": "reference.vcs.ops.destructive-boundary",
+        "kind": "REFERENCE",
+        "label": "DESTRUCTIVE / AUTHORITY CHANGE · Forget · Revoke · Clear Data · membership/lease revocation intentionally invalidates selected retained identity/authority",
+        "parentRefOrNull": "container.vcs.operations",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "github.issue.vexlife.899",
+          "project.vexlife.connected-services",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/README.md",
+          "repo.vexlife:docs/HOME-BRIDGE-SESSION-AUTHORITY.md"
+        ]
+      },
+      {
+        "nodeRef": "annotation.vcs.ops-law",
+        "kind": "ANNOTATION",
+        "label": "OFFLINE ≠ FORGOTTEN · STOP ≠ REVOKE · RECONNECT ≠ REAUTHORIZE · VexBoard projects status; it does not own Start/Stop/Forget/Revoke effects",
+        "parentRefOrNull": "container.vcs.operations",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "github.issue.vexlife.899",
+          "project.vexlife.connected-services"
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "relationshipRef": "rel.vcs.possession-reachability",
+        "kind": "FLOW",
+        "fromRef": "process.vcs.device-possession",
+        "toRef": "process.vcs.private-reachability",
+        "labelOrNull": "BINDS_TRUSTED_CALLER",
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "repo.vexlife:docs/VEXLIFE-CONNECTED-SERVICES.md",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/connectedservices/VexHomeDevicePossession.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/connectedservices/VexPrivateHomeGatewayConnection.kt"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vcs.reachability-session",
+        "kind": "FLOW",
+        "fromRef": "process.vcs.private-reachability",
+        "toRef": "process.vcs.remote-session",
+        "labelOrNull": "REACHES_RIGHTFUL_HOME",
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "repo.vexlife:docs/VEXLIFE-CONNECTED-SERVICES.md",
+          "repo.vexlife:docs/HOME-BRIDGE-REMOTE-AUTHENTICATED-SESSION.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vcs.session-transport",
+        "kind": "FLOW",
+        "fromRef": "process.vcs.remote-session",
+        "toRef": "process.vcs.transport",
+        "labelOrNull": "SESSION_BOUNDS_TRANSPORT",
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "repo.vexlife:docs/VEXLIFE-CONNECTED-SERVICES.md",
+          "repo.vexlife:docs/HOME-BRIDGE-REMOTE-AUTHENTICATED-SESSION.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vcs.transport-home-authority",
+        "kind": "FLOW",
+        "fromRef": "process.vcs.transport",
+        "toRef": "reference.vcs.home-authority",
+        "labelOrNull": "PRESENTS_REQUEST_FOR_CURRENT_ADMISSION",
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "repo.vexlife:docs/VEXLIFE-CONNECTED-SERVICES.md",
+          "repo.vexlife:docs/HOME-BRIDGE-SESSION-AUTHORITY.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vcs.maps-client-transport",
+        "kind": "FLOW",
+        "fromRef": "reference.vcs.client.maps",
+        "toRef": "process.vcs.transport",
+        "labelOrNull": "USES_CONNECTED_SERVICE",
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "repo.vexlife:docs/VEXLIFE-CONNECTED-SERVICES.md",
+          "repo.vexlife:src/core/home-maps-place-search.mjs"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vcs.conversation-client-possession",
+        "kind": "FLOW",
+        "fromRef": "reference.vcs.client.conversation",
+        "toRef": "process.vcs.device-possession",
+        "labelOrNull": "PROVES_DEVICE_POSSESSION",
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/connectedservices/VexHomeDevicePossession.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/conversation/VexFamilyConversationConnectedServiceClient.kt",
+          "github.pull.vexlife-android.154"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vcs.conversation-client-transport",
+        "kind": "FLOW",
+        "fromRef": "reference.vcs.client.conversation",
+        "toRef": "process.vcs.transport",
+        "labelOrNull": "USES_PRIVATE_CONNECTED_SERVICE",
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/conversation/VexFamilyConversationConnectedServiceClient.kt",
+          "github.pull.vexlife-android.154",
+          "repo.vexlife:docs/VEXLIFE-CONNECTED-SERVICES.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vcs.vexstream-current-target",
+        "kind": "REFERENCE",
+        "fromRef": "reference.vcs.client.vexstream",
+        "toRef": "process.vcs.target.streaming-extension",
+        "labelOrNull": "PRESSURES_FUTURE_SHARED_ADOPTION",
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "github.issue.vexlife.899",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/README.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vcs.home-admits-maps",
+        "kind": "FLOW",
+        "fromRef": "reference.vcs.home-authority",
+        "toRef": "reference.vcs.home.maps",
+        "labelOrNull": "ADMITS_MAPS_CAPABILITY",
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "repo.vexlife:docs/HOME-BRIDGE-SESSION-AUTHORITY.md",
+          "repo.vexlife:src/core/home-maps-place-search.mjs"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vcs.home-admits-conversation",
+        "kind": "FLOW",
+        "fromRef": "reference.vcs.home-authority",
+        "toRef": "reference.vcs.home.conversation",
+        "labelOrNull": "ADMITS_FAMILY_CONVERSATION_CAPABILITY",
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "repo.vexlife:docs/HOME-BRIDGE-SESSION-AUTHORITY.md",
+          "repo.vexlife:docs/SERVER-FAMILY-CONVERSATION-CAPABILITY.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vcs.home-target-vexstream",
+        "kind": "REFERENCE",
+        "fromRef": "reference.vcs.home-authority",
+        "toRef": "reference.vcs.home.vexstream-target",
+        "labelOrNull": "TARGET_ADMISSION_AFTER_VCS05",
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "github.issue.vexlife.899"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vcs.maps-service-semantics",
+        "kind": "FLOW",
+        "fromRef": "reference.vcs.home.maps",
+        "toRef": "reference.vcs.maps.semantics",
+        "labelOrNull": "DELEGATES_FEATURE_EXECUTION",
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "repo.vexlife:src/core/home-maps-place-search.mjs",
+          "repo.vexlife:docs/VEXLIFE-CONNECTED-SERVICES.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vcs.maps-semantics-provider",
+        "kind": "FLOW",
+        "fromRef": "reference.vcs.maps.semantics",
+        "toRef": "reference.vcs.maps.provider",
+        "labelOrNull": "USES_REPLACEABLE_PROVIDER",
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "repo.vexlife:src/core/home-maps-photon-place-search.mjs",
+          "github.issue.vexlife.899"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vcs.conversation-service-semantics",
+        "kind": "FLOW",
+        "fromRef": "reference.vcs.home.conversation",
+        "toRef": "reference.vcs.conversation.semantics",
+        "labelOrNull": "DELEGATES_TO_FAMILY_CONVERSATION_OWNER",
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "repo.vexlife:docs/SERVER-FAMILY-CONVERSATION-CAPABILITY.md",
+          "repo.vexlife:docs/VEXLIFE-CONNECTED-SERVICES.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vcs.conversation-semantics-companion",
+        "kind": "DATA",
+        "fromRef": "reference.vcs.conversation.semantics",
+        "toRef": "process.vcs.conversation.companion",
+        "labelOrNull": "PERSISTS_SEPARATE_AI_TRIGGER",
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "repo.vexlife:docs/VEX-FAMILY-COMPANION-RUNTIME.md",
+          "github.issue.vexlife.899.comment.6394144708"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vcs.companion-heretic",
+        "kind": "FLOW",
+        "fromRef": "process.vcs.conversation.companion",
+        "toRef": "reference.vcs.conversation.heretic",
+        "labelOrNull": "CALLS_MODEL",
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "repo.vexlife:docs/VEX-FAMILY-COMPANION-RUNTIME.md",
+          "repo.vexlife:src/core/heretic-persistent-runtime-owner.mjs",
+          "github.issue.vexlife.899.comment.6394144708"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vcs.heretic-companion",
+        "kind": "DATA",
+        "fromRef": "reference.vcs.conversation.heretic",
+        "toRef": "process.vcs.conversation.companion",
+        "labelOrNull": "RETURNS_MODEL_OUTPUT_ONLY",
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "repo.vexlife:docs/VEX-FAMILY-COMPANION-RUNTIME.md",
+          "repo.vexlife:src/core/heretic-persistent-runtime-owner.mjs",
+          "github.issue.vexlife.899.comment.6394144708"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vcs.companion-conversation",
+        "kind": "DATA",
+        "fromRef": "process.vcs.conversation.companion",
+        "toRef": "reference.vcs.conversation.semantics",
+        "labelOrNull": "APPENDS_COMPANION_RESPONSE_THROUGH_OWNER",
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "repo.vexlife:docs/VEX-FAMILY-COMPANION-RUNTIME.md",
+          "repo.vexlife:src/core/family-conversation.mjs",
+          "github.issue.vexlife.899.comment.6394144708"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vcs.shared-target-streaming",
+        "kind": "REFERENCE",
+        "fromRef": "process.vcs.transport",
+        "toRef": "process.vcs.target.streaming-extension",
+        "labelOrNull": "TARGET_REUSES_SHARED_CORE_WITHOUT_FORCING_STREAMING_INTO_MAPS_OR_CONVERSATION",
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "github.issue.vexlife.899",
+          "repo.vexlife:docs/VEXLIFE-CONNECTED-SERVICES.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vcs.vexstream-semantics-target",
+        "kind": "REFERENCE",
+        "fromRef": "reference.vcs.vexstream.semantics",
+        "toRef": "process.vcs.target.streaming-extension",
+        "labelOrNull": "SEMANTICS_REMAIN_VEXSTREAM_OWNED",
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "github.issue.vexlife.899",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/README.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vcs.streaming-target-home",
+        "kind": "REFERENCE",
+        "fromRef": "process.vcs.target.streaming-extension",
+        "toRef": "reference.vcs.home.vexstream-target",
+        "labelOrNull": "TARGET_EARNS_HOME_SERVICE_BOUNDARY",
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "github.issue.vexlife.899"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vcs.maps-architecture-extraction",
+        "kind": "REFERENCE",
+        "fromRef": "reference.vcs.maps.semantics",
+        "toRef": "reference.vcs.target.architecture-extraction",
+        "labelOrNull": "ACCEPTED_CONSUMER_EVIDENCE",
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "github.issue.vexlife.899"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vcs.conversation-architecture-extraction",
+        "kind": "REFERENCE",
+        "fromRef": "reference.vcs.conversation.semantics",
+        "toRef": "reference.vcs.target.architecture-extraction",
+        "labelOrNull": "ACCEPTED_CONSUMER_EVIDENCE",
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "github.issue.vexlife.899",
+          "github.issue.vexlife.899.comment.6394144708"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vcs.streaming-architecture-extraction",
+        "kind": "REFERENCE",
+        "fromRef": "process.vcs.target.streaming-extension",
+        "toRef": "reference.vcs.target.architecture-extraction",
+        "labelOrNull": "MUST_BE_ACCEPTED_BEFORE_EXTRACTION",
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "github.issue.vexlife.899"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vcs.architecture-deployment",
+        "kind": "FLOW",
+        "fromRef": "reference.vcs.target.architecture-extraction",
+        "toRef": "container.vcs.target.deployment",
+        "labelOrNull": "ARCHITECTURE_BEFORE_DEPLOYMENT_CHOICES",
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "github.issue.vexlife.899"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vcs.deployment.same-machine",
+        "kind": "REFERENCE",
+        "fromRef": "container.vcs.target.deployment",
+        "toRef": "reference.vcs.deploy.same-machine",
+        "labelOrNull": "MAY_REALIZE_WITHOUT_TRANSFERRING_SEMANTIC_AUTHORITY",
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "github.issue.vexlife.899"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vcs.deployment.owned-machine",
+        "kind": "REFERENCE",
+        "fromRef": "container.vcs.target.deployment",
+        "toRef": "reference.vcs.deploy.owned-machine",
+        "labelOrNull": "MAY_REALIZE_WITHOUT_TRANSFERRING_SEMANTIC_AUTHORITY",
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "github.issue.vexlife.899"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vcs.deployment.vps-cloud",
+        "kind": "REFERENCE",
+        "fromRef": "container.vcs.target.deployment",
+        "toRef": "reference.vcs.deploy.vps-cloud",
+        "labelOrNull": "MAY_REALIZE_WITHOUT_TRANSFERRING_SEMANTIC_AUTHORITY",
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "github.issue.vexlife.899"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vcs.deployment.managed",
+        "kind": "REFERENCE",
+        "fromRef": "container.vcs.target.deployment",
+        "toRef": "reference.vcs.deploy.managed",
+        "labelOrNull": "MAY_REALIZE_WITHOUT_TRANSFERRING_SEMANTIC_AUTHORITY",
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "github.issue.vexlife.899"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vcs.ops-runtime-retained",
+        "kind": "REFERENCE",
+        "fromRef": "reference.vcs.ops.runtime-availability",
+        "toRef": "reference.vcs.ops.retained-state",
+        "labelOrNull": "OFFLINE_DOES_NOT_ERASE",
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "github.issue.vexlife.899",
+          "project.vexlife.connected-services"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vcs.ops-destructive-retained",
+        "kind": "REFERENCE",
+        "fromRef": "reference.vcs.ops.destructive-boundary",
+        "toRef": "reference.vcs.ops.retained-state",
+        "labelOrNull": "EXPLICITLY_INVALIDATES_SELECTED_STATE",
+        "sourceRefs": [
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+          "github.issue.vexlife.899",
+          "project.vexlife.connected-services"
+        ]
+      }
+    ],
+    "sourceRefs": [
+      "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+      "github.issue.vexlife.899",
+      "repo.vexlife:docs/VEXLIFE-CONNECTED-SERVICES.md",
+      "project.vexlife.connected-services",
+      "github.pull.vexlife-android.154",
+      "github.pull.vexstream-music.15",
+      "github.pull.vexwork.162",
+      "github.commit.vexwork.470570726137d0f78a90ff0945850bf29de46a41",
+      "github.pull.vexstream-music.15.comment.6408146238",
+      "github.issue.vexlife.899.comment.6408187503"
+    ]
+  },
+  "projection": {
+    "schemaVersion": "vexboard.board-projection/v1",
+    "projectionRef": "projection.vexlife.connected-services.system-anatomy.current-target",
+    "graphRef": "graph.vexlife.connected-services.system-anatomy.current-target",
+    "layoutIntent": "SYSTEM_MAP",
+    "items": [
+      {
+        "projectionItemRef": "item.vcs.system",
+        "semanticRef": "container.vcs.system",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 2620,
+          "height": 1380
+        },
+        "layer": 0,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vcs.legend",
+        "semanticRef": "annotation.vcs.legend",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 40,
+          "y": 22,
+          "width": 1700,
+          "height": 44
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vcs.system",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vcs.work-overlay",
+        "semanticRef": "annotation.vcs.work-overlay",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 1760,
+          "y": 22,
+          "width": 800,
+          "height": 44
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vcs.system",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vcs.clients",
+        "semanticRef": "container.vcs.clients",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 35,
+          "y": 90,
+          "width": 355,
+          "height": 930
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.vcs.system",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vcs.substrate",
+        "semanticRef": "container.vcs.substrate",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 420,
+          "y": 90,
+          "width": 430,
+          "height": 930
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.vcs.system",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vcs.home",
+        "semanticRef": "container.vcs.home",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 880,
+          "y": 90,
+          "width": 450,
+          "height": 930
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.vcs.system",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vcs.features",
+        "semanticRef": "container.vcs.features",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 1360,
+          "y": 90,
+          "width": 600,
+          "height": 930
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.vcs.system",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vcs.target",
+        "semanticRef": "container.vcs.target",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 1990,
+          "y": 90,
+          "width": 590,
+          "height": 930
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.vcs.system",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vcs.client.maps",
+        "semanticRef": "reference.vcs.client.maps",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 65,
+          "y": 165,
+          "width": 295,
+          "height": 105
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vcs.clients",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vcs.client.conversation",
+        "semanticRef": "reference.vcs.client.conversation",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 65,
+          "y": 330,
+          "width": 295,
+          "height": 125
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vcs.clients",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vcs.client.vexstream",
+        "semanticRef": "reference.vcs.client.vexstream",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 65,
+          "y": 525,
+          "width": 295,
+          "height": 120
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vcs.clients",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vcs.client-law",
+        "semanticRef": "annotation.vcs.client-law",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 65,
+          "y": 740,
+          "width": 295,
+          "height": 95
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vcs.clients",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vcs.device-possession",
+        "semanticRef": "process.vcs.device-possession",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 455,
+          "y": 150,
+          "width": 360,
+          "height": 90
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vcs.substrate",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vcs.private-reachability",
+        "semanticRef": "process.vcs.private-reachability",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 455,
+          "y": 290,
+          "width": 360,
+          "height": 90
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vcs.substrate",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vcs.remote-session",
+        "semanticRef": "process.vcs.remote-session",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 455,
+          "y": 430,
+          "width": 360,
+          "height": 100
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vcs.substrate",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vcs.transport",
+        "semanticRef": "process.vcs.transport",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 455,
+          "y": 585,
+          "width": 360,
+          "height": 130
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vcs.substrate",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vcs.substrate-law",
+        "semanticRef": "annotation.vcs.substrate-law",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 455,
+          "y": 790,
+          "width": 360,
+          "height": 105
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vcs.substrate",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vcs.home-authority",
+        "semanticRef": "reference.vcs.home-authority",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 915,
+          "y": 145,
+          "width": 380,
+          "height": 150
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vcs.home",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vcs.home.maps",
+        "semanticRef": "reference.vcs.home.maps",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 915,
+          "y": 365,
+          "width": 380,
+          "height": 100
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vcs.home",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vcs.home.conversation",
+        "semanticRef": "reference.vcs.home.conversation",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 915,
+          "y": 545,
+          "width": 380,
+          "height": 105
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vcs.home",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vcs.home.vexstream-target",
+        "semanticRef": "reference.vcs.home.vexstream-target",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 915,
+          "y": 740,
+          "width": 380,
+          "height": 125
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vcs.home",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vcs.feature.maps",
+        "semanticRef": "container.vcs.feature.maps",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 1390,
+          "y": 130,
+          "width": 540,
+          "height": 210
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vcs.features",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vcs.maps.semantics",
+        "semanticRef": "reference.vcs.maps.semantics",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1415,
+          "y": 175,
+          "width": 300,
+          "height": 105
+        },
+        "layer": 3,
+        "parentProjectionItemRefOrNull": "item.vcs.feature.maps",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vcs.maps.provider",
+        "semanticRef": "reference.vcs.maps.provider",
+        "shapeKind": "ELLIPSE",
+        "bounds": {
+          "x": 1740,
+          "y": 175,
+          "width": 165,
+          "height": 105
+        },
+        "layer": 3,
+        "parentProjectionItemRefOrNull": "item.vcs.feature.maps",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vcs.feature.conversation",
+        "semanticRef": "container.vcs.feature.conversation",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 1390,
+          "y": 365,
+          "width": 540,
+          "height": 360
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vcs.features",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vcs.conversation.semantics",
+        "semanticRef": "reference.vcs.conversation.semantics",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1415,
+          "y": 415,
+          "width": 300,
+          "height": 105
+        },
+        "layer": 3,
+        "parentProjectionItemRefOrNull": "item.vcs.feature.conversation",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vcs.conversation.companion",
+        "semanticRef": "process.vcs.conversation.companion",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1415,
+          "y": 565,
+          "width": 300,
+          "height": 90
+        },
+        "layer": 3,
+        "parentProjectionItemRefOrNull": "item.vcs.feature.conversation",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vcs.conversation.heretic",
+        "semanticRef": "reference.vcs.conversation.heretic",
+        "shapeKind": "ELLIPSE",
+        "bounds": {
+          "x": 1740,
+          "y": 565,
+          "width": 165,
+          "height": 90
+        },
+        "layer": 3,
+        "parentProjectionItemRefOrNull": "item.vcs.feature.conversation",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vcs.conversation-law",
+        "semanticRef": "annotation.vcs.conversation-law",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 1415,
+          "y": 675,
+          "width": 490,
+          "height": 34
+        },
+        "layer": 3,
+        "parentProjectionItemRefOrNull": "item.vcs.feature.conversation",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vcs.feature.vexstream",
+        "semanticRef": "container.vcs.feature.vexstream",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 1390,
+          "y": 750,
+          "width": 540,
+          "height": 230
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vcs.features",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vcs.vexstream.semantics",
+        "semanticRef": "reference.vcs.vexstream.semantics",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1415,
+          "y": 800,
+          "width": 300,
+          "height": 115
+        },
+        "layer": 3,
+        "parentProjectionItemRefOrNull": "item.vcs.feature.vexstream",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vcs.vexstream.current-transport",
+        "semanticRef": "reference.vcs.vexstream.current-transport",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1740,
+          "y": 800,
+          "width": 165,
+          "height": 115
+        },
+        "layer": 3,
+        "parentProjectionItemRefOrNull": "item.vcs.feature.vexstream",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vcs.target.streaming-extension",
+        "semanticRef": "process.vcs.target.streaming-extension",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 2020,
+          "y": 150,
+          "width": 530,
+          "height": 145
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vcs.target",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vcs.target.architecture-extraction",
+        "semanticRef": "reference.vcs.target.architecture-extraction",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 2020,
+          "y": 345,
+          "width": 530,
+          "height": 110
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vcs.target",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vcs.target.deployment",
+        "semanticRef": "container.vcs.target.deployment",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 2020,
+          "y": 505,
+          "width": 530,
+          "height": 370
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vcs.target",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vcs.deploy.same-machine",
+        "semanticRef": "reference.vcs.deploy.same-machine",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 2045,
+          "y": 555,
+          "width": 230,
+          "height": 80
+        },
+        "layer": 3,
+        "parentProjectionItemRefOrNull": "item.vcs.target.deployment",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vcs.deploy.owned-machine",
+        "semanticRef": "reference.vcs.deploy.owned-machine",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 2295,
+          "y": 555,
+          "width": 230,
+          "height": 80
+        },
+        "layer": 3,
+        "parentProjectionItemRefOrNull": "item.vcs.target.deployment",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vcs.deploy.vps-cloud",
+        "semanticRef": "reference.vcs.deploy.vps-cloud",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 2045,
+          "y": 675,
+          "width": 230,
+          "height": 80
+        },
+        "layer": 3,
+        "parentProjectionItemRefOrNull": "item.vcs.target.deployment",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vcs.deploy.managed",
+        "semanticRef": "reference.vcs.deploy.managed",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 2295,
+          "y": 675,
+          "width": 230,
+          "height": 80
+        },
+        "layer": 3,
+        "parentProjectionItemRefOrNull": "item.vcs.target.deployment",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vcs.target-law",
+        "semanticRef": "annotation.vcs.target-law",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 2045,
+          "y": 795,
+          "width": 480,
+          "height": 58
+        },
+        "layer": 3,
+        "parentProjectionItemRefOrNull": "item.vcs.target.deployment",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vcs.operations",
+        "semanticRef": "container.vcs.operations",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 35,
+          "y": 1040,
+          "width": 2545,
+          "height": 300
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.vcs.system",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vcs.ops.runtime-availability",
+        "semanticRef": "reference.vcs.ops.runtime-availability",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 65,
+          "y": 1090,
+          "width": 540,
+          "height": 115
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vcs.operations",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vcs.ops.retained-state",
+        "semanticRef": "reference.vcs.ops.retained-state",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 635,
+          "y": 1090,
+          "width": 585,
+          "height": 115
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vcs.operations",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vcs.ops.destructive-boundary",
+        "semanticRef": "reference.vcs.ops.destructive-boundary",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1250,
+          "y": 1090,
+          "width": 650,
+          "height": 115
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vcs.operations",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vcs.ops-law",
+        "semanticRef": "annotation.vcs.ops-law",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 1930,
+          "y": 1085,
+          "width": 600,
+          "height": 130
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vcs.operations",
+        "visible": true,
+        "locked": true
+      }
+    ],
+    "sourceRefs": [
+      "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+      "projects/vexboard/examples/vexlife-connected-services-system-anatomy.board.json"
+    ]
+  }
+}

@@ -9,11 +9,13 @@
   "repositoryRefs": [
     "repo.vexwork",
     "repo.vexlife",
-    "repo.vexlife-android"
+    "repo.vexlife-android",
+    "repo.vexstream-music"
   ],
   "sourceRefs": [
     "projects/vexlife-connected-services/README.md",
     "docs/lineage/VEXLIFE-CONNECTED-SERVICES.md",
+    "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
     "github.issue.vexlife.899",
     "docs/process/FORM-PROJECT.md"
   ],
