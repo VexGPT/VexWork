@@ -211,9 +211,9 @@ For state-conditioned text, State/data bindings select a content Origin or suppl
 not create a separate "dynamic text" ontology.
 
 ~~~text
-Vex element/text Origin
+VexTextOrigin
   semanticRef = stable identity
-  contentRefs = stable reusable message Origins
+  contentOriginRefs = stable reusable content Origins
   valueBindingRef = optional current selection / parameter binding
 
 !=
@@ -222,9 +222,9 @@ DynamicTextElement as portable product meaning
 ~~~
 
 The earlier Android `DynamicTextElement` candidate was useful experimental pressure but is **not** a
-long-term semantic type. The Android candidate is being revised around one text identity whose value may
-come from a mapped Android resource or from current runtime binding. Preserve the lesson; do not preserve
-the experimental noun merely because source was already written.
+long-term semantic type. Android PR #182 is now re-formed around one `TextElement` identity whose value
+may come from a mapped Android resource or from current runtime binding; source formation is current and
+repository-owned execution proof remains pending. Preserve the lesson, not the retired experimental noun.
 
 The same provenance rule must be visible in both directions:
 
