@@ -79,29 +79,27 @@
       "workRef": "work.vextreme.vexsite.localization.generated-runtime-currentness",
       "parentWorkRefOrNull": "work.vextreme.vexsite.localization.outcome",
       "label": "Converge VexSite generated/runtime currentness",
-      "purpose": "Finish the accumulated deterministic generated/runtime consequences through existing Vextreme PR #379. Re-ground that owner against live Vextreme main before forming a fresh proof/materialization attempt; do not replay historical A007/A008 carriers formed against older accepted-main states.",
+      "purpose": "Project the terminal Vextreme generated/runtime convergence completed through PR #379: 265 deterministic generated paths were proven, exact returned bytes were published without regeneration, ExactHead SourceOwner and Independent Assurance cleared, merge tree matched the reviewed candidate exactly, and post-merge verification passed.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "COMPLETED",
       "workDisposition": "ACTIVE",
-      "priorityClass": "IMMEDIATE",
+      "priorityClass": "NORMAL",
       "dependencyRefs": [],
       "repositoryRefs": [
         "repo.vextreme"
       ],
       "sourceRefs": [
         "github.pull.vextreme.379",
+        "git.commit.vextreme.ac2e181bfd547f32f83d1ab3e7d6174900e964fa",
         "github.issue.vextreme.273",
-        "github.issue-comment.vextreme.273.6381469215",
-        "github.issue-comment.vextreme.379.6396167070",
-        "github.pull.vextreme.417",
-        "git.commit.vextreme.5b1d26242ddfa2758852b9745d16eeb5d54cc33b"
+        "github.issue-comment.vextreme.273.6381469215"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-24T05:28:32.000Z",
-      "updatedAt": "2026-10-26T07:30:02.000Z"
+      "updatedAt": "2026-10-26T10:23:15.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -172,12 +170,12 @@
       "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vextreme.vexsite.localization.next-domain.covenant-ja-zh",
       "parentWorkRefOrNull": "work.vextreme.vexsite.localization.outcome",
-      "label": "Evaluate Vextreme Covenant JA / ZH as the next localization domain",
-      "purpose": "Capture, without Vextreme admission, the strongest current repository-declared next-domain candidate after generated/runtime convergence: the institutional registry plans JA/ZH for vextreme-covenant, current institution source has 420 Covenant EN identities and zero Covenant JA/ZH identities, while About and Support already carry EN/JA/ZH. Re-ground Vextreme authority and source coverage before authoring.",
-      "workClass": "POTENTIAL",
-      "state": "CAPTURED",
+      "label": "Localize Vextreme Covenant into JA / ZH",
+      "purpose": "Project the admitted Vextreme Covenant JA/ZH successor on PR #423. Canonical source authoring is complete at one immutable 420-identity / 840-target-cell source freeze, while registry promotion, generated/runtime consequences and lived evidence remain held pending separate exact-source TRANSLATION_CLEAR_JA and TRANSLATION_CLEAR_ZH dispositions.",
+      "workClass": "TASK",
+      "state": "VERIFYING",
       "workDisposition": "ACTIVE",
-      "priorityClass": "HIGH",
+      "priorityClass": "IMMEDIATE",
       "dependencyRefs": [
         "work.vextreme.vexsite.localization.generated-runtime-currentness"
       ],
@@ -185,17 +183,21 @@
         "repo.vextreme"
       ],
       "sourceRefs": [
+        "github.pull.vextreme.423",
+        "github.issue-comment.vextreme.423.6414052729",
+        "github.pull.vextreme.312",
+        "github.pull.vextreme.148",
         "repo.vextreme:config/institutional-surfaces.json",
         "repo.vextreme:data/strings/source/institution.json",
         "repo.vextreme:docs/architecture/06-i18n.md",
-        "git.commit.vextreme.5b1d26242ddfa2758852b9745d16eeb5d54cc33b"
+        "git.commit.vextreme.ac2e181bfd547f32f83d1ab3e7d6174900e964fa"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-26T07:30:02.000Z",
-      "updatedAt": "2026-10-26T07:30:02.000Z"
+      "updatedAt": "2026-10-26T10:32:31.000Z"
     }
   ],
   "transitions": [
@@ -228,6 +230,62 @@
         "github.pull.vextreme.401"
       ],
       "createdAt": "2026-10-26T07:30:01.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.vexsite.localization.generated-runtime-currentness.verifying.20261026",
+      "workRef": "work.vextreme.vexsite.localization.generated-runtime-currentness",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Currentize the completed A011-A015 deterministic generation/runtime proof and A017 exact-byte publication before projecting terminal merge truth.",
+      "actorRef": "actor.chatgpt.vexsite-localization",
+      "sourceRefs": [
+        "github.pull.vextreme.379"
+      ],
+      "createdAt": "2026-10-26T10:22:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.vexsite.localization.generated-runtime-currentness.completed.20261026",
+      "workRef": "work.vextreme.vexsite.localization.generated-runtime-currentness",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "PR #379 merged at ac2e181b with merge tree exactly equal to the reviewed 265-path candidate and post-merge verification passed.",
+      "actorRef": "actor.chatgpt.vexsite-localization",
+      "sourceRefs": [
+        "github.pull.vextreme.379",
+        "git.commit.vextreme.ac2e181bfd547f32f83d1ab3e7d6174900e964fa"
+      ],
+      "createdAt": "2026-10-26T10:23:15.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.vexsite.localization.covenant-ja-zh.running.20261026",
+      "workRef": "work.vextreme.vexsite.localization.next-domain.covenant-ja-zh",
+      "priorState": "CAPTURED",
+      "nextState": "RUNNING",
+      "reason": "Fresh Vextreme grounding after generated/runtime completion admitted the Covenant JA/ZH successor as source-only PR #423 using the accepted institutional translation-review boundary.",
+      "actorRef": "actor.chatgpt.vexsite-localization",
+      "sourceRefs": [
+        "github.pull.vextreme.423",
+        "github.pull.vextreme.148",
+        "github.pull.vextreme.312"
+      ],
+      "createdAt": "2026-10-26T10:32:31.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.vexsite.localization.covenant-ja-zh.verifying.20261026",
+      "workRef": "work.vextreme.vexsite.localization.next-domain.covenant-ja-zh",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "PR #423 source authoring reached an immutable 420-identity / 840-target-cell JA/ZH source freeze with all 431 Covenant page bindings resolvable; separate exact-source JA and ZH semantic review remains pending before publication.",
+      "actorRef": "actor.chatgpt.vexsite-localization",
+      "sourceRefs": [
+        "github.pull.vextreme.423",
+        "github.issue-comment.vextreme.423.6414052729"
+      ],
+      "createdAt": "2026-10-26T10:40:00.000Z"
     }
   ],
   "sourceRefs": [
@@ -240,7 +298,10 @@
     "github.pull.vextreme.401",
     "repo.vextreme:config/institutional-surfaces.json",
     "repo.vextreme:data/strings/source/institution.json",
-    "repo.vextreme:docs/architecture/06-i18n.md"
+    "repo.vextreme:docs/architecture/06-i18n.md",
+    "github.pull.vextreme.423",
+    "github.issue-comment.vextreme.423.6414052729",
+    "git.commit.vextreme.ac2e181bfd547f32f83d1ab3e7d6174900e964fa"
   ],
   "formedAt": "2026-10-23T07:48:00.000Z"
 }
