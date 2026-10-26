@@ -177,8 +177,9 @@ target resource
 
 These may correlate, but they are not the same owner.
 
-A package move, file split, repository migration or vendor-batch boundary must not silently remint the
-semantic Origin.
+A package move, file split or vendor-batch boundary must not silently remint the semantic Origin.
+Repository fragmentation is not a current design requirement: the Origin owns the reusable design meaning,
+not the repository boundary.
 
 ~~~text
 SEMANTIC_IDENTITY != FILE_PATH
@@ -271,9 +272,11 @@ The following remain deliberate design questions. Do not patch around them with 
 6. **Mutation authority** — a downstream realization may propose a change, but it does not silently
    become canonical. The rightful Origin owner accepts the change, then propagation updates descendants.
 
-7. **Migration / rename lineage** — readable names may improve over time. A rename needs explicit lineage
-   so old target mappings/evidence remain resolvable; aliases/migrations are compatibility evidence, not a
-   second permanent identity.
+7. **Rename propagation** — readable Origin names may improve over time. VexBoard should eventually traverse
+   the existing semantic/process/source/realization graph to show every downstream consequence, support the
+   rename manually first, and only then earn autonomous propagation. Old mappings/evidence remain resolvable
+   through explicit lineage; aliases/migrations are compatibility evidence, not a second permanent identity.
+   This is captured as `work.vexboard.tech-debt.origin-rename-propagation` and is low-priority, parked work.
 
 These questions should be solved through real consumer pressure and existing rightful owners before new
 framework layers are admitted.
