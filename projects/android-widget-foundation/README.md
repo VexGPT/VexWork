@@ -170,7 +170,7 @@ Observed defects / remaining completion work:
    artwork fetcher; the owning VexStream metadata/cache path must make current artwork available when
    the source actually has it.
 
-The parent widget Work remains `RUNNING`; machine/native proof did not imply lived acceptance.
+That checkpoint correctly left the parent widget Work `RUNNING`; later PR #185 source proof, exact-tree integration and Victor's lived acceptance complete that held predicate.
 
 New bounded child Work:
 
@@ -198,7 +198,7 @@ current main / current Work truth
 -> only then complete the widget Work
 ```
 
-## Current correction — PR #179
+## Historical correction — PR #179
 
 The two lived widget defects are now actively implemented together on Android PR #179:
 
@@ -283,13 +283,90 @@ status explicit enough to retry/reconcile when provider truth is newer, and rout
 back through those existing Controls. Do **not** extract a generic Widget Relay framework until a
 second real remote-surface consumer proves the same reusable contract.
 
-Work truth after this lived feedback:
+Historical work truth at that lived checkpoint:
 
 ```text
 work.android-widget-foundation.vexstream-playback-widget.state-refresh
   -> FAILED_RECOVERABLE
   -> label: VexStream widget currentness convergence
 ```
+
+That recoverable failure is superseded by the terminal PR #185 completion checkpoint below.
+
+
+## Completion checkpoint — PR #185
+
+The lived widget defects are terminally resolved and the Project-owned outcome is complete.
+
+```text
+Android PR #185 = MERGED
+candidate head = cd0e760ef6141adbd6b72cbbb01b902bd0800bb3
+merge = a7301566c9131ff71d4b8ede128b3607d7fefd26
+candidate/merge tree = 5c1e6c31288d24fe6e7196380ab47236f016011e
+SourceOwner = composed PASS
+fresh exact-head Assurance = CLEAR
+Victor lived launcher acceptance = PASS
+```
+
+Diagnostic A002 proved that Media3/provider truth and durable Glance state were already advancing in
+milliseconds while an active Glance session could continue rendering an older projection. PR #185
+generalized the earned repair:
+
+```text
+product/provider truth
+        |
+        v
+feature-owned typed VexWidgetSurfaceState
+        |
+        | structural equality + durable Preferences
+        v
+currentState() inside active Glance composition
+        |
+        v
+suspend SurfaceState -> VexWidgetProjection
+        |
+        v
+Glance / RemoteViews host
+```
+
+The reusable foundation owns typed surface-state persistence, exact equality/duplicate suppression,
+`publish` / `publishAll`, `transformAll`, active-session observation, and suspendable projection
+recomputation. It uses no revision counter, Boolean invalidation toggle or hash surrogate.
+
+VexStream remains the patient zero:
+- one service-owned Media3 current-playback observer;
+- widget callbacks issue existing Playback/Queue Controls only;
+- title + artist share one line;
+- transport touch target = 56dp, glyph = 28sp, gap = 8dp, artwork = 64dp;
+- widget content entry uses `CLEAR_TOP | SINGLE_TOP` so repeated entry reuses
+  `MainActivity.onNewIntent()` rather than stacking Activity instances;
+- artwork is consumed only when the rightful upstream VexStream owner makes it available.
+
+Terminal Work truth:
+
+```text
+work.android-widget-foundation.semantic-widget-surface = COMPLETED
+work.android-widget-foundation.vexstream-playback-widget.state-refresh = COMPLETED
+work.android-widget-foundation.vexstream-playback-widget.layout-usability = COMPLETED
+work.android-widget-foundation.vexstream-playback-widget = COMPLETED
+work.android-widget-foundation.outcome = COMPLETED
+```
+
+Stable proof/evidence:
+
+```text
+source proof =
+f5d2a312d8eaf43e1bbe918cfc7a3df7b65b2c0b0752a062f8cc5b4df97bb658
+
+diagnostic A002 =
+c1c46c090f25c3e629093bd82ca26e0c81662d7fe7f3b0a5d3510068596f5045
+
+Assurance review = 5647509504
+post-merge checkpoint comment = 6408472180
+```
+
+The separate VexStream artwork-acquisition/current-artwork trajectory is not silently absorbed here;
+this widget is complete as a truthful consumer of artwork when that rightful upstream owner supplies it.
 
 ## What this Project does not own
 
