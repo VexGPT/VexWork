@@ -14,6 +14,7 @@ import {
   resolveScreenDesignConstraintBox,
   screenDesignViewportProfile,
   screenDesignComponentAssignment,
+  screenDesignContentOrigin,
   screenDesignSemanticElement,
 } from '../src/core/vexboard-screen-design.mjs';
 
@@ -234,12 +235,26 @@ test('screen design can mint proposed semantic elements before target registrati
         },
       },
     },
+    contentOrigins: {
+      authorityState: 'VEXBOARD_DESIGN_DRAFT',
+      canonicalOwnerRefOrNull: null,
+      defaultLocale: 'en-US',
+      origins: [{
+        originRef: 'origin.example.message.title',
+        defaultText: 'Example',
+        parameterRefs: [],
+        targetRealizationRefs: ['android.example.string.title'],
+        sourceRefs: ['repo.example:source'],
+      }],
+    },
     semanticElements: [{
       semanticRef: 'element.example.title',
       parentSemanticRef: 'element.example.surface',
       kind: 'TEXT',
+      originForm: 'VexTextOrigin',
       identityState: 'VEXBOARD_PROPOSED',
-      contentMode: 'STATIC_LOCALIZED',
+      contentOriginRefs: ['origin.example.message.title'],
+      valueBindingRefOrNull: null,
       label: 'Example',
       referenceLineCount: 1,
       sourceRefs: ['repo.example:source'],
@@ -260,10 +275,19 @@ test('screen design can mint proposed semantic elements before target registrati
     semanticRef: 'element.example.title',
     parentSemanticRef: 'element.example.surface',
     kind: 'TEXT',
+    originForm: 'VexTextOrigin',
     identityState: 'VEXBOARD_PROPOSED',
-    contentMode: 'STATIC_LOCALIZED',
+    contentOriginRefs: ['origin.example.message.title'],
+    valueBindingRefOrNull: null,
     label: 'Example',
     referenceLineCount: 1,
+    sourceRefs: ['repo.example:source'],
+  });
+  assert.deepEqual(screenDesignContentOrigin(design, 'origin.example.message.title'), {
+    originRef: 'origin.example.message.title',
+    defaultText: 'Example',
+    parameterRefs: [],
+    targetRealizationRefs: ['android.example.string.title'],
     sourceRefs: ['repo.example:source'],
   });
   assert.equal(
