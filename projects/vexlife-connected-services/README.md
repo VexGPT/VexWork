@@ -59,7 +59,7 @@ Phase 5  restart + no duplicates                                    = COMPLETED
   L10 real Android process restart                                  = PASS
   L11 no duplicate append/model replay                              = PASS
   temporary private Serve cleanup                                   = CLOSED
-Phase 6  VCS-04 terminal currentness                                = VERIFYING
+Phase 6  VCS-04 terminal currentness                                = COMPLETED
 ```
 
 Phase 1 proved the private transport seam rather than merely removing an error:
@@ -110,7 +110,7 @@ Phase-3 cleanup                          CLOSED
 
 ## Current edge
 
-**Phase 6 — VCS-04 terminal convergence is VERIFYING.**
+**VCS-04 is terminally COMPLETED; VCS-05 VexStream adoption / streaming stress is READY.**
 
 A037 closed the last lived predicate. The VCS-04 matrix is now L1-L11 PASS:
 
@@ -119,7 +119,7 @@ Phase 4 parent                                                     = COMPLETED
 work.vexlife.connected-services.vcs04.phase4.send-failure-separation = COMPLETED
 work.vexlife.connected-services.vcs04.phase4.companion-response      = COMPLETED
 work.vexlife.connected-services.vcs04.phase5-restart-no-duplicates   = COMPLETED
-work.vexlife.connected-services.vcs04.phase6-terminal-currentness    = VERIFYING
+work.vexlife.connected-services.vcs04.phase6-terminal-currentness    = COMPLETED
 ```
 
 The foreground is no longer another Conversation behavior loop:
@@ -178,12 +178,21 @@ github.pull.vexlife-android.154.comment.6406485875
 github.issue.vexlife.899.comment.6406486260
 github.commit.vexlife-android.9104d232086afd888700c3317ab79c2a8b87239b
 ```
-Held until VexWork terminal verification earns them:
+## Terminal VCS-04 checkpoint
 
 ```text
-VCS-04 COMPLETED
-VCS-05 READY
+L1-L11 = PASS
+Phase 4 = COMPLETED
+Phase 5 = COMPLETED
+Phase 6 = COMPLETED
+VCS-04 = COMPLETED
+PR154 = TERMINAL_ACCEPTED_CURRENT @ 9104d232086afd888700c3317ab79c2a8b87239b
+VCS-05 = READY
 ```
+
+A003 regenerated the current Connected Services projections after the two stale Project assertions were repaired, and the full deterministic VexWork review passed. The final lifecycle transition is canonical source truth and is regenerated/verified again before PR integration.
+
+No Android/Home/Family/Heretic replay is owed. The foreground Connected Services edge is now `work.vexlife.connected-services.vcs05-stream-stress`.
 
 ## Read next
 
