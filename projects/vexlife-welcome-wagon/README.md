@@ -795,7 +795,7 @@ This gives each risk one rollback coordinate: **identity migration**, **page mea
 
 ## Current execution edge
 
-The shared-family source design is settled and accepted, but the **VexLife public deployment is not yet current**.
+The shared-family source design is settled and accepted, and the **VexLife public deployment is now current and lived-accepted**.
 
 The canonical family-header contract remains:
 
@@ -864,7 +864,7 @@ Victor later supplied a live VexLife screenshot showing:
 
 That structure is the **pre-#929 header composition**. It conflicts with accepted current VexLife source, where `brand-lockup` is absent and the current VexLife identity is selected inside the stable middle family slot.
 
-Therefore:
+At that checkpoint:
 
 ```text
 ACCEPTED_VEXLIFE_SOURCE_CURRENT=true
@@ -875,6 +875,8 @@ SOURCE_ROLLBACK_REQUIRED=false
 DESIGN_REOPEN_REQUIRED=false
 PUBLICATION_RECOVERY_REQUIRED=true
 ```
+
+That stale-public state was later resolved without reopening accepted source.
 
 The earlier terminal writeback overclaimed the public state by carrying candidate-lived acceptance across the merge without independently proving that the generated VexLife Pages artifact had actually been republished. Preserve the accepted source and correct only the publication boundary.
 
@@ -919,7 +921,7 @@ CHUNK P1 — CORRECT VEXWORK PUBLIC-STATE TRUTH
   COMPLETE
   -> PR #164 merged the source-currentness correction
   -> accepted #929/#933 source preserved
-  -> public VexLife remains explicitly stale until deployment recovery completes
+  -> public VexLife was explicitly held stale until deployment recovery completed
 
 CHUNK P2 — ESTABLISH PUBLICATION SUBSTRATE
   COMPLETE
@@ -953,7 +955,7 @@ CHUNK P3 — VEX RELAY PUBLICATION
   -> no custom GitHub Actions build/deploy dependency
 
 CHUNK P4 — PAGES SOURCE SWITCH + LIVE PUBLIC VERIFICATION
-  CURRENT / DEPLOYMENT GREEN / LIVED RENDER PENDING
+  COMPLETE
   -> Victor executed the one-time Pages source switch successfully
      BEFORE=workflow|main|/
      AFTER=legacy|vexlife-pages|/
@@ -972,11 +974,16 @@ CHUNK P4 — PAGES SOURCE SWITCH + LIVE PUBLIC VERIFICATION
      overall SUCCESS
   -> custom .github/workflows/pages.yml was not used for the build/proof/publication transaction
   -> accepted VexLife main remains 31c9198101f4c8a0170cb76b57547ae1d737b05f
-  -> verify live root renders stable family rail
-  -> verify no standalone VexLife brand-lockup
-  -> verify VexLife remains selected in the middle family slot
-  -> record lived public deployment current only after human-visible live readback
-  -> then close the public optical acceptance edge
+  -> Victor reloaded the live public VexLife experience after the successful deployment
+  -> lived verdict: "nice looks great"
+  -> live stable family rail accepted
+  -> standalone pre-#929 VexLife brand-lockup no longer observed
+  -> VexLife active-context presentation accepted in the stable middle family slot
+  -> VEXLIFE_PUBLIC_DEPLOYMENT_CURRENT=true
+  -> PUBLIC_LIVED_ACCEPTANCE=true
+  -> PUBLIC_LIVED_ACCEPTANCE_PENDING=false
+  -> PUBLICATION_RECOVERY_REQUIRED=false
+  -> public optical/currentness correction closed
 ```
 
 A fresh conversation must resume from the first incomplete publication chunk rather than reopening #929/#933 or redefining the family-header contract.
@@ -1008,9 +1015,10 @@ post-switch branch trigger 00a843fe… (same tree) ✅
         ↓
 GitHub built-in Pages deployment run 40267497453 SUCCESS ✅
         ↓
-live public verification
+live public verification ✅
+  Victor: "nice looks great"
         ↓
-public cross-context family acceptance
+public cross-context family acceptance ✅
         ↓
 parallel existing generated/runtime owner
   #379 remains separate
@@ -1023,7 +1031,7 @@ remaining deliberately held product/design choices
 final whole-project lived acceptance
 ~~~
 
-The family-header **design/source** remains settled. The publication artifact is proven, the branch-source switch is complete, and GitHub's built-in Pages deployment is green. The only unfinished edge is human-visible live VexLife verification.
+The family-header **design/source/public deployment** is now settled for this optical/currentness correction. Victor's live verdict — **"nice looks great"** — closes the human-visible VexLife verification edge. Do not reopen #929/#933, the publication recovery, or this family-header optical slice unless accepted source or the live public experience materially changes.
 ## Deliberately held
 
 The original formation alone did **not** decide or authorize the items below. Victor's later explicit “please move forward” authorizes bounded implementation along this saved completion path, but it does not collapse the held product/design choices or provider/repository boundaries:
