@@ -9358,11 +9358,11 @@
           "workRefs": [
             "work.vexlife.welcome-wagon.about-vextreme-slug-migration",
             "work.vexlife.welcome-wagon.shared-header-capability-map",
-            "work.vexlife.welcome-wagon.slug-rename-tooling",
             "work.vexlife.welcome-wagon.support-shell-context-currentness",
-            "work.vexlife.welcome-wagon.vextreme-home-role",
             "work.vexlife.welcome-wagon.visual-rollout-rollback",
-            "work.vexlife.welcome-wagon.what-is-this"
+            "work.vexlife.welcome-wagon.what-is-this",
+            "work.vexlife.welcome-wagon.slug-rename-tooling",
+            "work.vexlife.welcome-wagon.vextreme-home-role"
           ]
         },
         {
