@@ -9,7 +9,7 @@
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
       "createdAt": "2026-10-25T01:23:08.000Z",
-      "updatedAt": "2026-10-25T11:39:33.055Z",
+      "updatedAt": "2026-10-26T09:21:18.470Z",
       "workRef": "work.vexlife.interface-refinement.outcome",
       "parentWorkRefOrNull": null,
       "label": "VexLife Interface Refinement",
@@ -285,13 +285,13 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-10-25T05:24:00.000Z",
-      "updatedAt": "2026-10-25T11:39:33.055Z",
+      "updatedAt": "2026-10-26T09:21:18.470Z",
       "workRef": "work.vexlife.interface-refinement.v3.resource-context-pressure-observation",
       "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
-      "label": "V3 — resource and context pressure observation",
-      "purpose": "Give VexLife one system-owned read-only pressure projection over context usage/headroom, Memory inclusion/bounding, output reserve, lease age/currentness and host resource/runtime health. Produce NORMAL/WATCH/CHECKPOINT_RECOMMENDED/ROLLOVER_REQUIRED/RESOURCE_ATTENTION meaning from source-managed policy with hysteresis. The model may receive a small truthful pressure packet; observation grants no cleanup, Memory-promotion or process-kill authority.",
+      "label": "Completed — V3 resource and context pressure observation",
+      "purpose": "Preserve the accepted and lived-proven read-only resource/context pressure projection. A005 proved real Home/Heretic composition, current prompt/lease/runtime binding, a self-validating NORMAL pressure projection, durable Conversation continuity, and no pressure-owned effects.",
       "workClass": "TASK",
-      "state": "READY",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexlife.interface-refinement.v1-5.long-context-memory-pressure"
@@ -307,10 +307,15 @@
         "projects/vexlife-interface-refinement/README.md",
         "projects/vex-security-assurance/README.md",
         "github.commit.vexlife.1a9a131e54ff6b735d64812e213e26315770bc96",
-        "github.pull.vexlife.932.comment.6397203775"
+        "github.pull.vexlife.932.comment.6397203775",
+        "repo.vexlife:src/core/resource-context-pressure.mjs",
+        "github.pull.vexlife.936",
+        "github.commit.vexlife.9f2e97d3ef14599eac4e659181392c1e706dc758",
+        "github.pull.vexlife.936.comment.6412567207",
+        "artifact.vexlife.interface-refinement.v3.lived-pressure.a005.return.sha256.1812d529d99ad89b368e84939835f355065adcb6d96d6c7bda5d975edb6ff6f3"
       ],
-      "authorityDisposition": "AUTHORIZED_BOUNDED",
-      "effectDisposition": "EFFECTS_BOUND"
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -318,14 +323,14 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-10-25T05:24:00.000Z",
-      "updatedAt": "2026-10-25T05:24:00.000Z",
+      "updatedAt": "2026-10-26T09:21:18.470Z",
       "workRef": "work.vexlife.interface-refinement.v4.continuity-rollover",
       "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
-      "label": "V4 — self-maintaining continuity rollover",
+      "label": "Current — V4 self-maintaining continuity rollover",
       "purpose": "Turn context pressure into graceful continuity rather than a sudden stop: form a compact working checkpoint from current intent/open loops/source refs and exact owner truth, optionally route already-accepted/consented semantic Memory through its rightful Score/Daily Memory owners, then start a fresh prompt/context lease from the newest checkpoint plus relevant Memory. Checkpoints supersede instead of recursively stacking summaries. Pressure-triggered checkpointing is not automatic semantic Memory promotion.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
-      "priorityClass": "HIGH",
+      "state": "READY",
+      "priorityClass": "IMMEDIATE",
       "dependencyRefs": [
         "work.vexlife.interface-refinement.v2.streaming",
         "work.vexlife.interface-refinement.v3.resource-context-pressure-observation"
@@ -339,7 +344,10 @@
         "repo.vexlife:src/core/daily-memory-dream.mjs",
         "repo.vexlife:src/core/living-journal-memory-projection.mjs",
         "repo.vexlife:src/core/browser-prompt-context-runtime.mjs",
-        "projects/vexlife-interface-refinement/README.md"
+        "projects/vexlife-interface-refinement/README.md",
+        "github.commit.vexlife.9f2e97d3ef14599eac4e659181392c1e706dc758",
+        "github.pull.vexlife.936.comment.6412567207",
+        "artifact.vexlife.interface-refinement.v3.lived-pressure.a005.return.sha256.1812d529d99ad89b368e84939835f355065adcb6d96d6c7bda5d975edb6ff6f3"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
@@ -350,13 +358,13 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-10-25T05:24:00.000Z",
-      "updatedAt": "2026-10-25T05:24:00.000Z",
+      "updatedAt": "2026-10-26T09:21:18.470Z",
       "workRef": "work.vexlife.interface-refinement.v5.resource-stewardship",
       "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
-      "label": "V5 — bounded host resource stewardship",
+      "label": "Parallel ready — V5 bounded host resource stewardship",
       "purpose": "Let the system detect and recover exact stale Vex-owned processes/resources without becoming a general process killer. Automatic cleanup requires source-backed ownership identity plus stale/abandoned state and no active lease. PID or high CPU/RAM alone is never authority. Unknown/unowned processes, ambiguous ownership, destructive cleanup or user workload interference must become an explicit human proposal/approval boundary.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "READY",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexlife.interface-refinement.v3.resource-context-pressure-observation"
@@ -369,7 +377,10 @@
         "repo.vexlife:scripts/macos-lifecycle.mjs",
         "repo.vexlife:src/core/context-lease.mjs",
         "projects/vex-security-assurance/README.md",
-        "projects/vexlife-interface-refinement/README.md"
+        "projects/vexlife-interface-refinement/README.md",
+        "github.commit.vexlife.9f2e97d3ef14599eac4e659181392c1e706dc758",
+        "github.pull.vexlife.936.comment.6412567207",
+        "artifact.vexlife.interface-refinement.v3.lived-pressure.a005.return.sha256.1812d529d99ad89b368e84939835f355065adcb6d96d6c7bda5d975edb6ff6f3"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
@@ -467,7 +478,11 @@
     "github.pull.vexlife.932",
     "github.commit.vexlife.1a9a131e54ff6b735d64812e213e26315770bc96",
     "github.pull.vexlife.932.comment.6397203775",
-    "artifact.vexlife.interface-refinement.v2.a005.return.sha256.05b3536ff2273242869ac8344387c7f940aa30771439e22b1823cd8479811fff"
+    "artifact.vexlife.interface-refinement.v2.a005.return.sha256.05b3536ff2273242869ac8344387c7f940aa30771439e22b1823cd8479811fff",
+    "github.pull.vexlife.936",
+    "github.commit.vexlife.9f2e97d3ef14599eac4e659181392c1e706dc758",
+    "github.pull.vexlife.936.comment.6412567207",
+    "artifact.vexlife.interface-refinement.v3.lived-pressure.a005.return.sha256.1812d529d99ad89b368e84939835f355065adcb6d96d6c7bda5d975edb6ff6f3"
   ],
   "formedAt": "2026-10-25T01:23:08.000Z"
 }
