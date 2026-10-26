@@ -4237,11 +4237,11 @@
       "workRef": "work.vexboard.vexstream-origin-roundtrip-review",
       "parentWorkRefOrNull": "work.vexboard.vexstream-screenshot-pilot",
       "label": "Independent review — VexStream Origin round-trip architecture",
-      "purpose": "Give a fresh independent reviewer a bounded, read-only lane to pressure-test the VexStream living-Origin round trip without becoming a second source owner. Review the Origin naming/lineage law, content-Origin versus value-binding separation, Android TextElement realization, deterministic Android registry projection, construction-admission boundary, evidence/currentness semantics, and whether any target-specific convenience is accidentally hardening into portable ontology. Feedback should identify concrete semantic gaps, duplicated truth, target leakage, unjustified abstractions, or proof holes; it is advisory evidence and does not itself grant source mutation, approval, merge, or Origin-authority acceptance.",
+      "purpose": "Preserve a later independent review edge for the VexStream living-Origin round trip once the implementation/proof foundation is mature enough to review meaningfully. When activated, pressure-test Origin naming/lineage, content-Origin versus value-binding separation, target realization leakage, construction-admission boundaries, evidence/currentness semantics, duplicated truth and unjustified abstractions. This is deliberately parked while #182/#183 target proof and Origin round-trip construction are still forming; it is advisory evidence and grants no source mutation, approval, merge or Origin-authority acceptance.",
       "workClass": "TASK",
-      "state": "READY",
-      "workDisposition": "ACTIVE",
-      "priorityClass": "NORMAL",
+      "state": "CAPTURED",
+      "workDisposition": "PARKED",
+      "priorityClass": "LOW",
       "dependencyRefs": [],
       "repositoryRefs": [
         "repo.vexwork",
@@ -4267,7 +4267,7 @@
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-26T03:10:45.000Z",
-      "updatedAt": "2026-10-26T03:10:45.000Z"
+      "updatedAt": "2026-10-26T03:35:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
