@@ -223,8 +223,12 @@ DynamicTextElement as portable product meaning
 
 The earlier Android `DynamicTextElement` candidate was useful experimental pressure but is **not** a
 long-term semantic type. Android PR #182 is now re-formed around one `TextElement` identity whose value
-may come from a mapped Android resource or from current runtime binding; source formation is current and
-repository-owned execution proof remains pending. Preserve the lesson, not the retired experimental noun.
+may come from a mapped Android resource or from current runtime binding. Exact-head host proof A006 passed
+the focused Elements/App/source-alignment suite and full `vexVerifyLocal`; its only failure was a static
+guard false-positive caused by the foundation sentence that explicitly rejects `DynamicTextElement`.
+Exact connected-provider recovery clears that predicate on the same head, so the capability candidate is
+now `CANDIDATE_PROVEN_PENDING_ACCEPTANCE`, not admitted/available. Preserve the lesson, not the retired
+experimental noun.
 
 The same provenance rule must be visible in both directions:
 
