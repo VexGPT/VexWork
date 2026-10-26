@@ -916,29 +916,37 @@ This is a deployment/publication correction, not a redesign.
 
 ```text
 CHUNK P1 — CORRECT VEXWORK PUBLIC-STATE TRUTH
-  CURRENT
-  -> record source accepted / public VexLife stale
-  -> preserve #929/#933 source acceptance
-  -> do not replay visual design work
+  COMPLETE
+  -> PR #164 merged the source-currentness correction
+  -> accepted #929/#933 source preserved
+  -> public VexLife remains explicitly stale until deployment recovery completes
 
-CHUNK P2 — ESTABLISH SOURCE-OWNED BRANCH PUBLISHER
-  AFTER P1
-  -> add the smallest VexLife publisher for generated/pages-site -> gh-pages
-  -> exact-main / clean-tree / public-safety / DCO / non-force publication rules
-  -> no Local Workspace
-  -> no custom Pages Actions build/deploy dependency
+CHUNK P2 — ESTABLISH PUBLICATION SUBSTRATE
+  COMPLETE
+  -> reuse existing scripts/build-public-pages.mjs rather than add redundant publisher source
+  -> dedicated vexlife-pages branch established
+  -> substrate head 3627585ffddf940147562e82bc6e496291ce3389
+  -> substrate tree 989ae446bad9f79f6569febedf4d2a9c93d4c6cf
+  -> tree contains only .nojekyll before publication
+  -> no live Pages source switch performed yet
 
 CHUNK P3 — VEX RELAY PUBLICATION
-  AFTER P2 ACCEPTED
-  -> one digest-bound Mac package
-  -> one exact Bash command
-  -> build from exact accepted VexLife main
-  -> publish gh-pages
-  -> configure Pages branch source when required
-  -> return canonical execution evidence
+  CURRENT / A002 FORMED
+  -> current VexLife main 31c9198101f4c8a0170cb76b57547ae1d737b05f
+  -> current source tree 3f147418b2885721787ed482d67aecf13ae32cee
+  -> exact 35-file generated public membrane
+  -> digest-bound Mac package A002
+     sha256 fbd309ed3931d608316e0c6460c6a407fe5f74a6e3822615e68f32ad6aad4efd
+     expires 2026-10-27T03:58:30Z
+  -> Vex Relay builds current artifact, proves public safety and family-header semantics,
+     commits with DCO, reviews the exact local candidate, and non-force pushes vexlife-pages
+  -> no Local Workspace
+  -> no custom GitHub Actions build/deploy dependency
+  -> one host execution + canonical RETURN is the current human boundary
+  -> Pages branch-source configuration remains held until the publication branch is proven
 
 CHUNK P4 — LIVE PUBLIC VERIFICATION + WRITEBACK
-  AFTER PUBLICATION
+  AFTER P3 + PAGES SOURCE SWITCH
   -> verify live root renders stable family rail
   -> verify no standalone VexLife brand-lockup
   -> record public deployment current
@@ -961,10 +969,15 @@ accepted Welcome Wagon family source
 VexLife public projection currentness
   live screenshot proves pre-#929 composition still deployed ❌
         ↓
-source-owned branch publisher
-  exact accepted main -> generated/pages-site -> gh-pages
+dedicated publication substrate
+  exact accepted main -> existing builder -> vexlife-pages
         ↓
-Vex Relay publication + live public verification
+Vex Relay publication
+  A002 formed / host execution pending
+        ↓
+one-time Pages branch-source switch
+        ↓
+live public verification
         ↓
 public cross-context family acceptance
         ↓
