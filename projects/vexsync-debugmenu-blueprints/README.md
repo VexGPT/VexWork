@@ -256,6 +256,19 @@ VexLife-Android PR #183
 They are provenance, not automatic current-main acceptance. Any implementation effect must re-ground
 the relevant repository/provider state first.
 
+## Current discovery companion
+
+The live examples and phase-discovery checkpoint currently live in:
+
+~~~text
+projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md
+~~~
+
+Read that file as **current discovery pressure**, not accepted schema. It preserves the present
+Feature Request -> Builder Entry reasoning, the intentionally incomplete dark/light-mode example,
+identifier-grounding discipline, and the rule that a missing implementation HOW is Builder work
+rather than permission to guess.
+
 ## Current Work edge
 
 ```text
