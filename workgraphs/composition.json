@@ -22,7 +22,9 @@
     "projects/vexlife-android-current-state-refinement/README.md",
     "project.android-widget-foundation",
     "project.vexlife.interface-refinement",
-    "projects/vexlife-interface-refinement/README.md"
+    "projects/vexlife-interface-refinement/README.md",
+    "project.vexsync.debugmenu-blueprints",
+    "projects/vexsync-debugmenu-blueprints/README.md"
   ],
   "compatibilityOrder": {
     "itemWorkRefs": [

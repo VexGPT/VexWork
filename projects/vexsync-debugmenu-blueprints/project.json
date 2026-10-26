@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.vexsync.debugmenu-blueprints",
+  "label": "VexSync DebugMenu Blueprints",
+  "purpose": "Prove a design-authoritative VexBoard -> VexLife Android construction loop on Debug Menu: Victor + AI author semantic Origin/design meaning, intentions and pathways once; supported target adapters deterministically create or modify Android source and derive proof; the resulting source/evidence projects back to the same VexBoard coordinates without routine manual code translation or source archaeology.",
+  "rootWorkRefs": [
+    "work.vexsync.debugmenu-blueprints.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vexlife-android"
+  ],
+  "sourceRefs": [
+    "projects/vexsync-debugmenu-blueprints/README.md",
+    "docs/process/FORM-PROJECT.md",
+    "project.vexboard",
+    "project.vex-universe",
+    "project.vexlife.blueprint-source-of-truth",
+    "project.vexlife-android.current-state-refinement",
+    "project.android-proof-orchestration",
+    "github.pull.vexwork.155",
+    "github.pull.vexlife-android.182",
+    "github.pull.vexlife-android.183",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/debug/DebugMenuScreen.kt",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/debug/README.md",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/debug/design/README.md",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/runtime/AppActions.kt",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/loghistory/LogHistoryRepository.kt",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/loghistory/RoomLogHistoryRepository.kt",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/loghistory/LogHistoryDao.kt",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/loghistory/LogHistoryEntity.kt"
+  ],
+  "formedAt": "2026-10-26T07:26:46.000Z"
+}

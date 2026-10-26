@@ -14,6 +14,7 @@ const operationalConsoleProjectSource = read('projects/vexwork-operational-conso
 const vexboardProjectSource = read('projects/vexboard/project.json');
 const blueprintProjectSource = read('projects/vexlife-blueprint-source-of-truth/project.json');
 const androidProofProjectSource = read('projects/android-proof-orchestration/project.json');
+const vexsyncDebugMenuProjectSource = read('projects/vexsync-debugmenu-blueprints/project.json');
 const graphSource = read('workgraphs/public.json');
 
 test('work registry covers lifecycle states exactly once on the default Work Board', () => {
@@ -39,6 +40,8 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(projectWorkRefs(blueprintProject, graph).length, 14);
   const androidProofProject = createProject(androidProofProjectSource);
   assert.equal(projectWorkRefs(androidProofProject, graph).length, 4);
+  const vexsyncDebugMenuProject = createProject(vexsyncDebugMenuProjectSource);
+  assert.equal(projectWorkRefs(vexsyncDebugMenuProject, graph).length, 5);
   assert.equal(verifySemanticFingerprint(project), true);
   assert.equal(verifySemanticFingerprint(graph), true);
 
@@ -293,6 +296,18 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(connectedVcs06.state, 'READY');
   assert.deepEqual(connectedVcs05.dependencyRefs, [connectedVcs04.workRef]);
   assert.deepEqual(connectedVcs06.dependencyRefs, [connectedVcs05.workRef]);
+
+  const vexsyncOutcome = graph.items.find((item) => item.workRef === 'work.vexsync.debugmenu-blueprints.outcome');
+  const vexsyncLanguage = graph.items.find((item) => item.workRef === 'work.vexsync.debugmenu-blueprints.origin-language-contract');
+  const vexsyncRoundtrip = graph.items.find((item) => item.workRef === 'work.vexsync.debugmenu-blueprints.debugmenu-origin-roundtrip');
+  const vexsyncConstruction = graph.items.find((item) => item.workRef === 'work.vexsync.debugmenu-blueprints.android-construction-proof');
+  const vexsyncSaveApply = graph.items.find((item) => item.workRef === 'work.vexsync.debugmenu-blueprints.save-apply-pr-loop');
+  assert.equal(vexsyncOutcome.state, 'RUNNING');
+  assert.equal(vexsyncLanguage.state, 'READY');
+  assert.equal(vexsyncLanguage.authorityDisposition, 'NO_AUTHORITY');
+  assert.deepEqual(vexsyncRoundtrip.dependencyRefs, [vexsyncLanguage.workRef]);
+  assert.deepEqual(vexsyncConstruction.dependencyRefs, [vexsyncRoundtrip.workRef]);
+  assert.deepEqual(vexsyncSaveApply.dependencyRefs, [vexsyncConstruction.workRef]);
 
   const operationalOutcome = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.outcome');
   const derivedFoundation = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.derived-work-foundation');
