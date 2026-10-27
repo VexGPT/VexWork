@@ -37,7 +37,7 @@
       {
         "nodeRef": "annotation.vcs.work-overlay",
         "kind": "ANNOTATION",
-        "label": "Work overlay · VCS-04 TERMINAL_ACCEPTED_CURRENT · VCS-05 TERMINAL_ACCEPTED_CURRENT · VCS-06 READY_ACCEPTED_CURRENT · SDK source placement held on current-entry reverify",
+        "label": "Work overlay · VCS-04 TERMINAL_ACCEPTED_CURRENT · VCS-05 TERMINAL_ACCEPTED_CURRENT · VCS-06 TERMINAL_ACCEPTED_CURRENT · VCS-07 COMPLETED_NO_SHARED_WIDENING · Project COMPLETED",
         "parentRefOrNull": "container.vcs.system",
         "detailBoardRefOrNull": null,
         "sourceRefs": [
@@ -54,7 +54,11 @@
           "github.commit.vexwork.eb895352768c08dde1d9114c6b462c19e9f79521",
           "github.pull.vexwork.162.comment.6408965424",
           "github.issue.vexlife.899.comment.6408966128",
-          "github.issue.vextreme-sdk.223.comment.6408985732"
+          "github.issue.vextreme-sdk.223.comment.6408985732",
+          "github.pull.vextreme-sdk.1903",
+          "github.commit.vextreme-sdk.06ccef98769ff25eabd8bee4b8646185a42eb5f1",
+          "github.issue.vexlife.899.comment.6431636376",
+          "github.issue.vexlife.899.comment.6431637903"
         ]
       },
       {
@@ -439,7 +443,7 @@
       {
         "nodeRef": "reference.vcs.target.architecture-extraction",
         "kind": "REFERENCE",
-        "label": "READY_ACCEPTED_CURRENT VCS-06 · extract only recurring cross-consumer ownership/contracts/proof; SDK authoring held until current-entry reverify",
+        "label": "TERMINAL_ACCEPTED_CURRENT VCS-06 · compact SDK composition/reference accepted without semantic-owner transfer",
         "parentRefOrNull": "container.vcs.target",
         "detailBoardRefOrNull": null,
         "sourceRefs": [
@@ -451,18 +455,23 @@
           "github.commit.vexwork.eb895352768c08dde1d9114c6b462c19e9f79521",
           "github.pull.vexwork.162.comment.6408965424",
           "github.issue.vexlife.899.comment.6408419533",
-          "github.issue.vextreme-sdk.223.comment.6408985732"
+          "github.issue.vextreme-sdk.223.comment.6408985732",
+          "github.pull.vextreme-sdk.1903",
+          "github.commit.vextreme-sdk.06ccef98769ff25eabd8bee4b8646185a42eb5f1",
+          "github.issue.vexlife.899.comment.6431636376"
         ]
       },
       {
         "nodeRef": "container.vcs.target.deployment",
         "kind": "CONTAINER",
-        "label": "TARGET VCS-07 · deployment realization choices",
+        "label": "COMPLETED VCS-07 · deployment choices preserved; no new shared deployment implementation earned",
         "parentRefOrNull": "container.vcs.target",
         "detailBoardRefOrNull": null,
         "sourceRefs": [
           "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
-          "github.issue.vexlife.899"
+          "github.issue.vexlife.899",
+          "github.issue.vexlife.899.comment.6430386085",
+          "github.issue.vexlife.899.comment.6431637903"
         ]
       },
       {
@@ -884,10 +893,12 @@
         "kind": "FLOW",
         "fromRef": "reference.vcs.target.architecture-extraction",
         "toRef": "container.vcs.target.deployment",
-        "labelOrNull": "ARCHITECTURE_BEFORE_DEPLOYMENT_CHOICES",
+        "labelOrNull": "VCS06_ACCEPTED__VCS07_NO_SHARED_WIDENING",
         "sourceRefs": [
           "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
-          "github.issue.vexlife.899"
+          "github.issue.vexlife.899",
+          "github.issue.vexlife.899.comment.6431636376",
+          "github.issue.vexlife.899.comment.6431637903"
         ]
       },
       {
