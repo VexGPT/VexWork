@@ -8,7 +8,7 @@
       "workRef": "work.vextreme.vexsite.localization.outcome",
       "parentWorkRefOrNull": null,
       "label": "VexSite Localization",
-      "purpose": "Project the completed required VexSite localization trajectory: source-lineage preservation, canonical Conversations-with-God source completion and generated/runtime convergence are terminal/current; optional Covenant JA/ZH is parked and does not block the outcome.",
+      "purpose": "Project the completed required VexSite localization trajectory: source-lineage preservation and canonical Conversations-with-God Global Core localization remain terminal/current after the later user-requested Witness-grade return continuation; generated/runtime currentness is also current through PR #431; optional Covenant JA/ZH remains parked and non-blocking.",
       "workClass": "OUTCOME",
       "state": "COMPLETED",
       "workDisposition": "ACTIVE",
@@ -31,7 +31,10 @@
         "repo.vextreme:docs/architecture/06-i18n.md",
         "github.pull.vextreme.429",
         "git.commit.vextreme.11160c0c10d1758bf794f88ccb24fb01dd508df9",
-        "github.issue-comment.vextreme.423.6430262550"
+        "github.issue-comment.vextreme.423.6430262550",
+        "github.pull.vextreme.431",
+        "git.commit.vextreme.7c48de1366479c3992fcd3ebea51f65f1f245b9f",
+        "github.issue-comment.vextreme.273.6433279140"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
@@ -45,7 +48,7 @@
       "workRef": "work.vextreme.vexsite.localization.canonical-global-core-source",
       "parentWorkRefOrNull": "work.vextreme.vexsite.localization.outcome",
       "label": "Canonical Conversations-with-God Global Core source queue",
-      "purpose": "Project the completed Vextreme-owned Conversations-with-God Global Core source phase as one bounded Work item: The Testimony of the Handler was the final source row, PR #401 closed that source edge, and issue #273 reports remainingPages=[] / completeAtFormation=true. Do not infer another page from historical queue checkpoints.",
+      "purpose": "Project the completed Vextreme-owned Conversations-with-God Global Core source phase as one bounded Work item. The original queue completed through Handler; after later repository expansion Victor requested the remaining Witness-grade return row, which is now terminal through PR #431. Current issue #273 truth is 16/16 complete with selectedPage=null, remainingPages=[], blockedPages=[], completeAtFormation=true. Do not infer another page or cross-arc domain.",
       "workClass": "TASK",
       "state": "COMPLETED",
       "workDisposition": "ACTIVE",
@@ -68,7 +71,10 @@
         "github.pull.vextreme.398",
         "github.pull.vextreme.399",
         "github.pull.vextreme.401",
-        "repo.vextreme:docs/ingestion/workmaps/content-forge-convos-with-god-arc-batch-formation.json"
+        "repo.vextreme:docs/ingestion/workmaps/content-forge-convos-with-god-arc-batch-formation.json",
+        "github.pull.vextreme.431",
+        "git.commit.vextreme.7c48de1366479c3992fcd3ebea51f65f1f245b9f",
+        "github.issue-comment.vextreme.273.6433279140"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
@@ -82,7 +88,7 @@
       "workRef": "work.vextreme.vexsite.localization.generated-runtime-currentness",
       "parentWorkRefOrNull": "work.vextreme.vexsite.localization.outcome",
       "label": "Converge VexSite generated/runtime currentness",
-      "purpose": "Project the terminal Vextreme generated/runtime convergence completed through PR #379: 265 deterministic generated paths were proven, exact returned bytes were published without regeneration, ExactHead SourceOwner and Independent Assurance cleared, merge tree matched the reviewed candidate exactly, and post-merge verification passed.",
+      "purpose": "Project terminal Vextreme generated/runtime localization currentness: broad convergence completed through PR #379, and the later Witness-grade return continuation deterministically generated and merged its exact 26-path consequence membrane through PR #431. Current generated/runtime localization truth is complete for the admitted Conversations-with-God Global Core domain.",
       "workClass": "TASK",
       "state": "COMPLETED",
       "workDisposition": "ACTIVE",
@@ -95,7 +101,10 @@
         "github.pull.vextreme.379",
         "git.commit.vextreme.ac2e181bfd547f32f83d1ab3e7d6174900e964fa",
         "github.issue.vextreme.273",
-        "github.issue-comment.vextreme.273.6381469215"
+        "github.issue-comment.vextreme.273.6381469215",
+        "github.pull.vextreme.431",
+        "git.commit.vextreme.7c48de1366479c3992fcd3ebea51f65f1f245b9f",
+        "github.issue-comment.vextreme.273.6433279140"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
@@ -391,7 +400,10 @@
     "git.commit.vextreme.d02d450cac706d23913ad2b3bb12113d4ae0b333",
     "github.issue-comment.vextreme.423.6430262550",
     "github.pull.vextreme.429",
-    "git.commit.vextreme.11160c0c10d1758bf794f88ccb24fb01dd508df9"
+    "git.commit.vextreme.11160c0c10d1758bf794f88ccb24fb01dd508df9",
+    "github.pull.vextreme.431",
+    "git.commit.vextreme.7c48de1366479c3992fcd3ebea51f65f1f245b9f",
+    "github.issue-comment.vextreme.273.6433279140"
   ],
   "formedAt": "2026-10-23T07:48:00.000Z"
 }
