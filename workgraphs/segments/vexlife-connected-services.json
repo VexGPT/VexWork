@@ -37,25 +37,30 @@
       "label": "Establish VexLife Connected Services",
       "purpose": "Establish the reusable private connection/session boundary through which VexLife capabilities can reach Home-hosted semantics while feature meaning, Home authority, providers and deployment remain separately owned.",
       "workClass": "OUTCOME",
-      "state": "RUNNING",
+      "state": "COMPLETED",
       "workDisposition": "ACTIVE",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [],
       "repositoryRefs": [
         "repo.vexwork",
         "repo.vexlife",
-        "repo.vexlife-android"
+        "repo.vexlife-android",
+        "repo.vexstream-music",
+        "repo.vextreme-sdk"
       ],
       "sourceRefs": [
         "docs/lineage/VEXLIFE-CONNECTED-SERVICES.md",
-        "github.issue.vexlife.899"
+        "github.issue.vexlife.899",
+        "github.issue.vexlife.899.comment.6431636376",
+        "github.issue.vexlife.899.comment.6431637903",
+        "github.commit.vextreme-sdk.06ccef98769ff25eabd8bee4b8646185a42eb5f1"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-21T23:56:41.000Z",
-      "updatedAt": "2026-10-21T23:56:41.000Z"
+      "updatedAt": "2026-10-27T01:42:40.002Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -253,27 +258,35 @@
       "label": "VCS-06 — VexArchitecture extraction",
       "purpose": "Extract only the recurring Connected Services architecture earned by multiple real consumers, preserving questions, ownership and proof obligations rather than copying one implementation.",
       "workClass": "OUTCOME",
-      "state": "READY",
+      "state": "COMPLETED",
       "workDisposition": "ACTIVE",
       "priorityClass": "NORMAL",
       "dependencyRefs": [
         "work.vexlife.connected-services.vcs05-stream-stress"
       ],
       "repositoryRefs": [
-        "repo.vexlife"
+        "repo.vexlife",
+        "repo.vextreme-sdk"
       ],
       "sourceRefs": [
         "docs/lineage/VEXLIFE-CONNECTED-SERVICES.md",
         "github.issue.vexlife.899",
         "github.issue.vexlife.899.comment.6408187503",
-        "github.pull.vexstream-music.15.comment.6408146238"
+        "github.pull.vexstream-music.15.comment.6408146238",
+        "github.issue.vextreme-sdk.1574.comment.6430799579",
+        "github.pull.vextreme-sdk.1903",
+        "github.pull.vextreme-sdk.1903.comment.6431130623",
+        "github.pull-request-review.vextreme-sdk.5661077760",
+        "github.pull-request-review.vextreme-sdk.5661273137",
+        "github.commit.vextreme-sdk.06ccef98769ff25eabd8bee4b8646185a42eb5f1",
+        "github.issue.vexlife.899.comment.6431636376"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-21T23:56:41.000Z",
-      "updatedAt": "2026-10-26T04:19:47.000Z"
+      "updatedAt": "2026-10-27T01:42:33.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -282,7 +295,7 @@
       "label": "VCS-07 — deployment choices",
       "purpose": "Make deployment realization choices only after the runtime boundary is stable, keeping same-machine, owned-host and future managed deployment separate from semantic ownership.",
       "workClass": "OUTCOME",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "COMPLETED",
       "workDisposition": "ACTIVE",
       "priorityClass": "NORMAL",
       "dependencyRefs": [
@@ -293,14 +306,18 @@
       ],
       "sourceRefs": [
         "docs/lineage/VEXLIFE-CONNECTED-SERVICES.md",
-        "github.issue.vexlife.899"
+        "github.issue.vexlife.899",
+        "github.issue.vexlife.899.comment.6430386085",
+        "github.issue.vexlife.899.comment.6431636376",
+        "github.issue.vexlife.899.comment.6431637903",
+        "docs/VEXHOME-HOSTED-CAPABILITIES.md"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-21T23:56:41.000Z",
-      "updatedAt": "2026-10-21T23:56:41.000Z"
+      "updatedAt": "2026-10-27T01:42:40.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -1183,6 +1200,132 @@
         "github.pull.vexstream-music.15.comment.6408146238"
       ],
       "createdAt": "2026-10-26T04:19:47.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.connected-services.vcs06.running.sdk-pr1903",
+      "workRef": "work.vexlife.connected-services.vcs06-architecture-extraction",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Root source placement admitted the compact SDK architecture reference and PR1903 began the one-path VCS-06 extraction without redesigning canonical VexLife Connected Services.",
+      "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.issue.vextreme-sdk.1574.comment.6430799579",
+        "github.pull.vextreme-sdk.1903"
+      ],
+      "createdAt": "2026-10-27T00:40:29.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.connected-services.vcs06.verifying.sourceowner-assurance",
+      "workRef": "work.vexlife.connected-services.vcs06-architecture-extraction",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "PR1903 SourceOwner A002 passed exact head/tree, sdk-ready and architecture checks; fresh Independent Assurance and Formal Review cleared the same immutable candidate.",
+      "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vextreme-sdk.1903.comment.6431130623",
+        "github.pull-request-review.vextreme-sdk.5661077760",
+        "github.pull-request-review.vextreme-sdk.5661273137"
+      ],
+      "createdAt": "2026-10-27T01:04:38.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.connected-services.vcs06.completed.sdk-terminal",
+      "workRef": "work.vexlife.connected-services.vcs06-architecture-extraction",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "PR1903 merged the reviewed one-path Connected Capability Composition source byte-identically and Main Integrity converged current main/checkpoint; VCS-06 has no remaining architecture-extraction predicate.",
+      "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.commit.vextreme-sdk.06ccef98769ff25eabd8bee4b8646185a42eb5f1",
+        "github.issue.vexlife.899.comment.6431636376"
+      ],
+      "createdAt": "2026-10-27T01:42:33.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.connected-services.vcs07.ready.after-vcs06-terminal",
+      "workRef": "work.vexlife.connected-services.vcs07-deployment-choices",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "Terminal VCS-06 SDK architecture acceptance released the deployment-choice dependency without prescribing a deployment implementation.",
+      "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.issue.vexlife.899.comment.6431636376"
+      ],
+      "createdAt": "2026-10-27T01:42:33.001Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.connected-services.vcs07.running.deployment-reground",
+      "workRef": "work.vexlife.connected-services.vcs07-deployment-choices",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "VCS-07 re-grounded current Maps, Conversation, VexStream and accepted Hosted Capabilities evidence to test whether any shared deployment widening was actually earned.",
+      "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.issue.vexlife.899.comment.6430386085",
+        "docs/VEXHOME-HOSTED-CAPABILITIES.md"
+      ],
+      "createdAt": "2026-10-27T01:42:34.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.connected-services.vcs07.verifying.no-widening",
+      "workRef": "work.vexlife.connected-services.vcs07-deployment-choices",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Current consumer evidence exposed no shared cloud, split-host, managed-hosting or generic deployment-runtime requirement beyond the already accepted deployment-neutral architecture.",
+      "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.issue.vexlife.899.comment.6430386085",
+        "github.issue.vexlife.899.comment.6431637903"
+      ],
+      "createdAt": "2026-10-27T01:42:39.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.connected-services.vcs07.completed.no-shared-widening",
+      "workRef": "work.vexlife.connected-services.vcs07-deployment-choices",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "VCS-07 completes by non-expansion: existing Hosted Capabilities topology choices are sufficient and no new shared deployment implementation is currently earned.",
+      "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.issue.vexlife.899.comment.6431637903",
+        "docs/VEXHOME-HOSTED-CAPABILITIES.md"
+      ],
+      "createdAt": "2026-10-27T01:42:40.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.connected-services.outcome.verifying.vcs00-vcs07-complete",
+      "workRef": "work.vexlife.connected-services.outcome",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "VCS-00 through VCS-07 are complete; final parent verification checks that no admitted Connected Services program obligation remains and that future deployment realizations stay separate work.",
+      "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.issue.vexlife.899.comment.6431636376",
+        "github.issue.vexlife.899.comment.6431637903"
+      ],
+      "createdAt": "2026-10-27T01:42:40.001Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.connected-services.outcome.completed.vcs07-terminal",
+      "workRef": "work.vexlife.connected-services.outcome",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "The required Connected Services outcome is complete: all planned VCS stages are terminal, reusable architecture is accepted in SDK, and deployment choices are closed by evidence-led non-expansion.",
+      "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.issue.vexlife.899.comment.6431636376",
+        "github.issue.vexlife.899.comment.6431637903"
+      ],
+      "createdAt": "2026-10-27T01:42:40.002Z"
     }
   ],
   "sourceRefs": [
