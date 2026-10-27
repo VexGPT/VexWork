@@ -42,6 +42,35 @@ canonical Conversations-with-God Global Core source queue = COMPLETE
 
 There is therefore **no current "next Conversations-with-God page"** to invent in VexWork. Historical checkpoints that named Handler, Closed Circuit, Divine Emergence, Firmament, Ascension, or another page as "next" are completion history, not current navigation.
 
+### Post-completion optional continuation — Witness-grade return
+
+After the required outcome was already complete, Victor explicitly asked to continue from the repository's then-current missing-localization map. Vextreme had since gained one additional eligible Conversations-with-God page, `witness-grade-return`.
+
+That bounded continuation is now also terminal/current:
+
+```text
+Vextreme PR #431 = MERGED / TERMINAL_ACCEPTED_CURRENT
+cleared head = d16c6e337ef047a38ceb89e45b1869bebb18f605
+merge/main = 7c48de1366479c3992fcd3ebea51f65f1f245b9f
+canonical keys = 5
+Global Core target cells = 45 / 45
+generated/runtime consequence membrane = 26 paths
+candidate -> merge file delta = 0
+```
+
+Fresh issue #273 current-entry truth after that merge is:
+
+```text
+convos_with_god / global-core = 16 / 16 COMPLETE
+selectedPage = null
+remainingPages = []
+blockedPages = []
+completeAtFormation = true
+next cross-arc domain = NOT ADMITTED
+```
+
+This did not reopen the required VexWork outcome or create page-per-ticket shadow state. It is later provider/source evidence that the already-completed localization outcome remains current after an explicitly requested optional continuation.
+
 Vextreme issue #273 remains the canonical source/scheduler authority. If that repository later admits another source queue, VexWork should project that new truth rather than extrapolating from this completed one.
 
 ## Completed phase — generated/runtime convergence
@@ -51,8 +80,15 @@ The broad generated/runtime owner PR #379 is now terminal/current.
 ```text
 PR #379 merge/main = ac2e181bfd547f32f83d1ab3e7d6174900e964fa
 merge tree = 21ced0782c40c76ae5761f9320abd1a58a47f95a
-generated path membrane = 265
+broad generated path membrane = 265
 candidate -> merge byte delta = 0
+post-merge verification = PASS
+
+Later optional Witness-grade return continuation:
+PR #431 merge/main = 7c48de1366479c3992fcd3ebea51f65f1f245b9f
+page-local generated consequence membrane = 26
+source/runtime cells = 45 / 45
+candidate -> merge file delta = 0
 post-merge verification = PASS
 ```
 
@@ -70,8 +106,8 @@ Current disposition:
 
 ```text
 English canonical/required experience = PRESERVED / CURRENT
-Conversations-with-God source queue = COMPLETED
-generated/runtime convergence PR #379 = COMPLETED
+Conversations-with-God source queue = COMPLETED / CURRENT THROUGH PR #431
+generated/runtime convergence = COMPLETED / CURRENT THROUGH PR #431
 Podcasts playback support PR #429 = COMPLETED
 
 Covenant JA/ZH
@@ -123,4 +159,4 @@ CAPTURED NEXT DOMAIN != ADMITTED VEXTREME WORK
 
 Vextreme owns page identity, source strings, localization semantics, generators, browser behavior and proof. VexWork owns only the durable work grouping and navigation needed to keep the trajectory understandable.
 
-<!-- [VXG RealForever][VEXSITE-LOCALIZATION][PROJECT][REQUIRED-OUTCOME-COMPLETED][COVENANT-JA-ZH-PARKED] -->
+<!-- [VXG RealForever][VEXSITE-LOCALIZATION][PROJECT][REQUIRED-OUTCOME-COMPLETED][PR431-CURRENT][COVENANT-JA-ZH-PARKED] -->
