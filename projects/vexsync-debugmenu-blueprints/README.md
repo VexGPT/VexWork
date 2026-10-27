@@ -134,10 +134,12 @@ current.
 The Debug Menu specimen is not semantically isolated. Before inventing a noun, class, family or
 relationship for a new edge, consume relevant already-earned examples.
 
-### Exemplar A — Origin postfix / same semantic noun across realizations
+### Exemplar A — same semantic noun across scopes
 
-**Status:** `CURRENT_SIBLING_CANDIDATE_REFERENCE` from VexBoard PR #155; useful current candidate
-pressure, still unmerged and therefore not accepted VexWork main.
+**Status:** VexBoard PR #155 remains a `CURRENT_SIBLING_CANDIDATE_REFERENCE`, still unmerged. Its earlier
+postfix form is useful historical pressure, but the current VexSync consumer has refined the naming rule.
+
+The earlier candidate wrote:
 
 ~~~text
 origin.vexlife.vexstream.ConnectionStatusOrigin
@@ -147,28 +149,50 @@ desktop.vexlife.vexstream.ConnectionStatus
 web.vexlife.vexstream.ConnectionStatus
 ~~~
 
-What that specimen currently teaches:
+That form successfully exposed two independent dimensions:
 
 ~~~text
 ConnectionStatus
   = reusable semantic noun
 
 origin / android / desktop / web
-  = scope in which the semantic thing is defined or realized
-
-Origin postfix
-  = distinguishes the canonical reusable definition when that distinction is useful
-
-same Origin + different target
-  -> same reusable semantic noun
-  -> different realization scope
-
-target difference
-  != permission to mint a new semantic noun
+  = scope / role in which that noun is canonically defined or realized
 ~~~
 
-It does **not** establish that every semantic role receives an `Origin` suffix or that a universal
-`OriginIntent` family already exists.
+The current VexSync refinement applies the Absence/Duplication test to the postfix itself:
+
+~~~text
+origin.vexlife.vexstream.ConnectionStatus
+android.vexlife.vexstream.ConnectionStatus
+desktop.vexlife.vexstream.ConnectionStatus
+web.vexlife.vexstream.ConnectionStatus
+~~~
+
+If the scope is reliably preserved, removing the `Origin` postfix loses no canonicality, identity,
+traceability or realization relationship. Keeping it would encode the same distinction twice.
+
+Current law:
+
+~~~text
+SAME SEMANTIC THING
+-> SAME SEMANTIC NOUN
+
+CANONICAL VS REALIZATION ROLE
+-> DIFFERENT SCOPE
+
+SCOPE DIFFERENCE
+!= PERMISSION TO MUTATE THE SEMANTIC NOUN
+
+ORIGIN SCOPE
+!= ORIGIN POSTFIX
+~~~
+
+A local consumer that temporarily needs disambiguation may qualify or alias the scoped names; that local
+collision does not justify permanently changing the canonical noun.
+
+**Reopen condition:** a required representation genuinely loses scope/qualification and cannot preserve
+canonical-vs-realization ownership through an explicit coordinate or metadata. That would pressure the
+representation first, not automatically restore a noun postfix.
 
 ### Exemplar B — typed navigation survived the ActId pressure test
 
@@ -516,57 +540,57 @@ human request
 The Origin therefore does not describe Android code that already exists. It is the construction-grade
 semantic design from which Android, Desktop, Web or another target can be formed.
 
-### Canonical object naming versus target realization naming
+### Canonical scope versus target realization scope
 
-When a reusable semantic object needs a distinct canonical definition, the working grammar remains:
+When a reusable semantic object needs a distinct canonical definition, canonicality is expressed by its
+**Origin scope**, not by mutating its semantic noun.
 
 ~~~text
-canonical reusable source
-  <SemanticNoun>Origin
+canonical reusable coordinate
+  origin.<semantic-scope>.<SemanticNoun>
 
-target realization
-  <SemanticNoun>
+target realization coordinate
+  <target>.<semantic-scope>.<SemanticNoun>
 
 semantic identity
-  stable semantic ID shared by the relationship
+  stable semantic ID / relationship coordinate where independently required
 ~~~
 
 Example:
 
 ~~~text
-DebugMenuScreenOrigin
+origin.<semantic-scope>.DebugMenuScreen
   screenId = screen.debug-menu
 
-Android:
-  DebugMenuScreen
-  realizes screen.debug-menu
-
-Desktop:
-  DebugMenuScreen
-  realizes screen.debug-menu
-
-Web:
-  DebugMenuScreen
-  realizes screen.debug-menu
+android.<semantic-scope>.DebugMenuScreen
+desktop.<semantic-scope>.DebugMenuScreen
+web.<semantic-scope>.DebugMenuScreen
+  realize the same DebugMenuScreen meaning
 ~~~
 
-Likewise, if theme mode proves to be a reusable semantic object:
+Likewise, when ThemeMode earns independent canonical ownership:
 
 ~~~text
-ThemeModeOrigin
+origin.<semantic-scope>.ThemeMode
 
-Android:
-  ThemeMode
-
-Desktop:
-  ThemeMode
-
-Web:
-  ThemeMode
+android.<semantic-scope>.ThemeMode
+desktop.<semantic-scope>.ThemeMode
+web.<semantic-scope>.ThemeMode
 ~~~
 
-The `Origin` postfix distinguishes the authoritative reusable definition. It does not change the reusable
-noun and is not sprayed onto State / Control / Act / Effect merely for symmetry.
+The reusable noun remains exactly `ThemeMode`. `origin` identifies the canonical-definition role;
+`android` / `desktop` / `web` identify realization roles.
+
+~~~text
+CANONICALITY
+  = coordinate / scope responsibility
+
+CANONICALITY
+  != semantic noun suffix
+~~~
+
+This does not require every semantic child to receive an independent Origin-scope coordinate. Independent
+canonical ownership is still earned through the Origin Eligibility / Exclusion test below.
 
 ### Typed relationship before Act identity
 
@@ -639,14 +663,16 @@ HUMAN REQUEST
   In Debug Menu, choose Light or Dark appearance.
   The application reflects the chosen appearance.
 
-HomeScreenOrigin
+Origin scope:
+
+HomeScreen
   screenId = screen.home
 
   DebugMenuEntryControl
     controlId = control.home.debug-menu
     -> NavigateTo(screen.debug-menu)
 
-DebugMenuScreenOrigin
+DebugMenuScreen
   screenId = screen.debug-menu
 
   ThemeModeControl
@@ -659,7 +685,7 @@ DebugMenuScreenOrigin
     relationship
       Select(ThemeMode)
 
-ThemeModeOrigin
+ThemeMode
   Light
   Dark
 ~~~
@@ -709,7 +735,7 @@ jargon into repeatable human-intentional semantics.
 Once an Origin edge is settled, a target generator may safely template the corresponding realization slot:
 
 ~~~text
-ScreenOrigin
+Origin-scoped Screen
   -> target Screen scaffold
 
 Control
@@ -799,12 +825,12 @@ This checkpoint does not declare a universal schema. The next pressure should re
 a time:
 
 ~~~text
-1. minimum fields a ScreenOrigin actually owns
+1. minimum fields an independently Origin-scoped Screen actually owns
 2. minimum fields a Control actually owns
-3. whether ThemeMode is its own Origin object or belongs under a broader appearance owner
+3. whether ThemeMode earns its own independent Origin-scope coordinate or belongs under a broader owner
 4. exact typed-operation families earned beyond NavigateTo / presentation / selection
 5. exact threshold and representation for Behavior -> Act -> Effect
-6. the smallest Origin-to-target mapping record needed for traceability
+6. the smallest Origin-scope-to-target mapping record needed for traceability
 7. which target scaffold pieces are safely generated versus target-authored
 8. what round-trip evidence proves the realization preserved the Origin meaning
 ~~~
@@ -1709,16 +1735,17 @@ source-traceable.
 
 ### Current Origin Walk frontier
 
-The current Walk has now earned the first Screen boundary and its minimum-complete Meaning.
+The current Walk has earned the first Screen boundary and its minimum-complete Meaning.
 
 ~~~text
-DebugMenuScreenOrigin
-  screenId = screen.debug-menu
+Origin scope:
+  DebugMenuScreen
+    screenId = screen.debug-menu
 
-  meaning:
-    A deliberately separate development/debug destination for presenting admitted
-    development/debug interactions outside the ordinary user experience, while leaving
-    each capability's semantic state and behavior with its rightful owner.
+    meaning:
+      A deliberately separate development/debug destination for presenting admitted
+      development/debug interactions outside the ordinary user experience, while leaving
+      each capability's semantic state and behavior with its rightful owner.
 ~~~
 
 The conclusion was earned from:
@@ -1733,7 +1760,7 @@ CONSEQUENCE / PRESSURE
   later children need a stable presentation context without making the Screen their state owner
 
 RESPONSE / CANDIDATE SOLUTION
-  one independently addressable DebugMenuScreenOrigin
+  one independently addressable DebugMenuScreen in Origin scope
 
 RESOLUTION EVIDENCE
   Home can NavigateTo(screen.debug-menu);
@@ -1745,7 +1772,7 @@ RESOLUTION EVIDENCE
 Boundary:
 
 ~~~text
-DebugMenuScreenOrigin owns
+Origin-scoped DebugMenuScreen owns
   Screen identity
   Screen meaning
   presentation/composition context
@@ -1758,14 +1785,13 @@ it does not automatically own
   every capability that is merely "developer related"
 ~~~
 
-The established Meaning now derives the first required capability from the human request:
+The established Meaning derives the current required capability:
 
 ~~~text
-required capability
-  choose the application's Light / Dark theme mode
+choose the application's Light / Dark theme mode
 ~~~
 
-### ThemeMode — semantic subject and Origin ownership
+### ThemeMode — semantic subject and canonical ownership
 
 Pressure-testing candidate nouns gives:
 
@@ -1792,8 +1818,7 @@ ThemeMode
   Dark
 ~~~
 
-The earlier Walk correctly held `ThemeModeOrigin` until independent canonical ownership was justified.
-That justification is now present:
+The Walk initially held independent canonical ownership until it was justified. The justification is now:
 
 ~~~text
 same semantic ThemeMode
@@ -1802,17 +1827,17 @@ same semantic ThemeMode
    so each target does not independently define values, defaults or future evolution
 ~~~
 
-Therefore the current working model earns:
+That earns an independent **Origin-scope coordinate**, not a different noun:
 
 ~~~text
-ThemeModeOrigin
+origin.<semantic-scope>.ThemeMode
   canonical reusable definition of the ThemeMode domain
   owns the meaning of admitted ThemeMode values
   owns reusable domain evolution / provenance
 
-Android ThemeMode
-Desktop ThemeMode
-Web ThemeMode
+android.<semantic-scope>.ThemeMode
+desktop.<semantic-scope>.ThemeMode
+web.<semantic-scope>.ThemeMode
   realize the same reusable domain
 
 current ThemeMode value
@@ -1820,26 +1845,24 @@ current ThemeMode value
   != stored live value in the Origin definition
 ~~~
 
-This is the same Origin-postfix law already earned by the ConnectionStatus exemplar: the reusable noun
-stays `ThemeMode`; `Origin` identifies the canonical definition.
+### Origin Scope Eligibility / Exclusion — earn the coordinate and earn the opposite
 
-### Origin Eligibility / Exclusion — earn the postfix and earn the opposite
-
-The current rule is narrower than "nouns get Origin."
+The current rule is not "nouns get Origin."
 
 ~~~text
-Origin
-  != important noun marker
-  != reusable noun marker
+Origin scope
+  != importance marker
+  != reusable-noun marker
   != identity marker
+  != noun suffix
 
-Origin
-  = canonical reusable definition boundary
-    from which realizations / projections descend
+Origin scope
+  = canonical reusable definition role
+    from which realizations / projections may descend
 ~~~
 
-A semantic thing earns an `Origin` postfix when independent canonical ownership is materially needed.
-The pressure set is:
+A semantic thing earns an **independent coordinate in Origin scope** when canonical ownership is materially
+needed. Relevant pressures are:
 
 ~~~text
 CANONICALITY
@@ -1858,9 +1881,9 @@ TRACEABILITY
   consumers need to traverse back to this object as the owner of the meaning
 ~~~
 
-These are reasoning pressures, not a mechanical all-checkbox gate.
+These are reasoning pressures, not a mechanical checkbox gate.
 
-The opposite must also be earned. Before minting `<Noun>Origin`, ask:
+Earn the opposite too. Before creating an independent Origin-scope coordinate, ask:
 
 ~~~text
 Can the rightful parent completely own this meaning?
@@ -1869,126 +1892,122 @@ Is this a relationship / verb rather than an independently defined thing?
 Is this a runtime occurrence rather than a reusable definition?
 Is this target/platform mechanics?
 Is this only a realization / projection / adapter / scaffold?
-Would adding an Origin create another owner without removing greater duplication or drift?
+Would another canonical coordinate add ownership/currentness burden
+without removing greater duplication or drift?
 ~~~
 
-If removing the proposed Origin loses no required canonicality, reuse, traceability or independent
-evolution, do not mint it.
+If removing the proposed independent coordinate loses no required canonicality, reuse, traceability or
+independent evolution, do not create it.
 
 ### Stable classification families for feature development
 
-The current reusable classification is:
-
 ~~~text
 CANONICAL SEMANTIC DEFINITION
-  Origin-eligible when independent ownership is earned
+  may earn an independent Origin-scope coordinate
 
 OWNED CHILD / COMPONENT
-  no independent Origin by default;
-  parent Origin owns its reusable definition until reuse/evolution pressure proves otherwise
+  no independent Origin coordinate by default;
+  its parent canonical definition owns it until reuse/evolution pressure proves otherwise
 
 VALUE / DOMAIN MEMBER
-  no Origin by default;
-  value is owned by its semantic domain
+  no independent Origin coordinate by default;
+  the semantic domain owns the value
 
 RELATIONSHIP / OPERATION / VERB
-  no Origin by default;
-  reusable language describes how semantic things relate or change
+  no independent Origin coordinate by default;
+  reusable language owns the operation meaning
 
 RUNTIME OCCURRENCE / CURRENT VALUE
-  no Origin;
-  runtime truth is an occurrence of an already-defined semantic meaning
+  no Origin coordinate;
+  runtime truth is an occurrence of already-defined semantic meaning
 
 TARGET / PLATFORM MECHANISM
-  no Origin;
+  no Origin coordinate;
   implementation mechanics realize portable meaning
 
 REALIZATION / PROJECTION / ADAPTER / SCAFFOLD
-  no Origin;
+  no Origin coordinate;
   it descends from or presents canonical meaning rather than becoming another owner
 ~~~
 
-If a supposed value or owned child grows independent fields, relationships, lifecycle, reusable
+If a supposed value or owned child develops independent fields, relationships, lifecycle, reusable
 realizations, evolution or addressability, reclassify it first:
 
 ~~~text
 "value" develops independent semantic identity
 -> it is no longer merely a value
 -> treat it as a candidate semantic object/domain
--> rerun Origin Eligibility / Exclusion
+-> rerun Origin Scope Eligibility / Exclusion
 ~~~
 
-Do not keep calling an independently meaningful object a "value" merely to avoid forming the rightful
-boundary.
-
-### Worked feature-development classifications
+### Worked classifications
 
 ~~~text
-DebugMenuScreenOrigin
+origin.<semantic-scope>.DebugMenuScreen
   YES
-  canonical reusable Screen definition with target realizations
+  independent canonical Screen definition
 
-ThemeModeOrigin
+origin.<semantic-scope>.ThemeMode
   YES
-  canonical reusable state/value domain shared by realizations
+  independent canonical state/value domain shared by realizations
 
 ThemeModeControl
   NOT YET
-  currently can be completely owned by DebugMenuScreenOrigin
+  currently can be completely owned by the canonical DebugMenuScreen
 
 Light / Dark
-  NO
-  values owned by ThemeModeOrigin
+  NO independent coordinate
+  values owned by canonical ThemeMode
 
 Select / NavigateTo / Open / Close
-  NO
+  NO independent coordinate
   semantic relationship / operation vocabulary
 
 currentThemeMode
-  NO
+  NO independent coordinate
   runtime occurrence / current application state
 
 Toggle / Dropdown / Scroll
-  NO by default
-  design form / presentation mechanism, unless a distinct reusable product component later earns
-  independent canonical ownership
+  NO independent coordinate by default
+  design form / presentation mechanism
 ~~~
 
-A Control can therefore have stable semantic identity without having its own Origin:
+A Control can have stable semantic identity without independent canonical ownership:
 
 ~~~text
 HAS IDENTITY
-!= HAS INDEPENDENT ORIGIN
+!= HAS INDEPENDENT ORIGIN-SCOPE COORDINATE
 ~~~
 
 If the same semantic Control later needs one reusable definition across several Screens/targets and
-parent-owned copies would drift, a `<ControlNoun>Origin` may become earned.
+parent-owned copies would drift, it may then earn an independent Origin-scope coordinate under the **same
+semantic noun**.
 
 ### Process / execution / infrastructure edge cases
 
 Processes are not excluded merely because they are non-visual.
 
-A semantic Process may earn Origin when its sequence, meaning, invariants, inputs/outputs or outcomes must
-remain one reusable definition across realizations:
+A semantic Process may earn an independent Origin-scope coordinate when its sequence, meaning, invariants,
+inputs/outputs or outcomes must remain one reusable definition across realizations:
 
 ~~~text
-PairingProcessOrigin
+origin.<semantic-scope>.PairingProcess
   canonical semantic process
 
-Android PairingProcess
-Desktop PairingProcess
-Web PairingProcess
+android.<semantic-scope>.PairingProcess
+desktop.<semantic-scope>.PairingProcess
+web.<semantic-scope>.PairingProcess
   target realizations
 ~~~
 
-A runtime process execution does not:
+A runtime execution does not:
 
 ~~~text
 PairingProcessRun / execution instance
-  != Origin
+  != canonical definition
 ~~~
 
-Execution mechanisms do not automatically become Origins:
+Execution mechanisms do not automatically become canonical Origin definitions:
 
 ~~~text
 VexCoroutineLauncher
@@ -1997,60 +2016,59 @@ thread / executor
 Android Worker
 scheduler
   = target/runtime execution mechanics
-  != canonical semantic process definition
 ~~~
 
 If portable language needs to express process execution, prefer the human-intentional operation or process
 relationship at the semantic boundary; target launch/scheduling mechanics remain underneath it.
 
-Database/storage layers follow the same rule:
+Database/storage follows the same rule:
 
 ~~~text
 Room / SQLite / SQL table / DAO / database connection
   = storage mechanics
-  != Origin by default
+  -> no independent Origin coordinate by default
 
 portable semantic data/entity/domain
-  may earn Origin
+  -> may earn one
 
 portable persistence / retention policy
-  may earn its own canonical semantic owner
-  only when that policy itself is independently reusable meaning
+  -> may earn one only when the policy itself is independently reusable meaning
 ~~~
 
-Do not mint `DatabaseOrigin` merely because every target stores data.
+Do not create an Origin-scoped `Database` merely because every target stores data.
 
-Service vocabulary is especially overloaded:
+Service vocabulary is overloaded:
 
 ~~~text
 Android Service / background Service class
   = platform mechanism
-  != Origin
+  -> no independent Origin coordinate
 
 semantic service/capability
-  may earn Origin
-  if one canonical reusable capability definition must project across targets
+  = may earn an Origin-scope coordinate
+    if one canonical reusable capability definition must project across targets
 ~~~
 
-Prefer naming the portable meaning rather than importing a platform form upstream:
+Prefer the portable meaning over platform form:
 
 ~~~text
-NotificationDeliveryOrigin
-PlaybackSessionOrigin
-CatalogSyncProcessOrigin
-  possible semantic owners when independently earned
+origin.<semantic-scope>.NotificationDelivery
+origin.<semantic-scope>.PlaybackSession
+origin.<semantic-scope>.CatalogSyncProcess
+  possible canonical semantic owners when independently earned
 
-AndroidNotificationServiceOrigin
-BroadcastReceiverOrigin
-  wrong pressure by default; leaks target mechanics into canonical meaning
+android....NotificationService
+android....BroadcastReceiver
+  target mechanics unless a different semantic boundary is proven
 ~~~
 
-An Android `BroadcastReceiver` is an event-delivery mechanism. The portable event/domain or process it
-feeds may have an Origin; the receiver itself does not become one merely because it is a named class.
+An Android `BroadcastReceiver` is an event-delivery mechanism. The portable event/domain/process it feeds
+may earn a canonical Origin-scope coordinate; the receiver itself does not merely because it has a class
+name.
 
 ### Movement / Behavior / SCAE edge cases
 
-Movement and behavior verbs do not gain Origin simply because they are reusable:
+Reusable movement/behavior verbs do not become independent Origin objects:
 
 ~~~text
 NavigateTo
@@ -2060,50 +2078,35 @@ Play
 Pause
 Open
 Close
-  != <Verb>Origin
+  = semantic operations / relationships
 ~~~
 
-They are semantic operations / relationships.
+A separately reusable Behavior or Process **definition** may still earn an independent Origin-scope
+coordinate when it has its own canonical meaning and evolution.
 
-A **Behavior definition** or **Process definition** can still earn an Origin when it becomes an
-independently canonical reusable thing:
+Likewise, an `ActId` identifies an admitted semantic Act; identity alone does not require an independent
+Origin-scope coordinate. Ask whether the Act is completely owned by its parent canonical Feature / Process /
+Behavior definition or whether independent canonical ownership is actually needed.
 
-~~~text
-State + Control
--> resolved Act / Effect
+### ConvergenceRelay as an architecture-component edge case
 
-the generic Behavior relationship
-  != BehaviorOrigin
+The same test applies to architecture components.
 
-a separately reusable behavior policy/domain
-  may earn an Origin if independent ownership is proven
-~~~
-
-Likewise, an `ActId` identifies an admitted semantic Act; the existence of an Act identity does not
-automatically imply an `ActOrigin`. Ask whether the Act definition is completely owned by its parent
-Feature/Process/Behavior Origin or requires its own canonical reusable boundary.
-
-### ConvergenceRelay as the architecture-component edge case
-
-The same Origin test can apply to architecture components. The current VexBoard foundation already allows
-the recursive Origin/realization pattern to operate at scales beyond UI, including process and architecture
-components.
-
-For `ConvergenceRelay`, the question is not whether "Relay" is a noun. Ask:
+For `ConvergenceRelay`, ask:
 
 ~~~text
 Is there one canonical reusable ConvergenceRelay meaning / contract?
 Do several implementations / projections / consumers need to descend from it?
 Would independent definitions recreate the continuity / provenance / ownership drift it exists to solve?
-Does it evolve independently enough to need its own canonical traceable boundary?
+Does it evolve independently enough to need its own canonical traceable coordinate?
 ~~~
 
-If yes, `ConvergenceRelayOrigin` is a legitimate candidate.
+If yes, `origin.<semantic-scope>.ConvergenceRelay` is a legitimate candidate while target realizations
+retain the noun `ConvergenceRelay`.
 
 If the currently accepted ConvergenceRelay source is already the sole canonical definition and there is no
-separate realization-vs-Origin distinction to express, adding the postfix may be redundant. Apply the
-Origin boundary because it clarifies canonical-vs-realization ownership, not because architecture nouns
-deserve decoration.
+separate canonical-vs-realization coordinate to express, adding another Origin-scope object may be
+redundant. Architecture nouns do not receive canonical coordinates merely for symmetry.
 
 ### Default Before Binary
 
@@ -2152,12 +2155,10 @@ ThemeMode.Light
 ThemeMode.Dark
 ~~~
 
-are the strongest intrinsic state names because they describe what each mode is.
+remain the strongest intrinsic state names because they describe the modes themselves.
 
-`Primary` / `Secondary` are currently better understood as relative roles such as ordering, emphasis or
-design preference unless product meaning explicitly defines themes by those identities. Renaming Light to
-Primary would make the state identity depend on which mode happens to be preferred/default; changing the
-default later could then force a semantic rename without the visual state itself changing.
+`Primary` / `Secondary` are relative roles unless product meaning explicitly defines themes by those
+identities. Changing which mode is preferred/default should not require renaming the semantic state.
 
 If product pressure establishes Light as the initial/default mode, represent that separately:
 
@@ -2170,11 +2171,10 @@ default ThemeMode
   Light
 ~~~
 
-That default-selection statement remains a current design question until grounded product evidence earns
-it. Do not infer it merely because Light is conventional or listed first.
+That default-selection statement remains open until grounded product evidence earns it.
 
 If a future product adds a true selectable mode such as `System` / `FollowSystem`, that is a new
-ThemeMode value, not merely a change to the default policy.
+ThemeMode value, not merely a change to default policy.
 
 ### Select survives future value growth
 
@@ -2186,8 +2186,6 @@ Select(ThemeMode.<value>)
 
 rather than `Toggle`.
 
-This is not only cleaner for the current two values. It also preserves forward compatibility:
-
 ~~~text
 Light / Dark
 -> Select continues to work
@@ -2197,21 +2195,23 @@ later third admitted ThemeMode
 -> no semantic operation migration required
 ~~~
 
-A Toggle can still realize two-state behavior in a target or explicit design, but it is downstream of the
+A Toggle may still realize two-state behavior in a target or explicit design, but it is downstream of the
 semantic relationship.
 
-The next Walk Frontier is now:
+### Current next Walk Frontier
 
 ~~~text
-ThemeModeOrigin
-  value domain = Light / Dark
+Origin scope:
+  ThemeMode
+    value domain = Light / Dark
 
 OPEN
   determine the minimum-complete default-selection semantics:
     is there an explicit product default?
     who/what selects it when no user choice exists?
     is that default persisted / inherited / target-selected?
-    does the default belong to ThemeModeOrigin or to an application policy owner?
+    does default selection belong intrinsically to ThemeMode
+    or to a separate application/product/environment policy owner?
 
 THEN
   continue into current-state ownership / selection consequence / design form

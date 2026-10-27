@@ -55,17 +55,9 @@ human pressure / original question
 The purpose is causal continuity, not private chain-of-thought. Preserve the externally useful reasons,
 examples, counterexamples and evidence that explain why the current model exists.
 
-## Inherited exemplar 1 — Origin postfix / same noun across target realizations
+## Inherited exemplar 1 — canonical/realization naming pressure
 
-**Currentness:** `CURRENT_SIBLING_CANDIDATE_REFERENCE`.
-
-**Source coordinate:** VexBoard PR #155,
-`projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md`.
-
-**Important boundary:** PR #155 remains draft/unmerged. This is current VexBoard candidate reasoning,
-not accepted VexWork-main doctrine.
-
-The worked example is:
+**Historical source state:** VexBoard PR #155 supplied this then-current candidate:
 
 ~~~text
 origin.vexlife.vexstream.ConnectionStatusOrigin
@@ -75,38 +67,47 @@ desktop.vexlife.vexstream.ConnectionStatus
 web.vexlife.vexstream.ConnectionStatus
 ~~~
 
-The reasoning carried by the example is:
+It established the important distinction that survived:
 
 ~~~text
 ConnectionStatus
   = reusable semantic noun
 
-namespace/scope
-  = where that definition or realization lives
-
-Origin postfix
-  = marks the canonical reusable definition when the distinction is needed
-
-SAME ORIGIN
-+ DIFFERENT TARGET
--> SAME REUSABLE SEMANTIC NAME
--> DIFFERENT REALIZATION SCOPE
+origin / android / desktop / web
+  = different canonical/realization scopes
 
 TARGET DIFFERENCE
 != NEW SEMANTIC NOUN
 ~~~
 
-Why this matters for later naming work:
+At that stage the `Origin` postfix was proposed as the canonical-definition marker.
 
-- the target does not get to rename reusable meaning merely because its mechanics differ;
-- the `Origin` postfix has a specific boundary job rather than being a decoration;
-- already-clear semantic roles do not gain `Origin` merely for symmetry;
-- a new specimen should test whether this pattern applies before inventing another canonical/target
-  naming scheme.
+**Current VexSync refinement:** later consumer pressure applied the Absence/Duplication test to the postfix
+itself and found that a reliable Origin scope already carries canonicality.
 
-**Reopen condition:** materially different consumer evidence shows that preserving the same reusable noun
-across canonical definition and target realizations creates a false semantic equivalence or that the
-postfix no longer identifies the rightful boundary.
+~~~text
+origin.vexlife.vexstream.ConnectionStatus
+android.vexlife.vexstream.ConnectionStatus
+desktop.vexlife.vexstream.ConnectionStatus
+web.vexlife.vexstream.ConnectionStatus
+~~~
+
+The semantic noun is now preserved 1:1. The earlier postfix form remains evidence of how the distinction
+was discovered; it is not the current naming rule.
+
+~~~text
+ORIGIN POSTFIX MODEL
+  = SUPERSEDED naming form
+
+ORIGIN SCOPE
+  = current canonicality carrier
+
+SAME SEMANTIC THING
+-> SAME SEMANTIC NOUN
+~~~
+
+**Reopen condition:** a required representation truly cannot preserve scope/qualification or another
+explicit canonicality coordinate.
 
 ## Inherited exemplar 2 — navigation -> ActId was pressure-tested and rejected
 
@@ -439,6 +440,10 @@ It does not establish a global registry class, constructor API, ID format or tar
 
 
 ## Causal episode — from existing-target reference to from-zero Origin construction
+
+**Historical naming note:** this episode preserves the then-current `<SemanticNoun>Origin` postfix model
+because that was the actual reasoning state when the episode occurred. The later **Origin Scope naming
+correction** below supersedes the postfix form without erasing this causal step.
 
 **Currentness:** `CURRENT_PROJECT_RULE` for the standard-language boundary and
 `CURRENT_WORKING_MODEL` for the still-evolving construction grammar.
@@ -1235,7 +1240,12 @@ Screen Meaning
 So the current foreground frontier remains Screen Meaning. The new design-default rule is inherited when
 the Walk reaches form/composition.
 
-### Causal episode — Screen Meaning to ThemeModeOrigin
+### Causal episode — Screen Meaning to ThemeMode canonical ownership
+
+**Historical naming note:** the text in this episode uses `DebugMenuScreenOrigin` / `ThemeModeOrigin`
+because the independent canonical boundaries were first discovered under the postfix model. The boundaries
+survive; the later naming correction moves canonicality into Origin scope and restores the nouns to
+`DebugMenuScreen` / `ThemeMode`.
 
 The foreground Walk continued rather than assuming the first child.
 
@@ -1321,6 +1331,10 @@ ORIGIN OWNS LIVE RUNTIME VALUE
 ~~~
 
 #### Origin Eligibility inversion — "earn the opposite"
+
+**Historical intermediate conclusion:** this step correctly discovered that canonical boundaries must be
+earned, but it still expressed the result through an `Origin` postfix. The next causal episode preserves
+the refinement from postfix to scope.
 
 The `ThemeModeOrigin` discussion exposed a broader question:
 
@@ -1412,6 +1426,109 @@ architecture noun
   != automatic Origin
 ~~~
 
+#### Origin Scope naming correction — same noun, different scope
+
+The next pressure did not challenge the canonical boundaries themselves. It challenged where canonicality
+was encoded.
+
+~~~text
+earlier model
+  origin....ThemeModeOrigin
+  android....ThemeMode
+
+observation
+  "origin" scope already says which coordinate is canonical
+
+question
+  what does the extra "Origin" in the class/type noun still contribute?
+~~~
+
+Absence Test:
+
+~~~text
+remove postfix
+
+origin....ThemeMode
+android....ThemeMode
+
+lost:
+  no semantic identity
+  no canonicality
+  no traceability
+  no realization relationship
+~~~
+
+Duplication result:
+
+~~~text
+origin....ThemeModeOrigin
+^^^^^^          ^^^^^^
+scope           second encoding of the same canonical role
+~~~
+
+The candidate correction is therefore:
+
+~~~text
+SAME SEMANTIC THING
+-> SAME SEMANTIC NOUN
+
+origin....ThemeMode
+android....ThemeMode
+desktop....ThemeMode
+web....ThemeMode
+
+canonicality / realization
+-> expressed by scope
+
+scope difference
+!= noun difference
+~~~
+
+This is not history rewriting. The earlier commits and causal text preserve why the postfix originally
+looked useful: it made canonical-vs-realization ownership visible. The later pressure shows that once scope
+is reliable, the suffix becomes redundant.
+
+The correction also sharpens Origin Eligibility:
+
+~~~text
+old wording
+  "does this noun earn an Origin postfix?"
+
+current wording
+  "does this semantic thing earn an independent canonical coordinate in Origin scope?"
+~~~
+
+Examples under the current rule:
+
+~~~text
+origin....DebugMenuScreen
+android....DebugMenuScreen
+
+origin....ThemeMode
+android....ThemeMode
+
+origin....PairingProcess
+android....PairingProcess
+~~~
+
+Owned values / verbs / runtime occurrences / target mechanics still do not gain independent canonical
+coordinates merely because they are named:
+
+~~~text
+Light / Dark
+Select / NavigateTo
+currentThemeMode
+VexCoroutineLauncher
+BroadcastReceiver
+Room / DAO / SQLite
+~~~
+
+**Boundary:** if a local code context imports both scoped types and needs shorter names, qualify or alias
+locally. Local collision does not justify permanently mutating the reusable semantic noun.
+
+**Reopen condition:** a required transport/serialization surface cannot preserve scope or another explicit
+canonicality coordinate and local qualification cannot solve the ambiguity.
+
 #### Default Before Binary pressure
 
 The appearance discussion then exposed another inherited Boolean bias.
@@ -1475,11 +1592,23 @@ relationship remains `Select`.
 
 ~~~text
 established
-  DebugMenuScreenOrigin identity + Meaning
-  ThemeMode semantic subject
-  ThemeModeOrigin canonical reusable domain
-  current values: Light / Dark
-  Select(ThemeMode.<value>) as current reusable relationship
+  Origin-scoped DebugMenuScreen identity + Meaning
+
+  Origin-scoped ThemeMode canonical reusable domain
+    current values: Light / Dark
+
+  same semantic nouns across scopes:
+    origin....ThemeMode
+    android....ThemeMode
+    desktop....ThemeMode
+    web....ThemeMode
+
+  Select(ThemeMode.<value>)
+    current reusable relationship
+
+  Origin Scope Eligibility / Exclusion
+    canonical ownership is earned
+    postfix is not the canonicality carrier
 
 next
   determine default-selection semantics without assuming:
@@ -1487,6 +1616,7 @@ next
     first value is default
     default is a selectable state
     Boolean representation is canonical
+    default policy intrinsically belongs to ThemeMode
 ~~~
 
 Then continue into current-state ownership / consequence / design form.
@@ -1495,8 +1625,8 @@ The sequencing/Relay specimen remains a live inherited example for relationships
 current before another dependent consequence.
 
 **Reopen conditions:** new evidence shows ThemeMode is not the correct reusable domain, target consumers
-need materially different state meanings, or default-selection policy cannot be separated cleanly from
-the state domain.
+need materially different state meanings, Origin scope cannot remain reliably addressable, or
+default-selection policy cannot be separated cleanly from state identity.
 
 
 ## Current living specimen
