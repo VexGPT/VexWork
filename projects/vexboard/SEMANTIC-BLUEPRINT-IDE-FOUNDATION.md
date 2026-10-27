@@ -2909,3 +2909,76 @@ trustworthy posture:
 > appropriate, prove what happened, and return without losing context.
 
 <!-- [VXG RealForever][VEXWORK][VEXBOARD][SEMANTIC-BLUEPRINT-IDE][FOUNDATION] -->
+
+
+## Feature workspace auxiliary drawer — ThemeMode patient zero
+
+The Debug Menu / ThemeMode Origin Walk adds one bounded workspace lesson without changing BoardGraph:
+
+~~~text
+Board
+  = primary spatial working surface
+  = full available width by default
+
+Auxiliary drawer
+  = optional supporting context
+  = one mode at a time
+  = closable
+
+current modes
+  Inspect
+  Library
+  Feature Context
+~~~
+
+Permanent projection distinction:
+
+~~~text
+DRAWER OPEN/CLOSED
+!= BOARDGRAPH CHANGE
+
+LIBRARY CONTENT
+!= COPIED FEATURE SOURCE
+
+FEATURE CONTEXT
+!= SECOND VEXWORK OWNER
+~~~
+
+For the ThemeMode patient zero, Library begins with **Used here** and makes status explicit:
+
+~~~text
+ThemeMode
+  established working meaning
+
+control.debug-menu.theme-mode
+  established working identity
+
+ThemeModeToggle
+  candidate relationship language
+
+Theme persistence owner
+  unresolved
+
+ThemeMode ConvergenceRelay
+  not established
+~~~
+
+The point is not to introduce a universal project-library schema from one example. The drawer gives a
+human and AI a nearby discovery surface while the Board stays readable. Wider project inventory is
+browse-on-demand.
+
+Feature Context carries bounded refs back to the rightful VexWork source and offers navigation there.
+It should progressively consume source-owned VexWork projection/currentness rather than becoming a
+manually maintained second Work summary.
+
+Current patient zero:
+
+~~~text
+board.vexlife.debug-menu.theme-mode.origin-walk
+-> projects/vexboard/examples/vexlife-debug-menu-theme-mode.board.json
+-> VexSync ThemeMode Origin Walk source refs
+~~~
+
+The patient-zero Board deliberately keeps the persistence owner unresolved. VexBoard must be able to
+show an architectural gap without filling it with invented repository/Relay structure merely to make
+the picture look complete.
