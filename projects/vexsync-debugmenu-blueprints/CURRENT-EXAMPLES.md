@@ -2617,3 +2617,53 @@ idea
 ~~~
 
 <!-- [VXG RealForever][VEXSYNC][CURRENT-EXAMPLES][PROCESS-DISCOVERY] -->
+
+
+### Saved checkpoint — operation-owned results, next scope questions
+
+The async Effect notation is currently:
+
+~~~text
+effect = begin {
+  operation(...)
+    .results {
+      Success { ... }
+      Failure { ... }
+      Stale { ... }
+    }
+}
+~~~
+
+The `.results` block belongs structurally to the operation that returns those leaves. It is exhaustive;
+a reachable result case cannot disappear merely because the usual path succeeds quickly.
+
+Existing SCAE terminators remain the immediate semantic choice:
+
+~~~text
+.stay()
+  -> current semantic State stays current while the Effect runs
+
+.admit<Next>()
+  -> Next is admitted immediately; later results may confirm, preserve or correct
+~~~
+
+The Walk now pauses before another syntax decision.
+
+Next questions:
+
+~~~text
+lifecycle scope
+  what owns begun work if the initiating Screen disappears?
+
+confirm scope
+  what exact currentness/attempt/transition truth does confirm() confirm?
+
+returned success value
+  how is returned State/value made available to later semantic logic?
+
+local variables
+  no arbitrary local-variable role has yet been justified in Origin;
+  important values should remain source-addressable by their semantic role
+~~~
+
+This is the resume coordinate.
