@@ -1089,6 +1089,152 @@ destination realization failure
 
 instead of collapsing all of them into "navigation is broken."
 
+### New pressure — semantic design exists before visual design is specified
+
+After the Screen-boundary reasoning, another ambiguity appeared:
+
+~~~text
+human has specified the capability / outcome
+but has not specified visual form or positioning
+
+question:
+  if every Builder/target fills that gap independently,
+  does design become random each time?
+~~~
+
+The proposed response was not to push layout into semantic Meaning. The current distinction is:
+
+~~~text
+Origin / product meaning
+  what / why / semantic relationships
+
+Design intent
+  form / composition / positioning / responsive constraints
+
+Target construction
+  platform realization of the accepted meaning + design
+~~~
+
+When explicit design is absent, a **Default Design Intention** can resolve the design gap deterministically.
+
+### Why a default is preferable to silent creativity
+
+Without a default:
+
+~~~text
+same Origin meaning
+-> Android Builder improvises presentation A
+-> Desktop Builder improvises presentation B
+-> Web Builder improvises presentation C
+-> repeated generation may make different choices again
+~~~
+
+The semantic meaning may still be shared, but visual/product intention becomes target- or instance-owned
+by accident.
+
+The current response is:
+
+~~~text
+explicit design if provided
+else accepted reusable default design intention
+then target construction
+~~~
+
+A later explicit design may refine/replace the default without reminting unaffected semantic identities.
+
+### Form-choice example — cardinality helps but does not fully decide
+
+The initial suggestion was intentionally practical:
+
+~~~text
+2 states
+-> Toggle
+
+3+ values
+-> Dropdown
+~~~
+
+This is useful default pressure, but the Walk exposed one necessary refinement:
+
+~~~text
+choice meaning
++ cardinality
++ visibility/comparison pressure
++ available design space
+-> default form
+~~~
+
+Thus a binary on/off-like property strongly supports a Toggle. Two peer values whose names must remain
+visible may later earn another two-choice form. Several values support a compact multi-option selector /
+Dropdown by default, while explicit design can choose visible options when that better serves the meaning.
+
+The important rule is deterministic reasoning rather than random form selection.
+
+### Composition example — scalable row growth
+
+For a Debug/Settings-like Screen with independent row-like controls and no authored layout, the current
+default candidate is:
+
+~~~text
+ordered vertical flow
+-> stacked rows / bounded sections
+-> future children inserted into the same flow
+~~~
+
+This avoids absolute-position improvisation and gives later capabilities a predictable place to compose.
+
+It remains a default for this class of Screen, not a universal Screen ontology.
+
+### Scrolling example — derive mechanism from reachability
+
+The initial instinct was "scroll by default because Screens differ."
+
+The refined invariant is stronger:
+
+~~~text
+all admitted content must remain reachable
+across supported viewport variation
+unless an explicit design intentionally constrains that reachability
+~~~
+
+For vertically growing content:
+
+~~~text
+overflow possible
+-> scroll-capable container by default
+~~~
+
+The scroll belongs at the rightful overflow owner:
+
+~~~text
+whole content grows -> Screen/body scroll
+only subregion grows -> subregion scroll
+fixed/game/canvas experience -> explicit non-scroll design may win
+~~~
+
+This avoids treating Scroll itself as the product meaning while still preventing smaller form factors from
+silently hiding content.
+
+### Why this does not move the Walk Frontier ahead of semantics
+
+The default-design rule answers a future ambiguity about **how unspecified presentation is resolved**.
+
+It does not authorize designing ThemeMode before the semantic child is earned.
+
+The sequence remains:
+
+~~~text
+Screen Meaning
+-> derive required child/capability
+-> establish that child's semantic meaning / values / relationships
+-> consume explicit design if supplied
+-> otherwise resolve through Default Design Intention
+-> target construction
+~~~
+
+So the current foreground frontier remains Screen Meaning. The new design-default rule is inherited when
+the Walk reaches form/composition.
+
 ### Current Walk Frontier
 
 The next foreground Origin Walk remains the first construction-grade Screen boundary:

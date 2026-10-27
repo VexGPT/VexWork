@@ -1525,6 +1525,188 @@ originating semantic cause
 The Bypass Test demonstrates why the Relay boundary matters: bypassing it forces callers to recreate
 state transport, provenance and destination coupling independently.
 
+### Unspecified design ambiguity — Default Design Intention
+
+A human request may establish product meaning and required capabilities without specifying visual form,
+positioning or responsive behavior.
+
+That must not make target construction creative/random by default.
+
+The current working term is **Default Design Intention**:
+
+> a deterministic reusable design choice used when explicit product/design intent is absent, derived from
+> already-earned semantic meaning plus reusable presentation/constraint rules, and replaceable by later
+> explicit design without reminting unaffected semantic identities.
+
+The precedence is:
+
+~~~text
+explicit human / accepted product design
+  > accepted feature-specific design
+  > reusable Default Design Intention
+  > target-native implementation mechanics
+~~~
+
+~~~text
+DESIGN UNSPECIFIED
+!= DESIGN RANDOM
+
+DEFAULT DESIGN INTENTION
+!= SEMANTIC MEANING
+!= TARGET TEMPLATE
+!= PERMANENT FINAL DESIGN
+~~~
+
+Origin meaning answers what/why. The Design lens answers intended form, composition, positioning and
+constraints. A target template may repeat how an already-resolved design is constructed; it does not get
+to invent that design independently.
+
+If later explicit design replaces a default, preserve the semantic identities and record the design
+refinement rather than treating the earlier default as immutable product truth.
+
+### Default form resolution — semantics first, cardinality informs form
+
+A Control's semantic relationship must be known before default form is selected.
+
+A useful starting heuristic is:
+
+~~~text
+one semantic property with two mutually exclusive states
+  -> two-state choice
+  -> default candidate: Toggle
+
+one semantic choice with several mutually exclusive values
+  -> multi-option choice
+  -> default candidate: compact Selector / Dropdown
+
+explicit product/design pressure
+  -> may choose a different admitted form
+~~~
+
+Cardinality alone is not enough to declare universal form:
+
+~~~text
+NUMBER OF VALUES
+  informs form
+
+NUMBER OF VALUES
+  != complete design meaning
+~~~
+
+For example, two named peer choices whose labels must remain simultaneously visible may later earn a
+different two-choice presentation than a conventional on/off Toggle. Likewise, a small multi-option set
+may earn visible choices instead of a Dropdown when comparison/visibility matters.
+
+The invariant is that all targets preserve the same **choice meaning**; familiar target-native rendering
+mechanics remain underneath the selected portable design form.
+
+### Default screen composition — deterministic growth instead of random positioning
+
+For a settings/debug-style destination whose children are independent row-like interactions and no
+different composition is authored, the current default candidate is:
+
+~~~text
+Screen content
+  -> one ordered vertical flow
+  -> children presented as stacked rows / bounded sections
+  -> semantic/source order determines initial sibling order
+  -> future admitted children can be inserted without inventing absolute coordinates
+~~~
+
+This is a **default design candidate**, not a law that every Screen is a list. A game, canvas, dashboard,
+media surface or deliberately spatial composition may earn a different design.
+
+The important ambiguity rule is:
+
+~~~text
+NO EXPLICIT POSITIONING
+-> USE THE ACCEPTED DEFAULT COMPOSITION RULE
+
+not
+
+NO EXPLICIT POSITIONING
+-> GENERATE NEW POSITIONING BY TASTE EACH TIME
+~~~
+
+### Reachability is the invariant; scrolling is the default overflow mechanism
+
+The deeper requirement is not "every Screen must scroll." It is:
+
+> Every admitted child that belongs to the experience should remain perceptibly reachable across supported
+> viewport variation unless the design explicitly intends a different containment/paging/clipping behavior.
+
+For vertically growing row composition, the default realization is therefore a scroll-capable content
+region.
+
+~~~text
+CONTENT REACHABILITY
+  = design invariant
+
+SCROLL
+  = default overflow mechanism when content can exceed the available viewport
+
+SCROLL LOCK / NON-SCROLLING SURFACE
+  = explicit design constraint when the product meaning requires it
+~~~
+
+The scroll owner should be the smallest meaningful container that owns the overflow:
+
+~~~text
+full Screen content grows
+  -> Screen content region may scroll
+
+fixed header + growing body
+  -> body may scroll while header remains fixed
+
+bounded subregion grows
+  -> that region may scroll
+
+game / canvas / deliberately fixed viewport
+  -> no scrolling when that is explicit design meaning
+~~~
+
+This avoids both failure modes:
+
+~~~text
+"everything scrolls"
+  -> ignores deliberate fixed/spatial design
+
+"nothing scrolls unless someone remembered to ask"
+  -> loses content on smaller/different form factors
+~~~
+
+The reusable design principle is therefore:
+
+~~~text
+viewport differences
+-> preserve content reachability
+
+default overflow
+-> scrolling at the rightful container
+
+intentional non-scroll
+-> explicit constraint with a reason
+~~~
+
+### Design defaults must survive the same Origin Walk questions
+
+A default is a proposed reusable solution, so Standardization / Architecture Re-entry applies to it too.
+
+Before making a default broadly reusable, ask:
+
+~~~text
+What ambiguity does this default remove?
+What cases does it solve?
+What product meanings does it accidentally constrain?
+What happens when 2 / 20 / 200 children exist?
+Can a later explicit design replace it without semantic migration?
+Does it improve consistency/debuggability across targets?
+Does it create another independent design truth that targets must synchronize?
+~~~
+
+A good default should reduce ambiguous design decisions while remaining visibly overridable and
+source-traceable.
+
 ### Current Origin Walk frontier
 
 The accepted from-zero construction model already earned:
