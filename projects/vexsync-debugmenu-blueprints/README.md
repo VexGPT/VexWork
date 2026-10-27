@@ -1709,32 +1709,232 @@ source-traceable.
 
 ### Current Origin Walk frontier
 
-The accepted from-zero construction model already earned:
+The current Walk has now earned the first Screen boundary and its minimum-complete Meaning.
 
 ~~~text
-Screen requires stable semantic identity
-  DebugMenuScreenOrigin
-    screenId = screen.debug-menu
+DebugMenuScreenOrigin
+  screenId = screen.debug-menu
+
+  meaning:
+    A deliberately separate development/debug destination for presenting admitted
+    development/debug interactions outside the ordinary user experience, while leaving
+    each capability's semantic state and behavior with its rightful owner.
 ~~~
 
-The next Origin Step is **Screen Meaning**, interpreted as minimum-complete meaning rather than a short
-description:
+The conclusion was earned from:
 
 ~~~text
-WHAT
-WHY
-pressures resolved
-invariants
-relational role
-absence / boundary consequences
+CIRCUMSTANCE
+  the human request explicitly asks to enter a Debug Menu and choose Light / Dark there
+
+CONSEQUENCE / PRESSURE
+  collapsing the interaction into Home removes the requested destination separation;
+  using an anonymous container recreates a boundary without durable semantic meaning;
+  later children need a stable presentation context without making the Screen their state owner
+
+RESPONSE / CANDIDATE SOLUTION
+  one independently addressable DebugMenuScreenOrigin
+
+RESOLUTION EVIDENCE
+  Home can NavigateTo(screen.debug-menu);
+  the requested interaction can be presented there;
+  child state remains with its rightful owner;
+  changing children does not require reminting the Screen
 ~~~
 
-Use those questions to determine why `DebugMenuScreenOrigin` deserves its own Screen boundary before
-adding children merely because the initial request names them.
+Boundary:
 
-Once that meaning survives pressure, ask what first child/capability is required to fulfill it. The
-theme-selection specimen can then re-enter as a child Origin Walk, carrying the sequencing/provenance rule
-when its state or presentation behavior requires it.
+~~~text
+DebugMenuScreenOrigin owns
+  Screen identity
+  Screen meaning
+  presentation/composition context
+  admission of children into that context
+
+it does not automatically own
+  child semantic State
+  child Behavior / Act / Effect
+  target navigation mechanics
+  every capability that is merely "developer related"
+~~~
+
+The established Meaning now derives the first required capability from the human request:
+
+~~~text
+required capability
+  choose the application's Light / Dark theme mode
+~~~
+
+### ThemeMode — semantic subject and Origin ownership
+
+Pressure-testing candidate nouns gives:
+
+~~~text
+DarkMode
+  names one state / privileges Dark
+  -> not the reusable subject
+
+Appearance
+  may absorb typography / density / contrast / motion / other neighboring concerns
+  -> broader than the current feature proves
+
+ThemeMode
+  names the current selectable dimension
+  -> Light / Dark are peer values
+  -> does not prescribe widget, target representation or storage
+~~~
+
+Current semantic subject:
+
+~~~text
+ThemeMode
+  Light
+  Dark
+~~~
+
+The earlier Walk correctly held `ThemeModeOrigin` until independent canonical ownership was justified.
+That justification is now present:
+
+~~~text
+same semantic ThemeMode
+-> multiple target realizations / consumers
+-> one canonical definition is required
+   so each target does not independently define values, defaults or future evolution
+~~~
+
+Therefore the current working model earns:
+
+~~~text
+ThemeModeOrigin
+  canonical reusable definition of the ThemeMode domain
+  owns the meaning of admitted ThemeMode values
+  owns reusable domain evolution / provenance
+
+Android ThemeMode
+Desktop ThemeMode
+Web ThemeMode
+  realize the same reusable domain
+
+current ThemeMode value
+  runtime/application state
+  != stored live value in the Origin definition
+~~~
+
+This is the same Origin-postfix law already earned by the ConnectionStatus exemplar: the reusable noun
+stays `ThemeMode`; `Origin` identifies the canonical definition.
+
+### Default Before Binary
+
+Two currently admitted values do not by themselves justify Boolean/binary semantics.
+
+Before treating a state domain as binary, ask:
+
+~~~text
+1. What are the named semantic states?
+
+2. What is the default selection when no prior/current user choice exists?
+
+3. Is "default" itself a selectable semantic state,
+   or is it an initialization / fallback / inheritance policy?
+
+4. Are both states peer meanings,
+   or is one merely represented as "not the other"?
+
+5. Can a future admitted value be added without changing
+   the human-intentional operation or remapping existing state identities?
+~~~
+
+Current principle:
+
+~~~text
+CONSIDER DEFAULT STATE / DEFAULT-SELECTION POLICY
+BEFORE
+COLLAPSING A TWO-VALUED DOMAIN INTO BINARY REPRESENTATION
+
+CURRENTLY TWO VALUES
+!= BOOLEAN SEMANTICS
+
+DEFAULT SELECTION
+!= STATE IDENTITY
+
+DEFAULT
+!= FIRST ENUM VALUE
+!= FALSE BRANCH
+!= PRIMARY merely because it appears first
+~~~
+
+For the current specimen:
+
+~~~text
+ThemeMode.Light
+ThemeMode.Dark
+~~~
+
+are the strongest intrinsic state names because they describe what each mode is.
+
+`Primary` / `Secondary` are currently better understood as relative roles such as ordering, emphasis or
+design preference unless product meaning explicitly defines themes by those identities. Renaming Light to
+Primary would make the state identity depend on which mode happens to be preferred/default; changing the
+default later could then force a semantic rename without the visual state itself changing.
+
+If product pressure establishes Light as the initial/default mode, represent that separately:
+
+~~~text
+ThemeMode values
+  Light
+  Dark
+
+default ThemeMode
+  Light
+~~~
+
+That default-selection statement remains a current design question until grounded product evidence earns
+it. Do not infer it merely because Light is conventional or listed first.
+
+If a future product adds a true selectable mode such as `System` / `FollowSystem`, that is a new
+ThemeMode value, not merely a change to the default policy.
+
+### Select survives future value growth
+
+The current human-intentional relationship remains:
+
+~~~text
+Select(ThemeMode.<value>)
+~~~
+
+rather than `Toggle`.
+
+This is not only cleaner for the current two values. It also preserves forward compatibility:
+
+~~~text
+Light / Dark
+-> Select continues to work
+
+later third admitted ThemeMode
+-> add another selectable value
+-> no semantic operation migration required
+~~~
+
+A Toggle can still realize two-state behavior in a target or explicit design, but it is downstream of the
+semantic relationship.
+
+The next Walk Frontier is now:
+
+~~~text
+ThemeModeOrigin
+  value domain = Light / Dark
+
+OPEN
+  determine the minimum-complete default-selection semantics:
+    is there an explicit product default?
+    who/what selects it when no user choice exists?
+    is that default persisted / inherited / target-selected?
+    does the default belong to ThemeModeOrigin or to an application policy owner?
+
+THEN
+  continue into current-state ownership / selection consequence / design form
+  without collapsing default policy into Boolean semantics
+~~~
 
 
 ## Current Work edges
