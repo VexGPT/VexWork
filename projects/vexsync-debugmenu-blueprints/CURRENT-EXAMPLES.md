@@ -2939,3 +2939,168 @@ same semantic relationship
 ~~~
 
 A future AI should use the examples to ask fewer invented questions, not to generate more architecture.
+
+
+## VexBoard ThemeMode workspace mock — bounded patient zero
+
+This mock is an interaction/readability contract, not final pixels.
+
+### Drawer closed — default
+
+~~~text
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ Debug Menu / Theme Mode                 [Library] [Feature Context]          │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│                               BOARD                                         │
+│                                                                             │
+│     UI                                              LOGIC                    │
+│                                                                             │
+│  ┌─────────────┐                            ThemeMode                        │
+│  │   Switch    │                            ├─ Light                         │
+│  │ active=Dark │                            └─ Dark                          │
+│  └──────┬──────┘                                │                            │
+│         │ activate                              │                            │
+│         └──── control.debug-menu.theme-mode ────┤                            │
+│                                                  ▼                           │
+│                                            ThemeModeToggle                   │
+│                                                  │                           │
+│                                             Behavior                         │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+~~~
+
+The Board gets the full horizontal space by default.
+
+### Library open — same feature, one auxiliary drawer
+
+~~~text
+┌──────────────────────────────────────────────────────┬──────────────────────┐
+│ Debug Menu / Theme Mode                             │ Library          [×] │
+├──────────────────────────────────────────────────────┤                      │
+│                                                      │ USED HERE            │
+│                     BOARD                            │                      │
+│                                                      │ ThemeMode            │
+│  Switch ── Control ──> ThemeModeToggle              │ Light | Dark         │
+│                          │                           │                      │
+│                       Behavior                       │ Theme control        │
+│                                                      │                      │
+│                                                      │ Theme persistence    │
+│                                                      │ owner: unresolved    │
+│                                                      │                      │
+│                                                      │ Browse project ▸     │
+└──────────────────────────────────────────────────────┴──────────────────────┘
+~~~
+
+The Library defaults to **Used here**. Wider project inventory is opt-in.
+
+### Feature Context open — replaces Library, does not stack beside it
+
+~~~text
+┌──────────────────────────────────────────────────────┬──────────────────────┐
+│ Debug Menu / Theme Mode                             │ Feature Context [×] │
+├──────────────────────────────────────────────────────┤                      │
+│                                                      │ Project              │
+│                     BOARD                            │ VexSync DebugMenu     │
+│                                                      │ Blueprints           │
+│  Switch ── Control ──> ThemeModeToggle              │                      │
+│                          │                           │ Current work         │
+│                       Behavior                       │ ThemeMode Origin Walk │
+│                                                      │                      │
+│                                                      │ Current frontier    │
+│                                                      │ persistence owner   │
+│                                                      │ observation path    │
+│                                                      │                      │
+│                                                      │ Open VexWork source │
+└──────────────────────────────────────────────────────┴──────────────────────┘
+~~~
+
+### Supporting-surface rule
+
+~~~text
+Inspect open
+  -> Library closed
+  -> Feature Context closed
+
+Library open
+  -> Inspect closed
+  -> Feature Context closed
+
+Feature Context open
+  -> Inspect closed
+  -> Library closed
+
+all closed
+  -> full-width Board
+~~~
+
+This avoids the failure mode:
+
+~~~text
+toolbar | library | canvas | inspector | feature context | source
+~~~
+
+where every individually useful surface makes the whole feature unreadable.
+
+### Library truth-status example
+
+The drawer must distinguish established meaning from work-in-progress design:
+
+~~~text
+ThemeMode
+  ESTABLISHED WORKING MEANING
+
+control.debug-menu.theme-mode
+  ESTABLISHED WORKING IDENTITY
+
+ThemeModeToggle
+  CANDIDATE LANGUAGE / RELATIONSHIP
+
+Theme persistence owner
+  UNRESOLVED
+
+ThemeMode ConvergenceRelay
+  NOT ESTABLISHED
+~~~
+
+Do not make an unresolved item look like an available reusable dependency.
+
+### VexWork relationship
+
+Feature Context should reference, not duplicate:
+
+~~~text
+project.vexsync.debugmenu-blueprints
+work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery
+github.pull.vexwork.178
+~~~
+
+The existing VexWork Project source projector proves the read-only direction:
+
+~~~text
+rightful VexWork truth
+-> bounded VexBoard projection
+-> human context/navigation
+
+not:
+
+VexBoard drawer
+-> second copy of Work truth
+~~~
+
+### Handoff to current VexBoard implementation
+
+Current VexBoard PR #155 already owns the renderer/Origin-IDE implementation paths needed to realize
+this experience. This VexSync lane deliberately does not edit those paths concurrently.
+
+The implementation owner should consume this specimen with the smallest change that preserves:
+
+~~~text
+full Board by default
+one closable auxiliary drawer
+mutually-exclusive Inspect / Library / Feature Context modes
+Library defaults to Used here
+Feature Context is read-only VexWork projection
+unresolved Library entries remain visibly unresolved
+no new universal repository/Relay ontology from this one specimen
+~~~
