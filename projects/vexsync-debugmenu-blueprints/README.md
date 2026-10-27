@@ -2928,6 +2928,319 @@ then
 ~~~
 
 
+
+### Current Origin Walk — UI/form and SCAE behavior are now paired
+
+Later pressure supersedes the earlier temporary `Select(target)`-first model above.
+
+The current Debug Menu specimen now starts from the **actual UI form** because form constrains the
+semantic Control that a human is using.
+
+~~~text
+same established identity
+  control.debug-menu.theme-mode
+
+LOGIC LENS                         UI / FORM LENS
+-------------------------------    --------------------------------
+ThemeMode                          screen.debug-menu
+  Light
+  Dark
+
+Control                            Switch
+  ThemeModeToggle                    ref = control.debug-menu.theme-mode
+                                     activate -> Control.ThemeModeToggle
+
+candidate Acts                     active
+  SelectDark                         <- current ThemeMode == Dark
+  SelectLight
+~~~
+
+This corrects two earlier drifts:
+
+~~~text
+ButtonClick / touch / keyboard
+  = target/input activation mechanics
+  != semantic Control
+
+ThemeMode
+  = State/domain meaning
+  != container for State + Control + Behavior + UI
+~~~
+
+The reusable parent for the `state<> / on() / admit()` law is the **Behavior** construction pattern,
+matching the existing Android SCAE implementation:
+
+~~~text
+Control
+  -> candidate Act(s)
+
+Behavior
+  state<CurrentState> {
+    on(
+      act = ...,
+      effect = ...
+    )
+    .admit<NextState>()
+  }
+~~~
+
+For the Switch specimen, the current working law is:
+
+~~~text
+Control ThemeModeToggle
+  candidate Acts:
+    SelectDark
+    SelectLight
+
+behavior(
+  ref = behavior.theme-mode
+) {
+  state<ThemeMode.Light> {
+    on(
+      act = SelectDark,
+      effect = PersistThemeMode
+    )
+    .admit<ThemeMode.Dark>()
+  }
+
+  state<ThemeMode.Dark> {
+    on(
+      act = SelectLight,
+      effect = PersistThemeMode
+    )
+    .admit<ThemeMode.Light>()
+  }
+}
+~~~
+
+The exact reusable Act / Effect syntax is still discovery language. The relationship is the earned
+part:
+
+~~~text
+Control + CURRENT State
+-> resolved Act
+
+CURRENT State + Act
+-> Effect + immediately admitted semantic State
+~~~
+
+### Persistence Effect — admission is not persistence success
+
+The ThemeMode specimen now deliberately includes persistence because a user-visible preference that is
+expected to survive has a second truth question: whether the selected value became durable.
+
+~~~text
+admit<ThemeMode.Dark>()
+!=
+persistence succeeded
+~~~
+
+The current working relationship is:
+
+~~~text
+Behavior resolves SelectDark
+-> Effect requests persistence of the admitted/result ThemeMode
+-> ThemeMode.Dark is admitted immediately as current application truth
+-> UI may reflect Dark immediately
+-> persistence completes asynchronously
+-> completion is observed/reconciled separately
+~~~
+
+A repository/storage mechanism such as Android SharedPreferences is target realization, not portable
+Origin vocabulary. Origin needs the semantic repository/persistence relationship; the target mapping
+chooses SharedPreferences/DataStore/SQL/etc. as appropriate.
+
+The current truth distinction is:
+
+~~~text
+ThemeMode
+  = current application theme truth
+
+ThemeMode persistence currentness
+  = whether that selected truth is durably preserved
+~~~
+
+The repository/durable owner may restore initial current ThemeMode at startup, but a user interaction
+does not need to block UI on a round-trip read before current application State may change.
+
+### Observation/reconciliation is a second Behavior input path
+
+Asynchronous completion must not be faked as another human Control.
+
+~~~text
+CONTROL-DRIVEN PATH
+
+Control
++ current State
+-> Act
+-> Effect
+-> immediate admit<State>
+
+
+OBSERVATION / RESULT PATH
+
+Effect completion / durable observation
++ current State/current transition
+-> reconcile
+-> confirm / preserve / correct admitted State
+~~~
+
+This is the same class of distinction already proven by portable Playback:
+
+~~~text
+admitted intent
+!= provider acknowledgement
+
+newer admitted truth
+survives stale later observation
+~~~
+
+For persistence, completion can yield at least:
+
+~~~text
+Pending
+Saved
+Failed
+~~~
+
+and sequence/currentness must prevent an older write result from overwriting a newer admitted selection.
+
+Example:
+
+~~~text
+Light
+-> SelectDark
+-> admit Dark
+-> persist Dark   [A]
+
+Dark
+-> SelectLight
+-> admit Light
+-> persist Light  [B]
+
+B completes
+-> current / confirm Light
+
+A completes later
+-> stale
+-> MUST NOT overwrite current Light
+~~~
+
+The exact reusable observation/reconciliation syntax remains OPEN. What is established is that
+asynchronous reality may return the same or a different truth and must be processed through currentness
+rather than blindly reapplied.
+
+### Every reachable leaf requires an explicit presentation disposition
+
+Persistence currentness is not allowed to disappear merely because success is normally fast.
+
+~~~text
+EVERY REACHABLE BEHAVIOR LEAF
+-> explicit presentation disposition
+
+SUPPRESSED OR DELAYED VISIBILITY
+!= UNMODELED STATE
+~~~
+
+For the current persistence example:
+
+~~~text
+Pending
+  -> presentation disposition REQUIRED
+
+Saved
+  -> presentation disposition REQUIRED
+
+Failed
+  -> presentation disposition REQUIRED
+~~~
+
+A product may choose, for example, to delay revealing a very short Pending state so "Saving..." does
+not flash, or to keep Saved persistently/temporarily visible. Those are explicit UI policies, not
+permission to omit the state.
+
+This makes the completed Blueprint inspectable by nontechnical humans:
+
+~~~text
+"What happens while it is saving?"
+"What proves it saved?"
+"What happens if it fails?"
+"Can an old completion overwrite my newer choice?"
+"Why is a state not visually shown?"
+~~~
+
+The system should have a source-grounded answer instead of relying on developer intuition after failure.
+
+### Current frontier after these decisions
+
+Established current working model:
+
+~~~text
+Screen
+  screen.debug-menu
+
+State/domain
+  ThemeMode
+    Light
+    Dark
+
+UI form
+  Switch
+    ref = control.debug-menu.theme-mode
+    activate -> ThemeModeToggle
+    active <- current ThemeMode == Dark
+
+Control
+  ThemeModeToggle
+  -> candidate Acts SelectDark / SelectLight
+
+Behavior parent
+  reusable behavior(...) construction
+  -> state<> / on(act,effect) / admit<> relationships
+
+Effect responsibility in this specimen
+  persistence request for the admitted/result ThemeMode
+
+admit<>
+  immediate semantic admission
+  != persistence acknowledgement
+
+asynchronous completion
+  observation/reconciliation path
+  -> same/current confirmation
+  -> failure/correction policy
+  -> stale-result rejection
+
+persistence leaves
+  Pending / Saved / Failed
+  -> every reachable leaf has explicit presentation disposition
+~~~
+
+Still OPEN:
+
+~~~text
+exact portable reusable syntax/identity for:
+  repository/persistence owner
+  persistence currentness State
+  observation/result relationship
+  stale/current transition identity
+  failure correction policy
+
+whether persistence Pending/Saved/Failed
+is a reusable parameterized persistence pattern
+or remains feature-owned until more specimens pressure it
+
+exact product policy for:
+  failure rollback vs session-only current value
+  Pending reveal threshold
+  Saved visibility duration/form
+  Failed recovery controls
+~~~
+
+Do not advance target generation from these open questions yet. The Walk resumes from the
+observation/reconciliation + persistence-currentness relationship.
+
+
 ## Current Work edges
 
 Immediate:

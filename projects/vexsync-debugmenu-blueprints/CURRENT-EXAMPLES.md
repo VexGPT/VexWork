@@ -2316,6 +2316,266 @@ NEXT QUESTION
   Then Android may consume/generate from that accepted Origin law rather than from VexSync prose alone.
 ~~~
 
+
+### Causal episode — Switch form exposes full SCAE + persistence currentness
+
+The earlier explicit-value selection model was useful for rejecting the legacy Boolean adapter, but the
+next design pressure started from the UI form itself.
+
+The Debug Menu control is currently being explored as a **Switch**:
+
+~~~text
+UI
+  Switch
+    ref = control.debug-menu.theme-mode
+~~~
+
+A Switch implies a semantic Toggle relationship rather than an arbitrary ButtonClick:
+
+~~~text
+target click / key / accessibility activation
+-> Control.ThemeModeToggle
+
+Control.ThemeModeToggle
++ ThemeMode.Light
+-> Act.SelectDark
+
+Control.ThemeModeToggle
++ ThemeMode.Dark
+-> Act.SelectLight
+~~~
+
+This restored the actual SCAE reading order from Android:
+
+~~~text
+Control
+-> candidate Acts
+
+then
+
+Behavior
+  state<...> {
+    on(act, effect)
+    .admit<...>()
+  }
+~~~
+
+The parent `Behavior` block is the reusable law-construction pattern. It does not own current State;
+it declares lawful relationships for each possible current State.
+
+Working specimen:
+
+~~~text
+behavior(
+  ref = behavior.theme-mode
+) {
+  state<ThemeMode.Light> {
+    on(
+      act = SelectDark,
+      effect = PersistThemeMode
+    )
+    .admit<ThemeMode.Dark>()
+  }
+
+  state<ThemeMode.Dark> {
+    on(
+      act = SelectLight,
+      effect = PersistThemeMode
+    )
+    .admit<ThemeMode.Light>()
+  }
+}
+~~~
+
+The UI lens binds to the same identities/truth:
+
+~~~text
+Switch(
+  ref = control.debug-menu.theme-mode
+) {
+  activate
+    -> Control.ThemeModeToggle
+
+  active
+    <- current ThemeMode == ThemeMode.Dark
+}
+~~~
+
+No separate UI truth is invented.
+
+### Causal episode — persistence introduces acknowledgement, observation and stale-result pressure
+
+The Effect hole became meaningful when the selected ThemeMode was required to survive restart.
+
+A persistence Effect must not delay the ordinary UI until storage round-trips, but it also must not
+pretend durability succeeded.
+
+~~~text
+admit next ThemeMode
+-> current application truth changes immediately
+-> UI reflects current truth
+
+Effect
+-> persist admitted/result ThemeMode asynchronously
+-> observe completion later
+~~~
+
+This exposes separate truths:
+
+~~~text
+current ThemeMode
+!= durability acknowledgement/currentness
+~~~
+
+A successful completion can confirm the already-current value. A failure can require a later correction
+policy. An older completion must not overwrite a newer admitted selection.
+
+~~~text
+A: Light -> Dark -> persist Dark
+B: Dark  -> Light -> persist Light
+
+B completes first
+-> current Light confirmed
+
+A completes later
+-> stale
+-> preserve current Light
+~~~
+
+Therefore an async result is not another Control. It is an **observation/result input** to Behavior
+reconciliation.
+
+Working distinction:
+
+~~~text
+Control-driven:
+  Control + current State
+  -> Act
+  -> Effect
+  -> immediate admitted State
+
+Observation-driven:
+  async result + current transition/current State
+  -> reconcile
+  -> confirm / preserve / correct
+~~~
+
+Exact reusable syntax remains OPEN.
+
+### Causal episode — every persistence leaf must have known human visibility
+
+Persistence was then pressured from the perspective of a future nontechnical VexWork reader.
+
+Even when writes normally complete instantly:
+
+~~~text
+Pending
+Saved
+Failed
+~~~
+
+are all reachable semantic/currentness leaves and each requires an explicit presentation disposition.
+
+~~~text
+reachable leaf
+-> presentation case required
+
+presentation may be delayed/suppressed by explicit policy
+!= leaf may be omitted
+~~~
+
+Example possibilities remain design choices, not current decisions:
+
+~~~text
+Pending
+  -> possibly delayed reveal to avoid a brief "Saving..." flash
+
+Saved
+  -> possibly persistent or temporary confirmation
+
+Failed
+  -> visible failure + later earned recovery choices
+~~~
+
+The important current rule is totality:
+
+~~~text
+NO REACHABLE LEAF WITHOUT A KNOWN PRESENTATION DISPOSITION
+~~~
+
+That makes omissions inspectable in VexBoard/VexWork and lets a human ask what happens in every case
+without needing implementation experience.
+
+### Current Walk Frontier — after UI/SCAE/persistence pressure
+
+~~~text
+KNOWN
+
+screen.debug-menu
+
+ThemeMode
+  Light
+  Dark
+
+control.debug-menu.theme-mode
+  UI form = Switch
+  semantic Control = Toggle
+
+Control candidate Acts
+  SelectDark
+  SelectLight
+
+Behavior
+  reusable parent pattern for
+  state<> / on(act,effect) / admit<>
+
+Effect
+  persistence of admitted/result ThemeMode
+
+admit
+  immediate semantic admission
+  != persistence success
+
+async persistence
+  produces observation/result
+  -> reconciliation
+  -> current/same confirmation
+  -> failure/correction
+  -> stale-result rejection
+
+persistence currentness leaves
+  Pending
+  Saved
+  Failed
+
+UI
+  Switch.active <- current ThemeMode == Dark
+
+presentation totality
+  every reachable leaf has explicit disposition
+
+
+OPEN
+
+exact portable names/shapes for:
+  persistence owner/repository relationship
+  persistence-currentness State
+  observation/result relationship
+  current transition identity
+  failure correction path
+
+whether Pending/Saved/Failed become
+  reusable parameterized persistence language
+or
+  remain specimen-local until repeated pressure
+
+exact UI policies for each persistence leaf
+~~~
+
+Do not advance another architectural layer until this frontier is resolved enough to remain
+construction-grade and human-readable.
+
+
 ## Working discipline
 
 For each next step:
