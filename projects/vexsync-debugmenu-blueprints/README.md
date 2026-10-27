@@ -425,10 +425,44 @@ AND
 portable meaning should not be over-modeled before a real consumer earns the abstraction
 ~~~
 
-Android may realize a settled NavigateTo relationship through its target-native navigation owner;
-VexBoard may show the same relationship as a typed edge; Web/Desktop may realize it differently.
+A settled typed relationship keeps the **same standard semantic vocabulary across realizations**.
 
-Same meaning, different realization.
+~~~text
+Origin
+  NavigateTo(screen.debug-menu)
+
+Android realization
+  navigateTo(DebugMenuScreen)
+    -> platform navigation primitive underneath when required
+
+Desktop realization
+  navigateTo(DebugMenuScreen)
+    -> platform navigation primitive underneath when required
+
+Web realization
+  navigateTo(DebugMenuScreen)
+    -> platform navigation primitive underneath when required
+~~~
+
+Target-specific jargon may exist inside the realization adapter, but it must not replace the reusable
+human-intentional language at the semantic boundary.
+
+~~~text
+PLATFORM_PRIMITIVE
+  may be necessary implementation detail
+
+PLATFORM_PRIMITIVE
+  != reusable semantic vocabulary
+
+if platform-specific mechanics are mandatory
+  -> wrap/map them behind the standard semantic operation
+  -> preserve NavigateTo / Select / Set / Open / Close meaning at the Origin-facing boundary
+~~~
+
+VexBoard may show the same relationship as a typed edge. Every target should remain traceable through
+the same semantic operation rather than introducing a new target-specific verb for the same intention.
+
+Same meaning, same reusable operation language, different underlying mechanics.
 
 ## SCAE
 
@@ -455,6 +489,329 @@ when the living design creates a semantic thing that needs independent addressab
 
 Relationship identity is also earned; NavigateTo between two already-addressable coordinates does not
 automatically need its own relationship ID.
+
+
+## From-zero Origin construction — design first, targets later
+
+The current Android specimen is useful evidence, but a new feature does **not** require an existing target
+implementation before reusable meaning can be authored.
+
+For a first-time feature request, the intended direction is:
+
+~~~text
+human request
+-> preserve the intended lived result
+-> discover the smallest reusable semantic nouns / values
+-> form the canonical Origin design
+-> compose Screens / Controls / content
+-> express each edge with the smallest truthful typed relationship
+-> add Behavior / Act / Effect only when the semantic problem earns them
+-> accept the Origin design
+-> map the accepted meaning into each target
+-> scaffold target-native realization from the already-settled semantic categories
+-> prove the lived result
+-> reverse-map evidence back to the same Origin meaning
+~~~
+
+The Origin therefore does not describe Android code that already exists. It is the construction-grade
+semantic design from which Android, Desktop, Web or another target can be formed.
+
+### Canonical object naming versus target realization naming
+
+When a reusable semantic object needs a distinct canonical definition, the working grammar remains:
+
+~~~text
+canonical reusable source
+  <SemanticNoun>Origin
+
+target realization
+  <SemanticNoun>
+
+semantic identity
+  stable semantic ID shared by the relationship
+~~~
+
+Example:
+
+~~~text
+DebugMenuScreenOrigin
+  screenId = screen.debug-menu
+
+Android:
+  DebugMenuScreen
+  realizes screen.debug-menu
+
+Desktop:
+  DebugMenuScreen
+  realizes screen.debug-menu
+
+Web:
+  DebugMenuScreen
+  realizes screen.debug-menu
+~~~
+
+Likewise, if theme mode proves to be a reusable semantic object:
+
+~~~text
+ThemeModeOrigin
+
+Android:
+  ThemeMode
+
+Desktop:
+  ThemeMode
+
+Web:
+  ThemeMode
+~~~
+
+The `Origin` postfix distinguishes the authoritative reusable definition. It does not change the reusable
+noun and is not sprayed onto State / Control / Act / Effect merely for symmetry.
+
+### Typed relationship before Act identity
+
+The authoring decision begins with the truthful meaning of the edge:
+
+~~~text
+destination relationship
+  -> NavigateTo(ScreenId)
+
+presentation relationship
+  -> Open / Close / Dismiss
+
+choice / value relationship
+  -> Select / Set / Clear
+
+state-dependent or independently meaningful behavior
+  -> Behavior
+  -> optional Act
+  -> optional Effect
+~~~
+
+`NavigateTo` is an operation/relationship, not an identity.
+
+~~~text
+ControlId
+  identifies the initiating Control
+
+ScreenId
+  identifies the destination Screen
+
+NavigateTo(ScreenId)
+  states the reusable intention
+~~~
+
+Do not manufacture an `ActId` merely because a Control was activated.
+
+An Act becomes useful when the action itself is independently meaningful: for example it may be reused by
+multiple Controls, invoked without a visual Control, admitted or denied by policy, selected differently
+under State, observed/proved independently, referenced by another semantic object, or mapped to different
+target mechanics while preserving one semantic action.
+
+The Play/Pause exemplar demonstrates that threshold:
+
+~~~text
+State = Paused
++ Control = PlayPause
+-> Act = Play
+
+State = Playing
++ same Control
+-> Act = Pause
+~~~
+
+By contrast:
+
+~~~text
+Control
+-> NavigateTo(screen.debug-menu)
+~~~
+
+already contains the truthful navigation meaning and does not currently earn another Act identity.
+
+### First-time Debug Menu design sketch
+
+If Debug Menu did not exist anywhere yet, a current construction sketch could begin as:
+
+~~~text
+HUMAN REQUEST
+  From Home, open Debug Menu.
+  In Debug Menu, choose Light or Dark appearance.
+  The application reflects the chosen appearance.
+
+HomeScreenOrigin
+  screenId = screen.home
+
+  DebugMenuEntryControl
+    controlId = control.home.debug-menu
+    -> NavigateTo(screen.debug-menu)
+
+DebugMenuScreenOrigin
+  screenId = screen.debug-menu
+
+  ThemeModeControl
+    controlId = control.debug-menu.theme-mode
+
+    values
+      ThemeMode.Light
+      ThemeMode.Dark
+
+    relationship
+      Select(ThemeMode)
+
+ThemeModeOrigin
+  Light
+  Dark
+~~~
+
+This sketch intentionally contains no Compose, ViewModel, Boolean, ActionKey, browser router, desktop
+navigation API, or other target mechanics.
+
+Those belong to target realization after the reusable semantic design is settled enough to construct from.
+
+### Standard intention language survives target construction
+
+Target scaffolding should preserve the semantic operation name wherever that meaning crosses the
+Origin/realization boundary.
+
+~~~text
+Origin:
+  NavigateTo(screen.debug-menu)
+
+Android:
+  navigateTo(DebugMenuScreen)
+    -> Android navigation primitive
+
+Desktop:
+  navigateTo(DebugMenuScreen)
+    -> desktop navigation primitive
+
+Web:
+  navigateTo(DebugMenuScreen)
+    -> web/browser navigation primitive
+~~~
+
+The same principle applies to other earned operations such as `Select`, `Set`, `Open` and `Close`.
+
+~~~text
+TARGET IMPLEMENTATION JARGON
+!= REUSABLE INTENTION LANGUAGE
+
+MANDATORY TARGET PRIMITIVE
+-> wrapped by / mapped behind the standard semantic operation
+~~~
+
+This is deliberate: the reusable language is intended to turn traditional platform-specific technical
+jargon into repeatable human-intentional semantics.
+
+### Scaffolding repeats construction patterns; it does not design meaning
+
+Once an Origin edge is settled, a target generator may safely template the corresponding realization slot:
+
+~~~text
+ScreenOrigin
+  -> target Screen scaffold
+
+Control
+  -> target Control scaffold
+
+NavigateTo
+  -> target navigateTo adapter / mapping
+
+Open / Close
+  -> target presentation mapping
+
+Select / Set
+  -> target selection/value mapping
+
+Behavior
+  -> target behavior resolver
+
+ActId
+  -> target Act handler/registration when an Act actually exists
+
+Effect
+  -> target Effect adapter when an Effect actually exists
+~~~
+
+The generator may repeat established construction mechanics. It must not silently invent semantic
+categories.
+
+~~~text
+TEMPLATE
+  repeats an already-decided construction pattern
+
+ORIGIN DESIGN
+  decides reusable meaning
+
+TEMPLATE != DESIGN AUTHORITY
+~~~
+
+A useful target split is therefore:
+
+~~~text
+generated / repeatable scaffold
+  semantic identity links
+  Origin mappings
+  typed relationship hooks
+  required values
+  adapter slots
+  mapping completeness checks
+
+authored target realization
+  platform rendering
+  lifecycle
+  storage
+  platform APIs
+  performance
+  accessibility mechanics
+  other target-native implementation
+~~~
+
+### Mapping completeness must fail visibly
+
+A realization should be able to answer:
+
+~~~text
+Which Origin object do I realize?
+Which Controls / values / relationships are mapped?
+Which semantic operations are implemented?
+Which Origin capabilities remain unsupported?
+~~~
+
+If a later Origin adds a value or relationship a target cannot yet express, the target should expose an
+unmapped capability rather than reinterpret or collapse the meaning.
+
+~~~text
+ORIGIN MEANING CHANGES
++ TARGET CANNOT REPRESENT IT
+
+-> TARGET CAPABILITY GAP
+
+not
+
+-> silently redefine Origin to fit the target
+~~~
+
+### Current unresolved construction-language seams
+
+This checkpoint does not declare a universal schema. The next pressure should resolve these seams one at
+a time:
+
+~~~text
+1. minimum fields a ScreenOrigin actually owns
+2. minimum fields a Control actually owns
+3. whether ThemeMode is its own Origin object or belongs under a broader appearance owner
+4. exact typed-operation families earned beyond NavigateTo / presentation / selection
+5. exact threshold and representation for Behavior -> Act -> Effect
+6. the smallest Origin-to-target mapping record needed for traceability
+7. which target scaffold pieces are safely generated versus target-authored
+8. what round-trip evidence proves the realization preserved the Origin meaning
+~~~
+
+Do not answer all eight by designing a framework first. Let the next real seam pressure the smallest
+necessary addition.
+
 
 ## Current Work edges
 
