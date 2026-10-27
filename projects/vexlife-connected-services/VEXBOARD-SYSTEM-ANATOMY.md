@@ -320,6 +320,49 @@ CLOUD_VENDOR != HOME_AUTHORITY
 SELF_HOSTED != SAME_PHYSICAL_MACHINE
 ~~~
 
+
+### Human acceptance closeout · READY
+
+The required VCS-00 through VCS-07 program remains source/program-complete. Victor has now made one additional lived acceptance condition explicit:
+
+~~~text
+work.vexlife.connected-services.human-acceptance-walk
+state=READY
+~~~
+
+This does **not** reopen the completed VCS stages. It delays the human-facing convergence/closeout judgment until Victor personally walks the supported product boundaries:
+
+~~~text
+same-Wi-Fi VexStream stream + seek
+-> verified download
+-> Desktop unavailable
+-> LOCAL_ONLY playback
+-> phone network unavailable
+-> local playback still works
+-> Android process restart
+-> offline restoration
+-> Desktop/network return
+-> HUB_AND_LOCAL reconciliation without new approval
+
+separate remote Home/Conversation check:
+Tailscale/private reachability
+-> phone Wi-Fi off / cellular
+-> bounded authenticated Home session
+-> ordinary Conversation read/send
+~~~
+
+One edge is intentionally **not** a PASS requirement:
+
+~~~text
+away-from-home HUB_ONLY VexStream streaming
+= HELD_NOT_ACCEPTED
+
+Android remote/direct-relay source
+!= accepted matching VexStream Desktop remote producer
+~~~
+
+The root anatomy stays architecture-first. A VexBoard/ProcessMap-style detail presentation may guide the lived walk, but the walk's result remains evidence owned by the product/Work sources rather than VexBoard.
+
 ## Status language on this board
 
 VexBoard does not yet have a first-class source-derived architecture-currentness visual vocabulary, so this consumer intentionally uses label prefixes.
@@ -373,7 +416,10 @@ Then choose the question:
 -> VCS-05 accepted result: keep media Range/backpressure/playback in VexStream; no generic streaming extension earned
 
 "What is next?"
--> required Connected Services program is complete; form new work only when a concrete new capability or deployment need is admitted
+-> VCS-00 through VCS-07 source/program work is complete
+-> perform work.vexlife.connected-services.human-acceptance-walk
+-> after the supported lived walk, converge/close the parent if no new rightful defect is exposed
+-> away-from-home HUB_ONLY VexStream remains a held future capability unless separately admitted
 
 "Where can this run eventually?"
 -> completed-target deployment region
