@@ -2667,3 +2667,105 @@ local variables
 ~~~
 
 This is the resume coordinate.
+
+
+## Async architecture possibilities — preserve before choosing
+
+Asyncness alone does not choose an architecture. Current candidates are deliberately separate:
+
+~~~text
+A. DIRECT RETURNED OPERATION
+
+Effect
+  -> begin {
+       operation(...)
+         .results {
+           Success { ... }
+           Failure { ... }
+         }
+     }
+
+Use when the returned operation result itself is the meaningful consequence and no longer-lived
+truth owner already owns that reality.
+
+
+B. STATE-OWNED ASYNC REALITY
+
+Behavior / Effect
+  -> asks a rightful owner to do work
+
+rightful owner
+  -> exposes current VexState as reality changes
+
+Use when the async system already has a durable/current truth owner. Do not duplicate that owner's
+truth as callback flags merely because the target API is asynchronous.
+
+
+C. CONVERGENCE OF INDEPENDENT TRUTHS
+
+complete VexState A ----\
+                         -> ConvergenceRelay InputState
+complete VexState B ----/      -> processStates()
+                                -> OutputState
+
+Use only when A and B remain independently meaningful current truths and the relationship between
+them earns its own owner.
+
+ASYNC != CONVERGENCE
+ASYNC != CALLBACK FLAGS
+CONVERGENCE != RESULT HANDLER
+~~~
+
+Third-party coroutine/callback/Promise mechanics may be wrapped at the target boundary. Origin should
+describe the semantic ownership pattern, not import one platform's async vocabulary.
+
+## Real Android Debug Menu baseline
+
+Current Android main is intentionally simpler than the Origin experiment:
+
+~~~text
+DebugMenuScreen.DarkMode
+  toggleRef(
+    id = "body.dark-mode",
+    intent = invoke(AppActions.ToggleDarkMode)
+  )
+        |
+        v
+DebugMenuScreen.appActionRegistrations()
+        |
+        v
+context.toggleDarkMode()
+        |
+        v
+VexLifeSession.toggleDarkMode()
+        |
+        v
+darkTheme = !darkTheme
+        |
+        v
+DebugMenuScreenContent(... darkTheme)
+        |
+        v
+VexElementTree.toggleChecked
+~~~
+
+Current baseline facts:
+
+~~~text
+darkTheme
+  = in-process mutable Boolean owned by VexLifeSession
+
+current Android baseline has:
+  no ThemeMode Behavior family
+  no ThemeMode repository
+  no persistence contract
+  no ThemeMode ConvergenceRelay
+  no async ThemeMode path
+~~~
+
+Therefore the Origin Walk is not documenting an already-existing target architecture. It is using the
+small current Debug Menu behavior as a controlled specimen for discovering the portable architecture
+that a later Android realization may adopt.
+
+Next pressure specimen: VexStream Playback, because current source already contains admitted intent,
+provider latency, observation, reconciliation, lifetime ownership and UI projection.
