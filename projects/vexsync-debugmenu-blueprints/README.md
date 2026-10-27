@@ -2646,6 +2646,221 @@ VexLifeTheme(themeMode)
 
 No Boolean compatibility layer is required unless new evidence earns one.
 
+### Construction-grade Origin — meaning must include portable logic
+
+The ThemeMode pressure exposed an important correction to the phrase "Origin meaning."
+
+Origin is not merely descriptive metadata from which a target developer re-invents behavior. The intended
+Blueprint foundation must be able to construct target source from accepted portable meaning.
+
+~~~text
+Origin
+  owns:
+    semantic identities
+    state domains
+    admitted values
+    lawful requests / relationships
+    portable transition logic
+    portable projection logic
+    design intention / constraints when earned
+    provenance / proof obligations
+
+target mapping
+  owns:
+    target type / file / framework placement
+    native lifecycle / rendering / storage / provider mechanics
+    explicit unsupported capability gaps
+
+generator
+  consumes:
+    Origin logic + target mapping
+
+  emits:
+    target semantic scaffolding / source / tests
+~~~
+
+~~~text
+ORIGIN LOGIC
+!= TARGET IMPLEMENTATION
+
+but
+
+ORIGIN WITHOUT SUFFICIENT LOGIC
+!= CONSTRUCTION-GRADE SOURCE
+~~~
+
+This follows the already-accepted Blueprint Source-of-Truth direction: canonical VexLife product/software
+meaning lives in `vgong24/VexLife`, while deterministic target representations are derived consumers.
+
+VexSync/VexWork therefore discovers and records the logic, but it does **not** become the final canonical
+source merely because the reasoning happened here.
+
+### ThemeMode minimum construction-grade logic
+
+The current ThemeMode Origin candidate must eventually encode at least:
+
+~~~text
+DOMAIN
+  ThemeMode
+    Light
+    Dark
+
+STATE
+  currentThemeMode : ThemeMode
+
+REQUEST / RELATIONSHIP
+  Select(target : ThemeMode)
+
+TRANSITION LAW
+  for any current ThemeMode and any admitted target ThemeMode:
+    Select(target)
+    -> currentThemeMode = target
+
+IDEMPOTENCE
+  Select(currentThemeMode)
+  -> currentThemeMode unchanged
+
+PROJECTION LAW — choice
+  currentThemeMode = Light
+  -> Light selected
+  -> Dark not selected
+
+  currentThemeMode = Dark
+  -> Dark selected
+  -> Light not selected
+
+PROJECTION LAW — application theme
+  currentThemeMode = Light
+  -> Light application-theme projection
+
+  currentThemeMode = Dark
+  -> Dark application-theme projection
+
+INITIALIZATION POLICY
+  separate / currently OPEN
+~~~
+
+These laws are enough to explain generated Android behavior without encoding Compose, Boolean, StateFlow,
+ViewModel or Material components in Origin.
+
+A target constructor can then derive a shape such as:
+
+~~~text
+origin ThemeMode domain
+-> Android ThemeMode enum / sealed state representation
+
+Origin currentThemeMode state
+-> rightful Android session/application State owner
+
+Origin Select(target) transition
+-> explicit Android selectThemeMode(target)
+
+Origin theme projection law
+-> VexLifeTheme consumes current ThemeMode
+
+Origin choice projection law
+-> Debug Menu selected Light / Dark presentation
+
+Origin design intention
+-> visible exclusive peer-value choice group
+~~~
+
+Exact target source shape remains subject to Android repository culture and current target capabilities.
+
+### SCAE layering inside construction-grade Origin
+
+The earlier conclusion "Act / Effect are not yet earned" remains valid, but it must not be read as
+"Origin contains no behavior logic."
+
+The current logic is:
+
+~~~text
+State
+  current ThemeMode
+
+Control / request
+  Select(target)
+
+Transition
+  explicit target value becomes current
+
+Projection
+  current value -> choice + application presentation
+~~~
+
+A full SCAE decomposition becomes useful only when the semantic problem itself requires the additional
+roles.
+
+For example:
+
+~~~text
+Toggle
+
+Light + Toggle -> Dark
+Dark  + Toggle -> Light
+
+current State changes what the same Control means
+-> Act resolution becomes useful
+~~~
+
+Whereas:
+
+~~~text
+Select(Dark)
+
+Light + Select(Dark) -> Dark
+Dark  + Select(Dark) -> Dark
+
+same request meaning from either State
+-> direct transition law remains sufficient
+~~~
+
+Thus:
+
+~~~text
+PORTABLE LOGIC REQUIRED
+!= EVERY LOGIC SLICE REQUIRES FULL SCAE DEPTH
+
+SCAE DEPTH
+= earned by semantic distinctions needed for faithful construction
+~~~
+
+### Canonical source boundary is now explicit
+
+The current ThemeMode work has reached a source-authority boundary:
+
+~~~text
+VexSync PR #178
+  discovers / preserves current semantic reasoning
+  != canonical VexLife product Blueprint owner
+
+canonical ThemeMode Origin logic
+  rightful source:
+    vgong24/VexLife
+    universal Blueprint composition
+
+Android PR #188
+  target realization candidate
+  must remain downstream of canonical Origin source
+~~~
+
+The VexLife repository already contains the portable Play/Pause precedent:
+
+~~~text
+blueprint/fragments/behavior-contracts/vexstream-playback-play-pause.json
+  canonical portable semantic law rows
+
+-> deterministic representations / semantic parity
+-> target-native realization
+~~~
+
+ThemeMode should use the smallest canonical Blueprint representation that faithfully carries its simpler
+transition/projection laws. Do not force it into the Play/Pause provider/pending-intent contract merely
+because that is the first portable Behavior specimen.
+
+Before a commit-producing VexLife canonical-source effect, repository orientation/current source policy
+must be consumed through that repository's required entry route.
+
 ### Current next Walk Frontier
 
 Established:

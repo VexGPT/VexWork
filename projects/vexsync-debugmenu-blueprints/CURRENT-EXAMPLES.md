@@ -2101,6 +2101,119 @@ PR #182 owns generic ElementModel / ScreenBlueprint / ElementCells
 
 These holds protect source ownership; they do not give those sibling PRs authority over VexSync meaning.
 
+### Causal episode — Origin must carry the logic needed for construction
+
+The State/Projection correction raised a further architectural question:
+
+> If Android should eventually be generated from Blueprint, where does the actual transition/projection
+> logic live?
+
+The answer corrects an overly thin reading of "Origin meaning."
+
+~~~text
+thin Origin
+  ThemeMode = Light | Dark
+
+target developer
+  decides how Select changes State
+  decides how State drives presentation
+
+result
+  target becomes semantic logic author
+  generation still requires reinterpretation
+~~~
+
+That violates the intended Blueprint construction model.
+
+The stronger construction-grade form is:
+
+~~~text
+Origin
+  ThemeMode domain
+  current State meaning
+  Select(target) relationship
+  transition law
+  projection laws
+  design constraints
+  initialization policy when earned
+
+target
+  maps those laws into native code/mechanics
+~~~
+
+The concrete ThemeMode law is deliberately simple:
+
+~~~text
+for every admitted current state S
+for every admitted target value T
+
+Select(T)
+-> current ThemeMode = T
+~~~
+
+Projection then derives:
+
+~~~text
+current ThemeMode
+-> selected choice presentation
+
+current ThemeMode
+-> application theme presentation
+~~~
+
+No Boolean is needed in the portable causal chain.
+
+#### Why this still does not force full SCAE
+
+Portable logic and SCAE depth are separate questions.
+
+~~~text
+Select(Dark)
+  same meaning from Light or Dark
+  -> direct explicit transition
+
+Toggle
+  meaning depends on current State
+  -> State-dependent Act resolution is useful
+~~~
+
+Therefore ThemeMode must have portable executable/generative logic, while Act/Effect remain unearned until
+they solve a real semantic distinction.
+
+#### Canonical ownership correction
+
+The canonical VexLife Blueprint repository already proves the intended architecture:
+
+~~~text
+vgong24/VexLife
+  canonical portable product/software meaning
+
+VexGPT/VexWork
+  trajectory / reasoning / work truth
+
+vgong24/VexLife-Android
+  native realization + evidence
+~~~
+
+Its Play/Pause practicum carries language-neutral semantic law rows in canonical Blueprint source and then
+derives/reconstructs target representations.
+
+So VexSync #178 is not itself enough to authorize Android as semantically complete.
+
+The next required source sequence is:
+
+~~~text
+VexSync reasoning
+-> canonical ThemeMode logic in VexLife Blueprint
+-> accepted canonical source
+-> Android adoption / generation mapping
+-> native/lived proof
+-> reverse evidence
+~~~
+
+Android #188 remains useful as a target candidate, but acceptance/merge must remain held until its canonical
+Origin dependency exists and is current.
+
 ### Current Walk Frontier
 
 ~~~text
@@ -2199,9 +2312,8 @@ CURRENT TARGET OBSERVATION
   -> target evidence, not automatic Origin default
 
 NEXT QUESTION
-  Once the active VexLifeSession source claim clears, make ThemeMode itself the session State,
-  project it directly into app theme + Debug Menu selected presentation,
-  and prove the lived roundtrip.
+  First source the construction-grade ThemeMode transition/projection logic in the canonical VexLife Blueprint.
+  Then Android may consume/generate from that accepted Origin law rather than from VexSync prose alone.
 ~~~
 
 ## Working discipline
