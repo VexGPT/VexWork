@@ -3551,3 +3551,238 @@ inventing code.
 
 The notes in CURRENT-EXAMPLES are pressure/evidence for that mapping exercise; they are not a request
 to mechanically implement every exploratory form.
+
+
+## VexBoard Feature Workspace contract — ThemeMode patient zero
+
+Before Android refactoring, this Walk should become perceivable in VexBoard as one bounded feature
+workspace. This section specifies the minimum experience; it does not define the final VexBoard UI.
+
+### Primary spatial rule
+
+~~~text
+BOARD
+  = primary working/perception surface
+
+CONTEXT DRAWER
+  = optional supporting surface
+
+drawer closed
+  -> Board receives the full available workspace
+
+drawer open
+  -> exactly one supporting mode is visible
+~~~
+
+Do not create permanent Library + Feature Context + Inspector columns beside the Board.
+
+Use one auxiliary drawer shell with mutually-exclusive modes:
+
+~~~text
+Inspect
+Library
+Feature Context
+~~~
+
+Opening one mode replaces the previous drawer mode. Closing the drawer returns to the same Board focus.
+
+~~~text
+ONE AUXILIARY DRAWER
+!= STACKED SUPPORTING PANELS
+
+DRAWER OPEN/CLOSED
+!= BOARD SEMANTIC CHANGE
+
+DRAWER WIDTH
+!= BOARDGRAPH MEANING
+~~~
+
+Camera/projection adjustment required by a smaller viewport remains projection behavior, not semantic
+movement.
+
+### ThemeMode workspace — first-glance view
+
+The default view should communicate the feature without requiring source archaeology:
+
+~~~text
+Debug Menu / Theme Mode
+
+UI                              LOGIC
+
+Switch                          ThemeMode
+  ref                           Light
+    control.debug-menu          Dark
+      .theme-mode
+        |
+        +-- activate --> ThemeModeToggle
+                            |
+                            +--> current State resolves Act
+                            +--> Behavior resolves Effect + stay/admit
+~~~
+
+Only relationships necessary to understand the current feature belong on the immediate Board.
+
+Later persistence/repository detail should be revealable from the relevant Effect/relationship, not
+permanently expanded across the canvas.
+
+### Library drawer
+
+Library answers:
+
+> What reusable semantic capabilities are available to this project, and which of them does this
+> feature currently use?
+
+When opened from this feature, default to:
+
+~~~text
+Library
+
+USED HERE
+
+  ThemeMode
+    status: established working Origin meaning
+    values: Light | Dark
+
+  control.debug-menu.theme-mode
+    status: established working Control identity
+
+  ThemeModeToggle
+    status: working Control/Act-language candidate
+
+  Theme persistence owner
+    status: UNRESOLVED
+    note: repository/source identity has not yet been earned
+
+BROWSE PROJECT
+  States
+  Behaviors
+  Repositories / Sources
+  Convergence
+  Shared semantic components
+~~~
+
+Do not invent a canonical Theme repository or ConvergenceRelay merely because the drawer has those
+categories.
+
+An unavailable/unresolved capability is itself useful information.
+
+A Library item may expand inside the same drawer to show:
+
+~~~text
+human purpose
+semantic identity / status
+provides / accepts
+owner scope when established
+used by
+relationships
+portable source
+target realizations when available
+~~~
+
+The Screen/feature stores references to reusable Library meaning; it does not duplicate Library
+definitions.
+
+~~~text
+PROJECT LIBRARY
+  = discoverable reusable semantic inventory
+
+FEATURE USES
+  = bounded references from the current feature into that inventory
+
+USED HERE
+  != COPY HERE
+~~~
+
+### Feature Context drawer
+
+Feature Context answers:
+
+> Why are we building this, what work currently owns the reasoning, and where can I read the durable
+> source?
+
+For this patient zero the source is VexWork, projected read-only through its rightful source:
+
+~~~text
+project.vexsync.debugmenu-blueprints
+work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery
+github.pull.vexwork.178
+~~~
+
+The drawer should present a bounded human summary such as:
+
+~~~text
+Feature Context
+
+Project
+  VexSync DebugMenu Blueprints
+
+Current work
+  ThemeMode Origin Walk
+
+Intent
+  discover a human-readable construction-grade Origin that maps through VexBoard to target code
+
+Current frontier
+  repository/persistence ownership
+  later-result / observation relationship
+  lifecycle / convergence pressure
+
+Open VexWork source
+~~~
+
+Do not copy the full Workgraph or this README into VexBoard. The drawer is a projection/navigation
+surface over the rightful VexWork owner.
+
+Existing VexWork source-projector machinery is architectural precedent:
+
+~~~text
+VEXBOARD FEATURE CONTEXT
+  != SECOND WORK OWNER
+
+VEXWORK SOURCE
+  -> bounded read-only projection
+  -> VexBoard Feature Context
+~~~
+
+### Progressive depth
+
+The feature workspace should reveal depth through selection rather than show every layer at once.
+
+~~~text
+first glance
+  UI + core logic
+
+select Effect
+  -> reveal repository/source relationship if present
+
+open Library
+  -> inspect reusable dependency
+
+open Feature Context
+  -> inspect why/current Work/source
+
+close drawer
+  -> return to full feature Board
+~~~
+
+Orientation is part of correctness. A user who traverses into a dependency or source must be able to
+return to the same feature coordinate without reconstructing where they came from.
+
+### Current implementation boundary
+
+This contract is ready for VexBoard consumption, but this VexSync lane does not own the currently
+claimed VexBoard implementation membrane.
+
+At the time of this checkpoint, VexWork PR #155 holds an active implementation claim over the VexBoard
+renderer, current Origin IDE modules/tests and core VexBoard project docs.
+
+Therefore this lane must:
+
+~~~text
+define the bounded feature-workspace contract here
+-> route it to the active VexBoard implementation owner
+-> avoid overlapping #155 source paths
+-> let that owner integrate or successor work consume it
+~~~
+
+No Android refactor is authorized by this UI contract.
