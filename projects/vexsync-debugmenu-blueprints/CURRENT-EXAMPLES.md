@@ -705,17 +705,25 @@ That exposed another language problem: treating a `conclusion` as a shortcut to 
 The refined distinction is:
 
 ~~~text
-EVIDENCE
-  what was observed / proved
+CIRCUMSTANCE / EVIDENCE
+  what condition or scenario was actually observed
 
-REASONING
-  why that evidence discriminates between candidates
+CONSEQUENCE / PRESSURE
+  what problem, frustration, ambiguity, duplication or other unideal result followed
+  and why that mattered
+
+RESPONSE / CANDIDATE SOLUTION
+  what was introduced or changed to address that pressure
+
+RESOLUTION EVIDENCE
+  what the response demonstrably fixed / improved
+  and which cases or invariants remained satisfied
 
 CONCLUSION
-  minimum-complete compression of the justified claim over that evidence
+  minimum-complete compression of the justified claim that follows from that causal chain
 
 SUMMARY
-  orientation compression that preserves a route back to the evidence / causal reasoning
+  orientation compression that preserves a route back to the causal chain / evidence
 ~~~
 
 The pressure behind this correction is practical:
@@ -730,16 +738,57 @@ summary without recoverable why
 -> later pressure causes re-derivation, accidental reversal or cargo-cult reuse
 ~~~
 
-Therefore:
+The resulting rule is:
 
 ~~~text
-NO SUPPORTING EVIDENCE
--> do not label the statement a conclusion
+NO GROUNDED CIRCUMSTANCE / CONSEQUENCE
+-> no established problem basis
+
+NO RESOLUTION EVIDENCE
+-> response remains candidate / proposal
+-> do not call it a solved problem
+
+NO SUPPORTING CAUSAL CHAIN
+-> do not label the final statement a conclusion
 
 MATERIAL WHY / EVIDENCE OMITTED FROM SUMMARY
 -> preserve exact source / causal-example route
 -> do not imply the compressed text is sufficient for every dependent decision
 ~~~
+
+A worked shape using the navigation/ConvergenceRelay specimen is:
+
+~~~text
+CIRCUMSTANCE
+  several callers navigated to the same destination while forwarding caller-owned params
+
+CONSEQUENCE / PRESSURE
+  the destination could see values but could not reliably trace source, ownership, sequence/currentness
+  or reconstruct the same truth without rediscovering each caller
+
+RESPONSE / CANDIDATE SOLUTION
+  move semantic state into the rightful ConvergenceRelay dependency
+  and keep navigation responsible for destination movement
+
+RESOLUTION EVIDENCE
+  state now has one traceable source/currentness path
+  callers no longer own destination state payloads
+  destination consumes the same dependency regardless of which caller initiated presentation
+  debugging can follow the Relay transition instead of searching every navigateTo call
+
+CONCLUSION
+  navigation should not be the arbitrary transport/source owner for semantic state;
+  state should remain behind its rightful traceable dependency, while NavigateTo owns movement
+
+BOUNDARY
+  this does not yet prove that every navigation argument is invalid;
+  a future specimen may show an argument is genuinely part of destination identity
+
+REOPEN CONDITION
+  evidence shows that separating state preparation from navigation loses necessary semantic meaning
+~~~
+
+The conclusion reads as the compressed end of the causal evidence, not as a shortcut around it.
 
 This correction also explains the two-file VexSync pattern:
 

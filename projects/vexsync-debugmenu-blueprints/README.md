@@ -917,27 +917,50 @@ UNSUPPORTED STATEMENT
 != CONCLUSION
 ~~~
 
-A useful conclusion normally preserves enough of this shape to remain auditable:
+A useful conclusion should preserve the causal path by which the conclusion became justified.
+
+The current working flow is:
 
 ~~~text
-given:
-  material evidence / examples
+CIRCUMSTANCE
+  the grounded scenario / condition / evidence that existed
 
-because:
-  the discriminating reason those observations matter
+CONSEQUENCE / PRESSURE
+  what became unideal, ambiguous, costly, unsafe, duplicated, fragmented or otherwise problematic
+  and why that consequence matters
 
-therefore:
-  current conclusion
+RESPONSE / CANDIDATE SOLUTION
+  what change, mechanism or design was introduced to address that pressure
 
-within:
-  scope / conditions / non-claims
+RESOLUTION EVIDENCE
+  what the response actually addressed
+  which original problems/cases were resolved
+  which invariants were preserved
+  what evidence shows the improvement rather than merely asserting it
 
-reopen if:
-  evidence or pressure materially changes
+CONCLUSION
+  the minimum-complete justified claim that follows from the circumstance,
+  pressure, response and resolution evidence
 ~~~
 
+This ordering matters. A proposed response is not promoted to a successful solution merely because it was
+implemented. The resolution evidence must show what pressure it actually addressed.
+
+Optional guards may follow when they materially protect the conclusion:
+
+~~~text
+BOUNDARY
+  what the conclusion does not claim / where its scope stops
+
+REOPEN CONDITION
+  what materially different evidence or pressure would require the conclusion to be reconsidered
+~~~
+
+Boundary and reopen condition are not substitutes for the causal justification. They protect scope and
+currentness after the conclusion has already been earned.
+
 The conclusion does not need to restate every raw artifact. It does need to preserve the summarized
-justification and evidence coordinates required to understand why the conclusion currently survives.
+causal justification and evidence coordinates required to understand why the conclusion currently survives.
 
 A **Summary** has a different job:
 
