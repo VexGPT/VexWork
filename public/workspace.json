@@ -11603,15 +11603,15 @@
       "viewRef": "view.vexsync.debugmenu-blueprints.board",
       "items": [
         {
-          "schemaVersion": "vexwork.work-item/v1",
           "workRef": "work.vexsync.debugmenu-blueprints.debugmenu-origin-roundtrip",
-          "parentWorkRefOrNull": "work.vexsync.debugmenu-blueprints.outcome",
           "label": "Build the first Debug Menu Origin <-> Android round trip",
           "purpose": "After the Feature Request -> Builder specimen is grounded enough, author the first bounded Debug Menu semantic terrain one truthful edge at a time, compare/map that meaning to current Android without requiring a second semantic reinterpretation, expose unsupported target capabilities rather than guessing, and project the resulting source/evidence back to the same coordinates before generalizing the process.",
           "workClass": "TASK",
           "state": "WAITING_DEPENDENCIES",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexsync.debugmenu-blueprints.outcome",
+          "childWorkRefs": [],
           "dependencyRefs": [
             "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery"
           ],
@@ -11637,19 +11637,18 @@
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-10-26T07:26:46.000Z",
           "updatedAt": "2026-10-26T09:30:00.000Z",
-          "childWorkRefs": [],
           "transitionHistory": []
         },
         {
-          "schemaVersion": "vexwork.work-item/v1",
           "workRef": "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery",
-          "parentWorkRefOrNull": "work.vexsync.debugmenu-blueprints.outcome",
           "label": "Discover Feature Request -> Builder process through one Debug Menu specimen",
           "purpose": "Use the dark/light-theme request as the first live process specimen: preserve the human goal/return, hold only dependent unknowns, lock known terrain endpoints before filling the middle, investigate current Android identities/owners/HOW before creating new source, and let relationship names/IDs/phases emerge only when the living specimen earns them.",
           "workClass": "TASK",
           "state": "READY",
           "workDisposition": "ACTIVE",
           "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": "work.vexsync.debugmenu-blueprints.outcome",
+          "childWorkRefs": [],
           "dependencyRefs": [],
           "repositoryRefs": [
             "repo.vexwork",
@@ -11672,19 +11671,21 @@
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-10-26T07:26:46.000Z",
           "updatedAt": "2026-10-26T09:30:00.000Z",
-          "childWorkRefs": [],
           "transitionHistory": []
         },
         {
-          "schemaVersion": "vexwork.work-item/v1",
           "workRef": "work.vexsync.debugmenu-blueprints.outcome",
-          "parentWorkRefOrNull": null,
           "label": "VexSync DebugMenu Blueprints",
           "purpose": "Discover and prove a reusable feature-building process on one bounded Debug Menu specimen: translate ordinary human intention into truthful living terrain, ground current identities/owners before creating new ones, let reusable semantic language emerge from real pressure, and use the resulting process to prove a first VexBoard/Origin <-> current Android round trip without predeclaring later compiler or deployment phases.",
           "workClass": "OUTCOME",
           "state": "RUNNING",
           "workDisposition": "ACTIVE",
           "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vexsync.debugmenu-blueprints.debugmenu-origin-roundtrip",
+            "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery"
+          ],
           "dependencyRefs": [],
           "repositoryRefs": [
             "repo.vexwork",
@@ -11705,10 +11706,6 @@
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-10-26T07:26:46.000Z",
           "updatedAt": "2026-10-26T09:30:00.000Z",
-          "childWorkRefs": [
-            "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery",
-            "work.vexsync.debugmenu-blueprints.debugmenu-origin-roundtrip"
-          ],
           "transitionHistory": []
         }
       ],
@@ -11782,15 +11779,18 @@
       },
       "rootItems": [
         {
-          "schemaVersion": "vexwork.work-item/v1",
           "workRef": "work.vexsync.debugmenu-blueprints.outcome",
-          "parentWorkRefOrNull": null,
           "label": "VexSync DebugMenu Blueprints",
           "purpose": "Discover and prove a reusable feature-building process on one bounded Debug Menu specimen: translate ordinary human intention into truthful living terrain, ground current identities/owners before creating new ones, let reusable semantic language emerge from real pressure, and use the resulting process to prove a first VexBoard/Origin <-> current Android round trip without predeclaring later compiler or deployment phases.",
           "workClass": "OUTCOME",
           "state": "RUNNING",
           "workDisposition": "ACTIVE",
           "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vexsync.debugmenu-blueprints.debugmenu-origin-roundtrip",
+            "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery"
+          ],
           "dependencyRefs": [],
           "repositoryRefs": [
             "repo.vexwork",
@@ -11811,10 +11811,6 @@
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-10-26T07:26:46.000Z",
           "updatedAt": "2026-10-26T09:30:00.000Z",
-          "childWorkRefs": [
-            "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery",
-            "work.vexsync.debugmenu-blueprints.debugmenu-origin-roundtrip"
-          ],
           "transitionHistory": []
         }
       ]

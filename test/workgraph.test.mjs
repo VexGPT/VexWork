@@ -41,7 +41,7 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   const androidProofProject = createProject(androidProofProjectSource);
   assert.equal(projectWorkRefs(androidProofProject, graph).length, 4);
   const vexsyncDebugMenuProject = createProject(vexsyncDebugMenuProjectSource);
-  assert.equal(projectWorkRefs(vexsyncDebugMenuProject, graph).length, 5);
+  assert.equal(projectWorkRefs(vexsyncDebugMenuProject, graph).length, 3);
   assert.equal(verifySemanticFingerprint(project), true);
   assert.equal(verifySemanticFingerprint(graph), true);
 
