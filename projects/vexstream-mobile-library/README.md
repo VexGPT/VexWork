@@ -57,7 +57,7 @@ VexStream Mobile Library                         OUTCOME
 +-- Playback Surfaces                            OUTCOME / decomposed
 |   +-- Now Playing artwork projection           TASK / completed / online metadata projection accepted
 |   +-- Offline artwork durability               DEFECT / running
-|   +-- Current-track artwork availability       DEFECT / running / post-merge lived placeholder
+|   +-- Current-track artwork availability       DEFECT / verifying / PR16 source clear / producer integration + lived proof pending
 |   +-- Reconcile / sync missing artwork          TASK / cancelled as separate owner; absorbed above
 |   +-- VexStream full player                    TASK / verifying / lived artwork feedback remains
 |
@@ -710,15 +710,27 @@ v2/desktop/mobile/catalog.go
 So the lived placeholder for ordinary filesystem MP3s is currently an **upstream producer-stage
 gap**, not evidence that Android never implemented artwork presentation.
 
-Active owner:
+Current Verify owner:
 
 ```text
-work.vexstream.mobile-library.current-artwork-availability = RUNNING
+work.vexstream.mobile-library.current-artwork-availability = VERIFYING
 github.issue.vexstream-music.11
-github.pull.vexstream-music.12
-head = f2f7c17ae8fb663686073056d6b18520a106244d
-tree = 8a408e315de793f06b4b9f0b943f2c829f00c81d
+github.pull.vexstream-music.16
+head = 3a17c9d75d60411266d683f25d553cfbcded294d
+tree = d2a0d07837c1fb5b034f1c37f169906e4422df24
+
+SourceOwner A006 = PASS
+Independent Assurance = CLEAR_ON_EXACT_HEAD
+Active -> Verify = Victor full approval / committed
+producer integration = PENDING
+physical Android row / Full Player / Media3 / widget round-trip = PENDING
 ```
+
+PR #16 closes the currently-paired protected V3 producer seam by projecting only credential-free
+external HTTPS `Track.ThumbnailURL` metadata into the sanitized mobile catalog. Its exact source is
+proven and cleared, but source clearance does not itself authorize or claim merge. Once accepted
+producer source is integrated and running on Victor's Mac, Verify resumes the already-source-cleared
+Android PR #186 lived convergence proof rather than reopening its SourceOwner work.
 
 The intended repair must keep filesystem/library as metadata owner, use an authenticated/pinned
 mobile artwork projection for Desktop-served embedded art, and preserve Android/widget as bounded
