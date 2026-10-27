@@ -1588,45 +1588,169 @@ Select(ThemeMode.<value>)
 So a target may realize a two-state selector with Toggle-like behavior today while the Origin-facing
 relationship remains `Select`.
 
+### Causal episode — default-selection ownership and current-state consequence
+
+The next Walk pressure began with an intentionally unresolved value:
+
+~~~text
+ThemeMode
+  Light
+  Dark
+
+question:
+  when nobody has made an authoritative selection yet,
+  who chooses the initial ThemeMode?
+~~~
+
+The current Android reference contributed one fact and one absence:
+
+~~~text
+FACT
+  VexLifeSession owns darkTheme and toggleDarkMode()
+  -> current theme state is not DebugMenuScreen-local
+
+ABSENCE
+  the VexSync evidence does not establish how darkTheme is initially chosen
+  -> do not infer Light or Dark as the product default
+~~~
+
+#### Why default does not intrinsically belong to the domain
+
+Counterexample pressure:
+
+~~~text
+Product A reuses ThemeMode
+  -> may prefer Light initially
+
+Product B reuses the same ThemeMode
+  -> may follow environment
+
+Product C reuses the same ThemeMode
+  -> may prefer Dark initially
+~~~
+
+The values can retain identical meaning while initialization policy differs.
+
+Therefore:
+
+~~~text
+ThemeMode
+  owns domain meaning / admitted values
+
+application/product initialization policy
+  owns how an initial value is resolved
+
+runtime application state
+  owns the current resolved ThemeMode
+~~~
+
+No new policy object/schema is earned merely by making that distinction.
+
+#### Default is not recovery
+
+Another pressure appears when persistence exists:
+
+~~~text
+user explicitly selected Dark yesterday
+app restarts
+restored Dark
+~~~
+
+That value is not "the default." It is recovered user state.
+
+~~~text
+RESTORE
+  preserves an authoritative prior selection
+
+DEFAULT
+  resolves absence of an authoritative selection
+~~~
+
+Collapsing the two would erase provenance and could overwrite user intent.
+
+#### Environment-derived initialization is not automatically a state
+
+If product policy says:
+
+~~~text
+when no prior selection exists
+-> inspect environment appearance
+-> resolve Light or Dark
+~~~
+
+the environment is an initialization-policy input.
+
+That does not automatically mean:
+
+~~~text
+ThemeMode.System
+~~~
+
+exists. System becomes a ThemeMode value only if the product admits "follow system" as an independently
+selectable semantic state.
+
+#### Selection consequence
+
+The explicit selection relationship now resolves directly:
+
+~~~text
+Select(ThemeMode.Dark)
+-> current application ThemeMode = Dark
+-> dependent appearance reflects Dark
+~~~
+
+No previous-state lookup is required to understand the intended result.
+
+Idempotence pressure strengthens the distinction:
+
+~~~text
+current = Dark
+Select(Dark)
+-> Dark
+
+current = Dark
+Toggle()
+-> Light
+~~~
+
+So Select preserves human intention even when the current state is already the requested value.
+
+No independent Act / Effect identity is currently required for this direct explicit-value transition.
+
 ### Current Walk Frontier
 
 ~~~text
 established
   Origin-scoped DebugMenuScreen identity + Meaning
 
-  Origin-scoped ThemeMode canonical reusable domain
-    current values: Light / Dark
-
-  same semantic nouns across scopes:
-    origin....ThemeMode
-    android....ThemeMode
-    desktop....ThemeMode
-    web....ThemeMode
+  Origin-scoped ThemeMode
+    Light / Dark
+    same noun across target scopes
 
   Select(ThemeMode.<value>)
-    current reusable relationship
 
-  Origin Scope Eligibility / Exclusion
-    canonical ownership is earned
-    postfix is not the canonicality carrier
+  current ThemeMode
+    application-scoped runtime truth
 
-next
-  determine default-selection semantics without assuming:
-    Light is default
-    first value is default
-    default is a selectable state
-    Boolean representation is canonical
-    default policy intrinsically belongs to ThemeMode
+  initial/default selection
+    application/product policy responsibility
+    not intrinsic to ThemeMode by default
+
+held
+  actual VexLife initial ThemeMode value/policy
+  -> current evidence does not establish it
+
+next independent edge
+  resolve visual form through Default Design Intention
+  without turning peer ThemeMode values back into Boolean/DarkMode semantics
 ~~~
 
-Then continue into current-state ownership / consequence / design form.
+The held initial-value question must be reopened before target realization claims a complete initial-state
+contract, but it does not block design work whose inputs are already known.
 
-The sequencing/Relay specimen remains a live inherited example for relationships whose state must become
-current before another dependent consequence.
-
-**Reopen conditions:** new evidence shows ThemeMode is not the correct reusable domain, target consumers
-need materially different state meanings, Origin scope cannot remain reliably addressable, or
-default-selection policy cannot be separated cleanly from state identity.
+**Reopen conditions:** evidence shows ThemeMode intrinsically carries a universal default, product policy
+requires a user-selectable System state, or target/current source establishes an existing default that must
+be considered for migration compatibility.
 
 
 ## Current living specimen
@@ -1650,12 +1774,17 @@ CURRENT TARGET HOW
   -> VexLifeSession.toggleDarkMode()
   -> darkTheme = !darkTheme
 
-ORIGIN / V2 DESIGN
-  still being formed
+CURRENT ORIGIN-SCOPE WORKING MODEL
+  DebugMenuScreen meaning established
+  ThemeMode = Light / Dark
+  Select(ThemeMode.<value>)
+  current ThemeMode = application-scoped runtime truth
+  initial-selection owner = application/product policy
+  actual initial value = OPEN
 
 NEXT QUESTION
-  What is the smallest truthful theme-selection meaning we actually want to author,
-  independent of accidental current Android mechanics?
+  Which default visual form most faithfully presents the two peer ThemeMode values
+  without leaking current Android Boolean/toggle mechanics back into semantic meaning?
 ~~~
 
 ## Working discipline

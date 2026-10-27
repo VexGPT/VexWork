@@ -2198,24 +2198,169 @@ later third admitted ThemeMode
 A Toggle may still realize two-state behavior in a target or explicit design, but it is downstream of the
 semantic relationship.
 
-### Current next Walk Frontier
+### Default selection — domain, initialization and recovery are different owners
+
+The current target evidence shows:
 
 ~~~text
-Origin scope:
-  ThemeMode
-    value domain = Light / Dark
+DebugMenuScreen
+-> VexLifeSession.toggleDarkMode()
+-> VexLifeSession.darkTheme changes
+~~~
 
-OPEN
-  determine the minimum-complete default-selection semantics:
-    is there an explicit product default?
-    who/what selects it when no user choice exists?
-    is that default persisted / inherited / target-selected?
-    does default selection belong intrinsically to ThemeMode
-    or to a separate application/product/environment policy owner?
+That supports one useful ownership conclusion: current theme state is application/session-scoped rather
+than owned by DebugMenuScreen.
 
-THEN
-  continue into current-state ownership / selection consequence / design form
-  without collapsing default policy into Boolean semantics
+The accepted VexSync evidence does **not** currently show how darkTheme receives its initial value.
+Therefore it does not justify claiming that Light or Dark is the current product default.
+
+The semantic pressure can still resolve the owner of default-selection policy.
+
+~~~text
+ThemeMode
+  defines what the admitted values mean
+
+current ThemeMode
+  is application runtime state
+
+initial/default selection
+  decides which ThemeMode becomes current
+  when no more authoritative current/recovered selection exists
+~~~
+
+If the reusable ThemeMode domain itself always owned one default, every product that reused the same
+domain would inherit that policy even when its product intention differed. If each target chose its own
+fallback, target mechanics would become accidental product-policy owners.
+
+The current conclusion is therefore:
+
+~~~text
+THEME MODE DOMAIN
+  owns:
+    admitted values
+    value meaning
+    reusable domain evolution
+
+APPLICATION / PRODUCT INITIALIZATION POLICY
+  owns:
+    how an initial ThemeMode is resolved
+    when no authoritative current/recovered choice exists
+
+RUNTIME APPLICATION STATE
+  owns:
+    the current resolved ThemeMode
+~~~
+
+This is an ownership distinction, not yet a new schema or ThemePolicy object.
+
+Additional distinctions:
+
+~~~text
+RESTORED PRIOR USER CHOICE
+!= DEFAULT SELECTION
+
+ENVIRONMENT-DERIVED INITIALIZATION
+!= AUTOMATIC "System" ThemeMode VALUE
+
+TARGET FALLBACK
+!= PRODUCT DEFAULT
+~~~
+
+If persistence is later admitted, restoring the user's prior explicit selection is recovery of user state;
+the default is consulted only when no such authoritative selection exists.
+
+If product policy later says "initialize from the operating-system appearance," the environment may be an
+input that resolves to Light or Dark. That does not create a selectable ThemeMode.System value unless
+the product separately admits "follow system" as a user-selectable semantic state.
+
+### Unspecified initial state must become an explicit decision before realization
+
+The human request did not specify a default value. That absence must not silently delegate semantic policy
+to whichever target happens to be implemented first.
+
+Current rule:
+
+~~~text
+REQUIRED CURRENT STATE
++ NO EXPLICIT / RECOVERED VALUE
+-> resolve an explicit application/product initial-selection policy
+   before target realization is considered complete
+
+NO USER-SPECIFIED DEFAULT
+!= TARGET MAY CHOOSE SILENTLY
+~~~
+
+The actual VexLife default remains **OPEN** at this checkpoint because no grounded evidence currently
+selects Light, Dark or environment-derived initialization.
+
+A Builder/designer may later supply a reasoned default-selection decision when the human leaves it open,
+similar to Default Design Intention, but that choice must be recorded as product/design policy with
+provenance rather than presented as something the human explicitly requested.
+
+### Selection consequence — explicit choice establishes current application state
+
+The now-established semantic relationship has a direct consequence:
+
+~~~text
+Select(ThemeMode.Dark)
+-> application current ThemeMode becomes Dark
+-> dependent application appearance reflects Dark
+
+Select(ThemeMode.Light)
+-> application current ThemeMode becomes Light
+-> dependent application appearance reflects Light
+~~~
+
+This remains meaningful even when the selected value is already current:
+
+~~~text
+current = Dark
+Select(Dark)
+-> intended result remains Dark
+-> no semantic inversion is required
+~~~
+
+That is another reason Select is stronger than Toggle at the reusable boundary.
+
+No separate Act or Effect identity is currently earned merely to express this transition. The selected
+value already specifies the intended result without consulting previous state. A later consumer may earn
+independently addressable Act / Effect meaning if observation, policy or orchestration pressure requires it.
+
+This gives the state-change-without-navigation Semantic Sequence specimen a concrete current form:
+
+~~~text
+human chooses ThemeMode.Dark
+-> Select(ThemeMode.Dark)
+-> current application ThemeMode = Dark
+-> appearance consumers reflect Dark
+~~~
+
+### Current next Walk Frontier
+
+One dependent question remains open:
+
+~~~text
+OPEN / HELD
+  actual VexLife initial ThemeMode policy/value
+  because current evidence does not yet establish it
+~~~
+
+That unknown does not hold unrelated design work.
+
+The next independent edge can therefore continue from established meaning:
+
+~~~text
+ThemeMode
+  values = Light / Dark
+  relationship = Select(explicit value)
+  current state = application-scoped
+  initial-selection owner = application/product policy
+  actual initial value = OPEN
+
+NEXT
+  resolve the unspecified visual form through Default Design Intention:
+    how should two peer ThemeMode values be presented
+    without reintroducing Boolean / DarkMode asymmetry?
 ~~~
 
 
