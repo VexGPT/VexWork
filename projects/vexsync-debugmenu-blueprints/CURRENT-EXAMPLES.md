@@ -1776,6 +1776,11 @@ So cardinality informs form, but semantic relationship + symmetry + visibility d
 
 ### Causal episode — explicit Select mapped over current Android Boolean state
 
+**SUPERSEDED current model:** this episode preserves the intermediate adapter reasoning that was current
+before the later State/Projection pressure. The explicit-selection insight survives; the Boolean adapter
+does not.
+
+
 The next pressure compared the established Origin-facing relationship with accepted Android observation.
 
 ~~~text
@@ -1853,6 +1858,144 @@ Boolean adapter does not
 not
 -> silently collapse System into true / false
 ~~~
+
+### Causal episode — State / Projection removes the Boolean bridge
+
+After the first Android alignment candidates were formed, another question challenged the migration model:
+
+> If Origin roundtrip is reversible, does Origin need to know the Android Boolean adapter?
+
+The answer exposed a mistaken assumption.
+
+~~~text
+reversibility
+!= every target implementation primitive is represented in Origin
+
+reversibility
+= target evidence can traverse through the target realization mapping
+  back to the same semantic meaning
+~~~
+
+The current SCAE source supplied the more truthful shape:
+
+~~~text
+STATE
+  current ThemeMode
+
+CONTROLS
+  Light choice
+  Dark choice
+
+PROJECTION
+  current ThemeMode
+  -> selected choice presentation
+  -> application theme presentation
+~~~
+
+The same State drives both UI surfaces. There is no semantic need for a Boolean between them.
+
+#### Why full SCAE is not yet earned
+
+For explicit selection:
+
+~~~text
+Light + Select(Dark)
+-> Dark
+
+Dark + Select(Dark)
+-> Dark
+~~~
+
+The requested meaning does not change with current State.
+
+Contrast a true Toggle:
+
+~~~text
+Light + Toggle
+-> Dark
+
+Dark + Toggle
+-> Light
+~~~
+
+That is state-dependent Control meaning.
+
+Therefore the ThemeMode specimen currently earns State + Control/Request + Projection, while Act / Effect
+remain unformed unless later pressure makes them independently useful.
+
+~~~text
+STATEFUL FEATURE
+!= AUTOMATIC FULL SCAE
+
+DIRECT EXPLICIT SELECTION
+!= STATE-DEPENDENT TOGGLE BEHAVIOR
+~~~
+
+#### Boolean adapter correction
+
+The first #188 commit introduced a Boolean adapter as a migration convenience.
+
+No persisted/wire/provider compatibility requirement had been established for the Boolean itself.
+Therefore the adapter failed Judgment Before Accretion:
+
+~~~text
+required correctness preserved by adapter
+  none yet established
+
+recurring burden introduced
+  ThemeMode <-> Boolean mapping
+  future value compatibility
+  another target representation to explain/test
+
+remove adapter
+  no semantic truth lost
+~~~
+
+Android #188 was corrected by a new child commit; history was not rewritten.
+
+#189 and #191 depended specifically on the bridge, so they were closed as SUPERSEDED while preserving
+their PR/commit history.
+
+#### Current Android default is known as target evidence
+
+Direct source inspection also corrected an earlier evidence gap:
+
+~~~text
+VexLifeSession(
+  initialDarkTheme: Boolean = true
+)
+~~~
+
+Therefore:
+
+~~~text
+CURRENT_ANDROID_INITIAL_THEME = Dark
+~~~
+
+That is target history, not automatic Origin/product policy.
+
+#### Projection is the reversible seam
+
+The desired roundtrip no longer needs a storage adapter:
+
+~~~text
+human selects Dark
+-> Select(ThemeMode.Dark)
+-> current application ThemeMode = Dark
+
+current ThemeMode
+-> Android theme projection
+-> observed Dark appearance
+
+reverse:
+observed Dark appearance
+-> Android current ThemeMode.Dark
+-> origin....ThemeMode.Dark
+-> human selection cause
+~~~
+
+If some future target truly requires a Boolean persisted/wire representation, that mapping belongs to the
+target realization/evidence layer. Origin still owns ThemeMode, not the encoding.
 
 ### Causal episode — target refactoring begins from Origin meaning, not legacy mechanics
 
@@ -2039,15 +2182,26 @@ CURRENT DEFAULT DESIGN INTENTION
   -> one current selection
   -> target widget remains realization-specific
 
-CURRENT ANDROID MAPPING CANDIDATE
-  android....ThemeMode = Light / Dark
-  selectThemeMode(value)
-  -> explicit value-to-darkTheme mapping
-  -> legacy Boolean storage may remain underneath
+CURRENT ANDROID ALIGNMENT
+  PR #188
+    android....ThemeMode = Light / Dark
+    Boolean adapter removed
+
+  PR #190
+    current Button style projection from domain State
+
+  PR #189 / #191
+    SUPERSEDED historical Boolean-bridge candidates
+
+CURRENT TARGET OBSERVATION
+  VexLifeSession initialDarkTheme = true
+  -> current Android initializes Dark
+  -> target evidence, not automatic Origin default
 
 NEXT QUESTION
-  What bounded target realization and lived roundtrip prove that
-  Select(ThemeMode.<value>) survives Origin -> Android -> observed appearance -> Origin trace?
+  Once the active VexLifeSession source claim clears, make ThemeMode itself the session State,
+  project it directly into app theme + Debug Menu selected presentation,
+  and prove the lived roundtrip.
 ~~~
 
 ## Working discipline

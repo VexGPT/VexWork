@@ -2407,269 +2407,310 @@ human chooses ThemeMode.Dark
 -> appearance consumers reflect Dark
 ~~~
 
-### Origin-to-Android mapping — explicit selection over legacy Boolean mechanics
+### ThemeMode State / Projection — reversibility does not require target storage in Origin
 
-The accepted current-target observation is:
+The previous mapping step introduced a Boolean adapter because current Android happened to store
+darkTheme: Boolean. Further pressure showed that this was migration convenience without an earned
+compatibility requirement.
+
+Origin roundtrip reversibility means:
 
 ~~~text
-DebugMenuScreen.DarkMode
--> invoke(AppActions.ToggleDarkMode)
--> VexLifeSession.toggleDarkMode()
--> darkTheme = !darkTheme
+semantic meaning
+-> target realization
+-> lived result
+
+and
+
+lived / target evidence
+-> target semantic realization
+-> same semantic meaning
 ~~~
 
-The Origin-facing meaning is now:
+It does not mean the Origin must encode every intermediate target storage primitive.
+
+The current ThemeMode specimen now earns:
 
 ~~~text
-ThemeMode
-  Light
-  Dark
+STATE
+  current ThemeMode
+    Light | Dark
 
-ThemeModeControl
--> Select(ThemeMode.<value>)
+CONTROLS / REQUESTS
+  choose Light
+  choose Dark
+
+PORTABLE RELATIONSHIP
+  Select(ThemeMode.<value>)
+
+PROJECTION
+  current ThemeMode
+  -> which Theme choice is visibly selected
+
+  current ThemeMode
+  -> which application theme presentation is rendered
 ~~~
 
-The mismatch is behavioral, not merely naming:
+One current State can feed several bounded projections without becoming several truths:
 
 ~~~text
+current ThemeMode
+      |
+      +-> Debug Menu choice projection
+      |
+      +-> application color/theme projection
+      |
+      +-> Android system-bar appearance projection
+~~~
+
+This is not Convergence Relay: there is one rightful State owner feeding several consumers, rather than
+several independently-owned States requiring composition.
+
+### SCAE pressure — State and Projection are earned; Act / Effect are not yet
+
+The Android Behavior foundation defines:
+
+~~~text
+Control + CURRENT State -> Act
+CURRENT State + Act -> Effect + admitted State
+CURRENT State + Controls -> Projection
+~~~
+
+ThemeMode currently gives strong pressure for State + Projection, but the explicit choice does not yet
+need state-dependent Act resolution:
+
+~~~text
+current = Light
+Select(Dark)
+-> Dark
+
 current = Dark
 Select(Dark)
-  expected -> Dark
-
-current = Dark
-ToggleDarkMode()
-  actual toggle behavior -> Light
+-> Dark
 ~~~
 
-Therefore the current Toggle operation cannot itself be the faithful adapter for explicit Select semantics.
+The meaning of Select(Dark) is the same from either current State. Therefore inventing a Theme Behavior
+family only to manufacture Act / Effect names would add ceremony without resolving a current ambiguity.
 
-The minimum faithful target mapping does **not** require immediately replacing every internal Boolean.
-It requires an explicit semantic boundary:
+Current law from this specimen:
 
 ~~~text
-android....ThemeMode
-  Light
-  Dark
+STATEFUL UI
+!= AUTOMATIC FULL SCAE FAMILY
 
-selectThemeMode(mode)
-
-  Light
-    -> darkTheme = false
-
-  Dark
-    -> darkTheme = true
-
-currentThemeMode
-
-  darkTheme == false
-    -> ThemeMode.Light
-
-  darkTheme == true
-    -> ThemeMode.Dark
+EARN THE SCAE ROLES THE BEHAVIORAL QUESTION ACTUALLY NEEDS
 ~~~
 
-The names above describe the semantic adapter contract, not a claim about exact target source syntax.
+A fuller Theme Behavior may be earned later if a stable Control's meaning changes with current State, an
+Effect becomes independently addressable/observable/authorized, or a real provider/reality loop requires
+separate Act/Effect ownership.
 
-This gives the target a 1:1 realization of the portable noun while allowing existing storage mechanics to
-remain underneath it:
+### Boolean correction
+
+The current Android Boolean is therefore classified as legacy target representation:
 
 ~~~text
-origin....ThemeMode
-        |
-        | same semantic noun / values
-        v
-android....ThemeMode
-        |
-        | target adapter
-        v
-existing darkTheme Boolean
+darkTheme: Boolean
+  = CURRENT_TARGET_OBSERVATION
+  != portable ThemeMode State
+  != Origin mapping requirement
 ~~~
 
-Current rule:
+No proven persistence/wire/provider compatibility requirement currently forces that Boolean to survive.
+
+The aligned target direction is:
 
 ~~~text
-TARGET STORAGE MAY REMAIN BOOLEAN
-while the admitted domain remains Light / Dark
+VexLifeSession
+  current ThemeMode directly
 
-BOOLEAN STORAGE
-!= BOOLEAN SEMANTICS
+Select(ThemeMode.<value>)
+  -> update current ThemeMode explicitly
 
-TOGGLE IMPLEMENTATION
-!= SELECT SEMANTIC AUTHORITY
+VexLifeTheme
+  -> project current ThemeMode directly
+
+DebugMenu
+  -> project current ThemeMode into selected Light / Dark presentation
 ~~~
-
-Legacy target callers may continue to use ToggleDarkMode while they remain legitimate target-local
-behavior, but new Origin realization should map through explicit value selection. Removing legacy Toggle
-is separate cleanup pressure, not required merely to establish the faithful mapping.
-
-The adapter also gives future value growth an honest failure boundary:
-
-~~~text
-Origin later admits ThemeMode.System
-
-Android Boolean adapter supports only Light / Dark
--> report unsupported semantic value / require target evolution
-
-not
--> silently reinterpret System as false or true
-~~~
-
-This preserves the earlier rule that unsupported Origin capability must remain visible.
 
 ### Target alignment posture — current Android is evidence, not semantic authority
 
-The first source-realization step has now been formed against current Android rather than making the
-Origin model conform to the legacy target.
-
-Current accepted Android main observed at formation:
+Current Android main observed during this Walk:
 
 ~~~text
 vgong24/VexLife-Android
 main = 2480ac771dfcfb20bafdc6a61da5f7081b399c56
 ~~~
 
-Current target observation remains:
+Direct current source establishes:
 
 ~~~text
-DebugMenuScreen.DarkMode
+VexLifeSession(
+  initialDarkTheme: Boolean = true
+)
+
+darkTheme
 -> ToggleDarkMode
 -> darkTheme = !darkTheme
 ~~~
 
-That is migration evidence. It does not constrain the portable semantic model to Toggle/Boolean.
+So the legacy Android target currently initializes Dark. That is real migration/product-history evidence.
 
-The first two aligned Android candidates are now:
+It is not automatically the portable default:
 
 ~~~text
-Android PR #188
-  head = 760caafa949f3e686326b4357975c23d4d04cfc9
+CURRENT TARGET DEFAULT = Dark
+!=
+ORIGIN / PRODUCT DEFAULT = Dark
+~~~
 
-  new android....ThemeMode
-    Light
-    Dark
+If preserving existing user-visible startup behavior becomes a migration requirement, that pressure can
+earn Dark as the initial policy for this product. Until then, the Origin/product default decision remains
+open.
 
-  exhaustive target adapter
-    Light <-> false
-    Dark  <-> true
+### Android candidates after the Boolean correction
 
-  held:
-    no session mutation
-    no Debug Menu mutation
-    no default-value claim
+Android PR #188 began with a Boolean adapter, then was corrected forward without rewriting history.
 
-Android PR #189
-  head = 4a652f0215928b756efb3a473ed66367f1da8da8
-  stacked on #188
+Current #188:
 
-  VexLifeTheme(themeMode: ThemeMode)
-    = aligned renderer-facing entry
+~~~text
+head = 91de1a4678752cf1f0a1330c9b0bc51cf8f081a6
 
-  VexLifeTheme(darkTheme: Boolean)
-    = temporary compatibility bridge for unmigrated callers
+android....ThemeMode
+  Light
+  Dark
 
-Android PR #191
-  head = 245af41724a6d6ccc3161276e189a9b51a670d72
-  stacked on #189
+Boolean adapter
+  REMOVED from current candidate
+~~~
 
-  VexLifeApp
-    legacy session Boolean
-    -> ThemeModeBooleanAdapter
-    -> VexLifeTheme(themeMode)
+Android PRs #189 and #191 were built specifically around the adapter/compatibility-bridge premise.
+They are now SUPERSEDED / CLOSED, with their commits retained as causal history.
 
-Android PR #190
-  head = 8e78ff6e60c57785ad2b07ac72decce7f4c7b014
-  stacked on Android PR #182
+~~~text
+#189
+  historical renderer compatibility bridge
+  -> SUPERSEDED
 
+#191
+  historical app-composition Boolean -> ThemeMode bridge
+  -> SUPERSEDED
+~~~
+
+Android PR #190 remains a useful sequential child of Android PR #182:
+
+~~~text
+#190
   VexElementTree
-    current Button style may be projected by the Screen/domain owner
-    static Button identity / intent remains unchanged
+  -> bounded current Button style projection
+
+current domain State
+  -> current presentation
+
+static Button identity / intent
+  -> unchanged
 ~~~
 
-The exhaustive Boolean adapter is deliberate. If the Origin-scoped ThemeMode later admits another value,
-the Android mapping must evolve rather than silently reinterpret it.
+This is compatible with the refined State/Projection model and does not introduce a second State owner.
 
-Current source coordination also matters:
+### Current source-coordination hold
+
+Android PR #186 currently claims:
 
 ~~~text
-Android PR #186
-  currently claims VexLifeSession.kt
-  -> session ThemeMode ownership migration is held from overlapping mutation
-
-Android PR #182
-  currently claims generic Elements model / renderer / ScreenBlueprint
-  -> peer-value selection presentation primitive is held from overlapping mutation
-
-RELATED ACTIVE CLAIM
-!= SEMANTIC BLOCKER
-
-held file mutation
-!= held reasoning / unrelated source progress
+app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt
 ~~~
 
-This is the intended multi-PR posture:
+Therefore the direct State-owner refactor is held at that exact file rather than worked around.
+
+When that ownership clears, the next aligned target candidate should prefer:
 
 ~~~text
-VexSync semantic source
-        |
-        +-> Android #188  target semantic noun/value realization
-        |
-        +-> Android #189  target renderer consumes semantic noun
-        |
-        +-> Android #191  app composition consumes ThemeMode through compatibility boundary
-        |
-        +-> Android #190  stacked after #182: current Button presentation projection
-        |
-        +-> later session migration after #186 file ownership clears
-        |
-        +-> later Debug Menu peer-choice composition after session + element dependencies compose
-        |
-        v
-lived roundtrip evidence
-        |
-        v
-VexSync / VexBoard alignment examples
+VexLifeSession
+  initialThemeMode: ThemeMode = <product policy still to be earned>
+  current themeMode: ThemeMode
+
+  selectThemeMode(value)
+    themeMode = value
 ~~~
 
-The implementation candidates remain downstream of VexSync. Android source is allowed to be refactored
-toward the accepted semantic model; current Android mechanics are not promoted into Origin truth merely
-because they existed first.
+and:
+
+~~~text
+VexLifeTheme(themeMode)
+  Light -> LightColors
+  Dark  -> DarkColors
+~~~
+
+No Boolean compatibility layer is required unless new evidence earns one.
 
 ### Current next Walk Frontier
 
-One dependent question remains held:
-
-~~~text
-OPEN / HELD
-  actual VexLife initial ThemeMode policy/value
-~~~
-
-The semantic/design/mapping path is now sufficiently explicit to describe the first bounded roundtrip:
+Established:
 
 ~~~text
 Origin scope
   DebugMenuScreen
-    ThemeModeControl
-      Select(ThemeMode.Dark)
+    Meaning established
 
--> Android semantic mapping
-   selectThemeMode(Dark)
+  ThemeMode
+    Light
+    Dark
 
--> target mechanics
-   darkTheme = true
+relationship
+  Select(ThemeMode.<value>)
 
--> observed application appearance
-   Dark
+runtime truth
+  current ThemeMode
+  = application-scoped State
 
--> reverse trace
-   observed Dark appearance
-   -> current Android ThemeMode.Dark
-   -> Select(ThemeMode.Dark)
-   -> origin....ThemeMode.Dark
-   -> human choice
+projection
+  current ThemeMode
+  -> selected Light / Dark presentation
+  -> application theme presentation
+
+SCAE
+  State + Projection pressure = earned
+  full Act / Effect Behavior family = NOT YET EARNED
+
+Android
+  #188 current ThemeMode domain candidate
+  #190 current Button presentation projection candidate
+
+historical/superseded
+  #189 / #191 Boolean-bridge approach
 ~~~
 
-The next construction edge is to turn this mapping into the bounded target realization + roundtrip proof,
-while keeping the unresolved initial/default value outside any claim that depends on it.
+Held:
+
+~~~text
+actual Origin/product initial ThemeMode policy
+  OPEN
+
+VexLifeSession direct ThemeMode refactor
+  held only by exact active source ownership in Android #186
+~~~
+
+Next after that exact path clears:
+
+~~~text
+VexLifeSession
+  -> own ThemeMode directly
+  -> Select(value) establishes current State
+
+VexLifeTheme
+  -> project ThemeMode directly
+
+DebugMenu
+  -> registered Light / Dark choices
+  -> current ThemeMode projects selected presentation
+
+then
+  lived Origin -> Android -> observed appearance -> reverse trace
+  -> VexSync / VexBoard real alignment specimen
+~~~
 
 
 ## Current Work edges
