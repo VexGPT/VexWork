@@ -148,11 +148,11 @@ test('built-in and patient-zero source boards preserve separate catalog ownershi
     [
       'board.vexbusinessfactory.intent-topology.patient-zero',
       'board.vexbusinessfactory.system-anatomy.patient-zero',
+      'board.vexstream.phone-desktop-connection.construction-evidence',
+      'board.vexstream.phone-desktop-connection.living-blueprint',
       'board.vexlife-android.home-vexstream.poc',
       'board.vexlife-android.vexstream-depth.poc',
       'board.vexlife.debug-menu.theme-mode.origin-walk',
-      'board.vexstream.phone-desktop-connection.construction-evidence',
-      'board.vexstream.phone-desktop-connection.living-blueprint',
     ],
   );
 
