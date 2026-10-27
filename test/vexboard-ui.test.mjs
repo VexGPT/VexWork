@@ -17,6 +17,7 @@ const prototypeDefinition = JSON.parse(fs.readFileSync(new URL('../vexboard/prot
 const systemAnatomy = JSON.parse(fs.readFileSync(new URL('../projects/vexboard/examples/vexbusinessfactory-system-anatomy.board.json', import.meta.url), 'utf8'));
 const intentTopology = JSON.parse(fs.readFileSync(new URL('../projects/vexboard/examples/vexbusinessfactory-intent-topology.board.json', import.meta.url), 'utf8'));
 const patientZeroCatalog = JSON.parse(fs.readFileSync(new URL('../projects/vexboard/examples/board-source-catalog.json', import.meta.url), 'utf8'));
+const themeModeBoard = JSON.parse(fs.readFileSync(new URL('../projects/vexboard/examples/vexlife-debug-menu-theme-mode.board.json', import.meta.url), 'utf8'));
 
 test('VexBoard Pages entry exposes create/open/read-only/fork/save-draft workflow', () => {
   assert.match(page, /Create new/);
@@ -25,6 +26,7 @@ test('VexBoard Pages entry exposes create/open/read-only/fork/save-draft workflo
   assert.match(page, /Source examples/);
   assert.match(page, /Open system anatomy example/);
   assert.match(page, /Open intent topology example/);
+  assert.match(page, /Open Theme Mode Origin Walk/);
   assert.match(page, /Request edit → draft copy/);
   assert.match(page, /Save draft/);
   assert.match(page, /Browser-local proving copies · not source truth/);
@@ -74,8 +76,51 @@ test('Context Inspector remains identity-first and includes bounded neighborhood
   assert.match(page, /Board\.queryBoardNeighborhood/);
 });
 
+test('feature workspace keeps Board primary and uses one closable auxiliary drawer', () => {
+  assert.match(page, /\.work\{min-height:0;display:grid;grid-template-columns:74px minmax\(0,1fr\)/);
+  assert.match(page, /\.work\.drawer-open\{grid-template-columns:74px minmax\(0,1fr\) 320px\}/);
+  assert.match(page, /let drawerMode=null/);
+  assert.match(page, /drawerMode===mode\?null:mode/);
+  assert.match(page, /drawerMode='INSPECT'|drawerButton\('Inspect','INSPECT'\)/);
+  assert.match(page, /drawerButton\('Library','LIBRARY'\)/);
+  assert.match(page, /drawerButton\('Feature context','FEATURE_CONTEXT'\)/);
+  assert.match(page, /function renderContextDrawer\(/);
+  assert.match(page, /function renderLibraryDrawer\(/);
+  assert.match(page, /function renderFeatureContextDrawer\(/);
+  assert.match(page, /Used here/);
+  assert.match(page, /Browse project library/);
+  assert.match(page, /Theme persistence owner/);
+  assert.match(page, /Repository \/ source identity has not yet been earned/);
+  assert.match(page, /ThemeMode ConvergenceRelay/);
+  assert.match(page, /Not established; use only if independent complete truths earn convergence/);
+  assert.match(page, /Open VexWork source/);
+  assert.match(page, /project\.vexsync\.debugmenu-blueprints/);
+  assert.match(page, /work\.vexsync\.debugmenu-blueprints\.feature-intention-builder-discovery/);
+  assert.match(page, /work\.append\(tools,viewportEl\);if\(drawerMode\)/);
+  assert.doesNotMatch(page, /work\.append\(tools,viewportEl,side\)/);
+});
+
+test('ThemeMode patient-zero board preserves the current Origin Walk without inventing persistence ownership', () => {
+  assert.equal(themeModeBoard.schemaVersion, Reader.VEXBOARD_DRAFT_SCHEMA);
+  assert.equal(themeModeBoard.mode, 'READ_ONLY_SOURCE');
+  assert.equal(themeModeBoard.draftRef, 'board.vexlife.debug-menu.theme-mode.origin-walk');
+  const graph = normalizeBoardGraph(themeModeBoard.graph);
+  const projection = normalizeBoardProjection(themeModeBoard.projection, graph);
+  assert.ok(graph.nodes.some((node) => node.nodeRef === 'control.debug-menu.theme-mode'));
+  assert.ok(graph.nodes.some((node) => node.nodeRef === 'state.theme-mode' && node.label === 'ThemeMode'));
+  assert.ok(graph.nodes.some((node) =>
+    node.nodeRef === 'reference.theme-mode.persistence-owner' &&
+    node.label.includes('unresolved')
+  ));
+  assert.ok(graph.relationships.some((relationship) =>
+    relationship.relationshipRef === 'rel.theme-mode.behavior-persistence-frontier' &&
+    relationship.labelOrNull === 'EFFECT · OWNER OPEN'
+  ));
+  assert.ok(projection.items.some((item) => item.semanticRef === 'behavior.theme-mode'));
+});
+
 test('built-in and patient-zero source boards preserve separate catalog ownership and canonical identity', () => {
-  for (const source of [selfMap, publishMap, systemAnatomy, intentTopology]) {
+  for (const source of [selfMap, publishMap, systemAnatomy, intentTopology, themeModeBoard]) {
     assert.equal(source.schemaVersion, Reader.VEXBOARD_DRAFT_SCHEMA);
     assert.equal(source.mode, 'READ_ONLY_SOURCE');
     const graph = normalizeBoardGraph(source.graph);
@@ -105,6 +150,7 @@ test('built-in and patient-zero source boards preserve separate catalog ownershi
       'board.vexbusinessfactory.system-anatomy.patient-zero',
       'board.vexlife-android.home-vexstream.poc',
       'board.vexlife-android.vexstream-depth.poc',
+      'board.vexlife.debug-menu.theme-mode.origin-walk',
       'board.vexstream.phone-desktop-connection.construction-evidence',
       'board.vexstream.phone-desktop-connection.living-blueprint',
     ],
@@ -120,12 +166,18 @@ test('built-in and patient-zero source boards preserve separate catalog ownershi
   assert.equal(intentResolution.location, './vexbusinessfactory-intent-topology.board.json');
   assert.equal(intentResolution.boardRef, intentTopology.draftRef);
 
+  const themeModeResolution = resolveBoardSource(themeModeBoard.draftRef, [catalog]);
+  assert.equal(themeModeResolution.catalogRef, catalog.catalogRef);
+  assert.equal(themeModeResolution.location, './vexlife-debug-menu-theme-mode.board.json');
+  assert.equal(themeModeResolution.boardRef, themeModeBoard.draftRef);
+
   assert.match(page, /vexboard-source-resolver\.mjs/);
   assert.match(page, /function loadSourceCatalogs\(\)/);
   assert.match(page, /SourceResolver\.resolveBoardSource/);
   assert.match(page, /draft\.draftRef!==boardRef/);
   assert.match(page, /openCatalogBoard\('board\.vexbusinessfactory\.system-anatomy\.patient-zero'\)/);
   assert.match(page, /openCatalogBoard\('board\.vexbusinessfactory\.intent-topology\.patient-zero'\)/);
+  assert.match(page, /openCatalogBoard\(THEME_MODE_WORKSPACE_BOARD_REF\)/);
 
   assert.equal(Reader.builtinPrototypeUrl('board.vexboard.prototype-demo'), './prototype-demo.prototype.json');
   assert.equal(Reader.builtinPrototypeUrl('board.vexboard.self-map'), null);
