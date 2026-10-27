@@ -3319,3 +3319,68 @@ ONE_SPECIMEN != UNIVERSAL_FRAMEWORK
 ~~~
 
 <!-- [VXG RealForever][VEXSYNC][DEBUGMENU][PROCESS-DISCOVERY][ORIGIN-ANDROID] -->
+
+
+### Async result syntax checkpoint
+
+Current readable form:
+
+~~~text
+effect = begin {
+  operation(...)
+    .results {
+      Success { ... }
+      Failure { ... }
+      Stale { ... }
+    }
+}
+~~~
+
+Rules now established:
+
+~~~text
+begin { ... }
+  = Effect scope containing later-completing work
+
+operation(...).results { ... }
+  = result cases owned by that exact returning operation
+
+.results
+  = exhaustive over that operation's reachable result leaves
+
+.stay()
+  = keep immediate semantic State unchanged while work runs
+
+.admit<Next>()
+  = admit Next immediately while later results may confirm/preserve/correct it
+
+ASYNC EFFECT != ASYNC ADMISSION
+~~~
+
+Multiple operations may exist inside one Effect. Their sequencing/nesting must remain visible before
+architectural extraction. VexBoard may later fold/color scopes for readability, but visual folding does
+not create a new semantic owner.
+
+### Saved next frontier
+
+Do not advance the language until these questions are walked:
+
+~~~text
+LIFECYCLE
+  Who owns begun Effect work if the initiating Screen disappears?
+
+CONFIRM
+  What exact thing does confirm() confirm:
+  operation attempt, persistence currentness, admitted transition, or something else?
+
+RETURNED VALUE
+  What does Success<SomeState-or-value> return, and how can that returned semantic value be used
+  without becoming an untracked target-language local?
+
+LOCAL VARIABLES
+  No Origin need for arbitrary locals has been established yet.
+  Meaningful intermediate values must first be classified as Result data, State, operation input,
+  relationship binding, or another earned semantic role.
+~~~
+
+These are the next unconsumed Origin-Walk edges.
