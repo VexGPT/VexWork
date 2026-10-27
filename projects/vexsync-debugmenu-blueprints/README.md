@@ -3384,3 +3384,170 @@ LOCAL VARIABLES
 ~~~
 
 These are the next unconsumed Origin-Walk edges.
+
+
+## Future-instance reading note — what this Walk is trying to make possible
+
+This Project is not trying to make VexBoard look like Kotlin or make Android code look like a diagram.
+
+The target is one recoverable semantic relationship that can be expressed in both directions:
+
+~~~text
+portable semantic meaning
+        |
+        +-> VexBoard
+        |     human-readable / explorable projection
+        |
+        +-> Android
+              native realization
+~~~
+
+A future instance should be able to look at either projection and recover the same important questions:
+
+~~~text
+What State is true?
+What Control did the human use?
+What Act did that Control mean from current State?
+What Effect was admitted?
+What becomes true immediately?
+What outside/provider truth may arrive later?
+Who owns that returned truth?
+If several complete truths participate, what relationship converges them?
+What does the human finally see?
+~~~
+
+The projections do not need identical syntax. They do need an explicit, non-guessing mapping.
+
+### Specimens are evidence, not templates to copy
+
+Read the current specimens in this order:
+
+~~~text
+Debug Menu
+  smallest current Android behavior
+  -> exposes the semantic language without much infrastructure
+
+VexStream Playback
+  admitted intent + delayed provider observation + stale-observation protection
+  -> pressures async/observation/reconciliation ownership
+
+Maps
+  existing Compound ConvergenceRelays over independently-owned current truths
+  -> pressures when a relationship genuinely earns ConvergenceRelay
+~~~
+
+Do not force a later specimen into the previous specimen's shape.
+
+In particular:
+
+~~~text
+VexStream reconciliation
+  != proof that every async Effect needs ConvergenceRelay
+
+Maps ConvergenceRelay
+  != permission to turn every field/result into another VexState
+
+Debug Menu simplicity
+  != permission to erase later provider/repository truth
+~~~
+
+### Mapping discipline
+
+When refactoring or extending this Walk, prefer language that can be mapped without semantic invention:
+
+~~~text
+Origin / portable meaning
+  -> exact semantic identity / relationship
+
+VexBoard
+  -> projection of that same identity / relationship for human inspection
+
+Android
+  -> target-native mechanism that realizes or observes that meaning
+~~~
+
+Target mechanics such as:
+
+~~~text
+CoroutineScope
+suspend
+StateFlow
+ViewModel
+Media3 callbacks
+Compose lifecycle
+SharedPreferences / DataStore
+~~~
+
+are evidence about realization and lifecycle. They do not automatically become portable vocabulary.
+
+Conversely, portable words such as:
+
+~~~text
+State
+Control
+Act
+Effect
+admit
+stay
+ConvergenceRelay
+~~~
+
+must not be renamed or reinterpreted merely to resemble one target platform.
+
+### Status of the current async notation
+
+The current:
+
+~~~text
+begin {
+  operation(...)
+    .results {
+      ...
+    }
+}
+~~~
+
+is discovery language for a directly-returning asynchronous operation.
+
+It is NOT yet a rule that every later-completing Effect must use this form.
+
+Before using it, classify the actual ownership:
+
+~~~text
+returned operation result itself matters
+  -> direct result mapping may fit
+
+a rightful source already owns changing reality as VexState
+  -> observe that owner rather than duplicating it as callback flags
+
+multiple independently-owned complete VexStates matter together
+  -> ConvergenceRelay may be earned
+~~~
+
+If the source does not make the ownership clear, preserve the uncertainty. Do not manufacture a
+repository, result class, revision counter, pending State kind, Relay, or wrapper solely to make the
+example fit a preferred syntax.
+
+### Refactor goal
+
+The eventual success condition is not "cleaner Android code" by itself.
+
+It is:
+
+~~~text
+human intention
+-> portable semantic relationship
+-> VexBoard can show that relationship plainly
+-> Android can realize it natively
+-> Android evidence can be traced back to the same relationship
+-> a future AI does not have to guess what one side meant
+~~~
+
+Refactor only where that mapping becomes more truthful, smaller, or easier to prove.
+
+If the current Android structure already preserves the right meaning, it may remain target-specific.
+If the portable language cannot explain a materially important Android behavior, record the gap before
+inventing code.
+
+The notes in CURRENT-EXAMPLES are pressure/evidence for that mapping exercise; they are not a request
+to mechanically implement every exploratory form.
