@@ -2864,3 +2864,78 @@ existing Compound Relay pattern.
 
 Maps is the next comparison specimen because it already contains concrete ConvergenceRelays over
 independently-owned current truths.
+
+
+## Future-instance use of these examples
+
+These examples are a semantic comparison set, not a backlog of code changes.
+
+Use them to reduce assumption when mapping one meaning across VexBoard and Android:
+
+~~~text
+1. Identify the semantic owner first.
+2. Identify the current Android realization/evidence second.
+3. Ask whether the portable relationship can explain that realization without target-specific jargon.
+4. Ask whether VexBoard could show the same relationship without hiding ownership or causal order.
+5. Only then consider a refactor or new reusable construct.
+~~~
+
+The intended comparison is:
+
+~~~text
+DEBUG MENU
+  current source:
+    toggle -> AppAction -> VexLifeSession.darkTheme -> UI
+
+  purpose in this Walk:
+    smallest specimen for State / Control / Act / Effect / UI-form mapping
+
+
+VEXSTREAM PLAYBACK
+  current source:
+    Control -> Act -> Effect
+    + immediate admitted intent
+    + Media3 observation
+    + connection-local pending/reconciliation
+    -> Projection / DisplayState
+
+  portable source:
+    provider-observation law rows exist without Control / Act / Effect
+
+  purpose in this Walk:
+    determine how later reality re-enters portable meaning without pretending it is another human action
+
+
+MAPS
+  current source:
+    independently-owned current truths
+    -> Compound ConvergenceRelay InputState
+    -> processStates()
+    -> OutputState
+
+  purpose in this Walk:
+    determine what additional ownership pressure earns ConvergenceRelay rather than ordinary local reconciliation
+~~~
+
+Do not infer:
+
+~~~text
+all async work -> begin/results
+all provider observations -> ConvergenceRelay
+all status fields -> separate States
+all target implementation memory -> portable semantic identity
+~~~
+
+Also do not hide meaningful differences merely to keep the three specimens visually identical.
+
+The desired end state is an unmistakable mapping:
+
+~~~text
+same semantic relationship
+  -> human-readable VexBoard projection
+  -> AI-readable portable construction meaning
+  -> target-native Android realization
+  -> traceable source/evidence back to that relationship
+~~~
+
+A future AI should use the examples to ask fewer invented questions, not to generate more architecture.
