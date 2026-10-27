@@ -1906,6 +1906,33 @@ Boolean overload
   -> temporary migration bridge
 ~~~
 
+Android PR #191 then advances the same stack without touching the session owner:
+
+~~~text
+VexLifeSession.darkTheme
+  -> ThemeModeBooleanAdapter
+  -> VexLifeTheme(themeMode)
+~~~
+
+That makes the compatibility seam explicit at app composition while the session file remains claimed by
+PR #186.
+
+A separate sequential child of Android PR #182, Android PR #190, adds only the presentation capability
+needed by the eventual peer-value Debug Menu control:
+
+~~~text
+VexElementTree
+  buttonStyleOverride(ButtonElement)
+
+current domain state
+  -> current Button presentation
+
+static Button identity / intent
+  -> unchanged
+~~~
+
+No ChoiceElement or ThemeMode-specific Elements primitive is introduced.
+
 This demonstrates a reusable migration pattern:
 
 ~~~text
@@ -1950,14 +1977,22 @@ held
 current Android realization candidates
   PR #188 -> ThemeMode target domain + Boolean adapter
   PR #189 -> ThemeMode-aware theme renderer
+  PR #191 -> app composition maps legacy session state through ThemeMode
+  PR #190 -> stacked after #182; current Button style projection for peer-choice presentation
 
-held source edges
+held source edge
   VexLifeSession migration -> exact file currently claimed by PR #186
-  generic peer-choice presentation -> exact element files currently claimed by PR #182
+
+composition edge
+  final DebugMenu Light | Dark control needs:
+    session explicit selectThemeMode(value)
+    + PR #190 presentation projection
+    + registered Light/Dark controls/action wiring
 
 next
-  prove/currentize the semantic + first Android candidates
-  then resume the held source edges as their exact path ownership clears
+  prove/currentize the semantic + Android candidates
+  then resume session ownership as #186 clears
+  -> compose final DebugMenu selection surface
   -> lived Origin -> Android -> appearance -> reverse-trace roundtrip
 ~~~
 

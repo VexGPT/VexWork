@@ -2566,6 +2566,23 @@ Android PR #189
 
   VexLifeTheme(darkTheme: Boolean)
     = temporary compatibility bridge for unmigrated callers
+
+Android PR #191
+  head = 245af41724a6d6ccc3161276e189a9b51a670d72
+  stacked on #189
+
+  VexLifeApp
+    legacy session Boolean
+    -> ThemeModeBooleanAdapter
+    -> VexLifeTheme(themeMode)
+
+Android PR #190
+  head = 8e78ff6e60c57785ad2b07ac72decce7f4c7b014
+  stacked on Android PR #182
+
+  VexElementTree
+    current Button style may be projected by the Screen/domain owner
+    static Button identity / intent remains unchanged
 ~~~
 
 The exhaustive Boolean adapter is deliberate. If the Origin-scoped ThemeMode later admits another value,
@@ -2598,9 +2615,13 @@ VexSync semantic source
         |
         +-> Android #189  target renderer consumes semantic noun
         |
+        +-> Android #191  app composition consumes ThemeMode through compatibility boundary
+        |
+        +-> Android #190  stacked after #182: current Button presentation projection
+        |
         +-> later session migration after #186 file ownership clears
         |
-        +-> later Debug Menu peer-choice presentation after #182 element ownership clears
+        +-> later Debug Menu peer-choice composition after session + element dependencies compose
         |
         v
 lived roundtrip evidence
