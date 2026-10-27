@@ -41,8 +41,8 @@ The program intentionally learns from real consumers before extracting more arch
 | VCS-03 Maps engine realization | COMPLETED | Shared boundary exercised against a real replaceable provider engine. |
 | **VCS-04 Conversation adoption** | **COMPLETED** | L1-L11 lived acceptance and terminal Android/VexWork source-currentness are closed. |
 | **VCS-05 VexStream stress** | **COMPLETED** | Local Range/media pressure, restart/reconnect continuity, and ownership separation are proven; no new generic streaming transport was earned. |
-| VCS-06 VexArchitecture extraction | WAITING | Extract only patterns earned by multiple real consumers. |
-| VCS-07 deployment choices | WAITING | Deployment comes after runtime semantics stabilize. |
+| **VCS-06 VexArchitecture extraction** | **COMPLETED** | Reusable cross-repository composition accepted in Vextreme-SDK without moving feature meaning. |
+| **VCS-07 deployment choices** | **COMPLETED** | Existing deployment-neutral Hosted Capabilities choices are sufficient for current needs. |
 
 ## VCS-04 phase truth
 
@@ -108,9 +108,11 @@ L5 canonical installed Conversation read PASS
 Phase-3 cleanup                          CLOSED
 ```
 
-## Current edge
+## Terminal project state
 
-**VCS-04 is terminally COMPLETED; VCS-05 VexStream adoption / streaming stress is READY.**
+**VCS-00 through VCS-07 are COMPLETED. The required Connected Services outcome is complete.**
+
+Historical completion evidence follows below; it is not a current foreground lane.
 
 A037 closed the last lived predicate. The VCS-04 matrix is now L1-L11 PASS:
 
