@@ -310,7 +310,7 @@
         "github.issue.vexlife.899.comment.6430386085",
         "github.issue.vexlife.899.comment.6431636376",
         "github.issue.vexlife.899.comment.6431637903",
-        "docs/VEXHOME-HOSTED-CAPABILITIES.md"
+        "repo.vexlife:docs/VEXHOME-HOSTED-CAPABILITIES.md"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
@@ -1267,7 +1267,7 @@
       "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
       "sourceRefs": [
         "github.issue.vexlife.899.comment.6430386085",
-        "docs/VEXHOME-HOSTED-CAPABILITIES.md"
+        "repo.vexlife:docs/VEXHOME-HOSTED-CAPABILITIES.md"
       ],
       "createdAt": "2026-10-27T01:42:34.000Z"
     },
@@ -1295,7 +1295,7 @@
       "actorRef": "role.vexlife.connected-services.lifecycle-currentizer",
       "sourceRefs": [
         "github.issue.vexlife.899.comment.6431637903",
-        "docs/VEXHOME-HOSTED-CAPABILITIES.md"
+        "repo.vexlife:docs/VEXHOME-HOSTED-CAPABILITIES.md"
       ],
       "createdAt": "2026-10-27T01:42:40.000Z"
     },
