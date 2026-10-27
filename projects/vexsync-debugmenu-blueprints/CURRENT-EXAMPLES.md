@@ -437,6 +437,190 @@ missing semantic object
 
 It does not establish a global registry class, constructor API, ID format or target source architecture.
 
+
+## Causal episode — from existing-target reference to from-zero Origin construction
+
+**Currentness:** `CURRENT_PROJECT_RULE` for the standard-language boundary and
+`CURRENT_WORKING_MODEL` for the still-evolving construction grammar.
+
+### Human pressure
+
+The earlier discussion used the existing Android implementation as a useful reference, but that framing
+could accidentally imply that a target must already exist before the reusable design can be formed.
+
+The new pressure is a first-time feature:
+
+> What if the feature has never been built anywhere yet?
+
+The desired architecture must still let VexBoard/Origin author the reusable design first and then construct
+Android from that design.
+
+### Additional correction — target jargon leaked into the example
+
+An earlier explanation allowed examples such as a desktop `router.open(...)` or a web-specific routing
+verb to stand beside Origin `NavigateTo(...)`.
+
+That weakens the intended language boundary because the point of the reusable vocabulary is to replace
+platform-specific jargon at the semantic interface with repeatable human intention.
+
+The corrected rule is:
+
+~~~text
+Origin
+  NavigateTo(screen.debug-menu)
+
+Android semantic boundary
+  navigateTo(DebugMenuScreen)
+
+Desktop semantic boundary
+  navigateTo(DebugMenuScreen)
+
+Web semantic boundary
+  navigateTo(DebugMenuScreen)
+~~~
+
+If a target requires a platform primitive underneath:
+
+~~~text
+navigateTo(...)
+  -> platform-specific navigation primitive
+~~~
+
+The primitive remains implementation detail.
+
+~~~text
+PLATFORM_PRIMITIVE
+!= REUSABLE SEMANTIC VOCABULARY
+
+TARGET DIFFERENCE
+!= PERMISSION TO RENAME THE SAME INTENTION
+~~~
+
+The same pressure applies to `Select`, `Set`, `Open`, `Close` and later typed relationships that
+survive independent specimens.
+
+### From-zero feature interpretation
+
+A feature can begin entirely in reusable design space:
+
+~~~text
+human request
+-> semantic nouns / values
+-> Origin object boundaries
+-> Controls / content
+-> smallest truthful relationships
+-> optional Behavior / Act / Effect only when earned
+-> accepted Origin
+-> target mapping
+-> scaffold
+-> target-native realization
+-> lived evidence
+-> reverse trace to Origin
+~~~
+
+Android source is therefore optional input evidence for an existing feature, not a prerequisite for
+authoring a new one.
+
+### Naming relationship
+
+The current naming pressure is:
+
+~~~text
+DebugMenuScreenOrigin
+  canonical reusable definition
+
+DebugMenuScreen
+  target realization
+
+screen.debug-menu
+  semantic Screen identity
+~~~
+
+and, if it survives the next seam:
+
+~~~text
+ThemeModeOrigin
+  canonical reusable definition
+
+ThemeMode
+  target realization / reusable noun
+
+Light
+Dark
+  currently earned values
+~~~
+
+The `Origin` postfix distinguishes the canonical definition without changing the reusable semantic noun.
+
+### NavigateTo versus ActId — current decision threshold
+
+For a first-time design, do not assume every activation creates an Act.
+
+~~~text
+DebugMenuEntryControl
+-> NavigateTo(screen.debug-menu)
+~~~
+
+already says what the user intends.
+
+An `ActId` becomes useful only when the action itself becomes independently meaningful/addressable, such
+as when it is reused by several Controls, invoked without a visual Control, admitted by policy, selected
+from State-dependent Behavior, observed independently, referenced by another semantic object, or mapped
+through independently meaningful Effects.
+
+This preserves the earlier navigation pressure-test while making it usable for greenfield construction.
+
+### Template boundary
+
+Target scaffolding may repeat established mappings:
+
+~~~text
+ScreenOrigin -> Screen scaffold
+NavigateTo   -> navigateTo adapter
+Select       -> selection/value adapter
+Behavior     -> behavior resolver
+ActId        -> Act handler when earned
+Effect       -> Effect adapter when earned
+~~~
+
+But the template does not decide that a relationship is navigation, selection, Act or Effect.
+
+~~~text
+TEMPLATE
+!= SEMANTIC DESIGN AUTHORITY
+~~~
+
+### Why this episode matters
+
+This correction shifts the relationship from:
+
+~~~text
+existing target
+-> infer reusable design
+~~~
+
+to the more general model:
+
+~~~text
+new feature
+-> author reusable Origin design
+-> construct target realization
+
+existing feature
+-> inspect target as evidence
+-> reconcile / reverse-adopt into the same Origin model when appropriate
+~~~
+
+Both directions can exist, but new construction no longer depends on reverse engineering a target first.
+
+**Reopen condition:** a future target demonstrates that preserving the standard intention vocabulary at
+the target semantic boundary makes an important semantic distinction impossible to express. Platform API
+preference alone is not sufficient pressure.
+
+**Next unresolved edge:** define the smallest useful construction-grade `ScreenOrigin` / Control /
+typed-relationship shape without prematurely creating a universal schema.
+
+
 ## Current living specimen
 
 ~~~text
