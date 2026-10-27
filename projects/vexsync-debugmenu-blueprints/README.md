@@ -2516,6 +2516,103 @@ not
 
 This preserves the earlier rule that unsupported Origin capability must remain visible.
 
+### Target alignment posture — current Android is evidence, not semantic authority
+
+The first source-realization step has now been formed against current Android rather than making the
+Origin model conform to the legacy target.
+
+Current accepted Android main observed at formation:
+
+~~~text
+vgong24/VexLife-Android
+main = 2480ac771dfcfb20bafdc6a61da5f7081b399c56
+~~~
+
+Current target observation remains:
+
+~~~text
+DebugMenuScreen.DarkMode
+-> ToggleDarkMode
+-> darkTheme = !darkTheme
+~~~
+
+That is migration evidence. It does not constrain the portable semantic model to Toggle/Boolean.
+
+The first two aligned Android candidates are now:
+
+~~~text
+Android PR #188
+  head = 760caafa949f3e686326b4357975c23d4d04cfc9
+
+  new android....ThemeMode
+    Light
+    Dark
+
+  exhaustive target adapter
+    Light <-> false
+    Dark  <-> true
+
+  held:
+    no session mutation
+    no Debug Menu mutation
+    no default-value claim
+
+Android PR #189
+  head = 4a652f0215928b756efb3a473ed66367f1da8da8
+  stacked on #188
+
+  VexLifeTheme(themeMode: ThemeMode)
+    = aligned renderer-facing entry
+
+  VexLifeTheme(darkTheme: Boolean)
+    = temporary compatibility bridge for unmigrated callers
+~~~
+
+The exhaustive Boolean adapter is deliberate. If the Origin-scoped ThemeMode later admits another value,
+the Android mapping must evolve rather than silently reinterpret it.
+
+Current source coordination also matters:
+
+~~~text
+Android PR #186
+  currently claims VexLifeSession.kt
+  -> session ThemeMode ownership migration is held from overlapping mutation
+
+Android PR #182
+  currently claims generic Elements model / renderer / ScreenBlueprint
+  -> peer-value selection presentation primitive is held from overlapping mutation
+
+RELATED ACTIVE CLAIM
+!= SEMANTIC BLOCKER
+
+held file mutation
+!= held reasoning / unrelated source progress
+~~~
+
+This is the intended multi-PR posture:
+
+~~~text
+VexSync semantic source
+        |
+        +-> Android #188  target semantic noun/value realization
+        |
+        +-> Android #189  target renderer consumes semantic noun
+        |
+        +-> later session migration after #186 file ownership clears
+        |
+        +-> later Debug Menu peer-choice presentation after #182 element ownership clears
+        |
+        v
+lived roundtrip evidence
+        |
+        v
+VexSync / VexBoard alignment examples
+~~~
+
+The implementation candidates remain downstream of VexSync. Android source is allowed to be refactored
+toward the accepted semantic model; current Android mechanics are not promoted into Origin truth merely
+because they existed first.
+
 ### Current next Walk Frontier
 
 One dependent question remains held:

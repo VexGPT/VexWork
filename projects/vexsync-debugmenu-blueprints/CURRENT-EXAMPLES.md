@@ -1854,6 +1854,83 @@ not
 -> silently collapse System into true / false
 ~~~
 
+### Causal episode — target refactoring begins from Origin meaning, not legacy mechanics
+
+The first Android realization work tested whether the current target should constrain the new semantic
+model.
+
+~~~text
+legacy Android
+  DarkMode Toggle
+  Boolean inversion
+
+current Origin-facing meaning
+  ThemeMode.Light / ThemeMode.Dark
+  Select(explicit value)
+~~~
+
+The decision is:
+
+~~~text
+CURRENT TARGET
+  = observation / migration terrain
+
+CURRENT TARGET
+  != portable semantic authority
+~~~
+
+Therefore the target is refactored toward the Origin-aligned model.
+
+The first bounded candidate, Android PR #188, deliberately avoids the active VexLifeSession claim and
+establishes only:
+
+~~~text
+android....ThemeMode
+  Light
+  Dark
+
+Boolean compatibility mapping
+  Light <-> false
+  Dark  <-> true
+~~~
+
+The mapping is exhaustive so future value growth produces a visible target capability gap.
+
+The second candidate, Android PR #189, stacks on #188 and changes only the theme renderer:
+
+~~~text
+VexLifeTheme(themeMode: ThemeMode)
+  -> aligned entry
+
+Boolean overload
+  -> temporary migration bridge
+~~~
+
+This demonstrates a reusable migration pattern:
+
+~~~text
+semantic noun/value domain first
+-> target adapter
+-> target consumer moves onto semantic noun
+-> state owner migrates
+-> interaction/presentation migrates
+-> remove legacy bridge only when no rightful consumer remains
+~~~
+
+Do not collapse this into a one-shot rewrite when live source ownership makes bounded stages safer.
+
+Current overlap is explicit rather than ignored:
+
+~~~text
+PR #186 owns VexLifeSession.kt
+-> do not mutate that file from this claim yet
+
+PR #182 owns generic ElementModel / ScreenBlueprint / ElementCells
+-> do not independently add a competing selection primitive there yet
+~~~
+
+These holds protect source ownership; they do not give those sibling PRs authority over VexSync meaning.
+
 ### Current Walk Frontier
 
 ~~~text
@@ -1870,8 +1947,18 @@ established
 held
   actual VexLife initial ThemeMode policy/value
 
+current Android realization candidates
+  PR #188 -> ThemeMode target domain + Boolean adapter
+  PR #189 -> ThemeMode-aware theme renderer
+
+held source edges
+  VexLifeSession migration -> exact file currently claimed by PR #186
+  generic peer-choice presentation -> exact element files currently claimed by PR #182
+
 next
-  bounded Origin -> Android realization -> lived evidence -> reverse-trace roundtrip
+  prove/currentize the semantic + first Android candidates
+  then resume the held source edges as their exact path ownership clears
+  -> lived Origin -> Android -> appearance -> reverse-trace roundtrip
 ~~~
 
 The roundtrip may prove explicit selection independently of startup default. Any proof that begins from a
