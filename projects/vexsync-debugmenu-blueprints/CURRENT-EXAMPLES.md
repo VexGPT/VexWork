@@ -1717,40 +1717,93 @@ So Select preserves human intention even when the current state is already the r
 
 No independent Act / Effect identity is currently required for this direct explicit-value transition.
 
+### Causal episode — ThemeMode form resolves from semantic symmetry
+
+The design edge reused the earlier Default Design Intention rather than inventing a widget from scratch.
+
+Initial heuristic pressure:
+
+~~~text
+two values
+-> tempting default: Toggle
+~~~
+
+But the established semantics now say:
+
+~~~text
+ThemeMode.Light
+ThemeMode.Dark
+
+Select(explicit value)
+
+Light and Dark
+  = named peer values
+  != off/on encoding
+~~~
+
+A conventional Dark Mode Toggle would make Dark the positive condition and Light the negative/off branch.
+That would reintroduce the semantic asymmetry the Walk already removed.
+
+Therefore the stronger current design conclusion is:
+
+~~~text
+Theme
+  [ Light ] [ Dark ]
+
+portable design intent
+  visible exclusive choice group
+  both peer values perceptible
+  exactly one current selection perceptible
+~~~
+
+The portable design does not require a particular target widget. Android/Desktop/Web may choose a
+segmented control, radio-style choice group, chips or another admitted target-native form while preserving
+the same visible peer-choice meaning.
+
+Value-set evolution pressure also favors this rule:
+
+~~~text
+add System
+-> Select semantics survive
+-> visible choice group may expand
+
+many values / labels no longer fit
+-> presentation may refine to compact Selector / Dropdown
+-> semantic operation still remains Select
+~~~
+
+So cardinality informs form, but semantic relationship + symmetry + visibility decide the stronger default.
+
 ### Current Walk Frontier
 
 ~~~text
 established
-  Origin-scoped DebugMenuScreen identity + Meaning
-
-  Origin-scoped ThemeMode
-    Light / Dark
-    same noun across target scopes
-
+  DebugMenuScreen identity + Meaning
+  ThemeMode = Light / Dark
   Select(ThemeMode.<value>)
-
-  current ThemeMode
-    application-scoped runtime truth
-
-  initial/default selection
-    application/product policy responsibility
-    not intrinsic to ThemeMode by default
+  current ThemeMode = application-scoped
+  initial-selection owner = application/product policy
+  Default Design Intention = visible exclusive peer-value choice group
 
 held
-  actual VexLife initial ThemeMode value/policy
-  -> current evidence does not establish it
+  actual initial ThemeMode value/policy
 
-next independent edge
-  resolve visual form through Default Design Intention
-  without turning peer ThemeMode values back into Boolean/DarkMode semantics
+current target mismatch
+  Origin-facing meaning:
+    Select(ThemeMode.<value>)
+
+  Android reference:
+    ToggleDarkMode
+    darkTheme = !darkTheme
+
+next
+  derive the smallest faithful Origin-to-Android mapping/adapter correction
+  without turning current Android mechanics back into portable semantic authority
 ~~~
 
-The held initial-value question must be reopened before target realization claims a complete initial-state
-contract, but it does not block design work whose inputs are already known.
-
-**Reopen conditions:** evidence shows ThemeMode intrinsically carries a universal default, product policy
-requires a user-selectable System state, or target/current source establishes an existing default that must
-be considered for migration compatibility.
+**Reopen conditions:** explicit product design chooses a different form, value-set size/labels make visible
+choices materially worse, accessibility/viewport evidence requires another presentation, or a later
+semantic distinction shows Light/Dark are not peers.
 
 
 ## Current living specimen
@@ -1782,9 +1835,15 @@ CURRENT ORIGIN-SCOPE WORKING MODEL
   initial-selection owner = application/product policy
   actual initial value = OPEN
 
+CURRENT DEFAULT DESIGN INTENTION
+  Theme row
+  -> visible exclusive Light | Dark choices
+  -> one current selection
+  -> target widget remains realization-specific
+
 NEXT QUESTION
-  Which default visual form most faithfully presents the two peer ThemeMode values
-  without leaking current Android Boolean/toggle mechanics back into semantic meaning?
+  What minimum Android mapping/adapter change realizes Select(ThemeMode.<value>)
+  from the current ToggleDarkMode / darkTheme Boolean mechanics?
 ~~~
 
 ## Working discipline

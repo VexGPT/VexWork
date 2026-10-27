@@ -1590,41 +1590,113 @@ to invent that design independently.
 If later explicit design replaces a default, preserve the semantic identities and record the design
 refinement rather than treating the earlier default as immutable product truth.
 
-### Default form resolution — semantics first, cardinality informs form
+### Default form resolution — semantic relationship and value structure before cardinality
 
 A Control's semantic relationship must be known before default form is selected.
 
-A useful starting heuristic is:
+The earlier starting heuristic "two values -> Toggle" was too coarse. The current rule is:
 
 ~~~text
-one semantic property with two mutually exclusive states
-  -> two-state choice
-  -> default candidate: Toggle
+semantic relationship
++ value structure
++ symmetry / asymmetry
++ visibility / comparison need
++ available design space
+-> default form
 
-one semantic choice with several mutually exclusive values
-  -> multi-option choice
-  -> default candidate: compact Selector / Dropdown
+CARDINALITY
+  informs form
+
+CARDINALITY
+  does not determine form by itself
+~~~
+
+Current reusable tendencies:
+
+~~~text
+asymmetric enable/disable-like property
+  one condition is naturally expressed as active/inactive
+  -> Toggle may be the strongest default
+
+small set of named peer values
+  each value carries first-class meaning
+  comparison / visibility is useful
+  -> visible exclusive choice group is the strongest default
+
+larger value set / long labels / constrained space
+  -> compact Selector / Dropdown may become the stronger default
 
 explicit product/design pressure
   -> may choose a different admitted form
 ~~~
 
-Cardinality alone is not enough to declare universal form:
+The design form must preserve the semantic relationship. A target-native Toggle, segmented control, radio
+group, chips, Dropdown or another widget remains implementation/presentation mechanics underneath that
+portable intent.
+
+### ThemeMode default form — preserve peer values visibly
+
+The current ThemeMode specimen supplies concrete pressure:
 
 ~~~text
-NUMBER OF VALUES
-  informs form
+ThemeMode
+  Light
+  Dark
 
-NUMBER OF VALUES
-  != complete design meaning
+relationship
+  Select(explicit value)
+
+properties
+  both values are named peers
+  neither is semantically "the enabled state"
 ~~~
 
-For example, two named peer choices whose labels must remain simultaneously visible may later earn a
-different two-choice presentation than a conventional on/off Toggle. Likewise, a small multi-option set
-may earn visible choices instead of a Dropdown when comparison/visibility matters.
+Representing that by default as:
 
-The invariant is that all targets preserve the same **choice meaning**; familiar target-native rendering
-mechanics remain underneath the selected portable design form.
+~~~text
+Dark Mode
+  Off / On
+~~~
+
+would reintroduce the asymmetry already removed from semantic meaning:
+
+~~~text
+Off -> Light
+On  -> Dark
+~~~
+
+The stronger Default Design Intention is therefore:
+
+~~~text
+Theme
+  [ Light ] [ Dark ]
+
+portable intent:
+  show the admitted peer values
+  show exactly one current selection
+  selecting a value means Select(ThemeMode.<value>)
+~~~
+
+This is a **visible exclusive choice group**, not a mandate for one platform widget class.
+
+The default is intentionally extensible:
+
+~~~text
+Light / Dark
+-> visible two-choice group
+
+later Light / Dark / System
+-> visible three-choice group may still satisfy the same design intent
+
+later many values / long labels / constrained width
+-> compact selector may become the stronger default form
+-> semantic operation remains Select
+~~~
+
+Thus value-set growth first pressures **presentation**, not semantic-operation migration.
+
+The invariant is that all targets preserve the same choice meaning and current-selection legibility;
+familiar target-native rendering mechanics remain underneath the selected portable design form.
 
 ### Default screen composition — deterministic growth instead of random positioning
 
@@ -2337,7 +2409,7 @@ human chooses ThemeMode.Dark
 
 ### Current next Walk Frontier
 
-One dependent question remains open:
+One dependent question remains held:
 
 ~~~text
 OPEN / HELD
@@ -2345,23 +2417,56 @@ OPEN / HELD
   because current evidence does not yet establish it
 ~~~
 
-That unknown does not hold unrelated design work.
-
-The next independent edge can therefore continue from established meaning:
+The independent design edge is now resolved:
 
 ~~~text
 ThemeMode
-  values = Light / Dark
-  relationship = Select(explicit value)
-  current state = application-scoped
-  initial-selection owner = application/product policy
-  actual initial value = OPEN
+  Light / Dark
+  Select(explicit value)
 
-NEXT
-  resolve the unspecified visual form through Default Design Intention:
-    how should two peer ThemeMode values be presented
-    without reintroducing Boolean / DarkMode asymmetry?
+Default Design Intention
+  visible exclusive choice group
+  both peer values perceptible
+  one current selection perceptible
+  no Boolean/DarkMode asymmetry
 ~~~
+
+For the current Debug Menu composition, the default design can therefore be expressed without target
+coordinates:
+
+~~~text
+Debug Menu
+  vertical ordered content
+  scroll-capable at the rightful overflow owner
+
+  Theme row
+    label / semantic subject: Theme
+    choices: Light | Dark
+    one selected value
+~~~
+
+Exact widget class, typography, colors, spacing and target-native mechanics remain target/design
+realization details unless separately authored.
+
+The next independent semantic/construction edge is now the Origin-to-target mapping mismatch:
+
+~~~text
+Origin scope
+  ThemeModeControl
+  -> Select(ThemeMode.<value>)
+
+current Android
+  DebugMenuScreen.DarkMode
+  -> invoke ToggleDarkMode
+  -> darkTheme = !darkTheme
+
+QUESTION
+  what is the minimum target mapping/adapter change that faithfully realizes
+  explicit Select(value) semantics without preserving Toggle as semantic authority?
+~~~
+
+That mapping must also preserve the held initial-state question rather than inventing a target-local
+default.
 
 
 ## Current Work edges
