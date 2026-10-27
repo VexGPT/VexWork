@@ -3786,3 +3786,39 @@ define the bounded feature-workspace contract here
 ~~~
 
 No Android refactor is authorized by this UI contract.
+
+
+## VexBoard consumption checkpoint
+
+The ThemeMode feature-workspace contract is no longer only a handoff note.
+
+Active VexBoard PR #155 consumed the bounded patient zero at:
+
+~~~text
+github.pull.vexwork.155
+head = a1783688d90f21da2e3c32a86a2500f90385d93f
+~~~
+
+Current implementation:
+
+~~~text
+Board
+  -> full-width by default
+
+one auxiliary drawer
+  -> Inspect
+  -> Library
+  -> Feature Context
+  -> one mode at a time
+  -> closable
+
+ThemeMode source board
+  -> board.vexlife.debug-menu.theme-mode.origin-walk
+  -> persistence owner remains visibly unresolved
+~~~
+
+The implementation adds no new BoardGraph schema and does not resolve the still-open repository /
+persistence / convergence semantics merely to populate the UI.
+
+This VexSync lane remains the reasoning/source context for the Origin Walk; PR #155 is the current
+VexBoard realization of the workspace experience.
