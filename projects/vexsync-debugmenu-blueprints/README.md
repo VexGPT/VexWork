@@ -813,6 +813,405 @@ Do not answer all eight by designing a framework first. Let the next real seam p
 necessary addition.
 
 
+
+## VexSync Origin Walk — incremental semantic construction
+
+The current name for this step-by-step VexSync construction discipline is **Origin Walk**.
+
+~~~text
+one grounded question
+-> one earned distinction
+-> preserve why / pressure / provenance
+-> expose the next unresolved question
+-> continue
+~~~
+
+A fresh conversation does not restart the Walk. It resumes from the current **Walk Frontier** after
+consuming the established relevant Origin Steps and examples.
+
+Current process vocabulary:
+
+~~~text
+Origin Walk
+  the whole incremental semantic-construction process
+
+Origin Step
+  one distinction that has earned a stable place in the current model
+
+Walk Pressure
+  the human need, observed problem, counterexample or relationship that forces the next question
+
+Walk Frontier
+  the exact unresolved semantic question where construction should continue
+
+Origin Reground
+  return to the earliest affected Origin Step when new evidence challenges an assumption,
+  preserving upstream truth and reopening only dependent descendants
+
+Origin Roundtrip
+  Origin meaning -> target realization -> lived evidence -> reconstruction of the same meaning
+~~~
+
+### "Smallest" means minimum complete, not shortest
+
+Earlier source used words such as `smallest` and `minimal`. The current project rule sharpens that language:
+
+~~~text
+SMALLEST / MINIMAL
+  = MINIMUM COMPLETE
+
+MINIMUM COMPLETE
+  = nothing unnecessary
+  + nothing materially necessary missing
+
+MINIMUM COMPLETE
+  != shortest sentence
+  != fewest fields
+  != compressed summary that loses the problems, reasons, invariants or provenance
+     that make the next decision correct
+~~~
+
+The removal test is:
+
+> Can this component be removed without losing correctness, human intention, a required case, rightful
+> ownership, provenance, scalability, recoverability, or an important reason the design exists?
+
+If yes, remove it. If no, it is part of the minimum-complete meaning or solution even when that requires
+multiple explicit components.
+
+### Problem and solution consideration
+
+A **Problem** is currently treated as an observed or required mismatch between current reality and an
+intended outcome/invariant whose consequences materially affect an admitted concern.
+
+~~~text
+Problem
+  current truth
+  + intended truth
+  + material mismatch
+  + consequences
+  + materially distinct cases
+~~~
+
+Do not automatically split every case into another managed Work/owner. Several cases may be facets of one
+structural problem until evidence shows independent ownership is required.
+
+A solution can then be considered at increasing depth:
+
+~~~text
+PATCHED
+  immediate symptom removed
+
+RESOLVED
+  admitted problem/cases satisfied
+
+SYSTEMICALLY RESOLVED
+  recurring underlying cause addressed
+
+CONVERGED
+  several related pressures resolved through one reusable architecture
+  with less duplicated state / interpretation / responsibility
+
+REFINED
+  later pressure improves scale, clarity or simplicity
+  without losing previously earned truth
+~~~
+
+Current convergence principle:
+
+~~~text
+prefer the architecture that resolves the largest coherent set of admitted pressures
+with the fewest independent managed truths
+
+while preserving every distinction that still has a rightful separate owner
+~~~
+
+"Manage less" does not mean collapse owners. One traversable causal path may still cross several rightful
+owners.
+
+### Minimum-complete meaning
+
+When an Origin object or architectural boundary earns durable meaning, consider at least:
+
+~~~text
+WHAT
+  what semantic thing is this?
+
+WHY
+  why does it need to exist?
+
+PRESSURES RESOLVED
+  which admitted problems/cases justify this boundary?
+
+INVARIANTS
+  what must remain true if children or target realization change?
+
+RELATIONAL ROLE
+  who/what does it connect to, depend on, feed, coordinate with or deliberately not own?
+
+ABSENCE
+  what becomes impossible, duplicated, fragmented, ownerless or incorrectly coupled without it?
+
+BOUNDARY
+  what truth belongs here and what truth remains elsewhere?
+~~~
+
+These are **reasoning questions**, not mandatory schema fields. A field is introduced only if a consumer
+needs the answer as durable independently addressable source.
+
+### Relational and counterfactual question grammar
+
+A node cannot be validated only from its internals. The Origin Walk also asks what changes around it.
+
+Useful reusable questions include:
+
+~~~text
+RELATIONAL CONTEXT
+  Who depends on this?
+  What does this depend on?
+  Who produces the truth it consumes?
+  Who consumes the truth it produces?
+  Which siblings solve related pressures?
+  Which connections appear or disappear because it exists?
+  Does it coordinate owners or accidentally absorb their truth?
+
+ABSENCE TEST
+  If this did not exist, what breaks, duplicates, fragments or becomes ownerless?
+
+COLLAPSE TEST
+  If this were merged into a neighbor, what meaning or rightful ownership would be lost?
+
+BYPASS TEST
+  If consumers go around this, what do they have to reinvent?
+  Does the bypass recreate duplicated interpretation, state, recovery or ownership?
+
+DUPLICATION TEST
+  Who else already performs this job?
+
+SUBSTITUTION TEST
+  If another mechanism replaced this, would the same human meaning and invariants survive?
+
+SCALE TEST
+  With 2 / 20 / 2,000 consumers or children, what multiplies?
+
+FAILURE TEST
+  If this fails, what becomes unavailable, stale, ambiguous or unrecoverable?
+
+EVOLUTION TEST
+  When one child or target changes, what else must change?
+~~~
+
+The answer to one question may expose a new Problem. Re-enter the same question grammar rather than
+inventing an unrelated process.
+
+### Standardization and architecture re-entry
+
+A solution that works for one specimen may generate new problems when it becomes the standard.
+
+Before standardizing a reusable mechanism, ask:
+
+~~~text
+What new dependencies does this standard create?
+Who owns the standard?
+Who owns the truths underneath it?
+How many synchronization / recovery / interpretation paths now exist?
+Does every additional consumer make debugging harder or easier?
+What is the blast radius when the standard fails?
+Can a fresh maintainer locate the responsible owner without historical context?
+~~~
+
+If new pressure appears, perform **Architecture Re-entry**:
+
+~~~text
+proposed reusable solution
+-> treat the solution itself as new design terrain
+-> run the Origin Walk questions again
+-> refine / converge without discarding unaffected truth
+~~~
+
+### Diagnostic legibility and Ownership Trace
+
+Good reuse should make a system easier to understand and debug, not merely easier to construct.
+
+~~~text
+GOOD REUSE
+  = easier to build
+  + easier to understand
+  + easier to debug
+  + easier to evolve
+  + fewer independent truths to manage
+~~~
+
+A standardized path should preserve an **Ownership Trace**:
+
+~~~text
+observed result / failure
+        ^
+platform primitive
+        ^
+target realization
+        ^
+semantic mapping
+        ^
+Origin relationship / state
+        ^
+human intention / originating cause
+~~~
+
+At every boundary, it should remain possible to answer:
+
+~~~text
+what semantic request/state is this?
+where did it originate?
+who currently owns that truth?
+which boundary failed?
+what did not fail?
+who may correct it?
+~~~
+
+An abstraction that hides these answers is not mature enough merely because it reduces call-site code.
+
+### Sequencing semantics — one human move may contain ordered semantic moves
+
+A human may experience one action while the architecture correctly represents several ordered semantic
+moves.
+
+~~~text
+ONE HUMAN MOVE
+!= ONE UNDIFFERENTIATED TECHNICAL OPERATION
+~~~
+
+The design question becomes:
+
+> What are the meaningful moves inside the one move, and which truth must be prepared before another
+> operation can safely consume it?
+
+This is **sequencing semantics**. The sequence should follow semantic dependency rather than convenience
+of one target API.
+
+### Navigation is not semantic-state transport
+
+A lived predecessor design carried information as navigation parameters:
+
+~~~text
+navigateTo(nextScreen, params)
+-> destination extracts params
+~~~
+
+With several callers, the destination could observe the value while losing important causal truth:
+
+~~~text
+Where did the value originate?
+Why is it current?
+Who owns it?
+Which state transition produced it?
+What arrived before it?
+Can recreation / deep-link / another caller recover the same truth?
+~~~
+
+The current architectural pressure is therefore:
+
+~~~text
+Navigation
+  owns destination/presentation movement
+
+ConvergenceRelay / rightful semantic owner
+  owns semantic state propagation
+  + source of truth
+  + provenance
+  + dependency
+  + sequence/currentness
+
+NAVIGATION
+!= ARBITRARY STATE TRANSPORT
+~~~
+
+For state-bearing flows, prefer:
+
+~~~text
+prepare / establish semantic truth
+-> converge through the rightful Relay/state owner
+-> dependent Screen/consumer observes that truth
+-> NavigateTo(ScreenId) when presentation movement is actually required
+~~~
+
+rather than:
+
+~~~text
+NavigateTo(ScreenId, caller-owned-state-payload)
+~~~
+
+This does not make every navigation state-driven. A direct navigation edge remains direct when movement
+to another destination is the complete meaning:
+
+~~~text
+DebugMenuEntryControl
+-> NavigateTo(screen.debug-menu)
+~~~
+
+The stronger rule is that navigation should not become an accidental courier/source owner merely because
+one platform API makes parameter forwarding convenient.
+
+If an argument seems necessary, pressure-test whether it identifies **which semantic destination instance**
+or whether it is actually application/domain state that belongs behind a traceable dependency. That
+distinction remains an open specimen question rather than a universal ban on every argument.
+
+### Sequencing / provenance example for ConvergenceRelay
+
+The value of ConvergenceRelay is not merely "sharing data." The relevant lived pressure is:
+
+~~~text
+many callers
+-> each forwards state while navigating
+-> destination has several implicit arrival contracts
+-> source/provenance becomes caller-dependent
+-> debugging requires searching every caller
+-> recreation/re-entry must reconstruct caller history
+~~~
+
+Convergence changes that shape:
+
+~~~text
+originating semantic cause
+-> state transition through rightful Relay
+-> Relay preserves source / dependency / sequence / currentness
+-> destination consumes the Relay dependency
+-> navigation/presentation occurs as a separate semantic consequence when needed
+~~~
+
+The Bypass Test demonstrates why the Relay boundary matters: bypassing it forces callers to recreate
+state transport, provenance and destination coupling independently.
+
+### Current Origin Walk frontier
+
+The accepted from-zero construction model already earned:
+
+~~~text
+Screen requires stable semantic identity
+  DebugMenuScreenOrigin
+    screenId = screen.debug-menu
+~~~
+
+The next Origin Step is **Screen Meaning**, interpreted as minimum-complete meaning rather than a short
+description:
+
+~~~text
+WHAT
+WHY
+pressures resolved
+invariants
+relational role
+absence / boundary consequences
+~~~
+
+Use those questions to determine why `DebugMenuScreenOrigin` deserves its own Screen boundary before
+adding children merely because the initial request names them.
+
+Once that meaning survives pressure, ask what first child/capability is required to fulfill it. The
+theme-selection specimen can then re-enter as a child Origin Walk, carrying the sequencing/provenance rule
+when its state or presentation behavior requires it.
+
+
 ## Current Work edges
 
 Immediate:

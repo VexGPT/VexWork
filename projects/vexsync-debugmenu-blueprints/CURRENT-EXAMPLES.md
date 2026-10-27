@@ -621,6 +621,284 @@ preference alone is not sufficient pressure.
 typed-relationship shape without prematurely creating a universal schema.
 
 
+
+## Causal episode — Origin Walk, relational reasoning and sequencing semantics
+
+**Currentness:** `CURRENT_PROJECT_RULE` for the Origin Walk / minimum-complete / provenance discipline;
+`CURRENT_WORKING_MODEL` for the exact future construction grammar that later specimens may still refine.
+
+### Why the process needed a name
+
+The design discussion had become intentionally incremental: establish one grounded distinction, preserve
+why it survived, then let that answer expose the next question. A fresh thread needed a durable way to
+resume that method without interpreting "start over" as "discard established truth."
+
+The accepted working terminology is:
+
+~~~text
+Origin Walk
+Origin Step
+Walk Pressure
+Walk Frontier
+Origin Reground
+Origin Roundtrip
+~~~
+
+An Origin Reground returns to the earliest affected step and reopens only dependent descendants.
+
+### "Smallest" was too easy to misread
+
+Earlier shorthand said "smallest truthful" relationship/model. New pressure showed that "smallest" could
+be interpreted as "short summary" even when a complete architectural choice solves several problems.
+
+The refined rule is:
+
+~~~text
+smallest / minimal
+= MINIMUM COMPLETE
+= nothing unnecessary
++ nothing materially necessary missing
+~~~
+
+For example, a Convergence architecture may need to preserve several pressures explicitly—continuity,
+source of truth, ownership, provenance, duplicated-state reduction and recovery—because deleting those
+reasons would let a later implementation satisfy only part of the original problem.
+
+### Problem / convergence reasoning
+
+A problem is not merely "something failed." It carries:
+
+~~~text
+current truth
+intended truth
+material mismatch
+consequences
+materially distinct cases
+~~~
+
+A useful solution should then be pressure-tested for immediate resolution, recurring cause, convergence,
+scale and later refinement.
+
+The desired convergence property is:
+
+~~~text
+solve more coherent admitted problems
+while managing fewer independent truths
+
+without collapsing distinctions that still have separate rightful owners
+~~~
+
+### Relational pressure
+
+A node may look correct in isolation and still be the wrong architecture because of what it duplicates,
+disconnects, centralizes or leaves ownerless around it.
+
+The discussion therefore added reusable relational/counterfactual questions:
+
+~~~text
+absence
+collapse
+bypass
+duplication
+substitution
+scale
+failure
+evolution
+standardization
+diagnostic legibility
+ownership trace
+~~~
+
+These are question families, not mandatory source fields. Apply the questions that the current answer
+makes relevant.
+
+### Lived navigation problem — state was forwarded while moving Screens
+
+A prior design used a shape like:
+
+~~~text
+navigateTo(nextScreen, params)
+-> next Screen extracts params
+~~~
+
+That works locally, but several callers created a deeper problem:
+
+~~~text
+Screen sees value
+but cannot directly answer:
+  where did it originate?
+  who owns it?
+  why is it current?
+  which prior state/event produced it?
+  what was the arrival sequence?
+  which caller contract should recreation / re-entry reproduce?
+~~~
+
+Navigation had become an accidental data/state pipeline.
+
+### Why ConvergenceRelay changed the design
+
+ConvergenceRelay addressed several related pressures together:
+
+~~~text
+one source of truth
+traceable semantic origin
+dependency instead of caller-owned payload
+state transition sequence
+currentness
+screen arrival/state change explainable through the Relay dependency
+less duplicated caller-specific arrival logic
+~~~
+
+This is stronger than "Relay shares data." The architectural value is that semantic state remains owned
+and traceable independently of whichever Screen happened to initiate presentation.
+
+### Sequencing semantics earned from that example
+
+The lived example exposed that one human-visible action can contain several meaningful ordered moves.
+
+Old collapsed shape:
+
+~~~text
+NavigateTo(Screen, params)
+  movement + state preparation + transport
+  collapsed into one target call
+~~~
+
+Current pressure:
+
+~~~text
+PREPARE SEMANTIC TRUTH
+  originating cause
+  -> rightful state transition / ConvergenceRelay
+
+THEN PRESENT / MOVE
+  -> NavigateTo(ScreenId) when destination movement is required
+
+DESTINATION
+  -> consumes its Relay dependency
+  -> does not treat the caller as its state owner
+~~~
+
+"Prepare" is descriptive sequencing language here, not yet a declared universal operation family.
+
+The important semantic law is:
+
+~~~text
+ONE HUMAN MOVE
+!= ONE UNDIFFERENTIATED TECHNICAL OPERATION
+
+ORDERED SEMANTIC DEPENDENCIES
+may legitimately exist inside one lived action
+~~~
+
+### Direct navigation still survives
+
+This does not force Relay through ordinary destination movement.
+
+~~~text
+DebugMenuEntryControl
+-> NavigateTo(screen.debug-menu)
+~~~
+
+remains sufficient when navigation itself is the complete meaning and no application/domain state needs
+to be smuggled to the destination.
+
+The new pressure is specifically:
+
+~~~text
+NAVIGATION
+!= ARBITRARY SEMANTIC STATE TRANSPORT
+~~~
+
+If an argument appears necessary, ask whether it identifies the semantic destination instance or whether
+it is state that should remain behind a traceable dependency/source owner.
+
+### Bypass / Standardization result
+
+The Bypass Test makes ConvergenceRelay's value visible:
+
+~~~text
+bypass Relay
+-> each caller must transport/reconstruct state
+-> destination gains multiple arrival contracts
+-> provenance fragments
+-> debugging expands with caller count
+~~~
+
+The Standardization Test then asks what happens if the Relay-backed pattern becomes normal:
+
+~~~text
+Does debugging have one stable causal path?
+Can a fresh maintainer identify state owner without finding every caller?
+Can Screen recreation recover current truth independently of the original navigation call?
+Does adding another caller preserve the same diagnostic path?
+Does the Relay coordinate rightful owners rather than absorb their truth?
+~~~
+
+A reusable standard should reduce construction cost **and** causal/ownership ambiguity.
+
+### Ownership Trace
+
+For a state-caused presentation flow, the desired diagnostic traversal is:
+
+~~~text
+observed Screen state / arrival
+        ^
+target presentation/navigation
+        ^
+semantic presentation consequence
+        ^
+Relay dependency / current transition
+        ^
+originating semantic source
+        ^
+human intention / cause
+~~~
+
+This lets debugging distinguish:
+
+~~~text
+wrong Origin meaning
+wrong state transition
+wrong target mapping
+wrong target adapter
+platform navigation failure
+destination realization failure
+~~~
+
+instead of collapsing all of them into "navigation is broken."
+
+### Current Walk Frontier
+
+The next foreground Origin Walk remains the first construction-grade Screen boundary:
+
+~~~text
+established
+  DebugMenuScreenOrigin
+    screenId = screen.debug-menu
+
+next
+  derive its minimum-complete Meaning:
+    WHAT
+    WHY
+    pressures resolved
+    invariants
+    relational role
+    absence/boundary consequences
+
+then
+  determine the first child/capability required by that meaning
+~~~
+
+The sequencing/Relay specimen remains a live inherited example for later relationships whose state must be
+prepared before presentation or another dependent consequence.
+
+**Reopen condition:** a future specimen shows that separating semantic-state preparation from navigation
+loses necessary meaning, or that a destination-specific argument is genuinely part of destination
+identity rather than transported application/domain state.
+
+
 ## Current living specimen
 
 ~~~text
