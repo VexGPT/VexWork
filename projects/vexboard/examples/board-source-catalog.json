@@ -18,24 +18,6 @@
       ]
     },
     {
-      "boardRef": "board.vexstream.phone-desktop-connection.construction-evidence",
-      "location": "./vexstream-phone-desktop-connection-construction.board.json",
-      "sourceRefs": [
-        "projects/vexboard/examples/vexstream-phone-desktop-connection-construction.board.json",
-        "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md"
-      ]
-    },
-    {
-      "boardRef": "board.vexstream.phone-desktop-connection.living-blueprint",
-      "location": "./vexstream-phone-desktop-connection.board.json",
-      "sourceRefs": [
-        "projects/vexboard/examples/vexstream-phone-desktop-connection.board.json",
-        "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md",
-        "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
-        "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15"
-      ]
-    },
-    {
       "boardRef": "board.vexlife-android.home-vexstream.poc",
       "location": "./vexlife-android-home-vexstream.snapshot.json",
       "sourceRefs": [
@@ -59,6 +41,36 @@
         "src/core/vexboard-android-source-projector.mjs",
         "src/core/vexboard-screen-design.mjs",
         "vexboard/ui/android-reference-presentation.mjs"
+      ]
+    },
+    {
+      "boardRef": "board.vexlife.debug-menu.theme-mode.origin-walk",
+      "location": "./vexlife-debug-menu-theme-mode.board.json",
+      "sourceRefs": [
+        "github.pull.vexwork.178",
+        "project.vexsync.debugmenu-blueprints",
+        "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery",
+        "projects/vexboard/examples/vexlife-debug-menu-theme-mode.board.json",
+        "projects/vexsync-debugmenu-blueprints/README.md",
+        "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md"
+      ]
+    },
+    {
+      "boardRef": "board.vexstream.phone-desktop-connection.construction-evidence",
+      "location": "./vexstream-phone-desktop-connection-construction.board.json",
+      "sourceRefs": [
+        "projects/vexboard/examples/vexstream-phone-desktop-connection-construction.board.json",
+        "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md"
+      ]
+    },
+    {
+      "boardRef": "board.vexstream.phone-desktop-connection.living-blueprint",
+      "location": "./vexstream-phone-desktop-connection.board.json",
+      "sourceRefs": [
+        "projects/vexboard/examples/vexstream-phone-desktop-connection.board.json",
+        "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md",
+        "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
+        "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15"
       ]
     }
   ],
