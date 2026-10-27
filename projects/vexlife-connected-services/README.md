@@ -219,7 +219,7 @@ VexStream-owned data plane
 
 No new generic streaming transport, generic backpressure owner, remote relay media producer acceptance, or Maps/Conversation streaming widening was earned. Android remote 256 KiB source remains architecture pressure only until a rightful producer is accepted.
 
-## VCS-06 current edge
+## VCS-06 terminal result
 
 Three real consumers have now earned architecture extraction:
 
@@ -230,7 +230,7 @@ VexStream
 -> extract only stable recurring ownership/contracts/proof obligations
 ```
 
-Do not copy VexStream's Range/media plane into a universal template. Cross-product reusable architecture is expected to land in Vextreme-SDK only after exact source placement/authority is established.
+VexStream's Range/media plane remains feature-owned. The reusable architecture is accepted in Vextreme-SDK PR #1903 / merge `06ccef98769ff25eabd8bee4b8646185a42eb5f1`.
 
 ## Read next
 
@@ -239,7 +239,7 @@ For ordinary continuation:
 ```text
 this README
 -> public/workspace.json / VexWork UI
--> work.vexlife.connected-services.vcs06-architecture-extraction
+-> work.vexlife.connected-services.outcome
 -> docs/lineage/VEXLIFE-CONNECTED-SERVICES.md only when causal history is needed
 -> target repository current source only for the next effect
 ```
