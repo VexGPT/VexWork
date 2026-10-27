@@ -1,0 +1,229 @@
+{
+  "schemaVersion": "vexboard.local-draft/v1",
+  "draftRef": "board.vexlife.debug-menu.theme-mode.origin-walk",
+  "title": "Debug Menu / Theme Mode",
+  "mode": "READ_ONLY_SOURCE",
+  "derivedFromRefOrNull": null,
+  "savedAtOrNull": null,
+  "graph": {
+    "schemaVersion": "vexboard.board-graph/v1",
+    "graphRef": "graph.vexlife.debug-menu.theme-mode.origin-walk",
+    "nodes": [
+      {
+        "nodeRef": "control.debug-menu.theme-mode",
+        "kind": "CONTROL",
+        "label": "Theme Mode Switch",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.pull.vexwork.178",
+          "projects/vexsync-debugmenu-blueprints/README.md"
+        ]
+      },
+      {
+        "nodeRef": "state.theme-mode",
+        "kind": "REFERENCE",
+        "label": "ThemeMode",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.pull.vexwork.178",
+          "projects/vexsync-debugmenu-blueprints/README.md"
+        ]
+      },
+      {
+        "nodeRef": "annotation.state.theme-mode.values",
+        "kind": "ANNOTATION",
+        "label": "Light | Dark",
+        "parentRefOrNull": "state.theme-mode",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.pull.vexwork.178"
+        ]
+      },
+      {
+        "nodeRef": "behavior.theme-mode",
+        "kind": "PROCESS",
+        "label": "ThemeMode Behavior",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.pull.vexwork.178",
+          "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md"
+        ]
+      },
+      {
+        "nodeRef": "annotation.behavior.theme-mode.acts",
+        "kind": "ANNOTATION",
+        "label": "current State resolves SelectDark / SelectLight",
+        "parentRefOrNull": "behavior.theme-mode",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.pull.vexwork.178"
+        ]
+      },
+      {
+        "nodeRef": "reference.theme-mode.persistence-owner",
+        "kind": "REFERENCE",
+        "label": "Theme persistence owner · unresolved",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.pull.vexwork.178",
+          "projects/vexsync-debugmenu-blueprints/README.md"
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "relationshipRef": "rel.theme-mode.switch-activates-behavior",
+        "kind": "TRANSITION",
+        "fromRef": "control.debug-menu.theme-mode",
+        "toRef": "behavior.theme-mode",
+        "labelOrNull": "ACTIVATE · ThemeModeToggle",
+        "sourceRefs": [
+          "github.pull.vexwork.178"
+        ]
+      },
+      {
+        "relationshipRef": "rel.theme-mode.current-state-resolves-behavior",
+        "kind": "DATA",
+        "fromRef": "state.theme-mode",
+        "toRef": "behavior.theme-mode",
+        "labelOrNull": "CURRENT STATE",
+        "sourceRefs": [
+          "github.pull.vexwork.178"
+        ]
+      },
+      {
+        "relationshipRef": "rel.theme-mode.behavior-admits-state",
+        "kind": "FLOW",
+        "fromRef": "behavior.theme-mode",
+        "toRef": "state.theme-mode",
+        "labelOrNull": "ADMIT / STAY",
+        "sourceRefs": [
+          "github.pull.vexwork.178"
+        ]
+      },
+      {
+        "relationshipRef": "rel.theme-mode.behavior-persistence-frontier",
+        "kind": "REFERENCE",
+        "fromRef": "behavior.theme-mode",
+        "toRef": "reference.theme-mode.persistence-owner",
+        "labelOrNull": "EFFECT · OWNER OPEN",
+        "sourceRefs": [
+          "github.pull.vexwork.178"
+        ]
+      }
+    ],
+    "sourceRefs": [
+      "github.pull.vexwork.178",
+      "project.vexsync.debugmenu-blueprints",
+      "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery",
+      "projects/vexsync-debugmenu-blueprints/README.md",
+      "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md"
+    ]
+  },
+  "projection": {
+    "schemaVersion": "vexboard.board-projection/v1",
+    "projectionRef": "projection.vexlife.debug-menu.theme-mode.origin-walk",
+    "graphRef": "graph.vexlife.debug-menu.theme-mode.origin-walk",
+    "layoutIntent": "SCREEN_FLOW",
+    "items": [
+      {
+        "projectionItemRef": "item.control.debug-menu.theme-mode",
+        "semanticRef": "control.debug-menu.theme-mode",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 140,
+          "y": 260,
+          "width": 240,
+          "height": 100
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.state.theme-mode",
+        "semanticRef": "state.theme-mode",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 650,
+          "y": 100,
+          "width": 260,
+          "height": 150
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.annotation.state.theme-mode.values",
+        "semanticRef": "annotation.state.theme-mode.values",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 680,
+          "y": 175,
+          "width": 200,
+          "height": 44
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.state.theme-mode",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.behavior.theme-mode",
+        "semanticRef": "behavior.theme-mode",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 650,
+          "y": 360,
+          "width": 320,
+          "height": 170
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.annotation.behavior.theme-mode.acts",
+        "semanticRef": "annotation.behavior.theme-mode.acts",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 680,
+          "y": 445,
+          "width": 260,
+          "height": 52
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.behavior.theme-mode",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.reference.theme-mode.persistence-owner",
+        "semanticRef": "reference.theme-mode.persistence-owner",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1130,
+          "y": 390,
+          "width": 300,
+          "height": 110
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      }
+    ],
+    "sourceRefs": [
+      "github.pull.vexwork.178",
+      "projects/vexsync-debugmenu-blueprints/README.md"
+    ]
+  }
+}
