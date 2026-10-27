@@ -1774,36 +1774,112 @@ many values / labels no longer fit
 
 So cardinality informs form, but semantic relationship + symmetry + visibility decide the stronger default.
 
+### Causal episode — explicit Select mapped over current Android Boolean state
+
+The next pressure compared the established Origin-facing relationship with accepted Android observation.
+
+~~~text
+Origin-facing
+  Select(ThemeMode.<value>)
+
+Android observation
+  ToggleDarkMode
+  darkTheme = !darkTheme
+~~~
+
+The idempotence counterexample proves Toggle cannot directly realize Select:
+
+~~~text
+current = Dark
+
+human intention
+  Select(Dark)
+
+Select result
+  Dark
+
+Toggle result
+  Light
+~~~
+
+The minimum correction is an adapter, not an immediate storage rewrite.
+
+~~~text
+android....ThemeMode
+  Light
+  Dark
+
+selectThemeMode(Light)
+  -> darkTheme = false
+
+selectThemeMode(Dark)
+  -> darkTheme = true
+
+currentThemeMode
+  -> map false to Light
+  -> map true to Dark
+~~~
+
+This preserves several distinctions at once:
+
+~~~text
+semantic domain
+  Light / Dark
+
+semantic operation
+  Select(explicit value)
+
+target semantic realization
+  android....ThemeMode
+
+target storage
+  Boolean may remain for now
+
+legacy target behavior
+  ToggleDarkMode may remain for callers that genuinely want inversion
+~~~
+
+The adapter is deliberately idempotent and explicit. It does not require knowing the prior state to
+understand the requested result.
+
+A later new value such as System also becomes diagnostically useful pressure:
+
+~~~text
+Origin supports System
+Boolean adapter does not
+-> target capability gap is visible
+-> target must evolve
+
+not
+-> silently collapse System into true / false
+~~~
+
 ### Current Walk Frontier
 
 ~~~text
 established
-  DebugMenuScreen identity + Meaning
-  ThemeMode = Light / Dark
+  Origin-scoped DebugMenuScreen + Meaning
+  Origin-scoped ThemeMode = Light / Dark
   Select(ThemeMode.<value>)
-  current ThemeMode = application-scoped
-  initial-selection owner = application/product policy
-  Default Design Intention = visible exclusive peer-value choice group
+  application-scoped current ThemeMode
+  application/product-owned initial-selection policy
+  visible peer-choice Default Design Intention
+  minimum Android semantic adapter:
+    explicit ThemeMode <-> current Boolean mapping
 
 held
-  actual initial ThemeMode value/policy
-
-current target mismatch
-  Origin-facing meaning:
-    Select(ThemeMode.<value>)
-
-  Android reference:
-    ToggleDarkMode
-    darkTheme = !darkTheme
+  actual VexLife initial ThemeMode policy/value
 
 next
-  derive the smallest faithful Origin-to-Android mapping/adapter correction
-  without turning current Android mechanics back into portable semantic authority
+  bounded Origin -> Android realization -> lived evidence -> reverse-trace roundtrip
 ~~~
 
-**Reopen conditions:** explicit product design chooses a different form, value-set size/labels make visible
-choices materially worse, accessibility/viewport evidence requires another presentation, or a later
-semantic distinction shows Light/Dark are not peers.
+The roundtrip may prove explicit selection independently of startup default. Any proof that begins from a
+fresh/uninitialized application must first resolve the held initial-selection policy.
+
+**Reopen conditions:** current target source materially differs from the accepted observation, Boolean
+storage cannot be adapted without broader state consequences, or explicit target source already provides a
+stronger ThemeMode abstraction that should be reused instead of duplicated.
 
 
 ## Current living specimen
@@ -1841,9 +1917,15 @@ CURRENT DEFAULT DESIGN INTENTION
   -> one current selection
   -> target widget remains realization-specific
 
+CURRENT ANDROID MAPPING CANDIDATE
+  android....ThemeMode = Light / Dark
+  selectThemeMode(value)
+  -> explicit value-to-darkTheme mapping
+  -> legacy Boolean storage may remain underneath
+
 NEXT QUESTION
-  What minimum Android mapping/adapter change realizes Select(ThemeMode.<value>)
-  from the current ToggleDarkMode / darkTheme Boolean mechanics?
+  What bounded target realization and lived roundtrip prove that
+  Select(ThemeMode.<value>) survives Origin -> Android -> observed appearance -> Origin trace?
 ~~~
 
 ## Working discipline

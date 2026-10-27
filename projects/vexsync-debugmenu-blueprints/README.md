@@ -2407,6 +2407,115 @@ human chooses ThemeMode.Dark
 -> appearance consumers reflect Dark
 ~~~
 
+### Origin-to-Android mapping — explicit selection over legacy Boolean mechanics
+
+The accepted current-target observation is:
+
+~~~text
+DebugMenuScreen.DarkMode
+-> invoke(AppActions.ToggleDarkMode)
+-> VexLifeSession.toggleDarkMode()
+-> darkTheme = !darkTheme
+~~~
+
+The Origin-facing meaning is now:
+
+~~~text
+ThemeMode
+  Light
+  Dark
+
+ThemeModeControl
+-> Select(ThemeMode.<value>)
+~~~
+
+The mismatch is behavioral, not merely naming:
+
+~~~text
+current = Dark
+Select(Dark)
+  expected -> Dark
+
+current = Dark
+ToggleDarkMode()
+  actual toggle behavior -> Light
+~~~
+
+Therefore the current Toggle operation cannot itself be the faithful adapter for explicit Select semantics.
+
+The minimum faithful target mapping does **not** require immediately replacing every internal Boolean.
+It requires an explicit semantic boundary:
+
+~~~text
+android....ThemeMode
+  Light
+  Dark
+
+selectThemeMode(mode)
+
+  Light
+    -> darkTheme = false
+
+  Dark
+    -> darkTheme = true
+
+currentThemeMode
+
+  darkTheme == false
+    -> ThemeMode.Light
+
+  darkTheme == true
+    -> ThemeMode.Dark
+~~~
+
+The names above describe the semantic adapter contract, not a claim about exact target source syntax.
+
+This gives the target a 1:1 realization of the portable noun while allowing existing storage mechanics to
+remain underneath it:
+
+~~~text
+origin....ThemeMode
+        |
+        | same semantic noun / values
+        v
+android....ThemeMode
+        |
+        | target adapter
+        v
+existing darkTheme Boolean
+~~~
+
+Current rule:
+
+~~~text
+TARGET STORAGE MAY REMAIN BOOLEAN
+while the admitted domain remains Light / Dark
+
+BOOLEAN STORAGE
+!= BOOLEAN SEMANTICS
+
+TOGGLE IMPLEMENTATION
+!= SELECT SEMANTIC AUTHORITY
+~~~
+
+Legacy target callers may continue to use ToggleDarkMode while they remain legitimate target-local
+behavior, but new Origin realization should map through explicit value selection. Removing legacy Toggle
+is separate cleanup pressure, not required merely to establish the faithful mapping.
+
+The adapter also gives future value growth an honest failure boundary:
+
+~~~text
+Origin later admits ThemeMode.System
+
+Android Boolean adapter supports only Light / Dark
+-> report unsupported semantic value / require target evolution
+
+not
+-> silently reinterpret System as false or true
+~~~
+
+This preserves the earlier rule that unsupported Origin capability must remain visible.
+
 ### Current next Walk Frontier
 
 One dependent question remains held:
@@ -2414,59 +2523,35 @@ One dependent question remains held:
 ~~~text
 OPEN / HELD
   actual VexLife initial ThemeMode policy/value
-  because current evidence does not yet establish it
 ~~~
 
-The independent design edge is now resolved:
-
-~~~text
-ThemeMode
-  Light / Dark
-  Select(explicit value)
-
-Default Design Intention
-  visible exclusive choice group
-  both peer values perceptible
-  one current selection perceptible
-  no Boolean/DarkMode asymmetry
-~~~
-
-For the current Debug Menu composition, the default design can therefore be expressed without target
-coordinates:
-
-~~~text
-Debug Menu
-  vertical ordered content
-  scroll-capable at the rightful overflow owner
-
-  Theme row
-    label / semantic subject: Theme
-    choices: Light | Dark
-    one selected value
-~~~
-
-Exact widget class, typography, colors, spacing and target-native mechanics remain target/design
-realization details unless separately authored.
-
-The next independent semantic/construction edge is now the Origin-to-target mapping mismatch:
+The semantic/design/mapping path is now sufficiently explicit to describe the first bounded roundtrip:
 
 ~~~text
 Origin scope
-  ThemeModeControl
-  -> Select(ThemeMode.<value>)
+  DebugMenuScreen
+    ThemeModeControl
+      Select(ThemeMode.Dark)
 
-current Android
-  DebugMenuScreen.DarkMode
-  -> invoke ToggleDarkMode
-  -> darkTheme = !darkTheme
+-> Android semantic mapping
+   selectThemeMode(Dark)
 
-QUESTION
-  what is the minimum target mapping/adapter change that faithfully realizes
-  explicit Select(value) semantics without preserving Toggle as semantic authority?
+-> target mechanics
+   darkTheme = true
+
+-> observed application appearance
+   Dark
+
+-> reverse trace
+   observed Dark appearance
+   -> current Android ThemeMode.Dark
+   -> Select(ThemeMode.Dark)
+   -> origin....ThemeMode.Dark
+   -> human choice
 ~~~
 
-That mapping must also preserve the held initial-state question rather than inventing a target-local
-default.
+The next construction edge is to turn this mapping into the bounded target realization + roundtrip proof,
+while keeping the unresolved initial/default value outside any claim that depends on it.
 
 
 ## Current Work edges
