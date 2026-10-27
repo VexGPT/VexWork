@@ -6,11 +6,12 @@
 
 Make VexStream on Android a **durable, reusable and human-navigable mobile music library** while
 keeping the accepted durable-device and one-shot MassDownload truths intact. Android has a compact
-**Sort by / Filter by** surface plus settings-level **Download all missing songs / Remove all
-downloaded songs**, but lived review reopened Library organization because there is no truthful
-freshness view for finding newly added/downloaded music. Artwork availability also remains active:
-current playback can still show placeholders, and a separate missing-artwork reconciliation control is
-now explicit Work. Continuous "Keep Offline" media-membership sync remains a separately governed
+**Sort by / Filter by** surface plus a settings-level one-shot **Download missing songs & artwork /
+Remove all downloaded songs** doorway. Lived review refined that doorway so one deliberate update
+refreshes current Desktop catalog truth, downloads only exact missing audio, and reconciles admitted
+artwork that is missing locally without redownloading existing music. Library organization still lacks
+truthful freshness discovery for newly added/downloaded music. Current playback artwork convergence
+also remains active. Continuous "Keep Offline" media-membership sync remains a separately governed
 future policy.
 
 This Project is the human/navigation owner for that outcome. Product semantics remain with
@@ -46,7 +47,7 @@ VexStream Mobile Library                         OUTCOME
 |   +-- Clear-data durability lived proof        TASK / completed
 |
 +-- Contextual Download Experience               OUTCOME / decomposed
-|   +-- Songs bulk download / remove all          TASK / needs human review
+|   +-- Songs missing-content update / remove all TASK / verifying / merged / lived proof pending
 |
 +-- Library Browse & Discovery                   OUTCOME / decomposed
 |   +-- Sort / Filter / Recently added controls  TASK / running / lived feedback
@@ -57,7 +58,7 @@ VexStream Mobile Library                         OUTCOME
 |   +-- Now Playing artwork projection           TASK / completed / online metadata projection accepted
 |   +-- Offline artwork durability               DEFECT / running
 |   +-- Current-track artwork availability       DEFECT / running / post-merge lived placeholder
-|   +-- Reconcile / sync missing artwork          TASK / decomposed / no implementation authority
+|   +-- Reconcile / sync missing artwork          TASK / cancelled as separate owner; absorbed above
 |   +-- VexStream full player                    TASK / verifying / lived artwork feedback remains
 |
 +-- MassDownload Maturity                        OUTCOME
@@ -225,13 +226,60 @@ evidence.vexstream.mobile-library.clear-data.a039.return.sha256.67e4b6ede7aab896
 
 ### ML-D4 — Songs settings actions reuse MassDownload / Offline Copy truth
 
-The VexStream settings sheet now owns a whole-Songs convenience doorway, not another downloader or storage owner.
+The VexStream settings sheet owns one whole-Songs convenience doorway, not another downloader or
+storage owner.
 
-`Download all missing songs` reuses the existing exact MassDownload planner over canonical playable Songs. `Remove all downloaded songs` reuses repository removal, VexStream-owned MediaStore deletion, and offline-index persistence. Album, Artist and Playlist detail screens keep their accepted collection-level Download missing action.
+PR #167 established the accepted audio-only baseline: `Download all missing songs` reuses the exact
+MassDownload planner over canonical playable Songs, while `Remove all downloaded songs` reuses
+repository removal, VexStream-owned MediaStore deletion, and offline-index persistence. Album, Artist
+and Playlist detail screens keep their accepted collection-level Download missing action.
 
-PR #167 merged at `8213ae7befe08bc0a21c76bd70e7c8790e5bcf9f`; A003 passed focused/local proof plus exactly one three-song connected Journey and fresh Assurance.
+Victor's lived review on 2026-10-26 refined the same authorized doorway instead of requesting a second
+sync control. The active candidate PR #187 evolves the one-shot update to:
 
-`SOURCE_PROVEN_AND_MERGED != HUMAN_ACCEPTED`. VexWork therefore projects this Work as **WAITING_HUMAN** until Victor reviews the merged experience.
+```text
+refresh current paired Desktop catalog
+-> fresh canonical playable-Songs plan
+-> exact missing audio only
+   already-downloaded audio -> keep / never replay
+-> repository-owned artwork reconciliation
+   admitted source + local cache present -> keep
+   admitted source + local cache missing -> fetch/cache
+   no admitted source -> ordinary placeholder
+```
+
+If every song is already local, the action still performs artwork reconciliation and makes zero audio
+download calls. The button remains one-shot; it does not create durable desired-membership intent,
+background convergence, or persistent Keep Offline.
+
+PR #167 merged at `8213ae7befe08bc0a21c76bd70e7c8790e5bcf9f`; A003 passed focused/local
+proof plus exactly one three-song connected Journey and fresh Assurance.
+
+The lived-feedback refinement is now accepted Android source through PR #187:
+
+```text
+SourceOwner A003 outer RETURN
+  = 98505cd4777743af508d02bd20e4c44e1faf32bfd2b779f6689214ff392abb5c
+
+reviewed head
+  = 0c6125268050ec1301d2896986a52322002922d2
+
+reviewed / merged tree
+  = aabdea09c76ef7ee46360c0210d5117f26ad80fa
+
+merge
+  = 2480ac771dfcfb20bafdc6a61da5f7081b399c56
+
+ordered parents
+  = a7301566c9131ff71d4b8ede128b3607d7fefd26
+  -> 0c6125268050ec1301d2896986a52322002922d2
+
+all seven candidate blobs
+  = exact post-merge match
+```
+
+The protected Active -> Verify handshake is approved and committed. Product source is merged; the
+remaining predicate is lived Android proof of the one-shot update on the real library.
 
 ### ML-D5 — One-shot Download missing is not persistent Keep Offline
 
@@ -977,37 +1025,49 @@ work.vexstream.mobile-library.sort-filter-controls
 
 ### ML-D19 — Missing-artwork reconciliation is not persistent Keep Offline sync
 
-The embedded-artwork producer and Android consumer are now accepted source, yet lived playback still
-shows placeholder artwork for observed tracks. Per-track best-effort preparation is useful, but Victor
-also needs a deliberate way to reconcile the **library's missing ancillary artwork** instead of hoping
-that each track happens to become current and self-heal.
+The embedded-artwork producer and Android consumer are accepted source, yet lived playback can still
+show placeholder artwork. The earlier decomposition therefore captured a separate
+`work.vexstream.mobile-library.missing-artwork-reconciliation` item with no implementation authority.
 
-That control is separate from continuous Keep Offline / Sync:
+Victor's 2026-10-26 lived feedback resolved the product shape more simply: the existing settings-level
+missing-song action should also reconcile missing admitted artwork. A second button/lifecycle owner
+would add ceremony without adding a distinct human capability.
 
 ```text
-MISSING_ARTWORK_RECONCILIATION
-    current library
-    -> known artwork source + local cache present?       keep
-    -> known artwork source + local cache missing/stale  fetch/cache through rightful repository owner
-    -> no admitted artwork source                        ordinary no-art placeholder
+ONE_SHOT_MISSING_CONTENT_UPDATE
+    refresh current Desktop catalog
 
-    never redownload audio
+    audio
+      currently missing exact media -> download
+      already downloaded -> keep
+
+    artwork
+      known source + local cache present -> keep
+      known source + local cache missing -> fetch/cache
+      no admitted source -> ordinary placeholder
+
+    never redownload audio because artwork is absent
     never make widget/full-player a fetch owner
-    bounded counts/progress/results
 
 PERSISTENT_KEEP_OFFLINE_SYNC
-    continuously mirror desired media membership as producer membership changes
+    continuously mirror durable desired media membership as producer membership changes
 ```
 
-New Work:
+VexWork therefore returns
+`work.vexstream.mobile-library.contextual-download-missing` from `WAITING_HUMAN` to `RUNNING`
+inside its already-authorized bounded envelope and moves the separate artwork-reconciliation identity
+from `DECOMPOSED` to `CANCELLED`. The cancellation removes a duplicate implementation owner; it
+does **not** cancel the artwork requirement.
+
+Accepted Android source:
 
 ```text
-work.vexstream.mobile-library.missing-artwork-reconciliation
-  TASK / DECOMPOSED / ACTIVE
-  dependency = work.vexstream.mobile-library.current-artwork-availability
-  authority = NO_AUTHORITY
-  effects = NO_EFFECTS
+github.pull.vexlife-android.187
+github.commit.vexlife-android.2480ac771dfcfb20bafdc6a61da5f7081b399c56
+work owner = work.vexstream.mobile-library.contextual-download-missing
+state = VERIFYING
+remaining = lived phone proof
 ```
 
-This preserves the product need now without silently authorizing implementation or collapsing artwork
-metadata convergence into the parked media-membership sync policy.
+Current-track Media3 metadata convergence remains separately owned by
+`work.vexstream.mobile-library.current-artwork-availability` / Android PR #186.
