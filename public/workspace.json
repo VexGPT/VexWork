@@ -1,7 +1,7 @@
 {
   "schemaVersion": "vexwork.public-workspace/v1",
   "projectRegistryRef": "registry.vexwork.projects.001",
-  "projectRegistryVersion": 15,
+  "projectRegistryVersion": 16,
   "projects": [
     {
       "project": {
@@ -679,10 +679,10 @@
         },
         {
           "workRef": "work.vexstream.mobile-library.contextual-download-missing",
-          "label": "Songs bulk download / remove all",
-          "purpose": "From VexStream settings, let the listener manage the canonical playable Songs library in one shot: Download all currently missing eligible songs and Remove all currently downloaded local copies, reusing existing MassDownload/offline-copy owners while preserving catalog truth. Album, Artist, and Playlist collection Download missing remains owned by existing collection actions.",
+          "label": "Songs missing-content update / remove all",
+          "purpose": "From VexStream settings, let the listener run one deliberate library-wide missing-content update: refresh the current paired Desktop catalog, download only exact currently missing eligible songs, and reconcile admitted artwork that is missing locally for existing or newly downloaded songs, while preserving catalog truth and never redownloading audio merely because artwork is absent. Remove all downloaded songs remains the separate destructive local-copy action. This is one-shot reconciliation, not persistent Keep Offline / background sync.",
           "workClass": "TASK",
-          "state": "WAITING_HUMAN",
+          "state": "VERIFYING",
           "workDisposition": "ACTIVE",
           "priorityClass": "NORMAL",
           "parentWorkRefOrNull": "work.vexstream.mobile-library.download-experience",
@@ -702,7 +702,16 @@
             "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/offline/VexStreamOfflineCollection.kt",
             "github.pull.vexlife-android.167",
             "github.commit.vexlife-android.8213ae7befe08bc0a21c76bd70e7c8790e5bcf9f",
-            "evidence.vexstream.mobile-library.bulk-download-management.a003.return.sha256.c43d3203bff4c36a7b67693606272355914f4257912f19319c6bd39258180974"
+            "evidence.vexstream.mobile-library.bulk-download-management.a003.return.sha256.c43d3203bff4c36a7b67693606272355914f4257912f19319c6bd39258180974",
+            "work.vexstream.mobile-library.missing-artwork-reconciliation",
+            "human.lived-feedback.vexstream.mobile-library.missing-content-reconciliation.20261026a",
+            "github.pull.vexlife-android.187",
+            "evidence.vexstream.mobile-library.pr187.sourceowner.a003.outer.sha256.98505cd4777743af508d02bd20e4c44e1faf32bfd2b779f6689214ff392abb5c",
+            "transition-proposal.vexstream.mobile-library.contextual-download-missing.active-verify.20261026a",
+            "human-transition-response.vexstream.mobile-library.contextual-download-missing.approved.20261026a",
+            "ai-transition-confirmation.vexstream.mobile-library.contextual-download-missing.commit.20261026a",
+            "github.commit.vexlife-android.2480ac771dfcfb20bafdc6a61da5f7081b399c56",
+            "evidence.vexstream.mobile-library.pr187.postmerge.exact-tree.20261026a"
           ],
           "formationProcessRefOrNull": "process.vexwork.form-project",
           "nextProcessRefs": [
@@ -711,8 +720,37 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-21T08:41:00.000Z",
-          "updatedAt": "2026-10-24T05:30:04.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-10-26T23:43:36.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexstream.mobile-library.contextual-download-missing.running.missing-content-feedback-20261026a",
+              "priorState": "WAITING_HUMAN",
+              "nextState": "RUNNING",
+              "reason": "Victor's lived review accepted the one-shot whole-Songs doorway but refined the human outcome: one deliberate update should refresh current Desktop catalog truth, download only missing audio, and reconcile missing admitted artwork for already-local or newly downloaded songs without duplicating audio. Return the existing authorized Work to Active; persistent Keep Offline remains outside this envelope.",
+              "actorRef": "actor.local-vex-operations.vexstream-mobile-library",
+              "sourceRefs": [
+                "human.lived-feedback.vexstream.mobile-library.missing-content-reconciliation.20261026a",
+                "work.vexstream.mobile-library.missing-artwork-reconciliation",
+                "github.pull.vexlife-android.187"
+              ],
+              "createdAt": "2026-10-26T07:39:42.000Z"
+            },
+            {
+              "transitionRef": "transition.vexstream.mobile-library.contextual-download-missing.verifying.approved-20261026a",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "Victor approved the protected Active -> Verify transition after exact PR #187 SourceOwner A003 passed and fresh semantic assurance was clear. Verify now owns integration-currentness and lived phone proof that newly missing songs download once, already-local audio remains untouched, and admitted missing artwork reconciles without duplicate audio or artwork work. Persistent Keep Offline/background sync and separate current-Media3 artwork convergence remain outside this envelope.",
+              "actorRef": "actor.local-vex-operations.vexstream-mobile-library",
+              "sourceRefs": [
+                "evidence.vexstream.mobile-library.pr187.sourceowner.a003.outer.sha256.98505cd4777743af508d02bd20e4c44e1faf32bfd2b779f6689214ff392abb5c",
+                "github.pull.vexlife-android.187",
+                "transition-proposal.vexstream.mobile-library.contextual-download-missing.active-verify.20261026a",
+                "human-transition-response.vexstream.mobile-library.contextual-download-missing.approved.20261026a",
+                "ai-transition-confirmation.vexstream.mobile-library.contextual-download-missing.commit.20261026a"
+              ],
+              "createdAt": "2026-10-26T23:38:00.000Z"
+            }
+          ]
         },
         {
           "workRef": "work.vexstream.mobile-library.current-artwork-availability",
@@ -1312,7 +1350,7 @@
           "label": "Reconcile / sync missing artwork",
           "purpose": "Provide a deliberate user-invoked reconciliation path for artwork that is missing locally even though the current VexStream/Android truth admits an artwork source. Classify the current library into known-artwork-present, known-artwork-missing/stale, and genuinely-no-artwork; fetch/cache only the missing ancillary artwork through existing repository/producer owners; report bounded counts/progress/results; never redownload audio or make the Full Player/widget network owners. Keep this separate from persistent Keep Offline / Sync, which governs media membership rather than artwork metadata.",
           "workClass": "TASK",
-          "state": "DECOMPOSED",
+          "state": "CANCELLED",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vexstream.mobile-library.playback-surfaces",
@@ -1334,7 +1372,10 @@
             "github.commit.vexlife-android.6f5b2dc6cdbf284b84cb590ba5b1016af3d33939",
             "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicRepository.kt",
             "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/PairedVexStreamMusicRepository.kt",
-            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamArtworkStore.kt"
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamArtworkStore.kt",
+            "work.vexstream.mobile-library.contextual-download-missing",
+            "human.lived-feedback.vexstream.mobile-library.missing-content-reconciliation.20261026a",
+            "github.pull.vexlife-android.187"
           ],
           "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
           "nextProcessRefs": [
@@ -1343,8 +1384,22 @@
           "authorityDisposition": "NO_AUTHORITY",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-10-25T12:12:29.462Z",
-          "updatedAt": "2026-10-25T12:12:29.462Z",
-          "transitionHistory": []
+          "updatedAt": "2026-10-26T07:39:43.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexstream.mobile-library.missing-artwork-reconciliation.cancelled.absorbed-20261026a",
+              "priorState": "DECOMPOSED",
+              "nextState": "CANCELLED",
+              "reason": "The separately captured artwork-reconciliation implementation identity is no longer needed. Victor explicitly folded that exact one-shot need into the already-authorized settings-level missing-content update, so preserving a second implementation owner would duplicate the product action and lifecycle. The artwork requirement remains active under work.vexstream.mobile-library.contextual-download-missing.",
+              "actorRef": "actor.local-vex-operations.vexstream-mobile-library",
+              "sourceRefs": [
+                "human.lived-feedback.vexstream.mobile-library.missing-content-reconciliation.20261026a",
+                "work.vexstream.mobile-library.contextual-download-missing",
+                "github.pull.vexlife-android.187"
+              ],
+              "createdAt": "2026-10-26T07:39:43.000Z"
+            }
+          ]
         },
         {
           "workRef": "work.vexstream.mobile-library.now-playing-artwork-projection",
@@ -1973,7 +2028,6 @@
           "label": "Intake",
           "workRefs": [
             "work.vexstream.mobile-library.massdownload-maturity",
-            "work.vexstream.mobile-library.missing-artwork-reconciliation",
             "work.vexstream.mobile-library.outcome",
             "work.vexstream.mobile-library.playback-surfaces",
             "work.vexstream.mobile-library.download-experience",
@@ -2011,15 +2065,15 @@
           "laneRef": "lane.work.needs-human",
           "label": "Needs Human",
           "workRefs": [
-            "work.vexstream.mobile-library.large-offline-startup-performance",
-            "work.vexstream.mobile-library.contextual-download-missing"
+            "work.vexstream.mobile-library.large-offline-startup-performance"
           ]
         },
         {
           "laneRef": "lane.work.verify",
           "label": "Verify",
           "workRefs": [
-            "work.vexstream.mobile-library.full-player"
+            "work.vexstream.mobile-library.full-player",
+            "work.vexstream.mobile-library.contextual-download-missing"
           ]
         },
         {
@@ -2045,18 +2099,20 @@
         {
           "laneRef": "lane.work.archive",
           "label": "Archive",
-          "workRefs": []
+          "workRefs": [
+            "work.vexstream.mobile-library.missing-artwork-reconciliation"
+          ]
         }
       ],
       "summary": {
         "workItemCount": 23,
-        "openWorkItemCount": 14,
+        "openWorkItemCount": 13,
         "outcomeCount": 6,
         "taskCount": 11,
         "defectCount": 6,
         "potentialCount": 0,
-        "needsHumanCount": 2,
-        "completedCount": 9
+        "needsHumanCount": 1,
+        "completedCount": 10
       },
       "rootItems": [
         {
@@ -11564,6 +11620,255 @@
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-25T01:23:08.000Z",
           "updatedAt": "2026-10-25T11:39:33.055Z",
+          "transitionHistory": []
+        }
+      ]
+    },
+    {
+      "project": {
+        "projectRef": "project.vexsync.debugmenu-blueprints",
+        "label": "VexSync DebugMenu Blueprints",
+        "purpose": "Use Debug Menu as the first live process specimen for discovering and proving how an ordinary human feature request becomes truthful VexBoard/Origin terrain and then maps against current VexLife Android without semantic reinterpretation: preserve known versus missing meaning, investigate existing coordinates and owners before creating identities/source, let reusable relationship language emerge from repeated real pressure, and use the resulting process as a foundation for broader VexUniverse Origin <-> target development.",
+        "rootWorkRefs": [
+          "work.vexsync.debugmenu-blueprints.outcome"
+        ],
+        "repositoryRefs": [
+          "repo.vexwork",
+          "repo.vexlife-android"
+        ],
+        "sourceRefs": [
+          "projects/vexsync-debugmenu-blueprints/README.md",
+          "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+          "docs/process/FORM-PROJECT.md",
+          "project.vexboard",
+          "project.vex-universe",
+          "project.vexlife.blueprint-source-of-truth",
+          "project.vexlife-android.current-state-refinement",
+          "github.pull.vexwork.155",
+          "github.pull.vexlife-android.182",
+          "github.pull.vexlife-android.183",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/shell/AppShell.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/debug/DebugMenuScreen.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/debug/README.md",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/debug/design/README.md",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/runtime/AppActions.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt"
+        ],
+        "formedAt": "2026-10-26T07:26:46.000Z"
+      },
+      "graphRef": "workgraph.vexwork.foundation",
+      "viewRef": "view.vexsync.debugmenu-blueprints.board",
+      "items": [
+        {
+          "workRef": "work.vexsync.debugmenu-blueprints.debugmenu-origin-roundtrip",
+          "label": "Build the first Debug Menu Origin <-> Android round trip",
+          "purpose": "After the Feature Request -> Builder specimen is grounded enough, author the first bounded Debug Menu semantic terrain one truthful edge at a time, compare/map that meaning to current Android without requiring a second semantic reinterpretation, expose unsupported target capabilities rather than guessing, and project the resulting source/evidence back to the same coordinates before generalizing the process.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexsync.debugmenu-blueprints.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "projects/vexsync-debugmenu-blueprints/README.md",
+            "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+            "project.vexboard",
+            "project.vex-universe",
+            "github.pull.vexlife-android.182",
+            "github.pull.vexlife-android.183",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/shell/AppShell.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/debug/DebugMenuScreen.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/runtime/AppActions.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-26T07:26:46.000Z",
+          "updatedAt": "2026-10-26T09:30:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery",
+          "label": "Discover Feature Request -> Builder process through one Debug Menu specimen",
+          "purpose": "Use the dark/light-theme request as the first live process specimen: preserve the human goal/return, hold only dependent unknowns, lock known terrain endpoints before filling the middle, investigate current Android identities/owners/HOW before creating new source, and let relationship names/IDs/phases emerge only when the living specimen earns them.",
+          "workClass": "TASK",
+          "state": "READY",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": "work.vexsync.debugmenu-blueprints.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "projects/vexsync-debugmenu-blueprints/README.md",
+            "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+            "project.vexboard",
+            "github.pull.vexwork.155",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/shell/AppShell.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/debug/DebugMenuScreen.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/runtime/AppActions.kt",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-26T07:26:46.000Z",
+          "updatedAt": "2026-10-26T09:30:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexsync.debugmenu-blueprints.outcome",
+          "label": "VexSync DebugMenu Blueprints",
+          "purpose": "Discover and prove a reusable feature-building process on one bounded Debug Menu specimen: translate ordinary human intention into truthful living terrain, ground current identities/owners before creating new ones, let reusable semantic language emerge from real pressure, and use the resulting process to prove a first VexBoard/Origin <-> current Android round trip without predeclaring later compiler or deployment phases.",
+          "workClass": "OUTCOME",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vexsync.debugmenu-blueprints.debugmenu-origin-roundtrip",
+            "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "project.vexsync.debugmenu-blueprints",
+            "projects/vexsync-debugmenu-blueprints/README.md",
+            "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+            "project.vexboard",
+            "project.vex-universe",
+            "project.vexlife.blueprint-source-of-truth",
+            "project.vexlife-android.current-state-refinement"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-26T07:26:46.000Z",
+          "updatedAt": "2026-10-26T09:30:00.000Z",
+          "transitionHistory": []
+        }
+      ],
+      "lanes": [
+        {
+          "laneRef": "lane.work.intake",
+          "label": "Intake",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.planned",
+          "label": "Planned",
+          "workRefs": [
+            "work.vexsync.debugmenu-blueprints.debugmenu-origin-roundtrip"
+          ]
+        },
+        {
+          "laneRef": "lane.work.ready",
+          "label": "Ready",
+          "workRefs": [
+            "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery"
+          ]
+        },
+        {
+          "laneRef": "lane.work.active",
+          "label": "Active",
+          "workRefs": [
+            "work.vexsync.debugmenu-blueprints.outcome"
+          ]
+        },
+        {
+          "laneRef": "lane.work.waiting",
+          "label": "Waiting",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.needs-human",
+          "label": "Needs Human",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.verify",
+          "label": "Verify",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.attention",
+          "label": "Attention",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.done",
+          "label": "Done",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.archive",
+          "label": "Archive",
+          "workRefs": []
+        }
+      ],
+      "summary": {
+        "workItemCount": 3,
+        "openWorkItemCount": 3,
+        "outcomeCount": 1,
+        "taskCount": 2,
+        "defectCount": 0,
+        "potentialCount": 0,
+        "needsHumanCount": 0,
+        "completedCount": 0
+      },
+      "rootItems": [
+        {
+          "workRef": "work.vexsync.debugmenu-blueprints.outcome",
+          "label": "VexSync DebugMenu Blueprints",
+          "purpose": "Discover and prove a reusable feature-building process on one bounded Debug Menu specimen: translate ordinary human intention into truthful living terrain, ground current identities/owners before creating new ones, let reusable semantic language emerge from real pressure, and use the resulting process to prove a first VexBoard/Origin <-> current Android round trip without predeclaring later compiler or deployment phases.",
+          "workClass": "OUTCOME",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vexsync.debugmenu-blueprints.debugmenu-origin-roundtrip",
+            "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "project.vexsync.debugmenu-blueprints",
+            "projects/vexsync-debugmenu-blueprints/README.md",
+            "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+            "project.vexboard",
+            "project.vex-universe",
+            "project.vexlife.blueprint-source-of-truth",
+            "project.vexlife-android.current-state-refinement"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-26T07:26:46.000Z",
+          "updatedAt": "2026-10-26T09:30:00.000Z",
           "transitionHistory": []
         }
       ]

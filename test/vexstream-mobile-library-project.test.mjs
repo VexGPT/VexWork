@@ -168,16 +168,29 @@ test('Sort / Filter returns to active refinement when lived review cannot find f
   assert.deepEqual(history.slice(-2).map((transition) => [transition.priorState, transition.nextState]), [['RUNNING', 'WAITING_HUMAN'], ['WAITING_HUMAN', 'RUNNING']]);
 });
 
-test('Songs bulk download and remove-all is merged/proven and waits on human review without fabricated history', () => {
+test('Songs missing-content update is integrated and remains in Verify for lived phone proof', () => {
   const item = graph.items.find((candidate) => candidate.workRef === 'work.vexstream.mobile-library.contextual-download-missing');
   assert.ok(item);
-  assert.equal(item.label, 'Songs bulk download / remove all');
-  assert.equal(item.state, 'WAITING_HUMAN');
+  assert.equal(item.label, 'Songs missing-content update / remove all');
+  assert.equal(item.state, 'VERIFYING');
   assert.equal(item.sourceRefs.includes('github.pull.vexlife-android.167'), true);
-  assert.equal(graph.transitions.some((transition) => transition.workRef === item.workRef), false);
+  assert.equal(item.sourceRefs.includes('github.pull.vexlife-android.187'), true);
+  assert.equal(item.sourceRefs.includes('github.commit.vexlife-android.2480ac771dfcfb20bafdc6a61da5f7081b399c56'), true);
+
+  const history = graph.transitions.filter((transition) => transition.workRef === item.workRef);
+  assert.deepEqual(
+    history.slice(-2).map((transition) => [transition.priorState, transition.nextState]),
+    [
+      ['WAITING_HUMAN', 'RUNNING'],
+      ['RUNNING', 'VERIFYING'],
+    ],
+  );
+
   const board = projectWorkBoard({ project, graph, view, registry });
+  const verify = board.lanes.find((lane) => lane.laneRef === 'lane.work.verify');
   const needsHuman = board.lanes.find((lane) => lane.laneRef === 'lane.work.needs-human');
-  assert.equal(needsHuman.cards.some((card) => card.workRef === item.workRef), true);
+  assert.equal(verify.cards.some((card) => card.workRef === item.workRef), true);
+  assert.equal(needsHuman.cards.some((card) => card.workRef === item.workRef), false);
 });
 
 test('large offline library startup performance is a bounded active defect', () => {
@@ -210,8 +223,17 @@ test('Playback Surfaces separates accepted projection from lived artwork converg
   assert.equal(player.state, 'VERIFYING');
   assert.equal(offlineArtwork.state, 'RUNNING');
   assert.equal(currentArtwork.state, 'RUNNING');
-  assert.equal(reconcile.state, 'DECOMPOSED');
+  assert.equal(reconcile.state, 'CANCELLED');
   assert.equal(reconcile.authorityDisposition, 'NO_AUTHORITY');
+  assert.equal(
+    graph.transitions.some(
+      (transition) =>
+        transition.workRef === reconcile.workRef &&
+        transition.priorState === 'DECOMPOSED' &&
+        transition.nextState === 'CANCELLED',
+    ),
+    true,
+  );
   assert.equal(reconcile.effectDisposition, 'NO_EFFECTS');
   assert.deepEqual(reconcile.dependencyRefs, [currentArtwork.workRef]);
   assert.deepEqual(player.dependencyRefs, [artwork.workRef]);
