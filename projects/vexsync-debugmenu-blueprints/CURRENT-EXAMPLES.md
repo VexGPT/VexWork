@@ -1320,6 +1320,98 @@ ORIGIN OWNS LIVE RUNTIME VALUE
 -> canonical design source incorrectly becomes runtime state storage
 ~~~
 
+#### Origin Eligibility inversion — "earn the opposite"
+
+The `ThemeModeOrigin` discussion exposed a broader question:
+
+> When would a meaningful noun in an application **not** have an Origin postfix?
+
+That inversion prevents the postfix from becoming decorative.
+
+The conclusion is not "nouns get Origin." It is:
+
+~~~text
+independently canonical reusable definition
+-> Origin eligible
+
+owned child / value / relationship / runtime occurrence /
+target mechanism / realization / projection
+-> no independent Origin by default
+~~~
+
+Worked edge cases:
+
+~~~text
+Screen
+  DebugMenuScreenOrigin
+  -> independent canonical Screen definition
+
+state/value domain
+  ThemeModeOrigin
+  -> independent canonical domain
+
+domain values
+  Light / Dark
+  -> owned by ThemeModeOrigin
+  -> no LightOrigin / DarkOrigin
+
+Control
+  ThemeModeControl
+  -> currently parent-owned by DebugMenuScreenOrigin
+  -> stable identity does not force independent Origin
+
+relationship
+  Select / NavigateTo
+  -> semantic verbs
+  -> no Origin
+
+runtime value
+  currentThemeMode
+  -> application state occurrence
+  -> no Origin
+
+semantic Process
+  may earn ProcessOrigin when one portable process definition must project across targets
+
+VexCoroutineLauncher / coroutine / Android Worker
+  -> execution mechanics
+  -> no Origin
+
+database / DAO / SQL / Room
+  -> storage mechanics
+  -> no Origin
+
+semantic data/domain/persistence policy
+  -> may earn Origin when independently canonical
+
+Android Service / BroadcastReceiver
+  -> platform mechanisms
+  -> no Origin
+
+portable service capability / event domain / process
+  -> may earn Origin under its semantic name
+~~~
+
+A value can cross the boundary only by ceasing to be "merely a value":
+
+~~~text
+value gains independent identity / fields / relationships / evolution / realizations
+-> reclassify as semantic object/domain
+-> rerun Origin Eligibility
+~~~
+
+This is not an exception. It is evidence that the original classification no longer describes the thing.
+
+The ConvergenceRelay example remains intentionally conditional:
+
+~~~text
+ConvergenceRelayOrigin
+  is justified only if canonical-vs-realization ownership needs to be expressed
+
+architecture noun
+  != automatic Origin
+~~~
+
 #### Default Before Binary pressure
 
 The appearance discussion then exposed another inherited Boolean bias.

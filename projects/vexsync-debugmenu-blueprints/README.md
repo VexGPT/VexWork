@@ -1823,6 +1823,288 @@ current ThemeMode value
 This is the same Origin-postfix law already earned by the ConnectionStatus exemplar: the reusable noun
 stays `ThemeMode`; `Origin` identifies the canonical definition.
 
+### Origin Eligibility / Exclusion — earn the postfix and earn the opposite
+
+The current rule is narrower than "nouns get Origin."
+
+~~~text
+Origin
+  != important noun marker
+  != reusable noun marker
+  != identity marker
+
+Origin
+  = canonical reusable definition boundary
+    from which realizations / projections descend
+~~~
+
+A semantic thing earns an `Origin` postfix when independent canonical ownership is materially needed.
+The pressure set is:
+
+~~~text
+CANONICALITY
+  one authoritative reusable definition is required
+
+INDEPENDENCE
+  an existing parent cannot completely and truthfully own the definition
+
+REALIZATION / PROJECTION PRESSURE
+  multiple targets / consumers / projections must descend from the same meaning
+
+EVOLUTION
+  duplicating the definition would allow semantic drift as the thing evolves
+
+TRACEABILITY
+  consumers need to traverse back to this object as the owner of the meaning
+~~~
+
+These are reasoning pressures, not a mechanical all-checkbox gate.
+
+The opposite must also be earned. Before minting `<Noun>Origin`, ask:
+
+~~~text
+Can the rightful parent completely own this meaning?
+Is this only a value/member of an already-owned domain?
+Is this a relationship / verb rather than an independently defined thing?
+Is this a runtime occurrence rather than a reusable definition?
+Is this target/platform mechanics?
+Is this only a realization / projection / adapter / scaffold?
+Would adding an Origin create another owner without removing greater duplication or drift?
+~~~
+
+If removing the proposed Origin loses no required canonicality, reuse, traceability or independent
+evolution, do not mint it.
+
+### Stable classification families for feature development
+
+The current reusable classification is:
+
+~~~text
+CANONICAL SEMANTIC DEFINITION
+  Origin-eligible when independent ownership is earned
+
+OWNED CHILD / COMPONENT
+  no independent Origin by default;
+  parent Origin owns its reusable definition until reuse/evolution pressure proves otherwise
+
+VALUE / DOMAIN MEMBER
+  no Origin by default;
+  value is owned by its semantic domain
+
+RELATIONSHIP / OPERATION / VERB
+  no Origin by default;
+  reusable language describes how semantic things relate or change
+
+RUNTIME OCCURRENCE / CURRENT VALUE
+  no Origin;
+  runtime truth is an occurrence of an already-defined semantic meaning
+
+TARGET / PLATFORM MECHANISM
+  no Origin;
+  implementation mechanics realize portable meaning
+
+REALIZATION / PROJECTION / ADAPTER / SCAFFOLD
+  no Origin;
+  it descends from or presents canonical meaning rather than becoming another owner
+~~~
+
+If a supposed value or owned child grows independent fields, relationships, lifecycle, reusable
+realizations, evolution or addressability, reclassify it first:
+
+~~~text
+"value" develops independent semantic identity
+-> it is no longer merely a value
+-> treat it as a candidate semantic object/domain
+-> rerun Origin Eligibility / Exclusion
+~~~
+
+Do not keep calling an independently meaningful object a "value" merely to avoid forming the rightful
+boundary.
+
+### Worked feature-development classifications
+
+~~~text
+DebugMenuScreenOrigin
+  YES
+  canonical reusable Screen definition with target realizations
+
+ThemeModeOrigin
+  YES
+  canonical reusable state/value domain shared by realizations
+
+ThemeModeControl
+  NOT YET
+  currently can be completely owned by DebugMenuScreenOrigin
+
+Light / Dark
+  NO
+  values owned by ThemeModeOrigin
+
+Select / NavigateTo / Open / Close
+  NO
+  semantic relationship / operation vocabulary
+
+currentThemeMode
+  NO
+  runtime occurrence / current application state
+
+Toggle / Dropdown / Scroll
+  NO by default
+  design form / presentation mechanism, unless a distinct reusable product component later earns
+  independent canonical ownership
+~~~
+
+A Control can therefore have stable semantic identity without having its own Origin:
+
+~~~text
+HAS IDENTITY
+!= HAS INDEPENDENT ORIGIN
+~~~
+
+If the same semantic Control later needs one reusable definition across several Screens/targets and
+parent-owned copies would drift, a `<ControlNoun>Origin` may become earned.
+
+### Process / execution / infrastructure edge cases
+
+Processes are not excluded merely because they are non-visual.
+
+A semantic Process may earn Origin when its sequence, meaning, invariants, inputs/outputs or outcomes must
+remain one reusable definition across realizations:
+
+~~~text
+PairingProcessOrigin
+  canonical semantic process
+
+Android PairingProcess
+Desktop PairingProcess
+Web PairingProcess
+  target realizations
+~~~
+
+A runtime process execution does not:
+
+~~~text
+PairingProcessRun / execution instance
+  != Origin
+~~~
+
+Execution mechanisms do not automatically become Origins:
+
+~~~text
+VexCoroutineLauncher
+CoroutineScope
+thread / executor
+Android Worker
+scheduler
+  = target/runtime execution mechanics
+  != canonical semantic process definition
+~~~
+
+If portable language needs to express process execution, prefer the human-intentional operation or process
+relationship at the semantic boundary; target launch/scheduling mechanics remain underneath it.
+
+Database/storage layers follow the same rule:
+
+~~~text
+Room / SQLite / SQL table / DAO / database connection
+  = storage mechanics
+  != Origin by default
+
+portable semantic data/entity/domain
+  may earn Origin
+
+portable persistence / retention policy
+  may earn its own canonical semantic owner
+  only when that policy itself is independently reusable meaning
+~~~
+
+Do not mint `DatabaseOrigin` merely because every target stores data.
+
+Service vocabulary is especially overloaded:
+
+~~~text
+Android Service / background Service class
+  = platform mechanism
+  != Origin
+
+semantic service/capability
+  may earn Origin
+  if one canonical reusable capability definition must project across targets
+~~~
+
+Prefer naming the portable meaning rather than importing a platform form upstream:
+
+~~~text
+NotificationDeliveryOrigin
+PlaybackSessionOrigin
+CatalogSyncProcessOrigin
+  possible semantic owners when independently earned
+
+AndroidNotificationServiceOrigin
+BroadcastReceiverOrigin
+  wrong pressure by default; leaks target mechanics into canonical meaning
+~~~
+
+An Android `BroadcastReceiver` is an event-delivery mechanism. The portable event/domain or process it
+feeds may have an Origin; the receiver itself does not become one merely because it is a named class.
+
+### Movement / Behavior / SCAE edge cases
+
+Movement and behavior verbs do not gain Origin simply because they are reusable:
+
+~~~text
+NavigateTo
+Select
+Set
+Play
+Pause
+Open
+Close
+  != <Verb>Origin
+~~~
+
+They are semantic operations / relationships.
+
+A **Behavior definition** or **Process definition** can still earn an Origin when it becomes an
+independently canonical reusable thing:
+
+~~~text
+State + Control
+-> resolved Act / Effect
+
+the generic Behavior relationship
+  != BehaviorOrigin
+
+a separately reusable behavior policy/domain
+  may earn an Origin if independent ownership is proven
+~~~
+
+Likewise, an `ActId` identifies an admitted semantic Act; the existence of an Act identity does not
+automatically imply an `ActOrigin`. Ask whether the Act definition is completely owned by its parent
+Feature/Process/Behavior Origin or requires its own canonical reusable boundary.
+
+### ConvergenceRelay as the architecture-component edge case
+
+The same Origin test can apply to architecture components. The current VexBoard foundation already allows
+the recursive Origin/realization pattern to operate at scales beyond UI, including process and architecture
+components.
+
+For `ConvergenceRelay`, the question is not whether "Relay" is a noun. Ask:
+
+~~~text
+Is there one canonical reusable ConvergenceRelay meaning / contract?
+Do several implementations / projections / consumers need to descend from it?
+Would independent definitions recreate the continuity / provenance / ownership drift it exists to solve?
+Does it evolve independently enough to need its own canonical traceable boundary?
+~~~
+
+If yes, `ConvergenceRelayOrigin` is a legitimate candidate.
+
+If the currently accepted ConvergenceRelay source is already the sole canonical definition and there is no
+separate realization-vs-Origin distinction to express, adding the postfix may be redundant. Apply the
+Origin boundary because it clarifies canonical-vs-realization ownership, not because architecture nouns
+deserve decoration.
+
 ### Default Before Binary
 
 Two currently admitted values do not by themselves justify Boolean/binary semantics.
