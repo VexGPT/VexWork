@@ -64,6 +64,39 @@
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.connected-services.human-acceptance-walk",
+      "parentWorkRefOrNull": "work.vexlife.connected-services.outcome",
+      "label": "Human acceptance walk — connected, offline and reconnect boundaries",
+      "purpose": "Give Victor one calm lived acceptance walk across the already-completed Connected Services program: same-Wi-Fi VexStream stream/seek, verified download, Desktop unavailable -> LOCAL_ONLY playback, true phone-offline playback, Android restart restoration, Desktop restart -> HUB_AND_LOCAL reconciliation without reapproval, and Tailscale/cellular Home Conversation reachability. Explicitly record away-from-home HUB_ONLY VexStream streaming as HELD_NOT_ACCEPTED unless a matching remote producer is later source-accepted. Use a VexBoard/ProcessMap presentation as a guide/projection, never as the truth or effect owner.",
+      "workClass": "TASK",
+      "state": "READY",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexlife.connected-services.vcs07-deployment-choices"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife",
+        "repo.vexlife-android",
+        "repo.vexstream-music"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-connected-services/README.md",
+        "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md",
+        "github.issue.vexlife.899",
+        "github.pull.vexlife-android.148",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/README.md"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-27T02:26:27.000Z",
+      "updatedAt": "2026-10-27T02:26:27.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vexlife.connected-services.vcs00-maps-home-admission",
       "parentWorkRefOrNull": "work.vexlife.connected-services.outcome",
       "label": "VCS-00 — Maps Home-routed admission",
