@@ -879,6 +879,107 @@ The removal test is:
 If yes, remove it. If no, it is part of the minimum-complete meaning or solution even when that requires
 multiple explicit components.
 
+### Conclusion and summary — compression must preserve justification
+
+The Origin Walk does not use `conclusion` to mean "skip to the end" or "the final sentence."
+
+A **Conclusion** is:
+
+> a minimum-complete, simplified justification of what the evidence supports.
+
+It therefore requires a visible support relationship:
+
+~~~text
+EVIDENCE
+  grounded observations / source / proof
+
+REASONING
+  why those observations support or fail to support a claim
+
+CONCLUSION
+  the justified claim compressed enough to reuse
+  without severing the material reasons that make it trustworthy
+~~~
+
+A statement with no supporting evidence is not promoted to a conclusion merely because it sounds final.
+
+~~~text
+UNSUPPORTED STATEMENT
+  may be:
+    question
+    hypothesis
+    proposal
+    assumption
+    working model
+    assertion
+
+UNSUPPORTED STATEMENT
+!= CONCLUSION
+~~~
+
+A useful conclusion normally preserves enough of this shape to remain auditable:
+
+~~~text
+given:
+  material evidence / examples
+
+because:
+  the discriminating reason those observations matter
+
+therefore:
+  current conclusion
+
+within:
+  scope / conditions / non-claims
+
+reopen if:
+  evidence or pressure materially changes
+~~~
+
+The conclusion does not need to restate every raw artifact. It does need to preserve the summarized
+justification and evidence coordinates required to understand why the conclusion currently survives.
+
+A **Summary** has a different job:
+
+> compress a larger body for orientation without erasing the causal/evidence route required to recover
+> its meaning.
+
+~~~text
+SUMMARY
+  may compress detail
+  may group established conclusions
+  may point to causal examples / evidence
+
+SUMMARY
+  must preserve material distinctions
+  must not promote unsupported claims
+  must not make omitted reasoning unrecoverable
+
+SUMMARY
+!= substitute truth owner
+SUMMARY
+!= "only read this and ignore why"
+~~~
+
+A good current-entry summary lets a fresh Builder orient quickly, then descend into the exact evidence /
+causal episode when the next decision depends on it.
+
+~~~text
+ORIENTATION COMPRESSION
++ RECOVERABLE JUSTIFICATION
+= useful summary
+
+COMPRESSION
+- WHY
+- EVIDENCE
+- REOPEN CONDITIONS
+= reasoning loss
+~~~
+
+This distinction is why `CURRENT-EXAMPLES.md` exists beside the canonical README: the README can remain
+the current entry while the companion preserves the evidence-backed causal evolution that a compact
+orientation cannot safely carry in full.
+
 ### Problem and solution consideration
 
 A **Problem** is currently treated as an observed or required mismatch between current reality and an

@@ -688,6 +688,72 @@ while managing fewer independent truths
 without collapsing distinctions that still have separate rightful owners
 ~~~
 
+### Conclusion / summary correction came from reviewing the currentization itself
+
+After the first Origin Walk currentization was formed, the source was reread against the live discussion.
+That review found a real continuity risk:
+
+~~~text
+the candidate preserved many answers
+but some of the evolutionary reasoning had been flattened
+into named tests / conclusions
+~~~
+
+That exposed another language problem: treating a `conclusion` as a shortcut to the final answer, and a
+`summary` as permission to omit why.
+
+The refined distinction is:
+
+~~~text
+EVIDENCE
+  what was observed / proved
+
+REASONING
+  why that evidence discriminates between candidates
+
+CONCLUSION
+  minimum-complete compression of the justified claim over that evidence
+
+SUMMARY
+  orientation compression that preserves a route back to the evidence / causal reasoning
+~~~
+
+The pressure behind this correction is practical:
+
+~~~text
+conclusion without evidence
+-> unsupported assertion can masquerade as settled truth
+
+summary without recoverable why
+-> fresh instance inherits nouns / rules
+   but cannot understand why they survived
+-> later pressure causes re-derivation, accidental reversal or cargo-cult reuse
+~~~
+
+Therefore:
+
+~~~text
+NO SUPPORTING EVIDENCE
+-> do not label the statement a conclusion
+
+MATERIAL WHY / EVIDENCE OMITTED FROM SUMMARY
+-> preserve exact source / causal-example route
+-> do not imply the compressed text is sufficient for every dependent decision
+~~~
+
+This correction also explains the two-file VexSync pattern:
+
+~~~text
+README
+  current-entry / orientation / current rules
+
+CURRENT-EXAMPLES
+  causal examples / evidence / rejected alternatives / evolution / reopen conditions
+~~~
+
+The split is useful only while the current entry remains traversable into the causal companion; otherwise
+it would become another summary/source separation problem.
+
 The reasoning that produced this was important:
 
 ~~~text
