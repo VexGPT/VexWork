@@ -1023,7 +1023,7 @@ work.vexstream.mobile-library.sort-filter-controls
   label -> Sort / Filter / Recently added library controls
 ```
 
-### ML-D19 — Missing-artwork reconciliation was absorbed into the existing one-shot update
+### ML-D19 — Missing-artwork reconciliation is not persistent Keep Offline sync
 
 The embedded-artwork producer and Android consumer are accepted source, yet lived playback can still
 show placeholder artwork. The earlier decomposition therefore captured a separate
