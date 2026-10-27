@@ -261,9 +261,50 @@
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vextreme.vexsite.localization.covenant-ja-zh.running.20261026",
+      "transitionRef": "transition.vextreme.vexsite.localization.covenant-ja-zh.decomposed.20261026",
       "workRef": "work.vextreme.vexsite.localization.next-domain.covenant-ja-zh",
       "priorState": "CAPTURED",
+      "nextState": "DECOMPOSED",
+      "reason": "Fresh Vextreme grounding confirmed Covenant JA/ZH as a distinct optional successor domain and separated source authoring from locale promotion/generated/lived consequences.",
+      "actorRef": "actor.chatgpt.vexsite-localization",
+      "sourceRefs": [
+        "github.pull.vextreme.312",
+        "github.pull.vextreme.148"
+      ],
+      "createdAt": "2026-10-26T10:32:28.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.vexsite.localization.covenant-ja-zh.plan-validated.20261026",
+      "workRef": "work.vextreme.vexsite.localization.next-domain.covenant-ja-zh",
+      "priorState": "DECOMPOSED",
+      "nextState": "PLAN_VALIDATED",
+      "reason": "The accepted institutional contract and PR #148 precedent established a bounded source-first JA/ZH plan while keeping English required and planned locales unexposed.",
+      "actorRef": "actor.chatgpt.vexsite-localization",
+      "sourceRefs": [
+        "github.pull.vextreme.148",
+        "repo.vextreme:docs/architecture/18-institutional-pages.md"
+      ],
+      "createdAt": "2026-10-26T10:32:29.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.vexsite.localization.covenant-ja-zh.ready.20261026",
+      "workRef": "work.vextreme.vexsite.localization.next-domain.covenant-ja-zh",
+      "priorState": "PLAN_VALIDATED",
+      "nextState": "READY",
+      "reason": "Fresh coordination showed no competing source owner for the admitted Covenant translation membrane.",
+      "actorRef": "actor.chatgpt.vexsite-localization",
+      "sourceRefs": [
+        "github.pull.vextreme.423"
+      ],
+      "createdAt": "2026-10-26T10:32:30.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.vexsite.localization.covenant-ja-zh.running.20261026",
+      "workRef": "work.vextreme.vexsite.localization.next-domain.covenant-ja-zh",
+      "priorState": "READY",
       "nextState": "RUNNING",
       "reason": "Fresh Vextreme grounding after generated/runtime completion admitted the Covenant JA/ZH successor as source-only PR #423 using the accepted institutional translation-review boundary.",
       "actorRef": "actor.chatgpt.vexsite-localization",
