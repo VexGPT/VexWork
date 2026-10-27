@@ -850,7 +850,10 @@
         "github.comment.vexstream-music.pr16.6432866592.assurance-clear",
         "transition-proposal.vexstream.mobile-library.current-artwork-availability.active-verify.20261026a",
         "human-transition-response.vexstream.mobile-library.current-artwork-availability.full-approval.20261026a",
-        "ai-transition-confirmation.vexstream.mobile-library.current-artwork-availability.commit.20261026a"
+        "ai-transition-confirmation.vexstream.mobile-library.current-artwork-availability.commit.20261026a",
+        "github.commit.vexstream-music.7b442351047a698611b0bd11079bb38f69c9ab94",
+        "github.comment.vexstream-music.pr16.6433049757.post-merge-exact-tree",
+        "evidence.vexstream-music.pr16.postmerge.exact-tree.20261026a"
       ],
       "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
       "nextProcessRefs": [
@@ -859,7 +862,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-25T07:10:00.000Z",
-      "updatedAt": "2026-10-27T02:54:00.000Z"
+      "updatedAt": "2026-10-27T03:04:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -999,6 +1002,23 @@
         "ai-transition-confirmation.vexstream.mobile-library.current-artwork-availability.commit.20261026a"
       ],
       "createdAt": "2026-10-27T02:54:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.current-artwork-availability.verify.integration-exact-20261026a",
+      "workRef": "work.vexstream.mobile-library.current-artwork-availability",
+      "priorState": "VERIFYING",
+      "nextState": "VERIFYING",
+      "reason": "VexstreamMusic PR #16 merged as 7b442351047a698611b0bd11079bb38f69c9ab94, and current main tree d2a0d07837c1fb5b034f1c37f169906e4422df24 exactly equals the SourceOwner A006 proven candidate tree. Producer source integration is complete; Verify remains open only for running the accepted producer on Victor's Mac and completing the physical Android row / Full Player / Media3 / widget artwork round-trip without audio redownload or playback reset.",
+      "actorRef": "role.vexwork.lifecycle-currentizer",
+      "sourceRefs": [
+        "github.pull.vexstream-music.16",
+        "github.commit.vexstream-music.7b442351047a698611b0bd11079bb38f69c9ab94",
+        "github.comment.vexstream-music.pr16.6433049757.post-merge-exact-tree",
+        "evidence.vexstream-music.pr16.sourceowner.a006.outer.sha256.cc17cf43c3e96e14ac1d7d0702c922292599c256505d3e9d7ce35de8e615f2bf",
+        "github.comment.vexstream-music.pr16.6432866592.assurance-clear"
+      ],
+      "createdAt": "2026-10-27T03:04:00.000Z"
     }
   ],
   "transitions": [

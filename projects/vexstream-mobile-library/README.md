@@ -57,7 +57,7 @@ VexStream Mobile Library                         OUTCOME
 +-- Playback Surfaces                            OUTCOME / decomposed
 |   +-- Now Playing artwork projection           TASK / completed / online metadata projection accepted
 |   +-- Offline artwork durability               DEFECT / running
-|   +-- Current-track artwork availability       DEFECT / verifying / PR16 source clear / producer integration + lived proof pending
+|   +-- Current-track artwork availability       DEFECT / verifying / PR16 merged tree-exact / lived proof pending
 |   +-- Reconcile / sync missing artwork          TASK / cancelled as separate owner; absorbed above
 |   +-- VexStream full player                    TASK / verifying / lived artwork feedback remains
 |
@@ -722,7 +722,7 @@ tree = d2a0d07837c1fb5b034f1c37f169906e4422df24
 SourceOwner A006 = PASS
 Independent Assurance = CLEAR_ON_EXACT_HEAD
 Active -> Verify = Victor full approval / committed
-producer integration = PENDING
+producer integration = COMPLETE / merge 7b442351047a698611b0bd11079bb38f69c9ab94 / tree-exact
 physical Android row / Full Player / Media3 / widget round-trip = PENDING
 ```
 
