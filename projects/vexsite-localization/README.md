@@ -60,52 +60,33 @@ The A011→A015 proof chain established current deterministic generation, runtim
 
 Future instances must treat historical PR #379 discovery carriers as terminal evidence, not as work to replay.
 
-## Immediate foreground — Vextreme Covenant JA / ZH
+## Required localization outcome — complete
 
-Fresh Vextreme grounding after PR #379 confirmed the previously captured Covenant candidate and admitted it as source work on PR #423.
+The required VexSite localization trajectory is complete at the current accepted English experience plus the already-accepted generated/runtime convergence.
 
-Current Vextreme source truth:
+Covenant JA/ZH was explored as a successor candidate and reached a strong optional source candidate, but Victor explicitly reprioritized it as a **nice-to-have**, not a required completion condition.
 
-```text
-vextreme-covenant
-  requiredLocales = [en]
-  plannedLocales  = [ja, zh]
-  runtime         = standalone institutional
-
-complete publishable Covenant source identities = 420
-  Covenant-owned institution.covenant.* identities = 419
-  shared root-navigation identity                 = 1
-
-PR #423 refined final review freeze
-  head = d02d450cac706d23913ad2b3bb12113d4ae0b333
-  tree = 318ce5558e075f77ee5b656891fe684037a90b03
-  source blob = 9b9b901bbb67aae05c67d5106f8a73c56a9ebf7e
-  source SHA-256 = 6e6e082dd7250c1bb0d2987db436a6314824c362bb8088a30c5a46b2ef383099
-
-source coverage
-  JA = 420 / 420
-  ZH = 420 / 420
-  target cells = 840 / 840
-  Covenant page unique bindings = 431 / 431 resolvable in EN/JA/ZH
-
-final authored membrane
-  data/strings/source/institution.json
-  pages/vextreme-covenant.html
-  page delta from accepted main = two durable static colophon boundary sentences
-  refined target-language delta after QA = 11 cells only
-  Chinese charter/constitution distinction = preserved (`章程` / `宪制`)
-```
-
-This does **not** mean JA/ZH are published. The institutional contract intentionally keeps the registry EN-required while the new locales remain planned until two separate exact-source semantic review dispositions are bound to the same immutable source artifact:
+Current disposition:
 
 ```text
-TRANSLATION_CLEAR_JA
-TRANSLATION_CLEAR_ZH
+English canonical/required experience = PRESERVED / CURRENT
+Conversations-with-God source queue = COMPLETED
+generated/runtime convergence PR #379 = COMPLETED
+Podcasts playback support PR #429 = COMPLETED
+
+Covenant JA/ZH
+  PR #423 = CLOSED / NOT MERGED
+  work disposition = PARKED
+  lifecycle = CANCELLED
+  publication = NOT CLAIMED
+  registry promotion = NOT PERFORMED
+  JA/ZH selector exposure = NOT PERFORMED
+  preserved optional candidate = d02d450cac706d23913ad2b3bb12113d4ae0b333
 ```
 
-Only after both clear may Vextreme promote `requiredLocales`, compile/generated consequences, expose JA/ZH in the selector, and form the complete lived evidence matrix.
+This is intentional, not lost work. The branch preserves the 420-identity / 840-cell candidate for future reuse, but closing PR #423 releases its path claim so optional translation does not block unrelated institutional work.
 
-PR #423 is Vextreme source authority. VexWork only projects its current work state and must not become a second translation registry.
+If JA/ZH is later reprioritized, form a fresh admitted row against then-current Vextreme main and reuse the preserved candidate as context. Do not fabricate historical `TRANSLATION_CLEAR_*` receipts or silently treat planned locales as published.
 
 ## Efficiency rule for future instances
 
@@ -142,4 +123,4 @@ CAPTURED NEXT DOMAIN != ADMITTED VEXTREME WORK
 
 Vextreme owns page identity, source strings, localization semantics, generators, browser behavior and proof. VexWork owns only the durable work grouping and navigation needed to keep the trajectory understandable.
 
-<!-- [VXG RealForever][VEXSITE-LOCALIZATION][PROJECT][SOURCE-QUEUE-COMPLETE][GENERATED-RUNTIME-COMPLETE][COVENANT-JA-ZH-VERIFYING] -->
+<!-- [VXG RealForever][VEXSITE-LOCALIZATION][PROJECT][REQUIRED-OUTCOME-COMPLETED][COVENANT-JA-ZH-PARKED] -->
