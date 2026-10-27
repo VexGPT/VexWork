@@ -929,6 +929,141 @@ while preserving every distinction that still has a rightful separate owner
 "Manage less" does not mean collapse owners. One traversable causal path may still cross several rightful
 owners.
 
+### Reusable Solution Consideration Grammar
+
+The problem/solution reasoning is intended to be reusable across future specimens, but it is not a flat
+checklist that must be mechanically exhausted every time.
+
+~~~text
+question
+-> grounded answer
+-> answer exposes a new pressure
+-> select the next relevant question family
+-> continue
+~~~
+
+The stable question families currently include:
+
+~~~text
+PROBLEM FIT
+  What problem is actually being solved?
+  What is current truth?
+  What is intended truth?
+  What mismatch matters?
+  What consequences and materially distinct cases make it a real problem?
+
+SYMPTOM / CAUSE
+  Is this the problem or only a visible symptom?
+  Would removing the symptom leave the underlying mismatch intact?
+  Could the apparent fix make the structural problem worse?
+
+COMPLETENESS
+  Which admitted cases does the solution satisfy?
+  Which cases remain intentionally outside?
+  What materially necessary reason would be lost by simplifying further?
+
+RELATIONAL
+  Who connects to this?
+  What does it depend on?
+  Who depends on it?
+  What relationships appear, disappear or change because it exists?
+
+COUNTERFACTUAL
+  What happens if it is absent, collapsed, bypassed, duplicated or substituted?
+
+CONVERGENCE
+  Which duplicated truths, interpretations, responsibilities, synchronization points or recovery paths
+  disappear?
+  What new managed truth does the solution itself introduce?
+
+OWNERSHIP
+  Who owns each truth before and after the solution?
+  Does the solution coordinate rightful owners or absorb their responsibilities?
+
+STANDARDIZATION
+  What happens if this becomes the normal way everyone solves this class of problem?
+  Does every additional consumer make ownership/debugging easier or harder?
+
+DIAGNOSTIC LEGIBILITY
+  Can a failure be traced from observed result back through executor, target realization, semantic mapping,
+  Origin relationship/state and originating human cause?
+
+SCALE
+  With 2 / 20 / 2,000 consumers, children, targets or transitions, what multiplies?
+
+EVOLUTION
+  When one child, target or requirement changes, what else must change?
+
+RECOVERY
+  After partial failure or restart, what truth can be recovered without replaying accidental caller history?
+
+PROVENANCE
+  Can a fresh Builder still explain why this architecture exists and which pressures made the choice win?
+~~~
+
+A reusable question is not automatically a required schema field. The questions protect reasoning quality;
+durable fields are earned only when later consumers need the answer as source.
+
+### Symptom removal is not automatically problem resolution
+
+A brute-force/local fix can be valid, but its success level must remain explicit.
+
+~~~text
+symptom disappears
+!= root mismatch resolved
+
+one instance works
+!= recurring cause removed
+
+systemic
+!= automatically converged
+
+converged
+!= final / immune to later refinement
+~~~
+
+The Walk should allow progression such as:
+
+~~~text
+brute-force fix
+-> local structural fix
+-> systemic fix
+-> converged architecture
+-> later pressure-tested refinement
+~~~
+
+The purpose is not to reject a bounded fix when it is the right current action. It is to avoid mistaking
+"works here" for "this is the reusable architecture."
+
+### Convergence is not centralization
+
+A convergence mechanism is valuable when it reduces duplicated management while keeping rightful owners
+legible.
+
+~~~text
+CONVERGENCE
+  fewer duplicated truths / interpretations / recovery paths
+  + one traversable causal path
+  + rightful owners remain distinct
+
+CENTRALIZATION
+  one coordinator absorbs state / policy / effects / mapping / recovery
+  that still belong to separate owners
+~~~
+
+Useful management-burden questions include:
+
+~~~text
+How many independent truths must stay current?
+How many owners must coordinate?
+How many relationship paths must stay synchronized?
+How many recovery paths exist?
+How many interpretations of the same human meaning can drift?
+What new state does the convergence mechanism itself introduce?
+~~~
+
+One path does not require one owner.
+
 ### Minimum-complete meaning
 
 When an Origin object or architectural boundary earns durable meaning, consider at least:
@@ -1025,8 +1160,22 @@ If new pressure appears, perform **Architecture Re-entry**:
 ~~~text
 proposed reusable solution
 -> treat the solution itself as new design terrain
--> run the Origin Walk questions again
+-> run the same Problem / Solution Consideration Grammar again
 -> refine / converge without discarding unaffected truth
+~~~
+
+This recursion is intentional. The Bypass Test may reveal that bypassing the solution recreates the
+original problem; the Standardization Test may then reveal that making the solution universal creates new
+debugging, ownership or failure pressures. Those new pressures are not exceptions to the Walk: the
+solution itself becomes the next subject of the same reasoning method.
+
+~~~text
+Problem P
+-> Solution X
+-> assume X becomes standard
+-> new pressure P2 appears
+-> Architecture Re-entry on X
+-> refine X or its boundary
 ~~~
 
 ### Diagnostic legibility and Ownership Trace
@@ -1088,6 +1237,76 @@ The design question becomes:
 
 This is **sequencing semantics**. The sequence should follow semantic dependency rather than convenience
 of one target API.
+
+### Semantic Sequence — working term, not yet a schema
+
+The current working term for the ordered semantic dependencies inside one lived action is **Semantic
+Sequence**:
+
+> the ordered semantic dependencies required to faithfully resolve one human intention.
+
+This is a reasoning/projection concept today, not yet an independently managed object, registry or wire
+schema.
+
+Before formalizing sequence language, pressure it with at least three different shapes:
+
+~~~text
+SPECIMEN A — direct navigation
+  human: open Debug Menu
+  semantic:
+    DebugMenuEntryControl
+    -> NavigateTo(screen.debug-menu)
+
+  no prerequisite application/domain state is required
+
+SPECIMEN B — state preparation then presentation
+  human: choose/open something whose current state must be available at the destination
+  semantic:
+    originating choice/event
+    -> establish current truth through rightful Relay/state owner
+    -> dependent state becomes current
+    -> NavigateTo(destination) when presentation movement is required
+    -> destination consumes dependency
+
+SPECIMEN C — state change without navigation
+  human: choose Dark
+  semantic:
+    Select(ThemeMode.Dark)
+    -> ThemeMode becomes Dark
+    -> application appearance reflects Dark
+~~~
+
+The common pressure may become:
+
+~~~text
+human cause
+-> prerequisite semantic transition(s)
+-> dependent consequence(s)
+~~~
+
+but the differences matter. Sequencing must not become synonymous with navigation or force a preparation
+step where none exists.
+
+### Sequence should not become another synchronized truth
+
+If VexBoard later visualizes a Semantic Sequence, prefer deriving it from authoritative semantic
+relationships, dependency/order constraints and provenance rather than requiring humans or targets to
+maintain a second sequence record.
+
+~~~text
+authoritative semantic relationships
++ dependencies / order constraints
++ provenance
+-> sequence projection
+
+not
+
+Origin relationships
++ separately maintained sequence truth
++ separately maintained target flow truth
+~~~
+
+Otherwise sequencing would recreate the duplicated-state/currentness problem it is meant to expose.
 
 ### Navigation is not semantic-state transport
 

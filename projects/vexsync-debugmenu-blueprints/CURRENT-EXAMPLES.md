@@ -688,6 +688,59 @@ while managing fewer independent truths
 without collapsing distinctions that still have separate rightful owners
 ~~~
 
+The reasoning that produced this was important:
+
+~~~text
+initial pressure
+  "smallest" could accidentally mean "shortest"
+
+example pressure
+  ConvergenceRelay solves several different failures at once
+
+realization
+  deleting those reasons from the explanation would let a future Builder preserve the mechanism
+  while losing why the architecture exists
+
+refinement
+  minimum complete means preserving every materially necessary problem / invariant / reason,
+  not maximizing compression
+~~~
+
+The next question then became "what is a problem?" That exposed the distinction between a visible symptom
+and the underlying current-vs-intended mismatch, and produced the progression from bounded fix to systemic
+and converged architecture.
+
+### Reusable questions emerged from the reasoning, not from a checklist
+
+The stable question families were earned one pressure at a time:
+
+~~~text
+problem fit / symptom-vs-cause
+completeness
+relational context
+counterfactual tests
+convergence / management burden
+ownership
+standardization
+diagnostic legibility
+scale
+evolution
+recovery
+provenance
+~~~
+
+The important dynamic is:
+
+~~~text
+answer one grounded question
+-> see what new pressure that answer creates
+-> select the relevant next question family
+-> repeat
+~~~
+
+The questions are reusable so a fresh Builder does not have to remember to reinvent the same
+considerations, but they are not mandatory fields or a ritual checklist.
+
 ### Relational pressure
 
 A node may look correct in isolation and still be the wrong architecture because of what it duplicates,
@@ -711,6 +764,36 @@ ownership trace
 
 These are question families, not mandatory source fields. Apply the questions that the current answer
 makes relevant.
+
+The evolutionary sequence here matters:
+
+~~~text
+question:
+  who does this node connect to, and what changes if it does not exist?
+
+-> Absence / Collapse / Bypass pressure
+
+Bypass result:
+  consumers may have to reconstruct the same state / interpretation independently
+
+-> convergence question:
+  is this node actually reducing duplicated management?
+
+-> ownership question:
+  is it coordinating rightful owners or becoming a mega-owner?
+
+-> standardization question:
+  what happens if this becomes the normal path?
+
+-> diagnostic question:
+  with many consumers, can a fresh maintainer still trace who owns the failure?
+
+-> Architecture Re-entry:
+  treat the proposed standard itself as new problem terrain
+~~~
+
+This chain is why the counterfactual questions exist. Preserving only the final test names would lose how
+they constrain one another.
 
 ### Lived navigation problem — state was forwarded while moving Screens
 
@@ -791,6 +874,28 @@ ONE HUMAN MOVE
 ORDERED SEMANTIC DEPENDENCIES
 may legitimately exist inside one lived action
 ~~~
+
+The later discussion gave this a tentative working name:
+
+~~~text
+Semantic Sequence
+  = ordered semantic dependencies required to faithfully resolve one human intention
+~~~
+
+This is not yet a schema or separately managed source. Before promoting it, compare at least:
+
+~~~text
+direct navigation
+state preparation -> presentation
+state change without navigation
+~~~
+
+That comparison protects against assuming every lived action needs preparation or every sequence ends in
+navigation.
+
+Another earned constraint is that a future VexBoard sequence view should preferably project sequence from
+the authoritative relationships/dependencies/provenance already present. A second independently maintained
+"sequence truth" would recreate synchronization and currentness burden.
 
 ### Direct navigation still survives
 
