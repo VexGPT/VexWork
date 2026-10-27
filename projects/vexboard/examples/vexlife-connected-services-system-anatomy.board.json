@@ -37,7 +37,7 @@
       {
         "nodeRef": "annotation.vcs.work-overlay",
         "kind": "ANNOTATION",
-        "label": "Work overlay · VCS-04 TERMINAL_ACCEPTED_CURRENT · VCS-05 TERMINAL_ACCEPTED_CURRENT · VCS-06 TERMINAL_ACCEPTED_CURRENT · VCS-07 COMPLETED_NO_SHARED_WIDENING · Project COMPLETED",
+        "label": "Work overlay · VCS-04/05/06 terminal accepted · VCS-07 completed no-widening · program source COMPLETED · HUMAN ACCEPTANCE READY · parent not yet CONVERGED/CLOSED",
         "parentRefOrNull": "container.vcs.system",
         "detailBoardRefOrNull": null,
         "sourceRefs": [
@@ -58,7 +58,8 @@
           "github.pull.vextreme-sdk.1903",
           "github.commit.vextreme-sdk.06ccef98769ff25eabd8bee4b8646185a42eb5f1",
           "github.issue.vexlife.899.comment.6431636376",
-          "github.issue.vexlife.899.comment.6431637903"
+          "github.issue.vexlife.899.comment.6431637903",
+          "work.vexlife.connected-services.human-acceptance-walk"
         ]
       },
       {
