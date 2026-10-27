@@ -2769,3 +2769,98 @@ that a later Android realization may adopt.
 
 Next pressure specimen: VexStream Playback, because current source already contains admitted intent,
 provider latency, observation, reconciliation, lifetime ownership and UI projection.
+
+
+## VexStream Playback pressure specimen — current Android map
+
+Current Android main has no VexStream Playback class named ConvergenceRelay.
+
+The existing path is:
+
+~~~text
+VexStreamPlaybackExperience.activate(Control)
+        |
+        v
+Media3VexStreamPlaybackConnection.activate(Control)
+        |
+        +-> currentSemanticState(Media3)
+        |     observed provider State
+        |     + connection-local pending intent
+        |     -> reconcileVexStreamPlaybackObservation(...)
+        |
+        +-> Control + CURRENT State -> Act
+        |
+        +-> CURRENT State + Act -> Effect + admitted State kind
+        |
+        +-> pending.after(Effect)
+        |
+        +-> current.afterIntent(Effect)
+        |     -> publish admitted semantic Projection immediately
+        |
+        +-> realize(Effect) against Media3
+        |
+        +-> Media3 observation
+              |
+              v
+           reconcileVexStreamPlaybackObservation(...)
+              |
+              v
+           publish reconciled Projection
+~~~
+
+Current source distinctions:
+
+~~~text
+VexStreamPlaybackState
+  = public semantic Playback truth
+
+VexStreamPlaybackPending
+  = Connection-local implementation state
+  = explicitly not a fifth Behavior concept
+
+Media3 Player observation
+  = provider truth entering the Connection
+
+reconcileVexStreamPlaybackObservation(observed, pending)
+  = preserves newer admitted intent against stale provider observation
+  = clears pending when provider acknowledgement matches
+  = clears/inherits pending according to terminal/provider meaning
+
+VexStreamPlaybackDisplayState
+  = downstream view classification
+  = not another truth owner
+~~~
+
+The canonical VexLife portable Play/Pause contract already represents observation reconciliation as
+laws with no Control, Act or Effect:
+
+~~~text
+provider observation reconciliation
+  controlRefOrNull = null
+  resolvedActRefOrNull = null
+  effectRefOrNull = null
+~~~
+
+Therefore the next architecture question is not "add a Relay because async exists."
+
+It is:
+
+~~~text
+Does Playback's current:
+  admitted semantic intent
+  + provider-observed truth
+  -> reconciled semantic truth
+
+remain best owned inside the Connection boundary,
+
+OR
+
+do those inputs become independently-owned complete VexStates whose relationship should be promoted
+to a ConvergenceRelay?
+
+Do not answer until the actual ownership/lifecycle/readability pressure is compared against the
+existing Compound Relay pattern.
+~~~
+
+Maps is the next comparison specimen because it already contains concrete ConvergenceRelays over
+independently-owned current truths.
