@@ -22,6 +22,7 @@
     "work.vexlife-android.current-state-refinement.outcome",
     "work.vexlife.welcome-wagon.outcome",
     "work.vexstream.mobile-library.tag-topology-stations",
+    "work.vexsync.debugmenu-blueprints.outcome",
     "work.vextreme.vexsite.localization.outcome"
   ],
   "items": [
@@ -5907,6 +5908,106 @@
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexsync.debugmenu-blueprints.debugmenu-origin-roundtrip",
+      "parentWorkRefOrNull": "work.vexsync.debugmenu-blueprints.outcome",
+      "label": "Build the first Debug Menu Origin <-> Android round trip",
+      "purpose": "After the Feature Request -> Builder specimen is grounded enough, author the first bounded Debug Menu semantic terrain one truthful edge at a time, compare/map that meaning to current Android without requiring a second semantic reinterpretation, expose unsupported target capabilities rather than guessing, and project the resulting source/evidence back to the same coordinates before generalizing the process.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "projects/vexsync-debugmenu-blueprints/README.md",
+        "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+        "project.vexboard",
+        "project.vex-universe",
+        "github.pull.vexlife-android.182",
+        "github.pull.vexlife-android.183",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/shell/AppShell.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/debug/DebugMenuScreen.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/runtime/AppActions.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-26T07:26:46.000Z",
+      "updatedAt": "2026-10-26T09:30:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery",
+      "parentWorkRefOrNull": "work.vexsync.debugmenu-blueprints.outcome",
+      "label": "Discover Feature Request -> Builder process through one Debug Menu specimen",
+      "purpose": "Use the dark/light-theme request as the first live process specimen: preserve the human goal/return, hold only dependent unknowns, lock known terrain endpoints before filling the middle, investigate current Android identities/owners/HOW before creating new source, and let relationship names/IDs/phases emerge only when the living specimen earns them.",
+      "workClass": "TASK",
+      "state": "READY",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "projects/vexsync-debugmenu-blueprints/README.md",
+        "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+        "project.vexboard",
+        "github.pull.vexwork.155",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/shell/AppShell.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/debug/DebugMenuScreen.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/runtime/AppActions.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-26T07:26:46.000Z",
+      "updatedAt": "2026-10-26T09:30:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexsync.debugmenu-blueprints.outcome",
+      "parentWorkRefOrNull": null,
+      "label": "VexSync DebugMenu Blueprints",
+      "purpose": "Discover and prove a reusable feature-building process on one bounded Debug Menu specimen: translate ordinary human intention into truthful living terrain, ground current identities/owners before creating new ones, let reusable semantic language emerge from real pressure, and use the resulting process to prove a first VexBoard/Origin <-> current Android round trip without predeclaring later compiler or deployment phases.",
+      "workClass": "OUTCOME",
+      "state": "RUNNING",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "project.vexsync.debugmenu-blueprints",
+        "projects/vexsync-debugmenu-blueprints/README.md",
+        "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+        "project.vexboard",
+        "project.vex-universe",
+        "project.vexlife.blueprint-source-of-truth",
+        "project.vexlife-android.current-state-refinement"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-26T07:26:46.000Z",
+      "updatedAt": "2026-10-26T09:30:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vextreme.vexsite.localization.canonical-global-core-source",
       "parentWorkRefOrNull": "work.vextreme.vexsite.localization.outcome",
       "label": "Advance the canonical Conversations-with-God Global Core source queue",
@@ -9318,8 +9419,10 @@
     "project.vex-universe",
     "project.vexlife-android.current-state-refinement",
     "project.vexlife.welcome-wagon",
+    "project.vexsync.debugmenu-blueprints",
     "projects/vexlife-android-current-state-refinement/README.md",
-    "projects/vexlife-welcome-wagon/README.md"
+    "projects/vexlife-welcome-wagon/README.md",
+    "projects/vexsync-debugmenu-blueprints/README.md"
   ],
   "formedAt": "2026-10-21T01:45:00.000Z"
 }
