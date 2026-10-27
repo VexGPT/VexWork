@@ -8,11 +8,11 @@
       "workRef": "work.vextreme.vexsite.localization.outcome",
       "parentWorkRefOrNull": null,
       "label": "VexSite Localization",
-      "purpose": "Keep VexSite localization legible across completed source-lineage and canonical source-queue phases, current generated/runtime convergence, and deliberate evidence-backed next-domain selection, while Vextreme remains the owner of source/runtime/lived truth and VexWork owns only durable work organization.",
+      "purpose": "Project the completed required VexSite localization trajectory: source-lineage preservation, canonical Conversations-with-God source completion and generated/runtime convergence are terminal/current; optional Covenant JA/ZH is parked and does not block the outcome.",
       "workClass": "OUTCOME",
-      "state": "RUNNING",
+      "state": "COMPLETED",
       "workDisposition": "ACTIVE",
-      "priorityClass": "HIGH",
+      "priorityClass": "NORMAL",
       "dependencyRefs": [],
       "repositoryRefs": [
         "repo.vexwork",
@@ -28,14 +28,17 @@
         "github.pull.vextreme.401",
         "repo.vextreme:config/institutional-surfaces.json",
         "repo.vextreme:data/strings/source/institution.json",
-        "repo.vextreme:docs/architecture/06-i18n.md"
+        "repo.vextreme:docs/architecture/06-i18n.md",
+        "github.pull.vextreme.429",
+        "git.commit.vextreme.11160c0c10d1758bf794f88ccb24fb01dd508df9",
+        "github.issue-comment.vextreme.423.6430262550"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-23T07:48:00.000Z",
-      "updatedAt": "2026-10-26T07:30:02.000Z"
+      "updatedAt": "2026-10-27T00:05:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -170,12 +173,12 @@
       "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vextreme.vexsite.localization.next-domain.covenant-ja-zh",
       "parentWorkRefOrNull": "work.vextreme.vexsite.localization.outcome",
-      "label": "Localize Vextreme Covenant into JA / ZH",
-      "purpose": "Project the admitted Vextreme Covenant JA/ZH successor on PR #423. Canonical translation source authoring is complete at the refined immutable 420-identity / 840-target-cell review freeze; author-side QA preserved the Chinese charter/constitution distinction and removed one generic English-leakage phrase, while registry promotion, generated/runtime consequences and lived evidence remain held pending separate exact-source TRANSLATION_CLEAR_JA and TRANSLATION_CLEAR_ZH dispositions.",
-      "workClass": "TASK",
-      "state": "VERIFYING",
-      "workDisposition": "ACTIVE",
-      "priorityClass": "IMMEDIATE",
+      "label": "Optional Vextreme Covenant JA / ZH localization",
+      "purpose": "Preserve the optional Covenant JA/ZH source candidate from closed PR #423 without treating it as required or published work. English remains canonical/required; no translation-clear receipt, locale promotion, selector exposure, generated consequence or lived-evidence claim is made.",
+      "workClass": "POTENTIAL",
+      "state": "CANCELLED",
+      "workDisposition": "PARKED",
+      "priorityClass": "LOW",
       "dependencyRefs": [
         "work.vextreme.vexsite.localization.generated-runtime-currentness"
       ],
@@ -184,21 +187,18 @@
       ],
       "sourceRefs": [
         "github.pull.vextreme.423",
-        "github.issue-comment.vextreme.423.6430161668",
-        "github.pull.vextreme.312",
-        "github.pull.vextreme.148",
+        "github.issue-comment.vextreme.423.6430262550",
+        "git.commit.vextreme.d02d450cac706d23913ad2b3bb12113d4ae0b333",
         "repo.vextreme:config/institutional-surfaces.json",
         "repo.vextreme:data/strings/source/institution.json",
-        "repo.vextreme:docs/architecture/06-i18n.md",
-        "git.commit.vextreme.ac2e181bfd547f32f83d1ab3e7d6174900e964fa",
-        "git.commit.vextreme.d02d450cac706d23913ad2b3bb12113d4ae0b333"
+        "repo.vextreme:docs/architecture/18-institutional-pages.md"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-26T07:30:02.000Z",
-      "updatedAt": "2026-10-26T23:56:00.000Z"
+      "updatedAt": "2026-10-27T00:05:00.000Z"
     }
   ],
   "transitions": [
@@ -288,6 +288,49 @@
         "git.commit.vextreme.d02d450cac706d23913ad2b3bb12113d4ae0b333"
       ],
       "createdAt": "2026-10-26T10:40:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.vexsite.localization.covenant-ja-zh.cancelled.optional-human-priority.20261027",
+      "workRef": "work.vextreme.vexsite.localization.next-domain.covenant-ja-zh",
+      "priorState": "VERIFYING",
+      "nextState": "CANCELLED",
+      "reason": "Victor reprioritized Covenant JA/ZH as a nice-to-have and declined a separate review ceremony. PR #423 was closed without merge, English remains canonical/required, and the optional source candidate is preserved without publication claims.",
+      "actorRef": "actor.chatgpt.vexsite-localization",
+      "sourceRefs": [
+        "github.pull.vextreme.423",
+        "github.issue-comment.vextreme.423.6430262550"
+      ],
+      "createdAt": "2026-10-27T00:05:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.vexsite.localization.outcome.verifying.required-completion.20261027",
+      "workRef": "work.vextreme.vexsite.localization.outcome",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Verify the required localization trajectory after source-queue completion, generated/runtime PR #379 terminal acceptance and removal of optional Covenant JA/ZH from the critical path.",
+      "actorRef": "actor.chatgpt.vexsite-localization",
+      "sourceRefs": [
+        "github.pull.vextreme.379",
+        "github.issue-comment.vextreme.423.6430262550"
+      ],
+      "createdAt": "2026-10-27T00:05:01.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.vexsite.localization.outcome.completed.required-completion.20261027",
+      "workRef": "work.vextreme.vexsite.localization.outcome",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "All required VexSite localization phases are terminal/current; optional JA/ZH Covenant work is parked rather than treated as a completion blocker.",
+      "actorRef": "actor.chatgpt.vexsite-localization",
+      "sourceRefs": [
+        "github.pull.vextreme.379",
+        "git.commit.vextreme.ac2e181bfd547f32f83d1ab3e7d6174900e964fa",
+        "github.issue-comment.vextreme.423.6430262550"
+      ],
+      "createdAt": "2026-10-27T00:05:02.000Z"
     }
   ],
   "sourceRefs": [
@@ -304,7 +347,10 @@
     "github.pull.vextreme.423",
     "github.issue-comment.vextreme.423.6430161668",
     "git.commit.vextreme.ac2e181bfd547f32f83d1ab3e7d6174900e964fa",
-    "git.commit.vextreme.d02d450cac706d23913ad2b3bb12113d4ae0b333"
+    "git.commit.vextreme.d02d450cac706d23913ad2b3bb12113d4ae0b333",
+    "github.issue-comment.vextreme.423.6430262550",
+    "github.pull.vextreme.429",
+    "git.commit.vextreme.11160c0c10d1758bf794f88ccb24fb01dd508df9"
   ],
   "formedAt": "2026-10-23T07:48:00.000Z"
 }
