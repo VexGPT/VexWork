@@ -87,6 +87,48 @@ SUPERSEDED
 "Current" is always scoped by one of these meanings. File age, prose confidence, an old PR body, or a
 historical example does not promote itself.
 
+## Reliable-starting-point contract
+
+This project is **mid-construction**. The current entry is intended to be reliable enough to resume from;
+it is not a claim that the process, language, Origin model or target relationship is finished.
+
+A fresh instance should classify this entry before refining anything:
+
+~~~text
+CURRENT ENOUGH TO CONTINUE
+  this README names the current edge and its referenced evidence still matches
+  -> use it as the starting point
+  -> preserve established examples
+  -> continue the named unresolved edge
+
+STALE BUT TRACEABLE
+  a newer source/PR/current-entry update has superseded part of this explanation
+  -> do not rebuild from old prose
+  -> follow the explicit newer reference
+  -> read the reasoned delta / changed examples
+  -> preserve unaffected prior conclusions
+
+CONTRADICTED / UNRESOLVED
+  current source materially disagrees and no reasoned superseding path is named
+  -> hold only the dependent interpretation
+  -> ground the contradiction before refining that part
+~~~
+
+The purpose of a stale entry is therefore still useful when it carries a trustworthy forward pointer.
+
+~~~text
+STALE != USELESS
+STALE + EXPLICIT SUCCESSOR/PR + REASONED DELTA
+  -> TRACE FORWARD
+
+NEW CHAT
+  != RESTART THE DESIGN
+~~~
+
+When this project evolves, prefer updating this current entry or naming the exact successor PR/source
+that carries the reasoned update. Do not leave several fragments all speaking as if they are independently
+current.
+
 ## Established exemplars inherited before extending the language
 
 The Debug Menu specimen is not semantically isolated. Before inventing a noun, class, family or
