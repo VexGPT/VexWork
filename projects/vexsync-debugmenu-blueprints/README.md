@@ -3822,3 +3822,510 @@ persistence / convergence semantics merely to populate the UI.
 
 This VexSync lane remains the reasoning/source context for the Origin Walk; PR #155 is the current
 VexBoard realization of the workspace experience.
+
+
+## Current consolidated ThemeMode circuit — first complete Origin lap
+
+**Currentness:** `CURRENT_WORKING_MODEL`. This section supersedes older wording in this file where the
+same responsibility was described through `Persist`, `Preserve`, `Recover`, `Present`,
+`Remembered`, `Found`, `Stale`, `Interrupted`, `Superseded`, or `Committed` language.
+Those earlier episodes remain useful causal history; they are not the preferred current vocabulary.
+
+The Walk has now crossed one complete circuit:
+
+~~~text
+human Control
+-> State-dependent Act
+-> Behavior
+-> Effect / async execution
+-> durable Family storage
+-> stored observation
+-> bounded convergence / reconciliation
+-> CURRENT semantic State
+-> Projection
+-> human-visible UI
+~~~
+
+### ThemeMode State
+
+The current State vocabulary is:
+
+~~~text
+ThemeMode
+  NOT_SET
+  Light
+  Dark
+~~~
+
+`NOT_SET` is a real semantic State because it can change Behavior and Projection. It is not a nullable
+implementation accident and it is not silently equal to Light, Dark, or a default.
+
+~~~text
+NOT_SET
+!= null
+!= Failure
+!= default ThemeMode
+!= ThemeMode.System
+~~~
+
+A future reusable target representation may provide `NOT_SET` through foundation State machinery rather
+than manually redeclaring it in every Family, but the exact Kotlin/source form remains downstream.
+
+### FamilyStore — minimum durable responsibility
+
+The current candidate is:
+
+~~~text
+FamilyStore<Family>
+
+  ObservableState
+  Get()
+  Save(State)
+  Forget()
+~~~
+
+For ThemeMode:
+
+~~~text
+FamilyStore<ThemeMode>
+
+  ObservableState
+  Get()
+  Save(ThemeMode.<State>)
+  Forget()
+~~~
+
+The meanings are deliberately small:
+
+~~~text
+Save(State)
+  make this Family State durable
+
+Get()
+  immutable snapshot of the same stored truth
+
+ObservableState
+  ongoing observation of the same stored truth
+
+Forget()
+  make the durable Family State NOT_SET
+~~~
+
+`Get()` and `ObservableState` are two access forms over one stored truth; they must not become two
+independent backing truths.
+
+`Update` is deliberately held. Ordinary form/draft mutation can construct a new immutable State and
+`Save` it. A generic atomic read-modify-write operation is earned only when a real consumer needs that
+responsibility and no stronger domain verb owns it.
+
+### Current State remains semantic, not storage-owned
+
+The SCAE/current State owner and FamilyStore answer different questions:
+
+~~~text
+CURRENT semantic State
+  what is true now for Behavior / Projection
+
+FamilyStore durable State
+  what has been saved for continuity
+~~~
+
+Therefore temporary divergence is legitimate:
+
+~~~text
+CURRENT ThemeMode = Dark
+stored ThemeMode  = Light
+
+while Save(Dark) is still completing
+~~~
+
+The UI does not observe FamilyStore directly.
+
+~~~text
+FamilyStore.ObservableState
+-> Connection / reconciliation boundary
+-> admit<State>() when earned
+-> CURRENT semantic State
+-> Projection
+-> UI
+~~~
+
+Storage observation is reality input; it is not itself a UI decision.
+
+### SCAE two-scope async model
+
+The Walk now uses two temporal scopes.
+
+Immediate SCAE disposition:
+
+~~~text
+on(...)
+  .stay()
+
+or
+
+on(...)
+  .admit<State>()
+~~~
+
+`.stay()` means no immediate State transition at this decision point. It does not mean the Effect ended.
+
+`.admit<State>()` means this State is admitted immediately at this decision point.
+
+Later async result consequence:
+
+~~~text
+begin(...) {
+  operation(...)
+    .results {
+      Success {
+        admit<State>()   // only when this later result changes State
+      }
+
+      Failure {
+        // no admit => no additional State consequence
+      }
+    }
+}
+~~~
+
+A later `admit<State>()` is a new State emission back into the rightful State owner, not a second
+return from the original `on(...)`.
+
+A result branch does not need a redundant `stay()` merely to say that no later State change occurs.
+
+### Save result surface
+
+The current common operation-result vocabulary is intentionally:
+
+~~~text
+Success
+Failure
+~~~
+
+Do not promote cancellation/interruption/currentness causes into peer semantic result branches unless a
+real consumer needs different Behavior for them.
+
+If pending execution is replaced or cancelled **before `Save` begins**, then `Save` produced no result.
+That is execution/lifetime detail, not `Save Failure`.
+
+### begin execution modes
+
+Repeated async episodes have now earned two visible execution relationships:
+
+~~~text
+begin(mode = Replaceable) { ... }
+
+begin(mode = Sequenced) { ... }
+~~~
+
+`Replaceable`:
+
+~~~text
+a newer same-lane episode
+may replace older pending/cancellable work
+when only the newest intended outcome matters
+~~~
+
+`Sequenced`:
+
+~~~text
+every accepted episode matters
+and must retain execution order
+~~~
+
+These are not low-level coroutine/thread flags:
+
+~~~text
+Replaceable != transaction rollback
+Sequenced  != database transaction
+shared lane != shared OS thread
+~~~
+
+Only these two modes are currently earned. `Concurrent` or other modes remain held until a real consumer
+requires them.
+
+### Family identity supplies the execution lane
+
+For FamilyStore operations:
+
+~~~text
+SAME FAMILY
+-> SAME FamilyStore<Family>
+-> SAME execution lane
+~~~
+
+Source-code location does not create another lane.
+
+Thus:
+
+~~~text
+state<ThemeMode.Light>
+  -> Save(ThemeMode.Dark)
+
+state<ThemeMode.Dark>
+  -> Save(ThemeMode.Light)
+
+Forget(ThemeMode)
+~~~
+
+all coordinate through the same ThemeMode FamilyStore lane.
+
+The `begin(mode = ...)` choice remains authored visibly at the Behavior episode. Different State paths may
+intentionally choose different modes on the same lane.
+
+Current mixed-mode rule candidate:
+
+~~~text
+existing Replaceable pending work
++ newer same-lane work
+-> existing pending work may be replaced
+
+existing Sequenced work
++ newer same-lane work
+-> existing work remains
+-> newer work waits behind it
+~~~
+
+Do not mint `queueId`, `jobId`, `coroutineId`, or another execution identity for this common case.
+
+### Immediate and durability-gated forms
+
+Immediate/live ThemeMode:
+
+~~~text
+state<ThemeMode.Light> {
+  on(
+    act = SelectDark,
+
+    effect = begin(mode = Replaceable) {
+      Save(ThemeMode, ThemeMode.Dark)
+        .results {
+          Success { }
+          Failure { }
+        }
+    }
+  )
+  .admit<ThemeMode.Dark>()
+}
+~~~
+
+Human reading:
+
+~~~text
+Dark becomes CURRENT now.
+Save Dark asynchronously.
+A newer ThemeMode save may replace pending replaceable work.
+The Save result does not itself change ThemeMode.
+~~~
+
+Durability-gated form when a later specimen requires it:
+
+~~~text
+state<SomeState> {
+  on(
+    act = CommitNext,
+
+    effect = begin(mode = Sequenced) {
+      Save(SomeFamily, NextState)
+        .results {
+          Success {
+            admit<NextState>()
+          }
+
+          Failure {
+          }
+        }
+    }
+  )
+  .stay()
+}
+~~~
+
+Human reading:
+
+~~~text
+stay in the current State now
+-> perform the required Save
+-> only Success emits the later admission
+~~~
+
+Optimistic rollback remains an advanced explicit recipe rather than part of the ordinary Save grammar,
+because a late Failure cannot blindly restore an old State after newer semantic activity.
+
+### NOT_SET + System appearance — bounded convergence
+
+ThemeMode now has two independently changing inputs to effective State:
+
+~~~text
+stored ThemeMode override
++
+System appearance
+-> effective ThemeMode
+~~~
+
+Current law:
+
+~~~text
+stored Light
+-> effective Light
+
+stored Dark
+-> effective Dark
+
+stored NOT_SET
++ System Light
+-> effective Light
+
+stored NOT_SET
++ System Dark
+-> effective Dark
+~~~
+
+Therefore:
+
+~~~text
+saved override exists
+-> saved override governs
+
+saved override = NOT_SET
+-> mapped System appearance governs
+~~~
+
+The FamilyStore may remain `NOT_SET` while CURRENT semantic ThemeMode is Light or Dark.
+
+Example:
+
+~~~text
+stored ThemeMode = NOT_SET
+System appearance = Dark
+-> effective ThemeMode = Dark
+-> admit<ThemeMode.Dark>()
+-> Projection / UI renders Dark
+
+FamilyStore remains NOT_SET
+~~~
+
+While the stored override remains `NOT_SET`, later System appearance changes may produce another
+effective ThemeMode admission.
+
+An explicit human selection:
+
+~~~text
+SelectDark
+-> admit<ThemeMode.Dark>()
++ Save(ThemeMode.Dark)
+~~~
+
+creates a durable override, after which System appearance no longer governs effective ThemeMode.
+
+`Forget(ThemeMode)` returns durable truth to `NOT_SET`; System appearance then governs again.
+
+This relationship now has genuine Convergence pressure because multiple independently changing truths
+produce one effective ThemeMode. The implementation may be a simple `when`/switch; Convergence is the
+canonical owner of that relationship, not a ban on ordinary target code.
+
+Exact promotion to a canonical ThemeMode ConvergenceRelay remains contingent on grounding the reusable
+SystemAppearance State owner. Do not create a Relay merely because a switch statement exists.
+
+### Connection and Convergence boundaries
+
+The current Vex Behavior foundation supplies the reality boundary:
+
+~~~text
+provider/runtime
+<-> Connection
+<-> Behavior Family / Projection
+~~~
+
+A ThemeMode Store Connection may:
+
+~~~text
+observe FamilyStore.ObservableState
+realize Save / Get / Forget
+retain live-process between-state/currentness data when needed
+reconcile observations back into semantic State
+~~~
+
+`Pending` is ordinary Connection-owned data when admitted intent and provider/store acknowledgement
+differ in time; it is not a fifth SCAE role or a new universal architecture object.
+
+ConvergenceRelay is reserved for the bounded relationship among independently-owned complete truths:
+
+~~~text
+stored ThemeMode override
++ SystemAppearance State
+-> effective ThemeMode
+~~~
+
+It does not absorb unrelated ThemeMode Behavior, UI, storage mechanics or other Families merely to reduce
+file count.
+
+### Minimum-complete removal checkpoint
+
+Current surviving responsibilities:
+
+~~~text
+ThemeMode State
+  NOT_SET / Light / Dark
+
+Control / Act / Behavior
+  human interaction law
+
+admit / stay
+  immediate State disposition
+
+begin
+  later-completing Effect scope
+
+Replaceable / Sequenced
+  repeated async episode relationship
+
+FamilyStore
+  Save / Get / Forget / ObservableState
+  one durable truth + one Family execution lane
+
+Connection
+  provider/store realization + currentness/reconciliation boundary
+
+Convergence
+  stored override + System appearance -> effective ThemeMode
+
+Projection
+  CURRENT ThemeMode -> human-visible UI
+~~~
+
+Current discarded/held vocabulary:
+
+~~~text
+PersistThemeMode                 superseded by Save(...)
+Preserve / Recover              discovery wording; Save/Get are preferred
+Present / Remembered / Found    unnecessary State renaming
+Stale / Interrupted /
+Superseded / Committed          not normal Save result branches
+latestAfterSettle keyword       not currently required
+FeatureStore                    too broad for simple Family storage
+Update                          held until atomic read-modify-write pressure
+generic pending manager         not earned
+queue/job/coroutine IDs         not earned for one FamilyStore lane
+~~~
+
+### Next source frontier
+
+The discovery surface is now sufficiently complete to stop inventing more persistence vocabulary.
+
+Next work should:
+
+~~~text
+1. pressure the full circuit as one construction-grade Origin specimen;
+2. verify the minimum-complete/removal result against the canonical VexLife Blueprint source boundary;
+3. ground the reusable SystemAppearance State owner before canonizing ThemeMode ConvergenceRelay;
+4. separate portable Origin meaning from Android target mechanics;
+5. update the VexBoard ThemeMode patient-zero projection to show the completed layered circuit;
+6. only then form the downstream Android realization/refactor.
+~~~
+
+Do not jump to another Feature merely to prove reuse before this ThemeMode circuit completes its first
+canonical Origin roundtrip.
+
+<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][THEMEMODE][FULL-CIRCUIT] -->
