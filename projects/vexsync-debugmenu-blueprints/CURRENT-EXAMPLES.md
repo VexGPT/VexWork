@@ -3801,3 +3801,136 @@ another lifetime owner
 Then walk that exact pressure and let the required owner emerge.
 
 <!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][EFFECT-OPTIONAL][CAUSAL-EPISODE] -->
+
+
+## Causal episode — class-only admission recreated hidden runtime work
+
+**Currentness:** `CURRENT_WORKING_MODEL`.
+
+### Circumstance
+
+After removing the fake ThemeMode Save from Light/Dark Toggle, the Act looked like:
+
+~~~text
+Light + Toggle
+-> Effect = none
+-> admit State.Dark::class
+~~~
+
+The UI/session walk then asked a practical question:
+
+> What exact value does VexLifeSession assign as the new current semantic State?
+
+The Act did not contain it.
+
+### Candidate A — let the session map State kinds back to values
+
+~~~text
+State.Dark::class -> State.Dark
+State.Light::class -> State.Light
+~~~
+
+This works for patient-zero singleton objects.
+
+But the mapping becomes false abstraction as soon as State carries flavor:
+
+~~~text
+Song(id = A, position = 10)
+Song(id = B, position = 90)
+
+both
+-> Song::class
+~~~
+
+A class token destroys the difference.
+
+The session would then need a factory/registry plus inputs the Behavior already discarded.
+
+Rejected.
+
+### Candidate B — borrow the Effect's Save value
+
+The earlier reference effectively did:
+
+~~~text
+admitted State kind
++ Save(State.Dark).state
+-> concrete admitted State.Dark
+~~~
+
+That works only because the old POC made every Act carry Save.
+
+It couples semantic State admission to an Effect operation that may not exist.
+
+Rejected.
+
+### Surviving model — carry the State value at the semantic source
+
+~~~text
+Light + Toggle
+-> Act
+-> Admit(State.Dark)
+
+Song(...) + Control
+-> Act
+-> Admit(Song(id, position))
+~~~
+
+No reconstruction layer is needed.
+
+Stay remains different:
+
+~~~text
+Stay
+-> current State value remains current
+-> no destination value exists
+~~~
+
+Later result admission uses the same principle when the concrete later State is already known:
+
+~~~text
+Success
+-> Admit(State.Dark)
+~~~
+
+Dynamic provider-result payload mapping remains open until a real result-bearing consumer earns it.
+
+### Why this reduces runtime architecture
+
+The session no longer needs to answer:
+
+~~~text
+How do I construct the State kind Behavior selected?
+~~~
+
+It receives the semantic value directly.
+
+That makes the current production boundary smaller:
+
+~~~text
+read current State
+-> Behavior.resolve(current, Control)
+-> Act.immediateDisposition
+-> Stay
+   or
+-> Admit(nextState)
+-> publish nextState
+~~~
+
+No generic State factory.
+No Family registry.
+No destination decoder.
+
+### Placement consequence
+
+Current production Behavior precedent is feature-local under `app/`; the generic
+`architecture/behavior` module owns the grammar, not ThemeMode product semantics.
+
+The theme renderer under `ui/` owns target treatment, not semantic truth.
+
+The session already owns app-lifetime currentness.
+
+So the next source step is a **bounded product placement + session integration**, not another generic
+foundation type.
+
+<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][CONCRETE-ADMISSION][CAUSAL-EPISODE] -->

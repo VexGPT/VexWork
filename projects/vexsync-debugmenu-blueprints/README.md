@@ -5872,3 +5872,210 @@ DebugMenuScreen.kt
 A production mutation needs its own current source admission/ownership.
 
 <!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][SESSION-CURRENTNESS][OPTIONAL-EFFECT] -->
+
+
+## Origin-Walk refinement — admitted State is a value, not a destination class
+
+**Currentness:** `CURRENT_WORKING_MODEL`, grounded against VexLife-Android PR #192 head
+`53af104259e16a9e44f8b6702e86bafdfcf81750`.
+
+Removing the unearned Effect from the ordinary Light/Dark Toggle exposed one more hidden assumption.
+
+The earlier V2 terminal:
+
+~~~text
+admit<State.Dark>()
+-> State.Dark::class
+~~~
+
+did not carry the concrete semantic truth that the session would need to publish.
+
+That had been masked by the effectful specimen because the reference could borrow:
+
+~~~text
+Save(State.Dark).state
+~~~
+
+as the concrete admitted value.
+
+Once the ordinary Toggle correctly has no Effect, that accidental source disappears.
+
+### The removal test
+
+Suppose Behavior says:
+
+~~~text
+CURRENT Light + Toggle
+-> admit Dark
+~~~
+
+If the Act carries only:
+
+~~~text
+Dark::class
+~~~
+
+then another layer must add:
+
+~~~text
+Dark::class
+-> some registry / factory / switch
+-> State.Dark
+~~~
+
+Ask what truth that new translator owns.
+
+It owns none.
+
+Behavior already knew the exact semantic State it meant.
+
+So the class-only destination fails the same removal pressure that removed the intermediate Act value:
+it creates a second structure merely to reconstruct meaning that was already present at the semantic
+source.
+
+### Current V2 shape
+
+Immediate admission now carries the concrete State value:
+
+~~~kotlin
+state<State.Light> {
+    on(
+        control = Control.Toggle,
+    ).admit(
+        State.Dark,
+    )
+}
+~~~
+
+Later result admission also carries a concrete State value:
+
+~~~kotlin
+success {
+    admit(
+        State.Dark,
+    )
+}
+~~~
+
+The distinction is now:
+
+~~~text
+stay()
+  current State value remains authoritative
+  no destination value
+
+admit(nextState)
+  Act carries the concrete next semantic State
+
+Success/Failure admit(nextState)
+  Result carries the concrete later semantic State
+~~~
+
+This matters for more than ThemeMode singleton objects.
+
+A future data-bearing State such as:
+
+~~~text
+Song(id, position)
+~~~
+
+must not collapse to:
+
+~~~text
+Song::class
+~~~
+
+and force Runtime to recreate the lost ID/position.
+
+### What remains deliberately unresolved
+
+The current result grammar can carry a concrete later State that is known when the Behavior is authored.
+
+It does **not** yet solve:
+
+~~~text
+provider returns runtime payload
+-> derive a new State value from that payload
+~~~
+
+No class token hides that missing contract.
+
+When a real consumer needs result-payload mapping, walk that pressure directly.
+
+### Production placement constraint
+
+Current Android source gives a useful placement map:
+
+~~~text
+architecture/behavior
+  generic reusable Behavior grammar
+
+app/.../vexstream/playback
+app/.../vexstream/queue
+  product Behavior families live beside product semantics
+
+ui/VexLifeTheme.kt
+  target-native Compose color + Android system-bar realization
+
+VexLifeSession
+  app/session lifetime composition
+  current live ThemeMode truth
+~~~
+
+So the production ThemeMode semantic Family should not be placed inside `architecture/behavior` merely
+because the POC was proven there.
+
+And `VexLifeTheme.kt` should not become the semantic owner merely because it renders the theme.
+
+The exact product package/path remains unselected until production-source admission is available. The
+important placement truth is already clear:
+
+~~~text
+Family semantics
+  belong in product/feature source
+
+Session
+  owns the current app lifetime and composes the live truth
+
+Theme renderer
+  consumes a projection
+
+Debug Menu
+  consumes a projection + emits Control through the existing app-action seam
+~~~
+
+### Smallest production circuit now visible
+
+Without naming an unearned Connection:
+
+~~~text
+production ThemeModeFamily
+  State
+  Control
+  Behavior
+       |
+       | resolve(CURRENT State, Control)
+       v
+Act {
+  optional Effect
+  Stay
+  or
+  Admit(concrete State)
+}
+
+VexLifeSession
+  owns CURRENT State value
+  applies immediate admitted State value
+  projects:
+    isDark -> VexLifeTheme
+    checked -> Debug Menu
+
+Debug Menu action registration
+  AppActions.ToggleDarkMode
+  -> ThemeModeFamily.Control.Toggle
+~~~
+
+This is now a complete enough semantic circuit to form the production implementation once the exact app
+paths are admitted.
+
+<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][CONCRETE-STATE-ADMISSION][PLACEMENT] -->
