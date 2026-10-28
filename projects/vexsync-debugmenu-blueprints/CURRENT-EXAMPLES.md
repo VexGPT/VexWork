@@ -3934,3 +3934,141 @@ So the next source step is a **bounded product placement + session integration**
 foundation type.
 
 <!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][CONCRETE-ADMISSION][CAUSAL-EPISODE] -->
+
+
+---
+
+## Origin-Walk checkpoint — live Family, required Acts, mandatory DisplayState
+
+**Downstream Android proof head:** `711c1e49b83e4e48e3742aff4e2be99ddebabad7`
+
+The ThemeMode walk has now pressure-corrected the V2 entrance and UI-facing ownership shape.
+
+The current Family-rooted model is:
+
+~~~text
+Family
+  State
+  Control
+  DisplayState
+  current
+  acts
+  activate(Control)
+~~~
+
+### Required live Family responsibilities
+
+~~~text
+State
+  semantic truth vocabulary
+
+Control
+  semantic request vocabulary
+
+current
+  one CURRENT semantic State owned by the live Family
+
+acts
+  required State + Control -> Act graph
+
+activate(Control)
+  foundational entrance
+  -> Family re-reads its own CURRENT State
+  -> selects the authored Act
+  -> applies immediate stay/admit
+
+DisplayState
+  mandatory UI-facing ownership field
+  -> foundation default = Empty(current)
+  -> richer Family-scoped cases may override when earned
+  -> always preserves underlying semantic State
+~~~
+
+The caller does not supply State to activation. This preserves the stale-render invariant and removes
+the public `Behavior.resolve(current, control)` vocabulary from the UI/runtime-facing path.
+
+### Act stays one causal episode
+
+The current authoring direction keeps the whole Act inside one `on(Control) { ... }` block:
+
+~~~text
+state<Light> {
+  on(Toggle) {
+    admit(Dark)
+  }
+}
+
+state<NotSet> {
+  on(Toggle) {
+    stay()
+
+    begin(mode = Sequenced) {
+      Save(Dark)
+        .results {
+          Success {
+            admit(Dark)
+          }
+
+          Failure {
+          }
+        }
+    }
+  }
+}
+~~~
+
+No new `immediate` or `realize` language is introduced.
+
+~~~text
+stay/admit at on-block root
+  = immediate semantic disposition
+
+begin(mode = Replaceable | Sequenced)
+  = later-running Effect episode
+
+Success / Failure
+  = operation result branches
+
+admit inside a result
+  = later semantic State admission
+~~~
+
+### DisplayState boundary
+
+DisplayState is required infrastructure but is not another admitted SCAE State.
+
+~~~text
+Act
+-> admit(State)
+-> Family.current
+
+Family.current
+-> Family.displayState
+-> UI
+~~~
+
+The minimum default is:
+
+~~~text
+DisplayState.Empty(current)
+~~~
+
+A Family may expose richer Family-scoped presentation cases such as Active / Inactive / Transitioning
+when pressure earns them. Those categories are not universalized from ThemeMode alone.
+
+This keeps source ownership discoverable for fresh instances while avoiding detached feature-specific
+display helper classes.
+
+### Next Origin pressure
+
+The next question is now intentionally provider-facing:
+
+> When a selected Act contains begin(...) work against a third-party/rightful source of truth, what
+> smallest connection/execution relationship lets that provider truth return into the same Family
+> circuit without splitting causality or making the provider/store itself the semantic State owner?
+
+Media3-backed VexStream Playback is comparison evidence because it already has a real provider truth,
+connection/currentness, pending intent, and UI-facing DisplayState. It is evidence to pressure the V2
+shape, not a template to copy wholesale.
+
+<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][LIVE-FAMILY][DISPLAY-STATE][NEXT-PROVIDER-PRESSURE] -->
