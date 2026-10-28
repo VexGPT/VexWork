@@ -6746,3 +6746,63 @@ Sequenced lane custody
 Production Playback remains unchanged.
 
 <!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][PROVIDER-RECONCILED-ADMISSION] -->
+
+
+---
+
+## Origin-Walk review refinement — projectability and serialized admission
+
+**Downstream Android #192 head:** `b566b5b33de034fbdb32b152f6a4b4b9b4bc59c3`
+
+The latest review was accepted with one important clarification.
+
+### DisplayState removal test
+
+The reason for the mandatory DisplayState role is not that `Empty(current)` adds semantic truth.
+
+~~~text
+remove DisplayState role
+-> State still exists
+-> guaranteed Family -> human/UI/VexBoard projectable-output relationship disappears
+~~~
+
+Therefore:
+
+~~~text
+mandatory DisplayState role
+!= mandatory extra display truth
+
+Empty(current)
+= explicit "no richer display classification earned" projection
+~~~
+
+Future non-visual Family pressure may still challenge this, but the current rationale is
+discoverability/projectability rather than duplication.
+
+### Next live-runtime pressure
+
+Payload Control materialization and provider-reconciled Family admission now have candidate paths.
+The unresolved currentness question is narrower:
+
+~~~text
+UI activation
+provider reconciliation
+older async Operation result
+future Store/repository observation
+        |
+        v
+several lawful semantic-admission causes
+        |
+        v
+what owns exact ordering/currentness?
+~~~
+
+`@Volatile` is visibility only.
+
+No serialization mechanism is chosen yet. The next pressure should first make one real competing
+admission race executable, then reject mechanisms that:
+- allow stale completion to overwrite newer semantic intent;
+- steal provider/repository truth ownership into Family;
+- centralize unrelated feature responsibility merely to serialize State.
+
+<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][PROJECTABILITY][SERIALIZED-ADMISSION] -->
