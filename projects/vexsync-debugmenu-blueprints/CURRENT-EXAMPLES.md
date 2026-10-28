@@ -4661,3 +4661,51 @@ admission race executable, then reject mechanisms that:
 - centralize unrelated feature responsibility merely to serialize State.
 
 <!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][PROJECTABILITY][SERIALIZED-ADMISSION] -->
+
+
+---
+
+## Origin-Walk law — ecosystem-aware removal
+
+**Downstream Android #192 head:** `4ebfc19dd498824110ceb31173e9b04a6de16ab6`
+
+The DisplayState review clarified a reusable Origin rule:
+
+~~~text
+local information redundancy
+!=
+relationship redundancy
+~~~
+
+A Family participates in a larger fractal application ecosystem. Removal therefore asks not only
+whether a local wrapper contains unique data, but whether deleting its role erases a designated
+ownership coordinate that UI, VexBoard, widgets, diagnostics or later consumers would otherwise have
+to reinvent.
+
+For DisplayState:
+
+~~~text
+Empty(current)
+  -> no extra semantic truth
+
+DisplayState role
+  -> canonical Family-owned projectable-output coordinate
+~~~
+
+`Empty(current)` is therefore a structural zero: no richer display classification has been earned,
+while the location of outward/projectable meaning remains explicit.
+
+Ecosystem-aware removal sequence:
+
+~~~text
+1. What local information disappears?
+2. What relationship disappears?
+3. Which larger/fractal consumers depended on it?
+4. Would removal force downstream reinterpretation/reconstruction?
+5. If nothing meaningful is lost anywhere in that ecosystem, remove it.
+~~~
+
+This rule does not justify preserving arbitrary wrappers. It preserves only relationships whose
+removal would make ownership inferential again.
+
+<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][ECOSYSTEM-AWARE-REMOVAL] -->
