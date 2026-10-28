@@ -4433,3 +4433,56 @@ Playback / Select / Seek remains the preferred next pressure because it exercise
 currentness questions together.
 
 <!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][CURRENTNESS-BOUNDARY] -->
+
+
+---
+
+## Origin-Walk executable evolution — third Playback pressure class
+
+**Downstream Android #192 head:** `20dd24b72fa07ea26748dc952783ea0607db995b`
+
+The V2 Origin Walk now preserves its evolution through three deliberately different executable roles:
+
+~~~text
+1. VexBehaviorV2Test
+   ThemeMode patient-zero semantics/runtime
+
+2. VexBehaviorUiRoundTripReferenceTest
+   activation-currentness / stale-render reference
+
+3. VexBehaviorV2PlaybackOriginPressureTest
+   Playback edge pressure
+   NOT a confirmed V2 Playback template
+~~~
+
+The third class consumes real current Playback semantics from the app package rather than copying
+provider/pending/Seek behavior into the Behavior foundation.
+
+It preserves these pressure facts:
+
+~~~text
+provider observation
+-> must reconcile with newer local intent before semantic truth changes
+
+payload Seek
+-> must carry exact media identity / queue occurrence / position
+-> must re-check current provider availability
+
+Control availability
+-> derives from current semantic/provider capability
+-> must not be duplicated in UI merely because activation can return null
+
+current V2 Act graph
+-> matches concrete Control values
+-> exact data-class payload equality is therefore insufficient
+   for arbitrary runtime Control.Seek(request) authoring
+~~~
+
+A passing pressure test means the requirement remains executable and visible. It does not mean V2
+supports the richer feature yet, and it does not authorize production Playback refactoring.
+
+A later candidate should earn a new reference layer only when these constraints can be expressed
+without fake Controls, generic setCurrent(...), provider-truth theft, duplicated availability or
+payload loss.
+
+<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][PLAYBACK-PRESSURE-REFERENCE] -->
