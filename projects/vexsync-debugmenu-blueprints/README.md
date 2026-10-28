@@ -5233,7 +5233,7 @@ Current downstream proof:
 
 ~~~text
 VexLife-Android PR #192
-head = 3ea319bd40c0d217e88ac379365823dca16bfd9f
+head = e17aaa2920d329f9ebf17a6750e21dcb21d3e454
 ~~~
 
 <!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][FAMILY-ROOT][BUILDER-INFERENCE] -->
