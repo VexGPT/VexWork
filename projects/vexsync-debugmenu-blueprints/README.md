@@ -4580,3 +4580,83 @@ The next canonical design pass should therefore pressure, in this order:
 This ordering preserves the semantic circuit while minimizing new source surface.
 
 <!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][SCHEMA-PRESSURE][MINIMUM-COMPLETE] -->
+
+
+## Android Kotlin proof — Behavior V2 sibling formed
+
+**Currentness:** `CURRENT_DOWNSTREAM_PROOF_CANDIDATE`.
+
+The completed ThemeMode circuit has now produced two bounded Android proofs:
+
+~~~text
+VexLife-Android PR #188
+  ThemeMode typed end-state:
+    NotSet
+    Light
+    Dark
+
+VexLife-Android PR #192
+  Behavior V2 two-scope Kotlin proof
+~~~
+
+PR #192 deliberately does **not** mutate the current V1 Behavior contract in place.
+
+~~~text
+V1
+  current production-used immediate SCAE graph
+
+V2
+  sibling experiment
+  reuses V1 immediate graph / Control semantics
+  adds:
+    begin(mode = Replaceable | Sequenced)
+    Success / Failure result scopes
+    optional later admit<State>()
+~~~
+
+The focused V2 proof uses the same `SaveDark` Effect in both:
+
+~~~text
+IMMEDIATE
+  admit Dark now
+  + Replaceable Save
+
+DURABILITY-GATED
+  stay now
+  + Sequenced Save
+  + Success { admit Dark later }
+~~~
+
+This proves in Kotlin that Effect identity does not have to own admission timing.
+
+The V2 test family also implements both:
+
+~~~text
+VexBehaviorFamily.State<ThemeFamily>
++
+Relay VexState<ThemeState>
+~~~
+
+through a test-only Relay dependency. Production Behavior remains decoupled from Relay.
+
+The Relay `VexState` source itself was not edited because active Android PR #77 already owns that exact
+foundation membrane. The v2 sibling therefore proves compatibility without creating overlap or silently
+rewriting Relay ownership.
+
+Current proof boundary:
+
+~~~text
+KOTLIN SOURCE FORMED
+FOCUSED TESTS AUTHORED
+DCO / AUTHOR VERIFIED
+
+GRADLE EXECUTION
+  not yet proved in the current tool environment
+
+CANONICAL VEXLIFE PORTABLE ACCEPTANCE
+  not claimed
+~~~
+
+This downstream proof is evidence for the canonical-source design pass; it is not a competing Origin owner.
+
+<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][ANDROID][BEHAVIOR-V2-PROOF] -->
