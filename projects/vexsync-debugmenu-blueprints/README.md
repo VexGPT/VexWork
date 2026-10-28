@@ -4853,3 +4853,117 @@ head = 5d90497585ec545e1b452cdfc421c1da8a5f0605
 ~~~
 
 <!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][LANGUAGE-ALIGNMENT][KOTLIN] -->
+
+
+## Origin-Walk correction — Save itself is the operation
+
+**Currentness:** `CURRENT_PROJECT_RULE_REINFORCEMENT`.
+
+A second review of the downstream Kotlin proof found a deeper drift than naming alone.
+
+The Origin Walk had already established:
+
+~~~text
+effect = begin(mode = Replaceable) {
+  Save(ThemeMode, ThemeMode.Dark)
+    .results {
+      Success { }
+      Failure { }
+    }
+}
+~~~
+
+The first Kotlin V2 prototype incorrectly transformed that into:
+
+~~~text
+begin(...)
+-> operation(ThemeEffect.SaveDark)
+~~~
+
+That changed two established meanings:
+
+~~~text
+1. Save(...) was already the operation.
+2. ThemeMode.Dark was already the State payload.
+~~~
+
+Creating `ThemeEffect.SaveDark` replaced the earned generic FamilyStore operation with a feature-local
+effect synonym.
+
+Current Kotlin proof is corrected to:
+
+~~~kotlin
+vexBehaviorV2Blueprint<
+    ThemeModeFamily,
+    ThemeMode,
+    ThemeModeAct
+> {
+    state<ThemeMode.Light> {
+        on(
+            act = ThemeModeAct.SelectDark,
+            effect = begin(
+                mode = VexBehaviorV2BeginMode.Replaceable,
+            ) {
+                save(
+                    ThemeMode.Dark,
+                ).results {
+                    success { }
+                    failure { }
+                }
+            },
+        ).admit<ThemeMode.Dark>()
+    }
+}
+~~~
+
+Mapping:
+
+~~~text
+Origin:
+  Save(ThemeMode, ThemeMode.Dark)
+
+Kotlin:
+  ThemeModeFamily is fixed by the generic Behavior scope
+  + save(ThemeMode.Dark)
+
+=> same Family + State meaning
+=> no synthetic SaveDark identity
+~~~
+
+The SCAE relationship is now:
+
+~~~text
+Effect
+  = begin(...)
+
+operation inside Effect
+  = Save(State)
+
+Save result
+  = Success / Failure
+
+State timing
+  = immediate stay/admit
+    plus optional later admit from a result
+~~~
+
+Rule:
+
+~~~text
+AN ORIGIN OPERATION ALREADY EXISTS
+-> target code realizes that operation
+
+DO NOT
+-> wrap it in a generic "operation" noun
+-> rename it as a feature-local Effect
+-> replace its State payload with a new identity
+~~~
+
+Current Android proof coordinate:
+
+~~~text
+VexLife-Android PR #192
+head = 17240817708f74f140b2439ebf898052601c5487
+~~~
+
+<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][SAVE][TARGET-MAPPING] -->
