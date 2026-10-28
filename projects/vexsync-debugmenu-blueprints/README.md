@@ -6420,3 +6420,100 @@ Family
 The provider must not become the Family semantic State owner merely because it owns external reality.
 
 <!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][FAMILY-STORE][BEGIN-EXECUTION][ACCOUNTANT] -->
+
+
+---
+
+## Origin-Walk stability boundary — preserve core, reopen runtime
+
+**Downstream Android #192 head:** `8df0c66ce2ea8a9d77c7a736648a8347a002f311`
+
+A fresh-instance review against ThemeMode plus existing VexStream, Maps and Conversation source now
+distinguishes the V2 architecture that is safe to preserve from the runtime/generalization that still
+needs pressure.
+
+### Preserve as stable direction
+
+~~~text
+Family as discoverable semantic root
+
+Family.State
+Family.Control
+required minimum Family.DisplayState role
+
+Act = CURRENT State + Control scenario
+
+concrete State admission
+
+immediate stay/admit
+vs
+later result-scoped consequence
+
+Effect may be absent
+
+begin(mode) = semantic execution phase
+
+Operation = structural work slot under begin
+
+stronger verbs remain visible
+  Save stays Save
+
+one Family accountant witnesses accepted facts
+  logger != truth owner
+
+independently owned complete truths
+  remain Relay / Convergence responsibilities
+~~~
+
+### Refined rather than generalized
+
+DisplayState remains mandatory, but the common display role no longer requires every projection to
+carry the full semantic State. `Empty(current)` remains the default fallback; concrete displays may
+project only bounded UI meaning.
+
+Store remains discoverable from the Family, but is split into:
+
+~~~text
+VexFamilyStore<Family>
+  broad Family-visible storage/custody role
+
+VexFamilyStateStore<Family, State>
+  ThemeMode-style durable State specialization
+  Get
+  ObservableState
+  Save(State)
+  Forget
+~~~
+
+This prevents VexStream media custody, Maps artifacts, or Conversation repositories from being
+reclassified as "Family State persistence" merely for API symmetry.
+
+SharedPreferences' boolean persistence result is now `VexStoreWriteResult`, deliberately narrower
+than a universal Operation-result model.
+
+The Family accountant is an explicit dependency. Tests/previews must explicitly choose a no-op
+accountant rather than receiving one silently.
+
+### Keep OPEN until real consumer pressure
+
+~~~text
+payload-bearing Control
+dynamic State transformation
+external provider observation -> semantic current State
+observable Family/DisplayState output for Compose
+Control availability/projection
+typed Operation-result payload
+multi-instance Family execution identity
+Sequenced lane queue/custody
+provider-affine begin execution
+cross-version durable identity
+privacy-bounded diagnostic payload
+~~~
+
+The current live V2 Family runtime is therefore a locally-owned ThemeMode patient-zero realization of
+the stable authoring language, not proof that Family is the universal current-State owner.
+
+Playback / Select / Seek remains the preferred next pressure because it attacks provider truth,
+payload Control, availability, affinity, reconciliation and UI observation together.
+
+<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][STABILITY-BOUNDARY] -->
