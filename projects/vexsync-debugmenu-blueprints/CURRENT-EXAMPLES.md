@@ -3348,3 +3348,258 @@ RIGHT DEPTH
 The foreground remains recognizable while either side enters depth.
 
 <!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][THEMEMODE][CURRENT-EXAMPLE] -->
+
+
+## Causal episode — the existing app-action seam is the UI -> Family handoff
+
+**Currentness:** `CURRENT_WORKING_MODEL`.
+
+This episode answers the first unresolved UI question from the structural-Act checkpoint:
+
+> What is the smallest truthful UI -> Family boundary in the Android system that already exists?
+
+### Circumstance
+
+The real Debug Menu Toggle already crosses several established Android boundaries:
+
+~~~text
+ToggleElement
+-> ElementIntent.Invoke(ActionKey)
+-> VexRuntime
+-> AppActionRegistrations
+-> DebugMenuScreen feature-local handler
+-> VexLifeSession.toggleDarkMode()
+~~~
+
+At the same time, the V2 Family proof now has:
+
+~~~text
+ThemeModeFamily.Control.Toggle
+ThemeModeFamily.Behavior
+~~~
+
+That creates an apparent duplication:
+
+~~~text
+AppActions.ToggleDarkMode
+vs
+ThemeModeFamily.Control.Toggle
+~~~
+
+The question was whether one should replace the other.
+
+### Current source pressure
+
+The existing UI architecture gives each coordinate a different job.
+
+`DebugMenuScreen.DarkMode` is the stable UI element identity. The Journey specimen addresses that
+element directly.
+
+`ActionKey` is documented as the stable application-action identifier for an effect owned outside the
+cell. `AppActionRegistrations` uses it to enforce one handler owner and to prove that every registered
+Screen `Invoke` has coverage.
+
+`VexRuntime` validates/logs the element interaction before interpreting its intent. For `Invoke`, it
+forms an `AppActionRequest` and dispatches through the current immutable registration snapshot.
+
+The actual ThemeMode effect owner is still feature-local:
+
+~~~text
+DebugMenuScreen.appActionRegistrations
+  AppActions.ToggleDarkMode
+  -> toggleDarkMode()
+~~~
+
+So the app action is not the effect owner even today.
+
+### Candidate A — collapse AppAction into Family Control everywhere
+
+A tempting shape is:
+
+~~~text
+DebugMenuScreen.DarkMode
+-> ThemeModeFamily.Control.Toggle
+~~~
+
+directly in the generic Element layer.
+
+That would make the Elements / generic runtime boundary know Family Control types or require a new
+generic heterogeneous Control carrier.
+
+No current problem requires that coupling.
+
+It would also bypass or recreate responsibilities currently supplied by:
+
+~~~text
+ActionKey identity
+AppActionRegistrations one-owner validation
+Invoke coverage
+generic VexRuntime dispatch
+~~~
+
+So this candidate removes a small one-to-one mapping by widening a lower-level shared boundary.
+
+It is not the minimum-complete correction.
+
+### Candidate B — preserve both and invent a translation registry
+
+Another possible response is:
+
+~~~text
+ActionKey
+-> global ActionToFamilyControlRegistry
+-> Family Control
+~~~
+
+That adds a second routing/ownership map beside `AppActionRegistrations`.
+
+The current feature has no consumer that needs such a registry independently.
+
+~~~text
+EXISTING FEATURE-LOCAL REGISTRATION
+already knows:
+  which ActionKey arrived
+  which feature owns it
+  which narrow dependency realizes it
+~~~
+
+Adding another registry would duplicate the handoff rather than clarify it.
+
+### Surviving model — map once at the existing feature owner
+
+The smallest current handoff is:
+
+~~~text
+DebugMenuScreen.DarkMode
+-> AppActions.ToggleDarkMode
+-> DebugMenuScreen appAction registration
+-> ThemeModeFamily.Control.Toggle
+-> live ThemeMode activation/currentness boundary
+~~~
+
+This keeps:
+
+~~~text
+ActionKey
+  as app/UI routing identity
+
+Family.Control
+  as Family semantic request
+~~~
+
+and performs the translation exactly where generic app routing reaches the ThemeMode feature owner.
+
+No new translation framework is introduced.
+
+### The Toggle renderer already protects the stale-render rule
+
+The current native cell is unusually useful evidence:
+
+~~~kotlin
+Switch(
+    checked = checked,
+    onCheckedChange = { handler.activate(element) },
+)
+~~~
+
+The newly rendered Boolean supplied by the widget callback is intentionally not forwarded.
+
+So the existing generic UI already behaves like the Origin currentness invariant wants:
+
+~~~text
+rendered checked State
+  -> presentation only
+
+activation
+  -> element identity / declared intent only
+  -> later currentness read by the rightful semantic owner
+~~~
+
+This means the ThemeMode migration should preserve that property rather than introduce a new
+`activate(renderedState, ...)` shape.
+
+### What the Debug Menu actually needs to observe
+
+Current `DebugMenuScreenContent` supplies:
+
+~~~text
+toggleChecked = DarkMode element && darkTheme
+~~~
+
+and `ToggleElement` itself explicitly does not store checked State.
+
+Therefore the Debug Menu UI's current semantic need is only:
+
+~~~text
+CURRENT ThemeMode
+-> is Dark?
+-> checked Boolean
+~~~
+
+It does not yet require raw Family State as a Composable API.
+
+A future Screen behavior that genuinely needs the semantic State may earn a richer projection. This
+Toggle does not.
+
+### Current conclusion
+
+~~~text
+UI ELEMENT
+  identifies the interacted-with surface
+
+APP ACTION KEY
+  routes that surface to one app-owned effect handler
+
+FAMILY CONTROL
+  is the semantic request entering Family Behavior
+
+FEATURE-LOCAL APP ACTION REGISTRATION
+  is the existing truthful mapping seam between them
+
+UI READ
+  consumes a narrow projection
+
+UI WRITE
+  emits no rendered State snapshot
+
+LIVE THEME OWNER
+  must supply both projection currentness and activation currentness
+~~~
+
+This conclusion resolves the UI boundary without deciding the production Runtime object.
+
+### Reopen conditions
+
+Reopen this boundary if a real consumer proves one of these:
+
+~~~text
+the generic UI system can carry typed Family Controls directly
+without losing its independent action-routing / ownership-coverage role
+
+a non-UI producer requires a shared Control-addressing boundary
+that the feature-local registration cannot represent
+
+the Debug Menu presentation genuinely needs more than the current checked projection
+
+the current app-action layer stops carrying an independently useful routing / ownership responsibility
+~~~
+
+Until then, do not collapse the layers for symmetry and do not add another translator.
+
+### Next unresolved edge
+
+~~~text
+same semantic ThemeMode currentness
+must feed:
+  Debug Menu checked projection
+  application theme projection
+  activation's CURRENT State read
+
+next question:
+  what smallest session-lived owner/mechanism carries those responsibilities
+  and realizes/reconciles Effects truthfully?
+~~~
+
+That is the next Runtime Origin Walk. The reference-test names remain evidence, not production answers.
+
+<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][UI-ACTION-FAMILY-CONTROL][CAUSAL-EPISODE] -->
