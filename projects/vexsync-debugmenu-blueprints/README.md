@@ -5237,3 +5237,60 @@ head = e17aaa2920d329f9ebf17a6750e21dcb21d3e454
 ~~~
 
 <!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][FAMILY-ROOT][BUILDER-INFERENCE] -->
+
+
+## Origin-Walk refinement — Family Behavior receives Control directly
+
+**Currentness:** `CURRENT_DOWNSTREAM_PRESSURE_CANDIDATE`.
+
+Android Kotlin proof now exposes one Family-owned semantic entrance:
+
+~~~text
+Family.Behavior.resolve(
+  CURRENT State,
+  Control
+)
+~~~
+
+while preserving the two semantic equations internally:
+
+~~~text
+Control + CURRENT State
+-> Act
+
+CURRENT State + Act
+-> Effect + immediate State disposition
+~~~
+
+ThemeMode focused proof:
+
+~~~text
+ThemeModeFamily.State.Light
++ ThemeModeFamily.Control.Toggle
+-> ThemeModeFamily.Act.SelectDark
+-> begin(Replaceable) { Save(ThemeModeFamily.State.Dark) }
+-> admit ThemeModeFamily.State.Dark
+~~~
+
+The runtime Connection remains the provider/currentness boundary. It should not have to understand the
+recipe "first ask ControlBlueprint, then ask BehaviorBlueprint". Its semantic interaction can reduce toward:
+
+~~~text
+receive Control
+-> read CURRENT State
+-> Family.Behavior.resolve(State, Control)
+-> realize Effect
+-> observe/reconcile reality
+~~~
+
+This does not remove Act from SCAE. Act remains explicit in the returned semantic resolution and in the
+Family vocabulary; the simplification removes only caller-owned assembly between the two equations.
+
+Current downstream proof:
+
+~~~text
+VexLife-Android PR #192
+head = 01e5654b2ad022bcd430ff603536f7a2347ceb31
+~~~
+
+<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][FAMILY-BEHAVIOR][CONTROL-INPUT] -->
