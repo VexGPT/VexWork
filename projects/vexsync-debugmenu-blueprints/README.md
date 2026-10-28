@@ -6695,3 +6695,54 @@ Sequenced lane custody
 Production Playback remains unchanged.
 
 <!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][RUNTIME-ACT-MATERIALIZATION] -->
+
+
+---
+
+## Origin-Walk pressure candidate — provider truth after reconciliation
+
+**Downstream Android #192 head:** `f81154ecac30954d337e41edde7273da91e2e766`
+
+The third Playback pressure class now carries two candidate refinements:
+
+~~~text
+1. actual CURRENT State + runtime payload Control
+   -> materialized Act
+   -> same-law availability + activation
+
+2. provider observation
+   -> provider/Connection-owned reconciliation
+   -> reconciled semantic State
+   -> concrete Family-specific admission method
+   -> protected Family.admit(State)
+~~~
+
+The second refinement deliberately avoids a generic observation framework:
+
+~~~text
+NO fake provider Control
+NO public setCurrent(...)
+NO universal observe(...)
+NO universal reconcile(...)
+NO provider-as-Family ownership collapse
+~~~
+
+The existing Playback pending/reconciliation law remains the owner of stale provider observation versus
+newer local intent. Only the already-reconciled semantic State crosses into the concrete Family
+admission seam.
+
+Still OPEN:
+
+~~~text
+concurrent admission serialization
+async-result staleness/generation
+provider-affine Seek Operation under begin
+typed provider Operation results
+Compose observation
+multi-instance execution identity
+Sequenced lane custody
+~~~
+
+Production Playback remains unchanged.
+
+<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][PROVIDER-RECONCILED-ADMISSION] -->
