@@ -4329,3 +4329,129 @@ Do not jump to another Feature merely to prove reuse before this ThemeMode circu
 canonical Origin roundtrip.
 
 <!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][THEMEMODE][FULL-CIRCUIT] -->
+
+
+## Canonical VexLife fit assessment — current full circuit exceeds Behavior v1
+
+**Currentness:** `CURRENT_SOURCE_BOUNDARY_FINDING`.
+
+A narrow read of current canonical VexLife source found:
+
+~~~text
+blueprint/vexlife.blueprint.json
+  includes:
+    stateDomains
+    behaviorContracts
+    ...
+
+blueprint/fragments/behavior-contracts/vexstream-playback-play-pause.json
+  = current sole portable Behavior specimen
+
+src/core/portable-behavior-contract.mjs
+  = vexlife.portable-behavior-contract/v1 validator
+~~~
+
+The current portable Behavior v1 contract is intentionally shaped around:
+
+~~~text
+one sourceStateRef
++ optional Control
++ optional resolved Act
++ optional Effect
+-> one admission classification / projection
+~~~
+
+It also supports observation/reconciliation law rows with no Control/Act/Effect.
+
+That is sufficient for the current VexStream Play/Pause specimen, but the completed ThemeMode Walk now
+contains additional portable relationships that v1 cannot represent without distortion:
+
+~~~text
+1. FamilyStore<Family>
+   Save / Get / Forget / ObservableState
+
+2. begin(mode = Replaceable | Sequenced)
+   repeated async episode relationship
+
+3. later result-scope admit<State>()
+   after an initial on(...).stay()
+
+4. stored ThemeMode override
+   + independently-owned SystemAppearance State
+   -> effective ThemeMode
+~~~
+
+### Do not force convergence into synthetic Cartesian State
+
+The v1 row shape has one `sourceStateRef`.
+
+ThemeMode convergence requires two independently changing truths:
+
+~~~text
+stored override:
+  NOT_SET / Light / Dark
+
+System appearance:
+  Light / Dark
+~~~
+
+Flattening these into synthetic states such as:
+
+~~~text
+ThemeModeStoredNotSet_SystemDark
+ThemeModeStoredNotSet_SystemLight
+ThemeModeStoredDark_SystemLight
+...
+~~~
+
+would make the canonical Behavior contract own a Cartesian mega-State that the current Vex Behavior /
+Convergence foundation explicitly tries to avoid.
+
+Current rule:
+
+~~~text
+INDEPENDENT COMPLETE TRUTHS
++ DURABLE RELATIONAL LAW
+-> CONVERGENCE OWNERSHIP
+
+NOT
+-> SYNTHETIC COMBINED FAMILY STATE
+~~~
+
+### Current canonical gap
+
+No current canonical ThemeMode or SystemAppearance State coordinate was found in the VexLife universal
+Blueprint fragments.
+
+No generic convergence-contract composition field currently exists beside `behaviorContracts`.
+
+Therefore the next canonical step is **not** "add ThemeMode rows to Behavior v1."
+
+It is to determine the minimum source representation for:
+
+~~~text
+FamilyStore contract
+async begin execution relationship
+later async State admission
+bounded multi-State convergence
+~~~
+
+while reusing existing State / Behavior / Convergence semantics and avoiding another universal framework
+unless the ThemeMode specimen actually requires it.
+
+### Boundary
+
+Do not mutate canonical VexLife source from VexSync discovery alone.
+
+Before a commit-producing VexLife effect:
+
+~~~text
+run repository orientation
+consume requiredSources / heldBoundaries
+establish exact current source ownership / branch
+preserve DCO / repository lifecycle requirements
+~~~
+
+Until then, VexSync PR #178 remains the discovery/currentization owner of this full-circuit model.
+
+<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][CANONICAL-FIT][BEHAVIOR-V1] -->
