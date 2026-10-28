@@ -3145,45 +3145,50 @@ Forget()
   = durable State becomes NOT_SET
 ~~~
 
-### Human toggle — immediate admission + replaceable Save
+### Human toggle — Act is the State + Control behavior scenario
+
+The current model no longer creates `SelectDark` / `SelectLight` Act values. That intermediate
+vocabulary repeated meaning already present in the State-scoped Control relationship.
 
 ~~~text
-state<ThemeMode.Light> {
+state<ThemeModeFamily.State.Light> {
   on(
-    act = SelectDark,
+    control = ThemeModeFamily.Control.Toggle,
 
     effect = begin(mode = Replaceable) {
-      Save(ThemeMode, ThemeMode.Dark)
+      Save(ThemeModeFamily, ThemeModeFamily.State.Dark)
         .results {
           Success { }
           Failure { }
         }
     }
   )
-  .admit<ThemeMode.Dark>()
+  .admit<ThemeModeFamily.State.Dark>()
 }
 
-state<ThemeMode.Dark> {
+state<ThemeModeFamily.State.Dark> {
   on(
-    act = SelectLight,
+    control = ThemeModeFamily.Control.Toggle,
 
     effect = begin(mode = Replaceable) {
-      Save(ThemeMode, ThemeMode.Light)
+      Save(ThemeModeFamily, ThemeModeFamily.State.Light)
         .results {
           Success { }
           Failure { }
         }
     }
   )
-  .admit<ThemeMode.Light>()
+  .admit<ThemeModeFamily.State.Light>()
 }
 ~~~
 
 Meaning:
 
 ~~~text
-Control / Act
--> admit selected ThemeMode immediately
+CURRENT State + Control.Toggle
+-> the authored on(...) scenario is the Act
+-> Effect attempts Save(...)
+-> selected ThemeMode is admitted immediately
 -> UI may project it immediately
 
 Save
@@ -3197,22 +3202,24 @@ A replaced episode that never began `Save` has no Save result.
 ### Durability-gated comparison shape
 
 ~~~text
-on(
-  act = CommitNext,
+state<CurrentState> {
+  on(
+    control = SomeControl,
 
-  effect = begin(mode = Sequenced) {
-    Save(SomeFamily, NextState)
-      .results {
-        Success {
-          admit<NextState>()
-        }
+    effect = begin(mode = Sequenced) {
+      Save(SomeFamily, NextState)
+        .results {
+          Success {
+            admit<NextState>()
+          }
 
-        Failure {
+          Failure {
+          }
         }
-      }
-  }
-)
-.stay()
+    }
+  )
+  .stay()
+}
 ~~~
 
 Meaning:
@@ -3269,18 +3276,19 @@ STARTING UI
   Switch / selector reflects Light
         |
         v
-Control.ThemeModeToggle
+ThemeModeFamily.Control.Toggle
         |
         v
-Act.SelectDark
+ThemeModeFamily.Behavior
+  CURRENT State.Light + Control.Toggle
         |
         v
-Behavior
+Act = this authored scenario
         |
-        +-> admit<ThemeMode.Dark>()
+        +-> admit<ThemeModeFamily.State.Dark>()
         |
         +-> begin(mode = Replaceable)
-              Save(ThemeMode.Dark)
+              Save(ThemeModeFamily.State.Dark)
                  |
                  +-> Success / Failure
         |
@@ -3321,7 +3329,7 @@ LEFT
 
 RIGHT
   full-height active logic path
-  Control -> Act -> Behavior -> begin -> Save -> admit
+  Control -> Behavior Act -> begin -> Save -> admit
 ~~~
 
 Independent deeper terrain:
