@@ -5668,3 +5668,207 @@ responsibilities are already enough before introducing another production object
 Do not implement the teaching reference classes merely because they demonstrate the round trip.
 
 <!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][UI-FAMILY-BOUNDARY][THEMEMODE] -->
+
+
+## Origin-Walk refinement — the current session already carries the live ThemeMode truth
+
+**Currentness:** `CURRENT_WORKING_MODEL`, grounded against VexLife-Android PR #192 head
+`b3159b37bba2f0ad272415108f8a791f4eb54d9f`.
+
+The UI boundary walk answered where the semantic request should enter the Family. Walking one step
+farther into the actual target produced a second correction:
+
+> The current Android feature does not need a newly named Connection merely to obtain currentness.
+
+### What current Android already owns
+
+`VexLifeSession` currently owns one in-process Theme Mode value:
+
+~~~text
+VexLifeSession.darkTheme
+~~~
+
+That exact value feeds both visible consumers:
+
+~~~text
+VexLifeApp
+-> VexLifeTheme(darkTheme)
+
+DebugMenuScreen
+-> DebugMenuScreenContent(darkTheme)
+-> toggleChecked
+-> Switch.checked
+~~~
+
+The same session also owns the current activation effect:
+
+~~~text
+DebugMenu app-action registration
+-> captured VexLifeSession.toggleDarkMode()
+-> darkTheme = !darkTheme
+~~~
+
+So for the feature that exists today:
+
+~~~text
+OBSERVATION CURRENTNESS
+and
+ACTIVATION CURRENTNESS
+already meet at one session-owned truth
+~~~
+
+There is no stale rendered Boolean returned to activation, because the generic Toggle cell emits only
+the element interaction.
+
+### What the session does not claim
+
+The source comment on `VexLifeSession` explicitly says it does **not** claim process-death restoration.
+
+The current VexSync work purpose likewise names the dark/light Theme Mode feature and the Origin <->
+Android round trip. It does not independently require:
+
+~~~text
+durable preference persistence
+SystemAppearance following
+NOT_SET semantics
+cross-process restoration
+provider convergence
+~~~
+
+Those remain valid future pressures if the human feature earns them. They are not prerequisites for
+truthfully realizing the current feature.
+
+This matters because the earlier V2 patient-zero specimen had accidentally made one explored future
+pressure look mandatory:
+
+~~~text
+every Act
+-> begin(...)
+-> Save(...)
+~~~
+
+### Correction earned by the target walk
+
+V2 now treats Effect as optional per Act.
+
+Current in-process ThemeMode can say:
+
+~~~text
+WHILE Light
+ON Toggle
+ACT:
+  admit Dark
+  Effect = none earned
+
+WHILE Dark
+ON Toggle
+ACT:
+  admit Light
+  Effect = none earned
+~~~
+
+The durability-gated specimen still exists separately:
+
+~~~text
+WHILE NotSet
+ON Toggle
+ACT:
+  begin Sequenced
+  Save Dark
+  stay now
+
+LATER
+  Save succeeds
+  -> admit Dark
+~~~
+
+So the architecture preserves the distinction rather than choosing one global answer:
+
+~~~text
+ACT
+  = the behavioral scenario
+
+EFFECT
+  = what reality/runtime is asked to do, when this Act actually asks for such work
+
+ACT
+!= EFFECT
+
+ACT EXISTS
+does not imply
+EFFECT EXISTS
+~~~
+
+No `NoOpEffect` or fake Save was introduced.
+
+### Smallest current runtime picture
+
+The minimum picture supported by the current target is therefore smaller than the teaching reference:
+
+~~~text
+              ThemeModeFamily
+                 State
+                 Control
+                 Behavior
+                    ^
+                    |
+                    |
+VexLifeSession live ThemeMode truth
+       |                     |
+       | READ                | ACTIVATE
+       v                     v
+app theme projection      read CURRENT State
+Debug checked projection  Behavior.resolve(State, Control)
+                         apply admitted State
+~~~
+
+For an Effect-bearing future Act, the same live owner may need a reality adapter or may delegate to one.
+That is a later responsibility question. It is not a reason to add a Connection now.
+
+### The remaining production questions are placement questions, not missing nouns
+
+The next step is no longer:
+
+> What Runtime class should we invent?
+
+It is:
+
+~~~text
+Where does the production ThemeMode Family live?
+
+How does VexLifeSession hold the concrete current Family.State
+without recreating another Boolean truth?
+
+How does an admitted State kind become the concrete next State value
+for this Family?
+
+What narrow dependency does DebugMenuScreen capture for:
+  activate(ThemeModeFamily.Control.Toggle)
+
+What narrow read projection does DebugMenuScreen receive for:
+  checked = current ThemeMode is Dark
+~~~
+
+Only after those source-placement / concrete-realization questions are answered should a new runtime
+object be introduced, and only if some responsibility remains that the session cannot truthfully own.
+
+### Source/effect boundary
+
+The Behavior correction is currently carried by VexLife-Android PR #192 inside its existing Behavior
+claim.
+
+The actual production session/UI paths are **not** part of that current claim.
+
+Therefore this Origin walk may reason about their meaning and exact required seam, but must not silently
+turn #192 into authority to edit:
+
+~~~text
+VexLifeSession.kt
+VexLifeApp.kt
+AppScreenBlueprint.kt
+DebugMenuScreen.kt
+~~~
+
+A production mutation needs its own current source admission/ownership.
+
+<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][SESSION-CURRENTNESS][OPTIONAL-EFFECT] -->

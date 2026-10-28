@@ -3603,3 +3603,201 @@ next question:
 That is the next Runtime Origin Walk. The reference-test names remain evidence, not production answers.
 
 <!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][UI-ACTION-FAMILY-CONTROL][CAUSAL-EPISODE] -->
+
+
+## Causal episode — persistence pressure was useful, but not a current ThemeMode requirement
+
+**Currentness:** `CURRENT_WORKING_MODEL`.
+
+### Circumstance
+
+The V2 specimen had gained a rich two-scope Effect:
+
+~~~text
+begin(mode) {
+  Save(State)
+    .results {
+      Success { ... }
+      Failure { ... }
+    }
+}
+~~~
+
+That pressure was useful. It taught:
+
+~~~text
+dispatch != provider success
+immediate State consequence != later result consequence
+Replaceable != Sequenced
+Effect != Save operation
+~~~
+
+But the real Debug Menu walk then reached the current target.
+
+### Target evidence
+
+Current Android Theme Mode is session-local:
+
+~~~text
+VexLifeSession.darkTheme
+-> app theme
+-> Debug checked state
+
+Debug action
+-> VexLifeSession.toggleDarkMode()
+-> same darkTheme truth changes
+~~~
+
+The session explicitly disclaims process-death restoration.
+
+The VexSync work outcome asks for the dark/light Theme Mode Origin/Android round trip. It does not say
+that persistence is required before the feature can be considered truthful.
+
+That creates removal pressure on mandatory Save.
+
+### Candidate A — add Store / Connection because the reference already has them
+
+This would make the target resemble the teaching reference:
+
+~~~text
+UI
+-> Connection
+-> Store
+-> Save
+-> observed State
+~~~
+
+But the current feature has no provider/store whose truth must be observed.
+
+The new objects would solve a problem created by the reference rather than a problem observed in the
+target.
+
+Rejected for the current feature.
+
+### Candidate B — preserve mandatory Effect with NoOp / fake Save
+
+This keeps the API symmetrical:
+
+~~~text
+Light + Toggle
+-> NoOpEffect
+-> admit Dark
+~~~
+
+or:
+
+~~~text
+Light + Toggle
+-> Save(Dark)
+-> admit Dark
+~~~
+
+even though there is no real Save.
+
+Removal test:
+
+> If the fake Effect disappears, what truth disappears?
+
+For the current in-process Toggle:
+
+~~~text
+current State      remains
+Control            remains
+Act meaning        remains
+admitted State     remains
+UI currentness     remains
+session lifetime   remains
+~~~
+
+Nothing required disappears.
+
+Rejected.
+
+### Surviving model — Effect is optional because reality work is optional
+
+~~~text
+Light + Toggle
+-> Act
+-> NO_EFFECT
+-> admit Dark
+
+Dark + Toggle
+-> Act
+-> NO_EFFECT
+-> admit Light
+~~~
+
+The Effect-bearing durability specimen remains:
+
+~~~text
+NotSet + Toggle
+-> Act
+-> begin Sequenced
+-> Save Dark
+-> stay now
+-> Success later admits Dark
+~~~
+
+So the useful earlier discovery is preserved without becoming a mandatory ceremony.
+
+### Why this is not deleting SCAE Effect
+
+Effect remains the answer to:
+
+> What may reality/runtime be asked to do because of this Act?
+
+Sometimes the truthful answer is:
+
+~~~text
+nothing outside semantic State admission
+~~~
+
+That is not another Effect value. It is the absence of an Effect.
+
+~~~text
+NO EFFECT
+!= NO-OP EFFECT
+!= FAILED EFFECT
+~~~
+
+### Runtime consequence
+
+The actual target already has one live currentness owner:
+
+~~~text
+VexLifeSession
+~~~
+
+Therefore the next production walk should start by trying to **reuse** that owner:
+
+~~~text
+session current ThemeMode
+-> checked projection
+-> app theme projection
+
+activate(Control)
+-> session re-reads current ThemeMode
+-> Family Behavior
+-> admitted next ThemeMode
+~~~
+
+Do not add a Connection merely to make the source resemble the reference.
+
+### Reopen conditions
+
+A separate reality boundary becomes earned when a real feature requirement introduces something the
+session-local truth cannot honestly carry, such as:
+
+~~~text
+durable preference Store
+SystemAppearance observation
+NOT_SET fallback semantics
+external/provider result
+async overlapping Effect episodes
+cross-process restoration
+another lifetime owner
+~~~
+
+Then walk that exact pressure and let the required owner emerge.
+
+<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][EFFECT-OPTIONAL][CAUSAL-EPISODE] -->
