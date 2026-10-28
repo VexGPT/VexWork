@@ -4709,3 +4709,55 @@ This rule does not justify preserving arbitrary wrappers. It preserves only rela
 removal would make ownership inferential again.
 
 <!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][ECOSYSTEM-AWARE-REMOVAL] -->
+
+
+---
+
+## Origin-Walk pressure — StateRelay law before inheritance
+
+**Downstream Android #192 head:** `d91ad97767d6170ec6122750da08d099cc733b40`
+
+V1 Relay was re-read for its design reasons before treating StateRelay as foundational.
+
+Transferable currentness law:
+
+~~~text
+incoming cause
++
+exact CURRENT retained State
+-> one serialized non-suspending decision
+-> decide whether the cause is still lawful/current
+-> derive next semantic State
+-> suppress semantic no-op publication
+~~~
+
+The Playback pressure class now carries a test-only StateRelay using V1 `VexRelay.update` to prove
+that an older async completion cannot overwrite a newer semantic intent when the completion must
+re-evaluate itself against CURRENT State.
+
+Do not copy the rest of V1 Relay by association:
+
+~~~text
+deepCopy / VexState
+  -> defensive ownership-detachment concern
+
+Compound InputState / OutputState
+  -> independently-owned truth convergence concern
+
+revision
+  -> current-state lineage concern
+
+dependency activation
+  -> observed-Flow lifetime concern
+
+source freshness
+  -> source/provider semantic ordering concern
+~~~
+
+The next Origin decision is therefore whether Family StateRelay can specialize the existing VexRelay
+contract without forcing unrelated ownership constraints. If not, find the smaller retained-current /
+serialized-decision law beneath both rather than cloning locking machinery.
+
+StateRelay remains pressure, not accepted Family standard.
+
+<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][STATE-RELAY-WHY] -->
