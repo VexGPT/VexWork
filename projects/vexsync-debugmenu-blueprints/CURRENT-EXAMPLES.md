@@ -3104,3 +3104,239 @@ Feature Context is read-only VexWork projection
 unresolved Library entries remain visibly unresolved
 no new universal repository/Relay ontology from this one specimen
 ~~~
+
+
+## Current consolidated ThemeMode example
+
+**Currentness:** `CURRENT_WORKING_MODEL`. This example is the shortest current specimen that preserves
+the full ThemeMode circuit without replaying superseded persistence vocabulary.
+
+### State
+
+~~~text
+ThemeMode
+  NOT_SET
+  Light
+  Dark
+~~~
+
+### Durable Family boundary
+
+~~~text
+FamilyStore<ThemeMode>
+
+  ObservableState
+  Get()
+  Save(State)
+  Forget()
+~~~
+
+~~~text
+Get()
+  = immutable snapshot of stored truth
+
+ObservableState
+  = ongoing observation of the same stored truth
+
+Save(State)
+  = make State durable
+
+Forget()
+  = durable State becomes NOT_SET
+~~~
+
+### Human toggle — immediate admission + replaceable Save
+
+~~~text
+state<ThemeMode.Light> {
+  on(
+    act = SelectDark,
+
+    effect = begin(mode = Replaceable) {
+      Save(ThemeMode, ThemeMode.Dark)
+        .results {
+          Success { }
+          Failure { }
+        }
+    }
+  )
+  .admit<ThemeMode.Dark>()
+}
+
+state<ThemeMode.Dark> {
+  on(
+    act = SelectLight,
+
+    effect = begin(mode = Replaceable) {
+      Save(ThemeMode, ThemeMode.Light)
+        .results {
+          Success { }
+          Failure { }
+        }
+    }
+  )
+  .admit<ThemeMode.Light>()
+}
+~~~
+
+Meaning:
+
+~~~text
+Control / Act
+-> admit selected ThemeMode immediately
+-> UI may project it immediately
+
+Save
+-> runs asynchronously
+-> repeated pending ThemeMode saves share one FamilyStore lane
+-> Replaceable means newer same-lane intent may replace older pending/cancellable work
+~~~
+
+A replaced episode that never began `Save` has no Save result.
+
+### Durability-gated comparison shape
+
+~~~text
+on(
+  act = CommitNext,
+
+  effect = begin(mode = Sequenced) {
+    Save(SomeFamily, NextState)
+      .results {
+        Success {
+          admit<NextState>()
+        }
+
+        Failure {
+        }
+      }
+  }
+)
+.stay()
+~~~
+
+Meaning:
+
+~~~text
+stay now
+-> Save later
+-> Success emits a later admission
+-> Failure has no later State consequence
+~~~
+
+The later `admit<State>()` is a new State emission into the State owner, not a second return from
+`on(...)`.
+
+### Store observation does not bypass Behavior
+
+~~~text
+FamilyStore.ObservableState
+-> Connection / reconciliation
+-> optional admit<State>()
+-> CURRENT semantic State
+-> Projection
+-> UI
+~~~
+
+The UI never treats stored State as visible truth merely because the Store emitted it.
+
+### NOT_SET follows System appearance
+
+~~~text
+stored preference     System appearance     effective ThemeMode
+
+Light                 Light / Dark           Light
+Dark                  Light / Dark           Dark
+NOT_SET               Light                  Light
+NOT_SET               Dark                   Dark
+~~~
+
+~~~text
+stored override exists
+-> stored override governs
+
+stored override = NOT_SET
+-> System appearance governs
+~~~
+
+The store may remain `NOT_SET` while CURRENT semantic ThemeMode is Light or Dark.
+
+### Full causal lap
+
+~~~text
+STARTING UI
+  ThemeMode.Light
+  Switch / selector reflects Light
+        |
+        v
+Control.ThemeModeToggle
+        |
+        v
+Act.SelectDark
+        |
+        v
+Behavior
+        |
+        +-> admit<ThemeMode.Dark>()
+        |
+        +-> begin(mode = Replaceable)
+              Save(ThemeMode.Dark)
+                 |
+                 +-> Success / Failure
+        |
+        v
+FamilyStore durable truth / ObservableState
+        |
+        v
+Connection
+        |
+        v
+stored override + SystemAppearance
+        |
+        v
+ThemeMode Convergence
+        |
+        v
+effective ThemeMode
+        |
+        v
+CURRENT semantic State
+        |
+        v
+Projection
+        |
+        v
+RESULT UI
+~~~
+
+### VexBoard projection consequence
+
+Foreground:
+
+~~~text
+LEFT
+  final Starting Screen
+  relevant control highlighted
+  final Result Screen
+
+RIGHT
+  full-height active logic path
+  Control -> Act -> Behavior -> begin -> Save -> admit
+~~~
+
+Independent deeper terrain:
+
+~~~text
+LEFT DEPTH
+  UI Blueprint / IDs / bindings / conditions
+
+RIGHT DEPTH
+  FamilyStore / ObservableState
+  SystemAppearance
+  bounded ThemeMode Convergence
+  Connection / reconciliation
+~~~
+
+The foreground remains recognizable while either side enters depth.
+
+<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][THEMEMODE][CURRENT-EXAMPLE] -->
