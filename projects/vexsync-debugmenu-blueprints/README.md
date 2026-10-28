@@ -6517,3 +6517,64 @@ Playback / Select / Seek remains the preferred next pressure because it attacks 
 payload Control, availability, affinity, reconciliation and UI observation together.
 
 <!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][STABILITY-BOUNDARY] -->
+
+
+---
+
+## Origin-Walk currentness boundary
+
+**Downstream Android #192 head:** `f3b80ef6e37d7045a296bebf3b1cc5ed1abc555f`
+
+The Origin Walk now separates several currentness questions instead of treating currentness as one
+generic runtime capability.
+
+~~~text
+PROVED FOR LOCALLY-OWNED THEMEMODE PATIENT ZERO
+
+activation currentness
+  UI sends Control only
+  -> Family.activate(Control)
+  -> Family re-reads CURRENT semantic State
+
+immediate semantic currentness
+  selected Act
+  -> stay / admit(concrete State)
+
+
+OPEN
+
+async result currentness
+  older begin/result vs newer semantic activity
+
+externally observed currentness
+  Media3 / SystemAppearance / provider / location
+  -> lawful reconciliation into Family semantic truth
+
+UI observation currentness
+  Family/DisplayState changes
+  -> Compose observation/recomposition
+
+durable currentness
+  Store observation/reconciliation into live Family
+
+instance/execution currentness
+  several Family instances / queued episodes
+~~~
+
+The stable reusable law is deliberately narrower:
+
+~~~text
+locally-owned semantic State
+  -> activation re-reads the rightful current owner
+
+externally-owned truth
+  -> ownership + observation + reconciliation must be earned from the real provider/Relay relation
+~~~
+
+Do not close the open cases with fake Controls, generic setCurrent(...), a mandatory Connection, or a
+generic observer abstraction merely for symmetry.
+
+Playback / Select / Seek remains the preferred next pressure because it exercises several open
+currentness questions together.
+
+<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][CURRENTNESS-BOUNDARY] -->
