@@ -4660,3 +4660,112 @@ CANONICAL VEXLIFE PORTABLE ACCEPTANCE
 This downstream proof is evidence for the canonical-source design pass; it is not a competing Origin owner.
 
 <!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][ANDROID][BEHAVIOR-V2-PROOF] -->
+
+
+## Kotlin proof refinement — Family safety, naming and non-semantic ordering
+
+**Currentness:** `CURRENT_DOWNSTREAM_PROOF_REFINEMENT`.
+
+Review of the first Android V2 proof exposed three source-shape corrections before execution proof:
+
+~~~text
+1. Family safety must survive helper types
+2. V2 class naming should sort as one recognizable architecture
+3. declaration order must not become State semantics accidentally
+~~~
+
+### Family-bound helpers
+
+The first V2 prototype constrained the enclosing Blueprint by:
+
+~~~text
+<Family, State, Act, Effect>
+~~~
+
+but some helper types temporarily used weaker forms such as:
+
+~~~text
+State : Any
+Effect
+~~~
+
+That was semantically too loose even if the builder happened to prevent ordinary misuse.
+
+Current Android PR #192 now carries `Family` through every State/Effect-bearing V2 helper:
+
+~~~text
+VexBehaviorV2StateDisposition<Family, State>
+VexBehaviorV2AsyncResult<Family, State>
+VexBehaviorV2AsyncResults<Family, State>
+VexBehaviorV2EffectPlan<Family, State, Effect>
+VexBehaviorV2Relationship<Family, State, Act, Effect>
+VexBehaviorV2Resolution<Family, State, Effect>
+VexBehaviorV2Blueprint<Family, State, Act, Effect>
+~~~
+
+Control remains separately attached through `controls<Control>()`, matching V1 rather than changing
+generic order merely for visual symmetry.
+
+### V2 naming / IDE sorting
+
+The first prototype used trailing forms such as:
+
+~~~text
+VexBehaviorBlueprintV2
+VexBehaviorExecutionModeV2
+~~~
+
+The refined source groups the sibling architecture under one prefix:
+
+~~~text
+VexBehaviorV2Blueprint
+VexBehaviorV2BlueprintBuilder
+VexBehaviorV2Relationship
+VexBehaviorV2Resolution
+VexBehaviorV2EffectPlan
+VexBehaviorV2ExecutionMode
+VexBehaviorV2StateDisposition
+...
+~~~
+
+This keeps V1/V2 distinction visible while making V2 types sort together in ordinary IDE/source search.
+
+### State ordering
+
+Android PR #188 initially proved the ThemeMode enum by exact entry order. That accidentally made declaration
+position look semantic.
+
+The focused test now proves the vocabulary as a set of distinct States:
+
+~~~text
+NotSet
+Light
+Dark
+~~~
+
+without claiming:
+
+~~~text
+NotSet must be first
+Light must sort before Dark
+enum ordinal is portable meaning
+~~~
+
+Rule:
+
+~~~text
+ORDER IS SEMANTIC
+-> model and prove the order explicitly
+
+ORDER IS NOT SEMANTIC
+-> do not let source declaration / enum ordinal / list position become the contract
+~~~
+
+Current Android coordinates:
+
+~~~text
+PR #188 head = c2d1334e243c1fdb1bc6d16db1a1e4b1d16b37e9
+PR #192 head = f8357aca4bbd3b40a1a7cbf22eb30fbe47d94198
+~~~
+
+<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][FAMILY-SAFETY][NAMING][ORDERING] -->
