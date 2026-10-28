@@ -4700,7 +4700,7 @@ VexBehaviorV2AsyncResults<Family, State>
 VexBehaviorV2EffectPlan<Family, State, Effect>
 VexBehaviorV2Relationship<Family, State, Act, Effect>
 VexBehaviorV2Resolution<Family, State, Effect>
-VexBehaviorV2Blueprint<Family, State, Act, Effect>
+VexBehaviorV2<Family, State, Act, Effect>
 ~~~
 
 Control remains separately attached through `controls<Control>()`, matching V1 rather than changing
@@ -4718,8 +4718,8 @@ VexBehaviorExecutionModeV2
 The refined source groups the sibling architecture under one prefix:
 
 ~~~text
-VexBehaviorV2Blueprint
-VexBehaviorV2BlueprintBuilder
+VexBehaviorV2
+VexBehaviorV2Builder
 VexBehaviorV2Relationship
 VexBehaviorV2Resolution
 VexBehaviorV2EffectPlan
@@ -4893,7 +4893,7 @@ effect synonym.
 Current Kotlin proof is corrected to:
 
 ~~~kotlin
-vexBehaviorV2Blueprint<
+vexBehaviorV2<
     ThemeModeFamily,
     ThemeMode,
     ThemeModeAct
