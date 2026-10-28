@@ -5049,3 +5049,67 @@ head = b726401bc80e9a231535381156919e16cacac574
 ~~~
 
 <!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][FAMILY][MEMBERS][KOTLIN-INFERENCE] -->
+
+
+## Origin-Walk candidate — Family as namespace/root
+
+**Currentness:** `CURRENT_DOWNSTREAM_PRESSURE_CANDIDATE`, not yet a superseding naming rule.
+
+Android Kotlin pressure found a stronger containment shape than the earlier top-level member nouns:
+
+~~~text
+ThemeModeFamily.State.NotSet
+ThemeModeFamily.State.Light
+ThemeModeFamily.State.Dark
+
+ThemeModeFamily.Control.Toggle
+
+ThemeModeFamily.Act.CommitDark
+ThemeModeFamily.Act.SelectDark
+ThemeModeFamily.Act.SelectLight
+~~~
+
+The intent is:
+
+~~~text
+one Family name
+-> fixed member regions
+-> members live inside those regions
+-> member role is visible from the path
+-> less rogue/unscoped naming
+-> less repeated generic spelling
+~~~
+
+The target family declares one compile-time member map, then:
+
+~~~kotlin
+vexBehaviorV2(
+    ThemeModeFamily,
+    behaviorRef = "theme-mode",
+) {
+    ...
+}
+~~~
+
+can infer State / Control / Act / Effect membership.
+
+Important Kotlin constraint:
+
+~~~text
+true Family.State.Member nesting
+-> nested declarations live under the Family root declaration
+
+Kotlin has no partial nested-type declaration across separate files
+~~~
+
+Therefore this candidate intentionally pressures the older seven-file Family package pattern. The containment
+benefit must be judged against that source-organization cost before replacing the current Origin spelling.
+
+Current downstream proof:
+
+~~~text
+VexLife-Android PR #192
+head = 19d26fe347ad24304dc5ce82c41dbfd1f2bbb44b
+~~~
+
+<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][FAMILY-ROOT][CANDIDATE] -->
