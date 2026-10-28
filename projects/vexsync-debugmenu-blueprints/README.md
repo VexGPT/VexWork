@@ -5239,58 +5239,154 @@ head = e17aaa2920d329f9ebf17a6750e21dcb21d3e454
 <!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][FAMILY-ROOT][BUILDER-INFERENCE] -->
 
 
-## Origin-Walk refinement — Family Behavior receives Control directly
+## Origin-Walk refinement — Act is the Behavior scenario
 
 **Currentness:** `CURRENT_DOWNSTREAM_PRESSURE_CANDIDATE`.
 
-Android Kotlin proof now exposes one Family-owned semantic entrance:
+This **supersedes the immediately prior V2 candidate** that kept a separate
+`ThemeModeFamily.Act.SelectDark / SelectLight / CommitDark` vocabulary.
+
+The removal test exposed duplicated State reasoning:
 
 ~~~text
-Family.Behavior.resolve(
-  CURRENT State,
-  Control
-)
+old candidate
+
+State.Light + Control.Toggle
+-> Act.SelectDark
+
+then
+
+State.Light + Act.SelectDark
+-> Effect + State consequence
 ~~~
 
-while preserving the two semantic equations internally:
+Removing the intermediate Act value lost no ThemeMode meaning. The Act that remains earned is the
+**behavioral scenario itself**:
 
 ~~~text
-Control + CURRENT State
--> Act
-
-CURRENT State + Act
--> Effect + immediate State disposition
+CURRENT State + Control
+-> Act {
+     Effect
+     immediate stay/admit
+     optional later result admission
+   }
 ~~~
 
-ThemeMode focused proof:
+ThemeMode now reads:
 
 ~~~text
 ThemeModeFamily.State.Light
 + ThemeModeFamily.Control.Toggle
--> ThemeModeFamily.Act.SelectDark
--> begin(Replaceable) { Save(ThemeModeFamily.State.Dark) }
--> admit ThemeModeFamily.State.Dark
+-> Act:
+     begin(Replaceable) {
+       Save(ThemeModeFamily.State.Dark)
+       Success / Failure
+     }
+     admit ThemeModeFamily.State.Dark
 ~~~
 
-The runtime Connection remains the provider/currentness boundary. It should not have to understand the
-recipe "first ask ControlBlueprint, then ask BehaviorBlueprint". Its semantic interaction can reduce toward:
+Kotlin patient-zero shape:
+
+~~~kotlin
+object ThemeModeFamily :
+    VexBehaviorFamily<ThemeModeFamily> {
+
+    sealed interface State :
+        VexBehaviorFamily.State<ThemeModeFamily> {
+        data object NotSet : State
+        data object Light : State
+        data object Dark : State
+    }
+
+    sealed interface Control :
+        VexBehaviorFamily.Control<ThemeModeFamily> {
+        data object Toggle : Control
+    }
+
+    val Behavior =
+        vexBehaviorV2(
+            family = this,
+            behaviorRef = "theme-mode",
+        ) {
+            state<State.Light> {
+                on(
+                    control = Control.Toggle,
+                    effect = begin(
+                        mode = Replaceable,
+                    ) {
+                        save(State.Dark)
+                            .results {
+                                success { }
+                                failure { }
+                            }
+                    },
+                ).admit<State.Dark>()
+            }
+        }
+}
+~~~
+
+Therefore current V2 Family shape is:
+
+~~~text
+Family
+  State
+  Control
+  Behavior
+    Acts
+      Effects
+~~~
+
+not:
+
+~~~text
+Family
+  State
+  Control
+  Act value vocabulary
+  Behavior
+~~~
+
+The Android V1 foundation still contains `VexBehaviorFamily.Act<Family>` because production V1 consumers
+use that older model. V2 source comments explicitly preserve this compatibility distinction so a fresh
+instance does not recreate `Family.Act` merely for symmetry.
+
+Runtime entrance remains one semantic call:
 
 ~~~text
 receive Control
 -> read CURRENT State
 -> Family.Behavior.resolve(State, Control)
--> realize Effect
+-> selected authored Act
+-> realize Act.effect
 -> observe/reconcile reality
 ~~~
 
-This does not remove Act from SCAE. Act remains explicit in the returned semantic resolution and in the
-Family vocabulary; the simplification removes only caller-owned assembly between the two equations.
+This closes the current ThemeMode end-to-end semantic circuit sufficiently to move the next Origin Walk
+toward:
+
+~~~text
+Behavior itself
+  what is it as a Family member?
+  function / value / contract?
+
+UI exposure
+  what does UI need to see?
+  current State?
+  available Controls?
+  projection?
+  activation surface?
+
+payload-bearing Controls
+  how does on<Control.Click> { click -> ... } preserve payload
+  without registration lists or another Act-value layer?
+~~~
 
 Current downstream proof:
 
 ~~~text
 VexLife-Android PR #192
-head = 01e5654b2ad022bcd430ff603536f7a2347ceb31
+head = dd476fb69b101ad6a7087f6d6b199b97ea3b361b
 ~~~
 
-<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][FAMILY-BEHAVIOR][CONTROL-INPUT] -->
+<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][STRUCTURAL-ACT][FAMILY-BEHAVIOR] -->
