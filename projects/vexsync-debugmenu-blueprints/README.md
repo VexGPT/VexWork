@@ -5386,7 +5386,52 @@ Current downstream proof:
 
 ~~~text
 VexLife-Android PR #192
-head = dd476fb69b101ad6a7087f6d6b199b97ea3b361b
+head = 4facd7a48c617a66dbe25b10acbb4c1dc112f9ea
+
+fresh-entry reference:
+architecture/behavior/src/test/kotlin/com/vextreme/vexlife/android/behavior/
+  VexBehaviorUiRoundTripReferenceTest.kt
 ~~~
 
-<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][STRUCTURAL-ACT][FAMILY-BEHAVIOR] -->
+The reference specimen now preserves the next earned currentness invariant:
+
+~~~text
+UI observes semantic State over time
++
+activation reads current State
+
+MUST
+-> come from the same semantic State owner
+
+UI rendered State
+MUST NOT
+-> be passed back as activation authority
+~~~
+
+Its primary round trip is:
+
+~~~text
+Composable-facing render
+-> onClick emits Family.Control
+-> live boundary reads CURRENT semantic State
+-> Family.Behavior selects the Act
+-> Act realizes Effect / Save
+-> durable ObservableState is observed
+-> semantic State owner reconciles
+-> UI observes final State
+~~~
+
+The stale-render negative pressure is also explicit:
+
+~~~text
+UI rendered Light
+-> observed truth becomes Dark before click
+-> click re-reads CURRENT Dark
+-> Dark + Toggle Act runs
+-> stale Light never becomes input authority
+~~~
+
+This JVM reference deliberately does not claim real Compose rendering, Journey execution,
+ScreenCrawler evidence, coroutine-lifetime proof, or device proof.
+
+<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][STRUCTURAL-ACT][FAMILY-BEHAVIOR][UI-ROUNDTRIP] -->
