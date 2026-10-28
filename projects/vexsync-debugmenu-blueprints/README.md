@@ -4967,3 +4967,85 @@ head = 17240817708f74f140b2439ebf898052601c5487
 ~~~
 
 <!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][SAVE][TARGET-MAPPING] -->
+
+
+## Origin-Walk refinement — Family maps its members once
+
+**Currentness:** `CURRENT_DOWNSTREAM_PROOF_REFINEMENT`.
+
+Kotlin pressure exposed that repeatedly authoring:
+
+~~~text
+<ThemeModeFamily, ThemeMode, ThemeModeAct>
+~~~
+
+was redundant with the semantic meaning of Family.
+
+The reusable target pattern now gives one concrete Family a canonical member map:
+
+~~~text
+ThemeModeFamily
+  State   -> ThemeMode
+  Control -> ThemeModeControl
+  Act     -> ThemeModeAct
+  Effect  -> structured Begin<ThemeMode>
+~~~
+
+Android proof shape:
+
+~~~kotlin
+object ThemeModeFamily :
+    VexBehaviorFamily<ThemeModeFamily>,
+    VexBehaviorFamily.Members<
+        ThemeModeFamily,
+        ThemeMode,
+        ThemeModeControl,
+        ThemeModeAct,
+        VexBehaviorV2Begin<ThemeModeFamily, ThemeMode>,
+    >
+~~~
+
+Then authoring consumes the Family value only:
+
+~~~kotlin
+vexBehaviorV2(
+    ThemeModeFamily,
+    behaviorRef = "theme-mode",
+) {
+    ...
+}
+~~~
+
+and Control binding also infers its member type:
+
+~~~kotlin
+themeModeBehavior().controls {
+    ...
+}
+~~~
+
+The role types remain separate source identities/files. The member map does not collapse State / Control /
+Act / Effect into one mega-type; it records their canonical kinship once so target code can recover them
+without repeated generic spelling.
+
+This is the target-language realization of:
+
+~~~text
+Family
+= canonical typed coordinate binding its semantic members
+~~~
+
+rather than merely:
+
+~~~text
+each member independently points back to Family
+~~~
+
+Current Android proof coordinate:
+
+~~~text
+VexLife-Android PR #192
+head = b726401bc80e9a231535381156919e16cacac574
+~~~
+
+<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][FAMILY][MEMBERS][KOTLIN-INFERENCE] -->
