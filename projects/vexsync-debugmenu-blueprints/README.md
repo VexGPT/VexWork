@@ -4769,3 +4769,87 @@ PR #192 head = f8357aca4bbd3b40a1a7cbf22eb30fbe47d94198
 ~~~
 
 <!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][FAMILY-SAFETY][NAMING][ORDERING] -->
+
+
+## Origin-Walk correction — downstream Kotlin must consume, not rename, earned language
+
+**Currentness:** `CURRENT_PROJECT_RULE_REINFORCEMENT`.
+
+The first Android Behavior V2 Kotlin prototype proved the two-scope mechanics but introduced implementation-translated
+nouns before checking them against the current Origin Walk:
+
+~~~text
+AsyncResult
+AsyncResults
+EffectPlan
+ExecutionMode
+~~~
+
+That was a process error.
+
+The Origin Walk had already earned:
+
+~~~text
+begin(mode = Replaceable | Sequenced)
+
+operation(...)
+  .results {
+    Success { ... }
+    Failure { ... }
+  }
+
+.stay()
+.admit<State>()
+~~~
+
+The Android proof has now been corrected to preserve that vocabulary directly:
+
+~~~text
+Origin Walk                     Kotlin V2
+────────────────────────────────────────────────
+begin(mode = ...)               begin(mode = ...)
+operation(...)                  operation(...)
+.results                        .results
+Success / Failure               success / failure functions
+stay / admit                    stay / admit
+~~~
+
+Repository-native Kotlin casing may differ, but semantic nouns do not.
+
+Current Kotlin support identities are therefore only carriers for already-earned relationships:
+
+~~~text
+Begin
+Operation
+Results
+Result
+StateDisposition
+~~~
+
+They are not new SCAE roles or a new portable language.
+
+Rule reinforced by this correction:
+
+~~~text
+ORIGIN WALK EARNS A NAME
+-> downstream target consumes that name
+
+TARGET IMPLEMENTATION NEEDS A CARRIER TYPE
+-> name it after the earned relationship where possible
+
+TARGET CONVENIENCE SUGGESTS A NEW SEMANTIC NOUN
+-> STOP
+-> return to the Origin pressure
+-> earn the noun before teaching it to future workers
+~~~
+
+This is the same reason V2 remains a sibling experiment rather than silently redefining V1.
+
+Current Android proof coordinate:
+
+~~~text
+VexLife-Android PR #192
+head = 5d90497585ec545e1b452cdfc421c1da8a5f0605
+~~~
+
+<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][LANGUAGE-ALIGNMENT][KOTLIN] -->
