@@ -6217,3 +6217,206 @@ connection/currentness, pending intent, and UI-facing DisplayState. It is eviden
 shape, not a template to copy wholesale.
 
 <!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][LIVE-FAMILY][DISPLAY-STATE][NEXT-PROVIDER-PRESSURE] -->
+
+
+---
+
+## Origin-Walk checkpoint — Family Store, begin execution and accountant
+
+**Downstream Android V2 proof head:** `82c249276f5ae43e91630b60d5f3b8d6c55ac34b`
+
+The persistence pressure has now refined the live Family without introducing another feature-specific
+Execution owner.
+
+Current Family-rooted map:
+
+~~~text
+Family
+  State
+  Control
+  DisplayState
+  Store
+  current
+  acts
+  activate(Control)
+~~~
+
+### Store remains visible from the Family
+
+Reusable storage language is now:
+
+~~~text
+VexStore
+  -> VexFamilyStore<Family, State>
+       ObservableState
+       Get()
+       Save(State)
+       Forget()
+
+Concrete Family
+  Store : VexFamilyStore<ThisFamily, State>
+~~~
+
+The two truths remain distinct:
+
+~~~text
+Family.current
+  what is semantically true now
+
+Family.Store durable State
+  what has been saved for continuity
+~~~
+
+So immediate UI truth does not wait for persistence:
+
+~~~text
+admit(Dark)
+-> Family.current = Dark
+-> DisplayState / UI may update
+
+begin(Replaceable) {
+  Save(Dark)
+}
+-> background persistence continues independently
+~~~
+
+### begin is already the execution phase
+
+No `ThemeModeExecution` / `FamilyExecution` sibling was earned.
+
+~~~text
+Act
+  immediate:
+    stay / admit
+
+  execution:
+    begin(mode)
+      Operation
+~~~
+
+`Operation` is the generic slot under begin. It does not erase stronger domain language:
+
+~~~text
+Operation
+  -> StoreOperation
+       -> Save(State)
+       -> future Store verbs as actually exercised
+
+future provider Operation families
+  must be earned from provider pressure
+~~~
+
+The Android realization uses the existing VexExecution foundation underneath begin. The actual suspend
+callable (for persistence, `Family.Store::save`) is both the invoked operation and the source-derived
+execution coordinate.
+
+~~~text
+Replaceable
+  newer same-source episode replaces prior active work
+
+Sequenced
+  accepted same-source episodes retain order
+~~~
+
+Cancellation/replacement is execution lifetime, not another Save Failure result.
+
+### Success / Failure is now executable pressure
+
+The first Android target Store specimen uses SharedPreferences `commit()`:
+
+~~~text
+commit() == true
+-> Operation Success
+
+commit() == false
+-> Operation Failure
+~~~
+
+The specimen maps Family/State source identity to SharedPreferences primitive representation at the
+target edge instead of introducing a separate manually authored `theme_mode` / `dark` semantic ID
+catalog.
+
+That representation is intentionally provisional:
+
+~~~text
+SOURCE IDENTITY
+-> target serialization
+
+CURRENT PATIENT ZERO
+!= permanent cross-version serialized-name guarantee
+~~~
+
+Rename/migration compatibility remains a future durability pressure.
+
+### VexLogger is the Family accountant
+
+The same existing VexLogger may implement the Family-facing accountant contract. A Family does not
+create another logger.
+
+It may witness:
+
+~~~text
+Control accepted
+State admitted
+Operation began
+Operation Success
+Operation Failure
+~~~
+
+This means an empty result branch remains perceptible:
+
+~~~text
+success { }
+~~~
+
+does not mean "nothing happened." It means the Operation succeeded and no additional semantic State
+consequence was authored.
+
+The logger remains observational:
+
+~~~text
+LOGGER WITNESSES ACCEPTED FACT
+!= LOGGER OWNS FAMILY TRUTH
+!= LOGGER FAILURE REVERSES EFFECT
+~~~
+
+### Current proof boundary
+
+Android #192 now contains source/tests for:
+
+~~~text
+begin -> VexExecution Replaceable / Sequenced lanes
+Family.Store -> real suspend Save
+Save result -> Success / Failure branch
+later result admission
+VexLogger Family witnessing
+SharedPreferences commit target specimen
+Save/Get/Forget durable round trip
+Family reconstruction from restored State
+~~~
+
+Repository Gradle execution and Android instrumentation execution remain pending. Real process
+kill/swipe-relaunch restoration is not yet claimed.
+
+Production ThemeMode source remains separately owned by Android PR #188 and was not silently absorbed
+into this proof.
+
+### Next pressure
+
+First complete repository/device persistence proof. Then pressure the same shape with a rightful
+third-party truth owner such as Media3:
+
+~~~text
+Family
+-> Act
+-> begin(mode)
+-> provider Operation
+-> provider result / observation
+-> reconciliation or later State consequence
+-> DisplayState
+-> UI
+~~~
+
+The provider must not become the Family semantic State owner merely because it owns external reality.
+
+<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][FAMILY-STORE][BEGIN-EXECUTION][ACCOUNTANT] -->
