@@ -6631,3 +6631,67 @@ without fake Controls, generic setCurrent(...), provider-truth theft, duplicated
 payload loss.
 
 <!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][PLAYBACK-PRESSURE-REFERENCE] -->
+
+
+---
+
+## Origin-Walk threshold — runtime State + payload Control materialize the Act
+
+**Downstream Android #192 head:** `63a1e69c7792c48d0fc102d8cf8dd8af6da06fa1`
+
+Playback pressure has earned one reusable V2 refinement:
+
+~~~text
+actual CURRENT State value
++
+actual incoming Control value
+-> materialized Act
+~~~
+
+Singleton Controls keep the compact form:
+
+~~~kotlin
+on(Control.Toggle) {
+  admit(State.Dark)
+}
+~~~
+
+Payload Controls may now author by runtime Control shape:
+
+~~~kotlin
+on<Control.Seek>(
+  whenCurrent = { current, seek ->
+    current.mediaId == seek.request.mediaId &&
+    current.mediaItemIndex == seek.request.mediaItemIndex &&
+    current.seekAvailable
+  },
+) { current, seek ->
+  ...
+}
+~~~
+
+The dynamic Act receives both the real current State value and the real Control payload. The third
+Playback pressure test also proves stale media occurrence/provider unavailability reject the same
+Control through the same semantic rule.
+
+`Family.isAvailable(Control)` derives from the same resolution law as `activate(Control)`.
+Activation always re-reads CURRENT State, so an earlier availability answer never becomes authority.
+
+An isolated Kotlin language proof compiled/executed the runtime materialization shape. Repository
+Gradle/JVM proof remains pending.
+
+Still open:
+
+~~~text
+provider observation -> semantic Family current State
+pending-intent/provider reconciliation ownership
+provider-affine Seek Operation
+async-result staleness/generation
+Compose observation
+multi-instance execution identity
+Sequenced lane custody
+~~~
+
+Production Playback remains unchanged.
+
+<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][RUNTIME-ACT-MATERIALIZATION] -->
