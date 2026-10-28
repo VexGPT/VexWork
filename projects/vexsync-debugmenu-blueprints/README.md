@@ -5113,3 +5113,127 @@ head = 19d26fe347ad24304dc5ce82c41dbfd1f2bbb44b
 ~~~
 
 <!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][FAMILY-ROOT][CANDIDATE] -->
+
+
+## Origin-Walk refinement — Family-root roles without a Members registry
+
+**Currentness:** `CURRENT_DOWNSTREAM_PRESSURE_CANDIDATE`.
+
+Further Kotlin pressure removed the temporary manual `Members<...>` map.
+
+Current candidate source shape:
+
+~~~text
+ThemeModeFamily
+  State
+    NotSet
+    Light
+    Dark
+
+  Control
+    Toggle
+    parameterized Control shapes remain possible
+
+  Act
+    CommitDark
+    SelectDark
+    SelectLight
+~~~
+
+Kotlin form:
+
+~~~kotlin
+object ThemeModeFamily :
+    VexBehaviorFamily<ThemeModeFamily> {
+
+    sealed interface State :
+        VexBehaviorFamily.State<ThemeModeFamily> {
+        data object NotSet : State
+        data object Light : State
+        data object Dark : State
+    }
+
+    sealed interface Control :
+        VexBehaviorFamily.Control<ThemeModeFamily> {
+        data object Toggle : Control
+    }
+
+    sealed interface Act :
+        VexBehaviorFamily.Act<ThemeModeFamily> {
+        data object CommitDark : Act
+        data object SelectDark : Act
+        data object SelectLight : Act
+    }
+}
+~~~
+
+A sealed Control region is not enum-only. Another Family may truthfully contain:
+
+~~~kotlin
+data class Click(
+    val songId: SongId,
+) : Control
+~~~
+
+so the closed set is the set of Control **shapes**, not the set of runtime Control values.
+
+The foundation role markers remain generic/open:
+
+~~~text
+VexBehaviorFamily.State<Family>
+VexBehaviorFamily.Control<Family>
+VexBehaviorFamily.Act<Family>
+VexBehaviorFamily.Effect<Family>
+~~~
+
+The concrete Family closes its own role region.
+
+Kotlin builder inference now allows:
+
+~~~kotlin
+vexBehaviorV2(
+    ThemeModeFamily,
+    behaviorRef = "theme-mode",
+) {
+    state<ThemeModeFamily.State.Light> {
+        on(
+            act = ThemeModeFamily.Act.SelectDark,
+            ...
+        )
+    }
+}
+~~~
+
+without:
+
+~~~text
+<ThemeModeFamily, ThemeModeState, ThemeModeAct>
+Members<...>
+Control.entries registration
+~~~
+
+Important language boundary:
+
+~~~text
+Kotlin CAN
+  define the generic foundation role marker
+  infer concrete State/Act from Family-bound use
+  seal each concrete Family's State / Control / Act region
+
+Kotlin CANNOT
+  declare an abstract associated nested type slot
+  and force every Family implementation to "override type State"
+~~~
+
+Therefore the concrete Family-root declaration supplies the visible regions; compiler bounds protect
+membership, while a live template/source-alignment check may later scaffold/enforce the exact source shape
+if that ergonomic need survives.
+
+Current downstream proof:
+
+~~~text
+VexLife-Android PR #192
+head = 3ea319bd40c0d217e88ac379365823dca16bfd9f
+~~~
+
+<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][FAMILY-ROOT][BUILDER-INFERENCE] -->
