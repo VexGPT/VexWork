@@ -4455,3 +4455,128 @@ preserve DCO / repository lifecycle requirements
 Until then, VexSync PR #178 remains the discovery/currentization owner of this full-circuit model.
 
 <!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][CANONICAL-FIT][BEHAVIOR-V1] -->
+
+
+## Canonical schema pressure — minimum evolution exposed by ThemeMode
+
+**Currentness:** `CURRENT_WORKING_SCHEMA_PRESSURE`, not accepted VexLife schema.
+
+The completed ThemeMode circuit does not justify a giant new framework. It does expose two concrete gaps in
+the current portable Behavior v1 representation.
+
+### Gap 1 — admission must belong to the relationship decision, not the Effect identity
+
+Current Behavior v1 binds each Effect identity to one `admittedStateRef`.
+
+That works for the existing VexStream specimen because each admitted Effect and immediate State kind happen
+to align.
+
+ThemeMode now proves a stronger rule:
+
+~~~text
+same Effect intention
+may participate in:
+
+IMMEDIATE
+  on(...).admit<Next>()
+  + Save(Next) asynchronously
+
+DURABILITY-GATED
+  on(...).stay()
+  + Save(Next)
+  + Success { admit<Next>() }
+~~~
+
+Therefore:
+
+~~~text
+EFFECT IDENTITY
+!= UNIVERSAL OWNER OF ADMITTED STATE
+~~~
+
+The State disposition belongs to the exact relationship/decision point where it occurs.
+
+Minimum pressure for a future portable Behavior revision:
+
+~~~text
+law row
+  immediate disposition:
+    STAY
+    or ADMIT(StateRef)
+
+async result branch
+  optional later disposition:
+    ADMIT(StateRef)
+    or no State consequence
+~~~
+
+Do not change canonical v1 until repository-local lifecycle/orientation and compatibility impact are
+grounded.
+
+### Gap 2 — convergence is not a State selector or a Cartesian Behavior State
+
+The Universal Blueprint documentation already has a multi-source `observeState(sources, selector)`
+concept. That is useful read/projection language, but ThemeMode now needs a relationship whose output is
+semantic State that may feed Behavior again:
+
+~~~text
+stored ThemeMode override
++
+SystemAppearance State
+-> effective ThemeMode State
+~~~
+
+Using a presentation/read selector as the owner would collapse:
+
+~~~text
+PROJECTION / READ CLASSIFICATION
+with
+SEMANTIC STATE RELATIONSHIP
+~~~
+
+Flattening the inputs into one synthetic Behavior State would instead collapse independent ownership.
+
+Therefore the current pressure favors a bounded convergence contract/representation that preserves:
+
+~~~text
+independent input State identities
+one named relational owner
+deterministic output State
+re-evaluation when any admitted input changes
+no cross-Family Effect bypass
+~~~
+
+The exact JSON/schema/API is intentionally OPEN.
+
+### FamilyStore representation remains a separate question
+
+The Walk has earned the responsibility:
+
+~~~text
+FamilyStore<Family>
+  ObservableState
+  Get()
+  Save(State)
+  Forget()
+~~~
+
+It has not yet earned a universal JSON registry merely because the responsibility has a name.
+
+Before adding a canonical FamilyStore schema, ask which canonical consumer actually needs to inspect,
+generate, validate or map that contract. If target construction can derive the store boundary from the
+portable Effect / State / Connection contract without losing truth, do not add another registry.
+
+### Current schema-design priority
+
+The next canonical design pass should therefore pressure, in this order:
+
+~~~text
+1. relationship-owned immediate State disposition
+2. optional later State admission from async result
+3. bounded multi-State convergence representation
+4. only then whether FamilyStore needs independent canonical registry identity
+~~~
+
+This ordering preserves the semantic circuit while minimizing new source surface.
+
+<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][SCHEMA-PRESSURE][MINIMUM-COMPLETE] -->
