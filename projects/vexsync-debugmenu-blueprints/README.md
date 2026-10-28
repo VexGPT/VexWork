@@ -5435,3 +5435,236 @@ This JVM reference deliberately does not claim real Compose rendering, Journey e
 ScreenCrawler evidence, coroutine-lifetime proof, or device proof.
 
 <!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][STRUCTURAL-ACT][FAMILY-BEHAVIOR][UI-ROUNDTRIP] -->
+
+
+## Origin-Walk refinement — smallest truthful UI -> Family boundary
+
+**Currentness:** `CURRENT_WORKING_MODEL`, grounded against VexLife-Android PR #192 head
+`4facd7a48c617a66dbe25b10acbb4c1dc112f9ea`.
+
+The UI-boundary walk started from the actual Debug Menu Dark Mode path rather than from the teaching
+objects in `VexBehaviorUiRoundTripReferenceTest`.
+
+### Grounded Android path
+
+Current source reads:
+
+~~~text
+DebugMenuScreen.DarkMode
+  elementId = element.debug-menu.body.dark-mode
+  kind = Toggle
+  intent = Invoke(AppActions.ToggleDarkMode)
+
+render:
+  DebugMenuScreenContent
+  -> VexElementTree.toggleChecked(...)
+  -> VexToggleRow.checked
+  -> Switch.checked
+
+activate:
+  Switch.onCheckedChange
+  -> handler.activate(DebugMenuScreen.DarkMode)
+  -> VexRuntime.activate(...)
+  -> validate active source
+  -> log the UI interaction
+  -> interpret ElementIntent.Invoke
+  -> AppActionRequest(AppActions.ToggleDarkMode, source = DarkMode)
+  -> AppActionRegistrations.dispatch(...)
+  -> DebugMenuScreen.appActionRegistrations(...)
+  -> current toggleDarkMode()
+~~~
+
+One especially useful currentness fact is already present in the generic Toggle renderer:
+
+~~~text
+Switch.onCheckedChange
+-> handler.activate(element)
+
+NOT
+-> handler.activate(element, renderedCheckedValue)
+~~~
+
+The rendered Boolean does not become activation authority.
+
+### What each existing boundary actually owns
+
+The walk now distinguishes four responsibilities that happen to line up one-to-one for this tiny feature.
+
+~~~text
+DebugMenuScreen.DarkMode / element.debug-menu.body.dark-mode
+  owns:
+    stable UI element identity
+    Toggle form / label / placement
+    declaration that activation requests an app-owned effect
+
+AppActions.ToggleDarkMode / action.theme.dark-mode.toggle
+  owns:
+    stable application-action routing identity
+    the key used by generic Invoke dispatch
+    one-owner registration / coverage addressability
+
+  does NOT own:
+    ThemeMode current State
+    ThemeMode Behavior
+    Effect realization
+
+ThemeModeFamily.Control.Toggle
+  owns:
+    the semantic request entering ThemeMode Family Behavior
+
+VexRuntime
+  owns:
+    active-source validation
+    UI interaction logging
+    generic ElementIntent interpretation
+    generic dispatch to the registered app-action owner
+
+  does NOT own:
+    ThemeMode-specific Control resolution
+    ThemeMode current State
+    ThemeMode Behavior
+~~~
+
+The feature-local `DebugMenuScreen.appActionRegistrations(...)` boundary is where the generic app/UI
+routing identity reaches the feature owner. That is therefore the first truthful place for the existing
+app action to become:
+
+~~~text
+ThemeModeFamily.Control.Toggle
+~~~
+
+No additional global ActionKey -> Family Control registry is currently earned.
+
+### AppAction and Family Control are related, not the same responsibility
+
+The removal test does not support deleting either role.
+
+If the AppAction key disappears without replacing its responsibility, the current generic UI Blueprint
+loses the stable key that lets:
+
+~~~text
+ElementIntent.Invoke
+-> AppActionRegistrations
+-> exactly one feature-local effect owner
+~~~
+
+and `AppScreens.appActionRegistrations(...)` can no longer perform the same static Invoke-coverage /
+duplicate-owner checks through that coordinate.
+
+If `ThemeModeFamily.Control.Toggle` disappears, Behavior again receives an app/UI routing identity
+instead of its own semantic request vocabulary.
+
+So:
+
+~~~text
+APP ACTION KEY
+  = app/UI routing + ownership coordinate
+
+FAMILY CONTROL
+  = semantic request into Family
+
+APP ACTION KEY
+!= FAMILY CONTROL
+
+ONE-TO-ONE MAPPING TODAY
+!= DUPLICATE TRUTH OWNER
+~~~
+
+They may use similar human words because they currently describe the same human move at adjacent
+boundaries. Their architectural jobs remain different.
+
+Do not create a translation framework merely because the mapping exists. The feature-local registration
+closure already is the handoff.
+
+### Smallest current UI -> Family boundary
+
+The current minimum-complete shape is:
+
+~~~text
+READ / PROJECTION
+
+CURRENT semantic ThemeMode
+-> narrow Debug Menu projection:
+     checked = (current ThemeMode == Dark)
+-> VexElementTree.toggleChecked
+-> Switch.checked
+
+
+ACTIVATION
+
+Switch activation
+-> DebugMenuScreen.DarkMode
+-> VexRuntime generic UI validation / logging / Invoke dispatch
+-> AppActions.ToggleDarkMode
+-> DebugMenuScreen feature-local action registration
+-> ThemeModeFamily.Control.Toggle
+-> same live ThemeMode owner re-reads CURRENT semantic State
+-> ThemeModeFamily.Behavior.resolve(CURRENT State, Control)
+~~~
+
+The UI therefore does **not** currently earn raw `ThemeModeFamily.State` merely to render this Toggle.
+Its visual need is a checked projection.
+
+Likewise, activation must not carry the rendered checked value or rendered State back into Behavior.
+
+~~~text
+UI OBSERVATION
+  derives from CURRENT semantic ThemeMode
+
+UI ACTIVATION
+  emits Control only
+
+CURRENT State used for activation
+  is re-read after the UI/app routing handoff
+
+OBSERVATION SOURCE
+  and
+ACTIVATION CURRENTNESS SOURCE
+  must be the same semantic truth owner
+~~~
+
+This preserves the stale-render invariant without making Compose a State authority.
+
+### What this says about ScreenActionContext
+
+Today `ScreenActionContext` supplies:
+
+~~~text
+toggleDarkMode: () -> Unit
+~~~
+
+That is pre-Origin-Walk ThemeMode realization.
+
+The next production form should not be chosen yet, but the UI walk does narrow what that dependency must
+mean:
+
+~~~text
+the Debug Menu action owner needs
+  a narrow way to activate ThemeModeFamily.Control.Toggle
+
+the Debug Menu renderer needs
+  a narrow projection of CURRENT ThemeMode for checked presentation
+
+both must converge on
+  the same live semantic ThemeMode currentness owner
+~~~
+
+That does **not** yet earn a class named `ThemeModeConnection`, `ThemeModeLiveSurface`,
+`ThemeModeManager`, or another runtime abstraction.
+
+### Next Runtime frontier
+
+The UI edge is now sufficiently clear to move one step inward.
+
+The next question is:
+
+> **What is the smallest session-lived owner/mechanism that can supply the ThemeMode projection and
+> activation currentness from one semantic truth, realize the selected Act's Effect, and observe/reconcile
+> reality without making UI, Behavior or VexRuntime own those jobs?**
+
+Start from the existing `VexLifeSession` composition and lifecycle facts. Test whether its existing
+responsibilities are already enough before introducing another production object.
+
+Do not implement the teaching reference classes merely because they demonstrate the round trip.
+
+<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][UI-FAMILY-BOUNDARY][THEMEMODE] -->
