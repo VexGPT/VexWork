@@ -5088,13 +5088,20 @@ Repository Gradle/JVM proof remains pending.
 
 ## Current checkpoint — Family Circuit foundation absorbs the process circuit
 
-Downstream Android #192 head: 9c450ad5bda41c43be27cf82582a557e4e66e57b
+Downstream Android #192 head: 1d7a35f4e7c094bab7d30a0c30bc4bca5c2cdcb0
 
 The process-only / process -> commit -> Act discoveries are no longer only Relay-side pressure.
-Android now carries a Family specialization that owns the complete relationship as Family State:
+Android now carries one common Family State root with two earned specializations:
 
 ~~~text
-VexBehaviorV2CompoundFamily
+VexFamily
+  common CURRENT State / DisplayState / protected admission
+
+VexBehaviorV2Family : VexFamily
+  Control-driven Family
+
+VexBehaviorV2CompoundFamily : VexFamily
+  relationship-driven Family
         |
         v
 ComplexFamily
@@ -5168,7 +5175,7 @@ Current evidence:
 
 ~~~text
 Family Circuit foundation source                 FORMED
-ComplexFamily -> CompoundFamily -> Family        FORMED
+ComplexFamily -> CompoundFamily -> VexFamily     FORMED
 clean TestSampleSuite                            AUTHORED
 isolated generic Kotlin hierarchy check          PASS
 repository Gradle/JVM                            PENDING
