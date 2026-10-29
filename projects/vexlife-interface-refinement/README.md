@@ -755,6 +755,373 @@ The focused F1 proof should establish at least:
 F1 is complete only when those portable semantics are source-owned and proved. It does not need a
 browser event listener or real Heretic turn to establish that contract; those belong to F2/F3.
 
+### F2 source walk — the server rotates; the document does not
+
+The ordinary Mac path is stronger than the earlier shorthand implied.
+
+`setup-vexlife.command` already:
+
+~~~text
+resolve exact GitHub 40-char SOURCE_SHA
+-> download that exact archive
+-> create a fresh private source parent
+   $SOURCE_ROOT/<sha>.run.<nonce>/source
+-> run the source-local setup owner from that exact root
+~~~
+
+And the source-local setup/lifecycle already:
+
+~~~text
+previous browser receipt.repoRootPath
+vs
+current exact source root
+
+different source path
+-> stop exact-owned old browser server
+-> start current exact-source browser server
+~~~
+
+So the normal setup path does **not** simply keep an old server process serving old files.
+
+The remaining ordinary-user seam is the browser document:
+
+~~~text
+old document A stays loaded
+        |
+setup rotates server A -> server B
+        |
+/usr/bin/open same human URL
+        |
+browser may focus/reuse document A
+        |
+document A never re-observes:
+  "I am A, server is now B"
+~~~
+
+That is the exact F2 relationship pressure.
+
+Permanent:
+
+~~~text
+SERVER_PROCESS_SOURCE_ROTATED
+!= LOADED_DOCUMENT_SOURCE_ROTATED
+
+SERVER_NO_STORE
+!= DOCUMENT_REOBSERVED
+
+SAME_HUMAN_URL
+!= SAME_SOURCE_IDENTITY
+~~~
+
+#### F2a — reuse Source Manifest as the source identity
+
+Do not create another build/version registry.
+
+The accepted Source Manifest already derives a deterministic source-content identity:
+
+~~~text
+SOURCE-MANIFEST.json
++ source-manifest-parts/bucket-*.json
+-> hydrateStoredSourceManifest(...)
+-> treeSha256
+~~~
+
+The v3 stored-manifest reader derives that identity from checked-in source bytes and therefore works
+for the ordinary downloaded tarball without requiring a `.git` directory.
+
+The source identity flow should be:
+
+~~~text
+Source Manifest owner
+  owns exact source-content identity
+        |
+        v
+browser server
+  projects currentServerSource
+  + binds the exact same source identity into the HTML document it serves
+        |
+        +-----------------------+
+        |                       |
+        v                       v
+loadedDocumentSource       currentServerSource
+        \                       /
+         \                     /
+          +--> Interface Compound
+~~~
+
+The document identity must be bound by the server that served the document itself. Do **not** make
+the document discover its own initial identity only by a later fetch, because the server may have
+rotated between document load and that fetch.
+
+A bounded implementation can therefore:
+
+~~~text
+server startup
+-> hydrate stored Source Manifest once
+-> retain sourceTreeSha256
+
+GET /reference/browser/
+-> serve index document with sourceTreeSha256 bound into the document
+
+GET current-source identity API
+-> return same sourceTreeSha256
+-> Cache-Control: no-store
+-> effects=false
+~~~
+
+The exact HTML binding form can be a stable document data/meta identity; the semantic requirement is
+that it survives for the lifetime of that loaded document.
+
+#### F2b — reuse VexCompoundState directly in the browser
+
+The universal implementation is already browser-capable.
+
+`src/core/state-relay.mjs` depends only on `src/core/utils.mjs`, whose hashing path intentionally
+falls back to a browser-native implementation when Node APIs are absent.
+
+Therefore the browser should consume the accepted runtime directly rather than reconstruct Compound
+semantics:
+
+~~~text
+reference/browser/modules/interface-compound-currentness.js   # candidate path
+        |
+        +-> src/core/state-relay.mjs
+              VexCompoundState
+              StateCell
+              immutable snapshots
+              coherent-input gating
+              serial reconciliation
+~~~
+
+Candidate retained inputs:
+
+~~~text
+loadedDocumentSource
+currentServerSource
+CompanionAvailability
+canonicalConversationCurrentness
+browserObservationCurrentness
+~~~
+
+Candidate output remains the F1 relationship vocabulary:
+
+~~~text
+UNOBSERVED
+SOURCE_MISMATCH
+OBSERVING
+RECOVERABLE
+ACTION_REQUIRED
+UNAVAILABLE
+READY
+~~~
+
+Browser lifetime events are observation triggers, not Controls:
+
+~~~text
+pageshow
+window focus
+visibilitychange -> visible
+explicit post-recovery completion
+        |
+        v
+begin one new observation generation
+        |
+        +-> current server source
+        +-> Companion availability
+        +-> canonical Conversation currentness
+        |
+        v
+admit only results belonging to the newest generation
+        |
+        v
+VexCompoundState
+~~~
+
+This generation boundary is required because the current reads are asynchronous and the accepted
+Compound runtime serializes admission but does not magically know whether an older fetch completed
+late.
+
+~~~text
+SERIAL_ACCEPTANCE
+!= ASYNC_RESULT_FRESHNESS
+
+OLDER_OBSERVATION_GENERATION
+!= CURRENT_INPUT
+~~~
+
+#### F2c — Send consumes Compound READY, not cached Companion READY
+
+Current browser behavior is narrower:
+
+~~~text
+channelIsAvailable(companion)
+-> Companion availabilityState == READY
+-> !companionTurnPending
+~~~
+
+And current Send does:
+
+~~~text
+cached Companion != READY
+-> refresh Companion
+
+cached Companion == READY
+-> do not re-observe
+-> Send may proceed
+~~~
+
+Canonical Conversation currentness is already source-owned and read by the browser, but it is not a
+current Send-admission predicate.
+
+F2 should change only that admission seam:
+
+~~~text
+Interface Compound == READY
++ existing action.message.send
+-> existing Conversation send path
+
+Interface Compound != READY
+-> preserve local draft
+-> no Send effect
+~~~
+
+Permanent:
+
+~~~text
+COMPOUND_READY_GATES_SEND
+!= COMPOUND_OWNS_SEND
+
+CONVERSATION_CURRENTNESS_INPUT
+!= CONVERSATION_OWNER_TRANSFER
+~~~
+
+#### F2d — source mismatch must be draft-safe
+
+A source mismatch may require the browser/navigation owner to load the current document, but the
+current `UNSENT_LOCAL_DRAFT` exists only in live JavaScript state.
+
+Therefore:
+
+~~~text
+SOURCE_MISMATCH
+-> capture current composer text
+-> carry only the unsent draft through browser-session storage
+-> navigate/reload through the browser owner
+-> restore the matching scoped draft
+-> re-observe
+~~~
+
+This draft carriage is:
+
+~~~text
+browser-session scoped
+ephemeral
+human-authored unsent text only
+not a Conversation append
+not Memory
+not Home truth
+not model context
+not a queued Send
+~~~
+
+The existing Chat owner should remain the draft owner; F2 should not create a second draft service.
+
+There is also one honest migration boundary:
+
+~~~text
+pre-F2 document
++ draft existed only in that old document's RAM
+-> new source cannot reconstruct that draft from nowhere
+~~~
+
+The first F2 adoption can prevent same-URL focus from hiding the new document by making the normal
+Open Vex request source-addressed (for example, a source-identity query carried by the current setup
+source). That causes the new setup to request a current document even when the old document does not
+yet contain F2 code.
+
+But:
+
+~~~text
+SOURCE_ADDRESSED_OPEN
+!= MAGIC_RECOVERY_OF_PRE-F2_EPHEMERAL_DRAFT
+~~~
+
+After F2 is present, session draft carriage makes later source-mismatch reloads draft-safe.
+
+#### F2 source-ready candidate membrane
+
+No VexLife authoring authority is claimed here. Current source inspection supports this bounded
+candidate membrane:
+
+~~~text
+source identity owner / projection
+  src/core/source-manifest.mjs
+  test/source-manifest.test.mjs
+  blueprint/module-registry/core.json
+
+browser server projection
+  scripts/serve-browser-core.mjs
+  blueprint/module-registry/scripts.json
+  test/browser.test.mjs
+
+browser Compound realization
+  reference/browser/modules/interface-compound-currentness.js   # candidate new path
+  reference/browser/modules/chat-controller.js
+  reference/browser/app.js
+  blueprint/module-registry/browser.json
+  test/interface-compound-currentness-browser.test.mjs          # candidate new path
+  test/browser.test.mjs
+
+ordinary Open Vex migration bridge
+  install/vexlife-setup.sh
+  test/macos-human-setup.test.mjs
+~~~
+
+Candidate deterministic Source Manifest custody:
+
+~~~text
+src/core/source-manifest.mjs                              -> bucket-fc
+blueprint/module-registry/core.json                       -> bucket-8b
+scripts/serve-browser-core.mjs                            -> bucket-3b
+blueprint/module-registry/scripts.json                    -> bucket-d8
+reference/browser/modules/interface-compound-currentness.js -> bucket-cd
+reference/browser/modules/chat-controller.js              -> bucket-f6
+reference/browser/app.js                                  -> bucket-56
+blueprint/module-registry/browser.json                    -> bucket-fd
+test/source-manifest.test.mjs                             -> bucket-19
+test/browser.test.mjs                                     -> bucket-f1
+test/interface-compound-currentness-browser.test.mjs      -> bucket-85
+install/vexlife-setup.sh                                  -> bucket-b7
+test/macos-human-setup.test.mjs                           -> bucket-f9
+~~~
+
+Fresh inspection of all current open VexLife PRs found no overlap on those authored paths or their
+generated buckets.
+
+Again:
+
+~~~text
+CURRENTLY_DISJOINT
+!= AUTHORING_CUSTODY
+~~~
+
+F2 proof obligations should include:
+
+~~~text
+1. stored Source Manifest identity hydrates without Git metadata
+2. served document receives the serving source identity
+3. current-source API reports the same identity from the running server
+4. A-loaded document + B-current server derives SOURCE_MISMATCH
+5. late observation generation cannot replace newer admitted truth
+6. focus/pageshow/visible activation cause re-observation, not effects
+7. Compound READY requires source + Companion + Conversation currentness
+8. cached Companion READY alone cannot admit Send
+9. SOURCE_MISMATCH performs no Conversation/model/recovery effect
+10. draft is captured before browser-owned reload and restored after it
+11. session draft carriage never becomes canonical Conversation/Memory
+12. accepted VexCompoundState is imported/reused rather than reimplemented
+~~~
+
 ### Foundation-to-interface sequence
 
 ~~~text

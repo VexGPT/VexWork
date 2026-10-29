@@ -74,7 +74,7 @@
       "workRef": "work.vexlife.interface-refinement.interface-compound-relay",
       "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
       "label": "Current — Interface Compound Relay convergence",
-      "purpose": "Finish Interface Compound Relay foundation-first in four bounded slices: F0 currentizes the existing VexLife State Relay/VexCompoundState foundation and module maps so accepted PR #790 Compound semantics are discoverable; F1 source-places a VexLife-owned portable Compound-convergence relationship contract without modifying the Play/Pause-specific portable Behavior v1 lineage; F2 realizes that relationship in browser/native source while reusing existing Send, Companion re-entry and navigation/lifecycle effect owners; F3 proves the ordinary existing-tab setup/recovery/Send/re-entry human seam. Preserve independently owned truth/effect boundaries and do not invent CompoundFamily, InterfaceSend, a second Compound runtime, global revision counter or Kotlin-shaped browser framework.",
+      "purpose": "Finish Interface Compound Relay foundation-first: F0 currentizes accepted State Relay/VexCompoundState discoverability; F1 source-places portable Compound-convergence meaning; F2 reuses Source Manifest tree identity plus the browser-safe VexCompoundState to distinguish loaded-document source from current-server source, re-observe Companion/Conversation truth on document activation, reject stale async generations, gate existing Send on Compound READY, and preserve session-scoped unsent drafts across browser-owned source reload; F3 proves the ordinary existing-tab setup/recovery/Send/re-entry seam. Preserve existing Conversation, Companion recovery, browser navigation and lifecycle effect owners.",
       "workClass": "TASK",
       "state": "READY",
       "priorityClass": "IMMEDIATE",
@@ -147,7 +147,13 @@
         "github.pull.vexlife.902",
         "repo.vexlife:src/core/blueprint-base.mjs",
         "repo.vexlife:scripts/validate-blueprint.mjs",
-        "repo.vexlife:SOURCE-MANIFEST.json"
+        "repo.vexlife:SOURCE-MANIFEST.json",
+        "repo.vexlife:src/core/source-manifest.mjs",
+        "repo.vexlife:test/source-manifest.test.mjs",
+        "repo.vexlife:blueprint/module-registry/scripts.json",
+        "repo.vexlife:blueprint/module-registry/browser.json",
+        "repo.vexlife:test/macos-browser-companion-binding-reuse.test.mjs",
+        "repo.vexlife:test/macos-open-vex-companion-readiness.test.mjs"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
@@ -1129,7 +1135,14 @@
     "repo.vexlife:src/core/companion-availability-reentry.mjs",
     "repo.vexlife:src/core/blueprint-base.mjs",
     "repo.vexlife:scripts/validate-blueprint.mjs",
-    "repo.vexlife:SOURCE-MANIFEST.json"
+    "repo.vexlife:SOURCE-MANIFEST.json",
+    "repo.vexlife:setup-vexlife.command",
+    "repo.vexlife:src/core/source-manifest.mjs",
+    "repo.vexlife:test/source-manifest.test.mjs",
+    "repo.vexlife:blueprint/module-registry/scripts.json",
+    "repo.vexlife:blueprint/module-registry/browser.json",
+    "repo.vexlife:test/macos-browser-companion-binding-reuse.test.mjs",
+    "repo.vexlife:test/macos-open-vex-companion-readiness.test.mjs"
   ],
   "formedAt": "2026-10-25T01:23:08.000Z"
 }
