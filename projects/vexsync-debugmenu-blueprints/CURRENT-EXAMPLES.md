@@ -5732,3 +5732,45 @@ Walk / dedicated Journey / focused proof backlinks so ScreenCrawler inherits tha
 inventing one.
 
 <!-- [VXG RealForever][VEXSYNC][FAMILY-ACCEPTED][THEME-FULL-WALK-CONFIDENCE] -->
+
+
+---
+
+## Current strategy — Android realization first; VexBoard projects accepted reality
+
+The current foreground is **not** general Android cleanup and is **not** another VexBoard architecture
+push.
+
+~~~text
+IMMEDIATE
+  Android ThemeMode Family realization / proof
+  -> VexLife-Android PR #188
+
+PARALLEL / INDEPENDENT
+  VexStream Artwork PR #186
+  -> retains VexLifeSession.kt until its own lifecycle releases that path
+
+  VexBoard navigation-first lived interaction check
+  -> separate usability evidence
+  -> does not reopen completed architecture convergence
+
+AFTER #188 PROOF + VexLifeSession PATH RELEASE
+  wire DebugMenu Toggle into ThemeModeFamily
+  -> prove the real runtime path
+  -> bind Feature Walk / Journey / focused backlinks
+  -> let ScreenCrawler consume that same Journey
+
+THEN
+  VexBoard projects the accepted real walk
+  -> observe repeated friction
+  -> only then extract broader reusable VexSync machinery
+~~~
+
+Android work is therefore **feature realization**, not repository cleanup. Existing stale docs or
+unrelated Android debt are corrected only when they block the current claim, misstate the source being
+consumed, or become part of the exact causal path.
+
+VexBoard is currently a projection/pressure surface for this trajectory, not the source owner of the
+next semantic implementation.
+
+<!-- [VXG RealForever][VEXSYNC][CURRENT-STRATEGY][ANDROID-FIRST-REALIZATION] -->

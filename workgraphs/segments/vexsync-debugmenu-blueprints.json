@@ -54,7 +54,7 @@
       "workClass": "TASK",
       "state": "RUNNING",
       "workDisposition": "ACTIVE",
-      "priorityClass": "HIGH",
+      "priorityClass": "IMMEDIATE",
       "dependencyRefs": [],
       "repositoryRefs": [
         "repo.vexwork",
@@ -88,7 +88,7 @@
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-26T07:26:46.000Z",
-      "updatedAt": "2026-10-29T13:54:10.000Z"
+      "updatedAt": "2026-10-29T14:05:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -99,7 +99,7 @@
       "workClass": "TASK",
       "state": "COMPLETED",
       "workDisposition": "ACTIVE",
-      "priorityClass": "IMMEDIATE",
+      "priorityClass": "HIGH",
       "dependencyRefs": [],
       "repositoryRefs": [
         "repo.vexwork",
@@ -129,7 +129,7 @@
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-29T11:25:00.000Z",
-      "updatedAt": "2026-10-29T12:51:45.000Z"
+      "updatedAt": "2026-10-29T14:05:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -226,6 +226,25 @@
         "github.comment.vexwork.pr184.6497173636.lived-pages-acceptance"
       ],
       "createdAt": "2026-10-29T12:51:45.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.strategy.android-theme-immediate-after-vexboard-completion-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING",
+      "reason": "After VexBoard architecture convergence completed and Android Family Circuit #193 became accepted main, the next unconsumed causal edge is the ThemeMode patient-zero realization/proof on Android PR #188. VexBoard remains a projection/pressure surface; general Android cleanup is not the outcome. Priority is currentized so the dashboard reflects Android ThemeMode realization as the immediate foreground while independent VexBoard lived usability and VexStream artwork ownership continue separately.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.188",
+        "github.commit.vexlife-android.e979a4e2b4c91e7eb7068df127d9b4232a666947",
+        "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+        "github.pull.vexwork.184",
+        "github.comment.vexwork.pr184.6497173636.lived-pages-acceptance",
+        "github.pull.vexwork.186",
+        "github.pull.vexlife-android.186"
+      ],
+      "createdAt": "2026-10-29T14:05:00.000Z"
     }
   ],
   "sourceRefs": [
