@@ -4929,3 +4929,69 @@ This clarification does **not** create a new universal schema, new Android depen
 No human host action is required to preserve this design.
 
 <!-- [VXG RealForever][VEXWORK][VEXBOARD][PROJECT-ARCHITECTURE] -->
+
+---
+
+## VexSync convergence baseline — self-apply the architecture
+
+The current VexSync Direct Family / typed identity / Kotlin round-trip work is now an explicit
+VexBoard consumer rather than adjacent context.
+
+~~~text
+VexSync
+  owns the cross-project semantic/process convergence trajectory
+
+VexBoard
+  owns VexBoard product/source evolution
+
+VexLife-Android
+  owns the Direct Family / execution candidate and Kotlin proof source
+
+VexBoard projection
+  consumes those relationships
+  != becomes their source owner
+~~~
+
+Current foundation baseline:
+
+~~~text
+Android PR #193
+  typed Family / Control / ResourceId / Relationship boundary
+
+VexWork merge 0d55e3aa83b7972cc83ef9fe2a7266311932a7c8
+  first flat four-region ThemeMode map
+  effect-free Family Kotlin construction preview
+  mapped Kotlin test candidate
+
+lived browser evidence
+  VexBoard shell header renders
+  application body is blank
+  -> browser recovery is the first current implementation edge
+~~~
+
+The next VexBoard work is:
+
+~~~text
+work.vexboard.vexsync-architecture-convergence
+
+1. recover the blank browser surface
+2. make VexBoard itself visibly reflect the trusted architecture
+3. keep the first self-map flat/readable before adding depth-dimensional behavior
+4. preserve one language from semantic map -> Kotlin construction candidate -> mapped test
+5. keep target repository mutation behind separately admitted source authority
+~~~
+
+This is not a project-parenting change:
+
+~~~text
+VEXSYNC CONVERGENCE
+!= VEXSYNC OWNS VEXBOARD
+
+CROSS-PROJECT WORK RELATIONSHIP
+!= PROJECT HIERARCHY
+~~~
+
+Depth/fractal work remains a later pressure after the flat self-application is lived and readable.
+
+<!-- [VXG RealForever][VEXBOARD][VEXSYNC-CONVERGENCE][FOUNDATION-BASELINE] -->
+
