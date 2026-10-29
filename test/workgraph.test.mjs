@@ -312,6 +312,20 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(graph.items.some((item) => item.workRef === 'work.vexsync.debugmenu-blueprints.android-construction-proof'), false);
   assert.equal(graph.items.some((item) => item.workRef === 'work.vexsync.debugmenu-blueprints.save-apply-pr-loop'), false);
 
+  const vextremeArchitectureOutcome = graph.items.find((item) => item.workRef === 'work.vextreme.architecture-convergence.outcome');
+  const vextremeArchitectureOwnerMap = graph.items.find((item) => item.workRef === 'work.vextreme.architecture-convergence.semantic-owner-map');
+  const vextremeArchitectureTerrainReader = graph.items.find((item) => item.workRef === 'work.vextreme.architecture-convergence.terrain-reader-navigation');
+  assert.equal(vextremeArchitectureOutcome.state, 'RUNNING');
+  assert.equal(vextremeArchitectureOutcome.priorityClass, 'IMMEDIATE');
+  assert.equal(vextremeArchitectureOwnerMap.state, 'RUNNING');
+  assert.deepEqual(vextremeArchitectureOwnerMap.dependencyRefs, [
+    'work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery',
+  ]);
+  assert.equal(vextremeArchitectureTerrainReader.state, 'WAITING_DEPENDENCIES');
+  assert.deepEqual(vextremeArchitectureTerrainReader.dependencyRefs, [
+    vextremeArchitectureOwnerMap.workRef,
+  ]);
+
   const operationalOutcome = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.outcome');
   const derivedFoundation = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.derived-work-foundation');
   const derivedContract = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.derived-work-contract');
