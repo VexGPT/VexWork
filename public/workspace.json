@@ -12250,6 +12250,7 @@
           "parentWorkRefOrNull": null,
           "childWorkRefs": [
             "work.vextreme.architecture-convergence.semantic-owner-map",
+            "work.vextreme.architecture-convergence.terrain-journey-inspection",
             "work.vextreme.architecture-convergence.terrain-reader-navigation"
           ],
           "dependencyRefs": [],
@@ -12336,6 +12337,37 @@
           "transitionHistory": []
         },
         {
+          "workRef": "work.vextreme.architecture-convergence.terrain-journey-inspection",
+          "label": "Expose Terrain Journey causal context in Inspect",
+          "purpose": "Use the existing Terrain Journey inspection surface to project the already-owned relationship and reason facts separately: correct the misleading journey-reason presentation symbol that currently renders a relationship, expose the stored causal reason without creating another event stream or behavior owner, and keep instrumentation downstream of accepted Journey truth.",
+          "workClass": "TASK",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vextreme.architecture-convergence.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "projects/vextreme-architecture-convergence/README.md",
+            "github.pull.vextreme.493",
+            "github.commit.vextreme.36ced69ee6719bf05481110a753aee9e989d4885",
+            "repo.vextreme:pages/terrain-map.html",
+            "repo.vextreme:lib/terrain-journey.js",
+            "github.pull.vexlife-android.193",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/designhistory/design/records/2026-10-16-002-name-ontology-as-design-evidence.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-29T12:30:00.000Z",
+          "updatedAt": "2026-10-29T12:30:00.000Z",
+          "transitionHistory": []
+        },
+        {
           "workRef": "work.vextreme.architecture-convergence.terrain-reader-navigation",
           "label": "Converge Terrain / embedded-reader / Arc Nav navigation ownership",
           "purpose": "Use Receive God -> Direct Contact -> The 100% Holy Truth Conditional as the first lived architecture patient zero: preserve Terrain as journey/history owner, Arc Nav as content-topology owner, embedded pages as document realization, and downstream instrumentation as observation only; make a same-current-group Arc parent action converge on the existing Terrain return relationship while preserving true cross-group and Previous/Next topology traversal.",
@@ -12408,7 +12440,8 @@
           "label": "Active",
           "workRefs": [
             "work.vextreme.architecture-convergence.outcome",
-            "work.vextreme.architecture-convergence.semantic-owner-map"
+            "work.vextreme.architecture-convergence.semantic-owner-map",
+            "work.vextreme.architecture-convergence.terrain-journey-inspection"
           ]
         },
         {
@@ -12445,10 +12478,10 @@
         }
       ],
       "summary": {
-        "workItemCount": 3,
-        "openWorkItemCount": 3,
+        "workItemCount": 4,
+        "openWorkItemCount": 4,
         "outcomeCount": 1,
-        "taskCount": 2,
+        "taskCount": 3,
         "defectCount": 0,
         "potentialCount": 0,
         "needsHumanCount": 0,

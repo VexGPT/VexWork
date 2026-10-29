@@ -674,6 +674,68 @@ Name Ontology applies here too: `logger`, `event`, `debug`, and implementation c
 semantic Family or Control identities. The semantic noun remains the truthful domain object — currently
 Terrain Journey — while diagnostic transports remain projections.
 
+## Terrain Journey inspection — Name Ontology + instrumentation patient two
+
+The next implementation slice is earned by one concrete source mismatch rather than by a desire for
+more architecture ceremony.
+
+Current source stores both:
+
+~~~text
+Journey entry.relationship
+Journey entry.reason
+~~~
+
+but the existing drawer currently does:
+
+~~~text
+CSS class .journey-reason
+-> renders entry.relationship
+-> does not render entry.reason
+~~~
+
+Cold-read prediction:
+
+~~~text
+journey-reason
+  -> "this displays the causal reason for the Journey step"
+~~~
+
+Actual source truth:
+
+~~~text
+journey-reason
+  -> relationship label
+~~~
+
+That is a material **[Name Ontology]** prediction gap because the class name points a maintainer at the
+wrong semantic field.
+
+The bounded correction is:
+
+~~~text
+entry.relationship
+-> .journey-relationship
+
+entry.reason
+-> .journey-reason
+-> read-only causal projection in the existing Journey inspection surface
+~~~
+
+Permanent boundary:
+
+~~~text
+Journey still owns the accepted facts
+Inspect only projects them
+
+INSPECTION != ACTIVATION
+INSTRUMENTATION != BEHAVIOR OWNER
+DISPLAY CLASS != SEMANTIC IDENTITY
+~~~
+
+No generic telemetry root, event bus, analytics schema, navigation logger, Family, Control or Act is
+earned by this correction.
+
 ## Receive God localization seam — route to the existing owner
 
 The original lived observation also exposed a second seam: **Receive God does not currently have a real
@@ -799,6 +861,10 @@ work.vextreme.architecture-convergence.semantic-owner-map
   RUNNING
   live architectural context:
     work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery
+
+work.vextreme.architecture-convergence.terrain-journey-inspection
+  RUNNING
+  project accepted Journey relationship + reason facts in Inspect
 
 work.vextreme.architecture-convergence.terrain-reader-navigation
   VERIFYING
