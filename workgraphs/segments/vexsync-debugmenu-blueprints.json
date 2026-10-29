@@ -322,7 +322,7 @@
       "label": "Bind Compound output through target Family Control",
       "purpose": "Resolve the old Direct Family Origin-Walk Process OutputState -> ??? -> Family.currentState question using only already-earned foundation language. Compound/Process remains the relationship owner; when its Output means another Family should act, feature composition forms that Family's own typed Control and calls Family.activate(Control), which re-reads CURRENT State and owns stay/admit/begin. The resulting Family truth returns as fresh Compound input. Prove this cross-root loop without adding a direct State bridge, public setter, CompoundFamily, post-process Act framework, or new relationship vocabulary.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "CANCELLED",
       "workDisposition": "ACTIVE",
       "priorityClass": "HIGH",
       "dependencyRefs": [
@@ -340,7 +340,9 @@
         "github.comment.vexlife-android.pr193.6501858487.origin-question-pr197",
         "github.comment.vexlife-android.pr196.6501857206.follow-up-pr197",
         "github.comment.vexlife-android.pr197.6501924215.sourceowner-a001-formed",
-        "evidence.vexsync.pr197.sourceowner.a001.formation.sha256.00e4df80c69e3bd89479322d51295ff6a2b49b7c2a42f9eef5b4a50708b37cca"
+        "evidence.vexsync.pr197.sourceowner.a001.formation.sha256.00e4df80c69e3bd89479322d51295ff6a2b49b7c2a42f9eef5b4a50708b37cca",
+        "github.pull.vexlife-android.197.closed-withdrawn",
+        "correction.vexsync.family-compound-control-binding.wrong-seam.20261029a"
       ],
       "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
       "nextProcessRefs": [
@@ -349,7 +351,40 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-29T16:52:00.000Z",
-      "updatedAt": "2026-10-29T17:01:00.000Z"
+      "updatedAt": "2026-10-29T17:18:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexsync.debugmenu-blueprints.family-state-relay-currentness",
+      "parentWorkRefOrNull": "work.vexsync.debugmenu-blueprints.outcome",
+      "label": "Make Direct Family StateRelay the serialized currentness boundary",
+      "purpose": "Finish the Direct Family current-State contract already pressured by the Origin Walk without adding another currentness owner. StateRelay remains the one live Family State holder. Control activation resolves and commits against exact CURRENT State under one serialized boundary; delayed Begin results may re-evaluate CURRENT through admit { current -> next }; already-reconciled external truth enters through a concrete Family method backed by protected admitCurrent { current -> next }. Keep VexCompoundRelay current relationship State separate rather than manufacturing OutputState -> Family.currentState. Tighten VexExecution so result-admission failure cannot be mislabeled as operation/provider failure.",
+      "workClass": "DEFECT",
+      "state": "RUNNING",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexsync.debugmenu-blueprints.direct-family-post193-hardening"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "github.pull.vexlife-android.193",
+        "github.pull.vexlife-android.196",
+        "github.pull.vexlife-android.198",
+        "github.commit.vexlife-android.78580ab051a33fb2c94903be5bf401f4f43f2087",
+        "github.pull.vexlife-android.197.withdrawn-wrong-seam"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+      "nextProcessRefs": [
+        "process.vexlife-android.feature-authoring"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-29T17:18:00.000Z",
+      "updatedAt": "2026-10-29T17:18:00.000Z"
     }
   ],
   "transitions": [
@@ -683,6 +718,34 @@
         "evidence.vexsync.pr197.sourceowner.a001.formation.sha256.00e4df80c69e3bd89479322d51295ff6a2b49b7c2a42f9eef5b4a50708b37cca"
       ],
       "createdAt": "2026-10-29T17:01:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.family-compound-control-binding.running-cancelled.wrong-seam-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.family-compound-control-binding",
+      "priorState": "RUNNING",
+      "nextState": "CANCELLED",
+      "reason": "PR #197 answered a valid cross-owner request/feedback consequence but was incorrectly framed as the resolution of Family currentness. Re-reading the Origin StateRelay pressure proved that Family currentness is one serialized CURRENT-State admission boundary, while Compound Relay owns its own current relationship State. PR #197 was closed unmerged and its proof package must not be run.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.197",
+        "github.pull.vexlife-android.198"
+      ],
+      "createdAt": "2026-10-29T17:18:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.family-state-relay-currentness.running.formed-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.family-state-relay-currentness",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Total Origin-Walk re-review separated currentness from cross-owner consequences. Android PR #198 is the correct stacked candidate: one Family StateRelay holder, one serialized CURRENT-aware admission boundary for Controls/results/reconciled truth, separate Compound Relay current ownership, and distinct Execution operation-vs-result failure semantics. Withdrawn PR #197 is retained only as wrong-seam history.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.198",
+        "github.commit.vexlife-android.78580ab051a33fb2c94903be5bf401f4f43f2087"
+      ],
+      "createdAt": "2026-10-29T17:18:00.000Z"
     }
   ],
   "sourceRefs": [
