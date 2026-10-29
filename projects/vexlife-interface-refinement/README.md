@@ -854,13 +854,13 @@ words.
 The contract prototype plus F2/draft seam prototypes now total:
 
 ~~~text
-20 / 20 disposable semantic PASS
+23 / 23 disposable semantic PASS
 ~~~
 
 Still:
 
 ~~~text
-DISPOSABLE_20_OF_20
+DISPOSABLE_23_OF_23
 != REPOSITORY_TEST_PASS
 ~~~
 
@@ -1488,6 +1488,160 @@ SERIAL_ACCEPTANCE
 OLDER_OBSERVATION_GENERATION
 != CURRENT_INPUT
 ~~~
+
+#### F2 browser observation ownership — reject stale work before Chat mutation
+
+The disposable currentness prototype was extended from final-state-only admission to retain the exact
+raw observations that formed the current relationship.
+
+New disposable proof:
+
+~~~text
+11 / 11 Interface currentness PASS
+
+previous 8 relationship/currentness cases
++ raw current Companion + Conversation projections retained after current generation settles
++ overlapping older observation cannot replace those retained raw inputs
++ current-generation source read failure settles UNAVAILABLE instead of hanging OBSERVING
+~~~
+
+Combined disposable semantic evidence is now:
+
+~~~text
+11 Interface currentness
++ 7 portable convergence contract
++ 5 draft carriage
+= 23 / 23 PASS
+~~~
+
+Still:
+
+~~~text
+DISPOSABLE_23_OF_23
+!= VEXLIFE_REPOSITORY_PASS
+~~~
+
+The implementation consequence is important.
+
+Do **not** implement:
+
+~~~text
+old async Chat refresh
+-> mutate companionAvailability / conversation currentness
+-> later tell Compound whether that mutation was stale
+~~~
+
+That admits stale state before currentness arbitration.
+
+Instead:
+
+~~~text
+pure browser observation reads
+  current server source
+  Companion availability
+  canonical Conversation currentness
+        |
+        v
+one observation generation
+        |
+        + stale generation? -> discard before any retained browser truth changes
+        |
+        v
+VexCompoundState accepts raw current-generation inputs
+        |
+        +-> relationship State
+        +-> current admitted Companion snapshot
+        +-> current admitted Conversation identity
+~~~
+
+Chat then **reads** the admitted observations:
+
+~~~text
+Chat presentation / recovery affordance
+  -> Interface currentness current Companion snapshot
+
+next message sequence / visible canonical head
+  -> Interface currentness current Conversation snapshot
+
+Send admission
+  -> Interface currentness semantic State == READY
+~~~
+
+Chat remains the owner of:
+
+~~~text
+message presentation
+local unsent draft
+recovery-control presentation/action request
+existing Conversation Send effect path
+~~~
+
+Interface currentness does not become any of those owners.
+
+#### Construction order — no circular semantic ownership
+
+The browser currentness helper does not need Chat to exist.
+
+It can form from:
+
+~~~text
+loaded document source identity
+fetch / HTTP readers
+accepted VexCompoundState
+portable F1 semantic contract
+~~~
+
+Then:
+
+~~~text
+1. create Interface currentness
+2. create Chat with a read-only Interface-currentness dependency
+3. perform initial Conversation projection read for message bodies
+4. perform one Interface-currentness observation
+5. first composer render consumes admitted relationship truth
+6. bind browser activation triggers
+~~~
+
+This avoids:
+
+~~~text
+Chat owns currentness
+<-> currentness owns Chat
+~~~
+
+The browser adapter remains the lifecycle/observation owner and invokes the helper.
+
+#### Compatibility wrappers are not new truth owners
+
+Current code/tests call:
+
+~~~text
+chat.refreshCompanionAvailability()
+chat.refreshConversationCurrentness()
+~~~
+
+F2 may retain bounded compatibility methods while source transitions, but they must delegate to the
+single Interface-currentness observation boundary rather than starting independent mutating reads.
+
+Likewise:
+
+~~~text
+refreshConversationProjection()
+~~~
+
+may continue to own canonical message-body projection, but it must not become a second independent
+Conversation-currentness cache after F2.
+
+Permanent:
+
+~~~text
+MESSAGE_PROJECTION
+!= CONVERSATION_CURRENTNESS_OWNER
+
+COMPATIBILITY_REFRESH_METHOD
+!= SECOND_OBSERVATION_PIPELINE
+~~~
+
 
 #### F2c — Send consumes Compound READY, not cached Companion READY
 
