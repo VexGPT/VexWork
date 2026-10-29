@@ -2,6 +2,77 @@
 
 [VXG RealForever]
 
+## Accepted reusable architecture versus Theme Mode patient-zero mapping
+
+**Accepted reusable architecture owner:** VexLife-Android main `3c899e656d90487abcff06df7b087a42c4a68523`.
+
+The following is now accepted reusable language:
+
+~~~text
+Family
+State
+Control
+DisplayState
+ResourceId
+RelationshipId
+Act
+Begin
+Approach
+InstanceId
+
+Family.activate(control)
+act(currentState, control)
+noAct()
+stay()
+admit(State)
+~~~
+
+Theme Mode remains the living specimen that maps product intention onto that architecture. Do not
+reverse the authority:
+
+~~~text
+ACCEPTED FAMILY CIRCUIT
+  reusable architecture law
+
+THEME MODE PATIENT ZERO
+  one feature mapping / pressure test
+
+VEXBOARD FAMILY CIRCUIT BOARD
+  read-only projection of accepted architecture
+
+FEATURE WALK / JOURNEY / SCREENCRAWLER
+  next traceability consumer
+
+PATIENT_ZERO_MAPPING
+!=
+UNIVERSAL_ARCHITECTURE_OWNER
+
+SCREENSHOT_EVIDENCE
+!=
+SEMANTIC_TRUTH
+~~~
+
+The desired high-integrity trace for the patient zero is eventually:
+
+~~~text
+human Theme Mode outcome
+-> Feature Walk Case / Checkpoint
+-> Journey interaction
+-> Theme Mode Control
+-> Family.activate(Control)
+-> act(CURRENT State, Control)
+-> Act / optional Begin
+-> RelationshipId + Approach
+-> exact runtime InstanceId
+-> VexLogger history
+-> rendered current UI
+-> ScreenCrawler evidence
+~~~
+
+Each arrow must be backed by its rightful owner. Missing links stay visible rather than being filled
+with a second test-only vocabulary.
+
+
 ## Status
 
 This is a current discovery companion, not an accepted schema, final process, canonical naming source or

@@ -28,6 +28,78 @@ PRESERVE_THE_PROJECT_NOW
 PRETEND_CANONICAL_REGISTRATION_ALREADY_HAPPENED
 ```
 
+## Accepted external architecture baseline — Family Circuit
+
+The Family Circuit architecture is now accepted in its rightful source owner:
+
+~~~text
+repository
+  vgong24/VexLife-Android
+
+accepted main
+  3c899e656d90487abcff06df7b087a42c4a68523
+
+accepted source
+  architecture/behavior/FAMILY-CIRCUIT.md
+  architecture/behavior/.../VexFamily.kt
+  architecture/execution/.../VexExecution.kt
+~~~
+
+VexBoard must project that language without replacing it with VexBoard's own storage/manipulation
+vocabulary:
+
+~~~text
+FAMILY CIRCUIT ARCHITECTURE
+  what the source-owned architecture means
+
+BOARDGRAPH / BOARDPROJECTION / BOARDCONTROL
+  how VexBoard represents and manipulates a projection
+
+FAMILY_CIRCUIT_ARCHITECTURE
+!=
+VEXBOARD_PROJECTION_SUBSTRATE
+~~~
+
+The browser therefore carries two distinct built-in maps:
+
+~~~text
+Open VexBoard projection architecture
+  -> VexBoard's own BoardGraph / BoardProjection / Control / Act substrate
+
+Open Family Circuit Architecture
+  -> accepted VexLife-Android Family language:
+     VexFamily<Family, State, Control>
+     State : VexFamily.State<Family>
+     Control : VexFamily.Control<Family>
+     Family.activate(control)
+     act(currentState, control)
+     noAct / stay / admit
+     Control.Resource<Family, ExactId>
+     ResourceId<Family>
+     VexFamily.RelationshipId<Family>
+     VexExecution.RelationshipId
+     Approach
+     InstanceId
+~~~
+
+The next proof consumer is intentionally **not yet claimed implemented**. Its desired trace is:
+
+~~~text
+Feature Walk Case / Checkpoint
+-> Journey
+-> UI semantic identity
+-> VexFamily.activate(Control)
+-> act(CURRENT State, Control)
+-> Act / optional Begin
+-> RelationshipId / Approach / InstanceId
+-> VexLogger semantic history
+-> observed UI state
+-> ScreenCrawler evidence
+~~~
+
+Those coordinates remain distinct owners. Linking them should increase traceability without turning
+Feature Walk, Journey, runtime execution, logging and screenshots into one identity or one truth owner.
+
 ### Consumed BoardGraph implementation admission
 
 The first bounded implementation grant is complete and remains useful as historical scope:

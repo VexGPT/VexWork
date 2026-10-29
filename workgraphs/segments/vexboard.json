@@ -373,7 +373,7 @@
       "workRef": "work.vexboard.vexsync-architecture-convergence",
       "parentWorkRefOrNull": "work.vexboard.outcome",
       "label": "VexSync ↔ VexBoard architecture convergence",
-      "purpose": "Use the current VexSync Direct Family / typed Control identity / Kotlin round-trip discoveries as the foundation baseline for VexBoard self-application: first recover the blank VexBoard browser surface exposed by lived use, then make VexBoard itself visibly reflect the trusted State / Control / Act / typed ResourceId / Relationship / Execution ownership language before adding deeper dimensional projection. Preserve VexBoard as the product/source owner, VexSync as the semantic/process convergence trajectory, and Android/test source as separately owned evidence; keep VexBoard edits effect-free toward target repositories until a rightful target-source action is separately admitted.",
+      "purpose": "Project the now-accepted VexLife-Android Family Circuit architecture into VexBoard using its exact Family / State / Control / Act / typed ResourceId / RelationshipId / Begin / Approach / InstanceId language while keeping VexBoard's BoardGraph/BoardProjection/BoardControl substrate visibly separate. The blank-screen recovery and navigation-first interaction are accepted foundations; the current edge is exact-language architecture projection. Preserve VexLife-Android as architecture/source owner, VexBoard as projection/product owner, VexSync as semantic/process convergence context, and hold deeper quadrant layout until language and visibility are lived-clear.",
       "workClass": "TASK",
       "state": "RUNNING",
       "workDisposition": "ACTIVE",
@@ -395,7 +395,6 @@
         "github.pull.vexwork.178",
         "github.commit.vexwork.0d55e3aa83b7972cc83ef9fe2a7266311932a7c8",
         "github.pull.vexlife-android.193",
-        "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
         "projects/vexboard/examples/vexlife-debug-menu-theme-mode.board.json",
         "src/core/vexboard-family-kotlin-construction.mjs",
         "test/vexboard-family-kotlin-construction.test.mjs",
@@ -408,7 +407,13 @@
         "github.pull.vexwork.184",
         "github.commit.vexwork.49ec3bd650dde810110b11a55e70907df0e9d9f2",
         "vexboard/architecture-map.json",
-        "src/core/vexboard-android-source-projector.mjs"
+        "src/core/vexboard-android-source-projector.mjs",
+        "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+        "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+        "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt",
+        "repo.vexlife-android:architecture/execution/README.md",
+        "vexboard/family-circuit-architecture.json",
+        "work.vexsync.debugmenu-blueprints.family-circuit-proof-spine"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [
@@ -417,7 +422,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-29T11:20:00.000Z",
-      "updatedAt": "2026-10-29T11:35:00.000Z"
+      "updatedAt": "2026-10-29T13:45:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",

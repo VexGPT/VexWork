@@ -102,6 +102,41 @@
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-26T07:26:46.000Z",
       "updatedAt": "2026-10-26T09:30:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexsync.debugmenu-blueprints.family-circuit-proof-spine",
+      "parentWorkRefOrNull": "work.vexsync.debugmenu-blueprints.outcome",
+      "label": "Apply accepted Family Circuit through Feature Walk / Journey / ScreenCrawler proof spine",
+      "purpose": "After VexBoard exact-language projection is current, use Theme Mode as the first bounded patient zero for tracing one human outcome from Feature Walk Case/Checkpoint through Journey and stable UI identity into VexFamily Control/Act/Relationship semantics, exact VexExecution runtime occurrence, VexLogger history, rendered current UI and ScreenCrawler evidence. Preserve every layer's distinct identity and truth ownership; do not make screenshots, Journey, Feature Walk or Execution a replacement semantic owner.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexboard.vexsync-architecture-convergence"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "projects/vexsync-debugmenu-blueprints/README.md",
+        "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+        "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+        "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+        "repo.vexlife-android:docs/features/FEATURE-WALKS.md",
+        "repo.vexlife-android:docs/foundation/JOURNEY-INSTRUMENTATION.md",
+        "repo.vexlife-android:docs/foundation/SCREEN-CRAWLER-EVIDENCE.md",
+        "vexboard/family-circuit-architecture.json",
+        "work.vexboard.vexsync-architecture-convergence"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-29T13:45:00.000Z",
+      "updatedAt": "2026-10-29T13:45:00.000Z"
     }
   ],
   "transitions": [],
@@ -121,7 +156,14 @@
     "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/debug/README.md",
     "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/debug/design/README.md",
     "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/runtime/AppActions.kt",
-    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt"
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt",
+    "work.vexsync.debugmenu-blueprints.family-circuit-proof-spine",
+    "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+    "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+    "repo.vexlife-android:docs/features/FEATURE-WALKS.md",
+    "repo.vexlife-android:docs/foundation/JOURNEY-INSTRUMENTATION.md",
+    "repo.vexlife-android:docs/foundation/SCREEN-CRAWLER-EVIDENCE.md",
+    "vexboard/family-circuit-architecture.json"
   ],
   "formedAt": "2026-10-26T07:26:46.000Z"
 }

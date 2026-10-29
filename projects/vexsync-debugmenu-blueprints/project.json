@@ -27,7 +27,14 @@
     "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/debug/README.md",
     "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/debug/design/README.md",
     "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/runtime/AppActions.kt",
-    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt"
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt",
+    "github.pull.vexlife-android.193",
+    "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+    "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+    "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt",
+    "repo.vexlife-android:architecture/execution/README.md",
+    "work.vexsync.debugmenu-blueprints.family-circuit-proof-spine",
+    "vexboard/family-circuit-architecture.json"
   ],
   "formedAt": "2026-10-26T07:26:46.000Z"
 }
