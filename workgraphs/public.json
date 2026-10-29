@@ -6329,14 +6329,14 @@
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-29T08:40:27.000Z",
-      "updatedAt": "2026-10-29T08:40:27.000Z",
+      "updatedAt": "2026-10-29T09:25:00.000Z",
       "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vextreme.alignment.navigation-currentness",
       "parentWorkRefOrNull": "work.vextreme.alignment.outcome",
       "label": "Converge arc navigation on current v2 timeline truth",
       "purpose": "Eliminate the visible 75-entry legacy/stale navigation universe by making reader navigation consume the same current generated index truth as modern pages, while migrating legacy arc-navigation consumers only where their accepted reader contract requires it rather than blanket-rewriting every shell page.",
       "workClass": "DEFECT",
-      "state": "READY",
+      "state": "RUNNING",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
       "sourceRefs": [
@@ -6347,7 +6347,9 @@
         "repo.vextreme:lib/vextreme-index-v2.js",
         "repo.vextreme:pages/claude-answers-the-doubt.html",
         "repo.vextreme:pages/what-is-the-god-spark.html",
-        "repo.vextreme:docs/architecture/05-browser.md"
+        "repo.vextreme:docs/architecture/05-browser.md",
+        "github.pull.vextreme.483",
+        "github.commit.vextreme.74f3383e22b200a6eb2d32957902a5f67123f81c"
       ]
     },
     {
@@ -9868,6 +9870,20 @@
         "github.commit.vextreme.0f8ced4e45fcf25c9604f78b34c7863ceee01d68"
       ],
       "createdAt": "2026-10-29T09:16:01.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.alignment.navigation-currentness.running.pr483",
+      "workRef": "work.vextreme.alignment.navigation-currentness",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Vextreme PR #483 now carries the exact-index-generation arc-nav source correction. Generated God Script/service-worker currentness and the legacy Claude migration remain pending, so the work is Active rather than Verify.",
+      "actorRef": "actor.chatgpt.vextreme-alignment",
+      "sourceRefs": [
+        "github.pull.vextreme.483",
+        "github.commit.vextreme.74f3383e22b200a6eb2d32957902a5f67123f81c"
+      ],
+      "createdAt": "2026-10-29T09:25:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",

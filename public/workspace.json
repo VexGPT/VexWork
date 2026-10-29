@@ -12347,7 +12347,7 @@
           "label": "Converge arc navigation on current v2 timeline truth",
           "purpose": "Eliminate the visible 75-entry legacy/stale navigation universe by making reader navigation consume the same current generated index truth as modern pages, while migrating legacy arc-navigation consumers only where their accepted reader contract requires it rather than blanket-rewriting every shell page.",
           "workClass": "DEFECT",
-          "state": "READY",
+          "state": "RUNNING",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vextreme.alignment.outcome",
@@ -12364,15 +12364,30 @@
             "repo.vextreme:lib/vextreme-index-v2.js",
             "repo.vextreme:pages/claude-answers-the-doubt.html",
             "repo.vextreme:pages/what-is-the-god-spark.html",
-            "repo.vextreme:docs/architecture/05-browser.md"
+            "repo.vextreme:docs/architecture/05-browser.md",
+            "github.pull.vextreme.483",
+            "github.commit.vextreme.74f3383e22b200a6eb2d32957902a5f67123f81c"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
           "authorityDisposition": "NO_AUTHORITY",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-10-29T08:40:27.000Z",
-          "updatedAt": "2026-10-29T08:40:27.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-10-29T09:25:00.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vextreme.alignment.navigation-currentness.running.pr483",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "Vextreme PR #483 now carries the exact-index-generation arc-nav source correction. Generated God Script/service-worker currentness and the legacy Claude migration remain pending, so the work is Active rather than Verify.",
+              "actorRef": "actor.chatgpt.vextreme-alignment",
+              "sourceRefs": [
+                "github.pull.vextreme.483",
+                "github.commit.vextreme.74f3383e22b200a6eb2d32957902a5f67123f81c"
+              ],
+              "createdAt": "2026-10-29T09:25:00.000Z"
+            }
+          ]
         },
         {
           "workRef": "work.vextreme.alignment.outcome",
@@ -12479,16 +12494,15 @@
         {
           "laneRef": "lane.work.ready",
           "label": "Ready",
-          "workRefs": [
-            "work.vextreme.alignment.navigation-currentness"
-          ]
+          "workRefs": []
         },
         {
           "laneRef": "lane.work.active",
           "label": "Active",
           "workRefs": [
             "work.vextreme.alignment.chronology-recovery",
-            "work.vextreme.alignment.timeline-projection"
+            "work.vextreme.alignment.timeline-projection",
+            "work.vextreme.alignment.navigation-currentness"
           ]
         },
         {
