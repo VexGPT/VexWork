@@ -7231,14 +7231,14 @@ Repository Gradle/JVM proof remains pending.
 
 ---
 
-## Current checkpoint — high-confidence Family review boundary
+## Current checkpoint — readable Family review boundary
 
 Current Android review PR:
 
 ~~~text
 #193
 head:
-640684ac5ef1269e38755defd679564259d9fd1d
+4495826757f1036d7e369334efe5c6f0fbf9c5e0
 ~~~
 
 Origin-Walk/history source:
@@ -7249,36 +7249,39 @@ head:
 dd050ff81db169277a77cad4e4bd6a4f21e58d0e
 ~~~
 
-The previous #193 extraction had promoted recent Compound-Family formalization too far. The current
-#193 head intentionally trims back to the last pre-formalization V2 Family implementation checkpoint:
+#193 has now been condensed past the earlier V2/resolve implementation vocabulary.
+
+Current feature-facing Family language:
 
 ~~~text
-89e1d27c9e28d2cca5192da9bbc10d3e493b40cd
-~~~
-
-Current high-confidence Family surface:
-
-~~~text
-Family
-  State
-  Control
-  DisplayState
-  current
-  acts
+VexFamily<State, Control>
+  currentState
+  displayState
   activate(Control)
-  optional Store / begin execution
+
+state<State.X> {
+  on<Control.Y> { currentState, control ->
+    stay() / admit(State)
+    optional begin(...)
+  }
+}
 ~~~
 
-Structural Act remains:
+Current simplifications:
 
 ~~~text
-CURRENT State + Control
--> authored Act scenario
--> stay / admit(concrete State)
--> optional begin(...)
+VexBehaviorV2 runtime surface          REMOVED
+resolve(...) language                  REMOVED
+recursive Family self-generic          REMOVED
+public Act carrier from activate(...)  REMOVED
+legacy V1 VexBehaviorFamily mutation   REMOVED FROM PR
+CompoundFamily/stateFactory            NOT ADMITTED
+Family-level revision                  NOT ADMITTED
 ~~~
 
-The existing Relay foundation continues to own convergence pressure:
+The remaining generics bind only State and Control on the new Family path.
+
+The existing Relay foundation continues to own the convergence/process pressure:
 
 ~~~text
 partial observations
@@ -7288,47 +7291,37 @@ partial observations
 -> ONE OutputState(fields...)
 ~~~
 
-Current #193 deliberately does NOT admit:
+The exact Family + Relay Single/Compound composition remains open. Process is not being turned into a
+second SCAE chain.
+
+Focused proof source:
 
 ~~~text
-VexBehaviorV2CompoundFamily
-VexBehaviorV2CompoundFamilyState
-stateFactory
-Family-level revision
-VexBehaviorV2CommittedOutput
-arbitrary post-commit act(OutputState)
-sealed Output solely to recover Act selection
+VexFamilyHighConfidenceTest
 ~~~
 
-The old Compound teaching suite was removed. The focused review test is now:
+Fresh instances should use #193 for the current readable Family candidate and #192 only for the
+historical pressure / why-path.
+
+Open edges remain:
 
 ~~~text
-VexBehaviorV2HighConfidenceTest
-~~~
-
-Open edges remain explicit rather than filled:
-
-~~~text
-Control + observation sharing one exact CURRENT Family decision boundary
+one exact CURRENT Family decision boundary when Control and observation collide
 cross-cycle relationship memory as explicit CURRENT input
 provider / intent stable-identity mapping
-exact Family + Relay Kotlin composition
+exact Family + Relay Single/Compound composition
+whether remaining State/Control generic plumbing can be reduced further
 ~~~
-
-Fresh instances should use #193 for the current high-confidence Family boundary and use #192 for the
-historical pressure / why-path. Do not infer that later #192 code is accepted merely because it is
-newer.
 
 Current evidence:
 
 ~~~text
-clean Android review branch                     YES
-high-confidence V2 source checkpoint restored   YES
-recent CompoundFamily/stateFactory source       REMOVED
-old Compound teaching suite                     REMOVED
-focused high-confidence test                    ADDED
-repository Gradle/JVM                           PENDING
+readable Family source shape           YES
+V2 / resolve vocabulary removed        YES
+recursive Family self-generic removed  YES
+legacy V1 Family source changed        NO
+repository Gradle/JVM                  PENDING
 ~~~
 
-<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][V2-FAMILY][CURRENT-PR193] -->
+<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][FAMILY][CURRENT-PR193] -->
 
