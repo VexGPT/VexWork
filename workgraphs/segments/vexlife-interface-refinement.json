@@ -74,7 +74,7 @@
       "workRef": "work.vexlife.interface-refinement.interface-compound-relay",
       "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
       "label": "Current — Interface Compound Relay convergence",
-      "purpose": "Lay the smallest VexLife product-level Family Circuit / Compound Relay composition foundation before interface-specific repair, then resolve the ordinary VexLife human-surface continuity defect from independently owned current truths. Reuse foundation.vexlife.state-relay.v1 for combine/no-op semantics, but do not force Interface currentness into the existing Play/Pause-specific vexlife.portable-behavior-contract/v1 validator; first source-place the rightful portable relationship/convergence contract and Family-state handoff. Preserve Companion availability, Conversation, browser/navigation and lifecycle/runtime as separate truth/effect owners; do not invent CompoundFamily, a second state owner, a generic runtime or a Kotlin-shaped browser framework.",
+      "purpose": "Currentize the existing VexLife State Relay foundation/module map so accepted PR #790 Compound semantics are discoverable, then source-place the smallest VexLife product-semantic Family Circuit / Compound relationship contract before interface-specific repair. The universal core already owns immutable snapshots, observation truth, coherent-input gating and serialized VexCompoundState reconciliation; do not recreate that runtime. The remaining semantic foundation must reconcile independently owned current truths into rightful Family state without forcing Interface currentness through the Play/Pause-specific behavior-contract v1 validator. Preserve Companion availability, Conversation, browser/navigation and lifecycle/runtime as separate truth/effect owners; do not invent CompoundFamily, a second state owner, generic runtime, global revision counter or Kotlin-shaped browser framework.",
       "workClass": "TASK",
       "state": "READY",
       "priorityClass": "IMMEDIATE",
@@ -130,7 +130,14 @@
         "repo.vexlife:blueprint/process-factory/processes-conversation-and-interface.json",
         "repo.vexlife:src/core/portable-behavior-contract.mjs",
         "repo.vexlife:test/vexstream-playback-behavior-contract.test.mjs",
-        "repo.vexlife:src/core/blueprint.mjs"
+        "repo.vexlife:src/core/blueprint.mjs",
+        "repo.vexlife:src/core/state-relay.mjs",
+        "repo.vexlife:test/core.test.mjs",
+        "repo.vexlife:blueprint/module-registry/core.json",
+        "repo.vexlife:docs/ANDROID-CONSTRUCTION-FOUNDATION.md",
+        "github.pull.vexlife.790",
+        "github.commit.vexlife.0bf281ec716f5f4a3a44f907e02c98d4652cb2a1",
+        "github.commit.vexlife.c8af89438163a4fbb03c313d418185c8b0b7de9d"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
@@ -1094,7 +1101,14 @@
     "repo.vexlife:blueprint/process-factory/processes-conversation-and-interface.json",
     "repo.vexlife:src/core/portable-behavior-contract.mjs",
     "repo.vexlife:test/vexstream-playback-behavior-contract.test.mjs",
-    "repo.vexlife:src/core/blueprint.mjs"
+    "repo.vexlife:src/core/blueprint.mjs",
+    "repo.vexlife:src/core/state-relay.mjs",
+    "repo.vexlife:test/core.test.mjs",
+    "repo.vexlife:blueprint/module-registry/core.json",
+    "repo.vexlife:docs/ANDROID-CONSTRUCTION-FOUNDATION.md",
+    "github.pull.vexlife.790",
+    "github.commit.vexlife.0bf281ec716f5f4a3a44f907e02c98d4652cb2a1",
+    "github.commit.vexlife.c8af89438163a4fbb03c313d418185c8b0b7de9d"
   ],
   "formedAt": "2026-10-25T01:23:08.000Z"
 }

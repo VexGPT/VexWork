@@ -401,6 +401,102 @@ PLAY_PAUSE_BEHAVIOR_CONTRACT
 != permission to force Interface currentness through provider-ack semantics
 ~~~
 
+### Accepted Compound substrate exists; canonical map lagged
+
+Current VexLife main proves that the Compound mechanics are already accepted source:
+
+~~~text
+src/core/state-relay.mjs
+  StateCell
+  createStateSnapshot(...)
+  VexCompoundState
+    named retained input snapshots
+    latest coherent-input gate
+    serialized accept/reconcile boundary
+    synchronous processLatestState(...)
+    effect-free reducer requirement
+    semantic no-op suppression through StateCell output
+
+test/core.test.mjs
+  UNOBSERVED != EMPTY != PRESENT
+  immutable snapshots
+  REINSTANCE identity
+  coherent-input hold
+  serial Compound reconciliation
+  async/effect reducer rejection
+~~~
+
+This was not accidental source drift. Accepted VexLife PR #790 explicitly formed and merged:
+
+~~~text
+Android Construction A1: extend universal State Relay compound semantics
+
+accepted contract
+  concurrent source changes
+  -> one serialized acceptance boundary
+  -> latest coherent input state
+  -> processLatestState()
+  -> priority / conflict / explicit queue reconciliation
+  -> latest admitted output state
+  -> distinct projection
+
+permanent
+  MULTIPLE_PRODUCERS != MULTIPLE_STATE_MUTATORS
+  STATE_RECONCILIATION_IS_SERIAL
+  UI != ARBITRATION_OWNER
+  LATEST_RECEIVED != LATEST_COHERENT
+  RECEIVED != ADMITTED
+  OUTPUT_STATE != EFFECT_COMMAND
+~~~
+
+The current discoverability defect is narrower:
+
+~~~text
+accepted implementation + tests + foundation rationale
+  include Compound semantics
+
+blueprint/process-factory/foundations.json
+  foundation.vexlife.state-relay.v1
+  still advertises only:
+    StateCell
+    CombinedProjection
+    semanticEquality
+    noOpSuppression
+
+blueprint/module-registry/core.json
+  module.vexlife.core.state-relay role
+  still describes only cells / combined narrow projections / distinct delivery
+~~~
+
+Those foundation/module records predate the October A1 extension and were not currentized with it.
+
+Therefore the first foundation repair is **not new runtime behavior**:
+
+~~~text
+CURRENTIZE FOUNDATION DISCOVERABILITY
+  -> make accepted snapshot / observation / Compound-state semantics visible
+     through the existing State Relay owner
+  -> preserve source behavior
+  -> preserve exact existing foundation identity unless current versioning rules require otherwise
+  -> prove Blueprint/module/foundation projections still validate
+~~~
+
+Only after that map is truthful should Interface Compound add its missing product-semantic
+relationship/Family handoff contract.
+
+Permanent:
+
+~~~text
+ACCEPTED_REUSABLE_CAPABILITY_HIDDEN_FROM_FOUNDATION_MAP
+= FOUNDATION_DISCOVERABILITY_DEFECT
+
+FOUNDATION_MAP_CURRENTIZATION
+!= NEW_COMPOUND_RUNTIME
+
+VEXCOMPOUNDSTATE_EXISTS
+!= INTERFACE_RELATIONSHIP_MEANING_EXISTS
+~~~
+
 The current foundation question is now narrower and explicit:
 
 > What is the smallest **VexLife-owned portable relationship/convergence contract** that can preserve
