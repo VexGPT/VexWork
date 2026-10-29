@@ -172,6 +172,18 @@ test('ThemeMode patient-zero board projects one typed Family language across fou
   assert.ok(graph.sourceRefs.includes('github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b'));
   assert.ok(graph.sourceRefs.some((sourceRef) => sourceRef.includes('VexFamilyHighConfidenceTest.kt')));
 });
+test('VexBoard boot remains independent from optional Family Kotlin construction', () => {
+  assert.doesNotMatch(page, /import \* as FamilyKotlin from/);
+  assert.match(
+    page,
+    /familyKotlinModulePromise\?\?=import\('\.\.\/src\/core\/vexboard-family-kotlin-construction\.mjs'\)/,
+  );
+  assert.match(page, /Loading semantic canvas/);
+  assert.match(page, /VexBoard boot error/);
+  assert.match(page, /window\.addEventListener\('error'/);
+  assert.match(page, /window\.addEventListener\('unhandledrejection'/);
+});
+
 test('ThemeMode Kotlin drawer maps the same typed Family model to implementation and test code', () => {
   assert.equal(themeModeBoard.familyKotlin.schemaVersion, 'vexboard.family-kotlin/poc-v1');
   assert.equal(
