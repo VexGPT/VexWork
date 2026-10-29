@@ -218,6 +218,38 @@
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-29T14:56:00.000Z",
       "updatedAt": "2026-10-29T14:56:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexsync.debugmenu-blueprints.walk-trace-observation-alignment",
+      "parentWorkRefOrNull": "work.vexsync.debugmenu-blueprints.outcome",
+      "label": "Align Journey step observation with ScreenCrawler evidence",
+      "purpose": "Remove one already-observed semantic retranscription seam before the ThemeMode full walk: move the neutral Journey step observation value into the shared journeyTest grammar and have ScreenCrawler evidence identity consume that exact observation rather than separately re-accepting stepIndex/stepKind/screenId/semanticRef. Preserve Journey as walk owner and ScreenCrawler as evidence owner; this is a local shared-coordinate alignment, not a universal Walk runtime.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "projects/vexsync-debugmenu-blueprints/README.md",
+        "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+        "repo.vexlife-android:app/src/androidTest/kotlin/com/vextreme/vexlife/android/testing/journey/VexJourneyExecutionObserver.kt",
+        "repo.vexlife-android:app/src/journeyTest/kotlin/com/vextreme/vexlife/android/testing/crawler/VexScreenCrawlerEvidenceIdentity.kt",
+        "repo.vexlife-android:app/src/androidTest/kotlin/com/vextreme/vexlife/android/testing/crawler/VexScreenCrawlerEvidenceObserver.kt",
+        "repo.vexlife-android:app/src/test/kotlin/com/vextreme/vexlife/android/testing/crawler/VexScreenCrawlerPlannerTest.kt"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+      "nextProcessRefs": [
+        "process.vexlife-android.feature-authoring"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-29T15:02:00.000Z",
+      "updatedAt": "2026-10-29T15:02:00.000Z"
     }
   ],
   "transitions": [
@@ -357,6 +389,22 @@
         "github.review.vexlife-android.pr188.5699576285.assurance-clear"
       ],
       "createdAt": "2026-10-29T14:56:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.walk-trace-observation-alignment.running.formed-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.walk-trace-observation-alignment",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Current Journey execution already emits one VexJourneyStepObservation carrying stepIndex/stepKind/screenId/semanticRef, while ScreenCrawler evidence identity independently re-accepts the same four values. This is an observed same-walk retranscription seam. The bounded refinement is to share the neutral observation value through journeyTest and let ScreenCrawler consume it directly, preserving existing owner boundaries.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "projects/vexsync-debugmenu-blueprints/README.md",
+        "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+        "repo.vexlife-android:app/src/androidTest/kotlin/com/vextreme/vexlife/android/testing/journey/VexJourneyExecutionObserver.kt",
+        "repo.vexlife-android:app/src/journeyTest/kotlin/com/vextreme/vexlife/android/testing/crawler/VexScreenCrawlerEvidenceIdentity.kt"
+      ],
+      "createdAt": "2026-10-29T15:02:00.000Z"
     }
   ],
   "sourceRefs": [
