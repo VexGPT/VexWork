@@ -288,7 +288,12 @@
         "github.comment.vexlife-android.pr193.6500792512.follow-up-pr196",
         "github.comment.vexlife-android.pr196.6500855863.sourceowner-a001-formed",
         "evidence.vexsync.pr196.sourceowner.a001.formation.sha256.722a255769ac013ce227ccc56a55195a3fd5efcecf02be60825c16df8b39823f",
-        "review.fresh-instance.vex-family-post193.20261029a"
+        "review.fresh-instance.vex-family-post193.20261029a",
+        "github.comment.vexlife-android.pr196.6500974431.sourceowner-a001-safe-failure-harness",
+        "evidence.vexsync.pr196.sourceowner.a001.return.sha256.d57a3a425fe26cc9d4d860445c4d48ebe8cef91ae0f07844083f3c2a74627591",
+        "evidence.vexsync.pr196.sourceowner.a001.inner-return.sha256.4afe1fe50fc486910b1a53146c8afbc3f417c0d9a9325cedf7af9e90d18c88c4",
+        "github.comment.vexlife-android.pr196.6501035776.sourceowner-a002-formed",
+        "evidence.vexsync.pr196.sourceowner.a002.formation.sha256.d825fea9989e742e79cadff99b6ece70a49bd050ac9d197994951f77fb427163"
       ],
       "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
       "nextProcessRefs": [
@@ -297,7 +302,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-29T15:55:00.000Z",
-      "updatedAt": "2026-10-29T15:55:00.000Z"
+      "updatedAt": "2026-10-29T16:05:00.000Z"
     }
   ],
   "transitions": [
@@ -535,6 +540,23 @@
         "evidence.vexsync.pr196.sourceowner.a001.formation.sha256.722a255769ac013ce227ccc56a55195a3fd5efcecf02be60825c16df8b39823f"
       ],
       "createdAt": "2026-10-29T15:55:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.direct-family-post193-hardening.running.a001-harness-a002-formed-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.direct-family-post193-hardening",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING",
+      "reason": "PR #196 SourceOwner A001 reached exact-head admission but stopped before candidate compilation because the wrapper used the aggregate Android-library task :architecture:behavior:test with a --tests filter that task does not accept. The failure is classified as proof-harness task selection, not source. The exact candidate remains unchanged; A002 rotates attempt identities and corrects only the focused task to :architecture:behavior:testDebugUnitTest --tests while retaining vexVerifyJvm and the exact seven-path membrane.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.comment.vexlife-android.pr196.6500974431.sourceowner-a001-safe-failure-harness",
+        "evidence.vexsync.pr196.sourceowner.a001.return.sha256.d57a3a425fe26cc9d4d860445c4d48ebe8cef91ae0f07844083f3c2a74627591",
+        "evidence.vexsync.pr196.sourceowner.a001.inner-return.sha256.4afe1fe50fc486910b1a53146c8afbc3f417c0d9a9325cedf7af9e90d18c88c4",
+        "github.comment.vexlife-android.pr196.6501035776.sourceowner-a002-formed",
+        "evidence.vexsync.pr196.sourceowner.a002.formation.sha256.d825fea9989e742e79cadff99b6ece70a49bd050ac9d197994951f77fb427163"
+      ],
+      "createdAt": "2026-10-29T16:05:00.000Z"
     }
   ],
   "sourceRefs": [
@@ -593,7 +615,12 @@
     "github.comment.vexlife-android.pr195.6500425432.sourceowner-a001-pass",
     "github.review.vexlife-android.pr195.5700051982.assurance-clear",
     "evidence.vexsync.pr195.sourceowner.a001.return.sha256.c17c2d9bc1660a6f84c11ff070a2154445a3d29621035d2bb6df3013364f0a1f",
-    "evidence.vexsync.pr195.sourceowner.a001.inner-return.sha256.743345b993ceb72b9c8901c40a9c6c911fa3d78fc5082847931f34707bc8df63"
+    "evidence.vexsync.pr195.sourceowner.a001.inner-return.sha256.743345b993ceb72b9c8901c40a9c6c911fa3d78fc5082847931f34707bc8df63",
+    "github.comment.vexlife-android.pr196.6500974431.sourceowner-a001-safe-failure-harness",
+    "evidence.vexsync.pr196.sourceowner.a001.return.sha256.d57a3a425fe26cc9d4d860445c4d48ebe8cef91ae0f07844083f3c2a74627591",
+    "evidence.vexsync.pr196.sourceowner.a001.inner-return.sha256.4afe1fe50fc486910b1a53146c8afbc3f417c0d9a9325cedf7af9e90d18c88c4",
+    "github.comment.vexlife-android.pr196.6501035776.sourceowner-a002-formed",
+    "evidence.vexsync.pr196.sourceowner.a002.formation.sha256.d825fea9989e742e79cadff99b6ece70a49bd050ac9d197994951f77fb427163"
   ],
   "formedAt": "2026-10-26T07:26:46.000Z"
 }
