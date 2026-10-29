@@ -236,6 +236,11 @@ test('VexBoard self-applies the convergence language as one flat architecture bo
     node.label.includes('resource identity')
   ));
   assert.ok(graph.nodes.some((node) =>
+    node.nodeRef === 'annotation.vexboard.identity-law' &&
+    node.label.includes('ResourceId role') &&
+    node.label.includes('labels are not identity')
+  ));
+  assert.ok(graph.nodes.some((node) =>
     node.nodeRef === 'process.vexboard.relationship' &&
     node.label.includes('fromRef → toRef')
   ));

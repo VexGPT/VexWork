@@ -241,7 +241,7 @@
       {
         "nodeRef": "annotation.vexboard.identity-law",
         "kind": "ANNOTATION",
-        "label": "Typed resource roles are explicit; labels are not identity",
+        "label": "ResourceId role · nodeRef / relationshipRef / projectionItemRef · labels are not identity",
         "parentRefOrNull": "region.vexboard.identity",
         "detailBoardRefOrNull": null,
         "sourceRefs": [
