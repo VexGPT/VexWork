@@ -7015,3 +7015,60 @@ Production VexBehaviorV2Family still uses its patient-zero current field; StateR
 test-only candidate until the type/ownership fit is earned.
 
 <!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][STATE-RELAY][LIVE-LOOP] -->
+
+
+---
+
+## Origin-Walk refinement — process-only reusable Relay skeleton
+
+**Downstream Android #192 head:** `050c5d96ad3318bfcd5a0fdfa58250faec274254`
+
+The latest review rejected feature-specific Relay ceremony as a scalability/readability burden.
+
+The desired reusable Compound shape is now pressure-tested as:
+
+~~~text
+incoming partial InputState
++ retained current InputState
+-> latestStateInput
+-> process(latestStateInput)
+-> latestStateOutput
+-> generic VexCompoundState reassembly
+~~~
+
+The concrete Relay owns only:
+
+~~~kotlin
+override fun process(
+    latestStateInput: InputState,
+): OutputState {
+    // relationship meaning only
+}
+~~~
+
+Input patch/currentness mechanics belong to the InputState's reusable `latest(incoming)` contract.
+The generic superclass owns current-state access and final CompoundState assembly.
+
+This makes the causal sequence witnessable at scale:
+
+~~~text
+what arrived?
+what is current now?
+what does it mean?
+what output follows?
+what totality is retained?
+~~~
+
+Existing-source pressure is informative:
+- Conversation Hybrid is already close to pure latest-input processing.
+- Maps Style likely fits after selection-reset semantics move into latest-input formation.
+- Events and Navigation currently use previous OutputState as reducer memory.
+
+That last pattern is held as the next design question. If the reusable law is
+`latestStateInput -> OutputState`, relationship memory should become explicit processing state rather
+than making OutputState silently serve both consumer projection and hidden reducer memory.
+
+Isolated generic Kotlin proof: PASS.
+Production VexCompoundRelay remains unchanged.
+
+<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][PROCESS-ONLY-COMPOUND] -->
