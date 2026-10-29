@@ -484,6 +484,55 @@ CURRENTIZE FOUNDATION DISCOVERABILITY
 Only after that map is truthful should Interface Compound add its missing product-semantic
 relationship/Family handoff contract.
 
+#### Foundation repair slice F0 — currentize accepted Compound discoverability
+
+The smallest current VexLife source membrane for this repair is now known:
+
+~~~text
+authored source
+  blueprint/process-factory/foundations.json
+    -> currentize foundation.vexlife.state-relay.v1 owned-contract description
+       around already-accepted observation/snapshot/Compound semantics
+
+  blueprint/module-registry/core.json
+    -> make module.vexlife.core.state-relay role/change map advertise
+       immutable snapshots + serialized Compound reconciliation
+
+  test/core.test.mjs
+    -> retain the existing PR #790 runtime proofs
+    -> add one regression that the canonical foundation/module projections
+       expose the accepted Compound contract instead of hiding it
+
+generated custody
+  source-manifest-parts/bucket-d7.json
+    -> foundations.json
+
+  source-manifest-parts/bucket-8b.json
+    -> module-registry/core.json
+
+  source-manifest-parts/bucket-a8.json
+    -> test/core.test.mjs
+~~~
+
+`SOURCE-MANIFEST.json` does not need hand editing; its stable bucket contract remains unchanged.
+The accepted source-managed manifest writer regenerates the affected bucket records from final
+candidate bytes.
+
+This F0 slice deliberately does **not** edit `src/core/state-relay.mjs`: PR #790 already supplied
+the runtime behavior and current main still carries it.
+
+~~~text
+F0 CLAIM
+  accepted capability discoverable from canonical foundation map
+
+F0 DOES NOT CLAIM
+  Interface relationship semantics complete
+  browser currentness fixed
+  Family/Compound composition generalized
+~~~
+
+
+
 Permanent:
 
 ~~~text

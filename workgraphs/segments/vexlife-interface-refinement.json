@@ -137,7 +137,11 @@
         "repo.vexlife:docs/ANDROID-CONSTRUCTION-FOUNDATION.md",
         "github.pull.vexlife.790",
         "github.commit.vexlife.0bf281ec716f5f4a3a44f907e02c98d4652cb2a1",
-        "github.commit.vexlife.c8af89438163a4fbb03c313d418185c8b0b7de9d"
+        "github.commit.vexlife.c8af89438163a4fbb03c313d418185c8b0b7de9d",
+        "repo.vexlife:source-manifest-parts/bucket-d7.json",
+        "repo.vexlife:source-manifest-parts/bucket-8b.json",
+        "repo.vexlife:source-manifest-parts/bucket-a8.json",
+        "repo.vexlife:scripts/source-manifest.mjs"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
@@ -1108,7 +1112,11 @@
     "repo.vexlife:docs/ANDROID-CONSTRUCTION-FOUNDATION.md",
     "github.pull.vexlife.790",
     "github.commit.vexlife.0bf281ec716f5f4a3a44f907e02c98d4652cb2a1",
-    "github.commit.vexlife.c8af89438163a4fbb03c313d418185c8b0b7de9d"
+    "github.commit.vexlife.c8af89438163a4fbb03c313d418185c8b0b7de9d",
+    "repo.vexlife:source-manifest-parts/bucket-d7.json",
+    "repo.vexlife:source-manifest-parts/bucket-8b.json",
+    "repo.vexlife:source-manifest-parts/bucket-a8.json",
+    "repo.vexlife:scripts/source-manifest.mjs"
   ],
   "formedAt": "2026-10-25T01:23:08.000Z"
 }
