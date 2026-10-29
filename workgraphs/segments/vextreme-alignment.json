@@ -144,14 +144,14 @@
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-29T08:40:27.000Z",
-      "updatedAt": "2026-10-29T08:40:27.000Z",
+      "updatedAt": "2026-10-29T09:36:01.000Z",
       "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vextreme.alignment.lineage-reconciliation",
       "parentWorkRefOrNull": "work.vextreme.alignment.outcome",
       "label": "Reconcile preserved source lineages with reader-visible presentation",
       "purpose": "Classify known same-subject source variants into already-visible dual lineage, intentional canonical-plus-provenance, unresolved/underexposed lineage, or single-source presentation opportunity; repair true missing reader mappings without turning every alternate capture into a presentation or mislabeling a newly derived presentation as a recovered duplicate.",
       "workClass": "TASK",
-      "state": "PLAN_VALIDATED",
+      "state": "RUNNING",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
       "sourceRefs": [
@@ -160,7 +160,9 @@
         "repo.vextreme:docs/ingestion/workmaps/content-forge-consolidation-proposal.json",
         "repo.vextreme:data/strings/source/lineages",
         "repo.vextreme:pages/what-is-the-god-spark.html",
-        "repo.vextreme:docs/ingestion/workmaps/content-forge-god-spark-dual-lineage-view-repair.json"
+        "repo.vextreme:docs/ingestion/workmaps/content-forge-god-spark-dual-lineage-view-repair.json",
+        "github.pull.vextreme.484",
+        "github.commit.vextreme.e0dc1778cc564f9a8fb2b5b4db4edc7af6d01d5d"
       ]
     },
     {
@@ -255,6 +257,34 @@
         "github.commit.vextreme.74f3383e22b200a6eb2d32957902a5f67123f81c"
       ],
       "createdAt": "2026-10-29T09:25:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.alignment.lineage-reconciliation.ready.pr484",
+      "workRef": "work.vextreme.alignment.lineage-reconciliation",
+      "priorState": "PLAN_VALIDATED",
+      "nextState": "READY",
+      "reason": "The 36 known canonical-identity source-lineage families are classified into 10 reader-visible, 14 explicitly resolved canonical-plus-provenance, and 12 reader-decision-open families with a bounded next review frontier.",
+      "actorRef": "actor.chatgpt.vextreme-alignment",
+      "sourceRefs": [
+        "github.pull.vextreme.484",
+        "github.commit.vextreme.e0dc1778cc564f9a8fb2b5b4db4edc7af6d01d5d"
+      ],
+      "createdAt": "2026-10-29T09:36:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.alignment.lineage-reconciliation.running.pr484",
+      "workRef": "work.vextreme.alignment.lineage-reconciliation",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Vextreme PR #484 now carries the lineage reconciliation map; the nine-subject Epstein old-route family is the next bounded review while page/source mutation remains held.",
+      "actorRef": "actor.chatgpt.vextreme-alignment",
+      "sourceRefs": [
+        "github.pull.vextreme.484",
+        "github.commit.vextreme.e0dc1778cc564f9a8fb2b5b4db4edc7af6d01d5d"
+      ],
+      "createdAt": "2026-10-29T09:36:01.000Z"
     }
   ],
   "sourceRefs": [
@@ -267,7 +297,9 @@
     "github.pull.vextreme.482",
     "github.commit.vextreme.0f8ced4e45fcf25c9604f78b34c7863ceee01d68",
     "github.pull.vextreme.483",
-    "github.commit.vextreme.74f3383e22b200a6eb2d32957902a5f67123f81c"
+    "github.commit.vextreme.74f3383e22b200a6eb2d32957902a5f67123f81c",
+    "github.pull.vextreme.484",
+    "github.commit.vextreme.e0dc1778cc564f9a8fb2b5b4db4edc7af6d01d5d"
   ],
   "formedAt": "2026-10-29T08:40:27.000Z"
 }

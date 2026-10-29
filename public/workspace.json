@@ -12317,7 +12317,7 @@
           "label": "Reconcile preserved source lineages with reader-visible presentation",
           "purpose": "Classify known same-subject source variants into already-visible dual lineage, intentional canonical-plus-provenance, unresolved/underexposed lineage, or single-source presentation opportunity; repair true missing reader mappings without turning every alternate capture into a presentation or mislabeling a newly derived presentation as a recovered duplicate.",
           "workClass": "TASK",
-          "state": "PLAN_VALIDATED",
+          "state": "RUNNING",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vextreme.alignment.outcome",
@@ -12332,15 +12332,42 @@
             "repo.vextreme:docs/ingestion/workmaps/content-forge-consolidation-proposal.json",
             "repo.vextreme:data/strings/source/lineages",
             "repo.vextreme:pages/what-is-the-god-spark.html",
-            "repo.vextreme:docs/ingestion/workmaps/content-forge-god-spark-dual-lineage-view-repair.json"
+            "repo.vextreme:docs/ingestion/workmaps/content-forge-god-spark-dual-lineage-view-repair.json",
+            "github.pull.vextreme.484",
+            "github.commit.vextreme.e0dc1778cc564f9a8fb2b5b4db4edc7af6d01d5d"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
           "authorityDisposition": "NO_AUTHORITY",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-10-29T08:40:27.000Z",
-          "updatedAt": "2026-10-29T08:40:27.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-10-29T09:36:01.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vextreme.alignment.lineage-reconciliation.ready.pr484",
+              "priorState": "PLAN_VALIDATED",
+              "nextState": "READY",
+              "reason": "The 36 known canonical-identity source-lineage families are classified into 10 reader-visible, 14 explicitly resolved canonical-plus-provenance, and 12 reader-decision-open families with a bounded next review frontier.",
+              "actorRef": "actor.chatgpt.vextreme-alignment",
+              "sourceRefs": [
+                "github.pull.vextreme.484",
+                "github.commit.vextreme.e0dc1778cc564f9a8fb2b5b4db4edc7af6d01d5d"
+              ],
+              "createdAt": "2026-10-29T09:36:00.000Z"
+            },
+            {
+              "transitionRef": "transition.vextreme.alignment.lineage-reconciliation.running.pr484",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "Vextreme PR #484 now carries the lineage reconciliation map; the nine-subject Epstein old-route family is the next bounded review while page/source mutation remains held.",
+              "actorRef": "actor.chatgpt.vextreme-alignment",
+              "sourceRefs": [
+                "github.pull.vextreme.484",
+                "github.commit.vextreme.e0dc1778cc564f9a8fb2b5b4db4edc7af6d01d5d"
+              ],
+              "createdAt": "2026-10-29T09:36:01.000Z"
+            }
+          ]
         },
         {
           "workRef": "work.vextreme.alignment.navigation-currentness",
@@ -12487,8 +12514,7 @@
           "label": "Planned",
           "workRefs": [
             "work.vextreme.alignment.outcome",
-            "work.vextreme.alignment.cross-surface-proof",
-            "work.vextreme.alignment.lineage-reconciliation"
+            "work.vextreme.alignment.cross-surface-proof"
           ]
         },
         {
@@ -12501,8 +12527,9 @@
           "label": "Active",
           "workRefs": [
             "work.vextreme.alignment.chronology-recovery",
-            "work.vextreme.alignment.timeline-projection",
-            "work.vextreme.alignment.navigation-currentness"
+            "work.vextreme.alignment.lineage-reconciliation",
+            "work.vextreme.alignment.navigation-currentness",
+            "work.vextreme.alignment.timeline-projection"
           ]
         },
         {
