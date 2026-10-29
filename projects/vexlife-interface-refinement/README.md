@@ -1708,6 +1708,125 @@ COMPATIBILITY_REFRESH_METHOD
 ~~~
 
 
+#### READY is relationship truth; composer enablement is derived presentation
+
+Current main still contains this Companion-specific presentation rule:
+
+~~~text
+submitAvailable
+= slashCandidate
+  OR
+  (Companion channel ? !companionTurnPending : available)
+~~~
+
+So a Companion message-control can remain enabled whenever no turn is pending even if current
+availability/currentness is not READY; the submit handler then tries to refresh before deciding
+whether to preserve the draft.
+
+F2 should remove that collapse.
+
+Portable relationship meaning:
+
+~~~text
+Interface currentness READY
+= source / browser observation / Companion / Conversation relationship is current
+~~~
+
+Chat presentation meaning:
+
+~~~text
+MESSAGE_SEND_ENABLED
+= Interface currentness READY
+  AND companionTurnPending == false
+
+RECOVERY_CONTROL_VISIBLE
+= current admitted Companion relationship is RECOVERABLE
+  AND current recovery binding is available
+
+LOCAL_COMMAND_CHECK_ENABLED
+= slashCandidate
+  independent of message-send readiness where the command contract permits it
+~~~
+
+Therefore:
+
+~~~text
+READY
+!= SEND_BUTTON_ENABLED_IN_EVERY_TRANSIENT_CHAT_STATE
+
+TURN_PENDING
+!= INTERFACE_SOURCE_OR_RUNTIME_UNREADY
+
+SLASH_COMMAND_CHECK
+!= MESSAGE_SEND
+~~~
+
+No new canonical DisplayState type is required merely to express this one consumer. The existing Chat
+owner may derive its bounded composer presentation from:
+
+~~~text
+Interface semantic State
++ companionTurnPending
++ recovery pending/failure
++ local draft
++ command candidate
+~~~
+
+Only if multiple independent consumers later repeat that exact presentation derivation is a broader
+DisplayState owner earned.
+
+#### Send is not an observation trigger
+
+F2 should also remove the current pattern:
+
+~~~text
+Send requested
++ cached Companion appears unavailable
+-> refresh Companion
+-> maybe send
+~~~
+
+A Send Control consumes already-current relationship truth.
+
+~~~text
+Send
++ Interface READY
++ no turn pending
+-> existing action.message.send path
+
+Send
++ Interface != READY
+-> no message effect
+-> draft remains
+~~~
+
+Observation is driven by the rightful currentness triggers already named:
+
+~~~text
+initial activation
+focus
+pageshow
+visibility -> visible
+Conversation scope change
+post-recovery completion
+post-turn completion
+~~~
+
+Permanent:
+
+~~~text
+SEND_CONTROL
+!= OBSERVATION_TRIGGER
+
+SEND_CLICK
+!= HIDDEN_RECOVERY_OR_REFRESH_EFFECT
+~~~
+
+Programmatic helpers such as current-Vex/Guide Send must first bind/select the target Conversation and
+wait for that selection's currentness observation; the Send method itself does not create a second
+readiness pipeline.
+
+
 #### F2c — Send consumes Compound READY, not cached Companion READY
 
 Current browser behavior is narrower:
