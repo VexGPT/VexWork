@@ -11,7 +11,7 @@ test('Project Registry locates Projects without owning their WorkState', () => {
   const validation = validateProjectRegistry(registry);
   assert.equal(validation.ok, true, validation.errors.join('\n'));
   const projection = projectProjectRegistry(registry);
-  assert.equal(projection.projects.length, 16);
+  assert.equal(projection.projects.length, 17);
   assert.equal(projection.projects[0].projectRef, 'project.vexwork.foundation');
   assert.equal(projection.projects[0].workgraphRef, 'workgraph.vexwork.foundation');
   assert.equal(projection.projects[0].workgraphPath, 'workgraphs/public.json');
@@ -95,6 +95,12 @@ test('Project Registry locates Projects without owning their WorkState', () => {
   assert.equal(vexsync.definitionPath, 'projects/vexsync-debugmenu-blueprints/project.json');
   assert.equal(vexsync.boardViewPath, 'projects/vexsync-debugmenu-blueprints/board.view.json');
   assert.equal(vexsync.agencyPolicyPathOrNull, null);
+  const architectureConvergence = projection.projects.find((entry) => entry.projectRef === 'project.vextreme.architecture-convergence');
+  assert.equal(architectureConvergence.workgraphRef, 'workgraph.vexwork.foundation');
+  assert.equal(architectureConvergence.workgraphPath, 'workgraphs/public.json');
+  assert.equal(architectureConvergence.definitionPath, 'projects/vextreme-architecture-convergence/project.json');
+  assert.equal(architectureConvergence.boardViewPath, 'projects/vextreme-architecture-convergence/board.view.json');
+  assert.equal(architectureConvergence.agencyPolicyPathOrNull, null);
   assert.equal(projection.effects, false);
   assert.equal(projection.executionAuthority, 'NONE');
   assert.equal(verifySemanticFingerprint(projection), true);
