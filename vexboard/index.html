@@ -6,10 +6,10 @@
 <title>VexBoard — Semantic Canvas</title>
 <meta name="description" content="Create local VexBoard drafts or inspect an existing semantic board through a zoomable, recursive, read-only canvas projection without mutating source truth.">
 <style>
-:root{--ink:#1c1917;--muted:#78716c;--line:#e7e5e4;--blue:#2563eb;--violet:#7c3aed;--paper:#fff;--wash:#fafaf9}*{box-sizing:border-box}html,body{height:100%}body{margin:0;background:var(--wash);color:var(--ink);font:14px Inter,system-ui,sans-serif}button,input{font:inherit}.top{height:58px;padding:0 16px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--line);background:#fff}.top strong{font:700 24px Georgia,serif}.top a{margin-left:auto;color:var(--blue);text-decoration:none}.app{height:calc(100% - 58px)}.landing{width:min(980px,calc(100% - 32px));margin:auto;padding:52px 0}.eyebrow,.tiny{font:700 9px ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--blue)}h1{font:700 clamp(38px,7vw,70px)/1 Georgia,serif;letter-spacing:-.04em;margin:10px 0 18px}.lede{max-width:720px;color:var(--muted);line-height:1.7}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.btn{border:1px solid #d6d3d1;border-radius:8px;background:#fff;padding:9px 12px;cursor:pointer}.btn.primary{background:var(--blue);color:#fff;border-color:var(--blue)}.btn.violet{background:#f5f3ff;color:#6d28d9;border-color:#ddd6fe}.btn:disabled{opacity:.4;cursor:not-allowed}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin-top:14px}.card{background:#fff;border:1px solid var(--line);border-radius:11px;padding:14px}.card h3{margin:5px 0}.card p{color:var(--muted);font-size:12px;line-height:1.5}.workspace{height:100%;display:grid;grid-template-rows:auto minmax(0,1fr)}.bar{padding:8px 10px;background:#fff;border-bottom:1px solid var(--line);display:flex;gap:7px;align-items:center}.title{flex:1;border:1px solid transparent;border-radius:6px;padding:7px;font-weight:700}.title:not(:disabled):focus{outline:none;border-color:#93c5fd}.badge{font:700 8px ui-monospace,monospace;text-transform:uppercase;border-radius:999px;padding:5px 8px}.draft{background:#eff6ff;color:#1d4ed8}.readonly{background:#fff7ed;color:#c2410c}.zoom-readout{min-width:52px;text-align:center;color:var(--muted);font:700 10px ui-monospace,monospace}.work{min-height:0;display:grid;grid-template-columns:74px minmax(0,1fr) 286px}.tools{background:#fff;border-right:1px solid var(--line);padding:7px;display:flex;flex-direction:column;gap:5px}.tool{border:1px solid transparent;background:transparent;border-radius:7px;min-height:46px;font-size:9px;color:var(--muted);cursor:pointer}.tool.active{background:#eff6ff;border-color:#bfdbfe;color:var(--blue);font-weight:700}.tool:disabled{opacity:.35}.viewport{position:relative;overflow:hidden;background-color:#f7f7f5;background-image:radial-gradient(#d6d3d1 1px,transparent 1px);background-size:20px 20px;touch-action:none}.canvas{position:absolute;left:0;top:0;width:2100px;height:1100px;transform-origin:0 0;will-change:transform}.edges{position:absolute;inset:0;pointer-events:none}.edge{fill:none;stroke:#94a3b8;stroke-width:2}.shape{position:absolute;display:flex;align-items:center;justify-content:center;text-align:center;padding:10px;background:#fff;border:1px solid #cbd5e1;border-radius:10px;box-shadow:0 3px 12px #00000010;user-select:none;touch-action:none;overflow:hidden}.shape.selected{outline:3px solid #2563eb33;border-color:var(--blue)}.shape.DIAMOND{--diamond-fill:#fff;--diamond-stroke:#cbd5e1;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);border:0;border-radius:0;padding:18px;background:var(--diamond-stroke)}.shape.DIAMOND::before{content:"";position:absolute;inset:1px;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);background:var(--diamond-fill);pointer-events:none}.shape.FRAME{border:2px dashed #94a3b8;background:#ffffff55;align-items:flex-start;justify-content:flex-start;color:#64748b}.shape.TEXT{border-color:transparent;background:transparent;box-shadow:none;justify-content:flex-start}.shape.has-contained-children:not(.FRAME)>.shape-label{align-items:flex-start;padding-top:20px}.shape.nested-control{background:#fff;border-color:#64748b;border-radius:8px;box-shadow:0 2px 6px #0000000d}.shape.nested-control .role-marker,.shape.nested-control .kind-marker,.shape.nested-control .contained-marker,.shape.nested-control .branch-marker{display:none}.minimap{position:absolute;right:12px;bottom:12px;width:188px;height:118px;border:1px solid #cbd5e1;border-radius:9px;background:#ffffffef;box-shadow:0 5px 18px #0002;overflow:hidden;z-index:40}.minimap-item{position:absolute;background:#cbd5e1;border:1px solid #94a3b8;min-width:2px;min-height:2px}.minimap-view{position:absolute;border:2px solid var(--blue);background:#2563eb12;pointer-events:none}.inspector{background:#fff;border-left:1px solid var(--line);padding:14px;overflow:auto}.inspector h2{margin:0 0 5px;font:700 20px Georgia,serif}.sub{font-size:11px;color:var(--muted);margin-bottom:14px}.group{border-top:1px solid var(--line);padding:12px 0}.group h3{margin:0 0 8px;font:700 9px ui-monospace,monospace;text-transform:uppercase}.kv{display:grid;grid-template-columns:82px minmax(0,1fr);gap:6px;font-size:11px}.k{font:700 8px ui-monospace,monospace;color:#a8a29e;text-transform:uppercase}.v{overflow-wrap:anywhere;white-space:pre-wrap}.number{width:76px}.journey-stack{display:flex;flex-direction:column;gap:5px;margin:8px 0}.journey-step{border:1px solid var(--line);border-radius:7px;background:#fafaf9;padding:6px 8px;text-align:left;font-size:10px;cursor:pointer}.journey-step.current{border-color:#93c5fd;background:#eff6ff;color:#1d4ed8;font-weight:700}.journey-choice{width:100%;text-align:left}.shape.simulatable{cursor:pointer;box-shadow:0 0 0 2px #7c3aed22,0 3px 12px #00000010}.prototype-overlays{position:absolute;left:12px;top:12px;display:flex;flex-direction:column;gap:6px;z-index:45;pointer-events:none}.prototype-overlay{max-width:280px;border:1px solid #c4b5fd;border-radius:8px;background:#f5f3ffea;color:#5b21b6;padding:8px 10px;box-shadow:0 5px 18px #0002;font-size:11px}.empty{color:var(--muted);line-height:1.6;font-size:12px}.ref-list{display:flex;flex-direction:column;gap:7px}.ref-row{font-size:10px;line-height:1.35}.ref-token{display:inline-block;max-width:100%;padding:2px 4px;margin:1px 0;border-radius:4px;color:#57534e;font:600 9px ui-monospace,monospace;overflow-wrap:anywhere;cursor:crosshair}.ref-token:hover,.ref-token:focus-visible{background:#fef3c7;color:#92400e;outline:1px solid #f59e0b;outline-offset:1px}.ref-arrow{padding:0 3px;color:#a8a29e}.shape.inspector-reveal{outline:3px solid #f59e0b!important;outline-offset:4px;filter:drop-shadow(0 0 5px #fbbf24)}.shape.DIAMOND.inspector-reveal{outline:none!important;filter:drop-shadow(1px 0 0 #f59e0b) drop-shadow(-1px 0 0 #f59e0b) drop-shadow(0 1px 0 #f59e0b) drop-shadow(0 -1px 0 #f59e0b) drop-shadow(0 0 5px #fbbf24)}.edge.inspector-reveal{stroke:#d97706!important;stroke-width:5;opacity:1}.edge-label.inspector-reveal{fill:#92400e;stroke:#fef3c7;stroke-width:6px}
+:root{--ink:#1c1917;--muted:#78716c;--line:#e7e5e4;--blue:#2563eb;--violet:#7c3aed;--paper:#fff;--wash:#fafaf9}*{box-sizing:border-box}html,body{height:100%}body{margin:0;background:var(--wash);color:var(--ink);font:14px Inter,system-ui,sans-serif}button,input{font:inherit}.top{height:58px;padding:0 16px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--line);background:#fff}.top strong{font:700 24px Georgia,serif}.top a{margin-left:auto;color:var(--blue);text-decoration:none}.app{height:calc(100% - 58px)}.landing{width:min(980px,calc(100% - 32px));margin:auto;padding:52px 0}.eyebrow,.tiny{font:700 9px ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--blue)}h1{font:700 clamp(38px,7vw,70px)/1 Georgia,serif;letter-spacing:-.04em;margin:10px 0 18px}.lede{max-width:720px;color:var(--muted);line-height:1.7}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.btn{border:1px solid #d6d3d1;border-radius:8px;background:#fff;padding:9px 12px;cursor:pointer}.btn.primary{background:var(--blue);color:#fff;border-color:var(--blue)}.btn.violet{background:#f5f3ff;color:#6d28d9;border-color:#ddd6fe}.btn:disabled{opacity:.4;cursor:not-allowed}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin-top:14px}.card{background:#fff;border:1px solid var(--line);border-radius:11px;padding:14px}.card h3{margin:5px 0}.card p{color:var(--muted);font-size:12px;line-height:1.5}.workspace{height:100%;display:grid;grid-template-rows:auto minmax(0,1fr)}.bar{padding:8px 10px;background:#fff;border-bottom:1px solid var(--line);display:flex;gap:7px;align-items:center}.title{flex:1;border:1px solid transparent;border-radius:6px;padding:7px;font-weight:700}.title:not(:disabled):focus{outline:none;border-color:#93c5fd}.badge{font:700 8px ui-monospace,monospace;text-transform:uppercase;border-radius:999px;padding:5px 8px}.draft{background:#eff6ff;color:#1d4ed8}.readonly{background:#fff7ed;color:#c2410c}.zoom-readout{min-width:52px;text-align:center;color:var(--muted);font:700 10px ui-monospace,monospace}.work{min-height:0;display:grid;grid-template-columns:74px minmax(0,1fr);position:relative}.work.drawer-open{grid-template-columns:74px minmax(0,1fr) 320px}.tools{background:#fff;border-right:1px solid var(--line);padding:7px;display:flex;flex-direction:column;gap:5px}.tool{border:1px solid transparent;background:transparent;border-radius:7px;min-height:46px;font-size:9px;color:var(--muted);cursor:pointer}.tool.active{background:#eff6ff;border-color:#bfdbfe;color:var(--blue);font-weight:700}.tool:disabled{opacity:.35}.viewport{position:relative;overflow:hidden;background-color:#f7f7f5;background-image:radial-gradient(#d6d3d1 1px,transparent 1px);background-size:20px 20px;touch-action:none}.canvas{position:absolute;left:0;top:0;width:2100px;height:1100px;transform-origin:0 0;will-change:transform}.edges{position:absolute;inset:0;pointer-events:none}.edge{fill:none;stroke:#94a3b8;stroke-width:2}.shape{position:absolute;display:flex;align-items:center;justify-content:center;text-align:center;padding:10px;background:#fff;border:1px solid #cbd5e1;border-radius:10px;box-shadow:0 3px 12px #00000010;user-select:none;touch-action:none;overflow:hidden}.shape.selected{outline:3px solid #2563eb33;border-color:var(--blue)}.shape.DIAMOND{--diamond-fill:#fff;--diamond-stroke:#cbd5e1;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);border:0;border-radius:0;padding:18px;background:var(--diamond-stroke)}.shape.DIAMOND::before{content:"";position:absolute;inset:1px;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);background:var(--diamond-fill);pointer-events:none}.shape.FRAME{border:2px dashed #94a3b8;background:#ffffff55;align-items:flex-start;justify-content:flex-start;color:#64748b}.shape.TEXT{border-color:transparent;background:transparent;box-shadow:none;justify-content:flex-start}.shape.has-contained-children:not(.FRAME)>.shape-label{align-items:flex-start;padding-top:20px}.shape.nested-control{background:#fff;border-color:#64748b;border-radius:8px;box-shadow:0 2px 6px #0000000d}.shape.nested-control .role-marker,.shape.nested-control .kind-marker,.shape.nested-control .contained-marker,.shape.nested-control .branch-marker{display:none}.minimap{position:absolute;right:12px;bottom:12px;width:188px;height:118px;border:1px solid #cbd5e1;border-radius:9px;background:#ffffffef;box-shadow:0 5px 18px #0002;overflow:hidden;z-index:40}.minimap-item{position:absolute;background:#cbd5e1;border:1px solid #94a3b8;min-width:2px;min-height:2px}.minimap-view{position:absolute;border:2px solid var(--blue);background:#2563eb12;pointer-events:none}.context-drawer{background:#fff;border-left:1px solid var(--line);overflow:auto;min-width:0}.inspector{padding:14px}.drawer-head{position:sticky;top:0;z-index:2;display:flex;align-items:center;gap:8px;padding:10px 12px;border-bottom:1px solid var(--line);background:#fffffff2;backdrop-filter:blur(8px)}.drawer-head strong{flex:1;font:700 16px Georgia,serif}.drawer-close{width:30px;height:30px;padding:0}.drawer-toggle{font-size:10px;padding:7px 9px}.drawer-toggle.active{border-color:#93c5fd;background:#eff6ff;color:#1d4ed8;font-weight:700}.drawer-body{padding:12px}.drawer-section{border-top:1px solid var(--line);padding:12px 0}.drawer-section:first-child{border-top:0;padding-top:0}.drawer-section h3{margin:0 0 8px;font:700 9px ui-monospace,monospace;text-transform:uppercase;letter-spacing:.06em}.library-entry{border:1px solid var(--line);border-radius:9px;padding:9px 10px;margin:7px 0;background:#fafaf9}.library-entry strong{display:block;font-size:12px;margin-bottom:3px}.library-status{font:700 8px ui-monospace,monospace;text-transform:uppercase;letter-spacing:.05em;color:#78716c}.library-status.established{color:#15803d}.library-status.candidate{color:#a16207}.library-status.unresolved{color:#c2410c}.drawer-copy{font-size:11px;line-height:1.55;color:#57534e}.drawer-copy code{font:600 9px ui-monospace,monospace}.drawer-link{display:inline-block;text-decoration:none;color:var(--ink);margin-top:7px}.drawer-browse{margin-top:9px;border-top:1px dashed var(--line);padding-top:9px}.drawer-browse summary{cursor:pointer;font-weight:700;font-size:11px}.drawer-browse ul{padding-left:18px;color:#57534e;font-size:11px;line-height:1.6}.inspector h2{margin:0 0 5px;font:700 20px Georgia,serif}.sub{font-size:11px;color:var(--muted);margin-bottom:14px}.group{border-top:1px solid var(--line);padding:12px 0}.group h3{margin:0 0 8px;font:700 9px ui-monospace,monospace;text-transform:uppercase}.kv{display:grid;grid-template-columns:82px minmax(0,1fr);gap:6px;font-size:11px}.k{font:700 8px ui-monospace,monospace;color:#a8a29e;text-transform:uppercase}.v{overflow-wrap:anywhere;white-space:pre-wrap}.number{width:76px}.journey-stack{display:flex;flex-direction:column;gap:5px;margin:8px 0}.journey-step{border:1px solid var(--line);border-radius:7px;background:#fafaf9;padding:6px 8px;text-align:left;font-size:10px;cursor:pointer}.journey-step.current{border-color:#93c5fd;background:#eff6ff;color:#1d4ed8;font-weight:700}.journey-choice{width:100%;text-align:left}.shape.simulatable{cursor:pointer;box-shadow:0 0 0 2px #7c3aed22,0 3px 12px #00000010}.prototype-overlays{position:absolute;left:12px;top:12px;display:flex;flex-direction:column;gap:6px;z-index:45;pointer-events:none}.prototype-overlay{max-width:280px;border:1px solid #c4b5fd;border-radius:8px;background:#f5f3ffea;color:#5b21b6;padding:8px 10px;box-shadow:0 5px 18px #0002;font-size:11px}.empty{color:var(--muted);line-height:1.6;font-size:12px}.ref-list{display:flex;flex-direction:column;gap:7px}.ref-row{font-size:10px;line-height:1.35}.ref-token{display:inline-block;max-width:100%;padding:2px 4px;margin:1px 0;border-radius:4px;color:#57534e;font:600 9px ui-monospace,monospace;overflow-wrap:anywhere;cursor:crosshair}.ref-token:hover,.ref-token:focus-visible{background:#fef3c7;color:#92400e;outline:1px solid #f59e0b;outline-offset:1px}.ref-arrow{padding:0 3px;color:#a8a29e}.shape.inspector-reveal{outline:3px solid #f59e0b!important;outline-offset:4px;filter:drop-shadow(0 0 5px #fbbf24)}.shape.DIAMOND.inspector-reveal{outline:none!important;filter:drop-shadow(1px 0 0 #f59e0b) drop-shadow(-1px 0 0 #f59e0b) drop-shadow(0 1px 0 #f59e0b) drop-shadow(0 -1px 0 #f59e0b) drop-shadow(0 0 5px #fbbf24)}.edge.inspector-reveal{stroke:#d97706!important;stroke-width:5;opacity:1}.edge-label.inspector-reveal{fill:#92400e;stroke:#fef3c7;stroke-width:6px}
 .canvas{border:1px solid #d6d3d1;box-sizing:border-box;background-clip:padding-box}
 .canvas-boundary-label{position:absolute;left:10px;top:8px;z-index:1;padding:3px 7px;border:1px solid #d6d3d1;border-radius:999px;background:#ffffffd9;color:#78716c;font:700 8px ui-monospace,monospace;letter-spacing:.05em;text-transform:uppercase;pointer-events:none}
-.viewport.pan-ready{cursor:grab}.viewport.pan-ready:active{cursor:grabbing}.shape{padding:0;line-height:1.25}.shape.draggable{cursor:grab}.shape.draggable.dragging{cursor:grabbing}
+.viewport.pan-ready{cursor:grab}.viewport.pan-ready:active{cursor:grabbing}.shape{padding:0;line-height:1.25}.shape.move-armed{cursor:move;outline:3px solid #7c3aed33;border-color:#7c3aed}.shape.move-armed.dragging{cursor:grabbing}.gesture-hint{color:var(--muted);font:700 9px ui-monospace,monospace;white-space:nowrap}
 .shape-label{display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:10px;overflow-wrap:anywhere}
 .shape.DIAMOND{padding:0}.shape.DIAMOND .shape-label{position:relative;z-index:1;width:62%;height:auto;max-height:62%;padding:2px 4px;line-height:1.2}
 .shape.FRAME{padding:0;overflow:visible}.shape.FRAME .shape-label{position:absolute;left:10px;top:8px;width:auto;height:auto;max-width:calc(100% - 20px);justify-content:flex-start;padding:4px 8px;border:1px solid #94a3b8;border-radius:999px;background:#fff;color:#475569;font:700 9px ui-monospace,monospace;letter-spacing:.03em;text-align:left}
@@ -36,13 +36,29 @@
 .palette-fab{position:absolute;right:12px;top:12px;z-index:50;width:42px;height:42px;border-radius:999px;border:1px solid #cbd5e1;background:#fffffff2;box-shadow:0 5px 18px #0002;display:flex;align-items:center;justify-content:center;cursor:pointer}
 .palette-fab:hover,.palette-fab:focus-visible{outline:2px solid #93c5fd;outline-offset:2px}.palette-dots{position:relative;width:24px;height:16px}.palette-dot{position:absolute;width:11px;height:11px;border-radius:50%;border:1px solid #64748b;top:2px}.palette-dot:nth-child(1){left:1px;background:var(--branch-0)}.palette-dot:nth-child(2){left:7px;background:var(--branch-2)}.palette-dot:nth-child(3){left:13px;background:var(--branch-3)}
 .save-status{min-width:116px;color:#78716c;font:700 8px ui-monospace,monospace;line-height:1.25}.save-status.dirty{color:#b45309}.save-status.error{color:#b91c1c}.save-status.saved{color:#15803d}
-.containment-row{display:grid;grid-template-columns:82px minmax(0,1fr);gap:6px;align-items:center;margin-top:8px}.containment-select{min-width:0;border:1px solid #d6d3d1;border-radius:6px;background:#fff;padding:6px;font-size:10px}
-@media(max-width:850px){.work{grid-template-columns:62px minmax(0,1fr)}.inspector{display:none}.minimap{width:150px;height:94px}}
+.containment-row{display:grid;grid-template-columns:82px minmax(0,1fr);gap:6px;align-items:center;margin-top:8px}.containment-select{min-width:0;border:1px solid #d6d3d1;border-radius:6px;background:#fff;padding:6px;font-size:10px}.kotlin-preview{white-space:pre;overflow:auto;max-height:360px;border:1px solid #d6d3d1;border-radius:7px;background:#0f172a;color:#e2e8f0;padding:9px;font:9px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace}.kotlin-binding{display:grid;grid-template-columns:100px minmax(0,1fr);gap:6px;align-items:center;margin:6px 0}
+@media(max-width:850px){.work,.work.drawer-open{grid-template-columns:62px minmax(0,1fr)}.context-drawer{position:absolute;right:0;top:0;bottom:0;width:min(320px,82vw);z-index:80;box-shadow:-10px 0 28px #0003}.minimap{width:150px;height:94px}}
 .shape.pin-muted{opacity:.2}.edge.pin-muted,.edge-label.pin-muted{opacity:.12}.shape.pin-focus{box-shadow:0 0 0 3px #0f766e33,0 3px 12px #00000010}.shape.pin-seed{outline:3px solid #0f766e55;outline-offset:3px}.edge.pin-focus{stroke:#0f766e!important;stroke-width:4}.edge-label.pin-focus{fill:#115e59;stroke:#ccfbf1;stroke-width:5px}.pin-menu{position:fixed;z-index:200;min-width:190px;padding:6px;border:1px solid #d6d3d1;border-radius:9px;background:#fff;box-shadow:0 12px 32px #0003;display:flex;flex-direction:column;gap:4px}.pin-menu button{text-align:left}.pin-mode-active{border-color:#5eead4!important;background:#f0fdfa!important;color:#115e59!important}.pin-list{display:flex;flex-direction:column;gap:5px}.pin-row{display:flex;align-items:center;gap:5px}.pin-row .ref-token{flex:1}</style>
 </head>
 <body>
 <header class="top"><strong>VexBoard</strong><span class="tiny">semantic canvas proving ground</span><a href="../">← VexWork</a></header>
-<main id="app" class="app"></main>
+<main id="app" class="app"><section class="landing"><div class="eyebrow">VexBoard</div><p class="lede">Loading semantic canvas…</p></section></main>
+<script>
+window.addEventListener('error',(event)=>{
+  const app=document.getElementById('app');
+  if(!app)return;
+  app.innerHTML='<section class="landing"><div class="eyebrow">VexBoard boot error</div><h1>Canvas failed to start.</h1><p class="lede"></p></section>';
+  const message=app.querySelector('.lede');
+  if(message)message.textContent=event?.message||'A browser module failed before VexBoard could render.';
+});
+window.addEventListener('unhandledrejection',(event)=>{
+  const app=document.getElementById('app');
+  if(!app)return;
+  app.innerHTML='<section class="landing"><div class="eyebrow">VexBoard boot error</div><h1>Canvas failed to start.</h1><p class="lede"></p></section>';
+  const message=app.querySelector('.lede');
+  if(message)message.textContent=String(event?.reason?.message||event?.reason||'An asynchronous boot dependency failed.');
+});
+</script>
 <script type="module">
 import * as Board from '../vexboard-reader.js';
 import * as SourceResolver from '../src/shared/vexboard-source-resolver.mjs';
@@ -50,6 +66,9 @@ import * as Evidence from '../src/shared/vexboard-evidence.mjs';
 import { createCameraAnimator } from './ui/camera-animation.mjs';
 import * as Interaction from './ui/interaction.mjs';
 import * as Presentation from './ui/presentation.mjs';
+import * as AndroidProjector from '../src/core/vexboard-android-source-projector.mjs';
+import * as ScreenDesign from '../src/core/vexboard-screen-design.mjs';
+import * as AndroidPresentation from './ui/android-reference-presentation.mjs';
 
 const app=document.getElementById('app');
 let current=null,selected=null,tool='SELECT',connectFrom=null;
@@ -60,9 +79,22 @@ let prototype=null,scenario=null,interactionTrail=[];
 let boardStack=[];
 let activeBoardRef=null;
 let viewportEl=null,canvasEl=null,minimapEl=null,zoomReadoutEl=null;
-let draftDirty=false,saveMessage='',suppressCanvasClick=false;
+let draftDirty=false,saveMessage='',suppressCanvasClick=false,suppressObjectClickRef=null;
 let pinnedSemanticRefs=new Set(),relationalFocusMode='CONNECT',pinMenuEl=null,relationshipViewMode='ALL';
+let moveProjectionItemRef=null;
+let scrollOffsetsByProjectionRef=new Map();
+let androidProjectionSources=new Map(),activeAndroidViewportProfileRef=null;
 let sourceCatalogCache=null;
+let drawerMode=null;
+let FamilyKotlin=null;
+let familyKotlinModulePromise=null;
+async function ensureFamilyKotlin(){
+  if(FamilyKotlin)return FamilyKotlin;
+  familyKotlinModulePromise??=import('../src/core/vexboard-family-kotlin-construction.mjs');
+  FamilyKotlin=await familyKotlinModulePromise;
+  return FamilyKotlin;
+}
+const THEME_MODE_WORKSPACE_BOARD_REF='board.vexlife.debug-menu.theme-mode.origin-walk';
 const sourceCatalogUrls=Object.freeze([
   '../projects/vexboard/examples/board-source-catalog.json',
 ]);
@@ -85,6 +117,33 @@ const store=(items)=>localStorage.setItem(Board.VEXBOARD_DRAFT_STORAGE_KEY,JSON.
 const readPaletteMode=()=>{try{return Presentation.normalizePaletteMode(localStorage.getItem(Presentation.VEXBOARD_PALETTE_STORAGE_KEY))}catch{return'STANDARD'}};
 let paletteMode=readPaletteMode();
 const savedClock=(value)=>{if(!value)return'';try{return new Date(value).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}catch{return''}};
+const designAuthorityLabel=(value)=>value==='VEXBOARD_DESIGN_AUTHORITY'?'VexBoard design authority':value==='VEXBOARD_DESIGN_DRAFT'?'VexBoard design draft':'Reverse-adopted design';
+const THEME_MODE_FEATURE_WORKSPACE=Object.freeze({
+  title:'Debug Menu / Theme Mode',
+  project:'VexSync DebugMenu Blueprints',
+  projectRef:'project.vexsync.debugmenu-blueprints',
+  work:'ThemeMode Origin Walk',
+  workRef:'work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery',
+  pullRef:'github.pull.vexwork.178',
+  intent:'Discover a human-readable construction-grade Origin that maps through VexBoard to target code without inventing target mechanics.',
+  frontier:Object.freeze([
+    'persistence / repository ownership',
+    'later-result / observation relationship',
+    'lifecycle and convergence pressure',
+  ]),
+  vexWorkHref:'../?project=project.vexsync.debugmenu-blueprints&work=work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery',
+  library:Object.freeze([
+    Object.freeze({name:'ThemeMode',status:'ESTABLISHED',detail:'Working Origin meaning · Light | Dark'}),
+    Object.freeze({name:'control.debug-menu.theme-mode',status:'ESTABLISHED',detail:'Working Control identity for the Debug Menu Switch'}),
+    Object.freeze({name:'ThemeModeToggle',status:'CANDIDATE',detail:'Current readable Control / Act relationship language'}),
+    Object.freeze({name:'Theme persistence owner',status:'UNRESOLVED',detail:'Repository / source identity has not yet been earned'}),
+    Object.freeze({name:'ThemeMode ConvergenceRelay',status:'UNRESOLVED',detail:'Not established; use only if independent complete truths earn convergence'}),
+  ]),
+});
+function featureWorkspaceContext(){
+  return activeBoardRef===THEME_MODE_WORKSPACE_BOARD_REF?THEME_MODE_FEATURE_WORKSPACE:null;
+}
+
 function markDraftDirty(){if(!editable())return;draftDirty=true;saveMessage='Unsaved changes'}
 const node=(r)=>current.graph.nodes.find(n=>n.nodeRef===r);
 const item=(r)=>current.projection.items.find(i=>i.projectionItemRef===r);
@@ -117,16 +176,49 @@ async function loadSourceCatalogs(){
   }));
   return sourceCatalogCache;
 }
+async function loadAndroidProjectionSourceContext(boardRef){
+  if(androidProjectionSources.has(boardRef))return androidProjectionSources.get(boardRef);
+  const sources=await loadSourceCatalogs();
+  const resolution=SourceResolver.resolveBoardSource(boardRef,sources.map(source=>source.catalog));
+  if(!resolution)return null;
+  const catalogSource=sources.find(candidate=>candidate.catalog.catalogRef===resolution.catalogRef);
+  if(!catalogSource)return null;
+  const boardUrl=new URL(resolution.location,catalogSource.catalogUrl);
+  const response=await fetch(boardUrl,{cache:'no-store'});
+  if(!response.ok)throw new Error(`${boardRef} HTTP ${response.status}`);
+  const payload=await response.json();
+  if(payload?.schemaVersion!==AndroidProjector.VEXLIFE_ANDROID_POC_SNAPSHOT_SCHEMA)return null;
+  const designLocation=AndroidProjector.androidPocDesignLocation(payload);
+  const designUrl=new URL(designLocation,boardUrl);
+  const designResponse=await fetch(designUrl,{cache:'no-store'});
+  if(!designResponse.ok)throw new Error(`${payload.designRef} HTTP ${designResponse.status}`);
+  const design=ScreenDesign.normalizeScreenDesign(await designResponse.json());
+  const context=Object.freeze({snapshot:payload,design});
+  androidProjectionSources.set(boardRef,context);
+  return context;
+}
+
 async function loadCatalogBoard(boardRef){
   const sources=await loadSourceCatalogs();
   const resolution=SourceResolver.resolveBoardSource(boardRef,sources.map(source=>source.catalog));
   if(!resolution)throw new Error(`unknown source-owned board ${boardRef}`);
-  const source=sources.find(candidate=>candidate.catalog.catalogRef===resolution.catalogRef);
-  if(!source)throw new Error(`source catalog unavailable ${resolution.catalogRef}`);
-  const boardUrl=new URL(resolution.location,source.catalogUrl);
+  const catalogSource=sources.find(candidate=>candidate.catalog.catalogRef===resolution.catalogRef);
+  if(!catalogSource)throw new Error(`source catalog unavailable ${resolution.catalogRef}`);
+  const boardUrl=new URL(resolution.location,catalogSource.catalogUrl);
   const response=await fetch(boardUrl,{cache:'no-store'});
   if(!response.ok)throw new Error(`${boardRef} HTTP ${response.status}`);
-  const draft=Board.normalizeDraft(await response.json());
+  const payload=await response.json();
+  let projected=payload;
+  if(payload?.schemaVersion===AndroidProjector.VEXLIFE_ANDROID_POC_SNAPSHOT_SCHEMA){
+    const context=await loadAndroidProjectionSourceContext(boardRef);
+    if(!context)throw new Error(`Android projection source unavailable ${boardRef}`);
+    projected=AndroidProjector.projectVexLifeAndroidPocSnapshot(
+      context.snapshot,
+      boardRef,
+      context.design,
+    ).board;
+  }
+  const draft=Board.normalizeDraft(projected);
   if(draft.draftRef!==boardRef)throw new Error(`board source identity mismatch ${boardRef}`);
   return draft;
 }
@@ -140,21 +232,25 @@ async function openBuiltInBoard(boardRef,{pushCurrent=false}={}){
   return openBoard(d,{pushCurrent,boardRef,prototypeInput});
 }
 
-function snapshotCurrent(){return current?{current,selected,tool,camera,collapsed:[...collapsed],journey,journeyPathwayAnalysis,prototype,scenario,interactionTrail:interactionTrail.map(entry=>({...entry})),activeBoardRef,draftDirty,saveMessage,pinnedSemanticRefs:[...pinnedSemanticRefs],relationalFocusMode,relationshipViewMode}:null}
+function snapshotCurrent(){return current?{current,selected,tool,camera,collapsed:[...collapsed],journey,journeyPathwayAnalysis,prototype,scenario,interactionTrail:interactionTrail.map(entry=>({...entry})),activeBoardRef,draftDirty,saveMessage,pinnedSemanticRefs:[...pinnedSemanticRefs],relationalFocusMode,relationshipViewMode,scrollOffsets:[...scrollOffsetsByProjectionRef.entries()],androidViewportProfileRef:activeAndroidViewportProfileRef}:null}
 async function openBoard(input,{pushCurrent=false,boardRef=null,prototypeInput=null}={}){
   cameraAnimator.cancel();
+  drawerMode=null;
   if(pushCurrent&&current)boardStack.push(snapshotCurrent());
   const d=Board.normalizeDraft(input),s=await Board.hydrateBoardState(d.graph,d.projection);
   const evidence=d.evidence?Evidence.normalizeBoardEvidence(d.evidence,s.graph):null;
-  current={...d,graph:s.graph,projection:s.projection,evidence};selected=null;tool='SELECT';connectFrom=null;relationshipViewMode=Presentation.defaultRelationshipViewMode(d.projection.layoutIntent);
+  const design=d.design?ScreenDesign.normalizeScreenDesign(d.design):null;
+  const familyModule=d.familyKotlin?await ensureFamilyKotlin():null;
+  const familyKotlin=d.familyKotlin?familyModule.normalizeFamilyKotlinModel(d.familyKotlin):null;
+  current={...d,graph:s.graph,projection:s.projection,evidence,design,familyKotlin};selected=null;tool='SELECT';connectFrom=null;relationshipViewMode=Presentation.defaultRelationshipViewMode(d.projection.layoutIntent);activeAndroidViewportProfileRef=d.presentation?.profileRef??null;
   prototype=prototypeInput?Board.normalizeBoardPrototype(prototypeInput,s.graph):null;
   scenario=prototype?Board.createBoardScenario(prototype,s.graph,{scenarioRef:ref('scenario.vexboard')}):null;
-  interactionTrail=[];collapsed=new Set();journey=null;journeyPathwayAnalysis=null;pinnedSemanticRefs=new Set();relationalFocusMode='CONNECT';camera=Board.normalizeCamera({x:48,y:48,zoom:1});activeBoardRef=boardRef||d.draftRef;
+  interactionTrail=[];collapsed=new Set();journey=null;journeyPathwayAnalysis=null;pinnedSemanticRefs=new Set();relationalFocusMode='CONNECT';scrollOffsetsByProjectionRef=new Map();camera=Board.normalizeCamera({x:48,y:48,zoom:1});activeBoardRef=boardRef||d.draftRef;
   draftDirty=d.mode==='LOCAL_DRAFT'&&!d.savedAtOrNull;
   saveMessage=d.mode==='LOCAL_DRAFT'?(d.savedAtOrNull?`Saved locally · ${savedClock(d.savedAtOrNull)}`:'Not saved locally yet'):'';
   renderWorkspace();requestAnimationFrame(()=>fitBoard());
 }
-function returnBoard(){cameraAnimator.cancel();const prior=boardStack.pop();if(!prior)return;({current,selected,tool,camera,journey,journeyPathwayAnalysis,prototype,scenario,interactionTrail,activeBoardRef,draftDirty,saveMessage,relationalFocusMode,relationshipViewMode}=prior);collapsed=new Set(prior.collapsed);pinnedSemanticRefs=new Set(prior.pinnedSemanticRefs||[]);connectFrom=null;closePinMenu();renderWorkspace();requestAnimationFrame(()=>applyCamera())}
+function returnBoard(){cameraAnimator.cancel();const prior=boardStack.pop();if(!prior)return;({current,selected,tool,camera,journey,journeyPathwayAnalysis,prototype,scenario,interactionTrail,activeBoardRef,draftDirty,saveMessage,relationalFocusMode,relationshipViewMode}=prior);collapsed=new Set(prior.collapsed);pinnedSemanticRefs=new Set(prior.pinnedSemanticRefs||[]);scrollOffsetsByProjectionRef=new Map(prior.scrollOffsets||[]);activeAndroidViewportProfileRef=prior.androidViewportProfileRef??null;connectFrom=null;closePinMenu();renderWorkspace();requestAnimationFrame(()=>applyCamera())}
 async function enterPortal(detailBoardRef){
   const local=drafts().find(d=>d.draftRef===detailBoardRef);
   if(local){await openBoard(local,{pushCurrent:true,boardRef:detailBoardRef});return}
@@ -168,19 +264,23 @@ async function enterPortal(detailBoardRef){
 
 function landing(){
   cameraAnimator.cancel();
-  current=null;selected=null;journey=null;journeyPathwayAnalysis=null;prototype=null;scenario=null;interactionTrail=[];pinnedSemanticRefs=new Set();relationalFocusMode='CONNECT';closePinMenu();boardStack=[];activeBoardRef=null;app.className='app';app.replaceChildren();
+  drawerMode=null;
+  current=null;selected=null;journey=null;journeyPathwayAnalysis=null;prototype=null;scenario=null;interactionTrail=[];pinnedSemanticRefs=new Set();relationalFocusMode='CONNECT';scrollOffsetsByProjectionRef=new Map();activeAndroidViewportProfileRef=null;androidProjectionSources=new Map();closePinMenu();boardStack=[];activeBoardRef=null;app.className='app';app.replaceChildren();
   const box=el('section','landing');
   box.append(el('div','eyebrow','VexBoard canvas projection'),el('h1','','Design the map before implementation has to guess it.'),el('p','lede','Create a local semantic-board draft or inspect an existing source board through a zoomable, pannable, recursive canvas. Camera, focus and collapse are read-only view state; requesting edit still forks a browser-local draft copy rather than mutating source truth.'));
   const actions=el('div','row');
   const create=el('button','btn primary','Create new');create.onclick=async()=>openBoard(await Board.createBlankDraft({draftRef:ref('draft.vexboard')}));
   const open=el('button','btn violet','Open VexBoard self-map');open.onclick=async()=>openBuiltInBoard('board.vexboard.self-map');
+  const architecture=el('button','btn violet','Open VexBoard architecture');architecture.onclick=async()=>openBuiltInBoard('board.vexboard.architecture-convergence');
   const simulate=el('button','btn violet','Open prototype demo');simulate.onclick=async()=>openBuiltInBoard('board.vexboard.prototype-demo');
-  actions.append(create,open,simulate);
+  actions.append(create,open,architecture,simulate);
   const examples=el('div','row');
   const anatomy=el('button','btn','Open system anatomy example');anatomy.onclick=async()=>openCatalogBoard('board.vexbusinessfactory.system-anatomy.patient-zero');
   const intent=el('button','btn','Open intent topology example');intent.onclick=async()=>openCatalogBoard('board.vexbusinessfactory.intent-topology.patient-zero');
   const vexstream=el('button','btn violet','Open VexStream living Blueprint');vexstream.onclick=async()=>openCatalogBoard('board.vexstream.phone-desktop-connection.living-blueprint');
-  examples.append(anatomy,intent,vexstream);
+  const androidPoc=el('button','btn violet','Open VexLife Android Screen POC');androidPoc.onclick=async()=>openCatalogBoard(AndroidProjector.VEXBOARD_ANDROID_POC_BOARD_REFS.EXPERIENCE);
+  const themeMode=el('button','btn violet','Open Theme Mode Origin Walk');themeMode.onclick=async()=>openCatalogBoard(THEME_MODE_WORKSPACE_BOARD_REF);
+  examples.append(anatomy,intent,vexstream,androidPoc,themeMode);
   box.append(actions,el('h2','','Source examples'),examples,el('h2','','Local drafts'));
   const list=el('div','cards');
   for(const d of drafts()){const c=el('article','card');c.append(el('div','tiny',d.mode),el('h3','',d.title),el('p','',d.derivedFromRefOrNull?`Forked from ${d.derivedFromRefOrNull}`:'Independent local draft'));const b=el('button','btn','Resume draft');b.onclick=()=>openBoard(d,{boardRef:d.draftRef});c.append(b);list.append(c)}
@@ -226,16 +326,21 @@ function setRelationalFocusMode(mode){if(!Board.VEXBOARD_RELATIONAL_FOCUS_MODES.
 function togglePinnedSemanticRef(semanticRef){if(pinnedSemanticRefs.has(semanticRef))pinnedSemanticRefs.delete(semanticRef);else pinnedSemanticRefs.add(semanticRef);closePinMenu();renderWorkspace();requestAnimationFrame(()=>applyCamera())}
 function clearPinnedSemanticRefs(){pinnedSemanticRefs.clear();closePinMenu();renderWorkspace();requestAnimationFrame(()=>applyCamera())}
 function closePinMenu(){if(pinMenuEl){pinMenuEl.remove();pinMenuEl=null}}
-function openPinMenu(clientX,clientY,semanticRef){
+function openPinMenu(clientX,clientY,semanticRef,projectionItemRef=null,locked=false){
   closePinMenu();
   const menu=el('div','pin-menu');menu.dataset.vexboardPlane=Interaction.INTERACTION_PLANES.CHROME;Object.assign(menu.style,{left:`${clientX}px`,top:`${clientY}px`});
+  if(editable()&&projectionItemRef&&locked!==true){
+    const move=el('button','btn','Move item · drag once');
+    move.onclick=()=>{selected=projectionItemRef;moveProjectionItemRef=projectionItemRef;tool='SELECT';closePinMenu();renderWorkspace();requestAnimationFrame(()=>applyCamera())};
+    menu.append(move);
+  }
   const toggle=el('button','btn',pinnedSemanticRefs.has(semanticRef)?'Unpin identity':'Pin identity');toggle.onclick=()=>togglePinnedSemanticRef(semanticRef);menu.append(toggle);
   for(const [label,mode] of [['Connect pinned','CONNECT'],['Direct only','DIRECT'],['Trace upstream','UPSTREAM'],['Trace downstream','DOWNSTREAM'],['Occurrences only','OCCURRENCES']]){const button=el('button',`btn${relationalFocusMode===mode?' pin-mode-active':''}`,label);button.onclick=()=>{if(!pinnedSemanticRefs.has(semanticRef))pinnedSemanticRefs.add(semanticRef);relationalFocusMode=mode;closePinMenu();renderWorkspace();requestAnimationFrame(()=>applyCamera())};menu.append(button)}
   if(pinnedSemanticRefs.size){const clear=el('button','btn','Clear pins');clear.onclick=clearPinnedSemanticRefs;menu.append(clear)}
   document.body.append(menu);pinMenuEl=menu;
 }
 document.addEventListener('pointerdown',(event)=>{if(pinMenuEl&&!pinMenuEl.contains(event.target))closePinMenu()},true);
-document.addEventListener('keydown',(event)=>{if(event.key==='Escape')closePinMenu()});
+document.addEventListener('keydown',(event)=>{if(event.key==='Escape'){closePinMenu();if(moveProjectionItemRef){moveProjectionItemRef=null;renderWorkspace();requestAnimationFrame(()=>applyCamera())}}});
 function inspectorRefToken(value,{semanticRefs=[],projectionRefs=[],relationshipRefs=[]}={}){
   const token=el('span','ref-token',value);token.tabIndex=0;token.title='Hover or focus to reveal on canvas';token.setAttribute('aria-label',`Reveal ${value} on canvas`);
   const reveal=()=>setInspectorReveal({semanticRefs,projectionRefs,relationshipRefs});
@@ -250,7 +355,8 @@ function renderEdges(svg,visibleSemanticRefs,presentation,focus){
   for(const r of current.graph.relationships){
     if(!Presentation.relationshipVisibleInMode(current.graph,r,relationshipViewMode))continue;
     if(!visibleSemanticRefs.has(r.fromRef)||!visibleSemanticRefs.has(r.toRef))continue;
-    const a=itemFor(r.fromRef),b=itemFor(r.toRef);if(!a||!b)continue;
+    const occurrenceRoute=AndroidPresentation.androidReferenceRelationshipRoute(current.presentation,r.relationshipRef);
+    const a=occurrenceRoute?item(occurrenceRoute.fromProjectionItemRef):itemFor(r.fromRef),b=occurrenceRoute?item(occurrenceRoute.toProjectionItemRef):itemFor(r.toRef);if(!a||!b)continue;
     const route=Presentation.relationshipRoute(a.bounds,b.bounds),accent=presentation.relationshipAccentByRef[r.relationshipRef];
     const classes=['edge',r.kind.toLowerCase()];if(Number.isInteger(accent))classes.push(`branch-${accent}`);if(focus){if(focus.relationships.some(value=>value.relationshipRef===r.relationshipRef))classes.push('pin-focus');else classes.push('pin-muted')}
     const l=document.createElementNS('http://www.w3.org/2000/svg','polyline');l.setAttribute('class',classes.join(' '));l.dataset.relationshipRef=r.relationshipRef;l.setAttribute('points',route.points.map(point=>`${point.x},${point.y}`).join(' '));l.setAttribute('marker-end','url(#vexboard-arrow)');svg.append(l);
@@ -305,6 +411,27 @@ function renderPrototypeOverlays(view){
   view.append(layer);
 }
 
+function scrollViewportMaximum(viewportItem){
+  const axis=AndroidPresentation.androidReferenceScrollAxis(current.presentation,viewportItem.projectionItemRef);
+  if(!axis)return 0;
+  const children=current.projection.items.filter(item=>item.parentProjectionItemRefOrNull===viewportItem.projectionItemRef&&item.visible);
+  if(!children.length)return 0;
+  if(axis==='HORIZONTAL'){
+    const right=Math.max(...children.map(child=>child.bounds.x+child.bounds.width));
+    return Math.max(0,right-(viewportItem.bounds.x+viewportItem.bounds.width));
+  }
+  const bottom=Math.max(...children.map(child=>child.bounds.y+child.bounds.height));
+  return Math.max(0,bottom-(viewportItem.bounds.y+viewportItem.bounds.height));
+}
+function scrollViewportBy(projectionItemRef,delta){
+  const viewport=item(projectionItemRef);if(!viewport)return;
+  const max=scrollViewportMaximum(viewport),prior=scrollOffsetsByProjectionRef.get(projectionItemRef)||0;
+  const next=Math.max(0,Math.min(max,prior+delta));
+  if(next===prior)return;
+  scrollOffsetsByProjectionRef.set(projectionItemRef,next);
+  renderWorkspace();requestAnimationFrame(()=>applyCamera());
+}
+
 function renderCanvas(canvas){
   const shown=visibleItems(),visibleSemanticRefs=new Set(shown.map(i=>i.semanticRef)),presentation=Presentation.deriveBranchPresentation(current.graph),focus=currentRelationalFocus(),focusNodeRefs=new Set(focus?.nodes.map(value=>value.nodeRef)||[]),extent=Presentation.canvasExtent(shown);
   Object.assign(canvas.style,{width:`${extent.width}px`,height:`${extent.height}px`});
@@ -314,18 +441,41 @@ function renderCanvas(canvas){
     const n=node(i.semanticRef);if(!n)continue;
     const canSimulate=n.kind==='CONTROL'&&prototype&&journey?.currentRef===n.nodeRef,role=Presentation.semanticRole(current.graph,n.nodeRef),accent=presentation.nodeAccentByRef[n.nodeRef];
     const parentProjection=i.parentProjectionItemRefOrNull?item(i.parentProjectionItemRefOrNull):null,parentNode=parentProjection?node(parentProjection.semanticRef):null;
-    const hasContainedChildren=current.graph.nodes.some(candidate=>candidate.parentRefOrNull===n.nodeRef),classes=[`shape ${i.shapeKind}`,`role-${role}`,`kind-${n.kind}`];if(hasContainedChildren)classes.push('has-contained-children');if(parentNode&&n.kind==='CONTROL')classes.push('nested-control');if(selected===i.projectionItemRef)classes.push('selected');if(canSimulate)classes.push('simulatable');if(Number.isInteger(accent))classes.push(`branch-${accent}`);if(parentNode)classes.push('contained');if(editable()&&!i.locked)classes.push('draggable');if(focus){if(pinnedSemanticRefs.has(n.nodeRef))classes.push('pin-seed');else if(focusNodeRefs.has(n.nodeRef))classes.push('pin-focus');else classes.push('pin-muted')}
-    const s=el('div',classes.join(' '));s.dataset.vexboardPlane=Interaction.INTERACTION_PLANES.OBJECT;s.dataset.semanticRef=n.nodeRef;s.dataset.projectionItemRef=i.projectionItemRef;Object.assign(s.style,{left:`${i.bounds.x}px`,top:`${i.bounds.y}px`,width:`${i.bounds.width}px`,height:`${i.bounds.height}px`,zIndex:String(i.layer+10)});
+    const hasContainedChildren=current.graph.nodes.some(candidate=>candidate.parentRefOrNull===n.nodeRef),classes=[`shape ${i.shapeKind}`,`role-${role}`,`kind-${n.kind}`,...AndroidPresentation.androidReferenceClassNames(current.presentation,i.projectionItemRef)];if(hasContainedChildren)classes.push('has-contained-children');if(parentNode&&n.kind==='CONTROL')classes.push('nested-control');if(selected===i.projectionItemRef)classes.push('selected');if(canSimulate)classes.push('simulatable');if(Number.isInteger(accent))classes.push(`branch-${accent}`);if(parentNode)classes.push('contained');if(focus){if(pinnedSemanticRefs.has(n.nodeRef))classes.push('pin-seed');else if(focusNodeRefs.has(n.nodeRef))classes.push('pin-focus');else classes.push('pin-muted')}
+    const scrollOccurrence=AndroidPresentation.androidReferenceScrolledOccurrence(
+      current.presentation,
+      i.bounds,
+      i.parentProjectionItemRefOrNull,
+      parentProjection?.bounds??null,
+      i.parentProjectionItemRefOrNull?(scrollOffsetsByProjectionRef.get(i.parentProjectionItemRefOrNull)||0):0,
+    );
+    const displayBounds=scrollOccurrence?.bounds??i.bounds;
+    if(moveProjectionItemRef===i.projectionItemRef)classes.push('move-armed');
+    const s=el('div',classes.join(' '));s.dataset.vexboardPlane=Interaction.INTERACTION_PLANES.OBJECT;s.dataset.semanticRef=n.nodeRef;s.dataset.projectionItemRef=i.projectionItemRef;Object.assign(s.style,{left:`${displayBounds.x}px`,top:`${displayBounds.y}px`,width:`${displayBounds.width}px`,height:`${displayBounds.height}px`,zIndex:String(i.layer+10)});
+    if(scrollOccurrence){if(scrollOccurrence.hidden)s.style.display='none';else if(scrollOccurrence.clipPath)s.style.clipPath=scrollOccurrence.clipPath}
+    const scrollAxis=AndroidPresentation.androidReferenceScrollAxis(current.presentation,i.projectionItemRef);
+    if(scrollAxis){
+      const max=scrollViewportMaximum(i),offset=scrollOffsetsByProjectionRef.get(i.projectionItemRef)||0;
+      s.title=`${scrollAxis==='HORIZONTAL'?'Horizontal':'Vertical'} design viewport · scroll ${Math.round(offset)} / ${Math.round(max)}`;
+      s.setAttribute('aria-label',s.title);
+      s.onwheel=(event)=>{
+        const delta=scrollAxis==='HORIZONTAL'
+          ?(Math.abs(event.deltaX)>Math.abs(event.deltaY)?event.deltaX:event.deltaY)
+          :event.deltaY;
+        if(!delta)return;
+        event.preventDefault();event.stopPropagation();scrollViewportBy(i.projectionItemRef,delta);
+      };
+    }
     s.append(el('span','shape-label',n.label));
     const marker=Presentation.roleMarker(role);if(marker)s.append(el('span','role-marker',marker));
     if(!['PROCESS','DECISION','CONTAINER'].includes(n.kind))s.append(el('span','kind-marker',n.kind));
     if(presentation.hasBranching&&Number.isInteger(accent))s.append(el('span','branch-marker',`Path ${String.fromCharCode(65+accent)}`));
     if(parentNode)s.append(el('span','contained-marker',`in ${parentNode.label}`));
     let suppressShapeClick=false;
-    s.oncontextmenu=(e)=>{e.preventDefault();e.stopPropagation();selected=i.projectionItemRef;openPinMenu(e.clientX,e.clientY,n.nodeRef)};
-    s.onclick=async(e)=>{e.stopPropagation();if(suppressShapeClick){suppressShapeClick=false;return}if(tool==='CONNECT'&&editable()){if(!connectFrom){connectFrom=i.projectionItemRef;selected=i.projectionItemRef;renderWorkspace();requestAnimationFrame(()=>applyCamera());return}const from=item(connectFrom);connectFrom=null;if(from&&from.semanticRef!==i.semanticRef)await act('CONNECT_NODES',{relationship:{relationshipRef:ref('rel.vexboard'),kind:'FLOW',fromRef:from.semanticRef,toRef:i.semanticRef,labelOrNull:null,sourceRefs:[]}});tool='SELECT';selected=i.projectionItemRef;renderWorkspace();requestAnimationFrame(()=>applyCamera());return}if(tool==='SELECT'&&tryClickableControl(n.nodeRef))return;selected=i.projectionItemRef;renderWorkspace();requestAnimationFrame(()=>applyCamera())};
-    if(editable()&&tool==='SELECT'&&!i.locked)s.onpointerdown=(e)=>{
-      if(!Interaction.shouldStartObjectMove({tool,editable:editable(),locked:i.locked,targetPlane:Interaction.INTERACTION_PLANES.OBJECT,button:e.button}))return;
+    s.oncontextmenu=(e)=>{e.preventDefault();e.stopPropagation();selected=i.projectionItemRef;openPinMenu(e.clientX,e.clientY,n.nodeRef,i.projectionItemRef,i.locked)};
+    s.onclick=async(e)=>{e.stopPropagation();if(suppressObjectClickRef===i.projectionItemRef){suppressObjectClickRef=null;suppressCanvasClick=false;return}if(suppressShapeClick){suppressShapeClick=false;return}if(tool==='CONNECT'&&editable()){if(!connectFrom){connectFrom=i.projectionItemRef;selected=i.projectionItemRef;renderWorkspace();requestAnimationFrame(()=>applyCamera());return}const from=item(connectFrom);connectFrom=null;if(from&&from.semanticRef!==i.semanticRef)await act('CONNECT_NODES',{relationship:{relationshipRef:ref('rel.vexboard'),kind:'FLOW',fromRef:from.semanticRef,toRef:i.semanticRef,labelOrNull:null,sourceRefs:[]}});tool='SELECT';selected=i.projectionItemRef;renderWorkspace();requestAnimationFrame(()=>applyCamera());return}if(tool==='SELECT'&&tryClickableControl(n.nodeRef))return;selected=i.projectionItemRef;renderWorkspace();requestAnimationFrame(()=>applyCamera())};
+    if(editable()&&!i.locked)s.onpointerdown=(e)=>{
+      if(!Interaction.shouldStartObjectMove({tool,editable:editable(),locked:i.locked,moveArmed:moveProjectionItemRef===i.projectionItemRef,targetPlane:Interaction.INTERACTION_PLANES.OBJECT,button:e.button}))return;
       cameraAnimator.cancel();e.stopPropagation();
       const start={x:e.clientX,y:e.clientY},origin={x:i.bounds.x,y:i.bounds.y},zoom=camera.zoom;let dragged=false;
       s.setPointerCapture(e.pointerId);
@@ -337,11 +487,11 @@ function renderCanvas(canvas){
         const next=Interaction.objectPositionFromPointerDrag(origin,start,currentPoint,zoom);s.style.left=`${next.x}px`;s.style.top=`${next.y}px`;
       };
       const cleanup=()=>{s.onpointermove=null;s.onpointerup=null;s.onpointercancel=null;s.classList.remove('dragging')};
-      s.onpointercancel=()=>{if(dragged)suppressShapeClick=true;cleanup();s.style.left=`${origin.x}px`;s.style.top=`${origin.y}px`};
+      s.onpointercancel=()=>{if(dragged)suppressShapeClick=true;moveProjectionItemRef=null;cleanup();s.style.left=`${origin.x}px`;s.style.top=`${origin.y}px`;renderWorkspace();requestAnimationFrame(()=>applyCamera())};
       s.onpointerup=async u=>{
         const end={x:u.clientX,y:u.clientY};
         if(!dragged&&Interaction.pointerGestureFromMovement(start,end)!=='DRAG'){cleanup();return}
-        dragged=true;suppressShapeClick=true;const next=Interaction.objectPositionFromPointerDrag(origin,start,end,zoom);cleanup();
+        dragged=true;suppressShapeClick=true;const next=Interaction.objectPositionFromPointerDrag(origin,start,end,zoom);moveProjectionItemRef=null;cleanup();
         await act('MOVE_ITEM',{projectionItemRef:i.projectionItemRef,x:next.x,y:next.y});
       };
     };
@@ -373,6 +523,154 @@ function reducedJourneySnapshotText(){
     if(entry.kind==='LOOP_REF'){const motif=journeyPathwayAnalysis.motifs.find(value=>value.motifRef===entry.motifRef);return `↻ ${entry.label} · occurrence ${entry.occurrenceIndex}${motif?.occurrenceCount>1?` / ${motif.occurrenceCount}`:''}`}
     return `${node(entry.semanticRef)?.label||entry.semanticRef} · ${entry.navigationKind}`;
   }).join('\n');
+}
+function designMetricText(metric){
+  if(!metric)return'';
+  const preferred=Number(metric.preferredPercent)*100;
+  return `${preferred.toFixed(2)}% · ${metric.minDp}–${metric.maxDp}dp · ref ${metric.referenceDp}dp`;
+}
+function designMetricRefsForSemantic(design,semanticRef){
+  const refs=new Set();
+  for(const constraint of design.constraints.filter(value=>value.semanticRef===semanticRef)){
+    for(const axis of [constraint.horizontal,constraint.vertical]){
+      for(const margin of [axis?.startMargin,axis?.endMargin])if(margin?.metricRef)refs.add(margin.metricRef);
+    }
+  }
+  for(const rule of (design.layoutRules||[]).filter(value=>value.semanticRef===semanticRef)){
+    if(rule.gapMetricRefOrNull)refs.add(rule.gapMetricRefOrNull);
+  }
+  return [...refs].sort();
+}
+function designAxisText(axis){
+  if(!axis)return'—';
+  const parts=[axis.size?.mode||''];
+  if(axis.size?.fraction!==undefined)parts.push(`${(axis.size.fraction*100).toFixed(1)}%`);
+  if(axis.size?.referenceDp!==undefined)parts.push(`${axis.size.referenceDp}dp`);
+  parts.push(`bias ${Number(axis.bias??0).toFixed(2)}`);
+  if(axis.startMargin)parts.push(axis.startMargin.metricRef?`start @${axis.startMargin.metricRef}`:`start ${designMetricText(axis.startMargin)}`);
+  if(axis.endMargin)parts.push(axis.endMargin.metricRef?`end @${axis.endMargin.metricRef}`:`end ${designMetricText(axis.endMargin)}`);
+  return parts.filter(Boolean).join(' · ');
+}
+
+function drawerButton(label,mode){
+  const button=el('button',`btn drawer-toggle${drawerMode===mode?' active':''}`,label);
+  button.type='button';
+  button.setAttribute('aria-pressed',drawerMode===mode?'true':'false');
+  button.onclick=()=>{drawerMode=drawerMode===mode?null:mode;renderWorkspace();requestAnimationFrame(()=>applyCamera())};
+  return button;
+}
+function drawerShell(side,title){
+  const head=el('div','drawer-head');
+  head.append(el('strong','',title));
+  const close=el('button','btn drawer-close','×');close.type='button';close.title='Close drawer';close.setAttribute('aria-label','Close drawer');
+  close.onclick=()=>{drawerMode=null;renderWorkspace();requestAnimationFrame(()=>applyCamera())};
+  head.append(close);
+  const body=el('div','drawer-body');
+  side.append(head,body);
+  return body;
+}
+function renderLibraryDrawer(side,context){
+  const body=drawerShell(side,'Library');
+  const used=el('section','drawer-section');used.append(el('h3','','Used here'));
+  for(const entry of context.library){
+    const card=el('article','library-entry');
+    card.append(el('strong','',entry.name));
+    const statusClass=entry.status==='ESTABLISHED'?'established':entry.status==='CANDIDATE'?'candidate':'unresolved';
+    card.append(el('div',`library-status ${statusClass}`,entry.status),el('div','drawer-copy',entry.detail));
+    used.append(card);
+  }
+  const browse=document.createElement('details');browse.className='drawer-browse';
+  const summary=document.createElement('summary');summary.textContent='Browse project library';browse.append(summary);
+  const list=document.createElement('ul');
+  for(const category of ['States','Behaviors','Repositories / Sources','Convergence','Shared semantic components']){
+    const item=document.createElement('li');item.textContent=category;list.append(item);
+  }
+  browse.append(list);used.append(browse);body.append(used);
+}
+function renderFeatureContextDrawer(side,context){
+  const body=drawerShell(side,'Feature Context');
+  const section=el('section','drawer-section');
+  section.append(el('h3','','Project'),el('div','drawer-copy',`${context.project}\n${context.projectRef}`));
+  section.append(el('h3','','Current work'),el('div','drawer-copy',`${context.work}\n${context.workRef}`));
+  section.append(el('h3','','Intent'),el('div','drawer-copy',context.intent));
+  section.append(el('h3','','Current frontier'),el('div','drawer-copy',context.frontier.map(value=>`• ${value}`).join('\n')));
+  const link=document.createElement('a');link.className='btn drawer-link';link.href=context.vexWorkHref;link.textContent='Open VexWork source';
+  section.append(link,el('div','drawer-copy',`\nSource: ${context.pullRef}`));body.append(section);
+}
+function editFamilyKotlinBinding(familyRef,controlRef,resourceIdRefOrNull){
+  if(!editable()||!current.familyKotlin)return;
+  current={
+    ...current,
+    familyKotlin:FamilyKotlin.rebindControlResource(
+      current.familyKotlin,
+      {familyRef,controlRef,resourceIdRefOrNull},
+    ),
+  };
+  markDraftDirty();
+  renderWorkspace();
+  requestAnimationFrame(()=>applyCamera());
+}
+function renderKotlinDrawer(side){
+  const body=drawerShell(side,'Kotlin mapping');
+  if(!current.familyKotlin){
+    body.append(el('div','drawer-copy','No Family Kotlin mapping is bound to this board.'));
+    return;
+  }
+  const model=FamilyKotlin.normalizeFamilyKotlinModel(current.familyKotlin);
+  const plan=FamilyKotlin.compileFamilyKotlin(model);
+
+  const intro=el('section','drawer-section');
+  intro.append(
+    el('h3','','Executable language specimen'),
+    el('div','drawer-copy',`Model: ${model.modelRef}\nCurrent mapped test: ${model.testSourceRef}\nTarget product source: ${model.targetSourceRefOrNull||'not admitted yet'}`),
+  );
+
+  for(const family of model.families){
+    if(family.controlForm!=='SEALED')continue;
+    for(const control of family.controls){
+      if(control.resourceIdRefOrNull===null)continue;
+      const row=el('div','kotlin-binding');
+      row.append(el('div','k',`${family.familyName}.${control.name}`));
+      const select=document.createElement('select');select.className='containment-select';select.disabled=!editable();
+      for(const resource of family.resources){
+        const option=document.createElement('option');
+        option.value=resource.resourceRef;
+        option.textContent=resource.name;
+        option.selected=resource.resourceRef===control.resourceIdRefOrNull;
+        select.append(option);
+      }
+      select.onchange=()=>editFamilyKotlinBinding(family.familyRef,control.controlRef,select.value);
+      row.append(select);intro.append(row);
+    }
+  }
+  if(!editable()){
+    intro.append(el('div','drawer-copy','Request edit → draft copy to change the typed binding. The preview is effect-free; it does not write Android source.'));
+  }else{
+    intro.append(el('div','drawer-copy','Changing the binding recompiles both the Family declaration and mapped test language in this local draft.'));
+  }
+  body.append(intro);
+
+  const implementation=el('section','drawer-section');
+  implementation.append(el('h3','','Generated Family Kotlin'));
+  const familyPre=el('pre','kotlin-preview');familyPre.textContent=plan.familySource;implementation.append(familyPre);
+  body.append(implementation);
+
+  const tests=el('section','drawer-section');
+  tests.append(el('h3','','Mapped Kotlin test language'));
+  const testPre=el('pre','kotlin-preview');testPre.textContent=plan.testSource;tests.append(testPre);
+  body.append(tests);
+
+  const effects=el('section','drawer-section');
+  effects.append(el('h3','','Effect boundary'),el('div','drawer-copy',`external effects performed: ${String(plan.externalEffectsPerformed)}\nThis is a construction candidate only.`));
+  body.append(effects);
+}
+function renderContextDrawer(side){
+  const context=featureWorkspaceContext();
+  if(drawerMode==='LIBRARY'&&context){renderLibraryDrawer(side,context);return}
+  if(drawerMode==='FEATURE_CONTEXT'&&context){renderFeatureContextDrawer(side,context);return}
+  if(drawerMode==='KOTLIN'&&current.familyKotlin){renderKotlinDrawer(side);return}
+  const body=drawerShell(side,'Inspect');
+  const inspect=el('div','inspector');body.append(inspect);inspector(inspect);
 }
 
 function inspector(side){
@@ -408,6 +706,172 @@ function inspector(side){
     }
   }
   side.append(g);
+  if(current.adoptionCoverage){
+    const ag=el('div','group');ag.append(el('h3','','Android Adoption'));
+    if(current.adoptionReadiness){
+      const readiness=el('div','kv');
+      readiness.append(
+        el('div','k','readiness'),
+        el('div','v',current.adoptionReadiness.status),
+        el('div','k','blockers'),
+        el('div','v',String(current.adoptionReadiness.blockingFindingRefs?.length??0)),
+      );
+      ag.append(readiness);
+    }
+    const screenMode=current.adoptionCoverage.screenRealizationModes?.[n.nodeRef]??null;
+    const exception=current.adoptionCoverage.identityExceptions?.find(
+      entry=>entry.semanticRef===n.nodeRef,
+    )??null;
+    const findings=(current.adoptionCoverage.findings||[]).filter(
+      entry=>entry.ownerSemanticRef===n.nodeRef||entry.subjectSemanticRefOrNull===n.nodeRef,
+    );
+    if(screenMode){
+      const kv=el('div','kv');kv.append(
+        el('div','k','realization'),
+        el('div','v',screenMode),
+      );ag.append(kv);
+    }
+    if(exception){
+      const kv=el('div','kv');kv.append(
+        el('div','k','origin'),el('div','v',exception.origin),
+        el('div','k','registry'),el('div','v',exception.staticRegistryStatus),
+      );ag.append(kv);
+      if(exception.sourceRefs?.length){
+        const list=el('div','ref-list');
+        for(const sourceRef of exception.sourceRefs){
+          list.append(el('div','ref-row',sourceRef));
+        }
+        ag.append(el('div','k','Coverage source'),list);
+      }
+    }
+    if(findings.length){
+      ag.append(el('div','k','Findings'));
+      const list=el('div','ref-list');
+      for(const finding of findings){
+        const row=el('div','ref-row');
+        row.append(
+          el(
+            'div',
+            'tiny',
+            `${finding.kind} · ${finding.blockingForPocAuthority?'BLOCKS POC AUTHORITY':finding.scopeStatus}`,
+          ),
+          el('div','v',finding.summary),
+        );
+        if(finding.subjectSemanticRefOrNull){
+          row.append(inspectorRefToken(
+            finding.subjectSemanticRefOrNull,
+            {semanticRefs:[finding.subjectSemanticRefOrNull]},
+          ));
+        }
+        list.append(row);
+      }
+      ag.append(list);
+    }
+    if(!screenMode&&!exception&&!findings.length){
+      ag.append(el('div','v','No Android adoption exception or finding on this identity.'));
+    }
+    side.append(ag);
+  }
+  if(current.design){
+    const dg=el('div','group');dg.append(el('h3','','Screen Design'));
+    const dkv=el('div','kv');
+    const designRows=[
+      ['authority',current.design.authorityState],
+      ['designRef',current.design.designRef],
+      ['profile',current.design.referenceViewport.profileRef],
+      ['viewport',`${current.design.referenceViewport.widthDp}×${current.design.referenceViewport.heightDp}dp`],
+    ];
+    for(const [k,v] of designRows){dkv.append(el('div','k',k),el('div','v',String(v)))}dg.append(dkv);
+
+    const semanticElement=(current.design.semanticElements||[]).find(value=>value.semanticRef===n.nodeRef)||null;
+    if(semanticElement){
+      const elementKv=el('div','kv');elementKv.append(
+        el('div','k','identity'),el('div','v',semanticElement.identityState),
+        el('div','k','design parent'),el('div','v',semanticElement.parentSemanticRef),
+        el('div','k','reference lines'),el('div','v',String(semanticElement.referenceLineCount)),
+      );
+      dg.append(el('div','k','Proposed semantic element'),elementKv);
+    }
+
+    const componentAssignment=(current.design.componentAssignments||[]).find(value=>value.semanticRef===n.nodeRef)||null;
+    if(componentAssignment){
+      dg.append(el('div','k','Component assignment'));
+      const componentKv=el('div','kv');
+      for(const [k,v] of [
+        ['template',componentAssignment.templateRef],
+        ['style',componentAssignment.styleRef],
+        ['selected',componentAssignment.selectedStyleRefOrNull||'None'],
+        ['icon',componentAssignment.iconRefOrNull||'None'],
+      ])componentKv.append(el('div','k',k),el('div','v',String(v)));
+      dg.append(componentKv);
+
+      if(editable()){
+        const styleRefs=designStyleRefs(current.design),controls=el('div','row');
+        const styleLabel=el('label','k','Style'),styleSelect=document.createElement('select');styleSelect.className='containment-select';
+        for(const styleRef of styleRefs){const option=document.createElement('option');option.value=styleRef;option.textContent=styleRef;option.selected=styleRef===componentAssignment.styleRef;styleSelect.append(option)}
+        styleSelect.onchange=()=>editLocalComponentAssignment(n.nodeRef,'styleRef',styleSelect.value);styleLabel.append(styleSelect);controls.append(styleLabel);
+
+        if(componentAssignment.selectedStyleRefOrNull){
+          const selectedLabel=el('label','k','Selected'),selectedSelect=document.createElement('select');selectedSelect.className='containment-select';
+          for(const styleRef of styleRefs){const option=document.createElement('option');option.value=styleRef;option.textContent=styleRef;option.selected=styleRef===componentAssignment.selectedStyleRefOrNull;selectedSelect.append(option)}
+          selectedSelect.onchange=()=>editLocalComponentAssignment(n.nodeRef,'selectedStyleRefOrNull',selectedSelect.value);selectedLabel.append(selectedSelect);controls.append(selectedLabel);
+        }
+        dg.append(controls);
+      }
+    }
+
+    const constraints=current.design.constraints.filter(value=>value.semanticRef===n.nodeRef);
+    if(constraints.length){
+      dg.append(el('div','k','Constraints'));
+      const list=el('div','ref-list');
+      for(const constraint of constraints){
+        const row=el('div','ref-row');
+        row.append(el('div','v',`${constraint.occurrenceRef}\nH: ${designAxisText(constraint.horizontal)}\nV: ${designAxisText(constraint.vertical)}`));
+        list.append(row);
+      }
+      dg.append(list);
+    }
+
+    const layoutRules=(current.design.layoutRules||[]).filter(value=>value.semanticRef===n.nodeRef);
+    if(layoutRules.length){
+      dg.append(el('div','k','Layout rules'));
+      const list=el('div','ref-list');
+      for(const rule of layoutRules){
+        const metric=rule.gapMetricRefOrNull?current.design.metrics?.[rule.gapMetricRefOrNull]:null;
+        list.append(el('div','ref-row',`${rule.layoutRef}\n${rule.mode}${metric?` · gap ${designMetricText(metric)}`:''}`));
+      }
+      dg.append(list);
+    }
+
+    const metricRefs=designMetricRefsForSemantic(current.design,n.nodeRef);
+    if(metricRefs.length){
+      dg.append(el('div','k','Design metrics'));
+      const list=el('div','ref-list');
+      for(const metricRef of metricRefs){
+        const metric=current.design.metrics?.[metricRef];if(!metric)continue;
+        const row=el('div','ref-row');row.append(el('div','v',`${metricRef}\n${designMetricText(metric)}`));
+        if(editable()){
+          const controls=el('div','row');
+          for(const [label,field,value,scale,step] of [
+            ['Preferred %','preferredPercent',metric.preferredPercent*100,0.01,0.1],
+            ['Min dp','minDp',metric.minDp,1,1],
+            ['Max dp','maxDp',metric.maxDp,1,1],
+          ]){
+            const lab=el('label','k',label),input=document.createElement('input');input.className='number';input.type='number';input.step=String(step);input.value=String(Math.round(value*100)/100);
+            input.onchange=()=>editLocalDesignMetric(metricRef,field,Number(input.value)*scale);
+            lab.append(input);controls.append(lab);
+          }
+          row.append(controls);
+        }
+        list.append(row);
+      }
+      dg.append(list);
+    }
+    if(!componentAssignment&&!constraints.length&&!layoutRules.length&&!metricRefs.length){
+      dg.append(el('div','v','No direct Screen-design constraint on this semantic identity; inspect its owning Screen/container or construction/source lens.'));
+    }
+    side.append(dg);
+  }
   const fg=el('div','group');fg.append(el('h3','','Pinned relational focus'));
   if(!pinnedSemanticRefs.size)fg.append(el('div','v','Right-click an object or use Pin identity to hold stable refs in diagnostic focus.'));
   else{
@@ -495,7 +959,7 @@ function inspector(side){
   const sg=el('div','group');sg.append(el('h3','','Source refs'),el('div','v',n.sourceRefs.length?n.sourceRefs.join('\n'):'Local draft object · no source binding'));side.append(sg);
 }
 
-function toolButton(label,name,disabled=false){const b=el('button',`tool${tool===name?' active':''}`,label);b.disabled=disabled;b.onclick=()=>{tool=name;connectFrom=null;renderWorkspace();requestAnimationFrame(()=>applyCamera())};return b}
+function toolButton(label,name,disabled=false){const b=el('button',`tool${tool===name?' active':''}`,label);b.disabled=disabled;b.onclick=()=>{tool=name;connectFrom=null;moveProjectionItemRef=null;renderWorkspace();requestAnimationFrame(()=>applyCamera())};return b}
 function wireViewport(view,canvas){
   view.onwheel=(e)=>{e.preventDefault();const rect=view.getBoundingClientRect();zoomBy(e.deltaY<0?1.12:1/1.12,{anchorX:e.clientX-rect.left,anchorY:e.clientY-rect.top})};
   view.onpointerdown=(e)=>{
@@ -503,13 +967,94 @@ function wireViewport(view,canvas){
     const targetPlane=Interaction.interactionPlaneForTarget(e.target);
     if(!Interaction.shouldStartCanvasPan({tool,targetPlane,button:e.button}))return;
     e.preventDefault();
+    const pointerObjectRef=e.target?.closest?.('[data-projection-item-ref]')?.dataset?.projectionItemRef??null;
     const start={x:e.clientX,y:e.clientY},origin=camera;let dragged=false;
     view.setPointerCapture(e.pointerId);
     view.onpointermove=m=>{const currentPoint={x:m.clientX,y:m.clientY};if(!dragged&&!Interaction.dragExceededThreshold(start,currentPoint))return;dragged=true;camera=Board.normalizeCamera(Interaction.cameraFromPointerDrag(origin,start,currentPoint));applyCamera()};
-    const end=()=>{view.onpointermove=null;view.onpointerup=null;view.onpointercancel=null;if(dragged)suppressCanvasClick=true};
+    const end=()=>{view.onpointermove=null;view.onpointerup=null;view.onpointercancel=null;if(dragged){suppressCanvasClick=true;setTimeout(()=>{suppressCanvasClick=false},0);if(pointerObjectRef){suppressObjectClickRef=pointerObjectRef;setTimeout(()=>{if(suppressObjectClickRef===pointerObjectRef)suppressObjectClickRef=null},0)}}};
     view.onpointerup=end;view.onpointercancel=end;
   };
   canvas.onclick=async e=>{if(suppressCanvasClick){suppressCanvasClick=false;return}if(editable()&&['RECTANGLE','DIAMOND','FRAME','TEXT'].includes(tool)){const point=Board.boardPointFromClient({clientX:e.clientX,clientY:e.clientY},view.getBoundingClientRect(),camera);await addShape(tool,point.x,point.y)}else if(tool!=='PAN'){selected=null;renderWorkspace();requestAnimationFrame(()=>applyCamera())}};
+}
+
+function androidSourceBoardRef(){
+  return current?.mode==='LOCAL_DRAFT'?(current.derivedFromRefOrNull||null):(activeBoardRef||null);
+}
+async function reprojectAndroidDesign(nextDesign,{profileRef=activeAndroidViewportProfileRef,markDirty=false}={}){
+  const sourceBoardRef=androidSourceBoardRef();
+  if(!sourceBoardRef)return false;
+  const source=await loadAndroidProjectionSourceContext(sourceBoardRef);
+  if(!source)return false;
+  const projected=AndroidProjector.projectVexLifeAndroidPocSnapshot(
+    source.snapshot,
+    sourceBoardRef,
+    nextDesign,
+    profileRef,
+  ).board;
+  const d=Board.normalizeDraft(projected),s=await Board.hydrateBoardState(d.graph,d.projection);
+  const priorSelected=selected;
+  const evidence=d.evidence?Evidence.normalizeBoardEvidence(d.evidence,s.graph):null;
+  const design=ScreenDesign.normalizeScreenDesign(nextDesign);
+  current={
+    ...current,
+    graph:s.graph,
+    projection:s.projection,
+    presentation:d.presentation,
+    design,
+    sourceRefs:d.sourceRefs,
+    evidence,
+    savedAtOrNull:markDirty?null:current.savedAtOrNull,
+  };
+  selected=priorSelected&&s.projection.items.some(item=>item.projectionItemRef===priorSelected)?priorSelected:null;
+  activeAndroidViewportProfileRef=profileRef??design.referenceViewport.profileRef;
+  scrollOffsetsByProjectionRef=new Map();
+  if(markDirty)markDraftDirty();
+  renderWorkspace();requestAnimationFrame(()=>applyCamera());
+  return true;
+}
+async function setAndroidViewportProfile(profileRef){
+  if(editable())return;
+  const source=await loadAndroidProjectionSourceContext(activeBoardRef);
+  if(!source)return;
+  await reprojectAndroidDesign(source.design,{profileRef,markDirty:false});
+}
+function designStyleRefs(design){
+  const refs=new Set();
+  for(const assignment of design.componentAssignments||[]){
+    if(assignment.styleRef)refs.add(assignment.styleRef);
+    if(assignment.selectedStyleRefOrNull)refs.add(assignment.selectedStyleRefOrNull);
+  }
+  return [...refs].sort();
+}
+async function editLocalComponentAssignment(semanticRef,field,value){
+  if(!editable()||!current.design)return;
+  const next=structuredClone(current.design);
+  const assignment=next.componentAssignments?.find(entry=>entry.semanticRef===semanticRef);if(!assignment)return;
+  assignment[field]=value||null;
+  next.authorityState='VEXBOARD_DESIGN_DRAFT';
+  try{
+    const accepted=ScreenDesign.normalizeScreenDesign(next);
+    await reprojectAndroidDesign(accepted,{markDirty:true});
+  }catch(error){
+    saveMessage=`Design edit rejected · ${error?.message||error}`;
+    renderWorkspace();requestAnimationFrame(()=>applyCamera());
+  }
+}
+
+async function editLocalDesignMetric(metricRef,field,value){
+  if(!editable()||!current.design)return;
+  if(!Number.isFinite(value))return;
+  const next=structuredClone(current.design);
+  const metric=next.metrics?.[metricRef];if(!metric)return;
+  metric[field]=value;
+  next.authorityState='VEXBOARD_DESIGN_DRAFT';
+  try{
+    const accepted=ScreenDesign.normalizeScreenDesign(next);
+    await reprojectAndroidDesign(accepted,{markDirty:true});
+  }catch(error){
+    saveMessage=`Design edit rejected · ${error?.message||error}`;
+    renderWorkspace();requestAnimationFrame(()=>applyCamera());
+  }
 }
 
 function paletteFab(){
@@ -524,23 +1069,52 @@ function renderWorkspace(){
   if(boardStack.length){const back=el('button','btn','↩ Return');back.onclick=returnBoard;bar.append(back)}
   const title=document.createElement('input');title.className='title';title.value=current.title;title.disabled=!editable();title.onchange=()=>{current={...current,title:title.value.trim()||'Untitled VexBoard'};markDraftDirty();renderWorkspace();requestAnimationFrame(()=>applyCamera())};
   const badge=el('span',`badge ${editable()?'draft':'readonly'}`,editable()?'Local draft · browser only':'Read-only source');bar.append(title,badge);
-  const zoomOut=el('button','btn','Zoom out');zoomOut.onclick=()=>zoomBy(1/1.18);const zoomIn=el('button','btn','Zoom in');zoomIn.onclick=()=>zoomBy(1.18);const fit=el('button','btn','Fit');fit.onclick=fitBoard;const reset=el('button','btn','Reset view');reset.onclick=resetView;zoomReadoutEl=el('span','zoom-readout','100%');bar.append(zoomOut,zoomIn,fit,reset,zoomReadoutEl);
+  const androidProfile=AndroidPresentation.androidReferenceProfileSummary(current.presentation);
+  if(androidProfile)bar.append(el('span','badge',`Android ref · ${androidProfile.widthDp}×${androidProfile.heightDp}dp`));
+  if(current.adoptionReadiness){
+    bar.append(el(
+      'span',
+      `badge ${current.adoptionReadiness.status==='CLEAR'?'draft':'readonly'}`,
+      `Android adoption · ${current.adoptionReadiness.status}`,
+    ));
+  }
+  if(current.design){
+    const authority=designAuthorityLabel(current.design.authorityState);
+    bar.append(el('span','badge',authority));
+    if(!editable()&&androidProjectionSources.has(activeBoardRef)&&Array.isArray(current.design.viewportProfiles)){
+      const viewportSelect=document.createElement('select');viewportSelect.className='containment-select';viewportSelect.setAttribute('aria-label','Screen design viewport');
+      for(const profile of current.design.viewportProfiles){
+        const option=document.createElement('option');option.value=profile.profileRef;option.textContent=profile.label;option.selected=profile.profileRef===activeAndroidViewportProfileRef;viewportSelect.append(option);
+      }
+      viewportSelect.onchange=()=>setAndroidViewportProfile(viewportSelect.value);
+      bar.append(viewportSelect);
+    }
+  }
+  const zoomOut=el('button','btn','Zoom out');zoomOut.onclick=()=>zoomBy(1/1.18);const zoomIn=el('button','btn','Zoom in');zoomIn.onclick=()=>zoomBy(1.18);const fit=el('button','btn','Fit');fit.onclick=fitBoard;const reset=el('button','btn','Reset view');reset.onclick=resetView;zoomReadoutEl=el('span','zoom-readout','100%');bar.append(zoomOut,zoomIn,fit,reset,zoomReadoutEl,el('span','gesture-hint','Drag to navigate · Click items · Right-click for context'));
   if(current.graph.relationships.some(relationship=>!['FLOW','TRANSITION'].includes(relationship.kind))){
     const edgeView=el('button','btn',relationshipViewMode==='JOURNEY'?'Journey edges':'All relationships');
     edgeView.title=relationshipViewMode==='JOURNEY'?'Primary product journey only · show all relationships':'All semantic relationships · return to product journey';
     edgeView.onclick=()=>{relationshipViewMode=relationshipViewMode==='JOURNEY'?'ALL':'JOURNEY';renderWorkspace();requestAnimationFrame(()=>applyCamera())};
     bar.append(edgeView);
   }
+  const featureContext=featureWorkspaceContext();
+  bar.append(drawerButton('Inspect','INSPECT'));
+  if(featureContext)bar.append(drawerButton('Library','LIBRARY'),drawerButton('Kotlin','KOTLIN'),drawerButton('Feature context','FEATURE_CONTEXT'));
   if(editable()){
     const save=el('button','btn primary','Save draft');save.disabled=!draftDirty&&Boolean(current.savedAtOrNull);
     save.onclick=()=>{try{const savedAt=new Date().toISOString(),next={...current,savedAtOrNull:savedAt};store(Board.upsertDraft(drafts(),next));current=next;draftDirty=false;saveMessage=`Saved locally · ${savedClock(savedAt)}`}catch(error){draftDirty=true;saveMessage=`Local save failed · ${error?.name||'storage unavailable'}`}renderWorkspace();requestAnimationFrame(()=>applyCamera())};
     const statusClass=saveMessage.startsWith('Local save failed')?'error':draftDirty?'dirty':'saved';bar.append(save,el('span',`save-status ${statusClass}`,saveMessage||'Browser-local draft'));
   }else{const fork=el('button','btn violet','Request edit → draft copy');fork.onclick=async()=>openBoard(await Board.forkReadOnlyBoard(current,{draftRef:ref('draft.vexboard')}));bar.append(fork)}
   app.append(bar);
-  const work=el('div','work'),tools=el('aside','tools'),disabled=!editable();tools.append(toolButton('Select','SELECT'),toolButton('Pan','PAN'),toolButton('Box','RECTANGLE',disabled),toolButton('Decision','DIAMOND',disabled),toolButton('Frame','FRAME',disabled),toolButton('Text','TEXT',disabled),toolButton('Connect','CONNECT',disabled));
+  const work=el('div',`work${drawerMode?' drawer-open':''}`),tools=el('aside','tools'),disabled=!editable();tools.append(toolButton('Select','SELECT'),toolButton('Pan','PAN'),toolButton('Box','RECTANGLE',disabled),toolButton('Decision','DIAMOND',disabled),toolButton('Frame','FRAME',disabled),toolButton('Text','TEXT',disabled),toolButton('Connect','CONNECT',disabled));
   const paletteClass=`palette-${paletteMode.toLowerCase().replaceAll('_','-')}`;
-  viewportEl=el('section',`viewport ${paletteClass}${['SELECT','PAN'].includes(tool)?' pan-ready':''}`);canvasEl=el('div','canvas');renderCanvas(canvasEl);viewportEl.append(canvasEl);minimapEl=el('div','minimap');minimapEl.dataset.vexboardPlane=Interaction.INTERACTION_PLANES.CHROME;minimapEl.setAttribute('aria-label','Canvas minimap');viewportEl.append(minimapEl,paletteFab());renderPrototypeOverlays(viewportEl);wireViewport(viewportEl,canvasEl);
-  const side=el('aside','inspector');inspector(side);work.append(tools,viewportEl,side);app.append(work);applyCamera();
+  viewportEl=el('section',`viewport ${paletteClass}${['SELECT','PAN'].includes(tool)?' pan-ready':''}`);
+  if(current.design&&current.presentation){
+    const cssVars=AndroidPresentation.androidReferenceCssVariables(current.design,current.presentation);
+    for(const [name,value] of Object.entries(cssVars))viewportEl.style.setProperty(name,String(value));
+  }
+  canvasEl=el('div','canvas');renderCanvas(canvasEl);viewportEl.append(canvasEl);minimapEl=el('div','minimap');minimapEl.dataset.vexboardPlane=Interaction.INTERACTION_PLANES.CHROME;minimapEl.setAttribute('aria-label','Canvas minimap');viewportEl.append(minimapEl,paletteFab());renderPrototypeOverlays(viewportEl);wireViewport(viewportEl,canvasEl);
+  work.append(tools,viewportEl);if(drawerMode){const side=el('aside','context-drawer');renderContextDrawer(side);work.append(side)}app.append(work);applyCamera();
 }
 
 landing();

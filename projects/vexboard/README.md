@@ -15,7 +15,7 @@ BoardJourney + simulation             COMPLETED
 animated semantic traversal           ACCEPTED / PR #98 MERGED
 BoardPatch                            READY / NO_AUTHORITY / NO_EFFECTS
 Source Projectors                     RUNNING / AUTHORIZED_BOUNDED / EFFECTS_BOUND
-VexStream screenshot pilot            WAITING_HUMAN / IMMEDIATE
+VexStream screenshot pilot            RUNNING / IMMEDIATE / AUTHORIZED_BOUNDED
 BusinessFactory company formation     CAPTURED / LATER / NO_AUTHORITY
 VexBoard root                         DECOMPOSED
 ```
@@ -175,6 +175,151 @@ published VexBoard Blueprint
 
 These Blueprint Source-of-Truth refs are **lineage and architectural pressure**, not blocking dependencies and not an automatic reactivation of the paused VLBSoT Project.
 
+### Origin propagation law — canonical meaning reaches the endpoint
+
+The VexStream patient zero corrects an earlier target-centric assumption: Android resources, Compose
+literals and similar endpoint values are not automatically the portable source of truth merely because
+reverse adoption discovers them first.
+
+`Origin` is now the intended canonical naming boundary:
+
+~~~text
+origin.vexlife.vexstream.ConnectionStatusOrigin
+        |
+        +-> android.vexlife.vexstream.ConnectionStatus
+        +-> desktop.vexlife.vexstream.ConnectionStatus
+        +-> web.vexlife.vexstream.ConnectionStatus
+~~~
+
+The descendant keeps the reusable semantic name; its scope/namespace says where it is realized. Existing
+`*Blueprint` source names remain migration coordinates only and should not be copied forward as the
+canonical naming law.
+
+For reusable content:
+
+~~~text
+canonical message/content Origin
+-> locale/translation source
+-> semantic Origin usage
+-> target adapter
+-> Android R.string / web locale key / desktop resource
+-> rendered value
+-> observed evidence
+~~~
+
+For state-conditioned text, State/data bindings select a content Origin or supply its parameters. They do
+not create a separate "dynamic text" ontology.
+
+~~~text
+VexTextOrigin
+  semanticRef = stable identity
+  contentOriginRefs = stable reusable content Origins
+  valueBindingRef = optional current selection / parameter binding
+
+!=
+
+DynamicTextElement as portable product meaning
+~~~
+
+The earlier Android `DynamicTextElement` candidate was useful experimental pressure but is **not** a
+long-term semantic type. Android PR #182 is now re-formed around one `TextElement` identity whose value
+may come from a mapped Android resource or from current runtime binding. Exact-head host proof A006 passed
+the focused Elements/App/source-alignment suite and full `vexVerifyLocal`; its only failure was a static
+guard false-positive caused by the foundation sentence that explicitly rejects `DynamicTextElement`.
+Exact connected-provider recovery clears that predicate on the same head, so the capability candidate is
+now `CANDIDATE_PROVEN_PENDING_ACCEPTANCE`, not admitted/available. Preserve the lesson, not the retired
+experimental noun.
+
+The same provenance rule must be visible in both directions:
+
+~~~text
+reverse adoption
+  target-native value
+  -> recover proposed Origin meaning
+
+accepted forward authority
+  Origin
+  -> mapped target realizations
+
+endpoint-only manual change
+  -> drift or upstream change proposal
+  -> never silent canonical replacement
+~~~
+
+For localization, **semantic scope, physical files and vendor packets are separate axes**. Vextreme
+already demonstrates this well: canonical string source is sharded under `data/strings/source/**` by
+meaningful scope, while translation campaign/program tooling reads those canonical keys across files,
+forms deterministic bulk CSV packets, and compiled outputs become per-locale/read-optimized bundles.
+
+Therefore:
+
+~~~text
+source files
+  organize for rightful owners / maintainers
+
+Origin IDs
+  preserve stable semantic identity
+
+vendor translation batches
+  may flatten hundreds or thousands of Origins across scopes
+
+target resources
+  compile/project only what that target needs
+~~~
+
+Do not force a translation vendor to consume one package/file at a time merely because source is
+organized that way. Do not force maintainers into one enormous locale file merely because a vendor needs
+bulk delivery.
+
+This is the long-term reason mappings must remain traversable. A fresh worker should be able to start
+from a rendered string/component/style/asset/behavior coordinate and reach its rightful Origin, or start
+from Origin and enumerate downstream realizations, without source archaeology or per-platform
+retranslation.
+
+The detailed naming, localization and unresolved scaling constraints live in the current architecture
+source at `SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md` (legacy filename; its canonical vocabulary is now
+Origin until a bounded path migration is earned). The current POC should encode only the smallest
+Origin/binding/mapping lineage needed to prove this path; a universal content registry is not implied
+until a rightful repeated consumer earns that owner.
+
+The current naming/composition hypothesis is captured here for continuity and is explicitly revisitable:
+
+> The examples below are not a freeze list. Future implementation/review should challenge them when new
+> evidence exposes a clearer noun, boundary, or decomposition; preserving reasoning matters more than
+> preserving any proposed spelling.
+
+
+~~~text
+identity     -> ID
+address      -> URI
+lookup       -> KEY
+generic Ref  -> migration vocabulary; classify before renaming
+
+VexApplicationOrigin
+  -> Feature Origins
+      -> sovereign Screen Origins
+      -> services / behavior / other feature-owned meaning
+
+authored ownership may be hierarchical
+runtime Screen index may be flat
+visual composition may be nested
+Screen = full-page/destination, not generic child container
+
+target custom UI
+  -> Vex + semantic meaning + familiar form
+  -> e.g. VexConnectionBottomSheet / VexPlaybackWidget
+
+Android ElementIntent
+  -> current migration grammar
+  -> wholesale rename to VexAct is not supported by current evidence
+  -> current candidate is to separate typed navigation/presentation from SCAE where Behavior applies
+~~~
+
+The current Android `AppBlueprint` is shell + registered Screen UI composition, so this checkpoint does
+not treat it as evidence for the whole-application name. `VexAppUI` is a current candidate, while a future
+whole-application Origin may own Features, services, background behavior, widgets and UI. These names
+remain open to refactor if a later consumer proves a clearer boundary.
+
 The pilot may treat a rightful product **Feature identity** as a discoverable semantic root for projections, journeys, construction targets, source bindings, evidence and Work. That does **not** require adding `FEATURE` to the VexWork Workgraph class vocabulary. Projects remain human-outcome groupings; product repositories remain owners of feature/product meaning.
 
 The VexStream pilot owns **the mapping/evidence/convergence experiment**, not VexStream product truth:
@@ -220,7 +365,65 @@ Do not introduce a universal OCR ontology, screenshot-hotspot registry, image-sp
 
 The eventual "start a business from the beginning" experience remains strategically important, but it is **not current implementation scope or authority**. It is preserved so future work can see the graduation path without pulling that complexity into this patient zero.
 
-## Reusable Semantic Blueprint IDE foundation
+## Current refinement checkpoint — foundational language before more target proof
+
+The VexStream patient zero exposed enough reusable naming/composition pressure that the immediate sub-edge
+is temporarily **language refinement before additional target-proof formation**.
+
+This is not a new Project, Work item, lifecycle phase or frozen architecture. It is a bounded checkpoint
+inside the active VexStream living-Origin pilot so new target source does not accidentally harden names
+that are still being understood.
+
+Current questions being pressure-tested include:
+
+~~~text
+identity / address / lookup
+  ID vs URI vs Key
+  existing *Ref source remains migration evidence
+
+application composition
+  whole Application Origin vs App UI composition
+  Application -> Feature ownership -> sovereign Screens
+  hierarchical authoring vs flat runtime Screen index vs nested visual composition
+
+Screen boundary
+  full-page/destination current working definition
+  tab/feed/panel/container must not become Screen merely because it has children
+
+target naming
+  Vex + semantic/product meaning + familiar form
+  while keeping target form separate from portable meaning unless design owns it
+
+behavior
+  current ElementIntent is a mixed Android migration grammar
+  typed navigation/presentation should not be replaced by opaque ActId strings merely for uniformity
+  SCAE applies when a real Behavior question exists
+  accepted SCAE already permits resolvedAct/effect to be absent
+
+type pressure
+  DynamicTextElement lesson generalizes carefully
+  SwappableContainerElement / ScrollableColumnElement and the broader *Element family remain questions,
+  not automatic rename instructions
+~~~
+
+A fresh instance should challenge these hypotheses with real source and edge cases. If a simpler or more
+truthful model emerges, current terminology should be refactored rather than protected because it appears
+in this checkpoint.
+
+Once this foundational language is coherent enough for the next concrete consumer:
+
+~~~text
+1. currentize the patient-zero design/construction/projection source to the refined language;
+2. revisit new/unaccepted Android PR #183 names/shape if the refinement changes them;
+3. prove the exact resulting #183 stacked candidate;
+4. continue the Origin -> construction -> target realization -> source/evidence round trip;
+5. only later activate independent review and integration/merge currentness.
+~~~
+
+PR #182's exact-head SourceOwner evidence remains valid while this language work proceeds.
+Independent review remains parked.
+
+## Reusable Semantic Origin IDE foundation
 
 The reusable IDE/construction pattern, recursive category examples, scoped-neighborhood behavior and
 future-instance starting procedure now live in:
@@ -239,9 +442,9 @@ The companion is architecture source, not a new wire schema or second owner.
 
 ## Human outcome
 
-A person should be able to describe a website, application, process, operating system, or work journey to AI and receive a navigable visual blueprint **before** expensive implementation begins.
+A person should be able to describe a website, application, process, operating system, or work journey to AI and receive a navigable visual Origin **before** expensive implementation begins.
 
-The blueprint should not be a pile of rectangles. It should preserve what each thing means, what it contains, what happens when it is used, which conditions alter the path, where deeper detail lives, and which current source owns projected truth.
+The Origin should not be a pile of rectangles. It should preserve what each thing means, what it contains, what happens when it is used, which conditions alter the path, where deeper detail lives, and which current source owns projected truth.
 
 > **VexBoard lets a human and AI design, inspect, traverse, refine, reuse, and discuss interactive systems on one scalable semantic canvas—and lets the same canvas project already-existing processes or work without becoming their second source of truth.**
 
@@ -249,7 +452,7 @@ The desired experience is:
 
 ```text
 human intention
--> AI-authored semantic blueprint
+-> AI-authored semantic Origin
 -> spatially clear canvas
 -> enter / expand / condense meaningful depth
 -> walk the intended experience or process
@@ -3934,10 +4137,25 @@ export/reload of media bindings.
 
 ### Phase 2F — existing-system reverse adoption
 
-Source-bound adapters that project accepted existing design/implementation systems into VexBoard
-without taking ownership. First proving candidates should include VexLife Universal Blueprint /
-Presentation Graph and one Vextreme page/localization surface. Establish stable identity mapping,
-source/proof backlinks and safe future BoardPatch -> rightful source-change proposal routes.
+Source-bound adapters import accepted existing design/implementation systems into VexBoard without
+silently claiming authority during migration. First proving candidates should include VexLife
+Universal Blueprint / Presentation Graph and one Vextreme page/localization surface. Establish stable
+identity mapping, source/proof backlinks, recovered layout/design constraints, and an explicit
+authority-transition threshold.
+
+For a Screen/design domain intentionally converged into VexBoard:
+
+```text
+accepted target design/source
+-> reverse-adopt
+-> reconcile 1:1
+-> explicit Blueprint acceptance
+-> VexBoard becomes design/presentation authority
+-> target adapter realizes later changes
+```
+
+The target repository continues to own target-native implementation/build/runtime/proof; it does not
+remain an independent UX design owner for an accepted VexBoard-owned Screen.
 
 ### Phase 2G — Context Inspector and documentation/source traversal
 
@@ -3970,9 +4188,21 @@ and immutable/versioned Board release fingerprints.
 
 ### Phase 3C — target blueprint compilation
 
-Target-specific adapters that translate a published Board revision into a reviewable implementation
-plan/source candidate while preserving the target repository's own source, localization, asset,
-validation and lifecycle ownership. Vextreme is a strong future proving target because its page,
+Target-specific adapters translate a published Board revision into a reviewable target realization.
+For design-authoritative VexBoard domains, the published Board revision owns the intended presentation
+and structural design; the target repository owns the generated/mapped target-native implementation,
+localization/asset integration, validation, build and lifecycle proof.
+
+```text
+PUBLISHED_VEXBOARD_DESIGN
+-> TARGET_ADAPTER
+-> TARGET_NATIVE_SOURCE
+-> TARGET_RENDER
+-> OBSERVED_EVIDENCE
+```
+
+The adapter may fail closed on an unsupported target capability, but the target must not silently
+redesign the accepted Blueprint. Vextreme is a strong future proving target because its page,
 viewmodel/index, localization and Vextreme-Assets contracts are already source-addressable.
 
 ### Phase 4 — AI BoardPatch authoring
@@ -4699,3 +4929,189 @@ This clarification does **not** create a new universal schema, new Android depen
 No human host action is required to preserve this design.
 
 <!-- [VXG RealForever][VEXWORK][VEXBOARD][PROJECT-ARCHITECTURE] -->
+
+---
+
+## VexSync convergence baseline — self-apply the architecture
+
+The current VexSync Direct Family / typed identity / Kotlin round-trip work is now an explicit
+VexBoard consumer rather than adjacent context.
+
+~~~text
+VexSync
+  owns the cross-project semantic/process convergence trajectory
+
+VexBoard
+  owns VexBoard product/source evolution
+
+VexLife-Android
+  owns the Direct Family / execution candidate and Kotlin proof source
+
+VexBoard projection
+  consumes those relationships
+  != becomes their source owner
+~~~
+
+Current foundation baseline:
+
+~~~text
+Android PR #193
+  typed Family / Control / ResourceId / Relationship boundary
+
+VexWork merge 0d55e3aa83b7972cc83ef9fe2a7266311932a7c8
+  first flat four-region ThemeMode map
+  effect-free Family Kotlin construction preview
+  mapped Kotlin test candidate
+
+lived browser evidence
+  VexBoard shell header renders
+  application body is blank
+  -> browser recovery is the first current implementation edge
+~~~
+
+The next VexBoard work is:
+
+~~~text
+work.vexboard.vexsync-architecture-convergence
+
+1. recover the blank browser surface
+2. make VexBoard itself visibly reflect the trusted architecture
+3. keep the first self-map flat/readable before adding depth-dimensional behavior
+4. preserve one language from semantic map -> Kotlin construction candidate -> mapped test
+5. keep target repository mutation behind separately admitted source authority
+~~~
+
+This is not a project-parenting change:
+
+~~~text
+VEXSYNC CONVERGENCE
+!= VEXSYNC OWNS VEXBOARD
+
+CROSS-PROJECT WORK RELATIONSHIP
+!= PROJECT HIERARCHY
+~~~
+
+Depth/fractal work remains a later pressure after the flat self-application is lived and readable.
+
+First recovery candidate on PR #184:
+
+~~~text
+blank-screen symptom
+  shell/header rendered
+  module application body did not start
+
+repair posture
+  optional Kotlin-construction module is now removed from the boot-critical static import graph
+  familyKotlin loads lazily only when a board actually needs it
+  visible loading/error fallback prevents silent all-white failure
+
+source-static checks
+  classic boot fallback script parses
+  main module script parses
+  static FamilyKotlin import absent
+  lazy FamilyKotlin import present
+
+lived Pages recovery
+  PENDING
+~~~
+
+Do not infer the exact original browser exception until lived/deployed evidence exposes it. The repair is
+a bounded fail-soft architecture correction that protects the VexBoard root from one optional child capability.
+
+### First self-application candidate — flat VexBoard architecture
+
+The recovery branch now carries one VexBoard-owned self-application board:
+
+~~~text
+board.vexboard.architecture-convergence
+
+STATE
+  BoardGraph
+  BoardProjection
+
+CONTROL / ACT
+  BoardControl
+  -> applyBoardAct
+  -> next Graph / Projection State
+
+TYPED IDENTITY / RELATIONSHIP
+  nodeRef
+  relationshipRef
+  projectionItemRef
+  BoardGraph.relationships (fromRef -> toRef)
+
+EXECUTION
+  controlFor
+  -> expected State fingerprints
+  -> applyBoardControl
+  -> applyBoardAct
+
+effect boundary
+  browser-local draft effects only
+  source/provider writes = none
+~~~
+
+This is deliberately a projection of existing VexBoard-owned source through the architecture roles that
+VexSync pressure made easier to see. It does **not** rename BoardGraph into a Family, retrofit a Kotlin
+generic ResourceId type into JavaScript, or make Android the semantic owner of VexBoard. The typed-resource
+lesson is applied at VexBoard's actual boundary: stable refs have explicit roles and labels remain
+presentation rather than identity.
+
+The board is a separate built-in from the existing "how to begin" self-map so onboarding/navigation and
+architecture explanation do not become one overloaded artifact. The first self-application stays flat;
+depth-dimensional behavior still waits for lived readability pressure.
+
+Source-static regression coverage now requires:
+- the built-in board to normalize under the existing BoardGraph/BoardProjection contract;
+- the four regions to remain explicit;
+- Control -> Act and execution relationships to remain visible;
+- the browser-local no-source-write boundary to remain explicit.
+
+Lived browser proof remains pending until this candidate is deployed.
+
+### Lived blank-screen root cause — browser boot crossed into Node-only core
+
+Victor's lived browser screenshot re-confirmed the deployed failure shape:
+
+~~~text
+classic VexBoard header renders
+module-owned application body remains blank
+~~~
+
+The deployed main boot graph now has a source-conclusive cause:
+
+~~~text
+vexboard/index.html
+  -> static src/core/vexboard-android-source-projector.mjs
+  -> src/core/vexboard.mjs
+  -> src/core/semantic.mjs
+  -> import crypto from 'node:crypto'
+~~~
+
+`node:crypto` is a Node runtime module specifier, not a browser-resolvable module. Because the Android
+projector sat in the static browser boot closure, the browser rejected the module graph before
+`landing()` could render.
+
+The correction stays at the narrow boundary where the dependency was unnecessary:
+
+~~~text
+Android source projector
+  before -> core vexboard.mjs -> Node semantic hashing
+  now    -> shared browser-safe BoardGraph / BoardProjection normalization
+
+core Node semantic hashing
+  unchanged
+  remains available to Node-owned core consumers
+~~~
+
+This preserves the Android projector's actual need: normalize the graph/projection it constructs before
+returning a read-only browser draft. The projector already strips semantic fingerprints from the draft,
+so pulling the Node hashing owner into the browser added boot coupling without adding browser truth.
+
+A deterministic regression now walks the transitive static browser boot import closure and rejects
+any non-relative/bare module specifier. That would have caught `node:crypto` before deployment.
+
+The earlier Family-Kotlin lazy-load and visible boot-error fallback remain useful secondary hardening, but
+they are no longer described as the causal blank-screen repair.
+<!-- [VXG RealForever][VEXBOARD][VEXSYNC-CONVERGENCE][FOUNDATION-BASELINE] -->
+

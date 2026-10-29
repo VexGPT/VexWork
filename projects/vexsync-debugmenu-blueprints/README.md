@@ -7788,3 +7788,146 @@ DEPLOYED MAIN
 ~~~
 <!-- [VXG RealForever][VEXSYNC][VEXBOARD-CONVERGENCE][FOUNDATION-BASELINE] -->
 
+
+
+---
+
+## Accepted Family -> ThemeMode patient zero -> full-walk confidence
+
+The foundation state has materially advanced beyond the earlier candidate checkpoints.
+
+### Android Family Circuit is accepted source
+
+~~~text
+VexLife-Android PR #193
+candidate head  07f2e00ffa222258b37d1c87aefa0a64262a0b79
+merge/main      3c899e656d90487abcff06df7b087a42c4a68523
+tree            c64eb160fc4c1c3c28c7aaf4d45b6b76e80229bf
+
+SourceOwner A006        PASS / vexVerifyJvm
+Independent Assurance  CLEAR_ON_EXACT_HEAD
+post-merge tree         exact candidate tree
+~~~
+
+Family / State / Control / ResourceId / RelationshipId / Act / Begin / Approach is therefore an
+accepted Android foundation, not a draft VexSync hypothesis.
+
+### VexBoard convergence crossed its lived gate
+
+VexBoard PR #184 is merged and its deployed blank-screen recovery + flat architecture self-application
+were lived-accepted by Victor. The source/projection convergence task is complete.
+
+The separate navigation-first usability refinement, VexWork PR #186, also merged with exact-head source
+proof and post-merge verification. Its remaining predicate is only Victor's lived interaction acceptance
+of the new drag/click/right-click language; that does not reopen #184 or block independent Android work.
+
+### ThemeMode now consumes the accepted Family source
+
+The existing Android ThemeMode lane was resumed rather than replaced:
+
+~~~text
+VexLife-Android PR #188
+head  e979a4e2b4c91e7eb7068df127d9b4232a666947
+tree  770c37395d2391313d0aecc11da1a2be162c06ae
+base  accepted main 3c899e656d90487abcff06df7b087a42c4a68523
+paths 2 exact
+~~~
+
+Its current source establishes the smallest patient-zero circuit:
+
+~~~text
+ThemeMode
+  NotSet
+  Light
+  Dark
+
+ThemeModeFamily.Control.Toggle
+
+Light + Toggle -> admit Dark
+Dark  + Toggle -> admit Light
+NotSet + Toggle -> noAct
+~~~
+
+No ResourceId is invented because Control kind already supplies sufficient relationship identity.
+No SystemAppearance/default policy is invented for NotSet.
+
+Repository Gradle/JVM proof for this new #188 head remains PENDING; source inspection is not promoted to
+execution PASS.
+
+### The missing production seam is now exact
+
+Current accepted Android main still routes:
+
+~~~text
+DebugMenuScreen.DarkMode
+-> AppActions.ToggleDarkMode
+-> VexLifeSession.toggleDarkMode()
+-> Boolean darkTheme
+-> VexLifeTheme
+~~~
+
+So the product does not yet execute the Family circuit.
+
+The exact state-owner path is currently claimed by the separate live Android VexStream Artwork PR #186:
+
+~~~text
+app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt
+~~~
+
+VexSync does not take or work around that source ownership. PR #188 therefore advances the disjoint
+semantic source/test slice while real session integration remains held on that exact path.
+
+### Full walk with confidence — one traceable chain, existing owners preserved
+
+The Test / Feature Walk / Journey / ScreenCrawler foundations already have the right separation. The
+next round-trip should make them trace the **same real runtime relationship**, not become another semantic
+system:
+
+~~~text
+Feature Walk
+  whole Theme Mode human outcome / held and satisfied checkpoints
+        |
+        v
+Journey
+  Home -> Debug Menu -> DarkMode human interaction
+        |
+        v
+UI semantic identity
+  DebugMenuScreen.DarkMode
+  AppActions.ToggleDarkMode
+        |
+        v
+ThemeModeFamily
+  CURRENT State + Control.Toggle
+  -> Act
+  -> admit Light / Dark
+        |
+        v
+Execution / VexLogger
+  only where the authored relationship actually uses them
+        |
+        v
+ScreenCrawler
+  rendered evidence from the same Journey coordinate
+~~~
+
+Permanent:
+
+~~~text
+FEATURE WALK != JOURNEY
+JOURNEY != FAMILY
+FAMILY != EXECUTION
+SCREENCRAWLER != SEMANTIC ORACLE
+TEST != FIFTH ARCHITECTURE
+~~~
+
+Feature Walk may truthfully expose a held checkpoint before production integration. Journey and
+ScreenCrawler must not pretend the Family path executed until the Debug Menu action actually enters
+ThemeModeFamily.
+
+The next implementation edge is therefore narrow: prove #188 on its exact head; when the
+VexLifeSession claim is released, integrate the real action/state owner; then bind the ThemeMode Feature
+Walk / dedicated Journey / focused proof backlinks so ScreenCrawler inherits that walk rather than
+inventing one.
+
+<!-- [VXG RealForever][VEXSYNC][FAMILY-ACCEPTED][THEME-FULL-WALK-CONFIDENCE] -->

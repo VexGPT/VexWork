@@ -72,6 +72,7 @@ export const VEXBOARD_SELF_MAP_URL = './self-map.json';
 export const VEXBOARD_DRAFT_STORAGE_KEY = 'vexboard.local-drafts/v1';
 export const VEXBOARD_BUILTIN_BOARD_URLS = Object.freeze({
   'board.vexboard.self-map': './self-map.json',
+  'board.vexboard.architecture-convergence': './architecture-map.json',
   'board.vexboard.publish': './publish-map.json',
   'board.vexboard.prototype-demo': './prototype-demo.json',
 });
@@ -529,6 +530,16 @@ export async function forkReadOnlyBoard(source, { draftRef, title = null }) {
     savedAtOrNull: null,
     graph: hydrated.graph,
     projection: hydrated.projection,
+    ...(accepted.presentation ? { presentation: structuredClone(accepted.presentation) } : {}),
+    ...(accepted.design ? { design: structuredClone(accepted.design) } : {}),
+    ...(accepted.familyKotlin ? { familyKotlin: structuredClone(accepted.familyKotlin) } : {}),
+    ...(accepted.adoptionCoverage
+      ? { adoptionCoverage: structuredClone(accepted.adoptionCoverage) }
+      : {}),
+    ...(accepted.adoptionReadiness
+      ? { adoptionReadiness: structuredClone(accepted.adoptionReadiness) }
+      : {}),
+    ...(Array.isArray(accepted.sourceRefs) ? { sourceRefs: structuredClone(accepted.sourceRefs) } : {}),
   });
 }
 

@@ -39,21 +39,42 @@ test('Project Work Board projects only the Project subgraph without becoming lif
 
 test('Parking Lot projects parked work independently of Project membership', () => {
   const lot = projectParkingLot({ graph, registry });
-  assert.equal(lot.items.length, 6);
-  assert.deepEqual(lot.items.map((item) => item.workRef).sort(), ['work.vexlife-android.vexstream.not-yet-downloaded-filter', 'work.vexlife.connected-services.guided-onboarding', 'work.vexstream.mobile-library.keep-offline-sync', 'work.vexstream.mobile-library.tag-topology-stations', 'work.vexwork.operational-console.multi-fulfiller-routing', 'work.vexwork.history.foundational-infrastructure-backfill'].sort());
+  const canonicalParkedRefs = graph.items
+    .filter((item) => item.workDisposition === 'PARKED')
+    .map((item) => item.workRef)
+    .sort();
+  assert.deepEqual(lot.items.map((item) => item.workRef).sort(), canonicalParkedRefs);
   assert.equal(lot.items.every((item) => item.workDisposition === 'PARKED'), true);
   assert.equal(lot.items.some((item) => item.workRef === 'work.vexlife-android.vexstream.not-yet-downloaded-filter' && item.repositoryRefs.includes('repo.vexlife-android')), true);
   assert.equal(lot.effects, false);
   assert.equal(lot.executionAuthority, 'NONE');
 
+  const expectedParkedForRepository = (repositoryRef) => graph.items
+    .filter((item) =>
+      item.workDisposition === 'PARKED' &&
+      item.repositoryRefs.includes(repositoryRef))
+    .map((item) => item.workRef)
+    .sort();
   const androidOnly = projectParkingLot({ graph, registry, repositoryRefOrNull: 'repo.vexlife-android' });
-  assert.equal(androidOnly.items.length, 4);
+  assert.deepEqual(
+    androidOnly.items.map((item) => item.workRef).sort(),
+    expectedParkedForRepository('repo.vexlife-android'),
+  );
   const vexlifeOnly = projectParkingLot({ graph, registry, repositoryRefOrNull: 'repo.vexlife' });
-  assert.equal(vexlifeOnly.items.length, 1);
-  assert.equal(vexlifeOnly.items[0].workRef, 'work.vexlife.connected-services.guided-onboarding');
+  assert.deepEqual(
+    vexlifeOnly.items.map((item) => item.workRef).sort(),
+    expectedParkedForRepository('repo.vexlife'),
+  );
+  assert.equal(
+    vexlifeOnly.items.some((item) =>
+      item.workRef === 'work.vexlife.connected-services.guided-onboarding'),
+    true,
+  );
   const vexworkOnly = projectParkingLot({ graph, registry, repositoryRefOrNull: 'repo.vexwork' });
-  assert.equal(vexworkOnly.items.length, 2);
-  assert.deepEqual(vexworkOnly.items.map((item) => item.workRef).sort(), ['work.vexwork.history.foundational-infrastructure-backfill', 'work.vexwork.operational-console.multi-fulfiller-routing'].sort());
+  assert.deepEqual(
+    vexworkOnly.items.map((item) => item.workRef).sort(),
+    expectedParkedForRepository('repo.vexwork'),
+  );
 });
 
 test('Project Graph projection preserves project containment, dependencies and repository relations', () => {

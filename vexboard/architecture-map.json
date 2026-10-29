@@ -1,0 +1,853 @@
+{
+  "schemaVersion": "vexboard.local-draft/v1",
+  "draftRef": "board.vexboard.architecture-convergence",
+  "title": "VexBoard · self-applied architecture",
+  "mode": "READ_ONLY_SOURCE",
+  "derivedFromRefOrNull": null,
+  "savedAtOrNull": null,
+  "graph": {
+    "schemaVersion": "vexboard.board-graph/v1",
+    "graphRef": "graph.vexboard.architecture-convergence",
+    "nodes": [
+      {
+        "nodeRef": "region.vexboard.state",
+        "kind": "CONTAINER",
+        "label": "STATE",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexboard/README.md",
+          "github.pull.vexwork.184",
+          "work.vexboard.vexsync-architecture-convergence",
+          "github.pull.vexwork.178",
+          "project.vexsync.debugmenu-blueprints",
+          "src/shared/vexboard-model.mjs",
+          "vexboard-reader.js"
+        ]
+      },
+      {
+        "nodeRef": "region.vexboard.control",
+        "kind": "CONTAINER",
+        "label": "CONTROL / ACT",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexboard/README.md",
+          "github.pull.vexwork.184",
+          "work.vexboard.vexsync-architecture-convergence",
+          "github.pull.vexwork.178",
+          "project.vexsync.debugmenu-blueprints",
+          "src/shared/vexboard-model.mjs",
+          "vexboard-reader.js",
+          "vexboard/index.html"
+        ]
+      },
+      {
+        "nodeRef": "region.vexboard.identity",
+        "kind": "CONTAINER",
+        "label": "TYPED IDENTITY / RELATIONSHIP",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexboard/README.md",
+          "github.pull.vexwork.184",
+          "work.vexboard.vexsync-architecture-convergence",
+          "github.pull.vexwork.178",
+          "project.vexsync.debugmenu-blueprints",
+          "src/shared/vexboard-model.mjs",
+          "github.pull.vexlife-android.193"
+        ]
+      },
+      {
+        "nodeRef": "region.vexboard.execution",
+        "kind": "CONTAINER",
+        "label": "EXECUTION",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexboard/README.md",
+          "github.pull.vexwork.184",
+          "work.vexboard.vexsync-architecture-convergence",
+          "github.pull.vexwork.178",
+          "project.vexsync.debugmenu-blueprints",
+          "src/shared/vexboard-model.mjs",
+          "vexboard-reader.js",
+          "vexboard/index.html"
+        ]
+      },
+      {
+        "nodeRef": "reference.vexboard.graph",
+        "kind": "REFERENCE",
+        "label": "BoardGraph · semantic State",
+        "parentRefOrNull": "region.vexboard.state",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexboard/README.md",
+          "github.pull.vexwork.184",
+          "work.vexboard.vexsync-architecture-convergence",
+          "github.pull.vexwork.178",
+          "project.vexsync.debugmenu-blueprints",
+          "src/shared/vexboard-model.mjs",
+          "vexboard-reader.js"
+        ]
+      },
+      {
+        "nodeRef": "reference.vexboard.projection",
+        "kind": "REFERENCE",
+        "label": "BoardProjection · spatial State",
+        "parentRefOrNull": "region.vexboard.state",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexboard/README.md",
+          "github.pull.vexwork.184",
+          "work.vexboard.vexsync-architecture-convergence",
+          "github.pull.vexwork.178",
+          "project.vexsync.debugmenu-blueprints",
+          "src/shared/vexboard-model.mjs",
+          "vexboard-reader.js"
+        ]
+      },
+      {
+        "nodeRef": "annotation.vexboard.state-law",
+        "kind": "ANNOTATION",
+        "label": "CURRENT Graph + Projection = semantic canvas State",
+        "parentRefOrNull": "region.vexboard.state",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexboard/README.md",
+          "github.pull.vexwork.184",
+          "work.vexboard.vexsync-architecture-convergence",
+          "github.pull.vexwork.178",
+          "project.vexsync.debugmenu-blueprints",
+          "src/shared/vexboard-model.mjs",
+          "vexboard-reader.js"
+        ]
+      },
+      {
+        "nodeRef": "control.vexboard.board-control",
+        "kind": "CONTROL",
+        "label": "BoardControl · CREATE / MOVE / RESIZE / LAYER / CONTAIN / CONNECT",
+        "parentRefOrNull": "region.vexboard.control",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexboard/README.md",
+          "github.pull.vexwork.184",
+          "work.vexboard.vexsync-architecture-convergence",
+          "github.pull.vexwork.178",
+          "project.vexsync.debugmenu-blueprints",
+          "src/shared/vexboard-model.mjs",
+          "vexboard-reader.js",
+          "vexboard/index.html"
+        ]
+      },
+      {
+        "nodeRef": "process.vexboard.act",
+        "kind": "PROCESS",
+        "label": "applyBoardAct · CURRENT State + Control → next State",
+        "parentRefOrNull": "region.vexboard.control",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexboard/README.md",
+          "github.pull.vexwork.184",
+          "work.vexboard.vexsync-architecture-convergence",
+          "github.pull.vexwork.178",
+          "project.vexsync.debugmenu-blueprints",
+          "src/shared/vexboard-model.mjs",
+          "vexboard-reader.js",
+          "vexboard/index.html"
+        ]
+      },
+      {
+        "nodeRef": "annotation.vexboard.act-law",
+        "kind": "ANNOTATION",
+        "label": "Control names intent; Act owns the deterministic transition",
+        "parentRefOrNull": "region.vexboard.control",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexboard/README.md",
+          "github.pull.vexwork.184",
+          "work.vexboard.vexsync-architecture-convergence",
+          "github.pull.vexwork.178",
+          "project.vexsync.debugmenu-blueprints",
+          "src/shared/vexboard-model.mjs",
+          "vexboard-reader.js",
+          "vexboard/index.html"
+        ]
+      },
+      {
+        "nodeRef": "reference.vexboard.node-ref",
+        "kind": "REFERENCE",
+        "label": "nodeRef · semantic resource identity",
+        "parentRefOrNull": "region.vexboard.identity",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexboard/README.md",
+          "github.pull.vexwork.184",
+          "work.vexboard.vexsync-architecture-convergence",
+          "github.pull.vexwork.178",
+          "project.vexsync.debugmenu-blueprints",
+          "src/shared/vexboard-model.mjs",
+          "github.pull.vexlife-android.193"
+        ]
+      },
+      {
+        "nodeRef": "reference.vexboard.relationship-ref",
+        "kind": "REFERENCE",
+        "label": "relationshipRef · relationship identity",
+        "parentRefOrNull": "region.vexboard.identity",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexboard/README.md",
+          "github.pull.vexwork.184",
+          "work.vexboard.vexsync-architecture-convergence",
+          "github.pull.vexwork.178",
+          "project.vexsync.debugmenu-blueprints",
+          "src/shared/vexboard-model.mjs",
+          "github.pull.vexlife-android.193"
+        ]
+      },
+      {
+        "nodeRef": "reference.vexboard.projection-item-ref",
+        "kind": "REFERENCE",
+        "label": "projectionItemRef · presentation resource identity",
+        "parentRefOrNull": "region.vexboard.identity",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexboard/README.md",
+          "github.pull.vexwork.184",
+          "work.vexboard.vexsync-architecture-convergence",
+          "github.pull.vexwork.178",
+          "project.vexsync.debugmenu-blueprints",
+          "src/shared/vexboard-model.mjs",
+          "github.pull.vexlife-android.193"
+        ]
+      },
+      {
+        "nodeRef": "process.vexboard.relationship",
+        "kind": "PROCESS",
+        "label": "BoardGraph.relationships · fromRef → toRef",
+        "parentRefOrNull": "region.vexboard.identity",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexboard/README.md",
+          "github.pull.vexwork.184",
+          "work.vexboard.vexsync-architecture-convergence",
+          "github.pull.vexwork.178",
+          "project.vexsync.debugmenu-blueprints",
+          "src/shared/vexboard-model.mjs",
+          "github.pull.vexlife-android.193"
+        ]
+      },
+      {
+        "nodeRef": "annotation.vexboard.identity-law",
+        "kind": "ANNOTATION",
+        "label": "ResourceId role · nodeRef / relationshipRef / projectionItemRef · labels are not identity",
+        "parentRefOrNull": "region.vexboard.identity",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexboard/README.md",
+          "github.pull.vexwork.184",
+          "work.vexboard.vexsync-architecture-convergence",
+          "github.pull.vexwork.178",
+          "project.vexsync.debugmenu-blueprints",
+          "src/shared/vexboard-model.mjs",
+          "github.pull.vexlife-android.193"
+        ]
+      },
+      {
+        "nodeRef": "process.vexboard.control-for",
+        "kind": "PROCESS",
+        "label": "controlFor · bind expected State fingerprints",
+        "parentRefOrNull": "region.vexboard.execution",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexboard/README.md",
+          "github.pull.vexwork.184",
+          "work.vexboard.vexsync-architecture-convergence",
+          "github.pull.vexwork.178",
+          "project.vexsync.debugmenu-blueprints",
+          "src/shared/vexboard-model.mjs",
+          "vexboard-reader.js",
+          "vexboard/index.html"
+        ]
+      },
+      {
+        "nodeRef": "process.vexboard.apply-control",
+        "kind": "PROCESS",
+        "label": "applyBoardControl · validate currentness then execute Act",
+        "parentRefOrNull": "region.vexboard.execution",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexboard/README.md",
+          "github.pull.vexwork.184",
+          "work.vexboard.vexsync-architecture-convergence",
+          "github.pull.vexwork.178",
+          "project.vexsync.debugmenu-blueprints",
+          "src/shared/vexboard-model.mjs",
+          "vexboard-reader.js",
+          "vexboard/index.html"
+        ]
+      },
+      {
+        "nodeRef": "reference.vexboard.edit-boundary",
+        "kind": "REFERENCE",
+        "label": "READ_ONLY_SOURCE → Request edit → LOCAL_DRAFT",
+        "parentRefOrNull": "region.vexboard.execution",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexboard/README.md",
+          "github.pull.vexwork.184",
+          "work.vexboard.vexsync-architecture-convergence",
+          "github.pull.vexwork.178",
+          "project.vexsync.debugmenu-blueprints",
+          "src/shared/vexboard-model.mjs",
+          "vexboard-reader.js",
+          "vexboard/index.html"
+        ]
+      },
+      {
+        "nodeRef": "annotation.vexboard.effect-boundary",
+        "kind": "ANNOTATION",
+        "label": "Browser-local draft effects only · source/provider writes = none",
+        "parentRefOrNull": "region.vexboard.execution",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexboard/README.md",
+          "github.pull.vexwork.184",
+          "work.vexboard.vexsync-architecture-convergence",
+          "github.pull.vexwork.178",
+          "project.vexsync.debugmenu-blueprints",
+          "src/shared/vexboard-model.mjs",
+          "vexboard-reader.js",
+          "vexboard/index.html"
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "relationshipRef": "rel.vexboard.graph-act",
+        "kind": "DATA",
+        "fromRef": "reference.vexboard.graph",
+        "toRef": "process.vexboard.act",
+        "labelOrNull": "CURRENT SEMANTIC STATE",
+        "sourceRefs": [
+          "projects/vexboard/README.md",
+          "github.pull.vexwork.184",
+          "work.vexboard.vexsync-architecture-convergence",
+          "github.pull.vexwork.178",
+          "project.vexsync.debugmenu-blueprints",
+          "src/shared/vexboard-model.mjs",
+          "vexboard-reader.js"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexboard.projection-act",
+        "kind": "DATA",
+        "fromRef": "reference.vexboard.projection",
+        "toRef": "process.vexboard.act",
+        "labelOrNull": "CURRENT SPATIAL STATE",
+        "sourceRefs": [
+          "projects/vexboard/README.md",
+          "github.pull.vexwork.184",
+          "work.vexboard.vexsync-architecture-convergence",
+          "github.pull.vexwork.178",
+          "project.vexsync.debugmenu-blueprints",
+          "src/shared/vexboard-model.mjs",
+          "vexboard-reader.js"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexboard.control-act",
+        "kind": "FLOW",
+        "fromRef": "control.vexboard.board-control",
+        "toRef": "process.vexboard.act",
+        "labelOrNull": "SELECTS",
+        "sourceRefs": [
+          "projects/vexboard/README.md",
+          "github.pull.vexwork.184",
+          "work.vexboard.vexsync-architecture-convergence",
+          "github.pull.vexwork.178",
+          "project.vexsync.debugmenu-blueprints",
+          "src/shared/vexboard-model.mjs",
+          "vexboard-reader.js",
+          "vexboard/index.html"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexboard.act-graph",
+        "kind": "TRANSITION",
+        "fromRef": "process.vexboard.act",
+        "toRef": "reference.vexboard.graph",
+        "labelOrNull": "NEXT SEMANTIC STATE",
+        "sourceRefs": [
+          "projects/vexboard/README.md",
+          "github.pull.vexwork.184",
+          "work.vexboard.vexsync-architecture-convergence",
+          "github.pull.vexwork.178",
+          "project.vexsync.debugmenu-blueprints",
+          "src/shared/vexboard-model.mjs",
+          "vexboard-reader.js",
+          "vexboard/index.html"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexboard.act-projection",
+        "kind": "TRANSITION",
+        "fromRef": "process.vexboard.act",
+        "toRef": "reference.vexboard.projection",
+        "labelOrNull": "NEXT SPATIAL STATE",
+        "sourceRefs": [
+          "projects/vexboard/README.md",
+          "github.pull.vexwork.184",
+          "work.vexboard.vexsync-architecture-convergence",
+          "github.pull.vexwork.178",
+          "project.vexsync.debugmenu-blueprints",
+          "src/shared/vexboard-model.mjs",
+          "vexboard-reader.js",
+          "vexboard/index.html"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexboard.node-id-graph",
+        "kind": "REFERENCE",
+        "fromRef": "reference.vexboard.node-ref",
+        "toRef": "reference.vexboard.graph",
+        "labelOrNull": "IDENTIFIES NODE",
+        "sourceRefs": [
+          "projects/vexboard/README.md",
+          "github.pull.vexwork.184",
+          "work.vexboard.vexsync-architecture-convergence",
+          "github.pull.vexwork.178",
+          "project.vexsync.debugmenu-blueprints",
+          "src/shared/vexboard-model.mjs",
+          "github.pull.vexlife-android.193"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexboard.relationship-id-relationship",
+        "kind": "REFERENCE",
+        "fromRef": "reference.vexboard.relationship-ref",
+        "toRef": "process.vexboard.relationship",
+        "labelOrNull": "IDENTIFIES RELATIONSHIP",
+        "sourceRefs": [
+          "projects/vexboard/README.md",
+          "github.pull.vexwork.184",
+          "work.vexboard.vexsync-architecture-convergence",
+          "github.pull.vexwork.178",
+          "project.vexsync.debugmenu-blueprints",
+          "src/shared/vexboard-model.mjs",
+          "github.pull.vexlife-android.193"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexboard.projection-id-projection",
+        "kind": "REFERENCE",
+        "fromRef": "reference.vexboard.projection-item-ref",
+        "toRef": "reference.vexboard.projection",
+        "labelOrNull": "IDENTIFIES ITEM",
+        "sourceRefs": [
+          "projects/vexboard/README.md",
+          "github.pull.vexwork.184",
+          "work.vexboard.vexsync-architecture-convergence",
+          "github.pull.vexwork.178",
+          "project.vexsync.debugmenu-blueprints",
+          "src/shared/vexboard-model.mjs",
+          "github.pull.vexlife-android.193"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexboard.relationship-graph",
+        "kind": "REFERENCE",
+        "fromRef": "process.vexboard.relationship",
+        "toRef": "reference.vexboard.graph",
+        "labelOrNull": "LIVES IN",
+        "sourceRefs": [
+          "projects/vexboard/README.md",
+          "github.pull.vexwork.184",
+          "work.vexboard.vexsync-architecture-convergence",
+          "github.pull.vexwork.178",
+          "project.vexsync.debugmenu-blueprints",
+          "src/shared/vexboard-model.mjs",
+          "github.pull.vexlife-android.193"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexboard.control-for-apply",
+        "kind": "FLOW",
+        "fromRef": "process.vexboard.control-for",
+        "toRef": "process.vexboard.apply-control",
+        "labelOrNull": "BOUND CONTROL",
+        "sourceRefs": [
+          "projects/vexboard/README.md",
+          "github.pull.vexwork.184",
+          "work.vexboard.vexsync-architecture-convergence",
+          "github.pull.vexwork.178",
+          "project.vexsync.debugmenu-blueprints",
+          "src/shared/vexboard-model.mjs",
+          "vexboard-reader.js",
+          "vexboard/index.html"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexboard.apply-act",
+        "kind": "FLOW",
+        "fromRef": "process.vexboard.apply-control",
+        "toRef": "process.vexboard.act",
+        "labelOrNull": "EXECUTES",
+        "sourceRefs": [
+          "projects/vexboard/README.md",
+          "github.pull.vexwork.184",
+          "work.vexboard.vexsync-architecture-convergence",
+          "github.pull.vexwork.178",
+          "project.vexsync.debugmenu-blueprints",
+          "src/shared/vexboard-model.mjs",
+          "vexboard-reader.js",
+          "vexboard/index.html"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexboard.edit-apply",
+        "kind": "FLOW",
+        "fromRef": "reference.vexboard.edit-boundary",
+        "toRef": "process.vexboard.apply-control",
+        "labelOrNull": "LOCAL DRAFT ONLY",
+        "sourceRefs": [
+          "projects/vexboard/README.md",
+          "github.pull.vexwork.184",
+          "work.vexboard.vexsync-architecture-convergence",
+          "github.pull.vexwork.178",
+          "project.vexsync.debugmenu-blueprints",
+          "src/shared/vexboard-model.mjs",
+          "vexboard-reader.js",
+          "vexboard/index.html"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexboard.apply-effects",
+        "kind": "REFERENCE",
+        "fromRef": "process.vexboard.apply-control",
+        "toRef": "annotation.vexboard.effect-boundary",
+        "labelOrNull": "EFFECT BOUNDARY",
+        "sourceRefs": [
+          "projects/vexboard/README.md",
+          "github.pull.vexwork.184",
+          "work.vexboard.vexsync-architecture-convergence",
+          "github.pull.vexwork.178",
+          "project.vexsync.debugmenu-blueprints",
+          "src/shared/vexboard-model.mjs",
+          "vexboard-reader.js",
+          "vexboard/index.html"
+        ]
+      }
+    ],
+    "sourceRefs": [
+      "projects/vexboard/README.md",
+      "github.pull.vexwork.184",
+      "work.vexboard.vexsync-architecture-convergence",
+      "github.pull.vexwork.178",
+      "project.vexsync.debugmenu-blueprints",
+      "src/shared/vexboard-model.mjs",
+      "vexboard-reader.js",
+      "vexboard/index.html",
+      "test/vexboard-ui.test.mjs"
+    ]
+  },
+  "projection": {
+    "schemaVersion": "vexboard.board-projection/v1",
+    "projectionRef": "projection.vexboard.architecture-convergence",
+    "graphRef": "graph.vexboard.architecture-convergence",
+    "layoutIntent": "SYSTEM_MAP",
+    "items": [
+      {
+        "projectionItemRef": "item.region.vexboard.state",
+        "semanticRef": "region.vexboard.state",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 40,
+          "y": 60,
+          "width": 340,
+          "height": 480
+        },
+        "layer": -1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.region.vexboard.control",
+        "semanticRef": "region.vexboard.control",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 420,
+          "y": 60,
+          "width": 340,
+          "height": 480
+        },
+        "layer": -1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.region.vexboard.identity",
+        "semanticRef": "region.vexboard.identity",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 800,
+          "y": 60,
+          "width": 420,
+          "height": 480
+        },
+        "layer": -1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.region.vexboard.execution",
+        "semanticRef": "region.vexboard.execution",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 1260,
+          "y": 60,
+          "width": 380,
+          "height": 480
+        },
+        "layer": -1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexboard.graph",
+        "semanticRef": "reference.vexboard.graph",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 70,
+          "y": 130,
+          "width": 280,
+          "height": 82
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.region.vexboard.state",
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vexboard.projection",
+        "semanticRef": "reference.vexboard.projection",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 70,
+          "y": 250,
+          "width": 280,
+          "height": 82
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.region.vexboard.state",
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vexboard.state-law",
+        "semanticRef": "annotation.vexboard.state-law",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 70,
+          "y": 390,
+          "width": 280,
+          "height": 96
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.region.vexboard.state",
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vexboard.board-control",
+        "semanticRef": "control.vexboard.board-control",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 450,
+          "y": 130,
+          "width": 280,
+          "height": 100
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.region.vexboard.control",
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vexboard.act",
+        "semanticRef": "process.vexboard.act",
+        "shapeKind": "DIAMOND",
+        "bounds": {
+          "x": 470,
+          "y": 270,
+          "width": 240,
+          "height": 120
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.region.vexboard.control",
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vexboard.act-law",
+        "semanticRef": "annotation.vexboard.act-law",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 450,
+          "y": 420,
+          "width": 280,
+          "height": 74
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.region.vexboard.control",
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vexboard.node-ref",
+        "semanticRef": "reference.vexboard.node-ref",
+        "shapeKind": "ELLIPSE",
+        "bounds": {
+          "x": 830,
+          "y": 120,
+          "width": 170,
+          "height": 78
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.region.vexboard.identity",
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vexboard.relationship-ref",
+        "semanticRef": "reference.vexboard.relationship-ref",
+        "shapeKind": "ELLIPSE",
+        "bounds": {
+          "x": 1020,
+          "y": 120,
+          "width": 170,
+          "height": 78
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.region.vexboard.identity",
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vexboard.projection-item-ref",
+        "semanticRef": "reference.vexboard.projection-item-ref",
+        "shapeKind": "ELLIPSE",
+        "bounds": {
+          "x": 830,
+          "y": 230,
+          "width": 170,
+          "height": 78
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.region.vexboard.identity",
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vexboard.relationship",
+        "semanticRef": "process.vexboard.relationship",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1020,
+          "y": 230,
+          "width": 170,
+          "height": 96
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.region.vexboard.identity",
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vexboard.identity-law",
+        "semanticRef": "annotation.vexboard.identity-law",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 830,
+          "y": 390,
+          "width": 360,
+          "height": 90
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.region.vexboard.identity",
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vexboard.control-for",
+        "semanticRef": "process.vexboard.control-for",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1290,
+          "y": 120,
+          "width": 320,
+          "height": 80
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.region.vexboard.execution",
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vexboard.apply-control",
+        "semanticRef": "process.vexboard.apply-control",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1290,
+          "y": 235,
+          "width": 320,
+          "height": 90
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.region.vexboard.execution",
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vexboard.edit-boundary",
+        "semanticRef": "reference.vexboard.edit-boundary",
+        "shapeKind": "ELLIPSE",
+        "bounds": {
+          "x": 1290,
+          "y": 360,
+          "width": 320,
+          "height": 70
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.region.vexboard.execution",
+        "visible": true,
+        "locked": false
+      },
+      {
+        "projectionItemRef": "item.vexboard.effect-boundary",
+        "semanticRef": "annotation.vexboard.effect-boundary",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 1290,
+          "y": 455,
+          "width": 320,
+          "height": 60
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.region.vexboard.execution",
+        "visible": true,
+        "locked": false
+      }
+    ],
+    "sourceRefs": [
+      "projects/vexboard/README.md",
+      "vexboard/index.html",
+      "vexboard-reader.js"
+    ]
+  }
+}

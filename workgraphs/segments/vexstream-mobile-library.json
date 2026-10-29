@@ -796,7 +796,7 @@
       "label": "Current-track artwork availability and convergence",
       "purpose": "Fix the lived playback-surface gap where the Full Player and home-screen widget still show generic artwork placeholders even after the embedded-artwork Desktop producer and Android consumer were accepted and merged. Distinguish tracks that genuinely have no admitted artwork from tracks whose known artwork source failed to reach/cache/project into current playback; make current admitted artwork converge without making the widget an artwork fetcher or changing media identity, and expose the per-track truth needed by a separate user-invoked missing-artwork reconciliation path.",
       "workClass": "DEFECT",
-      "state": "RUNNING",
+      "state": "VERIFYING",
       "workDisposition": "ACTIVE",
       "priorityClass": "HIGH",
       "dependencyRefs": [
@@ -842,7 +842,18 @@
         "github.commit.vexstream-music.ed0ecba9b35459fd03aa3bbaede9e4cea8b694f7",
         "github.commit.vexlife-android.6f5b2dc6cdbf284b84cb590ba5b1016af3d33939",
         "evidence.vexstream.embedded-artwork.postmerge-prep.a001.outer.sha256.9c0f171a1c3528644d4389e4fd5c4313c1ffe4de9dffacc1358fb8d6ade1ff92",
-        "human.lived-feedback.vexstream.artwork-placeholder-postmerge.20261025a"
+        "human.lived-feedback.vexstream.artwork-placeholder-postmerge.20261025a",
+        "github.pull.vexstream-music.16",
+        "github.commit.vexstream-music.3a17c9d75d60411266d683f25d553cfbcded294d",
+        "evidence.vexstream-music.pr16.sourceowner.a006.outer.sha256.cc17cf43c3e96e14ac1d7d0702c922292599c256505d3e9d7ce35de8e615f2bf",
+        "evidence.vexstream-music.pr16.sourceowner.a006.inner.sha256.d51c8361d88e623b3b1746f3ef986dcbac11eeaccf753623e1494cf4e3118b34",
+        "github.comment.vexstream-music.pr16.6432866592.assurance-clear",
+        "transition-proposal.vexstream.mobile-library.current-artwork-availability.active-verify.20261026a",
+        "human-transition-response.vexstream.mobile-library.current-artwork-availability.full-approval.20261026a",
+        "ai-transition-confirmation.vexstream.mobile-library.current-artwork-availability.commit.20261026a",
+        "github.commit.vexstream-music.7b442351047a698611b0bd11079bb38f69c9ab94",
+        "github.comment.vexstream-music.pr16.6433049757.post-merge-exact-tree",
+        "evidence.vexstream-music.pr16.postmerge.exact-tree.20261026a"
       ],
       "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
       "nextProcessRefs": [
@@ -851,7 +862,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-25T07:10:00.000Z",
-      "updatedAt": "2026-10-25T12:12:29.462Z"
+      "updatedAt": "2026-10-27T03:04:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -1450,6 +1461,26 @@
         "ai-transition-confirmation.vexstream.mobile-library.contextual-download-missing.commit.20261026a"
       ],
       "createdAt": "2026-10-26T23:38:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.current-artwork-availability.verifying.victor-full-approval-20261026a",
+      "workRef": "work.vexstream.mobile-library.current-artwork-availability",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Victor gave full approval for the protected Active -> Verify transition after corrected VexstreamMusic PR #16 SourceOwner A006 fully passed and fresh Independent Assurance returned CLEAR_ON_EXACT_HEAD. Verify now owns producer integration currentness plus the remaining physical Android round-trip that must prove admitted V3 artwork reaches the existing row / Full Player / Media3 / widget surfaces without audio redownload or playback reset. Repository merge remains a separate provider-authority effect and is not implied by this lifecycle approval.",
+      "actorRef": "actor.local-vex-operations.vexstream-mobile-library",
+      "sourceRefs": [
+        "github.pull.vexstream-music.16",
+        "github.commit.vexstream-music.3a17c9d75d60411266d683f25d553cfbcded294d",
+        "evidence.vexstream-music.pr16.sourceowner.a006.outer.sha256.cc17cf43c3e96e14ac1d7d0702c922292599c256505d3e9d7ce35de8e615f2bf",
+        "evidence.vexstream-music.pr16.sourceowner.a006.inner.sha256.d51c8361d88e623b3b1746f3ef986dcbac11eeaccf753623e1494cf4e3118b34",
+        "github.comment.vexstream-music.pr16.6432866592.assurance-clear",
+        "transition-proposal.vexstream.mobile-library.current-artwork-availability.active-verify.20261026a",
+        "human-transition-response.vexstream.mobile-library.current-artwork-availability.full-approval.20261026a",
+        "ai-transition-confirmation.vexstream.mobile-library.current-artwork-availability.commit.20261026a"
+      ],
+      "createdAt": "2026-10-27T02:54:00.000Z"
     }
   ],
   "sourceRefs": [

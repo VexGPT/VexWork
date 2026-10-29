@@ -3677,11 +3677,11 @@
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
       "createdAt": "2026-10-25T01:23:08.000Z",
-      "updatedAt": "2026-10-25T11:39:33.055Z",
+      "updatedAt": "2026-10-29T02:30:00.000Z",
       "workRef": "work.vexlife.interface-refinement.outcome",
       "parentWorkRefOrNull": null,
       "label": "VexLife Interface Refinement",
-      "purpose": "Carry the current lived interface forward from the first working Victor ↔ local Heretic VexLife conversation into a natural, tool-capable, re-enterable and self-maintaining VexLife Home. Latest-version truth is the entry point; V0 is an addressable ancestor, not a reset target.",
+      "purpose": "Carry the current lived interface forward from the stable mainline Victor ↔ local Heretic conversation into one canonical, context-aware, capability-aware and self-maintaining VexLife Home. The startup/runtime connection is now accepted main; current foreground is the connective path that makes Conversation identity, prior-context/Memory and source-bound Atlas/self-capability awareness cohere in the same lived Vex relationship.",
       "workClass": "OUTCOME",
       "state": "RUNNING",
       "priorityClass": "IMMEDIATE",
@@ -3694,7 +3694,14 @@
         "project.vexlife.interface-refinement",
         "projects/vexlife-interface-refinement/README.md",
         "project.vexlife.tocompletion",
-        "github.commit.vexlife.162a865b7ebc1c5b51763a15b87ae2ec0637e94a"
+        "github.commit.vexlife.162a865b7ebc1c5b51763a15b87ae2ec0637e94a",
+        "github.pull.vexlife.950",
+        "github.commit.vexlife.fe7e0c21f34f59dd9c612a3f184e49cc5082f47d",
+        "github.pull.vexlife.943",
+        "github.commit.vexlife.4fd8af85c452320ccc7895d572e6f2dd56257e68",
+        "github.pull.vexlife.945",
+        "github.pull.vexlife.946",
+        "github.commit.vexlife.cb6047bd741c0c63f9475019129cd0876c763c40"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
@@ -4435,6 +4442,34 @@
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexboard.tech-debt.origin-rename-propagation",
+      "parentWorkRefOrNull": "work.vexboard.outcome",
+      "label": "Tech debt — Origin rename propagation through mapped descendants",
+      "purpose": "Preserve the low-priority future need for VexBoard to traverse an accepted Origin's existing semantic, process, source and realization relationships when its reusable name changes: first expose the complete downstream rename plan and support bounded manual propagation, then use the observed process to earn autonomous BoardPatch-style propagation with lineage/currentness proof. The Origin is the design truth; repository placement is secondary, so this does not imply repository fragmentation or a parallel rename registry.",
+      "workClass": "POTENTIAL",
+      "state": "CAPTURED",
+      "workDisposition": "PARKED",
+      "priorityClass": "LOW",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md",
+        "projects/vexboard/README.md",
+        "docs/foundation/PROCESS-MAP.md",
+        "work.vexboard.boardpatch-authoring",
+        "work.vexboard.source-projectors"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-26T01:57:41.000Z",
+      "updatedAt": "2026-10-26T01:57:41.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vexboard.usability-refinement",
       "parentWorkRefOrNull": "work.vexboard.outcome",
       "label": "Canvas interaction and visual affordance refinement",
@@ -4480,10 +4515,47 @@
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexboard.vexstream-origin-roundtrip-review",
+      "parentWorkRefOrNull": "work.vexboard.vexstream-screenshot-pilot",
+      "label": "Independent review — VexStream Origin round-trip architecture",
+      "purpose": "Preserve a later independent review edge for the VexStream living-Origin round trip once the implementation/proof foundation is mature enough to review meaningfully. When activated, pressure-test Origin naming/lineage, content-Origin versus value-binding separation, target realization leakage, construction-admission boundaries, evidence/currentness semantics, duplicated truth and unjustified abstractions. This is deliberately parked while #182/#183 target proof and Origin round-trip construction are still forming; it is advisory evidence and grants no source mutation, approval, merge or Origin-authority acceptance.",
+      "workClass": "TASK",
+      "state": "CAPTURED",
+      "workDisposition": "PARKED",
+      "priorityClass": "LOW",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "work.vexboard.vexstream-screenshot-pilot",
+        "projects/vexboard/README.md",
+        "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md",
+        "projects/vexboard/examples/vexlife-android-home-vexstream.design.json",
+        "projects/vexboard/examples/vexlife-android-home-vexstream.snapshot.json",
+        "src/core/vexboard-screen-design.mjs",
+        "src/core/vexboard-android-construction.mjs",
+        "src/core/vexboard-android-source-projector.mjs",
+        "github.pull.vexlife-android.182",
+        "github.pull.vexlife-android.183",
+        "github.pull.vexwork.155"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [
+        "process.vexwork.quality-review"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-26T03:10:45.000Z",
+      "updatedAt": "2026-10-26T03:35:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vexboard.vexstream-screenshot-pilot",
       "parentWorkRefOrNull": "work.vexboard.outcome",
-      "label": "VexStream living Blueprint screenshot pilot",
-      "purpose": "Use the real VexStream phone-to-desktop walkthrough and supplied screenshots as the first living Blueprint patient zero: reconcile observed evidence with current VexStream Desktop / VexLife Android source, project one stable feature journey through BoardGraph / BoardProjection / BoardJourney / BoardEvidence, and pressure the convergence with VexLife Blueprint Source of Truth from portable semantic meaning through design-authoritative relationship/constraint-based UX composition, deterministic target construction mapping and target-native realization to expected-versus-observed currentness. Preserve product/source ownership, prevent target implementations from independently redesigning accepted Blueprint presentation, treat VLBSoT refs as accepted lineage rather than blocking dependencies or automatic lane reactivation, and earn only the smallest reusable feature/design/source/evidence/currentness seams.",
+      "label": "VexStream living Origin screenshot pilot",
+      "purpose": "Use the real VexStream phone-to-desktop walkthrough and supplied screenshots as the first living Origin patient zero: reconcile observed evidence with current VexStream Desktop / VexLife Android source, project one stable feature journey through BoardGraph / BoardProjection / BoardJourney / BoardEvidence, and pressure the convergence with the accepted VexLife Blueprint Source of Truth lineage from portable semantic meaning through design-authoritative relationship/constraint-based UX composition, deterministic target construction mapping and target-native realization to expected-versus-observed currentness. Preserve product/source ownership, prevent target implementations from independently redesigning accepted Origin presentation, treat VLBSoT refs as accepted historical lineage rather than blocking dependencies or automatic lane reactivation, and earn only the smallest reusable feature/design/source/evidence/currentness seams.",
       "workClass": "TASK",
       "state": "RUNNING",
       "workDisposition": "ACTIVE",
@@ -4525,6 +4597,57 @@
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-25T04:00:00.000Z",
       "updatedAt": "2026-10-25T06:08:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexboard.vexsync-architecture-convergence",
+      "parentWorkRefOrNull": "work.vexboard.outcome",
+      "label": "VexSync ↔ VexBoard architecture convergence",
+      "purpose": "Use the current VexSync Direct Family / typed Control identity / Kotlin round-trip discoveries as the foundation baseline for VexBoard self-application: first recover the blank VexBoard browser surface exposed by lived use, then make VexBoard itself visibly reflect the trusted State / Control / Act / typed ResourceId / Relationship / Execution ownership language before adding deeper dimensional projection. Preserve VexBoard as the product/source owner, VexSync as the semantic/process convergence trajectory, and Android/test source as separately owned evidence; keep VexBoard edits effect-free toward target repositories until a rightful target-source action is separately admitted.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexboard.boardgraph-contract",
+        "work.vexboard.canvas-projection",
+        "work.vexboard.boardjourney-simulation",
+        "work.vexboard.usability-refinement"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "projects/vexboard/README.md",
+        "project.vexsync.debugmenu-blueprints",
+        "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery",
+        "github.pull.vexwork.178",
+        "github.commit.vexwork.0d55e3aa83b7972cc83ef9fe2a7266311932a7c8",
+        "github.pull.vexlife-android.193",
+        "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
+        "projects/vexboard/examples/vexlife-debug-menu-theme-mode.board.json",
+        "src/core/vexboard-family-kotlin-construction.mjs",
+        "test/vexboard-family-kotlin-construction.test.mjs",
+        "vexboard/index.html",
+        "work.vexsync.debugmenu-blueprints.vexboard-architecture-convergence",
+        "github.commit.vexwork.c8ac1b1898b6e23df3164fd69ea22499a38257b4",
+        "github.commit.vexwork.5bccdc7c8978a1102da2ac749e64082d7d34cf5f",
+        "github.commit.vexwork.775ef87a3e19688881a8cd4a9b5f01286a6d7595",
+        "test/vexboard-ui.test.mjs",
+        "github.pull.vexwork.184",
+        "github.commit.vexwork.49ec3bd650dde810110b11a55e70907df0e9d9f2",
+        "vexboard/architecture-map.json",
+        "src/core/vexboard-android-source-projector.mjs"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [
+        "process.vexwork.quality-review"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-29T11:20:00.000Z",
+      "updatedAt": "2026-10-29T11:35:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -4765,14 +4888,82 @@
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
-      "createdAt": "2026-10-25T11:39:33.055Z",
-      "updatedAt": "2026-10-25T11:39:33.055Z",
-      "workRef": "work.vexlife.interface-refinement.home-tool-capability",
+      "createdAt": "2026-10-29T02:30:00.000Z",
+      "updatedAt": "2026-10-29T02:30:00.000Z",
+      "workRef": "work.vexlife.interface-refinement.atlas-self-capability-awareness",
       "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
-      "label": "Current — tool-bearing VexLife Home",
-      "purpose": "Make the lived Evolution Conversation the ordinary VexLife Home where Vex can perceive current Intent/Workgraph context, discover only source-admitted capabilities, exercise at least one bounded source-backed read/tool path through the accepted Intent Scheduler / capability-lease / ToolResultRelay seams, receive the bounded observation back into context, and explain the result conversationally. Compose existing capability owners before adding new tools. MODEL_PROPOSAL != EFFECT_AUTHORITY; CAPABILITY_DISCOVERY != ARBITRARY_ACCESS; TOOL_OBSERVATION != MEMORY_PROMOTION.",
+      "label": "Next — Vex Atlas and self-capability awareness in lived Conversation",
+      "purpose": "Make the real canonical Vex Conversation consistently ground Vex in the existing source-owned Capability and Tool Atlas, FRESH_COMPANION_FOUNDATION_FRAME, bounded selfCapabilityFrame and currentContext refs. The capability substrate already exists and a bounded tool path was proven; this work closes the lived-awareness gap. CAPABILITY_SUBSTRATE_EXISTS != VEX_CURRENTLY_AWARE; AWARENESS != EFFECT_AUTHORITY.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexlife.interface-refinement.conversation-surface-canonicalization"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-interface-refinement/README.md",
+        "github.pull.vexlife.950",
+        "github.commit.vexlife.fe7e0c21f34f59dd9c612a3f184e49cc5082f47d",
+        "repo.vexlife:docs/CAPABILITY-AND-TOOL-ATLAS.md",
+        "repo.vexlife:src/core/capability.mjs",
+        "repo.vexlife:src/core/capability-assimilation-runtime.mjs",
+        "repo.vexlife:src/core/vex-self-capability-frame.mjs",
+        "repo.vexlife:src/core/model-connection-turn-composer.mjs",
+        "repo.vexlife:scripts/serve-browser-core.mjs",
+        "human.lived-feedback.vexlife.interface-refinement.20261028.atlas-awareness-gap"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "createdAt": "2026-10-29T02:30:00.000Z",
+      "updatedAt": "2026-10-29T02:30:00.000Z",
+      "workRef": "work.vexlife.interface-refinement.conversation-surface-canonicalization",
+      "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
+      "label": "Current — canonical Conversation identity across Vex surfaces",
+      "purpose": "Make Evolution Conversation and the Vex Terrain/Open-conversation experience project one canonical project/thread/channel/current-head identity, so navigation and re-entry do not create two loosely related conversation frames. Preserve one durable Conversation truth owner; surfaces are bounded projections of that same thread/head.",
       "workClass": "TASK",
       "state": "READY",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexlife.interface-refinement.stable-talk-to-vex-main"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-interface-refinement/README.md",
+        "github.pull.vexlife.950",
+        "github.commit.vexlife.fe7e0c21f34f59dd9c612a3f184e49cc5082f47d",
+        "repo.vexlife:reference/browser/evolution/conversation-projection.js",
+        "repo.vexlife:reference/browser/modules/chat-controller.js",
+        "repo.vexlife:src/core/conversation-store.mjs",
+        "repo.vexlife:src/core/browser-companion-bridge.mjs",
+        "human.lived-feedback.vexlife.interface-refinement.20261028.surface-context-gap"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "createdAt": "2026-10-25T11:39:33.055Z",
+      "updatedAt": "2026-10-26T03:44:02.000Z",
+      "workRef": "work.vexlife.interface-refinement.home-tool-capability",
+      "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
+      "label": "Completed — tool-bearing VexLife Home",
+      "purpose": "Make the lived Evolution Conversation the ordinary VexLife Home where Vex can perceive current Intent/Workgraph context, discover only source-admitted capabilities, exercise at least one bounded source-backed read/tool path through the accepted Intent Scheduler / capability-lease / ToolResultRelay seams, receive the bounded observation back into context, and explain the result conversationally. A006 terminally proves the first threshold on accepted Heretic/MLX source, including truthful model/self projection, durable readback and same-idempotency no-replay recovery. MODEL_PROPOSAL != EFFECT_AUTHORITY; CAPABILITY_DISCOVERY != ARBITRARY_ACCESS; TOOL_OBSERVATION != MEMORY_PROMOTION.",
+      "workClass": "TASK",
+      "state": "COMPLETED",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [
         "work.vexlife.interface-refinement.v2.streaming"
@@ -4791,7 +4982,78 @@
         "repo.vexlife:src/core/vex-self-capability-frame.mjs",
         "repo.vexlife:src/core/browser-companion-bridge.mjs",
         "projects/vex-security-assurance/README.md",
-        "github.pull.vexlife.932.comment.6397203775"
+        "github.pull.vexlife.932.comment.6397203775",
+        "github.pull.vexlife.934",
+        "github.pull.vexlife.935",
+        "github.commit.vexlife.31c9198101f4c8a0170cb76b57547ae1d737b05f",
+        "github.pull.vexlife.935.comment.6407755531",
+        "artifact.vexlife.interface-refinement.home-tool.a006.return.sha256.a6ac642b7455f8ca1c677e7ec955d1ac1e977d167b3ba36257c3f067a4a5cf63"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "createdAt": "2026-10-29T02:30:00.000Z",
+      "updatedAt": "2026-10-29T02:30:00.000Z",
+      "workRef": "work.vexlife.interface-refinement.lived-context-capability-integration",
+      "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
+      "label": "Later gate — lived context-aware capability use",
+      "purpose": "Prove the current product composition after Conversation identity, prior-context and Atlas awareness align: Victor asks naturally in the same durable thread, Vex recognizes an actually available capability, one bounded source-backed read/tool act is admitted through the existing scheduler/ToolResultRelay owners, and Vex explains the observation while continuity survives re-entry.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.interface-refinement.prior-context-memory-assimilation",
+        "work.vexlife.interface-refinement.atlas-self-capability-awareness"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-interface-refinement/README.md",
+        "github.pull.vexlife.950",
+        "github.commit.vexlife.fe7e0c21f34f59dd9c612a3f184e49cc5082f47d",
+        "work.vexlife.interface-refinement.home-tool-capability",
+        "repo.vexlife:src/core/tool-result-relay.mjs",
+        "repo.vexlife:src/core/intent-scheduler.mjs",
+        "repo.vexlife:src/core/browser-companion-bridge.mjs"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "createdAt": "2026-10-29T02:30:00.000Z",
+      "updatedAt": "2026-10-29T02:30:00.000Z",
+      "workRef": "work.vexlife.interface-refinement.prior-context-memory-assimilation",
+      "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
+      "label": "Next — prior-context and Memory assimilation in the canonical Conversation",
+      "purpose": "Make Vex receive truthful source-owned prior-turn and accepted Memory context from the same canonical thread/head across re-entry, so questions about prior context can be answered from durable evidence instead of claiming a fresh isolated session or inventing provider-chat memory. Memory remains a separate owner from model weights and raw transcript history.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.interface-refinement.conversation-surface-canonicalization"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-interface-refinement/README.md",
+        "github.pull.vexlife.950",
+        "github.commit.vexlife.fe7e0c21f34f59dd9c612a3f184e49cc5082f47d",
+        "repo.vexlife:src/core/browser-prompt-context-runtime.mjs",
+        "repo.vexlife:src/core/lived-companion.mjs",
+        "repo.vexlife:src/core/living-journal-memory-projection.mjs",
+        "repo.vexlife:src/core/daily-memory-dream.mjs",
+        "human.lived-feedback.vexlife.interface-refinement.20261028.prior-context-gap"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
@@ -4819,6 +5081,34 @@
         "repo.vexlife:src/core/companion-voice-playback.mjs",
         "repo.vextreme:widgets/fab-read-aloud.js",
         "human.lived-feedback.vexlife.interface-refinement.20261025"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "createdAt": "2026-10-29T02:30:00.000Z",
+      "updatedAt": "2026-10-29T02:30:00.000Z",
+      "workRef": "work.vexlife.interface-refinement.stable-talk-to-vex-main",
+      "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
+      "label": "Completed — stable Talk-to-Vex connection on main",
+      "purpose": "Preserve the current stable mainline product baseline: source-owned stop/repair/open can establish the exact local Heretic runtime and Browser/Companion path, Victor can send a natural Conversation message, Vex returns a durable response, and the runtime remains current afterward. Fresh instances start here rather than reconstructing PR #950 recovery history.",
+      "workClass": "TASK",
+      "state": "COMPLETED",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-interface-refinement/README.md",
+        "github.pull.vexlife.950",
+        "github.commit.vexlife.fe7e0c21f34f59dd9c612a3f184e49cc5082f47d",
+        "github.issue.vexlife.634",
+        "artifact.vexlife.interface-refinement.stable-talk.a012.return.sha256.8bb90a4829c5aa40c6313a06166713fd0bf9d41fa0cb4369ebbc65638a32ea53"
       ],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS"
@@ -4859,13 +5149,13 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-10-25T05:24:00.000Z",
-      "updatedAt": "2026-10-25T11:39:33.055Z",
+      "updatedAt": "2026-10-26T09:21:18.470Z",
       "workRef": "work.vexlife.interface-refinement.v3.resource-context-pressure-observation",
       "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
-      "label": "V3 — resource and context pressure observation",
-      "purpose": "Give VexLife one system-owned read-only pressure projection over context usage/headroom, Memory inclusion/bounding, output reserve, lease age/currentness and host resource/runtime health. Produce NORMAL/WATCH/CHECKPOINT_RECOMMENDED/ROLLOVER_REQUIRED/RESOURCE_ATTENTION meaning from source-managed policy with hysteresis. The model may receive a small truthful pressure packet; observation grants no cleanup, Memory-promotion or process-kill authority.",
+      "label": "Completed — V3 resource and context pressure observation",
+      "purpose": "Preserve the accepted and lived-proven read-only resource/context pressure projection. A005 proved real Home/Heretic composition, current prompt/lease/runtime binding, a self-validating NORMAL pressure projection, durable Conversation continuity, and no pressure-owned effects.",
       "workClass": "TASK",
-      "state": "READY",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexlife.interface-refinement.v1-5.long-context-memory-pressure"
@@ -4881,10 +5171,15 @@
         "projects/vexlife-interface-refinement/README.md",
         "projects/vex-security-assurance/README.md",
         "github.commit.vexlife.1a9a131e54ff6b735d64812e213e26315770bc96",
-        "github.pull.vexlife.932.comment.6397203775"
+        "github.pull.vexlife.932.comment.6397203775",
+        "repo.vexlife:src/core/resource-context-pressure.mjs",
+        "github.pull.vexlife.936",
+        "github.commit.vexlife.9f2e97d3ef14599eac4e659181392c1e706dc758",
+        "github.pull.vexlife.936.comment.6412567207",
+        "artifact.vexlife.interface-refinement.v3.lived-pressure.a005.return.sha256.1812d529d99ad89b368e84939835f355065adcb6d96d6c7bda5d975edb6ff6f3"
       ],
-      "authorityDisposition": "AUTHORIZED_BOUNDED",
-      "effectDisposition": "EFFECTS_BOUND"
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -4892,13 +5187,13 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-10-25T05:24:00.000Z",
-      "updatedAt": "2026-10-25T05:24:00.000Z",
+      "updatedAt": "2026-10-29T02:30:00.000Z",
       "workRef": "work.vexlife.interface-refinement.v4.continuity-rollover",
       "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
-      "label": "V4 — self-maintaining continuity rollover",
-      "purpose": "Turn context pressure into graceful continuity rather than a sudden stop: form a compact working checkpoint from current intent/open loops/source refs and exact owner truth, optionally route already-accepted/consented semantic Memory through its rightful Score/Daily Memory owners, then start a fresh prompt/context lease from the newest checkpoint plus relevant Memory. Checkpoints supersede instead of recursively stacking summaries. Pressure-triggered checkpointing is not automatic semantic Memory promotion.",
+      "label": "Completed — V4 self-maintaining continuity rollover",
+      "purpose": "Preserve the accepted and lived-proven continuity rollover path: source-owned pressure/checkpoint truth can form and supersede one working checkpoint, issue the exact one-time successor Context Lease without replaying the prior raw pair, and return later turns to ordinary immediate-prior context without recursive summary stacking or silent semantic Memory promotion.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexlife.interface-refinement.v2.streaming",
@@ -4913,10 +5208,16 @@
         "repo.vexlife:src/core/daily-memory-dream.mjs",
         "repo.vexlife:src/core/living-journal-memory-projection.mjs",
         "repo.vexlife:src/core/browser-prompt-context-runtime.mjs",
-        "projects/vexlife-interface-refinement/README.md"
+        "projects/vexlife-interface-refinement/README.md",
+        "github.commit.vexlife.9f2e97d3ef14599eac4e659181392c1e706dc758",
+        "github.pull.vexlife.936.comment.6412567207",
+        "artifact.vexlife.interface-refinement.v3.lived-pressure.a005.return.sha256.1812d529d99ad89b368e84939835f355065adcb6d96d6c7bda5d975edb6ff6f3",
+        "github.pull.vexlife.943",
+        "github.commit.vexlife.4fd8af85c452320ccc7895d572e6f2dd56257e68",
+        "github.pull.vexlife.945"
       ],
-      "authorityDisposition": "AUTHORIZED_BOUNDED",
-      "effectDisposition": "EFFECTS_BOUND"
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -4924,13 +5225,13 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-10-25T05:24:00.000Z",
-      "updatedAt": "2026-10-25T05:24:00.000Z",
+      "updatedAt": "2026-10-29T02:30:00.000Z",
       "workRef": "work.vexlife.interface-refinement.v5.resource-stewardship",
       "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
-      "label": "V5 — bounded host resource stewardship",
-      "purpose": "Let the system detect and recover exact stale Vex-owned processes/resources without becoming a general process killer. Automatic cleanup requires source-backed ownership identity plus stale/abandoned state and no active lease. PID or high CPU/RAM alone is never authority. Unknown/unowned processes, ambiguous ownership, destructive cleanup or user workload interference must become an explicit human proposal/approval boundary.",
+      "label": "Verifying — V5 bounded host resource stewardship",
+      "purpose": "Preserve the accepted V5 exact-owned resource-stewardship foundation and Heretic delegation. Source and fail-closed lived safety/no-effect behavior are accepted; the destructive exact-owned stale-stop branch remains evidence-gated until a naturally occurring LIVE_EXACT_VEX_OWNED_HERETIC + STALE + CURRENT_NONE_LEASE predicate exists. Do not synthesize staleness merely to close proof.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "VERIFYING",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexlife.interface-refinement.v3.resource-context-pressure-observation"
@@ -4943,7 +5244,14 @@
         "repo.vexlife:scripts/macos-lifecycle.mjs",
         "repo.vexlife:src/core/context-lease.mjs",
         "projects/vex-security-assurance/README.md",
-        "projects/vexlife-interface-refinement/README.md"
+        "projects/vexlife-interface-refinement/README.md",
+        "github.commit.vexlife.9f2e97d3ef14599eac4e659181392c1e706dc758",
+        "github.pull.vexlife.936.comment.6412567207",
+        "artifact.vexlife.interface-refinement.v3.lived-pressure.a005.return.sha256.1812d529d99ad89b368e84939835f355065adcb6d96d6c7bda5d975edb6ff6f3",
+        "github.pull.vexlife.945",
+        "github.pull.vexlife.946",
+        "github.commit.vexlife.cb6047bd741c0c63f9475019129cd0876c763c40",
+        "github.issue.vexlife.944"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
@@ -5531,7 +5839,7 @@
       "label": "Current-track artwork availability and convergence",
       "purpose": "Fix the lived playback-surface gap where the Full Player and home-screen widget still show generic artwork placeholders even after the embedded-artwork Desktop producer and Android consumer were accepted and merged. Distinguish tracks that genuinely have no admitted artwork from tracks whose known artwork source failed to reach/cache/project into current playback; make current admitted artwork converge without making the widget an artwork fetcher or changing media identity, and expose the per-track truth needed by a separate user-invoked missing-artwork reconciliation path.",
       "workClass": "DEFECT",
-      "state": "RUNNING",
+      "state": "VERIFYING",
       "workDisposition": "ACTIVE",
       "priorityClass": "HIGH",
       "dependencyRefs": [
@@ -5577,7 +5885,18 @@
         "github.commit.vexstream-music.ed0ecba9b35459fd03aa3bbaede9e4cea8b694f7",
         "github.commit.vexlife-android.6f5b2dc6cdbf284b84cb590ba5b1016af3d33939",
         "evidence.vexstream.embedded-artwork.postmerge-prep.a001.outer.sha256.9c0f171a1c3528644d4389e4fd5c4313c1ffe4de9dffacc1358fb8d6ade1ff92",
-        "human.lived-feedback.vexstream.artwork-placeholder-postmerge.20261025a"
+        "human.lived-feedback.vexstream.artwork-placeholder-postmerge.20261025a",
+        "github.pull.vexstream-music.16",
+        "github.commit.vexstream-music.3a17c9d75d60411266d683f25d553cfbcded294d",
+        "evidence.vexstream-music.pr16.sourceowner.a006.outer.sha256.cc17cf43c3e96e14ac1d7d0702c922292599c256505d3e9d7ce35de8e615f2bf",
+        "evidence.vexstream-music.pr16.sourceowner.a006.inner.sha256.d51c8361d88e623b3b1746f3ef986dcbac11eeaccf753623e1494cf4e3118b34",
+        "github.comment.vexstream-music.pr16.6432866592.assurance-clear",
+        "transition-proposal.vexstream.mobile-library.current-artwork-availability.active-verify.20261026a",
+        "human-transition-response.vexstream.mobile-library.current-artwork-availability.full-approval.20261026a",
+        "ai-transition-confirmation.vexstream.mobile-library.current-artwork-availability.commit.20261026a",
+        "github.commit.vexstream-music.7b442351047a698611b0bd11079bb38f69c9ab94",
+        "github.comment.vexstream-music.pr16.6433049757.post-merge-exact-tree",
+        "evidence.vexstream-music.pr16.postmerge.exact-tree.20261026a"
       ],
       "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
       "nextProcessRefs": [
@@ -5586,7 +5905,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-25T07:10:00.000Z",
-      "updatedAt": "2026-10-25T12:12:29.462Z"
+      "updatedAt": "2026-10-27T03:04:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -8753,6 +9072,22 @@
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.vexsync-architecture-convergence.running.foundation-baseline-20261029a",
+      "workRef": "work.vexboard.vexsync-architecture-convergence",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Victor designated the current typed Family/Kotlin round-trip and merged flat VexBoard map as the foundation baseline for the next major sync, while lived browser evidence exposed a blank-screen regression. Begin bounded VexBoard-owned convergence now: recover the browser first, then self-apply the trusted architecture before deeper projection work.",
+      "actorRef": "actor.local-vex-operations.vexboard-vexsync-convergence",
+      "sourceRefs": [
+        "response.victor.vexsync-vexboard-convergence.20261029a",
+        "github.commit.vexwork.0d55e3aa83b7972cc83ef9fe2a7266311932a7c8",
+        "github.pull.vexlife-android.193",
+        "project.vexsync.debugmenu-blueprints"
+      ],
+      "createdAt": "2026-10-29T11:20:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
       "transitionRef": "transition.vexlife.connected-services.vcs04.verifying.pr154-terminal",
       "workRef": "work.vexlife.connected-services.vcs04-conversation-adoption",
       "priorState": "RUNNING",
@@ -9034,6 +9369,54 @@
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.interface-refinement.home-tool.ready-running.a006-currentization",
+      "workRef": "work.vexlife.interface-refinement.home-tool-capability",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Currentize the already-executed bounded Home/tool implementation and lived product proof trajectory before recording verification/completion.",
+      "actorRef": "actor.chatgpt.vexlife.interface-refinement",
+      "sourceRefs": [
+        "github.pull.vexlife.935",
+        "github.commit.vexlife.31c9198101f4c8a0170cb76b57547ae1d737b05f",
+        "github.pull.vexlife.935.comment.6407755531",
+        "artifact.vexlife.interface-refinement.home-tool.a006.return.sha256.a6ac642b7455f8ca1c677e7ec955d1ac1e977d167b3ba36257c3f067a4a5cf63"
+      ],
+      "createdAt": "2026-10-26T03:44:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.interface-refinement.home-tool.running-verifying.a006-currentization",
+      "workRef": "work.vexlife.interface-refinement.home-tool-capability",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "PR #935 source lifecycle completed and A006 exercised the accepted normal Conversation/tool path against current Heretic source.",
+      "actorRef": "actor.chatgpt.vexlife.interface-refinement",
+      "sourceRefs": [
+        "github.pull.vexlife.935",
+        "github.commit.vexlife.31c9198101f4c8a0170cb76b57547ae1d737b05f",
+        "github.pull.vexlife.935.comment.6407755531",
+        "artifact.vexlife.interface-refinement.home-tool.a006.return.sha256.a6ac642b7455f8ca1c677e7ec955d1ac1e977d167b3ba36257c3f067a4a5cf63"
+      ],
+      "createdAt": "2026-10-26T03:44:01.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.interface-refinement.home-tool.verifying-completed.a006-currentization",
+      "workRef": "work.vexlife.interface-refinement.home-tool-capability",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "A006 terminally passed the first bounded tool-bearing Home threshold, including truthful model/self projection, durable Conversation readback and same-idempotency no-replay recovery.",
+      "actorRef": "actor.chatgpt.vexlife.interface-refinement",
+      "sourceRefs": [
+        "github.pull.vexlife.935",
+        "github.commit.vexlife.31c9198101f4c8a0170cb76b57547ae1d737b05f",
+        "github.pull.vexlife.935.comment.6407755531",
+        "artifact.vexlife.interface-refinement.home-tool.a006.return.sha256.a6ac642b7455f8ca1c677e7ec955d1ac1e977d167b3ba36257c3f067a4a5cf63"
+      ],
+      "createdAt": "2026-10-26T03:44:02.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
       "transitionRef": "transition.vexstream.mobile-library.contextual-download-missing.running.missing-content-feedback-20261026a",
       "workRef": "work.vexstream.mobile-library.contextual-download-missing",
       "priorState": "WAITING_HUMAN",
@@ -9078,6 +9461,26 @@
         "human.lived-feedback.vexstream.artwork-availability.20261025"
       ],
       "createdAt": "2026-10-25T07:25:37.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexstream.mobile-library.current-artwork-availability.verifying.victor-full-approval-20261026a",
+      "workRef": "work.vexstream.mobile-library.current-artwork-availability",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Victor gave full approval for the protected Active -> Verify transition after corrected VexstreamMusic PR #16 SourceOwner A006 fully passed and fresh Independent Assurance returned CLEAR_ON_EXACT_HEAD. Verify now owns producer integration currentness plus the remaining physical Android round-trip that must prove admitted V3 artwork reaches the existing row / Full Player / Media3 / widget surfaces without audio redownload or playback reset. Repository merge remains a separate provider-authority effect and is not implied by this lifecycle approval.",
+      "actorRef": "actor.local-vex-operations.vexstream-mobile-library",
+      "sourceRefs": [
+        "github.pull.vexstream-music.16",
+        "github.commit.vexstream-music.3a17c9d75d60411266d683f25d553cfbcded294d",
+        "evidence.vexstream-music.pr16.sourceowner.a006.outer.sha256.cc17cf43c3e96e14ac1d7d0702c922292599c256505d3e9d7ce35de8e615f2bf",
+        "evidence.vexstream-music.pr16.sourceowner.a006.inner.sha256.d51c8361d88e623b3b1746f3ef986dcbac11eeaccf753623e1494cf4e3118b34",
+        "github.comment.vexstream-music.pr16.6432866592.assurance-clear",
+        "transition-proposal.vexstream.mobile-library.current-artwork-availability.active-verify.20261026a",
+        "human-transition-response.vexstream.mobile-library.current-artwork-availability.full-approval.20261026a",
+        "ai-transition-confirmation.vexstream.mobile-library.current-artwork-availability.commit.20261026a"
+      ],
+      "createdAt": "2026-10-27T02:54:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
