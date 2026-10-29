@@ -670,6 +670,162 @@ RELATIONSHIP_OUTPUT != EFFECT_OWNER
 READY_GATE != NEW_SEND_EFFECT
 ~~~
 
+#### Disposable F1 contract prototype — 7 / 7 semantic PASS
+
+A disposable sibling-contract prototype was pressure-tested before asking VexLife source to carry it.
+
+The prototype intentionally contains **no Control / Act / Effect identities**. It owns only the
+relationship side of the Family Circuit:
+
+~~~text
+contractRef
+relationshipRef
+ownerBlueprintRef
+purpose
+initialStateRef
+
+inputIdentities[]
+  inputRef
+  ownerRef
+  brief
+  independentOwner=true
+  requiredForCoherence=true
+
+stateIdentities[]
+  semanticState=true
+  familySemanticState=true
+  displayState=false
+  effectCommand=false
+
+invariantIdentities[]
+
+relationshipLawRows[]
+  rowRef
+  when[]
+  derivedStateRef
+  effectAuthorityGranted=false
+  sourceRefs[]
+
+sourceBindings[]
+heldRealizations[]
+~~~
+
+Disposable proof:
+
+~~~text
+7 / 7 PASS
+
+valid Interface convergence relationship carries zero effect authority
+independent input ownership cannot be collapsed
+law rows cannot grant effect authority
+coherent-input and Family-handoff invariants are mandatory
+law rows cannot derive unknown states
+UNOBSERVED is explicit initialStateRef, not a fake reconciliation row
+identity projection preserves input-owner and law->state edges
+~~~
+
+The `initialStateRef` correction matters because accepted `VexCompoundState` does not call
+`processLatestState()` before every declared input has been observed.
+
+~~~text
+UNOBSERVED
+= initial semantic relationship state
+
+UNOBSERVED
+!= reconciliation result manufactured before coherent input
+~~~
+
+This keeps the portable contract aligned with the runtime rather than merely describing the same
+words.
+
+The contract prototype plus F2/draft seam prototypes now total:
+
+~~~text
+20 / 20 disposable semantic PASS
+~~~
+
+Still:
+
+~~~text
+DISPOSABLE_20_OF_20
+!= REPOSITORY_TEST_PASS
+~~~
+
+#### Exact Universal Blueprint integration seam
+
+Current `src/core/blueprint.mjs` already integrates portable Behavior through four bounded seams:
+
+~~~text
+1. import validator + identity-entry builder
+2. export the portable contract module
+3. add validation errors/stats inside validateBlueprint(...)
+4. append identity entries inside buildIdentityIndex(...)
+   under one shared duplicate-ref guard
+~~~
+
+F1 should mirror that shape for portable Convergence:
+
+~~~text
+portable-behavior-contract.mjs      stays unchanged
+portable-convergence-contract.mjs   sibling extension
+
+validateBlueprint(...)
+  baseValidation
+  + behaviorValidation
+  + convergenceValidation
+
+buildIdentityIndex(...)
+  baseEntries
+  + behaviorEntries
+  + convergenceEntries
+  -> one duplicate identity guard
+~~~
+
+No change is required to `blueprint-base.mjs::loadComposedRecord()`: it already resolves arbitrary
+declared `includes` fields.
+
+The Universal Blueprint descriptor only needs the sibling composition:
+
+~~~text
+"behaviorContracts": [
+  "blueprint/fragments/behavior-contracts/vexstream-playback-play-pause.json"
+],
+
+"convergenceContracts": [
+  "blueprint/fragments/convergence-contracts/interface-compound-currentness.json"
+]
+~~~
+
+Do not rename or migrate the accepted Behavior field.
+
+#### Input owner resolution proof
+
+The registry core prevents duplicate registered identities but does not globally validate every edge
+target. F1 should not widen `registry-core.mjs` just to create a new generic rule.
+
+Instead the focused convergence proof should load the full current Blueprint identity index and
+assert:
+
+~~~text
+for every convergence input:
+  input.ownerRef resolves to one existing registered current owner
+~~~
+
+That proves the relationship points at real owners without making the convergence contract own them.
+
+For Interface Compound, expected owner classes include the existing:
+
+~~~text
+browser/document source owner
+browser/server source owner
+module.vexlife.core.companion-availability-reentry
+feature.vexlife.addressed-conversation
+browser observation-currentness owner
+~~~
+
+If a proposed owner identity does not yet exist canonically, that is a source-placement question for
+that owner—not permission to hide an invented ownerRef inside the convergence contract.
+
 #### F1 candidate source membrane — source-ready, not admitted
 
 Current Blueprint loading is already composition-field generic: `loadComposedRecord()` resolves any
