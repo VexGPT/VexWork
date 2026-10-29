@@ -4927,3 +4927,72 @@ Isolated generic Kotlin proof: PASS.
 Production VexCompoundRelay remains unchanged.
 
 <!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][PROCESS-ONLY-COMPOUND] -->
+
+
+---
+
+## Origin-Walk formalization — process -> commit -> Act -> observe
+
+**Downstream Android #192 head:** `b2440adaea68b5e57388fdd28248dda068d72b3e`
+
+Before changing any existing feature Relay, the fourth Origin reference now proves one complete
+ownership circuit:
+
+~~~text
+partial InputState
++ retained current InputState
+-> latestStateInput
+-> process(latestStateInput)
+-> latestStateOutput
+-> COMMIT VexCompoundState
+-> Act(committed OutputState)
+-> rightful target owner changes its own CURRENT State
+-> observe that target CURRENT truth
+-> NEW partial InputState
+-> process again
+~~~
+
+Executable trace:
+
+~~~text
+process:NeedsApply(Dark)
+commit:NeedsApply(Dark)
+act:NeedsApply(Dark)
+target:Dark
+process:Settled(Dark)
+commit:Settled(Dark)
+act:Settled(Dark)
+~~~
+
+The test verifies that Act receives an already-committed CompoundState. OutputState never feeds itself
+back into process as hidden input.
+
+Current reusable roles:
+
+~~~text
+InputState.latest(incoming)
+  partial-input currentization
+
+process(latestStateInput)
+  relationship calculation only
+
+OutputState
+  current relationship consequence
+
+Act
+  reaction to already-established relationship truth
+
+target owner
+  owns the requested external/current change
+
+observation
+  returns that owner's new truth as fresh input
+~~~
+
+Existing Events / Maps / Navigation / Conversation implementations remain unchanged while this circuit
+is reviewed.
+
+Isolated Kotlin circuit proof: PASS.
+Repository Gradle/JVM: PENDING.
+
+<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][PROCESS-COMMIT-ACT-OBSERVE] -->
