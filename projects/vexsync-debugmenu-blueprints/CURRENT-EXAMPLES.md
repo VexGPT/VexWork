@@ -5786,3 +5786,79 @@ not mean copying Android source files.
 ThemeMode is the patient-zero specimen that will tell us which coordinates are actually portable.
 
 <!-- [VXG RealForever][VEXSYNC][APPLY-ALL-PORTABILITY] -->
+
+
+---
+
+## VexArchitecture refinement candidate — Walk Trace Grammar
+
+ThemeMode SourceOwner A001 + fresh Assurance now provide one clean pressure-tested specimen for a common
+cross-layer language without collapsing the existing owners.
+
+~~~text
+Feature Walk
+  Feature -> Walk -> Case -> Checkpoint -> optional Hold
+
+Journey
+  Case -> ordered Step
+  Step kind = human action | external cause | observation
+  Step carries the stable semantic ref it acts on / observes
+
+Expected Walk
+  interprets the authored Journey into expected semantic history
+  != production runtime
+
+Production semantic owners
+  UI intent / AppAction
+  -> Family: CURRENT State + Control -> Act
+  -> optional Begin / Execution
+  -> resulting State / rendered projection
+
+Observation
+  runtime/logger/Journey observer records what actually occurred
+
+Evidence
+  focused proof or ScreenCrawler attaches proof to the same Case/Checkpoint/Step coordinate
+
+Stage Return
+  proof gate disposition + evidence refs + exact next continuation edge
+~~~
+
+The reusable idea is therefore a **trace grammar**, not a new universal Walk executor.
+
+Candidate shared nouns:
+
+~~~text
+Scenario / Case
+Checkpoint
+Step
+StepKind
+SemanticRef
+OwnerRef
+Before / After
+Relationship
+Effect
+Observation
+EvidenceRef
+Disposition
+Continuation
+~~~
+
+Each existing owner keeps its own behavior and truth:
+- Feature Walk owns completion/checkpoint meaning.
+- Journey owns the human interaction sequence.
+- Family owns State + Control relationship meaning.
+- Execution owns effect occurrence/lifetime.
+- Logger/observer owns runtime observation.
+- ScreenCrawler owns rendered evidence.
+- Relay/host proof owns proof-operation receipts and continuation.
+
+A future shared type is earned only if ThemeMode's complete production walk and at least one second
+feature repeat the same coordinate pressure. Until then this is a language/projection contract, not a
+new Vex root or runtime framework.
+
+This candidate directly supports Apply All: porting should traverse the accepted semantic coordinates,
+resolve each target's rightful owner, realize the supported relationship/effect, and bind proof/evidence
+back to the same walk coordinates.
+
+<!-- [VXG RealForever][VEXSYNC][WALK-TRACE-GRAMMAR][CANDIDATE] -->
