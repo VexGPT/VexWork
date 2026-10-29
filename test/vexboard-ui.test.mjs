@@ -124,6 +124,11 @@ test('ThemeMode patient-zero board projects one typed Family language across fou
     node.parentRefOrNull === 'quadrant.theme-mode.ui'
   ));
   assert.ok(graph.nodes.some((node) =>
+    node.nodeRef === 'reference.theme-mode.current-target' &&
+    node.label.includes('VexLifeSession.darkTheme') &&
+    node.sourceRefs.some((sourceRef) => sourceRef.includes('VexLifeSession.kt'))
+  ));
+  assert.ok(graph.nodes.some((node) =>
     node.nodeRef === 'process.theme-mode.family' &&
     node.parentRefOrNull === 'quadrant.theme-mode.family'
   ));
