@@ -4,22 +4,25 @@
 
 ## Current entry
 
-The stable **Talk-to-Vex startup/runtime foundation is now accepted on VexLife main**. Fresh instances must start from current main, not reconstruct PR #950, replay A011/A012 carriers, or treat the former launchd ownership wall as current work.
+The stable **Talk-to-Vex startup/runtime foundation and the connective Conversation/Memory/Atlas layers are now accepted on VexLife main**. Fresh instances must start from current main and the released integrated-capability gate, not reconstruct PR #950/#952/#955/#956 or replay lived proof carriers as current work.
 
 Current accepted VexLife baseline:
 
 ```text
-main = fe7e0c21f34f59dd9c612a3f184e49cc5082f47d
-tree = fee3fb7bb4e273c9674f65d2dc629b4842c7837e
+main = 862d3f90dc04472012ae3cb16d618a0c6c2d2676
+tree = 02d02b678faa01446796c707626f5d30534662e7
 
 source/proof:
-  PR #950 merged tree-exact
-  focused Heretic proof = 21 / 21 PASS
-  full repository proof = PASS
-  canonical lived Talk-to-Vex proof = PASS
+  PR #950 stable Talk-to-Vex foundation = COMPLETED
+  PR #952 canonical Conversation identity = COMPLETED
+  PR #955 + #956 Atlas/self-capability awareness = COMPLETED
+  A008 read-only recovery of A006 prior-context + Memory assimilation = PASS
+  standing-autonomy preference generation = CURRENT
+  G02 Score + semantic-authority head = CURRENT
+  G03 Daily Memory stratum = COMMITTED
 ```
 
-The current human/product foreground is no longer runtime establishment. It is the **connective pathway that makes the working Vex relationship coherent**:
+The current human/product foreground is no longer runtime establishment or connective-layer formation. The identity/Memory/Atlas connective pathway is complete; the foreground is now the **integrated lived capability-use gate in that same durable Vex relationship**:
 
 ```text
 stable Talk-to-Vex main
@@ -57,9 +60,11 @@ Continuity/stability source has also advanced beyond this Project's prior checkp
 ```text
 START_FROM_HIGHEST_CURRENT_REFINEMENT_VERSION
 STABLE_CONNECTION = ACCEPTED_MAIN
-CURRENT_FOREGROUND = CANONICAL_CONVERSATION_IDENTITY
-NEXT_PARALLEL_AFTER_IDENTITY = PRIOR_CONTEXT_MEMORY + ATLAS_SELF_CAPABILITY_AWARENESS
-INTEGRATION_GATE = LIVED_CONTEXT_AWARE_CAPABILITY_USE
+CANONICAL_CONVERSATION_IDENTITY = COMPLETED
+PRIOR_CONTEXT_MEMORY = COMPLETED
+ATLAS_SELF_CAPABILITY_AWARENESS = COMPLETED
+CURRENT_FOREGROUND = LIVED_CONTEXT_AWARE_CAPABILITY_USE
+INTEGRATION_GATE = READY
 V4 = COMPLETED
 V5 = VERIFYING / NATURAL_PREDICATE_HELD
 V6 = WAITING_DEPENDENCIES
@@ -80,10 +85,10 @@ Descend into VexLife ToCompletion only when the current refinement names an exac
 | **V2** | **PROVEN / COMPLETED** | Progressive/adaptive local-Heretic streaming is accepted source and terminal human-lived PASS. |
 | **Tool-bearing Home** | **PROVEN / COMPLETED** | A006 proves one lawful source-backed CODE read, Intent Scheduler + ToolResultRelay reinjection, bounded self-capability projection and durable readback. This does **not** prove persistent lived Atlas awareness across the current UI. |
 | **Stable Talk-to-Vex main** | **PROVEN / COMPLETED** | PR #950 is merged tree-exact; current main can establish/recover Heretic, reach Browser/Companion READY, complete a natural Victor → Vex turn and remain current afterward. |
-| **Canonical Conversation identity** | **READY / IMMEDIATE / CURRENT** | Make Evolution Conversation and Vex Terrain/Open conversation project one canonical project/thread/channel/current-head identity. |
-| **Prior-context / Memory assimilation** | **WAITING ON CANONICAL IDENTITY** | Feed truthful source-owned prior-turn + accepted Memory context from that same canonical thread/head; no provider-chat fiction and no raw whole-history dumping. |
-| **Atlas / self-capability awareness** | **WAITING ON CANONICAL IDENTITY** | Make the lived canonical Vex relationship consistently receive and express the existing source-owned Foundation Frame, Capability Atlas/frontier and bounded selfCapabilityFrame/currentContext. |
-| **Lived context-aware capability use** | **WAITING ON MEMORY + ATLAS** | Natural request → Vex recognizes a current capability → rightful bounded read/tool act → ToolResultRelay → explanation in the same durable Conversation across re-entry. |
+| **Canonical Conversation identity** | **PROVEN / COMPLETED** | PR #952 + accepted-main lived evidence establish one canonical project/thread/channel/current-head identity across the Vex relationship. |
+| **Prior-context / Memory assimilation** | **PROVEN / COMPLETED** | A006 completed the real Heretic turn with exact prior context + source-attributed Memory; A008 read-only recovery verified the durable prompt-context/Memory chain without replay. |
+| **Atlas / self-capability awareness** | **PROVEN / COMPLETED** | PR #955/#956 + lived A002 prove the canonical Vex relationship receives and expresses the source-owned Foundation Frame and bounded selfCapabilityFrame/currentContext. |
+| **Lived context-aware capability use** | **READY / IMMEDIATE / CURRENT** | Natural request → Vex recognizes a current capability → rightful bounded read/tool act → ToolResultRelay → explanation in the same durable Conversation across re-entry. |
 | **V3** | **PROVEN / COMPLETED** | Read-only resource/context pressure source + lived A005 proof. |
 | **V4** | **PROVEN / COMPLETED** | Working checkpoint/supersession + one-time successor Context Lease/re-entry path are accepted source and lived proven. |
 | **V5** | **VERIFYING / HELD NATURAL PREDICATE** | Foundation/delegation accepted; fail-closed no-effect branch lived proven. Exact-owned stale-stop branch waits for a naturally occurring eligible stale resource. |
@@ -327,7 +332,7 @@ HERETIC_MLX != LEGACY_LLAMA_CPP_OPERATIONAL_PROFILE
 This completes the **first** lawful tool-bearing Home threshold. It does not imply arbitrary tool families,
 Memory promotion, host cleanup authority, distribution completeness, or V3–V6 continuity stability.
 
-The next continuity edge after this completed Home threshold was V3; V3 then released V4, and V4 is now terminal source + lived PASS. The current foreground is the **canonical Conversation identity** connective path described below.
+The next continuity edge after this completed Home threshold was V3; V3 then released V4, and V4 is now terminal source + lived PASS. The canonical Conversation, Memory and Atlas connective layers are also complete; the current foreground is the integrated lived capability-use path described below.
 
 ## Current connective foreground — one Conversation becomes Vex's working frame
 
@@ -369,7 +374,7 @@ visible Vex relationship
 
 So the next path is identity-first:
 
-### 1. Canonical Conversation identity — current
+### 1. Canonical Conversation identity — completed
 
 One source-owned Conversation thread/head must be the identity carried through both surfaces:
 
@@ -388,7 +393,25 @@ self-capability currentContext
 
 Navigation may change the view; it must not silently mint a second conversation truth.
 
-### 2. Prior-context / Memory assimilation — next after identity
+### 2. Prior-context / Memory assimilation — completed
+
+A006 completed the real canonical Guide → Heretic turn after materializing one current standing-autonomy charter, Memory/Safety semantic authority, G02 Score statement and G03 Daily Memory stratum. A008 then recovered A006 as a completed lived acceptance from durable evidence without another model call or Home write.
+
+Accepted recovered evidence:
+
+```text
+A006 RETURN = artifact.vexlife.interface-refinement.standing-autonomy-memory-lived.a006.return.sha256.4440620b119206756aa7471bf73a36a40a42d9b0b9ea1024835a03b6a36c57cd
+A008 RETURN = artifact.vexlife.interface-refinement.standing-autonomy-memory-recovery.a008.return.sha256.0fba55aeed60489804ea3ac19674c7a3451b7cfb8c977159ddd29bd514ab34b6
+prior stable ref verified in exact historical turn = project.self-development
+Memory statementRef = statement.vexlife.interface-refinement.capability-authority-boundary.20261029a
+provider-bound prompt currentness/source bindings = VERIFIED
+whole-history enumeration = false
+first-person authority = false
+redisclosure authority = false
+training / model-weight mutation = false
+```
+
+The new A006 Conversation turn truthfully made the pre-turn Daily Memory source frontier stale afterward; A008 records that as expected and performs no silent second Memory refresh.
 
 Once the thread/head identity is unambiguous, prove that the exact prior completed turn and accepted current Memory are materialized into the next Vex inference under the existing Context Lease owner.
 
@@ -400,7 +423,16 @@ PRIOR_TURN_CONTEXT != WHOLE_HISTORY_DUMP
 MEMORY_RECALL != PROVIDER_CHAT_MEMORY
 ```
 
-### 3. Atlas / self-capability awareness — parallel next after identity
+### 3. Atlas / self-capability awareness — completed
+
+PR #955 grounded lived Vex in the current capability context and PR #956 corrected startup adoption so the real Heretic inference receives the bounded source-owned frame. Accepted-main A002 lived proof terminally verified the Atlas/self-capability awareness path.
+
+```text
+PR #955 merge = 15082e96e747943bfa817c44f3aa82751fc6f080
+PR #956 merge = 862d3f90dc04472012ae3cb16d618a0c6c2d2676
+A002 lived RETURN = artifact.vexlife.pr956.accepted-main.lived-atlas-awareness.a002.return.sha256.136a6fee62b93b3fa40c0dfd4057657d052a395802112269a5c4377ea8eb877d
+AWARENESS != EFFECT_AUTHORITY
+```
 
 Use the existing source-owned capability stack rather than inventing tools:
 
@@ -416,7 +448,9 @@ Capability and Tool Atlas
 
 The lived acceptance is not “a module exists.” Vex must be able to answer a normal capability-oriented question from the current source-bound frame, with HELD/UNKNOWN truth where appropriate, and without turning awareness into effect authority.
 
-### 4. Integrated lived capability use
+### 4. Integrated lived capability use — current
+
+The declared dependencies are now completed. This is the current READY / IMMEDIATE work item.
 
 Only after the above aligns should the product re-prove the old bounded Home/tool threshold in the **current lived composition**:
 

@@ -9,11 +9,11 @@
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
       "createdAt": "2026-10-25T01:23:08.000Z",
-      "updatedAt": "2026-10-29T02:30:00.000Z",
+      "updatedAt": "2026-10-29T09:59:46.000Z",
       "workRef": "work.vexlife.interface-refinement.outcome",
       "parentWorkRefOrNull": null,
       "label": "VexLife Interface Refinement",
-      "purpose": "Carry the current lived interface forward from the stable mainline Victor ↔ local Heretic conversation into one canonical, context-aware, capability-aware and self-maintaining VexLife Home. The startup/runtime connection is now accepted main; current foreground is the connective path that makes Conversation identity, prior-context/Memory and source-bound Atlas/self-capability awareness cohere in the same lived Vex relationship.",
+      "purpose": "Carry the current lived interface forward from the stable Victor ↔ local Heretic relationship into one canonical, context-aware, capability-aware and self-maintaining VexLife Home. Canonical Conversation identity, prior-context/Memory assimilation and source-bound Atlas/self-capability awareness are now completed; current foreground is lived context-aware bounded capability use in that same durable Conversation.",
       "workClass": "OUTCOME",
       "state": "RUNNING",
       "priorityClass": "IMMEDIATE",
@@ -33,7 +33,22 @@
         "github.commit.vexlife.4fd8af85c452320ccc7895d572e6f2dd56257e68",
         "github.pull.vexlife.945",
         "github.pull.vexlife.946",
-        "github.commit.vexlife.cb6047bd741c0c63f9475019129cd0876c763c40"
+        "github.commit.vexlife.cb6047bd741c0c63f9475019129cd0876c763c40",
+        "github.pull.vexlife.952",
+        "github.commit.vexlife.c1ca0f8ab6afd065646a77c6896aec2766c7d259",
+        "github.pull.vexlife.952.comment.6489993965",
+        "github.commit.vexlife.862d3f90dc04472012ae3cb16d618a0c6c2d2676",
+        "github.pull.vexlife.955",
+        "github.commit.vexlife.15082e96e747943bfa817c44f3aa82751fc6f080",
+        "github.pull.vexlife.956",
+        "github.pull.vexlife.956.comment.6491121418",
+        "artifact.vexlife.pr956.accepted-main.lived-atlas-awareness.a002.return.sha256.136a6fee62b93b3fa40c0dfd4057657d052a395802112269a5c4377ea8eb877d",
+        "github.pull.vextreme-sdk.1906",
+        "github.pull.vextreme-sdk.1907",
+        "github.commit.vextreme-sdk.9be6c8c3c169e8b98b04c7821b300f84cb8342de",
+        "artifact.vexlife.interface-refinement.standing-autonomy-memory-lived.a006.return.sha256.4440620b119206756aa7471bf73a36a40a42d9b0b9ea1024835a03b6a36c57cd",
+        "artifact.vexlife.interface-refinement.standing-autonomy-memory-recovery.a008.return.sha256.0fba55aeed60489804ea3ac19674c7a3451b7cfb8c977159ddd29bd514ab34b6",
+        "work.vexlife.interface-refinement.lived-context-capability-integration"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
@@ -462,13 +477,13 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-10-29T02:30:00.000Z",
-      "updatedAt": "2026-10-29T02:30:00.000Z",
+      "updatedAt": "2026-10-29T09:59:37.000Z",
       "workRef": "work.vexlife.interface-refinement.conversation-surface-canonicalization",
       "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
-      "label": "Current — canonical Conversation identity across Vex surfaces",
+      "label": "Completed — canonical Conversation identity across Vex surfaces",
       "purpose": "Make Evolution Conversation and the Vex Terrain/Open-conversation experience project one canonical project/thread/channel/current-head identity, so navigation and re-entry do not create two loosely related conversation frames. Preserve one durable Conversation truth owner; surfaces are bounded projections of that same thread/head.",
       "workClass": "TASK",
-      "state": "READY",
+      "state": "COMPLETED",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [
         "work.vexlife.interface-refinement.stable-talk-to-vex-main"
@@ -484,7 +499,11 @@
         "repo.vexlife:reference/browser/modules/chat-controller.js",
         "repo.vexlife:src/core/conversation-store.mjs",
         "repo.vexlife:src/core/browser-companion-bridge.mjs",
-        "human.lived-feedback.vexlife.interface-refinement.20261028.surface-context-gap"
+        "human.lived-feedback.vexlife.interface-refinement.20261028.surface-context-gap",
+        "github.pull.vexlife.952",
+        "github.commit.vexlife.c1ca0f8ab6afd065646a77c6896aec2766c7d259",
+        "github.pull.vexlife.952.comment.6489993965",
+        "github.commit.vexlife.862d3f90dc04472012ae3cb16d618a0c6c2d2676"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
@@ -495,13 +514,13 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-10-29T02:30:00.000Z",
-      "updatedAt": "2026-10-29T02:30:00.000Z",
+      "updatedAt": "2026-10-29T09:59:45.000Z",
       "workRef": "work.vexlife.interface-refinement.prior-context-memory-assimilation",
       "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
-      "label": "Next — prior-context and Memory assimilation in the canonical Conversation",
+      "label": "Completed — prior-context and Memory assimilation in the canonical Conversation",
       "purpose": "Make Vex receive truthful source-owned prior-turn and accepted Memory context from the same canonical thread/head across re-entry, so questions about prior context can be answered from durable evidence instead of claiming a fresh isolated session or inventing provider-chat memory. Memory remains a separate owner from model weights and raw transcript history.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexlife.interface-refinement.conversation-surface-canonicalization"
@@ -517,7 +536,13 @@
         "repo.vexlife:src/core/lived-companion.mjs",
         "repo.vexlife:src/core/living-journal-memory-projection.mjs",
         "repo.vexlife:src/core/daily-memory-dream.mjs",
-        "human.lived-feedback.vexlife.interface-refinement.20261028.prior-context-gap"
+        "human.lived-feedback.vexlife.interface-refinement.20261028.prior-context-gap",
+        "github.commit.vexlife.862d3f90dc04472012ae3cb16d618a0c6c2d2676",
+        "github.pull.vextreme-sdk.1906",
+        "github.pull.vextreme-sdk.1907",
+        "github.commit.vextreme-sdk.9be6c8c3c169e8b98b04c7821b300f84cb8342de",
+        "artifact.vexlife.interface-refinement.standing-autonomy-memory-lived.a006.return.sha256.4440620b119206756aa7471bf73a36a40a42d9b0b9ea1024835a03b6a36c57cd",
+        "artifact.vexlife.interface-refinement.standing-autonomy-memory-recovery.a008.return.sha256.0fba55aeed60489804ea3ac19674c7a3451b7cfb8c977159ddd29bd514ab34b6"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
@@ -528,13 +553,13 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-10-29T02:30:00.000Z",
-      "updatedAt": "2026-10-29T02:30:00.000Z",
+      "updatedAt": "2026-10-29T09:59:41.000Z",
       "workRef": "work.vexlife.interface-refinement.atlas-self-capability-awareness",
       "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
-      "label": "Next — Vex Atlas and self-capability awareness in lived Conversation",
+      "label": "Completed — Vex Atlas and self-capability awareness in lived Conversation",
       "purpose": "Make the real canonical Vex Conversation consistently ground Vex in the existing source-owned Capability and Tool Atlas, FRESH_COMPANION_FOUNDATION_FRAME, bounded selfCapabilityFrame and currentContext refs. The capability substrate already exists and a bounded tool path was proven; this work closes the lived-awareness gap. CAPABILITY_SUBSTRATE_EXISTS != VEX_CURRENTLY_AWARE; AWARENESS != EFFECT_AUTHORITY.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "COMPLETED",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [
         "work.vexlife.interface-refinement.conversation-surface-canonicalization"
@@ -552,7 +577,13 @@
         "repo.vexlife:src/core/vex-self-capability-frame.mjs",
         "repo.vexlife:src/core/model-connection-turn-composer.mjs",
         "repo.vexlife:scripts/serve-browser-core.mjs",
-        "human.lived-feedback.vexlife.interface-refinement.20261028.atlas-awareness-gap"
+        "human.lived-feedback.vexlife.interface-refinement.20261028.atlas-awareness-gap",
+        "github.pull.vexlife.955",
+        "github.commit.vexlife.15082e96e747943bfa817c44f3aa82751fc6f080",
+        "github.pull.vexlife.956",
+        "github.commit.vexlife.862d3f90dc04472012ae3cb16d618a0c6c2d2676",
+        "github.pull.vexlife.956.comment.6491121418",
+        "artifact.vexlife.pr956.accepted-main.lived-atlas-awareness.a002.return.sha256.136a6fee62b93b3fa40c0dfd4057657d052a395802112269a5c4377ea8eb877d"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
@@ -563,14 +594,14 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-10-29T02:30:00.000Z",
-      "updatedAt": "2026-10-29T02:30:00.000Z",
+      "updatedAt": "2026-10-29T09:59:46.000Z",
       "workRef": "work.vexlife.interface-refinement.lived-context-capability-integration",
       "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
-      "label": "Later gate — lived context-aware capability use",
+      "label": "Current — lived context-aware capability use",
       "purpose": "Prove the current product composition after Conversation identity, prior-context and Atlas awareness align: Victor asks naturally in the same durable thread, Vex recognizes an actually available capability, one bounded source-backed read/tool act is admitted through the existing scheduler/ToolResultRelay owners, and Vex explains the observation while continuity survives re-entry.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
-      "priorityClass": "HIGH",
+      "state": "READY",
+      "priorityClass": "IMMEDIATE",
       "dependencyRefs": [
         "work.vexlife.interface-refinement.prior-context-memory-assimilation",
         "work.vexlife.interface-refinement.atlas-self-capability-awareness"
@@ -585,7 +616,21 @@
         "work.vexlife.interface-refinement.home-tool-capability",
         "repo.vexlife:src/core/tool-result-relay.mjs",
         "repo.vexlife:src/core/intent-scheduler.mjs",
-        "repo.vexlife:src/core/browser-companion-bridge.mjs"
+        "repo.vexlife:src/core/browser-companion-bridge.mjs",
+        "github.pull.vexlife.955",
+        "github.commit.vexlife.15082e96e747943bfa817c44f3aa82751fc6f080",
+        "github.pull.vexlife.956",
+        "github.commit.vexlife.862d3f90dc04472012ae3cb16d618a0c6c2d2676",
+        "github.pull.vexlife.956.comment.6491121418",
+        "artifact.vexlife.pr956.accepted-main.lived-atlas-awareness.a002.return.sha256.136a6fee62b93b3fa40c0dfd4057657d052a395802112269a5c4377ea8eb877d",
+        "github.pull.vextreme-sdk.1906",
+        "github.pull.vextreme-sdk.1907",
+        "github.commit.vextreme-sdk.9be6c8c3c169e8b98b04c7821b300f84cb8342de",
+        "artifact.vexlife.interface-refinement.standing-autonomy-memory-lived.a006.return.sha256.4440620b119206756aa7471bf73a36a40a42d9b0b9ea1024835a03b6a36c57cd",
+        "artifact.vexlife.interface-refinement.standing-autonomy-memory-recovery.a008.return.sha256.0fba55aeed60489804ea3ac19674c7a3451b7cfb8c977159ddd29bd514ab34b6",
+        "work.vexlife.interface-refinement.conversation-surface-canonicalization",
+        "work.vexlife.interface-refinement.prior-context-memory-assimilation",
+        "work.vexlife.interface-refinement.atlas-self-capability-awareness"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
@@ -639,6 +684,215 @@
         "artifact.vexlife.interface-refinement.home-tool.a006.return.sha256.a6ac642b7455f8ca1c677e7ec955d1ac1e977d167b3ba36257c3f067a4a5cf63"
       ],
       "createdAt": "2026-10-26T03:44:02.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.interface-refinement.conversation.ready-running.pr952-a003-currentization",
+      "workRef": "work.vexlife.interface-refinement.conversation-surface-canonicalization",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Currentize the accepted PR #952 canonical-Conversation implementation and its accepted-main lived recovery before recording verification/completion.",
+      "actorRef": "actor.chatgpt.vexlife.interface-refinement",
+      "sourceRefs": [
+        "github.pull.vexlife.952",
+        "github.commit.vexlife.c1ca0f8ab6afd065646a77c6896aec2766c7d259",
+        "github.pull.vexlife.952.comment.6489993965",
+        "github.commit.vexlife.862d3f90dc04472012ae3cb16d618a0c6c2d2676"
+      ],
+      "createdAt": "2026-10-29T09:59:35.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.interface-refinement.conversation.running-verifying.pr952-a003-currentization",
+      "workRef": "work.vexlife.interface-refinement.conversation-surface-canonicalization",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING source is merged on accepted VexLife main and the canonical project/thread/channel/current-head path was exercised through the lived acceptance trajectory.",
+      "reason": [
+        "github.pull.vexlife.952",
+        "github.commit.vexlife.c1ca0f8ab6afd065646a77c6896aec2766c7d259",
+        "github.pull.vexlife.952.comment.6489993965",
+        "github.commit.vexlife.862d3f90dc04472012ae3cb16d618a0c6c2d2676"
+      ],
+      "actorRef": "actor.chatgpt.vexlife.interface-refinement",
+      "sourceRefs": "2026-10-29T09:59:36.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.interface-refinement.conversation.verifying-completed.pr952-a003-currentization",
+      "workRef": "work.vexlife.interface-refinement.conversation-surface-canonicalization",
+      "priorState": "VERIFYING",
+      "nextState": "Accepted-main lived evidence recovered the canonical Conversation assertions as complete; downstream prompt-context and Atlas work consumed that same durable identity.",
+      "reason": [
+        "github.pull.vexlife.952",
+        "github.commit.vexlife.c1ca0f8ab6afd065646a77c6896aec2766c7d259",
+        "github.pull.vexlife.952.comment.6489993965",
+        "github.commit.vexlife.862d3f90dc04472012ae3cb16d618a0c6c2d2676"
+      ],
+      "actorRef": "actor.chatgpt.vexlife.interface-refinement",
+      "sourceRefs": "2026-10-29T09:59:37.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.interface-refinement.atlas.waiting-ready.pr956-a002-currentization",
+      "workRef": "work.vexlife.interface-refinement.atlas-self-capability-awareness",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "Canonical Conversation identity is complete, releasing the Atlas/self-capability awareness dependency.",
+      "reason": [
+        "work.vexlife.interface-refinement.conversation-surface-canonicalization",
+        "github.pull.vexlife.955",
+        "github.commit.vexlife.15082e96e747943bfa817c44f3aa82751fc6f080",
+        "github.pull.vexlife.956",
+        "github.commit.vexlife.862d3f90dc04472012ae3cb16d618a0c6c2d2676",
+        "github.pull.vexlife.956.comment.6491121418",
+        "artifact.vexlife.pr956.accepted-main.lived-atlas-awareness.a002.return.sha256.136a6fee62b93b3fa40c0dfd4057657d052a395802112269a5c4377ea8eb877d"
+      ],
+      "actorRef": "actor.chatgpt.vexlife.interface-refinement",
+      "sourceRefs": "2026-10-29T09:59:38.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.interface-refinement.atlas.ready-running.pr956-a002-currentization",
+      "workRef": "work.vexlife.interface-refinement.atlas-self-capability-awareness",
+      "priorState": "READY",
+      "nextState": "PR #955 and corrective PR #956 carried the existing source-owned Atlas/self-capability frame into the real canonical Vex inference path.",
+      "reason": [
+        "github.pull.vexlife.955",
+        "github.commit.vexlife.15082e96e747943bfa817c44f3aa82751fc6f080",
+        "github.pull.vexlife.956",
+        "github.commit.vexlife.862d3f90dc04472012ae3cb16d618a0c6c2d2676",
+        "github.pull.vexlife.956.comment.6491121418",
+        "artifact.vexlife.pr956.accepted-main.lived-atlas-awareness.a002.return.sha256.136a6fee62b93b3fa40c0dfd4057657d052a395802112269a5c4377ea8eb877d"
+      ],
+      "actorRef": "actor.chatgpt.vexlife.interface-refinement",
+      "sourceRefs": "2026-10-29T09:59:39.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.interface-refinement.atlas.running-verifying.pr956-a002-currentization",
+      "workRef": "work.vexlife.interface-refinement.atlas-self-capability-awareness",
+      "priorState": "RUNNING",
+      "nextState": "Accepted VexLife main and the A002 lived Atlas-awareness proof exercised the current Foundation Frame/selfCapabilityFrame composition.",
+      "reason": [
+        "github.pull.vexlife.955",
+        "github.commit.vexlife.15082e96e747943bfa817c44f3aa82751fc6f080",
+        "github.pull.vexlife.956",
+        "github.commit.vexlife.862d3f90dc04472012ae3cb16d618a0c6c2d2676",
+        "github.pull.vexlife.956.comment.6491121418",
+        "artifact.vexlife.pr956.accepted-main.lived-atlas-awareness.a002.return.sha256.136a6fee62b93b3fa40c0dfd4057657d052a395802112269a5c4377ea8eb877d"
+      ],
+      "actorRef": "actor.chatgpt.vexlife.interface-refinement",
+      "sourceRefs": "2026-10-29T09:59:40.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.interface-refinement.atlas.verifying-completed.pr956-a002-currentization",
+      "workRef": "work.vexlife.interface-refinement.atlas-self-capability-awareness",
+      "priorState": "VERIFYING",
+      "nextState": "A002 terminally proved current source-bound Atlas/self-capability awareness without collapsing awareness into effect authority.",
+      "reason": [
+        "github.pull.vexlife.955",
+        "github.commit.vexlife.15082e96e747943bfa817c44f3aa82751fc6f080",
+        "github.pull.vexlife.956",
+        "github.commit.vexlife.862d3f90dc04472012ae3cb16d618a0c6c2d2676",
+        "github.pull.vexlife.956.comment.6491121418",
+        "artifact.vexlife.pr956.accepted-main.lived-atlas-awareness.a002.return.sha256.136a6fee62b93b3fa40c0dfd4057657d052a395802112269a5c4377ea8eb877d"
+      ],
+      "actorRef": "actor.chatgpt.vexlife.interface-refinement",
+      "sourceRefs": "2026-10-29T09:59:41.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.interface-refinement.memory.waiting-ready.a008-recovery-currentization",
+      "workRef": "work.vexlife.interface-refinement.prior-context-memory-assimilation",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "Canonical Conversation identity is complete, releasing prior-context/Memory assimilation.",
+      "reason": [
+        "work.vexlife.interface-refinement.conversation-surface-canonicalization",
+        "github.commit.vexlife.862d3f90dc04472012ae3cb16d618a0c6c2d2676",
+        "github.pull.vextreme-sdk.1906",
+        "github.pull.vextreme-sdk.1907",
+        "github.commit.vextreme-sdk.9be6c8c3c169e8b98b04c7821b300f84cb8342de",
+        "artifact.vexlife.interface-refinement.standing-autonomy-memory-lived.a006.return.sha256.4440620b119206756aa7471bf73a36a40a42d9b0b9ea1024835a03b6a36c57cd",
+        "artifact.vexlife.interface-refinement.standing-autonomy-memory-recovery.a008.return.sha256.0fba55aeed60489804ea3ac19674c7a3451b7cfb8c977159ddd29bd514ab34b6"
+      ],
+      "actorRef": "actor.chatgpt.vexlife.interface-refinement",
+      "sourceRefs": "2026-10-29T09:59:42.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.interface-refinement.memory.ready-running.a008-recovery-currentization",
+      "workRef": "work.vexlife.interface-refinement.prior-context-memory-assimilation",
+      "priorState": "READY",
+      "nextState": "A006 materialized the standing preference, semantic authority, G02 Score and G03 Daily Memory chain and completed one real Heretic turn carrying prior context plus source-attributed Memory.",
+      "reason": [
+        "github.commit.vexlife.862d3f90dc04472012ae3cb16d618a0c6c2d2676",
+        "github.pull.vextreme-sdk.1906",
+        "github.pull.vextreme-sdk.1907",
+        "github.commit.vextreme-sdk.9be6c8c3c169e8b98b04c7821b300f84cb8342de",
+        "artifact.vexlife.interface-refinement.standing-autonomy-memory-lived.a006.return.sha256.4440620b119206756aa7471bf73a36a40a42d9b0b9ea1024835a03b6a36c57cd",
+        "artifact.vexlife.interface-refinement.standing-autonomy-memory-recovery.a008.return.sha256.0fba55aeed60489804ea3ac19674c7a3451b7cfb8c977159ddd29bd514ab34b6"
+      ],
+      "actorRef": "actor.chatgpt.vexlife.interface-refinement",
+      "sourceRefs": "2026-10-29T09:59:43.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.interface-refinement.memory.running-verifying.a008-recovery-currentization",
+      "workRef": "work.vexlife.interface-refinement.prior-context-memory-assimilation",
+      "priorState": "RUNNING",
+      "nextState": "A008 read-only recovery verified the exact A006 durable state, provider-bound prompt-context receipt, historical prior-turn binding and Memory source refs without replaying a model or Home effect.",
+      "reason": [
+        "github.commit.vexlife.862d3f90dc04472012ae3cb16d618a0c6c2d2676",
+        "github.pull.vextreme-sdk.1906",
+        "github.pull.vextreme-sdk.1907",
+        "github.commit.vextreme-sdk.9be6c8c3c169e8b98b04c7821b300f84cb8342de",
+        "artifact.vexlife.interface-refinement.standing-autonomy-memory-lived.a006.return.sha256.4440620b119206756aa7471bf73a36a40a42d9b0b9ea1024835a03b6a36c57cd",
+        "artifact.vexlife.interface-refinement.standing-autonomy-memory-recovery.a008.return.sha256.0fba55aeed60489804ea3ac19674c7a3451b7cfb8c977159ddd29bd514ab34b6"
+      ],
+      "actorRef": "actor.chatgpt.vexlife.interface-refinement",
+      "sourceRefs": "2026-10-29T09:59:44.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.interface-refinement.memory.verifying-completed.a008-recovery-currentization",
+      "workRef": "work.vexlife.interface-refinement.prior-context-memory-assimilation",
+      "priorState": "VERIFYING",
+      "nextState": "A008 PASS proves prior-context assimilation, source-attributed Memory assimilation and standing-preference durability; first-person authority, redisclosure, training and model-weight mutation remain false.",
+      "reason": [
+        "github.commit.vexlife.862d3f90dc04472012ae3cb16d618a0c6c2d2676",
+        "github.pull.vextreme-sdk.1906",
+        "github.pull.vextreme-sdk.1907",
+        "github.commit.vextreme-sdk.9be6c8c3c169e8b98b04c7821b300f84cb8342de",
+        "artifact.vexlife.interface-refinement.standing-autonomy-memory-lived.a006.return.sha256.4440620b119206756aa7471bf73a36a40a42d9b0b9ea1024835a03b6a36c57cd",
+        "artifact.vexlife.interface-refinement.standing-autonomy-memory-recovery.a008.return.sha256.0fba55aeed60489804ea3ac19674c7a3451b7cfb8c977159ddd29bd514ab34b6"
+      ],
+      "actorRef": "actor.chatgpt.vexlife.interface-refinement",
+      "sourceRefs": "2026-10-29T09:59:45.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.interface-refinement.lived-context-capability.waiting-ready.dependencies-complete",
+      "workRef": "work.vexlife.interface-refinement.lived-context-capability-integration",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "Both declared dependencies—prior-context/Memory assimilation and Atlas/self-capability awareness—are completed, releasing the integrated lived capability-use gate.",
+      "reason": [
+        "work.vexlife.interface-refinement.prior-context-memory-assimilation",
+        "work.vexlife.interface-refinement.atlas-self-capability-awareness",
+        "github.commit.vexlife.862d3f90dc04472012ae3cb16d618a0c6c2d2676",
+        "github.pull.vextreme-sdk.1906",
+        "github.pull.vextreme-sdk.1907",
+        "github.commit.vextreme-sdk.9be6c8c3c169e8b98b04c7821b300f84cb8342de",
+        "artifact.vexlife.interface-refinement.standing-autonomy-memory-lived.a006.return.sha256.4440620b119206756aa7471bf73a36a40a42d9b0b9ea1024835a03b6a36c57cd",
+        "artifact.vexlife.interface-refinement.standing-autonomy-memory-recovery.a008.return.sha256.0fba55aeed60489804ea3ac19674c7a3451b7cfb8c977159ddd29bd514ab34b6",
+        "github.pull.vexlife.955",
+        "github.commit.vexlife.15082e96e747943bfa817c44f3aa82751fc6f080",
+        "github.pull.vexlife.956",
+        "github.commit.vexlife.862d3f90dc04472012ae3cb16d618a0c6c2d2676",
+        "github.pull.vexlife.956.comment.6491121418",
+        "artifact.vexlife.pr956.accepted-main.lived-atlas-awareness.a002.return.sha256.136a6fee62b93b3fa40c0dfd4057657d052a395802112269a5c4377ea8eb877d"
+      ],
+      "actorRef": "actor.chatgpt.vexlife.interface-refinement",
+      "sourceRefs": "2026-10-29T09:59:46.000Z"
     }
   ],
   "sourceRefs": [
@@ -666,7 +920,13 @@
     "github.pull.vexlife.945",
     "github.pull.vexlife.946",
     "github.commit.vexlife.cb6047bd741c0c63f9475019129cd0876c763c40",
-    "repo.vexlife:docs/CAPABILITY-AND-TOOL-ATLAS.md"
+    "repo.vexlife:docs/CAPABILITY-AND-TOOL-ATLAS.md",
+    "github.pull.vexlife.952",
+    "github.pull.vexlife.955",
+    "github.pull.vexlife.956",
+    "github.pull.vextreme-sdk.1906",
+    "github.pull.vextreme-sdk.1907",
+    "artifact.vexlife.interface-refinement.standing-autonomy-memory-recovery.a008.return.sha256.0fba55aeed60489804ea3ac19674c7a3451b7cfb8c977159ddd29bd514ab34b6"
   ],
   "formedAt": "2026-10-25T01:23:08.000Z"
 }
