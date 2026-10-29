@@ -7976,3 +7976,36 @@ next semantic implementation.
 
 
 Current ThemeMode refinement: Light/Dark now own the existing Compose Boolean only as a resolved presentation projection; NotSet remains unresolved rather than becoming an implicit Light/Dark default.
+
+
+## Exact next production patch after the artwork session claim releases
+
+The current Android source makes the next ThemeMode integration smaller than it first appeared.
+
+No change is required to these semantic front doors:
+
+~~~text
+DebugMenuScreen.DarkMode
+AppActions.ToggleDarkMode
+ScreenActionContext.toggleDarkMode
+~~~
+
+After Android PR #186 releases `VexLifeSession.kt`, the production patch should:
+
+1. pass the existing ViewModel-owned `VexExecutionRoot` into `VexLifeSession`;
+2. let the session own `ThemeModeFamily`, initialized to the currently preserved product default
+   `ThemeMode.Dark`;
+3. change the existing toggle callback to
+   `themeModeFamily.activate(ThemeModeFamily.Control.Toggle)`;
+4. have `VexLifeApp` observe `themeModeFamily.states` and derive the existing
+   `VexLifeTheme(darkTheme = ...)` Boolean through `requireResolvedDarkTheme()`;
+5. make tooling owners explicit: the repository-only Compose host, Journey engine, and session tests
+   provide and stop their own execution root rather than hiding one inside the session;
+6. keep the Family structured logger sink at its current explicit default until a real consumer earns
+   another projection.
+
+That preserves one ThemeMode truth owner while reusing the existing Android action identity and theme
+renderer. A focused session/runtime integration test should prove that the real Debug Menu action moves
+Family State before the dedicated ThemeMode Journey is admitted.
+
+<!-- [VXG RealForever][VEXSYNC][THEME-MODE][POST-ARTWORK-PATCH] -->
