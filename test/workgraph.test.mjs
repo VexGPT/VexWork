@@ -315,7 +315,8 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   const vextremeArchitectureOutcome = graph.items.find((item) => item.workRef === 'work.vextreme.architecture-convergence.outcome');
   const vextremeArchitectureOwnerMap = graph.items.find((item) => item.workRef === 'work.vextreme.architecture-convergence.semantic-owner-map');
   const vextremeArchitectureJourneyInspection = graph.items.find((item) => item.workRef === 'work.vextreme.architecture-convergence.terrain-journey-inspection');
-  const vextremeArchitectureReaderReturnContext = graph.items.find((item) => item.workRef === 'work.vextreme.architecture-convergence.terrain-reader-return-context');
+  const vextremeArchitectureReturnContext = graph.items.find((item) => item.workRef === 'work.vextreme.architecture-convergence.terrain-reader-return-context');
+  const vextremeArchitectureReturnVocabulary = graph.items.find((item) => item.workRef === 'work.vextreme.architecture-convergence.terrain-reader-return-vocabulary');
   const vextremeArchitectureTerrainReader = graph.items.find((item) => item.workRef === 'work.vextreme.architecture-convergence.terrain-reader-navigation');
   assert.equal(vextremeArchitectureOutcome.state, 'RUNNING');
   assert.equal(vextremeArchitectureOutcome.priorityClass, 'IMMEDIATE');
@@ -335,18 +336,20 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
     && transition.priorState === 'RUNNING'
     && transition.nextState === 'VERIFYING'
   ));
-  assert.equal(vextremeArchitectureReaderReturnContext.state, 'RUNNING');
-  assert.deepEqual(vextremeArchitectureReaderReturnContext.dependencyRefs, []);
-  assert.equal(vextremeArchitectureReaderReturnContext.sourceRefs.includes('github.pull.vextreme.488'), true);
-  assert.equal(vextremeArchitectureTerrainReader.state, 'VERIFYING');
-  assert.deepEqual(vextremeArchitectureTerrainReader.dependencyRefs, []);
-
-  const vextremeArchitectureReturnContext = graph.items.find((item) => item.workRef === 'work.vextreme.architecture-convergence.terrain-reader-return-context');
   assert.equal(vextremeArchitectureReturnContext.state, 'COMPLETED');
   assert.deepEqual(vextremeArchitectureReturnContext.dependencyRefs, []);
+  assert.equal(vextremeArchitectureReturnContext.sourceRefs.includes('github.pull.vextreme.488'), true);
   assert.equal(vextremeArchitectureReturnContext.sourceRefs.includes('github.pull.vextreme.498'), true);
   assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vextreme.architecture-convergence.terrain-reader-return-context.verifying.pr498-merge'));
   assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vextreme.architecture-convergence.terrain-reader-return-context.completed.pr498-postmerge'));
+
+  assert.equal(vextremeArchitectureReturnVocabulary.state, 'RUNNING');
+  assert.deepEqual(vextremeArchitectureReturnVocabulary.dependencyRefs, []);
+  assert.equal(vextremeArchitectureReturnVocabulary.sourceRefs.includes('github.pull.vextreme.502'), true);
+  assert.equal(vextremeArchitectureReturnVocabulary.sourceRefs.includes('github.pull.vexlife-android.193'), true);
+
+  assert.equal(vextremeArchitectureTerrainReader.state, 'VERIFYING');
+  assert.deepEqual(vextremeArchitectureTerrainReader.dependencyRefs, []);
   assert.equal(vextremeArchitectureTerrainReader.sourceRefs.includes('github.pull.vextreme.493'), true);
   assert.equal(vextremeArchitectureTerrainReader.sourceRefs.includes('github.commit.vextreme.36ced69ee6719bf05481110a753aee9e989d4885'), true);
   assert.ok(graph.transitions.some((transition) =>
@@ -354,7 +357,6 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
     && transition.priorState === 'RUNNING'
     && transition.nextState === 'VERIFYING'
   ));
-
   const operationalOutcome = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.outcome');
   const derivedFoundation = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.derived-work-foundation');
   const derivedContract = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.derived-work-contract');
