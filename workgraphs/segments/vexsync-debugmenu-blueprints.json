@@ -218,14 +218,17 @@
         "github.commit.vexlife-android.5395d77f3028cc9300fa288971de10565a283c30",
         "github.commit.vexlife-android.a9aa48f77fa61351cab4d13a4aad0db15a1623f8",
         "github.comment.vexlife-android.pr195.6507769527.sourceowner-a002-formed",
-        "evidence.vexsync.pr195.sourceowner.a002.formation.sha256.c8c672415c05fd1f145d0114602712b4fa33779b62b27762ec11fe1de6be50b4"
+        "evidence.vexsync.pr195.sourceowner.a002.formation.sha256.c8c672415c05fd1f145d0114602712b4fa33779b62b27762ec11fe1de6be50b4",
+        "github.comment.vexlife-android.pr195.6508290364.journey-device-a003-recovered-pass",
+        "evidence.vexsync.pr195.journey-device.a003.return.sha256.c820031ad5cd9f54bcf9ae761266d40d630383bf752db101268df62ae1337dcb",
+        "evidence.vexsync.pr195.journey-device.a003.inner-return.sha256.07213d85da13a58b32f44a0d6592bb9dce6fc2688b914c6b2599525864728de5"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-26T07:26:46.000Z",
-      "updatedAt": "2026-10-29T20:38:01Z"
+      "updatedAt": "2026-10-29T21:14:41.160Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -460,6 +463,23 @@
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-29T17:34:00.000Z",
       "updatedAt": "2026-10-29T17:34:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.roundtrip.verifying.connected-journey-a003-recovered-pass-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.debugmenu-origin-roundtrip",
+      "priorState": "VERIFYING",
+      "nextState": "VERIFYING",
+      "reason": "PR #195 exact head a9aa48f7 completed the connected ThemeMode Journey on a physical Android target. The selected shared.debug/toggle-theme-mode@baseline Journey ran through VexJourneyInstrumentedTest and :app:connectedDebugAndroidTest completed successfully with repository device accounting failedTests=0. The inner SAFE_FAILURE came only from a task-local executedTests=1 assertion that incorrectly treated the module-wide connected Android aggregate as Journey-only; repository source proves vexJourneyCase narrows VexJourneyInstrumentedTest while other androidTest classes still run. The connected Journey PASS is therefore recovered without replay. Work remains VERIFYING because lived-human/product acceptance and lifecycle effects remain separate.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.195",
+        "github.review.vexlife-android.pr195.5704888279.assurance-clear",
+        "github.comment.vexlife-android.pr195.6508290364.journey-device-a003-recovered-pass",
+        "evidence.vexsync.pr195.journey-device.a003.return.sha256.c820031ad5cd9f54bcf9ae761266d40d630383bf752db101268df62ae1337dcb",
+        "evidence.vexsync.pr195.journey-device.a003.inner-return.sha256.07213d85da13a58b32f44a0d6592bb9dce6fc2688b914c6b2599525864728de5"
+      ],
+      "createdAt": "2026-10-29T21:14:41.160Z"
     }
   ],
   "transitions": [
@@ -943,7 +963,10 @@
     "github.comment.vexlife-android.pr196.6501511840.sourceowner-a004-pass",
     "github.review.vexlife-android.pr196.5700749063.assurance-clear",
     "evidence.vexsync.pr196.sourceowner.a004.return.sha256.1f72021173140146ea96f71eca4da9d855e64930c45cafc73de45abe6d259561",
-    "evidence.vexsync.pr196.sourceowner.a004.inner-return.sha256.43bbc8793923b07f9f6181e561cab8637f577ce7f76a326fff648b8ead2532ee"
+    "evidence.vexsync.pr196.sourceowner.a004.inner-return.sha256.43bbc8793923b07f9f6181e561cab8637f577ce7f76a326fff648b8ead2532ee",
+    "github.comment.vexlife-android.pr195.6508290364.journey-device-a003-recovered-pass",
+    "evidence.vexsync.pr195.journey-device.a003.return.sha256.c820031ad5cd9f54bcf9ae761266d40d630383bf752db101268df62ae1337dcb",
+    "evidence.vexsync.pr195.journey-device.a003.inner-return.sha256.07213d85da13a58b32f44a0d6592bb9dce6fc2688b914c6b2599525864728de5"
   ],
   "formedAt": "2026-10-26T07:26:46.000Z"
 }
