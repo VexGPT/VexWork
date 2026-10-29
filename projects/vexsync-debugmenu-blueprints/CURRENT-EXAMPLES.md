@@ -5501,4 +5501,41 @@ AccountId binding both update Family and mapped-test Kotlin together with zero e
 Repository-wide VexWork test execution remains separate.
 
 <!-- [VXG RealForever][VEXSYNC][VEXBOARD][FAMILY-KOTLIN-ROUNDTRIP] -->
+---
+
+## Current lived-map checkpoint — flat first draft merged, human inspection pending
+
+VexBoard PR #155 has now been squash-merged to current VexWork main:
+
+~~~text
+0d55e3aa83b7972cc83ef9fe2a7266311932a7c8
+~~~
+
+The merged slice is intentionally the **flat four-region first draft**:
+
+~~~text
+UI / CONTROL
+FAMILY / LOGIC
+TYPED IDENTITY
+EXECUTION
+~~~
+
+The ThemeMode source board also carries the effect-free Family Kotlin construction preview and mapped
+Kotlin test candidate. No depth-dimensional / recursive expansion behavior was added as part of this
+merge step.
+
+Current proof boundary:
+
+~~~text
+source merged to main        YES
+flat map present             YES
+Kotlin drawer present        YES
+human lived inspection       PENDING
+depth-dimensional evolution  HELD
+~~~
+
+The next edge is Victor's lived browser read of the flat map. Do not infer that a successful merge
+means the perceptual layout is accepted.
+
+<!-- [VXG RealForever][VEXSYNC][VEXBOARD][FLAT-FIRST-DRAFT-MERGED] -->
 
