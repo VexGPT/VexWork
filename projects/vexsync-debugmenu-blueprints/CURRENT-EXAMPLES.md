@@ -73,6 +73,68 @@ Feature-Walk/Journey source and any later connected-device Journey evidence rema
 
 <!-- [VXG RealForever][VEXSYNC][CURRENT-EXAMPLE][THEMEMODE][PR188-MERGED][PR195-ACTIVE] -->
 
+### PR #195 active ThemeMode Feature Walk — connected Journey recovered PASS
+
+The active Feature-Walk/Journey source is proved and the exact connected Android Journey has now executed.
+
+~~~text
+candidate
+  head = a9aa48f77fa61351cab4d13a4aad0db15a1623f8
+  tree = 9a77311e95dbf85fb47297697dfcec4ae5fdbf29
+
+SourceOwner A003
+  PASS
+
+Independent Assurance
+  CLEAR_ON_EXACT_HEAD
+
+connected case
+  shared.debug/toggle-theme-mode@baseline
+
+connected Android execution
+  BUILD SUCCESSFUL
+  connectedTaskFailed=false
+  failedTests=0
+~~~
+
+The A003 carrier's post-accounting check expected the whole Android-test aggregate to contain exactly one
+testcase. That assumption was wrong. Repository source makes `vexJourneyCase` an exact selector only for
+`VexJourneyInstrumentedTest`; `:app:connectedDebugAndroidTest` still runs other Android-test classes.
+The repository finalizer reported 33 total testcase elements, 7 skipped, 0 failed.
+
+Therefore:
+
+~~~text
+task-local executedTests=1 assertion
+  = INVALID HARNESS ASSUMPTION
+
+exact ThemeMode Journey
+  = PASS
+
+replay
+  = NOT REQUIRED
+~~~
+
+This completes connected Journey evidence, not the lived-human/product-acceptance edge. The current
+roundtrip remains `VERIFYING` until the human-visible ThemeMode result is lived and reverse-traced, or
+the governing lifecycle explicitly resolves that predicate another way.
+
+Evidence:
+
+~~~text
+outer RETURN
+c820031ad5cd9f54bcf9ae761266d40d630383bf752db101268df62ae1337dcb
+
+inner RETURN
+07213d85da13a58b32f44a0d6592bb9dce6fc2688b914c6b2599525864728de5
+
+PR #195 durable checkpoint
+github.comment.vexlife-android.pr195.6508290364
+~~~
+
+<!-- [VXG RealForever][VEXSYNC][THEMEMODE][PR195][CONNECTED-JOURNEY][RECOVERED-PASS] -->
+
+
 ## Status
 
 This is a current discovery companion, not an accepted schema, final process, canonical naming source or
