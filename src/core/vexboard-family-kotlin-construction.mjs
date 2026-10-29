@@ -18,11 +18,6 @@ function kotlinId(value, label) {
   return value;
 }
 
-function stringValue(value, label) {
-  assert(typeof value === 'string' && value, `${label} required`);
-  return value;
-}
-
 function normalizeField(input, label) {
   assert(input && typeof input === 'object' && !Array.isArray(input), `${label} must be one object`);
   return Object.freeze({
@@ -213,6 +208,38 @@ function renderControls(family) {
   ].join('\n');
 }
 
+function renderAct(family) {
+  const stateBranches = family.states.map((state) => {
+    const controlBranches = family.controls.map((control) => {
+      const matcher = family.controlForm === 'ENUM'
+        ? `Control.${control.name}`
+        : control.payloadFields.length || control.resourceIdRefOrNull
+          ? `is Control.${control.name}`
+          : `Control.${control.name}`;
+      return [
+        `                    ${matcher} ->`,
+        '                        stay()',
+      ].join('\n');
+    }).join('\n\n');
+    return [
+      `            State.${state} ->`,
+      '                when (control) {',
+      controlBranches,
+      '                }',
+    ].join('\n');
+  }).join('\n\n');
+
+  return [
+    '    override fun act(',
+    '        currentState: State,',
+    '        control: Control,',
+    '    ): VexFamily.Act<State>? =',
+    '        when (currentState) {',
+    stateBranches,
+    '        }',
+  ].join('\n');
+}
+
 function renderFamily(family) {
   return [
     `private class ${family.familyName}(`,
@@ -231,6 +258,7 @@ function renderFamily(family) {
     renderState(family),
     renderResources(family),
     renderControls(family),
+    renderAct(family),
     '}',
   ].filter((line) => line !== '').join('\n\n');
 }
