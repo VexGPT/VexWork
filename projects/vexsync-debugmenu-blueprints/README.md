@@ -86,6 +86,71 @@ candidate lands first, the other must be currentized against accepted main witho
 
 <!-- [VXG RealForever][VEXSYNC][CURRENT-CONTINUATION][COMPOUND-CURRENT-STATE][PR200] -->
 
+## Current ThemeMode UI continuity — connect once; inherit downward
+
+The Android patient zero now closes the presentation gap without introducing a generic presentation
+framework.
+
+Current Android PR #188:
+
+~~~text
+head = e1ca51153141c5ac9d9a2ff0655aaf181066a2b7
+tree = a69e1000f3c8b16e172c433dd2facf39f0a2f236
+~~~
+
+Current chain:
+
+~~~text
+ThemeModeFamily current State
+-> ThemeModeFamily.DisplayState
+-> VexThemePresentation
+-> VexLifeTheme
+-> inherited Compose presentation continuity
+-> content()
+~~~
+
+The broad Screen bridge no longer receives either `ThemeMode` or `darkTheme: Boolean`.
+
+~~~text
+CONNECT ONCE
+  ThemeModeFamily -> VexLifeTheme
+
+THEN
+  descendants inherit current presentation
+
+DO NOT
+  pass semantic theme State through every Screen
+  so each Screen can reinterpret it
+~~~
+
+Two bounded descendants currently consume the inherited presentation:
+
+~~~text
+DebugMenuScreen.DarkMode
+  -> inherited presentation's already-decided checked condition
+
+VexMapsAppearancePreference.Automatic
+  + inherited VexThemePresentation
+  -> VexMaps online style
+~~~
+
+This supersedes the earlier current implementation shape that introduced broad `themeMode: ThemeMode`
+Screen parameters and the intermediate `VexLifeThemeColors` container. Those checkpoints remain useful
+history, not current construction guidance.
+
+The architectural pressure is intentionally small:
+
+~~~text
+FAMILY DECIDES OUTWARD CONDITION
+VEX THEME REALIZES IT ONCE
+COMPOSE CARRIES CONTINUITY
+SCREEN WORK DECIDES PLACEMENT / COMPOSITION
+~~~
+
+No new Family, registry, presentation root, or universal binding schema was added.
+
+<!-- [VXG RealForever][VEXSYNC][THEMEMODE][DISPLAY-PRESENTATION-CONTINUITY][CURRENT] -->
+
 ## Current ThemeMode semantic correction — Select the mode; do not make Dark the axis
 
 The current Android production candidate has been corrected back to the VexSync rule already earned by
@@ -111,7 +176,7 @@ Current Android candidate:
 
 ~~~text
 PR #188
-head = a831f0aed03241e036d083f7ab57a74c7c1dfbaf
+head = e1ca51153141c5ac9d9a2ff0655aaf181066a2b7
 base = 14bb2c4e82eb6cf55cbdc6ef5f2c65d38f97e45b
 ~~~
 
@@ -8753,7 +8818,7 @@ No public OwnerId or second source identity is added.
 
 ~~~text
 Android PR #188
-head = a831f0aed03241e036d083f7ab57a74c7c1dfbaf
+head = e1ca51153141c5ac9d9a2ff0655aaf181066a2b7
 base = 14bb2c4e82eb6cf55cbdc6ef5f2c65d38f97e45b
 paths = 5 exact
 ~~~
