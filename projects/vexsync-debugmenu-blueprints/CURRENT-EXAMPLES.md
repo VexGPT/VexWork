@@ -6136,3 +6136,39 @@ wrapper sha256
 ~~~
 
 <!-- [VXG RealForever][VEXSYNC][DIRECT-FAMILY][POST-193-HARDENING][PR196] -->
+
+
+### PR #196 SourceOwner continuity — A001 harness stop -> A002 formed
+
+PR #196 source remains unchanged on exact head:
+
+~~~text
+b25a291d4b464f35fae67d3b45244704846cae63
+~~~
+
+A001 stopped before candidate compilation because the wrapper used the Android-library aggregate task
+`:architecture:behavior:test` with a `--tests` filter. That task shape rejects the filter.
+
+Classification:
+
+~~~text
+candidate source finding = NONE FROM A001
+proof harness finding    = WRONG_FOCUSED_GRADLE_TASK
+~~~
+
+A002 preserves the same candidate and changes only the focused proof command to:
+
+~~~text
+:architecture:behavior:testDebugUnitTest
+  --tests com.vextreme.vexlife.android.behavior.VexFamilyHighConfidenceTest
+~~~
+
+The repository `vexVerifyJvm` proof and exact seven-path membrane remain unchanged.
+
+A002 statically qualified formation:
+
+~~~text
+sha256 d825fea9989e742e79cadff99b6ece70a49bd050ac9d197994951f77fb427163
+~~~
+
+<!-- [VXG RealForever][VEXSYNC][DIRECT-FAMILY][PR196][A001-HARNESS-A002-FORMED] -->
