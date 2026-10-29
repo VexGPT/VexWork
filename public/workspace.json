@@ -12391,7 +12391,7 @@
           "label": "Restore canonical Full Timeline order, sections, and complete reading path",
           "purpose": "Repair the observed Terrain Full Timeline defect by consuming Vextreme's canonical ordered arc semantics instead of nodes/add order, projecting the 111 currently dated records in their real chronological sections, and reusing the existing complete embedded/standalone page readers rather than reducing the timeline to disconnected metadata cards.",
           "workClass": "DEFECT",
-          "state": "READY",
+          "state": "RUNNING",
           "workDisposition": "ACTIVE",
           "priorityClass": "IMMEDIATE",
           "parentWorkRefOrNull": "work.vextreme.alignment.outcome",
@@ -12408,15 +12408,30 @@
             "repo.vextreme:lib/build-index.js",
             "repo.vextreme:lib/build-terrain-map.js",
             "repo.vextreme:pages/terrain-map.html",
-            "repo.vextreme:tests/85-terrain-view-contract.test.js"
+            "repo.vextreme:tests/85-terrain-view-contract.test.js",
+            "github.pull.vextreme.480",
+            "github.commit.vextreme.85b03fc931c01908849460205be7a7a79b9cdb58"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
           "authorityDisposition": "NO_AUTHORITY",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-10-29T08:40:27.000Z",
-          "updatedAt": "2026-10-29T08:40:27.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-10-29T09:02:13.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vextreme.alignment.timeline-projection.running.pr480",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "Vextreme PR #480 now owns the bounded Full Timeline projection repair on exact current main: Terrain consumes canonical data/index.json arcMap sections/order, projects known record dates, and preserves the existing complete embedded/standalone page reader. Repository-native npm proof remains pending, so the work is Active rather than Verify.",
+              "actorRef": "actor.chatgpt.vextreme-alignment",
+              "sourceRefs": [
+                "github.pull.vextreme.480",
+                "github.commit.vextreme.85b03fc931c01908849460205be7a7a79b9cdb58"
+              ],
+              "createdAt": "2026-10-29T09:02:13.000Z"
+            }
+          ]
         }
       ],
       "lanes": [
@@ -12439,14 +12454,15 @@
           "laneRef": "lane.work.ready",
           "label": "Ready",
           "workRefs": [
-            "work.vextreme.alignment.timeline-projection",
             "work.vextreme.alignment.navigation-currentness"
           ]
         },
         {
           "laneRef": "lane.work.active",
           "label": "Active",
-          "workRefs": []
+          "workRefs": [
+            "work.vextreme.alignment.timeline-projection"
+          ]
         },
         {
           "laneRef": "lane.work.waiting",
