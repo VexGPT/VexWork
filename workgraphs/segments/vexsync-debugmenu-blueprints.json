@@ -25,14 +25,16 @@
         "project.vexboard",
         "project.vex-universe",
         "project.vexlife.blueprint-source-of-truth",
-        "project.vexlife-android.current-state-refinement"
+        "project.vexlife-android.current-state-refinement",
+        "github.pull.vexlife-android.193",
+        "github.commit.vexlife-android.7301c6ef257b53aeef79736cf388f68bee60fad6"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-26T07:26:46.000Z",
-      "updatedAt": "2026-10-26T09:30:00.000Z"
+      "updatedAt": "2026-10-29T10:00:18.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -41,7 +43,7 @@
       "label": "Discover Feature Request -> Builder process through one Debug Menu specimen",
       "purpose": "Use the dark/light-theme request as the first live process specimen: preserve the human goal/return, hold only dependent unknowns, lock known terrain endpoints before filling the middle, investigate current Android identities/owners/HOW before creating new source, and let relationship names/IDs/phases emerge only when the living specimen earns them.",
       "workClass": "TASK",
-      "state": "READY",
+      "state": "RUNNING",
       "workDisposition": "ACTIVE",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [],
@@ -58,14 +60,16 @@
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt",
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/debug/DebugMenuScreen.kt",
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/runtime/AppActions.kt",
-        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt"
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt",
+        "github.pull.vexlife-android.193",
+        "github.commit.vexlife-android.7301c6ef257b53aeef79736cf388f68bee60fad6"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-26T07:26:46.000Z",
-      "updatedAt": "2026-10-26T09:30:00.000Z"
+      "updatedAt": "2026-10-29T10:00:18.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -94,17 +98,35 @@
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/shell/AppShell.kt",
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/debug/DebugMenuScreen.kt",
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/runtime/AppActions.kt",
-        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt"
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt",
+        "github.pull.vexlife-android.193"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-26T07:26:46.000Z",
-      "updatedAt": "2026-10-26T09:30:00.000Z"
+      "updatedAt": "2026-10-29T10:00:18.000Z"
     }
   ],
-  "transitions": [],
+  "transitions": [
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.feature-intention-builder-discovery.running.typed-control-relationship-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "VexLife-Android PR #193 now supplies a live candidate pressure-test showing how Family-bound Control identity can eliminate arbitrary relationship-ID authoring: Control name is foundation-owned by default, typed ResourceId<Family> narrows only when earned, Begin chooses Approach only, and the accepted launchOnce fail-closed behavior is restored. This materially advances the Debug Menu Feature Request -> Builder discovery without claiming the draft Android candidate as accepted source.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.193",
+        "github.commit.vexlife-android.7301c6ef257b53aeef79736cf388f68bee60fad6",
+        "projects/vexsync-debugmenu-blueprints/README.md",
+        "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md"
+      ],
+      "createdAt": "2026-10-29T10:00:18.000Z"
+    }
+  ],
   "sourceRefs": [
     "projects/vexsync-debugmenu-blueprints/README.md",
     "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
@@ -121,7 +143,9 @@
     "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/debug/README.md",
     "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/debug/design/README.md",
     "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/runtime/AppActions.kt",
-    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt"
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt",
+    "github.pull.vexlife-android.193",
+    "github.commit.vexlife-android.7301c6ef257b53aeef79736cf388f68bee60fad6"
   ],
   "formedAt": "2026-10-26T07:26:46.000Z"
 }

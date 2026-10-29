@@ -5086,17 +5086,21 @@ Repository Gradle/JVM proof remains pending.
 
 ---
 
-## Current checkpoint — native State/Control Family traversal
+## Current checkpoint — typed Control relationship identity on native Family traversal
+
+**Currentness:** `CURRENT_SIBLING_CANDIDATE_REFERENCE` from VexLife-Android PR #193 plus
+`CURRENT_WORKING_MODEL` for the VexSync lesson extracted from that candidate. PR #193 remains draft and
+is not accepted Android main.
 
 Current Android review PR:
 
 ~~~text
 #193
 head:
-9ed01fdcf698bdcefe8b12a648c74a879fbf8c93
+7301c6ef257b53aeef79736cf388f68bee60fad6
 ~~~
 
-Origin-Walk/history source:
+Origin-Walk/history source remains:
 
 ~~~text
 #192
@@ -5104,90 +5108,161 @@ head:
 dd050ff81db169277a77cad4e4bd6a4f21e58d0e
 ~~~
 
-The current #193 call graph is explicit and uses ordinary Kotlin for State and Control traversal:
+The Direct Family call graph remains explicit native Kotlin:
 
 ~~~text
 caller / UI
 -> Family.activate(control)
 -> concrete Family.act(currentState, control)
--> when (currentState)
--> when (control)
--> stay / admit / optional begin
+-> exhaustive when(currentState)
+-> exhaustive when(control)
+-> noAct / stay / admit / optional Begin
 -> StateRelay / execution
 ~~~
 
-Removed from the current Family path:
+The new pressure was not “invent a better relationship ID.” It was the opposite:
+
+> How do we prevent a future Builder/AI from manufacturing another identity convention when the
+> semantic owner already knows the Control?
+
+The surviving candidate boundary is:
 
 ~~~text
-VexBehaviorV2 runtime surface
-resolve(...) runtime entrance
-VexActs
-VexActsBuilder
-VexActRule
-hidden operator fun invoke
-VexStateDisposition
-construction-time Acts rule table
-state<State> helper
-on<Control> helpers
-Family-local retainedState
-same-value whenCurrent equality filter
-recursive Family self-generic
-CompoundFamily
-stateFactory
-Family-level revision
-post-process act(OutputState)
+VexFamily<Family, State, Control>
+
+Control<Family>
+  -> exact Family-bound Control vocabulary
+  -> Control name/type is always included by the Family foundation
+  -> optional ResourceId<Family> narrows repeated instances of that same Control
+
+live Family
++ Control name/type
++ optional typed ResourceId
+=
+VexFamily.RelationshipId<Family>
+  -> VexExecution.RelationshipId
+
+Begin
+  -> chooses Approach only
+
+Execution
+  -> coordinates the supplied RelationshipId
+  -> does not invent trigger strings or arbitrary argument tuples
 ~~~
 
-Current State ownership remains:
+This removes the earlier escape hatches:
 
 ~~~text
-private stateRelay
-  MutableStateFlow<State>
-
-Family.currentState
-  -> stateRelay value
-
-Family.states
-  -> stateRelay.asStateFlow()
+trigger: Any                  REMOVED from the Family relationship path
+vararg Any? identity pieces   REMOVED
+manual ordered ID arguments   REMOVED
+second Family ExecutionId     NOT REQUIRED
 ~~~
 
-The focused proof still exercises two activations on the same live State holder:
+The important VexSync lesson is not the exact Kotlin spelling. It is the ownership rule:
 
 ~~~text
-Set("one")
--> ValueFamily.act(...)
--> Ready("one")
--> StateRelay
-
-Set("two")
--> same ValueFamily.act(...)
--> Ready("two")
--> same StateRelay
+IF Control already owns the semantic coordinate
+THEN relationship identity should be derived through that typed Control boundary
+NOT re-authored by Builder / target / execution machinery
 ~~~
 
-No new architecture concept was added in the native-traversal pass.
-
-The current deliberate refinement question is now narrow:
+Control name is the default identity contribution. A typed ResourceId is optional narrowing, not a
+mandatory ceremony.
 
 ~~~text
-act(currentState, control): VexAct<State>?
+Control.Play(trackId, position)
 
-Is the Act function / VexAct return carrier itself still redundant or unclear?
+Control name
+  -> Play
+
+typed ResourceId when earned
+  -> trackId
+
+request payload not automatically identity
+  -> position
 ~~~
 
-Do not answer that by reintroducing builders, custom traversal DSLs, or hidden invocation machinery.
+That distinction reduces AI error because the architecture leaves no ordinary Begin parameter where an
+author can casually insert a random string, mutable object, reordered tuple or parallel ID scheme.
 
-Still-open architectural edges remain:
+The candidate also restores the accepted `launchOnce` behavior:
 
 ~~~text
-serialized competing-cause State decision / stale async result
-cross-cycle relationship memory and its rightful supplier
-provider / intent stable identity mapping
-exact Family + Relay Single/Compound composition
-Process OutputState -> rightful Family.currentState handoff
+launchOnce(source)
+-> second unfinished same-source invocation fails closed
+
+launch(source)
+-> each invocation is intentionally independent
 ~~~
 
-Repository Gradle/JVM proof for #193 head 9ed01fdcf698bdcefe8b12a648c74a879fbf8c93 remains PENDING.
+So a compatibility alias no longer silently widens existing consumer concurrency.
 
-<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][FAMILY][NATIVE-TRAVERSAL] -->
+### Why this matters to the Debug Menu Origin Walk
+
+The ThemeMode specimen now has a stronger question than “what ID should we invent?”:
+
+~~~text
+Does this Control need identity narrower than its Control name?
+
+NO
+  -> Control name is sufficient
+  -> do not mint another ResourceId
+
+YES, because repeated instances of the same Control must coordinate separately
+  -> identify the already-meaningful resource
+  -> express it through typed ResourceId<Family>
+~~~
+
+For ThemeMode specifically, do not decide that `Light`, `Dark`, the Android Boolean, or a generated
+string is a ResourceId merely because the seam exists. Walk the actual semantic coordination pressure.
+
+### Current open edges
+
+~~~text
+async later-result currentness
+  -> still unresolved generically
+
+execution observation retention
+  -> InstanceId-keyed terminal retention remains under review
+
+logging module layering
+  -> semantic logger ownership and module dependency shape remain separate review questions
+
+Compound / Process
+  -> still separate; no machinery invented merely to close the box
+
+ThemeMode relationship narrowing
+  -> OPEN
+  -> Control name may already be sufficient
+~~~
+
+### VexSync process progress
+
+This episode advances the Feature Request -> Builder discovery task because it demonstrates a reusable
+construction rule:
+
+~~~text
+ground semantic owner
+-> preserve its generic type relationship
+-> make the foundation derive the safe default
+-> expose only the typed narrowing seam that a real semantic distinction earns
+-> remove arbitrary authoring holes
+~~~
+
+That is a concrete example of the wider VexSync objective:
+
+~~~text
+REDUCE AI INTERPRETATION SURFACE
+BY
+MOVING RIGHTFUL SEMANTIC CHOICES INTO TYPE-ENFORCED OWNERSHIP
+~~~
+
+The Debug Menu Origin roundtrip remains dependency-held until the Builder-discovery work is grounded
+enough to author the next bounded Origin edge without guessing.
+
+Repository Gradle/JVM proof for PR #193 exact head
+`7301c6ef257b53aeef79736cf388f68bee60fad6` remains **PENDING**.
+
+<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][FAMILY][TYPED-CONTROL-RELATIONSHIP] -->
 
