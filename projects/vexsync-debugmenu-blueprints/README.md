@@ -113,22 +113,77 @@ retained inner RETURN sha256
 07213d85da13a58b32f44a0d6592bb9dce6fc2688b914c6b2599525864728de5
 ~~~
 
-The work correctly remains `VERIFYING`. Connected Journey proof does not invent lived-human/product
-acceptance or lifecycle authority. The next current roundtrip edge is the human-visible result:
+Victor's lived verification has now refined that boundary.
 
 ~~~text
-Home
--> Add
--> Debug Menu
--> Dark Mode control
--> application appearance changes through ThemeMode
--> return/back preserves coherent presentation
--> reverse-trace that lived result to the same Feature-Walk / ThemeMode meaning
+Home -> Add -> Debug Menu -> Dark Mode
+visible in-session appearance change = PASS
+
+swipe-kill app
+-> relaunch
+-> selected ThemeMode is forgotten
+= FAIL
 ~~~
 
-Approval, ready, merge, release and post-merge verification remain separate effects.
+Current Android source explains this exactly:
 
-<!-- [VXG RealForever][VEXSYNC][THEMEMODE][PR188-MERGED][PR195-JOURNEY-DEVICE-PASS][CURRENT] -->
+~~~text
+VexLifeSession
+  owns current in-process ThemeMode Family
+  explicitly does NOT claim process-death restoration
+
+VexLifeViewModel
+  recreates a fresh VexLifeSession after process death
+
+VexLifeSession initialThemeMode
+  defaults to ThemeMode.Dark
+~~~
+
+Therefore the connected Journey PASS remains valid for the in-process installed path, but the whole lived
+roundtrip is not complete. Victor's result earns durable ThemeMode selection as a current product
+requirement rather than a future pressure.
+
+The required outcome is now:
+
+~~~text
+explicit human Light/Dark selection
+-> CURRENT ThemeMode changes
+-> durable owner saves the explicit selection
+-> process is swipe-killed / recreated
+-> saved selection is restored
+-> CURRENT ThemeMode re-enters the same semantic value
+-> Projection / UI shows that value coherently
+~~~
+
+This is not merely an Android storage-mechanics question. Re-grounding current canonical VexLife source
+at main `b6d9dd4876132fc408f0eacd2bb6b5b0d56e009f` found:
+
+~~~text
+blueprint/vexlife.blueprint.json
+  stateDomains
+  behaviorContracts
+  ...
+
+ThemeMode-specific canonical source
+  NOT PRESENT
+
+FamilyStore contract composition
+  NOT PRESENT
+
+portable behavior contract v1
+  one sourceStateRef row shape
+  no durable FamilyStore relationship surface
+~~~
+
+So the next current edge is a canonical-source dependency: preserve the already-earned VexSync
+FamilyStore meaning, admit the minimum portable ThemeMode durability contract in the rightful VexLife
+Blueprint owner, and only then realize the target-specific persistence mechanics in Android.
+
+The work remains `VERIFYING` while that source dependency is unadmitted. The connected Journey must not
+be replayed; it already proved the in-process path. Approval, ready, merge, release and post-merge
+verification remain separate effects.
+
+<!-- [VXG RealForever][VEXSYNC][THEMEMODE][PR195][LIVED-PERSISTENCE-FAIL][CURRENT] -->
 
 ## Human outcome
 
