@@ -201,6 +201,37 @@
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-29T12:50:00.000Z",
       "updatedAt": "2026-10-29T13:09:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vextreme.architecture-convergence.terrain-reader-return-vocabulary",
+      "parentWorkRefOrNull": "work.vextreme.architecture-convergence.outcome",
+      "label": "Close Terrain reader return-context vocabulary",
+      "purpose": "Constrain the existing behavior-driving Terrain reader returnKind to the five meanings already present in source, fail unknown or stale history values closed to the neutral collection return, preserve entry/reader coordinate validation, and keep this implementation relationship local rather than promoting it into a new Family, Control, or generic relationship registry.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vextreme"
+      ],
+      "sourceRefs": [
+        "projects/vextreme-architecture-convergence/README.md",
+        "github.pull.vextreme.498",
+        "github.commit.vextreme.941d34d4f01ffc80bf680f746e66d51a4182bd62",
+        "github.pull.vextreme.501",
+        "github.pull.vextreme.502",
+        "repo.vextreme:pages/terrain-map.html",
+        "repo.vextreme:tests/45-terrain-journey.test.js",
+        "github.pull.vexlife-android.193"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-29T13:41:00.000Z",
+      "updatedAt": "2026-10-29T13:43:00.000Z"
     }
   ],
   "transitions": [
