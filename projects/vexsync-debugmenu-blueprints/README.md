@@ -86,6 +86,45 @@ candidate lands first, the other must be currentized against accepted main witho
 
 <!-- [VXG RealForever][VEXSYNC][CURRENT-CONTINUATION][COMPOUND-CURRENT-STATE][PR200] -->
 
+## SourceOwner A002 correction — explicit Conversation preview presentation
+
+Vex Relay SourceOwner A002 reached Kotlin compilation and exposed one stale Preview-only caller:
+
+~~~text
+VexConversationRoomPreview
+-> VexLifeTheme(darkTheme = true)
+~~~
+
+That caller belonged to the removed Boolean theme API. It is now corrected on Android PR #188 as:
+
+~~~text
+VexLifeTheme(
+  presentation = VexThemePresentation.Dark,
+)
+~~~
+
+Current exact candidate:
+
+~~~text
+head = 249e38acdcc7f1d27050a65a7aa93f3f622e6b4a
+tree = dad03cddfbd01d03f98c8d9f8ce2bca216b4daaf
+paths = 19 exact
+~~~
+
+This is not a return to Screen-level ThemeMode propagation. The distinction remains:
+
+~~~text
+production
+  ThemeModeFamily -> DisplayState -> VexThemePresentation -> VexLifeTheme -> inherit
+
+preview
+  explicit VexThemePresentation -> VexLifeTheme -> inherit
+~~~
+
+A002 is consumed candidate evidence; A003 is the fresh exact-head SourceOwner proof attempt.
+
+<!-- [VXG RealForever][VEXSYNC][THEMEMODE][SOURCEOWNER-A002-CORRECTION][CURRENT] -->
+
 ## Current ThemeMode UI continuity — connect once; inherit downward
 
 The Android patient zero now closes the presentation gap without introducing a generic presentation
@@ -94,8 +133,8 @@ framework.
 Current Android PR #188:
 
 ~~~text
-head = e1ca51153141c5ac9d9a2ff0655aaf181066a2b7
-tree = a69e1000f3c8b16e172c433dd2facf39f0a2f236
+head = 249e38acdcc7f1d27050a65a7aa93f3f622e6b4a
+tree = dad03cddfbd01d03f98c8d9f8ce2bca216b4daaf
 ~~~
 
 Current chain:
@@ -176,7 +215,7 @@ Current Android candidate:
 
 ~~~text
 PR #188
-head = e1ca51153141c5ac9d9a2ff0655aaf181066a2b7
+head = 249e38acdcc7f1d27050a65a7aa93f3f622e6b4a
 base = 14bb2c4e82eb6cf55cbdc6ef5f2c65d38f97e45b
 ~~~
 
@@ -8818,7 +8857,7 @@ No public OwnerId or second source identity is added.
 
 ~~~text
 Android PR #188
-head = e1ca51153141c5ac9d9a2ff0655aaf181066a2b7
+head = 249e38acdcc7f1d27050a65a7aa93f3f622e6b4a
 base = 14bb2c4e82eb6cf55cbdc6ef5f2c65d38f97e45b
 paths = 5 exact
 ~~~
