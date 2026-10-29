@@ -6300,7 +6300,7 @@
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-29T08:40:27.000Z",
-      "updatedAt": "2026-10-29T09:36:01.000Z",
+      "updatedAt": "2026-10-29T10:02:00.000Z",
       "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vextreme.alignment.lineage-reconciliation",
       "parentWorkRefOrNull": "work.vextreme.alignment.outcome",
@@ -6318,7 +6318,10 @@
         "repo.vextreme:pages/what-is-the-god-spark.html",
         "repo.vextreme:docs/ingestion/workmaps/content-forge-god-spark-dual-lineage-view-repair.json",
         "github.pull.vextreme.484",
-        "github.commit.vextreme.e0dc1778cc564f9a8fb2b5b4db4edc7af6d01d5d"
+        "github.commit.vextreme.e0dc1778cc564f9a8fb2b5b4db4edc7af6d01d5d",
+        "github.commit.vextreme.02d014c27b9498762025da2ad4c3dbd2fab7d439",
+        "github.workflow-run.vextreme.40849373174",
+        "github.workflow-run.vextreme.40849373339"
       ]
     },
     {
@@ -6396,14 +6399,14 @@
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-29T08:40:27.000Z",
-      "updatedAt": "2026-10-29T09:02:13.000Z",
+      "updatedAt": "2026-10-29T10:02:00.000Z",
       "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vextreme.alignment.timeline-projection",
       "parentWorkRefOrNull": "work.vextreme.alignment.outcome",
       "label": "Restore canonical Full Timeline order, sections, and complete reading path",
       "purpose": "Repair the observed Terrain Full Timeline defect by consuming Vextreme's canonical ordered arc semantics instead of nodes/add order, projecting the 111 currently dated records in their real chronological sections, and reusing the existing complete embedded/standalone page readers rather than reducing the timeline to disconnected metadata cards.",
       "workClass": "DEFECT",
-      "state": "RUNNING",
+      "state": "VERIFYING",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [],
       "sourceRefs": [
@@ -6416,7 +6419,11 @@
         "repo.vextreme:pages/terrain-map.html",
         "repo.vextreme:tests/85-terrain-view-contract.test.js",
         "github.pull.vextreme.480",
-        "github.commit.vextreme.85b03fc931c01908849460205be7a7a79b9cdb58"
+        "github.commit.vextreme.85b03fc931c01908849460205be7a7a79b9cdb58",
+        "github.commit.vextreme.c7d9f8961984f3fe9c6a792201ae07c6d05ecfd8",
+        "github.workflow-run.vextreme.40849682530",
+        "github.workflow-run.vextreme.40849682614",
+        "github.workflow-run.vextreme.40849682718"
       ]
     },
     {
@@ -9928,6 +9935,23 @@
         "github.commit.vextreme.85b03fc931c01908849460205be7a7a79b9cdb58"
       ],
       "createdAt": "2026-10-29T09:02:13.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.alignment.timeline-projection.verifying.ci-green",
+      "workRef": "work.vextreme.alignment.timeline-projection",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Exact PR #480 head c7d9f896 is repository-native green: Key Alignment, Build Vextreme Index generated-currentness, and full Tests all completed successfully. Hold completion for review/integration rather than conflating green candidate proof with merged accepted source.",
+      "actorRef": "actor.chatgpt.vextreme-alignment",
+      "sourceRefs": [
+        "github.pull.vextreme.480",
+        "github.commit.vextreme.c7d9f8961984f3fe9c6a792201ae07c6d05ecfd8",
+        "github.workflow-run.vextreme.40849682530",
+        "github.workflow-run.vextreme.40849682614",
+        "github.workflow-run.vextreme.40849682718"
+      ],
+      "createdAt": "2026-10-29T10:02:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
