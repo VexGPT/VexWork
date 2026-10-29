@@ -7231,14 +7231,14 @@ Repository Gradle/JVM proof remains pending.
 
 ---
 
-## Current checkpoint — direct activate-to-act Family runtime
+## Current checkpoint — native State/Control Family traversal
 
 Current Android review PR:
 
 ~~~text
 #193
 head:
-e6e4a09061f95dfb564e7a715832dfe73f54e92c
+9ed01fdcf698bdcefe8b12a648c74a879fbf8c93
 ~~~
 
 Origin-Walk/history source:
@@ -7249,33 +7249,33 @@ head:
 dd050ff81db169277a77cad4e4bd6a4f21e58d0e
 ~~~
 
-The current #193 runtime call graph is now explicit in source:
+The current #193 call graph is explicit and uses ordinary Kotlin for State and Control traversal:
 
 ~~~text
 caller / UI
 -> Family.activate(control)
 -> concrete Family.act(currentState, control)
--> state<State> / on<Control>
+-> when (currentState)
+-> when (control)
 -> stay / admit / optional begin
 -> StateRelay / execution
 ~~~
 
-There is no separately constructed Acts relationship object between activate(...) and the concrete
-Family logic.
-
 Removed from the current Family path:
 
 ~~~text
+VexBehaviorV2 runtime surface
+resolve(...) runtime entrance
 VexActs
 VexActsBuilder
 VexActRule
-VexStateDisposition
 hidden operator fun invoke
+VexStateDisposition
 construction-time Acts rule table
+state<State> helper
+on<Control> helpers
 Family-local retainedState
 same-value whenCurrent equality filter
-VexBehaviorV2 runtime surface
-resolve(...) runtime entrance
 recursive Family self-generic
 CompoundFamily
 stateFactory
@@ -7296,36 +7296,33 @@ Family.states
   -> stateRelay.asStateFlow()
 ~~~
 
-A concrete Family now provides the exact function called at runtime:
+The focused proof still exercises two activations on the same live State holder:
 
 ~~~text
-act(currentState, control)
-~~~
-
-The focused proof exercises:
-
-~~~text
-activate(Set("one"))
+Set("one")
 -> ValueFamily.act(...)
 -> Ready("one")
 -> StateRelay
 
-activate(Set("two"))
--> same direct ValueFamily.act(...)
+Set("two")
+-> same ValueFamily.act(...)
 -> Ready("two")
--> same StateRelay holder
+-> same StateRelay
 ~~~
 
-File organization change:
+No new architecture concept was added in the native-traversal pass.
+
+The current deliberate refinement question is now narrow:
 
 ~~~text
-VexBeginScope.kt
+act(currentState, control): VexAct<State>?
+
+Is the Act function / VexAct return carrier itself still redundant or unclear?
 ~~~
 
-This is only the existing begin/save/results DSL moved out of the deleted VexActsBuilder.kt file. It
-does not introduce another architecture concept or runtime owner.
+Do not answer that by reintroducing builders, custom traversal DSLs, or hidden invocation machinery.
 
-Still-open edges remain:
+Still-open architectural edges remain:
 
 ~~~text
 serialized competing-cause State decision / stale async result
@@ -7335,7 +7332,7 @@ exact Family + Relay Single/Compound composition
 Process OutputState -> rightful Family.currentState handoff
 ~~~
 
-Repository Gradle/JVM proof for #193 head e6e4a09061f95dfb564e7a715832dfe73f54e92c remains PENDING.
+Repository Gradle/JVM proof for #193 head 9ed01fdcf698bdcefe8b12a648c74a879fbf8c93 remains PENDING.
 
-<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][FAMILY][DIRECT-ACT-RUNTIME] -->
+<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][FAMILY][NATIVE-TRAVERSAL] -->
 
