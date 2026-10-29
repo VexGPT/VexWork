@@ -5086,11 +5086,44 @@ Repository Gradle/JVM proof remains pending.
 
 ---
 
-## Current checkpoint — Family Circuit teaching forms
+## Current checkpoint — clean Family Circuit review baseline
 
-Downstream Android #192 head: dd050ff81db169277a77cad4e4bd6a4f21e58d0e
+Current Android review PR:
 
-The Family Circuit foundation is unchanged; the teaching surface is now intentionally generic.
+~~~text
+#193
+head:
+95488ddff3931843dab472c317eed543f093262b
+~~~
+
+Origin-Walk/history source:
+
+~~~text
+#192
+head:
+dd050ff81db169277a77cad4e4bd6a4f21e58d0e
+~~~
+
+PR #193 is a fresh branch from current Android main that ports the current winning Family Circuit
+implementation out of #192 without copying the app-specific and pressure-history surface.
+
+Exact current source/test blobs copied into #193:
+
+~~~text
+VexBehaviorFamily.kt
+VexBehaviorV2.kt
+VexBehaviorV2Act.kt
+VexBehaviorV2Builder.kt
+VexBehaviorV2Logger.kt
+VexBehaviorV2Store.kt
+VexBehaviorV2FamilyCircuitTestSampleSuite.kt
+
+VexCoroutineLauncher.kt
+VexExecution.kt
+VexExecutionRoot.kt
+~~~
+
+The Family structure remains:
 
 ~~~text
 VexFamily
@@ -5103,29 +5136,16 @@ VexBehaviorV2CompoundFamily : VexFamily
   relationship-driven Family
 ~~~
 
-Fresh readers start from small constructors instead of a fake feature:
+The neutral teaching forms remain:
 
 ~~~text
 createSingleFamily()
-  -> SingleFamily
-  -> State(value)
-
 createListFamily()
-  -> ListFamily
-  -> State(groups -> items)
-
 createBooleanFamily()
-  -> BooleanFamily
-  -> State(enabled)
-
 createMultiFamily(...)
-  -> MultiFamily
-  -> MultiInputState
-  -> MultiOutputState
-  -> MultiCompoundState
 ~~~
 
-MultiFamily demonstrates the complete relationship circuit:
+MultiFamily demonstrates:
 
 ~~~text
 several Family.current values
@@ -5142,17 +5162,18 @@ several Family.current values
 -> process again
 ~~~
 
-ListFamily carries nested groups/items so the sample still demonstrates copying nested State.
-The example names describe data/structure rather than app concepts.
+Fresh instances should use #193 to understand/review the current implementation. Use #192 only when
+the historical pressure and why-path are needed.
 
 Current evidence:
 
 ~~~text
-Family Circuit foundation source                 FORMED
-Single/List/Boolean/Multi teaching forms         FORMED
-generic TestSampleSuite                          AUTHORED
+clean branch from Android main                   YES
+current #192 implementation copied exactly       YES
+10 source/test blobs exact-match verified        YES
+app-specific / historical pressure copied        NO
 repository Gradle/JVM                            PENDING
 ~~~
 
-<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][FAMILY-CIRCUIT][COMPOUND-FAMILY] -->
+<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][FAMILY-CIRCUIT][CURRENT-PR193] -->
 
