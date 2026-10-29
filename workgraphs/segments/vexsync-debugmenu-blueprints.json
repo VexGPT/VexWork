@@ -28,7 +28,8 @@
         "project.vexlife-android.current-state-refinement",
         "github.pull.vexlife-android.193",
         "github.commit.vexlife-android.7301c6ef257b53aeef79736cf388f68bee60fad6",
-        "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b"
+        "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
+        "github.commit.vexwork.06cd5344f3f6bdb5428f9d354e92705737f6a6f8"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
@@ -64,7 +65,8 @@
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt",
         "github.pull.vexlife-android.193",
         "github.commit.vexlife-android.7301c6ef257b53aeef79736cf388f68bee60fad6",
-        "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b"
+        "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
+        "github.commit.vexwork.06cd5344f3f6bdb5428f9d354e92705737f6a6f8"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
@@ -148,7 +150,8 @@
     "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt",
     "github.pull.vexlife-android.193",
     "github.commit.vexlife-android.7301c6ef257b53aeef79736cf388f68bee60fad6",
-    "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b"
+    "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
+    "github.commit.vexwork.06cd5344f3f6bdb5428f9d354e92705737f6a6f8"
   ],
   "formedAt": "2026-10-26T07:26:46.000Z"
 }
