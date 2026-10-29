@@ -11,7 +11,7 @@ test('Project Registry locates Projects without owning their WorkState', () => {
   const validation = validateProjectRegistry(registry);
   assert.equal(validation.ok, true, validation.errors.join('\n'));
   const projection = projectProjectRegistry(registry);
-  assert.equal(projection.projects.length, 16);
+  assert.equal(projection.projects.length, 17);
   assert.equal(projection.projects[0].projectRef, 'project.vexwork.foundation');
   assert.equal(projection.projects[0].workgraphRef, 'workgraph.vexwork.foundation');
   assert.equal(projection.projects[0].workgraphPath, 'workgraphs/public.json');
@@ -65,6 +65,12 @@ test('Project Registry locates Projects without owning their WorkState', () => {
   assert.equal(vexsite.definitionPath, 'projects/vexsite-localization/project.json');
   assert.equal(vexsite.boardViewPath, 'projects/vexsite-localization/board.view.json');
   assert.equal(vexsite.agencyPolicyPathOrNull, null);
+  const alignment = projection.projects.find((entry) => entry.projectRef === 'project.vextreme.alignment');
+  assert.equal(alignment.workgraphRef, 'workgraph.vexwork.foundation');
+  assert.equal(alignment.workgraphPath, 'workgraphs/public.json');
+  assert.equal(alignment.definitionPath, 'projects/vextreme-alignment/project.json');
+  assert.equal(alignment.boardViewPath, 'projects/vextreme-alignment/board.view.json');
+  assert.equal(alignment.agencyPolicyPathOrNull, null);
   const welcome = projection.projects.find((entry) => entry.projectRef === 'project.vexlife.welcome-wagon');
   assert.equal(welcome.workgraphRef, 'workgraph.vexwork.foundation');
   assert.equal(welcome.workgraphPath, 'workgraphs/public.json');

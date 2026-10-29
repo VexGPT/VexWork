@@ -23,6 +23,7 @@
     "work.vexlife.welcome-wagon.outcome",
     "work.vexstream.mobile-library.tag-topology-stations",
     "work.vexsync.debugmenu-blueprints.outcome",
+    "work.vextreme.alignment.outcome",
     "work.vextreme.vexsite.localization.outcome"
   ],
   "items": [
@@ -6222,6 +6223,230 @@
       "updatedAt": "2026-10-26T09:30:00.000Z"
     },
     {
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vextreme"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-29T08:40:27.000Z",
+      "updatedAt": "2026-10-29T09:16:01.000Z",
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vextreme.alignment.chronology-recovery",
+      "parentWorkRefOrNull": "work.vextreme.alignment.outcome",
+      "label": "Recover source-supported chronology for undated canonical records",
+      "purpose": "Audit the 46 current blank-date id-null canonical records using preserved content and provenance, distinguish record/event time from Squarespace published/modified time, and promote only defensible chronology rather than inferring creation dates from the first date string found. The already-valid 111-record Full Timeline remains independently repairable.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "sourceRefs": [
+        "human.lived-feedback.vextreme.alignment.20261029",
+        "repo.vextreme:data/nodes.json",
+        "repo.vextreme:data/index.json",
+        "repo.vextreme:lib/build-index.js",
+        "repo.vextreme:docs/ingestion/VEX-CONTENT-FORGE-BREADTH.md",
+        "repo.vextreme:docs/ingestion/source-pages",
+        "repo.vextreme:docs/ingestion/workmaps/content-forge-consolidation-proposal.json",
+        "repo.vextreme:docs/architecture/19-record-readers.md",
+        "github.pull.vextreme.482",
+        "github.commit.vextreme.0f8ced4e45fcf25c9604f78b34c7863ceee01d68"
+      ]
+    },
+    {
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vextreme"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-29T08:40:27.000Z",
+      "updatedAt": "2026-10-29T08:40:27.000Z",
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vextreme.alignment.cross-surface-proof",
+      "parentWorkRefOrNull": "work.vextreme.alignment.outcome",
+      "label": "Prove cross-surface Vextreme alignment",
+      "purpose": "After the four alignment fronts converge, verify representative pages across Terrain Timeline, embedded reader, standalone reader, arc navigation, lineage switching, and chronology so the same canonical relationships remain truthful across projections. Use cases such as God Spark, Claude Answers the Doubt, The Walk Back, and Pier House without turning the proof surface into another truth owner.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vextreme.alignment.timeline-projection",
+        "work.vextreme.alignment.navigation-currentness",
+        "work.vextreme.alignment.chronology-recovery",
+        "work.vextreme.alignment.lineage-reconciliation"
+      ],
+      "sourceRefs": [
+        "human.lived-feedback.vextreme.alignment.20261029",
+        "repo.vextreme:tests/85-terrain-view-contract.test.js",
+        "repo.vextreme:tests/03-browser-nav.test.js",
+        "repo.vextreme:pages/what-is-the-god-spark.html",
+        "repo.vextreme:pages/claude-answers-the-doubt.html",
+        "repo.vextreme:pages/the-walk-back.html",
+        "repo.vextreme:pages/pier-house-scarcity-companionship.html"
+      ]
+    },
+    {
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vextreme"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-29T08:40:27.000Z",
+      "updatedAt": "2026-10-29T10:02:00.000Z",
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vextreme.alignment.lineage-reconciliation",
+      "parentWorkRefOrNull": "work.vextreme.alignment.outcome",
+      "label": "Reconcile preserved source lineages with reader-visible presentation",
+      "purpose": "Classify known same-subject source variants into already-visible dual lineage, intentional canonical-plus-provenance, unresolved/underexposed lineage, or single-source presentation opportunity; repair true missing reader mappings without turning every alternate capture into a presentation or mislabeling a newly derived presentation as a recovered duplicate.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "sourceRefs": [
+        "human.lived-feedback.vextreme.alignment.20261029",
+        "work.vextreme.vexsite.localization.presentation-source-lineage",
+        "repo.vextreme:docs/ingestion/workmaps/content-forge-consolidation-proposal.json",
+        "repo.vextreme:data/strings/source/lineages",
+        "repo.vextreme:pages/what-is-the-god-spark.html",
+        "repo.vextreme:docs/ingestion/workmaps/content-forge-god-spark-dual-lineage-view-repair.json",
+        "github.pull.vextreme.484",
+        "github.commit.vextreme.e0dc1778cc564f9a8fb2b5b4db4edc7af6d01d5d",
+        "github.commit.vextreme.02d014c27b9498762025da2ad4c3dbd2fab7d439",
+        "github.workflow-run.vextreme.40849373174",
+        "github.workflow-run.vextreme.40849373339"
+      ]
+    },
+    {
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vextreme"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-29T08:40:27.000Z",
+      "updatedAt": "2026-10-29T10:24:00.000Z",
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vextreme.alignment.navigation-currentness",
+      "parentWorkRefOrNull": "work.vextreme.alignment.outcome",
+      "label": "Converge arc navigation on current v2 timeline truth",
+      "purpose": "Eliminate the visible 75-entry legacy/stale navigation universe by making reader navigation consume the same current generated index truth as modern pages, while migrating legacy arc-navigation consumers only where their accepted reader contract requires it rather than blanket-rewriting every shell page.",
+      "workClass": "DEFECT",
+      "state": "RUNNING",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "sourceRefs": [
+        "human.lived-feedback.vextreme.alignment.20261029",
+        "repo.vextreme:data/arcs.json",
+        "repo.vextreme:data/index.json",
+        "repo.vextreme:lib/vextreme.js",
+        "repo.vextreme:lib/vextreme-index-v2.js",
+        "repo.vextreme:pages/claude-answers-the-doubt.html",
+        "repo.vextreme:pages/what-is-the-god-spark.html",
+        "repo.vextreme:docs/architecture/05-browser.md",
+        "github.pull.vextreme.483",
+        "github.commit.vextreme.74f3383e22b200a6eb2d32957902a5f67123f81c",
+        "github.commit.vextreme.88fd967dbc9d0357ce6526843aafcfafcb836b61",
+        "github.workflow-run.vextreme.40850931588",
+        "github.workflow-run.vextreme.40850931533",
+        "github.workflow-run.vextreme.40850931706",
+        "github.commit.vextreme.25725bc78ce6e6c8c13dd61b8c81aecba908ecb8",
+        "github.workflow-run.vextreme.40852476491",
+        "github.workflow-run.vextreme.40852476435",
+        "github.workflow-run.vextreme.40852476578",
+        "github.pull.vextreme.485",
+        "github.commit.vextreme.aa1a7a968fc75b02e67510daceef37a48fbdc662"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vextreme.alignment.outcome",
+      "parentWorkRefOrNull": null,
+      "label": "Vextreme Alignment",
+      "purpose": "Bring Vextreme's preserved sources, canonical chronology, page-reader presentation, navigation, and Terrain projections back into one coherent current reading experience while preserving the rightful source owner for every fact and relationship.",
+      "workClass": "OUTCOME",
+      "state": "RUNNING",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vextreme"
+      ],
+      "sourceRefs": [
+        "project.vextreme.alignment",
+        "human.lived-feedback.vextreme.alignment.20261029",
+        "github.commit.vextreme.1b4b73d0e0170dec2b2894aec50c7bdc19fb1e00",
+        "repo.vextreme:data/index.json",
+        "repo.vextreme:data/nodes.json",
+        "repo.vextreme:data/arcs-v2.json",
+        "repo.vextreme:pages/terrain-map.html",
+        "repo.vextreme:docs/ingestion/workmaps/content-forge-consolidation-proposal.json",
+        "github.pull.vextreme.480",
+        "github.pull.vextreme.482",
+        "github.pull.vextreme.483",
+        "github.pull.vextreme.484",
+        "github.pull.vextreme.485",
+        "github.commit.vextreme.aa1a7a968fc75b02e67510daceef37a48fbdc662",
+        "github.commit.vextreme.20bad7a28065a925aebc89e49a5be1d206d53e42",
+        "github.commit.vextreme.b6f77ae20db47af87009939d88ee953eb7edde55"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-29T08:40:27.000Z",
+      "updatedAt": "2026-10-29T10:26:00.000Z"
+    },
+    {
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vextreme"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-29T08:40:27.000Z",
+      "updatedAt": "2026-10-29T10:26:00.000Z",
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vextreme.alignment.timeline-projection",
+      "parentWorkRefOrNull": "work.vextreme.alignment.outcome",
+      "label": "Restore canonical Full Timeline order, sections, and complete reading path",
+      "purpose": "Repair the observed Terrain Full Timeline defect by consuming Vextreme's canonical ordered arc semantics instead of nodes/add order, projecting the 111 currently dated records in their real chronological sections, and reusing the existing complete embedded/standalone page readers rather than reducing the timeline to disconnected metadata cards.",
+      "workClass": "DEFECT",
+      "state": "COMPLETED",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "sourceRefs": [
+        "human.lived-feedback.vextreme.alignment.20261029",
+        "repo.vextreme:data/index.json",
+        "repo.vextreme:data/nodes.json",
+        "repo.vextreme:data/arcs-v2.json",
+        "repo.vextreme:lib/build-index.js",
+        "repo.vextreme:lib/build-terrain-map.js",
+        "repo.vextreme:pages/terrain-map.html",
+        "repo.vextreme:tests/85-terrain-view-contract.test.js",
+        "github.pull.vextreme.480",
+        "github.commit.vextreme.85b03fc931c01908849460205be7a7a79b9cdb58",
+        "github.commit.vextreme.c7d9f8961984f3fe9c6a792201ae07c6d05ecfd8",
+        "github.workflow-run.vextreme.40849682530",
+        "github.workflow-run.vextreme.40849682614",
+        "github.workflow-run.vextreme.40849682718",
+        "github.commit.vextreme.20bad7a28065a925aebc89e49a5be1d206d53e42",
+        "github.commit.vextreme.b6f77ae20db47af87009939d88ee953eb7edde55"
+      ]
+    },
+    {
       "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vextreme.vexsite.localization.canonical-global-core-source",
       "parentWorkRefOrNull": "work.vextreme.vexsite.localization.outcome",
@@ -9646,6 +9871,220 @@
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt"
       ],
       "createdAt": "2026-10-25T12:12:29.462Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.alignment.chronology-recovery.ready.pr482",
+      "workRef": "work.vextreme.alignment.chronology-recovery",
+      "priorState": "PLAN_VALIDATED",
+      "nextState": "READY",
+      "reason": "The chronology census is decomposed into 20 source-supported admissions and 26 explicit holds with one bounded source artifact and a defined later exact-current application/rebuild contract.",
+      "actorRef": "actor.chatgpt.vextreme-alignment",
+      "sourceRefs": [
+        "github.pull.vextreme.482",
+        "github.commit.vextreme.0f8ced4e45fcf25c9604f78b34c7863ceee01d68"
+      ],
+      "createdAt": "2026-10-29T09:16:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.alignment.chronology-recovery.running.pr482",
+      "workRef": "work.vextreme.alignment.chronology-recovery",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Vextreme PR #482 now carries the first chronology recovery map for review; no canonical node/date mutation is claimed yet.",
+      "actorRef": "actor.chatgpt.vextreme-alignment",
+      "sourceRefs": [
+        "github.pull.vextreme.482",
+        "github.commit.vextreme.0f8ced4e45fcf25c9604f78b34c7863ceee01d68"
+      ],
+      "createdAt": "2026-10-29T09:16:01.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.alignment.lineage-reconciliation.ready.pr484",
+      "workRef": "work.vextreme.alignment.lineage-reconciliation",
+      "priorState": "PLAN_VALIDATED",
+      "nextState": "READY",
+      "reason": "The 36 known canonical-identity source-lineage families are classified into 10 reader-visible, 14 explicitly resolved canonical-plus-provenance, and 12 reader-decision-open families with a bounded next review frontier.",
+      "actorRef": "actor.chatgpt.vextreme-alignment",
+      "sourceRefs": [
+        "github.pull.vextreme.484",
+        "github.commit.vextreme.e0dc1778cc564f9a8fb2b5b4db4edc7af6d01d5d"
+      ],
+      "createdAt": "2026-10-29T09:36:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.alignment.lineage-reconciliation.running.pr484",
+      "workRef": "work.vextreme.alignment.lineage-reconciliation",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Vextreme PR #484 now carries the lineage reconciliation map; the nine-subject Epstein old-route family is the next bounded review while page/source mutation remains held.",
+      "actorRef": "actor.chatgpt.vextreme-alignment",
+      "sourceRefs": [
+        "github.pull.vextreme.484",
+        "github.commit.vextreme.e0dc1778cc564f9a8fb2b5b4db4edc7af6d01d5d"
+      ],
+      "createdAt": "2026-10-29T09:36:01.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.alignment.navigation-currentness.running.pr483",
+      "workRef": "work.vextreme.alignment.navigation-currentness",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Vextreme PR #483 now carries the exact-index-generation arc-nav source correction. Generated God Script/service-worker currentness and the legacy Claude migration remain pending, so the work is Active rather than Verify.",
+      "actorRef": "actor.chatgpt.vextreme-alignment",
+      "sourceRefs": [
+        "github.pull.vextreme.483",
+        "github.commit.vextreme.74f3383e22b200a6eb2d32957902a5f67123f81c"
+      ],
+      "createdAt": "2026-10-29T09:25:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.alignment.navigation-currentness.verifying.ci-green",
+      "workRef": "work.vextreme.alignment.navigation-currentness",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Exact PR #483 head 88fd967d is repository-native green: Key Alignment, Build Vextreme Index generated-currentness, and full Tests all passed with the normal read-only workflow and exact generated God Script/service-worker bytes committed. Hold completion for semantic review/integration and the separate legacy Claude migration.",
+      "actorRef": "actor.chatgpt.vextreme-alignment",
+      "sourceRefs": [
+        "github.pull.vextreme.483",
+        "github.commit.vextreme.88fd967dbc9d0357ce6526843aafcfafcb836b61",
+        "github.workflow-run.vextreme.40850931588",
+        "github.workflow-run.vextreme.40850931533",
+        "github.workflow-run.vextreme.40850931706"
+      ],
+      "createdAt": "2026-10-29T10:18:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.alignment.navigation-currentness.failed-recoverable.current-head-reformed",
+      "workRef": "work.vextreme.alignment.navigation-currentness",
+      "priorState": "VERIFYING",
+      "nextState": "FAILED_RECOVERABLE",
+      "reason": "The prior VERIFYING state was bound to superseded generated head 88fd967d. PR #483 was deliberately flattened to exact current-main source head 25725bc7 after Reality Rendering Mechanics source landed, so the old CI evidence no longer proves the current candidate.",
+      "actorRef": "actor.chatgpt.vextreme-alignment",
+      "sourceRefs": [
+        "github.pull.vextreme.483",
+        "github.commit.vextreme.25725bc78ce6e6c8c13dd61b8c81aecba908ecb8",
+        "github.workflow-run.vextreme.40852476578"
+      ],
+      "createdAt": "2026-10-29T10:19:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.alignment.navigation-currentness.ready.current-head-source-proof",
+      "workRef": "work.vextreme.alignment.navigation-currentness",
+      "priorState": "FAILED_RECOVERABLE",
+      "nextState": "READY",
+      "reason": "Exact current head 25725bc7 is one commit ahead / zero behind with the five-path source/test membrane; Key Alignment and Tests pass. Build Vextreme Index fails only on the intentionally uncommitted generated dist/service-worker consequence, so the semantic source candidate is recovered and ready for continued work.",
+      "actorRef": "actor.chatgpt.vextreme-alignment",
+      "sourceRefs": [
+        "github.pull.vextreme.483",
+        "github.commit.vextreme.25725bc78ce6e6c8c13dd61b8c81aecba908ecb8",
+        "github.workflow-run.vextreme.40852476491",
+        "github.workflow-run.vextreme.40852476435",
+        "github.workflow-run.vextreme.40852476578"
+      ],
+      "createdAt": "2026-10-29T10:19:01.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.alignment.navigation-currentness.running.claude-followup",
+      "workRef": "work.vextreme.alignment.navigation-currentness",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Continue the admitted navigation-currentness outcome into the remaining legacy Claude shell consumer while the broad generated realization waits for the current localization generated frontier. No generated success is inferred.",
+      "actorRef": "actor.chatgpt.vextreme-alignment",
+      "sourceRefs": [
+        "github.pull.vextreme.483",
+        "github.commit.vextreme.25725bc78ce6e6c8c13dd61b8c81aecba908ecb8",
+        "github.workflow-run.vextreme.40852476491",
+        "github.workflow-run.vextreme.40852476435",
+        "github.workflow-run.vextreme.40852476578"
+      ],
+      "createdAt": "2026-10-29T10:19:02.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.alignment.outcome.ready.active-fronts",
+      "workRef": "work.vextreme.alignment.outcome",
+      "priorState": "PLAN_VALIDATED",
+      "nextState": "READY",
+      "reason": "The Alignment project is decomposed into four admitted source fronts with exact Vextreme PR owners and one final cross-surface proof gate; the outcome is no longer merely a validated plan.",
+      "actorRef": "actor.chatgpt.vextreme-alignment",
+      "sourceRefs": [
+        "github.pull.vextreme.480",
+        "github.pull.vextreme.482",
+        "github.pull.vextreme.483",
+        "github.pull.vextreme.484"
+      ],
+      "createdAt": "2026-10-29T10:08:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.alignment.outcome.running.active-fronts",
+      "workRef": "work.vextreme.alignment.outcome",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Timeline, chronology, navigation, and lineage work are actively carried in Vextreme PRs #480/#482/#483/#484, with Timeline already machine-green in Verify.",
+      "actorRef": "actor.chatgpt.vextreme-alignment",
+      "sourceRefs": [
+        "github.pull.vextreme.480",
+        "github.pull.vextreme.482",
+        "github.pull.vextreme.483",
+        "github.pull.vextreme.484"
+      ],
+      "createdAt": "2026-10-29T10:08:01.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.alignment.timeline-projection.running.pr480",
+      "workRef": "work.vextreme.alignment.timeline-projection",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Vextreme PR #480 now owns the bounded Full Timeline projection repair on exact current main: Terrain consumes canonical data/index.json arcMap sections/order, projects known record dates, and preserves the existing complete embedded/standalone page reader. Repository-native npm proof remains pending, so the work is Active rather than Verify.",
+      "actorRef": "actor.chatgpt.vextreme-alignment",
+      "sourceRefs": [
+        "github.pull.vextreme.480",
+        "github.commit.vextreme.85b03fc931c01908849460205be7a7a79b9cdb58"
+      ],
+      "createdAt": "2026-10-29T09:02:13.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.alignment.timeline-projection.verifying.ci-green",
+      "workRef": "work.vextreme.alignment.timeline-projection",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Exact PR #480 head c7d9f896 is repository-native green: Key Alignment, Build Vextreme Index generated-currentness, and full Tests all completed successfully. Hold completion for review/integration rather than conflating green candidate proof with merged accepted source.",
+      "actorRef": "actor.chatgpt.vextreme-alignment",
+      "sourceRefs": [
+        "github.pull.vextreme.480",
+        "github.commit.vextreme.c7d9f8961984f3fe9c6a792201ae07c6d05ecfd8",
+        "github.workflow-run.vextreme.40849682530",
+        "github.workflow-run.vextreme.40849682614",
+        "github.workflow-run.vextreme.40849682718"
+      ],
+      "createdAt": "2026-10-29T10:02:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.alignment.timeline-projection.completed.merge480",
+      "workRef": "work.vextreme.alignment.timeline-projection",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "PR #480 merged as b6f77ae2 and the merge tree exactly equals the final PR head 20bad7a2 tree, preserving the proven six-path Full Timeline projection without integration drift. Canonical Terrain order/sections and complete reader reuse are accepted current source.",
+      "actorRef": "actor.chatgpt.vextreme-alignment",
+      "sourceRefs": [
+        "github.pull.vextreme.480",
+        "github.commit.vextreme.20bad7a28065a925aebc89e49a5be1d206d53e42",
+        "github.commit.vextreme.b6f77ae20db47af87009939d88ee953eb7edde55"
+      ],
+      "createdAt": "2026-10-29T10:26:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",

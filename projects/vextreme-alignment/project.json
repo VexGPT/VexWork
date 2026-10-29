@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.vextreme.alignment",
+  "label": "Vextreme Alignment",
+  "purpose": "Converge Vextreme's preserved source lineages, canonical chronology, reader navigation, and Terrain/content projections so every public reading surface reflects the same current content truth without erasing source/provenance distinctions or making VexWork a second Vextreme truth owner.",
+  "rootWorkRefs": [
+    "work.vextreme.alignment.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vextreme"
+  ],
+  "sourceRefs": [
+    "docs/process/FORM-PROJECT.md",
+    "project.vextreme.vexsite-localization",
+    "work.vextreme.vexsite.localization.presentation-source-lineage",
+    "human.lived-feedback.vextreme.alignment.20261029",
+    "github.commit.vextreme.1b4b73d0e0170dec2b2894aec50c7bdc19fb1e00",
+    "repo.vextreme:data/index.json",
+    "repo.vextreme:data/nodes.json",
+    "repo.vextreme:data/arcs-v2.json",
+    "repo.vextreme:lib/build-index.js",
+    "repo.vextreme:lib/build-terrain-map.js",
+    "repo.vextreme:pages/terrain-map.html",
+    "repo.vextreme:lib/vextreme-index-v2.js",
+    "repo.vextreme:docs/ingestion/workmaps/content-forge-consolidation-proposal.json"
+  ],
+  "formedAt": "2026-10-29T08:40:27.000Z"
+}
