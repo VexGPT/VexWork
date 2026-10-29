@@ -399,7 +399,9 @@
         "projects/vexboard/examples/vexlife-debug-menu-theme-mode.board.json",
         "src/core/vexboard-family-kotlin-construction.mjs",
         "test/vexboard-family-kotlin-construction.test.mjs",
-        "vexboard/index.html"
+        "vexboard/index.html",
+        "work.vexsync.debugmenu-blueprints.vexboard-architecture-convergence",
+        "github.commit.vexwork.c8ac1b1898b6e23df3164fd69ea22499a38257b4"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [
