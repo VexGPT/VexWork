@@ -6036,12 +6036,38 @@ tree  03888de7b31cb5bde14f0e27e9f38b95db12ef3d
 paths 3 exact
 ~~~
 
-SourceOwner A001 host wrapper is formed at:
-
-~~~text
-sha256 c4740668d26f9887c1681b9d6559e39d03798a956d4c281ccefbd197cfd7738c
-~~~
-
-This is completion traceability, not production behavior and not a shadow Journey.
+SourceOwner A001 and fresh Independent Assurance are complete on the exact held Feature Walk candidate.
 
 <!-- [VXG RealForever][VEXSYNC][THEME-MODE][FEATURE-WALK][PR195-HELD] -->
+
+
+### PR #195 held ThemeMode Feature Walk — SourceOwner PASS + Assurance CLEAR
+
+The Android-local completion map is now proved on exact head:
+
+~~~text
+Android PR #195
+head  5793a8730d820362dd33a761cb26447545a8a8c8
+tree  03888de7b31cb5bde14f0e27e9f38b95db12ef3d
+paths 3 exact
+
+SourceOwner A001
+  VexFeatureWalkContractTest PASS
+  vexVerifyJvm PASS
+  :app:assembleDebugAndroidTest PASS
+  exact membrane / clean source PASS
+  findings 0
+
+Independent Assurance
+  CLEAR_ON_EXACT_HEAD
+~~~
+
+The Case remains REQUIRED + HELD by design. The proof validates the truth of the completion map and its
+release predicate; it does not convert the held Case into Journey execution.
+
+Do not split the Case into a focused-semantic active checkpoint yet merely to show PR #188 proof:
+ThemeMode source/test is not accepted on Android main. Once the semantic source is accepted and the
+production path enters ThemeModeFamily, the Feature Walk can truthfully expose focused proof backlinks
+and admit exactly one dedicated Journey.
+
+<!-- [VXG RealForever][VEXSYNC][THEME-MODE][FEATURE-WALK][PR195-PROVED-CLEAR] -->
