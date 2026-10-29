@@ -327,7 +327,7 @@ HERETIC_MLX != LEGACY_LLAMA_CPP_OPERATIONAL_PROFILE
 This completes the **first** lawful tool-bearing Home threshold. It does not imply arbitrary tool families,
 Memory promotion, host cleanup authority, distribution completeness, or V3–V6 continuity stability.
 
-The next continuity edge after this completed Home threshold was V3; V3 is now terminally lived-proven, so the current foreground is **V4 continuity rollover**.
+The next continuity edge after this completed Home threshold was V3; V3 then released V4, and V4 is now terminal source + lived PASS. The current foreground is the **canonical Conversation identity** connective path described below.
 
 ## Current connective foreground — one Conversation becomes Vex's working frame
 
@@ -548,7 +548,7 @@ A working checkpoint may capture current intent, decisions, open loops, active s
 
 ### V5 — bounded host resource stewardship — accepted source / lived safety branch / exact stale-stop held
 
-V3 completion releases this Work item from dependency waiting, but V4 remains the current foreground. The system may observe resource pressure, but pressure alone is never permission to terminate processes.
+V3 completion released this Work item from dependency waiting. V5 remains a parallel evidence-gated stability obligation while **canonical Conversation identity** is the current foreground. The system may observe resource pressure, but pressure alone is never permission to terminate processes.
 
 ```text
 HIGH_CPU_OR_RAM != KILL_AUTHORITY
