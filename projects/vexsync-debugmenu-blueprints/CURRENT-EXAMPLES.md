@@ -5425,4 +5425,80 @@ VexBoard owns only the visual/perceptual projection of those source-backed relat
 Repository execution proof remains separate and pending.
 
 <!-- [VXG RealForever][VEXSYNC][VEXBOARD][FOUR-REGION-FAMILY-LANGUAGE] -->
+---
+
+## Current round-trip checkpoint — VexBoard language -> Kotlin candidate -> mapped test
+
+**Currentness:** `CURRENT_SIBLING_CANDIDATE_REFERENCE` from VexBoard PR #155 exact head
+`24a1f1914867a7d2b96cef3dee2eef9d1a991902`.
+
+The ThemeMode board now demonstrates more than source reflection.
+
+~~~text
+real current Android feature
+  DebugMenuScreen / AppActions / VexLifeSession
+  -> read-only VexBoard source projection
+
+typed Family language
+  Control<Family>
+  Control.Resource<Family, ExactId>
+  RelationshipId
+  Begin -> Approach
+  -> visible four-region VexBoard projection
+
+familyKotlin sidecar
+  -> pure compileFamilyKotlin(...)
+  -> Kotlin Family construction candidate
+  -> mapped Kotlin test candidate
+~~~
+
+The key pressure is editable in a local VexBoard draft:
+
+~~~text
+Play -> TrackId
+  -> generated Play.resourceId : TrackId
+  -> mapped exact-type test expects TrackId
+
+change the same VexBoard binding to:
+
+Play -> AccountId
+  -> generated Play.resourceId : AccountId
+  -> mapped exact-type test expects AccountId
+~~~
+
+So the test is not a separate representation of the architecture. It is generated from / mapped to
+the same typed language that the human sees and changes.
+
+~~~text
+TEST LANGUAGE
+= executable pressure over the same semantic coordinate
+
+VEXBOARD EDIT
+-> changes Kotlin construction candidate
+-> changes mapped Kotlin test candidate
+~~~
+
+The current compiler is effect-free:
+
+~~~text
+externalEffectsPerformed = false
+
+VexBoard candidate generation
+!= Android source mutation
+~~~
+
+Actual target-source publication remains a separately admitted Android effect. This preserves source
+ownership while proving that VexBoard can become a construction surface rather than only a visual mirror.
+
+The current product still has no production `ThemeModeFamily`; the real current feature remains
+`VexLifeSession.darkTheme` / Debug Menu routing. The typed Family round-trip uses the actual PR #193
+`ResourceIdentityFamily` / `EnumControlFamily` executable test specimen until product integration is
+separately earned.
+
+Focused execution of the checked-in pure compiler confirmed the current TrackId binding and an edited
+AccountId binding both update Family and mapped-test Kotlin together with zero external effects.
+
+Repository-wide VexWork test execution remains separate.
+
+<!-- [VXG RealForever][VEXSYNC][VEXBOARD][FAMILY-KOTLIN-ROUNDTRIP] -->
 
