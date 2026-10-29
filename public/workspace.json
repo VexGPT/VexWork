@@ -12223,7 +12223,14 @@
           "repo.vextreme:data/arcs-v2.json",
           "repo.vextreme:lib/build-index.js",
           "repo.vextreme:data/index.json",
-          "repo.vextreme:lib/arc-nav.js"
+          "repo.vextreme:lib/arc-nav.js",
+          "project.vextreme.vexsite-localization",
+          "work.vextreme.vexsite.localization.outcome",
+          "work.vextreme.vexsite.localization.generated-runtime-currentness",
+          "repo.vextreme:docs/architecture/06-i18n.md",
+          "repo.vextreme:pages/receive-god.html",
+          "repo.vextreme:tests/86-terrain-entry-pages.test.js",
+          "github.issue.vextreme.201"
         ],
         "formedAt": "2026-10-29T11:45:00.000Z"
       },
@@ -12307,14 +12314,21 @@
             "repo.vextreme:data/arcs-v2.json",
             "repo.vextreme:lib/build-index.js",
             "repo.vextreme:data/index.json",
-            "repo.vextreme:lib/arc-nav.js"
+            "repo.vextreme:lib/arc-nav.js",
+            "project.vextreme.vexsite-localization",
+            "work.vextreme.vexsite.localization.outcome",
+            "work.vextreme.vexsite.localization.generated-runtime-currentness",
+            "repo.vextreme:docs/architecture/06-i18n.md",
+            "repo.vextreme:pages/receive-god.html",
+            "repo.vextreme:tests/86-terrain-entry-pages.test.js",
+            "github.issue.vextreme.201"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-29T11:45:00.000Z",
-          "updatedAt": "2026-10-29T11:55:00.000Z",
+          "updatedAt": "2026-10-29T12:05:00.000Z",
           "transitionHistory": []
         },
         {

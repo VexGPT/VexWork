@@ -534,6 +534,121 @@ A Family may be formed later only if a distinct human/domain behavioral question
 descent and the Family threshold; the presence of State-like data or Control-like clicks alone is not
 enough.
 
+## Receive God localization seam — route to the existing owner
+
+The original lived observation also exposed a second seam: **Receive God does not currently have a real
+localized language capability**.
+
+Current source facts:
+
+~~~text
+pages/receive-god.html
+  html lang = en
+  data-vex-entry-document = receive-god
+  carries fab-read-aloud.js
+  does not carry data-i18n identities
+
+tests/86-terrain-entry-pages.test.js
+  classifies Receive God / Take a Walk as provider-neutral entry documents
+  outside ordinary archive-record discovery
+  explicitly rejects retained provider/runtime data-i18n markers
+
+data/index.json
+  pageLanguageMap[receive-god] = ABSENT
+  slugMap[receive-god] = ABSENT
+
+docs/architecture/06-i18n.md
+  element key = canonical localization/UI identity layer
+  pageLanguageMap = generated page capability projection
+  selected-language authority = existing widgets/fab-lang.js contract
+  unmapped surface -> fail closed to EN
+~~~
+
+Therefore:
+
+~~~text
+NO PAGE LANGUAGE IDENTITY
++ NO TRANSLATION SCOPE / COMPLETE LANG SET
+-> NO TRUTHFUL LANGUAGE CAPABILITY
+
+MISSING LANGUAGE ORB
+!= forgot to load fab-lang.js
+
+ADDING A LANGUAGE FAB WITHOUT PAGE CAPABILITY
+-> false UI promise
+~~~
+
+The entry-document contract and the ordinary localized record contract are intentionally different today.
+A correct evolution must answer how an ordered entry/group-home document can gain provider-neutral
+canonical string identities and page-local language capability **without being reclassified as an archive
+record or adopting a duplicate selected-language owner**.
+
+### Rightful ownership
+
+~~~text
+VexSite Localization Project
+  project.vextreme.vexsite-localization
+  owns the localization trajectory / work grouping
+
+Vextreme i18n architecture
+  docs/architecture/06-i18n.md
+  owns string identity, scope, capability and runtime language semantics
+
+Terrain / embedded host
+  may proxy an embedded child's real language capability
+  does not create language capability for an unmapped child
+
+Architecture Convergence
+  owns:
+    perceiving this cross-owner seam
+    preserving the intended boundary
+    routing future evolution to the rightful source/work owner
+
+  does NOT own:
+    Receive God translations
+    localization source queue
+    compiled bundles
+    generated/runtime localization currentness
+~~~
+
+No new Work item is formed here merely because the seam is visible. If VexSite Localization later admits
+entry-document localization as active work, this Project should reference that exact Work rather than
+forming a shadow copy.
+
+### Name Ontology consequence
+
+Do **not** mint:
+
+~~~text
+ReceiveGodLocalizationFamily
+EntryDocumentLanguageFamily
+TerrainLanguageFamily
+~~~
+
+from this observation.
+
+Cold-read, each would imply a new behavioral truth owner where current source already has explicit
+localization owners. The actual unresolved question is a **contract relationship**:
+
+> How does an entry document participate in the existing localization identity/capability system without
+> becoming a different kind of content surface?
+
+That question should be solved in the existing localization vocabulary first. A Family is earned only if
+later evidence reveals a distinct independently meaningful behavior question with its own current truth.
+
+### Placement-aware FAB context
+
+Vextreme issue #201 is relevant future presentation context because it explicitly explores one reusable
+FAB foundation with placement profiles for global, Terrain, embedded-page and standalone-page surfaces.
+It does not solve Receive God localization and must not be treated as language authority.
+
+~~~text
+FAB PRESENTATION PROFILE
+!= LANGUAGE CAPABILITY
+!= STRING IDENTITY
+!= SELECTED-LANGUAGE AUTHORITY
+~~~
+
 ## Current Work
 
 ~~~text
