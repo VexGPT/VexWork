@@ -49,7 +49,11 @@
     "github.commit.vexlife-android.14bb2c4e82eb6cf55cbdc6ef5f2c65d38f97e45b",
     "repo.vexlife-android:architecture/relay/README.md",
     "repo.vexlife-android:architecture/relay/src/main/kotlin/com/vextreme/vexlife/android/relay/VexCompoundState.kt",
-    "repo.vexlife-android:architecture/relay/src/main/kotlin/com/vextreme/vexlife/android/relay/VexCompoundRelay.kt"
+    "repo.vexlife-android:architecture/relay/src/main/kotlin/com/vextreme/vexlife/android/relay/VexCompoundRelay.kt",
+    "github.commit.vexlife-android.a43feebec19e001f109f5394f166cda145385e76",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/ThemeMode.kt",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeApp.kt",
+    "repo.vexlife-android:app/src/test/kotlin/com/vextreme/vexlife/android/ui/VexLifeSessionTest.kt"
   ],
   "formedAt": "2026-10-26T07:26:46.000Z"
 }
