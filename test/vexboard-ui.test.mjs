@@ -20,6 +20,40 @@ const intentTopology = JSON.parse(fs.readFileSync(new URL('../projects/vexboard/
 const patientZeroCatalog = JSON.parse(fs.readFileSync(new URL('../projects/vexboard/examples/board-source-catalog.json', import.meta.url), 'utf8'));
 const themeModeBoard = JSON.parse(fs.readFileSync(new URL('../projects/vexboard/examples/vexlife-debug-menu-theme-mode.board.json', import.meta.url), 'utf8'));
 
+const repositoryRootUrl = new URL('../', import.meta.url);
+
+function staticImportSpecifiers(source) {
+  return [...source.matchAll(/^\s*import\s+(?:[\s\S]*?\s+from\s+)?['"]([^'"]+)['"];\s*$/gm)]
+    .map((match) => match[1]);
+}
+
+function browserBootModuleClosure() {
+  const inlineModule = page.match(/<script type="module">\s*([\s\S]*?)<\/script>/)?.[1];
+  assert.ok(inlineModule, 'VexBoard module script required');
+  const entryUrl = new URL('../vexboard/index.html', import.meta.url);
+  const pending = staticImportSpecifiers(inlineModule)
+    .map((specifier) => ({ specifier, parentUrl: entryUrl }));
+  const visited = new Set();
+
+  while (pending.length) {
+    const { specifier, parentUrl } = pending.pop();
+    assert.ok(
+      specifier.startsWith('.'),
+      `browser boot import ${specifier} from ${parentUrl.pathname} must be repository-relative`,
+    );
+    const moduleUrl = new URL(specifier, parentUrl);
+    assert.ok(moduleUrl.href.startsWith(repositoryRootUrl.href), 'browser boot import must stay in repository');
+    if (visited.has(moduleUrl.href)) continue;
+    visited.add(moduleUrl.href);
+    const source = fs.readFileSync(moduleUrl, 'utf8');
+    for (const child of staticImportSpecifiers(source)) {
+      pending.push({ specifier: child, parentUrl: moduleUrl });
+    }
+  }
+
+  return visited;
+}
+
 test('VexBoard Pages entry exposes create/open/read-only/fork/save-draft workflow', () => {
   assert.match(page, /Create new/);
   assert.match(page, /Open VexBoard self-map/);
@@ -41,6 +75,18 @@ test('read-only fork preserves the actual draft identity as the active board coo
   assert.ok(forkLine);
   assert.equal((forkLine.match(/ref\('draft\.vexboard'\)/g) ?? []).length, 1);
   assert.doesNotMatch(forkLine, /boardRef:ref\('draft\.vexboard'\)/);
+});
+
+test('browser boot module closure stays browser-resolvable and excludes Node-only core imports', () => {
+  const closure = browserBootModuleClosure();
+  const androidProjectorUrl = new URL('../src/core/vexboard-android-source-projector.mjs', import.meta.url).href;
+  const nodeSemanticUrl = new URL('../src/core/semantic.mjs', import.meta.url).href;
+  assert.ok(closure.has(androidProjectorUrl));
+  assert.equal(closure.has(nodeSemanticUrl), false);
+
+  const projectorSource = fs.readFileSync(new URL('../src/core/vexboard-android-source-projector.mjs', import.meta.url), 'utf8');
+  assert.match(projectorSource, /from '\.\.\/shared\/vexboard-model\.mjs'/);
+  assert.doesNotMatch(projectorSource, /from '\.\/vexboard\.mjs'/);
 });
 
 test('browser UI uses the shared BoardControl adapter for mutation rather than source/provider writes', () => {

@@ -5069,5 +5069,49 @@ Source-static regression coverage now requires:
 
 Lived browser proof remains pending until this candidate is deployed.
 
+### Lived blank-screen root cause — browser boot crossed into Node-only core
+
+Victor's lived browser screenshot re-confirmed the deployed failure shape:
+
+~~~text
+classic VexBoard header renders
+module-owned application body remains blank
+~~~
+
+The deployed main boot graph now has a source-conclusive cause:
+
+~~~text
+vexboard/index.html
+  -> static src/core/vexboard-android-source-projector.mjs
+  -> src/core/vexboard.mjs
+  -> src/core/semantic.mjs
+  -> import crypto from 'node:crypto'
+~~~
+
+`node:crypto` is a Node runtime module specifier, not a browser-resolvable module. Because the Android
+projector sat in the static browser boot closure, the browser rejected the module graph before
+`landing()` could render.
+
+The correction stays at the narrow boundary where the dependency was unnecessary:
+
+~~~text
+Android source projector
+  before -> core vexboard.mjs -> Node semantic hashing
+  now    -> shared browser-safe BoardGraph / BoardProjection normalization
+
+core Node semantic hashing
+  unchanged
+  remains available to Node-owned core consumers
+~~~
+
+This preserves the Android projector's actual need: normalize the graph/projection it constructs before
+returning a read-only browser draft. The projector already strips semantic fingerprints from the draft,
+so pulling the Node hashing owner into the browser added boot coupling without adding browser truth.
+
+A deterministic regression now walks the transitive static browser boot import closure and rejects
+any non-relative/bare module specifier. That would have caught `node:crypto` before deployment.
+
+The earlier Family-Kotlin lazy-load and visible boot-error fallback remain useful secondary hardening, but
+they are no longer described as the causal blank-screen repair.
 <!-- [VXG RealForever][VEXBOARD][VEXSYNC-CONVERGENCE][FOUNDATION-BASELINE] -->
 

@@ -1,4 +1,4 @@
-import { createBoardGraph, createBoardProjection } from './vexboard.mjs';
+import { normalizeBoardGraph, normalizeBoardProjection } from '../shared/vexboard-model.mjs';
 import { compileVexLifeAndroidScreenDesign } from './vexboard-android-construction.mjs';
 import {
   normalizeScreenDesign,
@@ -1149,14 +1149,14 @@ function experienceBoard(snapshot, design, viewportProfile) {
   items.push(projectionItem('item.vexstream.depth-portal', portalRef, 'RECTANGLE', rect(460, 1230, 230, 80), layer++, productItemRef));
   hints.push(presentationHint('item.vexstream.depth-portal', 'DEPTH_PORTAL'));
 
-  const graph = createBoardGraph({
+  const graph = normalizeBoardGraph({
     schemaVersion: 'vexboard.board-graph/v1',
     graphRef,
     nodes,
     relationships,
     sourceRefs,
   });
-  const projection = createBoardProjection({
+  const projection = normalizeBoardProjection({
     schemaVersion: 'vexboard.board-projection/v1',
     projectionRef,
     graphRef,
@@ -1341,14 +1341,14 @@ function depthBoard(snapshot, design, viewportProfile) {
     endpointY += 78;
   });
 
-  const graph = createBoardGraph({
+  const graph = normalizeBoardGraph({
     schemaVersion: 'vexboard.board-graph/v1',
     graphRef,
     nodes,
     relationships,
     sourceRefs,
   });
-  const projection = createBoardProjection({
+  const projection = normalizeBoardProjection({
     schemaVersion: 'vexboard.board-projection/v1',
     projectionRef,
     graphRef,
