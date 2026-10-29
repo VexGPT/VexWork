@@ -6389,7 +6389,7 @@
       "label": "Consolidate Terrain reader return-context mutation ownership",
       "purpose": "Reduce drift in Terrain reader return semantics by giving the existing returnKind / returnEntrySlug / returnReaderId relationship one bounded mutation owner while preserving current source terms, current Back/history behavior, existing static contract reads, and the distinction between implementation context and any future semantic Family/Control identity.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "COMPLETED",
       "workDisposition": "ACTIVE",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
@@ -6405,14 +6405,20 @@
         "github.pull.vextreme.488",
         "repo.vextreme:pages/terrain-map.html",
         "repo.vextreme:tests/45-terrain-journey.test.js",
-        "repo.vextreme:tests/85-terrain-view-contract.test.js"
+        "repo.vextreme:tests/85-terrain-view-contract.test.js",
+        "github.pull.vextreme.498",
+        "github.commit.vextreme.941d34d4f01ffc80bf680f746e66d51a4182bd62",
+        "github.actions.vextreme.tests.40879042166",
+        "github.actions.vextreme.key-alignment.40879042250",
+        "github.actions.vextreme.tests.40879369434",
+        "github.actions.vextreme.pages.40879368161"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-29T12:50:00.000Z",
-      "updatedAt": "2026-10-29T12:50:00.000Z"
+      "updatedAt": "2026-10-29T13:09:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -9871,6 +9877,38 @@
         "github.actions.vextreme.pages.40872761322"
       ],
       "createdAt": "2026-10-29T12:25:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.architecture-convergence.terrain-reader-return-context.verifying.pr498-merge",
+      "workRef": "work.vextreme.architecture-convergence.terrain-reader-return-context",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Vextreme PR #498 is accepted source on current main and its exact currentized candidate passed repository Tests plus Key Alignment. The refactor preserves existing Back/history semantics while consolidating the three return-context compatibility fields behind one mutation owner.",
+      "actorRef": "actor.chatgpt.vextreme-architecture-convergence",
+      "sourceRefs": [
+        "github.pull.vextreme.498",
+        "github.commit.vextreme.941d34d4f01ffc80bf680f746e66d51a4182bd62",
+        "github.actions.vextreme.tests.40879042166",
+        "github.actions.vextreme.key-alignment.40879042250"
+      ],
+      "createdAt": "2026-10-29T13:08:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.architecture-convergence.terrain-reader-return-context.completed.pr498-postmerge",
+      "workRef": "work.vextreme.architecture-convergence.terrain-reader-return-context",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "Post-merge Vextreme Tests and GitHub Pages deployment both passed for PR #498. This work is a behavior-preserving implementation consolidation with no separate visual/lived acceptance predicate, so accepted source plus post-merge deterministic/deployment proof closes the bounded refactor.",
+      "actorRef": "actor.chatgpt.vextreme-architecture-convergence",
+      "sourceRefs": [
+        "github.pull.vextreme.498",
+        "github.commit.vextreme.941d34d4f01ffc80bf680f746e66d51a4182bd62",
+        "github.actions.vextreme.tests.40879369434",
+        "github.actions.vextreme.pages.40879368161"
+      ],
+      "createdAt": "2026-10-29T13:09:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",

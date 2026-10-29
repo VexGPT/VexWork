@@ -340,6 +340,13 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(vextremeArchitectureReaderReturnContext.sourceRefs.includes('github.pull.vextreme.488'), true);
   assert.equal(vextremeArchitectureTerrainReader.state, 'VERIFYING');
   assert.deepEqual(vextremeArchitectureTerrainReader.dependencyRefs, []);
+
+  const vextremeArchitectureReturnContext = graph.items.find((item) => item.workRef === 'work.vextreme.architecture-convergence.terrain-reader-return-context');
+  assert.equal(vextremeArchitectureReturnContext.state, 'COMPLETED');
+  assert.deepEqual(vextremeArchitectureReturnContext.dependencyRefs, []);
+  assert.equal(vextremeArchitectureReturnContext.sourceRefs.includes('github.pull.vextreme.498'), true);
+  assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vextreme.architecture-convergence.terrain-reader-return-context.verifying.pr498-merge'));
+  assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vextreme.architecture-convergence.terrain-reader-return-context.completed.pr498-postmerge'));
   assert.equal(vextremeArchitectureTerrainReader.sourceRefs.includes('github.pull.vextreme.493'), true);
   assert.equal(vextremeArchitectureTerrainReader.sourceRefs.includes('github.commit.vextreme.36ced69ee6719bf05481110a753aee9e989d4885'), true);
   assert.ok(graph.transitions.some((transition) =>

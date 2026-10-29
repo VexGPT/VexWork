@@ -925,8 +925,8 @@ work.vextreme.architecture-convergence.terrain-journey-inspection
   accepted source + deployment; lived usefulness of richer Inspect projection still pending
 
 work.vextreme.architecture-convergence.terrain-reader-return-context
-  RUNNING
-  consolidate return-context mutation ownership without changing semantic identity
+  COMPLETED
+  one return-context mutation owner accepted through PR #498
 
 work.vextreme.architecture-convergence.terrain-reader-navigation
   VERIFYING
@@ -979,3 +979,62 @@ Descend to exact current repository source before mutating Vextreme. This Projec
 work-currentness owner, not cross-repository implementation authority.
 
 <!-- [VXG RealForever][VEXTREME][ARCHITECTURE-CONVERGENCE] -->
+
+
+## Terrain reader return-context completion
+
+The bounded consolidation is now accepted Vextreme source through PR #498 / merge
+`941d34d4f01ffc80bf680f746e66d51a4182bd62`.
+
+The first candidate test correctly found one surviving direct mutation in curiosity-overview history
+restoration. That bypass was removed before integration, so the final accepted invariant is real:
+
+~~~text
+activeReaderReturnKind
+activeReaderReturnEntrySlug
+activeReaderReturnReaderId
+
+initialize once
+-> mutate only through:
+   setReaderReturnContext(...)
+   clearReaderReturnContext()
+~~~
+
+Existing readable compatibility coordinates remain because the active Terrain contract and Back/history
+rendering still consume them. The refactor therefore reduces mutation ownership without claiming a new
+semantic owner.
+
+Acceptance evidence:
+
+~~~text
+candidate Tests PASS
+  40879042166
+
+candidate Key Alignment PASS
+  40879042250
+
+accepted merge
+  941d34d4f01ffc80bf680f746e66d51a4182bd62
+
+post-merge Tests PASS
+  40879369434
+
+GitHub Pages deployment PASS
+  40879368161
+~~~
+
+The unrelated Global Core generated-currentness Build Index drift remains outside this work's two-path
+membrane.
+
+Name Ontology disposition remains unchanged:
+
+~~~text
+reader return context
+  = implementation relationship description
+  != Family identity
+  != Control identity
+  != new semantic owner
+~~~
+
+A future object-shape collapse remains held while PR #488 owns the shared static Terrain contract path;
+there is no reason to manufacture another abstraction merely to make the three fields visually prettier.
