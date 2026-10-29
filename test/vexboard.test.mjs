@@ -373,6 +373,43 @@ test('local draft flow creates, forks, serializes and uses the same BoardControl
   assert.deepEqual(collectionRoundTrip[0].adoptionReadiness, fork.adoptionReadiness);
 });
 
+test('read-only fork preserves optional Family Kotlin construction sidecar', async () => {
+  const source = {
+    schemaVersion: Reader.VEXBOARD_DRAFT_SCHEMA,
+    draftRef: 'board.family-kotlin.source',
+    title: 'Family Kotlin source',
+    mode: 'READ_ONLY_SOURCE',
+    derivedFromRefOrNull: null,
+    savedAtOrNull: null,
+    graph: baseGraph(),
+    projection: baseProjection(),
+    familyKotlin: {
+      schemaVersion: 'vexboard.family-kotlin/poc-v1',
+      modelRef: 'model.family-kotlin.test',
+      targetSourceRefOrNull: null,
+      testSourceRef: 'repo.test:FamilyTest.kt',
+      families: [{
+        familyRef: 'family.test',
+        familyName: 'TestFamily',
+        controlForm: 'SEALED',
+        states: ['Idle'],
+        resources: [],
+        controls: [{
+          controlRef: 'control.keep',
+          name: 'Keep',
+          resourceIdRefOrNull: null,
+          payloadFields: [],
+        }],
+      }],
+      sourceRefs: ['repo.test:FamilyTest.kt'],
+    },
+  };
+
+  const fork = await Reader.forkReadOnlyBoard(source, { draftRef: 'draft.family-kotlin' });
+  assert.deepEqual(fork.familyKotlin, source.familyKotlin);
+  assert.notEqual(fork.familyKotlin, source.familyKotlin);
+});
+
 test('shared model rejects schema drift rather than silently dropping unknown fields', () => {
   const graph = baseGraph();
   graph.unknown = true;
