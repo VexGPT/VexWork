@@ -963,6 +963,86 @@ The architecture lesson taken from VexLife-Android PR #193 is the ownership prin
 shape: behavior-driving meaning is closed at the rightful owner before downstream history/presentation
 consumes it.
 
+## Terrain reader return-vocabulary completion
+
+The scalability refinement is now accepted Vextreme source.
+
+PR #502 first closed the behavior-driving vocabulary to the five meanings already present in Terrain:
+
+~~~text
+collection
+curiosity-overview
+entry
+group-home
+reader
+~~~
+
+PR #503 then closed the remaining split-truth seam for the two coordinate-bearing meanings:
+
+~~~text
+entry
+  -> valid entry document coordinate required
+
+reader
+  -> known reader identity required
+
+invalid / stale coordinate-bearing context
+  -> whole context fails closed to collection
+~~~
+
+The same bounded owner now preserves those coordinates through browser Forward restoration and reader
+Previous/Next replacement, so the semantic return kind cannot survive after its required coordinate has
+been silently dropped.
+
+This deliberately applies the accepted VexLife-Android #193 ownership law without copying its Kotlin
+type shapes:
+
+~~~text
+behavior-driving identity
++ exact narrowing when that meaning requires it
+-> formed together at the rightful owner
+
+!= arbitrary string soup
+!= partial identity
+!= new TerrainNavigationFamily
+!= generic browser relationship registry
+~~~
+
+Current proof chain:
+
+~~~text
+Vex Relay A004 outer RETURN
+  878099edeed37d8972d7e304ea690e6cac62dc96407e6e4335bc814b0e7f8cb7
+
+retained canonical inner RETURN
+  3d38733874460ff8435e47052b38b21f66ef7f124f2f0eb2c4152f5244e5200c
+
+exact candidate
+  head a432d072fe75e6b4226107351aa260490637abac
+  tree 653a28eea5ca5da05a82c26beeb96356a1ac8514
+
+focused Terrain Journey
+  18 / 18 PASS
+
+Key Alignment
+  PASS
+
+work coordination config
+  PASS
+
+Independent Assurance
+  CLEAR
+
+accepted merge
+  87571924f769fe4a1dad1084e2f68775f18d37b1
+
+accepted merge tree
+  653a28eea5ca5da05a82c26beeb96356a1ac8514
+  = exact A004-proven candidate tree
+~~~
+
+No GitHub Actions result is used as proof for this row, and no Local Workspace route was used.
+
 ## Current Work
 
 ~~~text
@@ -985,9 +1065,11 @@ work.vextreme.architecture-convergence.terrain-reader-return-context
   one return-context mutation owner accepted through PR #498
 
 work.vextreme.architecture-convergence.terrain-reader-return-vocabulary
-  RUNNING
-  PR #502 closes the existing five behavior-driving return meanings at that mutation owner
-  exact-head Tests + Key Alignment pass; stacked on #501 only because the two rows share the same source paths
+  COMPLETED
+  PR #502 closed the five behavior-driving return meanings at the existing mutation owner
+  PR #503 made entry/reader coordinates atomic with their return kind and preserved them through history + reader replacement
+  Vex Relay A004 exact-head proof PASS; Independent Assurance CLEAR
+  merge 87571924f769fe4a1dad1084e2f68775f18d37b1 is tree-exact to the proven candidate
 
 work.vextreme.architecture-convergence.terrain-reader-navigation
   VERIFYING
