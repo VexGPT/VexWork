@@ -546,38 +546,111 @@ VEXCOMPOUNDSTATE_EXISTS
 != INTERFACE_RELATIONSHIP_MEANING_EXISTS
 ~~~
 
-The current foundation question is now narrower and explicit:
+### Foundation slice F1 — portable Compound-convergence meaning
 
-> What is the smallest **VexLife-owned portable relationship/convergence contract** that can preserve
-> independently-owned current truths -> coherent relationship truth -> rightful Family State,
-> while reusing `foundation.vexlife.state-relay.v1` and leaving effect owners separate?
+Current source descent now distinguishes the remaining semantic foundation from both the already-
+accepted State Relay runtime and the accepted Play/Pause Behavior practicum.
 
-The answer may be a sibling contract family, or an earned generalization/version of an existing
-contract, but source must decide that after inspecting the current Blueprint composition/validator
-boundary and at least the real consumers that would share the executable invariant.
+The Play/Pause contract is intentionally feature-specific:
 
-Do not pre-decide by name.
+~~~text
+vexlife.portable-behavior-contract/v1
+  owns Play/Pause State / Control / Act / Effect / Projection laws
+  + pending-intent / provider-acknowledgement semantics
+  + a closed Play/Pause admission vocabulary
+~~~
 
-Current concrete owners remain inputs/effect owners rather than being replaced:
+PR #902 formed that contract as the **first feature-specific portable Behavior practicum**. Its
+validator and downstream construction/parity evidence are therefore accepted source that should not
+be weakened, split or retrofitted merely to make Interface currentness fit.
+
+The smaller F1 direction is a **sibling portable Compound-convergence relationship contract** under
+the VexLife Universal Blueprint owner. The exact schema/name remains proposed until VexLife source
+admission; the semantic placement is grounded:
+
+~~~text
+independently-owned input truths
+  -> coherent retained Compound input
+  -> derived relationship output
+  -> rightful Family semantic State
+  + existing Control
+  -> existing Act/effect owner
+~~~
+
+F1 owns only portable relationship meaning such as:
+
+~~~text
+input-owner identities and required currentness
+relationship output identities
+coherence/admission laws
+source/document identity mismatch laws
+stale observation rejection/current observation admission
+relationship output -> rightful Family-State handoff
+Projection / relationship truth != execution authority
+source descent + proof obligation identities
+~~~
+
+F1 does **not** own:
+
+~~~text
+VexCompoundState mechanics
+browser focus/pageshow/visibility listeners
+browser navigation/reload
+Companion recovery execution
+Conversation persistence
+message append/model execution
+setup lifecycle
+~~~
+
+The existing Control/effect path is reused rather than renamed:
+
+~~~text
+element.chat.composer
+-> action.message.send
+-> permission.conversation.send
+-> process.vexlife.conversation.send-addressed
+-> Conversation service owns append
+~~~
+
+So Interface Compound readiness gates/admit the existing Send circuit; it does not create
+`InterfaceSend`.
+
+The same ownership rule applies to recovery:
 
 ~~~text
 module.vexlife.core.companion-availability-reentry
-  -> canonical source-bound Companion availability / same-binding re-entry meaning
+  owns action.companion.reenter-current-binding meaning
 
-feature.vexlife.addressed-conversation
-+ process.vexlife.conversation.send-addressed
-  -> canonical Conversation/message-send meaning and effect boundary
+Interface Compound relationship
+  may derive RECOVERABLE
 
-foundation.vexlife.state-relay.v1
-  -> combine + semantic no-op suppression foundation
+RECOVERABLE
+  != recovery execution authority
+~~~
 
-missing VexLife relationship/convergence contract
-  -> independently-owned current truths
-  -> coherent relationship meaning
-  -> rightful Family-state handoff
+The fact that `action.companion.reenter-current-binding` is source-owned by the Companion
+availability/re-entry contract but is not yet registered beside `action.message.send` in the
+Universal Blueprint action fragment is a **separate registration/currentness question**, not
+permission for F1 to become the recovery owner.
 
-browser implementation
-  -> target-native observation/lifetime/presentation realization
+Candidate F1 source placement, to be bound only after VexLife AUTHORING admission:
+
+~~~text
+existing owner surfaces
+  docs/UNIVERSAL-BLUEPRINT.md
+  blueprint/vexlife.blueprint.json
+  src/core/blueprint.mjs
+
+new sibling contract family
+  one portable Compound-convergence contract composition slot
+  one validator / identity-index owner
+  one Interface-currentness contract as first concrete consumer
+  one focused semantic-law proof
+
+preserve unchanged
+  vexlife.portable-behavior-contract/v1
+  VexStream Play/Pause portable contract
+  accepted downstream SDK / C# parity lineage
 ~~~
 
 No new broad state-domain/service is earned merely because this relationship needs a contract.
@@ -589,11 +662,40 @@ Permanent:
 ~~~text
 REUSABLE_MEANING != REUSABLE_TYPE_EQUATION
 USEFUL_PRECEDENT != DIRECT_SCHEMA_FIT
+PLAY_PAUSE_BEHAVIOR_V1 != GENERIC_COMPOUND_SCHEMA
+SIBLING_RELATIONSHIP_CONTRACT != PLAY_PAUSE_MIGRATION
 VALIDATOR_MISMATCH -> DO_NOT_LAUNDER_SEMANTICS
 FOUNDATION_REUSE != VALIDATOR_WEAKENING
-ANDROID_KOTLIN_FORM != VEXLIFE_BROWSER_FORM
 RELATIONSHIP_OUTPUT != EFFECT_OWNER
+READY_GATE != NEW_SEND_EFFECT
 ~~~
+
+### Foundation-to-interface sequence
+
+~~~text
+F0  currentize accepted State Relay / VexCompoundState discoverability
+    -> no runtime behavior change
+
+F1  source-place portable Compound-convergence relationship meaning
+    -> no browser/native effect yet
+
+F2  realize Interface Compound in browser/native source
+    -> server/document identity observation
+    -> lifecycle-triggered re-observation
+    -> stale-read/current-observation admission
+    -> existing Send/recovery/navigation effect owners
+
+F3  prove the ordinary human seam
+    -> existing tab
+    -> ordinary setup/recovery
+    -> current source/runtime/Conversation convergence
+    -> preserved draft
+    -> real Send + Heretic reply
+    -> re-entry
+~~~
+
+This ordering is foundation-first without pretending that a proposed F1 schema is already accepted
+VexLife source.
 
 ## Interface Compound Relay — relationship to form
 

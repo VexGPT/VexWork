@@ -74,7 +74,7 @@
       "workRef": "work.vexlife.interface-refinement.interface-compound-relay",
       "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
       "label": "Current — Interface Compound Relay convergence",
-      "purpose": "Currentize the existing VexLife State Relay foundation/module map so accepted PR #790 Compound semantics are discoverable, then source-place the smallest VexLife product-semantic Family Circuit / Compound relationship contract before interface-specific repair. The universal core already owns immutable snapshots, observation truth, coherent-input gating and serialized VexCompoundState reconciliation; do not recreate that runtime. The remaining semantic foundation must reconcile independently owned current truths into rightful Family state without forcing Interface currentness through the Play/Pause-specific behavior-contract v1 validator. Preserve Companion availability, Conversation, browser/navigation and lifecycle/runtime as separate truth/effect owners; do not invent CompoundFamily, a second state owner, generic runtime, global revision counter or Kotlin-shaped browser framework.",
+      "purpose": "Finish Interface Compound Relay foundation-first in four bounded slices: F0 currentizes the existing VexLife State Relay/VexCompoundState foundation and module maps so accepted PR #790 Compound semantics are discoverable; F1 source-places a VexLife-owned portable Compound-convergence relationship contract without modifying the Play/Pause-specific portable Behavior v1 lineage; F2 realizes that relationship in browser/native source while reusing existing Send, Companion re-entry and navigation/lifecycle effect owners; F3 proves the ordinary existing-tab setup/recovery/Send/re-entry human seam. Preserve independently owned truth/effect boundaries and do not invent CompoundFamily, InterfaceSend, a second Compound runtime, global revision counter or Kotlin-shaped browser framework.",
       "workClass": "TASK",
       "state": "READY",
       "priorityClass": "IMMEDIATE",
@@ -141,7 +141,10 @@
         "repo.vexlife:source-manifest-parts/bucket-d7.json",
         "repo.vexlife:source-manifest-parts/bucket-8b.json",
         "repo.vexlife:source-manifest-parts/bucket-a8.json",
-        "repo.vexlife:scripts/source-manifest.mjs"
+        "repo.vexlife:scripts/source-manifest.mjs",
+        "repo.vexlife:blueprint/fragments/screens/chat.json",
+        "repo.vexlife:blueprint/fragments/actions.json",
+        "github.pull.vexlife.902"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
@@ -1116,7 +1119,11 @@
     "repo.vexlife:source-manifest-parts/bucket-d7.json",
     "repo.vexlife:source-manifest-parts/bucket-8b.json",
     "repo.vexlife:source-manifest-parts/bucket-a8.json",
-    "repo.vexlife:scripts/source-manifest.mjs"
+    "repo.vexlife:scripts/source-manifest.mjs",
+    "repo.vexlife:blueprint/fragments/screens/chat.json",
+    "repo.vexlife:blueprint/fragments/actions.json",
+    "github.pull.vexlife.902",
+    "repo.vexlife:src/core/companion-availability-reentry.mjs"
   ],
   "formedAt": "2026-10-25T01:23:08.000Z"
 }
