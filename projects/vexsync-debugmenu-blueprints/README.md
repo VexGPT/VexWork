@@ -6970,3 +6970,48 @@ Repository Gradle/JVM: PENDING.
 
 <!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][STATE-RELAY][ARBITRARY-DEPTH] -->
 
+
+
+---
+
+## Origin-Walk live StateRelay placement
+
+**Downstream Android #192 head:** `87f850a1e9a4dfbbe0c8b4a2ae4cc9ac67296be1`
+
+The fourth Origin reference now includes an integrated test-only Family that makes StateRelay's
+placement explicit:
+
+~~~text
+Family.activate(Control)
+-> StateRelay.process { CURRENT ->
+     Acts.resolve(CURRENT, Control)
+     -> immediate State consequence
+   }
+-> StateRelay publishes NEXT current State
+-> DisplayState derives from the same StateRelay.current
+~~~
+
+For the arbitrary-depth tree:
+
+~~~text
+RenameNode(C1)
+-> CURRENT Family State
+-> Act resolves inside StateRelay
+-> normalized tree replaces only C1
+-> hierarchy refs preserve A1/B1/A2/B2
+-> DisplayState traverses NEXT
+~~~
+
+This separates:
+- StateRelay: currentness/serialization;
+- Acts: semantic State + Control meaning;
+- normalized tree: structural identity/completeness at arbitrary depth;
+- DisplayState: outward/projectable meaning.
+
+Async/provider results must re-enter StateRelay and be evaluated against CURRENT State instead of
+receiving direct write authority.
+
+Production VexBehaviorV2Family still uses its patient-zero current field; StateRelay remains a
+test-only candidate until the type/ownership fit is earned.
+
+<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][STATE-RELAY][LIVE-LOOP] -->
