@@ -1043,6 +1043,54 @@ accepted merge tree
 
 No GitHub Actions result is used as proof for this row, and no Local Workspace route was used.
 
+## Closed semantic identity vs extensible registry
+
+The Android #193 architecture standard should **not** be applied as “turn every string into a closed type.”
+
+Current Vextreme source demonstrates two different semantic roles:
+
+~~~text
+Terrain reader return context
+  returnKind changes navigation meaning
+  entry / reader kinds require paired coordinates
+  stale or partial identity can lie about where Back returns
+  -> close the vocabulary at the rightful mutation owner
+  -> fail incomplete coordinate-bearing identity closed
+
+Vextreme renderMode registry
+  arcs-v2.json names a presentation renderer
+  docs/architecture/07-registry.md deliberately makes named registries data-driven
+  new renderer keys are expected to be extensible
+  unknown keys fall back to dots with one warning
+  -> preserve the open registry contract
+  -> do not manufacture a closed Family / Control merely because the value is a string
+~~~
+
+The convergence rule is therefore:
+
+~~~text
+behavior-driving semantic identity
+  -> close when partial/arbitrary meaning can create contradictory truth
+
+extensible repository registry key
+  -> preserve source-owned extension/fallback semantics
+
+presentation / causal description
+  -> do not promote into identity merely because it is named
+~~~
+
+This keeps the useful lesson from VexLife-Android PR #193 — semantic meaning belongs to its rightful owner —
+without copying Android/Kotlin type shapes into a browser/data architecture that intentionally has a
+different extension model.
+
+Source grounding:
+
+~~~text
+repo.vextreme:docs/architecture/07-registry.md
+repo.vextreme:lib/vextreme-index-v2.js
+repo.vextreme:lib/build-index.js
+~~~
+
 ## Current Work
 
 ~~~text
