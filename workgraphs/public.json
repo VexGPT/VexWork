@@ -6232,14 +6232,14 @@
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-29T08:40:27.000Z",
-      "updatedAt": "2026-10-29T08:40:27.000Z",
+      "updatedAt": "2026-10-29T09:16:01.000Z",
       "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vextreme.alignment.chronology-recovery",
       "parentWorkRefOrNull": "work.vextreme.alignment.outcome",
       "label": "Recover source-supported chronology for undated canonical records",
       "purpose": "Audit the 46 current blank-date id-null canonical records using preserved content and provenance, distinguish record/event time from Squarespace published/modified time, and promote only defensible chronology rather than inferring creation dates from the first date string found. The already-valid 111-record Full Timeline remains independently repairable.",
       "workClass": "TASK",
-      "state": "PLAN_VALIDATED",
+      "state": "RUNNING",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
       "sourceRefs": [
@@ -6250,7 +6250,9 @@
         "repo.vextreme:docs/ingestion/VEX-CONTENT-FORGE-BREADTH.md",
         "repo.vextreme:docs/ingestion/source-pages",
         "repo.vextreme:docs/ingestion/workmaps/content-forge-consolidation-proposal.json",
-        "repo.vextreme:docs/architecture/19-record-readers.md"
+        "repo.vextreme:docs/architecture/19-record-readers.md",
+        "github.pull.vextreme.482",
+        "github.commit.vextreme.0f8ced4e45fcf25c9604f78b34c7863ceee01d68"
       ]
     },
     {
@@ -9838,6 +9840,34 @@
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamMusicState.kt"
       ],
       "createdAt": "2026-10-25T12:12:29.462Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.alignment.chronology-recovery.ready.pr482",
+      "workRef": "work.vextreme.alignment.chronology-recovery",
+      "priorState": "PLAN_VALIDATED",
+      "nextState": "READY",
+      "reason": "The chronology census is decomposed into 20 source-supported admissions and 26 explicit holds with one bounded source artifact and a defined later exact-current application/rebuild contract.",
+      "actorRef": "actor.chatgpt.vextreme-alignment",
+      "sourceRefs": [
+        "github.pull.vextreme.482",
+        "github.commit.vextreme.0f8ced4e45fcf25c9604f78b34c7863ceee01d68"
+      ],
+      "createdAt": "2026-10-29T09:16:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.alignment.chronology-recovery.running.pr482",
+      "workRef": "work.vextreme.alignment.chronology-recovery",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Vextreme PR #482 now carries the first chronology recovery map for review; no canonical node/date mutation is claimed yet.",
+      "actorRef": "actor.chatgpt.vextreme-alignment",
+      "sourceRefs": [
+        "github.pull.vextreme.482",
+        "github.commit.vextreme.0f8ced4e45fcf25c9604f78b34c7863ceee01d68"
+      ],
+      "createdAt": "2026-10-29T09:16:01.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
