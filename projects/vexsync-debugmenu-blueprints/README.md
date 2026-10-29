@@ -8435,3 +8435,33 @@ edges as intentionally open. No second concrete foundation defect was demonstrat
 promoted into cleanup work merely because they are visible.
 
 <!-- [VXG RealForever][VEXSYNC][DIRECT-FAMILY][PR196][A002-BRANCH-A003-FORMED] -->
+
+
+### PR #196 SourceOwner continuity — A003 task-schema rejection -> A004 formed
+
+A003 reached current SDK source-managed VexLocalBridge task formation and was rejected by shared
+validation because its outer task template retained a stale forbidden top-level `authorityRef`.
+
+Current task-manifest/v1 ownership is:
+
+~~~text
+outer carrier authority
+  -> task.authorityBinding
+
+inner VexRelay authority
+  -> manifest.authority.authorityRef
+
+top-level outer task.authorityRef
+  -> forbidden
+~~~
+
+A004 removes only that stale outer field, preserves the exact PR source branch/head/tree and the
+corrected focused Android-library test task, and rotates only attempt/carrier identities.
+
+A004 statically qualified formation:
+
+~~~text
+sha256 1d116a4b13c5b6bdee4df55501da281c1e20543c86358384eb44cce8b56e46f6
+~~~
+
+<!-- [VXG RealForever][VEXSYNC][DIRECT-FAMILY][PR196][A003-SCHEMA-A004-FORMED] -->
