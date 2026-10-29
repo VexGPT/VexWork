@@ -5086,14 +5086,14 @@ Repository Gradle/JVM proof remains pending.
 
 ---
 
-## Current checkpoint — readable Family review boundary
+## Current checkpoint — readable Family with StateRelay ownership restored
 
 Current Android review PR:
 
 ~~~text
 #193
 head:
-4495826757f1036d7e369334efe5c6f0fbf9c5e0
+260b77fdbc7421ef6ac4ac05ecfc81a4d9f6cad6
 ~~~
 
 Origin-Walk/history source:
@@ -5104,13 +5104,34 @@ head:
 dd050ff81db169277a77cad4e4bd6a4f21e58d0e
 ~~~
 
-#193 has now been condensed past the earlier V2/resolve implementation vocabulary.
+The readability rewrite had introduced a Family-local `retainedState`, creating a second semantic
+State holder instead of preserving the earlier StateRelay ownership law. That regression is now
+removed.
 
-Current feature-facing Family language:
+Current ownership:
+
+~~~text
+private stateRelay
+  MutableStateFlow<State>
+
+Family.states
+  -> stateRelay.asStateFlow()
+
+Family.currentState
+  -> states.value
+
+admit(nextState)
+  -> stateRelay.value = nextState
+~~~
+
+There is one live State holder in the current candidate.
+
+Current feature-facing grammar remains:
 
 ~~~text
 VexFamily<State, Control>
   currentState
+  states
   displayState
   activate(Control)
 
@@ -5122,61 +5143,50 @@ state<State.X> {
 }
 ~~~
 
-Current simplifications:
+The focused proof now performs two activations on the same live Family:
 
 ~~~text
-VexBehaviorV2 runtime surface          REMOVED
-resolve(...) language                  REMOVED
-recursive Family self-generic          REMOVED
-public Act carrier from activate(...)  REMOVED
-legacy V1 VexBehaviorFamily mutation   REMOVED FROM PR
-CompoundFamily/stateFactory            NOT ADMITTED
-Family-level revision                  NOT ADMITTED
+Empty
+-> Set("one")
+-> Ready("one")
+-> Set("two")
+-> Ready("two")
 ~~~
 
-The remaining generics bind only State and Control on the new Family path.
+and checks that `family.currentState == family.states.value` after admission.
 
-The existing Relay foundation continues to own the convergence/process pressure:
+Also corrected from the prior cleanup:
 
 ~~~text
-partial observations
-+ retained CURRENT InputState
--> complete InputState
--> process(complete InputState)
--> ONE OutputState(fields...)
+Family-local retainedState              REMOVED
+same-value whenCurrent equality filter  REMOVED
+two-live-activation proof               RESTORED
 ~~~
 
-The exact Family + Relay Single/Compound composition remains open. Process is not being turned into a
-second SCAE chain.
-
-Focused proof source:
+This fix did NOT add:
 
 ~~~text
-VexFamilyHighConfidenceTest
+new StateRelay hierarchy
+architecture:relay dependency
+revision/currentness token
+CompoundFamily
+stateFactory
+post-process Act
+new Store semantics
+provider/currentness machinery
 ~~~
 
-Fresh instances should use #193 for the current readable Family candidate and #192 only for the
-historical pressure / why-path.
-
-Open edges remain:
+Still-open edges remain the same:
 
 ~~~text
-one exact CURRENT Family decision boundary when Control and observation collide
-cross-cycle relationship memory as explicit CURRENT input
-provider / intent stable-identity mapping
+serialized competing-cause State decision / stale async result
+cross-cycle relationship memory
+provider / intent stable identity mapping
 exact Family + Relay Single/Compound composition
-whether remaining State/Control generic plumbing can be reduced further
+Process OutputState -> rightful Family.currentState handoff
 ~~~
 
-Current evidence:
+Repository Gradle/JVM proof for the current #193 head remains PENDING.
 
-~~~text
-readable Family source shape           YES
-V2 / resolve vocabulary removed        YES
-recursive Family self-generic removed  YES
-legacy V1 Family source changed        NO
-repository Gradle/JVM                  PENDING
-~~~
-
-<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][FAMILY][CURRENT-PR193] -->
+<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][FAMILY][STATE-RELAY-OWNERSHIP-RESTORED] -->
 
