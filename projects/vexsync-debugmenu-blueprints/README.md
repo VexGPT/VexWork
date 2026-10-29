@@ -23,6 +23,68 @@ The project exists to prove that process through a real specimen. It is not a cl
 VexUniverse construction architecture, intent ontology, compiler, proof generator or deployment loop is
 already known.
 
+## Current continuation checkpoint — Compound current State gap is closed
+
+Accepted Android main now carries the resolved Compound processing/current-State relationship through
+VexLife-Android PR #200:
+
+~~~text
+VexCompoundState(
+  inputState,
+  outputState,
+)
+
+incoming InputState
++ exact CURRENT VexCompoundState
+-> processStates(...)
+-> VexCompoundState(inputState, outputState)
+-> one current-State commit
+~~~
+
+The old VexSync question:
+
+~~~text
+Process OutputState
+-> ???
+-> Family.currentState
+~~~
+
+was framed around an incomplete value. `OutputState` is the derived projection inside the current
+Compound relationship; it is not separately admitted after processing.
+
+Permanent current rule:
+
+~~~text
+Compound current State
+  = retained input meaning + derived output meaning
+
+same input + same output
+  = same current Compound truth
+
+transition / occurrence history
+  != Compound current State
+~~~
+
+Accordingly, accepted Android `VexCompoundState` has no Compound lineage/revision counter. Feature or
+provider-owned revision fields may still exist when they carry real freshness/order semantics; they are
+not the Compound container's currentness identity.
+
+Accepted source:
+
+~~~text
+VexLife-Android PR #200
+merge/main  14bb2c4e82eb6cf55cbdc6ef5f2c65d38f97e45b
+~~~
+
+This closes the former Process/Compound gap. It does **not** close the separate Direct-Family
+serialized-admission work on PR #198, and it does not authorize a generic Compound-output -> Family-Control
+bridge; PR #197 remains withdrawn as the wrong seam.
+
+The current VexSync product foreground therefore remains unchanged: complete the real ThemeMode Android
+walk once the foreign #186 `VexLifeSession.kt` claim is lawfully released.
+
+<!-- [VXG RealForever][VEXSYNC][CURRENT-CONTINUATION][COMPOUND-CURRENT-STATE][PR200] -->
+
 ## Current-entry contract — read this before sibling fragments
 
 This README is the **canonical current entry for this VexSync process specimen**.
@@ -8547,18 +8609,24 @@ already-reconciled provider/repository truth
 Family supplies CURRENT State + serialization. Feature/source owners supply semantic currentness.
 No Family revision/generation oracle is introduced.
 
-Current accepted Relay remains a separate current owner:
+Accepted Relay current-State meaning is now explicit on Android main through PR #200:
 
 ~~~text
-Direct Family StateRelay
-  owns current Family State
-
 VexCompoundRelay
-  owns current Compound relationship State
+  processStates(InputState, CURRENT VexCompoundState)
+  -> VexCompoundState(inputState, outputState)
+  -> one current-State commit
 
-Process OutputState
-  != generic Family.currentState handoff
+OutputState
+  = projection inside the current Compound relationship
+  != a separate post-process value that must re-enter currentState
+
+Compound revision / lineage counter
+  = not part of current Compound truth
 ~~~
+
+This closes the former Process/Compound admission ambiguity. PR #198 remains a separate Direct-Family
+serialized-admission candidate; PR #200 does not make its local Family lock/store implementation final.
 
 A separate Execution custody mismatch is carried by stacked Android PR #199:
 
