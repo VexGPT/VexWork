@@ -338,7 +338,9 @@
         "github.pull.vexlife-android.197",
         "github.commit.vexlife-android.da626887d7779c0e73f0caa81080a20971e2b1bf",
         "github.comment.vexlife-android.pr193.6501858487.origin-question-pr197",
-        "github.comment.vexlife-android.pr196.6501857206.follow-up-pr197"
+        "github.comment.vexlife-android.pr196.6501857206.follow-up-pr197",
+        "github.comment.vexlife-android.pr197.6501924215.sourceowner-a001-formed",
+        "evidence.vexsync.pr197.sourceowner.a001.formation.sha256.00e4df80c69e3bd89479322d51295ff6a2b49b7c2a42f9eef5b4a50708b37cca"
       ],
       "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
       "nextProcessRefs": [
@@ -347,7 +349,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-29T16:52:00.000Z",
-      "updatedAt": "2026-10-29T16:52:00.000Z"
+      "updatedAt": "2026-10-29T17:01:00.000Z"
     }
   ],
   "transitions": [
@@ -666,6 +668,21 @@
         "github.commit.vexlife-android.da626887d7779c0e73f0caa81080a20971e2b1bf"
       ],
       "createdAt": "2026-10-29T16:52:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.family-compound-control-binding.running.sourceowner-a001-formed-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.family-compound-control-binding",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING",
+      "reason": "Android PR #197 now carries the exact four-path Family + Compound target-Control binding candidate and a current-contract SourceOwner A001 host formation. The proof is intentionally narrow: focused VexFamilyCompoundBindingTest, repository vexVerifyJvm, exact stacked base/head/tree/four-path membrane, and review snapshot. No new production bridge abstraction is introduced.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.197",
+        "github.comment.vexlife-android.pr197.6501924215.sourceowner-a001-formed",
+        "evidence.vexsync.pr197.sourceowner.a001.formation.sha256.00e4df80c69e3bd89479322d51295ff6a2b49b7c2a42f9eef5b4a50708b37cca"
+      ],
+      "createdAt": "2026-10-29T17:01:00.000Z"
     }
   ],
   "sourceRefs": [
