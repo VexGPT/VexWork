@@ -854,13 +854,13 @@ words.
 The contract prototype plus F2/draft seam prototypes now total:
 
 ~~~text
-25 / 25 disposable semantic PASS
+31 / 31 disposable semantic PASS
 ~~~
 
 Still:
 
 ~~~text
-DISPOSABLE_25_OF_25
+DISPOSABLE_31_OF_31
 != REPOSITORY_TEST_PASS
 ~~~
 
@@ -938,6 +938,132 @@ browser observation-currentness owner
 
 If a proposed owner identity does not yet exist canonically, that is a source-placement question for
 that owner—not permission to hide an invented ownerRef inside the convergence contract.
+
+#### F1 relationship law coverage — no platform-specific precedence invention
+
+The portable convergence contract should not contain only an example SOURCE_MISMATCH row and an
+example READY row. That would leave every platform free to invent the middle.
+
+Disposable contract validation now requires:
+
+~~~text
+initialStateRef
+  is not a reconciliation result
+
+every other declared semantic state
+  has at least one explicit relationshipLawRow
+~~~
+
+For Interface currentness the portable law coverage is:
+
+~~~text
+UNOBSERVED
+  initial pre-coherence state only
+
+UNAVAILABLE
+  current server source identity unavailable
+
+SOURCE_MISMATCH
+  loaded document source != current server source
+
+OBSERVING
+  current source pair matches
+  AND browser observation/current-generation inputs are still pending
+
+OBSERVING
+  source pair matches
+  AND Companion == STARTING
+
+RECOVERABLE
+  source pair matches
+  AND browser observation is current
+  AND current-generation Companion == RECOVERABLE
+  -> Conversation Send-currentness is not required to expose recovery truth
+
+ACTION_REQUIRED
+  source pair matches
+  AND browser observation is current
+  AND current-generation Companion == ACTION_REQUIRED
+  -> Conversation Send-currentness is not required to expose required action truth
+
+UNAVAILABLE
+  source pair matches
+  AND Companion == HELD | UNAVAILABLE
+
+UNAVAILABLE
+  source pair matches
+  AND Companion == READY
+  AND selected canonical Conversation identity/currentness is not admitted
+
+READY
+  source pair matches
+  AND browser observation == CURRENT
+  AND Companion == READY
+  AND canonical Conversation scope == selected scope
+  AND Conversation == CURRENT | EMPTY | ABSENT
+~~~
+
+These rows encode relationship meaning, not effect authority.
+
+Two precedence laws are now explicit:
+
+~~~text
+SOURCE_MISMATCH
+  dominates Companion RECOVERABLE / ACTION_REQUIRED
+  because a stale document must first enter current source semantics
+
+RECOVERABLE / ACTION_REQUIRED
+  do not require Conversation Send-currentness
+  because those states expose Companion-owned recovery/action truth,
+  not permission to append a Conversation message
+~~~
+
+Therefore:
+
+~~~text
+CONVERSATION_UNAVAILABLE
++ COMPANION_RECOVERABLE
+-> RECOVERABLE
+-> recovery owner remains available
+-> Send remains unadmitted
+
+CONVERSATION_UNAVAILABLE
++ COMPANION_READY
+-> UNAVAILABLE
+-> Send remains unadmitted
+
+SOURCE_MISMATCH
++ COMPANION_RECOVERABLE
+-> SOURCE_MISMATCH
+-> current document transition precedes recovery presentation
+~~~
+
+Disposable evidence now stands at:
+
+~~~text
+17 Interface-currentness behavior
++ 9 portable convergence contract
++ 5 draft carriage
+= 31 / 31 PASS
+~~~
+
+Still:
+
+~~~text
+DISPOSABLE_31_OF_31
+!= VEXLIFE_REPOSITORY_PASS
+~~~
+
+Permanent:
+
+~~~text
+PORTABLE_RELATIONSHIP_CONTRACT
+MUST_NOT_LEAVE_SEMANTIC_STATES_WITHOUT_LAWS
+
+PLATFORM_REALIZATION
+MUST_NOT_INVENT_RELATIONSHIP_PRECEDENCE
+~~~
+
 
 #### F1 stable semantic identity map
 
@@ -1511,13 +1637,13 @@ Combined disposable semantic evidence is now:
 11 Interface currentness
 + 7 portable convergence contract
 + 5 draft carriage
-= 25 / 25 PASS
+= 31 / 31 PASS
 ~~~
 
 Still:
 
 ~~~text
-DISPOSABLE_25_OF_25
+DISPOSABLE_31_OF_31
 != VEXLIFE_REPOSITORY_PASS
 ~~~
 
@@ -1644,7 +1770,7 @@ Combined disposable seam:
 13 Interface currentness
 + 7 portable convergence contract
 + 5 draft carriage
-= 25 / 25 PASS
+= 31 / 31 PASS
 ~~~
 
 This adds one important browser observation trigger:
