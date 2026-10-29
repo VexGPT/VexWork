@@ -86,6 +86,61 @@ candidate lands first, the other must be currentized against accepted main witho
 
 <!-- [VXG RealForever][VEXSYNC][CURRENT-CONTINUATION][COMPOUND-CURRENT-STATE][PR200] -->
 
+## Current ThemeMode semantic correction — Select the mode; do not make Dark the axis
+
+The current Android production candidate has been corrected back to the VexSync rule already earned by
+the Origin Walk:
+
+~~~text
+CURRENTLY TWO VALUES
+!= BOOLEAN SEMANTICS
+
+ThemeMode.Light
+ThemeMode.Dark
+  = peer semantic values
+
+ThemeModeFamily.Control.Select(mode)
+  = reusable semantic relationship
+
+Android Dark Mode Switch
+  = one target realization
+  != Family semantic operation
+~~~
+
+Current Android candidate:
+
+~~~text
+PR #188
+head = a831f0aed03241e036d083f7ab57a74c7c1dfbaf
+base = 14bb2c4e82eb6cf55cbdc6ef5f2c65d38f97e45b
+~~~
+
+The previous current checkpoint that used `Control.Toggle` and
+`requireResolvedDarkTheme(): Boolean` is **SUPERSEDED**.
+
+Current realization:
+
+~~~text
+existing Android Switch activation
+-> feature-local adapter reads exact CURRENT ThemeMode
+-> Select(Dark) or Select(Light)
+-> ThemeModeFamily
+-> CURRENT ThemeMode
+
+ThemeModeFamily.states
+-> VexLifeApp
+-> VexLifeTheme(themeMode)
+-> AppScreenBlueprint.renderContent(themeMode)
+~~~
+
+Only leaf target renderers may derive a bounded Boolean when that platform API genuinely needs one; for
+example the current VexMaps map surface receives `themeMode == Dark`. That Boolean is a projection, not
+ThemeMode truth.
+
+`ThemeMode.NotSet` remains unresolved State and is rejected as a selectable mode.
+
+<!-- [VXG RealForever][VEXSYNC][THEMEMODE][SELECT-NOT-TOGGLE][CURRENT] -->
+
 ## Current-entry contract — read this before sibling fragments
 
 This README is the **canonical current entry for this VexSync process specimen**.
@@ -8655,7 +8710,7 @@ No public OwnerId or second source identity is added.
 
 ~~~text
 Android PR #188
-head = a43feebec19e001f109f5394f166cda145385e76
+head = a831f0aed03241e036d083f7ab57a74c7c1dfbaf
 base = 14bb2c4e82eb6cf55cbdc6ef5f2c65d38f97e45b
 paths = 5 exact
 ~~~
