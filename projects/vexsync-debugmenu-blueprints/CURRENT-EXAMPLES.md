@@ -6289,45 +6289,71 @@ this defect.
 <!-- [VXG RealForever][VEXSYNC][DIRECT-FAMILY][PR196][PROVED-CLEAR] -->
 
 
+
 ---
 
-## Direct Family + Compound binding — PR #197
+## Direct Family currentness + Execution source custody — corrected follow-up
 
-Re-reading the accepted #193 Origin-Walk source currentized one historical unresolved seam:
+PR #197 is **withdrawn/closed unmerged**. It proved one valid cross-owner request/feedback loop but
+answered the wrong question when it was framed as the Direct Family currentness seam.
+
+The Origin-Walk currentness law is smaller:
 
 ~~~text
-OLD QUESTION
+one Family StateRelay
++ exact CURRENT State
++ one serialized admission decision
+~~~
+
+Android PR #198 carries that correction:
+
+~~~text
+Control
+  -> act(CURRENT State, Control)
+  -> immediate stay/admit
+  -> Begin admitted in same acceptance order
+
+delayed result
+  -> admit { CURRENT -> next }
+
+already-reconciled provider/repository truth
+  -> concrete Family source method
+  -> protected admitCurrent { CURRENT -> next }
+~~~
+
+Family supplies CURRENT State + serialization. Feature/source owners supply semantic currentness.
+No Family revision/generation oracle is introduced.
+
+Current accepted Relay remains a separate current owner:
+
+~~~text
+Direct Family StateRelay
+  owns current Family State
+
+VexCompoundRelay
+  owns current Compound relationship State
+
 Process OutputState
--> ???
--> Family.currentState
+  != generic Family.currentState handoff
 ~~~
 
-The current Relay/Family foundations already earn a smaller answer:
+A separate Execution custody mismatch is carried by stacked Android PR #199:
 
 ~~~text
-Compound / Process
--> OutputState
--> feature-owned target Family.Control
--> Family.activate(control)
--> Family re-reads CURRENT State
--> stay / admit / optional begin
--> resulting Family truth
--> NEW Compound InputState
--> process again
+SourceRef
+  remains class + callable readable source address
+
+live VexExecution object + SourceRef
+  internally scopes launchOnce / Flow uniqueness / forceStop / joinStop
+
+InstanceId
+  remains exact runtime occurrence
+
+RelationshipId
+  remains semantic maintained-work identity
 ~~~
 
-Therefore:
+No public OwnerId or second source identity is added.
 
-~~~text
-OutputState != Family State
-Process != Family
-Process Output does not write Family.currentState directly
-~~~
+<!-- [VXG RealForever][VEXSYNC][FAMILY][STATE-RELAY][PR198][SOURCE-CUSTODY][PR199] -->
 
-Android PR #197 proves the full loop with a test-only cross-root composition and no new production API,
-bridge type, State setter, CompoundFamily, stateFactory, post-process Act framework, or identity
-vocabulary.
-
-PR #197 is stacked on proved/clear PR #196 so #196's exact evidence remains valid.
-
-<!-- [VXG RealForever][VEXSYNC][FAMILY][COMPOUND-TARGET-CONTROL][PR197] -->
