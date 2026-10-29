@@ -40,7 +40,11 @@
         "github.comment.vexlife-android.pr188.6499683574.sourceowner-a001-pass",
         "github.review.vexlife-android.pr188.5699576285.assurance-clear",
         "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt",
-        "repo.vexlife-android:architecture/behavior/src/test/kotlin/com/vextreme/vexlife/android/behavior/VexFamilyHighConfidenceTest.kt"
+        "repo.vexlife-android:architecture/behavior/src/test/kotlin/com/vextreme/vexlife/android/behavior/VexFamilyHighConfidenceTest.kt",
+        "github.pull.vexlife-android.200",
+        "github.commit.vexlife-android.14bb2c4e82eb6cf55cbdc6ef5f2c65d38f97e45b",
+        "repo.vexlife-android:architecture/relay/src/main/kotlin/com/vextreme/vexlife/android/relay/VexCompoundState.kt",
+        "repo.vexlife-android:architecture/relay/src/main/kotlin/com/vextreme/vexlife/android/relay/VexCompoundRelay.kt"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
@@ -89,7 +93,11 @@
         "github.comment.vexlife-android.pr188.6499683574.sourceowner-a001-pass",
         "github.review.vexlife-android.pr188.5699576285.assurance-clear",
         "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt",
-        "repo.vexlife-android:architecture/behavior/src/test/kotlin/com/vextreme/vexlife/android/behavior/VexFamilyHighConfidenceTest.kt"
+        "repo.vexlife-android:architecture/behavior/src/test/kotlin/com/vextreme/vexlife/android/behavior/VexFamilyHighConfidenceTest.kt",
+        "github.pull.vexlife-android.200",
+        "github.commit.vexlife-android.14bb2c4e82eb6cf55cbdc6ef5f2c65d38f97e45b",
+        "repo.vexlife-android:architecture/relay/src/main/kotlin/com/vextreme/vexlife/android/relay/VexCompoundState.kt",
+        "repo.vexlife-android:architecture/relay/src/main/kotlin/com/vextreme/vexlife/android/relay/VexCompoundRelay.kt"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
@@ -342,7 +350,12 @@
         "github.comment.vexlife-android.pr197.6501924215.sourceowner-a001-formed",
         "evidence.vexsync.pr197.sourceowner.a001.formation.sha256.00e4df80c69e3bd89479322d51295ff6a2b49b7c2a42f9eef5b4a50708b37cca",
         "github.pull.vexlife-android.197.closed-withdrawn",
-        "correction.vexsync.family-compound-control-binding.wrong-seam.20261029a"
+        "correction.vexsync.family-compound-control-binding.wrong-seam.20261029a",
+        "github.pull.vexlife-android.200",
+        "github.commit.vexlife-android.14bb2c4e82eb6cf55cbdc6ef5f2c65d38f97e45b",
+        "repo.vexlife-android:architecture/relay/src/main/kotlin/com/vextreme/vexlife/android/relay/VexCompoundState.kt",
+        "repo.vexlife-android:architecture/relay/src/main/kotlin/com/vextreme/vexlife/android/relay/VexCompoundRelay.kt",
+        "correction.vexsync.compound-current-state.accepted-pr200.20261029a"
       ],
       "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
       "nextProcessRefs": [
@@ -375,7 +388,12 @@
         "github.pull.vexlife-android.196",
         "github.pull.vexlife-android.198",
         "github.commit.vexlife-android.78580ab051a33fb2c94903be5bf401f4f43f2087",
-        "github.pull.vexlife-android.197.withdrawn-wrong-seam"
+        "github.pull.vexlife-android.197.withdrawn-wrong-seam",
+        "github.pull.vexlife-android.200",
+        "github.commit.vexlife-android.14bb2c4e82eb6cf55cbdc6ef5f2c65d38f97e45b",
+        "repo.vexlife-android:architecture/relay/src/main/kotlin/com/vextreme/vexlife/android/relay/VexCompoundState.kt",
+        "repo.vexlife-android:architecture/relay/src/main/kotlin/com/vextreme/vexlife/android/relay/VexCompoundRelay.kt",
+        "boundary.vexsync.pr200-closes-compound-not-direct-family-currentness.20261029a"
       ],
       "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
       "nextProcessRefs": [
