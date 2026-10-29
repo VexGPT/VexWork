@@ -529,6 +529,16 @@ export async function forkReadOnlyBoard(source, { draftRef, title = null }) {
     savedAtOrNull: null,
     graph: hydrated.graph,
     projection: hydrated.projection,
+    ...(accepted.presentation ? { presentation: structuredClone(accepted.presentation) } : {}),
+    ...(accepted.design ? { design: structuredClone(accepted.design) } : {}),
+    ...(accepted.familyKotlin ? { familyKotlin: structuredClone(accepted.familyKotlin) } : {}),
+    ...(accepted.adoptionCoverage
+      ? { adoptionCoverage: structuredClone(accepted.adoptionCoverage) }
+      : {}),
+    ...(accepted.adoptionReadiness
+      ? { adoptionReadiness: structuredClone(accepted.adoptionReadiness) }
+      : {}),
+    ...(Array.isArray(accepted.sourceRefs) ? { sourceRefs: structuredClone(accepted.sourceRefs) } : {}),
   });
 }
 

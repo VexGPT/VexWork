@@ -1,0 +1,1050 @@
+{
+  "schemaVersion": "vexboard.screen-design/poc-v1",
+  "designRef": "design.vexlife-android.home-vexstream.reverse-adopted",
+  "authorityState": "REVERSE_ADOPTED_CANDIDATE",
+  "referenceViewport": {
+    "profileRef": "profile.vexlife-android.phone.412x915",
+    "widthDp": 412,
+    "heightDp": 915
+  },
+  "metrics": {
+    "toolbarHeight": {
+      "preferredPercent": 0.07650273224043716,
+      "minDp": 70,
+      "maxDp": 70,
+      "referenceDp": 70
+    },
+    "bottomBarHeight": {
+      "preferredPercent": 0.07650273224043716,
+      "minDp": 70,
+      "maxDp": 70,
+      "referenceDp": 70
+    },
+    "screenPaddingHorizontal": {
+      "preferredPercent": 0.038834951456310676,
+      "minDp": 16,
+      "maxDp": 16,
+      "referenceDp": 16
+    },
+    "screenPaddingVertical": {
+      "preferredPercent": 0.017486338797814208,
+      "minDp": 16,
+      "maxDp": 16,
+      "referenceDp": 16
+    },
+    "containerPaddingHorizontal": {
+      "preferredPercent": 0.038834951456310676,
+      "minDp": 16,
+      "maxDp": 16,
+      "referenceDp": 16
+    },
+    "containerPaddingVertical": {
+      "preferredPercent": 0.017486338797814208,
+      "minDp": 16,
+      "maxDp": 16,
+      "referenceDp": 16
+    },
+    "containerGapVertical": {
+      "preferredPercent": 0.013114754098360656,
+      "minDp": 12,
+      "maxDp": 12,
+      "referenceDp": 12
+    },
+    "listGapVertical": {
+      "preferredPercent": 0.008743169398907104,
+      "minDp": 8,
+      "maxDp": 8,
+      "referenceDp": 8
+    },
+    "homeSectionGapVertical": {
+      "preferredPercent": 0.017486338797814208,
+      "minDp": 16,
+      "maxDp": 16,
+      "referenceDp": 16
+    },
+    "toolbarPaddingHorizontal": {
+      "preferredPercent": 0.03398058252427184,
+      "minDp": 14,
+      "maxDp": 14,
+      "referenceDp": 14
+    },
+    "toolbarPaddingVertical": {
+      "preferredPercent": 0.01092896174863388,
+      "minDp": 10,
+      "maxDp": 10,
+      "referenceDp": 10
+    },
+    "toolbarGapHorizontal": {
+      "preferredPercent": 0.019417475728155338,
+      "minDp": 8,
+      "maxDp": 8,
+      "referenceDp": 8
+    },
+    "toolbarBrandSize": {
+      "preferredPercent": 0.10194174757281553,
+      "minDp": 42,
+      "maxDp": 42,
+      "referenceDp": 42
+    },
+    "toolbarBrandIconSize": {
+      "preferredPercent": 0.06310679611650485,
+      "minDp": 26,
+      "maxDp": 26,
+      "referenceDp": 26
+    },
+    "toolbarActionSize": {
+      "preferredPercent": 0.11650485436893204,
+      "minDp": 48,
+      "maxDp": 48,
+      "referenceDp": 48
+    },
+    "tabGapHorizontal": {
+      "preferredPercent": 0.019417475728155338,
+      "minDp": 8,
+      "maxDp": 8,
+      "referenceDp": 8
+    },
+    "tabColumnGapVertical": {
+      "preferredPercent": 0.006557377049180328,
+      "minDp": 6,
+      "maxDp": 6,
+      "referenceDp": 6
+    },
+    "materialButtonMinHeight": {
+      "preferredPercent": 0.04371584699453552,
+      "minDp": 40,
+      "maxDp": 40,
+      "referenceDp": 40
+    },
+    "connectionSheetPaddingHorizontal": {
+      "preferredPercent": 0.04854368932038835,
+      "minDp": 20,
+      "maxDp": 20,
+      "referenceDp": 20
+    },
+    "connectionSheetPaddingBottom": {
+      "preferredPercent": 0.02185792349726776,
+      "minDp": 20,
+      "maxDp": 20,
+      "referenceDp": 20
+    },
+    "loadingStatusPaddingHorizontal": {
+      "preferredPercent": 0.04854368932038835,
+      "minDp": 20,
+      "maxDp": 20,
+      "referenceDp": 20
+    },
+    "loadingStatusPaddingVertical": {
+      "preferredPercent": 0.015300546448087432,
+      "minDp": 14,
+      "maxDp": 14,
+      "referenceDp": 14
+    },
+    "loadingStatusGapHorizontal": {
+      "preferredPercent": 0.02912621359223301,
+      "minDp": 12,
+      "maxDp": 12,
+      "referenceDp": 12
+    },
+    "loadingProgressSize": {
+      "preferredPercent": 0.04854368932038835,
+      "minDp": 20,
+      "maxDp": 20,
+      "referenceDp": 20
+    },
+    "trackOuterPaddingHorizontal": {
+      "preferredPercent": 0.019417475728155338,
+      "minDp": 8,
+      "maxDp": 8,
+      "referenceDp": 8
+    },
+    "trackOuterPaddingVertical": {
+      "preferredPercent": 0.002185792349726776,
+      "minDp": 2,
+      "maxDp": 2,
+      "referenceDp": 2
+    },
+    "trackInnerPaddingHorizontal": {
+      "preferredPercent": 0.024271844660194174,
+      "minDp": 10,
+      "maxDp": 10,
+      "referenceDp": 10
+    },
+    "trackInnerPaddingVertical": {
+      "preferredPercent": 0.008743169398907104,
+      "minDp": 8,
+      "maxDp": 8,
+      "referenceDp": 8
+    },
+    "trackRowGapHorizontal": {
+      "preferredPercent": 0.024271844660194174,
+      "minDp": 10,
+      "maxDp": 10,
+      "referenceDp": 10
+    },
+    "trackArtworkSize": {
+      "preferredPercent": 0.13106796116504854,
+      "minDp": 54,
+      "maxDp": 54,
+      "referenceDp": 54
+    },
+    "trackCopyGapVertical": {
+      "preferredPercent": 0.002185792349726776,
+      "minDp": 2,
+      "maxDp": 2,
+      "referenceDp": 2
+    },
+    "emptyMessagePadding": {
+      "preferredPercent": 0.04854368932038835,
+      "minDp": 20,
+      "maxDp": 20,
+      "referenceDp": 20
+    },
+    "scaffoldFabInsetHorizontal": {
+      "preferredPercent": 0.038834951456310676,
+      "minDp": 16,
+      "maxDp": 16,
+      "referenceDp": 16
+    },
+    "scaffoldFabInsetVertical": {
+      "preferredPercent": 0.01893491124260355,
+      "minDp": 16,
+      "maxDp": 16,
+      "referenceDp": 16
+    },
+    "libraryFabGapVertical": {
+      "preferredPercent": 0.01092896174863388,
+      "minDp": 10,
+      "maxDp": 10,
+      "referenceDp": 10
+    },
+    "smallFabSize": {
+      "preferredPercent": 0.0970873786407767,
+      "minDp": 40,
+      "maxDp": 40,
+      "referenceDp": 40
+    }
+  },
+  "constraints": [
+    {
+      "occurrenceRef": "design-occurrence.home.shell-content",
+      "semanticRef": "screen.home",
+      "parentOccurrenceRefOrNull": null,
+      "horizontal": {
+        "size": {
+          "mode": "FILL"
+        },
+        "bias": 0.5
+      },
+      "vertical": {
+        "startMargin": {
+          "metricRef": "toolbarHeight"
+        },
+        "endMargin": {
+          "metricRef": "bottomBarHeight"
+        },
+        "size": {
+          "mode": "FILL"
+        },
+        "bias": 0.5
+      }
+    },
+    {
+      "occurrenceRef": "design-occurrence.home.inner-content",
+      "semanticRef": "screen.home",
+      "parentOccurrenceRefOrNull": "design-occurrence.home.shell-content",
+      "horizontal": {
+        "startMargin": {
+          "metricRef": "screenPaddingHorizontal"
+        },
+        "endMargin": {
+          "metricRef": "screenPaddingHorizontal"
+        },
+        "size": {
+          "mode": "FILL"
+        },
+        "bias": 0.5
+      },
+      "vertical": {
+        "startMargin": {
+          "metricRef": "screenPaddingVertical"
+        },
+        "endMargin": {
+          "metricRef": "screenPaddingVertical"
+        },
+        "size": {
+          "mode": "FILL"
+        },
+        "bias": 0.5
+      }
+    },
+    {
+      "occurrenceRef": "design-occurrence.vexstream.shell-content",
+      "semanticRef": "screen.vexstream-music",
+      "parentOccurrenceRefOrNull": null,
+      "horizontal": {
+        "size": {
+          "mode": "FILL"
+        },
+        "bias": 0.5
+      },
+      "vertical": {
+        "startMargin": {
+          "metricRef": "toolbarHeight"
+        },
+        "size": {
+          "mode": "FILL"
+        },
+        "bias": 0.5
+      }
+    },
+    {
+      "occurrenceRef": "design-occurrence.vexstream.inner-content",
+      "semanticRef": "screen.vexstream-music",
+      "parentOccurrenceRefOrNull": "design-occurrence.vexstream.shell-content",
+      "horizontal": {
+        "size": {
+          "mode": "FILL"
+        },
+        "bias": 0.5
+      },
+      "vertical": {
+        "size": {
+          "mode": "FILL"
+        },
+        "bias": 0.5
+      }
+    }
+  ],
+  "sourceRefs": [
+    "dependency.androidx.compose.compose-bom.2026.09.00",
+    "dependency.androidx.compose.material3.1.4.0.color-dark-tokens",
+    "dependency.androidx.compose.material3.1.4.0.fab-primary-small-tokens",
+    "dependency.androidx.compose.material3.1.4.0.fab-small-tokens",
+    "dependency.androidx.compose.material3.1.4.0.filled-card-tokens",
+    "dependency.androidx.compose.material3.1.4.0.palette-tokens",
+    "dependency.androidx.compose.material3.1.4.0.scaffold",
+    "dependency.androidx.compose.material3.1.4.0.shape-tokens",
+    "dependency.androidx.compose.material3.1.4.0.sheet-bottom-drag-handle",
+    "dependency.androidx.compose.material3.1.4.0.sheet-bottom-max-width",
+    "dependency.androidx.compose.material3.1.4.0.sheet-bottom-tokens",
+    "dependency.androidx.compose.material3.1.4.0.sheet-defaults",
+    "dependency.androidx.compose.material3.1.4.0.type-scale-body-small",
+    "dependency.androidx.compose.material3.1.4.0.type-scale-tokens",
+    "git.commit.vexlife-android.6f5b2dc6cdbf284b84cb590ba5b1016af3d33939",
+    "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/preview/VexPreview.kt",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamConnectionPresentation.kt",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamLibraryPresentation.kt",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamTrackPresentation.kt",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/shell/AppFrame.kt",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/shell/AppShell.kt",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeTheme.kt",
+    "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/ElementCells.kt",
+    "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/VexComposeScope.kt"
+  ],
+  "layoutRules": [
+    {
+      "layoutRef": "layout.vexlife.home.body",
+      "semanticRef": "screen.home",
+      "mode": "SCROLL_COLUMN",
+      "gapMetricRefOrNull": "homeSectionGapVertical",
+      "childSemanticRefs": [
+        "element.home.body.vexstream",
+        "element.home.body.systems"
+      ]
+    },
+    {
+      "layoutRef": "layout.vexstream.library-tabs",
+      "semanticRef": "element.vexstream-music.body.library-tabs",
+      "mode": "SCROLL_ROW",
+      "gapMetricRefOrNull": "tabGapHorizontal",
+      "childSemanticRefs": [
+        "element.vexstream-music.body.library-tabs.songs",
+        "element.vexstream-music.body.library-tabs.albums",
+        "element.vexstream-music.body.library-tabs.artists",
+        "element.vexstream-music.body.library-tabs.playlists",
+        "element.vexstream-music.body.library-tabs.downloads"
+      ]
+    },
+    {
+      "layoutRef": "layout.vexstream.songs",
+      "semanticRef": "element.vexstream-music.body.library.songs",
+      "mode": "SCROLL_COLUMN",
+      "gapMetricRefOrNull": "listGapVertical"
+    },
+    {
+      "layoutRef": "layout.vexstream.connection-sheet",
+      "semanticRef": "element.vexstream-music.body.connection.menu.content",
+      "mode": "COLUMN",
+      "gapMetricRefOrNull": "containerGapVertical",
+      "childSemanticRefs": [
+        "element.vexstream-music.body.connection.menu.content.title",
+        "element.vexstream-music.body.connection.menu.content.paired-name",
+        "element.vexstream-music.body.connection.menu.content.status",
+        "element.vexstream-music.body.connection.refresh",
+        "element.vexstream-music.body.connection.menu.content.library-download-status",
+        "element.vexstream-music.body.connection.library.download-all-missing",
+        "element.vexstream-music.body.connection.library.remove-all-downloaded",
+        "element.vexstream-music.body.connection.forget.request",
+        "element.vexstream-music.body.connection.menu.close"
+      ]
+    },
+    {
+      "layoutRef": "layout.vexlife.home.systems",
+      "semanticRef": "element.home.body.systems",
+      "mode": "COLUMN",
+      "gapMetricRefOrNull": "containerGapVertical",
+      "childSemanticRefs": [
+        "element.home.body.systems.title",
+        "element.home.body.systems.family-conversation",
+        "element.home.body.systems.vex-maps",
+        "element.home.body.systems.talk-to-vex"
+      ]
+    },
+    {
+      "layoutRef": "layout.vexstream.library-actions",
+      "semanticRef": "element.vexstream-music.body.library-actions",
+      "mode": "COLUMN",
+      "gapMetricRefOrNull": "libraryFabGapVertical",
+      "childSemanticRefs": [
+        "element.vexstream-music.body.library-actions.play-all",
+        "element.vexstream-music.body.library-actions.shuffle-all"
+      ]
+    },
+    {
+      "layoutRef": "layout.vexlife.home.vexstream",
+      "semanticRef": "element.home.body.vexstream",
+      "mode": "COLUMN",
+      "gapMetricRefOrNull": "containerGapVertical",
+      "childSemanticRefs": [
+        "element.home.body.vexstream.title",
+        "element.home.body.vexstream.status",
+        "element.home.body.vexstream.body",
+        "element.home.body.systems.vexstream-music"
+      ]
+    }
+  ],
+  "intrinsicSizes": {
+    "element.vexstream-music.body.library-tabs.songs": {
+      "widthDp": 96,
+      "heightDp": 40
+    },
+    "element.vexstream-music.body.library-tabs.albums": {
+      "widthDp": 106,
+      "heightDp": 40
+    },
+    "element.vexstream-music.body.library-tabs.artists": {
+      "widthDp": 100,
+      "heightDp": 40
+    },
+    "element.vexstream-music.body.library-tabs.playlists": {
+      "widthDp": 116,
+      "heightDp": 40
+    },
+    "element.vexstream-music.body.library-tabs.downloads": {
+      "widthDp": 130,
+      "heightDp": 40
+    },
+    "element.vexstream-music.body.library-actions.play-all": {
+      "widthDp": 40,
+      "heightDp": 40
+    },
+    "element.vexstream-music.body.library-actions.shuffle-all": {
+      "widthDp": 40,
+      "heightDp": 40
+    },
+    "element.home.body.systems.vexstream-music": {
+      "widthDp": 226,
+      "heightDp": 40
+    },
+    "element.home.body.systems.family-conversation": {
+      "widthDp": 202,
+      "heightDp": 40
+    },
+    "element.home.body.systems.vex-maps": {
+      "widthDp": 121,
+      "heightDp": 40
+    },
+    "element.home.body.systems.talk-to-vex": {
+      "widthDp": 133,
+      "heightDp": 40
+    }
+  },
+  "viewportProfiles": [
+    {
+      "profileRef": "profile.vexlife-android.phone.412x915",
+      "label": "Phone · Reference",
+      "widthDp": 412,
+      "heightDp": 915,
+      "fontScale": 1
+    },
+    {
+      "profileRef": "profile.vexlife-android.compact.360x720-large-text",
+      "label": "Compact · Large text",
+      "widthDp": 360,
+      "heightDp": 720,
+      "fontScale": 1.45
+    }
+  ],
+  "visualTokens": {
+    "framework": {
+      "composeBom": "2026.09.00",
+      "material3": "1.4.0"
+    },
+    "colors": {
+      "primary": "#F2F2EF",
+      "onPrimary": "#111216",
+      "primaryContainer": "#4F378B",
+      "onPrimaryContainer": "#EADDFF",
+      "secondary": "#9BB7D4",
+      "onSecondary": "#111216",
+      "secondaryContainer": "#4A4458",
+      "onSecondaryContainer": "#E8DEF8",
+      "tertiary": "#E9C46A",
+      "background": "#0F1012",
+      "onBackground": "#F5F5F4",
+      "surface": "#17181C",
+      "onSurface": "#F5F5F4",
+      "surfaceVariant": "#202126",
+      "onSurfaceVariant": "#B7B8BF",
+      "surfaceContainer": "#202126",
+      "surfaceContainerLow": "#1D1B20",
+      "surfaceContainerHigh": "#272930",
+      "outline": "#5A5D68",
+      "outlineVariant": "#383A42",
+      "errorContainer": "#8C1D18",
+      "onErrorContainer": "#F9DEDC"
+    },
+    "shapes": {
+      "mediumRadiusDp": 12,
+      "largeRadiusDp": 16,
+      "extraLargeRadiusDp": 28,
+      "fullRadius": "FULL"
+    },
+    "typography": {
+      "headlineLarge": {
+        "fontFamily": "SERIF",
+        "fontWeight": 700,
+        "fontSizeSp": 30,
+        "lineHeightSp": 34
+      },
+      "headlineMedium": {
+        "fontFamily": "SERIF",
+        "fontWeight": 700,
+        "fontSizeSp": 24,
+        "lineHeightSp": 28
+      },
+      "labelSmall": {
+        "fontFamily": "MONOSPACE",
+        "fontWeight": 600,
+        "fontSizeSp": 10,
+        "letterSpacingSp": 0.8
+      },
+      "headlineSmall": {
+        "fontFamily": "PLATFORM_DEFAULT",
+        "fontWeight": 400,
+        "fontSizeSp": 24,
+        "lineHeightSp": 32,
+        "letterSpacingSp": 0
+      },
+      "titleLarge": {
+        "fontFamily": "PLATFORM_DEFAULT",
+        "fontWeight": 400,
+        "fontSizeSp": 22,
+        "lineHeightSp": 28,
+        "letterSpacingSp": 0
+      },
+      "titleMedium": {
+        "fontFamily": "PLATFORM_DEFAULT",
+        "fontWeight": 500,
+        "fontSizeSp": 16,
+        "lineHeightSp": 24,
+        "letterSpacingSp": 0.2
+      },
+      "bodyLarge": {
+        "fontFamily": "PLATFORM_DEFAULT",
+        "fontWeight": 400,
+        "fontSizeSp": 16,
+        "lineHeightSp": 24,
+        "letterSpacingSp": 0.5
+      },
+      "bodyMedium": {
+        "fontFamily": "PLATFORM_DEFAULT",
+        "fontWeight": 400,
+        "fontSizeSp": 14,
+        "lineHeightSp": 20,
+        "letterSpacingSp": 0.2
+      },
+      "labelLarge": {
+        "fontFamily": "PLATFORM_DEFAULT",
+        "fontWeight": 500,
+        "fontSizeSp": 14,
+        "lineHeightSp": 20,
+        "letterSpacingSp": 0.1
+      },
+      "bodySmall": {
+        "fontFamily": "PLATFORM_DEFAULT",
+        "fontWeight": 400,
+        "fontSizeSp": 12,
+        "lineHeightSp": 16,
+        "letterSpacingSp": 0.4
+      }
+    },
+    "dimensions": {
+      "bottomSheetMaxWidthDp": 640,
+      "bottomSheetDragHandleWidthDp": 32,
+      "bottomSheetDragHandleHeightDp": 4,
+      "bottomSheetDragHandleVerticalPaddingDp": 22
+    }
+  },
+  "componentAssignments": [
+    {
+      "assignmentRef": "assignment.screen.home",
+      "semanticRef": "screen.home",
+      "templateRef": "component.screen",
+      "styleRef": "style.default",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": null
+    },
+    {
+      "assignmentRef": "assignment.element.home.body.vexstream",
+      "semanticRef": "element.home.body.vexstream",
+      "templateRef": "component.surface",
+      "styleRef": "style.surface.raised",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": null
+    },
+    {
+      "assignmentRef": "assignment.element.home.body.systems.vexstream-music",
+      "semanticRef": "element.home.body.systems.vexstream-music",
+      "templateRef": "component.button",
+      "styleRef": "style.action.primary",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": null
+    },
+    {
+      "assignmentRef": "assignment.element.home.body.systems",
+      "semanticRef": "element.home.body.systems",
+      "templateRef": "component.surface",
+      "styleRef": "style.surface.raised",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": null
+    },
+    {
+      "assignmentRef": "assignment.element.home.body.systems.family-conversation",
+      "semanticRef": "element.home.body.systems.family-conversation",
+      "templateRef": "component.button",
+      "styleRef": "style.action.secondary",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": null
+    },
+    {
+      "assignmentRef": "assignment.element.home.body.systems.vex-maps",
+      "semanticRef": "element.home.body.systems.vex-maps",
+      "templateRef": "component.button",
+      "styleRef": "style.action.secondary",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": null
+    },
+    {
+      "assignmentRef": "assignment.element.home.body.systems.talk-to-vex",
+      "semanticRef": "element.home.body.systems.talk-to-vex",
+      "templateRef": "component.button",
+      "styleRef": "style.action.secondary",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": null
+    },
+    {
+      "assignmentRef": "assignment.screen.vexstream-music",
+      "semanticRef": "screen.vexstream-music",
+      "templateRef": "component.screen",
+      "styleRef": "style.default",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": null
+    },
+    {
+      "assignmentRef": "assignment.element.vexstream-music.body.library.search.open",
+      "semanticRef": "element.vexstream-music.body.library.search.open",
+      "templateRef": "component.icon-button",
+      "styleRef": "style.toolbar.icon",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": "icon.search"
+    },
+    {
+      "assignmentRef": "assignment.element.vexstream-music.body.library.organization.open",
+      "semanticRef": "element.vexstream-music.body.library.organization.open",
+      "templateRef": "component.icon-button",
+      "styleRef": "style.toolbar.icon",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": "icon.menu"
+    },
+    {
+      "assignmentRef": "assignment.element.vexstream-music.body.connection.manage",
+      "semanticRef": "element.vexstream-music.body.connection.manage",
+      "templateRef": "component.icon-button",
+      "styleRef": "style.toolbar.icon",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": "icon.settings"
+    },
+    {
+      "assignmentRef": "assignment.element.vexstream-music.body.library-tabs.songs",
+      "semanticRef": "element.vexstream-music.body.library-tabs.songs",
+      "templateRef": "component.tab",
+      "styleRef": "style.navigation",
+      "selectedStyleRefOrNull": "style.action.primary",
+      "iconRefOrNull": null
+    },
+    {
+      "assignmentRef": "assignment.element.vexstream-music.body.library-tabs.albums",
+      "semanticRef": "element.vexstream-music.body.library-tabs.albums",
+      "templateRef": "component.tab",
+      "styleRef": "style.navigation",
+      "selectedStyleRefOrNull": "style.action.primary",
+      "iconRefOrNull": null
+    },
+    {
+      "assignmentRef": "assignment.element.vexstream-music.body.library-tabs.artists",
+      "semanticRef": "element.vexstream-music.body.library-tabs.artists",
+      "templateRef": "component.tab",
+      "styleRef": "style.navigation",
+      "selectedStyleRefOrNull": "style.action.primary",
+      "iconRefOrNull": null
+    },
+    {
+      "assignmentRef": "assignment.element.vexstream-music.body.library-tabs.playlists",
+      "semanticRef": "element.vexstream-music.body.library-tabs.playlists",
+      "templateRef": "component.tab",
+      "styleRef": "style.navigation",
+      "selectedStyleRefOrNull": "style.action.primary",
+      "iconRefOrNull": null
+    },
+    {
+      "assignmentRef": "assignment.element.vexstream-music.body.library-tabs.downloads",
+      "semanticRef": "element.vexstream-music.body.library-tabs.downloads",
+      "templateRef": "component.tab",
+      "styleRef": "style.navigation",
+      "selectedStyleRefOrNull": "style.action.primary",
+      "iconRefOrNull": null
+    },
+    {
+      "assignmentRef": "assignment.element.vexstream-music.body.library-actions.play-all",
+      "semanticRef": "element.vexstream-music.body.library-actions.play-all",
+      "templateRef": "component.fab",
+      "styleRef": "style.action.primary",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": "icon.play"
+    },
+    {
+      "assignmentRef": "assignment.element.vexstream-music.body.library-actions.shuffle-all",
+      "semanticRef": "element.vexstream-music.body.library-actions.shuffle-all",
+      "templateRef": "component.fab",
+      "styleRef": "style.action.secondary",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": "icon.shuffle"
+    },
+    {
+      "assignmentRef": "assignment.element.vexstream-music.body.connection.menu",
+      "semanticRef": "element.vexstream-music.body.connection.menu",
+      "templateRef": "component.modal-bottom-sheet",
+      "styleRef": "style.surface.raised",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": null
+    },
+    {
+      "assignmentRef": "assignment.element.vexstream-music.body.connection.refresh",
+      "semanticRef": "element.vexstream-music.body.connection.refresh",
+      "templateRef": "component.button",
+      "styleRef": "style.action.secondary",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": null
+    },
+    {
+      "assignmentRef": "assignment.element.vexstream-music.body.connection.library.download-all-missing",
+      "semanticRef": "element.vexstream-music.body.connection.library.download-all-missing",
+      "templateRef": "component.button",
+      "styleRef": "style.action.secondary",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": "icon.download"
+    },
+    {
+      "assignmentRef": "assignment.element.vexstream-music.body.connection.library.remove-all-downloaded",
+      "semanticRef": "element.vexstream-music.body.connection.library.remove-all-downloaded",
+      "templateRef": "component.button",
+      "styleRef": "style.action.danger",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": "icon.remove-download"
+    },
+    {
+      "assignmentRef": "assignment.element.vexstream-music.body.connection.forget.request",
+      "semanticRef": "element.vexstream-music.body.connection.forget.request",
+      "templateRef": "component.button",
+      "styleRef": "style.action.danger",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": null
+    },
+    {
+      "assignmentRef": "assignment.element.vexstream-music.body.connection.menu.close",
+      "semanticRef": "element.vexstream-music.body.connection.menu.close",
+      "templateRef": "component.button",
+      "styleRef": "style.action.secondary",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": "icon.close"
+    },
+    {
+      "assignmentRef": "assignment.element.vexstream-music.body.connection.menu.content",
+      "semanticRef": "element.vexstream-music.body.connection.menu.content",
+      "templateRef": "component.column",
+      "styleRef": "style.default",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": null
+    },
+    {
+      "assignmentRef": "assignment.element.vexstream-music.body.connection.menu.content.title",
+      "semanticRef": "element.vexstream-music.body.connection.menu.content.title",
+      "templateRef": "component.text",
+      "styleRef": "style.default",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": null,
+      "typographyRefOrNull": "headlineSmall",
+      "colorRefOrNull": "onSurface"
+    },
+    {
+      "assignmentRef": "assignment.element.vexstream-music.body.connection.menu.content.paired-name",
+      "semanticRef": "element.vexstream-music.body.connection.menu.content.paired-name",
+      "templateRef": "component.text",
+      "styleRef": "style.default",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": null,
+      "typographyRefOrNull": "titleMedium",
+      "colorRefOrNull": "onSurface"
+    },
+    {
+      "assignmentRef": "assignment.element.vexstream-music.body.connection.menu.content.status",
+      "semanticRef": "element.vexstream-music.body.connection.menu.content.status",
+      "templateRef": "component.text",
+      "styleRef": "style.default",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": null,
+      "typographyRefOrNull": "bodyLarge",
+      "colorRefOrNull": "onSurfaceVariant"
+    },
+    {
+      "assignmentRef": "assignment.element.vexstream-music.body.connection.menu.content.library-download-status",
+      "semanticRef": "element.vexstream-music.body.connection.menu.content.library-download-status",
+      "templateRef": "component.text",
+      "styleRef": "style.default",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": null,
+      "typographyRefOrNull": "bodySmall",
+      "colorRefOrNull": "onSurfaceVariant"
+    },
+    {
+      "assignmentRef": "assignment.element.home.body.vexstream.title",
+      "semanticRef": "element.home.body.vexstream.title",
+      "templateRef": "component.text",
+      "styleRef": "style.default",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": null,
+      "typographyRefOrNull": "headlineSmall",
+      "colorRefOrNull": "onSurface"
+    },
+    {
+      "assignmentRef": "assignment.element.home.body.vexstream.status",
+      "semanticRef": "element.home.body.vexstream.status",
+      "templateRef": "component.text",
+      "styleRef": "style.default",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": null,
+      "typographyRefOrNull": "titleMedium",
+      "colorRefOrNull": "onSurface"
+    },
+    {
+      "assignmentRef": "assignment.element.home.body.vexstream.body",
+      "semanticRef": "element.home.body.vexstream.body",
+      "templateRef": "component.text",
+      "styleRef": "style.default",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": null,
+      "typographyRefOrNull": "bodyLarge",
+      "colorRefOrNull": "onSurfaceVariant"
+    },
+    {
+      "assignmentRef": "assignment.element.home.body.systems.title",
+      "semanticRef": "element.home.body.systems.title",
+      "templateRef": "component.text",
+      "styleRef": "style.default",
+      "selectedStyleRefOrNull": null,
+      "iconRefOrNull": null,
+      "typographyRefOrNull": "headlineSmall",
+      "colorRefOrNull": "onSurface"
+    }
+  ],
+  "anchorRules": [
+    {
+      "anchorRef": "anchor.vexstream.library-actions",
+      "semanticRef": "element.vexstream-music.body.library-actions",
+      "parentSemanticRef": "screen.vexstream-music",
+      "horizontalAnchor": "END",
+      "verticalAnchor": "BOTTOM",
+      "horizontalInsetMetricRefOrNull": "scaffoldFabInsetHorizontal",
+      "verticalInsetMetricRefOrNull": "scaffoldFabInsetVertical"
+    },
+    {
+      "anchorRef": "anchor.vexstream.connection-sheet",
+      "semanticRef": "element.vexstream-music.body.connection.menu",
+      "parentSemanticRef": "screen.vexstream-music",
+      "horizontalAnchor": "CENTER",
+      "verticalAnchor": "BOTTOM",
+      "horizontalInsetMetricRefOrNull": null,
+      "verticalInsetMetricRefOrNull": null
+    }
+  ],
+  "semanticElements": [
+    {
+      "semanticRef": "element.home.body.vexstream.title",
+      "parentSemanticRef": "element.home.body.vexstream",
+      "kind": "TEXT",
+      "identityState": "VEXBOARD_PROPOSED",
+      "label": "VexStream Music",
+      "referenceLineCount": 1,
+      "sourceRefs": [
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt",
+        "repo.vexlife-android:app/src/main/res/values/strings.xml"
+      ],
+      "valueBindingRefOrNull": null,
+      "originForm": "VexTextOrigin",
+      "contentOriginRefs": [
+        "origin.vexlife.vexstream.message.home.title"
+      ]
+    },
+    {
+      "semanticRef": "element.home.body.vexstream.status",
+      "parentSemanticRef": "element.home.body.vexstream",
+      "kind": "TEXT",
+      "identityState": "VEXBOARD_PROPOSED",
+      "label": "VexStream offline · downloaded music is still available",
+      "referenceLineCount": 2,
+      "sourceRefs": [
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt",
+        "repo.vexlife-android:app/src/main/res/values/strings.xml"
+      ],
+      "valueBindingRefOrNull": "binding.vexstream.home.status-message",
+      "originForm": "VexTextOrigin",
+      "contentOriginRefs": [
+        "origin.vexlife.vexstream.message.home.connected",
+        "origin.vexlife.vexstream.message.home.offline"
+      ]
+    },
+    {
+      "semanticRef": "element.home.body.vexstream.body",
+      "parentSemanticRef": "element.home.body.vexstream",
+      "kind": "TEXT",
+      "identityState": "VEXBOARD_PROPOSED",
+      "label": "Browse your library, continue playback, manage the queue, or download music for offline listening.",
+      "referenceLineCount": 3,
+      "sourceRefs": [
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt",
+        "repo.vexlife-android:app/src/main/res/values/strings.xml"
+      ],
+      "valueBindingRefOrNull": "binding.vexstream.home.body-message",
+      "originForm": "VexTextOrigin",
+      "contentOriginRefs": [
+        "origin.vexlife.vexstream.message.home.disconnected-body",
+        "origin.vexlife.vexstream.message.home.connected-body"
+      ]
+    },
+    {
+      "semanticRef": "element.home.body.systems.title",
+      "parentSemanticRef": "element.home.body.systems",
+      "kind": "TEXT",
+      "identityState": "VEXBOARD_PROPOSED",
+      "label": "Vex systems",
+      "referenceLineCount": 1,
+      "sourceRefs": [
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt",
+        "repo.vexlife-android:app/src/main/res/values/strings.xml"
+      ],
+      "valueBindingRefOrNull": null,
+      "originForm": "VexTextOrigin",
+      "contentOriginRefs": [
+        "origin.vexlife.message.home.systems.title"
+      ]
+    }
+  ],
+  "contentOrigins": {
+    "authorityState": "REVERSE_ADOPTED_CANDIDATE",
+    "canonicalOwnerRefOrNull": null,
+    "defaultLocale": "en-US",
+    "origins": [
+      {
+        "originRef": "origin.vexlife.vexstream.message.home.title",
+        "defaultText": "VexStream Music",
+        "parameterRefs": [],
+        "targetRealizationRefs": [
+          "android.vexlife.string.home_vexstream_music"
+        ],
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/res/values/strings.xml"
+        ]
+      },
+      {
+        "originRef": "origin.vexlife.vexstream.message.home.connected",
+        "defaultText": "Connected to {deviceDisplayName}",
+        "parameterRefs": [
+          "parameter.device-display-name"
+        ],
+        "targetRealizationRefs": [
+          "android.vexlife.string.home_vexstream_connected"
+        ],
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/res/values/strings.xml"
+        ]
+      },
+      {
+        "originRef": "origin.vexlife.vexstream.message.home.offline",
+        "defaultText": "VexStream offline · downloaded music is still available",
+        "parameterRefs": [],
+        "targetRealizationRefs": [
+          "android.vexlife.string.home_vexstream_offline"
+        ],
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/res/values/strings.xml"
+        ]
+      },
+      {
+        "originRef": "origin.vexlife.vexstream.message.home.disconnected-body",
+        "defaultText": "Your music from your VexStream computer, ready to stream or keep offline on this phone.",
+        "parameterRefs": [],
+        "targetRealizationRefs": [
+          "android.vexlife.string.home_vexstream_disconnected_body"
+        ],
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/res/values/strings.xml"
+        ]
+      },
+      {
+        "originRef": "origin.vexlife.vexstream.message.home.connected-body",
+        "defaultText": "Browse your library, continue playback, manage the queue, or download music for offline listening.",
+        "parameterRefs": [],
+        "targetRealizationRefs": [
+          "android.vexlife.string.home_vexstream_connected_body"
+        ],
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/res/values/strings.xml"
+        ]
+      },
+      {
+        "originRef": "origin.vexlife.message.home.systems.title",
+        "defaultText": "Vex systems",
+        "parameterRefs": [],
+        "targetRealizationRefs": [
+          "android.vexlife.string.home_systems_title"
+        ],
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/res/values/strings.xml"
+        ]
+      }
+    ]
+  }
+}

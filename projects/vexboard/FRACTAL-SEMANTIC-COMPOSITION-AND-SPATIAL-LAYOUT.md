@@ -392,6 +392,93 @@ stable incremental arrangement
 + resolved geometry
 ```
 
+### Development-oriented traversal has a preferred spatial grammar
+
+The first lived VexStream phone-to-desktop Board exposed a presentation failure that is more specific
+than generic connector routing:
+
+~~~text
+two long vertically stacked device lanes
++ nested Screen/action content
++ cross-device transitions
++ construction/evidence side detail
+-> semantically useful
+-> perceptually crowded / crossing-heavy
+~~~
+
+For a **digital product-development** projection, prefer a predictable primary orientation:
+
+~~~text
+FORWARD TRAVERSAL / CONSEQUENCE / EVOLUTION
+  -> horizontal
+
+SIBLING / ALTERNATE BRANCHES
+  -> vertical
+
+SEMANTIC CONTAINMENT
+  -> inside the bounded parent surface
+
+ARCHITECTURAL DEPTH
+  -> enter / reveal beneath or behind the selected coordinate
+  -> not another permanently visible lane on the main journey plane
+~~~
+
+Example:
+
+~~~text
+[Home 1.0] -> [Home 1.1] -> [VexStream Music]
+                                  |
+                                  +-- vertical branch: Search
+                                  +-- vertical branch: Downloads
+                                  +-- vertical branch: Player
+
+select VexStream Music
+  -> reveal Behavior / Data / Storage / Provider / Source / Proof depth on demand
+~~~
+
+For a branching Settings-like Screen:
+
+~~~text
+Settings -> Account
+          -> Notifications
+          -> Privacy
+          -> Devices
+~~~
+
+the forward relationship remains horizontal while the branch set is distributed vertically. A
+context action such as `Reveal path` may expand one branch, one level or the full bounded branch
+without forcing all destinations into the canvas at once.
+
+Permanent:
+
+~~~text
+HORIZONTAL_TRAVERSAL != HORIZONTAL_MEGA_CANVAS
+VERTICAL_BRANCHING != SEMANTIC_PRIORITY
+DEPTH_REVEAL != NEW_BOARDGRAPH
+COLLAPSED_BRANCH != DELETED_BRANCH
+FULL_GRAPH != CURRENTLY_RENDERED_GRAPH
+~~~
+
+This orientation is not automatically correct for every VexBoard consumer. A physical process,
+training course, operations map or other low-surface-density process may remain easier to perceive as
+a compact zig-zag / WRAP / SERPENTINE flow.
+
+~~~text
+DEVELOPMENT_SCREEN_FLOW
+  may prefer horizontal traversal + vertical branching + depth descent
+
+PHYSICAL / OPERATIONAL PROCESS
+  may prefer ROW / WRAP / SERPENTINE / process-specific layout
+
+SHARED SEMANTIC PRIMITIVES
+  do not require one shared projection orientation
+~~~
+
+Do not force process maps to inherit the Screen-heavy development grammar merely for visual
+uniformity. Let process-specific refinement pressure its own projection category while preserving the
+same stable identity, relationship and Journey laws.
+
+
 ### Width-bounded local continuation is a foundation constraint
 
 Local composition must not assume that a horizontal ROW can propagate forever in one direction.

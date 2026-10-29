@@ -1,4 +1,4 @@
-# VexBoard — Semantic Blueprint IDE Foundation
+# VexBoard — Semantic Origin IDE Foundation
 
 [VXG RealForever]
 
@@ -6,7 +6,7 @@
 
 VexBoard began as a semantic canvas and now has enough real consumer pressure to make a larger reusable pattern explicit:
 
-> VexBoard is a living semantic Blueprint IDE: one bounded visual/perceptual surface where a human and AI can understand current truth, author intended meaning, traverse scoped neighborhoods, construct target realizations, inspect source/work/process context, and compare evidence without collapsing those rightful owners into one mega-state.
+> VexBoard is a living semantic Origin IDE: one bounded visual/perceptual surface where a human and AI can understand current truth, author intended meaning, traverse scoped neighborhoods, construct target realizations, inspect source/work/process context, and compare evidence without collapsing those rightful owners into one mega-state.
 
 This document owns that reusable architectural pattern and its worked examples.
 
@@ -34,7 +34,7 @@ bounded neighborhood + selected lens
         +-> inspect Work / Process / proof
         |
         v
-published / accepted Blueprint meaning
+published / accepted Origin meaning
         |
         v
 target construction mapping
@@ -66,6 +66,418 @@ SAME_RECURSIVE_IDE_PATTERN
 != SAME_TARGET_ADAPTER
 != ONE_MEGA_BOARD
 ~~~
+
+## Origin vocabulary — one truth, reusable name, scoped realizations
+
+`Origin` replaces `Blueprint` as the intended name for the **canonical reusable semantic source**.
+
+The reason is structural, not cosmetic:
+
+~~~text
+Blueprint
+  can sound like a design artifact copied into implementations
+
+Origin
+  names the authoritative semantic beginning
+  from which realizations / projections / observations descend
+~~~
+
+The durable law is:
+
+~~~text
+ORIGIN
+  canonical identity
+  intention / meaning
+  reusable semantic contract
+  rightful relationships
+  provenance / currentness
+        |
+        +-> Android realization
+        +-> Desktop realization
+        +-> Web realization
+        +-> VexBoard projection / authoring surface
+        +-> tests / evidence / translation projections
+
+REALIZATION
+  keeps the reusable semantic name
+  adds environment-specific mechanics
+  remains traversable back to Origin
+~~~
+
+Conceptual naming grammar:
+
+~~~text
+origin.vexlife.vexstream.ConnectionStatusOrigin
+
+android.vexlife.vexstream.ConnectionStatus
+desktop.vexlife.vexstream.ConnectionStatus
+web.vexlife.vexstream.ConnectionStatus
+~~~
+
+The stable reusable noun is `ConnectionStatus`. The namespace says where the realization lives.
+The `Origin` postfix says that coordinate owns the canonical reusable definition.
+
+~~~text
+SAME ORIGIN
++ DIFFERENT TARGET
+-> SAME REUSABLE SEMANTIC NAME
+-> DIFFERENT REALIZATION SCOPE
+
+TARGET DIFFERENCE
+!= NEW SEMANTIC NOUN
+~~~
+
+Do not mechanically suffix every internal concept with `Origin`. Use it when a name distinguishes the
+authoritative reusable definition from downstream realizations. State / Control / Act / Effect and other
+already-clear semantic roles do not gain an `Origin` suffix merely for symmetry.
+
+### Current `Blueprint` names are migration evidence, not future naming law
+
+Existing source names such as Android `ScreenBlueprint`, historical VexLife Blueprint Source-of-Truth
+Project refs, and this file's repository path remain current source coordinates until a bounded migration
+changes them safely.
+
+They do **not** grant permission to keep minting new canonical `*Blueprint` names.
+
+~~~text
+EXISTING_BLUEPRINT_SYMBOL
+= CURRENT / HISTORICAL SOURCE COORDINATE
+
+NEW CANONICAL SEMANTIC SOURCE
+-> PREFER ORIGIN VOCABULARY
+
+MIGRATION
+-> preserve lineage
+-> do not maintain permanent duplicate Origin + Blueprint truth models
+~~~
+
+The implementation should migrate only after the semantic model is settled enough that renaming does not
+become another churn cycle.
+
+### Identity and address vocabulary — current working model
+
+This section records the strongest naming model earned by the current patient zero. It is **not a protected
+final vocabulary**. A later consumer, platform, or simpler model may refactor these names if it preserves
+or improves the underlying distinctions and lineage.
+
+The current source contains many established `*Ref` fields. Those are migration coordinates, not a
+requirement that new semantic models continue treating `Ref` as a fourth identity primitive.
+
+The current working vocabulary is:
+
+~~~text
+ID
+  what semantic thing this is
+  stable across movement / storage / provider changes
+
+URI
+  how or where a thing can be addressed / resolved
+  may change while identity stays the same
+
+KEY
+  an actual lookup / resource / map key
+  use only when key semantics are real
+
+REF
+  current / historical compatibility vocabulary
+  new semantic source should prefer ID unless the value is actually a URI or Key
+~~~
+
+Examples:
+
+~~~text
+originId
+contentOriginIds
+valueBindingId
+screenId
+controlId
+actId
+effectId
+
+sourceUri
+artifactUri
+evidenceUri
+providerUri
+
+resourceKey
+translationKey
+mapKey
+~~~
+
+A relationship to another semantic object still carries that object's **ID**. It does not need a
+different noun merely because the ID appears in another object.
+
+~~~text
+OBJECT_IDENTITY != OBJECT_ADDRESS
+ID != URI
+ID != KEY
+
+MOVE_SOURCE
+-> URI MAY CHANGE
+-> current expectation: ID remains stable unless the semantic identity itself is intentionally reminted
+~~~
+
+The current preference is `URI` rather than a bespoke `Locator` abstraction because URI is already an
+established, cross-platform engineering form with mature API support and can express file, provider,
+content, network or other address schemes without confusing addressability with semantic identity.
+
+Any future `*Ref` migration should classify each field by actual role rather than mechanically rename it:
+identity -> `*Id`; address -> `*Uri`; true lookup key -> `*Key`. Existing accepted schemas remain valid
+until a bounded versioned migration earns a different representation.
+
+### Application composition — hierarchical ownership, flat indexes, nested presentation
+
+A whole application Origin and its UI composition are different scopes.
+
+~~~text
+VexApplicationOrigin
+  whole application meaning
+  -> Features
+  -> services / processes / background behavior
+  -> UI
+  -> widgets / notifications / other admitted surfaces
+
+VexAppUI
+  application UI composition only
+  -> shell / navigation surface
+  -> Feature-contributed Screens
+~~~
+
+The current Android `AppBlueprint` owns only shell + registered Screens. That current responsibility does
+not justify treating it as the whole `VexApplication`. `VexAppUI` is the strongest name candidate from
+this checkpoint, but future source may earn a different boundary or name.
+
+The current repository language favors the existing **Feature** vocabulary before adding a parallel
+generic `Domain` layer merely for distributed registration:
+
+~~~text
+VexApplicationOrigin
+  |
+  +-> MusicFeatureOrigin
+  |     +-> MusicHomeScreenOrigin
+  |     +-> NowPlayingScreenOrigin
+  |     +-> ArtistDetailScreenOrigin
+  |
+  +-> SettingsFeatureOrigin
+  |     +-> SettingsScreenOrigin
+  |     +-> PrivacyScreenOrigin
+  |
+  +-> MapsFeatureOrigin
+        +-> MapsScreenOrigin
+        +-> ...
+~~~
+
+Parallel feature work should normally mutate the feature-owned source rather than one giant root Screen
+list. The application composition should aggregate Feature contributions. A runtime/router may then
+derive the complete flat Screen index needed for deep links, navigation and Back behavior.
+
+~~~text
+AUTHORING_OWNERSHIP
+  may be hierarchical
+
+RUNTIME_ROUTING_INDEX
+  may be flat
+
+VISUAL_COMPOSITION
+  may be nested
+
+HIERARCHICAL_OWNERSHIP
+!= NESTED_VISUAL_SURFACE
+!= FLAT_RUNTIME_INDEX
+~~~
+
+The current smallest scalable candidate is Feature-owned bounded registration aggregated by application
+composition. Automatic classpath/source discovery remains an open later option if real parallel-work
+pressure shows the remaining aggregation point is itself harmful.
+
+#### Screen — current working definition
+
+The current patient zero uses `Screen` for a sovereign full-page / destination context rather than every
+container that owns children. This definition is intentionally revisitable if later product/platform
+pressure proves a better boundary.
+
+Android may realize that Screen through an Activity, Fragment, Compose navigation destination or another
+target-native mechanism without requiring the portable name to mirror that implementation.
+
+~~~text
+ArticleDetailScreenOrigin
+  full-page destination
+  -> Screen
+
+Home "For You" tab / Following feed
+  internal Home presentation/content
+  -> not automatically Screens
+~~~
+
+If a supposedly nested child is independently navigable as a full destination, it may be another
+Feature-owned Screen and still flatten into the runtime Screen index. If it is merely a tab, panel,
+feed or section inside the current Screen, name the familiar form it actually represents instead of
+weakening the Screen definition.
+
+#### Familiar-form realization naming
+
+Current naming pressure favors established human/platform vocabulary where it truthfully describes the
+realized form. Examples:
+
+~~~text
+VexConnectionBottomSheet
+VexDeleteAlert
+VexPlaybackWidget
+VexTrackRow
+VexLibraryCard
+VexSearchBar
+VexNowPlayingPanel
+~~~
+
+These currently read more clearly than newly invented abstraction names whose primary meaning is
+implementation mechanics. The working grammar is:
+
+~~~text
+Vex + semantic/product meaning + familiar form
+~~~
+
+A target-native form such as `BottomSheet`, `Alert`, `Widget`, `Row` or `Panel` can be useful when it
+names the target realization honestly. Whether that form belongs in portable Origin meaning remains a
+separate design decision and may evolve with later product/target evidence.
+
+~~~text
+PORTABLE_MEANING
+!= TARGET_FORM
+
+TARGET_FORM
+MAY BE PART OF PORTABLE DESIGN
+ONLY WHEN THE PRODUCT/DESIGN CONTRACT ACTUALLY OWNS IT
+~~~
+
+This keeps custom Composables familiar to engineers without minting a unique Vex container taxonomy for
+behavior that established UI language already names well.
+
+### Origin identity, namespace and physical files are different axes
+
+A semantic coordinate must not become dependent on one repository folder layout.
+
+~~~text
+Origin identity
+  what reusable meaning this is
+
+namespace / scope
+  product + domain + realization plane
+
+physical source file
+  how maintainers organize source today
+
+distribution / vendor packet
+  how a consumer receives a useful batch
+
+target resource
+  how one platform realizes the Origin
+~~~
+
+These may correlate, but they are not the same owner.
+
+A package move, file split or vendor-batch boundary must not silently remint the semantic Origin.
+Repository fragmentation is not a current design requirement: the Origin owns the reusable design meaning,
+not the repository boundary.
+
+~~~text
+SEMANTIC_IDENTITY != FILE_PATH
+SEMANTIC_IDENTITY != PACKAGE_LAYOUT
+PACKAGE_LAYOUT != TRANSLATION_BATCH
+TRANSLATION_BATCH != CANONICAL_OWNER
+TARGET_RESOURCE_ID != ORIGIN_IDENTITY
+~~~
+
+### Localization — source can be sharded while vendor work stays bulk
+
+The current Vextreme localization system already demonstrates a useful scalable pattern:
+
+~~~text
+data/strings/source/**
+  canonical source split by semantic/page/common scope
+
+translation campaign/program
+  reads canonical keys across those source files
+  selects deterministic bounded rows
+  exports bulk CSV packets per target language
+
+compiled scopes
+  emit target/read-optimized locale bundles
+~~~
+
+Therefore Origin adoption should **not** require one translation file per package nor force a vendor to
+translate package-by-package.
+
+A future Origin-backed content path may look conceptually like:
+
+~~~text
+origin.vexlife.vexstream.message.ConnectionStatusOrigin
+        |
+        +-> canonical source-language text + parameters + context
+        +-> locale translations
+        |
+        +-> generated vendor campaign
+        |     hundreds / thousands of Origin keys across scopes
+        |
+        +-> Android mapping
+        |     R.string.vexstream_connection_status
+        |
+        +-> Desktop mapping
+        |     native locale/resource coordinate
+        |
+        +-> Web mapping
+              locale bundle coordinate
+~~~
+
+Physical source may be organized by product/domain/package because that helps maintainers. A translation
+exporter may flatten any admitted set of Origins into one bulk packet, preserving stable IDs, source
+preimage/hash, placeholders, context and return placement.
+
+~~~text
+ORGANIZE SOURCE FOR OWNERSHIP / MAINTENANCE
+PROJECT TRANSLATION WORK FOR THE TRANSLATOR / VENDOR
+COMPILE TARGET RESOURCES FOR THE TARGET
+
+ONE CANONICAL IDENTITY GRAPH
+MANY FIT-FOR-PURPOSE PROJECTIONS
+~~~
+
+Android's default `res/values/strings.xml` is currently a target-local source/resource surface. It should
+be able to become a generated/mapped realization of canonical Origin content without forcing Android's
+physical XML organization onto Desktop, Web, Vextreme or the canonical content owner.
+
+### Remaining long-term questions Origin does not answer alone
+
+The following remain deliberate design questions. Do not patch around them with new nouns:
+
+1. **Evolution / revision** — the same Origin may evolve. A realization needs enough lineage/currentness
+   to say which accepted Origin revision it realizes without reminting semantic identity for every edit.
+
+2. **Semantic reuse versus identical wording** — two messages that both say `Close` are not automatically
+   one Origin. Reuse requires shared meaning/context, not text equality. Conversely, one Origin may have
+   different locale wording or target presentation without becoming separate semantic truth.
+
+3. **Lawful target specialization** — a target may need native behavior, accessibility wording, size,
+   interaction or platform affordances. The adapter must distinguish lawful realization variance from an
+   independent product/design fork.
+
+4. **Bindings are orthogonal** — State/data may select a content Origin, supply parameters, alter
+   visibility/style/selection, or drive another property. Do not create `DynamicX` semantic subclasses
+   for each value source.
+
+5. **Reachability / packaging** — a target should consume the reachable Origin closure it needs rather
+   than shipping one universe-wide bundle merely because a universal graph exists.
+
+6. **Mutation authority** — a downstream realization may propose a change, but it does not silently
+   become canonical. The rightful Origin owner accepts the change, then propagation updates descendants.
+
+7. **Rename propagation** — readable Origin names may improve over time. VexBoard should eventually traverse
+   the existing semantic/process/source/realization graph to show every downstream consequence, support the
+   rename manually first, and only then earn autonomous propagation. Old mappings/evidence remain resolvable
+   through explicit lineage; aliases/migrations are compatibility evidence, not a second permanent identity.
+   This is captured as `work.vexboard.tech-debt.origin-rename-propagation` and is low-priority, parked work.
+
+These questions should be solved through real consumer pressure and existing rightful owners before new
+framework layers are admitted.
 
 ## One identity, many lenses
 
@@ -219,6 +631,138 @@ SOURCE
 This creates a path for screenshot comparison that does not require screenshots, source annotations
 and process topology to occupy the same visual plane simultaneously.
 
+### Design authority transition — reverse adoption is temporary
+
+For an existing application, VexBoard may begin by reverse-adopting accepted target source. That is a
+migration/bootstrap condition, not the intended permanent design authority.
+
+The trajectory is:
+
+~~~text
+existing target implementation
+-> reverse-adopt stable identity + layout + style + behavior relationships
+-> reconcile until VexBoard can reproduce the accepted target design
+-> explicitly accept / publish the VexBoard design revision
+-> VEXBOARD DESIGN becomes the authoritative presentation / UX Blueprint
+-> target adapter consumes that Blueprint
+-> target-native source / renderer realizes it
+-> observed target UI returns as evidence
+~~~
+
+After that transition, ordinary design evolution should flow forward:
+
+~~~text
+VexBoard accepted design
+-> deterministic target mapping
+-> Android ScreenBlueprint / Elements / Vex Compose / Compose realization
+-> build / render
+-> observed evidence
+-> compare to the same VexBoard design coordinates
+~~~
+
+The target repository still owns its target-native implementation, build, runtime and proof boundaries.
+It does not independently redesign an accepted VexBoard-owned Screen while claiming to remain current
+to that Blueprint.
+
+~~~text
+REVERSE_ADOPTION != PERMANENT_DESIGN_AUTHORITY
+TARGET_IMPLEMENTATION_OWNER != UX_DESIGN_OWNER
+TARGET_RENDERER != DESIGN_SOURCE_OF_TRUTH
+ACCEPTED_VEXBOARD_DESIGN -> TARGET_REALIZATION
+TARGET_REALIZATION -> OBSERVED_EVIDENCE
+~~~
+
+This is the source-of-truth transition the VexStream patient zero is intended to prove.
+
+### Constraint bias, percentages and bounded margins are design meaning
+
+A Screen frame should not merely store one resolved `x / y / width / height` snapshot.
+
+For responsive/adaptable UI, VexBoard needs enough portable constraint meaning to reconstruct the
+surface at another compatible viewport and to form target-native layout source.
+
+A useful pressure model is:
+
+~~~text
+parent content box
++ semantic containment / order
++ edge anchors
++ horizontal / vertical bias
++ percentage / fractional sizing
++ bounded margins / padding
++ min / max size
++ content / fill / fixed / aspect sizing
++ row / column / stack / scroll meaning
++ alignment / baseline when earned
+        |
+        v
+resolved occurrence bounds for this viewport
+~~~
+
+Percentages are especially useful as normalized intent when the relationship really scales with the
+container. Margins and touch/readability boundaries should be bounded rather than allowed to grow or
+shrink without limit.
+
+Example pressure:
+
+~~~text
+horizontal:
+  START -> parent.START
+  END   -> parent.END
+  bias  = 0.50
+  width = 100% of admitted inner width
+
+outer margin:
+  preferred = 3.88% of reference width
+  min = target-admitted compact margin
+  max = target-admitted spacious margin
+
+child:
+  width = 72% of parent inner width
+  START anchored
+  height = CONTENT
+~~~
+
+The exact numbers are design data, not universal constants. Reverse adoption may initialize them from
+the accepted Android realization; once the VexBoard revision is accepted, the VexBoard constraint is
+the owner and Android becomes a target mapping.
+
+For an existing fixed Android margin such as 16dp, reverse adoption may initially admit an exact
+bounded value:
+
+~~~text
+preferredPercent = 16 / 412
+minDp = 16
+maxDp = 16
+~~~
+
+That reproduces the current reference viewport exactly without pretending the fixed target value is
+already a cross-device responsive rule. A designer can later widen the admitted bounds deliberately.
+
+Permanent:
+
+~~~text
+AUTHORED_CONSTRAINTS -> RESOLVED_GEOMETRY
+RESOLVED_GEOMETRY != AUTHORED_CONSTRAINTS
+
+PERCENTAGE != UNBOUNDED_SCALING
+REFERENCE_DP != UNIVERSAL_DP
+TARGET_DP != PORTABLE_IDENTITY
+
+VEXBOARD_SCREEN_DESIGN
+  = semantic structure
+  + design tokens
+  + portable / target-qualified constraints
+  + state-conditioned presentation
+
+ANDROID_LAYOUT
+  = one target realization of that accepted design
+~~~
+
+A long-term VexBoard Screen renderer therefore **is** a real design renderer. Avoiding a second copy of
+Compose means avoiding Android framework semantics as the portable owner; it does not mean avoiding
+the rendering capability required for VexBoard to be design-authoritative.
+
 ### Default lens should follow the human question
 
 A Board may expose several lenses while choosing one primary default for the current task.
@@ -253,6 +797,1267 @@ This is currently a foundation direction pressured by the VexStream patient zero
 universal lens enum, viewport schema or responsive-layout compiler merely from this example. The next
 implementation should prove the smallest useful Screen-frame + lens-switch seam and let a second real
 consumer determine what deserves extraction.
+
+## Blueprint-readable system — source is an x-ray, not a prerequisite
+
+A living Blueprint should be sufficient for a human or AI to understand the application/system
+without opening implementation source merely to discover what connects to what.
+
+Source remains exact and inspectable, but it is an appendage/provenance layer around already-legible
+Blueprint meaning:
+
+~~~text
+Blueprint experience / architecture
+  -> identity
+  -> structure
+  -> interaction meaning
+  -> state / behavior
+  -> dependencies
+  -> data / storage / provider relationships
+  -> execution / proof relationships
+
+SOURCE / IMPLEMENTATION
+  -> exact target realization of those meanings
+  -> repository / file / symbol / revision
+  -> target-only mechanics and diagnostics
+~~~
+
+Permanent:
+
+~~~text
+BLUEPRINT_READABLE != SOURCE_HIDDEN
+SOURCE_AVAILABLE != SOURCE_REQUIRED_FOR_BASIC_COMPREHENSION
+COLLAPSED_RELATIONSHIP != AMBIGUOUS_RELATIONSHIP
+NOT_RENDERED_BY_DEFAULT != NONEXISTENT
+EVERY_MATERIAL_CONNECTION -> ADDRESSABLE + REVEALABLE
+~~~
+
+The ordinary surface should therefore answer questions such as:
+
+~~~text
+What Screen am I on?
+What is inside it?
+What can I do here?
+What does that action mean?
+Where can it take me?
+What truth/data does this surface depend on?
+What behavior or convergence produces that truth?
+What storage/provider/runtime owns the deeper consequence?
+What evidence proves the intended result?
+~~~
+
+without requiring the reader to reverse-engineer Kotlin, JavaScript, SQL or another target language.
+
+### Development-space grammar — forward horizontally, branch vertically, descend for architecture
+
+The VexStream patient zero is pressuring a useful spatial grammar for **digital/product development**
+views:
+
+~~~text
+X / horizontal
+  forward traversal / consequence / evolution
+
+Y / vertical
+  sibling branches / alternate paths / related optional consequences
+
+Z / depth
+  architecture beneath or behind the selected semantic coordinate
+  behavior / dependencies / data / storage / provider / source / proof
+
+T / revision-currentness
+  current / proposed / expected / observed / historical lineage
+~~~
+
+This may be rendered as ordinary 2D plus enter/reveal/overlay behavior. It does not require literal
+perspective 3D graphics.
+
+Example:
+
+~~~text
+Home 1.0
+    -> Home 1.1
+          -> VexStream Music 1.0
+                 -> Library
+                 -> Track Detail
+                 -> Player
+
+Settings
+    -> Account
+       Notifications
+       Privacy
+       Devices
+~~~
+
+The primary forward path reads left-to-right. Branches consume vertical space. Deeper implementation
+and architecture should not be forced onto that same primary plane merely because it is connected.
+
+This is a development/product projection grammar, not a universal process-map law. Physical,
+operational, instructional and other process maps may legitimately prefer compact ROW / WRAP /
+SERPENTINE or another process-specific reading order when Screens and rich surface frames are not the
+primary information.
+
+~~~text
+DIGITAL_DEVELOPMENT_LAYOUT != UNIVERSAL_PROCESS_LAYOUT
+PROCESS_MAP != SCREEN_FLOW_WITH_SCREENSHOTS_REMOVED
+SHARED_SEMANTICS MAY HAVE DIFFERENT PROJECTION_GRAMMARS
+~~~
+
+### One Screen identity may evolve through revisions
+
+A design evolution should normally preserve the stable Screen identity and attach revision/currentness
+meaning rather than minting a new product Screen for every edit.
+
+~~~text
+screen.home
+
+revision 1.0
+  accepted design
+  expected / observed evidence where available
+
+revision 1.1
+  proposed or accepted successor
+  + element.home.body.vexstream.connect
+~~~
+
+This lets a designer perceive what existed, what is changing and what the expected next state is
+without confusing revision with identity.
+
+### Unresolved interactive consequence is an explicit authoring junction
+
+When a new interactive element exists but its consequence has not yet been bound, VexBoard should be
+able to show a small explicit unresolved junction such as:
+
+~~~text
+[ Connect VexStream Music ] -> [+]
+~~~
+
+The `+` means:
+
+> this interaction identity exists, but the intended semantic consequence has not yet been selected.
+
+Useful bounded choices may include:
+
+~~~text
+Navigate
+  -> existing Screen
+  -> new Screen
+
+Present
+  -> dialog
+  -> bottom sheet
+  -> overlay / popover
+
+Local presentation
+  -> toggle
+  -> tab / swappable region
+  -> open / close
+
+Invoke
+  -> existing semantic action
+  -> new bounded semantic action
+
+Platform / external
+  -> Android/system surface
+  -> permission / picker
+  -> external intent / deep link
+
+Background / non-UI
+  -> event / receiver / callback / scheduled or service-owned intention
+
+Custom
+  -> explicit bounded meaning not covered above
+~~~
+
+This is an authoring affordance, not a new universal node enum.
+
+Permanent:
+
+~~~text
+UNRESOLVED_CONSEQUENCE != BROKEN_SOURCE
+INTERACTIVE_UI -> SHOULD_HAVE_EXPLICIT_MEANING
+INTENTION != ALWAYS_UI
+UI != ALWAYS_EFFECT
+BACKGROUND_INPUT MAY HAVE NO IMMEDIATE_SCREEN
+STATIC_UI MAY HAVE NO_ACTION
+~~~
+
+### Screen authoring should walk from intention into construction
+
+A newly formed Screen may progressively ask only for the meaning required to construct it:
+
+~~~text
+stable Screen identity
++ human purpose
++ initial composition / reusable components
++ interaction identities and consequences
++ data/state required by the surface
++ repository / service / provider relationships when real
++ persistence/storage relationship when real
++ execution/lifetime defaults
++ proof / evidence expectations
+        |
+        v
+target construction mapping
+~~~
+
+The author should not have to specify Android boilerplate merely to say that a network-backed list
+appears on a Screen. A target adapter may infer a reasonable execution/lifetime realization, while
+keeping that inference visible and overrideable:
+
+~~~text
+DEFAULTED_EXECUTION != INVISIBLE_EXECUTION
+
+repository/network read
+-> background execution by default
+-> observable state / projection
+-> foreground rendering
+
+long-lived playback
+-> service/runtime owner when required
+
+Screen-local transient selection
+-> local presentation lifetime by default
+~~~
+
+A default remains inspectable architecture, not hidden magic.
+
+### Architectural depth is progressive disclosure from the selected coordinate
+
+The ordinary Screen/design block should expose bounded depth affordances rather than dumping the whole
+application underneath every surface.
+
+For a selected `screen.vexstream-music`, the first depth reveal might show:
+
+~~~text
+Behavior
+Data / Repository
+Dependencies
+Storage
+Provider / API
+Runtime / Service
+Source
+Proof / Evidence
+~~~
+
+Selecting Data should initially answer only what this Screen consumes:
+
+~~~text
+VexStreamMusicRepository
+  state
+    connectionState
+    hubState
+    tracks[]
+    playlists[]
+
+  findNearbyVexStream()
+  refreshCatalog()
+  downloadForOffline(...)
+~~~
+
+A user may then descend:
+
+~~~text
+tracks[]
+-> VexStreamTrackState
+-> localCopy
+-> Downloaded
+-> MediaStore / local asset owner
+~~~
+
+The database/table/provider totality remains reachable but does not become the default Screen view.
+
+~~~text
+SELECTED_COORDINATE
+-> BOUNDED_RELEVANT_DEPTH
+-> EXPLICIT EXPAND / ENTER
+-> DEEPER OWNER
+
+SCREEN_DEPENDENCY_VIEW != WHOLE_DATABASE_DUMP
+FULL_SYSTEM_ADDRESSABLE != FULL_SYSTEM_SIMULTANEOUSLY_RENDERED
+~~~
+
+### Semantic action and implementation symbol remain different coordinates
+
+Implementation functions should be referencable, but target symbol names must not become universal
+product identity merely because they are convenient to display.
+
+~~~text
+action.vexstream.find-nearby
+        |
+        +-> Android implementation
+        |     PairedVexStreamMusicRepository.findNearbyVexStream(...)
+        |
+        +-> future other target implementation
+              target-native symbol
+~~~
+
+A source/detail view may show:
+
+~~~text
+semantic action / relationship
+implementation function
+parameters
+output
+fields actually consumed by the selected surface
+repository / provider dependencies
+source location + revision
+~~~
+
+This allows the application to be read from the Blueprint while still providing Android-Studio-like
+source descent when implementation detail matters.
+
+### Local custom construction may graduate into reusable Gallery vocabulary
+
+A feature may first create a custom local component:
+
+~~~text
+VexStream Track Card
+  artwork
+  title / artist
+  action menu
+~~~
+
+If another independent consumer proves the same structural/design promise, that construction may be
+promoted into a reusable Gallery/component template rather than copied.
+
+~~~text
+local custom construction
+-> second real consumer
+-> reusable component pressure
+-> accepted Gallery / template vocabulary
+-> future Screen reuse
+~~~
+
+Gallery is therefore a reusable visual/construction vocabulary, not a requirement that every local
+composition become globally reusable.
+
+
+## First reverse-adoption POC — Home -> VexStream stateful Screen + connection depth
+
+The first executable Android-to-web bridge should remain deliberately bounded.
+
+Do not begin by projecting the whole VexLife Android repository.
+
+Use this patient-zero scope:
+
+~~~text
+VexLife Android product
+  |
+  v
+Home Screen
+  |
+  | Open / Connect VexStream Music
+  v
+VexStream Music Screen
+  |
+  +-> library Loading projection
+  +-> library Ready + Empty projection
+  +-> library Ready + Loaded Songs projection
+  |
+  +-> toolbar Manage Connection
+        -> Connection modal / bottom sheet
+~~~
+
+This scope is intentionally large enough to prove:
+
+~~~text
+static Screen / Element identity
++ navigation
++ same-Screen conditional state projection
++ local presentation / modal state
++ repository State
++ local persistence / storage
++ remote Desktop service contract
++ source provenance
+~~~
+
+without requiring the first adapter to understand every VexLife feature.
+
+### Android reverse-adoption bridge before VexBoard becomes design-authoritative
+
+For this existing-system patient zero, source-owned Android export is preferred over Kotlin parsing in
+the browser:
+
+~~~text
+VexLife-Android accepted current source
+
+AppScreens.registry
+  + ScreenBlueprint / ElementPlacement
+  + UIBlueprintRegistry ownership / parent / children / navigation targets
+  + stable screen.* / element.* refs
+  + VexModifier / Vex Compose identity continuity
+  + bounded feature-specific state projection where static registry data is insufficient
+  + target layout/style facts needed to recover the current design
+
+        |
+        v
+
+deterministic neutral Android adoption snapshot
+
+        |
+        v
+
+VexBoard reverse-adoption mapper
+
+        |
+        v
+
+VexBoard semantic graph
++ VexBoard Screen Design constraints
++ reference projection
+        |
+        v
+
+reconcile against accepted Android visual/runtime evidence
+        |
+        v
+
+explicit design-authority transition
+        |
+        v
+
+VexBoard accepted Screen Design
+        |
+        +-> VexBoard web/design renderer
+        +-> Android construction adapter
+              -> ScreenBlueprint / Elements / Vex Compose / Compose
+~~~
+
+The snapshot is therefore an **import/migration carrier**. It must not become a permanent second design
+truth beside VexBoard.
+
+The first snapshot format is a proving seam, not permission to canonize one universal cross-platform
+UI schema.
+
+It should carry only meaning required by the consumer, for example:
+
+~~~text
+source repository + exact revision
+Screens
+Elements
+owner Screen
+parent / child structure
+semantic kind
+style meaning when material
+interaction intent
+navigation / presentation target
+source-native refs
+identity-coverage status
+
+bounded VexStream state facts needed by this POC
+~~~
+
+Permanent:
+
+~~~text
+WEB_PROJECTOR != KOTLIN_PARSER
+VEXBOARD_RENDERER != COMPOSE_RUNTIME
+ANDROID_SNAPSHOT != NEW_PRODUCT_TRUTH
+
+BEFORE_AUTHORITY_TRANSITION:
+ANDROID_SOURCE_OWNER -> EXPORTED_MEANING -> VEXBOARD_REVERSE_ADOPTION
+
+AFTER_ACCEPTED_TRANSITION:
+VEXBOARD_DESIGN_OWNER -> ANDROID_TARGET_ADAPTER -> ANDROID_REALIZATION
+~~~
+
+### Android adoption audit — keep the good foundation, standardize the mapping debt
+
+The VexLife-Android patient zero does **not** require replacing the Android UI foundation.
+
+Several existing Android seams are already the right long-term building blocks:
+
+~~~text
+UIBlueprintRegistry
+  -> stable Screen / Element identity
+  -> parent / child / owner Screen
+  -> semantic style
+  -> local/open/close/swap/navigation intent validation
+
+VexModifier
+  -> rendered semantic/test identity
+
+VexComposeScope
+  -> deterministic nested custom-Compose identity
+
+VexElementStyles
+  -> semantic style vocabulary rather than raw visual tokens
+
+VexElementTree / Vex-owned cells
+  -> target-native realization for ordinary Blueprint-rendered Screens
+
+sourceAlignmentReport / verifySourceAlignment
+  -> repository-owned convention validation
+
+vexComposeMigrationReport
+  -> existing advisory raw-Compose migration debt surface
+
+ScreenCrawler
+  -> stable scenario / Screen / semantic evidence identity + screenshot SHA
+~~~
+
+Do not replace these with a second VexBoard-specific Android framework merely because reverse adoption exposes gaps.
+
+The observed debt is narrower: **custom Screen realization can preserve semantic identity while still keeping product-design meaning in target-only Compose source.**
+
+The current VexStream Screen demonstrates the seam:
+
+~~~text
+ScreenBlueprint.content
+  -> static semantic registration tree
+
+renderContent()
+  -> custom VexStreamLibrarySurface
+  -> Scaffold / Column / Box / LazyColumn
+  -> target dp values
+  -> target MaterialTheme typography/color overrides
+  -> state-conditioned native composition
+~~~
+
+That split is acceptable while Android owns the accepted current implementation. It becomes mapping debt once VexBoard is intended to own the Screen design.
+
+Permanent distinction:
+
+~~~text
+RAW_COMPOSE != AUTOMATIC_DEBT
+
+PLATFORM_NATIVE_MECHANIC
+  -> may remain target-owned
+  -> e.g. drag mechanics, MediaSession, native sheet physics, Android platform integration
+
+PRODUCT_DESIGN_MEANING
+  -> must become addressable upstream before VexBoard design authority
+  -> e.g. component assignment, stable child order, padding/gap, anchors, viewport behavior,
+     typography role, semantic style, state-conditioned visibility/presentation
+~~~
+
+#### Observed standardization seams
+
+1. **Custom realization mode should be explicit and inspectable**
+
+Today a custom Screen is discoverable by reading/overriding renderContent, but the registry does not carry an explicit realization-mode fact.
+
+A future Android adoption/export seam should be able to distinguish at machine level:
+
+~~~text
+GENERIC_BLUEPRINT_TREE
+CUSTOM_NATIVE_REALIZATION
+GENERATED_FROM_VEXBOARD_DESIGN
+~~~
+
+without source-text heuristics.
+
+2. **Static registry coverage and runtime-derived Vex Compose coverage are different**
+
+UIBlueprintRegistry can enumerate registered static elements. VexComposeScope can also form deterministic nested runtime refs such as custom sheet text/content children.
+
+Those runtime-derived refs are useful and truthful, but are not automatically enumerable through the static registry.
+
+The export/inspection layer should report that distinction rather than pretending one set is total:
+
+~~~text
+REGISTERED_STATIC
+DERIVED_CUSTOM_PRESENTATION
+DYNAMIC_DOMAIN_OCCURRENCE
+TARGET_ONLY_DECORATION
+~~~
+
+When a derived custom child carries product meaning that VexBoard should author later, either promote it into the authoritative design/component tree or expose it through one bounded dynamic-presentation template/manifest. Do not hand-copy its string ref into VexBoard.
+
+3. **Target layout literals should migrate by meaning, not by blanket ban**
+
+Current VexStream custom presentation legitimately contains direct target facts such as 8.dp, 10.dp, 12.dp, 20.dp, native Scaffold, LazyColumn, Row, and Material typography roles.
+
+During reverse adoption these are target facts to recover.
+
+After VexBoard accepts design authority, product-design values should be produced from the accepted VexBoard design / Android adapter. Target-only mechanics may remain local.
+
+The existing vexComposeMigrationReport is the rightful repository-owned place to expose this debt. Do not create a parallel VexBoard linter.
+
+4. **Static semantic tree must not be mistaken for exact rendered layout on custom Screens**
+
+For ordinary Screens, ScreenBlueprint.content -> VexElementTree is both semantic structure and visible construction.
+
+For a custom Screen such as VexStream, content is currently registry/action coverage while custom Compose owns the visible realization.
+
+Therefore:
+
+~~~text
+CUSTOM_SCREEN_REGISTRY_TREE != PROVEN_PIXEL / LAYOUT TREE
+~~~
+
+Concrete VexStream pressure already proves this is not theoretical:
+
+~~~text
+ConnectionMenuSheet
+  static registry:
+    buttons -> direct children of sheet
+
+  rendered custom Compose:
+    sheet
+      -> derived content column
+          -> title / paired-name / status / download-summary
+          -> buttons visually arranged in that same column
+
+ShowQueue
+  static registry:
+    body.library-actions
+      -> PlayAll
+      -> ShuffleAll
+      -> ShowQueue
+
+  rendered custom Compose:
+    library FAB cluster
+      -> PlayAll
+      -> ShuffleAll
+
+    player controls
+      -> ... 
+      -> ShowQueue
+~~~
+
+These are not reasons to discard the registry. They are migration findings:
+
+- the connection-sheet content container/text identities should be promoted into static registration
+  when Android is normalized to the accepted VexBoard design;
+- ShowQueue should have one static structural parent matching the accepted rendered/product design
+  instead of remaining under a convenience group that no longer matches the real surface.
+
+Reverse adoption may temporarily preserve both semantic and layout parent truth separately so no
+relationship is falsified.
+
+Reverse adoption must reconcile both sources plus lived evidence. After design authority transitions, the intended direction becomes:
+
+~~~text
+VEXBOARD_SCREEN_DESIGN
+-> ANDROID_TARGET_ADAPTER
+-> ScreenBlueprint / registered identities
++ target-native custom realization where required
+-> observed evidence
+~~~
+
+not two independently authored product layouts.
+
+5. **A deterministic Android adoption exporter should replace manual source hunting**
+
+The desired exporter is a build/tooling surface over existing owners, not a runtime dependency:
+
+~~~text
+AppScreens.registry
++ explicit realization mode
++ bounded feature state adapter
++ target-qualified presentation facts needed only for adoption
++ source revision
+        |
+        v
+deterministic adoption snapshot
+~~~
+
+Stable ordering and exact refs should make repeated VexBoard imports diffable and cheap.
+
+6. **ScreenCrawler should emit a durable evidence receipt, not only PNG + log text**
+
+Current crawler evidence already has stable semantic identity and computes screenshot SHA-256.
+
+To satisfy trustworthy VexBoard OBSERVED evidence, the capture path should eventually emit a durable machine-readable receipt alongside the PNG containing at least:
+
+~~~text
+scenarioRef
+evidenceRef
+screenId
+semanticRefOrNull
+configurationRef
+sourceRef / exact source revision
+capturedAt
+contentSha256
+artifact path / media identity
+~~~
+
+Then:
+
+~~~text
+ANDROID_SCREENCRAWLER_RECEIPT
+-> BoardEvidence OBSERVED
+~~~
+
+can be admitted without guessing capture time from upload/filesystem/event timestamps.
+
+7. **Canonical content Origin is upstream of target string resources**
+
+The current Android element model exposed a real registration gap, but the first interpretation mixed
+two different questions:
+
+~~~text
+WHAT IS THIS?
+  one stable Vex text Origin / semantic identity
+
+WHERE DOES ITS CURRENT VALUE COME FROM?
+  one canonical content Origin
+  one of several content Origins selected by State
+  parameters supplied by current State/data
+~~~
+
+The Vex ontology must not make `dynamic` part of element identity merely because a value is selected
+or parameterized at runtime.
+
+Use the naming roles explicitly:
+
+~~~text
+VexText
+  reusable Vex semantic/construction primitive
+
+VexTextOrigin
+  canonical authored Origin form of that primitive
+
+origin.*.message.*
+  stable content meaning / translation identity
+
+binding.*
+  current State/data -> content selection / parameters / element property
+
+target-local resource
+  Android R.string / web locale key / another native realization
+~~~
+
+A generic `VexElementOrigin` envelope may be earned later if repeated component families need the
+same structural contract. Do not mint a class merely to fill a naming grammar.
+
+For the Home patient zero:
+
+~~~text
+VexTextOrigin
+  semanticRef = element.home.body.vexstream.status
+
+  contentOriginRefs =
+    origin.vexlife.vexstream.message.home.connected
+    origin.vexlife.vexstream.message.home.offline
+
+  valueBindingRef =
+    binding.vexstream.home.status-message
+
+  typography / color =
+    design-owned
+~~~
+
+The binding owns **selection and parameters**, not the message wording itself. A connected status may
+bind a current device display name into the canonical connected message; the offline branch may select
+another content Origin. Both remain source-addressable Origins.
+
+The scalable path is therefore:
+
+~~~text
+canonical content Origin
+  -> locale variants / translation source
+  -> Origin usage ref
+  -> target adapter
+  -> target-native resource/key
+  -> rendered value
+  -> observed evidence
+~~~
+
+For Android specifically:
+
+~~~text
+origin.vexlife.vexstream.message.home.connected
+  -> Android adapter mapping
+  -> android.vexlife.string.home_vexstream_connected
+  -> R.string.home_vexstream_connected
+  -> stringResource(...)
+  -> rendered VexText
+~~~
+
+`R.string.home_vexstream_connected` is a **target realization coordinate**, not the portable content
+Origin. The same Origin may map to a web locale bundle, desktop resource, accessibility surface, or
+another project without re-translating the same semantic message independently.
+
+During reverse adoption, Android resources may supply the currently accepted wording from which proposed
+content Origins are recovered:
+
+~~~text
+accepted Android resource
+-> reverse-adopt meaning + wording + parameters
+-> proposed content Origin
+-> reconcile reuse / translation ownership
+~~~
+
+After the authority threshold crosses, ordinary direction reverses:
+
+~~~text
+accepted content Origin
+-> translation/currentness
+-> target adapters
+-> Android/web/desktop resource projections
+-> observed evidence
+~~~
+
+A manual endpoint-only wording edit is then **drift or an upstream change proposal**, not silent new
+truth. A legitimate wording change should move to the rightful Origin owner and propagate through
+mapped targets.
+
+Android PR #182 now realizes the same law without a `DynamicTextElement` subtype:
+
+~~~text
+TextElement
+  stable elementId
+  TextRole / style
+  optional Android textRes mapping
+  no runtime/domain value storage
+
+VexText(element)
+  -> resource-mapped value
+
+VexText(element, text = currentValue)
+  -> State/data-bound value
+
+VexElementTree.textValue(TextElement)
+  -> nullable current-value resolver
+~~~
+
+Current distinctions supported by the #182 patient zero:
+
+~~~text
+VEX_TEXT_IDENTITY != CONTENT_ORIGIN
+CONTENT_ORIGIN != TARGET_RESOURCE_ID
+CONTENT_ORIGIN != CURRENT_RENDERED_VALUE
+VALUE_BINDING != ELEMENT_IDENTITY
+VALUE_SOURCE != ELEMENT_TYPE
+
+CANONICAL_ORIGIN
+-> TARGET_REALIZATIONS
+-> OBSERVED_EVIDENCE
+
+TARGET_ENDPOINT_EDIT
+!= CANONICAL_ORIGIN_CHANGE
+
+TextElement
+= CURRENT_ANDROID_TEXT_REALIZATION
+!= PORTABLE_ORIGIN_OWNER
+~~~
+
+This correction currently suggests the same separation may be useful for styles, assets, behavior, data
+bindings and other reusable meaning when real consumers earn it. This text example does not by itself
+justify a giant universal schema, and later evidence may reshape the boundary.
+
+#### Control / Act / Effect — current boundary hypothesis for navigation and behavior
+
+The accepted VexLife semantic law distinguishes State, Control, resolved Act, Effect and Projection,
+but those roles are **not a mandatory five-step wrapper around every interaction**.
+
+The accepted behavior rows already prove this by allowing `resolvedAct = null` and `effect = null`
+when no semantic Act/Effect is admitted. The repository Feature language is explicit: **Act, when
+Behavior applies**.
+
+~~~text
+SCAE
+= semantic behavior law when a real behavior question exists
+!= mandatory indirection for every click / route / popup / presentation change
+~~~
+
+The current Android `ElementIntent` is real repository code and remains valid migration source today.
+It currently mixes several runtime request families:
+
+~~~text
+ElementIntent.NavigateTo(...)
+ElementIntent.NavigateBack
+
+ElementIntent.Open(...)
+ElementIntent.Close(...)
+ElementIntent.Toggle(...)
+ElementIntent.SwapTo(...)
+
+ElementIntent.Invoke(ActionKey)
+
+ElementIntent.LocalEffect
+ElementIntent.Sequence(...)
+~~~
+
+Two transformations currently look unsupported by the evidence:
+
+~~~text
+ElementIntent -> VexAct
+~~~
+
+and:
+
+~~~text
+NavigateTo(Screen)
+-> ActId("act.some-domain.request-screen")
+~~~
+
+when their only purpose is forcing ordinary navigation through a semantic string identity.
+
+An ID identifies a semantic object; portability alone does not establish that it should replace a useful
+typed function/relationship.
+
+Current distinctions supported by accepted SCAE plus the Android navigation source:
+
+~~~text
+ID != EXECUTION_MECHANISM
+
+CONTROL_IDENTITY != RESOLVED_ACT
+ACT != EFFECT
+
+TYPED_NAVIGATION_OPERATION != ACT_ID
+PRESENTATION_OPERATION != PORTABLE_ACT
+CONTROL_FORM != BUSINESS_BEHAVIOR
+
+SCREEN_IDENTITY != CURRENT_NAVIGATION_STATE
+CONTAINER_IDENTITY != SELECTED_CHILD
+TEXT_IDENTITY != CURRENT_VALUE
+~~~
+
+##### Typed presentation/navigation stays typed
+
+Simple navigation can remain an explicit typed relationship or runtime operation:
+
+~~~text
+Control activation
+-> Navigation.Open(ScreenId, arguments)
+
+Navigation owner
+-> updates navigation State / Back stack
+~~~
+
+or in a target-native implementation:
+
+~~~text
+navigation.push(articleDetailScreen)
+~~~
+
+When the only truthful relationship is direct navigation, an extra `act.news.read-article` identity does
+not currently add useful meaning over `NavigateTo(articleDetailScreen)`.
+
+Likewise, opening/closing a dialog, selecting a local tab, or dismissing a sheet may remain typed
+presentation operations when no portable Behavior owns a distinct semantic question.
+
+The current decomposition candidate is therefore:
+
+~~~text
+current ElementIntent mixed union
+
+-> separate typed runtime request families
+
+   Navigation operation
+   Presentation operation
+   Behavior/SCAE resolution
+   explicit target-local callback where truly target-local
+~~~
+
+rather than one universal string-ID dispatcher.
+
+##### SCAE begins where Behavior actually has meaning
+
+A stable Control can resolve through semantic Behavior when current State changes what the interaction
+*means*, whether it is admitted, or which rightful Effect should be requested.
+
+Accepted example:
+
+~~~text
+State = paused
+Control = play-pause
+-> Act = play
+-> Effect = request-play
+
+State = playing
+same Control = play-pause
+-> Act = pause
+-> Effect = request-pause
+
+State = unavailable
+same Control = play-pause
+-> Act = null
+-> Effect = null
+-> admission = denied
+~~~
+
+That is a real semantic resolution problem and earns SCAE.
+
+A gated article interaction might also earn Behavior, but the naming must describe real product
+meaning rather than manufacture an Act merely because the final runtime operation is navigation:
+
+~~~text
+Control = article-card / open article
+
+State = admitted
+-> Behavior may allow a semantic article-view/open Act
+-> Effect may request presentation of Article Detail
+
+State = authentication required
+-> Behavior may deny/defer that Act
+-> Effect may request authentication presentation
+~~~
+
+Whether an explicit Act identity is useful is currently treated as a **behavior-model decision**, not a
+navigation requirement. If the only observed relationship is "this control opens this registered
+Screen", the typed navigation relationship is presently sufficient; later behavior pressure may earn a
+separate Act.
+
+##### Current migration interpretation
+
+~~~text
+ActionElement
+  pressure toward Control identity
+  but target rendering form remains Button / Toggle / another familiar control
+
+ElementIntent.Invoke(ActionKey)
+  closest current shape to portable Behavior dispatch
+  ActionKey currently wraps actionId
+  when a real SCAE Act exists, migrate toward typed/direct Act identity rather than wrapper-on-wrapper
+
+NavigateTo / NavigateBack
+  navigation-owner requests
+  should remain typed navigation semantics unless real Behavior pressure earns SCAE
+
+Open / Close
+  presentation-owner requests
+  usually presentation mechanics unless product meaning earns portable Behavior
+
+Toggle
+  distinguish the visual Toggle control from the semantic behavior it may request
+  do not assume every toggle-shaped control owns a generic Toggle Act
+
+SwapTo
+  selection/presentation-state relationship
+  pressure against permanent SwappableContainer ontology
+  ordinary container + selected-child State/binding may be the cleaner long-term model
+
+LocalEffect
+  migration escape hatch for target-local ownership
+  long-term should become either an explicit Effect when semantic meaning exists or an honestly
+  target-local callback when it does not
+
+Sequence
+  do not let a UI Control become the universal owner of arbitrary orchestration
+  semantic sequences belong to Behavior / Process when portable meaning exists
+  presentation-only sequences may remain typed local runtime composition
+~~~
+
+The current direction favors a semantically narrow, type-safe UI boundary: a Control identifies the
+affordance/request; typed navigation/presentation owners keep their established mechanics; Behavior
+resolves Acts where a real semantic behavior question exists. Later evidence may legitimately refactor
+this split.
+
+##### IDs and generated target types
+
+Portable semantic identities may be serialized as IDs without requiring target code to pass raw Strings.
+
+For example, an accepted portable `actId` may generate or bind to a target-native typed value:
+
+~~~text
+portable identity
+  act.vexstream.playback.play
+
+target code
+  VexStreamPlaybackAct.Play
+~~~
+
+Likewise a `screenId` identifies the Screen while target code may hold a typed `VexScreen` object.
+The semantic graph needs stable IDs; engineers do not need to abandon type-safe APIs to obtain them.
+
+> **Refactorability note:** names and decomposition examples in this section are current architectural
+> hypotheses, not protected interfaces. Future work should re-evaluate them when a new consumer exposes
+> a simpler or more truthful model. Preserve accepted evidence and semantic distinctions; do not preserve
+> a proposed noun merely because this document once proposed it.
+
+#### Standardization posture
+
+Extend existing Android repository-owned enforcement incrementally:
+
+~~~text
+sourceAlignmentReport / verifySourceAlignment
+  -> Screen registration / preview / source conventions
+
+vexComposeMigrationReport
+  -> advisory migration debt
+  -> progressively enforce only areas intentionally converged
+
+AppBlueprintTest
+  -> registry / ownership / intent / inherited identity contracts
+
+ScreenCrawler
+  -> lived evidence + durable provenance receipt
+
+VexBoard Android adapter
+  -> accepted design -> target construction mapping
+~~~
+
+Do not immediately ban every raw Compose import or move every target mechanic into VexBoard.
+
+Escalate only repeated/product-design meaning that the VexBoard round trip proves must be shared.
+
+~~~text
+STANDARDIZE_MAPPING_SEAMS
+!=
+REIMPLEMENT_ANDROID_IN_VEXBOARD
+
+VEXBOARD_OWNS_DESIGN_MEANING
+ANDROID_OWNS_TARGET_REALIZATION
+EACH_SIDE_EXPOSES_ENOUGH_PROOF_TO_COMPARE_THEM
+~~~
+
+### Identity coverage must be truthful
+
+The current Android registry is already strong enough to enumerate static Screen/Element identity and
+navigation relationships. VexModifier / Vex Compose can carry those refs into rendered Compose/test
+tags, and feature-specific dynamic presentation may derive deterministic refs from domain identity.
+
+That does not imply every visible Compose primitive is already a semantic element.
+
+The bridge should report coverage rather than fabricate it:
+
+~~~text
+REGISTERED / SEMANTICALLY TAGGED
+  -> automatically addressable
+
+VISIBLE TARGET PRESENTATION WITHOUT A STABLE SEMANTIC REF
+  -> explicit identity-coverage gap when the distinction matters
+
+TARGET-ONLY LAYOUT / DECORATION
+  -> may remain implementation detail
+~~~
+
+Do not require stable IDs for every Spacer, anonymous measurement wrapper or target-only rendering
+detail merely to make a percentage look complete.
+
+### Same Screen, conditional branches
+
+The three VexStream library conditions are projections of one stable Screen identity:
+
+~~~text
+screen.vexstream-music
+
+Loading
+  libraryLoadState != READY
+  and no already-known playable content is available for the ordinary library surface
+
+Ready + Empty
+  libraryLoadState = READY
+  and current playable library is empty
+
+Ready + Loaded
+  libraryLoadState = READY
+  and current playable library has content
+~~~
+
+These are not three Screens.
+
+VexBoard may render them as vertical state branches from the same horizontal traversal coordinate:
+
+~~~text
+Home -> VexStream Music
+             |
+             +--◇ Loading
+             |
+             +--◇ Ready / Empty
+             |
+             +--◇ Ready / Loaded Songs
+~~~
+
+The exact visual symbol remains a presentation question, but the semantic distinction is permanent:
+
+~~~text
+NAVIGATION_BRANCH
+  -> another semantic destination
+
+STATE_BRANCH
+  -> same semantic identity under another current predicate/projection
+~~~
+
+Avoid materializing the Cartesian product of every independent VexStream state facet into one giant
+state enum. Connection, library loading, selected library surface, playback and transient presentation
+may remain distinct current facts unless a real semantic question requires their combination.
+
+### Connection modal proves local presentation + deeper architecture
+
+The VexStream toolbar's existing Manage Connection action opens one registered modal/bottom-sheet
+identity rather than navigating to another Screen.
+
+The POC should preserve that difference:
+
+~~~text
+screen.vexstream-music
+  -> element.vexstream-music.body.connection.manage
+  -> OPEN
+  -> registered ConnectionMenuSheet
+~~~
+
+The modal may then reveal the exact bounded controls that current State admits, such as Refresh when
+the Hub is ready or Reconnect when it is not, plus offline-library management and Forget/Close
+surfaces.
+
+This proves:
+
+~~~text
+NAVIGATION != LOCAL_PRESENTATION
+SCREEN != MODAL
+OPEN/CLOSE != SCREEN_TRANSITION
+~~~
+
+### Data / storage / Desktop service lineage
+
+For this POC, do not invent a generic `Database` box when the actual VexStream feature does not use
+VexLife's Room database.
+
+The current local truth is distributed across:
+
+~~~text
+VexStreamMusicRepository / VexStreamMusicState
+
+pairing / remembered route
+  -> app-private SharedPreferences
+  -> Android Keystore protected token / signing identity
+
+offline library restoration metadata
+  -> app-private versioned offline index
+
+verified audio
+  -> Android MediaStore
+
+artwork
+  -> persistent app-private files
+
+playback lifetime
+  -> Media3 / MediaSessionService
+~~~
+
+The remote producer is current VexStream Desktop's bounded mobile service:
+
+~~~text
+GET       /v1/health
+GET       /v1/pairing/info
+POST      /v1/pairing/request
+GET       /v1/pairing/status
+POST      /v1/pairing/revoke-self
+GET       /v1/catalog
+GET/HEAD  /v1/media/<trackRef>
+~~~
+
+Catalog/media access is bounded behind the remembered/pinned pairing authorization path.
+
+The web Blueprint should be able to descend from one visible Screen state through:
+
+~~~text
+Loaded Songs
+-> VexStreamMusicState.tracks
+-> VexStreamMusicRepository.refreshCatalog()
+-> paired/pinned transport
+-> Desktop /v1/catalog
+-> sanitized track projection
+
+Download / offline meaning
+-> repository
+-> Desktop /v1/media/<trackRef>
+-> exact digest + length verification
+-> MediaStore / offline index
+~~~
+
+That is enough depth to prove that the Blueprint can explain the real application architecture
+without requiring the person to open Android or Go source to discover the connection.
+
+The first web POC does not need to call a person's live LAN Desktop service directly from GitHub
+Pages. Source/contract mapping and deterministic fixtures prove the semantic bridge; a later Local Vex
+or host-qualified observation path may bind live service evidence to the same coordinates.
+
 
 ## Current / proposed / observed must remain visually separable
 
@@ -1052,8 +2857,34 @@ accepted VexLife Blueprint Source-of-Truth construction lineage
 accepted VexBoard Graph / Projection / Journey / Evidence / composition substrate
 ~~~
 
-The next implementation should prove the vertical living-Blueprint slice rather than invent another
-architecture layer from prose.
+The next implementation should first align the **current source-owned VexLife-Android / VexStream
+vertical system slice** into a Blueprint-readable map rather than invent another architecture layer
+from prose:
+
+~~~text
+screen / element identity
+-> Compose / presentation occurrence
+-> semantic intent / VexRuntime
+-> SCAE Behavior where present
+-> Convergence Relay where present
+-> repository / domain State
+-> persistence / storage / provider
+-> Android-native runtime / service
+-> Journey / FeatureWalk / visual / device proof
+~~~
+
+The immediate visual pressure from the first lived VexStream Board is also now explicit:
+
+~~~text
+development traversal -> horizontal
+branching / alternate paths -> vertical
+architecture depth -> reveal / descend from the selected coordinate
+source -> exact x-ray/provenance appendage, not a prerequisite for reading the application
+every material relationship -> addressable even when collapsed from the current view
+~~~
+
+The Screen / Design lens should then evolve as one view of that richer current map, not as an isolated
+phone mockup disconnected from behavior, data, construction and proof.
 
 ## Completion shape for the reusable IDE foundation
 
@@ -1078,3 +2909,76 @@ trustworthy posture:
 > appropriate, prove what happened, and return without losing context.
 
 <!-- [VXG RealForever][VEXWORK][VEXBOARD][SEMANTIC-BLUEPRINT-IDE][FOUNDATION] -->
+
+
+## Feature workspace auxiliary drawer — ThemeMode patient zero
+
+The Debug Menu / ThemeMode Origin Walk adds one bounded workspace lesson without changing BoardGraph:
+
+~~~text
+Board
+  = primary spatial working surface
+  = full available width by default
+
+Auxiliary drawer
+  = optional supporting context
+  = one mode at a time
+  = closable
+
+current modes
+  Inspect
+  Library
+  Feature Context
+~~~
+
+Permanent projection distinction:
+
+~~~text
+DRAWER OPEN/CLOSED
+!= BOARDGRAPH CHANGE
+
+LIBRARY CONTENT
+!= COPIED FEATURE SOURCE
+
+FEATURE CONTEXT
+!= SECOND VEXWORK OWNER
+~~~
+
+For the ThemeMode patient zero, Library begins with **Used here** and makes status explicit:
+
+~~~text
+ThemeMode
+  established working meaning
+
+control.debug-menu.theme-mode
+  established working identity
+
+ThemeModeToggle
+  candidate relationship language
+
+Theme persistence owner
+  unresolved
+
+ThemeMode ConvergenceRelay
+  not established
+~~~
+
+The point is not to introduce a universal project-library schema from one example. The drawer gives a
+human and AI a nearby discovery surface while the Board stays readable. Wider project inventory is
+browse-on-demand.
+
+Feature Context carries bounded refs back to the rightful VexWork source and offers navigation there.
+It should progressively consume source-owned VexWork projection/currentness rather than becoming a
+manually maintained second Work summary.
+
+Current patient zero:
+
+~~~text
+board.vexlife.debug-menu.theme-mode.origin-walk
+-> projects/vexboard/examples/vexlife-debug-menu-theme-mode.board.json
+-> VexSync ThemeMode Origin Walk source refs
+~~~
+
+The patient-zero Board deliberately keeps the persistence owner unresolved. VexBoard must be able to
+show an architectural gap without filling it with invented repository/Relay structure merely to make
+the picture look complete.

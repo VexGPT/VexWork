@@ -17,6 +17,7 @@ const prototypeDefinition = JSON.parse(fs.readFileSync(new URL('../vexboard/prot
 const systemAnatomy = JSON.parse(fs.readFileSync(new URL('../projects/vexboard/examples/vexbusinessfactory-system-anatomy.board.json', import.meta.url), 'utf8'));
 const intentTopology = JSON.parse(fs.readFileSync(new URL('../projects/vexboard/examples/vexbusinessfactory-intent-topology.board.json', import.meta.url), 'utf8'));
 const patientZeroCatalog = JSON.parse(fs.readFileSync(new URL('../projects/vexboard/examples/board-source-catalog.json', import.meta.url), 'utf8'));
+const themeModeBoard = JSON.parse(fs.readFileSync(new URL('../projects/vexboard/examples/vexlife-debug-menu-theme-mode.board.json', import.meta.url), 'utf8'));
 
 test('VexBoard Pages entry exposes create/open/read-only/fork/save-draft workflow', () => {
   assert.match(page, /Create new/);
@@ -25,6 +26,7 @@ test('VexBoard Pages entry exposes create/open/read-only/fork/save-draft workflo
   assert.match(page, /Source examples/);
   assert.match(page, /Open system anatomy example/);
   assert.match(page, /Open intent topology example/);
+  assert.match(page, /Open Theme Mode Origin Walk/);
   assert.match(page, /Request edit → draft copy/);
   assert.match(page, /Save draft/);
   assert.match(page, /Browser-local proving copies · not source truth/);
@@ -74,8 +76,121 @@ test('Context Inspector remains identity-first and includes bounded neighborhood
   assert.match(page, /Board\.queryBoardNeighborhood/);
 });
 
+test('feature workspace keeps Board primary and uses one closable auxiliary drawer', () => {
+  assert.match(page, /\.work\{min-height:0;display:grid;grid-template-columns:74px minmax\(0,1fr\)/);
+  assert.match(page, /\.work\.drawer-open\{grid-template-columns:74px minmax\(0,1fr\) 320px\}/);
+  assert.match(page, /let drawerMode=null/);
+  assert.match(page, /drawerMode===mode\?null:mode/);
+  assert.match(page, /drawerMode='INSPECT'|drawerButton\('Inspect','INSPECT'\)/);
+  assert.match(page, /drawerButton\('Library','LIBRARY'\)/);
+  assert.match(page, /drawerButton\('Feature context','FEATURE_CONTEXT'\)/);
+  assert.match(page, /function renderContextDrawer\(/);
+  assert.match(page, /function renderLibraryDrawer\(/);
+  assert.match(page, /function renderFeatureContextDrawer\(/);
+  assert.match(page, /Used here/);
+  assert.match(page, /Browse project library/);
+  assert.match(page, /Theme persistence owner/);
+  assert.match(page, /Repository \/ source identity has not yet been earned/);
+  assert.match(page, /ThemeMode ConvergenceRelay/);
+  assert.match(page, /Not established; use only if independent complete truths earn convergence/);
+  assert.match(page, /Open VexWork source/);
+  assert.match(page, /project\.vexsync\.debugmenu-blueprints/);
+  assert.match(page, /work\.vexsync\.debugmenu-blueprints\.feature-intention-builder-discovery/);
+  assert.match(page, /work\.append\(tools,viewportEl\);if\(drawerMode\)/);
+  assert.doesNotMatch(page, /work\.append\(tools,viewportEl,side\)/);
+});
+
+test('ThemeMode patient-zero board projects one typed Family language across four readable regions', () => {
+  assert.equal(themeModeBoard.schemaVersion, Reader.VEXBOARD_DRAFT_SCHEMA);
+  assert.equal(themeModeBoard.mode, 'READ_ONLY_SOURCE');
+  assert.equal(themeModeBoard.draftRef, 'board.vexlife.debug-menu.theme-mode.origin-walk');
+
+  const graph = normalizeBoardGraph(themeModeBoard.graph);
+  const projection = normalizeBoardProjection(themeModeBoard.projection, graph);
+
+  const regions = new Map(
+    graph.nodes
+      .filter((node) => node.kind === 'CONTAINER' && node.nodeRef.startsWith('quadrant.theme-mode.'))
+      .map((node) => [node.nodeRef, node.label]),
+  );
+
+  assert.deepEqual(
+    [...regions.values()].sort(),
+    ['EXECUTION', 'FAMILY / LOGIC', 'TYPED IDENTITY', 'UI / CONTROL'].sort(),
+  );
+
+  assert.ok(graph.nodes.some((node) =>
+    node.nodeRef === 'control.debug-menu.theme-mode' &&
+    node.parentRefOrNull === 'quadrant.theme-mode.ui'
+  ));
+  assert.ok(graph.nodes.some((node) =>
+    node.nodeRef === 'reference.theme-mode.current-target' &&
+    node.label.includes('VexLifeSession.darkTheme') &&
+    node.sourceRefs.some((sourceRef) => sourceRef.includes('VexLifeSession.kt'))
+  ));
+  assert.ok(graph.nodes.some((node) =>
+    node.nodeRef === 'process.theme-mode.family' &&
+    node.parentRefOrNull === 'quadrant.theme-mode.family'
+  ));
+  assert.ok(graph.nodes.some((node) =>
+    node.nodeRef === 'reference.family.resource-control' &&
+    node.label === 'Control.Resource<Family, ExactId>'
+  ));
+  assert.ok(graph.nodes.some((node) =>
+    node.nodeRef === 'annotation.identity.same' &&
+    node.label.includes('position 10 / 99') &&
+    node.label.includes('SAME')
+  ));
+  assert.ok(graph.nodes.some((node) =>
+    node.nodeRef === 'annotation.identity.type-lock' &&
+    node.label.includes('TrackId') &&
+    node.label.includes('AccountId does not fit')
+  ));
+  assert.ok(graph.nodes.some((node) =>
+    node.nodeRef === 'annotation.identity.enum' &&
+    node.label === 'enum Play ≠ Pause'
+  ));
+  assert.ok(graph.nodes.some((node) =>
+    node.nodeRef === 'annotation.execution.raw-gate' &&
+    node.label.includes('foundation opt-in')
+  ));
+
+  assert.ok(graph.relationships.some((relationship) =>
+    relationship.relationshipRef === 'rel.identity.resource-relationship' &&
+    relationship.labelOrNull === 'EXACT RESOURCE ID WHEN EARNED'
+  ));
+  assert.ok(graph.relationships.some((relationship) =>
+    relationship.relationshipRef === 'rel.identity-family-execution' &&
+    relationship.labelOrNull === 'SUPPLIES'
+  ));
+
+  const frameItems = projection.items.filter((item) => item.shapeKind === 'FRAME');
+  assert.equal(frameItems.length, 4);
+  assert.ok(frameItems.every((item) => item.locked === true));
+
+  assert.ok(graph.sourceRefs.includes('github.pull.vexlife-android.193'));
+  assert.ok(graph.sourceRefs.includes('github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b'));
+  assert.ok(graph.sourceRefs.some((sourceRef) => sourceRef.includes('VexFamilyHighConfidenceTest.kt')));
+});
+test('ThemeMode Kotlin drawer maps the same typed Family model to implementation and test code', () => {
+  assert.equal(themeModeBoard.familyKotlin.schemaVersion, 'vexboard.family-kotlin/poc-v1');
+  assert.equal(
+    themeModeBoard.familyKotlin.testSourceRef,
+    'repo.vexlife-android:architecture/behavior/src/test/kotlin/com/vextreme/vexlife/android/behavior/VexFamilyHighConfidenceTest.kt',
+  );
+  assert.match(page, /vexboard-family-kotlin-construction\.mjs/);
+  assert.match(page, /drawerButton\('Kotlin','KOTLIN'\)/);
+  assert.match(page, /FamilyKotlin\.normalizeFamilyKotlinModel/);
+  assert.match(page, /FamilyKotlin\.compileFamilyKotlin/);
+  assert.match(page, /FamilyKotlin\.rebindControlResource/);
+  assert.match(page, /Generated Family Kotlin/);
+  assert.match(page, /Mapped Kotlin test language/);
+  assert.match(page, /external effects performed/);
+  assert.match(page, /Request edit → draft copy to change the typed binding/);
+});
+
 test('built-in and patient-zero source boards preserve separate catalog ownership and canonical identity', () => {
-  for (const source of [selfMap, publishMap, systemAnatomy, intentTopology]) {
+  for (const source of [selfMap, publishMap, systemAnatomy, intentTopology, themeModeBoard]) {
     assert.equal(source.schemaVersion, Reader.VEXBOARD_DRAFT_SCHEMA);
     assert.equal(source.mode, 'READ_ONLY_SOURCE');
     const graph = normalizeBoardGraph(source.graph);
@@ -105,6 +220,9 @@ test('built-in and patient-zero source boards preserve separate catalog ownershi
       'board.vexbusinessfactory.system-anatomy.patient-zero',
       'board.vexstream.phone-desktop-connection.construction-evidence',
       'board.vexstream.phone-desktop-connection.living-blueprint',
+      'board.vexlife-android.home-vexstream.poc',
+      'board.vexlife-android.vexstream-depth.poc',
+      'board.vexlife.debug-menu.theme-mode.origin-walk',
     ],
   );
 
@@ -118,17 +236,99 @@ test('built-in and patient-zero source boards preserve separate catalog ownershi
   assert.equal(intentResolution.location, './vexbusinessfactory-intent-topology.board.json');
   assert.equal(intentResolution.boardRef, intentTopology.draftRef);
 
+  const themeModeResolution = resolveBoardSource(themeModeBoard.draftRef, [catalog]);
+  assert.equal(themeModeResolution.catalogRef, catalog.catalogRef);
+  assert.equal(themeModeResolution.location, './vexlife-debug-menu-theme-mode.board.json');
+  assert.equal(themeModeResolution.boardRef, themeModeBoard.draftRef);
+
   assert.match(page, /vexboard-source-resolver\.mjs/);
   assert.match(page, /function loadSourceCatalogs\(\)/);
   assert.match(page, /SourceResolver\.resolveBoardSource/);
   assert.match(page, /draft\.draftRef!==boardRef/);
   assert.match(page, /openCatalogBoard\('board\.vexbusinessfactory\.system-anatomy\.patient-zero'\)/);
   assert.match(page, /openCatalogBoard\('board\.vexbusinessfactory\.intent-topology\.patient-zero'\)/);
+  assert.match(page, /openCatalogBoard\(THEME_MODE_WORKSPACE_BOARD_REF\)/);
 
   assert.equal(Reader.builtinPrototypeUrl('board.vexboard.prototype-demo'), './prototype-demo.prototype.json');
   assert.equal(Reader.builtinPrototypeUrl('board.vexboard.self-map'), null);
   const publishGraph = normalizeBoardGraph(publishMap.graph);
   assert.ok(publishGraph.nodes.some((node) => node.detailBoardRefOrNull === 'board.vexboard.self-map'));
+});
+
+test('VexLife Android POC is projected at source-load time and styled without changing universal Board schemas', () => {
+  assert.match(page, /vexboard-android-source-projector\.mjs/);
+  assert.match(page, /android-reference-presentation\.mjs/);
+  assert.match(page, /VEXLIFE_ANDROID_POC_SNAPSHOT_SCHEMA/);
+  assert.match(page, /AndroidProjector\.androidPocDesignLocation\(payload\)/);
+  assert.match(page, /new URL\(designLocation,boardUrl\)/);
+  assert.match(page, /ScreenDesign\.normalizeScreenDesign\(await designResponse\.json\(\)\)/);
+  assert.match(page, /projectVexLifeAndroidPocSnapshot\(payload,boardRef,design\)/);
+  assert.match(page, /AndroidPresentation\.androidReferenceClassNames\(current\.presentation,i\.projectionItemRef\)/);
+  assert.match(page, /AndroidPresentation\.androidReferenceRelationshipRoute\(current\.presentation,r\.relationshipRef\)/);
+  assert.match(page, /occurrenceRoute\?item\(occurrenceRoute\.fromProjectionItemRef\):itemFor\(r\.fromRef\)/);
+  assert.match(page, /AndroidPresentation\.androidReferenceProfileSummary\(current\.presentation\)/);
+  assert.match(page, /Android ref ·/);
+  assert.match(page, /vexboard-screen-design\.mjs/);
+  assert.match(page, /ScreenDesign\.normalizeScreenDesign\(d\.design\)/);
+  assert.match(page, /Reverse-adopted design/);
+  assert.match(page, /VexBoard design authority/);
+  assert.match(page, /Android adoption ·/);
+  assert.match(page, /Android adoption · \${current\.adoptionReadiness\.status}/);
+  assert.match(page, /VexBoard design draft/);
+  assert.match(page, /function editLocalDesignMetric\(/);
+  assert.match(page, /function editLocalComponentAssignment\(/);
+  assert.match(page, /function designStyleRefs\(/);
+  assert.match(page, /Proposed semantic element/);
+  assert.match(page, /current\.design\.semanticElements/);
+  assert.match(page, /semanticElement\.identityState/);
+  assert.match(page, /semanticElement\.parentSemanticRef/);
+  assert.match(page, /Component assignment/);
+  assert.match(page, /componentAssignment\.styleRef/);
+  assert.match(page, /editLocalComponentAssignment\(n\.nodeRef,'styleRef',styleSelect\.value\)/);
+  assert.match(page, /next\.authorityState='VEXBOARD_DESIGN_DRAFT'/);
+  assert.match(page, /function reprojectAndroidDesign\(/);
+  assert.match(page, /Design metrics/);
+  assert.match(page, /Preferred %/);
+  assert.match(page, /Design edit rejected/);
+  assert.match(page, /AndroidPresentation\.androidReferenceCssVariables\(current\.design,current\.presentation\)/);
+  assert.match(page, /viewportEl\.style\.setProperty\(name,String\(value\)\)/);
+  assert.match(page, /Android adoption ·/);
+  assert.match(page, /current\.adoptionReadiness\.status/);
+  assert.match(page, /current\.adoptionReadiness\.blockingFindingRefs/);
+  assert.match(page, /Android Adoption/);
+  assert.match(page, /current\.adoptionCoverage\.screenRealizationModes/);
+  assert.match(page, /current\.adoptionCoverage\.identityExceptions/);
+  assert.match(page, /current\.adoptionCoverage\.findings/);
+  assert.match(page, /entry=>entry\.ownerSemanticRef===n\.nodeRef\|\|entry\.subjectSemanticRefOrNull===n\.nodeRef/);
+  assert.match(page, /finding\.kind/);
+  assert.match(page, /finding\.summary/);
+  assert.match(page, /finding\.blockingForPocAuthority/);
+  assert.match(page, /BLOCKS POC AUTHORITY/);
+  assert.match(page, /finding\.scopeStatus/);
+  assert.match(page, /DERIVED_CUSTOM_PRESENTATION|exception\.origin/);
+  assert.match(page, /Screen Design/);
+  assert.match(page, /function designMetricText\(/);
+  assert.match(page, /function designAxisText\(/);
+  assert.match(page, /current\.design\.constraints\.filter\(value=>value\.semanticRef===n\.nodeRef\)/);
+  assert.match(page, /current\.design\.layoutRules\|\|\[\]/);
+  assert.match(page, /preferred\.toFixed\(2\)/);
+  assert.match(page, /let scrollOffsetsByProjectionRef=new Map\(\)/);
+  assert.match(page, /function scrollViewportMaximum\(/);
+  assert.match(page, /function scrollViewportBy\(/);
+  assert.match(page, /AndroidPresentation\.androidReferenceScrolledOccurrence/);
+  assert.match(page, /AndroidPresentation\.androidReferenceScrollAxis/);
+  assert.match(page, /scrollOffsets:\[\.\.\.scrollOffsetsByProjectionRef\.entries\(\)\]/);
+  assert.match(page, /scrollOffsetsByProjectionRef=new Map\(prior\.scrollOffsets\|\|\[\]\)/);
+  assert.doesNotMatch(page, /localStorage\.(?:setItem|getItem)\([^)]*scroll/i);
+  assert.match(page, /let androidProjectionSources=new Map\(\),activeAndroidViewportProfileRef=null/);
+  assert.match(page, /function setAndroidViewportProfile\(/);
+  assert.match(page, /Screen design viewport/);
+  assert.match(page, /viewportSelect\.onchange=\(\)=>setAndroidViewportProfile\(viewportSelect\.value\)/);
+  assert.match(page, /androidViewportProfileRef:activeAndroidViewportProfileRef/);
+  assert.match(page, /Open VexLife Android Screen POC/);
+  assert.match(page, /VEXBOARD_ANDROID_POC_BOARD_REFS\.EXPERIENCE/);
+  assert.doesNotMatch(page, /api\.github\.com|raw\.githubusercontent\.com/);
+  assert.doesNotMatch(page, /method:\s*['"](?:POST|PUT|PATCH|DELETE)['"]/i);
 });
 
 test('draft reader keeps read-only source separate from editable local fork', async () => {

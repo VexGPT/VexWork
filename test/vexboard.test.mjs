@@ -299,11 +299,115 @@ test('local draft flow creates, forks, serializes and uses the same BoardControl
   const changed = { ...draft, graph: state.graph, projection: state.projection, savedAtOrNull: '2026-10-23T03:15:00.000Z' };
   const roundTrip = Reader.deserializeDraft(Reader.serializeDraft(changed));
   assert.equal(roundTrip.graph.nodes[0].nodeRef, 'node.hello');
-  const readOnly = { ...roundTrip, draftRef: 'board.self-map', title: 'Self map', mode: 'READ_ONLY_SOURCE' };
+  const readOnly = {
+    ...roundTrip,
+    draftRef: 'board.self-map',
+    title: 'Self map',
+    mode: 'READ_ONLY_SOURCE',
+    presentation: {
+      schemaVersion: 'vexboard.test-presentation/v1',
+      profileRef: 'profile.test',
+    },
+    design: {
+      schemaVersion: 'vexboard.screen-design/poc-v1',
+      designRef: 'design.test',
+      authorityState: 'REVERSE_ADOPTED_CANDIDATE',
+      referenceViewport: { profileRef: 'profile.test.phone', widthDp: 412, heightDp: 915 },
+      constraints: [],
+    },
+    adoptionCoverage: {
+      schemaVersion: 'vexlife-android.vexboard-adoption-coverage/poc-v1',
+      screenRealizationModes: {
+        'screen.test': 'CUSTOM_NATIVE_REALIZATION',
+      },
+      identityExceptions: [{
+        semanticRef: 'element.test.derived',
+        origin: 'DERIVED_CUSTOM_PRESENTATION',
+        staticRegistryStatus: 'UNREGISTERED_STATIC',
+        sourceRefs: ['repo.test:source'],
+      }],
+    },
+    adoptionReadiness: {
+      schemaVersion: 'vexlife-android.vexboard-adoption-readiness/poc-v1',
+      status: 'HELD',
+      blockingFindingRefs: ['finding.test'],
+      identityExceptionCount: 1,
+      findingCount: 1,
+    },
+    sourceRefs: ['repo.test:source'],
+  };
   const fork = await Reader.forkReadOnlyBoard(readOnly, { draftRef: 'draft.fork' });
   assert.equal(fork.derivedFromRefOrNull, 'board.self-map');
   assert.equal(fork.mode, 'LOCAL_DRAFT');
   assert.equal(fork.graph.semanticFingerprint, roundTrip.graph.semanticFingerprint);
+  assert.deepEqual(fork.presentation, readOnly.presentation);
+  assert.deepEqual(fork.design, readOnly.design);
+  assert.deepEqual(fork.adoptionCoverage, readOnly.adoptionCoverage);
+  assert.deepEqual(fork.adoptionReadiness, readOnly.adoptionReadiness);
+  assert.deepEqual(fork.sourceRefs, readOnly.sourceRefs);
+  assert.notEqual(fork.presentation, readOnly.presentation, 'fork must retain presentation by value, not shared object identity');
+  assert.notEqual(fork.design, readOnly.design, 'fork must retain design constraints by value, not shared object identity');
+  assert.notEqual(
+    fork.adoptionCoverage,
+    readOnly.adoptionCoverage,
+    'fork must retain adoption coverage by value, not shared object identity',
+  );
+  assert.notEqual(
+    fork.adoptionReadiness,
+    readOnly.adoptionReadiness,
+    'fork must retain adoption readiness by value, not shared object identity',
+  );
+
+  const forkRoundTrip = Reader.deserializeDraft(Reader.serializeDraft(fork));
+  assert.deepEqual(forkRoundTrip.presentation, fork.presentation);
+  assert.deepEqual(forkRoundTrip.design, fork.design);
+  assert.deepEqual(forkRoundTrip.adoptionCoverage, fork.adoptionCoverage);
+  assert.deepEqual(forkRoundTrip.adoptionReadiness, fork.adoptionReadiness);
+  assert.deepEqual(forkRoundTrip.sourceRefs, fork.sourceRefs);
+  const collectionRoundTrip = Reader.parseDraftCollection(JSON.stringify(
+    Reader.upsertDraft([], forkRoundTrip),
+  ));
+  assert.deepEqual(collectionRoundTrip[0].design, fork.design);
+  assert.deepEqual(collectionRoundTrip[0].presentation, fork.presentation);
+  assert.deepEqual(collectionRoundTrip[0].adoptionCoverage, fork.adoptionCoverage);
+  assert.deepEqual(collectionRoundTrip[0].adoptionReadiness, fork.adoptionReadiness);
+});
+
+test('read-only fork preserves optional Family Kotlin construction sidecar', async () => {
+  const source = {
+    schemaVersion: Reader.VEXBOARD_DRAFT_SCHEMA,
+    draftRef: 'board.family-kotlin.source',
+    title: 'Family Kotlin source',
+    mode: 'READ_ONLY_SOURCE',
+    derivedFromRefOrNull: null,
+    savedAtOrNull: null,
+    graph: baseGraph(),
+    projection: baseProjection(),
+    familyKotlin: {
+      schemaVersion: 'vexboard.family-kotlin/poc-v1',
+      modelRef: 'model.family-kotlin.test',
+      targetSourceRefOrNull: null,
+      testSourceRef: 'repo.test:FamilyTest.kt',
+      families: [{
+        familyRef: 'family.test',
+        familyName: 'TestFamily',
+        controlForm: 'SEALED',
+        states: ['Idle'],
+        resources: [],
+        controls: [{
+          controlRef: 'control.keep',
+          name: 'Keep',
+          resourceIdRefOrNull: null,
+          payloadFields: [],
+        }],
+      }],
+      sourceRefs: ['repo.test:FamilyTest.kt'],
+    },
+  };
+
+  const fork = await Reader.forkReadOnlyBoard(source, { draftRef: 'draft.family-kotlin' });
+  assert.deepEqual(fork.familyKotlin, source.familyKotlin);
+  assert.notEqual(fork.familyKotlin, source.familyKotlin);
 });
 
 test('shared model rejects schema drift rather than silently dropping unknown fields', () => {
