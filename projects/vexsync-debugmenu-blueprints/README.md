@@ -7827,8 +7827,8 @@ The existing Android ThemeMode lane was resumed rather than replaced:
 
 ~~~text
 VexLife-Android PR #188
-head  e979a4e2b4c91e7eb7068df127d9b4232a666947
-tree  770c37395d2391313d0aecc11da1a2be162c06ae
+head  62b919997b15479a234c4688af663e9aec4e0573
+tree  c990db110fddaf33e8d87e71c8b91fde49d55a34
 base  accepted main 3c899e656d90487abcff06df7b087a42c4a68523
 paths 2 exact
 ~~~
@@ -7973,3 +7973,6 @@ VexBoard is currently a projection/pressure surface for this trajectory, not the
 next semantic implementation.
 
 <!-- [VXG RealForever][VEXSYNC][CURRENT-STRATEGY][ANDROID-FIRST-REALIZATION] -->
+
+
+Current ThemeMode refinement: Light/Dark now own the existing Compose Boolean only as a resolved presentation projection; NotSet remains unresolved rather than becoming an implicit Light/Dark default.
