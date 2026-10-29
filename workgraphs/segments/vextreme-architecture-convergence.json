@@ -86,14 +86,15 @@
         "github.issue.vextreme.201",
         "repo.vextreme:lib/logger.js",
         "repo.vextreme:lib/logger-codes.js",
-        "github.issue-comment.vextreme.273.6497654829"
+        "github.issue-comment.vextreme.273.6497654829",
+        "repo.vextreme:docs/architecture/07-registry.md"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-29T11:45:00.000Z",
-      "updatedAt": "2026-10-29T13:12:00.000Z"
+      "updatedAt": "2026-10-29T14:30:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
