@@ -534,6 +534,76 @@ A Family may be formed later only if a distinct human/domain behavioral question
 descent and the Family threshold; the presence of State-like data or Control-like clicks alone is not
 enough.
 
+## Control admission ledger — roles first, canonical names held
+
+Name Ontology also constrains **Controls**. A visible button/link is evidence of an affordance, but its DOM id,
+label, or implementation function does not automatically become a canonical Control identity.
+
+Current patient-zero surfaces:
+
+~~~text
+Terrain toolbar Back
+  implementation evidence:
+    #readerBack
+    closeEvolutionReader() / browser history
+  semantic question:
+    return to the actual prior presentation relationship
+  current naming disposition:
+    UI label/source term = Back
+    canonical Control identity = HELD
+
+Arc parent link
+  implementation evidence:
+    lib/vextreme-index-v2.js renders arcMeta.url under the collection title
+  semantic question:
+    traverse to the collection parent represented by this Arc membership
+  current naming disposition:
+    topology relationship is understood
+    canonical Control identity = HELD
+    must not be renamed Back merely because one current-parent case converges on Back
+
+Arc Previous / Next
+  implementation evidence:
+    ordered prevSlug / nextSlug projection
+    common.nav.prev / common.nav.next presentation strings
+  semantic question:
+    traverse to predecessor / successor inside one ordered Arc membership
+  current naming disposition:
+    existing UI terms preserved
+    canonical Control identity = HELD
+
+semantic-depth / automatic-entry preference
+  implementation evidence:
+    Terrain depth rail + collection-entry ratio control
+  semantic question:
+    adjust local presentation threshold before automatic semantic entry
+  current naming disposition:
+    presentation preference
+    NOT a Journey Control
+    NOT an Arc membership Control
+~~~
+
+The admission rule is:
+
+~~~text
+VISIBLE AFFORDANCE
+!= CANONICAL CONTROL IDENTITY
+
+DOM ID / FUNCTION NAME / UI COPY
+!= SEMANTIC CONTROL NAME
+
+same rendered consequence in one context
+!= same Control
+
+candidate Control name
+-> cold-read human question / owner / consequence radius
+-> compare with actual relationship
+-> mint only if independent addressability is useful
+~~~
+
+This prevents the refactor from converting every click target into architecture vocabulary. The current
+source can keep ordinary UI labels while the semantic boundary becomes clearer underneath.
+
 ## Receive God localization seam — route to the existing owner
 
 The original lived observation also exposed a second seam: **Receive God does not currently have a real
