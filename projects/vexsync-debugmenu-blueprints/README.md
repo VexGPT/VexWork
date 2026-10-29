@@ -7231,14 +7231,14 @@ Repository Gradle/JVM proof remains pending.
 
 ---
 
-## Current checkpoint — readable Family with StateRelay ownership restored
+## Current checkpoint — direct activate-to-act Family runtime
 
 Current Android review PR:
 
 ~~~text
 #193
 head:
-260b77fdbc7421ef6ac4ac05ecfc81a4d9f6cad6
+e6e4a09061f95dfb564e7a715832dfe73f54e92c
 ~~~
 
 Origin-Walk/history source:
@@ -7249,89 +7249,93 @@ head:
 dd050ff81db169277a77cad4e4bd6a4f21e58d0e
 ~~~
 
-The readability rewrite had introduced a Family-local `retainedState`, creating a second semantic
-State holder instead of preserving the earlier StateRelay ownership law. That regression is now
-removed.
+The current #193 runtime call graph is now explicit in source:
 
-Current ownership:
+~~~text
+caller / UI
+-> Family.activate(control)
+-> concrete Family.act(currentState, control)
+-> state<State> / on<Control>
+-> stay / admit / optional begin
+-> StateRelay / execution
+~~~
+
+There is no separately constructed Acts relationship object between activate(...) and the concrete
+Family logic.
+
+Removed from the current Family path:
+
+~~~text
+VexActs
+VexActsBuilder
+VexActRule
+VexStateDisposition
+hidden operator fun invoke
+construction-time Acts rule table
+Family-local retainedState
+same-value whenCurrent equality filter
+VexBehaviorV2 runtime surface
+resolve(...) runtime entrance
+recursive Family self-generic
+CompoundFamily
+stateFactory
+Family-level revision
+post-process act(OutputState)
+~~~
+
+Current State ownership remains:
 
 ~~~text
 private stateRelay
   MutableStateFlow<State>
 
+Family.currentState
+  -> stateRelay value
+
 Family.states
   -> stateRelay.asStateFlow()
-
-Family.currentState
-  -> states.value
-
-admit(nextState)
-  -> stateRelay.value = nextState
 ~~~
 
-There is one live State holder in the current candidate.
-
-Current feature-facing grammar remains:
+A concrete Family now provides the exact function called at runtime:
 
 ~~~text
-VexFamily<State, Control>
-  currentState
-  states
-  displayState
-  activate(Control)
-
-state<State.X> {
-  on<Control.Y> { currentState, control ->
-    stay() / admit(State)
-    optional begin(...)
-  }
-}
+act(currentState, control)
 ~~~
 
-The focused proof now performs two activations on the same live Family:
+The focused proof exercises:
 
 ~~~text
-Empty
--> Set("one")
+activate(Set("one"))
+-> ValueFamily.act(...)
 -> Ready("one")
--> Set("two")
+-> StateRelay
+
+activate(Set("two"))
+-> same direct ValueFamily.act(...)
 -> Ready("two")
+-> same StateRelay holder
 ~~~
 
-and checks that `family.currentState == family.states.value` after admission.
-
-Also corrected from the prior cleanup:
+File organization change:
 
 ~~~text
-Family-local retainedState              REMOVED
-same-value whenCurrent equality filter  REMOVED
-two-live-activation proof               RESTORED
+VexBeginScope.kt
 ~~~
 
-This fix did NOT add:
+This is only the existing begin/save/results DSL moved out of the deleted VexActsBuilder.kt file. It
+does not introduce another architecture concept or runtime owner.
 
-~~~text
-new StateRelay hierarchy
-architecture:relay dependency
-revision/currentness token
-CompoundFamily
-stateFactory
-post-process Act
-new Store semantics
-provider/currentness machinery
-~~~
-
-Still-open edges remain the same:
+Still-open edges remain:
 
 ~~~text
 serialized competing-cause State decision / stale async result
-cross-cycle relationship memory
+cross-cycle relationship memory and its rightful supplier
 provider / intent stable identity mapping
 exact Family + Relay Single/Compound composition
 Process OutputState -> rightful Family.currentState handoff
 ~~~
 
-Repository Gradle/JVM proof for the current #193 head remains PENDING.
+Repository Gradle/JVM proof for #193 head e6e4a09061f95dfb564e7a715832dfe73f54e92c remains PENDING.
 
-<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][FAMILY][STATE-RELAY-OWNERSHIP-RESTORED] -->
+<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][FAMILY][DIRECT-ACT-RUNTIME] -->
 
