@@ -1048,6 +1048,85 @@ SOURCE_ADDRESSED_OPEN
 
 After F2 is present, session draft carriage makes later source-mismatch reloads draft-safe.
 
+#### Disposable F2 seam prototype — semantic evidence only
+
+A disposable local prototype was formed outside the repository to pressure-test the already-grounded
+F2 laws without claiming VexLife authoring or repository execution.
+
+The sandbox used the accepted `VexCompoundState` API/logic with a local semantic-hash shim because
+this session has no mountable VexLife checkout. It therefore proves only the relationship design,
+not repository integration.
+
+Currentness seam:
+
+~~~text
+8 / 8 PASS
+
+same source + Companion READY + admitted Conversation -> READY
+same source + RECOVERABLE -> RECOVERABLE + zero effect authority
+loaded source A + current server B -> SOURCE_MISMATCH
+new observation suppresses prior READY until current observation completes
+older async generation cannot overwrite newer admitted READY
+Conversation EMPTY / ABSENT remain admitted new-conversation truth
+Conversation UNAVAILABLE prevents READY
+new document B converges independently after old document A detects mismatch
+~~~
+
+The prototype exposed one important foundation correction:
+
+~~~text
+FIRST OBSERVATION
+-> VexCompoundState waits until every declared input has been observed
+-> output remains UNOBSERVED
+-> coherent input set forms
+-> relationship may derive SOURCE_MISMATCH / READY / etc.
+~~~
+
+Do **not** add an early source-mismatch bypass around `latestCoherentInput()` merely to make mismatch
+appear sooner.
+
+For later observation generations, retained prior inputs may exist, but the observation-generation
+identity holds the relationship in `OBSERVING` until current-generation truth is admitted.
+
+~~~text
+EARLY_MISMATCH_SHORTCUT
+!= FOUNDATION_REUSE
+
+COHERENT_INPUT_HOLD
+= ACCEPTED_COMPOUND_LAW
+~~~
+
+Draft-carriage seam:
+
+~~~text
+5 / 5 PASS
+
+same browser session carries exact unsent draft through reload
+draft is exact project/thread/channel scoped
+clear removes the carriage
+empty draft creates no false truth record
+malformed / authority-widened carriage fails closed and is removed
+~~~
+
+The tested carriage stayed explicitly:
+
+~~~text
+UNSENT_LOCAL_DRAFT
+queued=false
+accepted=false
+conversationEffectPerformed=false
+memoryEffectPerformed=false
+~~~
+
+This supports folding the behavior into the existing Chat draft owner rather than creating a new
+draft service.
+
+~~~text
+DISPOSABLE_SEAM_PASS
+!= VEXLIFE_SOURCE_PASS
+!= VEXLIFE_INTEGRATION_PASS
+~~~
+
 #### F2 source-ready candidate membrane
 
 No VexLife authoring authority is claimed here. Current source inspection supports this bounded
@@ -1073,6 +1152,8 @@ browser Compound realization
   test/browser.test.mjs
 
 ordinary Open Vex migration bridge
+  setup-vexlife.command
+  install/vexlife-setup-window.applescript
   install/vexlife-setup.sh
   test/macos-human-setup.test.mjs
 ~~~
@@ -1091,6 +1172,8 @@ blueprint/module-registry/browser.json                    -> bucket-fd
 test/source-manifest.test.mjs                             -> bucket-19
 test/browser.test.mjs                                     -> bucket-f1
 test/interface-compound-currentness-browser.test.mjs      -> bucket-85
+setup-vexlife.command                                      -> bucket-b2
+install/vexlife-setup-window.applescript                  -> bucket-6c
 install/vexlife-setup.sh                                  -> bucket-b7
 test/macos-human-setup.test.mjs                           -> bucket-f9
 ~~~
@@ -1271,6 +1354,44 @@ Keep those claims separate.
 
 A source-addressed Open Vex URL is a reasonable migration candidate for ensuring the first F2
 installation requests current source rather than presenting the exact old human URL again.
+
+The outer `setup-vexlife.command` already owns the exact 40-character Git `SOURCE_SHA`. The
+source-local backend currently does not receive that identity directly. A bounded migration route is:
+
+~~~text
+setup-vexlife.command
+  exact SOURCE_SHA
+  -> bind VexLifeSourceSha into temporary setup-app metadata
+     beside existing VexLifeSourceRoot
+
+install/vexlife-setup-window.applescript
+  -> read exact bound SourceSha
+  -> pass it as one validated backend argument
+
+install/vexlife-setup.sh
+  -> use that value only to make Open Vex source-addressed
+~~~
+
+Terminal mode can pass the same exact value directly when delegating to the source-local backend.
+
+This Git commit identity is **navigation/migration addressing**, not the Interface Compound semantic
+source-content identity:
+
+~~~text
+bootstrap sourceCommitSha
+  -> make the ordinary Open Vex request source-addressed
+
+Source Manifest sourceTreeSha256
+  -> loaded-document vs current-server semantic comparison
+
+SOURCE_COMMIT_SHA
+!= SOURCE_TREE_SHA256
+
+TRANSPORT_ADDRESS_IDENTITY
+!= COMPOUND_SOURCE_CONTENT_IDENTITY
+~~~
+
+Do not derive the Git SHA back out of the materialized directory name.
 
 But browser behavior is still environmental:
 

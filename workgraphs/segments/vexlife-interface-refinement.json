@@ -1148,7 +1148,8 @@
     "repo.vexlife:test/browser-companion-recovery-presentation.test.mjs",
     "repo.vexlife:test/macos-human-setup.test.mjs",
     "repo.vexlife:test/browser-companion-conversation-projection.test.mjs",
-    "repo.vexlife:test/browser-companion-recovery-owner.test.mjs"
+    "repo.vexlife:test/browser-companion-recovery-owner.test.mjs",
+    "repo.vexlife:install/vexlife-setup-window.applescript"
   ],
   "formedAt": "2026-10-25T01:23:08.000Z"
 }
