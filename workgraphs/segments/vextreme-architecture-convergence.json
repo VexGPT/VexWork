@@ -249,7 +249,7 @@
       "label": "Consolidate Terrain active embedded-surface ownership",
       "purpose": "Prevent impossible or stale Terrain embedded-reader surface state by giving the mutually exclusive activeReaderId / activeEntrySlug / activeGroupHomeKey compatibility coordinates one bounded mutation owner, while preserving current browser realization and keeping active-surface identity separate from reader return-context identity.",
       "workClass": "DEFECT",
-      "state": "COMPLETED",
+      "state": "VERIFYING",
       "workDisposition": "ACTIVE",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
@@ -266,14 +266,17 @@
         "github.pull.vextreme.505",
         "github.commit.vextreme.28602a7ba832223d40ed844c32609954051f1c84",
         "artifact.vexrelay.outer-return.sha256.d7dce82aab5fe0b1decfc5409a03c3e3efc73b6ad05e2cfab7f1a83620b7785e",
-        "artifact.vexrelay.inner-return.sha256.c7f161c3c3a8b179870349bf56c29706307051bed8b3640a3c25c3d58f5a99db"
+        "artifact.vexrelay.inner-return.sha256.c7f161c3c3a8b179870349bf56c29706307051bed8b3640a3c25c3d58f5a99db",
+        "github.pull.vextreme.488",
+        "github.commit.vextreme.5010f6cc8de507cfd7f027c3b615ff2e8931200f",
+        "repo.vextreme:tests/85-terrain-view-contract.test.js"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-29T14:34:00.000Z",
-      "updatedAt": "2026-10-29T14:52:30.000Z"
+      "updatedAt": "2026-10-29T14:55:30.000Z"
     }
   ],
   "transitions": [
@@ -400,6 +403,23 @@
         "artifact.vexrelay.inner-return.sha256.c7f161c3c3a8b179870349bf56c29706307051bed8b3640a3c25c3d58f5a99db"
       ],
       "createdAt": "2026-10-29T14:52:30.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.architecture-convergence.terrain-active-surface-context.verifying.pr488-postmerge-contract-drift",
+      "workRef": "work.vextreme.architecture-convergence.terrain-active-surface-context",
+      "priorState": "COMPLETED",
+      "nextState": "VERIFYING",
+      "reason": "Post-completion Vextreme PR #488 merged tests/85-terrain-view-contract.test.js with a stale assertion requiring the pre-#505 direct activeGroupHomeKey assignment. Accepted source main still contains the correct single active-surface mutation owner, so the implementation effect remains valid while repository contract currentness requires one test-only correction.",
+      "actorRef": "actor.chatgpt.vextreme-architecture-convergence",
+      "sourceRefs": [
+        "github.pull.vextreme.488",
+        "github.commit.vextreme.5010f6cc8de507cfd7f027c3b615ff2e8931200f",
+        "github.pull.vextreme.505",
+        "github.commit.vextreme.28602a7ba832223d40ed844c32609954051f1c84",
+        "repo.vextreme:tests/85-terrain-view-contract.test.js"
+      ],
+      "createdAt": "2026-10-29T14:55:30.000Z"
     }
   ],
   "sourceRefs": [
