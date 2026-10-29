@@ -61,7 +61,13 @@
     "github.commit.vexlife-android.249e38acdcc7f1d27050a65a7aa93f3f622e6b4a",
     "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/conversation/VexConversationRoomPreview.kt",
     "github.commit.vexlife-android.58d0be5f2f74bad40bb4deea7a697fa9f8e5d928",
-    "correction.vexsync.thememode.androidtest-session-root.20261029a008"
+    "correction.vexsync.thememode.androidtest-session-root.20261029a008",
+    "github.comment.vexlife-android.pr188.6507347819.sourceowner-a008-pass",
+    "evidence.vexsync.pr188.sourceowner.a008.return.sha256.dd699d36edfd03c0fd2c055b89511b7a690a5732067c56ec3c1d44c21854c619",
+    "evidence.vexsync.pr188.sourceowner.a008.inner-return.sha256.bcea26a4896f97405c6d8057d6a0e3ce973307a621ffcf9376808c1825c3e9e6",
+    "github.comment.vexlife-android.pr188.6507499391.assurance-clear",
+    "evidence.vexsync.pr188.assurance.a002.return.sha256.964d0063e4686ac622ff78d9d7b945088e87b2a76e4aaba7bc9f02e473e303aa",
+    "evidence.vexsync.pr188.assurance.a002.inner-return.sha256.6be1e12ab6097fb55e6940b2058a9fa71f4a816bdb2d6e71b394c7af1db9e147"
   ],
   "formedAt": "2026-10-26T07:26:46.000Z"
 }

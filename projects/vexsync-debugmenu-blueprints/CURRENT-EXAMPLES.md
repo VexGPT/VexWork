@@ -2,7 +2,7 @@
 
 [VXG RealForever]
 
-## CURRENT ThemeMode SourceOwner example — A008 exact-head retry
+## CURRENT ThemeMode example — exact-head SourceOwner + Assurance closure
 
 ~~~text
 head  = 58d0be5f2f74bad40bb4deea7a697fa9f8e5d928
@@ -10,21 +10,53 @@ tree  = ea817c7a9506f9c24d205e333d120c86a7761e41
 paths = 28 exact
 ~~~
 
-The latest discriminator came from AndroidTest compilation rather than UI architecture:
+The completed proof chain is now:
 
 ~~~text
-VexLifeSession now owns ThemeModeFamily
--> ThemeModeFamily requires explicit VexExecutionRoot custody
--> every test fixture constructing VexLifeSession must own that root explicitly
+SourceOwner A008
+  focused ThemeMode / Session / Maps JVM    PASS
+  vexVerifyLocal                             PASS
+  assembleDebugAndroidTest                   PASS
+  exact review snapshot                      PASS
+  findings                                   0
+
+Fresh Independent Assurance A002
+  exact remote branch/head/tree              PASS
+  exact 28-path candidate diff               PASS
+  findings                                   0
+
+semantic disposition
+  CLEAR_ON_EXACT_HEAD
 ~~~
 
-A complete androidTest sweep found exactly two remaining `VexLifeSession(...)` constructors:
-`VexStreamV4LocalStreamOfflineCrossPlatformTest` and `VexTestEngine`. Both now follow the explicit
-root/pass/forceStopAll pattern.
+This closes the implementation/proof question without collapsing later lifecycle authority:
 
-A008 is the only current SourceOwner attempt. A001-A007 are consumed evidence.
+~~~text
+CLEAR
+!= APPROVE
+!= READY
+!= MERGE
+!= RELEASE
+~~~
 
-<!-- [VXG RealForever][VEXSYNC][CURRENT-EXAMPLE][THEMEMODE][SOURCEOWNER-A008] -->
+The architectural example carried forward is still:
+
+~~~text
+Family decides outward condition
+-> VexThemePresentation realizes that condition
+-> VexLifeTheme connects once
+-> Compose carries inherited presentation
+-> leaf UI chooses placement / bounded use
+~~~
+
+No generic Screen receives `ThemeMode` or `darkTheme: Boolean`. Preview/render-test surfaces select
+explicit presentation; session/test fixtures explicitly own `VexExecutionRoot` rather than earning a
+hidden default owner.
+
+The work item is now `VERIFYING`, not completed: source proof + semantic clearance are real, while the
+remaining lifecycle/integration effects are separately owned.
+
+<!-- [VXG RealForever][VEXSYNC][CURRENT-EXAMPLE][THEMEMODE][PR188][ASSURANCE-CLEAR] -->
 
 ## Status
 
