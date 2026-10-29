@@ -6437,3 +6437,36 @@ head = a831f0aed03241e036d083f7ab57a74c7c1dfbaf
 Dark-biased Boolean. Leaf target renderers may still derive a local Boolean when required.
 
 <!-- [VXG RealForever][VEXSYNC][CURRENT-EXAMPLE][THEMEMODE][SELECT] -->
+
+
+---
+
+## ThemeMode resource ownership — no orphan precedent
+
+The Compose realization originally used loose private values named `LightColors` and `DarkColors`.
+They were mechanically valid, but their names did not carry the ThemeMode realization relationship and
+could be misread as an accepted example of semantically unowned implementation values.
+
+The bounded correction keeps the same rendering responsibility under the existing Android UI owner:
+
+~~~text
+VexLifeThemeColors.Light
+VexLifeThemeColors.Dark
+
+ThemeMode.materialColorScheme()
+  -> exact Material ColorScheme realization
+~~~
+
+No new root or registry was introduced.
+
+The lesson is not "every constant needs architecture." It is:
+
+~~~text
+when a target value participates in semantic realization
+-> make its owner and relationship readable
+
+otherwise
+-> keep ordinary implementation detail ordinary
+~~~
+
+<!-- [VXG RealForever][VEXSYNC][CURRENT-EXAMPLE][TARGET-RESOURCE-OWNERSHIP] -->
