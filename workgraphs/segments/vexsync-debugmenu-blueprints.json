@@ -38,14 +38,16 @@
         "github.commit.vexwork.e56c01f48614a87dc40faa00eff60bcf43a80c86",
         "github.commit.vexwork.2d0315c3c1550ed5c5ca6098da5223d8f5ccd7d3",
         "github.comment.vexlife-android.pr188.6499683574.sourceowner-a001-pass",
-        "github.review.vexlife-android.pr188.5699576285.assurance-clear"
+        "github.review.vexlife-android.pr188.5699576285.assurance-clear",
+        "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt",
+        "repo.vexlife-android:architecture/behavior/src/test/kotlin/com/vextreme/vexlife/android/behavior/VexFamilyHighConfidenceTest.kt"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-26T07:26:46.000Z",
-      "updatedAt": "2026-10-29T14:43:00.000Z"
+      "updatedAt": "2026-10-29T14:52:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -85,14 +87,16 @@
         "github.pull.vexlife-android.188",
         "github.commit.vexlife-android.62b919997b15479a234c4688af663e9aec4e0573",
         "github.comment.vexlife-android.pr188.6499683574.sourceowner-a001-pass",
-        "github.review.vexlife-android.pr188.5699576285.assurance-clear"
+        "github.review.vexlife-android.pr188.5699576285.assurance-clear",
+        "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt",
+        "repo.vexlife-android:architecture/behavior/src/test/kotlin/com/vextreme/vexlife/android/behavior/VexFamilyHighConfidenceTest.kt"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-26T07:26:46.000Z",
-      "updatedAt": "2026-10-29T14:43:00.000Z"
+      "updatedAt": "2026-10-29T14:52:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -172,14 +176,16 @@
         "repo.vexlife-android:docs/foundation/JOURNEY-INSTRUMENTATION.md",
         "repo.vexlife-android:docs/foundation/SCREEN-CRAWLER-EVIDENCE.md",
         "github.comment.vexlife-android.pr188.6499683574.sourceowner-a001-pass",
-        "github.review.vexlife-android.pr188.5699576285.assurance-clear"
+        "github.review.vexlife-android.pr188.5699576285.assurance-clear",
+        "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt",
+        "repo.vexlife-android:architecture/behavior/src/test/kotlin/com/vextreme/vexlife/android/behavior/VexFamilyHighConfidenceTest.kt"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-26T07:26:46.000Z",
-      "updatedAt": "2026-10-29T14:43:00.000Z"
+      "updatedAt": "2026-10-29T14:52:00.000Z"
     }
   ],
   "transitions": [
@@ -284,6 +290,25 @@
         "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md"
       ],
       "createdAt": "2026-10-29T14:43:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.feature-intention-builder-discovery.running.intent-bounds-name-non-authority-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING",
+      "reason": "Victor identified that control/display naming can be messy while the behavioral intent remains non-escapable from its contract bounds. Accepted Family source/tests support that distinction: arbitrary Control payload does not enter relationship identity, live Family + Control kind + optional typed ResourceId bound maintained identity, and behavioral meaning is authored only by CURRENT State + typed Control through exhaustive act(...). VexSync therefore records name/label as coordinate/readability material rather than semantic authority, and will pressure-test this invariant through the ThemeMode full walk before extracting any new shared naming machinery.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "response.victor.vexsync.intent-bounds-naming.20261029a",
+        "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt",
+        "repo.vexlife-android:architecture/behavior/src/test/kotlin/com/vextreme/vexlife/android/behavior/VexFamilyHighConfidenceTest.kt",
+        "github.comment.vexlife-android.pr188.6499683574.sourceowner-a001-pass",
+        "github.review.vexlife-android.pr188.5699576285.assurance-clear",
+        "projects/vexsync-debugmenu-blueprints/README.md",
+        "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md"
+      ],
+      "createdAt": "2026-10-29T14:52:00.000Z"
     }
   ],
   "sourceRefs": [
@@ -326,7 +351,9 @@
     "github.pull.vexwork.186",
     "github.commit.vexwork.2d0315c3c1550ed5c5ca6098da5223d8f5ccd7d3",
     "github.comment.vexlife-android.pr188.6499683574.sourceowner-a001-pass",
-    "github.review.vexlife-android.pr188.5699576285.assurance-clear"
+    "github.review.vexlife-android.pr188.5699576285.assurance-clear",
+    "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt",
+    "repo.vexlife-android:architecture/behavior/src/test/kotlin/com/vextreme/vexlife/android/behavior/VexFamilyHighConfidenceTest.kt"
   ],
   "formedAt": "2026-10-26T07:26:46.000Z"
 }
