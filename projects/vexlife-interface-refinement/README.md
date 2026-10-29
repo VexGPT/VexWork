@@ -227,6 +227,130 @@ delayed success
 Do not mechanically port Kotlin classes into VexLife. Consume the architectural relationship,
 then use the smallest rightful VexLife owner.
 
+## Family Circuit placement — foundation before interface-specific repair
+
+The Compound rethink now has a more precise architectural placement. Do not invent an
+`InterfaceCompoundFramework`, mechanically port Android Kotlin, or make the browser itself the new
+semantic owner.
+
+Current accepted source already gives the puzzle board:
+
+~~~text
+VexLife canonical product / Blueprint meaning
+  docs/CULTURE.md
+  docs/FOUNDATION-CULTURE-IMPLEMENTATION-STANDARD.md
+  docs/UNIVERSAL-BLUEPRINT.md
+
+VexLife-Android native Family Circuit
+  architecture/behavior/FAMILY-CIRCUIT.md
+  architecture/behavior/README.md
+
+VexLife-Android Compound Convergence
+  architecture/relay/README.md
+  VexCompoundRelay / VexCompoundState
+
+cross-repository construction lens
+  Vextreme-SDK docs/architecture/semantic-provenance-purpose-to-form.md
+~~~
+
+The Family Circuit owns semantic behavior from current truth:
+
+~~~text
+CURRENT Family State + incoming Control
+-> Act
+-> noAct / stay / admit(State)
+-> optional Begin
+-> rightful execution / StateRelay
+~~~
+
+The Compound Relay owns a different question:
+
+~~~text
+complete independently-owned truth A
++ complete independently-owned truth B
++ complete independently-owned truth C
+-> one coherent retained InputState
+-> named relationship calculations
+-> one derived relationship OutputState
+~~~
+
+The accepted Relay architecture already places the composition direction:
+
+~~~text
+complete truths
+-> Compound Convergence relationship
+-> relationship truth
++ optional bounded Control/request
+-> rightful Family
+~~~
+
+And the current Family source already names the unresolved seams that this lived VexLife defect now
+pressures:
+
+~~~text
+provider/repository observation -> semantic Family State
+automatic UI observation/lifetime integration
+Process OutputState -> rightful Family.currentState handoff
+exact Family + Relay Single/Compound composition
+serialized competing-cause State decision / stale async result
+~~~
+
+Therefore the foundation-first implementation order is:
+
+~~~text
+human intention
+  "Can Victor actually talk to Vex through this visible interface now?"
+        |
+        v
+independently-owned observations
+  server/source
+  loaded browser document/source
+  Companion availability/runtime
+  canonical Conversation/head
+  browser observation currentness
+        |
+        v
+Interface Compound Relay
+  retained coherent InputState
+  -> derived relationship OutputState
+        |
+        v
+rightful Interface Family semantic State
+        |
+        + incoming Control
+        v
+Act
+  -> browser/navigation owner when current source must be loaded
+  -> lifecycle/runtime owner when the same binding is recoverable
+  -> Conversation/model owner when Send is lawfully admitted
+        |
+        v
+Family DisplayState / browser presentation
+~~~
+
+Browser lifecycle events such as focus, visibility and pageshow are observation triggers by default,
+not semantic Controls. They cause the rightful observation owner to re-observe current truth; the
+resulting relationship decides Family State.
+
+The setup/recovery window likewise remains a lifecycle/effect owner. It may report that its recovery
+effect completed; it must not become the owner of visible Interface Family READY.
+
+Permanent:
+
+~~~text
+REUSABLE_MEANING != REUSABLE_TYPE_EQUATION
+ANDROID_KOTLIN_FORM != VEXLIFE_BROWSER_FORM
+INTERFACE_COMPOUND_RELAY != COMPOUND_FAMILY
+RELATIONSHIP_OUTPUT != EFFECT_OWNER
+OBSERVATION_TRIGGER != FAMILY_CONTROL
+SETUP_RECOVERY_COMPLETED != INTERFACE_FAMILY_READY
+~~~
+
+The first foundation obligation is therefore **not** a new generic runtime. It is to source-place the
+smallest VexLife product-level contract that makes the Family / Compound relationship and ownership
+recoverable before browser-specific implementation. Interface Compound Relay then becomes the first
+concrete VexLife consumer/proof of that contract.
+
 ## Interface Compound Relay — relationship to form
 
 The missing VexLife relationship is approximately:
@@ -418,7 +542,23 @@ the human experience.
 
 ## Plan of action for the next source worker
 
-### 1. Re-ground and reproduce
+### 1. Source-place the Family Circuit / Compound composition seam
+
+Before browser-specific mutation, preserve the product-level relationship in the rightful VexLife
+Blueprint/foundation source:
+
+~~~text
+independently-owned current truths
+-> Compound relationship truth
+-> rightful Family current State
+-> Control -> Act -> rightful effect owner
+~~~
+
+Use the Android Family Circuit / Compound Relay source as accepted native architecture evidence and
+the SDK semantic-provenance lesson as a mapping lens. Do not make either one VexLife product
+authority, and do not require JavaScript to visually resemble Kotlin.
+
+### 2. Re-ground and reproduce
 
 - current VexLife main;
 - normal setup-vexlife.command;
@@ -429,7 +569,7 @@ the human experience.
 No source mutation before the mismatch is concretely located unless current source makes the missing
 owner obvious.
 
-### 2. Form the smallest VexLife-specific convergence owner
+### 3. Form the smallest VexLife-specific convergence owner
 
 Use the Android Compound-state law as architectural input:
 
@@ -442,7 +582,7 @@ partial observation
 
 Do not port Android's generic classes or add a reusable framework without a second VexLife consumer.
 
-### 3. Bind source/document currentness
+### 4. Bind source/document currentness
 
 A fresh exact source may start a new browser server while macOS focuses an already-loaded document.
 Make that relationship observable. A source mismatch must not render READY.
@@ -450,7 +590,7 @@ Make that relationship observable. A source mismatch must not render READY.
 Prefer an existing exact source identity. If none exists, source-place the smallest server/document
 identity projection required for this relationship.
 
-### 4. Make browser observation current
+### 5. Make browser observation current
 
 The human browser must re-observe after the external lifecycle can change beneath it:
 
@@ -461,14 +601,14 @@ The human browser must re-observe after the external lifecycle can change beneat
 Overlapping reads must not let an older completion overwrite a newer observation. Coalesce/serialize
 or otherwise bind result admission to exact current observation identity.
 
-### 5. Gate Send on CURRENT relationship truth
+### 6. Gate Send on CURRENT relationship truth
 
 The visible Send affordance and the Send effect must not trust a historical READY cache.
 
 Before a real Companion turn is admitted, resolve against the current convergence output. Preserve
 the local draft while held/unavailable/recovering.
 
-### 6. Correct human wording
+### 7. Correct human wording
 
 The setup/recovery window may report the effect it actually owns:
 
@@ -478,7 +618,7 @@ local recovery completed
 
 It must not imply the already-visible Open Vex surface is usable until that surface has converged.
 
-### 7. Prove the seam that failed
+### 8. Prove the seam that failed
 
 Required proof layers should include:
 

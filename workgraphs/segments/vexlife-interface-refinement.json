@@ -74,7 +74,7 @@
       "workRef": "work.vexlife.interface-refinement.interface-compound-relay",
       "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
       "label": "Current — Interface Compound Relay convergence",
-      "purpose": "Resolve the ordinary VexLife human-surface continuity defect by reconciling independently owned current truths—exact server/source identity, loaded browser-document source identity, canonical Companion availability/runtime observation, canonical Conversation currentness/head and browser observation currentness—into one bounded derived readiness relationship. Lived normal-user recovery showed that a successful backend repair can coexist with a nonresponsive/stale browser composer that later renders Vex unavailable. Use the accepted VexLife-Android Compound-state/convergence foundation as architecture reference only; do not port Android types mechanically or create a generic Relay framework before VexLife source earns one.",
+      "purpose": "Lay the smallest VexLife product-level Family Circuit / Compound Relay composition foundation before interface-specific repair, then resolve the ordinary VexLife human-surface continuity defect by reconciling independently owned current truths—exact server/source identity, loaded browser-document source identity, canonical Companion availability/runtime observation, canonical Conversation currentness/head and browser observation currentness—into one bounded derived readiness relationship. The foundation must preserve the existing Family State + Control -> Act -> rightful effect boundary and the Compound retained-input -> derived-output relationship without inventing CompoundFamily, a second state owner or a Kotlin-shaped browser framework. Lived normal-user recovery showed that a successful backend repair can coexist with a nonresponsive/stale browser composer that later renders Vex unavailable.",
       "workClass": "TASK",
       "state": "READY",
       "priorityClass": "IMMEDIATE",
@@ -114,7 +114,13 @@
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/maps/VexNavigationConvergenceRelay.kt",
         "repo.vexlife-android:architecture/widget/src/main/kotlin/com/vextreme/vexlife/android/widget/VexWidgetSurfaceState.kt",
         "repo.vexlife-android:architecture/widget/src/main/kotlin/com/vextreme/vexlife/android/widget/VexGlanceAppWidget.kt",
-        "github.pull.vexlife-android.198"
+        "github.pull.vexlife-android.198",
+        "repo.vexlife:docs/CULTURE.md",
+        "repo.vexlife:docs/FOUNDATION-CULTURE-IMPLEMENTATION-STANDARD.md",
+        "repo.vexlife:docs/UNIVERSAL-BLUEPRINT.md",
+        "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+        "repo.vexlife-android:architecture/behavior/README.md",
+        "repo.vextreme-sdk:docs/architecture/semantic-provenance-purpose-to-form.md"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
@@ -1062,7 +1068,13 @@
     "github.commit.vexlife-android.14bb2c4e82eb6cf55cbdc6ef5f2c65d38f97e45b",
     "github.pull.vexlife-android.200",
     "github.pull.vexlife-android.185",
-    "github.pull.vexlife-android.198"
+    "github.pull.vexlife-android.198",
+    "repo.vexlife:docs/CULTURE.md",
+    "repo.vexlife:docs/FOUNDATION-CULTURE-IMPLEMENTATION-STANDARD.md",
+    "repo.vexlife:docs/UNIVERSAL-BLUEPRINT.md",
+    "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+    "repo.vexlife-android:architecture/behavior/README.md",
+    "repo.vextreme-sdk:docs/architecture/semantic-provenance-purpose-to-form.md"
   ],
   "formedAt": "2026-10-25T01:23:08.000Z"
 }
