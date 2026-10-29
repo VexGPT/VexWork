@@ -33,40 +33,72 @@ CURRENT_WORK_STATE != PRODUCT_COMPLETENESS
 The current accepted VexWork/product evidence is:
 
 ```text
-V2 progressive/adaptive streaming     COMPLETED / human-lived PASS
-tool-bearing VexLife Home             COMPLETED / A006 terminal product PASS
-V3 resource/context pressure          COMPLETED / A005 terminal lived PASS
-V4 continuity rollover                READY / IMMEDIATE / CURRENT FOREGROUND
-V5 bounded resource stewardship       READY / HIGH / PARALLEL
-V6 lived continuity stability         WAITING_DEPENDENCIES
-Kokoro live speech/read-back          CAPTURED / NORMAL
-later Home/navigation refinement      CAPTURED / NORMAL
+V2 progressive/adaptive streaming          COMPLETED / human-lived PASS
+tool-bearing VexLife Home                  COMPLETED / A006 bounded substrate PASS
+V3 resource/context pressure               COMPLETED / lived PASS
+V4 continuity rollover                     COMPLETED / source + lived PASS
+V5 bounded resource stewardship            VERIFYING / accepted source + lived no-effect safety branch
+stable Talk-to-Vex startup/runtime main    COMPLETED / current accepted main
+canonical Conversation identity            READY / IMMEDIATE / CURRENT FOREGROUND
+prior-context / Memory assimilation        WAITING on canonical identity
+Atlas / self-capability awareness          WAITING on canonical identity
+lived context-aware capability use         WAITING on Memory + Atlas
+V6 lived continuity stability              WAITING_DEPENDENCIES
+Kokoro live speech/read-back               CAPTURED / NORMAL
 ```
 
-The Home/tool source-currentness lineage is now accepted rather than pending:
+Current stable product anchor:
 
 ```text
-PR #934
-  capability-observation currentness repair
+VexLife main = fe7e0c21f34f59dd9c612a3f184e49cc5082f47d
+main tree    = fee3fb7bb4e273c9674f65d2dc629b4842c7837e
 
-PR #935
-  truthful Heretic/MLX model-connection + bounded self-capability projection
-  merged as 31c9198101f4c8a0170cb76b57547ae1d737b05f
-  post-merge candidate-to-main file delta = zero
+PR #950
+  -> exact Heretic startup/lifetime repair
+  -> source proof + Independent Assurance
+  -> real local Victor -> Vex durable response
+  -> post-turn Heretic/Browser/Companion current
+  -> merged tree-exact to main
+```
 
+The Home/tool substrate remains accepted rather than reopened:
+
+```text
 A006
   normal Evolution Conversation
   -> capability.vexlife.code.read
   -> Intent Scheduler
   -> ToolResultRelay reinjection
   -> later Heretic synthesis
-  -> truthful Heretic model/self projection
+  -> truthful model/self projection
   -> durable same-Conversation readback
-  -> same-idempotency recovery without model replay or duplicate append
 ```
 
-Canonical A006 evidence:
-`artifact.vexlife.interface-refinement.home-tool.a006.return.sha256.a6ac642b7455f8ca1c677e7ec955d1ac1e977d167b3ba36257c3f067a4a5cf63`
+But lived current-product feedback establishes a distinct integration gap:
+
+```text
+capability / Atlas substrate exists
++ prompt-context / Memory substrate exists
++ durable Conversation exists
++ Vex can answer
+
+!=
+
+Vex consistently experiences one canonical conversation frame
+with truthful prior context and current Atlas/self-capability awareness
+```
+
+Therefore the current connective trajectory is identity-first:
+
+```text
+stable Talk-to-Vex main
+        ↓
+canonical project/thread/channel/current-head across Conversation surfaces
+       ↙ ↘
+prior context + Memory        Atlas + self-capability awareness
+       ↘ ↙
+lived context-aware capability use
+```
 
 ## Journey draft
 
@@ -108,53 +140,124 @@ V1 conversation ergonomics + re-entry
 V2 progressive/adaptive streaming
         ↓
 COMPLETED: first tool-bearing VexLife Home threshold
+        ↓
+COMPLETED: stable startup/runtime connection on current main
+        ↓
+CURRENT: canonical Conversation identity across Evolution + Vex Terrain/Open conversation
+       ↙ ↘
+NEXT: prior-context/Memory      NEXT: Atlas/self-capability awareness
+       ↘ ↙
+GATE: lived context-aware capability use
 ```
 
-V1.5 long-context Memory pressure remains the parallel continuity foundation feeding the current V3 frontier.
+The old A006 Home/tool proof remains valid and should not be replayed merely to prove that capability machinery exists. Its job was the first bounded substrate threshold.
 
-A006 terminally proves the first Home/tool threshold:
+The new lived pressure is about **coherent composition**. Current VexLife source already contains:
+- durable Conversation storage and Browser Companion;
+- bounded prompt-context materialization and Memory projection;
+- Capability and Tool Atlas;
+- capability registry/assimilation runtime;
+- FRESH_COMPANION_FOUNDATION_FRAME;
+- bounded vexlife.vex-self-capability-frame/v1;
+- model-connection turn composition;
+- Intent Scheduler and ToolResultRelay.
+
+The visible product currently demonstrates that these truths can still arrive as different frames. Evolution Conversation shows durable messages while Vex Terrain/Open conversation shows semantic current-frame meaning, and Vex can still answer as though prior conversation context is unavailable.
+
+That means:
 
 ```text
-normal Evolution Conversation
-→ real Heretic request formation
-→ one source-admitted capability.vexlife.code.read
-→ rightful scheduler / bounded read executor
-→ ToolResultRelay
-→ bounded source observation reinjected
-→ later Heretic synthesis
-→ truthful Heretic/MLX modelConnectionProjection
-→ bounded selfCapabilityFrame with no effect authority
-→ conversational answer in the same durable Home
-→ same-idempotency recovery without HTTP/model replay or duplicate append
+MODULE_PRESENT != LIVED_COMPOSITION_COMPLETE
+DURABLE_THREAD != PROMPT_CONTEXT_PROVEN
+SELF_CAPABILITY_FRAME_EXISTS != VEX_CURRENTLY_AWARE
+SURFACE_NAVIGATION != NEW_CONVERSATION_IDENTITY
 ```
 
-Evidence:
-`artifact.vexlife.interface-refinement.home-tool.a006.return.sha256.a6ac642b7455f8ca1c677e7ec955d1ac1e977d167b3ba36257c3f067a4a5cf63`
+#### Canonical Conversation identity — current
 
-V3 resource/context pressure is now terminally lived-proven. The current product/stability foreground is V4 continuity rollover; V5 resource stewardship is dependency-released in parallel.
+The first connective correction is to carry one exact identity through every relevant projection:
 
-### V3 terminal lived pressure evidence
+```text
+projectRef
+threadRef
+channelRef
+current durable head
+screenRef
+selectedNodeRef
+        ↓
+Evolution Conversation
+Vex Terrain/Open conversation
+Browser Prompt Context Runtime
+Vex self-capability currentContext
+```
 
-Accepted VexLife PR #936 is merged at `9f2e97d3ef14599eac4e659181392c1e706dc758`. A005 then proved two real streamed Heretic turns on the canonical V1 Conversation route. The second turn carried a provider-bound prompt receipt, a CURRENT/ACTIVE Context Lease, READY/EXACT_OWNED/HEALTHY/CURRENT Companion runtime truth, and a self-validating `SOURCE_BOUND_RESOURCE_CONTEXT_PRESSURE` projection. The fresh proof Home truthfully projected `NORMAL`; all protected pressure effects remained false.
+One Conversation owner; many projections.
 
-Canonical evidence:
-`artifact.vexlife.interface-refinement.v3.lived-pressure.a005.return.sha256.1812d529d99ad89b368e84939835f355065adcb6d96d6c7bda5d975edb6ff6f3`
+#### Prior-context / Memory assimilation — next
 
-This releases V4 continuity rollover and V5 resource stewardship without conflating observation with either effect.
+After identity is canonical, prove the next local Heretic turn consumes the exact prior completed turn and current accepted Memory selected by the existing prompt-context owner. A re-entry question about prior context must be answered from actual durable evidence and may say UNKNOWN when evidence is absent.
+
+No whole-history prompt dumping and no synthetic provider-chat memory.
+
+#### Atlas / self-capability awareness — parallel next
+
+After identity is canonical, make the ordinary lived Vex relationship consistently consume the existing source-owned Atlas/Foundation/self-capability frame.
+
+Acceptance should show Vex can naturally answer:
+- what it can currently perceive;
+- what capabilities are available, held or unknown;
+- which bounded read/tool route exists;
+- which actions still require authority.
+
+```text
+AWARENESS != EFFECT_AUTHORITY
+CAPABILITY_DISCOVERY != ARBITRARY_ACCESS
+ATLAS_HANDLE != FULL_SCHEMA_IN_EVERY_PROMPT
+```
+
+#### Integrated capability-use gate
+
+Then re-prove the old bounded Home/tool behavior in the now-coherent product:
+
+```text
+natural request in canonical Conversation
+-> current Atlas/self-capability recognition
+-> one rightful bounded read/tool act
+-> ToolResultRelay observation
+-> Vex explanation
+-> same thread/head survives re-entry
+```
 
 ### 3. Continuity / stability frontier
+
+V4 has advanced beyond the old READY checkpoint.
 
 ```text
 V1.5 long-context Memory pressure
         ↓
-V3 read-only resource/context pressure observation
-        ├──────────────→ V5 bounded resource stewardship
+V3 read-only pressure observation        COMPLETED
         ↓
-V4 self-maintaining continuity rollover
-        \
-         └─────────────→ V6 long lived continuity stability
-V2 streaming ──────────→ V4 / V6
+V4 working checkpoint + successor lease COMPLETED / source + lived
+        ↓
+V6 long lived stability                 WAITING
+        ↑
+V5 exact-owned stewardship              VERIFYING
 ```
+
+V5 source foundation and exact Heretic delegation are accepted. The lived fail-closed no-effect branch is also proven current-host behavior. Its remaining destructive proof is deliberately conditional:
+
+```text
+LIVE_EXACT_VEX_OWNED_HERETIC
++ STALE
++ CURRENT_NONE_LEASE
+-> exact rightful-owner stop may be exercised
+
+predicate absent
+-> do not manufacture stale process state
+-> remain VERIFYING / evidence-gated
+```
+
+This V5 hold must not block the current Conversation/Memory/Atlas connective foreground; it remains a parallel stability obligation feeding V6.
 
 ### 4. Distribution and scale gaps
 
@@ -234,6 +337,17 @@ workgraphs/segments/vexlife-interface-refinement.json
 Relevant accepted VexLife source/lived evidence:
 
 ```text
+github.pull.vexlife.943
+github.commit.vexlife.4fd8af85c452320ccc7895d572e6f2dd56257e68
+github.pull.vexlife.945
+github.pull.vexlife.946
+github.commit.vexlife.cb6047bd741c0c63f9475019129cd0876c763c40
+github.pull.vexlife.950
+github.commit.vexlife.fe7e0c21f34f59dd9c612a3f184e49cc5082f47d
+artifact.vexlife.interface-refinement.stable-talk.a012.return.sha256.8bb90a4829c5aa40c6313a06166713fd0bf9d41fa0cb4369ebbc65638a32ea53
+repo.vexlife:docs/CAPABILITY-AND-TOOL-ATLAS.md
+repo.vexlife:src/core/browser-prompt-context-runtime.mjs
+repo.vexlife:src/core/vex-self-capability-frame.mjs
 github.pull.vexlife.924
 github.pull.vexlife.928
 github.pull.vexlife.931
