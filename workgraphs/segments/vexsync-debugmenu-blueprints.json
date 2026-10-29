@@ -297,7 +297,10 @@
         "github.comment.vexlife-android.pr196.6501136553.sourceowner-a002-pre-carrier-branch-binding",
         "github.comment.vexlife-android.pr196.6501175432.sourceowner-a003-formed",
         "evidence.vexsync.pr196.sourceowner.a003.formation.sha256.b7ae91c9f6a7de6eb48b9ab1c315b3e17d9ff2bfad3382503dfc5678bf99eded",
-        "review.fresh-instance.vex-family-pr193-open-edges.20261029b"
+        "review.fresh-instance.vex-family-pr193-open-edges.20261029b",
+        "github.comment.vexlife-android.pr196.6501368445.sourceowner-a003-pre-task-schema",
+        "github.comment.vexlife-android.pr196.6501415714.sourceowner-a004-formed",
+        "evidence.vexsync.pr196.sourceowner.a004.formation.sha256.1d116a4b13c5b6bdee4df55501da281c1e20543c86358384eb44cce8b56e46f6"
       ],
       "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
       "nextProcessRefs": [
@@ -306,7 +309,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-29T15:55:00.000Z",
-      "updatedAt": "2026-10-29T16:18:00.000Z"
+      "updatedAt": "2026-10-29T16:28:00.000Z"
     }
   ],
   "transitions": [
@@ -577,6 +580,21 @@
         "review.fresh-instance.vex-family-pr193-open-edges.20261029b"
       ],
       "createdAt": "2026-10-29T16:18:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.direct-family-post193-hardening.running.a003-task-schema-a004-formed-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.direct-family-post193-hardening",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING",
+      "reason": "PR #196 A003 reached current SDK VexLocalBridge source-managed task formation and failed shared validation because the outer task template retained a forbidden top-level authorityRef field. Current task-manifest/v1 owns outer authority under authorityBinding; inner VexRelay separately owns manifest.authority.authorityRef. A004 preserves the exact PR branch/head/tree and corrected focused Gradle task, removes only that stale outer field, rotates attempt/carrier identities, and statically proves every outer top-level task key is admitted by the current SDK TASK_KEYS set.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.comment.vexlife-android.pr196.6501368445.sourceowner-a003-pre-task-schema",
+        "github.comment.vexlife-android.pr196.6501415714.sourceowner-a004-formed",
+        "evidence.vexsync.pr196.sourceowner.a004.formation.sha256.1d116a4b13c5b6bdee4df55501da281c1e20543c86358384eb44cce8b56e46f6"
+      ],
+      "createdAt": "2026-10-29T16:28:00.000Z"
     }
   ],
   "sourceRefs": [
@@ -644,7 +662,10 @@
     "github.comment.vexlife-android.pr196.6501136553.sourceowner-a002-pre-carrier-branch-binding",
     "github.comment.vexlife-android.pr196.6501175432.sourceowner-a003-formed",
     "evidence.vexsync.pr196.sourceowner.a003.formation.sha256.b7ae91c9f6a7de6eb48b9ab1c315b3e17d9ff2bfad3382503dfc5678bf99eded",
-    "review.fresh-instance.vex-family-pr193-open-edges.20261029b"
+    "review.fresh-instance.vex-family-pr193-open-edges.20261029b",
+    "github.comment.vexlife-android.pr196.6501368445.sourceowner-a003-pre-task-schema",
+    "github.comment.vexlife-android.pr196.6501415714.sourceowner-a004-formed",
+    "evidence.vexsync.pr196.sourceowner.a004.formation.sha256.1d116a4b13c5b6bdee4df55501da281c1e20543c86358384eb44cce8b56e46f6"
   ],
   "formedAt": "2026-10-26T07:26:46.000Z"
 }
