@@ -425,8 +425,14 @@ no lived group-home origin
 -> primary/fallback placement may remain a projection choice
 ~~~
 
-This is current implementation pressure carried by Vextreme PR #493. It is also a Name Ontology guard:
-a future name that implies one owner controls both membership and lived return would be too broad.
+This distinction is now accepted Vextreme source through PR #493 / merge
+`36ced69ee6719bf05481110a753aee9e989d4885`. The accepted source preserves current Terrain
+readability plus Scroll-to-enter behavior, and post-merge repository Tests + GitHub Pages deployment
+both passed. The Work remains VERIFYING because lived browser confirmation of the lower Arc-parent
+interaction is still a distinct predicate.
+
+It is also a Name Ontology guard: a future name that implies one owner controls both membership and
+lived return would be too broad.
 
 
 ## Current topology -> Journey source chain
@@ -795,8 +801,8 @@ work.vextreme.architecture-convergence.semantic-owner-map
     work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery
 
 work.vextreme.architecture-convergence.terrain-reader-navigation
-  RUNNING
-  first patient zero co-evolving with the owner map
+  VERIFYING
+  accepted source + deployment; lived Arc-parent browser confirmation still pending
 ~~~
 
 The owner map should grow only from observed seams. Do not pre-author a complete website ontology or

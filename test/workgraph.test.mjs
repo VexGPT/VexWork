@@ -323,8 +323,15 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
     vextremeArchitectureOwnerMap.sourceRefs.includes('work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery'),
     true,
   );
-  assert.equal(vextremeArchitectureTerrainReader.state, 'RUNNING');
+  assert.equal(vextremeArchitectureTerrainReader.state, 'VERIFYING');
   assert.deepEqual(vextremeArchitectureTerrainReader.dependencyRefs, []);
+  assert.equal(vextremeArchitectureTerrainReader.sourceRefs.includes('github.pull.vextreme.493'), true);
+  assert.equal(vextremeArchitectureTerrainReader.sourceRefs.includes('github.commit.vextreme.36ced69ee6719bf05481110a753aee9e989d4885'), true);
+  assert.ok(graph.transitions.some((transition) =>
+    transition.transitionRef === 'transition.vextreme.architecture-convergence.terrain-reader-navigation.verifying.pr493-merge'
+    && transition.priorState === 'RUNNING'
+    && transition.nextState === 'VERIFYING'
+  ));
 
   const operationalOutcome = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.outcome');
   const derivedFoundation = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.derived-work-foundation');
