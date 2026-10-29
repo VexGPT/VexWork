@@ -939,6 +939,96 @@ browser observation-currentness owner
 If a proposed owner identity does not yet exist canonically, that is a source-placement question for
 that owner—not permission to hide an invented ownerRef inside the convergence contract.
 
+#### F1 stable semantic identity map
+
+The portable identity names should describe **meaning**, not the Compound implementation form.
+
+Candidate stable identities:
+
+~~~text
+contractRef
+  contract.vexlife.interface.currentness-convergence.001
+
+relationshipRef
+  relationship.vexlife.interface.currentness
+
+initialStateRef
+  state.vexlife.interface.currentness.unobserved
+
+states
+  state.vexlife.interface.currentness.unobserved
+  state.vexlife.interface.currentness.source-mismatch
+  state.vexlife.interface.currentness.observing
+  state.vexlife.interface.currentness.recoverable
+  state.vexlife.interface.currentness.action-required
+  state.vexlife.interface.currentness.unavailable
+  state.vexlife.interface.currentness.ready
+~~~
+
+`Interface Compound Relay` remains the human/architecture name; `Compound` does not leak into the
+portable semantic identity that future implementations may consume.
+
+~~~text
+ARCHITECTURE_FORM
+!= DURABLE_SEMANTIC_NAME
+~~~
+
+The F2 prototype now emits these exact state refs, so Relay output and Family semantic State are one
+portable identity rather than parallel enums:
+
+~~~text
+derived relationship output
+-> state.vexlife.interface.currentness.ready
+-> Family current State
++ existing Control
+-> existing Act / effect owner
+~~~
+
+No second `FamilyReady` or browser-only READY identity is needed.
+
+#### F1 input owner map — all current owners already exist
+
+Current source supports these owner refs:
+
+~~~text
+input.vexlife.interface.currentness.loaded-document-source
+  ownerRef = module.vexlife.browser.document
+
+input.vexlife.interface.currentness.current-server-source
+  ownerRef = module.vexlife.script.serve-browser
+
+input.vexlife.interface.currentness.companion-availability
+  ownerRef = module.vexlife.core.companion-availability-reentry
+
+input.vexlife.interface.currentness.conversation-currentness
+  ownerRef = module.vexlife.core.browser-companion-bridge
+
+input.vexlife.interface.currentness.browser-observation-currentness
+  ownerRef = module.vexlife.browser.adapter
+~~~
+
+That last placement is deliberate: F1 can land before F2 because the existing browser adapter is the
+current browser lifecycle/interaction owner. The proposed
+`reference/browser/modules/interface-compound-currentness.js` is an implementation helper consumed
+by that adapter; it does not need to become a new semantic owner merely because it contains the
+Compound logic.
+
+This means:
+
+~~~text
+F1
+  has zero forward owner references
+
+F2 helper module
+  may be registered for source discoverability
+
+F2 helper module
+  != new browser-observation truth owner
+~~~
+
+The disposable F1 prototype was rerun with these real current owner identities and remained 7 / 7
+PASS.
+
 #### F1 candidate source membrane — source-ready, not admitted
 
 Current Blueprint loading is already composition-field generic: `loadComposedRecord()` resolves any
