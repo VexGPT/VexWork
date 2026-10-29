@@ -388,7 +388,10 @@ test('VexLife Android POC is projected at source-load time and styled without ch
   assert.match(page, /AndroidProjector\.androidPocDesignLocation\(payload\)/);
   assert.match(page, /new URL\(designLocation,boardUrl\)/);
   assert.match(page, /ScreenDesign\.normalizeScreenDesign\(await designResponse\.json\(\)\)/);
-  assert.match(page, /projectVexLifeAndroidPocSnapshot\(payload,boardRef,design\)/);
+  assert.match(
+    page,
+    /projectVexLifeAndroidPocSnapshot\(\s*context\.snapshot,\s*boardRef,\s*context\.design,\s*\)/,
+  );
   assert.match(page, /AndroidPresentation\.androidReferenceClassNames\(current\.presentation,i\.projectionItemRef\)/);
   assert.match(page, /AndroidPresentation\.androidReferenceRelationshipRoute\(current\.presentation,r\.relationshipRef\)/);
   assert.match(page, /occurrenceRoute\?item\(occurrenceRoute\.fromProjectionItemRef\):itemFor\(r\.fromRef\)/);

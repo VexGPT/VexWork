@@ -993,7 +993,12 @@ function experienceBoard(snapshot, design, viewportProfile) {
   const fabClusterDp = resolveScreenDesignAnchorBox({
     designInput: design,
     anchorRuleInput: fabAnchorRule,
-    parentBoundsDp: vexMetrics.contentDp,
+    parentBoundsDp: {
+      x: 0,
+      y: 0,
+      width: viewportProfile.widthDp,
+      height: viewportProfile.heightDp,
+    },
     widthDp: fabSizeDp,
     heightDp: fabClusterHeightDp,
   });
