@@ -343,10 +343,22 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vextreme.architecture-convergence.terrain-reader-return-context.verifying.pr498-merge'));
   assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vextreme.architecture-convergence.terrain-reader-return-context.completed.pr498-postmerge'));
 
-  assert.equal(vextremeArchitectureReturnVocabulary.state, 'RUNNING');
+  assert.equal(vextremeArchitectureReturnVocabulary.state, 'COMPLETED');
   assert.deepEqual(vextremeArchitectureReturnVocabulary.dependencyRefs, []);
   assert.equal(vextremeArchitectureReturnVocabulary.sourceRefs.includes('github.pull.vextreme.502'), true);
   assert.equal(vextremeArchitectureReturnVocabulary.sourceRefs.includes('github.pull.vexlife-android.193'), true);
+  assert.equal(vextremeArchitectureReturnVocabulary.sourceRefs.includes('github.pull.vextreme.503'), true);
+  assert.equal(vextremeArchitectureReturnVocabulary.sourceRefs.includes('github.commit.vextreme.87571924f769fe4a1dad1084e2f68775f18d37b1'), true);
+  assert.ok(graph.transitions.some((transition) =>
+    transition.transitionRef === 'transition.vextreme.architecture-convergence.terrain-reader-return-vocabulary.verifying.pr503-a004-assurance'
+    && transition.priorState === 'RUNNING'
+    && transition.nextState === 'VERIFYING'
+  ));
+  assert.ok(graph.transitions.some((transition) =>
+    transition.transitionRef === 'transition.vextreme.architecture-convergence.terrain-reader-return-vocabulary.completed.pr503-tree-exact-merge'
+    && transition.priorState === 'VERIFYING'
+    && transition.nextState === 'COMPLETED'
+  ));
 
   assert.equal(vextremeArchitectureTerrainReader.state, 'VERIFYING');
   assert.deepEqual(vextremeArchitectureTerrainReader.dependencyRefs, []);
