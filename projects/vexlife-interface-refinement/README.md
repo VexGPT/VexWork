@@ -854,13 +854,13 @@ words.
 The contract prototype plus F2/draft seam prototypes now total:
 
 ~~~text
-31 / 31 disposable semantic PASS
+37 / 37 disposable semantic PASS
 ~~~
 
 Still:
 
 ~~~text
-DISPOSABLE_31_OF_31
+DISPOSABLE_37_OF_37
 != REPOSITORY_TEST_PASS
 ~~~
 
@@ -1044,13 +1044,13 @@ Disposable evidence now stands at:
 17 Interface-currentness behavior
 + 9 portable convergence contract
 + 5 draft carriage
-= 31 / 31 PASS
+= 37 / 37 PASS
 ~~~
 
 Still:
 
 ~~~text
-DISPOSABLE_31_OF_31
+DISPOSABLE_37_OF_37
 != VEXLIFE_REPOSITORY_PASS
 ~~~
 
@@ -1378,6 +1378,103 @@ PLATFORM_SCOPE_CURRENTIZATION_REQUIRED
 
 The accepted owner remains Source Manifest.
 
+#### Disposable server/document identity bridge — 6 / 6 PASS
+
+The Source Manifest -> Browser Server -> loaded document boundary was pressure-tested independently of
+the VexLife repository checkout.
+
+Disposable proof:
+
+~~~text
+6 / 6 PASS
+
+stored Source Manifest
+-> one no-effect current server source identity
+
+served document
+-> serving sourceTreeSha256 bound into HTML before app.js executes
+
+duplicate document source binding
+-> fail closed
+
+invalid stored source tree identity
+-> fail closed
+
+ordinary Open Vex source addressing
+-> exact 40-character Git commit carried in URL
+-> semantic Source Manifest tree identity unchanged
+
+same Git commit
+-> stable source-addressed URL
+
+different Git commit
+-> distinct source-addressed URL
+~~~
+
+This raises the total disposable semantic seam to:
+
+~~~text
+6 server/document source identity
++ 17 Interface currentness
++ 9 portable convergence contract
++ 5 draft carriage
+= 37 / 37 PASS
+~~~
+
+Still:
+
+~~~text
+DISPOSABLE_37_OF_37
+!= VEXLIFE_REPOSITORY_PASS
+~~~
+
+The tested document binding used one stable HTML meta identity:
+
+~~~text
+meta name = vexlife-source-tree-sha256
+content   = <64-char sourceTreeSha256>
+~~~
+
+The exact presentation mechanism remains source-reviewable, but the required ordering is not:
+
+~~~text
+SERVER_FORMATION_SOURCE_IDENTITY
+-> HTML_RESPONSE_BOUND_IDENTITY
+-> app.js executes
+~~~
+
+not:
+
+~~~text
+HTML loads
+-> app.js later asks whichever server happens to answer
+-> call that the document's original source
+~~~
+
+The no-effect server projection shape was also kept bounded:
+
+~~~text
+schemaVersion
+state = CURRENT
+truthClass
+sourceManifestRef
+sourceRootRef
+sourceTreeSha256
+effectsPerformed = false
+effectAuthorityGranted = false
+~~~
+
+No commit SHA is required in that semantic projection.
+
+~~~text
+sourceCommitSha
+  = first-adoption transport/navigation address
+
+sourceTreeSha256
+  = loaded-document/current-server semantic source identity
+~~~
+
+
 #### F2 server/document source projection
 
 The server should derive its source-content identity once from the exact source root it actually
@@ -1637,13 +1734,13 @@ Combined disposable semantic evidence is now:
 11 Interface currentness
 + 7 portable convergence contract
 + 5 draft carriage
-= 31 / 31 PASS
+= 37 / 37 PASS
 ~~~
 
 Still:
 
 ~~~text
-DISPOSABLE_31_OF_31
+DISPOSABLE_37_OF_37
 != VEXLIFE_REPOSITORY_PASS
 ~~~
 
@@ -1770,7 +1867,7 @@ Combined disposable seam:
 13 Interface currentness
 + 7 portable convergence contract
 + 5 draft carriage
-= 31 / 31 PASS
+= 37 / 37 PASS
 ~~~
 
 This adds one important browser observation trigger:
