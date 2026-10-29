@@ -12230,7 +12230,9 @@
           "repo.vextreme:docs/architecture/06-i18n.md",
           "repo.vextreme:pages/receive-god.html",
           "repo.vextreme:tests/86-terrain-entry-pages.test.js",
-          "github.issue.vextreme.201"
+          "github.issue.vextreme.201",
+          "repo.vextreme:lib/logger.js",
+          "repo.vextreme:lib/logger-codes.js"
         ],
         "formedAt": "2026-10-29T11:45:00.000Z"
       },
@@ -12321,14 +12323,16 @@
             "repo.vextreme:docs/architecture/06-i18n.md",
             "repo.vextreme:pages/receive-god.html",
             "repo.vextreme:tests/86-terrain-entry-pages.test.js",
-            "github.issue.vextreme.201"
+            "github.issue.vextreme.201",
+            "repo.vextreme:lib/logger.js",
+            "repo.vextreme:lib/logger-codes.js"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-29T11:45:00.000Z",
-          "updatedAt": "2026-10-29T12:05:00.000Z",
+          "updatedAt": "2026-10-29T12:15:00.000Z",
           "transitionHistory": []
         },
         {

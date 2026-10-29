@@ -604,6 +604,70 @@ candidate Control name
 This prevents the refactor from converting every click target into architecture vocabulary. The current
 source can keep ordinary UI labels while the semantic boundary becomes clearer underneath.
 
+## Instrumentation seam — observe accepted Journey facts, do not create another behavior owner
+
+Current Vextreme already separates several diagnostic questions:
+
+~~~text
+lib/logger.js + lib/logger-codes.js
+  build/system diagnostic events
+
+lib/vextreme-index-v2.js local structured logger
+  Arc runtime fetch/parse/render-mode failures
+
+Terrain Journey
+  user/product semantic path facts
+~~~
+
+The Terrain Journey path already records the causal data needed for meaningful navigation inspection:
+
+~~~text
+pages/terrain-map.html historyEntry(details)
+  label
+  nodeId
+  fromNodeId
+  relationship
+  reason
+  world
+  level
+        |
+        v
+lib/terrain-journey.js normalizeEntry()
+  preserves relationship + reason in the serializable Journey entry
+        |
+        v
+Journey drawer
+  currently renders relationship + fromNodeId
+  reason is retained but not currently shown
+~~~
+
+This is the PR #193 instrumentation law applied to current Vextreme source:
+
+~~~text
+RIGHTFUL OWNER DECIDES
+  Terrain semantic relationship is committed
+
+-> ACCEPTED FACT IS STORED
+  Journey entry carries relationship / reason
+
+-> INSTRUMENTATION / UI MAY PROJECT IT
+  drawer, debug view, proof, analytics adapter
+
+INSTRUMENTATION
+!= second route resolver
+!= second Journey state
+!= authority to reinterpret the relationship
+~~~
+
+Therefore no generic navigation logger, event bus, or telemetry Family is earned by the current seam.
+If later lived use benefits from showing more of the architectural 'bones', the smallest candidate is to
+project the already-stored Journey `reason` in a human-readable inspection surface rather than creating
+a parallel event stream.
+
+Name Ontology applies here too: `logger`, `event`, `debug`, and implementation callback names are not
+semantic Family or Control identities. The semantic noun remains the truthful domain object — currently
+Terrain Journey — while diagnostic transports remain projections.
+
 ## Receive God localization seam — route to the existing owner
 
 The original lived observation also exposed a second seam: **Receive God does not currently have a real
