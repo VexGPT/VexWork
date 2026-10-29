@@ -167,6 +167,23 @@ test('ThemeMode patient-zero board projects one typed Family language across fou
   assert.ok(graph.sourceRefs.includes('github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b'));
   assert.ok(graph.sourceRefs.some((sourceRef) => sourceRef.includes('VexFamilyHighConfidenceTest.kt')));
 });
+test('ThemeMode Kotlin drawer maps the same typed Family model to implementation and test code', () => {
+  assert.equal(themeModeBoard.familyKotlin.schemaVersion, 'vexboard.family-kotlin/poc-v1');
+  assert.equal(
+    themeModeBoard.familyKotlin.testSourceRef,
+    'repo.vexlife-android:architecture/behavior/src/test/kotlin/com/vextreme/vexlife/android/behavior/VexFamilyHighConfidenceTest.kt',
+  );
+  assert.match(page, /vexboard-family-kotlin-construction\.mjs/);
+  assert.match(page, /drawerButton\('Kotlin','KOTLIN'\)/);
+  assert.match(page, /FamilyKotlin\.normalizeFamilyKotlinModel/);
+  assert.match(page, /FamilyKotlin\.compileFamilyKotlin/);
+  assert.match(page, /FamilyKotlin\.rebindControlResource/);
+  assert.match(page, /Generated Family Kotlin/);
+  assert.match(page, /Mapped Kotlin test language/);
+  assert.match(page, /external effects performed/);
+  assert.match(page, /Request edit → draft copy to change the typed binding/);
+});
+
 test('built-in and patient-zero source boards preserve separate catalog ownership and canonical identity', () => {
   for (const source of [selfMap, publishMap, systemAnatomy, intentTopology, themeModeBoard]) {
     assert.equal(source.schemaVersion, Reader.VEXBOARD_DRAFT_SCHEMA);
