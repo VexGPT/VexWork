@@ -12,6 +12,7 @@ import {
 const page = fs.readFileSync(new URL('../vexboard/index.html', import.meta.url), 'utf8');
 const selfMap = JSON.parse(fs.readFileSync(new URL('../vexboard/self-map.json', import.meta.url), 'utf8'));
 const architectureMap = JSON.parse(fs.readFileSync(new URL('../vexboard/architecture-map.json', import.meta.url), 'utf8'));
+const familyCircuitArchitecture = JSON.parse(fs.readFileSync(new URL('../vexboard/family-circuit-architecture.json', import.meta.url), 'utf8'));
 const publishMap = JSON.parse(fs.readFileSync(new URL('../vexboard/publish-map.json', import.meta.url), 'utf8'));
 const prototypeDemo = JSON.parse(fs.readFileSync(new URL('../vexboard/prototype-demo.json', import.meta.url), 'utf8'));
 const prototypeDefinition = JSON.parse(fs.readFileSync(new URL('../vexboard/prototype-demo.prototype.json', import.meta.url), 'utf8'));
@@ -57,7 +58,8 @@ function browserBootModuleClosure() {
 test('VexBoard Pages entry exposes create/open/read-only/fork/save-draft workflow', () => {
   assert.match(page, /Create new/);
   assert.match(page, /Open VexBoard self-map/);
-  assert.match(page, /Open VexBoard architecture/);
+  assert.match(page, /Open VexBoard projection architecture/);
+  assert.match(page, /Open Family Circuit Architecture/);
   assert.match(page, /Open prototype demo/);
   assert.match(page, /Source examples/);
   assert.match(page, /Open system anatomy example/);
@@ -323,8 +325,36 @@ test('VexBoard self-applies the convergence language as one flat architecture bo
   assert.ok(graph.sourceRefs.includes('github.pull.vexwork.178'));
 });
 
+test('Family Circuit board projects accepted Android architecture language without becoming its source owner', () => {
+  assert.equal(architectureMap.title, 'VexBoard · projection substrate architecture');
+  assert.equal(familyCircuitArchitecture.title, 'VexArchitecture · Family Circuit Architecture');
+  assert.equal(familyCircuitArchitecture.mode, 'READ_ONLY_SOURCE');
+  const graph = normalizeBoardGraph(familyCircuitArchitecture.graph);
+  normalizeBoardProjection(familyCircuitArchitecture.projection, graph);
+  const labels = new Set(graph.nodes.map((node) => node.label));
+  for (const label of [
+    'VexFamily<Family, State, Control>',
+    'State : VexFamily.State<Family>',
+    'Control : VexFamily.Control<Family>',
+    'Family.activate(control)',
+    'act(currentState, control)',
+    'noAct() | stay() | admit(State)',
+    'Control.Resource<Family, ExactId>',
+    'ExactId : ResourceId<Family>',
+    'VexFamily.RelationshipId<Family>',
+    'VexExecution.RelationshipId',
+    'Approach · Independent | Earliest | Latest | Queued',
+    'InstanceId · exact runtime occurrence',
+    'NEXT CONSUMER · Feature Walk → Journey → VexLogger → ScreenCrawler evidence',
+  ]) assert.ok(labels.has(label), `missing Family Circuit label ${label}`);
+
+  assert.ok(graph.sourceRefs.includes('github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523'));
+  assert.ok(graph.sourceRefs.includes('repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md'));
+  assert.equal(graph.sourceRefs.includes('github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b'), false);
+});
+
 test('built-in and patient-zero source boards preserve separate catalog ownership and canonical identity', () => {
-  for (const source of [selfMap, architectureMap, publishMap, systemAnatomy, intentTopology, themeModeBoard]) {
+  for (const source of [selfMap, architectureMap, familyCircuitArchitecture, publishMap, systemAnatomy, intentTopology, themeModeBoard]) {
     assert.equal(source.schemaVersion, Reader.VEXBOARD_DRAFT_SCHEMA);
     assert.equal(source.mode, 'READ_ONLY_SOURCE');
     const graph = normalizeBoardGraph(source.graph);
@@ -341,6 +371,7 @@ test('built-in and patient-zero source boards preserve separate catalog ownershi
 
   assert.equal(Reader.builtinBoardUrl('board.vexboard.self-map'), './self-map.json');
   assert.equal(Reader.builtinBoardUrl('board.vexboard.architecture-convergence'), './architecture-map.json');
+  assert.equal(Reader.builtinBoardUrl('board.vexarchitecture.family-circuit.accepted'), './family-circuit-architecture.json');
   assert.equal(Reader.builtinBoardUrl('board.vexboard.publish'), './publish-map.json');
   assert.equal(Reader.builtinBoardUrl('board.vexboard.prototype-demo'), './prototype-demo.json');
   assert.equal(Reader.builtinBoardUrl('board.vexbusinessfactory.system-anatomy.patient-zero'), null);
