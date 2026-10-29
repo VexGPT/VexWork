@@ -5018,5 +5018,56 @@ lived Pages recovery
 Do not infer the exact original browser exception until lived/deployed evidence exposes it. The repair is
 a bounded fail-soft architecture correction that protects the VexBoard root from one optional child capability.
 
+### First self-application candidate — flat VexBoard architecture
+
+The recovery branch now carries one VexBoard-owned self-application board:
+
+~~~text
+board.vexboard.architecture-convergence
+
+STATE
+  BoardGraph
+  BoardProjection
+
+CONTROL / ACT
+  BoardControl
+  -> applyBoardAct
+  -> next Graph / Projection State
+
+TYPED IDENTITY / RELATIONSHIP
+  nodeRef
+  relationshipRef
+  projectionItemRef
+  BoardGraph.relationships (fromRef -> toRef)
+
+EXECUTION
+  controlFor
+  -> expected State fingerprints
+  -> applyBoardControl
+  -> applyBoardAct
+
+effect boundary
+  browser-local draft effects only
+  source/provider writes = none
+~~~
+
+This is deliberately a projection of existing VexBoard-owned source through the architecture roles that
+VexSync pressure made easier to see. It does **not** rename BoardGraph into a Family, retrofit a Kotlin
+generic ResourceId type into JavaScript, or make Android the semantic owner of VexBoard. The typed-resource
+lesson is applied at VexBoard's actual boundary: stable refs have explicit roles and labels remain
+presentation rather than identity.
+
+The board is a separate built-in from the existing "how to begin" self-map so onboarding/navigation and
+architecture explanation do not become one overloaded artifact. The first self-application stays flat;
+depth-dimensional behavior still waits for lived readability pressure.
+
+Source-static regression coverage now requires:
+- the built-in board to normalize under the existing BoardGraph/BoardProjection contract;
+- the four regions to remain explicit;
+- Control -> Act and execution relationships to remain visible;
+- the browser-local no-source-write boundary to remain explicit.
+
+Lived browser proof remains pending until this candidate is deployed.
+
 <!-- [VXG RealForever][VEXBOARD][VEXSYNC-CONVERGENCE][FOUNDATION-BASELINE] -->
 

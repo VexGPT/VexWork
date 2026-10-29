@@ -72,6 +72,7 @@ export const VEXBOARD_SELF_MAP_URL = './self-map.json';
 export const VEXBOARD_DRAFT_STORAGE_KEY = 'vexboard.local-drafts/v1';
 export const VEXBOARD_BUILTIN_BOARD_URLS = Object.freeze({
   'board.vexboard.self-map': './self-map.json',
+  'board.vexboard.architecture-convergence': './architecture-map.json',
   'board.vexboard.publish': './publish-map.json',
   'board.vexboard.prototype-demo': './prototype-demo.json',
 });

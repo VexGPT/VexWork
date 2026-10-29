@@ -11,6 +11,7 @@ import {
 
 const page = fs.readFileSync(new URL('../vexboard/index.html', import.meta.url), 'utf8');
 const selfMap = JSON.parse(fs.readFileSync(new URL('../vexboard/self-map.json', import.meta.url), 'utf8'));
+const architectureMap = JSON.parse(fs.readFileSync(new URL('../vexboard/architecture-map.json', import.meta.url), 'utf8'));
 const publishMap = JSON.parse(fs.readFileSync(new URL('../vexboard/publish-map.json', import.meta.url), 'utf8'));
 const prototypeDemo = JSON.parse(fs.readFileSync(new URL('../vexboard/prototype-demo.json', import.meta.url), 'utf8'));
 const prototypeDefinition = JSON.parse(fs.readFileSync(new URL('../vexboard/prototype-demo.prototype.json', import.meta.url), 'utf8'));
@@ -22,6 +23,7 @@ const themeModeBoard = JSON.parse(fs.readFileSync(new URL('../projects/vexboard/
 test('VexBoard Pages entry exposes create/open/read-only/fork/save-draft workflow', () => {
   assert.match(page, /Create new/);
   assert.match(page, /Open VexBoard self-map/);
+  assert.match(page, /Open VexBoard architecture/);
   assert.match(page, /Open prototype demo/);
   assert.match(page, /Source examples/);
   assert.match(page, /Open system anatomy example/);
@@ -201,8 +203,68 @@ test('ThemeMode Kotlin drawer maps the same typed Family model to implementation
   assert.match(page, /Request edit → draft copy to change the typed binding/);
 });
 
+test('VexBoard self-applies the convergence language as one flat architecture board', () => {
+  assert.equal(architectureMap.schemaVersion, Reader.VEXBOARD_DRAFT_SCHEMA);
+  assert.equal(architectureMap.mode, 'READ_ONLY_SOURCE');
+  assert.equal(architectureMap.draftRef, 'board.vexboard.architecture-convergence');
+
+  const graph = normalizeBoardGraph(architectureMap.graph);
+  const projection = normalizeBoardProjection(architectureMap.projection, graph);
+  const regions = graph.nodes
+    .filter((node) => node.kind === 'CONTAINER' && node.nodeRef.startsWith('region.vexboard.'))
+    .map((node) => node.label)
+    .sort();
+
+  assert.deepEqual(
+    regions,
+    ['CONTROL / ACT', 'EXECUTION', 'STATE', 'TYPED IDENTITY / RELATIONSHIP'].sort(),
+  );
+  assert.ok(graph.nodes.some((node) =>
+    node.nodeRef === 'reference.vexboard.graph' &&
+    node.label === 'BoardGraph · semantic State'
+  ));
+  assert.ok(graph.nodes.some((node) =>
+    node.nodeRef === 'control.vexboard.board-control' &&
+    node.label.includes('BoardControl')
+  ));
+  assert.ok(graph.nodes.some((node) =>
+    node.nodeRef === 'process.vexboard.act' &&
+    node.label.includes('CURRENT State + Control → next State')
+  ));
+  assert.ok(graph.nodes.some((node) =>
+    node.nodeRef === 'reference.vexboard.node-ref' &&
+    node.label.includes('resource identity')
+  ));
+  assert.ok(graph.nodes.some((node) =>
+    node.nodeRef === 'process.vexboard.relationship' &&
+    node.label.includes('fromRef → toRef')
+  ));
+  assert.ok(graph.nodes.some((node) =>
+    node.nodeRef === 'process.vexboard.apply-control' &&
+    node.label.includes('validate currentness then execute Act')
+  ));
+  assert.ok(graph.nodes.some((node) =>
+    node.nodeRef === 'annotation.vexboard.effect-boundary' &&
+    node.label.includes('source/provider writes = none')
+  ));
+  assert.ok(graph.relationships.some((relationship) =>
+    relationship.relationshipRef === 'rel.vexboard.control-act' &&
+    relationship.labelOrNull === 'SELECTS'
+  ));
+  assert.ok(graph.relationships.some((relationship) =>
+    relationship.relationshipRef === 'rel.vexboard.apply-act' &&
+    relationship.labelOrNull === 'EXECUTES'
+  ));
+
+  const frameItems = projection.items.filter((item) => item.shapeKind === 'FRAME');
+  assert.equal(frameItems.length, 4);
+  assert.ok(frameItems.every((item) => item.locked === true));
+  assert.ok(graph.sourceRefs.includes('github.pull.vexwork.184'));
+  assert.ok(graph.sourceRefs.includes('github.pull.vexwork.178'));
+});
+
 test('built-in and patient-zero source boards preserve separate catalog ownership and canonical identity', () => {
-  for (const source of [selfMap, publishMap, systemAnatomy, intentTopology, themeModeBoard]) {
+  for (const source of [selfMap, architectureMap, publishMap, systemAnatomy, intentTopology, themeModeBoard]) {
     assert.equal(source.schemaVersion, Reader.VEXBOARD_DRAFT_SCHEMA);
     assert.equal(source.mode, 'READ_ONLY_SOURCE');
     const graph = normalizeBoardGraph(source.graph);
@@ -218,6 +280,7 @@ test('built-in and patient-zero source boards preserve separate catalog ownershi
   assert.ok(selfGraph.nodes.some((node) => node.detailBoardRefOrNull === 'board.vexboard.publish'));
 
   assert.equal(Reader.builtinBoardUrl('board.vexboard.self-map'), './self-map.json');
+  assert.equal(Reader.builtinBoardUrl('board.vexboard.architecture-convergence'), './architecture-map.json');
   assert.equal(Reader.builtinBoardUrl('board.vexboard.publish'), './publish-map.json');
   assert.equal(Reader.builtinBoardUrl('board.vexboard.prototype-demo'), './prototype-demo.json');
   assert.equal(Reader.builtinBoardUrl('board.vexbusinessfactory.system-anatomy.patient-zero'), null);
