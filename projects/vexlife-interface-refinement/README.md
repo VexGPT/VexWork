@@ -1122,6 +1122,191 @@ F2 proof obligations should include:
 12. accepted VexCompoundState is imported/reused rather than reimplemented
 ~~~
 
+### F3 — prove only the human seam that is still missing
+
+Do not make Victor replay every subsystem proof.
+
+Current accepted deterministic/browser evidence already proves important pieces:
+
+~~~text
+browser-companion-recovery-presentation
+  RECOVERABLE visible truth
+  -> exact recovery binding
+  -> no Companion turn during recovery
+  -> unsent draft preserved
+  -> availability becomes READY
+  -> recovery control disappears
+  -> Send re-enables
+  -> desktop + compact
+
+macos-open-vex-companion-readiness
+  lifecycle completion waits for canonical Companion READY
+
+macos-browser-companion-binding-reuse
+  current-source browser reuse requires exact qualified Companion binding
+  recoverable start forces browser-server rebind
+
+macos-human-setup
+  exact-source ordinary front door
+  browser opens only after start-class completion
+  prior-source browser is reconciled through current trusted lifecycle
+~~~
+
+So the new proof question is not:
+
+> "Does recovery work?"
+
+It is:
+
+> **"After recovery/update happens outside the loaded document, does the ordinary visible document
+> observe the new relationship and continue truthfully?"**
+
+#### F3A — deterministic existing-document recovery seam
+
+A browser test should hold one real document open while the externally supplied observations change:
+
+~~~text
+document source A
+server source A
+Companion RECOVERABLE
+Conversation CURRENT
+draft = "…"
+        |
+        | external recovery completes
+        v
+same document remains alive
+server source still A
+Companion becomes READY
+        |
+        | focus/pageshow/visible re-observation
+        v
+Interface Compound READY
+draft unchanged
+Send enabled
+no reload required
+~~~
+
+This is the direct regression for the lived contradiction.
+
+The test should also prove an older delayed observation cannot make the recovered document unavailable
+again after a newer READY generation was admitted.
+
+#### F3B — deterministic source-update seam
+
+A separate deterministic case should prove:
+
+~~~text
+loaded document source A
+current server source B
+draft exists
+        |
+        v
+SOURCE_MISMATCH
+        |
+        v
+draft carriage
+browser-owned current-document load
+        |
+        v
+loaded document source B
+current server source B
+Companion CURRENT/READY
+Conversation CURRENT
+        |
+        v
+READY
+restored draft
+~~~
+
+This proves the source relationship without needing to manufacture a real public release merely to
+exercise A != B.
+
+#### F3C — one ordinary lived human journey
+
+Once F0/F1/F2 source is accepted/current, the human proof should be deliberately small:
+
+~~~text
+1. leave an existing Conversation open
+2. type one unsent draft
+3. run the ordinary documented setup/recovery front door
+4. return to the Conversation
+5. observe:
+     draft still present
+     visible interface converges to READY
+6. press Send once
+7. observe one real Heretic reply
+8. re-enter and confirm the canonical Conversation head remains current
+~~~
+
+The setup command is the same ordinary front door Victor already used to expose the defect; no
+special proof harness should replace it.
+
+The human should **not** be asked to inspect hashes, APIs, process tables, browser devtools, receipts
+or source paths. Those belong to automated/source-owner proof.
+
+#### F3D — real source-update lived proof when naturally available
+
+Do not manufacture a fake release just to create a second human ceremony.
+
+When a real later accepted source revision naturally gives:
+
+~~~text
+loaded source A
+-> ordinary setup chooses accepted source B
+~~~
+
+reuse that event to prove the lived SOURCE_MISMATCH/current-document path.
+
+Until then:
+
+~~~text
+deterministic A != B source proof
++ lived same-source external recovery proof
+!= lived source-update proof
+~~~
+
+Keep those claims separate.
+
+#### First-adoption boundary
+
+A source-addressed Open Vex URL is a reasonable migration candidate for ensuring the first F2
+installation requests current source rather than presenting the exact old human URL again.
+
+But browser behavior is still environmental:
+
+~~~text
+SOURCE_ADDRESSED_OPEN_REQUEST
+!= PROVEN_EXISTING_TAB_NAVIGATION
+!= PROVEN_NEW_TAB_BEHAVIOR
+~~~
+
+So F3 must observe what the real default browser actually does. Do not promote URL-shape reasoning
+into lived proof.
+
+Likewise, a pre-F2 document that kept a draft only in RAM cannot retroactively export that draft to
+new code. The first-adoption proof must report that boundary truthfully rather than claim impossible
+recovery.
+
+#### Completion meaning
+
+Interface Compound Relay is complete only when:
+
+~~~text
+portable relationship foundation = accepted/current
+State Relay Compound discoverability = current
+browser/server/document observation = current
+existing Send/recovery owners = reused
+stale async completion = rejected
+ordinary external recovery existing-document path = lived PASS
+one real Heretic turn = lived PASS
+canonical Conversation re-entry = lived PASS
+~~~
+
+Then the project may truthfully say:
+
+> **Ordinary Open Vex converges from current source/runtime/Conversation truth into a usable visible
+> relationship, instead of inheriting READY from one subsystem.**
+
 ### Foundation-to-interface sequence
 
 ~~~text
