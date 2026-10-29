@@ -458,7 +458,10 @@
       "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery",
       "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt",
       "repo.vexlife-android:architecture/behavior/src/test/kotlin/com/vextreme/vexlife/android/behavior/VexFamilyHighConfidenceTest.kt",
-      "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt"
+      "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt",
+      "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/debug/DebugMenuScreen.kt",
+      "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt",
+      "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/runtime/AppActions.kt"
     ]
   },
   "projection": {
@@ -804,6 +807,93 @@
       "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
       "projects/vexsync-debugmenu-blueprints/README.md",
       "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+      "repo.vexlife-android:architecture/behavior/src/test/kotlin/com/vextreme/vexlife/android/behavior/VexFamilyHighConfidenceTest.kt"
+    ]
+  },
+  "familyKotlin": {
+    "schemaVersion": "vexboard.family-kotlin/poc-v1",
+    "modelRef": "model.vexlife.family.typed-identity.patient-zero",
+    "targetSourceRefOrNull": null,
+    "testSourceRef": "repo.vexlife-android:architecture/behavior/src/test/kotlin/com/vextreme/vexlife/android/behavior/VexFamilyHighConfidenceTest.kt",
+    "families": [
+      {
+        "familyRef": "family.resource-identity",
+        "familyName": "ResourceIdentityFamily",
+        "controlForm": "SEALED",
+        "states": [
+          "Idle"
+        ],
+        "resources": [
+          {
+            "resourceRef": "resource.track-id",
+            "name": "TrackId",
+            "valueField": {
+              "name": "value",
+              "type": "String"
+            }
+          },
+          {
+            "resourceRef": "resource.account-id",
+            "name": "AccountId",
+            "valueField": {
+              "name": "value",
+              "type": "String"
+            }
+          }
+        ],
+        "controls": [
+          {
+            "controlRef": "control.play",
+            "name": "Play",
+            "resourceIdRefOrNull": "resource.track-id",
+            "payloadFields": [
+              {
+                "name": "position",
+                "type": "Int"
+              }
+            ]
+          },
+          {
+            "controlRef": "control.search",
+            "name": "Search",
+            "resourceIdRefOrNull": null,
+            "payloadFields": [
+              {
+                "name": "query",
+                "type": "String"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "familyRef": "family.enum-control",
+        "familyName": "EnumControlFamily",
+        "controlForm": "ENUM",
+        "states": [
+          "Idle"
+        ],
+        "resources": [],
+        "controls": [
+          {
+            "controlRef": "control.enum.play",
+            "name": "Play",
+            "resourceIdRefOrNull": null,
+            "payloadFields": []
+          },
+          {
+            "controlRef": "control.enum.pause",
+            "name": "Pause",
+            "resourceIdRefOrNull": null,
+            "payloadFields": []
+          }
+        ]
+      }
+    ],
+    "sourceRefs": [
+      "github.pull.vexlife-android.193",
+      "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
+      "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt",
       "repo.vexlife-android:architecture/behavior/src/test/kotlin/com/vextreme/vexlife/android/behavior/VexFamilyHighConfidenceTest.kt"
     ]
   }
