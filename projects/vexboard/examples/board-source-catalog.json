@@ -70,7 +70,10 @@
         "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery",
         "projects/vexboard/examples/vexlife-debug-menu-theme-mode.board.json",
         "projects/vexsync-debugmenu-blueprints/README.md",
-        "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md"
+        "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+        "github.pull.vexlife-android.193",
+        "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
+        "repo.vexlife-android:architecture/behavior/src/test/kotlin/com/vextreme/vexlife/android/behavior/VexFamilyHighConfidenceTest.kt"
       ]
     }
   ],
