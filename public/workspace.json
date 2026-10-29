@@ -12250,6 +12250,7 @@
           "parentWorkRefOrNull": null,
           "childWorkRefs": [
             "work.vextreme.architecture-convergence.semantic-owner-map",
+            "work.vextreme.architecture-convergence.terrain-active-surface-context",
             "work.vextreme.architecture-convergence.terrain-journey-inspection",
             "work.vextreme.architecture-convergence.terrain-reader-navigation",
             "work.vextreme.architecture-convergence.terrain-reader-return-context",
@@ -12338,6 +12339,37 @@
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-29T11:45:00.000Z",
           "updatedAt": "2026-10-29T14:30:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "schemaVersion": "vexwork.work-item/v1",
+          "workRef": "work.vextreme.architecture-convergence.terrain-active-surface-context",
+          "parentWorkRefOrNull": "work.vextreme.architecture-convergence.outcome",
+          "label": "Consolidate Terrain active embedded-surface ownership",
+          "purpose": "Prevent impossible or stale Terrain embedded-reader surface state by giving the mutually exclusive activeReaderId / activeEntrySlug / activeGroupHomeKey compatibility coordinates one bounded mutation owner, while preserving current browser realization and keeping active-surface identity separate from reader return-context identity.",
+          "workClass": "DEFECT",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "projects/vextreme-architecture-convergence/README.md",
+            "github.pull.vextreme.503",
+            "github.commit.vextreme.87571924f769fe4a1dad1084e2f68775f18d37b1",
+            "repo.vextreme:pages/terrain-map.html",
+            "repo.vextreme:tests/45-terrain-journey.test.js",
+            "github.pull.vexlife-android.193"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-29T14:34:00.000Z",
+          "updatedAt": "2026-10-29T14:34:00.000Z",
+          "childWorkRefs": [],
           "transitionHistory": []
         },
         {
@@ -12598,7 +12630,8 @@
           "label": "Active",
           "workRefs": [
             "work.vextreme.architecture-convergence.outcome",
-            "work.vextreme.architecture-convergence.semantic-owner-map"
+            "work.vextreme.architecture-convergence.semantic-owner-map",
+            "work.vextreme.architecture-convergence.terrain-active-surface-context"
           ]
         },
         {
@@ -12639,11 +12672,11 @@
         }
       ],
       "summary": {
-        "workItemCount": 6,
-        "openWorkItemCount": 4,
+        "workItemCount": 7,
+        "openWorkItemCount": 5,
         "outcomeCount": 1,
         "taskCount": 5,
-        "defectCount": 0,
+        "defectCount": 1,
         "potentialCount": 0,
         "needsHumanCount": 0,
         "completedCount": 2
@@ -12660,6 +12693,7 @@
           "parentWorkRefOrNull": null,
           "childWorkRefs": [
             "work.vextreme.architecture-convergence.semantic-owner-map",
+            "work.vextreme.architecture-convergence.terrain-active-surface-context",
             "work.vextreme.architecture-convergence.terrain-journey-inspection",
             "work.vextreme.architecture-convergence.terrain-reader-navigation",
             "work.vextreme.architecture-convergence.terrain-reader-return-context",
