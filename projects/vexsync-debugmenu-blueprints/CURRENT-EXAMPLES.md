@@ -6071,3 +6071,68 @@ production path enters ThemeModeFamily, the Feature Walk can truthfully expose f
 and admit exactly one dedicated Journey.
 
 <!-- [VXG RealForever][VEXSYNC][THEME-MODE][FEATURE-WALK][PR195-PROVED-CLEAR] -->
+
+
+---
+
+## Direct Family post-#193 hardening
+
+Accepted origin foundation:
+
+https://github.com/vgong24/VexLife-Android/pull/193
+
+Bounded follow-up:
+
+https://github.com/vgong24/VexLife-Android/pull/196
+
+A fresh-instance review of the merged #193 tree recovered the intended architecture correctly:
+
+~~~text
+Family
+  owns State + Control meaning
+  owns maintained relationship identity
+
+Execution
+  owns runtime occurrence / custody / overlap mechanics
+
+feature/session owners
+  retain provider/currentness/lifetime meaning
+~~~
+
+The review also found one real violation of that ownership law: structured `VexLogger.Sink` failure
+could currently escape upward and affect Family semantics.
+
+PR #196 keeps the #193 model and corrects only the earned hardening surface:
+
+~~~text
+accepted Family fact
+-> best-effort structured Logger projection
+
+logger failure
+!= Control rejection
+!= State rollback/suppression
+!= Store failure
+!= authored failure result
+~~~
+
+It also:
+- documents stable equality/hash requirements for a live `ResourceId`;
+- currentizes #193 proof/maturity prose;
+- makes Direct `VexFamily` vs still-live `VexBehaviorFamily` / SCAE coexistence explicit for fresh workers;
+- preserves the current decisions on terminal InstanceId retention, logging-module layering, SourceRef scope,
+  and consumer-driven Behavior migration.
+
+Historical Origin-Walk PR #192 remains open for pressure/history, but its stale machine claim is now
+coordination-only/non-mutating so it no longer competes with the accepted #193 baseline or #196.
+
+PR #196 SourceOwner A001 host formation is statically qualified:
+
+~~~text
+head  b25a291d4b464f35fae67d3b45244704846cae63
+tree  88f2d53c27e509ad2db0dc6d8dc00a4f475a0b8d
+paths 7 exact
+wrapper sha256
+722a255769ac013ce227ccc56a55195a3fd5efcecf02be60825c16df8b39823f
+~~~
+
+<!-- [VXG RealForever][VEXSYNC][DIRECT-FAMILY][POST-193-HARDENING][PR196] -->
