@@ -314,6 +314,40 @@
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-29T15:55:00.000Z",
       "updatedAt": "2026-10-29T16:37:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexsync.debugmenu-blueprints.family-compound-control-binding",
+      "parentWorkRefOrNull": "work.vexsync.debugmenu-blueprints.outcome",
+      "label": "Bind Compound output through target Family Control",
+      "purpose": "Resolve the old Direct Family Origin-Walk Process OutputState -> ??? -> Family.currentState question using only already-earned foundation language. Compound/Process remains the relationship owner; when its Output means another Family should act, feature composition forms that Family's own typed Control and calls Family.activate(Control), which re-reads CURRENT State and owns stay/admit/begin. The resulting Family truth returns as fresh Compound input. Prove this cross-root loop without adding a direct State bridge, public setter, CompoundFamily, post-process Act framework, or new relationship vocabulary.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexsync.debugmenu-blueprints.direct-family-post193-hardening"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "github.pull.vexlife-android.193",
+        "github.pull.vexlife-android.196",
+        "github.pull.vexlife-android.197",
+        "github.commit.vexlife-android.da626887d7779c0e73f0caa81080a20971e2b1bf",
+        "github.comment.vexlife-android.pr193.6501858487.origin-question-pr197",
+        "github.comment.vexlife-android.pr196.6501857206.follow-up-pr197"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+      "nextProcessRefs": [
+        "process.vexlife-android.feature-authoring"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-29T16:52:00.000Z",
+      "updatedAt": "2026-10-29T16:52:00.000Z"
     }
   ],
   "transitions": [
@@ -617,6 +651,21 @@
         "evidence.vexsync.pr196.sourceowner.a004.inner-return.sha256.43bbc8793923b07f9f6181e561cab8637f577ce7f76a326fff648b8ead2532ee"
       ],
       "createdAt": "2026-10-29T16:37:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.family-compound-control-binding.running.formed-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.family-compound-control-binding",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Re-reading the accepted #193 Origin-Walk foundation showed the old Process OutputState -> ??? -> Family.currentState note was a historical unresolved question, not a perpetual hold. Current Relay/Family source already earns the smaller composition law: relationship Output that asks another Family to act becomes that Family's typed Control; Family.activate(Control) re-resolves CURRENT State and the resulting Family truth returns as fresh Compound input. Android PR #197 proves that binding with no new production abstraction.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.193",
+        "github.pull.vexlife-android.197",
+        "github.commit.vexlife-android.da626887d7779c0e73f0caa81080a20971e2b1bf"
+      ],
+      "createdAt": "2026-10-29T16:52:00.000Z"
     }
   ],
   "sourceRefs": [
