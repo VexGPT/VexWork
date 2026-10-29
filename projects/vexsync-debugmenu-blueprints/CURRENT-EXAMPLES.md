@@ -2,61 +2,76 @@
 
 [VXG RealForever]
 
-## CURRENT ThemeMode example — exact-head SourceOwner + Assurance closure
+## CURRENT ThemeMode example — accepted production, Feature Walk active
+
+Production closure is now accepted source:
 
 ~~~text
-head  = 58d0be5f2f74bad40bb4deea7a697fa9f8e5d928
-tree  = ea817c7a9506f9c24d205e333d120c86a7761e41
-paths = 28 exact
+PR #188 merge/main = 7ac61612fb1fb30f26e7fd3794bd4382e905a0d7
+tree               = ea817c7a9506f9c24d205e333d120c86a7761e41
 ~~~
 
-The completed proof chain is now:
+That exact tree had already passed:
 
 ~~~text
 SourceOwner A008
-  focused ThemeMode / Session / Maps JVM    PASS
-  vexVerifyLocal                             PASS
-  assembleDebugAndroidTest                   PASS
-  exact review snapshot                      PASS
-  findings                                   0
+  focused ThemeMode / Session / Maps JVM   PASS
+  vexVerifyLocal                           PASS
+  assembleDebugAndroidTest                 PASS
+  exact review                             PASS
 
 Fresh Independent Assurance A002
-  exact remote branch/head/tree              PASS
-  exact 28-path candidate diff               PASS
-  findings                                   0
-
-semantic disposition
   CLEAR_ON_EXACT_HEAD
 ~~~
 
-This closes the implementation/proof question without collapsing later lifecycle authority:
+F14 then marked the exact head ready and merged it with no drift. Post-merge verification proved the
+actual merge tree equals the pre-merge synthetic composition.
+
+The current exemplar has therefore moved one level outward from implementation to completion
+traceability.
+
+PR #195 now models the same user outcome as ACTIVE rather than HELD:
 
 ~~~text
-CLEAR
-!= APPROVE
-!= READY
-!= MERGE
-!= RELEASE
+feature.vexlife.theme-mode/W01/C01
+
+Journey
+  shared.debug/toggle-theme-mode
+  -> real installed Debug Menu control
+
+focused backlink
+  VexLifeSessionTest
+  -> Debug action enters ThemeModeFamily
+
+focused backlink
+  ThemeModeTest
+  -> DisplayState owns VexThemePresentation
 ~~~
 
-The architectural example carried forward is still:
+This composition is preferred over adding a ThemeMode-specific Journey observation language:
 
 ~~~text
-Family decides outward condition
--> VexThemePresentation realizes that condition
--> VexLifeTheme connects once
--> Compose carries inherited presentation
--> leaf UI chooses placement / bounded use
+existing rightful human-path owner
++ existing rightful semantic proof owners
+-> one active Feature-Walk checkpoint
 ~~~
 
-No generic Screen receives `ThemeMode` or `darkTheme: Boolean`. Preview/render-test surfaces select
-explicit presentation; session/test fixtures explicitly own `VexExecutionRoot` rather than earning a
-hidden default owner.
+Current #195 candidate:
 
-The work item is now `VERIFYING`, not completed: source proof + semantic clearance are real, while the
-remaining lifecycle/integration effects are separately owned.
+~~~text
+base  = 7ac61612fb1fb30f26e7fd3794bd4382e905a0d7
+head  = a9aa48f77fa61351cab4d13a4aad0db15a1623f8
+tree  = 9a77311e95dbf85fb47297697dfcec4ae5fdbf29
+paths = 5 exact
 
-<!-- [VXG RealForever][VEXSYNC][CURRENT-EXAMPLE][THEMEMODE][PR188][ASSURANCE-CLEAR] -->
+SourceOwner A002 formation
+sha256 = c8c672415c05fd1f145d0114602712b4fa33779b62b27762ec11fe1de6be50b4
+~~~
+
+The work item remains `VERIFYING`: production is accepted, while exact-head proof of the active
+Feature-Walk/Journey source and any later connected-device Journey evidence remain unconsumed.
+
+<!-- [VXG RealForever][VEXSYNC][CURRENT-EXAMPLE][THEMEMODE][PR188-MERGED][PR195-ACTIVE] -->
 
 ## Status
 

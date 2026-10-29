@@ -2,19 +2,35 @@
 
 [VXG RealForever]
 
-## CURRENT ThemeMode production checkpoint — SourceOwner PASS + fresh Assurance CLEAR
+## CURRENT ThemeMode checkpoint — accepted production + active Feature-Walk Journey proof
 
-Current Android PR #188 exact candidate:
+The production ThemeMode realization is now accepted on Android `main`.
 
 ~~~text
-base   = 14bb2c4e82eb6cf55cbdc6ef5f2c65d38f97e45b
-head   = 58d0be5f2f74bad40bb4deea7a697fa9f8e5d928
-tree   = ea817c7a9506f9c24d205e333d120c86a7761e41
-paths  = 28 exact
-branch = VXG-102626-vexsync-theme-mode-android-a001
+PR #188 cleared head = 58d0be5f2f74bad40bb4deea7a697fa9f8e5d928
+PR #188 cleared tree = ea817c7a9506f9c24d205e333d120c86a7761e41
+merge/main           = 7ac61612fb1fb30f26e7fd3794bd4382e905a0d7
+main tree            = ea817c7a9506f9c24d205e333d120c86a7761e41
 ~~~
 
-Current UI law:
+The F14 merge was post-merge verified:
+
+~~~text
+actual merge parents
+  14bb2c4e82eb6cf55cbdc6ef5f2c65d38f97e45b
+  58d0be5f2f74bad40bb4deea7a697fa9f8e5d928
+
+actual merge tree
+  ea817c7a9506f9c24d205e333d120c86a7761e41
+
+pre-merge synthetic tree
+  ea817c7a9506f9c24d205e333d120c86a7761e41
+
+actual == synthetic
+  PASS
+~~~
+
+So the accepted production chain is no longer a candidate:
 
 ~~~text
 ThemeModeFamily current State
@@ -25,50 +41,59 @@ ThemeModeFamily current State
 -> bounded leaf consumers
 ~~~
 
-SourceOwner A008 is a full PASS on this exact head:
+The work remains `VERIFYING` because the next current edge is whole-human-path verification, not
+production implementation.
+
+PR #195 now carries that edge. Its old HELD checkpoint was currentized onto accepted main and released
+without creating another runtime or test framework.
 
 ~~~text
-focused ThemeMode / Session / Maps JVM   PASS
-repository vexVerifyLocal                PASS
-:app:assembleDebugAndroidTest            PASS
-exact head / tree / 28-path review       PASS
-candidate findings                       0
-harness findings                         0
-environment findings                     0
-unknown findings                         0
+PR #195
+base   = 7ac61612fb1fb30f26e7fd3794bd4382e905a0d7
+head   = a9aa48f77fa61351cab4d13a4aad0db15a1623f8
+tree   = 9a77311e95dbf85fb47297697dfcec4ae5fdbf29
+paths  = 5 exact
+branch = VXG-102926-vexsync-theme-mode-feature-walk-a001
 ~~~
 
-Fresh Independent Assurance A002 then formed and consumed an exact remote review snapshot of the same
-head/tree. Independent semantic review found no contradiction with the accepted Direct Family / ThemeMode
-presentation architecture and issued:
+Current verification composition:
 
 ~~~text
-CLEAR_ON_EXACT_HEAD
-head = 58d0be5f2f74bad40bb4deea7a697fa9f8e5d928
-tree = ea817c7a9506f9c24d205e333d120c86a7761e41
+Feature-Walk checkpoint
+-> shared.debug/toggle-theme-mode Journey
+   owns installed human interaction
+
+VexLifeSessionTest backlink
+-> registered Debug action enters ThemeModeFamily
+
+ThemeModeTest backlink
+-> ThemeModeFamily.DisplayState owns VexThemePresentation
 ~~~
 
-The Assurance stage grants no approval, ready transition, merge, release, or product/device effect.
-Those remain separate lifecycle authority.
+The structural Feature-Walk report still explicitly says
+`proofExecution=NOT_ASSERTED` and `journeyExecution=NOT_ASSERTED`; authoring the Journey does not
+invent a connected-device PASS.
 
-Current VexWork lifecycle for
-`work.vexsync.debugmenu-blueprints.debugmenu-origin-roundtrip` is therefore `VERIFYING`: source is
-proved and semantically clear; integration/lifecycle completion is not claimed.
-
-Assurance A001 is consumed pre-execution harness history: it failed manifest formation because host
-`REMOTE_REVIEW_SNAPSHOT` fallback was formed with `platformGitHubRead=AVAILABLE`. A002 corrected only
-that sealed Relay capability truth to `UNAVAILABLE`; the exact candidate did not change.
-
-Older SourceOwner recovery sections below are causal history and are not current execution coordinates,
-even where historical headings still contain the word CURRENT.
+Fresh SourceOwner A002 is the current execution coordinate:
 
 ~~~text
-route used for proof = VexRelay RUN_ROOT
-Local Workspace      = NOT USED
-GitHub Actions        = NOT USED
+formation sha256 = c8c672415c05fd1f145d0114602712b4fa33779b62b27762ec11fe1de6be50b4
+recipe           = ExactHeadSourceOwnerProof
+route            = VexRelay RUN_ROOT
+Local Workspace  = NOT USED
+GitHub Actions    = NOT USED
 ~~~
 
-<!-- [VXG RealForever][VEXSYNC][THEMEMODE][PR188][SOURCEOWNER-PASS][ASSURANCE-CLEAR][CURRENT] -->
+Requested exact-head proof:
+- focused `VexFeatureWalkContractTest`;
+- repository `vexVerifyJvm`;
+- `:app:assembleDebugAndroidTest`;
+- exact base/head/tree/five-path membrane + clean source;
+- exact-head review snapshot.
+
+The older PR #195 A001 SourceOwner/Assurance remain historical evidence for the prior HELD head only.
+
+<!-- [VXG RealForever][VEXSYNC][THEMEMODE][PR188-MERGED][PR195-SOURCEOWNER-A002][CURRENT] -->
 
 ## Human outcome
 

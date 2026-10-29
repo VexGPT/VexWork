@@ -67,7 +67,14 @@
     "evidence.vexsync.pr188.sourceowner.a008.inner-return.sha256.bcea26a4896f97405c6d8057d6a0e3ce973307a621ffcf9376808c1825c3e9e6",
     "github.comment.vexlife-android.pr188.6507499391.assurance-clear",
     "evidence.vexsync.pr188.assurance.a002.return.sha256.964d0063e4686ac622ff78d9d7b945088e87b2a76e4aaba7bc9f02e473e303aa",
-    "evidence.vexsync.pr188.assurance.a002.inner-return.sha256.6be1e12ab6097fb55e6940b2058a9fa71f4a816bdb2d6e71b394c7af1db9e147"
+    "evidence.vexsync.pr188.assurance.a002.inner-return.sha256.6be1e12ab6097fb55e6940b2058a9fa71f4a816bdb2d6e71b394c7af1db9e147",
+    "github.commit.vexlife-android.7ac61612fb1fb30f26e7fd3794bd4382e905a0d7",
+    "github.comment.vexlife-android.pr188.6507612431.f14-merged-post-merge-verified",
+    "github.pull.vexlife-android.195",
+    "github.commit.vexlife-android.5395d77f3028cc9300fa288971de10565a283c30",
+    "github.commit.vexlife-android.a9aa48f77fa61351cab4d13a4aad0db15a1623f8",
+    "github.comment.vexlife-android.pr195.6507769527.sourceowner-a002-formed",
+    "evidence.vexsync.pr195.sourceowner.a002.formation.sha256.c8c672415c05fd1f145d0114602712b4fa33779b62b27762ec11fe1de6be50b4"
   ],
   "formedAt": "2026-10-26T07:26:46.000Z"
 }
