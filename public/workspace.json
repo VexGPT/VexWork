@@ -12251,7 +12251,8 @@
           "childWorkRefs": [
             "work.vextreme.architecture-convergence.semantic-owner-map",
             "work.vextreme.architecture-convergence.terrain-journey-inspection",
-            "work.vextreme.architecture-convergence.terrain-reader-navigation"
+            "work.vextreme.architecture-convergence.terrain-reader-navigation",
+            "work.vextreme.architecture-convergence.terrain-reader-return-context"
           ],
           "dependencyRefs": [],
           "repositoryRefs": [
@@ -12436,6 +12437,39 @@
               "createdAt": "2026-10-29T12:25:00.000Z"
             }
           ]
+        },
+        {
+          "workRef": "work.vextreme.architecture-convergence.terrain-reader-return-context",
+          "label": "Consolidate Terrain reader return-context mutation ownership",
+          "purpose": "Reduce drift in Terrain reader return semantics by giving the existing returnKind / returnEntrySlug / returnReaderId relationship one bounded mutation owner while preserving current source terms, current Back/history behavior, existing static contract reads, and the distinction between implementation context and any future semantic Family/Control identity.",
+          "workClass": "TASK",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vextreme.architecture-convergence.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "projects/vextreme-architecture-convergence/README.md",
+            "github.pull.vextreme.493",
+            "github.commit.vextreme.36ced69ee6719bf05481110a753aee9e989d4885",
+            "github.pull.vextreme.497",
+            "github.commit.vextreme.4c816c637220be3f995d2cb9f3e7dead529af6d8",
+            "github.pull.vextreme.488",
+            "repo.vextreme:pages/terrain-map.html",
+            "repo.vextreme:tests/45-terrain-journey.test.js",
+            "repo.vextreme:tests/85-terrain-view-contract.test.js"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-10-29T12:50:00.000Z",
+          "updatedAt": "2026-10-29T12:50:00.000Z",
+          "transitionHistory": []
         }
       ],
       "lanes": [
@@ -12459,7 +12493,8 @@
           "label": "Active",
           "workRefs": [
             "work.vextreme.architecture-convergence.outcome",
-            "work.vextreme.architecture-convergence.semantic-owner-map"
+            "work.vextreme.architecture-convergence.semantic-owner-map",
+            "work.vextreme.architecture-convergence.terrain-reader-return-context"
           ]
         },
         {
@@ -12497,10 +12532,10 @@
         }
       ],
       "summary": {
-        "workItemCount": 4,
-        "openWorkItemCount": 4,
+        "workItemCount": 5,
+        "openWorkItemCount": 5,
         "outcomeCount": 1,
-        "taskCount": 3,
+        "taskCount": 4,
         "defectCount": 0,
         "potentialCount": 0,
         "needsHumanCount": 0,

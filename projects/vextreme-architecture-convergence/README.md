@@ -742,6 +742,58 @@ Journey state unchanged, post-merge Tests passed, and GitHub Pages deployment pa
 `VERIFYING` because the value/readability of the richer Inspect projection is still a lived product
 predicate rather than something source tests can certify.
 
+## Terrain reader return context — one mutation owner, no new semantic owner
+
+The accepted #493 relationship repair added three implementation fields:
+
+~~~text
+activeReaderReturnKind
+activeReaderReturnEntrySlug
+activeReaderReturnReaderId
+~~~
+
+They answer one implementation question:
+
+> Which already-existing presentation relationship should this embedded reader return to?
+
+Current source resets those fields together in roughly ten different places and binds the optional
+entry/reader coordinate in one group-home path. That repeated mutation surface is now larger than the
+meaning it carries.
+
+The bounded refactor is:
+
+~~~text
+setReaderReturnContext(...)
+clearReaderReturnContext()
+
+-> one mutation owner
+-> existing fields remain readable for compatibility
+-> current Back labels/history payloads remain unchanged
+-> no new history stack
+-> no new route resolver
+-> no new Family / Control / Act
+~~~
+
+Name Ontology disposition:
+
+~~~text
+"reader return context"
+  = implementation relationship description
+  = predicts which surface/context the reader returns to
+  != canonical Family identity
+  != user-facing Control name
+~~~
+
+PR #488 currently owns `tests/85-terrain-view-contract.test.js`. This slice intentionally preserves
+that test's source-visible reads and changes only:
+
+~~~text
+pages/terrain-map.html
+tests/45-terrain-journey.test.js
+~~~
+
+A later object-shape collapse is held until the shared static contract owner releases its test path.
+
 ## Receive God localization seam — route to the existing owner
 
 The original lived observation also exposed a second seam: **Receive God does not currently have a real
@@ -871,6 +923,10 @@ work.vextreme.architecture-convergence.semantic-owner-map
 work.vextreme.architecture-convergence.terrain-journey-inspection
   VERIFYING
   accepted source + deployment; lived usefulness of richer Inspect projection still pending
+
+work.vextreme.architecture-convergence.terrain-reader-return-context
+  RUNNING
+  consolidate return-context mutation ownership without changing semantic identity
 
 work.vextreme.architecture-convergence.terrain-reader-navigation
   VERIFYING

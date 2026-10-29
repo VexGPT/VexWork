@@ -315,6 +315,7 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   const vextremeArchitectureOutcome = graph.items.find((item) => item.workRef === 'work.vextreme.architecture-convergence.outcome');
   const vextremeArchitectureOwnerMap = graph.items.find((item) => item.workRef === 'work.vextreme.architecture-convergence.semantic-owner-map');
   const vextremeArchitectureJourneyInspection = graph.items.find((item) => item.workRef === 'work.vextreme.architecture-convergence.terrain-journey-inspection');
+  const vextremeArchitectureReaderReturnContext = graph.items.find((item) => item.workRef === 'work.vextreme.architecture-convergence.terrain-reader-return-context');
   const vextremeArchitectureTerrainReader = graph.items.find((item) => item.workRef === 'work.vextreme.architecture-convergence.terrain-reader-navigation');
   assert.equal(vextremeArchitectureOutcome.state, 'RUNNING');
   assert.equal(vextremeArchitectureOutcome.priorityClass, 'IMMEDIATE');
@@ -334,6 +335,9 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
     && transition.priorState === 'RUNNING'
     && transition.nextState === 'VERIFYING'
   ));
+  assert.equal(vextremeArchitectureReaderReturnContext.state, 'RUNNING');
+  assert.deepEqual(vextremeArchitectureReaderReturnContext.dependencyRefs, []);
+  assert.equal(vextremeArchitectureReaderReturnContext.sourceRefs.includes('github.pull.vextreme.488'), true);
   assert.equal(vextremeArchitectureTerrainReader.state, 'VERIFYING');
   assert.deepEqual(vextremeArchitectureTerrainReader.dependencyRefs, []);
   assert.equal(vextremeArchitectureTerrainReader.sourceRefs.includes('github.pull.vextreme.493'), true);
