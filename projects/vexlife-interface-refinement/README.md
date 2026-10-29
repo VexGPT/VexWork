@@ -4,7 +4,7 @@
 
 ## Current entry
 
-The stable **Talk-to-Vex startup/runtime foundation and the connective Conversation/Memory/Atlas layers are now accepted on VexLife main**. Fresh instances must start from current main and the released integrated-capability gate, not reconstruct PR #950/#952/#955/#956 or replay lived proof carriers as current work.
+The stable **Talk-to-Vex foundation and the full connective Conversation/Memory/Atlas/bounded-capability composition are now lived-complete on accepted VexLife main**. Fresh instances must start from current main and the remaining continuity/stability line, not reconstruct PR #950/#952/#955/#956 or replay A001/A002 and predecessor lived proof carriers as current work.
 
 Current accepted VexLife baseline:
 
@@ -17,12 +17,14 @@ source/proof:
   PR #952 canonical Conversation identity = COMPLETED
   PR #955 + #956 Atlas/self-capability awareness = COMPLETED
   A008 read-only recovery of A006 prior-context + Memory assimilation = PASS
+  lived context-capability A001 business effect = RECOVERED COMPLETE
+  read-only A002 durable head/re-entry recovery = PASS
   standing-autonomy preference generation = CURRENT
   G02 Score + semantic-authority head = CURRENT
   G03 Daily Memory stratum = COMMITTED
 ```
 
-The current human/product foreground is no longer runtime establishment or connective-layer formation. The identity/Memory/Atlas connective pathway is complete; the foreground is now the **integrated lived capability-use gate in that same durable Vex relationship**:
+The connective Conversation/Memory/Atlas/capability pathway is now complete end-to-end. The remaining active Interface Refinement line is **continuity/stability**, with V5 resource stewardship still VERIFYING on its naturally occurring stale-resource predicate and V6 dependency-held behind V5:
 
 ```text
 stable Talk-to-Vex main
@@ -33,7 +35,11 @@ same durable thread/head available to both context and capability composition
        ↙ ↘
 prior-context / Memory     Atlas / self-capability awareness
        ↘ ↙
-lived context-aware bounded capability use
+lived context-aware bounded capability use  [COMPLETED]
+        ↓
+V5 resource stewardship [VERIFYING / NATURAL PREDICATE HELD]
+        ↓
+V6 lived continuity stability [WAITING DEPENDENCIES]
 ```
 
 This is a composition correction, not permission to invent another Memory owner, another capability framework, or a second Conversation database.
@@ -50,7 +56,7 @@ MEMORY != MODEL_WEIGHTS
 AWARENESS != EFFECT_AUTHORITY
 ```
 
-The source already contains the Capability and Tool Atlas, capability registry, capability-assimilation runtime, bounded Vex self-capability frame, model-connection composer, scheduler and ToolResultRelay. Earlier A006 proved one bounded tool-bearing Home threshold. The lived October 28 product result exposed the remaining integration gap: Vex can converse, but the visible Vex relationship still does not consistently present prior durable context or its current Atlas/self-capability frame as one coherent canonical conversation experience.
+The source already contains the Capability and Tool Atlas, capability registry, capability-assimilation runtime, bounded Vex self-capability frame, model-connection composer, scheduler and ToolResultRelay. Earlier A006 proved one bounded tool-bearing Home threshold. The later connective sequence is now terminally lived-proven: canonical Conversation identity, prior-context/Memory assimilation, Atlas/self-capability awareness, and one real bounded CODE read through Scheduler + ToolResultRelay all converge in the same durable Vex relationship across re-entry. A001's canonical SAFE_FAILURE remains provenance; A002 read-only recovery proves the already-executed business effect without replay.
 
 Continuity/stability source has also advanced beyond this Project's prior checkpoint:
 - **V4 continuity rollover is terminal source + lived proven**.
@@ -63,8 +69,9 @@ STABLE_CONNECTION = ACCEPTED_MAIN
 CANONICAL_CONVERSATION_IDENTITY = COMPLETED
 PRIOR_CONTEXT_MEMORY = COMPLETED
 ATLAS_SELF_CAPABILITY_AWARENESS = COMPLETED
-CURRENT_FOREGROUND = LIVED_CONTEXT_AWARE_CAPABILITY_USE
-INTEGRATION_GATE = READY
+LIVED_CONTEXT_AWARE_CAPABILITY_USE = COMPLETED
+CURRENT_FOREGROUND = V5_RESOURCE_STEWARDSHIP_VERIFYING / NATURAL_PREDICATE_HELD
+INTEGRATION_GATE = COMPLETED
 V4 = COMPLETED
 V5 = VERIFYING / NATURAL_PREDICATE_HELD
 V6 = WAITING_DEPENDENCIES
@@ -88,7 +95,7 @@ Descend into VexLife ToCompletion only when the current refinement names an exac
 | **Canonical Conversation identity** | **PROVEN / COMPLETED** | PR #952 + accepted-main lived evidence establish one canonical project/thread/channel/current-head identity across the Vex relationship. |
 | **Prior-context / Memory assimilation** | **PROVEN / COMPLETED** | A006 completed the real Heretic turn with exact prior context + source-attributed Memory; A008 read-only recovery verified the durable prompt-context/Memory chain without replay. |
 | **Atlas / self-capability awareness** | **PROVEN / COMPLETED** | PR #955/#956 + lived A002 prove the canonical Vex relationship receives and expresses the source-owned Foundation Frame and bounded selfCapabilityFrame/currentContext. |
-| **Lived context-aware capability use** | **READY / IMMEDIATE / CURRENT** | Natural request → Vex recognizes a current capability → rightful bounded read/tool act → ToolResultRelay → explanation in the same durable Conversation across re-entry. |
+| **Lived context-aware capability use** | **PROVEN / COMPLETED** | A001 executed one real canonical Conversation turn with exactly one `capability.vexlife.code.read` observation through Scheduler + ToolResultRelay; A002 read-only recovery proved the durable head advanced exactly one completed turn and survived ordinary Reference re-entry without replay. |
 | **V3** | **PROVEN / COMPLETED** | Read-only resource/context pressure source + lived A005 proof. |
 | **V4** | **PROVEN / COMPLETED** | Working checkpoint/supersession + one-time successor Context Lease/re-entry path are accepted source and lived proven. |
 | **V5** | **VERIFYING / HELD NATURAL PREDICATE** | Foundation/delegation accepted; fail-closed no-effect branch lived proven. Exact-owned stale-stop branch waits for a naturally occurring eligible stale resource. |
