@@ -4765,79 +4765,63 @@ StateRelay remains pressure, not accepted Family standard.
 
 ---
 
-## Origin-Walk fourth reference — StateRelay + nested currentness
+---
 
-**Downstream Android #192 head:** `301221a3d5a9e1a5a25d9629d13e2935a255b764`
+## Origin-Walk refinement — arbitrary-depth State hierarchy
 
-The executable evolution now has four deliberately different reference roles:
+**Downstream Android #192 head:** `019f071a1ee2d19aa4f8116bf30f1f1873fef922`
+
+The first nested-list pressure was superseded because feature-specific recursive `deepCopy()` still
+had to know descendant structure.
+
+The stronger pressure normalizes hierarchy by semantic identity:
 
 ~~~text
-1 ThemeMode
-  local Family language/runtime
+[A1[B1[C1]]], [A2[B2]]
 
-2 UI round-trip
-  activation currentness / stale-render protection
+rootRefs = [A1, A2]
 
-3 Playback pressure
-  runtime payload Controls
-  provider reconciliation
-  Control availability
-
-4 StateRelay pressure
-  serialized CURRENT-State decision
-  stale async completion
-  nested list/list currentness
-  independently-owned child convergence
+nodes:
+  A1 -> [B1]
+  B1 -> [C1]
+  C1 -> []
+  A2 -> [B2]
+  B2 -> []
 ~~~
 
-The fourth reference clarifies nested collection structure.
+Changing C1 replaces only C1. Ancestors/siblings survive through refs; feature code does not recursively
+reconstruct A1/B1/A2/B2 merely to preserve them.
 
-### Parent-owned nested values
+A generated 48-level chain uses the same mechanism, so nesting depth is data rather than copy syntax.
 
-~~~text
-ordered semantic refs
-+
-complete valuesByRef
--> one coherent current snapshot
-~~~
-
-Identity is the ref, not list index or object reference. Updating one nested item by ref preserves all
-parent/sibling order and values. A claimed current list with a dangling ref/value pair fails rather
-than silently rendering fewer rows.
-
-### Independently-owned child currentness
-
-Do not recursively absorb the child's whole State merely because the parent renders a list.
+Permanent distinction:
 
 ~~~text
-parent current membership/order refs --------                                              -> Compound Convergence
-child-owner coherent current-by-ref ---------/        |
-                                                       v
-                                                bounded list output
-~~~
+stable semantic ref
+  -> identity / hierarchy
 
-The child keeps its own lifetime/provider/currentness owner. The parent keeps membership/order. The
-Convergence relationship owns what those current truths mean together.
-
-### Copy versus identity
-
-~~~text
-stable refs
-  -> semantic identity / traversal continuity
-
-snapshot/deep copy
-  -> ownership detachment from mutable caller/collector aliases
+snapshot detachment
+  -> ownership alias protection
 
 deep copy
-  != identity model
+  != identity
 ~~~
 
-The pressure fixture uses data-class copy from CURRENT plus explicit nested snapshot copying so a
-new root sibling is preserved by default and ownership-bearing collections detach.
+The normalized tree fails on dangling refs, unreachable nodes and child cycles instead of allowing
+Display to silently shorten the current hierarchy.
 
-No universal StateList abstraction is admitted yet.
+Independently-owned child currentness is still composed separately:
 
-Isolated Kotlin proofs passed for the nested identity/copy and independent-child convergence shapes.
-Repository Gradle/JVM proof remains pending.
+~~~text
+parent hierarchy refs --------\
+                               -> Compound Convergence -> bounded current output
+child-owner current State ----/
+~~~
 
-<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][STATE-RELAY][NESTED-CURRENTNESS] -->
+No universal StateTree abstraction is admitted yet.
+
+Isolated Kotlin proof: PASS.
+Repository Gradle/JVM: PENDING.
+
+<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][STATE-RELAY][ARBITRARY-DEPTH] -->
+
