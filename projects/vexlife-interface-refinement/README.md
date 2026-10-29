@@ -1172,6 +1172,187 @@ SAME_HUMAN_URL
 != SAME_SOURCE_IDENTITY
 ~~~
 
+#### F2 source identity reader — one owner, three consumers
+
+Current source contains two private copies of the same stored-manifest read:
+
+~~~text
+scripts/orient.mjs
+  local readStoredSourceManifest()
+
+scripts/source-manifest.mjs
+  local readStoredPartEntries()
+  + local readStoredManifest()
+~~~
+
+Both:
+
+~~~text
+read SOURCE-MANIFEST.json
+-> select v2 explicit parts or v3 deterministic bucket directory
+-> read stored part JSON
+-> hydrateStoredSourceManifest(...)
+-> obtain fileCount + treeSha256
+~~~
+
+F2 needs exactly the same read for the running browser server. Do not create a third copy.
+
+The smallest owner correction is to add one fail-closed stored-reader API to the existing Source
+Manifest owner, candidate name:
+
+~~~text
+module.vexlife.core.source-manifest
+
+readStoredSourceManifest(sourceRoot)
+  -> read checked-in descriptor + parts/buckets
+  -> hydrate through existing canonical manifest rules
+  -> return canonical stored manifest
+  -> require no Git repository metadata
+  -> perform no source mutation
+~~~
+
+Then:
+
+~~~text
+scripts/orient.mjs
+  -> delete private reader
+  -> call readStoredSourceManifest(ROOT)
+
+scripts/source-manifest.mjs
+  -> delete private stored-read helpers
+  -> call readStoredSourceManifest(root)
+
+scripts/serve-browser-core.mjs
+  -> call readStoredSourceManifest(staticRoot) once at server formation
+  -> retain stored treeSha256 as the current server source-content identity
+~~~
+
+No separate `SourceVersionService`, browser source registry or duplicated bucket reader is justified.
+
+~~~text
+ONE_STORED_SOURCE_READER
+-> Orientation
+-> Source Manifest verification
+-> Browser Server current-source projection
+~~~
+
+Current `module.vexlife.core.source-manifest` is labeled `BUILD_TIME`, while F2 gives its stored
+read a runtime Node-host consumer. Current repository docs do not define a required composite
+`platformScope` vocabulary, and the module registry already contains both standard and
+source-specific scope labels.
+
+Therefore source admission must currentize the module map truthfully, but this lane must **not invent
+a new scope label by preference**. Likewise, do not create another semantic owner solely to avoid
+editing one metadata field.
+
+~~~text
+PLATFORM_SCOPE_CURRENTIZATION_REQUIRED
+!= NEW_SOURCE_IDENTITY_OWNER_REQUIRED
+~~~
+
+The accepted owner remains Source Manifest.
+
+#### F2 server/document source projection
+
+The server should derive its source-content identity once from the exact source root it actually
+serves:
+
+~~~text
+server formation
+  staticRoot
+  -> readStoredSourceManifest(staticRoot)
+  -> sourceTreeSha256
+~~~
+
+The same immutable server-formation identity then feeds two no-effect projections:
+
+~~~text
+1. served document identity
+
+GET /reference/browser/
+-> server reads current index.html bytes
+-> bind sourceTreeSha256 into the document response itself
+-> loaded document retains that value for its lifetime
+
+2. current server identity
+
+GET /api/v1/source/identity             # candidate route
+-> {
+     schemaVersion,
+     truthClass,
+     sourceManifestRef,
+     sourceRootRef,
+     sourceTreeSha256,
+     effectsPerformed: false
+   }
+-> Cache-Control: no-store
+~~~
+
+The exact route/schema names remain source-reviewable. The invariant does not:
+
+~~~text
+DOCUMENT_INITIAL_SOURCE
+= identity bound by the server that served that exact document
+
+CURRENT_SERVER_SOURCE
+= identity returned by the currently answering server
+
+DOCUMENT_INITIAL_SOURCE
+!= identity discovered only by a later fetch
+~~~
+
+That last distinction closes the race where server A could serve HTML and server B could answer the
+document's first identity request.
+
+The current static server already serves every file with `Cache-Control: no-store`; F2 source
+identity remains read-only and adds no navigation, recovery, Conversation, model or source effect
+authority.
+
+#### Added F2 authored/generated custody
+
+Canonical reader reuse adds:
+
+~~~text
+scripts/orient.mjs
+  -> bucket-14
+
+scripts/source-manifest.mjs
+  -> bucket-35
+~~~
+
+Current authored-path inspection across all open VexLife PRs found no overlap on either script.
+
+There is one generated co-bucket overlap:
+
+~~~text
+VexLife PR #847
+  authored:
+    platform/android/app/src/main/kotlin/vexlife/android/presentation/VexComposePrimitives.kt
+  generated:
+    source-manifest-parts/bucket-35.json
+
+Interface Compound candidate
+  authored:
+    scripts/source-manifest.mjs
+  generated:
+    source-manifest-parts/bucket-35.json
+~~~
+
+This is not competing semantic ownership.
+
+~~~text
+DISJOINT_AUTHORED_PATHS
++ SAME_GENERATED_BUCKET
+-> RECOMPOSE CURRENT CO-BUCKET TRUTH
+
+SAME_GENERATED_BUCKET
+!= SOURCE_CONFLICT
+~~~
+
+The eventual authoring/integration lane must regenerate bucket-35 from the exact combined candidate
+tree rather than choosing one branch's generated bucket bytes.
+
+
 #### F2a — reuse Source Manifest as the source identity
 
 Do not create another build/version registry.
