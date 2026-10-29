@@ -83,6 +83,8 @@ test('Family Kotlin construction preserves exact resource type in implementation
     /VexFamily\.Control\.Resource<[\s\S]*ResourceIdentityFamily,[\s\S]*TrackId/,
   );
   assert.match(plan.familySource, /override val resourceId: TrackId/);
+  assert.match(plan.familySource, /override fun act\(/);
+  assert.match(plan.familySource, /State\.Idle[\s\S]*is Control\.Play[\s\S]*stay\(\)/);
   assert.match(
     plan.testSource,
     /control: ResourceIdentityFamily\.Control\.Play,[\s\S]*ResourceIdentityFamily\.TrackId/,
