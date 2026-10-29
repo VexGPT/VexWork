@@ -77,7 +77,12 @@
     "evidence.vexsync.pr195.sourceowner.a002.formation.sha256.c8c672415c05fd1f145d0114602712b4fa33779b62b27762ec11fe1de6be50b4",
     "github.comment.vexlife-android.pr195.6508290364.journey-device-a003-recovered-pass",
     "evidence.vexsync.pr195.journey-device.a003.return.sha256.c820031ad5cd9f54bcf9ae761266d40d630383bf752db101268df62ae1337dcb",
-    "evidence.vexsync.pr195.journey-device.a003.inner-return.sha256.07213d85da13a58b32f44a0d6592bb9dce6fc2688b914c6b2599525864728de5"
+    "evidence.vexsync.pr195.journey-device.a003.inner-return.sha256.07213d85da13a58b32f44a0d6592bb9dce6fc2688b914c6b2599525864728de5",
+    "github.comment.vexlife-android.pr195.6508592808.lived-process-death-persistence-fail",
+    "github.commit.vexlife.b6d9dd4876132fc408f0eacd2bb6b5b0d56e009f",
+    "repo.vexlife:blueprint/vexlife.blueprint.json",
+    "repo.vexlife:blueprint/fragments/state-domains.json",
+    "repo.vexlife:src/core/portable-behavior-contract.mjs"
   ],
   "formedAt": "2026-10-26T07:26:46.000Z"
 }
