@@ -875,6 +875,9 @@ No new Work item is formed here merely because the seam is visible. If VexSite L
 entry-document localization as active work, this Project should reference that exact Work rather than
 forming a shadow copy.
 
+The future contract question has been routed to the localization current-entry issue as
+`github.issue-comment.vextreme.273.6497654829` without changing its current scheduler foreground.
+
 ### Name Ontology consequence
 
 Do **not** mint:
