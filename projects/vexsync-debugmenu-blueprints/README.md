@@ -8181,13 +8181,43 @@ The neutral observation value moves into shared `journeyTest`, which already fee
 Android instrumentation. The Android observer remains Android-owned; ScreenCrawler remains evidence
 owner. This is intentionally a local coordinate-carriage cleanup, not a new universal trace runtime.
 
-SourceOwner A001 host proof is formed at:
+SourceOwner A001 and fresh Independent Assurance are now complete on the exact candidate.
+
+<!-- [VXG RealForever][VEXSYNC][WALK-TRACE][PR194-PROVED-CLEAR] -->
+
+
+### PR #194 observation alignment — SourceOwner PASS + Assurance CLEAR
+
+The local Walk Trace cleanup is now proved on exact head:
 
 ~~~text
-sha256 bd400b1aea4e6c70a5066c1dae8f2cc8e255918f1c3425ba2822258bd3f5b61e
+Android PR #194
+head  0d55c90f3dec5bda40969cc07522808f9e3291ee
+tree  8ffa37b5b0019347db41b21872239506e9320c17
+paths 5 exact
+
+SourceOwner A001
+  focused VexScreenCrawlerPlannerTest PASS
+  vexVerifyJvm PASS
+  :app:assembleDebugAndroidTest PASS
+  exact membrane / clean source PASS
+  findings 0
+
+Independent Assurance
+  CLEAR_ON_EXACT_HEAD
 ~~~
 
-Required proof covers focused crawler JVM behavior, repository `vexVerifyJvm`,
-`:app:assembleDebugAndroidTest`, and the exact five-path membrane.
+So the candidate Walk Trace refinement has one proved local alignment:
 
-<!-- [VXG RealForever][VEXSYNC][WALK-TRACE][PR194-OBSERVATION-ALIGNMENT] -->
+~~~text
+Journey execution
+-> VexJourneyStepObservation
+-> ScreenCrawler evidence identity
+~~~
+
+instead of four separately re-supplied coordinate fields.
+
+This remains a test-architecture coordinate alignment. It does not become a universal VexArchitecture
+runtime and does not alter production semantics. Lifecycle/ready/merge authority remains separate.
+
+<!-- [VXG RealForever][VEXSYNC][WALK-TRACE][PR194-PROVED-CLEAR] -->
