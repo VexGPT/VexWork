@@ -264,6 +264,40 @@
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-29T15:02:00.000Z",
       "updatedAt": "2026-10-29T15:19:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexsync.debugmenu-blueprints.direct-family-post193-hardening",
+      "parentWorkRefOrNull": "work.vexsync.debugmenu-blueprints.outcome",
+      "label": "Harden accepted Direct Family foundation after PR #193 review",
+      "purpose": "Correct one post-acceptance Direct VexFamily ownership defect discovered by a fresh-instance review of merged PR #193: structured VexLogger.Sink failure must remain observational and cannot reject Control acceptance, suppress State/Store work, or transform Store success into Family failure. Currentize proof/maturity prose, explicitly preserve coexistence with still-live VexBehaviorFamily/SCAE, and document ResourceId equality/hash stability. Keep PR #193 as the accepted origin and PR #196 as the trace-linked bounded hardening follow-up; do not use this defect to redesign Family/RelationshipId/Execution.",
+      "workClass": "DEFECT",
+      "state": "RUNNING",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "github.pull.vexlife-android.193",
+        "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+        "github.pull.vexlife-android.196",
+        "github.commit.vexlife-android.b25a291d4b464f35fae67d3b45244704846cae63",
+        "github.comment.vexlife-android.pr193.6500792512.follow-up-pr196",
+        "github.comment.vexlife-android.pr196.6500855863.sourceowner-a001-formed",
+        "evidence.vexsync.pr196.sourceowner.a001.formation.sha256.722a255769ac013ce227ccc56a55195a3fd5efcecf02be60825c16df8b39823f",
+        "review.fresh-instance.vex-family-post193.20261029a"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+      "nextProcessRefs": [
+        "process.vexlife-android.feature-authoring"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-29T15:55:00.000Z",
+      "updatedAt": "2026-10-29T15:55:00.000Z"
     }
   ],
   "transitions": [
@@ -485,6 +519,22 @@
         "evidence.vexsync.pr195.sourceowner.a001.inner-return.sha256.743345b993ceb72b9c8901c40a9c6c911fa3d78fc5082847931f34707bc8df63"
       ],
       "createdAt": "2026-10-29T15:38:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.direct-family-post193-hardening.running.formed-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.direct-family-post193-hardening",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Fresh-instance review of accepted Direct Family PR #193 recovered the intended architecture but found one real correctness hole: throwing structured Logger sinks can currently influence Family semantics. Android PR #196 is the bounded seven-path correction and currentness cleanup, explicitly trace-linked to #193; SourceOwner A001 host formation is statically qualified and execution is the next gate.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.193",
+        "github.pull.vexlife-android.196",
+        "github.comment.vexlife-android.pr196.6500855863.sourceowner-a001-formed",
+        "evidence.vexsync.pr196.sourceowner.a001.formation.sha256.722a255769ac013ce227ccc56a55195a3fd5efcecf02be60825c16df8b39823f"
+      ],
+      "createdAt": "2026-10-29T15:55:00.000Z"
     }
   ],
   "sourceRefs": [
