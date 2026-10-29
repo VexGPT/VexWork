@@ -7732,5 +7732,34 @@ the sole immediate foreground. The new VexBoard convergence work is the immediat
 
 VexBoard implementation work is formed on draft PR #184.
 
+### VexBoard browser recovery — causal checkpoint
+
+Victor's lived GitHub Pages evidence confirmed the VexBoard header rendered while the module-owned body
+remained blank. The deployed main source graph established the cause:
+
+~~~text
+vexboard/index.html
+-> vexboard-android-source-projector.mjs
+-> vexboard.mjs
+-> semantic.mjs
+-> node:crypto
+~~~
+
+The Android projector had pulled a Node-only hashing owner into the static browser boot closure.
+
+VexBoard PR #184 at 49ec3bd650dde810110b11a55e70907df0e9d9f2 removes that unnecessary coupling by constructing its read-only browser
+graph/projection through the browser-safe shared VexBoard model. Its deterministic regression walks the
+transitive static browser boot closure and rejects bare / Node-only imports.
+
+The earlier Family-Kotlin lazy-load and boot-error fallback remain useful hardening, but they are not the
+root-cause claim.
+
+~~~text
+CANDIDATE REPAIRED
+!= DEPLOYED MAIN REPAIRED
+
+deployed main remains 0d55e3aa83b7972cc83ef9fe2a7266311932a7c8
+until the VexBoard candidate crosses its own review / integration gate
+~~~
 <!-- [VXG RealForever][VEXSYNC][VEXBOARD-CONVERGENCE][FOUNDATION-BASELINE] -->
 
