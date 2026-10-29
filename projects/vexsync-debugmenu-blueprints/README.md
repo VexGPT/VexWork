@@ -7231,12 +7231,11 @@ Repository Gradle/JVM proof remains pending.
 
 ---
 
-## Current checkpoint — Family Circuit foundation absorbs the process circuit
+## Current checkpoint — Family Circuit teaching forms
 
-Downstream Android #192 head: 1d7a35f4e7c094bab7d30a0c30bc4bca5c2cdcb0
+Downstream Android #192 head: dd050ff81db169277a77cad4e4bd6a4f21e58d0e
 
-The process-only / process -> commit -> Act discoveries are no longer only Relay-side pressure.
-Android now carries one common Family State root with two earned specializations:
+The Family Circuit foundation is unchanged; the teaching surface is now intentionally generic.
 
 ~~~text
 VexFamily
@@ -7247,82 +7246,56 @@ VexBehaviorV2Family : VexFamily
 
 VexBehaviorV2CompoundFamily : VexFamily
   relationship-driven Family
-        |
-        v
-ComplexFamily
-
-ComplexFamily.current
-  = ComplexCompoundState
-      inputState
-      outputState
-      revision
 ~~~
 
-The reusable construction law is:
+Fresh readers start from small constructors instead of a fake feature:
 
 ~~~text
-partial Input observation
--> InputState.latest(incoming)
--> complete latestStateInput
--> Family.process(latestStateInput)
--> OutputState
--> COMMIT Family.current Compound State
+createSingleFamily()
+  -> SingleFamily
+  -> State(value)
+
+createListFamily()
+  -> ListFamily
+  -> State(groups -> items)
+
+createBooleanFamily()
+  -> BooleanFamily
+  -> State(enabled)
+
+createMultiFamily(...)
+  -> MultiFamily
+  -> MultiInputState
+  -> MultiOutputState
+  -> MultiCompoundState
+~~~
+
+MultiFamily demonstrates the complete relationship circuit:
+
+~~~text
+several Family.current values
+-> partial MultiInputState
+-> MultiInputState.latest(...)
+-> complete latest input
+-> MultiFamily.process(...)
+-> MultiOutputState
+-> COMMIT MultiCompoundState as MultiFamily.current
 -> Act only when Output meaning changed
--> rightful target Family / owner
--> observed target CURRENT truth
--> NEW Input
+-> ListFamily.Control
+-> ListFamily.current
+-> observe as NEW input
 -> process again
 ~~~
 
-The clean teaching surface is:
-
-~~~text
-VexBehaviorV2FamilyCircuitTestSampleSuite
-~~~
-
-Its simulated ComplexFamily converges three current truths:
-
-~~~text
-ScreenFamily.State
-MusicQueueState
-ThemeModeState
-~~~
-
-Screen is a real Family because the circuit makes a semantic request of it:
-
-~~~text
-NeedsPlayerScreen(...)
--> ScreenFamily.Control.Show(...)
--> ScreenFamily.activate(Control)
--> ScreenFamily CURRENT State
--> observe as NEW ComplexInputState
-~~~
-
-MusicQueue and ThemeMode are observation-only owners in this sample and therefore do not receive fake
-Controls for symmetry.
-
-The Family foundation now owns the real synchronous process/commit/Act seam. The prior Relay wrapper
-problem is therefore no longer the production boundary for this Family architecture. Existing
-VexCompoundRelay consumers remain separate migration pressure.
-
-The remaining runner question is narrower:
-
-~~~text
-already-committed Output consequence
--> asynchronous execution custody
-   Replaceable / Sequenced
-~~~
-
-That question must preserve committed Family truth and observation feedback, but it no longer decides
-who owns the Compound relationship.
+ListFamily carries nested groups/items so the sample still demonstrates copying nested State.
+The example names describe data/structure rather than app concepts.
 
 Current evidence:
 
 ~~~text
 Family Circuit foundation source                 FORMED
-ComplexFamily -> CompoundFamily -> VexFamily     FORMED
-clean TestSampleSuite                            AUTHORED
-isolated generic Kotlin hierarchy check          PASS
+Single/List/Boolean/Multi teaching forms         FORMED
+generic TestSampleSuite                          AUTHORED
 repository Gradle/JVM                            PENDING
 ~~~
 
