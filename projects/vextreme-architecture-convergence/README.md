@@ -1138,6 +1138,86 @@ ACTIVE_SURFACE != RETURN_RELATIONSHIP
 No new Family is formed from this one browser implementation state. The first goal is simply one truthful
 mutation owner and fail-closed mutual exclusivity.
 
+## Terrain active embedded-surface completion
+
+The observed stale-surface defect is now closed.
+
+Before PR #505, Terrain represented the currently open embedded surface through three independent
+compatibility coordinates:
+
+~~~text
+activeReaderId
+activeEntrySlug
+activeGroupHomeKey
+~~~
+
+An entry reader could be visually torn down through `hideEvolutionLayer()` while `activeEntrySlug`
+remained populated. That produced contradictory truth: no embedded reader was visible, but Terrain still
+reported an active entry surface.
+
+PR #505 keeps those fields readable for compatibility but places every mutation behind one bounded owner:
+
+~~~text
+setActiveEmbeddedSurface(kind, value)
+clearActiveEmbeddedSurface()
+
+entry
+reader
+group-home
+none
+~~~
+
+The owner validates the requested identity and clears the other two coordinates atomically. Generic
+teardown, profile changes, arrival/group rendering, entry-document synchronization, and reader/group-home
+opening now converge on that owner.
+
+This remains distinct from return-context identity:
+
+~~~text
+active embedded surface
+  = what is open now
+
+reader return context
+  = where Back / outward navigation returns
+
+ACTIVE_SURFACE != RETURN_RELATIONSHIP
+~~~
+
+Proof chain:
+
+~~~text
+Vex Relay A002 outer RETURN
+  d7dce82aab5fe0b1decfc5409a03c3e3efc73b6ad05e2cfab7f1a83620b7785e
+
+retained canonical inner RETURN
+  c7f161c3c3a8b179870349bf56c29706307051bed8b3640a3c25c3d58f5a99db
+
+exact candidate
+  head c1d5fd19d12be2a9e30ef7bbe6d4e3b7db0b504d
+  tree da37eddbbf06193beb28e0070b6dd6e155b27d05
+
+focused Terrain Journey
+  19 / 19 PASS
+
+Key Alignment
+  PASS
+
+work coordination config
+  PASS
+
+Independent Assurance
+  CLEAR
+
+accepted merge
+  28602a7ba832223d40ed844c32609954051f1c84
+
+accepted merge tree
+  da37eddbbf06193beb28e0070b6dd6e155b27d05
+  = exact A002-proven candidate tree
+~~~
+
+No GitHub Actions result is used as proof, and no Local Workspace route was used.
+
 ## Current Work
 
 ~~~text
@@ -1167,9 +1247,10 @@ work.vextreme.architecture-convergence.terrain-reader-return-vocabulary
   merge 87571924f769fe4a1dad1084e2f68775f18d37b1 is tree-exact to the proven candidate
 
 work.vextreme.architecture-convergence.terrain-active-surface-context
-  RUNNING
-  observed stale-state defect: hideEvolutionLayer can close an entry reader without clearing activeEntrySlug
-  next bounded edge: one mutually-exclusive mutation owner for reader / entry / group-home / none
+  COMPLETED
+  PR #505 gives reader / entry / group-home / none one mutually-exclusive active-surface mutation owner
+  Vex Relay A002 exact-head proof 19/19 PASS; Independent Assurance CLEAR
+  merge 28602a7ba832223d40ed844c32609954051f1c84 is tree-exact to the proven candidate
 
 work.vextreme.architecture-convergence.terrain-reader-navigation
   VERIFYING
