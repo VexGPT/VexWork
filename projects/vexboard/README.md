@@ -4993,5 +4993,30 @@ CROSS-PROJECT WORK RELATIONSHIP
 
 Depth/fractal work remains a later pressure after the flat self-application is lived and readable.
 
+First recovery candidate on PR #184:
+
+~~~text
+blank-screen symptom
+  shell/header rendered
+  module application body did not start
+
+repair posture
+  optional Kotlin-construction module is now removed from the boot-critical static import graph
+  familyKotlin loads lazily only when a board actually needs it
+  visible loading/error fallback prevents silent all-white failure
+
+source-static checks
+  classic boot fallback script parses
+  main module script parses
+  static FamilyKotlin import absent
+  lazy FamilyKotlin import present
+
+lived Pages recovery
+  PENDING
+~~~
+
+Do not infer the exact original browser exception until lived/deployed evidence exposes it. The repair is
+a bounded fail-soft architecture correction that protects the VexBoard root from one optional child capability.
+
 <!-- [VXG RealForever][VEXBOARD][VEXSYNC-CONVERGENCE][FOUNDATION-BASELINE] -->
 
