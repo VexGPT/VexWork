@@ -19,6 +19,27 @@ CURRENT EXAMPLE
 != PROOF
 ~~~
 
+## Current ThemeMode SourceOwner continuation — A003 compile correction
+
+Current Android PR #188:
+
+~~~text
+head  = 38f32786171d123a0243aa2d18de9a04315e242a
+tree  = 4b7bfd8227a25c613215e1307b5a3380eb71c8e2
+paths = 20 exact
+~~~
+
+A003 reached Kotlin compilation after the A002 Preview correction and found one stale
+`VexFamilyConversationScreen.renderContent(..., darkTheme: Boolean)` override. The generic Screen
+contract no longer carries theme state. Removing that unused parameter is the entire A003 source
+correction; a sweep of the Screen implementations found no sibling stale ThemeMode/darkTheme renderer
+signature.
+
+A004 is the fresh exact-head VexRelay SourceOwner attempt. A001/A002/A003 are consumed and must not be
+replayed.
+
+<!-- [VXG RealForever][VEXSYNC][CURRENT-EXAMPLE][THEMEMODE][SOURCEOWNER-A003-CORRECTION] -->
+
 ## How this companion is read
 
 This file is the **causal exemplar and evolution companion** to the project README.
