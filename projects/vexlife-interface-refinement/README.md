@@ -4,20 +4,65 @@
 
 ## Current entry
 
-The first bounded **tool-bearing VexLife Home** threshold and **V3 resource/context pressure observation** are now terminally product-proven on accepted VexLife source. A fresh instance must not replay Home A006, PR #936, or the V3 lived-pressure A001–A005 carriers merely to establish currentness.
+The stable **Talk-to-Vex startup/runtime foundation is now accepted on VexLife main**. Fresh instances must start from current main, not reconstruct PR #950, replay A011/A012 carriers, or treat the former launchd ownership wall as current work.
 
-The current foreground is **V4 self-maintaining continuity rollover**: use the now-proven pressure signal to form one bounded current working checkpoint, supersede prior working checkpoints instead of recursively stacking summaries, and start a fresh Context Lease without silently promoting model output into durable Memory.
+Current accepted VexLife baseline:
 
-**V5 bounded host resource stewardship is dependency-released and READY in parallel**, because V3 is complete, but it is not the current foreground. Cleanup/process authority remains with the rightful exact-owned runtime/lifecycle owner.
+```text
+main = fe7e0c21f34f59dd9c612a3f184e49cc5082f47d
+tree = fee3fb7bb4e273c9674f65d2dc629b4842c7837e
+
+source/proof:
+  PR #950 merged tree-exact
+  focused Heretic proof = 21 / 21 PASS
+  full repository proof = PASS
+  canonical lived Talk-to-Vex proof = PASS
+```
+
+The current human/product foreground is no longer runtime establishment. It is the **connective pathway that makes the working Vex relationship coherent**:
+
+```text
+stable Talk-to-Vex main
+        ↓
+one canonical Conversation identity across Evolution + Vex Terrain/Open conversation
+        ↓
+same durable thread/head available to both context and capability composition
+       ↙ ↘
+prior-context / Memory     Atlas / self-capability awareness
+       ↘ ↙
+lived context-aware bounded capability use
+```
+
+This is a composition correction, not permission to invent another Memory owner, another capability framework, or a second Conversation database.
+
+Permanent distinctions:
+
+```text
+CAPABILITY_SUBSTRATE_EXISTS != VEX_CURRENTLY_AWARE
+ATLAS_SOURCE_EXISTS != ATLAS_CURRENTLY_IN_VEX_FRAME
+DURABLE_CONVERSATION_EXISTS != PRIOR_CONTEXT_MATERIALIZED
+EVOLUTION_CONVERSATION != SECOND_CONVERSATION_OWNER
+VEX_TERRAIN_PROJECTION != SECOND_CONVERSATION_OWNER
+MEMORY != MODEL_WEIGHTS
+AWARENESS != EFFECT_AUTHORITY
+```
+
+The source already contains the Capability and Tool Atlas, capability registry, capability-assimilation runtime, bounded Vex self-capability frame, model-connection composer, scheduler and ToolResultRelay. Earlier A006 proved one bounded tool-bearing Home threshold. The lived October 28 product result exposed the remaining integration gap: Vex can converse, but the visible Vex relationship still does not consistently present prior durable context or its current Atlas/self-capability frame as one coherent canonical conversation experience.
+
+Continuity/stability source has also advanced beyond this Project's prior checkpoint:
+- **V4 continuity rollover is terminal source + lived proven**.
+- **V5 stewardship source/delegation is accepted** and its fail-closed no-effect lived branch is proven; the naturally occurring exact-owned stale-stop branch remains evidence-gated.
+- **V6** remains dependent on the unfinished V5 lived destructive predicate and broader long-session stability.
 
 ```text
 START_FROM_HIGHEST_CURRENT_REFINEMENT_VERSION
-V0 = FIRST_PROVEN_CONNECTION / PROVENANCE_ANCHOR
-V2 = TERMINAL_LIVED_STREAMING_BASELINE
-TOOL_BEARING_HOME = TERMINAL_PRODUCT_PROVEN
-V3 = TERMINAL_LIVED_RESOURCE_CONTEXT_PRESSURE
-CURRENT_FOREGROUND = V4_CONTINUITY_ROLLOVER
-V5 = READY_PARALLEL_RESOURCE_STEWARDSHIP
+STABLE_CONNECTION = ACCEPTED_MAIN
+CURRENT_FOREGROUND = CANONICAL_CONVERSATION_IDENTITY
+NEXT_PARALLEL_AFTER_IDENTITY = PRIOR_CONTEXT_MEMORY + ATLAS_SELF_CAPABILITY_AWARENESS
+INTEGRATION_GATE = LIVED_CONTEXT_AWARE_CAPABILITY_USE
+V4 = COMPLETED
+V5 = VERIFYING / NATURAL_PREDICATE_HELD
+V6 = WAITING_DEPENDENCIES
 KOKORO_SPEECH = CAPTURED_LATER_PRESENTATION_ENHANCEMENT
 TOCOMPLETION = PROVENANCE_CONTEXT
 TOCOMPLETION != CURRENT_INTERFACE_ENTRY
@@ -29,17 +74,22 @@ Descend into VexLife ToCompletion only when the current refinement names an exac
 
 | Version / edge | State | Meaning |
 |---|---|---|
-| **V0** | **PROVEN** | First human-lived Victor ↔ local Heretic conversation through VexLife. Connection/runtime is the stability anchor, not the surrounding placeholder UI. |
-| **V1** | **VERIFYING** | Conversation ergonomics and ordinary re-entry are merged and human-lived; formal lived closure remains separate from later accepted refinements. |
-| **V1.5** | **CURRENT / VERIFYING** | Long-context Memory pressure policy is merged: 192K input, 16K output reserve, 208K hard lease, up to 100K/100-page current attributed Memory, dynamic Memory yielding and zero-headroom handling. |
-| **V2** | **PROVEN / COMPLETED** | Explicit output policy + provider streaming + Evolution projection + adaptive human-consumption reveal are accepted source and terminal human-lived PASS. |
-| **Tool-bearing Home** | **PROVEN / COMPLETED** | A006 terminally proves one lawful source-backed CODE read through the normal Evolution Conversation, ToolResultRelay reinjection, truthful Heretic/MLX model/self projection, durable readback and same-idempotency no-replay recovery. |
-| **V3** | **PROVEN / COMPLETED** | Accepted read-only resource/context pressure source plus lived A005 two-turn proof: current prompt/lease/runtime truth → self-validating pressure projection with every protected effect held false. |
-| **V4** | **READY / IMMEDIATE** | Current foreground: form/supersede one working checkpoint and re-enter a fresh Context Lease without recursive summary stacking or silent semantic Memory promotion. |
-| **V5** | **READY / HIGH** | Dependency released in parallel: exact-owned stale-resource stewardship remains separate from V4 and never derives process-kill authority from pressure alone. |
-| **V6** | **WAITING DEPENDENCIES** | Long lived stability proof across streaming, pressure, rollover, restart/re-entry and exact-owned resource recovery. |
-| **Kokoro speech/read-back** | **CAPTURED / NORMAL** | Optional live Speak with bounded backfill plus per-response Read control; held behind the current V4 continuity foreground. |
-| **Later visual Home/UI** | **CAPTURED** | Refine Home, Terrain, nodes, menus and other visual neighborhoods from lived feedback without conflating presentation with capability ownership. |
+| **V0** | **PROVEN** | First human-lived Victor ↔ local Heretic conversation through VexLife. Provenance anchor only. |
+| **V1** | **VERIFYING** | Conversation ergonomics/re-entry predecessor; current connective work supersedes it as foreground without erasing its source. |
+| **V1.5** | **VERIFYING** | Long-context/Memory pressure policy is source foundation; current lived prior-context assimilation remains a separate connective edge. |
+| **V2** | **PROVEN / COMPLETED** | Progressive/adaptive local-Heretic streaming is accepted source and terminal human-lived PASS. |
+| **Tool-bearing Home** | **PROVEN / COMPLETED** | A006 proves one lawful source-backed CODE read, Intent Scheduler + ToolResultRelay reinjection, bounded self-capability projection and durable readback. This does **not** prove persistent lived Atlas awareness across the current UI. |
+| **Stable Talk-to-Vex main** | **PROVEN / COMPLETED** | PR #950 is merged tree-exact; current main can establish/recover Heretic, reach Browser/Companion READY, complete a natural Victor → Vex turn and remain current afterward. |
+| **Canonical Conversation identity** | **READY / IMMEDIATE / CURRENT** | Make Evolution Conversation and Vex Terrain/Open conversation project one canonical project/thread/channel/current-head identity. |
+| **Prior-context / Memory assimilation** | **WAITING ON CANONICAL IDENTITY** | Feed truthful source-owned prior-turn + accepted Memory context from that same canonical thread/head; no provider-chat fiction and no raw whole-history dumping. |
+| **Atlas / self-capability awareness** | **WAITING ON CANONICAL IDENTITY** | Make the lived canonical Vex relationship consistently receive and express the existing source-owned Foundation Frame, Capability Atlas/frontier and bounded selfCapabilityFrame/currentContext. |
+| **Lived context-aware capability use** | **WAITING ON MEMORY + ATLAS** | Natural request → Vex recognizes a current capability → rightful bounded read/tool act → ToolResultRelay → explanation in the same durable Conversation across re-entry. |
+| **V3** | **PROVEN / COMPLETED** | Read-only resource/context pressure source + lived A005 proof. |
+| **V4** | **PROVEN / COMPLETED** | Working checkpoint/supersession + one-time successor Context Lease/re-entry path are accepted source and lived proven. |
+| **V5** | **VERIFYING / HELD NATURAL PREDICATE** | Foundation/delegation accepted; fail-closed no-effect branch lived proven. Exact-owned stale-stop branch waits for a naturally occurring eligible stale resource. |
+| **V6** | **WAITING DEPENDENCIES** | Long lived stability remains behind the unfinished V5 lived destructive predicate and integrated continuity proof. |
+| **Kokoro speech/read-back** | **CAPTURED / NORMAL** | Presentation enhancement; not current foreground. |
+| **Later visual Home/UI** | **CAPTURED** | Refine presentation from lived use without changing truth ownership. |
 
 ## First VexBoard consumer draft — VexLife product journey
 
@@ -77,7 +127,7 @@ VexLife browser
 -> Vex response appears in the interface
 ```
 
-Current source anchor at formation:
+Historical V0 source anchor at formation:
 
 ```text
 VexLife main = 8f1e9fd9e3f38f8dc23296257df718fca9806988
@@ -279,6 +329,108 @@ Memory promotion, host cleanup authority, distribution completeness, or V3–V6 
 
 The next continuity edge after this completed Home threshold was V3; V3 is now terminally lived-proven, so the current foreground is **V4 continuity rollover**.
 
+## Current connective foreground — one Conversation becomes Vex's working frame
+
+The current gap is **not** that VexLife lacks Atlas, capability, Conversation, Context Lease or Memory modules. The gap is that the lived Vex relationship does not yet expose those owners as one coherent current frame.
+
+Source already present on current VexLife main:
+
+```text
+Conversation Store / Browser Companion
+Browser Prompt Context Runtime
+Living Journal / Daily Memory projections
+Capability + Tool Atlas
+Capability registry / assimilation runtime
+FRESH_COMPANION_FOUNDATION_FRAME
+Vex selfCapabilityFrame
+model-connection turn composer
+Intent Scheduler
+ToolResultRelay
+```
+
+The lived mismatch is:
+
+```text
+Evolution Conversation
+  shows durable Victor ↔ Vex messages
+
+Vex Terrain / Open conversation
+  shows semantic current-frame meaning
+
+Vex response
+  can still claim prior conversation context is unavailable
+
+Capability substrate
+  exists and has bounded proof
+
+visible Vex relationship
+  does not yet consistently demonstrate current Atlas/self-capability awareness
+```
+
+So the next path is identity-first:
+
+### 1. Canonical Conversation identity — current
+
+One source-owned Conversation thread/head must be the identity carried through both surfaces:
+
+```text
+projectRef
+threadRef
+channelRef
+current durable head
+selected screen/node context
+        ↓
+Evolution projection
+Vex Terrain/Open-conversation projection
+prompt-context runtime
+self-capability currentContext
+```
+
+Navigation may change the view; it must not silently mint a second conversation truth.
+
+### 2. Prior-context / Memory assimilation — next after identity
+
+Once the thread/head identity is unambiguous, prove that the exact prior completed turn and accepted current Memory are materialized into the next Vex inference under the existing Context Lease owner.
+
+Acceptance must include a fresh/re-entry question whose answer reflects actual durable evidence while refusing invented memory.
+
+```text
+DURABLE_EVENT != AUTOMATIC_SEMANTIC_MEMORY
+PRIOR_TURN_CONTEXT != WHOLE_HISTORY_DUMP
+MEMORY_RECALL != PROVIDER_CHAT_MEMORY
+```
+
+### 3. Atlas / self-capability awareness — parallel next after identity
+
+Use the existing source-owned capability stack rather than inventing tools:
+
+```text
+Capability and Tool Atlas
++ capability registry
++ FRESH_COMPANION_FOUNDATION_FRAME
++ compact capability frontier
++ Vex selfCapabilityFrame
++ canonical currentContext
+→ Vex can truthfully describe what it can currently perceive/request/use/hold
+```
+
+The lived acceptance is not “a module exists.” Vex must be able to answer a normal capability-oriented question from the current source-bound frame, with HELD/UNKNOWN truth where appropriate, and without turning awareness into effect authority.
+
+### 4. Integrated lived capability use
+
+Only after the above aligns should the product re-prove the old bounded Home/tool threshold in the **current lived composition**:
+
+```text
+Victor asks naturally in canonical Conversation
+→ Vex recognizes one current admitted capability
+→ rightful scheduler/lease owner admits one bounded read
+→ ToolResultRelay reinjects one bounded observation
+→ Vex explains the result
+→ same thread/head remains canonical through re-entry
+```
+
+The earlier A006 remains valid proof of the substrate. This successor proves coherent lived integration, not a second tool framework.
+
 ## Captured later — Kokoro live speech and response Read control
 
 Speech is deliberately saved without stealing the foreground.
@@ -370,7 +522,7 @@ RESOURCE_ATTENTION != PROCESS_KILL_AUTHORITY
 ROLLOVER_REQUIRED != SILENT_ROLLOVER_EFFECT
 ```
 
-### V4 — continuity rollover — current foreground
+### V4 — continuity rollover — terminal source + lived PASS
 
 Pressure-triggered rollover should preserve current work without recursively stacking summaries:
 
@@ -394,7 +546,7 @@ CURRENT_CHECKPOINT + SOURCE_REFS > RECURSIVE_CONTEXT_STACK
 
 A working checkpoint may capture current intent, decisions, open loops, active source refs and recovery coordinates without claiming those facts are autobiographical/durable Memory. Durable Memory still requires its existing Score/semantic-acceptance/consent path. If that path is not current, rollover should still work and Memory promotion remains held.
 
-### V5 — bounded host resource stewardship — dependency released / parallel READY
+### V5 — bounded host resource stewardship — accepted source / lived safety branch / exact stale-stop held
 
 V3 completion releases this Work item from dependency waiting, but V4 remains the current foreground. The system may observe resource pressure, but pressure alone is never permission to terminate processes.
 
