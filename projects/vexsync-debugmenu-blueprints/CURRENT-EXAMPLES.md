@@ -6374,7 +6374,7 @@ VexSync candidate is formed directly on accepted Android main:
 
 ~~~text
 PR #188
-head = a43feebec19e001f109f5394f166cda145385e76
+head = a831f0aed03241e036d083f7ab57a74c7c1dfbaf
 base = 14bb2c4e82eb6cf55cbdc6ef5f2c65d38f97e45b
 ~~~
 
@@ -6392,3 +6392,48 @@ The session Boolean owner is removed. PR #186 remains parallel related work on t
 composed if it lands first; it is not modeled as a dependency gate.
 
 <!-- [VXG RealForever][VEXSYNC][THEMEMODE][PRODUCTION-REALIZATION][PR188] -->
+
+
+---
+
+## ThemeMode correction — Select survives the Android Switch
+
+The current production realization exposed a regression against an earlier VexSync lesson: making
+`ThemeModeFamily.Control.Toggle` let the current two-state Android Switch redefine the semantic
+relationship.
+
+Current correction:
+
+~~~text
+ThemeMode values
+  Light
+  Dark
+
+Family Control
+  Select(mode)
+
+same selected mode as CURRENT
+  -> stay
+
+different selected mode
+  -> admit selected mode
+
+NotSet
+  -> unresolved State
+  -> explicit Select(Light|Dark) resolves it
+  -> Select(NotSet) rejected
+~~~
+
+The existing Android Dark Mode Switch remains a target form. Its adapter reads CURRENT ThemeMode and
+emits the explicit peer selection required by that two-state form.
+
+Current Android PR #188:
+
+~~~text
+head = a831f0aed03241e036d083f7ab57a74c7c1dfbaf
+~~~
+
+`VexLifeTheme` and the shared Screen rendering bridge now consume `ThemeMode` rather than a
+Dark-biased Boolean. Leaf target renderers may still derive a local Boolean when required.
+
+<!-- [VXG RealForever][VEXSYNC][CURRENT-EXAMPLE][THEMEMODE][SELECT] -->
