@@ -27,14 +27,15 @@
         "project.vexlife.blueprint-source-of-truth",
         "project.vexlife-android.current-state-refinement",
         "github.pull.vexlife-android.193",
-        "github.commit.vexlife-android.7301c6ef257b53aeef79736cf388f68bee60fad6"
+        "github.commit.vexlife-android.7301c6ef257b53aeef79736cf388f68bee60fad6",
+        "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-26T07:26:46.000Z",
-      "updatedAt": "2026-10-29T10:00:18.000Z"
+      "updatedAt": "2026-10-29T10:32:16.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -62,14 +63,15 @@
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/runtime/AppActions.kt",
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt",
         "github.pull.vexlife-android.193",
-        "github.commit.vexlife-android.7301c6ef257b53aeef79736cf388f68bee60fad6"
+        "github.commit.vexlife-android.7301c6ef257b53aeef79736cf388f68bee60fad6",
+        "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-26T07:26:46.000Z",
-      "updatedAt": "2026-10-29T10:00:18.000Z"
+      "updatedAt": "2026-10-29T10:32:16.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -145,7 +147,8 @@
     "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/runtime/AppActions.kt",
     "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt",
     "github.pull.vexlife-android.193",
-    "github.commit.vexlife-android.7301c6ef257b53aeef79736cf388f68bee60fad6"
+    "github.commit.vexlife-android.7301c6ef257b53aeef79736cf388f68bee60fad6",
+    "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b"
   ],
   "formedAt": "2026-10-26T07:26:46.000Z"
 }
