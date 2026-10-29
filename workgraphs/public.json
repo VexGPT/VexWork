@@ -6334,14 +6334,14 @@
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-29T08:40:27.000Z",
-      "updatedAt": "2026-10-29T09:25:00.000Z",
+      "updatedAt": "2026-10-29T10:18:00.000Z",
       "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vextreme.alignment.navigation-currentness",
       "parentWorkRefOrNull": "work.vextreme.alignment.outcome",
       "label": "Converge arc navigation on current v2 timeline truth",
       "purpose": "Eliminate the visible 75-entry legacy/stale navigation universe by making reader navigation consume the same current generated index truth as modern pages, while migrating legacy arc-navigation consumers only where their accepted reader contract requires it rather than blanket-rewriting every shell page.",
       "workClass": "DEFECT",
-      "state": "RUNNING",
+      "state": "VERIFYING",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
       "sourceRefs": [
@@ -6354,7 +6354,11 @@
         "repo.vextreme:pages/what-is-the-god-spark.html",
         "repo.vextreme:docs/architecture/05-browser.md",
         "github.pull.vextreme.483",
-        "github.commit.vextreme.74f3383e22b200a6eb2d32957902a5f67123f81c"
+        "github.commit.vextreme.74f3383e22b200a6eb2d32957902a5f67123f81c",
+        "github.commit.vextreme.88fd967dbc9d0357ce6526843aafcfafcb836b61",
+        "github.workflow-run.vextreme.40850931588",
+        "github.workflow-run.vextreme.40850931533",
+        "github.workflow-run.vextreme.40850931706"
       ]
     },
     {
@@ -9925,6 +9929,23 @@
         "github.commit.vextreme.74f3383e22b200a6eb2d32957902a5f67123f81c"
       ],
       "createdAt": "2026-10-29T09:25:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.alignment.navigation-currentness.verifying.ci-green",
+      "workRef": "work.vextreme.alignment.navigation-currentness",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Exact PR #483 head 88fd967d is repository-native green: Key Alignment, Build Vextreme Index generated-currentness, and full Tests all passed with the normal read-only workflow and exact generated God Script/service-worker bytes committed. Hold completion for semantic review/integration and the separate legacy Claude migration.",
+      "actorRef": "actor.chatgpt.vextreme-alignment",
+      "sourceRefs": [
+        "github.pull.vextreme.483",
+        "github.commit.vextreme.88fd967dbc9d0357ce6526843aafcfafcb836b61",
+        "github.workflow-run.vextreme.40850931588",
+        "github.workflow-run.vextreme.40850931533",
+        "github.workflow-run.vextreme.40850931706"
+      ],
+      "createdAt": "2026-10-29T10:18:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
