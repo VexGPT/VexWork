@@ -213,7 +213,7 @@
       "label": "Close Terrain reader return-context vocabulary",
       "purpose": "Constrain the existing behavior-driving Terrain reader returnKind to the five meanings already present in source, fail unknown or stale history values closed to the neutral collection return, preserve entry/reader coordinate validation, and keep this implementation relationship local rather than promoting it into a new Family, Control, or generic relationship registry.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "COMPLETED",
       "workDisposition": "ACTIVE",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
@@ -228,14 +228,18 @@
         "github.pull.vextreme.502",
         "repo.vextreme:pages/terrain-map.html",
         "repo.vextreme:tests/45-terrain-journey.test.js",
-        "github.pull.vexlife-android.193"
+        "github.pull.vexlife-android.193",
+        "github.pull.vextreme.503",
+        "github.commit.vextreme.87571924f769fe4a1dad1084e2f68775f18d37b1",
+        "artifact.vexrelay.outer-return.sha256.878099edeed37d8972d7e304ea690e6cac62dc96407e6e4335bc814b0e7f8cb7",
+        "artifact.vexrelay.inner-return.sha256.3d38733874460ff8435e47052b38b21f66ef7f124f2f0eb2c4152f5244e5200c"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-29T13:41:00.000Z",
-      "updatedAt": "2026-10-29T13:43:00.000Z"
+      "updatedAt": "2026-10-29T14:26:30.000Z"
     }
   ],
   "transitions": [
@@ -302,6 +306,36 @@
         "github.actions.vextreme.pages.40879368161"
       ],
       "createdAt": "2026-10-29T13:09:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.architecture-convergence.terrain-reader-return-vocabulary.verifying.pr503-a004-assurance",
+      "workRef": "work.vextreme.architecture-convergence.terrain-reader-return-vocabulary",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Vex Relay A004 proved exact head a432d072fe75e6b4226107351aa260490637abac / tree 653a28eea5ca5da05a82c26beeb96356a1ac8514 with focused Terrain tests 18/18 PASS, Key Alignment PASS, work-coordination config PASS, zero candidate/harness/environment/unknown findings, and no repository mutation; fresh Independent Assurance reviewed the full two-file candidate and returned CLEAR.",
+      "actorRef": "actor.chatgpt.vextreme-architecture-convergence",
+      "sourceRefs": [
+        "github.pull.vextreme.503",
+        "artifact.vexrelay.outer-return.sha256.878099edeed37d8972d7e304ea690e6cac62dc96407e6e4335bc814b0e7f8cb7",
+        "artifact.vexrelay.inner-return.sha256.3d38733874460ff8435e47052b38b21f66ef7f124f2f0eb2c4152f5244e5200c"
+      ],
+      "createdAt": "2026-10-29T14:25:55.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.architecture-convergence.terrain-reader-return-vocabulary.completed.pr503-tree-exact-merge",
+      "workRef": "work.vextreme.architecture-convergence.terrain-reader-return-vocabulary",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "Vextreme PR #503 merged as 87571924f769fe4a1dad1084e2f68775f18d37b1, and accepted main's merge tree exactly equals the A004-proven candidate tree 653a28eea5ca5da05a82c26beeb96356a1ac8514 with the same two-path membrane. This bounded behavior/identity refinement has no separate visual acceptance predicate.",
+      "actorRef": "actor.chatgpt.vextreme-architecture-convergence",
+      "sourceRefs": [
+        "github.pull.vextreme.503",
+        "github.commit.vextreme.87571924f769fe4a1dad1084e2f68775f18d37b1",
+        "artifact.vexrelay.inner-return.sha256.3d38733874460ff8435e47052b38b21f66ef7f124f2f0eb2c4152f5244e5200c"
+      ],
+      "createdAt": "2026-10-29T14:26:30.000Z"
     }
   ],
   "sourceRefs": [
