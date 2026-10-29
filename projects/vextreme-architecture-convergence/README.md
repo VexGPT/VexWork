@@ -736,6 +736,12 @@ DISPLAY CLASS != SEMANTIC IDENTITY
 No generic telemetry root, event bus, analytics schema, navigation logger, Family, Control or Act is
 earned by this correction.
 
+Accepted source now exists through Vextreme PR #497 / merge
+`4c816c637220be3f995d2cb9f3e7dead529af6d8`. The exact source correction preserves navigation and
+Journey state unchanged, post-merge Tests passed, and GitHub Pages deployment passed. The Work remains
+`VERIFYING` because the value/readability of the richer Inspect projection is still a lived product
+predicate rather than something source tests can certify.
+
 ## Receive God localization seam — route to the existing owner
 
 The original lived observation also exposed a second seam: **Receive God does not currently have a real
@@ -863,8 +869,8 @@ work.vextreme.architecture-convergence.semantic-owner-map
     work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery
 
 work.vextreme.architecture-convergence.terrain-journey-inspection
-  RUNNING
-  project accepted Journey relationship + reason facts in Inspect
+  VERIFYING
+  accepted source + deployment; lived usefulness of richer Inspect projection still pending
 
 work.vextreme.architecture-convergence.terrain-reader-navigation
   VERIFYING

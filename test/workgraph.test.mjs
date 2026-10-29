@@ -324,9 +324,16 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
     vextremeArchitectureOwnerMap.sourceRefs.includes('work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery'),
     true,
   );
-  assert.equal(vextremeArchitectureJourneyInspection.state, 'RUNNING');
+  assert.equal(vextremeArchitectureJourneyInspection.state, 'VERIFYING');
   assert.deepEqual(vextremeArchitectureJourneyInspection.dependencyRefs, []);
   assert.equal(vextremeArchitectureJourneyInspection.sourceRefs.includes('repo.vextreme:lib/terrain-journey.js'), true);
+  assert.equal(vextremeArchitectureJourneyInspection.sourceRefs.includes('github.pull.vextreme.497'), true);
+  assert.equal(vextremeArchitectureJourneyInspection.sourceRefs.includes('github.commit.vextreme.4c816c637220be3f995d2cb9f3e7dead529af6d8'), true);
+  assert.ok(graph.transitions.some((transition) =>
+    transition.transitionRef === 'transition.vextreme.architecture-convergence.terrain-journey-inspection.verifying.pr497-merge'
+    && transition.priorState === 'RUNNING'
+    && transition.nextState === 'VERIFYING'
+  ));
   assert.equal(vextremeArchitectureTerrainReader.state, 'VERIFYING');
   assert.deepEqual(vextremeArchitectureTerrainReader.dependencyRefs, []);
   assert.equal(vextremeArchitectureTerrainReader.sourceRefs.includes('github.pull.vextreme.493'), true);

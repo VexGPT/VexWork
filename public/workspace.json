@@ -12341,7 +12341,7 @@
           "label": "Expose Terrain Journey causal context in Inspect",
           "purpose": "Use the existing Terrain Journey inspection surface to project the already-owned relationship and reason facts separately: correct the misleading journey-reason presentation symbol that currently renders a relationship, expose the stored causal reason without creating another event stream or behavior owner, and keep instrumentation downstream of accepted Journey truth.",
           "workClass": "TASK",
-          "state": "RUNNING",
+          "state": "VERIFYING",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vextreme.architecture-convergence.outcome",
@@ -12357,15 +12357,34 @@
             "repo.vextreme:pages/terrain-map.html",
             "repo.vextreme:lib/terrain-journey.js",
             "github.pull.vexlife-android.193",
-            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/designhistory/design/records/2026-10-16-002-name-ontology-as-design-evidence.md"
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/designhistory/design/records/2026-10-16-002-name-ontology-as-design-evidence.md",
+            "github.pull.vextreme.497",
+            "github.commit.vextreme.4c816c637220be3f995d2cb9f3e7dead529af6d8",
+            "github.actions.vextreme.tests.40874737532",
+            "github.actions.vextreme.pages.40874736897"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-29T12:30:00.000Z",
-          "updatedAt": "2026-10-29T12:30:00.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-10-29T12:40:00.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vextreme.architecture-convergence.terrain-journey-inspection.verifying.pr497-merge",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "Vextreme PR #497 is accepted source, GitHub Pages deployed the merge successfully, and post-merge repository Tests passed. The implementation only projects already-owned Terrain Journey relationship and reason facts; lived usefulness remains a separate verification predicate.",
+              "actorRef": "actor.chatgpt.vextreme-architecture-convergence",
+              "sourceRefs": [
+                "github.pull.vextreme.497",
+                "github.commit.vextreme.4c816c637220be3f995d2cb9f3e7dead529af6d8",
+                "github.actions.vextreme.tests.40874737532",
+                "github.actions.vextreme.pages.40874736897"
+              ],
+              "createdAt": "2026-10-29T12:40:00.000Z"
+            }
+          ]
         },
         {
           "workRef": "work.vextreme.architecture-convergence.terrain-reader-navigation",
@@ -12440,8 +12459,7 @@
           "label": "Active",
           "workRefs": [
             "work.vextreme.architecture-convergence.outcome",
-            "work.vextreme.architecture-convergence.semantic-owner-map",
-            "work.vextreme.architecture-convergence.terrain-journey-inspection"
+            "work.vextreme.architecture-convergence.semantic-owner-map"
           ]
         },
         {
@@ -12458,6 +12476,7 @@
           "laneRef": "lane.work.verify",
           "label": "Verify",
           "workRefs": [
+            "work.vextreme.architecture-convergence.terrain-journey-inspection",
             "work.vextreme.architecture-convergence.terrain-reader-navigation"
           ]
         },
