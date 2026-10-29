@@ -175,6 +175,122 @@ State / Control / Act / Effect depth
 These are construction questions, not a mandate to create a universal browser framework.
 
 
+## Name Ontology admission rule
+
+Canonical names in this Project follow the accepted VexLife **[Name Ontology]** method rather than an
+approved-word dictionary.
+
+The source-backed test is:
+
+~~~text
+hide implementation / KDoc
+-> cold-read the proposed name
+-> predict:
+     human question
+     rightful owner
+     consequence radius
+-> inspect actual source/product relationship
+-> compare prediction with reality
+-> preserve materially different reasonable interpretations
+-> rename / mint only when the prediction gap materially matters
+~~~
+
+Permanent distinctions inherited from the accepted Name Ontology evidence:
+
+~~~text
+NAME ONTOLOGY
+  = reproducible cold-read design method
+  != global naming registry
+  != approved-word catalog
+  != automatic rename authority
+
+CODE SYMBOL
+  != SEMANTIC IDENTITY
+
+longer / more specific name
+  != automatically more truthful
+
+historical name
+  = searchable continuity coordinate
+  != current authority
+~~~
+
+The Behavior Family blueprint adds another threshold:
+
+~~~text
+<Name>Family
+  should describe the isolated human/domain behavioral question
+  not the implementation mechanism
+
+Family is earned only when the question has independent current truth
+and enough independently understandable State / Control / Act / Effect pressure
+
+Controls
+  = stable affordance identity
+  != current meaning
+
+Acts
+  = human/product meaning from current truth
+
+Effects
+  = attempted runtime/provider transformation
+  != provider success
+~~~
+
+### Current Vextreme naming ledger
+
+The current website source already provides useful names. Preserve them unless real cold-read pressure
+proves they lie:
+
+~~~text
+Terrain Journey
+  CURRENT SOURCE TERM
+  owner:
+    serializable semantic-history state
+    relationship-aware Journey entries
+    browser Back / Forward restoration support
+
+Arc Navigation
+  CURRENT SOURCE TERM
+  owner:
+    content topology / collection membership
+    position / Previous / Next projection
+
+embedded reader
+  CURRENT ROLE DESCRIPTION
+  document realization / presentation surface
+  != semantic Family name
+
+group home
+  CURRENT CONTENT/PRESENTATION TERM
+  collection parent surface
+  != journey-history owner
+~~~
+
+One tempting candidate is explicitly held/rejected for now:
+
+~~~text
+TerrainNavigationFamily
+  COLD-READ PROBLEM:
+    predicts ownership of all Terrain movement
+    including Journey return, Arc topology, zoom/depth, route movement and possibly presentation
+
+  ACTUAL CURRENT OWNERSHIP:
+    those responsibilities remain split
+
+  DISPOSITION:
+    DO NOT MINT
+~~~
+
+If a Behavior Family is later earned around the existing Journey owner, the family name must first pass
+the question:
+
+> From the name alone, would a competent fresh reader predict "the visitor's current semantic journey and
+> return relationship" rather than "all navigation inside Terrain"?
+
+Likewise, existing UI labels such as Back / Previous / Next are not automatically canonical Control or
+Act names. Each must be classified against its rightful owner before promotion.
+
 ## Current semantic-owner map
 
 The first cross-seam map is now explicit enough to guide source work without introducing a new browser

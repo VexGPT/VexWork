@@ -12211,7 +12211,14 @@
           "repo.vextreme:docs/architecture/05-browser.md",
           "repo.vextreme:docs/architecture/17-fab-autoload.md",
           "repo.vextreme:pages/terrain-map.html",
-          "repo.vextreme:lib/vextreme-index-v2.js"
+          "repo.vextreme:lib/vextreme-index-v2.js",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/designhistory/design/records/2026-10-16-002-name-ontology-as-design-evidence.md",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/conversation/design/records/2026-10-16-003-name-ontology-hybrid-relay.md",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/maps/distribution/design/records/2026-10-16-001-name-ontology-delivery-route.md",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/maps/distribution/design/records/2026-10-16-002-name-ontology-relationship-truth.md",
+          "repo.vexlife-android:architecture/behavior/VEX-BEHAVIOR-FAMILY-BLUEPRINT.md",
+          "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+          "repo.vextreme:lib/terrain-journey.js"
         ],
         "formedAt": "2026-10-29T11:45:00.000Z"
       },
@@ -12282,7 +12289,14 @@
             "repo.vextreme:docs/architecture/05-browser.md",
             "repo.vextreme:docs/architecture/17-fab-autoload.md",
             "repo.vextreme:pages/terrain-map.html",
-            "repo.vextreme:lib/vextreme-index-v2.js"
+            "repo.vextreme:lib/vextreme-index-v2.js",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/designhistory/design/records/2026-10-16-002-name-ontology-as-design-evidence.md",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/conversation/design/records/2026-10-16-003-name-ontology-hybrid-relay.md",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/maps/distribution/design/records/2026-10-16-001-name-ontology-delivery-route.md",
+            "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/maps/distribution/design/records/2026-10-16-002-name-ontology-relationship-truth.md",
+            "repo.vexlife-android:architecture/behavior/VEX-BEHAVIOR-FAMILY-BLUEPRINT.md",
+            "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+            "repo.vextreme:lib/terrain-journey.js"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
