@@ -6172,3 +6172,43 @@ sha256 d825fea9989e742e79cadff99b6ece70a49bd050ac9d197994951f77fb427163
 ~~~
 
 <!-- [VXG RealForever][VEXSYNC][DIRECT-FAMILY][PR196][A001-HARNESS-A002-FORMED] -->
+
+
+### PR #196 SourceOwner continuity — A002 branch-binding defect -> A003 formed
+
+A002 did not reach canonical task execution. Its formation wrapper rotated the PR source branch identity
+with the attempt number and queried a nonexistent `...hardening-a002` branch.
+
+The recovered invariant is:
+
+~~~text
+attempt / request / package / nonce
+  rotate per attempt
+
+source branch / head / tree
+  remain the exact PR candidate identity
+~~~
+
+A003 therefore preserves:
+
+~~~text
+branch VXG-102926-vex-family-post193-hardening-a001
+head   b25a291d4b464f35fae67d3b45244704846cae63
+tree   88f2d53c27e509ad2db0dc6d8dc00a4f475a0b8d
+paths  7 exact
+~~~
+
+while rotating only A003 carrier/task identities and retaining the A001 focused-task correction.
+
+A003 wrapper:
+
+~~~text
+sha256 b7ae91c9f6a7de6eb48b9ab1c315b3e17d9ff2bfad3382503dfc5678bf99eded
+~~~
+
+A fresh independent #193/#196 architecture read also recovered the remaining async-currentness,
+terminal-history, broad SourceRef stop/join, logging physical-layering, and Process/Compound admission
+edges as intentionally open. No second concrete foundation defect was demonstrated, so those are not
+promoted into cleanup work merely because they are visible.
+
+<!-- [VXG RealForever][VEXSYNC][DIRECT-FAMILY][PR196][A002-BRANCH-A003-FORMED] -->
