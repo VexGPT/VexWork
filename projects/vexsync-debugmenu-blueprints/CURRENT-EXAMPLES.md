@@ -5083,3 +5083,96 @@ checkpoint.
 Repository Gradle/JVM proof remains pending.
 
 <!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][COMMITTED-OUTPUT-ACT-RUNNER-PRESSURE] -->
+
+---
+
+## Current checkpoint — Family Circuit foundation absorbs the process circuit
+
+Downstream Android #192 head: 9c450ad5bda41c43be27cf82582a557e4e66e57b
+
+The process-only / process -> commit -> Act discoveries are no longer only Relay-side pressure.
+Android now carries a Family specialization that owns the complete relationship as Family State:
+
+~~~text
+VexBehaviorV2CompoundFamily
+        |
+        v
+ComplexFamily
+
+ComplexFamily.current
+  = ComplexCompoundState
+      inputState
+      outputState
+      revision
+~~~
+
+The reusable construction law is:
+
+~~~text
+partial Input observation
+-> InputState.latest(incoming)
+-> complete latestStateInput
+-> Family.process(latestStateInput)
+-> OutputState
+-> COMMIT Family.current Compound State
+-> Act only when Output meaning changed
+-> rightful target Family / owner
+-> observed target CURRENT truth
+-> NEW Input
+-> process again
+~~~
+
+The clean teaching surface is:
+
+~~~text
+VexBehaviorV2FamilyCircuitTestSampleSuite
+~~~
+
+Its simulated ComplexFamily converges three current truths:
+
+~~~text
+ScreenFamily.State
+MusicQueueState
+ThemeModeState
+~~~
+
+Screen is a real Family because the circuit makes a semantic request of it:
+
+~~~text
+NeedsPlayerScreen(...)
+-> ScreenFamily.Control.Show(...)
+-> ScreenFamily.activate(Control)
+-> ScreenFamily CURRENT State
+-> observe as NEW ComplexInputState
+~~~
+
+MusicQueue and ThemeMode are observation-only owners in this sample and therefore do not receive fake
+Controls for symmetry.
+
+The Family foundation now owns the real synchronous process/commit/Act seam. The prior Relay wrapper
+problem is therefore no longer the production boundary for this Family architecture. Existing
+VexCompoundRelay consumers remain separate migration pressure.
+
+The remaining runner question is narrower:
+
+~~~text
+already-committed Output consequence
+-> asynchronous execution custody
+   Replaceable / Sequenced
+~~~
+
+That question must preserve committed Family truth and observation feedback, but it no longer decides
+who owns the Compound relationship.
+
+Current evidence:
+
+~~~text
+Family Circuit foundation source                 FORMED
+ComplexFamily -> CompoundFamily -> Family        FORMED
+clean TestSampleSuite                            AUTHORED
+isolated generic Kotlin hierarchy check          PASS
+repository Gradle/JVM                            PENDING
+~~~
+
+<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][FAMILY-CIRCUIT][COMPOUND-FAMILY] -->
+
