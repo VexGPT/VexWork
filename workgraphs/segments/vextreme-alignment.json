@@ -30,14 +30,16 @@
         "github.pull.vextreme.480",
         "github.pull.vextreme.482",
         "github.pull.vextreme.483",
-        "github.pull.vextreme.484"
+        "github.pull.vextreme.484",
+        "github.pull.vextreme.485",
+        "github.commit.vextreme.aa1a7a968fc75b02e67510daceef37a48fbdc662"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-29T08:40:27.000Z",
-      "updatedAt": "2026-10-29T10:08:01.000Z"
+      "updatedAt": "2026-10-29T10:24:00.000Z"
     },
     {
       "workDisposition": "ACTIVE",
@@ -86,7 +88,7 @@
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-29T08:40:27.000Z",
-      "updatedAt": "2026-10-29T10:19:02.000Z",
+      "updatedAt": "2026-10-29T10:24:00.000Z",
       "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vextreme.alignment.navigation-currentness",
       "parentWorkRefOrNull": "work.vextreme.alignment.outcome",
@@ -114,7 +116,9 @@
         "github.commit.vextreme.25725bc78ce6e6c8c13dd61b8c81aecba908ecb8",
         "github.workflow-run.vextreme.40852476491",
         "github.workflow-run.vextreme.40852476435",
-        "github.workflow-run.vextreme.40852476578"
+        "github.workflow-run.vextreme.40852476578",
+        "github.pull.vextreme.485",
+        "github.commit.vextreme.aa1a7a968fc75b02e67510daceef37a48fbdc662"
       ]
     },
     {
@@ -448,7 +452,9 @@
     "github.commit.vextreme.25725bc78ce6e6c8c13dd61b8c81aecba908ecb8",
     "github.workflow-run.vextreme.40852476491",
     "github.workflow-run.vextreme.40852476435",
-    "github.workflow-run.vextreme.40852476578"
+    "github.workflow-run.vextreme.40852476578",
+    "github.pull.vextreme.485",
+    "github.commit.vextreme.aa1a7a968fc75b02e67510daceef37a48fbdc662"
   ],
   "formedAt": "2026-10-29T08:40:27.000Z"
 }
