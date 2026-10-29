@@ -74,26 +74,61 @@ The structural Feature-Walk report still explicitly says
 `proofExecution=NOT_ASSERTED` and `journeyExecution=NOT_ASSERTED`; authoring the Journey does not
 invent a connected-device PASS.
 
-Fresh SourceOwner A002 is the current execution coordinate:
+Connected ThemeMode Journey evidence is now consumed.
 
 ~~~text
-formation sha256 = c8c672415c05fd1f145d0114602712b4fa33779b62b27762ec11fe1de6be50b4
-recipe           = ExactHeadSourceOwnerProof
-route            = VexRelay RUN_ROOT
-Local Workspace  = NOT USED
-GitHub Actions    = NOT USED
+PR #195 exact head
+  a9aa48f77fa61351cab4d13a4aad0db15a1623f8
+
+SourceOwner A003
+  PASS
+
+Fresh Independent Assurance
+  CLEAR_ON_EXACT_HEAD
+
+Connected Journey A003
+  case = shared.debug/toggle-theme-mode@baseline
+  physical Android target = PASS
+  :app:connectedDebugAndroidTest = BUILD SUCCESSFUL
+  repository device summary:
+    connectedTaskFailed=false
+    xmlFiles=1
+    executedTests=33
+    skippedTests=7
+    failedTests=0
 ~~~
 
-Requested exact-head proof:
-- focused `VexFeatureWalkContractTest`;
-- repository `vexVerifyJvm`;
-- `:app:assembleDebugAndroidTest`;
-- exact base/head/tree/five-path membrane + clean source;
-- exact-head review snapshot.
+The canonical A003 inner result is formally SAFE_FAILURE only because the task-local wrapper incorrectly
+asserted `executedTests=1`. That was not a repository contract: `vexJourneyCase=<caseRef>` narrows
+`VexJourneyInstrumentedTest` to exactly the named Journey case, while the module-wide
+`:app:connectedDebugAndroidTest` task legitimately runs other Android-test classes too.
 
-The older PR #195 A001 SourceOwner/Assurance remain historical evidence for the prior HELD head only.
+The exact ThemeMode Journey therefore passed and is preserved without replay.
 
-<!-- [VXG RealForever][VEXSYNC][THEMEMODE][PR188-MERGED][PR195-SOURCEOWNER-A002][CURRENT] -->
+~~~text
+outer RETURN sha256
+c820031ad5cd9f54bcf9ae761266d40d630383bf752db101268df62ae1337dcb
+
+retained inner RETURN sha256
+07213d85da13a58b32f44a0d6592bb9dce6fc2688b914c6b2599525864728de5
+~~~
+
+The work correctly remains `VERIFYING`. Connected Journey proof does not invent lived-human/product
+acceptance or lifecycle authority. The next current roundtrip edge is the human-visible result:
+
+~~~text
+Home
+-> Add
+-> Debug Menu
+-> Dark Mode control
+-> application appearance changes through ThemeMode
+-> return/back preserves coherent presentation
+-> reverse-trace that lived result to the same Feature-Walk / ThemeMode meaning
+~~~
+
+Approval, ready, merge, release and post-merge verification remain separate effects.
+
+<!-- [VXG RealForever][VEXSYNC][THEMEMODE][PR188-MERGED][PR195-JOURNEY-DEVICE-PASS][CURRENT] -->
 
 ## Human outcome
 
