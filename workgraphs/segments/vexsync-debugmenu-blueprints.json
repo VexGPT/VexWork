@@ -186,6 +186,38 @@
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-26T07:26:46.000Z",
       "updatedAt": "2026-10-29T14:52:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexsync.debugmenu-blueprints.walk-trace-second-feature-pressure",
+      "parentWorkRefOrNull": "work.vexsync.debugmenu-blueprints.outcome",
+      "label": "Pressure-test Walk Trace Grammar on a second feature",
+      "purpose": "After the ThemeMode patient-zero round trip is complete, apply the candidate Walk Trace Grammar to one materially different accepted feature such as VexMaps currentness or VexStream behavior. Falsify before generalizing: prove which Scenario/Checkpoint/Step/SemanticRef/Owner/Relationship/Effect/Observation/Evidence/Disposition/Continuation coordinates actually repeat without flattening existing owners into one runtime. Only repeated clean pressure may earn a shared VexArchitecture type/schema or broader Apply All machinery.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [
+        "work.vexsync.debugmenu-blueprints.debugmenu-origin-roundtrip"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "projects/vexsync-debugmenu-blueprints/README.md",
+        "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+        "github.pull.vexlife-android.188",
+        "github.commit.vexlife-android.62b919997b15479a234c4688af663e9aec4e0573",
+        "github.comment.vexlife-android.pr188.6499683574.sourceowner-a001-pass",
+        "github.review.vexlife-android.pr188.5699576285.assurance-clear"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-29T14:56:00.000Z",
+      "updatedAt": "2026-10-29T14:56:00.000Z"
     }
   ],
   "transitions": [
@@ -309,6 +341,22 @@
         "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md"
       ],
       "createdAt": "2026-10-29T14:52:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.walk-trace-second-feature-pressure.waiting-dependencies.formed-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.walk-trace-second-feature-pressure",
+      "priorState": "DECOMPOSED",
+      "nextState": "WAITING_DEPENDENCIES",
+      "reason": "ThemeMode provides one clean SourceOwner-proved and Assurance-cleared specimen for the candidate Walk Trace Grammar, but one specimen is insufficient authority for shared VexArchitecture machinery. Capture a second materially different feature pressure-test downstream of the first full Debug Menu round trip so generalization is falsified before promotion.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "projects/vexsync-debugmenu-blueprints/README.md",
+        "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+        "github.comment.vexlife-android.pr188.6499683574.sourceowner-a001-pass",
+        "github.review.vexlife-android.pr188.5699576285.assurance-clear"
+      ],
+      "createdAt": "2026-10-29T14:56:00.000Z"
     }
   ],
   "sourceRefs": [
