@@ -7925,10 +7925,10 @@ Feature Walk may truthfully expose a held checkpoint before production integrati
 ScreenCrawler must not pretend the Family path executed until the Debug Menu action actually enters
 ThemeModeFamily.
 
-The next implementation edge is therefore narrow: prove #188 on its exact head; when the
-VexLifeSession claim is released, integrate the real action/state owner; then bind the ThemeMode Feature
-Walk / dedicated Journey / focused proof backlinks so ScreenCrawler inherits that walk rather than
-inventing one.
+The next implementation edge is therefore narrow: #188 exact-head SourceOwner proof and fresh Assurance
+are complete. When the VexLifeSession claim is released, integrate the real action/state owner; then bind
+the ThemeMode Feature Walk / dedicated Journey / focused proof backlinks so ScreenCrawler inherits that
+walk rather than inventing one.
 
 <!-- [VXG RealForever][VEXSYNC][FAMILY-ACCEPTED][THEME-FULL-WALK-CONFIDENCE] -->
 
@@ -7942,8 +7942,9 @@ push.
 
 ~~~text
 IMMEDIATE
-  Android ThemeMode Family realization / proof
-  -> VexLife-Android PR #188
+  Android ThemeMode production realization
+  -> PR #188 semantic source is PROVED + CLEAR
+  -> next dependency is release/integration of the real VexLifeSession path
 
 PARALLEL / INDEPENDENT
   VexStream Artwork PR #186
@@ -8085,3 +8086,61 @@ resolve each target's rightful owner, realize the supported relationship/effect,
 back to the same walk coordinates.
 
 <!-- [VXG RealForever][VEXSYNC][WALK-TRACE-GRAMMAR][CANDIDATE] -->
+
+
+---
+
+## Intent bounds survive messy names
+
+The accepted Family source and high-confidence tests expose an important VexArchitecture law:
+
+~~~text
+NAME MAY IDENTIFY A COORDINATE
+!=
+NAME OWNS THE MEANING
+~~~
+
+Current Family relationship identity is bounded by:
+
+~~~text
+live Family instance
++ typed Control kind
++ optional typed ResourceId
+~~~
+
+For enum Controls, the enum entry name distinguishes sibling Control kinds. For sealed/data Controls,
+the concrete Control type supplies the kind. Arbitrary Control payload is intentionally excluded unless
+a typed ResourceId explicitly earns narrower identity.
+
+Behavior is authored somewhere else:
+
+~~~text
+CURRENT State
++ typed Control
+-> exhaustive act(...)
+-> one lawful Act or noAct()
+~~~
+
+Therefore a poor label, awkward class name, UI wording change, or noisy payload cannot silently expand
+the behavior beyond the relationship that the Family actually authors. Names are navigation/coordinate
+material; semantic authority remains in the typed owner and exhaustive relationship.
+
+This is a useful portability invariant for Apply All and the Walk Trace Grammar:
+
+~~~text
+human intent
+-> stable semantic coordinate
+-> rightful typed owner
+-> bounded relationship
+-> admitted effect
+-> evidence
+
+display/source naming quality
+  may improve readability
+  but is not allowed to become behavioral authority
+~~~
+
+No new naming framework is earned here. The current work is to preserve this invariant through the
+ThemeMode full production walk and then pressure it against a materially different second feature.
+
+<!-- [VXG RealForever][VEXSYNC][INTENT-BOUNDS][NAME-NON-AUTHORITY] -->
