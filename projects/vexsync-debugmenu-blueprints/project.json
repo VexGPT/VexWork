@@ -28,7 +28,11 @@
     "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/debug/README.md",
     "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/debug/design/README.md",
     "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/runtime/AppActions.kt",
-    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt"
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt",
+    "work.vexsync.debugmenu-blueprints.vexboard-architecture-convergence",
+    "work.vexboard.vexsync-architecture-convergence",
+    "github.pull.vexwork.184",
+    "github.commit.vexwork.0d55e3aa83b7972cc83ef9fe2a7266311932a7c8"
   ],
   "formedAt": "2026-10-26T07:26:46.000Z"
 }
