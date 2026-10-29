@@ -8221,3 +8221,50 @@ This remains a test-architecture coordinate alignment. It does not become a univ
 runtime and does not alter production semantics. Lifecycle/ready/merge authority remains separate.
 
 <!-- [VXG RealForever][VEXSYNC][WALK-TRACE][PR194-PROVED-CLEAR] -->
+
+
+---
+
+## ThemeMode Feature Walk — explicit hold before production convergence
+
+Android PR #195 now gives the patient-zero ThemeMode feature one Android-local completion identity:
+
+~~~text
+feature.vexlife.theme-mode
+  /W01 Debug Menu theme toggle
+    /C01 Toggle Theme Mode from Debug Menu
+      /P01 installed toggle realization
+~~~
+
+The Case is REQUIRED but HELD. Its current hold is exact:
+
+~~~text
+ThemeMode Family semantics
+  SourceOwner PASS + Assurance CLEAR on PR #188
+
+installed realization
+  current DebugMenu action still enters VexLifeSession Boolean callback
+  instead of ThemeModeFamily.Control.Toggle
+~~~
+
+Therefore no dedicated ThemeMode Journey is admitted yet. The release predicate requires accepted
+production source to route the existing Debug Menu action through ThemeModeFamily and then one dedicated
+Feature-Walk Journey to execute that installed path while observing the resulting theme projection.
+
+PR #195 exact candidate:
+
+~~~text
+head  5793a8730d820362dd33a761cb26447545a8a8c8
+tree  03888de7b31cb5bde14f0e27e9f38b95db12ef3d
+paths 3 exact
+~~~
+
+SourceOwner A001 host wrapper is formed at:
+
+~~~text
+sha256 c4740668d26f9887c1681b9d6559e39d03798a956d4c281ccefbd197cfd7738c
+~~~
+
+This is completion traceability, not production behavior and not a shadow Journey.
+
+<!-- [VXG RealForever][VEXSYNC][THEME-MODE][FEATURE-WALK][PR195-HELD] -->
