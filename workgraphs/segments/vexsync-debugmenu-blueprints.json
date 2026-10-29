@@ -293,7 +293,11 @@
         "evidence.vexsync.pr196.sourceowner.a001.return.sha256.d57a3a425fe26cc9d4d860445c4d48ebe8cef91ae0f07844083f3c2a74627591",
         "evidence.vexsync.pr196.sourceowner.a001.inner-return.sha256.4afe1fe50fc486910b1a53146c8afbc3f417c0d9a9325cedf7af9e90d18c88c4",
         "github.comment.vexlife-android.pr196.6501035776.sourceowner-a002-formed",
-        "evidence.vexsync.pr196.sourceowner.a002.formation.sha256.d825fea9989e742e79cadff99b6ece70a49bd050ac9d197994951f77fb427163"
+        "evidence.vexsync.pr196.sourceowner.a002.formation.sha256.d825fea9989e742e79cadff99b6ece70a49bd050ac9d197994951f77fb427163",
+        "github.comment.vexlife-android.pr196.6501136553.sourceowner-a002-pre-carrier-branch-binding",
+        "github.comment.vexlife-android.pr196.6501175432.sourceowner-a003-formed",
+        "evidence.vexsync.pr196.sourceowner.a003.formation.sha256.b7ae91c9f6a7de6eb48b9ab1c315b3e17d9ff2bfad3382503dfc5678bf99eded",
+        "review.fresh-instance.vex-family-pr193-open-edges.20261029b"
       ],
       "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
       "nextProcessRefs": [
@@ -302,7 +306,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-29T15:55:00.000Z",
-      "updatedAt": "2026-10-29T16:05:00.000Z"
+      "updatedAt": "2026-10-29T16:18:00.000Z"
     }
   ],
   "transitions": [
@@ -557,6 +561,22 @@
         "evidence.vexsync.pr196.sourceowner.a002.formation.sha256.d825fea9989e742e79cadff99b6ece70a49bd050ac9d197994951f77fb427163"
       ],
       "createdAt": "2026-10-29T16:05:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.direct-family-post193-hardening.running.a002-branch-binding-a003-formed-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.direct-family-post193-hardening",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING",
+      "reason": "PR #196 A002 did not execute the canonical Relay task: its formation wrapper incorrectly rotated the target PR branch from the real ...-a001 branch to nonexistent ...-a002 and failed provider preflight with GitHub 404. A003 preserves the exact PR source branch/head/tree while rotating only attempt/carrier identities and retains the corrected Android-library focused test task. A fresh independent architecture read also rediscovered the intentionally open async-currentness, terminal-history, broad SourceRef stop/join, logging-layering, and Process/Compound admission seams; no second concrete correctness defect was established, so those remain pressure-driven rather than being adopted as new cleanup work.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.comment.vexlife-android.pr196.6501136553.sourceowner-a002-pre-carrier-branch-binding",
+        "github.comment.vexlife-android.pr196.6501175432.sourceowner-a003-formed",
+        "evidence.vexsync.pr196.sourceowner.a003.formation.sha256.b7ae91c9f6a7de6eb48b9ab1c315b3e17d9ff2bfad3382503dfc5678bf99eded",
+        "review.fresh-instance.vex-family-pr193-open-edges.20261029b"
+      ],
+      "createdAt": "2026-10-29T16:18:00.000Z"
     }
   ],
   "sourceRefs": [
@@ -620,7 +640,11 @@
     "evidence.vexsync.pr196.sourceowner.a001.return.sha256.d57a3a425fe26cc9d4d860445c4d48ebe8cef91ae0f07844083f3c2a74627591",
     "evidence.vexsync.pr196.sourceowner.a001.inner-return.sha256.4afe1fe50fc486910b1a53146c8afbc3f417c0d9a9325cedf7af9e90d18c88c4",
     "github.comment.vexlife-android.pr196.6501035776.sourceowner-a002-formed",
-    "evidence.vexsync.pr196.sourceowner.a002.formation.sha256.d825fea9989e742e79cadff99b6ece70a49bd050ac9d197994951f77fb427163"
+    "evidence.vexsync.pr196.sourceowner.a002.formation.sha256.d825fea9989e742e79cadff99b6ece70a49bd050ac9d197994951f77fb427163",
+    "github.comment.vexlife-android.pr196.6501136553.sourceowner-a002-pre-carrier-branch-binding",
+    "github.comment.vexlife-android.pr196.6501175432.sourceowner-a003-formed",
+    "evidence.vexsync.pr196.sourceowner.a003.formation.sha256.b7ae91c9f6a7de6eb48b9ab1c315b3e17d9ff2bfad3382503dfc5678bf99eded",
+    "review.fresh-instance.vex-family-pr193-open-edges.20261029b"
   ],
   "formedAt": "2026-10-26T07:26:46.000Z"
 }
