@@ -912,6 +912,57 @@ FAB PRESENTATION PROFILE
 != SELECTED-LANGUAGE AUTHORITY
 ~~~
 
+## Terrain reader return vocabulary — close the behavior-driving values
+
+The accepted #498 refactor established one mutation owner for reader return context. A subsequent source
+audit found that the owner still accepted any non-empty string as `activeReaderReturnKind`, even though
+only five values have behavior in current Terrain source:
+
+~~~text
+collection
+curiosity-overview
+entry
+group-home
+reader
+~~~
+
+This matters because the value is not merely inspection text. It changes Back labels and outward-return
+behavior and is persisted through browser presentation history.
+
+The scalability refinement is deliberately local:
+
+~~~text
+known current return kind
+-> preserve it
+
+unknown / stale history value
+-> fail closed to collection
+
+entry / reader coordinates
+-> remain valid only for their matching kind
+~~~
+
+Vextreme PR #502 is the current stacked candidate, formed on top of Journey-Inspect PR #501 because both
+rows legitimately touch `pages/terrain-map.html` and `tests/45-terrain-journey.test.js`. The stack is a
+coordination relationship, not a semantic dependency between Journey inspection and reader-return meaning.
+
+Exact #502 candidate head `18176785ddd7858686592ddcfb027522bb5ba997` has all three Tests shards plus
+`all-shards-passed` green and Key Alignment green. Build Index remains red only on the same unrelated
+18 generated localization/currentness paths already observed on prior Terrain work.
+
+Name Ontology remains bounded:
+
+~~~text
+closed local return vocabulary
+!= TerrainNavigationFamily
+!= canonical Control registry
+!= generic relationship identity system
+~~~
+
+The architecture lesson taken from VexLife-Android PR #193 is the ownership principle, not its Kotlin
+shape: behavior-driving meaning is closed at the rightful owner before downstream history/presentation
+consumes it.
+
 ## Current Work
 
 ~~~text
@@ -925,15 +976,22 @@ work.vextreme.architecture-convergence.semantic-owner-map
 
 work.vextreme.architecture-convergence.terrain-journey-inspection
   VERIFYING
-  accepted source + deployment; lived usefulness of richer Inspect projection still pending
+  richer Inspect projection is accepted, but lived testing found the drawer occluded behind the embedded reader
+  PR #501 is the bounded visibility candidate; lived usefulness remains pending after acceptance/deployment
 
 work.vextreme.architecture-convergence.terrain-reader-return-context
   COMPLETED
   one return-context mutation owner accepted through PR #498
 
+work.vextreme.architecture-convergence.terrain-reader-return-vocabulary
+  RUNNING
+  PR #502 closes the existing five behavior-driving return meanings at that mutation owner
+  exact-head Tests + Key Alignment pass; stacked on #501 only because the two rows share the same source paths
+
 work.vextreme.architecture-convergence.terrain-reader-navigation
   VERIFYING
-  accepted source + deployment; lived Arc-parent browser confirmation still pending
+  Back from The 100% Holy Truth Conditional has positive lived evidence
+  the separate lower Arc Back defect remains owned by its existing lane rather than duplicated here
 ~~~
 
 The owner map should grow only from observed seams. Do not pre-author a complete website ontology or
