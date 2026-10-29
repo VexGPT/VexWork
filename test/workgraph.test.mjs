@@ -12,6 +12,7 @@ const toCompletionProjectSource = read('projects/vexlife-tocompletion/project.js
 const connectedServicesProjectSource = read('projects/vexlife-connected-services/project.json');
 const operationalConsoleProjectSource = read('projects/vexwork-operational-console/project.json');
 const vexboardProjectSource = read('projects/vexboard/project.json');
+const vexboardSegmentSource = read('workgraphs/segments/vexboard.json');
 const blueprintProjectSource = read('projects/vexlife-blueprint-source-of-truth/project.json');
 const androidProofProjectSource = read('projects/android-proof-orchestration/project.json');
 const vexsyncDebugMenuProjectSource = read('projects/vexsync-debugmenu-blueprints/project.json');
@@ -35,7 +36,7 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   const operationalConsoleProject = createProject(operationalConsoleProjectSource);
   assert.equal(projectWorkRefs(operationalConsoleProject, graph).length, 24);
   const vexboardProject = createProject(vexboardProjectSource);
-  assert.equal(projectWorkRefs(vexboardProject, graph).length, 11);
+  assert.equal(projectWorkRefs(vexboardProject, graph).length, vexboardSegmentSource.items.length);
   const blueprintProject = createProject(blueprintProjectSource);
   assert.equal(projectWorkRefs(blueprintProject, graph).length, 14);
   const androidProofProject = createProject(androidProofProjectSource);

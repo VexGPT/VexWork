@@ -164,11 +164,21 @@ test('VexBoard projects completed navigation/usability foundations with Source P
   const workspace = buildWorkspace();
   const vexboard = workspace.projects.find((entry) => entry.project.projectRef === 'project.vexboard');
   assert.ok(vexboard);
-  assert.equal(vexboard.summary.workItemCount, 11);
-  assert.equal(vexboard.summary.openWorkItemCount, 6);
-  assert.equal(vexboard.summary.potentialCount, 1);
-  assert.equal(vexboard.summary.needsHumanCount, 0);
-  assert.equal(vexboard.summary.completedCount, 5);
+  const terminalWorkRefs = new Set(
+    vexboard.lanes
+      .filter((lane) => ['lane.work.done', 'lane.work.archive'].includes(lane.laneRef))
+      .flatMap((lane) => lane.workRefs),
+  );
+  const needsHumanRefs =
+    vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.needs-human')?.workRefs ?? [];
+  assert.equal(vexboard.summary.workItemCount, vexboard.items.length);
+  assert.equal(vexboard.summary.openWorkItemCount, vexboard.items.length - terminalWorkRefs.size);
+  assert.equal(
+    vexboard.summary.potentialCount,
+    vexboard.items.filter((item) => item.workClass === 'POTENTIAL').length,
+  );
+  assert.equal(vexboard.summary.needsHumanCount, needsHumanRefs.length);
+  assert.equal(vexboard.summary.completedCount, terminalWorkRefs.size);
   assert.equal(vexboard.items.find((item) => item.workRef === 'work.vexboard.project-architecture').state, 'COMPLETED');
   const boardgraph = vexboard.items.find((item) => item.workRef === 'work.vexboard.boardgraph-contract');
   const canvas = vexboard.items.find((item) => item.workRef === 'work.vexboard.canvas-projection');
@@ -179,6 +189,12 @@ test('VexBoard projects completed navigation/usability foundations with Source P
   const composition = vexboard.items.find((item) => item.workRef === 'work.vexboard.fractal-semantic-composition-spatial-layout');
   const screenshotPilot = vexboard.items.find((item) => item.workRef === 'work.vexboard.vexstream-screenshot-pilot');
   const businessGraduation = vexboard.items.find((item) => item.workRef === 'work.vexboard.later.businessfactory-guided-company-formation');
+  const convergence = vexboard.items.find(
+    (item) => item.workRef === 'work.vexboard.vexsync-architecture-convergence',
+  );
+  assert.equal(convergence.state, 'RUNNING');
+  assert.equal(convergence.authorityDisposition, 'AUTHORIZED_BOUNDED');
+  assert.equal(convergence.effectDisposition, 'EFFECTS_BOUND');
   assert.deepEqual([boardgraph.state, canvas.state, journey.state], ['COMPLETED', 'COMPLETED', 'COMPLETED']);
   assert.equal(canvas.authorityDisposition, 'AUTHORIZED_BOUNDED');
   assert.equal(canvas.effectDisposition, 'EFFECTS_BOUND');

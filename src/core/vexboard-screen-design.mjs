@@ -169,7 +169,8 @@ function resolveMarginSpec(design, spec, label) {
 export function resolveBoundedResponsiveMetric(metric, actualExtentDp) {
   positive(actualExtentDp, 'actualExtentDp');
   normalizeBoundedMetric(metric, 'metric');
-  return clamp(actualExtentDp * metric.preferredPercent, metric.minDp, metric.maxDp);
+  const preferredDp = Math.round((actualExtentDp * metric.preferredPercent) * 1e9) / 1e9;
+  return clamp(preferredDp, metric.minDp, metric.maxDp);
 }
 
 function normalizeSizeSpec(spec, label) {

@@ -4929,3 +4929,189 @@ This clarification does **not** create a new universal schema, new Android depen
 No human host action is required to preserve this design.
 
 <!-- [VXG RealForever][VEXWORK][VEXBOARD][PROJECT-ARCHITECTURE] -->
+
+---
+
+## VexSync convergence baseline — self-apply the architecture
+
+The current VexSync Direct Family / typed identity / Kotlin round-trip work is now an explicit
+VexBoard consumer rather than adjacent context.
+
+~~~text
+VexSync
+  owns the cross-project semantic/process convergence trajectory
+
+VexBoard
+  owns VexBoard product/source evolution
+
+VexLife-Android
+  owns the Direct Family / execution candidate and Kotlin proof source
+
+VexBoard projection
+  consumes those relationships
+  != becomes their source owner
+~~~
+
+Current foundation baseline:
+
+~~~text
+Android PR #193
+  typed Family / Control / ResourceId / Relationship boundary
+
+VexWork merge 0d55e3aa83b7972cc83ef9fe2a7266311932a7c8
+  first flat four-region ThemeMode map
+  effect-free Family Kotlin construction preview
+  mapped Kotlin test candidate
+
+lived browser evidence
+  VexBoard shell header renders
+  application body is blank
+  -> browser recovery is the first current implementation edge
+~~~
+
+The next VexBoard work is:
+
+~~~text
+work.vexboard.vexsync-architecture-convergence
+
+1. recover the blank browser surface
+2. make VexBoard itself visibly reflect the trusted architecture
+3. keep the first self-map flat/readable before adding depth-dimensional behavior
+4. preserve one language from semantic map -> Kotlin construction candidate -> mapped test
+5. keep target repository mutation behind separately admitted source authority
+~~~
+
+This is not a project-parenting change:
+
+~~~text
+VEXSYNC CONVERGENCE
+!= VEXSYNC OWNS VEXBOARD
+
+CROSS-PROJECT WORK RELATIONSHIP
+!= PROJECT HIERARCHY
+~~~
+
+Depth/fractal work remains a later pressure after the flat self-application is lived and readable.
+
+First recovery candidate on PR #184:
+
+~~~text
+blank-screen symptom
+  shell/header rendered
+  module application body did not start
+
+repair posture
+  optional Kotlin-construction module is now removed from the boot-critical static import graph
+  familyKotlin loads lazily only when a board actually needs it
+  visible loading/error fallback prevents silent all-white failure
+
+source-static checks
+  classic boot fallback script parses
+  main module script parses
+  static FamilyKotlin import absent
+  lazy FamilyKotlin import present
+
+lived Pages recovery
+  PENDING
+~~~
+
+Do not infer the exact original browser exception until lived/deployed evidence exposes it. The repair is
+a bounded fail-soft architecture correction that protects the VexBoard root from one optional child capability.
+
+### First self-application candidate — flat VexBoard architecture
+
+The recovery branch now carries one VexBoard-owned self-application board:
+
+~~~text
+board.vexboard.architecture-convergence
+
+STATE
+  BoardGraph
+  BoardProjection
+
+CONTROL / ACT
+  BoardControl
+  -> applyBoardAct
+  -> next Graph / Projection State
+
+TYPED IDENTITY / RELATIONSHIP
+  nodeRef
+  relationshipRef
+  projectionItemRef
+  BoardGraph.relationships (fromRef -> toRef)
+
+EXECUTION
+  controlFor
+  -> expected State fingerprints
+  -> applyBoardControl
+  -> applyBoardAct
+
+effect boundary
+  browser-local draft effects only
+  source/provider writes = none
+~~~
+
+This is deliberately a projection of existing VexBoard-owned source through the architecture roles that
+VexSync pressure made easier to see. It does **not** rename BoardGraph into a Family, retrofit a Kotlin
+generic ResourceId type into JavaScript, or make Android the semantic owner of VexBoard. The typed-resource
+lesson is applied at VexBoard's actual boundary: stable refs have explicit roles and labels remain
+presentation rather than identity.
+
+The board is a separate built-in from the existing "how to begin" self-map so onboarding/navigation and
+architecture explanation do not become one overloaded artifact. The first self-application stays flat;
+depth-dimensional behavior still waits for lived readability pressure.
+
+Source-static regression coverage now requires:
+- the built-in board to normalize under the existing BoardGraph/BoardProjection contract;
+- the four regions to remain explicit;
+- Control -> Act and execution relationships to remain visible;
+- the browser-local no-source-write boundary to remain explicit.
+
+Lived browser proof remains pending until this candidate is deployed.
+
+### Lived blank-screen root cause — browser boot crossed into Node-only core
+
+Victor's lived browser screenshot re-confirmed the deployed failure shape:
+
+~~~text
+classic VexBoard header renders
+module-owned application body remains blank
+~~~
+
+The deployed main boot graph now has a source-conclusive cause:
+
+~~~text
+vexboard/index.html
+  -> static src/core/vexboard-android-source-projector.mjs
+  -> src/core/vexboard.mjs
+  -> src/core/semantic.mjs
+  -> import crypto from 'node:crypto'
+~~~
+
+`node:crypto` is a Node runtime module specifier, not a browser-resolvable module. Because the Android
+projector sat in the static browser boot closure, the browser rejected the module graph before
+`landing()` could render.
+
+The correction stays at the narrow boundary where the dependency was unnecessary:
+
+~~~text
+Android source projector
+  before -> core vexboard.mjs -> Node semantic hashing
+  now    -> shared browser-safe BoardGraph / BoardProjection normalization
+
+core Node semantic hashing
+  unchanged
+  remains available to Node-owned core consumers
+~~~
+
+This preserves the Android projector's actual need: normalize the graph/projection it constructs before
+returning a read-only browser draft. The projector already strips semantic fingerprints from the draft,
+so pulling the Node hashing owner into the browser added boot coupling without adding browser truth.
+
+A deterministic regression now walks the transitive static browser boot import closure and rejects
+any non-relative/bare module specifier. That would have caught `node:crypto` before deployment.
+
+The earlier Family-Kotlin lazy-load and visible boot-error fallback remain useful secondary hardening, but
+they are no longer described as the causal blank-screen repair.
+<!-- [VXG RealForever][VEXBOARD][VEXSYNC-CONVERGENCE][FOUNDATION-BASELINE] -->
+

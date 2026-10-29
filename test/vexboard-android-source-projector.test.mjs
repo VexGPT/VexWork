@@ -236,23 +236,26 @@ test('VexLife Android POC snapshot projects deterministically without source eff
   assert.ok(Math.abs(playFab.bounds.width - 28.8) < 0.001);
   assert.ok(Math.abs(playFab.bounds.height - 28.8) < 0.001);
   assert.ok(Math.abs(shuffleFab.bounds.y - playFab.bounds.y - 36) < 0.001);
+  const boardUnits = (dp) => Math.round((dp * 0.72) * 10) / 10;
+  const horizontalFabInset = boardUnits(design.metrics.scaffoldFabInsetHorizontal.referenceDp);
+  const verticalFabInset = boardUnits(design.metrics.scaffoldFabInsetVertical.referenceDp);
   assert.ok(Math.abs(
     (loadedFrame.bounds.x + loadedFrame.bounds.width) -
     (playFab.bounds.x + playFab.bounds.width) -
-    11.52
+    horizontalFabInset
   ) < 0.001);
   assert.ok(Math.abs(
     (loadedFrame.bounds.y + loadedFrame.bounds.height) -
     (shuffleFab.bounds.y + shuffleFab.bounds.height) -
-    11.52
+    verticalFabInset
   ) < 0.001);
 
   const sheet = projection.items.find(
     (item) => item.projectionItemRef === 'item.vexstream.connection-sheet',
   );
   assert.equal(sheet.parentProjectionItemRefOrNull, 'item.vexstream.state.loaded');
-  assert.ok(Math.abs(sheet.bounds.width - (412 * 0.72)) < 0.001);
-  assert.ok(Math.abs(sheet.bounds.height - (460 * 0.72)) < 0.001);
+  assert.ok(Math.abs(sheet.bounds.width - boardUnits(412)) < 0.001);
+  assert.ok(Math.abs(sheet.bounds.height - boardUnits(460)) < 0.001);
   assert.ok(Math.abs(
     (loadedFrame.bounds.y + loadedFrame.bounds.height) -
     (sheet.bounds.y + sheet.bounds.height)

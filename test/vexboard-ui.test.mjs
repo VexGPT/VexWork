@@ -11,6 +11,7 @@ import {
 
 const page = fs.readFileSync(new URL('../vexboard/index.html', import.meta.url), 'utf8');
 const selfMap = JSON.parse(fs.readFileSync(new URL('../vexboard/self-map.json', import.meta.url), 'utf8'));
+const architectureMap = JSON.parse(fs.readFileSync(new URL('../vexboard/architecture-map.json', import.meta.url), 'utf8'));
 const publishMap = JSON.parse(fs.readFileSync(new URL('../vexboard/publish-map.json', import.meta.url), 'utf8'));
 const prototypeDemo = JSON.parse(fs.readFileSync(new URL('../vexboard/prototype-demo.json', import.meta.url), 'utf8'));
 const prototypeDefinition = JSON.parse(fs.readFileSync(new URL('../vexboard/prototype-demo.prototype.json', import.meta.url), 'utf8'));
@@ -19,9 +20,44 @@ const intentTopology = JSON.parse(fs.readFileSync(new URL('../projects/vexboard/
 const patientZeroCatalog = JSON.parse(fs.readFileSync(new URL('../projects/vexboard/examples/board-source-catalog.json', import.meta.url), 'utf8'));
 const themeModeBoard = JSON.parse(fs.readFileSync(new URL('../projects/vexboard/examples/vexlife-debug-menu-theme-mode.board.json', import.meta.url), 'utf8'));
 
+const repositoryRootUrl = new URL('../', import.meta.url);
+
+function staticImportSpecifiers(source) {
+  return [...source.matchAll(/^\s*import\s+(?:[\s\S]*?\s+from\s+)?['"]([^'"]+)['"];\s*$/gm)]
+    .map((match) => match[1]);
+}
+
+function browserBootModuleClosure() {
+  const inlineModule = page.match(/<script type="module">\s*([\s\S]*?)<\/script>/)?.[1];
+  assert.ok(inlineModule, 'VexBoard module script required');
+  const entryUrl = new URL('../vexboard/index.html', import.meta.url);
+  const pending = staticImportSpecifiers(inlineModule)
+    .map((specifier) => ({ specifier, parentUrl: entryUrl }));
+  const visited = new Set();
+
+  while (pending.length) {
+    const { specifier, parentUrl } = pending.pop();
+    assert.ok(
+      specifier.startsWith('.'),
+      `browser boot import ${specifier} from ${parentUrl.pathname} must be repository-relative`,
+    );
+    const moduleUrl = new URL(specifier, parentUrl);
+    assert.ok(moduleUrl.href.startsWith(repositoryRootUrl.href), 'browser boot import must stay in repository');
+    if (visited.has(moduleUrl.href)) continue;
+    visited.add(moduleUrl.href);
+    const source = fs.readFileSync(moduleUrl, 'utf8');
+    for (const child of staticImportSpecifiers(source)) {
+      pending.push({ specifier: child, parentUrl: moduleUrl });
+    }
+  }
+
+  return visited;
+}
+
 test('VexBoard Pages entry exposes create/open/read-only/fork/save-draft workflow', () => {
   assert.match(page, /Create new/);
   assert.match(page, /Open VexBoard self-map/);
+  assert.match(page, /Open VexBoard architecture/);
   assert.match(page, /Open prototype demo/);
   assert.match(page, /Source examples/);
   assert.match(page, /Open system anatomy example/);
@@ -39,6 +75,18 @@ test('read-only fork preserves the actual draft identity as the active board coo
   assert.ok(forkLine);
   assert.equal((forkLine.match(/ref\('draft\.vexboard'\)/g) ?? []).length, 1);
   assert.doesNotMatch(forkLine, /boardRef:ref\('draft\.vexboard'\)/);
+});
+
+test('browser boot module closure stays browser-resolvable and excludes Node-only core imports', () => {
+  const closure = browserBootModuleClosure();
+  const androidProjectorUrl = new URL('../src/core/vexboard-android-source-projector.mjs', import.meta.url).href;
+  const nodeSemanticUrl = new URL('../src/core/semantic.mjs', import.meta.url).href;
+  assert.ok(closure.has(androidProjectorUrl));
+  assert.equal(closure.has(nodeSemanticUrl), false);
+
+  const projectorSource = fs.readFileSync(new URL('../src/core/vexboard-android-source-projector.mjs', import.meta.url), 'utf8');
+  assert.match(projectorSource, /from '\.\.\/shared\/vexboard-model\.mjs'/);
+  assert.doesNotMatch(projectorSource, /from '\.\/vexboard\.mjs'/);
 });
 
 test('browser UI uses the shared BoardControl adapter for mutation rather than source/provider writes', () => {
@@ -172,6 +220,18 @@ test('ThemeMode patient-zero board projects one typed Family language across fou
   assert.ok(graph.sourceRefs.includes('github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b'));
   assert.ok(graph.sourceRefs.some((sourceRef) => sourceRef.includes('VexFamilyHighConfidenceTest.kt')));
 });
+test('VexBoard boot remains independent from optional Family Kotlin construction', () => {
+  assert.doesNotMatch(page, /import \* as FamilyKotlin from/);
+  assert.match(
+    page,
+    /familyKotlinModulePromise\?\?=import\('\.\.\/src\/core\/vexboard-family-kotlin-construction\.mjs'\)/,
+  );
+  assert.match(page, /Loading semantic canvas/);
+  assert.match(page, /VexBoard boot error/);
+  assert.match(page, /window\.addEventListener\('error'/);
+  assert.match(page, /window\.addEventListener\('unhandledrejection'/);
+});
+
 test('ThemeMode Kotlin drawer maps the same typed Family model to implementation and test code', () => {
   assert.equal(themeModeBoard.familyKotlin.schemaVersion, 'vexboard.family-kotlin/poc-v1');
   assert.equal(
@@ -189,8 +249,73 @@ test('ThemeMode Kotlin drawer maps the same typed Family model to implementation
   assert.match(page, /Request edit → draft copy to change the typed binding/);
 });
 
+test('VexBoard self-applies the convergence language as one flat architecture board', () => {
+  assert.equal(architectureMap.schemaVersion, Reader.VEXBOARD_DRAFT_SCHEMA);
+  assert.equal(architectureMap.mode, 'READ_ONLY_SOURCE');
+  assert.equal(architectureMap.draftRef, 'board.vexboard.architecture-convergence');
+
+  const graph = normalizeBoardGraph(architectureMap.graph);
+  const projection = normalizeBoardProjection(architectureMap.projection, graph);
+  const regions = graph.nodes
+    .filter((node) => node.kind === 'CONTAINER' && node.nodeRef.startsWith('region.vexboard.'))
+    .map((node) => node.label)
+    .sort();
+
+  assert.deepEqual(
+    regions,
+    ['CONTROL / ACT', 'EXECUTION', 'STATE', 'TYPED IDENTITY / RELATIONSHIP'].sort(),
+  );
+  assert.ok(graph.nodes.some((node) =>
+    node.nodeRef === 'reference.vexboard.graph' &&
+    node.label === 'BoardGraph · semantic State'
+  ));
+  assert.ok(graph.nodes.some((node) =>
+    node.nodeRef === 'control.vexboard.board-control' &&
+    node.label.includes('BoardControl')
+  ));
+  assert.ok(graph.nodes.some((node) =>
+    node.nodeRef === 'process.vexboard.act' &&
+    node.label.includes('CURRENT State + Control → next State')
+  ));
+  assert.ok(graph.nodes.some((node) =>
+    node.nodeRef === 'reference.vexboard.node-ref' &&
+    node.label.includes('resource identity')
+  ));
+  assert.ok(graph.nodes.some((node) =>
+    node.nodeRef === 'annotation.vexboard.identity-law' &&
+    node.label.includes('ResourceId role') &&
+    node.label.includes('labels are not identity')
+  ));
+  assert.ok(graph.nodes.some((node) =>
+    node.nodeRef === 'process.vexboard.relationship' &&
+    node.label.includes('fromRef → toRef')
+  ));
+  assert.ok(graph.nodes.some((node) =>
+    node.nodeRef === 'process.vexboard.apply-control' &&
+    node.label.includes('validate currentness then execute Act')
+  ));
+  assert.ok(graph.nodes.some((node) =>
+    node.nodeRef === 'annotation.vexboard.effect-boundary' &&
+    node.label.includes('source/provider writes = none')
+  ));
+  assert.ok(graph.relationships.some((relationship) =>
+    relationship.relationshipRef === 'rel.vexboard.control-act' &&
+    relationship.labelOrNull === 'SELECTS'
+  ));
+  assert.ok(graph.relationships.some((relationship) =>
+    relationship.relationshipRef === 'rel.vexboard.apply-act' &&
+    relationship.labelOrNull === 'EXECUTES'
+  ));
+
+  const frameItems = projection.items.filter((item) => item.shapeKind === 'FRAME');
+  assert.equal(frameItems.length, 4);
+  assert.ok(frameItems.every((item) => item.locked === true));
+  assert.ok(graph.sourceRefs.includes('github.pull.vexwork.184'));
+  assert.ok(graph.sourceRefs.includes('github.pull.vexwork.178'));
+});
+
 test('built-in and patient-zero source boards preserve separate catalog ownership and canonical identity', () => {
-  for (const source of [selfMap, publishMap, systemAnatomy, intentTopology, themeModeBoard]) {
+  for (const source of [selfMap, architectureMap, publishMap, systemAnatomy, intentTopology, themeModeBoard]) {
     assert.equal(source.schemaVersion, Reader.VEXBOARD_DRAFT_SCHEMA);
     assert.equal(source.mode, 'READ_ONLY_SOURCE');
     const graph = normalizeBoardGraph(source.graph);
@@ -206,6 +331,7 @@ test('built-in and patient-zero source boards preserve separate catalog ownershi
   assert.ok(selfGraph.nodes.some((node) => node.detailBoardRefOrNull === 'board.vexboard.publish'));
 
   assert.equal(Reader.builtinBoardUrl('board.vexboard.self-map'), './self-map.json');
+  assert.equal(Reader.builtinBoardUrl('board.vexboard.architecture-convergence'), './architecture-map.json');
   assert.equal(Reader.builtinBoardUrl('board.vexboard.publish'), './publish-map.json');
   assert.equal(Reader.builtinBoardUrl('board.vexboard.prototype-demo'), './prototype-demo.json');
   assert.equal(Reader.builtinBoardUrl('board.vexbusinessfactory.system-anatomy.patient-zero'), null);
@@ -214,8 +340,8 @@ test('built-in and patient-zero source boards preserve separate catalog ownershi
   const catalog = normalizeBoardSourceCatalog(patientZeroCatalog);
   assert.equal(catalog.catalogRef, 'catalog.vexboard.patient-zero-examples');
   assert.deepEqual(
-    catalog.entries.map((entry) => entry.boardRef),
-    [
+    new Set(catalog.entries.map((entry) => entry.boardRef)),
+    new Set([
       'board.vexbusinessfactory.intent-topology.patient-zero',
       'board.vexbusinessfactory.system-anatomy.patient-zero',
       'board.vexstream.phone-desktop-connection.construction-evidence',
@@ -223,7 +349,7 @@ test('built-in and patient-zero source boards preserve separate catalog ownershi
       'board.vexlife-android.home-vexstream.poc',
       'board.vexlife-android.vexstream-depth.poc',
       'board.vexlife.debug-menu.theme-mode.origin-walk',
-    ],
+    ]),
   );
 
   const anatomyResolution = resolveBoardSource(systemAnatomy.draftRef, [catalog]);
@@ -262,7 +388,10 @@ test('VexLife Android POC is projected at source-load time and styled without ch
   assert.match(page, /AndroidProjector\.androidPocDesignLocation\(payload\)/);
   assert.match(page, /new URL\(designLocation,boardUrl\)/);
   assert.match(page, /ScreenDesign\.normalizeScreenDesign\(await designResponse\.json\(\)\)/);
-  assert.match(page, /projectVexLifeAndroidPocSnapshot\(payload,boardRef,design\)/);
+  assert.match(
+    page,
+    /projectVexLifeAndroidPocSnapshot\(\s*context\.snapshot,\s*boardRef,\s*context\.design,\s*\)/,
+  );
   assert.match(page, /AndroidPresentation\.androidReferenceClassNames\(current\.presentation,i\.projectionItemRef\)/);
   assert.match(page, /AndroidPresentation\.androidReferenceRelationshipRoute\(current\.presentation,r\.relationshipRef\)/);
   assert.match(page, /occurrenceRoute\?item\(occurrenceRoute\.fromProjectionItemRef\):itemFor\(r\.fromRef\)/);

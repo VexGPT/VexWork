@@ -370,6 +370,57 @@
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexboard.vexsync-architecture-convergence",
+      "parentWorkRefOrNull": "work.vexboard.outcome",
+      "label": "VexSync ↔ VexBoard architecture convergence",
+      "purpose": "Use the current VexSync Direct Family / typed Control identity / Kotlin round-trip discoveries as the foundation baseline for VexBoard self-application: first recover the blank VexBoard browser surface exposed by lived use, then make VexBoard itself visibly reflect the trusted State / Control / Act / typed ResourceId / Relationship / Execution ownership language before adding deeper dimensional projection. Preserve VexBoard as the product/source owner, VexSync as the semantic/process convergence trajectory, and Android/test source as separately owned evidence; keep VexBoard edits effect-free toward target repositories until a rightful target-source action is separately admitted.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexboard.boardgraph-contract",
+        "work.vexboard.canvas-projection",
+        "work.vexboard.boardjourney-simulation",
+        "work.vexboard.usability-refinement"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "projects/vexboard/README.md",
+        "project.vexsync.debugmenu-blueprints",
+        "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery",
+        "github.pull.vexwork.178",
+        "github.commit.vexwork.0d55e3aa83b7972cc83ef9fe2a7266311932a7c8",
+        "github.pull.vexlife-android.193",
+        "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
+        "projects/vexboard/examples/vexlife-debug-menu-theme-mode.board.json",
+        "src/core/vexboard-family-kotlin-construction.mjs",
+        "test/vexboard-family-kotlin-construction.test.mjs",
+        "vexboard/index.html",
+        "work.vexsync.debugmenu-blueprints.vexboard-architecture-convergence",
+        "github.commit.vexwork.c8ac1b1898b6e23df3164fd69ea22499a38257b4",
+        "github.commit.vexwork.5bccdc7c8978a1102da2ac749e64082d7d34cf5f",
+        "github.commit.vexwork.775ef87a3e19688881a8cd4a9b5f01286a6d7595",
+        "test/vexboard-ui.test.mjs",
+        "github.pull.vexwork.184",
+        "github.commit.vexwork.49ec3bd650dde810110b11a55e70907df0e9d9f2",
+        "vexboard/architecture-map.json",
+        "src/core/vexboard-android-source-projector.mjs"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [
+        "process.vexwork.quality-review"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-29T11:20:00.000Z",
+      "updatedAt": "2026-10-29T11:35:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vexboard.later.businessfactory-guided-company-formation",
       "parentWorkRefOrNull": "work.vexboard.outcome",
       "label": "Later — BusinessFactory guided company formation",
@@ -747,6 +798,22 @@
         "projects/vexlife-blueprint-source-of-truth/README.md"
       ],
       "createdAt": "2026-10-25T05:52:16.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.vexsync-architecture-convergence.running.foundation-baseline-20261029a",
+      "workRef": "work.vexboard.vexsync-architecture-convergence",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Victor designated the current typed Family/Kotlin round-trip and merged flat VexBoard map as the foundation baseline for the next major sync, while lived browser evidence exposed a blank-screen regression. Begin bounded VexBoard-owned convergence now: recover the browser first, then self-apply the trusted architecture before deeper projection work.",
+      "actorRef": "actor.local-vex-operations.vexboard-vexsync-convergence",
+      "sourceRefs": [
+        "response.victor.vexsync-vexboard-convergence.20261029a",
+        "github.commit.vexwork.0d55e3aa83b7972cc83ef9fe2a7266311932a7c8",
+        "github.pull.vexlife-android.193",
+        "project.vexsync.debugmenu-blueprints"
+      ],
+      "createdAt": "2026-10-29T11:20:00.000Z"
     }
   ],
   "sourceRefs": [
