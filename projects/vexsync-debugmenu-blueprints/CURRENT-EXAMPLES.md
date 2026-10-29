@@ -6470,3 +6470,44 @@ otherwise
 ~~~
 
 <!-- [VXG RealForever][VEXSYNC][CURRENT-EXAMPLE][TARGET-RESOURCE-OWNERSHIP] -->
+
+
+---
+
+## ThemeMode UI continuity — Family condition to inherited Vex theme
+
+The current Android patient zero removes the broad ThemeMode/darkTheme Screen parameter entirely.
+
+~~~text
+ThemeModeFamily
+  -> DisplayState
+  -> VexThemePresentation
+  -> VexLifeTheme { content() }
+  -> descendants inherit presentation
+~~~
+
+Exact current Android PR #188:
+
+~~~text
+head = e1ca51153141c5ac9d9a2ff0655aaf181066a2b7
+tree = a69e1000f3c8b16e172c433dd2facf39f0a2f236
+~~~
+
+The current invariant is:
+
+~~~text
+GLOBAL PRESENTATION CONCERN
+-> connect once at the foundational Vex theme boundary
+-> inherit downward
+
+LOCAL CONTROL PRESENTATION
+-> bind the exact registered element to an already-decided presentation condition
+
+DO NOT
+-> hand semantic ThemeMode to every Screen
+-> ask each renderer to derive its own Boolean / colors / meaning
+~~~
+
+Debug Menu and Maps remain bounded presentation consumers; other Screens are theme-agnostic.
+
+<!-- [VXG RealForever][VEXSYNC][CURRENT-EXAMPLE][THEMEMODE][UI-CONTINUITY] -->
