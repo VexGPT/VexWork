@@ -281,7 +281,7 @@
       {
         "nodeRef": "work.vexlife.interface-refinement.v4.continuity-rollover",
         "kind": "REFERENCE",
-        "label": "CURRENT / READY / IMMEDIATE · V4 continuity rollover",
+        "label": "COMPLETED · V4 continuity rollover",
         "parentRefOrNull": "container.vexlife.journey.stability",
         "detailBoardRefOrNull": null,
         "sourceRefs": [
@@ -289,13 +289,15 @@
           "workgraphs/segments/vexlife-interface-refinement.json",
           "work.vexlife.interface-refinement.v4.continuity-rollover",
           "github.pull.vexlife.936.comment.6412567207",
-          "artifact.vexlife.interface-refinement.v3.lived-pressure.a005.return.sha256.1812d529d99ad89b368e84939835f355065adcb6d96d6c7bda5d975edb6ff6f3"
+          "artifact.vexlife.interface-refinement.v3.lived-pressure.a005.return.sha256.1812d529d99ad89b368e84939835f355065adcb6d96d6c7bda5d975edb6ff6f3",
+          "github.pull.vexlife.943",
+          "github.commit.vexlife.4fd8af85c452320ccc7895d572e6f2dd56257e68"
         ]
       },
       {
         "nodeRef": "work.vexlife.interface-refinement.v5.resource-stewardship",
         "kind": "REFERENCE",
-        "label": "READY / HIGH · V5 exact-owned resource stewardship",
+        "label": "VERIFYING · V5 exact-owned stewardship · stale-stop predicate held",
         "parentRefOrNull": "container.vexlife.journey.stability",
         "detailBoardRefOrNull": null,
         "sourceRefs": [
@@ -303,7 +305,10 @@
           "workgraphs/segments/vexlife-interface-refinement.json",
           "work.vexlife.interface-refinement.v5.resource-stewardship",
           "github.pull.vexlife.936.comment.6412567207",
-          "artifact.vexlife.interface-refinement.v3.lived-pressure.a005.return.sha256.1812d529d99ad89b368e84939835f355065adcb6d96d6c7bda5d975edb6ff6f3"
+          "artifact.vexlife.interface-refinement.v3.lived-pressure.a005.return.sha256.1812d529d99ad89b368e84939835f355065adcb6d96d6c7bda5d975edb6ff6f3",
+          "github.pull.vexlife.945",
+          "github.pull.vexlife.946",
+          "github.commit.vexlife.cb6047bd741c0c63f9475019129cd0876c763c40"
         ]
       },
       {
@@ -377,6 +382,71 @@
         "detailBoardRefOrNull": null,
         "sourceRefs": [
           "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md"
+        ]
+      },
+      {
+        "nodeRef": "work.vexlife.interface-refinement.stable-talk-to-vex-main",
+        "kind": "REFERENCE",
+        "label": "COMPLETED · stable Talk-to-Vex connection on main",
+        "parentRefOrNull": "container.vexlife.journey.lived-home",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md",
+          "workgraphs/segments/vexlife-interface-refinement.json",
+          "work.vexlife.interface-refinement.stable-talk-to-vex-main",
+          "github.pull.vexlife.950",
+          "github.commit.vexlife.fe7e0c21f34f59dd9c612a3f184e49cc5082f47d"
+        ]
+      },
+      {
+        "nodeRef": "work.vexlife.interface-refinement.conversation-surface-canonicalization",
+        "kind": "REFERENCE",
+        "label": "CURRENT / READY · one canonical Conversation identity",
+        "parentRefOrNull": "container.vexlife.journey.lived-home",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md",
+          "workgraphs/segments/vexlife-interface-refinement.json",
+          "work.vexlife.interface-refinement.conversation-surface-canonicalization"
+        ]
+      },
+      {
+        "nodeRef": "work.vexlife.interface-refinement.prior-context-memory-assimilation",
+        "kind": "REFERENCE",
+        "label": "NEXT · prior-context + Memory assimilation",
+        "parentRefOrNull": "container.vexlife.journey.lived-home",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md",
+          "workgraphs/segments/vexlife-interface-refinement.json",
+          "work.vexlife.interface-refinement.prior-context-memory-assimilation",
+          "repo.vexlife:src/core/browser-prompt-context-runtime.mjs"
+        ]
+      },
+      {
+        "nodeRef": "work.vexlife.interface-refinement.atlas-self-capability-awareness",
+        "kind": "REFERENCE",
+        "label": "NEXT · Vex Atlas + self-capability awareness",
+        "parentRefOrNull": "container.vexlife.journey.lived-home",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md",
+          "workgraphs/segments/vexlife-interface-refinement.json",
+          "work.vexlife.interface-refinement.atlas-self-capability-awareness",
+          "repo.vexlife:docs/CAPABILITY-AND-TOOL-ATLAS.md",
+          "repo.vexlife:src/core/vex-self-capability-frame.mjs"
+        ]
+      },
+      {
+        "nodeRef": "work.vexlife.interface-refinement.lived-context-capability-integration",
+        "kind": "REFERENCE",
+        "label": "WAITING · lived context-aware capability use",
+        "parentRefOrNull": "container.vexlife.journey.lived-home",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md",
+          "workgraphs/segments/vexlife-interface-refinement.json",
+          "work.vexlife.interface-refinement.lived-context-capability-integration"
         ]
       }
     ],
@@ -650,6 +720,72 @@
         "sourceRefs": [
           "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md"
         ]
+      },
+      {
+        "relationshipRef": "rel.vexlife.journey.home-tool-stable-talk",
+        "kind": "FLOW",
+        "fromRef": "work.vexlife.interface-refinement.home-tool-capability",
+        "toRef": "work.vexlife.interface-refinement.stable-talk-to-vex-main",
+        "labelOrNull": "stable main foundation",
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md",
+          "workgraphs/segments/vexlife-interface-refinement.json"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexlife.journey.stable-talk-canonical-conversation",
+        "kind": "FLOW",
+        "fromRef": "work.vexlife.interface-refinement.stable-talk-to-vex-main",
+        "toRef": "work.vexlife.interface-refinement.conversation-surface-canonicalization",
+        "labelOrNull": "current foreground",
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md",
+          "workgraphs/segments/vexlife-interface-refinement.json"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexlife.journey.canonical-conversation-memory",
+        "kind": "FLOW",
+        "fromRef": "work.vexlife.interface-refinement.conversation-surface-canonicalization",
+        "toRef": "work.vexlife.interface-refinement.prior-context-memory-assimilation",
+        "labelOrNull": "same thread/head first",
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md",
+          "workgraphs/segments/vexlife-interface-refinement.json"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexlife.journey.canonical-conversation-atlas",
+        "kind": "FLOW",
+        "fromRef": "work.vexlife.interface-refinement.conversation-surface-canonicalization",
+        "toRef": "work.vexlife.interface-refinement.atlas-self-capability-awareness",
+        "labelOrNull": "same currentContext first",
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md",
+          "workgraphs/segments/vexlife-interface-refinement.json"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexlife.journey.memory-integrated-capability",
+        "kind": "FLOW",
+        "fromRef": "work.vexlife.interface-refinement.prior-context-memory-assimilation",
+        "toRef": "work.vexlife.interface-refinement.lived-context-capability-integration",
+        "labelOrNull": "dependency",
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md",
+          "workgraphs/segments/vexlife-interface-refinement.json"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexlife.journey.atlas-integrated-capability",
+        "kind": "FLOW",
+        "fromRef": "work.vexlife.interface-refinement.atlas-self-capability-awareness",
+        "toRef": "work.vexlife.interface-refinement.lived-context-capability-integration",
+        "labelOrNull": "dependency",
+        "sourceRefs": [
+          "projects/vexlife-interface-refinement/VEXLIFE-PRODUCT-JOURNEY-AND-DISTRIBUTION-DRAFT.md",
+          "workgraphs/segments/vexlife-interface-refinement.json"
+        ]
       }
     ],
     "sourceRefs": [
@@ -663,7 +799,10 @@
       "github.pull.vexlife.936",
       "github.commit.vexlife.9f2e97d3ef14599eac4e659181392c1e706dc758",
       "github.pull.vexlife.936.comment.6412567207",
-      "artifact.vexlife.interface-refinement.v3.lived-pressure.a005.return.sha256.1812d529d99ad89b368e84939835f355065adcb6d96d6c7bda5d975edb6ff6f3"
+      "artifact.vexlife.interface-refinement.v3.lived-pressure.a005.return.sha256.1812d529d99ad89b368e84939835f355065adcb6d96d6c7bda5d975edb6ff6f3",
+      "github.pull.vexlife.950",
+      "github.commit.vexlife.fe7e0c21f34f59dd9c612a3f184e49cc5082f47d",
+      "repo.vexlife:docs/CAPABILITY-AND-TOOL-ATLAS.md"
     ]
   },
   "projection": {
@@ -695,7 +834,7 @@
           "x": 470,
           "y": 70,
           "width": 520,
-          "height": 960
+          "height": 1320
         },
         "layer": 0,
         "parentProjectionItemRefOrNull": null,
@@ -963,7 +1102,7 @@
         "shapeKind": "ELLIPSE",
         "bounds": {
           "x": 515,
-          "y": 700,
+          "y": 1205,
           "width": 200,
           "height": 80
         },
@@ -978,7 +1117,7 @@
         "shapeKind": "ELLIPSE",
         "bounds": {
           "x": 745,
-          "y": 700,
+          "y": 1205,
           "width": 200,
           "height": 80
         },
@@ -1134,6 +1273,81 @@
         },
         "layer": 2,
         "parentProjectionItemRefOrNull": "item.vexlife.journey.scale-gaps",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexlife.stable-talk",
+        "semanticRef": "work.vexlife.interface-refinement.stable-talk-to-vex-main",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 515,
+          "y": 650,
+          "width": 430,
+          "height": 80
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vexlife.journey.lived-home",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexlife.canonical-conversation",
+        "semanticRef": "work.vexlife.interface-refinement.conversation-surface-canonicalization",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 515,
+          "y": 755,
+          "width": 430,
+          "height": 90
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vexlife.journey.lived-home",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexlife.prior-context-memory",
+        "semanticRef": "work.vexlife.interface-refinement.prior-context-memory-assimilation",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 515,
+          "y": 885,
+          "width": 200,
+          "height": 105
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vexlife.journey.lived-home",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexlife.atlas-awareness",
+        "semanticRef": "work.vexlife.interface-refinement.atlas-self-capability-awareness",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 745,
+          "y": 885,
+          "width": 200,
+          "height": 105
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vexlife.journey.lived-home",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexlife.context-capability-integration",
+        "semanticRef": "work.vexlife.interface-refinement.lived-context-capability-integration",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 515,
+          "y": 1030,
+          "width": 430,
+          "height": 90
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.vexlife.journey.lived-home",
         "visible": true,
         "locked": true
       }
