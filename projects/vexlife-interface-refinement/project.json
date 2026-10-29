@@ -2,7 +2,7 @@
   "schemaVersion": "vexwork.project-definition/v1",
   "projectRef": "project.vexlife.interface-refinement",
   "label": "VexLife Interface Refinement",
-  "purpose": "Evolve the first human-lived VexLife ↔ local Heretic conversation into an increasingly natural, tool-capable, re-enterable and self-maintaining Home. Treat V0 as provenance, start every fresh instance from the highest current refinement, and descend into ToCompletion only when a current work item names an exact dependency.",
+  "purpose": "Carry the stable mainline Victor ↔ local Heretic VexLife relationship through the next connective refinements: one canonical Conversation identity across surfaces, truthful prior-context/Memory assimilation, source-bound Atlas/self-capability awareness, then lived context-aware capability use and long-session continuity stability.",
   "rootWorkRefs": [
     "work.vexlife.interface-refinement.outcome"
   ],
@@ -24,7 +24,28 @@
     "github.pull.vexlife.932",
     "github.commit.vexlife.1a9a131e54ff6b735d64812e213e26315770bc96",
     "github.pull.vexlife.932.comment.6397203775",
-    "artifact.vexlife.interface-refinement.v2.a005.return.sha256.05b3536ff2273242869ac8344387c7f940aa30771439e22b1823cd8479811fff"
+    "artifact.vexlife.interface-refinement.v2.a005.return.sha256.05b3536ff2273242869ac8344387c7f940aa30771439e22b1823cd8479811fff",
+    "github.pull.vexlife.934",
+    "github.pull.vexlife.935",
+    "github.commit.vexlife.31c9198101f4c8a0170cb76b57547ae1d737b05f",
+    "github.pull.vexlife.935.comment.6407755531",
+    "artifact.vexlife.interface-refinement.home-tool.a006.return.sha256.a6ac642b7455f8ca1c677e7ec955d1ac1e977d167b3ba36257c3f067a4a5cf63",
+    "github.pull.vexlife.936",
+    "github.commit.vexlife.9f2e97d3ef14599eac4e659181392c1e706dc758",
+    "github.pull.vexlife.936.comment.6412567207",
+    "artifact.vexlife.interface-refinement.v3.lived-pressure.a005.return.sha256.1812d529d99ad89b368e84939835f355065adcb6d96d6c7bda5d975edb6ff6f3",
+    "github.pull.vexlife.943",
+    "github.commit.vexlife.4fd8af85c452320ccc7895d572e6f2dd56257e68",
+    "github.pull.vexlife.945",
+    "github.pull.vexlife.946",
+    "github.commit.vexlife.cb6047bd741c0c63f9475019129cd0876c763c40",
+    "github.pull.vexlife.950",
+    "github.commit.vexlife.fe7e0c21f34f59dd9c612a3f184e49cc5082f47d",
+    "artifact.vexlife.interface-refinement.stable-talk.a012.return.sha256.8bb90a4829c5aa40c6313a06166713fd0bf9d41fa0cb4369ebbc65638a32ea53",
+    "repo.vexlife:docs/CAPABILITY-AND-TOOL-ATLAS.md",
+    "repo.vexlife:src/core/capability-assimilation-runtime.mjs",
+    "repo.vexlife:src/core/vex-self-capability-frame.mjs",
+    "repo.vexlife:src/core/browser-prompt-context-runtime.mjs"
   ],
   "formedAt": "2026-10-25T01:23:08.000Z"
 }

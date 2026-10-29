@@ -222,7 +222,16 @@ test('Playback Surfaces separates accepted projection from lived artwork converg
   assert.equal(artwork.state, 'COMPLETED');
   assert.equal(player.state, 'VERIFYING');
   assert.equal(offlineArtwork.state, 'RUNNING');
-  assert.equal(currentArtwork.state, 'RUNNING');
+  assert.equal(currentArtwork.state, 'VERIFYING');
+  assert.equal(
+    graph.transitions.some(
+      (transition) =>
+        transition.workRef === currentArtwork.workRef &&
+        transition.priorState === 'RUNNING' &&
+        transition.nextState === 'VERIFYING',
+    ),
+    true,
+  );
   assert.equal(reconcile.state, 'CANCELLED');
   assert.equal(reconcile.authorityDisposition, 'NO_AUTHORITY');
   assert.equal(
