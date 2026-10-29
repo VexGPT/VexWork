@@ -1,14 +1,15 @@
 {
   "schemaVersion": "vexwork.project-definition/v1",
   "projectRef": "project.vexlife.interface-refinement",
-  "label": "VexLife Interface Refinement",
-  "purpose": "Carry the stable mainline Victor ↔ local Heretic VexLife relationship through the next connective refinements: one canonical Conversation identity across surfaces, truthful prior-context/Memory assimilation, source-bound Atlas/self-capability awareness, then lived context-aware capability use and long-session continuity stability.",
+  "label": "Interface Compound Relay",
+  "purpose": "Converge the real VexLife human interface from independently owned current truths—exact source/browser document identity, Companion runtime availability, canonical Conversation currentness and browser observation—so update, recovery, re-entry and Send cannot claim readiness from one subsystem alone. Preserve completed Conversation/Memory/Atlas/capability work as inputs while resolving the ordinary Mac front-door recovery continuity exposed by lived use.",
   "rootWorkRefs": [
     "work.vexlife.interface-refinement.outcome"
   ],
   "repositoryRefs": [
     "repo.vexwork",
-    "repo.vexlife"
+    "repo.vexlife",
+    "repo.vexlife-android"
   ],
   "sourceRefs": [
     "projects/vexlife-interface-refinement/README.md",
@@ -45,7 +46,26 @@
     "repo.vexlife:docs/CAPABILITY-AND-TOOL-ATLAS.md",
     "repo.vexlife:src/core/capability-assimilation-runtime.mjs",
     "repo.vexlife:src/core/vex-self-capability-frame.mjs",
-    "repo.vexlife:src/core/browser-prompt-context-runtime.mjs"
+    "repo.vexlife:src/core/browser-prompt-context-runtime.mjs",
+    "github.pull.vexlife.962",
+    "github.commit.vexlife.b6d9dd4876132fc408f0eacd2bb6b5b0d56e009f",
+    "human.lived-feedback.vexlife.interface-compound-relay.20261029.recovery-ui-divergence",
+    "repo.vexlife:setup-vexlife.command",
+    "repo.vexlife:install/vexlife-setup-window.applescript",
+    "repo.vexlife:install/vexlife-setup.sh",
+    "repo.vexlife:scripts/macos-lifecycle.mjs",
+    "repo.vexlife:src/core/companion-availability-reentry.mjs",
+    "repo.vexlife:scripts/serve-browser-core.mjs",
+    "repo.vexlife:reference/browser/app.js",
+    "repo.vexlife:reference/browser/modules/chat-controller.js",
+    "github.commit.vexlife-android.14bb2c4e82eb6cf55cbdc6ef5f2c65d38f97e45b",
+    "github.pull.vexlife-android.200",
+    "github.pull.vexlife-android.185",
+    "github.pull.vexlife-android.198",
+    "repo.vexlife-android:architecture/relay/README.md",
+    "repo.vexlife-android:architecture/relay/src/main/kotlin/com/vextreme/vexlife/android/relay/VexCompoundRelay.kt",
+    "repo.vexlife-android:architecture/relay/src/main/kotlin/com/vextreme/vexlife/android/relay/VexCompoundState.kt",
+    "repo.vexlife-android:docs/foundation/EVENTS-CONVERGENCE-PRACTICUM.md"
   ],
   "formedAt": "2026-10-25T01:23:08.000Z"
 }

@@ -1,86 +1,534 @@
-# VexLife Interface Refinement
+# VexLife Interface Compound Relay
 
-`[VXG RealForever]`
+[VXG RealForever]
 
-## Current entry
+> Stable identity is preserved as project.vexlife.interface-refinement. The Project has evolved in
+> human meaning from Interface Refinement to Interface Compound Relay because lived normal-user
+> recovery exposed a relationship/currentness defect that subsystem-local proofs did not cover.
 
-The stable **Talk-to-Vex foundation and the full connective Conversation/Memory/Atlas/bounded-capability composition are now lived-complete on accepted VexLife main**. Fresh instances must start from current main and the remaining continuity/stability line, not reconstruct PR #950/#952/#955/#956 or replay A001/A002 and predecessor lived proof carriers as current work.
+## Current entry — Interface Compound Relay
 
-Current accepted VexLife baseline:
+The prior Conversation / Memory / Atlas / bounded-capability work remains completed evidence for the
+relationships it actually exercised. It is not sufficient proof that the ordinary VexLife human
+surface is converged after source update, runtime repair, browser reuse, or re-entry.
 
-```text
-main = 862d3f90dc04472012ae3cb16d618a0c6c2d2676
-tree = 02d02b678faa01446796c707626f5d30534662e7
+The current foreground is one bounded relationship question:
 
-source/proof:
-  PR #950 stable Talk-to-Vex foundation = COMPLETED
-  PR #952 canonical Conversation identity = COMPLETED
-  PR #955 + #956 Atlas/self-capability awareness = COMPLETED
-  A008 read-only recovery of A006 prior-context + Memory assimilation = PASS
-  lived context-capability A001 business effect = RECOVERED COMPLETE
-  read-only A002 durable head/re-entry recovery = PASS
-  standing-autonomy preference generation = CURRENT
-  G02 Score + semantic-authority head = CURRENT
-  G03 Daily Memory stratum = COMMITTED
-```
+~~~text
+What do the independently owned CURRENT truths mean together
+for whether Victor can actually talk to Vex through the visible interface now?
+~~~
 
-The connective Conversation/Memory/Atlas/capability pathway is now complete end-to-end. The remaining active Interface Refinement line is **continuity/stability**, with V5 resource stewardship still VERIFYING on its naturally occurring stale-resource predicate and V6 dependency-held behind V5:
+Current work:
 
-```text
-stable Talk-to-Vex main
-        ↓
-one canonical Conversation identity across Evolution + Vex Terrain/Open conversation
-        ↓
-same durable thread/head available to both context and capability composition
-       ↙ ↘
-prior-context / Memory     Atlas / self-capability awareness
-       ↘ ↙
-lived context-aware bounded capability use  [COMPLETED]
-        ↓
-V5 resource stewardship [VERIFYING / NATURAL PREDICATE HELD]
-        ↓
-V6 lived continuity stability [WAITING DEPENDENCIES]
-```
+~~~text
+work.vexlife.interface-refinement.interface-compound-relay
+state     = READY
+priority  = IMMEDIATE
 
-This is a composition correction, not permission to invent another Memory owner, another capability framework, or a second Conversation database.
+stable projectRef / path namespace
+  project.vexlife.interface-refinement
+  projects/vexlife-interface-refinement/
+  work.vexlife.interface-refinement.*
 
-Permanent distinctions:
+human-facing Project label
+  Interface Compound Relay
+~~~
 
-```text
-CAPABILITY_SUBSTRATE_EXISTS != VEX_CURRENTLY_AWARE
-ATLAS_SOURCE_EXISTS != ATLAS_CURRENTLY_IN_VEX_FRAME
-DURABLE_CONVERSATION_EXISTS != PRIOR_CONTEXT_MATERIALIZED
-EVOLUTION_CONVERSATION != SECOND_CONVERSATION_OWNER
-VEX_TERRAIN_PROJECTION != SECOND_CONVERSATION_OWNER
-MEMORY != MODEL_WEIGHTS
-AWARENESS != EFFECT_AUTHORITY
-```
+### Why the strategy changed
 
-The source already contains the Capability and Tool Atlas, capability registry, capability-assimilation runtime, bounded Vex self-capability frame, model-connection composer, scheduler and ToolResultRelay. Earlier A006 proved one bounded tool-bearing Home threshold. The later connective sequence is now terminally lived-proven: canonical Conversation identity, prior-context/Memory assimilation, Atlas/self-capability awareness, and one real bounded CODE read through Scheduler + ToolResultRelay all converge in the same durable Vex relationship across re-entry. A001's canonical SAFE_FAILURE remains provenance; A002 read-only recovery proves the already-executed business effect without replay.
+The previous strategy proved many useful components independently and then over-inferred from them.
 
-Continuity/stability source has also advanced beyond this Project's prior checkpoint:
-- **V4 continuity rollover is terminal source + lived proven**.
-- **V5 stewardship source/delegation is accepted** and its fail-closed no-effect lived branch is proven; the naturally occurring exact-owned stale-stop branch remains evidence-gated.
-- **V6** remains dependent on the unfinished V5 lived destructive predicate and broader long-session stability.
+Accepted/lived evidence had established, under specific conditions:
 
-```text
-START_FROM_HIGHEST_CURRENT_REFINEMENT_VERSION
-STABLE_CONNECTION = ACCEPTED_MAIN
-CANONICAL_CONVERSATION_IDENTITY = COMPLETED
-PRIOR_CONTEXT_MEMORY = COMPLETED
-ATLAS_SELF_CAPABILITY_AWARENESS = COMPLETED
-LIVED_CONTEXT_AWARE_CAPABILITY_USE = COMPLETED
-CURRENT_FOREGROUND = V5_RESOURCE_STEWARDSHIP_VERIFYING / NATURAL_PREDICATE_HELD
-INTEGRATION_GATE = COMPLETED
-V4 = COMPLETED
-V5 = VERIFYING / NATURAL_PREDICATE_HELD
-V6 = WAITING_DEPENDENCIES
-KOKORO_SPEECH = CAPTURED_LATER_PRESENTATION_ENHANCEMENT
-TOCOMPLETION = PROVENANCE_CONTEXT
-TOCOMPLETION != CURRENT_INTERFACE_ENTRY
-```
+~~~text
+current exact source
++ actual Vex Home
++ exact-owned Heretic
++ Browser/Companion READY
++ canonical Conversation
+-> real Victor turn
+-> real Companion turn
+-> re-entry preserves durable head
+~~~
 
-Descend into VexLife ToCompletion only when the current refinement names an exact dependency or a contradiction requires provenance.
+PR #962 was merged as:
+
+~~~text
+VexLife merge/main at the lived checkpoint
+  b6d9dd4876132fc408f0eacd2bb6b5b0d56e009f
+
+merge tree
+  197e855726b8d33044bd83852253fae66367352f
+~~~
+
+A012 exercised two real user-authored rounds on the actual Home and A013 exercised accepted-main
+re-entry. Those observations remain valid for that exact path.
+
+Victor then exercised the ordinary documented Mac front door, not a proof harness:
+
+~~~bash
+rm -f /tmp/setup-vexlife.command
+curl -fsSL https://raw.githubusercontent.com/vgong24/VexLife/main/setup-vexlife.command \
+  -o /tmp/setup-vexlife.command &&
+bash /tmp/setup-vexlife.command
+~~~
+
+The lived result contradicted the broader completion interpretation:
+
+~~~text
+source-local setup / recovery runs
+-> AppKit popup says "VexLife recovery complete"
+-> already-visible Conversation does not produce a reply in the normal expected interval
+-> dismiss popup
+-> visible composer says "Vex is unavailable"
+-> typed text remains an unsent local draft
+~~~
+
+Screenshots supplied by Victor on 2026-10-29 are the regression origin.
+
+Therefore the former broad statement:
+
+~~~text
+VEXLIFE_TALK_TO_VEX_CONSISTENTLY_REENTERABLE = PROVEN
+~~~
+
+must not be reused as a universal product claim. The narrower evidence remains useful, but ordinary
+update/recovery + an already-open human browser surface is reopened as a real defect.
+
+Permanent correction:
+
+~~~text
+BACKEND_RECOVERY_COMPLETED
+!= BROWSER_DOCUMENT_CURRENT
+
+BROWSER_SERVER_READY
+!= BROWSER_HAS_REOBSERVED_READY
+
+CANONICAL_AVAILABILITY_READY
+!= VISIBLE_COMPOSER_CONVERGED
+
+FRESH_BROWSER_OPEN_WORKS
+!= EXISTING_BROWSER_SURVIVES_REPAIR
+
+UPDATE_REQUESTED
+!= RENDERED_CURRENT
+
+GREEN_SUBSYSTEM_PROOF
+!= WHOLE_HUMAN_CONTINUITY
+~~~
+
+## Android foundation that changed the model
+
+VexLife-Android is an architecture reference, not VexLife source authority.
+
+Accepted Android main inspected for this rethink:
+
+~~~text
+vgong24/VexLife-Android main
+  14bb2c4e82eb6cf55cbdc6ef5f2c65d38f97e45b
+
+accepted PR #200
+  [Relay] Keep Compound current State semantic
+
+accepted PR #185
+  [VexStream Playback] Observe current provider truth once for widget projection
+~~~
+
+Relevant accepted source:
+
+~~~text
+architecture/relay/README.md
+architecture/relay/src/main/kotlin/com/vextreme/vexlife/android/relay/VexCompoundRelay.kt
+architecture/relay/src/main/kotlin/com/vextreme/vexlife/android/relay/VexCompoundState.kt
+docs/foundation/EVENTS-CONVERGENCE-PRACTICUM.md
+
+app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/maps/
+  VexMapsStyleConvergenceRelay.kt
+  VexNavigationConvergenceRelay.kt
+
+architecture/widget/src/main/kotlin/com/vextreme/vexlife/android/widget/
+  VexWidgetSurfaceState.kt
+  VexGlanceAppWidget.kt
+~~~
+
+Current draft pressure, not accepted-main authority:
+
+~~~text
+PR #198
+  [Vex Family] Make StateRelay the serialized currentness boundary
+~~~
+
+The accepted Compound Relay authoring law is:
+
+~~~text
+incoming partial patch + previous retained truth
+-> current independently-owned input values
+-> one coherent current InputState
+-> named relationship calculations
+-> one fully-derived current OutputState
+-> one final Compound State
+~~~
+
+Its observation surfaces are deliberately distinct:
+
+~~~text
+states
+  full retained totality = inputState + outputState
+
+inputStates / currentInput
+  coherent dependency/currentness context
+
+outputStates / currentOutput
+  derived semantic result for consumers
+~~~
+
+Permanent:
+
+~~~text
+COMPOUND_INTERNAL_STATE_CHANGED
+!= CONSUMER_OUTPUT_CHANGED
+~~~
+
+The concrete Android examples add the lessons that matter here:
+
+~~~text
+VexMapsStyleConvergenceRelay
+  stale completion for an older selection
+  != APPLIED for the newer selection
+
+VexNavigationConvergenceRelay
+  route revision 2 + fix revision 1
+  -> HELD_FIX_ROUTE_MISMATCH
+  -> never silently current
+
+VexWidgetPublishResult
+  update requested
+  != launcher rendered result
+
+Events Convergence
+  independently owned source truths
+  -> one retained coherent InputState
+  -> one derived availability/current relationship
+~~~
+
+Draft #198 adds useful currentness pressure without being treated as accepted source:
+
+~~~text
+incoming cause
++ exact CURRENT retained State
+-> one serialized decision
+
+delayed success
+-> re-evaluate against CURRENT meaning
+-> stale success cannot overwrite newer truth
+~~~
+
+Do not mechanically port Kotlin classes into VexLife. Consume the architectural relationship,
+then use the smallest rightful VexLife owner.
+
+## Interface Compound Relay — relationship to form
+
+The missing VexLife relationship is approximately:
+
+~~~text
+current VexLife server/source identity ------------------\
+loaded browser document/source identity ------------------+
+canonical Companion availability/runtime observation -----+
+canonical Conversation currentness/head ------------------+
+browser document activity / observation currentness -------+
+                                                          |
+                                                          v
+                                             Interface Compound Relay
+                                                one current relationship
+                                                          |
+                                                          v
+                                                currentOutput / availability
+~~~
+
+The exact implementation type/name remains a VexLife source decision after re-grounding current main.
+Do not create a generic Relay framework merely because Android has one.
+
+### Candidate InputState meaning
+
+At minimum, investigate these independently-owned inputs:
+
+~~~text
+serverSource
+  exact source currently serving VexLife
+
+browserDocumentSource
+  exact source identity of the JavaScript document currently loaded by the human browser
+
+companionAvailability
+  existing canonical source-bound availability projection:
+    binding
+    runtime ownership
+    runtime health
+    qualification
+    projection identity/currentness
+
+conversationCurrentness
+  canonical project/thread/channel/head identity
+
+browserObservation
+  whether this visible document has actually re-observed the current server/runtime/Conversation
+  after activation, recovery, source rotation or re-entry
+~~~
+
+Do not add lifecycle success as a second readiness owner. A repair/start receipt may be an input/effect
+receipt; it cannot by itself declare the human interface READY.
+
+### Candidate OutputState meaning
+
+Start with the smallest distinctions the current owners can truthfully support:
+
+~~~text
+UNOBSERVED
+  required relationship truth has not been observed
+
+SOURCE_MISMATCH
+  current server/source != loaded browser document/source
+
+OBSERVING
+  source relationship is coherent but current availability/Conversation observation is in flight
+
+RECOVERABLE
+  exact same binding can be safely re-entered through the rightful runtime owner
+
+ACTION_REQUIRED
+  rightful source says human/protected action is required
+
+UNAVAILABLE
+  current relationship is observed and cannot currently support a turn
+
+READY
+  exact current source + browser document + Companion availability + Conversation currentness agree
+~~~
+
+Do not invent Loading/Failure/Generation/Revision states merely to make a diagram look complete.
+Use only distinctions current source can own.
+
+### READY admission
+
+The visible interface may call itself ready only from the coherent relationship, for example:
+
+~~~text
+loaded browser source == current server source
+AND browser observation is CURRENT
+AND Companion availability == READY
+AND binding == BOUND
+AND runtime ownership == EXACT_OWNED
+AND runtime == HEALTHY
+AND qualification == CURRENT
+AND canonical Conversation currentness is admitted
+-----------------------------------------------------------
+Interface Compound Relay output == READY
+~~~
+
+The exact predicates must come from current VexLife source when implementation begins.
+
+### Effect ownership
+
+The Compound relationship does not become a universal effect owner:
+
+~~~text
+SOURCE_MISMATCH
+-> bounded request to browser/navigation owner to load current source
+
+RECOVERABLE
+-> existing same-binding recovery action
+-> rightful runtime/lifecycle owner performs effect
+
+READY + Send
+-> current Send/Conversation/model owners perform the turn
+
+Compound Relay
+-> observes/reconciles meaning
+-> does not become Heretic process owner
+-> does not become Conversation database
+-> does not become model authority
+-> does not become browser renderer authority
+~~~
+
+## Exact VexLife locations to inspect before authoring
+
+These are navigation coordinates, not a claim that they will remain byte-identical when the next
+worker starts. Re-ground current main first.
+
+| Location | Why it matters |
+|---|---|
+| setup-vexlife.command | Ordinary public Mac front door. Resolves one exact Git source and materializes a fresh source-local setup app. Reproduce through this path before claiming normal-user completion. |
+| install/vexlife-setup-window.applescript | Human lifecycle/recovery popup. Current wording can say recovery is complete because the backend effect returned successfully; it does not observe whether the visible browser surface converged. |
+| install/vexlife-setup.sh | Controller and open_vex(). Current source uses /usr/bin/open on the Open Vex URL; an already-open browser document may survive and remain stale. |
+| scripts/macos-lifecycle.mjs | Owns start/repair/runtime/browser process lifecycle and waitForMacCompanionReady(). It proves backend availability, not the loaded human document's currentness. |
+| src/core/companion-availability-reentry.mjs | Existing semantic owner for canonical Companion availability/re-entry. Preserve laws such as BINDING != LIVENESS and REENTRY_PLAN != PROCESS_EXECUTION. |
+| scripts/serve-browser-core.mjs | Server-owned availability/recovery endpoints and current source/browser composition. Likely place to expose or bind exact server source identity if no smaller current owner exists. |
+| reference/browser/app.js | Browser composition/current conversation selection. Current accepted source performs first-load current reads; inspect focus/visibility/pageshow/source-rotation behavior rather than assuming first load covers re-entry. |
+| reference/browser/modules/chat-controller.js | Browser availability cache, composer projection, recovery request, Send admission and turn handling. Inspect overlapping availability reads and stale completion order. |
+| src/core/conversation-store.mjs | Durable Conversation truth owner. Do not move human/browser availability into this store. |
+| src/core/browser-companion-bridge.mjs | Canonical Conversation/model turn bridge. Preserve source-of-truth boundaries while adding convergence. |
+| test/browser-companion-recovery-presentation.test.mjs | Existing recovery UI proof. It currently exercises an in-page recovery action; add the external setup/recovery + existing-tab seam rather than only extending the same happy path. |
+| test/macos-human-setup.test.mjs | Current normal Mac front-door/lifecycle structural proof. Existing assertions prove browser opens after lifecycle completion, not that the already-loaded document re-converges. |
+| test/browser.test.mjs | Current browser-source structure and first-render ordering assertions. Useful for guarding the eventual observation owner. |
+
+## What the screenshots taught us to look around for
+
+A future instance should investigate these before proposing a fix:
+
+1. Current VexLife main/head/tree. Never assume the merge checkpoint above is still current.
+2. Ordinary front door. Reproduce with setup-vexlife.command, not only a Relay carrier, direct
+   macos-lifecycle.mjs invocation, or fresh test browser.
+3. Existing browser document. Determine whether the human tab was loaded from the same exact source
+   now served after setup/recovery.
+4. Server source identity. Find an existing exact identity before inventing another. If none exists,
+   add the smallest source-owned projection.
+5. Canonical availability. Read what /api/v1/companion/availability says after recovery and compare
+   it with what the visible composer believes.
+6. Conversation head. Verify the durable project/thread/channel/head independently of UI wording.
+7. Observation timing. Look for overlapping availability reads, out-of-order completion, focus /
+   visibility / pageshow gaps, and a tab that never performs another read after external repair.
+8. Effect vs presentation. A runtime/process/browser-server receipt proves its owner completed an
+   effect. It does not prove the browser rendered/observed the result.
+9. Open PR overlap. Re-read current provider overlap before source mutation.
+10. Lived normal-user continuity. The decisive regression must use an existing conversation/tab,
+    ordinary setup/recovery, popup dismissal, preserved draft, Send and real reply. A brand-new
+    isolated browser is necessary evidence for other claims but insufficient for this one.
+
+## Mental notes — avoid another false finish
+
+Do not infer:
+
+~~~text
+process exit 0 -> product READY
+server READY -> visible browser READY
+availability API READY -> composer already refreshed
+fresh page PASS -> old page recovered
+one successful Send -> sustained continuity
+one proof bundle PASS -> normal front door works
+merge tree exact -> human experience converged
+test fixture recovery -> external setup recovery
+~~~
+
+When a proof says PASS, ask exactly which owner and relationship it observed.
+
+When lived use contradicts a broader interpretation, preserve the narrower evidence and retract only
+the unsupported implication. Do not throw away valid prior source/proof, and do not defend it against
+the human experience.
+
+## Plan of action for the next source worker
+
+### 1. Re-ground and reproduce
+
+- current VexLife main;
+- normal setup-vexlife.command;
+- an already-open Open Vex tab with durable Conversation;
+- recovery/update path;
+- observe server source, loaded document source, canonical availability and Conversation head.
+
+No source mutation before the mismatch is concretely located unless current source makes the missing
+owner obvious.
+
+### 2. Form the smallest VexLife-specific convergence owner
+
+Use the Android Compound-state law as architectural input:
+
+~~~text
+partial observation
++ retained current inputs
+-> coherent current inputs
+-> one derived output
+~~~
+
+Do not port Android's generic classes or add a reusable framework without a second VexLife consumer.
+
+### 3. Bind source/document currentness
+
+A fresh exact source may start a new browser server while macOS focuses an already-loaded document.
+Make that relationship observable. A source mismatch must not render READY.
+
+Prefer an existing exact source identity. If none exists, source-place the smallest server/document
+identity projection required for this relationship.
+
+### 4. Make browser observation current
+
+The human browser must re-observe after the external lifecycle can change beneath it:
+
+- activation/focus/visibility/pageshow as actually appropriate;
+- source rotation/recovery;
+- no unbounded polling merely to hide ownership gaps.
+
+Overlapping reads must not let an older completion overwrite a newer observation. Coalesce/serialize
+or otherwise bind result admission to exact current observation identity.
+
+### 5. Gate Send on CURRENT relationship truth
+
+The visible Send affordance and the Send effect must not trust a historical READY cache.
+
+Before a real Companion turn is admitted, resolve against the current convergence output. Preserve
+the local draft while held/unavailable/recovering.
+
+### 6. Correct human wording
+
+The setup/recovery window may report the effect it actually owns:
+
+~~~text
+local recovery completed
+~~~
+
+It must not imply the already-visible Open Vex surface is usable until that surface has converged.
+
+### 7. Prove the seam that failed
+
+Required proof layers should include:
+
+~~~text
+deterministic currentness/race tests
+browser integration with external runtime-observation change
+existing-tab reactivation/re-observation
+source mismatch hold/reload behavior
+draft preservation
+Send re-admission against current truth
+normal Mac front door lived use
+real local Heretic reply
+ordinary re-entry
+post-merge repeat from main
+~~~
+
+Do not stop at a synthetic Home or fresh browser if the claim is the ordinary recovery path.
+
+## Prior connective work remains completed input
+
+The previously completed canonical Conversation / Memory / Atlas / bounded-capability work is still
+valuable. It becomes input to this relationship, not evidence that the relationship itself is
+already converged.
+
+~~~text
+Canonical Conversation identity        COMPLETED
+Prior-context / Memory assimilation    COMPLETED
+Atlas / self-capability awareness      COMPLETED
+Bounded context-aware capability use   COMPLETED
+
+Interface Compound Relay convergence   READY / CURRENT FOREGROUND
+V5 resource stewardship                VERIFYING / separate natural predicate
+V6 long lived continuity               WAITING_DEPENDENCIES
+~~~
+
+Permanent:
+
+~~~text
+COMPLETED_INPUT_OWNER
+!= COMPLETED_COMPOSITION
+
+ANDROID_ARCHITECTURE_REFERENCE
+!= VEXLIFE_SOURCE_AUTHORITY
+
+INTERFACE_COMPOUND_RELAY
+!= NEW_CONVERSATION_OWNER
+!= NEW_RUNTIME_OWNER
+!= NEW_MODEL_OWNER
+!= NEW_GENERIC_RELAY_FRAMEWORK_BY_DEFAULT
+~~~
 
 ## Version line
 
@@ -341,9 +789,9 @@ Memory promotion, host cleanup authority, distribution completeness, or V3–V6 
 
 The next continuity edge after this completed Home threshold was V3; V3 then released V4, and V4 is now terminal source + lived PASS. The canonical Conversation, Memory and Atlas connective layers are also complete; the current foreground is the integrated lived capability-use path described below.
 
-## Current connective foreground — one Conversation becomes Vex's working frame
+## Prior connective foreground — one Conversation became Vex's working frame
 
-The current gap is **not** that VexLife lacks Atlas, capability, Conversation, Context Lease or Memory modules. The gap is that the lived Vex relationship does not yet expose those owners as one coherent current frame.
+At that earlier connective stage, the gap was **not** that VexLife lacked Atlas, capability, Conversation, Context Lease or Memory modules. The gap is that the lived Vex relationship does not yet expose those owners as one coherent current frame.
 
 Source already present on current VexLife main:
 
@@ -379,7 +827,7 @@ visible Vex relationship
   does not yet consistently demonstrate current Atlas/self-capability awareness
 ```
 
-So the next path is identity-first:
+That connective path was identity-first and is now completed; it is retained here as substrate/provenance:
 
 ### 1. Canonical Conversation identity — completed
 
