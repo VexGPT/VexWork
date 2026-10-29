@@ -1,7 +1,7 @@
 {
   "schemaVersion": "vexboard.local-draft/v1",
   "draftRef": "board.vexlife.debug-menu.theme-mode.origin-walk",
-  "title": "Debug Menu / Theme Mode",
+  "title": "Debug Menu / Theme Mode · Family language",
   "mode": "READ_ONLY_SOURCE",
   "derivedFromRefOrNull": null,
   "savedAtOrNull": null,
@@ -10,138 +10,550 @@
     "graphRef": "graph.vexlife.debug-menu.theme-mode.origin-walk",
     "nodes": [
       {
-        "nodeRef": "control.debug-menu.theme-mode",
-        "kind": "CONTROL",
-        "label": "Theme Mode Switch",
+        "nodeRef": "quadrant.theme-mode.ui",
+        "kind": "CONTAINER",
+        "label": "UI / CONTROL",
         "parentRefOrNull": null,
         "detailBoardRefOrNull": null,
         "sourceRefs": [
           "github.pull.vexwork.178",
-          "projects/vexsync-debugmenu-blueprints/README.md"
+          "github.pull.vexlife-android.193",
+          "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
+          "projects/vexsync-debugmenu-blueprints/README.md",
+          "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md"
+        ]
+      },
+      {
+        "nodeRef": "quadrant.theme-mode.family",
+        "kind": "CONTAINER",
+        "label": "FAMILY / LOGIC",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.pull.vexwork.178",
+          "github.pull.vexlife-android.193",
+          "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
+          "projects/vexsync-debugmenu-blueprints/README.md",
+          "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt"
+        ]
+      },
+      {
+        "nodeRef": "quadrant.theme-mode.identity",
+        "kind": "CONTAINER",
+        "label": "TYPED IDENTITY",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.pull.vexwork.178",
+          "github.pull.vexlife-android.193",
+          "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
+          "projects/vexsync-debugmenu-blueprints/README.md",
+          "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+          "repo.vexlife-android:architecture/behavior/src/test/kotlin/com/vextreme/vexlife/android/behavior/VexFamilyHighConfidenceTest.kt"
+        ]
+      },
+      {
+        "nodeRef": "quadrant.theme-mode.execution",
+        "kind": "CONTAINER",
+        "label": "EXECUTION",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.pull.vexwork.178",
+          "github.pull.vexlife-android.193",
+          "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
+          "projects/vexsync-debugmenu-blueprints/README.md",
+          "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+          "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt"
+        ]
+      },
+      {
+        "nodeRef": "control.debug-menu.theme-mode",
+        "kind": "CONTROL",
+        "label": "Theme Mode Switch",
+        "parentRefOrNull": "quadrant.theme-mode.ui",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.pull.vexwork.178",
+          "github.pull.vexlife-android.193",
+          "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
+          "projects/vexsync-debugmenu-blueprints/README.md",
+          "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md"
+        ]
+      },
+      {
+        "nodeRef": "annotation.theme-mode.ui-activation",
+        "kind": "ANNOTATION",
+        "label": "activate → Control.Toggle",
+        "parentRefOrNull": "quadrant.theme-mode.ui",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.pull.vexwork.178",
+          "github.pull.vexlife-android.193",
+          "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
+          "projects/vexsync-debugmenu-blueprints/README.md",
+          "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md"
         ]
       },
       {
         "nodeRef": "state.theme-mode",
         "kind": "REFERENCE",
-        "label": "ThemeMode",
-        "parentRefOrNull": null,
+        "label": "ThemeMode · Light | Dark",
+        "parentRefOrNull": "quadrant.theme-mode.family",
         "detailBoardRefOrNull": null,
         "sourceRefs": [
           "github.pull.vexwork.178",
-          "projects/vexsync-debugmenu-blueprints/README.md"
-        ]
-      },
-      {
-        "nodeRef": "annotation.state.theme-mode.values",
-        "kind": "ANNOTATION",
-        "label": "Light | Dark",
-        "parentRefOrNull": "state.theme-mode",
-        "detailBoardRefOrNull": null,
-        "sourceRefs": [
-          "github.pull.vexwork.178"
-        ]
-      },
-      {
-        "nodeRef": "behavior.theme-mode",
-        "kind": "PROCESS",
-        "label": "ThemeMode Behavior",
-        "parentRefOrNull": null,
-        "detailBoardRefOrNull": null,
-        "sourceRefs": [
-          "github.pull.vexwork.178",
+          "github.pull.vexlife-android.193",
+          "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
+          "projects/vexsync-debugmenu-blueprints/README.md",
           "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md"
         ]
       },
       {
-        "nodeRef": "annotation.behavior.theme-mode.acts",
-        "kind": "ANNOTATION",
-        "label": "current State resolves SelectDark / SelectLight",
-        "parentRefOrNull": "behavior.theme-mode",
-        "detailBoardRefOrNull": null,
-        "sourceRefs": [
-          "github.pull.vexwork.178"
-        ]
-      },
-      {
-        "nodeRef": "reference.theme-mode.persistence-owner",
-        "kind": "REFERENCE",
-        "label": "Theme persistence owner · unresolved",
-        "parentRefOrNull": null,
+        "nodeRef": "process.theme-mode.family",
+        "kind": "PROCESS",
+        "label": "ThemeMode Family",
+        "parentRefOrNull": "quadrant.theme-mode.family",
         "detailBoardRefOrNull": null,
         "sourceRefs": [
           "github.pull.vexwork.178",
-          "projects/vexsync-debugmenu-blueprints/README.md"
+          "github.pull.vexlife-android.193",
+          "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
+          "projects/vexsync-debugmenu-blueprints/README.md",
+          "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt"
+        ]
+      },
+      {
+        "nodeRef": "annotation.theme-mode.family-law",
+        "kind": "ANNOTATION",
+        "label": "CURRENT State + Control → Act → stay / admit / Begin",
+        "parentRefOrNull": "quadrant.theme-mode.family",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.pull.vexwork.178",
+          "github.pull.vexlife-android.193",
+          "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
+          "projects/vexsync-debugmenu-blueprints/README.md",
+          "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt"
+        ]
+      },
+      {
+        "nodeRef": "reference.family.control",
+        "kind": "REFERENCE",
+        "label": "Control<Family>",
+        "parentRefOrNull": "quadrant.theme-mode.identity",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.pull.vexwork.178",
+          "github.pull.vexlife-android.193",
+          "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
+          "projects/vexsync-debugmenu-blueprints/README.md",
+          "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt"
+        ]
+      },
+      {
+        "nodeRef": "reference.family.resource-control",
+        "kind": "REFERENCE",
+        "label": "Control.Resource<Family, ExactId>",
+        "parentRefOrNull": "quadrant.theme-mode.identity",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.pull.vexwork.178",
+          "github.pull.vexlife-android.193",
+          "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
+          "projects/vexsync-debugmenu-blueprints/README.md",
+          "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt"
+        ]
+      },
+      {
+        "nodeRef": "reference.family.relationship-id",
+        "kind": "REFERENCE",
+        "label": "Family RelationshipId",
+        "parentRefOrNull": "quadrant.theme-mode.identity",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.pull.vexwork.178",
+          "github.pull.vexlife-android.193",
+          "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
+          "projects/vexsync-debugmenu-blueprints/README.md",
+          "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt"
+        ]
+      },
+      {
+        "nodeRef": "annotation.identity.default",
+        "kind": "ANNOTATION",
+        "label": "Control kind/name is always included",
+        "parentRefOrNull": "quadrant.theme-mode.identity",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.pull.vexwork.178",
+          "github.pull.vexlife-android.193",
+          "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
+          "projects/vexsync-debugmenu-blueprints/README.md",
+          "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+          "repo.vexlife-android:architecture/behavior/src/test/kotlin/com/vextreme/vexlife/android/behavior/VexFamilyHighConfidenceTest.kt"
+        ]
+      },
+      {
+        "nodeRef": "annotation.identity.same",
+        "kind": "ANNOTATION",
+        "label": "Play + TrackId(A), position 10 / 99 → SAME",
+        "parentRefOrNull": "quadrant.theme-mode.identity",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.pull.vexwork.178",
+          "github.pull.vexlife-android.193",
+          "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
+          "projects/vexsync-debugmenu-blueprints/README.md",
+          "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+          "repo.vexlife-android:architecture/behavior/src/test/kotlin/com/vextreme/vexlife/android/behavior/VexFamilyHighConfidenceTest.kt"
+        ]
+      },
+      {
+        "nodeRef": "annotation.identity.different",
+        "kind": "ANNOTATION",
+        "label": "Play + TrackId(A) / TrackId(B) → DIFFERENT",
+        "parentRefOrNull": "quadrant.theme-mode.identity",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.pull.vexwork.178",
+          "github.pull.vexlife-android.193",
+          "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
+          "projects/vexsync-debugmenu-blueprints/README.md",
+          "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+          "repo.vexlife-android:architecture/behavior/src/test/kotlin/com/vextreme/vexlife/android/behavior/VexFamilyHighConfidenceTest.kt"
+        ]
+      },
+      {
+        "nodeRef": "annotation.identity.type-lock",
+        "kind": "ANNOTATION",
+        "label": "Play.resourceId : TrackId · AccountId does not fit",
+        "parentRefOrNull": "quadrant.theme-mode.identity",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.pull.vexwork.178",
+          "github.pull.vexlife-android.193",
+          "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
+          "projects/vexsync-debugmenu-blueprints/README.md",
+          "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+          "repo.vexlife-android:architecture/behavior/src/test/kotlin/com/vextreme/vexlife/android/behavior/VexFamilyHighConfidenceTest.kt"
+        ]
+      },
+      {
+        "nodeRef": "annotation.identity.enum",
+        "kind": "ANNOTATION",
+        "label": "enum Play ≠ Pause",
+        "parentRefOrNull": "quadrant.theme-mode.identity",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.pull.vexwork.178",
+          "github.pull.vexlife-android.193",
+          "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
+          "projects/vexsync-debugmenu-blueprints/README.md",
+          "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+          "repo.vexlife-android:architecture/behavior/src/test/kotlin/com/vextreme/vexlife/android/behavior/VexFamilyHighConfidenceTest.kt"
+        ]
+      },
+      {
+        "nodeRef": "reference.execution.relationship-id",
+        "kind": "REFERENCE",
+        "label": "VexExecution.RelationshipId",
+        "parentRefOrNull": "quadrant.theme-mode.execution",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.pull.vexwork.178",
+          "github.pull.vexlife-android.193",
+          "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
+          "projects/vexsync-debugmenu-blueprints/README.md",
+          "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+          "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt"
+        ]
+      },
+      {
+        "nodeRef": "process.execution.approach",
+        "kind": "PROCESS",
+        "label": "Begin → Approach only",
+        "parentRefOrNull": "quadrant.theme-mode.execution",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.pull.vexwork.178",
+          "github.pull.vexlife-android.193",
+          "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
+          "projects/vexsync-debugmenu-blueprints/README.md",
+          "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+          "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt"
+        ]
+      },
+      {
+        "nodeRef": "annotation.execution.approaches",
+        "kind": "ANNOTATION",
+        "label": "Earliest | Latest | Queued",
+        "parentRefOrNull": "quadrant.theme-mode.execution",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.pull.vexwork.178",
+          "github.pull.vexlife-android.193",
+          "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
+          "projects/vexsync-debugmenu-blueprints/README.md",
+          "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+          "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt"
+        ]
+      },
+      {
+        "nodeRef": "annotation.execution.launch-once",
+        "kind": "ANNOTATION",
+        "label": "launchOnce: same unfinished source fails closed",
+        "parentRefOrNull": "quadrant.theme-mode.execution",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.pull.vexwork.178",
+          "github.pull.vexlife-android.193",
+          "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
+          "projects/vexsync-debugmenu-blueprints/README.md",
+          "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+          "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt"
+        ]
+      },
+      {
+        "nodeRef": "annotation.execution.raw-gate",
+        "kind": "ANNOTATION",
+        "label": "raw RelationshipId bridge requires foundation opt-in",
+        "parentRefOrNull": "quadrant.theme-mode.execution",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.pull.vexwork.178",
+          "github.pull.vexlife-android.193",
+          "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
+          "projects/vexsync-debugmenu-blueprints/README.md",
+          "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+          "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt"
         ]
       }
     ],
     "relationships": [
       {
-        "relationshipRef": "rel.theme-mode.switch-activates-behavior",
+        "relationshipRef": "rel.theme-mode.ui-family",
         "kind": "TRANSITION",
         "fromRef": "control.debug-menu.theme-mode",
-        "toRef": "behavior.theme-mode",
-        "labelOrNull": "ACTIVATE · ThemeModeToggle",
+        "toRef": "process.theme-mode.family",
+        "labelOrNull": "ACTIVATE · Control.Toggle",
         "sourceRefs": [
-          "github.pull.vexwork.178"
+          "github.pull.vexwork.178",
+          "github.pull.vexlife-android.193",
+          "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
+          "projects/vexsync-debugmenu-blueprints/README.md",
+          "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md"
         ]
       },
       {
-        "relationshipRef": "rel.theme-mode.current-state-resolves-behavior",
+        "relationshipRef": "rel.theme-mode.state-family",
         "kind": "DATA",
         "fromRef": "state.theme-mode",
-        "toRef": "behavior.theme-mode",
+        "toRef": "process.theme-mode.family",
         "labelOrNull": "CURRENT STATE",
         "sourceRefs": [
-          "github.pull.vexwork.178"
+          "github.pull.vexwork.178",
+          "github.pull.vexlife-android.193",
+          "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
+          "projects/vexsync-debugmenu-blueprints/README.md",
+          "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt"
         ]
       },
       {
-        "relationshipRef": "rel.theme-mode.behavior-admits-state",
+        "relationshipRef": "rel.theme-mode.family-state",
         "kind": "FLOW",
-        "fromRef": "behavior.theme-mode",
+        "fromRef": "process.theme-mode.family",
         "toRef": "state.theme-mode",
-        "labelOrNull": "ADMIT / STAY",
+        "labelOrNull": "STAY / ADMIT",
         "sourceRefs": [
-          "github.pull.vexwork.178"
+          "github.pull.vexwork.178",
+          "github.pull.vexlife-android.193",
+          "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
+          "projects/vexsync-debugmenu-blueprints/README.md",
+          "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt"
         ]
       },
       {
-        "relationshipRef": "rel.theme-mode.behavior-persistence-frontier",
-        "kind": "REFERENCE",
-        "fromRef": "behavior.theme-mode",
-        "toRef": "reference.theme-mode.persistence-owner",
-        "labelOrNull": "EFFECT · OWNER OPEN",
+        "relationshipRef": "rel.identity.control-relationship",
+        "kind": "FLOW",
+        "fromRef": "reference.family.control",
+        "toRef": "reference.family.relationship-id",
+        "labelOrNull": "DEFAULT CONTROL KIND",
         "sourceRefs": [
-          "github.pull.vexwork.178"
+          "github.pull.vexwork.178",
+          "github.pull.vexlife-android.193",
+          "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
+          "projects/vexsync-debugmenu-blueprints/README.md",
+          "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt"
+        ]
+      },
+      {
+        "relationshipRef": "rel.identity.resource-relationship",
+        "kind": "FLOW",
+        "fromRef": "reference.family.resource-control",
+        "toRef": "reference.family.relationship-id",
+        "labelOrNull": "EXACT RESOURCE ID WHEN EARNED",
+        "sourceRefs": [
+          "github.pull.vexwork.178",
+          "github.pull.vexlife-android.193",
+          "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
+          "projects/vexsync-debugmenu-blueprints/README.md",
+          "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt"
+        ]
+      },
+      {
+        "relationshipRef": "rel.identity-family-execution",
+        "kind": "REFERENCE",
+        "fromRef": "reference.family.relationship-id",
+        "toRef": "reference.execution.relationship-id",
+        "labelOrNull": "SUPPLIES",
+        "sourceRefs": [
+          "github.pull.vexwork.178",
+          "github.pull.vexlife-android.193",
+          "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
+          "projects/vexsync-debugmenu-blueprints/README.md",
+          "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt",
+          "github.pull.vexwork.178",
+          "github.pull.vexlife-android.193",
+          "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
+          "projects/vexsync-debugmenu-blueprints/README.md",
+          "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+          "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt"
+        ]
+      },
+      {
+        "relationshipRef": "rel.execution-id-approach",
+        "kind": "FLOW",
+        "fromRef": "reference.execution.relationship-id",
+        "toRef": "process.execution.approach",
+        "labelOrNull": "COORDINATE",
+        "sourceRefs": [
+          "github.pull.vexwork.178",
+          "github.pull.vexlife-android.193",
+          "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
+          "projects/vexsync-debugmenu-blueprints/README.md",
+          "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+          "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt"
         ]
       }
     ],
     "sourceRefs": [
       "github.pull.vexwork.178",
+      "github.pull.vexlife-android.193",
+      "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
+      "projects/vexsync-debugmenu-blueprints/README.md",
+      "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
       "project.vexsync.debugmenu-blueprints",
       "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery",
-      "projects/vexsync-debugmenu-blueprints/README.md",
-      "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md"
+      "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt",
+      "repo.vexlife-android:architecture/behavior/src/test/kotlin/com/vextreme/vexlife/android/behavior/VexFamilyHighConfidenceTest.kt",
+      "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt"
     ]
   },
   "projection": {
     "schemaVersion": "vexboard.board-projection/v1",
     "projectionRef": "projection.vexlife.debug-menu.theme-mode.origin-walk",
     "graphRef": "graph.vexlife.debug-menu.theme-mode.origin-walk",
-    "layoutIntent": "SCREEN_FLOW",
+    "layoutIntent": "GRID",
     "items": [
+      {
+        "projectionItemRef": "item.quadrant.theme-mode.ui",
+        "semanticRef": "quadrant.theme-mode.ui",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 80,
+          "y": 80,
+          "width": 560,
+          "height": 410
+        },
+        "layer": -2,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.quadrant.theme-mode.family",
+        "semanticRef": "quadrant.theme-mode.family",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 700,
+          "y": 80,
+          "width": 600,
+          "height": 410
+        },
+        "layer": -2,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.quadrant.theme-mode.identity",
+        "semanticRef": "quadrant.theme-mode.identity",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 80,
+          "y": 550,
+          "width": 760,
+          "height": 590
+        },
+        "layer": -2,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.quadrant.theme-mode.execution",
+        "semanticRef": "quadrant.theme-mode.execution",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 900,
+          "y": 550,
+          "width": 600,
+          "height": 590
+        },
+        "layer": -2,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
       {
         "projectionItemRef": "item.control.debug-menu.theme-mode",
         "semanticRef": "control.debug-menu.theme-mode",
         "shapeKind": "RECTANGLE",
         "bounds": {
-          "x": 140,
-          "y": 260,
-          "width": 240,
+          "x": 150,
+          "y": 190,
+          "width": 310,
           "height": 100
         },
         "layer": 1,
-        "parentProjectionItemRefOrNull": null,
+        "parentProjectionItemRefOrNull": "item.quadrant.theme-mode.ui",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.annotation.theme-mode.ui-activation",
+        "semanticRef": "annotation.theme-mode.ui-activation",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 150,
+          "y": 330,
+          "width": 400,
+          "height": 60
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.quadrant.theme-mode.ui",
         "visible": true,
         "locked": true
       },
@@ -150,80 +562,249 @@
         "semanticRef": "state.theme-mode",
         "shapeKind": "RECTANGLE",
         "bounds": {
-          "x": 650,
-          "y": 100,
-          "width": 260,
-          "height": 150
+          "x": 770,
+          "y": 170,
+          "width": 250,
+          "height": 100
         },
         "layer": 1,
-        "parentProjectionItemRefOrNull": null,
+        "parentProjectionItemRefOrNull": "item.quadrant.theme-mode.family",
         "visible": true,
         "locked": true
       },
       {
-        "projectionItemRef": "item.annotation.state.theme-mode.values",
-        "semanticRef": "annotation.state.theme-mode.values",
-        "shapeKind": "TEXT",
-        "bounds": {
-          "x": 680,
-          "y": 175,
-          "width": 200,
-          "height": 44
-        },
-        "layer": 2,
-        "parentProjectionItemRefOrNull": "item.state.theme-mode",
-        "visible": true,
-        "locked": true
-      },
-      {
-        "projectionItemRef": "item.behavior.theme-mode",
-        "semanticRef": "behavior.theme-mode",
+        "projectionItemRef": "item.process.theme-mode.family",
+        "semanticRef": "process.theme-mode.family",
         "shapeKind": "RECTANGLE",
         "bounds": {
-          "x": 650,
-          "y": 360,
-          "width": 320,
-          "height": 170
+          "x": 1050,
+          "y": 170,
+          "width": 190,
+          "height": 100
         },
         "layer": 1,
-        "parentProjectionItemRefOrNull": null,
+        "parentProjectionItemRefOrNull": "item.quadrant.theme-mode.family",
         "visible": true,
         "locked": true
       },
       {
-        "projectionItemRef": "item.annotation.behavior.theme-mode.acts",
-        "semanticRef": "annotation.behavior.theme-mode.acts",
+        "projectionItemRef": "item.annotation.theme-mode.family-law",
+        "semanticRef": "annotation.theme-mode.family-law",
         "shapeKind": "TEXT",
         "bounds": {
-          "x": 680,
-          "y": 445,
-          "width": 260,
-          "height": 52
+          "x": 770,
+          "y": 325,
+          "width": 460,
+          "height": 65
         },
         "layer": 2,
-        "parentProjectionItemRefOrNull": "item.behavior.theme-mode",
+        "parentProjectionItemRefOrNull": "item.quadrant.theme-mode.family",
         "visible": true,
         "locked": true
       },
       {
-        "projectionItemRef": "item.reference.theme-mode.persistence-owner",
-        "semanticRef": "reference.theme-mode.persistence-owner",
+        "projectionItemRef": "item.reference.family.control",
+        "semanticRef": "reference.family.control",
         "shapeKind": "RECTANGLE",
         "bounds": {
-          "x": 1130,
-          "y": 390,
+          "x": 140,
+          "y": 645,
+          "width": 270,
+          "height": 82
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.quadrant.theme-mode.identity",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.reference.family.resource-control",
+        "semanticRef": "reference.family.resource-control",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 455,
+          "y": 645,
+          "width": 310,
+          "height": 82
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.quadrant.theme-mode.identity",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.reference.family.relationship-id",
+        "semanticRef": "reference.family.relationship-id",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 300,
+          "y": 775,
           "width": 300,
-          "height": 110
+          "height": 82
         },
         "layer": 1,
-        "parentProjectionItemRefOrNull": null,
+        "parentProjectionItemRefOrNull": "item.quadrant.theme-mode.identity",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.annotation.identity.default",
+        "semanticRef": "annotation.identity.default",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 140,
+          "y": 900,
+          "width": 290,
+          "height": 45
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.quadrant.theme-mode.identity",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.annotation.identity.same",
+        "semanticRef": "annotation.identity.same",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 140,
+          "y": 960,
+          "width": 310,
+          "height": 58
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.quadrant.theme-mode.identity",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.annotation.identity.different",
+        "semanticRef": "annotation.identity.different",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 470,
+          "y": 900,
+          "width": 300,
+          "height": 58
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.quadrant.theme-mode.identity",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.annotation.identity.type-lock",
+        "semanticRef": "annotation.identity.type-lock",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 470,
+          "y": 970,
+          "width": 300,
+          "height": 58
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.quadrant.theme-mode.identity",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.annotation.identity.enum",
+        "semanticRef": "annotation.identity.enum",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 300,
+          "y": 1040,
+          "width": 280,
+          "height": 45
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.quadrant.theme-mode.identity",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.reference.execution.relationship-id",
+        "semanticRef": "reference.execution.relationship-id",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 970,
+          "y": 650,
+          "width": 340,
+          "height": 82
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.quadrant.theme-mode.execution",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.process.execution.approach",
+        "semanticRef": "process.execution.approach",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 970,
+          "y": 790,
+          "width": 300,
+          "height": 82
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.quadrant.theme-mode.execution",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.annotation.execution.approaches",
+        "semanticRef": "annotation.execution.approaches",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 970,
+          "y": 905,
+          "width": 320,
+          "height": 45
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.quadrant.theme-mode.execution",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.annotation.execution.launch-once",
+        "semanticRef": "annotation.execution.launch-once",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 970,
+          "y": 970,
+          "width": 390,
+          "height": 55
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.quadrant.theme-mode.execution",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.annotation.execution.raw-gate",
+        "semanticRef": "annotation.execution.raw-gate",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 970,
+          "y": 1040,
+          "width": 410,
+          "height": 55
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.quadrant.theme-mode.execution",
         "visible": true,
         "locked": true
       }
     ],
     "sourceRefs": [
       "github.pull.vexwork.178",
-      "projects/vexsync-debugmenu-blueprints/README.md"
+      "github.pull.vexlife-android.193",
+      "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
+      "projects/vexsync-debugmenu-blueprints/README.md",
+      "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+      "repo.vexlife-android:architecture/behavior/src/test/kotlin/com/vextreme/vexlife/android/behavior/VexFamilyHighConfidenceTest.kt"
     ]
   }
 }
