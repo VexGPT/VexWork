@@ -6324,18 +6324,24 @@ already-reconciled provider/repository truth
 Family supplies CURRENT State + serialization. Feature/source owners supply semantic currentness.
 No Family revision/generation oracle is introduced.
 
-Current accepted Relay remains a separate current owner:
+Accepted Relay current-State meaning is now explicit on Android main through PR #200:
 
 ~~~text
-Direct Family StateRelay
-  owns current Family State
-
 VexCompoundRelay
-  owns current Compound relationship State
+  processStates(InputState, CURRENT VexCompoundState)
+  -> VexCompoundState(inputState, outputState)
+  -> one current-State commit
 
-Process OutputState
-  != generic Family.currentState handoff
+OutputState
+  = projection inside the current Compound relationship
+  != a separate post-process value that must re-enter currentState
+
+Compound revision / lineage counter
+  = not part of current Compound truth
 ~~~
+
+This closes the former Process/Compound admission ambiguity. PR #198 remains a separate Direct-Family
+serialized-admission candidate; PR #200 does not make its local Family lock/store implementation final.
 
 A separate Execution custody mismatch is carried by stacked Android PR #199:
 
