@@ -2,6 +2,52 @@
 
 [VXG RealForever]
 
+## CURRENT ThemeMode SourceOwner continuation — A008
+
+Current Android PR #188 exact candidate:
+
+~~~text
+base   = 14bb2c4e82eb6cf55cbdc6ef5f2c65d38f97e45b
+head   = 58d0be5f2f74bad40bb4deea7a697fa9f8e5d928
+tree   = ea817c7a9506f9c24d205e333d120c86a7761e41
+paths  = 28 exact
+branch = VXG-102626-vexsync-theme-mode-android-a001
+~~~
+
+Current UI law remains:
+
+~~~text
+ThemeModeFamily
+-> DisplayState
+-> VexThemePresentation
+-> one VexLifeTheme boundary
+-> inherited presentation continuity
+~~~
+
+The SourceOwner recovery chain has consumed A001-A007. A007 established focused ThemeMode/Session/Maps
+JVM PASS and repository `vexVerifyLocal` PASS on its then-current head, then AndroidTest compilation
+found the remaining two test fixtures constructing `VexLifeSession` without explicit
+`VexExecutionRoot` custody.
+
+Those two fixtures now:
+- create an explicit `VexExecutionRoot`;
+- pass it to `VexLifeSession`;
+- call `forceStopAll()` in their existing fixture cleanup.
+
+No default/global execution root was introduced. A008 is the fresh exact-head SourceOwner proof attempt.
+
+~~~text
+A008 formation sha256 = cc2163436374bcb874785ead89e0f8f0d270f08d6186c3d345efb1339456cfb4
+route = VexRelay RUN_ROOT
+Local Workspace = NOT USED
+GitHub Actions = NOT USED
+~~~
+
+Older A001-A007 sections below are causal history and consumed recovery evidence; they are not current
+execution coordinates.
+
+<!-- [VXG RealForever][VEXSYNC][THEMEMODE][SOURCEOWNER-A008][CURRENT] -->
+
 ## Human outcome
 
 Use one real Debug Menu feature request to discover a reusable feature-building process that Victor + AI
