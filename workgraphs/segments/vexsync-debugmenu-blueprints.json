@@ -385,6 +385,38 @@
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-29T17:18:00.000Z",
       "updatedAt": "2026-10-29T17:18:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexsync.debugmenu-blueprints.execution-source-custody",
+      "parentWorkRefOrNull": "work.vexsync.debugmenu-blueprints.outcome",
+      "label": "Scope source-addressed execution custody to the live Execution instance",
+      "purpose": "Close the accepted #193 Execution mismatch where SourceRef is intentionally class+callable diagnostic identity but launchOnce/Flow uniqueness/forceStop/joinStop were enforced root-wide. Preserve SourceRef, InstanceId and RelationshipId meanings; internally scope source-addressed custody by the exact live VexExecution object plus SourceRef so two same-class execution objects sharing one root cannot cancel or reject each other.",
+      "workClass": "DEFECT",
+      "state": "RUNNING",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexsync.debugmenu-blueprints.family-state-relay-currentness"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "github.pull.vexlife-android.193",
+        "github.pull.vexlife-android.198",
+        "github.pull.vexlife-android.199",
+        "github.commit.vexlife-android.d240a5d7aca8af8cc0f545a424c53d944263cf6a"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+      "nextProcessRefs": [
+        "process.vexlife-android.feature-authoring"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-29T17:34:00.000Z",
+      "updatedAt": "2026-10-29T17:34:00.000Z"
     }
   ],
   "transitions": [
@@ -746,6 +778,20 @@
         "github.commit.vexlife-android.78580ab051a33fb2c94903be5bf401f4f43f2087"
       ],
       "createdAt": "2026-10-29T17:18:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.execution-source-custody.running.formed-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.execution-source-custody",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Accepted #193 source/docs say SourceRef uniqueness/control belongs within one VexExecution, but the launcher currently matches SourceRef across the entire shared root. Android PR #199 preserves public SourceRef/InstanceId/RelationshipId language and internally scopes source custody by live VexExecution object + SourceRef; focused proof uses two same-class execution objects sharing one root.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.199",
+        "github.commit.vexlife-android.d240a5d7aca8af8cc0f545a424c53d944263cf6a"
+      ],
+      "createdAt": "2026-10-29T17:34:00.000Z"
     }
   ],
   "sourceRefs": [
