@@ -5086,14 +5086,14 @@ Repository Gradle/JVM proof remains pending.
 
 ---
 
-## Current checkpoint — clean Family Circuit review baseline
+## Current checkpoint — high-confidence Family review boundary
 
 Current Android review PR:
 
 ~~~text
 #193
 head:
-95488ddff3931843dab472c317eed543f093262b
+640684ac5ef1269e38755defd679564259d9fd1d
 ~~~
 
 Origin-Walk/history source:
@@ -5104,76 +5104,86 @@ head:
 dd050ff81db169277a77cad4e4bd6a4f21e58d0e
 ~~~
 
-PR #193 is a fresh branch from current Android main that ports the current winning Family Circuit
-implementation out of #192 without copying the app-specific and pressure-history surface.
-
-Exact current source/test blobs copied into #193:
+The previous #193 extraction had promoted recent Compound-Family formalization too far. The current
+#193 head intentionally trims back to the last pre-formalization V2 Family implementation checkpoint:
 
 ~~~text
-VexBehaviorFamily.kt
-VexBehaviorV2.kt
-VexBehaviorV2Act.kt
-VexBehaviorV2Builder.kt
-VexBehaviorV2Logger.kt
-VexBehaviorV2Store.kt
-VexBehaviorV2FamilyCircuitTestSampleSuite.kt
-
-VexCoroutineLauncher.kt
-VexExecution.kt
-VexExecutionRoot.kt
+89e1d27c9e28d2cca5192da9bbc10d3e493b40cd
 ~~~
 
-The Family structure remains:
+Current high-confidence Family surface:
 
 ~~~text
-VexFamily
-  common CURRENT State / DisplayState / protected admission
-
-VexBehaviorV2Family : VexFamily
-  Control-driven Family
-
-VexBehaviorV2CompoundFamily : VexFamily
-  relationship-driven Family
+Family
+  State
+  Control
+  DisplayState
+  current
+  acts
+  activate(Control)
+  optional Store / begin execution
 ~~~
 
-The neutral teaching forms remain:
+Structural Act remains:
 
 ~~~text
-createSingleFamily()
-createListFamily()
-createBooleanFamily()
-createMultiFamily(...)
+CURRENT State + Control
+-> authored Act scenario
+-> stay / admit(concrete State)
+-> optional begin(...)
 ~~~
 
-MultiFamily demonstrates:
+The existing Relay foundation continues to own convergence pressure:
 
 ~~~text
-several Family.current values
--> partial MultiInputState
--> MultiInputState.latest(...)
--> complete latest input
--> MultiFamily.process(...)
--> MultiOutputState
--> COMMIT MultiCompoundState as MultiFamily.current
--> Act only when Output meaning changed
--> ListFamily.Control
--> ListFamily.current
--> observe as NEW input
--> process again
+partial observations
++ retained CURRENT InputState
+-> complete InputState
+-> process(complete InputState)
+-> ONE OutputState(fields...)
 ~~~
 
-Fresh instances should use #193 to understand/review the current implementation. Use #192 only when
-the historical pressure and why-path are needed.
+Current #193 deliberately does NOT admit:
+
+~~~text
+VexBehaviorV2CompoundFamily
+VexBehaviorV2CompoundFamilyState
+stateFactory
+Family-level revision
+VexBehaviorV2CommittedOutput
+arbitrary post-commit act(OutputState)
+sealed Output solely to recover Act selection
+~~~
+
+The old Compound teaching suite was removed. The focused review test is now:
+
+~~~text
+VexBehaviorV2HighConfidenceTest
+~~~
+
+Open edges remain explicit rather than filled:
+
+~~~text
+Control + observation sharing one exact CURRENT Family decision boundary
+cross-cycle relationship memory as explicit CURRENT input
+provider / intent stable-identity mapping
+exact Family + Relay Kotlin composition
+~~~
+
+Fresh instances should use #193 for the current high-confidence Family boundary and use #192 for the
+historical pressure / why-path. Do not infer that later #192 code is accepted merely because it is
+newer.
 
 Current evidence:
 
 ~~~text
-clean branch from Android main                   YES
-current #192 implementation copied exactly       YES
-10 source/test blobs exact-match verified        YES
-app-specific / historical pressure copied        NO
-repository Gradle/JVM                            PENDING
+clean Android review branch                     YES
+high-confidence V2 source checkpoint restored   YES
+recent CompoundFamily/stateFactory source       REMOVED
+old Compound teaching suite                     REMOVED
+focused high-confidence test                    ADDED
+repository Gradle/JVM                           PENDING
 ~~~
 
-<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][FAMILY-CIRCUIT][CURRENT-PR193] -->
+<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][V2-FAMILY][CURRENT-PR193] -->
 
