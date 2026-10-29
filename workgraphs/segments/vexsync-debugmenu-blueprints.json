@@ -195,7 +195,11 @@
         "github.commit.vexlife-android.a43feebec19e001f109f5394f166cda145385e76",
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/ThemeMode.kt",
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeApp.kt",
-        "repo.vexlife-android:app/src/test/kotlin/com/vextreme/vexlife/android/ui/VexLifeSessionTest.kt"
+        "repo.vexlife-android:app/src/test/kotlin/com/vextreme/vexlife/android/ui/VexLifeSessionTest.kt",
+        "github.commit.vexlife-android.a831f0aed03241e036d083f7ab57a74c7c1dfbaf",
+        "correction.vexsync.thememode.select-not-toggle.20261029a",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeTheme.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/AppScreenBlueprint.kt"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
