@@ -154,12 +154,10 @@
       "label": "Build the first Debug Menu Origin <-> Android round trip",
       "purpose": "After the Feature Request -> Builder specimen is grounded enough, author the first bounded Debug Menu semantic terrain one truthful edge at a time, compare/map that meaning to current Android without requiring a second semantic reinterpretation, expose unsupported target capabilities rather than guessing, and project the resulting source/evidence back to the same coordinates before generalizing the process.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "RUNNING",
       "workDisposition": "ACTIVE",
-      "priorityClass": "HIGH",
-      "dependencyRefs": [
-        "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery"
-      ],
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
       "repositoryRefs": [
         "repo.vexwork",
         "repo.vexlife-android"
@@ -193,12 +191,16 @@
         "github.comment.vexlife-android.pr195.6500425432.sourceowner-a001-pass",
         "github.review.vexlife-android.pr195.5700051982.assurance-clear",
         "evidence.vexsync.pr195.sourceowner.a001.return.sha256.c17c2d9bc1660a6f84c11ff070a2154445a3d29621035d2bb6df3013364f0a1f",
-        "evidence.vexsync.pr195.sourceowner.a001.inner-return.sha256.743345b993ceb72b9c8901c40a9c6c911fa3d78fc5082847931f34707bc8df63"
+        "evidence.vexsync.pr195.sourceowner.a001.inner-return.sha256.743345b993ceb72b9c8901c40a9c6c911fa3d78fc5082847931f34707bc8df63",
+        "github.commit.vexlife-android.a43feebec19e001f109f5394f166cda145385e76",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/ThemeMode.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeApp.kt",
+        "repo.vexlife-android:app/src/test/kotlin/com/vextreme/vexlife/android/ui/VexLifeSessionTest.kt"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
-      "authorityDisposition": "NO_AUTHORITY",
-      "effectDisposition": "NO_EFFECTS",
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-26T07:26:46.000Z",
       "updatedAt": "2026-10-29T15:38:00.000Z"
     },
@@ -810,6 +812,21 @@
         "github.commit.vexlife-android.d240a5d7aca8af8cc0f545a424c53d944263cf6a"
       ],
       "createdAt": "2026-10-29T17:34:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.roundtrip.running.production-formed-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.debugmenu-origin-roundtrip",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "RUNNING",
+      "reason": "The ThemeMode production seam is now formed on current Android main in PR #188: the existing Debug Menu action routes through ThemeModeFamily and VexLifeApp observes Family State. The earlier PR #186 path note is retained as parallel composition context rather than a dependency gate.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.188",
+        "github.commit.vexlife-android.a43feebec19e001f109f5394f166cda145385e76",
+        "github.pull.vexlife-android.186"
+      ],
+      "createdAt": "2026-10-29T18:12:00.000Z"
     }
   ],
   "sourceRefs": [
