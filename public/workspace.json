@@ -1,7 +1,7 @@
 {
   "schemaVersion": "vexwork.public-workspace/v1",
   "projectRegistryRef": "registry.vexwork.projects.001",
-  "projectRegistryVersion": 16,
+  "projectRegistryVersion": 17,
   "projects": [
     {
       "project": {
@@ -12181,6 +12181,352 @@
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-10-26T07:26:46.000Z",
           "updatedAt": "2026-10-26T09:30:00.000Z",
+          "transitionHistory": []
+        }
+      ]
+    },
+    {
+      "project": {
+        "projectRef": "project.vextreme.alignment",
+        "label": "Vextreme Alignment",
+        "purpose": "Converge Vextreme's preserved source lineages, canonical chronology, reader navigation, and Terrain/content projections so every public reading surface reflects the same current content truth without erasing source/provenance distinctions or making VexWork a second Vextreme truth owner.",
+        "rootWorkRefs": [
+          "work.vextreme.alignment.outcome"
+        ],
+        "repositoryRefs": [
+          "repo.vexwork",
+          "repo.vextreme"
+        ],
+        "sourceRefs": [
+          "docs/process/FORM-PROJECT.md",
+          "project.vextreme.vexsite-localization",
+          "work.vextreme.vexsite.localization.presentation-source-lineage",
+          "human.lived-feedback.vextreme.alignment.20261029",
+          "github.commit.vextreme.1b4b73d0e0170dec2b2894aec50c7bdc19fb1e00",
+          "repo.vextreme:data/index.json",
+          "repo.vextreme:data/nodes.json",
+          "repo.vextreme:data/arcs-v2.json",
+          "repo.vextreme:lib/build-index.js",
+          "repo.vextreme:lib/build-terrain-map.js",
+          "repo.vextreme:pages/terrain-map.html",
+          "repo.vextreme:lib/vextreme-index-v2.js",
+          "repo.vextreme:docs/ingestion/workmaps/content-forge-consolidation-proposal.json"
+        ],
+        "formedAt": "2026-10-29T08:40:27.000Z"
+      },
+      "graphRef": "workgraph.vexwork.foundation",
+      "viewRef": "view.vextreme.alignment.board",
+      "items": [
+        {
+          "workRef": "work.vextreme.alignment.chronology-recovery",
+          "label": "Recover source-supported chronology for undated canonical records",
+          "purpose": "Audit the 46 current blank-date id-null canonical records using preserved content and provenance, distinguish record/event time from Squarespace published/modified time, and promote only defensible chronology rather than inferring creation dates from the first date string found. The already-valid 111-record Full Timeline remains independently repairable.",
+          "workClass": "TASK",
+          "state": "PLAN_VALIDATED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vextreme.alignment.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "human.lived-feedback.vextreme.alignment.20261029",
+            "repo.vextreme:data/nodes.json",
+            "repo.vextreme:data/index.json",
+            "repo.vextreme:lib/build-index.js",
+            "repo.vextreme:docs/ingestion/VEX-CONTENT-FORGE-BREADTH.md",
+            "repo.vextreme:docs/ingestion/source-pages",
+            "repo.vextreme:docs/ingestion/workmaps/content-forge-consolidation-proposal.json",
+            "repo.vextreme:docs/architecture/19-record-readers.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-29T08:40:27.000Z",
+          "updatedAt": "2026-10-29T08:40:27.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vextreme.alignment.cross-surface-proof",
+          "label": "Prove cross-surface Vextreme alignment",
+          "purpose": "After the four alignment fronts converge, verify representative pages across Terrain Timeline, embedded reader, standalone reader, arc navigation, lineage switching, and chronology so the same canonical relationships remain truthful across projections. Use cases such as God Spark, Claude Answers the Doubt, The Walk Back, and Pier House without turning the proof surface into another truth owner.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vextreme.alignment.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vextreme.alignment.timeline-projection",
+            "work.vextreme.alignment.navigation-currentness",
+            "work.vextreme.alignment.chronology-recovery",
+            "work.vextreme.alignment.lineage-reconciliation"
+          ],
+          "repositoryRefs": [
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "human.lived-feedback.vextreme.alignment.20261029",
+            "repo.vextreme:tests/85-terrain-view-contract.test.js",
+            "repo.vextreme:tests/03-browser-nav.test.js",
+            "repo.vextreme:pages/what-is-the-god-spark.html",
+            "repo.vextreme:pages/claude-answers-the-doubt.html",
+            "repo.vextreme:pages/the-walk-back.html",
+            "repo.vextreme:pages/pier-house-scarcity-companionship.html"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-29T08:40:27.000Z",
+          "updatedAt": "2026-10-29T08:40:27.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vextreme.alignment.lineage-reconciliation",
+          "label": "Reconcile preserved source lineages with reader-visible presentation",
+          "purpose": "Classify known same-subject source variants into already-visible dual lineage, intentional canonical-plus-provenance, unresolved/underexposed lineage, or single-source presentation opportunity; repair true missing reader mappings without turning every alternate capture into a presentation or mislabeling a newly derived presentation as a recovered duplicate.",
+          "workClass": "TASK",
+          "state": "PLAN_VALIDATED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vextreme.alignment.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "human.lived-feedback.vextreme.alignment.20261029",
+            "work.vextreme.vexsite.localization.presentation-source-lineage",
+            "repo.vextreme:docs/ingestion/workmaps/content-forge-consolidation-proposal.json",
+            "repo.vextreme:data/strings/source/lineages",
+            "repo.vextreme:pages/what-is-the-god-spark.html",
+            "repo.vextreme:docs/ingestion/workmaps/content-forge-god-spark-dual-lineage-view-repair.json"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-29T08:40:27.000Z",
+          "updatedAt": "2026-10-29T08:40:27.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vextreme.alignment.navigation-currentness",
+          "label": "Converge arc navigation on current v2 timeline truth",
+          "purpose": "Eliminate the visible 75-entry legacy/stale navigation universe by making reader navigation consume the same current generated index truth as modern pages, while migrating legacy arc-navigation consumers only where their accepted reader contract requires it rather than blanket-rewriting every shell page.",
+          "workClass": "DEFECT",
+          "state": "READY",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vextreme.alignment.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "human.lived-feedback.vextreme.alignment.20261029",
+            "repo.vextreme:data/arcs.json",
+            "repo.vextreme:data/index.json",
+            "repo.vextreme:lib/vextreme.js",
+            "repo.vextreme:lib/vextreme-index-v2.js",
+            "repo.vextreme:pages/claude-answers-the-doubt.html",
+            "repo.vextreme:pages/what-is-the-god-spark.html",
+            "repo.vextreme:docs/architecture/05-browser.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-29T08:40:27.000Z",
+          "updatedAt": "2026-10-29T08:40:27.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vextreme.alignment.outcome",
+          "label": "Vextreme Alignment",
+          "purpose": "Bring Vextreme's preserved sources, canonical chronology, page-reader presentation, navigation, and Terrain projections back into one coherent current reading experience while preserving the rightful source owner for every fact and relationship.",
+          "workClass": "OUTCOME",
+          "state": "PLAN_VALIDATED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vextreme.alignment.chronology-recovery",
+            "work.vextreme.alignment.cross-surface-proof",
+            "work.vextreme.alignment.lineage-reconciliation",
+            "work.vextreme.alignment.navigation-currentness",
+            "work.vextreme.alignment.timeline-projection"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "project.vextreme.alignment",
+            "human.lived-feedback.vextreme.alignment.20261029",
+            "github.commit.vextreme.1b4b73d0e0170dec2b2894aec50c7bdc19fb1e00",
+            "repo.vextreme:data/index.json",
+            "repo.vextreme:data/nodes.json",
+            "repo.vextreme:data/arcs-v2.json",
+            "repo.vextreme:pages/terrain-map.html",
+            "repo.vextreme:docs/ingestion/workmaps/content-forge-consolidation-proposal.json"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-29T08:40:27.000Z",
+          "updatedAt": "2026-10-29T08:40:27.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vextreme.alignment.timeline-projection",
+          "label": "Restore canonical Full Timeline order, sections, and complete reading path",
+          "purpose": "Repair the observed Terrain Full Timeline defect by consuming Vextreme's canonical ordered arc semantics instead of nodes/add order, projecting the 111 currently dated records in their real chronological sections, and reusing the existing complete embedded/standalone page readers rather than reducing the timeline to disconnected metadata cards.",
+          "workClass": "DEFECT",
+          "state": "READY",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": "work.vextreme.alignment.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "human.lived-feedback.vextreme.alignment.20261029",
+            "repo.vextreme:data/index.json",
+            "repo.vextreme:data/nodes.json",
+            "repo.vextreme:data/arcs-v2.json",
+            "repo.vextreme:lib/build-index.js",
+            "repo.vextreme:lib/build-terrain-map.js",
+            "repo.vextreme:pages/terrain-map.html",
+            "repo.vextreme:tests/85-terrain-view-contract.test.js"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-29T08:40:27.000Z",
+          "updatedAt": "2026-10-29T08:40:27.000Z",
+          "transitionHistory": []
+        }
+      ],
+      "lanes": [
+        {
+          "laneRef": "lane.work.intake",
+          "label": "Intake",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.planned",
+          "label": "Planned",
+          "workRefs": [
+            "work.vextreme.alignment.outcome",
+            "work.vextreme.alignment.chronology-recovery",
+            "work.vextreme.alignment.cross-surface-proof",
+            "work.vextreme.alignment.lineage-reconciliation"
+          ]
+        },
+        {
+          "laneRef": "lane.work.ready",
+          "label": "Ready",
+          "workRefs": [
+            "work.vextreme.alignment.timeline-projection",
+            "work.vextreme.alignment.navigation-currentness"
+          ]
+        },
+        {
+          "laneRef": "lane.work.active",
+          "label": "Active",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.waiting",
+          "label": "Waiting",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.needs-human",
+          "label": "Needs Human",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.verify",
+          "label": "Verify",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.attention",
+          "label": "Attention",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.done",
+          "label": "Done",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.archive",
+          "label": "Archive",
+          "workRefs": []
+        }
+      ],
+      "summary": {
+        "workItemCount": 6,
+        "openWorkItemCount": 6,
+        "outcomeCount": 1,
+        "taskCount": 3,
+        "defectCount": 2,
+        "potentialCount": 0,
+        "needsHumanCount": 0,
+        "completedCount": 0
+      },
+      "rootItems": [
+        {
+          "workRef": "work.vextreme.alignment.outcome",
+          "label": "Vextreme Alignment",
+          "purpose": "Bring Vextreme's preserved sources, canonical chronology, page-reader presentation, navigation, and Terrain projections back into one coherent current reading experience while preserving the rightful source owner for every fact and relationship.",
+          "workClass": "OUTCOME",
+          "state": "PLAN_VALIDATED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vextreme.alignment.chronology-recovery",
+            "work.vextreme.alignment.cross-surface-proof",
+            "work.vextreme.alignment.lineage-reconciliation",
+            "work.vextreme.alignment.navigation-currentness",
+            "work.vextreme.alignment.timeline-projection"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "project.vextreme.alignment",
+            "human.lived-feedback.vextreme.alignment.20261029",
+            "github.commit.vextreme.1b4b73d0e0170dec2b2894aec50c7bdc19fb1e00",
+            "repo.vextreme:data/index.json",
+            "repo.vextreme:data/nodes.json",
+            "repo.vextreme:data/arcs-v2.json",
+            "repo.vextreme:pages/terrain-map.html",
+            "repo.vextreme:docs/ingestion/workmaps/content-forge-consolidation-proposal.json"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-29T08:40:27.000Z",
+          "updatedAt": "2026-10-29T08:40:27.000Z",
           "transitionHistory": []
         }
       ]
