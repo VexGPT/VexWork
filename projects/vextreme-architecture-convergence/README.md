@@ -36,7 +36,7 @@ VexWork
   = work topology + Project/currentness owner
 
 VexSync DebugMenu Blueprints
-  = architectural/process context dependency
+  = architectural/process context source
   = current pressure source for reusable semantic language
   != Vextreme parent Project
   != Vextreme source authority
@@ -56,13 +56,17 @@ VexBoard
 pressure-tested across these sources. It does not create a new `VexArchitecture` authority root or a
 requirement to transplant Kotlin types into browser JavaScript.
 
-## Current VexSync context dependency
+## Current VexSync architectural context
 
-The stable VexSync Work dependency used by this Project is:
+The stable VexSync Work identity used as live architectural context is:
 
 ~~~text
 work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery
 ~~~
+
+This is intentionally a source/context relation rather than a VexWork `dependencyRef`. The website
+architecture can advance from current VexSync pressure while VexSync continues evolving; completion of
+that VexSync Work is not a prerequisite for Vextreme architecture work.
 
 The latest current candidate context is additionally carried by:
 
@@ -170,6 +174,86 @@ State / Control / Act / Effect depth
 
 These are construction questions, not a mandate to create a universal browser framework.
 
+
+## Current semantic-owner map
+
+The first cross-seam map is now explicit enough to guide source work without introducing a new browser
+framework:
+
+~~~text
+PRODUCT INTENTION
+  visitor moves through meaningful website surfaces
+  while the system preserves where they came from and what content topology means
+
+TERRAIN JOURNEY
+  owns actual presentation/history relationship
+  owns Back / Forward restoration
+  owns entry -> group-home -> record journey coordinates
+
+CONTENT TOPOLOGY / ARC NAV
+  owns record membership in one or more collections
+  owns Previous / Next within those collections
+  owns alternate collection membership
+  does not independently own the visitor's actual return history
+
+EMBEDDED READER
+  realizes the selected document
+  reports/intercepts navigation intent at the existing Terrain boundary
+  does not mint a second journey state
+
+LOCAL PRESENTATION PREFERENCES
+  may alter presentation such as collection-entry zoom depth
+  do not become Journey identity, collection identity or URL-route truth
+
+LOCALIZATION
+  owns actual language capability and language-surface projection
+  does not infer navigation identity or semantic ownership
+
+INSTRUMENTATION
+  records the accepted resolution after the rightful owner decides
+  may expose/debug the underlying architecture
+  does not become a second navigation or behavior engine
+~~~
+
+The current Terrain seam therefore resolves through an existing relationship rather than another
+navigation system:
+
+~~~text
+current Terrain relationship
++ incoming embedded topology control
+-> classify relationship
+
+clicked parent == actual current return group
+  -> use existing Terrain return/history relationship
+
+clicked parent != actual current return group
+  -> real cross-topology traversal
+
+clicked Previous / Next record
+  -> record-topology traversal
+  -> preserve the appropriate Terrain return relationship
+~~~
+
+This directly carries the newest VexSync Origin Walk pressure:
+
+~~~text
+navigation owns movement
+semantic state remains behind its rightful traceable dependency
+payload/argument transport does not become relationship identity
+minimum complete preserves the materially necessary why
+~~~
+
+It also carries the PR #193 instrumentation boundary:
+
+~~~text
+semantic owner decides
+-> execution coordinates
+-> instrumentation observes accepted fact
+~~~
+
+No new event bus, navigation registry, generic preference framework, or browser-side Family clone is
+earned by this map.
+
 ## Current Work
 
 ~~~text
@@ -178,7 +262,7 @@ work.vextreme.architecture-convergence.outcome
 
 work.vextreme.architecture-convergence.semantic-owner-map
   RUNNING
-  context dependency:
+  live architectural context:
     work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery
 
 work.vextreme.architecture-convergence.terrain-reader-navigation

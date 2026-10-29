@@ -12257,16 +12257,14 @@
         {
           "workRef": "work.vextreme.architecture-convergence.semantic-owner-map",
           "label": "Map Vextreme seams to rightful semantic owners and relationships",
-          "purpose": "Use current lived website seams as construction specimens and map each one from human intention through current Vextreme source to the smallest rightful owner and reusable relationship language. Consume VexSync Builder-discovery as a live context dependency, including its current typed relationship/ownership pressure, without copying Android/Kotlin shapes or allowing VexSync to become Vextreme's source authority.",
+          "purpose": "Use current lived website seams as construction specimens and map each one from human intention through current Vextreme source to the smallest rightful owner and reusable relationship language. Consume VexSync Builder-discovery as live architectural context, including its current typed relationship/ownership pressure, without copying Android/Kotlin shapes or allowing VexSync to become Vextreme's source authority.",
           "workClass": "TASK",
           "state": "RUNNING",
           "workDisposition": "ACTIVE",
           "priorityClass": "IMMEDIATE",
           "parentWorkRefOrNull": "work.vextreme.architecture-convergence.outcome",
           "childWorkRefs": [],
-          "dependencyRefs": [
-            "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery"
-          ],
+          "dependencyRefs": [],
           "repositoryRefs": [
             "repo.vexwork",
             "repo.vextreme"
@@ -12291,7 +12289,7 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-29T11:45:00.000Z",
-          "updatedAt": "2026-10-29T11:45:00.000Z",
+          "updatedAt": "2026-10-29T11:30:00.000Z",
           "transitionHistory": []
         },
         {

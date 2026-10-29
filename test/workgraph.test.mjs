@@ -318,9 +318,11 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(vextremeArchitectureOutcome.state, 'RUNNING');
   assert.equal(vextremeArchitectureOutcome.priorityClass, 'IMMEDIATE');
   assert.equal(vextremeArchitectureOwnerMap.state, 'RUNNING');
-  assert.deepEqual(vextremeArchitectureOwnerMap.dependencyRefs, [
-    'work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery',
-  ]);
+  assert.deepEqual(vextremeArchitectureOwnerMap.dependencyRefs, []);
+  assert.equal(
+    vextremeArchitectureOwnerMap.sourceRefs.includes('work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery'),
+    true,
+  );
   assert.equal(vextremeArchitectureTerrainReader.state, 'WAITING_DEPENDENCIES');
   assert.deepEqual(vextremeArchitectureTerrainReader.dependencyRefs, [
     vextremeArchitectureOwnerMap.workRef,
