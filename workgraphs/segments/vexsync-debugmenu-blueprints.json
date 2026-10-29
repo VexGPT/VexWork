@@ -178,14 +178,17 @@
         "github.comment.vexlife-android.pr188.6499683574.sourceowner-a001-pass",
         "github.review.vexlife-android.pr188.5699576285.assurance-clear",
         "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt",
-        "repo.vexlife-android:architecture/behavior/src/test/kotlin/com/vextreme/vexlife/android/behavior/VexFamilyHighConfidenceTest.kt"
+        "repo.vexlife-android:architecture/behavior/src/test/kotlin/com/vextreme/vexlife/android/behavior/VexFamilyHighConfidenceTest.kt",
+        "github.pull.vexlife-android.195",
+        "github.commit.vexlife-android.5793a8730d820362dd33a761cb26447545a8a8c8",
+        "evidence.vexsync.pr195.sourceowner.a001.formation.sha256.c4740668d26f9887c1681b9d6559e39d03798a956d4c281ccefbd197cfd7738c"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-26T07:26:46.000Z",
-      "updatedAt": "2026-10-29T14:52:00.000Z"
+      "updatedAt": "2026-10-29T15:31:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -445,6 +448,21 @@
         "evidence.vexsync.pr194.sourceowner.a001.inner-return.sha256.f154ee6debbadc8ac35ef5840cef6256902598c832f063b486050dc9149bcbde"
       ],
       "createdAt": "2026-10-29T15:19:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.debugmenu-origin-roundtrip.waiting-dependencies.theme-mode-feature-walk-formed-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.debugmenu-origin-roundtrip",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "WAITING_DEPENDENCIES",
+      "reason": "The ThemeMode whole-human outcome is now authored as Android PR #195 Feature Walk with one required held checkpoint. The map truthfully refuses a Journey while production DebugMenu still routes through the Boolean session callback. A current-contract SourceOwner A001 host wrapper is formed; the underlying production dependency remains the lawful release/integration of VexLifeSession.kt before the hold can clear.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.195",
+        "github.commit.vexlife-android.5793a8730d820362dd33a761cb26447545a8a8c8",
+        "evidence.vexsync.pr195.sourceowner.a001.formation.sha256.c4740668d26f9887c1681b9d6559e39d03798a956d4c281ccefbd197cfd7738c"
+      ],
+      "createdAt": "2026-10-29T15:31:00.000Z"
     }
   ],
   "sourceRefs": [
@@ -496,7 +514,10 @@
     "github.comment.vexlife-android.pr194.6500080504.sourceowner-a001-pass",
     "github.review.vexlife-android.pr194.5699825963.assurance-clear",
     "evidence.vexsync.pr194.sourceowner.a001.return.sha256.600c6d2f2fe167ce488f034cb63b60eb68fa1b984d5909aec3b5e0352f5be738",
-    "evidence.vexsync.pr194.sourceowner.a001.inner-return.sha256.f154ee6debbadc8ac35ef5840cef6256902598c832f063b486050dc9149bcbde"
+    "evidence.vexsync.pr194.sourceowner.a001.inner-return.sha256.f154ee6debbadc8ac35ef5840cef6256902598c832f063b486050dc9149bcbde",
+    "github.pull.vexlife-android.195",
+    "github.commit.vexlife-android.5793a8730d820362dd33a761cb26447545a8a8c8",
+    "evidence.vexsync.pr195.sourceowner.a001.formation.sha256.c4740668d26f9887c1681b9d6559e39d03798a956d4c281ccefbd197cfd7738c"
   ],
   "formedAt": "2026-10-26T07:26:46.000Z"
 }
