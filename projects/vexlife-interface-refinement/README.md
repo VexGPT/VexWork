@@ -486,32 +486,145 @@ relationship/Family handoff contract.
 
 #### Foundation repair slice F0 — currentize accepted Compound discoverability
 
+#### F0 exact currentization target
+
+Current source says:
+
+~~~text
+foundation.vexlife.state-relay.v1
+
+purpose
+  Immutable domain ownership, narrow selectors,
+  combine and semantic distinct-until-changed delivery.
+
+ownedContracts
+  StateCell
+  CombinedProjection
+  semanticEquality
+  noOpSuppression
+
+revalidationProcedureRef
+  test.state.distinct-until-changed
+~~~
+
+while accepted `src/core/state-relay.mjs` / PR #790 now also own:
+
+~~~text
+createStateSnapshot
+observation truth
+REINSTANCE identity
+VexCompoundState
+retained named input snapshots
+LATEST_COHERENT_INPUT_UNAVAILABLE hold
+serialized synchronous reconciliation
+effect-free reducer boundary
+~~~
+
+The smallest truthful F0 source update is therefore:
+
+~~~text
+foundation.vexlife.state-relay.v1
+
+purpose
+  include immutable snapshots + observation truth +
+  retained Compound input + coherent-input gating +
+  serialized effect-free reconciliation +
+  semantic distinct delivery
+
+ownedContracts
+  preserve existing identities
+  + StateSnapshot
+  + VexCompoundState
+  + coherentInputGate
+  + serializedReconciliation
+
+invalidationSelectors
+  preserve existing selectors
+  + observation-currentness-change
+  + compound-input-change
+
+revalidationProcedureRef
+  test.state.relay-foundation
+~~~
+
+Exact spelling of the human contract labels may be source-reviewed, but they must describe accepted
+behavior already present in main; F0 does not create a new runtime concept.
+
+The module map should become equally truthful:
+
+~~~text
+module.vexlife.core.state-relay
+
+role
+  StateCell / immutable snapshots
+  + combined narrow projections
+  + retained named Compound inputs
+  + coherent-input gating
+  + serialized synchronous effect-free reconciliation
+  + semantic distinct delivery
+~~~
+
+And add one canonical test identity consumed by that foundation:
+
+~~~text
+test.state.relay-foundation
+
+brief
+  State Relay proves immutable snapshot / observation distinction,
+  reinstance identity, coherent-input hold, serialized Compound
+  reconciliation, synchronous effect-free reducers and semantic
+  no-op suppression.
+~~~
+
+This does **not** require new runtime tests to invent proof: current `test/core.test.mjs` already
+contains those accepted assertions. The new test identity makes that proof discoverable through the
+Blueprint.
+
+Therefore F0 authored custody is now:
+
+~~~text
+blueprint/process-factory/foundations.json
+blueprint/module-registry/core.json
+blueprint/fragments/tests.json
+test/core.test.mjs
+~~~
+
+with generated buckets:
+
+~~~text
+foundations.json                  -> bucket-d7
+module-registry/core.json         -> bucket-8b
+fragments/tests.json              -> bucket-d3
+test/core.test.mjs                -> bucket-a8
+~~~
+
+Fresh open-PR inspection found no current overlap on `blueprint/fragments/tests.json` or
+`bucket-d3.json`.
+
+~~~text
+F0_MAP_REPAIR
+= accepted capability + accepted proof made canonically discoverable
+
+F0_MAP_REPAIR
+!= new State Relay semantics
+~~~
+
+
+
 The smallest current VexLife source membrane for this repair is now known:
 
 ~~~text
 authored source
   blueprint/process-factory/foundations.json
-    -> currentize foundation.vexlife.state-relay.v1 owned-contract description
-       around already-accepted observation/snapshot/Compound semantics
-
   blueprint/module-registry/core.json
-    -> make module.vexlife.core.state-relay role/change map advertise
-       immutable snapshots + serialized Compound reconciliation
-
+  blueprint/fragments/tests.json
   test/core.test.mjs
-    -> retain the existing PR #790 runtime proofs
-    -> add one regression that the canonical foundation/module projections
-       expose the accepted Compound contract instead of hiding it
 
 generated custody
   source-manifest-parts/bucket-d7.json
-    -> foundations.json
-
   source-manifest-parts/bucket-8b.json
-    -> module-registry/core.json
-
+  source-manifest-parts/bucket-d3.json
   source-manifest-parts/bucket-a8.json
-    -> test/core.test.mjs
 ~~~
 
 `SOURCE-MANIFEST.json` does not need hand editing; its stable bucket contract remains unchanged.

@@ -157,7 +157,9 @@
         "repo.vexlife:test/browser-companion-conversation-projection.test.mjs",
         "repo.vexlife:test/browser-companion-recovery-owner.test.mjs",
         "repo.vexlife:src/core/registry-core.mjs",
-        "repo.vexlife:src/core/registry.mjs"
+        "repo.vexlife:src/core/registry.mjs",
+        "repo.vexlife:blueprint/fragments/tests.json",
+        "repo.vexlife:source-manifest-parts/bucket-d3.json"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
@@ -1153,7 +1155,9 @@
     "repo.vexlife:test/browser-companion-recovery-owner.test.mjs",
     "repo.vexlife:install/vexlife-setup-window.applescript",
     "repo.vexlife:src/core/registry-core.mjs",
-    "repo.vexlife:src/core/registry.mjs"
+    "repo.vexlife:src/core/registry.mjs",
+    "repo.vexlife:blueprint/fragments/tests.json",
+    "repo.vexlife:source-manifest-parts/bucket-d3.json"
   ],
   "formedAt": "2026-10-25T01:23:08.000Z"
 }
