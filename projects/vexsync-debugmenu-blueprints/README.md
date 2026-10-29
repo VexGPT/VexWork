@@ -141,6 +141,49 @@ ThemeMode truth.
 
 <!-- [VXG RealForever][VEXSYNC][THEMEMODE][SELECT-NOT-TOGGLE][CURRENT] -->
 
+### Target resources still need readable ownership
+
+The same ThemeMode realization exposed a smaller construction rule.
+
+~~~text
+STATIC TARGET RESOURCE
+!= INDEPENDENT SEMANTIC ROOT
+~~~
+
+A Compose `ColorScheme`, typography object, drawable, dimension, or similar target value does not earn a
+new VexArchitecture owner merely because it exists.
+
+But when such a value participates in a semantic realization, leaving it as an orphaned name can erase
+the relationship that explains why it exists.
+
+Current Android example:
+
+~~~text
+VexLifeThemeColors
+  Light
+  Dark
+
+ThemeMode.materialColorScheme()
+  Light -> VexLifeThemeColors.Light
+  Dark  -> VexLifeThemeColors.Dark
+~~~
+
+So the working rule is:
+
+~~~text
+reuse the rightful existing owner
++ give target resources readable local ownership
++ name the semantic realization relationship when one exists
+
+DO NOT
+create another registry/root merely to wrap constants
+
+DO NOT
+leave semantically participating target values as precedent for bypassing the architecture
+~~~
+
+<!-- [VXG RealForever][VEXSYNC][TARGET-RESOURCE-OWNERSHIP][THEMEMODE] -->
+
 ## Current-entry contract — read this before sibling fragments
 
 This README is the **canonical current entry for this VexSync process specimen**.
