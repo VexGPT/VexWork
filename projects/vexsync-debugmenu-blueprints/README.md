@@ -80,8 +80,9 @@ This closes the former Process/Compound gap. It does **not** close the separate 
 serialized-admission work on PR #198, and it does not authorize a generic Compound-output -> Family-Control
 bridge; PR #197 remains withdrawn as the wrong seam.
 
-The current VexSync product foreground therefore remains unchanged: complete the real ThemeMode Android
-walk once the foreign #186 `VexLifeSession.kt` claim is lawfully released.
+The current VexSync product foreground is now the real ThemeMode Android production candidate on PR #188.
+PR #186 remains parallel related work touching `VexLifeSession.kt`; it is not a dependency gate. If either
+candidate lands first, the other must be currentized against accepted main without dropping valid changes.
 
 <!-- [VXG RealForever][VEXSYNC][CURRENT-CONTINUATION][COMPOUND-CURRENT-STATE][PR200] -->
 
@@ -8005,20 +8006,21 @@ push.
 ~~~text
 IMMEDIATE
   Android ThemeMode production realization
-  -> PR #188 semantic source is PROVED + CLEAR
-  -> next dependency is release/integration of the real VexLifeSession path
+  -> PR #188 is currentized onto accepted main
+  -> real VexLifeSession / VexLifeApp integration is now authored
+  -> repository execution proof is next
 
 PARALLEL / INDEPENDENT
   VexStream Artwork PR #186
-  -> retains VexLifeSession.kt until its own lifecycle releases that path
+  -> also touches VexLifeSession.kt
+  -> related composition work, not a VexSync stop condition
 
   VexBoard navigation-first lived interaction check
   -> separate usability evidence
   -> does not reopen completed architecture convergence
 
-AFTER #188 PROOF + VexLifeSession PATH RELEASE
-  wire DebugMenu Toggle into ThemeModeFamily
-  -> prove the real runtime path
+AFTER #188 PROOF
+  accept/currentize the real runtime path
   -> bind Feature Walk / Journey / focused backlinks
   -> let ScreenCrawler consume that same Journey
 
@@ -8041,7 +8043,7 @@ next semantic implementation.
 Current ThemeMode refinement: Light/Dark now own the existing Compose Boolean only as a resolved presentation projection; NotSet remains unresolved rather than becoming an implicit Light/Dark default.
 
 
-## Exact next production patch after the artwork session claim releases
+## Current production patch — formed on PR #188
 
 The current Android source makes the next ThemeMode integration smaller than it first appeared.
 
@@ -8053,19 +8055,18 @@ AppActions.ToggleDarkMode
 ScreenActionContext.toggleDarkMode
 ~~~
 
-After Android PR #186 releases `VexLifeSession.kt`, the production patch should:
+The current PR #188 production candidate now:
 
-1. pass the existing ViewModel-owned `VexExecutionRoot` into `VexLifeSession`;
-2. let the session own `ThemeModeFamily`, initialized to the currently preserved product default
+1. passes the existing ViewModel-owned `VexExecutionRoot` into `VexLifeSession`;
+2. lets the session own `ThemeModeFamily`, initialized to the preserved product default
    `ThemeMode.Dark`;
-3. change the existing toggle callback to
+3. changes the existing toggle callback to
    `themeModeFamily.activate(ThemeModeFamily.Control.Toggle)`;
-4. have `VexLifeApp` observe `themeModeFamily.states` and derive the existing
+4. has `VexLifeApp` observe `themeModeFamily.states` and derive the existing
    `VexLifeTheme(darkTheme = ...)` Boolean through `requireResolvedDarkTheme()`;
-5. make tooling owners explicit: the repository-only Compose host, Journey engine, and session tests
-   provide and stop their own execution root rather than hiding one inside the session;
-6. keep the Family structured logger sink at its current explicit default until a real consumer earns
-   another projection.
+5. makes tooling owners explicit: the repository-only Compose host and session tests own and stop their
+   execution roots instead of hiding one inside the session;
+6. proves the real registered action path in `VexLifeSessionTest`.
 
 That preserves one ThemeMode truth owner while reusing the existing Android action identity and theme
 renderer. A focused session/runtime integration test should prove that the real Debug Menu action moves
@@ -8648,3 +8649,18 @@ No public OwnerId or second source identity is added.
 
 <!-- [VXG RealForever][VEXSYNC][FAMILY][STATE-RELAY][PR198][SOURCE-CUSTODY][PR199] -->
 
+
+
+## Current ThemeMode production candidate
+
+~~~text
+Android PR #188
+head = a43feebec19e001f109f5394f166cda145385e76
+base = 14bb2c4e82eb6cf55cbdc6ef5f2c65d38f97e45b
+paths = 5 exact
+~~~
+
+The existing Debug Menu action now reaches `ThemeModeFamily.Control.Toggle` through the session, and
+Compose observes Family State as the single ThemeMode truth. Repository execution proof remains pending.
+
+<!-- [VXG RealForever][VEXSYNC][PR188][PRODUCTION-CANDIDATE][CURRENT] -->
