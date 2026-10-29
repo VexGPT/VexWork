@@ -101,6 +101,15 @@ test('browser UI uses the shared BoardControl adapter for mutation rather than s
   assert.doesNotMatch(page, /api\.github\.com|raw\.githubusercontent\.com/);
 });
 
+test('primary interaction language keeps navigation default and secondary movement explicit', () => {
+  assert.match(page, /Drag to navigate · Click items · Right-click for context/);
+  assert.match(page, /Move item · drag once/);
+  assert.match(page, /moveProjectionItemRef/);
+  assert.match(page, /suppressObjectClickRef/);
+  assert.match(page, /Interaction\.shouldStartCanvasPan\(\{tool,targetPlane,button:e\.button\}\)/);
+  assert.match(page, /moveArmed:moveProjectionItemRef===i\.projectionItemRef/);
+});
+
 test('canvas projection exposes pan zoom fit focus minimap and read-only recursive navigation', () => {
   for (const label of ['Pan', 'Zoom out', 'Zoom in', 'Fit', 'Reset view', 'Focus selected', 'Collapse children', 'Enter portal']) {
     assert.match(page, new RegExp(label));
@@ -620,8 +629,12 @@ test('right-click pin focus is browser-local diagnostic state over bounded relat
   assert.match(contextMenuOwner, /selected=i\.projectionItemRef/);
   const pinCall = contextMenuOwner.match(/openPinMenu\(([^)]*)\)/);
   assert.ok(pinCall);
-  assert.equal(pinCall[1], 'e.clientX,e.clientY,n.nodeRef');
-  assert.doesNotMatch(pinCall[1], /n\.label|projectionItemRef/);
+  assert.equal(
+    pinCall[1],
+    'e.clientX,e.clientY,n.nodeRef,i.projectionItemRef,i.locked',
+  );
+  assert.match(openPinOwner, /Move item · drag once/);
+  assert.doesNotMatch(pinCall[1], /n\.label/);
   assert.doesNotMatch(page, /method:\s*['"](?:POST|PUT|PATCH|DELETE)['"]/i);
 });
 test('prototype demo drives clickable local simulation through scenario overlays and BoardJourney', () => {

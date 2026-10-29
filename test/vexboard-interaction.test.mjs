@@ -15,7 +15,7 @@ import {
 
 test('interaction planes keep canvas navigation separate from object, overlay and chrome input', () => {
   assert.equal(shouldStartCanvasPan({ tool: 'SELECT', targetPlane: INTERACTION_PLANES.CANVAS }), true);
-  assert.equal(shouldStartCanvasPan({ tool: 'SELECT', targetPlane: INTERACTION_PLANES.OBJECT }), false);
+  assert.equal(shouldStartCanvasPan({ tool: 'SELECT', targetPlane: INTERACTION_PLANES.OBJECT }), true);
   assert.equal(shouldStartCanvasPan({ tool: 'SELECT', targetPlane: INTERACTION_PLANES.CHROME }), false);
   assert.equal(shouldStartCanvasPan({ tool: 'SELECT', targetPlane: INTERACTION_PLANES.OVERLAY }), false);
 
@@ -27,7 +27,7 @@ test('interaction planes keep canvas navigation separate from object, overlay an
 
   // Keep the original proving-call shape compatible while the browser migrates to explicit planes.
   assert.equal(shouldStartCanvasPan({ tool: 'SELECT', targetIsShape: false }), true);
-  assert.equal(shouldStartCanvasPan({ tool: 'SELECT', targetIsShape: true }), false);
+  assert.equal(shouldStartCanvasPan({ tool: 'SELECT', targetIsShape: true }), true);
 });
 
 test('DOM interaction-plane lookup defaults only unmarked board surface to canvas', () => {
@@ -62,14 +62,16 @@ test('drag threshold keeps pointer intent pending until movement is materially a
   assert.equal(pointerGestureFromMovement({ x: 10, y: 10 }, { x: 14, y: 10 }), 'DRAG');
 });
 
-test('object movement is admitted only for an editable unlocked object in Select mode', () => {
+test('object movement requires an explicit one-shot move arm rather than ordinary primary drag', () => {
   const base = {
     tool: 'SELECT',
     editable: true,
     locked: false,
+    moveArmed: true,
     targetPlane: INTERACTION_PLANES.OBJECT,
   };
   assert.equal(shouldStartObjectMove(base), true);
+  assert.equal(shouldStartObjectMove({ ...base, moveArmed: false }), false);
   assert.equal(shouldStartObjectMove({ ...base, tool: 'PAN' }), false);
   assert.equal(shouldStartObjectMove({ ...base, editable: false }), false);
   assert.equal(shouldStartObjectMove({ ...base, locked: true }), false);
