@@ -6363,3 +6363,32 @@ No public OwnerId or second source identity is added.
 
 <!-- [VXG RealForever][VEXSYNC][FAMILY][STATE-RELAY][PR198][SOURCE-CUSTODY][PR199] -->
 
+
+
+---
+
+## Current ThemeMode production realization — PR #188
+
+The earlier VexLifeSession path hold was coordination history, not a permanent source gate. The current
+VexSync candidate is formed directly on accepted Android main:
+
+~~~text
+PR #188
+head = a43feebec19e001f109f5394f166cda145385e76
+base = 14bb2c4e82eb6cf55cbdc6ef5f2c65d38f97e45b
+~~~
+
+~~~text
+DebugMenuScreen.DarkMode
+-> AppActions.ToggleDarkMode
+-> VexLifeSession
+-> ThemeModeFamily.Control.Toggle
+-> CURRENT ThemeMode
+-> VexLifeApp projection
+-> VexLifeTheme
+~~~
+
+The session Boolean owner is removed. PR #186 remains parallel related work on the same file and must be
+composed if it lands first; it is not modeled as a dependency gate.
+
+<!-- [VXG RealForever][VEXSYNC][THEMEMODE][PRODUCTION-REALIZATION][PR188] -->
