@@ -100,25 +100,73 @@ test('feature workspace keeps Board primary and uses one closable auxiliary draw
   assert.doesNotMatch(page, /work\.append\(tools,viewportEl,side\)/);
 });
 
-test('ThemeMode patient-zero board preserves the current Origin Walk without inventing persistence ownership', () => {
+test('ThemeMode patient-zero board projects one typed Family language across four readable regions', () => {
   assert.equal(themeModeBoard.schemaVersion, Reader.VEXBOARD_DRAFT_SCHEMA);
   assert.equal(themeModeBoard.mode, 'READ_ONLY_SOURCE');
   assert.equal(themeModeBoard.draftRef, 'board.vexlife.debug-menu.theme-mode.origin-walk');
+
   const graph = normalizeBoardGraph(themeModeBoard.graph);
   const projection = normalizeBoardProjection(themeModeBoard.projection, graph);
-  assert.ok(graph.nodes.some((node) => node.nodeRef === 'control.debug-menu.theme-mode'));
-  assert.ok(graph.nodes.some((node) => node.nodeRef === 'state.theme-mode' && node.label === 'ThemeMode'));
+
+  const regions = new Map(
+    graph.nodes
+      .filter((node) => node.kind === 'CONTAINER' && node.nodeRef.startsWith('quadrant.theme-mode.'))
+      .map((node) => [node.nodeRef, node.label]),
+  );
+
+  assert.deepEqual(
+    [...regions.values()].sort(),
+    ['EXECUTION', 'FAMILY / LOGIC', 'TYPED IDENTITY', 'UI / CONTROL'].sort(),
+  );
+
   assert.ok(graph.nodes.some((node) =>
-    node.nodeRef === 'reference.theme-mode.persistence-owner' &&
-    node.label.includes('unresolved')
+    node.nodeRef === 'control.debug-menu.theme-mode' &&
+    node.parentRefOrNull === 'quadrant.theme-mode.ui'
+  ));
+  assert.ok(graph.nodes.some((node) =>
+    node.nodeRef === 'process.theme-mode.family' &&
+    node.parentRefOrNull === 'quadrant.theme-mode.family'
+  ));
+  assert.ok(graph.nodes.some((node) =>
+    node.nodeRef === 'reference.family.resource-control' &&
+    node.label === 'Control.Resource<Family, ExactId>'
+  ));
+  assert.ok(graph.nodes.some((node) =>
+    node.nodeRef === 'annotation.identity.same' &&
+    node.label.includes('position 10 / 99') &&
+    node.label.includes('SAME')
+  ));
+  assert.ok(graph.nodes.some((node) =>
+    node.nodeRef === 'annotation.identity.type-lock' &&
+    node.label.includes('TrackId') &&
+    node.label.includes('AccountId does not fit')
+  ));
+  assert.ok(graph.nodes.some((node) =>
+    node.nodeRef === 'annotation.identity.enum' &&
+    node.label === 'enum Play ≠ Pause'
+  ));
+  assert.ok(graph.nodes.some((node) =>
+    node.nodeRef === 'annotation.execution.raw-gate' &&
+    node.label.includes('foundation opt-in')
+  ));
+
+  assert.ok(graph.relationships.some((relationship) =>
+    relationship.relationshipRef === 'rel.identity.resource-relationship' &&
+    relationship.labelOrNull === 'EXACT RESOURCE ID WHEN EARNED'
   ));
   assert.ok(graph.relationships.some((relationship) =>
-    relationship.relationshipRef === 'rel.theme-mode.behavior-persistence-frontier' &&
-    relationship.labelOrNull === 'EFFECT · OWNER OPEN'
+    relationship.relationshipRef === 'rel.identity-family-execution' &&
+    relationship.labelOrNull === 'SUPPLIES'
   ));
-  assert.ok(projection.items.some((item) => item.semanticRef === 'behavior.theme-mode'));
-});
 
+  const frameItems = projection.items.filter((item) => item.shapeKind === 'FRAME');
+  assert.equal(frameItems.length, 4);
+  assert.ok(frameItems.every((item) => item.locked === true));
+
+  assert.ok(graph.sourceRefs.includes('github.pull.vexlife-android.193'));
+  assert.ok(graph.sourceRefs.includes('github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b'));
+  assert.ok(graph.sourceRefs.some((sourceRef) => sourceRef.includes('VexFamilyHighConfidenceTest.kt')));
+});
 test('built-in and patient-zero source boards preserve separate catalog ownership and canonical identity', () => {
   for (const source of [selfMap, publishMap, systemAnatomy, intentTopology, themeModeBoard]) {
     assert.equal(source.schemaVersion, Reader.VEXBOARD_DRAFT_SCHEMA);
