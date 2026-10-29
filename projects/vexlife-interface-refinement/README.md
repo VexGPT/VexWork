@@ -351,6 +351,100 @@ smallest VexLife product-level contract that makes the Family / Compound relatio
 recoverable before browser-specific implementation. Interface Compound Relay then becomes the first
 concrete VexLife consumer/proof of that contract.
 
+### Exact VexLife foundation source placement
+
+Current VexLife source already has the smaller reusable owners needed for this foundation:
+
+~~~text
+blueprint/process-factory/foundations.json
+  foundation.vexlife.state-relay.v1
+    immutable domain ownership
+    narrow selectors
+    combine
+    semantic distinct-until-changed delivery
+
+blueprint/vexlife.blueprint.json
+  behaviorContracts[]
+    portable language-neutral behavior relationship contracts
+
+blueprint/fragments/behavior-contracts/vexstream-playback-play-pause.json
+  accepted precedent:
+    State
+    Control
+    Act
+    Effect
+    Projection
+    invariants
+    semantic law rows
+    stale observation reconciliation
+~~~
+
+Therefore do **not** form a second generic State/Relay foundation merely to make the interface work
+look architectural. Reuse the existing State Relay foundation and source-place the smallest portable
+VexLife behavior/relationship contract that owns the interface-currentness laws.
+
+The expected source shape is approximately:
+
+~~~text
+VexLife portable interface-currentness behavior contract
+  owns:
+    semantic interface relationship State identities
+    Control -> Act admission laws
+    effect-owner boundaries
+    derived projections
+    stale/current observation invariants
+    source/document/currentness mismatch laws
+
+  consumes / references:
+    canonical Companion availability owner
+    canonical Conversation owner
+    browser/server source identity observations
+    browser observation currentness
+
+  does not own:
+    runtime recovery execution
+    browser navigation/reload execution
+    Conversation persistence
+    model execution
+    setup lifecycle
+~~~
+
+A new top-level state domain/service is **not automatically required**. The existing portable
+Play/Pause contract demonstrates that feature/relationship State identities can live inside the
+behavior contract itself. Add a broader state-domain owner only if real cross-feature consumers
+later require that stable domain.
+
+Current concrete owners remain useful rather than being replaced:
+
+~~~text
+module.vexlife.core.companion-availability-reentry
+  -> canonical source-bound Companion availability / safe re-entry meaning
+
+feature.vexlife.addressed-conversation
++ process.vexlife.conversation.send-addressed
+  -> canonical message-send / Conversation effect meaning
+
+foundation.vexlife.state-relay.v1
+  -> combine + semantic no-op suppression foundation
+
+portable interface-currentness behavior contract
+  -> missing Family Circuit relationship law
+
+browser implementation
+  -> target-native observation + presentation + adapter realization
+~~~
+
+This follows the existing Blueprint portability rule:
+
+~~~text
+canonical product meaning
+-> target-native representation
+-> target/environment proof
+
+REUSABLE MEANING
+!= REUSABLE TYPE EQUATION
+~~~
+
 ## Interface Compound Relay — relationship to form
 
 The missing VexLife relationship is approximately:

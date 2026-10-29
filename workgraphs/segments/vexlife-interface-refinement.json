@@ -120,7 +120,14 @@
         "repo.vexlife:docs/UNIVERSAL-BLUEPRINT.md",
         "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
         "repo.vexlife-android:architecture/behavior/README.md",
-        "repo.vextreme-sdk:docs/architecture/semantic-provenance-purpose-to-form.md"
+        "repo.vextreme-sdk:docs/architecture/semantic-provenance-purpose-to-form.md",
+        "repo.vexlife:blueprint/process-factory/foundations.json",
+        "repo.vexlife:blueprint/vexlife.blueprint.json",
+        "repo.vexlife:blueprint/fragments/behavior-contracts/vexstream-playback-play-pause.json",
+        "repo.vexlife:blueprint/fragments/state-domains.json",
+        "repo.vexlife:blueprint/feature-registry.json",
+        "repo.vexlife:blueprint/module-registry/companion-availability-reentry.json",
+        "repo.vexlife:blueprint/process-factory/processes-conversation-and-interface.json"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
@@ -1074,7 +1081,14 @@
     "repo.vexlife:docs/UNIVERSAL-BLUEPRINT.md",
     "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
     "repo.vexlife-android:architecture/behavior/README.md",
-    "repo.vextreme-sdk:docs/architecture/semantic-provenance-purpose-to-form.md"
+    "repo.vextreme-sdk:docs/architecture/semantic-provenance-purpose-to-form.md",
+    "repo.vexlife:blueprint/process-factory/foundations.json",
+    "repo.vexlife:blueprint/vexlife.blueprint.json",
+    "repo.vexlife:blueprint/fragments/behavior-contracts/vexstream-playback-play-pause.json",
+    "repo.vexlife:blueprint/fragments/state-domains.json",
+    "repo.vexlife:blueprint/feature-registry.json",
+    "repo.vexlife:blueprint/module-registry/companion-availability-reentry.json",
+    "repo.vexlife:blueprint/process-factory/processes-conversation-and-interface.json"
   ],
   "formedAt": "2026-10-25T01:23:08.000Z"
 }
