@@ -32,14 +32,16 @@
         "github.pull.vextreme.483",
         "github.pull.vextreme.484",
         "github.pull.vextreme.485",
-        "github.commit.vextreme.aa1a7a968fc75b02e67510daceef37a48fbdc662"
+        "github.commit.vextreme.aa1a7a968fc75b02e67510daceef37a48fbdc662",
+        "github.commit.vextreme.20bad7a28065a925aebc89e49a5be1d206d53e42",
+        "github.commit.vextreme.b6f77ae20db47af87009939d88ee953eb7edde55"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-29T08:40:27.000Z",
-      "updatedAt": "2026-10-29T10:24:00.000Z"
+      "updatedAt": "2026-10-29T10:26:00.000Z"
     },
     {
       "workDisposition": "ACTIVE",
@@ -51,14 +53,14 @@
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-29T08:40:27.000Z",
-      "updatedAt": "2026-10-29T10:02:00.000Z",
+      "updatedAt": "2026-10-29T10:26:00.000Z",
       "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vextreme.alignment.timeline-projection",
       "parentWorkRefOrNull": "work.vextreme.alignment.outcome",
       "label": "Restore canonical Full Timeline order, sections, and complete reading path",
       "purpose": "Repair the observed Terrain Full Timeline defect by consuming Vextreme's canonical ordered arc semantics instead of nodes/add order, projecting the 111 currently dated records in their real chronological sections, and reusing the existing complete embedded/standalone page readers rather than reducing the timeline to disconnected metadata cards.",
       "workClass": "DEFECT",
-      "state": "VERIFYING",
+      "state": "COMPLETED",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [],
       "sourceRefs": [
@@ -75,7 +77,9 @@
         "github.commit.vextreme.c7d9f8961984f3fe9c6a792201ae07c6d05ecfd8",
         "github.workflow-run.vextreme.40849682530",
         "github.workflow-run.vextreme.40849682614",
-        "github.workflow-run.vextreme.40849682718"
+        "github.workflow-run.vextreme.40849682718",
+        "github.commit.vextreme.20bad7a28065a925aebc89e49a5be1d206d53e42",
+        "github.commit.vextreme.b6f77ae20db47af87009939d88ee953eb7edde55"
       ]
     },
     {
@@ -423,6 +427,21 @@
         "github.workflow-run.vextreme.40852476578"
       ],
       "createdAt": "2026-10-29T10:19:02.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.alignment.timeline-projection.completed.merge480",
+      "workRef": "work.vextreme.alignment.timeline-projection",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "PR #480 merged as b6f77ae2 and the merge tree exactly equals the final PR head 20bad7a2 tree, preserving the proven six-path Full Timeline projection without integration drift. Canonical Terrain order/sections and complete reader reuse are accepted current source.",
+      "actorRef": "actor.chatgpt.vextreme-alignment",
+      "sourceRefs": [
+        "github.pull.vextreme.480",
+        "github.commit.vextreme.20bad7a28065a925aebc89e49a5be1d206d53e42",
+        "github.commit.vextreme.b6f77ae20db47af87009939d88ee953eb7edde55"
+      ],
+      "createdAt": "2026-10-29T10:26:00.000Z"
     }
   ],
   "sourceRefs": [
@@ -454,7 +473,9 @@
     "github.workflow-run.vextreme.40852476435",
     "github.workflow-run.vextreme.40852476578",
     "github.pull.vextreme.485",
-    "github.commit.vextreme.aa1a7a968fc75b02e67510daceef37a48fbdc662"
+    "github.commit.vextreme.aa1a7a968fc75b02e67510daceef37a48fbdc662",
+    "github.commit.vextreme.20bad7a28065a925aebc89e49a5be1d206d53e42",
+    "github.commit.vextreme.b6f77ae20db47af87009939d88ee953eb7edde55"
   ],
   "formedAt": "2026-10-29T08:40:27.000Z"
 }
