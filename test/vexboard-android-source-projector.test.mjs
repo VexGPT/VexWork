@@ -254,8 +254,8 @@ test('VexLife Android POC snapshot projects deterministically without source eff
     (item) => item.projectionItemRef === 'item.vexstream.connection-sheet',
   );
   assert.equal(sheet.parentProjectionItemRefOrNull, 'item.vexstream.state.loaded');
-  assert.ok(Math.abs(sheet.bounds.width - (412 * 0.72)) < 0.001);
-  assert.ok(Math.abs(sheet.bounds.height - (460 * 0.72)) < 0.001);
+  assert.ok(Math.abs(sheet.bounds.width - boardUnits(412)) < 0.001);
+  assert.ok(Math.abs(sheet.bounds.height - boardUnits(460)) < 0.001);
   assert.ok(Math.abs(
     (loadedFrame.bounds.y + loadedFrame.bounds.height) -
     (sheet.bounds.y + sheet.bounds.height)
