@@ -221,14 +221,19 @@
         "evidence.vexsync.pr195.sourceowner.a002.formation.sha256.c8c672415c05fd1f145d0114602712b4fa33779b62b27762ec11fe1de6be50b4",
         "github.comment.vexlife-android.pr195.6508290364.journey-device-a003-recovered-pass",
         "evidence.vexsync.pr195.journey-device.a003.return.sha256.c820031ad5cd9f54bcf9ae761266d40d630383bf752db101268df62ae1337dcb",
-        "evidence.vexsync.pr195.journey-device.a003.inner-return.sha256.07213d85da13a58b32f44a0d6592bb9dce6fc2688b914c6b2599525864728de5"
+        "evidence.vexsync.pr195.journey-device.a003.inner-return.sha256.07213d85da13a58b32f44a0d6592bb9dce6fc2688b914c6b2599525864728de5",
+        "github.comment.vexlife-android.pr195.6508592808.lived-process-death-persistence-fail",
+        "github.commit.vexlife.b6d9dd4876132fc408f0eacd2bb6b5b0d56e009f",
+        "repo.vexlife:blueprint/vexlife.blueprint.json",
+        "repo.vexlife:blueprint/fragments/state-domains.json",
+        "repo.vexlife:src/core/portable-behavior-contract.mjs"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-26T07:26:46.000Z",
-      "updatedAt": "2026-10-29T21:14:41.160Z"
+      "updatedAt": "2026-10-29T21:20:03.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -480,6 +485,24 @@
         "evidence.vexsync.pr195.journey-device.a003.inner-return.sha256.07213d85da13a58b32f44a0d6592bb9dce6fc2688b914c6b2599525864728de5"
       ],
       "createdAt": "2026-10-29T21:14:41.160Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.roundtrip.verifying.lived-persistence-fail-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.debugmenu-origin-roundtrip",
+      "priorState": "VERIFYING",
+      "nextState": "VERIFYING",
+      "reason": "Victor's lived ThemeMode check passed the in-session visible selection path but failed process-death continuity: after swipe-killing and relaunching, the explicit selection was forgotten. Current Android source explicitly limits VexLifeSession to in-process/configuration continuity and recreates ThemeMode.Dark for a fresh process. The connected Journey PASS remains valid and must not be replayed. This lived result promotes durable ThemeMode selection from future pressure to a current product requirement. Re-grounding canonical VexLife main b6d9dd48 found no ThemeMode-specific canonical source and no FamilyStore composition surface, so the next correction is a canonical-source dependency before target-specific Android persistence realization. Work remains VERIFYING; no lifecycle/merge authority is inferred.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.195",
+        "github.comment.vexlife-android.pr195.6508592808.lived-process-death-persistence-fail",
+        "github.commit.vexlife.b6d9dd4876132fc408f0eacd2bb6b5b0d56e009f",
+        "repo.vexlife:blueprint/vexlife.blueprint.json",
+        "repo.vexlife:blueprint/fragments/state-domains.json",
+        "repo.vexlife:src/core/portable-behavior-contract.mjs"
+      ],
+      "createdAt": "2026-10-29T21:20:03.000Z"
     }
   ],
   "transitions": [
@@ -966,7 +989,12 @@
     "evidence.vexsync.pr196.sourceowner.a004.inner-return.sha256.43bbc8793923b07f9f6181e561cab8637f577ce7f76a326fff648b8ead2532ee",
     "github.comment.vexlife-android.pr195.6508290364.journey-device-a003-recovered-pass",
     "evidence.vexsync.pr195.journey-device.a003.return.sha256.c820031ad5cd9f54bcf9ae761266d40d630383bf752db101268df62ae1337dcb",
-    "evidence.vexsync.pr195.journey-device.a003.inner-return.sha256.07213d85da13a58b32f44a0d6592bb9dce6fc2688b914c6b2599525864728de5"
+    "evidence.vexsync.pr195.journey-device.a003.inner-return.sha256.07213d85da13a58b32f44a0d6592bb9dce6fc2688b914c6b2599525864728de5",
+    "github.comment.vexlife-android.pr195.6508592808.lived-process-death-persistence-fail",
+    "github.commit.vexlife.b6d9dd4876132fc408f0eacd2bb6b5b0d56e009f",
+    "repo.vexlife:blueprint/vexlife.blueprint.json",
+    "repo.vexlife:blueprint/fragments/state-domains.json",
+    "repo.vexlife:src/core/portable-behavior-contract.mjs"
   ],
   "formedAt": "2026-10-26T07:26:46.000Z"
 }
