@@ -272,7 +272,7 @@
       "label": "Harden accepted Direct Family foundation after PR #193 review",
       "purpose": "Correct one post-acceptance Direct VexFamily ownership defect discovered by a fresh-instance review of merged PR #193: structured VexLogger.Sink failure must remain observational and cannot reject Control acceptance, suppress State/Store work, or transform Store success into Family failure. Currentize proof/maturity prose, explicitly preserve coexistence with still-live VexBehaviorFamily/SCAE, and document ResourceId equality/hash stability. Keep PR #193 as the accepted origin and PR #196 as the trace-linked bounded hardening follow-up; do not use this defect to redesign Family/RelationshipId/Execution.",
       "workClass": "DEFECT",
-      "state": "RUNNING",
+      "state": "VERIFYING",
       "workDisposition": "ACTIVE",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
@@ -300,7 +300,11 @@
         "review.fresh-instance.vex-family-pr193-open-edges.20261029b",
         "github.comment.vexlife-android.pr196.6501368445.sourceowner-a003-pre-task-schema",
         "github.comment.vexlife-android.pr196.6501415714.sourceowner-a004-formed",
-        "evidence.vexsync.pr196.sourceowner.a004.formation.sha256.1d116a4b13c5b6bdee4df55501da281c1e20543c86358384eb44cce8b56e46f6"
+        "evidence.vexsync.pr196.sourceowner.a004.formation.sha256.1d116a4b13c5b6bdee4df55501da281c1e20543c86358384eb44cce8b56e46f6",
+        "github.comment.vexlife-android.pr196.6501511840.sourceowner-a004-pass",
+        "github.review.vexlife-android.pr196.5700749063.assurance-clear",
+        "evidence.vexsync.pr196.sourceowner.a004.return.sha256.1f72021173140146ea96f71eca4da9d855e64930c45cafc73de45abe6d259561",
+        "evidence.vexsync.pr196.sourceowner.a004.inner-return.sha256.43bbc8793923b07f9f6181e561cab8637f577ce7f76a326fff648b8ead2532ee"
       ],
       "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
       "nextProcessRefs": [
@@ -309,7 +313,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-29T15:55:00.000Z",
-      "updatedAt": "2026-10-29T16:28:00.000Z"
+      "updatedAt": "2026-10-29T16:37:00.000Z"
     }
   ],
   "transitions": [
@@ -595,6 +599,24 @@
         "evidence.vexsync.pr196.sourceowner.a004.formation.sha256.1d116a4b13c5b6bdee4df55501da281c1e20543c86358384eb44cce8b56e46f6"
       ],
       "createdAt": "2026-10-29T16:28:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.direct-family-post193-hardening.running-verifying.sourceowner-a004-assurance-clear-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.direct-family-post193-hardening",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Android PR #196 exact head b25a291d... passed SourceOwner A004 after the A001-A003 carrier recovery chain: focused VexFamilyHighConfidenceTest PASS, repository vexVerifyJvm PASS, exact seven-path membrane PASS, complete review snapshot, and zero findings. Fresh Independent Assurance is CLEAR_ON_EXACT_HEAD. The post-#193 correctness/currentness hardening is source-complete; lifecycle/ready/merge authority remains separate.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.193",
+        "github.pull.vexlife-android.196",
+        "github.comment.vexlife-android.pr196.6501511840.sourceowner-a004-pass",
+        "github.review.vexlife-android.pr196.5700749063.assurance-clear",
+        "evidence.vexsync.pr196.sourceowner.a004.return.sha256.1f72021173140146ea96f71eca4da9d855e64930c45cafc73de45abe6d259561",
+        "evidence.vexsync.pr196.sourceowner.a004.inner-return.sha256.43bbc8793923b07f9f6181e561cab8637f577ce7f76a326fff648b8ead2532ee"
+      ],
+      "createdAt": "2026-10-29T16:37:00.000Z"
     }
   ],
   "sourceRefs": [
@@ -665,7 +687,11 @@
     "review.fresh-instance.vex-family-pr193-open-edges.20261029b",
     "github.comment.vexlife-android.pr196.6501368445.sourceowner-a003-pre-task-schema",
     "github.comment.vexlife-android.pr196.6501415714.sourceowner-a004-formed",
-    "evidence.vexsync.pr196.sourceowner.a004.formation.sha256.1d116a4b13c5b6bdee4df55501da281c1e20543c86358384eb44cce8b56e46f6"
+    "evidence.vexsync.pr196.sourceowner.a004.formation.sha256.1d116a4b13c5b6bdee4df55501da281c1e20543c86358384eb44cce8b56e46f6",
+    "github.comment.vexlife-android.pr196.6501511840.sourceowner-a004-pass",
+    "github.review.vexlife-android.pr196.5700749063.assurance-clear",
+    "evidence.vexsync.pr196.sourceowner.a004.return.sha256.1f72021173140146ea96f71eca4da9d855e64930c45cafc73de45abe6d259561",
+    "evidence.vexsync.pr196.sourceowner.a004.inner-return.sha256.43bbc8793923b07f9f6181e561cab8637f577ce7f76a326fff648b8ead2532ee"
   ],
   "formedAt": "2026-10-26T07:26:46.000Z"
 }
