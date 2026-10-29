@@ -976,8 +976,9 @@ work.vextreme.architecture-convergence.semantic-owner-map
 
 work.vextreme.architecture-convergence.terrain-journey-inspection
   VERIFYING
-  richer Inspect projection is accepted, but lived testing found the drawer occluded behind the embedded reader
-  PR #501 is the bounded visibility candidate; lived usefulness remains pending after acceptance/deployment
+  richer Inspect projection + visibility repair are accepted source
+  PR #501 merge 5b996045538fedc3db194ce62377be8bf63bf04f; post-merge Tests + Pages PASS
+  lived usefulness/readability remains the only pending predicate
 
 work.vextreme.architecture-convergence.terrain-reader-return-context
   COMPLETED
