@@ -49,7 +49,7 @@
       "workClass": "TASK",
       "state": "RUNNING",
       "workDisposition": "ACTIVE",
-      "priorityClass": "IMMEDIATE",
+      "priorityClass": "HIGH",
       "dependencyRefs": [],
       "repositoryRefs": [
         "repo.vexwork",
@@ -70,14 +70,51 @@
         "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
         "github.commit.vexwork.06cd5344f3f6bdb5428f9d354e92705737f6a6f8",
         "github.commit.vexwork.24a1f1914867a7d2b96cef3dee2eef9d1a991902",
-        "github.commit.vexwork.0d55e3aa83b7972cc83ef9fe2a7266311932a7c8"
+        "github.commit.vexwork.0d55e3aa83b7972cc83ef9fe2a7266311932a7c8",
+        "work.vexboard.vexsync-architecture-convergence",
+        "github.pull.vexwork.184"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-26T07:26:46.000Z",
-      "updatedAt": "2026-10-29T11:00:00.000Z"
+      "updatedAt": "2026-10-29T11:25:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexsync.debugmenu-blueprints.vexboard-architecture-convergence",
+      "parentWorkRefOrNull": "work.vexsync.debugmenu-blueprints.outcome",
+      "label": "Converge VexSync foundation into VexBoard self-application",
+      "purpose": "Treat the current Direct Family / typed Control ResourceId / Relationship identity / Kotlin-test round-trip discoveries as the foundation baseline for the next major VexSync phase: converge that language with VexBoard's own VexWork and implementation so VexBoard visibly reflects and can construct through the same architecture. Preserve VexBoard as the actual product/source owner, route implementation through work.vexboard.vexsync-architecture-convergence, recover the blank browser surface before deeper projection, and use the resulting self-application to pressure the next reusable VexSync construction contract without turning VexSync into VexBoard's parent Project.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "projects/vexsync-debugmenu-blueprints/README.md",
+        "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+        "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery",
+        "project.vexboard",
+        "work.vexboard.vexsync-architecture-convergence",
+        "github.pull.vexwork.184",
+        "github.commit.vexwork.0d55e3aa83b7972cc83ef9fe2a7266311932a7c8",
+        "github.pull.vexlife-android.193",
+        "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
+        "projects/vexboard/examples/vexlife-debug-menu-theme-mode.board.json",
+        "src/core/vexboard-family-kotlin-construction.mjs"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-29T11:25:00.000Z",
+      "updatedAt": "2026-10-29T11:25:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -133,6 +170,23 @@
         "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md"
       ],
       "createdAt": "2026-10-29T10:00:18.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.vexboard-architecture-convergence.running.foundation-baseline-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.vexboard-architecture-convergence",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Victor designated the current typed Family/Kotlin/VexBoard round-trip as the foundation baseline for the next major sync and asked VexSync to converge with VexBoard VexWork. The corresponding VexBoard-owned implementation work is formed on PR #184, so VexSync now carries the semantic/process convergence trajectory while VexBoard retains source ownership.",
+      "actorRef": "actor.local-vex-operations.vexsync-vexboard-convergence",
+      "sourceRefs": [
+        "response.victor.vexsync-vexboard-convergence.20261029a",
+        "work.vexboard.vexsync-architecture-convergence",
+        "github.pull.vexwork.184",
+        "github.commit.vexwork.0d55e3aa83b7972cc83ef9fe2a7266311932a7c8",
+        "github.pull.vexlife-android.193"
+      ],
+      "createdAt": "2026-10-29T11:25:00.000Z"
     }
   ],
   "sourceRefs": [
@@ -157,7 +211,10 @@
     "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
     "github.commit.vexwork.06cd5344f3f6bdb5428f9d354e92705737f6a6f8",
     "github.commit.vexwork.24a1f1914867a7d2b96cef3dee2eef9d1a991902",
-    "github.commit.vexwork.0d55e3aa83b7972cc83ef9fe2a7266311932a7c8"
+    "github.commit.vexwork.0d55e3aa83b7972cc83ef9fe2a7266311932a7c8",
+    "work.vexsync.debugmenu-blueprints.vexboard-architecture-convergence",
+    "work.vexboard.vexsync-architecture-convergence",
+    "github.pull.vexwork.184"
   ],
   "formedAt": "2026-10-26T07:26:46.000Z"
 }
