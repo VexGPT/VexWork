@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.vextreme.architecture-convergence",
+  "label": "Vextreme Architecture Convergence",
+  "purpose": "Refactor and enhance the Vextreme website by grounding lived product seams in current source, identifying the rightful semantic owner, mapping intentions into the reusable Vex architecture language pressure-tested through VexSync, and converging browser realization plus downstream instrumentation without creating duplicate truth owners or transferring Vextreme source authority.",
+  "rootWorkRefs": [
+    "work.vextreme.architecture-convergence.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vextreme"
+  ],
+  "sourceRefs": [
+    "projects/vextreme-architecture-convergence/README.md",
+    "docs/process/FORM-PROJECT.md",
+    "project.vexsync.debugmenu-blueprints",
+    "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery",
+    "github.pull.vexwork.178",
+    "github.pull.vexwork.184",
+    "github.pull.vexlife-android.193",
+    "github.pull.vextreme.487",
+    "github.pull.vextreme.490",
+    "repo.vextreme:docs/culture.md",
+    "repo.vextreme:docs/architecture/05-browser.md",
+    "repo.vextreme:docs/architecture/17-fab-autoload.md",
+    "repo.vextreme:pages/terrain-map.html",
+    "repo.vextreme:lib/vextreme-index-v2.js"
+  ],
+  "formedAt": "2026-10-29T11:45:00.000Z"
+}

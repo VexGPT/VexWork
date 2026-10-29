@@ -23,6 +23,7 @@
     "work.vexlife.welcome-wagon.outcome",
     "work.vexstream.mobile-library.tag-topology-stations",
     "work.vexsync.debugmenu-blueprints.outcome",
+    "work.vextreme.architecture-convergence.outcome",
     "work.vextreme.vexsite.localization.outcome"
   ],
   "items": [
@@ -6223,6 +6224,110 @@
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vextreme.architecture-convergence.outcome",
+      "parentWorkRefOrNull": null,
+      "label": "Vextreme Architecture Convergence",
+      "purpose": "Refactor and enhance the Vextreme website through source-grounded architectural convergence: recover the human/product intention behind lived seams, name the rightful semantic owner, preserve one consistent relationship language across topology, journey, realization and instrumentation, and let real website pressure earn reusable architecture instead of accumulating one-off fixes.",
+      "workClass": "OUTCOME",
+      "state": "RUNNING",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vextreme"
+      ],
+      "sourceRefs": [
+        "project.vextreme.architecture-convergence",
+        "projects/vextreme-architecture-convergence/README.md",
+        "response.victor.vextreme-architecture-convergence.20261029a",
+        "project.vexsync.debugmenu-blueprints",
+        "github.pull.vexwork.178",
+        "github.pull.vexwork.184",
+        "github.pull.vexlife-android.193",
+        "github.pull.vextreme.487"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-29T11:45:00.000Z",
+      "updatedAt": "2026-10-29T11:45:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vextreme.architecture-convergence.semantic-owner-map",
+      "parentWorkRefOrNull": "work.vextreme.architecture-convergence.outcome",
+      "label": "Map Vextreme seams to rightful semantic owners and relationships",
+      "purpose": "Use current lived website seams as construction specimens and map each one from human intention through current Vextreme source to the smallest rightful owner and reusable relationship language. Consume VexSync Builder-discovery as a live context dependency, including its current typed relationship/ownership pressure, without copying Android/Kotlin shapes or allowing VexSync to become Vextreme's source authority.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vextreme"
+      ],
+      "sourceRefs": [
+        "projects/vextreme-architecture-convergence/README.md",
+        "project.vexsync.debugmenu-blueprints",
+        "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery",
+        "work.vexsync.debugmenu-blueprints.vexboard-architecture-convergence",
+        "github.pull.vexwork.178",
+        "github.pull.vexwork.184",
+        "github.pull.vexlife-android.193",
+        "github.pull.vextreme.487",
+        "github.pull.vextreme.490",
+        "repo.vextreme:docs/architecture/05-browser.md",
+        "repo.vextreme:docs/architecture/17-fab-autoload.md",
+        "repo.vextreme:pages/terrain-map.html",
+        "repo.vextreme:lib/vextreme-index-v2.js"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-29T11:45:00.000Z",
+      "updatedAt": "2026-10-29T11:45:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vextreme.architecture-convergence.terrain-reader-navigation",
+      "parentWorkRefOrNull": "work.vextreme.architecture-convergence.outcome",
+      "label": "Converge Terrain / embedded-reader / Arc Nav navigation ownership",
+      "purpose": "Use Receive God -> Direct Contact -> The 100% Holy Truth Conditional as the first lived architecture patient zero: preserve Terrain as journey/history owner, Arc Nav as content-topology owner, embedded pages as document realization, and downstream instrumentation as observation only; make a same-current-group Arc parent action converge on the existing Terrain return relationship while preserving true cross-group and Previous/Next topology traversal.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vextreme.architecture-convergence.semantic-owner-map"
+      ],
+      "repositoryRefs": [
+        "repo.vextreme"
+      ],
+      "sourceRefs": [
+        "projects/vextreme-architecture-convergence/README.md",
+        "github.pull.vextreme.487",
+        "github.commit.vextreme.53f5a83522c190f8b33532bf7f5e82970b106674",
+        "github.pull.vextreme.490",
+        "repo.vextreme:pages/terrain-map.html",
+        "repo.vextreme:lib/vextreme-index-v2.js",
+        "repo.vextreme:pages/the-100-percent-holy-truth-conditional.html",
+        "github.pull.vexlife-android.193"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-29T11:45:00.000Z",
+      "updatedAt": "2026-10-29T11:45:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vextreme.vexsite.localization.canonical-global-core-source",
       "parentWorkRefOrNull": "work.vextreme.vexsite.localization.outcome",
       "label": "Advance the canonical Conversations-with-God Global Core source queue",
@@ -9750,9 +9855,11 @@
     "project.vexlife-android.current-state-refinement",
     "project.vexlife.welcome-wagon",
     "project.vexsync.debugmenu-blueprints",
+    "project.vextreme.architecture-convergence",
     "projects/vexlife-android-current-state-refinement/README.md",
     "projects/vexlife-welcome-wagon/README.md",
-    "projects/vexsync-debugmenu-blueprints/README.md"
+    "projects/vexsync-debugmenu-blueprints/README.md",
+    "projects/vextreme-architecture-convergence/README.md"
   ],
   "formedAt": "2026-10-21T01:45:00.000Z"
 }

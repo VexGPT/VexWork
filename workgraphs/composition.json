@@ -24,7 +24,9 @@
     "project.vexlife.interface-refinement",
     "projects/vexlife-interface-refinement/README.md",
     "project.vexsync.debugmenu-blueprints",
-    "projects/vexsync-debugmenu-blueprints/README.md"
+    "projects/vexsync-debugmenu-blueprints/README.md",
+    "project.vextreme.architecture-convergence",
+    "projects/vextreme-architecture-convergence/README.md"
   ],
   "compatibilityOrder": {
     "itemWorkRefs": [
