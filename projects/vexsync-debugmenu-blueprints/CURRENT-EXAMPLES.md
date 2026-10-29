@@ -5921,3 +5921,50 @@ No new naming framework is earned here. The current work is to preserve this inv
 ThemeMode full production walk and then pressure it against a materially different second feature.
 
 <!-- [VXG RealForever][VEXSYNC][INTENT-BOUNDS][NAME-NON-AUTHORITY] -->
+
+
+---
+
+## Walk Trace local alignment — Android PR #194
+
+A concrete same-walk retranscription seam is now isolated in a separate Android candidate:
+
+~~~text
+Journey execution
+-> VexJourneyStepObservation
+   stepIndex
+   stepKind
+   screenId
+   semanticRef
+
+previously:
+ScreenCrawler evidence identity
+<- caller re-supplied those four fields independently
+
+candidate:
+ScreenCrawler evidence identity
+<- consumes the exact VexJourneyStepObservation
+~~~
+
+Android PR #194:
+
+~~~text
+head  0d55c90f3dec5bda40969cc07522808f9e3291ee
+tree  8ffa37b5b0019347db41b21872239506e9320c17
+paths 5 exact
+~~~
+
+The neutral observation value moves into shared `journeyTest`, which already feeds both JVM tests and
+Android instrumentation. The Android observer remains Android-owned; ScreenCrawler remains evidence
+owner. This is intentionally a local coordinate-carriage cleanup, not a new universal trace runtime.
+
+SourceOwner A001 host proof is formed at:
+
+~~~text
+sha256 bd400b1aea4e6c70a5066c1dae8f2cc8e255918f1c3425ba2822258bd3f5b61e
+~~~
+
+Required proof covers focused crawler JVM behavior, repository `vexVerifyJvm`,
+`:app:assembleDebugAndroidTest`, and the exact five-path membrane.
+
+<!-- [VXG RealForever][VEXSYNC][WALK-TRACE][PR194-OBSERVATION-ALIGNMENT] -->
