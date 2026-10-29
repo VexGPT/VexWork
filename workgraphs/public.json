@@ -6364,7 +6364,7 @@
       "label": "Vextreme Alignment",
       "purpose": "Bring Vextreme's preserved sources, canonical chronology, page-reader presentation, navigation, and Terrain projections back into one coherent current reading experience while preserving the rightful source owner for every fact and relationship.",
       "workClass": "OUTCOME",
-      "state": "PLAN_VALIDATED",
+      "state": "RUNNING",
       "workDisposition": "ACTIVE",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [],
@@ -6380,14 +6380,18 @@
         "repo.vextreme:data/nodes.json",
         "repo.vextreme:data/arcs-v2.json",
         "repo.vextreme:pages/terrain-map.html",
-        "repo.vextreme:docs/ingestion/workmaps/content-forge-consolidation-proposal.json"
+        "repo.vextreme:docs/ingestion/workmaps/content-forge-consolidation-proposal.json",
+        "github.pull.vextreme.480",
+        "github.pull.vextreme.482",
+        "github.pull.vextreme.483",
+        "github.pull.vextreme.484"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-29T08:40:27.000Z",
-      "updatedAt": "2026-10-29T08:40:27.000Z"
+      "updatedAt": "2026-10-29T10:08:01.000Z"
     },
     {
       "workDisposition": "ACTIVE",
@@ -9921,6 +9925,38 @@
         "github.commit.vextreme.74f3383e22b200a6eb2d32957902a5f67123f81c"
       ],
       "createdAt": "2026-10-29T09:25:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.alignment.outcome.ready.active-fronts",
+      "workRef": "work.vextreme.alignment.outcome",
+      "priorState": "PLAN_VALIDATED",
+      "nextState": "READY",
+      "reason": "The Alignment project is decomposed into four admitted source fronts with exact Vextreme PR owners and one final cross-surface proof gate; the outcome is no longer merely a validated plan.",
+      "actorRef": "actor.chatgpt.vextreme-alignment",
+      "sourceRefs": [
+        "github.pull.vextreme.480",
+        "github.pull.vextreme.482",
+        "github.pull.vextreme.483",
+        "github.pull.vextreme.484"
+      ],
+      "createdAt": "2026-10-29T10:08:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.alignment.outcome.running.active-fronts",
+      "workRef": "work.vextreme.alignment.outcome",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Timeline, chronology, navigation, and lineage work are actively carried in Vextreme PRs #480/#482/#483/#484, with Timeline already machine-green in Verify.",
+      "actorRef": "actor.chatgpt.vextreme-alignment",
+      "sourceRefs": [
+        "github.pull.vextreme.480",
+        "github.pull.vextreme.482",
+        "github.pull.vextreme.483",
+        "github.pull.vextreme.484"
+      ],
+      "createdAt": "2026-10-29T10:08:01.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
