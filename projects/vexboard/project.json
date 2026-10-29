@@ -22,7 +22,11 @@
     "github.pull.vexlife-android.193",
     "work.vexsync.debugmenu-blueprints.vexboard-architecture-convergence",
     "github.pull.vexwork.178",
-    "github.commit.vexwork.c8ac1b1898b6e23df3164fd69ea22499a38257b4"
+    "github.commit.vexwork.c8ac1b1898b6e23df3164fd69ea22499a38257b4",
+    "github.pull.vexwork.184",
+    "github.commit.vexwork.49ec3bd650dde810110b11a55e70907df0e9d9f2",
+    "vexboard/architecture-map.json",
+    "src/core/vexboard-android-source-projector.mjs"
   ],
   "formedAt": "2026-10-23T00:14:29.000Z"
 }
