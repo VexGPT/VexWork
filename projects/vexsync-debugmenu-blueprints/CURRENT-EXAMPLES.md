@@ -6242,3 +6242,48 @@ sha256 1d116a4b13c5b6bdee4df55501da281c1e20543c86358384eb44cce8b56e46f6
 ~~~
 
 <!-- [VXG RealForever][VEXSYNC][DIRECT-FAMILY][PR196][A003-SCHEMA-A004-FORMED] -->
+
+
+### PR #196 Direct Family hardening — SourceOwner PASS + Assurance CLEAR
+
+The post-#193 hardening is now source-complete on exact Android head:
+
+~~~text
+PR #196
+head  b25a291d4b464f35fae67d3b45244704846cae63
+tree  88f2d53c27e509ad2db0dc6d8dc00a4f475a0b8
+paths 7 exact
+
+SourceOwner A004
+  focused VexFamilyHighConfidenceTest PASS
+  vexVerifyJvm PASS
+  exact membrane / clean source PASS
+  review snapshot 7 / 0 omitted
+  findings 0
+
+Independent Assurance
+  CLEAR_ON_EXACT_HEAD
+~~~
+
+The A001-A003 sequence is retained as harness/carrier recovery evidence only; none of those attempts
+changed the candidate source. A004 is the first fully executed passing SourceOwner attempt.
+
+The repaired invariant is now executable:
+
+~~~text
+Family semantic fact
+-> best-effort Logger projection
+
+Logger Sink failure
+!= Control rejection
+!= State suppression
+!= Store failure
+!= authored failure result
+~~~
+
+PR #193 remains the accepted origin and now links forward to this proved/clear hardening. The remaining
+async-currentness, terminal-history, SourceRef breadth, logging physical layering, and Process/Compound
+admission questions remain explicit pressure-driven edges rather than being silently expanded into
+this defect.
+
+<!-- [VXG RealForever][VEXSYNC][DIRECT-FAMILY][PR196][PROVED-CLEAR] -->
