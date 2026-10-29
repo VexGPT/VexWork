@@ -36,7 +36,7 @@
 .palette-fab{position:absolute;right:12px;top:12px;z-index:50;width:42px;height:42px;border-radius:999px;border:1px solid #cbd5e1;background:#fffffff2;box-shadow:0 5px 18px #0002;display:flex;align-items:center;justify-content:center;cursor:pointer}
 .palette-fab:hover,.palette-fab:focus-visible{outline:2px solid #93c5fd;outline-offset:2px}.palette-dots{position:relative;width:24px;height:16px}.palette-dot{position:absolute;width:11px;height:11px;border-radius:50%;border:1px solid #64748b;top:2px}.palette-dot:nth-child(1){left:1px;background:var(--branch-0)}.palette-dot:nth-child(2){left:7px;background:var(--branch-2)}.palette-dot:nth-child(3){left:13px;background:var(--branch-3)}
 .save-status{min-width:116px;color:#78716c;font:700 8px ui-monospace,monospace;line-height:1.25}.save-status.dirty{color:#b45309}.save-status.error{color:#b91c1c}.save-status.saved{color:#15803d}
-.containment-row{display:grid;grid-template-columns:82px minmax(0,1fr);gap:6px;align-items:center;margin-top:8px}.containment-select{min-width:0;border:1px solid #d6d3d1;border-radius:6px;background:#fff;padding:6px;font-size:10px}
+.containment-row{display:grid;grid-template-columns:82px minmax(0,1fr);gap:6px;align-items:center;margin-top:8px}.containment-select{min-width:0;border:1px solid #d6d3d1;border-radius:6px;background:#fff;padding:6px;font-size:10px}.kotlin-preview{white-space:pre;overflow:auto;max-height:360px;border:1px solid #d6d3d1;border-radius:7px;background:#0f172a;color:#e2e8f0;padding:9px;font:9px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace}.kotlin-binding{display:grid;grid-template-columns:100px minmax(0,1fr);gap:6px;align-items:center;margin:6px 0}
 @media(max-width:850px){.work,.work.drawer-open{grid-template-columns:62px minmax(0,1fr)}.context-drawer{position:absolute;right:0;top:0;bottom:0;width:min(320px,82vw);z-index:80;box-shadow:-10px 0 28px #0003}.minimap{width:150px;height:94px}}
 .shape.pin-muted{opacity:.2}.edge.pin-muted,.edge-label.pin-muted{opacity:.12}.shape.pin-focus{box-shadow:0 0 0 3px #0f766e33,0 3px 12px #00000010}.shape.pin-seed{outline:3px solid #0f766e55;outline-offset:3px}.edge.pin-focus{stroke:#0f766e!important;stroke-width:4}.edge-label.pin-focus{fill:#115e59;stroke:#ccfbf1;stroke-width:5px}.pin-menu{position:fixed;z-index:200;min-width:190px;padding:6px;border:1px solid #d6d3d1;border-radius:9px;background:#fff;box-shadow:0 12px 32px #0003;display:flex;flex-direction:column;gap:4px}.pin-menu button{text-align:left}.pin-mode-active{border-color:#5eead4!important;background:#f0fdfa!important;color:#115e59!important}.pin-list{display:flex;flex-direction:column;gap:5px}.pin-row{display:flex;align-items:center;gap:5px}.pin-row .ref-token{flex:1}</style>
 </head>
@@ -52,6 +52,7 @@ import * as Interaction from './ui/interaction.mjs';
 import * as Presentation from './ui/presentation.mjs';
 import * as AndroidProjector from '../src/core/vexboard-android-source-projector.mjs';
 import * as ScreenDesign from '../src/core/vexboard-screen-design.mjs';
+import * as FamilyKotlin from '../src/core/vexboard-family-kotlin-construction.mjs';
 import * as AndroidPresentation from './ui/android-reference-presentation.mjs';
 
 const app=document.getElementById('app');
@@ -215,7 +216,8 @@ async function openBoard(input,{pushCurrent=false,boardRef=null,prototypeInput=n
   const d=Board.normalizeDraft(input),s=await Board.hydrateBoardState(d.graph,d.projection);
   const evidence=d.evidence?Evidence.normalizeBoardEvidence(d.evidence,s.graph):null;
   const design=d.design?ScreenDesign.normalizeScreenDesign(d.design):null;
-  current={...d,graph:s.graph,projection:s.projection,evidence,design};selected=null;tool='SELECT';connectFrom=null;relationshipViewMode=Presentation.defaultRelationshipViewMode(d.projection.layoutIntent);activeAndroidViewportProfileRef=d.presentation?.profileRef??null;
+  const familyKotlin=d.familyKotlin?FamilyKotlin.normalizeFamilyKotlinModel(d.familyKotlin):null;
+  current={...d,graph:s.graph,projection:s.projection,evidence,design,familyKotlin};selected=null;tool='SELECT';connectFrom=null;relationshipViewMode=Presentation.defaultRelationshipViewMode(d.projection.layoutIntent);activeAndroidViewportProfileRef=d.presentation?.profileRef??null;
   prototype=prototypeInput?Board.normalizeBoardPrototype(prototypeInput,s.graph):null;
   scenario=prototype?Board.createBoardScenario(prototype,s.graph,{scenarioRef:ref('scenario.vexboard')}):null;
   interactionTrail=[];collapsed=new Set();journey=null;journeyPathwayAnalysis=null;pinnedSemanticRefs=new Set();relationalFocusMode='CONNECT';scrollOffsetsByProjectionRef=new Map();camera=Board.normalizeCamera({x:48,y:48,zoom:1});activeBoardRef=boardRef||d.draftRef;
@@ -563,10 +565,78 @@ function renderFeatureContextDrawer(side,context){
   const link=document.createElement('a');link.className='btn drawer-link';link.href=context.vexWorkHref;link.textContent='Open VexWork source';
   section.append(link,el('div','drawer-copy',`\nSource: ${context.pullRef}`));body.append(section);
 }
+function editFamilyKotlinBinding(familyRef,controlRef,resourceIdRefOrNull){
+  if(!editable()||!current.familyKotlin)return;
+  current={
+    ...current,
+    familyKotlin:FamilyKotlin.rebindControlResource(
+      current.familyKotlin,
+      {familyRef,controlRef,resourceIdRefOrNull},
+    ),
+  };
+  markDraftDirty();
+  renderWorkspace();
+  requestAnimationFrame(()=>applyCamera());
+}
+function renderKotlinDrawer(side){
+  const body=drawerShell(side,'Kotlin mapping');
+  if(!current.familyKotlin){
+    body.append(el('div','drawer-copy','No Family Kotlin mapping is bound to this board.'));
+    return;
+  }
+  const model=FamilyKotlin.normalizeFamilyKotlinModel(current.familyKotlin);
+  const plan=FamilyKotlin.compileFamilyKotlin(model);
+
+  const intro=el('section','drawer-section');
+  intro.append(
+    el('h3','','Executable language specimen'),
+    el('div','drawer-copy',`Model: ${model.modelRef}\nCurrent mapped test: ${model.testSourceRef}\nTarget product source: ${model.targetSourceRefOrNull||'not admitted yet'}`),
+  );
+
+  for(const family of model.families){
+    if(family.controlForm!=='SEALED')continue;
+    for(const control of family.controls){
+      if(control.resourceIdRefOrNull===null)continue;
+      const row=el('div','kotlin-binding');
+      row.append(el('div','k',`${family.familyName}.${control.name}`));
+      const select=document.createElement('select');select.className='containment-select';select.disabled=!editable();
+      for(const resource of family.resources){
+        const option=document.createElement('option');
+        option.value=resource.resourceRef;
+        option.textContent=resource.name;
+        option.selected=resource.resourceRef===control.resourceIdRefOrNull;
+        select.append(option);
+      }
+      select.onchange=()=>editFamilyKotlinBinding(family.familyRef,control.controlRef,select.value);
+      row.append(select);intro.append(row);
+    }
+  }
+  if(!editable()){
+    intro.append(el('div','drawer-copy','Request edit → draft copy to change the typed binding. The preview is effect-free; it does not write Android source.'));
+  }else{
+    intro.append(el('div','drawer-copy','Changing the binding recompiles both the Family declaration and mapped test language in this local draft.'));
+  }
+  body.append(intro);
+
+  const implementation=el('section','drawer-section');
+  implementation.append(el('h3','','Generated Family Kotlin'));
+  const familyPre=el('pre','kotlin-preview');familyPre.textContent=plan.familySource;implementation.append(familyPre);
+  body.append(implementation);
+
+  const tests=el('section','drawer-section');
+  tests.append(el('h3','','Mapped Kotlin test language'));
+  const testPre=el('pre','kotlin-preview');testPre.textContent=plan.testSource;tests.append(testPre);
+  body.append(tests);
+
+  const effects=el('section','drawer-section');
+  effects.append(el('h3','','Effect boundary'),el('div','drawer-copy',`external effects performed: ${String(plan.externalEffectsPerformed)}\nThis is a construction candidate only.`));
+  body.append(effects);
+}
 function renderContextDrawer(side){
   const context=featureWorkspaceContext();
   if(drawerMode==='LIBRARY'&&context){renderLibraryDrawer(side,context);return}
   if(drawerMode==='FEATURE_CONTEXT'&&context){renderFeatureContextDrawer(side,context);return}
+  if(drawerMode==='KOTLIN'&&current.familyKotlin){renderKotlinDrawer(side);return}
   const body=drawerShell(side,'Inspect');
   const inspect=el('div','inspector');body.append(inspect);inspector(inspect);
 }
@@ -996,7 +1066,7 @@ function renderWorkspace(){
   }
   const featureContext=featureWorkspaceContext();
   bar.append(drawerButton('Inspect','INSPECT'));
-  if(featureContext)bar.append(drawerButton('Library','LIBRARY'),drawerButton('Feature context','FEATURE_CONTEXT'));
+  if(featureContext)bar.append(drawerButton('Library','LIBRARY'),drawerButton('Kotlin','KOTLIN'),drawerButton('Feature context','FEATURE_CONTEXT'));
   if(editable()){
     const save=el('button','btn primary','Save draft');save.disabled=!draftDirty&&Boolean(current.savedAtOrNull);
     save.onclick=()=>{try{const savedAt=new Date().toISOString(),next={...current,savedAtOrNull:savedAt};store(Board.upsertDraft(drafts(),next));current=next;draftDirty=false;saveMessage=`Saved locally · ${savedClock(savedAt)}`}catch(error){draftDirty=true;saveMessage=`Local save failed · ${error?.name||'storage unavailable'}`}renderWorkspace();requestAnimationFrame(()=>applyCamera())};
