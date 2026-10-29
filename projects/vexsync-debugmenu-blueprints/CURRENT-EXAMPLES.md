@@ -6489,8 +6489,8 @@ ThemeModeFamily
 Exact current Android PR #188:
 
 ~~~text
-head = e1ca51153141c5ac9d9a2ff0655aaf181066a2b7
-tree = a69e1000f3c8b16e172c433dd2facf39f0a2f236
+head = 249e38acdcc7f1d27050a65a7aa93f3f622e6b4a
+tree = dad03cddfbd01d03f98c8d9f8ce2bca216b4daaf
 ~~~
 
 The current invariant is:
@@ -6511,3 +6511,30 @@ DO NOT
 Debug Menu and Maps remain bounded presentation consumers; other Screens are theme-agnostic.
 
 <!-- [VXG RealForever][VEXSYNC][CURRENT-EXAMPLE][THEMEMODE][UI-CONTINUITY] -->
+
+
+---
+
+## Conversation preview correction from SourceOwner A002
+
+A002 proved that Preview code must follow the same presentation seam after the old Boolean theme API is removed.
+
+~~~text
+WRONG
+VexLifeTheme(darkTheme = true)
+
+CURRENT
+VexLifeTheme(presentation = VexThemePresentation.Dark)
+~~~
+
+The preview chooses an explicit presentation; production still gets presentation from ThemeModeFamily.DisplayState.
+
+Current Android PR #188:
+
+~~~text
+head = 249e38acdcc7f1d27050a65a7aa93f3f622e6b4a
+tree = dad03cddfbd01d03f98c8d9f8ce2bca216b4daaf
+paths = 19 exact
+~~~
+
+<!-- [VXG RealForever][VEXSYNC][CURRENT-EXAMPLE][THEMEMODE][PREVIEW-PRESENTATION] -->
