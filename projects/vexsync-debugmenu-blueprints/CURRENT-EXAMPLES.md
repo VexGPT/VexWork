@@ -134,6 +134,91 @@ github.comment.vexlife-android.pr195.6508290364
 
 <!-- [VXG RealForever][VEXSYNC][THEMEMODE][PR195][CONNECTED-JOURNEY][RECOVERED-PASS] -->
 
+### Victor lived check — explicit selection does not survive process death
+
+The first human-visible run refined what the connected Journey had and had not proved.
+
+~~~text
+in-session
+  Home -> Add -> Debug Menu -> Dark Mode
+  visible theme change = PASS
+
+process boundary
+  swipe-kill app
+  relaunch
+  selected mode restored = FAIL
+~~~
+
+This is source-explained, not intermittent:
+
+~~~text
+VexLifeSession
+  current ThemeMode = in-process session truth
+  process-death restoration = explicitly not claimed
+
+fresh VexLifeViewModel
+-> fresh VexLifeSession
+-> default initialThemeMode = ThemeMode.Dark
+~~~
+
+Earlier Origin-Walk source deliberately kept persistence as future pressure because the then-current
+human outcome had not required it. Victor's lived result is the pressure that changes that conclusion.
+
+~~~text
+BEFORE
+  durable ThemeMode preference
+  = valid future pressure
+
+NOW
+  explicit human selection expected to survive swipe-kill
+  = current required product behavior
+~~~
+
+The existing VexSync full-circuit model already has the minimum semantic distinction:
+
+~~~text
+CURRENT semantic ThemeMode
+!=
+FamilyStore durable ThemeMode
+
+FamilyStore<ThemeMode>
+  Save
+  Get
+  ObservableState
+  Forget
+~~~
+
+But current canonical VexLife main `b6d9dd4876132fc408f0eacd2bb6b5b0d56e009f` has no
+ThemeMode-specific source and no FamilyStore composition surface. Its portable Behavior v1 row model is
+not sufficient to encode the already-earned durable-store relationship without distortion.
+
+Therefore the next source edge is:
+
+~~~text
+VexSync earned persistence meaning
+-> canonical VexLife Blueprint admission
+-> Android target persistence realization
+-> focused persistence proof
+-> process-death lived re-verification
+-> reverse trace to the same ThemeMode meaning
+~~~
+
+Do not replay the connected Journey merely because persistence failed; its in-process claim already
+passed. Do not mark PR #195 complete or merge-ready from that narrower PASS.
+
+Evidence:
+
+~~~text
+Victor lived finding
+github.comment.vexlife-android.pr195.6508592808
+
+canonical VexLife main
+b6d9dd4876132fc408f0eacd2bb6b5b0d56e009f
+~~~
+
+<!-- [VXG RealForever][VEXSYNC][THEMEMODE][LIVED][PROCESS-DEATH-PERSISTENCE-FAIL] -->
+
+
 
 ## Status
 
