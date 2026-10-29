@@ -370,6 +370,64 @@ semantic owner decides
 No new event bus, navigation registry, generic preference framework, or browser-side Family clone is
 earned by this map.
 
+
+### Shared-membership journey law
+
+The first patient-zero implementation pressure exposed a concrete distinction that must survive later
+refactoring:
+
+~~~text
+content membership / primary placement
+  answers:
+    where does this record belong?
+    which collections may project it?
+
+Terrain Journey relationship
+  answers:
+    which surface actually brought the visitor here?
+    where should Back return?
+~~~
+
+A record can truthfully belong to several collections while one lived traversal has exactly one actual
+origin.
+
+Current patient zero:
+
+~~~text
+The 100% Holy Truth Conditional
+  memberships:
+    AI Practitioner Tools
+    Direct Contact
+
+generated primary/first placement:
+  AI Practitioner Tools
+
+lived route:
+  Receive God
+  -> Direct Contact
+  -> The 100% Holy Truth Conditional
+~~~
+
+Therefore:
+
+~~~text
+PRIMARY PLACEMENT
+!= ACTUAL JOURNEY ORIGIN
+
+MULTI-MEMBERSHIP
+!= PERMISSION TO RESELECT THE VISITOR'S RETURN OWNER
+
+record opened from group home G
++ record belongs to G
+-> preserve G as current Journey relationship
+
+no lived group-home origin
+-> primary/fallback placement may remain a projection choice
+~~~
+
+This is current implementation pressure carried by Vextreme PR #493. It is also a Name Ontology guard:
+a future name that implies one owner controls both membership and lived return would be too broad.
+
 ## Current Work
 
 ~~~text

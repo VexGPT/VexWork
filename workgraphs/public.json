@@ -6289,14 +6289,15 @@
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/maps/distribution/design/records/2026-10-16-002-name-ontology-relationship-truth.md",
         "repo.vexlife-android:architecture/behavior/VEX-BEHAVIOR-FAMILY-BLUEPRINT.md",
         "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
-        "repo.vextreme:lib/terrain-journey.js"
+        "repo.vextreme:lib/terrain-journey.js",
+        "github.pull.vextreme.493"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-29T11:45:00.000Z",
-      "updatedAt": "2026-10-29T11:30:00.000Z"
+      "updatedAt": "2026-10-29T11:40:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -6322,14 +6323,15 @@
         "repo.vextreme:pages/terrain-map.html",
         "repo.vextreme:lib/vextreme-index-v2.js",
         "repo.vextreme:pages/the-100-percent-holy-truth-conditional.html",
-        "github.pull.vexlife-android.193"
+        "github.pull.vexlife-android.193",
+        "github.pull.vextreme.493"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-29T11:45:00.000Z",
-      "updatedAt": "2026-10-29T11:45:00.000Z"
+      "updatedAt": "2026-10-29T11:40:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
