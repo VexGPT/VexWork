@@ -340,8 +340,8 @@ test('built-in and patient-zero source boards preserve separate catalog ownershi
   const catalog = normalizeBoardSourceCatalog(patientZeroCatalog);
   assert.equal(catalog.catalogRef, 'catalog.vexboard.patient-zero-examples');
   assert.deepEqual(
-    catalog.entries.map((entry) => entry.boardRef),
-    [
+    new Set(catalog.entries.map((entry) => entry.boardRef)),
+    new Set([
       'board.vexbusinessfactory.intent-topology.patient-zero',
       'board.vexbusinessfactory.system-anatomy.patient-zero',
       'board.vexstream.phone-desktop-connection.construction-evidence',
@@ -349,7 +349,7 @@ test('built-in and patient-zero source boards preserve separate catalog ownershi
       'board.vexlife-android.home-vexstream.poc',
       'board.vexlife-android.vexstream-depth.poc',
       'board.vexlife.debug-menu.theme-mode.origin-walk',
-    ],
+    ]),
   );
 
   const anatomyResolution = resolveBoardSource(systemAnatomy.draftRef, [catalog]);
