@@ -79,7 +79,9 @@
           "github.pull.vexlife-android.193",
           "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
           "projects/vexsync-debugmenu-blueprints/README.md",
-          "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md"
+          "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/debug/DebugMenuScreen.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/runtime/AppActions.kt"
         ]
       },
       {
@@ -93,7 +95,9 @@
           "github.pull.vexlife-android.193",
           "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
           "projects/vexsync-debugmenu-blueprints/README.md",
-          "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md"
+          "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/debug/DebugMenuScreen.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/runtime/AppActions.kt"
         ]
       },
       {
@@ -107,13 +111,14 @@
           "github.pull.vexlife-android.193",
           "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
           "projects/vexsync-debugmenu-blueprints/README.md",
-          "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md"
+          "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt"
         ]
       },
       {
         "nodeRef": "process.theme-mode.family",
         "kind": "PROCESS",
-        "label": "ThemeMode Family",
+        "label": "ThemeMode Family · candidate language",
         "parentRefOrNull": "quadrant.theme-mode.family",
         "detailBoardRefOrNull": null,
         "sourceRefs": [
@@ -334,6 +339,18 @@
           "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
           "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt"
         ]
+      },
+      {
+        "nodeRef": "reference.theme-mode.current-target",
+        "kind": "REFERENCE",
+        "label": "VexLifeSession.darkTheme · current target truth",
+        "parentRefOrNull": "quadrant.theme-mode.ui",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/debug/DebugMenuScreen.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/runtime/AppActions.kt"
+        ]
       }
     ],
     "relationships": [
@@ -445,6 +462,17 @@
           "projects/vexsync-debugmenu-blueprints/README.md",
           "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
           "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt"
+        ]
+      },
+      {
+        "relationshipRef": "rel.theme-mode.current-target-ui",
+        "kind": "DATA",
+        "fromRef": "reference.theme-mode.current-target",
+        "toRef": "control.debug-menu.theme-mode",
+        "labelOrNull": "CURRENT CHECKED / THEME",
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/debug/DebugMenuScreen.kt"
         ]
       }
     ],
@@ -797,6 +825,21 @@
         },
         "layer": 2,
         "parentProjectionItemRefOrNull": "item.quadrant.theme-mode.execution",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.reference.theme-mode.current-target",
+        "semanticRef": "reference.theme-mode.current-target",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 150,
+          "y": 400,
+          "width": 360,
+          "height": 70
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.quadrant.theme-mode.ui",
         "visible": true,
         "locked": true
       }
