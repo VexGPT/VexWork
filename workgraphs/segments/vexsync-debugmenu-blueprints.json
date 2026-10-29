@@ -109,7 +109,7 @@
         "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
         "projects/vexboard/examples/vexlife-debug-menu-theme-mode.board.json",
         "src/core/vexboard-family-kotlin-construction.mjs",
-        "github.commit.vexwork.b1afd173c200c0cca480f8405003df0fbd547c54"
+        "github.commit.vexwork.49ec3bd650dde810110b11a55e70907df0e9d9f2"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
@@ -218,7 +218,7 @@
     "work.vexboard.vexsync-architecture-convergence",
     "github.pull.vexwork.184",
     "vexboard/architecture-map.json",
-    "github.commit.vexwork.b1afd173c200c0cca480f8405003df0fbd547c54"
+    "github.commit.vexwork.49ec3bd650dde810110b11a55e70907df0e9d9f2"
   ],
   "formedAt": "2026-10-26T07:26:46.000Z"
 }
