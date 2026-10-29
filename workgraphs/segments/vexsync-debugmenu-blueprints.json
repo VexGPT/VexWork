@@ -240,7 +240,10 @@
         "repo.vexlife-android:app/src/androidTest/kotlin/com/vextreme/vexlife/android/testing/journey/VexJourneyExecutionObserver.kt",
         "repo.vexlife-android:app/src/journeyTest/kotlin/com/vextreme/vexlife/android/testing/crawler/VexScreenCrawlerEvidenceIdentity.kt",
         "repo.vexlife-android:app/src/androidTest/kotlin/com/vextreme/vexlife/android/testing/crawler/VexScreenCrawlerEvidenceObserver.kt",
-        "repo.vexlife-android:app/src/test/kotlin/com/vextreme/vexlife/android/testing/crawler/VexScreenCrawlerPlannerTest.kt"
+        "repo.vexlife-android:app/src/test/kotlin/com/vextreme/vexlife/android/testing/crawler/VexScreenCrawlerPlannerTest.kt",
+        "github.pull.vexlife-android.194",
+        "github.commit.vexlife-android.0d55c90f3dec5bda40969cc07522808f9e3291ee",
+        "evidence.vexsync.pr194.sourceowner.a001.formation.sha256.bd400b1aea4e6c70a5066c1dae8f2cc8e255918f1c3425ba2822258bd3f5b61e"
       ],
       "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
       "nextProcessRefs": [
@@ -249,7 +252,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-29T15:02:00.000Z",
-      "updatedAt": "2026-10-29T15:02:00.000Z"
+      "updatedAt": "2026-10-29T15:12:00.000Z"
     }
   ],
   "transitions": [
@@ -405,6 +408,21 @@
         "repo.vexlife-android:app/src/journeyTest/kotlin/com/vextreme/vexlife/android/testing/crawler/VexScreenCrawlerEvidenceIdentity.kt"
       ],
       "createdAt": "2026-10-29T15:02:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.walk-trace-observation-alignment.running.pr194-source-candidate-formed-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.walk-trace-observation-alignment",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING",
+      "reason": "The bounded Journey-to-ScreenCrawler observation alignment is now authored as Android PR #194 on exact five-path head 0d55c90f..., and a current-contract ExactHeadSourceOwnerProof host wrapper is statically qualified. The source candidate keeps production semantics untouched and awaits focused JVM + vexVerifyJvm + AndroidTest assembly + exact membrane execution on the qualified macOS host.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.194",
+        "github.commit.vexlife-android.0d55c90f3dec5bda40969cc07522808f9e3291ee",
+        "evidence.vexsync.pr194.sourceowner.a001.formation.sha256.bd400b1aea4e6c70a5066c1dae8f2cc8e255918f1c3425ba2822258bd3f5b61e"
+      ],
+      "createdAt": "2026-10-29T15:12:00.000Z"
     }
   ],
   "sourceRefs": [
@@ -449,7 +467,10 @@
     "github.comment.vexlife-android.pr188.6499683574.sourceowner-a001-pass",
     "github.review.vexlife-android.pr188.5699576285.assurance-clear",
     "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt",
-    "repo.vexlife-android:architecture/behavior/src/test/kotlin/com/vextreme/vexlife/android/behavior/VexFamilyHighConfidenceTest.kt"
+    "repo.vexlife-android:architecture/behavior/src/test/kotlin/com/vextreme/vexlife/android/behavior/VexFamilyHighConfidenceTest.kt",
+    "github.pull.vexlife-android.194",
+    "github.commit.vexlife-android.0d55c90f3dec5bda40969cc07522808f9e3291ee",
+    "evidence.vexsync.pr194.sourceowner.a001.formation.sha256.bd400b1aea4e6c70a5066c1dae8f2cc8e255918f1c3425ba2822258bd3f5b61e"
   ],
   "formedAt": "2026-10-26T07:26:46.000Z"
 }
