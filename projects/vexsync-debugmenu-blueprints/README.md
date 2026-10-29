@@ -6906,3 +6906,83 @@ serialized-decision law beneath both rather than cloning locking machinery.
 StateRelay remains pressure, not accepted Family standard.
 
 <!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][STATE-RELAY-WHY] -->
+
+
+---
+
+## Origin-Walk fourth reference — StateRelay + nested currentness
+
+**Downstream Android #192 head:** `301221a3d5a9e1a5a25d9629d13e2935a255b764`
+
+The executable evolution now has four deliberately different reference roles:
+
+~~~text
+1 ThemeMode
+  local Family language/runtime
+
+2 UI round-trip
+  activation currentness / stale-render protection
+
+3 Playback pressure
+  runtime payload Controls
+  provider reconciliation
+  Control availability
+
+4 StateRelay pressure
+  serialized CURRENT-State decision
+  stale async completion
+  nested list/list currentness
+  independently-owned child convergence
+~~~
+
+The fourth reference clarifies nested collection structure.
+
+### Parent-owned nested values
+
+~~~text
+ordered semantic refs
++
+complete valuesByRef
+-> one coherent current snapshot
+~~~
+
+Identity is the ref, not list index or object reference. Updating one nested item by ref preserves all
+parent/sibling order and values. A claimed current list with a dangling ref/value pair fails rather
+than silently rendering fewer rows.
+
+### Independently-owned child currentness
+
+Do not recursively absorb the child's whole State merely because the parent renders a list.
+
+~~~text
+parent current membership/order refs --------                                              -> Compound Convergence
+child-owner coherent current-by-ref ---------/        |
+                                                       v
+                                                bounded list output
+~~~
+
+The child keeps its own lifetime/provider/currentness owner. The parent keeps membership/order. The
+Convergence relationship owns what those current truths mean together.
+
+### Copy versus identity
+
+~~~text
+stable refs
+  -> semantic identity / traversal continuity
+
+snapshot/deep copy
+  -> ownership detachment from mutable caller/collector aliases
+
+deep copy
+  != identity model
+~~~
+
+The pressure fixture uses data-class copy from CURRENT plus explicit nested snapshot copying so a
+new root sibling is preserved by default and ownership-bearing collections detach.
+
+No universal StateList abstraction is admitted yet.
+
+Isolated Kotlin proofs passed for the nested identity/copy and independent-child convergence shapes.
+Repository Gradle/JVM proof remains pending.
+
+<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][STATE-RELAY][NESTED-CURRENTNESS] -->
