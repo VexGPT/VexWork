@@ -7411,3 +7411,108 @@ Repository Gradle/JVM proof for PR #193 exact head
 
 <!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][FAMILY][TYPED-CONTROL-RELATIONSHIP] -->
 
+---
+
+## Current correction checkpoint — exact typed Control Resource identity
+
+**Currentness:** `CURRENT_SIBLING_CANDIDATE_REFERENCE` from VexLife-Android PR #193 exact head
+`a05b67876d951d513633d04de4acf702e5ed834b`; `CURRENT_WORKING_MODEL` for the VexSync process lesson.
+
+The previous typed-Control checkpoint survived review, but writing the actual Kotlin/test surface exposed
+four implementation leaks:
+
+~~~text
+ResourceId<Family> -> String
+  erased the concrete ID type
+
+Control<Family> -> any ResourceId<Family>
+  did not bind one resource-bearing Control to its exact ID type
+
+control::class as default identity
+  collapsed different enum entries to the same Control class
+
+raw VexExecution.RelationshipId
+  remained too easy to implement directly outside the semantic owner
+~~~
+
+The correction tightens the same architecture rather than replacing it:
+
+~~~text
+ResourceId<Family>
+  typed marker
+  no shared String/value contract
+
+Control<Family>
+  default Control kind/name identity
+
+Control.Resource<Family, ExactId>
+  ExactId : ResourceId<Family>
+  concrete Control declares the exact resource ID type
+
+RelationshipId
+  live Family
+  + Control type / enum entry
+  + optional exact ResourceId object
+
+VexExecution.RelationshipId
+  foundation bridge only
+  error-level opt-in for raw use
+~~~
+
+Example pressure:
+
+~~~text
+Play : Control.Resource<PlayerFamily, TrackId>
+
+TrackId
+  valid
+
+AccountId
+  cannot be substituted into Play's resourceId slot
+  merely because both belong to PlayerFamily
+~~~
+
+The Family proof also now covers enum entries:
+
+~~~text
+Control.Play
+!=
+Control.Pause
+~~~
+
+even though both entries share the same enum class.
+
+The test deliberately stopped asserting a formatted RelationshipId `toString()`. Human/debug formatting
+is not architectural identity.
+
+### Process lesson
+
+The useful VexSync lesson sharpened again:
+
+~~~text
+GOOD TYPE BOUNDARY
+!= type-looking wrapper that immediately erases the type
+
+SAFE DEFAULT
+-> preserve the semantic owner's actual type all the way through the owned boundary
+
+TEST PRESSURE
+-> ask what wrong code still compiles
+-> if wrong architecture still compiles, the boundary is not finished
+~~~
+
+This is the same reduction goal, now more exact:
+
+~~~text
+REDUCE AI INTERPRETATION SURFACE
+BY
+MAKING THE COMPILER CARRY THE RIGHTFUL SEMANTIC DISTINCTION
+~~~
+
+The Builder-discovery work remains `RUNNING`. No new lifecycle transition is implied by this
+correction; it is current evidence inside the already-active task.
+
+Repository Gradle/JVM proof for Android PR #193 exact head `a05b67876d951d513633d04de4acf702e5ed834b` remains **PENDING**.
+
+<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][TYPED-CONTROL-RESOURCE-ID-CORRECTION] -->
+
