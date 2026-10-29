@@ -353,7 +353,10 @@ concrete VexLife consumer/proof of that contract.
 
 ### Exact VexLife foundation source placement
 
-Current VexLife source already has the smaller reusable owners needed for this foundation:
+Current VexLife source already contains part of the needed foundation, but the existing portable
+Behavior contract must not be stretched beyond the semantics its validator actually owns.
+
+Confirmed reusable substrate:
 
 ~~~text
 blueprint/process-factory/foundations.json
@@ -362,87 +365,89 @@ blueprint/process-factory/foundations.json
     narrow selectors
     combine
     semantic distinct-until-changed delivery
-
-blueprint/vexlife.blueprint.json
-  behaviorContracts[]
-    portable language-neutral behavior relationship contracts
-
-blueprint/fragments/behavior-contracts/vexstream-playback-play-pause.json
-  accepted precedent:
-    State
-    Control
-    Act
-    Effect
-    Projection
-    invariants
-    semantic law rows
-    stale observation reconciliation
 ~~~
 
-Therefore do **not** form a second generic State/Relay foundation merely to make the interface work
-look architectural. Reuse the existing State Relay foundation and source-place the smallest portable
-VexLife behavior/relationship contract that owns the interface-currentness laws.
-
-The expected source shape is approximately:
+Useful semantic precedent, **not the direct Interface Compound contract home**:
 
 ~~~text
-VexLife portable interface-currentness behavior contract
-  owns:
-    semantic interface relationship State identities
-    Control -> Act admission laws
-    effect-owner boundaries
-    derived projections
-    stale/current observation invariants
-    source/document/currentness mismatch laws
+blueprint/vexlife.blueprint.json
+  behaviorContracts[]
 
-  consumes / references:
-    canonical Companion availability owner
-    canonical Conversation owner
-    browser/server source identity observations
-    browser observation currentness
-
-  does not own:
-    runtime recovery execution
-    browser navigation/reload execution
-    Conversation persistence
-    model execution
-    setup lifecycle
+blueprint/fragments/behavior-contracts/vexstream-playback-play-pause.json
+src/core/portable-behavior-contract.mjs
+test/vexstream-playback-behavior-contract.test.mjs
 ~~~
 
-A new top-level state domain/service is **not automatically required**. The existing portable
-Play/Pause contract demonstrates that feature/relationship State identities can live inside the
-behavior contract itself. Add a broader state-domain owner only if real cross-feature consumers
-later require that stable domain.
+The existing `vexlife.portable-behavior-contract/v1` validator requires every contract to carry the
+Play/Pause-style intent/provider-acknowledgement law family, including pending-intent replacement,
+matching acknowledgement, incompatible-terminal clearing and their closed admission vocabulary.
+Those are correct for the accepted Play/Pause contract; they are not automatically the meaning of
+Interface currentness.
 
-Current concrete owners remain useful rather than being replaced:
+Therefore:
+
+~~~text
+PLAY_PAUSE_BEHAVIOR_CONTRACT
+= precedent for
+  stable State / Control / Act / Effect / Projection identities
+  source descent
+  semantic law rows
+  stale-observation protection
+  projection != execution authority
+
+PLAY_PAUSE_BEHAVIOR_CONTRACT
+!= generic Compound relationship schema
+!= permission to weaken its validator
+!= permission to force Interface currentness through provider-ack semantics
+~~~
+
+The current foundation question is now narrower and explicit:
+
+> What is the smallest **VexLife-owned portable relationship/convergence contract** that can preserve
+> independently-owned current truths -> coherent relationship truth -> rightful Family State,
+> while reusing `foundation.vexlife.state-relay.v1` and leaving effect owners separate?
+
+The answer may be a sibling contract family, or an earned generalization/version of an existing
+contract, but source must decide that after inspecting the current Blueprint composition/validator
+boundary and at least the real consumers that would share the executable invariant.
+
+Do not pre-decide by name.
+
+Current concrete owners remain inputs/effect owners rather than being replaced:
 
 ~~~text
 module.vexlife.core.companion-availability-reentry
-  -> canonical source-bound Companion availability / safe re-entry meaning
+  -> canonical source-bound Companion availability / same-binding re-entry meaning
 
 feature.vexlife.addressed-conversation
 + process.vexlife.conversation.send-addressed
-  -> canonical message-send / Conversation effect meaning
+  -> canonical Conversation/message-send meaning and effect boundary
 
 foundation.vexlife.state-relay.v1
   -> combine + semantic no-op suppression foundation
 
-portable interface-currentness behavior contract
-  -> missing Family Circuit relationship law
+missing VexLife relationship/convergence contract
+  -> independently-owned current truths
+  -> coherent relationship meaning
+  -> rightful Family-state handoff
 
 browser implementation
-  -> target-native observation + presentation + adapter realization
+  -> target-native observation/lifetime/presentation realization
 ~~~
 
-This follows the existing Blueprint portability rule:
+No new broad state-domain/service is earned merely because this relationship needs a contract.
+No `CompoundFamily`, generic runtime, global revision counter, or Kotlin-shaped browser framework is
+implied.
+
+Permanent:
 
 ~~~text
-canonical product meaning
--> target-native representation
--> target/environment proof
-
-REUSABLE MEANING
-!= REUSABLE TYPE EQUATION
+REUSABLE_MEANING != REUSABLE_TYPE_EQUATION
+USEFUL_PRECEDENT != DIRECT_SCHEMA_FIT
+VALIDATOR_MISMATCH -> DO_NOT_LAUNDER_SEMANTICS
+FOUNDATION_REUSE != VALIDATOR_WEAKENING
+ANDROID_KOTLIN_FORM != VEXLIFE_BROWSER_FORM
+RELATIONSHIP_OUTPUT != EFFECT_OWNER
 ~~~
 
 ## Interface Compound Relay — relationship to form

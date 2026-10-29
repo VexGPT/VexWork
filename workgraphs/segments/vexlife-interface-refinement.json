@@ -74,7 +74,7 @@
       "workRef": "work.vexlife.interface-refinement.interface-compound-relay",
       "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
       "label": "Current — Interface Compound Relay convergence",
-      "purpose": "Lay the smallest VexLife product-level Family Circuit / Compound Relay composition foundation before interface-specific repair, then resolve the ordinary VexLife human-surface continuity defect by reconciling independently owned current truths—exact server/source identity, loaded browser-document source identity, canonical Companion availability/runtime observation, canonical Conversation currentness/head and browser observation currentness—into one bounded derived readiness relationship. The foundation must preserve the existing Family State + Control -> Act -> rightful effect boundary and the Compound retained-input -> derived-output relationship without inventing CompoundFamily, a second state owner or a Kotlin-shaped browser framework. Lived normal-user recovery showed that a successful backend repair can coexist with a nonresponsive/stale browser composer that later renders Vex unavailable.",
+      "purpose": "Lay the smallest VexLife product-level Family Circuit / Compound Relay composition foundation before interface-specific repair, then resolve the ordinary VexLife human-surface continuity defect from independently owned current truths. Reuse foundation.vexlife.state-relay.v1 for combine/no-op semantics, but do not force Interface currentness into the existing Play/Pause-specific vexlife.portable-behavior-contract/v1 validator; first source-place the rightful portable relationship/convergence contract and Family-state handoff. Preserve Companion availability, Conversation, browser/navigation and lifecycle/runtime as separate truth/effect owners; do not invent CompoundFamily, a second state owner, a generic runtime or a Kotlin-shaped browser framework.",
       "workClass": "TASK",
       "state": "READY",
       "priorityClass": "IMMEDIATE",
@@ -127,7 +127,10 @@
         "repo.vexlife:blueprint/fragments/state-domains.json",
         "repo.vexlife:blueprint/feature-registry.json",
         "repo.vexlife:blueprint/module-registry/companion-availability-reentry.json",
-        "repo.vexlife:blueprint/process-factory/processes-conversation-and-interface.json"
+        "repo.vexlife:blueprint/process-factory/processes-conversation-and-interface.json",
+        "repo.vexlife:src/core/portable-behavior-contract.mjs",
+        "repo.vexlife:test/vexstream-playback-behavior-contract.test.mjs",
+        "repo.vexlife:src/core/blueprint.mjs"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
@@ -1088,7 +1091,10 @@
     "repo.vexlife:blueprint/fragments/state-domains.json",
     "repo.vexlife:blueprint/feature-registry.json",
     "repo.vexlife:blueprint/module-registry/companion-availability-reentry.json",
-    "repo.vexlife:blueprint/process-factory/processes-conversation-and-interface.json"
+    "repo.vexlife:blueprint/process-factory/processes-conversation-and-interface.json",
+    "repo.vexlife:src/core/portable-behavior-contract.mjs",
+    "repo.vexlife:test/vexstream-playback-behavior-contract.test.mjs",
+    "repo.vexlife:src/core/blueprint.mjs"
   ],
   "formedAt": "2026-10-25T01:23:08.000Z"
 }
