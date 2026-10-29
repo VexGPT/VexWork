@@ -42,7 +42,23 @@
 </head>
 <body>
 <header class="top"><strong>VexBoard</strong><span class="tiny">semantic canvas proving ground</span><a href="../">← VexWork</a></header>
-<main id="app" class="app"></main>
+<main id="app" class="app"><section class="landing"><div class="eyebrow">VexBoard</div><p class="lede">Loading semantic canvas…</p></section></main>
+<script>
+window.addEventListener('error',(event)=>{
+  const app=document.getElementById('app');
+  if(!app)return;
+  app.innerHTML='<section class="landing"><div class="eyebrow">VexBoard boot error</div><h1>Canvas failed to start.</h1><p class="lede"></p></section>';
+  const message=app.querySelector('.lede');
+  if(message)message.textContent=event?.message||'A browser module failed before VexBoard could render.';
+});
+window.addEventListener('unhandledrejection',(event)=>{
+  const app=document.getElementById('app');
+  if(!app)return;
+  app.innerHTML='<section class="landing"><div class="eyebrow">VexBoard boot error</div><h1>Canvas failed to start.</h1><p class="lede"></p></section>';
+  const message=app.querySelector('.lede');
+  if(message)message.textContent=String(event?.reason?.message||event?.reason||'An asynchronous boot dependency failed.');
+});
+</script>
 <script type="module">
 import * as Board from '../vexboard-reader.js';
 import * as SourceResolver from '../src/shared/vexboard-source-resolver.mjs';
@@ -52,7 +68,6 @@ import * as Interaction from './ui/interaction.mjs';
 import * as Presentation from './ui/presentation.mjs';
 import * as AndroidProjector from '../src/core/vexboard-android-source-projector.mjs';
 import * as ScreenDesign from '../src/core/vexboard-screen-design.mjs';
-import * as FamilyKotlin from '../src/core/vexboard-family-kotlin-construction.mjs';
 import * as AndroidPresentation from './ui/android-reference-presentation.mjs';
 
 const app=document.getElementById('app');
@@ -70,6 +85,14 @@ let scrollOffsetsByProjectionRef=new Map();
 let androidProjectionSources=new Map(),activeAndroidViewportProfileRef=null;
 let sourceCatalogCache=null;
 let drawerMode=null;
+let FamilyKotlin=null;
+let familyKotlinModulePromise=null;
+async function ensureFamilyKotlin(){
+  if(FamilyKotlin)return FamilyKotlin;
+  familyKotlinModulePromise??=import('../src/core/vexboard-family-kotlin-construction.mjs');
+  FamilyKotlin=await familyKotlinModulePromise;
+  return FamilyKotlin;
+}
 const THEME_MODE_WORKSPACE_BOARD_REF='board.vexlife.debug-menu.theme-mode.origin-walk';
 const sourceCatalogUrls=Object.freeze([
   '../projects/vexboard/examples/board-source-catalog.json',
@@ -216,7 +239,8 @@ async function openBoard(input,{pushCurrent=false,boardRef=null,prototypeInput=n
   const d=Board.normalizeDraft(input),s=await Board.hydrateBoardState(d.graph,d.projection);
   const evidence=d.evidence?Evidence.normalizeBoardEvidence(d.evidence,s.graph):null;
   const design=d.design?ScreenDesign.normalizeScreenDesign(d.design):null;
-  const familyKotlin=d.familyKotlin?FamilyKotlin.normalizeFamilyKotlinModel(d.familyKotlin):null;
+  const familyModule=d.familyKotlin?await ensureFamilyKotlin():null;
+  const familyKotlin=d.familyKotlin?familyModule.normalizeFamilyKotlinModel(d.familyKotlin):null;
   current={...d,graph:s.graph,projection:s.projection,evidence,design,familyKotlin};selected=null;tool='SELECT';connectFrom=null;relationshipViewMode=Presentation.defaultRelationshipViewMode(d.projection.layoutIntent);activeAndroidViewportProfileRef=d.presentation?.profileRef??null;
   prototype=prototypeInput?Board.normalizeBoardPrototype(prototypeInput,s.graph):null;
   scenario=prototype?Board.createBoardScenario(prototype,s.graph,{scenarioRef:ref('scenario.vexboard')}):null;
