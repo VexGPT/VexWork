@@ -8510,3 +8510,47 @@ admission questions remain explicit pressure-driven edges rather than being sile
 this defect.
 
 <!-- [VXG RealForever][VEXSYNC][DIRECT-FAMILY][PR196][PROVED-CLEAR] -->
+
+
+---
+
+## Direct Family + Compound binding — PR #197
+
+Re-reading the accepted #193 Origin-Walk source currentized one historical unresolved seam:
+
+~~~text
+OLD QUESTION
+Process OutputState
+-> ???
+-> Family.currentState
+~~~
+
+The current Relay/Family foundations already earn a smaller answer:
+
+~~~text
+Compound / Process
+-> OutputState
+-> feature-owned target Family.Control
+-> Family.activate(control)
+-> Family re-reads CURRENT State
+-> stay / admit / optional begin
+-> resulting Family truth
+-> NEW Compound InputState
+-> process again
+~~~
+
+Therefore:
+
+~~~text
+OutputState != Family State
+Process != Family
+Process Output does not write Family.currentState directly
+~~~
+
+Android PR #197 proves the full loop with a test-only cross-root composition and no new production API,
+bridge type, State setter, CompoundFamily, stateFactory, post-process Act framework, or identity
+vocabulary.
+
+PR #197 is stacked on proved/clear PR #196 so #196's exact evidence remains valid.
+
+<!-- [VXG RealForever][VEXSYNC][FAMILY][COMPOUND-TARGET-CONTROL][PR197] -->
