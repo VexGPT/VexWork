@@ -854,13 +854,13 @@ words.
 The contract prototype plus F2/draft seam prototypes now total:
 
 ~~~text
-23 / 23 disposable semantic PASS
+25 / 25 disposable semantic PASS
 ~~~
 
 Still:
 
 ~~~text
-DISPOSABLE_23_OF_23
+DISPOSABLE_25_OF_25
 != REPOSITORY_TEST_PASS
 ~~~
 
@@ -1511,13 +1511,13 @@ Combined disposable semantic evidence is now:
 11 Interface currentness
 + 7 portable convergence contract
 + 5 draft carriage
-= 23 / 23 PASS
+= 25 / 25 PASS
 ~~~
 
 Still:
 
 ~~~text
-DISPOSABLE_23_OF_23
+DISPOSABLE_25_OF_25
 != VEXLIFE_REPOSITORY_PASS
 ~~~
 
@@ -1610,6 +1610,71 @@ Chat owns currentness
 ~~~
 
 The browser adapter remains the lifecycle/observation owner and invokes the helper.
+
+#### Conversation scope is part of browser observation currentness
+
+The currentness prototype now binds every observation generation to the exact selected Companion
+Conversation scope:
+
+~~~text
+browserObservationCurrentness
+  generation
+  state = OBSERVING | CURRENT
+  scope:
+    projectRef
+    threadRef
+    channelRef
+~~~
+
+The canonical Conversation observation must carry the same exact identity before READY can derive.
+
+Disposable additions:
+
+~~~text
+13 / 13 Interface currentness PASS
+
++ Conversation identity from a different selected scope cannot derive READY
++ selecting a different Conversation begins a new observation generation;
+  prior READY cannot carry across the scope change
+~~~
+
+Combined disposable seam:
+
+~~~text
+13 Interface currentness
++ 7 portable convergence contract
++ 5 draft carriage
+= 25 / 25 PASS
+~~~
+
+This adds one important browser observation trigger:
+
+~~~text
+initial document activation
+focus
+pageshow
+visibility -> visible
+post-recovery completion
+post-turn completion
+Companion Conversation scope change
+        |
+        v
+new Interface-currentness observation generation
+~~~
+
+Conversation selection is not itself a new effect owner. It changes which independently owned
+Conversation truth the visible interface must observe.
+
+~~~text
+CONVERSATION_A_READY
++ SELECT_CONVERSATION_B
+-> OBSERVING_B
+-> never READY_B from Conversation A identity
+~~~
+
+The scope belongs inside browser observation currentness rather than as a sixth independent Compound
+input because it is the exact context of the browser's current observation generation.
+
 
 #### Compatibility wrappers are not new truth owners
 
