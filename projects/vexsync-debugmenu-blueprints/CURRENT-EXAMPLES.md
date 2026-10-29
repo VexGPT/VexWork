@@ -5539,3 +5539,53 @@ means the perceptual layout is accepted.
 
 <!-- [VXG RealForever][VEXSYNC][VEXBOARD][FLAT-FIRST-DRAFT-MERGED] -->
 
+---
+
+## Foundation baseline — next big sync is VexSync ↔ VexBoard self-application
+
+The current trajectory has crossed a useful threshold. The Direct Family / typed Control identity work,
+the mapped Kotlin test language, and the first VexBoard Kotlin-construction seam are now treated as one
+foundation baseline rather than a collection of local experiments.
+
+~~~text
+VexSync
+  work.vexsync.debugmenu-blueprints.vexboard-architecture-convergence
+  -> owns the semantic/process convergence trajectory
+
+VexBoard
+  work.vexboard.vexsync-architecture-convergence
+  -> owns VexBoard implementation/source evolution
+
+VexLife-Android
+  PR #193
+  -> owns the Direct Family / typed identity candidate and Kotlin proof source
+~~~
+
+VexSync does **not** become VexBoard's parent Project.
+
+~~~text
+CROSS-PROJECT CONVERGENCE
+!= PROJECT HIERARCHY
+!= SOURCE OWNERSHIP TRANSFER
+~~~
+
+The next-big-sync order is now:
+
+~~~text
+1. recover the currently blank VexBoard browser surface
+2. make VexBoard itself visibly reflect the trusted architecture
+3. keep the first self-application flat/readable before adding depth
+4. preserve one language across:
+     semantic map
+     -> Kotlin construction candidate
+     -> mapped Kotlin test
+5. use that self-application to pressure the next reusable VexSync construction contract
+~~~
+
+The prior Feature Request -> Builder discovery remains RUNNING as supporting source, but it is no longer
+the sole immediate foreground. The new VexBoard convergence work is the immediate trajectory.
+
+VexBoard implementation work is formed on draft PR #184.
+
+<!-- [VXG RealForever][VEXSYNC][VEXBOARD-CONVERGENCE][FOUNDATION-BASELINE] -->
+
