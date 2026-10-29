@@ -7516,3 +7516,58 @@ Repository Gradle/JVM proof for Android PR #193 exact head `a05b67876d951d513633
 
 <!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][TYPED-CONTROL-RESOURCE-ID-CORRECTION] -->
 
+---
+
+## Current projection checkpoint — one Family language, four VexBoard regions
+
+**Currentness:** `CURRENT_SIBLING_CANDIDATE_REFERENCE` from VexBoard PR #155 exact head
+`06cd5344f3f6bdb5428f9d354e92705737f6a6f8`.
+
+The typed Control / ResourceId pressure is now projected into the existing ThemeMode source board without
+creating a separate Test/Proof semantic layer.
+
+~~~text
+UI / CONTROL
+FAMILY / LOGIC
+TYPED IDENTITY
+EXECUTION
+~~~
+
+The executable test scenarios are shown inside the same language they exercise:
+
+~~~text
+Play + TrackId(A), position 10 / 99
+  -> SAME relationship identity
+
+Play + TrackId(A) / TrackId(B)
+  -> DIFFERENT relationship identity
+
+Play.resourceId : TrackId
+  -> AccountId does not fit
+
+enum Play
+  != enum Pause
+~~~
+
+So the VexBoard lesson is:
+
+~~~text
+TEST
+!= FIFTH ARCHITECTURE
+
+TEST SCENARIO
+= EXECUTABLE USE OF THE SAME ARCHITECTURAL LANGUAGE
+
+SOURCE TEST
+-> read-only examples / relationships
+-> same Control / ResourceId / Family / Relationship vocabulary
+-> human-perceivable VexBoard projection
+~~~
+
+The board remains read-only source projection. VexLife-Android owns the Kotlin candidate and test;
+VexBoard owns only the visual/perceptual projection of those source-backed relationships.
+
+Repository execution proof remains separate and pending.
+
+<!-- [VXG RealForever][VEXSYNC][VEXBOARD][FOUR-REGION-FAMILY-LANGUAGE] -->
+
