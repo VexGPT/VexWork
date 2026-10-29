@@ -181,14 +181,18 @@
         "repo.vexlife-android:architecture/behavior/src/test/kotlin/com/vextreme/vexlife/android/behavior/VexFamilyHighConfidenceTest.kt",
         "github.pull.vexlife-android.195",
         "github.commit.vexlife-android.5793a8730d820362dd33a761cb26447545a8a8c8",
-        "evidence.vexsync.pr195.sourceowner.a001.formation.sha256.c4740668d26f9887c1681b9d6559e39d03798a956d4c281ccefbd197cfd7738c"
+        "evidence.vexsync.pr195.sourceowner.a001.formation.sha256.c4740668d26f9887c1681b9d6559e39d03798a956d4c281ccefbd197cfd7738c",
+        "github.comment.vexlife-android.pr195.6500425432.sourceowner-a001-pass",
+        "github.review.vexlife-android.pr195.5700051982.assurance-clear",
+        "evidence.vexsync.pr195.sourceowner.a001.return.sha256.c17c2d9bc1660a6f84c11ff070a2154445a3d29621035d2bb6df3013364f0a1f",
+        "evidence.vexsync.pr195.sourceowner.a001.inner-return.sha256.743345b993ceb72b9c8901c40a9c6c911fa3d78fc5082847931f34707bc8df63"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-26T07:26:46.000Z",
-      "updatedAt": "2026-10-29T15:31:00.000Z"
+      "updatedAt": "2026-10-29T15:38:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -463,6 +467,24 @@
         "evidence.vexsync.pr195.sourceowner.a001.formation.sha256.c4740668d26f9887c1681b9d6559e39d03798a956d4c281ccefbd197cfd7738c"
       ],
       "createdAt": "2026-10-29T15:31:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.debugmenu-origin-roundtrip.waiting-dependencies.pr195-sourceowner-assurance-clear-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.debugmenu-origin-roundtrip",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "WAITING_DEPENDENCIES",
+      "reason": "Android PR #195 exact held ThemeMode Feature Walk passed SourceOwner A001 with focused FeatureWalk contract proof, vexVerifyJvm, AndroidTest assembly, exact three-path membrane, and zero findings; fresh Independent Assurance is CLEAR_ON_EXACT_HEAD. The Feature Walk source is therefore proved and clear, while the work correctly remains WAITING_DEPENDENCIES on accepted production routing through ThemeModeFamily before the hold can release and a dedicated Journey becomes lawful.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.195",
+        "github.commit.vexlife-android.5793a8730d820362dd33a761cb26447545a8a8c8",
+        "github.comment.vexlife-android.pr195.6500425432.sourceowner-a001-pass",
+        "github.review.vexlife-android.pr195.5700051982.assurance-clear",
+        "evidence.vexsync.pr195.sourceowner.a001.return.sha256.c17c2d9bc1660a6f84c11ff070a2154445a3d29621035d2bb6df3013364f0a1f",
+        "evidence.vexsync.pr195.sourceowner.a001.inner-return.sha256.743345b993ceb72b9c8901c40a9c6c911fa3d78fc5082847931f34707bc8df63"
+      ],
+      "createdAt": "2026-10-29T15:38:00.000Z"
     }
   ],
   "sourceRefs": [
@@ -517,7 +539,11 @@
     "evidence.vexsync.pr194.sourceowner.a001.inner-return.sha256.f154ee6debbadc8ac35ef5840cef6256902598c832f063b486050dc9149bcbde",
     "github.pull.vexlife-android.195",
     "github.commit.vexlife-android.5793a8730d820362dd33a761cb26447545a8a8c8",
-    "evidence.vexsync.pr195.sourceowner.a001.formation.sha256.c4740668d26f9887c1681b9d6559e39d03798a956d4c281ccefbd197cfd7738c"
+    "evidence.vexsync.pr195.sourceowner.a001.formation.sha256.c4740668d26f9887c1681b9d6559e39d03798a956d4c281ccefbd197cfd7738c",
+    "github.comment.vexlife-android.pr195.6500425432.sourceowner-a001-pass",
+    "github.review.vexlife-android.pr195.5700051982.assurance-clear",
+    "evidence.vexsync.pr195.sourceowner.a001.return.sha256.c17c2d9bc1660a6f84c11ff070a2154445a3d29621035d2bb6df3013364f0a1f",
+    "evidence.vexsync.pr195.sourceowner.a001.inner-return.sha256.743345b993ceb72b9c8901c40a9c6c911fa3d78fc5082847931f34707bc8df63"
   ],
   "formedAt": "2026-10-26T07:26:46.000Z"
 }
