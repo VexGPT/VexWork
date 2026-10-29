@@ -4996,3 +4996,90 @@ Isolated Kotlin circuit proof: PASS.
 Repository Gradle/JVM: PENDING.
 
 <!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][PROCESS-COMMIT-ACT-OBSERVE] -->
+
+---
+
+## Origin-Walk pressure — committed Output -> Act runner
+
+**Downstream Android #192 head:** `89e1d27c9e28d2cca5192da9bbc10d3e493b40cd`
+
+The next causal edge has now been pressure-tested without admitting a production runner:
+
+~~~text
+COMMITTED OutputState
+-> lawful Act realization
+~~~
+
+The smallest surviving distinction is **Output-changing commit** versus ordinary Compound currentness.
+
+~~~text
+Compound commit revision N
+  input changed
+  output unchanged
+  -> current relationship truth advanced
+  -> NO new Act receipt
+
+Compound commit revision N+1
+  output meaning changed
+  -> one ephemeral committed-Output receipt
+     identity = existing Compound revision N+1
+     output = committed OutputState
+  -> Act runner pressure
+~~~
+
+No second Output revision counter or event ledger is earned. The existing Compound revision already
+identifies the exact commit; it becomes relevant to Act custody only when that commit changed Output
+meaning.
+
+The pressure rejects using `outputStates` as an effect queue. That surface is a current projection,
+not a durable sequence of commands. A production post-commit seam, if earned, must originate at the
+actual Compound commit boundary so dependency-driven `send(...)` cannot bypass it.
+
+The execution-mode results are now sharper:
+
+~~~text
+Replaceable
+  latest OUTPUT-CHANGING commit owns current reaction
+  input-only revision does not stale/replay it
+  newer no-op/Settled Output still supersedes and cancels obsolete reaction
+
+Sequenced
+  each accepted effect-bearing Output-changing commit keeps queue custody
+  newer Output does not revoke older accepted episode
+  input-only commit with the same Output does not enqueue a duplicate
+~~~
+
+Cancellation changes execution lifetime; it does not uncommit relationship truth and cannot promise
+rollback of target/provider reality that already changed.
+
+The target ownership loop remains:
+
+~~~text
+committed relationship consequence
+-> Act execution
+-> rightful target owner
+-> target CURRENT truth
+-> observation
+-> NEW InputState
+-> process again
+~~~
+
+The pressure fixture deliberately wraps `send(...)` only to expose the law. That wrapper is not a
+production design because other dependency-driven sends could bypass it.
+
+Current next question is therefore smaller than “which runner class?”:
+
+~~~text
+What is the smallest post-commit seam that can deliver one changed-Output commit
+to its rightful Act realization
+without turning current projections into an event ledger,
+without duplicating Compound ownership,
+and while preserving Replaceable / Sequenced custody?
+~~~
+
+No production Relay hook, Act runner, new revision type or event ledger is accepted by this
+checkpoint.
+
+Repository Gradle/JVM proof remains pending.
+
+<!-- [VXG RealForever][VEXSYNC][ORIGIN-WALK][COMMITTED-OUTPUT-ACT-RUNNER-PRESSURE] -->
