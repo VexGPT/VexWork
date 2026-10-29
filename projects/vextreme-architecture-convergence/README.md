@@ -546,12 +546,26 @@ work.vextreme.architecture-convergence.semantic-owner-map
     work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery
 
 work.vextreme.architecture-convergence.terrain-reader-navigation
-  WAITING_DEPENDENCIES
-  first patient zero after the owner map is grounded enough
+  RUNNING
+  first patient zero co-evolving with the owner map
 ~~~
 
 The owner map should grow only from observed seams. Do not pre-author a complete website ontology or
 roadmap.
+
+The owner-map task and the Terrain patient zero intentionally have **no hard dependency edge between
+them**. The patient zero is one of the observations that develops the map, while the map constrains the
+patient-zero repair.
+
+~~~text
+OWNER MAP
+<-> LIVED PATIENT ZERO
+
+mutual evidence / refinement
+!= Workgraph dependency cycle
+!= "finish architecture before implementation"
+~~~
+
 
 ## Current source references
 

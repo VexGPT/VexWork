@@ -12322,14 +12322,12 @@
           "label": "Converge Terrain / embedded-reader / Arc Nav navigation ownership",
           "purpose": "Use Receive God -> Direct Contact -> The 100% Holy Truth Conditional as the first lived architecture patient zero: preserve Terrain as journey/history owner, Arc Nav as content-topology owner, embedded pages as document realization, and downstream instrumentation as observation only; make a same-current-group Arc parent action converge on the existing Terrain return relationship while preserving true cross-group and Previous/Next topology traversal.",
           "workClass": "TASK",
-          "state": "WAITING_DEPENDENCIES",
+          "state": "RUNNING",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vextreme.architecture-convergence.outcome",
           "childWorkRefs": [],
-          "dependencyRefs": [
-            "work.vextreme.architecture-convergence.semantic-owner-map"
-          ],
+          "dependencyRefs": [],
           "repositoryRefs": [
             "repo.vextreme"
           ],
@@ -12349,7 +12347,7 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-29T11:45:00.000Z",
-          "updatedAt": "2026-10-29T11:40:00.000Z",
+          "updatedAt": "2026-10-29T11:55:00.000Z",
           "transitionHistory": []
         }
       ],
@@ -12362,9 +12360,7 @@
         {
           "laneRef": "lane.work.planned",
           "label": "Planned",
-          "workRefs": [
-            "work.vextreme.architecture-convergence.terrain-reader-navigation"
-          ]
+          "workRefs": []
         },
         {
           "laneRef": "lane.work.ready",
@@ -12376,7 +12372,8 @@
           "label": "Active",
           "workRefs": [
             "work.vextreme.architecture-convergence.outcome",
-            "work.vextreme.architecture-convergence.semantic-owner-map"
+            "work.vextreme.architecture-convergence.semantic-owner-map",
+            "work.vextreme.architecture-convergence.terrain-reader-navigation"
           ]
         },
         {
