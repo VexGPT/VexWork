@@ -401,7 +401,10 @@
         "test/vexboard-family-kotlin-construction.test.mjs",
         "vexboard/index.html",
         "work.vexsync.debugmenu-blueprints.vexboard-architecture-convergence",
-        "github.commit.vexwork.c8ac1b1898b6e23df3164fd69ea22499a38257b4"
+        "github.commit.vexwork.c8ac1b1898b6e23df3164fd69ea22499a38257b4",
+        "github.commit.vexwork.5bccdc7c8978a1102da2ac749e64082d7d34cf5f",
+        "github.commit.vexwork.775ef87a3e19688881a8cd4a9b5f01286a6d7595",
+        "test/vexboard-ui.test.mjs"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [
@@ -410,7 +413,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-29T11:20:00.000Z",
-      "updatedAt": "2026-10-29T11:20:00.000Z"
+      "updatedAt": "2026-10-29T11:35:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
