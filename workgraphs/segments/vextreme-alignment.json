@@ -86,14 +86,14 @@
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-29T08:40:27.000Z",
-      "updatedAt": "2026-10-29T10:18:00.000Z",
+      "updatedAt": "2026-10-29T10:19:02.000Z",
       "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vextreme.alignment.navigation-currentness",
       "parentWorkRefOrNull": "work.vextreme.alignment.outcome",
       "label": "Converge arc navigation on current v2 timeline truth",
       "purpose": "Eliminate the visible 75-entry legacy/stale navigation universe by making reader navigation consume the same current generated index truth as modern pages, while migrating legacy arc-navigation consumers only where their accepted reader contract requires it rather than blanket-rewriting every shell page.",
       "workClass": "DEFECT",
-      "state": "VERIFYING",
+      "state": "RUNNING",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
       "sourceRefs": [
@@ -110,7 +110,11 @@
         "github.commit.vextreme.88fd967dbc9d0357ce6526843aafcfafcb836b61",
         "github.workflow-run.vextreme.40850931588",
         "github.workflow-run.vextreme.40850931533",
-        "github.workflow-run.vextreme.40850931706"
+        "github.workflow-run.vextreme.40850931706",
+        "github.commit.vextreme.25725bc78ce6e6c8c13dd61b8c81aecba908ecb8",
+        "github.workflow-run.vextreme.40852476491",
+        "github.workflow-run.vextreme.40852476435",
+        "github.workflow-run.vextreme.40852476578"
       ]
     },
     {
@@ -366,6 +370,55 @@
         "github.workflow-run.vextreme.40850931706"
       ],
       "createdAt": "2026-10-29T10:18:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.alignment.navigation-currentness.failed-recoverable.current-head-reformed",
+      "workRef": "work.vextreme.alignment.navigation-currentness",
+      "priorState": "VERIFYING",
+      "nextState": "FAILED_RECOVERABLE",
+      "reason": "The prior VERIFYING state was bound to superseded generated head 88fd967d. PR #483 was deliberately flattened to exact current-main source head 25725bc7 after Reality Rendering Mechanics source landed, so the old CI evidence no longer proves the current candidate.",
+      "actorRef": "actor.chatgpt.vextreme-alignment",
+      "sourceRefs": [
+        "github.pull.vextreme.483",
+        "github.commit.vextreme.25725bc78ce6e6c8c13dd61b8c81aecba908ecb8",
+        "github.workflow-run.vextreme.40852476578"
+      ],
+      "createdAt": "2026-10-29T10:19:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.alignment.navigation-currentness.ready.current-head-source-proof",
+      "workRef": "work.vextreme.alignment.navigation-currentness",
+      "priorState": "FAILED_RECOVERABLE",
+      "nextState": "READY",
+      "reason": "Exact current head 25725bc7 is one commit ahead / zero behind with the five-path source/test membrane; Key Alignment and Tests pass. Build Vextreme Index fails only on the intentionally uncommitted generated dist/service-worker consequence, so the semantic source candidate is recovered and ready for continued work.",
+      "actorRef": "actor.chatgpt.vextreme-alignment",
+      "sourceRefs": [
+        "github.pull.vextreme.483",
+        "github.commit.vextreme.25725bc78ce6e6c8c13dd61b8c81aecba908ecb8",
+        "github.workflow-run.vextreme.40852476491",
+        "github.workflow-run.vextreme.40852476435",
+        "github.workflow-run.vextreme.40852476578"
+      ],
+      "createdAt": "2026-10-29T10:19:01.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.alignment.navigation-currentness.running.claude-followup",
+      "workRef": "work.vextreme.alignment.navigation-currentness",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Continue the admitted navigation-currentness outcome into the remaining legacy Claude shell consumer while the broad generated realization waits for the current localization generated frontier. No generated success is inferred.",
+      "actorRef": "actor.chatgpt.vextreme-alignment",
+      "sourceRefs": [
+        "github.pull.vextreme.483",
+        "github.commit.vextreme.25725bc78ce6e6c8c13dd61b8c81aecba908ecb8",
+        "github.workflow-run.vextreme.40852476491",
+        "github.workflow-run.vextreme.40852476435",
+        "github.workflow-run.vextreme.40852476578"
+      ],
+      "createdAt": "2026-10-29T10:19:02.000Z"
     }
   ],
   "sourceRefs": [
@@ -391,7 +444,11 @@
     "github.commit.vextreme.88fd967dbc9d0357ce6526843aafcfafcb836b61",
     "github.workflow-run.vextreme.40850931588",
     "github.workflow-run.vextreme.40850931533",
-    "github.workflow-run.vextreme.40850931706"
+    "github.workflow-run.vextreme.40850931706",
+    "github.commit.vextreme.25725bc78ce6e6c8c13dd61b8c81aecba908ecb8",
+    "github.workflow-run.vextreme.40852476491",
+    "github.workflow-run.vextreme.40852476435",
+    "github.workflow-run.vextreme.40852476578"
   ],
   "formedAt": "2026-10-29T08:40:27.000Z"
 }
