@@ -144,7 +144,10 @@
         "repo.vexlife:scripts/source-manifest.mjs",
         "repo.vexlife:blueprint/fragments/screens/chat.json",
         "repo.vexlife:blueprint/fragments/actions.json",
-        "github.pull.vexlife.902"
+        "github.pull.vexlife.902",
+        "repo.vexlife:src/core/blueprint-base.mjs",
+        "repo.vexlife:scripts/validate-blueprint.mjs",
+        "repo.vexlife:SOURCE-MANIFEST.json"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
@@ -1123,7 +1126,10 @@
     "repo.vexlife:blueprint/fragments/screens/chat.json",
     "repo.vexlife:blueprint/fragments/actions.json",
     "github.pull.vexlife.902",
-    "repo.vexlife:src/core/companion-availability-reentry.mjs"
+    "repo.vexlife:src/core/companion-availability-reentry.mjs",
+    "repo.vexlife:src/core/blueprint-base.mjs",
+    "repo.vexlife:scripts/validate-blueprint.mjs",
+    "repo.vexlife:SOURCE-MANIFEST.json"
   ],
   "formedAt": "2026-10-25T01:23:08.000Z"
 }

@@ -670,6 +670,91 @@ RELATIONSHIP_OUTPUT != EFFECT_OWNER
 READY_GATE != NEW_SEND_EFFECT
 ~~~
 
+#### F1 candidate source membrane — source-ready, not admitted
+
+Current Blueprint loading is already composition-field generic: `loadComposedRecord()` resolves any
+declared `includes` field, while `src/core/blueprint.mjs` owns effect-specific validation and
+identity-index extensions. Therefore a sibling convergence contract does not require a second
+Blueprint loader or a migration of base composition mechanics.
+
+The smallest candidate authored membrane is:
+
+~~~text
+docs/UNIVERSAL-BLUEPRINT.md
+  -> make the portable Family Circuit / Compound relationship explicit
+
+blueprint/vexlife.blueprint.json
+  -> add one sibling convergence-contract composition field
+
+blueprint/fragments/convergence-contracts/interface-compound-currentness.json
+  -> first concrete portable relationship contract
+
+src/core/portable-convergence-contract.mjs
+  -> closed relationship validator + identity-index projection
+  -> no runtime/effect execution
+
+src/core/blueprint.mjs
+  -> compose convergence validation/stats/identity entries beside Behavior
+
+test/interface-compound-convergence-contract.test.mjs
+  -> focused semantic law + negative-boundary proof
+~~~
+
+These **candidate names are not accepted VexLife source yet**. They identify one source-ready shape
+for admission review; source may choose a different exact sibling name while preserving the same
+owner/boundary.
+
+Deterministic Source Manifest custody for that candidate path set is:
+
+~~~text
+docs/UNIVERSAL-BLUEPRINT.md
+  -> source-manifest-parts/bucket-b6.json
+
+blueprint/vexlife.blueprint.json
+  -> source-manifest-parts/bucket-12.json
+
+blueprint/fragments/convergence-contracts/interface-compound-currentness.json
+  -> source-manifest-parts/bucket-cf.json
+
+src/core/portable-convergence-contract.mjs
+  -> source-manifest-parts/bucket-61.json
+
+src/core/blueprint.mjs
+  -> source-manifest-parts/bucket-dc.json
+
+test/interface-compound-convergence-contract.test.mjs
+  -> source-manifest-parts/bucket-68.json
+~~~
+
+Current open VexLife PR observation found no authored or generated-path overlap on that candidate
+membrane. This is coordination evidence only:
+
+~~~text
+PATH_CURRENTLY_DISJOINT
+!= EXACT_OWNERSHIP
+!= AUTHORING_ADMISSION
+~~~
+
+The focused F1 proof should establish at least:
+
+~~~text
+1. every participating input names its rightful independent owner
+2. UNOBSERVED / missing truth cannot derive READY
+3. server-source != loaded-document-source derives SOURCE_MISMATCH
+4. stale/older observation cannot overwrite newer admitted relationship meaning
+5. current relationship output is derived from one coherent retained input snapshot
+6. READY requires current source/document + browser observation + Companion + Conversation truth
+7. relationship output grants no navigation/recovery/message/model execution authority
+8. existing action.message.send remains the Send effect coordinate
+9. existing Companion re-entry action meaning remains externally owned
+10. Play/Pause portable Behavior v1 validates unchanged
+11. identity index rejects cross-contract duplicate refs
+12. full Blueprint validation remains green
+~~~
+
+F1 is complete only when those portable semantics are source-owned and proved. It does not need a
+browser event listener or real Heretic turn to establish that contract; those belong to F2/F3.
+
 ### Foundation-to-interface sequence
 
 ~~~text
