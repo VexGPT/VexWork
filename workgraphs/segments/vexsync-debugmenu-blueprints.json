@@ -30,14 +30,15 @@
         "github.commit.vexlife-android.7301c6ef257b53aeef79736cf388f68bee60fad6",
         "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
         "github.commit.vexwork.06cd5344f3f6bdb5428f9d354e92705737f6a6f8",
-        "github.commit.vexwork.24a1f1914867a7d2b96cef3dee2eef9d1a991902"
+        "github.commit.vexwork.24a1f1914867a7d2b96cef3dee2eef9d1a991902",
+        "github.commit.vexwork.0d55e3aa83b7972cc83ef9fe2a7266311932a7c8"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-26T07:26:46.000Z",
-      "updatedAt": "2026-10-29T10:32:16.000Z"
+      "updatedAt": "2026-10-29T11:00:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -68,14 +69,15 @@
         "github.commit.vexlife-android.7301c6ef257b53aeef79736cf388f68bee60fad6",
         "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
         "github.commit.vexwork.06cd5344f3f6bdb5428f9d354e92705737f6a6f8",
-        "github.commit.vexwork.24a1f1914867a7d2b96cef3dee2eef9d1a991902"
+        "github.commit.vexwork.24a1f1914867a7d2b96cef3dee2eef9d1a991902",
+        "github.commit.vexwork.0d55e3aa83b7972cc83ef9fe2a7266311932a7c8"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-26T07:26:46.000Z",
-      "updatedAt": "2026-10-29T10:32:16.000Z"
+      "updatedAt": "2026-10-29T11:00:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -154,7 +156,8 @@
     "github.commit.vexlife-android.7301c6ef257b53aeef79736cf388f68bee60fad6",
     "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
     "github.commit.vexwork.06cd5344f3f6bdb5428f9d354e92705737f6a6f8",
-    "github.commit.vexwork.24a1f1914867a7d2b96cef3dee2eef9d1a991902"
+    "github.commit.vexwork.24a1f1914867a7d2b96cef3dee2eef9d1a991902",
+    "github.commit.vexwork.0d55e3aa83b7972cc83ef9fe2a7266311932a7c8"
   ],
   "formedAt": "2026-10-26T07:26:46.000Z"
 }
