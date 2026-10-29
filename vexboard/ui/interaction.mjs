@@ -24,13 +24,15 @@ export function shouldStartCanvasPan({
   if (button !== 0) return false;
   const plane = targetPlane ?? (targetIsShape === true ? INTERACTION_PLANES.OBJECT : INTERACTION_PLANES.CANVAS);
   if (plane === INTERACTION_PLANES.CHROME || plane === INTERACTION_PLANES.OVERLAY) return false;
-  return tool === 'PAN' || (tool === 'SELECT' && plane === INTERACTION_PLANES.CANVAS);
+  return ['PAN', 'SELECT'].includes(tool)
+    && [INTERACTION_PLANES.CANVAS, INTERACTION_PLANES.OBJECT].includes(plane);
 }
 
 export function shouldStartObjectMove({
   tool,
   editable,
   locked,
+  moveArmed = false,
   targetPlane = INTERACTION_PLANES.OBJECT,
   button = 0,
 }) {
@@ -38,6 +40,7 @@ export function shouldStartObjectMove({
     && tool === 'SELECT'
     && editable === true
     && locked !== true
+    && moveArmed === true
     && targetPlane === INTERACTION_PLANES.OBJECT;
 }
 

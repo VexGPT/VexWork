@@ -154,30 +154,41 @@ predeclaring unused categories now.
 
 ### A. Predictable primary-drag navigation
 
+PR #184 lived recovery exposed the next interaction-language correction: navigation must not depend on whether the pointer begins over bare canvas or over a semantic object.
+
 In the default `SELECT` mode:
 
 ```text
-primary drag on empty canvas
--> pan camera
+primary drag on CANVAS or OBJECT
+-> pan camera after the shared drag threshold
+
+primary click on OBJECT without drag
+-> select / activate that object
 ```
 
-In an editable draft:
+In an editable draft, ordinary primary drag remains navigation. Object movement is a secondary operation:
 
 ```text
-primary drag on movable item
--> move that item
+right click object
+-> contextual actions
 
-primary drag on empty canvas
--> pan camera
+choose "Move item · drag once"
+-> arm exactly that projection item
+
+next primary drag on that armed item
+-> MOVE_ITEM
+-> disarm
 ```
 
-The explicit `PAN` tool remains available for a deliberate always-pan mode.
+The explicit `PAN` tool remains available as an intentional navigation-only mode.
 
 Acceptance:
 
+- a human can begin canvas navigation while hovered over a node, frame or other board object;
 - ordinary click does not accidentally become a pan;
-- ordinary empty-canvas drag does not silently deselect before the drag resolves;
-- item drag and canvas drag remain distinct;
+- completed pan does not synthesize a later object click/activation;
+- ordinary primary drag never silently mutates object geometry;
+- object movement requires an explicit contextual arm and is one-shot;
 - camera animation cancels cleanly when the human begins direct manipulation;
 - wheel/trackpad zoom remains anchored to the current pointer behavior.
 
@@ -314,10 +325,10 @@ Acceptance:
 
 ### G. Interaction planes + click/drag arbitration
 
-Within the viewport, embedded UI must not be mistaken for empty canvas:
+Within the viewport, semantic objects remain valid navigation surfaces:
 
 ```text
-SELECT + primary drag on CANVAS
+SELECT + primary drag on CANVAS or OBJECT
 -> pan camera after threshold
 
 PAN + primary drag on CANVAS or OBJECT
@@ -326,21 +337,24 @@ PAN + primary drag on CANVAS or OBJECT
 primary pointer on CHROME / interactive OVERLAY
 -> do not begin canvas pan
 
-SELECT + editable unlocked OBJECT
--> keep gesture pending
--> movement below threshold + release = click/select/action path
--> threshold crossed = object movement
+SELECT + primary click on OBJECT
+-> object click/select/action path
+
+context-arm move + primary drag on that exact editable unlocked OBJECT
+-> MOVE_ITEM
+-> disarm
 ```
 
 Acceptance:
 
 - the palette control remains clickable even when the pointer moves slightly during activation;
 - the minimap and future interactive overlays do not accidentally start viewport panning;
-- an editable object does not issue `MOVE_ITEM` for an ordinary click;
-- object movement begins only after the shared primary-drag threshold is crossed;
-- a completed object drag suppresses the synthetic click that could otherwise select/activate after movement;
-- pointer cancellation restores the pre-drag presentation and performs no Board mutation;
-- the same threshold vocabulary is shared by canvas and object gesture arbitration;
+- hovering a container or object does not create a navigation dead zone;
+- a completed canvas drag suppresses the synthetic object click that could otherwise select/activate afterward;
+- an editable object does not issue `MOVE_ITEM` unless its contextual one-shot move action was explicitly armed;
+- a completed armed object move suppresses the synthetic click that could otherwise select/activate after movement;
+- pointer cancellation restores the pre-drag presentation, disarms the move, and performs no Board mutation;
+- the same threshold vocabulary is shared by canvas and explicitly armed object gesture arbitration;
 - no interaction-plane value is persisted into BoardGraph/BoardProjection merely to route DOM input.
 
 ### H. Lived polish + inspector-to-canvas reveal
@@ -463,8 +477,9 @@ The fixture is used to pressure presentation only. VexBusinessFactory remains th
 
 Implementation proof should include deterministic regression for:
 
-- empty-canvas primary-drag pan in Select mode;
-- editable item drag remaining item movement rather than camera movement;
+- primary-drag pan in Select mode from both bare canvas and object surfaces;
+- ordinary editable-object drag remaining camera navigation unless a one-shot contextual move is explicitly armed;
+- context-armed one-shot item movement remaining item movement rather than camera movement;
 - decision-label safe-region rendering contract;
 - frame title / explicit containment presentation;
 - no overlap-driven semantic reparenting;
@@ -489,7 +504,8 @@ This task does not require:
 - automatic semantic reparenting from visual overlap;
 - a new BoardGraph color schema;
 - a global VexWork theme system;
-- replacing the current VexBoard rendering stack.
+- replacing the current VexBoard rendering stack;
+- automatic four-quadrant / 2×2 spatial reflow merely because four semantic regions exist.
 
 ## Relationship to ongoing VexBoard work
 
