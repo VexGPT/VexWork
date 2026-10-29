@@ -1091,6 +1091,53 @@ repo.vextreme:lib/vextreme-index-v2.js
 repo.vextreme:lib/build-index.js
 ~~~
 
+## Terrain active embedded-surface ownership
+
+The next earned defect is not another return-context issue. It is the **currently open embedded surface** itself.
+
+Current Terrain keeps three mutually exclusive compatibility coordinates:
+
+~~~text
+activeReaderId
+activeEntrySlug
+activeGroupHomeKey
+~~~
+
+They are mutated independently in multiple open/close/render/reset paths. A concrete stale-state path exists:
+
+~~~text
+entry reader open
+-> activeEntrySlug = receive-god
+-> presentation profile changes away from Evolution
+-> hideEvolutionLayer()
+
+hideEvolutionLayer()
+  clears activeReaderId
+  clears activeGroupHomeKey
+  does NOT clear activeEntrySlug
+
+visual reader closed
++ semantic activeEntrySlug still present
+-> impossible mixed state
+-> profile visibility / later surface decisions can observe stale entry truth
+~~~
+
+The bounded correction is to preserve the existing fields for compatibility while giving their mutually
+exclusive mutation one local owner. This is distinct from reader return context:
+
+~~~text
+active surface context
+  = what embedded Terrain surface is open now
+
+reader return context
+  = where that surface should return when Back/outward navigation occurs
+
+ACTIVE_SURFACE != RETURN_RELATIONSHIP
+~~~
+
+No new Family is formed from this one browser implementation state. The first goal is simply one truthful
+mutation owner and fail-closed mutual exclusivity.
+
 ## Current Work
 
 ~~~text
@@ -1118,6 +1165,11 @@ work.vextreme.architecture-convergence.terrain-reader-return-vocabulary
   PR #503 made entry/reader coordinates atomic with their return kind and preserved them through history + reader replacement
   Vex Relay A004 exact-head proof PASS; Independent Assurance CLEAR
   merge 87571924f769fe4a1dad1084e2f68775f18d37b1 is tree-exact to the proven candidate
+
+work.vextreme.architecture-convergence.terrain-active-surface-context
+  RUNNING
+  observed stale-state defect: hideEvolutionLayer can close an entry reader without clearing activeEntrySlug
+  next bounded edge: one mutually-exclusive mutation owner for reader / entry / group-home / none
 
 work.vextreme.architecture-convergence.terrain-reader-navigation
   VERIFYING
