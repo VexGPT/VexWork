@@ -12218,7 +12218,12 @@
           "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/maps/distribution/design/records/2026-10-16-002-name-ontology-relationship-truth.md",
           "repo.vexlife-android:architecture/behavior/VEX-BEHAVIOR-FAMILY-BLUEPRINT.md",
           "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
-          "repo.vextreme:lib/terrain-journey.js"
+          "repo.vextreme:lib/terrain-journey.js",
+          "repo.vextreme:data/nodes.json",
+          "repo.vextreme:data/arcs-v2.json",
+          "repo.vextreme:lib/build-index.js",
+          "repo.vextreme:data/index.json",
+          "repo.vextreme:lib/arc-nav.js"
         ],
         "formedAt": "2026-10-29T11:45:00.000Z"
       },
@@ -12297,14 +12302,19 @@
             "repo.vexlife-android:architecture/behavior/VEX-BEHAVIOR-FAMILY-BLUEPRINT.md",
             "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
             "repo.vextreme:lib/terrain-journey.js",
-            "github.pull.vextreme.493"
+            "github.pull.vextreme.493",
+            "repo.vextreme:data/nodes.json",
+            "repo.vextreme:data/arcs-v2.json",
+            "repo.vextreme:lib/build-index.js",
+            "repo.vextreme:data/index.json",
+            "repo.vextreme:lib/arc-nav.js"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-29T11:45:00.000Z",
-          "updatedAt": "2026-10-29T11:40:00.000Z",
+          "updatedAt": "2026-10-29T11:55:00.000Z",
           "transitionHistory": []
         },
         {

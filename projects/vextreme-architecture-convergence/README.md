@@ -428,6 +428,112 @@ no lived group-home origin
 This is current implementation pressure carried by Vextreme PR #493. It is also a Name Ontology guard:
 a future name that implies one owner controls both membership and lived return would be too broad.
 
+
+## Current topology -> Journey source chain
+
+The first patient zero now has a source-owner chain explicit enough that later refactoring should descend
+through it instead of guessing from the visible DOM:
+
+~~~text
+CURATED CONTENT / TOPOLOGY SOURCE
+  data/nodes.json
+  data/arcs-v2.json
+      |
+      v
+SOURCE PROJECTION
+  lib/build-index.js
+      -> orders node.arcKeys by arc priority
+      -> forms arcMap
+      -> forms arcMeta
+      -> writes generated data/index.json
+      |
+      v
+V2 ARC NAVIGATION RUNTIME
+  lib/vextreme-index-v2.js
+      -> consumes slugMap / arcMap / arcMeta
+      -> renders every truthful collection membership
+      -> renders collection-parent links + Previous / Next
+      -> does not own the visitor's browser-history origin
+      |
+      v
+EMBEDDED CONTROL REALIZATION
+  record DOM inside Terrain iframe
+      |
+      v
+TERRAIN BROWSER RELATIONSHIP RESOLUTION
+  pages/terrain-map.html
+      -> intercepts same-origin link activation
+      -> compares topology destination with current lived return relationship
+      -> chooses existing Back/history return or real topology traversal
+      -> owns browser-history/presentation realization
+      |
+      v
+TERRAIN JOURNEY STATE
+  lib/terrain-journey.js
+      -> owns namespaced serializable semantic-history shape
+      -> does not own rendering or browser navigation mechanics
+~~~
+
+Permanent owner distinctions earned from this chain:
+
+~~~text
+CURATED MEMBERSHIP SOURCE
+!= generated index projection
+
+GENERATED INDEX PROJECTION
+!= Arc Navigation semantic owner
+
+ARC NAVIGATION RENDERER
+!= Journey history owner
+
+BROWSER HISTORY REALIZATION
+!= serializable Journey state shape
+
+PRIMARY ARC ORDER
+!= visitor's lived arrival relationship
+~~~
+
+### Legacy Arc Nav boundary
+
+~~~text
+lib/arc-nav.js
+  = v1 Squarespace-era Arc Nav
+  = old VEXTREME_ARCS / arcs.json consumer
+  != God Script / GitHub Pages v2 Arc runtime
+  != candidate foundation for new architecture work
+
+lib/vextreme-index-v2.js
+  = current v2 Arc Navigation runtime
+~~~
+
+This distinction is source-owned today. A future refactor may improve filenames or collapse legacy code
+only through its own earned source work; this Project must not treat the code symbol
+`vextreme-index-v2` as a semantic identity.
+
+### Name Ontology consequence
+
+The chain intentionally preserves existing semantic words where their cold-read prediction is already
+good:
+
+~~~text
+Arc Navigation
+  predicts content-relative navigation/topology projection
+  -> KEEP
+
+Terrain Journey
+  predicts the visitor's semantic path/history
+  -> KEEP
+
+build-index / index.json / vextreme-index-v2
+  predict implementation/projection machinery
+  -> CODE SYMBOLS / GENERATED READ MODEL
+  -> DO NOT PROMOTE TO FAMILY NAMES
+~~~
+
+A Family may be formed later only if a distinct human/domain behavioral question survives this source
+descent and the Family threshold; the presence of State-like data or Control-like clicks alone is not
+enough.
+
 ## Current Work
 
 ~~~text
