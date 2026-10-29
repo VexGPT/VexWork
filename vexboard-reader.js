@@ -531,6 +531,7 @@ export async function forkReadOnlyBoard(source, { draftRef, title = null }) {
     projection: hydrated.projection,
     ...(accepted.presentation ? { presentation: structuredClone(accepted.presentation) } : {}),
     ...(accepted.design ? { design: structuredClone(accepted.design) } : {}),
+    ...(accepted.familyKotlin ? { familyKotlin: structuredClone(accepted.familyKotlin) } : {}),
     ...(accepted.adoptionCoverage
       ? { adoptionCoverage: structuredClone(accepted.adoptionCoverage) }
       : {}),
