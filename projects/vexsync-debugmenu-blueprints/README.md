@@ -86,6 +86,40 @@ candidate lands first, the other must be currentized against accepted main witho
 
 <!-- [VXG RealForever][VEXSYNC][CURRENT-CONTINUATION][COMPOUND-CURRENT-STATE][PR200] -->
 
+## SourceOwner A003 correction — remove the stale Conversation renderer theme parameter
+
+Vex Relay SourceOwner A003 reached Kotlin compilation on the A002-corrected candidate and exposed one
+remaining stale Screen override:
+
+~~~text
+VexFamilyConversationScreen.renderContent(
+  ...,
+  darkTheme: Boolean,
+)
+~~~
+
+The generic `AppScreenBlueprint.renderContent(...)` contract is intentionally theme-agnostic after the
+ThemeMode UI-continuity correction, so Kotlin failed closed with `NOTHING_TO_OVERRIDE`.
+
+A same-head Screen-source sweep found no other `darkTheme: Boolean` or `themeMode: ThemeMode` renderer
+signature.
+
+The correction removes only that unused parameter. It does not change Conversation presentation and does
+not restore theme propagation through Screens.
+
+Current exact Android PR #188 candidate:
+
+~~~text
+head  = 38f32786171d123a0243aa2d18de9a04315e242a
+tree  = 4b7bfd8227a25c613215e1307b5a3380eb71c8e2
+paths = 20 exact
+~~~
+
+SourceOwner A001/A002/A003 are consumed evidence. A004 is the fresh exact-head proof attempt over this
+corrected candidate, still through VexRelay RUN_ROOT rather than Local Workspace or GitHub Actions.
+
+<!-- [VXG RealForever][VEXSYNC][THEMEMODE][SOURCEOWNER-A003-CORRECTION][CURRENT] -->
+
 ## SourceOwner A002 correction — explicit Conversation preview presentation
 
 Vex Relay SourceOwner A002 reached Kotlin compilation and exposed one stale Preview-only caller:
@@ -133,8 +167,8 @@ framework.
 Current Android PR #188:
 
 ~~~text
-head = 249e38acdcc7f1d27050a65a7aa93f3f622e6b4a
-tree = dad03cddfbd01d03f98c8d9f8ce2bca216b4daaf
+head = 38f32786171d123a0243aa2d18de9a04315e242a
+tree = 4b7bfd8227a25c613215e1307b5a3380eb71c8e2
 ~~~
 
 Current chain:
