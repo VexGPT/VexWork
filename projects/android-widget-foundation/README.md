@@ -72,7 +72,7 @@ First useful widget:
 
 Behavior:
 
-- artwork/content tap -> open the registered VexStream full-player destination;
+- artwork/content tap -> enter the registered VexStream Screen and open its full-player sheet;
 - Previous / Next -> existing Queue Controls;
 - Play / Pause -> existing Playback Control;
 - enabled/disabled presentation comes from current Behavior projections;
@@ -81,11 +81,292 @@ Behavior:
 
 ## Dependencies
 
-The widget patient zero depends on the VexStream **full-player** destination because artwork/content
-tap needs one truthful external navigation target.
+The widget patient zero depends on the VexStream **full-player sheet** because artwork/content tap
+needs one truthful app entry that lands in the same Now Playing presentation a listener opens from
+the mini-player.
 
-The full player in turn depends on the VexStream artwork projection seam so both player and widget
-can consume the same optional media-art identity.
+The generic widget foundation does not need to own that app-specific route. The concrete VexStream
+widget owns its receiver/Activity intent and maps that entry into existing VexRuntime navigation plus
+VexStream presentation truth. The full-player sheet in turn consumes the already-integrated VexStream
+artwork projection seam so both player and widget can render the same optional media-art identity.
+
+That app-entry dependency is source-satisfied on Android main: Full Player PR #175 merged the
+one-sheet destination as `92e18331e59b55993dc2479f86fa8418c0dfdf3b`, and Verify feedback PR #176
+merged the exact A004-proven Track-latency correction as
+`b6cd02f00f2d867068f7f760027d65583b567dd7`. Full Player remains in lived **Verify**, but the
+widget does not need Verify -> Done to know where its content tap enters the app.
+
+The reusable semantic widget substrate is now **COMPLETED accepted source**. SourceOwner A003 passed
+on corrected head `ce6cbbefb2abd755811e5c7a066d7dd9fe6b6eff` / tree
+`fca05801c869832317a751bce90c5c40937bf8d3`, fresh Independent Assurance was clear, and PR #174
+merged as `082cc4689bc9b951621727b91cdcf0a63a8bbc2e`. The merge tree exactly equals the A003-proven
+candidate tree.
+
+That removed the patient-zero widget's final construction dependency. The concrete VexStream playback widget is now **RUNNING** after accepted source integration and
+first lived launcher review.
+
+Source/integration checkpoint:
+
+```text
+Android PR #178 = MERGED
+merge = 31a99c92d2c7a5e15a5e187e044dd7be19440552
+merge tree = 632461cb1974086dd4872b8aeff2c3b06c522606
+SourceOwner A006 = PASS
+fresh Independent Assurance = CLEAR
+post-merge tree = exact proven tree
+
+post-merge native A006 =
+    outer PASS
+    inner PASS
+    debug APK assembled
+    APK installed
+    MainActivity launch Status = ok
+    installed VexStreamPlaybackWidgetReceiver = PASS
+```
+
+The broad connected VexStream Journey host-loss seen during device proof is **not attributed to the
+widget**. A same-device differential reproduced the same Compose-host-loss signature on the accepted
+pre-widget base `c5c2014733572da22cb320ec32801f10bcbedf65` and on merged widget main, while the
+widget-specific native install/launch/provider proof passed.
+
+### Lived launcher review — 2026-10-25
+
+Victor placed the widget on the physical Android launcher and supplied three lived screenshots. The
+actual image bytes are retained privately in the Local Vex evidence library rather than committed to
+this public repository; this README preserves only product-relevant meaning.
+
+Stable private evidence identities:
+
+```text
+vexstream-widget-home-lived.png
+sha256=f96a84375afd3804a706f532ae95731c2d3d05641a9fe761aecee465e244a3b5
+
+vexstream-full-player-lived.png
+sha256=dac704615d19231a315dd3e0869219216858206ab4d54cce9acc99afc4d0a8e1
+
+widget-layout-reference.png
+sha256=4f8c864f69b7a89540e7ac745bb997a60115830f3260ae60adfb5e52ba060c09
+```
+
+Observed PASS:
+
+- the widget can be placed on the launcher;
+- Previous / Play-Pause / Next taps produce real playback/queue effects;
+- content entry reaches the existing VexStream Full Player rather than a second navigation/player
+  truth.
+
+Observed defects / remaining completion work:
+
+1. **Live State refresh** — controls work, but the widget text/playback projection can remain stale
+   after canonical playback State changes. Under SCAE the widget must re-project the newest current
+   Playback/Queue/media truth whenever it changes; a successful callback is not enough if the remote
+   surface continues showing an older item/state.
+2. **Control geometry / touch usability** — the current transport cluster is too small/right-heavy.
+   The desired structure is a larger horizontally-resizable row with the transport Controls centered
+   as the main interaction cluster and touch targets large enough for reliable launcher use. The
+   private reference screenshot is geometry guidance, not product truth to copy blindly.
+3. **Artwork availability** — both the launcher widget and lived Full Player can still show the
+   generic music placeholder. The widget must remain a read-only artwork consumer rather than an
+   artwork fetcher; the owning VexStream metadata/cache path must make current artwork available when
+   the source actually has it.
+
+That checkpoint correctly left the parent widget Work `RUNNING`; later PR #185 source proof, exact-tree integration and Victor's lived acceptance complete that held predicate.
+
+New bounded child Work:
+
+```text
+work.android-widget-foundation.vexstream-playback-widget.state-refresh
+work.android-widget-foundation.vexstream-playback-widget.layout-usability
+```
+
+Artwork convergence is cross-cutting VexStream product Work and is tracked under:
+
+```text
+work.vexstream.mobile-library.current-artwork-availability
+```
+
+Fresh-instance completion order should be:
+
+```text
+current main / current Work truth
+-> repair live widget refresh
+-> repair centered/larger control geometry
+-> make rightful current artwork availability converge
+-> focused/source proof
+-> native install proof only where the changed claim requires it
+-> Victor lived launcher re-review
+-> only then complete the widget Work
+```
+
+## Historical correction — PR #179
+
+The two lived widget defects are now actively implemented together on Android PR #179:
+
+```text
+github.pull.vexlife-android.179
+head = 2dc060113e5e100a47bf053807376c5cd40cb639
+tree = 1226d1a1b2d7445bf76bdc8b2c97522da5dc0b2e
+
+work.android-widget-foundation.vexstream-playback-widget.state-refresh = RUNNING
+work.android-widget-foundation.vexstream-playback-widget.layout-usability = RUNNING
+```
+
+The correction keeps Playback/Queue/Media3 as the only current-truth owners. Widget refresh performs
+an immediate provider render followed by one bounded 250 ms canonical Media3 re-read, matching the
+Full Player's existing playing-state read cadence rather than introducing widget-owned State/cache.
+A widget Control refreshes all widget instances because playback truth is global.
+
+Lived geometry correction:
+
+```text
+transport touch target = 48dp
+transport glyph = 24sp
+explicit gap = 6dp
+artwork = 60dp
+metadata + transport = centered column
+widget min geometry = 280dp x 72dp
+```
+
+Current SourceOwner A001 formation:
+`sha256:0bab41ff8f76020e69242c6ec6abed8c2490d620115da3cee9c34a45a243198f`
+
+It supersedes the unexecuted pre-click-target-correction formation. The current candidate also keeps
+the weighted transport container non-clickable so the three 48dp Controls remain independent targets.
+
+Exact-head SourceOwner proof and fresh Assurance are the next source gates. Album-art availability
+remains a separate upstream VexStream product defect rather than being hidden inside PR #179.
+
+
+## Lived re-review — widget currentness is a Convergence problem
+
+The later physical review after accepted Android artwork source exposed a stronger form of the
+state-refresh defect. The Full Player was already showing the current track while the launcher widget
+rendered its generic fallback projection: `VexStream` title, no artist, note placeholder and disabled
+transport Controls.
+
+That means the missing behavior is not merely "refresh one more time." Current source already has the
+right **local SCAE command path**:
+
+```text
+widget ActionRef
+-> existing Playback / Queue Control
+-> current State resolves Act
+-> Behavior selects Effect
+-> Media3 Connection realizes it
+-> provider observation reconciles State
+```
+
+What is not yet explicit is the relationship between canonical provider/read truth and the remote
+Glance rendering:
+
+```text
+Media3 / PlaybackService current truth
+        +
+last rendered widget projection
+        |
+        v
+currentness / convergence relationship
+        |
+        +-- provider changed -> widget refresh owed
+        +-- widget interaction -> existing Control -> provider change
+        +-- provider observation -> next widget projection owed
+        +-- rendered current -> convergence satisfied
+```
+
+The PR #179 `updateAll() -> 250 ms -> updateAll()` behavior is useful retry mechanics, but lived
+review proves it is not sufficient by itself as currentness truth. A failed/absent MediaController read
+can leave the widget on its generic fallback even while Full Player already observes current playback.
+
+The next correction should therefore treat this as a **patient-zero Convergence Relay question**:
+keep Playback/Queue as the only semantic State/Control/Act/Effect owners, make widget rendered-current
+status explicit enough to retry/reconcile when provider truth is newer, and route widget interaction
+back through those existing Controls. Do **not** extract a generic Widget Relay framework until a
+second real remote-surface consumer proves the same reusable contract.
+
+Historical work truth at that lived checkpoint:
+
+```text
+work.android-widget-foundation.vexstream-playback-widget.state-refresh
+  -> FAILED_RECOVERABLE
+  -> label: VexStream widget currentness convergence
+```
+
+That recoverable failure is superseded by the terminal PR #185 completion checkpoint below.
+
+
+## Completion checkpoint — PR #185
+
+The lived widget defects are terminally resolved and the Project-owned outcome is complete.
+
+```text
+Android PR #185 = MERGED
+candidate head = cd0e760ef6141adbd6b72cbbb01b902bd0800bb3
+merge = a7301566c9131ff71d4b8ede128b3607d7fefd26
+candidate/merge tree = 5c1e6c31288d24fe6e7196380ab47236f016011e
+SourceOwner = composed PASS
+fresh exact-head Assurance = CLEAR
+Victor lived launcher acceptance = PASS
+```
+
+Diagnostic A002 proved that Media3/provider truth and durable Glance state were already advancing in
+milliseconds while an active Glance session could continue rendering an older projection. PR #185
+generalized the earned repair:
+
+```text
+product/provider truth
+        |
+        v
+feature-owned typed VexWidgetSurfaceState
+        |
+        | structural equality + durable Preferences
+        v
+currentState() inside active Glance composition
+        |
+        v
+suspend SurfaceState -> VexWidgetProjection
+        |
+        v
+Glance / RemoteViews host
+```
+
+The reusable foundation owns typed surface-state persistence, exact equality/duplicate suppression,
+`publish` / `publishAll`, `transformAll`, active-session observation, and suspendable projection
+recomputation. It uses no revision counter, Boolean invalidation toggle or hash surrogate.
+
+VexStream remains the patient zero:
+- one service-owned Media3 current-playback observer;
+- widget callbacks issue existing Playback/Queue Controls only;
+- title + artist share one line;
+- transport touch target = 56dp, glyph = 28sp, gap = 8dp, artwork = 64dp;
+- widget content entry uses `CLEAR_TOP | SINGLE_TOP` so repeated entry reuses
+  `MainActivity.onNewIntent()` rather than stacking Activity instances;
+- artwork is consumed only when the rightful upstream VexStream owner makes it available.
+
+Terminal Work truth:
+
+```text
+work.android-widget-foundation.semantic-widget-surface = COMPLETED
+work.android-widget-foundation.vexstream-playback-widget.state-refresh = COMPLETED
+work.android-widget-foundation.vexstream-playback-widget.layout-usability = COMPLETED
+work.android-widget-foundation.vexstream-playback-widget = COMPLETED
+work.android-widget-foundation.outcome = COMPLETED
+```
+
+Stable proof/evidence:
+
+```text
+source proof =
+f5d2a312d8eaf43e1bbe918cfc7a3df7b65b2c0b0752a062f8cc5b4df97bb658
+
+diagnostic A002 =
+c1c46c090f25c3e629093bd82ca26e0c81662d7fe7f3b0a5d3510068596f5045
+
+Assurance review = 5647509504
+post-merge checkpoint comment = 6408472180
+```
+
+The separate VexStream artwork-acquisition/current-artwork trajectory is not silently absorbed here;
+this widget is complete as a truthful consumer of artwork when that rightful upstream owner supplies it.
 
 ## What this Project does not own
 

@@ -39,8 +39,8 @@ The program intentionally learns from real consumers before extracting more arch
 | VCS-01 three-consumer comparison | COMPLETED | Compared Maps, Conversation and VexStream to isolate truly shared concerns. |
 | VCS-02 minimum shared contract | COMPLETED | Authentication/session, reachability, capability addressing and currentness boundary established. |
 | VCS-03 Maps engine realization | COMPLETED | Shared boundary exercised against a real replaceable provider engine. |
-| **VCS-04 Conversation adoption** | **RUNNING** | Current lived adoption through read, Send/Companion and restart/no-duplicate proof. |
-| VCS-05 VexStream stress | WAITING | Long-lived media pressure follows VCS-04. |
+| **VCS-04 Conversation adoption** | **COMPLETED** | L1-L11 lived acceptance and terminal Android/VexWork source-currentness are closed. |
+| **VCS-05 VexStream stress** | **COMPLETED** | Local Range/media pressure, restart/reconnect continuity, and ownership separation are proven; no new generic streaming transport was earned. |
 | VCS-06 VexArchitecture extraction | WAITING | Extract only patterns earned by multiple real consumers. |
 | VCS-07 deployment choices | WAITING | Deployment comes after runtime semantics stabilize. |
 
@@ -50,9 +50,16 @@ The program intentionally learns from real consumers before extracting more arch
 Phase 1  pre-challenge observability + private network discrimination = COMPLETED
 Phase 2  deterministic-fixture installed L1-L5                     = COMPLETED
 Phase 3  real fresh-user Family establishment                       = COMPLETED
-Phase 4  durable human Send + separate Companion                    = READY
-Phase 5  restart + no duplicates                                    = WAITING
-Phase 6  VCS-04 terminal currentness                                = WAITING
+Phase 4  durable Send + separate Companion                          = COMPLETED
+  L6 exactly-once durable human Send                                = PASS
+  L7 separate real Companion/Heretic response                       = PASS
+  L8 model failure cannot erase human append                        = PASS
+Phase 5  restart + no duplicates                                    = COMPLETED
+  L9 same-session observation                                       = PASS
+  L10 real Android process restart                                  = PASS
+  L11 no duplicate append/model replay                              = PASS
+  temporary private Serve cleanup                                   = CLOSED
+Phase 6  VCS-04 terminal currentness                                = COMPLETED
 ```
 
 Phase 1 proved the private transport seam rather than merely removing an error:
@@ -103,31 +110,125 @@ Phase-3 cleanup                          CLOSED
 
 ## Current edge
 
-**Phase 4 — durable human Send and separate Companion** is now READY.
+**VCS-04 is terminally COMPLETED; VCS-05 VexStream adoption / streaming stress is READY.**
 
-The canonical work item is:
-
-```text
-work.vexlife.connected-services.vcs04.phase4-send-companion
-```
-
-Its product claim is:
+A037 closed the last lived predicate. The VCS-04 matrix is now L1-L11 PASS:
 
 ```text
-one durable human Send exactly once
--> human append remains durable independently
--> separately admitted Companion/model response
--> Companion/model failure cannot erase the human append
+Phase 4 parent                                                     = COMPLETED
+work.vexlife.connected-services.vcs04.phase4.send-failure-separation = COMPLETED
+work.vexlife.connected-services.vcs04.phase4.companion-response      = COMPLETED
+work.vexlife.connected-services.vcs04.phase5-restart-no-duplicates   = COMPLETED
+work.vexlife.connected-services.vcs04.phase6-terminal-currentness    = COMPLETED
 ```
 
-Held until later phases:
+The foreground is no longer another Conversation behavior loop:
 
 ```text
-real Android process restart
-restart/no-duplicate append/model replay proof
-public Funnel
-tailnet policy changes
+VexLife-Android PR154
+  head=2d67682af1617aab0886784dc45704804303a183
+  tree=9e378c9d53d98546b43564e1beec7c022d9a1db3
+  changed paths=12
+
+live Android main
+-> CurrentMainCompositionProof
+-> synthetic merge tree
+-> vexVerifyLocal
+-> fresh affected Assurance / lifecycle
+-> ordinary exact-head merge
+-> require actual merge tree == proven synthetic tree
+-> post-merge currentness
+-> VexWork / VCS-04 terminal convergence
 ```
+
+A038 did **not** reach that proof. It was rejected during inner manifest compilation because its task-local lifecycle value `INTEGRATION_CURRENTNESS_PENDING` is not in the accepted VexRelay enum. No composition, Gradle proof, source/provider mutation, Android effect, Family Send, Home mutation or model call occurred.
+
+A039/A040 remain durable harness history. A041 then closed the exact current-main composition gate:
+
+```text
+Android main before merge = 6f5b2dc6cdbf284b84cb590ba5b1016af3d33939
+PR154 head                = 2d67682af1617aab0886784dc45704804303a183
+synthetic merge tree      = b0c80df03471a5f79832ebd7b68845fdb91966b7
+vexVerifyLocal            = PASS
+fresh Assurance           = CLEAR_ON_EXACT_HEAD
+Formal Review             = APPROVE_EXACT_HEAD
+```
+
+Owner Merge Duty then merged PR154 at:
+
+```text
+merge/main = 9104d232086afd888700c3317ab79c2a8b87239b
+parents    = 6f5b2dc6cdbf284b84cb590ba5b1016af3d33939
+             2d67682af1617aab0886784dc45704804303a183
+actual tree = b0c80df03471a5f79832ebd7b68845fdb91966b7
+A041 tree   = b0c80df03471a5f79832ebd7b68845fdb91966b7
+tree match  = true
+commit verification = valid
+PR154 = TERMINAL_ACCEPTED_CURRENT
+```
+
+Eleven candidate-path blobs landed byte-identically. `strings.xml` is the intentional three-way composition point because current main also changed that shared resource after PR154's fixed base; the final blob is exactly the A041-proven composed blob and preserves both current-main content and PR154's `conversation_message` / `conversation_send` resources.
+
+No further Android/Home/Family/Heretic replay is owed. VCS-04 is terminal; VexWork projection publication is part of this PR's repository integration, not a remaining product predicate.
+
+Durable terminal Android evidence:
+
+```text
+github.pull.vexlife-android.154.comment.6406485875
+github.issue.vexlife.899.comment.6406486260
+github.commit.vexlife-android.9104d232086afd888700c3317ab79c2a8b87239b
+```
+## Terminal VCS-04 checkpoint
+
+```text
+L1-L11 = PASS
+Phase 4 = COMPLETED
+Phase 5 = COMPLETED
+Phase 6 = COMPLETED
+VCS-04 = COMPLETED
+PR154 = TERMINAL_ACCEPTED_CURRENT @ 9104d232086afd888700c3317ab79c2a8b87239b
+VCS-05 = READY
+```
+
+A003 regenerated the current Connected Services projections after the two stale Project assertions were repaired, and the full deterministic VexWork review passed. The final lifecycle transition is canonical source truth and is regenerated/verified again before PR integration.
+
+No Android/Home/Family/Heretic replay is owed. The foreground Connected Services edge is now `work.vexlife.connected-services.vcs05-stream-stress`.
+
+## VCS-05 terminal result
+
+VCS-05 proved the current VexStream streaming/data-plane pressure without widening the shared Connected Services contract.
+
+```text
+VexStream PR15 = MERGED / POST_MERGE_VERIFIED @ fbe2060dae75efaae069f777d4346b45b251a754
+A003 focused Range stress = PASS
+4 MiB media = sequential / forward seek / backward seek / tail Range PASS
+terminal MassDownload = Desktop stop -> LOCAL_ONLY -> Android restart -> Desktop restart -> reconnect HUB_AND_LOCAL
+```
+
+Current architecture judgment:
+
+```text
+Connected Services shared/control plane
+  reachability / session / admission / route currentness / correlation / typed transport availability
+
+VexStream-owned data plane
+  HTTP Range / Media3 demand-backpressure / media identity / playback / offline-copy state
+```
+
+No new generic streaming transport, generic backpressure owner, remote relay media producer acceptance, or Maps/Conversation streaming widening was earned. Android remote 256 KiB source remains architecture pressure only until a rightful producer is accepted.
+
+## VCS-06 current edge
+
+Three real consumers have now earned architecture extraction:
+
+```text
+Maps
+Conversation
+VexStream
+-> extract only stable recurring ownership/contracts/proof obligations
+```
+
+Do not copy VexStream's Range/media plane into a universal template. Cross-product reusable architecture is expected to land in Vextreme-SDK only after exact source placement/authority is established.
 
 ## Read next
 
@@ -136,7 +237,7 @@ For ordinary continuation:
 ```text
 this README
 -> public/workspace.json / VexWork UI
--> work.vexlife.connected-services.vcs04.phase3.host-to-android-l1-l5
+-> work.vexlife.connected-services.vcs06-architecture-extraction
 -> docs/lineage/VEXLIFE-CONNECTED-SERVICES.md only when causal history is needed
 -> target repository current source only for the next effect
 ```

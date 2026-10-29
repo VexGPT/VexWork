@@ -124,23 +124,38 @@ test('checked-in public workspace is generated-current', () => {
 // [VXG RealForever]
 
 
-test('Connected Services is discoverable as a real Project with the current lived edge in Ready', () => {
+test('Connected Services completes VCS-05 and releases VCS-06 architecture extraction', () => {
   const workspace = buildWorkspace();
   const connected = workspace.projects.find((entry) => entry.project.projectRef === 'project.vexlife.connected-services');
   assert.ok(connected);
-  assert.equal(connected.summary.workItemCount, 19);
+  assert.equal(connected.summary.workItemCount, 21);
+  const vcs04 = connected.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs04-conversation-adoption');
   const phase1 = connected.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs04.phase1-prechallenge');
   const phase2 = connected.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs04.phase2-fixture-l1-l5');
   const phase3 = connected.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs04.phase3-fresh-user-family');
   const defect = connected.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs04.phase3.owner-only-family-readability');
   const lived = connected.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs04.phase3.host-to-android-l1-l5');
   const phase4 = connected.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs04.phase4-send-companion');
+  const sendFailure = connected.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs04.phase4.send-failure-separation');
+  const companion = connected.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs04.phase4.companion-response');
+  const phase5 = connected.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs04.phase5-restart-no-duplicates');
+  const phase6 = connected.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs04.phase6-terminal-currentness');
+  const vcs05 = connected.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs05-stream-stress');
+  const vcs06 = connected.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs06-architecture-extraction');
   assert.deepEqual([phase1.state, phase2.state, phase3.state], ['COMPLETED', 'COMPLETED', 'COMPLETED']);
   assert.equal(defect.state, 'COMPLETED');
   assert.equal(lived.state, 'COMPLETED');
   assert.deepEqual(lived.dependencyRefs, [defect.workRef]);
-  assert.equal(phase4.state, 'READY');
-  assert.equal(connected.lanes.find((lane) => lane.laneRef === 'lane.work.ready').workRefs.includes(phase4.workRef), true);
+  assert.deepEqual([phase4.state, sendFailure.state, companion.state, phase5.state], ['COMPLETED', 'COMPLETED', 'COMPLETED', 'COMPLETED']);
+  assert.deepEqual([vcs04.state, phase6.state], ['COMPLETED', 'COMPLETED']);
+  assert.equal(vcs05.state, 'COMPLETED');
+  assert.equal(vcs06.state, 'READY');
+  const done = connected.lanes.find((lane) => lane.laneRef === 'lane.work.done').workRefs;
+  const ready = connected.lanes.find((lane) => lane.laneRef === 'lane.work.ready').workRefs;
+  assert.equal(done.includes(vcs04.workRef), true);
+  assert.equal(done.includes(phase6.workRef), true);
+  assert.equal(done.includes(vcs05.workRef), true);
+  assert.equal(ready.includes(vcs06.workRef), true);
   assert.equal(connected.items.some((item) => item.workRef === 'work.vexlife.connected-services.guided-onboarding'), false);
   assert.equal(workspace.parkingLot.items.some((item) => item.workRef === 'work.vexlife.connected-services.guided-onboarding'), true);
 });

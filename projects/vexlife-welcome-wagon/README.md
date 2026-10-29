@@ -795,78 +795,243 @@ This gives each risk one rollback coordinate: **identity migration**, **page mea
 
 ## Current execution edge
 
-The cross-repository family rail is now accepted source and lived presentation rather than future rollout work:
+The shared-family source design is settled and accepted, and the **VexLife public deployment is now current and lived-accepted**.
+
+The canonical family-header contract remains:
 
 ```text
-stable family coordinate system
-  [Vextreme mark]  Vextreme / VexLife / VexWork
-  -> mark stays fixed
-  -> product and separator slots stay fixed
-  -> selected context receives serif/title emphasis in place
-  -> each product keeps its own palette and local tools
+[Vextreme mark]  Vextreme / VexLife / VexWork
 
-Vextreme #415
-  -> merged 1bd880ef29b26fd9774fbb3fa1fb66e8cf8fed9f
-  -> tree e6e4708fa2a6dd791ca2a9f19b2cbd60775a139e
-
-VexLife #929
-  -> merged c24ef3a5bf81a1f3f73ebe413ba096a163e4374c
-  -> current-main composition tree a1ec368be0617fdd218010fbb013734e16051db2
-
-VexWork #154
-  -> merged 516774010b44d80b2f4eb1cdf5df783523dfa8a2
-  -> current-main composition tree 5afea26d4fec3d87722f4ff4541dfbffd1b8837a
-
-A006 lived proof
-  -> desktop + mobile across all three contexts PASS
-  -> zero horizontal scroll
-  -> stable relative family-slot geometry
+current context
+  = emphasis inside its stable family slot
+  != separate raised/duplicated product title
 ```
 
-The next concrete dependency remains **PR #379**, which owns downstream generated/runtime currentization from the newly accepted Vextreme main. The family-rail work does not take that membrane.
-
-Completed Welcome Wagon source/presentation rows remain accepted and are not reopened:
+Accepted source already implements that contract across the three repositories:
 
 ```text
-#400 slug rename impact tooling                  COMPLETED / MERGED
-#403 canonical About migration                   COMPLETED / MERGED
-#413 About / “What is this?” orientation         COMPLETED / MERGED
-#414 Support shared-shell currentness             COMPLETED / MERGED
-#415 Vextreme stable family rail                 COMPLETED / MERGED
-#929 VexLife stable family rail                  COMPLETED / MERGED
-#154 VexWork stable family rail                  COMPLETED / MERGED
+Vextreme #415 / #416
+  fixed Vextreme mark
+  stable three-slot rail
+  Vextreme selected in place
+  accepted merged source
+
+VexLife #929 / #933
+  standalone VexLife brand-lockup removed
+  fixed Vextreme mark retained
+  stable three-slot rail retained
+  VexLife selected in the middle slot
+  accepted merged source
+
+VexWork #154 / #157
+  standalone VexWork title removed
+  fixed Vextreme mark retained
+  stable three-slot rail retained
+  VexWork selected in place
+  accepted merged source
 ```
+
+Victor's lived review of the immutable optical candidates remains valid:
+
+```text
+PASS
+experience="feels perfect"
+```
+
+The source/merge proof also remains valid:
+
+```text
+Vextreme #416
+  merge f4e99059fbfd5609807898c73a32805314cc7fba
+  tree  8666c121c896d143bf627ce7eb71a50281aba18a
+
+VexLife #933
+  merge 253018beee0189d64d9e7570fc6c3c6623342661
+  tree  78de9174c915f5e67d308bc57a091416ff196f44
+
+VexWork #157
+  merge 16a8a9bb2d8ace7e0582a8d6b4b61e5ac5ad5a75
+  tree  a56d8c4017f277c8f31865e06e72a03bdfb30f6e
+```
+
+### Corrected lived-public finding
+
+Victor later supplied a live VexLife screenshot showing:
+
+```text
+[VexLife mark + standalone VexLife title]  Vextreme / VexLife / VexWork
+```
+
+That structure is the **pre-#929 header composition**. It conflicts with accepted current VexLife source, where `brand-lockup` is absent and the current VexLife identity is selected inside the stable middle family slot.
+
+At that checkpoint:
+
+```text
+ACCEPTED_VEXLIFE_SOURCE_CURRENT=true
+VEXLIFE_PUBLIC_DEPLOYMENT_CURRENT=false
+PUBLIC_LIVED_ACCEPTANCE_PENDING=true
+
+SOURCE_ROLLBACK_REQUIRED=false
+DESIGN_REOPEN_REQUIRED=false
+PUBLICATION_RECOVERY_REQUIRED=true
+```
+
+That stale-public state was later resolved without reopening accepted source.
+
+The earlier terminal writeback overclaimed the public state by carrying candidate-lived acceptance across the merge without independently proving that the generated VexLife Pages artifact had actually been republished. Preserve the accepted source and correct only the publication boundary.
+
+### Publication architecture correction
+
+VexLife differs from Vextreme/VexWork because its public root is generated:
+
+```text
+pages/vexlife-onboarding.html
+pages/vexlife-onboarding.css
+        ↓
+scripts/build-public-pages.mjs
+        ↓
+generated/pages-site/
+        ↓
+GitHub Pages
+```
+
+The existing `.github/workflows/pages.yml` is manual-only and owns both build and deploy. Under the current Welcome Wagon operating constraint, the correction path is to separate those responsibilities:
+
+```text
+accepted VexLife source
+        ↓
+Vex Relay / qualified host
+  build exact public artifact
+  run public-safety proof
+  verify accepted family-header bytes
+        ↓
+publish exact artifact to gh-pages
+        ↓
+GitHub Pages branch-source hosting
+        ↓
+verify live VexLife no longer exposes pre-#929 brand-lockup
+```
+
+This is a deployment/publication correction, not a redesign.
+
+### Interruption-resistant continuation
+
+```text
+CHUNK P1 — CORRECT VEXWORK PUBLIC-STATE TRUTH
+  COMPLETE
+  -> PR #164 merged the source-currentness correction
+  -> accepted #929/#933 source preserved
+  -> public VexLife was explicitly held stale until deployment recovery completed
+
+CHUNK P2 — ESTABLISH PUBLICATION SUBSTRATE
+  COMPLETE
+  -> reuse existing scripts/build-public-pages.mjs rather than add redundant publisher source
+  -> dedicated vexlife-pages branch established
+  -> substrate head 3627585ffddf940147562e82bc6e496291ce3389
+  -> substrate tree 989ae446bad9f79f6569febedf4d2a9c93d4c6cf
+  -> tree contains only .nojekyll before publication
+  -> no live Pages source switch performed yet
+
+CHUNK P3 — VEX RELAY PUBLICATION
+  COMPLETE
+  -> current VexLife main preserved at 31c9198101f4c8a0170cb76b57547ae1d737b05f
+  -> current source tree 3f147418b2885721787ed482d67aecf13ae32cee
+  -> A002 canonical RETURN PASS
+     sha256 ba8bea89aca71bf11cf6b1315a01e65090f8aae117d5945830c8cd524e007693
+  -> build PASS
+  -> public-safety PASS
+  -> exact 35-file public membrane PASS
+  -> family-header publication proof PASS
+  -> DCO publication commit
+     head 51e22e1783f4348f88b3c3460c5d3136c0b081a4
+     tree 1858b69d68c86670ff77b618f8af16aa35f317f4
+     parent 3627585ffddf940147562e82bc6e496291ce3389
+  -> local review snapshot PASS
+  -> non-force push vexlife-pages PASS
+  -> provider readback confirms vexlife-pages at exact head/tree
+  -> accepted main remains unchanged
+  -> no candidate / harness / environment / unknown findings
+  -> no Local Workspace
+  -> no custom GitHub Actions build/deploy dependency
+
+CHUNK P4 — PAGES SOURCE SWITCH + LIVE PUBLIC VERIFICATION
+  COMPLETE
+  -> Victor executed the one-time Pages source switch successfully
+     BEFORE=workflow|main|/
+     AFTER=legacy|vexlife-pages|/
+     PAGES_SOURCE_SWITCH=PASS
+  -> first branch-source deployment did not start because the proven publication commit predated the source switch
+  -> exact byte-preserving post-switch trigger commit created
+     head 00a843fe5a320719ae16eb9e2baaece6adc0da2b
+     parent 51e22e1783f4348f88b3c3460c5d3136c0b081a4
+     tree 1858b69d68c86670ff77b618f8af16aa35f317f4
+     public bytes changed = false
+  -> GitHub built-in branch-source Pages run 40267497453
+     event dynamic
+     build SUCCESS
+     deploy SUCCESS
+     report-build-status SUCCESS
+     overall SUCCESS
+  -> custom .github/workflows/pages.yml was not used for the build/proof/publication transaction
+  -> accepted VexLife main remains 31c9198101f4c8a0170cb76b57547ae1d737b05f
+  -> Victor reloaded the live public VexLife experience after the successful deployment
+  -> lived verdict: "nice looks great"
+  -> live stable family rail accepted
+  -> standalone pre-#929 VexLife brand-lockup no longer observed
+  -> VexLife active-context presentation accepted in the stable middle family slot
+  -> VEXLIFE_PUBLIC_DEPLOYMENT_CURRENT=true
+  -> PUBLIC_LIVED_ACCEPTANCE=true
+  -> PUBLIC_LIVED_ACCEPTANCE_PENDING=false
+  -> PUBLICATION_RECOVERY_REQUIRED=false
+  -> public optical/currentness correction closed
+```
+
+A fresh conversation must resume from the first incomplete publication chunk rather than reopening #929/#933 or redefining the family-header contract.
 
 ## Process map to completion
 
-The accepted trajectory now reads:
+The corrected trajectory is:
 
 ~~~text
-accepted Welcome Wagon source
-  #400 rename tooling ✅
-  #403 canonical About identity ✅
-  #413 About / What is this? / lived orientation ✅
-  #414 Support shared shell + clean Terrain link ✅
-  #415 Vextreme stable family rail ✅
-  #929 VexLife stable family rail ✅
-  #154 VexWork stable family rail ✅
+accepted Welcome Wagon family source
+  #415 / #929 / #154 stable family rail ✅
+  #416 / #933 / #157 optical refinement ✅
+       source/merge proof = PASS
+       candidate-lived verdict = PASS
         ↓
-current generated/runtime dependency owner
-  #379 rederive its existing membrane
-       from accepted Vextreme main
+VexLife public projection currentness
+  live screenshot proves pre-#929 composition still deployed ❌
         ↓
-remaining held product/design choices
+dedicated publication substrate
+  exact accepted main -> existing builder -> vexlife-pages
+        ↓
+Vex Relay publication
+  A002 RETURN PASS
+  publication branch 51e22e1783f4348f88b3c3460c5d3136c0b081a4 ✅
+        ↓
+one-time Pages branch-source switch ✅
+        ↓
+post-switch branch trigger 00a843fe… (same tree) ✅
+        ↓
+GitHub built-in Pages deployment run 40267497453 SUCCESS ✅
+        ↓
+live public verification ✅
+  Victor: "nice looks great"
+        ↓
+public cross-context family acceptance ✅
+        ↓
+parallel existing generated/runtime owner
+  #379 remains separate
+        ↓
+remaining deliberately held product/design choices
   broader Terrain visual convergence
   VexLife screenshot-led product story as lived product exists
   final root/default public-entry URL
         ↓
 final whole-project lived acceptance
-  desktop + mobile + locales + keyboard + Read Aloud
-  + Receive God + Archives + About + VexSystem secondary
 ~~~
 
-The family rail proves the reusable header capability without creating a universal copied DOM component. Do not reopen the three accepted projections merely to pursue the still-held broader design choices.
-
+The family-header **design/source/public deployment** is now settled for this optical/currentness correction. Victor's live verdict — **"nice looks great"** — closes the human-visible VexLife verification edge. Do not reopen #929/#933, the publication recovery, or this family-header optical slice unless accepted source or the live public experience materially changes.
 ## Deliberately held
 
 The original formation alone did **not** decide or authorize the items below. Victor's later explicit “please move forward” authorizes bounded implementation along this saved completion path, but it does not collapse the held product/design choices or provider/repository boundaries:

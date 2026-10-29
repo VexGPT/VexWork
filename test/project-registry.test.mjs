@@ -11,7 +11,7 @@ test('Project Registry locates Projects without owning their WorkState', () => {
   const validation = validateProjectRegistry(registry);
   assert.equal(validation.ok, true, validation.errors.join('\n'));
   const projection = projectProjectRegistry(registry);
-  assert.equal(projection.projects.length, 15);
+  assert.equal(projection.projects.length, 16);
   assert.equal(projection.projects[0].projectRef, 'project.vexwork.foundation');
   assert.equal(projection.projects[0].workgraphRef, 'workgraph.vexwork.foundation');
   assert.equal(projection.projects[0].workgraphPath, 'workgraphs/public.json');
@@ -89,6 +89,12 @@ test('Project Registry locates Projects without owning their WorkState', () => {
   assert.equal(widget.definitionPath, 'projects/android-widget-foundation/project.json');
   assert.equal(widget.boardViewPath, 'projects/android-widget-foundation/board.view.json');
   assert.equal(widget.agencyPolicyPathOrNull, null);
+  const vexsync = projection.projects.find((entry) => entry.projectRef === 'project.vexsync.debugmenu-blueprints');
+  assert.equal(vexsync.workgraphRef, 'workgraph.vexwork.foundation');
+  assert.equal(vexsync.workgraphPath, 'workgraphs/public.json');
+  assert.equal(vexsync.definitionPath, 'projects/vexsync-debugmenu-blueprints/project.json');
+  assert.equal(vexsync.boardViewPath, 'projects/vexsync-debugmenu-blueprints/board.view.json');
+  assert.equal(vexsync.agencyPolicyPathOrNull, null);
   assert.equal(projection.effects, false);
   assert.equal(projection.executionAuthority, 'NONE');
   assert.equal(verifySemanticFingerprint(projection), true);

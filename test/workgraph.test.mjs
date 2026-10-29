@@ -14,6 +14,7 @@ const operationalConsoleProjectSource = read('projects/vexwork-operational-conso
 const vexboardProjectSource = read('projects/vexboard/project.json');
 const blueprintProjectSource = read('projects/vexlife-blueprint-source-of-truth/project.json');
 const androidProofProjectSource = read('projects/android-proof-orchestration/project.json');
+const vexsyncDebugMenuProjectSource = read('projects/vexsync-debugmenu-blueprints/project.json');
 const graphSource = read('workgraphs/public.json');
 
 test('work registry covers lifecycle states exactly once on the default Work Board', () => {
@@ -30,7 +31,7 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   const toCompletionProject = createProject(toCompletionProjectSource);
   assert.equal(projectWorkRefs(toCompletionProject, graph).length, 21);
   const connectedServicesProject = createProject(connectedServicesProjectSource);
-  assert.equal(projectWorkRefs(connectedServicesProject, graph).length, 19);
+  assert.equal(projectWorkRefs(connectedServicesProject, graph).length, 21);
   const operationalConsoleProject = createProject(operationalConsoleProjectSource);
   assert.equal(projectWorkRefs(operationalConsoleProject, graph).length, 24);
   const vexboardProject = createProject(vexboardProjectSource);
@@ -39,6 +40,8 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(projectWorkRefs(blueprintProject, graph).length, 14);
   const androidProofProject = createProject(androidProofProjectSource);
   assert.equal(projectWorkRefs(androidProofProject, graph).length, 4);
+  const vexsyncDebugMenuProject = createProject(vexsyncDebugMenuProjectSource);
+  assert.equal(projectWorkRefs(vexsyncDebugMenuProject, graph).length, 3);
   assert.equal(verifySemanticFingerprint(project), true);
   assert.equal(verifySemanticFingerprint(graph), true);
 
@@ -282,6 +285,32 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(connectedPhase3Defect.state, 'COMPLETED');
   assert.equal(connectedPhase3Lived.state, 'COMPLETED');
   assert.deepEqual(connectedPhase3Lived.dependencyRefs, [connectedPhase3Defect.workRef]);
+  const connectedVcs04 = graph.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs04-conversation-adoption');
+  const connectedPhase4 = graph.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs04.phase4-send-companion');
+  const connectedPhase5 = graph.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs04.phase5-restart-no-duplicates');
+  const connectedPhase6 = graph.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs04.phase6-terminal-currentness');
+  const connectedVcs05 = graph.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs05-stream-stress');
+  const connectedVcs06 = graph.items.find((item) => item.workRef === 'work.vexlife.connected-services.vcs06-architecture-extraction');
+  assert.deepEqual([connectedPhase4.state, connectedPhase5.state, connectedPhase6.state, connectedVcs04.state], ['COMPLETED', 'COMPLETED', 'COMPLETED', 'COMPLETED']);
+  assert.equal(connectedVcs05.state, 'COMPLETED');
+  assert.equal(connectedVcs06.state, 'READY');
+  assert.deepEqual(connectedVcs05.dependencyRefs, [connectedVcs04.workRef]);
+  assert.deepEqual(connectedVcs06.dependencyRefs, [connectedVcs05.workRef]);
+
+  const vexsyncOutcome = graph.items.find((item) => item.workRef === 'work.vexsync.debugmenu-blueprints.outcome');
+  const vexsyncDiscovery = graph.items.find((item) => item.workRef === 'work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery');
+  const vexsyncRoundtrip = graph.items.find((item) => item.workRef === 'work.vexsync.debugmenu-blueprints.debugmenu-origin-roundtrip');
+  assert.equal(vexsyncOutcome.state, 'RUNNING');
+  assert.equal(vexsyncOutcome.authorityDisposition, 'NO_AUTHORITY');
+  assert.equal(vexsyncOutcome.effectDisposition, 'NO_EFFECTS');
+  assert.equal(vexsyncDiscovery.state, 'READY');
+  assert.equal(vexsyncDiscovery.priorityClass, 'IMMEDIATE');
+  assert.equal(vexsyncDiscovery.authorityDisposition, 'NO_AUTHORITY');
+  assert.deepEqual(vexsyncDiscovery.dependencyRefs, []);
+  assert.equal(vexsyncRoundtrip.state, 'WAITING_DEPENDENCIES');
+  assert.deepEqual(vexsyncRoundtrip.dependencyRefs, [vexsyncDiscovery.workRef]);
+  assert.equal(graph.items.some((item) => item.workRef === 'work.vexsync.debugmenu-blueprints.android-construction-proof'), false);
+  assert.equal(graph.items.some((item) => item.workRef === 'work.vexsync.debugmenu-blueprints.save-apply-pr-loop'), false);
 
   const operationalOutcome = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.outcome');
   const derivedFoundation = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.derived-work-foundation');

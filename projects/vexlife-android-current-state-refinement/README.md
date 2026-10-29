@@ -263,6 +263,9 @@ Do not create a parallel “performance framework” when the existing proof fou
 ```text
 Cross-feature scalability + SCAE placement
   -> active review
+  -> initiating VexStream startup finding is source-corrected/merged
+  -> Full Player Verify feedback exposed the same class again: expensive Track preparation belonged off the input thread, while already-admitted shared media truth should not be re-proved across the whole rendered context on every Play
+  -> PR #176 is now SourceOwner-A004-proven, freshly assured, merged tree-exact; continue only where current source shows the same placement/amplification class
 
 Dynamic collection / large-state behavior
   -> ready for focused review
@@ -277,7 +280,10 @@ Performance diagnostics / reusable guardrails
   -> ready for focused review
 
 VexStream 36-second startup defect
-  -> remains owned by project.vexstream.mobile-library / Android issue #168
+  -> Android PR #169 merged the integrity-preserving source correction
+  -> Android PR #171 preserves loading truth during asynchronous restore
+  -> issue #168 remains only for Victor's lived current-main startup observation
+  -> ownership remains project.vexstream.mobile-library
 ```
 
 ## Permanent boundaries
