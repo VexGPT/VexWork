@@ -311,14 +311,18 @@
         "artifact.vexrelay.outer-return.sha256.d4a14c28f5867ffe649f609570ff4dfeef5f08702b5b9288b71418c94b9b69fb",
         "artifact.vexrelay.inner-return.sha256.92cad17b43f34182b6f6107afd81dd078110b6751b2eba5d6c5f0ec7c3b0b187",
         "github.issue-comment.vexwork.189.6519490826",
-        "github.issue-comment.vexwork.189.6519527203"
+        "github.issue-comment.vexwork.189.6519527203",
+        "github.commit.vexwork.763d27f4ec5afc133c71e018c7d4532fc155fe95",
+        "github.issue-comment.vexwork.189.6519581652",
+        "github.issue-comment.vexwork.189.6519593982",
+        "github.pull.vexwork.187"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-30T02:25:00.000Z",
-      "updatedAt": "2026-10-30T09:33:00.000Z"
+      "updatedAt": "2026-10-30T09:36:30.000Z"
     }
   ],
   "transitions": [
