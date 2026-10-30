@@ -1690,7 +1690,63 @@ ProcessFamily provenance is owned once at Family scope through `ProcessFamily.so
 
 The prose node contract remains broader because it describes questions a competent current worker must answer. That checklist is intentionally **not identical to the machine schema**.
 
-### Readability / perception audit after A008\n\nAfter A008 SourceOwner proof, the builder performed one read-only fresh-instance audit before Assurance, specifically to catch code that passes but tells the wrong ownership story.\n\nThat audit removed three unconsumed horizon fields:\n\n~~~text\nnextAvailableRelationshipRefs\n  duplicated nextCandidates[].available\n\neffects = false\nexecutionAuthority = NONE\n  had no consumer\n  incorrectly suggested the read-only horizon was an effect/authority owner\n~~~\n\nThe horizon now carries only process-perception data. Effect and execution authority remain with their rightful external owners.\n\nThe same audit also removed duplicate source-ref inputs in the VexBoard projector: current transition evidence and current State identity are each supplied once rather than relying on `nodeSourceRefs(...)` de-duplication to hide repeated inputs.\n\n~~~text\nREADABILITY = ONE RIGHTFUL OWNER + ONE EXPLICIT DERIVATION\nDE-DUP HELPER SUCCESS != CLEAR SOURCE CODE\n~~~\n### Dead helper + unconsumed Family purpose were removed
+### Fresh Assurance CHANGES_REQUESTED — provenance construction + consumer reality
+
+Fresh Independent Assurance on exact head `125aa59eadab14ea90bbaf23523439c54ad98bf4` returned three valid findings:
+
+1. the dynamic projector's provenance de-dup helper could conceal repeated semantic inputs before VexBoard's duplicate-ref invariant saw them;
+2. the exported dynamic bounded-horizon projector had no real non-test executable consumer;
+3. this canonical document's readability-audit section itself contained literal `\\n` escape text instead of real Markdown structure.
+
+The correction chooses the smaller architecture:
+
+~~~text
+unconsumed dynamic projector
+-> remove / hold
+
+projector-only provenance builder
+-> removed with projector
+
+orphaned core horizon runtime
+-> remove / hold
+
+canonical readability record
+-> restore real Markdown structure
+~~~
+
+No replacement projector or fake consumer is introduced.
+
+### Readability / perception audit after A008
+
+After A008 SourceOwner proof, the builder performed one read-only fresh-instance audit before Assurance, specifically to catch code that passes but tells the wrong ownership story.
+
+That audit first removed three unconsumed horizon fields:
+
+~~~text
+nextAvailableRelationshipRefs
+  duplicated nextCandidates[].available
+
+effects = false
+executionAuthority = NONE
+  had no consumer
+  incorrectly suggested the read-only horizon was an effect/authority owner
+~~~
+
+Fresh Independent Assurance then established the stronger boundary: the dynamic bounded-horizon VexBoard projector itself had no real non-test executable consumer.
+
+Therefore the current candidate does **not** retain that projector merely because it was already written and tested.
+
+~~~text
+TEST-ONLY CONSUMER
+!= EARNED RUNTIME CONSUMER
+
+UNCONSUMED RUNTIME HELPER
+-> HOLD / REMOVE
+~~~
+
+The dynamic projector and the core horizon-only runtime helpers are held until a real State-bearing consumer exists.
+
+### Dead helper + unconsumed Family purpose were removed
 
 Fresh Independent Assurance on exact head `72f28bacf122e5ca8fe8dbb73a16089fac6b4a1a` found two additional pieces of unearned generic surface:
 
@@ -1790,15 +1846,23 @@ An orphan node is invalid rather than a hidden future destination with no lawful
 
 ### VexBoard projection does not own currentness
 
-The dynamic bounded-horizon board declares:
+The **current executable VexBoard consumer** in this candidate is the checked-in full-map projection discovered through the existing source catalog.
+
+It is tested against the machine Family for semantic node labels, relationship endpoints, relationship labels, and forward-vs-correction projection kind—not only for matching IDs.
+
+The previously formed dynamic State → bounded-horizon VexBoard projector is now **held** because it had no real non-test executable consumer.
 
 ~~~text
-derivedFromRefOrNull = current ProcessFamily.State.stateRef
+CHECKED-IN FULL MAP
+  current consumer
+
+DYNAMIC STATE-BOUND HORIZON
+  held until a real State-bearing consumer exists
+
+VEXBOARD
+  remains projection / perception
+  != process current-State owner
 ~~~
-
-and PREVIOUS exposes the exact predecessor State ref.
-
-The static full-map projection is also tested against the machine Family for semantic node labels, relationship endpoints, relationship labels, and forward-vs-correction projection kind—not only for matching IDs.
 
 ### Cross-snapshot lineage validation is deliberately held
 
@@ -1858,7 +1922,6 @@ normalizeProcessFamily(...)
 normalizeProcessState(...)
 createProcessState(...)
 admitProcessTransition(...)
-projectProcessHorizon(...)
 ~~~
 
 The current State contract owns only:
@@ -1897,70 +1960,66 @@ BOARD DRAWING
 -> IMPLICIT PROCESS LAW
 ~~~
 
-### Bounded horizon projector
+### Dynamic bounded horizon is held until a real consumer exists
 
-The first effect-free consumer is:
+An earlier candidate formed:
 
 ~~~text
 src/shared/vexboard-process-horizon.mjs
 projectProcessHorizonBoard(...)
+projectProcessHorizon(...)
+availableProcessRelationships(...)
 ~~~
 
-It consumes:
+Fresh Independent Assurance found that the exported dynamic projector had **no non-test executable consumer** at the exact candidate tree. The discoverable VexBoard surface consumed the checked-in static board instead.
+
+Because tests alone do not earn runtime architecture, the current candidate removes/holds that dynamic path.
 
 ~~~text
-ProcessFamily definition
-+ exact ProcessFamily State
-+ caller-supplied scope projection
-+ current satisfied predicate refs
+CURRENT
+  ProcessFamily definition / State / transition core
+  checked-in VexBoard full-map projection
+  source-catalog discovery
+
+HELD
+  State -> bounded VexBoard horizon runtime
+  outgoing-availability projection helper
+  future-only FURTHER projection runtime
 ~~~
 
-and forms a read-only VexBoard projection with:
+The conceptual bounded-reading law remains valid design pressure:
 
 ~~~text
-OUTCOME
-PREVIOUS accepted result
-CURRENT node + deep current reading/proof/source neighborhood
-NEXT candidates + identity/purpose/entry predicates only
-FURTHER ROUTE + address identity only
+CURRENT may deep-read earned context
+FUTURE remains addressable without automatic deep-reading
 ~~~
 
-The projector cannot admit process movement or mutate State. ProcessFamily derives outgoing relationship availability from the current satisfied predicate refs supplied by the rightful observation/decision layer; the projector only renders that result and remains effect-free / non-executing.
-
-Future-node readingSourceRefs / proofRefs are deliberately absent from NEXT/FURTHER projected sourceRefs.
-
-~~~text
-ADDRESSABLE FUTURE
-!= ACTIVE READING SCOPE
-~~~
+But no runtime helper is claimed until a real consumer needs that contract.
 
 ### Focused semantic proof checkpoint
 
-The formed ProcessFamily / bounded-horizon implementation has been exercised against the exact current PR source bytes through the connected V8 execution surface.
+After removing the unconsumed horizon runtime, the surviving exact focused suite is:
 
 ~~~text
-exact test file logic        27 / 27 PASS
-machine ProcessFamily        PASS
-scope x node x layer walk    PASS
-predicate-derived availability PASS
-unearned feedback edge       FAIL-CLOSED
-future reading-source leak   REJECTED
-full-map family lineage      PASS
-bounded horizon projection   PASS
-foreign scope projection     REJECTED
+exact test file logic          20 / 20 PASS
+machine ProcessFamily          PASS
+scope x node x layer walk      PASS
+transition admission           FAIL-CLOSED
+Family-local vocabulary        PASS
+compact State lineage          PASS
+full-map Family lineage        PASS
+source-catalog discovery       PASS
+object-local provenance        REJECTED
+unused Family purpose          REJECTED
 ~~~
 
-The proof executes the exact branch modules and the complete focused test file logic with compatibility shims for Node-only test/fs/assert surfaces.
-
-Permanent proof distinction:
+The reduction from 27 tests to 20 is intentional. Seven tests existed only to exercise the now-held dynamic horizon runtime. They were removed rather than retained as self-justifying coverage.
 
 ~~~text
-CONNECTED V8 SEMANTIC PROOF = PASS
-REPOSITORY-NATIVE NODE TEST = NOT YET CLAIMED
-FULL npm run review          = NOT YET CLAIMED
+FEWER TESTS + SMALLER CURRENT SURFACE
+> MORE TESTS PROTECTING UNUSED RUNTIME CODE
 ~~~
 
-Do not convert the connector proof into a claim that Node/npm repository integration has already run.
 ### Repository-integration pressure
 
 The candidate has now been checked against VexWork's deterministic repository floor shape.
@@ -1977,7 +2036,7 @@ package.json
 
 The focused test is therefore automatically part of ordinary Node test discovery; no custom test runner or hidden script is required.
 
-The two new shared modules are also intentionally inside the accepted source-coverage policy:
+The remaining new shared ProcessFamily module is inside the accepted source-coverage policy:
 
 ~~~text
 sourcePolicy = src/**/*.mjs + *-reader.js
@@ -1991,20 +2050,20 @@ minimum aggregate coverage:
 Because the accepted branch floor has little headroom, the focused suite was expanded only around real fail-closed architecture boundaries rather than synthetic percentage padding:
 
 ~~~text
-17 / 17 exact-test logic PASS
+20 / 20 exact-test logic PASS
 
-additional boundaries exercised:
+current boundaries exercised:
   invalid Family schema
   duplicate / missing topology identity
   invalid movement class
   foreign Family State
   invalid layer
-  corrupted transition origin/evidence/identity
+  corrupted transition provenance
   unknown relationship
   empty transition evidence
-  no-op layer revisit
-  initial horizon with no previous/further route
-  invalid horizon board identity
+  no-op relationship-free layer change
+  object-local provenance reintroduction
+  unconsumed Family-purpose reintroduction
 ~~~
 
 Coverage **percentage** remains a repository-runtime predicate. The connected V8 proof establishes the exact test logic, not Node's LCOV accounting.
@@ -2012,12 +2071,12 @@ Coverage **percentage** remains a repository-runtime predicate. The connected V8
 ~~~text
 TEST DISCOVERY SHAPE          = CLEAR
 SOURCE COVERAGE APPLICABILITY = CLEAR
-CONNECTED V8 TEST LOGIC       = 27 / 27 PASS
-NODE LCOV / AGGREGATE FLOOR   = NOT YET CLAIMED
-FULL npm run review           = NOT YET CLAIMED
+CONNECTED V8 TEST LOGIC       = 20 / 20 PASS
+NODE LCOV / AGGREGATE FLOOR   = REQUIRES FRESH CURRENT-HEAD SOURCEOWNER
+FULL npm run review           = REQUIRES FRESH CURRENT-HEAD SOURCEOWNER
 ~~~
 
-Browser integration is also source-clean: the bounded-horizon projector imports only the browser-safe shared ProcessFamily and VexBoard model modules; it does not pull Node-only semantic hashing into the browser closure.
+Browser/runtime integration for a dynamic bounded horizon is intentionally **not claimed** because that runtime is held. The current VexBoard surface remains the checked-in board discovered through the existing source catalog.
 
 The shared VexBoard source-catalog path has no other open-PR claim at this checkpoint. PR #187 remains separate on Process Registry / Process Map tests only.
 ### Source definition versus live current State
