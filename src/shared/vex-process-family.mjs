@@ -2,7 +2,7 @@ export const PROCESS_FAMILY_SCHEMA = 'vexwork.process-family/v1';
 export const PROCESS_FAMILY_STATE_SCHEMA = 'vexwork.process-family-state/v1';
 export const PROCESS_HORIZON_SCHEMA = 'vexwork.process-horizon/v1';
 
-export const PROCESS_DEPTHS = Object.freeze([
+export const PROCESS_LAYERS = Object.freeze([
   'FORMATION',
   'TOPOLOGY',
   'OWNERSHIP',
@@ -22,11 +22,11 @@ export const PROCESS_MOVEMENT_CLASSES = Object.freeze([
   'IMPLEMENTATION_DEFECT',
   'CURRENTNESS_CHANGED',
   'RECOVERS',
-  'DEPTH_REVISIT',
+  'LAYER_REVISIT',
 ]);
 
 const RELATIONSHIP_MOVEMENT_CLASSES = new Set(
-  PROCESS_MOVEMENT_CLASSES.filter((value) => value !== 'DEPTH_REVISIT'),
+  PROCESS_MOVEMENT_CLASSES.filter((value) => value !== 'LAYER_REVISIT'),
 );
 const FORWARD_MOVEMENT_CLASSES = new Set(['ADVANCES', 'ENABLES']);
 const REF = /^[A-Za-z0-9][A-Za-z0-9._:/-]*$/u;
@@ -72,8 +72,8 @@ function unionRefs(values, label, options = {}) {
   return refs([...new Set(values)], label, options);
 }
 
-function depth(value, label) {
-  assert(PROCESS_DEPTHS.includes(value), label + ' invalid');
+function layer(value, label) {
+  assert(PROCESS_LAYERS.includes(value), label + ' invalid');
   return value;
 }
 
@@ -203,8 +203,8 @@ function normalizeTransition(input, label, family) {
     'movementClass',
     'fromNodeRef',
     'toNodeRef',
-    'fromDepth',
-    'toDepth',
+    'fromLayer',
+    'toLayer',
     'evidenceRefs',
     'carriedIdentityRefs',
   ], 'process transition ' + label);
@@ -221,8 +221,8 @@ function normalizeTransition(input, label, family) {
     : stableRef(input.relationshipRefOrNull, 'process transition ' + label + '.relationshipRefOrNull');
 
   if (relationshipRefOrNull === null) {
-    assert(input.movementClass === 'DEPTH_REVISIT', 'relationship-free transition must be DEPTH_REVISIT');
-    assert(fromNodeRef === toNodeRef, 'DEPTH_REVISIT must stay on the same process node');
+    assert(input.movementClass === 'LAYER_REVISIT', 'relationship-free transition must be LAYER_REVISIT');
+    assert(fromNodeRef === toNodeRef, 'LAYER_REVISIT must stay on the same process node');
   } else {
     const relationship = family.relationships.find((candidate) => candidate.relationshipRef === relationshipRefOrNull);
     assert(relationship, 'process transition relationship missing: ' + relationshipRefOrNull);
@@ -231,11 +231,11 @@ function normalizeTransition(input, label, family) {
     assert(relationship.movementClass === input.movementClass, 'process transition movementClass mismatch');
   }
 
-  const fromDepth = depth(input.fromDepth, 'process transition ' + label + '.fromDepth');
-  const toDepth = depth(input.toDepth, 'process transition ' + label + '.toDepth');
+  const fromLayer = layer(input.fromLayer, 'process transition ' + label + '.fromLayer');
+  const toLayer = layer(input.toLayer, 'process transition ' + label + '.toLayer');
   assert(
-    fromNodeRef !== toNodeRef || fromDepth !== toDepth,
-    'process transition must change node or depth',
+    fromNodeRef !== toNodeRef || fromLayer !== toLayer,
+    'process transition must change node or layer',
   );
 
 
@@ -245,8 +245,8 @@ function normalizeTransition(input, label, family) {
     movementClass: input.movementClass,
     fromNodeRef,
     toNodeRef,
-    fromDepth,
-    toDepth,
+    fromLayer,
+    toLayer,
     evidenceRefs: refs(input.evidenceRefs, 'process transition ' + label + '.evidenceRefs', { allowEmpty: false }),
     carriedIdentityRefs: refs(
       input.carriedIdentityRefs,
@@ -263,7 +263,7 @@ export function normalizeProcessState(input, familyInput) {
     'familyRef',
     'scopeRef',
     'currentNodeRef',
-    'depth',
+    'layer',
     'acceptedEvidenceRefs',
     'carriedIdentityRefs',
     'previousStateRefOrNull',
@@ -288,7 +288,7 @@ export function normalizeProcessState(input, familyInput) {
 
   const currentNodeRef = stableRef(input.currentNodeRef, 'ProcessFamily.State.currentNodeRef');
   assert(family.nodes.some((node) => node.nodeRef === currentNodeRef), 'ProcessFamily.State currentNodeRef missing');
-  const currentDepth = depth(input.depth, 'ProcessFamily.State.depth');
+  const currentLayer = layer(input.depth, 'ProcessFamily.State.layer');
 
   if (lastAcceptedTransitionOrNull === null) {
     assert(previousStateRefOrNull === null, 'ProcessFamily.State without transition must not claim a previous State');
@@ -300,7 +300,7 @@ export function normalizeProcessState(input, familyInput) {
       'ProcessFamily.State currentNodeRef must match last accepted transition',
     );
     assert(
-      lastAcceptedTransitionOrNull.toDepth === currentDepth,
+      lastAcceptedTransitionOrNull.toLayer === currentLayer,
       'ProcessFamily.State depth must match last accepted transition',
     );
   }
@@ -340,7 +340,7 @@ export function normalizeProcessState(input, familyInput) {
     familyRef,
     scopeRef: stableRef(input.scopeRef, 'ProcessFamily.State.scopeRef'),
     currentNodeRef,
-    depth: currentDepth,
+    layer: currentLayer,
     acceptedEvidenceRefs,
     carriedIdentityRefs,
     previousStateRefOrNull,
@@ -361,7 +361,7 @@ export function createProcessState(familyInput, {
     familyRef: family.familyRef,
     scopeRef,
     currentNodeRef: family.entryNodeRef,
-    depth: 'FORMATION',
+    layer: 'FORMATION',
     acceptedEvidenceRefs: [],
     carriedIdentityRefs: [],
     previousStateRefOrNull: null,
@@ -375,7 +375,7 @@ export function admitProcessTransition({
   transitionRef,
   relationshipRefOrNull = null,
   movementClass,
-  nextDepth,
+  nextLayer,
   evidenceRefs,
   carriedIdentityRefs,
   satisfiedPredicateRefs = [],
@@ -409,7 +409,7 @@ export function admitProcessTransition({
     );
   } else {
     assert(relationshipRefOrNull === null, 'process transition relationship missing');
-    assert(movementClass === 'DEPTH_REVISIT', 'relationship-free transition must be DEPTH_REVISIT');
+    assert(movementClass === 'LAYER_REVISIT', 'relationship-free transition must be LAYER_REVISIT');
   }
 
   const toNodeRef = relationship ? relationship.toRef : currentNodeRef;
@@ -431,8 +431,8 @@ export function admitProcessTransition({
     movementClass,
     fromNodeRef: currentNodeRef,
     toNodeRef,
-    fromDepth: state.depth,
-    toDepth: nextDepth,
+    fromLayer: state.layer,
+    toLayer: nextLayer,
     evidenceRefs: transitionEvidenceRefs,
     carriedIdentityRefs: transitionIdentityRefs,
   };
@@ -443,7 +443,7 @@ export function admitProcessTransition({
     familyRef: family.familyRef,
     scopeRef: state.scopeRef,
     currentNodeRef: toNodeRef,
-    depth: nextDepth,
+    depth: nextLayer,
     acceptedEvidenceRefs: nextEvidence,
     carriedIdentityRefs: nextIdentities,
     previousStateRefOrNull: state.stateRef,
@@ -550,7 +550,7 @@ export function projectProcessHorizon(familyInput, stateInput, {
     familyRef: family.familyRef,
     scopeRef: state.scopeRef,
     stateRef: state.stateRef,
-    depth: state.depth,
+    layer: state.layer,
     previousAcceptedOrNull: previousNode && last ? {
       nodeRef: previousNode.nodeRef,
       label: previousNode.label,
