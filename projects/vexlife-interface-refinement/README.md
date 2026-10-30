@@ -3641,6 +3641,98 @@ A006_PRODUCT_BYTES
 = A005_PRODUCT_BYTES
 ~~~
 
+### F2 A006 — source-line needle miss; A007 formed
+
+F2 A006 passed the outer carrier and current v2 inner package checks, then stopped in the bounded mutation
+harness before any test, commit, push or PR.
+
+~~~text
+outer RETURN sha256
+  5e0ddf280832b3cbaf0f510584c07f0599df95f92b92e2fedf8fff2bed2f8c34
+
+retained inner canonical RETURN sha256
+  f8cf97a280882fe860461398f130c2487e7ae1d03d36055e7ff87da5e1bbc9aa
+
+inner disposition
+  SAFE_FAILURE
+
+first exact failure
+  F2_A006_LINE_COUNT:a006-test-bridge-interface-ready-gate:0:1
+
+tests / commit / push / PR
+  NOT REACHED / NONE / NONE / NONE
+~~~
+
+The A006 section/line helper worked, but the first line needle still described the human-readable expression
+`browserCompanionAvailabilityAllowsTurn(companionAvailability)`. The repository stores that expression
+inside RegExp source as `browserCompanionAvailabilityAllowsTurn\(companionAvailability\)`, so the literal
+source line did not contain the A006 needle. This is a mutation-harness source-representation defect, not
+a F2 product failure.
+
+A007 preserves the complete F2 candidate and all A004/A005 evidence-driven corrections. It changes only
+the six test-edit search needles. Each A007 needle was checked directly against accepted VexLife main and
+resolves to exactly one line inside its intended semantic test section.
+
+~~~text
+attempt
+  attempt.vexlife.interface-currentness-browser-realization.f2.a007.37fc45ea1b92
+
+branch
+  vxg-interface-currentness-browser-realization-a007
+
+outer package sha256
+  994a19bdd24690200ea5ccf5ba8da0efd71b5323bb7607f8110bcae7846f1583
+
+inner package sha256
+  9bb83af8ee9831fbdbaeb76cf5ce5e6f02488099815f746b6a7845d583a33063
+
+inner schema
+  vex.relay.input-package/v2
+
+formedAt
+  2026-10-30T05:02:21Z
+
+expiresAt
+  2026-10-31T05:02:21Z
+~~~
+
+Current formation truth:
+
+~~~text
+VexLife main
+  92e810c91b09e7c74a8e1c7da8d2fade7e070c3a
+
+A007 remote branch
+  ABSENT
+
+open-PR overlap across exact 32-path membrane
+  NONE
+
+Vextreme-SDK main
+  9be6c8c3c169e8b98b04c7821b300f84cb8342de
+~~~
+
+Permanent:
+
+~~~text
+SECTION_FOUND
++ ZERO_LINE_MATCH
++ ACCEPTED_SOURCE_LINE_PRESENT
+-> SEARCH_REPRESENTATION_DEFECT
+
+PARTIAL_UNCOMMITTED_DISPOSABLE_MUTATION
++ NO_TESTS
++ NO_COMMIT
++ NO_REMOTE_PUBLICATION
+-> FRESH_ATTEMPT_FROM_ACCEPTED_BASE
+
+A007_PRODUCT_PAYLOAD
+= A006_PRODUCT_PAYLOAD
+
+A007_SEARCH_NEEDLES
+= SOURCE_VERIFIED_UNIQUE_WITHIN_TARGET_SECTION
+~~~
+
 ### Foundation-to-interface sequence
 
 ~~~text
