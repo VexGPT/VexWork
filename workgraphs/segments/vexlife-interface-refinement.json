@@ -70,11 +70,11 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-10-29T20:01:00.000Z",
-      "updatedAt": "2026-10-30T05:43:51.000Z",
+      "updatedAt": "2026-10-30T05:53:08.000Z",
       "workRef": "work.vexlife.interface-refinement.interface-compound-relay",
       "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
       "label": "Current — Interface Compound Relay convergence",
-      "purpose": "Finish Interface Compound Relay F2/F3. A010 authoritative native Relay proof fully passed and published PR #965 to exact head fe3f4c03482243bf17e4d86d7c77077f950eaef1 / tree adf758b931935f3be677af523c3fc69a9d79335c with focused 86/86, Blueprint, Source Manifest, full npm run check, clean commit, non-force push and existing-PR reuse PASS. The outer selected-source/base mismatch is downstream bookkeeping and conflicts with live provider truth, not the source result. Following Victor's explicit request to double-check actual pushed code, fresh byte-level Assurance found that a brand-new ordinary direct-Companion draft typed while READY was not persisted to sessionStorage because the real input handler only wrote when unavailable or when a draft already existed. Assurance recorded CHANGES_REQUESTED on fe3f4c at PR comment 6515885060. A011 preserves all currentness semantics, changes only Chat draft persistence plus its bucket and proof plus its bucket, and adds a real browser READY -> type fresh draft -> exact sessionStorage -> document reload -> exact draft restored test. Consume A011 RETURN next; READY/merge/F3 remain held.",
+      "purpose": "Finish Interface Compound Relay F2/F3. A010 remains published on PR #965 at exact head fe3f4c03482243bf17e4d86d7c77077f950eaef1 / tree adf758b931935f3be677af523c3fc69a9d79335c and byte-level Assurance requires fresh READY-state draft persistence. A011 applied that product correction locally; its static real-input-handler proof passed and 87/88 focused tests passed, but the new real-browser READY draft reload proof hit its 30s test timeout without identifying whether READY, storage, reload, restoration or teardown stalled. A011 made no commit/push. A012 preserves the exact product correction and replaces only the ambiguous proof with stage-bounded diagnostics, load-based navigation and explicit browser-before-server cleanup. Its inner/outer package digests and mutation/test syntax self-verify, and historical A011 refs were rechecked after one discarded broad-substitution formation build. Consume A012 RETURN next; fresh Assurance/READY/merge/F3 remain held.",
       "workClass": "TASK",
       "state": "RUNNING",
       "priorityClass": "IMMEDIATE",
@@ -236,7 +236,12 @@
         "github.pull.vexlife.965.comment.6515885060",
         "finding.vexlife.interface-currentness.f2.ready-fresh-draft-not-session-persisted",
         "relay.package.vexlife.interface-currentness-browser-realization.f2.a011.sha256.4fa8bf1ab4c6dee0412f3d8fe7e67857b93c2061d7c202a9492233557c29862c",
-        "relay.inner.vexlife.interface-currentness-browser-realization.f2.a011.sha256.b4131893fd54bdcf7114df4652a3b37a17cb2f97d3ec0561fc1e2985703ca358"
+        "relay.inner.vexlife.interface-currentness-browser-realization.f2.a011.sha256.b4131893fd54bdcf7114df4652a3b37a17cb2f97d3ec0561fc1e2985703ca358",
+        "relay.return.vexlife.interface-currentness-browser-realization.f2.a011.outer.sha256.9676c5d9d9a5b8e9061877317f5191961107d79543b88e92f9eeab5d28ea6406",
+        "relay.return.vexlife.interface-currentness-browser-realization.f2.a011.inner.sha256.096fbf18f7c204a352ddb1d18873cc40cc2ed26342b25b61ff5bf47a60b8aa58",
+        "finding.vexlife.interface-currentness.f2.a011.browser-proof-timeout-unlocalized",
+        "relay.package.vexlife.interface-currentness-browser-realization.f2.a012.sha256.af0ea30029fc634474bb1c6854407e8aba0220808dad8fa723d9729f967c5b0e",
+        "relay.inner.vexlife.interface-currentness-browser-realization.f2.a012.sha256.8eccd460a07fa6b3cca7162d9659cbb93817e5d69dfee75c4540686ba62cd184"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
@@ -1356,6 +1361,23 @@
         "relay.inner.vexlife.interface-currentness-browser-realization.f2.a011.sha256.b4131893fd54bdcf7114df4652a3b37a17cb2f97d3ec0561fc1e2985703ca358"
       ],
       "createdAt": "2026-10-30T05:43:51.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.interface-refinement.interface-compound-relay.running-running.f2-a011-browser-timeout-a012",
+      "workRef": "work.vexlife.interface-refinement.interface-compound-relay",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING",
+      "reason": "A011's generated real input-handler persistence binding passed static proof, but its real-browser reload proof timed out at 30s without localizing the semantic stage; 87 other focused tests passed and no commit/push occurred. A012 preserves product semantics and makes the browser proof stage-bounded with deterministic browser-before-server cleanup.",
+      "actorRef": "actor.chatgpt.vexlife-interface-compound-relay",
+      "sourceRefs": [
+        "relay.return.vexlife.interface-currentness-browser-realization.f2.a011.outer.sha256.9676c5d9d9a5b8e9061877317f5191961107d79543b88e92f9eeab5d28ea6406",
+        "relay.return.vexlife.interface-currentness-browser-realization.f2.a011.inner.sha256.096fbf18f7c204a352ddb1d18873cc40cc2ed26342b25b61ff5bf47a60b8aa58",
+        "finding.vexlife.interface-currentness.f2.a011.browser-proof-timeout-unlocalized",
+        "relay.package.vexlife.interface-currentness-browser-realization.f2.a012.sha256.af0ea30029fc634474bb1c6854407e8aba0220808dad8fa723d9729f967c5b0e",
+        "relay.inner.vexlife.interface-currentness-browser-realization.f2.a012.sha256.8eccd460a07fa6b3cca7162d9659cbb93817e5d69dfee75c4540686ba62cd184"
+      ],
+      "createdAt": "2026-10-30T05:53:08.000Z"
     }
   ],
   "sourceRefs": [
@@ -1524,7 +1546,12 @@
     "github.pull.vexlife.965.comment.6515885060",
     "finding.vexlife.interface-currentness.f2.ready-fresh-draft-not-session-persisted",
     "relay.package.vexlife.interface-currentness-browser-realization.f2.a011.sha256.4fa8bf1ab4c6dee0412f3d8fe7e67857b93c2061d7c202a9492233557c29862c",
-    "relay.inner.vexlife.interface-currentness-browser-realization.f2.a011.sha256.b4131893fd54bdcf7114df4652a3b37a17cb2f97d3ec0561fc1e2985703ca358"
+    "relay.inner.vexlife.interface-currentness-browser-realization.f2.a011.sha256.b4131893fd54bdcf7114df4652a3b37a17cb2f97d3ec0561fc1e2985703ca358",
+    "relay.return.vexlife.interface-currentness-browser-realization.f2.a011.outer.sha256.9676c5d9d9a5b8e9061877317f5191961107d79543b88e92f9eeab5d28ea6406",
+    "relay.return.vexlife.interface-currentness-browser-realization.f2.a011.inner.sha256.096fbf18f7c204a352ddb1d18873cc40cc2ed26342b25b61ff5bf47a60b8aa58",
+    "finding.vexlife.interface-currentness.f2.a011.browser-proof-timeout-unlocalized",
+    "relay.package.vexlife.interface-currentness-browser-realization.f2.a012.sha256.af0ea30029fc634474bb1c6854407e8aba0220808dad8fa723d9729f967c5b0e",
+    "relay.inner.vexlife.interface-currentness-browser-realization.f2.a012.sha256.8eccd460a07fa6b3cca7162d9659cbb93817e5d69dfee75c4540686ba62cd184"
   ],
   "formedAt": "2026-10-25T01:23:08.000Z"
 }
