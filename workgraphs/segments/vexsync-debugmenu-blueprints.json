@@ -25,14 +25,33 @@
         "project.vexboard",
         "project.vex-universe",
         "project.vexlife.blueprint-source-of-truth",
-        "project.vexlife-android.current-state-refinement"
+        "project.vexlife-android.current-state-refinement",
+        "github.pull.vexlife-android.193",
+        "github.commit.vexlife-android.7301c6ef257b53aeef79736cf388f68bee60fad6",
+        "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
+        "github.commit.vexwork.06cd5344f3f6bdb5428f9d354e92705737f6a6f8",
+        "github.commit.vexwork.24a1f1914867a7d2b96cef3dee2eef9d1a991902",
+        "github.commit.vexwork.0d55e3aa83b7972cc83ef9fe2a7266311932a7c8",
+        "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+        "github.pull.vexlife-android.188",
+        "github.commit.vexlife-android.62b919997b15479a234c4688af663e9aec4e0573",
+        "github.commit.vexwork.e56c01f48614a87dc40faa00eff60bcf43a80c86",
+        "github.commit.vexwork.2d0315c3c1550ed5c5ca6098da5223d8f5ccd7d3",
+        "github.comment.vexlife-android.pr188.6499683574.sourceowner-a001-pass",
+        "github.review.vexlife-android.pr188.5699576285.assurance-clear",
+        "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt",
+        "repo.vexlife-android:architecture/behavior/src/test/kotlin/com/vextreme/vexlife/android/behavior/VexFamilyHighConfidenceTest.kt",
+        "github.pull.vexlife-android.200",
+        "github.commit.vexlife-android.14bb2c4e82eb6cf55cbdc6ef5f2c65d38f97e45b",
+        "repo.vexlife-android:architecture/relay/src/main/kotlin/com/vextreme/vexlife/android/relay/VexCompoundState.kt",
+        "repo.vexlife-android:architecture/relay/src/main/kotlin/com/vextreme/vexlife/android/relay/VexCompoundRelay.kt"
       ],
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-26T07:26:46.000Z",
-      "updatedAt": "2026-10-26T09:30:00.000Z"
+      "updatedAt": "2026-10-29T14:52:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -41,7 +60,7 @@
       "label": "Discover Feature Request -> Builder process through one Debug Menu specimen",
       "purpose": "Use the dark/light-theme request as the first live process specimen: preserve the human goal/return, hold only dependent unknowns, lock known terrain endpoints before filling the middle, investigate current Android identities/owners/HOW before creating new source, and let relationship names/IDs/phases emerge only when the living specimen earns them.",
       "workClass": "TASK",
-      "state": "READY",
+      "state": "COMPLETED",
       "workDisposition": "ACTIVE",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [],
@@ -58,14 +77,77 @@
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/primary/home/HomeScreen.kt",
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/debug/DebugMenuScreen.kt",
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/runtime/AppActions.kt",
-        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt"
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt",
+        "github.pull.vexlife-android.193",
+        "github.commit.vexlife-android.7301c6ef257b53aeef79736cf388f68bee60fad6",
+        "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
+        "github.commit.vexwork.06cd5344f3f6bdb5428f9d354e92705737f6a6f8",
+        "github.commit.vexwork.24a1f1914867a7d2b96cef3dee2eef9d1a991902",
+        "github.commit.vexwork.0d55e3aa83b7972cc83ef9fe2a7266311932a7c8",
+        "work.vexboard.vexsync-architecture-convergence",
+        "github.pull.vexwork.184",
+        "github.commit.vexlife-android.07f2e00ffa222258b37d1c87aefa0a64262a0b79",
+        "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+        "github.pull.vexlife-android.188",
+        "github.commit.vexlife-android.62b919997b15479a234c4688af663e9aec4e0573",
+        "github.comment.vexlife-android.pr188.6499683574.sourceowner-a001-pass",
+        "github.review.vexlife-android.pr188.5699576285.assurance-clear",
+        "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt",
+        "repo.vexlife-android:architecture/behavior/src/test/kotlin/com/vextreme/vexlife/android/behavior/VexFamilyHighConfidenceTest.kt",
+        "github.pull.vexlife-android.200",
+        "github.commit.vexlife-android.14bb2c4e82eb6cf55cbdc6ef5f2c65d38f97e45b",
+        "repo.vexlife-android:architecture/relay/src/main/kotlin/com/vextreme/vexlife/android/relay/VexCompoundState.kt",
+        "repo.vexlife-android:architecture/relay/src/main/kotlin/com/vextreme/vexlife/android/relay/VexCompoundRelay.kt",
+        "github.commit.vexlife-android.c74c5d4973895eeddb76197ed2f454ddfb40c00a",
+        "github.comment.vexlife-android.pr195.6514376801.post-merge-roundtrip-complete"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-26T07:26:46.000Z",
-      "updatedAt": "2026-10-26T09:30:00.000Z"
+      "updatedAt": "2026-10-30T03:52:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexsync.debugmenu-blueprints.vexboard-architecture-convergence",
+      "parentWorkRefOrNull": "work.vexsync.debugmenu-blueprints.outcome",
+      "label": "Converge VexSync foundation into VexBoard self-application",
+      "purpose": "Treat the current Direct Family / typed Control ResourceId / Relationship identity / Kotlin-test round-trip discoveries as the foundation baseline for the next major VexSync phase: converge that language with VexBoard's own VexWork and implementation so VexBoard visibly reflects and can construct through the same architecture. Preserve VexBoard as the actual product/source owner, route implementation through work.vexboard.vexsync-architecture-convergence, recover the blank browser surface before deeper projection, and use the resulting self-application to pressure the next reusable VexSync construction contract without turning VexSync into VexBoard's parent Project.",
+      "workClass": "TASK",
+      "state": "COMPLETED",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "projects/vexsync-debugmenu-blueprints/README.md",
+        "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+        "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery",
+        "project.vexboard",
+        "work.vexboard.vexsync-architecture-convergence",
+        "github.pull.vexwork.184",
+        "vexboard/architecture-map.json",
+        "github.commit.vexwork.0d55e3aa83b7972cc83ef9fe2a7266311932a7c8",
+        "github.pull.vexlife-android.193",
+        "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
+        "projects/vexboard/examples/vexlife-debug-menu-theme-mode.board.json",
+        "src/core/vexboard-family-kotlin-construction.mjs",
+        "github.commit.vexwork.8c84443137175deadb3b99787c7a7c039f478a1e",
+        "github.commit.vexwork.ca7b35edf7797ada2b406ac5cff75a610025344b",
+        "github.commit.vexwork.e56c01f48614a87dc40faa00eff60bcf43a80c86",
+        "github.comment.vexwork.pr184.6497054259.post-merge-verification",
+        "github.comment.vexwork.pr184.6497173636.lived-pages-acceptance"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-29T11:25:00.000Z",
+      "updatedAt": "2026-10-29T14:05:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -74,15 +156,14 @@
       "label": "Build the first Debug Menu Origin <-> Android round trip",
       "purpose": "After the Feature Request -> Builder specimen is grounded enough, author the first bounded Debug Menu semantic terrain one truthful edge at a time, compare/map that meaning to current Android without requiring a second semantic reinterpretation, expose unsupported target capabilities rather than guessing, and project the resulting source/evidence back to the same coordinates before generalizing the process.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "COMPLETED",
       "workDisposition": "ACTIVE",
-      "priorityClass": "HIGH",
-      "dependencyRefs": [
-        "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery"
-      ],
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
       "repositoryRefs": [
         "repo.vexwork",
-        "repo.vexlife-android"
+        "repo.vexlife-android",
+        "repo.vexlife"
       ],
       "sourceRefs": [
         "projects/vexsync-debugmenu-blueprints/README.md",
@@ -94,17 +175,1102 @@
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/shell/AppShell.kt",
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/debug/DebugMenuScreen.kt",
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/runtime/AppActions.kt",
-        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt"
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt",
+        "github.pull.vexlife-android.193",
+        "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+        "github.pull.vexlife-android.188",
+        "github.commit.vexlife-android.62b919997b15479a234c4688af663e9aec4e0573",
+        "github.pull.vexlife-android.186",
+        "repo.vexlife-android:docs/features/FEATURE-WALKS.md",
+        "repo.vexlife-android:docs/foundation/JOURNEY-INSTRUMENTATION.md",
+        "repo.vexlife-android:docs/foundation/SCREEN-CRAWLER-EVIDENCE.md",
+        "github.comment.vexlife-android.pr188.6499683574.sourceowner-a001-pass",
+        "github.review.vexlife-android.pr188.5699576285.assurance-clear",
+        "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt",
+        "repo.vexlife-android:architecture/behavior/src/test/kotlin/com/vextreme/vexlife/android/behavior/VexFamilyHighConfidenceTest.kt",
+        "github.pull.vexlife-android.195",
+        "github.commit.vexlife-android.5793a8730d820362dd33a761cb26447545a8a8c8",
+        "evidence.vexsync.pr195.sourceowner.a001.formation.sha256.c4740668d26f9887c1681b9d6559e39d03798a956d4c281ccefbd197cfd7738c",
+        "github.comment.vexlife-android.pr195.6500425432.sourceowner-a001-pass",
+        "github.review.vexlife-android.pr195.5700051982.assurance-clear",
+        "evidence.vexsync.pr195.sourceowner.a001.return.sha256.c17c2d9bc1660a6f84c11ff070a2154445a3d29621035d2bb6df3013364f0a1f",
+        "evidence.vexsync.pr195.sourceowner.a001.inner-return.sha256.743345b993ceb72b9c8901c40a9c6c911fa3d78fc5082847931f34707bc8df63",
+        "github.commit.vexlife-android.a43feebec19e001f109f5394f166cda145385e76",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/ThemeMode.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeApp.kt",
+        "repo.vexlife-android:app/src/test/kotlin/com/vextreme/vexlife/android/ui/VexLifeSessionTest.kt",
+        "github.commit.vexlife-android.a831f0aed03241e036d083f7ab57a74c7c1dfbaf",
+        "correction.vexsync.thememode.select-not-toggle.20261029a",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeTheme.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/AppScreenBlueprint.kt",
+        "github.commit.vexlife-android.e1ca51153141c5ac9d9a2ff0655aaf181066a2b7",
+        "correction.vexsync.thememode.display-presentation-continuity.20261029a",
+        "github.commit.vexlife-android.249e38acdcc7f1d27050a65a7aa93f3f622e6b4a",
+        "correction.vexsync.thememode.conversation-preview-presentation.20261029a",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/conversation/VexConversationRoomPreview.kt",
+        "github.commit.vexlife-android.58d0be5f2f74bad40bb4deea7a697fa9f8e5d928",
+        "correction.vexsync.thememode.androidtest-session-root.20261029a008",
+        "github.comment.vexlife-android.pr188.6507347819.sourceowner-a008-pass",
+        "evidence.vexsync.pr188.sourceowner.a008.return.sha256.dd699d36edfd03c0fd2c055b89511b7a690a5732067c56ec3c1d44c21854c619",
+        "evidence.vexsync.pr188.sourceowner.a008.inner-return.sha256.bcea26a4896f97405c6d8057d6a0e3ce973307a621ffcf9376808c1825c3e9e6",
+        "github.comment.vexlife-android.pr188.6507499391.assurance-clear",
+        "evidence.vexsync.pr188.assurance.a002.return.sha256.964d0063e4686ac622ff78d9d7b945088e87b2a76e4aaba7bc9f02e473e303aa",
+        "evidence.vexsync.pr188.assurance.a002.inner-return.sha256.6be1e12ab6097fb55e6940b2058a9fa71f4a816bdb2d6e71b394c7af1db9e147",
+        "github.commit.vexlife-android.7ac61612fb1fb30f26e7fd3794bd4382e905a0d7",
+        "github.comment.vexlife-android.pr188.6507612431.f14-merged-post-merge-verified",
+        "github.commit.vexlife-android.5395d77f3028cc9300fa288971de10565a283c30",
+        "github.commit.vexlife-android.a9aa48f77fa61351cab4d13a4aad0db15a1623f8",
+        "github.comment.vexlife-android.pr195.6507769527.sourceowner-a002-formed",
+        "evidence.vexsync.pr195.sourceowner.a002.formation.sha256.c8c672415c05fd1f145d0114602712b4fa33779b62b27762ec11fe1de6be50b4",
+        "github.comment.vexlife-android.pr195.6508290364.journey-device-a003-recovered-pass",
+        "evidence.vexsync.pr195.journey-device.a003.return.sha256.c820031ad5cd9f54bcf9ae761266d40d630383bf752db101268df62ae1337dcb",
+        "evidence.vexsync.pr195.journey-device.a003.inner-return.sha256.07213d85da13a58b32f44a0d6592bb9dce6fc2688b914c6b2599525864728de5",
+        "github.comment.vexlife-android.pr195.6508592808.lived-process-death-persistence-fail",
+        "github.commit.vexlife.b6d9dd4876132fc408f0eacd2bb6b5b0d56e009f",
+        "repo.vexlife:blueprint/vexlife.blueprint.json",
+        "repo.vexlife:blueprint/fragments/state-domains.json",
+        "repo.vexlife:src/core/portable-behavior-contract.mjs",
+        "github.pull.vexlife-android.201",
+        "github.commit.vexlife-android.082c5bd4cecb67a711ccd2a4ea8523c02b6eb5f2",
+        "github.comment.vexlife-android.pr201.6513404794.sourceowner-a002-pass",
+        "github.review.vexlife-android.pr201.5707384411.assurance-clear",
+        "evidence.vexsync.pr201.sourceowner.a002.return.sha256.6523c372b3b9db931bbdabc8f5cb6dd2cc18d041c8c1e74a44302fd5a03ab2f0",
+        "evidence.vexsync.pr201.sourceowner.a002.inner-return.sha256.2dc93a2a54bf9b6bf976fdcc4f1d2fcafe6ff99db0afb9b8b91e465b290bf2a8",
+        "github.pull.vexlife.964",
+        "github.commit.vexlife.e7b339e59619c36f847ce00647e45770b9597135",
+        "github.comment.vexlife.pr964.6513787084.sourceowner-a002-recovered-pass",
+        "github.review.vexlife.pr964.5707549937.assurance-clear",
+        "github.comment.vexlife.pr964.6513813080.post-merge-verified",
+        "github.pull.vexlife-android.196",
+        "github.commit.vexlife-android.b7d89f719014aaa3177fef1b62272e7443f45cb8",
+        "github.commit.vexlife-android.067e61ea68b7515a4704070de596cbe194634004",
+        "github.pull.vexlife-android.202",
+        "github.commit.vexlife-android.8e0c561a798cf40a4c8c355a507246217165eac6",
+        "github.comment.vexlife-android.pr202.6514185746.sourceowner-a002-pass",
+        "github.review.vexlife-android.pr202.5707728648.assurance-clear",
+        "github.comment.vexlife-android.pr202.6514212431.post-merge-verified",
+        "github.comment.vexlife-android.pr202.6514312252.device-a001-recovered-pass",
+        "evidence.vexsync.pr202.device-a001.outer-return.sha256.00dc9ca32207a598ff1e9de1ec594b5394f443e8962a210278a0420819a704f7",
+        "evidence.vexsync.pr202.device-a001.inner-return.sha256.54053f86f4b373fa2802baec9415ce373c743bcac40c64bd0939e2cadf215490",
+        "github.comment.vexlife-android.pr195.6514363041.lived-persistence-pass",
+        "github.comment.vexlife-android.pr195.6514376801.post-merge-roundtrip-complete",
+        "github.commit.vexlife-android.c74c5d4973895eeddb76197ed2f454ddfb40c00a"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-26T07:26:46.000Z",
-      "updatedAt": "2026-10-26T09:30:00.000Z"
+      "updatedAt": "2026-10-30T03:45:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexsync.debugmenu-blueprints.walk-trace-second-feature-pressure",
+      "parentWorkRefOrNull": "work.vexsync.debugmenu-blueprints.outcome",
+      "label": "Pressure-test Walk Trace Grammar on a second feature",
+      "purpose": "After the ThemeMode patient-zero round trip is complete, apply the candidate Walk Trace Grammar to one materially different accepted feature such as VexMaps currentness or VexStream behavior. Falsify before generalizing: prove which Scenario/Checkpoint/Step/SemanticRef/Owner/Relationship/Effect/Observation/Evidence/Disposition/Continuation coordinates actually repeat without flattening existing owners into one runtime. Only repeated clean pressure may earn a shared VexArchitecture type/schema or broader Apply All machinery.",
+      "workClass": "TASK",
+      "state": "READY",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [
+        "work.vexsync.debugmenu-blueprints.debugmenu-origin-roundtrip"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "projects/vexsync-debugmenu-blueprints/README.md",
+        "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+        "github.pull.vexlife-android.188",
+        "github.commit.vexlife-android.62b919997b15479a234c4688af663e9aec4e0573",
+        "github.comment.vexlife-android.pr188.6499683574.sourceowner-a001-pass",
+        "github.review.vexlife-android.pr188.5699576285.assurance-clear",
+        "github.commit.vexlife-android.c74c5d4973895eeddb76197ed2f454ddfb40c00a",
+        "github.comment.vexlife-android.pr195.6514376801.post-merge-roundtrip-complete"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-29T14:56:00.000Z",
+      "updatedAt": "2026-10-30T03:52:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexsync.debugmenu-blueprints.walk-trace-observation-alignment",
+      "parentWorkRefOrNull": "work.vexsync.debugmenu-blueprints.outcome",
+      "label": "Align Journey step observation with ScreenCrawler evidence",
+      "purpose": "Remove one already-observed semantic retranscription seam before the ThemeMode full walk: move the neutral Journey step observation value into the shared journeyTest grammar and have ScreenCrawler evidence identity consume that exact observation rather than separately re-accepting stepIndex/stepKind/screenId/semanticRef. Preserve Journey as walk owner and ScreenCrawler as evidence owner; this is a local shared-coordinate alignment, not a universal Walk runtime.",
+      "workClass": "TASK",
+      "state": "COMPLETED",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "projects/vexsync-debugmenu-blueprints/README.md",
+        "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+        "repo.vexlife-android:app/src/androidTest/kotlin/com/vextreme/vexlife/android/testing/journey/VexJourneyExecutionObserver.kt",
+        "repo.vexlife-android:app/src/journeyTest/kotlin/com/vextreme/vexlife/android/testing/crawler/VexScreenCrawlerEvidenceIdentity.kt",
+        "repo.vexlife-android:app/src/androidTest/kotlin/com/vextreme/vexlife/android/testing/crawler/VexScreenCrawlerEvidenceObserver.kt",
+        "repo.vexlife-android:app/src/test/kotlin/com/vextreme/vexlife/android/testing/crawler/VexScreenCrawlerPlannerTest.kt",
+        "github.pull.vexlife-android.194",
+        "github.commit.vexlife-android.0d55c90f3dec5bda40969cc07522808f9e3291ee",
+        "evidence.vexsync.pr194.sourceowner.a001.formation.sha256.bd400b1aea4e6c70a5066c1dae8f2cc8e255918f1c3425ba2822258bd3f5b61e",
+        "github.comment.vexlife-android.pr194.6500080504.sourceowner-a001-pass",
+        "github.review.vexlife-android.pr194.5699825963.assurance-clear",
+        "evidence.vexsync.pr194.sourceowner.a001.return.sha256.600c6d2f2fe167ce488f034cb63b60eb68fa1b984d5909aec3b5e0352f5be738",
+        "evidence.vexsync.pr194.sourceowner.a001.inner-return.sha256.f154ee6debbadc8ac35ef5840cef6256902598c832f063b486050dc9149bcbde",
+        "github.commit.vexlife-android.772f506de2df66d372977ad487028289405fc10b",
+        "github.comment.vexlife-android.pr194.6514449830.post-merge-verified"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+      "nextProcessRefs": [
+        "process.vexlife-android.feature-authoring"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-29T15:02:00.000Z",
+      "updatedAt": "2026-10-30T03:52:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexsync.debugmenu-blueprints.direct-family-post193-hardening",
+      "parentWorkRefOrNull": "work.vexsync.debugmenu-blueprints.outcome",
+      "label": "Harden accepted Direct Family foundation after PR #193 review",
+      "purpose": "Correct one post-acceptance Direct VexFamily ownership defect discovered by a fresh-instance review of merged PR #193: structured VexLogger.Sink failure must remain observational and cannot reject Control acceptance, suppress State/Store work, or transform Store success into Family failure. Currentize proof/maturity prose, explicitly preserve coexistence with still-live VexBehaviorFamily/SCAE, and document ResourceId equality/hash stability. Keep PR #193 as the accepted origin and PR #196 as the trace-linked bounded hardening follow-up; do not use this defect to redesign Family/RelationshipId/Execution.",
+      "workClass": "DEFECT",
+      "state": "COMPLETED",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "github.pull.vexlife-android.193",
+        "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+        "github.pull.vexlife-android.196",
+        "github.commit.vexlife-android.b25a291d4b464f35fae67d3b45244704846cae63",
+        "github.comment.vexlife-android.pr193.6500792512.follow-up-pr196",
+        "github.comment.vexlife-android.pr196.6500855863.sourceowner-a001-formed",
+        "evidence.vexsync.pr196.sourceowner.a001.formation.sha256.722a255769ac013ce227ccc56a55195a3fd5efcecf02be60825c16df8b39823f",
+        "review.fresh-instance.vex-family-post193.20261029a",
+        "github.comment.vexlife-android.pr196.6500974431.sourceowner-a001-safe-failure-harness",
+        "evidence.vexsync.pr196.sourceowner.a001.return.sha256.d57a3a425fe26cc9d4d860445c4d48ebe8cef91ae0f07844083f3c2a74627591",
+        "evidence.vexsync.pr196.sourceowner.a001.inner-return.sha256.4afe1fe50fc486910b1a53146c8afbc3f417c0d9a9325cedf7af9e90d18c88c4",
+        "github.comment.vexlife-android.pr196.6501035776.sourceowner-a002-formed",
+        "evidence.vexsync.pr196.sourceowner.a002.formation.sha256.d825fea9989e742e79cadff99b6ece70a49bd050ac9d197994951f77fb427163",
+        "github.comment.vexlife-android.pr196.6501136553.sourceowner-a002-pre-carrier-branch-binding",
+        "github.comment.vexlife-android.pr196.6501175432.sourceowner-a003-formed",
+        "evidence.vexsync.pr196.sourceowner.a003.formation.sha256.b7ae91c9f6a7de6eb48b9ab1c315b3e17d9ff2bfad3382503dfc5678bf99eded",
+        "review.fresh-instance.vex-family-pr193-open-edges.20261029b",
+        "github.comment.vexlife-android.pr196.6501368445.sourceowner-a003-pre-task-schema",
+        "github.comment.vexlife-android.pr196.6501415714.sourceowner-a004-formed",
+        "evidence.vexsync.pr196.sourceowner.a004.formation.sha256.1d116a4b13c5b6bdee4df55501da281c1e20543c86358384eb44cce8b56e46f6",
+        "github.comment.vexlife-android.pr196.6501511840.sourceowner-a004-pass",
+        "github.review.vexlife-android.pr196.5700749063.assurance-clear",
+        "evidence.vexsync.pr196.sourceowner.a004.return.sha256.1f72021173140146ea96f71eca4da9d855e64930c45cafc73de45abe6d259561",
+        "evidence.vexsync.pr196.sourceowner.a004.inner-return.sha256.43bbc8793923b07f9f6181e561cab8637f577ce7f76a326fff648b8ead2532ee",
+        "github.commit.vexlife-android.b7d89f719014aaa3177fef1b62272e7443f45cb8"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+      "nextProcessRefs": [
+        "process.vexlife-android.feature-authoring"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-29T15:55:00.000Z",
+      "updatedAt": "2026-10-30T03:52:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexsync.debugmenu-blueprints.family-compound-control-binding",
+      "parentWorkRefOrNull": "work.vexsync.debugmenu-blueprints.outcome",
+      "label": "Bind Compound output through target Family Control",
+      "purpose": "Resolve the old Direct Family Origin-Walk Process OutputState -> ??? -> Family.currentState question using only already-earned foundation language. Compound/Process remains the relationship owner; when its Output means another Family should act, feature composition forms that Family's own typed Control and calls Family.activate(Control), which re-reads CURRENT State and owns stay/admit/begin. The resulting Family truth returns as fresh Compound input. Prove this cross-root loop without adding a direct State bridge, public setter, CompoundFamily, post-process Act framework, or new relationship vocabulary.",
+      "workClass": "TASK",
+      "state": "CANCELLED",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexsync.debugmenu-blueprints.direct-family-post193-hardening"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "github.pull.vexlife-android.193",
+        "github.pull.vexlife-android.196",
+        "github.pull.vexlife-android.197",
+        "github.commit.vexlife-android.da626887d7779c0e73f0caa81080a20971e2b1bf",
+        "github.comment.vexlife-android.pr193.6501858487.origin-question-pr197",
+        "github.comment.vexlife-android.pr196.6501857206.follow-up-pr197",
+        "github.comment.vexlife-android.pr197.6501924215.sourceowner-a001-formed",
+        "evidence.vexsync.pr197.sourceowner.a001.formation.sha256.00e4df80c69e3bd89479322d51295ff6a2b49b7c2a42f9eef5b4a50708b37cca",
+        "github.pull.vexlife-android.197.closed-withdrawn",
+        "correction.vexsync.family-compound-control-binding.wrong-seam.20261029a",
+        "github.pull.vexlife-android.200",
+        "github.commit.vexlife-android.14bb2c4e82eb6cf55cbdc6ef5f2c65d38f97e45b",
+        "repo.vexlife-android:architecture/relay/src/main/kotlin/com/vextreme/vexlife/android/relay/VexCompoundState.kt",
+        "repo.vexlife-android:architecture/relay/src/main/kotlin/com/vextreme/vexlife/android/relay/VexCompoundRelay.kt",
+        "correction.vexsync.compound-current-state.accepted-pr200.20261029a"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+      "nextProcessRefs": [
+        "process.vexlife-android.feature-authoring"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-29T16:52:00.000Z",
+      "updatedAt": "2026-10-29T17:18:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexsync.debugmenu-blueprints.family-state-relay-currentness",
+      "parentWorkRefOrNull": "work.vexsync.debugmenu-blueprints.outcome",
+      "label": "Make Direct Family StateRelay the serialized currentness boundary",
+      "purpose": "Finish the Direct Family current-State contract already pressured by the Origin Walk without adding another currentness owner. StateRelay remains the one live Family State holder. Control activation resolves and commits against exact CURRENT State under one serialized boundary; delayed Begin results may re-evaluate CURRENT through admit { current -> next }; already-reconciled external truth enters through a concrete Family method backed by protected admitCurrent { current -> next }. Keep VexCompoundRelay current relationship State separate rather than manufacturing OutputState -> Family.currentState. Tighten VexExecution so result-admission failure cannot be mislabeled as operation/provider failure.",
+      "workClass": "DEFECT",
+      "state": "COMPLETED",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexsync.debugmenu-blueprints.direct-family-post193-hardening"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "github.pull.vexlife-android.193",
+        "github.pull.vexlife-android.196",
+        "github.pull.vexlife-android.198",
+        "github.commit.vexlife-android.78580ab051a33fb2c94903be5bf401f4f43f2087",
+        "github.pull.vexlife-android.197.withdrawn-wrong-seam",
+        "github.pull.vexlife-android.200",
+        "github.commit.vexlife-android.14bb2c4e82eb6cf55cbdc6ef5f2c65d38f97e45b",
+        "repo.vexlife-android:architecture/relay/src/main/kotlin/com/vextreme/vexlife/android/relay/VexCompoundState.kt",
+        "repo.vexlife-android:architecture/relay/src/main/kotlin/com/vextreme/vexlife/android/relay/VexCompoundRelay.kt",
+        "boundary.vexsync.pr200-closes-compound-not-direct-family-currentness.20261029a",
+        "github.pull.vexlife-android.201",
+        "github.commit.vexlife-android.067e61ea68b7515a4704070de596cbe194634004",
+        "github.comment.vexlife-android.pr201.6513404794.sourceowner-a002-pass",
+        "github.review.vexlife-android.pr201.5707384411.assurance-clear"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+      "nextProcessRefs": [
+        "process.vexlife-android.feature-authoring"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-29T17:18:00.000Z",
+      "updatedAt": "2026-10-30T03:52:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexsync.debugmenu-blueprints.execution-source-custody",
+      "parentWorkRefOrNull": "work.vexsync.debugmenu-blueprints.outcome",
+      "label": "Make semantic RelationshipId the only VexExecution custody/control address",
+      "purpose": "Close the Execution hybrid-identity regression exposed after the accepted Family/Relationship work. VexExecution must own Jobs internally while the rightful semantic owner supplies RelationshipId<Owner> and Approach; SourceRef remains diagnostics only. Remove public InstanceId/Handle, SourceRef duplicate identity and callable-addressed stop/join rather than adding another owner key. Keep Family execution relationships contained in Family, including typed Control/ResourceId relationships and Family-owned StateStore observation.",
+      "workClass": "DEFECT",
+      "state": "RUNNING",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexsync.debugmenu-blueprints.family-state-relay-currentness"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "github.pull.vexlife-android.193",
+        "github.pull.vexlife-android.201",
+        "github.commit.vexlife-android.067e61ea68b7515a4704070de596cbe194634004",
+        "github.commit.vexlife-android.772f506de2df66d372977ad487028289405fc10b",
+        "github.pull.vexlife-android.199",
+        "github.comment.vexlife-android.pr199.6515075344.superseded-by-pr203",
+        "github.pull.vexlife-android.203",
+        "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt",
+        "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexCoroutineLauncher.kt",
+        "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt",
+        "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+        "github.comment.vexlife-android.pr203.6515244021.sourceowner-a001-formed",
+        "github.comment.vexlife-android.pr203.6515293174.sourceowner-a001-harness-a002-formed",
+        "evidence.vexsync.pr203.sourceowner.a002.formation.sha256.e45eb9cba791e9114e9ef1657abbe9e46e30cb4a42697767a61b12265b7b181b",
+        "github.comment.vexlife-android.pr203.6515330001.sourceowner-a002-consumed-a003-formed",
+        "evidence.vexsync.pr203.sourceowner.a002.outer-return.sha256.c52ec6e16e578f4d66cd845cd9082cea4f5a9b8c5d669ae12777908426f93404",
+        "evidence.vexsync.pr203.sourceowner.a002.inner-return.sha256.2dbc1aa96798dca1d5052a642f60503d29d4bb92c4db0732b19d62bbc3ca59c5",
+        "github.commit.vexlife-android.7ca89e0ce19d09ae4388c1a287820b43ba91a311",
+        "evidence.vexsync.pr203.sourceowner.a003.formation.sha256.fc2f6de9848f764d94565ebf82afdfd70ba5ff50a81319da0028e4abfad31498",
+        "github.comment.vexlife-android.pr203.6515367482.sourceowner-a003-focused-pass-a004-formed",
+        "evidence.vexsync.pr203.sourceowner.a003.outer-return.sha256.42a408dac2a4fa313bbb80292f045c5dda9e28a5924b353e34adec7389061635",
+        "evidence.vexsync.pr203.sourceowner.a003.inner-return.sha256.208320ab1920c0274a96dab3f30681d6df41061cc2ee5d840e14215934bc8c89",
+        "evidence.vexsync.pr203.sourceowner.a004.formation.sha256.773c06d1262ddbeaf82343244822cfca36bea56b4bebe6d8046c80f2fdafdc33",
+        "github.comment.vexlife-android.pr203.6515417990.a004-compile-a005-formed",
+        "evidence.vexsync.pr203.sourceowner.a004.outer.sha256.49e19b639d7684868e78f1ae1b61a7cf82275bf9ed5a99a6f7b8d1ee6addaa0f",
+        "evidence.vexsync.pr203.sourceowner.a004.inner.sha256.5f2a4d17c4a0a7001666d8302a6f69f17144b9e75fa365b0df515ef7c458ac52",
+        "evidence.vexsync.pr203.sourceowner.a005.formation.sha256.85841e32c239e30fc441f2bbcfcdb1b110f45f95fa146c455a007c96a91f84b9",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt",
+        "github.comment.vexlife-android.pr203.6515466461.sourceowner-a005-finding-a006-formed",
+        "evidence.vexsync.pr203.sourceowner.a006.formation.sha256.ef0aa55c3c68fb107cded269f11c7c23618d1295c0221ea7d461c1676927cd7e",
+        "github.comment.vexlife-android.pr203.6515493799.sourceowner-a006-compile-a007-formed",
+        "evidence.vexsync.pr203.sourceowner.a007.formation.sha256.e2d4ad2eb7feaf178b538191ffcec214ab579b2dc8639222eb52a58f6b979ab4",
+        "github.comment.vexlife-android.pr203.6515560894.sourceowner-a007-consumed-a008-formed",
+        "evidence.vexsync.pr203.sourceowner.a008.formation.sha256.67242840b1e7bd778617b838bcd4a7a075124c32fa12aab8de1afa424b09955b"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+      "nextProcessRefs": [
+        "process.vexlife-android.feature-authoring"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-29T17:34:00.000Z",
+      "updatedAt": "2026-10-30T05:15:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.roundtrip.verifying.connected-journey-a003-recovered-pass-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.debugmenu-origin-roundtrip",
+      "priorState": "VERIFYING",
+      "nextState": "VERIFYING",
+      "reason": "PR #195 exact head a9aa48f7 completed the connected ThemeMode Journey on a physical Android target. The selected shared.debug/toggle-theme-mode@baseline Journey ran through VexJourneyInstrumentedTest and :app:connectedDebugAndroidTest completed successfully with repository device accounting failedTests=0. The inner SAFE_FAILURE came only from a task-local executedTests=1 assertion that incorrectly treated the module-wide connected Android aggregate as Journey-only; repository source proves vexJourneyCase narrows VexJourneyInstrumentedTest while other androidTest classes still run. The connected Journey PASS is therefore recovered without replay. Work remains VERIFYING because lived-human/product acceptance and lifecycle effects remain separate.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.195",
+        "github.review.vexlife-android.pr195.5704888279.assurance-clear",
+        "github.comment.vexlife-android.pr195.6508290364.journey-device-a003-recovered-pass",
+        "evidence.vexsync.pr195.journey-device.a003.return.sha256.c820031ad5cd9f54bcf9ae761266d40d630383bf752db101268df62ae1337dcb",
+        "evidence.vexsync.pr195.journey-device.a003.inner-return.sha256.07213d85da13a58b32f44a0d6592bb9dce6fc2688b914c6b2599525864728de5"
+      ],
+      "createdAt": "2026-10-29T21:14:41.160Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.roundtrip.verifying.lived-persistence-fail-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.debugmenu-origin-roundtrip",
+      "priorState": "VERIFYING",
+      "nextState": "VERIFYING",
+      "reason": "Victor's lived ThemeMode check passed the in-session visible selection path but failed process-death continuity: after swipe-killing and relaunching, the explicit selection was forgotten. Current Android source explicitly limits VexLifeSession to in-process/configuration continuity and recreates ThemeMode.Dark for a fresh process. The connected Journey PASS remains valid and must not be replayed. This lived result promotes durable ThemeMode selection from future pressure to a current product requirement. Re-grounding canonical VexLife main b6d9dd48 found no ThemeMode-specific canonical source and no FamilyStore composition surface, so the next correction is a canonical-source dependency before target-specific Android persistence realization. Work remains VERIFYING; no lifecycle/merge authority is inferred.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.195",
+        "github.comment.vexlife-android.pr195.6508592808.lived-process-death-persistence-fail",
+        "github.commit.vexlife.b6d9dd4876132fc408f0eacd2bb6b5b0d56e009f",
+        "repo.vexlife:blueprint/vexlife.blueprint.json",
+        "repo.vexlife:blueprint/fragments/state-domains.json",
+        "repo.vexlife:src/core/portable-behavior-contract.mjs"
+      ],
+      "createdAt": "2026-10-29T21:20:03.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.roundtrip.verifying.pr201-statestore-proved-clear-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.debugmenu-origin-roundtrip",
+      "priorState": "VERIFYING",
+      "nextState": "VERIFYING",
+      "reason": "Android PR #201 exact head 082c5bd4 completed SourceOwner A002 with focused VexFamilyHighConfidenceTest, repository vexVerifyJvm, exact seven-path/head/tree/blob/DCO-clean proof, clean source and complete review snapshot; fresh Independent Assurance then cleared the same exact head. This proves the StateStore-as-StateRelay-dependency foundation without adding another observer/current-State owner. Victor's lived ThemeMode process-death persistence defect remains unresolved, so Work stays VERIFYING. repo.vexlife is now a material navigation relation because the next missing owner is canonical portable ThemeMode durability meaning before Android target persistence realization.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.201",
+        "github.comment.vexlife-android.pr201.6513404794.sourceowner-a002-pass",
+        "github.review.vexlife-android.pr201.5707384411.assurance-clear",
+        "evidence.vexsync.pr201.sourceowner.a002.return.sha256.6523c372b3b9db931bbdabc8f5cb6dd2cc18d041c8c1e74a44302fd5a03ab2f0",
+        "evidence.vexsync.pr201.sourceowner.a002.inner-return.sha256.2dc93a2a54bf9b6bf976fdcc4f1d2fcafe6ff99db0afb9b8b91e465b290bf2a8",
+        "github.commit.vexlife.b6d9dd4876132fc408f0eacd2bb6b5b0d56e009f"
+      ],
+      "createdAt": "2026-10-30T02:22:01.299Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.roundtrip.verifying.thememode-durability-device-pass-lived-pending-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.debugmenu-origin-roundtrip",
+      "priorState": "VERIFYING",
+      "nextState": "VERIFYING",
+      "reason": "Canonical VexLife ThemeMode durability source is merged/post-merge verified, Android StateStore/StateRelay prerequisites are merged, Android ThemeMode SharedPreferences realization PR #202 is merged/post-merge exact, and the retained canonical physical-device VexRelay result PASS proves ThemeModeStoreInstrumentedTest on SM-S908U with 2 executed / 0 failed plus merged debug app install and final force-stop. The outer device carrier mismatch is consumer-only because post-merge evidence has no source candidate head; device replay is forbidden. Work stays VERIFYING because Victor's human-visible select -> swipe-kill -> relaunch persistence observation is the sole remaining outcome predicate.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.commit.vexlife.e7b339e59619c36f847ce00647e45770b9597135",
+        "github.commit.vexlife-android.8e0c561a798cf40a4c8c355a507246217165eac6",
+        "github.comment.vexlife-android.pr202.6514312252.device-a001-recovered-pass",
+        "evidence.vexsync.pr202.device-a001.inner-return.sha256.54053f86f4b373fa2802baec9415ce373c743bcac40c64bd0939e2cadf215490"
+      ],
+      "createdAt": "2026-10-30T03:35:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.roundtrip.verifying-completed-lived-persistence-pass-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.debugmenu-origin-roundtrip",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "Victor's final lived check on the merged Android ThemeMode persistence realization passed: after selecting the opposite ThemeMode, swipe-killing the app and relaunching, the same ThemeMode remained selected/rendered. Canonical VexLife durability source, Android StateStore/StateRelay foundation, Android persistence realization, physical Store/recreation proof, and PR #195 Feature Walk/Journey traceability are all merged or proved with post-merge exact verification. No remaining predicate exists for this bounded roundtrip task.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.comment.vexlife-android.pr195.6514363041.lived-persistence-pass",
+        "github.comment.vexlife-android.pr195.6514376801.post-merge-roundtrip-complete",
+        "github.commit.vexlife-android.c74c5d4973895eeddb76197ed2f454ddfb40c00a",
+        "github.comment.vexlife-android.pr202.6514312252.device-a001-recovered-pass",
+        "github.commit.vexlife-android.8e0c561a798cf40a4c8c355a507246217165eac6",
+        "github.commit.vexlife.e7b339e59619c36f847ce00647e45770b9597135"
+      ],
+      "createdAt": "2026-10-30T03:45:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.feature-intention-builder.running-verifying-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "The ThemeMode patient-zero specimen completed its full Feature Request -> Builder -> canonical source -> Android realization -> proof -> lived roundtrip, so the first-specimen discovery has enough evidence for final verification.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.commit.vexlife-android.c74c5d4973895eeddb76197ed2f454ddfb40c00a"
+      ],
+      "createdAt": "2026-10-30T03:51:58.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.feature-intention-builder.verifying-completed-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "The first live Debug Menu specimen now preserves human intent, grounded source ownership, truthful semantic relationships, target realization, proof, reverse trace and lived acceptance without requiring a second semantic reinterpretation. Broader generalization is intentionally deferred to the separate second-feature pressure task.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.comment.vexlife-android.pr195.6514376801.post-merge-roundtrip-complete",
+        "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md"
+      ],
+      "createdAt": "2026-10-30T03:52:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.walk-observation.verifying-completed-pr194-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.walk-trace-observation-alignment",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "PR #194 SourceOwner and Assurance were already clear; current-main integration found zero overlap across all five paths, the PR merged, and post-merge verification proved all five candidate blobs landed unchanged. Journey observation and ScreenCrawler evidence identity now share the same observation value without a retranscription seam.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.commit.vexlife-android.772f506de2df66d372977ad487028289405fc10b",
+        "github.comment.vexlife-android.pr194.6514449830.post-merge-verified"
+      ],
+      "createdAt": "2026-10-30T03:52:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.direct-family-hardening.verifying-completed-pr196-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.direct-family-post193-hardening",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "PR #196 had SourceOwner A004 PASS and Independent Assurance CLEAR, was integrated after a no-overlap current-main check, and post-merge verification proved all seven candidate blobs landed unchanged. Logger/Sink failure is now observational rather than Family semantic authority.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.commit.vexlife-android.b7d89f719014aaa3177fef1b62272e7443f45cb8"
+      ],
+      "createdAt": "2026-10-30T03:52:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.family-state-relay.running-verifying-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.family-state-relay-currentness",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "The DCO-clean PR #201 successor preserved the surviving #198 StateRelay currentness laws, added the earned StateStore dependency-observation seam, passed SourceOwner and Assurance, and was integrated onto accepted Android main.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.201",
+        "github.comment.vexlife-android.pr201.6513404794.sourceowner-a002-pass",
+        "github.review.vexlife-android.pr201.5707384411.assurance-clear"
+      ],
+      "createdAt": "2026-10-30T03:51:59.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.family-state-relay.verifying-completed-pr201-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.family-state-relay-currentness",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "PR #201 merged and post-merge verification proved all seven StateRelay/StateStore/Execution candidate blobs landed unchanged. The one serialized Family StateRelay currentness boundary and already-reconciled external truth admission are accepted source.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.commit.vexlife-android.067e61ea68b7515a4704070de596cbe194634004"
+      ],
+      "createdAt": "2026-10-30T03:52:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.second-feature.waiting-ready-theme-mode-complete-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.walk-trace-second-feature-pressure",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "Its only declared dependency, the ThemeMode Debug Menu Origin <-> Android roundtrip, is now COMPLETED with source, device and lived proof. The second-feature pressure is therefore admitted and ready, but remains lower priority than the already-running Execution source-custody defect.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.comment.vexlife-android.pr195.6514376801.post-merge-roundtrip-complete",
+        "github.commit.vexlife-android.c74c5d4973895eeddb76197ed2f454ddfb40c00a"
+      ],
+      "createdAt": "2026-10-30T03:52:00.000Z"
     }
   ],
-  "transitions": [],
+  "transitions": [
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.feature-intention-builder-discovery.running.typed-control-relationship-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "VexLife-Android PR #193 now supplies a live candidate pressure-test showing how Family-bound Control identity can eliminate arbitrary relationship-ID authoring: Control name is foundation-owned by default, typed ResourceId<Family> narrows only when earned, Begin chooses Approach only, and the accepted launchOnce fail-closed behavior is restored. This materially advances the Debug Menu Feature Request -> Builder discovery without claiming the draft Android candidate as accepted source.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.193",
+        "github.commit.vexlife-android.7301c6ef257b53aeef79736cf388f68bee60fad6",
+        "projects/vexsync-debugmenu-blueprints/README.md",
+        "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md"
+      ],
+      "createdAt": "2026-10-29T10:00:18.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.vexboard-architecture-convergence.running.foundation-baseline-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.vexboard-architecture-convergence",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Victor designated the current typed Family/Kotlin/VexBoard round-trip as the foundation baseline for the next major sync and asked VexSync to converge with VexBoard VexWork. The corresponding VexBoard-owned implementation work is formed on PR #184, so VexSync now carries the semantic/process convergence trajectory while VexBoard retains source ownership.",
+      "actorRef": "actor.local-vex-operations.vexsync-vexboard-convergence",
+      "sourceRefs": [
+        "response.victor.vexsync-vexboard-convergence.20261029a",
+        "work.vexboard.vexsync-architecture-convergence",
+        "github.pull.vexwork.184",
+        "github.commit.vexwork.0d55e3aa83b7972cc83ef9fe2a7266311932a7c8",
+        "github.pull.vexlife-android.193"
+      ],
+      "createdAt": "2026-10-29T11:25:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.vexboard-architecture-convergence.completed.lived-acceptance-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.vexboard-architecture-convergence",
+      "priorState": "RUNNING",
+      "nextState": "COMPLETED",
+      "reason": "VexBoard PR #184 crossed SourceOwner proof, Independent Assurance, Quality Review, exact-tree merge verification, and Victor's lived GitHub Pages acceptance: the blank-screen regression is gone and the flat self-applied architecture board renders. The later navigation-first usability finding is a separate VexBoard refinement and does not reopen this convergence outcome.",
+      "actorRef": "actor.local-vex-operations.vexsync-vexboard-convergence",
+      "sourceRefs": [
+        "github.pull.vexwork.184",
+        "github.commit.vexwork.ca7b35edf7797ada2b406ac5cff75a610025344b",
+        "github.commit.vexwork.e56c01f48614a87dc40faa00eff60bcf43a80c86",
+        "github.comment.vexwork.pr184.6497054259.post-merge-verification",
+        "github.comment.vexwork.pr184.6497173636.lived-pages-acceptance"
+      ],
+      "createdAt": "2026-10-29T12:51:45.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.strategy.android-theme-immediate-after-vexboard-completion-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING",
+      "reason": "After VexBoard architecture convergence completed and Android Family Circuit #193 became accepted main, the next unconsumed causal edge is the ThemeMode patient-zero realization/proof on Android PR #188. VexBoard remains a projection/pressure surface; general Android cleanup is not the outcome. Priority is currentized so the dashboard reflects Android ThemeMode realization as the immediate foreground while independent VexBoard lived usability and VexStream artwork ownership continue separately.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.188",
+        "github.commit.vexlife-android.e979a4e2b4c91e7eb7068df127d9b4232a666947",
+        "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+        "github.pull.vexwork.184",
+        "github.comment.vexwork.pr184.6497173636.lived-pages-acceptance",
+        "github.pull.vexwork.186",
+        "github.pull.vexlife-android.186"
+      ],
+      "createdAt": "2026-10-29T14:05:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.feature-intention-builder-discovery.running.apply-all-portability-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING",
+      "reason": "Victor made the portability outcome explicit: after one accepted end-to-end feature walk, another supported target should be able to realize the same semantic requirements through its rightful owners with an Apply All operation. ThemeMode remains the patient-zero specimen from which the portable coordinate set will be earned.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "response.victor.vexsync.apply-all-portability.20261029a",
+        "github.pull.vexlife-android.188",
+        "github.commit.vexlife-android.62b919997b15479a234c4688af663e9aec4e0573",
+        "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md"
+      ],
+      "createdAt": "2026-10-29T14:24:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.feature-intention-builder-discovery.running.theme-mode-proof-walk-trace-grammar-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING",
+      "reason": "Android ThemeMode PR #188 passed exact-head SourceOwner proof and fresh Independent Assurance on its two-path Family candidate. Comparing Feature Walk, Journey, Expected Walk, Family, execution observation, ScreenCrawler evidence identity, and the host proof return exposes one repeated cross-layer coordinate pattern. VexSync records this as a candidate Walk Trace Grammar for the patient-zero full walk and Apply All portability pressure, without creating a new universal runtime owner before a second real feature repeats the same pressure.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.commit.vexlife-android.62b919997b15479a234c4688af663e9aec4e0573",
+        "github.comment.vexlife-android.pr188.6499683574.sourceowner-a001-pass",
+        "github.review.vexlife-android.pr188.5699576285.assurance-clear",
+        "projects/vexsync-debugmenu-blueprints/README.md",
+        "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md"
+      ],
+      "createdAt": "2026-10-29T14:43:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.feature-intention-builder-discovery.running.intent-bounds-name-non-authority-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING",
+      "reason": "Victor identified that control/display naming can be messy while the behavioral intent remains non-escapable from its contract bounds. Accepted Family source/tests support that distinction: arbitrary Control payload does not enter relationship identity, live Family + Control kind + optional typed ResourceId bound maintained identity, and behavioral meaning is authored only by CURRENT State + typed Control through exhaustive act(...). VexSync therefore records name/label as coordinate/readability material rather than semantic authority, and will pressure-test this invariant through the ThemeMode full walk before extracting any new shared naming machinery.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "response.victor.vexsync.intent-bounds-naming.20261029a",
+        "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt",
+        "repo.vexlife-android:architecture/behavior/src/test/kotlin/com/vextreme/vexlife/android/behavior/VexFamilyHighConfidenceTest.kt",
+        "github.comment.vexlife-android.pr188.6499683574.sourceowner-a001-pass",
+        "github.review.vexlife-android.pr188.5699576285.assurance-clear",
+        "projects/vexsync-debugmenu-blueprints/README.md",
+        "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md"
+      ],
+      "createdAt": "2026-10-29T14:52:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.walk-trace-second-feature-pressure.waiting-dependencies.formed-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.walk-trace-second-feature-pressure",
+      "priorState": "DECOMPOSED",
+      "nextState": "WAITING_DEPENDENCIES",
+      "reason": "ThemeMode provides one clean SourceOwner-proved and Assurance-cleared specimen for the candidate Walk Trace Grammar, but one specimen is insufficient authority for shared VexArchitecture machinery. Capture a second materially different feature pressure-test downstream of the first full Debug Menu round trip so generalization is falsified before promotion.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "projects/vexsync-debugmenu-blueprints/README.md",
+        "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+        "github.comment.vexlife-android.pr188.6499683574.sourceowner-a001-pass",
+        "github.review.vexlife-android.pr188.5699576285.assurance-clear"
+      ],
+      "createdAt": "2026-10-29T14:56:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.walk-trace-observation-alignment.running.formed-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.walk-trace-observation-alignment",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Current Journey execution already emits one VexJourneyStepObservation carrying stepIndex/stepKind/screenId/semanticRef, while ScreenCrawler evidence identity independently re-accepts the same four values. This is an observed same-walk retranscription seam. The bounded refinement is to share the neutral observation value through journeyTest and let ScreenCrawler consume it directly, preserving existing owner boundaries.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "projects/vexsync-debugmenu-blueprints/README.md",
+        "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
+        "repo.vexlife-android:app/src/androidTest/kotlin/com/vextreme/vexlife/android/testing/journey/VexJourneyExecutionObserver.kt",
+        "repo.vexlife-android:app/src/journeyTest/kotlin/com/vextreme/vexlife/android/testing/crawler/VexScreenCrawlerEvidenceIdentity.kt"
+      ],
+      "createdAt": "2026-10-29T15:02:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.walk-trace-observation-alignment.running.pr194-source-candidate-formed-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.walk-trace-observation-alignment",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING",
+      "reason": "The bounded Journey-to-ScreenCrawler observation alignment is now authored as Android PR #194 on exact five-path head 0d55c90f..., and a current-contract ExactHeadSourceOwnerProof host wrapper is statically qualified. The source candidate keeps production semantics untouched and awaits focused JVM + vexVerifyJvm + AndroidTest assembly + exact membrane execution on the qualified macOS host.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.194",
+        "github.commit.vexlife-android.0d55c90f3dec5bda40969cc07522808f9e3291ee",
+        "evidence.vexsync.pr194.sourceowner.a001.formation.sha256.bd400b1aea4e6c70a5066c1dae8f2cc8e255918f1c3425ba2822258bd3f5b61e"
+      ],
+      "createdAt": "2026-10-29T15:12:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.walk-trace-observation-alignment.running-verifying.sourceowner-assurance-clear-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.walk-trace-observation-alignment",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Android PR #194 exact head 0d55c90f... passed SourceOwner A001 with focused ScreenCrawler JVM proof, full repository vexVerifyJvm, AndroidTest assembly, exact five-path membrane, and zero findings; fresh Independent Assurance is CLEAR_ON_EXACT_HEAD. Source authoring is therefore complete for this bounded alignment. Lifecycle/ready/merge authority remains separate and unheld.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.194",
+        "github.commit.vexlife-android.0d55c90f3dec5bda40969cc07522808f9e3291ee",
+        "github.comment.vexlife-android.pr194.6500080504.sourceowner-a001-pass",
+        "github.review.vexlife-android.pr194.5699825963.assurance-clear",
+        "evidence.vexsync.pr194.sourceowner.a001.return.sha256.600c6d2f2fe167ce488f034cb63b60eb68fa1b984d5909aec3b5e0352f5be738",
+        "evidence.vexsync.pr194.sourceowner.a001.inner-return.sha256.f154ee6debbadc8ac35ef5840cef6256902598c832f063b486050dc9149bcbde"
+      ],
+      "createdAt": "2026-10-29T15:19:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.debugmenu-origin-roundtrip.waiting-dependencies.theme-mode-feature-walk-formed-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.debugmenu-origin-roundtrip",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "WAITING_DEPENDENCIES",
+      "reason": "The ThemeMode whole-human outcome is now authored as Android PR #195 Feature Walk with one required held checkpoint. The map truthfully refuses a Journey while production DebugMenu still routes through the Boolean session callback. A current-contract SourceOwner A001 host wrapper is formed; the underlying production dependency remains the lawful release/integration of VexLifeSession.kt before the hold can clear.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.195",
+        "github.commit.vexlife-android.5793a8730d820362dd33a761cb26447545a8a8c8",
+        "evidence.vexsync.pr195.sourceowner.a001.formation.sha256.c4740668d26f9887c1681b9d6559e39d03798a956d4c281ccefbd197cfd7738c"
+      ],
+      "createdAt": "2026-10-29T15:31:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.debugmenu-origin-roundtrip.waiting-dependencies.pr195-sourceowner-assurance-clear-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.debugmenu-origin-roundtrip",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "WAITING_DEPENDENCIES",
+      "reason": "Android PR #195 exact held ThemeMode Feature Walk passed SourceOwner A001 with focused FeatureWalk contract proof, vexVerifyJvm, AndroidTest assembly, exact three-path membrane, and zero findings; fresh Independent Assurance is CLEAR_ON_EXACT_HEAD. The Feature Walk source is therefore proved and clear, while the work correctly remains WAITING_DEPENDENCIES on accepted production routing through ThemeModeFamily before the hold can release and a dedicated Journey becomes lawful.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.195",
+        "github.commit.vexlife-android.5793a8730d820362dd33a761cb26447545a8a8c8",
+        "github.comment.vexlife-android.pr195.6500425432.sourceowner-a001-pass",
+        "github.review.vexlife-android.pr195.5700051982.assurance-clear",
+        "evidence.vexsync.pr195.sourceowner.a001.return.sha256.c17c2d9bc1660a6f84c11ff070a2154445a3d29621035d2bb6df3013364f0a1f",
+        "evidence.vexsync.pr195.sourceowner.a001.inner-return.sha256.743345b993ceb72b9c8901c40a9c6c911fa3d78fc5082847931f34707bc8df63"
+      ],
+      "createdAt": "2026-10-29T15:38:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.direct-family-post193-hardening.running.formed-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.direct-family-post193-hardening",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Fresh-instance review of accepted Direct Family PR #193 recovered the intended architecture but found one real correctness hole: throwing structured Logger sinks can currently influence Family semantics. Android PR #196 is the bounded seven-path correction and currentness cleanup, explicitly trace-linked to #193; SourceOwner A001 host formation is statically qualified and execution is the next gate.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.193",
+        "github.pull.vexlife-android.196",
+        "github.comment.vexlife-android.pr196.6500855863.sourceowner-a001-formed",
+        "evidence.vexsync.pr196.sourceowner.a001.formation.sha256.722a255769ac013ce227ccc56a55195a3fd5efcecf02be60825c16df8b39823f"
+      ],
+      "createdAt": "2026-10-29T15:55:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.direct-family-post193-hardening.running.a001-harness-a002-formed-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.direct-family-post193-hardening",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING",
+      "reason": "PR #196 SourceOwner A001 reached exact-head admission but stopped before candidate compilation because the wrapper used the aggregate Android-library task :architecture:behavior:test with a --tests filter that task does not accept. The failure is classified as proof-harness task selection, not source. The exact candidate remains unchanged; A002 rotates attempt identities and corrects only the focused task to :architecture:behavior:testDebugUnitTest --tests while retaining vexVerifyJvm and the exact seven-path membrane.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.comment.vexlife-android.pr196.6500974431.sourceowner-a001-safe-failure-harness",
+        "evidence.vexsync.pr196.sourceowner.a001.return.sha256.d57a3a425fe26cc9d4d860445c4d48ebe8cef91ae0f07844083f3c2a74627591",
+        "evidence.vexsync.pr196.sourceowner.a001.inner-return.sha256.4afe1fe50fc486910b1a53146c8afbc3f417c0d9a9325cedf7af9e90d18c88c4",
+        "github.comment.vexlife-android.pr196.6501035776.sourceowner-a002-formed",
+        "evidence.vexsync.pr196.sourceowner.a002.formation.sha256.d825fea9989e742e79cadff99b6ece70a49bd050ac9d197994951f77fb427163"
+      ],
+      "createdAt": "2026-10-29T16:05:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.direct-family-post193-hardening.running.a002-branch-binding-a003-formed-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.direct-family-post193-hardening",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING",
+      "reason": "PR #196 A002 produced no valid canonical result. Victor's transcript contains an interrupt/130, so the exact last internal execution coordinate is not asserted without a RETURN. Independent source inspection proves the A002 formation package itself is invalid because it rotated the target PR branch from the real ...-a001 branch to nonexistent ...-a002 in its provider/task binding. A003 preserves the exact PR source branch/head/tree while rotating only attempt/carrier identities and retains the corrected Android-library focused test task. The fresh independent architecture read also rediscovered the intentionally open async-currentness, terminal-history, broad SourceRef stop/join, logging-layering, and Process/Compound admission seams; no second concrete correctness defect was established, so those remain pressure-driven rather than being adopted as new cleanup work.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.comment.vexlife-android.pr196.6501136553.sourceowner-a002-pre-carrier-branch-binding",
+        "github.comment.vexlife-android.pr196.6501175432.sourceowner-a003-formed",
+        "evidence.vexsync.pr196.sourceowner.a003.formation.sha256.b7ae91c9f6a7de6eb48b9ab1c315b3e17d9ff2bfad3382503dfc5678bf99eded",
+        "review.fresh-instance.vex-family-pr193-open-edges.20261029b"
+      ],
+      "createdAt": "2026-10-29T16:18:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.direct-family-post193-hardening.running.a003-task-schema-a004-formed-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.direct-family-post193-hardening",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING",
+      "reason": "PR #196 A003 reached current SDK VexLocalBridge source-managed task formation and failed shared validation because the outer task template retained a forbidden top-level authorityRef field. Current task-manifest/v1 owns outer authority under authorityBinding; inner VexRelay separately owns manifest.authority.authorityRef. A004 preserves the exact PR branch/head/tree and corrected focused Gradle task, removes only that stale outer field, rotates attempt/carrier identities, and statically proves every outer top-level task key is admitted by the current SDK TASK_KEYS set.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.comment.vexlife-android.pr196.6501368445.sourceowner-a003-pre-task-schema",
+        "github.comment.vexlife-android.pr196.6501415714.sourceowner-a004-formed",
+        "evidence.vexsync.pr196.sourceowner.a004.formation.sha256.1d116a4b13c5b6bdee4df55501da281c1e20543c86358384eb44cce8b56e46f6"
+      ],
+      "createdAt": "2026-10-29T16:28:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.direct-family-post193-hardening.running-verifying.sourceowner-a004-assurance-clear-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.direct-family-post193-hardening",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Android PR #196 exact head b25a291d... passed SourceOwner A004 after the A001-A003 carrier recovery chain: focused VexFamilyHighConfidenceTest PASS, repository vexVerifyJvm PASS, exact seven-path membrane PASS, complete review snapshot, and zero findings. Fresh Independent Assurance is CLEAR_ON_EXACT_HEAD. The post-#193 correctness/currentness hardening is source-complete; lifecycle/ready/merge authority remains separate.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.193",
+        "github.pull.vexlife-android.196",
+        "github.comment.vexlife-android.pr196.6501511840.sourceowner-a004-pass",
+        "github.review.vexlife-android.pr196.5700749063.assurance-clear",
+        "evidence.vexsync.pr196.sourceowner.a004.return.sha256.1f72021173140146ea96f71eca4da9d855e64930c45cafc73de45abe6d259561",
+        "evidence.vexsync.pr196.sourceowner.a004.inner-return.sha256.43bbc8793923b07f9f6181e561cab8637f577ce7f76a326fff648b8ead2532ee"
+      ],
+      "createdAt": "2026-10-29T16:37:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.family-compound-control-binding.running.formed-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.family-compound-control-binding",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Re-reading the accepted #193 Origin-Walk foundation showed the old Process OutputState -> ??? -> Family.currentState note was a historical unresolved question, not a perpetual hold. Current Relay/Family source already earns the smaller composition law: relationship Output that asks another Family to act becomes that Family's typed Control; Family.activate(Control) re-resolves CURRENT State and the resulting Family truth returns as fresh Compound input. Android PR #197 proves that binding with no new production abstraction.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.193",
+        "github.pull.vexlife-android.197",
+        "github.commit.vexlife-android.da626887d7779c0e73f0caa81080a20971e2b1bf"
+      ],
+      "createdAt": "2026-10-29T16:52:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.family-compound-control-binding.running.sourceowner-a001-formed-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.family-compound-control-binding",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING",
+      "reason": "Android PR #197 now carries the exact four-path Family + Compound target-Control binding candidate and a current-contract SourceOwner A001 host formation. The proof is intentionally narrow: focused VexFamilyCompoundBindingTest, repository vexVerifyJvm, exact stacked base/head/tree/four-path membrane, and review snapshot. No new production bridge abstraction is introduced.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.197",
+        "github.comment.vexlife-android.pr197.6501924215.sourceowner-a001-formed",
+        "evidence.vexsync.pr197.sourceowner.a001.formation.sha256.00e4df80c69e3bd89479322d51295ff6a2b49b7c2a42f9eef5b4a50708b37cca"
+      ],
+      "createdAt": "2026-10-29T17:01:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.family-compound-control-binding.running-cancelled.wrong-seam-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.family-compound-control-binding",
+      "priorState": "RUNNING",
+      "nextState": "CANCELLED",
+      "reason": "PR #197 answered a valid cross-owner request/feedback consequence but was incorrectly framed as the resolution of Family currentness. Re-reading the Origin StateRelay pressure proved that Family currentness is one serialized CURRENT-State admission boundary, while Compound Relay owns its own current relationship State. PR #197 was closed unmerged and its proof package must not be run.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.197",
+        "github.pull.vexlife-android.198"
+      ],
+      "createdAt": "2026-10-29T17:18:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.family-state-relay-currentness.running.formed-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.family-state-relay-currentness",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Total Origin-Walk re-review separated currentness from cross-owner consequences. Android PR #198 is the correct stacked candidate: one Family StateRelay holder, one serialized CURRENT-aware admission boundary for Controls/results/reconciled truth, separate Compound Relay current ownership, and distinct Execution operation-vs-result failure semantics. Withdrawn PR #197 is retained only as wrong-seam history.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.198",
+        "github.commit.vexlife-android.78580ab051a33fb2c94903be5bf401f4f43f2087"
+      ],
+      "createdAt": "2026-10-29T17:18:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.execution-source-custody.running.formed-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.execution-source-custody",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Accepted #193 source/docs say SourceRef uniqueness/control belongs within one VexExecution, but the launcher currently matches SourceRef across the entire shared root. Android PR #199 preserves public SourceRef/InstanceId/RelationshipId language and internally scopes source custody by live VexExecution object + SourceRef; focused proof uses two same-class execution objects sharing one root.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.199",
+        "github.commit.vexlife-android.d240a5d7aca8af8cc0f545a424c53d944263cf6a"
+      ],
+      "createdAt": "2026-10-29T17:34:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.roundtrip.running.production-formed-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.debugmenu-origin-roundtrip",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "RUNNING",
+      "reason": "The ThemeMode production seam is now formed on current Android main in PR #188: the existing Debug Menu action routes through ThemeModeFamily and VexLifeApp observes Family State. The earlier PR #186 path note is retained as parallel composition context rather than a dependency gate.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.188",
+        "github.commit.vexlife-android.a43feebec19e001f109f5394f166cda145385e76",
+        "github.pull.vexlife-android.186"
+      ],
+      "createdAt": "2026-10-29T18:12:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.roundtrip.running-verifying.sourceowner-a008-assurance-a002-clear-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.debugmenu-origin-roundtrip",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Android PR #188 exact head 58d0be5f... passed SourceOwner A008 after the A001-A007 recovery chain: focused ThemeMode/Session/Maps JVM tests PASS, repository vexVerifyLocal PASS, assembleDebugAndroidTest PASS, exact 28-path review PASS, and zero findings. Fresh Independent Assurance A002 then formed an exact remote review on the same head/tree and is CLEAR_ON_EXACT_HEAD. ThemeMode production source is proved and semantically clear; approval, ready, merge, release, and accepted-main integration remain separate lifecycle effects.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.commit.vexlife-android.58d0be5f2f74bad40bb4deea7a697fa9f8e5d928",
+        "github.comment.vexlife-android.pr188.6507347819.sourceowner-a008-pass",
+        "evidence.vexsync.pr188.sourceowner.a008.return.sha256.dd699d36edfd03c0fd2c055b89511b7a690a5732067c56ec3c1d44c21854c619",
+        "evidence.vexsync.pr188.sourceowner.a008.inner-return.sha256.bcea26a4896f97405c6d8057d6a0e3ce973307a621ffcf9376808c1825c3e9e6",
+        "github.comment.vexlife-android.pr188.6507499391.assurance-clear",
+        "evidence.vexsync.pr188.assurance.a002.return.sha256.964d0063e4686ac622ff78d9d7b945088e87b2a76e4aaba7bc9f02e473e303aa",
+        "evidence.vexsync.pr188.assurance.a002.inner-return.sha256.6be1e12ab6097fb55e6940b2058a9fa71f4a816bdb2d6e71b394c7af1db9e147"
+      ],
+      "createdAt": "2026-10-29T20:22:23.327Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.execution-source-custody.running.pr203-relationship-key-contract-formed-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.execution-source-custody",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING",
+      "reason": "Victor re-grounded the vetted Family/Execution ownership law and rejected the accumulated hybrid identity model as unapproved duplication. Android PR #203 is the fresh current-main successor: RelationshipId<Owner> is the execution custody/control address, Approach is the only overlap policy, SourceRef is diagnostic only, Family remains the only constructor of Family execution relationships, and public InstanceId/Handle/callable stop-join/source duplicate identity are removed. Historical PR #199 and Handle-based PR #150 are closed as stale carriers. Exact-head SourceOwner is still pending, so no compile/test PASS or VERIFYING transition is claimed.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.203",
+        "github.pull.vexlife-android.199",
+        "github.comment.vexlife-android.pr199.6515075344.superseded-by-pr203",
+        "github.pull.vexlife-android.150",
+        "github.comment.vexlife-android.pr150.6515076184.stale-handle-carrier"
+      ],
+      "createdAt": "2026-10-30T04:36:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.execution-source-custody.running.pr203-sourceowner-a001-formed-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.execution-source-custody",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING",
+      "reason": "PR #203 exact head 95978e02... now has a current-contract ExactHeadSourceOwnerProof A001 formation package statically qualified for focused VexExecution + VexFamily tests, repository vexVerifyJvm, exact 14-path tracked-clean, and recipe-owned review snapshot. Formation wrapper sha256=d851115348887e90284d312f8744fe29bbf55e2af7d4c3e2855b7b593c427717. Host execution has not occurred, so no compile/test PASS or VERIFYING transition is claimed.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.203",
+        "github.comment.vexlife-android.pr203.6515244021.sourceowner-a001-formed",
+        "evidence.vexsync.pr203.sourceowner.a001.formation.sha256.d851115348887e90284d312f8744fe29bbf55e2af7d4c3e2855b7b593c427717"
+      ],
+      "createdAt": "2026-10-30T04:55:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.execution-source-custody.running.pr203-sourceowner-a001-harness-a002-formed-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.execution-source-custody",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING",
+      "reason": "SourceOwner A001 stopped before SDK clone/task formation/Gradle because both its wrapper preflight and embedded post-clean expected-path here-doc encoded literal \\\\n characters instead of newline-delimited paths. No candidate execution occurred and no candidate finding was established. A002 preserves PR #203 exact base/head/tree/14-path proof surface and changes only those two harness encodings plus fresh attempt/carrier identities. A002 final wrapper sha256=e45eb9cba791e9114e9ef1657abbe9e46e30cb4a42697767a61b12265b7b181b is statically qualified; host execution remains pending, so work stays RUNNING.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.203",
+        "github.comment.vexlife-android.pr203.6515293174.sourceowner-a001-harness-a002-formed",
+        "evidence.vexsync.pr203.sourceowner.a002.formation.sha256.e45eb9cba791e9114e9ef1657abbe9e46e30cb4a42697767a61b12265b7b181b"
+      ],
+      "createdAt": "2026-10-30T04:59:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.execution-source-custody.running.pr203-a002-test-guard-a003-formed-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.execution-source-custody",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING",
+      "reason": "PR #203 SourceOwner A002 reached the candidate: Execution production and unit-test Kotlin compiled and 12/13 VexExecutionTest cases passed. The only failure was the newly authored reflection API-lock test at VexExecutionTest.kt:540, which brittlely enumerated all non-synthetic JVM Companion begin* method names and did not establish a relationship/job-behavior defect. The guard is corrected to require exact begin(RelationshipId) and reject only forbidden legacy begin names. Corrected candidate head=7ca89e0c..., tree=7c6f89ca..., 14 paths unchanged. A003 formation sha256=fc2f6de9848f764d94565ebf82afdfd70ba5ff50a81319da0028e4abfad31498 is statically qualified; host proof remains pending.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.203",
+        "github.comment.vexlife-android.pr203.6515330001.sourceowner-a002-consumed-a003-formed",
+        "evidence.vexsync.pr203.sourceowner.a002.outer-return.sha256.c52ec6e16e578f4d66cd845cd9082cea4f5a9b8c5d669ae12777908426f93404",
+        "evidence.vexsync.pr203.sourceowner.a002.inner-return.sha256.2dbc1aa96798dca1d5052a642f60503d29d4bb92c4db0732b19d62bbc3ca59c5",
+        "github.commit.vexlife-android.7ca89e0ce19d09ae4388c1a287820b43ba91a311",
+        "evidence.vexsync.pr203.sourceowner.a003.formation.sha256.fc2f6de9848f764d94565ebf82afdfd70ba5ff50a81319da0028e4abfad31498"
+      ],
+      "createdAt": "2026-10-30T05:10:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.execution-source-custody.running.pr203-sourceowner-a003-focused-pass-a004-formed-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.execution-source-custody",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING",
+      "reason": "SourceOwner A003 consumed exact candidate 7ca89e0c... and completed focused VexExecutionTest + VexFamilyHighConfidenceTest with BUILD SUCCESSFUL and VEXSYNC_EXECUTION_RELATIONSHIP_FOCUSED=PASS. It then stopped before spawning repository vexVerifyJvm because the formed timeoutMs=2400000 exceeded the VexRelay runner maximum 1800000; process=null and durationMs=0 prove HARNESS_TIMEOUT_FORMATION rather than a candidate finding despite the inner runtime's generic candidate classification. A004 preserves the exact candidate, reuses the focused PASS, excludes replay, and forms only remaining vexVerifyJvm + exact tracked-clean + review snapshot with timeoutMs=1800000. A004 wrapper sha256=773c06d1262ddbeaf82343244822cfca36bea56b4bebe6d8046c80f2fdafdc33. Work stays RUNNING until repository proof completes.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.203",
+        "github.comment.vexlife-android.pr203.6515367482.sourceowner-a003-focused-pass-a004-formed",
+        "evidence.vexsync.pr203.sourceowner.a003.outer-return.sha256.42a408dac2a4fa313bbb80292f045c5dda9e28a5924b353e34adec7389061635",
+        "evidence.vexsync.pr203.sourceowner.a003.inner-return.sha256.208320ab1920c0274a96dab3f30681d6df41061cc2ee5d840e14215934bc8c89",
+        "evidence.vexsync.pr203.sourceowner.a004.formation.sha256.773c06d1262ddbeaf82343244822cfca36bea56b4bebe6d8046c80f2fdafdc33"
+      ],
+      "createdAt": "2026-10-30T05:10:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.execution-source-custody.running.pr203-a004-app-compile-a005-formed-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.execution-source-custody",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING",
+      "reason": "SourceOwner A004 reached repository vexVerifyJvm and found a real app integration compile defect: VexLifeSession retained two pre-contract raw VexExecution consumers (startup launchOnce and artwork launchForCollect). Corrected head 92d609d1... binds both to the live VexStreamMusicRepository through private typed relationship kinds, adding VexLifeSession as the fifteenth path without reintroducing Handle/InstanceId/SourceRef identity. A005 is statically qualified for a retired-surface census, vexVerifyJvm, exact 15-path tracked-clean and review snapshot. No A005 execution PASS is claimed, so work remains RUNNING.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.203",
+        "github.comment.vexlife-android.pr203.6515417990.a004-compile-a005-formed",
+        "evidence.vexsync.pr203.sourceowner.a005.formation.sha256.85841e32c239e30fc441f2bbcfcdb1b110f45f95fa146c455a007c96a91f84b9"
+      ],
+      "createdAt": "2026-10-30T05:08:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.execution-source-custody.running.pr203-sourceowner-a005-census-a006-formed-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.execution-source-custody",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING",
+      "reason": "SourceOwner A005 intentionally censused production Kotlin before Gradle and found the remaining retired Execution surfaces in VexStream PlaybackWidget, CollectionPlayback, and TrackPlayback plus one obsolete VexCoroutineHandle import. This is a candidate integration finding; vexVerifyJvm was not reached. PR #203 now roots those workers in their live semantic owners (PlaybackService / Media3 collection connection / Media3 track connection) with local relationship keys only. Corrected exact candidate head=564bd0a3c12e8a35e2e23f276f619c560deb4136 tree=9aa9acb73ffba8eb6ee2def047254e5cd594af06 paths=19. A006 is statically qualified for legacy-surface census -> vexVerifyJvm -> exact tracked-clean -> review snapshot. No SourceOwner PASS is claimed yet.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.203",
+        "github.comment.vexlife-android.pr203.6515466461.sourceowner-a005-finding-a006-formed",
+        "evidence.vexsync.pr203.sourceowner.a006.formation.sha256.ef0aa55c3c68fb107cded269f11c7c23618d1295c0221ea7d461c1676927cd7e"
+      ],
+      "createdAt": "2026-10-30T05:12:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.execution-source-custody.running.pr203-a006-compile-a007-formed-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.execution-source-custody",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING",
+      "reason": "SourceOwner A006 legacy-surface census passed, then repository vexVerifyJvm reached :app:compileDebugKotlin and exposed one missing owner argument at VexStreamTrackPlayback.kt:164. The sibling collection/widget owner callsites were already correct. PR #203 head a0094af6... corrects only that callsite by supplying the live Media3VexStreamTrackPlaybackConnection. A007 preserves the same 19-path membrane and reruns census -> vexVerifyJvm -> tracked-clean -> review snapshot. No A007 PASS claimed yet.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.203",
+        "github.comment.vexlife-android.pr203.6515493799.sourceowner-a006-compile-a007-formed",
+        "evidence.vexsync.pr203.sourceowner.a007.formation.sha256.e2d4ad2eb7feaf178b538191ffcec214ab579b2dc8639222eb52a58f6b979ab4"
+      ],
+      "createdAt": "2026-10-30T05:15:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.execution-source-custody.running.pr203-sourceowner-a007-consumed-a008-formed-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.execution-source-custody",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING",
+      "reason": "A007 proved the production retired-surface census and app main Kotlin compile, then repository vexVerifyJvm stopped at app unit-test compilation on stale VexCoroutineStatus plus a singular-state read in VexMapsDistributionSessionTest. A008 corrects only that test to VexExecution.Status + relationship-state flattening. A static sweep of all 184 Kotlin test/testFixtures/androidTest/journeyTest files found no other retired Execution aliases/API. A008 exact candidate head=8d4aaf470e56ea4e75eafacb8af566844c8d4e63 tree=66d4200e6eee12ead6236cb7f215d28f00069246 paths=20; formation sha256=67242840b1e7bd778617b838bcd4a7a075124c32fa12aab8de1afa424b09955b. Host proof remains pending, so work stays RUNNING.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.203",
+        "github.comment.vexlife-android.pr203.6515560894.sourceowner-a007-consumed-a008-formed",
+        "evidence.vexsync.pr203.sourceowner.a008.formation.sha256.67242840b1e7bd778617b838bcd4a7a075124c32fa12aab8de1afa424b09955b"
+      ],
+      "createdAt": "2026-10-30T05:15:00.000Z"
+    }
+  ],
   "sourceRefs": [
     "projects/vexsync-debugmenu-blueprints/README.md",
     "projects/vexsync-debugmenu-blueprints/CURRENT-EXAMPLES.md",
@@ -121,7 +1287,99 @@
     "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/debug/README.md",
     "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/debug/design/README.md",
     "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/runtime/AppActions.kt",
-    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt"
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt",
+    "github.pull.vexlife-android.193",
+    "github.commit.vexlife-android.7301c6ef257b53aeef79736cf388f68bee60fad6",
+    "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
+    "github.commit.vexwork.06cd5344f3f6bdb5428f9d354e92705737f6a6f8",
+    "github.commit.vexwork.24a1f1914867a7d2b96cef3dee2eef9d1a991902",
+    "github.commit.vexwork.0d55e3aa83b7972cc83ef9fe2a7266311932a7c8",
+    "work.vexsync.debugmenu-blueprints.vexboard-architecture-convergence",
+    "work.vexboard.vexsync-architecture-convergence",
+    "github.pull.vexwork.184",
+    "vexboard/architecture-map.json",
+    "github.commit.vexwork.8c84443137175deadb3b99787c7a7c039f478a1e",
+    "github.commit.vexlife-android.07f2e00ffa222258b37d1c87aefa0a64262a0b79",
+    "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+    "github.pull.vexlife-android.188",
+    "github.commit.vexlife-android.62b919997b15479a234c4688af663e9aec4e0573",
+    "github.pull.vexlife-android.186",
+    "repo.vexlife-android:docs/features/FEATURE-WALKS.md",
+    "repo.vexlife-android:docs/foundation/JOURNEY-INSTRUMENTATION.md",
+    "repo.vexlife-android:docs/foundation/SCREEN-CRAWLER-EVIDENCE.md",
+    "github.commit.vexwork.e56c01f48614a87dc40faa00eff60bcf43a80c86",
+    "github.pull.vexwork.186",
+    "github.commit.vexwork.2d0315c3c1550ed5c5ca6098da5223d8f5ccd7d3",
+    "github.comment.vexlife-android.pr188.6499683574.sourceowner-a001-pass",
+    "github.review.vexlife-android.pr188.5699576285.assurance-clear",
+    "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt",
+    "repo.vexlife-android:architecture/behavior/src/test/kotlin/com/vextreme/vexlife/android/behavior/VexFamilyHighConfidenceTest.kt",
+    "github.pull.vexlife-android.194",
+    "github.commit.vexlife-android.0d55c90f3dec5bda40969cc07522808f9e3291ee",
+    "evidence.vexsync.pr194.sourceowner.a001.formation.sha256.bd400b1aea4e6c70a5066c1dae8f2cc8e255918f1c3425ba2822258bd3f5b61e",
+    "github.comment.vexlife-android.pr194.6500080504.sourceowner-a001-pass",
+    "github.review.vexlife-android.pr194.5699825963.assurance-clear",
+    "evidence.vexsync.pr194.sourceowner.a001.return.sha256.600c6d2f2fe167ce488f034cb63b60eb68fa1b984d5909aec3b5e0352f5be738",
+    "evidence.vexsync.pr194.sourceowner.a001.inner-return.sha256.f154ee6debbadc8ac35ef5840cef6256902598c832f063b486050dc9149bcbde",
+    "github.pull.vexlife-android.195",
+    "github.commit.vexlife-android.5793a8730d820362dd33a761cb26447545a8a8c8",
+    "evidence.vexsync.pr195.sourceowner.a001.formation.sha256.c4740668d26f9887c1681b9d6559e39d03798a956d4c281ccefbd197cfd7738c",
+    "github.comment.vexlife-android.pr195.6500425432.sourceowner-a001-pass",
+    "github.review.vexlife-android.pr195.5700051982.assurance-clear",
+    "evidence.vexsync.pr195.sourceowner.a001.return.sha256.c17c2d9bc1660a6f84c11ff070a2154445a3d29621035d2bb6df3013364f0a1f",
+    "evidence.vexsync.pr195.sourceowner.a001.inner-return.sha256.743345b993ceb72b9c8901c40a9c6c911fa3d78fc5082847931f34707bc8df63",
+    "github.comment.vexlife-android.pr196.6500974431.sourceowner-a001-safe-failure-harness",
+    "evidence.vexsync.pr196.sourceowner.a001.return.sha256.d57a3a425fe26cc9d4d860445c4d48ebe8cef91ae0f07844083f3c2a74627591",
+    "evidence.vexsync.pr196.sourceowner.a001.inner-return.sha256.4afe1fe50fc486910b1a53146c8afbc3f417c0d9a9325cedf7af9e90d18c88c4",
+    "github.comment.vexlife-android.pr196.6501035776.sourceowner-a002-formed",
+    "evidence.vexsync.pr196.sourceowner.a002.formation.sha256.d825fea9989e742e79cadff99b6ece70a49bd050ac9d197994951f77fb427163",
+    "github.comment.vexlife-android.pr196.6501136553.sourceowner-a002-pre-carrier-branch-binding",
+    "github.comment.vexlife-android.pr196.6501175432.sourceowner-a003-formed",
+    "evidence.vexsync.pr196.sourceowner.a003.formation.sha256.b7ae91c9f6a7de6eb48b9ab1c315b3e17d9ff2bfad3382503dfc5678bf99eded",
+    "review.fresh-instance.vex-family-pr193-open-edges.20261029b",
+    "github.comment.vexlife-android.pr196.6501368445.sourceowner-a003-pre-task-schema",
+    "github.comment.vexlife-android.pr196.6501415714.sourceowner-a004-formed",
+    "evidence.vexsync.pr196.sourceowner.a004.formation.sha256.1d116a4b13c5b6bdee4df55501da281c1e20543c86358384eb44cce8b56e46f6",
+    "github.comment.vexlife-android.pr196.6501511840.sourceowner-a004-pass",
+    "github.review.vexlife-android.pr196.5700749063.assurance-clear",
+    "evidence.vexsync.pr196.sourceowner.a004.return.sha256.1f72021173140146ea96f71eca4da9d855e64930c45cafc73de45abe6d259561",
+    "evidence.vexsync.pr196.sourceowner.a004.inner-return.sha256.43bbc8793923b07f9f6181e561cab8637f577ce7f76a326fff648b8ead2532ee",
+    "github.comment.vexlife-android.pr195.6508290364.journey-device-a003-recovered-pass",
+    "evidence.vexsync.pr195.journey-device.a003.return.sha256.c820031ad5cd9f54bcf9ae761266d40d630383bf752db101268df62ae1337dcb",
+    "evidence.vexsync.pr195.journey-device.a003.inner-return.sha256.07213d85da13a58b32f44a0d6592bb9dce6fc2688b914c6b2599525864728de5",
+    "github.comment.vexlife-android.pr195.6508592808.lived-process-death-persistence-fail",
+    "github.commit.vexlife.b6d9dd4876132fc408f0eacd2bb6b5b0d56e009f",
+    "repo.vexlife:blueprint/vexlife.blueprint.json",
+    "repo.vexlife:blueprint/fragments/state-domains.json",
+    "repo.vexlife:src/core/portable-behavior-contract.mjs",
+    "github.pull.vexlife-android.201",
+    "github.commit.vexlife-android.082c5bd4cecb67a711ccd2a4ea8523c02b6eb5f2",
+    "github.comment.vexlife-android.pr201.6513404794.sourceowner-a002-pass",
+    "github.review.vexlife-android.pr201.5707384411.assurance-clear",
+    "evidence.vexsync.pr201.sourceowner.a002.return.sha256.6523c372b3b9db931bbdabc8f5cb6dd2cc18d041c8c1e74a44302fd5a03ab2f0",
+    "evidence.vexsync.pr201.sourceowner.a002.inner-return.sha256.2dc93a2a54bf9b6bf976fdcc4f1d2fcafe6ff99db0afb9b8b91e465b290bf2a8",
+    "github.pull.vexlife.964",
+    "github.commit.vexlife.e7b339e59619c36f847ce00647e45770b9597135",
+    "github.comment.vexlife.pr964.6513787084.sourceowner-a002-recovered-pass",
+    "github.review.vexlife.pr964.5707549937.assurance-clear",
+    "github.comment.vexlife.pr964.6513813080.post-merge-verified",
+    "github.pull.vexlife-android.196",
+    "github.commit.vexlife-android.b7d89f719014aaa3177fef1b62272e7443f45cb8",
+    "github.commit.vexlife-android.067e61ea68b7515a4704070de596cbe194634004",
+    "github.pull.vexlife-android.202",
+    "github.commit.vexlife-android.8e0c561a798cf40a4c8c355a507246217165eac6",
+    "github.comment.vexlife-android.pr202.6514185746.sourceowner-a002-pass",
+    "github.review.vexlife-android.pr202.5707728648.assurance-clear",
+    "github.comment.vexlife-android.pr202.6514212431.post-merge-verified",
+    "github.comment.vexlife-android.pr202.6514312252.device-a001-recovered-pass",
+    "evidence.vexsync.pr202.device-a001.outer-return.sha256.00dc9ca32207a598ff1e9de1ec594b5394f443e8962a210278a0420819a704f7",
+    "evidence.vexsync.pr202.device-a001.inner-return.sha256.54053f86f4b373fa2802baec9415ce373c743bcac40c64bd0939e2cadf215490",
+    "github.comment.vexlife-android.pr195.6514363041.lived-persistence-pass",
+    "github.comment.vexlife-android.pr195.6514376801.post-merge-roundtrip-complete",
+    "github.commit.vexlife-android.c74c5d4973895eeddb76197ed2f454ddfb40c00a",
+    "github.commit.vexlife-android.772f506de2df66d372977ad487028289405fc10b",
+    "github.comment.vexlife-android.pr194.6514449830.post-merge-verified",
+    "github.comment.vexlife-android.pr199.6514450306.currentization-required"
   ],
   "formedAt": "2026-10-26T07:26:46.000Z"
 }

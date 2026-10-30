@@ -4,7 +4,7 @@
 
 This is the durable VexWork entry for the **VexLife Blueprint Source of Truth** trajectory.
 
-The lane is intentionally **paused at a clean checkpoint**. VexWork now carries the purpose, earned causal path, current exact edge, and longer completion horizons so no conversation, draft PR, or active VexWork writer needs to stay alive merely to preserve continuity.
+The lane was intentionally **paused at a clean checkpoint** after the Play/Pause practicum. Victor explicitly reactivated the Blueprint Source of Truth trajectory on 2026-10-29 for the newly earned ThemeMode durability outcome. The preserved Play/Pause Mac-native edge remains paused at its exact checkpoint and is not replayed merely because the Project is active again.
 
 ## Why
 
@@ -106,25 +106,70 @@ The practicum is the first complete circuit, not the feature ceiling.
 
 The exact provider/source receipts remain with their rightful repositories. VexWork records the durable causal shape rather than copying proof payloads.
 
-## Paused checkpoint
+## Reactivated checkpoint — ThemeMode durability
 
-Victor intends to leave this lane dormant for now.
+Victor explicitly resumed the Project on 2026-10-29 after lived Android verification showed that an explicit ThemeMode selection is forgotten after swipe-kill/process recreation.
 
-The Project root and first practicum are therefore `PAUSED_AT_CHECKPOINT` with `NO_EFFECTS`.
-
-That means:
+Current resumed edge:
 
 ```text
-trajectory preserved
-!= active VexWork writer
-!= open VexWork implementation claim
-!= background execution
-!= source mutation authority
+explicit Light/Dark selection
+-> durable ThemeMode truth
+-> process death / recreation
+-> restore the same semantic ThemeMode
+-> project the restored appearance coherently
 ```
 
-The exact technical edge remains visible below the pause so a future lane does not have to rediscover it.
+Already-earned Android foundation:
 
-### Resume coordinate
+```text
+VexLife-Android PR #201
+  StateStore observableState / get / save / forget specialization
+  Store observation enters the same serialized Family StateRelay
+  SourceOwner A002 PASS
+  Independent Assurance CLEAR_ON_EXACT_HEAD
+```
+
+Canonical gap:
+
+```text
+vgong24/VexLife
+  ThemeMode-specific portable durability source = missing
+```
+
+The Project root has lawfully resumed:
+
+```text
+PAUSED_AT_CHECKPOINT
+-> READY
+-> RUNNING
+```
+
+The bounded resumed task is:
+
+```text
+work.vexlife.blueprint-source-of-truth.theme-mode.durability-contract
+```
+
+The existing Play/Pause practicum remains paused and unchanged.
+
+The ThemeMode durability task that reactivated this Project is now complete:
+
+~~~text
+work.vexlife.blueprint-source-of-truth.theme-mode.durability-contract
+  canonical contract -> merged VexLife main e7b339e59619c36f847ce00647e45770b9597135
+  downstream Android realization -> merged
+  physical proof -> PASS
+  lived swipe-kill/relaunch -> PASS
+  state -> COMPLETED
+~~~
+
+This completion does not close the broader Blueprint Source of Truth outcome or wake the separately
+paused Play/Pause Mac-native practicum.
+
+### Preserved Play/Pause resume coordinate
+
+
 
 Current source candidate:
 
