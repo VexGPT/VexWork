@@ -3974,6 +3974,142 @@ A009
 + STALE TEST UPDATE
 ~~~
 
+### F2 A009 — scope correction focused PASS; Relationships fixtures exposed provider-unavailable 503s
+
+A009 preserved the exact A008 scope-currentness correction, moved the stale bridge assertion with the
+stronger READY semantics, and reached a clean local correction commit before the full repository gate.
+
+~~~text
+outer RETURN sha256
+  76b378fb4ce0d5dcb4ecac4576c5f71d1963b25a332a473309280511fb01aca6
+
+retained inner RETURN sha256
+  8a8a9faae2dab8639ac6faee555a64383c246ea6d8ee48ed67577b787b009875
+
+focused proof
+  74 / 74 PASS
+
+local candidate head
+  5d527efa6b8db42703be4758b45ea72c279869fe
+
+local candidate tree
+  0e3459747ce7c47ac36e352a8586aefe995e2b95
+
+full repository check
+  SAFE_FAILURE
+  run.full-check
+  npm run check
+~~~
+
+The five full-suite failures all came from real-browser tests whose test servers intentionally supplied
+no Companion currentness / availability owners. The stricter semantic-frame scope observation correctly
+entered Companion scope and requested those owners, so Chromium surfaced the fixture-owned 503:
+
+~~~text
+test/browser-relationships-visible-persistence-composition.test.mjs
+  FFR06 visible Relationships remains usable but persistence and hydration are held...
+
+test/context-return-identity.test.mjs
+  contextual close and Escape bind exact canonical Terrain return provenance
+
+test/relationships-human-first-flow.test.mjs
+  UX05 ordinary Relationships path...
+  UX05 progressive disclosure...
+
+test/relationships-visible-adoption.test.mjs
+  Relationships composed compact route...
+~~~
+
+This is the same fixture-currentness class already resolved earlier for the Experience Review browser
+fixtures. The production route must keep truthful provider-unavailable behavior; the fix belongs only
+in test-owned server composition.
+
+A009 stopped before remote mutation:
+
+~~~text
+commit created locally = true
+push performed         = false
+PR head changed        = false
+PR #965 remains        = aa824ef7cb0bc295cc40a4ffbb4465bd6bc24843
+~~~
+
+The outer carrier later reported `RETURN_SELECTED_SOURCE_CANDIDATE_REPOSITORYREF_MISMATCH` because the
+inner task stopped before review-snapshot formation. The retained inner RETURN is authoritative for the
+local candidate/test effects above.
+
+A010 preserves A009 product bytes and bridge assertion, and changes only the four affected browser
+fixtures so they provide bounded, no-effect current source / Companion availability / Conversation
+currentness projections.
+
+~~~text
+attempt
+  attempt.vexlife.interface-currentness-browser-realization.f2.a010.5d049cc13b82
+
+same PR branch
+  vxg-interface-currentness-browser-realization-a007
+
+expected remote head before push
+  aa824ef7cb0bc295cc40a4ffbb4465bd6bc24843
+
+outer package sha256
+  45b82958857e7624aeab908e0dbfb76988a01807e2951747a7f71f30f540103e
+
+inner package sha256
+  3ba1661486439d34406fc0fd6a84b7d3c27b4f83e127741a84cde903790db0aa
+
+formedAt
+  2026-10-30T05:29:47Z
+
+expiresAt
+  2026-10-31T05:29:47Z
+~~~
+
+A010 exact membrane:
+
+~~~text
+authored
+  reference/browser/app.js
+  reference/browser/modules/chat-controller.js
+  test/interface-currentness-browser.test.mjs
+  test/browser-companion-bridge.test.mjs
+  test/browser-relationships-visible-persistence-composition.test.mjs
+  test/context-return-identity.test.mjs
+  test/relationships-human-first-flow.test.mjs
+  test/relationships-visible-adoption.test.mjs
+
+generated Source Manifest
+  bucket-56
+  bucket-f6
+  bucket-8e
+  bucket-dd
+  bucket-0a
+  bucket-e4
+  bucket-d5
+  bucket-d7
+~~~
+
+The focused gate now includes all four A009 full-suite failing files before `npm run check`.
+
+Permanent:
+
+~~~text
+SCOPE_CURRENTNESS_FOCUSED_PROOF_PASS
++ FIXTURE_503
+!= PRODUCT_SCOPE_CORRECTION_FAILURE
+
+PRODUCTION_PROVIDER_UNAVAILABLE_503
+= TRUTHFUL
+
+TEST_WITH_UNRELATED_UI_INTENT
++ TEST_SERVER_OMITS_REQUIRED_CURRENTNESS_OWNERS
+-> BOUNDED_NO_EFFECT_TEST_OWNER_PROJECTIONS
+
+LOCAL_COMMIT
++ NO_PUSH
+-> EVIDENCE_ONLY
+-> FRESH SAME_PR ATTEMPT FROM REMOTE HEAD
+~~~
+
 ### Foundation-to-interface sequence
 
 ~~~text
