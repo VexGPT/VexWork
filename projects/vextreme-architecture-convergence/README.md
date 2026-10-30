@@ -159,6 +159,28 @@ MetaWalk movement     = NONE
 CURRENT therefore remains **Focused proof**. The worker owns the formation repair; Victor is not asked
 to interpret or debug this failure.
 
+The corrected R2 formation carrier is now prepared:
+
+~~~text
+VEXWORK-PR189-METAWALK-SOURCEOWNER-A012-FORMATION-R2
+sha256 b64f6dd58f511cd41f3ce69a0580177983b2e5ea055384b762c71b1cbde21dd4
+
+repaired:
+  top-level contract.acceptedRecipeFamilies
+  compileRelayRecipe({ recipe: ... })
+  compiler return consumed as manifest directly
+  recipe compiler owns operations / completionPolicy / continuationPlan / result
+
+qualification:
+  sealed ZIP integrity PASS
+  shell + Node syntax PASS
+  stale-API-pattern scan PASS
+  strict synthetic inner/outer formation-call-shape PASS
+  exact current SDK canonical formation re-check occurs automatically on Mac before A012 business formation
+~~~
+
+R2 remains a carrier/formation correction, not SourceOwner proof. A012 PASS is still unclaimed.
+
 A011 is retained evidence and must not be laundered into proof of changed immutable source.
 
 VexWork PR #187 separately records the reusable Process Map route to the SDK-owned canonical VexRelay
