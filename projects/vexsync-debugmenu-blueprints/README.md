@@ -255,6 +255,104 @@ culture, claim and lifecycle.
 
 <!-- [VXG RealForever][VEXSYNC][THEMEMODE][PR201][STATESTORE-STATE-RELAY][PROVED-CLEAR][CURRENT] -->
 
+### ThemeMode durability — canonical source, Android realization and device proof complete
+
+The lived swipe-kill failure has now driven the full source/target path to a machine-proven state without
+adding another observer owner.
+
+Accepted canonical VexLife source:
+
+~~~text
+PR #964
+merge/main = e7b339e59619c36f847ce00647e45770b9597135
+
+ThemeMode
+  CURRENT semantic State
+  != durable explicit selection
+
+durable selection
+  NOT_SET / LIGHT / DARK
+  OBSERVE / GET / SAVE / FORGET
+
+explicit Light/Dark selection
+  -> durable Save
+
+durable observation
+  -> same currentness / StateRelay boundary
+  -> CURRENT ThemeMode
+
+generic CURRENT emission
+  != automatic persistence
+~~~
+
+Accepted Android foundation:
+
+~~~text
+PR #196 merge/main = b7d89f719014aaa3177fef1b62272e7443f45cb8
+PR #201 merge/main = 067e61ea68b7515a4704070de596cbe194634004
+
+StateStore.observableState
+-> ThemeModeFamily.observeStore(...)
+-> same serialized StateRelay
+~~~
+
+Accepted Android ThemeMode realization:
+
+~~~text
+PR #202
+merge/main = 8e0c561a798cf40a4c8c355a507246217165eac6
+
+SharedPreferencesThemeModeStore
+  canonical durable bytes = LIGHT / DARK
+  absent preference = NOT_SET
+
+Control.Select(Light/Dark)
+  -> immediate CURRENT admission
+  -> beginLatest Save
+
+fresh process / fresh Store
+  -> durable observation
+  -> same StateRelay
+  -> restored CURRENT ThemeMode
+~~~
+
+Physical-device proof on Victor's Galaxy:
+
+~~~text
+serial = R5CT50N3ZHA
+model  = SM-S908U
+
+ThemeModeStoreInstrumentedTest
+  executedTests = 2
+  skippedTests  = 0
+  failedTests   = 0
+  BUILD SUCCESSFUL
+
+debug merged-main app install = PASS
+app force-stopped for lived check = PASS
+~~~
+
+The outer device carrier reported a consumer-only `RETURN_CANDIDATE_HEAD_MISMATCH` because this
+post-merge evidence task correctly emitted no source candidate head. The retained canonical inner VexRelay
+RETURN is PASS and binds repository before/after to merged Android main
+`8e0c561a798cf40a4c8c355a507246217165eac6`. The device task must **not** be replayed.
+
+The only remaining predicate is human-visible:
+
+~~~text
+Victor opens the installed merged app
+-> selects the opposite ThemeMode
+-> swipe-kills the app
+-> relaunches
+-> same ThemeMode remains selected and rendered
+~~~
+
+Until that lived result is observed, this Work remains `VERIFYING`. Machine persistence proof is not
+substituted for the human-visible outcome.
+
+<!-- [VXG RealForever][VEXSYNC][THEMEMODE][DURABILITY][DEVICE-PASS][LIVED-PENDING] -->
+
+
 
 ## Human outcome
 

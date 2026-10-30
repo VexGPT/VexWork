@@ -295,6 +295,78 @@ inner RETURN
 
 <!-- [VXG RealForever][VEXSYNC][THEMEMODE][PR201][STATESTORE-DEPENDENCY][PROVED-CLEAR] -->
 
+### ThemeMode process-death durability — completed machine circuit
+
+The original lived pressure:
+
+~~~text
+explicit ThemeMode works in-process
+swipe-kill
+relaunch
+-> explicit selection forgotten
+~~~
+
+is now source-explained and machine-closed through the same architecture Victor expected:
+
+~~~text
+explicit human Select
+-> ThemeModeFamily
+-> CURRENT State admission
+-> authored Save to ThemeMode Store
+
+ThemeMode Store
+-> observable durable dependency
+-> ThemeModeFamily.observeStore
+-> same StateRelay
+-> CURRENT ThemeMode
+-> VexThemePresentation
+~~~
+
+What was deliberately rejected:
+
+~~~text
+Store -> extra Connection observer -> StateRelay
+generic StateRelay emission -> automatic Save
+session/UI observes Store
+persist Kotlin enum spelling as durable vocabulary
+invent SystemAppearance fallback merely to solve process-death persistence
+~~~
+
+Accepted source coordinates:
+
+~~~text
+VexLife PR #964
+  main e7b339e59619c36f847ce00647e45770b9597135
+
+VexLife-Android PR #201
+  main 067e61ea68b7515a4704070de596cbe194634004
+
+VexLife-Android PR #202
+  main 8e0c561a798cf40a4c8c355a507246217165eac6
+~~~
+
+Physical-device proof:
+
+~~~text
+SM-S908U / R5CT50N3ZHA
+ThemeModeStoreInstrumentedTest
+2 executed / 0 failed
+merged debug app installed
+app force-stopped
+~~~
+
+The retained inner device RETURN is canonical PASS. The outer carrier mismatch is a consumer classification
+bug for a post-merge task with `candidateHead=NONE`; it does not justify device replay.
+
+Remaining edge:
+
+~~~text
+human-visible swipe-kill / relaunch persistence
+~~~
+
+<!-- [VXG RealForever][VEXSYNC][THEMEMODE][DURABILITY][MACHINE-CIRCUIT-COMPLETE] -->
+
+
 
 
 

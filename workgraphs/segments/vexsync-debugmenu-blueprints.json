@@ -233,14 +233,30 @@
         "github.comment.vexlife-android.pr201.6513404794.sourceowner-a002-pass",
         "github.review.vexlife-android.pr201.5707384411.assurance-clear",
         "evidence.vexsync.pr201.sourceowner.a002.return.sha256.6523c372b3b9db931bbdabc8f5cb6dd2cc18d041c8c1e74a44302fd5a03ab2f0",
-        "evidence.vexsync.pr201.sourceowner.a002.inner-return.sha256.2dc93a2a54bf9b6bf976fdcc4f1d2fcafe6ff99db0afb9b8b91e465b290bf2a8"
+        "evidence.vexsync.pr201.sourceowner.a002.inner-return.sha256.2dc93a2a54bf9b6bf976fdcc4f1d2fcafe6ff99db0afb9b8b91e465b290bf2a8",
+        "github.pull.vexlife.964",
+        "github.commit.vexlife.e7b339e59619c36f847ce00647e45770b9597135",
+        "github.comment.vexlife.pr964.6513787084.sourceowner-a002-recovered-pass",
+        "github.review.vexlife.pr964.5707549937.assurance-clear",
+        "github.comment.vexlife.pr964.6513813080.post-merge-verified",
+        "github.pull.vexlife-android.196",
+        "github.commit.vexlife-android.b7d89f719014aaa3177fef1b62272e7443f45cb8",
+        "github.commit.vexlife-android.067e61ea68b7515a4704070de596cbe194634004",
+        "github.pull.vexlife-android.202",
+        "github.commit.vexlife-android.8e0c561a798cf40a4c8c355a507246217165eac6",
+        "github.comment.vexlife-android.pr202.6514185746.sourceowner-a002-pass",
+        "github.review.vexlife-android.pr202.5707728648.assurance-clear",
+        "github.comment.vexlife-android.pr202.6514212431.post-merge-verified",
+        "github.comment.vexlife-android.pr202.6514312252.device-a001-recovered-pass",
+        "evidence.vexsync.pr202.device-a001.outer-return.sha256.00dc9ca32207a598ff1e9de1ec594b5394f443e8962a210278a0420819a704f7",
+        "evidence.vexsync.pr202.device-a001.inner-return.sha256.54053f86f4b373fa2802baec9415ce373c743bcac40c64bd0939e2cadf215490"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-26T07:26:46.000Z",
-      "updatedAt": "2026-10-30T02:22:01.299Z"
+      "updatedAt": "2026-10-30T03:35:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -528,6 +544,22 @@
         "github.commit.vexlife.b6d9dd4876132fc408f0eacd2bb6b5b0d56e009f"
       ],
       "createdAt": "2026-10-30T02:22:01.299Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.roundtrip.verifying.thememode-durability-device-pass-lived-pending-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.debugmenu-origin-roundtrip",
+      "priorState": "VERIFYING",
+      "nextState": "VERIFYING",
+      "reason": "Canonical VexLife ThemeMode durability source is merged/post-merge verified, Android StateStore/StateRelay prerequisites are merged, Android ThemeMode SharedPreferences realization PR #202 is merged/post-merge exact, and the retained canonical physical-device VexRelay result PASS proves ThemeModeStoreInstrumentedTest on SM-S908U with 2 executed / 0 failed plus merged debug app install and final force-stop. The outer device carrier mismatch is consumer-only because post-merge evidence has no source candidate head; device replay is forbidden. Work stays VERIFYING because Victor's human-visible select -> swipe-kill -> relaunch persistence observation is the sole remaining outcome predicate.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.commit.vexlife.e7b339e59619c36f847ce00647e45770b9597135",
+        "github.commit.vexlife-android.8e0c561a798cf40a4c8c355a507246217165eac6",
+        "github.comment.vexlife-android.pr202.6514312252.device-a001-recovered-pass",
+        "evidence.vexsync.pr202.device-a001.inner-return.sha256.54053f86f4b373fa2802baec9415ce373c743bcac40c64bd0939e2cadf215490"
+      ],
+      "createdAt": "2026-10-30T03:35:00.000Z"
     }
   ],
   "transitions": [
@@ -1025,7 +1057,23 @@
     "github.comment.vexlife-android.pr201.6513404794.sourceowner-a002-pass",
     "github.review.vexlife-android.pr201.5707384411.assurance-clear",
     "evidence.vexsync.pr201.sourceowner.a002.return.sha256.6523c372b3b9db931bbdabc8f5cb6dd2cc18d041c8c1e74a44302fd5a03ab2f0",
-    "evidence.vexsync.pr201.sourceowner.a002.inner-return.sha256.2dc93a2a54bf9b6bf976fdcc4f1d2fcafe6ff99db0afb9b8b91e465b290bf2a8"
+    "evidence.vexsync.pr201.sourceowner.a002.inner-return.sha256.2dc93a2a54bf9b6bf976fdcc4f1d2fcafe6ff99db0afb9b8b91e465b290bf2a8",
+    "github.pull.vexlife.964",
+    "github.commit.vexlife.e7b339e59619c36f847ce00647e45770b9597135",
+    "github.comment.vexlife.pr964.6513787084.sourceowner-a002-recovered-pass",
+    "github.review.vexlife.pr964.5707549937.assurance-clear",
+    "github.comment.vexlife.pr964.6513813080.post-merge-verified",
+    "github.pull.vexlife-android.196",
+    "github.commit.vexlife-android.b7d89f719014aaa3177fef1b62272e7443f45cb8",
+    "github.commit.vexlife-android.067e61ea68b7515a4704070de596cbe194634004",
+    "github.pull.vexlife-android.202",
+    "github.commit.vexlife-android.8e0c561a798cf40a4c8c355a507246217165eac6",
+    "github.comment.vexlife-android.pr202.6514185746.sourceowner-a002-pass",
+    "github.review.vexlife-android.pr202.5707728648.assurance-clear",
+    "github.comment.vexlife-android.pr202.6514212431.post-merge-verified",
+    "github.comment.vexlife-android.pr202.6514312252.device-a001-recovered-pass",
+    "evidence.vexsync.pr202.device-a001.outer-return.sha256.00dc9ca32207a598ff1e9de1ec594b5394f443e8962a210278a0420819a704f7",
+    "evidence.vexsync.pr202.device-a001.inner-return.sha256.54053f86f4b373fa2802baec9415ce373c743bcac40c64bd0939e2cadf215490"
   ],
   "formedAt": "2026-10-26T07:26:46.000Z"
 }
