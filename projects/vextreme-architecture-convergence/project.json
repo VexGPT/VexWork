@@ -50,7 +50,11 @@
     "repo.vextreme:lib/logger-codes.js",
     "repo.vextreme-sdk",
     "source.vexrelay.current-contract/v1",
-    "repo.vexlife-android:architecture/relay/README.md"
+    "repo.vexlife-android:architecture/relay/README.md",
+    "github.pull.vexwork.189",
+    "github.commit.vexwork.5ac93d917169d0b80e676e2e4c13812113843376",
+    "github.issue-comment.vexwork.189.6518006850",
+    "github.issue-comment.vexwork.189.6519147239"
   ],
   "formedAt": "2026-10-29T11:45:00.000Z"
 }
