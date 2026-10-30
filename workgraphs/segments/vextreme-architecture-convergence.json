@@ -315,14 +315,21 @@
         "github.commit.vexwork.763d27f4ec5afc133c71e018c7d4532fc155fe95",
         "github.issue-comment.vexwork.189.6519581652",
         "github.issue-comment.vexwork.189.6519593982",
-        "github.pull.vexwork.187"
+        "github.pull.vexwork.187",
+        "github.commit.vexwork.37137864e16206ec7e7305b899625841085efdbb",
+        "github.commit.vexwork.80e8cb441ae5c7270bb001c69ced4e7c33b90224",
+        "artifact.vexrelay.outer-return.sha256.4ac1a1141e80875f8a4e0afa80c1594f824a85168f0b50f6e42862c0c764d501",
+        "artifact.vexrelay.inner-return.sha256.d012ae95b37b889f6b33d273378360be7b241d44841406fbf5ce939f6fb2a963",
+        "github.issue-comment.vexwork.187.6519751897",
+        "github.issue-comment.vexwork.187.6519761811",
+        "github.issue-comment.vexwork.187.6519798670"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-30T02:25:00.000Z",
-      "updatedAt": "2026-10-30T09:36:30.000Z"
+      "updatedAt": "2026-10-30T09:49:00.000Z"
     }
   ],
   "transitions": [
