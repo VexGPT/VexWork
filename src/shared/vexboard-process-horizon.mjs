@@ -222,6 +222,7 @@ export function projectProcessHorizonBoard({
     const previousAnnotationRef = slotRef(boardRef, 'annotation.previous-detail');
     const previousSources = nodeSourceRefs(
       family.sourceRefs,
+      previous.stateRef,
       previous.nodeRef,
       previous.transitionRef,
       previous.evidenceRefs,
