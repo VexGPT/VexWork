@@ -153,7 +153,6 @@ export function projectProcessHorizonBoard({
     state.previousStateRefOrNull === null ? [] : [state.previousStateRefOrNull],
     state.lastAcceptedTransitionOrNull === null ? [] : [
       state.lastAcceptedTransitionOrNull.transitionRef,
-      ...state.lastAcceptedTransitionOrNull.evidenceRefs,
     ],
     horizon.current.nodeRef,
     horizon.current.currentTruthRefs,
@@ -378,7 +377,6 @@ export function projectProcessHorizonBoard({
       currentEvidenceRefs,
       currentIdentityRefs,
       family.familyRef,
-      state.stateRef,
       scope.scopeRef,
     ),
   });
