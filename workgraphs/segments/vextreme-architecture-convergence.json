@@ -285,7 +285,7 @@
       "label": "Converge VexRelay Protocol with Family Circuit / VexArchitecture",
       "purpose": "Port and refine the operational VexRelay protocol into the source-managed Vex architecture / Family Circuit model so a human or fresh agent can understand the Relay question, semantic owners, current State/Control/Act/Effect/Connection relationships, task families, and safe execution route without reconstructing a giant ChatGPT Project manual or hand-authoring low-level harness parameters. Preserve Vextreme-SDK current-contract, task/RETURN, validator, carrier and runtime authority; use accepted VexLife-Android Family Circuit and Compound Relay source as architecture evidence rather than a Kotlin transplant; move protocol-owned invariants and repeatable recipe plumbing out of AI guesswork; and prove compatibility before any runtime replacement or Project-source reduction.",
       "workClass": "TASK",
-      "state": "READY",
+      "state": "RUNNING",
       "workDisposition": "ACTIVE",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
@@ -303,14 +303,18 @@
         "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
         "repo.vexlife-android:architecture/behavior/VEX-BEHAVIOR-FAMILY-BLUEPRINT.md",
         "repo.vexlife-android:architecture/relay/README.md",
-        "github.commit.vexlife-android.7ac61612fb1fb30f26e7fd3794bd4382e905a0d7"
+        "github.commit.vexlife-android.7ac61612fb1fb30f26e7fd3794bd4382e905a0d7",
+        "github.pull.vexwork.189",
+        "github.commit.vexwork.5ac93d917169d0b80e676e2e4c13812113843376",
+        "github.issue-comment.vexwork.189.6518006850",
+        "github.issue-comment.vexwork.189.6519147239"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
-      "authorityDisposition": "NO_AUTHORITY",
-      "effectDisposition": "NO_EFFECTS",
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-30T02:25:00.000Z",
-      "updatedAt": "2026-10-30T02:25:00.000Z"
+      "updatedAt": "2026-10-30T09:14:30.000Z"
     }
   ],
   "transitions": [
@@ -454,6 +458,22 @@
         "repo.vextreme:tests/85-terrain-view-contract.test.js"
       ],
       "createdAt": "2026-10-29T14:55:30.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.architecture-convergence.vexrelay-family-circuit-convergence.running.pr189-active",
+      "workRef": "work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "VexWork PR #189 is an active bounded implementation/proof lane for the Vex Process Family / MetaWalk patient-zero of Relay / Family Circuit convergence. The exact current candidate is head 5ac93d917169d0b80e676e2e4c13812113843376 / tree e6df3aaa333c71143da8217f8764161a884e5f04. A011 proved its predecessor, fresh Assurance requested the bounded SEMANTIC_GAP cold-reader correction, and current work remains at Focused proof. The first A012 host formation failed before canonical task formation due a worker-owned formation-runner API-shape defect, so candidate truth is unchanged and the Work remains RUNNING rather than reverting to READY or advancing to VERIFYING.",
+      "actorRef": "actor.chatgpt.vex-process-family-metawalk",
+      "sourceRefs": [
+        "github.pull.vexwork.189",
+        "github.commit.vexwork.5ac93d917169d0b80e676e2e4c13812113843376",
+        "github.issue-comment.vexwork.189.6518006850",
+        "github.issue-comment.vexwork.189.6519147239"
+      ],
+      "createdAt": "2026-10-30T09:14:30.000Z"
     }
   ],
   "sourceRefs": [
