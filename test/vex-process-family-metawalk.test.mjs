@@ -37,7 +37,6 @@ function familyFixture() {
   return {
     schemaVersion: 'vexwork.process-family/v1',
     familyRef: 'process-family.test.metawalk',
-    purpose: 'Prove the smallest current-state and bounded-horizon relationship.',
     entryNodeRef: 'node.recover',
     layers: [
       'FORMATION',
@@ -307,7 +306,6 @@ test('ProcessFamily owns its layer vocabulary instead of inheriting MetaWalk lay
   const family = normalizeProcessFamily({
     schemaVersion: 'vexwork.process-family/v1',
     familyRef: 'process-family.test.custom-layers',
-    purpose: 'Prove layer vocabulary is local to one ProcessFamily definition.',
     entryNodeRef: 'node.alpha',
     layers: ['DISCOVER', 'REALIZE'],
     entryLayer: 'DISCOVER',
@@ -699,6 +697,13 @@ test('ProcessFamily definition fails closed on identity, topology and movement c
   const wrongSchema = structuredClone(schema);
   wrongSchema.schemaVersion = 'wrong';
   assert.throws(() => normalizeProcessFamily(wrongSchema), /ProcessFamily schema mismatch/);
+
+  const unconsumedFamilyPurpose = structuredClone(schema);
+  unconsumedFamilyPurpose.purpose = 'No current machine consumer owns this field.';
+  assert.throws(
+    () => normalizeProcessFamily(unconsumedFamilyPurpose),
+    /ProcessFamily schema drift/,
+  );
 
   const duplicateNode = structuredClone(schema);
   duplicateNode.nodes.push(structuredClone(duplicateNode.nodes[0]));
@@ -1211,7 +1216,6 @@ test('initial bounded horizon has no PREVIOUS slot and may have no FURTHER route
   const tiny = normalizeProcessFamily({
     schemaVersion: 'vexwork.process-family/v1',
     familyRef: 'process-family.test.tiny',
-    purpose: 'Exercise the initial bounded horizon without previous or further process coordinates.',
     entryNodeRef: 'node.start',
     layers: ['START', 'DONE'],
     entryLayer: 'START',
