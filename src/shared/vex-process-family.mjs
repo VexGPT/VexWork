@@ -96,7 +96,6 @@ function normalizeNode(input) {
 function normalizeRelationship(input, movementClasses) {
   exactKeys(input, [
     'relationshipRef',
-    'movementClass',
     'fromRef',
     'toRef',
     'label',
@@ -231,9 +230,6 @@ function normalizeTransition(input, label, family) {
   ], 'process transition ' + label);
 
   const transitionRef = stableRef(input.transitionRef, 'process transition ' + label + '.transitionRef');
-  const movementClass = input.movementClass === null
-    ? null
-    : text(input.movementClass, 'process transition ' + label + '.movementClass');
   const fromNodeRef = stableRef(input.fromNodeRef, 'process transition ' + label + '.fromNodeRef');
   const toNodeRef = stableRef(input.toNodeRef, 'process transition ' + label + '.toNodeRef');
   assert(family.nodes.some((node) => node.nodeRef === fromNodeRef), 'process transition fromNodeRef missing');
@@ -244,17 +240,12 @@ function normalizeTransition(input, label, family) {
     : stableRef(input.relationshipRefOrNull, 'process transition ' + label + '.relationshipRefOrNull');
 
   if (relationshipRefOrNull === null) {
-    assert(
-      movementClass === null,
-      'relationship-free layer transition must not claim a semantic movementClass',
-    );
     assert(fromNodeRef === toNodeRef, 'relationship-free layer transition must stay on the same process node');
   } else {
     const relationship = family.relationships.find((candidate) => candidate.relationshipRef === relationshipRefOrNull);
     assert(relationship, 'process transition relationship missing: ' + relationshipRefOrNull);
     assert(relationship.fromRef === fromNodeRef, 'process transition relationship fromRef mismatch');
     assert(relationship.toRef === toNodeRef, 'process transition relationship toRef mismatch');
-    assert(relationship.movementClass === movementClass, 'process transition movementClass mismatch');
   }
 
   const fromLayer = layer(input.fromLayer, 'process transition ' + label + '.fromLayer', family);
@@ -401,7 +392,6 @@ export function admitProcessTransition({
   state: stateInput,
   transitionRef,
   relationshipRefOrNull = null,
-  movementClass = null,
   nextLayer,
   evidenceRefs,
   carriedIdentityRefs,
@@ -419,7 +409,6 @@ export function admitProcessTransition({
 
   if (relationship) {
     assert(relationship.fromRef === currentNodeRef, 'process transition must leave CURRENT node');
-    assert(relationship.movementClass === movementClass, 'process transition movementClass must match relationship');
     const requiredPredicateRefs = requiredEntryPredicateRefs(relationship);
     const satisfied = new Set(refs(
       satisfiedPredicateRefs,
@@ -432,10 +421,6 @@ export function admitProcessTransition({
     );
   } else {
     assert(relationshipRefOrNull === null, 'process transition relationship missing');
-    assert(
-      movementClass === null,
-      'relationship-free layer transition must not claim a semantic movementClass',
-    );
   }
 
   const toNodeRef = relationship ? relationship.toRef : currentNodeRef;
@@ -454,7 +439,6 @@ export function admitProcessTransition({
   const transition = {
     transitionRef,
     relationshipRefOrNull,
-    movementClass,
     fromNodeRef: currentNodeRef,
     toNodeRef,
     fromLayer: state.layer,
@@ -554,6 +538,9 @@ export function projectProcessHorizon(familyInput, stateInput, {
   const previousNode = last
     ? family.nodes.find((node) => node.nodeRef === last.fromNodeRef)
     : null;
+  const previousRelationship = last?.relationshipRefOrNull
+    ? family.relationships.find((relationship) => relationship.relationshipRef === last.relationshipRefOrNull)
+    : null;
 
   const nextCandidates = outgoing.map((relationship) => {
     const node = family.nodes.find((candidate) => candidate.nodeRef === relationship.toRef);
@@ -579,7 +566,7 @@ export function projectProcessHorizon(familyInput, stateInput, {
       nodeRef: previousNode.nodeRef,
       label: previousNode.label,
       transitionRef: last.transitionRef,
-      movementClass: last.movementClass,
+      movementClass: previousRelationship?.movementClass ?? null,
       fromLayer: last.fromLayer,
       toLayer: last.toLayer,
       evidenceRefs: [...last.evidenceRefs],
