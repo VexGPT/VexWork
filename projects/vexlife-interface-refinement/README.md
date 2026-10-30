@@ -2976,6 +2976,89 @@ That sequence is the architectural bridge F2 must realize. It should remain sour
 that a fresh instance can recover parameters from owner/State/law identities rather than guessing
 what an underspecified name like "READY", "refresh", "recovery", or "current" means.
 
+### A005 — current-main composition PASS; F0/F1 accepted on main
+
+A005 returned a clean PASS at both the outer VexLocalBridge layer and the retained inner VexRelay layer.
+
+~~~text
+outer RETURN
+  sha256 = d27dab308bfb9a721cce01988de1acfe83da2680cc0f2693e5f51572d2ca1500
+  disposition = PASS
+
+retained inner RETURN
+  sha256 = e87d8a62ff1321d998e39409132dac410bbb4abcdc576dc8125cc677bc4911b4
+  disposition = PASS
+  first failure = NONE
+  candidate/harness/environment/unknown findings = NONE
+~~~
+
+Exact composition proved:
+
+~~~text
+current main before merge
+  e7b339e59619c36f847ce00647e45770b9597135
+
+cleared PR #963 head
+  a5cbb64b29111a99c4b98901e04ac7000538d3b0
+
+GitHub synthetic merge
+  0e2d2bce875387c0c507fd05a4513e45c90993ed
+
+synthetic merge tree
+  bf4730f5f3c0dc355541ae0aa31c56fad4482fa0
+
+npm run check
+  PASS
+
+Blueprint
+  CURRENT / VALID
+
+Build Admission
+  CURRENT
+
+Source Manifest
+  CURRENT
+~~~
+
+Lifecycle currentness then proved no branch protection or required status checks, exact head/main and
+unchanged merge preview. FormalReviewer semantic approval was recorded on exact head
+`a5cbb64b29111a99c4b98901e04ac7000538d3b0`, PR #963 transitioned READY, and OwnerMergeDuty performed
+an ordinary expected-head merge.
+
+Accepted VexLife main:
+
+~~~text
+merge/main = 92e810c91b09e7c74a8e1c7da8d2fade7e070c3a
+
+ordered parents
+  e7b339e59619c36f847ce00647e45770b9597135
+  a5cbb64b29111a99c4b98901e04ac7000538d3b0
+
+resulting tree
+  bf4730f5f3c0dc355541ae0aa31c56fad4482fa0
+~~~
+
+The real merge tree is byte/tree-identical to the exact A005-proven synthetic composition. F0/F1 is
+therefore accepted source and the previously held F2 browser realization is released.
+
+Permanent:
+
+~~~text
+A005_COMPOSITION_PASS
++ FORMAL_REVIEW_APPROVE_EXACT_HEAD
++ READY
++ EXPECTED_HEAD_MERGE
++ REAL_MERGE_TREE == PROVEN_SYNTHETIC_TREE
+-> F0_F1_ACCEPTED_SOURCE
+
+F0_F1_ACCEPTED_SOURCE
+-> RELEASE_F2
+
+F2
+!= REIMPLEMENT_COMPOUND_FOUNDATION
+!= GIVE_RELATIONSHIP_EFFECT_AUTHORITY
+~~~
+
 ### Foundation-to-interface sequence
 
 ~~~text
