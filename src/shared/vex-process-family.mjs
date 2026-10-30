@@ -288,7 +288,7 @@ export function normalizeProcessState(input, familyInput) {
 
   const currentNodeRef = stableRef(input.currentNodeRef, 'ProcessFamily.State.currentNodeRef');
   assert(family.nodes.some((node) => node.nodeRef === currentNodeRef), 'ProcessFamily.State currentNodeRef missing');
-  const currentLayer = layer(input.depth, 'ProcessFamily.State.layer');
+  const currentLayer = layer(input.layer, 'ProcessFamily.State.layer');
 
   if (lastAcceptedTransitionOrNull === null) {
     assert(previousStateRefOrNull === null, 'ProcessFamily.State without transition must not claim a previous State');
@@ -301,7 +301,7 @@ export function normalizeProcessState(input, familyInput) {
     );
     assert(
       lastAcceptedTransitionOrNull.toLayer === currentLayer,
-      'ProcessFamily.State depth must match last accepted transition',
+      'ProcessFamily.State layer must match last accepted transition',
     );
   }
 
@@ -443,7 +443,7 @@ export function admitProcessTransition({
     familyRef: family.familyRef,
     scopeRef: state.scopeRef,
     currentNodeRef: toNodeRef,
-    depth: nextLayer,
+    layer: nextLayer,
     acceptedEvidenceRefs: nextEvidence,
     carriedIdentityRefs: nextIdentities,
     previousStateRefOrNull: state.stateRef,
