@@ -10,6 +10,7 @@ import {
   projectProcessHorizon,
 } from '../src/shared/vex-process-family.mjs';
 import { normalizeBoardGraph, normalizeBoardProjection } from '../src/shared/vexboard-model.mjs';
+import { projectProcessHorizonBoard } from '../src/shared/vexboard-process-horizon.mjs';
 import { normalizeBoardSourceCatalog, resolveBoardSource } from '../src/shared/vexboard-source-resolver.mjs';
 
 const read = (relative) => JSON.parse(fs.readFileSync(new URL('../' + relative, import.meta.url), 'utf8'));
@@ -310,5 +311,96 @@ test('horizon cannot claim an admitted next edge that is not adjacent to CURRENT
       admittedRelationshipRefs: ['rel.contract-implement'],
     }),
     /must leave CURRENT node/,
+  );
+});
+
+
+test('bounded-horizon VexBoard projection deep-reads CURRENT but withholds future reading sources', () => {
+  const family = normalizeProcessFamily(familyFixture());
+  const start = createProcessState(family, {
+    stateRef: 'state.metawalk.001',
+    scopeRef: 'work.test.outcome',
+    depth: 'FORMATION',
+  });
+  const current = admitProcessTransition({
+    family,
+    state: start,
+    transitionRef: 'transition.metawalk.001',
+    relationshipRefOrNull: 'rel.recover-contract',
+    movementClass: 'ADVANCES',
+    nextDepth: 'CONTRACT',
+    evidenceRefs: ['evidence.pressure-grounded'],
+    carriedIdentityRefs: ['identity.work.test.outcome'],
+    nextStateRef: 'state.metawalk.002',
+  });
+
+  const board = projectProcessHorizonBoard({
+    family,
+    state: current,
+    scope: {
+      scopeRef: 'work.test.outcome',
+      label: 'Test outcome',
+      purpose: 'Prove a fresh instance can perceive only the bounded process neighborhood it has earned.',
+      sourceRefs: ['work.test.outcome', sourcePath],
+    },
+    boardRef: 'board.test.process-horizon',
+    admittedRelationshipRefs: ['rel.contract-implement'],
+  });
+
+  assert.equal(board.schemaVersion, 'vexboard.local-draft/v1');
+  assert.equal(board.mode, 'READ_ONLY_SOURCE');
+  const graph = normalizeBoardGraph(board.graph);
+  const projection = normalizeBoardProjection(board.projection, graph);
+  assert.equal(projection.graphRef, graph.graphRef);
+
+  const currentNode = graph.nodes.find((entry) => entry.label.startsWith('CURRENT · '));
+  const previousNode = graph.nodes.find((entry) => entry.label.startsWith('PREVIOUS · '));
+  const nextNode = graph.nodes.find((entry) => entry.label.startsWith('NEXT · '));
+  const laterNode = graph.nodes.find((entry) => entry.label.startsWith('LATER · '));
+
+  assert.equal(currentNode?.label, 'CURRENT · Contract');
+  assert.equal(currentNode?.sourceRefs.includes('source.node.contract.read-now'), true);
+  assert.equal(currentNode?.sourceRefs.includes('proof.node.contract'), true);
+
+  assert.equal(previousNode?.label, 'PREVIOUS · Recover');
+  assert.equal(previousNode?.sourceRefs.includes('evidence.pressure-grounded'), true);
+
+  assert.equal(nextNode?.label, 'NEXT · Implement');
+  assert.equal(nextNode?.sourceRefs.includes('predicate.node.implement.entry'), true);
+  assert.equal(nextNode?.sourceRefs.includes('predicate.implementation.allowed'), true);
+  assert.equal(nextNode?.sourceRefs.includes('source.node.implement.read-now'), false);
+  assert.equal(nextNode?.sourceRefs.includes('proof.node.implement'), false);
+
+  assert.equal(laterNode?.label, 'LATER · Prove');
+  assert.equal(laterNode?.sourceRefs.includes('source.node.prove.read-now'), false);
+  assert.equal(laterNode?.sourceRefs.includes('proof.node.prove'), false);
+
+  const nextRelationship = graph.relationships.find((entry) =>
+    entry.fromRef.includes('reference.current') &&
+    entry.toRef.includes('reference.next')
+  );
+  assert.match(nextRelationship?.labelOrNull ?? '', /ADVANCES · ADMITTED/);
+});
+
+test('bounded-horizon projector rejects a scope projection that does not match current ProcessFamily State', () => {
+  const family = normalizeProcessFamily(familyFixture());
+  const state = createProcessState(family, {
+    stateRef: 'state.metawalk.001',
+    scopeRef: 'work.test.outcome',
+  });
+
+  assert.throws(
+    () => projectProcessHorizonBoard({
+      family,
+      state,
+      scope: {
+        scopeRef: 'work.other.outcome',
+        label: 'Wrong outcome',
+        purpose: 'This must not project over a foreign process State.',
+        sourceRefs: ['work.other.outcome'],
+      },
+      boardRef: 'board.test.process-horizon.foreign',
+    }),
+    /scopeRef must match ProcessFamily\.State scopeRef/,
   );
 });
