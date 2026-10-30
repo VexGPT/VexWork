@@ -70,11 +70,11 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-10-29T20:01:00.000Z",
-      "updatedAt": "2026-10-30T05:16:01.000Z",
+      "updatedAt": "2026-10-30T05:21:06.000Z",
       "workRef": "work.vexlife.interface-refinement.interface-compound-relay",
       "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
       "label": "Current — Interface Compound Relay convergence",
-      "purpose": "Finish Interface Compound Relay F2/F3. A007 is fully source-owner proved and published as VexLife PR #965 at exact head aa824ef7cb0bc295cc40a4ffbb4465bd6bc24843 / tree 0cb01bb2c3e1d6bd93fd2c7bda5318433ec90b2c with focused tests, Blueprint, Source Manifest, full npm run check, exact 32-path membrane, clean signed commit and non-force push PASS. Fresh Independent Assurance recorded CHANGES_REQUESTED because Back/history semantic-frame scope restoration did not trigger Interface re-observation and the Companion READY consumer did not independently verify relationship.scope equals the selected channel, allowing another Conversation's READY to transiently authorize Send. A008 is the same-PR correction: semantic project/thread/channel frame changes request a new observation and the Send consumer requires exact scope match. Its correction membrane is app.js, chat-controller.js, interface-currentness-browser.test.mjs plus buckets 56/f6/8e. Consume A008 RETURN next; approval/READY/merge/F3 remain held.",
+      "purpose": "Finish Interface Compound Relay F2/F3. A007 remains published as PR #965 at exact head aa824ef7cb0bc295cc40a4ffbb4465bd6bc24843 and had CHANGES_REQUESTED for selected-Conversation scope currentness. A008 applied that exact product correction locally; its dedicated scope-exact/history proof passed, and 73/74 focused tests passed. The sole failure was a stale browser-companion-bridge static regex that still expected the pre-correction READY gate shape. No A008 commit or push occurred. A009 preserves the A008 product correction, updates only that stale assertion, expands the correction membrane to four authored files plus buckets 56/f6/8e/dd, and remains bound to the same PR branch with expected remote head aa824ef7. Consume A009 RETURN next; fresh Assurance/READY/merge/F3 remain held.",
       "workClass": "TASK",
       "state": "RUNNING",
       "priorityClass": "IMMEDIATE",
@@ -216,7 +216,12 @@
         "github.pull.vexlife.965.comment.6515500451",
         "invariant.vexlife.interface.currentness.ready-selected-conversation",
         "relay.package.vexlife.interface-currentness-browser-realization.f2.a008.sha256.1a6123b6601bd4063fd770b537f9cfe20dee7a1d4e0dc72e67a2d79949836a4f",
-        "relay.inner.vexlife.interface-currentness-browser-realization.f2.a008.sha256.c7133fc9a595f57de32922680ab14b5bd8b2b59cbda1ee926205bd5831cf5c75"
+        "relay.inner.vexlife.interface-currentness-browser-realization.f2.a008.sha256.c7133fc9a595f57de32922680ab14b5bd8b2b59cbda1ee926205bd5831cf5c75",
+        "relay.return.vexlife.interface-currentness-browser-realization.f2.a008.outer.sha256.01ab1b95a78cbc4f813879bcca04d3488d284081dfe5cb7b87ab813d36eb1803",
+        "relay.return.vexlife.interface-currentness-browser-realization.f2.a008.inner.sha256.d416960938bf109835f79b93bbe83589871c0b28206cbbb26f977732475c7542",
+        "finding.vexlife.interface-currentness.f2.a008.stale-browser-companion-bridge-ready-gate-assertion",
+        "relay.package.vexlife.interface-currentness-browser-realization.f2.a009.sha256.a53ce73ab7a7699131bd49d077c1f1686a51f970e2c69dab4dfdd282140f2984",
+        "relay.inner.vexlife.interface-currentness-browser-realization.f2.a009.sha256.f12efb3e82c33cfe2c41d20a4d8bdaa103b2e8f7be8425a7f882d673634ca696"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
@@ -1280,6 +1285,23 @@
         "relay.inner.vexlife.interface-currentness-browser-realization.f2.a008.sha256.c7133fc9a595f57de32922680ab14b5bd8b2b59cbda1ee926205bd5831cf5c75"
       ],
       "createdAt": "2026-10-30T05:16:01.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.interface-refinement.interface-compound-relay.running-running.f2-a008-stale-test-recovery-a009",
+      "workRef": "work.vexlife.interface-refinement.interface-compound-relay",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING",
+      "reason": "A008's product scope-currentness correction and dedicated proof passed, but one stale browser-companion-bridge static assertion still expected the old READY gate. A008 stopped before commit/push. A009 preserves the product correction and updates only that stale assertion plus its Source Manifest bucket.",
+      "actorRef": "actor.chatgpt.vexlife-interface-compound-relay",
+      "sourceRefs": [
+        "relay.return.vexlife.interface-currentness-browser-realization.f2.a008.outer.sha256.01ab1b95a78cbc4f813879bcca04d3488d284081dfe5cb7b87ab813d36eb1803",
+        "relay.return.vexlife.interface-currentness-browser-realization.f2.a008.inner.sha256.d416960938bf109835f79b93bbe83589871c0b28206cbbb26f977732475c7542",
+        "finding.vexlife.interface-currentness.f2.a008.stale-browser-companion-bridge-ready-gate-assertion",
+        "relay.package.vexlife.interface-currentness-browser-realization.f2.a009.sha256.a53ce73ab7a7699131bd49d077c1f1686a51f970e2c69dab4dfdd282140f2984",
+        "relay.inner.vexlife.interface-currentness-browser-realization.f2.a009.sha256.f12efb3e82c33cfe2c41d20a4d8bdaa103b2e8f7be8425a7f882d673634ca696"
+      ],
+      "createdAt": "2026-10-30T05:21:06.000Z"
     }
   ],
   "sourceRefs": [
@@ -1428,7 +1450,12 @@
     "github.pull.vexlife.965.comment.6515500451",
     "invariant.vexlife.interface.currentness.ready-selected-conversation",
     "relay.package.vexlife.interface-currentness-browser-realization.f2.a008.sha256.1a6123b6601bd4063fd770b537f9cfe20dee7a1d4e0dc72e67a2d79949836a4f",
-    "relay.inner.vexlife.interface-currentness-browser-realization.f2.a008.sha256.c7133fc9a595f57de32922680ab14b5bd8b2b59cbda1ee926205bd5831cf5c75"
+    "relay.inner.vexlife.interface-currentness-browser-realization.f2.a008.sha256.c7133fc9a595f57de32922680ab14b5bd8b2b59cbda1ee926205bd5831cf5c75",
+    "relay.return.vexlife.interface-currentness-browser-realization.f2.a008.outer.sha256.01ab1b95a78cbc4f813879bcca04d3488d284081dfe5cb7b87ab813d36eb1803",
+    "relay.return.vexlife.interface-currentness-browser-realization.f2.a008.inner.sha256.d416960938bf109835f79b93bbe83589871c0b28206cbbb26f977732475c7542",
+    "finding.vexlife.interface-currentness.f2.a008.stale-browser-companion-bridge-ready-gate-assertion",
+    "relay.package.vexlife.interface-currentness-browser-realization.f2.a009.sha256.a53ce73ab7a7699131bd49d077c1f1686a51f970e2c69dab4dfdd282140f2984",
+    "relay.inner.vexlife.interface-currentness-browser-realization.f2.a009.sha256.f12efb3e82c33cfe2c41d20a4d8bdaa103b2e8f7be8425a7f882d673634ca696"
   ],
   "formedAt": "2026-10-25T01:23:08.000Z"
 }
