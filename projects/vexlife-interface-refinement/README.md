@@ -3733,6 +3733,135 @@ A007_SEARCH_NEEDLES
 = SOURCE_VERIFIED_UNIQUE_WITHIN_TARGET_SECTION
 ~~~
 
+### F2 A007 — source-owner PASS; exact-head Assurance requires one scope-currentness correction
+
+A007 is the first full F2 source-owner publication success.
+
+~~~text
+outer RETURN sha256
+  dc79665b9a5e75be1340e663ca61c8e3649fbd80fe84bf183fa14a04bb402789
+
+retained inner RETURN sha256
+  c9b2beb800a1abe917d44933d57080b4ad6aaedeab0e34f93795b39f87d73bcb
+
+candidate head
+  aa824ef7cb0bc295cc40a4ffbb4465bd6bc24843
+
+candidate tree
+  0cb01bb2c3e1d6bd93fd2c7bda5318433ec90b2c
+
+PR
+  VexLife #965
+  vxg-interface-currentness-browser-realization-a007
+  draft / open / mergeable
+
+source-owner proof
+  expanded focused tests PASS
+  Blueprint PASS
+  Source Manifest PASS
+  exact 32-path membrane PASS
+  signed-off commit PASS
+  full npm run check PASS
+  clean worktree PASS
+  non-force push PASS
+~~~
+
+Fresh Independent Assurance on that exact head found one remaining semantic gap:
+
+~~~text
+navigation.selectThread/selectChannel
+  -> Interface observation
+
+navigation Back/history semantic-frame restoration
+  -> project/thread/channel changed directly
+  -> no Interface observation
+
+Companion Send gate
+  -> accepted any relationship kind=READY
+  -> did not independently require relationship.scope == selected channel
+~~~
+
+That permits a READY relationship admitted for Conversation B to survive a Back/history transition to
+Conversation A until another trigger occurs, so B's currentness can transiently authorize A. This directly
+violates `READY_REQUIRES_CURRENT_SELECTED_CONVERSATION`.
+
+Assurance disposition:
+
+~~~text
+CHANGES_REQUESTED
+head  aa824ef7cb0bc295cc40a4ffbb4465bd6bc24843
+tree  0cb01bb2c3e1d6bd93fd2c7bda5318433ec90b2c
+PR comment 6515500451
+~~~
+
+A008 is a same-PR correction. It does not reopen F2 architecture. It changes only:
+
+~~~text
+reference/browser/app.js
+  semantic project/thread/channel frame changes
+  -> request new Interface observation
+  -> observe() synchronously emits OBSERVING before async reads
+
+reference/browser/modules/chat-controller.js
+  Companion READY consumer
+  -> relationship kind READY
+  + relationship.scope exact project/thread/channel match
+  + no turn pending
+
+test/interface-currentness-browser.test.mjs
+  proves both bindings
+~~~
+
+Generated Source Manifest buckets are 56, f6 and 8e. The exact correction membrane is six paths.
+
+~~~text
+attempt
+  attempt.vexlife.interface-currentness-browser-realization.f2.a008.cf41f47e42e9
+
+same PR branch
+  vxg-interface-currentness-browser-realization-a007
+
+expected remote head before push
+  aa824ef7cb0bc295cc40a4ffbb4465bd6bc24843
+
+outer package sha256
+  1a6123b6601bd4063fd770b537f9cfe20dee7a1d4e0dc72e67a2d79949836a4f
+
+inner package sha256
+  c7133fc9a595f57de32922680ab14b5bd8b2b59cbda1ee926205bd5831cf5c75
+
+formedAt
+  2026-10-30T05:16:01Z
+
+expiresAt
+  2026-10-31T05:16:01Z
+~~~
+
+A008 starts from exact published A007 head, requires current main to remain
+`92e810c91b09e7c74a8e1c7da8d2fade7e070c3a`, verifies the existing remote branch at the A007 head,
+runs focused + Blueprint + Source Manifest + full repository proof, and may non-force push only with
+`expectedRemoteHead=aa824ef7...`. It verifies the existing PR is still #965; it cannot create a duplicate
+PR under the expected-existing-PR binding.
+
+Permanent:
+
+~~~text
+SOURCE_OWNER_PASS
+!= SEMANTIC_CLEARANCE
+
+READY(kind)
+without
+READY(scope == selected Conversation)
+!= SEND_CURRENTNESS
+
+SEMANTIC_FRAME_SCOPE_CHANGED
+-> NEW_OBSERVATION_GENERATION
+
+CONSUMER_SCOPE_GATE
++ OBSERVATION_SCOPE_TRIGGER
+-> ANOTHER_CONVERSATION_CANNOT_AUTHORIZE_SEND
+~~~
+
 ### Foundation-to-interface sequence
 
 ~~~text
