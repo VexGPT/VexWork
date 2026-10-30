@@ -3862,6 +3862,118 @@ CONSUMER_SCOPE_GATE
 -> ANOTHER_CONVERSATION_CANNOT_AUTHORIZE_SEND
 ~~~
 
+### F2 A008 — product correction proved; stale bridge assertion blocked publication
+
+A008 admitted cleanly from exact published PR #965 head `aa824ef7cb0bc295cc40a4ffbb4465bd6bc24843`
+and applied the narrow Assurance correction in a disposable RUN_ROOT.
+
+~~~text
+outer RETURN sha256
+  01ab1b95a78cbc4f813879bcca04d3488d284081dfe5cb7b87ab813d36eb1803
+
+retained inner RETURN sha256
+  d416960938bf109835f79b93bbe83589871c0b28206cbbb26f977732475c7542
+
+inner disposition
+  SAFE_FAILURE
+
+focused tests
+  74 total
+  73 PASS
+  1 FAIL
+~~~
+
+The new A008 proof itself passed:
+
+~~~text
+selected Conversation READY is scope-exact at the Send consumer
+and semantic-frame scope changes re-observe
+  PASS
+~~~
+
+The only failing assertion was an older static source-shape expectation in
+`test/browser-companion-bridge.test.mjs`:
+
+~~~text
+expected old shape
+  interfaceCurrentness.kind === 'READY' && !companionTurnPending
+
+corrected source shape
+  interfaceCurrentnessMatchesChannel(channel) && !companionTurnPending
+~~~
+
+That old assertion predated the exact-head Assurance correction and therefore rejected the stronger gate it
+should now require. No product rollback is warranted.
+
+A008 stopped before commit or push:
+
+~~~text
+local correction branch = formed in disposable RUN_ROOT
+product source mutation  = applied locally
+tests executed           = true
+commit                    = NONE
+push                      = NONE
+PR head mutation          = NONE
+~~~
+
+A009 preserves the exact A008 product correction and adds only that stale static assertion update plus its
+generated Source Manifest bucket.
+
+~~~text
+attempt
+  attempt.vexlife.interface-currentness-browser-realization.f2.a009.fa4e09649cf2
+
+same PR branch
+  vxg-interface-currentness-browser-realization-a007
+
+expected remote head before push
+  aa824ef7cb0bc295cc40a4ffbb4465bd6bc24843
+
+outer package sha256
+  a53ce73ab7a7699131bd49d077c1f1686a51f970e2c69dab4dfdd282140f2984
+
+inner package sha256
+  f12efb3e82c33cfe2c41d20a4d8bdaa103b2e8f7be8425a7f882d673634ca696
+
+formedAt
+  2026-10-30T05:21:06Z
+
+expiresAt
+  2026-10-31T05:21:06Z
+~~~
+
+A009 exact correction membrane:
+
+~~~text
+authored
+  reference/browser/app.js
+  reference/browser/modules/chat-controller.js
+  test/interface-currentness-browser.test.mjs
+  test/browser-companion-bridge.test.mjs
+
+generated
+  source-manifest-parts/bucket-56.json
+  source-manifest-parts/bucket-f6.json
+  source-manifest-parts/bucket-8e.json
+  source-manifest-parts/bucket-dd.json
+~~~
+
+Permanent:
+
+~~~text
+DEDICATED_A008_SCOPE_PROOF_PASS
++ ONE_STALE_STATIC_ASSERTION
+!= PRODUCT_CORRECTION_FAILURE
+
+STRONGER_READY_SCOPE_GATE
+-> MOVE STATIC ASSERTION WITH SEMANTICS
+-> DO NOT WEAKEN PRODUCT
+
+A009
+= A008 PRODUCT CORRECTION
++ STALE TEST UPDATE
+~~~
+
 ### Foundation-to-interface sequence
 
 ~~~text
