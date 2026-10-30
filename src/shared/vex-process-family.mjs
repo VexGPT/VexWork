@@ -267,7 +267,6 @@ export function normalizeProcessState(input, familyInput) {
     'carriedIdentityRefs',
     'previousStateRefOrNull',
     'lastAcceptedTransitionOrNull',
-    'sourceRefs',
   ], 'ProcessFamily.State');
 
   assert(input.schemaVersion === PROCESS_FAMILY_STATE_SCHEMA, 'ProcessFamily.State schema mismatch');
@@ -315,18 +314,14 @@ export function normalizeProcessState(input, familyInput) {
   );
 
   if (lastAcceptedTransitionOrNull !== null) {
-    for (const evidenceRef of lastAcceptedTransitionOrNull.evidenceRefs) {
-      assert(
-        acceptedEvidenceRefs.includes(evidenceRef),
-        'ProcessFamily.State transition evidence must be accepted: ' + evidenceRef,
-      );
-    }
-    for (const identityRef of lastAcceptedTransitionOrNull.carriedIdentityRefs) {
-      assert(
-        carriedIdentityRefs.includes(identityRef),
-        'ProcessFamily.State transition identity must be carried: ' + identityRef,
-      );
-    }
+    assert(
+      JSON.stringify(acceptedEvidenceRefs) === JSON.stringify(lastAcceptedTransitionOrNull.evidenceRefs),
+      'ProcessFamily.State acceptedEvidenceRefs must exactly equal last accepted transition evidence',
+    );
+    assert(
+      JSON.stringify(carriedIdentityRefs) === JSON.stringify(lastAcceptedTransitionOrNull.carriedIdentityRefs),
+      'ProcessFamily.State carriedIdentityRefs must exactly equal last accepted transition identities',
+    );
   }
 
   return freeze({
@@ -340,7 +335,6 @@ export function normalizeProcessState(input, familyInput) {
     carriedIdentityRefs,
     previousStateRefOrNull,
     lastAcceptedTransitionOrNull,
-    sourceRefs: refs(input.sourceRefs, 'ProcessFamily.State.sourceRefs', { allowEmpty: false }),
   });
 }
 
@@ -350,8 +344,9 @@ export function createProcessState(familyInput, {
   depth: initialDepth = 'FORMATION',
   acceptedEvidenceRefs = [],
   carriedIdentityRefs = [],
-  sourceRefs = null,
-}) {
+  ...unknown
+} = {}) {
+  assert(Object.keys(unknown).length === 0, 'ProcessFamily.State creation options schema drift');
   const family = normalizeProcessFamily(familyInput);
   return normalizeProcessState({
     schemaVersion: PROCESS_FAMILY_STATE_SCHEMA,
@@ -364,7 +359,6 @@ export function createProcessState(familyInput, {
     carriedIdentityRefs,
     previousStateRefOrNull: null,
     lastAcceptedTransitionOrNull: null,
-    sourceRefs: sourceRefs === null ? [...family.sourceRefs] : sourceRefs,
   }, family);
 }
 
@@ -379,8 +373,9 @@ export function admitProcessTransition({
   carriedIdentityRefs = null,
   satisfiedPredicateRefs = [],
   nextStateRef,
-  sourceRefs = [],
-}) {
+  ...unknown
+} = {}) {
+  assert(Object.keys(unknown).length === 0, 'process transition options schema drift');
   const family = normalizeProcessFamily(familyInput);
   const state = normalizeProcessState(stateInput, family);
   const currentNodeRef = state.currentNodeRef;
@@ -446,7 +441,6 @@ export function admitProcessTransition({
     carriedIdentityRefs: nextIdentities,
     previousStateRefOrNull: state.stateRef,
     lastAcceptedTransitionOrNull: transition,
-    sourceRefs: unionRefs([...state.sourceRefs, ...sourceRefs], 'ProcessFamily.State sourceRefs after transition'),
   }, family);
 }
 
