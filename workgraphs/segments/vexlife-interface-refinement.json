@@ -70,11 +70,11 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-10-29T20:01:00.000Z",
-      "updatedAt": "2026-10-30T04:17:37.000Z",
+      "updatedAt": "2026-10-30T04:26:14Z",
       "workRef": "work.vexlife.interface-refinement.interface-compound-relay",
       "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
       "label": "Current — Interface Compound Relay convergence",
-      "purpose": "Finish Interface Compound Relay F2/F3 from accepted VexLife main 92e810c91b09e7c74a8e1c7da8d2fade7e070c3a. F2 A001 stopped safely before tests/commit/push on a formation-harness anchor-cardinality defect: four textual direct draft clears exist but one is the internal setLocalDraft clear, so a blind count change would recurse. No candidate head/tree or remote branch exists. A002 preserves the Interface module/test product payload bytes and corrects only the mutation harness by targeting the three external semantic-confirm/programmatic-Send/composer-Send clears contextually and asserting exactly one internal direct clear remains. Consume A002 canonical RETURN next; F3 remains held.",
+      "purpose": "Finish Interface Compound Relay F2/F3 from accepted VexLife main 92e810c91b09e7c74a8e1c7da8d2fade7e070c3a. F2 A002 corrected A001's mutation-anchor defect and reached focused tests, where 26/28 passed and the two suites importing serve-browser-core.mjs failed at parse-time because the mutation generator emitted a literal newline inside a single-quoted meta-tag string. No commit/push/PR or remote branch exists. A003 preserves the same Interface module/test product payload and A002 semantic anchors, fixes only the generator escaping, and was locally syntax-checked both as generator and generated server block. Consume A003 canonical RETURN next; F3 remains held.",
       "workClass": "TASK",
       "state": "RUNNING",
       "priorityClass": "IMMEDIATE",
@@ -184,7 +184,11 @@
         "relay.return.vexlife.interface-currentness-browser-realization.f2.a001.outer.sha256.35c897e1709109b887852fcd8e58cf4dd441634ce698b6286da4f0d828c7c6b0",
         "relay.return.vexlife.interface-currentness-browser-realization.f2.a001.inner.sha256.bed6904a424447bba76a5ba553d4359915a6c91c84b0e369e24b8b839469469d",
         "relay.package.vexlife.interface-currentness-browser-realization.f2.a002.sha256.730f95085fc3fb5778605d739ddeeefdf15278363199a57c942164ba78747da3",
-        "relay.inner.vexlife.interface-currentness-browser-realization.f2.a002.sha256.d3c82b1d8a79a2523e54050111c663ea5b62cfac763144d963e76cd8bc2f46ca"
+        "relay.inner.vexlife.interface-currentness-browser-realization.f2.a002.sha256.d3c82b1d8a79a2523e54050111c663ea5b62cfac763144d963e76cd8bc2f46ca",
+        "relay.return.vexlife.interface-currentness-browser-realization.f2.a002.outer.sha256.b4c6c79416b06695f2ef3172915ad7172f4ababcb56e5f4203fa40a2f8d66cd6",
+        "relay.return.vexlife.interface-currentness-browser-realization.f2.a002.inner.sha256.8cbe66565258ae918e28991e3830d9ac4d467423b72d08511d16adf176d27e5c",
+        "relay.package.vexlife.interface-currentness-browser-realization.f2.a003.sha256.c476a328c6d0533eeb152dac96b7d12cb64d3b20de681f1aff5e4144fec712b5",
+        "relay.inner.vexlife.interface-currentness-browser-realization.f2.a003.sha256.88c426376612bdb7c7aa1a1d6f45beccf40f608e1e2736a7bb0d2f837d95ffe4"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
@@ -1141,6 +1145,22 @@
         "relay.inner.vexlife.interface-currentness-browser-realization.f2.a002.sha256.d3c82b1d8a79a2523e54050111c663ea5b62cfac763144d963e76cd8bc2f46ca"
       ],
       "createdAt": "2026-10-30T04:17:37.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.interface-refinement.interface-compound-relay.running-running.f2-a002-parse-recovery-a003",
+      "workRef": "work.vexlife.interface-refinement.interface-compound-relay",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING",
+      "reason": "F2 A002 reached focused tests and stopped on a generated JavaScript parse error caused by one mutation-generator escape layer. No candidate commit/push/PR exists. A003 preserves the product payload and semantic anchors, fixes only the generator escaping, and is locally syntax-proved.",
+      "actorRef": "actor.chatgpt.vexlife-interface-compound-relay",
+      "sourceRefs": [
+        "relay.return.vexlife.interface-currentness-browser-realization.f2.a002.outer.sha256.b4c6c79416b06695f2ef3172915ad7172f4ababcb56e5f4203fa40a2f8d66cd6",
+        "relay.return.vexlife.interface-currentness-browser-realization.f2.a002.inner.sha256.8cbe66565258ae918e28991e3830d9ac4d467423b72d08511d16adf176d27e5c",
+        "relay.package.vexlife.interface-currentness-browser-realization.f2.a003.sha256.c476a328c6d0533eeb152dac96b7d12cb64d3b20de681f1aff5e4144fec712b5",
+        "relay.inner.vexlife.interface-currentness-browser-realization.f2.a003.sha256.88c426376612bdb7c7aa1a1d6f45beccf40f608e1e2736a7bb0d2f837d95ffe4"
+      ],
+      "createdAt": "2026-10-30T04:26:14Z"
     }
   ],
   "sourceRefs": [
@@ -1257,7 +1277,11 @@
     "relay.return.vexlife.interface-currentness-browser-realization.f2.a001.outer.sha256.35c897e1709109b887852fcd8e58cf4dd441634ce698b6286da4f0d828c7c6b0",
     "relay.return.vexlife.interface-currentness-browser-realization.f2.a001.inner.sha256.bed6904a424447bba76a5ba553d4359915a6c91c84b0e369e24b8b839469469d",
     "relay.package.vexlife.interface-currentness-browser-realization.f2.a002.sha256.730f95085fc3fb5778605d739ddeeefdf15278363199a57c942164ba78747da3",
-    "relay.inner.vexlife.interface-currentness-browser-realization.f2.a002.sha256.d3c82b1d8a79a2523e54050111c663ea5b62cfac763144d963e76cd8bc2f46ca"
+    "relay.inner.vexlife.interface-currentness-browser-realization.f2.a002.sha256.d3c82b1d8a79a2523e54050111c663ea5b62cfac763144d963e76cd8bc2f46ca",
+    "relay.return.vexlife.interface-currentness-browser-realization.f2.a002.outer.sha256.b4c6c79416b06695f2ef3172915ad7172f4ababcb56e5f4203fa40a2f8d66cd6",
+    "relay.return.vexlife.interface-currentness-browser-realization.f2.a002.inner.sha256.8cbe66565258ae918e28991e3830d9ac4d467423b72d08511d16adf176d27e5c",
+    "relay.package.vexlife.interface-currentness-browser-realization.f2.a003.sha256.c476a328c6d0533eeb152dac96b7d12cb64d3b20de681f1aff5e4144fec712b5",
+    "relay.inner.vexlife.interface-currentness-browser-realization.f2.a003.sha256.88c426376612bdb7c7aa1a1d6f45beccf40f608e1e2736a7bb0d2f837d95ffe4"
   ],
   "formedAt": "2026-10-25T01:23:08.000Z"
 }
