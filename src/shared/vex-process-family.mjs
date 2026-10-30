@@ -99,7 +99,6 @@ function normalizeRelationship(input, movementClasses) {
     'toRef',
     'label',
     'entryPredicateRefs',
-    'sourceRefs',
   ], 'process relationship');
 
   const relationshipRef = stableRef(input.relationshipRef, 'process relationship.relationshipRef');
