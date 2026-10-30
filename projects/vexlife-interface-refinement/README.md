@@ -2529,6 +2529,85 @@ Then the project may truthfully say:
 > **Ordinary Open Vex converges from current source/runtime/Conversation truth into a usable visible
 > relationship, instead of inheriting READY from one subsystem.**
 
+### Relay A002 — candidate valid, whole-suite gate ran before commit
+
+A002 corrected A001's forbidden multiline `REPLACE_TEXT` shape and reached the real F0/F1 candidate:
+
+~~~text
+npm ci                               PASS
+npm run orient                       PASS
+open-PR overlap preflight            PASS
+preimage-bound foundation-map edit   PASS
+7 whole-file source writes           PASS
+manifest:write                        PASS
+focused F0/F1 tests                  PASS
+blueprint:check                       PASS
+manifest:check                        PASS
+~~~
+
+Then `npm run check` failed while the candidate was still staged/untracked.
+
+The failing tests were all exact-source / clean-root guards:
+
+~~~text
+experience-review effect fixture
+  -> source-owned reference browser working tree is not exact current Git source
+
+Public Learning / Pages
+  -> public learning source root must be clean outside manifest self-files
+~~~
+
+Observed whole-suite result:
+
+~~~text
+default concurrent test files = FAILED
+isolated timing-sensitive files = PASS
+real failing tests = 12
+clean-source failures = 12 / 12
+candidate-specific focused failures = 0
+~~~
+
+This is not evidence that F0/F1 semantics are wrong. The repository intentionally requires exact
+committed source for those projections.
+
+Permanent:
+
+~~~text
+FOCUSED_CANDIDATE_PASS
++ CLEAN_SOURCE_GUARD_FAILS_ON_UNCOMMITTED_TREE
+!= CANDIDATE_SEMANTIC_FAILURE
+
+FULL_REPOSITORY_CLEAN_SOURCE_PROOF
+REQUIRES EXACT COMMITTED CANDIDATE
+~~~
+
+Provider reconciliation after A002:
+
+~~~text
+VexLife main       unchanged at b6d9dd4876132fc408f0eacd2bb6b5b0d56e009f
+remote target branch absent
+matching PR absent
+push not performed
+PR not created
+~~~
+
+A003 preserves the exact A002 source bytes and changes only execution order:
+
+~~~text
+focused tests + blueprint/manifest checks
+-> membrane / path-set checks
+-> local signed candidate commit
+-> clean worktree proof
+-> npm run check against the exact committed candidate
+-> clean-after-check proof
+-> exact candidate head/tree
+-> non-force push
+-> draft PR
+~~~
+
+The local commit is not publication. If the clean-source gate fails after commit, the exact candidate
+remains host-local and no push/PR occurs.
+
 ### Foundation-to-interface sequence
 
 ~~~text

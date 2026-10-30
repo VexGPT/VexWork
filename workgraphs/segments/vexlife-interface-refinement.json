@@ -163,7 +163,9 @@
         "repo.vexlife:scripts/orient.mjs",
         "repo.vexlife:source-manifest-parts/bucket-14.json",
         "repo.vexlife:source-manifest-parts/bucket-35.json",
-        "github.pull.vexlife.847"
+        "github.pull.vexlife.847",
+        "relay.return.vexlife.interface-currentness-foundation.a002.sha256.3f5fb9e6c029b9f6db67cab4bb5d4662490192914d922bfe38c023730d8a4570",
+        "relay.package.vexlife.interface-currentness-foundation.a003.sha256.a25a067bb2ee1ea64b1f27a250a37c14bcb8047f8232d737bd6623c0c2696763"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
@@ -1165,7 +1167,9 @@
     "repo.vexlife:scripts/orient.mjs",
     "repo.vexlife:source-manifest-parts/bucket-14.json",
     "repo.vexlife:source-manifest-parts/bucket-35.json",
-    "github.pull.vexlife.847"
+    "github.pull.vexlife.847",
+    "relay.return.vexlife.interface-currentness-foundation.a002.sha256.3f5fb9e6c029b9f6db67cab4bb5d4662490192914d922bfe38c023730d8a4570",
+    "relay.package.vexlife.interface-currentness-foundation.a003.sha256.a25a067bb2ee1ea64b1f27a250a37c14bcb8047f8232d737bd6623c0c2696763"
   ],
   "formedAt": "2026-10-25T01:23:08.000Z"
 }
