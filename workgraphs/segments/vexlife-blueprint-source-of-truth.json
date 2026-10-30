@@ -6,7 +6,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-23T00:33:00.000Z",
-      "updatedAt": "2026-10-23T00:33:00.000Z",
+      "updatedAt": "2026-10-30T02:16:00.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "workRef": "work.vexlife.blueprint-source-of-truth.outcome",
@@ -14,7 +14,7 @@
       "label": "VexLife Blueprint Source of Truth",
       "purpose": "Preserve and eventually complete the VexLife Blueprint Source of Truth capability across portable meaning, deterministic mappings, target realizations and proof while the lane is deliberately dormant.",
       "workClass": "OUTCOME",
-      "state": "PAUSED_AT_CHECKPOINT",
+      "state": "RUNNING",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
       "repositoryRefs": [
@@ -32,7 +32,7 @@
       ],
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
-      "effectDisposition": "NO_EFFECTS"
+      "effectDisposition": "EFFECTS_BOUND"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -426,11 +426,73 @@
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-10-30T02:16:00.000Z",
+      "updatedAt": "2026-10-30T02:16:00.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "workRef": "work.vexlife.blueprint-source-of-truth.theme-mode.durability-contract",
+      "parentWorkRefOrNull": "work.vexlife.blueprint-source-of-truth.outcome",
+      "label": "Canonical ThemeMode durable-selection contract",
+      "purpose": "Source-place the minimum portable ThemeMode durability meaning required for explicit Light/Dark selection to survive process death, while keeping Android storage mechanics target-owned.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-blueprint-source-of-truth/README.md",
+        "project.vexsync.debugmenu-blueprints",
+        "work.vexsync.debugmenu-blueprints.debugmenu-origin-roundtrip",
+        "github.pull.vexlife-android.201",
+        "github.comment.vexlife-android.pr201.6513404794.sourceowner-a002-pass",
+        "github.review.vexlife-android.pr201.5707384411.assurance-clear"
+      ],
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.blueprint-source-of-truth.outcome.resume-ready-20261029a",
+      "workRef": "work.vexlife.blueprint-source-of-truth.outcome",
+      "priorState": "PAUSED_AT_CHECKPOINT",
+      "nextState": "READY",
+      "reason": "Victor explicitly reactivated the paused VexLife Blueprint Source of Truth trajectory for ThemeMode durability.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "work.vexlife.blueprint-source-of-truth.theme-mode.durability-contract",
+        "github.pull.vexlife-android.201"
+      ],
+      "createdAt": "2026-10-30T02:16:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.blueprint-source-of-truth.outcome.ready-running-theme-mode-20261029a",
+      "workRef": "work.vexlife.blueprint-source-of-truth.outcome",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "The resumed ThemeMode durability edge has an exact source owner and executable next step.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "work.vexlife.blueprint-source-of-truth.theme-mode.durability-contract",
+        "github.pull.vexlife-android.201"
+      ],
+      "createdAt": "2026-10-30T02:16:01.000Z"
     }
   ],
   "transitions": [],
   "sourceRefs": [
-    "project.vexlife.blueprint-source-of-truth"
+    "project.vexlife.blueprint-source-of-truth",
+    "work.vexlife.blueprint-source-of-truth.theme-mode.durability-contract",
+    "project.vexsync.debugmenu-blueprints",
+    "github.pull.vexlife-android.201"
   ],
   "formedAt": "2026-10-21T01:45:00.000Z"
 }
