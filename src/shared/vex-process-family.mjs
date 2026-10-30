@@ -72,15 +72,11 @@ function normalizeNode(input) {
     'nodeRef',
     'label',
     'purpose',
-    'entryPredicateRefs',
     'currentTruthRefs',
     'ownerRefs',
     'readingSourceRefs',
-    'authorityRefs',
     'considerationRefs',
     'proofRefs',
-    'exitPredicateRefs',
-    'heldConcernRefs',
     'sourceRefs',
   ], 'process node');
 
@@ -89,15 +85,11 @@ function normalizeNode(input) {
     nodeRef,
     label: text(input.label, 'process node ' + nodeRef + '.label'),
     purpose: text(input.purpose, 'process node ' + nodeRef + '.purpose'),
-    entryPredicateRefs: refs(input.entryPredicateRefs, 'process node ' + nodeRef + '.entryPredicateRefs'),
     currentTruthRefs: refs(input.currentTruthRefs, 'process node ' + nodeRef + '.currentTruthRefs'),
     ownerRefs: refs(input.ownerRefs, 'process node ' + nodeRef + '.ownerRefs', { allowEmpty: false }),
     readingSourceRefs: refs(input.readingSourceRefs, 'process node ' + nodeRef + '.readingSourceRefs', { allowEmpty: false }),
-    authorityRefs: refs(input.authorityRefs, 'process node ' + nodeRef + '.authorityRefs'),
     considerationRefs: refs(input.considerationRefs, 'process node ' + nodeRef + '.considerationRefs'),
     proofRefs: refs(input.proofRefs, 'process node ' + nodeRef + '.proofRefs'),
-    exitPredicateRefs: refs(input.exitPredicateRefs, 'process node ' + nodeRef + '.exitPredicateRefs'),
-    heldConcernRefs: refs(input.heldConcernRefs, 'process node ' + nodeRef + '.heldConcernRefs'),
     sourceRefs: refs(input.sourceRefs, 'process node ' + nodeRef + '.sourceRefs', { allowEmpty: false }),
   };
 }
@@ -485,12 +477,8 @@ export function admitProcessTransition({
   }, family);
 }
 
-function requiredEntryPredicateRefs(family, relationship) {
-  const node = family.nodes.find((candidate) => candidate.nodeRef === relationship.toRef);
-  return unionRefs(
-    [...relationship.entryPredicateRefs, ...node.entryPredicateRefs],
-    'process relationship required entry predicates',
-  );
+function requiredEntryPredicateRefs(_family, relationship) {
+  return [...relationship.entryPredicateRefs];
 }
 
 export function availableProcessRelationships(familyInput, stateInput, {
