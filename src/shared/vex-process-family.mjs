@@ -187,6 +187,25 @@ export function normalizeProcessFamily(input) {
     assert(nodeRefs.has(relationship.toRef), 'ProcessFamily relationship toRef missing: ' + relationship.toRef);
   }
 
+  const reachable = new Set([entryNodeRef]);
+  const queue = [entryNodeRef];
+  while (queue.length > 0) {
+    const fromRef = queue.shift();
+    for (const relationship of relationships) {
+      if (relationship.fromRef !== fromRef) continue;
+      if (reachable.has(relationship.toRef)) continue;
+      reachable.add(relationship.toRef);
+      queue.push(relationship.toRef);
+    }
+  }
+  const unreachable = nodes
+    .map((node) => node.nodeRef)
+    .filter((nodeRef) => !reachable.has(nodeRef));
+  assert(
+    unreachable.length === 0,
+    'ProcessFamily nodes unreachable from entryNodeRef: ' + unreachable.join(','),
+  );
+
   return freeze({
     schemaVersion: PROCESS_FAMILY_SCHEMA,
     familyRef,
