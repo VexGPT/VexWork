@@ -70,11 +70,11 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-10-29T20:01:00.000Z",
-      "updatedAt": "2026-10-30T05:02:21.000Z",
+      "updatedAt": "2026-10-30T05:16:01.000Z",
       "workRef": "work.vexlife.interface-refinement.interface-compound-relay",
       "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
       "label": "Current — Interface Compound Relay convergence",
-      "purpose": "Finish Interface Compound Relay F2/F3 from accepted VexLife main 92e810c91b09e7c74a8e1c7da8d2fade7e070c3a. F2 A006 passed current carrier/package admission but stopped before tests/commit/push because its first semantic line needle omitted the literal RegExp-source escape characters present in the repository assertion. This is a mutation-harness source-representation defect; A006 produced only partial uncommitted disposable RUN_ROOT edits and no remote publication. A007 preserves the complete F2 product payload and A004/A005 corrections, changes only six test-edit search needles, and proves each needle resolves exactly once inside its intended test section on accepted main. Consume A007 canonical RETURN next; Assurance/READY/merge/F3 remain held.",
+      "purpose": "Finish Interface Compound Relay F2/F3. A007 is fully source-owner proved and published as VexLife PR #965 at exact head aa824ef7cb0bc295cc40a4ffbb4465bd6bc24843 / tree 0cb01bb2c3e1d6bd93fd2c7bda5318433ec90b2c with focused tests, Blueprint, Source Manifest, full npm run check, exact 32-path membrane, clean signed commit and non-force push PASS. Fresh Independent Assurance recorded CHANGES_REQUESTED because Back/history semantic-frame scope restoration did not trigger Interface re-observation and the Companion READY consumer did not independently verify relationship.scope equals the selected channel, allowing another Conversation's READY to transiently authorize Send. A008 is the same-PR correction: semantic project/thread/channel frame changes request a new observation and the Send consumer requires exact scope match. Its correction membrane is app.js, chat-controller.js, interface-currentness-browser.test.mjs plus buckets 56/f6/8e. Consume A008 RETURN next; approval/READY/merge/F3 remain held.",
       "workClass": "TASK",
       "state": "RUNNING",
       "priorityClass": "IMMEDIATE",
@@ -208,7 +208,15 @@
         "relay.return.vexlife.interface-currentness-browser-realization.f2.a006.inner.sha256.f8cf97a280882fe860461398f130c2487e7ae1d03d36055e7ff87da5e1bbc9aa",
         "relay.package.vexlife.interface-currentness-browser-realization.f2.a007.sha256.994a19bdd24690200ea5ccf5ba8da0efd71b5323bb7607f8110bcae7846f1583",
         "relay.inner.vexlife.interface-currentness-browser-realization.f2.a007.sha256.9bb83af8ee9831fbdbaeb76cf5ce5e6f02488099815f746b6a7845d583a33063",
-        "finding.vexlife.interface-currentness.f2.a006.line-needle-literal-regexp-source"
+        "finding.vexlife.interface-currentness.f2.a006.line-needle-literal-regexp-source",
+        "relay.return.vexlife.interface-currentness-browser-realization.f2.a007.outer.sha256.dc79665b9a5e75be1340e663ca61c8e3649fbd80fe84bf183fa14a04bb402789",
+        "relay.return.vexlife.interface-currentness-browser-realization.f2.a007.inner.sha256.c9b2beb800a1abe917d44933d57080b4ad6aaedeab0e34f93795b39f87d73bcb",
+        "github.pull.vexlife.965@aa824ef7cb0bc295cc40a4ffbb4465bd6bc24843",
+        "tree.vexlife.interface-currentness.f2.a007.0cb01bb2c3e1d6bd93fd2c7bda5318433ec90b2c",
+        "github.pull.vexlife.965.comment.6515500451",
+        "invariant.vexlife.interface.currentness.ready-selected-conversation",
+        "relay.package.vexlife.interface-currentness-browser-realization.f2.a008.sha256.1a6123b6601bd4063fd770b537f9cfe20dee7a1d4e0dc72e67a2d79949836a4f",
+        "relay.inner.vexlife.interface-currentness-browser-realization.f2.a008.sha256.c7133fc9a595f57de32922680ab14b5bd8b2b59cbda1ee926205bd5831cf5c75"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
@@ -1252,6 +1260,26 @@
         "finding.vexlife.interface-currentness.f2.a006.line-needle-literal-regexp-source"
       ],
       "createdAt": "2026-10-30T05:02:21.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.interface-refinement.interface-compound-relay.running-running.f2-a007-assurance-correction-a008",
+      "workRef": "work.vexlife.interface-refinement.interface-compound-relay",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING",
+      "reason": "A007 passed complete source-owner proof and published PR #965. Fresh exact-head Assurance requested one correction: Back/history semantic-frame scope changes must re-observe Interface currentness and Companion READY consumption must be exact to the selected project/thread/channel. A008 carries only that same-PR correction and its three generated Source Manifest buckets.",
+      "actorRef": "actor.chatgpt.vexlife-interface-compound-relay",
+      "sourceRefs": [
+        "relay.return.vexlife.interface-currentness-browser-realization.f2.a007.outer.sha256.dc79665b9a5e75be1340e663ca61c8e3649fbd80fe84bf183fa14a04bb402789",
+        "relay.return.vexlife.interface-currentness-browser-realization.f2.a007.inner.sha256.c9b2beb800a1abe917d44933d57080b4ad6aaedeab0e34f93795b39f87d73bcb",
+        "github.pull.vexlife.965@aa824ef7cb0bc295cc40a4ffbb4465bd6bc24843",
+        "tree.vexlife.interface-currentness.f2.a007.0cb01bb2c3e1d6bd93fd2c7bda5318433ec90b2c",
+        "github.pull.vexlife.965.comment.6515500451",
+        "invariant.vexlife.interface.currentness.ready-selected-conversation",
+        "relay.package.vexlife.interface-currentness-browser-realization.f2.a008.sha256.1a6123b6601bd4063fd770b537f9cfe20dee7a1d4e0dc72e67a2d79949836a4f",
+        "relay.inner.vexlife.interface-currentness-browser-realization.f2.a008.sha256.c7133fc9a595f57de32922680ab14b5bd8b2b59cbda1ee926205bd5831cf5c75"
+      ],
+      "createdAt": "2026-10-30T05:16:01.000Z"
     }
   ],
   "sourceRefs": [
@@ -1392,7 +1420,15 @@
     "relay.return.vexlife.interface-currentness-browser-realization.f2.a006.inner.sha256.f8cf97a280882fe860461398f130c2487e7ae1d03d36055e7ff87da5e1bbc9aa",
     "relay.package.vexlife.interface-currentness-browser-realization.f2.a007.sha256.994a19bdd24690200ea5ccf5ba8da0efd71b5323bb7607f8110bcae7846f1583",
     "relay.inner.vexlife.interface-currentness-browser-realization.f2.a007.sha256.9bb83af8ee9831fbdbaeb76cf5ce5e6f02488099815f746b6a7845d583a33063",
-    "finding.vexlife.interface-currentness.f2.a006.line-needle-literal-regexp-source"
+    "finding.vexlife.interface-currentness.f2.a006.line-needle-literal-regexp-source",
+    "relay.return.vexlife.interface-currentness-browser-realization.f2.a007.outer.sha256.dc79665b9a5e75be1340e663ca61c8e3649fbd80fe84bf183fa14a04bb402789",
+    "relay.return.vexlife.interface-currentness-browser-realization.f2.a007.inner.sha256.c9b2beb800a1abe917d44933d57080b4ad6aaedeab0e34f93795b39f87d73bcb",
+    "github.pull.vexlife.965@aa824ef7cb0bc295cc40a4ffbb4465bd6bc24843",
+    "tree.vexlife.interface-currentness.f2.a007.0cb01bb2c3e1d6bd93fd2c7bda5318433ec90b2c",
+    "github.pull.vexlife.965.comment.6515500451",
+    "invariant.vexlife.interface.currentness.ready-selected-conversation",
+    "relay.package.vexlife.interface-currentness-browser-realization.f2.a008.sha256.1a6123b6601bd4063fd770b537f9cfe20dee7a1d4e0dc72e67a2d79949836a4f",
+    "relay.inner.vexlife.interface-currentness-browser-realization.f2.a008.sha256.c7133fc9a595f57de32922680ab14b5bd8b2b59cbda1ee926205bd5831cf5c75"
   ],
   "formedAt": "2026-10-25T01:23:08.000Z"
 }
