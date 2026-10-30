@@ -510,7 +510,11 @@
         "evidence.vexsync.pr203.sourceowner.a002.outer-return.sha256.c52ec6e16e578f4d66cd845cd9082cea4f5a9b8c5d669ae12777908426f93404",
         "evidence.vexsync.pr203.sourceowner.a002.inner-return.sha256.2dbc1aa96798dca1d5052a642f60503d29d4bb92c4db0732b19d62bbc3ca59c5",
         "github.commit.vexlife-android.7ca89e0ce19d09ae4388c1a287820b43ba91a311",
-        "evidence.vexsync.pr203.sourceowner.a003.formation.sha256.fc2f6de9848f764d94565ebf82afdfd70ba5ff50a81319da0028e4abfad31498"
+        "evidence.vexsync.pr203.sourceowner.a003.formation.sha256.fc2f6de9848f764d94565ebf82afdfd70ba5ff50a81319da0028e4abfad31498",
+        "github.comment.vexlife-android.pr203.6515367482.sourceowner-a003-focused-pass-a004-formed",
+        "evidence.vexsync.pr203.sourceowner.a003.outer-return.sha256.42a408dac2a4fa313bbb80292f045c5dda9e28a5924b353e34adec7389061635",
+        "evidence.vexsync.pr203.sourceowner.a003.inner-return.sha256.208320ab1920c0274a96dab3f30681d6df41061cc2ee5d840e14215934bc8c89",
+        "evidence.vexsync.pr203.sourceowner.a004.formation.sha256.773c06d1262ddbeaf82343244822cfca36bea56b4bebe6d8046c80f2fdafdc33"
       ],
       "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
       "nextProcessRefs": [
@@ -1175,6 +1179,23 @@
         "evidence.vexsync.pr203.sourceowner.a002.inner-return.sha256.2dbc1aa96798dca1d5052a642f60503d29d4bb92c4db0732b19d62bbc3ca59c5",
         "github.commit.vexlife-android.7ca89e0ce19d09ae4388c1a287820b43ba91a311",
         "evidence.vexsync.pr203.sourceowner.a003.formation.sha256.fc2f6de9848f764d94565ebf82afdfd70ba5ff50a81319da0028e4abfad31498"
+      ],
+      "createdAt": "2026-10-30T05:10:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.execution-source-custody.running.pr203-sourceowner-a003-focused-pass-a004-formed-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.execution-source-custody",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING",
+      "reason": "SourceOwner A003 consumed exact candidate 7ca89e0c... and completed focused VexExecutionTest + VexFamilyHighConfidenceTest with BUILD SUCCESSFUL and VEXSYNC_EXECUTION_RELATIONSHIP_FOCUSED=PASS. It then stopped before spawning repository vexVerifyJvm because the formed timeoutMs=2400000 exceeded the VexRelay runner maximum 1800000; process=null and durationMs=0 prove HARNESS_TIMEOUT_FORMATION rather than a candidate finding despite the inner runtime's generic candidate classification. A004 preserves the exact candidate, reuses the focused PASS, excludes replay, and forms only remaining vexVerifyJvm + exact tracked-clean + review snapshot with timeoutMs=1800000. A004 wrapper sha256=773c06d1262ddbeaf82343244822cfca36bea56b4bebe6d8046c80f2fdafdc33. Work stays RUNNING until repository proof completes.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.203",
+        "github.comment.vexlife-android.pr203.6515367482.sourceowner-a003-focused-pass-a004-formed",
+        "evidence.vexsync.pr203.sourceowner.a003.outer-return.sha256.42a408dac2a4fa313bbb80292f045c5dda9e28a5924b353e34adec7389061635",
+        "evidence.vexsync.pr203.sourceowner.a003.inner-return.sha256.208320ab1920c0274a96dab3f30681d6df41061cc2ee5d840e14215934bc8c89",
+        "evidence.vexsync.pr203.sourceowner.a004.formation.sha256.773c06d1262ddbeaf82343244822cfca36bea56b4bebe6d8046c80f2fdafdc33"
       ],
       "createdAt": "2026-10-30T05:10:00.000Z"
     }
