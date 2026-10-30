@@ -240,7 +240,6 @@ test('ProcessFamily State owns scope x node x depth without becoming a world-sta
     stateRef: 'state.metawalk.001',
     scopeRef: 'work.test.outcome',
     depth: 'FORMATION',
-    sourceRefs: ['source.state.metawalk.001'],
   });
 
   assert.equal(state.scopeRef, 'work.test.outcome');
@@ -263,7 +262,6 @@ test('bounded horizon deep-reads CURRENT and keeps future node source detail wit
     stateRef: 'state.metawalk.001',
     scopeRef: 'work.test.outcome',
     depth: 'FORMATION',
-    sourceRefs: ['source.state.metawalk.001'],
   });
   const horizon = projectProcessHorizon(family, state, {
     satisfiedPredicateRefs: [
@@ -288,7 +286,6 @@ test('accepted transition carries evidence and identity while rotating CURRENT n
     stateRef: 'state.metawalk.001',
     scopeRef: 'work.test.outcome',
     depth: 'FORMATION',
-    sourceRefs: ['source.state.metawalk.001'],
   });
 
   const next = admitProcessTransition({
@@ -305,7 +302,6 @@ test('accepted transition carries evidence and identity while rotating CURRENT n
       'predicate.contract.allowed',
     ],
     nextStateRef: 'state.metawalk.002',
-    sourceRefs: ['source.transition.metawalk.001'],
   });
 
   assert.equal(next.currentNodeRef, 'node.contract');
@@ -328,7 +324,6 @@ test('depth revisit may deepen one semantic coordinate without reopening a prior
     stateRef: 'state.metawalk.001',
     scopeRef: 'work.test.outcome',
     depth: 'FORMATION',
-    sourceRefs: ['source.state.metawalk.001'],
   });
 
   const next = admitProcessTransition({
@@ -354,7 +349,6 @@ test('transition admission fails closed on stale or foreign movement', () => {
     stateRef: 'state.metawalk.001',
     scopeRef: 'work.test.outcome',
     depth: 'FORMATION',
-    sourceRefs: ['source.state.metawalk.001'],
   });
 
   assert.throws(
@@ -392,7 +386,6 @@ test('relationship availability is derived from all required current predicates'
     stateRef: 'state.metawalk.001',
     scopeRef: 'work.test.outcome',
     depth: 'FORMATION',
-    sourceRefs: ['source.state.metawalk.001'],
   });
 
   const held = availableProcessRelationships(family, state);
@@ -599,14 +592,35 @@ test('ProcessFamily State fails closed on foreign family, invalid depth and corr
   missingAcceptedEvidence.acceptedEvidenceRefs = [];
   assert.throws(
     () => normalizeProcessState(missingAcceptedEvidence, family),
-    /transition evidence must be accepted/,
+    /acceptedEvidenceRefs must exactly equal last accepted transition evidence/,
+  );
+
+  const historicalEvidenceSmuggledForward = structuredClone(next);
+  historicalEvidenceSmuggledForward.acceptedEvidenceRefs.push('evidence.historical');
+  assert.throws(
+    () => normalizeProcessState(historicalEvidenceSmuggledForward, family),
+    /acceptedEvidenceRefs must exactly equal last accepted transition evidence/,
   );
 
   const missingCarriedIdentity = structuredClone(next);
   missingCarriedIdentity.carriedIdentityRefs = [];
   assert.throws(
     () => normalizeProcessState(missingCarriedIdentity, family),
-    /transition identity must be carried/,
+    /carriedIdentityRefs must exactly equal last accepted transition identities/,
+  );
+
+  const historicalIdentitySmuggledForward = structuredClone(next);
+  historicalIdentitySmuggledForward.carriedIdentityRefs.push('identity.historical');
+  assert.throws(
+    () => normalizeProcessState(historicalIdentitySmuggledForward, family),
+    /carriedIdentityRefs must exactly equal last accepted transition identities/,
+  );
+
+  const historicalSourceBag = structuredClone(next);
+  historicalSourceBag.sourceRefs = ['source.historical'];
+  assert.throws(
+    () => normalizeProcessState(historicalSourceBag, family),
+    /ProcessFamily\.State schema drift/,
   );
 });
 
@@ -687,6 +701,101 @@ test('ProcessFamily State allows explicit continuity-identity pruning at a trans
 
   assert.deepEqual(next.carriedIdentityRefs, ['identity.keep']);
   assert.deepEqual(next.lastAcceptedTransitionOrNull?.carriedIdentityRefs, ['identity.keep']);
+});
+
+
+test('ProcessFamily State creation and transition APIs reject historical source bags', () => {
+  const family = normalizeProcessFamily(familyFixture());
+
+  assert.throws(
+    () => createProcessState(family, {
+      stateRef: 'state.source-bag.001',
+      scopeRef: 'work.test.outcome',
+      sourceRefs: ['source.historical'],
+    }),
+    /creation options schema drift/,
+  );
+
+  const state = createProcessState(family, {
+    stateRef: 'state.source-bag.002',
+    scopeRef: 'work.test.outcome',
+  });
+
+  assert.throws(
+    () => admitProcessTransition({
+      family,
+      state,
+      transitionRef: 'transition.source-bag.001',
+      relationshipRefOrNull: 'rel.recover-contract',
+      movementClass: 'ADVANCES',
+      nextDepth: 'CONTRACT',
+      evidenceRefs: ['evidence.source-bag.001'],
+      satisfiedPredicateRefs: [
+        'predicate.contract.allowed',
+        'predicate.node.contract.entry',
+      ],
+      nextStateRef: 'state.source-bag.003',
+      sourceRefs: ['source.historical'],
+    }),
+    /transition options schema drift/,
+  );
+});
+
+test('bounded horizon derives CURRENT source grounding from current State evidence without historical source bags', () => {
+  const family = normalizeProcessFamily(familyFixture());
+  const first = createProcessState(family, {
+    stateRef: 'state.source-current.001',
+    scopeRef: 'work.test.outcome',
+    carriedIdentityRefs: ['identity.current'],
+  });
+  const second = admitProcessTransition({
+    family,
+    state: first,
+    transitionRef: 'transition.source-current.001',
+    relationshipRefOrNull: 'rel.recover-contract',
+    movementClass: 'ADVANCES',
+    nextDepth: 'CONTRACT',
+    evidenceRefs: ['evidence.current.001'],
+    satisfiedPredicateRefs: [
+      'predicate.contract.allowed',
+      'predicate.node.contract.entry',
+    ],
+    nextStateRef: 'state.source-current.002',
+  });
+  const third = admitProcessTransition({
+    family,
+    state: second,
+    transitionRef: 'transition.source-current.002',
+    relationshipRefOrNull: 'rel.contract-implement',
+    movementClass: 'ADVANCES',
+    nextDepth: 'IMPLEMENTATION',
+    evidenceRefs: ['evidence.current.002'],
+    satisfiedPredicateRefs: [
+      'predicate.implementation.allowed',
+      'predicate.node.implement.entry',
+    ],
+    nextStateRef: 'state.source-current.003',
+  });
+
+  const board = projectProcessHorizonBoard({
+    family,
+    state: third,
+    scope: {
+      scopeRef: 'work.test.outcome',
+      label: 'Current source grounding',
+      purpose: 'Prove CURRENT source context is derived from the bounded current State.',
+      sourceRefs: ['work.test.outcome'],
+    },
+    boardRef: 'board.test.current-source-grounding',
+  });
+  const graph = normalizeBoardGraph(board.graph);
+  const current = graph.nodes.find((entry) => entry.label === 'CURRENT · Implement');
+
+  assert.equal(current?.sourceRefs.includes('evidence.current.002'), true);
+  assert.equal(current?.sourceRefs.includes('identity.current'), true);
+  assert.equal(current?.sourceRefs.includes('evidence.current.001'), false);
+  assert.equal(Object.hasOwn(third, 'sourceRefs'), false);
+  assert.deepEqual(third.acceptedEvidenceRefs, ['evidence.current.002']);
 });
 
 test('transition formation rejects unknown relationships, empty evidence and no-op depth revisits', () => {
