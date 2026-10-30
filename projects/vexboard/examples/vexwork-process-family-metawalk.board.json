@@ -1,0 +1,416 @@
+{
+  "schemaVersion": "vexboard.local-draft/v1",
+  "draftRef": "board.vexwork.process-family-metawalk",
+  "title": "Vex Process Family MetaWalk — Formation",
+  "mode": "READ_ONLY_SOURCE",
+  "derivedFromRefOrNull": null,
+  "savedAtOrNull": null,
+  "graph": {
+    "schemaVersion": "vexboard.board-graph/v1",
+    "graphRef": "graph.vexwork.process-family-metawalk",
+    "nodes": [
+      {
+        "nodeRef": "node.vexwork.process-family-metawalk.entry",
+        "kind": "SCENE",
+        "label": "Process Family MetaWalk",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "docs/process/VEX-PROCESS-FAMILY-METAWALK.md"
+        ]
+      },
+      {
+        "nodeRef": "node.vexwork.process-family-metawalk.recover",
+        "kind": "PROCESS",
+        "label": "0. Recover intention + pressure",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "docs/process/VEX-PROCESS-FAMILY-METAWALK.md"
+        ]
+      },
+      {
+        "nodeRef": "node.vexwork.process-family-metawalk.topology",
+        "kind": "PROCESS",
+        "label": "1. Plot topology",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "docs/process/VEX-PROCESS-FAMILY-METAWALK.md"
+        ]
+      },
+      {
+        "nodeRef": "node.vexwork.process-family-metawalk.ownership",
+        "kind": "PROCESS",
+        "label": "2. Bind ownership",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "docs/process/VEX-PROCESS-FAMILY-METAWALK.md"
+        ]
+      },
+      {
+        "nodeRef": "node.vexwork.process-family-metawalk.contracts",
+        "kind": "PROCESS",
+        "label": "3. Bind contracts + relationships",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "docs/process/VEX-PROCESS-FAMILY-METAWALK.md"
+        ]
+      },
+      {
+        "nodeRef": "node.vexwork.process-family-metawalk.proof-plan",
+        "kind": "PROCESS",
+        "label": "4. Bind proof strategy",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "docs/process/VEX-PROCESS-FAMILY-METAWALK.md"
+        ]
+      },
+      {
+        "nodeRef": "node.vexwork.process-family-metawalk.implementation",
+        "kind": "PROCESS",
+        "label": "5. Realize implementation",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "docs/process/VEX-PROCESS-FAMILY-METAWALK.md"
+        ]
+      },
+      {
+        "nodeRef": "node.vexwork.process-family-metawalk.focused-proof",
+        "kind": "PROCESS",
+        "label": "6. Focused proof",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "docs/process/VEX-PROCESS-FAMILY-METAWALK.md"
+        ]
+      },
+      {
+        "nodeRef": "node.vexwork.process-family-metawalk.lived-proof",
+        "kind": "PROCESS",
+        "label": "7. Lived / integration proof",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "docs/process/VEX-PROCESS-FAMILY-METAWALK.md"
+        ]
+      },
+      {
+        "nodeRef": "node.vexwork.process-family-metawalk.reconcile",
+        "kind": "PROCESS",
+        "label": "8. Reconcile + accept",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "docs/process/VEX-PROCESS-FAMILY-METAWALK.md"
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "relationshipRef": "rel.vexwork.process-family-metawalk.entry-recover",
+        "kind": "FLOW",
+        "fromRef": "node.vexwork.process-family-metawalk.entry",
+        "toRef": "node.vexwork.process-family-metawalk.recover",
+        "labelOrNull": "begin from human intention",
+        "sourceRefs": [
+          "docs/process/VEX-PROCESS-FAMILY-METAWALK.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexwork.process-family-metawalk.recover-topology",
+        "kind": "FLOW",
+        "fromRef": "node.vexwork.process-family-metawalk.recover",
+        "toRef": "node.vexwork.process-family-metawalk.topology",
+        "labelOrNull": "pressure grounded",
+        "sourceRefs": [
+          "docs/process/VEX-PROCESS-FAMILY-METAWALK.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexwork.process-family-metawalk.topology-ownership",
+        "kind": "FLOW",
+        "fromRef": "node.vexwork.process-family-metawalk.topology",
+        "toRef": "node.vexwork.process-family-metawalk.ownership",
+        "labelOrNull": "shape stable enough",
+        "sourceRefs": [
+          "docs/process/VEX-PROCESS-FAMILY-METAWALK.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexwork.process-family-metawalk.ownership-contracts",
+        "kind": "FLOW",
+        "fromRef": "node.vexwork.process-family-metawalk.ownership",
+        "toRef": "node.vexwork.process-family-metawalk.contracts",
+        "labelOrNull": "rightful owners identified",
+        "sourceRefs": [
+          "docs/process/VEX-PROCESS-FAMILY-METAWALK.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexwork.process-family-metawalk.contracts-proof-plan",
+        "kind": "FLOW",
+        "fromRef": "node.vexwork.process-family-metawalk.contracts",
+        "toRef": "node.vexwork.process-family-metawalk.proof-plan",
+        "labelOrNull": "relationships explicit",
+        "sourceRefs": [
+          "docs/process/VEX-PROCESS-FAMILY-METAWALK.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexwork.process-family-metawalk.proof-plan-implementation",
+        "kind": "FLOW",
+        "fromRef": "node.vexwork.process-family-metawalk.proof-plan",
+        "toRef": "node.vexwork.process-family-metawalk.implementation",
+        "labelOrNull": "claim + falsification known",
+        "sourceRefs": [
+          "docs/process/VEX-PROCESS-FAMILY-METAWALK.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexwork.process-family-metawalk.implementation-focused-proof",
+        "kind": "FLOW",
+        "fromRef": "node.vexwork.process-family-metawalk.implementation",
+        "toRef": "node.vexwork.process-family-metawalk.focused-proof",
+        "labelOrNull": "target realization formed",
+        "sourceRefs": [
+          "docs/process/VEX-PROCESS-FAMILY-METAWALK.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexwork.process-family-metawalk.focused-lived",
+        "kind": "FLOW",
+        "fromRef": "node.vexwork.process-family-metawalk.focused-proof",
+        "toRef": "node.vexwork.process-family-metawalk.lived-proof",
+        "labelOrNull": "bounded contracts proven",
+        "sourceRefs": [
+          "docs/process/VEX-PROCESS-FAMILY-METAWALK.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexwork.process-family-metawalk.lived-reconcile",
+        "kind": "FLOW",
+        "fromRef": "node.vexwork.process-family-metawalk.lived-proof",
+        "toRef": "node.vexwork.process-family-metawalk.reconcile",
+        "labelOrNull": "lived/integration evidence",
+        "sourceRefs": [
+          "docs/process/VEX-PROCESS-FAMILY-METAWALK.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexwork.process-family-metawalk.implementation-ownership-gap",
+        "kind": "TRANSITION",
+        "fromRef": "node.vexwork.process-family-metawalk.implementation",
+        "toRef": "node.vexwork.process-family-metawalk.ownership",
+        "labelOrNull": "semantic ambiguity",
+        "sourceRefs": [
+          "docs/process/VEX-PROCESS-FAMILY-METAWALK.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexwork.process-family-metawalk.focused-contract-gap",
+        "kind": "TRANSITION",
+        "fromRef": "node.vexwork.process-family-metawalk.focused-proof",
+        "toRef": "node.vexwork.process-family-metawalk.contracts",
+        "labelOrNull": "contract gap",
+        "sourceRefs": [
+          "docs/process/VEX-PROCESS-FAMILY-METAWALK.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexwork.process-family-metawalk.lived-implementation-defect",
+        "kind": "TRANSITION",
+        "fromRef": "node.vexwork.process-family-metawalk.lived-proof",
+        "toRef": "node.vexwork.process-family-metawalk.implementation",
+        "labelOrNull": "implementation defect",
+        "sourceRefs": [
+          "docs/process/VEX-PROCESS-FAMILY-METAWALK.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vexwork.process-family-metawalk.lived-contract-gap",
+        "kind": "TRANSITION",
+        "fromRef": "node.vexwork.process-family-metawalk.lived-proof",
+        "toRef": "node.vexwork.process-family-metawalk.contracts",
+        "labelOrNull": "contract gap",
+        "sourceRefs": [
+          "docs/process/VEX-PROCESS-FAMILY-METAWALK.md"
+        ]
+      }
+    ],
+    "sourceRefs": [
+      "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
+      "docs/foundation/PROCESS-MAP.md",
+      "docs/foundation/WORKGRAPH.md",
+      "docs/foundation/OPERATING-PROFILES.md",
+      "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md",
+      "github.pull.vexwork.185",
+      "github.pull.vexwork.187"
+    ]
+  },
+  "projection": {
+    "schemaVersion": "vexboard.board-projection/v1",
+    "projectionRef": "projection.vexwork.process-family-metawalk",
+    "graphRef": "graph.vexwork.process-family-metawalk",
+    "layoutIntent": "SEQUENCE",
+    "items": [
+      {
+        "projectionItemRef": "item.vexwork.process-family-metawalk.entry",
+        "semanticRef": "node.vexwork.process-family-metawalk.entry",
+        "shapeKind": "ELLIPSE",
+        "bounds": {
+          "x": 60,
+          "y": 100,
+          "width": 240,
+          "height": 90
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexwork.process-family-metawalk.recover",
+        "semanticRef": "node.vexwork.process-family-metawalk.recover",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 360,
+          "y": 100,
+          "width": 220,
+          "height": 84
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexwork.process-family-metawalk.topology",
+        "semanticRef": "node.vexwork.process-family-metawalk.topology",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 650,
+          "y": 100,
+          "width": 220,
+          "height": 84
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexwork.process-family-metawalk.ownership",
+        "semanticRef": "node.vexwork.process-family-metawalk.ownership",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 940,
+          "y": 100,
+          "width": 220,
+          "height": 84
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexwork.process-family-metawalk.contracts",
+        "semanticRef": "node.vexwork.process-family-metawalk.contracts",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1230,
+          "y": 100,
+          "width": 245,
+          "height": 84
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexwork.process-family-metawalk.proof-plan",
+        "semanticRef": "node.vexwork.process-family-metawalk.proof-plan",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1525,
+          "y": 100,
+          "width": 220,
+          "height": 84
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexwork.process-family-metawalk.implementation",
+        "semanticRef": "node.vexwork.process-family-metawalk.implementation",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1525,
+          "y": 360,
+          "width": 220,
+          "height": 84
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexwork.process-family-metawalk.focused-proof",
+        "semanticRef": "node.vexwork.process-family-metawalk.focused-proof",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1230,
+          "y": 360,
+          "width": 245,
+          "height": 84
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexwork.process-family-metawalk.lived-proof",
+        "semanticRef": "node.vexwork.process-family-metawalk.lived-proof",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 940,
+          "y": 360,
+          "width": 220,
+          "height": 84
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vexwork.process-family-metawalk.reconcile",
+        "semanticRef": "node.vexwork.process-family-metawalk.reconcile",
+        "shapeKind": "ELLIPSE",
+        "bounds": {
+          "x": 640,
+          "y": 357,
+          "width": 240,
+          "height": 90
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      }
+    ],
+    "sourceRefs": [
+      "docs/process/VEX-PROCESS-FAMILY-METAWALK.md"
+    ]
+  }
+}
