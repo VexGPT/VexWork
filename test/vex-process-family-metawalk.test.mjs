@@ -717,7 +717,7 @@ test('ProcessFamily State allows explicit continuity-identity pruning at a trans
 
 
 
-test('entry ProcessFamily State cannot invent transition evidence, identities, or non-entry depth', () => {
+test('entry ProcessFamily State cannot invent transition evidence, identities, or non-entry layer', () => {
   const family = normalizeProcessFamily(familyFixture());
 
   assert.throws(
