@@ -556,6 +556,7 @@ export function projectProcessHorizon(familyInput, stateInput, {
     stateRef: state.stateRef,
     layer: state.layer,
     previousAcceptedOrNull: previousNode && last ? {
+      stateRef: state.previousStateRefOrNull,
       nodeRef: previousNode.nodeRef,
       label: previousNode.label,
       transitionRef: last.transitionRef,
