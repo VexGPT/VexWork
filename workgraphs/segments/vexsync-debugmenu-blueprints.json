@@ -514,7 +514,12 @@
         "github.comment.vexlife-android.pr203.6515367482.sourceowner-a003-focused-pass-a004-formed",
         "evidence.vexsync.pr203.sourceowner.a003.outer-return.sha256.42a408dac2a4fa313bbb80292f045c5dda9e28a5924b353e34adec7389061635",
         "evidence.vexsync.pr203.sourceowner.a003.inner-return.sha256.208320ab1920c0274a96dab3f30681d6df41061cc2ee5d840e14215934bc8c89",
-        "evidence.vexsync.pr203.sourceowner.a004.formation.sha256.773c06d1262ddbeaf82343244822cfca36bea56b4bebe6d8046c80f2fdafdc33"
+        "evidence.vexsync.pr203.sourceowner.a004.formation.sha256.773c06d1262ddbeaf82343244822cfca36bea56b4bebe6d8046c80f2fdafdc33",
+        "github.comment.vexlife-android.pr203.6515417990.a004-compile-a005-formed",
+        "evidence.vexsync.pr203.sourceowner.a004.outer.sha256.49e19b639d7684868e78f1ae1b61a7cf82275bf9ed5a99a6f7b8d1ee6addaa0f",
+        "evidence.vexsync.pr203.sourceowner.a004.inner.sha256.5f2a4d17c4a0a7001666d8302a6f69f17144b9e75fa365b0df515ef7c458ac52",
+        "evidence.vexsync.pr203.sourceowner.a005.formation.sha256.85841e32c239e30fc441f2bbcfcdb1b110f45f95fa146c455a007c96a91f84b9",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt"
       ],
       "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
       "nextProcessRefs": [
@@ -523,7 +528,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-29T17:34:00.000Z",
-      "updatedAt": "2026-10-30T05:10:00.000Z"
+      "updatedAt": "2026-10-30T05:08:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
@@ -1198,6 +1203,21 @@
         "evidence.vexsync.pr203.sourceowner.a004.formation.sha256.773c06d1262ddbeaf82343244822cfca36bea56b4bebe6d8046c80f2fdafdc33"
       ],
       "createdAt": "2026-10-30T05:10:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.execution-source-custody.running.pr203-a004-app-compile-a005-formed-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.execution-source-custody",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING",
+      "reason": "SourceOwner A004 reached repository vexVerifyJvm and found a real app integration compile defect: VexLifeSession retained two pre-contract raw VexExecution consumers (startup launchOnce and artwork launchForCollect). Corrected head 92d609d1... binds both to the live VexStreamMusicRepository through private typed relationship kinds, adding VexLifeSession as the fifteenth path without reintroducing Handle/InstanceId/SourceRef identity. A005 is statically qualified for a retired-surface census, vexVerifyJvm, exact 15-path tracked-clean and review snapshot. No A005 execution PASS is claimed, so work remains RUNNING.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.203",
+        "github.comment.vexlife-android.pr203.6515417990.a004-compile-a005-formed",
+        "evidence.vexsync.pr203.sourceowner.a005.formation.sha256.85841e32c239e30fc441f2bbcfcdb1b110f45f95fa146c455a007c96a91f84b9"
+      ],
+      "createdAt": "2026-10-30T05:08:00.000Z"
     }
   ],
   "sourceRefs": [
