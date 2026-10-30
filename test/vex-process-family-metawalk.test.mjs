@@ -246,7 +246,8 @@ test('ProcessFamily State owns scope x node x depth without becoming a world-sta
   assert.equal(state.scopeRef, 'work.test.outcome');
   assert.equal(state.currentNodeRef, 'node.recover');
   assert.equal(state.depth, 'FORMATION');
-  assert.deepEqual(state.transitionHistory, []);
+  assert.equal(state.previousStateRefOrNull, null);
+  assert.equal(state.lastAcceptedTransitionOrNull, null);
 
   const illegal = structuredClone(state);
   illegal.providerHead = 'a'.repeat(40);
@@ -311,7 +312,8 @@ test('accepted transition carries evidence and identity while rotating CURRENT n
   assert.equal(next.depth, 'CONTRACT');
   assert.deepEqual(next.acceptedEvidenceRefs, ['evidence.pressure-grounded']);
   assert.deepEqual(next.carriedIdentityRefs, ['identity.work.test.outcome']);
-  assert.equal(next.transitionHistory.at(-1).movementClass, 'ADVANCES');
+  assert.equal(next.previousStateRefOrNull, 'state.metawalk.001');
+  assert.equal(next.lastAcceptedTransitionOrNull?.movementClass, 'ADVANCES');
 
   const horizon = projectProcessHorizon(family, next);
   assert.equal(horizon.previousAcceptedOrNull?.nodeRef, 'node.recover');
@@ -342,8 +344,8 @@ test('depth revisit may deepen one semantic coordinate without reopening a prior
 
   assert.equal(next.currentNodeRef, 'node.recover');
   assert.equal(next.depth, 'TOPOLOGY');
-  assert.equal(next.transitionHistory.at(-1).fromNodeRef, 'node.recover');
-  assert.equal(next.transitionHistory.at(-1).toNodeRef, 'node.recover');
+  assert.equal(next.lastAcceptedTransitionOrNull?.fromNodeRef, 'node.recover');
+  assert.equal(next.lastAcceptedTransitionOrNull?.toNodeRef, 'node.recover');
 });
 
 test('transition admission fails closed on stale or foreign movement', () => {
@@ -587,10 +589,10 @@ test('ProcessFamily State fails closed on foreign family, invalid depth and corr
   assert.throws(() => normalizeProcessState(invalidDepth, family), /depth invalid/);
 
   const badHistoryOrigin = structuredClone(next);
-  badHistoryOrigin.transitionHistory[0].fromNodeRef = 'node.implement';
+  badHistoryOrigin.lastAcceptedTransitionOrNull.fromNodeRef = 'node.implement';
   assert.throws(
     () => normalizeProcessState(badHistoryOrigin, family),
-    /relationship fromRef mismatch|must begin at entryNodeRef/,
+    /relationship fromRef mismatch/,
   );
 
   const missingAcceptedEvidence = structuredClone(next);
@@ -606,6 +608,85 @@ test('ProcessFamily State fails closed on foreign family, invalid depth and corr
     () => normalizeProcessState(missingCarriedIdentity, family),
     /transition identity must be carried/,
   );
+});
+
+
+test('ProcessFamily State keeps one predecessor link and one accepted transition instead of copying full walk history', () => {
+  const family = normalizeProcessFamily(familyFixture());
+  const first = createProcessState(family, {
+    stateRef: 'state.compact.001',
+    scopeRef: 'work.test.outcome',
+    carriedIdentityRefs: ['identity.stable'],
+  });
+
+  const second = admitProcessTransition({
+    family,
+    state: first,
+    transitionRef: 'transition.compact.001',
+    relationshipRefOrNull: 'rel.recover-contract',
+    movementClass: 'ADVANCES',
+    nextDepth: 'CONTRACT',
+    evidenceRefs: ['evidence.compact.001'],
+    satisfiedPredicateRefs: [
+      'predicate.contract.allowed',
+      'predicate.node.contract.entry',
+    ],
+    nextStateRef: 'state.compact.002',
+  });
+
+  const third = admitProcessTransition({
+    family,
+    state: second,
+    transitionRef: 'transition.compact.002',
+    relationshipRefOrNull: 'rel.contract-implement',
+    movementClass: 'ADVANCES',
+    nextDepth: 'IMPLEMENTATION',
+    evidenceRefs: ['evidence.compact.002'],
+    satisfiedPredicateRefs: [
+      'predicate.implementation.allowed',
+      'predicate.node.implement.entry',
+    ],
+    nextStateRef: 'state.compact.003',
+  });
+
+  assert.equal(Object.hasOwn(third, 'transitionHistory'), false);
+  assert.equal(third.previousStateRefOrNull, 'state.compact.002');
+  assert.equal(third.lastAcceptedTransitionOrNull?.transitionRef, 'transition.compact.002');
+  assert.equal(third.lastAcceptedTransitionOrNull?.fromNodeRef, 'node.contract');
+  assert.equal(third.lastAcceptedTransitionOrNull?.toNodeRef, 'node.implement');
+  assert.deepEqual(third.acceptedEvidenceRefs, ['evidence.compact.002']);
+  assert.deepEqual(third.carriedIdentityRefs, ['identity.stable']);
+
+  const horizon = projectProcessHorizon(family, third);
+  assert.equal(horizon.previousAcceptedOrNull?.nodeRef, 'node.contract');
+  assert.deepEqual(horizon.previousAcceptedOrNull?.evidenceRefs, ['evidence.compact.002']);
+});
+
+test('ProcessFamily State allows explicit continuity-identity pruning at a transition boundary', () => {
+  const family = normalizeProcessFamily(familyFixture());
+  const start = createProcessState(family, {
+    stateRef: 'state.prune.001',
+    scopeRef: 'work.test.outcome',
+    carriedIdentityRefs: ['identity.keep', 'identity.retire'],
+  });
+  const next = admitProcessTransition({
+    family,
+    state: start,
+    transitionRef: 'transition.prune.001',
+    relationshipRefOrNull: 'rel.recover-contract',
+    movementClass: 'ADVANCES',
+    nextDepth: 'CONTRACT',
+    evidenceRefs: ['evidence.prune.001'],
+    carriedIdentityRefs: ['identity.keep'],
+    satisfiedPredicateRefs: [
+      'predicate.contract.allowed',
+      'predicate.node.contract.entry',
+    ],
+    nextStateRef: 'state.prune.002',
+  });
+
+  assert.deepEqual(next.carriedIdentityRefs, ['identity.keep']);
+  assert.deepEqual(next.lastAcceptedTransitionOrNull?.carriedIdentityRefs, ['identity.keep']);
 });
 
 test('transition formation rejects unknown relationships, empty evidence and no-op depth revisits', () => {
