@@ -296,13 +296,13 @@ Android remote direct/relay source remains architectural pressure only. Current 
 REMOTE_TRANSPORT_SOURCE != REMOTE_PRODUCER_ACCEPTANCE
 ~~~
 
-### VCS-06 — architecture extraction
+### VCS-06 — architecture extraction · COMPLETED
 
-Multiple real consumers have now accepted enough implementation/behavior to admit VCS-06 as the next extraction edge. VexWork PR #162 source-forms that READY transition; accepted-current status remains pending its generated/currentness closure. The recurring pattern should be extracted as reusable architecture only from what is actually shared. The extraction should preserve semantic owner, authority owner, transport owner, feature client, currentness owner, provider/engine boundary, and proof obligations. It should not copy one consumer's implementation and call it universal.
+The recurring cross-consumer pattern is now accepted in Vextreme-SDK at `docs/architecture/connected-capability-composition.md` through PR #1903 / merge `06ccef98769ff25eabd8bee4b8646185a42eb5f1`. It points back to canonical VexLife Connected Services meaning, maps existing reusable owners, and preserves feature semantics rather than creating a new generic runtime.
 
-### VCS-07 — deployment choices
+### VCS-07 — deployment choices · COMPLETED BY NON-EXPANSION
 
-Only after the runtime boundary is stable enough should deployment realization be selected among:
+Current consumer evidence does not earn another shared deployment implementation. The already accepted Hosted Capabilities architecture remains sufficient; the following remain available topology choices when a future concrete need earns one:
 
 ~~~text
 same-machine VexHome
@@ -319,6 +319,49 @@ DEPLOYMENT_LOCATION != SEMANTIC_OWNER
 CLOUD_VENDOR != HOME_AUTHORITY
 SELF_HOSTED != SAME_PHYSICAL_MACHINE
 ~~~
+
+
+### Human acceptance closeout · READY
+
+The required VCS-00 through VCS-07 program remains source/program-complete. Victor has now made one additional lived acceptance condition explicit:
+
+~~~text
+work.vexlife.connected-services.human-acceptance-walk
+state=READY
+~~~
+
+This does **not** reopen the completed VCS stages. It delays the human-facing convergence/closeout judgment until Victor personally walks the supported product boundaries:
+
+~~~text
+same-Wi-Fi VexStream stream + seek
+-> verified download
+-> Desktop unavailable
+-> LOCAL_ONLY playback
+-> phone network unavailable
+-> local playback still works
+-> Android process restart
+-> offline restoration
+-> Desktop/network return
+-> HUB_AND_LOCAL reconciliation without new approval
+
+separate remote Home/Conversation check:
+Tailscale/private reachability
+-> phone Wi-Fi off / cellular
+-> bounded authenticated Home session
+-> ordinary Conversation read/send
+~~~
+
+One edge is intentionally **not** a PASS requirement:
+
+~~~text
+away-from-home HUB_ONLY VexStream streaming
+= HELD_NOT_ACCEPTED
+
+Android remote/direct-relay source
+!= accepted matching VexStream Desktop remote producer
+~~~
+
+The root anatomy stays architecture-first. A VexBoard/ProcessMap-style detail presentation may guide the lived walk, but the walk's result remains evidence owned by the product/Work sources rather than VexBoard.
 
 ## Status language on this board
 
@@ -373,7 +416,10 @@ Then choose the question:
 -> VCS-05 accepted result: keep media Range/backpressure/playback in VexStream; no generic streaming extension earned
 
 "What is next?"
--> VCS-06 architecture extraction · READY_ACCEPTED_CURRENT; SDK source placement/current-entry reverify pending
+-> VCS-00 through VCS-07 source/program work is complete
+-> perform work.vexlife.connected-services.human-acceptance-walk
+-> after the supported lived walk, converge/close the parent if no new rightful defect is exposed
+-> away-from-home HUB_ONLY VexStream remains a held future capability unless separately admitted
 
 "Where can this run eventually?"
 -> completed-target deployment region
@@ -460,6 +506,10 @@ project.vexlife.connected-services
 github.pull.vexstream-music.15.comment.6408146238
 github.issue.vexlife.899.comment.6408187503
 github.pull.vexwork.162
+github.pull.vextreme-sdk.1903
+github.commit.vextreme-sdk.06ccef98769ff25eabd8bee4b8646185a42eb5f1
+github.issue.vexlife.899.comment.6431636376
+github.issue.vexlife.899.comment.6431637903
 ~~~
 
 <!-- [VXG RealForever][VEXWORK][VEXBOARD][VEXLIFE-CONNECTED-SERVICES][SYSTEM-ANATOMY] -->
