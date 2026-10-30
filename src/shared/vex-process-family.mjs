@@ -513,12 +513,7 @@ export function projectProcessHorizon(familyInput, stateInput, {
       proofRefs: [...currentNode.proofRefs],
     },
     nextCandidates,
-    nextAvailableRelationshipRefs: nextCandidates
-      .filter((candidate) => candidate.available)
-      .map((candidate) => candidate.relationshipRef),
     furtherNodeRefs,
-    effects: false,
-    executionAuthority: 'NONE',
   });
 }
 
