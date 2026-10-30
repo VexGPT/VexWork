@@ -28,6 +28,7 @@ export const PROCESS_MOVEMENT_CLASSES = Object.freeze([
 const RELATIONSHIP_MOVEMENT_CLASSES = new Set(
   PROCESS_MOVEMENT_CLASSES.filter((value) => value !== 'DEPTH_REVISIT'),
 );
+const FORWARD_MOVEMENT_CLASSES = new Set(['ADVANCES', 'ENABLES']);
 const REF = /^[A-Za-z0-9][A-Za-z0-9._:/-]*$/u;
 
 function assert(condition, message) {
@@ -497,6 +498,25 @@ function publicNextNode(node, relationship, availability) {
   };
 }
 
+function forwardReachableNodeRefs(family, startNodeRef) {
+  const visited = new Set([startNodeRef]);
+  const queue = [startNodeRef];
+
+  while (queue.length > 0) {
+    const fromRef = queue.shift();
+    for (const relationship of family.relationships) {
+      if (relationship.fromRef !== fromRef) continue;
+      if (!FORWARD_MOVEMENT_CLASSES.has(relationship.movementClass)) continue;
+      if (visited.has(relationship.toRef)) continue;
+      visited.add(relationship.toRef);
+      queue.push(relationship.toRef);
+    }
+  }
+
+  visited.delete(startNodeRef);
+  return [...visited].sort(compareCanonicalText);
+}
+
 export function projectProcessHorizon(familyInput, stateInput, {
   satisfiedPredicateRefs = [],
 } = {}) {
@@ -522,10 +542,8 @@ export function projectProcessHorizon(familyInput, stateInput, {
     ...(previousNode ? [previousNode.nodeRef] : []),
     ...nextCandidates.map((candidate) => candidate.nodeRef),
   ]);
-  const furtherNodeRefs = family.nodes
-    .map((node) => node.nodeRef)
-    .filter((nodeRef) => !neighborhood.has(nodeRef))
-    .sort(compareCanonicalText);
+  const furtherNodeRefs = forwardReachableNodeRefs(family, state.currentNodeRef)
+    .filter((nodeRef) => !neighborhood.has(nodeRef));
 
   return freeze({
     schemaVersion: PROCESS_HORIZON_SCHEMA,
