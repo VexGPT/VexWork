@@ -1690,7 +1690,7 @@ ProcessFamily provenance is owned once at Family scope through `ProcessFamily.so
 
 The prose node contract remains broader because it describes questions a competent current worker must answer. That checklist is intentionally **not identical to the machine schema**.
 
-### Dead helper + unconsumed Family purpose were removed
+### Readability / perception audit after A008\n\nAfter A008 SourceOwner proof, the builder performed one read-only fresh-instance audit before Assurance, specifically to catch code that passes but tells the wrong ownership story.\n\nThat audit removed three unconsumed horizon fields:\n\n~~~text\nnextAvailableRelationshipRefs\n  duplicated nextCandidates[].available\n\neffects = false\nexecutionAuthority = NONE\n  had no consumer\n  incorrectly suggested the read-only horizon was an effect/authority owner\n~~~\n\nThe horizon now carries only process-perception data. Effect and execution authority remain with their rightful external owners.\n\nThe same audit also removed duplicate source-ref inputs in the VexBoard projector: current transition evidence and current State identity are each supplied once rather than relying on `nodeSourceRefs(...)` de-duplication to hide repeated inputs.\n\n~~~text\nREADABILITY = ONE RIGHTFUL OWNER + ONE EXPLICIT DERIVATION\nDE-DUP HELPER SUCCESS != CLEAR SOURCE CODE\n~~~\n### Dead helper + unconsumed Family purpose were removed
 
 Fresh Independent Assurance on exact head `72f28bacf122e5ca8fe8dbb73a16089fac6b4a1a` found two additional pieces of unearned generic surface:
 
