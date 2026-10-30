@@ -21,12 +21,7 @@
       "considerationRefs": [
         "docs/CULTURE.md"
       ],
-      "proofRefs": [],
-      "sourceRefs": [
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
-        "github.pull.vexwork.189"
-      ]
+      "proofRefs": []
     },
     {
       "nodeRef": "node.vexwork.process-family-metawalk.recover",
@@ -46,12 +41,7 @@
         "docs/CULTURE.md",
         "docs/foundation/PROCESS-MAP.md"
       ],
-      "proofRefs": [],
-      "sourceRefs": [
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
-        "github.pull.vexwork.189"
-      ]
+      "proofRefs": []
     },
     {
       "nodeRef": "node.vexwork.process-family-metawalk.topology",
@@ -70,12 +60,7 @@
       "considerationRefs": [
         "docs/foundation/WORKGRAPH.md"
       ],
-      "proofRefs": [],
-      "sourceRefs": [
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
-        "github.pull.vexwork.189"
-      ]
+      "proofRefs": []
     },
     {
       "nodeRef": "node.vexwork.process-family-metawalk.ownership",
@@ -95,12 +80,7 @@
         "docs/CULTURE.md",
         "docs/foundation/PROCESS-MAP.md"
       ],
-      "proofRefs": [],
-      "sourceRefs": [
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
-        "github.pull.vexwork.189"
-      ]
+      "proofRefs": []
     },
     {
       "nodeRef": "node.vexwork.process-family-metawalk.contracts",
@@ -120,12 +100,7 @@
       "considerationRefs": [
         "docs/foundation/OPERATING-PROFILES.md"
       ],
-      "proofRefs": [],
-      "sourceRefs": [
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
-        "github.pull.vexwork.189"
-      ]
+      "proofRefs": []
     },
     {
       "nodeRef": "node.vexwork.process-family-metawalk.proof-plan",
@@ -145,11 +120,6 @@
       ],
       "proofRefs": [
         "test/vex-process-family-metawalk.test.mjs"
-      ],
-      "sourceRefs": [
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
-        "github.pull.vexwork.189"
       ]
     },
     {
@@ -169,12 +139,7 @@
       "considerationRefs": [
         "docs/foundation/REPOSITORY-GRAPH.md"
       ],
-      "proofRefs": [],
-      "sourceRefs": [
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
-        "github.pull.vexwork.189"
-      ]
+      "proofRefs": []
     },
     {
       "nodeRef": "node.vexwork.process-family-metawalk.focused-proof",
@@ -194,11 +159,6 @@
       ],
       "proofRefs": [
         "test/vex-process-family-metawalk.test.mjs"
-      ],
-      "sourceRefs": [
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
-        "github.pull.vexwork.189"
       ]
     },
     {
@@ -218,12 +178,7 @@
       "considerationRefs": [
         "docs/foundation/OPERATING-PROFILES.md"
       ],
-      "proofRefs": [],
-      "sourceRefs": [
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
-        "github.pull.vexwork.189"
-      ]
+      "proofRefs": []
     },
     {
       "nodeRef": "node.vexwork.process-family-metawalk.reconcile",
@@ -242,12 +197,7 @@
       "considerationRefs": [
         "docs/foundation/PROJECT-RECONCILIATION.md"
       ],
-      "proofRefs": [],
-      "sourceRefs": [
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
-        "github.pull.vexwork.189"
-      ]
+      "proofRefs": []
     }
   ],
   "relationships": [
@@ -259,11 +209,6 @@
       "label": "begin from human intention",
       "entryPredicateRefs": [
         "predicate.metawalk.human-intention-present"
-      ],
-      "sourceRefs": [
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
-        "github.pull.vexwork.189"
       ]
     },
     {
@@ -274,11 +219,6 @@
       "label": "pressure grounded",
       "entryPredicateRefs": [
         "predicate.metawalk.pressure-grounded"
-      ],
-      "sourceRefs": [
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
-        "github.pull.vexwork.189"
       ]
     },
     {
@@ -289,11 +229,6 @@
       "label": "shape stable enough",
       "entryPredicateRefs": [
         "predicate.metawalk.topology-stable-enough"
-      ],
-      "sourceRefs": [
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
-        "github.pull.vexwork.189"
       ]
     },
     {
@@ -304,11 +239,6 @@
       "label": "rightful owners identified",
       "entryPredicateRefs": [
         "predicate.metawalk.owners-grounded"
-      ],
-      "sourceRefs": [
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
-        "github.pull.vexwork.189"
       ]
     },
     {
@@ -319,11 +249,6 @@
       "label": "relationships explicit",
       "entryPredicateRefs": [
         "predicate.metawalk.relationships-explicit"
-      ],
-      "sourceRefs": [
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
-        "github.pull.vexwork.189"
       ]
     },
     {
@@ -334,11 +259,6 @@
       "label": "claim + falsification known",
       "entryPredicateRefs": [
         "predicate.metawalk.proof-strategy-bound"
-      ],
-      "sourceRefs": [
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
-        "github.pull.vexwork.189"
       ]
     },
     {
@@ -349,11 +269,6 @@
       "label": "target realization formed",
       "entryPredicateRefs": [
         "predicate.metawalk.implementation-formed"
-      ],
-      "sourceRefs": [
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
-        "github.pull.vexwork.189"
       ]
     },
     {
@@ -364,11 +279,6 @@
       "label": "bounded contracts proven",
       "entryPredicateRefs": [
         "predicate.metawalk.focused-proof-clear"
-      ],
-      "sourceRefs": [
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
-        "github.pull.vexwork.189"
       ]
     },
     {
@@ -379,11 +289,6 @@
       "label": "lived/integration evidence",
       "entryPredicateRefs": [
         "predicate.metawalk.lived-evidence-formed"
-      ],
-      "sourceRefs": [
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
-        "github.pull.vexwork.189"
       ]
     },
     {
@@ -394,11 +299,6 @@
       "label": "semantic ambiguity",
       "entryPredicateRefs": [
         "predicate.metawalk.semantic-ambiguity-observed"
-      ],
-      "sourceRefs": [
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
-        "github.pull.vexwork.189"
       ]
     },
     {
@@ -409,11 +309,6 @@
       "label": "contract gap",
       "entryPredicateRefs": [
         "predicate.metawalk.contract-gap-observed"
-      ],
-      "sourceRefs": [
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
-        "github.pull.vexwork.189"
       ]
     },
     {
@@ -424,11 +319,6 @@
       "label": "implementation defect",
       "entryPredicateRefs": [
         "predicate.metawalk.implementation-defect-observed"
-      ],
-      "sourceRefs": [
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
-        "github.pull.vexwork.189"
       ]
     },
     {
@@ -439,11 +329,6 @@
       "label": "contract gap",
       "entryPredicateRefs": [
         "predicate.metawalk.contract-gap-observed"
-      ],
-      "sourceRefs": [
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
-        "github.pull.vexwork.189"
       ]
     }
   ],
