@@ -423,8 +423,16 @@ test('accepted transition carries evidence and identity while rotating CURRENT n
 
   assert.equal(next.currentNodeRef, 'node.contract');
   assert.equal(next.layer, 'CONTRACT');
-  assert.deepEqual(next.acceptedEvidenceRefs, ['evidence.pressure-grounded']);
-  assert.deepEqual(next.carriedIdentityRefs, ['identity.work.test.outcome']);
+  assert.equal(Object.hasOwn(next, 'acceptedEvidenceRefs'), false);
+  assert.equal(Object.hasOwn(next, 'carriedIdentityRefs'), false);
+  assert.deepEqual(
+    next.lastAcceptedTransitionOrNull?.evidenceRefs,
+    ['evidence.pressure-grounded'],
+  );
+  assert.deepEqual(
+    next.lastAcceptedTransitionOrNull?.carriedIdentityRefs,
+    ['identity.work.test.outcome'],
+  );
   assert.equal(next.previousStateRefOrNull, 'state.metawalk.001');
   assert.equal(Object.hasOwn(next.lastAcceptedTransitionOrNull, 'movementClass'), false);
 
@@ -767,32 +775,18 @@ test('ProcessFamily State fails closed on foreign family, invalid layer and corr
     /relationship fromRef mismatch/,
   );
 
-  const missingAcceptedEvidence = structuredClone(next);
-  missingAcceptedEvidence.acceptedEvidenceRefs = [];
+  const forgedEvidenceField = structuredClone(next);
+  forgedEvidenceField.acceptedEvidenceRefs = ['evidence.historical'];
   assert.throws(
-    () => normalizeProcessState(missingAcceptedEvidence, family),
-    /acceptedEvidenceRefs must exactly equal last accepted transition evidence/,
+    () => normalizeProcessState(forgedEvidenceField, family),
+    /ProcessFamily\.State schema drift/,
   );
 
-  const historicalEvidenceSmuggledForward = structuredClone(next);
-  historicalEvidenceSmuggledForward.acceptedEvidenceRefs.push('evidence.historical');
+  const forgedIdentityField = structuredClone(next);
+  forgedIdentityField.carriedIdentityRefs = ['identity.historical'];
   assert.throws(
-    () => normalizeProcessState(historicalEvidenceSmuggledForward, family),
-    /acceptedEvidenceRefs must exactly equal last accepted transition evidence/,
-  );
-
-  const missingCarriedIdentity = structuredClone(next);
-  missingCarriedIdentity.carriedIdentityRefs = [];
-  assert.throws(
-    () => normalizeProcessState(missingCarriedIdentity, family),
-    /carriedIdentityRefs must exactly equal last accepted transition identities/,
-  );
-
-  const historicalIdentitySmuggledForward = structuredClone(next);
-  historicalIdentitySmuggledForward.carriedIdentityRefs.push('identity.historical');
-  assert.throws(
-    () => normalizeProcessState(historicalIdentitySmuggledForward, family),
-    /carriedIdentityRefs must exactly equal last accepted transition identities/,
+    () => normalizeProcessState(forgedIdentityField, family),
+    /ProcessFamily\.State schema drift/,
   );
 
   const historicalSourceBag = structuredClone(next);
@@ -844,8 +838,10 @@ test('ProcessFamily State keeps one predecessor link and one accepted transition
   assert.equal(third.lastAcceptedTransitionOrNull?.transitionRef, 'transition.compact.002');
   assert.equal(third.lastAcceptedTransitionOrNull?.fromNodeRef, 'node.contract');
   assert.equal(third.lastAcceptedTransitionOrNull?.toNodeRef, 'node.implement');
-  assert.deepEqual(third.acceptedEvidenceRefs, ['evidence.compact.002']);
-  assert.deepEqual(third.carriedIdentityRefs, ['identity.stable']);
+  assert.equal(Object.hasOwn(third, 'acceptedEvidenceRefs'), false);
+  assert.equal(Object.hasOwn(third, 'carriedIdentityRefs'), false);
+  assert.deepEqual(third.lastAcceptedTransitionOrNull?.evidenceRefs, ['evidence.compact.002']);
+  assert.deepEqual(third.lastAcceptedTransitionOrNull?.carriedIdentityRefs, ['identity.stable']);
 
   const horizon = projectProcessHorizon(family, third);
   assert.equal(horizon.previousAcceptedOrNull?.stateRef, 'state.compact.002');
@@ -886,7 +882,7 @@ test('ProcessFamily State allows explicit continuity-identity pruning at a trans
     nextStateRef: 'state.prune.003',
   });
 
-  assert.deepEqual(next.carriedIdentityRefs, ['identity.keep']);
+  assert.equal(Object.hasOwn(next, 'carriedIdentityRefs'), false);
   assert.deepEqual(next.lastAcceptedTransitionOrNull?.carriedIdentityRefs, ['identity.keep']);
 });
 
@@ -927,8 +923,8 @@ test('entry ProcessFamily State cannot invent transition evidence, identities, o
     scopeRef: 'work.test.outcome',
   });
   assert.equal(valid.layer, family.entryLayer);
-  assert.deepEqual(valid.acceptedEvidenceRefs, []);
-  assert.deepEqual(valid.carriedIdentityRefs, []);
+  assert.equal(Object.hasOwn(valid, 'acceptedEvidenceRefs'), false);
+  assert.equal(Object.hasOwn(valid, 'carriedIdentityRefs'), false);
   assert.equal(valid.previousStateRefOrNull, null);
   assert.equal(valid.lastAcceptedTransitionOrNull, null);
 
@@ -936,14 +932,14 @@ test('entry ProcessFamily State cannot invent transition evidence, identities, o
   forgedEvidence.acceptedEvidenceRefs = ['evidence.historical'];
   assert.throws(
     () => normalizeProcessState(forgedEvidence, family),
-    /entry State must not contain accepted transition evidence/,
+    /ProcessFamily\.State schema drift/,
   );
 
   const forgedIdentity = structuredClone(valid);
   forgedIdentity.carriedIdentityRefs = ['identity.historical'];
   assert.throws(
     () => normalizeProcessState(forgedIdentity, family),
-    /entry State must not contain carried transition identities/,
+    /ProcessFamily\.State schema drift/,
   );
 
   const forgedLayer = structuredClone(valid);
@@ -1065,7 +1061,8 @@ test('bounded horizon derives CURRENT source grounding from current State eviden
   assert.equal(current?.sourceRefs.includes('identity.current'), true);
   assert.equal(current?.sourceRefs.includes('evidence.current.001'), false);
   assert.equal(Object.hasOwn(third, 'sourceRefs'), false);
-  assert.deepEqual(third.acceptedEvidenceRefs, ['evidence.current.002']);
+  assert.equal(Object.hasOwn(third, 'acceptedEvidenceRefs'), false);
+  assert.deepEqual(third.lastAcceptedTransitionOrNull?.evidenceRefs, ['evidence.current.002']);
 });
 
 test('transition formation rejects unknown relationships, empty evidence and no-op relationship-free layer changes', () => {
