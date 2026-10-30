@@ -107,7 +107,7 @@ prove lived outcome
 
 Process truth is graph-backed. A simple previous/current/next neighborhood is a projection of that graph, not a singly-linked-list storage law.
 
-### Depth
+### Layer
 
 Through what lens are we currently touching the process shape?
 
@@ -150,7 +150,7 @@ ATLAS depthClass = process scale / granularity
 Layer is not a mandatory universal checklist. A simple change may not earn every layer. A real feature may move backward when downstream evidence exposes an upstream gap.
 
 ~~~text
-SAME NODE + DIFFERENT DEPTH
+SAME NODE + DIFFERENT LAYER
 != DUPLICATE WORK
 ~~~
 
@@ -260,7 +260,7 @@ PREVIOUS -> CURRENT -> NEXT
 
 but durable truth may contain branching, correction, recovery and convergence relationships.
 
-Working relationship classes:
+Working MetaWalk movement vocabulary:
 
 ~~~text
 ADVANCES
@@ -285,13 +285,15 @@ RECOVERS
   a failed/interrupted round returns to a lawful process coordinate without replaying completed effects
 ~~~
 
+These names are **owned by this ProcessFamily definition**, not by the generic ProcessFamily core. Another Family may declare a different movement vocabulary. The generic core only reserves relationship-free `LAYER_REVISIT` for same-node layer movement.
+
 Names remain candidates. The requirement is to preserve **why** traversal moved, not merely that an arrow exists.
 
 ## Revisit semantics
 
 Iteration count alone is too lossy. Revisiting work should preserve the causal class.
 
-### Depth revisit
+### Layer revisit
 
 Same semantic coordinate, deeper lens.
 
@@ -524,7 +526,7 @@ next node
 
         plus
 
-DEPTH
+LAYER
 
 formation / topology / ownership / contract /
 implementation / focused proof / lived proof / reconcile
@@ -1359,7 +1361,7 @@ ProcessFamily.State
   familyRef
   scopeRef
   currentNodeRef
-  depth
+  layer
 
   previousStateRefOrNull
   lastAcceptedTransitionOrNull
@@ -1476,6 +1478,201 @@ CURRENT_EVIDENCE = EXACT_CURRENT_TRANSITION_EVIDENCE
 CURRENT_SOURCE_GROUNDING = DERIVED_CURRENT_CONTEXT
 HISTORICAL_PROVENANCE = PREDECESSOR_LINEAGE / RETAINED EVIDENCE
 ~~~
+## Foundational helper audit — reject unearned semantics before acceptance
+
+After the first Assurance rounds, the candidate was re-audited with a stricter question:
+
+> Is each helper merely validating/projecting meaning declared by a rightful source, or is it quietly inventing reusable ontology because it is convenient?
+
+That audit deliberately removed or corrected several things that had passed earlier tests.
+
+### Entry State cannot invent continuity
+
+~~~text
+createProcessState(...)
+  accepts:
+    stateRef
+    scopeRef
+
+  derives:
+    currentNodeRef = family.entryNodeRef
+    layer = family.entryLayer
+
+  requires:
+    acceptedEvidenceRefs = []
+    carriedIdentityRefs = []
+    previousStateRefOrNull = null
+    lastAcceptedTransitionOrNull = null
+~~~
+
+Entry transition evidence, carried transition identities, and non-entry layer selection are not caller-authored options.
+
+Every later transition must state its `carriedIdentityRefs` explicitly. The transition helper does not silently preserve old identities when the caller omits them.
+
+### Family-owned vocabulary, not generic-core ontology
+
+The generic ProcessFamily core does **not** own this MetaWalk's layer or relationship vocabulary.
+
+Each Family declares:
+
+~~~text
+layers[]
+entryLayer
+
+movementClasses[]
+forwardMovementClasses[]
+~~~
+
+For this MetaWalk:
+
+~~~text
+layers
+  FORMATION
+  TOPOLOGY
+  OWNERSHIP
+  CONTRACT
+  IMPLEMENTATION
+  FOCUSED_PROOF
+  LIVED_INTEGRATION
+  RECONCILE_ACCEPT
+
+forward movement
+  ADVANCES
+  ENABLES
+~~~
+
+`LAYER_REVISIT` is the one generic relationship-free mechanism: same semantic node, different Family-declared layer.
+
+Permanent:
+
+~~~text
+PROCESS_FAMILY_LAYER != PROCESS_ATLAS_DEPTH_CLASS
+ONE FAMILY'S MOVEMENT NAMES != UNIVERSAL PROCESS ONTOLOGY
+~~~
+
+### Static node schema was reduced to earned fields
+
+The first machine draft promoted several conceptual node questions into exact wire fields before the patient-zero actually used them:
+
+~~~text
+entryPredicateRefs
+authorityRefs
+exitPredicateRefs
+heldConcernRefs
+~~~
+
+Those fields were removed.
+
+Why:
+
+~~~text
+relationship entryPredicateRefs
+  owns movement admission
+
+authority / live effect membrane
+  comes from current Work/provider/runtime truth
+  != static ProcessFamily node ownership
+
+exit / held concerns
+  remain useful current-node questions
+  != earned generic wire representation yet
+~~~
+
+The machine node now carries only patient-zero semantics that are actually consumed:
+
+~~~text
+nodeRef
+label
+purpose
+currentTruthRefs
+ownerRefs
+readingSourceRefs
+considerationRefs
+proofRefs
+sourceRefs
+~~~
+
+The prose node contract remains broader because it describes questions a competent current worker must answer. That checklist is intentionally **not identical to the machine schema**.
+
+### Read-now scope is bounded independently from provenance
+
+The long formation document remains in node `sourceRefs` so the origin is recoverable.
+
+It is **not** present in node `readingSourceRefs`.
+
+~~~text
+PROVENANCE SOURCE
+!= CURRENT READ-NOW SOURCE
+~~~
+
+A current node therefore reads only the bounded external source neighborhood it actually needs. Historical formation reasoning remains recoverable without automatically occupying fresh-instance context.
+
+### FURTHER route means forward-reachable, not merely unseen
+
+The first projector treated every node outside PREVIOUS/CURRENT/NEXT as "further", which could relabel completed history as future.
+
+Now:
+
+~~~text
+FURTHER
+= reachable from CURRENT through Family-declared forwardMovementClasses
+  minus PREVIOUS / CURRENT / direct NEXT
+
+feedback / correction relationships
+= visible as direct alternatives when adjacent
+!= farther-forward route
+
+completed earlier nodes
+!= future simply because they are not in the local three-slot neighborhood
+~~~
+
+### Process topology must be reachable
+
+Every ProcessFamily node must be reachable from `entryNodeRef` through declared relationships.
+
+An orphan node is invalid rather than a hidden future destination with no lawful route.
+
+### VexBoard projection does not own currentness
+
+The dynamic bounded-horizon board declares:
+
+~~~text
+derivedFromRefOrNull = current ProcessFamily.State.stateRef
+~~~
+
+and PREVIOUS exposes the exact predecessor State ref.
+
+The static full-map projection is also tested against the machine Family for semantic node labels, relationship endpoints, relationship labels, and forward-vs-correction projection kind—not only for matching IDs.
+
+### Cross-snapshot lineage validation is deliberately held
+
+A single current State can validate:
+
+~~~text
+its own shape
+its predecessor State ref shape
+its last transition shape
+its current node/layer
+its exact current evidence/identity set
+~~~
+
+It cannot prove, without reading the predecessor snapshot, that:
+
+~~~text
+current.previousStateRefOrNull == actual previous.stateRef
+current.lastAcceptedTransition.fromNodeRef == actual previous.currentNodeRef
+current.lastAcceptedTransition.fromLayer == actual previous.layer
+~~~
+
+No persistent ProcessFamily runtime consumes that pair yet.
+
+Therefore this formation does **not** add a speculative generic successor-store/lineage helper merely because one might be useful later. When a persistent runtime is earned, that consumer must validate predecessor/current continuity using both exact snapshots and the accepted runtime-persistence law.
+
+~~~text
+LOCAL STATE VALIDATION != WHOLE LINEAGE PROOF
+NO CURRENT CONSUMER != LICENSE TO MINT UNUSED FOUNDATION
+~~~
+
 ## Machine-readable source / live-state persistence boundary
 
 The first pressure walks have now earned a small machine-readable ProcessFamily source:
@@ -1486,6 +1683,9 @@ docs/process/VEX-PROCESS-FAMILY-METAWALK.json
   familyRef = process-family.vexwork.metawalk
   nodes = 10
   relationships = 13
+  layers = Family-owned
+  movementClasses = Family-owned
+  forwardMovementClasses = Family-owned
 ~~~
 
 The source contract is implemented by:
@@ -1503,15 +1703,18 @@ projectProcessHorizon(...)
 The current State contract owns only:
 
 ~~~text
+stateRef
+familyRef
 scopeRef
 currentNodeRef
-depth
+layer
 previousStateRefOrNull
 lastAcceptedTransitionOrNull
-accepted evidence refs grounding only the current State
-carried stable identity refs
-source grounding
+acceptedEvidenceRefs
+carriedIdentityRefs
 ~~~
+
+It does **not** own a cumulative source/provenance bag. Current reading/source grounding is derived from the ProcessFamily definition, CURRENT node contract, current State evidence/identities, and the predecessor coordinate when needed.
 
 Exact-key validation intentionally rejects ad-hoc provider/repository fields. Mutable world truth remains owned by its rightful source and is re-grounded before a dependent next effect.
 
@@ -1575,7 +1778,7 @@ ADDRESSABLE FUTURE
 The formed ProcessFamily / bounded-horizon implementation has been exercised against the exact current PR source bytes through the connected V8 execution surface.
 
 ~~~text
-exact test file logic        17 / 17 PASS
+exact test file logic        CURRENT_EXACT_FOCUSED_PASS
 machine ProcessFamily        PASS
 scope x node x layer walk    PASS
 predicate-derived availability PASS
@@ -1648,7 +1851,7 @@ Coverage **percentage** remains a repository-runtime predicate. The connected V8
 ~~~text
 TEST DISCOVERY SHAPE          = CLEAR
 SOURCE COVERAGE APPLICABILITY = CLEAR
-CONNECTED V8 TEST LOGIC       = 17 / 17 PASS
+CONNECTED V8 TEST LOGIC       = CURRENT_EXACT_FOCUSED_PASS
 NODE LCOV / AGGREGATE FLOOR   = NOT YET CLAIMED
 FULL npm run review           = NOT YET CLAIMED
 ~~~
@@ -1724,7 +1927,7 @@ PROCESS POSITION
   CURRENT node
   next earnable node + entry predicate
 
-DEPTH
+LAYER
   current lens
 
 CURRENT QUESTION
