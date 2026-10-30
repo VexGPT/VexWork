@@ -313,6 +313,81 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(graph.items.some((item) => item.workRef === 'work.vexsync.debugmenu-blueprints.android-construction-proof'), false);
   assert.equal(graph.items.some((item) => item.workRef === 'work.vexsync.debugmenu-blueprints.save-apply-pr-loop'), false);
 
+  const vextremeArchitectureOutcome = graph.items.find((item) => item.workRef === 'work.vextreme.architecture-convergence.outcome');
+  const vextremeArchitectureOwnerMap = graph.items.find((item) => item.workRef === 'work.vextreme.architecture-convergence.semantic-owner-map');
+  const vextremeArchitectureJourneyInspection = graph.items.find((item) => item.workRef === 'work.vextreme.architecture-convergence.terrain-journey-inspection');
+  const vextremeArchitectureReturnContext = graph.items.find((item) => item.workRef === 'work.vextreme.architecture-convergence.terrain-reader-return-context');
+  const vextremeArchitectureReturnVocabulary = graph.items.find((item) => item.workRef === 'work.vextreme.architecture-convergence.terrain-reader-return-vocabulary');
+  const vextremeArchitectureActiveSurface = graph.items.find((item) => item.workRef === 'work.vextreme.architecture-convergence.terrain-active-surface-context');
+  const vextremeArchitectureTerrainReader = graph.items.find((item) => item.workRef === 'work.vextreme.architecture-convergence.terrain-reader-navigation');
+  assert.equal(vextremeArchitectureOutcome.state, 'RUNNING');
+  assert.equal(vextremeArchitectureOutcome.priorityClass, 'IMMEDIATE');
+  assert.equal(vextremeArchitectureOwnerMap.state, 'RUNNING');
+  assert.deepEqual(vextremeArchitectureOwnerMap.dependencyRefs, []);
+  assert.equal(
+    vextremeArchitectureOwnerMap.sourceRefs.includes('work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery'),
+    true,
+  );
+  assert.equal(vextremeArchitectureJourneyInspection.state, 'VERIFYING');
+  assert.deepEqual(vextremeArchitectureJourneyInspection.dependencyRefs, []);
+  assert.equal(vextremeArchitectureJourneyInspection.sourceRefs.includes('repo.vextreme:lib/terrain-journey.js'), true);
+  assert.equal(vextremeArchitectureJourneyInspection.sourceRefs.includes('github.pull.vextreme.497'), true);
+  assert.equal(vextremeArchitectureJourneyInspection.sourceRefs.includes('github.commit.vextreme.4c816c637220be3f995d2cb9f3e7dead529af6d8'), true);
+  assert.ok(graph.transitions.some((transition) =>
+    transition.transitionRef === 'transition.vextreme.architecture-convergence.terrain-journey-inspection.verifying.pr497-merge'
+    && transition.priorState === 'RUNNING'
+    && transition.nextState === 'VERIFYING'
+  ));
+  assert.equal(vextremeArchitectureReturnContext.state, 'COMPLETED');
+  assert.deepEqual(vextremeArchitectureReturnContext.dependencyRefs, []);
+  assert.equal(vextremeArchitectureReturnContext.sourceRefs.includes('github.pull.vextreme.488'), true);
+  assert.equal(vextremeArchitectureReturnContext.sourceRefs.includes('github.pull.vextreme.498'), true);
+  assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vextreme.architecture-convergence.terrain-reader-return-context.verifying.pr498-merge'));
+  assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vextreme.architecture-convergence.terrain-reader-return-context.completed.pr498-postmerge'));
+
+  assert.equal(vextremeArchitectureReturnVocabulary.state, 'COMPLETED');
+  assert.deepEqual(vextremeArchitectureReturnVocabulary.dependencyRefs, []);
+  assert.equal(vextremeArchitectureReturnVocabulary.sourceRefs.includes('github.pull.vextreme.502'), true);
+  assert.equal(vextremeArchitectureReturnVocabulary.sourceRefs.includes('github.pull.vexlife-android.193'), true);
+  assert.equal(vextremeArchitectureReturnVocabulary.sourceRefs.includes('github.pull.vextreme.503'), true);
+  assert.equal(vextremeArchitectureReturnVocabulary.sourceRefs.includes('github.commit.vextreme.87571924f769fe4a1dad1084e2f68775f18d37b1'), true);
+  assert.ok(graph.transitions.some((transition) =>
+    transition.transitionRef === 'transition.vextreme.architecture-convergence.terrain-reader-return-vocabulary.verifying.pr503-a004-assurance'
+    && transition.priorState === 'RUNNING'
+    && transition.nextState === 'VERIFYING'
+  ));
+  assert.ok(graph.transitions.some((transition) =>
+    transition.transitionRef === 'transition.vextreme.architecture-convergence.terrain-reader-return-vocabulary.completed.pr503-tree-exact-merge'
+    && transition.priorState === 'VERIFYING'
+    && transition.nextState === 'COMPLETED'
+  ));
+
+  assert.equal(vextremeArchitectureActiveSurface.state, 'COMPLETED');
+  assert.equal(vextremeArchitectureActiveSurface.workClass, 'DEFECT');
+  assert.deepEqual(vextremeArchitectureActiveSurface.dependencyRefs, []);
+  assert.equal(vextremeArchitectureActiveSurface.sourceRefs.includes('github.commit.vextreme.87571924f769fe4a1dad1084e2f68775f18d37b1'), true);
+  assert.equal(vextremeArchitectureActiveSurface.sourceRefs.includes('github.pull.vextreme.505'), true);
+  assert.equal(vextremeArchitectureActiveSurface.sourceRefs.includes('github.commit.vextreme.28602a7ba832223d40ed844c32609954051f1c84'), true);
+  assert.ok(graph.transitions.some((transition) =>
+    transition.transitionRef === 'transition.vextreme.architecture-convergence.terrain-active-surface-context.verifying.pr505-a002-assurance'
+    && transition.priorState === 'RUNNING'
+    && transition.nextState === 'VERIFYING'
+  ));
+  assert.ok(graph.transitions.some((transition) =>
+    transition.transitionRef === 'transition.vextreme.architecture-convergence.terrain-active-surface-context.completed.pr505-tree-exact-merge'
+    && transition.priorState === 'VERIFYING'
+    && transition.nextState === 'COMPLETED'
+  ));
+
+  assert.equal(vextremeArchitectureTerrainReader.state, 'VERIFYING');
+  assert.deepEqual(vextremeArchitectureTerrainReader.dependencyRefs, []);
+  assert.equal(vextremeArchitectureTerrainReader.sourceRefs.includes('github.pull.vextreme.493'), true);
+  assert.equal(vextremeArchitectureTerrainReader.sourceRefs.includes('github.commit.vextreme.36ced69ee6719bf05481110a753aee9e989d4885'), true);
+  assert.ok(graph.transitions.some((transition) =>
+    transition.transitionRef === 'transition.vextreme.architecture-convergence.terrain-reader-navigation.verifying.pr493-merge'
+    && transition.priorState === 'RUNNING'
+    && transition.nextState === 'VERIFYING'
+  ));
   const operationalOutcome = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.outcome');
   const derivedFoundation = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.derived-work-foundation');
   const derivedContract = graph.items.find((item) => item.workRef === 'work.vexwork.operational-console.derived-work-contract');
