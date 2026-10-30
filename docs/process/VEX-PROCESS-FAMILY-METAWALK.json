@@ -1,7 +1,6 @@
 {
   "schemaVersion": "vexwork.process-family/v1",
   "familyRef": "process-family.vexwork.metawalk",
-  "purpose": "Form, deepen, implement, prove, revisit and reconcile one process shape while keeping current reading bounded and source ownership explicit.",
   "entryNodeRef": "node.vexwork.process-family-metawalk.entry",
   "nodes": [
     {
