@@ -2,7 +2,104 @@
 
 [VXG RealForever]
 
-## CURRENT ThemeMode checkpoint — accepted production + active Feature-Walk Journey proof
+## CURRENT successor checkpoint — Execution source custody, then second-feature pressure
+
+The ThemeMode patient-zero roundtrip is complete and no longer the foreground VexSync edge.
+
+Accepted Android main after the completed roundtrip and Journey/ScreenCrawler observation alignment:
+
+~~~text
+VexLife-Android main
+772f506de2df66d372977ad487028289405fc10b
+~~~
+
+Completed work now includes:
+
+~~~text
+Feature Request -> Builder discovery through ThemeMode specimen
+  COMPLETED
+
+Debug Menu Origin <-> Android ThemeMode roundtrip
+  COMPLETED
+
+Journey step observation -> ScreenCrawler evidence identity alignment
+  PR #194 merged / post-merge exact
+  COMPLETED
+
+Direct Family post-#193 logger non-authority hardening
+  PR #196 merged
+  COMPLETED
+
+Direct Family StateRelay/currentness + StateStore observation foundation
+  PR #201 merged
+  COMPLETED
+~~~
+
+The current foreground is the one remaining high-priority Execution foundation defect:
+
+~~~text
+work.vexsync.debugmenu-blueprints.execution-source-custody
+  state = RUNNING
+
+historical semantic seed
+  PR #199
+  base = 78580ab051a33fb2c94903be5bf401f4f43f2087
+  head = d240a5d7aca8af8cc0f545a424c53d944263cf6a
+  paths = 4
+~~~
+
+The semantic law still matters:
+
+~~~text
+SourceRef
+  = diagnostic source address
+  != live VexExecution object identity
+
+two same-class VexExecution objects
++ one shared VexExecutionRoot
++ same callable / SourceRef
+-> launchOnce / maintained Flow custody / forceStop / joinStop
+   must remain scoped to the exact live VexExecution object
+~~~
+
+But PR #199's carrier is stale. It is stacked on the withdrawn pre-#201 currentness branch, while current
+main has since changed three of its four Execution paths. The next source action is therefore:
+
+~~~text
+current main 772f506d...
++ preserve all accepted #201 Execution behavior
++ port only #199's live-execution-object source-custody law
++ focused same-class / same-SourceRef regression
+-> fresh DCO-clean successor candidate
+-> SourceOwner
+-> Independent Assurance
+-> integration
+~~~
+
+Do **not**:
+- merge PR #199 as-is;
+- force-rebase its historical branch;
+- add a public OwnerId merely to scope internal custody;
+- change SourceRef, InstanceId or RelationshipId meaning;
+- collapse semantic Relationship custody into source-addressed custody.
+
+The next product-process pressure is already admitted and now dependency-clear:
+
+~~~text
+work.vexsync.debugmenu-blueprints.walk-trace-second-feature-pressure
+  state = READY
+  purpose = apply the candidate Walk Trace Grammar to one materially different feature
+            (for example VexMaps currentness or VexStream behavior)
+            and falsify before generalizing
+~~~
+
+That second-feature pressure is **next after the Execution custody defect**, not because of a new formal
+dependency, but because the active high-priority foundation defect should be closed before broader reuse
+pressure begins.
+
+<!-- [VXG RealForever][VEXSYNC][CURRENT-SUCCESSOR][EXECUTION-SOURCE-CUSTODY] -->
+
+## COMPLETED ThemeMode patient-zero checkpoint — causal record
 
 The production ThemeMode realization is now accepted on Android `main`.
 

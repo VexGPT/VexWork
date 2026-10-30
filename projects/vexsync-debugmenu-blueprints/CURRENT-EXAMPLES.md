@@ -2,7 +2,67 @@
 
 [VXG RealForever]
 
-## CURRENT ThemeMode example — accepted production, Feature Walk active
+## CURRENT successor example — source address is not live Execution custody
+
+The ThemeMode specimen is now completed. The next unresolved architecture pressure is intentionally
+smaller than another product feature.
+
+Current accepted Android Execution source still exposes this mismatch:
+
+~~~text
+SourceRef
+  class + callable
+  diagnostic / navigation identity
+
+launchOnce / launchForCollect uniqueness
+forceStop(callable)
+joinStop(callable)
+  currently key only by SourceRef in the shared VexExecutionRoot
+~~~
+
+That means two live objects of the same `VexExecution` class can still collide when they share a root and
+invoke the same callable.
+
+Historical PR #199 already discovered the needed internal distinction:
+
+~~~text
+live VexExecution object
++ SourceRef
+-> source-addressed custody scope
+
+InstanceId
+  remains exact runtime occurrence
+
+RelationshipId
+  remains semantic maintained-work identity
+~~~
+
+The historical carrier must not be merged directly because later accepted PR #201 changed
+`VexExecution.kt`, its README and its tests. PR #201's narrower Store-observation correction must remain:
+
+~~~text
+SourceRef = diagnostic identity
+InstanceId = runtime occurrence
+same-class Store observations may coexist independently
+~~~
+
+The successor should therefore currentize the **law**, not the old branch:
+
+~~~text
+accepted main 772f506de2df66d372977ad487028289405fc10b
+-> fresh current-main source descent
+-> port live-execution-object custody into source-addressed operations
+-> preserve #201 result-admission/currentness/observation behavior
+-> prove two same-class Execution objects do not cancel/reject each other
+~~~
+
+After that, the now-READY second-feature pressure should apply the Walk Trace Grammar to a materially
+different feature and use that pressure to decide what, if anything, deserves a shared VexArchitecture
+type/schema.
+
+<!-- [VXG RealForever][VEXSYNC][CURRENT-EXAMPLE][EXECUTION-SOURCE-CUSTODY] -->
+
+## COMPLETED ThemeMode patient-zero example — causal record
 
 Production closure is now accepted source:
 

@@ -108,7 +108,10 @@
     "evidence.vexsync.pr202.device-a001.inner-return.sha256.54053f86f4b373fa2802baec9415ce373c743bcac40c64bd0939e2cadf215490",
     "github.comment.vexlife-android.pr195.6514363041.lived-persistence-pass",
     "github.comment.vexlife-android.pr195.6514376801.post-merge-roundtrip-complete",
-    "github.commit.vexlife-android.c74c5d4973895eeddb76197ed2f454ddfb40c00a"
+    "github.commit.vexlife-android.c74c5d4973895eeddb76197ed2f454ddfb40c00a",
+    "github.commit.vexlife-android.772f506de2df66d372977ad487028289405fc10b",
+    "github.comment.vexlife-android.pr194.6514449830.post-merge-verified",
+    "github.comment.vexlife-android.pr199.6514450306.currentization-required"
   ],
   "formedAt": "2026-10-26T07:26:46.000Z"
 }
