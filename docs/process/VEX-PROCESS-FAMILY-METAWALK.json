@@ -1,0 +1,204 @@
+{
+  "schemaVersion": "vexwork.process-family/v1",
+  "familyRef": "process-family.vexwork.metawalk",
+  "entryNodeRef": "node.vexwork.process-family-metawalk.entry",
+  "nodes": [
+    {
+      "nodeRef": "node.vexwork.process-family-metawalk.entry",
+      "label": "Process Family MetaWalk"
+    },
+    {
+      "nodeRef": "node.vexwork.process-family-metawalk.recover",
+      "label": "Recover intention + pressure"
+    },
+    {
+      "nodeRef": "node.vexwork.process-family-metawalk.topology",
+      "label": "Plot topology"
+    },
+    {
+      "nodeRef": "node.vexwork.process-family-metawalk.ownership",
+      "label": "Bind ownership"
+    },
+    {
+      "nodeRef": "node.vexwork.process-family-metawalk.contracts",
+      "label": "Bind contracts + relationships"
+    },
+    {
+      "nodeRef": "node.vexwork.process-family-metawalk.proof-plan",
+      "label": "Bind proof strategy"
+    },
+    {
+      "nodeRef": "node.vexwork.process-family-metawalk.implementation",
+      "label": "Realize implementation"
+    },
+    {
+      "nodeRef": "node.vexwork.process-family-metawalk.focused-proof",
+      "label": "Focused proof"
+    },
+    {
+      "nodeRef": "node.vexwork.process-family-metawalk.lived-proof",
+      "label": "Lived / integration proof"
+    },
+    {
+      "nodeRef": "node.vexwork.process-family-metawalk.reconcile",
+      "label": "Reconcile + accept"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipRef": "rel.vexwork.process-family-metawalk.entry-recover",
+      "movementClass": "ADVANCES",
+      "fromRef": "node.vexwork.process-family-metawalk.entry",
+      "toRef": "node.vexwork.process-family-metawalk.recover",
+      "label": "begin from human intention",
+      "entryPredicateRefs": [
+        "predicate.metawalk.human-intention-present"
+      ]
+    },
+    {
+      "relationshipRef": "rel.vexwork.process-family-metawalk.recover-topology",
+      "movementClass": "ADVANCES",
+      "fromRef": "node.vexwork.process-family-metawalk.recover",
+      "toRef": "node.vexwork.process-family-metawalk.topology",
+      "label": "pressure grounded",
+      "entryPredicateRefs": [
+        "predicate.metawalk.pressure-grounded"
+      ]
+    },
+    {
+      "relationshipRef": "rel.vexwork.process-family-metawalk.topology-ownership",
+      "movementClass": "ADVANCES",
+      "fromRef": "node.vexwork.process-family-metawalk.topology",
+      "toRef": "node.vexwork.process-family-metawalk.ownership",
+      "label": "shape stable enough",
+      "entryPredicateRefs": [
+        "predicate.metawalk.topology-stable-enough"
+      ]
+    },
+    {
+      "relationshipRef": "rel.vexwork.process-family-metawalk.ownership-contracts",
+      "movementClass": "ADVANCES",
+      "fromRef": "node.vexwork.process-family-metawalk.ownership",
+      "toRef": "node.vexwork.process-family-metawalk.contracts",
+      "label": "rightful owners identified",
+      "entryPredicateRefs": [
+        "predicate.metawalk.owners-grounded"
+      ]
+    },
+    {
+      "relationshipRef": "rel.vexwork.process-family-metawalk.contracts-proof-plan",
+      "movementClass": "ADVANCES",
+      "fromRef": "node.vexwork.process-family-metawalk.contracts",
+      "toRef": "node.vexwork.process-family-metawalk.proof-plan",
+      "label": "relationships explicit",
+      "entryPredicateRefs": [
+        "predicate.metawalk.relationships-explicit"
+      ]
+    },
+    {
+      "relationshipRef": "rel.vexwork.process-family-metawalk.proof-plan-implementation",
+      "movementClass": "ADVANCES",
+      "fromRef": "node.vexwork.process-family-metawalk.proof-plan",
+      "toRef": "node.vexwork.process-family-metawalk.implementation",
+      "label": "claim + falsification known",
+      "entryPredicateRefs": [
+        "predicate.metawalk.proof-strategy-bound"
+      ]
+    },
+    {
+      "relationshipRef": "rel.vexwork.process-family-metawalk.implementation-focused-proof",
+      "movementClass": "ADVANCES",
+      "fromRef": "node.vexwork.process-family-metawalk.implementation",
+      "toRef": "node.vexwork.process-family-metawalk.focused-proof",
+      "label": "target realization formed",
+      "entryPredicateRefs": [
+        "predicate.metawalk.implementation-formed"
+      ]
+    },
+    {
+      "relationshipRef": "rel.vexwork.process-family-metawalk.focused-lived",
+      "movementClass": "ADVANCES",
+      "fromRef": "node.vexwork.process-family-metawalk.focused-proof",
+      "toRef": "node.vexwork.process-family-metawalk.lived-proof",
+      "label": "bounded contracts proven",
+      "entryPredicateRefs": [
+        "predicate.metawalk.focused-proof-clear"
+      ]
+    },
+    {
+      "relationshipRef": "rel.vexwork.process-family-metawalk.lived-reconcile",
+      "movementClass": "ADVANCES",
+      "fromRef": "node.vexwork.process-family-metawalk.lived-proof",
+      "toRef": "node.vexwork.process-family-metawalk.reconcile",
+      "label": "lived/integration evidence",
+      "entryPredicateRefs": [
+        "predicate.metawalk.lived-evidence-formed"
+      ]
+    },
+    {
+      "relationshipRef": "rel.vexwork.process-family-metawalk.implementation-ownership-gap",
+      "movementClass": "SEMANTIC_GAP",
+      "fromRef": "node.vexwork.process-family-metawalk.implementation",
+      "toRef": "node.vexwork.process-family-metawalk.ownership",
+      "label": "semantic ambiguity",
+      "entryPredicateRefs": [
+        "predicate.metawalk.semantic-ambiguity-observed"
+      ]
+    },
+    {
+      "relationshipRef": "rel.vexwork.process-family-metawalk.focused-contract-gap",
+      "movementClass": "CONTRACT_GAP",
+      "fromRef": "node.vexwork.process-family-metawalk.focused-proof",
+      "toRef": "node.vexwork.process-family-metawalk.contracts",
+      "label": "contract gap",
+      "entryPredicateRefs": [
+        "predicate.metawalk.contract-gap-observed"
+      ]
+    },
+    {
+      "relationshipRef": "rel.vexwork.process-family-metawalk.lived-implementation-defect",
+      "movementClass": "IMPLEMENTATION_DEFECT",
+      "fromRef": "node.vexwork.process-family-metawalk.lived-proof",
+      "toRef": "node.vexwork.process-family-metawalk.implementation",
+      "label": "implementation defect",
+      "entryPredicateRefs": [
+        "predicate.metawalk.implementation-defect-observed"
+      ]
+    },
+    {
+      "relationshipRef": "rel.vexwork.process-family-metawalk.lived-contract-gap",
+      "movementClass": "CONTRACT_GAP",
+      "fromRef": "node.vexwork.process-family-metawalk.lived-proof",
+      "toRef": "node.vexwork.process-family-metawalk.contracts",
+      "label": "contract gap",
+      "entryPredicateRefs": [
+        "predicate.metawalk.contract-gap-observed"
+      ]
+    }
+  ],
+  "layers": [
+    "FORMATION",
+    "TOPOLOGY",
+    "OWNERSHIP",
+    "CONTRACT",
+    "IMPLEMENTATION",
+    "FOCUSED_PROOF",
+    "LIVED_INTEGRATION",
+    "RECONCILE_ACCEPT"
+  ],
+  "entryLayer": "FORMATION",
+  "movementClasses": [
+    "ADVANCES",
+    "ENABLES",
+    "REFINES",
+    "SEMANTIC_GAP",
+    "CONTRACT_GAP",
+    "IMPLEMENTATION_DEFECT",
+    "CURRENTNESS_CHANGED",
+    "RECOVERS"
+  ],
+  "forwardMovementClasses": [
+    "ADVANCES",
+    "ENABLES"
+  ]
+}

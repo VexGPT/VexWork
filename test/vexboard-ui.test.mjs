@@ -358,6 +358,7 @@ test('built-in and patient-zero source boards preserve separate catalog ownershi
       'board.vexlife-android.home-vexstream.poc',
       'board.vexlife-android.vexstream-depth.poc',
       'board.vexlife.debug-menu.theme-mode.origin-walk',
+      'board.vexwork.process-family-metawalk',
     ]),
   );
 
