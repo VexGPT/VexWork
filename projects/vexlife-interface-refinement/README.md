@@ -2608,6 +2608,76 @@ focused tests + blueprint/manifest checks
 The local commit is not publication. If the clean-source gate fails after commit, the exact candidate
 remains host-local and no push/PR occurs.
 
+### A003 — F0/F1 published exact candidate
+
+VexRelay A003 completed the F0/F1 source transaction and published draft VexLife PR #963.
+
+~~~text
+base = b6d9dd4876132fc408f0eacd2bb6b5b0d56e009f
+head = 4a0c8f726fddd0175791fb69ff563447a416af7c
+tree = 280d6f15f704429ed98472064087d9661274ed72
+changed paths = 20 exact
+full npm run check = PASS
+push = non-force PASS
+draft PR = #963
+~~~
+
+The exact committed candidate was clean before and after the full repository check.
+
+#### Fresh Independent Assurance — CHANGES_REQUESTED
+
+Fresh semantic review found two foundation defects in the new portable convergence layer:
+
+1. `src/core/portable-convergence-contract.mjs` is named/schema-shaped as a generic portable convergence validator but hardcodes:
+   - the exact Interface currentness canonical source path;
+   - Interface-only required invariants such as document/server source mismatch and selected Conversation readiness.
+
+   That repeats the same generic-looking/specific-validator mismatch F1 deliberately avoided with the Play/Pause Behavior v1 contract.
+
+2. The standalone convergence validator does not reject stable identity collisions across multiple convergence contracts. `buildIdentityIndex()` later catches them, but `buildPortableConvergenceIdentityEntries()` can validate and emit duplicate refs first. F1's proof obligation requires cross-contract duplicate refs to fail at the convergence-contract boundary itself.
+
+A004 correction is bounded to:
+
+~~~text
+src/core/portable-convergence-contract.mjs
+test/interface-currentness-foundation.test.mjs
+source-manifest-parts/bucket-61.json
+source-manifest-parts/bucket-0b.json
+~~~
+
+Required correction:
+
+~~~text
+generic validator
+  -> require only convergence-family invariants
+  -> accept any safe canonical path under
+     blueprint/fragments/convergence-contracts/
+  -> reject contractRef == relationshipRef
+  -> reject every cross-contract stable-ref collision
+
+Interface-focused test
+  -> separately require the five Interface-specific invariants/laws
+  -> prove a sibling convergence contract is not rejected merely for using
+     a different canonical source path / contract-specific invariant set
+  -> prove cross-contract identity collision fails closed
+~~~
+
+Permanent:
+
+~~~text
+GENERIC_PORTABLE_CONVERGENCE_VALIDATOR
+!= INTERFACE_CURRENTNESS_VALIDATOR
+
+INTERFACE_SPECIFIC_INVARIANT
+!= UNIVERSAL_CONVERGENCE_INVARIANT
+
+BUILD_IDENTITY_INDEX_LATER_REJECTION
+!= CONTRACT_BOUNDARY_DUPLICATE_REJECTION
+~~~
+
+No F2 realization should consume #963 until A004 is independently re-cleared on its exact corrected head.
+
+
 ### Foundation-to-interface sequence
 
 ~~~text

@@ -74,7 +74,7 @@
       "workRef": "work.vexlife.interface-refinement.interface-compound-relay",
       "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
       "label": "Current — Interface Compound Relay convergence",
-      "purpose": "Finish Interface Compound Relay foundation-first: F0 currentizes accepted State Relay/VexCompoundState discoverability; F1 source-places a complete portable Interface-currentness convergence law table with stable semantic identities, existing owner refs and no unowned middle-state precedence; F2 reuses one canonical stored Source Manifest reader plus browser-safe VexCompoundState so each exact selected Companion Conversation scope gets one observation generation that admits server-source, Companion and canonical Conversation truth before Chat can consume it, rejects stale generation/scope results before presentation mutation, gates existing Send on relationship READY, preserves RECOVERABLE/ACTION_REQUIRED independently of Conversation Send-currentness, and preserves session-scoped unsent drafts across browser-owned source reload; F3 proves only the remaining ordinary existing-document recovery/Send/re-entry human seam.",
+      "purpose": "Finish Interface Compound Relay foundation-first: F0/F1 is published as VexLife PR #963 exact head 4a0c8f72 but fresh Independent Assurance is CHANGES_REQUESTED because the new generic convergence validator still hardcodes Interface-only invariants/source path and does not reject cross-contract stable-ref collisions at its own boundary. A004 must genericize that foundation without changing Interface semantics, then re-run exact-head proof/assurance before F2 browser realization.",
       "workClass": "TASK",
       "state": "READY",
       "priorityClass": "IMMEDIATE",
@@ -165,7 +165,9 @@
         "repo.vexlife:source-manifest-parts/bucket-35.json",
         "github.pull.vexlife.847",
         "relay.return.vexlife.interface-currentness-foundation.a002.sha256.3f5fb9e6c029b9f6db67cab4bb5d4662490192914d922bfe38c023730d8a4570",
-        "relay.package.vexlife.interface-currentness-foundation.a003.sha256.a25a067bb2ee1ea64b1f27a250a37c14bcb8047f8232d737bd6623c0c2696763"
+        "relay.package.vexlife.interface-currentness-foundation.a003.sha256.a25a067bb2ee1ea64b1f27a250a37c14bcb8047f8232d737bd6623c0c2696763",
+        "github.pull.vexlife.963",
+        "github.commit.vexlife.4a0c8f726fddd0175791fb69ff563447a416af7c"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
@@ -1169,7 +1171,9 @@
     "repo.vexlife:source-manifest-parts/bucket-35.json",
     "github.pull.vexlife.847",
     "relay.return.vexlife.interface-currentness-foundation.a002.sha256.3f5fb9e6c029b9f6db67cab4bb5d4662490192914d922bfe38c023730d8a4570",
-    "relay.package.vexlife.interface-currentness-foundation.a003.sha256.a25a067bb2ee1ea64b1f27a250a37c14bcb8047f8232d737bd6623c0c2696763"
+    "relay.package.vexlife.interface-currentness-foundation.a003.sha256.a25a067bb2ee1ea64b1f27a250a37c14bcb8047f8232d737bd6623c0c2696763",
+    "github.pull.vexlife.963",
+    "github.commit.vexlife.4a0c8f726fddd0175791fb69ff563447a416af7c"
   ],
   "formedAt": "2026-10-25T01:23:08.000Z"
 }
