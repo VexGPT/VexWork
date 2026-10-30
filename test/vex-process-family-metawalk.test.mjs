@@ -126,7 +126,7 @@ test('machine MetaWalk ProcessFamily owns the full-map VexBoard semantic shape',
   );
 });
 
-test('MetaWalk dogfoods scope x node x depth against its real machine definition', () => {
+test('MetaWalk dogfoods scope x node x layer against its real machine definition', () => {
   const family = normalizeProcessFamily(read(familyPath));
   let state = createProcessState(family, {
     stateRef: 'state.metawalk.dogfood.000',
@@ -140,14 +140,14 @@ test('MetaWalk dogfoods scope x node x depth against its real machine definition
     ['rel.vexwork.process-family-metawalk.ownership-contracts', 'CONTRACT'],
   ];
   for (let index = 0; index < walk.length; index += 1) {
-    const [relationshipRef, nextDepth] = walk[index];
+    const [relationshipRef, nextLayer] = walk[index];
     state = admitProcessTransition({
       family,
       state,
       transitionRef: 'transition.metawalk.dogfood.' + String(index + 1).padStart(3, '0'),
       relationshipRefOrNull: relationshipRef,
       movementClass: 'ADVANCES',
-      nextDepth,
+      nextLayer,
       evidenceRefs: ['evidence.metawalk.dogfood.' + String(index + 1).padStart(3, '0')],
       carriedIdentityRefs: [],
       satisfiedPredicateRefs: family.relationships
@@ -161,7 +161,7 @@ test('MetaWalk dogfoods scope x node x depth against its real machine definition
     satisfiedPredicateRefs: ['predicate.metawalk.relationships-explicit'],
   });
   assert.equal(state.currentNodeRef, 'node.vexwork.process-family-metawalk.contracts');
-  assert.equal(state.depth, 'CONTRACT');
+  assert.equal(state.layer, 'CONTRACT');
   assert.equal(horizon.previousAcceptedOrNull?.nodeRef, 'node.vexwork.process-family-metawalk.ownership');
   assert.equal(horizon.nextCandidates.length, 1);
   assert.equal(horizon.nextCandidates[0].nodeRef, 'node.vexwork.process-family-metawalk.proof-plan');
@@ -234,7 +234,7 @@ test('MetaWalk is discoverable through the existing VexBoard source catalog with
   assert.equal(resolution?.sourceRefs.includes(boardPath), true);
 });
 
-test('ProcessFamily State owns scope x node x depth without becoming a world-state database', () => {
+test('ProcessFamily State owns scope x node x layer without becoming a world-state database', () => {
   const family = normalizeProcessFamily(familyFixture());
   const state = createProcessState(family, {
     stateRef: 'state.metawalk.001',
@@ -243,7 +243,7 @@ test('ProcessFamily State owns scope x node x depth without becoming a world-sta
 
   assert.equal(state.scopeRef, 'work.test.outcome');
   assert.equal(state.currentNodeRef, 'node.recover');
-  assert.equal(state.depth, 'FORMATION');
+  assert.equal(state.layer, 'FORMATION');
   assert.equal(state.previousStateRefOrNull, null);
   assert.equal(state.lastAcceptedTransitionOrNull, null);
 
@@ -291,7 +291,7 @@ test('accepted transition carries evidence and identity while rotating CURRENT n
     transitionRef: 'transition.metawalk.001',
     relationshipRefOrNull: 'rel.recover-contract',
     movementClass: 'ADVANCES',
-    nextDepth: 'CONTRACT',
+    nextLayer: 'CONTRACT',
     evidenceRefs: ['evidence.pressure-grounded'],
     carriedIdentityRefs: ['identity.work.test.outcome'],
     satisfiedPredicateRefs: [
@@ -302,7 +302,7 @@ test('accepted transition carries evidence and identity while rotating CURRENT n
   });
 
   assert.equal(next.currentNodeRef, 'node.contract');
-  assert.equal(next.depth, 'CONTRACT');
+  assert.equal(next.layer, 'CONTRACT');
   assert.deepEqual(next.acceptedEvidenceRefs, ['evidence.pressure-grounded']);
   assert.deepEqual(next.carriedIdentityRefs, ['identity.work.test.outcome']);
   assert.equal(next.previousStateRefOrNull, 'state.metawalk.001');
@@ -315,7 +315,7 @@ test('accepted transition carries evidence and identity while rotating CURRENT n
   assert.equal(horizon.current.nodeRef, 'node.contract');
 });
 
-test('depth revisit may deepen one semantic coordinate without reopening a prior node', () => {
+test('layer revisit may deepen one semantic coordinate without reopening a prior node', () => {
   const family = normalizeProcessFamily(familyFixture());
   const start = createProcessState(family, {
     stateRef: 'state.metawalk.001',
@@ -325,17 +325,17 @@ test('depth revisit may deepen one semantic coordinate without reopening a prior
   const next = admitProcessTransition({
     family,
     state: start,
-    transitionRef: 'transition.metawalk.depth.001',
+    transitionRef: 'transition.metawalk.layer.001',
     relationshipRefOrNull: null,
-    movementClass: 'DEPTH_REVISIT',
-    nextDepth: 'TOPOLOGY',
+    movementClass: 'LAYER_REVISIT',
+    nextLayer: 'TOPOLOGY',
     evidenceRefs: ['evidence.shape-deepened'],
     carriedIdentityRefs: [],
     nextStateRef: 'state.metawalk.002',
   });
 
   assert.equal(next.currentNodeRef, 'node.recover');
-  assert.equal(next.depth, 'TOPOLOGY');
+  assert.equal(next.layer, 'TOPOLOGY');
   assert.equal(next.lastAcceptedTransitionOrNull?.fromNodeRef, 'node.recover');
   assert.equal(next.lastAcceptedTransitionOrNull?.toNodeRef, 'node.recover');
 });
@@ -354,7 +354,7 @@ test('transition admission fails closed on stale or foreign movement', () => {
       transitionRef: 'transition.bad.foreign',
       relationshipRefOrNull: 'rel.contract-implement',
       movementClass: 'ADVANCES',
-      nextDepth: 'IMPLEMENTATION',
+      nextLayer: 'IMPLEMENTATION',
       evidenceRefs: ['evidence.invalid'],
       carriedIdentityRefs: [],
       nextStateRef: 'state.metawalk.bad',
@@ -369,7 +369,7 @@ test('transition admission fails closed on stale or foreign movement', () => {
       transitionRef: 'transition.bad.class',
       relationshipRefOrNull: 'rel.recover-contract',
       movementClass: 'RECOVERS',
-      nextDepth: 'CONTRACT',
+      nextLayer: 'CONTRACT',
       evidenceRefs: ['evidence.invalid'],
       carriedIdentityRefs: [],
       nextStateRef: 'state.metawalk.bad2',
@@ -416,7 +416,7 @@ test('relationship availability is derived from all required current predicates'
       transitionRef: 'transition.unsatisfied',
       relationshipRefOrNull: 'rel.recover-contract',
       movementClass: 'ADVANCES',
-      nextDepth: 'CONTRACT',
+      nextLayer: 'CONTRACT',
       evidenceRefs: ['evidence.not-enough'],
       carriedIdentityRefs: [],
       satisfiedPredicateRefs: ['predicate.contract.allowed'],
@@ -439,7 +439,7 @@ test('bounded-horizon VexBoard projection deep-reads CURRENT but withholds futur
     transitionRef: 'transition.metawalk.001',
     relationshipRefOrNull: 'rel.recover-contract',
     movementClass: 'ADVANCES',
-    nextDepth: 'CONTRACT',
+    nextLayer: 'CONTRACT',
     evidenceRefs: ['evidence.pressure-grounded'],
     carriedIdentityRefs: ['identity.work.test.outcome'],
     satisfiedPredicateRefs: [
@@ -540,7 +540,7 @@ test('ProcessFamily definition fails closed on identity, topology and movement c
   assert.throws(() => normalizeProcessFamily(missingEntry), /entryNodeRef missing/);
 
   const invalidMovement = structuredClone(schema);
-  invalidMovement.relationships[0].movementClass = 'DEPTH_REVISIT';
+  invalidMovement.relationships[0].movementClass = 'LAYER_REVISIT';
   assert.throws(() => normalizeProcessFamily(invalidMovement), /movementClass invalid/);
 
   const missingEndpoint = structuredClone(schema);
@@ -548,7 +548,7 @@ test('ProcessFamily definition fails closed on identity, topology and movement c
   assert.throws(() => normalizeProcessFamily(missingEndpoint), /toRef missing/);
 });
 
-test('ProcessFamily State fails closed on foreign family, invalid depth and corrupted transition lineage', () => {
+test('ProcessFamily State fails closed on foreign family, invalid layer and corrupted transition lineage', () => {
   const family = normalizeProcessFamily(familyFixture());
   const start = createProcessState(family, {
     stateRef: 'state.lineage.001',
@@ -560,7 +560,7 @@ test('ProcessFamily State fails closed on foreign family, invalid depth and corr
     transitionRef: 'transition.lineage.001',
     relationshipRefOrNull: 'rel.recover-contract',
     movementClass: 'ADVANCES',
-    nextDepth: 'CONTRACT',
+    nextLayer: 'CONTRACT',
     evidenceRefs: ['evidence.lineage.001'],
     carriedIdentityRefs: ['identity.lineage.001'],
     satisfiedPredicateRefs: [
@@ -574,9 +574,9 @@ test('ProcessFamily State fails closed on foreign family, invalid depth and corr
   foreignFamily.familyRef = 'process-family.other';
   assert.throws(() => normalizeProcessState(foreignFamily, family), /familyRef mismatch/);
 
-  const invalidDepth = structuredClone(start);
-  invalidDepth.depth = 'MAGICAL_DEPTH';
-  assert.throws(() => normalizeProcessState(invalidDepth, family), /depth invalid/);
+  const invalidLayer = structuredClone(start);
+  invalidLayer.layer = 'MAGICAL_LAYER';
+  assert.throws(() => normalizeProcessState(invalidLayer, family), /layer invalid/);
 
   const badHistoryOrigin = structuredClone(next);
   badHistoryOrigin.lastAcceptedTransitionOrNull.fromNodeRef = 'node.implement';
@@ -635,7 +635,7 @@ test('ProcessFamily State keeps one predecessor link and one accepted transition
     transitionRef: 'transition.compact.001',
     relationshipRefOrNull: 'rel.recover-contract',
     movementClass: 'ADVANCES',
-    nextDepth: 'CONTRACT',
+    nextLayer: 'CONTRACT',
     evidenceRefs: ['evidence.compact.001'],
     carriedIdentityRefs: ['identity.stable'],
     satisfiedPredicateRefs: [
@@ -651,7 +651,7 @@ test('ProcessFamily State keeps one predecessor link and one accepted transition
     transitionRef: 'transition.compact.002',
     relationshipRefOrNull: 'rel.contract-implement',
     movementClass: 'ADVANCES',
-    nextDepth: 'IMPLEMENTATION',
+    nextLayer: 'IMPLEMENTATION',
     evidenceRefs: ['evidence.compact.002'],
     carriedIdentityRefs: ['identity.stable'],
     satisfiedPredicateRefs: [
@@ -686,7 +686,7 @@ test('ProcessFamily State allows explicit continuity-identity pruning at a trans
     transitionRef: 'transition.prune.001',
     relationshipRefOrNull: 'rel.recover-contract',
     movementClass: 'ADVANCES',
-    nextDepth: 'CONTRACT',
+    nextLayer: 'CONTRACT',
     evidenceRefs: ['evidence.prune.001'],
     carriedIdentityRefs: ['identity.keep', 'identity.retire'],
     satisfiedPredicateRefs: [
@@ -701,7 +701,7 @@ test('ProcessFamily State allows explicit continuity-identity pruning at a trans
     transitionRef: 'transition.prune.002',
     relationshipRefOrNull: 'rel.contract-implement',
     movementClass: 'ADVANCES',
-    nextDepth: 'IMPLEMENTATION',
+    nextLayer: 'IMPLEMENTATION',
     evidenceRefs: ['evidence.prune.002'],
     carriedIdentityRefs: ['identity.keep'],
     satisfiedPredicateRefs: [
@@ -740,9 +740,9 @@ test('entry ProcessFamily State cannot invent transition evidence, identities, o
 
   assert.throws(
     () => createProcessState(family, {
-      stateRef: 'state.entry.bad-depth',
+      stateRef: 'state.entry.bad-layer',
       scopeRef: 'work.test.outcome',
-      depth: 'IMPLEMENTATION',
+      layer: 'IMPLEMENTATION',
     }),
     /creation options schema drift/,
   );
@@ -751,7 +751,7 @@ test('entry ProcessFamily State cannot invent transition evidence, identities, o
     stateRef: 'state.entry.valid',
     scopeRef: 'work.test.outcome',
   });
-  assert.equal(valid.depth, 'FORMATION');
+  assert.equal(valid.layer, 'FORMATION');
   assert.deepEqual(valid.acceptedEvidenceRefs, []);
   assert.deepEqual(valid.carriedIdentityRefs, []);
   assert.equal(valid.previousStateRefOrNull, null);
@@ -786,7 +786,7 @@ test('every admitted transition must state carried identities explicitly', () =>
       transitionRef: 'transition.identity-explicit.001',
       relationshipRefOrNull: 'rel.recover-contract',
       movementClass: 'ADVANCES',
-      nextDepth: 'CONTRACT',
+      nextLayer: 'CONTRACT',
       evidenceRefs: ['evidence.identity-explicit.001'],
       satisfiedPredicateRefs: [
         'predicate.contract.allowed',
@@ -822,7 +822,7 @@ test('ProcessFamily State creation and transition APIs reject historical source 
       transitionRef: 'transition.source-bag.001',
       relationshipRefOrNull: 'rel.recover-contract',
       movementClass: 'ADVANCES',
-      nextDepth: 'CONTRACT',
+      nextLayer: 'CONTRACT',
       evidenceRefs: ['evidence.source-bag.001'],
       carriedIdentityRefs: [],
       satisfiedPredicateRefs: [
@@ -848,7 +848,7 @@ test('bounded horizon derives CURRENT source grounding from current State eviden
     transitionRef: 'transition.source-current.001',
     relationshipRefOrNull: 'rel.recover-contract',
     movementClass: 'ADVANCES',
-    nextDepth: 'CONTRACT',
+    nextLayer: 'CONTRACT',
     evidenceRefs: ['evidence.current.001'],
     carriedIdentityRefs: ['identity.current'],
     satisfiedPredicateRefs: [
@@ -863,7 +863,7 @@ test('bounded horizon derives CURRENT source grounding from current State eviden
     transitionRef: 'transition.source-current.002',
     relationshipRefOrNull: 'rel.contract-implement',
     movementClass: 'ADVANCES',
-    nextDepth: 'IMPLEMENTATION',
+    nextLayer: 'IMPLEMENTATION',
     evidenceRefs: ['evidence.current.002'],
     carriedIdentityRefs: ['identity.current'],
     satisfiedPredicateRefs: [
@@ -894,7 +894,7 @@ test('bounded horizon derives CURRENT source grounding from current State eviden
   assert.deepEqual(third.acceptedEvidenceRefs, ['evidence.current.002']);
 });
 
-test('transition formation rejects unknown relationships, empty evidence and no-op depth revisits', () => {
+test('transition formation rejects unknown relationships, empty evidence and no-op layer revisits', () => {
   const family = normalizeProcessFamily(familyFixture());
   const state = createProcessState(family, {
     stateRef: 'state.reject.001',
@@ -908,7 +908,7 @@ test('transition formation rejects unknown relationships, empty evidence and no-
       transitionRef: 'transition.reject.unknown',
       relationshipRefOrNull: 'rel.unknown',
       movementClass: 'ADVANCES',
-      nextDepth: 'CONTRACT',
+      nextLayer: 'CONTRACT',
       evidenceRefs: ['evidence.reject.unknown'],
       carriedIdentityRefs: [],
       nextStateRef: 'state.reject.unknown',
@@ -923,7 +923,7 @@ test('transition formation rejects unknown relationships, empty evidence and no-
       transitionRef: 'transition.reject.empty-evidence',
       relationshipRefOrNull: 'rel.recover-contract',
       movementClass: 'ADVANCES',
-      nextDepth: 'CONTRACT',
+      nextLayer: 'CONTRACT',
       evidenceRefs: [],
       carriedIdentityRefs: [],
       satisfiedPredicateRefs: [
@@ -939,15 +939,15 @@ test('transition formation rejects unknown relationships, empty evidence and no-
     () => admitProcessTransition({
       family,
       state,
-      transitionRef: 'transition.reject.noop-depth',
+      transitionRef: 'transition.reject.noop-layer',
       relationshipRefOrNull: null,
-      movementClass: 'DEPTH_REVISIT',
-      nextDepth: 'FORMATION',
-      evidenceRefs: ['evidence.reject.noop-depth'],
+      movementClass: 'LAYER_REVISIT',
+      nextLayer: 'FORMATION',
+      evidenceRefs: ['evidence.reject.noop-layer'],
       carriedIdentityRefs: [],
-      nextStateRef: 'state.reject.noop-depth',
+      nextStateRef: 'state.reject.noop-layer',
     }),
-    /must change node or depth/,
+    /must change node or layer/,
   );
 });
 
@@ -964,7 +964,7 @@ test('FURTHER route contains only forward-reachable process nodes, not completed
     transitionRef: 'transition.forward.001',
     relationshipRefOrNull: 'rel.recover-contract',
     movementClass: 'ADVANCES',
-    nextDepth: 'CONTRACT',
+    nextLayer: 'CONTRACT',
     evidenceRefs: ['evidence.forward.001'],
     carriedIdentityRefs: [],
     satisfiedPredicateRefs: [
@@ -979,7 +979,7 @@ test('FURTHER route contains only forward-reachable process nodes, not completed
     transitionRef: 'transition.forward.002',
     relationshipRefOrNull: 'rel.contract-implement',
     movementClass: 'ADVANCES',
-    nextDepth: 'IMPLEMENTATION',
+    nextLayer: 'IMPLEMENTATION',
     evidenceRefs: ['evidence.forward.002'],
     carriedIdentityRefs: [],
     satisfiedPredicateRefs: [
