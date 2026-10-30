@@ -523,7 +523,9 @@
         "github.comment.vexlife-android.pr203.6515466461.sourceowner-a005-finding-a006-formed",
         "evidence.vexsync.pr203.sourceowner.a006.formation.sha256.ef0aa55c3c68fb107cded269f11c7c23618d1295c0221ea7d461c1676927cd7e",
         "github.comment.vexlife-android.pr203.6515493799.sourceowner-a006-compile-a007-formed",
-        "evidence.vexsync.pr203.sourceowner.a007.formation.sha256.e2d4ad2eb7feaf178b538191ffcec214ab579b2dc8639222eb52a58f6b979ab4"
+        "evidence.vexsync.pr203.sourceowner.a007.formation.sha256.e2d4ad2eb7feaf178b538191ffcec214ab579b2dc8639222eb52a58f6b979ab4",
+        "github.comment.vexlife-android.pr203.6515560894.sourceowner-a007-consumed-a008-formed",
+        "evidence.vexsync.pr203.sourceowner.a008.formation.sha256.67242840b1e7bd778617b838bcd4a7a075124c32fa12aab8de1afa424b09955b"
       ],
       "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
       "nextProcessRefs": [
@@ -1250,6 +1252,21 @@
         "github.pull.vexlife-android.203",
         "github.comment.vexlife-android.pr203.6515493799.sourceowner-a006-compile-a007-formed",
         "evidence.vexsync.pr203.sourceowner.a007.formation.sha256.e2d4ad2eb7feaf178b538191ffcec214ab579b2dc8639222eb52a58f6b979ab4"
+      ],
+      "createdAt": "2026-10-30T05:15:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.execution-source-custody.running.pr203-sourceowner-a007-consumed-a008-formed-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.execution-source-custody",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING",
+      "reason": "A007 proved the production retired-surface census and app main Kotlin compile, then repository vexVerifyJvm stopped at app unit-test compilation on stale VexCoroutineStatus plus a singular-state read in VexMapsDistributionSessionTest. A008 corrects only that test to VexExecution.Status + relationship-state flattening. A static sweep of all 184 Kotlin test/testFixtures/androidTest/journeyTest files found no other retired Execution aliases/API. A008 exact candidate head=8d4aaf470e56ea4e75eafacb8af566844c8d4e63 tree=66d4200e6eee12ead6236cb7f215d28f00069246 paths=20; formation sha256=67242840b1e7bd778617b838bcd4a7a075124c32fa12aab8de1afa424b09955b. Host proof remains pending, so work stays RUNNING.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.203",
+        "github.comment.vexlife-android.pr203.6515560894.sourceowner-a007-consumed-a008-formed",
+        "evidence.vexsync.pr203.sourceowner.a008.formation.sha256.67242840b1e7bd778617b838bcd4a7a075124c32fa12aab8de1afa424b09955b"
       ],
       "createdAt": "2026-10-30T05:15:00.000Z"
     }
