@@ -279,7 +279,6 @@ export function normalizeProcessState(input, familyInput) {
     'scopeRef',
     'currentNodeRef',
     'layer',
-    'carriedIdentityRefs',
     'previousStateRefOrNull',
     'lastAcceptedTransitionOrNull',
   ], 'ProcessFamily.State');
