@@ -503,7 +503,9 @@
         "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexCoroutineLauncher.kt",
         "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt",
         "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
-        "github.comment.vexlife-android.pr203.6515244021.sourceowner-a001-formed"
+        "github.comment.vexlife-android.pr203.6515244021.sourceowner-a001-formed",
+        "github.comment.vexlife-android.pr203.6515293174.sourceowner-a001-harness-a002-formed",
+        "evidence.vexsync.pr203.sourceowner.a002.formation.sha256.e45eb9cba791e9114e9ef1657abbe9e46e30cb4a42697767a61b12265b7b181b"
       ],
       "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
       "nextProcessRefs": [
@@ -512,7 +514,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-29T17:34:00.000Z",
-      "updatedAt": "2026-10-30T04:55:00.000Z"
+      "updatedAt": "2026-10-30T04:59:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
@@ -1137,6 +1139,21 @@
         "evidence.vexsync.pr203.sourceowner.a001.formation.sha256.d851115348887e90284d312f8744fe29bbf55e2af7d4c3e2855b7b593c427717"
       ],
       "createdAt": "2026-10-30T04:55:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.execution-source-custody.running.pr203-sourceowner-a001-harness-a002-formed-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.execution-source-custody",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING",
+      "reason": "SourceOwner A001 stopped before SDK clone/task formation/Gradle because both its wrapper preflight and embedded post-clean expected-path here-doc encoded literal \\\\n characters instead of newline-delimited paths. No candidate execution occurred and no candidate finding was established. A002 preserves PR #203 exact base/head/tree/14-path proof surface and changes only those two harness encodings plus fresh attempt/carrier identities. A002 final wrapper sha256=e45eb9cba791e9114e9ef1657abbe9e46e30cb4a42697767a61b12265b7b181b is statically qualified; host execution remains pending, so work stays RUNNING.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.203",
+        "github.comment.vexlife-android.pr203.6515293174.sourceowner-a001-harness-a002-formed",
+        "evidence.vexsync.pr203.sourceowner.a002.formation.sha256.e45eb9cba791e9114e9ef1657abbe9e46e30cb4a42697767a61b12265b7b181b"
+      ],
+      "createdAt": "2026-10-30T04:59:00.000Z"
     }
   ],
   "sourceRefs": [
