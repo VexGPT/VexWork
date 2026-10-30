@@ -232,9 +232,12 @@ export function projectProcessHorizonBoard({
       detailBoardRefOrNull: null,
       sourceRefs: previousSources,
     });
+    const previousTransitionLabel = previous.movementClass === null
+      ? 'Layer ' + previous.fromLayer + ' → ' + previous.toLayer
+      : previous.movementClass;
     nodes.push(annotationNode(
       previousAnnotationRef,
-      'Accepted via ' + previous.movementClass + ' · ' + previous.transitionRef,
+      'Accepted via ' + previousTransitionLabel + ' · ' + previous.transitionRef,
       previousNodeRef,
       previousSources,
     ));
@@ -243,7 +246,7 @@ export function projectProcessHorizonBoard({
       kind: 'FLOW',
       fromRef: previousNodeRef,
       toRef: currentNodeRef,
-      labelOrNull: previous.movementClass,
+      labelOrNull: previousTransitionLabel,
       sourceRefs: previousSources,
     });
     items.push(
