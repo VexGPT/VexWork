@@ -1684,11 +1684,43 @@ ownerRefs
 readingSourceRefs
 considerationRefs
 proofRefs
-sourceRefs
 ~~~
+
+ProcessFamily provenance is owned once at Family scope through `ProcessFamily.sourceRefs`. Nodes and relationships do not duplicate that provenance.
 
 The prose node contract remains broader because it describes questions a competent current worker must answer. That checklist is intentionally **not identical to the machine schema**.
 
+### ProcessFamily provenance is Family-scoped
+
+Fresh Independent Assurance on exact head `419753596b89f63159bdf12a01e39fcf6aaab008` found that machine nodes and relationships still carried mandatory `sourceRefs` even though no ProcessFamily consumer used them and this patient-zero repeated the same provenance already owned by `ProcessFamily.sourceRefs`.
+
+The finding is accepted.
+
+Current machine contract:
+
+~~~text
+ProcessFamily.sourceRefs
+  Family-level semantic provenance
+
+process node
+  no sourceRefs field
+
+process relationship
+  no sourceRefs field
+~~~
+
+This does not remove VexBoard graph node/relationship `sourceRefs`. Those belong to the VexBoard projection schema and carry projection/evidence provenance for that separate consumer.
+
+~~~text
+PROCESS_FAMILY_PROVENANCE
+!= VEXBOARD_PROJECTION_PROVENANCE
+
+FAMILY-LEVEL OWNER EXISTS
++ NO OBJECT-LOCAL CONSUMER
+-> DO NOT DUPLICATE OBJECT-LOCAL WIRE FIELDS
+~~~
+
+The focused proof now rejects attempts to add `sourceRefs` back to a ProcessFamily node or relationship as schema drift.
 ### Read-now scope is bounded independently from provenance
 
 The long formation document remains in node `sourceRefs` so the origin is recoverable.
@@ -1814,7 +1846,7 @@ lastAcceptedTransitionOrNull
 
 `lastAcceptedTransitionOrNull` owns the current transition evidence/identity provenance once.
 
-It does **not** duplicate evidence/identity bags and does not own a cumulative source/provenance bag. Current reading/source grounding is derived from the ProcessFamily definition, CURRENT node contract, the last accepted transition, and the predecessor coordinate when needed.
+It does **not** duplicate evidence/identity bags and does not own a cumulative source/provenance bag. Family semantic provenance is owned once by `ProcessFamily.sourceRefs`; current reading/source grounding is derived from the ProcessFamily definition, CURRENT node contract, the last accepted transition, and the predecessor coordinate when needed.
 
 Exact-key validation intentionally rejects ad-hoc provider/repository fields. Mutable world truth remains owned by its rightful source and is re-grounded before a dependent next effect.
 
@@ -1878,7 +1910,7 @@ ADDRESSABLE FUTURE
 The formed ProcessFamily / bounded-horizon implementation has been exercised against the exact current PR source bytes through the connected V8 execution surface.
 
 ~~~text
-exact test file logic        26 / 26 PASS
+exact test file logic        27 / 27 PASS
 machine ProcessFamily        PASS
 scope x node x layer walk    PASS
 predicate-derived availability PASS
@@ -1951,7 +1983,7 @@ Coverage **percentage** remains a repository-runtime predicate. The connected V8
 ~~~text
 TEST DISCOVERY SHAPE          = CLEAR
 SOURCE COVERAGE APPLICABILITY = CLEAR
-CONNECTED V8 TEST LOGIC       = 26 / 26 PASS
+CONNECTED V8 TEST LOGIC       = 27 / 27 PASS
 NODE LCOV / AGGREGATE FLOOR   = NOT YET CLAIMED
 FULL npm run review           = NOT YET CLAIMED
 ~~~
