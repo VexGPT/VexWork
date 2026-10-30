@@ -1,7 +1,7 @@
 {
   "schemaVersion": "vexwork.process-registry/v1",
   "registryRef": "registry.vexwork.processes.001",
-  "registryVersion": 7,
+  "registryVersion": 8,
   "purpose": "Map recurring work questions to the smallest reusable process source without making VexWork the executor or stealing process ownership from target repositories.",
   "processes": [
     {
@@ -93,6 +93,22 @@
         "docs/process/INTEGRATE-READY-PULL-REQUESTS.md"
       ],
       "appliesWhen": "One or more exact pull-request candidates have completed their required candidate-owned proof/review and are ready to be reconsidered against the repository's current integration trunk.",
+      "boardRefOrNull": null,
+      "executionAuthority": "NONE"
+    },
+    {
+      "processRef": "process.multivex.operations.compile-vexrelay-stage-recipe.v1",
+      "label": "Compile VexRelay stage recipe and bind canonical carrier formation",
+      "purpose": "Route current VexRelay stage compilation and host-carrier package formation through the Vextreme-SDK-owned current contract and Process Atlas so workers resolve the canonical package producer instead of reimplementing or remembering package mechanics.",
+      "ownerRepositoryRef": "repo.vextreme-sdk",
+      "entryRefs": [
+        "docs/private-continuity/multivex/process-factory/processes/compile-vexrelay-stage-recipe.json",
+        "docs/private-continuity/vexrelay/current-contract.json",
+        "docs/private-continuity/vexrelay/atlas/protocol-atlas.json",
+        "docs/process/vexlocalbridge-task-package-formation.md",
+        "lib/vexlocalbridge/package-builder.js"
+      ],
+      "appliesWhen": "A new or unformed VexRelay stage or host carrier package must be formed and the worker needs the current source-managed recipe, task-window formation binding, package producer export, or carrier mechanics without relying on remembered wrapper APIs.",
       "boardRefOrNull": null,
       "executionAuthority": "NONE"
     }

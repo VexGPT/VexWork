@@ -14,7 +14,7 @@ test('Process Map is source-addressable, non-executing navigation', () => {
   const map = projectProcessMap(processRegistry);
   assert.equal(map.effects, false);
   assert.equal(map.executionAuthority, 'NONE');
-  assert.equal(map.processes.length, 7);
+  assert.equal(map.processes.length, 8);
   assert.equal(map.processes.some((process) => process.processRef === 'process.vexwork.capture-discovered-work'), true);
   assert.equal(map.processes.some((process) => process.processRef === 'process.vexwork.form-project'), true);
   const formProject = map.processes.find((process) => process.processRef === 'process.vexwork.form-project');
@@ -26,6 +26,21 @@ test('Process Map is source-addressable, non-executing navigation', () => {
   assert.equal(map.processes.some((process) => process.processRef === 'process.vexwork.quality-review'), true);
   assert.equal(map.processes.some((process) => process.processRef === 'process.vexcommerce.manage-reference-storefront-item'), true);
   assert.equal(map.processes.some((process) => process.processRef === 'process.vexwork.integrate-ready-pull-requests'), true);
+
+  const vexRelayFormation = map.processes.find(
+    (process) => process.processRef === 'process.multivex.operations.compile-vexrelay-stage-recipe.v1',
+  );
+  assert.equal(vexRelayFormation.ownerRepositoryRef, 'repo.vextreme-sdk');
+  assert.deepEqual(vexRelayFormation.entryRefs, [
+    'docs/private-continuity/multivex/process-factory/processes/compile-vexrelay-stage-recipe.json',
+    'docs/private-continuity/vexrelay/current-contract.json',
+    'docs/private-continuity/vexrelay/atlas/protocol-atlas.json',
+    'docs/process/vexlocalbridge-task-package-formation.md',
+    'lib/vexlocalbridge/package-builder.js',
+  ]);
+  assert.match(vexRelayFormation.purpose, /canonical package producer/i);
+  assert.equal(vexRelayFormation.effects, false);
+  assert.equal(vexRelayFormation.executionAuthority, 'NONE');
 
   const promotion = map.processes.find((process) => process.processRef === 'process.vexwork.promote-derived-concern');
   assert.match(promotion.purpose, /without automatic ticket generation/i);
