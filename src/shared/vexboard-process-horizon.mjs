@@ -145,8 +145,14 @@ export function projectProcessHorizonBoard({
 
   const currentSources = nodeSourceRefs(
     family.sourceRefs,
-    state.sourceRefs,
     state.stateRef,
+    state.acceptedEvidenceRefs,
+    state.carriedIdentityRefs,
+    state.previousStateRefOrNull === null ? [] : [state.previousStateRefOrNull],
+    state.lastAcceptedTransitionOrNull === null ? [] : [
+      state.lastAcceptedTransitionOrNull.transitionRef,
+      ...state.lastAcceptedTransitionOrNull.evidenceRefs,
+    ],
     horizon.current.nodeRef,
     horizon.current.currentTruthRefs,
     horizon.current.ownerRefs,
@@ -364,8 +370,10 @@ export function projectProcessHorizonBoard({
     relationships,
     sourceRefs: nodeSourceRefs(
       family.sourceRefs,
-      state.sourceRefs,
       scope.sourceRefs,
+      state.stateRef,
+      state.acceptedEvidenceRefs,
+      state.carriedIdentityRefs,
       family.familyRef,
       state.stateRef,
       scope.scopeRef,
