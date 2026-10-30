@@ -153,6 +153,20 @@ work.vexlife.blueprint-source-of-truth.theme-mode.durability-contract
 
 The existing Play/Pause practicum remains paused and unchanged.
 
+The ThemeMode durability task that reactivated this Project is now complete:
+
+~~~text
+work.vexlife.blueprint-source-of-truth.theme-mode.durability-contract
+  canonical contract -> merged VexLife main e7b339e59619c36f847ce00647e45770b9597135
+  downstream Android realization -> merged
+  physical proof -> PASS
+  lived swipe-kill/relaunch -> PASS
+  state -> COMPLETED
+~~~
+
+This completion does not close the broader Blueprint Source of Truth outcome or wake the separately
+paused Play/Pause Mac-native practicum.
+
 ### Preserved Play/Pause resume coordinate
 
 

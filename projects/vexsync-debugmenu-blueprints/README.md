@@ -352,6 +352,54 @@ substituted for the human-visible outcome.
 
 <!-- [VXG RealForever][VEXSYNC][THEMEMODE][DURABILITY][DEVICE-PASS][LIVED-PENDING] -->
 
+### ThemeMode durability roundtrip — COMPLETED
+
+Victor performed the final lived verification on the exact merged Android build and observed that the
+explicit ThemeMode persisted across swipe-kill and relaunch.
+
+~~~text
+open app
+-> select opposite ThemeMode
+-> swipe-kill from recents
+-> relaunch
+-> same ThemeMode selected/rendered
+
+result = PASS
+~~~
+
+The full completed circuit is now:
+
+~~~text
+canonical VexLife durability meaning
+  PR #964 -> merged / post-merge exact
+
+Android StateStore + StateRelay foundation
+  PR #196 + PR #201 -> merged / post-merge exact
+
+Android ThemeMode persistence realization
+  PR #202 -> merged / post-merge exact
+
+physical device proof
+  SM-S908U / R5CT50N3ZHA
+  ThemeModeStoreInstrumentedTest = 2 executed / 0 failed
+
+human lived proof
+  select -> swipe-kill -> relaunch -> same ThemeMode
+  PASS
+
+Feature Walk / Journey traceability
+  PR #195 -> merged / post-merge five-blob exact
+~~~
+
+No source, Journey, device, or persistence replay remains for
+`work.vexsync.debugmenu-blueprints.debugmenu-origin-roundtrip`.
+
+The Work item is now `COMPLETED`. The wider VexSync Project remains active for its other independent
+work items.
+
+<!-- [VXG RealForever][VEXSYNC][THEMEMODE][DURABILITY][LIVED-PASS][COMPLETED] -->
+
+
 
 
 ## Human outcome

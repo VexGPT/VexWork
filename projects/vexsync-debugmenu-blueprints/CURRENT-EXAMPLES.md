@@ -366,6 +366,51 @@ human-visible swipe-kill / relaunch persistence
 
 <!-- [VXG RealForever][VEXSYNC][THEMEMODE][DURABILITY][MACHINE-CIRCUIT-COMPLETE] -->
 
+### Final lived result — process-death persistence PASS
+
+Victor's final observation closes the exact failure that originally widened the ThemeMode work:
+
+~~~text
+before fix
+  choose ThemeMode
+  -> swipe-kill
+  -> relaunch
+  -> selection forgotten
+
+accepted result
+  choose opposite ThemeMode
+  -> swipe-kill
+  -> relaunch
+  -> same ThemeMode persists
+  PASS
+~~~
+
+This validates the architecture end-to-end without changing the ownership model:
+
+~~~text
+explicit Select
+-> CURRENT semantic ThemeMode
+-> authored durable Save
+
+durable Store observation
+-> same StateRelay/currentness boundary
+-> restored CURRENT ThemeMode
+-> presentation agrees
+~~~
+
+The final Feature Walk/Journey source also landed on Android main through PR #195 at merge
+`c74c5d4973895eeddb76197ed2f454ddfb40c00a`, with all five candidate blobs verified unchanged.
+
+Currentness:
+
+~~~text
+work.vexsync.debugmenu-blueprints.debugmenu-origin-roundtrip
+  = COMPLETED
+~~~
+
+<!-- [VXG RealForever][VEXSYNC][THEMEMODE][LIVED-PASS][ROUNDTRIP-COMPLETE] -->
+
+
 
 
 

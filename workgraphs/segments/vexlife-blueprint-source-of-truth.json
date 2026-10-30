@@ -430,7 +430,7 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-30T02:16:00.000Z",
-      "updatedAt": "2026-10-30T02:16:00.000Z",
+      "updatedAt": "2026-10-30T03:45:00.000Z",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "workRef": "work.vexlife.blueprint-source-of-truth.theme-mode.durability-contract",
@@ -438,7 +438,7 @@
       "label": "Canonical ThemeMode durable-selection contract",
       "purpose": "Source-place the minimum portable ThemeMode durability meaning required for explicit Light/Dark selection to survive process death, while keeping Android storage mechanics target-owned.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "COMPLETED",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [],
       "repositoryRefs": [
@@ -452,11 +452,16 @@
         "work.vexsync.debugmenu-blueprints.debugmenu-origin-roundtrip",
         "github.pull.vexlife-android.201",
         "github.comment.vexlife-android.pr201.6513404794.sourceowner-a002-pass",
-        "github.review.vexlife-android.pr201.5707384411.assurance-clear"
+        "github.review.vexlife-android.pr201.5707384411.assurance-clear",
+        "github.pull.vexlife.964",
+        "github.commit.vexlife.e7b339e59619c36f847ce00647e45770b9597135",
+        "github.pull.vexlife-android.202",
+        "github.commit.vexlife-android.8e0c561a798cf40a4c8c355a507246217165eac6",
+        "github.comment.vexlife-android.pr195.6514363041.lived-persistence-pass"
       ],
       "nextProcessRefs": [],
-      "authorityDisposition": "AUTHORIZED_BOUNDED",
-      "effectDisposition": "EFFECTS_BOUND"
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
@@ -485,6 +490,35 @@
         "github.pull.vexlife-android.201"
       ],
       "createdAt": "2026-10-30T02:16:01.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.blueprint-source-of-truth.theme-mode-durability.running-verifying-20261029a",
+      "workRef": "work.vexlife.blueprint-source-of-truth.theme-mode.durability-contract",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Canonical ThemeMode durability source was merged to VexLife main with SourceOwner, Assurance and post-merge exact verification; downstream Android realization and physical/lived proof were then available for final outcome verification.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.commit.vexlife.e7b339e59619c36f847ce00647e45770b9597135",
+        "github.commit.vexlife-android.8e0c561a798cf40a4c8c355a507246217165eac6"
+      ],
+      "createdAt": "2026-10-30T03:44:59.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.blueprint-source-of-truth.theme-mode-durability.verifying-completed-20261029a",
+      "workRef": "work.vexlife.blueprint-source-of-truth.theme-mode.durability-contract",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "Victor's lived swipe-kill/relaunch check passed after the accepted Android persistence realization and physical Store/recreation proof. The portable ThemeMode durability contract therefore has its intended downstream realization and lived confirmation; no remaining predicate exists for this bounded canonical durability task.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.comment.vexlife-android.pr195.6514363041.lived-persistence-pass",
+        "github.comment.vexlife-android.pr202.6514312252.device-a001-recovered-pass",
+        "github.commit.vexlife.e7b339e59619c36f847ce00647e45770b9597135"
+      ],
+      "createdAt": "2026-10-30T03:45:00.000Z"
     }
   ],
   "transitions": [],
@@ -492,7 +526,12 @@
     "project.vexlife.blueprint-source-of-truth",
     "work.vexlife.blueprint-source-of-truth.theme-mode.durability-contract",
     "project.vexsync.debugmenu-blueprints",
-    "github.pull.vexlife-android.201"
+    "github.pull.vexlife-android.201",
+    "github.pull.vexlife.964",
+    "github.commit.vexlife.e7b339e59619c36f847ce00647e45770b9597135",
+    "github.pull.vexlife-android.202",
+    "github.commit.vexlife-android.8e0c561a798cf40a4c8c355a507246217165eac6",
+    "github.comment.vexlife-android.pr195.6514363041.lived-persistence-pass"
   ],
   "formedAt": "2026-10-21T01:45:00.000Z"
 }
