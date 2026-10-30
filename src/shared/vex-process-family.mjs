@@ -313,7 +313,16 @@ export function normalizeProcessState(input, familyInput) {
     'ProcessFamily.State.carriedIdentityRefs',
   );
 
-  if (lastAcceptedTransitionOrNull !== null) {
+  if (lastAcceptedTransitionOrNull === null) {
+    assert(
+      acceptedEvidenceRefs.length === 0,
+      'ProcessFamily.State entry State must not contain accepted transition evidence',
+    );
+    assert(
+      carriedIdentityRefs.length === 0,
+      'ProcessFamily.State entry State must not contain carried transition identities',
+    );
+  } else {
     assert(
       JSON.stringify(acceptedEvidenceRefs) === JSON.stringify(lastAcceptedTransitionOrNull.evidenceRefs),
       'ProcessFamily.State acceptedEvidenceRefs must exactly equal last accepted transition evidence',
@@ -341,9 +350,6 @@ export function normalizeProcessState(input, familyInput) {
 export function createProcessState(familyInput, {
   stateRef,
   scopeRef,
-  depth: initialDepth = 'FORMATION',
-  acceptedEvidenceRefs = [],
-  carriedIdentityRefs = [],
   ...unknown
 } = {}) {
   assert(Object.keys(unknown).length === 0, 'ProcessFamily.State creation options schema drift');
@@ -354,9 +360,9 @@ export function createProcessState(familyInput, {
     familyRef: family.familyRef,
     scopeRef,
     currentNodeRef: family.entryNodeRef,
-    depth: initialDepth,
-    acceptedEvidenceRefs,
-    carriedIdentityRefs,
+    depth: 'FORMATION',
+    acceptedEvidenceRefs: [],
+    carriedIdentityRefs: [],
     previousStateRefOrNull: null,
     lastAcceptedTransitionOrNull: null,
   }, family);
@@ -370,7 +376,7 @@ export function admitProcessTransition({
   movementClass,
   nextDepth,
   evidenceRefs,
-  carriedIdentityRefs = null,
+  carriedIdentityRefs,
   satisfiedPredicateRefs = [],
   nextStateRef,
   ...unknown
@@ -412,7 +418,7 @@ export function admitProcessTransition({
     { allowEmpty: false },
   );
   const transitionIdentityRefs = refs(
-    carriedIdentityRefs === null ? state.carriedIdentityRefs : carriedIdentityRefs,
+    carriedIdentityRefs,
     'process transition carriedIdentityRefs',
   );
   const nextEvidence = transitionEvidenceRefs;
