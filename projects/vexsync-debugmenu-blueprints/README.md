@@ -2,29 +2,16 @@
 
 [VXG RealForever]
 
-## CURRENT successor checkpoint — Relationship-keyed Execution custody, then second-feature pressure
+## CURRENT successor checkpoint — Relationship-keyed Execution custody, SourceOwner A003
 
-The ThemeMode patient-zero roundtrip remains complete. The active VexSync edge is still Execution
-custody, but Victor's source review corrected the proposed repair boundary.
-
-Historical PR #199 correctly exposed a defect:
-
-~~~text
-SourceRef
-  = diagnostic source address
-  != semantic execution relationship
-~~~
-
-Its proposed endpoint was still wrong. Adding `live VexExecution object + SourceRef` as another
-custody key would preserve the hybrid identity system that had accumulated around Execution.
-
-Victor's vetted law is smaller:
+The ThemeMode patient-zero roundtrip remains complete. The active VexSync edge is the corrected
+Execution custody contract:
 
 ~~~text
 semantic owner
 -> RelationshipId<Owner>
 -> Approach
--> VexExecution-owned Jobs
+-> VexExecution-owned active Jobs
 
 SourceRef
 -> diagnostics only
@@ -36,25 +23,25 @@ For Direct Family:
 live Family
 + Control type/name
 + optional typed ResourceId<Family>
--> VexFamily.RelationshipId<Family>
--> VexExecution.RelationshipId<Family>
+-> private Family RelationshipId<Family>
+-> VexExecution RelationshipId<Family>
 -> Approach
 -> Job custody
 ~~~
 
-No caller should have to retain a generated runtime occurrence ID or returned Job-control object after
-it already supplied the semantic relationship/resource identity.
-
-Current Android successor:
+Current Android candidate:
 
 ~~~text
 PR #203
 branch = VXG-102926-vex-execution-relationship-key-contract-a001
 base   = 772f506de2df66d372977ad487028289405fc10b
-state  = OPEN_DRAFT / SOURCEOWNER_PENDING
+head   = 7ca89e0ce19d09ae4388c1a287820b43ba91a311
+tree   = 7c6f89ca9fd6e48d81a211b6735b662c6f2bd3c5
+paths  = 14 exact
+state  = OPEN_DRAFT / SOURCEOWNER_A003_PENDING
 ~~~
 
-PR #203 removes the duplicate/hybrid control surfaces:
+The candidate removes the duplicate/hybrid execution control surfaces:
 
 ~~~text
 REMOVED
@@ -69,31 +56,78 @@ PRESERVED / STRENGTHENED
   RelationshipId<Owner>
   Approach = Independent / Earliest / Latest / Queued
   SourceRef = diagnostic source location only
-  Family-only Family relationship composition
+  Family-private Family relationship construction
   Family StateStore observation under a Family-owned relationship
+  live-owner identity for non-Family Maps relationships
   VexExecutionRoot whole-tree shutdown
   bounded Flow source/subscription recovery
 ~~~
 
-The launcher now owns one relationship-keyed custody structure rather than parallel InstanceId and
-RelationshipId registries:
+The launcher keeps active Jobs only under the semantic relationship:
 
 ~~~text
 relationships[RelationshipId]
 -> Approach
--> ordered Jobs
--> execution State evidence
+-> active Jobs
+
+completed Job object
+-> removed from active custody
+
+latest terminal State
+-> bounded evidence only
 ~~~
 
-Real Maps consumers are included as pressure rather than leaving the contract test-only: Destination
-Search, Place Search and Distribution now declare typed local relationships and stop/replace by those
-keys.
+SourceOwner evidence so far:
 
-Regression proof in source now rejects the hybrid API itself and checks relationship isolation,
-Approach behavior, Flow observation identity, structured stop/join, recovery and shutdown.
+~~~text
+A001
+  SAFE STOP before candidate execution
+  cause = wrapper path-list encoding
+  consumed / do not replay
 
-PR #199 and old Handle-based test candidate PR #150 are closed as stale carriers. Their useful pressure
-remains historical evidence; neither may be used as a source continuation.
+A002
+  exact candidate grounding PASS
+  production Execution compilation PASS
+  Execution unit-test compilation PASS
+  VexExecutionTest = 13 executed / 12 PASS / 1 FAIL
+  failure = newly-authored reflection API-lock assertion only
+  Family focused proof not reached
+  vexVerifyJvm not reached
+  consumed / do not replay
+~~~
+
+The A002 failure did not establish a relationship/job-behavior defect. The test incorrectly enumerated
+all non-synthetic JVM Companion methods beginning with `begin`, which is brittle against Kotlin/JVM
+helper methods. PR #203 now tests the semantic lock directly:
+
+~~~text
+exact begin exists
++ begin accepts RelationshipId
++ legacy begin names are absent:
+    beginEarliest
+    beginLatest
+    beginQueued
+    beginReplaceable
+    beginSequenced
+~~~
+
+A003 formation is statically qualified:
+
+~~~text
+wrapper sha256 =
+fc2f6de9848f764d94565ebf82afdfd70ba5ff50a81319da0028e4abfad31498
+
+next proof =
+focused VexExecutionTest + VexFamilyHighConfidenceTest
+-> repository vexVerifyJvm
+-> exact head/tree/14-path tracked-clean
+-> recipe-owned review snapshot
+~~~
+
+No A003 compile/test PASS is claimed until host execution returns.
+
+Historical PR #199 and Handle-based PR #150 remain closed stale carriers; neither is a valid
+continuation.
 
 The work remains:
 
@@ -101,14 +135,10 @@ The work remains:
 work.vexsync.debugmenu-blueprints.execution-source-custody
   state = RUNNING
 
-next gate
-  exact-head SourceOwner
+after SourceOwner PASS
   -> fresh Independent Assurance
   -> lifecycle/current-main integration
 ~~~
-
-No compile/test PASS is claimed yet for PR #203. Current source proof must run before this edge can move
-to VERIFYING.
 
 After this defect closes:
 
@@ -119,7 +149,7 @@ work.vexsync.debugmenu-blueprints.walk-trace-second-feature-pressure
   -> falsify before generalizing
 ~~~
 
-<!-- [VXG RealForever][VEXSYNC][CURRENT-SUCCESSOR][RELATIONSHIP-KEYED-EXECUTION-CUSTODY] -->
+<!-- [VXG RealForever][VEXSYNC][CURRENT-SUCCESSOR][RELATIONSHIP-KEYED-EXECUTION-CUSTODY][A003] -->
 
 ## COMPLETED ThemeMode patient-zero checkpoint — causal record
 
