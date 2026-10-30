@@ -194,7 +194,6 @@ test('MetaWalk dogfoods scope x node x layer against its real machine definition
       state,
       transitionRef: 'transition.metawalk.dogfood.' + String(index + 1).padStart(3, '0'),
       relationshipRefOrNull: relationshipRef,
-      movementClass: 'ADVANCES',
       nextLayer,
       evidenceRefs: ['evidence.metawalk.dogfood.' + String(index + 1).padStart(3, '0')],
       carriedIdentityRefs: [],
@@ -336,7 +335,6 @@ test('ProcessFamily owns its layer vocabulary instead of inheriting MetaWalk lay
     state: start,
     transitionRef: 'transition.custom-layers.001',
     relationshipRefOrNull: 'rel.alpha-beta',
-    movementClass: 'CONTINUES',
     nextLayer: 'REALIZE',
     evidenceRefs: ['evidence.custom-layers.001'],
     carriedIdentityRefs: [],
@@ -350,7 +348,6 @@ test('ProcessFamily owns its layer vocabulary instead of inheriting MetaWalk lay
       state: start,
       transitionRef: 'transition.custom-layers.bad',
       relationshipRefOrNull: 'rel.alpha-beta',
-      movementClass: 'CONTINUES',
       nextLayer: 'IMPLEMENTATION',
       evidenceRefs: ['evidence.custom-layers.bad'],
       carriedIdentityRefs: [],
@@ -415,7 +412,6 @@ test('accepted transition carries evidence and identity while rotating CURRENT n
     state: start,
     transitionRef: 'transition.metawalk.001',
     relationshipRefOrNull: 'rel.recover-contract',
-    movementClass: 'ADVANCES',
     nextLayer: 'CONTRACT',
     evidenceRefs: ['evidence.pressure-grounded'],
     carriedIdentityRefs: ['identity.work.test.outcome'],
@@ -430,9 +426,10 @@ test('accepted transition carries evidence and identity while rotating CURRENT n
   assert.deepEqual(next.acceptedEvidenceRefs, ['evidence.pressure-grounded']);
   assert.deepEqual(next.carriedIdentityRefs, ['identity.work.test.outcome']);
   assert.equal(next.previousStateRefOrNull, 'state.metawalk.001');
-  assert.equal(next.lastAcceptedTransitionOrNull?.movementClass, 'ADVANCES');
+  assert.equal(Object.hasOwn(next.lastAcceptedTransitionOrNull, 'movementClass'), false);
 
   const horizon = projectProcessHorizon(family, next);
+  assert.equal(horizon.previousAcceptedOrNull?.movementClass, 'ADVANCES');
   assert.equal(horizon.previousAcceptedOrNull?.stateRef, 'state.metawalk.001');
   assert.equal(horizon.previousAcceptedOrNull?.nodeRef, 'node.recover');
   assert.equal(horizon.previousAcceptedOrNull?.transitionRef, 'transition.metawalk.001');
@@ -452,7 +449,6 @@ test('relationship-free layer change may deepen one semantic coordinate without 
     state: start,
     transitionRef: 'transition.metawalk.layer.001',
     relationshipRefOrNull: null,
-    movementClass: null,
     nextLayer: 'TOPOLOGY',
     evidenceRefs: ['evidence.shape-deepened'],
     carriedIdentityRefs: [],
@@ -461,7 +457,7 @@ test('relationship-free layer change may deepen one semantic coordinate without 
 
   assert.equal(next.currentNodeRef, 'node.recover');
   assert.equal(next.layer, 'TOPOLOGY');
-  assert.equal(next.lastAcceptedTransitionOrNull?.movementClass, null);
+  assert.equal(Object.hasOwn(next.lastAcceptedTransitionOrNull, 'movementClass'), false);
   assert.equal(next.lastAcceptedTransitionOrNull?.fromNodeRef, 'node.recover');
   assert.equal(next.lastAcceptedTransitionOrNull?.toNodeRef, 'node.recover');
   assert.equal(next.lastAcceptedTransitionOrNull?.fromLayer, 'FORMATION');
@@ -476,7 +472,7 @@ test('relationship-free layer change may deepen one semantic coordinate without 
   forgedSemanticClass.lastAcceptedTransitionOrNull.movementClass = 'LAYER_REVISIT';
   assert.throws(
     () => normalizeProcessState(forgedSemanticClass, family),
-    /relationship-free layer transition must not claim a semantic movementClass/,
+    /process transition last schema drift/,
   );
 
   const board = projectProcessHorizonBoard({
@@ -511,7 +507,6 @@ test('transition admission fails closed on stale or foreign movement', () => {
       state,
       transitionRef: 'transition.bad.foreign',
       relationshipRefOrNull: 'rel.contract-implement',
-      movementClass: 'ADVANCES',
       nextLayer: 'IMPLEMENTATION',
       evidenceRefs: ['evidence.invalid'],
       carriedIdentityRefs: [],
@@ -532,7 +527,7 @@ test('transition admission fails closed on stale or foreign movement', () => {
       carriedIdentityRefs: [],
       nextStateRef: 'state.metawalk.bad2',
     }),
-    /movementClass must match relationship/,
+    /process transition options schema drift/,
   );
 });
 
@@ -561,7 +556,6 @@ test('relationship availability is derived from all required current predicates'
       state,
       transitionRef: 'transition.unsatisfied',
       relationshipRefOrNull: 'rel.recover-contract',
-      movementClass: 'ADVANCES',
       nextLayer: 'CONTRACT',
       evidenceRefs: ['evidence.not-enough'],
       carriedIdentityRefs: [],
@@ -584,7 +578,6 @@ test('bounded-horizon VexBoard projection deep-reads CURRENT but withholds futur
     state: start,
     transitionRef: 'transition.metawalk.001',
     relationshipRefOrNull: 'rel.recover-contract',
-    movementClass: 'ADVANCES',
     nextLayer: 'CONTRACT',
     evidenceRefs: ['evidence.pressure-grounded'],
     carriedIdentityRefs: ['identity.work.test.outcome'],
@@ -750,7 +743,6 @@ test('ProcessFamily State fails closed on foreign family, invalid layer and corr
     state: start,
     transitionRef: 'transition.lineage.001',
     relationshipRefOrNull: 'rel.recover-contract',
-    movementClass: 'ADVANCES',
     nextLayer: 'CONTRACT',
     evidenceRefs: ['evidence.lineage.001'],
     carriedIdentityRefs: ['identity.lineage.001'],
@@ -824,7 +816,6 @@ test('ProcessFamily State keeps one predecessor link and one accepted transition
     state: first,
     transitionRef: 'transition.compact.001',
     relationshipRefOrNull: 'rel.recover-contract',
-    movementClass: 'ADVANCES',
     nextLayer: 'CONTRACT',
     evidenceRefs: ['evidence.compact.001'],
     carriedIdentityRefs: ['identity.stable'],
@@ -839,7 +830,6 @@ test('ProcessFamily State keeps one predecessor link and one accepted transition
     state: second,
     transitionRef: 'transition.compact.002',
     relationshipRefOrNull: 'rel.contract-implement',
-    movementClass: 'ADVANCES',
     nextLayer: 'IMPLEMENTATION',
     evidenceRefs: ['evidence.compact.002'],
     carriedIdentityRefs: ['identity.stable'],
@@ -874,7 +864,6 @@ test('ProcessFamily State allows explicit continuity-identity pruning at a trans
     state: start,
     transitionRef: 'transition.prune.001',
     relationshipRefOrNull: 'rel.recover-contract',
-    movementClass: 'ADVANCES',
     nextLayer: 'CONTRACT',
     evidenceRefs: ['evidence.prune.001'],
     carriedIdentityRefs: ['identity.keep', 'identity.retire'],
@@ -888,7 +877,6 @@ test('ProcessFamily State allows explicit continuity-identity pruning at a trans
     state: middle,
     transitionRef: 'transition.prune.002',
     relationshipRefOrNull: 'rel.contract-implement',
-    movementClass: 'ADVANCES',
     nextLayer: 'IMPLEMENTATION',
     evidenceRefs: ['evidence.prune.002'],
     carriedIdentityRefs: ['identity.keep'],
@@ -979,7 +967,6 @@ test('every admitted transition must state carried identities explicitly', () =>
       state,
       transitionRef: 'transition.identity-explicit.001',
       relationshipRefOrNull: 'rel.recover-contract',
-      movementClass: 'ADVANCES',
       nextLayer: 'CONTRACT',
       evidenceRefs: ['evidence.identity-explicit.001'],
       satisfiedPredicateRefs: [
@@ -1014,7 +1001,6 @@ test('ProcessFamily State creation and transition APIs reject historical source 
       state,
       transitionRef: 'transition.source-bag.001',
       relationshipRefOrNull: 'rel.recover-contract',
-      movementClass: 'ADVANCES',
       nextLayer: 'CONTRACT',
       evidenceRefs: ['evidence.source-bag.001'],
       carriedIdentityRefs: [],
@@ -1039,7 +1025,6 @@ test('bounded horizon derives CURRENT source grounding from current State eviden
     state: first,
     transitionRef: 'transition.source-current.001',
     relationshipRefOrNull: 'rel.recover-contract',
-    movementClass: 'ADVANCES',
     nextLayer: 'CONTRACT',
     evidenceRefs: ['evidence.current.001'],
     carriedIdentityRefs: ['identity.current'],
@@ -1053,7 +1038,6 @@ test('bounded horizon derives CURRENT source grounding from current State eviden
     state: second,
     transitionRef: 'transition.source-current.002',
     relationshipRefOrNull: 'rel.contract-implement',
-    movementClass: 'ADVANCES',
     nextLayer: 'IMPLEMENTATION',
     evidenceRefs: ['evidence.current.002'],
     carriedIdentityRefs: ['identity.current'],
@@ -1097,7 +1081,6 @@ test('transition formation rejects unknown relationships, empty evidence and no-
       state,
       transitionRef: 'transition.reject.unknown',
       relationshipRefOrNull: 'rel.unknown',
-      movementClass: 'ADVANCES',
       nextLayer: 'CONTRACT',
       evidenceRefs: ['evidence.reject.unknown'],
       carriedIdentityRefs: [],
@@ -1112,7 +1095,6 @@ test('transition formation rejects unknown relationships, empty evidence and no-
       state,
       transitionRef: 'transition.reject.empty-evidence',
       relationshipRefOrNull: 'rel.recover-contract',
-      movementClass: 'ADVANCES',
       nextLayer: 'CONTRACT',
       evidenceRefs: [],
       carriedIdentityRefs: [],
@@ -1130,7 +1112,6 @@ test('transition formation rejects unknown relationships, empty evidence and no-
       state,
       transitionRef: 'transition.reject.noop-layer',
       relationshipRefOrNull: null,
-      movementClass: null,
       nextLayer: 'FORMATION',
       evidenceRefs: ['evidence.reject.noop-layer'],
       carriedIdentityRefs: [],
@@ -1152,7 +1133,6 @@ test('FURTHER route contains only forward-reachable process nodes, not completed
     state: start,
     transitionRef: 'transition.forward.001',
     relationshipRefOrNull: 'rel.recover-contract',
-    movementClass: 'ADVANCES',
     nextLayer: 'CONTRACT',
     evidenceRefs: ['evidence.forward.001'],
     carriedIdentityRefs: [],
@@ -1166,7 +1146,6 @@ test('FURTHER route contains only forward-reachable process nodes, not completed
     state: contract,
     transitionRef: 'transition.forward.002',
     relationshipRefOrNull: 'rel.contract-implement',
-    movementClass: 'ADVANCES',
     nextLayer: 'IMPLEMENTATION',
     evidenceRefs: ['evidence.forward.002'],
     carriedIdentityRefs: [],
