@@ -85,11 +85,11 @@ current candidate head
 current candidate tree
   e6df3aaa333c71143da8217f8764161a884e5f04
 
-MetaWalk coordinate
-  previous = Focused proof
-  CURRENT  = Lived / integration proof
-  next     = Reconcile + accept
-  layer    = LIVED_INTEGRATION
+MetaWalk formation result
+  previous = Lived / integration proof
+  terminal = Reconcile + accept
+  layer    = RECONCILE_ACCEPT
+  state    = ACCEPTED ON VEXWORK MAIN
 ~~~
 
 The candidate currently preserves:
@@ -130,15 +130,24 @@ predicate.metawalk.focused-proof-clear
   SATISFIED
 ~~~
 
-The exact current route is now:
+The first formation is now accepted:
 
 ~~~text
-Lived / integration proof
--> current-main / merge-duty reconciliation
--> ordinary expected-head merge if provider truth remains exact
--> post-merge verification
--> Reconcile + accept if earned
+A012 SourceOwner PASS
++ fresh Independent Assurance CLEAR
++ exact current-main integration
++ merge commit 763d27f4ec5afc133c71e018c7d4532fc155fe95
++ merge tree e6df3aaa333c71143da8217f8764161a884e5f04
+  == A012-proven candidate tree
+-> predicate.metawalk.lived-evidence-formed SATISFIED
+-> Reconcile + accept
+-> FIRST METAWALK FORMATION ACCEPTED
 ~~~
+
+The broader Relay / Family-Circuit convergence Work remains active. The next earned edge is not another
+MetaWalk-source revision; it is to consume the accepted formation by making the current SDK-owned Relay
+formation route discoverable from VexWork without copying SDK mechanics. Existing VexWork PR #187 owns
+that two-path candidate.
 
 The first hosted **A012 formation capsule did not reach canonical A012 task formation**. It acquired the
 exact SDK source and then stopped on a worker-authored contract-shape bug. Review of the sealed runner
@@ -174,8 +183,9 @@ candidate defect      = NOT OBSERVED
 MetaWalk movement     = NONE
 ~~~
 
-CURRENT therefore remains **Focused proof**. The worker owns the formation repair; Victor is not asked
-to interpret or debug this failure.
+At that historical checkpoint, CURRENT correctly remained **Focused proof**. The worker owned the
+formation repair; Victor was not asked to interpret or debug the failure. That checkpoint is now
+superseded by A012 PASS + Assurance CLEAR + tree-exact merge.
 
 The corrected R2 formation carrier is now prepared:
 
@@ -197,7 +207,9 @@ qualification:
   exact current SDK canonical formation re-check occurs automatically on Mac before A012 business formation
 ~~~
 
-R2 remains a carrier/formation correction, not SourceOwner proof. A012 PASS is still unclaimed.
+R2 remained a carrier/formation correction rather than SourceOwner proof. It subsequently formed and
+executed the real A012, whose canonical RETURN was consumed as PASS. The statement "A012 PASS is
+unclaimed" is historical and superseded.
 
 A011 is retained evidence and must not be laundered into proof of changed immutable source.
 
@@ -347,6 +359,42 @@ next executable correction
 act. "More confidence would be nice", "more architecture could be read", "another abstraction might
 exist", "another proof could be imagined", or "another policy refinement is possible" are not valid
 reasons to defer an already-grounded correction.
+
+### Accepted first MetaWalk formation
+
+PR #189 is now accepted VexWork source:
+
+~~~text
+candidate
+  5ac93d917169d0b80e676e2e4c13812113843376
+  tree e6df3aaa333c71143da8217f8764161a884e5f04
+
+merge
+  763d27f4ec5afc133c71e018c7d4532fc155fe95
+
+merge parents
+  current main before merge 2d0315c3c1550ed5c5ca6098da5223d8f5ccd7d3
+  proven candidate          5ac93d917169d0b80e676e2e4c13812113843376
+
+merge tree
+  e6df3aaa333c71143da8217f8764161a884e5f04
+  = proven candidate tree
+~~~
+
+This accepts the **first ProcessFamily / MetaWalk formation**. It does not claim the whole
+Relay / Family-Circuit convergence Work is terminal.
+
+The next existing candidate is PR #187:
+
+~~~text
+process.multivex.operations.compile-vexrelay-stage-recipe.v1
+-> VexWork Process Map navigation
+-> owner repo.vextreme-sdk
+-> executionAuthority NONE
+~~~
+
+That route directly addresses the observed failure pattern where a worker reconstructs current Relay
+package/compiler mechanics from memory and gets the API shape wrong.
 
 ### Generated projection currentness
 
@@ -1689,12 +1737,12 @@ work.vextreme.architecture-convergence.semantic-owner-map
 work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence
   VERIFYING / HIGH
   AUTHORIZED_BOUNDED / EFFECTS_BOUND
-  current child: VexWork PR #189
-  MetaWalk coordinate: previous=Focused proof / CURRENT=Lived integration / next=Reconcile + accept
-  exact candidate: 5ac93d917169d0b80e676e2e4c13812113843376
-  A012 SourceOwner PASS + fresh Assurance CLEAR
-  current main = fixed base; PR mergeable
-  first A012 formation capsule remains EXECUTOR_FAILURE_NO_PRODUCT_DELTA historical evidence only
+  accepted child: VexWork PR #189
+  first MetaWalk formation: RECONCILE_ACCEPT / ACCEPTED
+  merge 763d27f4ec5afc133c71e018c7d4532fc155fe95
+  merge tree = exact A012-proven e6df3aaa333c71143da8217f8764161a884e5f04
+  next earned edge: VexWork PR #187 canonical Relay formation Process Map route
+  R1 A012 formation failure remains EXECUTOR_FAILURE_NO_PRODUCT_DELTA historical evidence only
 
 work.vextreme.architecture-convergence.terrain-journey-inspection
   VERIFYING
