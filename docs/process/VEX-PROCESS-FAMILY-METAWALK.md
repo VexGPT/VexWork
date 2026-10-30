@@ -6,7 +6,7 @@
 
 This source is a **formation candidate**, not a frozen ontology.
 
-Working names such as **VexProcessFamily**, **MetaWalk**, **process node**, **depth**, and the relationship labels below are allowed to change when pressure-testing finds a truer boundary. The durable claim in this first formation is the relationship shape, not the spelling.
+Working names such as **VexProcessFamily**, **MetaWalk**, **process node**, **layer**, and the relationship labels below are allowed to change when pressure-testing finds a truer boundary. The durable claim in this first formation is the relationship shape, not the spelling.
 
 This source intentionally forms the reusable process shape before Process Registry promotion, public onboarding UI, or VexRelay runtime mutation.
 
@@ -111,7 +111,15 @@ Process truth is graph-backed. A simple previous/current/next neighborhood is a 
 
 Through what lens are we currently touching the process shape?
 
-Working depth vocabulary:
+Working layer vocabulary:
+
+This candidate uses **layer** for the pass/lens through which one process node is being resolved. That is intentionally distinct from Vextreme-SDK Process Atlas `depthClass`, which describes scale from whole journey through traceability.
+
+~~~text
+PROCESS_FAMILY_LAYER != PROCESS_ATLAS_DEPTH_CLASS
+LAYER = resolution pass / lens
+ATLAS depthClass = process scale / granularity
+~~~
 
 ~~~text
 0  FORMATION
@@ -139,7 +147,7 @@ Working depth vocabulary:
    consume evidence, reconcile current truth and establish the next durable coordinate
 ~~~
 
-Depth is not a mandatory universal checklist. A simple change may not earn every depth. A real feature may move backward when downstream evidence exposes an upstream gap.
+Layer is not a mandatory universal checklist. A simple change may not earn every layer. A real feature may move backward when downstream evidence exposes an upstream gap.
 
 ~~~text
 SAME NODE + DIFFERENT DEPTH
@@ -493,7 +501,7 @@ LIVED / INTEGRATION
 -> post-effect reconciliation
 ~~~
 
-A later proof depth may touch a node established at an earlier depth without implying that earlier work failed.
+A later proof layer may touch a node established at an earlier layer without implying that earlier work failed.
 
 ## Fractal scope
 
@@ -527,7 +535,7 @@ A useful reorientation coordinate may therefore be described as:
 ~~~text
 current scope
 x current process node
-x current depth
+x current layer
 ~~~
 
 This is a conceptual coordinate, not yet a new VexWork schema.
@@ -953,7 +961,7 @@ ThemeMode durability
 The later scope may descend into some of the same reusable process-node kinds while carrying a different
 human intention and proof contract.
 
-### Feature Walk is a depth revisit, not production reimplementation
+### Feature Walk is a layer revisit, not production reimplementation
 
 PR #195 adds a dedicated installed Journey and completion/checkpoint traceability after production source
 is accepted.
@@ -972,7 +980,7 @@ That is a clean example of:
 
 ~~~text
 same feature scope
-+ later proof / traceability depth
++ later proof / traceability layer
 != production behavior rewrite
 ~~~
 
@@ -981,7 +989,7 @@ The process model therefore should be able to say:
 ~~~text
 scope = ThemeMode production realization
 node  = lived / installed human walk
-depth = proof / traceability
+layer = proof / traceability
 ~~~
 
 while keeping the already-accepted semantic and implementation nodes compressed into prior accepted
@@ -1020,7 +1028,7 @@ The second walk confirms:
 1. **scope identity is operationally meaningful** — it separates a new outcome using the same semantic
    owner from a correction/reopen of an old process node;
 2. **ENABLES can exist at feature/scope scale** without implying parent/child Work identity;
-3. **depth revisit is real** — Feature Walk proof can revisit accepted production meaning without
+3. **layer revisit is real** — Feature Walk proof can revisit accepted production meaning without
    re-authoring it;
 4. **process decomposition should follow truth dependencies** — ThemeMode UI became simpler because
    Family and display contracts were established before the target leaf consumed them;
@@ -1028,7 +1036,7 @@ The second walk confirms:
    presentation tests, persistence tests and Journey proof each answer different questions;
 6. **adjacent reusable refinement remains separately owned** even when one feature walk discovers it.
 
-No fourth coordinate is earned by this specimen. Scope × process node × depth remains sufficient for the
+No fourth coordinate is earned by this specimen. Scope × process node × layer remains sufficient for the
 observed ThemeMode evolution.
 
 ## Projection pressure — reuse BoardJourney without making it process truth
@@ -1093,7 +1101,7 @@ Pressure from the bounded-horizon projection exposes one unresolved owner that m
 
 ~~~text
 Who owns the durable fact:
-  "this process has earned scope S, node N, at depth D"?
+  "this process has earned scope S, node N, at layer L"?
 ~~~
 
 Current owners do not answer that generic question:
@@ -1129,7 +1137,7 @@ VexProcessFamily
 VexProcessFamily.State          # working name
   current scope
   current node
-  current depth
+  current layer
   previous State reference + last accepted transition/evidence required for continuity
 
 incoming current observations
@@ -1248,7 +1256,7 @@ The minimum current hypothesis is:
 ProcessFamily State
   current scope coordinate
   current process-node coordinate
-  current depth
+  current layer
   last accepted transition / causal provenance
   accepted evidence references required to explain why this coordinate is earned
   carried stable identity references required for continuation
@@ -1357,14 +1365,16 @@ ProcessFamily.State
   lastAcceptedTransitionOrNull
 
   acceptedEvidenceRefs
+    entry State MUST be []
+    otherwise MUST exactly equal lastAcceptedTransitionOrNull.evidenceRefs
     evidence directly grounding THIS State
-    MUST exactly equal lastAcceptedTransitionOrNull.evidenceRefs
     != cumulative process history
 
   carriedIdentityRefs
+    entry State MUST be []
+    otherwise MUST exactly equal lastAcceptedTransitionOrNull.carriedIdentityRefs
     exact continuity identities required by THIS State
-    MUST exactly equal lastAcceptedTransitionOrNull.carriedIdentityRefs
-    preserved by default across transition
+    every transition must state them explicitly
     explicitly replaceable/prunable
 
   no State-owned sourceRefs bag
@@ -1375,7 +1385,7 @@ Transition formation therefore behaves as:
 
 ~~~text
 State N
-+ admitted relationship / depth revisit
++ admitted relationship / layer revisit
 + transition evidence
 -> State N+1
 
@@ -1441,6 +1451,22 @@ bounded-horizon projection
 ~~~
 
 This closes the remaining path by which a long-lived walk could recreate unbounded foreground context after transition-history compaction.
+
+Entry State is also closed structurally:
+
+~~~text
+previousStateRefOrNull = null
+lastAcceptedTransitionOrNull = null
+acceptedEvidenceRefs = []
+carriedIdentityRefs = []
+layer = FORMATION
+
+createProcessState(...)
+  accepts only stateRef + scopeRef
+  cannot inject transition evidence / carried identity / non-entry layer
+~~~
+
+Identity continuity is explicit at every transition; the transition helper no longer silently inherits prior identities when the caller omits them.
 
 Permanent:
 
@@ -1551,7 +1577,7 @@ The formed ProcessFamily / bounded-horizon implementation has been exercised aga
 ~~~text
 exact test file logic        17 / 17 PASS
 machine ProcessFamily        PASS
-scope x node x depth walk    PASS
+scope x node x layer walk    PASS
 predicate-derived availability PASS
 unearned feedback edge       FAIL-CLOSED
 future reading-source leak   REJECTED
@@ -1608,11 +1634,11 @@ additional boundaries exercised:
   duplicate / missing topology identity
   invalid movement class
   foreign Family State
-  invalid depth
+  invalid layer
   corrupted transition origin/evidence/identity
   unknown relationship
   empty transition evidence
-  no-op depth revisit
+  no-op layer revisit
   initial horizon with no previous/further route
   invalid horizon board identity
 ~~~
@@ -1679,7 +1705,7 @@ SDK Process Atlas
 
 VexProcessFamily candidate
   reusable semantic process traversal + one current process coordinate
-  -> generic scope x node x depth movement
+  -> generic scope x node x layer movement
 ~~~
 
 Process Factory's current repository task already says its next route is consumed only after RETURN verification and live re-grounding, reinforcing rather than replacing the ProcessFamily currentness law.
@@ -1727,10 +1753,10 @@ Historical reasoning and deeper future source remain recoverable rather than per
 This first source is useful if a cold reader can correctly recover:
 
 1. why Process Family meaning is distinct from Workgraph, Process Map, VexBoard and executors;
-2. scope / process-node / depth as independent coordinates;
+2. scope / process-node / layer as independent coordinates;
 3. graph-backed truth versus previous/current/next horizon projection;
 4. the node contract required for fresh-instance continuation;
-5. the difference between depth/refinement/correction/currentness revisits;
+5. the difference between layer/refinement/correction/currentness revisits;
 6. round-completion reconciliation before the next Act;
 7. how process relationships can pressure Work decomposition and test selection;
 8. why future nodes remain addressable without automatically becoming reading scope;
