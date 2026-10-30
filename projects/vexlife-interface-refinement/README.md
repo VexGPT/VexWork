@@ -3121,6 +3121,97 @@ STALE_ASYNC_RESULT != CURRENT_COMPOUND_INPUT
 SESSION_DRAFT != CONVERSATION != MEMORY
 ~~~
 
+### F2 A001 — mutation harness stopped safely; A002 formed
+
+F2 A001 was consumed completely. The outer VexLocalBridge carrier disposition is `PASS`: it
+retained and correctly consumed the inner canonical RETURN. The inner VexRelay transaction is
+`SAFE_FAILURE`.
+
+~~~text
+outer RETURN sha256
+  35c897e1709109b887852fcd8e58cf4dd441634ce698b6286da4f0d828c7c6b0
+
+retained inner RETURN sha256
+  bed6904a424447bba76a5ba553d4359915a6c91c84b0e369e24b8b839469469d
+
+first substantive failure
+  F2_ANCHOR_COUNT:chat-clear-draft-after-send:4:3
+
+candidate head/tree
+  NONE / NONE
+
+remote mutation
+  false
+~~~
+
+The failure occurred inside the bounded source-mutation harness before focused tests, Source Manifest
+generation, commit, push or PR creation. A001 created only a branch and partial source mutations inside
+its disposable RUN_ROOT clone; provider reconciliation confirms the intended branch is still absent and
+VexLife main remains `92e810c91b09e7c74a8e1c7da8d2fade7e070c3a`.
+
+The exact cause is narrower than "four instead of three": four textual draft-clear lines exist, but
+one belongs **inside** `setLocalDraft()`. Blindly changing the expected count to four would convert
+that internal clear into a recursive `setLocalDraft(channel, '')` call.
+
+A002 therefore preserves the F2 product payload byte-for-byte and corrects only the formation harness:
+
+~~~text
+external semantic-confirm clear
+  -> exact contextual replacement
+
+external programmatic-Send clear
+  -> exact contextual replacement
+
+external composer-Send clear
+  -> exact contextual replacement
+
+internal setLocalDraft clear
+  -> preserved
+  -> post-mutation guard requires exactly one such direct clear
+~~~
+
+Fresh A002:
+
+~~~text
+attempt
+  attempt.vexlife.interface-currentness-browser-realization.f2.a002.ef8331dc99ad
+
+branch
+  vxg-interface-currentness-browser-realization-a002
+
+outer package sha256
+  730f95085fc3fb5778605d739ddeeefdf15278363199a57c942164ba78747da3
+
+inner package sha256
+  d3c82b1d8a79a2523e54050111c663ea5b62cfac763144d963e76cd8bc2f46ca
+
+formedAt
+  2026-10-30T04:17:37Z
+
+expiresAt
+  2026-10-31T04:17:37Z
+~~~
+
+Permanent:
+
+~~~text
+A001_SAFE_FAILURE
+!= PRODUCT_TEST_FAILURE
+
+PARTIAL_MUTATION_IN_DISPOSABLE_RUN_ROOT
++ NO_COMMIT
++ NO_PUSH
++ REMOTE_BRANCH_ABSENT
+-> FRESH_ATTEMPT_FROM_ACCEPTED_BASE
+
+TEXTUAL_MATCH_COUNT
+!= SEMANTIC_MUTATION_TARGET_SET
+
+A002
+= SAME_PRODUCT_PAYLOAD
++ CORRECTED_SEMANTIC_MUTATION_ANCHORS
+~~~
+
 ### Foundation-to-interface sequence
 
 ~~~text
