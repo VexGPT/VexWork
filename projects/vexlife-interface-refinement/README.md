@@ -4364,6 +4364,124 @@ HISTORICAL_EVIDENCE_REF
 != CURRENT_ATTEMPT_IDENTITY
 ~~~
 
+### F2 A012 — browser proof localized to hidden Chat context; A013 formed
+
+A012 preserved the READY-state draft persistence product correction and successfully localized the previously
+ambiguous browser timeout.
+
+~~~text
+outer RETURN sha256
+  f1cc70b93b938d04ef9f1146385052f8aad9db5602585cfdba65a3b94c1e009e
+
+retained inner RETURN sha256
+  f965f9414978d42bc84667d6a6565b90b079b28d747a0a8cdd78b459006c2281
+
+focused gate
+  88 total
+  87 PASS
+  1 FAIL
+  0 cancelled
+
+first exact failure
+  Playwright locator.fill timed out:
+  #messageInput resolved
+  but element was not visible
+~~~
+
+The failure is proof setup, not the draft persistence mutation:
+
+~~~text
+?open=vex
+  -> selects terrain.thread.open-conversation identity
+  -> does not by itself make contextProjection='chat'
+
+projectFrame()
+  -> #view-chat hidden unless contextProjection === 'chat'
+
+A012 proof
+  -> reached Interface READY
+  -> tried to fill hidden canonical textarea
+  -> timed out before storage/reload assertions
+~~~
+
+No commit or push occurred. PR #965 remains at exact head
+`fe3f4c03482243bf17e4d86d7c77077f950eaef1`.
+
+A013 preserves the exact product correction and changes only the lived browser proof:
+
+~~~text
+initial READY
+-> real app openContext('chat')
+-> require contextProjection='chat'
+-> require #messageInput visible
+-> type fresh draft
+-> require exact scoped sessionStorage packet
+-> reload
+-> require READY
+-> require semantic history restored contextProjection='chat'
+-> require visible #messageInput
+-> require exact draft restored
+~~~
+
+Each semantic stage remains independently bounded and records a currentness/context snapshot on failure.
+Chromium still closes before the HTTP server in explicit cleanup.
+
+~~~text
+attempt
+  attempt.vexlife.interface-currentness-browser-realization.f2.a013.c3f8a7129e6b
+
+same PR branch
+  vxg-interface-currentness-browser-realization-a007
+
+expected remote head
+  fe3f4c03482243bf17e4d86d7c77077f950eaef1
+
+outer package sha256
+  8826fec85d056948fc95e2d23cb9a9d9a732938b0baa936314b963f9113fd745
+
+inner package sha256
+  c971af69713d3785d38848956c397911ca35f2ecd4e5fc9b2a594b551659926f
+
+formedAt
+  2026-10-30T06:04:00Z
+
+expiresAt
+  2026-10-31T06:04:00Z
+~~~
+
+A013 formation checks:
+
+~~~text
+mutation generator syntax       PASS
+generated browser proof syntax  PASS
+inner v2 package/member hashes  PASS
+outer member/content set        PASS
+live source preimage hashes     PASS
+VexLife main exact              PASS
+PR #965 exact head              PASS
+other open-PR overlap           NONE
+SDK current head                PASS
+Mac command bash syntax         PASS
+~~~
+
+Permanent:
+
+~~~text
+ELEMENT_EXISTS
+!= ELEMENT_VISIBLE
+
+OPEN_VEX_SCOPE_IDENTITY
+!= CHAT_CONTEXT_VISIBLE
+
+READY_DRAFT_PROOF
+requires
+REAL_VISIBLE_COMPOSER
++ EXACT_SESSION_STORAGE
++ RELOAD
++ AUTOMATIC_CONTEXT_RESTORE
++ EXACT_DRAFT_RESTORE
+~~~
+
 ### Foundation-to-interface sequence
 
 ~~~text
