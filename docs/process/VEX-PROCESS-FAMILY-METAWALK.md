@@ -1183,6 +1183,147 @@ First establish the minimum current-process State contract well enough to answer
 
 Only then should a read-only bounded-horizon projector consume that State.
 
+## Minimum current Process State — Family / Compound pressure
+
+The accepted Family Circuit and Compound Relay foundations sharpen the working State hypothesis without
+settling the exact future implementation composition.
+
+### Direct Family law that carries
+
+Current Direct Family establishes:
+
+~~~text
+incoming Family-owned cause
++ exact CURRENT semantic State
+-> one serialized decision
+-> next CURRENT semantic State
+~~~
+
+Already-reconciled outside truth does not become a fake Control. A rightful source/Connection reconciles
+that truth and re-enters the Family's single StateRelay boundary.
+
+For a future process family, the equivalent semantic requirement is:
+
+~~~text
+current process-owned truth
++ one admitted process cause
+-> one process-owned transition decision
+-> one next current process truth
+~~~
+
+The process owner must not derive its current node from a UI cursor, a stale predecessor snapshot, or an
+executor's incidental fields.
+
+### Compound law that carries
+
+Current VexCompoundRelay establishes:
+
+~~~text
+independently observed inputs
++ exact CURRENT retained Compound State
+-> one serialized processStates(...)
+-> complete next InputState + OutputState relationship
+-> one current-State commit
+~~~
+
+This is directly relevant because process movement may depend on independently owned truths such as:
+
+~~~text
+Work state
+candidate/source identity
+proof evidence
+authority
+provider currentness
+runtime currentness
+human decision / protected predicate
+~~~
+
+Those truths should not be copied wholesale into ProcessFamily State merely so one object "has everything."
+
+### Minimum process-owned State meaning
+
+The minimum current hypothesis is:
+
+~~~text
+ProcessFamily State
+  current scope coordinate
+  current process-node coordinate
+  current depth
+  last accepted transition / causal provenance
+  accepted evidence references required to explain why this coordinate is earned
+  carried stable identity references required for continuation
+
+does NOT own
+  live provider head
+  live branch / PR state
+  live authority snapshot
+  repository currentness
+  runtime/provider facts owned elsewhere
+~~~
+
+The exact field names and representation remain open.
+
+Previous/current/next projection should be **derived** from:
+
+~~~text
+ProcessFamily definition / graph
++ CURRENT ProcessFamily State
++ current observations needed to evaluate reachable relationships
+~~~
+
+rather than storing "previous" and "next" as mutable linked-list pointers.
+
+### Reconciliation boundary
+
+A material round should conceptually look like:
+
+~~~text
+rightful external owners
+-> fresh observations
+
+fresh observations
++ CURRENT process-owned State
++ process graph / transition contract
+-> reconcile
+
+reconcile
+-> either stay at current coordinate
+-> or admit one next process State
+-> or classify correction / recovery / currentness revisit
+~~~
+
+This resembles Compound current-State processing, while the semantic owner/transition discipline resembles
+Direct Family.
+
+The accepted architecture currently leaves exact future Family + Relay Single/Compound composition open.
+This MetaWalk should preserve that openness:
+
+~~~text
+SEMANTIC PROCESS FAMILY MEANING
+!= REQUIRED DIRECT-FAMILY IMPLEMENTATION
+
+SEMANTIC PROCESS FAMILY MEANING
+!= REQUIRED COMPOUND-RELAY IMPLEMENTATION
+~~~
+
+A later implementation should choose the smallest composition that preserves both laws.
+
+### What should not be stored
+
+The pressure walks reject several tempting conveniences:
+
+~~~text
+do not store full future-node content in current State
+do not store BoardJourney cursor as process truth
+do not copy live provider facts into durable State without ownership
+do not store nextNode as truth when it can be derived from graph + current conditions
+do not use iteration counters as semantic progression
+do not use ProcessInstance naming where runtime processInstanceRef already means something else
+~~~
+
+This is enough to define the input contract for a future bounded-horizon projector without yet defining
+that projector's wire schema.
+
 ## Fresh-instance resume packet
 
 A future projection should be able to give a fresh instance only the bounded packet needed now:
