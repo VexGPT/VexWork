@@ -25,15 +25,11 @@ function node(nodeRef, label) {
     nodeRef,
     label,
     purpose: label + ' purpose',
-    entryPredicateRefs: ['predicate.' + nodeRef + '.entry'],
     currentTruthRefs: ['truth.' + nodeRef + '.current'],
     ownerRefs: ['owner.' + nodeRef],
     readingSourceRefs: ['source.' + nodeRef + '.read-now'],
-    authorityRefs: ['authority.' + nodeRef],
     considerationRefs: ['consideration.' + nodeRef],
     proofRefs: ['proof.' + nodeRef],
-    exitPredicateRefs: ['predicate.' + nodeRef + '.exit'],
-    heldConcernRefs: ['held.' + nodeRef],
     sourceRefs: ['source.' + nodeRef],
   };
 }
@@ -314,7 +310,6 @@ test('ProcessFamily owns its layer vocabulary instead of inheriting MetaWalk lay
     nextLayer: 'REALIZE',
     evidenceRefs: ['evidence.custom-layers.001'],
     carriedIdentityRefs: [],
-    satisfiedPredicateRefs: ['predicate.node.beta.entry'],
     nextStateRef: 'state.custom-layers.002',
   });
   assert.equal(next.layer, 'REALIZE');
@@ -329,7 +324,6 @@ test('ProcessFamily owns its layer vocabulary instead of inheriting MetaWalk lay
       nextLayer: 'IMPLEMENTATION',
       evidenceRefs: ['evidence.custom-layers.bad'],
       carriedIdentityRefs: [],
-      satisfiedPredicateRefs: ['predicate.node.beta.entry'],
       nextStateRef: 'state.custom-layers.bad',
     }),
     /invalid for ProcessFamily/,
@@ -365,7 +359,6 @@ test('bounded horizon deep-reads CURRENT and keeps future node source detail wit
   });
   const horizon = projectProcessHorizon(family, state, {
     satisfiedPredicateRefs: [
-      'predicate.node.contract.entry',
       'predicate.contract.allowed',
     ],
   });
@@ -397,7 +390,6 @@ test('accepted transition carries evidence and identity while rotating CURRENT n
     evidenceRefs: ['evidence.pressure-grounded'],
     carriedIdentityRefs: ['identity.work.test.outcome'],
     satisfiedPredicateRefs: [
-      'predicate.node.contract.entry',
       'predicate.contract.allowed',
     ],
     nextStateRef: 'state.metawalk.002',
@@ -492,22 +484,10 @@ test('relationship availability is derived from all required current predicates'
   assert.equal(held.length, 1);
   assert.equal(held[0].relationshipRef, 'rel.recover-contract');
   assert.equal(held[0].available, false);
-  assert.deepEqual(held[0].missingPredicateRefs, [
-    'predicate.contract.allowed',
-    'predicate.node.contract.entry',
-  ]);
-
-  const partial = availableProcessRelationships(family, state, {
-    satisfiedPredicateRefs: ['predicate.contract.allowed'],
-  });
-  assert.equal(partial[0].available, false);
-  assert.deepEqual(partial[0].missingPredicateRefs, ['predicate.node.contract.entry']);
+  assert.deepEqual(held[0].missingPredicateRefs, ['predicate.contract.allowed']);
 
   const available = availableProcessRelationships(family, state, {
-    satisfiedPredicateRefs: [
-      'predicate.contract.allowed',
-      'predicate.node.contract.entry',
-    ],
+    satisfiedPredicateRefs: ['predicate.contract.allowed'],
   });
   assert.equal(available[0].available, true);
   assert.deepEqual(available[0].missingPredicateRefs, []);
@@ -522,10 +502,10 @@ test('relationship availability is derived from all required current predicates'
       nextLayer: 'CONTRACT',
       evidenceRefs: ['evidence.not-enough'],
       carriedIdentityRefs: [],
-      satisfiedPredicateRefs: ['predicate.contract.allowed'],
+      satisfiedPredicateRefs: [],
       nextStateRef: 'state.unsatisfied',
     }),
-    /entry predicates unsatisfied: predicate\.node\.contract\.entry/,
+    /entry predicates unsatisfied: predicate\.contract\.allowed/,
   );
 });
 
@@ -546,7 +526,6 @@ test('bounded-horizon VexBoard projection deep-reads CURRENT but withholds futur
     evidenceRefs: ['evidence.pressure-grounded'],
     carriedIdentityRefs: ['identity.work.test.outcome'],
     satisfiedPredicateRefs: [
-      'predicate.node.contract.entry',
       'predicate.contract.allowed',
     ],
     nextStateRef: 'state.metawalk.002',
@@ -563,7 +542,6 @@ test('bounded-horizon VexBoard projection deep-reads CURRENT but withholds futur
     },
     boardRef: 'board.test.process-horizon',
     satisfiedPredicateRefs: [
-      'predicate.node.implement.entry',
       'predicate.implementation.allowed',
     ],
   });
@@ -589,7 +567,6 @@ test('bounded-horizon VexBoard projection deep-reads CURRENT but withholds futur
   assert.equal(previousNode?.sourceRefs.includes('evidence.pressure-grounded'), true);
 
   assert.equal(nextNode?.label, 'NEXT · Implement');
-  assert.equal(nextNode?.sourceRefs.includes('predicate.node.implement.entry'), true);
   assert.equal(nextNode?.sourceRefs.includes('predicate.implementation.allowed'), true);
   assert.equal(nextNode?.sourceRefs.includes('source.node.implement.read-now'), false);
   assert.equal(nextNode?.sourceRefs.includes('proof.node.implement'), false);
@@ -712,7 +689,6 @@ test('ProcessFamily State fails closed on foreign family, invalid layer and corr
     carriedIdentityRefs: ['identity.lineage.001'],
     satisfiedPredicateRefs: [
       'predicate.contract.allowed',
-      'predicate.node.contract.entry',
     ],
     nextStateRef: 'state.lineage.002',
   });
@@ -787,7 +763,6 @@ test('ProcessFamily State keeps one predecessor link and one accepted transition
     carriedIdentityRefs: ['identity.stable'],
     satisfiedPredicateRefs: [
       'predicate.contract.allowed',
-      'predicate.node.contract.entry',
     ],
     nextStateRef: 'state.compact.002',
   });
@@ -803,7 +778,6 @@ test('ProcessFamily State keeps one predecessor link and one accepted transition
     carriedIdentityRefs: ['identity.stable'],
     satisfiedPredicateRefs: [
       'predicate.implementation.allowed',
-      'predicate.node.implement.entry',
     ],
     nextStateRef: 'state.compact.003',
   });
@@ -839,7 +813,6 @@ test('ProcessFamily State allows explicit continuity-identity pruning at a trans
     carriedIdentityRefs: ['identity.keep', 'identity.retire'],
     satisfiedPredicateRefs: [
       'predicate.contract.allowed',
-      'predicate.node.contract.entry',
     ],
     nextStateRef: 'state.prune.002',
   });
@@ -854,7 +827,6 @@ test('ProcessFamily State allows explicit continuity-identity pruning at a trans
     carriedIdentityRefs: ['identity.keep'],
     satisfiedPredicateRefs: [
       'predicate.implementation.allowed',
-      'predicate.node.implement.entry',
     ],
     nextStateRef: 'state.prune.003',
   });
@@ -938,7 +910,6 @@ test('every admitted transition must state carried identities explicitly', () =>
       evidenceRefs: ['evidence.identity-explicit.001'],
       satisfiedPredicateRefs: [
         'predicate.contract.allowed',
-        'predicate.node.contract.entry',
       ],
       nextStateRef: 'state.identity-explicit.002',
     }),
@@ -975,7 +946,6 @@ test('ProcessFamily State creation and transition APIs reject historical source 
       carriedIdentityRefs: [],
       satisfiedPredicateRefs: [
         'predicate.contract.allowed',
-        'predicate.node.contract.entry',
       ],
       nextStateRef: 'state.source-bag.003',
       sourceRefs: ['source.historical'],
@@ -1001,7 +971,6 @@ test('bounded horizon derives CURRENT source grounding from current State eviden
     carriedIdentityRefs: ['identity.current'],
     satisfiedPredicateRefs: [
       'predicate.contract.allowed',
-      'predicate.node.contract.entry',
     ],
     nextStateRef: 'state.source-current.002',
   });
@@ -1016,7 +985,6 @@ test('bounded horizon derives CURRENT source grounding from current State eviden
     carriedIdentityRefs: ['identity.current'],
     satisfiedPredicateRefs: [
       'predicate.implementation.allowed',
-      'predicate.node.implement.entry',
     ],
     nextStateRef: 'state.source-current.003',
   });
@@ -1076,7 +1044,6 @@ test('transition formation rejects unknown relationships, empty evidence and no-
       carriedIdentityRefs: [],
       satisfiedPredicateRefs: [
         'predicate.contract.allowed',
-        'predicate.node.contract.entry',
       ],
       nextStateRef: 'state.reject.empty-evidence',
     }),
@@ -1117,7 +1084,6 @@ test('FURTHER route contains only forward-reachable process nodes, not completed
     carriedIdentityRefs: [],
     satisfiedPredicateRefs: [
       'predicate.contract.allowed',
-      'predicate.node.contract.entry',
     ],
     nextStateRef: 'state.forward.002',
   });
@@ -1132,7 +1098,6 @@ test('FURTHER route contains only forward-reachable process nodes, not completed
     carriedIdentityRefs: [],
     satisfiedPredicateRefs: [
       'predicate.implementation.allowed',
-      'predicate.node.implement.entry',
     ],
     nextStateRef: 'state.forward.003',
   });
@@ -1203,7 +1168,6 @@ test('initial bounded horizon has no PREVIOUS slot and may have no FURTHER route
   assert.equal(horizon.nextCandidates[0].available, false);
   assert.deepEqual(horizon.nextCandidates[0].missingPredicateRefs, [
     'predicate.finish.allowed',
-    'predicate.node.finish.entry',
   ]);
 
   const board = projectProcessHorizonBoard({
