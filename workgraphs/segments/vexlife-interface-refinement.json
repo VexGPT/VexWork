@@ -70,11 +70,11 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-10-29T20:01:00.000Z",
-      "updatedAt": "2026-10-30T03:39:00.000Z",
+      "updatedAt": "2026-10-30T03:58:48.000Z",
       "workRef": "work.vexlife.interface-refinement.interface-compound-relay",
       "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
       "label": "Current — Interface Compound Relay convergence",
-      "purpose": "Finish Interface Compound Relay from accepted F0/F1 into F2/F3. A005 proved the exact current-main composition; FormalReviewer APPROVE_EXACT_HEAD, READY, ordinary expected-head merge and post-merge tree verification completed. VexLife main is now 92e810c91b09e7c74a8e1c7da8d2fade7e070c3a with tree bf4730f5f3c0dc355541ae0aa31c56fad4482fa0, exactly equal to the A005-proven synthetic merge tree. F0/F1 is accepted source. F2 is released and must realize source/document/Companion/Conversation/browser-observation convergence using the accepted retained Compound InputState + derived OutputState -> full Compound State -> rightful Family State sequencing, current-generation admission, existing effect owners, and draft-safe browser source migration; F3 remains the ordinary existing-tab lived Send/Heretic/re-entry proof.",
+      "purpose": "Finish Interface Compound Relay F2/F3 from accepted VexLife main 92e810c91b09e7c74a8e1c7da8d2fade7e070c3a. F2 browser realization package A001 is formed against exact accepted source with branch vxg-interface-currentness-browser-realization-a001 and no current overlap. It must realize source/document/Companion/Conversation/browser-observation convergence using current-generation retained Compound InputState + derived OutputState -> current Compound State -> rightful Family State; effects never assign READY directly. It also source-addresses ordinary Mac Open Vex and preserves exact-scope session-only draft carriage. Consume the canonical F2 RETURN next; F3 real Send/Heretic/re-entry remains held.",
       "workClass": "TASK",
       "state": "RUNNING",
       "priorityClass": "IMMEDIATE",
@@ -178,7 +178,9 @@
         "relay.return.vexlife.interface-currentness-composition.a005.outer.sha256.d27dab308bfb9a721cce01988de1acfe83da2680cc0f2693e5f51572d2ca1500",
         "relay.return.vexlife.interface-currentness-composition.a005.inner.sha256.e87d8a62ff1321d998e39409132dac410bbb4abcdc576dc8125cc677bc4911b4",
         "github.commit.vexlife.92e810c91b09e7c74a8e1c7da8d2fade7e070c3a",
-        "github.pull.vexlife.963.comment.6514360584"
+        "github.pull.vexlife.963.comment.6514360584",
+        "relay.package.vexlife.interface-currentness-browser-realization.f2.a001.sha256.e55c04982fdde7ca513721f85dc8bdb72729f8464397bacde8713ac72ddc0bba",
+        "relay.inner.vexlife.interface-currentness-browser-realization.f2.a001.sha256.4749e5aba280f5d0c3e9c75fc1fb74eac7918107a441000850f0f2adf4cb7e26"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
@@ -1229,7 +1231,9 @@
     "relay.return.vexlife.interface-currentness-composition.a005.outer.sha256.d27dab308bfb9a721cce01988de1acfe83da2680cc0f2693e5f51572d2ca1500",
     "relay.return.vexlife.interface-currentness-composition.a005.inner.sha256.e87d8a62ff1321d998e39409132dac410bbb4abcdc576dc8125cc677bc4911b4",
     "github.commit.vexlife.92e810c91b09e7c74a8e1c7da8d2fade7e070c3a",
-    "github.pull.vexlife.963.comment.6514360584"
+    "github.pull.vexlife.963.comment.6514360584",
+    "relay.package.vexlife.interface-currentness-browser-realization.f2.a001.sha256.e55c04982fdde7ca513721f85dc8bdb72729f8464397bacde8713ac72ddc0bba",
+    "relay.inner.vexlife.interface-currentness-browser-realization.f2.a001.sha256.4749e5aba280f5d0c3e9c75fc1fb74eac7918107a441000850f0f2adf4cb7e26"
   ],
   "formedAt": "2026-10-25T01:23:08.000Z"
 }
