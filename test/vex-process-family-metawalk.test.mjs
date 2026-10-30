@@ -2,6 +2,13 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import test from 'node:test';
 
+import {
+  admitProcessTransition,
+  createProcessState,
+  normalizeProcessFamily,
+  normalizeProcessState,
+  projectProcessHorizon,
+} from '../src/shared/vex-process-family.mjs';
 import { normalizeBoardGraph, normalizeBoardProjection } from '../src/shared/vexboard-model.mjs';
 import { normalizeBoardSourceCatalog, resolveBoardSource } from '../src/shared/vexboard-source-resolver.mjs';
 
@@ -9,6 +16,78 @@ const read = (relative) => JSON.parse(fs.readFileSync(new URL('../' + relative, 
 
 const boardPath = 'projects/vexboard/examples/vexwork-process-family-metawalk.board.json';
 const sourcePath = 'docs/process/VEX-PROCESS-FAMILY-METAWALK.md';
+
+function node(nodeRef, label) {
+  return {
+    nodeRef,
+    label,
+    purpose: label + ' purpose',
+    entryPredicateRefs: ['predicate.' + nodeRef + '.entry'],
+    currentTruthRefs: ['truth.' + nodeRef + '.current'],
+    ownerRefs: ['owner.' + nodeRef],
+    readingSourceRefs: ['source.' + nodeRef + '.read-now'],
+    authorityRefs: ['authority.' + nodeRef],
+    considerationRefs: ['consideration.' + nodeRef],
+    proofRefs: ['proof.' + nodeRef],
+    exitPredicateRefs: ['predicate.' + nodeRef + '.exit'],
+    heldConcernRefs: ['held.' + nodeRef],
+    sourceRefs: ['source.' + nodeRef],
+  };
+}
+
+function familyFixture() {
+  return {
+    schemaVersion: 'vexwork.process-family/v1',
+    familyRef: 'process-family.test.metawalk',
+    purpose: 'Prove the smallest current-state and bounded-horizon relationship.',
+    entryNodeRef: 'node.recover',
+    nodes: [
+      node('node.recover', 'Recover'),
+      node('node.contract', 'Contract'),
+      node('node.implement', 'Implement'),
+      node('node.prove', 'Prove'),
+    ],
+    relationships: [
+      {
+        relationshipRef: 'rel.recover-contract',
+        movementClass: 'ADVANCES',
+        fromRef: 'node.recover',
+        toRef: 'node.contract',
+        label: 'pressure grounded',
+        entryPredicateRefs: ['predicate.contract.allowed'],
+        sourceRefs: ['source.relationship.recover-contract'],
+      },
+      {
+        relationshipRef: 'rel.contract-implement',
+        movementClass: 'ADVANCES',
+        fromRef: 'node.contract',
+        toRef: 'node.implement',
+        label: 'contract accepted',
+        entryPredicateRefs: ['predicate.implementation.allowed'],
+        sourceRefs: ['source.relationship.contract-implement'],
+      },
+      {
+        relationshipRef: 'rel.implement-contract-gap',
+        movementClass: 'CONTRACT_GAP',
+        fromRef: 'node.implement',
+        toRef: 'node.contract',
+        label: 'contract gap',
+        entryPredicateRefs: ['predicate.contract-gap.confirmed'],
+        sourceRefs: ['source.relationship.implement-contract-gap'],
+      },
+      {
+        relationshipRef: 'rel.implement-prove',
+        movementClass: 'ADVANCES',
+        fromRef: 'node.implement',
+        toRef: 'node.prove',
+        label: 'implementation formed',
+        entryPredicateRefs: ['predicate.proof.allowed'],
+        sourceRefs: ['source.relationship.implement-prove'],
+      },
+    ],
+    sourceRefs: [sourcePath],
+  };
+}
 
 test('MetaWalk board is one valid read-only projection of the formation source', () => {
   const board = read(boardPath);
@@ -26,7 +105,7 @@ test('MetaWalk board is one valid read-only projection of the formation source',
   assert.equal(projection.items.length, graph.nodes.length);
 
   assert.equal(
-    graph.nodes.every((node) => node.sourceRefs.includes(sourcePath)),
+    graph.nodes.every((entry) => entry.sourceRefs.includes(sourcePath)),
     true,
     'every MetaWalk node must descend to the canonical formation source',
   );
@@ -72,4 +151,164 @@ test('MetaWalk is discoverable through the existing VexBoard source catalog with
   assert.equal(resolution?.location, './vexwork-process-family-metawalk.board.json');
   assert.equal(resolution?.sourceRefs.includes(sourcePath), true);
   assert.equal(resolution?.sourceRefs.includes(boardPath), true);
+});
+
+test('ProcessFamily State owns scope x node x depth without becoming a world-state database', () => {
+  const family = normalizeProcessFamily(familyFixture());
+  const state = createProcessState(family, {
+    stateRef: 'state.metawalk.001',
+    scopeRef: 'work.test.outcome',
+    depth: 'FORMATION',
+    sourceRefs: ['source.state.metawalk.001'],
+  });
+
+  assert.equal(state.scopeRef, 'work.test.outcome');
+  assert.equal(state.currentNodeRef, 'node.recover');
+  assert.equal(state.depth, 'FORMATION');
+  assert.deepEqual(state.transitionHistory, []);
+
+  const illegal = structuredClone(state);
+  illegal.providerHead = 'a'.repeat(40);
+  assert.throws(
+    () => normalizeProcessState(illegal, family),
+    /ProcessFamily\.State schema drift/,
+  );
+});
+
+test('bounded horizon deep-reads CURRENT and keeps future node source detail withheld', () => {
+  const family = normalizeProcessFamily(familyFixture());
+  const state = createProcessState(family, {
+    stateRef: 'state.metawalk.001',
+    scopeRef: 'work.test.outcome',
+    depth: 'FORMATION',
+    sourceRefs: ['source.state.metawalk.001'],
+  });
+  const horizon = projectProcessHorizon(family, state, {
+    admittedRelationshipRefs: ['rel.recover-contract'],
+  });
+
+  assert.deepEqual(horizon.current.readingSourceRefs, ['source.node.recover.read-now']);
+  assert.equal(horizon.nextCandidates.length, 1);
+  assert.equal(horizon.nextCandidates[0].nodeRef, 'node.contract');
+  assert.equal(horizon.nextCandidates[0].admitted, true);
+  assert.equal(Object.hasOwn(horizon.nextCandidates[0], 'readingSourceRefs'), false);
+  assert.deepEqual(horizon.furtherNodeRefs, ['node.implement', 'node.prove']);
+  assert.equal(horizon.effects, false);
+  assert.equal(horizon.executionAuthority, 'NONE');
+});
+
+test('accepted transition carries evidence and identity while rotating CURRENT node', () => {
+  const family = normalizeProcessFamily(familyFixture());
+  const start = createProcessState(family, {
+    stateRef: 'state.metawalk.001',
+    scopeRef: 'work.test.outcome',
+    depth: 'FORMATION',
+    sourceRefs: ['source.state.metawalk.001'],
+  });
+
+  const next = admitProcessTransition({
+    family,
+    state: start,
+    transitionRef: 'transition.metawalk.001',
+    relationshipRefOrNull: 'rel.recover-contract',
+    movementClass: 'ADVANCES',
+    nextDepth: 'CONTRACT',
+    evidenceRefs: ['evidence.pressure-grounded'],
+    carriedIdentityRefs: ['identity.work.test.outcome'],
+    nextStateRef: 'state.metawalk.002',
+    sourceRefs: ['source.transition.metawalk.001'],
+  });
+
+  assert.equal(next.currentNodeRef, 'node.contract');
+  assert.equal(next.depth, 'CONTRACT');
+  assert.deepEqual(next.acceptedEvidenceRefs, ['evidence.pressure-grounded']);
+  assert.deepEqual(next.carriedIdentityRefs, ['identity.work.test.outcome']);
+  assert.equal(next.transitionHistory.at(-1).movementClass, 'ADVANCES');
+
+  const horizon = projectProcessHorizon(family, next);
+  assert.equal(horizon.previousAcceptedOrNull?.nodeRef, 'node.recover');
+  assert.equal(horizon.previousAcceptedOrNull?.transitionRef, 'transition.metawalk.001');
+  assert.deepEqual(horizon.previousAcceptedOrNull?.evidenceRefs, ['evidence.pressure-grounded']);
+  assert.equal(horizon.current.nodeRef, 'node.contract');
+});
+
+test('depth revisit may deepen one semantic coordinate without reopening a prior node', () => {
+  const family = normalizeProcessFamily(familyFixture());
+  const start = createProcessState(family, {
+    stateRef: 'state.metawalk.001',
+    scopeRef: 'work.test.outcome',
+    depth: 'FORMATION',
+    sourceRefs: ['source.state.metawalk.001'],
+  });
+
+  const next = admitProcessTransition({
+    family,
+    state: start,
+    transitionRef: 'transition.metawalk.depth.001',
+    relationshipRefOrNull: null,
+    movementClass: 'DEPTH_REVISIT',
+    nextDepth: 'TOPOLOGY',
+    evidenceRefs: ['evidence.shape-deepened'],
+    nextStateRef: 'state.metawalk.002',
+  });
+
+  assert.equal(next.currentNodeRef, 'node.recover');
+  assert.equal(next.depth, 'TOPOLOGY');
+  assert.equal(next.transitionHistory.at(-1).fromNodeRef, 'node.recover');
+  assert.equal(next.transitionHistory.at(-1).toNodeRef, 'node.recover');
+});
+
+test('transition admission fails closed on stale or foreign movement', () => {
+  const family = normalizeProcessFamily(familyFixture());
+  const state = createProcessState(family, {
+    stateRef: 'state.metawalk.001',
+    scopeRef: 'work.test.outcome',
+    depth: 'FORMATION',
+    sourceRefs: ['source.state.metawalk.001'],
+  });
+
+  assert.throws(
+    () => admitProcessTransition({
+      family,
+      state,
+      transitionRef: 'transition.bad.foreign',
+      relationshipRefOrNull: 'rel.contract-implement',
+      movementClass: 'ADVANCES',
+      nextDepth: 'IMPLEMENTATION',
+      evidenceRefs: ['evidence.invalid'],
+      nextStateRef: 'state.metawalk.bad',
+    }),
+    /must leave CURRENT node/,
+  );
+
+  assert.throws(
+    () => admitProcessTransition({
+      family,
+      state,
+      transitionRef: 'transition.bad.class',
+      relationshipRefOrNull: 'rel.recover-contract',
+      movementClass: 'RECOVERS',
+      nextDepth: 'CONTRACT',
+      evidenceRefs: ['evidence.invalid'],
+      nextStateRef: 'state.metawalk.bad2',
+    }),
+    /movementClass must match relationship/,
+  );
+});
+
+test('horizon cannot claim an admitted next edge that is not adjacent to CURRENT', () => {
+  const family = normalizeProcessFamily(familyFixture());
+  const state = createProcessState(family, {
+    stateRef: 'state.metawalk.001',
+    scopeRef: 'work.test.outcome',
+    depth: 'FORMATION',
+    sourceRefs: ['source.state.metawalk.001'],
+  });
+
+  assert.throws(
+    () => projectProcessHorizon(family, state, {
+      admittedRelationshipRefs: ['rel.contract-implement'],
+    }),
+    /must leave CURRENT node/,
+  );
 });
