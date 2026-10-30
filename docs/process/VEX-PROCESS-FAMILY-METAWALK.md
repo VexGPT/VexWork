@@ -1421,7 +1421,7 @@ ADDRESSABLE FUTURE
 The formed ProcessFamily / bounded-horizon implementation has been exercised against the exact current PR source bytes through the connected V8 execution surface.
 
 ~~~text
-exact test file logic        13 / 13 PASS
+exact test file logic        17 / 17 PASS
 machine ProcessFamily        PASS
 scope x node x depth walk    PASS
 predicate-derived availability PASS
@@ -1443,6 +1443,65 @@ FULL npm run review          = NOT YET CLAIMED
 ~~~
 
 Do not convert the connector proof into a claim that Node/npm repository integration has already run.
+### Repository-integration pressure
+
+The candidate has now been checked against VexWork's deterministic repository floor shape.
+
+~~~text
+package.json
+  npm test   = node --test
+  npm review = test coverage
+               + source-coverage floor
+               + Workgraph checks
+               + foundation check
+               + dashboard/workspace generated-currentness checks
+~~~
+
+The focused test is therefore automatically part of ordinary Node test discovery; no custom test runner or hidden script is required.
+
+The two new shared modules are also intentionally inside the accepted source-coverage policy:
+
+~~~text
+sourcePolicy = src/**/*.mjs + *-reader.js
+
+minimum aggregate coverage:
+  lines      96%
+  branches   84%
+  functions  96%
+~~~
+
+Because the accepted branch floor has little headroom, the focused suite was expanded only around real fail-closed architecture boundaries rather than synthetic percentage padding:
+
+~~~text
+17 / 17 exact-test logic PASS
+
+additional boundaries exercised:
+  invalid Family schema
+  duplicate / missing topology identity
+  invalid movement class
+  foreign Family State
+  invalid depth
+  corrupted transition origin/evidence/identity
+  unknown relationship
+  empty transition evidence
+  no-op depth revisit
+  initial horizon with no previous/further route
+  invalid horizon board identity
+~~~
+
+Coverage **percentage** remains a repository-runtime predicate. The connected V8 proof establishes the exact test logic, not Node's LCOV accounting.
+
+~~~text
+TEST DISCOVERY SHAPE          = CLEAR
+SOURCE COVERAGE APPLICABILITY = CLEAR
+CONNECTED V8 TEST LOGIC       = 17 / 17 PASS
+NODE LCOV / AGGREGATE FLOOR   = NOT YET CLAIMED
+FULL npm run review           = NOT YET CLAIMED
+~~~
+
+Browser integration is also source-clean: the bounded-horizon projector imports only the browser-safe shared ProcessFamily and VexBoard model modules; it does not pull Node-only semantic hashing into the browser closure.
+
+The shared VexBoard source-catalog path has no other open-PR claim at this checkpoint. PR #187 remains separate on Process Registry / Process Map tests only.
 ### Source definition versus live current State
 
 VexWork's accepted runtime-persistence law already establishes the right storage distinction:
