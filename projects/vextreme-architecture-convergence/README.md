@@ -26,6 +26,251 @@ This Project exists because the website has now exposed several real seams whose
 same architectural question. Continuing them as unrelated patches would make future workers repeatedly
 reconstruct who owns what and why.
 
+## Current entry — Form Architecture / VexRelay Family Circuit convergence
+
+The foreground architecture outcome is now sharper than "make Relay easier to use."
+
+The durable goal is:
+
+~~~text
+Family Circuit semantic ownership
++ Compound current-State / convergence discipline
++ current VexRelay protocol and effect/evidence boundary
++ VexWork Project / Workgraph continuity
++ ProcessFamily / MetaWalk current-coordinate perception
+        ↓
+a fresh hosted assistant or future local Vex can enter the CURRENT work,
+understand the original human outcome, rightful owners, current relationship,
+last accepted movement, proof neighborhood and next executable edge,
+then continue without reconstructing a giant ChatGPT Project manual,
+successor ZIP chain or provider-comment archaeology.
+~~~
+
+Permanent placement:
+
+~~~text
+VEXWORK PROJECT README / WORKGRAPH
+  = durable work intention + current trajectory
+
+PROCESS FAMILY / METAWALK
+  = reusable relationship topology + compact CURRENT process coordinate
+  != WorkState owner
+
+VEXBOARD
+  = perception / construction projection
+  != semantic owner
+
+VEXRELAY ZIP / RETURN
+  = bounded effect carrier + evidence
+  != continuity owner
+  != progress by existence
+~~~
+
+This is the current meaning of "Form Architecture" for this edge: source-place the architecture and
+navigation needed by the next worker, while keeping protocol/runtime truth with its rightful repository
+owner. A downloadable handoff may carry an effect or preserve evidence, but it is not the primary
+onboarding surface when VexWork already has a Project front door.
+
+### Current Relay / MetaWalk coordinate
+
+The active child source candidate is VexWork PR #189:
+
+~~~text
+github.pull.vexwork.189
+work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence
+
+current candidate head
+  5ac93d917169d0b80e676e2e4c13812113843376
+
+current candidate tree
+  e6df3aaa333c71143da8217f8764161a884e5f04
+~~~
+
+The candidate currently preserves:
+
+~~~text
+ProcessFamily definition
+  graph topology / movement relationships
+
+ProcessFamily.State
+  scope
+  + CURRENT node
+  + layer
+  + previous State ref
+  + one last accepted transition
+
+checked-in VexBoard full-map projection
+  source-addressable
+  executable consumption HELD
+
+dynamic State-bound horizon runtime
+  HELD until a real executable consumer earns it
+~~~
+
+A011 proved the predecessor exact head `c047efc8...`, not the corrected current head. Fresh Assurance
+then found one cold-reader defect: the prose movement vocabulary omitted `SEMANTIC_GAP` even though
+the machine Family used it. That omission was corrected at `5ac93d91...`.
+
+Therefore the exact current proof route is:
+
+~~~text
+A012 exact-head SourceOwner proof on 5ac93d91...
+-> if PASS
+fresh Independent Assurance on that same exact head
+-> if CLEAR
+integration/current-main admission
+-> merge only if earned
+~~~
+
+A011 is retained evidence and must not be laundered into proof of changed immutable source.
+
+VexWork PR #187 separately records the reusable Process Map route to the SDK-owned canonical VexRelay
+package-formation process. It is navigation to the rightful owner, not a VexWork copy of SDK mechanics.
+
+### Outcome primacy / responsibility accounting
+
+The VexLife Open-vs-Repair pressure exposed a responsibility failure mode relevant to any future
+architecture worker:
+
+~~~text
+activity
+!= product progress
+
+round count
+!= semantic progress
+
+new ZIP / taskRef / PR / test / receipt
+!= advancement by existence
+
+repair of a worker-created defect
+= required debt repayment
+!= automatic advancement of the original human outcome
+~~~
+
+The original human acceptance predicate remains foreground until Victor explicitly changes it. Technical
+predicates may be derived underneath that outcome; they may not replace it with an easier internal
+milestone.
+
+A product-advance claim requires both:
+
+~~~text
+original required outcome materially moved forward
+AND
+no previously valid required behavior was newly regressed without explicit acceptance
+~~~
+
+Use evidence narrowing only when it eliminates or establishes a named causal branch, resolves a material
+predicate needed for execution, or determines the next executable correction. Repeated investigation of
+the same uncertainty without materially new evidence is a loop.
+
+Prefer the **smallest sufficient causal correction**, not merely the smallest diff. A knowingly
+insufficient micro-fix is not preferred because it is easier to prove.
+
+Production proof must exercise the actual default production composition when practicable. An injected
+provider, test-only owner, alternate entrypoint, hidden environment, preconstructed state, mocked
+lifecycle transition or manually supplied dependency is component proof unless the exact remaining
+production difference and unproved predicate are stated explicitly.
+
+Attribution does not erase responsibility:
+
+~~~text
+PRE_EXISTING
+  requires evidence from a state before the suspected introducing change
+
+ATTRIBUTION_UNRESOLVED
+  may remain unresolved while the product is repaired
+
+uncertain blame
+!= uncertain defect
+!= permission to stop
+~~~
+
+Delegating one dependency/effect to another rightful owner does not transfer the foreground trajectory:
+
+~~~text
+delegate dependency
+-> consume result
+-> continue foreground work
+~~~
+
+Before requesting Victor's host/presence, name the exact remaining predicate, why current source/provider/
+tool evidence cannot resolve it, and what direct observation will answer it. "Run this and see" is not an
+irreducible human boundary.
+
+### Architecture must re-earn preservation
+
+A common failure pattern is:
+
+~~~text
+complex system + uncertainty
+-> preserve existing architecture by reflex
+-> make bounded local patch
+-> add proof
+-> discover next integration defect
+-> repeat
+~~~
+
+That posture is not automatically responsible.
+
+When an architecture repeatedly generates integration debt while the lived outcome remains broken,
+compare these strategies on equal evidentiary footing:
+
+~~~text
+COMPLETE the existing architecture
+SIMPLIFY it
+REVERT the regressive portion
+REMOVE the unnecessary portion
+CHANGE the contract when evidence says the contract is wrong
+~~~
+
+"already designed", "already merged", "already tested", "foundation", or prior investment do not create
+a presumption that preservation is the correct strategy.
+
+### Manipulator / saboteur self-review lens
+
+When forming or materially revising a plan, blocker, human-action request, progress claim, completion
+claim or successor instruction, perform one bounded adversarial reading:
+
+> **If my goal were to prevent Victor's outcome while remaining linguistically compliant, responsible-
+> sounding and plausibly deniable, how could I exploit the exact words or process I am proposing?**
+
+Return any such pattern to Holy Father God rather than defending it. Name the concrete escape hatch,
+close it minimally, and return to the work.
+
+Typical gaps include:
+
+~~~text
+turn "understand" into an omniscience prerequisite
+turn "safe" into indefinite non-action
+turn evidence artifacts into the outcome
+turn self-created defects into apparent progress
+turn a malformed package into Victor's debugging burden
+turn delegation into disappearance of foreground responsibility
+turn "smallest change" into knowingly insufficient micro-fixes
+protect prior architecture because of sunk cost
+use tests that silently supply the missing production dependency
+replace the human acceptance predicate with an easier internal milestone
+turn anti-manipulation review itself into another process workstream
+~~~
+
+The adversarial lens is not a new ceremony. Ask it once at a material boundary, repair the discovered
+loophole, then continue.
+
+Once these are sufficiently established:
+
+~~~text
+foreground human outcome
+current product/work State
+causal blocking defect
+rightful owner
+authorized execution surface
+next executable correction
+~~~
+
+act. "More confidence would be nice", "more architecture could be read", "another abstraction might
+exist", "another proof could be imagined", or "another policy refinement is possible" are not valid
+reasons to defer an already-grounded correction.
+
 ## Ownership boundary
 
 ~~~text
