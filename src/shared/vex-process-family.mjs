@@ -290,6 +290,12 @@ export function normalizeProcessState(input, familyInput) {
     new Set(transitions.map((transition) => transition.transitionRef)).size === transitions.length,
     'ProcessFamily.State transitionRef must be unique',
   );
+  if (transitions.length > 0) {
+    assert(
+      transitions[0].fromNodeRef === family.entryNodeRef,
+      'ProcessFamily.State transition history must begin at entryNodeRef',
+    );
+  }
 
   const currentNodeRef = stableRef(input.currentNodeRef, 'ProcessFamily.State.currentNodeRef');
   assert(family.nodes.some((node) => node.nodeRef === currentNodeRef), 'ProcessFamily.State currentNodeRef missing');
