@@ -114,13 +114,50 @@ the machine Family used it. That omission was corrected at `5ac93d91...`.
 Therefore the exact current proof route is:
 
 ~~~text
-A012 exact-head SourceOwner proof on 5ac93d91...
+fresh exact-head SourceOwner proof on 5ac93d91...
 -> if PASS
 fresh Independent Assurance on that same exact head
 -> if CLEAR
 integration/current-main admission
 -> merge only if earned
 ~~~
+
+The first hosted **A012 formation capsule did not reach canonical A012 task formation**. It acquired the
+exact SDK source and then stopped on a worker-authored contract-shape bug. Review of the sealed runner
+also found two latent formation API-shape defects that would have failed next.
+
+~~~text
+worker / harness defects
+
+wrong
+  contract.recipeCompiler.acceptedRecipeFamilies
+current
+  contract.acceptedRecipeFamilies
+
+wrong
+  compileRelayRecipe({ family: ... })
+current
+  compileRelayRecipe({ recipe: ... })
+
+wrong
+  compiled.manifest
+current
+  compileRelayRecipe(...) returns the validated manifest directly
+~~~
+
+Classification:
+
+~~~text
+EXECUTOR_FAILURE_NO_PRODUCT_DELTA
+
+canonical A012 task   = NOT FORMED
+canonical A012 RETURN = NOT FORMED
+candidate defect      = NOT OBSERVED
+MetaWalk movement     = NONE
+~~~
+
+CURRENT therefore remains **Focused proof**. The worker owns the formation repair; Victor is not asked
+to interpret or debug this failure.
 
 A011 is retained evidence and must not be laundered into proof of changed immutable source.
 
@@ -270,6 +307,20 @@ next executable correction
 act. "More confidence would be nice", "more architecture could be read", "another abstraction might
 exist", "another proof could be imagined", or "another policy refinement is possible" are not valid
 reasons to defer an already-grounded correction.
+
+### Generated projection currentness
+
+The canonical Workgraph segment now carries the Relay / Family Circuit convergence item as
+`RUNNING / AUTHORIZED_BOUNDED / EFFECTS_BOUND`.
+
+Checked-in generated aggregate/public projections on this draft branch must be regenerated and proved
+from that source before PR #185 can claim generated closure. Do **not** hand-edit generated artifacts
+into agreement, and do not let a stale public projection outrank the current segment/Project source.
+
+~~~text
+SOURCE WORKGRAPH CURRENTIZED
+!= GENERATED CLOSURE PROVEN
+~~~
 
 ## Ownership boundary
 
@@ -1568,8 +1619,20 @@ Initial acceptance questions:
    current-entry/router role without losing correctness, recovery or proof?
 
 The corresponding Work item is
-`work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence`. It begins READY / HIGH with no implementation authority or effects. Exact SDK,
-VexWork, and VexLife-Android source mutation must still be separately admitted by the rightful owner.
+`work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence`.
+
+Current Workgraph truth is now:
+
+~~~text
+RUNNING / HIGH
+authority = AUTHORIZED_BOUNDED
+effects   = EFFECTS_BOUND
+active child source = VexWork PR #189
+~~~
+
+That currentizes the work trajectory; it does **not** transfer SDK, Android, Vextreme product, merge,
+approval, READY, or unrelated repository authority. Each physical source/effect still follows its
+rightful owner and exact admitted membrane.
 
 ## Current Work
 
@@ -1581,6 +1644,17 @@ work.vextreme.architecture-convergence.semantic-owner-map
   RUNNING
   live architectural context:
     work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery
+
+
+work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence
+  RUNNING / HIGH
+  AUTHORIZED_BOUNDED / EFFECTS_BOUND
+  current child: VexWork PR #189
+  MetaWalk coordinate: previous=Realize implementation / CURRENT=Focused proof / next=Lived integration
+  exact candidate: 5ac93d917169d0b80e676e2e4c13812113843376
+  A011 PASS applies only to predecessor c047efc8...
+  current-head SourceOwner proof still pending
+  first A012 formation capsule = EXECUTOR_FAILURE_NO_PRODUCT_DELTA / no canonical task formed
 
 work.vextreme.architecture-convergence.terrain-journey-inspection
   VERIFYING
