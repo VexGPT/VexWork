@@ -541,6 +541,7 @@ test('bounded-horizon VexBoard projection deep-reads CURRENT but withholds futur
 
   assert.equal(board.schemaVersion, 'vexboard.local-draft/v1');
   assert.equal(board.mode, 'READ_ONLY_SOURCE');
+  assert.equal(board.derivedFromRefOrNull, current.stateRef);
   const graph = normalizeBoardGraph(board.graph);
   const projection = normalizeBoardProjection(board.projection, graph);
   assert.equal(projection.graphRef, graph.graphRef);
@@ -621,6 +622,27 @@ test('ProcessFamily definition fails closed on identity, topology and movement c
   const missingEndpoint = structuredClone(schema);
   missingEndpoint.relationships[0].toRef = 'node.missing';
   assert.throws(() => normalizeProcessFamily(missingEndpoint), /toRef missing/);
+
+  const invalidEntryLayer = structuredClone(schema);
+  invalidEntryLayer.entryLayer = 'NOT_DECLARED';
+  assert.throws(
+    () => normalizeProcessFamily(invalidEntryLayer),
+    /entryLayer must belong to layers/,
+  );
+
+  const duplicateLayer = structuredClone(schema);
+  duplicateLayer.layers.push(duplicateLayer.layers[0]);
+  assert.throws(
+    () => normalizeProcessFamily(duplicateLayer),
+    /ProcessFamily.layers must be unique/,
+  );
+
+  const orphan = structuredClone(schema);
+  orphan.nodes.push(node('node.orphan', 'Orphan'));
+  assert.throws(
+    () => normalizeProcessFamily(orphan),
+    /nodes unreachable from entryNodeRef: node\.orphan/,
+  );
 });
 
 test('ProcessFamily State fails closed on foreign family, invalid layer and corrupted transition lineage', () => {
@@ -1144,6 +1166,7 @@ test('initial bounded horizon has no PREVIOUS slot and may have no FURTHER route
     boardRef: 'board.test.tiny-horizon',
   });
   const graph = normalizeBoardGraph(board.graph);
+  assert.equal(board.derivedFromRefOrNull, state.stateRef);
   assert.equal(graph.nodes.some((entry) => entry.label.startsWith('PREVIOUS · ')), false);
   assert.equal(graph.nodes.some((entry) => entry.label.startsWith('FURTHER ROUTE · ')), false);
   assert.equal(graph.nodes.some((entry) => entry.label === 'NEXT · Finish'), true);
