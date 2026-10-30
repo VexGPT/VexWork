@@ -1324,6 +1324,151 @@ do not use ProcessInstance naming where runtime processInstanceRef already means
 This is enough to define the input contract for a future bounded-horizon projector without yet defining
 that projector's wire schema.
 
+## Machine-readable source / live-state persistence boundary
+
+The first pressure walks have now earned a small machine-readable ProcessFamily source:
+
+~~~text
+docs/process/VEX-PROCESS-FAMILY-METAWALK.json
+  schema = vexwork.process-family/v1
+  familyRef = process-family.vexwork.metawalk
+  nodes = 10
+  relationships = 13
+~~~
+
+The source contract is implemented by:
+
+~~~text
+src/shared/vex-process-family.mjs
+
+normalizeProcessFamily(...)
+normalizeProcessState(...)
+createProcessState(...)
+admitProcessTransition(...)
+projectProcessHorizon(...)
+~~~
+
+The current State contract owns only:
+
+~~~text
+scopeRef
+currentNodeRef
+depth
+accepted transition history / evidence refs
+carried stable identity refs
+source grounding
+~~~
+
+Exact-key validation intentionally rejects ad-hoc provider/repository fields. Mutable world truth remains owned by its rightful source and is re-grounded before a dependent next effect.
+
+The machine definition is now the semantic owner of the MetaWalk topology. The existing VexBoard full map declares:
+
+~~~text
+derivedFromRefOrNull = process-family.vexwork.metawalk
+~~~
+
+and its sourceRefs descend to the machine definition.
+
+~~~text
+PROCESS FAMILY DEFINITION
+-> VEXBOARD FULL-MAP PROJECTION
+
+not
+
+BOARD DRAWING
+-> IMPLICIT PROCESS LAW
+~~~
+
+### Bounded horizon projector
+
+The first effect-free consumer is:
+
+~~~text
+src/shared/vexboard-process-horizon.mjs
+projectProcessHorizonBoard(...)
+~~~
+
+It consumes:
+
+~~~text
+ProcessFamily definition
++ exact ProcessFamily State
++ caller-supplied scope projection
++ caller-supplied admitted outgoing relationships
+~~~
+
+and forms a read-only VexBoard projection with:
+
+~~~text
+OUTCOME
+PREVIOUS accepted result
+CURRENT node + deep current reading/proof/source neighborhood
+NEXT candidates + identity/purpose/entry predicates only
+FURTHER ROUTE + address identity only
+~~~
+
+The projector cannot admit process movement or mutate State. It receives admitted relationship refs from the rightful process decision layer and remains effect-free / non-executing.
+
+Future-node readingSourceRefs / proofRefs are deliberately absent from NEXT/FURTHER projected sourceRefs.
+
+~~~text
+ADDRESSABLE FUTURE
+!= ACTIVE READING SCOPE
+~~~
+
+### Source definition versus live current State
+
+VexWork's accepted runtime-persistence law already establishes the right storage distinction:
+
+~~~text
+SOURCE_DEFINITION != LIVE_RUNTIME_STATE
+~~~
+
+Therefore this formation does not commit a live ProcessFamily State file and pretend Git is a high-frequency runtime store.
+
+Current position semantics are public-safe source. A future persistent consumer may earn a private runtime realization analogous to VexWork's existing pattern:
+
+~~~text
+lawful ProcessFamily State
+-> immutable snapshot
+-> retained successor-pointer lineage
+-> CURRENT = validated tip
+-> exact-current transition
+-> restart / read-back
+~~~
+
+That runtime is held until a real consumer requires persistence. The current in-memory semantic core is enough to pressure the State and projection contracts without manufacturing storage ceremony.
+
+Permanent:
+
+~~~text
+PROCESS_FAMILY_DEFINITION != LIVE_PROCESS_STATE
+PROCESS_STATE_SEMANTICS != RUNTIME_STORE
+VEXBOARD_PROJECTION != CURRENT_POINTER
+GIT_COMMIT != HIGH_FREQUENCY_PROCESS_CURRENTNESS
+~~~
+
+### Process Factory / Process Atlas non-collapse
+
+Current Vextreme-SDK pressure also confirms that this source is not replacing existing process infrastructure.
+
+~~~text
+SDK Process Factory
+  machine-readable purpose / inputs / preconditions / steps /
+  stop conditions / result / next-route law
+  -> exact executable or operational process definition
+
+SDK Process Atlas
+  nodes / edges / depth classes / local process states /
+  freshness / lenses / sources / evidence
+  -> atlas and projection semantics
+
+VexProcessFamily candidate
+  reusable semantic process traversal + one current process coordinate
+  -> generic scope x node x depth movement
+~~~
+
+Process Factory's current repository task already says its next route is consumed only after RETURN verification and live re-grounding, reinforcing rather than replacing the ProcessFamily currentness law.
 ## Fresh-instance resume packet
 
 A future projection should be able to give a fresh instance only the bounded packet needed now:
@@ -1406,7 +1551,7 @@ Only after that pressure should Process Registry promotion, the pink VexWork Onb
 
 ## Current formation boundary
 
-This candidate changes only VexWork/VexBoard architecture guidance and its read-only map/test surface.
+This candidate changes only VexWork/VexBoard process semantics, shared effect-free projection code, architecture guidance, and its read-only map/test surface.
 
 It does not mutate:
 
