@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
 import test from 'node:test';
 
 import { semanticHash as nodeHash } from '../src/core/semantic.mjs';
@@ -541,6 +542,56 @@ test('built-in board routing is explicit and fail-closed for unknown portal targ
   assert.equal(Reader.builtinBoardUrl('board.vexboard.self-map'), './self-map.json');
   assert.equal(Reader.builtinBoardUrl('board.vexboard.publish'), './publish-map.json');
   assert.equal(Reader.builtinBoardUrl('board.vexboard.unknown'), null);
+});
+
+test('VexBoard how-to-begin map exposes the accepted MetaWalk as a read-only onboarding portal', () => {
+  const selfMap = JSON.parse(fs.readFileSync(new URL('../vexboard/self-map.json', import.meta.url), 'utf8'));
+  const graph = normalizeBoardGraph(selfMap.graph);
+  const projection = normalizeBoardProjection(selfMap.projection, graph);
+
+  assert.equal(selfMap.draftRef, 'board.vexboard.self-map');
+  assert.equal(selfMap.title, 'VexBoard — how to begin');
+  assert.equal(selfMap.mode, 'READ_ONLY_SOURCE');
+
+  const createNew = graph.nodes.find((node) => node.nodeRef === 'node.vexboard.create-new');
+  assert.ok(createNew, 'existing Create new control must remain present');
+  assert.deepEqual(
+    createNew.sourceRefs,
+    ['vexboard/index.html'],
+    'MetaWalk onboarding must not inflate unrelated Create new provenance',
+  );
+
+  const portal = graph.nodes.find((node) => node.nodeRef === 'node.vexboard.vexwork-metawalk');
+  assert.ok(portal, 'how-to-begin map must expose one MetaWalk onboarding portal');
+  assert.equal(portal.kind, 'PORTAL');
+  assert.equal(portal.label, 'VexWork Onboarding · MetaWalk');
+  assert.equal(portal.detailBoardRefOrNull, 'board.vexwork.process-family-metawalk');
+  assert.equal(portal.sourceRefs.includes('docs/process/VEX-PROCESS-FAMILY-METAWALK.md'), true);
+  assert.equal(
+    portal.sourceRefs.includes('projects/vexboard/examples/vexwork-process-family-metawalk.board.json'),
+    true,
+  );
+
+  const relationship = graph.relationships.find(
+    (entry) => entry.relationshipRef === 'rel.vexboard.entry-metawalk',
+  );
+  assert.ok(relationship, 'self-map must relate its entry to the MetaWalk portal');
+  assert.equal(relationship.kind, 'REFERENCE');
+  assert.equal(relationship.fromRef, 'node.vexboard.entry');
+  assert.equal(relationship.toRef, portal.nodeRef);
+  assert.equal(relationship.labelOrNull, 'continue work');
+
+  const projected = projection.items.find(
+    (item) => item.semanticRef === portal.nodeRef,
+  );
+  assert.ok(projected, 'MetaWalk onboarding portal must be visible in the self-map projection');
+  assert.equal(projected.visible, true);
+
+  assert.equal(
+    Reader.builtinBoardUrl('board.vexwork.process-family-metawalk'),
+    null,
+    'MetaWalk remains source-catalog-owned rather than becoming a second built-in board route',
+  );
 });
 
 test('BoardJourney follows explicit relationships and preserves repeated visits without mutating board truth', () => {
