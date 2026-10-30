@@ -3059,6 +3059,68 @@ F2
 != GIVE_RELATIONSHIP_EFFECT_AUTHORITY
 ~~~
 
+### F2 — browser currentness realization formed
+
+F0/F1 is accepted VexLife source at main `92e810c91b09e7c74a8e1c7da8d2fade7e070c3a`.
+The next source transaction is now formed from that accepted main rather than from the older planning
+snapshot.
+
+~~~text
+branch
+  vxg-interface-currentness-browser-realization-a001
+
+outer package sha256
+  e55c04982fdde7ca513721f85dc8bdb72729f8464397bacde8713ac72ddc0bba
+
+inner package sha256
+  4749e5aba280f5d0c3e9c75fc1fb74eac7918107a441000850f0f2adf4cb7e26
+
+task
+  task.vexlife.interface-currentness-browser-realization.f2.001
+
+formedAt
+  2026-10-30T03:58:48Z
+
+expiresAt
+  2026-10-31T03:58:48Z
+~~~
+
+The bounded implementation reuses the accepted State Relay/Compound substrate and existing
+Conversation, Companion recovery and Send owners. It adds only the browser/server realization needed
+to make the accepted relationship current:
+
+~~~text
+serving Source Manifest treeSha256
+-> loaded-document source identity
++ current server source identity
++ current Companion availability
++ exact selected Conversation currentness
++ browser observation generation/scope
+-> retained coherent Compound InputState
+-> derived Interface OutputState
+-> current Compound State
+-> Chat consumes READY / RECOVERABLE / ACTION_REQUIRED / mismatch truth
+~~~
+
+The candidate also makes ordinary Mac Open Vex source-addressed, so a changed accepted source cannot
+silently refocus an old document as though it were current. F2-era unsent drafts are carried only in
+session storage under exact Conversation scope; they do not become Conversation or Memory.
+
+Source publication is still held behind exact host proof. The package must prove focused browser,
+recovery, Conversation and Mac setup behavior, regenerate Source Manifest consequences, run the full
+repository check, commit cleanly, publish non-force to the one branch, and create one draft PR. F3
+real Heretic/Send/re-entry proof remains held.
+
+Permanent:
+
+~~~text
+F2_FORMED != F2_EXECUTED
+F2_EXECUTED != F2_ACCEPTED
+EFFECT_SUCCESS != INTERFACE_READY
+STALE_ASYNC_RESULT != CURRENT_COMPOUND_INPUT
+SESSION_DRAFT != CONVERSATION != MEMORY
+~~~
+
 ### Foundation-to-interface sequence
 
 ~~~text
