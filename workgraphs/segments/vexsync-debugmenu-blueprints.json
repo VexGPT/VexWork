@@ -502,7 +502,8 @@
         "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt",
         "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexCoroutineLauncher.kt",
         "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt",
-        "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md"
+        "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+        "github.comment.vexlife-android.pr203.6515244021.sourceowner-a001-formed"
       ],
       "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
       "nextProcessRefs": [
@@ -511,7 +512,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-29T17:34:00.000Z",
-      "updatedAt": "2026-10-30T04:36:00.000Z"
+      "updatedAt": "2026-10-30T04:55:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
@@ -1121,6 +1122,21 @@
         "github.comment.vexlife-android.pr150.6515076184.stale-handle-carrier"
       ],
       "createdAt": "2026-10-30T04:36:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.execution-source-custody.running.pr203-sourceowner-a001-formed-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.execution-source-custody",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING",
+      "reason": "PR #203 exact head 95978e02... now has a current-contract ExactHeadSourceOwnerProof A001 formation package statically qualified for focused VexExecution + VexFamily tests, repository vexVerifyJvm, exact 14-path tracked-clean, and recipe-owned review snapshot. Formation wrapper sha256=d851115348887e90284d312f8744fe29bbf55e2af7d4c3e2855b7b593c427717. Host execution has not occurred, so no compile/test PASS or VERIFYING transition is claimed.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.203",
+        "github.comment.vexlife-android.pr203.6515244021.sourceowner-a001-formed",
+        "evidence.vexsync.pr203.sourceowner.a001.formation.sha256.d851115348887e90284d312f8744fe29bbf55e2af7d4c3e2855b7b593c427717"
+      ],
+      "createdAt": "2026-10-30T04:55:00.000Z"
     }
   ],
   "sourceRefs": [
