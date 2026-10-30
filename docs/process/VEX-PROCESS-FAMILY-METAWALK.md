@@ -17,6 +17,101 @@ SHAPE FIRST
 -> THEN PROMOTE THE PARTS THAT SURVIVE
 ~~~
 
+## CURRENT architecture — cold-reader authority
+
+This section defines the **exact current candidate**. Later A00x / Assurance sections preserve historical evidence about how the candidate changed; when a historical passage conflicts with this section, the historical passage is superseded and is not current schema authority.
+
+~~~text
+CURRENT MACHINE FAMILY
+
+ProcessFamily
+  schemaVersion
+  familyRef
+  entryNodeRef
+  layers
+  entryLayer
+  movementClasses
+  forwardMovementClasses
+  nodes[]
+  relationships[]
+
+node
+  nodeRef
+  label
+
+relationship
+  relationshipRef
+  movementClass
+  fromRef
+  toRef
+  label
+  entryPredicateRefs
+
+ProcessFamily.State
+  schemaVersion
+  stateRef
+  familyRef
+  scopeRef
+  currentNodeRef
+  layer
+  previousStateRefOrNull
+  lastAcceptedTransitionOrNull
+
+lastAcceptedTransitionOrNull
+  transitionRef
+  relationshipRefOrNull
+  fromLayer
+  evidenceRefs
+  carriedIdentityRefs
+~~~
+
+The current candidate deliberately does **not** carry:
+
+~~~text
+Family purpose
+Family / node / relationship sourceRefs
+node purpose
+node currentTruthRefs
+node ownerRefs
+node readingSourceRefs
+node considerationRefs
+node proofRefs
+dynamic bounded-horizon runtime helpers
+~~~
+
+Those fields/helpers were removed or held because the exact candidate had no present consumer that earned them.
+
+### Current VexBoard reality
+
+The checked-in board:
+
+~~~text
+board.vexwork.process-family-metawalk
+~~~
+
+is registered in the existing source catalog and can be resolved/opened **when its exact board ref is supplied**.
+
+At this exact candidate, no default landing control, portal path, or other non-test runtime entry supplies that ref.
+
+Therefore:
+
+~~~text
+CHECKED-IN BOARD
+  source-registered
+  source-addressable
+  source-bound to the machine Family
+
+EXECUTABLE CONSUMPTION
+  HELD
+  no current default runtime route enters this board
+
+CATALOG ADDRESSABILITY
+!= EXECUTABLE CONSUMPTION
+~~~
+
+The dynamic State-bound bounded-horizon projector is also absent/held until a real State-bearing executable consumer earns it.
+
+
 ## Human intention
 
 A fresh hosted assistant or future long-lived Vex should be able to enter incomplete work and recover enough truth to continue without reconstructing the entire trajectory from chat history.
@@ -1428,69 +1523,40 @@ immutable State snapshots
 -> CURRENT points to validated tip
 -> exact-current transition
 ~~~
-## Fresh Assurance CHANGES_REQUESTED — bounded provenance correction
+## Historical Assurance checkpoint — bounded provenance correction (superseded)
 
-Fresh Independent Assurance on exact head `95506489c3856ef416eeb6b9fc896669efd746d0` returned `CHANGES_REQUESTED` with two related findings:
+Fresh Independent Assurance on exact head `95506489c3856ef416eeb6b9fc896669efd746d0` found intermediate State/projection defects involving accumulated `State.sourceRefs` and duplicated State evidence fields.
 
-1. `ProcessFamily.State.sourceRefs` could still grow across transitions because transition formation unioned prior + current refs, and the bounded-horizon projector foregrounded that accumulated bag again.
-2. `acceptedEvidenceRefs` was only required to contain the last transition evidence, allowing historical evidence to be smuggled back into an otherwise valid CURRENT State.
+Those findings were valid for that historical candidate.
 
-Both findings are accepted.
-
-The correction is structural rather than advisory:
+The later de-dup / consumer-reality corrections superseded the intermediate representation entirely:
 
 ~~~text
-ProcessFamily.State
-  removes sourceRefs entirely
+CURRENT State
+  has no sourceRefs
+  has no acceptedEvidenceRefs
+  has no carriedIdentityRefs
 
-normalizeProcessState(...)
-  rejects sourceRefs as schema drift
+current transition evidence / identities
+  live once on lastAcceptedTransitionOrNull
 
-createProcessState(...)
-admitProcessTransition(...)
-  reject obsolete/unknown sourceRefs options
+dynamic bounded-horizon projector
+  absent / held
 
-acceptedEvidenceRefs
-  must EXACTLY equal lastAcceptedTransitionOrNull.evidenceRefs
-
-carriedIdentityRefs
-  must EXACTLY equal lastAcceptedTransitionOrNull.carriedIdentityRefs
-
-bounded-horizon projection
-  derives CURRENT source grounding from
-    ProcessFamily source
-    CURRENT node source/proof contract
-    CURRENT State evidence / identity / predecessor refs
-  and cannot consume a historical State source bag
+ProcessFamily machine
+  has no sourceRefs at Family / node / relationship scope
 ~~~
 
-This closes the remaining path by which a long-lived walk could recreate unbounded foreground context after transition-history compaction.
+Historical references below to accumulated State source bags, duplicated State evidence fields, or dynamic CURRENT provenance derivation describe earlier candidates only.
 
-Entry State is also closed structurally:
+Permanent current law:
 
 ~~~text
-previousStateRefOrNull = null
-lastAcceptedTransitionOrNull = null
-acceptedEvidenceRefs = []
-carriedIdentityRefs = []
-layer = family.entryLayer
-# FORMATION for process-family.vexwork.metawalk
-
-createProcessState(...)
-  accepts only stateRef + scopeRef
-  cannot inject transition evidence / carried identity / non-entry layer
+CURRENT_STATE != FULL_PROCESS_HISTORY
+CURRENT_TRANSITION_PROVENANCE = LAST_ACCEPTED_TRANSITION_ONLY
+HISTORICAL_CANDIDATE_SHAPE != CURRENT_SCHEMA
 ~~~
 
-Identity continuity is explicit at every transition; the transition helper no longer silently inherits prior identities when the caller omits them.
-
-Permanent:
-
-~~~text
-CURRENT_STATE_PROVENANCE != CUMULATIVE_HISTORY_BAG
-CURRENT_EVIDENCE = EXACT_CURRENT_TRANSITION_EVIDENCE
-CURRENT_SOURCE_GROUNDING = DERIVED_CURRENT_CONTEXT
-HISTORICAL_PROVENANCE = PREDECESSOR_LINEAGE / RETAINED EVIDENCE
-~~~
 ## Fresh Assurance CHANGES_REQUESTED — entry layer + movement-name closure
 
 Fresh Independent Assurance on exact head `8341a6ace9e334417d44cdd58d13d4300e4e5d55` returned two valid findings:
@@ -1507,8 +1573,7 @@ lastAcceptedTransitionOrNull = null
 -> previousStateRefOrNull = null
 -> currentNodeRef = family.entryNodeRef
 -> layer = family.entryLayer
--> acceptedEvidenceRefs = []
--> carriedIdentityRefs = []
+-> no transition evidence/identity fields exist on State
 ~~~
 
 The invariant is enforced by exported `normalizeProcessState(...)`, not only by `createProcessState(...)`, so a caller cannot forge a valid CURRENT entry State at a later Family layer.
@@ -1645,50 +1710,41 @@ Only `fromLayer` remains on the compact transition because it is predecessor-sid
 ~~~text
 DERIVABLE CURRENT SEMANTICS != DUPLICATED TRANSITION/STATE FIELDS
 ~~~
-### Static node schema was reduced to earned fields
+### Current machine node schema is intentionally minimal
 
-The first machine draft promoted several conceptual node questions into exact wire fields before the patient-zero actually used them:
+Earlier candidates promoted several conceptual/current-reading questions into mandatory node fields.
 
-~~~text
-entryPredicateRefs
-authorityRefs
-exitPredicateRefs
-heldConcernRefs
-~~~
+After the dynamic horizon runtime was held, those fields no longer had a present consumer and were removed.
 
-Those fields were removed.
-
-Why:
-
-~~~text
-relationship entryPredicateRefs
-  owns movement admission
-
-authority / live effect membrane
-  comes from current Work/provider/runtime truth
-  != static ProcessFamily node ownership
-
-exit / held concerns
-  remain useful current-node questions
-  != earned generic wire representation yet
-~~~
-
-The machine node now carries only patient-zero semantics that are actually consumed:
+The current node schema is exactly:
 
 ~~~text
 nodeRef
 label
+~~~
+
+Removed/held node metadata includes:
+
+~~~text
 purpose
 currentTruthRefs
 ownerRefs
 readingSourceRefs
 considerationRefs
 proofRefs
+entryPredicateRefs          # relationship owns movement admission instead
+authorityRefs
+exitPredicateRefs
+heldConcernRefs
+sourceRefs
 ~~~
 
-ProcessFamily provenance is owned once at Family scope through `ProcessFamily.sourceRefs`. Nodes and relationships do not duplicate that provenance.
+The broader prose questions remain useful **design questions**, but they are not frozen into the current machine wire schema without a consumer.
 
-The prose node contract remains broader because it describes questions a competent current worker must answer. That checklist is intentionally **not identical to the machine schema**.
+~~~text
+USEFUL QUESTION
+!= EARNED MACHINE FIELD
+~~~
 
 ### Fresh Assurance CHANGES_REQUESTED — provenance construction + consumer reality
 
@@ -1764,66 +1820,61 @@ top-level machine field + no consumer
 -> reject reintroduction as schema drift
 ~~~
 
-Node `purpose` remains because CURRENT/NEXT horizon consumers actually use it.
+The later consumer-reality audit removed node `purpose` as well after the dynamic horizon runtime was held and no present consumer remained.
 
-The overall human/process outcome remains available from Work/project/canonical prose rather than being duplicated into an unconsumed generic Family field.
+The overall human/process outcome and node explanations remain available from Work/project/canonical prose and the checked-in board labels rather than being duplicated into unconsumed generic machine fields.
 
 ~~~text
 HUMAN / WORK OUTCOME
 != UNUSED GENERIC MACHINE FIELD
 
-NODE PURPOSE HAS CONSUMER
-!= FAMILY PURPOSE MUST EXIST
+NODE LABEL
+  current semantic projection identity
+
+NODE PURPOSE
+  held until a real consumer earns it
 ~~~
-### ProcessFamily provenance is Family-scoped
+### Historical provenance intermediate — superseded
 
-Fresh Independent Assurance on exact head `419753596b89f63159bdf12a01e39fcf6aaab008` found that machine nodes and relationships still carried mandatory `sourceRefs` even though no ProcessFamily consumer used them and this patient-zero repeated the same provenance already owned by `ProcessFamily.sourceRefs`.
+An intermediate correction moved duplicated node/relationship provenance to `ProcessFamily.sourceRefs`.
 
-The finding is accepted.
+That was valid pressure at the time, but the only real consumer of Family-level source provenance was the dynamic horizon projector.
+
+Once that runtime was held, Family-level `sourceRefs` also became unconsumed and was removed.
 
 Current machine contract:
 
 ~~~text
-ProcessFamily.sourceRefs
-  Family-level semantic provenance
+ProcessFamily
+  no sourceRefs
 
-process node
-  no sourceRefs field
+node
+  no sourceRefs
 
-process relationship
-  no sourceRefs field
+relationship
+  no sourceRefs
 ~~~
 
-This does not remove VexBoard graph node/relationship `sourceRefs`. Those belong to the VexBoard projection schema and carry projection/evidence provenance for that separate consumer.
+VexBoard graph `sourceRefs` remain valid **VexBoard projection provenance**. They are owned by the board artifact/model and are not shadow ProcessFamily machine fields.
+
+The conceptual bounded-reading law also remains design pressure, but the current machine node has no `readingSourceRefs` field until a real reading-scope consumer exists.
 
 ~~~text
-PROCESS_FAMILY_PROVENANCE
-!= VEXBOARD_PROJECTION_PROVENANCE
+PROCESS_FAMILY_MACHINE_PROVENANCE_FIELD
+  absent
 
-FAMILY-LEVEL OWNER EXISTS
-+ NO OBJECT-LOCAL CONSUMER
--> DO NOT DUPLICATE OBJECT-LOCAL WIRE FIELDS
+VEXBOARD_PROJECTION_PROVENANCE
+  current in checked-in board artifact
+
+BOUNDED READ-NOW CONTRACT
+  held until consumer exists
 ~~~
 
-The focused proof now rejects attempts to add `sourceRefs` back to a ProcessFamily node or relationship as schema drift.
-### Read-now scope is bounded independently from provenance
+### Historical projector lesson — FURTHER route semantics (runtime held)
 
-The long formation document remains in `ProcessFamily.sourceRefs` so the origin is recoverable.
+The removed dynamic projector originally treated every node outside PREVIOUS/CURRENT/NEXT as "further", which could relabel completed history as future.
 
-It is **not** present in node `readingSourceRefs`.
-
-~~~text
-PROVENANCE SOURCE
-!= CURRENT READ-NOW SOURCE
-~~~
-
-A current node therefore reads only the bounded external source neighborhood it actually needs. Historical formation reasoning remains recoverable without automatically occupying fresh-instance context.
-
-### FURTHER route means forward-reachable, not merely unseen
-
-The first projector treated every node outside PREVIOUS/CURRENT/NEXT as "further", which could relabel completed history as future.
-
-Now:
+The corrected design lesson, retained for any future consumer, is:
 
 ~~~text
 FURTHER
@@ -1846,23 +1897,32 @@ An orphan node is invalid rather than a hidden future destination with no lawful
 
 ### VexBoard projection does not own currentness
 
-The **current executable VexBoard consumer** in this candidate is the checked-in full-map projection discovered through the existing source catalog.
+The checked-in full-map board is a **source-bound, source-registered projection artifact**.
 
-It is tested against the machine Family for semantic node labels, relationship endpoints, relationship labels, and forward-vs-correction projection kind—not only for matching IDs.
-
-The previously formed dynamic State → bounded-horizon VexBoard projector is now **held** because it had no real non-test executable consumer.
+It declares:
 
 ~~~text
-CHECKED-IN FULL MAP
-  current consumer
-
-DYNAMIC STATE-BOUND HORIZON
-  held until a real State-bearing consumer exists
-
-VEXBOARD
-  remains projection / perception
-  != process current-State owner
+derivedFromRefOrNull = process-family.vexwork.metawalk
 ~~~
+
+and focused source proof checks semantic node labels, relationship endpoints, relationship labels, and forward-vs-correction projection kind against the machine Family.
+
+However, at this exact candidate the ordinary VexBoard runtime has no default entry path that supplies:
+
+~~~text
+board.vexwork.process-family-metawalk
+~~~
+
+The generic catalog loader can open it if that exact ref is supplied, but catalog registration alone does not establish executable consumption.
+
+~~~text
+SOURCE-REGISTERED / ADDRESSABLE
+!= CURRENT EXECUTABLE CONSUMER
+~~~
+
+Therefore executable consumption of this board is **held**, just like the removed dynamic horizon runtime. No UI route is invented merely to justify the artifact.
+
+VexBoard remains projection/perception and never becomes the ProcessFamily current-State owner.
 
 ### Cross-snapshot lineage validation is deliberately held
 
@@ -1897,6 +1957,25 @@ Therefore this formation does **not** add a speculative generic successor-store/
 LOCAL STATE VALIDATION != WHOLE LINEAGE PROOF
 NO CURRENT CONSUMER != LICENSE TO MINT UNUSED FOUNDATION
 ~~~
+
+## Historical evidence versus current schema
+
+The A00x / Assurance sections below preserve the causal record of defects found and corrected.
+
+They are **not cumulative schema law**.
+
+~~~text
+CURRENT architecture section
+  owns current candidate truth
+
+historical A00x section
+  owns evidence about that historical candidate only
+
+historical field/runtime mention
+  != current field/runtime existence
+~~~
+
+A cold reader should not need to reconstruct commit chronology to know what exists now.
 
 ## Machine-readable source / live-state persistence boundary
 
@@ -1938,17 +2017,19 @@ lastAcceptedTransitionOrNull
 
 `lastAcceptedTransitionOrNull` owns the current transition evidence/identity provenance once.
 
-It does **not** duplicate evidence/identity bags and does not own a cumulative source/provenance bag. Family semantic provenance is owned once by `ProcessFamily.sourceRefs`; current reading/source grounding is derived from the ProcessFamily definition, CURRENT node contract, the last accepted transition, and the predecessor coordinate when needed.
+It does **not** duplicate evidence/identity bags and does not own a cumulative source/provenance bag.
+
+The current machine Family also owns no generic `sourceRefs` or read-now metadata fields. Projection provenance remains in the checked-in VexBoard artifact; dynamic current-reading grounding remains held until a real consumer earns that contract.
 
 Exact-key validation intentionally rejects ad-hoc provider/repository fields. Mutable world truth remains owned by its rightful source and is re-grounded before a dependent next effect.
 
-The machine definition is now the semantic owner of the MetaWalk topology. The existing VexBoard full map declares:
+The machine definition is the semantic owner of the MetaWalk topology. The checked-in VexBoard full-map artifact declares:
 
 ~~~text
 derivedFromRefOrNull = process-family.vexwork.metawalk
 ~~~
 
-and its sourceRefs descend to the machine definition.
+and its VexBoard-owned sourceRefs descend to the machine definition. This establishes source binding, not current runtime consumption.
 
 ~~~text
 PROCESS FAMILY DEFINITION
@@ -2008,7 +2089,7 @@ transition admission           FAIL-CLOSED
 Family-local vocabulary        PASS
 compact State lineage          PASS
 full-map Family lineage        PASS
-source-catalog discovery       PASS
+source-catalog addressability  PASS
 object-local provenance        REJECTED
 unused Family purpose          REJECTED
 ~~~
@@ -2214,7 +2295,7 @@ Only after that pressure should Process Registry promotion, the pink VexWork Onb
 
 ## Current formation boundary
 
-This candidate changes only VexWork/VexBoard process semantics, shared effect-free projection code, architecture guidance, and its read-only map/test surface.
+This candidate changes only the ProcessFamily machine contract, architecture guidance, the checked-in source-addressable VexBoard map/catalog entry, and their focused tests. Dynamic effect-free horizon projection code is not current candidate surface.
 
 It does not mutate:
 
