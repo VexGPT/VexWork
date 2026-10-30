@@ -822,6 +822,215 @@ after SourceOwner exit + reconciliation:
   expose the next earnable lifecycle/currentness node
 ~~~
 
+## Second pressure walk — ThemeMode feature evolution
+
+The second pressure walk uses accepted VexLife-Android source rather than a hypothetical feature plan.
+
+Relevant accepted progression:
+
+~~~text
+PR #188
+  ThemeMode production realization
+  -> Direct Family Select semantics
+  -> Family-owned DisplayState
+  -> VexThemePresentation
+  -> one VexLifeTheme boundary
+  -> inherited target presentation
+
+PR #202
+  ThemeMode durability
+  -> same ThemeModeFamily semantic owner
+  -> Store relationship
+  -> explicit selection saves durable Light/Dark
+  -> new process observes stored value through the same StateRelay boundary
+
+PR #195
+  ThemeMode Feature Walk
+  -> dedicated installed Journey
+  -> proof/traceability over accepted production behavior
+  -> no new ThemeMode semantic state or production owner
+
+PR #194
+  Journey observation reuse
+  -> adjacent shared evidence-coordinate refinement
+  -> removes same-walk retranscription
+  -> no ThemeMode production behavior change
+~~~
+
+This trajectory validates the three-coordinate model and adds one important non-collapse.
+
+### Production realization scope
+
+PR #188 can be read as a feature-scope walk:
+
+~~~text
+INTENTION
+  existing Debug Menu theme control should execute accepted ThemeMode meaning
+
+SEMANTIC OWNERSHIP / CONTRACT
+  ThemeMode = NotSet | Light | Dark
+  ThemeModeFamily.Control.Select(mode)
+  NotSet is unresolved State, not a selectable mode
+  current two-value target form != Boolean semantic contract
+
+DISPLAY CONTRACT
+  ThemeMode current State
+  -> ThemeModeFamily.DisplayState
+  -> VexThemePresentation
+
+TARGET REALIZATION
+  VexLifeApp
+  -> VexLifeTheme(themeModeFamily)
+  -> inherited presentation continuity
+
+LEAF UI
+  Debug Menu chooses which registered Control receives current presentation
+  UI does not decide what Dark / Light means
+
+FOCUSED PROOF
+  ThemeModeTest
+  VexLifeSessionTest
+  VexMapsAppearancePreferenceTest
+
+SOURCE OWNER / ASSURANCE / INTEGRATION
+  exact candidate proof remains distinct from later acceptance
+~~~
+
+This is the process-shaping benefit the MetaWalk is intended to preserve:
+
+~~~text
+semantic contract first
+-> expose target-consumable relationship
+-> realize UI from that relationship
+-> test the semantic and target seams separately
+~~~
+
+### Durability is a new scope that reuses the same owner
+
+PR #202 touches ThemeModeFamily again, but the human outcome is different:
+
+~~~text
+production presentation scope
+  "ThemeMode means and renders correctly now"
+
+durability scope
+  "an explicit ThemeMode selection survives process recreation"
+~~~
+
+The durability scope earns a new relationship:
+
+~~~text
+Control.Select(Light|Dark)
+-> CURRENT semantic State admission
+-> Store Save
+
+new process
+-> Store observation
+-> same Family StateRelay currentness boundary
+-> restored CURRENT ThemeMode
+~~~
+
+The existing Family remains the rightful semantic owner. Reusing it does not mean the production-realization
+node was incomplete or failed.
+
+Permanent candidate distinction:
+
+~~~text
+SAME SEMANTIC OWNER TOUCHED UNDER NEW SCOPE
+!= SAME PROCESS NODE REOPENED
+~~~
+
+This validates **scope** as a real coordinate rather than decorative grouping.
+
+It also validates the working \`ENABLES\` relationship at a larger scale:
+
+~~~text
+accepted ThemeMode semantic/production foundation
+-- ENABLES -->
+ThemeMode durability
+~~~
+
+The later scope may descend into some of the same reusable process-node kinds while carrying a different
+human intention and proof contract.
+
+### Feature Walk is a depth revisit, not production reimplementation
+
+PR #195 adds a dedicated installed Journey and completion/checkpoint traceability after production source
+is accepted.
+
+~~~text
+accepted production behavior
+-> Journey path
+-> Feature-Walk binding
+-> proof backlinks to existing focused tests
+~~~
+
+The PR explicitly does not become ThemeMode semantic State, Debug Menu runtime ownership, or a production
+feature registry.
+
+That is a clean example of:
+
+~~~text
+same feature scope
++ later proof / traceability depth
+!= production behavior rewrite
+~~~
+
+The process model therefore should be able to say:
+
+~~~text
+scope = ThemeMode production realization
+node  = lived / installed human walk
+depth = proof / traceability
+~~~
+
+while keeping the already-accepted semantic and implementation nodes compressed into prior accepted
+results.
+
+### Adjacent refinement should not be swallowed by the feature scope
+
+PR #194 removes retranscription between Journey observation and ScreenCrawler evidence:
+
+~~~text
+Journey execution
+-> VexJourneyStepObservation
+-> ScreenCrawler evidence identity
+~~~
+
+It preserves both owners and changes only the carriage of an already-formed coordinate.
+
+The pressure here is related to the ThemeMode walk but the source change belongs to a reusable Journey /
+ScreenCrawler relationship. It should not automatically become a ThemeMode child node merely because
+ThemeMode exposed the pressure.
+
+This validates another planning distinction:
+
+~~~text
+WORK DISCOVERED WHILE WALKING A SCOPE
+!= WORK OWNED BY THAT SCOPE
+~~~
+
+The Workgraph / discovered-work posture remains the right place to preserve such adjacent work without
+widening the active feature.
+
+### MetaWalk refinement earned by this pressure
+
+The second walk confirms:
+
+1. **scope identity is operationally meaningful** — it separates a new outcome using the same semantic
+   owner from a correction/reopen of an old process node;
+2. **ENABLES can exist at feature/scope scale** without implying parent/child Work identity;
+3. **depth revisit is real** — Feature Walk proof can revisit accepted production meaning without
+   re-authoring it;
+4. **process decomposition should follow truth dependencies** — ThemeMode UI became simpler because
+   Family and display contracts were established before the target leaf consumed them;
+5. **tests are relationship-specific** — semantic Family tests, session/action routing tests,
+   presentation tests, persistence tests and Journey proof each answer different questions;
+6. **adjacent reusable refinement remains separately owned** even when one feature walk discovers it.
+
+No fourth coordinate is earned by this specimen. Scope × process node × depth remains sufficient for the
+observed ThemeMode evolution.
+
 ## Fresh-instance resume packet
 
 A future projection should be able to give a fresh instance only the bounded packet needed now:
