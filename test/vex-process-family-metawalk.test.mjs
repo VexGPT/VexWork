@@ -30,7 +30,6 @@ function node(nodeRef, label) {
     readingSourceRefs: ['source.' + nodeRef + '.read-now'],
     considerationRefs: ['consideration.' + nodeRef],
     proofRefs: ['proof.' + nodeRef],
-    sourceRefs: ['source.' + nodeRef],
   };
 }
 
@@ -76,7 +75,6 @@ function familyFixture() {
         toRef: 'node.contract',
         label: 'pressure grounded',
         entryPredicateRefs: ['predicate.contract.allowed'],
-        sourceRefs: ['source.relationship.recover-contract'],
       },
       {
         relationshipRef: 'rel.contract-implement',
@@ -85,7 +83,6 @@ function familyFixture() {
         toRef: 'node.implement',
         label: 'contract accepted',
         entryPredicateRefs: ['predicate.implementation.allowed'],
-        sourceRefs: ['source.relationship.contract-implement'],
       },
       {
         relationshipRef: 'rel.implement-contract-gap',
@@ -94,7 +91,6 @@ function familyFixture() {
         toRef: 'node.contract',
         label: 'contract gap',
         entryPredicateRefs: ['predicate.contract-gap.confirmed'],
-        sourceRefs: ['source.relationship.implement-contract-gap'],
       },
       {
         relationshipRef: 'rel.implement-prove',
@@ -103,7 +99,6 @@ function familyFixture() {
         toRef: 'node.prove',
         label: 'implementation formed',
         entryPredicateRefs: ['predicate.proof.allowed'],
-        sourceRefs: ['source.relationship.implement-prove'],
       },
     ],
     sourceRefs: [sourcePath],
@@ -217,13 +212,23 @@ test('MetaWalk dogfoods scope x node x layer against its real machine definition
 });
 
 
-test('MetaWalk keeps formation history as provenance, not mandatory read-now scope', () => {
+test('MetaWalk keeps provenance at Family scope and read-now scope bounded', () => {
   const family = normalizeProcessFamily(read(familyPath));
 
   assert.equal(
-    family.nodes.every((entry) => entry.sourceRefs.includes(sourcePath)),
+    family.sourceRefs.includes(sourcePath),
     true,
-    'formation source remains recoverable provenance',
+    'formation source remains recoverable Family-level provenance',
+  );
+  assert.equal(
+    family.nodes.every((entry) => !Object.hasOwn(entry, 'sourceRefs')),
+    true,
+    'machine nodes must not duplicate Family-level provenance',
+  );
+  assert.equal(
+    family.relationships.every((entry) => !Object.hasOwn(entry, 'sourceRefs')),
+    true,
+    'machine relationships must not duplicate Family-level provenance',
   );
   assert.equal(
     family.nodes.every((entry) => !entry.readingSourceRefs.includes(sourcePath)),
@@ -319,7 +324,6 @@ test('ProcessFamily owns its layer vocabulary instead of inheriting MetaWalk lay
       toRef: 'node.beta',
       label: 'advance',
       entryPredicateRefs: [],
-      sourceRefs: ['source.relationship.alpha-beta'],
     }],
     sourceRefs: [sourcePath],
   });
@@ -669,6 +673,25 @@ test('bounded-horizon projector rejects a scope projection that does not match c
   );
 });
 
+
+
+test('ProcessFamily rejects unearned per-node and per-relationship provenance fields', () => {
+  const schema = familyFixture();
+
+  const nodeLocal = structuredClone(schema);
+  nodeLocal.nodes[0].sourceRefs = ['source.node-local'];
+  assert.throws(
+    () => normalizeProcessFamily(nodeLocal),
+    /process node schema drift/,
+  );
+
+  const relationshipLocal = structuredClone(schema);
+  relationshipLocal.relationships[0].sourceRefs = ['source.relationship-local'];
+  assert.throws(
+    () => normalizeProcessFamily(relationshipLocal),
+    /process relationship schema drift/,
+  );
+});
 
 test('ProcessFamily definition fails closed on identity, topology and movement contradictions', () => {
   const schema = familyFixture();
@@ -1205,7 +1228,6 @@ test('initial bounded horizon has no PREVIOUS slot and may have no FURTHER route
       toRef: 'node.finish',
       label: 'finish when earned',
       entryPredicateRefs: ['predicate.finish.allowed'],
-      sourceRefs: ['source.relationship.start-finish'],
     }],
     sourceRefs: [sourcePath],
   });
