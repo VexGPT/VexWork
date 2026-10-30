@@ -173,7 +173,7 @@ export function projectProcessHorizonBoard({
   });
   nodes.push(annotationNode(
     currentAnnotationRef,
-    'Depth: ' + horizon.depth + ' · ' + horizon.current.purpose,
+    'Layer: ' + horizon.layer + ' · ' + horizon.current.purpose,
     currentNodeRef,
     currentSources,
   ));
