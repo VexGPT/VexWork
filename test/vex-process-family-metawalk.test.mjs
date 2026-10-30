@@ -142,6 +142,36 @@ test('machine MetaWalk ProcessFamily owns the full-map VexBoard semantic shape',
     graph.relationships.every((entry) => entry.sourceRefs.includes(familyPath)),
     true,
   );
+
+  const semanticNodes = new Map(
+    graph.nodes
+      .filter((entry) => ['SCENE', 'PROCESS'].includes(entry.kind))
+      .map((entry) => [entry.nodeRef, entry]),
+  );
+  for (const processNode of family.nodes) {
+    const projected = semanticNodes.get(processNode.nodeRef);
+    assert.ok(projected, processNode.nodeRef);
+    assert.equal(
+      projected.label.replace(/^\d+\.\s+/, ''),
+      processNode.label,
+      'VexBoard presentation may number a node but may not rename its semantic meaning',
+    );
+  }
+
+  const projectedRelationships = new Map(
+    graph.relationships.map((entry) => [entry.relationshipRef, entry]),
+  );
+  for (const relationship of family.relationships) {
+    const projected = projectedRelationships.get(relationship.relationshipRef);
+    assert.ok(projected, relationship.relationshipRef);
+    assert.equal(projected.fromRef, relationship.fromRef);
+    assert.equal(projected.toRef, relationship.toRef);
+    assert.equal(projected.labelOrNull, relationship.label);
+    assert.equal(
+      projected.kind,
+      family.forwardMovementClasses.includes(relationship.movementClass) ? 'FLOW' : 'TRANSITION',
+    );
+  }
 });
 
 test('MetaWalk dogfoods scope x node x layer against its real machine definition', () => {
