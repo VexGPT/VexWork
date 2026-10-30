@@ -553,6 +553,14 @@ test('VexBoard how-to-begin map exposes the accepted MetaWalk as a read-only onb
   assert.equal(selfMap.title, 'VexBoard — how to begin');
   assert.equal(selfMap.mode, 'READ_ONLY_SOURCE');
 
+  const createNew = graph.nodes.find((node) => node.nodeRef === 'node.vexboard.create-new');
+  assert.ok(createNew, 'existing Create new control must remain present');
+  assert.deepEqual(
+    createNew.sourceRefs,
+    ['vexboard/index.html'],
+    'MetaWalk onboarding must not inflate unrelated Create new provenance',
+  );
+
   const portal = graph.nodes.find((node) => node.nodeRef === 'node.vexboard.vexwork-metawalk');
   assert.ok(portal, 'how-to-begin map must expose one MetaWalk onboarding portal');
   assert.equal(portal.kind, 'PORTAL');
