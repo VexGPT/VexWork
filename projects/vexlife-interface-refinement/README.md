@@ -3379,6 +3379,160 @@ A004_PRODUCT_BYTES
 = A002_PRODUCT_BYTES
 ~~~
 
+### F2 A004 — local candidate formed; full repository check exposed remaining F2 convergence work
+
+F2 A004 is the first attempt that formed the complete local F2 candidate and carried it through focused
+validation, Blueprint validation, Source Manifest regeneration/validation, exact path membrane proof,
+local signed commit and clean-worktree proof.
+
+~~~text
+outer RETURN sha256
+  9d119a8e2863d132af00d4dddf00d4248aefd75d58ef6e1313234d91c64b6b27
+
+retained inner canonical RETURN sha256
+  89c4170f4d816775491f9c25fc9008979999d70fff241f1c9fe286a17d0d16e4
+
+local candidate head
+  fd01ee22f56f7643340aefd7209b1549b9eb6d2f
+
+local candidate tree
+  f44cc518f9979d5f3ce7d37580a2865b0c270fde
+
+inner disposition
+  SAFE_FAILURE
+
+first substantive failure
+  run.full-check
+  npm run check
+  UNACCEPTED_EXIT_CODE:1
+~~~
+
+The outer consumer later reported `RETURN_SELECTED_SOURCE_CANDIDATE_REPOSITORYREF_MISMATCH` because
+the inner result stopped before the review-snapshot step, leaving `selected-source-files.json` at
+`NOT_REACHED` with no repositoryRef. That outer consumer projection does **not** erase the retained
+inner transaction: its inner receipts prove local source mutation, local branch creation, signed commit
+and tests occurred, while push/PR/publication did not.
+
+The repository-wide failure resolved into six exact tests:
+
+~~~text
+stale pre-F2 static assertions
+  test/browser-companion-bridge.test.mjs
+  test/browser-companion-vessel-binding.test.mjs
+  test/browser.test.mjs
+  test/ux-evolution-conversation.test.mjs
+
+real-browser fixtures lacking the now-required current owner observations
+  test/experience-review-guide-disclosure.test.mjs
+  test/experience-review-kit.test.mjs
+~~~
+
+The four static tests still asserted the behavior F2 intentionally removes: independent availability /
+Conversation refresh as the browser sequencing owner and Send-triggered observation. Reintroducing those
+assertions would recreate the causal defect rather than test the accepted convergence contract.
+
+The two browser-review tests used a production server fixture with no Companion currentness or availability
+providers. Before F2 they could traverse that scope without observing it. F2 now correctly observes the
+selected Companion scope, so the fixture's provider-unavailable 503 became visible to the review adapter.
+A005 keeps 503s meaningful and leaves the review adapter strict; those fixtures instead receive bounded,
+no-effect current owner projections.
+
+A004 review also exposed two candidate gaps that belong in F2 rather than later assurance:
+
+~~~text
+1 directory-form /reference/browser/
+  resolved to index.html
+  but source-meta injection only matched the literal /reference/browser/index.html request spelling
+
+2 guarded Conversation projection
+  rejected stale successful responses
+  but its catch path could still write UNAVAILABLE after a newer observation generation had won
+~~~
+
+A005 corrects both locally and moves the six repository tests with the F2 sequencing they actually consume.
+
+~~~text
+attempt
+  attempt.vexlife.interface-currentness-browser-realization.f2.a005.0ff225fd8354
+
+branch
+  vxg-interface-currentness-browser-realization-a005
+
+outer package sha256
+  df3cfb3049984115103a82ea992058ff48c8fde2a6abe94488c0c5b6fd36cd22
+
+inner package sha256
+  591d9ec855973b60ee5a920988a47bb2edcc29f6067a7fb4ee3077d7fb6c290d
+
+inner package schema
+  vex.relay.input-package/v2
+
+formedAt
+  2026-10-30T04:47:10Z
+
+expiresAt
+  2026-10-31T04:47:10Z
+
+authored paths
+  16
+
+generated Source Manifest buckets
+  16
+
+exact changed-path membrane
+  32
+~~~
+
+A005's focused gate now includes all original F2-focused suites **and all six A004 repository failures**
+before the full repository check. Its new F2 proof additionally requires directory-form source-meta
+injection and stale-exception rejection before retained Conversation mutation.
+
+Provider currentness at formation:
+
+~~~text
+VexLife main
+  92e810c91b09e7c74a8e1c7da8d2fade7e070c3a
+
+A005 remote branch
+  ABSENT
+
+open-PR overlap across the exact 32-path membrane
+  NONE
+
+Vextreme-SDK main
+  9be6c8c3c169e8b98b04c7821b300f84cb8342de
+
+Relay contract
+  source.vexrelay.current-contract/v1
+~~~
+
+Permanent:
+
+~~~text
+OUTER_CONSUMER_PROJECTION_FAILURE
+!= RETAINED_INNER_TRANSACTION_EFFECTS
+
+LOCAL_COMMIT
++ NO_PUSH
++ REMOTE_BRANCH_ABSENT
+-> EVIDENCE_ONLY_LOCAL_CANDIDATE
+-> FRESH_ATTEMPT_FROM_ACCEPTED_MAIN
+
+STALE_PRE_F2_TEST
+!= REQUIRED_PRODUCT_ROLLBACK
+
+FIXTURE_PROVIDER_ABSENCE
+!= PRODUCTION_PROVIDER_SEMANTICS
+
+SOURCE_META_LITERAL_URL_MATCH
+!= RESOLVED_DOCUMENT_IDENTITY
+
+STALE_SUCCESS_GUARD
+without
+STALE_EXCEPTION_GUARD
+!= COMPLETE_GENERATION_FENCE
+~~~
+
 ### Foundation-to-interface sequence
 
 ~~~text
