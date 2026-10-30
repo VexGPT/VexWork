@@ -70,11 +70,11 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-10-29T20:01:00.000Z",
-      "updatedAt": "2026-10-30T03:19:00.000Z",
+      "updatedAt": "2026-10-30T03:32:12.000Z",
       "workRef": "work.vexlife.interface-refinement.interface-compound-relay",
       "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
       "label": "Current — Interface Compound Relay convergence",
-      "purpose": "Finish Interface Compound Relay foundation-first from the corrected F0/F1 foundation: VexLife PR #963 is published at exact head a5cbb64b29111a99c4b98901e04ac7000538d3b0 / tree e0dec73f00a10878ef34b18233a95f2db590de02. A004 corrected the generic convergence validator, exact committed npm run check passed, the retained inner RETURN reached HOSTED_VALIDATION_PENDING, provider reconciliation confirms the non-force push, and fresh same-conversation read-only semantic Assurance is CLEAR_ON_EXACT_HEAD. The outer RETURN failed only because the current Relay consumer collapsed the 4-path correction commit delta with the 20-path cumulative candidate; do not replay A004. Current-main lifecycle/integration acceptance remains separate before F2. F2 must implement the strict causal sequence owner observations -> current-generation retained Compound InputState -> derived OutputState -> full Compound State (inputState + outputState) -> rightful Family.currentState + later Control -> Act/effect owner -> changed world -> fresh observation, so no effect receipt or subsystem READY can directly assign Interface READY.",
+      "purpose": "Finish Interface Compound Relay foundation-first from the corrected F0/F1 foundation: VexLife PR #963 is published at exact head a5cbb64b29111a99c4b98901e04ac7000538d3b0 / tree e0dec73f00a10878ef34b18233a95f2db590de02. A004 corrected the generic convergence validator, exact committed npm run check passed, the retained inner RETURN reached HOSTED_VALIDATION_PENDING, provider reconciliation confirms the non-force push, and fresh same-conversation read-only semantic Assurance is CLEAR_ON_EXACT_HEAD. The outer RETURN failed only because the current Relay consumer collapsed the 4-path correction commit delta with the 20-path cumulative candidate; do not replay A004. Current-main lifecycle/integration acceptance remains separate before F2. A005 is formed as a read-only/current-composition host proof against synthetic merge 0e2d2bce875387c0c507fd05a4513e45c90993ed (parents current main e7b339e59619c36f847ce00647e45770b9597135 + cleared branch head a5cbb64b29111a99c4b98901e04ac7000538d3b0); consume its canonical RETURN before lifecycle acceptance. F2 must implement the strict causal sequence owner observations -> current-generation retained Compound InputState -> derived OutputState -> full Compound State (inputState + outputState) -> rightful Family.currentState + later Control -> Act/effect owner -> changed world -> fresh observation, so no effect receipt or subsystem READY can directly assign Interface READY.",
       "workClass": "TASK",
       "state": "RUNNING",
       "priorityClass": "IMMEDIATE",
@@ -172,7 +172,9 @@
         "github.commit.vexlife.e7b339e59619c36f847ce00647e45770b9597135",
         "relay.return.vexlife.interface-currentness-foundation-correction.a004.outer.sha256.ac0eb20cb44042f7e7a77bdc4f338ffea366b39597f392d26d236e1d64f90ff3",
         "relay.return.vexlife.interface-currentness-foundation-correction.a004.inner.sha256.0d4363b0f7e13876a6664238ae67921f48e586d23a5c5e82401588b285f92ba3",
-        "source.vexrelay.current-contract/v1"
+        "source.vexrelay.current-contract/v1",
+        "relay.package.vexlife.interface-currentness-f0-f1-current-main-composition.a005.sha256.6c6e43065151d926615ddcdea9384e5bfb1ce67f2091834b3300fdf3cafef6ab",
+        "github.commit.vexlife.synthetic-merge-preview.0e2d2bce875387c0c507fd05a4513e45c90993ed"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
@@ -1201,7 +1203,9 @@
     "github.commit.vexlife.e7b339e59619c36f847ce00647e45770b9597135",
     "relay.return.vexlife.interface-currentness-foundation-correction.a004.outer.sha256.ac0eb20cb44042f7e7a77bdc4f338ffea366b39597f392d26d236e1d64f90ff3",
     "relay.return.vexlife.interface-currentness-foundation-correction.a004.inner.sha256.0d4363b0f7e13876a6664238ae67921f48e586d23a5c5e82401588b285f92ba3",
-    "source.vexrelay.current-contract/v1"
+    "source.vexrelay.current-contract/v1",
+    "relay.package.vexlife.interface-currentness-f0-f1-current-main-composition.a005.sha256.6c6e43065151d926615ddcdea9384e5bfb1ce67f2091834b3300fdf3cafef6ab",
+    "github.commit.vexlife.synthetic-merge-preview.0e2d2bce875387c0c507fd05a4513e45c90993ed"
   ],
   "formedAt": "2026-10-25T01:23:08.000Z"
 }
