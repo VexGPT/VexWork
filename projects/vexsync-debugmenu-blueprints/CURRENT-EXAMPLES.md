@@ -218,6 +218,84 @@ b6d9dd4876132fc408f0eacd2bb6b5b0d56e009f
 
 <!-- [VXG RealForever][VEXSYNC][THEMEMODE][LIVED][PROCESS-DEATH-PERSISTENCE-FAIL] -->
 
+### StateStore dependency observation — simpler StateRelay ownership survives pressure
+
+The next implementation pressure did not earn a new Connection/observer object.
+
+Historical #192 had already pressure-tested a State-shaped Store:
+
+~~~text
+observableState
+get()
+save(State)
+forget()
+~~~
+
+The clean Direct-Family foundation had retained only `save(State)`. Victor challenged the extra observer
+layer proposed during the lived persistence follow-up:
+
+> dependencies get observed in the Relay layer
+
+That simpler ownership survived source descent and implementation pressure.
+
+Current PR #201:
+
+~~~text
+VexFamily.Store<State>
+  save(State)
+
+VexFamily.StateStore<State>
+  Store<State>
+  observableState
+  get()
+  forget()
+
+StateStore.observableState
+-> execution lifetime custody
+-> observeStore(CURRENT, stored)
+-> admitCurrent(...)
+-> same StateRelay
+~~~
+
+No Store-to-UI observer, session-owned observer, or second semantic-State holder was added.
+
+One pre-proof issue was found and corrected without changing that model: diagnostic `SourceRef` could
+not serve as uniqueness identity for two same-class live Family instances. Observation custody now uses
+independent runtime occurrences; `InstanceId` distinguishes them.
+
+Proof on exact head `082c5bd4cecb67a711ccd2a4ea8523c02b6eb5f2`:
+
+~~~text
+SourceOwner A002 = PASS
+  focused VexFamilyHighConfidenceTest PASS
+  vexVerifyJvm PASS
+  exact seven paths/head/tree/blobs PASS
+  three DCO-clean commits PASS
+  review snapshot 7 selected / 0 omitted
+  findings 0
+
+Independent Assurance = CLEAR_ON_EXACT_HEAD
+~~~
+
+This is a proved/clear Android foundation candidate, not accepted Android main and not ThemeMode process-death
+completion. The canonical VexLife durability representation remains the next source edge.
+
+Evidence:
+
+~~~text
+github.comment.vexlife-android.pr201.6513404794
+github.review.vexlife-android.pr201.5707384411
+
+outer RETURN
+6523c372b3b9db931bbdabc8f5cb6dd2cc18d041c8c1e74a44302fd5a03ab2f0
+
+inner RETURN
+2dc93a2a54bf9b6bf976fdcc4f1d2fcafe6ff99db0afb9b8b91e465b290bf2a8
+~~~
+
+<!-- [VXG RealForever][VEXSYNC][THEMEMODE][PR201][STATESTORE-DEPENDENCY][PROVED-CLEAR] -->
+
+
 
 
 ## Status

@@ -185,6 +185,77 @@ verification remain separate effects.
 
 <!-- [VXG RealForever][VEXSYNC][THEMEMODE][PR195][LIVED-PERSISTENCE-FAIL][CURRENT] -->
 
+### StateRelay / StateStore foundation — PR #201 proved and cleared
+
+Victor's simpler ownership model has now survived implementation, exact-host proof, and fresh semantic review:
+
+~~~text
+Family durable State dependency
+-> StateStore.observableState
+-> execution-owned observation lifetime
+-> Family.observeStore(CURRENT, stored)
+-> concrete Family semantic decision
+-> admitCurrent(...)
+-> same serialized StateRelay
+-> Family.currentState / states
+~~~
+
+The foundation deliberately does not add another Connection/observer owner.
+
+Exact Android candidate:
+
+~~~text
+PR #201
+base = b25a291d4b464f35fae67d3b45244704846cae63
+head = 082c5bd4cecb67a711ccd2a4ea8523c02b6eb5f2
+tree = 00d94542961fdc1bc32acdbd00a30e4257246a2d
+paths = 7 exact
+commits = 3 DCO-clean
+
+SourceOwner A002
+  PASS
+
+Fresh Independent Assurance
+  CLEAR_ON_EXACT_HEAD
+~~~
+
+The proof also protects the identity distinction discovered during pre-proof review:
+
+~~~text
+SourceRef
+  = diagnostic source identity
+
+InstanceId
+  = exact runtime execution occurrence
+
+two live same-class Families
++ two distinct StateStores
+-> independent observation custody
+-> each Store observation enters only its own StateRelay
+~~~
+
+This closes the Android foundation question needed by ThemeMode persistence. It does **not** itself fix
+the lived process-death defect and it does not make PR #201 accepted main.
+
+The next source edge therefore remains the portable owner:
+
+~~~text
+VexSync earned durable-selection meaning
+-> canonical VexLife ThemeMode / StateStore representation
+-> accepted canonical source
+-> Android ThemeMode Store realization using the cleared StateRelay dependency seam
+-> focused persistence proof
+-> swipe-kill / process-recreation lived verification
+-> reverse trace to the same ThemeMode meaning
+~~~
+
+`repo.vexlife` is now a material repository relation for this Work item. That relation is navigation,
+not cross-repository mutation authority; VexLife source work still requires that repository's own current
+culture, claim and lifecycle.
+
+<!-- [VXG RealForever][VEXSYNC][THEMEMODE][PR201][STATESTORE-STATE-RELAY][PROVED-CLEAR][CURRENT] -->
+
+
 ## Human outcome
 
 Use one real Debug Menu feature request to discover a reusable feature-building process that Victor + AI

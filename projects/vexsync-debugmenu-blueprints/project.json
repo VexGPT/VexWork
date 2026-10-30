@@ -8,7 +8,8 @@
   ],
   "repositoryRefs": [
     "repo.vexwork",
-    "repo.vexlife-android"
+    "repo.vexlife-android",
+    "repo.vexlife"
   ],
   "sourceRefs": [
     "projects/vexsync-debugmenu-blueprints/README.md",
@@ -82,7 +83,13 @@
     "github.commit.vexlife.b6d9dd4876132fc408f0eacd2bb6b5b0d56e009f",
     "repo.vexlife:blueprint/vexlife.blueprint.json",
     "repo.vexlife:blueprint/fragments/state-domains.json",
-    "repo.vexlife:src/core/portable-behavior-contract.mjs"
+    "repo.vexlife:src/core/portable-behavior-contract.mjs",
+    "github.pull.vexlife-android.201",
+    "github.commit.vexlife-android.082c5bd4cecb67a711ccd2a4ea8523c02b6eb5f2",
+    "github.comment.vexlife-android.pr201.6513404794.sourceowner-a002-pass",
+    "github.review.vexlife-android.pr201.5707384411.assurance-clear",
+    "evidence.vexsync.pr201.sourceowner.a002.return.sha256.6523c372b3b9db931bbdabc8f5cb6dd2cc18d041c8c1e74a44302fd5a03ab2f0",
+    "evidence.vexsync.pr201.sourceowner.a002.inner-return.sha256.2dc93a2a54bf9b6bf976fdcc4f1d2fcafe6ff99db0afb9b8b91e465b290bf2a8"
   ],
   "formedAt": "2026-10-26T07:26:46.000Z"
 }
