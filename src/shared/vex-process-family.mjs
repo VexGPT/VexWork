@@ -41,10 +41,6 @@ function refs(values, label, { allowEmpty = true } = {}) {
   return result.sort(compareCanonicalText);
 }
 
-function unionRefs(values, label, options = {}) {
-  return refs([...new Set(values)], label, options);
-}
-
 function orderedValues(values, label, { allowEmpty = false } = {}) {
   assert(Array.isArray(values), label + ' must be an array');
   if (!allowEmpty) assert(values.length > 0, label + ' must be non-empty');
@@ -124,7 +120,6 @@ export function normalizeProcessFamily(input) {
   exactKeys(input, [
     'schemaVersion',
     'familyRef',
-    'purpose',
     'entryNodeRef',
     'layers',
     'entryLayer',
@@ -201,7 +196,6 @@ export function normalizeProcessFamily(input) {
   return freeze({
     schemaVersion: PROCESS_FAMILY_SCHEMA,
     familyRef,
-    purpose: text(input.purpose, 'ProcessFamily.purpose'),
     entryNodeRef,
     layers,
     entryLayer,
