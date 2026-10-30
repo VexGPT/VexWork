@@ -1116,7 +1116,7 @@ test('transition formation rejects unknown relationships, empty evidence and no-
       carriedIdentityRefs: [],
       nextStateRef: 'state.reject.noop-layer',
     }),
-    /must change node or layer/,
+    /relationship-free layer transition must change layer/,
   );
 });
 
