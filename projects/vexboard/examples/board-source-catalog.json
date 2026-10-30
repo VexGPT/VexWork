@@ -75,6 +75,14 @@
         "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
         "repo.vexlife-android:architecture/behavior/src/test/kotlin/com/vextreme/vexlife/android/behavior/VexFamilyHighConfidenceTest.kt"
       ]
+    },
+    {
+      "boardRef": "board.vexwork.process-family-metawalk",
+      "location": "./vexwork-process-family-metawalk.board.json",
+      "sourceRefs": [
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
+        "projects/vexboard/examples/vexwork-process-family-metawalk.board.json"
+      ]
     }
   ],
   "sourceRefs": [
