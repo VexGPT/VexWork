@@ -1130,7 +1130,7 @@ VexProcessFamily.State          # working name
   current scope
   current node
   current depth
-  accepted transition/evidence references required for continuity
+  previous State reference + last accepted transition/evidence required for continuity
 
 incoming current observations
   Work / repository / provider / runtime / authority truth
@@ -1324,6 +1324,81 @@ do not use ProcessInstance naming where runtime processInstanceRef already means
 This is enough to define the input contract for a future bounded-horizon projector without yet defining
 that projector's wire schema.
 
+## Pre-assurance continuity correction — current State must stay bounded
+
+A002 repository proof passed, but a fresh builder-side semantic audit found one continuity defect before Independent Assurance:
+
+~~~text
+current implementation:
+  every ProcessFamily.State copied transitionHistory from process entry
+
+long-lived consequence:
+  current State grows with every process movement
+  fresh continuation implicitly carries the whole walk
+
+intended architecture:
+  CURRENT State stays bounded
+  historical lineage remains recoverable by predecessor State references
+~~~
+
+This is a contract defect, not a repository-proof failure. A002 remains valid evidence for the exact pre-correction candidate; changing the State model creates a new immutable candidate that requires fresh affected proof.
+
+The corrected current-State shape is:
+
+~~~text
+ProcessFamily.State
+  stateRef
+  familyRef
+  scopeRef
+  currentNodeRef
+  depth
+
+  previousStateRefOrNull
+  lastAcceptedTransitionOrNull
+
+  acceptedEvidenceRefs
+    evidence directly grounding THIS State
+    != cumulative process history
+
+  carriedIdentityRefs
+    exact continuity identities required by THIS State
+    preserved by default across transition
+    explicitly replaceable/prunable
+
+  sourceRefs
+~~~
+
+Transition formation therefore behaves as:
+
+~~~text
+State N
++ admitted relationship / depth revisit
++ transition evidence
+-> State N+1
+
+where:
+  State N+1.previousStateRefOrNull = State N.stateRef
+  State N+1.lastAcceptedTransitionOrNull = exact transition N -> N+1
+  State N+1.acceptedEvidenceRefs = current transition evidence
+  older accepted history remains reachable through predecessor snapshots
+~~~
+
+Permanent:
+
+~~~text
+CURRENT_STATE != FULL_PROCESS_HISTORY
+PREDECESSOR_LINEAGE != COPIED_HISTORY_ARRAY
+COMPLETED_TRANSITION_EVIDENCE != PERMANENT_FOREGROUND_CONTEXT
+~~~
+
+This aligns the semantic State contract with VexWork's existing runtime persistence model:
+
+~~~text
+immutable State snapshots
+-> predecessor/successor lineage
+-> CURRENT points to validated tip
+-> exact-current transition
+~~~
 ## Machine-readable source / live-state persistence boundary
 
 The first pressure walks have now earned a small machine-readable ProcessFamily source:
@@ -1354,7 +1429,9 @@ The current State contract owns only:
 scopeRef
 currentNodeRef
 depth
-accepted transition history / evidence refs
+previousStateRefOrNull
+lastAcceptedTransitionOrNull
+accepted evidence refs grounding only the current State
 carried stable identity refs
 source grounding
 ~~~
