@@ -16,7 +16,6 @@
         "repo.vexwork"
       ],
       "readingSourceRefs": [
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
         "docs/foundation/PROCESS-MAP.md",
         "docs/foundation/WORKGRAPH.md"
       ],
@@ -45,7 +44,6 @@
         "repo.vexwork"
       ],
       "readingSourceRefs": [
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
         "docs/foundation/OPERATING-PROFILES.md",
         "github.pull.vexwork.185"
       ],
@@ -75,7 +73,6 @@
         "repo.vexwork"
       ],
       "readingSourceRefs": [
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
         "docs/foundation/PROCESS-MAP.md",
         "projects/vexboard/FRACTAL-SEMANTIC-COMPOSITION-AND-SPATIAL-LAYOUT.md"
       ],
@@ -104,7 +101,6 @@
         "repo.vexwork"
       ],
       "readingSourceRefs": [
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
         "docs/foundation/WORKGRAPH.md",
         "docs/foundation/REPOSITORY-GRAPH.md"
       ],
@@ -134,7 +130,6 @@
         "repo.vexwork"
       ],
       "readingSourceRefs": [
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
         "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
         "repo.vexlife-android:architecture/relay/README.md",
         "source.vexrelay.current-contract/v1"
@@ -164,7 +159,6 @@
         "repo.vexwork"
       ],
       "readingSourceRefs": [
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
         "docs/foundation/OPERATING-PROFILES.md"
       ],
       "authorityRefs": [],
@@ -194,7 +188,6 @@
         "repo.vexwork"
       ],
       "readingSourceRefs": [
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
         "AGENTS.md",
         "docs/CULTURE.md"
       ],
@@ -223,7 +216,6 @@
         "repo.vexwork"
       ],
       "readingSourceRefs": [
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
         "test/vex-process-family-metawalk.test.mjs"
       ],
       "authorityRefs": [],
@@ -253,7 +245,6 @@
         "repo.vexwork"
       ],
       "readingSourceRefs": [
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
         "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md",
         "docs/foundation/REPOSITORY-INTEGRATION.md"
       ],
@@ -282,7 +273,6 @@
         "repo.vexwork"
       ],
       "readingSourceRefs": [
-        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
         "docs/foundation/RUNTIME-PERSISTENCE.md",
         "docs/foundation/WORKGRAPH.md"
       ],
@@ -515,5 +505,19 @@
     "LIVED_INTEGRATION",
     "RECONCILE_ACCEPT"
   ],
-  "entryLayer": "FORMATION"
+  "entryLayer": "FORMATION",
+  "movementClasses": [
+    "ADVANCES",
+    "ENABLES",
+    "REFINES",
+    "SEMANTIC_GAP",
+    "CONTRACT_GAP",
+    "IMPLEMENTATION_DEFECT",
+    "CURRENTNESS_CHANGED",
+    "RECOVERS"
+  ],
+  "forwardMovementClasses": [
+    "ADVANCES",
+    "ENABLES"
+  ]
 }
