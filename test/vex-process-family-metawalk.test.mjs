@@ -131,7 +131,6 @@ test('MetaWalk dogfoods scope x node x depth against its real machine definition
   let state = createProcessState(family, {
     stateRef: 'state.metawalk.dogfood.000',
     scopeRef: 'work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence',
-    depth: 'FORMATION',
   });
 
   const walk = [
@@ -150,6 +149,7 @@ test('MetaWalk dogfoods scope x node x depth against its real machine definition
       movementClass: 'ADVANCES',
       nextDepth,
       evidenceRefs: ['evidence.metawalk.dogfood.' + String(index + 1).padStart(3, '0')],
+      carriedIdentityRefs: [],
       satisfiedPredicateRefs: family.relationships
         .find((entry) => entry.relationshipRef === relationshipRef)
         .entryPredicateRefs,
@@ -239,7 +239,6 @@ test('ProcessFamily State owns scope x node x depth without becoming a world-sta
   const state = createProcessState(family, {
     stateRef: 'state.metawalk.001',
     scopeRef: 'work.test.outcome',
-    depth: 'FORMATION',
   });
 
   assert.equal(state.scopeRef, 'work.test.outcome');
@@ -261,7 +260,6 @@ test('bounded horizon deep-reads CURRENT and keeps future node source detail wit
   const state = createProcessState(family, {
     stateRef: 'state.metawalk.001',
     scopeRef: 'work.test.outcome',
-    depth: 'FORMATION',
   });
   const horizon = projectProcessHorizon(family, state, {
     satisfiedPredicateRefs: [
@@ -285,7 +283,6 @@ test('accepted transition carries evidence and identity while rotating CURRENT n
   const start = createProcessState(family, {
     stateRef: 'state.metawalk.001',
     scopeRef: 'work.test.outcome',
-    depth: 'FORMATION',
   });
 
   const next = admitProcessTransition({
@@ -323,7 +320,6 @@ test('depth revisit may deepen one semantic coordinate without reopening a prior
   const start = createProcessState(family, {
     stateRef: 'state.metawalk.001',
     scopeRef: 'work.test.outcome',
-    depth: 'FORMATION',
   });
 
   const next = admitProcessTransition({
@@ -334,6 +330,7 @@ test('depth revisit may deepen one semantic coordinate without reopening a prior
     movementClass: 'DEPTH_REVISIT',
     nextDepth: 'TOPOLOGY',
     evidenceRefs: ['evidence.shape-deepened'],
+    carriedIdentityRefs: [],
     nextStateRef: 'state.metawalk.002',
   });
 
@@ -348,7 +345,6 @@ test('transition admission fails closed on stale or foreign movement', () => {
   const state = createProcessState(family, {
     stateRef: 'state.metawalk.001',
     scopeRef: 'work.test.outcome',
-    depth: 'FORMATION',
   });
 
   assert.throws(
@@ -360,6 +356,7 @@ test('transition admission fails closed on stale or foreign movement', () => {
       movementClass: 'ADVANCES',
       nextDepth: 'IMPLEMENTATION',
       evidenceRefs: ['evidence.invalid'],
+      carriedIdentityRefs: [],
       nextStateRef: 'state.metawalk.bad',
     }),
     /must leave CURRENT node/,
@@ -374,6 +371,7 @@ test('transition admission fails closed on stale or foreign movement', () => {
       movementClass: 'RECOVERS',
       nextDepth: 'CONTRACT',
       evidenceRefs: ['evidence.invalid'],
+      carriedIdentityRefs: [],
       nextStateRef: 'state.metawalk.bad2',
     }),
     /movementClass must match relationship/,
@@ -385,7 +383,6 @@ test('relationship availability is derived from all required current predicates'
   const state = createProcessState(family, {
     stateRef: 'state.metawalk.001',
     scopeRef: 'work.test.outcome',
-    depth: 'FORMATION',
   });
 
   const held = availableProcessRelationships(family, state);
@@ -421,6 +418,7 @@ test('relationship availability is derived from all required current predicates'
       movementClass: 'ADVANCES',
       nextDepth: 'CONTRACT',
       evidenceRefs: ['evidence.not-enough'],
+      carriedIdentityRefs: [],
       satisfiedPredicateRefs: ['predicate.contract.allowed'],
       nextStateRef: 'state.unsatisfied',
     }),
@@ -434,7 +432,6 @@ test('bounded-horizon VexBoard projection deep-reads CURRENT but withholds futur
   const start = createProcessState(family, {
     stateRef: 'state.metawalk.001',
     scopeRef: 'work.test.outcome',
-    depth: 'FORMATION',
   });
   const current = admitProcessTransition({
     family,
@@ -630,7 +627,6 @@ test('ProcessFamily State keeps one predecessor link and one accepted transition
   const first = createProcessState(family, {
     stateRef: 'state.compact.001',
     scopeRef: 'work.test.outcome',
-    carriedIdentityRefs: ['identity.stable'],
   });
 
   const second = admitProcessTransition({
@@ -641,6 +637,7 @@ test('ProcessFamily State keeps one predecessor link and one accepted transition
     movementClass: 'ADVANCES',
     nextDepth: 'CONTRACT',
     evidenceRefs: ['evidence.compact.001'],
+    carriedIdentityRefs: ['identity.stable'],
     satisfiedPredicateRefs: [
       'predicate.contract.allowed',
       'predicate.node.contract.entry',
@@ -656,6 +653,7 @@ test('ProcessFamily State keeps one predecessor link and one accepted transition
     movementClass: 'ADVANCES',
     nextDepth: 'IMPLEMENTATION',
     evidenceRefs: ['evidence.compact.002'],
+    carriedIdentityRefs: ['identity.stable'],
     satisfiedPredicateRefs: [
       'predicate.implementation.allowed',
       'predicate.node.implement.entry',
@@ -681,9 +679,8 @@ test('ProcessFamily State allows explicit continuity-identity pruning at a trans
   const start = createProcessState(family, {
     stateRef: 'state.prune.001',
     scopeRef: 'work.test.outcome',
-    carriedIdentityRefs: ['identity.keep', 'identity.retire'],
   });
-  const next = admitProcessTransition({
+  const middle = admitProcessTransition({
     family,
     state: start,
     transitionRef: 'transition.prune.001',
@@ -691,18 +688,115 @@ test('ProcessFamily State allows explicit continuity-identity pruning at a trans
     movementClass: 'ADVANCES',
     nextDepth: 'CONTRACT',
     evidenceRefs: ['evidence.prune.001'],
-    carriedIdentityRefs: ['identity.keep'],
+    carriedIdentityRefs: ['identity.keep', 'identity.retire'],
     satisfiedPredicateRefs: [
       'predicate.contract.allowed',
       'predicate.node.contract.entry',
     ],
     nextStateRef: 'state.prune.002',
   });
+  const next = admitProcessTransition({
+    family,
+    state: middle,
+    transitionRef: 'transition.prune.002',
+    relationshipRefOrNull: 'rel.contract-implement',
+    movementClass: 'ADVANCES',
+    nextDepth: 'IMPLEMENTATION',
+    evidenceRefs: ['evidence.prune.002'],
+    carriedIdentityRefs: ['identity.keep'],
+    satisfiedPredicateRefs: [
+      'predicate.implementation.allowed',
+      'predicate.node.implement.entry',
+    ],
+    nextStateRef: 'state.prune.003',
+  });
 
   assert.deepEqual(next.carriedIdentityRefs, ['identity.keep']);
   assert.deepEqual(next.lastAcceptedTransitionOrNull?.carriedIdentityRefs, ['identity.keep']);
 });
 
+
+
+test('entry ProcessFamily State cannot invent transition evidence, identities, or non-entry depth', () => {
+  const family = normalizeProcessFamily(familyFixture());
+
+  assert.throws(
+    () => createProcessState(family, {
+      stateRef: 'state.entry.bad-evidence',
+      scopeRef: 'work.test.outcome',
+      acceptedEvidenceRefs: ['evidence.historical'],
+    }),
+    /creation options schema drift/,
+  );
+
+  assert.throws(
+    () => createProcessState(family, {
+      stateRef: 'state.entry.bad-identity',
+      scopeRef: 'work.test.outcome',
+      carriedIdentityRefs: ['identity.historical'],
+    }),
+    /creation options schema drift/,
+  );
+
+  assert.throws(
+    () => createProcessState(family, {
+      stateRef: 'state.entry.bad-depth',
+      scopeRef: 'work.test.outcome',
+      depth: 'IMPLEMENTATION',
+    }),
+    /creation options schema drift/,
+  );
+
+  const valid = createProcessState(family, {
+    stateRef: 'state.entry.valid',
+    scopeRef: 'work.test.outcome',
+  });
+  assert.equal(valid.depth, 'FORMATION');
+  assert.deepEqual(valid.acceptedEvidenceRefs, []);
+  assert.deepEqual(valid.carriedIdentityRefs, []);
+  assert.equal(valid.previousStateRefOrNull, null);
+  assert.equal(valid.lastAcceptedTransitionOrNull, null);
+
+  const forgedEvidence = structuredClone(valid);
+  forgedEvidence.acceptedEvidenceRefs = ['evidence.historical'];
+  assert.throws(
+    () => normalizeProcessState(forgedEvidence, family),
+    /entry State must not contain accepted transition evidence/,
+  );
+
+  const forgedIdentity = structuredClone(valid);
+  forgedIdentity.carriedIdentityRefs = ['identity.historical'];
+  assert.throws(
+    () => normalizeProcessState(forgedIdentity, family),
+    /entry State must not contain carried transition identities/,
+  );
+});
+
+test('every admitted transition must state carried identities explicitly', () => {
+  const family = normalizeProcessFamily(familyFixture());
+  const state = createProcessState(family, {
+    stateRef: 'state.identity-explicit.001',
+    scopeRef: 'work.test.outcome',
+  });
+
+  assert.throws(
+    () => admitProcessTransition({
+      family,
+      state,
+      transitionRef: 'transition.identity-explicit.001',
+      relationshipRefOrNull: 'rel.recover-contract',
+      movementClass: 'ADVANCES',
+      nextDepth: 'CONTRACT',
+      evidenceRefs: ['evidence.identity-explicit.001'],
+      satisfiedPredicateRefs: [
+        'predicate.contract.allowed',
+        'predicate.node.contract.entry',
+      ],
+      nextStateRef: 'state.identity-explicit.002',
+    }),
+    /carriedIdentityRefs must be an array/,
+  );
+});
 
 test('ProcessFamily State creation and transition APIs reject historical source bags', () => {
   const family = normalizeProcessFamily(familyFixture());
@@ -730,6 +824,7 @@ test('ProcessFamily State creation and transition APIs reject historical source 
       movementClass: 'ADVANCES',
       nextDepth: 'CONTRACT',
       evidenceRefs: ['evidence.source-bag.001'],
+      carriedIdentityRefs: [],
       satisfiedPredicateRefs: [
         'predicate.contract.allowed',
         'predicate.node.contract.entry',
@@ -746,7 +841,6 @@ test('bounded horizon derives CURRENT source grounding from current State eviden
   const first = createProcessState(family, {
     stateRef: 'state.source-current.001',
     scopeRef: 'work.test.outcome',
-    carriedIdentityRefs: ['identity.current'],
   });
   const second = admitProcessTransition({
     family,
@@ -756,6 +850,7 @@ test('bounded horizon derives CURRENT source grounding from current State eviden
     movementClass: 'ADVANCES',
     nextDepth: 'CONTRACT',
     evidenceRefs: ['evidence.current.001'],
+    carriedIdentityRefs: ['identity.current'],
     satisfiedPredicateRefs: [
       'predicate.contract.allowed',
       'predicate.node.contract.entry',
@@ -770,6 +865,7 @@ test('bounded horizon derives CURRENT source grounding from current State eviden
     movementClass: 'ADVANCES',
     nextDepth: 'IMPLEMENTATION',
     evidenceRefs: ['evidence.current.002'],
+    carriedIdentityRefs: ['identity.current'],
     satisfiedPredicateRefs: [
       'predicate.implementation.allowed',
       'predicate.node.implement.entry',
@@ -814,6 +910,7 @@ test('transition formation rejects unknown relationships, empty evidence and no-
       movementClass: 'ADVANCES',
       nextDepth: 'CONTRACT',
       evidenceRefs: ['evidence.reject.unknown'],
+      carriedIdentityRefs: [],
       nextStateRef: 'state.reject.unknown',
     }),
     /relationship missing/,
@@ -828,6 +925,7 @@ test('transition formation rejects unknown relationships, empty evidence and no-
       movementClass: 'ADVANCES',
       nextDepth: 'CONTRACT',
       evidenceRefs: [],
+      carriedIdentityRefs: [],
       satisfiedPredicateRefs: [
         'predicate.contract.allowed',
         'predicate.node.contract.entry',
@@ -846,6 +944,7 @@ test('transition formation rejects unknown relationships, empty evidence and no-
       movementClass: 'DEPTH_REVISIT',
       nextDepth: 'FORMATION',
       evidenceRefs: ['evidence.reject.noop-depth'],
+      carriedIdentityRefs: [],
       nextStateRef: 'state.reject.noop-depth',
     }),
     /must change node or depth/,
