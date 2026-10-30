@@ -12513,7 +12513,7 @@
           "label": "Consolidate Terrain active embedded-surface ownership",
           "purpose": "Prevent impossible or stale Terrain embedded-reader surface state by giving the mutually exclusive activeReaderId / activeEntrySlug / activeGroupHomeKey compatibility coordinates one bounded mutation owner, while preserving current browser realization and keeping active-surface identity separate from reader return-context identity.",
           "workClass": "DEFECT",
-          "state": "VERIFYING",
+          "state": "COMPLETED",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vextreme.architecture-convergence.outcome",
@@ -12535,14 +12535,17 @@
             "artifact.vexrelay.inner-return.sha256.c7f161c3c3a8b179870349bf56c29706307051bed8b3640a3c25c3d58f5a99db",
             "github.pull.vextreme.488",
             "github.commit.vextreme.5010f6cc8de507cfd7f027c3b615ff2e8931200f",
-            "repo.vextreme:tests/85-terrain-view-contract.test.js"
+            "repo.vextreme:tests/85-terrain-view-contract.test.js",
+            "github.pull.vextreme.507",
+            "github.commit.vextreme.5e37c264db60bf3ff5a8415067548c7511b9ec82",
+            "github.commit.vextreme.a9c7cd9df82459c935767584e0692e56a0de6fd4"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-29T14:34:00.000Z",
-          "updatedAt": "2026-10-29T14:55:30.000Z",
+          "updatedAt": "2026-10-29T15:12:03.000Z",
           "transitionHistory": [
             {
               "transitionRef": "transition.vextreme.architecture-convergence.terrain-active-surface-context.verifying.pr505-a002-assurance",
@@ -12569,21 +12572,6 @@
                 "artifact.vexrelay.inner-return.sha256.c7f161c3c3a8b179870349bf56c29706307051bed8b3640a3c25c3d58f5a99db"
               ],
               "createdAt": "2026-10-29T14:52:30.000Z"
-            },
-            {
-              "transitionRef": "transition.vextreme.architecture-convergence.terrain-active-surface-context.verifying.pr488-postmerge-contract-drift",
-              "priorState": "COMPLETED",
-              "nextState": "VERIFYING",
-              "reason": "Post-completion Vextreme PR #488 merged tests/85-terrain-view-contract.test.js with a stale assertion requiring the pre-#505 direct activeGroupHomeKey assignment. Accepted source main still contains the correct single active-surface mutation owner, so the implementation effect remains valid while repository contract currentness requires one test-only correction.",
-              "actorRef": "actor.chatgpt.vextreme-architecture-convergence",
-              "sourceRefs": [
-                "github.pull.vextreme.488",
-                "github.commit.vextreme.5010f6cc8de507cfd7f027c3b615ff2e8931200f",
-                "github.pull.vextreme.505",
-                "github.commit.vextreme.28602a7ba832223d40ed844c32609954051f1c84",
-                "repo.vextreme:tests/85-terrain-view-contract.test.js"
-              ],
-              "createdAt": "2026-10-29T14:55:30.000Z"
             }
           ]
         },
@@ -12946,7 +12934,6 @@
           "laneRef": "lane.work.verify",
           "label": "Verify",
           "workRefs": [
-            "work.vextreme.architecture-convergence.terrain-active-surface-context",
             "work.vextreme.architecture-convergence.terrain-journey-inspection",
             "work.vextreme.architecture-convergence.terrain-reader-navigation",
             "work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence"
@@ -12961,6 +12948,7 @@
           "laneRef": "lane.work.done",
           "label": "Done",
           "workRefs": [
+            "work.vextreme.architecture-convergence.terrain-active-surface-context",
             "work.vextreme.architecture-convergence.terrain-reader-return-context",
             "work.vextreme.architecture-convergence.terrain-reader-return-vocabulary"
           ]
@@ -12973,13 +12961,13 @@
       ],
       "summary": {
         "workItemCount": 8,
-        "openWorkItemCount": 6,
+        "openWorkItemCount": 5,
         "outcomeCount": 1,
         "taskCount": 6,
         "defectCount": 1,
         "potentialCount": 0,
         "needsHumanCount": 0,
-        "completedCount": 2
+        "completedCount": 3
       },
       "rootItems": [
         {
