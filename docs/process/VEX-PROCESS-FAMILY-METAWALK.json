@@ -504,5 +504,16 @@
     "docs/foundation/WORKGRAPH.md",
     "docs/foundation/RUNTIME-PERSISTENCE.md",
     "github.pull.vexwork.189"
-  ]
+  ],
+  "layers": [
+    "FORMATION",
+    "TOPOLOGY",
+    "OWNERSHIP",
+    "CONTRACT",
+    "IMPLEMENTATION",
+    "FOCUSED_PROOF",
+    "LIVED_INTEGRATION",
+    "RECONCILE_ACCEPT"
+  ],
+  "entryLayer": "FORMATION"
 }
