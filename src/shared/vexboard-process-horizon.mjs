@@ -107,7 +107,7 @@ export function projectProcessHorizonBoard({
   state: stateInput,
   scope: scopeInput,
   boardRef: boardRefInput,
-  admittedRelationshipRefs = [],
+  satisfiedPredicateRefs = [],
 } = {}) {
   const family = normalizeProcessFamily(familyInput);
   const state = normalizeProcessState(stateInput, family);
@@ -117,7 +117,7 @@ export function projectProcessHorizonBoard({
   const boardRef = stableRef(boardRefInput, 'process horizon boardRef');
   assert(boardRef.startsWith('board.'), 'process horizon boardRef must start with board.');
 
-  const horizon = projectProcessHorizon(family, state, { admittedRelationshipRefs });
+  const horizon = projectProcessHorizon(family, state, { satisfiedPredicateRefs });
   const nodes = [];
   const relationships = [];
   const items = [];
@@ -268,8 +268,9 @@ export function projectProcessHorizonBoard({
       candidate.nodeRef,
       candidate.relationshipRef,
       candidate.entryPredicateRefs,
+      candidate.missingPredicateRefs,
     );
-    const admission = candidate.admitted ? 'ADMITTED' : 'NOT YET ADMITTED';
+    const availability = candidate.available ? 'AVAILABLE' : 'NOT YET AVAILABLE';
 
     nodes.push({
       nodeRef: nextNodeRef,
@@ -281,7 +282,7 @@ export function projectProcessHorizonBoard({
     });
     nodes.push(annotationNode(
       nextAnnotationRef,
-      admission + ' · ' + candidate.movementClass + ' · ' + candidate.purpose,
+      availability + ' · ' + candidate.movementClass + ' · ' + candidate.purpose,
       nextNodeRef,
       nextSources,
     ));
@@ -290,7 +291,7 @@ export function projectProcessHorizonBoard({
       kind: 'TRANSITION',
       fromRef: currentNodeRef,
       toRef: nextNodeRef,
-      labelOrNull: candidate.movementClass + ' · ' + admission,
+      labelOrNull: candidate.movementClass + ' · ' + availability,
       sourceRefs: nextSources,
     });
     const y = 190 + (index * 160);
