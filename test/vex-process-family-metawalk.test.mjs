@@ -285,6 +285,7 @@ test('ProcessFamily owns its layer vocabulary instead of inheriting MetaWalk lay
     nextLayer: 'REALIZE',
     evidenceRefs: ['evidence.custom-layers.001'],
     carriedIdentityRefs: [],
+    satisfiedPredicateRefs: ['predicate.node.beta.entry'],
     nextStateRef: 'state.custom-layers.002',
   });
   assert.equal(next.layer, 'REALIZE');
@@ -299,6 +300,7 @@ test('ProcessFamily owns its layer vocabulary instead of inheriting MetaWalk lay
       nextLayer: 'IMPLEMENTATION',
       evidenceRefs: ['evidence.custom-layers.bad'],
       carriedIdentityRefs: [],
+      satisfiedPredicateRefs: ['predicate.node.beta.entry'],
       nextStateRef: 'state.custom-layers.bad',
     }),
     /layer invalid for ProcessFamily/,
