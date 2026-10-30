@@ -26,7 +26,131 @@ This Project exists because the website has now exposed several real seams whose
 same architectural question. Continuing them as unrelated patches would make future workers repeatedly
 reconstruct who owns what and why.
 
-## Current entry — Form Architecture / VexRelay Family Circuit convergence
+## Current entry — MetaWalk onboarding integrated; stale Family projection retired
+
+The current durable edge is now smaller than the formation history below.
+
+As of current VexWork main:
+
+~~~text
+PR #189
+  first ProcessFamily / MetaWalk formation
+  ACCEPTED / MERGED
+
+PR #187
+  canonical VexRelay Process Map route
+  ACCEPTED / MERGED
+  VexWork navigation -> rightful SDK owner
+  executionAuthority = NONE
+
+PR #185
+  Architecture Convergence Project front door
+  ACCEPTED / MERGED
+
+PR #190
+  existing VexBoard "how to begin" self-map
+  -> one MetaWalk PORTAL
+  -> existing source-catalog resolver
+  ACCEPTED / MERGED
+  merge = 9d940aa88e703400b04670da88dfeae52adc398b
+  merge tree == proven candidate tree
+
+PR #188
+  old built-in Family Circuit architecture projection
+  CLOSED / SUPERSEDED / NOT MERGED
+~~~
+
+The onboarding gap is therefore closed:
+
+~~~text
+VexBoard landing
+-> Open VexBoard self-map
+-> VexWork Onboarding · MetaWalk
+-> existing portal behavior
+-> existing source-catalog resolver
+-> accepted MetaWalk board
+~~~
+
+No second loader, ProcessFamily current-State owner, dynamic horizon runtime, Work lifecycle, or effect
+authority was needed.
+
+The broader Work
+`work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence`
+remains **VERIFYING**. That state is still truthful: MetaWalk/navigation durability is accepted, while the
+larger Family / Relay architecture convergence remains an active architectural question. Source/evidence
+movement alone is not a reason to manufacture another WorkState transition.
+
+### Family Circuit current boundary
+
+VexLife-Android remains the rightful source owner for Family architecture. Current draft PR #206 is useful
+**design pressure**, not accepted VexWork architecture authority.
+
+That candidate is deliberately subtractive. Its mastered direction pressures the semantic root toward:
+
+~~~text
+Family
+  State
+  Control
+  Act
+  Effect
+
+CURRENT State + Control
+-> Act?
+
+Act
+-> admittedState?
+-> Effect?
+
+Connection
+-> realizes Effect
+-> owns provider/runtime dependencies
+-> reconciles provider/runtime facts into semantic State
+-> owns currentness / lifetime / concurrency mechanics
+~~~
+
+and removes or relocates older Family-root mechanics such as `Begin`, `Control.Resource`,
+`ResourceId`, Family-owned execution relationship IDs, and public execution `Approach` vocabulary.
+
+Therefore the closed PR #188 must **not** be revived merely to finish its old 933-line projection, and
+PR #206 must **not** be copied into VexWork as accepted truth while it remains draft.
+
+~~~text
+PRESERVE
+  VEXBOARD PROJECTION != FAMILY SOURCE OWNER
+
+DO NOT PRESERVE AS ARCHITECTURE
+  obsolete nouns merely because they were once accepted
+
+DRAFT MASTERED PRESSURE
+  != ACCEPTED SOURCE
+
+PRIOR VETTING
+  != FINALITY
+~~~
+
+### Next grounded continuation
+
+Continue Architecture Convergence from current lived/source pressure, not from an obligation to complete
+every historical candidate.
+
+For the Family branch specifically:
+
+~~~text
+PR #206 still draft
+-> treat as hypothesis / pressure
+-> do not form another Family projection yet
+
+when the mastered Family boundary is accepted in its rightful repository
+OR Victor explicitly reviews/vets that exact changed semantic boundary
+-> re-ground the accepted source
+-> ask whether any VexBoard projection is still needed
+-> if yes, project only the smallest stable semantics actually consumed
+~~~
+
+Until then, no Family-projection framework, no replacement of PR #188, and no proof-spine Work item is
+earned merely by anticipation.
+
+## Historical formation context — Form Architecture / VexRelay Family Circuit convergence
 
 The foreground architecture outcome is now sharper than "make Relay easier to use."
 
