@@ -23,7 +23,7 @@
         "label": "Create new",
         "parentRefOrNull": null,
         "detailBoardRefOrNull": null,
-        "sourceRefs": ["vexboard/index.html", "vexboard/self-map.json", "docs/process/VEX-PROCESS-FAMILY-METAWALK.md"]
+        "sourceRefs": ["vexboard/index.html"]
       },
       {
         "nodeRef": "node.vexboard.open-existing",
