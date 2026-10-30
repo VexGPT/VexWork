@@ -70,11 +70,11 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-10-29T20:01:00.000Z",
-      "updatedAt": "2026-10-30T05:29:47.000Z",
+      "updatedAt": "2026-10-30T05:43:51.000Z",
       "workRef": "work.vexlife.interface-refinement.interface-compound-relay",
       "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
       "label": "Current — Interface Compound Relay convergence",
-      "purpose": "Finish Interface Compound Relay F2/F3. PR #965 remains at exact published A007 head aa824ef7cb0bc295cc40a4ffbb4465bd6bc24843 with CHANGES_REQUESTED for selected-Conversation currentness. A009 preserved the exact scope-currentness product correction and bridge assertion, passed its focused proof 74/74, formed clean local candidate 5d527efa6b8db42703be4758b45ea72c279869fe / tree 0e3459747ce7c47ac36e352a8586aefe995e2b95, then full npm run check exposed five real-browser Relationships/navigation tests whose test servers intentionally omitted Companion currentness/availability owners, surfacing truthful fixture-owned 503s. No push occurred. A010 preserves all product semantics and updates only those four browser fixtures to supply bounded no-effect current owner projections; its focused gate now includes all four previously failing files. Consume A010 RETURN next; fresh Assurance/READY/merge/F3 remain held.",
+      "purpose": "Finish Interface Compound Relay F2/F3. A010 authoritative native Relay proof fully passed and published PR #965 to exact head fe3f4c03482243bf17e4d86d7c77077f950eaef1 / tree adf758b931935f3be677af523c3fc69a9d79335c with focused 86/86, Blueprint, Source Manifest, full npm run check, clean commit, non-force push and existing-PR reuse PASS. The outer selected-source/base mismatch is downstream bookkeeping and conflicts with live provider truth, not the source result. Following Victor's explicit request to double-check actual pushed code, fresh byte-level Assurance found that a brand-new ordinary direct-Companion draft typed while READY was not persisted to sessionStorage because the real input handler only wrote when unavailable or when a draft already existed. Assurance recorded CHANGES_REQUESTED on fe3f4c at PR comment 6515885060. A011 preserves all currentness semantics, changes only Chat draft persistence plus its bucket and proof plus its bucket, and adds a real browser READY -> type fresh draft -> exact sessionStorage -> document reload -> exact draft restored test. Consume A011 RETURN next; READY/merge/F3 remain held.",
       "workClass": "TASK",
       "state": "RUNNING",
       "priorityClass": "IMMEDIATE",
@@ -228,7 +228,15 @@
         "tree.vexlife.local-candidate.0e3459747ce7c47ac36e352a8586aefe995e2b95",
         "finding.vexlife.interface-currentness.f2.a009.relationships-fixture-provider-unavailable-503",
         "relay.package.vexlife.interface-currentness-browser-realization.f2.a010.sha256.45b82958857e7624aeab908e0dbfb76988a01807e2951747a7f71f30f540103e",
-        "relay.inner.vexlife.interface-currentness-browser-realization.f2.a010.sha256.3ba1661486439d34406fc0fd6a84b7d3c27b4f83e127741a84cde903790db0aa"
+        "relay.inner.vexlife.interface-currentness-browser-realization.f2.a010.sha256.3ba1661486439d34406fc0fd6a84b7d3c27b4f83e127741a84cde903790db0aa",
+        "relay.return.vexlife.interface-currentness-browser-realization.f2.a010.outer.sha256.64e52b13d80244a9e6df0fb486ad3d5f13f08aea200dcfd3dae20b80c5943d15",
+        "relay.return.vexlife.interface-currentness-browser-realization.f2.a010.inner.sha256.808a3641f7604d60c4278c01b10695654a673ff2f2ea948afd68f8ac02e0b17d",
+        "github.pull.vexlife.965@fe3f4c03482243bf17e4d86d7c77077f950eaef1",
+        "tree.vexlife.interface-currentness.f2.a010.adf758b931935f3be677af523c3fc69a9d79335c",
+        "github.pull.vexlife.965.comment.6515885060",
+        "finding.vexlife.interface-currentness.f2.ready-fresh-draft-not-session-persisted",
+        "relay.package.vexlife.interface-currentness-browser-realization.f2.a011.sha256.4fa8bf1ab4c6dee0412f3d8fe7e67857b93c2061d7c202a9492233557c29862c",
+        "relay.inner.vexlife.interface-currentness-browser-realization.f2.a011.sha256.b4131893fd54bdcf7114df4652a3b37a17cb2f97d3ec0561fc1e2985703ca358"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
@@ -1328,6 +1336,26 @@
         "relay.inner.vexlife.interface-currentness-browser-realization.f2.a010.sha256.3ba1661486439d34406fc0fd6a84b7d3c27b4f83e127741a84cde903790db0aa"
       ],
       "createdAt": "2026-10-30T05:29:47.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.interface-refinement.interface-compound-relay.running-running.f2-a010-byte-assurance-draft-correction-a011",
+      "workRef": "work.vexlife.interface-refinement.interface-compound-relay",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING",
+      "reason": "A010 authoritative native proof passed and published PR #965 at fe3f4c/adf758 despite a downstream outer review-base bookkeeping mismatch. Byte-level Assurance of the actual pushed composer found a real F3-blocking gap: a brand-new ordinary Companion draft typed while READY was not persisted to sessionStorage. A011 changes only that real input path and adds real browser reload/restoration proof.",
+      "actorRef": "actor.chatgpt.vexlife-interface-compound-relay",
+      "sourceRefs": [
+        "relay.return.vexlife.interface-currentness-browser-realization.f2.a010.outer.sha256.64e52b13d80244a9e6df0fb486ad3d5f13f08aea200dcfd3dae20b80c5943d15",
+        "relay.return.vexlife.interface-currentness-browser-realization.f2.a010.inner.sha256.808a3641f7604d60c4278c01b10695654a673ff2f2ea948afd68f8ac02e0b17d",
+        "github.pull.vexlife.965@fe3f4c03482243bf17e4d86d7c77077f950eaef1",
+        "tree.vexlife.interface-currentness.f2.a010.adf758b931935f3be677af523c3fc69a9d79335c",
+        "github.pull.vexlife.965.comment.6515885060",
+        "finding.vexlife.interface-currentness.f2.ready-fresh-draft-not-session-persisted",
+        "relay.package.vexlife.interface-currentness-browser-realization.f2.a011.sha256.4fa8bf1ab4c6dee0412f3d8fe7e67857b93c2061d7c202a9492233557c29862c",
+        "relay.inner.vexlife.interface-currentness-browser-realization.f2.a011.sha256.b4131893fd54bdcf7114df4652a3b37a17cb2f97d3ec0561fc1e2985703ca358"
+      ],
+      "createdAt": "2026-10-30T05:43:51.000Z"
     }
   ],
   "sourceRefs": [
@@ -1488,7 +1516,15 @@
     "tree.vexlife.local-candidate.0e3459747ce7c47ac36e352a8586aefe995e2b95",
     "finding.vexlife.interface-currentness.f2.a009.relationships-fixture-provider-unavailable-503",
     "relay.package.vexlife.interface-currentness-browser-realization.f2.a010.sha256.45b82958857e7624aeab908e0dbfb76988a01807e2951747a7f71f30f540103e",
-    "relay.inner.vexlife.interface-currentness-browser-realization.f2.a010.sha256.3ba1661486439d34406fc0fd6a84b7d3c27b4f83e127741a84cde903790db0aa"
+    "relay.inner.vexlife.interface-currentness-browser-realization.f2.a010.sha256.3ba1661486439d34406fc0fd6a84b7d3c27b4f83e127741a84cde903790db0aa",
+    "relay.return.vexlife.interface-currentness-browser-realization.f2.a010.outer.sha256.64e52b13d80244a9e6df0fb486ad3d5f13f08aea200dcfd3dae20b80c5943d15",
+    "relay.return.vexlife.interface-currentness-browser-realization.f2.a010.inner.sha256.808a3641f7604d60c4278c01b10695654a673ff2f2ea948afd68f8ac02e0b17d",
+    "github.pull.vexlife.965@fe3f4c03482243bf17e4d86d7c77077f950eaef1",
+    "tree.vexlife.interface-currentness.f2.a010.adf758b931935f3be677af523c3fc69a9d79335c",
+    "github.pull.vexlife.965.comment.6515885060",
+    "finding.vexlife.interface-currentness.f2.ready-fresh-draft-not-session-persisted",
+    "relay.package.vexlife.interface-currentness-browser-realization.f2.a011.sha256.4fa8bf1ab4c6dee0412f3d8fe7e67857b93c2061d7c202a9492233557c29862c",
+    "relay.inner.vexlife.interface-currentness-browser-realization.f2.a011.sha256.b4131893fd54bdcf7114df4652a3b37a17cb2f97d3ec0561fc1e2985703ca358"
   ],
   "formedAt": "2026-10-25T01:23:08.000Z"
 }
