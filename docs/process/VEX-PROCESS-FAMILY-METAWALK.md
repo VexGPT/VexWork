@@ -1358,14 +1358,17 @@ ProcessFamily.State
 
   acceptedEvidenceRefs
     evidence directly grounding THIS State
+    MUST exactly equal lastAcceptedTransitionOrNull.evidenceRefs
     != cumulative process history
 
   carriedIdentityRefs
     exact continuity identities required by THIS State
+    MUST exactly equal lastAcceptedTransitionOrNull.carriedIdentityRefs
     preserved by default across transition
     explicitly replaceable/prunable
 
-  sourceRefs
+  no State-owned sourceRefs bag
+    current source grounding is derived at projection/read time
 ~~~
 
 Transition formation therefore behaves as:
@@ -1379,7 +1382,9 @@ State N
 where:
   State N+1.previousStateRefOrNull = State N.stateRef
   State N+1.lastAcceptedTransitionOrNull = exact transition N -> N+1
-  State N+1.acceptedEvidenceRefs = current transition evidence
+  State N+1.acceptedEvidenceRefs = current transition evidence exactly
+  State N+1.carriedIdentityRefs = current continuity identities exactly
+  State N+1 stores no sourceRefs history bag
   older accepted history remains reachable through predecessor snapshots
 ~~~
 
@@ -1398,6 +1403,52 @@ immutable State snapshots
 -> predecessor/successor lineage
 -> CURRENT points to validated tip
 -> exact-current transition
+~~~
+## Fresh Assurance CHANGES_REQUESTED — bounded provenance correction
+
+Fresh Independent Assurance on exact head `95506489c3856ef416eeb6b9fc896669efd746d0` returned `CHANGES_REQUESTED` with two related findings:
+
+1. `ProcessFamily.State.sourceRefs` could still grow across transitions because transition formation unioned prior + current refs, and the bounded-horizon projector foregrounded that accumulated bag again.
+2. `acceptedEvidenceRefs` was only required to contain the last transition evidence, allowing historical evidence to be smuggled back into an otherwise valid CURRENT State.
+
+Both findings are accepted.
+
+The correction is structural rather than advisory:
+
+~~~text
+ProcessFamily.State
+  removes sourceRefs entirely
+
+normalizeProcessState(...)
+  rejects sourceRefs as schema drift
+
+createProcessState(...)
+admitProcessTransition(...)
+  reject obsolete/unknown sourceRefs options
+
+acceptedEvidenceRefs
+  must EXACTLY equal lastAcceptedTransitionOrNull.evidenceRefs
+
+carriedIdentityRefs
+  must EXACTLY equal lastAcceptedTransitionOrNull.carriedIdentityRefs
+
+bounded-horizon projection
+  derives CURRENT source grounding from
+    ProcessFamily source
+    CURRENT node source/proof contract
+    CURRENT State evidence / identity / predecessor refs
+  and cannot consume a historical State source bag
+~~~
+
+This closes the remaining path by which a long-lived walk could recreate unbounded foreground context after transition-history compaction.
+
+Permanent:
+
+~~~text
+CURRENT_STATE_PROVENANCE != CUMULATIVE_HISTORY_BAG
+CURRENT_EVIDENCE = EXACT_CURRENT_TRANSITION_EVIDENCE
+CURRENT_SOURCE_GROUNDING = DERIVED_CURRENT_CONTEXT
+HISTORICAL_PROVENANCE = PREDECESSOR_LINEAGE / RETAINED EVIDENCE
 ~~~
 ## Machine-readable source / live-state persistence boundary
 
