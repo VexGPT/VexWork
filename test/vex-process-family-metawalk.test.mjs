@@ -466,10 +466,10 @@ test('relationship-free layer change may deepen one semantic coordinate without 
   assert.equal(next.currentNodeRef, 'node.recover');
   assert.equal(next.layer, 'TOPOLOGY');
   assert.equal(Object.hasOwn(next.lastAcceptedTransitionOrNull, 'movementClass'), false);
-  assert.equal(next.lastAcceptedTransitionOrNull?.fromNodeRef, 'node.recover');
-  assert.equal(next.lastAcceptedTransitionOrNull?.toNodeRef, 'node.recover');
+  assert.equal(Object.hasOwn(next.lastAcceptedTransitionOrNull, 'fromNodeRef'), false);
+  assert.equal(Object.hasOwn(next.lastAcceptedTransitionOrNull, 'toNodeRef'), false);
+  assert.equal(Object.hasOwn(next.lastAcceptedTransitionOrNull, 'toLayer'), false);
   assert.equal(next.lastAcceptedTransitionOrNull?.fromLayer, 'FORMATION');
-  assert.equal(next.lastAcceptedTransitionOrNull?.toLayer, 'TOPOLOGY');
 
   const horizon = projectProcessHorizon(family, next);
   assert.equal(horizon.previousAcceptedOrNull?.movementClass, null);
@@ -768,11 +768,11 @@ test('ProcessFamily State fails closed on foreign family, invalid layer and corr
   invalidLayer.layer = 'MAGICAL_LAYER';
   assert.throws(() => normalizeProcessState(invalidLayer, family), /layer invalid/);
 
-  const badHistoryOrigin = structuredClone(next);
-  badHistoryOrigin.lastAcceptedTransitionOrNull.fromNodeRef = 'node.implement';
+  const badRelationshipTarget = structuredClone(next);
+  badRelationshipTarget.lastAcceptedTransitionOrNull.relationshipRefOrNull = 'rel.implement-prove';
   assert.throws(
-    () => normalizeProcessState(badHistoryOrigin, family),
-    /relationship fromRef mismatch/,
+    () => normalizeProcessState(badRelationshipTarget, family),
+    /currentNodeRef must match last accepted relationship target/,
   );
 
   const forgedEvidenceField = structuredClone(next);
@@ -836,8 +836,10 @@ test('ProcessFamily State keeps one predecessor link and one accepted transition
   assert.equal(Object.hasOwn(third, 'transitionHistory'), false);
   assert.equal(third.previousStateRefOrNull, 'state.compact.002');
   assert.equal(third.lastAcceptedTransitionOrNull?.transitionRef, 'transition.compact.002');
-  assert.equal(third.lastAcceptedTransitionOrNull?.fromNodeRef, 'node.contract');
-  assert.equal(third.lastAcceptedTransitionOrNull?.toNodeRef, 'node.implement');
+  assert.equal(third.lastAcceptedTransitionOrNull?.relationshipRefOrNull, 'rel.contract-implement');
+  assert.equal(Object.hasOwn(third.lastAcceptedTransitionOrNull, 'fromNodeRef'), false);
+  assert.equal(Object.hasOwn(third.lastAcceptedTransitionOrNull, 'toNodeRef'), false);
+  assert.equal(Object.hasOwn(third.lastAcceptedTransitionOrNull, 'toLayer'), false);
   assert.equal(Object.hasOwn(third, 'acceptedEvidenceRefs'), false);
   assert.equal(Object.hasOwn(third, 'carriedIdentityRefs'), false);
   assert.deepEqual(third.lastAcceptedTransitionOrNull?.evidenceRefs, ['evidence.compact.002']);
