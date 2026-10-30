@@ -118,6 +118,8 @@ export function projectProcessHorizonBoard({
   assert(boardRef.startsWith('board.'), 'process horizon boardRef must start with board.');
 
   const horizon = projectProcessHorizon(family, state, { satisfiedPredicateRefs });
+  const currentEvidenceRefs = state.lastAcceptedTransitionOrNull?.evidenceRefs ?? [];
+  const currentIdentityRefs = state.lastAcceptedTransitionOrNull?.carriedIdentityRefs ?? [];
   const nodes = [];
   const relationships = [];
   const items = [];
@@ -146,8 +148,8 @@ export function projectProcessHorizonBoard({
   const currentSources = nodeSourceRefs(
     family.sourceRefs,
     state.stateRef,
-    state.acceptedEvidenceRefs,
-    state.carriedIdentityRefs,
+    currentEvidenceRefs,
+    currentIdentityRefs,
     state.previousStateRefOrNull === null ? [] : [state.previousStateRefOrNull],
     state.lastAcceptedTransitionOrNull === null ? [] : [
       state.lastAcceptedTransitionOrNull.transitionRef,
@@ -373,8 +375,8 @@ export function projectProcessHorizonBoard({
       family.sourceRefs,
       scope.sourceRefs,
       state.stateRef,
-      state.acceptedEvidenceRefs,
-      state.carriedIdentityRefs,
+      currentEvidenceRefs,
+      currentIdentityRefs,
       family.familyRef,
       state.stateRef,
       scope.scopeRef,
