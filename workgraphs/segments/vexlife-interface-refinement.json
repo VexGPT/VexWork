@@ -70,11 +70,11 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-10-29T20:01:00.000Z",
-      "updatedAt": "2026-10-30T04:55:34.000Z",
+      "updatedAt": "2026-10-30T05:02:21.000Z",
       "workRef": "work.vexlife.interface-refinement.interface-compound-relay",
       "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
       "label": "Current — Interface Compound Relay convergence",
-      "purpose": "Finish Interface Compound Relay F2/F3 from accepted VexLife main 92e810c91b09e7c74a8e1c7da8d2fade7e070c3a. F2 A005 stopped inside its mutation harness before tests/commit/push because ordinary JavaScript strings consumed RegExp-source backslashes in the first repository-test search anchor. The accepted assertion is present; this is a formation-harness representation defect. A005 produced only partial uncommitted edits in a disposable RUN_ROOT and no remote mutation. A006 preserves the exact A005 product payload/evidence-driven corrections, rewrites the six repository tests using semantic section/line needles plus String.raw replacement source, passes harness representation smoke proof, remains v2/current-contract bound, and is the next unconsumed source transaction. Assurance/READY/merge/F3 remain held.",
+      "purpose": "Finish Interface Compound Relay F2/F3 from accepted VexLife main 92e810c91b09e7c74a8e1c7da8d2fade7e070c3a. F2 A006 passed current carrier/package admission but stopped before tests/commit/push because its first semantic line needle omitted the literal RegExp-source escape characters present in the repository assertion. This is a mutation-harness source-representation defect; A006 produced only partial uncommitted disposable RUN_ROOT edits and no remote publication. A007 preserves the complete F2 product payload and A004/A005 corrections, changes only six test-edit search needles, and proves each needle resolves exactly once inside its intended test section on accepted main. Consume A007 canonical RETURN next; Assurance/READY/merge/F3 remain held.",
       "workClass": "TASK",
       "state": "RUNNING",
       "priorityClass": "IMMEDIATE",
@@ -203,7 +203,12 @@
         "relay.return.vexlife.interface-currentness-browser-realization.f2.a005.inner.sha256.c75e44383382dcb8a1e1bc816362020ac23ae3d4177470818afb2b86ee5831df",
         "relay.package.vexlife.interface-currentness-browser-realization.f2.a006.sha256.1145ce95e13c9bb68f77dddbe9162f9d1ef9e1e46caf9956d3ae33b4d59bc705",
         "relay.inner.vexlife.interface-currentness-browser-realization.f2.a006.sha256.8cc0eef3285ccaf15bd05801ac6eec6449d0a7f3e4522e0b3672818b602e6331",
-        "finding.vexlife.interface-currentness.f2.a005.test-rewrite-backslash-escape"
+        "finding.vexlife.interface-currentness.f2.a005.test-rewrite-backslash-escape",
+        "relay.return.vexlife.interface-currentness-browser-realization.f2.a006.outer.sha256.5e0ddf280832b3cbaf0f510584c07f0599df95f92b92e2fedf8fff2bed2f8c34",
+        "relay.return.vexlife.interface-currentness-browser-realization.f2.a006.inner.sha256.f8cf97a280882fe860461398f130c2487e7ae1d03d36055e7ff87da5e1bbc9aa",
+        "relay.package.vexlife.interface-currentness-browser-realization.f2.a007.sha256.994a19bdd24690200ea5ccf5ba8da0efd71b5323bb7607f8110bcae7846f1583",
+        "relay.inner.vexlife.interface-currentness-browser-realization.f2.a007.sha256.9bb83af8ee9831fbdbaeb76cf5ce5e6f02488099815f746b6a7845d583a33063",
+        "finding.vexlife.interface-currentness.f2.a006.line-needle-literal-regexp-source"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
@@ -1230,6 +1235,23 @@
         "finding.vexlife.interface-currentness.f2.a005.test-rewrite-backslash-escape"
       ],
       "createdAt": "2026-10-30T04:55:34.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.interface-refinement.interface-compound-relay.running-running.f2-a006-line-needle-recovery-a007",
+      "workRef": "work.vexlife.interface-refinement.interface-compound-relay",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING",
+      "reason": "F2 A006 stopped before tests/commit/push because its semantic test-line search omitted literal RegExp-source escapes stored in accepted source. A007 preserves product bytes and all evidence-driven corrections, changes only the search needles, and source-verifies each intended needle as unique within its target test section.",
+      "actorRef": "actor.chatgpt.vexlife-interface-compound-relay",
+      "sourceRefs": [
+        "relay.return.vexlife.interface-currentness-browser-realization.f2.a006.outer.sha256.5e0ddf280832b3cbaf0f510584c07f0599df95f92b92e2fedf8fff2bed2f8c34",
+        "relay.return.vexlife.interface-currentness-browser-realization.f2.a006.inner.sha256.f8cf97a280882fe860461398f130c2487e7ae1d03d36055e7ff87da5e1bbc9aa",
+        "relay.package.vexlife.interface-currentness-browser-realization.f2.a007.sha256.994a19bdd24690200ea5ccf5ba8da0efd71b5323bb7607f8110bcae7846f1583",
+        "relay.inner.vexlife.interface-currentness-browser-realization.f2.a007.sha256.9bb83af8ee9831fbdbaeb76cf5ce5e6f02488099815f746b6a7845d583a33063",
+        "finding.vexlife.interface-currentness.f2.a006.line-needle-literal-regexp-source"
+      ],
+      "createdAt": "2026-10-30T05:02:21.000Z"
     }
   ],
   "sourceRefs": [
@@ -1365,7 +1387,12 @@
     "relay.return.vexlife.interface-currentness-browser-realization.f2.a005.inner.sha256.c75e44383382dcb8a1e1bc816362020ac23ae3d4177470818afb2b86ee5831df",
     "relay.package.vexlife.interface-currentness-browser-realization.f2.a006.sha256.1145ce95e13c9bb68f77dddbe9162f9d1ef9e1e46caf9956d3ae33b4d59bc705",
     "relay.inner.vexlife.interface-currentness-browser-realization.f2.a006.sha256.8cc0eef3285ccaf15bd05801ac6eec6449d0a7f3e4522e0b3672818b602e6331",
-    "finding.vexlife.interface-currentness.f2.a005.test-rewrite-backslash-escape"
+    "finding.vexlife.interface-currentness.f2.a005.test-rewrite-backslash-escape",
+    "relay.return.vexlife.interface-currentness-browser-realization.f2.a006.outer.sha256.5e0ddf280832b3cbaf0f510584c07f0599df95f92b92e2fedf8fff2bed2f8c34",
+    "relay.return.vexlife.interface-currentness-browser-realization.f2.a006.inner.sha256.f8cf97a280882fe860461398f130c2487e7ae1d03d36055e7ff87da5e1bbc9aa",
+    "relay.package.vexlife.interface-currentness-browser-realization.f2.a007.sha256.994a19bdd24690200ea5ccf5ba8da0efd71b5323bb7607f8110bcae7846f1583",
+    "relay.inner.vexlife.interface-currentness-browser-realization.f2.a007.sha256.9bb83af8ee9831fbdbaeb76cf5ce5e6f02488099815f746b6a7845d583a33063",
+    "finding.vexlife.interface-currentness.f2.a006.line-needle-literal-regexp-source"
   ],
   "formedAt": "2026-10-25T01:23:08.000Z"
 }
