@@ -1362,26 +1362,27 @@ ProcessFamily.State
   scopeRef
   currentNodeRef
   layer
-
   previousStateRefOrNull
   lastAcceptedTransitionOrNull
 
-  acceptedEvidenceRefs
-    entry State MUST be []
-    otherwise MUST exactly equal lastAcceptedTransitionOrNull.evidenceRefs
-    evidence directly grounding THIS State
-    != cumulative process history
-
+lastAcceptedTransitionOrNull, when present:
+  transitionRef
+  relationshipRefOrNull
+  fromLayer
+  evidenceRefs
   carriedIdentityRefs
-    entry State MUST be []
-    otherwise MUST exactly equal lastAcceptedTransitionOrNull.carriedIdentityRefs
-    exact continuity identities required by THIS State
-    every transition must state them explicitly
-    explicitly replaceable/prunable
-
-  no State-owned sourceRefs bag
-    current source grounding is derived at projection/read time
 ~~~
+
+The State does **not** duplicate transition evidence/identity fields and owns no cumulative source/provenance bag.
+
+Current evidence / identity provenance is:
+
+~~~text
+State.lastAcceptedTransitionOrNull?.evidenceRefs
+State.lastAcceptedTransitionOrNull?.carriedIdentityRefs
+~~~
+
+Current movement semantics and node endpoints are derived from the Family relationship when `relationshipRefOrNull` is present. Current `toLayer` is `State.layer`.
 
 Transition formation therefore behaves as:
 
@@ -1393,10 +1394,21 @@ State N
 
 where:
   State N+1.previousStateRefOrNull = State N.stateRef
-  State N+1.lastAcceptedTransitionOrNull = exact transition N -> N+1
-  State N+1.acceptedEvidenceRefs = current transition evidence exactly
-  State N+1.carriedIdentityRefs = current continuity identities exactly
-  State N+1 stores no sourceRefs history bag
+  State N+1.lastAcceptedTransitionOrNull = compact accepted transition N -> N+1
+
+  transition.evidenceRefs = current transition evidence
+  transition.carriedIdentityRefs = current continuity identities
+  transition.fromLayer = State N.layer
+
+  relationship-backed:
+    transition.relationshipRefOrNull -> Family relationship
+    Family relationship owns movement class + node endpoints
+
+  relationship-free layer change:
+    transition.relationshipRefOrNull = null
+    prior/current node is the same State coordinate
+    State N+1.layer supplies toLayer
+
   older accepted history remains reachable through predecessor snapshots
 ~~~
 
@@ -1506,25 +1518,31 @@ The invariant is enforced by exported `normalizeProcessState(...)`, not only by 
 ~~~text
 relationship-backed transition
   relationshipRefOrNull = <relationship>
-  movementClass = Family-declared relationship movement
+  Family relationship owns:
+    movementClass
+    fromRef
+    toRef
 
 relationship-free same-node layer transition
   relationshipRefOrNull = null
-  movementClass = null
-  fromNodeRef = toNodeRef
-  fromLayer != toLayer
+  transition carries:
+    fromLayer
+  State supplies:
+    currentNodeRef  # same semantic node
+    layer           # toLayer
+  no transition movementClass field is serialized
 ~~~
 
 The core therefore owns the **structural mechanism** without owning one semantic movement name. If a Family independently wants the spelling `LAYER_REVISIT` for an ordinary declared relationship, that spelling is Family-owned and valid.
 
-VexBoard renders a null-class layer transition from the structural coordinates, e.g. `Layer FORMATION → TOPOLOGY`, rather than inventing a semantic class.
+VexBoard renders a relationship-free layer transition from the structural coordinates, e.g. `Layer FORMATION → TOPOLOGY`, rather than inventing or serializing a semantic class.
 
 Permanent:
 
 ~~~text
 ENTRY_STATE = ENTRY_NODE + ENTRY_LAYER + EMPTY_TRANSITION_PROVENANCE
 STRUCTURAL_LAYER_CHANGE != UNIVERSAL_MOVEMENT_ONTOLOGY
-NULL_MOVEMENT_CLASS + SAME_NODE + CHANGED_LAYER = STRUCTURAL_LAYER_CHANGE
+NULL_RELATIONSHIP_REF + SAME_NODE + CHANGED_LAYER = STRUCTURAL_LAYER_CHANGE
 ~~~
 ## Foundational helper audit — reject unearned semantics before acceptance
 
@@ -1547,10 +1565,10 @@ createProcessState(...)
     layer = family.entryLayer
 
   requires:
-    acceptedEvidenceRefs = []
-    carriedIdentityRefs = []
     previousStateRefOrNull = null
     lastAcceptedTransitionOrNull = null
+
+  therefore has no current transition evidence/identity provenance
 ~~~
 
 Entry transition evidence, carried transition identities, and non-entry layer selection are not caller-authored options.
@@ -1589,7 +1607,7 @@ forward movement
   ENABLES
 ~~~
 
-A relationship-free same-node layer change carries `movementClass = null`. The core derives its structural meaning from same node + different Family-declared layer and does not serialize a universal semantic movement name.
+A relationship-free same-node layer change carries **no transition movement-class field at all**. The core derives its structural meaning from `relationshipRefOrNull = null`, the current node, and a changed Family-declared layer.
 
 Permanent:
 
@@ -1598,6 +1616,35 @@ PROCESS_FAMILY_LAYER != PROCESS_ATLAS_DEPTH_CLASS
 ONE FAMILY'S MOVEMENT NAMES != UNIVERSAL PROCESS ONTOLOGY
 ~~~
 
+### Current transition provenance is serialized once
+
+An earlier intermediate State duplicated `acceptedEvidenceRefs` and `carriedIdentityRefs` from `lastAcceptedTransitionOrNull` and then needed equality guards to keep the two copies aligned.
+
+Those duplicate State fields were removed.
+
+~~~text
+CURRENT evidence
+  = lastAcceptedTransitionOrNull?.evidenceRefs
+
+CURRENT carried identities
+  = lastAcceptedTransitionOrNull?.carriedIdentityRefs
+
+movement class
+  = Family relationship selected by relationshipRefOrNull
+
+transition node endpoints
+  = Family relationship endpoints when relationship-backed
+  = currentNodeRef when relationship-free same-node layer movement
+
+toLayer
+  = current State.layer
+~~~
+
+Only `fromLayer` remains on the compact transition because it is predecessor-side information that cannot be recovered from the current State without loading the predecessor snapshot.
+
+~~~text
+DERIVABLE CURRENT SEMANTICS != DUPLICATED TRANSITION/STATE FIELDS
+~~~
 ### Static node schema was reduced to earned fields
 
 The first machine draft promoted several conceptual node questions into exact wire fields before the patient-zero actually used them:
@@ -1708,8 +1755,13 @@ It cannot prove, without reading the predecessor snapshot, that:
 
 ~~~text
 current.previousStateRefOrNull == actual previous.stateRef
-current.lastAcceptedTransition.fromNodeRef == actual previous.currentNodeRef
 current.lastAcceptedTransition.fromLayer == actual previous.layer
+
+if current.lastAcceptedTransition.relationshipRefOrNull != null:
+  Family relationship.fromRef == actual previous.currentNodeRef
+
+if relationshipRefOrNull == null:
+  current.currentNodeRef == actual previous.currentNodeRef
 ~~~
 
 No persistent ProcessFamily runtime consumes that pair yet.
@@ -1758,11 +1810,11 @@ currentNodeRef
 layer
 previousStateRefOrNull
 lastAcceptedTransitionOrNull
-acceptedEvidenceRefs
-carriedIdentityRefs
 ~~~
 
-It does **not** own a cumulative source/provenance bag. Current reading/source grounding is derived from the ProcessFamily definition, CURRENT node contract, current State evidence/identities, and the predecessor coordinate when needed.
+`lastAcceptedTransitionOrNull` owns the current transition evidence/identity provenance once.
+
+It does **not** duplicate evidence/identity bags and does not own a cumulative source/provenance bag. Current reading/source grounding is derived from the ProcessFamily definition, CURRENT node contract, the last accepted transition, and the predecessor coordinate when needed.
 
 Exact-key validation intentionally rejects ad-hoc provider/repository fields. Mutable world truth remains owned by its rightful source and is re-grounded before a dependent next effect.
 
