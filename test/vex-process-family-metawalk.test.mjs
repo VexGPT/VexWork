@@ -44,6 +44,17 @@ function familyFixture() {
     familyRef: 'process-family.test.metawalk',
     purpose: 'Prove the smallest current-state and bounded-horizon relationship.',
     entryNodeRef: 'node.recover',
+    layers: [
+      'FORMATION',
+      'TOPOLOGY',
+      'OWNERSHIP',
+      'CONTRACT',
+      'IMPLEMENTATION',
+      'FOCUSED_PROOF',
+      'LIVED_INTEGRATION',
+      'RECONCILE_ACCEPT',
+    ],
+    entryLayer: 'FORMATION',
     nodes: [
       node('node.recover', 'Recover'),
       node('node.contract', 'Contract'),
@@ -234,6 +245,66 @@ test('MetaWalk is discoverable through the existing VexBoard source catalog with
   assert.equal(resolution?.sourceRefs.includes(boardPath), true);
 });
 
+
+test('ProcessFamily owns its layer vocabulary instead of inheriting MetaWalk layers globally', () => {
+  const family = normalizeProcessFamily({
+    schemaVersion: 'vexwork.process-family/v1',
+    familyRef: 'process-family.test.custom-layers',
+    purpose: 'Prove layer vocabulary is local to one ProcessFamily definition.',
+    entryNodeRef: 'node.alpha',
+    layers: ['DISCOVER', 'REALIZE'],
+    entryLayer: 'DISCOVER',
+    nodes: [
+      node('node.alpha', 'Alpha'),
+      node('node.beta', 'Beta'),
+    ],
+    relationships: [{
+      relationshipRef: 'rel.alpha-beta',
+      movementClass: 'ADVANCES',
+      fromRef: 'node.alpha',
+      toRef: 'node.beta',
+      label: 'advance',
+      entryPredicateRefs: [],
+      sourceRefs: ['source.relationship.alpha-beta'],
+    }],
+    sourceRefs: [sourcePath],
+  });
+
+  const start = createProcessState(family, {
+    stateRef: 'state.custom-layers.001',
+    scopeRef: 'work.custom-layers',
+  });
+  assert.equal(start.layer, 'DISCOVER');
+
+  const next = admitProcessTransition({
+    family,
+    state: start,
+    transitionRef: 'transition.custom-layers.001',
+    relationshipRefOrNull: 'rel.alpha-beta',
+    movementClass: 'ADVANCES',
+    nextLayer: 'REALIZE',
+    evidenceRefs: ['evidence.custom-layers.001'],
+    carriedIdentityRefs: [],
+    nextStateRef: 'state.custom-layers.002',
+  });
+  assert.equal(next.layer, 'REALIZE');
+
+  assert.throws(
+    () => admitProcessTransition({
+      family,
+      state: start,
+      transitionRef: 'transition.custom-layers.bad',
+      relationshipRefOrNull: 'rel.alpha-beta',
+      movementClass: 'ADVANCES',
+      nextLayer: 'IMPLEMENTATION',
+      evidenceRefs: ['evidence.custom-layers.bad'],
+      carriedIdentityRefs: [],
+      nextStateRef: 'state.custom-layers.bad',
+    }),
+    /layer invalid for ProcessFamily/,
+  );
+});
+
 test('ProcessFamily State owns scope x node x layer without becoming a world-state database', () => {
   const family = normalizeProcessFamily(familyFixture());
   const state = createProcessState(family, {
@@ -309,6 +380,7 @@ test('accepted transition carries evidence and identity while rotating CURRENT n
   assert.equal(next.lastAcceptedTransitionOrNull?.movementClass, 'ADVANCES');
 
   const horizon = projectProcessHorizon(family, next);
+  assert.equal(horizon.previousAcceptedOrNull?.stateRef, 'state.metawalk.001');
   assert.equal(horizon.previousAcceptedOrNull?.nodeRef, 'node.recover');
   assert.equal(horizon.previousAcceptedOrNull?.transitionRef, 'transition.metawalk.001');
   assert.deepEqual(horizon.previousAcceptedOrNull?.evidenceRefs, ['evidence.pressure-grounded']);
@@ -481,6 +553,7 @@ test('bounded-horizon VexBoard projection deep-reads CURRENT but withholds futur
   assert.equal(currentNode?.sourceRefs.includes('proof.node.contract'), true);
 
   assert.equal(previousNode?.label, 'PREVIOUS · Recover');
+  assert.equal(previousNode?.sourceRefs.includes('state.metawalk.001'), true);
   assert.equal(previousNode?.sourceRefs.includes('evidence.pressure-grounded'), true);
 
   assert.equal(nextNode?.label, 'NEXT · Implement');
@@ -670,6 +743,7 @@ test('ProcessFamily State keeps one predecessor link and one accepted transition
   assert.deepEqual(third.carriedIdentityRefs, ['identity.stable']);
 
   const horizon = projectProcessHorizon(family, third);
+  assert.equal(horizon.previousAcceptedOrNull?.stateRef, 'state.compact.002');
   assert.equal(horizon.previousAcceptedOrNull?.nodeRef, 'node.contract');
   assert.deepEqual(horizon.previousAcceptedOrNull?.evidenceRefs, ['evidence.compact.002']);
 });
@@ -751,7 +825,7 @@ test('entry ProcessFamily State cannot invent transition evidence, identities, o
     stateRef: 'state.entry.valid',
     scopeRef: 'work.test.outcome',
   });
-  assert.equal(valid.layer, 'FORMATION');
+  assert.equal(valid.layer, family.entryLayer);
   assert.deepEqual(valid.acceptedEvidenceRefs, []);
   assert.deepEqual(valid.carriedIdentityRefs, []);
   assert.equal(valid.previousStateRefOrNull, null);
@@ -1025,6 +1099,8 @@ test('initial bounded horizon has no PREVIOUS slot and may have no FURTHER route
     familyRef: 'process-family.test.tiny',
     purpose: 'Exercise the initial bounded horizon without previous or further process coordinates.',
     entryNodeRef: 'node.start',
+    layers: ['START', 'DONE'],
+    entryLayer: 'START',
     nodes: [
       node('node.start', 'Start'),
       node('node.finish', 'Finish'),
