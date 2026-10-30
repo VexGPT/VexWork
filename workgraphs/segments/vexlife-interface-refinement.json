@@ -70,11 +70,11 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-10-29T20:01:00.000Z",
-      "updatedAt": "2026-10-30T05:53:08.000Z",
+      "updatedAt": "2026-10-30T06:04:00.000Z",
       "workRef": "work.vexlife.interface-refinement.interface-compound-relay",
       "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
       "label": "Current — Interface Compound Relay convergence",
-      "purpose": "Finish Interface Compound Relay F2/F3. A010 remains published on PR #965 at exact head fe3f4c03482243bf17e4d86d7c77077f950eaef1 / tree adf758b931935f3be677af523c3fc69a9d79335c and byte-level Assurance requires fresh READY-state draft persistence. A011 applied that product correction locally; its static real-input-handler proof passed and 87/88 focused tests passed, but the new real-browser READY draft reload proof hit its 30s test timeout without identifying whether READY, storage, reload, restoration or teardown stalled. A011 made no commit/push. A012 preserves the exact product correction and replaces only the ambiguous proof with stage-bounded diagnostics, load-based navigation and explicit browser-before-server cleanup. Its inner/outer package digests and mutation/test syntax self-verify, and historical A011 refs were rechecked after one discarded broad-substitution formation build. Consume A012 RETURN next; fresh Assurance/READY/merge/F3 remain held.",
+      "purpose": "Finish Interface Compound Relay F2/F3. A010 remains published on PR #965 at exact head fe3f4c03482243bf17e4d86d7c77077f950eaef1; byte-level Assurance requires fresh READY-state draft persistence. A012 preserved that product correction and localized the browser proof failure: Interface READY was reached, but #messageInput was hidden because ?open=vex selected the Conversation scope without opening contextProjection=chat. The proof failed at locator.fill before storage/reload assertions; no commit/push occurred. A013 preserves product semantics and proves the real visible path: open the canonical Chat context, require visible composer, persist exact scoped sessionStorage, reload, require automatic semantic-history restoration of Chat, and verify exact draft restoration. Consume A013 RETURN next; fresh Assurance/READY/merge/F3 remain held.",
       "workClass": "TASK",
       "state": "RUNNING",
       "priorityClass": "IMMEDIATE",
@@ -241,7 +241,12 @@
         "relay.return.vexlife.interface-currentness-browser-realization.f2.a011.inner.sha256.096fbf18f7c204a352ddb1d18873cc40cc2ed26342b25b61ff5bf47a60b8aa58",
         "finding.vexlife.interface-currentness.f2.a011.browser-proof-timeout-unlocalized",
         "relay.package.vexlife.interface-currentness-browser-realization.f2.a012.sha256.af0ea30029fc634474bb1c6854407e8aba0220808dad8fa723d9729f967c5b0e",
-        "relay.inner.vexlife.interface-currentness-browser-realization.f2.a012.sha256.8eccd460a07fa6b3cca7162d9659cbb93817e5d69dfee75c4540686ba62cd184"
+        "relay.inner.vexlife.interface-currentness-browser-realization.f2.a012.sha256.8eccd460a07fa6b3cca7162d9659cbb93817e5d69dfee75c4540686ba62cd184",
+        "relay.return.vexlife.interface-currentness-browser-realization.f2.a012.outer.sha256.f1cc70b93b938d04ef9f1146385052f8aad9db5602585cfdba65a3b94c1e009e",
+        "relay.return.vexlife.interface-currentness-browser-realization.f2.a012.inner.sha256.f965f9414978d42bc84667d6a6565b90b079b28d747a0a8cdd78b459006c2281",
+        "finding.vexlife.interface-currentness.f2.a012.browser-proof-hidden-composer",
+        "relay.package.vexlife.interface-currentness-browser-realization.f2.a013.sha256.8826fec85d056948fc95e2d23cb9a9d9a732938b0baa936314b963f9113fd745",
+        "relay.inner.vexlife.interface-currentness-browser-realization.f2.a013.sha256.c971af69713d3785d38848956c397911ca35f2ecd4e5fc9b2a594b551659926f"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
@@ -1378,6 +1383,23 @@
         "relay.inner.vexlife.interface-currentness-browser-realization.f2.a012.sha256.8eccd460a07fa6b3cca7162d9659cbb93817e5d69dfee75c4540686ba62cd184"
       ],
       "createdAt": "2026-10-30T05:53:08.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.interface-refinement.interface-compound-relay.running-running.f2-a012-visible-context-recovery-a013",
+      "workRef": "work.vexlife.interface-refinement.interface-compound-relay",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING",
+      "reason": "A012 reached READY and localized its browser proof failure to attempting to fill a hidden canonical textarea while the Chat context was not open. No commit/push occurred. A013 preserves the product correction and proves visible Chat typing plus automatic same-context restoration and exact draft restoration after reload.",
+      "actorRef": "actor.chatgpt.vexlife-interface-compound-relay",
+      "sourceRefs": [
+        "relay.return.vexlife.interface-currentness-browser-realization.f2.a012.outer.sha256.f1cc70b93b938d04ef9f1146385052f8aad9db5602585cfdba65a3b94c1e009e",
+        "relay.return.vexlife.interface-currentness-browser-realization.f2.a012.inner.sha256.f965f9414978d42bc84667d6a6565b90b079b28d747a0a8cdd78b459006c2281",
+        "finding.vexlife.interface-currentness.f2.a012.browser-proof-hidden-composer",
+        "relay.package.vexlife.interface-currentness-browser-realization.f2.a013.sha256.8826fec85d056948fc95e2d23cb9a9d9a732938b0baa936314b963f9113fd745",
+        "relay.inner.vexlife.interface-currentness-browser-realization.f2.a013.sha256.c971af69713d3785d38848956c397911ca35f2ecd4e5fc9b2a594b551659926f"
+      ],
+      "createdAt": "2026-10-30T06:04:00.000Z"
     }
   ],
   "sourceRefs": [
@@ -1551,7 +1573,12 @@
     "relay.return.vexlife.interface-currentness-browser-realization.f2.a011.inner.sha256.096fbf18f7c204a352ddb1d18873cc40cc2ed26342b25b61ff5bf47a60b8aa58",
     "finding.vexlife.interface-currentness.f2.a011.browser-proof-timeout-unlocalized",
     "relay.package.vexlife.interface-currentness-browser-realization.f2.a012.sha256.af0ea30029fc634474bb1c6854407e8aba0220808dad8fa723d9729f967c5b0e",
-    "relay.inner.vexlife.interface-currentness-browser-realization.f2.a012.sha256.8eccd460a07fa6b3cca7162d9659cbb93817e5d69dfee75c4540686ba62cd184"
+    "relay.inner.vexlife.interface-currentness-browser-realization.f2.a012.sha256.8eccd460a07fa6b3cca7162d9659cbb93817e5d69dfee75c4540686ba62cd184",
+    "relay.return.vexlife.interface-currentness-browser-realization.f2.a012.outer.sha256.f1cc70b93b938d04ef9f1146385052f8aad9db5602585cfdba65a3b94c1e009e",
+    "relay.return.vexlife.interface-currentness-browser-realization.f2.a012.inner.sha256.f965f9414978d42bc84667d6a6565b90b079b28d747a0a8cdd78b459006c2281",
+    "finding.vexlife.interface-currentness.f2.a012.browser-proof-hidden-composer",
+    "relay.package.vexlife.interface-currentness-browser-realization.f2.a013.sha256.8826fec85d056948fc95e2d23cb9a9d9a732938b0baa936314b963f9113fd745",
+    "relay.inner.vexlife.interface-currentness-browser-realization.f2.a013.sha256.c971af69713d3785d38848956c397911ca35f2ecd4e5fc9b2a594b551659926f"
   ],
   "formedAt": "2026-10-25T01:23:08.000Z"
 }
