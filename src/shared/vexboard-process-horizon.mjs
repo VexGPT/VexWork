@@ -395,7 +395,7 @@ export function projectProcessHorizonBoard({
     draftRef: boardRef,
     title: scope.label + ' · Current process horizon',
     mode: PROCESS_HORIZON_BOARD_MODE,
-    derivedFromRefOrNull: null,
+    derivedFromRefOrNull: state.stateRef,
     savedAtOrNull: null,
     graph,
     projection,
