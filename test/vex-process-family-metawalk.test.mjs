@@ -530,3 +530,201 @@ test('bounded-horizon projector rejects a scope projection that does not match c
     /scopeRef must match ProcessFamily\.State scopeRef/,
   );
 });
+
+
+test('ProcessFamily definition fails closed on identity, topology and movement contradictions', () => {
+  const schema = familyFixture();
+
+  const wrongSchema = structuredClone(schema);
+  wrongSchema.schemaVersion = 'wrong';
+  assert.throws(() => normalizeProcessFamily(wrongSchema), /ProcessFamily schema mismatch/);
+
+  const duplicateNode = structuredClone(schema);
+  duplicateNode.nodes.push(structuredClone(duplicateNode.nodes[0]));
+  assert.throws(() => normalizeProcessFamily(duplicateNode), /nodeRef must be unique/);
+
+  const missingEntry = structuredClone(schema);
+  missingEntry.entryNodeRef = 'node.missing';
+  assert.throws(() => normalizeProcessFamily(missingEntry), /entryNodeRef missing/);
+
+  const invalidMovement = structuredClone(schema);
+  invalidMovement.relationships[0].movementClass = 'DEPTH_REVISIT';
+  assert.throws(() => normalizeProcessFamily(invalidMovement), /movementClass invalid/);
+
+  const missingEndpoint = structuredClone(schema);
+  missingEndpoint.relationships[0].toRef = 'node.missing';
+  assert.throws(() => normalizeProcessFamily(missingEndpoint), /toRef missing/);
+});
+
+test('ProcessFamily State fails closed on foreign family, invalid depth and corrupted transition lineage', () => {
+  const family = normalizeProcessFamily(familyFixture());
+  const start = createProcessState(family, {
+    stateRef: 'state.lineage.001',
+    scopeRef: 'work.test.outcome',
+  });
+  const next = admitProcessTransition({
+    family,
+    state: start,
+    transitionRef: 'transition.lineage.001',
+    relationshipRefOrNull: 'rel.recover-contract',
+    movementClass: 'ADVANCES',
+    nextDepth: 'CONTRACT',
+    evidenceRefs: ['evidence.lineage.001'],
+    carriedIdentityRefs: ['identity.lineage.001'],
+    satisfiedPredicateRefs: [
+      'predicate.contract.allowed',
+      'predicate.node.contract.entry',
+    ],
+    nextStateRef: 'state.lineage.002',
+  });
+
+  const foreignFamily = structuredClone(start);
+  foreignFamily.familyRef = 'process-family.other';
+  assert.throws(() => normalizeProcessState(foreignFamily, family), /familyRef mismatch/);
+
+  const invalidDepth = structuredClone(start);
+  invalidDepth.depth = 'MAGICAL_DEPTH';
+  assert.throws(() => normalizeProcessState(invalidDepth, family), /depth invalid/);
+
+  const badHistoryOrigin = structuredClone(next);
+  badHistoryOrigin.transitionHistory[0].fromNodeRef = 'node.implement';
+  assert.throws(
+    () => normalizeProcessState(badHistoryOrigin, family),
+    /relationship fromRef mismatch|must begin at entryNodeRef/,
+  );
+
+  const missingAcceptedEvidence = structuredClone(next);
+  missingAcceptedEvidence.acceptedEvidenceRefs = [];
+  assert.throws(
+    () => normalizeProcessState(missingAcceptedEvidence, family),
+    /transition evidence must be accepted/,
+  );
+
+  const missingCarriedIdentity = structuredClone(next);
+  missingCarriedIdentity.carriedIdentityRefs = [];
+  assert.throws(
+    () => normalizeProcessState(missingCarriedIdentity, family),
+    /transition identity must be carried/,
+  );
+});
+
+test('transition formation rejects unknown relationships, empty evidence and no-op depth revisits', () => {
+  const family = normalizeProcessFamily(familyFixture());
+  const state = createProcessState(family, {
+    stateRef: 'state.reject.001',
+    scopeRef: 'work.test.outcome',
+  });
+
+  assert.throws(
+    () => admitProcessTransition({
+      family,
+      state,
+      transitionRef: 'transition.reject.unknown',
+      relationshipRefOrNull: 'rel.unknown',
+      movementClass: 'ADVANCES',
+      nextDepth: 'CONTRACT',
+      evidenceRefs: ['evidence.reject.unknown'],
+      nextStateRef: 'state.reject.unknown',
+    }),
+    /relationship missing/,
+  );
+
+  assert.throws(
+    () => admitProcessTransition({
+      family,
+      state,
+      transitionRef: 'transition.reject.empty-evidence',
+      relationshipRefOrNull: 'rel.recover-contract',
+      movementClass: 'ADVANCES',
+      nextDepth: 'CONTRACT',
+      evidenceRefs: [],
+      satisfiedPredicateRefs: [
+        'predicate.contract.allowed',
+        'predicate.node.contract.entry',
+      ],
+      nextStateRef: 'state.reject.empty-evidence',
+    }),
+    /evidenceRefs must be non-empty/,
+  );
+
+  assert.throws(
+    () => admitProcessTransition({
+      family,
+      state,
+      transitionRef: 'transition.reject.noop-depth',
+      relationshipRefOrNull: null,
+      movementClass: 'DEPTH_REVISIT',
+      nextDepth: 'FORMATION',
+      evidenceRefs: ['evidence.reject.noop-depth'],
+      nextStateRef: 'state.reject.noop-depth',
+    }),
+    /must change node or depth/,
+  );
+});
+
+test('initial bounded horizon has no PREVIOUS slot and may have no FURTHER route', () => {
+  const tiny = normalizeProcessFamily({
+    schemaVersion: 'vexwork.process-family/v1',
+    familyRef: 'process-family.test.tiny',
+    purpose: 'Exercise the initial bounded horizon without previous or further process coordinates.',
+    entryNodeRef: 'node.start',
+    nodes: [
+      node('node.start', 'Start'),
+      node('node.finish', 'Finish'),
+    ],
+    relationships: [{
+      relationshipRef: 'rel.start-finish',
+      movementClass: 'ADVANCES',
+      fromRef: 'node.start',
+      toRef: 'node.finish',
+      label: 'finish when earned',
+      entryPredicateRefs: ['predicate.finish.allowed'],
+      sourceRefs: ['source.relationship.start-finish'],
+    }],
+    sourceRefs: [sourcePath],
+  });
+  const state = createProcessState(tiny, {
+    stateRef: 'state.tiny.001',
+    scopeRef: 'work.tiny.outcome',
+  });
+
+  const horizon = projectProcessHorizon(tiny, state);
+  assert.equal(horizon.previousAcceptedOrNull, null);
+  assert.deepEqual(horizon.furtherNodeRefs, []);
+  assert.equal(horizon.nextCandidates[0].available, false);
+  assert.deepEqual(horizon.nextCandidates[0].missingPredicateRefs, [
+    'predicate.finish.allowed',
+    'predicate.node.finish.entry',
+  ]);
+
+  const board = projectProcessHorizonBoard({
+    family: tiny,
+    state,
+    scope: {
+      scopeRef: 'work.tiny.outcome',
+      label: 'Tiny outcome',
+      purpose: 'Prove the initial horizon omits PREVIOUS and FURTHER when neither exists.',
+      sourceRefs: ['work.tiny.outcome'],
+    },
+    boardRef: 'board.test.tiny-horizon',
+  });
+  const graph = normalizeBoardGraph(board.graph);
+  assert.equal(graph.nodes.some((entry) => entry.label.startsWith('PREVIOUS · ')), false);
+  assert.equal(graph.nodes.some((entry) => entry.label.startsWith('FURTHER ROUTE · ')), false);
+  assert.equal(graph.nodes.some((entry) => entry.label === 'NEXT · Finish'), true);
+
+  assert.throws(
+    () => projectProcessHorizonBoard({
+      family: tiny,
+      state,
+      scope: {
+        scopeRef: 'work.tiny.outcome',
+        label: 'Tiny outcome',
+        purpose: 'Invalid board identity should fail before projection.',
+        sourceRefs: ['work.tiny.outcome'],
+      },
+      boardRef: 'bad board ref',
+    }),
+    /stable ref|must start with board/,
+  );
+});
