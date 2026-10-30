@@ -472,6 +472,13 @@ test('relationship-free layer change may deepen one semantic coordinate without 
   assert.equal(horizon.previousAcceptedOrNull?.fromLayer, 'FORMATION');
   assert.equal(horizon.previousAcceptedOrNull?.toLayer, 'TOPOLOGY');
 
+  const forgedSemanticClass = structuredClone(next);
+  forgedSemanticClass.lastAcceptedTransitionOrNull.movementClass = 'LAYER_REVISIT';
+  assert.throws(
+    () => normalizeProcessState(forgedSemanticClass, family),
+    /relationship-free layer transition must not claim a semantic movementClass/,
+  );
+
   const board = projectProcessHorizonBoard({
     family,
     state: next,
