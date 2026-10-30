@@ -3212,6 +3212,92 @@ A002
 + CORRECTED_SEMANTIC_MUTATION_ANCHORS
 ~~~
 
+### F2 A002 — focused-test parse stop; A003 formed
+
+F2 A002 passed outer carrier admission/retention/consumption and corrected the A001 semantic mutation-anchor
+defect. The inner transaction then reached the focused test gate and stopped safely.
+
+~~~text
+outer RETURN sha256
+  b4c6c79416b06695f2ef3172915ad7172f4ababcb56e5f4203fa40a2f8d66cd6
+
+retained inner RETURN sha256
+  8cbe66565258ae918e28991e3830d9ac4d467423b72d08511d16adf176d27e5c
+
+inner disposition
+  SAFE_FAILURE
+
+focused tests
+  28 total
+  26 PASS
+  2 FAIL at module parse-time
+
+first failure
+  scripts/serve-browser-core.mjs:153
+  SyntaxError: Invalid or unexpected token
+~~~
+
+The failure was caused by one generator escape layer. The mutation script intended to generate this
+candidate source:
+
+~~~js
+const meta = '  <meta ...>\n';
+~~~
+
+but its template literal interpreted `\n` while generating the file, producing a literal newline inside a
+single-quoted JavaScript string. Therefore the two suites importing `serve-browser-core.mjs` could not
+parse; no behavioral F2 assertion failed.
+
+A002 effects remained local/disposable:
+
+~~~text
+source mutation in RUN_ROOT = true
+focused tests executed       = true
+commit                        = NONE
+push                          = NONE
+PR                            = NONE
+remote branch                 = ABSENT
+main                          = unchanged 92e810c91b09e7c74a8e1c7da8d2fade7e070c3a
+~~~
+
+A003 preserves the A002 semantic mutation-anchor correction and the same product payload bytes. It changes
+only the generator escaping so the generated candidate contains the intended backslash-n sequence. Before
+formation, both the mutation script and the exact generated server source block passed `node --check`.
+
+~~~text
+attempt
+  attempt.vexlife.interface-currentness-browser-realization.f2.a003.9e6881d7ba04
+
+branch
+  vxg-interface-currentness-browser-realization-a003
+
+outer package sha256
+  c476a328c6d0533eeb152dac96b7d12cb64d3b20de681f1aff5e4144fec712b5
+
+inner package sha256
+  88c426376612bdb7c7aa1a1d6f45beccf40f608e1e2736a7bb0d2f837d95ffe4
+
+formedAt
+  2026-10-30T04:26:14Z
+
+expiresAt
+  2026-10-31T04:26:14Z
+~~~
+
+Permanent:
+
+~~~text
+A002_FOCUSED_TEST_STOP
++ PARSE_ERROR_IN_GENERATED_CANDIDATE
++ NO_COMMIT
++ NO_REMOTE_MUTATION
+-> FRESH_ATTEMPT_FROM_ACCEPTED_BASE
+
+GENERATOR_ESCAPE_CORRECTION
+!= F2_ARCHITECTURE_CHANGE
+!= PRODUCT_PAYLOAD_CHANGE
+~~~
+
 ### Foundation-to-interface sequence
 
 ~~~text
