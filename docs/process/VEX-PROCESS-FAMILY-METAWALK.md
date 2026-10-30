@@ -228,6 +228,14 @@ PROOF
 EXIT
   what durable result does completion establish?
 
+CARRIES
+  which stable identities and accepted evidence may be carried forward
+  as expectations / provenance without being re-invented?
+
+REGROUND
+  which mutable authority, provider, repository, candidate or runtime truths
+  must be re-observed before the next dependent effect?
+
 OUTGOING RELATIONSHIPS
   what becomes reachable on success, correction, recovery or changed currentness?
 ~~~
@@ -588,6 +596,230 @@ lesson in prose
 -> compiler/type/adapter derives what it owns
 -> strict validator remains defense in depth
 -> prose shrinks to explanation
+~~~
+
+## First pressure walk — VexRelay SourceOwner to Assurance to integration currentness
+
+The first real pressure walk uses the current Vextreme-SDK Relay contract at source head
+\`9be6c8c3c169e8b98b04c7821b300f84cb8342de\`.
+
+This is not a new Relay specification. It is a cold read of the accepted SDK relationship through the MetaWalk.
+
+### Node A — ExactHeadSourceOwnerProof
+
+~~~text
+PURPOSE
+  Does this exact immutable candidate satisfy the source owner's
+  bounded behavior / browser / repository proof contract?
+
+OWNER / ROLE
+  CODER
+  STAGE_BOUNDED
+
+ENTRY / EXPECTED IDENTITIES
+  repositoryRef
+  exact candidate head
+  exact candidate tree
+  fixed evidence/diff base
+  source-owner proof predicates
+
+CURRENTNESS LAW
+  fixed base = EVIDENCE_DIFF_ANCHOR
+  fixed base != live-main lock
+
+  required candidate relations:
+    exact head unchanged
+    exact tree unchanged
+    fixed base remains ancestor
+
+  remote main advances:
+    SourceOwner proof may continue
+
+PROOF EFFECT
+  read repository state
+  prove expected head/tree
+  run only source-owner predicate classes
+  form bounded review projection
+  form canonical RETURN
+
+EXIT
+  exact SourceOwner evidence exists for the exact candidate
+
+NOT EXIT
+  Independent Assurance CLEAR
+  lifecycle currentness
+  approval / READY / merge
+~~~
+
+This node validates the MetaWalk rule that **one node should contain only the proof classes owned by its
+semantic question**. The current recipe compiler rejects later-stage predicate classes before task
+formation.
+
+### Node boundary — what survives the transition?
+
+A SourceOwner PASS does not mean the next node inherits all observations from that attempt.
+
+The current SDK already carries three different kinds of meaning that the MetaWalk should keep distinct:
+
+~~~text
+PRESERVE STABLE IDENTITY / EXPECTATION
+  Work / lane / source identity
+  exact candidate identity as the candidate being reasoned about
+  accepted source-owner evidence references
+
+CARRY ACCEPTED EVIDENCE
+  canonical RETURN
+  exact SourceOwner PASS evidence
+  transition / proof provenance
+
+REGROUND MUTABLE CURRENTNESS
+  current authority before another effect
+  provider branch / PR truth required by the next node
+  repository/provider observations whose truth may have changed
+  current integration base when integration currentness becomes material
+~~~
+
+The candidate head can therefore survive as **the expected candidate identity** while the next node
+still re-observes whether the provider/repository currently presents that identity.
+
+~~~text
+EXPECTED_IDENTITY
+!=
+LIVE_OBSERVATION
+~~~
+
+This distinction is stronger than treating all forward state as either disposable or automatically current.
+
+### Node B — IndependentAssurance
+
+~~~text
+PURPOSE
+  Form a fresh read-only remote review projection of the exact candidate.
+
+OWNER / ROLE
+  INDEPENDENT_ASSURANCE
+  READ_ONLY
+
+ENTRY
+  exact candidate expectation from accepted SourceOwner work
+  exact review base for this assurance question
+  branch/provider coordinate
+  fresh assurance occupancy / authority
+
+CURRENT WORK
+  authenticate provider capability
+  query remote review snapshot for exact base/head/branch
+  form canonical RETURN
+
+EXIT
+  independent assurance evidence exists
+
+NOT EXIT
+  semantic CLEAR issued by the Relay recipe itself
+~~~
+
+The SDK explicitly says IndependentAssurance forms evidence but does not self-issue semantic clearance.
+That distinction maps cleanly to:
+
+~~~text
+PROCESS NODE EFFECT
+!=
+LATER OWNER'S INTERPRETATION / ADMISSION OF THAT EVIDENCE
+~~~
+
+### Node C — integration currentness / OwnerMergeDuty
+
+SourceOwner's fixed base does not silently become current integration main.
+
+~~~text
+SOURCE OWNER
+  fixed base = evidence anchor
+
+OWNER MERGE DUTY
+  current integration base/head relationship becomes material here
+  remote base head is checked here
+  remote branch head is checked here
+  PR + provider checks are observed here
+~~~
+
+Therefore:
+
+~~~text
+REMOTE MAIN CHANGED DURING SOURCE OWNER
+!= SOURCE OWNER FAILURE
+
+REMOTE MAIN CURRENTNESS
+-> becomes a dependent truth of the later integration node
+~~~
+
+This is a concrete example of the Compound-currentness law:
+
+~~~text
+same observed fact changed
++ different current process node
+= different semantic consequence
+~~~
+
+### First input-ownership observations
+
+The walk also confirms that the recipe compiler already contains a mixture of input classes:
+
+~~~text
+recipe family
+  semantic process selection
+
+repositoryRef / exact candidate coordinates / branch / PR coordinate
+  bound Work / expected identity plus live-currentness obligations
+
+proofCommands + predicate classes
+  repository/source-owner proof contract
+
+AUTH insertion for GitHub-GH clone
+  derived from repository acquisition mode
+
+operation sequence + stage gate + canonical RESPOND
+  compiler-owned invariant
+
+task/RETURN packaging and carrier identity
+  runtime / carrier mechanic
+
+maxFiles
+  currently exposed stage knob
+  but physically bounds selected review-source projection
+  -> strong DERIVED_INVARIANT candidate for further pressure
+~~~
+
+The important finding is broader than \`maxFiles\`: **every exposed value should declare whether it is a
+semantic choice, an expected/bound identity, a live observation obligation, a compiler-owned invariant,
+or carrier plumbing.**
+
+### MetaWalk refinement earned by this pressure
+
+The node contract now needs both:
+
+~~~text
+CARRIES
+  stable identities + accepted evidence that remain meaningful across the transition
+
+REGROUND
+  mutable truths that must be observed again before the next dependent effect
+~~~
+
+This refinement is earned by current SDK behavior rather than invented for aesthetic symmetry.
+
+It also sharpens the bounded reading horizon:
+
+~~~text
+while SourceOwner is CURRENT:
+  deep-read SourceOwner contract
+  know Assurance identity / purpose / entry predicate
+  do not preload OwnerMerge mechanics
+
+after SourceOwner exit + reconciliation:
+  compress SourceOwner to accepted evidence
+  re-ground Assurance-required provider truth
+  rotate CURRENT to Assurance
+  expose the next earnable lifecycle/currentness node
 ~~~
 
 ## Fresh-instance resume packet
