@@ -1778,7 +1778,7 @@ ADDRESSABLE FUTURE
 The formed ProcessFamily / bounded-horizon implementation has been exercised against the exact current PR source bytes through the connected V8 execution surface.
 
 ~~~text
-exact test file logic        CURRENT_EXACT_FOCUSED_PASS
+exact test file logic        26 / 26 PASS
 machine ProcessFamily        PASS
 scope x node x layer walk    PASS
 predicate-derived availability PASS
@@ -1851,7 +1851,7 @@ Coverage **percentage** remains a repository-runtime predicate. The connected V8
 ~~~text
 TEST DISCOVERY SHAPE          = CLEAR
 SOURCE COVERAGE APPLICABILITY = CLEAR
-CONNECTED V8 TEST LOGIC       = CURRENT_EXACT_FOCUSED_PASS
+CONNECTED V8 TEST LOGIC       = 26 / 26 PASS
 NODE LCOV / AGGREGATE FLOOR   = NOT YET CLAIMED
 FULL npm run review           = NOT YET CLAIMED
 ~~~
