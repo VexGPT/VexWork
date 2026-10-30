@@ -226,6 +226,7 @@ function normalizeTransition(input, label, family) {
     'fromLayer',
     'toLayer',
     'evidenceRefs',
+    'carriedIdentityRefs',
   ], 'process transition ' + label);
 
   const transitionRef = stableRef(input.transitionRef, 'process transition ' + label + '.transitionRef');
