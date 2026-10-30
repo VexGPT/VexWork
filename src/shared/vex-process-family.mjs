@@ -96,6 +96,7 @@ function normalizeNode(input) {
 function normalizeRelationship(input, movementClasses) {
   exactKeys(input, [
     'relationshipRef',
+    'movementClass',
     'fromRef',
     'toRef',
     'label',
@@ -220,7 +221,6 @@ function normalizeTransition(input, label, family) {
   exactKeys(input, [
     'transitionRef',
     'relationshipRefOrNull',
-    'movementClass',
     'fromNodeRef',
     'toNodeRef',
     'fromLayer',
@@ -259,7 +259,6 @@ function normalizeTransition(input, label, family) {
   return {
     transitionRef,
     relationshipRefOrNull,
-    movementClass: input.movementClass,
     fromNodeRef,
     toNodeRef,
     fromLayer,
