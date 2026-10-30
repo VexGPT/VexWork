@@ -3533,6 +3533,114 @@ STALE_EXCEPTION_GUARD
 != COMPLETE_GENERATION_FENCE
 ~~~
 
+### F2 A005 — test-rewrite escaping stop; A006 formed
+
+F2 A005 admitted through the current v2 package/carrier and began its bounded source transaction, but stopped
+inside the mutation harness before any tests, commit, push or PR.
+
+~~~text
+outer RETURN sha256
+  1dffbb699bfe36c9abf8dcebd2a12f350c4cf8c569c957c4e421e9a8ec9e13ac
+
+retained inner RETURN sha256
+  c75e44383382dcb8a1e1bc816362020ac23ae3d4177470818afb2b86ee5831df
+
+inner disposition
+  SAFE_FAILURE
+
+first exact failure
+  F2_ANCHOR_MISSING:a005-test-bridge-interface-ready-gate
+
+inner effects
+  branchCreated    = true (disposable RUN_ROOT only)
+  sourceWrite      = true (partial uncommitted local mutation)
+  testsExecuted    = false
+  commitCreated    = false
+  pushPerformed    = false
+  PRCreated        = false
+  remoteMutation   = false
+~~~
+
+The accepted repository source **does** contain the intended assertion. The A005 mutation generator encoded
+RegExp source such as `\s`, `\S` and `\.` inside ordinary JavaScript strings; JavaScript consumed those
+backslashes before `replaceOnce()` searched the repository bytes. The missing anchor is therefore a
+formation-harness representation defect, not a product/source regression.
+
+A006 preserves the exact A005 product payload and evidence-driven corrections. It changes only how those
+six repository-test edits are located and emitted:
+
+~~~text
+search
+  semantic test section + plain line/sub-string needle
+  (no RegExp-source backslashes in the search representation)
+
+replacement
+  String.raw source for RegExp assertions
+  -> source backslashes preserved exactly
+~~~
+
+The A006 mutation script passes `node --check`, and the corrected section/line rewrite helper passed a
+formation smoke test using the exact source-line forms that caused the A005 failure.
+
+~~~text
+attempt
+  attempt.vexlife.interface-currentness-browser-realization.f2.a006.cd48d0de514b
+
+branch
+  vxg-interface-currentness-browser-realization-a006
+
+outer package sha256
+  1145ce95e13c9bb68f77dddbe9162f9d1ef9e1e46caf9956d3ae33b4d59bc705
+
+inner package sha256
+  8cc0eef3285ccaf15bd05801ac6eec6449d0a7f3e4522e0b3672818b602e6331
+
+inner schema
+  vex.relay.input-package/v2
+
+manifest digest
+  00c1423e68abe2b8df7b5dbfe8938f59d48cf6012cf8ca8c973b446c1a84c6bd
+
+formedAt
+  2026-10-30T04:55:34Z
+
+expiresAt
+  2026-10-31T04:55:34Z
+~~~
+
+Provider truth at formation remains:
+
+~~~text
+VexLife main
+  92e810c91b09e7c74a8e1c7da8d2fade7e070c3a
+
+A006 remote branch
+  ABSENT
+
+open-PR overlap across exact 32-path membrane
+  NONE
+
+Vextreme-SDK main
+  9be6c8c3c169e8b98b04c7821b300f84cb8342de
+~~~
+
+Permanent:
+
+~~~text
+SOURCE_ASSERTION_PRESENT
++ GENERATED_SEARCH_STRING_LOST_BACKSLASHES
+-> FORMATION_HARNESS_DEFECT
+
+PARTIAL_UNCOMMITTED_RUN_ROOT_MUTATION
++ NO_TESTS
++ NO_COMMIT
++ NO_REMOTE_MUTATION
+-> FRESH_ATTEMPT_FROM_ACCEPTED_BASE
+
+A006_PRODUCT_BYTES
+= A005_PRODUCT_BYTES
+~~~
+
 ### Foundation-to-interface sequence
 
 ~~~text
