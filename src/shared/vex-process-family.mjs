@@ -76,7 +76,6 @@ function normalizeNode(input) {
     'readingSourceRefs',
     'considerationRefs',
     'proofRefs',
-    'sourceRefs',
   ], 'process node');
 
   const nodeRef = stableRef(input.nodeRef, 'process node.nodeRef');
@@ -89,7 +88,6 @@ function normalizeNode(input) {
     readingSourceRefs: refs(input.readingSourceRefs, 'process node ' + nodeRef + '.readingSourceRefs', { allowEmpty: false }),
     considerationRefs: refs(input.considerationRefs, 'process node ' + nodeRef + '.considerationRefs'),
     proofRefs: refs(input.proofRefs, 'process node ' + nodeRef + '.proofRefs'),
-    sourceRefs: refs(input.sourceRefs, 'process node ' + nodeRef + '.sourceRefs', { allowEmpty: false }),
   };
 }
 
@@ -120,7 +118,6 @@ function normalizeRelationship(input, movementClasses) {
       input.entryPredicateRefs,
       'process relationship ' + relationshipRef + '.entryPredicateRefs',
     ),
-    sourceRefs: refs(input.sourceRefs, 'process relationship ' + relationshipRef + '.sourceRefs', { allowEmpty: false }),
   };
 }
 
