@@ -505,7 +505,12 @@
         "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
         "github.comment.vexlife-android.pr203.6515244021.sourceowner-a001-formed",
         "github.comment.vexlife-android.pr203.6515293174.sourceowner-a001-harness-a002-formed",
-        "evidence.vexsync.pr203.sourceowner.a002.formation.sha256.e45eb9cba791e9114e9ef1657abbe9e46e30cb4a42697767a61b12265b7b181b"
+        "evidence.vexsync.pr203.sourceowner.a002.formation.sha256.e45eb9cba791e9114e9ef1657abbe9e46e30cb4a42697767a61b12265b7b181b",
+        "github.comment.vexlife-android.pr203.6515330001.sourceowner-a002-consumed-a003-formed",
+        "evidence.vexsync.pr203.sourceowner.a002.outer-return.sha256.c52ec6e16e578f4d66cd845cd9082cea4f5a9b8c5d669ae12777908426f93404",
+        "evidence.vexsync.pr203.sourceowner.a002.inner-return.sha256.2dbc1aa96798dca1d5052a642f60503d29d4bb92c4db0732b19d62bbc3ca59c5",
+        "github.commit.vexlife-android.7ca89e0ce19d09ae4388c1a287820b43ba91a311",
+        "evidence.vexsync.pr203.sourceowner.a003.formation.sha256.fc2f6de9848f764d94565ebf82afdfd70ba5ff50a81319da0028e4abfad31498"
       ],
       "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
       "nextProcessRefs": [
@@ -514,7 +519,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-29T17:34:00.000Z",
-      "updatedAt": "2026-10-30T04:59:00.000Z"
+      "updatedAt": "2026-10-30T05:10:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
@@ -1154,6 +1159,24 @@
         "evidence.vexsync.pr203.sourceowner.a002.formation.sha256.e45eb9cba791e9114e9ef1657abbe9e46e30cb4a42697767a61b12265b7b181b"
       ],
       "createdAt": "2026-10-30T04:59:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.execution-source-custody.running.pr203-a002-test-guard-a003-formed-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.execution-source-custody",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING",
+      "reason": "PR #203 SourceOwner A002 reached the candidate: Execution production and unit-test Kotlin compiled and 12/13 VexExecutionTest cases passed. The only failure was the newly authored reflection API-lock test at VexExecutionTest.kt:540, which brittlely enumerated all non-synthetic JVM Companion begin* method names and did not establish a relationship/job-behavior defect. The guard is corrected to require exact begin(RelationshipId) and reject only forbidden legacy begin names. Corrected candidate head=7ca89e0c..., tree=7c6f89ca..., 14 paths unchanged. A003 formation sha256=fc2f6de9848f764d94565ebf82afdfd70ba5ff50a81319da0028e4abfad31498 is statically qualified; host proof remains pending.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.203",
+        "github.comment.vexlife-android.pr203.6515330001.sourceowner-a002-consumed-a003-formed",
+        "evidence.vexsync.pr203.sourceowner.a002.outer-return.sha256.c52ec6e16e578f4d66cd845cd9082cea4f5a9b8c5d669ae12777908426f93404",
+        "evidence.vexsync.pr203.sourceowner.a002.inner-return.sha256.2dbc1aa96798dca1d5052a642f60503d29d4bb92c4db0732b19d62bbc3ca59c5",
+        "github.commit.vexlife-android.7ca89e0ce19d09ae4388c1a287820b43ba91a311",
+        "evidence.vexsync.pr203.sourceowner.a003.formation.sha256.fc2f6de9848f764d94565ebf82afdfd70ba5ff50a81319da0028e4abfad31498"
+      ],
+      "createdAt": "2026-10-30T05:10:00.000Z"
     }
   ],
   "sourceRefs": [
