@@ -2,17 +2,6 @@ export const PROCESS_FAMILY_SCHEMA = 'vexwork.process-family/v1';
 export const PROCESS_FAMILY_STATE_SCHEMA = 'vexwork.process-family-state/v1';
 export const PROCESS_HORIZON_SCHEMA = 'vexwork.process-horizon/v1';
 
-export const PROCESS_LAYERS = Object.freeze([
-  'FORMATION',
-  'TOPOLOGY',
-  'OWNERSHIP',
-  'CONTRACT',
-  'IMPLEMENTATION',
-  'FOCUSED_PROOF',
-  'LIVED_INTEGRATION',
-  'RECONCILE_ACCEPT',
-]);
-
 export const PROCESS_MOVEMENT_CLASSES = Object.freeze([
   'ADVANCES',
   'ENABLES',
@@ -72,8 +61,16 @@ function unionRefs(values, label, options = {}) {
   return refs([...new Set(values)], label, options);
 }
 
-function layer(value, label) {
-  assert(PROCESS_LAYERS.includes(value), label + ' invalid');
+function orderedValues(values, label) {
+  assert(Array.isArray(values) && values.length > 0, label + ' must be a non-empty array');
+  const result = values.map((value, index) => text(value, label + '[' + index + ']'));
+  assert(new Set(result).size === result.length, label + ' must be unique');
+  return result;
+}
+
+function layer(value, label, family) {
+  text(value, label);
+  assert(family.layers.includes(value), label + ' invalid for ProcessFamily');
   return value;
 }
 
@@ -155,6 +152,8 @@ export function normalizeProcessFamily(input) {
     'familyRef',
     'purpose',
     'entryNodeRef',
+    'layers',
+    'entryLayer',
     'nodes',
     'relationships',
     'sourceRefs',
@@ -162,6 +161,9 @@ export function normalizeProcessFamily(input) {
 
   assert(input.schemaVersion === PROCESS_FAMILY_SCHEMA, 'ProcessFamily schema mismatch');
   const familyRef = stableRef(input.familyRef, 'ProcessFamily.familyRef');
+  const layers = orderedValues(input.layers, 'ProcessFamily.layers');
+  const entryLayer = text(input.entryLayer, 'ProcessFamily.entryLayer');
+  assert(layers.includes(entryLayer), 'ProcessFamily entryLayer must belong to layers');
   assert(Array.isArray(input.nodes) && input.nodes.length > 0, 'ProcessFamily.nodes must be non-empty');
   assert(Array.isArray(input.relationships), 'ProcessFamily.relationships must be an array');
 
@@ -190,6 +192,8 @@ export function normalizeProcessFamily(input) {
     familyRef,
     purpose: text(input.purpose, 'ProcessFamily.purpose'),
     entryNodeRef,
+    layers,
+    entryLayer,
     nodes,
     relationships,
     sourceRefs: refs(input.sourceRefs, 'ProcessFamily.sourceRefs', { allowEmpty: false }),
@@ -231,8 +235,8 @@ function normalizeTransition(input, label, family) {
     assert(relationship.movementClass === input.movementClass, 'process transition movementClass mismatch');
   }
 
-  const fromLayer = layer(input.fromLayer, 'process transition ' + label + '.fromLayer');
-  const toLayer = layer(input.toLayer, 'process transition ' + label + '.toLayer');
+  const fromLayer = layer(input.fromLayer, 'process transition ' + label + '.fromLayer', family);
+  const toLayer = layer(input.toLayer, 'process transition ' + label + '.toLayer', family);
   assert(
     fromNodeRef !== toNodeRef || fromLayer !== toLayer,
     'process transition must change node or layer',
@@ -288,7 +292,7 @@ export function normalizeProcessState(input, familyInput) {
 
   const currentNodeRef = stableRef(input.currentNodeRef, 'ProcessFamily.State.currentNodeRef');
   assert(family.nodes.some((node) => node.nodeRef === currentNodeRef), 'ProcessFamily.State currentNodeRef missing');
-  const currentLayer = layer(input.layer, 'ProcessFamily.State.layer');
+  const currentLayer = layer(input.layer, 'ProcessFamily.State.layer', family);
 
   if (lastAcceptedTransitionOrNull === null) {
     assert(previousStateRefOrNull === null, 'ProcessFamily.State without transition must not claim a previous State');
@@ -361,7 +365,7 @@ export function createProcessState(familyInput, {
     familyRef: family.familyRef,
     scopeRef,
     currentNodeRef: family.entryNodeRef,
-    layer: 'FORMATION',
+    layer: family.entryLayer,
     acceptedEvidenceRefs: [],
     carriedIdentityRefs: [],
     previousStateRefOrNull: null,
