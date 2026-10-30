@@ -450,6 +450,10 @@ test('bounded-horizon VexBoard projection deep-reads CURRENT but withholds futur
     nextDepth: 'CONTRACT',
     evidenceRefs: ['evidence.pressure-grounded'],
     carriedIdentityRefs: ['identity.work.test.outcome'],
+    satisfiedPredicateRefs: [
+      'predicate.node.contract.entry',
+      'predicate.contract.allowed',
+    ],
     nextStateRef: 'state.metawalk.002',
   });
 
