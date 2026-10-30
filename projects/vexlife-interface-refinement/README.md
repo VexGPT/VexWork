@@ -2678,6 +2678,304 @@ BUILD_IDENTITY_INDEX_LATER_REJECTION
 No F2 realization should consume #963 until A004 is independently re-cleared on its exact corrected head.
 
 
+### A004 — corrected candidate published; retained RETURN exposes consumer accounting defect
+
+A004 executed the bounded F0/F1 correction on the existing PR #963 branch. The outer VexLocalBridge
+RETURN is `SAFE_FAILURE`, but that outer disposition occurred **after** the native carrier had formed
+and retained the exact inner canonical VexRelay RETURN.
+
+~~~text
+outer A004 RETURN
+  sha256 = ac0eb20cb44042f7e7a77bdc4f338ffea366b39597f392d26d236e1d64f90ff3
+  disposition = SAFE_FAILURE
+  carrier finding = RETURN_CANDIDATE_CHANGED_PATHS_MISMATCH
+
+retained inner canonical RETURN
+  sha256 = 0d4363b0f7e13876a6664238ae67921f48e586d23a5c5e82401588b285f92ba3
+  disposition = HOSTED_VALIDATION_PENDING
+  source failure = NONE
+  harness finding = NONE
+
+published exact candidate
+  PR = #963
+  head = a5cbb64b29111a99c4b98901e04ac7000538d3b0
+  tree = e0dec73f00a10878ef34b18233a95f2db590de02
+  push = non-force PASS
+  full npm run check = PASS
+~~~
+
+Provider re-grounding independently confirms PR #963 now points to exact head
+`a5cbb64b29111a99c4b98901e04ac7000538d3b0`.
+
+The carrier failure is an evidence-consumption/accounting defect, not evidence that the A004 source
+correction failed. The current consumer compares two different legitimate path meanings as though
+they were identical:
+
+~~~text
+candidateBinding.changedPaths
+  = paths staged by the A004 correction commit
+  = 4 paths
+
+review.allChangedPaths
+  = complete candidate diff from the fixed F0/F1 evidence base
+    b6d9dd4876132fc408f0eacd2bb6b5b0d56e009f
+    to
+    a5cbb64b29111a99c4b98901e04ac7000538d3b0
+  = 20 paths
+
+4-path correction delta
+!=
+20-path cumulative candidate
+~~~
+
+The exact inner RETURN was retained before consumer rejection and the remote mutation was independently
+reconciled, so **A004 must not be replayed** merely to obtain another push or commit.
+
+A004 itself resolves the two prior F1 Assurance findings:
+
+~~~text
+generic portable convergence validator
+  -> only convergence-family invariants are universal
+  -> safe sibling sources under blueprint/fragments/convergence-contracts/
+  -> contractRef != relationshipRef
+  -> cross-contract stable identities fail closed
+
+Interface currentness contract/test
+  -> keeps its five Interface-specific currentness/precedence invariants
+  -> keeps the complete Interface law table
+  -> proves sibling domain-specific convergence does not inherit Interface semantics
+~~~
+
+Fresh read-only semantic recomputation against exact head `a5cbb64b...`, together with the exact
+committed host proof, yields:
+
+~~~text
+F0/F1 semantic Assurance = CLEAR_ON_EXACT_HEAD
+exact head = a5cbb64b29111a99c4b98901e04ac7000538d3b0
+exact tree = e0dec73f00a10878ef34b18233a95f2db590de02
+
+provenance
+  = same-conversation fresh Assurance role/evidence recomputation
+  != a separate person or independent provider identity
+~~~
+
+Current VexLife `main` has independently advanced to
+`e7b339e59619c36f847ce00647e45770b9597135` through ThemeMode PR #964. Its authored/generated paths
+are disjoint from #963 and #963 remains provider-mergeable, but that does not collapse integration
+currentness into source-owner clearance. Current-main composition / lifecycle acceptance remains a
+separate gate before F2 consumes F0/F1 as accepted source.
+
+Permanent:
+
+~~~text
+OUTER_CARRIER_CONSUMER_REJECTION
+!= INNER_SOURCE_FAILURE
+
+CORRECTION_COMMIT_PATHS
+!= CUMULATIVE_CANDIDATE_PATHS
+
+FORMED_RETAINED_INNER_RETURN
++ INDEPENDENT_PROVIDER_RECONCILIATION
+-> RECOVER_BEFORE_REPLAY
+
+SOURCEOWNER_PASS
+!= ASSURANCE_CLEAR
+!= LIFECYCLE_CURRENT
+!= ACCEPTED_MAIN
+~~~
+
+### Compound → Family → effect → observation causality
+
+The Interface work uses the existing Family Circuit and Compound Relay as **adjacent ownership
+stages**, not as interchangeable names for one reducer.
+
+The durable causal shape is:
+
+~~~text
+independently owned current truths
+        |
+        | partial current-generation observations
+        v
+Compound Relay retained InputState
+        |
+        | all required inputs coherent
+        v
+processStates(current patch, prior Compound State)
+        |
+        +-> one complete current InputState
+        +-> named relationship calculations
+        +-> one fully derived OutputState
+        v
+current Compound State
+  {
+    inputState: coherent retained owner truth,
+    outputState: derived relationship truth
+  }
+        |
+        | semantic handoff
+        v
+rightful Family.currentState
+        |
+        + incoming Control
+        v
+Family Act resolution
+  noAct | stay | admit(State) | bounded Begin/effect request
+        |
+        v
+rightful effect owner
+        |
+        | changes the world
+        v
+new owner observations
+        |
+        +---------------------------> next Compound observation cycle
+~~~
+
+The retained `InputState` is not disposable reducer input. It is the exact coherent current truth
+that explains **why** the derived output means what it means. The `OutputState` is not the whole
+Compound State. Consumers that need only relationship meaning may observe output; coordination and
+currentness can require the full retained `inputState + outputState` totality.
+
+~~~text
+COMPOUND_STATE
+= RETAINED_CURRENT_INPUT_STATE
++ DERIVED_CURRENT_OUTPUT_STATE
+
+COMPOUND_INTERNAL_STATE_CHANGED
+!= CONSUMER_OUTPUT_CHANGED
+
+SERIALIZED_RELAY_ADMISSION
+!= ASYNC_OBSERVATION_FRESHNESS
+
+RELATIONSHIP_OUTPUT
+!= EFFECT_COMMAND
+!= EFFECT_RECEIPT
+~~~
+
+Browser/lifecycle events such as focus, `pageshow`, visibility becoming visible, post-recovery,
+post-turn, and selected-Conversation scope change are **observation triggers**. They are not Family
+Controls. Their job is to start a new observation generation and obtain current independently owned
+truth.
+
+A generation result is admitted only if it is still the current generation/scope. Older async work is
+discarded **before it mutates retained Interface truth**.
+
+~~~text
+trigger
+-> generation N + exact selected project/thread/channel scope
+-> observe current server source
+-> observe current Companion availability/runtime truth
+-> observe canonical selected Conversation currentness/head
+-> reject any late N-1 result
+-> admit N observations into retained Compound InputState
+-> derive relationship OutputState
+-> update full Compound State
+-> hand semantic relationship State to the Family
+~~~
+
+This preserves simultaneous truths without pretending they arrived simultaneously. Their rightful
+owners may change independently; the Compound boundary retains the latest **admitted coherent**
+combination.
+
+#### Strict VexLife startup → communicating-with-Vex sequence
+
+The ordinary human path must preserve this order:
+
+~~~text
+1. setup/lifecycle owner
+   -> starts/repairs exact source + runtime + browser server
+   -> emits only the effect truth it actually owns
+
+2. server serving the document
+   -> binds loadedDocumentSource into that exact document before app execution
+
+3. browser activation
+   -> starts Interface observation generation N for the exact selected Conversation scope
+
+4. observation owners
+   -> currentServerSource
+   -> Companion availability/runtime/re-entry truth
+   -> canonical Conversation identity/currentness/head
+   -> browser observation generation/scope
+
+5. stale-result guard
+   -> late N-1 completion cannot mutate retained N truth
+
+6. Compound reconciliation
+   -> coherent InputState
+   -> Interface relationship OutputState:
+      UNOBSERVED | SOURCE_MISMATCH | OBSERVING |
+      RECOVERABLE | ACTION_REQUIRED | UNAVAILABLE | READY
+   -> retained current Compound State = InputState + OutputState
+
+7. Family handoff
+   -> the exact derived semantic state becomes the rightful Interface Family current State
+
+8. presentation
+   -> composer/recovery/navigation affordances derive from current Family/relationship truth
+   -> display does not become another state owner
+
+9. human Send Control
+   -> only now is the existing Send Control interpreted against current Family State
+   -> READY + transient Chat conditions may admit the existing Send Act
+   -> Conversation/model owners perform the effect
+
+10. post-effect truth
+    -> successful Send/recovery/navigation never writes READY directly
+    -> it changes the world
+    -> a new observation generation re-reads rightful current truth
+    -> that truth re-enters InputState and is reconciled again
+~~~
+
+This is the intended cause/effect/cause continuity:
+
+~~~text
+current causes
+-> Compound relationship meaning
+-> Family State
++ Control
+-> Act
+-> effect
+-> changed world
+-> new observable causes
+-> next Compound relationship meaning
+~~~
+
+Therefore a fresh instance must never infer:
+
+~~~text
+setup says recovery completed
+-> Interface READY
+
+server process is healthy
+-> loaded document current
+
+Companion says READY
+-> selected Conversation current
+
+effect returned success
+-> Family current State may be assigned directly
+
+one output enum is visible
+-> retained InputState can be discarded
+~~~
+
+Instead:
+
+~~~text
+EFFECT_COMPLETION
+-> REOBSERVE_RIGHTFUL_TRUTHS
+-> ADMIT_CURRENT_GENERATION_INPUTS
+-> DERIVE_OUTPUT
+-> RETAIN_COMPOUND_TOTALITY
+-> HAND_TO_FAMILY_STATE
+-> INTERPRET_LATER_CONTROL
+~~~
+
+That sequence is the architectural bridge F2 must realize. It should remain source-addressable enough
+that a fresh instance can recover parameters from owner/State/law identities rather than guessing
+what an underspecified name like "READY", "refresh", "recovery", or "current" means.
+
 ### Foundation-to-interface sequence
 
 ~~~text
