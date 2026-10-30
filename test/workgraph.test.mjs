@@ -368,6 +368,15 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(vextremeArchitectureActiveSurface.sourceRefs.includes('github.commit.vextreme.87571924f769fe4a1dad1084e2f68775f18d37b1'), true);
   assert.equal(vextremeArchitectureActiveSurface.sourceRefs.includes('github.pull.vextreme.505'), true);
   assert.equal(vextremeArchitectureActiveSurface.sourceRefs.includes('github.commit.vextreme.28602a7ba832223d40ed844c32609954051f1c84'), true);
+  assert.equal(vextremeArchitectureActiveSurface.sourceRefs.includes('github.pull.vextreme.507'), true);
+  assert.equal(vextremeArchitectureActiveSurface.sourceRefs.includes('github.commit.vextreme.a9c7cd9df82459c935767584e0692e56a0de6fd4'), true);
+  assert.equal(
+    graph.transitions.some((transition) =>
+      transition.transitionRef === 'transition.vextreme.architecture-convergence.terrain-active-surface-context.verifying.pr488-postmerge-contract-drift'
+    ),
+    false,
+    'completed active-surface implementation must not be reopened through an illegal COMPLETED -> VERIFYING transition',
+  );
   assert.ok(graph.transitions.some((transition) =>
     transition.transitionRef === 'transition.vextreme.architecture-convergence.terrain-active-surface-context.verifying.pr505-a002-assurance'
     && transition.priorState === 'RUNNING'
