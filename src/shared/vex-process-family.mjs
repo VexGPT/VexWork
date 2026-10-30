@@ -221,48 +221,27 @@ function normalizeTransition(input, label, family) {
   exactKeys(input, [
     'transitionRef',
     'relationshipRefOrNull',
-    'fromNodeRef',
-    'toNodeRef',
     'fromLayer',
-    'toLayer',
     'evidenceRefs',
     'carriedIdentityRefs',
   ], 'process transition ' + label);
 
   const transitionRef = stableRef(input.transitionRef, 'process transition ' + label + '.transitionRef');
-  const fromNodeRef = stableRef(input.fromNodeRef, 'process transition ' + label + '.fromNodeRef');
-  const toNodeRef = stableRef(input.toNodeRef, 'process transition ' + label + '.toNodeRef');
-  assert(family.nodes.some((node) => node.nodeRef === fromNodeRef), 'process transition fromNodeRef missing');
-  assert(family.nodes.some((node) => node.nodeRef === toNodeRef), 'process transition toNodeRef missing');
-
   const relationshipRefOrNull = input.relationshipRefOrNull === null
     ? null
     : stableRef(input.relationshipRefOrNull, 'process transition ' + label + '.relationshipRefOrNull');
 
-  if (relationshipRefOrNull === null) {
-    assert(fromNodeRef === toNodeRef, 'relationship-free layer transition must stay on the same process node');
-  } else {
+  if (relationshipRefOrNull !== null) {
     const relationship = family.relationships.find((candidate) => candidate.relationshipRef === relationshipRefOrNull);
     assert(relationship, 'process transition relationship missing: ' + relationshipRefOrNull);
-    assert(relationship.fromRef === fromNodeRef, 'process transition relationship fromRef mismatch');
-    assert(relationship.toRef === toNodeRef, 'process transition relationship toRef mismatch');
   }
 
   const fromLayer = layer(input.fromLayer, 'process transition ' + label + '.fromLayer', family);
-  const toLayer = layer(input.toLayer, 'process transition ' + label + '.toLayer', family);
-  assert(
-    fromNodeRef !== toNodeRef || fromLayer !== toLayer,
-    'process transition must change node or layer',
-  );
-
 
   return {
     transitionRef,
     relationshipRefOrNull,
-    fromNodeRef,
-    toNodeRef,
     fromLayer,
-    toLayer,
     evidenceRefs: refs(input.evidenceRefs, 'process transition ' + label + '.evidenceRefs', { allowEmpty: false }),
     carriedIdentityRefs: refs(
       input.carriedIdentityRefs,
@@ -310,14 +289,20 @@ export function normalizeProcessState(input, familyInput) {
     assert(currentLayer === family.entryLayer, 'ProcessFamily.State without transition must be at entryLayer');
   } else {
     assert(previousStateRefOrNull !== null, 'ProcessFamily.State transition requires previousStateRefOrNull');
-    assert(
-      lastAcceptedTransitionOrNull.toNodeRef === currentNodeRef,
-      'ProcessFamily.State currentNodeRef must match last accepted transition',
-    );
-    assert(
-      lastAcceptedTransitionOrNull.toLayer === currentLayer,
-      'ProcessFamily.State layer must match last accepted transition',
-    );
+    if (lastAcceptedTransitionOrNull.relationshipRefOrNull === null) {
+      assert(
+        lastAcceptedTransitionOrNull.fromLayer !== currentLayer,
+        'relationship-free layer transition must change layer',
+      );
+    } else {
+      const acceptedRelationship = family.relationships.find(
+        (relationship) => relationship.relationshipRef === lastAcceptedTransitionOrNull.relationshipRefOrNull,
+      );
+      assert(
+        acceptedRelationship?.toRef === currentNodeRef,
+        'ProcessFamily.State currentNodeRef must match last accepted relationship target',
+      );
+    }
   }
 
   return freeze({
@@ -400,10 +385,7 @@ export function admitProcessTransition({
   const transition = {
     transitionRef,
     relationshipRefOrNull,
-    fromNodeRef: currentNodeRef,
-    toNodeRef,
     fromLayer: state.layer,
-    toLayer: nextLayer,
     evidenceRefs: transitionEvidenceRefs,
     carriedIdentityRefs: transitionIdentityRefs,
   };
@@ -494,11 +476,11 @@ export function projectProcessHorizon(familyInput, stateInput, {
 
   const currentNode = family.nodes.find((node) => node.nodeRef === state.currentNodeRef);
   const last = state.lastAcceptedTransitionOrNull;
-  const previousNode = last
-    ? family.nodes.find((node) => node.nodeRef === last.fromNodeRef)
-    : null;
   const previousRelationship = last?.relationshipRefOrNull
     ? family.relationships.find((relationship) => relationship.relationshipRef === last.relationshipRefOrNull)
+    : null;
+  const previousNode = last
+    ? family.nodes.find((node) => node.nodeRef === (previousRelationship?.fromRef ?? state.currentNodeRef))
     : null;
 
   const nextCandidates = outgoing.map((relationship) => {
@@ -527,7 +509,7 @@ export function projectProcessHorizon(familyInput, stateInput, {
       transitionRef: last.transitionRef,
       movementClass: previousRelationship?.movementClass ?? null,
       fromLayer: last.fromLayer,
-      toLayer: last.toLayer,
+      toLayer: state.layer,
       evidenceRefs: [...last.evidenceRefs],
     } : null,
     current: {
