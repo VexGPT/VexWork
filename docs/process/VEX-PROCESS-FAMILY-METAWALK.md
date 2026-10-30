@@ -285,7 +285,7 @@ RECOVERS
   a failed/interrupted round returns to a lawful process coordinate without replaying completed effects
 ~~~
 
-These names are **owned by this ProcessFamily definition**, not by the generic ProcessFamily core. Another Family may declare a different movement vocabulary. The generic core only reserves relationship-free `LAYER_REVISIT` for same-node layer movement.
+These names are **owned by this ProcessFamily definition**, not by the generic ProcessFamily core. Another Family may declare a different movement vocabulary. The generic core reserves **no semantic movement name** for same-node layer movement. A relationship-free layer change is structural: `relationshipRefOrNull = null`, `movementClass = null`, same node, different Family-declared layer.
 
 Names remain candidates. The requirement is to preserve **why** traversal moved, not merely that an arrow exists.
 
@@ -1461,7 +1461,8 @@ previousStateRefOrNull = null
 lastAcceptedTransitionOrNull = null
 acceptedEvidenceRefs = []
 carriedIdentityRefs = []
-layer = FORMATION
+layer = family.entryLayer
+# FORMATION for process-family.vexwork.metawalk
 
 createProcessState(...)
   accepts only stateRef + scopeRef
@@ -1477,6 +1478,53 @@ CURRENT_STATE_PROVENANCE != CUMULATIVE_HISTORY_BAG
 CURRENT_EVIDENCE = EXACT_CURRENT_TRANSITION_EVIDENCE
 CURRENT_SOURCE_GROUNDING = DERIVED_CURRENT_CONTEXT
 HISTORICAL_PROVENANCE = PREDECESSOR_LINEAGE / RETAINED EVIDENCE
+~~~
+## Fresh Assurance CHANGES_REQUESTED — entry layer + movement-name closure
+
+Fresh Independent Assurance on exact head `8341a6ace9e334417d44cdd58d13d4300e4e5d55` returned two valid findings:
+
+1. raw `normalizeProcessState(...)` accepted a transitionless entry State whose node was the Family entry node but whose layer was any other declared Family layer;
+2. the generic core still reserved and serialized the universal semantic name `LAYER_REVISIT` for relationship-free same-node layer movement.
+
+Both findings are accepted and corrected structurally.
+
+### Transitionless entry State
+
+~~~text
+lastAcceptedTransitionOrNull = null
+-> previousStateRefOrNull = null
+-> currentNodeRef = family.entryNodeRef
+-> layer = family.entryLayer
+-> acceptedEvidenceRefs = []
+-> carriedIdentityRefs = []
+~~~
+
+The invariant is enforced by exported `normalizeProcessState(...)`, not only by `createProcessState(...)`, so a caller cannot forge a valid CURRENT entry State at a later Family layer.
+
+### Relationship-free layer movement
+
+~~~text
+relationship-backed transition
+  relationshipRefOrNull = <relationship>
+  movementClass = Family-declared relationship movement
+
+relationship-free same-node layer transition
+  relationshipRefOrNull = null
+  movementClass = null
+  fromNodeRef = toNodeRef
+  fromLayer != toLayer
+~~~
+
+The core therefore owns the **structural mechanism** without owning one semantic movement name. If a Family independently wants the spelling `LAYER_REVISIT` for an ordinary declared relationship, that spelling is Family-owned and valid.
+
+VexBoard renders a null-class layer transition from the structural coordinates, e.g. `Layer FORMATION → TOPOLOGY`, rather than inventing a semantic class.
+
+Permanent:
+
+~~~text
+ENTRY_STATE = ENTRY_NODE + ENTRY_LAYER + EMPTY_TRANSITION_PROVENANCE
+STRUCTURAL_LAYER_CHANGE != UNIVERSAL_MOVEMENT_ONTOLOGY
+NULL_MOVEMENT_CLASS + SAME_NODE + CHANGED_LAYER = STRUCTURAL_LAYER_CHANGE
 ~~~
 ## Foundational helper audit — reject unearned semantics before acceptance
 
@@ -1541,7 +1589,7 @@ forward movement
   ENABLES
 ~~~
 
-`LAYER_REVISIT` is the one generic relationship-free mechanism: same semantic node, different Family-declared layer.
+A relationship-free same-node layer change carries `movementClass = null`. The core derives its structural meaning from same node + different Family-declared layer and does not serialize a universal semantic movement name.
 
 Permanent:
 
