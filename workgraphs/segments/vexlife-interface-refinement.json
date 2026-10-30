@@ -70,11 +70,11 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-10-29T20:01:00.000Z",
-      "updatedAt": "2026-10-30T03:58:48.000Z",
+      "updatedAt": "2026-10-30T04:17:37.000Z",
       "workRef": "work.vexlife.interface-refinement.interface-compound-relay",
       "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
       "label": "Current — Interface Compound Relay convergence",
-      "purpose": "Finish Interface Compound Relay F2/F3 from accepted VexLife main 92e810c91b09e7c74a8e1c7da8d2fade7e070c3a. F2 browser realization package A001 is formed against exact accepted source with branch vxg-interface-currentness-browser-realization-a001 and no current overlap. It must realize source/document/Companion/Conversation/browser-observation convergence using current-generation retained Compound InputState + derived OutputState -> current Compound State -> rightful Family State; effects never assign READY directly. It also source-addresses ordinary Mac Open Vex and preserves exact-scope session-only draft carriage. Consume the canonical F2 RETURN next; F3 real Send/Heretic/re-entry remains held.",
+      "purpose": "Finish Interface Compound Relay F2/F3 from accepted VexLife main 92e810c91b09e7c74a8e1c7da8d2fade7e070c3a. F2 A001 stopped safely before tests/commit/push on a formation-harness anchor-cardinality defect: four textual direct draft clears exist but one is the internal setLocalDraft clear, so a blind count change would recurse. No candidate head/tree or remote branch exists. A002 preserves the Interface module/test product payload bytes and corrects only the mutation harness by targeting the three external semantic-confirm/programmatic-Send/composer-Send clears contextually and asserting exactly one internal direct clear remains. Consume A002 canonical RETURN next; F3 remains held.",
       "workClass": "TASK",
       "state": "RUNNING",
       "priorityClass": "IMMEDIATE",
@@ -180,7 +180,11 @@
         "github.commit.vexlife.92e810c91b09e7c74a8e1c7da8d2fade7e070c3a",
         "github.pull.vexlife.963.comment.6514360584",
         "relay.package.vexlife.interface-currentness-browser-realization.f2.a001.sha256.e55c04982fdde7ca513721f85dc8bdb72729f8464397bacde8713ac72ddc0bba",
-        "relay.inner.vexlife.interface-currentness-browser-realization.f2.a001.sha256.4749e5aba280f5d0c3e9c75fc1fb74eac7918107a441000850f0f2adf4cb7e26"
+        "relay.inner.vexlife.interface-currentness-browser-realization.f2.a001.sha256.4749e5aba280f5d0c3e9c75fc1fb74eac7918107a441000850f0f2adf4cb7e26",
+        "relay.return.vexlife.interface-currentness-browser-realization.f2.a001.outer.sha256.35c897e1709109b887852fcd8e58cf4dd441634ce698b6286da4f0d828c7c6b0",
+        "relay.return.vexlife.interface-currentness-browser-realization.f2.a001.inner.sha256.bed6904a424447bba76a5ba553d4359915a6c91c84b0e369e24b8b839469469d",
+        "relay.package.vexlife.interface-currentness-browser-realization.f2.a002.sha256.730f95085fc3fb5778605d739ddeeefdf15278363199a57c942164ba78747da3",
+        "relay.inner.vexlife.interface-currentness-browser-realization.f2.a002.sha256.d3c82b1d8a79a2523e54050111c663ea5b62cfac763144d963e76cd8bc2f46ca"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
@@ -1121,6 +1125,22 @@
         "github.pull.vexlife.963.comment.6514360584"
       ],
       "createdAt": "2026-10-30T03:39:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.interface-refinement.interface-compound-relay.running-running.f2-a001-harness-recovery-a002",
+      "workRef": "work.vexlife.interface-refinement.interface-compound-relay",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING",
+      "reason": "F2 A001 was a SAFE_FAILURE before tests/publication on a mutation-harness anchor-cardinality defect, with no candidate head/tree or remote mutation. A002 preserves the product payload and corrects only the three semantic external draft-clear anchors while preserving the internal setLocalDraft clear branch.",
+      "actorRef": "actor.chatgpt.vexlife-interface-compound-relay",
+      "sourceRefs": [
+        "relay.return.vexlife.interface-currentness-browser-realization.f2.a001.outer.sha256.35c897e1709109b887852fcd8e58cf4dd441634ce698b6286da4f0d828c7c6b0",
+        "relay.return.vexlife.interface-currentness-browser-realization.f2.a001.inner.sha256.bed6904a424447bba76a5ba553d4359915a6c91c84b0e369e24b8b839469469d",
+        "relay.package.vexlife.interface-currentness-browser-realization.f2.a002.sha256.730f95085fc3fb5778605d739ddeeefdf15278363199a57c942164ba78747da3",
+        "relay.inner.vexlife.interface-currentness-browser-realization.f2.a002.sha256.d3c82b1d8a79a2523e54050111c663ea5b62cfac763144d963e76cd8bc2f46ca"
+      ],
+      "createdAt": "2026-10-30T04:17:37.000Z"
     }
   ],
   "sourceRefs": [
@@ -1233,7 +1253,11 @@
     "github.commit.vexlife.92e810c91b09e7c74a8e1c7da8d2fade7e070c3a",
     "github.pull.vexlife.963.comment.6514360584",
     "relay.package.vexlife.interface-currentness-browser-realization.f2.a001.sha256.e55c04982fdde7ca513721f85dc8bdb72729f8464397bacde8713ac72ddc0bba",
-    "relay.inner.vexlife.interface-currentness-browser-realization.f2.a001.sha256.4749e5aba280f5d0c3e9c75fc1fb74eac7918107a441000850f0f2adf4cb7e26"
+    "relay.inner.vexlife.interface-currentness-browser-realization.f2.a001.sha256.4749e5aba280f5d0c3e9c75fc1fb74eac7918107a441000850f0f2adf4cb7e26",
+    "relay.return.vexlife.interface-currentness-browser-realization.f2.a001.outer.sha256.35c897e1709109b887852fcd8e58cf4dd441634ce698b6286da4f0d828c7c6b0",
+    "relay.return.vexlife.interface-currentness-browser-realization.f2.a001.inner.sha256.bed6904a424447bba76a5ba553d4359915a6c91c84b0e369e24b8b839469469d",
+    "relay.package.vexlife.interface-currentness-browser-realization.f2.a002.sha256.730f95085fc3fb5778605d739ddeeefdf15278363199a57c942164ba78747da3",
+    "relay.inner.vexlife.interface-currentness-browser-realization.f2.a002.sha256.d3c82b1d8a79a2523e54050111c663ea5b62cfac763144d963e76cd8bc2f46ca"
   ],
   "formedAt": "2026-10-25T01:23:08.000Z"
 }
