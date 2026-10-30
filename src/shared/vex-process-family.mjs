@@ -226,7 +226,6 @@ function normalizeTransition(input, label, family) {
     'fromLayer',
     'toLayer',
     'evidenceRefs',
-    'carriedIdentityRefs',
   ], 'process transition ' + label);
 
   const transitionRef = stableRef(input.transitionRef, 'process transition ' + label + '.transitionRef');
@@ -280,7 +279,6 @@ export function normalizeProcessState(input, familyInput) {
     'scopeRef',
     'currentNodeRef',
     'layer',
-    'acceptedEvidenceRefs',
     'carriedIdentityRefs',
     'previousStateRefOrNull',
     'lastAcceptedTransitionOrNull',
@@ -322,35 +320,6 @@ export function normalizeProcessState(input, familyInput) {
     );
   }
 
-  const acceptedEvidenceRefs = refs(
-    input.acceptedEvidenceRefs,
-    'ProcessFamily.State.acceptedEvidenceRefs',
-  );
-  const carriedIdentityRefs = refs(
-    input.carriedIdentityRefs,
-    'ProcessFamily.State.carriedIdentityRefs',
-  );
-
-  if (lastAcceptedTransitionOrNull === null) {
-    assert(
-      acceptedEvidenceRefs.length === 0,
-      'ProcessFamily.State entry State must not contain accepted transition evidence',
-    );
-    assert(
-      carriedIdentityRefs.length === 0,
-      'ProcessFamily.State entry State must not contain carried transition identities',
-    );
-  } else {
-    assert(
-      JSON.stringify(acceptedEvidenceRefs) === JSON.stringify(lastAcceptedTransitionOrNull.evidenceRefs),
-      'ProcessFamily.State acceptedEvidenceRefs must exactly equal last accepted transition evidence',
-    );
-    assert(
-      JSON.stringify(carriedIdentityRefs) === JSON.stringify(lastAcceptedTransitionOrNull.carriedIdentityRefs),
-      'ProcessFamily.State carriedIdentityRefs must exactly equal last accepted transition identities',
-    );
-  }
-
   return freeze({
     schemaVersion: PROCESS_FAMILY_STATE_SCHEMA,
     stateRef,
@@ -358,8 +327,6 @@ export function normalizeProcessState(input, familyInput) {
     scopeRef: stableRef(input.scopeRef, 'ProcessFamily.State.scopeRef'),
     currentNodeRef,
     layer: currentLayer,
-    acceptedEvidenceRefs,
-    carriedIdentityRefs,
     previousStateRefOrNull,
     lastAcceptedTransitionOrNull,
   });
@@ -379,8 +346,6 @@ export function createProcessState(familyInput, {
     scopeRef,
     currentNodeRef: family.entryNodeRef,
     layer: family.entryLayer,
-    acceptedEvidenceRefs: [],
-    carriedIdentityRefs: [],
     previousStateRefOrNull: null,
     lastAcceptedTransitionOrNull: null,
   }, family);
@@ -432,9 +397,6 @@ export function admitProcessTransition({
     carriedIdentityRefs,
     'process transition carriedIdentityRefs',
   );
-  const nextEvidence = transitionEvidenceRefs;
-  const nextIdentities = transitionIdentityRefs;
-
   const transition = {
     transitionRef,
     relationshipRefOrNull,
@@ -453,8 +415,6 @@ export function admitProcessTransition({
     scopeRef: state.scopeRef,
     currentNodeRef: toNodeRef,
     layer: nextLayer,
-    acceptedEvidenceRefs: nextEvidence,
-    carriedIdentityRefs: nextIdentities,
     previousStateRefOrNull: state.stateRef,
     lastAcceptedTransitionOrNull: transition,
   }, family);
