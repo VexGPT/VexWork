@@ -65,24 +65,12 @@ function normalizeNode(input) {
   exactKeys(input, [
     'nodeRef',
     'label',
-    'purpose',
-    'currentTruthRefs',
-    'ownerRefs',
-    'readingSourceRefs',
-    'considerationRefs',
-    'proofRefs',
   ], 'process node');
 
   const nodeRef = stableRef(input.nodeRef, 'process node.nodeRef');
   return {
     nodeRef,
     label: text(input.label, 'process node ' + nodeRef + '.label'),
-    purpose: text(input.purpose, 'process node ' + nodeRef + '.purpose'),
-    currentTruthRefs: refs(input.currentTruthRefs, 'process node ' + nodeRef + '.currentTruthRefs'),
-    ownerRefs: refs(input.ownerRefs, 'process node ' + nodeRef + '.ownerRefs', { allowEmpty: false }),
-    readingSourceRefs: refs(input.readingSourceRefs, 'process node ' + nodeRef + '.readingSourceRefs', { allowEmpty: false }),
-    considerationRefs: refs(input.considerationRefs, 'process node ' + nodeRef + '.considerationRefs'),
-    proofRefs: refs(input.proofRefs, 'process node ' + nodeRef + '.proofRefs'),
   };
 }
 
@@ -126,7 +114,6 @@ export function normalizeProcessFamily(input) {
     'forwardMovementClasses',
     'nodes',
     'relationships',
-    'sourceRefs',
   ], 'ProcessFamily');
 
   assert(input.schemaVersion === PROCESS_FAMILY_SCHEMA, 'ProcessFamily schema mismatch');
@@ -202,7 +189,6 @@ export function normalizeProcessFamily(input) {
     forwardMovementClasses,
     nodes,
     relationships,
-    sourceRefs: refs(input.sourceRefs, 'ProcessFamily.sourceRefs', { allowEmpty: false }),
   });
 }
 
