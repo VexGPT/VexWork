@@ -3298,6 +3298,87 @@ GENERATOR_ESCAPE_CORRECTION
 != PRODUCT_PAYLOAD_CHANGE
 ~~~
 
+### F2 A003 — inner package schema rejected; A004 formed
+
+F2 A003 stopped before native Relay execution. The outer VexLocalBridge task admitted and ran the native
+carrier, but the carrier rejected the inner archive during input-package verification.
+
+~~~text
+outer RETURN sha256
+  b9880e7c8c32e63765360cc06f21c486164354885800db8f632896cc7fa52ea7
+
+outer disposition
+  SAFE_FAILURE
+
+outer stop
+  PAYLOAD_RESULT_MISSING
+
+native stderr
+  INPUT_PACKAGE_SCHEMA:vex.relay.input-package/v1
+~~~
+
+The live SDK at exact head `9be6c8c3c169e8b98b04c7821b300f84cb8342de` requires
+`INPUT_PACKAGE_SCHEMA_VERSION = vex.relay.input-package/v2`. A003's task manifest was already
+`vex.relay.task/v2`; the stale field was only the manually formed inner `PACKAGE-MANIFEST.json`.
+
+A003 therefore performed zero business effects:
+
+~~~text
+source mutation             = false
+branch mutation             = false
+provider/network effect     = false
+publication                 = false
+candidate head/tree         = NONE
+retained canonical inner RETURN = NONE (native task never admitted)
+~~~
+
+A004 is a fresh package attempt from the same accepted VexLife base. It preserves the A003 syntax
+correction, A002 semantic mutation anchors, and the exact F2 product payload bytes. The only semantic
+formation correction is the inner input-package wrapper and fresh identities.
+
+~~~text
+attempt
+  attempt.vexlife.interface-currentness-browser-realization.f2.a004.879b0ed3cb47
+
+branch
+  vxg-interface-currentness-browser-realization-a004
+
+outer package sha256
+  562cef835164301beb5c60b731bcfe60edb26970318acf808f774c71e6834480
+
+inner package sha256
+  88feddb0a0873167163e1090da950066fc64ae3d3ed7e45cf69406309ee7f82c
+
+inner package schema
+  vex.relay.input-package/v2
+
+manifest digest
+  e40eff9cbad752324350401537ee21fe9956cb6fc9ec67d69c4d5ac0231fdc6b
+
+content-set digest
+  af513e44e604b355c143e067132c5f37ddf98da2a4078c37cc296da692b23a93
+~~~
+
+A local mirror of the exact current SDK input-package verifier passes: schema, task/attempt/package identity,
+manifest digest, member hashes/sizes, content-set digest and exact member set all match.
+
+Permanent:
+
+~~~text
+A003_INPUT_PACKAGE_REJECTION
+!= F2_SOURCE_FAILURE
+!= F2_TEST_FAILURE
+!= PRODUCT_PAYLOAD_CHANGE
+
+ZERO_NATIVE_ADMISSION
++ ZERO_SOURCE_EFFECT
+-> FRESH_PACKAGE_ATTEMPT
+
+A004_PRODUCT_BYTES
+= A003_PRODUCT_BYTES
+= A002_PRODUCT_BYTES
+~~~
+
 ### Foundation-to-interface sequence
 
 ~~~text
