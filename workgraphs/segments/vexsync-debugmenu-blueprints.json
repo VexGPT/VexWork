@@ -519,7 +519,9 @@
         "evidence.vexsync.pr203.sourceowner.a004.outer.sha256.49e19b639d7684868e78f1ae1b61a7cf82275bf9ed5a99a6f7b8d1ee6addaa0f",
         "evidence.vexsync.pr203.sourceowner.a004.inner.sha256.5f2a4d17c4a0a7001666d8302a6f69f17144b9e75fa365b0df515ef7c458ac52",
         "evidence.vexsync.pr203.sourceowner.a005.formation.sha256.85841e32c239e30fc441f2bbcfcdb1b110f45f95fa146c455a007c96a91f84b9",
-        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt"
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt",
+        "github.comment.vexlife-android.pr203.6515466461.sourceowner-a005-finding-a006-formed",
+        "evidence.vexsync.pr203.sourceowner.a006.formation.sha256.ef0aa55c3c68fb107cded269f11c7c23618d1295c0221ea7d461c1676927cd7e"
       ],
       "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
       "nextProcessRefs": [
@@ -528,7 +530,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-29T17:34:00.000Z",
-      "updatedAt": "2026-10-30T05:08:00.000Z"
+      "updatedAt": "2026-10-30T05:12:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
@@ -1218,6 +1220,21 @@
         "evidence.vexsync.pr203.sourceowner.a005.formation.sha256.85841e32c239e30fc441f2bbcfcdb1b110f45f95fa146c455a007c96a91f84b9"
       ],
       "createdAt": "2026-10-30T05:08:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.execution-source-custody.running.pr203-sourceowner-a005-census-a006-formed-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.execution-source-custody",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING",
+      "reason": "SourceOwner A005 intentionally censused production Kotlin before Gradle and found the remaining retired Execution surfaces in VexStream PlaybackWidget, CollectionPlayback, and TrackPlayback plus one obsolete VexCoroutineHandle import. This is a candidate integration finding; vexVerifyJvm was not reached. PR #203 now roots those workers in their live semantic owners (PlaybackService / Media3 collection connection / Media3 track connection) with local relationship keys only. Corrected exact candidate head=564bd0a3c12e8a35e2e23f276f619c560deb4136 tree=9aa9acb73ffba8eb6ee2def047254e5cd594af06 paths=19. A006 is statically qualified for legacy-surface census -> vexVerifyJvm -> exact tracked-clean -> review snapshot. No SourceOwner PASS is claimed yet.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.203",
+        "github.comment.vexlife-android.pr203.6515466461.sourceowner-a005-finding-a006-formed",
+        "evidence.vexsync.pr203.sourceowner.a006.formation.sha256.ef0aa55c3c68fb107cded269f11c7c23618d1295c0221ea7d461c1676927cd7e"
+      ],
+      "createdAt": "2026-10-30T05:12:00.000Z"
     }
   ],
   "sourceRefs": [
