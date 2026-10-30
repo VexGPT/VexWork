@@ -1394,7 +1394,7 @@ It consumes:
 ProcessFamily definition
 + exact ProcessFamily State
 + caller-supplied scope projection
-+ caller-supplied admitted outgoing relationships
++ current satisfied predicate refs
 ~~~
 
 and forms a read-only VexBoard projection with:
@@ -1407,7 +1407,7 @@ NEXT candidates + identity/purpose/entry predicates only
 FURTHER ROUTE + address identity only
 ~~~
 
-The projector cannot admit process movement or mutate State. It receives admitted relationship refs from the rightful process decision layer and remains effect-free / non-executing.
+The projector cannot admit process movement or mutate State. ProcessFamily derives outgoing relationship availability from the current satisfied predicate refs supplied by the rightful observation/decision layer; the projector only renders that result and remains effect-free / non-executing.
 
 Future-node readingSourceRefs / proofRefs are deliberately absent from NEXT/FURTHER projected sourceRefs.
 
@@ -1416,6 +1416,33 @@ ADDRESSABLE FUTURE
 != ACTIVE READING SCOPE
 ~~~
 
+### Focused semantic proof checkpoint
+
+The formed ProcessFamily / bounded-horizon implementation has been exercised against the exact current PR source bytes through the connected V8 execution surface.
+
+~~~text
+exact test file logic        13 / 13 PASS
+machine ProcessFamily        PASS
+scope x node x depth walk    PASS
+predicate-derived availability PASS
+unearned feedback edge       FAIL-CLOSED
+future reading-source leak   REJECTED
+full-map family lineage      PASS
+bounded horizon projection   PASS
+foreign scope projection     REJECTED
+~~~
+
+The proof executes the exact branch modules and the complete focused test file logic with compatibility shims for Node-only test/fs/assert surfaces.
+
+Permanent proof distinction:
+
+~~~text
+CONNECTED V8 SEMANTIC PROOF = PASS
+REPOSITORY-NATIVE NODE TEST = NOT YET CLAIMED
+FULL npm run review          = NOT YET CLAIMED
+~~~
+
+Do not convert the connector proof into a claim that Node/npm repository integration has already run.
 ### Source definition versus live current State
 
 VexWork's accepted runtime-persistence law already establishes the right storage distinction:
