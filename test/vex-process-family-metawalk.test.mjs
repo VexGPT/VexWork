@@ -55,6 +55,17 @@ function familyFixture() {
       'RECONCILE_ACCEPT',
     ],
     entryLayer: 'FORMATION',
+    movementClasses: [
+      'ADVANCES',
+      'ENABLES',
+      'REFINES',
+      'SEMANTIC_GAP',
+      'CONTRACT_GAP',
+      'IMPLEMENTATION_DEFECT',
+      'CURRENTNESS_CHANGED',
+      'RECOVERS',
+    ],
+    forwardMovementClasses: ['ADVANCES', 'ENABLES'],
     nodes: [
       node('node.recover', 'Recover'),
       node('node.contract', 'Contract'),
@@ -180,6 +191,22 @@ test('MetaWalk dogfoods scope x node x layer against its real machine definition
   assert.equal(Object.hasOwn(horizon.nextCandidates[0], 'readingSourceRefs'), false);
 });
 
+
+test('MetaWalk keeps formation history as provenance, not mandatory read-now scope', () => {
+  const family = normalizeProcessFamily(read(familyPath));
+
+  assert.equal(
+    family.nodes.every((entry) => entry.sourceRefs.includes(sourcePath)),
+    true,
+    'formation source remains recoverable provenance',
+  );
+  assert.equal(
+    family.nodes.every((entry) => !entry.readingSourceRefs.includes(sourcePath)),
+    true,
+    'current nodes must not deep-read the giant formation history by default',
+  );
+});
+
 test('MetaWalk board is one valid read-only projection of the formation source', () => {
   const board = read(boardPath);
   assert.equal(board.schemaVersion, 'vexboard.local-draft/v1');
@@ -254,13 +281,15 @@ test('ProcessFamily owns its layer vocabulary instead of inheriting MetaWalk lay
     entryNodeRef: 'node.alpha',
     layers: ['DISCOVER', 'REALIZE'],
     entryLayer: 'DISCOVER',
+    movementClasses: ['CONTINUES'],
+    forwardMovementClasses: ['CONTINUES'],
     nodes: [
       node('node.alpha', 'Alpha'),
       node('node.beta', 'Beta'),
     ],
     relationships: [{
       relationshipRef: 'rel.alpha-beta',
-      movementClass: 'ADVANCES',
+      movementClass: 'CONTINUES',
       fromRef: 'node.alpha',
       toRef: 'node.beta',
       label: 'advance',
@@ -281,7 +310,7 @@ test('ProcessFamily owns its layer vocabulary instead of inheriting MetaWalk lay
     state: start,
     transitionRef: 'transition.custom-layers.001',
     relationshipRefOrNull: 'rel.alpha-beta',
-    movementClass: 'ADVANCES',
+    movementClass: 'CONTINUES',
     nextLayer: 'REALIZE',
     evidenceRefs: ['evidence.custom-layers.001'],
     carriedIdentityRefs: [],
@@ -296,7 +325,7 @@ test('ProcessFamily owns its layer vocabulary instead of inheriting MetaWalk lay
       state: start,
       transitionRef: 'transition.custom-layers.bad',
       relationshipRefOrNull: 'rel.alpha-beta',
-      movementClass: 'ADVANCES',
+      movementClass: 'CONTINUES',
       nextLayer: 'IMPLEMENTATION',
       evidenceRefs: ['evidence.custom-layers.bad'],
       carriedIdentityRefs: [],
@@ -622,6 +651,27 @@ test('ProcessFamily definition fails closed on identity, topology and movement c
   const missingEndpoint = structuredClone(schema);
   missingEndpoint.relationships[0].toRef = 'node.missing';
   assert.throws(() => normalizeProcessFamily(missingEndpoint), /toRef missing/);
+
+  const invalidMovementVocabulary = structuredClone(schema);
+  invalidMovementVocabulary.relationships[0].movementClass = 'UNDECLARED';
+  assert.throws(
+    () => normalizeProcessFamily(invalidMovementVocabulary),
+    /movementClass invalid for ProcessFamily/,
+  );
+
+  const invalidForwardVocabulary = structuredClone(schema);
+  invalidForwardVocabulary.forwardMovementClasses = ['UNDECLARED'];
+  assert.throws(
+    () => normalizeProcessFamily(invalidForwardVocabulary),
+    /forwardMovementClasses must belong to movementClasses/,
+  );
+
+  const relationshipFreeInFamily = structuredClone(schema);
+  relationshipFreeInFamily.movementClasses.push('LAYER_REVISIT');
+  assert.throws(
+    () => normalizeProcessFamily(relationshipFreeInFamily),
+    /must not include relationship-free LAYER_REVISIT/,
+  );
 
   const invalidEntryLayer = structuredClone(schema);
   invalidEntryLayer.entryLayer = 'NOT_DECLARED';
@@ -1125,6 +1175,8 @@ test('initial bounded horizon has no PREVIOUS slot and may have no FURTHER route
     entryNodeRef: 'node.start',
     layers: ['START', 'DONE'],
     entryLayer: 'START',
+    movementClasses: ['ADVANCES'],
+    forwardMovementClasses: ['ADVANCES'],
     nodes: [
       node('node.start', 'Start'),
       node('node.finish', 'Finish'),
