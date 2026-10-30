@@ -440,7 +440,7 @@ test('accepted transition carries evidence and identity while rotating CURRENT n
   assert.equal(horizon.current.nodeRef, 'node.contract');
 });
 
-test('layer revisit may deepen one semantic coordinate without reopening a prior node', () => {
+test('relationship-free layer change may deepen one semantic coordinate without reopening a prior node', () => {
   const family = normalizeProcessFamily(familyFixture());
   const start = createProcessState(family, {
     stateRef: 'state.metawalk.001',
@@ -452,7 +452,7 @@ test('layer revisit may deepen one semantic coordinate without reopening a prior
     state: start,
     transitionRef: 'transition.metawalk.layer.001',
     relationshipRefOrNull: null,
-    movementClass: 'LAYER_REVISIT',
+    movementClass: null,
     nextLayer: 'TOPOLOGY',
     evidenceRefs: ['evidence.shape-deepened'],
     carriedIdentityRefs: [],
@@ -461,8 +461,34 @@ test('layer revisit may deepen one semantic coordinate without reopening a prior
 
   assert.equal(next.currentNodeRef, 'node.recover');
   assert.equal(next.layer, 'TOPOLOGY');
+  assert.equal(next.lastAcceptedTransitionOrNull?.movementClass, null);
   assert.equal(next.lastAcceptedTransitionOrNull?.fromNodeRef, 'node.recover');
   assert.equal(next.lastAcceptedTransitionOrNull?.toNodeRef, 'node.recover');
+  assert.equal(next.lastAcceptedTransitionOrNull?.fromLayer, 'FORMATION');
+  assert.equal(next.lastAcceptedTransitionOrNull?.toLayer, 'TOPOLOGY');
+
+  const horizon = projectProcessHorizon(family, next);
+  assert.equal(horizon.previousAcceptedOrNull?.movementClass, null);
+  assert.equal(horizon.previousAcceptedOrNull?.fromLayer, 'FORMATION');
+  assert.equal(horizon.previousAcceptedOrNull?.toLayer, 'TOPOLOGY');
+
+  const board = projectProcessHorizonBoard({
+    family,
+    state: next,
+    scope: {
+      scopeRef: 'work.test.outcome',
+      label: 'Layer-only movement',
+      purpose: 'Render a structural layer transition without inventing one semantic movement class.',
+      sourceRefs: ['work.test.outcome'],
+    },
+    boardRef: 'board.test.layer-only-movement',
+  });
+  const graph = normalizeBoardGraph(board.graph);
+  const previousCurrent = graph.relationships.find((entry) =>
+    entry.fromRef.includes('reference.previous') &&
+    entry.toRef.includes('reference.current')
+  );
+  assert.equal(previousCurrent?.labelOrNull, 'Layer FORMATION → TOPOLOGY');
 });
 
 test('transition admission fails closed on stale or foreign movement', () => {
@@ -673,11 +699,15 @@ test('ProcessFamily definition fails closed on identity, topology and movement c
     /forwardMovementClasses must belong to movementClasses/,
   );
 
-  const relationshipFreeInFamily = structuredClone(schema);
-  relationshipFreeInFamily.movementClasses.push('LAYER_REVISIT');
-  assert.throws(
-    () => normalizeProcessFamily(relationshipFreeInFamily),
-    /must not include relationship-free LAYER_REVISIT/,
+  const familyOwnedLayerRevisitName = structuredClone(schema);
+  familyOwnedLayerRevisitName.movementClasses.push('LAYER_REVISIT');
+  familyOwnedLayerRevisitName.relationships[0].movementClass = 'LAYER_REVISIT';
+  assert.equal(
+    normalizeProcessFamily(familyOwnedLayerRevisitName).relationships
+      .find((entry) => entry.relationshipRef === 'rel.recover-contract')
+      ?.movementClass,
+    'LAYER_REVISIT',
+    'generic core must not reserve this spelling as universal semantics',
   );
 
   const invalidEntryLayer = structuredClone(schema);
@@ -920,6 +950,13 @@ test('entry ProcessFamily State cannot invent transition evidence, identities, o
     () => normalizeProcessState(forgedIdentity, family),
     /entry State must not contain carried transition identities/,
   );
+
+  const forgedLayer = structuredClone(valid);
+  forgedLayer.layer = 'IMPLEMENTATION';
+  assert.throws(
+    () => normalizeProcessState(forgedLayer, family),
+    /without transition must be at entryLayer/,
+  );
 });
 
 test('every admitted transition must state carried identities explicitly', () => {
@@ -1040,7 +1077,7 @@ test('bounded horizon derives CURRENT source grounding from current State eviden
   assert.deepEqual(third.acceptedEvidenceRefs, ['evidence.current.002']);
 });
 
-test('transition formation rejects unknown relationships, empty evidence and no-op layer revisits', () => {
+test('transition formation rejects unknown relationships, empty evidence and no-op relationship-free layer changes', () => {
   const family = normalizeProcessFamily(familyFixture());
   const state = createProcessState(family, {
     stateRef: 'state.reject.001',
@@ -1086,7 +1123,7 @@ test('transition formation rejects unknown relationships, empty evidence and no-
       state,
       transitionRef: 'transition.reject.noop-layer',
       relationshipRefOrNull: null,
-      movementClass: 'LAYER_REVISIT',
+      movementClass: null,
       nextLayer: 'FORMATION',
       evidenceRefs: ['evidence.reject.noop-layer'],
       carriedIdentityRefs: [],
