@@ -17,6 +17,7 @@ const read = (relative) => JSON.parse(fs.readFileSync(new URL('../' + relative, 
 
 const boardPath = 'projects/vexboard/examples/vexwork-process-family-metawalk.board.json';
 const sourcePath = 'docs/process/VEX-PROCESS-FAMILY-METAWALK.md';
+const familyPath = 'docs/process/VEX-PROCESS-FAMILY-METAWALK.json';
 
 function node(nodeRef, label) {
   return {
@@ -90,6 +91,80 @@ function familyFixture() {
   };
 }
 
+
+
+test('machine MetaWalk ProcessFamily owns the full-map VexBoard semantic shape', () => {
+  const family = normalizeProcessFamily(read(familyPath));
+  const board = read(boardPath);
+  const graph = normalizeBoardGraph(board.graph);
+
+  assert.equal(board.derivedFromRefOrNull, family.familyRef);
+  assert.equal(family.familyRef, 'process-family.vexwork.metawalk');
+  assert.equal(family.nodes.length, 10);
+  assert.equal(family.relationships.length, 13);
+
+  const boardProcessRefs = graph.nodes
+    .filter((entry) => ['SCENE', 'PROCESS'].includes(entry.kind))
+    .map((entry) => entry.nodeRef)
+    .sort();
+  assert.deepEqual(
+    boardProcessRefs,
+    family.nodes.map((entry) => entry.nodeRef).sort(),
+  );
+  assert.deepEqual(
+    graph.relationships.map((entry) => entry.relationshipRef).sort(),
+    family.relationships.map((entry) => entry.relationshipRef).sort(),
+  );
+  assert.equal(
+    graph.nodes.every((entry) => entry.sourceRefs.includes(familyPath)),
+    true,
+  );
+  assert.equal(
+    graph.relationships.every((entry) => entry.sourceRefs.includes(familyPath)),
+    true,
+  );
+});
+
+test('MetaWalk dogfoods scope x node x depth against its real machine definition', () => {
+  const family = normalizeProcessFamily(read(familyPath));
+  let state = createProcessState(family, {
+    stateRef: 'state.metawalk.dogfood.000',
+    scopeRef: 'work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence',
+    depth: 'FORMATION',
+  });
+
+  const walk = [
+    ['rel.vexwork.process-family-metawalk.entry-recover', 'FORMATION'],
+    ['rel.vexwork.process-family-metawalk.recover-topology', 'TOPOLOGY'],
+    ['rel.vexwork.process-family-metawalk.topology-ownership', 'OWNERSHIP'],
+    ['rel.vexwork.process-family-metawalk.ownership-contracts', 'CONTRACT'],
+  ];
+  for (let index = 0; index < walk.length; index += 1) {
+    const [relationshipRef, nextDepth] = walk[index];
+    state = admitProcessTransition({
+      family,
+      state,
+      transitionRef: 'transition.metawalk.dogfood.' + String(index + 1).padStart(3, '0'),
+      relationshipRefOrNull: relationshipRef,
+      movementClass: 'ADVANCES',
+      nextDepth,
+      evidenceRefs: ['evidence.metawalk.dogfood.' + String(index + 1).padStart(3, '0')],
+      nextStateRef: 'state.metawalk.dogfood.' + String(index + 1).padStart(3, '0'),
+    });
+  }
+
+  const horizon = projectProcessHorizon(family, state, {
+    admittedRelationshipRefs: ['rel.vexwork.process-family-metawalk.contracts-proof-plan'],
+  });
+  assert.equal(state.currentNodeRef, 'node.vexwork.process-family-metawalk.contracts');
+  assert.equal(state.depth, 'CONTRACT');
+  assert.equal(horizon.previousAcceptedOrNull?.nodeRef, 'node.vexwork.process-family-metawalk.ownership');
+  assert.equal(horizon.nextCandidates.length, 1);
+  assert.equal(horizon.nextCandidates[0].nodeRef, 'node.vexwork.process-family-metawalk.proof-plan');
+  assert.equal(horizon.nextCandidates[0].admitted, true);
+  assert.equal(Object.hasOwn(horizon.nextCandidates[0], 'readingSourceRefs'), false);
+});
+
 test('MetaWalk board is one valid read-only projection of the formation source', () => {
   const board = read(boardPath);
   assert.equal(board.schemaVersion, 'vexboard.local-draft/v1');
@@ -151,6 +226,7 @@ test('MetaWalk is discoverable through the existing VexBoard source catalog with
   assert.equal(resolution?.catalogRef, 'catalog.vexboard.patient-zero-examples');
   assert.equal(resolution?.location, './vexwork-process-family-metawalk.board.json');
   assert.equal(resolution?.sourceRefs.includes(sourcePath), true);
+  assert.equal(resolution?.sourceRefs.includes(familyPath), true);
   assert.equal(resolution?.sourceRefs.includes(boardPath), true);
 });
 
