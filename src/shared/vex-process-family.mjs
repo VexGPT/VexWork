@@ -580,6 +580,8 @@ export function projectProcessHorizon(familyInput, stateInput, {
       label: previousNode.label,
       transitionRef: last.transitionRef,
       movementClass: last.movementClass,
+      fromLayer: last.fromLayer,
+      toLayer: last.toLayer,
       evidenceRefs: [...last.evidenceRefs],
     } : null,
     current: {
