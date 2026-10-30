@@ -2,22 +2,7 @@ export const PROCESS_FAMILY_SCHEMA = 'vexwork.process-family/v1';
 export const PROCESS_FAMILY_STATE_SCHEMA = 'vexwork.process-family-state/v1';
 export const PROCESS_HORIZON_SCHEMA = 'vexwork.process-horizon/v1';
 
-export const PROCESS_MOVEMENT_CLASSES = Object.freeze([
-  'ADVANCES',
-  'ENABLES',
-  'REFINES',
-  'SEMANTIC_GAP',
-  'CONTRACT_GAP',
-  'IMPLEMENTATION_DEFECT',
-  'CURRENTNESS_CHANGED',
-  'RECOVERS',
-  'LAYER_REVISIT',
-]);
-
-const RELATIONSHIP_MOVEMENT_CLASSES = new Set(
-  PROCESS_MOVEMENT_CLASSES.filter((value) => value !== 'LAYER_REVISIT'),
-);
-const FORWARD_MOVEMENT_CLASSES = new Set(['ADVANCES', 'ENABLES']);
+const LAYER_REVISIT = 'LAYER_REVISIT';
 const REF = /^[A-Za-z0-9][A-Za-z0-9._:/-]*$/u;
 
 function assert(condition, message) {
@@ -61,8 +46,9 @@ function unionRefs(values, label, options = {}) {
   return refs([...new Set(values)], label, options);
 }
 
-function orderedValues(values, label) {
-  assert(Array.isArray(values) && values.length > 0, label + ' must be a non-empty array');
+function orderedValues(values, label, { allowEmpty = false } = {}) {
+  assert(Array.isArray(values), label + ' must be an array');
+  if (!allowEmpty) assert(values.length > 0, label + ' must be non-empty');
   const result = values.map((value, index) => text(value, label + '[' + index + ']'));
   assert(new Set(result).size === result.length, label + ' must be unique');
   return result;
@@ -116,7 +102,7 @@ function normalizeNode(input) {
   };
 }
 
-function normalizeRelationship(input) {
+function normalizeRelationship(input, movementClasses) {
   exactKeys(input, [
     'relationshipRef',
     'movementClass',
@@ -128,9 +114,10 @@ function normalizeRelationship(input) {
   ], 'process relationship');
 
   const relationshipRef = stableRef(input.relationshipRef, 'process relationship.relationshipRef');
+  text(input.movementClass, 'process relationship ' + relationshipRef + '.movementClass');
   assert(
-    RELATIONSHIP_MOVEMENT_CLASSES.has(input.movementClass),
-    'process relationship ' + relationshipRef + '.movementClass invalid',
+    movementClasses.includes(input.movementClass),
+    'process relationship ' + relationshipRef + '.movementClass invalid for ProcessFamily',
   );
   return {
     relationshipRef,
@@ -154,6 +141,8 @@ export function normalizeProcessFamily(input) {
     'entryNodeRef',
     'layers',
     'entryLayer',
+    'movementClasses',
+    'forwardMovementClasses',
     'nodes',
     'relationships',
     'sourceRefs',
@@ -164,6 +153,26 @@ export function normalizeProcessFamily(input) {
   const layers = orderedValues(input.layers, 'ProcessFamily.layers');
   const entryLayer = text(input.entryLayer, 'ProcessFamily.entryLayer');
   assert(layers.includes(entryLayer), 'ProcessFamily entryLayer must belong to layers');
+  const movementClasses = orderedValues(
+    input.movementClasses,
+    'ProcessFamily.movementClasses',
+    { allowEmpty: true },
+  );
+  assert(
+    !movementClasses.includes(LAYER_REVISIT),
+    'ProcessFamily movementClasses must not include relationship-free LAYER_REVISIT',
+  );
+  const forwardMovementClasses = orderedValues(
+    input.forwardMovementClasses,
+    'ProcessFamily.forwardMovementClasses',
+    { allowEmpty: true },
+  );
+  for (const movementClass of forwardMovementClasses) {
+    assert(
+      movementClasses.includes(movementClass),
+      'ProcessFamily forwardMovementClasses must belong to movementClasses: ' + movementClass,
+    );
+  }
   assert(Array.isArray(input.nodes) && input.nodes.length > 0, 'ProcessFamily.nodes must be non-empty');
   assert(Array.isArray(input.relationships), 'ProcessFamily.relationships must be an array');
 
@@ -175,7 +184,7 @@ export function normalizeProcessFamily(input) {
   assert(nodeRefs.has(entryNodeRef), 'ProcessFamily entryNodeRef missing');
 
   const relationships = input.relationships
-    .map(normalizeRelationship)
+    .map((relationship) => normalizeRelationship(relationship, movementClasses))
     .sort((a, b) => compareCanonicalText(a.relationshipRef, b.relationshipRef));
   assert(
     new Set(relationships.map((relationship) => relationship.relationshipRef)).size === relationships.length,
@@ -213,6 +222,8 @@ export function normalizeProcessFamily(input) {
     entryNodeRef,
     layers,
     entryLayer,
+    movementClasses,
+    forwardMovementClasses,
     nodes,
     relationships,
     sourceRefs: refs(input.sourceRefs, 'ProcessFamily.sourceRefs', { allowEmpty: false }),
@@ -233,7 +244,7 @@ function normalizeTransition(input, label, family) {
   ], 'process transition ' + label);
 
   const transitionRef = stableRef(input.transitionRef, 'process transition ' + label + '.transitionRef');
-  assert(PROCESS_MOVEMENT_CLASSES.includes(input.movementClass), 'process transition ' + label + '.movementClass invalid');
+  text(input.movementClass, 'process transition ' + label + '.movementClass');
   const fromNodeRef = stableRef(input.fromNodeRef, 'process transition ' + label + '.fromNodeRef');
   const toNodeRef = stableRef(input.toNodeRef, 'process transition ' + label + '.toNodeRef');
   assert(family.nodes.some((node) => node.nodeRef === fromNodeRef), 'process transition fromNodeRef missing');
@@ -244,7 +255,7 @@ function normalizeTransition(input, label, family) {
     : stableRef(input.relationshipRefOrNull, 'process transition ' + label + '.relationshipRefOrNull');
 
   if (relationshipRefOrNull === null) {
-    assert(input.movementClass === 'LAYER_REVISIT', 'relationship-free transition must be LAYER_REVISIT');
+    assert(input.movementClass === LAYER_REVISIT, 'relationship-free transition must be LAYER_REVISIT');
     assert(fromNodeRef === toNodeRef, 'LAYER_REVISIT must stay on the same process node');
   } else {
     const relationship = family.relationships.find((candidate) => candidate.relationshipRef === relationshipRefOrNull);
@@ -432,7 +443,7 @@ export function admitProcessTransition({
     );
   } else {
     assert(relationshipRefOrNull === null, 'process transition relationship missing');
-    assert(movementClass === 'LAYER_REVISIT', 'relationship-free transition must be LAYER_REVISIT');
+    assert(movementClass === LAYER_REVISIT, 'relationship-free transition must be LAYER_REVISIT');
   }
 
   const toNodeRef = relationship ? relationship.toRef : currentNodeRef;
@@ -522,6 +533,7 @@ function publicNextNode(node, relationship, availability) {
 }
 
 function forwardReachableNodeRefs(family, startNodeRef) {
+  const forwardMovementClasses = new Set(family.forwardMovementClasses);
   const visited = new Set([startNodeRef]);
   const queue = [startNodeRef];
 
@@ -529,7 +541,7 @@ function forwardReachableNodeRefs(family, startNodeRef) {
     const fromRef = queue.shift();
     for (const relationship of family.relationships) {
       if (relationship.fromRef !== fromRef) continue;
-      if (!FORWARD_MOVEMENT_CLASSES.has(relationship.movementClass)) continue;
+      if (!forwardMovementClasses.has(relationship.movementClass)) continue;
       if (visited.has(relationship.toRef)) continue;
       visited.add(relationship.toRef);
       queue.push(relationship.toRef);
