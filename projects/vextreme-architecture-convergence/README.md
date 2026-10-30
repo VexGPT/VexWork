@@ -1623,6 +1623,39 @@ accepted merge tree
 No GitHub Actions result is used as proof, and no Local Workspace route was used.
 
 
+### Post-completion contract currentness
+
+After PR #505 completed the implementation defect, PR #488 later merged an older static contract assertion that still required direct `activeGroupHomeKey = stage.key` mutation. That did **not** invalidate or reopen the completed implementation owner.
+
+PR #507 owned the later test-only currentness correction:
+
+~~~text
+stale accepted test contract
+  requires direct activeGroupHomeKey assignment
+
+current product owner
+  setActiveEmbeddedSurface('group-home', stage.key)
+
+PR #507
+  one-path test-only correction
+  tests/85-terrain-view-contract.test.js
+  merge a9c7cd9df82459c935767584e0692e56a0de6fd4
+  candidate blob preserved exactly in merge
+~~~
+
+Permanent lifecycle distinction:
+
+~~~text
+COMPLETED IMPLEMENTATION
++ later stale contract/projection
+!= reopen completed Work through an illegal lifecycle edge
+
+later contract currentness
+-> preserve completion
+-> bind correction provenance
+-> continue from current truth
+~~~
+
 ## VexRelay / Family Circuit convergence
 
 Victor has now identified a second architecture patient zero outside the website itself: **VexRelay is
@@ -1787,6 +1820,9 @@ work.vextreme.architecture-convergence.terrain-active-surface-context
   PR #505 gives reader / entry / group-home / none one mutually-exclusive active-surface mutation owner
   Vex Relay A002 exact-head proof 19/19 PASS; Independent Assurance CLEAR
   merge 28602a7ba832223d40ed844c32609954051f1c84 is tree-exact to the proven candidate
+  later PR #488 reintroduced a stale pre-#505 test assertion only
+  PR #507 currentized that one shared contract path and merged as a9c7cd9df82459c935767584e0692e56a0de6fd4
+  the Work remains COMPLETED; the stale test did not lawfully reopen the completed implementation lifecycle
 
 work.vextreme.architecture-convergence.terrain-reader-navigation
   VERIFYING
