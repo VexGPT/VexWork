@@ -1690,6 +1690,35 @@ ProcessFamily provenance is owned once at Family scope through `ProcessFamily.so
 
 The prose node contract remains broader because it describes questions a competent current worker must answer. That checklist is intentionally **not identical to the machine schema**.
 
+### Dead helper + unconsumed Family purpose were removed
+
+Fresh Independent Assurance on exact head `72f28bacf122e5ca8fe8dbb73a16089fac6b4a1a` found two additional pieces of unearned generic surface:
+
+1. internal `unionRefs(...)` had no call site;
+2. top-level `ProcessFamily.purpose` was mandatory but had no current semantic or projection consumer.
+
+Both are removed.
+
+~~~text
+dead unexported helper + no caller
+-> delete helper
+
+top-level machine field + no consumer
+-> delete field from vexwork.process-family/v1 candidate
+-> reject reintroduction as schema drift
+~~~
+
+Node `purpose` remains because CURRENT/NEXT horizon consumers actually use it.
+
+The overall human/process outcome remains available from Work/project/canonical prose rather than being duplicated into an unconsumed generic Family field.
+
+~~~text
+HUMAN / WORK OUTCOME
+!= UNUSED GENERIC MACHINE FIELD
+
+NODE PURPOSE HAS CONSUMER
+!= FAMILY PURPOSE MUST EXIST
+~~~
 ### ProcessFamily provenance is Family-scoped
 
 Fresh Independent Assurance on exact head `419753596b89f63159bdf12a01e39fcf6aaab008` found that machine nodes and relationships still carried mandatory `sourceRefs` even though no ProcessFamily consumer used them and this patient-zero repeated the same provenance already owned by `ProcessFamily.sourceRefs`.
@@ -1723,7 +1752,7 @@ FAMILY-LEVEL OWNER EXISTS
 The focused proof now rejects attempts to add `sourceRefs` back to a ProcessFamily node or relationship as schema drift.
 ### Read-now scope is bounded independently from provenance
 
-The long formation document remains in node `sourceRefs` so the origin is recoverable.
+The long formation document remains in `ProcessFamily.sourceRefs` so the origin is recoverable.
 
 It is **not** present in node `readingSourceRefs`.
 
