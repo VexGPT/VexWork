@@ -419,11 +419,7 @@ export function admitProcessTransition({
   if (relationship) {
     assert(relationship.fromRef === currentNodeRef, 'process transition must leave CURRENT node');
     assert(relationship.movementClass === movementClass, 'process transition movementClass must match relationship');
-    const targetNode = family.nodes.find((candidate) => candidate.nodeRef === relationship.toRef);
-    const requiredPredicateRefs = unionRefs(
-      [...relationship.entryPredicateRefs, ...targetNode.entryPredicateRefs],
-      'process transition required entry predicates',
-    );
+    const requiredPredicateRefs = requiredEntryPredicateRefs(relationship);
     const satisfied = new Set(refs(
       satisfiedPredicateRefs,
       'process transition satisfiedPredicateRefs',
@@ -477,7 +473,7 @@ export function admitProcessTransition({
   }, family);
 }
 
-function requiredEntryPredicateRefs(_family, relationship) {
+function requiredEntryPredicateRefs(relationship) {
   return [...relationship.entryPredicateRefs];
 }
 
@@ -493,7 +489,7 @@ export function availableProcessRelationships(familyInput, stateInput, {
   return freeze(family.relationships
     .filter((relationship) => relationship.fromRef === state.currentNodeRef)
     .map((relationship) => {
-      const requiredPredicateRefs = requiredEntryPredicateRefs(family, relationship);
+      const requiredPredicateRefs = requiredEntryPredicateRefs(relationship);
       const missingPredicateRefs = requiredPredicateRefs.filter((predicateRef) => !satisfied.has(predicateRef));
       return {
         relationshipRef: relationship.relationshipRef,
@@ -589,11 +585,8 @@ export function projectProcessHorizon(familyInput, stateInput, {
       currentTruthRefs: [...currentNode.currentTruthRefs],
       ownerRefs: [...currentNode.ownerRefs],
       readingSourceRefs: [...currentNode.readingSourceRefs],
-      authorityRefs: [...currentNode.authorityRefs],
       considerationRefs: [...currentNode.considerationRefs],
       proofRefs: [...currentNode.proofRefs],
-      exitPredicateRefs: [...currentNode.exitPredicateRefs],
-      heldConcernRefs: [...currentNode.heldConcernRefs],
     },
     nextCandidates,
     nextAvailableRelationshipRefs: nextCandidates
