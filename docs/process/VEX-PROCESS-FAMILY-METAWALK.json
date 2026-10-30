@@ -1,0 +1,482 @@
+{
+  "schemaVersion": "vexwork.process-family/v1",
+  "familyRef": "process-family.vexwork.metawalk",
+  "purpose": "Form, deepen, implement, prove, revisit and reconcile one process shape while keeping current reading bounded and source ownership explicit.",
+  "entryNodeRef": "node.vexwork.process-family-metawalk.entry",
+  "nodes": [
+    {
+      "nodeRef": "node.vexwork.process-family-metawalk.entry",
+      "label": "Process Family MetaWalk",
+      "purpose": "Enter from one human outcome and recover only enough current source to form the first truthful process coordinate.",
+      "entryPredicateRefs": [],
+      "currentTruthRefs": [
+        "work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence"
+      ],
+      "ownerRefs": [
+        "repo.vexwork"
+      ],
+      "readingSourceRefs": [
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
+        "docs/foundation/PROCESS-MAP.md",
+        "docs/foundation/WORKGRAPH.md"
+      ],
+      "authorityRefs": [],
+      "considerationRefs": [
+        "docs/CULTURE.md"
+      ],
+      "proofRefs": [],
+      "exitPredicateRefs": [],
+      "heldConcernRefs": [],
+      "sourceRefs": [
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
+        "github.pull.vexwork.189"
+      ]
+    },
+    {
+      "nodeRef": "node.vexwork.process-family-metawalk.recover",
+      "label": "Recover intention + pressure",
+      "purpose": "Ground the human outcome, observed failure or continuity pressure, and current source owners before adding process structure.",
+      "entryPredicateRefs": [],
+      "currentTruthRefs": [
+        "work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence"
+      ],
+      "ownerRefs": [
+        "repo.vexwork"
+      ],
+      "readingSourceRefs": [
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
+        "docs/foundation/OPERATING-PROFILES.md",
+        "github.pull.vexwork.185"
+      ],
+      "authorityRefs": [],
+      "considerationRefs": [
+        "docs/CULTURE.md",
+        "docs/foundation/PROCESS-MAP.md"
+      ],
+      "proofRefs": [],
+      "exitPredicateRefs": [],
+      "heldConcernRefs": [],
+      "sourceRefs": [
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
+        "github.pull.vexwork.189"
+      ]
+    },
+    {
+      "nodeRef": "node.vexwork.process-family-metawalk.topology",
+      "label": "Plot topology",
+      "purpose": "Form the smallest stable-enough nodes, sequence, branches, feedback paths and larger-scope enabling relationships.",
+      "entryPredicateRefs": [],
+      "currentTruthRefs": [
+        "work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence"
+      ],
+      "ownerRefs": [
+        "repo.vexwork"
+      ],
+      "readingSourceRefs": [
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
+        "docs/foundation/PROCESS-MAP.md",
+        "projects/vexboard/FRACTAL-SEMANTIC-COMPOSITION-AND-SPATIAL-LAYOUT.md"
+      ],
+      "authorityRefs": [],
+      "considerationRefs": [
+        "docs/foundation/WORKGRAPH.md"
+      ],
+      "proofRefs": [],
+      "exitPredicateRefs": [],
+      "heldConcernRefs": [],
+      "sourceRefs": [
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
+        "github.pull.vexwork.189"
+      ]
+    },
+    {
+      "nodeRef": "node.vexwork.process-family-metawalk.ownership",
+      "label": "Bind ownership",
+      "purpose": "Identify which existing owner supplies each semantic, source, currentness, authority and evidence truth without creating a shadow owner.",
+      "entryPredicateRefs": [],
+      "currentTruthRefs": [
+        "work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence"
+      ],
+      "ownerRefs": [
+        "repo.vexwork"
+      ],
+      "readingSourceRefs": [
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
+        "docs/foundation/WORKGRAPH.md",
+        "docs/foundation/REPOSITORY-GRAPH.md"
+      ],
+      "authorityRefs": [],
+      "considerationRefs": [
+        "docs/CULTURE.md",
+        "docs/foundation/PROCESS-MAP.md"
+      ],
+      "proofRefs": [],
+      "exitPredicateRefs": [],
+      "heldConcernRefs": [],
+      "sourceRefs": [
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
+        "github.pull.vexwork.189"
+      ]
+    },
+    {
+      "nodeRef": "node.vexwork.process-family-metawalk.contracts",
+      "label": "Bind contracts + relationships",
+      "purpose": "Bind the exact relationship vocabulary, current-State inputs, carried identities, re-ground obligations, consumers and held boundaries.",
+      "entryPredicateRefs": [],
+      "currentTruthRefs": [
+        "work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence"
+      ],
+      "ownerRefs": [
+        "repo.vexwork"
+      ],
+      "readingSourceRefs": [
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
+        "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+        "repo.vexlife-android:architecture/relay/README.md",
+        "source.vexrelay.current-contract/v1"
+      ],
+      "authorityRefs": [],
+      "considerationRefs": [
+        "docs/foundation/OPERATING-PROFILES.md"
+      ],
+      "proofRefs": [],
+      "exitPredicateRefs": [],
+      "heldConcernRefs": [],
+      "sourceRefs": [
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
+        "github.pull.vexwork.189"
+      ]
+    },
+    {
+      "nodeRef": "node.vexwork.process-family-metawalk.proof-plan",
+      "label": "Bind proof strategy",
+      "purpose": "Decide which evidence would falsify or satisfy each relationship and which proof class belongs to the current node.",
+      "entryPredicateRefs": [],
+      "currentTruthRefs": [
+        "work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence"
+      ],
+      "ownerRefs": [
+        "repo.vexwork"
+      ],
+      "readingSourceRefs": [
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
+        "docs/foundation/OPERATING-PROFILES.md"
+      ],
+      "authorityRefs": [],
+      "considerationRefs": [
+        "docs/CULTURE.md"
+      ],
+      "proofRefs": [
+        "test/vex-process-family-metawalk.test.mjs"
+      ],
+      "exitPredicateRefs": [],
+      "heldConcernRefs": [],
+      "sourceRefs": [
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
+        "github.pull.vexwork.189"
+      ]
+    },
+    {
+      "nodeRef": "node.vexwork.process-family-metawalk.implementation",
+      "label": "Realize implementation",
+      "purpose": "Implement the smallest target-native source that consumes the already-earned contracts without manufacturing new semantic meaning.",
+      "entryPredicateRefs": [],
+      "currentTruthRefs": [
+        "work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence"
+      ],
+      "ownerRefs": [
+        "repo.vexwork"
+      ],
+      "readingSourceRefs": [
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
+        "AGENTS.md",
+        "docs/CULTURE.md"
+      ],
+      "authorityRefs": [],
+      "considerationRefs": [
+        "docs/foundation/REPOSITORY-GRAPH.md"
+      ],
+      "proofRefs": [],
+      "exitPredicateRefs": [],
+      "heldConcernRefs": [],
+      "sourceRefs": [
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
+        "github.pull.vexwork.189"
+      ]
+    },
+    {
+      "nodeRef": "node.vexwork.process-family-metawalk.focused-proof",
+      "label": "Focused proof",
+      "purpose": "Exercise the exact semantic, implementation and fail-closed boundaries claimed by the current implementation node.",
+      "entryPredicateRefs": [],
+      "currentTruthRefs": [
+        "work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence"
+      ],
+      "ownerRefs": [
+        "repo.vexwork"
+      ],
+      "readingSourceRefs": [
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
+        "test/vex-process-family-metawalk.test.mjs"
+      ],
+      "authorityRefs": [],
+      "considerationRefs": [
+        "docs/foundation/OPERATING-PROFILES.md"
+      ],
+      "proofRefs": [
+        "test/vex-process-family-metawalk.test.mjs"
+      ],
+      "exitPredicateRefs": [],
+      "heldConcernRefs": [],
+      "sourceRefs": [
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
+        "github.pull.vexwork.189"
+      ]
+    },
+    {
+      "nodeRef": "node.vexwork.process-family-metawalk.lived-proof",
+      "label": "Lived / integration proof",
+      "purpose": "Prove the composed human/runtime outcome and any current integration relationship that focused source proof cannot establish alone.",
+      "entryPredicateRefs": [],
+      "currentTruthRefs": [
+        "work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence"
+      ],
+      "ownerRefs": [
+        "repo.vexwork"
+      ],
+      "readingSourceRefs": [
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
+        "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md",
+        "docs/foundation/REPOSITORY-INTEGRATION.md"
+      ],
+      "authorityRefs": [],
+      "considerationRefs": [
+        "docs/foundation/OPERATING-PROFILES.md"
+      ],
+      "proofRefs": [],
+      "exitPredicateRefs": [],
+      "heldConcernRefs": [],
+      "sourceRefs": [
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
+        "github.pull.vexwork.189"
+      ]
+    },
+    {
+      "nodeRef": "node.vexwork.process-family-metawalk.reconcile",
+      "label": "Reconcile + accept",
+      "purpose": "Consume evidence, distinguish carried truth from mutable currentness, classify any revisit, and establish the next durable process coordinate.",
+      "entryPredicateRefs": [],
+      "currentTruthRefs": [
+        "work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence"
+      ],
+      "ownerRefs": [
+        "repo.vexwork"
+      ],
+      "readingSourceRefs": [
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
+        "docs/foundation/RUNTIME-PERSISTENCE.md",
+        "docs/foundation/WORKGRAPH.md"
+      ],
+      "authorityRefs": [],
+      "considerationRefs": [
+        "docs/foundation/PROJECT-RECONCILIATION.md"
+      ],
+      "proofRefs": [],
+      "exitPredicateRefs": [],
+      "heldConcernRefs": [],
+      "sourceRefs": [
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
+        "github.pull.vexwork.189"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipRef": "rel.vexwork.process-family-metawalk.entry-recover",
+      "movementClass": "ADVANCES",
+      "fromRef": "node.vexwork.process-family-metawalk.entry",
+      "toRef": "node.vexwork.process-family-metawalk.recover",
+      "label": "begin from human intention",
+      "entryPredicateRefs": [],
+      "sourceRefs": [
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
+        "github.pull.vexwork.189"
+      ]
+    },
+    {
+      "relationshipRef": "rel.vexwork.process-family-metawalk.recover-topology",
+      "movementClass": "ADVANCES",
+      "fromRef": "node.vexwork.process-family-metawalk.recover",
+      "toRef": "node.vexwork.process-family-metawalk.topology",
+      "label": "pressure grounded",
+      "entryPredicateRefs": [],
+      "sourceRefs": [
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
+        "github.pull.vexwork.189"
+      ]
+    },
+    {
+      "relationshipRef": "rel.vexwork.process-family-metawalk.topology-ownership",
+      "movementClass": "ADVANCES",
+      "fromRef": "node.vexwork.process-family-metawalk.topology",
+      "toRef": "node.vexwork.process-family-metawalk.ownership",
+      "label": "shape stable enough",
+      "entryPredicateRefs": [],
+      "sourceRefs": [
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
+        "github.pull.vexwork.189"
+      ]
+    },
+    {
+      "relationshipRef": "rel.vexwork.process-family-metawalk.ownership-contracts",
+      "movementClass": "ADVANCES",
+      "fromRef": "node.vexwork.process-family-metawalk.ownership",
+      "toRef": "node.vexwork.process-family-metawalk.contracts",
+      "label": "rightful owners identified",
+      "entryPredicateRefs": [],
+      "sourceRefs": [
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
+        "github.pull.vexwork.189"
+      ]
+    },
+    {
+      "relationshipRef": "rel.vexwork.process-family-metawalk.contracts-proof-plan",
+      "movementClass": "ADVANCES",
+      "fromRef": "node.vexwork.process-family-metawalk.contracts",
+      "toRef": "node.vexwork.process-family-metawalk.proof-plan",
+      "label": "relationships explicit",
+      "entryPredicateRefs": [],
+      "sourceRefs": [
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
+        "github.pull.vexwork.189"
+      ]
+    },
+    {
+      "relationshipRef": "rel.vexwork.process-family-metawalk.proof-plan-implementation",
+      "movementClass": "ADVANCES",
+      "fromRef": "node.vexwork.process-family-metawalk.proof-plan",
+      "toRef": "node.vexwork.process-family-metawalk.implementation",
+      "label": "claim + falsification known",
+      "entryPredicateRefs": [],
+      "sourceRefs": [
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
+        "github.pull.vexwork.189"
+      ]
+    },
+    {
+      "relationshipRef": "rel.vexwork.process-family-metawalk.implementation-focused-proof",
+      "movementClass": "ADVANCES",
+      "fromRef": "node.vexwork.process-family-metawalk.implementation",
+      "toRef": "node.vexwork.process-family-metawalk.focused-proof",
+      "label": "target realization formed",
+      "entryPredicateRefs": [],
+      "sourceRefs": [
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
+        "github.pull.vexwork.189"
+      ]
+    },
+    {
+      "relationshipRef": "rel.vexwork.process-family-metawalk.focused-lived",
+      "movementClass": "ADVANCES",
+      "fromRef": "node.vexwork.process-family-metawalk.focused-proof",
+      "toRef": "node.vexwork.process-family-metawalk.lived-proof",
+      "label": "bounded contracts proven",
+      "entryPredicateRefs": [],
+      "sourceRefs": [
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
+        "github.pull.vexwork.189"
+      ]
+    },
+    {
+      "relationshipRef": "rel.vexwork.process-family-metawalk.lived-reconcile",
+      "movementClass": "ADVANCES",
+      "fromRef": "node.vexwork.process-family-metawalk.lived-proof",
+      "toRef": "node.vexwork.process-family-metawalk.reconcile",
+      "label": "lived/integration evidence",
+      "entryPredicateRefs": [],
+      "sourceRefs": [
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
+        "github.pull.vexwork.189"
+      ]
+    },
+    {
+      "relationshipRef": "rel.vexwork.process-family-metawalk.implementation-ownership-gap",
+      "movementClass": "SEMANTIC_GAP",
+      "fromRef": "node.vexwork.process-family-metawalk.implementation",
+      "toRef": "node.vexwork.process-family-metawalk.ownership",
+      "label": "semantic ambiguity",
+      "entryPredicateRefs": [],
+      "sourceRefs": [
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
+        "github.pull.vexwork.189"
+      ]
+    },
+    {
+      "relationshipRef": "rel.vexwork.process-family-metawalk.focused-contract-gap",
+      "movementClass": "CONTRACT_GAP",
+      "fromRef": "node.vexwork.process-family-metawalk.focused-proof",
+      "toRef": "node.vexwork.process-family-metawalk.contracts",
+      "label": "contract gap",
+      "entryPredicateRefs": [],
+      "sourceRefs": [
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
+        "github.pull.vexwork.189"
+      ]
+    },
+    {
+      "relationshipRef": "rel.vexwork.process-family-metawalk.lived-implementation-defect",
+      "movementClass": "IMPLEMENTATION_DEFECT",
+      "fromRef": "node.vexwork.process-family-metawalk.lived-proof",
+      "toRef": "node.vexwork.process-family-metawalk.implementation",
+      "label": "implementation defect",
+      "entryPredicateRefs": [],
+      "sourceRefs": [
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
+        "github.pull.vexwork.189"
+      ]
+    },
+    {
+      "relationshipRef": "rel.vexwork.process-family-metawalk.lived-contract-gap",
+      "movementClass": "CONTRACT_GAP",
+      "fromRef": "node.vexwork.process-family-metawalk.lived-proof",
+      "toRef": "node.vexwork.process-family-metawalk.contracts",
+      "label": "contract gap",
+      "entryPredicateRefs": [],
+      "sourceRefs": [
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
+        "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
+        "github.pull.vexwork.189"
+      ]
+    }
+  ],
+  "sourceRefs": [
+    "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
+    "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
+    "docs/foundation/PROCESS-MAP.md",
+    "docs/foundation/WORKGRAPH.md",
+    "docs/foundation/RUNTIME-PERSISTENCE.md",
+    "github.pull.vexwork.189"
+  ]
+}
