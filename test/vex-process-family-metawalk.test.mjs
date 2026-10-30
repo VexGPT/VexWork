@@ -303,7 +303,7 @@ test('ProcessFamily owns its layer vocabulary instead of inheriting MetaWalk lay
       satisfiedPredicateRefs: ['predicate.node.beta.entry'],
       nextStateRef: 'state.custom-layers.bad',
     }),
-    /layer invalid for ProcessFamily/,
+    /invalid for ProcessFamily/,
   );
 });
 
