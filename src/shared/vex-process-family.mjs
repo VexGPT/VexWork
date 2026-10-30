@@ -15,6 +15,7 @@ export const PROCESS_DEPTHS = Object.freeze([
 
 export const PROCESS_MOVEMENT_CLASSES = Object.freeze([
   'ADVANCES',
+  'ENABLES',
   'REFINES',
   'CONTRACT_GAP',
   'IMPLEMENTATION_DEFECT',
@@ -63,6 +64,10 @@ function refs(values, label, { allowEmpty = true } = {}) {
   const result = values.map((value, index) => stableRef(value, label + '[' + index + ']'));
   assert(new Set(result).size === result.length, label + ' must be unique');
   return result.sort(compareCanonicalText);
+}
+
+function unionRefs(values, label, options = {}) {
+  return refs([...new Set(values)], label, options);
 }
 
 function depth(value, label) {
@@ -342,7 +347,7 @@ export function createProcessState(familyInput, {
   depth: initialDepth = 'FORMATION',
   acceptedEvidenceRefs = [],
   carriedIdentityRefs = [],
-  sourceRefs = [],
+  sourceRefs = null,
 }) {
   const family = normalizeProcessFamily(familyInput);
   return normalizeProcessState({
@@ -355,7 +360,7 @@ export function createProcessState(familyInput, {
     acceptedEvidenceRefs,
     carriedIdentityRefs,
     transitionHistory: [],
-    sourceRefs,
+    sourceRefs: sourceRefs === null ? [...family.sourceRefs] : sourceRefs,
   }, family);
 }
 
@@ -387,12 +392,21 @@ export function admitProcessTransition({
   }
 
   const toNodeRef = relationship ? relationship.toRef : currentNodeRef;
-  const nextEvidence = refs(
-    [...state.acceptedEvidenceRefs, ...evidenceRefs],
+  const transitionEvidenceRefs = refs(
+    evidenceRefs,
+    'process transition evidenceRefs',
+    { allowEmpty: false },
+  );
+  const transitionIdentityRefs = refs(
+    carriedIdentityRefs,
+    'process transition carriedIdentityRefs',
+  );
+  const nextEvidence = unionRefs(
+    [...state.acceptedEvidenceRefs, ...transitionEvidenceRefs],
     'ProcessFamily.State accepted evidence after transition',
   );
-  const nextIdentities = refs(
-    [...state.carriedIdentityRefs, ...carriedIdentityRefs],
+  const nextIdentities = unionRefs(
+    [...state.carriedIdentityRefs, ...transitionIdentityRefs],
     'ProcessFamily.State carried identities after transition',
   );
 
@@ -404,8 +418,8 @@ export function admitProcessTransition({
     toNodeRef,
     fromDepth: state.depth,
     toDepth: nextDepth,
-    evidenceRefs: [...evidenceRefs],
-    carriedIdentityRefs: [...carriedIdentityRefs],
+    evidenceRefs: transitionEvidenceRefs,
+    carriedIdentityRefs: transitionIdentityRefs,
   };
 
   return normalizeProcessState({
@@ -418,7 +432,7 @@ export function admitProcessTransition({
     acceptedEvidenceRefs: nextEvidence,
     carriedIdentityRefs: nextIdentities,
     transitionHistory: [...state.transitionHistory, transition],
-    sourceRefs: refs([...state.sourceRefs, ...sourceRefs], 'ProcessFamily.State sourceRefs after transition'),
+    sourceRefs: unionRefs([...state.sourceRefs, ...sourceRefs], 'ProcessFamily.State sourceRefs after transition'),
   }, family);
 }
 
