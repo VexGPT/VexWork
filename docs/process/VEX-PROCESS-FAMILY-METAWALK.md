@@ -1087,6 +1087,102 @@ The first implementation should therefore resist creating a second durable "curr
 inside VexBoard. If a reusable horizon projector is later earned, it should consume current process truth
 as input and remain read-only/effect-free.
 
+## Current-process ownership seam — next earned contract
+
+Pressure from the bounded-horizon projection exposes one unresolved owner that must be settled before UI code:
+
+~~~text
+Who owns the durable fact:
+  "this process has earned scope S, node N, at depth D"?
+~~~
+
+Current owners do not answer that generic question:
+
+~~~text
+Workgraph
+  owns Work lifecycle / containment / dependency truth
+  != generic internal process-node position
+
+Process Map
+  owns reusable route discovery
+  != current process state
+
+VexBoard BoardJourney
+  owns browser/session semantic traversal
+  != durable process currentness
+
+VexRelay forward-state
+  owns Relay continuation state
+  != generic process-family state
+~~~
+
+Therefore a bounded-horizon projector cannot safely mint its own current coordinate.
+
+### Working owner hypothesis
+
+The strongest current hypothesis follows the existing Family discipline:
+
+~~~text
+VexProcessFamily
+  reusable process meaning / graph
+
+VexProcessFamily.State          # working name
+  current scope
+  current node
+  current depth
+  accepted transition/evidence references required for continuity
+
+incoming current observations
+  Work / repository / provider / runtime / authority truth
+  remain owned by their existing sources
+
+VexBoard
+  read-only projection of ProcessFamily meaning + supplied current State
+~~~
+
+This is a hypothesis to pressure-test, not a new schema in this PR.
+
+The State should avoid copying mutable provider/source truth merely to make itself self-contained. It may
+carry **references/expectations** needed for continuity while the next dependent Act re-observes live truth.
+
+~~~text
+PROCESS STATE
+!= WORLD STATE DATABASE
+~~~
+
+### Name-ontology finding
+
+Do not casually use \`ProcessInstance\` for this concept.
+
+Current Vextreme-SDK source already uses \`processInstanceRef\` for concrete runtime process identity in
+host/practicum execution. Reusing that spelling for a semantic process walk would create a cold-read
+collision between:
+
+~~~text
+runtime OS/process identity
+and
+semantic process-family occupancy/currentness
+~~~
+
+Working vocabulary should therefore prefer Family/State or Walk/State language until a truer noun is
+earned.
+
+### Consequence for the next implementation node
+
+The next node is **not yet "build the horizon UI."**
+
+First establish the minimum current-process State contract well enough to answer:
+
+1. which coordinate is durable versus merely projected;
+2. what transition/evidence earns movement;
+3. which accepted identities/evidence are carried;
+4. which mutable truths are explicitly re-grounded;
+5. how correction/refinement/currentness revisits change the coordinate;
+6. how Workgraph currentness and ProcessFamily currentness refer to each other without becoming one owner;
+7. how BoardJourney may inspect/revisit without mutating real process State.
+
+Only then should a read-only bounded-horizon projector consume that State.
+
 ## Fresh-instance resume packet
 
 A future projection should be able to give a fresh instance only the bounded packet needed now:
