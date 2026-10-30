@@ -3434,3 +3434,106 @@ VexLife ToCompletion remains addressable through `project.vexlife.tocompletion` 
 It is **provenance, not the default current-entry reading burden** for Interface Refinement.
 
 <!-- [VXG RealForever][VEXLIFE][INTERFACE-REFINEMENT][V0-PROVEN][V1-CURRENT] -->
+
+
+### Relay execution recovery — A001 harness stop, A002 correction
+
+The first F0/F1 host transaction executed through the accepted native VexRelay carrier and returned a
+canonical retained inner RETURN.
+
+A001 result:
+
+~~~text
+outer carrier disposition = PASS
+inner business disposition = SAFE_FAILURE
+
+first failure
+  RAW_MULTILINE_REPLACE_FORBIDDEN:write.foundation-map
+
+completed before failure
+  GitHub auth
+  fresh exact VexLife clone
+  clean/head/main/branch/overlap race preflight
+  npm ci
+  npm run orient
+  local ephemeral branch preparation
+
+not performed
+  source mutation
+  commit
+  push
+  PR creation
+~~~
+
+Provider reconciliation after consuming the RETURN proved:
+
+~~~text
+VexLife main
+  b6d9dd4876132fc408f0eacd2bb6b5b0d56e009f
+
+remote branch
+  vxg-interface-currentness-foundation-a001 = ABSENT
+
+matching open PR
+  NONE
+~~~
+
+Classification:
+
+~~~text
+A001
+= HARNESS / PACKAGE-FORMATION DEFECT
+
+A001
+!= VEXLIFE SOURCE FAILURE
+!= CANDIDATE TEST FAILURE
+!= PARTIAL PUBLICATION
+~~~
+
+A002 preserves the exact F0/F1 semantic candidate and changes only the disallowed write mechanism:
+
+~~~text
+remove:
+  3 raw multiline REPLACE_TEXT operations
+
+replace with:
+  1 typed node SOURCE mutation
+    -> verifies exact SHA-256 preimages
+    -> verifies exact semantic record preimages
+    -> mutates only:
+       blueprint/process-factory/foundations.json
+       blueprint/module-registry/core.json
+       blueprint/fragments/tests.json
+
+preserve byte-exact:
+  seven A001 payload source/test/doc files
+~~~
+
+A002 package formation:
+
+~~~text
+outer sha256
+  dde8222a179c47a383b17c9ee31666f02522d88b80f0c8f45cd181647b6b202e
+
+inner sha256
+  f8e63204132b64c0f3cc64692300fdcf66f8e49254fa9bc6c26db91a1b2fcf4a
+
+inner operation count
+  34
+
+raw multiline REPLACE_TEXT
+  NONE
+
+Mac command syntax
+  PASS
+~~~
+
+A002 remains subject to the same exact host-side race, preimage, membrane, test, manifest, non-force
+push and draft-PR gates. It has not executed yet.
+
+~~~text
+A002_FORMED
+!= A002_EXECUTED
+!= F0_F1_ACCEPTED
+~~~
+
