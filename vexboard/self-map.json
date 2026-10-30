@@ -34,14 +34,6 @@
         "sourceRefs": ["vexboard/index.html"]
       },
       {
-        "nodeRef": "node.vexboard.vexwork-metawalk",
-        "kind": "PORTAL",
-        "label": "VexWork Onboarding · MetaWalk",
-        "parentRefOrNull": null,
-        "detailBoardRefOrNull": "board.vexwork.process-family-metawalk",
-        "sourceRefs": ["docs/process/VEX-PROCESS-FAMILY-METAWALK.md", "projects/vexboard/examples/vexwork-process-family-metawalk.board.json"]
-      },
-      {
         "nodeRef": "node.vexboard.read-only",
         "kind": "PROCESS",
         "label": "Inspect read-only source",
@@ -100,14 +92,6 @@
         "sourceRefs": []
       },
       {
-        "relationshipRef": "rel.vexboard.entry-metawalk",
-        "kind": "REFERENCE",
-        "fromRef": "node.vexboard.entry",
-        "toRef": "node.vexboard.vexwork-metawalk",
-        "labelOrNull": "continue work",
-        "sourceRefs": ["docs/process/VEX-PROCESS-FAMILY-METAWALK.md"]
-      },
-      {
         "relationshipRef": "rel.vexboard.open-readonly",
         "kind": "FLOW",
         "fromRef": "node.vexboard.open-existing",
@@ -156,7 +140,7 @@
         "sourceRefs": ["projects/vexboard/README.md"]
       }
     ],
-    "sourceRefs": ["projects/vexboard/README.md", "vexboard/index.html", "docs/process/VEX-PROCESS-FAMILY-METAWALK.md", "projects/vexboard/examples/vexwork-process-family-metawalk.board.json"]
+    "sourceRefs": ["projects/vexboard/README.md", "vexboard/index.html"]
   },
   "projection": {
     "schemaVersion": "vexboard.board-projection/v1",
@@ -189,16 +173,6 @@
         "semanticRef": "node.vexboard.open-existing",
         "shapeKind": "RECTANGLE",
         "bounds": { "x": 360, "y": 220, "width": 180, "height": 74 },
-        "layer": 1,
-        "parentProjectionItemRefOrNull": null,
-        "visible": true,
-        "locked": false
-      },
-      {
-        "projectionItemRef": "item.vexboard.vexwork-metawalk",
-        "semanticRef": "node.vexboard.vexwork-metawalk",
-        "shapeKind": "ELLIPSE",
-        "bounds": { "x": 360, "y": 380, "width": 260, "height": 84 },
         "layer": 1,
         "parentProjectionItemRefOrNull": null,
         "visible": true,
