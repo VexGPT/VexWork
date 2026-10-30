@@ -157,11 +157,8 @@ export function projectProcessHorizonBoard({
     horizon.current.currentTruthRefs,
     horizon.current.ownerRefs,
     horizon.current.readingSourceRefs,
-    horizon.current.authorityRefs,
     horizon.current.considerationRefs,
     horizon.current.proofRefs,
-    horizon.current.exitPredicateRefs,
-    horizon.current.heldConcernRefs,
   );
   nodes.push({
     nodeRef: currentNodeRef,
