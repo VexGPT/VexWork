@@ -4443,6 +4443,34 @@
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexboard.tech-debt.origin-rename-propagation",
+      "parentWorkRefOrNull": "work.vexboard.outcome",
+      "label": "Tech debt — Origin rename propagation through mapped descendants",
+      "purpose": "Preserve the low-priority future need for VexBoard to traverse an accepted Origin's existing semantic, process, source and realization relationships when its reusable name changes: first expose the complete downstream rename plan and support bounded manual propagation, then use the observed process to earn autonomous BoardPatch-style propagation with lineage/currentness proof. The Origin is the design truth; repository placement is secondary, so this does not imply repository fragmentation or a parallel rename registry.",
+      "workClass": "POTENTIAL",
+      "state": "CAPTURED",
+      "workDisposition": "PARKED",
+      "priorityClass": "LOW",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md",
+        "projects/vexboard/README.md",
+        "docs/foundation/PROCESS-MAP.md",
+        "work.vexboard.boardpatch-authoring",
+        "work.vexboard.source-projectors"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-26T01:57:41.000Z",
+      "updatedAt": "2026-10-26T01:57:41.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vexboard.usability-refinement",
       "parentWorkRefOrNull": "work.vexboard.outcome",
       "label": "Canvas interaction and visual affordance refinement",
@@ -4488,10 +4516,47 @@
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexboard.vexstream-origin-roundtrip-review",
+      "parentWorkRefOrNull": "work.vexboard.vexstream-screenshot-pilot",
+      "label": "Independent review — VexStream Origin round-trip architecture",
+      "purpose": "Preserve a later independent review edge for the VexStream living-Origin round trip once the implementation/proof foundation is mature enough to review meaningfully. When activated, pressure-test Origin naming/lineage, content-Origin versus value-binding separation, target realization leakage, construction-admission boundaries, evidence/currentness semantics, duplicated truth and unjustified abstractions. This is deliberately parked while #182/#183 target proof and Origin round-trip construction are still forming; it is advisory evidence and grants no source mutation, approval, merge or Origin-authority acceptance.",
+      "workClass": "TASK",
+      "state": "CAPTURED",
+      "workDisposition": "PARKED",
+      "priorityClass": "LOW",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "work.vexboard.vexstream-screenshot-pilot",
+        "projects/vexboard/README.md",
+        "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md",
+        "projects/vexboard/examples/vexlife-android-home-vexstream.design.json",
+        "projects/vexboard/examples/vexlife-android-home-vexstream.snapshot.json",
+        "src/core/vexboard-screen-design.mjs",
+        "src/core/vexboard-android-construction.mjs",
+        "src/core/vexboard-android-source-projector.mjs",
+        "github.pull.vexlife-android.182",
+        "github.pull.vexlife-android.183",
+        "github.pull.vexwork.155"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [
+        "process.vexwork.quality-review"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-26T03:10:45.000Z",
+      "updatedAt": "2026-10-26T03:35:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vexboard.vexstream-screenshot-pilot",
       "parentWorkRefOrNull": "work.vexboard.outcome",
-      "label": "VexStream living Blueprint screenshot pilot",
-      "purpose": "Use the real VexStream phone-to-desktop walkthrough and supplied screenshots as the first living Blueprint patient zero: reconcile observed evidence with current VexStream Desktop / VexLife Android source, project one stable feature journey through BoardGraph / BoardProjection / BoardJourney / BoardEvidence, and pressure the convergence with VexLife Blueprint Source of Truth from portable semantic meaning through design-authoritative relationship/constraint-based UX composition, deterministic target construction mapping and target-native realization to expected-versus-observed currentness. Preserve product/source ownership, prevent target implementations from independently redesigning accepted Blueprint presentation, treat VLBSoT refs as accepted lineage rather than blocking dependencies or automatic lane reactivation, and earn only the smallest reusable feature/design/source/evidence/currentness seams.",
+      "label": "VexStream living Origin screenshot pilot",
+      "purpose": "Use the real VexStream phone-to-desktop walkthrough and supplied screenshots as the first living Origin patient zero: reconcile observed evidence with current VexStream Desktop / VexLife Android source, project one stable feature journey through BoardGraph / BoardProjection / BoardJourney / BoardEvidence, and pressure the convergence with the accepted VexLife Blueprint Source of Truth lineage from portable semantic meaning through design-authoritative relationship/constraint-based UX composition, deterministic target construction mapping and target-native realization to expected-versus-observed currentness. Preserve product/source ownership, prevent target implementations from independently redesigning accepted Origin presentation, treat VLBSoT refs as accepted historical lineage rather than blocking dependencies or automatic lane reactivation, and earn only the smallest reusable feature/design/source/evidence/currentness seams.",
       "workClass": "TASK",
       "state": "RUNNING",
       "workDisposition": "ACTIVE",
@@ -4533,6 +4598,57 @@
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-25T04:00:00.000Z",
       "updatedAt": "2026-10-25T06:08:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexboard.vexsync-architecture-convergence",
+      "parentWorkRefOrNull": "work.vexboard.outcome",
+      "label": "VexSync ↔ VexBoard architecture convergence",
+      "purpose": "Use the current VexSync Direct Family / typed Control identity / Kotlin round-trip discoveries as the foundation baseline for VexBoard self-application: first recover the blank VexBoard browser surface exposed by lived use, then make VexBoard itself visibly reflect the trusted State / Control / Act / typed ResourceId / Relationship / Execution ownership language before adding deeper dimensional projection. Preserve VexBoard as the product/source owner, VexSync as the semantic/process convergence trajectory, and Android/test source as separately owned evidence; keep VexBoard edits effect-free toward target repositories until a rightful target-source action is separately admitted.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexboard.boardgraph-contract",
+        "work.vexboard.canvas-projection",
+        "work.vexboard.boardjourney-simulation",
+        "work.vexboard.usability-refinement"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "projects/vexboard/README.md",
+        "project.vexsync.debugmenu-blueprints",
+        "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery",
+        "github.pull.vexwork.178",
+        "github.commit.vexwork.0d55e3aa83b7972cc83ef9fe2a7266311932a7c8",
+        "github.pull.vexlife-android.193",
+        "github.commit.vexlife-android.a05b67876d951d513633d04de4acf702e5ed834b",
+        "projects/vexboard/examples/vexlife-debug-menu-theme-mode.board.json",
+        "src/core/vexboard-family-kotlin-construction.mjs",
+        "test/vexboard-family-kotlin-construction.test.mjs",
+        "vexboard/index.html",
+        "work.vexsync.debugmenu-blueprints.vexboard-architecture-convergence",
+        "github.commit.vexwork.c8ac1b1898b6e23df3164fd69ea22499a38257b4",
+        "github.commit.vexwork.5bccdc7c8978a1102da2ac749e64082d7d34cf5f",
+        "github.commit.vexwork.775ef87a3e19688881a8cd4a9b5f01286a6d7595",
+        "test/vexboard-ui.test.mjs",
+        "github.pull.vexwork.184",
+        "github.commit.vexwork.49ec3bd650dde810110b11a55e70907df0e9d9f2",
+        "vexboard/architecture-map.json",
+        "src/core/vexboard-android-source-projector.mjs"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [
+        "process.vexwork.quality-review"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-29T11:20:00.000Z",
+      "updatedAt": "2026-10-29T11:35:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -6504,7 +6620,7 @@
       "label": "Converge VexRelay Protocol with Family Circuit / VexArchitecture",
       "purpose": "Port and refine the operational VexRelay protocol into the source-managed Vex architecture / Family Circuit model so a human or fresh agent can understand the Relay question, semantic owners, current State/Control/Act/Effect/Connection relationships, task families, and safe execution route without reconstructing a giant ChatGPT Project manual or hand-authoring low-level harness parameters. Preserve Vextreme-SDK current-contract, task/RETURN, validator, carrier and runtime authority; use accepted VexLife-Android Family Circuit and Compound Relay source as architecture evidence rather than a Kotlin transplant; move protocol-owned invariants and repeatable recipe plumbing out of AI guesswork; and prove compatibility before any runtime replacement or Project-source reduction.",
       "workClass": "TASK",
-      "state": "READY",
+      "state": "VERIFYING",
       "workDisposition": "ACTIVE",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
@@ -6522,14 +6638,26 @@
         "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
         "repo.vexlife-android:architecture/behavior/VEX-BEHAVIOR-FAMILY-BLUEPRINT.md",
         "repo.vexlife-android:architecture/relay/README.md",
-        "github.commit.vexlife-android.7ac61612fb1fb30f26e7fd3794bd4382e905a0d7"
+        "github.commit.vexlife-android.7ac61612fb1fb30f26e7fd3794bd4382e905a0d7",
+        "github.pull.vexwork.189",
+        "github.commit.vexwork.5ac93d917169d0b80e676e2e4c13812113843376",
+        "github.issue-comment.vexwork.189.6518006850",
+        "github.issue-comment.vexwork.189.6519147239",
+        "artifact.vexrelay.outer-return.sha256.d4a14c28f5867ffe649f609570ff4dfeef5f08702b5b9288b71418c94b9b69fb",
+        "artifact.vexrelay.inner-return.sha256.92cad17b43f34182b6f6107afd81dd078110b6751b2eba5d6c5f0ec7c3b0b187",
+        "github.issue-comment.vexwork.189.6519490826",
+        "github.issue-comment.vexwork.189.6519527203",
+        "github.commit.vexwork.763d27f4ec5afc133c71e018c7d4532fc155fe95",
+        "github.issue-comment.vexwork.189.6519581652",
+        "github.issue-comment.vexwork.189.6519593982",
+        "github.pull.vexwork.187"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
-      "authorityDisposition": "NO_AUTHORITY",
-      "effectDisposition": "NO_EFFECTS",
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-30T02:25:00.000Z",
-      "updatedAt": "2026-10-30T02:25:00.000Z"
+      "updatedAt": "2026-10-30T09:36:30.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -9266,6 +9394,22 @@
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.vexsync-architecture-convergence.running.foundation-baseline-20261029a",
+      "workRef": "work.vexboard.vexsync-architecture-convergence",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Victor designated the current typed Family/Kotlin round-trip and merged flat VexBoard map as the foundation baseline for the next major sync, while lived browser evidence exposed a blank-screen regression. Begin bounded VexBoard-owned convergence now: recover the browser first, then self-apply the trusted architecture before deeper projection work.",
+      "actorRef": "actor.local-vex-operations.vexboard-vexsync-convergence",
+      "sourceRefs": [
+        "response.victor.vexsync-vexboard-convergence.20261029a",
+        "github.commit.vexwork.0d55e3aa83b7972cc83ef9fe2a7266311932a7c8",
+        "github.pull.vexlife-android.193",
+        "project.vexsync.debugmenu-blueprints"
+      ],
+      "createdAt": "2026-10-29T11:20:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
       "transitionRef": "transition.vexlife.connected-services.vcs04.verifying.pr154-terminal",
       "workRef": "work.vexlife.connected-services.vcs04-conversation-adoption",
       "priorState": "RUNNING",
@@ -10097,6 +10241,39 @@
         "artifact.vexrelay.inner-return.sha256.3d38733874460ff8435e47052b38b21f66ef7f124f2f0eb2c4152f5244e5200c"
       ],
       "createdAt": "2026-10-29T14:26:30.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.architecture-convergence.vexrelay-family-circuit-convergence.running.pr189-active",
+      "workRef": "work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "VexWork PR #189 is an active bounded implementation/proof lane for the Vex Process Family / MetaWalk patient-zero of Relay / Family Circuit convergence. The exact current candidate is head 5ac93d917169d0b80e676e2e4c13812113843376 / tree e6df3aaa333c71143da8217f8764161a884e5f04. A011 proved its predecessor, fresh Assurance requested the bounded SEMANTIC_GAP cold-reader correction, and current work remains at Focused proof. The first A012 host formation failed before canonical task formation due a worker-owned formation-runner API-shape defect, so candidate truth is unchanged and the Work remains RUNNING rather than reverting to READY or advancing to VERIFYING.",
+      "actorRef": "actor.chatgpt.vex-process-family-metawalk",
+      "sourceRefs": [
+        "github.pull.vexwork.189",
+        "github.commit.vexwork.5ac93d917169d0b80e676e2e4c13812113843376",
+        "github.issue-comment.vexwork.189.6518006850",
+        "github.issue-comment.vexwork.189.6519147239"
+      ],
+      "createdAt": "2026-10-30T09:14:30.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.architecture-convergence.vexrelay-family-circuit-convergence.verifying.pr189-a012-assurance",
+      "workRef": "work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "PR #189 exact current head 5ac93d917169d0b80e676e2e4c13812113843376 / tree e6df3aaa333c71143da8217f8764161a884e5f04 passed A012 ExactHeadSourceOwnerProof (focused 20/20, full repository 466/466, npm run review PASS, zero candidate/harness/environment/unknown findings) and fresh Independent Assurance returned CLEAR. The MetaWalk focused-proof predicate is therefore satisfied and current work moves to Lived / integration proof. Current VexWork main still equals the fixed evidence base and PR #189 is mergeable with zero path overlap against parent PR #185.",
+      "actorRef": "actor.chatgpt.vex-process-family-metawalk",
+      "sourceRefs": [
+        "github.pull.vexwork.189",
+        "artifact.vexrelay.outer-return.sha256.d4a14c28f5867ffe649f609570ff4dfeef5f08702b5b9288b71418c94b9b69fb",
+        "artifact.vexrelay.inner-return.sha256.92cad17b43f34182b6f6107afd81dd078110b6751b2eba5d6c5f0ec7c3b0b187",
+        "github.issue-comment.vexwork.189.6519490826",
+        "github.issue-comment.vexwork.189.6519527203"
+      ],
+      "createdAt": "2026-10-30T09:33:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
