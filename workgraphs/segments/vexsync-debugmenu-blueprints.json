@@ -521,7 +521,9 @@
         "evidence.vexsync.pr203.sourceowner.a005.formation.sha256.85841e32c239e30fc441f2bbcfcdb1b110f45f95fa146c455a007c96a91f84b9",
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt",
         "github.comment.vexlife-android.pr203.6515466461.sourceowner-a005-finding-a006-formed",
-        "evidence.vexsync.pr203.sourceowner.a006.formation.sha256.ef0aa55c3c68fb107cded269f11c7c23618d1295c0221ea7d461c1676927cd7e"
+        "evidence.vexsync.pr203.sourceowner.a006.formation.sha256.ef0aa55c3c68fb107cded269f11c7c23618d1295c0221ea7d461c1676927cd7e",
+        "github.comment.vexlife-android.pr203.6515493799.sourceowner-a006-compile-a007-formed",
+        "evidence.vexsync.pr203.sourceowner.a007.formation.sha256.e2d4ad2eb7feaf178b538191ffcec214ab579b2dc8639222eb52a58f6b979ab4"
       ],
       "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
       "nextProcessRefs": [
@@ -530,7 +532,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-29T17:34:00.000Z",
-      "updatedAt": "2026-10-30T05:12:00.000Z"
+      "updatedAt": "2026-10-30T05:15:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
@@ -1235,6 +1237,21 @@
         "evidence.vexsync.pr203.sourceowner.a006.formation.sha256.ef0aa55c3c68fb107cded269f11c7c23618d1295c0221ea7d461c1676927cd7e"
       ],
       "createdAt": "2026-10-30T05:12:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.execution-source-custody.running.pr203-a006-compile-a007-formed-20261029a",
+      "workRef": "work.vexsync.debugmenu-blueprints.execution-source-custody",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING",
+      "reason": "SourceOwner A006 legacy-surface census passed, then repository vexVerifyJvm reached :app:compileDebugKotlin and exposed one missing owner argument at VexStreamTrackPlayback.kt:164. The sibling collection/widget owner callsites were already correct. PR #203 head a0094af6... corrects only that callsite by supplying the live Media3VexStreamTrackPlaybackConnection. A007 preserves the same 19-path membrane and reruns census -> vexVerifyJvm -> tracked-clean -> review snapshot. No A007 PASS claimed yet.",
+      "actorRef": "actor.local-vex-operations.vexsync-debugmenu-blueprints",
+      "sourceRefs": [
+        "github.pull.vexlife-android.203",
+        "github.comment.vexlife-android.pr203.6515493799.sourceowner-a006-compile-a007-formed",
+        "evidence.vexsync.pr203.sourceowner.a007.formation.sha256.e2d4ad2eb7feaf178b538191ffcec214ab579b2dc8639222eb52a58f6b979ab4"
+      ],
+      "createdAt": "2026-10-30T05:15:00.000Z"
     }
   ],
   "sourceRefs": [
