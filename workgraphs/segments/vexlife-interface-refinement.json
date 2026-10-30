@@ -70,11 +70,11 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-10-29T20:01:00.000Z",
-      "updatedAt": "2026-10-30T04:26:14Z",
+      "updatedAt": "2026-10-30T04:29:06.000Z",
       "workRef": "work.vexlife.interface-refinement.interface-compound-relay",
       "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
       "label": "Current — Interface Compound Relay convergence",
-      "purpose": "Finish Interface Compound Relay F2/F3 from accepted VexLife main 92e810c91b09e7c74a8e1c7da8d2fade7e070c3a. F2 A002 corrected A001's mutation-anchor defect and reached focused tests, where 26/28 passed and the two suites importing serve-browser-core.mjs failed at parse-time because the mutation generator emitted a literal newline inside a single-quoted meta-tag string. No commit/push/PR or remote branch exists. A003 preserves the same Interface module/test product payload and A002 semantic anchors, fixes only the generator escaping, and was locally syntax-checked both as generator and generated server block. Consume A003 canonical RETURN next; F3 remains held.",
+      "purpose": "Finish Interface Compound Relay F2/F3 from accepted VexLife main 92e810c91b09e7c74a8e1c7da8d2fade7e070c3a. F2 A003 was rejected before native Relay task admission because its manually formed inner PACKAGE-MANIFEST used vex.relay.input-package/v1 while current SDK head 9be6c8c3c169e8b98b04c7821b300f84cb8342de requires v2. A003 performed zero source/branch/provider/publication effects. A004 preserves the exact F2 product payload and prior syntax/semantic corrections, changes only the input-package wrapper to current v2 with fresh identities, and passes a local mirror of the exact current package verifier. Consume A004 canonical RETURN next; F3 remains held.",
       "workClass": "TASK",
       "state": "RUNNING",
       "priorityClass": "IMMEDIATE",
@@ -188,7 +188,11 @@
         "relay.return.vexlife.interface-currentness-browser-realization.f2.a002.outer.sha256.b4c6c79416b06695f2ef3172915ad7172f4ababcb56e5f4203fa40a2f8d66cd6",
         "relay.return.vexlife.interface-currentness-browser-realization.f2.a002.inner.sha256.8cbe66565258ae918e28991e3830d9ac4d467423b72d08511d16adf176d27e5c",
         "relay.package.vexlife.interface-currentness-browser-realization.f2.a003.sha256.c476a328c6d0533eeb152dac96b7d12cb64d3b20de681f1aff5e4144fec712b5",
-        "relay.inner.vexlife.interface-currentness-browser-realization.f2.a003.sha256.88c426376612bdb7c7aa1a1d6f45beccf40f608e1e2736a7bb0d2f837d95ffe4"
+        "relay.inner.vexlife.interface-currentness-browser-realization.f2.a003.sha256.88c426376612bdb7c7aa1a1d6f45beccf40f608e1e2736a7bb0d2f837d95ffe4",
+        "relay.return.vexlife.interface-currentness-browser-realization.f2.a003.outer.sha256.b9880e7c8c32e63765360cc06f21c486164354885800db8f632896cc7fa52ea7",
+        "relay.package.vexlife.interface-currentness-browser-realization.f2.a004.sha256.562cef835164301beb5c60b731bcfe60edb26970318acf808f774c71e6834480",
+        "relay.inner.vexlife.interface-currentness-browser-realization.f2.a004.sha256.88feddb0a0873167163e1090da950066fc64ae3d3ed7e45cf69406309ee7f82c",
+        "git.vextreme-sdk.9be6c8c3c169e8b98b04c7821b300f84cb8342de"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
@@ -1161,6 +1165,23 @@
         "relay.inner.vexlife.interface-currentness-browser-realization.f2.a003.sha256.88c426376612bdb7c7aa1a1d6f45beccf40f608e1e2736a7bb0d2f837d95ffe4"
       ],
       "createdAt": "2026-10-30T04:26:14Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.interface-refinement.interface-compound-relay.running-running.f2-a003-package-schema-recovery-a004",
+      "workRef": "work.vexlife.interface-refinement.interface-compound-relay",
+      "priorState": "RUNNING",
+      "nextState": "RUNNING",
+      "reason": "F2 A003 was rejected before native Relay admission because its inner input-package wrapper was v1 while the exact current SDK requires v2. No business/source/provider effects occurred. A004 preserves product bytes and prior candidate corrections, reforms only the wrapper/current identities, and locally passes the current verifier logic.",
+      "actorRef": "actor.chatgpt.vexlife-interface-compound-relay",
+      "sourceRefs": [
+        "relay.return.vexlife.interface-currentness-browser-realization.f2.a003.outer.sha256.b9880e7c8c32e63765360cc06f21c486164354885800db8f632896cc7fa52ea7",
+        "relay.package.vexlife.interface-currentness-browser-realization.f2.a004.sha256.562cef835164301beb5c60b731bcfe60edb26970318acf808f774c71e6834480",
+        "relay.inner.vexlife.interface-currentness-browser-realization.f2.a004.sha256.88feddb0a0873167163e1090da950066fc64ae3d3ed7e45cf69406309ee7f82c",
+        "source.vexrelay.current-contract/v1",
+        "git.vextreme-sdk.9be6c8c3c169e8b98b04c7821b300f84cb8342de"
+      ],
+      "createdAt": "2026-10-30T04:29:06.000Z"
     }
   ],
   "sourceRefs": [
@@ -1281,7 +1302,11 @@
     "relay.return.vexlife.interface-currentness-browser-realization.f2.a002.outer.sha256.b4c6c79416b06695f2ef3172915ad7172f4ababcb56e5f4203fa40a2f8d66cd6",
     "relay.return.vexlife.interface-currentness-browser-realization.f2.a002.inner.sha256.8cbe66565258ae918e28991e3830d9ac4d467423b72d08511d16adf176d27e5c",
     "relay.package.vexlife.interface-currentness-browser-realization.f2.a003.sha256.c476a328c6d0533eeb152dac96b7d12cb64d3b20de681f1aff5e4144fec712b5",
-    "relay.inner.vexlife.interface-currentness-browser-realization.f2.a003.sha256.88c426376612bdb7c7aa1a1d6f45beccf40f608e1e2736a7bb0d2f837d95ffe4"
+    "relay.inner.vexlife.interface-currentness-browser-realization.f2.a003.sha256.88c426376612bdb7c7aa1a1d6f45beccf40f608e1e2736a7bb0d2f837d95ffe4",
+    "relay.return.vexlife.interface-currentness-browser-realization.f2.a003.outer.sha256.b9880e7c8c32e63765360cc06f21c486164354885800db8f632896cc7fa52ea7",
+    "relay.package.vexlife.interface-currentness-browser-realization.f2.a004.sha256.562cef835164301beb5c60b731bcfe60edb26970318acf808f774c71e6834480",
+    "relay.inner.vexlife.interface-currentness-browser-realization.f2.a004.sha256.88feddb0a0873167163e1090da950066fc64ae3d3ed7e45cf69406309ee7f82c",
+    "git.vextreme-sdk.9be6c8c3c169e8b98b04c7821b300f84cb8342de"
   ],
   "formedAt": "2026-10-25T01:23:08.000Z"
 }
