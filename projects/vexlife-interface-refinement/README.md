@@ -4264,6 +4264,106 @@ AUTHORITATIVE_INNER_PASS
 > DOWNSTREAM_OUTER_PROJECTION_BOOKKEEPING_ERROR
 ~~~
 
+### F2 A011 — real input binding present; browser proof timed out without stage localization
+
+A011 admitted from exact PR #965 head `fe3f4c03482243bf17e4d86d7c77077f950eaef1`, applied the READY-state
+draft-persistence correction in its disposable RUN_ROOT, regenerated Source Manifest, and entered the focused gate.
+
+~~~text
+outer RETURN sha256
+  9676c5d9d9a5b8e9061877317f5191961107d79543b88e92f9eeab5d28ea6406
+
+retained inner RETURN sha256
+  096fbf18f7c204a352ddb1d18873cc40cc2ed26342b25b61ff5bf47a60b8aa58
+
+focused gate
+  88 total
+  87 PASS
+  0 assertion FAIL
+  1 CANCELLED / timeout
+
+timed proof
+  READY direct Companion persists a fresh exact-scope unsent draft across document reload
+  30021ms / test timeout 30000ms
+~~~
+
+The static proof immediately following the timed browser test passed and confirms the generated candidate's real
+`#messageInput` handler contains the intended READY-state persistence binding. A011 did **not** identify whether
+the browser test stalled at initial READY, sessionStorage write, reload, READY-after-reload, restored input, or teardown.
+
+No candidate commit or remote effect occurred:
+
+~~~text
+commit = NONE
+push   = NONE
+PR #965 head remains fe3f4c03482243bf17e4d86d7c77077f950eaef1
+~~~
+
+A012 preserves the exact product correction and changes the proof harness only:
+
+~~~text
+- page load uses the semantic `load` boundary instead of unrelated `networkidle`;
+- INITIAL READY, exact storage write, RELOAD READY and restored input each have independent bounded waits;
+- timeout paths include current Interface/channel/composer or storage evidence;
+- Chromium closes before the HTTP server in an explicit finally block.
+~~~
+
+This also removes ambiguity from A011's cleanup ordering: its server and browser were registered as separate
+`t.after()` hooks, and Node executes those hooks in registration order. A012 does not assume that ordering caused
+the timeout; it simply makes cleanup deterministic and the semantic stage observable.
+
+During A012 formation an internal draft build was discarded because a broad identity substitution would have
+rewritten historical A011 evidence refs. The final build uses field-specific identity updates and preserves those
+historical refs exactly.
+
+~~~text
+attempt
+  attempt.vexlife.interface-currentness-browser-realization.f2.a012.2d51710f00f8
+
+same PR branch
+  vxg-interface-currentness-browser-realization-a007
+
+expected remote head
+  fe3f4c03482243bf17e4d86d7c77077f950eaef1
+
+outer package sha256
+  af0ea30029fc634474bb1c6854407e8aba0220808dad8fa723d9729f967c5b0e
+
+inner package sha256
+  8eccd460a07fa6b3cca7162d9659cbb93817e5d69dfee75c4540686ba62cd184
+
+formedAt
+  2026-10-30T05:53:08Z
+
+expiresAt
+  2026-10-31T05:53:08Z
+~~~
+
+A012 membrane remains exactly:
+
+~~~text
+reference/browser/modules/chat-controller.js
+test/interface-currentness-browser.test.mjs
+source-manifest-parts/bucket-f6.json
+source-manifest-parts/bucket-8e.json
+~~~
+
+Permanent:
+
+~~~text
+STATIC_REAL_INPUT_BINDING_PASS
++ BROWSER_TEST_TIMEOUT
+!= BROWSER_DRAFT_RELOAD_PASS
+!= PRODUCT_CORRECTION_REFUTED
+
+AMBIGUOUS_TIMEOUT
+-> STAGE_BOUNDED_PROOF
+-> DETERMINISTIC_CLEANUP
+
+HISTORICAL_EVIDENCE_REF
+!= CURRENT_ATTEMPT_IDENTITY
+~~~
+
 ### Foundation-to-interface sequence
 
 ~~~text
