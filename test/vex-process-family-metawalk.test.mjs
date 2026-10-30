@@ -21,12 +21,6 @@ function node(nodeRef, label) {
   return {
     nodeRef,
     label,
-    purpose: label + ' purpose',
-    currentTruthRefs: ['truth.' + nodeRef + '.current'],
-    ownerRefs: ['owner.' + nodeRef],
-    readingSourceRefs: ['source.' + nodeRef + '.read-now'],
-    considerationRefs: ['consideration.' + nodeRef],
-    proofRefs: ['proof.' + nodeRef],
   };
 }
 
@@ -97,7 +91,6 @@ function familyFixture() {
         entryPredicateRefs: ['predicate.proof.allowed'],
       },
     ],
-    sourceRefs: [sourcePath],
   };
 }
 
@@ -205,29 +198,16 @@ test('MetaWalk dogfoods scope x node x layer against its real machine definition
 });
 
 
-test('MetaWalk keeps provenance at Family scope and read-now scope bounded', () => {
+test('MetaWalk machine definition keeps only fields consumed by current topology and transition semantics', () => {
   const family = normalizeProcessFamily(read(familyPath));
 
-  assert.equal(
-    family.sourceRefs.includes(sourcePath),
-    true,
-    'formation source remains recoverable Family-level provenance',
-  );
-  assert.equal(
-    family.nodes.every((entry) => !Object.hasOwn(entry, 'sourceRefs')),
-    true,
-    'machine nodes must not duplicate Family-level provenance',
-  );
-  assert.equal(
-    family.relationships.every((entry) => !Object.hasOwn(entry, 'sourceRefs')),
-    true,
-    'machine relationships must not duplicate Family-level provenance',
-  );
-  assert.equal(
-    family.nodes.every((entry) => !entry.readingSourceRefs.includes(sourcePath)),
-    true,
-    'current nodes must not deep-read the giant formation history by default',
-  );
+  assert.equal(Object.hasOwn(family, 'sourceRefs'), false);
+  for (const processNode of family.nodes) {
+    assert.deepEqual(
+      Object.keys(processNode).sort(),
+      ['label', 'nodeRef'],
+    );
+  }
 });
 
 test('MetaWalk board is one valid read-only projection of the formation source', () => {
@@ -317,7 +297,6 @@ test('ProcessFamily owns its layer vocabulary instead of inheriting MetaWalk lay
       label: 'advance',
       entryPredicateRefs: [],
     }],
-    sourceRefs: [sourcePath],
   });
 
   const start = createProcessState(family, {
@@ -484,8 +463,22 @@ test('transition admission fails closed on stale or foreign movement', () => {
   );
 });
 
-test('ProcessFamily rejects unearned per-node and per-relationship provenance fields', () => {
+test('ProcessFamily rejects unconsumed machine metadata and object-local provenance fields', () => {
   const schema = familyFixture();
+
+  const nodePurpose = structuredClone(schema);
+  nodePurpose.nodes[0].purpose = 'No current consumer';
+  assert.throws(
+    () => normalizeProcessFamily(nodePurpose),
+    /process node schema drift/,
+  );
+
+  const nodeReadScope = structuredClone(schema);
+  nodeReadScope.nodes[0].readingSourceRefs = ['source.unconsumed'];
+  assert.throws(
+    () => normalizeProcessFamily(nodeReadScope),
+    /process node schema drift/,
+  );
 
   const nodeLocal = structuredClone(schema);
   nodeLocal.nodes[0].sourceRefs = ['source.node-local'];
@@ -499,6 +492,13 @@ test('ProcessFamily rejects unearned per-node and per-relationship provenance fi
   assert.throws(
     () => normalizeProcessFamily(relationshipLocal),
     /process relationship schema drift/,
+  );
+
+  const familySourceBag = structuredClone(schema);
+  familySourceBag.sourceRefs = ['source.family-unconsumed'];
+  assert.throws(
+    () => normalizeProcessFamily(familySourceBag),
+    /ProcessFamily schema drift/,
   );
 });
 
