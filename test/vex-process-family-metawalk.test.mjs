@@ -951,6 +951,74 @@ test('transition formation rejects unknown relationships, empty evidence and no-
   );
 });
 
+
+test('FURTHER route contains only forward-reachable process nodes, not completed history or feedback-only branches', () => {
+  const family = normalizeProcessFamily(familyFixture());
+  const start = createProcessState(family, {
+    stateRef: 'state.forward.001',
+    scopeRef: 'work.test.outcome',
+  });
+  const contract = admitProcessTransition({
+    family,
+    state: start,
+    transitionRef: 'transition.forward.001',
+    relationshipRefOrNull: 'rel.recover-contract',
+    movementClass: 'ADVANCES',
+    nextDepth: 'CONTRACT',
+    evidenceRefs: ['evidence.forward.001'],
+    carriedIdentityRefs: [],
+    satisfiedPredicateRefs: [
+      'predicate.contract.allowed',
+      'predicate.node.contract.entry',
+    ],
+    nextStateRef: 'state.forward.002',
+  });
+  const implementation = admitProcessTransition({
+    family,
+    state: contract,
+    transitionRef: 'transition.forward.002',
+    relationshipRefOrNull: 'rel.contract-implement',
+    movementClass: 'ADVANCES',
+    nextDepth: 'IMPLEMENTATION',
+    evidenceRefs: ['evidence.forward.002'],
+    carriedIdentityRefs: [],
+    satisfiedPredicateRefs: [
+      'predicate.implementation.allowed',
+      'predicate.node.implement.entry',
+    ],
+    nextStateRef: 'state.forward.003',
+  });
+
+  const horizon = projectProcessHorizon(family, implementation);
+  assert.deepEqual(
+    horizon.nextCandidates.map((entry) => entry.nodeRef).sort(),
+    ['node.contract', 'node.prove'],
+  );
+  assert.deepEqual(horizon.furtherNodeRefs, []);
+
+  const board = projectProcessHorizonBoard({
+    family,
+    state: implementation,
+    scope: {
+      scopeRef: 'work.test.outcome',
+      label: 'Forward route',
+      purpose: 'Do not relabel completed or feedback-only topology as future route.',
+      sourceRefs: ['work.test.outcome'],
+    },
+    boardRef: 'board.test.forward-route',
+  });
+  const graph = normalizeBoardGraph(board.graph);
+
+  assert.equal(
+    graph.nodes.some((entry) => entry.label === 'LATER · Recover'),
+    false,
+  );
+  assert.equal(
+    graph.nodes.some((entry) => entry.label === 'LATER · Contract'),
+    false,
+  );
+});
+
 test('initial bounded horizon has no PREVIOUS slot and may have no FURTHER route', () => {
   const tiny = normalizeProcessFamily({
     schemaVersion: 'vexwork.process-family/v1',
