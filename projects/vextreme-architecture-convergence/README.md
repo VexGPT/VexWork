@@ -1218,6 +1218,114 @@ accepted merge tree
 
 No GitHub Actions result is used as proof, and no Local Workspace route was used.
 
+
+## VexRelay / Family Circuit convergence
+
+Victor has now identified a second architecture patient zero outside the website itself: **VexRelay is
+operationally strict and fail-closed, but too much of its ordinary human/AI operating meaning still has
+to be reconstructed from the Local Vex Operations / ChatGPT Project source corpus and from low-level
+task-formation fields.** The desired evolution is porting while refining, not a big-bang runtime rewrite.
+
+Current source ownership stays explicit:
+
+~~~text
+Vextreme-SDK
+  = current VexRelay protocol / task / RETURN / validator / execution authority
+
+VexLife-Android
+  = accepted Family Circuit + Convergence Relay architecture evidence
+  = typed ownership/relationship language
+  != mandatory implementation language for every target
+
+VexWork
+  = human-perceivable work / architecture navigation and guideline surface
+  != VexRelay execution authority
+
+Local Vex Operations Project Sources
+  = current operator compatibility / entry surface
+  -> may become smaller routing material only after source-managed guidance earns parity
+  != permanent reason to keep Relay meaning chat-project-only
+~~~
+
+The first concrete harness-pain specimen is the PR #519 SourceOwner A019 formation failure. The
+candidate carried 282 changed paths, while the low-level field named `maxFiles` belonged to the
+bounded review-source projection and was constrained to at most 10. Treating the surface label as
+"maximum changed files" produced an invalid task before execution:
+
+~~~text
+surface label
+-> plausible natural-language guess
+-> wrong low-level parameter
+-> fail-closed manifest rejection
+-> another Victor host round trip
+
+desired:
+human/source intention
+-> rightful semantic owner
+-> source-of-label / consumer / effect trajectory
+-> named Family Circuit / Relay task family
+-> protocol-owned invariants derived automatically
+-> current facts observed at the boundary
+-> SDK validator remains defense in depth
+~~~
+
+This Work therefore asks which Relay choices are genuinely semantic inputs and which should disappear
+from AI authoring because they are already owned by the circuit, recipe, current contract, adapter or
+live-currentness probe.
+
+Target direction:
+
+~~~text
+human intention / exact work question
+-> source-managed VexWork/VexArchitecture guidance
+-> named Relay circuit / task family
+-> derive invariant plumbing
+-> observe live/current facts
+-> current Vextreme-SDK contract + validator
+-> qualified provider/host adapter
+-> canonical RETURN
+~~~
+
+Family Circuit is used here as an ownership and relationship method, not as a demand to rewrite
+JavaScript into Kotlin. Kotlin/typed-core implementation remains one possible realization when it
+materially reduces invalid representable states. The first requirement is that the semantic circuit is
+perceivable and that implementation details stop masquerading as choices.
+
+Permanent distinctions:
+
+~~~text
+VEXWORK GUIDANCE != SDK EXECUTABLE AUTHORITY
+FAMILY CIRCUIT MEANING != ANDROID KOTLIN TRANSPLANT
+PORTING WHILE REFINING != BIG-BANG REWRITE
+TYPED CORE OPTION != REQUIRED KOTLIN MIGRATION
+DERIVED INVARIANT != AI GUESS
+LIVE PROVIDER FACT != STATIC TYPE FACT
+WIRE COMPATIBILITY != IMPLEMENTATION LANGUAGE
+PUBLIC VEXWORK != PRIVATE SDK SOURCE COPY
+~~~
+
+Initial acceptance questions:
+
+1. Can a human/fresh agent identify the Relay question, owner, task family and consequence without
+   reading the complete Local Vex Operations Relay manual?
+2. Can protocol-owned knobs such as bounded review projection limits, required preflights, path
+   membranes, RETURN formation and other repeatable sequencing be derived by the circuit/compiler
+   instead of model-authored by convention?
+3. Are live facts such as exact head/tree/provider currentness still observed rather than typed into
+   existence?
+4. Can the existing `vex.relay.task/v2` and canonical RETURN boundary remain compatible while the
+   authoring surface becomes more semantic?
+5. Can each exposed parameter be traced from its source/owner through its consumer to its physical
+   effect, so a label alone is never treated as semantic authority?
+6. Can VexWork explain the architecture in ordinary language while private SDK source remains at its
+   rightful owner?
+7. Only after that parity exists, can the static ChatGPT Project Relay material shrink toward a
+   current-entry/router role without losing correctness, recovery or proof?
+
+The corresponding Work item is
+`work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence`. It begins READY / HIGH with no implementation authority or effects. Exact SDK,
+VexWork, and VexLife-Android source mutation must still be separately admitted by the rightful owner.
+
 ## Current Work
 
 ~~~text

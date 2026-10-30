@@ -6317,6 +6317,42 @@
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vextreme.architecture-convergence.terrain-active-surface-context",
+      "parentWorkRefOrNull": "work.vextreme.architecture-convergence.outcome",
+      "label": "Consolidate Terrain active embedded-surface ownership",
+      "purpose": "Prevent impossible or stale Terrain embedded-reader surface state by giving the mutually exclusive activeReaderId / activeEntrySlug / activeGroupHomeKey compatibility coordinates one bounded mutation owner, while preserving current browser realization and keeping active-surface identity separate from reader return-context identity.",
+      "workClass": "DEFECT",
+      "state": "VERIFYING",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vextreme"
+      ],
+      "sourceRefs": [
+        "projects/vextreme-architecture-convergence/README.md",
+        "github.pull.vextreme.503",
+        "github.commit.vextreme.87571924f769fe4a1dad1084e2f68775f18d37b1",
+        "repo.vextreme:pages/terrain-map.html",
+        "repo.vextreme:tests/45-terrain-journey.test.js",
+        "github.pull.vexlife-android.193",
+        "github.pull.vextreme.505",
+        "github.commit.vextreme.28602a7ba832223d40ed844c32609954051f1c84",
+        "artifact.vexrelay.outer-return.sha256.d7dce82aab5fe0b1decfc5409a03c3e3efc73b6ad05e2cfab7f1a83620b7785e",
+        "artifact.vexrelay.inner-return.sha256.c7f161c3c3a8b179870349bf56c29706307051bed8b3640a3c25c3d58f5a99db",
+        "github.pull.vextreme.488",
+        "github.commit.vextreme.5010f6cc8de507cfd7f027c3b615ff2e8931200f",
+        "repo.vextreme:tests/85-terrain-view-contract.test.js"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-10-29T14:34:00.000Z",
+      "updatedAt": "2026-10-29T14:55:30.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vextreme.architecture-convergence.terrain-journey-inspection",
       "parentWorkRefOrNull": "work.vextreme.architecture-convergence.outcome",
       "label": "Expose Terrain Journey causal context in Inspect",
@@ -6460,6 +6496,40 @@
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-29T13:41:00.000Z",
       "updatedAt": "2026-10-29T14:26:30.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence",
+      "parentWorkRefOrNull": "work.vextreme.architecture-convergence.outcome",
+      "label": "Converge VexRelay Protocol with Family Circuit / VexArchitecture",
+      "purpose": "Port and refine the operational VexRelay protocol into the source-managed Vex architecture / Family Circuit model so a human or fresh agent can understand the Relay question, semantic owners, current State/Control/Act/Effect/Connection relationships, task families, and safe execution route without reconstructing a giant ChatGPT Project manual or hand-authoring low-level harness parameters. Preserve Vextreme-SDK current-contract, task/RETURN, validator, carrier and runtime authority; use accepted VexLife-Android Family Circuit and Compound Relay source as architecture evidence rather than a Kotlin transplant; move protocol-owned invariants and repeatable recipe plumbing out of AI guesswork; and prove compatibility before any runtime replacement or Project-source reduction.",
+      "workClass": "TASK",
+      "state": "READY",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vextreme-sdk",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "projects/vextreme-architecture-convergence/README.md",
+        "response.victor.vexrelay-family-circuit-convergence.20261029a",
+        "repo.vextreme-sdk",
+        "source.vexrelay.current-contract/v1",
+        "github.commit.vextreme-sdk.9be6c8c3c169e8b98b04c7821b300f84cb8342de",
+        "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+        "repo.vexlife-android:architecture/behavior/VEX-BEHAVIOR-FAMILY-BLUEPRINT.md",
+        "repo.vexlife-android:architecture/relay/README.md",
+        "github.commit.vexlife-android.7ac61612fb1fb30f26e7fd3794bd4382e905a0d7"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-30T02:25:00.000Z",
+      "updatedAt": "2026-10-30T02:25:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -6656,42 +6726,6 @@
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
-    },
-    {
-      "schemaVersion": "vexwork.work-item/v1",
-      "workRef": "work.vextreme.architecture-convergence.terrain-active-surface-context",
-      "parentWorkRefOrNull": "work.vextreme.architecture-convergence.outcome",
-      "label": "Consolidate Terrain active embedded-surface ownership",
-      "purpose": "Prevent impossible or stale Terrain embedded-reader surface state by giving the mutually exclusive activeReaderId / activeEntrySlug / activeGroupHomeKey compatibility coordinates one bounded mutation owner, while preserving current browser realization and keeping active-surface identity separate from reader return-context identity.",
-      "workClass": "DEFECT",
-      "state": "VERIFYING",
-      "workDisposition": "ACTIVE",
-      "priorityClass": "HIGH",
-      "dependencyRefs": [],
-      "repositoryRefs": [
-        "repo.vextreme"
-      ],
-      "sourceRefs": [
-        "projects/vextreme-architecture-convergence/README.md",
-        "github.pull.vextreme.503",
-        "github.commit.vextreme.87571924f769fe4a1dad1084e2f68775f18d37b1",
-        "repo.vextreme:pages/terrain-map.html",
-        "repo.vextreme:tests/45-terrain-journey.test.js",
-        "github.pull.vexlife-android.193",
-        "github.pull.vextreme.505",
-        "github.commit.vextreme.28602a7ba832223d40ed844c32609954051f1c84",
-        "artifact.vexrelay.outer-return.sha256.d7dce82aab5fe0b1decfc5409a03c3e3efc73b6ad05e2cfab7f1a83620b7785e",
-        "artifact.vexrelay.inner-return.sha256.c7f161c3c3a8b179870349bf56c29706307051bed8b3640a3c25c3d58f5a99db",
-        "github.pull.vextreme.488",
-        "github.commit.vextreme.5010f6cc8de507cfd7f027c3b615ff2e8931200f",
-        "repo.vextreme:tests/85-terrain-view-contract.test.js"
-      ],
-      "formationProcessRefOrNull": null,
-      "nextProcessRefs": [],
-      "authorityDisposition": "AUTHORIZED_BOUNDED",
-      "effectDisposition": "EFFECTS_BOUND",
-      "createdAt": "2026-10-29T14:34:00.000Z",
-      "updatedAt": "2026-10-29T14:55:30.000Z"
     }
   ],
   "transitions": [
@@ -9925,6 +9959,53 @@
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.architecture-convergence.terrain-active-surface-context.verifying.pr505-a002-assurance",
+      "workRef": "work.vextreme.architecture-convergence.terrain-active-surface-context",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Vex Relay A002 proved exact head c1d5fd19d12be2a9e30ef7bbe6d4e3b7db0b504d / tree da37eddbbf06193beb28e0070b6dd6e155b27d05 with focused Terrain tests 19/19 PASS, Key Alignment PASS, work-coordination config PASS, zero candidate/harness/environment/unknown findings, and no repository mutation; fresh Independent Assurance reviewed the full two-file candidate and returned CLEAR.",
+      "actorRef": "actor.chatgpt.vextreme-architecture-convergence",
+      "sourceRefs": [
+        "github.pull.vextreme.505",
+        "artifact.vexrelay.outer-return.sha256.d7dce82aab5fe0b1decfc5409a03c3e3efc73b6ad05e2cfab7f1a83620b7785e",
+        "artifact.vexrelay.inner-return.sha256.c7f161c3c3a8b179870349bf56c29706307051bed8b3640a3c25c3d58f5a99db"
+      ],
+      "createdAt": "2026-10-29T14:51:45.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.architecture-convergence.terrain-active-surface-context.completed.pr505-tree-exact-merge",
+      "workRef": "work.vextreme.architecture-convergence.terrain-active-surface-context",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "Vextreme PR #505 merged as 28602a7ba832223d40ed844c32609954051f1c84, and accepted main's merge tree exactly equals the A002-proven candidate tree da37eddbbf06193beb28e0070b6dd6e155b27d05 with the same two-path membrane. The observed stale activeEntrySlug teardown defect is closed without forming a new Family or collapsing return-context identity.",
+      "actorRef": "actor.chatgpt.vextreme-architecture-convergence",
+      "sourceRefs": [
+        "github.pull.vextreme.505",
+        "github.commit.vextreme.28602a7ba832223d40ed844c32609954051f1c84",
+        "artifact.vexrelay.inner-return.sha256.c7f161c3c3a8b179870349bf56c29706307051bed8b3640a3c25c3d58f5a99db"
+      ],
+      "createdAt": "2026-10-29T14:52:30.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.architecture-convergence.terrain-active-surface-context.verifying.pr488-postmerge-contract-drift",
+      "workRef": "work.vextreme.architecture-convergence.terrain-active-surface-context",
+      "priorState": "COMPLETED",
+      "nextState": "VERIFYING",
+      "reason": "Post-completion Vextreme PR #488 merged tests/85-terrain-view-contract.test.js with a stale assertion requiring the pre-#505 direct activeGroupHomeKey assignment. Accepted source main still contains the correct single active-surface mutation owner, so the implementation effect remains valid while repository contract currentness requires one test-only correction.",
+      "actorRef": "actor.chatgpt.vextreme-architecture-convergence",
+      "sourceRefs": [
+        "github.pull.vextreme.488",
+        "github.commit.vextreme.5010f6cc8de507cfd7f027c3b615ff2e8931200f",
+        "github.pull.vextreme.505",
+        "github.commit.vextreme.28602a7ba832223d40ed844c32609954051f1c84",
+        "repo.vextreme:tests/85-terrain-view-contract.test.js"
+      ],
+      "createdAt": "2026-10-29T14:55:30.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
       "transitionRef": "transition.vextreme.architecture-convergence.terrain-journey-inspection.verifying.pr497-merge",
       "workRef": "work.vextreme.architecture-convergence.terrain-journey-inspection",
       "priorState": "RUNNING",
@@ -9986,6 +10067,36 @@
         "github.actions.vextreme.pages.40879368161"
       ],
       "createdAt": "2026-10-29T13:09:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.architecture-convergence.terrain-reader-return-vocabulary.verifying.pr503-a004-assurance",
+      "workRef": "work.vextreme.architecture-convergence.terrain-reader-return-vocabulary",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "Vex Relay A004 proved exact head a432d072fe75e6b4226107351aa260490637abac / tree 653a28eea5ca5da05a82c26beeb96356a1ac8514 with focused Terrain tests 18/18 PASS, Key Alignment PASS, work-coordination config PASS, zero candidate/harness/environment/unknown findings, and no repository mutation; fresh Independent Assurance reviewed the full two-file candidate and returned CLEAR.",
+      "actorRef": "actor.chatgpt.vextreme-architecture-convergence",
+      "sourceRefs": [
+        "github.pull.vextreme.503",
+        "artifact.vexrelay.outer-return.sha256.878099edeed37d8972d7e304ea690e6cac62dc96407e6e4335bc814b0e7f8cb7",
+        "artifact.vexrelay.inner-return.sha256.3d38733874460ff8435e47052b38b21f66ef7f124f2f0eb2c4152f5244e5200c"
+      ],
+      "createdAt": "2026-10-29T14:25:55.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.architecture-convergence.terrain-reader-return-vocabulary.completed.pr503-tree-exact-merge",
+      "workRef": "work.vextreme.architecture-convergence.terrain-reader-return-vocabulary",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "Vextreme PR #503 merged as 87571924f769fe4a1dad1084e2f68775f18d37b1, and accepted main's merge tree exactly equals the A004-proven candidate tree 653a28eea5ca5da05a82c26beeb96356a1ac8514 with the same two-path membrane. This bounded behavior/identity refinement has no separate visual acceptance predicate.",
+      "actorRef": "actor.chatgpt.vextreme-architecture-convergence",
+      "sourceRefs": [
+        "github.pull.vextreme.503",
+        "github.commit.vextreme.87571924f769fe4a1dad1084e2f68775f18d37b1",
+        "artifact.vexrelay.inner-return.sha256.3d38733874460ff8435e47052b38b21f66ef7f124f2f0eb2c4152f5244e5200c"
+      ],
+      "createdAt": "2026-10-29T14:26:30.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
@@ -10068,83 +10179,6 @@
         "github.commit.antique-plate-storefront.bcadd970f7c45898e008bc1b1e5246e5005a253b"
       ],
       "createdAt": "2026-10-23T06:55:30.000Z"
-    },
-    {
-      "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vextreme.architecture-convergence.terrain-reader-return-vocabulary.verifying.pr503-a004-assurance",
-      "workRef": "work.vextreme.architecture-convergence.terrain-reader-return-vocabulary",
-      "priorState": "RUNNING",
-      "nextState": "VERIFYING",
-      "reason": "Vex Relay A004 proved exact head a432d072fe75e6b4226107351aa260490637abac / tree 653a28eea5ca5da05a82c26beeb96356a1ac8514 with focused Terrain tests 18/18 PASS, Key Alignment PASS, work-coordination config PASS, zero candidate/harness/environment/unknown findings, and no repository mutation; fresh Independent Assurance reviewed the full two-file candidate and returned CLEAR.",
-      "actorRef": "actor.chatgpt.vextreme-architecture-convergence",
-      "sourceRefs": [
-        "github.pull.vextreme.503",
-        "artifact.vexrelay.outer-return.sha256.878099edeed37d8972d7e304ea690e6cac62dc96407e6e4335bc814b0e7f8cb7",
-        "artifact.vexrelay.inner-return.sha256.3d38733874460ff8435e47052b38b21f66ef7f124f2f0eb2c4152f5244e5200c"
-      ],
-      "createdAt": "2026-10-29T14:25:55.000Z"
-    },
-    {
-      "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vextreme.architecture-convergence.terrain-reader-return-vocabulary.completed.pr503-tree-exact-merge",
-      "workRef": "work.vextreme.architecture-convergence.terrain-reader-return-vocabulary",
-      "priorState": "VERIFYING",
-      "nextState": "COMPLETED",
-      "reason": "Vextreme PR #503 merged as 87571924f769fe4a1dad1084e2f68775f18d37b1, and accepted main's merge tree exactly equals the A004-proven candidate tree 653a28eea5ca5da05a82c26beeb96356a1ac8514 with the same two-path membrane. This bounded behavior/identity refinement has no separate visual acceptance predicate.",
-      "actorRef": "actor.chatgpt.vextreme-architecture-convergence",
-      "sourceRefs": [
-        "github.pull.vextreme.503",
-        "github.commit.vextreme.87571924f769fe4a1dad1084e2f68775f18d37b1",
-        "artifact.vexrelay.inner-return.sha256.3d38733874460ff8435e47052b38b21f66ef7f124f2f0eb2c4152f5244e5200c"
-      ],
-      "createdAt": "2026-10-29T14:26:30.000Z"
-    },
-    {
-      "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vextreme.architecture-convergence.terrain-active-surface-context.verifying.pr505-a002-assurance",
-      "workRef": "work.vextreme.architecture-convergence.terrain-active-surface-context",
-      "priorState": "RUNNING",
-      "nextState": "VERIFYING",
-      "reason": "Vex Relay A002 proved exact head c1d5fd19d12be2a9e30ef7bbe6d4e3b7db0b504d / tree da37eddbbf06193beb28e0070b6dd6e155b27d05 with focused Terrain tests 19/19 PASS, Key Alignment PASS, work-coordination config PASS, zero candidate/harness/environment/unknown findings, and no repository mutation; fresh Independent Assurance reviewed the full two-file candidate and returned CLEAR.",
-      "actorRef": "actor.chatgpt.vextreme-architecture-convergence",
-      "sourceRefs": [
-        "github.pull.vextreme.505",
-        "artifact.vexrelay.outer-return.sha256.d7dce82aab5fe0b1decfc5409a03c3e3efc73b6ad05e2cfab7f1a83620b7785e",
-        "artifact.vexrelay.inner-return.sha256.c7f161c3c3a8b179870349bf56c29706307051bed8b3640a3c25c3d58f5a99db"
-      ],
-      "createdAt": "2026-10-29T14:51:45.000Z"
-    },
-    {
-      "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vextreme.architecture-convergence.terrain-active-surface-context.completed.pr505-tree-exact-merge",
-      "workRef": "work.vextreme.architecture-convergence.terrain-active-surface-context",
-      "priorState": "VERIFYING",
-      "nextState": "COMPLETED",
-      "reason": "Vextreme PR #505 merged as 28602a7ba832223d40ed844c32609954051f1c84, and accepted main's merge tree exactly equals the A002-proven candidate tree da37eddbbf06193beb28e0070b6dd6e155b27d05 with the same two-path membrane. The observed stale activeEntrySlug teardown defect is closed without forming a new Family or collapsing return-context identity.",
-      "actorRef": "actor.chatgpt.vextreme-architecture-convergence",
-      "sourceRefs": [
-        "github.pull.vextreme.505",
-        "github.commit.vextreme.28602a7ba832223d40ed844c32609954051f1c84",
-        "artifact.vexrelay.inner-return.sha256.c7f161c3c3a8b179870349bf56c29706307051bed8b3640a3c25c3d58f5a99db"
-      ],
-      "createdAt": "2026-10-29T14:52:30.000Z"
-    },
-    {
-      "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vextreme.architecture-convergence.terrain-active-surface-context.verifying.pr488-postmerge-contract-drift",
-      "workRef": "work.vextreme.architecture-convergence.terrain-active-surface-context",
-      "priorState": "COMPLETED",
-      "nextState": "VERIFYING",
-      "reason": "Post-completion Vextreme PR #488 merged tests/85-terrain-view-contract.test.js with a stale assertion requiring the pre-#505 direct activeGroupHomeKey assignment. Accepted source main still contains the correct single active-surface mutation owner, so the implementation effect remains valid while repository contract currentness requires one test-only correction.",
-      "actorRef": "actor.chatgpt.vextreme-architecture-convergence",
-      "sourceRefs": [
-        "github.pull.vextreme.488",
-        "github.commit.vextreme.5010f6cc8de507cfd7f027c3b615ff2e8931200f",
-        "github.pull.vextreme.505",
-        "github.commit.vextreme.28602a7ba832223d40ed844c32609954051f1c84",
-        "repo.vextreme:tests/85-terrain-view-contract.test.js"
-      ],
-      "createdAt": "2026-10-29T14:55:30.000Z"
     }
   ],
   "sourceRefs": [

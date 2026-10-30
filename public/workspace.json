@@ -12195,7 +12195,9 @@
         ],
         "repositoryRefs": [
           "repo.vexwork",
-          "repo.vextreme"
+          "repo.vextreme",
+          "repo.vextreme-sdk",
+          "repo.vexlife-android"
         ],
         "sourceRefs": [
           "projects/vextreme-architecture-convergence/README.md",
@@ -12232,7 +12234,10 @@
           "repo.vextreme:tests/86-terrain-entry-pages.test.js",
           "github.issue.vextreme.201",
           "repo.vextreme:lib/logger.js",
-          "repo.vextreme:lib/logger-codes.js"
+          "repo.vextreme:lib/logger-codes.js",
+          "repo.vextreme-sdk",
+          "source.vexrelay.current-contract/v1",
+          "repo.vexlife-android:architecture/relay/README.md"
         ],
         "formedAt": "2026-10-29T11:45:00.000Z"
       },
@@ -12254,7 +12259,8 @@
             "work.vextreme.architecture-convergence.terrain-journey-inspection",
             "work.vextreme.architecture-convergence.terrain-reader-navigation",
             "work.vextreme.architecture-convergence.terrain-reader-return-context",
-            "work.vextreme.architecture-convergence.terrain-reader-return-vocabulary"
+            "work.vextreme.architecture-convergence.terrain-reader-return-vocabulary",
+            "work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence"
           ],
           "dependencyRefs": [],
           "repositoryRefs": [
@@ -12342,15 +12348,15 @@
           "transitionHistory": []
         },
         {
-          "schemaVersion": "vexwork.work-item/v1",
           "workRef": "work.vextreme.architecture-convergence.terrain-active-surface-context",
-          "parentWorkRefOrNull": "work.vextreme.architecture-convergence.outcome",
           "label": "Consolidate Terrain active embedded-surface ownership",
           "purpose": "Prevent impossible or stale Terrain embedded-reader surface state by giving the mutually exclusive activeReaderId / activeEntrySlug / activeGroupHomeKey compatibility coordinates one bounded mutation owner, while preserving current browser realization and keeping active-surface identity separate from reader return-context identity.",
           "workClass": "DEFECT",
           "state": "VERIFYING",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vextreme.architecture-convergence.outcome",
+          "childWorkRefs": [],
           "dependencyRefs": [],
           "repositoryRefs": [
             "repo.vextreme"
@@ -12376,7 +12382,6 @@
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-10-29T14:34:00.000Z",
           "updatedAt": "2026-10-29T14:55:30.000Z",
-          "childWorkRefs": [],
           "transitionHistory": [
             {
               "transitionRef": "transition.vextreme.architecture-convergence.terrain-active-surface-context.verifying.pr505-a002-assurance",
@@ -12656,6 +12661,41 @@
               "createdAt": "2026-10-29T14:26:30.000Z"
             }
           ]
+        },
+        {
+          "workRef": "work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence",
+          "label": "Converge VexRelay Protocol with Family Circuit / VexArchitecture",
+          "purpose": "Port and refine the operational VexRelay protocol into the source-managed Vex architecture / Family Circuit model so a human or fresh agent can understand the Relay question, semantic owners, current State/Control/Act/Effect/Connection relationships, task families, and safe execution route without reconstructing a giant ChatGPT Project manual or hand-authoring low-level harness parameters. Preserve Vextreme-SDK current-contract, task/RETURN, validator, carrier and runtime authority; use accepted VexLife-Android Family Circuit and Compound Relay source as architecture evidence rather than a Kotlin transplant; move protocol-owned invariants and repeatable recipe plumbing out of AI guesswork; and prove compatibility before any runtime replacement or Project-source reduction.",
+          "workClass": "TASK",
+          "state": "READY",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vextreme.architecture-convergence.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vextreme-sdk",
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "projects/vextreme-architecture-convergence/README.md",
+            "response.victor.vexrelay-family-circuit-convergence.20261029a",
+            "repo.vextreme-sdk",
+            "source.vexrelay.current-contract/v1",
+            "github.commit.vextreme-sdk.9be6c8c3c169e8b98b04c7821b300f84cb8342de",
+            "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+            "repo.vexlife-android:architecture/behavior/VEX-BEHAVIOR-FAMILY-BLUEPRINT.md",
+            "repo.vexlife-android:architecture/relay/README.md",
+            "github.commit.vexlife-android.7ac61612fb1fb30f26e7fd3794bd4382e905a0d7"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-30T02:25:00.000Z",
+          "updatedAt": "2026-10-30T02:25:00.000Z",
+          "transitionHistory": []
         }
       ],
       "lanes": [
@@ -12672,15 +12712,16 @@
         {
           "laneRef": "lane.work.ready",
           "label": "Ready",
-          "workRefs": []
+          "workRefs": [
+            "work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence"
+          ]
         },
         {
           "laneRef": "lane.work.active",
           "label": "Active",
           "workRefs": [
             "work.vextreme.architecture-convergence.outcome",
-            "work.vextreme.architecture-convergence.semantic-owner-map",
-            "work.vextreme.architecture-convergence.terrain-active-surface-context"
+            "work.vextreme.architecture-convergence.semantic-owner-map"
           ]
         },
         {
@@ -12697,6 +12738,7 @@
           "laneRef": "lane.work.verify",
           "label": "Verify",
           "workRefs": [
+            "work.vextreme.architecture-convergence.terrain-active-surface-context",
             "work.vextreme.architecture-convergence.terrain-journey-inspection",
             "work.vextreme.architecture-convergence.terrain-reader-navigation"
           ]
@@ -12721,10 +12763,10 @@
         }
       ],
       "summary": {
-        "workItemCount": 7,
-        "openWorkItemCount": 5,
+        "workItemCount": 8,
+        "openWorkItemCount": 6,
         "outcomeCount": 1,
-        "taskCount": 5,
+        "taskCount": 6,
         "defectCount": 1,
         "potentialCount": 0,
         "needsHumanCount": 0,
@@ -12746,7 +12788,8 @@
             "work.vextreme.architecture-convergence.terrain-journey-inspection",
             "work.vextreme.architecture-convergence.terrain-reader-navigation",
             "work.vextreme.architecture-convergence.terrain-reader-return-context",
-            "work.vextreme.architecture-convergence.terrain-reader-return-vocabulary"
+            "work.vextreme.architecture-convergence.terrain-reader-return-vocabulary",
+            "work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence"
           ],
           "dependencyRefs": [],
           "repositoryRefs": [

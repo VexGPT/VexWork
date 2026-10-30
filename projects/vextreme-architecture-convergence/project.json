@@ -8,7 +8,9 @@
   ],
   "repositoryRefs": [
     "repo.vexwork",
-    "repo.vextreme"
+    "repo.vextreme",
+    "repo.vextreme-sdk",
+    "repo.vexlife-android"
   ],
   "sourceRefs": [
     "projects/vextreme-architecture-convergence/README.md",
@@ -45,7 +47,10 @@
     "repo.vextreme:tests/86-terrain-entry-pages.test.js",
     "github.issue.vextreme.201",
     "repo.vextreme:lib/logger.js",
-    "repo.vextreme:lib/logger-codes.js"
+    "repo.vextreme:lib/logger-codes.js",
+    "repo.vextreme-sdk",
+    "source.vexrelay.current-contract/v1",
+    "repo.vexlife-android:architecture/relay/README.md"
   ],
   "formedAt": "2026-10-29T11:45:00.000Z"
 }

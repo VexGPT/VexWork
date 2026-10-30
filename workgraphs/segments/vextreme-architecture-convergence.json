@@ -277,6 +277,40 @@
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-29T14:34:00.000Z",
       "updatedAt": "2026-10-29T14:55:30.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence",
+      "parentWorkRefOrNull": "work.vextreme.architecture-convergence.outcome",
+      "label": "Converge VexRelay Protocol with Family Circuit / VexArchitecture",
+      "purpose": "Port and refine the operational VexRelay protocol into the source-managed Vex architecture / Family Circuit model so a human or fresh agent can understand the Relay question, semantic owners, current State/Control/Act/Effect/Connection relationships, task families, and safe execution route without reconstructing a giant ChatGPT Project manual or hand-authoring low-level harness parameters. Preserve Vextreme-SDK current-contract, task/RETURN, validator, carrier and runtime authority; use accepted VexLife-Android Family Circuit and Compound Relay source as architecture evidence rather than a Kotlin transplant; move protocol-owned invariants and repeatable recipe plumbing out of AI guesswork; and prove compatibility before any runtime replacement or Project-source reduction.",
+      "workClass": "TASK",
+      "state": "READY",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vextreme-sdk",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "projects/vextreme-architecture-convergence/README.md",
+        "response.victor.vexrelay-family-circuit-convergence.20261029a",
+        "repo.vextreme-sdk",
+        "source.vexrelay.current-contract/v1",
+        "github.commit.vextreme-sdk.9be6c8c3c169e8b98b04c7821b300f84cb8342de",
+        "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+        "repo.vexlife-android:architecture/behavior/VEX-BEHAVIOR-FAMILY-BLUEPRINT.md",
+        "repo.vexlife-android:architecture/relay/README.md",
+        "github.commit.vexlife-android.7ac61612fb1fb30f26e7fd3794bd4382e905a0d7"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-30T02:25:00.000Z",
+      "updatedAt": "2026-10-30T02:25:00.000Z"
     }
   ],
   "transitions": [
