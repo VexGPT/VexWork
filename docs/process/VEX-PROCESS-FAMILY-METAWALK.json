@@ -8,7 +8,6 @@
       "nodeRef": "node.vexwork.process-family-metawalk.entry",
       "label": "Process Family MetaWalk",
       "purpose": "Enter from one human outcome and recover only enough current source to form the first truthful process coordinate.",
-      "entryPredicateRefs": [],
       "currentTruthRefs": [
         "work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence"
       ],
@@ -19,13 +18,10 @@
         "docs/foundation/PROCESS-MAP.md",
         "docs/foundation/WORKGRAPH.md"
       ],
-      "authorityRefs": [],
       "considerationRefs": [
         "docs/CULTURE.md"
       ],
       "proofRefs": [],
-      "exitPredicateRefs": [],
-      "heldConcernRefs": [],
       "sourceRefs": [
         "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
         "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
@@ -36,7 +32,6 @@
       "nodeRef": "node.vexwork.process-family-metawalk.recover",
       "label": "Recover intention + pressure",
       "purpose": "Ground the human outcome, observed failure or continuity pressure, and current source owners before adding process structure.",
-      "entryPredicateRefs": [],
       "currentTruthRefs": [
         "work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence"
       ],
@@ -47,14 +42,11 @@
         "docs/foundation/OPERATING-PROFILES.md",
         "github.pull.vexwork.185"
       ],
-      "authorityRefs": [],
       "considerationRefs": [
         "docs/CULTURE.md",
         "docs/foundation/PROCESS-MAP.md"
       ],
       "proofRefs": [],
-      "exitPredicateRefs": [],
-      "heldConcernRefs": [],
       "sourceRefs": [
         "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
         "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
@@ -65,7 +57,6 @@
       "nodeRef": "node.vexwork.process-family-metawalk.topology",
       "label": "Plot topology",
       "purpose": "Form the smallest stable-enough nodes, sequence, branches, feedback paths and larger-scope enabling relationships.",
-      "entryPredicateRefs": [],
       "currentTruthRefs": [
         "work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence"
       ],
@@ -76,13 +67,10 @@
         "docs/foundation/PROCESS-MAP.md",
         "projects/vexboard/FRACTAL-SEMANTIC-COMPOSITION-AND-SPATIAL-LAYOUT.md"
       ],
-      "authorityRefs": [],
       "considerationRefs": [
         "docs/foundation/WORKGRAPH.md"
       ],
       "proofRefs": [],
-      "exitPredicateRefs": [],
-      "heldConcernRefs": [],
       "sourceRefs": [
         "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
         "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
@@ -93,7 +81,6 @@
       "nodeRef": "node.vexwork.process-family-metawalk.ownership",
       "label": "Bind ownership",
       "purpose": "Identify which existing owner supplies each semantic, source, currentness, authority and evidence truth without creating a shadow owner.",
-      "entryPredicateRefs": [],
       "currentTruthRefs": [
         "work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence"
       ],
@@ -104,14 +91,11 @@
         "docs/foundation/WORKGRAPH.md",
         "docs/foundation/REPOSITORY-GRAPH.md"
       ],
-      "authorityRefs": [],
       "considerationRefs": [
         "docs/CULTURE.md",
         "docs/foundation/PROCESS-MAP.md"
       ],
       "proofRefs": [],
-      "exitPredicateRefs": [],
-      "heldConcernRefs": [],
       "sourceRefs": [
         "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
         "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
@@ -122,7 +106,6 @@
       "nodeRef": "node.vexwork.process-family-metawalk.contracts",
       "label": "Bind contracts + relationships",
       "purpose": "Bind the exact relationship vocabulary, current-State inputs, carried identities, re-ground obligations, consumers and held boundaries.",
-      "entryPredicateRefs": [],
       "currentTruthRefs": [
         "work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence"
       ],
@@ -134,13 +117,10 @@
         "repo.vexlife-android:architecture/relay/README.md",
         "source.vexrelay.current-contract/v1"
       ],
-      "authorityRefs": [],
       "considerationRefs": [
         "docs/foundation/OPERATING-PROFILES.md"
       ],
       "proofRefs": [],
-      "exitPredicateRefs": [],
-      "heldConcernRefs": [],
       "sourceRefs": [
         "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
         "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
@@ -151,7 +131,6 @@
       "nodeRef": "node.vexwork.process-family-metawalk.proof-plan",
       "label": "Bind proof strategy",
       "purpose": "Decide which evidence would falsify or satisfy each relationship and which proof class belongs to the current node.",
-      "entryPredicateRefs": [],
       "currentTruthRefs": [
         "work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence"
       ],
@@ -161,15 +140,12 @@
       "readingSourceRefs": [
         "docs/foundation/OPERATING-PROFILES.md"
       ],
-      "authorityRefs": [],
       "considerationRefs": [
         "docs/CULTURE.md"
       ],
       "proofRefs": [
         "test/vex-process-family-metawalk.test.mjs"
       ],
-      "exitPredicateRefs": [],
-      "heldConcernRefs": [],
       "sourceRefs": [
         "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
         "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
@@ -180,7 +156,6 @@
       "nodeRef": "node.vexwork.process-family-metawalk.implementation",
       "label": "Realize implementation",
       "purpose": "Implement the smallest target-native source that consumes the already-earned contracts without manufacturing new semantic meaning.",
-      "entryPredicateRefs": [],
       "currentTruthRefs": [
         "work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence"
       ],
@@ -191,13 +166,10 @@
         "AGENTS.md",
         "docs/CULTURE.md"
       ],
-      "authorityRefs": [],
       "considerationRefs": [
         "docs/foundation/REPOSITORY-GRAPH.md"
       ],
       "proofRefs": [],
-      "exitPredicateRefs": [],
-      "heldConcernRefs": [],
       "sourceRefs": [
         "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
         "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
@@ -208,7 +180,6 @@
       "nodeRef": "node.vexwork.process-family-metawalk.focused-proof",
       "label": "Focused proof",
       "purpose": "Exercise the exact semantic, implementation and fail-closed boundaries claimed by the current implementation node.",
-      "entryPredicateRefs": [],
       "currentTruthRefs": [
         "work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence"
       ],
@@ -218,15 +189,12 @@
       "readingSourceRefs": [
         "test/vex-process-family-metawalk.test.mjs"
       ],
-      "authorityRefs": [],
       "considerationRefs": [
         "docs/foundation/OPERATING-PROFILES.md"
       ],
       "proofRefs": [
         "test/vex-process-family-metawalk.test.mjs"
       ],
-      "exitPredicateRefs": [],
-      "heldConcernRefs": [],
       "sourceRefs": [
         "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
         "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
@@ -237,7 +205,6 @@
       "nodeRef": "node.vexwork.process-family-metawalk.lived-proof",
       "label": "Lived / integration proof",
       "purpose": "Prove the composed human/runtime outcome and any current integration relationship that focused source proof cannot establish alone.",
-      "entryPredicateRefs": [],
       "currentTruthRefs": [
         "work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence"
       ],
@@ -248,13 +215,10 @@
         "docs/foundation/HUMAN-TRANSITION-HANDSHAKE.md",
         "docs/foundation/REPOSITORY-INTEGRATION.md"
       ],
-      "authorityRefs": [],
       "considerationRefs": [
         "docs/foundation/OPERATING-PROFILES.md"
       ],
       "proofRefs": [],
-      "exitPredicateRefs": [],
-      "heldConcernRefs": [],
       "sourceRefs": [
         "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
         "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
@@ -265,7 +229,6 @@
       "nodeRef": "node.vexwork.process-family-metawalk.reconcile",
       "label": "Reconcile + accept",
       "purpose": "Consume evidence, distinguish carried truth from mutable currentness, classify any revisit, and establish the next durable process coordinate.",
-      "entryPredicateRefs": [],
       "currentTruthRefs": [
         "work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence"
       ],
@@ -276,13 +239,10 @@
         "docs/foundation/RUNTIME-PERSISTENCE.md",
         "docs/foundation/WORKGRAPH.md"
       ],
-      "authorityRefs": [],
       "considerationRefs": [
         "docs/foundation/PROJECT-RECONCILIATION.md"
       ],
       "proofRefs": [],
-      "exitPredicateRefs": [],
-      "heldConcernRefs": [],
       "sourceRefs": [
         "docs/process/VEX-PROCESS-FAMILY-METAWALK.json",
         "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
