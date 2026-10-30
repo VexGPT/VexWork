@@ -4110,6 +4110,160 @@ LOCAL_COMMIT
 -> FRESH SAME_PR ATTEMPT FROM REMOTE HEAD
 ~~~
 
+### F2 A010 — authoritative inner PASS/publish; byte-level Assurance found READY draft persistence gap
+
+A010 completed the same-PR correction transaction successfully inside the authoritative native Relay return.
+The outer VexLocalBridge consumer later reported a selected-source/base mismatch, but that occurred only while
+projecting the already-completed inner review snapshot. The inner transaction and live provider truth agree.
+
+~~~text
+outer RETURN sha256
+  64e52b13d80244a9e6df0fb486ad3d5f13f08aea200dcfd3dae20b80c5943d15
+
+retained inner RETURN sha256
+  808a3641f7604d60c4278c01b10695654a673ff2f2ea948afd68f8ac02e0b17d
+
+inner disposition
+  HOSTED_VALIDATION_PENDING
+
+published exact head
+  fe3f4c03482243bf17e4d86d7c77077f950eaef1
+
+published exact tree
+  adf758b931935f3be677af523c3fc69a9d79335c
+
+PR
+  VexLife #965
+  same branch vxg-interface-currentness-browser-realization-a007
+  draft / open / mergeable
+
+proof
+  focused 86 / 86 PASS
+  Blueprint PASS
+  Source Manifest PASS
+  exact correction membrane PASS
+  full npm run check PASS
+  clean worktree PASS
+  non-force push PASS
+  existing PR reuse PASS
+~~~
+
+The outer selected-source consumer mismatch is a bookkeeping defect, not a source failure: the same-PR
+correction review snapshot was formed relative to the prior published head while the outer consumer expected
+the original PR base. Provider truth confirms the exact new head/tree above are live on PR #965.
+
+Following Victor's explicit instruction to double-check the actual code rather than trust intended wording,
+fresh byte-level Assurance re-read the pushed composer implementation and found one real lived-continuity
+gap that the green suite had not covered.
+
+Actual pushed input handler on exact head `fe3f4c...`:
+
+~~~js
+if (slashCandidate) {
+  if (existing) setLocalDraft(channel, '');
+} else if (!channelIsAvailable(channel) || existing) {
+  setLocalDraft(channel, event.target.value);
+}
+~~~
+
+Therefore a **brand-new ordinary direct-Companion draft typed while the relationship is READY** is not
+persisted into sessionStorage until some later condition makes it unavailable or an existing draft already
+exists. If source currentness then correctly forces a same-tab reload, that fresh draft can be lost.
+
+That contradicts the held F3 lived requirement:
+
+~~~text
+existing current Conversation tab
++ freshly typed unsent draft
+-> ordinary source/runtime recovery
+-> source-currentness same-tab reload
+-> exact draft restored
+~~~
+
+Fresh Assurance disposition:
+
+~~~text
+CHANGES_REQUESTED
+head  fe3f4c03482243bf17e4d86d7c77077f950eaef1
+tree  adf758b931935f3be677af523c3fc69a9d79335c
+PR comment 6515885060
+~~~
+
+A011 is the narrow same-PR correction. It changes only the real Chat input path and its proof:
+
+~~~text
+reference/browser/modules/chat-controller.js
+  ordinary direct-Companion input
+  -> persist exact-scope session draft regardless READY/non-READY
+  -> Send / explicit clear semantics unchanged
+
+test/interface-currentness-browser.test.mjs
+  static proof of the actual composer input binding
+  + real Playwright proof:
+      real app reaches READY
+      fresh draft typed
+      exact sessionStorage packet exists
+      document reload
+      relationship reaches READY again
+      exact draft is restored in #messageInput
+~~~
+
+Generated Source Manifest buckets are only `f6` and `8e`.
+
+~~~text
+attempt
+  attempt.vexlife.interface-currentness-browser-realization.f2.a011.d9a60a8aa807
+
+same PR branch
+  vxg-interface-currentness-browser-realization-a007
+
+expected remote head before push
+  fe3f4c03482243bf17e4d86d7c77077f950eaef1
+
+outer package sha256
+  4fa8bf1ab4c6dee0412f3d8fe7e67857b93c2061d7c202a9492233557c29862c
+
+inner package sha256
+  b4131893fd54bdcf7114df4652a3b37a17cb2f97d3ec0561fc1e2985703ca358
+
+inner schema
+  vex.relay.input-package/v2
+
+formedAt
+  2026-10-30T05:43:51Z
+
+expiresAt
+  2026-10-31T05:43:51Z
+~~~
+
+A011 formation was itself double-checked after one discarded local build exposed a template-literal parse
+error in the generated test mutation. The discarded build was not handed off. The final A011 mutation
+script passes `node --check`; package manifest/member hashes/content-set digest self-verify.
+
+The A011 review snapshot also uses the original PR base plus `includePaths` limited to the two correction
+source paths. This keeps candidate/base identity truthful while avoiding A010's outer consumer projection
+mismatch.
+
+Permanent:
+
+~~~text
+GREEN_HELPER_TEST
+!= REAL_COMPOSER_BINDING_PROVED
+
+READY
++ FRESH_UNSENT_DRAFT
++ NO_EXISTING_DRAFT
+-> MUST_PERSIST_SESSION_DRAFT
+
+SESSION_DRAFT
+!= CONVERSATION
+!= MEMORY
+
+AUTHORITATIVE_INNER_PASS
++ LIVE_PROVIDER_MATCH
+> DOWNSTREAM_OUTER_PROJECTION_BOOKKEEPING_ERROR
+~~~
+
 ### Foundation-to-interface sequence
 
 ~~~text
