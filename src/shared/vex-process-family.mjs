@@ -112,7 +112,7 @@ function normalizeRelationship(input, movementClasses) {
   );
   return {
     relationshipRef,
-    movementClass,
+    movementClass: input.movementClass,
     fromRef: stableRef(input.fromRef, 'process relationship ' + relationshipRef + '.fromRef'),
     toRef: stableRef(input.toRef, 'process relationship ' + relationshipRef + '.toRef'),
     label: text(input.label, 'process relationship ' + relationshipRef + '.label'),
