@@ -84,6 +84,12 @@ current candidate head
 
 current candidate tree
   e6df3aaa333c71143da8217f8764161a884e5f04
+
+MetaWalk coordinate
+  previous = Focused proof
+  CURRENT  = Lived / integration proof
+  next     = Reconcile + accept
+  layer    = LIVED_INTEGRATION
 ~~~
 
 The candidate currently preserves:
@@ -111,15 +117,27 @@ A011 proved the predecessor exact head `c047efc8...`, not the corrected current 
 then found one cold-reader defect: the prose movement vocabulary omitted `SEMANTIC_GAP` even though
 the machine Family used it. That omission was corrected at `5ac93d91...`.
 
-Therefore the exact current proof route is:
+Focused proof is now complete:
 
 ~~~text
-fresh exact-head SourceOwner proof on 5ac93d91...
--> if PASS
-fresh Independent Assurance on that same exact head
--> if CLEAR
-integration/current-main admission
--> merge only if earned
+A012 ExactHeadSourceOwnerProof on 5ac93d91...
+  PASS
+
+Fresh Independent Assurance on same exact head
+  CLEAR
+
+predicate.metawalk.focused-proof-clear
+  SATISFIED
+~~~
+
+The exact current route is now:
+
+~~~text
+Lived / integration proof
+-> current-main / merge-duty reconciliation
+-> ordinary expected-head merge if provider truth remains exact
+-> post-merge verification
+-> Reconcile + accept if earned
 ~~~
 
 The first hosted **A012 formation capsule did not reach canonical A012 task formation**. It acquired the
@@ -1669,14 +1687,14 @@ work.vextreme.architecture-convergence.semantic-owner-map
 
 
 work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence
-  RUNNING / HIGH
+  VERIFYING / HIGH
   AUTHORIZED_BOUNDED / EFFECTS_BOUND
   current child: VexWork PR #189
-  MetaWalk coordinate: previous=Realize implementation / CURRENT=Focused proof / next=Lived integration
+  MetaWalk coordinate: previous=Focused proof / CURRENT=Lived integration / next=Reconcile + accept
   exact candidate: 5ac93d917169d0b80e676e2e4c13812113843376
-  A011 PASS applies only to predecessor c047efc8...
-  current-head SourceOwner proof still pending
-  first A012 formation capsule = EXECUTOR_FAILURE_NO_PRODUCT_DELTA / no canonical task formed
+  A012 SourceOwner PASS + fresh Assurance CLEAR
+  current main = fixed base; PR mergeable
+  first A012 formation capsule remains EXECUTOR_FAILURE_NO_PRODUCT_DELTA historical evidence only
 
 work.vextreme.architecture-convergence.terrain-journey-inspection
   VERIFYING
