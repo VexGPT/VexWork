@@ -380,6 +380,7 @@ export function admitProcessTransition({
   nextDepth,
   evidenceRefs,
   carriedIdentityRefs = [],
+  satisfiedPredicateRefs = [],
   nextStateRef,
   sourceRefs = [],
 }) {
@@ -393,6 +394,20 @@ export function admitProcessTransition({
   if (relationship) {
     assert(relationship.fromRef === currentNodeRef, 'process transition must leave CURRENT node');
     assert(relationship.movementClass === movementClass, 'process transition movementClass must match relationship');
+    const targetNode = family.nodes.find((candidate) => candidate.nodeRef === relationship.toRef);
+    const requiredPredicateRefs = unionRefs(
+      [...relationship.entryPredicateRefs, ...targetNode.entryPredicateRefs],
+      'process transition required entry predicates',
+    );
+    const satisfied = new Set(refs(
+      satisfiedPredicateRefs,
+      'process transition satisfiedPredicateRefs',
+    ));
+    const missing = requiredPredicateRefs.filter((predicateRef) => !satisfied.has(predicateRef));
+    assert(
+      missing.length === 0,
+      'process transition entry predicates unsatisfied: ' + missing.join(','),
+    );
   } else {
     assert(relationshipRefOrNull === null, 'process transition relationship missing');
     assert(movementClass === 'DEPTH_REVISIT', 'relationship-free transition must be DEPTH_REVISIT');
@@ -443,34 +458,61 @@ export function admitProcessTransition({
   }, family);
 }
 
-function publicNextNode(node, relationship, admitted) {
+function requiredEntryPredicateRefs(family, relationship) {
+  const node = family.nodes.find((candidate) => candidate.nodeRef === relationship.toRef);
+  return unionRefs(
+    [...relationship.entryPredicateRefs, ...node.entryPredicateRefs],
+    'process relationship required entry predicates',
+  );
+}
+
+export function availableProcessRelationships(familyInput, stateInput, {
+  satisfiedPredicateRefs = [],
+} = {}) {
+  const family = normalizeProcessFamily(familyInput);
+  const state = normalizeProcessState(stateInput, family);
+  const satisfied = new Set(refs(
+    satisfiedPredicateRefs,
+    'process availability.satisfiedPredicateRefs',
+  ));
+  return freeze(family.relationships
+    .filter((relationship) => relationship.fromRef === state.currentNodeRef)
+    .map((relationship) => {
+      const requiredPredicateRefs = requiredEntryPredicateRefs(family, relationship);
+      const missingPredicateRefs = requiredPredicateRefs.filter((predicateRef) => !satisfied.has(predicateRef));
+      return {
+        relationshipRef: relationship.relationshipRef,
+        movementClass: relationship.movementClass,
+        fromRef: relationship.fromRef,
+        toRef: relationship.toRef,
+        requiredPredicateRefs,
+        missingPredicateRefs,
+        available: missingPredicateRefs.length === 0,
+      };
+    }));
+}
+
+function publicNextNode(node, relationship, availability) {
   return {
     relationshipRef: relationship.relationshipRef,
     movementClass: relationship.movementClass,
     nodeRef: node.nodeRef,
     label: node.label,
     purpose: node.purpose,
-    entryPredicateRefs: [...new Set([
-      ...node.entryPredicateRefs,
-      ...relationship.entryPredicateRefs,
-    ])].sort(compareCanonicalText),
-    admitted,
+    entryPredicateRefs: availability.requiredPredicateRefs,
+    missingPredicateRefs: availability.missingPredicateRefs,
+    available: availability.available,
   };
 }
 
 export function projectProcessHorizon(familyInput, stateInput, {
-  admittedRelationshipRefs = [],
+  satisfiedPredicateRefs = [],
 } = {}) {
   const family = normalizeProcessFamily(familyInput);
   const state = normalizeProcessState(stateInput, family);
-  const admitted = new Set(refs(admittedRelationshipRefs, 'process horizon.admittedRelationshipRefs'));
+  const availability = availableProcessRelationships(family, state, { satisfiedPredicateRefs });
+  const availabilityByRef = new Map(availability.map((entry) => [entry.relationshipRef, entry]));
   const outgoing = family.relationships.filter((relationship) => relationship.fromRef === state.currentNodeRef);
-  for (const relationshipRef of admitted) {
-    assert(
-      outgoing.some((relationship) => relationship.relationshipRef === relationshipRef),
-      'process horizon admitted relationship must leave CURRENT node: ' + relationshipRef,
-    );
-  }
 
   const currentNode = family.nodes.find((node) => node.nodeRef === state.currentNodeRef);
   const last = state.transitionHistory.at(-1) ?? null;
@@ -480,7 +522,7 @@ export function projectProcessHorizon(familyInput, stateInput, {
 
   const nextCandidates = outgoing.map((relationship) => {
     const node = family.nodes.find((candidate) => candidate.nodeRef === relationship.toRef);
-    return publicNextNode(node, relationship, admitted.has(relationship.relationshipRef));
+    return publicNextNode(node, relationship, availabilityByRef.get(relationship.relationshipRef));
   });
 
   const neighborhood = new Set([
@@ -520,8 +562,8 @@ export function projectProcessHorizon(familyInput, stateInput, {
       heldConcernRefs: [...currentNode.heldConcernRefs],
     },
     nextCandidates,
-    nextAdmittedRelationshipRefs: nextCandidates
-      .filter((candidate) => candidate.admitted)
+    nextAvailableRelationshipRefs: nextCandidates
+      .filter((candidate) => candidate.available)
       .map((candidate) => candidate.relationshipRef),
     furtherNodeRefs,
     effects: false,
