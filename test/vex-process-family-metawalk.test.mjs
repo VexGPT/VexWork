@@ -4,6 +4,7 @@ import test from 'node:test';
 
 import {
   admitProcessTransition,
+  availableProcessRelationships,
   createProcessState,
   normalizeProcessFamily,
   normalizeProcessState,
@@ -149,19 +150,22 @@ test('MetaWalk dogfoods scope x node x depth against its real machine definition
       movementClass: 'ADVANCES',
       nextDepth,
       evidenceRefs: ['evidence.metawalk.dogfood.' + String(index + 1).padStart(3, '0')],
+      satisfiedPredicateRefs: family.relationships
+        .find((entry) => entry.relationshipRef === relationshipRef)
+        .entryPredicateRefs,
       nextStateRef: 'state.metawalk.dogfood.' + String(index + 1).padStart(3, '0'),
     });
   }
 
   const horizon = projectProcessHorizon(family, state, {
-    admittedRelationshipRefs: ['rel.vexwork.process-family-metawalk.contracts-proof-plan'],
+    satisfiedPredicateRefs: ['predicate.metawalk.relationships-explicit'],
   });
   assert.equal(state.currentNodeRef, 'node.vexwork.process-family-metawalk.contracts');
   assert.equal(state.depth, 'CONTRACT');
   assert.equal(horizon.previousAcceptedOrNull?.nodeRef, 'node.vexwork.process-family-metawalk.ownership');
   assert.equal(horizon.nextCandidates.length, 1);
   assert.equal(horizon.nextCandidates[0].nodeRef, 'node.vexwork.process-family-metawalk.proof-plan');
-  assert.equal(horizon.nextCandidates[0].admitted, true);
+  assert.equal(horizon.nextCandidates[0].available, true);
   assert.equal(Object.hasOwn(horizon.nextCandidates[0], 'readingSourceRefs'), false);
 });
 
@@ -261,13 +265,16 @@ test('bounded horizon deep-reads CURRENT and keeps future node source detail wit
     sourceRefs: ['source.state.metawalk.001'],
   });
   const horizon = projectProcessHorizon(family, state, {
-    admittedRelationshipRefs: ['rel.recover-contract'],
+    satisfiedPredicateRefs: [
+      'predicate.node.contract.entry',
+      'predicate.contract.allowed',
+    ],
   });
 
   assert.deepEqual(horizon.current.readingSourceRefs, ['source.node.recover.read-now']);
   assert.equal(horizon.nextCandidates.length, 1);
   assert.equal(horizon.nextCandidates[0].nodeRef, 'node.contract');
-  assert.equal(horizon.nextCandidates[0].admitted, true);
+  assert.equal(horizon.nextCandidates[0].available, true);
   assert.equal(Object.hasOwn(horizon.nextCandidates[0], 'readingSourceRefs'), false);
   assert.deepEqual(horizon.furtherNodeRefs, ['node.implement', 'node.prove']);
   assert.equal(horizon.effects, false);
@@ -292,6 +299,10 @@ test('accepted transition carries evidence and identity while rotating CURRENT n
     nextDepth: 'CONTRACT',
     evidenceRefs: ['evidence.pressure-grounded'],
     carriedIdentityRefs: ['identity.work.test.outcome'],
+    satisfiedPredicateRefs: [
+      'predicate.node.contract.entry',
+      'predicate.contract.allowed',
+    ],
     nextStateRef: 'state.metawalk.002',
     sourceRefs: ['source.transition.metawalk.001'],
   });
@@ -373,7 +384,7 @@ test('transition admission fails closed on stale or foreign movement', () => {
   );
 });
 
-test('horizon cannot claim an admitted next edge that is not adjacent to CURRENT', () => {
+test('relationship availability is derived from all required current predicates', () => {
   const family = normalizeProcessFamily(familyFixture());
   const state = createProcessState(family, {
     stateRef: 'state.metawalk.001',
@@ -382,11 +393,43 @@ test('horizon cannot claim an admitted next edge that is not adjacent to CURRENT
     sourceRefs: ['source.state.metawalk.001'],
   });
 
+  const held = availableProcessRelationships(family, state);
+  assert.equal(held.length, 1);
+  assert.equal(held[0].relationshipRef, 'rel.recover-contract');
+  assert.equal(held[0].available, false);
+  assert.deepEqual(held[0].missingPredicateRefs, [
+    'predicate.contract.allowed',
+    'predicate.node.contract.entry',
+  ]);
+
+  const partial = availableProcessRelationships(family, state, {
+    satisfiedPredicateRefs: ['predicate.contract.allowed'],
+  });
+  assert.equal(partial[0].available, false);
+  assert.deepEqual(partial[0].missingPredicateRefs, ['predicate.node.contract.entry']);
+
+  const available = availableProcessRelationships(family, state, {
+    satisfiedPredicateRefs: [
+      'predicate.contract.allowed',
+      'predicate.node.contract.entry',
+    ],
+  });
+  assert.equal(available[0].available, true);
+  assert.deepEqual(available[0].missingPredicateRefs, []);
+
   assert.throws(
-    () => projectProcessHorizon(family, state, {
-      admittedRelationshipRefs: ['rel.contract-implement'],
+    () => admitProcessTransition({
+      family,
+      state,
+      transitionRef: 'transition.unsatisfied',
+      relationshipRefOrNull: 'rel.recover-contract',
+      movementClass: 'ADVANCES',
+      nextDepth: 'CONTRACT',
+      evidenceRefs: ['evidence.not-enough'],
+      satisfiedPredicateRefs: ['predicate.contract.allowed'],
+      nextStateRef: 'state.unsatisfied',
     }),
-    /must leave CURRENT node/,
+    /entry predicates unsatisfied: predicate\.node\.contract\.entry/,
   );
 });
 
@@ -420,7 +463,10 @@ test('bounded-horizon VexBoard projection deep-reads CURRENT but withholds futur
       sourceRefs: ['work.test.outcome', sourcePath],
     },
     boardRef: 'board.test.process-horizon',
-    admittedRelationshipRefs: ['rel.contract-implement'],
+    satisfiedPredicateRefs: [
+      'predicate.node.implement.entry',
+      'predicate.implementation.allowed',
+    ],
   });
 
   assert.equal(board.schemaVersion, 'vexboard.local-draft/v1');
@@ -455,7 +501,7 @@ test('bounded-horizon VexBoard projection deep-reads CURRENT but withholds futur
     entry.fromRef.includes('reference.current') &&
     entry.toRef.includes('reference.next')
   );
-  assert.match(nextRelationship?.labelOrNull ?? '', /ADVANCES · ADMITTED/);
+  assert.match(nextRelationship?.labelOrNull ?? '', /ADVANCES · AVAILABLE/);
 });
 
 test('bounded-horizon projector rejects a scope projection that does not match current ProcessFamily State', () => {
