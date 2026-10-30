@@ -367,6 +367,10 @@ ENABLES
 REFINES
   later pressure adds precision without invalidating the prior owner/truth
 
+SEMANTIC_GAP
+  implementation pressure shows semantic ownership or meaning is ambiguous
+  and must return to ownership before being classified as a contract defect
+
 CONTRACT_GAP
   downstream evidence shows an upstream contract is incomplete or wrong
 
