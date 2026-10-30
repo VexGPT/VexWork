@@ -1031,6 +1031,62 @@ The second walk confirms:
 No fourth coordinate is earned by this specimen. Scope × process node × depth remains sufficient for the
 observed ThemeMode evolution.
 
+## Projection pressure — reuse BoardJourney without making it process truth
+
+Current VexBoard already has a useful traversal owner:
+
+~~~text
+BoardJourney
+  currentRef
+  steps[]
+  returnStack[]
+  journeyChoices(...)
+  advance / back / revisit
+~~~
+
+That is enough to support the **perception/navigation** side of a bounded process horizon.
+
+It does **not** earn BoardJourney as the durable owner of process currentness.
+
+~~~text
+PROCESS CURRENT COORDINATE
+  derives from rightful Work / process / evidence currentness
+
+BOARDJOURNEY currentRef
+  says what semantic board coordinate the current browser/session is traversing
+
+PROCESS_CURRENT
+!= BOARDJOURNEY_CURRENTREF
+~~~
+
+A human or AI may inspect a future node, go Back, or Revisit an earlier node without thereby moving the
+actual Work/process lifecycle.
+
+The useful composition is therefore:
+
+~~~text
+rightful current process coordinate
+        +
+ProcessFamily / BoardGraph topology
+        |
+        v
+bounded process-horizon projection
+        |
+        +-> emphasize actual CURRENT node
+        +-> show prior accepted result
+        +-> show next earnable node / choices
+        |
+        v
+BoardJourney may navigate the projected graph for inspection
+without changing process truth
+~~~
+
+This preserves VexBoard's existing ownership boundary while reusing its accepted Journey mechanics.
+
+The first implementation should therefore resist creating a second durable "current process position"
+inside VexBoard. If a reusable horizon projector is later earned, it should consume current process truth
+as input and remain read-only/effect-free.
+
 ## Fresh-instance resume packet
 
 A future projection should be able to give a fresh instance only the bounded packet needed now:
