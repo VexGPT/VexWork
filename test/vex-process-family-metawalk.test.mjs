@@ -398,8 +398,9 @@ test('bounded horizon deep-reads CURRENT and keeps future node source detail wit
   assert.equal(horizon.nextCandidates[0].available, true);
   assert.equal(Object.hasOwn(horizon.nextCandidates[0], 'readingSourceRefs'), false);
   assert.deepEqual(horizon.furtherNodeRefs, ['node.implement', 'node.prove']);
-  assert.equal(horizon.effects, false);
-  assert.equal(horizon.executionAuthority, 'NONE');
+  assert.equal(Object.hasOwn(horizon, 'nextAvailableRelationshipRefs'), false);
+  assert.equal(Object.hasOwn(horizon, 'effects'), false);
+  assert.equal(Object.hasOwn(horizon, 'executionAuthority'), false);
 });
 
 test('accepted transition carries evidence and identity while rotating CURRENT node', () => {
