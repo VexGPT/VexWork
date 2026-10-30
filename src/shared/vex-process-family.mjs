@@ -195,7 +195,7 @@ export function normalizeProcessFamily(input) {
   });
 }
 
-function normalizeTransition(input, index, family, prior) {
+function normalizeTransition(input, label, family) {
   exactKeys(input, [
     'transitionRef',
     'relationshipRefOrNull',
@@ -206,18 +206,18 @@ function normalizeTransition(input, index, family, prior) {
     'toDepth',
     'evidenceRefs',
     'carriedIdentityRefs',
-  ], 'process transition ' + index);
+  ], 'process transition ' + label);
 
-  const transitionRef = stableRef(input.transitionRef, 'process transition ' + index + '.transitionRef');
-  assert(PROCESS_MOVEMENT_CLASSES.includes(input.movementClass), 'process transition ' + index + '.movementClass invalid');
-  const fromNodeRef = stableRef(input.fromNodeRef, 'process transition ' + index + '.fromNodeRef');
-  const toNodeRef = stableRef(input.toNodeRef, 'process transition ' + index + '.toNodeRef');
+  const transitionRef = stableRef(input.transitionRef, 'process transition ' + label + '.transitionRef');
+  assert(PROCESS_MOVEMENT_CLASSES.includes(input.movementClass), 'process transition ' + label + '.movementClass invalid');
+  const fromNodeRef = stableRef(input.fromNodeRef, 'process transition ' + label + '.fromNodeRef');
+  const toNodeRef = stableRef(input.toNodeRef, 'process transition ' + label + '.toNodeRef');
   assert(family.nodes.some((node) => node.nodeRef === fromNodeRef), 'process transition fromNodeRef missing');
   assert(family.nodes.some((node) => node.nodeRef === toNodeRef), 'process transition toNodeRef missing');
 
   const relationshipRefOrNull = input.relationshipRefOrNull === null
     ? null
-    : stableRef(input.relationshipRefOrNull, 'process transition ' + index + '.relationshipRefOrNull');
+    : stableRef(input.relationshipRefOrNull, 'process transition ' + label + '.relationshipRefOrNull');
 
   if (relationshipRefOrNull === null) {
     assert(input.movementClass === 'DEPTH_REVISIT', 'relationship-free transition must be DEPTH_REVISIT');
@@ -230,17 +230,13 @@ function normalizeTransition(input, index, family, prior) {
     assert(relationship.movementClass === input.movementClass, 'process transition movementClass mismatch');
   }
 
-  const fromDepth = depth(input.fromDepth, 'process transition ' + index + '.fromDepth');
-  const toDepth = depth(input.toDepth, 'process transition ' + index + '.toDepth');
+  const fromDepth = depth(input.fromDepth, 'process transition ' + label + '.fromDepth');
+  const toDepth = depth(input.toDepth, 'process transition ' + label + '.toDepth');
   assert(
     fromNodeRef !== toNodeRef || fromDepth !== toDepth,
     'process transition must change node or depth',
   );
 
-  if (prior) {
-    assert(prior.toNodeRef === fromNodeRef, 'process transition history node discontinuity');
-    assert(prior.toDepth === fromDepth, 'process transition history depth discontinuity');
-  }
 
   return {
     transitionRef,
@@ -250,10 +246,10 @@ function normalizeTransition(input, index, family, prior) {
     toNodeRef,
     fromDepth,
     toDepth,
-    evidenceRefs: refs(input.evidenceRefs, 'process transition ' + index + '.evidenceRefs', { allowEmpty: false }),
+    evidenceRefs: refs(input.evidenceRefs, 'process transition ' + label + '.evidenceRefs', { allowEmpty: false }),
     carriedIdentityRefs: refs(
       input.carriedIdentityRefs,
-      'process transition ' + index + '.carriedIdentityRefs',
+      'process transition ' + label + '.carriedIdentityRefs',
     ),
   };
 }
@@ -269,45 +265,44 @@ export function normalizeProcessState(input, familyInput) {
     'depth',
     'acceptedEvidenceRefs',
     'carriedIdentityRefs',
-    'transitionHistory',
+    'previousStateRefOrNull',
+    'lastAcceptedTransitionOrNull',
     'sourceRefs',
   ], 'ProcessFamily.State');
 
   assert(input.schemaVersion === PROCESS_FAMILY_STATE_SCHEMA, 'ProcessFamily.State schema mismatch');
+  const stateRef = stableRef(input.stateRef, 'ProcessFamily.State.stateRef');
   const familyRef = stableRef(input.familyRef, 'ProcessFamily.State.familyRef');
   assert(familyRef === family.familyRef, 'ProcessFamily.State familyRef mismatch');
 
-  assert(Array.isArray(input.transitionHistory), 'ProcessFamily.State.transitionHistory must be an array');
-  const transitions = [];
-  for (let index = 0; index < input.transitionHistory.length; index += 1) {
-    transitions.push(normalizeTransition(
-      input.transitionHistory[index],
-      index,
-      family,
-      transitions[index - 1] ?? null,
-    ));
+  const previousStateRefOrNull = input.previousStateRefOrNull === null
+    ? null
+    : stableRef(input.previousStateRefOrNull, 'ProcessFamily.State.previousStateRefOrNull');
+  if (previousStateRefOrNull !== null) {
+    assert(previousStateRefOrNull !== stateRef, 'ProcessFamily.State cannot point to itself as previous State');
   }
-  assert(
-    new Set(transitions.map((transition) => transition.transitionRef)).size === transitions.length,
-    'ProcessFamily.State transitionRef must be unique',
-  );
-  if (transitions.length > 0) {
-    assert(
-      transitions[0].fromNodeRef === family.entryNodeRef,
-      'ProcessFamily.State transition history must begin at entryNodeRef',
-    );
-  }
+
+  const lastAcceptedTransitionOrNull = input.lastAcceptedTransitionOrNull === null
+    ? null
+    : normalizeTransition(input.lastAcceptedTransitionOrNull, 'last', family);
 
   const currentNodeRef = stableRef(input.currentNodeRef, 'ProcessFamily.State.currentNodeRef');
   assert(family.nodes.some((node) => node.nodeRef === currentNodeRef), 'ProcessFamily.State currentNodeRef missing');
   const currentDepth = depth(input.depth, 'ProcessFamily.State.depth');
 
-  if (transitions.length === 0) {
-    assert(currentNodeRef === family.entryNodeRef, 'ProcessFamily.State without history must be at entryNodeRef');
+  if (lastAcceptedTransitionOrNull === null) {
+    assert(previousStateRefOrNull === null, 'ProcessFamily.State without transition must not claim a previous State');
+    assert(currentNodeRef === family.entryNodeRef, 'ProcessFamily.State without transition must be at entryNodeRef');
   } else {
-    const last = transitions.at(-1);
-    assert(last.toNodeRef === currentNodeRef, 'ProcessFamily.State currentNodeRef must match transition history');
-    assert(last.toDepth === currentDepth, 'ProcessFamily.State depth must match transition history');
+    assert(previousStateRefOrNull !== null, 'ProcessFamily.State transition requires previousStateRefOrNull');
+    assert(
+      lastAcceptedTransitionOrNull.toNodeRef === currentNodeRef,
+      'ProcessFamily.State currentNodeRef must match last accepted transition',
+    );
+    assert(
+      lastAcceptedTransitionOrNull.toDepth === currentDepth,
+      'ProcessFamily.State depth must match last accepted transition',
+    );
   }
 
   const acceptedEvidenceRefs = refs(
@@ -319,14 +314,14 @@ export function normalizeProcessState(input, familyInput) {
     'ProcessFamily.State.carriedIdentityRefs',
   );
 
-  for (const transition of transitions) {
-    for (const evidenceRef of transition.evidenceRefs) {
+  if (lastAcceptedTransitionOrNull !== null) {
+    for (const evidenceRef of lastAcceptedTransitionOrNull.evidenceRefs) {
       assert(
         acceptedEvidenceRefs.includes(evidenceRef),
         'ProcessFamily.State transition evidence must be accepted: ' + evidenceRef,
       );
     }
-    for (const identityRef of transition.carriedIdentityRefs) {
+    for (const identityRef of lastAcceptedTransitionOrNull.carriedIdentityRefs) {
       assert(
         carriedIdentityRefs.includes(identityRef),
         'ProcessFamily.State transition identity must be carried: ' + identityRef,
@@ -336,14 +331,15 @@ export function normalizeProcessState(input, familyInput) {
 
   return freeze({
     schemaVersion: PROCESS_FAMILY_STATE_SCHEMA,
-    stateRef: stableRef(input.stateRef, 'ProcessFamily.State.stateRef'),
+    stateRef,
     familyRef,
     scopeRef: stableRef(input.scopeRef, 'ProcessFamily.State.scopeRef'),
     currentNodeRef,
     depth: currentDepth,
     acceptedEvidenceRefs,
     carriedIdentityRefs,
-    transitionHistory: transitions,
+    previousStateRefOrNull,
+    lastAcceptedTransitionOrNull,
     sourceRefs: refs(input.sourceRefs, 'ProcessFamily.State.sourceRefs', { allowEmpty: false }),
   });
 }
@@ -366,7 +362,8 @@ export function createProcessState(familyInput, {
     depth: initialDepth,
     acceptedEvidenceRefs,
     carriedIdentityRefs,
-    transitionHistory: [],
+    previousStateRefOrNull: null,
+    lastAcceptedTransitionOrNull: null,
     sourceRefs: sourceRefs === null ? [...family.sourceRefs] : sourceRefs,
   }, family);
 }
@@ -379,7 +376,7 @@ export function admitProcessTransition({
   movementClass,
   nextDepth,
   evidenceRefs,
-  carriedIdentityRefs = [],
+  carriedIdentityRefs = null,
   satisfiedPredicateRefs = [],
   nextStateRef,
   sourceRefs = [],
@@ -420,17 +417,11 @@ export function admitProcessTransition({
     { allowEmpty: false },
   );
   const transitionIdentityRefs = refs(
-    carriedIdentityRefs,
+    carriedIdentityRefs === null ? state.carriedIdentityRefs : carriedIdentityRefs,
     'process transition carriedIdentityRefs',
   );
-  const nextEvidence = unionRefs(
-    [...state.acceptedEvidenceRefs, ...transitionEvidenceRefs],
-    'ProcessFamily.State accepted evidence after transition',
-  );
-  const nextIdentities = unionRefs(
-    [...state.carriedIdentityRefs, ...transitionIdentityRefs],
-    'ProcessFamily.State carried identities after transition',
-  );
+  const nextEvidence = transitionEvidenceRefs;
+  const nextIdentities = transitionIdentityRefs;
 
   const transition = {
     transitionRef,
@@ -453,7 +444,8 @@ export function admitProcessTransition({
     depth: nextDepth,
     acceptedEvidenceRefs: nextEvidence,
     carriedIdentityRefs: nextIdentities,
-    transitionHistory: [...state.transitionHistory, transition],
+    previousStateRefOrNull: state.stateRef,
+    lastAcceptedTransitionOrNull: transition,
     sourceRefs: unionRefs([...state.sourceRefs, ...sourceRefs], 'ProcessFamily.State sourceRefs after transition'),
   }, family);
 }
@@ -515,7 +507,7 @@ export function projectProcessHorizon(familyInput, stateInput, {
   const outgoing = family.relationships.filter((relationship) => relationship.fromRef === state.currentNodeRef);
 
   const currentNode = family.nodes.find((node) => node.nodeRef === state.currentNodeRef);
-  const last = state.transitionHistory.at(-1) ?? null;
+  const last = state.lastAcceptedTransitionOrNull;
   const previousNode = last
     ? family.nodes.find((node) => node.nodeRef === last.fromNodeRef)
     : null;
