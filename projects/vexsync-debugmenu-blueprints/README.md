@@ -2,102 +2,124 @@
 
 [VXG RealForever]
 
-## CURRENT successor checkpoint — Execution source custody, then second-feature pressure
+## CURRENT successor checkpoint — Relationship-keyed Execution custody, then second-feature pressure
 
-The ThemeMode patient-zero roundtrip is complete and no longer the foreground VexSync edge.
+The ThemeMode patient-zero roundtrip remains complete. The active VexSync edge is still Execution
+custody, but Victor's source review corrected the proposed repair boundary.
 
-Accepted Android main after the completed roundtrip and Journey/ScreenCrawler observation alignment:
-
-~~~text
-VexLife-Android main
-772f506de2df66d372977ad487028289405fc10b
-~~~
-
-Completed work now includes:
+Historical PR #199 correctly exposed a defect:
 
 ~~~text
-Feature Request -> Builder discovery through ThemeMode specimen
-  COMPLETED
-
-Debug Menu Origin <-> Android ThemeMode roundtrip
-  COMPLETED
-
-Journey step observation -> ScreenCrawler evidence identity alignment
-  PR #194 merged / post-merge exact
-  COMPLETED
-
-Direct Family post-#193 logger non-authority hardening
-  PR #196 merged
-  COMPLETED
-
-Direct Family StateRelay/currentness + StateStore observation foundation
-  PR #201 merged
-  COMPLETED
+SourceRef
+  = diagnostic source address
+  != semantic execution relationship
 ~~~
 
-The current foreground is the one remaining high-priority Execution foundation defect:
+Its proposed endpoint was still wrong. Adding `live VexExecution object + SourceRef` as another
+custody key would preserve the hybrid identity system that had accumulated around Execution.
+
+Victor's vetted law is smaller:
+
+~~~text
+semantic owner
+-> RelationshipId<Owner>
+-> Approach
+-> VexExecution-owned Jobs
+
+SourceRef
+-> diagnostics only
+~~~
+
+For Direct Family:
+
+~~~text
+live Family
++ Control type/name
++ optional typed ResourceId<Family>
+-> VexFamily.RelationshipId<Family>
+-> VexExecution.RelationshipId<Family>
+-> Approach
+-> Job custody
+~~~
+
+No caller should have to retain a generated runtime occurrence ID or returned Job-control object after
+it already supplied the semantic relationship/resource identity.
+
+Current Android successor:
+
+~~~text
+PR #203
+branch = VXG-102926-vex-execution-relationship-key-contract-a001
+base   = 772f506de2df66d372977ad487028289405fc10b
+state  = OPEN_DRAFT / SOURCEOWNER_PENDING
+~~~
+
+PR #203 removes the duplicate/hybrid control surfaces:
+
+~~~text
+REMOVED
+  public InstanceId
+  public Handle
+  VexCoroutine identity aliases
+  launchOnce SourceRef uniqueness
+  callable-addressed forceStop / joinStop
+  legacy source-derived RelationshipId adapters
+
+PRESERVED / STRENGTHENED
+  RelationshipId<Owner>
+  Approach = Independent / Earliest / Latest / Queued
+  SourceRef = diagnostic source location only
+  Family-only Family relationship composition
+  Family StateStore observation under a Family-owned relationship
+  VexExecutionRoot whole-tree shutdown
+  bounded Flow source/subscription recovery
+~~~
+
+The launcher now owns one relationship-keyed custody structure rather than parallel InstanceId and
+RelationshipId registries:
+
+~~~text
+relationships[RelationshipId]
+-> Approach
+-> ordered Jobs
+-> execution State evidence
+~~~
+
+Real Maps consumers are included as pressure rather than leaving the contract test-only: Destination
+Search, Place Search and Distribution now declare typed local relationships and stop/replace by those
+keys.
+
+Regression proof in source now rejects the hybrid API itself and checks relationship isolation,
+Approach behavior, Flow observation identity, structured stop/join, recovery and shutdown.
+
+PR #199 and old Handle-based test candidate PR #150 are closed as stale carriers. Their useful pressure
+remains historical evidence; neither may be used as a source continuation.
+
+The work remains:
 
 ~~~text
 work.vexsync.debugmenu-blueprints.execution-source-custody
   state = RUNNING
 
-historical semantic seed
-  PR #199
-  base = 78580ab051a33fb2c94903be5bf401f4f43f2087
-  head = d240a5d7aca8af8cc0f545a424c53d944263cf6a
-  paths = 4
+next gate
+  exact-head SourceOwner
+  -> fresh Independent Assurance
+  -> lifecycle/current-main integration
 ~~~
 
-The semantic law still matters:
+No compile/test PASS is claimed yet for PR #203. Current source proof must run before this edge can move
+to VERIFYING.
 
-~~~text
-SourceRef
-  = diagnostic source address
-  != live VexExecution object identity
-
-two same-class VexExecution objects
-+ one shared VexExecutionRoot
-+ same callable / SourceRef
--> launchOnce / maintained Flow custody / forceStop / joinStop
-   must remain scoped to the exact live VexExecution object
-~~~
-
-But PR #199's carrier is stale. It is stacked on the withdrawn pre-#201 currentness branch, while current
-main has since changed three of its four Execution paths. The next source action is therefore:
-
-~~~text
-current main 772f506d...
-+ preserve all accepted #201 Execution behavior
-+ port only #199's live-execution-object source-custody law
-+ focused same-class / same-SourceRef regression
--> fresh DCO-clean successor candidate
--> SourceOwner
--> Independent Assurance
--> integration
-~~~
-
-Do **not**:
-- merge PR #199 as-is;
-- force-rebase its historical branch;
-- add a public OwnerId merely to scope internal custody;
-- change SourceRef, InstanceId or RelationshipId meaning;
-- collapse semantic Relationship custody into source-addressed custody.
-
-The next product-process pressure is already admitted and now dependency-clear:
+After this defect closes:
 
 ~~~text
 work.vexsync.debugmenu-blueprints.walk-trace-second-feature-pressure
   state = READY
-  purpose = apply the candidate Walk Trace Grammar to one materially different feature
-            (for example VexMaps currentness or VexStream behavior)
-            and falsify before generalizing
+  -> apply the Walk Trace grammar to one materially different feature
+  -> falsify before generalizing
 ~~~
 
-That second-feature pressure is **next after the Execution custody defect**, not because of a new formal
-dependency, but because the active high-priority foundation defect should be closed before broader reuse
-pressure begins.
-
-<!-- [VXG RealForever][VEXSYNC][CURRENT-SUCCESSOR][EXECUTION-SOURCE-CUSTODY] -->
+<!-- [VXG RealForever][VEXSYNC][CURRENT-SUCCESSOR][RELATIONSHIP-KEYED-EXECUTION-CUSTODY] -->
 
 ## COMPLETED ThemeMode patient-zero checkpoint — causal record
 
