@@ -2,7 +2,6 @@ export const PROCESS_FAMILY_SCHEMA = 'vexwork.process-family/v1';
 export const PROCESS_FAMILY_STATE_SCHEMA = 'vexwork.process-family-state/v1';
 export const PROCESS_HORIZON_SCHEMA = 'vexwork.process-horizon/v1';
 
-const LAYER_REVISIT = 'LAYER_REVISIT';
 const REF = /^[A-Za-z0-9][A-Za-z0-9._:/-]*$/u;
 
 function assert(condition, message) {
@@ -113,7 +112,7 @@ function normalizeRelationship(input, movementClasses) {
   );
   return {
     relationshipRef,
-    movementClass: input.movementClass,
+    movementClass,
     fromRef: stableRef(input.fromRef, 'process relationship ' + relationshipRef + '.fromRef'),
     toRef: stableRef(input.toRef, 'process relationship ' + relationshipRef + '.toRef'),
     label: text(input.label, 'process relationship ' + relationshipRef + '.label'),
@@ -149,10 +148,6 @@ export function normalizeProcessFamily(input) {
     input.movementClasses,
     'ProcessFamily.movementClasses',
     { allowEmpty: true },
-  );
-  assert(
-    !movementClasses.includes(LAYER_REVISIT),
-    'ProcessFamily movementClasses must not include relationship-free LAYER_REVISIT',
   );
   const forwardMovementClasses = orderedValues(
     input.forwardMovementClasses,
@@ -236,7 +231,9 @@ function normalizeTransition(input, label, family) {
   ], 'process transition ' + label);
 
   const transitionRef = stableRef(input.transitionRef, 'process transition ' + label + '.transitionRef');
-  text(input.movementClass, 'process transition ' + label + '.movementClass');
+  const movementClass = input.movementClass === null
+    ? null
+    : text(input.movementClass, 'process transition ' + label + '.movementClass');
   const fromNodeRef = stableRef(input.fromNodeRef, 'process transition ' + label + '.fromNodeRef');
   const toNodeRef = stableRef(input.toNodeRef, 'process transition ' + label + '.toNodeRef');
   assert(family.nodes.some((node) => node.nodeRef === fromNodeRef), 'process transition fromNodeRef missing');
@@ -247,14 +244,17 @@ function normalizeTransition(input, label, family) {
     : stableRef(input.relationshipRefOrNull, 'process transition ' + label + '.relationshipRefOrNull');
 
   if (relationshipRefOrNull === null) {
-    assert(input.movementClass === LAYER_REVISIT, 'relationship-free transition must be LAYER_REVISIT');
-    assert(fromNodeRef === toNodeRef, 'LAYER_REVISIT must stay on the same process node');
+    assert(
+      movementClass === null,
+      'relationship-free layer transition must not claim a semantic movementClass',
+    );
+    assert(fromNodeRef === toNodeRef, 'relationship-free layer transition must stay on the same process node');
   } else {
     const relationship = family.relationships.find((candidate) => candidate.relationshipRef === relationshipRefOrNull);
     assert(relationship, 'process transition relationship missing: ' + relationshipRefOrNull);
     assert(relationship.fromRef === fromNodeRef, 'process transition relationship fromRef mismatch');
     assert(relationship.toRef === toNodeRef, 'process transition relationship toRef mismatch');
-    assert(relationship.movementClass === input.movementClass, 'process transition movementClass mismatch');
+    assert(relationship.movementClass === movementClass, 'process transition movementClass mismatch');
   }
 
   const fromLayer = layer(input.fromLayer, 'process transition ' + label + '.fromLayer', family);
@@ -319,6 +319,7 @@ export function normalizeProcessState(input, familyInput) {
   if (lastAcceptedTransitionOrNull === null) {
     assert(previousStateRefOrNull === null, 'ProcessFamily.State without transition must not claim a previous State');
     assert(currentNodeRef === family.entryNodeRef, 'ProcessFamily.State without transition must be at entryNodeRef');
+    assert(currentLayer === family.entryLayer, 'ProcessFamily.State without transition must be at entryLayer');
   } else {
     assert(previousStateRefOrNull !== null, 'ProcessFamily.State transition requires previousStateRefOrNull');
     assert(
@@ -400,7 +401,7 @@ export function admitProcessTransition({
   state: stateInput,
   transitionRef,
   relationshipRefOrNull = null,
-  movementClass,
+  movementClass = null,
   nextLayer,
   evidenceRefs,
   carriedIdentityRefs,
@@ -431,7 +432,10 @@ export function admitProcessTransition({
     );
   } else {
     assert(relationshipRefOrNull === null, 'process transition relationship missing');
-    assert(movementClass === LAYER_REVISIT, 'relationship-free transition must be LAYER_REVISIT');
+    assert(
+      movementClass === null,
+      'relationship-free layer transition must not claim a semantic movementClass',
+    );
   }
 
   const toNodeRef = relationship ? relationship.toRef : currentNodeRef;
