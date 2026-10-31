@@ -39,7 +39,7 @@
         "label": "VexWork Onboarding · MetaWalk",
         "parentRefOrNull": null,
         "detailBoardRefOrNull": "board.vexwork.process-family-metawalk",
-        "sourceRefs": ["docs/process/VEX-PROCESS-FAMILY-METAWALK.md", "projects/vexboard/examples/vexwork-process-family-metawalk.board.json"]
+        "sourceRefs": ["docs/process/VEX-PROCESS-FAMILY-METAWALK.md", "docs/foundation/VEXWORK-ORIENTATION.md", "orientation.html", "projects/vexboard/examples/vexwork-process-family-metawalk.board.json"]
       },
       {
         "nodeRef": "node.vexboard.read-only",
@@ -156,7 +156,7 @@
         "sourceRefs": ["projects/vexboard/README.md"]
       }
     ],
-    "sourceRefs": ["projects/vexboard/README.md", "vexboard/index.html", "docs/process/VEX-PROCESS-FAMILY-METAWALK.md", "projects/vexboard/examples/vexwork-process-family-metawalk.board.json"]
+    "sourceRefs": ["projects/vexboard/README.md", "vexboard/index.html", "docs/process/VEX-PROCESS-FAMILY-METAWALK.md", "docs/foundation/VEXWORK-ORIENTATION.md", "orientation.html", "projects/vexboard/examples/vexwork-process-family-metawalk.board.json"]
   },
   "projection": {
     "schemaVersion": "vexboard.board-projection/v1",
