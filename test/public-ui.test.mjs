@@ -11,6 +11,8 @@ const orientationSource = fs.readFileSync(new URL('../docs/foundation/VEXWORK-OR
 test('VexWork Pages owns the semantic navigator and reads same-origin public workspace', () => {
   assert.match(page, /class="terrain-home" href="\.\/terrain\.html">Terrain Map<\/a>/);
   assert.match(page, /class="terrain-home" href="\.\/vexboard\/">VexBoard<\/a>/);
+  assert.match(page, /class="pink-entry" href="\.\/orientation\.html" aria-label="Pink VexWork onboarding entry">🩷 Pink entry<\/a>/);
+  assert.match(page, /\.pink-entry\{[^}]*border:1px solid #f9a8d4;[^}]*background:#fdf2f8;[^}]*color:#be185d/);
   assert.doesNotMatch(page, /class="terrain-home" href="\.\/orientation\.html">Orientation<\/a>/);
   assert.match(page, /const WORKSPACE_URL = '\.\/public\/workspace\.json'/);
   assert.doesNotMatch(page, /raw\.githubusercontent\.com/);
