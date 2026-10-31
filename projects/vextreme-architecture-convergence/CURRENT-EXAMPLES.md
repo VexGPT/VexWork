@@ -270,10 +270,10 @@ base
 0193ba6d43e1fa5267e4a8c2130b3e970697fd86
 
 head
-16789d8da0ff38321c0596bad5c09f6bd2b19718
+5b7b06c2b557ab8ade3afadaa563ad01d52ffea4
 
 tree
-b45745c46f865867539c83f5439018ddea7adf2a
+7754fe9b0d944e708eabca6173221c8691764224
 ~~~
 
 Its current formed effects are:
@@ -556,6 +556,37 @@ Stop only for actual completion, a genuine human/protected boundary, a blocking 
 with no truthful alternate route, unresolved human-intention/authority ambiguity, or a real
 fresh-instance/host transfer.
 
+## Observable orientation interaction
+
+Pink currently distinguishes source availability from performed orientation.
+
+~~~text
+ORIENTATION SOURCE PRESENT
+!= ORIENTATION PERFORMED
+
+CLAIMED READING
+!= OBSERVED REFLECTION
+~~~
+
+The current host realization is three visible sequential responses in the active conversation before
+foreground Work is introduced:
+
+~~~text
+Reflection 1 response
+-> Reflection 2 examines the actual response
+-> Reflection 3 examines the resulting whole property
+-> foreground Work
+~~~
+
+A human may manually advance those three rounds.
+
+That manual action is not technical archaeology. The human only asks the already-defined reflection and
+waits for the response.
+
+The resulting conversation does not certify hidden model cognition. It does create observable evidence
+that the instance explicitly articulated its current understanding before Work arrived, so later drift can
+be compared against something actually present in context rather than an assumed read.
+
 ## Bounded recursive orientation
 
 The orientation standard is recursively reusable but has a base case:
@@ -624,8 +655,8 @@ HELD / MISSING PREDICATE
 
 CURRENT IMPLEMENTATION COORDINATE
   VexWork PR #194
-  head 16789d8da0ff38321c0596bad5c09f6bd2b19718
-  tree b45745c46f865867539c83f5439018ddea7adf2a
+  head 5b7b06c2b557ab8ade3afadaa563ad01d52ffea4
+  tree 7754fe9b0d944e708eabca6173221c8691764224
 ~~~
 
 The successor does **not** need:
