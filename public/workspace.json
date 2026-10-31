@@ -13044,7 +13044,9 @@
           "repo.vexlife:src/core/model-runtime-adapter.mjs",
           "repo.vexlife:src/core/capability-assimilation-runtime.mjs",
           "repo.vexlife:src/core/lived-companion-connection.mjs",
-          "repo.vexlife:docs/vexlife-assortment/practicum-candidates/conversation-refinement-startup-sequence-01/RUNBOOK.md"
+          "repo.vexlife:docs/vexlife-assortment/practicum-candidates/conversation-refinement-startup-sequence-01/RUNBOOK.md",
+          "github.pull.vexlife.971",
+          "repo.vexlife:src/core/heretic-persistent-runtime-owner.mjs"
         ],
         "formedAt": "2026-10-31T04:46:00.000Z"
       },
@@ -13303,9 +13305,9 @@
         {
           "workRef": "work.vexlife.startup-sequence.reasoning-channel-investigation",
           "label": "Investigate live model-emitted reasoning before claiming capability absence",
-          "purpose": "Preserve the source-grounded correction that VexLife already recognizes choices[0].message.reasoning_content as MODEL_EMITTED_REASONING_TRACE with humanProjection SEALED_EXPLICIT_OPEN_ONLY, while capability progress hiddenReasoningIncluded=false applies only to runtime progress frames. Before denying reasoning visibility or substituting canned/synthetic progress, observe an exact live Heretic turn and distinguish reasoning emission PRESENT / ABSENT / UNKNOWN; then route any confirmed human projection through the rightful Interface / Conversation owner.",
+          "purpose": "Current source investigation establishes that the exact Heretic provider is mlx-lm 0.32.0: non-streaming reasoning is choices[0].message.reasoning and streaming reasoning is choices[0].delta.reasoning; reasoning_content remains a compatibility shape. VexLife PR #971 is the bounded observation correction so live streams preserve reasoning only into sealed metadata while public progress stays reasoning-free. Ordinary persistent Heretic and the accepted direct-host MLX binding both currently use enable_thinking=false, so an ordinary absent trace cannot prove capability absence. Keep the live capability UNKNOWN until a separately qualified one-shot inference explicitly enables thinking and records PRESENT / ABSENT without persisting raw reasoning; then route any confirmed human projection through the rightful Interface / Conversation owner.",
           "workClass": "TASK",
-          "state": "READY",
+          "state": "RUNNING",
           "workDisposition": "ACTIVE",
           "priorityClass": "IMMEDIATE",
           "parentWorkRefOrNull": "work.vexlife.startup-sequence.outcome",
@@ -13324,14 +13326,16 @@
             "repo.vexlife:src/core/capability-assimilation-runtime.mjs",
             "repo.vexlife:src/core/lived-companion-connection.mjs",
             "repo.vexlife:reference/browser/modules/chat-controller.js",
-            "repo.vexlife:docs/vexlife-assortment/practicum-candidates/conversation-refinement-startup-sequence-01/RUNBOOK.md"
+            "repo.vexlife:docs/vexlife-assortment/practicum-candidates/conversation-refinement-startup-sequence-01/RUNBOOK.md",
+            "github.pull.vexlife.971",
+            "repo.vexlife:src/core/heretic-persistent-runtime-owner.mjs"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [],
           "authorityDisposition": "NO_AUTHORITY",
           "effectDisposition": "NO_EFFECTS",
           "createdAt": "2026-10-31T09:50:01.000Z",
-          "updatedAt": "2026-10-31T09:50:01.000Z",
+          "updatedAt": "2026-10-31T23:21:59.000Z",
           "transitionHistory": []
         },
         {
@@ -13384,15 +13388,15 @@
             "work.vexlife.startup-sequence.explainable-progression",
             "work.vexlife.startup-sequence.layered-failure-report",
             "work.vexlife.startup-sequence.managed-bootstrap-dependencies",
-            "work.vexlife.startup-sequence.python-compatibility-qualification",
-            "work.vexlife.startup-sequence.reasoning-channel-investigation"
+            "work.vexlife.startup-sequence.python-compatibility-qualification"
           ]
         },
         {
           "laneRef": "lane.work.active",
           "label": "Active",
           "workRefs": [
-            "work.vexlife.startup-sequence.outcome"
+            "work.vexlife.startup-sequence.outcome",
+            "work.vexlife.startup-sequence.reasoning-channel-investigation"
           ]
         },
         {

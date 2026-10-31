@@ -219,19 +219,37 @@ A later explicit-consent upload/email route should be a separate transport conce
 
 The current local model can feel slow because the adopted read-only capability path may perform more than one inference phase for a simple turn. Visible work / reasoning presentation belongs to Interface Refinement after startup stability, but startup handoff must preserve the exact capability facts rather than denying them by assumption.
 
-Current VexLife source explicitly recognizes a provider/model reasoning field:
+Exact provider/runtime inspection now establishes a narrower truth than the earlier compatibility assumption:
 
 ```text
-choices[0].message.reasoning_content
+Heretic runtime = mlx-lm 0.32.0
+
+non-streaming:
+  choices[0].message.reasoning
+
+streaming:
+  choices[0].delta.reasoning
+
+reasoning_content
+  = compatibility shape already recognized by VexLife
+  != exact current MLX field
+```
+
+VexLife PR #971 is the bounded source correction:
+
+```text
+reasoning | reasoning_content
 -> MODEL_EMITTED_REASONING_TRACE
 -> rawState = EPHEMERAL
 -> rawPersisted = false
 -> humanProjection = SEALED_EXPLICIT_OPEN_ONLY
--> modelProjection = NONE
--> trainingProjection = NONE
+
+streamed reasoning
+-> retained only long enough to form sealed metadata
+-> never emitted through public content/progress deltas
 ```
 
-Separately, capability-runtime progress frames currently carry:
+Separately, capability-runtime progress frames still carry:
 
 ```text
 hiddenReasoningIncluded = false
@@ -239,10 +257,19 @@ hiddenReasoningIncluded = false
 
 That flag describes **those progress-event payloads only**. It is not evidence that the underlying model/provider has no reasoning channel.
 
+The ordinary persistent Heretic runtime and the currently accepted direct-host MLX binding also intentionally use:
+
+```text
+enable_thinking=false
+```
+
+Therefore an ordinary turn with no observed reasoning cannot answer the model-capability question.
+
 Permanent investigation rule:
 
 ```text
 PROGRESS_HAS_NO_REASONING != MODEL_REASONING_UNAVAILABLE
+THINKING_DISABLED_TRACE_ABSENT != MODEL_REASONING_UNAVAILABLE
 
 before denying capability:
   inspect exact model/runtime owner
@@ -254,11 +281,13 @@ before denying capability:
 Current exact held predicate:
 
 ```text
-Does the live Heretic turn emit non-empty reasoning_content?
+When one separately qualified Heretic inference explicitly enables thinking,
+does mlx-lm emit non-empty reasoning?
+
 = NOT YET OBSERVED
 ```
 
-Do not replace that unknown with a denial, and do not invent a synthetic "reasoning" layer merely because runtime telemetry is already available. If live reasoning emission is confirmed, route its human projection through the rightful Interface / Conversation owner without conflating it with canned phase telemetry.
+Do not replace that unknown with a denial, and do not invent a synthetic "reasoning" layer merely because runtime telemetry is already available. The source-observation defect is now owned by PR #971; the live thinking-enabled probe remains a separate effect whose qualified route has not yet been established. If live reasoning emission is confirmed, route its human projection through the rightful Interface / Conversation owner without conflating it with canned phase telemetry.
 
 ```text
 STARTUP COMPLETION != REASONING-PROJECTION COMPLETION
@@ -276,13 +305,15 @@ The current post-start completion pressures discovered from the same lived basel
 
 ```text
 A. visible work + reasoning-channel currentness
-   -> VexLife PR #970
-   -> runtime progress is already visible and explicitly hiddenReasoningIncluded=false
-   -> model-runtime-adapter separately recognizes reasoning_content as MODEL_EMITTED_REASONING_TRACE
-   -> current humanProjection is SEALED_EXPLICIT_OPEN_ONLY
-   -> live Heretic reasoning emission is still UNKNOWN until observed on an exact turn
-   -> investigate provider/runtime truth before claiming capability absence
-   -> do not substitute canned phase text or invented public reasoning for an uninvestigated model-emitted channel
+   -> VexLife PR #970 owns visible-work / Evolution presentation lineage
+   -> VexLife PR #971 owns the bounded reasoning-observation correction
+   -> exact mlx-lm 0.32.0 field is reasoning; reasoning_content remains compatibility
+   -> runtime progress is explicitly hiddenReasoningIncluded=false
+   -> ordinary persistent Heretic currently uses enable_thinking=false
+   -> current humanProjection remains SEALED_EXPLICIT_OPEN_ONLY
+   -> thinking-enabled live Heretic reasoning emission is still UNKNOWN
+   -> investigate through one separately qualified probe before claiming capability absence
+   -> do not substitute canned phase text or invented public reasoning for an unobserved model-emitted channel
 
 B. online observation
    -> current capability.vexlife.online.observe is deliberately HELD
