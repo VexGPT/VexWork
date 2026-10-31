@@ -443,15 +443,7 @@ CHANGES_REQUESTED
 because it inferred that a fresh entrant might need a minimal Work/trajectory envelope before orientation
 in order to know which sources to read.
 
-Victor then challenged the recommendation itself:
-
-~~~text
-what exact change are you requesting?
-why does current evidence require it?
-if the change succeeds, what valid property is lost?
-~~~
-
-That counterfactual exposed the inverse cost:
+The recommendation was then re-examined against its causal basis and inverse cost. That exposed:
 
 ~~~text
 minimal Work framing before orientation
@@ -549,71 +541,14 @@ reconcile
 -> continue
 ~~~
 
-A checkpoint records current truth and resume coordinates. It is not a reason to stop and wait for Victor
-to say `continue` or ask `what next?`.
-
-Stop only for actual completion, a genuine human/protected boundary, a blocking unavailable capability
-with no truthful alternate route, unresolved human-intention/authority ambiguity, or a real
-fresh-instance/host transfer.
-
-## Observable orientation interaction
-
-Pink currently distinguishes source availability from performed orientation.
-
-~~~text
-ORIENTATION SOURCE PRESENT
-!= ORIENTATION PERFORMED
-
-CLAIMED READING
-!= OBSERVED REFLECTION
-~~~
-
-The current host realization is three visible sequential responses in the active conversation before
-foreground Work is introduced:
-
-~~~text
-Reflection 1 response
--> Reflection 2 examines the actual response
--> Reflection 3 examines the resulting whole property
--> foreground Work
-~~~
-
-A human may manually advance those three rounds.
-
-That manual action is not technical archaeology. The human only asks the already-defined reflection and
-waits for the response.
-
-The resulting conversation does not certify hidden model cognition. It does create observable evidence
-that the instance explicitly articulated its current understanding before Work arrived, so later drift can
-be compared against something actually present in context rather than an assumed read.
+A checkpoint records current truth and resume coordinates; it is not a stop condition. Continue until
+actual completion or a genuine human, authority, capability, or transfer boundary holds the dependent
+effect.
 
 ## Bounded recursive orientation
 
-The orientation standard is recursively reusable but has a base case:
-
-~~~text
-CURRENT CANONICAL SOURCE
--> ORIENT ONCE
--> FOREGROUND WORK
-~~~
-
-If the foreground Work is Pink/onboarding/orientation itself:
-
-~~~text
-ORIENT ONCE
--> treat onboarding as Work
--> challenge proposals / inverse costs
--> act / prove / reconcile
--> update current source
-~~~
-
-~~~text
-ORIENTATION APPLIES TO ORIENTATION WORK
-!= ORIENTATION REQUIRES PRIOR ORIENTATION
-~~~
-
-The prime-example/template system in PR #196 uses the same boundary when generating new fresh-instance
-handoffs.
+Orientation may itself become foreground Work. Use the current canonical source as the base case; do not
+create nested orientation gates merely because onboarding is being reviewed.
 
 ## Fresh-instance takeover contract
 
