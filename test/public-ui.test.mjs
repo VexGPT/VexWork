@@ -4,7 +4,9 @@ import test from 'node:test';
 
 import * as reader from '../workspace-reader.js';
 
-const page = fs.readFileSync(new URL('../index.html', import.meta.url), 'utf8');\nconst orientationPage = fs.readFileSync(new URL('../orientation.html', import.meta.url), 'utf8');\nconst orientationSource = fs.readFileSync(new URL('../docs/foundation/VEXWORK-ORIENTATION.md', import.meta.url), 'utf8');
+const page = fs.readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+const orientationPage = fs.readFileSync(new URL('../orientation.html', import.meta.url), 'utf8');
+const orientationSource = fs.readFileSync(new URL('../docs/foundation/VEXWORK-ORIENTATION.md', import.meta.url), 'utf8');
 
 test('VexWork Pages owns the semantic navigator and reads same-origin public workspace', () => {
   assert.match(page, /class="terrain-home" href="\.\/terrain\.html">Terrain Map<\/a>/);
