@@ -82,6 +82,12 @@ The examples show **construction relationships**, not answers.
   - demonstrates: strong locked plan + subtle current-source leak + why blindness must be audited at the
     outer handoff as well as the inner task packet.
 
+- `03-BLIND-PUBLIC-WORKSPACE-A002.md`
+  - status: `PRIME_EXAMPLE`
+  - demonstrates: corrected end-to-end blindness + independent convergence on truth ownership,
+    bounded public projection, sibling Parking Lot, deterministic drift proof, and read-only authority
+    boundaries without reproducing the historical implementation exactly.
+
 ## Promotion boundary
 
 Do not promote this directory into a global VexWork foundation merely because the examples are useful.
