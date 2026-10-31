@@ -47,25 +47,8 @@ relationship.
 
 ## Bounded recursive use
 
-The template assumes one canonical orientation base case.
-
-~~~text
-fresh instance
--> reads allowed current canonical sources
--> performs one orientation walk
--> receives foreground Work
-~~~
-
-If the foreground Work is onboarding / handoff / orientation itself, do not create another nested
-orientation gate.
-
-~~~text
-ORIENTATION APPLIES TO ORIENTATION WORK
-!= ORIENTATION REQUIRES PRIOR ORIENTATION
-~~~
-
-A predecessor constructing this handoff should already be operating from the current orientation
-standard. The receiver then performs one fresh orientation from the declared visibility boundary.
+Orientation may itself be the foreground Work. Treat the current canonical orientation source as the
+base case; do not create nested pre-orientation gates.
 
 ## Visibility model
 
@@ -138,39 +121,6 @@ current allowed world
 
 Do not supply the foreground solution theory during this phase.
 
-## Observable orientation interaction
-
-For a fresh-instance evaluation, do not treat source availability as proof that orientation occurred.
-
-The handoff should require visible sequential responses:
-
-~~~text
-Reflection 1 response
--> retained in active conversation
-
-Reflection 2
--> explicitly examines Reflection 1
-
-Reflection 3
--> explicitly examines the combined property
-
-only then
--> foreground Work reveal
-~~~
-
-~~~text
-ORIENTATION SOURCE PRESENT
-!= ORIENTATION PERFORMED
-~~~
-
-When the host cannot enforce staged reveal automatically, a human may manually advance the three rounds.
-
-That human action should remain tiny: ask the already-defined question and wait for the answer. Do not make
-the human explain the technical context or reconstruct predecessor work.
-
-If the instance skips a round or enters Work early, record the trial as an observed orientation failure
-rather than silently assuming compliance.
-
 ## Phase 2 — work reveal
 
 After orientation, supply:
@@ -186,29 +136,10 @@ Do not include the accepted answer merely to make the task easier to grade.
 
 ## Recommendation self-challenge
 
-Before a material recommendation is locked, ask:
+Before locking a material recommendation, test it against current evidence, its inverse cost, and whether
+the problem is observed, contract-required, or only hypothetical.
 
-~~~text
-What exact change am I proposing?
-
-What evidence requires it?
-
-Is the failure:
-  OBSERVED
-  CONTRACT_REQUIRED
-  HYPOTHETICAL?
-
-If the change succeeds,
-what currently valid property becomes weaker,
-harder,
-or impossible?
-
-Does seeing that inverse cost change my judgment?
-~~~
-
-The recommendation may survive or change.
-
-The purpose is falsifiability, not forced agreement.
+The recommendation may survive or change. The purpose is falsifiability, not forced agreement.
 
 ## Locked-output contract
 
