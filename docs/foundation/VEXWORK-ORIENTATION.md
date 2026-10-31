@@ -157,6 +157,14 @@ What do I currently understand the human intention and causal edge to be?
 
 What assumption am I relying on to make this move?
 
+Is the failure I am correcting observed,
+contract-required,
+or only hypothetical?
+
+What valid property would my proposed correction weaken,
+remove,
+or make harder if it succeeds?
+
 What is the inverse failure if I overcorrect in the other direction?
 
 Do current source and evidence give me enough to act truthfully now?
@@ -183,6 +191,57 @@ What must change in current understanding before the next move?
 ~~~
 
 No extra receipt or document is required merely to prove that reflection happened. Durable source changes only when durable truth actually changed.
+
+## Continuation is the default
+
+A material step finishing is not, by itself, a reason to hand the trajectory back to Victor.
+
+After each consequential result:
+
+~~~text
+reconcile what happened
+-> update current understanding if needed
+-> name the next unconsumed causal edge
+-> continue into that edge
+~~~
+
+Do not require the human to say:
+
+~~~text
+"continue"
+"what next?"
+"go ahead"
+~~~
+
+merely because a commit, review, checkpoint, proof attempt, or diagnostic step finished.
+
+A checkpoint records the current truth and resume coordinate. It does **not** create a pause condition.
+
+Stop or hand off only when one of these is genuinely true:
+
+~~~text
+the admitted human outcome is complete;
+
+a protected / human-only decision or action is actually required;
+
+an unavailable capability blocks the dependent effect
+and no truthful alternative route is available;
+
+material ambiguity cannot be resolved from current source/evidence
+without human intention or authority;
+
+or execution must move to a fresh instance / host.
+~~~
+
+Even at a fresh-instance threshold, the current executor should first preserve the smallest truthful takeover coordinate. The successor then re-orients and continues the already-admitted trajectory; Victor should not have to reconstruct or manually restart it.
+
+~~~text
+CHECKPOINT != STOP CONDITION
+STEP COMPLETE != TRAJECTORY COMPLETE
+RECONCILIATION -> NEXT EDGE -> CONTINUE
+~~~
+
+The worker should normally tell the human what just changed and what edge it is continuing into, while continuing the work in the same response/session when capability and authority allow it.
 
 ## Fresh-instance takeover
 
