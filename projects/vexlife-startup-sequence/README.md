@@ -217,11 +217,53 @@ A later explicit-consent upload/email route should be a separate transport conce
 
 ## Adjacent but not owned here
 
-The current local model can feel slow because the adopted read-only capability path may perform more than one inference phase for a simple turn. Visible "Vex is working" / phase feedback belongs to Interface Refinement after startup stability; raw hidden reasoning is not required for startup completion.
+The current local model can feel slow because the adopted read-only capability path may perform more than one inference phase for a simple turn. Visible work / reasoning presentation belongs to Interface Refinement after startup stability, but startup handoff must preserve the exact capability facts rather than denying them by assumption.
+
+Current VexLife source explicitly recognizes a provider/model reasoning field:
 
 ```text
-STARTUP COMPLETION != THINKING UI
-PHASE FEEDBACK != HIDDEN CHAIN OF THOUGHT
+choices[0].message.reasoning_content
+-> MODEL_EMITTED_REASONING_TRACE
+-> rawState = EPHEMERAL
+-> rawPersisted = false
+-> humanProjection = SEALED_EXPLICIT_OPEN_ONLY
+-> modelProjection = NONE
+-> trainingProjection = NONE
+```
+
+Separately, capability-runtime progress frames currently carry:
+
+```text
+hiddenReasoningIncluded = false
+```
+
+That flag describes **those progress-event payloads only**. It is not evidence that the underlying model/provider has no reasoning channel.
+
+Permanent investigation rule:
+
+```text
+PROGRESS_HAS_NO_REASONING != MODEL_REASONING_UNAVAILABLE
+
+before denying capability:
+  inspect exact model/runtime owner
+  inspect exact live provider response
+  distinguish PRESENT / ABSENT / UNKNOWN
+  only then form the product claim
+```
+
+Current exact held predicate:
+
+```text
+Does the live Heretic turn emit non-empty reasoning_content?
+= NOT YET OBSERVED
+```
+
+Do not replace that unknown with a denial, and do not invent a synthetic "reasoning" layer merely because runtime telemetry is already available. If live reasoning emission is confirmed, route its human projection through the rightful Interface / Conversation owner without conflating it with canned phase telemetry.
+
+```text
+STARTUP COMPLETION != REASONING-PROJECTION COMPLETION
+RUNTIME PROGRESS != MODEL-EMITTED REASONING
+SOURCE SUPPORT != LIVE EMISSION PROOF
 ```
 
 Route adjacent post-start presentation work through `project.vexlife.interface-refinement`.
@@ -233,12 +275,14 @@ Startup completion ends when the local Vex relationship is reliably available. I
 The current post-start completion pressures discovered from the same lived baseline are:
 
 ```text
-A. visible work progress
+A. visible work + reasoning-channel currentness
    -> VexLife PR #970
-   -> stream existing hiddenReasoningIncluded=false runtime progress
-   -> pulsing white sparkle
-   -> expandable public work trace
-   -> no raw hidden chain-of-thought
+   -> runtime progress is already visible and explicitly hiddenReasoningIncluded=false
+   -> model-runtime-adapter separately recognizes reasoning_content as MODEL_EMITTED_REASONING_TRACE
+   -> current humanProjection is SEALED_EXPLICIT_OPEN_ONLY
+   -> live Heretic reasoning emission is still UNKNOWN until observed on an exact turn
+   -> investigate provider/runtime truth before claiming capability absence
+   -> do not substitute canned phase text or invented public reasoning for an uninvestigated model-emitted channel
 
 B. online observation
    -> current capability.vexlife.online.observe is deliberately HELD
@@ -271,7 +315,8 @@ The human experience target is:
 ```text
 Victor sends
 -> Vex sparkle visibly pulses
--> public phase/work trace is optionally inspectable
+-> runtime phase/work trace is optionally inspectable
+-> if the live model emits a reasoning trace and the human projection is admitted, show that distinct reasoning surface truthfully
 -> if a capability is needed, the real admitted provider/tool runs
 -> if no capability is needed, do not pay an unnecessary planning inference
 -> final response streams and becomes the durable Conversation message
