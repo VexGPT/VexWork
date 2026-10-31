@@ -555,6 +555,139 @@ current sources
 -> continuation
 ~~~
 
+## Evaluator-only key for the first blind judgment trial
+
+**Do not provide this section or PR #195 to the Track-B planner before its response is locked.**
+
+Fresh-instance evaluation packet:
+
+~~~text
+VexWork PR #196
+Track A = fresh review of Pink proposal
+Track B = blind historical planning trial
+~~~
+
+Track-B historical pre-solution base:
+
+~~~text
+aacc5a9874a335a96e71e358aaa933d6f60d45e0
+~~~
+
+Accepted historical completion used only **after** the blind plan is locked:
+
+~~~text
+commit
+5c0e871c8e2e275cdeb20506ac928b4994b2758e
+
+message
+[VexWork] Add stable public dashboard projection
+~~~
+
+The accepted completion did this:
+
+~~~text
+canonical Project
++ canonical Work Board projection
++ canonical Parking Lot projection
+-> VexWork-owned public read projection
+-> checked-in public/work-dashboard.json
+~~~
+
+Source realization:
+
+~~~text
+src/core/public-dashboard.mjs
+  owns the bounded public projection
+
+scripts/build-public-dashboard.mjs
+  composes canonical source
+  -> deterministic JSON
+  -> writes public/work-dashboard.json
+  -> --check fails on drift
+
+public/work-dashboard.json
+  stable checked-in public artifact
+
+package.json
+  dashboard:build
+  dashboard:check
+  deterministic review includes dashboard:check
+
+test/public-dashboard.test.mjs
+  proves read-only composition
+  proves Parking Lot stays sibling rather than Project membership
+  proves effects=false
+  proves executionAuthority=NONE
+  proves checked-in artifact exactly matches canonical projection
+
+docs/foundation/WORK-BOARD.md
+README.md
+  explain the public-read boundary and ownership
+~~~
+
+Important accepted non-collapses:
+
+~~~text
+PUBLIC_DASHBOARD != WORKGRAPH
+PUBLIC_DASHBOARD != RUNTIME_CURRENTNESS_OWNER
+PUBLIC_DASHBOARD != EFFECT_AUTHORITY
+VEXTREME_VIEW != VEXWORK_TRUTH_OWNER
+PARKING_LOT != PROJECT MEMBERSHIP
+~~~
+
+### Blind-plan comparison rubric
+
+Do not score exact naming or identical file paths as the primary signal.
+
+Score the fresh planner on whether it independently reaches or preserves these properties:
+
+1. **Truth ownership**
+   - VexWork remains the work truth owner.
+   - Public/Vextreme consumer does not become WorkState owner.
+
+2. **Projection boundary**
+   - prefers a bounded public read model rather than exposing raw Workgraph as the UI contract;
+   - derives from existing Project / Work Board / Parking Lot owners rather than duplicating lifecycle logic.
+
+3. **Parking Lot semantics**
+   - parked work remains a sibling projection and does not get forced into Project membership.
+
+4. **Public/effect boundary**
+   - public contract is explicitly read-only / no effects / no execution authority;
+   - private runtime currentness is not required to make the public view useful.
+
+5. **Currentness**
+   - has a deterministic regeneration/check strategy or an equivalent source-owned drift detector.
+
+6. **Proof**
+   - tests the composition itself, not merely a consumer mock;
+   - tests that the emitted/checked-in public artifact matches canonical projection truth.
+
+7. **Scope discipline**
+   - does not build a public mutation API, new lifecycle owner, runtime database, universal dashboard framework,
+     or Vextreme-owned work semantics merely to satisfy visibility.
+
+Comparison result should distinguish:
+
+~~~text
+CONVERGENT JUDGMENT
+  same important causal boundaries / possibly different implementation details
+
+BETTER ALTERNATIVE
+  materially simpler or safer plan that still satisfies the historical constraints
+
+MATERIAL MISS
+  loses a key ownership/currentness/proof boundary
+
+CONTAMINATED
+  planner saw the accepted path before locking its answer
+~~~
+
+The purpose is not to prove that history chose the only correct solution.
+
+The purpose is to compare what a freshly oriented instance derives independently against a real completed
+case whose consequences are already known.
+
 ## Reopen / replacement condition
 
 This checkpoint should be replaced or materially revised when any of these become true:
