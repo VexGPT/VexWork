@@ -4,7 +4,7 @@ import test from 'node:test';
 
 import * as reader from '../workspace-reader.js';
 
-const page = fs.readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+const page = fs.readFileSync(new URL('../index.html', import.meta.url), 'utf8');\nconst orientationPage = fs.readFileSync(new URL('../orientation.html', import.meta.url), 'utf8');\nconst orientationSource = fs.readFileSync(new URL('../docs/foundation/VEXWORK-ORIENTATION.md', import.meta.url), 'utf8');
 
 test('VexWork Pages owns the semantic navigator and reads same-origin public workspace', () => {
   assert.match(page, /class="terrain-home" href="\.\/terrain\.html">Terrain Map<\/a>/);
@@ -12,6 +12,20 @@ test('VexWork Pages owns the semantic navigator and reads same-origin public wor
   assert.match(page, /const WORKSPACE_URL = '\.\/public\/workspace\.json'/);
   assert.doesNotMatch(page, /raw\.githubusercontent\.com/);
   assert.match(page, /VEXWORK VIEW · VEXWORK TRUTH OWNER/);
+});
+
+test('orientation is a read-only source-grounded judgment surface rather than a second work process', () => {
+  assert.match(page, /class="terrain-home" href="\.\/orientation\.html">Orientation<\/a>/);
+  assert.match(orientationPage, /Read\. Reflect\. Then enter the work\./);
+  assert.match(orientationPage, /Do not answer all reflections at once/);
+  assert.match(orientationPage, /Only after Reflection 03:/);
+  assert.match(orientationPage, /EXISTING WORK PLAN/);
+  assert.match(orientationPage, /CURRENT PLAN POSITION/);
+  assert.match(orientationPage, /ORIENTATION != WORKFLOW/);
+  assert.match(orientationSource, /current sources\n-> fresh instance reads them/);
+  assert.match(orientationSource, /The plan is continuity, not authority\./);
+  assert.match(orientationSource, /the predecessor's orientation answers/i);
+  assert.doesNotMatch(orientationPage, /method:\s*['"](?:POST|PUT|PATCH|DELETE)['"]/i);
 });
 
 test('semantic routes distinguish Projects, Project and work-item levels', () => {

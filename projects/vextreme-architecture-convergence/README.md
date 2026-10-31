@@ -26,16 +26,34 @@ This Project exists because the website has now exposed several real seams whose
 same architectural question. Continuing them as unrelated patches would make future workers repeatedly
 reconstruct who owns what and why.
 
-## Current entry — Recover Pink VexWork Onboarding from the accepted MetaWalk trajectory
+## Current entry — Recover and realize Pink VexWork Onboarding as source-grounded orientation
 
-The foreground is **trajectory recovery**, not a new Family/architecture lane and not a PR queue.
+The foreground remains the **Pink VexWork Onboarding** human outcome, not a new Family/runtime lane and not a PR queue.
 
-The original MetaWalk formation named a future `pink VexWork Onboarding projection` only after real
-pressure had earned the semantics it should project. The human outcome is that a fresh hosted assistant,
-future local Vex, or human can enter incomplete work and perceive enough **CURRENT** truth to continue
-without reconstructing predecessor chat, ZIP chains, or provider-comment archaeology.
+The refined lived intention is now clearer:
 
-Current accepted movement:
+~~~text
+fresh human / hosted assistant / future local Vex
+-> reads the current company / operations / work / repository sources
+-> explains what those sources currently mean together
+-> has that understanding challenged through the already pressure-tested
+   sequential orientation reflections
+-> sees consequential assumptions and their inverse failures
+-> only then receives the foreground Work
+-> uses judgment, current evidence, and rightful source owners to continue
+-> reconciles consequential decisions before carrying mistakes forward
+~~~
+
+This is intentionally different from "follow the process."
+
+~~~text
+SOURCE DEFINES CURRENT TRUTH
+ORIENTATION HELPS COMPILE MEANING
+JUDGMENT CARRIES THE WORK
+PROCESS / ARTIFACTS SUPPORT THE OUTCOME
+~~~
+
+### Accepted trajectory being preserved
 
 ~~~text
 PR #189
@@ -70,112 +88,188 @@ PR #192
 
   BYTE TREE RESTORATION
   != TRAJECTORY RESTORATION
+
+PR #194
+  current draft recovery / realization candidate
 ~~~
 
-Current recovery candidate:
+### Current refined implementation
+
+The current candidate preserves the exact #190 discoverability relationship and adds the smallest new consumer actually earned by the later human pressure:
 
 ~~~text
-github.pull.vexwork.194
+canonical orientation source
+  docs/foundation/VEXWORK-ORIENTATION.md
 
-restores the exact proven #190 discoverability relationship
-+ keeps the A001 provenance regression repaired
-+ preserves source-catalog ownership
+read-only shared visual surface
+  orientation.html
 
-fresh exact-head SourceOwner / Assurance
-  PENDING
+VexWork entry affordance
+  index.html -> Orientation
 
-whole Pink VexWork Onboarding outcome
-  NOT CLAIMED COMPLETE
+fresh-instance takeover rule
+  re-orient first
+  -> reintroduce existing work plan
+  -> exact current plan position
+  -> completed valid effects
+  -> held / missing predicate
+  -> current evidence
+  -> successor decides what else must be grounded before more code
 ~~~
+
+The orientation source does **not** duplicate Local Vex Operations, target-repository culture, or a current VexRelay contract. It points to current owners and preserves the reusable relationship between reading, reflection, work entry, judgment, and reconciliation.
 
 Permanent distinctions:
 
 ~~~text
-EARNED CAPABILITY
-!= OUTCOME COMPLETE
-
-ONBOARDING PORTAL
-!= PROCESS CURRENT STATE
-!= DYNAMIC BOUNDED HORIZON
+ORIENTATION
+!= WORKFLOW
+!= WORKSTATE
+!= PROCESS POSITION
 != EFFECT AUTHORITY
 
-PROCESS POSITION
-!= WORKSTATE
+ORIENTATION ANSWER
+!= DURABLE TRUTH
+
+PREDECESSOR PLAN
+= CONTINUITY INPUT
+!= SUCCESSOR AUTHORITY
+
+EARNED CAPABILITY
+!= OUTCOME COMPLETE
 
 SOURCE ROLLBACK
 != TRAJECTORY ROLLBACK
 ~~~
 
-The pressure-tested architecture already owns most onboarding truth in separate places:
+### Why the previously observed Work -> ProcessFamily.State gap is now held
+
+Earlier recovery analysis observed that the #190 portal could open the MetaWalk but could not generically answer:
 
 ~~~text
-Workgraph / Project
-  outcome + Work identity + lifecycle/current WorkState
-  dependencies + repositories + authority/effect disposition
-  accepted transition history + source refs
-
-Process Map
-  which durable process owner/source to follow
-
-ProcessFamily / MetaWalk
-  reusable process topology
-  + compact ProcessFamily.State contract
-
-VexBoard
-  read-only perception / construction projection
+"where is this Work inside ProcessFamily.State right now?"
 ~~~
 
-The currently observed missing relationship is narrower than a new onboarding framework:
+That remains a legitimate architecture pressure, but the clarified Pink intention does **not** currently require VexWork to invent a new persistent Work -> ProcessFamily.State binding.
+
+The real onboarding consumer can first use:
 
 ~~~text
-CURRENT WORK ITEM
-  -> rightful ProcessFamily
-  -> CURRENT ProcessFamily State / process node
+current company / operations / repository sources
++ current VexWork Project / Work truth
++ accepted process/source routes
++ the static orientation walk
++ the existing work plan and its exact current position
 ~~~
 
-Without that binding, the #190 portal can answer **"open the MetaWalk"** but not yet truthfully answer
-**"where is this work in that process right now?"** The public Work projection already exposes purpose,
-WorkState, authority/effects, repositories, sources, history, dependencies, and next process refs; it does
-not currently expose a durable ProcessFamily-State position.
+If lived fresh-instance use later proves that the plan/current-position truth cannot be represented or recovered from existing rightful owners, that concrete failure may earn a new binding or runtime surface.
 
-That observation is a **current design question**, not permission to restore the previously removed
-dynamic horizon runtime or to add node-level metadata that pressure proved unconsumed.
-
-### Current question
+Until then:
 
 ~~~text
-What is the smallest rightful consumer/binding
-that lets Pink Onboarding compose:
-
-  original outcome
-  + current Work truth
-  + current process position
-  + bounded read-now source
-  + current proof / next earnable movement
-
-without making Workgraph own process position,
-making ProcessFamily own WorkState,
-or creating another truth owner?
+USEFUL GENERIC PROCESS-POSITION QUESTION
+!= EARNED NEW STATE OWNER
 ~~~
+
+### Current work plan
+
+This is the plan a successor should receive **after** completing the orientation walk:
+
+~~~text
+P0  recover the earned #190 discoverability capability
+    STATUS: FORMED IN PR #194
+
+P1  repair the Architecture Convergence current-entry source
+    STATUS: FORMED IN PR #194
+
+P2  add one canonical reusable orientation foundation source
+    STATUS: FORMED IN PR #194 CANDIDATE
+
+P3  add one read-only VexWork visual representation + entry link
+    STATUS: FORMED IN PR #194 CANDIDATE
+
+P4  prove the exact current candidate
+    STATUS: PENDING FRESH EXACT-HEAD PROOF
+
+P5  perform fresh semantic Assurance on the exact proven head
+    STATUS: PENDING
+
+P6  integrate only if proof + currentness earn it
+    STATUS: HELD
+
+P7  lived fresh-instance entry:
+    read current sources
+    -> complete orientation walk
+    -> receive this plan + exact current position
+    -> identify any additional necessary source
+    -> continue correctly without predecessor-chat archaeology
+    STATUS: PENDING
+~~~
+
+A fresh instance does not need this predecessor's orientation answers. It needs the current sources, the orientation walk, this existing plan, and the exact plan position.
+
+### Before / after consequential decisions
+
+The full orientation walk is not repeated before every edit.
+
+During work, recall only its gist:
+
+~~~text
+BEFORE
+  what do I currently understand?
+  what assumption does this move depend on?
+  what inverse failure could an overcorrection create?
+  is there enough current evidence to act?
+
+ACT
+
+AFTER
+  what actually happened?
+  did the assumption hold?
+  did this retire causal obligation, repair self-created debt,
+  or merely produce evidence?
+  did I leave a mistake / stale premise behind?
+  what understanding must change before the next move?
+~~~
+
+This reconciliation is not a new receipt or lifecycle gate. It exists so mistakes do not silently become successor work.
 
 ### Do not solve yet
 
 ~~~text
-do not mark Pink Onboarding complete
-do not revive the removed generic dynamic horizon merely because the UI wants it
+do not create an orientation-answer database
+do not create a new onboarding lifecycle
+do not promote Work -> ProcessFamily.State merely because it is conceptually useful
+do not revive the removed generic dynamic horizon without a real consumer
 do not re-add unconsumed ProcessFamily node metadata
 do not change the broader WorkState merely because #189 / #187 merged
 do not classify #188 as superseded from this trajectory
 do not treat VexLife-Android #206 as accepted VexWork architecture
-do not create another onboarding framework before a real consumer proves the need
+do not make every decision produce another handoff / receipt / review artifact
 ~~~
 
-### Next earned movement
+### Completion pressure
 
-First preserve the already-earned #190 discoverability capability through fresh proof on the current
-recovery candidate. In parallel, pressure-test the missing Work -> ProcessFamily.State relationship
-against existing truth owners and a real Pink consumer. Add source/runtime surface only if that concrete
-consumer demonstrates that composition cannot be truthfully derived from existing accepted owners.
+The Pink Onboarding outcome is not complete because a page exists.
+
+The lived completion target is:
+
+~~~text
+genuinely fresh entrant
+-> reads current sources
+-> reflects current understanding sequentially
+-> receives foreground Work only after orientation
+-> receives existing plan + exact current position
+-> gathers only the additional context actually needed
+-> continues the correct trajectory
+-> reconciles consequential outcomes
+-> does not require Victor to reconstruct predecessor chat / ZIP chains /
+   hidden assumptions / provider archaeology
+~~~
+
+Current proof and integration remain separate from formation.
+
+Fresh exact-head SourceOwner / deterministic proof and fresh Assurance are still required before integration is claimed.
 
 The historical formation context below remains useful architecture/provenance, but statements written as
 then-current coordinates (for example, that PR #185 still needed to land) are **historical**, not present
