@@ -66,6 +66,49 @@ Track B may **not** inspect:
 If Track B accidentally sees the accepted solution, mark the trial contaminated and use another fresh
 instance/case.
 
+## Trial status
+
+### Track A
+
+~~~text
+A001
+terminal disposition = CLEAR
+~~~
+
+The fresh reviewer first requested changes, then revised its judgment after its own recommendation was
+challenged for causal basis, inverse cost, and observed-vs-hypothetical status.
+
+See:
+
+~~~text
+../prime-examples/01-FRESH-REVIEW-SELF-CORRECTION.md
+~~~
+
+### Track B
+
+~~~text
+A001
+status = CONTAMINATED
+~~~
+
+The outer handoff incorrectly told the planner to read current VexWork `docs/foundation/INDEX.md`.
+That current index names the later Human UI / `public/workspace.json` surface, so the locked plan cannot
+be claimed as independent blind discovery.
+
+The plan itself remains a useful worked example:
+
+~~~text
+../prime-examples/02-BLIND-PUBLIC-WORKSPACE-A001.md
+~~~
+
+A corrected A002 handoff is provided in:
+
+~~~text
+TRACK-B-A002-HANDOFF.md
+~~~
+
+A002 requires a genuinely fresh instance.
+
 ## Outputs
 
 Track A returns a proposal review.
