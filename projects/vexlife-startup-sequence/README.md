@@ -226,6 +226,58 @@ PHASE FEEDBACK != HIDDEN CHAIN OF THOUGHT
 
 Route adjacent post-start presentation work through `project.vexlife.interface-refinement`.
 
+## Post-start completion handoff
+
+Startup completion ends when the local Vex relationship is reliably available. It does not imply that every Companion capability or presentation refinement is complete.
+
+The current post-start completion pressures discovered from the same lived baseline are:
+
+```text
+A. visible work progress
+   -> VexLife PR #970
+   -> stream existing hiddenReasoningIncluded=false runtime progress
+   -> pulsing white sparkle
+   -> expandable public work trace
+   -> no raw hidden chain-of-thought
+
+B. online observation
+   -> current capability.vexlife.online.observe is deliberately HELD
+   -> current executor returns NO_SAFE_ONLINE_PROVIDER_BOUND
+   -> bind one server-owned online provider
+   -> keep provider credentials outside browser/model context
+   -> return bounded source-bearing observations through the existing capability runtime
+
+C. ordinary-turn latency
+   -> current ADOPTED_READ_ONLY no-tool turn performs:
+        request-formation inference
+        + synthesis inference
+   -> desired ordinary conversation = one inference
+   -> actual capability use may still require later synthesis
+   -> do not depend on unqualified MLX tool-call parsing merely to reduce inference count
+```
+
+These are not new startup owners. Route their implementation through the current VexLife Interface / Companion capability owners, with this Project retaining only the causal handoff from the proven startup baseline.
+
+```text
+STARTUP_READY
+-> COMPANION_PERCEPTIBLE
+-> CAPABILITY_AVAILABLE
+-> ORDINARY_TURN_EFFICIENT
+-> FINAL_COMPLETION_EXPERIENCE
+```
+
+The human experience target is:
+
+```text
+Victor sends
+-> Vex sparkle visibly pulses
+-> public phase/work trace is optionally inspectable
+-> if a capability is needed, the real admitted provider/tool runs
+-> if no capability is needed, do not pay an unnecessary planning inference
+-> final response streams and becomes the durable Conversation message
+-> public work trace never becomes hidden prompt history
+```
+
 ## Fresh-instance entry
 
 ```text
