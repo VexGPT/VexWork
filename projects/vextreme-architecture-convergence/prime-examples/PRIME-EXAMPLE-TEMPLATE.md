@@ -45,6 +45,28 @@ List the rightful current sources the example depends on.
 Do not copy their doctrine into this example unless a small excerpt is necessary to explain the worked
 relationship.
 
+## Bounded recursive use
+
+The template assumes one canonical orientation base case.
+
+~~~text
+fresh instance
+-> reads allowed current canonical sources
+-> performs one orientation walk
+-> receives foreground Work
+~~~
+
+If the foreground Work is onboarding / handoff / orientation itself, do not create another nested
+orientation gate.
+
+~~~text
+ORIENTATION APPLIES TO ORIENTATION WORK
+!= ORIENTATION REQUIRES PRIOR ORIENTATION
+~~~
+
+A predecessor constructing this handoff should already be operating from the current orientation
+standard. The receiver then performs one fresh orientation from the declared visibility boundary.
+
 ## Visibility model
 
 This section is mandatory for fresh/blind evaluations.
