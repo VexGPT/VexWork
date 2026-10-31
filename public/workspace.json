@@ -13039,7 +13039,12 @@
           "repo.vexlife:src/core/heretic-runtime-establishment.mjs",
           "repo.vexlife:scripts/macos-lifecycle.mjs",
           "repo.vexlife:src/core/lived-companion.mjs",
-          "repo.vexlife:reference/browser/modules/chat-controller.js"
+          "repo.vexlife:reference/browser/modules/chat-controller.js",
+          "github.pull.vexlife.970",
+          "repo.vexlife:src/core/model-runtime-adapter.mjs",
+          "repo.vexlife:src/core/capability-assimilation-runtime.mjs",
+          "repo.vexlife:src/core/lived-companion-connection.mjs",
+          "repo.vexlife:docs/vexlife-assortment/practicum-candidates/conversation-refinement-startup-sequence-01/RUNBOOK.md"
         ],
         "formedAt": "2026-10-31T04:46:00.000Z"
       },
@@ -13296,6 +13301,40 @@
           "transitionHistory": []
         },
         {
+          "workRef": "work.vexlife.startup-sequence.reasoning-channel-investigation",
+          "label": "Investigate live model-emitted reasoning before claiming capability absence",
+          "purpose": "Preserve the source-grounded correction that VexLife already recognizes choices[0].message.reasoning_content as MODEL_EMITTED_REASONING_TRACE with humanProjection SEALED_EXPLICIT_OPEN_ONLY, while capability progress hiddenReasoningIncluded=false applies only to runtime progress frames. Before denying reasoning visibility or substituting canned/synthetic progress, observe an exact live Heretic turn and distinguish reasoning emission PRESENT / ABSENT / UNKNOWN; then route any confirmed human projection through the rightful Interface / Conversation owner.",
+          "workClass": "TASK",
+          "state": "READY",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": "work.vexlife.startup-sequence.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.startup-sequence.baseline-origin"
+          ],
+          "repositoryRefs": [
+            "repo.vexlife"
+          ],
+          "sourceRefs": [
+            "projects/vexlife-startup-sequence/README.md",
+            "project.vexlife.interface-refinement",
+            "github.pull.vexlife.970",
+            "repo.vexlife:src/core/model-runtime-adapter.mjs",
+            "repo.vexlife:src/core/capability-assimilation-runtime.mjs",
+            "repo.vexlife:src/core/lived-companion-connection.mjs",
+            "repo.vexlife:reference/browser/modules/chat-controller.js",
+            "repo.vexlife:docs/vexlife-assortment/practicum-candidates/conversation-refinement-startup-sequence-01/RUNBOOK.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-10-31T09:50:01.000Z",
+          "updatedAt": "2026-10-31T09:50:01.000Z",
+          "transitionHistory": []
+        },
+        {
           "workRef": "work.vexlife.startup-sequence.support-report-delivery",
           "label": "Make startup reports easy to deliver for support",
           "purpose": "After the safe report format exists, give the human a simple delivery path: first save one clearly named local report that can be attached to email/support manually, then later evaluate an explicit-consent upload/email route without turning support transport into startup authority or leaking private Vex Home content.",
@@ -13345,7 +13384,8 @@
             "work.vexlife.startup-sequence.explainable-progression",
             "work.vexlife.startup-sequence.layered-failure-report",
             "work.vexlife.startup-sequence.managed-bootstrap-dependencies",
-            "work.vexlife.startup-sequence.python-compatibility-qualification"
+            "work.vexlife.startup-sequence.python-compatibility-qualification",
+            "work.vexlife.startup-sequence.reasoning-channel-investigation"
           ]
         },
         {
@@ -13389,10 +13429,10 @@
         }
       ],
       "summary": {
-        "workItemCount": 9,
-        "openWorkItemCount": 8,
+        "workItemCount": 10,
+        "openWorkItemCount": 9,
         "outcomeCount": 1,
-        "taskCount": 8,
+        "taskCount": 9,
         "defectCount": 0,
         "potentialCount": 0,
         "needsHumanCount": 0,
@@ -13416,6 +13456,7 @@
             "work.vexlife.startup-sequence.layered-failure-report",
             "work.vexlife.startup-sequence.managed-bootstrap-dependencies",
             "work.vexlife.startup-sequence.python-compatibility-qualification",
+            "work.vexlife.startup-sequence.reasoning-channel-investigation",
             "work.vexlife.startup-sequence.support-report-delivery"
           ],
           "dependencyRefs": [],
