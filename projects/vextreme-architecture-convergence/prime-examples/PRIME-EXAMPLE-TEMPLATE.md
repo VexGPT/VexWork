@@ -138,6 +138,39 @@ current allowed world
 
 Do not supply the foreground solution theory during this phase.
 
+## Observable orientation interaction
+
+For a fresh-instance evaluation, do not treat source availability as proof that orientation occurred.
+
+The handoff should require visible sequential responses:
+
+~~~text
+Reflection 1 response
+-> retained in active conversation
+
+Reflection 2
+-> explicitly examines Reflection 1
+
+Reflection 3
+-> explicitly examines the combined property
+
+only then
+-> foreground Work reveal
+~~~
+
+~~~text
+ORIENTATION SOURCE PRESENT
+!= ORIENTATION PERFORMED
+~~~
+
+When the host cannot enforce staged reveal automatically, a human may manually advance the three rounds.
+
+That human action should remain tiny: ask the already-defined question and wait for the answer. Do not make
+the human explain the technical context or reconstruct predecessor work.
+
+If the instance skips a round or enters Work early, record the trial as an observed orientation failure
+rather than silently assuming compliance.
+
 ## Phase 2 — work reveal
 
 After orientation, supply:
