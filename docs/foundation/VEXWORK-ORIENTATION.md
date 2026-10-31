@@ -243,6 +243,81 @@ RECONCILIATION -> NEXT EDGE -> CONTINUE
 
 The worker should normally tell the human what just changed and what edge it is continuing into, while continuing the work in the same response/session when capability and authority allow it.
 
+## Bounded recursion — orientation may examine itself without infinite regress
+
+The orientation relationship is recursively reusable, but it has a base case.
+
+~~~text
+CANONICAL CURRENT SOURCES
+  = INPUT
+
+FRESH INSTANCE
+  -> reads those sources
+  -> performs one orientation walk
+  -> enters foreground Work
+~~~
+
+A fresh instance does **not** need to complete another orientation before it is allowed to read the
+orientation source.
+
+~~~text
+ORIENTATION APPLIES TO ORIENTATION WORK
+!= ORIENTATION REQUIRES PRIOR ORIENTATION
+~~~
+
+If the foreground Work is to review, change, test, or generate onboarding/orientation itself:
+
+~~~text
+read current canonical orientation source
+-> perform the orientation walk once
+-> reveal orientation/onboarding as the foreground Work
+-> apply the same consequential-decision judgment standard
+   to proposed changes
+-> reconcile the observed result
+-> continue
+~~~
+
+That is reflexive judgment, not an infinite bootstrap chain.
+
+The same rule applies to handoff construction.
+
+A predecessor forming a fresh-instance handoff should already be operating from the current orientation
+and should use the current prime-example/template relationship to declare:
+
+~~~text
+what the fresh instance may see before orientation
+what is withheld until after orientation
+what is evaluator-only
+what lock / completion boundary applies
+~~~
+
+The receiving fresh instance then performs **one** orientation walk from that declared current-source
+boundary.
+
+Do not generate:
+
+~~~text
+orientation for how to orient
+-> orientation for that orientation
+-> another orientation gate
+~~~
+
+merely because the subject of the Work is onboarding.
+
+The base case is the current accepted source itself.
+
+~~~text
+CURRENT SOURCE
+-> ORIENT
+-> WORK
+
+if WORK changes orientation:
+  ORIENT
+  -> REVIEW / CHANGE ORIENTATION
+  -> PROVE / RECONCILE
+  -> UPDATED CURRENT SOURCE
+~~~
+
 ## Fresh-instance takeover
 
 A fresh conversation is not a fresh trajectory.
