@@ -564,7 +564,7 @@ test('VexBoard how-to-begin map exposes the accepted MetaWalk as a read-only onb
   const portal = graph.nodes.find((node) => node.nodeRef === 'node.vexboard.vexwork-metawalk');
   assert.ok(portal, 'how-to-begin map must expose one MetaWalk onboarding portal');
   assert.equal(portal.kind, 'PORTAL');
-  assert.equal(portal.label, 'VexWork Onboarding · MetaWalk');
+  assert.equal(portal.label, '🩷 Pink · VexWork Onboarding · MetaWalk');
   assert.equal(portal.detailBoardRefOrNull, 'board.vexwork.process-family-metawalk');
   assert.equal(portal.sourceRefs.includes('docs/process/VEX-PROCESS-FAMILY-METAWALK.md'), true);
   assert.equal(portal.sourceRefs.includes('docs/foundation/VEXWORK-ORIENTATION.md'), true);
