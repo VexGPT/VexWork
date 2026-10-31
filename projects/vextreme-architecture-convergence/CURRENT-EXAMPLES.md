@@ -270,10 +270,10 @@ base
 0193ba6d43e1fa5267e4a8c2130b3e970697fd86
 
 head
-581fdc2b5e4b2e9202fd816b92866db9751cb593
+d8938825035c865b826ec466d6d2dd30b4e58adb
 
 tree
-0f345af751e4daa523bc917d2066dd41ae98118f
+6dbbd9ef218281b64332d81a23931808bb13bb5a
 ~~~
 
 Its current formed effects are:
@@ -402,6 +402,27 @@ EXECUTOR FORMATION DEFECT
 
 This is the intended before/after decision discipline in practice: do not leave a mistake behind merely
 because the next plan step is available.
+
+## Placement reconciliation
+
+The orientation visual remains a standalone VexWork page, but the current candidate no longer inserts it
+into the stable global VexWork toolbar.
+
+The earned discoverability route is:
+
+~~~text
+existing VexBoard "how to begin"
+-> VexWork Onboarding · MetaWalk
+-> orientation source / visual projection
+~~~
+
+~~~text
+ONBOARDING DISCOVERABILITY
+!= GLOBAL NAVIGATION PRIORITY
+~~~
+
+This preserves current VexWork landing stability while keeping the reusable onboarding surface
+source-addressable and visually available.
 
 ## Current proof boundary
 
@@ -590,8 +611,8 @@ HELD / MISSING PREDICATE
 
 CURRENT IMPLEMENTATION COORDINATE
   VexWork PR #194
-  head 581fdc2b5e4b2e9202fd816b92866db9751cb593
-  tree 0f345af751e4daa523bc917d2066dd41ae98118f
+  head d8938825035c865b826ec466d6d2dd30b4e58adb
+  tree 6dbbd9ef218281b64332d81a23931808bb13bb5a
 ~~~
 
 The successor does **not** need:
