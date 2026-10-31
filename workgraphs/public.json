@@ -5493,6 +5493,39 @@
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.startup-sequence.reasoning-channel-investigation",
+      "parentWorkRefOrNull": "work.vexlife.startup-sequence.outcome",
+      "label": "Investigate live model-emitted reasoning before claiming capability absence",
+      "purpose": "Preserve the source-grounded correction that VexLife already recognizes choices[0].message.reasoning_content as MODEL_EMITTED_REASONING_TRACE with humanProjection SEALED_EXPLICIT_OPEN_ONLY, while capability progress hiddenReasoningIncluded=false applies only to runtime progress frames. Before denying reasoning visibility or substituting canned/synthetic progress, observe an exact live Heretic turn and distinguish reasoning emission PRESENT / ABSENT / UNKNOWN; then route any confirmed human projection through the rightful Interface / Conversation owner.",
+      "workClass": "TASK",
+      "state": "READY",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexlife.startup-sequence.baseline-origin"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-startup-sequence/README.md",
+        "project.vexlife.interface-refinement",
+        "github.pull.vexlife.970",
+        "repo.vexlife:src/core/model-runtime-adapter.mjs",
+        "repo.vexlife:src/core/capability-assimilation-runtime.mjs",
+        "repo.vexlife:src/core/lived-companion-connection.mjs",
+        "repo.vexlife:reference/browser/modules/chat-controller.js",
+        "repo.vexlife:docs/vexlife-assortment/practicum-candidates/conversation-refinement-startup-sequence-01/RUNBOOK.md"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-31T09:50:01.000Z",
+      "updatedAt": "2026-10-31T09:50:01.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vexlife.startup-sequence.python-compatibility-qualification",
       "parentWorkRefOrNull": "work.vexlife.startup-sequence.outcome",
       "label": "Qualify newer Python without weakening the known-good 3.14.7 path",
@@ -10636,7 +10669,13 @@
     "projects/vexlife-startup-sequence/README.md",
     "projects/vexlife-welcome-wagon/README.md",
     "projects/vexsync-debugmenu-blueprints/README.md",
-    "projects/vextreme-architecture-convergence/README.md"
+    "projects/vextreme-architecture-convergence/README.md",
+    "github.pull.vexlife.970",
+    "repo.vexlife:src/core/model-runtime-adapter.mjs",
+    "repo.vexlife:src/core/capability-assimilation-runtime.mjs",
+    "repo.vexlife:src/core/lived-companion-connection.mjs",
+    "repo.vexlife:reference/browser/modules/chat-controller.js",
+    "repo.vexlife:docs/vexlife-assortment/practicum-candidates/conversation-refinement-startup-sequence-01/RUNBOOK.md"
   ],
   "formedAt": "2026-10-21T01:45:00.000Z"
 }
