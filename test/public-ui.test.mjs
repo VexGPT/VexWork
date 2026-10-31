@@ -24,6 +24,10 @@ test('orientation is a read-only source-grounded judgment surface rather than a 
   assert.match(orientationPage, /EXISTING WORK PLAN/);
   assert.match(orientationPage, /CURRENT PLAN POSITION/);
   assert.match(orientationPage, /ORIENTATION != WORKFLOW/);
+  assert.match(orientationPage, /Continuation is the default:/);
+  assert.match(orientationSource, /CHECKPOINT != STOP CONDITION/);
+  assert.match(orientationSource, /Is the failure I am correcting observed,/);
+  assert.match(orientationSource, /What valid property would my proposed correction weaken,/);
   assert.match(orientationSource, /current sources\n-> fresh instance reads them/);
   assert.match(orientationSource, /The plan is continuity, not authority\./);
   assert.match(orientationSource, /the predecessor's orientation answers/i);
