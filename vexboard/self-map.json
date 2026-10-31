@@ -36,7 +36,7 @@
       {
         "nodeRef": "node.vexboard.vexwork-metawalk",
         "kind": "PORTAL",
-        "label": "VexWork Onboarding · MetaWalk",
+        "label": "🩷 Pink · VexWork Onboarding · MetaWalk",
         "parentRefOrNull": null,
         "detailBoardRefOrNull": "board.vexwork.process-family-metawalk",
         "sourceRefs": ["docs/process/VEX-PROCESS-FAMILY-METAWALK.md", "docs/foundation/VEXWORK-ORIENTATION.md", "orientation.html", "projects/vexboard/examples/vexwork-process-family-metawalk.board.json"]
