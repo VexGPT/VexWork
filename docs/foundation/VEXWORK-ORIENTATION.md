@@ -69,70 +69,6 @@ The reflections are sequential.
 
 Do not answer all of them at once. The answer to each reflection becomes part of the material examined by the next one.
 
-### Orientation must be performed, not merely available
-
-A canonical source existing in the repository does not prove that a fresh instance actually performed the
-orientation.
-
-~~~text
-ORIENTATION SOURCE PRESENT
-!= ORIENTATION PERFORMED
-
-CLAIMED READING
-!= OBSERVED REFLECTION
-~~~
-
-The current realization is deliberately simple: the three reflections are elicited one at a time in the
-active conversation before foreground Work is revealed.
-
-~~~text
-human / host asks Reflection 1
--> instance answers in-context
-
-that exact answer remains visible
--> Reflection 2 examines it
--> instance answers in-context
-
-those answers remain visible
--> Reflection 3 examines the whole property
--> instance answers in-context
-
-only then
--> foreground Work is introduced
-~~~
-
-This creates observable interaction evidence without inventing a hidden-cognition proof system.
-
-The evidence is not "the model truly understood internally." The evidence is that the instance itself
-made its current understanding, assumptions, inverse failures, and synthesized orientation explicit in
-the same active context that will receive the Work.
-
-That matters because later drift can be compared against what the instance actually articulated rather
-than against an assumed document read.
-
-~~~text
-STATIC INSTRUCTION
-  can be skipped / skimmed / weakly integrated
-
-SEQUENTIAL IN-CONTEXT RESPONSE
-  becomes explicit material for the next reflection
-  and remains available when Work is introduced
-~~~
-
-A human manually asking the three rounds is therefore a valid and currently preferred realization when
-the host product does not itself enforce sequential reveal.
-
-This is a small human interaction, not a request for Victor to reconstruct technical context. The human
-does not need to explain the sources or the Work; they only advance the three already-defined reflection
-rounds.
-
-If an instance skips a round, answers all three at once despite the boundary, or proceeds into Work before
-the sequence is complete, treat that as an observed orientation failure rather than silently assuming the
-orientation happened.
-
-Do not compensate by creating more doctrine. Repeat or restart the bounded orientation interaction and
-preserve the visible failure as evidence when it matters.
-
 ### Reflection 1 — current understanding before work
 
 After reading the current sources, answer:
@@ -258,117 +194,24 @@ No extra receipt or document is required merely to prove that reflection happene
 
 ## Continuation is the default
 
-A material step finishing is not, by itself, a reason to hand the trajectory back to Victor.
-
-After each consequential result:
+A checkpoint or completed step does not by itself end the trajectory.
 
 ~~~text
 reconcile what happened
--> update current understanding if needed
 -> name the next unconsumed causal edge
--> continue into that edge
+-> continue
 ~~~
 
-Do not require the human to say:
-
-~~~text
-"continue"
-"what next?"
-"go ahead"
-~~~
-
-merely because a commit, review, checkpoint, proof attempt, or diagnostic step finished.
-
-A checkpoint records the current truth and resume coordinate. It does **not** create a pause condition.
-
-Stop or hand off only when one of these is genuinely true:
-
-~~~text
-the admitted human outcome is complete;
-
-a protected / human-only decision or action is actually required;
-
-an unavailable capability blocks the dependent effect
-and no truthful alternative route is available;
-
-material ambiguity cannot be resolved from current source/evidence
-without human intention or authority;
-
-or execution must move to a fresh instance / host.
-~~~
-
-Even at a fresh-instance threshold, the current executor should first preserve the smallest truthful takeover coordinate. The successor then re-orients and continues the already-admitted trajectory; Victor should not have to reconstruct or manually restart it.
+Stop only when the admitted outcome is complete or a genuine human, authority, capability, or transfer boundary holds the dependent effect.
 
 ~~~text
 CHECKPOINT != STOP CONDITION
 STEP COMPLETE != TRAJECTORY COMPLETE
-RECONCILIATION -> NEXT EDGE -> CONTINUE
 ~~~
 
-The worker should normally tell the human what just changed and what edge it is continuing into, while continuing the work in the same response/session when capability and authority allow it.
+## Bounded recursion
 
-## Bounded recursion — orientation may examine itself without infinite regress
-
-The orientation relationship is recursively reusable, but it has a base case.
-
-~~~text
-CANONICAL CURRENT SOURCES
-  = INPUT
-
-FRESH INSTANCE
-  -> reads those sources
-  -> performs one orientation walk
-  -> enters foreground Work
-~~~
-
-A fresh instance does **not** need to complete another orientation before it is allowed to read the
-orientation source.
-
-~~~text
-ORIENTATION APPLIES TO ORIENTATION WORK
-!= ORIENTATION REQUIRES PRIOR ORIENTATION
-~~~
-
-If the foreground Work is to review, change, test, or generate onboarding/orientation itself:
-
-~~~text
-read current canonical orientation source
--> perform the orientation walk once
--> reveal orientation/onboarding as the foreground Work
--> apply the same consequential-decision judgment standard
-   to proposed changes
--> reconcile the observed result
--> continue
-~~~
-
-That is reflexive judgment, not an infinite bootstrap chain.
-
-The same rule applies to handoff construction.
-
-A predecessor forming a fresh-instance handoff should already be operating from the current orientation
-and should use the current prime-example/template relationship to declare:
-
-~~~text
-what the fresh instance may see before orientation
-what is withheld until after orientation
-what is evaluator-only
-what lock / completion boundary applies
-~~~
-
-The receiving fresh instance then performs **one** orientation walk from that declared current-source
-boundary.
-
-Do not generate:
-
-~~~text
-orientation for how to orient
--> orientation for that orientation
--> another orientation gate
-~~~
-
-merely because the subject of the Work is onboarding.
-
-The base case is the current accepted source itself.
+Orientation may itself become foreground Work.
 
 ~~~text
 CURRENT SOURCE
@@ -376,11 +219,12 @@ CURRENT SOURCE
 -> WORK
 
 if WORK changes orientation:
-  ORIENT
-  -> REVIEW / CHANGE ORIENTATION
-  -> PROVE / RECONCILE
-  -> UPDATED CURRENT SOURCE
+  review / change it as Work
+  -> prove / reconcile
+  -> updated current source
 ~~~
+
+Do not create nested orientation gates merely because onboarding itself is being reviewed.
 
 ## Fresh-instance takeover
 
@@ -447,18 +291,15 @@ This orientation foundation is useful when a genuinely fresh entrant can:
 
 ~~~text
 read current sources
--> answer Reflection 1 in the active conversation
--> answer Reflection 2 against its actual Reflection-1 answer
--> answer Reflection 3 against the resulting whole property
--> only then receive current Work + existing plan + exact plan position
+-> compile their meaning
+-> surface material assumptions before work
+-> perceive inverse failure modes
+-> receive current Work + existing plan + exact plan position
 -> gather only the additional context the Work actually needs
 -> act
 -> reconcile consequential results
 -> continue without predecessor-chat archaeology
 ~~~
-
-The three visible sequential responses are the current interaction evidence that orientation was
-performed. No deeper proof of hidden model state is required or claimed.
 
 If that lived entry still depends on Victor manually reconstructing what the predecessor meant, the onboarding outcome remains incomplete.
 
