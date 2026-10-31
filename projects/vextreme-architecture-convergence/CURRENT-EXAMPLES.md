@@ -270,10 +270,10 @@ base
 0193ba6d43e1fa5267e4a8c2130b3e970697fd86
 
 head
-173d727cc2ccc390b16cd8b3dd2df0a43e8bcfc5
+1ea561860ab674cd2222234621f25da21e8d08dc
 
 tree
-edfdfbaa57c0bc40c471e2f9bfae33dbcfbc1be5
+aa3fbd933b18a9573510ba33d7802b8813603d32
 ~~~
 
 Its current formed effects are:
@@ -374,6 +374,34 @@ EXACT-HEAD PROOF
 ~~~
 
 Do not add more Pink architecture merely because P4 is held.
+
+## Post-formation reconciliation
+
+A pre-proof provider-diff review of PR #194 exposed two formation mistakes introduced by the active
+executor while constructing the orientation candidate:
+
+~~~text
+docs/foundation/INDEX.md
+  orientation row contained literal \\n text instead of a real line break
+
+test/public-ui.test.mjs
+  new fixture declarations contained literal \\n text instead of real line breaks
+~~~
+
+Those were executor/source-formation defects, not Pink architecture findings.
+
+They were repaired on the same implementation branch before exact-head proof, producing the current
+coordinate above.
+
+~~~text
+EXECUTOR FORMATION DEFECT
+-> repair only affected source formatting
+-> rotate exact head/tree
+-> keep P4 pending
+~~~
+
+This is the intended before/after decision discipline in practice: do not leave a mistake behind merely
+because the next plan step is available.
 
 ## Current proof boundary
 
@@ -481,8 +509,8 @@ HELD / MISSING PREDICATE
 
 CURRENT IMPLEMENTATION COORDINATE
   VexWork PR #194
-  head 173d727cc2ccc390b16cd8b3dd2df0a43e8bcfc5
-  tree edfdfbaa57c0bc40c471e2f9bfae33dbcfbc1be5
+  head 1ea561860ab674cd2222234621f25da21e8d08dc
+  tree aa3fbd933b18a9573510ba33d7802b8813603d32
 ~~~
 
 The successor does **not** need:
