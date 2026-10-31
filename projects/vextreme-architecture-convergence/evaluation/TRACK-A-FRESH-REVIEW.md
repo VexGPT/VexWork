@@ -79,6 +79,36 @@ Do not use these as a checklist that replaces whole judgment. They are review pr
 8. What should be removed, simplified, or added before exact-head proof/integration?
 9. What would you consider lived completion of Pink Onboarding?
 
+## Before locking the review disposition
+
+Do not treat your first `CLEAR` or `CHANGES_REQUESTED` as automatically terminal.
+
+If you propose a material source/architecture change, challenge that recommendation before locking it:
+
+~~~text
+What exact change am I asking for?
+
+What current evidence says the change is required?
+
+Is the failure observed,
+contract-required,
+or only hypothetical?
+
+If the change succeeds,
+what currently valid property becomes weaker,
+harder,
+or impossible?
+
+Does seeing that inverse cost change my judgment?
+~~~
+
+You may defend the original recommendation or revise it.
+
+The point is not to force agreement. It is to make the recommendation falsifiable by its own causal
+reasoning before source mutation.
+
+Then lock the terminal review disposition.
+
 ## Required output
 
 Return:
