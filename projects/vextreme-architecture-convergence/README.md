@@ -174,31 +174,25 @@ USEFUL GENERIC PROCESS-POSITION QUESTION
 != EARNED NEW STATE OWNER
 ~~~
 
-### Current work plan
+### Work plan
 
-This is the plan a successor should receive **after** completing the orientation walk:
+This source preserves the causal plan shape, not transient lifecycle status. A successor should pair it with
+the exact current plan position from current coordination/evidence after completing the orientation walk:
 
 ~~~text
 P0  recover the earned #190 discoverability capability
-    STATUS: FORMED IN PR #194
 
 P1  repair the Architecture Convergence current-entry source
-    STATUS: FORMED IN PR #194
 
 P2  add one canonical reusable orientation foundation source
-    STATUS: FORMED IN PR #194 CANDIDATE
 
-P3  add one read-only VexWork visual representation + entry link
-    STATUS: FORMED IN PR #194 CANDIDATE
+P3  add one read-only VexWork visual representation under the existing MetaWalk discoverability route
 
 P4  prove the exact current candidate
-    STATUS: PENDING FRESH EXACT-HEAD PROOF
 
-P5  perform fresh semantic Assurance on the exact proven head
-    STATUS: PENDING
+P5  perform semantic Assurance on the exact proven head
 
 P6  integrate only if proof + currentness earn it
-    STATUS: HELD
 
 P7  lived fresh-instance entry:
     read current sources
@@ -206,10 +200,10 @@ P7  lived fresh-instance entry:
     -> receive this plan + exact current position
     -> identify any additional necessary source
     -> continue correctly without predecessor-chat archaeology
-    STATUS: PENDING
 ~~~
 
-A fresh instance does not need this predecessor's orientation answers. It needs the current sources, the orientation walk, this existing plan, and the exact plan position.
+A fresh instance does not need this predecessor's orientation answers. It needs the current sources, this
+plan, the exact current plan position, and current evidence.
 
 ### Before / after consequential decisions
 
@@ -280,9 +274,8 @@ genuinely fresh entrant
    hidden assumptions / provider archaeology
 ~~~
 
-Current proof and integration remain separate from formation.
-
-Fresh exact-head SourceOwner / deterministic proof and fresh Assurance are still required before integration is claimed.
+Proof, Assurance, and integration remain separate effects. Their current status is re-grounded from exact
+candidate/provider evidence rather than frozen into this durable project source.
 
 The historical formation context below remains useful architecture/provenance, but statements written as
 then-current coordinates (for example, that PR #185 still needed to land) are **historical**, not present
