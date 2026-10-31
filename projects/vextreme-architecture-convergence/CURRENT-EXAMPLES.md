@@ -270,10 +270,10 @@ base
 0193ba6d43e1fa5267e4a8c2130b3e970697fd86
 
 head
-1ea561860ab674cd2222234621f25da21e8d08dc
+91ffc77ab2f77e4d5e6021965715adcbfe9b649a
 
 tree
-aa3fbd933b18a9573510ba33d7802b8813603d32
+ad44ad81217d5f2494a5468f13b9804a2159f575
 ~~~
 
 Its current formed effects are:
@@ -430,6 +430,77 @@ The current #194 head also had no workflow run or commit status to consume as pr
 Formation-level provider inspection confirmed that the intended files/invariants are present, but those
 checks are **not** relabeled as exact-head deterministic / SourceOwner proof.
 
+## Track A fresh-review evidence — review the recommendation, not only the candidate
+
+The first fresh reviewer produced a materially useful initial objection rather than immediate agreement.
+
+It first returned:
+
+~~~text
+CHANGES_REQUESTED
+~~~
+
+because it inferred that a fresh entrant might need a minimal Work/trajectory envelope before orientation
+in order to know which sources to read.
+
+Victor then challenged the recommendation itself:
+
+~~~text
+what exact change are you requesting?
+why does current evidence require it?
+if the change succeeds, what valid property is lost?
+~~~
+
+That counterfactual exposed the inverse cost:
+
+~~~text
+minimal Work framing before orientation
+-> improves bounded discoverability
+
+but can also
+
+-> prime attention around the supplied task
+-> organize source reading around a predecessor problem frame
+-> weaken epistemic independence before Reflection 1
+~~~
+
+The reviewer then reclassified its premise:
+
+~~~text
+possible navigation ambiguity
+= hypothetical pressure
+
+not
+
+observed failure
+= earned architecture change
+~~~
+
+and revised its disposition to:
+
+~~~text
+CLEAR
+~~~
+
+This is important process evidence.
+
+~~~text
+FRESH REVIEW != AUTOMATIC AUTHORITY
+
+RECOMMENDATION
+-> examine causal basis
+-> examine inverse cost
+-> distinguish observed / contract-required / hypothetical
+-> defend or revise
+-> then act
+~~~
+
+The review changed because the reviewer's causal model became more complete, not because the human simply
+preferred another answer.
+
+This pattern now belongs inside the existing before-decision judgment recollection rather than earning a
+new review process or receipt family.
+
 ## Before / after a consequential decision
 
 The full orientation walk is not repeated before every code edit.
@@ -468,6 +539,22 @@ What understanding must change before the next move?
 ~~~
 
 This reflection does not itself require another receipt, review artifact, lifecycle state, or handoff.
+
+Continuation is the default after reconciliation:
+
+~~~text
+reconcile
+-> update understanding if needed
+-> name the next unconsumed causal edge
+-> continue
+~~~
+
+A checkpoint records current truth and resume coordinates. It is not a reason to stop and wait for Victor
+to say `continue` or ask `what next?`.
+
+Stop only for actual completion, a genuine human/protected boundary, a blocking unavailable capability
+with no truthful alternate route, unresolved human-intention/authority ambiguity, or a real
+fresh-instance/host transfer.
 
 ## Fresh-instance takeover contract
 
@@ -509,8 +596,8 @@ HELD / MISSING PREDICATE
 
 CURRENT IMPLEMENTATION COORDINATE
   VexWork PR #194
-  head 1ea561860ab674cd2222234621f25da21e8d08dc
-  tree aa3fbd933b18a9573510ba33d7802b8813603d32
+  head 91ffc77ab2f77e4d5e6021965715adcbfe9b649a
+  tree ad44ad81217d5f2494a5468f13b9804a2159f575
 ~~~
 
 The successor does **not** need:
