@@ -48,8 +48,24 @@ current VexWork docs/CULTURE.md
 current Pink orientation walk / manifesto
 ~~~
 
-Do not use the current VexWork README, completed Work entries, or current dashboard-specific source while
-doing the blind case.
+Do not use current VexWork sources that reveal later public/UI architecture while doing the blind case.
+
+Explicitly forbidden before the plan is locked:
+
+~~~text
+current VexWork README.md
+current VexWork docs/foundation/INDEX.md
+current public/workspace.json
+current src/core/public-workspace.mjs
+current index.html / workspace-reader.js as Human UI evidence
+current completed Work entries for this case
+~~~
+
+The current foundation index is forbidden because it now names later Human UI / `public/workspace.json`
+source and therefore leaks a post-historical solution coordinate.
+
+The **outer handoff must not add broader current VexWork sources** beyond the pre-orientation allowlist in
+this file. Blindness is end-to-end; an inner "do not peek" rule does not repair an outer source leak.
 
 Perform the sequential orientation reflections before reading the work problem below.
 
