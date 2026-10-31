@@ -107,7 +107,19 @@ A corrected A002 handoff is provided in:
 TRACK-B-A002-HANDOFF.md
 ~~~
 
-A002 requires a genuinely fresh instance.
+A002 was executed by a genuinely fresh instance and passed the known source-leak audit.
+
+~~~text
+A002
+status = PRIME_EXAMPLE
+evaluator = CONVERGENT_JUDGMENT
+~~~
+
+See:
+
+~~~text
+../prime-examples/03-BLIND-PUBLIC-WORKSPACE-A002.md
+~~~
 
 ## Outputs
 
