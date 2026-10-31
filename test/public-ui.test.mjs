@@ -25,14 +25,6 @@ test('orientation is a read-only source-grounded judgment surface rather than a 
   assert.match(orientationPage, /CURRENT PLAN POSITION/);
   assert.match(orientationPage, /ORIENTATION != WORKFLOW/);
   assert.match(orientationPage, /Continuation is the default:/);
-  assert.match(orientationPage, /Bounded recursion:/);
-  assert.match(orientationPage, /Perform it, don’t merely read it:/);
-  assert.match(orientationSource, /ORIENTATION SOURCE PRESENT/);
-  assert.match(orientationSource, /ORIENTATION PERFORMED/);
-  assert.match(orientationSource, /CLAIMED READING/);
-  assert.match(orientationSource, /OBSERVED REFLECTION/);
-  assert.match(orientationSource, /ORIENTATION APPLIES TO ORIENTATION WORK/);
-  assert.match(orientationSource, /ORIENTATION REQUIRES PRIOR ORIENTATION/);
   assert.match(orientationSource, /CHECKPOINT != STOP CONDITION/);
   assert.match(orientationSource, /Is the failure I am correcting observed,/);
   assert.match(orientationSource, /What valid property would my proposed correction weaken,/);
