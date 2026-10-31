@@ -95,7 +95,7 @@ PR #194
 
 ### Current refined implementation
 
-The current candidate preserves the exact #190 discoverability relationship and adds the smallest new consumer actually earned by the later human pressure:
+The current candidate preserves the exact #190 discoverability relationship and adds the smallest new orientation consumer actually earned by the later human pressure, while preserving the stable VexWork landing navigation:
 
 ~~~text
 canonical orientation source
@@ -104,8 +104,11 @@ canonical orientation source
 read-only shared visual surface
   orientation.html
 
-VexWork entry affordance
-  index.html -> Orientation
+placement / discoverability
+  existing VexBoard "how to begin"
+  -> VexWork Onboarding · MetaWalk
+  -> orientation source / visual projection
+  -> no direct VexWork landing-navigation mutation
 
 fresh-instance takeover rule
   re-orient first
