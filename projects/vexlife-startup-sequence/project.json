@@ -24,7 +24,12 @@
     "repo.vexlife:src/core/heretic-runtime-establishment.mjs",
     "repo.vexlife:scripts/macos-lifecycle.mjs",
     "repo.vexlife:src/core/lived-companion.mjs",
-    "repo.vexlife:reference/browser/modules/chat-controller.js"
+    "repo.vexlife:reference/browser/modules/chat-controller.js",
+    "github.pull.vexlife.970",
+    "repo.vexlife:src/core/model-runtime-adapter.mjs",
+    "repo.vexlife:src/core/capability-assimilation-runtime.mjs",
+    "repo.vexlife:src/core/lived-companion-connection.mjs",
+    "repo.vexlife:docs/vexlife-assortment/practicum-candidates/conversation-refinement-startup-sequence-01/RUNBOOK.md"
   ],
   "formedAt": "2026-10-31T04:46:00.000Z"
 }
