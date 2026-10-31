@@ -26,7 +26,162 @@ This Project exists because the website has now exposed several real seams whose
 same architectural question. Continuing them as unrelated patches would make future workers repeatedly
 reconstruct who owns what and why.
 
-## Current entry — Form Architecture / VexRelay Family Circuit convergence
+## Current entry — Recover Pink VexWork Onboarding from the accepted MetaWalk trajectory
+
+The foreground is **trajectory recovery**, not a new Family/architecture lane and not a PR queue.
+
+The original MetaWalk formation named a future `pink VexWork Onboarding projection` only after real
+pressure had earned the semantics it should project. The human outcome is that a fresh hosted assistant,
+future local Vex, or human can enter incomplete work and perceive enough **CURRENT** truth to continue
+without reconstructing predecessor chat, ZIP chains, or provider-comment archaeology.
+
+Current accepted movement:
+
+~~~text
+PR #189
+  first ProcessFamily / MetaWalk formation
+  ACCEPTED / MERGED
+
+PR #187
+  canonical VexRelay Process Map route
+  ACCEPTED / MERGED
+
+PR #185
+  Architecture Convergence Project front door
+  ACCEPTED / MERGED
+
+PR #190
+  one bounded onboarding consumer:
+  existing VexBoard how-to-begin self-map
+  -> one MetaWalk PORTAL
+  -> existing source-catalog resolver
+
+  SourceOwner proved
+  fresh Assurance CLEAR
+  historically merged
+
+PR #191
+  later interpretation that the whole onboarding gap was closed
+  RETRACTED AS TRAJECTORY AUTHORITY
+
+PR #192
+  restored pre-entry bytes
+  also removed the valid #190 consumer
+
+  BYTE TREE RESTORATION
+  != TRAJECTORY RESTORATION
+~~~
+
+Current recovery candidate:
+
+~~~text
+github.pull.vexwork.194
+
+restores the exact proven #190 discoverability relationship
++ keeps the A001 provenance regression repaired
++ preserves source-catalog ownership
+
+fresh exact-head SourceOwner / Assurance
+  PENDING
+
+whole Pink VexWork Onboarding outcome
+  NOT CLAIMED COMPLETE
+~~~
+
+Permanent distinctions:
+
+~~~text
+EARNED CAPABILITY
+!= OUTCOME COMPLETE
+
+ONBOARDING PORTAL
+!= PROCESS CURRENT STATE
+!= DYNAMIC BOUNDED HORIZON
+!= EFFECT AUTHORITY
+
+PROCESS POSITION
+!= WORKSTATE
+
+SOURCE ROLLBACK
+!= TRAJECTORY ROLLBACK
+~~~
+
+The pressure-tested architecture already owns most onboarding truth in separate places:
+
+~~~text
+Workgraph / Project
+  outcome + Work identity + lifecycle/current WorkState
+  dependencies + repositories + authority/effect disposition
+  accepted transition history + source refs
+
+Process Map
+  which durable process owner/source to follow
+
+ProcessFamily / MetaWalk
+  reusable process topology
+  + compact ProcessFamily.State contract
+
+VexBoard
+  read-only perception / construction projection
+~~~
+
+The currently observed missing relationship is narrower than a new onboarding framework:
+
+~~~text
+CURRENT WORK ITEM
+  -> rightful ProcessFamily
+  -> CURRENT ProcessFamily State / process node
+~~~
+
+Without that binding, the #190 portal can answer **"open the MetaWalk"** but not yet truthfully answer
+**"where is this work in that process right now?"** The public Work projection already exposes purpose,
+WorkState, authority/effects, repositories, sources, history, dependencies, and next process refs; it does
+not currently expose a durable ProcessFamily-State position.
+
+That observation is a **current design question**, not permission to restore the previously removed
+dynamic horizon runtime or to add node-level metadata that pressure proved unconsumed.
+
+### Current question
+
+~~~text
+What is the smallest rightful consumer/binding
+that lets Pink Onboarding compose:
+
+  original outcome
+  + current Work truth
+  + current process position
+  + bounded read-now source
+  + current proof / next earnable movement
+
+without making Workgraph own process position,
+making ProcessFamily own WorkState,
+or creating another truth owner?
+~~~
+
+### Do not solve yet
+
+~~~text
+do not mark Pink Onboarding complete
+do not revive the removed generic dynamic horizon merely because the UI wants it
+do not re-add unconsumed ProcessFamily node metadata
+do not change the broader WorkState merely because #189 / #187 merged
+do not classify #188 as superseded from this trajectory
+do not treat VexLife-Android #206 as accepted VexWork architecture
+do not create another onboarding framework before a real consumer proves the need
+~~~
+
+### Next earned movement
+
+First preserve the already-earned #190 discoverability capability through fresh proof on the current
+recovery candidate. In parallel, pressure-test the missing Work -> ProcessFamily.State relationship
+against existing truth owners and a real Pink consumer. Add source/runtime surface only if that concrete
+consumer demonstrates that composition cannot be truthfully derived from existing accepted owners.
+
+The historical formation context below remains useful architecture/provenance, but statements written as
+then-current coordinates (for example, that PR #185 still needed to land) are **historical**, not present
+currentness.
+
+## Historical formation context — Form Architecture / VexRelay Family Circuit convergence
 
 The foreground architecture outcome is now sharper than "make Relay easier to use."
 
