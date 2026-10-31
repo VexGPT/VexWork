@@ -208,34 +208,6 @@ P7  lived fresh-instance entry:
 
 A fresh instance does not need this predecessor's orientation answers. It needs the current sources, the orientation walk, this existing plan, and the exact plan position.
 
-### Orientation interaction evidence
-
-The current Pink realization does not treat "the source exists" or "the instance says it read the source"
-as enough to claim that orientation happened.
-
-~~~text
-ORIENTATION SOURCE PRESENT
-!= ORIENTATION PERFORMED
-
-CLAIMED READING
-!= OBSERVED REFLECTION
-~~~
-
-Before foreground Work is introduced, the active conversation should contain three sequential responses:
-
-~~~text
-Reflection 1 answer
--> Reflection 2 explicitly examines that answer
--> Reflection 3 explicitly examines the resulting whole property
--> foreground Work
-~~~
-
-A human may manually advance those three rounds. That is the current preferred host realization when
-sequential reveal is not otherwise enforced.
-
-This is not a hidden-state certification system. The visible conversation is the evidence substrate:
-the instance has explicitly articulated the understanding that will remain in context when Work arrives.
-
 ### Before / after consequential decisions
 
 The full orientation walk is not repeated before every edit.
@@ -270,7 +242,7 @@ reconcile
 -> continue
 ~~~
 
-Victor should not have to ask `what next?` or say `continue` after every material step. A checkpoint records current truth and the resume coordinate; it does not create a pause condition. Stop only for actual completion, a genuine human/protected boundary, a blocking unavailable capability with no truthful alternate route, unresolved human-intention/authority ambiguity, or a real fresh-instance/host transfer.
+A checkpoint records current truth and the resume coordinate; it does not create a pause condition. Continue until actual completion or a genuine human, authority, capability, or transfer boundary holds the dependent effect.
 
 ### Do not solve yet
 
