@@ -567,6 +567,8 @@ test('VexBoard how-to-begin map exposes the accepted MetaWalk as a read-only onb
   assert.equal(portal.label, 'VexWork Onboarding · MetaWalk');
   assert.equal(portal.detailBoardRefOrNull, 'board.vexwork.process-family-metawalk');
   assert.equal(portal.sourceRefs.includes('docs/process/VEX-PROCESS-FAMILY-METAWALK.md'), true);
+  assert.equal(portal.sourceRefs.includes('docs/foundation/VEXWORK-ORIENTATION.md'), true);
+  assert.equal(portal.sourceRefs.includes('orientation.html'), true);
   assert.equal(
     portal.sourceRefs.includes('projects/vexboard/examples/vexwork-process-family-metawalk.board.json'),
     true,
