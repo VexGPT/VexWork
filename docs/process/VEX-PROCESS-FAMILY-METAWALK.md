@@ -89,27 +89,48 @@ The checked-in board:
 board.vexwork.process-family-metawalk
 ~~~
 
-is registered in the existing source catalog and can be resolved/opened **when its exact board ref is supplied**.
+is registered in the existing source catalog and remains source-bound to the machine Family.
 
-At this exact candidate, no default landing control, portal path, or other non-test runtime entry supplies that ref.
+The existing built-in VexBoard self-map:
+
+~~~text
+board.vexboard.self-map
+title = VexBoard — how to begin
+~~~
+
+now carries one read-only onboarding portal:
+
+~~~text
+node.vexboard.vexwork-metawalk
+  kind = PORTAL
+  detailBoardRefOrNull = board.vexwork.process-family-metawalk
+
+VexBoard landing
+-> Open VexBoard self-map
+-> VexWork Onboarding · MetaWalk
+-> existing source-catalog resolver
+-> board.vexwork.process-family-metawalk
+~~~
+
+No second loader, ProcessFamily current-State owner, effect authority, or direct landing-UI mutation is
+introduced. The MetaWalk board remains catalog-owned and the self-map only supplies the previously
+missing executable entry relationship.
 
 Therefore:
 
 ~~~text
-CHECKED-IN BOARD
-  source-registered
-  source-addressable
-  source-bound to the machine Family
+SOURCE-REGISTERED / ADDRESSABLE
++ EXISTING SELF-MAP PORTAL
+= EXECUTABLE ONBOARDING DISCOVERABILITY
 
-EXECUTABLE CONSUMPTION
-  HELD
-  no current default runtime route enters this board
-
-CATALOG ADDRESSABILITY
-!= EXECUTABLE CONSUMPTION
+ONBOARDING PORTAL
+!= PROCESS CURRENT STATE
+!= DYNAMIC BOUNDED HORIZON
+!= EFFECT AUTHORITY
 ~~~
 
-The dynamic State-bound bounded-horizon projector is also absent/held until a real State-bearing executable consumer earns it.
+The dynamic State-bound bounded-horizon projector remains absent/held until a real State-bearing
+executable consumer earns it.
 
 
 ## Human intention
@@ -2297,21 +2318,43 @@ which parts belong only in projection
 
 Only after that pressure should Process Registry promotion, the pink VexWork Onboarding projection, or a stronger machine-readable ProcessFamily schema be considered earned.
 
+The first formation deliberately stopped before those promotion/consumer effects. That historical boundary
+has now been crossed in two small accepted/earned steps:
+
+~~~text
+Process Registry route
+  -> accepted through VexWork PR #187
+  -> points to repo.vextreme-sdk rightful Relay formation owner
+  -> executionAuthority = NONE
+
+VexWork Onboarding projection
+  -> existing VexBoard "how to begin" self-map
+  -> one read-only PORTAL to board.vexwork.process-family-metawalk
+  -> existing source-catalog resolver
+~~~
+
+The onboarding realization is deliberately smaller than a new onboarding framework and does not promote
+the held dynamic State-bound horizon runtime.
+
 ## Current formation boundary
 
-This candidate changes only the ProcessFamily machine contract, architecture guidance, the checked-in source-addressable VexBoard map/catalog entry, and their focused tests. Dynamic effect-free horizon projection code is not current candidate surface.
+The durable ProcessFamily formation owns the machine topology/State contract and checked-in full-map
+projection. The later onboarding consumer adds only discoverability through an existing VexBoard owner.
 
-It does not mutate:
+It still does not mutate or take authority over:
 
 ~~~text
 Vextreme-SDK Relay runtime
 VexLife-Android Family Circuit
 Vextreme product source
 Workgraph lifecycle
-Process Registry
-public VexWork onboarding UI
+ProcessFamily runtime persistence
+dynamic bounded-horizon projection
 ~~~
 
-The current Process Registry remains separately occupied by VexWork PR #187. This formation therefore does not widen or collide with that active source membrane.
+~~~text
+FIRST FORMATION != ONBOARDING CONSUMER
+ONBOARDING CONSUMER != NEW PROCESS OWNER
+~~~
 
 <!-- [VXG RealForever][VEXWORK][VEXPROCESSFAMILY][METAWALK][FORMATION] -->
