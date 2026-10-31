@@ -235,7 +235,7 @@ reasoning_content
   != exact current MLX field
 ```
 
-VexLife PR #971 is the bounded source correction:
+VexLife PR #972 is the bounded source correction:
 
 ```text
 reasoning | reasoning_content
@@ -287,7 +287,7 @@ does mlx-lm emit non-empty reasoning?
 = NOT YET OBSERVED
 ```
 
-Do not replace that unknown with a denial, and do not invent a synthetic "reasoning" layer merely because runtime telemetry is already available. The source-observation defect is now owned by PR #971; the live thinking-enabled probe remains a separate effect whose qualified route has not yet been established. If live reasoning emission is confirmed, route its human projection through the rightful Interface / Conversation owner without conflating it with canned phase telemetry.
+Do not replace that unknown with a denial, and do not invent a synthetic "reasoning" layer merely because runtime telemetry is already available. The source-observation defect is now owned by PR #972; the live thinking-enabled probe remains a separate effect whose qualified route has not yet been established. If live reasoning emission is confirmed, route its human projection through the rightful Interface / Conversation owner without conflating it with canned phase telemetry.
 
 ```text
 STARTUP COMPLETION != REASONING-PROJECTION COMPLETION
@@ -306,7 +306,7 @@ The current post-start completion pressures discovered from the same lived basel
 ```text
 A. visible work + reasoning-channel currentness
    -> VexLife PR #970 owns visible-work / Evolution presentation lineage
-   -> VexLife PR #971 owns the bounded reasoning-observation correction
+   -> VexLife PR #972 owns the bounded reasoning-observation correction
    -> exact mlx-lm 0.32.0 field is reasoning; reasoning_content remains compatibility
    -> runtime progress is explicitly hiddenReasoningIncluded=false
    -> ordinary persistent Heretic currently uses enable_thinking=false

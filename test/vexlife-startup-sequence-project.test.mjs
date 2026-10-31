@@ -51,5 +51,5 @@ test('VexLife StartUp Sequence preserves one proven origin and explicit incomple
   assert.match(readme, /MODEL_EMITTED_REASONING_TRACE/u);
   assert.match(readme, /PROGRESS_HAS_NO_REASONING != MODEL_REASONING_UNAVAILABLE/u);
   assert.ok(byRef.get('work.vexlife.startup-sequence.reasoning-channel-investigation')?.sourceRefs.includes('repo.vexlife:src/core/model-runtime-adapter.mjs'));
-  assert.ok(byRef.get('work.vexlife.startup-sequence.reasoning-channel-investigation')?.sourceRefs.includes('github.pull.vexlife.970'));\n  assert.ok(byRef.get('work.vexlife.startup-sequence.reasoning-channel-investigation')?.sourceRefs.includes('github.pull.vexlife.971'));\n  assert.ok(byRef.get('work.vexlife.startup-sequence.reasoning-channel-investigation')?.sourceRefs.includes('repo.vexlife:src/core/heretic-persistent-runtime-owner.mjs'));
+  assert.ok(byRef.get('work.vexlife.startup-sequence.reasoning-channel-investigation')?.sourceRefs.includes('github.pull.vexlife.970'));\n  assert.ok(byRef.get('work.vexlife.startup-sequence.reasoning-channel-investigation')?.sourceRefs.includes('github.pull.vexlife.972'));\n  assert.ok(byRef.get('work.vexlife.startup-sequence.reasoning-channel-investigation')?.sourceRefs.includes('repo.vexlife:src/core/heretic-persistent-runtime-owner.mjs'));
 });
