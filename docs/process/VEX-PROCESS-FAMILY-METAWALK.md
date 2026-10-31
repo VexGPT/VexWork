@@ -110,6 +110,10 @@ VexBoard landing
 -> VexWork Onboarding · MetaWalk
 -> existing source-catalog resolver
 -> board.vexwork.process-family-metawalk
+
+related onboarding source / projection
+-> docs/foundation/VEXWORK-ORIENTATION.md
+-> orientation.html
 ~~~
 
 No second loader, ProcessFamily current-State owner, effect authority, or direct landing-UI mutation is
