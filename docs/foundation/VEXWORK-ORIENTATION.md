@@ -69,6 +69,70 @@ The reflections are sequential.
 
 Do not answer all of them at once. The answer to each reflection becomes part of the material examined by the next one.
 
+### Orientation must be performed, not merely available
+
+A canonical source existing in the repository does not prove that a fresh instance actually performed the
+orientation.
+
+~~~text
+ORIENTATION SOURCE PRESENT
+!= ORIENTATION PERFORMED
+
+CLAIMED READING
+!= OBSERVED REFLECTION
+~~~
+
+The current realization is deliberately simple: the three reflections are elicited one at a time in the
+active conversation before foreground Work is revealed.
+
+~~~text
+human / host asks Reflection 1
+-> instance answers in-context
+
+that exact answer remains visible
+-> Reflection 2 examines it
+-> instance answers in-context
+
+those answers remain visible
+-> Reflection 3 examines the whole property
+-> instance answers in-context
+
+only then
+-> foreground Work is introduced
+~~~
+
+This creates observable interaction evidence without inventing a hidden-cognition proof system.
+
+The evidence is not "the model truly understood internally." The evidence is that the instance itself
+made its current understanding, assumptions, inverse failures, and synthesized orientation explicit in
+the same active context that will receive the Work.
+
+That matters because later drift can be compared against what the instance actually articulated rather
+than against an assumed document read.
+
+~~~text
+STATIC INSTRUCTION
+  can be skipped / skimmed / weakly integrated
+
+SEQUENTIAL IN-CONTEXT RESPONSE
+  becomes explicit material for the next reflection
+  and remains available when Work is introduced
+~~~
+
+A human manually asking the three rounds is therefore a valid and currently preferred realization when
+the host product does not itself enforce sequential reveal.
+
+This is a small human interaction, not a request for Victor to reconstruct technical context. The human
+does not need to explain the sources or the Work; they only advance the three already-defined reflection
+rounds.
+
+If an instance skips a round, answers all three at once despite the boundary, or proceeds into Work before
+the sequence is complete, treat that as an observed orientation failure rather than silently assuming the
+orientation happened.
+
+Do not compensate by creating more doctrine. Repeat or restart the bounded orientation interaction and
+preserve the visible failure as evidence when it matters.
+
 ### Reflection 1 — current understanding before work
 
 After reading the current sources, answer:
@@ -383,15 +447,18 @@ This orientation foundation is useful when a genuinely fresh entrant can:
 
 ~~~text
 read current sources
--> compile their meaning
--> surface material assumptions before work
--> perceive inverse failure modes
--> receive current Work + existing plan + exact plan position
+-> answer Reflection 1 in the active conversation
+-> answer Reflection 2 against its actual Reflection-1 answer
+-> answer Reflection 3 against the resulting whole property
+-> only then receive current Work + existing plan + exact plan position
 -> gather only the additional context the Work actually needs
 -> act
 -> reconcile consequential results
 -> continue without predecessor-chat archaeology
 ~~~
+
+The three visible sequential responses are the current interaction evidence that orientation was
+performed. No deeper proof of hidden model state is required or claimed.
 
 If that lived entry still depends on Victor manually reconstructing what the predecessor meant, the onboarding outcome remains incomplete.
 
