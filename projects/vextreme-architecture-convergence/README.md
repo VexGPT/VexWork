@@ -234,6 +234,16 @@ AFTER
 
 This reconciliation is not a new receipt or lifecycle gate. It exists so mistakes do not silently become successor work.
 
+After reconciliation, continuation is the default:
+
+~~~text
+reconcile
+-> name the next unconsumed causal edge
+-> continue
+~~~
+
+Victor should not have to ask `what next?` or say `continue` after every material step. A checkpoint records current truth and the resume coordinate; it does not create a pause condition. Stop only for actual completion, a genuine human/protected boundary, a blocking unavailable capability with no truthful alternate route, unresolved human-intention/authority ambiguity, or a real fresh-instance/host transfer.
+
 ### Do not solve yet
 
 ~~~text
