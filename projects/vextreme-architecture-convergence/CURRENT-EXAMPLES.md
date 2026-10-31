@@ -270,10 +270,10 @@ base
 0193ba6d43e1fa5267e4a8c2130b3e970697fd86
 
 head
-91ffc77ab2f77e4d5e6021965715adcbfe9b649a
+16789d8da0ff38321c0596bad5c09f6bd2b19718
 
 tree
-ad44ad81217d5f2494a5468f13b9804a2159f575
+b45745c46f865867539c83f5439018ddea7adf2a
 ~~~
 
 Its current formed effects are:
@@ -556,6 +556,34 @@ Stop only for actual completion, a genuine human/protected boundary, a blocking 
 with no truthful alternate route, unresolved human-intention/authority ambiguity, or a real
 fresh-instance/host transfer.
 
+## Bounded recursive orientation
+
+The orientation standard is recursively reusable but has a base case:
+
+~~~text
+CURRENT CANONICAL SOURCE
+-> ORIENT ONCE
+-> FOREGROUND WORK
+~~~
+
+If the foreground Work is Pink/onboarding/orientation itself:
+
+~~~text
+ORIENT ONCE
+-> treat onboarding as Work
+-> challenge proposals / inverse costs
+-> act / prove / reconcile
+-> update current source
+~~~
+
+~~~text
+ORIENTATION APPLIES TO ORIENTATION WORK
+!= ORIENTATION REQUIRES PRIOR ORIENTATION
+~~~
+
+The prime-example/template system in PR #196 uses the same boundary when generating new fresh-instance
+handoffs.
+
 ## Fresh-instance takeover contract
 
 If execution reaches a real threshold where another instance must take over:
@@ -596,8 +624,8 @@ HELD / MISSING PREDICATE
 
 CURRENT IMPLEMENTATION COORDINATE
   VexWork PR #194
-  head 91ffc77ab2f77e4d5e6021965715adcbfe9b649a
-  tree ad44ad81217d5f2494a5468f13b9804a2159f575
+  head 16789d8da0ff38321c0596bad5c09f6bd2b19718
+  tree b45745c46f865867539c83f5439018ddea7adf2a
 ~~~
 
 The successor does **not** need:
