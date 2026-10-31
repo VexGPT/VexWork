@@ -56,9 +56,10 @@ Fresh humans and agents should read:
 1. [`AGENTS.md`](AGENTS.md) — repository descent router;
 2. [`docs/CULTURE.md`](docs/CULTURE.md) — VexWork-local intention and boundaries;
 3. [`docs/foundation/INDEX.md`](docs/foundation/INDEX.md) — current foundation map;
-4. only the foundation/source/tests implicated by the current question.
+4. [`docs/foundation/VEXWORK-ORIENTATION.md`](docs/foundation/VEXWORK-ORIENTATION.md) — after current company/operations/work sources are loaded, compile their meaning through the reusable orientation walk before the foreground Work is introduced;
+5. once the Work is introduced, descend only to the foundation/source/tests implicated by that current question.
 
-The root README is an entry router, not a second architecture manual.
+The root README is an entry router, not a second architecture manual. The orientation source does not replace Local Vex Operations, target-repository culture, or a current VexRelay contract when those owners are implicated.
 
 ## Current foundation
 

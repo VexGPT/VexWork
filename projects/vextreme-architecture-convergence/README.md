@@ -26,7 +26,262 @@ This Project exists because the website has now exposed several real seams whose
 same architectural question. Continuing them as unrelated patches would make future workers repeatedly
 reconstruct who owns what and why.
 
-## Current entry — Form Architecture / VexRelay Family Circuit convergence
+## Current entry — Recover and realize Pink VexWork Onboarding as source-grounded orientation
+
+The foreground remains the **Pink VexWork Onboarding** human outcome, not a new Family/runtime lane and not a PR queue.
+
+The refined lived intention is now clearer:
+
+~~~text
+fresh human / hosted assistant / future local Vex
+-> reads the current company / operations / work / repository sources
+-> explains what those sources currently mean together
+-> has that understanding challenged through the already pressure-tested
+   sequential orientation reflections
+-> sees consequential assumptions and their inverse failures
+-> only then receives the foreground Work
+-> uses judgment, current evidence, and rightful source owners to continue
+-> reconciles consequential decisions before carrying mistakes forward
+~~~
+
+This is intentionally different from "follow the process."
+
+~~~text
+SOURCE DEFINES CURRENT TRUTH
+ORIENTATION HELPS COMPILE MEANING
+JUDGMENT CARRIES THE WORK
+PROCESS / ARTIFACTS SUPPORT THE OUTCOME
+~~~
+
+### Accepted trajectory being preserved
+
+~~~text
+PR #189
+  first ProcessFamily / MetaWalk formation
+  ACCEPTED / MERGED
+
+PR #187
+  canonical VexRelay Process Map route
+  ACCEPTED / MERGED
+
+PR #185
+  Architecture Convergence Project front door
+  ACCEPTED / MERGED
+
+PR #190
+  one bounded onboarding consumer:
+  existing VexBoard how-to-begin self-map
+  -> one MetaWalk PORTAL
+  -> existing source-catalog resolver
+
+  SourceOwner proved
+  fresh Assurance CLEAR
+  historically merged
+
+PR #191
+  later interpretation that the whole onboarding gap was closed
+  RETRACTED AS TRAJECTORY AUTHORITY
+
+PR #192
+  restored pre-entry bytes
+  also removed the valid #190 consumer
+
+  BYTE TREE RESTORATION
+  != TRAJECTORY RESTORATION
+
+PR #194
+  current draft recovery / realization candidate
+~~~
+
+### Current refined implementation
+
+The current candidate preserves the exact #190 discoverability relationship and adds the smallest new orientation consumer actually earned by the later human pressure, while preserving the stable VexWork landing navigation:
+
+~~~text
+canonical orientation source
+  docs/foundation/VEXWORK-ORIENTATION.md
+
+read-only shared visual surface
+  orientation.html
+
+placement / discoverability
+  existing VexBoard "how to begin"
+  -> VexWork Onboarding · MetaWalk
+  -> orientation source / visual projection
+  -> no direct VexWork landing-navigation mutation
+
+fresh-instance takeover rule
+  re-orient first
+  -> reintroduce existing work plan
+  -> exact current plan position
+  -> completed valid effects
+  -> held / missing predicate
+  -> current evidence
+  -> successor decides what else must be grounded before more code
+~~~
+
+The orientation source does **not** duplicate Local Vex Operations, target-repository culture, or a current VexRelay contract. It points to current owners and preserves the reusable relationship between reading, reflection, work entry, judgment, and reconciliation.
+
+Permanent distinctions:
+
+~~~text
+ORIENTATION
+!= WORKFLOW
+!= WORKSTATE
+!= PROCESS POSITION
+!= EFFECT AUTHORITY
+
+ORIENTATION ANSWER
+!= DURABLE TRUTH
+
+PREDECESSOR PLAN
+= CONTINUITY INPUT
+!= SUCCESSOR AUTHORITY
+
+EARNED CAPABILITY
+!= OUTCOME COMPLETE
+
+SOURCE ROLLBACK
+!= TRAJECTORY ROLLBACK
+~~~
+
+### Why the previously observed Work -> ProcessFamily.State gap is now held
+
+Earlier recovery analysis observed that the #190 portal could open the MetaWalk but could not generically answer:
+
+~~~text
+"where is this Work inside ProcessFamily.State right now?"
+~~~
+
+That remains a legitimate architecture pressure, but the clarified Pink intention does **not** currently require VexWork to invent a new persistent Work -> ProcessFamily.State binding.
+
+The real onboarding consumer can first use:
+
+~~~text
+current company / operations / repository sources
++ current VexWork Project / Work truth
++ accepted process/source routes
++ the static orientation walk
++ the existing work plan and its exact current position
+~~~
+
+If lived fresh-instance use later proves that the plan/current-position truth cannot be represented or recovered from existing rightful owners, that concrete failure may earn a new binding or runtime surface.
+
+Until then:
+
+~~~text
+USEFUL GENERIC PROCESS-POSITION QUESTION
+!= EARNED NEW STATE OWNER
+~~~
+
+### Work plan
+
+This source preserves the causal plan shape, not transient lifecycle status. A successor should pair it with
+the exact current plan position from current coordination/evidence after completing the orientation walk:
+
+~~~text
+P0  recover the earned #190 discoverability capability
+
+P1  repair the Architecture Convergence current-entry source
+
+P2  add one canonical reusable orientation foundation source
+
+P3  add one read-only VexWork visual representation under the existing MetaWalk discoverability route
+
+P4  prove the exact current candidate
+
+P5  perform semantic Assurance on the exact proven head
+
+P6  integrate only if proof + currentness earn it
+
+P7  lived fresh-instance entry:
+    read current sources
+    -> complete orientation walk
+    -> receive this plan + exact current position
+    -> identify any additional necessary source
+    -> continue correctly without predecessor-chat archaeology
+~~~
+
+A fresh instance does not need this predecessor's orientation answers. It needs the current sources, this
+plan, the exact current plan position, and current evidence.
+
+### Before / after consequential decisions
+
+The full orientation walk is not repeated before every edit.
+
+During work, recall only its gist:
+
+~~~text
+BEFORE
+  what do I currently understand?
+  what assumption does this move depend on?
+  what inverse failure could an overcorrection create?
+  is there enough current evidence to act?
+
+ACT
+
+AFTER
+  what actually happened?
+  did the assumption hold?
+  did this retire causal obligation, repair self-created debt,
+  or merely produce evidence?
+  did I leave a mistake / stale premise behind?
+  what understanding must change before the next move?
+~~~
+
+This reconciliation is not a new receipt or lifecycle gate. It exists so mistakes do not silently become successor work.
+
+After reconciliation, continuation is the default:
+
+~~~text
+reconcile
+-> name the next unconsumed causal edge
+-> continue
+~~~
+
+A checkpoint records current truth and the resume coordinate; it does not create a pause condition. Continue until actual completion or a genuine human, authority, capability, or transfer boundary holds the dependent effect.
+
+### Do not solve yet
+
+~~~text
+do not create an orientation-answer database
+do not create a new onboarding lifecycle
+do not promote Work -> ProcessFamily.State merely because it is conceptually useful
+do not revive the removed generic dynamic horizon without a real consumer
+do not re-add unconsumed ProcessFamily node metadata
+do not change the broader WorkState merely because #189 / #187 merged
+do not classify #188 as superseded from this trajectory
+do not treat VexLife-Android #206 as accepted VexWork architecture
+do not make every decision produce another handoff / receipt / review artifact
+~~~
+
+### Completion pressure
+
+The Pink Onboarding outcome is not complete because a page exists.
+
+The lived completion target is:
+
+~~~text
+genuinely fresh entrant
+-> reads current sources
+-> reflects current understanding sequentially
+-> receives foreground Work only after orientation
+-> receives existing plan + exact current position
+-> gathers only the additional context actually needed
+-> continues the correct trajectory
+-> reconciles consequential outcomes
+-> does not require Victor to reconstruct predecessor chat / ZIP chains /
+   hidden assumptions / provider archaeology
+~~~
+
+Proof, Assurance, and integration remain separate effects. Their current status is re-grounded from exact
+candidate/provider evidence rather than frozen into this durable project source.
+
+The historical formation context below remains useful architecture/provenance, but statements written as
+then-current coordinates (for example, that PR #185 still needed to land) are **historical**, not present
+currentness.
+
+## Historical formation context — Form Architecture / VexRelay Family Circuit convergence
 
 The foreground architecture outcome is now sharper than "make Relay easier to use."
 

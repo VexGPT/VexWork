@@ -23,6 +23,7 @@ This is the current architecture map. Follow the exact foundation whose question
 | Runtime persistence | Where does private/current Workgraph truth persist across restart without turning Git into the live database? | `docs/foundation/RUNTIME-PERSISTENCE.md`, `src/core/workgraph-runtime.mjs` | `test/workgraph-runtime.test.mjs` | FOUNDATION |
 | Work Participation | Who has actually carried this work across fresh sessions/threads without making participation assignment or authority? | `docs/foundation/WORK-PARTICIPATION.md`, `src/core/work-participation.mjs` | `test/work-participation.test.mjs` | FOUNDATION |
 | Operating Profiles | How can hosted assistants and a future local Vex carry the same work truth while using different effect routes? | `docs/foundation/OPERATING-PROFILES.md`, `docs/process/ASSISTED-HOST-WORKFLOW.md` | source review + lived assisted-host use | FOUNDATION |
+| Orientation / fresh-worker judgment | How does a fresh human or agent compile current Vex sources into judgment before foreground work is introduced, then reconcile consequential decisions without creating another workflow or truth owner? | `docs/foundation/VEXWORK-ORIENTATION.md`, `orientation.html` | `test/public-ui.test.mjs` + lived fresh-instance entry | FOUNDATION |
 | Planning | How do iterations, WIP, ordering and planning transactions persist without becoming lifecycle truth? | `blueprint/project-planning-registry.json`, `docs/foundation/PROJECT-PLANNING.md`, `src/core/project-planning.mjs`, `src/core/project-planning-runtime.mjs` | `test/project-planning.test.mjs`, `test/project-planning-runtime.test.mjs` | FOUNDATION |
 | Reconciliation | How do exact provider/source/proof observations classify currentness without becoming WorkState or transition authority? | `blueprint/project-reconciliation-registry.json`, `docs/foundation/PROJECT-RECONCILIATION.md`, `src/core/project-reconciliation.mjs` | `test/project-reconciliation.test.mjs` | FOUNDATION |
 | Repository Integration / Merge Stewardship | How do independently proven PRs queue and converge safely into current `main` without racing source lanes, inventing permanent dev/staging trunks, or surrendering merge judgment to automation? | `docs/foundation/REPOSITORY-INTEGRATION.md`, `docs/process/INTEGRATE-READY-PULL-REQUESTS.md` | `test/repository-integration-foundation.test.mjs` + target-repository/provider proof at integration time | FOUNDATION |
@@ -90,6 +91,9 @@ ready PR queue / moving main / merge order / dev-vs-trunk / integration stewards
 hosted ChatGPT / local Vex / assisted host action / VexRelay-style handoff
 -> OPERATING-PROFILES.md
 -> ../process/ASSISTED-HOST-WORKFLOW.md
+
+fresh human/agent entry / source-grounded assumptions / inverse reflection / successor takeover
+-> VEXWORK-ORIENTATION.md
 
 testing / regression / coverage / stability
 -> ../process/QUALITY-REVIEW.md
