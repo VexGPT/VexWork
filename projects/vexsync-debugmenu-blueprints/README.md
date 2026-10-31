@@ -2,6 +2,65 @@
 
 [VXG RealForever]
 
+## Accepted Family Circuit baseline — 2026-10-29
+
+The reusable Family architecture is no longer candidate-only Android evidence.
+
+~~~text
+VexLife-Android PR #193
+-> SourceOwner A006 PASS on exact head 07f2e00ffa222258b37d1c87aefa0a64262a0b79
+-> Independent Assurance CLEAR
+-> merged
+-> accepted Android main 3c899e656d90487abcff06df7b087a42c4a68523
+~~~
+
+Accepted source language:
+
+~~~text
+VexFamily<Family, State, Control>
+
+Family.activate(control)
+-> act(currentState, control)
+-> when(currentState)
+-> when(control)
+-> noAct() / stay() / admit(State)
+-> optional Begin
+
+Control<Family>
+Control.Resource<Family, ExactId>
+ExactId : ResourceId<Family>
+
+live Family
++ Control kind/name
++ optional exact ResourceId object
+=
+VexFamily.RelationshipId<Family>
+-> VexExecution.RelationshipId
+
+Approach
+  Independent | Earliest | Latest | Queued
+
+InstanceId
+  exact runtime occurrence
+~~~
+
+This source is now the architecture authority for Family Circuit meaning. VexBoard may project it;
+VexSync may use it as process/language convergence evidence; neither becomes the Android source owner.
+
+The next two bounded consumers are sequenced:
+
+~~~text
+IMMEDIATE
+  VexBoard exact-language projection
+  -> keep BoardGraph substrate separate from Family Circuit meaning
+
+NEXT / WAITING_DEPENDENCIES
+  work.vexsync.debugmenu-blueprints.family-circuit-proof-spine
+  -> preserve the same semantic coordinates through
+     Feature Walk -> Journey -> VexLogger -> ScreenCrawler evidence
+~~~
+
+
 ## Human outcome
 
 Use one real Debug Menu feature request to discover a reusable feature-building process that Victor + AI

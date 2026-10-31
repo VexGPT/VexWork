@@ -1,0 +1,933 @@
+{
+  "schemaVersion": "vexboard.local-draft/v1",
+  "draftRef": "board.vexarchitecture.family-circuit.accepted",
+  "title": "VexArchitecture · Family Circuit Architecture",
+  "mode": "READ_ONLY_SOURCE",
+  "derivedFromRefOrNull": null,
+  "savedAtOrNull": null,
+  "graph": {
+    "schemaVersion": "vexboard.board-graph/v1",
+    "graphRef": "graph.vexarchitecture.family-circuit.accepted",
+    "nodes": [
+      {
+        "nodeRef": "region.family.root",
+        "kind": "CONTAINER",
+        "label": "FAMILY",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+          "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt"
+        ]
+      },
+      {
+        "nodeRef": "region.family.circuit",
+        "kind": "CONTAINER",
+        "label": "STATE / CONTROL / ACT CIRCUIT",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+          "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt"
+        ]
+      },
+      {
+        "nodeRef": "region.family.identity",
+        "kind": "CONTAINER",
+        "label": "TYPED RELATIONSHIP IDENTITY",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+          "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt"
+        ]
+      },
+      {
+        "nodeRef": "region.family.execution",
+        "kind": "CONTAINER",
+        "label": "EXECUTION / PROOF SPINE",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+          "repo.vexlife-android:architecture/execution/README.md",
+          "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt",
+          "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecutionRoot.kt",
+          "repo.vexlife-android:docs/features/FEATURE-WALKS.md",
+          "repo.vexlife-android:docs/foundation/JOURNEY-INSTRUMENTATION.md",
+          "repo.vexlife-android:docs/foundation/SCREEN-CRAWLER-EVIDENCE.md",
+          "projects/vexboard/README.md",
+          "projects/vexsync-debugmenu-blueprints/README.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.family.root",
+        "kind": "REFERENCE",
+        "label": "VexFamily<Family, State, Control>",
+        "parentRefOrNull": "region.family.root",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+          "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt"
+        ]
+      },
+      {
+        "nodeRef": "reference.family.state",
+        "kind": "REFERENCE",
+        "label": "State : VexFamily.State<Family>",
+        "parentRefOrNull": "region.family.root",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+          "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt"
+        ]
+      },
+      {
+        "nodeRef": "reference.family.control",
+        "kind": "REFERENCE",
+        "label": "Control : VexFamily.Control<Family>",
+        "parentRefOrNull": "region.family.root",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+          "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt"
+        ]
+      },
+      {
+        "nodeRef": "reference.family.state-relay",
+        "kind": "REFERENCE",
+        "label": "StateRelay · one live semantic State holder",
+        "parentRefOrNull": "region.family.root",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+          "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt"
+        ]
+      },
+      {
+        "nodeRef": "reference.family.display-state",
+        "kind": "REFERENCE",
+        "label": "DisplayState → StateOnly(currentState)",
+        "parentRefOrNull": "region.family.root",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+          "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt"
+        ]
+      },
+      {
+        "nodeRef": "process.family.activate",
+        "kind": "PROCESS",
+        "label": "Family.activate(control)",
+        "parentRefOrNull": "region.family.circuit",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+          "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt"
+        ]
+      },
+      {
+        "nodeRef": "process.family.act",
+        "kind": "PROCESS",
+        "label": "act(currentState, control)",
+        "parentRefOrNull": "region.family.circuit",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+          "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt"
+        ]
+      },
+      {
+        "nodeRef": "annotation.family.traversal",
+        "kind": "ANNOTATION",
+        "label": "when(currentState) → when(control) · no semantic-boundary else",
+        "parentRefOrNull": "region.family.circuit",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+          "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt"
+        ]
+      },
+      {
+        "nodeRef": "reference.family.outcomes",
+        "kind": "REFERENCE",
+        "label": "noAct() | stay() | admit(State)",
+        "parentRefOrNull": "region.family.circuit",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+          "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt"
+        ]
+      },
+      {
+        "nodeRef": "reference.family.begin",
+        "kind": "REFERENCE",
+        "label": "optional Begin · authored consequence, not execution identity",
+        "parentRefOrNull": "region.family.circuit",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+          "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt"
+        ]
+      },
+      {
+        "nodeRef": "reference.family.resource-control",
+        "kind": "REFERENCE",
+        "label": "Control.Resource<Family, ExactId>",
+        "parentRefOrNull": "region.family.identity",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+          "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt"
+        ]
+      },
+      {
+        "nodeRef": "reference.family.resource-id",
+        "kind": "REFERENCE",
+        "label": "ExactId : ResourceId<Family>",
+        "parentRefOrNull": "region.family.identity",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+          "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt"
+        ]
+      },
+      {
+        "nodeRef": "reference.family.relationship-id",
+        "kind": "REFERENCE",
+        "label": "VexFamily.RelationshipId<Family>",
+        "parentRefOrNull": "region.family.identity",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+          "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt"
+        ]
+      },
+      {
+        "nodeRef": "annotation.family.relationship-law",
+        "kind": "ANNOTATION",
+        "label": "live Family + Control kind/name + optional exact ResourceId object",
+        "parentRefOrNull": "region.family.identity",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+          "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt"
+        ]
+      },
+      {
+        "nodeRef": "annotation.family.identity-law",
+        "kind": "ANNOTATION",
+        "label": "payload != identity · typed ResourceId narrows identity only when earned",
+        "parentRefOrNull": "region.family.identity",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+          "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt"
+        ]
+      },
+      {
+        "nodeRef": "reference.execution.relationship-id",
+        "kind": "REFERENCE",
+        "label": "VexExecution.RelationshipId",
+        "parentRefOrNull": "region.family.execution",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+          "repo.vexlife-android:architecture/execution/README.md",
+          "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt",
+          "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecutionRoot.kt"
+        ]
+      },
+      {
+        "nodeRef": "reference.execution.approach",
+        "kind": "REFERENCE",
+        "label": "Approach · Independent | Earliest | Latest | Queued",
+        "parentRefOrNull": "region.family.execution",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+          "repo.vexlife-android:architecture/execution/README.md",
+          "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt",
+          "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecutionRoot.kt"
+        ]
+      },
+      {
+        "nodeRef": "reference.execution.instance-id",
+        "kind": "REFERENCE",
+        "label": "InstanceId · exact runtime occurrence",
+        "parentRefOrNull": "region.family.execution",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+          "repo.vexlife-android:architecture/execution/README.md",
+          "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt",
+          "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecutionRoot.kt"
+        ]
+      },
+      {
+        "nodeRef": "annotation.execution.identity-law",
+        "kind": "ANNOTATION",
+        "label": "RelationshipId = semantic maintained-work identity · InstanceId = runtime occurrence",
+        "parentRefOrNull": "region.family.execution",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+          "repo.vexlife-android:architecture/execution/README.md",
+          "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt",
+          "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecutionRoot.kt"
+        ]
+      },
+      {
+        "nodeRef": "annotation.proof.next",
+        "kind": "ANNOTATION",
+        "label": "NEXT CONSUMER · Feature Walk → Journey → VexLogger → ScreenCrawler evidence",
+        "parentRefOrNull": "region.family.execution",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+          "repo.vexlife-android:docs/features/FEATURE-WALKS.md",
+          "repo.vexlife-android:docs/foundation/JOURNEY-INSTRUMENTATION.md",
+          "repo.vexlife-android:docs/foundation/SCREEN-CRAWLER-EVIDENCE.md",
+          "projects/vexboard/README.md",
+          "projects/vexsync-debugmenu-blueprints/README.md"
+        ]
+      },
+      {
+        "nodeRef": "annotation.proof.boundary",
+        "kind": "ANNOTATION",
+        "label": "linked identities, distinct owners · evidence/screenshot != semantic truth",
+        "parentRefOrNull": "region.family.execution",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+          "repo.vexlife-android:docs/features/FEATURE-WALKS.md",
+          "repo.vexlife-android:docs/foundation/JOURNEY-INSTRUMENTATION.md",
+          "repo.vexlife-android:docs/foundation/SCREEN-CRAWLER-EVIDENCE.md",
+          "projects/vexboard/README.md",
+          "projects/vexsync-debugmenu-blueprints/README.md"
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "relationshipRef": "rel.family.root-state",
+        "kind": "REFERENCE",
+        "fromRef": "reference.family.root",
+        "toRef": "reference.family.state",
+        "labelOrNull": "OWNS",
+        "sourceRefs": [
+          "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+          "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt"
+        ]
+      },
+      {
+        "relationshipRef": "rel.family.root-control",
+        "kind": "REFERENCE",
+        "fromRef": "reference.family.root",
+        "toRef": "reference.family.control",
+        "labelOrNull": "OWNS",
+        "sourceRefs": [
+          "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+          "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt"
+        ]
+      },
+      {
+        "relationshipRef": "rel.family.root-display",
+        "kind": "REFERENCE",
+        "fromRef": "reference.family.root",
+        "toRef": "reference.family.display-state",
+        "labelOrNull": "OWNS",
+        "sourceRefs": [
+          "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+          "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt"
+        ]
+      },
+      {
+        "relationshipRef": "rel.family.state-relay",
+        "kind": "REFERENCE",
+        "fromRef": "reference.family.state",
+        "toRef": "reference.family.state-relay",
+        "labelOrNull": "CURRENT STATE",
+        "sourceRefs": [
+          "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+          "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt"
+        ]
+      },
+      {
+        "relationshipRef": "rel.family.control-activate",
+        "kind": "FLOW",
+        "fromRef": "reference.family.control",
+        "toRef": "process.family.activate",
+        "labelOrNull": "INCOMING CONTROL",
+        "sourceRefs": [
+          "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+          "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt"
+        ]
+      },
+      {
+        "relationshipRef": "rel.family.activate-act",
+        "kind": "FLOW",
+        "fromRef": "process.family.activate",
+        "toRef": "process.family.act",
+        "labelOrNull": "RESOLVE CURRENT MEANING",
+        "sourceRefs": [
+          "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+          "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt"
+        ]
+      },
+      {
+        "relationshipRef": "rel.family.state-act",
+        "kind": "DATA",
+        "fromRef": "reference.family.state-relay",
+        "toRef": "process.family.act",
+        "labelOrNull": "CURRENT STATE",
+        "sourceRefs": [
+          "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+          "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt"
+        ]
+      },
+      {
+        "relationshipRef": "rel.family.act-outcome",
+        "kind": "FLOW",
+        "fromRef": "process.family.act",
+        "toRef": "reference.family.outcomes",
+        "labelOrNull": "AUTHORS ACT",
+        "sourceRefs": [
+          "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+          "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt"
+        ]
+      },
+      {
+        "relationshipRef": "rel.family.outcome-state",
+        "kind": "TRANSITION",
+        "fromRef": "reference.family.outcomes",
+        "toRef": "reference.family.state-relay",
+        "labelOrNull": "STAY / ADMIT",
+        "sourceRefs": [
+          "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+          "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt"
+        ]
+      },
+      {
+        "relationshipRef": "rel.family.outcome-begin",
+        "kind": "FLOW",
+        "fromRef": "reference.family.outcomes",
+        "toRef": "reference.family.begin",
+        "labelOrNull": "OPTIONAL BEGIN",
+        "sourceRefs": [
+          "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+          "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt"
+        ]
+      },
+      {
+        "relationshipRef": "rel.family.resource-control-id",
+        "kind": "DATA",
+        "fromRef": "reference.family.resource-id",
+        "toRef": "reference.family.resource-control",
+        "labelOrNull": "EXACT ID TYPE",
+        "sourceRefs": [
+          "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+          "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt"
+        ]
+      },
+      {
+        "relationshipRef": "rel.family.control-relationship",
+        "kind": "FLOW",
+        "fromRef": "reference.family.resource-control",
+        "toRef": "reference.family.relationship-id",
+        "labelOrNull": "CONTROL + OPTIONAL RESOURCE",
+        "sourceRefs": [
+          "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+          "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt"
+        ]
+      },
+      {
+        "relationshipRef": "rel.family.relationship-execution",
+        "kind": "REFERENCE",
+        "fromRef": "reference.family.relationship-id",
+        "toRef": "reference.execution.relationship-id",
+        "labelOrNull": "BRIDGES TO EXECUTION",
+        "sourceRefs": [
+          "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+          "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+          "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt",
+          "repo.vexlife-android:architecture/execution/README.md",
+          "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt",
+          "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecutionRoot.kt"
+        ]
+      },
+      {
+        "relationshipRef": "rel.execution.relationship-approach",
+        "kind": "FLOW",
+        "fromRef": "reference.execution.relationship-id",
+        "toRef": "reference.execution.approach",
+        "labelOrNull": "COORDINATED AS",
+        "sourceRefs": [
+          "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+          "repo.vexlife-android:architecture/execution/README.md",
+          "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt",
+          "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecutionRoot.kt"
+        ]
+      },
+      {
+        "relationshipRef": "rel.execution.approach-instance",
+        "kind": "FLOW",
+        "fromRef": "reference.execution.approach",
+        "toRef": "reference.execution.instance-id",
+        "labelOrNull": "ADMITS OCCURRENCE",
+        "sourceRefs": [
+          "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+          "repo.vexlife-android:architecture/execution/README.md",
+          "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt",
+          "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecutionRoot.kt"
+        ]
+      },
+      {
+        "relationshipRef": "rel.execution-instance-proof",
+        "kind": "REFERENCE",
+        "fromRef": "reference.execution.instance-id",
+        "toRef": "annotation.proof.next",
+        "labelOrNull": "OBSERVABLE THROUGH NEXT PROOF LAYERS",
+        "sourceRefs": [
+          "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+          "repo.vexlife-android:docs/features/FEATURE-WALKS.md",
+          "repo.vexlife-android:docs/foundation/JOURNEY-INSTRUMENTATION.md",
+          "repo.vexlife-android:docs/foundation/SCREEN-CRAWLER-EVIDENCE.md",
+          "projects/vexboard/README.md",
+          "projects/vexsync-debugmenu-blueprints/README.md"
+        ]
+      }
+    ],
+    "sourceRefs": [
+      "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523",
+      "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+      "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt",
+      "repo.vexlife-android:architecture/execution/README.md",
+      "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt",
+      "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecutionRoot.kt",
+      "repo.vexlife-android:docs/features/FEATURE-WALKS.md",
+      "repo.vexlife-android:docs/foundation/JOURNEY-INSTRUMENTATION.md",
+      "repo.vexlife-android:docs/foundation/SCREEN-CRAWLER-EVIDENCE.md",
+      "projects/vexboard/README.md",
+      "projects/vexsync-debugmenu-blueprints/README.md"
+    ]
+  },
+  "projection": {
+    "schemaVersion": "vexboard.board-projection/v1",
+    "projectionRef": "projection.vexarchitecture.family-circuit.accepted",
+    "graphRef": "graph.vexarchitecture.family-circuit.accepted",
+    "layoutIntent": "SYSTEM_MAP",
+    "items": [
+      {
+        "projectionItemRef": "item.region.family.root",
+        "semanticRef": "region.family.root",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 40,
+          "y": 60,
+          "width": 340,
+          "height": 650
+        },
+        "layer": -1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.region.family.circuit",
+        "semanticRef": "region.family.circuit",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 420,
+          "y": 60,
+          "width": 360,
+          "height": 650
+        },
+        "layer": -1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.region.family.identity",
+        "semanticRef": "region.family.identity",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 820,
+          "y": 60,
+          "width": 420,
+          "height": 650
+        },
+        "layer": -1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.region.family.execution",
+        "semanticRef": "region.family.execution",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 1280,
+          "y": 60,
+          "width": 460,
+          "height": 650
+        },
+        "layer": -1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.reference.family.root",
+        "semanticRef": "reference.family.root",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 75,
+          "y": 130,
+          "width": 270,
+          "height": 70
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.region.family.root",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.reference.family.state",
+        "semanticRef": "reference.family.state",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 75,
+          "y": 230,
+          "width": 270,
+          "height": 62
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.region.family.root",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.reference.family.control",
+        "semanticRef": "reference.family.control",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 75,
+          "y": 320,
+          "width": 270,
+          "height": 62
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.region.family.root",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.reference.family.state-relay",
+        "semanticRef": "reference.family.state-relay",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 75,
+          "y": 410,
+          "width": 270,
+          "height": 62
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.region.family.root",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.reference.family.display-state",
+        "semanticRef": "reference.family.display-state",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 75,
+          "y": 500,
+          "width": 270,
+          "height": 62
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.region.family.root",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.process.family.activate",
+        "semanticRef": "process.family.activate",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 455,
+          "y": 130,
+          "width": 290,
+          "height": 62
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.region.family.circuit",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.process.family.act",
+        "semanticRef": "process.family.act",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 455,
+          "y": 220,
+          "width": 290,
+          "height": 62
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.region.family.circuit",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.annotation.family.traversal",
+        "semanticRef": "annotation.family.traversal",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 455,
+          "y": 310,
+          "width": 290,
+          "height": 88
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.region.family.circuit",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.reference.family.outcomes",
+        "semanticRef": "reference.family.outcomes",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 455,
+          "y": 430,
+          "width": 290,
+          "height": 62
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.region.family.circuit",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.reference.family.begin",
+        "semanticRef": "reference.family.begin",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 455,
+          "y": 520,
+          "width": 290,
+          "height": 74
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.region.family.circuit",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.reference.family.resource-control",
+        "semanticRef": "reference.family.resource-control",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 855,
+          "y": 130,
+          "width": 350,
+          "height": 62
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.region.family.identity",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.reference.family.resource-id",
+        "semanticRef": "reference.family.resource-id",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 855,
+          "y": 220,
+          "width": 350,
+          "height": 62
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.region.family.identity",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.reference.family.relationship-id",
+        "semanticRef": "reference.family.relationship-id",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 855,
+          "y": 310,
+          "width": 350,
+          "height": 62
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.region.family.identity",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.annotation.family.relationship-law",
+        "semanticRef": "annotation.family.relationship-law",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 855,
+          "y": 400,
+          "width": 350,
+          "height": 88
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.region.family.identity",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.annotation.family.identity-law",
+        "semanticRef": "annotation.family.identity-law",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 855,
+          "y": 520,
+          "width": 350,
+          "height": 74
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.region.family.identity",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.reference.execution.relationship-id",
+        "semanticRef": "reference.execution.relationship-id",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1315,
+          "y": 130,
+          "width": 390,
+          "height": 62
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.region.family.execution",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.reference.execution.approach",
+        "semanticRef": "reference.execution.approach",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1315,
+          "y": 220,
+          "width": 390,
+          "height": 74
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.region.family.execution",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.reference.execution.instance-id",
+        "semanticRef": "reference.execution.instance-id",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1315,
+          "y": 320,
+          "width": 390,
+          "height": 62
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.region.family.execution",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.annotation.execution.identity-law",
+        "semanticRef": "annotation.execution.identity-law",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 1315,
+          "y": 410,
+          "width": 390,
+          "height": 74
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.region.family.execution",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.annotation.proof.next",
+        "semanticRef": "annotation.proof.next",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 1315,
+          "y": 500,
+          "width": 390,
+          "height": 74
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.region.family.execution",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.annotation.proof.boundary",
+        "semanticRef": "annotation.proof.boundary",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 1315,
+          "y": 600,
+          "width": 390,
+          "height": 62
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.region.family.execution",
+        "visible": true,
+        "locked": true
+      }
+    ],
+    "sourceRefs": [
+      "projects/vexboard/README.md",
+      "vexboard/index.html",
+      "vexboard-reader.js"
+    ]
+  }
+}
