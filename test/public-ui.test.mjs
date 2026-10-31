@@ -11,13 +11,13 @@ const orientationSource = fs.readFileSync(new URL('../docs/foundation/VEXWORK-OR
 test('VexWork Pages owns the semantic navigator and reads same-origin public workspace', () => {
   assert.match(page, /class="terrain-home" href="\.\/terrain\.html">Terrain Map<\/a>/);
   assert.match(page, /class="terrain-home" href="\.\/vexboard\/">VexBoard<\/a>/);
+  assert.doesNotMatch(page, /class="terrain-home" href="\.\/orientation\.html">Orientation<\/a>/);
   assert.match(page, /const WORKSPACE_URL = '\.\/public\/workspace\.json'/);
   assert.doesNotMatch(page, /raw\.githubusercontent\.com/);
   assert.match(page, /VEXWORK VIEW · VEXWORK TRUTH OWNER/);
 });
 
 test('orientation is a read-only source-grounded judgment surface rather than a second work process', () => {
-  assert.match(page, /class="terrain-home" href="\.\/orientation\.html">Orientation<\/a>/);
   assert.match(orientationPage, /Read\. Reflect\. Then enter the work\./);
   assert.match(orientationPage, /Do not answer all reflections at once/);
   assert.match(orientationPage, /Only after Reflection 03:/);
