@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.vexlife.startup-sequence",
+  "label": "VexLife StartUp Sequence",
+  "purpose": "Carry the known-working Open Vex startup path as a durable baseline sequence, then improve every incomplete branch—bootstrap dependencies, Python compatibility, host compatibility, layered failure explanation, support-report capture and clean-slate acceptance—without losing the exact joints where each branch leaves and can rejoin the proven path.",
+  "rootWorkRefs": [
+    "work.vexlife.startup-sequence.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vexlife"
+  ],
+  "sourceRefs": [
+    "projects/vexlife-startup-sequence/README.md",
+    "docs/process/FORM-PROJECT.md",
+    "project.vexlife.interface-refinement",
+    "project.vexlife.tocompletion",
+    "github.pull.vexlife.969",
+    "github.commit.vexlife.b55b7e7376c1e9886d850ab50b70c232750f6add",
+    "repo.vexlife:setup-vexlife.command",
+    "repo.vexlife:install/vexlife-setup.sh",
+    "repo.vexlife:scripts/bootstrap.mjs",
+    "repo.vexlife:scripts/establish-heretic-runtime.mjs",
+    "repo.vexlife:src/core/heretic-runtime-establishment.mjs",
+    "repo.vexlife:scripts/macos-lifecycle.mjs",
+    "repo.vexlife:src/core/lived-companion.mjs",
+    "repo.vexlife:reference/browser/modules/chat-controller.js",
+    "github.pull.vexlife.970",
+    "repo.vexlife:src/core/model-runtime-adapter.mjs",
+    "repo.vexlife:src/core/capability-assimilation-runtime.mjs",
+    "repo.vexlife:src/core/lived-companion-connection.mjs",
+    "repo.vexlife:docs/vexlife-assortment/practicum-candidates/conversation-refinement-startup-sequence-01/RUNBOOK.md"
+  ],
+  "formedAt": "2026-10-31T04:46:00.000Z"
+}

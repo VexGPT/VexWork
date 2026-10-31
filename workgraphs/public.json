@@ -20,6 +20,7 @@
     "work.vex-universe.outcome",
     "work.vex.security-assurance.outcome",
     "work.vexlife-android.current-state-refinement.outcome",
+    "work.vexlife.startup-sequence.outcome",
     "work.vexlife.welcome-wagon.outcome",
     "work.vexstream.mobile-library.tag-topology-stations",
     "work.vexsync.debugmenu-blueprints.outcome",
@@ -5288,6 +5289,297 @@
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.startup-sequence.baseline-origin",
+      "parentWorkRefOrNull": "work.vexlife.startup-sequence.outcome",
+      "label": "Baseline origin — proven Open Vex sequence",
+      "purpose": "Preserve the current known-working causal sequence rather than treating one commit as magic: current source -> Vex Home -> exact Heretic runtime -> thread-writer convergence -> browser/Companion READY -> canonical Conversation -> explicit Send -> durable local Heretic response, with PR #969 and its merge commit retained as provenance for this baseline.",
+      "workClass": "TASK",
+      "state": "COMPLETED",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-startup-sequence/README.md",
+        "github.pull.vexlife.969",
+        "github.commit.vexlife.b55b7e7376c1e9886d850ab50b70c232750f6add",
+        "repo.vexlife:setup-vexlife.command",
+        "repo.vexlife:scripts/macos-lifecycle.mjs",
+        "repo.vexlife:src/core/lived-companion.mjs",
+        "repo.vexlife:reference/browser/modules/chat-controller.js"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-31T04:46:00.000Z",
+      "updatedAt": "2026-10-31T04:46:00.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.startup-sequence.clean-slate-acceptance",
+      "parentWorkRefOrNull": "work.vexlife.startup-sequence.outcome",
+      "label": "Prove clean supported Mac -> first local Vex Conversation",
+      "purpose": "Run the terminal/product front door from a genuinely clean supported host with no Vex Home, model, MLX environment or prior runtime and prove the whole human journey: explain/obtain prerequisites with consent, download and verify Heretic, qualify the runtime, open the canonical Conversation and receive the first durable local-model response without developer intervention.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexlife.startup-sequence.explainable-progression",
+        "work.vexlife.startup-sequence.managed-bootstrap-dependencies",
+        "work.vexlife.startup-sequence.layered-failure-report"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-startup-sequence/README.md",
+        "repo.vexlife:setup-vexlife.command",
+        "repo.vexlife:install/vexlife-setup.sh",
+        "github.commit.vexlife.b55b7e7376c1e9886d850ab50b70c232750f6add"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-31T04:46:00.000Z",
+      "updatedAt": "2026-10-31T04:46:00.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.startup-sequence.explainable-progression",
+      "parentWorkRefOrNull": "work.vexlife.startup-sequence.outcome",
+      "label": "Explain each startup layer and ask before the next owned effect",
+      "purpose": "Turn startup into a human-readable progression: observe what is present, explain what the next layer needs and why the known-good version/profile is preferred, ask permission before acquisition or mutation, show current progress, and preserve the exact next safe route when the layer cannot complete.",
+      "workClass": "TASK",
+      "state": "READY",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexlife.startup-sequence.baseline-origin"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-startup-sequence/README.md",
+        "repo.vexlife:install/vexlife-setup.sh",
+        "repo.vexlife:scripts/establish-heretic-runtime.mjs"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-31T04:46:00.000Z",
+      "updatedAt": "2026-10-31T04:46:00.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.startup-sequence.host-compatibility-expansion",
+      "parentWorkRefOrNull": "work.vexlife.startup-sequence.outcome",
+      "label": "Offer safe experimental qualification on plausible but unproven hardware",
+      "purpose": "Replace a flat tested/unsupported experience with truthful host classes: keep the exact proven M4 Pro route preferred, identify clearly incompatible hosts without effects, and for plausible but unproven Apple-Silicon hosts offer an explicit experimental qualification path with bounded effects, exact cleanup and a support report rather than silently claiming support.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.startup-sequence.explainable-progression",
+        "work.vexlife.startup-sequence.layered-failure-report"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-startup-sequence/README.md",
+        "repo.vexlife:scripts/establish-heretic-runtime.mjs",
+        "repo.vexlife:src/core/heretic-runtime-establishment.mjs"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-31T04:46:00.000Z",
+      "updatedAt": "2026-10-31T04:46:00.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.startup-sequence.layered-failure-report",
+      "parentWorkRefOrNull": "work.vexlife.startup-sequence.outcome",
+      "label": "Produce one safe support report at the exact failed startup layer",
+      "purpose": "When startup cannot continue, preserve the first substantive layer failure in one user-deliverable report: exact VexLife source identity, startup stage, host/dependency observations needed for diagnosis, typed failure code/message, cleanup disposition and next safe route, while excluding Conversation content, secrets, raw prompts and unnecessary private paths.",
+      "workClass": "TASK",
+      "state": "READY",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexlife.startup-sequence.baseline-origin"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-startup-sequence/README.md",
+        "repo.vexlife:scripts/macos-lifecycle.mjs",
+        "repo.vexlife:scripts/establish-heretic-runtime.mjs",
+        "repo.vexlife:src/core/lived-companion.mjs"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-31T04:46:00.000Z",
+      "updatedAt": "2026-10-31T04:46:00.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.startup-sequence.managed-bootstrap-dependencies",
+      "parentWorkRefOrNull": "work.vexlife.startup-sequence.outcome",
+      "label": "Manage bootstrap dependencies instead of making users diagnose them",
+      "purpose": "Close the clean-machine prerequisite gap by making bootstrap dependencies an explained setup concern: preserve existing user toolchains, prefer isolated/proven dependency acquisition, ask before downloads/installs, and make exact Python 3.14.7 plus Node/bootstrap requirements part of the VexLife progression instead of hidden caller knowledge.",
+      "workClass": "TASK",
+      "state": "READY",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexlife.startup-sequence.baseline-origin"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-startup-sequence/README.md",
+        "repo.vexlife:install/vexlife-setup.sh",
+        "repo.vexlife:scripts/establish-heretic-runtime.mjs",
+        "repo.vexlife:src/core/heretic-runtime-establishment.mjs"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-31T04:46:00.000Z",
+      "updatedAt": "2026-10-31T04:46:00.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.startup-sequence.outcome",
+      "parentWorkRefOrNull": null,
+      "label": "Make VexLife startup complete, explainable, and recoverable from a clean machine",
+      "purpose": "Make the ordinary current-main VexLife front door carry a supported person from machine observation through dependency acquisition, Vex Home formation, Heretic materialization/runtime qualification, Open Vex currentness and first local-model Conversation, while preserving explicit branch joints for unproven dependencies/hardware and truthful support evidence when a layer cannot complete.",
+      "workClass": "OUTCOME",
+      "state": "RUNNING",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "project.vexlife.startup-sequence",
+        "projects/vexlife-startup-sequence/README.md",
+        "github.pull.vexlife.969",
+        "github.commit.vexlife.b55b7e7376c1e9886d850ab50b70c232750f6add"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-31T04:46:00.000Z",
+      "updatedAt": "2026-10-31T04:46:00.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.startup-sequence.reasoning-channel-investigation",
+      "parentWorkRefOrNull": "work.vexlife.startup-sequence.outcome",
+      "label": "Investigate live model-emitted reasoning before claiming capability absence",
+      "purpose": "Preserve the source-grounded correction that VexLife already recognizes choices[0].message.reasoning_content as MODEL_EMITTED_REASONING_TRACE with humanProjection SEALED_EXPLICIT_OPEN_ONLY, while capability progress hiddenReasoningIncluded=false applies only to runtime progress frames. Before denying reasoning visibility or substituting canned/synthetic progress, observe an exact live Heretic turn and distinguish reasoning emission PRESENT / ABSENT / UNKNOWN; then route any confirmed human projection through the rightful Interface / Conversation owner.",
+      "workClass": "TASK",
+      "state": "READY",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexlife.startup-sequence.baseline-origin"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-startup-sequence/README.md",
+        "project.vexlife.interface-refinement",
+        "github.pull.vexlife.970",
+        "repo.vexlife:src/core/model-runtime-adapter.mjs",
+        "repo.vexlife:src/core/capability-assimilation-runtime.mjs",
+        "repo.vexlife:src/core/lived-companion-connection.mjs",
+        "repo.vexlife:reference/browser/modules/chat-controller.js",
+        "repo.vexlife:docs/vexlife-assortment/practicum-candidates/conversation-refinement-startup-sequence-01/RUNBOOK.md"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-31T09:50:01.000Z",
+      "updatedAt": "2026-10-31T09:50:01.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.startup-sequence.python-compatibility-qualification",
+      "parentWorkRefOrNull": "work.vexlife.startup-sequence.outcome",
+      "label": "Qualify newer Python without weakening the known-good 3.14.7 path",
+      "purpose": "Keep Python 3.14.7 as the proven normal-path identity while defining an opt-in qualification branch for a newer existing Python: test environment creation, binary mlx-lm 0.32.0 compatibility, exact environment identity, Heretic runtime health/model identity and bounded completion before admitting that version as supported; never overwrite or silently repurpose the user's Python.",
+      "workClass": "TASK",
+      "state": "READY",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.startup-sequence.baseline-origin"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-startup-sequence/README.md",
+        "repo.vexlife:scripts/establish-heretic-runtime.mjs",
+        "repo.vexlife:src/core/heretic-runtime-establishment.mjs"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-31T04:46:00.000Z",
+      "updatedAt": "2026-10-31T04:46:00.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.startup-sequence.support-report-delivery",
+      "parentWorkRefOrNull": "work.vexlife.startup-sequence.outcome",
+      "label": "Make startup reports easy to deliver for support",
+      "purpose": "After the safe report format exists, give the human a simple delivery path: first save one clearly named local report that can be attached to email/support manually, then later evaluate an explicit-consent upload/email route without turning support transport into startup authority or leaking private Vex Home content.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [
+        "work.vexlife.startup-sequence.layered-failure-report"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-startup-sequence/README.md"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-10-31T04:46:00.000Z",
+      "updatedAt": "2026-10-31T04:46:00.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
@@ -10369,13 +10661,21 @@
     "projects/vexlife-interface-refinement/README.md",
     "project.vex-universe",
     "project.vexlife-android.current-state-refinement",
+    "project.vexlife.startup-sequence",
     "project.vexlife.welcome-wagon",
     "project.vexsync.debugmenu-blueprints",
     "project.vextreme.architecture-convergence",
     "projects/vexlife-android-current-state-refinement/README.md",
+    "projects/vexlife-startup-sequence/README.md",
     "projects/vexlife-welcome-wagon/README.md",
     "projects/vexsync-debugmenu-blueprints/README.md",
-    "projects/vextreme-architecture-convergence/README.md"
+    "projects/vextreme-architecture-convergence/README.md",
+    "github.pull.vexlife.970",
+    "repo.vexlife:src/core/model-runtime-adapter.mjs",
+    "repo.vexlife:src/core/capability-assimilation-runtime.mjs",
+    "repo.vexlife:src/core/lived-companion-connection.mjs",
+    "repo.vexlife:reference/browser/modules/chat-controller.js",
+    "repo.vexlife:docs/vexlife-assortment/practicum-candidates/conversation-refinement-startup-sequence-01/RUNBOOK.md"
   ],
   "formedAt": "2026-10-21T01:45:00.000Z"
 }
