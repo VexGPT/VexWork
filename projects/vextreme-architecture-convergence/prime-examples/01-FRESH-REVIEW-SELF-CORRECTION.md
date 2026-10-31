@@ -66,19 +66,10 @@ while withholding predecessor plan / diagnosis / solution.
 
 That was a coherent recommendation, not a shallow mistake.
 
-## Human challenge to the review
+## Review re-examination
 
-Victor did not merely say "I disagree."
-
-He asked the reviewer to make its recommendation causally explicit:
-
-~~~text
-what exact change are you requesting?
-why does current evidence require it?
-if your change succeeds, what would be lost?
-~~~
-
-The final question exposed the inverse property.
+The recommendation was re-examined against its causal basis, whether the predicted failure had actually
+been observed, and what valid property the proposed correction would weaken.
 
 ## Reviewer self-correction
 
@@ -139,25 +130,10 @@ That is judgment, not compliance.
 
 ## Durable relationship learned
 
-Before a consequential architecture/source recommendation:
+A consequential recommendation should remain answerable to current evidence, inverse cost, and the
+difference between observed pressure and hypothetical pressure.
 
-~~~text
-What exact change am I proposing?
-
-What evidence requires it?
-
-Is the problem observed,
-contract-required,
-or hypothetical?
-
-What valid property would the correction cost if successful?
-
-Does that inverse cost change the judgment?
-~~~
-
-This relationship was folded into the existing Pink before-decision recollection.
-
-It did **not** earn a new review lifecycle, receipt family, or approval process.
+This was folded into the existing judgment relationship rather than becoming a new review lifecycle.
 
 ## What generalizes
 
