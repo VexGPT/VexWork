@@ -4849,6 +4849,238 @@ INTERFACE_COMPOUND_RELAY
 | **Kokoro speech/read-back** | **CAPTURED / NORMAL** | Presentation enhancement; not current foreground. |
 | **Later visual Home/UI** | **CAPTURED** | Refine presentation from lived use without changing truth ownership. |
 
+## [Debug Menu] Conversation current information + controls — READY
+
+Stable Work identity:
+
+```text
+work.vexlife.interface-refinement.conversation-debug-surface
+human shorthand = [Debug Menu]
+state = READY
+priority = IMMEDIATE
+```
+
+### Human intention
+
+When Vex behaves unexpectedly, Victor should not have to infer from symptoms whether the active boundary is:
+
+```text
+context/token pressure
+output-token ceiling
+endpoint inactivity/timeout
+provider finish reason
+reasoning without final content
+capability HELD / UNKNOWN / unavailable
+online provider not bound
+runtime/model not current
+loaded-browser/source mismatch
+Conversation/current-head mismatch
+session cache/draft state
+prompt/context composition
+or another explicit owner-held boundary
+```
+
+The ordinary human surface should make those truths directly inspectable before requiring terminal/log archaeology.
+
+The lived trigger for this Work is the current-main Conversation turn:
+
+```text
+Victor [65]
+"are you able to access tools to 'find stuff now'?"
+
+-> capability/tool path progressed into final synthesis
+-> model-emitted reasoning remained visible
+-> no final normal-content answer committed
+-> ENDPOINT_TIMEOUT became visible
+```
+
+That result proved the failure presentation is useful, but also exposed a visibility gap: the interface does not yet let Victor inspect the current limits, provider/runtime state, capability gates, prompt/context composition, or the exact boundary that became active.
+
+Current source already owns many of these facts. The Debug Menu should primarily **compose existing truth**, not create a second diagnostics ontology.
+
+### Candidate human surface
+
+The current **Reference** control may evolve into or sit beside a human-readable **Current information** / **Debug Menu** dialog. Exact naming and placement remain presentation choices until lived use proves them.
+
+Candidate sections:
+
+```text
+CURRENT SOURCE / INTERFACE
+  exact source commit / Source Manifest tree
+  loaded document source identity
+  serving browser source identity
+  currentness / source mismatch
+  Browser + Companion availability
+
+MODEL / RUNTIME
+  model + profile
+  mlx-lm/runtime version
+  runtime ownership / health / currentness
+  request reasoning mode
+  current endpoint class
+  current timeout semantics
+
+CURRENT TURN / LAST TURN
+  state / phase
+  failure code and bounded message
+  provider finish reason when present
+  provider-reported usage when present
+  visible answer characters
+  reasoning present / reasoning character count
+  last provider activity / timeout boundary when source supports it
+  distinguish exact provider data from estimates
+
+PROMPT / CONTEXT
+  current Context Lease / continuity mode
+  current request token estimate
+  selected prior-context source
+  Memory included / bounded-out state
+  current source-owned policy:
+    input budget = 192,000
+    reserved output = 16,000
+    hard lease = 208,000
+    Memory cap = 100,000
+  clearly label ESTIMATED vs PROVIDER_REPORTED values
+
+CONVERSATION / SESSION
+  project / thread / channel
+  canonical head ref / sequence / SHA
+  durable message count/current head
+  session-only draft / presentation / reasoning state
+  what would survive reload vs what would not
+
+CAPABILITIES / AUTHORITY
+  AVAILABLE / CURRENT
+  HELD
+  UNKNOWN
+  unavailable
+  permission / effect / resource gate
+  current provider binding
+  why a held capability is held
+  "visible" never implies "authorized"
+
+PROMPT STACK
+  source-owned Foundation / system content
+  current Memory/context contribution
+  capability/request/synthesis contribution
+  current human request
+  final provider-ready message composition
+```
+
+### Candidate controls
+
+Controls must route to rightful owners instead of making the Debug Menu an effect authority:
+
+```text
+Refresh current information
+  -> observation only
+
+Clear browser/session cache
+  -> session/presentation state only
+  != canonical Conversation deletion
+  != Memory deletion
+  != model reset
+
+Start fresh session / fresh instance
+  -> new transient/session context with explicit semantics
+  -> preserve durable Conversation unless the human explicitly chooses a separate destructive action
+
+Start a fresh Conversation
+  -> use the canonical Conversation owner
+  -> distinct from clearing browser cache
+
+Inspect foundational prompt
+  -> local read projection
+
+Edit prompt for this session
+  -> explicit SESSION-ONLY override
+  -> visibly non-canonical
+  -> resettable
+  != repository/source mutation
+
+Reset session prompt override
+  -> return to current source-owned prompt
+
+Edit canonical source prompt
+  -> separate repository-authoring effect
+  -> never implied by editing the local session override
+
+Capability action
+  -> show CURRENT / HELD / UNKNOWN and reason
+  -> route to an already-authorized rightful action when one exists
+  -> never grant authority merely because a toggle is visible
+```
+
+Potential destructive operations such as deleting canonical Conversation history, deleting Memory, resetting Vex Home, terminating runtime ownership, or changing model/source identity are **not** bundled into a generic "clear data" button. They require their own exact owner, consequence explanation and explicit human action.
+
+Permanent distinctions:
+
+```text
+DEBUG_MENU != TRUTH_OWNER
+OBSERVABILITY != EFFECT_AUTHORITY
+ESTIMATED_TOKENS != PROVIDER_REPORTED_USAGE
+OUTPUT_LIMIT != OBSERVED_TIMEOUT
+REASONING_INCOMPLETE != TOKEN_LIMIT_PROVEN
+SESSION_RESET != CONVERSATION_DELETE
+SESSION_RESET != MEMORY_DELETE
+SESSION_PROMPT_OVERRIDE != CANONICAL_SOURCE_EDIT
+CAPABILITY_VISIBLE != CAPABILITY_ENABLED
+CAPABILITY_HELD != CAPABILITY_ABSENT
+REFERENCE_INFORMATION != HIDDEN_TERMINAL_ARCHAEOLOGY
+```
+
+### Current source facts worth projecting
+
+At VexLife accepted main `7d59753687ff12726b0d309ee2dde028b5f89e8a`, the current prompt-context source still declares:
+
+```text
+CONTEXT_INPUT_TOKEN_BUDGET       = 192,000
+CONTEXT_RESERVED_OUTPUT_TOKENS   = 16,000
+CONTEXT_HARD_TOKEN_LIMIT         = 208,000
+MEMORY_TOKEN_CAP                 = 100,000
+LIVED_COMPANION_OUTPUT_TOKEN_LIMIT = 16,000
+```
+
+These are VexLife prompt-admission/output-policy bounds, not proof of the Heretic model's native maximum.
+
+The [65] failure is explicitly `ENDPOINT_TIMEOUT`. Nothing currently proves that turn hit the output-token ceiling. The Debug Menu should make both facts inspectable so humans do not have to choose between competing guesses.
+
+### Acceptance shape
+
+The first useful threshold is not "a panel full of internal JSON." It is:
+
+```text
+one human-readable dialog
+-> identify exact loaded/current source
+-> explain current model/runtime state
+-> show current context/output/Memory budgets
+-> show provider-reported usage/finish reason when available
+-> show last/current turn phase + failure/boundary
+-> show capability gates and held reasons
+-> distinguish session-only from durable state
+-> expose safe session reset + prompt inspection/override controls
+-> require explicit rightful actions for destructive or authority-changing effects
+```
+
+A future lived acceptance should be able to answer, without logs:
+
+```text
+"Why did turn 65 stop?"
+"Did I hit a token limit or a timeout?"
+"Which capabilities are actually usable now?"
+"Why is ONLINE held?"
+"Which source/browser/runtime am I actually using?"
+"What context and Memory are being sent?"
+"What can I safely clear?"
+"Can I start fresh without deleting my durable history?"
+"What foundational prompt is Vex receiving?"
+"Am I editing this session or canonical source?"
+```
+
+This Work is intentionally separate from Interface Compound Relay. Compound Relay converges whether the visible relationship is CURRENT/READY; the Debug Menu makes the contributing current truths, limits and controls **human-readable and inspectable**.
+
+<!-- [VXG RealForever][VEXLIFE][INTERFACE-REFINEMENT][DEBUG-MENU] -->
+
 ## First VexBoard consumer draft — VexLife product journey
 
 The first post-POC VexBoard consumer is source-placed as a read-only design/process topology draft:

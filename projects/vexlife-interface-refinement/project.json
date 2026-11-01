@@ -65,7 +65,16 @@
     "repo.vexlife-android:architecture/relay/README.md",
     "repo.vexlife-android:architecture/relay/src/main/kotlin/com/vextreme/vexlife/android/relay/VexCompoundRelay.kt",
     "repo.vexlife-android:architecture/relay/src/main/kotlin/com/vextreme/vexlife/android/relay/VexCompoundState.kt",
-    "repo.vexlife-android:docs/foundation/EVENTS-CONVERGENCE-PRACTICUM.md"
+    "repo.vexlife-android:docs/foundation/EVENTS-CONVERGENCE-PRACTICUM.md",
+    "human.lived-feedback.vexlife.conversation-debug-surface.20261101.turn65-current-information",
+    "github.commit.vexlife.7d59753687ff12726b0d309ee2dde028b5f89e8a",
+    "github.pull.vexlife.972",
+    "github.pull.vexlife.973",
+    "repo.vexlife:src/core/lived-companion-connection.mjs",
+    "repo.vexlife:src/core/model-runtime-adapter.mjs",
+    "repo.vexlife:src/core/model-turn-witness.mjs",
+    "repo.vexlife:src/core/heretic-persistent-runtime-owner.mjs",
+    "repo.vexlife:blueprint/capability-registry.json"
   ],
   "formedAt": "2026-10-25T01:23:08.000Z"
 }

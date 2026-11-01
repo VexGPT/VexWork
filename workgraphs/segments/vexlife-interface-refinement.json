@@ -838,6 +838,46 @@
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-01T07:42:00.000Z",
+      "updatedAt": "2026-11-01T07:42:00.000Z",
+      "workRef": "work.vexlife.interface-refinement.conversation-debug-surface",
+      "parentWorkRefOrNull": "work.vexlife.interface-refinement.outcome",
+      "label": "[Debug Menu] Conversation current information and controls",
+      "purpose": "Give Victor one human-readable local Debug Menu for the current Vex relationship: exact source/browser/runtime identity, model and provider state, token/context/Memory budgets, provider-reported usage/finish reason when available, current/last-turn phase and failure boundary, canonical Conversation/session state, capability CURRENT/HELD/UNKNOWN reasons, and the composed prompt stack. Add safe explicit controls for session/cache reset, fresh-session/fresh-Conversation entry, and session-only prompt overrides while keeping canonical Conversation, Memory, source editing, capability authority and destructive effects with their rightful owners.",
+      "workClass": "TASK",
+      "state": "READY",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexlife.interface-refinement.stable-talk-to-vex-main",
+        "work.vexlife.interface-refinement.conversation-surface-canonicalization"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-interface-refinement/README.md",
+        "human.lived-feedback.vexlife.conversation-debug-surface.20261101.turn65-current-information",
+        "github.commit.vexlife.7d59753687ff12726b0d309ee2dde028b5f89e8a",
+        "github.pull.vexlife.972",
+        "github.pull.vexlife.973",
+        "repo.vexlife:src/core/browser-prompt-context-runtime.mjs",
+        "repo.vexlife:src/core/lived-companion-connection.mjs",
+        "repo.vexlife:src/core/model-runtime-adapter.mjs",
+        "repo.vexlife:src/core/model-turn-witness.mjs",
+        "repo.vexlife:src/core/capability-assimilation-runtime.mjs",
+        "repo.vexlife:src/core/heretic-persistent-runtime-owner.mjs",
+        "repo.vexlife:reference/browser/modules/chat-controller.js",
+        "repo.vexlife:reference/browser/app.js",
+        "repo.vexlife:blueprint/capability-registry.json"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
     }
   ],
   "transitions": [
@@ -1578,7 +1618,21 @@
     "relay.return.vexlife.interface-currentness-browser-realization.f2.a012.inner.sha256.f965f9414978d42bc84667d6a6565b90b079b28d747a0a8cdd78b459006c2281",
     "finding.vexlife.interface-currentness.f2.a012.browser-proof-hidden-composer",
     "relay.package.vexlife.interface-currentness-browser-realization.f2.a013.sha256.8826fec85d056948fc95e2d23cb9a9d9a732938b0baa936314b963f9113fd745",
-    "relay.inner.vexlife.interface-currentness-browser-realization.f2.a013.sha256.c971af69713d3785d38848956c397911ca35f2ecd4e5fc9b2a594b551659926f"
+    "relay.inner.vexlife.interface-currentness-browser-realization.f2.a013.sha256.c971af69713d3785d38848956c397911ca35f2ecd4e5fc9b2a594b551659926f",
+    "work.vexlife.interface-refinement.conversation-debug-surface",
+    "human.lived-feedback.vexlife.conversation-debug-surface.20261101.turn65-current-information",
+    "github.commit.vexlife.7d59753687ff12726b0d309ee2dde028b5f89e8a",
+    "github.pull.vexlife.972",
+    "github.pull.vexlife.973",
+    "repo.vexlife:src/core/browser-prompt-context-runtime.mjs",
+    "repo.vexlife:src/core/lived-companion-connection.mjs",
+    "repo.vexlife:src/core/model-runtime-adapter.mjs",
+    "repo.vexlife:src/core/model-turn-witness.mjs",
+    "repo.vexlife:src/core/capability-assimilation-runtime.mjs",
+    "repo.vexlife:src/core/heretic-persistent-runtime-owner.mjs",
+    "repo.vexlife:reference/browser/modules/chat-controller.js",
+    "repo.vexlife:reference/browser/app.js",
+    "repo.vexlife:blueprint/capability-registry.json"
   ],
   "formedAt": "2026-10-25T01:23:08.000Z"
 }
