@@ -5496,9 +5496,9 @@
       "workRef": "work.vexlife.startup-sequence.reasoning-channel-investigation",
       "parentWorkRefOrNull": "work.vexlife.startup-sequence.outcome",
       "label": "Investigate live model-emitted reasoning before claiming capability absence",
-      "purpose": "Current source investigation establishes that the exact Heretic provider is mlx-lm 0.32.0: non-streaming reasoning is choices[0].message.reasoning and streaming reasoning is choices[0].delta.reasoning; reasoning_content remains a compatibility shape. VexLife PR #972 is the bounded observation correction so live streams preserve reasoning only into sealed metadata while public progress stays reasoning-free. Ordinary persistent Heretic and the accepted direct-host MLX binding both currently use enable_thinking=false, so an ordinary absent trace cannot prove capability absence. Keep the live capability UNKNOWN until a separately qualified one-shot inference explicitly enables thinking and records PRESENT / ABSENT without persisting raw reasoning; then route any confirmed human projection through the rightful Interface / Conversation owner.",
+      "purpose": "Exact-source lived acceptance now establishes PRESENT model-emitted Heretic reasoning on mlx-lm 0.32.0 and closes the earlier UNKNOWN capability question. VexLife PR #972 merged to main as 7d59753687ff12726b0d309ee2dde028b5f89e8a with merge tree exactly matching the lived-accepted candidate. The accepted Conversation path keeps Work trace, Model reasoning, and Final answer distinct; request-local thinking is admitted only from the exact VexLife-owned Heretic runtime receipt while the persistent server default remains enable_thinking=false; raw reasoning stays session-only / non-canonical; and NO_READ_ONLY_FUNCTION_NEEDED turns use VEXLIFE_CONVERSATION_RESPONSE/v1 rather than evidence-synthesis posture. This investigation is complete; later presentation refinements belong to project.vexlife.interface-refinement.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "COMPLETED",
       "workDisposition": "ACTIVE",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [
@@ -5517,14 +5517,16 @@
         "repo.vexlife:reference/browser/modules/chat-controller.js",
         "repo.vexlife:docs/vexlife-assortment/practicum-candidates/conversation-refinement-startup-sequence-01/RUNBOOK.md",
         "github.pull.vexlife.972",
-        "repo.vexlife:src/core/heretic-persistent-runtime-owner.mjs"
+        "repo.vexlife:src/core/heretic-persistent-runtime-owner.mjs",
+        "github.commit.vexlife.7d59753687ff12726b0d309ee2dde028b5f89e8a",
+        "github.commit.vexlife.e7a16254ab02676996c599ac42cef4ff0d6ec6f9"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-31T09:50:01.000Z",
-      "updatedAt": "2026-10-31T23:21:59.000Z"
+      "updatedAt": "2026-11-01T00:08:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -10679,7 +10681,9 @@
     "repo.vexlife:reference/browser/modules/chat-controller.js",
     "repo.vexlife:docs/vexlife-assortment/practicum-candidates/conversation-refinement-startup-sequence-01/RUNBOOK.md",
     "github.pull.vexlife.972",
-    "repo.vexlife:src/core/heretic-persistent-runtime-owner.mjs"
+    "repo.vexlife:src/core/heretic-persistent-runtime-owner.mjs",
+    "github.commit.vexlife.7d59753687ff12726b0d309ee2dde028b5f89e8a",
+    "github.commit.vexlife.e7a16254ab02676996c599ac42cef4ff0d6ec6f9"
   ],
   "formedAt": "2026-10-21T01:45:00.000Z"
 }

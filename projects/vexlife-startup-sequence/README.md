@@ -257,13 +257,13 @@ hiddenReasoningIncluded = false
 
 That flag describes **those progress-event payloads only**. It is not evidence that the underlying model/provider has no reasoning channel.
 
-The ordinary persistent Heretic runtime and the currently accepted direct-host MLX binding also intentionally use:
+The persistent Heretic server still intentionally keeps its ordinary baseline:
 
 ```text
 enable_thinking=false
 ```
 
-Therefore an ordinary turn with no observed reasoning cannot answer the model-capability question.
+VexLife PR #972 added a narrower product path: the Browser may request `enable_thinking=true` only for the human-visible inference after validating the exact VexLife-owned Heretic runtime receipt. That preserves the conservative persistent default while making the reasoning observation truthful.
 
 Permanent investigation rule:
 
@@ -278,16 +278,30 @@ before denying capability:
   only then form the product claim
 ```
 
-Current exact held predicate:
+Current lived result:
 
 ```text
-When one separately qualified Heretic inference explicitly enables thinking,
-does mlx-lm emit non-empty reasoning?
+exact-source Mac turn
++ exact VexLife-owned Heretic runtime receipt
++ request-local enable_thinking=true
+-> non-empty mlx-lm model reasoning = PRESENT
 
-= NOT YET OBSERVED
+Work trace != Model reasoning != Final answer
+
+final human-facing answer
+-> emitted in normal content
+-> remained visible after completion
+-> became the durable Conversation response
+
+raw model reasoning
+-> session presentation only
+-> not canonical Conversation
+-> not later prompt context / Memory / training
 ```
 
-Do not replace that unknown with a denial, and do not invent a synthetic "reasoning" layer merely because runtime telemetry is already available. The source-observation defect is now owned by PR #972; the live thinking-enabled probe remains a separate effect whose qualified route has not yet been established. If live reasoning emission is confirmed, route its human projection through the rightful Interface / Conversation owner without conflating it with canned phase telemetry.
+The same lived pass also proved that `NO_READ_ONLY_FUNCTION_NEEDED` now routes the final conversational inference through `VEXLIFE_CONVERSATION_RESPONSE/v1` rather than forcing ordinary conversation through evidence-synthesis posture.
+
+VexLife PR #972 merged to current main as `7d59753687ff12726b0d309ee2dde028b5f89e8a`; the merge tree exactly matches the lived-accepted candidate tree. The reasoning-channel investigation is therefore complete. Further presentation refinement routes through `project.vexlife.interface-refinement`.
 
 ```text
 STARTUP COMPLETION != REASONING-PROJECTION COMPLETION
@@ -305,15 +319,17 @@ The current post-start completion pressures discovered from the same lived basel
 
 ```text
 A. visible work + reasoning-channel currentness
-   -> VexLife PR #970 owns visible-work / Evolution presentation lineage
-   -> VexLife PR #972 owns the bounded reasoning-observation correction
+   -> VexLife PR #972 merged the visible-work, Evolution, reasoning-observation, final-answer handoff, and no-read conversational convergence
    -> exact mlx-lm 0.32.0 field is reasoning; reasoning_content remains compatibility
-   -> runtime progress is explicitly hiddenReasoningIncluded=false
-   -> ordinary persistent Heretic currently uses enable_thinking=false
-   -> current humanProjection remains SEALED_EXPLICIT_OPEN_ONLY
-   -> thinking-enabled live Heretic reasoning emission is still UNKNOWN
-   -> investigate through one separately qualified probe before claiming capability absence
-   -> do not substitute canned phase text or invented public reasoning for an unobserved model-emitted channel
+   -> runtime progress remains a distinct Work trace with hiddenReasoningIncluded=false
+   -> persistent Heretic keeps enable_thinking=false by default
+   -> exact runtime-receipt admission enables thinking request-locally for the human-visible inference
+   -> live exact-source Heretic reasoning emission is PRESENT
+   -> Model reasoning remains separate from Work trace and Final answer
+   -> final answer remains the only durable Conversation response
+   -> no-read ordinary conversation uses VEXLIFE_CONVERSATION_RESPONSE/v1
+   -> accepted main merge 7d59753687ff12726b0d309ee2dde028b5f89e8a preserves the lived-accepted tree
+   -> later presentation refinement belongs to project.vexlife.interface-refinement
 
 B. online observation
    -> current capability.vexlife.online.observe is deliberately HELD
