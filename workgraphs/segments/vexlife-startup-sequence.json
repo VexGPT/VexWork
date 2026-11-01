@@ -69,13 +69,13 @@
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-31T09:50:01.000Z",
-      "updatedAt": "2026-11-01T00:08:00.000Z",
+      "updatedAt": "2026-11-01T07:26:00.000Z",
       "workRef": "work.vexlife.startup-sequence.reasoning-channel-investigation",
       "parentWorkRefOrNull": "work.vexlife.startup-sequence.outcome",
       "label": "Investigate live model-emitted reasoning before claiming capability absence",
-      "purpose": "Exact-source lived acceptance now establishes PRESENT model-emitted Heretic reasoning on mlx-lm 0.32.0 and closes the earlier UNKNOWN capability question. VexLife PR #972 merged to main as 7d59753687ff12726b0d309ee2dde028b5f89e8a with merge tree exactly matching the lived-accepted candidate. The accepted Conversation path keeps Work trace, Model reasoning, and Final answer distinct; request-local thinking is admitted only from the exact VexLife-owned Heretic runtime receipt while the persistent server default remains enable_thinking=false; raw reasoning stays session-only / non-canonical; and NO_READ_ONLY_FUNCTION_NEEDED turns use VEXLIFE_CONVERSATION_RESPONSE/v1 rather than evidence-synthesis posture. This investigation is complete; later presentation refinements belong to project.vexlife.interface-refinement.",
+      "purpose": "The no-tool lived acceptance from VexLife PR #972 remains valid for that exact conversational path, but a subsequent current-main tool-seeking turn falsified whole-work completion: the turn reached non-empty model reasoning and then failed with ENDPOINT_TIMEOUT before a final answer. Source tracing on accepted main 7d59753687ff12726b0d309ee2dde028b5f89e8a shows the streaming connection used one absolute 120-second wall-clock AbortController deadline even while reasoning/content chunks were actively arriving. VexLife PR #973 is the bounded hotfix: streaming timeout becomes provider-inactivity timeout while non-streaming semantics remain unchanged. This Work is RUNNING again until repository gates are terminal/reconciled and exact-source lived acceptance passes both the no-tool conversation and the tool-seeking turn without active-stream timeout.",
       "workClass": "TASK",
-      "state": "COMPLETED",
+      "state": "RUNNING",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [
         "work.vexlife.startup-sequence.baseline-origin"
@@ -95,7 +95,8 @@
         "github.pull.vexlife.972",
         "repo.vexlife:src/core/heretic-persistent-runtime-owner.mjs",
         "github.commit.vexlife.7d59753687ff12726b0d309ee2dde028b5f89e8a",
-        "github.commit.vexlife.e7a16254ab02676996c599ac42cef4ff0d6ec6f9"
+        "github.commit.vexlife.e7a16254ab02676996c599ac42cef4ff0d6ec6f9",
+        "github.pull.vexlife.973"
       ]
     },
     {
@@ -323,7 +324,8 @@
     "github.pull.vexlife.972",
     "repo.vexlife:src/core/heretic-persistent-runtime-owner.mjs",
     "github.commit.vexlife.7d59753687ff12726b0d309ee2dde028b5f89e8a",
-    "github.commit.vexlife.e7a16254ab02676996c599ac42cef4ff0d6ec6f9"
+    "github.commit.vexlife.e7a16254ab02676996c599ac42cef4ff0d6ec6f9",
+    "github.pull.vexlife.973"
   ],
   "formedAt": "2026-10-31T04:46:00.000Z"
 }

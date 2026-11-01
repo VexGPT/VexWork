@@ -301,7 +301,32 @@ raw model reasoning
 
 The same lived pass also proved that `NO_READ_ONLY_FUNCTION_NEEDED` now routes the final conversational inference through `VEXLIFE_CONVERSATION_RESPONSE/v1` rather than forcing ordinary conversation through evidence-synthesis posture.
 
-VexLife PR #972 merged to current main as `7d59753687ff12726b0d309ee2dde028b5f89e8a`; the merge tree exactly matches the lived-accepted candidate tree. The reasoning-channel investigation is therefore complete. Further presentation refinement routes through `project.vexlife.interface-refinement`.
+VexLife PR #972 merged to current main as `7d59753687ff12726b0d309ee2dde028b5f89e8a`; the merge tree exactly matches the lived-accepted candidate tree.
+
+A later current-main counterexample revoked the broader completion claim:
+
+```text
+human: are you able to access tools to 'find stuff now'?
+-> capability/tool path progressed far enough to start final synthesis
+-> non-empty Model reasoning was observed
+-> final answer did not arrive
+-> ENDPOINT_TIMEOUT
+```
+
+Source tracing showed that the streaming endpoint timeout was one absolute 120-second wall-clock deadline. It could abort a healthy reasoning stream even while provider chunks were still arriving. VexLife PR #973 now owns the bounded liveness correction:
+
+```text
+stream activity
+-> refresh inactivity deadline
+
+provider silence beyond deadline
+-> ENDPOINT_TIMEOUT
+
+total active generation time > deadline
+-> not a timeout by itself
+```
+
+Therefore the earlier no-tool pass remains valid evidence for that exact path, but the reasoning/channel work is not complete across the admitted Conversation surface. Re-acceptance requires both the no-tool conversational turn and the tool-seeking turn to pass on the same exact candidate, plus terminal repository gates reconciled before merge.
 
 ```text
 STARTUP COMPLETION != REASONING-PROJECTION COMPLETION
@@ -319,17 +344,14 @@ The current post-start completion pressures discovered from the same lived basel
 
 ```text
 A. visible work + reasoning-channel currentness
-   -> VexLife PR #972 merged the visible-work, Evolution, reasoning-observation, final-answer handoff, and no-read conversational convergence
+   -> VexLife PR #972 merged visible-work, Evolution, reasoning observation, final-answer handoff, and no-read conversational convergence
    -> exact mlx-lm 0.32.0 field is reasoning; reasoning_content remains compatibility
-   -> runtime progress remains a distinct Work trace with hiddenReasoningIncluded=false
-   -> persistent Heretic keeps enable_thinking=false by default
-   -> exact runtime-receipt admission enables thinking request-locally for the human-visible inference
-   -> live exact-source Heretic reasoning emission is PRESENT
-   -> Model reasoning remains separate from Work trace and Final answer
-   -> final answer remains the only durable Conversation response
-   -> no-read ordinary conversation uses VEXLIFE_CONVERSATION_RESPONSE/v1
-   -> accepted main merge 7d59753687ff12726b0d309ee2dde028b5f89e8a preserves the lived-accepted tree
-   -> later presentation refinement belongs to project.vexlife.interface-refinement
+   -> no-tool exact-source lived turn passed with Work trace, Model reasoning, and durable Final answer
+   -> subsequent current-main tool-seeking turn reached Model reasoning but failed ENDPOINT_TIMEOUT before final answer
+   -> accepted main currently exposes an absolute streaming wall-clock timeout that can kill active reasoning
+   -> VexLife PR #973 changes streaming timeout to provider-inactivity semantics
+   -> completion is revoked until the same exact candidate passes BOTH no-tool and tool-seeking lived turns
+   -> repository gates must be terminal and reconciled before any next merge
 
 B. online observation
    -> current capability.vexlife.online.observe is deliberately HELD

@@ -23,7 +23,7 @@ test('VexLife StartUp Sequence preserves one proven origin and explicit incomple
   assert.equal(byRef.get('work.vexlife.startup-sequence.managed-bootstrap-dependencies')?.state, 'READY');
   assert.equal(byRef.get('work.vexlife.startup-sequence.python-compatibility-qualification')?.state, 'READY');
   assert.equal(byRef.get('work.vexlife.startup-sequence.layered-failure-report')?.state, 'READY');
-  assert.equal(byRef.get('work.vexlife.startup-sequence.reasoning-channel-investigation')?.state, 'COMPLETED');
+  assert.equal(byRef.get('work.vexlife.startup-sequence.reasoning-channel-investigation')?.state, 'RUNNING');
   assert.equal(byRef.get('work.vexlife.startup-sequence.clean-slate-acceptance')?.state, 'WAITING_DEPENDENCIES');
 
   assert.deepEqual(
@@ -36,10 +36,10 @@ test('VexLife StartUp Sequence preserves one proven origin and explicit incomple
   );
 
   const board = projectWorkBoard({ project, graph, view, registry });
-  assert.equal(board.lanes.find((lane) => lane.laneRef === 'lane.work.active').cards.length, 1);
+  assert.equal(board.lanes.find((lane) => lane.laneRef === 'lane.work.active').cards.length, 2);
   assert.equal(board.lanes.find((lane) => lane.laneRef === 'lane.work.ready').cards.length, 4);
   assert.equal(board.lanes.find((lane) => lane.laneRef === 'lane.work.planned').cards.length, 3);
-  assert.equal(board.lanes.find((lane) => lane.laneRef === 'lane.work.done').cards.length, 2);
+  assert.equal(board.lanes.find((lane) => lane.laneRef === 'lane.work.done').cards.length, 1);
   assert.equal(board.lanes.flatMap((lane) => lane.cards).every((card) => card.effectDisposition === 'NO_EFFECTS'), true);
 
   assert.match(readme, /BASELINE ORIGIN != IMMORTAL COMMIT/u);
@@ -54,6 +54,9 @@ test('VexLife StartUp Sequence preserves one proven origin and explicit incomple
   assert.match(readme, /Work trace != Model reasoning != Final answer/u);
   assert.match(readme, /model reasoning = PRESENT/u);
   assert.match(readme, /7d59753687ff12726b0d309ee2dde028b5f89e8a/u);
+  assert.match(readme, /ENDPOINT_TIMEOUT/u);
+  assert.match(readme, /provider-inactivity/u);
+  assert.match(readme, /VexLife PR #973/u);
   assert.match(readme, /MODEL_EMITTED_REASONING_TRACE/u);
   assert.match(readme, /PROGRESS_HAS_NO_REASONING != MODEL_REASONING_UNAVAILABLE/u);
   assert.ok(byRef.get('work.vexlife.startup-sequence.reasoning-channel-investigation')?.sourceRefs.includes('repo.vexlife:src/core/model-runtime-adapter.mjs'));
@@ -61,4 +64,5 @@ test('VexLife StartUp Sequence preserves one proven origin and explicit incomple
   assert.ok(byRef.get('work.vexlife.startup-sequence.reasoning-channel-investigation')?.sourceRefs.includes('github.pull.vexlife.972'));
   assert.ok(byRef.get('work.vexlife.startup-sequence.reasoning-channel-investigation')?.sourceRefs.includes('repo.vexlife:src/core/heretic-persistent-runtime-owner.mjs'));
   assert.ok(byRef.get('work.vexlife.startup-sequence.reasoning-channel-investigation')?.sourceRefs.includes('github.commit.vexlife.7d59753687ff12726b0d309ee2dde028b5f89e8a'));
+  assert.ok(byRef.get('work.vexlife.startup-sequence.reasoning-channel-investigation')?.sourceRefs.includes('github.pull.vexlife.973'));
 });
