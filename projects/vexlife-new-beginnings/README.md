@@ -312,11 +312,16 @@ P0 · clean repository foundation
                        Kotlin 2.4.20 JVM/JS proof PASS
                        accepted-main tree identity PASS
 
-            [CURRENT / NEXT] Compose reference realization
-                             prove DisplayState -> presentation
-                             prove UI -> typed Control
-                             preserve Compose as manifestation, not semantic owner
-                             do not invent a production Family for local visual state
+            [CURRENT / PROOF] Compose reference realization
+                              VexLife-Prod PR #4
+                              head 68779f09bd9614ad6c9252951cf90e32b1c4c8b4
+                              tree 494cede06812565bedc1511ce07ef1d946f89a1e
+
+                              [FORMED] compiler-visible Blueprint element handles
+                              [FORMED] JVM Desktop Compose reference shell
+                              [FORMED] local Conversation/Settings visual state without Family
+                              [FORMED] reference-only DisplayState -> UI / UI -> Control specimen
+                              [HELD] exact Compose/Kotlin JVM + retained JS proof
 
             [WAITING] deterministic portable renderer contract
 
