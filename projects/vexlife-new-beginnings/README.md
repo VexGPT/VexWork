@@ -372,20 +372,19 @@ VEXWEB-F0  vocabulary pressure  [ACCEPTED]
   -> sourceParentRef preserves Blueprint parent
   -> containerRef preserves VexWeb manifestation containment
 
-VEXWEB-F1  compiler-visible authoring  [CURRENT / PROOF]
-  -> VexLife-Prod PR #10
-  -> A001 head 9a318a093527a5f6ce61fd176fc7ded3b487a09e
-  -> A001 RETURN sha256 3da3493468bc36d7db608205c2c74ee33d4407a621329dfccbd17b574d5db00f
-  -> JVM/JS compile + tests PASS
-  -> human scalability pressure: Split must compose beyond two panes
-  -> recursive Split already scales because leading/trailing are Node
-  -> missing authored intention was SplitAxis
-  -> A002 head 069591b2f4a1570da2233c04c955ff42bd5ef049
-  -> A002 tree 73b858fe7afccd2a41e674f80cb9e21dd07e85f8
-  -> SplitAxis.Horizontal / Vertical added
-  -> four-pane 2x2 specimen = Horizontal Split containing two Vertical Splits
-  -> no Grid/MultiSplit/Partition ontology added
-  -> exact A002 JVM/JS proof is next
+VEXWEB spatial language  [CURRENT / PROOF]
+  -> prior F1 binary-layout candidate PR #10 CLOSED / NOT MERGED
+  -> human law: expansion must scale the same language fractally
+  -> current candidate: VexLife-Prod PR #11
+  -> head 6e8c48ba801f682a1ef0a596698e5608d3e0e51b
+  -> tree 5ed774b13f86e27fad63d4a2a38082b4da89d32f
+  -> Frame / Seam / Region / Allocation
+  -> 2 / 3 / 4 region scalability tests
+  -> partial Seam proves irregular three-region layout
+  -> same-axis Seam dependency cycles rejected
+  -> Handle != Seam
+  -> Matrix / normalized coordinates remain derived inspection
+  -> exact JVM/JS proof required before acceptance
 
 VEXWEB-F2  deterministic artifact compiler
   -> VexWeb source -> normalized renderer-neutral projection
