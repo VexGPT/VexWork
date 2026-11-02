@@ -72,7 +72,7 @@
       "label": "Complete rendered and lived visual review",
       "purpose": "Inspect the accepted Vextreme page through a working desktop/mobile browser route, decide whether the composition truthfully carries the #209 milestone, and refine only if lived evidence earns a visual/source correction; A008/A009 remain visual-harness failures, not page failures.",
       "workClass": "TASK",
-      "state": "READY",
+      "state": "RUNNING",
       "workDisposition": "ACTIVE",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [
@@ -85,7 +85,10 @@
         "github.pull.vextreme.560",
         "github.commit.vextreme.3903616395c7b9312a51f91f3a12bbcaeb37afb0",
         "repo.vextreme:pages/vexarchitecture-first-stable-body.html",
-        "projects/vexarchitecture-public-archive/README.md"
+        "projects/vexarchitecture-public-archive/README.md",
+        "https://github.com/vgong24/Vextreme/actions/runs/41403200831",
+        "https://github.com/vgong24/Vextreme/actions/runs/41403201544",
+        "https://github.com/vgong24/Vextreme/actions/runs/41403201629"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [
@@ -94,7 +97,7 @@
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-11-02T06:59:11.000Z",
-      "updatedAt": "2026-11-02T06:59:11.000Z"
+      "updatedAt": "2026-11-02T11:09:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
