@@ -90,7 +90,7 @@
         "https://github.com/vgong24/Vextreme/actions/runs/41403201544",
         "https://github.com/vgong24/Vextreme/actions/runs/41403201629",
         "github.pull.vextreme.561",
-        "github.commit.vextreme-builder-guide.91ba3c8567c117af345ee8739358cffe7774d42f"
+        "github.commit.vextreme-builder-guide.bf6f9579dea78f6039ac5bb9742cdf354f6bc953"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [
@@ -99,7 +99,7 @@
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-11-02T06:59:11.000Z",
-      "updatedAt": "2026-11-02T11:35:00.000Z"
+      "updatedAt": "2026-11-02T11:44:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
