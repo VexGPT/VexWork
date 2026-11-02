@@ -136,11 +136,11 @@ Vextreme PR #561 now owns that bounded second-edition source revision:
 PR #561
 [Development Standard][2/N] Reveal VexArchitecture as a builder field guide
 
-source head
-91ba3c8567c117af345ee8739358cffe7774d42f
+source/pushed candidate
+bf6f9579dea78f6039ac5bb9742cdf354f6bc953
 
-source tree
-705024b9ff623809b6f506bd5083b7a77da97d40
+candidate tree
+071e050a0f26fa374f9aad8c1c5f4bf4518f4449
 
 source paths
 pages/vexarchitecture-first-stable-body.html
@@ -168,6 +168,26 @@ problem pressure
 ```
 
 This is a substantive guide revision, not a foundational VexArchitecture mutation. VexLife-Android #209/main remains behavioral authority.
+
+### Generated publication A001
+
+The complete builder-guide source was regenerated through the canonical Vextreme pipeline and passed full `npm run pr-ready` before publication.
+
+```text
+pushed candidate
+bf6f9579dea78f6039ac5bb9742cdf354f6bc953
+
+candidate tree
+071e050a0f26fa374f9aad8c1c5f4bf4518f4449
+
+generated path set
+170 exact
+
+publication
+ordinary non-force push
+```
+
+The outer LocalBridge consumer stopped at its separate review boundary; the retained inner VexRelay RETURN proves generation, full repository validation, exact-path gating, commit cleanliness, and push all passed with zero inner findings.
 
 ### Hosted deployment currentness
 
