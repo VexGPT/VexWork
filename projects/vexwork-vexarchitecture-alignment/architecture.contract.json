@@ -1,0 +1,483 @@
+{
+  "schemaVersion": "vexwork.vexarchitecture-alignment-contract/v1",
+  "contractRef": "contract.vexwork.vexarchitecture-alignment.001",
+  "purpose": "Preserve the full VexArchitecture alignment intention as a constrained refactor map: meaning remains with rightful owners, relationships are authored once and consumed rather than reconstructed, identities derive from existing source structure, construction is explicit, connective layers contribute mechanics without acquiring peer semantics, generated consequences are derived, invalid relationships fail at the rightful boundary, and held closure remains visibly owed until reconciled.",
+  "architectureSources": [
+    {
+      "repositoryRef": "repo.vexlife-android",
+      "acceptedCommit": "66c866dea6a8dd78e2946da88715c4deb78c1847",
+      "sourceRefs": [
+        "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+        "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt",
+        "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt",
+        "repo.vexlife-android:architecture/dependency/src/main/kotlin/com/vextreme/vexlife/android/dependency/VexDependencyFactory.kt",
+        "repo.vexlife-android:architecture/vexarchitecture/VEXLOGGER.md",
+        "repo.vexlife-android:architecture/vexarchitecture/REFINED-BOUNDARIES.md"
+      ]
+    },
+    {
+      "repositoryRef": "repo.vexlife-prod",
+      "acceptedCommit": "20919f21578eeff9d2e1d513a00e0cd66ecd72ea",
+      "sourceRefs": [
+        "repo.vexlife-prod:docs/CULTURE.md",
+        "repo.vexlife-prod:docs/foundation/SEMANTIC-CONTRACT-AUTHORING.md",
+        "repo.vexlife-prod:docs/foundation/VEXWEB-SPATIAL-FOUNDATION.md",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/semantic/VexFamilyContract.kt",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/blueprint/VexUiBlueprint.kt",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebF0.kt"
+      ]
+    }
+  ],
+  "laws": [
+    {
+      "lawRef": "law.vexwork.rightful-semantic-owner",
+      "statement": "Meaning stays with the smallest owner that can answer the semantic/domain question; connective, projection, provider and execution layers must not grow peer vocabularies that restate that meaning.",
+      "antiPatterns": [
+        "peer wrapper object restates an existing owner API",
+        "projection-specific vocabulary pushed upstream into semantic source",
+        "provider or execution mechanics decide Work meaning"
+      ]
+    },
+    {
+      "lawRef": "law.vexwork.relationship-authored-once",
+      "statement": "A relationship is authored once at its rightful source and downstream consumers receive that relationship or its bounded projection rather than reconstructing it from names, strings, counts, comments or convention.",
+      "antiPatterns": [
+        "consumer retypes stable identity from a string convention",
+        "second registry manually repeats a relationship derivable from source",
+        "prose TODO is the only carrier of an owed relationship"
+      ]
+    },
+    {
+      "lawRef": "law.vexwork.identity-from-existing-structure",
+      "statement": "When identity already exists in authored structure, reuse or derive from that structure before minting a parallel key, token, correlation coordinate or alias.",
+      "antiPatterns": [
+        "new identity layer introduced only to connect two already-related objects",
+        "provider/path/count used as semantic identity by convenience",
+        "duplicate currentness identity for the same Work/Project relationship"
+      ]
+    },
+    {
+      "lawRef": "law.vexwork.explicit-construction",
+      "statement": "Construction and prerequisites remain source-readable and bounded; consumers receive concrete relationships and may not discover hidden dependencies through ambient lookup, reflection-like inference or repository archaeology.",
+      "antiPatterns": [
+        "service-locator-style hidden lookup",
+        "relationship discovery by scanning naming conventions",
+        "future worker must search chat/history to know a prerequisite"
+      ]
+    },
+    {
+      "lawRef": "law.vexwork.connective-mechanics-not-meaning",
+      "statement": "Composition, integration, runtime, provider and execution layers contribute only the mechanics they rightfully own; they consume already-authored meaning and do not create a parallel feature/work vocabulary.",
+      "antiPatterns": [
+        "Integration Steward becomes a WorkState owner",
+        "generated projection becomes an authoring owner",
+        "coordination claim becomes semantic Project meaning"
+      ]
+    },
+    {
+      "lawRef": "law.vexwork.current-history-projection-separation",
+      "statement": "Current semantic truth, historical chronology/evidence and human/debug projections remain distinct owners; one may reference another without becoming its truth source.",
+      "antiPatterns": [
+        "provider timestamp treated as Work currentness",
+        "VexBoard becomes Work truth",
+        "historical checkpoint treated as present authority"
+      ]
+    },
+    {
+      "lawRef": "law.vexwork.generated-consequence",
+      "statement": "A deterministic consequence of authoritative source is generated or checked from that source; it is not maintained as an independent handwritten truth that future workers must remember to synchronize.",
+      "antiPatterns": [
+        "hand-edit generated aggregate as ordinary semantic source",
+        "hard-coded population count used as architecture",
+        "source and projection can drift while checks remain green"
+      ]
+    },
+    {
+      "lawRef": "law.vexwork.fail-at-rightful-boundary",
+      "statement": "An invalid or incomplete relationship fails where it can be proven invalid; downstream readers/renderers/integrators must not silently repair, guess or normalize away the source defect.",
+      "antiPatterns": [
+        "renderer guesses missing semantic relationship",
+        "integration silently drops unresolved source",
+        "validator checks only members already present and misses source-set closure"
+      ]
+    },
+    {
+      "lawRef": "law.vexwork.visible-held-closure",
+      "statement": "When a required relationship cannot yet converge lawfully, the exact unsatisfied relationship and predicate remain structurally observable until evidence clears them; a temporary hold must not decay into invisible future work.",
+      "antiPatterns": [
+        "do it later lives only in PR prose",
+        "shared-path conflict causes a required consequence to disappear",
+        "absence from projection is mistaken for absence of Work"
+      ]
+    },
+    {
+      "lawRef": "law.vexwork.proof-follows-claim",
+      "statement": "Proof is bound to the exact relationship claim and owner; a green structural check, provider observation, generated file, UI rendering or human screenshot cannot silently prove a different layer.",
+      "antiPatterns": [
+        "green registry syntax proves discoverability closure",
+        "merge proves lived navigation",
+        "UI visibility proves canonical source currentness"
+      ]
+    }
+  ],
+  "surfaces": [
+    {
+      "surfaceRef": "surface.vexwork.workgraph",
+      "role": "SEMANTIC_OWNER",
+      "sourceRefs": [
+        "src/core/workgraph.mjs",
+        "blueprint/work-registry.json",
+        "docs/foundation/WORKGRAPH.md"
+      ],
+      "owns": [
+        "Work identity",
+        "WorkState",
+        "containment",
+        "dependencies",
+        "transition legality"
+      ],
+      "doesNotOwn": [
+        "Project grouping",
+        "provider state",
+        "board lanes as lifecycle",
+        "VexBoard presentation"
+      ]
+    },
+    {
+      "surfaceRef": "surface.vexwork.projects",
+      "role": "GROUPING_OWNER",
+      "sourceRefs": [
+        "docs/foundation/PROJECTS.md",
+        "projects/*/project.json"
+      ],
+      "owns": [
+        "bounded root selection",
+        "Project identity",
+        "Project purpose"
+      ],
+      "doesNotOwn": [
+        "WorkState",
+        "repository source authority",
+        "implementation authority"
+      ]
+    },
+    {
+      "surfaceRef": "surface.vexwork.workgraph-composition",
+      "role": "COMPOSITION_OWNER",
+      "sourceRefs": [
+        "docs/foundation/WORKGRAPH-COMPOSITION.md",
+        "src/core/workgraph-composition.mjs",
+        "scripts/build-public-workgraph.mjs"
+      ],
+      "owns": [
+        "segment composition",
+        "deterministic canonical Workgraph consequence"
+      ],
+      "doesNotOwn": [
+        "Work semantic meaning",
+        "segment-local Work ownership"
+      ]
+    },
+    {
+      "surfaceRef": "surface.vexwork.project-discoverability",
+      "role": "DISCOVERABILITY_OWNER",
+      "sourceRefs": [
+        "docs/foundation/PROJECTS.md",
+        "src/core/project-registry.mjs",
+        "blueprint/project-registry.json"
+      ],
+      "owns": [
+        "source-managed Project discoverability"
+      ],
+      "doesNotOwn": [
+        "Project purpose",
+        "WorkState",
+        "Board contents"
+      ]
+    },
+    {
+      "surfaceRef": "surface.vexwork.public-workspace",
+      "role": "PROJECTION_OWNER",
+      "sourceRefs": [
+        "src/core/public-workspace.mjs",
+        "scripts/build-public-workspace.mjs",
+        "public/workspace.json"
+      ],
+      "owns": [
+        "read-only public projection"
+      ],
+      "doesNotOwn": [
+        "Project existence",
+        "WorkState",
+        "effect authority"
+      ]
+    },
+    {
+      "surfaceRef": "surface.vexwork.reconciliation",
+      "role": "DERIVED_CURRENTNESS_OWNER",
+      "sourceRefs": [
+        "docs/foundation/PROJECT-RECONCILIATION.md",
+        "src/core/project-reconciliation.mjs"
+      ],
+      "owns": [
+        "deterministic evidence reconciliation disposition"
+      ],
+      "doesNotOwn": [
+        "Work transition authority",
+        "provider mutation",
+        "merge"
+      ]
+    },
+    {
+      "surfaceRef": "surface.vexwork.integration",
+      "role": "CONVERGENCE_OWNER",
+      "sourceRefs": [
+        "docs/foundation/REPOSITORY-INTEGRATION.md",
+        "docs/process/INTEGRATE-READY-PULL-REQUESTS.md"
+      ],
+      "owns": [
+        "serialized current-main convergence policy",
+        "integration currentness"
+      ],
+      "doesNotOwn": [
+        "candidate semantic meaning",
+        "standing merge authority",
+        "WorkState"
+      ]
+    },
+    {
+      "surfaceRef": "surface.vexwork.attention",
+      "role": "DISCREPANCY_PROJECTION_OWNER",
+      "sourceRefs": [
+        "docs/foundation/DERIVED-ATTENTION.md",
+        "docs/foundation/ATTENTION-QUEUE.md"
+      ],
+      "owns": [
+        "read-only current attention/discrepancy projection"
+      ],
+      "doesNotOwn": [
+        "WorkState",
+        "automatic Work creation",
+        "effect authority"
+      ]
+    },
+    {
+      "surfaceRef": "surface.vexwork.process-map",
+      "role": "ROUTE_OWNER",
+      "sourceRefs": [
+        "docs/foundation/PROCESS-MAP.md",
+        "src/core/process-map.mjs"
+      ],
+      "owns": [
+        "navigation to reusable process source"
+      ],
+      "doesNotOwn": [
+        "process execution",
+        "WorkState",
+        "effect authority"
+      ]
+    },
+    {
+      "surfaceRef": "surface.vexwork.vexboard",
+      "role": "HUMAN_PROJECTION_OWNER",
+      "sourceRefs": [
+        "vexboard/index.html",
+        "src/core/vexboard-source-projectors.mjs"
+      ],
+      "owns": [
+        "human/debug projection of accepted relationships"
+      ],
+      "doesNotOwn": [
+        "WorkState",
+        "healing authority",
+        "source semantics",
+        "lifecycle"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipRef": "relationship.vexwork.segment-to-canonical-workgraph",
+      "alignmentState": "ACCEPTED_EXISTING",
+      "ownerSurfaceRef": "surface.vexwork.workgraph-composition",
+      "workRef": "work.vexwork.vexarchitecture-alignment.map-current-contracts",
+      "sourceRefs": [
+        "workgraphs/segments/*.json",
+        "workgraphs/composition.json"
+      ],
+      "consequenceRefs": [
+        "workgraphs/public.json"
+      ],
+      "constraint": "Every source segment participates in deterministic composition; the checked-in canonical Workgraph must equal the composition result.",
+      "proofRefs": [
+        "test/workgraph-composition-source.test.mjs"
+      ],
+      "patientZeroRefs": []
+    },
+    {
+      "relationshipRef": "relationship.vexwork.project-to-workgraph-roots",
+      "alignmentState": "ACCEPTED_EXISTING",
+      "ownerSurfaceRef": "surface.vexwork.projects",
+      "workRef": "work.vexwork.vexarchitecture-alignment.map-current-contracts",
+      "sourceRefs": [
+        "projects/*/project.json"
+      ],
+      "consequenceRefs": [
+        "src/core/workgraph.mjs#projectWorkRefs"
+      ],
+      "constraint": "Every Project rootWorkRef must resolve in the bound canonical Workgraph and select only canonical Work descendants.",
+      "proofRefs": [
+        "src/core/workgraph.mjs",
+        "test/public-workspace.test.mjs"
+      ],
+      "patientZeroRefs": []
+    },
+    {
+      "relationshipRef": "relationship.vexwork.project-source-to-discoverability",
+      "alignmentState": "OBSERVED_GAP",
+      "ownerSurfaceRef": "surface.vexwork.project-discoverability",
+      "workRef": "work.vexwork.vexarchitecture-alignment.project-discoverability-contract",
+      "sourceRefs": [
+        "projects/*/project.json",
+        "projects/*/board.view.json"
+      ],
+      "consequenceRefs": [
+        "blueprint/project-registry.json"
+      ],
+      "constraint": "Every eligible source-managed Project must resolve exactly once into discoverability with matching Project/Board/Workgraph identity; no orphan registry entry may exist.",
+      "proofRefs": [
+        "test/project-registry.test.mjs"
+      ],
+      "patientZeroRefs": [
+        "project.vexlife.new-beginnings",
+        "project.vexwork.vexarchitecture-alignment"
+      ]
+    },
+    {
+      "relationshipRef": "relationship.vexwork.canonical-truth-to-public-workspace",
+      "alignmentState": "TARGET_REFINEMENT",
+      "ownerSurfaceRef": "surface.vexwork.public-workspace",
+      "workRef": "work.vexwork.vexarchitecture-alignment.generated-consequence-reconciliation",
+      "sourceRefs": [
+        "blueprint/project-registry.json",
+        "workgraphs/public.json",
+        "projects/*/project.json",
+        "projects/*/board.view.json"
+      ],
+      "consequenceRefs": [
+        "public/workspace.json"
+      ],
+      "constraint": "Public workspace is a deterministic consequence of current canonical Project + Workgraph truth and cannot remain green while those source relationships are omitted or stale.",
+      "proofRefs": [
+        "scripts/build-public-workspace.mjs",
+        "test/public-workspace.test.mjs"
+      ],
+      "patientZeroRefs": [
+        "project.vexlife.new-beginnings"
+      ]
+    },
+    {
+      "relationshipRef": "relationship.vexwork.accepted-source-to-generated-consequences",
+      "alignmentState": "OBSERVED_GAP",
+      "ownerSurfaceRef": "surface.vexwork.integration",
+      "workRef": "work.vexwork.vexarchitecture-alignment.generated-consequence-reconciliation",
+      "sourceRefs": [
+        "docs/foundation/WORKGRAPH-COMPOSITION.md",
+        "docs/foundation/REPOSITORY-INTEGRATION.md"
+      ],
+      "consequenceRefs": [
+        "workgraphs/public.json",
+        "public/workspace.json"
+      ],
+      "constraint": "After accepted source movement, deterministic VexWork consequences are re-derived and verified at the rightful convergence boundary; source lanes do not permanently own generated aggregate synchronization.",
+      "proofRefs": [
+        "npm run workgraph:check",
+        "npm run workspace:check",
+        "test/repository-integration-foundation.test.mjs"
+      ],
+      "patientZeroRefs": [
+        "project.vexlife.new-beginnings"
+      ]
+    },
+    {
+      "relationshipRef": "relationship.vexwork.held-closure-to-visible-attention",
+      "alignmentState": "TARGET_REFINEMENT",
+      "ownerSurfaceRef": "surface.vexwork.attention",
+      "workRef": "work.vexwork.vexarchitecture-alignment.relationship-attention-healing",
+      "sourceRefs": [
+        "docs/foundation/DERIVED-ATTENTION.md",
+        "docs/foundation/ATTENTION-QUEUE.md"
+      ],
+      "consequenceRefs": [
+        "current read-only discrepancy projection"
+      ],
+      "constraint": "A required but temporarily unresolvable relationship remains visible with its exact predicate/evidence until convergence; clearing evidence removes the attention without changing WorkState by implication.",
+      "proofRefs": [
+        "test/derived-attention.test.mjs",
+        "test/attention-queue.test.mjs"
+      ],
+      "patientZeroRefs": [
+        "project.vexlife.new-beginnings"
+      ]
+    },
+    {
+      "relationshipRef": "relationship.vexwork.provider-proof-to-reconciliation",
+      "alignmentState": "ACCEPTED_EXISTING",
+      "ownerSurfaceRef": "surface.vexwork.reconciliation",
+      "workRef": "work.vexwork.vexarchitecture-alignment.map-current-contracts",
+      "sourceRefs": [
+        "Project + Workgraph truth",
+        "provider observation",
+        "proof observation"
+      ],
+      "consequenceRefs": [
+        "deterministic reconciliation disposition"
+      ],
+      "constraint": "Evidence currentness is derived without becoming WorkState or transition authority.",
+      "proofRefs": [
+        "test/project-reconciliation.test.mjs"
+      ],
+      "patientZeroRefs": []
+    },
+    {
+      "relationshipRef": "relationship.vexwork.work-to-process-route",
+      "alignmentState": "ACCEPTED_EXISTING",
+      "ownerSurfaceRef": "surface.vexwork.process-map",
+      "workRef": "work.vexwork.vexarchitecture-alignment.map-current-contracts",
+      "sourceRefs": [
+        "Work formationProcessRefOrNull",
+        "Work nextProcessRefs[]",
+        "blueprint/process-registry.json"
+      ],
+      "consequenceRefs": [
+        "read-only process navigation"
+      ],
+      "constraint": "Process routing remains source-addressable navigation and never becomes hidden execution or authority.",
+      "proofRefs": [
+        "test/process-map.test.mjs"
+      ],
+      "patientZeroRefs": []
+    },
+    {
+      "relationshipRef": "relationship.vexwork.truth-to-vexboard-projection",
+      "alignmentState": "TARGET_REFINEMENT",
+      "ownerSurfaceRef": "surface.vexwork.vexboard",
+      "workRef": "work.vexwork.vexarchitecture-alignment.vexboard-projection-alignment",
+      "sourceRefs": [
+        "canonical VexWork truth",
+        "reconciliation",
+        "attention",
+        "source relationships"
+      ],
+      "consequenceRefs": [
+        "VexBoard human/debug projection"
+      ],
+      "constraint": "VexBoard receives already-owned identities/relationships and must not force VexWork to mint projection-specific semantic IDs or acquire healing/lifecycle authority.",
+      "proofRefs": [
+        "test/vexboard-source-projectors.test.mjs",
+        "test/vexboard-projection-composition.test.mjs"
+      ],
+      "patientZeroRefs": []
+    }
+  ]
+}

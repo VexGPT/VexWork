@@ -77,3 +77,88 @@ test('patient-zero closure is a named implementation edge, not a hard-coded Proj
   assert.equal(discoverability.sourceRefs.includes('projects/vexlife-new-beginnings/project.json'), true);
   assert.equal(discoverability.sourceRefs.includes('test/project-registry.test.mjs'), true);
 });
+
+
+const architectureContract = read('projects/vexwork-vexarchitecture-alignment/architecture.contract.json');
+
+test('alignment contract preserves the whole VexArchitecture intention instead of one patient-zero pattern', () => {
+  assert.equal(architectureContract.schemaVersion, 'vexwork.vexarchitecture-alignment-contract/v1');
+  assert.equal(architectureContract.contractRef, 'contract.vexwork.vexarchitecture-alignment.001');
+
+  const lawRefs = architectureContract.laws.map((law) => law.lawRef);
+  assert.equal(new Set(lawRefs).size, lawRefs.length);
+  for (const required of [
+    'law.vexwork.rightful-semantic-owner',
+    'law.vexwork.relationship-authored-once',
+    'law.vexwork.identity-from-existing-structure',
+    'law.vexwork.explicit-construction',
+    'law.vexwork.connective-mechanics-not-meaning',
+    'law.vexwork.current-history-projection-separation',
+    'law.vexwork.generated-consequence',
+    'law.vexwork.fail-at-rightful-boundary',
+    'law.vexwork.visible-held-closure',
+    'law.vexwork.proof-follows-claim',
+  ]) {
+    assert.equal(lawRefs.includes(required), true, required);
+  }
+
+  assert.equal(
+    architectureContract.architectureSources.some((source) =>
+      source.repositoryRef === 'repo.vexlife-android'
+      && source.acceptedCommit === '66c866dea6a8dd78e2946da88715c4deb78c1847'
+    ),
+    true,
+  );
+  assert.equal(
+    architectureContract.architectureSources.some((source) =>
+      source.repositoryRef === 'repo.vexlife-prod'
+      && source.acceptedCommit === '20919f21578eeff9d2e1d513a00e0cd66ecd72ea'
+    ),
+    true,
+  );
+});
+
+test('every alignment relationship has one current owner surface and one Work migration owner', () => {
+  const surfaceRefs = new Set(architectureContract.surfaces.map((surface) => surface.surfaceRef));
+  const workRefs = new Set(graph.items.map((item) => item.workRef));
+  const relationshipRefs = architectureContract.relationships.map((relationship) => relationship.relationshipRef);
+
+  assert.equal(new Set(relationshipRefs).size, relationshipRefs.length);
+  for (const relationship of architectureContract.relationships) {
+    assert.equal(surfaceRefs.has(relationship.ownerSurfaceRef), true, relationship.relationshipRef);
+    assert.equal(workRefs.has(relationship.workRef), true, relationship.relationshipRef);
+    assert.equal(relationship.sourceRefs.length > 0, true, relationship.relationshipRef);
+    assert.equal(relationship.consequenceRefs.length > 0, true, relationship.relationshipRef);
+    assert.equal(relationship.constraint.trim().length > 0, true, relationship.relationshipRef);
+    assert.equal(
+      ['ACCEPTED_EXISTING', 'OBSERVED_GAP', 'TARGET_REFINEMENT'].includes(relationship.alignmentState),
+      true,
+      relationship.relationshipRef,
+    );
+  }
+});
+
+test('patient-zero discoverability gap cannot be narrowed away from the larger architecture contract', () => {
+  const discoverability = architectureContract.relationships.find((relationship) =>
+    relationship.relationshipRef === 'relationship.vexwork.project-source-to-discoverability'
+  );
+  assert.equal(discoverability.alignmentState, 'OBSERVED_GAP');
+  assert.equal(discoverability.workRef, 'work.vexwork.vexarchitecture-alignment.project-discoverability-contract');
+  assert.equal(discoverability.patientZeroRefs.includes('project.vexlife.new-beginnings'), true);
+  assert.equal(discoverability.patientZeroRefs.includes('project.vexwork.vexarchitecture-alignment'), true);
+
+  const generated = architectureContract.relationships.find((relationship) =>
+    relationship.relationshipRef === 'relationship.vexwork.accepted-source-to-generated-consequences'
+  );
+  assert.equal(generated.workRef, 'work.vexwork.vexarchitecture-alignment.generated-consequence-reconciliation');
+
+  const held = architectureContract.relationships.find((relationship) =>
+    relationship.relationshipRef === 'relationship.vexwork.held-closure-to-visible-attention'
+  );
+  assert.equal(held.workRef, 'work.vexwork.vexarchitecture-alignment.relationship-attention-healing');
+
+  const vexboard = architectureContract.relationships.find((relationship) =>
+    relationship.relationshipRef === 'relationship.vexwork.truth-to-vexboard-projection'
+  );
+  assert.equal(vexboard.workRef, 'work.vexwork.vexarchitecture-alignment.vexboard-projection-alignment');
+});

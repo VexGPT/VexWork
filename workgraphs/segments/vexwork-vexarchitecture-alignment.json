@@ -21,6 +21,7 @@
       ],
       "sourceRefs": [
         "project.vexwork.vexarchitecture-alignment",
+        "projects/vexwork-vexarchitecture-alignment/architecture.contract.json",
         "projects/vexwork-vexarchitecture-alignment/README.md",
         "human.design.vexwork.vexarchitecture-alignment.20261101",
         "github.commit.vexlife-android.66c866dea6a8dd78e2946da88715c4deb78c1847",
@@ -37,8 +38,8 @@
       "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vexwork.vexarchitecture-alignment.map-current-contracts",
       "parentWorkRefOrNull": "work.vexwork.vexarchitecture-alignment.outcome",
-      "label": "Map current VexWork foundations to VexArchitecture contract patterns",
-      "purpose": "Read the existing Process Map, Projects, Workgraph Composition, Reconciliation, Integration, Derived Attention and public projection contracts; identify which relationships are already structurally owned, which still depend on manual restatement, and which accepted VexLife-Android/VexLife-Prod patterns translate without copying product-specific nouns.",
+      "label": "Map and constrain VexWork through the full VexArchitecture relationship intention",
+      "purpose": "Compile the accepted VexLife-Android and VexLife-Prod architecture intention into a VexWork-native, machine-readable relationship contract: preserve rightful semantic owners, authored-once relationships, identity from existing structure, explicit construction, connective mechanics without peer meaning, current/history/projection separation, deterministic generated consequences, fail-closed invalid relationships, visible held closure and claim-matched proof. Map each current VexWork foundation to those laws before any patient-zero implementation is allowed to narrow the architecture to one registry fix.",
       "workClass": "TASK",
       "state": "RUNNING",
       "workDisposition": "ACTIVE",
@@ -49,6 +50,7 @@
       ],
       "sourceRefs": [
         "projects/vexwork-vexarchitecture-alignment/README.md",
+        "projects/vexwork-vexarchitecture-alignment/architecture.contract.json",
         "docs/foundation/PROCESS-MAP.md",
         "docs/foundation/PROJECTS.md",
         "docs/foundation/WORKGRAPH-COMPOSITION.md",
@@ -86,6 +88,7 @@
       ],
       "sourceRefs": [
         "projects/vexwork-vexarchitecture-alignment/README.md",
+        "projects/vexwork-vexarchitecture-alignment/architecture.contract.json",
         "docs/process/FORM-PROJECT.md",
         "docs/foundation/PROJECTS.md",
         "blueprint/project-registry.json",
@@ -121,6 +124,7 @@
       ],
       "sourceRefs": [
         "projects/vexwork-vexarchitecture-alignment/README.md",
+        "projects/vexwork-vexarchitecture-alignment/architecture.contract.json",
         "docs/foundation/WORKGRAPH-COMPOSITION.md",
         "docs/foundation/REPOSITORY-INTEGRATION.md",
         "docs/process/INTEGRATE-READY-PULL-REQUESTS.md",
@@ -157,6 +161,7 @@
       ],
       "sourceRefs": [
         "projects/vexwork-vexarchitecture-alignment/README.md",
+        "projects/vexwork-vexarchitecture-alignment/architecture.contract.json",
         "docs/foundation/DERIVED-ATTENTION.md",
         "docs/foundation/ATTENTION-QUEUE.md",
         "docs/foundation/PROJECT-RECONCILIATION.md"
@@ -189,6 +194,7 @@
       ],
       "sourceRefs": [
         "projects/vexwork-vexarchitecture-alignment/README.md",
+        "projects/vexwork-vexarchitecture-alignment/architecture.contract.json",
         "projects/vexlife-new-beginnings/project.json",
         "workgraphs/segments/vexlife-new-beginnings.json",
         "public/workspace.json",
@@ -223,6 +229,7 @@
       ],
       "sourceRefs": [
         "projects/vexwork-vexarchitecture-alignment/README.md",
+        "projects/vexwork-vexarchitecture-alignment/architecture.contract.json",
         "docs/foundation/WORKGRAPH.md",
         "vexboard/index.html",
         "src/core/vexboard-source-projectors.mjs",
@@ -243,6 +250,7 @@
   "sourceRefs": [
     "project.vexwork.vexarchitecture-alignment",
     "projects/vexwork-vexarchitecture-alignment/README.md",
+    "projects/vexwork-vexarchitecture-alignment/architecture.contract.json",
     "docs/foundation/WORKGRAPH-COMPOSITION.md",
     "github.commit.vexlife-android.66c866dea6a8dd78e2946da88715c4deb78c1847",
     "github.commit.vexlife-prod.20919f21578eeff9d2e1d513a00e0cd66ecd72ea"

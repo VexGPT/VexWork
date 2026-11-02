@@ -131,6 +131,124 @@ authored Region / Seam relationship
 
 VexWork should apply the same discipline to its own relationships.
 
+
+## Full architecture intention — not a pattern library
+
+This alignment is not permission to cherry-pick one convenient VexArchitecture technique such as
+"add a validator" while retaining the older assumption that static duplicate structures, remembered
+string relationships, peer wrapper APIs and manually synchronized projections are normal.
+
+The transferable whole property is:
+
+~~~
+meaning is authored once by the rightful owner
+-> source makes the relationship explicit
+-> identity already present in that relationship is carried forward
+-> construction exposes only declared prerequisites
+-> connective layers consume that meaning and contribute only their mechanics
+-> current truth / history / projection remain separate owners
+-> deterministic consequences are derived
+-> invalid relationships fail where they can be proven invalid
+-> temporarily held closure remains visibly owed
+-> proof matches the exact claim
+~~~
+
+The Android implementation demonstrates the subtractive side of this law:
+
+~~~
+existing Family / Session owns the meaningful operation
+-> do not add a peer feature execution API
+
+semantic structure already identifies the active relationship
+-> do not mint another RelationshipKey / OwnerToken / InstanceId
+
+provider declares prerequisites explicitly
+-> do not discover dependencies through ambient lookup / reflection
+
+accepted / observed fact occurs
+-> Logger records chronology
+-> Logger does not become the semantic owner
+
+VexBoard / debug surface needs a human explanation
+-> project existing semantic/runtime/history truth
+-> do not force upstream architecture to invent display-shaped identities
+~~~
+
+VexLife-Prod demonstrates the construction side:
+
+~~~
+compiler-visible relationship
+-> consumer receives the existing handle / identity
+-> consumer does not reconstruct it from a string
+
+relational spatial source
+-> resolve enough consequence to validate geometry
+-> invalid relationship fails
+-> renderer cannot repair or guess
+
+authoritative relationship source
+-> deterministic generated artifact
+-> generated artifact is not a second authoring owner
+~~~
+
+### VexWork translation
+
+For VexWork, the default question becomes:
+
+> Is this code/source the rightful owner of independently meaningful truth, or is it manually
+> restating a relationship/consequence that can be constrained or derived from a rightful owner?
+
+Static source is not forbidden. It is earned when it is the rightful stable owner of meaning,
+policy, identity or an independently meaningful contract.
+
+Static duplication is the problem:
+
+~~~
+RIGHTFUL STATIC SOURCE
+  Workgraph lifecycle grammar
+  Project definition
+  repository/process definitions
+  repository-owned architecture contract
+
+DERIVED / CONSTRAINED CONSEQUENCE
+  composed Workgraph
+  public workspace
+  discoverability projection when membership is derivable
+  VexBoard/debug views
+
+SMELL
+  handwritten duplicate registry membership
+  hard-coded population counts
+  projection-specific IDs pushed upstream
+  peer wrapper APIs that restate an existing owner
+  prose-only "do this later" obligations
+  consumer reconstruction of relationships from names/paths/convention
+~~~
+
+The desired architecture therefore does not merely detect forgotten synchronization. It removes
+the need for that synchronization where the relationship is derivable, constrains the remaining
+authoring boundary where it is not, and keeps any genuinely held closure visible.
+
+## Machine-readable alignment contract
+
+`projects/vexwork-vexarchitecture-alignment/architecture.contract.json` is the Project-local constrained map for this refactor.
+
+It is deliberately **not** a new universal VexWork relationship ontology. Its purpose is to keep the
+whole alignment intention mechanically connected to:
+
+- the accepted VexLife-Android / VexLife-Prod evidence;
+- the current VexWork truth owners;
+- each relationship being preserved or repaired;
+- the Work item that owns that migration;
+- the patient-zero failure/proof where applicable.
+
+A0 maintains this contract while the architecture is being mapped. A1–A5 must move each accepted law
+into the rightful production owner rather than making this Project file the permanent runtime
+executor.
+
+Fresh successors should read the contract alongside this README before narrowing the work to one
+patient-zero fix.
+
 ## Existing VexWork process map
 
 This Project reuses current process owners instead of inventing an alignment workflow.
@@ -493,17 +611,18 @@ Strongest acceptance patient zero:
 
 ~~~
 1. read this README
-2. read project.json + board.view.json
-3. read workgraphs/segments/vexwork-vexarchitecture-alignment.json
-4. identify current Work / dependency
-5. descend only to the named VexWork foundation
-6. use VexLife-Android / VexLife-Prod as architecture evidence, not VexWork source authority
-7. implement the smallest relationship fix
-8. run focused proof + npm run review when execution is available
-9. use process.vexwork.quality-review
-10. use process.vexwork.integrate-ready-pull-requests at integration
-11. reconcile deterministic consequences after accepted source movement
-12. continue until the end-to-end property is proved
+2. read projects/vexwork-vexarchitecture-alignment/architecture.contract.json
+3. read project.json + board.view.json
+4. read workgraphs/segments/vexwork-vexarchitecture-alignment.json
+5. identify current Work / dependency
+6. descend only to the named VexWork foundation
+7. use VexLife-Android / VexLife-Prod as architecture evidence, not VexWork source authority
+8. implement the smallest relationship fix without narrowing away the contract's whole-system laws
+9. run focused proof + npm run review when execution is available
+10. use process.vexwork.quality-review
+11. use process.vexwork.integrate-ready-pull-requests at integration
+12. reconcile deterministic consequences after accepted source movement
+13. continue until the end-to-end property is proved
 ~~~
 
 Do not reconstruct this Project from the conversation that formed it.

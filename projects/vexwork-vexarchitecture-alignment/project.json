@@ -2,7 +2,7 @@
   "schemaVersion": "vexwork.project-definition/v1",
   "projectRef": "project.vexwork.vexarchitecture-alignment",
   "label": "VexWork VexArchitecture Alignment",
-  "purpose": "Refactor VexWork toward the relationship-constrained architecture patterns accepted in VexLife-Android and VexLife-Prod so work truth, discoverability, generated projections, reconciliation and integration remain structurally aligned; deterministic consequences converge automatically where lawful, unresolved relationships remain visibly held where not, and future AI instances can extend VexWork without relying on memory, manual aggregate edits or Victor rediscovering deferred obligations.",
+  "purpose": "Refactor VexWork toward the full relationship-constrained architecture intention accepted in VexLife-Android and VexLife-Prod: keep meaning with rightful owners, author relationships once, derive identity from existing structure, make construction explicit, keep connective mechanics from becoming peer semantics, derive deterministic consequences, fail invalid relationships at the rightful boundary, keep held closure visibly owed, and make projections consume truth so future AI instances do not rely on memory, manual aggregate synchronization or Victor rediscovering deferred obligations.",
   "rootWorkRefs": [
     "work.vexwork.vexarchitecture-alignment.outcome"
   ],
@@ -13,6 +13,7 @@
   ],
   "sourceRefs": [
     "projects/vexwork-vexarchitecture-alignment/README.md",
+    "projects/vexwork-vexarchitecture-alignment/architecture.contract.json",
     "docs/process/FORM-PROJECT.md",
     "docs/foundation/PROCESS-MAP.md",
     "docs/foundation/WORKGRAPH-COMPOSITION.md",
