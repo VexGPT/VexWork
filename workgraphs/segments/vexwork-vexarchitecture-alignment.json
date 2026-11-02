@@ -41,7 +41,7 @@
       "label": "Map and constrain VexWork through the full VexArchitecture relationship intention",
       "purpose": "Compile the accepted VexLife-Android and VexLife-Prod architecture intention into a VexWork-native, machine-readable relationship contract: preserve rightful semantic owners, authored-once relationships, identity from existing structure, explicit construction, connective mechanics without peer meaning, current/history/projection separation, deterministic generated consequences, fail-closed invalid relationships, visible held closure and claim-matched proof. Map each current VexWork foundation to those laws before any patient-zero implementation is allowed to narrow the architecture to one registry fix.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "WAITING_TOOL",
       "workDisposition": "ACTIVE",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [],
@@ -68,7 +68,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-11-02T06:50:00.000Z",
-      "updatedAt": "2026-11-02T06:50:00.000Z"
+      "updatedAt": "2026-11-02T11:29:54.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -246,7 +246,23 @@
       "updatedAt": "2026-11-02T06:50:00.000Z"
     }
   ],
-  "transitions": [],
+  "transitions": [
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.vexarchitecture-alignment.map-current-contracts.waiting-tool.a0-proof",
+      "workRef": "work.vexwork.vexarchitecture-alignment.map-current-contracts",
+      "priorState": "RUNNING",
+      "nextState": "WAITING_TOOL",
+      "reason": "A0 full-intention architecture map completed its source/ownership review, but repository-native focused Node proof and npm run review cannot run on the current hosted execution surface. Hold only the exact deterministic proof effect for current VexRelay ExactHeadSourceOwnerProof; this is not a source defect and A1 remains dependency-held.",
+      "actorRef": "role.vexwork.vexarchitecture-alignment-author",
+      "sourceRefs": [
+        "github.pull.vexwork.210",
+        "github.pull.vexwork.210.comment.6576031173",
+        "source.vexrelay.current-contract/v1"
+      ],
+      "createdAt": "2026-11-02T11:29:54.000Z"
+    }
+  ],
   "sourceRefs": [
     "project.vexwork.vexarchitecture-alignment",
     "projects/vexwork-vexarchitecture-alignment/README.md",

@@ -632,7 +632,7 @@ VexBoard can make relationships perceptible. It must not become the truth/healin
 
 ### A0 — map + blueprint
 
-This Project formation owns the source-grounded owner/process map and the English target architecture.
+Current state: **WAITING_TOOL**. The source-grounded owner/process map, English target architecture, machine-readable full-intention contract, static-source classification, whole-foundation matrix and Board-view census are source-formed and reviewed. The remaining A0 predicate is exact repository-native deterministic proof (`node --test ...` + `npm run review`) through a qualified current execution carrier. This is a proof hold, not a source-correction signal.
 
 ### A1 — Project source bundle + discoverability relationship contract
 

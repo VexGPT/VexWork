@@ -256,3 +256,26 @@ test('default Board projection is treated as derivable unless Project-specific v
   assert.match(relationship.constraint, /default Board view/i);
   assert.match(relationship.constraint, /explicit Board-view source/i);
 });
+
+
+test('A0 holds only the deterministic proof effect while A1 remains dependency-held', () => {
+  const a0 = graph.items.find((item) =>
+    item.workRef === 'work.vexwork.vexarchitecture-alignment.map-current-contracts'
+  );
+  const a1 = graph.items.find((item) =>
+    item.workRef === 'work.vexwork.vexarchitecture-alignment.project-discoverability-contract'
+  );
+
+  assert.equal(a0.state, 'WAITING_TOOL');
+  assert.equal(a1.state, 'WAITING_DEPENDENCIES');
+  assert.deepEqual(a1.dependencyRefs, [a0.workRef]);
+
+  const transition = graph.transitions.find((entry) =>
+    entry.transitionRef === 'transition.vexwork.vexarchitecture-alignment.map-current-contracts.waiting-tool.a0-proof'
+  );
+  assert.ok(transition);
+  assert.equal(transition.priorState, 'RUNNING');
+  assert.equal(transition.nextState, 'WAITING_TOOL');
+  assert.equal(transition.sourceRefs.includes('source.vexrelay.current-contract/v1'), true);
+  assert.equal(transition.sourceRefs.includes('github.pull.vexwork.210.comment.6576031173'), true);
+});
