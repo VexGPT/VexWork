@@ -260,7 +260,7 @@ test('default Board projection is treated as derivable unless Project-specific v
 });
 
 
-test('A0 reopens only the review-discovered patient-zero repair while A1 remains dependency-held', () => {
+test('A0 completes its map claim and releases A1 without claiming PR-wide merge readiness', () => {
   const a0 = graph.items.find((item) =>
     item.workRef === 'work.vexwork.vexarchitecture-alignment.map-current-contracts'
   );
@@ -268,26 +268,25 @@ test('A0 reopens only the review-discovered patient-zero repair while A1 remains
     item.workRef === 'work.vexwork.vexarchitecture-alignment.project-discoverability-contract'
   );
 
-  assert.equal(a0.state, 'RUNNING');
-  assert.equal(a1.state, 'WAITING_DEPENDENCIES');
+  assert.equal(a0.state, 'COMPLETED');
+  assert.equal(a1.state, 'RUNNING');
   assert.deepEqual(a1.dependencyRefs, [a0.workRef]);
 
-  const proofHold = graph.transitions.find((entry) =>
-    entry.transitionRef === 'transition.vexwork.vexarchitecture-alignment.map-current-contracts.waiting-tool.a0-proof'
+  const a0Completion = graph.transitions.find((entry) =>
+    entry.transitionRef === 'transition.vexwork.vexarchitecture-alignment.map-current-contracts.verifying-completed.a0-map-accepted'
   );
-  assert.ok(proofHold);
-  assert.equal(proofHold.priorState, 'RUNNING');
-  assert.equal(proofHold.nextState, 'WAITING_TOOL');
+  assert.ok(a0Completion);
+  assert.equal(a0Completion.priorState, 'VERIFYING');
+  assert.equal(a0Completion.nextState, 'COMPLETED');
+  assert.match(a0Completion.reason, /repository-wide green gate remains a later trajectory\/integration predicate/i);
 
-  const repair = graph.transitions.find((entry) =>
-    entry.transitionRef === 'transition.vexwork.vexarchitecture-alignment.map-current-contracts.waiting-tool-running.a0-review-repair'
+  const a1Start = graph.transitions.find((entry) =>
+    entry.transitionRef === 'transition.vexwork.vexarchitecture-alignment.project-discoverability.ready-running.a1-source-owner'
   );
-  assert.ok(repair);
-  assert.equal(repair.priorState, 'WAITING_TOOL');
-  assert.equal(repair.nextState, 'RUNNING');
-  assert.equal(repair.sourceRefs.includes(
-    'artifact.vexwork.vexarchitecture-alignment.a0.source-owner-review.return.sha256.34418db3237f1c6023a36ebba02d9401b1614ef2e356a35a36f5f7fbedce816d'
-  ), true);
+  assert.ok(a1Start);
+  assert.equal(a1Start.priorState, 'READY');
+  assert.equal(a1Start.nextState, 'RUNNING');
+  assert.match(a1Start.reason, /existing Work Board and Project Registry owners/i);
 });
 
 

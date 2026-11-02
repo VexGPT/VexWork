@@ -710,7 +710,7 @@ VexBoard can make relationships perceptible. It must not become the truth/healin
 
 ### A0 — map + blueprint
 
-Current state: **RUNNING** after exact review-driven patient-zero repair.
+Current state: **COMPLETED**. A0's architecture-map/recoverability claim is closed; PR-wide merge readiness remains a later trajectory predicate.
 
 The source-grounded owner/process map, English target architecture, machine-readable full-intention contract, static-source classification, whole-foundation matrix, worked demonstrations, orientation discoverability and Board-view census remain source-formed and reviewed.
 
@@ -756,8 +756,9 @@ because the pre-review inner result carried `candidateBinding=null` while its so
 carried the exact candidate head/tree. That is a carrier/consumer failure after evidence formation,
 not evidence against #210. The retained inner RETURN was consumed directly for classification.
 
-After this minimal correction, rerun focused proof and the whole-repository review. A1 remains
-dependency-held until terminal A0 review is earned.
+The first repository-wide run remains useful trajectory evidence, but it is not the semantic definition of A0 completion. The remaining red repository state belongs to downstream relationship closure in A1/A2 and must still be retired before PR clearance.
+
+A1 is now **RUNNING** on the disjoint rightful-owner implementation edge; shared registry/public aggregate mutation remains held on current #182/#193 custody until reconciled.
 
 ### A1 — Project source bundle + discoverability relationship contract
 

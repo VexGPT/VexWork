@@ -41,7 +41,7 @@
       "label": "Map and constrain VexWork through the full VexArchitecture relationship intention",
       "purpose": "Compile the accepted VexLife-Android and VexLife-Prod architecture intention into a VexWork-native, machine-readable relationship contract: preserve rightful semantic owners, authored-once relationships, identity from existing structure, explicit construction, connective mechanics without peer meaning, current/history/projection separation, deterministic generated consequences, fail-closed invalid relationships, visible held closure and claim-matched proof. Map each current VexWork foundation to those laws before any patient-zero implementation is allowed to narrow the architecture to one registry fix.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "COMPLETED",
       "workDisposition": "ACTIVE",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [],
@@ -71,7 +71,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-11-02T06:50:00.000Z",
-      "updatedAt": "2026-11-02T12:18:34.083Z"
+      "updatedAt": "2026-11-02T12:22:03.001Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -80,7 +80,7 @@
       "label": "Constrain Project source bundle, default Board view and discoverability",
       "purpose": "Replace count- and memory-based Project registration plus repeated default Board-view declarations with a constrained Project source relationship: Project identity comes from validated source, canonical Work Registry lanes derive the default Board projection, explicit Board-view source exists only when custom view meaning is earned, and every eligible source-managed Project resolves exactly once to its canonical Workgraph roots and discoverability. Use VexLife New Beginnings and this Alignment Project as patient zeros without letting filesystem path or Project slug become semantic identity.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "RUNNING",
       "workDisposition": "ACTIVE",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [
@@ -107,7 +107,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-11-02T06:50:00.000Z",
-      "updatedAt": "2026-11-02T06:50:00.000Z"
+      "updatedAt": "2026-11-02T12:22:03.003Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -280,6 +280,73 @@
         "test/workgraph-composition-source.test.mjs"
       ],
       "createdAt": "2026-11-02T12:18:34.083Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.vexarchitecture-alignment.map-current-contracts.running-verifying.a0-review-classified",
+      "workRef": "work.vexwork.vexarchitecture-alignment.map-current-contracts",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "The review-discovered New Beginnings segment provenance defect was repaired only at its rightful source boundary, and exact provider readback proves no Work item/transition/product meaning changed. A0 now enters verification against its own architecture-map/recoverability claim rather than borrowing PR-wide merge readiness as WorkState.",
+      "actorRef": "role.vexwork.vexarchitecture-alignment-author",
+      "sourceRefs": [
+        "artifact.vexwork.vexarchitecture-alignment.a0.source-owner-review.return.sha256.34418db3237f1c6023a36ebba02d9401b1614ef2e356a35a36f5f7fbedce816d",
+        "workgraphs/segments/vexlife-new-beginnings.json",
+        "projects/vexwork-vexarchitecture-alignment/architecture.contract.json",
+        "test/vexwork-vexarchitecture-alignment-project.test.mjs"
+      ],
+      "createdAt": "2026-11-02T12:22:03.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.vexarchitecture-alignment.map-current-contracts.verifying-completed.a0-map-accepted",
+      "workRef": "work.vexwork.vexarchitecture-alignment.map-current-contracts",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "A0's admitted outcome is complete: the full VexArchitecture intention, VexWork owner/foundation map, static-source classification, worked demonstrations, ordinary-orientation discoverability, patient-zero pressure and exact downstream A1-A5 route are durable and source-addressable. The draft PR's repository-wide green gate remains a later trajectory/integration predicate and is not collapsed into A0 WorkState.",
+      "actorRef": "role.vexwork.vexarchitecture-alignment-author",
+      "sourceRefs": [
+        "projects/vexwork-vexarchitecture-alignment/README.md",
+        "projects/vexwork-vexarchitecture-alignment/architecture.contract.json",
+        "docs/foundation/INDEX.md",
+        "docs/foundation/VEXWORK-ORIENTATION.md",
+        "orientation.html",
+        "artifact.vexwork.vexarchitecture-alignment.a0.source-owner-review.return.sha256.34418db3237f1c6023a36ebba02d9401b1614ef2e356a35a36f5f7fbedce816d"
+      ],
+      "createdAt": "2026-11-02T12:22:03.001Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.vexarchitecture-alignment.project-discoverability.waiting-ready.a0-complete",
+      "workRef": "work.vexwork.vexarchitecture-alignment.project-discoverability-contract",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "A0 completed its map/contract obligation, so the next unconsumed causal edge is the Project/default-Board/discoverability relationship. Shared aggregate custody remains a downstream consequence constraint, not a blocker to disjoint rightful-owner implementation.",
+      "actorRef": "role.vexwork.vexarchitecture-alignment-author",
+      "sourceRefs": [
+        "work.vexwork.vexarchitecture-alignment.map-current-contracts",
+        "projects/vexwork-vexarchitecture-alignment/architecture.contract.json",
+        "github.pull.vexwork.182",
+        "github.pull.vexwork.193"
+      ],
+      "createdAt": "2026-11-02T12:22:03.002Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.vexarchitecture-alignment.project-discoverability.ready-running.a1-source-owner",
+      "workRef": "work.vexwork.vexarchitecture-alignment.project-discoverability-contract",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Begin A1 inside the existing Work Board and Project Registry owners: derive default Board semantics from Project + Work Registry truth and derive discoverability from explicit validated Project source bundles. Do not mutate the currently claimed shared registry/public aggregate files until their live custody is reconciled.",
+      "actorRef": "role.vexwork.vexarchitecture-alignment-author",
+      "sourceRefs": [
+        "src/core/work-board.mjs",
+        "src/core/project-registry.mjs",
+        "docs/foundation/PROJECTS.md",
+        "github.pull.vexwork.182",
+        "github.pull.vexwork.193"
+      ],
+      "createdAt": "2026-11-02T12:22:03.003Z"
     }
   ],
   "sourceRefs": [
