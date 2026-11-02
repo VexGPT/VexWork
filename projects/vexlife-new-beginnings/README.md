@@ -325,15 +325,21 @@ P0 · clean repository foundation
                               explicit layout.weight import resolved to internal symbol
 
                               A003 head da25faf7587b8db68f1ce9ff1dd7001cc7e16069
-                              A003 tree bce8a857df83a2465f7cecdda3f00e12a5917842
+                              A003 RETURN sha256 7177ef7f128b941c3bcdd26ee7acf9ece69e4b3a892b1b1ae89c0e8f2b32988e
+                              JVM Compose PASS
+                              JS SAFE_FAILURE:
+                              root-level Compose compiler contaminated portable semantic JS target
+
+                              A004 head 4a3e71fd9b6c0c57311202fec1790a9f3efd3ffc
+                              A004 tree aeb6c6977fa3b5772854b1c4fe21ec1095513d06
 
                               [FORMED] compiler-visible Blueprint element handles
-                              [FORMED] JVM Desktop Compose reference shell
-                              [FORMED] local Conversation/Settings visual state without Family
-                              [FORMED] tighter Family generic compiler fences aligned with #209
-                              [FORMED] Family.Parameter identity carried Control -> Effect in reference specimen
-                              [FORMED] parent-layout-owned weight scope correction
-                              [HELD] exact Compose/Kotlin JVM + retained JS proof
+                              [FORMED] tighter Family generic compiler fences aligned with current #209
+                              [FORMED] Family.Parameter identity carried Control -> Effect
+                              [FORMED] Compose reference isolated to JVM-only reference:compose module
+                              [FORMED] portable root KMP restored Compose-free
+                              [FORMED] VexUiElementRef consistent copy visibility
+                              [HELD] exact root JVM/JS + reference Compose proof
 
             [WAITING] deterministic portable renderer contract
 

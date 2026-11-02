@@ -49,7 +49,10 @@
     "artifact.vexlife-prod.p0.compose-reference-proof.a002.sha256.ca4916ce0d65c3b9116d69b49967deb088a8681386bdc47f4361aff439f76c29",
     "artifact.vexlife-prod.p0.compose-reference-proof.a002.return.sha256.64319ab72d1681107fec21a512ab59bc48f627378cb0bc0b15134bf3a24e55d5",
     "github.pull.vexlife-prod.4.comment.6569217799",
-    "github.commit.vexlife-prod.da25faf7587b8db68f1ce9ff1dd7001cc7e16069"
+    "github.commit.vexlife-prod.da25faf7587b8db68f1ce9ff1dd7001cc7e16069",
+    "artifact.vexlife-prod.p0.compose-reference-proof.a003.return.sha256.7177ef7f128b941c3bcdd26ee7acf9ece69e4b3a892b1b1ae89c0e8f2b32988e",
+    "github.pull.vexlife-prod.4.comment.6569258901",
+    "github.commit.vexlife-prod.4a3e71fd9b6c0c57311202fec1790a9f3efd3ffc"
   ],
   "formedAt": "2026-11-02T02:28:00.000Z"
 }
