@@ -13857,7 +13857,12 @@
             "workgraphs/segments/vexlife-new-beginnings.json",
             "public/workspace.json",
             "test/public-workspace.test.mjs",
-            "test/workgraph-composition-source.test.mjs"
+            "test/workgraph-composition-source.test.mjs",
+            "test/vexwork-vexarchitecture-e2e.test.mjs",
+            "workspace-reader.js",
+            "index.html",
+            "scripts/build-project-registry.mjs",
+            "test/attention-queue.test.mjs"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [
