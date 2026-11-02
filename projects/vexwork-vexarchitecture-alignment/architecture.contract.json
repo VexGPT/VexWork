@@ -884,7 +884,10 @@
         "workgraphs/segments/vexwork-vexarchitecture-alignment.json",
         "test/vexwork-vexarchitecture-alignment-project.test.mjs",
         "github.pull.vexwork.210.comment.6576031173",
-        "github.pull.vexwork.210.comment.6576062635"
+        "github.pull.vexwork.210.comment.6576062635",
+        "docs/foundation/INDEX.md",
+        "docs/foundation/VEXWORK-ORIENTATION.md",
+        "orientation.html"
       ],
       "relationship": "This Project carries the full intention in one source contract, binds every migration relationship to a real Work item, records the A0 deterministic proof absence as WAITING_TOOL rather than prose-only debt, and binds the exact current Relay proof inputs without pretending stage binding is execution.",
       "visibleConsequence": "A fresh instance can descend Project -> contract -> current Work -> held predicate -> exact proof route without reconstructing the predecessor chat, while A1 remains dependency-held.",
@@ -929,6 +932,25 @@
       "relationship": "All 18 current Project Board-view files restate the same laneRefOrder already canonically owned by the Work Registry.",
       "visibleConsequence": "Every new Project currently creates another synchronization surface even when it has no Project-specific view semantics.",
       "notThis": "A claim that custom Project views or Board projection are unnecessary."
+    },
+    {
+      "demonstrationRef": "demo.vexwork.orientation-discovers-active-architecture-evolution",
+      "kind": "ALIGNMENT_DOGFOOD",
+      "lawRefs": [
+        "law.vexwork.explicit-construction",
+        "law.vexwork.current-history-projection-separation",
+        "law.vexwork.rightful-semantic-owner"
+      ],
+      "sourceRefs": [
+        "docs/foundation/INDEX.md",
+        "docs/foundation/VEXWORK-ORIENTATION.md",
+        "orientation.html",
+        "projects/vexwork-vexarchitecture-alignment/README.md",
+        "projects/vexwork-vexarchitecture-alignment/architecture.contract.json"
+      ],
+      "relationship": "The normal VexWork orientation route explicitly exposes the active architecture-evolution Project when VexWork itself is implicated, while labeling the Project as candidate/evolution source rather than accepted Foundation authority.",
+      "visibleConsequence": "A fresh human or agent can discover the Alignment Project from the same Foundation Index/orientation surfaces they already read, without knowing PR #210, the Project slug in advance, or relying on the currently incomplete public Project Registry projection.",
+      "notThis": "Project Registry acceptance, Foundation acceptance, merge clearance, or permission for candidate architecture to override accepted Foundation source."
     }
   ]
 }

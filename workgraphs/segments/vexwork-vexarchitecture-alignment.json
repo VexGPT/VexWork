@@ -59,7 +59,10 @@
         "repo.vexlife-android:architecture/vexarchitecture/README.md",
         "repo.vexlife-android:architecture/vexarchitecture/REFINED-BOUNDARIES.md",
         "repo.vexlife-prod:docs/CULTURE.md",
-        "repo.vexlife-prod:docs/foundation/VEXWEB-SPATIAL-FOUNDATION.md"
+        "repo.vexlife-prod:docs/foundation/VEXWEB-SPATIAL-FOUNDATION.md",
+        "docs/foundation/INDEX.md",
+        "docs/foundation/VEXWORK-ORIENTATION.md",
+        "orientation.html"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [
