@@ -403,6 +403,84 @@ accepted source moved
 6. A prose hold such as shared projection held can disappear from current structural truth.
 
 
+
+## See the architecture behaving, not only described
+
+A fresh instance should not have to infer what "VexArchitecture alignment" looks like from prose.
+
+The machine-readable contract now carries `demonstrations[]`: source-addressable examples of the
+relationship law already behaving correctly inside current VexWork, plus explicit counterexamples
+that pressure this refactor.
+
+Accepted demonstrations include:
+
+~~~
+Workgraph Composition
+  segment source
+  -> one composition owner
+  -> deterministic canonical Workgraph
+  -> duplicate/foreign/stale relationships fail closed
+
+Runtime Persistence
+  Work transition remains semantic event
+  -> pointer/snapshot layer contributes currentness mechanics only
+  -> no second lifecycle ledger
+
+Project Reconciliation
+  canonical Work + provider/proof observation
+  -> derived disposition
+  -> no transition authority
+
+Process Map / Repository Graph
+  explicit admitted relationships
+  -> stable refs + rightful owner routes
+  -> no filesystem/reflection/provider-discovery ontology
+
+Human Transition Handshake
+  existing Project/Work/graph identity carried through the handshake
+  -> no floating generic approval identity
+
+Derived Attention
+  observed concern
+  -> read-only attention
+  -> explicit separate promotion only when durable Work is earned
+~~~
+
+This Alignment Project itself is also a demonstration:
+
+~~~
+human intention
+-> project.json
+-> architecture.contract.json
+-> exact Work migration owner for every relationship
+-> source review
+-> A0 WAITING_TOOL with one exact held proof predicate
+-> exact Relay stage binding
+-> A1 remains dependency-held
+~~~
+
+The structure demonstrates the intended law:
+
+> A held obligation stays attached to the relationship it blocks instead of becoming a sentence
+> somebody must remember.
+
+Counterexamples live in the same contract:
+
+~~~
+New Beginnings
+  rightful Project + segment source
+  -> manually repeated discoverability relationship omitted
+  -> Project invisible
+
+18 default Board views
+  canonical lanes already exist
+  -> same lane order manually repeated 18 times
+  -> synchronization surface with no independent meaning
+~~~
+
+The demonstrations are evidence/entry coordinates. They do not make one implementation shape
+mandatory for every foundation.
+
 ## Whole-foundation alignment review
 
 A0 now reviews every foundation currently listed in `docs/foundation/INDEX.md`, not only the New

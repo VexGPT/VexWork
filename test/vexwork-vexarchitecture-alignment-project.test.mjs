@@ -279,3 +279,45 @@ test('A0 holds only the deterministic proof effect while A1 remains dependency-h
   assert.equal(transition.sourceRefs.includes('source.vexrelay.current-contract/v1'), true);
   assert.equal(transition.sourceRefs.includes('github.pull.vexwork.210.comment.6576031173'), true);
 });
+
+
+test('every VexArchitecture law is visible through at least one concrete demonstration', () => {
+  const demonstrated = new Set(
+    architectureContract.demonstrations.flatMap((entry) => entry.lawRefs),
+  );
+  for (const law of architectureContract.laws) {
+    assert.equal(demonstrated.has(law.lawRef), true, law.lawRef);
+  }
+
+  for (const demonstration of architectureContract.demonstrations) {
+    assert.equal(demonstration.sourceRefs.length > 0, true, demonstration.demonstrationRef);
+    assert.equal(demonstration.relationship.trim().length > 0, true, demonstration.demonstrationRef);
+    assert.equal(demonstration.visibleConsequence.trim().length > 0, true, demonstration.demonstrationRef);
+    assert.equal(demonstration.notThis.trim().length > 0, true, demonstration.demonstrationRef);
+  }
+});
+
+test('alignment Project dogfoods visible held closure instead of prose-only future work', () => {
+  const demo = architectureContract.demonstrations.find((entry) =>
+    entry.demonstrationRef === 'demo.vexwork.alignment-project-dogfoods-held-proof'
+  );
+  assert.equal(demo.kind, 'ALIGNMENT_DOGFOOD');
+  assert.equal(demo.sourceRefs.includes('workgraphs/segments/vexwork-vexarchitecture-alignment.json'), true);
+  assert.equal(demo.sourceRefs.includes('github.pull.vexwork.210.comment.6576031173'), true);
+  assert.match(demo.relationship, /WAITING_TOOL/);
+  assert.match(demo.visibleConsequence, /A1 remains dependency-held/);
+});
+
+test('counterexamples stay distinct from accepted architecture demonstrations', () => {
+  const newBeginnings = architectureContract.demonstrations.find((entry) =>
+    entry.demonstrationRef === 'demo.vexwork.new-beginnings-counterexample'
+  );
+  const boardRestatement = architectureContract.demonstrations.find((entry) =>
+    entry.demonstrationRef === 'demo.vexwork.default-board-restatement-counterexample'
+  );
+
+  assert.equal(newBeginnings.kind, 'COUNTEREXAMPLE_PRESSURE');
+  assert.equal(boardRestatement.kind, 'COUNTEREXAMPLE_PRESSURE');
+  assert.match(newBeginnings.notThis, /Project itself.*invalid/i);
+  assert.match(boardRestatement.notThis, /custom Project views.*unnecessary/i);
+});
