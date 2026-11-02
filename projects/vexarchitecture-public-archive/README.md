@@ -189,6 +189,48 @@ ordinary non-force push
 
 The outer LocalBridge consumer stopped at its separate review boundary; the retained inner VexRelay RETURN proves generation, full repository validation, exact-path gating, commit cleanliness, and push all passed with zero inner findings.
 
+### Fresh-instance guide fidelity review
+
+A fresh reader grounded in accepted #209 source found several places where the public guide was cleaner than the architecture it described.
+
+The correction is now Vextreme PR #562:
+
+```text
+source head
+5196fea32d18c6506853abb2e8458c6e92f9aae9
+
+source tree
+ebcf4804d7705a3bdc3c9f966ee73a0c419b36e9
+
+source tests
+check + all four shards + all-shards-passed = SUCCESS
+
+generated currentness
+170 exact paths = PENDING PUBLICATION
+```
+
+The important corrections are:
+- core semantic/runtime causality is no longer flattened with construction/lifetime, Logger chronology, Relay/convergence and forensics into one pipeline;
+- Parameter and maintained RelationshipId are explicitly earned thresholds;
+- Begin / fully-bound Act.Method / launchWith realization seam is visible;
+- ThemeMode referential settlement is explicitly ThemeMode-specific;
+- Relay is conditional composition and VexLifeRelayGraph remains projection-only;
+- presentation arrival is separately observable rather than inferred from projection/provider success;
+- subtraction teaches attempt -> ownership problem -> smaller rightful replacement;
+- proof has a human summary before the exact attempt ledger.
+
+Rightful-source companion VexLife-Android PR #210 is already merged:
+
+```text
+main
+4d357c48eb5a25797513708f800e61a87e0195c0
+
+change
+architecture/vexarchitecture/README.md currentness only
+```
+
+The README now states current repository source/tests as behavior authority and PR #209 as accepted implementation-origin / reasoning provenance.
+
 ### Builder-guide integration
 
 Vextreme PR #561 is accepted source.
