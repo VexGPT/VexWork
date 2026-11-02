@@ -201,7 +201,7 @@
       "label": "Prove VexWork relationship closure end to end",
       "purpose": "Pressure the aligned foundation with real Project formation and stale-consequence cases: a Project becomes source-addressable, Workgraph roots resolve, Board identity resolves, deterministic aggregate projections become current, an intentionally held consequence remains visible, and clearing the predicate removes the attention without manual human archaeology.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "WAITING_TOOL",
       "workDisposition": "ACTIVE",
       "priorityClass": "HIGH",
       "dependencyRefs": [
@@ -232,7 +232,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-11-02T06:50:00.000Z",
-      "updatedAt": "2026-11-02T13:05:00.003Z"
+      "updatedAt": "2026-11-02T13:10:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -604,6 +604,22 @@
         "docs/foundation/ATTENTION-QUEUE.md"
       ],
       "createdAt": "2026-11-02T13:05:00.003Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.vexarchitecture-alignment.end-to-end.running-waiting-tool.a4-stable-full-review",
+      "workRef": "work.vexwork.vexarchitecture-alignment.end-to-end-foundation-proof",
+      "priorState": "RUNNING",
+      "nextState": "WAITING_TOOL",
+      "reason": "A4 whole-circuit source is formed and source-reviewed: Project census, exact Workgraph composition, default Board derivation, generated registry/workspace, reader navigation, ordinary orientation and held-to-clear attention are bound in one patient-zero regression. Hold only one stabilized full-repository `npm run review`; do not create additional narrow host proof rounds.",
+      "actorRef": "role.vexwork.vexarchitecture-alignment-author",
+      "sourceRefs": [
+        "test/vexwork-vexarchitecture-e2e.test.mjs",
+        "test/vexwork-vexarchitecture-alignment-project.test.mjs",
+        "package.json",
+        "source.vexrelay.current-contract/v1"
+      ],
+      "createdAt": "2026-11-02T13:10:00.000Z"
     }
   ],
   "sourceRefs": [

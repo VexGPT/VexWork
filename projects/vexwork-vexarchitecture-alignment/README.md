@@ -1059,7 +1059,7 @@ without:
 
 #### A4 current entry
 
-A4 is now **RUNNING**. It owns one whole-circuit proof, not another architecture expansion:
+A4 is now **WAITING_TOOL** only on one stabilized full-repository `npm run review`. Its whole-circuit source is formed; no additional narrow proof package should be created before consuming that result.
 
 ~~~text
 Project source

@@ -635,7 +635,7 @@ test('A4 whole-circuit proof is source-placed before final repository review', (
   const a4 = graph.items.find((item) =>
     item.workRef === 'work.vexwork.vexarchitecture-alignment.end-to-end-foundation-proof'
   );
-  assert.equal(a4.state, 'RUNNING');
+  assert.equal(a4.state, 'WAITING_TOOL');
   for (const ref of [
     'test/vexwork-vexarchitecture-e2e.test.mjs',
     'workspace-reader.js',
@@ -650,4 +650,23 @@ test('A4 whole-circuit proof is source-placed before final repository review', (
   assert.equal(demo.kind, 'ALIGNMENT_DOGFOOD');
   assert.match(demo.visibleConsequence, /cannot silently disappear/i);
   assert.match(demo.notThis, /repository-wide deterministic review/i);
+});
+
+
+test('A4 holds only one stabilized full repository review before A5', () => {
+  const a4 = graph.items.find((item) =>
+    item.workRef === 'work.vexwork.vexarchitecture-alignment.end-to-end-foundation-proof'
+  );
+  const a5 = graph.items.find((item) =>
+    item.workRef === 'work.vexwork.vexarchitecture-alignment.vexboard-projection-alignment'
+  );
+  assert.equal(a4.state, 'WAITING_TOOL');
+  assert.equal(a5.state, 'WAITING_DEPENDENCIES');
+  assert.deepEqual(a5.dependencyRefs, [a4.workRef]);
+
+  const hold = graph.transitions.find((entry) =>
+    entry.transitionRef === 'transition.vexwork.vexarchitecture-alignment.end-to-end.running-waiting-tool.a4-stable-full-review'
+  );
+  assert.ok(hold);
+  assert.match(hold.reason, /one stabilized full-repository .*npm run review/i);
 });
