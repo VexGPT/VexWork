@@ -670,3 +670,16 @@ test('A4 holds only one stabilized full repository review before A5', () => {
   assert.ok(hold);
   assert.match(hold.reason, /one stabilized full-repository .*npm run review/i);
 });
+
+
+test('Project README current checkpoint agrees with the Workgraph phase state', () => {
+  const projectReadme = fs.readFileSync(
+    new URL('../projects/vexwork-vexarchitecture-alignment/README.md', import.meta.url),
+    'utf8',
+  );
+  assert.match(projectReadme, /A4 whole-circuit end-to-end proof\s+WAITING_TOOL/);
+  assert.match(projectReadme, /A5 VexBoard projection alignment\s+WAITING_DEPENDENCIES/);
+  assert.match(projectReadme, /npm run review/);
+  assert.doesNotMatch(projectReadme, /This first candidate deliberately does not edit:/);
+  assert.doesNotMatch(projectReadme, /preserve the exact focused 17\/17 PASS while the candidate's tested closure is unchanged/);
+});

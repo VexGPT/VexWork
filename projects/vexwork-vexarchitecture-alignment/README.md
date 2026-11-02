@@ -1140,20 +1140,37 @@ whole candidate once this source-level review is clear.
 
 Only after A4, project accepted VexWork source/projection/discrepancy relationships into VexBoard.
 
-## Current coordination boundary
+## Current coordination / integration boundary
 
-This first candidate deliberately does not edit:
+A2 has now converged the generated VexWork consequences on this candidate:
 
 ~~~
 blueprint/project-registry.json
-workgraphs/composition.json
 workgraphs/public.json
 public/workspace.json
 ~~~
 
-Those shared surfaces currently overlap active PRs #182 and #193.
+Those paths are **generated convergence surfaces**, not semantic authoring membranes.
 
-This is not permission to forget discoverability. A1/A2 carry that convergence obligation explicitly, and the target architecture should reduce this aggregate-path contention.
+Open PRs #182 and #193 still contain older-base copies of some of those generated files. Their
+Project-local / segment source remains meaningful and must be preserved when those lanes resume, but
+their old aggregate snapshots are not current authority.
+
+Current rule:
+
+~~~
+semantic Project / Workgraph source overlap
+-> coordinate with rightful source owner
+
+generated consequence overlap
+-> preserve semantic source
+-> re-compose current source
+-> regenerate consequence
+-> prove currentness
+~~~
+
+Do not resolve a generated-file conflict by picking the older PR's bytes, PR opening order, or the
+textually easiest side.
 
 ## Completion pressure
 
@@ -1205,6 +1222,57 @@ The orientation route explicitly labels this Project as **active architecture ev
 accepted Foundation authority. Discoverability must not collapse candidate status into architectural
 acceptance.
 
+## Current successor checkpoint
+
+Exact trajectory state at the current candidate:
+
+~~~text
+A0 full VexArchitecture map / owner model          COMPLETED
+A1 Project + default Board + discoverability       COMPLETED
+A2 generated consequence convergence               COMPLETED
+A3 held relationship ATTENTION -> CLEAR             COMPLETED
+A4 whole-circuit end-to-end proof                  WAITING_TOOL
+A5 VexBoard projection alignment                   WAITING_DEPENDENCIES
+~~~
+
+A4 source is already formed. Its single remaining predicate is:
+
+~~~text
+npm run review
+~~~
+
+against the exact current candidate.
+
+A4's whole-circuit regression is:
+
+~~~text
+test/vexwork-vexarchitecture-e2e.test.mjs
+~~~
+
+and covers:
+
+~~~text
+Project source identity
+-> exact composed Workgraph
+-> source-derived Project Registry
+-> canonical derived default Board
+-> public workspace
+-> reader route / lookup / search
+-> public Projects renderer
+
+relationship UNSATISFIED
+-> ATTENTION
+-> regenerated/current evidence
+-> CLEAR
+
+ordinary orientation
+-> this architecture trajectory
+~~~
+
+Do not add another architecture layer or another narrow ZIP cycle before consuming that stabilized
+full-repository review. If it passes, review A4 against its own claim, complete A4, release A5, then
+re-ground VexBoard's current source/projectors before authoring the downstream projection.
+
 ## Fresh-instance entry
 
 ~~~
@@ -1216,7 +1284,7 @@ acceptance.
 6. descend only to the named VexWork foundation
 7. use VexLife-Android / VexLife-Prod as architecture evidence, not VexWork source authority
 8. implement the smallest relationship fix without narrowing away the contract's whole-system laws
-9. preserve the exact focused 17/17 PASS while the candidate's tested closure is unchanged; run the remaining `npm run review` proof on a qualified full-repository execution surface
+9. current edge: A4 is WAITING_TOOL on one stabilized full-repository `npm run review`; do not replay earlier A0/A1 narrow proof rounds unless the affected source predicate changes
 10. use process.vexwork.quality-review
 11. use process.vexwork.integrate-ready-pull-requests at integration
 12. reconcile deterministic consequences after accepted source movement
