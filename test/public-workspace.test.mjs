@@ -5,7 +5,7 @@ import test from 'node:test';
 import { validateProjectRegistry } from '../src/core/project-registry.mjs';
 import { projectPublicWorkspace } from '../src/core/public-workspace.mjs';
 import { createProject, createWorkgraph } from '../src/core/workgraph.mjs';
-import { createBoardView, projectParkingLot, projectWorkBoard } from '../src/core/work-board.mjs';
+import { createBoardView, deriveDefaultBoardView, projectParkingLot, projectWorkBoard } from '../src/core/work-board.mjs';
 
 const read = (relative) => JSON.parse(fs.readFileSync(new URL(`../${relative}`, import.meta.url), 'utf8'));
 const registry = read('blueprint/work-registry.json');
@@ -21,7 +21,9 @@ function buildWorkspace() {
       graphCache.set(entry.workgraphPath, graph);
     }
     const project = createProject(read(entry.definitionPath));
-    const view = createBoardView(read(entry.boardViewPath), registry);
+    const view = entry.boardViewPath === null
+      ? deriveDefaultBoardView({ project, registry })
+      : createBoardView(read(entry.boardViewPath), registry);
     const board = projectWorkBoard({ project, graph, view, registry });
     return { project, board, graph };
   });
@@ -292,4 +294,18 @@ test('Blueprint SOT is durably paused without active effects while preserving it
   assert.equal(nativeSource.effectDisposition, 'NO_EFFECTS');
   assert.equal(blueprint.lanes.find((lane) => lane.laneRef === 'lane.work.waiting').workRefs.includes(root.workRef), true);
   assert.equal(blueprint.lanes.find((lane) => lane.laneRef === 'lane.work.waiting').workRefs.includes(nativeSource.workRef), true);
+});
+
+
+test('public workspace includes source-derived New Beginnings and VexArchitecture Alignment Projects', () => {
+  const workspace = buildWorkspace();
+  const refs = workspace.projects.map((entry) => entry.project.projectRef);
+  assert.equal(refs.includes('project.vexlife.new-beginnings'), true);
+  assert.equal(refs.includes('project.vexwork.vexarchitecture-alignment'), true);
+  assert.equal(
+    workspace.parkingLot.items.some((item) =>
+      item.workRef === 'work.vexlife.new-beginnings.later.settings-capability-mapping'
+    ),
+    true,
+  );
 });

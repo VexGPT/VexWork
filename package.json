@@ -12,7 +12,7 @@
     "work:status": "node scripts/work-status.mjs",
     "review:deterministic": "npm run test:coverage && npm run coverage:source && npm run project-registry:check && npm run workgraph:check && npm run check && npm run dashboard:check && npm run workspace:check",
     "review": "npm run review:deterministic",
-    "workspace:build": "npm run workgraph:build && node scripts/build-public-workspace.mjs",
+    "workspace:build": "npm run project-registry:build && npm run workgraph:build && node scripts/build-public-workspace.mjs",
     "workspace:check": "node scripts/build-public-workspace.mjs --check",
     "test:coverage": "node --test --experimental-test-coverage --test-reporter=tap --test-reporter=lcov --test-reporter-destination=stdout --test-reporter-destination=coverage.lcov",
     "coverage:source": "node scripts/check-source-coverage.mjs",
