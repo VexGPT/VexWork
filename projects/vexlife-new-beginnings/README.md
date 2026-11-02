@@ -304,19 +304,20 @@ P0 · clean repository foundation
          merge 2fd6674a425919bf8696ea36dadd7d773cbd76a3
 
   [RUNNING] compiler-constrained semantic Blueprint practicum
-            VexLife-Prod PR #2
-            candidate 5d679dd7473522713538a28ea06dcd971a4d6b07
 
-            [FORMED] pure-Kotlin Family/State/Control/Effect/DisplayState contract
-            [FORMED] rooted initial VexLife workspace Blueprint
-            [PASS / DISPOSABLE] Kotlin 1.9 formation compile + specimen probe
-            [FORMED] exact Gradle 9.6 text launchers + wrapper properties
-            [HOST ACTION FORMED] artifact.vexlife-prod.p0.semantic-proof.a001.sha256.de57be1c348b4080f0e1e4fc70b4bf266633ca2e346b1e92078793fc502e90f1
-                                 exact wrapper JAR blob b1b8ef56b44f16b14dc800fa8103a6d89abb526f
-                                 exact Kotlin 2.4.20 JVM + JS + common-test proof
-                                 push only on PASS
-                                 RETURN required before threshold claim
-            [WAITING] Compose reference realization
+            [ACCEPTED] pure-Kotlin semantic contract + rooted Workspace Blueprint
+                       VexLife-Prod PR #2
+                       merge c9aca940a49cb2e828ecfbd4be726f3553bf0063
+                       tree  4e6e74255bb444d2adfbd991ddd6c1fba0049fb0
+                       Kotlin 2.4.20 JVM/JS proof PASS
+                       accepted-main tree identity PASS
+
+            [CURRENT / NEXT] Compose reference realization
+                             prove DisplayState -> presentation
+                             prove UI -> typed Control
+                             preserve Compose as manifestation, not semantic owner
+                             do not invent a production Family for local visual state
+
             [WAITING] deterministic portable renderer contract
 
 P1 · intended interface
@@ -337,14 +338,14 @@ Later
 Interpretation:
 
 ~~~text
-DONE
+DONE / ACCEPTED
   accepted source/effect remains valid
 
 RUNNING
-  current admitted work is active; nested lines identify the exact completed and held sub-edges
+  current admitted Work still has unfinished mapped sub-edges
 
-NEXT
-  next unconsumed causal edge after the active work retires
+CURRENT / NEXT
+  exact unconsumed causal edge inside that Work
 
 WAITING
   dependency-gated by earlier mapped work
