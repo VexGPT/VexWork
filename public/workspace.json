@@ -1,7 +1,7 @@
 {
   "schemaVersion": "vexwork.public-workspace/v1",
   "projectRegistryRef": "registry.vexwork.projects.001",
-  "projectRegistryVersion": 17,
+  "projectRegistryVersion": 19,
   "projects": [
     {
       "project": {
@@ -13012,10 +13012,1422 @@
           "transitionHistory": []
         }
       ]
+    },
+    {
+      "project": {
+        "projectRef": "project.vexlife.new-beginnings",
+        "label": "VexLife New Beginnings",
+        "purpose": "Build a clean VexLife product in VexGPT/VexLife-Prod from an explicit nested-browser + Vex companion experience: author product semantics and stable UI identity through compiler-constrained Kotlin VexArchitecture contracts, preserve Compose as a reference manifestation, establish VexWeb through fractally scalable Frame / Seam / Region / Allocation spatial relationships, then add compiler-visible authoring and deterministic generated native web artifacts before reconnecting Vex to canonical Conversation with bounded current browser/DOM context.",
+        "rootWorkRefs": [
+          "work.vexlife.new-beginnings.outcome"
+        ],
+        "repositoryRefs": [
+          "repo.vexwork",
+          "repo.vexlife-prod",
+          "repo.vexlife-android",
+          "repo.vexlife",
+          "repo.vextreme"
+        ],
+        "sourceRefs": [
+          "projects/vexlife-new-beginnings/README.md",
+          "docs/process/FORM-PROJECT.md",
+          "human.design.vexlife.new-beginnings.initial-engagement.20261101",
+          "github.repository.VexGPT.VexLife-Prod",
+          "github.pull.vexlife-android.209",
+          "project.vexlife.interface-refinement",
+          "project.vexlife.blueprint-source-of-truth",
+          "repo.vextreme:pages/terrain-map.html",
+          "github.pull.vexlife-prod.1",
+          "github.commit.vexlife-prod.2fd6674a425919bf8696ea36dadd7d773cbd76a3",
+          "github.pull.vexlife-prod.2",
+          "github.commit.vexlife-prod.157f88a88afbd3ee925bb95af19a70aa650a6246",
+          "github.pull.vexlife-prod.1.comment.6568211489",
+          "github.pull.vexlife-prod.2.comment.6568211912",
+          "github.pull.vexwork.199.comment.6568212464",
+          "github.commit.vexlife-prod.5d679dd7473522713538a28ea06dcd971a4d6b07",
+          "artifact.vexlife-prod.p0.semantic-proof.a001.sha256.de57be1c348b4080f0e1e4fc70b4bf266633ca2e346b1e92078793fc502e90f1",
+          "github.pull.vexlife-prod.2.comment.6568437145",
+          "github.pull.vexlife-prod.2.comment.6568749917",
+          "github.pull.vexlife-prod.2.comment.6568760152",
+          "github.commit.vexlife-prod.c9aca940a49cb2e828ecfbd4be726f3553bf0063",
+          "artifact.vexlife-prod.p0.semantic-proof.a001.return.sha256.f90ad6d92e5910d534dff2fa021685a473dbfbea33cabe849d017cb9279913f5",
+          "github.pull.vexlife-prod.3",
+          "github.commit.vexlife-prod.f37302731d402456462da90f1a7f4c74aa86b853",
+          "github.pull.vexlife-prod.4",
+          "github.commit.vexlife-prod.68779f09bd9614ad6c9252951cf90e32b1c4c8b4",
+          "github.pull.vexlife-prod.4.comment.6568891420",
+          "artifact.vexlife-prod.p0.compose-reference-proof.a001.sha256.5a4b9daa60089b0cdf1499cf7fe3f23dd320544c16427e844c5f4adf200ef80c",
+          "artifact.vexlife-prod.p0.compose-reference-proof.a001.return.sha256.890e854c307a0c85b39e0ba1b1f4ced6994b048f4bb666a8268303616242dda3",
+          "github.pull.vexlife-prod.4.comment.6569063989",
+          "github.commit.vexlife-prod.8f7ff7b99dacb4c6324f71b78b52c34ac352f288",
+          "github.pull.vexlife-prod.4.comment.6569096800",
+          "artifact.vexlife-prod.p0.compose-reference-proof.a002.sha256.ca4916ce0d65c3b9116d69b49967deb088a8681386bdc47f4361aff439f76c29",
+          "artifact.vexlife-prod.p0.compose-reference-proof.a002.return.sha256.64319ab72d1681107fec21a512ab59bc48f627378cb0bc0b15134bf3a24e55d5",
+          "github.pull.vexlife-prod.4.comment.6569217799",
+          "github.commit.vexlife-prod.da25faf7587b8db68f1ce9ff1dd7001cc7e16069",
+          "artifact.vexlife-prod.p0.compose-reference-proof.a003.return.sha256.7177ef7f128b941c3bcdd26ee7acf9ece69e4b3a892b1b1ae89c0e8f2b32988e",
+          "github.pull.vexlife-prod.4.comment.6569258901",
+          "github.commit.vexlife-prod.4a3e71fd9b6c0c57311202fec1790a9f3efd3ffc",
+          "artifact.vexlife-prod.p0.compose-reference-proof.a004.sha256.c4f5f9fa8b6cb3aed98491576fce2f3db9b77787558a0850782f060145b2ec48",
+          "github.pull.vexlife-prod.4.comment.6569298142",
+          "human.design.vexweb.foundation.20261101",
+          "github.pull.vexlife-prod.4.comment.6569352066",
+          "github.pull.vexlife-prod.4.comment.6569358950",
+          "github.commit.vexlife-prod.1264be62324878126ade9ad37da33db3097aad45",
+          "github.pull.vexlife-prod.5",
+          "github.commit.vexlife-prod.248eb5a60a35f086fa22f56b79e2f96bd5b751c2",
+          "github.pull.vexwork.199.comment.6569375001",
+          "github.pull.vexlife-prod.6",
+          "github.commit.vexlife-prod.017ab36b29b5ca759f906c46eb65102a73e620bb",
+          "github.pull.vexlife-prod.6.comment.6569754915",
+          "human.authorization.vexweb.f0.20261101",
+          "github.pull.vexlife-prod.7",
+          "github.commit.vexlife-prod.66253c7188d551d79e89356eef0897da168dde86",
+          "artifact.vexlife-prod.vexweb.f0.proof.a001.sha256.866f6fdd27de0e99f5bf2ab48032b3d0e5cb2ffebdbeabbdf3f7c7e15bc41025",
+          "artifact.vexlife-prod.vexweb.f0.proof.a001.return.sha256.03a7309be17244e29d19ec332e18bcbc8e80d38c97fc2537e0bd9f6cdbd71fa4",
+          "github.pull.vexlife-prod.7.comment.6569880681",
+          "github.commit.vexlife-prod.68e0205650e0ec9502174beefc5adb1030994471",
+          "github.commit.vexlife-android.66c866dea6a8dd78e2946da88715c4deb78c1847",
+          "artifact.vexlife-prod.vexweb.f0.proof.a002.return.sha256.899e5f9cc0fcd7646007fe003a7fffe785bda44bf6b492ea679bfff153e190b5",
+          "github.pull.vexlife-prod.7.comment.6569957630",
+          "github.commit.vexlife-prod.898789f1082dabff8278eca7581f694a33683274",
+          "artifact.vexlife-prod.vexweb.f0.proof.a003.return.sha256.0ebea0e6f2fcf628aaaca2a66272cd50d6578449022f2619a62d2b05f791ae01",
+          "github.pull.vexlife-prod.7.comment.6570053599",
+          "github.pull.vexlife-prod.7.comment.6570062927",
+          "github.commit.vexlife-prod.979ffaa31a94a94d44d0b0bc4c3dc532efb3eed2",
+          "github.commit.vexlife-prod.968f2cee5f9aa8e16195849c967153d56c81ce90",
+          "github.pull.vexwork.203.comment.6570078352",
+          "github.pull.vexlife-prod.10",
+          "github.commit.vexlife-prod.9a318a093527a5f6ce61fd176fc7ded3b487a09e",
+          "artifact.vexlife-prod.vexweb.f1.proof.a001.sha256.36bb5da3e33cd3ed046effc046cd6bec367e6874dc781fb46f927d469da174b8",
+          "artifact.vexlife-prod.vexweb.f1.proof.a001.return.sha256.3da3493468bc36d7db608205c2c74ee33d4407a621329dfccbd17b574d5db00f",
+          "github.pull.vexlife-prod.10.comment.6570191802",
+          "github.commit.vexlife-prod.069591b2f4a1570da2233c04c955ff42bd5ef049",
+          "human.design.vexweb.split-scalability.20261101",
+          "github.pull.vexlife-prod.10.comment.6570385186",
+          "github.pull.vexlife-prod.11",
+          "github.commit.vexlife-prod.6e8c48ba801f682a1ef0a596698e5608d3e0e51b",
+          "human.design.vexweb.fractal-spatial-language.20261101",
+          "artifact.vexlife-prod.vexweb.spatial.proof.a001.return.sha256.3249350cc4c1bef19865f300e319aa6037de9015c213e6dea7a2f060a7b03abb",
+          "github.pull.vexlife-prod.11.comment.6570536123",
+          "github.commit.vexlife-prod.789b067765ec4049d671d07866ca44a6a11e41f8",
+          "artifact.vexlife-prod.vexweb.spatial.proof.a002.return.sha256.7e9066f9aacbd535a9e75a67b99d13014cdafab51fe52bd22cc12858e55ace8b",
+          "github.pull.vexlife-prod.11.comment.6570644957",
+          "github.commit.vexlife-prod.e0e8ad6a95f3c73cd7f79216b3ae1802ba9b54f9",
+          "github.commit.vexlife-prod.20919f21578eeff9d2e1d513a00e0cd66ecd72ea"
+        ],
+        "formedAt": "2026-11-02T02:28:00.000Z"
+      },
+      "graphRef": "workgraph.vexwork.foundation",
+      "viewRef": "view.vexlife.new-beginnings.board",
+      "items": [
+        {
+          "workRef": "work.vexlife.new-beginnings.later.settings-capability-mapping",
+          "label": "Later — source-map Settings capabilities",
+          "purpose": "After the first browser/Conversation circuit is real, map Context Window, RAM/resource projection, reasoning visibility, accessible directories, Continuity Mode, Dream Sync and clean-chat/memory controls to their existing rightful source owners. Do not infer backend semantics from the screenshot labels or combine destructive effects merely because one visual button does.",
+          "workClass": "POTENTIAL",
+          "state": "CAPTURED",
+          "workDisposition": "PARKED",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexlife-prod",
+            "repo.vexlife"
+          ],
+          "sourceRefs": [
+            "human.design.vexlife.new-beginnings.initial-engagement.20261101",
+            "project.vexlife.interface-refinement"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-02T02:28:00.000Z",
+          "updatedAt": "2026-11-02T02:28:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.new-beginnings.outcome",
+          "label": "VexLife New Beginnings",
+          "purpose": "Recompose VexLife in the clean VexLife-Prod container from explicit product intention and compiler-constrained semantic relationships: establish the repository front door, author one portable Kotlin contract/Blueprint language, realize the initial nested-browser + companion UI without pretending backend connectivity, then reconnect Vex through the canonical Conversation with bounded current browser/DOM context and lived proof.",
+          "workClass": "OUTCOME",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vexlife.new-beginnings.later.settings-capability-mapping",
+            "work.vexlife.new-beginnings.p0.repository-front-door",
+            "work.vexlife.new-beginnings.p0.semantic-contract-authoring",
+            "work.vexlife.new-beginnings.p0.vexweb-foundation",
+            "work.vexlife.new-beginnings.p1.inert-web-container",
+            "work.vexlife.new-beginnings.p1.public-github-nested-browser",
+            "work.vexlife.new-beginnings.p2.browser-context-dom-projection",
+            "work.vexlife.new-beginnings.p2.vex-conversation-reintegration",
+            "work.vexlife.new-beginnings.p3.lived-context-aware-browser-conversation"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "project.vexlife.new-beginnings",
+            "projects/vexlife-new-beginnings/README.md",
+            "human.design.vexlife.new-beginnings.initial-engagement.20261101",
+            "github.pull.vexlife-prod.1",
+            "github.commit.vexlife-prod.2fd6674a425919bf8696ea36dadd7d773cbd76a3",
+            "github.pull.vexwork.199.comment.6568212464",
+            "github.pull.vexlife-prod.1.comment.6568211489",
+            "github.pull.vexlife-prod.2.comment.6568211912",
+            "github.pull.vexlife-prod.4.comment.6569358950",
+            "github.commit.vexlife-prod.1264be62324878126ade9ad37da33db3097aad45",
+            "github.pull.vexwork.199.comment.6569375001"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-11-02T02:28:00.000Z",
+          "updatedAt": "2026-11-02T04:55:00.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexlife.new-beginnings.outcome.plan-validated-ready.p0-front-door",
+              "priorState": "PLAN_VALIDATED",
+              "nextState": "READY",
+              "reason": "The mapped New Beginnings sequence had enough accepted structure and Victor explicitly authorized execution, making the outcome ready to enter the first bounded source edge.",
+              "actorRef": "actor.chatgpt.vexlife-new-beginnings",
+              "sourceRefs": [
+                "github.pull.vexlife-prod.1",
+                "github.commit.vexlife-prod.2fd6674a425919bf8696ea36dadd7d773cbd76a3",
+                "human.authorization.vexlife.new-beginnings.sequence.20261101"
+              ],
+              "createdAt": "2026-11-02T03:04:00.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.new-beginnings.outcome.ready-running.p0-front-door",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "The same recorded authorization event immediately began the first bounded P0 front-door source edge in VexLife-Prod.",
+              "actorRef": "actor.chatgpt.vexlife-new-beginnings",
+              "sourceRefs": [
+                "github.pull.vexlife-prod.1",
+                "github.commit.vexlife-prod.2fd6674a425919bf8696ea36dadd7d773cbd76a3",
+                "human.authorization.vexlife.new-beginnings.sequence.20261101"
+              ],
+              "createdAt": "2026-11-02T03:04:00.000Z"
+            }
+          ]
+        },
+        {
+          "workRef": "work.vexlife.new-beginnings.p0.repository-front-door",
+          "label": "P0 — establish the clean VexLife-Prod front door",
+          "purpose": "Turn the intentionally blank VexLife-Prod repository from LICENSE-only bootstrap into a source-enterable product container with the smallest README / repository culture / foundation map needed to explain the human outcome, source ownership and proof route without importing historical repository machinery.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "github.repository.VexGPT.VexLife-Prod",
+            "projects/vexlife-new-beginnings/README.md",
+            "github.pull.vexlife-prod.1",
+            "github.commit.vexlife-prod.2fd6674a425919bf8696ea36dadd7d773cbd76a3",
+            "github.pull.vexlife-prod.1.comment.6568211489"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-11-02T02:28:00.000Z",
+          "updatedAt": "2026-11-02T03:08:00.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexlife.new-beginnings.p0-front-door.ready-running.pr1",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "The clean VexLife-Prod repository had no competing PRs and the bounded four-file front-door candidate was formed from the exact initial main.",
+              "actorRef": "actor.chatgpt.vexlife-new-beginnings",
+              "sourceRefs": [
+                "github.pull.vexlife-prod.1",
+                "github.commit.vexlife-prod.2fd6674a425919bf8696ea36dadd7d773cbd76a3",
+                "human.authorization.vexlife.new-beginnings.sequence.20261101"
+              ],
+              "createdAt": "2026-11-02T03:05:00.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.new-beginnings.p0-front-door.running-verifying.pr1",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "VexLife-Prod PR #1 exposed exactly the intended README/AGENTS/culture/foundation entry; readback and exact diff review found no runtime or hidden implementation accretion.",
+              "actorRef": "actor.chatgpt.vexlife-new-beginnings",
+              "sourceRefs": [
+                "github.pull.vexlife-prod.1",
+                "github.commit.vexlife-prod.2fd6674a425919bf8696ea36dadd7d773cbd76a3",
+                "human.authorization.vexlife.new-beginnings.sequence.20261101"
+              ],
+              "createdAt": "2026-11-02T03:06:00.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.new-beginnings.p0-front-door.verifying-completed.pr1",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "PR #1 merged as the accepted minimal source entry on VexLife-Prod main; the repository no longer depends on chat context to explain its current purpose and next descent.",
+              "actorRef": "actor.chatgpt.vexlife-new-beginnings",
+              "sourceRefs": [
+                "github.pull.vexlife-prod.1",
+                "github.commit.vexlife-prod.2fd6674a425919bf8696ea36dadd7d773cbd76a3",
+                "human.authorization.vexlife.new-beginnings.sequence.20261101"
+              ],
+              "createdAt": "2026-11-02T03:07:00.000Z"
+            }
+          ]
+        },
+        {
+          "workRef": "work.vexlife.new-beginnings.p0.semantic-contract-authoring",
+          "label": "P0 — compiler-constrained semantic Blueprint + Compose reference",
+          "purpose": "Prove the clean construction thesis through accepted portable Kotlin Family/State/Control/Effect/DisplayState semantics, stable compiler-visible Workspace Blueprint identity, and one independently-built Compose reference manifestation. Browser artifact generation is now separated into the earned VexWeb foundation Work rather than remaining hidden inside this semantic-authoring task.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.new-beginnings.p0.repository-front-door"
+          ],
+          "repositoryRefs": [
+            "repo.vexlife-prod",
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "github.pull.vexlife-android.209",
+            "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+            "repo.vexlife-android:architecture/elements/README.md",
+            "repo.vexlife-android:docs/foundation/VEX-BODY-SEMANTIC-BLUEPRINT.md",
+            "github.pull.vexlife-prod.1",
+            "github.commit.vexlife-prod.2fd6674a425919bf8696ea36dadd7d773cbd76a3",
+            "github.pull.vexlife-prod.2",
+            "github.commit.vexlife-prod.157f88a88afbd3ee925bb95af19a70aa650a6246",
+            "github.pull.vexlife-prod.2.comment.6568211912",
+            "github.commit.vexlife-prod.5d679dd7473522713538a28ea06dcd971a4d6b07",
+            "artifact.vexlife-prod.p0.semantic-proof.a001.sha256.de57be1c348b4080f0e1e4fc70b4bf266633ca2e346b1e92078793fc502e90f1",
+            "github.pull.vexlife-prod.2.comment.6568437145",
+            "github.pull.vexlife-prod.2.comment.6568749917",
+            "github.pull.vexlife-prod.2.comment.6568760152",
+            "github.commit.vexlife-prod.c9aca940a49cb2e828ecfbd4be726f3553bf0063",
+            "artifact.vexlife-prod.p0.semantic-proof.a001.return.sha256.f90ad6d92e5910d534dff2fa021685a473dbfbea33cabe849d017cb9279913f5",
+            "github.pull.vexlife-prod.3",
+            "github.commit.vexlife-prod.f37302731d402456462da90f1a7f4c74aa86b853",
+            "github.pull.vexlife-prod.4",
+            "github.commit.vexlife-prod.68779f09bd9614ad6c9252951cf90e32b1c4c8b4",
+            "github.pull.vexlife-prod.4.comment.6568891420",
+            "artifact.vexlife-prod.p0.compose-reference-proof.a001.sha256.5a4b9daa60089b0cdf1499cf7fe3f23dd320544c16427e844c5f4adf200ef80c",
+            "artifact.vexlife-prod.p0.compose-reference-proof.a001.return.sha256.890e854c307a0c85b39e0ba1b1f4ced6994b048f4bb666a8268303616242dda3",
+            "github.pull.vexlife-prod.4.comment.6569063989",
+            "github.commit.vexlife-prod.8f7ff7b99dacb4c6324f71b78b52c34ac352f288",
+            "github.pull.vexlife-prod.4.comment.6569096800",
+            "artifact.vexlife-prod.p0.compose-reference-proof.a002.sha256.ca4916ce0d65c3b9116d69b49967deb088a8681386bdc47f4361aff439f76c29",
+            "artifact.vexlife-prod.p0.compose-reference-proof.a002.return.sha256.64319ab72d1681107fec21a512ab59bc48f627378cb0bc0b15134bf3a24e55d5",
+            "github.pull.vexlife-prod.4.comment.6569217799",
+            "github.commit.vexlife-prod.da25faf7587b8db68f1ce9ff1dd7001cc7e16069",
+            "artifact.vexlife-prod.p0.compose-reference-proof.a003.return.sha256.7177ef7f128b941c3bcdd26ee7acf9ece69e4b3a892b1b1ae89c0e8f2b32988e",
+            "github.pull.vexlife-prod.4.comment.6569258901",
+            "github.commit.vexlife-prod.4a3e71fd9b6c0c57311202fec1790a9f3efd3ffc",
+            "artifact.vexlife-prod.p0.compose-reference-proof.a004.sha256.c4f5f9fa8b6cb3aed98491576fce2f3db9b77787558a0850782f060145b2ec48",
+            "github.pull.vexlife-prod.4.comment.6569298142",
+            "github.pull.vexlife-prod.4.comment.6569352066",
+            "github.pull.vexlife-prod.4.comment.6569358950",
+            "github.commit.vexlife-prod.1264be62324878126ade9ad37da33db3097aad45",
+            "github.commit.vexlife-prod.248eb5a60a35f086fa22f56b79e2f96bd5b751c2"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-11-02T02:28:00.000Z",
+          "updatedAt": "2026-11-02T04:55:00.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexlife.new-beginnings.p0-semantic.waiting-ready.front-door-complete",
+              "priorState": "WAITING_DEPENDENCIES",
+              "nextState": "READY",
+              "reason": "The repository front-door dependency is accepted on VexLife-Prod main, releasing the next mapped edge: one compiler-constrained pure-Kotlin semantic/Blueprint practicum.",
+              "actorRef": "actor.chatgpt.vexlife-new-beginnings",
+              "sourceRefs": [
+                "github.pull.vexlife-prod.1",
+                "github.commit.vexlife-prod.2fd6674a425919bf8696ea36dadd7d773cbd76a3",
+                "human.authorization.vexlife.new-beginnings.sequence.20261101"
+              ],
+              "createdAt": "2026-11-02T03:08:00.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.new-beginnings.p0-semantic.ready-running.pr2",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "VexLife-Prod PR #2 forms the first pure-Kotlin semantic contract and rooted workspace Blueprint candidate. Disposable formation pressure passed; exact Kotlin 2.4.20 JVM/JS/common-test proof remains held on a reproducible repository-owned Gradle route before Compose or P1 may begin.",
+              "actorRef": "actor.chatgpt.vexlife-new-beginnings",
+              "sourceRefs": [
+                "github.pull.vexlife-prod.2",
+                "github.commit.vexlife-prod.157f88a88afbd3ee925bb95af19a70aa650a6246",
+                "human.authorization.vexlife.new-beginnings.sequence.20261101"
+              ],
+              "createdAt": "2026-11-02T03:13:30.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.new-beginnings.p0-semantic.running-verifying.compose-a004",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "The semantic/Blueprint contract and independently isolated Compose reference both reached exact proof PASS: portable root JVM/JS and reference Compose JVM compilation/tests passed on the exact A004 tree.",
+              "actorRef": "actor.chatgpt.vexlife-new-beginnings",
+              "sourceRefs": [
+                "github.pull.vexlife-prod.4.comment.6569352066",
+                "artifact.vexlife-prod.p0.compose-reference-proof.a004.return.sha256.e35d71d97eb9e985be1f63066642bfdfb91608c7349182c8a92a69aa77293507"
+              ],
+              "createdAt": "2026-11-02T04:50:00.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.new-beginnings.p0-semantic.verifying-completed.compose-accepted",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "VexLife-Prod PR #4 merged and accepted main is tree-identical to the proven A004 candidate; PR #5 currentized repository source. The newly earned browser compiler responsibility is separated into VexWeb rather than extending this completed semantic/Compose task.",
+              "actorRef": "actor.chatgpt.vexlife-new-beginnings",
+              "sourceRefs": [
+                "github.pull.vexlife-prod.4.comment.6569358950",
+                "github.commit.vexlife-prod.1264be62324878126ade9ad37da33db3097aad45",
+                "github.commit.vexlife-prod.248eb5a60a35f086fa22f56b79e2f96bd5b751c2"
+              ],
+              "createdAt": "2026-11-02T04:53:00.000Z"
+            }
+          ]
+        },
+        {
+          "workRef": "work.vexlife.new-beginnings.p0.vexweb-foundation",
+          "label": "P0 — establish VexWeb browser manifestation foundation",
+          "purpose": "Establish VexWeb as a compiler-enforced browser manifestation foundation: preserve accepted Blueprint/product identity, express spatial placement through fractally scalable Frame / Seam / Region / Allocation relationships, keep interactions/bindings explicit, then make those accepted relationships ergonomic to author before deterministic HTML/CSS/JS artifact generation. Generated syntax is output, not product or spatial source authority.",
+          "workClass": "TASK",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.new-beginnings.p0.semantic-contract-authoring"
+          ],
+          "repositoryRefs": [
+            "repo.vexlife-prod",
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "human.design.vexweb.foundation.20261101",
+            "projects/vexlife-new-beginnings/README.md",
+            "github.pull.vexlife-prod.4",
+            "github.commit.vexlife-prod.1264be62324878126ade9ad37da33db3097aad45",
+            "github.pull.vexlife-android.209",
+            "github.pull.vexlife-prod.6",
+            "github.commit.vexlife-prod.017ab36b29b5ca759f906c46eb65102a73e620bb",
+            "github.pull.vexlife-prod.6.comment.6569754915",
+            "human.authorization.vexweb.f0.20261101",
+            "github.pull.vexlife-prod.7",
+            "github.commit.vexlife-prod.66253c7188d551d79e89356eef0897da168dde86",
+            "artifact.vexlife-prod.vexweb.f0.proof.a001.sha256.866f6fdd27de0e99f5bf2ab48032b3d0e5cb2ffebdbeabbdf3f7c7e15bc41025",
+            "artifact.vexlife-prod.vexweb.f0.proof.a001.return.sha256.03a7309be17244e29d19ec332e18bcbc8e80d38c97fc2537e0bd9f6cdbd71fa4",
+            "github.pull.vexlife-prod.7.comment.6569880681",
+            "github.commit.vexlife-prod.68e0205650e0ec9502174beefc5adb1030994471",
+            "github.commit.vexlife-android.66c866dea6a8dd78e2946da88715c4deb78c1847",
+            "artifact.vexlife-prod.vexweb.f0.proof.a002.return.sha256.899e5f9cc0fcd7646007fe003a7fffe785bda44bf6b492ea679bfff153e190b5",
+            "github.pull.vexlife-prod.7.comment.6569957630",
+            "github.commit.vexlife-prod.898789f1082dabff8278eca7581f694a33683274",
+            "artifact.vexlife-prod.vexweb.f0.proof.a003.return.sha256.0ebea0e6f2fcf628aaaca2a66272cd50d6578449022f2619a62d2b05f791ae01",
+            "github.pull.vexlife-prod.7.comment.6570053599",
+            "github.pull.vexlife-prod.7.comment.6570062927",
+            "github.commit.vexlife-prod.979ffaa31a94a94d44d0b0bc4c3dc532efb3eed2",
+            "github.commit.vexlife-prod.968f2cee5f9aa8e16195849c967153d56c81ce90",
+            "github.pull.vexwork.203.comment.6570078352",
+            "github.pull.vexlife-prod.10",
+            "github.commit.vexlife-prod.9a318a093527a5f6ce61fd176fc7ded3b487a09e",
+            "artifact.vexlife-prod.vexweb.f1.proof.a001.sha256.36bb5da3e33cd3ed046effc046cd6bec367e6874dc781fb46f927d469da174b8",
+            "artifact.vexlife-prod.vexweb.f1.proof.a001.return.sha256.3da3493468bc36d7db608205c2c74ee33d4407a621329dfccbd17b574d5db00f",
+            "github.pull.vexlife-prod.10.comment.6570191802",
+            "github.commit.vexlife-prod.069591b2f4a1570da2233c04c955ff42bd5ef049",
+            "human.design.vexweb.split-scalability.20261101",
+            "github.pull.vexlife-prod.10.comment.6570385186",
+            "github.pull.vexlife-prod.11",
+            "github.commit.vexlife-prod.6e8c48ba801f682a1ef0a596698e5608d3e0e51b",
+            "human.design.vexweb.fractal-spatial-language.20261101",
+            "artifact.vexlife-prod.vexweb.spatial.proof.a001.return.sha256.3249350cc4c1bef19865f300e319aa6037de9015c213e6dea7a2f060a7b03abb",
+            "github.pull.vexlife-prod.11.comment.6570536123",
+            "github.commit.vexlife-prod.789b067765ec4049d671d07866ca44a6a11e41f8",
+            "artifact.vexlife-prod.vexweb.spatial.proof.a002.return.sha256.7e9066f9aacbd535a9e75a67b99d13014cdafab51fe52bd22cc12858e55ace8b",
+            "github.pull.vexlife-prod.11.comment.6570644957",
+            "github.commit.vexlife-prod.e0e8ad6a95f3c73cd7f79216b3ae1802ba9b54f9",
+            "github.commit.vexlife-prod.20919f21578eeff9d2e1d513a00e0cd66ecd72ea"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-11-02T04:55:00.000Z",
+          "updatedAt": "2026-11-02T06:30:00.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexlife.new-beginnings.vexweb.ready-running.f0-admitted",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "Victor accepted the completed-view blueprint as a durable reference and explicitly authorized continuing into the next work. F0 is bounded to vocabulary pressure on the first fractal Workspace/Split/Send/Snackbar specimen; generator/web-runtime/provider effects remain outside this transition.",
+              "actorRef": "actor.chatgpt.vexlife-new-beginnings",
+              "sourceRefs": [
+                "github.pull.vexlife-prod.6.comment.6569754915",
+                "github.commit.vexlife-prod.017ab36b29b5ca759f906c46eb65102a73e620bb",
+                "human.authorization.vexweb.f0.20261101"
+              ],
+              "createdAt": "2026-11-02T05:24:00.000Z"
+            }
+          ]
+        },
+        {
+          "workRef": "work.vexlife.new-beginnings.p1.inert-web-container",
+          "label": "P1 — realize the intended VexLife web container",
+          "purpose": "Render the initial VexLife workspace from the accepted semantic contract: persistent VexLife shell, nested browser region, Conversation/companion region and Settings projection with stable identity and explicit unbound/unknown states. This phase deliberately does not pretend Vex, Conversation, Memory, Home or model services are connected.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.new-beginnings.p0.vexweb-foundation"
+          ],
+          "repositoryRefs": [
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "human.design.vexlife.new-beginnings.initial-engagement.20261101",
+            "projects/vexlife-new-beginnings/README.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-02T02:28:00.000Z",
+          "updatedAt": "2026-11-02T04:55:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.new-beginnings.p1.public-github-nested-browser",
+          "label": "P1 — public GitHub nested-browser practicum",
+          "purpose": "Use public GitHub-hosted Vex surfaces as the first bounded browser practicum, beginning with the Vextreme Terrain Map: prove human nested rendering/navigation and preserve exact current URL/document identity while keeping human rendering separate from any later Vex context-acquisition channel.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.new-beginnings.p1.inert-web-container"
+          ],
+          "repositoryRefs": [
+            "repo.vexlife-prod",
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "repo.vextreme:pages/terrain-map.html",
+            "projects/vexlife-new-beginnings/README.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-02T02:28:00.000Z",
+          "updatedAt": "2026-11-02T02:28:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.new-beginnings.p2.browser-context-dom-projection",
+          "label": "P2 — current browser/DOM context projection for Vex",
+          "purpose": "Add a bounded, source-addressed Vex perception channel for the current nested-browser context. Human nested rendering does not itself prove DOM/context access: this work owns current URL/document/source identity, bounded DOM/context extraction, freshness/provenance and a projection suitable for model context without granting browser effect authority.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.new-beginnings.p1.public-github-nested-browser"
+          ],
+          "repositoryRefs": [
+            "repo.vexlife-prod",
+            "repo.vextreme"
+          ],
+          "sourceRefs": [
+            "repo.vextreme:pages/terrain-map.html",
+            "project.vexlife.interface-refinement"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-02T02:28:00.000Z",
+          "updatedAt": "2026-11-02T02:28:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.new-beginnings.p2.vex-conversation-reintegration",
+          "label": "P2 — plug Vex back into the Conversation layer",
+          "purpose": "Rebuild the proven Vex connection into the fresh container rather than transplanting the historical UI: canonical Conversation identity, current Companion/model availability, Send, progressive response presentation and current browser-context composition converge through their rightful owners so Vex can converse about what the human is currently viewing.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.new-beginnings.p2.browser-context-dom-projection"
+          ],
+          "repositoryRefs": [
+            "repo.vexlife-prod",
+            "repo.vexlife"
+          ],
+          "sourceRefs": [
+            "project.vexlife.interface-refinement",
+            "project.vexlife.tocompletion",
+            "projects/vexlife-new-beginnings/README.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-02T02:28:00.000Z",
+          "updatedAt": "2026-11-02T02:28:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexlife.new-beginnings.p3.lived-context-aware-browser-conversation",
+          "label": "P3 — lived nested-browser + context-aware Vex proof",
+          "purpose": "Prove the first whole experience: open a bounded public GitHub page in the nested browser, establish truthful current context, send one natural human message, receive one real Vex response grounded in that current page/context, preserve canonical Conversation currentness, and distinguish human-visible browser truth from the context actually supplied to Vex.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexlife.new-beginnings.p2.vex-conversation-reintegration"
+          ],
+          "repositoryRefs": [
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "human.design.vexlife.new-beginnings.initial-engagement.20261101",
+            "projects/vexlife-new-beginnings/README.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-02T02:28:00.000Z",
+          "updatedAt": "2026-11-02T02:28:00.000Z",
+          "transitionHistory": []
+        }
+      ],
+      "lanes": [
+        {
+          "laneRef": "lane.work.intake",
+          "label": "Intake",
+          "workRefs": [
+            "work.vexlife.new-beginnings.later.settings-capability-mapping"
+          ]
+        },
+        {
+          "laneRef": "lane.work.planned",
+          "label": "Planned",
+          "workRefs": [
+            "work.vexlife.new-beginnings.p2.browser-context-dom-projection",
+            "work.vexlife.new-beginnings.p2.vex-conversation-reintegration",
+            "work.vexlife.new-beginnings.p1.inert-web-container",
+            "work.vexlife.new-beginnings.p1.public-github-nested-browser",
+            "work.vexlife.new-beginnings.p3.lived-context-aware-browser-conversation"
+          ]
+        },
+        {
+          "laneRef": "lane.work.ready",
+          "label": "Ready",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.active",
+          "label": "Active",
+          "workRefs": [
+            "work.vexlife.new-beginnings.outcome",
+            "work.vexlife.new-beginnings.p0.vexweb-foundation"
+          ]
+        },
+        {
+          "laneRef": "lane.work.waiting",
+          "label": "Waiting",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.needs-human",
+          "label": "Needs Human",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.verify",
+          "label": "Verify",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.attention",
+          "label": "Attention",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.done",
+          "label": "Done",
+          "workRefs": [
+            "work.vexlife.new-beginnings.p0.repository-front-door",
+            "work.vexlife.new-beginnings.p0.semantic-contract-authoring"
+          ]
+        },
+        {
+          "laneRef": "lane.work.archive",
+          "label": "Archive",
+          "workRefs": []
+        }
+      ],
+      "summary": {
+        "workItemCount": 10,
+        "openWorkItemCount": 8,
+        "outcomeCount": 1,
+        "taskCount": 8,
+        "defectCount": 0,
+        "potentialCount": 1,
+        "needsHumanCount": 0,
+        "completedCount": 2
+      },
+      "rootItems": [
+        {
+          "workRef": "work.vexlife.new-beginnings.outcome",
+          "label": "VexLife New Beginnings",
+          "purpose": "Recompose VexLife in the clean VexLife-Prod container from explicit product intention and compiler-constrained semantic relationships: establish the repository front door, author one portable Kotlin contract/Blueprint language, realize the initial nested-browser + companion UI without pretending backend connectivity, then reconnect Vex through the canonical Conversation with bounded current browser/DOM context and lived proof.",
+          "workClass": "OUTCOME",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vexlife.new-beginnings.later.settings-capability-mapping",
+            "work.vexlife.new-beginnings.p0.repository-front-door",
+            "work.vexlife.new-beginnings.p0.semantic-contract-authoring",
+            "work.vexlife.new-beginnings.p0.vexweb-foundation",
+            "work.vexlife.new-beginnings.p1.inert-web-container",
+            "work.vexlife.new-beginnings.p1.public-github-nested-browser",
+            "work.vexlife.new-beginnings.p2.browser-context-dom-projection",
+            "work.vexlife.new-beginnings.p2.vex-conversation-reintegration",
+            "work.vexlife.new-beginnings.p3.lived-context-aware-browser-conversation"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "project.vexlife.new-beginnings",
+            "projects/vexlife-new-beginnings/README.md",
+            "human.design.vexlife.new-beginnings.initial-engagement.20261101",
+            "github.pull.vexlife-prod.1",
+            "github.commit.vexlife-prod.2fd6674a425919bf8696ea36dadd7d773cbd76a3",
+            "github.pull.vexwork.199.comment.6568212464",
+            "github.pull.vexlife-prod.1.comment.6568211489",
+            "github.pull.vexlife-prod.2.comment.6568211912",
+            "github.pull.vexlife-prod.4.comment.6569358950",
+            "github.commit.vexlife-prod.1264be62324878126ade9ad37da33db3097aad45",
+            "github.pull.vexwork.199.comment.6569375001"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-11-02T02:28:00.000Z",
+          "updatedAt": "2026-11-02T04:55:00.000Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexlife.new-beginnings.outcome.plan-validated-ready.p0-front-door",
+              "priorState": "PLAN_VALIDATED",
+              "nextState": "READY",
+              "reason": "The mapped New Beginnings sequence had enough accepted structure and Victor explicitly authorized execution, making the outcome ready to enter the first bounded source edge.",
+              "actorRef": "actor.chatgpt.vexlife-new-beginnings",
+              "sourceRefs": [
+                "github.pull.vexlife-prod.1",
+                "github.commit.vexlife-prod.2fd6674a425919bf8696ea36dadd7d773cbd76a3",
+                "human.authorization.vexlife.new-beginnings.sequence.20261101"
+              ],
+              "createdAt": "2026-11-02T03:04:00.000Z"
+            },
+            {
+              "transitionRef": "transition.vexlife.new-beginnings.outcome.ready-running.p0-front-door",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "The same recorded authorization event immediately began the first bounded P0 front-door source edge in VexLife-Prod.",
+              "actorRef": "actor.chatgpt.vexlife-new-beginnings",
+              "sourceRefs": [
+                "github.pull.vexlife-prod.1",
+                "github.commit.vexlife-prod.2fd6674a425919bf8696ea36dadd7d773cbd76a3",
+                "human.authorization.vexlife.new-beginnings.sequence.20261101"
+              ],
+              "createdAt": "2026-11-02T03:04:00.000Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "project": {
+        "projectRef": "project.vexwork.vexarchitecture-alignment",
+        "label": "VexWork VexArchitecture Alignment",
+        "purpose": "Refactor VexWork toward the full relationship-constrained architecture intention accepted in VexLife-Android and VexLife-Prod: keep meaning with rightful owners, author relationships once, derive identity from existing structure, make construction explicit, keep connective mechanics from becoming peer semantics, derive deterministic consequences, fail invalid relationships at the rightful boundary, keep held closure visibly owed, and make projections consume truth so future AI instances do not rely on memory, manual aggregate synchronization or Victor rediscovering deferred obligations.",
+        "rootWorkRefs": [
+          "work.vexwork.vexarchitecture-alignment.outcome"
+        ],
+        "repositoryRefs": [
+          "repo.vexwork",
+          "repo.vexlife-android",
+          "repo.vexlife-prod"
+        ],
+        "sourceRefs": [
+          "projects/vexwork-vexarchitecture-alignment/README.md",
+          "projects/vexwork-vexarchitecture-alignment/architecture.contract.json",
+          "docs/process/FORM-PROJECT.md",
+          "docs/foundation/PROCESS-MAP.md",
+          "docs/foundation/WORKGRAPH-COMPOSITION.md",
+          "docs/foundation/PROJECTS.md",
+          "docs/foundation/PROJECT-RECONCILIATION.md",
+          "docs/foundation/REPOSITORY-INTEGRATION.md",
+          "docs/foundation/DERIVED-ATTENTION.md",
+          "docs/foundation/ATTENTION-QUEUE.md",
+          "human.design.vexwork.vexarchitecture-alignment.20261101",
+          "github.commit.vexlife-android.66c866dea6a8dd78e2946da88715c4deb78c1847",
+          "repo.vexlife-android:architecture/vexarchitecture/README.md",
+          "repo.vexlife-android:architecture/vexarchitecture/REFINED-BOUNDARIES.md",
+          "github.commit.vexlife-prod.20919f21578eeff9d2e1d513a00e0cd66ecd72ea",
+          "repo.vexlife-prod:docs/CULTURE.md",
+          "repo.vexlife-prod:docs/foundation/SEMANTIC-CONTRACT-AUTHORING.md",
+          "repo.vexlife-prod:docs/foundation/VEXWEB-SPATIAL-FOUNDATION.md",
+          "project.vexlife.new-beginnings",
+          "github.pull.vexwork.199",
+          "github.issue-comment.vexwork.182.6570893418",
+          "github.issue-comment.vexwork.193.6570894001",
+          "docs/foundation/INDEX.md",
+          "docs/foundation/VEXWORK-ORIENTATION.md",
+          "orientation.html"
+        ],
+        "formedAt": "2026-11-02T06:50:00.000Z"
+      },
+      "graphRef": "workgraph.vexwork.foundation",
+      "viewRef": "view.vexwork.vexarchitecture-alignment.board",
+      "items": [
+        {
+          "workRef": "work.vexwork.vexarchitecture-alignment.end-to-end-foundation-proof",
+          "label": "Prove VexWork relationship closure end to end",
+          "purpose": "Pressure the aligned foundation with real Project formation and stale-consequence cases: a Project becomes source-addressable, Workgraph roots resolve, Board identity resolves, deterministic aggregate projections become current, an intentionally held consequence remains visible, and clearing the predicate removes the attention without manual human archaeology.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexwork.vexarchitecture-alignment.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexwork.vexarchitecture-alignment.relationship-attention-healing"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "projects/vexwork-vexarchitecture-alignment/README.md",
+            "projects/vexwork-vexarchitecture-alignment/architecture.contract.json",
+            "projects/vexlife-new-beginnings/project.json",
+            "workgraphs/segments/vexlife-new-beginnings.json",
+            "public/workspace.json",
+            "test/public-workspace.test.mjs",
+            "test/workgraph-composition-source.test.mjs"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [
+            "process.vexwork.quality-review",
+            "process.vexwork.integrate-ready-pull-requests"
+          ],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-11-02T06:50:00.000Z",
+          "updatedAt": "2026-11-02T06:50:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexwork.vexarchitecture-alignment.generated-consequence-reconciliation",
+          "label": "Move generated aggregate convergence to the rightful composition/integration boundary",
+          "purpose": "Treat public Workgraph/workspace and any source-derived Project registry projection as deterministic consequences rather than ordinary lane-owned architecture; extend current integration/currentness behavior so accepted source changes re-ground, regenerate and verify required aggregate consequences without making unrelated source lanes race shared generated files.",
+          "workClass": "TASK",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexwork.vexarchitecture-alignment.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexwork.vexarchitecture-alignment.project-discoverability-contract"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "projects/vexwork-vexarchitecture-alignment/README.md",
+            "projects/vexwork-vexarchitecture-alignment/architecture.contract.json",
+            "docs/foundation/WORKGRAPH-COMPOSITION.md",
+            "docs/foundation/REPOSITORY-INTEGRATION.md",
+            "docs/process/INTEGRATE-READY-PULL-REQUESTS.md",
+            "scripts/build-public-workgraph.mjs",
+            "scripts/build-public-workspace.mjs",
+            "workgraphs/public.json",
+            "public/workspace.json"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [
+            "process.vexwork.quality-review",
+            "process.vexwork.integrate-ready-pull-requests"
+          ],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-11-02T06:50:00.000Z",
+          "updatedAt": "2026-11-02T12:51:51.003Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexwork.vexarchitecture-alignment.generated-consequence.waiting-ready.a1-complete",
+              "priorState": "WAITING_DEPENDENCIES",
+              "nextState": "READY",
+              "reason": "A1 completed the source relationship and fail-closed discoverability contract. The next unconsumed causal edge is to reconcile deterministic Project Registry, public Workgraph and workspace consequences without restoring lane-owned aggregate synchronization.",
+              "actorRef": "role.vexwork.vexarchitecture-alignment-author",
+              "sourceRefs": [
+                "work.vexwork.vexarchitecture-alignment.project-discoverability-contract",
+                "github.pull.vexwork.182.comment.6577339504",
+                "github.pull.vexwork.193.comment.6577340172"
+              ],
+              "createdAt": "2026-11-02T12:51:51.002Z"
+            },
+            {
+              "transitionRef": "transition.vexwork.vexarchitecture-alignment.generated-consequence.ready-running.a2-reorientation",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "Begin A2 by re-grounding current composition/integration owners and live shared-path custody, then make deterministic consequences converge from current semantic source. Do not use repeated host proof packages as a substitute for convergence; defer the next host round until the candidate reaches one stable integrated proof boundary.",
+              "actorRef": "role.vexwork.vexarchitecture-alignment-author",
+              "sourceRefs": [
+                "docs/foundation/WORKGRAPH-COMPOSITION.md",
+                "docs/foundation/REPOSITORY-INTEGRATION.md",
+                "docs/process/INTEGRATE-READY-PULL-REQUESTS.md",
+                "github.pull.vexwork.182",
+                "github.pull.vexwork.193"
+              ],
+              "createdAt": "2026-11-02T12:51:51.003Z"
+            }
+          ]
+        },
+        {
+          "workRef": "work.vexwork.vexarchitecture-alignment.map-current-contracts",
+          "label": "Map and constrain VexWork through the full VexArchitecture relationship intention",
+          "purpose": "Compile the accepted VexLife-Android and VexLife-Prod architecture intention into a VexWork-native, machine-readable relationship contract: preserve rightful semantic owners, authored-once relationships, identity from existing structure, explicit construction, connective mechanics without peer meaning, current/history/projection separation, deterministic generated consequences, fail-closed invalid relationships, visible held closure and claim-matched proof. Map each current VexWork foundation to those laws before any patient-zero implementation is allowed to narrow the architecture to one registry fix.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": "work.vexwork.vexarchitecture-alignment.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "projects/vexwork-vexarchitecture-alignment/README.md",
+            "projects/vexwork-vexarchitecture-alignment/architecture.contract.json",
+            "docs/foundation/PROCESS-MAP.md",
+            "docs/foundation/PROJECTS.md",
+            "docs/foundation/WORKGRAPH-COMPOSITION.md",
+            "docs/foundation/PROJECT-RECONCILIATION.md",
+            "docs/foundation/REPOSITORY-INTEGRATION.md",
+            "repo.vexlife-android:architecture/vexarchitecture/README.md",
+            "repo.vexlife-android:architecture/vexarchitecture/REFINED-BOUNDARIES.md",
+            "repo.vexlife-prod:docs/CULTURE.md",
+            "repo.vexlife-prod:docs/foundation/VEXWEB-SPATIAL-FOUNDATION.md",
+            "docs/foundation/INDEX.md",
+            "docs/foundation/VEXWORK-ORIENTATION.md",
+            "orientation.html"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [
+            "process.vexwork.quality-review"
+          ],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-11-02T06:50:00.000Z",
+          "updatedAt": "2026-11-02T12:22:03.001Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexwork.vexarchitecture-alignment.map-current-contracts.waiting-tool.a0-proof",
+              "priorState": "RUNNING",
+              "nextState": "WAITING_TOOL",
+              "reason": "A0 full-intention architecture map completed its source/ownership review, but repository-native focused Node proof and npm run review cannot run on the current hosted execution surface. Hold only the exact deterministic proof effect for current VexRelay ExactHeadSourceOwnerProof; this is not a source defect and A1 remains dependency-held.",
+              "actorRef": "role.vexwork.vexarchitecture-alignment-author",
+              "sourceRefs": [
+                "github.pull.vexwork.210",
+                "github.pull.vexwork.210.comment.6576031173",
+                "source.vexrelay.current-contract/v1"
+              ],
+              "createdAt": "2026-11-02T11:29:54.000Z"
+            },
+            {
+              "transitionRef": "transition.vexwork.vexarchitecture-alignment.map-current-contracts.waiting-tool-running.a0-review-repair",
+              "priorState": "WAITING_TOOL",
+              "nextState": "RUNNING",
+              "reason": "The exact SourceOwner host proof executed npm run review and exposed an inherited patient-zero Workgraph Segment contract defect: workgraphs/segments/vexlife-new-beginnings.json on both fixed base and candidate omitted required top-level sourceRefs and formedAt. Reopen A0 only for that minimal source-boundary repair and exact reproof; A1 remains dependency-held.",
+              "actorRef": "role.vexwork.vexarchitecture-alignment-author",
+              "sourceRefs": [
+                "artifact.vexwork.vexarchitecture-alignment.a0.source-owner-review.return.sha256.34418db3237f1c6023a36ebba02d9401b1614ef2e356a35a36f5f7fbedce816d",
+                "github.pull.vexwork.210",
+                "workgraphs/segments/vexlife-new-beginnings.json",
+                "test/workgraph-composition-source.test.mjs"
+              ],
+              "createdAt": "2026-11-02T12:18:34.083Z"
+            },
+            {
+              "transitionRef": "transition.vexwork.vexarchitecture-alignment.map-current-contracts.running-verifying.a0-review-classified",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "The review-discovered New Beginnings segment provenance defect was repaired only at its rightful source boundary, and exact provider readback proves no Work item/transition/product meaning changed. A0 now enters verification against its own architecture-map/recoverability claim rather than borrowing PR-wide merge readiness as WorkState.",
+              "actorRef": "role.vexwork.vexarchitecture-alignment-author",
+              "sourceRefs": [
+                "artifact.vexwork.vexarchitecture-alignment.a0.source-owner-review.return.sha256.34418db3237f1c6023a36ebba02d9401b1614ef2e356a35a36f5f7fbedce816d",
+                "workgraphs/segments/vexlife-new-beginnings.json",
+                "projects/vexwork-vexarchitecture-alignment/architecture.contract.json",
+                "test/vexwork-vexarchitecture-alignment-project.test.mjs"
+              ],
+              "createdAt": "2026-11-02T12:22:03.000Z"
+            },
+            {
+              "transitionRef": "transition.vexwork.vexarchitecture-alignment.map-current-contracts.verifying-completed.a0-map-accepted",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "A0's admitted outcome is complete: the full VexArchitecture intention, VexWork owner/foundation map, static-source classification, worked demonstrations, ordinary-orientation discoverability, patient-zero pressure and exact downstream A1-A5 route are durable and source-addressable. The draft PR's repository-wide green gate remains a later trajectory/integration predicate and is not collapsed into A0 WorkState.",
+              "actorRef": "role.vexwork.vexarchitecture-alignment-author",
+              "sourceRefs": [
+                "projects/vexwork-vexarchitecture-alignment/README.md",
+                "projects/vexwork-vexarchitecture-alignment/architecture.contract.json",
+                "docs/foundation/INDEX.md",
+                "docs/foundation/VEXWORK-ORIENTATION.md",
+                "orientation.html",
+                "artifact.vexwork.vexarchitecture-alignment.a0.source-owner-review.return.sha256.34418db3237f1c6023a36ebba02d9401b1614ef2e356a35a36f5f7fbedce816d"
+              ],
+              "createdAt": "2026-11-02T12:22:03.001Z"
+            }
+          ]
+        },
+        {
+          "workRef": "work.vexwork.vexarchitecture-alignment.outcome",
+          "label": "VexWork VexArchitecture Alignment",
+          "purpose": "Make VexWork scale through explicit, source-addressable and validator-visible relationships rather than remembered aggregate edits: align VexWork foundations with the accepted VexArchitecture pattern of one semantic owner, bounded projections, derived consequences, fail-closed invalid relationships and truthful reconciliation, then prove a newly formed Project cannot silently disappear from canonical navigation.",
+          "workClass": "OUTCOME",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vexwork.vexarchitecture-alignment.end-to-end-foundation-proof",
+            "work.vexwork.vexarchitecture-alignment.generated-consequence-reconciliation",
+            "work.vexwork.vexarchitecture-alignment.map-current-contracts",
+            "work.vexwork.vexarchitecture-alignment.project-discoverability-contract",
+            "work.vexwork.vexarchitecture-alignment.relationship-attention-healing",
+            "work.vexwork.vexarchitecture-alignment.vexboard-projection-alignment"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-android",
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "project.vexwork.vexarchitecture-alignment",
+            "projects/vexwork-vexarchitecture-alignment/architecture.contract.json",
+            "projects/vexwork-vexarchitecture-alignment/README.md",
+            "human.design.vexwork.vexarchitecture-alignment.20261101",
+            "github.commit.vexlife-android.66c866dea6a8dd78e2946da88715c4deb78c1847",
+            "github.commit.vexlife-prod.20919f21578eeff9d2e1d513a00e0cd66ecd72ea"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-11-02T06:50:00.000Z",
+          "updatedAt": "2026-11-02T06:50:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexwork.vexarchitecture-alignment.project-discoverability-contract",
+          "label": "Constrain Project source bundle, default Board view and discoverability",
+          "purpose": "Replace count- and memory-based Project registration plus repeated default Board-view declarations with a constrained Project source relationship: Project identity comes from validated source, canonical Work Registry lanes derive the default Board projection, explicit Board-view source exists only when custom view meaning is earned, and every eligible source-managed Project resolves exactly once to its canonical Workgraph roots and discoverability. Use VexLife New Beginnings and this Alignment Project as patient zeros without letting filesystem path or Project slug become semantic identity.",
+          "workClass": "TASK",
+          "state": "COMPLETED",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": "work.vexwork.vexarchitecture-alignment.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexwork.vexarchitecture-alignment.map-current-contracts"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "projects/vexwork-vexarchitecture-alignment/README.md",
+            "projects/vexwork-vexarchitecture-alignment/architecture.contract.json",
+            "docs/process/FORM-PROJECT.md",
+            "docs/foundation/PROJECTS.md",
+            "blueprint/project-registry.json",
+            "test/project-registry.test.mjs",
+            "projects/vexlife-new-beginnings/project.json",
+            "workgraphs/segments/vexlife-new-beginnings.json",
+            "src/core/work-board.mjs",
+            "src/core/project-registry.mjs",
+            "scripts/build-public-workspace.mjs",
+            "test/project-discoverability.test.mjs",
+            "docs/foundation/WORK-BOARD.md",
+            "scripts/build-project-registry.mjs",
+            "test/project-registry-source.test.mjs",
+            "package.json"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [
+            "process.vexwork.quality-review",
+            "process.vexwork.integrate-ready-pull-requests"
+          ],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-11-02T06:50:00.000Z",
+          "updatedAt": "2026-11-02T12:51:51.001Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexwork.vexarchitecture-alignment.project-discoverability.waiting-ready.a0-complete",
+              "priorState": "WAITING_DEPENDENCIES",
+              "nextState": "READY",
+              "reason": "A0 completed its map/contract obligation, so the next unconsumed causal edge is the Project/default-Board/discoverability relationship. Shared aggregate custody remains a downstream consequence constraint, not a blocker to disjoint rightful-owner implementation.",
+              "actorRef": "role.vexwork.vexarchitecture-alignment-author",
+              "sourceRefs": [
+                "work.vexwork.vexarchitecture-alignment.map-current-contracts",
+                "projects/vexwork-vexarchitecture-alignment/architecture.contract.json",
+                "github.pull.vexwork.182",
+                "github.pull.vexwork.193"
+              ],
+              "createdAt": "2026-11-02T12:22:03.002Z"
+            },
+            {
+              "transitionRef": "transition.vexwork.vexarchitecture-alignment.project-discoverability.ready-running.a1-source-owner",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "Begin A1 inside the existing Work Board and Project Registry owners: derive default Board semantics from Project + Work Registry truth and derive discoverability from explicit validated Project source bundles. Do not mutate the currently claimed shared registry/public aggregate files until their live custody is reconciled.",
+              "actorRef": "role.vexwork.vexarchitecture-alignment-author",
+              "sourceRefs": [
+                "src/core/work-board.mjs",
+                "src/core/project-registry.mjs",
+                "docs/foundation/PROJECTS.md",
+                "github.pull.vexwork.182",
+                "github.pull.vexwork.193"
+              ],
+              "createdAt": "2026-11-02T12:22:03.003Z"
+            },
+            {
+              "transitionRef": "transition.vexwork.vexarchitecture-alignment.project-discoverability.running-waiting-tool.a1-source-owner-proof",
+              "priorState": "RUNNING",
+              "nextState": "WAITING_TOOL",
+              "reason": "A1 now has its rightful-owner implementation, real repository source census, default Board derivation, source-derived Project Registry consequence and deterministic fail-closed review gate. Hold only exact SourceOwner execution proving the A1/core tests pass and the pre-A2 checked-in registry is detected as stale; A2 remains dependency-held until that proof is consumed.",
+              "actorRef": "role.vexwork.vexarchitecture-alignment-author",
+              "sourceRefs": [
+                "src/core/work-board.mjs",
+                "src/core/project-registry.mjs",
+                "scripts/build-project-registry.mjs",
+                "test/project-discoverability.test.mjs",
+                "test/project-registry-source.test.mjs",
+                "package.json",
+                "source.vexrelay.current-contract/v1"
+              ],
+              "createdAt": "2026-11-02T12:35:00.000Z"
+            },
+            {
+              "transitionRef": "transition.vexwork.vexarchitecture-alignment.project-discoverability.waiting-tool-running.a1-return-corrections",
+              "priorState": "WAITING_TOOL",
+              "nextState": "RUNNING",
+              "reason": "The exact A1 SourceOwner RETURN executed the focused suite and returned actionable source findings: one inherited New Beginnings lifecycle transition violates canonical Workgraph law, four Alignment regressions are stale against intentional A0/A1 currentness/wording, and public Workgraph equality remains an A2 consequence. Reopen A1 to repair the coherent source set before any further host round-trip.",
+              "actorRef": "role.vexwork.vexarchitecture-alignment-author",
+              "sourceRefs": [
+                "artifact.vexwork.vexarchitecture-alignment.a1.source-owner.outer-return.sha256.2c9c010347d8871c950e5a5c82c74e763bc46dadad8f68fce9ec2ba43a5f86d5",
+                "artifact.vexwork.vexarchitecture-alignment.a1.source-owner.inner-return.sha256.98be22478be16b6ceb4de67ac67434837443d7b378f318032df58e95ad42bf7f",
+                "workgraphs/segments/vexlife-new-beginnings.json",
+                "test/vexwork-vexarchitecture-alignment-project.test.mjs"
+              ],
+              "createdAt": "2026-11-02T12:43:51.985Z"
+            },
+            {
+              "transitionRef": "transition.vexwork.vexarchitecture-alignment.project-discoverability.running-verifying.a1-review-clear",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "The consumed A1 SourceOwner RETURN was classified rather than replayed, the inherited New Beginnings lifecycle defect and stale Alignment assertions were repaired, and a direct audit of all 21 current Workgraph segments proves required provenance, lawful transitions, continuous histories, latest-state parity and local containment. A1 enters verification against its own source-contract claim; public aggregate equality remains an A2 consequence.",
+              "actorRef": "role.vexwork.vexarchitecture-alignment-author",
+              "sourceRefs": [
+                "github.pull.vexwork.210.comment.6577601830",
+                "artifact.vexwork.vexarchitecture-alignment.a1.source-owner.outer-return.sha256.2c9c010347d8871c950e5a5c82c74e763bc46dadad8f68fce9ec2ba43a5f86d5",
+                "artifact.vexwork.vexarchitecture-alignment.a1.source-owner.inner-return.sha256.98be22478be16b6ceb4de67ac67434837443d7b378f318032df58e95ad42bf7f",
+                "scripts/build-project-registry.mjs",
+                "test/project-discoverability.test.mjs",
+                "test/project-registry-source.test.mjs"
+              ],
+              "createdAt": "2026-11-02T12:51:51.000Z"
+            },
+            {
+              "transitionRef": "transition.vexwork.vexarchitecture-alignment.project-discoverability.verifying-completed.a1-source-contract",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "A1's admitted outcome is complete: Project identity is source-owned, default Board semantics derive from Project + Work Registry truth, explicit custom Boards remain possible, source census derives discoverability membership, compatibility order cannot become membership, and stale checked-in discoverability is now a deterministic review failure. Generated consequence convergence and final repository green remain A2/A4 obligations, not A1 WorkState.",
+              "actorRef": "role.vexwork.vexarchitecture-alignment-author",
+              "sourceRefs": [
+                "github.pull.vexwork.210.comment.6577601830",
+                "docs/foundation/PROJECTS.md",
+                "docs/foundation/WORK-BOARD.md",
+                "src/core/project-registry.mjs",
+                "src/core/work-board.mjs",
+                "scripts/build-project-registry.mjs",
+                "package.json"
+              ],
+              "createdAt": "2026-11-02T12:51:51.001Z"
+            }
+          ]
+        },
+        {
+          "workRef": "work.vexwork.vexarchitecture-alignment.relationship-attention-healing",
+          "label": "Surface unresolved relationship closure without creating a second lifecycle",
+          "purpose": "When deterministic convergence is temporarily impossible because source custody, provider state or another exact predicate is held, derive read-only attention from the unsatisfied relationship and clear it from evidence once the relationship converges; do not require Victor or a successor model to remember prose TODOs and do not turn Attention into WorkState or mutation authority.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "HIGH",
+          "parentWorkRefOrNull": "work.vexwork.vexarchitecture-alignment.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexwork.vexarchitecture-alignment.generated-consequence-reconciliation"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "projects/vexwork-vexarchitecture-alignment/README.md",
+            "projects/vexwork-vexarchitecture-alignment/architecture.contract.json",
+            "docs/foundation/DERIVED-ATTENTION.md",
+            "docs/foundation/ATTENTION-QUEUE.md",
+            "docs/foundation/PROJECT-RECONCILIATION.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [
+            "process.vexwork.promote-derived-concern",
+            "process.vexwork.quality-review"
+          ],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-11-02T06:50:00.000Z",
+          "updatedAt": "2026-11-02T06:50:00.000Z",
+          "transitionHistory": []
+        },
+        {
+          "workRef": "work.vexwork.vexarchitecture-alignment.vexboard-projection-alignment",
+          "label": "Project aligned VexWork relationships into VexBoard after VexWork foundation proof",
+          "purpose": "Only after VexWork owns and proves the aligned relationship contracts, let VexBoard consume and visualize source owners, derived projections, unresolved closure and causal relationships without making VexBoard a healer, lifecycle owner or reason for VexWork to invent human-readable implementation identities.",
+          "workClass": "TASK",
+          "state": "WAITING_DEPENDENCIES",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "NORMAL",
+          "parentWorkRefOrNull": "work.vexwork.vexarchitecture-alignment.outcome",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexwork.vexarchitecture-alignment.end-to-end-foundation-proof"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "projects/vexwork-vexarchitecture-alignment/README.md",
+            "projects/vexwork-vexarchitecture-alignment/architecture.contract.json",
+            "docs/foundation/WORKGRAPH.md",
+            "vexboard/index.html",
+            "src/core/vexboard-source-projectors.mjs",
+            "test/vexboard-source-projectors.test.mjs",
+            "repo.vexlife-android:architecture/vexarchitecture/REFINED-BOUNDARIES.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [
+            "process.vexwork.quality-review"
+          ],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-11-02T06:50:00.000Z",
+          "updatedAt": "2026-11-02T06:50:00.000Z",
+          "transitionHistory": []
+        }
+      ],
+      "lanes": [
+        {
+          "laneRef": "lane.work.intake",
+          "label": "Intake",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.planned",
+          "label": "Planned",
+          "workRefs": [
+            "work.vexwork.vexarchitecture-alignment.end-to-end-foundation-proof",
+            "work.vexwork.vexarchitecture-alignment.relationship-attention-healing",
+            "work.vexwork.vexarchitecture-alignment.vexboard-projection-alignment"
+          ]
+        },
+        {
+          "laneRef": "lane.work.ready",
+          "label": "Ready",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.active",
+          "label": "Active",
+          "workRefs": [
+            "work.vexwork.vexarchitecture-alignment.outcome",
+            "work.vexwork.vexarchitecture-alignment.generated-consequence-reconciliation"
+          ]
+        },
+        {
+          "laneRef": "lane.work.waiting",
+          "label": "Waiting",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.needs-human",
+          "label": "Needs Human",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.verify",
+          "label": "Verify",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.attention",
+          "label": "Attention",
+          "workRefs": []
+        },
+        {
+          "laneRef": "lane.work.done",
+          "label": "Done",
+          "workRefs": [
+            "work.vexwork.vexarchitecture-alignment.map-current-contracts",
+            "work.vexwork.vexarchitecture-alignment.project-discoverability-contract"
+          ]
+        },
+        {
+          "laneRef": "lane.work.archive",
+          "label": "Archive",
+          "workRefs": []
+        }
+      ],
+      "summary": {
+        "workItemCount": 7,
+        "openWorkItemCount": 5,
+        "outcomeCount": 1,
+        "taskCount": 6,
+        "defectCount": 0,
+        "potentialCount": 0,
+        "needsHumanCount": 0,
+        "completedCount": 2
+      },
+      "rootItems": [
+        {
+          "workRef": "work.vexwork.vexarchitecture-alignment.outcome",
+          "label": "VexWork VexArchitecture Alignment",
+          "purpose": "Make VexWork scale through explicit, source-addressable and validator-visible relationships rather than remembered aggregate edits: align VexWork foundations with the accepted VexArchitecture pattern of one semantic owner, bounded projections, derived consequences, fail-closed invalid relationships and truthful reconciliation, then prove a newly formed Project cannot silently disappear from canonical navigation.",
+          "workClass": "OUTCOME",
+          "state": "RUNNING",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": null,
+          "childWorkRefs": [
+            "work.vexwork.vexarchitecture-alignment.end-to-end-foundation-proof",
+            "work.vexwork.vexarchitecture-alignment.generated-consequence-reconciliation",
+            "work.vexwork.vexarchitecture-alignment.map-current-contracts",
+            "work.vexwork.vexarchitecture-alignment.project-discoverability-contract",
+            "work.vexwork.vexarchitecture-alignment.relationship-attention-healing",
+            "work.vexwork.vexarchitecture-alignment.vexboard-projection-alignment"
+          ],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-android",
+            "repo.vexlife-prod"
+          ],
+          "sourceRefs": [
+            "project.vexwork.vexarchitecture-alignment",
+            "projects/vexwork-vexarchitecture-alignment/architecture.contract.json",
+            "projects/vexwork-vexarchitecture-alignment/README.md",
+            "human.design.vexwork.vexarchitecture-alignment.20261101",
+            "github.commit.vexlife-android.66c866dea6a8dd78e2946da88715c4deb78c1847",
+            "github.commit.vexlife-prod.20919f21578eeff9d2e1d513a00e0cd66ecd72ea"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.form-project",
+          "nextProcessRefs": [],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-11-02T06:50:00.000Z",
+          "updatedAt": "2026-11-02T06:50:00.000Z",
+          "transitionHistory": []
+        }
+      ]
     }
   ],
   "parkingLot": {
     "items": [
+      {
+        "workRef": "work.vexlife.new-beginnings.later.settings-capability-mapping",
+        "label": "Later — source-map Settings capabilities",
+        "purpose": "After the first browser/Conversation circuit is real, map Context Window, RAM/resource projection, reasoning visibility, accessible directories, Continuity Mode, Dream Sync and clean-chat/memory controls to their existing rightful source owners. Do not infer backend semantics from the screenshot labels or combine destructive effects merely because one visual button does.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "NORMAL",
+        "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
+        "childWorkRefs": [],
+        "dependencyRefs": [],
+        "repositoryRefs": [
+          "repo.vexlife-prod",
+          "repo.vexlife"
+        ],
+        "sourceRefs": [
+          "human.design.vexlife.new-beginnings.initial-engagement.20261101",
+          "project.vexlife.interface-refinement"
+        ],
+        "formationProcessRefOrNull": null,
+        "nextProcessRefs": [],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "createdAt": "2026-11-02T02:28:00.000Z",
+        "updatedAt": "2026-11-02T02:28:00.000Z",
+        "transitionHistory": [],
+        "graphRef": "workgraph.vexwork.foundation"
+      },
       {
         "workRef": "work.vexboard.vexstream-origin-roundtrip-review",
         "label": "Independent review — VexStream Origin round-trip architecture",
