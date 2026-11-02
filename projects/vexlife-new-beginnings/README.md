@@ -295,93 +295,41 @@ The new Project asks how those earned truths compose in a fresh product containe
 
 ## Current execution map
 
-This Project carries progress against the construction sequence so a fresh instance can locate itself without predecessor-chat reconstruction.
-
 ~~~text
 P0 · clean repository foundation
+
   [DONE] repository front door
          VexLife-Prod PR #1
-         merge 2fd6674a425919bf8696ea36dadd7d773cbd76a3
 
-  [RUNNING] compiler-constrained semantic Blueprint practicum
+  [ACCEPTED] semantic contract + rooted Workspace Blueprint
+             VexLife-Prod PR #2
+             merge c9aca940a49cb2e828ecfbd4be726f3553bf0063
 
-            [ACCEPTED] pure-Kotlin semantic contract + rooted Workspace Blueprint
-                       VexLife-Prod PR #2
-                       merge c9aca940a49cb2e828ecfbd4be726f3553bf0063
-                       tree  4e6e74255bb444d2adfbd991ddd6c1fba0049fb0
-                       Kotlin 2.4.20 JVM/JS proof PASS
-                       accepted-main tree identity PASS
+  [ACCEPTED] Compose reference realization
+             VexLife-Prod PR #4
+             merge 1264be62324878126ade9ad37da33db3097aad45
+             tree  aeb6c6977fa3b5772854b1c4fe21ec1095513d06
+             root JVM/JS proof PASS
+             reference:compose JVM proof PASS
 
-            [CURRENT / PROOF] Compose reference realization
-                              VexLife-Prod PR #4
-                              A001 head 68779f09bd9614ad6c9252951cf90e32b1c4c8b4
-                              A001 RETURN sha256 890e854c307a0c85b39e0ba1b1f4ced6994b048f4bb666a8268303616242dda3
-                              SAFE_FAILURE before Kotlin source compile:
-                              missing Google Maven dependency repository
+  [CURRENT / NEXT] deterministic portable renderer contract
+                   one renderer-neutral presentation syntax / IR
+                   -> Compose realization
+                   -> native HTML/CSS realization
 
-                              A002 head 8f7ff7b99dacb4c6324f71b78b52c34ac352f288
-                              A002 RETURN sha256 64319ab72d1681107fec21a512ab59bc48f627378cb0bc0b15134bf3a24e55d5
-                              SAFE_FAILURE at COMPILE_KOTLIN_JVM:
-                              explicit layout.weight import resolved to internal symbol
-
-                              A003 head da25faf7587b8db68f1ce9ff1dd7001cc7e16069
-                              A003 RETURN sha256 7177ef7f128b941c3bcdd26ee7acf9ece69e4b3a892b1b1ae89c0e8f2b32988e
-                              JVM Compose PASS
-                              JS SAFE_FAILURE:
-                              root-level Compose compiler contaminated portable semantic JS target
-
-                              A004 head 4a3e71fd9b6c0c57311202fec1790a9f3efd3ffc
-                              A004 tree aeb6c6977fa3b5772854b1c4fe21ec1095513d06
-
-                              [FORMED] compiler-visible Blueprint element handles
-                              [FORMED] tighter Family generic compiler fences aligned with current #209
-                              [FORMED] Family.Parameter identity carried Control -> Effect
-                              [FORMED] Compose reference isolated to JVM-only reference:compose module
-                              [FORMED] portable root KMP restored Compose-free
-                              [FORMED] VexUiElementRef consistent copy visibility
-                              [HOST PROOF FORMED] artifact.vexlife-prod.p0.compose-reference-proof.a004.sha256.c4f5f9fa8b6cb3aed98491576fce2f3db9b77787558a0850782f060145b2ec48
-                                                   root JVM + JS semantic proof
-                                                   reference:compose JVM compile + test
-                                                   read-only; no push
-                                                   RETURN required before threshold claim
-
-            [WAITING] deterministic portable renderer contract
-
-P1 · intended interface
+P1
   [WAITING] web-native VexLife workspace
-  [WAITING] public GitHub nested-browser practicum / Vextreme Terrain
+  [WAITING] public GitHub nested-browser practicum
 
-P2 · Vex perception + relationship
-  [WAITING] current browser/DOM context projection
+P2
+  [WAITING] browser/DOM context projection
   [WAITING] canonical Conversation + Vex reintegration
 
-P3 · whole lived circuit
-  [WAITING] nested browser -> current context -> one real Vex turn -> durable Conversation
-
-Later
-  [PARKED] source-map Settings capabilities after the first whole browser/Conversation circuit
+P3
+  [WAITING] lived browser/context-aware Vex proof
 ~~~
 
-Interpretation:
-
-~~~text
-DONE / ACCEPTED
-  accepted source/effect remains valid
-
-RUNNING
-  current admitted Work still has unfinished mapped sub-edges
-
-CURRENT / NEXT
-  exact unconsumed causal edge inside that Work
-
-WAITING
-  dependency-gated by earlier mapped work
-
-PARKED
-  intentionally not part of current completion path
-~~~
-
-The map is continuity, not a second lifecycle owner. Canonical WorkState remains in the Workgraph segment.
+The current map is navigation. PR checkpoint comments preserve immutable threshold history.
 
 ## Instance checkpoint lineage
 
