@@ -72,7 +72,7 @@
       "workRef": "work.vexarchitecture.public-archive.rendered-lived-review",
       "parentWorkRefOrNull": "work.vexarchitecture.public-archive.outcome",
       "label": "Complete rendered and lived visual review",
-      "purpose": "Review and refine the public VexArchitecture builder guide until every diagram/sentence claims only relationships, sequences, generality, and truth owned by accepted source; current fidelity correction is Vextreme PR #562, while VexLife-Android #210 has already currentized the rightful architecture README after #209 merge.",
+      "purpose": "Review and refine the accepted VexArchitecture public guide as a lived experience: preserve source-owned relationship fidelity while ensuring narrow-screen readers can follow the causal order without horizontal scrolling, unnecessary accordion interaction, or confusion between sequential runtime causality and supporting/cross-cutting/conditional architecture relationships.",
       "workClass": "TASK",
       "state": "RUNNING",
       "workDisposition": "ACTIVE",
@@ -96,7 +96,8 @@
         "https://github.com/vgong24/Vextreme/actions/runs/41439232364",
         "https://github.com/vgong24/Vextreme/actions/runs/41439233703",
         "github.pull.vextreme.562",
-        "github.commit.vexlife-android.4d357c48eb5a25797513708f800e61a87e0195c0"
+        "github.commit.vexlife-android.4d357c48eb5a25797513708f800e61a87e0195c0",
+        "human.review.vexarchitecture-public-archive.narrow-screen.20261102"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [
@@ -105,7 +106,7 @@
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-11-02T06:59:11.000Z",
-      "updatedAt": "2026-11-02T12:12:00.000Z"
+      "updatedAt": "2026-11-02T12:22:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
