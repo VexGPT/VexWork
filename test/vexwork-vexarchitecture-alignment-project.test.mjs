@@ -411,3 +411,14 @@ test('A1 source census is an adapter over validated source rather than a new mem
   assert.match(classification.reason, /v1 registryVersion historically mirrors Project count/i);
   assert.match(classification.reason, /not membership\/currentness authority/i);
 });
+
+
+test('A1 makes stale Project discoverability a deterministic review failure before aggregate repair', () => {
+  const packageJson = JSON.parse(fs.readFileSync(new URL('../package.json', import.meta.url), 'utf8'));
+  assert.match(packageJson.scripts['review:deterministic'], /project-registry:check/);
+  assert.equal(
+    packageJson.scripts['review:deterministic'].indexOf('project-registry:check')
+      < packageJson.scripts['review:deterministic'].indexOf('workgraph:check'),
+    true,
+  );
+});

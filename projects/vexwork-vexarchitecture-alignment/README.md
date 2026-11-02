@@ -854,6 +854,36 @@ The current checked-in registry is expected to remain stale until the live #182/
 custody is reconciled. A2 owns making this generated consequence part of ordinary repository
 currentness after the shared source is safely converged.
 
+#### A1 fail-closed repository gate
+
+The source-derived census now participates in ordinary deterministic review:
+
+~~~text
+npm run review
+  -> test:coverage
+  -> coverage:source
+  -> project-registry:check
+  -> workgraph:check
+  -> structural check
+  -> dashboard:check
+  -> workspace:check
+~~~
+
+On the current candidate, `project-registry:check` is expected to stop the review before later stale
+aggregate checks because the checked-in v1 registry still omits current source Projects.
+
+That red state is intentional evidence of the pre-existing gap:
+
+~~~text
+SOURCE PROJECT PRESENT
++ DERIVED MEMBERSHIP EXPECTED
++ CHECKED-IN DISCOVERABILITY STALE
+-> FAIL AT PROJECT REGISTRY BOUNDARY
+~~~
+
+A1 therefore makes omission non-silent without racing #182/#193. A2 owns reconciling the generated
+registry/public Workgraph/workspace consequences and turning the deterministic review green.
+
 ### A2 — generated consequence ownership + integration reconciliation
 
 ~~~
