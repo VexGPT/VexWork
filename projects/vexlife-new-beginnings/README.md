@@ -370,11 +370,14 @@ VEXWEB-F0  vocabulary pressure  [CURRENT / PROOF]
   -> JVM compile/test PASS
   -> JS SAFE_FAILURE: @JvmInline leaked JVM representation into commonMain
   -> A002 head 68e0205650e0ec9502174beefc5adb1030994471
-  -> A002 tree b43d1dbc595c38f1485bf8b0474f1b34754e0739
-  -> typed source refs retained as platform-neutral data classes
-  -> interactive nodes require explicit binding
-  -> local/fallback targets must resolve in the same Surface
-  -> exact A002 JVM/JS proof is next
+  -> A002 RETURN sha256 899e5f9cc0fcd7646007fe003a7fffe785bda44bf6b492ea679bfff153e190b5
+  -> JVM/JS compile + tests PASS
+  -> threshold review found source-parent vs manifestation-containment collapse risk
+  -> A003 head 898789f1082dabff8278eca7581f694a33683274
+  -> A003 tree 29c7a57462a8795f209d0c9f7436901ce6c5b563
+  -> sourceParentRef preserves Blueprint parent
+  -> containerRef preserves VexWeb manifestation containment
+  -> exact A003 JVM/JS proof is next
 
 VEXWEB-F1  compiler-visible authoring
   -> Kotlin relationships bind Blueprint element identity + meaningful presentation parameters
