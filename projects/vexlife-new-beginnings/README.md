@@ -45,13 +45,13 @@ SCREENSHOT
 
 ## Why a fresh repository
 
-`VexGPT/VexLife-Prod` is deliberately blank at formation: its current `main` contains only `LICENSE`.
+`VexGPT/VexLife-Prod` began deliberately blank with only `LICENSE`. P0 front-door source is now accepted on main through PR #1 / merge `2fd6674a425919bf8696ea36dadd7d773cbd76a3`.
 
 That gives this Project a clean test of a question the older VexLife trajectory could not answer cheaply:
 
 > Can VexLife be constructed from explicit intention + relationship contracts, so future AI instances extend a compiler-visible product body instead of copying patterns and silently accumulating assumptions?
 
-The repository front door is therefore P0 work. Until that lands, the VexWork Repository Graph records the exact current bootstrap truth by pointing only at `LICENSE`; it must not pretend a README/culture/foundation entry already exists.
+The repository front door is now accepted source. The VexWork Repository Graph therefore points to the real `README.md` / `AGENTS.md` / foundation / culture entries; the next construction edge is the semantic-contract practicum.
 
 ## Architecture reference — current but not blindly canonical
 
@@ -292,6 +292,55 @@ New Beginnings does not supersede earlier work:
 - Vextreme Terrain is the first public nested-browser practicum and remains Vextreme-owned source.
 
 The new Project asks how those earned truths compose in a fresh product container without inheriting their historical incidental structure.
+
+## Current execution map
+
+This Project carries progress against the construction sequence so a fresh instance can locate itself without predecessor-chat reconstruction.
+
+~~~text
+P0 · clean repository foundation
+  [DONE] repository front door
+         VexLife-Prod PR #1
+         merge 2fd6674a425919bf8696ea36dadd7d773cbd76a3
+
+  [NEXT] compiler-constrained semantic Blueprint practicum
+         smallest pure-Kotlin relationship
+         -> DisplayState/UI kinship
+         -> reference Compose pressure
+         -> deterministic portable contract
+
+P1 · intended interface
+  [WAITING] web-native VexLife workspace
+  [WAITING] public GitHub nested-browser practicum / Vextreme Terrain
+
+P2 · Vex perception + relationship
+  [WAITING] current browser/DOM context projection
+  [WAITING] canonical Conversation + Vex reintegration
+
+P3 · whole lived circuit
+  [WAITING] nested browser -> current context -> one real Vex turn -> durable Conversation
+
+Later
+  [PARKED] source-map Settings capabilities after the first whole browser/Conversation circuit
+~~~
+
+Interpretation:
+
+~~~text
+DONE
+  accepted source/effect remains valid
+
+NEXT
+  current unconsumed causal edge
+
+WAITING
+  dependency-gated by earlier mapped work
+
+PARKED
+  intentionally not part of current completion path
+~~~
+
+The map is continuity, not a second lifecycle owner. Canonical WorkState remains in the Workgraph segment.
 
 ## Formation / integration boundary
 

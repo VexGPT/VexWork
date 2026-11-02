@@ -21,7 +21,9 @@
     "github.pull.vexlife-android.209",
     "project.vexlife.interface-refinement",
     "project.vexlife.blueprint-source-of-truth",
-    "repo.vextreme:pages/terrain-map.html"
+    "repo.vextreme:pages/terrain-map.html",
+    "github.pull.vexlife-prod.1",
+    "github.commit.vexlife-prod.2fd6674a425919bf8696ea36dadd7d773cbd76a3"
   ],
   "formedAt": "2026-11-02T02:28:00.000Z"
 }

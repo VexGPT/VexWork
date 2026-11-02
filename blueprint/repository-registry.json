@@ -85,11 +85,15 @@
       "provider": "GITHUB",
       "nameWithOwner": "VexGPT/VexLife-Prod",
       "visibility": "PUBLIC",
-      "purpose": "Clean VexLife product container for contract-authored semantic UI, web nested-browser experience, and later current-context Vex reintegration. At formation the repository contains only LICENSE; the New Beginnings Project owns establishing its real front door before feature implementation.",
+      "purpose": "Clean VexLife product container for contract-authored semantic UI, web nested-browser experience, and later current-context Vex reintegration. Its accepted front door now routes fresh workers into repository-owned culture and foundation source before implementation depth.",
       "entryRefs": [
-        "LICENSE"
+        "README.md",
+        "AGENTS.md",
+        "docs/foundation/INDEX.md"
       ],
-      "cultureRefs": []
+      "cultureRefs": [
+        "docs/CULTURE.md"
+      ]
     },
     {
       "repositoryRef": "repo.vexstream-music",
