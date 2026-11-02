@@ -381,7 +381,17 @@ P0_SEMANTIC_BLUEPRINT_CANDIDATE_FORMED
   VexLife-Prod PR #2
   checkpoint comment 6568211912
   candidate 157f88a88afbd3ee925bb95af19a70aa650a6246
-  exact Kotlin 2.4.20 repository proof still held
+
+P0_SEMANTIC_CONTRACT_EXACT_PROOF_PASS
+  VexLife-Prod PR #2
+  checkpoint comment 6568749917
+  proven tree 4e6e74255bb444d2adfbd991ddd6c1fba0049fb0
+
+P0_SEMANTIC_CONTRACT_ACCEPTED
+  VexLife-Prod PR #2
+  checkpoint comment 6568760152
+  merge c9aca940a49cb2e828ecfbd4be726f3553bf0063
+  post-merge tree exact
 ~~~
 
 Permanent continuation law:
