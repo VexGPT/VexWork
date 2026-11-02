@@ -229,6 +229,49 @@ The desired architecture therefore does not merely detect forgotten synchronizat
 the need for that synchronization where the relationship is derivable, constrains the remaining
 authoring boundary where it is not, and keeps any genuinely held closure visible.
 
+
+## Current static-source classification
+
+The alignment contract classifies today's static sources by *why they exist*, not by file extension.
+
+~~~text
+RIGHTFUL_SEMANTIC_SOURCE
+  blueprint/work-registry.json
+  blueprint/project-planning-registry.json
+  blueprint/project-reconciliation-registry.json
+
+RIGHTFUL_RELATION_SOURCE
+  blueprint/repository-registry.json
+  blueprint/process-registry.json
+
+RIGHTFUL_COMPOSITION_POLICY_SOURCE
+  workgraphs/composition.json
+  (policy/currentness; segment membership stays source-derived)
+
+DERIVATION_CANDIDATE
+  blueprint/project-registry.json
+
+GENERATED_CONSEQUENCE
+  workgraphs/public.json
+  public/workspace.json
+  public/work-dashboard.json
+~~~
+
+This classification is intentionally asymmetric.
+
+Repository/process membership is an admission decision across independently owned sources, so local
+file discovery cannot decide it. Work/planning/reconciliation registries define portable semantic
+vocabulary. Project membership has different pressure: VexWork itself owns a uniform source-managed
+Project population whose definition/Board paths and stable refs are mechanically observable.
+
+The question is therefore never "can this JSON be generated?" It is:
+
+> Would generation preserve the same independently authored meaning, or would it erase a decision
+> that has its own rightful owner?
+
+A later implementation may refine this inventory when real pressure contradicts it; it must preserve
+the classification reason rather than copying the label by precedent.
+
 ## Machine-readable alignment contract
 
 `projects/vexwork-vexarchitecture-alignment/architecture.contract.json` is the Project-local constrained map for this refactor.

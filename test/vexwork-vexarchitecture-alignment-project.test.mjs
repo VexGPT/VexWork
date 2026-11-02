@@ -162,3 +162,26 @@ test('patient-zero discoverability gap cannot be narrowed away from the larger a
   );
   assert.equal(vexboard.workRef, 'work.vexwork.vexarchitecture-alignment.vexboard-projection-alignment');
 });
+
+
+test('static source classification distinguishes authored meaning from derivable consequences', () => {
+  const byRef = new Map(
+    architectureContract.sourceClassifications.map((entry) => [entry.sourceRef, entry]),
+  );
+
+  assert.equal(byRef.get('blueprint/work-registry.json').classification, 'RIGHTFUL_SEMANTIC_SOURCE');
+  assert.equal(byRef.get('blueprint/repository-registry.json').classification, 'RIGHTFUL_RELATION_SOURCE');
+  assert.equal(byRef.get('blueprint/process-registry.json').classification, 'RIGHTFUL_RELATION_SOURCE');
+  assert.equal(byRef.get('blueprint/project-planning-registry.json').classification, 'RIGHTFUL_SEMANTIC_SOURCE');
+  assert.equal(byRef.get('blueprint/project-reconciliation-registry.json').classification, 'RIGHTFUL_SEMANTIC_SOURCE');
+  assert.equal(byRef.get('workgraphs/composition.json').classification, 'RIGHTFUL_COMPOSITION_POLICY_SOURCE');
+
+  assert.equal(byRef.get('blueprint/project-registry.json').classification, 'DERIVATION_CANDIDATE');
+  assert.equal(byRef.get('workgraphs/public.json').classification, 'GENERATED_CONSEQUENCE');
+  assert.equal(byRef.get('public/workspace.json').classification, 'GENERATED_CONSEQUENCE');
+  assert.equal(byRef.get('public/work-dashboard.json').classification, 'GENERATED_CONSEQUENCE');
+
+  for (const entry of architectureContract.sourceClassifications) {
+    assert.equal(entry.reason.trim().length > 0, true, entry.sourceRef);
+  }
+});

@@ -479,5 +479,57 @@
       ],
       "patientZeroRefs": []
     }
+  ],
+  "sourceClassifications": [
+    {
+      "sourceRef": "blueprint/work-registry.json",
+      "classification": "RIGHTFUL_SEMANTIC_SOURCE",
+      "reason": "The Work lifecycle grammar, classes, authority/effect dispositions and Board-lane coverage are intentionally authored VexWork semantics; they are not consequences of enumerating Work items."
+    },
+    {
+      "sourceRef": "blueprint/repository-registry.json",
+      "classification": "RIGHTFUL_RELATION_SOURCE",
+      "reason": "Repository admission, external identity, entry routes and culture references are intentional cross-repository relations and cannot be truthfully derived from the VexWork filesystem alone."
+    },
+    {
+      "sourceRef": "blueprint/process-registry.json",
+      "classification": "RIGHTFUL_RELATION_SOURCE",
+      "reason": "A reusable process is deliberately admitted and may be owned by another repository; file presence does not imply process admission or VexWork navigation."
+    },
+    {
+      "sourceRef": "blueprint/project-planning-registry.json",
+      "classification": "RIGHTFUL_SEMANTIC_SOURCE",
+      "reason": "Planning event classes and non-collapse laws define portable planning meaning rather than enumerating current Project instances."
+    },
+    {
+      "sourceRef": "blueprint/project-reconciliation-registry.json",
+      "classification": "RIGHTFUL_SEMANTIC_SOURCE",
+      "reason": "Reconciliation dispositions and provider/proof vocabulary define a bounded interpretation contract rather than restating current provider observations."
+    },
+    {
+      "sourceRef": "workgraphs/composition.json",
+      "classification": "RIGHTFUL_COMPOSITION_POLICY_SOURCE",
+      "reason": "Graph identity, canonical sourceRefs and compatibility ordering are explicit composition/migration policy; current segment membership itself is source-derived from workgraphs/segments/*.json and must not be duplicated here."
+    },
+    {
+      "sourceRef": "blueprint/project-registry.json",
+      "classification": "DERIVATION_CANDIDATE",
+      "reason": "For source-managed local Projects, definition path, Board path, stable ProjectRef and ordinary shared Workgraph relation are substantially derivable from project-local source; current manual membership is the observed omission/synchronization pressure."
+    },
+    {
+      "sourceRef": "workgraphs/public.json",
+      "classification": "GENERATED_CONSEQUENCE",
+      "reason": "Accepted Workgraph Composition already defines this as the deterministic canonical value generated from segment source plus composition policy."
+    },
+    {
+      "sourceRef": "public/workspace.json",
+      "classification": "GENERATED_CONSEQUENCE",
+      "reason": "The public workspace is deterministically built from Project discoverability, Project definitions, Board views and canonical Workgraph truth."
+    },
+    {
+      "sourceRef": "public/work-dashboard.json",
+      "classification": "GENERATED_CONSEQUENCE",
+      "reason": "The dashboard is a checked-in read projection built from Foundation Project/Board/Parking Lot truth and has no independent semantic authority."
+    }
   ]
 }
