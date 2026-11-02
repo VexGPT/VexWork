@@ -43,9 +43,7 @@ projects/vexwork-vexarchitecture-alignment/README.md
 projects/vexwork-vexarchitecture-alignment/architecture.contract.json
 ```
 
-That Project is the current source-managed **evolution trajectory and dogfood surface**. It is not a
-replacement Foundation owner and its candidate conclusions do not override the accepted Foundation
-sources above.
+That Project is the current source-managed **evolution trajectory and dogfood surface**. It is not a replacement Foundation owner, and its candidate conclusions do not override the accepted Foundation sources above.
 
 ```text
 ACTIVE ARCHITECTURE EVOLUTION
