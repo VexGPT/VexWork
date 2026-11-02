@@ -31,6 +31,36 @@ This is the current architecture map. Follow the exact foundation whose question
 
 `FOUNDATION` means the initial portable contract exists in this repository. It does not mean every production integration is complete.
 
+## Current architecture evolution
+
+When the implicated question is **VexWork's own architecture**—especially repeated relationship
+restatement, source/projection drift, generated-consequence ownership, Project discoverability,
+default Board duplication, or how accepted VexWork relationships should later project into
+VexBoard—descend to the active alignment Project:
+
+```text
+projects/vexwork-vexarchitecture-alignment/README.md
+projects/vexwork-vexarchitecture-alignment/architecture.contract.json
+```
+
+That Project is the current source-managed **evolution trajectory and dogfood surface**. It is not a
+replacement Foundation owner and its candidate conclusions do not override the accepted Foundation
+sources above.
+
+```text
+ACTIVE ARCHITECTURE EVOLUTION
+!= ACCEPTED FOUNDATION AUTHORITY
+
+alignment Project
+-> maps / pressures / proves proposed evolution
+
+accepted Foundation source
+-> remains current authority until an accepted change lands
+```
+
+A fresh instance should be able to discover the trajectory here rather than reconstructing it from a
+provider PR number, predecessor chat, or the public Projects projection.
+
 ## Descent
 
 ```text
@@ -94,6 +124,10 @@ hosted ChatGPT / local Vex / assisted host action / VexRelay-style handoff
 
 fresh human/agent entry / source-grounded assumptions / inverse reflection / successor takeover
 -> VEXWORK-ORIENTATION.md
+
+VexWork architecture evolution / repeated relationship restatement / discoverability-projection drift / generated consequence ownership / later VexBoard alignment
+-> ../../projects/vexwork-vexarchitecture-alignment/README.md
+-> ../../projects/vexwork-vexarchitecture-alignment/architecture.contract.json
 
 testing / regression / coverage / stability
 -> ../process/QUALITY-REVIEW.md
