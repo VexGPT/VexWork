@@ -84,7 +84,11 @@
     "github.pull.vexwork.203.comment.6570078352",
     "github.pull.vexlife-prod.10",
     "github.commit.vexlife-prod.9a318a093527a5f6ce61fd176fc7ded3b487a09e",
-    "artifact.vexlife-prod.vexweb.f1.proof.a001.sha256.36bb5da3e33cd3ed046effc046cd6bec367e6874dc781fb46f927d469da174b8"
+    "artifact.vexlife-prod.vexweb.f1.proof.a001.sha256.36bb5da3e33cd3ed046effc046cd6bec367e6874dc781fb46f927d469da174b8",
+    "artifact.vexlife-prod.vexweb.f1.proof.a001.return.sha256.3da3493468bc36d7db608205c2c74ee33d4407a621329dfccbd17b574d5db00f",
+    "github.pull.vexlife-prod.10.comment.6570191802",
+    "github.commit.vexlife-prod.069591b2f4a1570da2233c04c955ff42bd5ef049",
+    "human.design.vexweb.split-scalability.20261101"
   ],
   "formedAt": "2026-11-02T02:28:00.000Z"
 }
