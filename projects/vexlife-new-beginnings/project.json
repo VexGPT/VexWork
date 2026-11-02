@@ -65,7 +65,10 @@
     "github.pull.vexlife-prod.6",
     "github.commit.vexlife-prod.017ab36b29b5ca759f906c46eb65102a73e620bb",
     "github.pull.vexlife-prod.6.comment.6569754915",
-    "human.authorization.vexweb.f0.20261101"
+    "human.authorization.vexweb.f0.20261101",
+    "github.pull.vexlife-prod.7",
+    "github.commit.vexlife-prod.66253c7188d551d79e89356eef0897da168dde86",
+    "artifact.vexlife-prod.vexweb.f0.proof.a001.sha256.866f6fdd27de0e99f5bf2ab48032b3d0e5cb2ffebdbeabbdf3f7c7e15bc41025"
   ],
   "formedAt": "2026-11-02T02:28:00.000Z"
 }
