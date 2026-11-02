@@ -1,0 +1,140 @@
+{
+  "schemaVersion": "vexwork.workgraph-segment/v1",
+  "segmentRef": "segment.vexarchitecture.public-archive",
+  "graphRef": "workgraph.vexwork.foundation",
+  "items": [
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexarchitecture.public-archive.outcome",
+      "parentWorkRefOrNull": null,
+      "label": "VexArchitecture Public Archive",
+      "purpose": "Preserve the first accepted executable VexArchitecture stability point as a public historical witness while keeping current behavior, provenance, public projection, and unfinished visual acceptance in their rightful owners.",
+      "workClass": "OUTCOME",
+      "state": "RUNNING",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vextreme",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "project.vexarchitecture.public-archive",
+        "projects/vexarchitecture-public-archive/README.md",
+        "github.pull.vexlife-android.209",
+        "github.commit.vexlife-android.66c866dea6a8dd78e2946da88715c4deb78c1847",
+        "github.pull.vextreme.560",
+        "github.commit.vextreme.3903616395c7b9312a51f91f3a12bbcaeb37afb0",
+        "repo.vextreme:pages/vexarchitecture-first-stable-body.html"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-02T06:59:11.000Z",
+      "updatedAt": "2026-11-02T06:59:11.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexarchitecture.public-archive.accepted-record",
+      "parentWorkRefOrNull": "work.vexarchitecture.public-archive.outcome",
+      "label": "Preserve the accepted VexArchitecture public record",
+      "purpose": "Record the already-completed Vextreme Development Standard origin page and its exact lineage to VexLife-Android PR #209 without turning the archive page into current architecture authority.",
+      "workClass": "TASK",
+      "state": "COMPLETED",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vextreme",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "github.pull.vexlife-android.209",
+        "github.commit.vexlife-android.66c866dea6a8dd78e2946da88715c4deb78c1847",
+        "github.pull.vextreme.560",
+        "github.commit.vextreme.3903616395c7b9312a51f91f3a12bbcaeb37afb0",
+        "repo.vextreme:pages/vexarchitecture-first-stable-body.html",
+        "repo.vextreme:data/arcs-v2.json"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-02T06:59:11.000Z",
+      "updatedAt": "2026-11-02T06:59:11.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexarchitecture.public-archive.rendered-lived-review",
+      "parentWorkRefOrNull": "work.vexarchitecture.public-archive.outcome",
+      "label": "Complete rendered and lived visual review",
+      "purpose": "Inspect the accepted Vextreme page through a working desktop/mobile browser route, decide whether the composition truthfully carries the #209 milestone, and refine only if lived evidence earns a visual/source correction; A008/A009 remain visual-harness failures, not page failures.",
+      "workClass": "TASK",
+      "state": "READY",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexarchitecture.public-archive.accepted-record"
+      ],
+      "repositoryRefs": [
+        "repo.vextreme"
+      ],
+      "sourceRefs": [
+        "github.pull.vextreme.560",
+        "github.commit.vextreme.3903616395c7b9312a51f91f3a12bbcaeb37afb0",
+        "repo.vextreme:pages/vexarchitecture-first-stable-body.html",
+        "projects/vexarchitecture-public-archive/README.md"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [
+        "process.vexwork.quality-review"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-02T06:59:11.000Z",
+      "updatedAt": "2026-11-02T06:59:11.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexarchitecture.public-archive.vexwork-discoverability",
+      "parentWorkRefOrNull": "work.vexarchitecture.public-archive.outcome",
+      "label": "Register and expose the Project after shared custody releases",
+      "purpose": "Complete normal VexWork Project formation once the currently claimed Project Registry/public Workgraph/public workspace paths are released: register this Project, regenerate canonical public projections, and prove it appears exactly once without racing PR #182.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/vexarchitecture-public-archive/project.json",
+        "projects/vexarchitecture-public-archive/board.view.json",
+        "workgraphs/segments/vexarchitecture-public-archive.json",
+        "github.pull.vexwork.182",
+        "blueprint/project-registry.json",
+        "workgraphs/public.json",
+        "public/workspace.json"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [
+        "process.vexwork.form-project"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-02T06:59:11.000Z",
+      "updatedAt": "2026-11-02T06:59:11.000Z"
+    }
+  ],
+  "transitions": [],
+  "sourceRefs": [
+    "project.vexarchitecture.public-archive",
+    "projects/vexarchitecture-public-archive/README.md",
+    "github.commit.vexlife-android.66c866dea6a8dd78e2946da88715c4deb78c1847",
+    "github.commit.vextreme.3903616395c7b9312a51f91f3a12bbcaeb37afb0"
+  ],
+  "formedAt": "2026-11-02T06:59:11.000Z"
+}
