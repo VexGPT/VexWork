@@ -274,7 +274,7 @@ test('A0 completes its map claim and releases A1 without claiming PR-wide merge 
   );
 
   assert.equal(a0.state, 'COMPLETED');
-  assert.equal(a1.state, 'WAITING_TOOL');
+  assert.equal(a1.state, 'RUNNING');
   assert.deepEqual(a1.dependencyRefs, [a0.workRef]);
 
   const a0Completion = graph.transitions.find((entry) =>
