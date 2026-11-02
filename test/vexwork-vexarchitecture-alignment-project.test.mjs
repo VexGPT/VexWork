@@ -80,6 +80,8 @@ test('patient-zero closure is a named implementation edge, not a hard-coded Proj
 
 
 const architectureContract = read('projects/vexwork-vexarchitecture-alignment/architecture.contract.json');
+const newBeginningsProject = read('projects/vexlife-new-beginnings/project.json');
+const newBeginningsSegment = read('workgraphs/segments/vexlife-new-beginnings.json');
 
 test('alignment contract preserves the whole VexArchitecture intention instead of one patient-zero pattern', () => {
   assert.equal(architectureContract.schemaVersion, 'vexwork.vexarchitecture-alignment-contract/v1');
@@ -258,7 +260,7 @@ test('default Board projection is treated as derivable unless Project-specific v
 });
 
 
-test('A0 holds only the deterministic proof effect while A1 remains dependency-held', () => {
+test('A0 reopens only the review-discovered patient-zero repair while A1 remains dependency-held', () => {
   const a0 = graph.items.find((item) =>
     item.workRef === 'work.vexwork.vexarchitecture-alignment.map-current-contracts'
   );
@@ -266,18 +268,26 @@ test('A0 holds only the deterministic proof effect while A1 remains dependency-h
     item.workRef === 'work.vexwork.vexarchitecture-alignment.project-discoverability-contract'
   );
 
-  assert.equal(a0.state, 'WAITING_TOOL');
+  assert.equal(a0.state, 'RUNNING');
   assert.equal(a1.state, 'WAITING_DEPENDENCIES');
   assert.deepEqual(a1.dependencyRefs, [a0.workRef]);
 
-  const transition = graph.transitions.find((entry) =>
+  const proofHold = graph.transitions.find((entry) =>
     entry.transitionRef === 'transition.vexwork.vexarchitecture-alignment.map-current-contracts.waiting-tool.a0-proof'
   );
-  assert.ok(transition);
-  assert.equal(transition.priorState, 'RUNNING');
-  assert.equal(transition.nextState, 'WAITING_TOOL');
-  assert.equal(transition.sourceRefs.includes('source.vexrelay.current-contract/v1'), true);
-  assert.equal(transition.sourceRefs.includes('github.pull.vexwork.210.comment.6576031173'), true);
+  assert.ok(proofHold);
+  assert.equal(proofHold.priorState, 'RUNNING');
+  assert.equal(proofHold.nextState, 'WAITING_TOOL');
+
+  const repair = graph.transitions.find((entry) =>
+    entry.transitionRef === 'transition.vexwork.vexarchitecture-alignment.map-current-contracts.waiting-tool-running.a0-review-repair'
+  );
+  assert.ok(repair);
+  assert.equal(repair.priorState, 'WAITING_TOOL');
+  assert.equal(repair.nextState, 'RUNNING');
+  assert.equal(repair.sourceRefs.includes(
+    'artifact.vexwork.vexarchitecture-alignment.a0.source-owner-review.return.sha256.34418db3237f1c6023a36ebba02d9401b1614ef2e356a35a36f5f7fbedce816d'
+  ), true);
 });
 
 
@@ -349,4 +359,13 @@ test('alignment contract dogfoods orientation-to-evolution discoverability', () 
   assert.equal(demo.sourceRefs.includes('orientation.html'), true);
   assert.match(demo.visibleConsequence, /without knowing PR #210/i);
   assert.match(demo.notThis, /Foundation acceptance/i);
+});
+
+
+test('New Beginnings patient zero satisfies the Workgraph Segment provenance contract', () => {
+  assert.deepEqual(newBeginningsSegment.sourceRefs, [
+    'project.vexlife.new-beginnings',
+    'projects/vexlife-new-beginnings/README.md',
+  ]);
+  assert.equal(newBeginningsSegment.formedAt, newBeginningsProject.formedAt);
 });

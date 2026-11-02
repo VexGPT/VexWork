@@ -501,5 +501,10 @@
       ],
       "createdAt": "2026-11-02T05:24:00.000Z"
     }
-  ]
+  ],
+  "sourceRefs": [
+    "project.vexlife.new-beginnings",
+    "projects/vexlife-new-beginnings/README.md"
+  ],
+  "formedAt": "2026-11-02T02:28:00.000Z"
 }

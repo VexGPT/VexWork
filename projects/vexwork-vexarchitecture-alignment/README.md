@@ -710,9 +710,11 @@ VexBoard can make relationships perceptible. It must not become the truth/healin
 
 ### A0 — map + blueprint
 
-Current state: **WAITING_TOOL**. The source-grounded owner/process map, English target architecture, machine-readable full-intention contract, static-source classification, whole-foundation matrix, worked demonstrations, orientation discoverability and Board-view census are source-formed and reviewed.
+Current state: **RUNNING** after exact review-driven patient-zero repair.
 
-Focused deterministic proof is now earned against an exact provider-byte closure of the candidate:
+The source-grounded owner/process map, English target architecture, machine-readable full-intention contract, static-source classification, whole-foundation matrix, worked demonstrations, orientation discoverability and Board-view census remain source-formed and reviewed.
+
+Focused deterministic proof is retained:
 
 ~~~text
 17 exact prerequisite/source files
@@ -722,13 +724,40 @@ Focused deterministic proof is now earned against an exact provider-byte closure
 -> 17 / 17 PASS
 ~~~
 
-The remaining A0 predicate is the **whole-repository coexistence/stability floor**:
+The first whole-repository SourceOwner run also reached the exact candidate and executed `npm run review`. It produced:
 
 ~~~text
-npm run review
+candidate head/tree checks  PASS
+test:coverage              483 PASS / 2 FAIL
+failing tests              workgraph-composition-source #452 / #453
+first source failure       sourceRefs must be an array
 ~~~
 
-That broader command owns repository-wide tests, coverage floors, generated-currentness and coexistence. The focused PASS does not substitute for it. A0 therefore remains WAITING_TOOL for that exact remaining proof effect; this is not a source-correction signal.
+The failing source was not introduced by this PR. The exact fixed base and candidate carry the same
+`workgraphs/segments/vexlife-new-beginnings.json` blob, and the same composition source-adoption
+test. The patient-zero segment omitted both required segment-level fields:
+
+~~~text
+sourceRefs
+formedAt
+~~~
+
+The Project already authors the needed identity and formation time, so A0 reopens only to repair that
+rightful segment boundary from existing source:
+
+~~~text
+project.vexlife.new-beginnings
+projects/vexlife-new-beginnings/README.md
+formedAt = 2026-11-02T02:28:00.000Z
+~~~
+
+The outer native carrier also retained the canonical inner SAFE_FAILURE but could not consume it
+because the pre-review inner result carried `candidateBinding=null` while its source block still
+carried the exact candidate head/tree. That is a carrier/consumer failure after evidence formation,
+not evidence against #210. The retained inner RETURN was consumed directly for classification.
+
+After this minimal correction, rerun focused proof and the whole-repository review. A1 remains
+dependency-held until terminal A0 review is earned.
 
 ### A1 — Project source bundle + discoverability relationship contract
 
