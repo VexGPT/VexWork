@@ -69,7 +69,7 @@ test('VexWork architecture work remains ahead of VexBoard projection alignment',
   ), true);
 
   const plannedRefs = planned.cards.map((card) => card.workRef);
-  assert.equal(plannedRefs.includes('work.vexwork.vexarchitecture-alignment.generated-consequence-reconciliation'), true);
+  assert.equal(projected.lanes.find((lane) => lane.laneRef === 'lane.work.done').cards.some((card) => card.workRef === 'work.vexwork.vexarchitecture-alignment.generated-consequence-reconciliation'), true);
   assert.equal(plannedRefs.includes('work.vexwork.vexarchitecture-alignment.vexboard-projection-alignment'), true);
 
   const vexboard = graph.items.find((item) => item.workRef === 'work.vexwork.vexarchitecture-alignment.vexboard-projection-alignment');
@@ -438,7 +438,7 @@ test('A1 completes its source contract and releases A2 after the consumed RETURN
   );
 
   assert.equal(a1.state, 'COMPLETED');
-  assert.equal(a2.state, 'RUNNING');
+  assert.equal(a2.state, 'COMPLETED');
   assert.deepEqual(a2.dependencyRefs, [a1.workRef]);
 
   const reopen = graph.transitions.find((entry) =>
@@ -477,7 +477,7 @@ test('A2 starts only after A1 source-contract review clearance', () => {
   );
 
   assert.equal(a1.state, 'COMPLETED');
-  assert.equal(a2.state, 'RUNNING');
+  assert.equal(a2.state, 'COMPLETED');
   assert.deepEqual(a2.dependencyRefs, [a1.workRef]);
 
   const release = graph.transitions.find((entry) =>
@@ -542,5 +542,34 @@ test('A2 preserves generated consequence ownership instead of lane-owned aggrega
   assert.equal(
     packageJson.scripts['workspace:build'],
     'npm run project-registry:build && npm run workgraph:build && node scripts/build-public-workspace.mjs',
+  );
+});
+
+
+test('A2 completion regenerates its own lifecycle consequence before A3 starts', () => {
+  const a2 = graph.items.find((item) =>
+    item.workRef === 'work.vexwork.vexarchitecture-alignment.generated-consequence-reconciliation'
+  );
+  const a3 = graph.items.find((item) =>
+    item.workRef === 'work.vexwork.vexarchitecture-alignment.relationship-attention-healing'
+  );
+  assert.equal(a2.state, 'COMPLETED');
+  assert.equal(a3.state, 'RUNNING');
+
+  const generatedA2 = generatedPublicWorkgraph.items.find((item) => item.workRef === a2.workRef);
+  const generatedA3 = generatedPublicWorkgraph.items.find((item) => item.workRef === a3.workRef);
+  assert.equal(generatedA2.state, 'COMPLETED');
+  assert.equal(generatedA3.state, 'RUNNING');
+
+  const workspaceProject = generatedPublicWorkspace.projects.find((entry) =>
+    entry.project.projectRef === 'project.vexwork.vexarchitecture-alignment'
+  );
+  assert.equal(
+    workspaceProject.lanes.find((lane) => lane.laneRef === 'lane.work.done').workRefs.includes(a2.workRef),
+    true,
+  );
+  assert.equal(
+    workspaceProject.lanes.find((lane) => lane.laneRef === 'lane.work.active').workRefs.includes(a3.workRef),
+    true,
   );
 });

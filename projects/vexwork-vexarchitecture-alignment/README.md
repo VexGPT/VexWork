@@ -925,7 +925,7 @@ carrier after the candidate stabilizes and one irreducible predicate remains.
 
 #### A2 current entry after A1 completion
 
-A2 is now **RUNNING**.
+A2 is **COMPLETED**; its own lifecycle transition was regenerated into the canonical public Workgraph/workspace in the same phase-boundary change. A3 is now **RUNNING**.
 
 Before mutation, re-ground:
 

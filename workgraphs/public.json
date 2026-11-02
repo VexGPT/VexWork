@@ -7271,7 +7271,7 @@
       "label": "Move generated aggregate convergence to the rightful composition/integration boundary",
       "purpose": "Treat public Workgraph/workspace and any source-derived Project registry projection as deterministic consequences rather than ordinary lane-owned architecture; extend current integration/currentness behavior so accepted source changes re-ground, regenerate and verify required aggregate consequences without making unrelated source lanes race shared generated files.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "COMPLETED",
       "workDisposition": "ACTIVE",
       "priorityClass": "HIGH",
       "dependencyRefs": [
@@ -7289,7 +7289,12 @@
         "scripts/build-public-workgraph.mjs",
         "scripts/build-public-workspace.mjs",
         "workgraphs/public.json",
-        "public/workspace.json"
+        "public/workspace.json",
+        "scripts/build-project-registry.mjs",
+        "blueprint/project-registry.json",
+        "package.json",
+        "test/project-registry.test.mjs",
+        "test/public-workspace.test.mjs"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [
@@ -7299,7 +7304,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-11-02T06:50:00.000Z",
-      "updatedAt": "2026-11-02T12:51:51.003Z"
+      "updatedAt": "2026-11-02T12:59:18.001Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -7422,7 +7427,7 @@
       "label": "Surface unresolved relationship closure without creating a second lifecycle",
       "purpose": "When deterministic convergence is temporarily impossible because source custody, provider state or another exact predicate is held, derive read-only attention from the unsatisfied relationship and clear it from evidence once the relationship converges; do not require Victor or a successor model to remember prose TODOs and do not turn Attention into WorkState or mutation authority.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "RUNNING",
       "workDisposition": "ACTIVE",
       "priorityClass": "HIGH",
       "dependencyRefs": [
@@ -7446,7 +7451,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-11-02T06:50:00.000Z",
-      "updatedAt": "2026-11-02T06:50:00.000Z"
+      "updatedAt": "2026-11-02T12:59:18.003Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -11150,6 +11155,43 @@
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.vexarchitecture-alignment.generated-consequence.running-verifying.a2-source-convergence",
+      "workRef": "work.vexwork.vexarchitecture-alignment.generated-consequence-reconciliation",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "A2 re-derived the current 19-Project registry, 21-segment canonical Workgraph and 19-Project public workspace from rightful semantic source; direct source closure proves all 223 Work items, 261 transitions, 25 roots and 19 Project definitions are represented without importing unmerged sibling Project source.",
+      "actorRef": "role.vexwork.vexarchitecture-alignment-author",
+      "sourceRefs": [
+        "blueprint/project-registry.json",
+        "workgraphs/public.json",
+        "public/workspace.json",
+        "docs/foundation/WORKGRAPH-COMPOSITION.md",
+        "docs/foundation/REPOSITORY-INTEGRATION.md",
+        "github.pull.vexwork.182.comment.6577339504",
+        "github.pull.vexwork.193.comment.6577340172"
+      ],
+      "createdAt": "2026-11-02T12:59:18.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.vexarchitecture-alignment.generated-consequence.verifying-completed.a2-convergence-accepted",
+      "workRef": "work.vexwork.vexarchitecture-alignment.generated-consequence-reconciliation",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "A2's admitted outcome is complete: deterministic Project Registry, public Workgraph and workspace consequences converge from current source, ordinary review checks stale consequences, and Repository Integration now defines generated-conflict reconciliation as regeneration from composed semantic source rather than lane-owned aggregate selection.",
+      "actorRef": "role.vexwork.vexarchitecture-alignment-author",
+      "sourceRefs": [
+        "scripts/build-project-registry.mjs",
+        "scripts/build-public-workgraph.mjs",
+        "scripts/build-public-workspace.mjs",
+        "package.json",
+        "docs/process/INTEGRATE-READY-PULL-REQUESTS.md",
+        "projects/vexwork-vexarchitecture-alignment/architecture.contract.json"
+      ],
+      "createdAt": "2026-11-02T12:59:18.001Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
       "transitionRef": "transition.vexwork.vexarchitecture-alignment.map-current-contracts.waiting-tool.a0-proof",
       "workRef": "work.vexwork.vexarchitecture-alignment.map-current-contracts",
       "priorState": "RUNNING",
@@ -11317,6 +11359,36 @@
         "package.json"
       ],
       "createdAt": "2026-11-02T12:51:51.001Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.vexarchitecture-alignment.relationship-attention.waiting-ready.a2-complete",
+      "workRef": "work.vexwork.vexarchitecture-alignment.relationship-attention-healing",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "A2 closed deterministic consequence convergence. The next unconsumed architecture edge is to keep any future unresolved relationship structurally visible as read-only attention until evidence shows the relationship converged.",
+      "actorRef": "role.vexwork.vexarchitecture-alignment-author",
+      "sourceRefs": [
+        "work.vexwork.vexarchitecture-alignment.generated-consequence-reconciliation",
+        "docs/foundation/DERIVED-ATTENTION.md",
+        "docs/foundation/ATTENTION-QUEUE.md"
+      ],
+      "createdAt": "2026-11-02T12:59:18.002Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.vexarchitecture-alignment.relationship-attention.ready-running.a3-current-discrepancy",
+      "workRef": "work.vexwork.vexarchitecture-alignment.relationship-attention-healing",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Begin A3 inside existing read-only attention/reconciliation owners. Prove that an intentionally stale relationship produces a current discrepancy and that the same relationship clears from evidence after deterministic convergence, without creating WorkState or mutation authority.",
+      "actorRef": "role.vexwork.vexarchitecture-alignment-author",
+      "sourceRefs": [
+        "docs/foundation/DERIVED-ATTENTION.md",
+        "docs/foundation/ATTENTION-QUEUE.md",
+        "docs/foundation/PROJECT-RECONCILIATION.md"
+      ],
+      "createdAt": "2026-11-02T12:59:18.003Z"
     }
   ],
   "sourceRefs": [
