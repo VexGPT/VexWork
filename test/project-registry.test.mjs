@@ -145,3 +145,13 @@ test('known-project assertion rejects an invalid registry before checking member
   invalid.registryVersion = 0;
   assert.throws(() => assertKnownProjectRefs(['project.vexwork.foundation'], invalid), /registryVersion invalid/);
 });
+
+
+test('Project Registry may omit an authored Board path when the canonical default is derived', () => {
+  const candidate = structuredClone(registry);
+  candidate.projects[0].boardViewPath = null;
+  const validation = validateProjectRegistry(candidate);
+  assert.equal(validation.ok, true, validation.errors.join('\n'));
+  const projection = projectProjectRegistry(candidate);
+  assert.equal(projection.projects[0].boardViewPath, null);
+});

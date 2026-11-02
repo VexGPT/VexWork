@@ -54,6 +54,42 @@ export function createBoardView(input, registry) {
   return withSemanticFingerprint(input);
 }
 
+
+function projectViewSuffix(projectRef) {
+  assert(
+    typeof projectRef === 'string'
+      && projectRef.startsWith('project.')
+      && projectRef.length > 'project.'.length,
+    'default Board view requires project.* identity',
+  );
+  return projectRef.slice('project.'.length);
+}
+
+export function deriveDefaultBoardView({ project, registry }) {
+  assert(verifySemanticFingerprint(project), 'project semanticFingerprint mismatch');
+  return createBoardView({
+    schemaVersion: BOARD_VIEW_SCHEMA,
+    viewRef: `view.${projectViewSuffix(project.projectRef)}.board`,
+    projectRef: project.projectRef,
+    label: `${project.label} Work Board`,
+    laneRefOrder: registry.boardLanes.map((lane) => lane.laneRef),
+  }, registry);
+}
+
+export function resolveWorkBoardView({ project, explicitViewOrNull = null, registry }) {
+  assert(verifySemanticFingerprint(project), 'project semanticFingerprint mismatch');
+  if (explicitViewOrNull === null) return deriveDefaultBoardView({ project, registry });
+  const view = createBoardView(explicitViewOrNull, registry);
+  assert(view.projectRef === project.projectRef, 'project/view identity mismatch');
+  return view;
+}
+
+export function isDefaultWorkBoardView({ project, view, registry }) {
+  const accepted = resolveWorkBoardView({ project, explicitViewOrNull: view, registry });
+  const expected = deriveDefaultBoardView({ project, registry });
+  return accepted.semanticFingerprint === expected.semanticFingerprint;
+}
+
 export function projectWorkBoard({ project, graph, view, registry }) {
   assert(verifySemanticFingerprint(project), 'project semanticFingerprint mismatch');
   assert(verifySemanticFingerprint(graph), 'workgraph semanticFingerprint mismatch');
