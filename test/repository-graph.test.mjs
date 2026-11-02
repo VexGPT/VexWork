@@ -33,6 +33,11 @@ test('public Repository Graph is structurally valid and culture remains by refer
   assert.equal(antiqueStorefront.visibility, 'PUBLIC');
   assert.deepEqual(antiqueStorefront.entryRefs, ['README.md', 'AGENTS.md', 'storefront.json']);
   assert.deepEqual(antiqueStorefront.cultureRefs, ['AGENTS.md']);
+  const vexLifeProd = graph.repositories.find((repository) => repository.repositoryRef === 'repo.vexlife-prod');
+  assert.equal(vexLifeProd.nameWithOwner, 'VexGPT/VexLife-Prod');
+  assert.equal(vexLifeProd.visibility, 'PUBLIC');
+  assert.deepEqual(vexLifeProd.entryRefs, ['LICENSE']);
+  assert.deepEqual(vexLifeProd.cultureRefs, []);
 });
 
 test('unknown repository references fail closed', () => {

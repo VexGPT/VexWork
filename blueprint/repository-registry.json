@@ -1,7 +1,7 @@
 {
   "schemaVersion": "vexwork.repository-registry/v1",
   "registryRef": "registry.vexwork.repositories.001",
-  "registryVersion": 5,
+  "registryVersion": 6,
   "purpose": "Public/source-safe navigation graph for repositories VexWork may reference. Repository entries point to current owner sources; they do not consolidate repository culture or create source authority.",
   "repositories": [
     {
@@ -78,6 +78,18 @@
       "cultureRefs": [
         "docs/CULTURE.md"
       ]
+    },
+    {
+      "repositoryRef": "repo.vexlife-prod",
+      "label": "VexLife Prod",
+      "provider": "GITHUB",
+      "nameWithOwner": "VexGPT/VexLife-Prod",
+      "visibility": "PUBLIC",
+      "purpose": "Clean VexLife product container for contract-authored semantic UI, web nested-browser experience, and later current-context Vex reintegration. At formation the repository contains only LICENSE; the New Beginnings Project owns establishing its real front door before feature implementation.",
+      "entryRefs": [
+        "LICENSE"
+      ],
+      "cultureRefs": []
     },
     {
       "repositoryRef": "repo.vexstream-music",

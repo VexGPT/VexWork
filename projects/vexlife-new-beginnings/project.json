@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.vexlife.new-beginnings",
+  "label": "VexLife New Beginnings",
+  "purpose": "Build a clean VexLife product in VexGPT/VexLife-Prod from an explicit nested-browser + Vex companion experience: author product semantics and UI relationships through compiler-constrained Kotlin VexArchitecture contracts, pressure them through a Compose reference realization, realize the same contracts in a web-native container, then reconnect Vex to the canonical Conversation with bounded current browser/DOM context instead of copying historical implementation structure.",
+  "rootWorkRefs": [
+    "work.vexlife.new-beginnings.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vexlife-prod",
+    "repo.vexlife-android",
+    "repo.vexlife",
+    "repo.vextreme"
+  ],
+  "sourceRefs": [
+    "projects/vexlife-new-beginnings/README.md",
+    "docs/process/FORM-PROJECT.md",
+    "human.design.vexlife.new-beginnings.initial-engagement.20261101",
+    "github.repository.VexGPT.VexLife-Prod",
+    "github.pull.vexlife-android.209",
+    "project.vexlife.interface-refinement",
+    "project.vexlife.blueprint-source-of-truth",
+    "repo.vextreme:pages/terrain-map.html"
+  ],
+  "formedAt": "2026-11-02T02:28:00.000Z"
+}

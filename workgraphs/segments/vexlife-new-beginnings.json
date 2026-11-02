@@ -1,0 +1,255 @@
+{
+  "schemaVersion": "vexwork.workgraph-segment/v1",
+  "segmentRef": "segment.vexlife.new-beginnings",
+  "graphRef": "workgraph.vexwork.foundation",
+  "items": [
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-02T02:28:00.000Z",
+      "updatedAt": "2026-11-02T02:28:00.000Z",
+      "workRef": "work.vexlife.new-beginnings.outcome",
+      "parentWorkRefOrNull": null,
+      "label": "VexLife New Beginnings",
+      "purpose": "Recompose VexLife in the clean VexLife-Prod container from explicit product intention and compiler-constrained semantic relationships: establish the repository front door, author one portable Kotlin contract/Blueprint language, realize the initial nested-browser + companion UI without pretending backend connectivity, then reconnect Vex through the canonical Conversation with bounded current browser/DOM context and lived proof.",
+      "workClass": "OUTCOME",
+      "state": "PLAN_VALIDATED",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "project.vexlife.new-beginnings",
+        "projects/vexlife-new-beginnings/README.md",
+        "human.design.vexlife.new-beginnings.initial-engagement.20261101"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-02T02:28:00.000Z",
+      "updatedAt": "2026-11-02T02:28:00.000Z",
+      "workRef": "work.vexlife.new-beginnings.p0.repository-front-door",
+      "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
+      "label": "P0 — establish the clean VexLife-Prod front door",
+      "purpose": "Turn the intentionally blank VexLife-Prod repository from LICENSE-only bootstrap into a source-enterable product container with the smallest README / repository culture / foundation map needed to explain the human outcome, source ownership and proof route without importing historical repository machinery.",
+      "workClass": "TASK",
+      "state": "READY",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "github.repository.VexGPT.VexLife-Prod",
+        "projects/vexlife-new-beginnings/README.md"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-02T02:28:00.000Z",
+      "updatedAt": "2026-11-02T02:28:00.000Z",
+      "workRef": "work.vexlife.new-beginnings.p0.semantic-contract-authoring",
+      "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
+      "label": "P0 — compiler-constrained semantic Blueprint authoring",
+      "purpose": "Prove the construction thesis on one small vertical slice: pure Kotlin owns typed Family State/Control/Act/Effect/DisplayState and stable UI relationships; Compose is the first reference renderer; a deterministic portable contract artifact can be consumed by a web renderer without an AI manually translating Compose implementation.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexlife.new-beginnings.p0.repository-front-door"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-prod",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "github.pull.vexlife-android.209",
+        "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md",
+        "repo.vexlife-android:architecture/elements/README.md",
+        "repo.vexlife-android:docs/foundation/VEX-BODY-SEMANTIC-BLUEPRINT.md"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-02T02:28:00.000Z",
+      "updatedAt": "2026-11-02T02:28:00.000Z",
+      "workRef": "work.vexlife.new-beginnings.p1.inert-web-container",
+      "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
+      "label": "P1 — realize the intended VexLife web container",
+      "purpose": "Render the initial VexLife workspace from the accepted semantic contract: persistent VexLife shell, nested browser region, Conversation/companion region and Settings projection with stable identity and explicit unbound/unknown states. This phase deliberately does not pretend Vex, Conversation, Memory, Home or model services are connected.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.new-beginnings.p0.semantic-contract-authoring"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "human.design.vexlife.new-beginnings.initial-engagement.20261101",
+        "projects/vexlife-new-beginnings/README.md"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-02T02:28:00.000Z",
+      "updatedAt": "2026-11-02T02:28:00.000Z",
+      "workRef": "work.vexlife.new-beginnings.p1.public-github-nested-browser",
+      "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
+      "label": "P1 — public GitHub nested-browser practicum",
+      "purpose": "Use public GitHub-hosted Vex surfaces as the first bounded browser practicum, beginning with the Vextreme Terrain Map: prove human nested rendering/navigation and preserve exact current URL/document identity while keeping human rendering separate from any later Vex context-acquisition channel.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.new-beginnings.p1.inert-web-container"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-prod",
+        "repo.vextreme"
+      ],
+      "sourceRefs": [
+        "repo.vextreme:pages/terrain-map.html",
+        "projects/vexlife-new-beginnings/README.md"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-02T02:28:00.000Z",
+      "updatedAt": "2026-11-02T02:28:00.000Z",
+      "workRef": "work.vexlife.new-beginnings.p2.browser-context-dom-projection",
+      "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
+      "label": "P2 — current browser/DOM context projection for Vex",
+      "purpose": "Add a bounded, source-addressed Vex perception channel for the current nested-browser context. Human nested rendering does not itself prove DOM/context access: this work owns current URL/document/source identity, bounded DOM/context extraction, freshness/provenance and a projection suitable for model context without granting browser effect authority.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexlife.new-beginnings.p1.public-github-nested-browser"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-prod",
+        "repo.vextreme"
+      ],
+      "sourceRefs": [
+        "repo.vextreme:pages/terrain-map.html",
+        "project.vexlife.interface-refinement"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-02T02:28:00.000Z",
+      "updatedAt": "2026-11-02T02:28:00.000Z",
+      "workRef": "work.vexlife.new-beginnings.p2.vex-conversation-reintegration",
+      "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
+      "label": "P2 — plug Vex back into the Conversation layer",
+      "purpose": "Rebuild the proven Vex connection into the fresh container rather than transplanting the historical UI: canonical Conversation identity, current Companion/model availability, Send, progressive response presentation and current browser-context composition converge through their rightful owners so Vex can converse about what the human is currently viewing.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexlife.new-beginnings.p2.browser-context-dom-projection"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-prod",
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "project.vexlife.interface-refinement",
+        "project.vexlife.tocompletion",
+        "projects/vexlife-new-beginnings/README.md"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-02T02:28:00.000Z",
+      "updatedAt": "2026-11-02T02:28:00.000Z",
+      "workRef": "work.vexlife.new-beginnings.p3.lived-context-aware-browser-conversation",
+      "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
+      "label": "P3 — lived nested-browser + context-aware Vex proof",
+      "purpose": "Prove the first whole experience: open a bounded public GitHub page in the nested browser, establish truthful current context, send one natural human message, receive one real Vex response grounded in that current page/context, preserve canonical Conversation currentness, and distinguish human-visible browser truth from the context actually supplied to Vex.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.new-beginnings.p2.vex-conversation-reintegration"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "human.design.vexlife.new-beginnings.initial-engagement.20261101",
+        "projects/vexlife-new-beginnings/README.md"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "PARKED",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-02T02:28:00.000Z",
+      "updatedAt": "2026-11-02T02:28:00.000Z",
+      "workRef": "work.vexlife.new-beginnings.later.settings-capability-mapping",
+      "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
+      "label": "Later — source-map Settings capabilities",
+      "purpose": "After the first browser/Conversation circuit is real, map Context Window, RAM/resource projection, reasoning visibility, accessible directories, Continuity Mode, Dream Sync and clean-chat/memory controls to their existing rightful source owners. Do not infer backend semantics from the screenshot labels or combine destructive effects merely because one visual button does.",
+      "workClass": "POTENTIAL",
+      "state": "CAPTURED",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexlife-prod",
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "human.design.vexlife.new-beginnings.initial-engagement.20261101",
+        "project.vexlife.interface-refinement"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
+    }
+  ],
+  "transitions": []
+}
