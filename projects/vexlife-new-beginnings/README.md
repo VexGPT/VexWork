@@ -339,7 +339,11 @@ P0 · clean repository foundation
                               [FORMED] Compose reference isolated to JVM-only reference:compose module
                               [FORMED] portable root KMP restored Compose-free
                               [FORMED] VexUiElementRef consistent copy visibility
-                              [HELD] exact root JVM/JS + reference Compose proof
+                              [HOST PROOF FORMED] artifact.vexlife-prod.p0.compose-reference-proof.a004.sha256.c4f5f9fa8b6cb3aed98491576fce2f3db9b77787558a0850782f060145b2ec48
+                                                   root JVM + JS semantic proof
+                                                   reference:compose JVM compile + test
+                                                   read-only; no push
+                                                   RETURN required before threshold claim
 
             [WAITING] deterministic portable renderer contract
 
