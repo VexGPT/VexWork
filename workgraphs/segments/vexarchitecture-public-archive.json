@@ -56,21 +56,23 @@
         "github.pull.vextreme.560",
         "github.commit.vextreme.3903616395c7b9312a51f91f3a12bbcaeb37afb0",
         "repo.vextreme:pages/vexarchitecture-first-stable-body.html",
-        "repo.vextreme:data/arcs-v2.json"
+        "repo.vextreme:data/arcs-v2.json",
+        "github.pull.vextreme.561",
+        "github.commit.vextreme.50cc2cf6f6d66b4bb69c5d5c0a4ab68b61197f9f"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-11-02T06:59:11.000Z",
-      "updatedAt": "2026-11-02T06:59:11.000Z"
+      "updatedAt": "2026-11-02T11:45:30.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vexarchitecture.public-archive.rendered-lived-review",
       "parentWorkRefOrNull": "work.vexarchitecture.public-archive.outcome",
       "label": "Complete rendered and lived visual review",
-      "purpose": "Evolve the accepted Vextreme page from a provenance-heavy witness into an inside-out builder field guide that reveals VexArchitecture through real code structure, causal feature flow, rightful owners, subtraction, and reusable questions; then inspect the resulting deployed experience and refine only where lived evidence earns it.",
+      "purpose": "Review the accepted second-edition VexArchitecture builder field guide as a lived public experience after merge, with source/provenance preserved and architecture revealed from inside real code through layered ownership, causality, subtraction, and reusable questions; refine only if the deployed composition itself earns a correction.",
       "workClass": "TASK",
       "state": "RUNNING",
       "workDisposition": "ACTIVE",
@@ -90,7 +92,8 @@
         "https://github.com/vgong24/Vextreme/actions/runs/41403201544",
         "https://github.com/vgong24/Vextreme/actions/runs/41403201629",
         "github.pull.vextreme.561",
-        "github.commit.vextreme-builder-guide.bf6f9579dea78f6039ac5bb9742cdf354f6bc953"
+        "github.pull.vextreme.561",
+        "github.commit.vextreme.50cc2cf6f6d66b4bb69c5d5c0a4ab68b61197f9f"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [
@@ -99,7 +102,7 @@
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-11-02T06:59:11.000Z",
-      "updatedAt": "2026-11-02T11:44:00.000Z"
+      "updatedAt": "2026-11-02T11:45:30.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
