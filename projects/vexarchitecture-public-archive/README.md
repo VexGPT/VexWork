@@ -126,6 +126,29 @@ No visual PASS is inferred.
 
 The next truthful edge is to inspect the accepted page through a working browser/rendering route, refine the page only if the lived composition actually needs it, and preserve the current merged source if no correction is earned.
 
+### Hosted deployment currentness
+
+The accepted Vextreme merge is deployed on GitHub Pages:
+
+```text
+source / main
+3903616395c7b9312a51f91f3a12bbcaeb37afb0
+
+pages build and deployment
+run 41403200831
+status = COMPLETED / SUCCESS
+
+post-merge Build Vextreme Index
+run 41403201544
+status = COMPLETED / SUCCESS
+
+post-merge Tests
+run 41403201629
+status = COMPLETED / SUCCESS
+```
+
+This closes deployment currentness for the accepted archive source. It does **not** close rendered/lived visual acceptance. The remaining question is now only whether the deployed composition itself deserves visual refinement.
+
 ## VexWork discoverability hold
 
 This Project is formed project-locally first because VexWork PR #182 currently owns the shared Project/discoverability projections:
@@ -171,7 +194,7 @@ work.vexarchitecture.public-archive.accepted-record
   COMPLETED
 
 work.vexarchitecture.public-archive.rendered-lived-review
-  READY / IMMEDIATE
+  RUNNING / IMMEDIATE
 
 work.vexarchitecture.public-archive.vexwork-discoverability
   WAITING_DEPENDENCIES
