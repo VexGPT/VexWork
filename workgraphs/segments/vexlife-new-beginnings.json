@@ -369,18 +369,33 @@
   "transitions": [
     {
       "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vexlife.new-beginnings.outcome.plan-validated-running.p0-front-door",
       "workRef": "work.vexlife.new-beginnings.outcome",
-      "priorState": "PLAN_VALIDATED",
-      "nextState": "RUNNING",
-      "reason": "Victor explicitly authorized anchoring and executing the mapped New Beginnings sequence; real VexLife-Prod source work began with the first bounded P0 edge.",
       "actorRef": "actor.chatgpt.vexlife-new-beginnings",
       "sourceRefs": [
         "github.pull.vexlife-prod.1",
         "github.commit.vexlife-prod.2fd6674a425919bf8696ea36dadd7d773cbd76a3",
         "human.authorization.vexlife.new-beginnings.sequence.20261101"
       ],
-      "createdAt": "2026-11-02T03:04:00.000Z"
+      "createdAt": "2026-11-02T03:04:00.000Z",
+      "transitionRef": "transition.vexlife.new-beginnings.outcome.plan-validated-ready.p0-front-door",
+      "priorState": "PLAN_VALIDATED",
+      "nextState": "READY",
+      "reason": "The mapped New Beginnings sequence had enough accepted structure and Victor explicitly authorized execution, making the outcome ready to enter the first bounded source edge."
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "workRef": "work.vexlife.new-beginnings.outcome",
+      "actorRef": "actor.chatgpt.vexlife-new-beginnings",
+      "sourceRefs": [
+        "github.pull.vexlife-prod.1",
+        "github.commit.vexlife-prod.2fd6674a425919bf8696ea36dadd7d773cbd76a3",
+        "human.authorization.vexlife.new-beginnings.sequence.20261101"
+      ],
+      "createdAt": "2026-11-02T03:04:00.000Z",
+      "transitionRef": "transition.vexlife.new-beginnings.outcome.ready-running.p0-front-door",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "The same recorded authorization event immediately began the first bounded P0 front-door source edge in VexLife-Prod."
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",

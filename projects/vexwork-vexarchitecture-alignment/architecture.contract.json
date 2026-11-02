@@ -918,9 +918,9 @@
         "github.pull.vexwork.182.comment.6570893418",
         "github.pull.vexwork.193.comment.6570894001"
       ],
-      "relationship": "Project-local source and a Workgraph segment can be accepted while independently required relationships remain incomplete: the patient-zero segment omitted required segment-level sourceRefs/formedAt, and a separately hand-maintained discoverability registry/public projection omitted the same Project.",
-      "visibleConsequence": "The accepted patient-zero source failed the canonical Workgraph Segment source-census contract and the VexWork Projects navigation surface still could not reach it; temporary/incomplete relationship closure survived because separate consequences were not constrained together.",
-      "notThis": "Evidence that the New Beginnings Work items or VexLife-Prod product semantics are invalid; the defects are missing VexWork relationship/provenance closure."
+      "relationship": "Project-local source and a Workgraph segment can be accepted while independently required relationships remain incomplete: the patient-zero segment originally omitted required segment-level sourceRefs/formedAt, carried an illegal PLAN_VALIDATED -> RUNNING lifecycle edge, and a separately hand-maintained discoverability/public projection omitted the same Project.",
+      "visibleConsequence": "The patient zero failed the canonical segment/lifecycle contract before composition could become current, while the Projects navigation surface also could not reach it. Review pressure is therefore demonstrating both fail-at-rightful-boundary and generated-consequence closure.",
+      "notThis": "Evidence that the New Beginnings Work items or VexLife-Prod product semantics are invalid; the defects are VexWork relationship/provenance/lifecycle representation closure."
     },
     {
       "demonstrationRef": "demo.vexwork.default-board-restatement-counterexample",

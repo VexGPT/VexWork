@@ -59,12 +59,17 @@ test('VexWork architecture work remains ahead of VexBoard projection alignment',
   const planned = projected.lanes.find((lane) => lane.laneRef === 'lane.work.planned');
 
   assert.deepEqual(active.cards.map((card) => card.workRef), [
-    'work.vexwork.vexarchitecture-alignment.map-current-contracts',
     'work.vexwork.vexarchitecture-alignment.outcome',
+    'work.vexwork.vexarchitecture-alignment.project-discoverability-contract',
   ]);
 
+  const done = projected.lanes.find((lane) => lane.laneRef === 'lane.work.done');
+  assert.equal(done.cards.some((card) =>
+    card.workRef === 'work.vexwork.vexarchitecture-alignment.map-current-contracts'
+  ), true);
+
   const plannedRefs = planned.cards.map((card) => card.workRef);
-  assert.equal(plannedRefs.includes('work.vexwork.vexarchitecture-alignment.project-discoverability-contract'), true);
+  assert.equal(plannedRefs.includes('work.vexwork.vexarchitecture-alignment.generated-consequence-reconciliation'), true);
   assert.equal(plannedRefs.includes('work.vexwork.vexarchitecture-alignment.vexboard-projection-alignment'), true);
 
   const vexboard = graph.items.find((item) => item.workRef === 'work.vexwork.vexarchitecture-alignment.vexboard-projection-alignment');
@@ -195,7 +200,7 @@ test('A1 source census may enumerate files but cannot infer Project identity fro
   );
   assert.match(discoverability.constraint, /path\/slug is not Project identity/i);
   assert.match(discoverability.constraint, /validated projectRef/i);
-  assert.match(discoverability.constraint, /Board must bind that same projectRef/i);
+  assert.match(discoverability.constraint, /explicit Board source must bind that same projectRef/i);
   assert.match(discoverability.constraint, /exactly one admitted canonical Workgraph relationship/i);
 });
 
@@ -327,7 +332,7 @@ test('counterexamples stay distinct from accepted architecture demonstrations', 
 
   assert.equal(newBeginnings.kind, 'COUNTEREXAMPLE_PRESSURE');
   assert.equal(boardRestatement.kind, 'COUNTEREXAMPLE_PRESSURE');
-  assert.match(newBeginnings.notThis, /Project itself.*invalid/i);
+  assert.match(newBeginnings.notThis, /New Beginnings Work items.*invalid/i);
   assert.match(boardRestatement.notThis, /custom Project views.*unnecessary/i);
 });
 
@@ -424,7 +429,7 @@ test('A1 makes stale Project discoverability a deterministic review failure befo
 });
 
 
-test('A1 holds only exact SourceOwner execution before A2', () => {
+test('A1 reopens only the actionable SourceOwner RETURN corrections before A2', () => {
   const a1 = graph.items.find((item) =>
     item.workRef === 'work.vexwork.vexarchitecture-alignment.project-discoverability-contract'
   );
@@ -432,15 +437,32 @@ test('A1 holds only exact SourceOwner execution before A2', () => {
     item.workRef === 'work.vexwork.vexarchitecture-alignment.generated-consequence-reconciliation'
   );
 
-  assert.equal(a1.state, 'WAITING_TOOL');
+  assert.equal(a1.state, 'RUNNING');
   assert.equal(a2.state, 'WAITING_DEPENDENCIES');
   assert.deepEqual(a2.dependencyRefs, [a1.workRef]);
 
-  const hold = graph.transitions.find((entry) =>
-    entry.transitionRef === 'transition.vexwork.vexarchitecture-alignment.project-discoverability.running-waiting-tool.a1-source-owner-proof'
+  const reopen = graph.transitions.find((entry) =>
+    entry.transitionRef === 'transition.vexwork.vexarchitecture-alignment.project-discoverability.waiting-tool-running.a1-return-corrections'
   );
-  assert.ok(hold);
-  assert.equal(hold.priorState, 'RUNNING');
-  assert.equal(hold.nextState, 'WAITING_TOOL');
-  assert.match(hold.reason, /pre-A2 checked-in registry is detected as stale/i);
+  assert.ok(reopen);
+  assert.equal(reopen.priorState, 'WAITING_TOOL');
+  assert.equal(reopen.nextState, 'RUNNING');
+  assert.equal(reopen.sourceRefs.includes(
+    'artifact.vexwork.vexarchitecture-alignment.a1.source-owner.outer-return.sha256.2c9c010347d8871c950e5a5c82c74e763bc46dadad8f68fce9ec2ba43a5f86d5'
+  ), true);
+});
+
+
+test('New Beginnings outcome history uses only lawful Work transitions', () => {
+  const outcomeTransitions = newBeginningsSegment.transitions.filter((entry) =>
+    entry.workRef === 'work.vexlife.new-beginnings.outcome'
+  );
+  assert.deepEqual(
+    outcomeTransitions.map((entry) => [entry.priorState, entry.nextState]),
+    [
+      ['PLAN_VALIDATED', 'READY'],
+      ['READY', 'RUNNING'],
+    ],
+  );
+  assert.equal(outcomeTransitions[0].createdAt, outcomeTransitions[1].createdAt);
 });

@@ -760,7 +760,7 @@ not evidence against #210. The retained inner RETURN was consumed directly for c
 
 The first repository-wide run remains useful trajectory evidence, but it is not the semantic definition of A0 completion. The remaining red repository state belongs to downstream relationship closure in A1/A2 and must still be retired before PR clearance.
 
-A1 is now **WAITING_TOOL** only for exact SourceOwner proof of the new resolver/census/fail-closed gate. Shared registry/public aggregate mutation remains outside A1 and belongs to A2 after A1 proof is consumed.
+A1 is now **RUNNING** on the exact corrections earned from the consumed SourceOwner RETURN. Shared registry/public aggregate mutation remains outside A1 and belongs to A2.
 
 ### A1 — Project source bundle + discoverability relationship contract
 
@@ -882,6 +882,46 @@ SOURCE PROJECT PRESENT
 ~~~
 
 A1 makes omission non-silent without racing #182/#193. A1 owns source derivation + fail-closed detection; A2 owns generated consequence convergence + restoring the deterministic review to green.
+
+#### A1 SourceOwner RETURN — correction set before any new host round-trip
+
+The exact A1 host RETURN was consumed rather than treated as a generic red result.
+
+~~~text
+outer canonical RETURN
+  sha256 2c9c010347d8871c950e5a5c82c74e763bc46dadad8f68fce9ec2ba43a5f86d5
+
+retained inner VexRelay RETURN
+  sha256 98be22478be16b6ceb4de67ac67434837443d7b378f318032df58e95ad42bf7f
+
+carrier admission / execution / inner-return consumption
+  PASS
+
+inner SourceOwner disposition
+  SAFE_FAILURE
+~~~
+
+The 11 focused failures collapse into three causal classes:
+
+1. one inherited patient-zero lifecycle defect:
+   `PLAN_VALIDATED -> RUNNING` was never a lawful canonical Work transition;
+2. four stale Alignment assertions that still described older A0/A1 states/phrasing;
+3. public Workgraph equality still red because New Beginnings + Alignment segments are not yet
+   converged into the generated aggregate — explicitly A2 territory.
+
+The New Beginnings lifecycle correction uses the same recorded authorization timestamp/evidence and
+splits the malformed edge into:
+
+~~~text
+PLAN_VALIDATED -> READY
+READY          -> RUNNING
+~~~
+
+No new event time or lifecycle permission is invented.
+
+A1 returns to RUNNING only for this coherent correction set. Do not form another ZIP merely to
+repeat the same loop. Re-run locally/provider-reconstructed where possible; only return to a host
+carrier after the candidate stabilizes and one irreducible predicate remains.
 
 ### A2 — generated consequence ownership + integration reconciliation
 

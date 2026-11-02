@@ -80,7 +80,7 @@
       "label": "Constrain Project source bundle, default Board view and discoverability",
       "purpose": "Replace count- and memory-based Project registration plus repeated default Board-view declarations with a constrained Project source relationship: Project identity comes from validated source, canonical Work Registry lanes derive the default Board projection, explicit Board-view source exists only when custom view meaning is earned, and every eligible source-managed Project resolves exactly once to its canonical Workgraph roots and discoverability. Use VexLife New Beginnings and this Alignment Project as patient zeros without letting filesystem path or Project slug become semantic identity.",
       "workClass": "TASK",
-      "state": "WAITING_TOOL",
+      "state": "RUNNING",
       "workDisposition": "ACTIVE",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [
@@ -115,7 +115,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-11-02T06:50:00.000Z",
-      "updatedAt": "2026-11-02T12:35:00.000Z"
+      "updatedAt": "2026-11-02T12:43:51.985Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -374,6 +374,22 @@
         "source.vexrelay.current-contract/v1"
       ],
       "createdAt": "2026-11-02T12:35:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.vexarchitecture-alignment.project-discoverability.waiting-tool-running.a1-return-corrections",
+      "workRef": "work.vexwork.vexarchitecture-alignment.project-discoverability-contract",
+      "priorState": "WAITING_TOOL",
+      "nextState": "RUNNING",
+      "reason": "The exact A1 SourceOwner RETURN executed the focused suite and returned actionable source findings: one inherited New Beginnings lifecycle transition violates canonical Workgraph law, four Alignment regressions are stale against intentional A0/A1 currentness/wording, and public Workgraph equality remains an A2 consequence. Reopen A1 to repair the coherent source set before any further host round-trip.",
+      "actorRef": "role.vexwork.vexarchitecture-alignment-author",
+      "sourceRefs": [
+        "artifact.vexwork.vexarchitecture-alignment.a1.source-owner.outer-return.sha256.2c9c010347d8871c950e5a5c82c74e763bc46dadad8f68fce9ec2ba43a5f86d5",
+        "artifact.vexwork.vexarchitecture-alignment.a1.source-owner.inner-return.sha256.98be22478be16b6ceb4de67ac67434837443d7b378f318032df58e95ad42bf7f",
+        "workgraphs/segments/vexlife-new-beginnings.json",
+        "test/vexwork-vexarchitecture-alignment-project.test.mjs"
+      ],
+      "createdAt": "2026-11-02T12:43:51.985Z"
     }
   ],
   "sourceRefs": [
