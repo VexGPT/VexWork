@@ -710,7 +710,25 @@ VexBoard can make relationships perceptible. It must not become the truth/healin
 
 ### A0 — map + blueprint
 
-Current state: **WAITING_TOOL**. The source-grounded owner/process map, English target architecture, machine-readable full-intention contract, static-source classification, whole-foundation matrix and Board-view census are source-formed and reviewed. The remaining A0 predicate is exact repository-native deterministic proof (`node --test ...` + `npm run review`) through a qualified current execution carrier. This is a proof hold, not a source-correction signal.
+Current state: **WAITING_TOOL**. The source-grounded owner/process map, English target architecture, machine-readable full-intention contract, static-source classification, whole-foundation matrix, worked demonstrations, orientation discoverability and Board-view census are source-formed and reviewed.
+
+Focused deterministic proof is now earned against an exact provider-byte closure of the candidate:
+
+~~~text
+17 exact prerequisite/source files
+-> every local Git blob SHA matched the candidate provider tree
+-> Node v22.16.0
+-> node --test test/vexwork-vexarchitecture-alignment-project.test.mjs
+-> 17 / 17 PASS
+~~~
+
+The remaining A0 predicate is the **whole-repository coexistence/stability floor**:
+
+~~~text
+npm run review
+~~~
+
+That broader command owns repository-wide tests, coverage floors, generated-currentness and coexistence. The focused PASS does not substitute for it. A0 therefore remains WAITING_TOOL for that exact remaining proof effect; this is not a source-correction signal.
 
 ### A1 — Project source bundle + discoverability relationship contract
 
@@ -836,7 +854,7 @@ acceptance.
 6. descend only to the named VexWork foundation
 7. use VexLife-Android / VexLife-Prod as architecture evidence, not VexWork source authority
 8. implement the smallest relationship fix without narrowing away the contract's whole-system laws
-9. run focused proof + npm run review when execution is available
+9. preserve the exact focused 17/17 PASS while the candidate's tested closure is unchanged; run the remaining `npm run review` proof on a qualified full-repository execution surface
 10. use process.vexwork.quality-review
 11. use process.vexwork.integrate-ready-pull-requests at integration
 12. reconcile deterministic consequences after accepted source movement
