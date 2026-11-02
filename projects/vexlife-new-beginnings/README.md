@@ -53,20 +53,20 @@ That gives this Project a clean test of a question the older VexLife trajectory 
 
 The repository front door is now accepted source. The VexWork Repository Graph therefore points to the real `README.md` / `AGENTS.md` / foundation / culture entries; the next construction edge is the semantic-contract practicum.
 
-## Architecture reference — current but not blindly canonical
+## Architecture reference — accepted source + provenance
 
-Current architecture quarry:
+Accepted architecture source:
 
 ~~~text
 vgong24/VexLife-Android
-PR #209
-head at Project formation:
-94d490e51a72356e69abbf6223515f4d9f7be852
-draft = true
-fresh exact-head vexVerifyLocal = pending
+main
+66c866dea6a8dd78e2946da88715c4deb78c1847
 ~~~
 
-PR #209 is valuable because it makes relationships increasingly compiler-visible:
+PR #209 remains provenance for the pressure, subtraction and responsibility reasoning that produced
+the accepted main source.
+
+The accepted architecture is valuable because it makes relationships increasingly compiler-visible:
 
 ~~~text
 VexFamily
@@ -95,8 +95,8 @@ Relay / convergence
 But:
 
 ~~~text
-DRAFT ARCHITECTURE EVIDENCE
-!= ACCEPTED WHOLESALE IMPLEMENTATION SOURCE
+ACCEPTED VEXARCHITECTURE SOURCE
+!= COPY WHOLESALE IMPLEMENTATION FORM
 
 KOTLIN FORM
 != PRODUCT MEANING
@@ -113,16 +113,20 @@ The current design hypothesis is stronger than "write Android first":
 
 ~~~text
 PURE KOTLIN
-  = executable semantic / contract authoring language
+  = executable semantic / relationship authoring language
 
 COMPOSE
-  = first reference renderer + design laboratory
+  = first reference manifestation + design laboratory
 
-PORTABLE CONTRACT ARTIFACT
-  = deterministic machine-readable relationship projection
+VEXWEB
+  = compiler-visible browser manifestation architecture
 
-WEB
-  = browser-native renderer/consumer of the same contract
+VEXWEB SPATIAL SOURCE
+  = Frame / Seam / Region / Allocation relational geometry
+
+GENERATED WEB ARTIFACTS
+  = deterministic HTML / CSS / JS / manifest outputs
+  != authoring authority
 ~~~
 
 The intended failure reduction is:
@@ -187,8 +191,10 @@ human interaction
 1. Establish the smallest truthful `VexLife-Prod` entry/culture/foundation route.
 2. Implement one pure-Kotlin semantic vertical slice.
 3. Prove that Compose can render it as a reference.
-4. Produce a deterministic portable contract artifact.
-5. Prove a web-native renderer can consume that contract without an AI manually translating Compose.
+4. Establish VexWeb relational manifestation vocabulary without platform syntax.
+5. Prove spatial language scales through the same Frame / Seam / Region / Allocation nouns.
+6. Establish a compiler-visible authoring surface over accepted VexWeb relationships.
+7. Only then form deterministic native web artifact generation.
 
 No whole-product generation claim is implied.
 
@@ -288,7 +294,7 @@ New Beginnings does not supersede earlier work:
 
 - `project.vexlife.interface-refinement` remains evidence/source for the proven Conversation, model, context, Memory/capability and currentness pathways.
 - `project.vexlife.blueprint-source-of-truth` remains evidence that portable semantic meaning should survive target-language/framework changes without making a target implementation canonical.
-- VexLife-Android PR #209 is merged provenance for the accepted Family / DisplayState / Execution / Dependency / Logger architecture now owned by VexLife-Android main.
+- VexLife-Android main at `66c866dea6a8dd78e2946da88715c4deb78c1847` owns the accepted Family / DisplayState / Execution / Dependency / Logger architecture; PR #209 remains provenance.
 - Vextreme Terrain is the first public nested-browser practicum and remains Vextreme-owned source.
 
 The new Project asks how those earned truths compose in a fresh product container without inheriting their historical incidental structure.
@@ -360,49 +366,70 @@ Later
   [PARKED] source-map Settings capabilities after the first whole browser/Conversation circuit
 ~~~
 
-### VexWeb queued construction trajectory
+### VexWeb construction trajectory
 
 ~~~text
-VEXWEB-F0  vocabulary pressure  [ACCEPTED]
+VEXWEB-F0  first structural vocabulary  [HISTORICAL ACCEPTANCE / PARTIALLY RETAINED]
   -> VexLife-Prod PR #7
-  -> merge 979ffaa31a94a94d44d0b0bc4c3dc532efb3eed2
-  -> tree  29c7a57462a8795f209d0c9f7436901ce6c5b563
+  -> accepted merge 979ffaa31a94a94d44d0b0bc4c3dc532efb3eed2
   -> proof RETURN sha256 0ebea0e6f2fcf628aaaca2a66272cd50d6578449022f2619a62d2b05f791ae01
-  -> exact JVM/JS compile + tests PASS
-  -> sourceParentRef preserves Blueprint parent
-  -> containerRef preserves VexWeb manifestation containment
 
-VEXWEB spatial language  [CURRENT / PROOF]
-  -> prior F1 binary-layout candidate PR #10 CLOSED / NOT MERGED
-  -> human law: expansion must scale the same language fractally
-  -> current candidate: VexLife-Prod PR #11
-  -> A001 head 6e8c48ba801f682a1ef0a596698e5608d3e0e51b
-  -> A001 RETURN sha256 3249350cc4c1bef19865f300e319aa6037de9015c213e6dea7a2f060a7b03abb
-  -> JVM/JS compile + tests PASS
-  -> Frame / Seam / Region / Allocation language passed 2 / 3 / 4 region scalability
-  -> threshold review required geometry-validity hardening
-  -> A002 head 789b067765ec4049d671d07866ca44a6a11e41f8
-  -> A002 tree d109f0d648e1adeba35796b0dd0dc766d1dea4c1
-  -> internal normalized resolution validates forward intervals / non-empty spans
-  -> Region edges may reference only Seams that actually cover the full edge
-  -> authored language remains unchanged
-  -> exact A002 JVM/JS proof is next
+  retained invariants:
+  -> Blueprint identity != manifestation containment
+  -> sourceParentRef != containerRef
+  -> relative Depth
+  -> explicit Interaction -> Binding
+  -> NotYetImplemented fallback
+  -> portable common source
 
-VEXWEB-F2  deterministic artifact compiler
-  -> VexWeb source -> normalized renderer-neutral projection
+  superseded:
+  -> binary spatial decomposition noun
+  -> human scalability law rejected it as permanent spatial authority
+
+VEXWEB-SPATIAL  relational spatial foundation  [ACCEPTED]
+  -> VexLife-Prod PR #11
+  -> accepted merge e0e8ad6a95f3c73cd7f79216b3ae1802ba9b54f9
+  -> accepted tree d109f0d648e1adeba35796b0dd0dc766d1dea4c1
+  -> proof RETURN sha256 7e9066f9aacbd535a9e75a67b99d13014cdafab51fe52bd22cc12858e55ace8b
+
+  current spatial grammar:
+  -> Frame
+  -> Seam
+  -> Region
+  -> Allocation
+  -> Depth
+
+  proved:
+  -> same nouns at 2 / 3 / 4 regions
+  -> partial Seam for irregular three-region geometry
+  -> ratio Allocation bound to named Seam
+  -> same-axis cycle rejection
+  -> forward / non-empty geometry validation
+  -> Seam coverage validation for Region edges
+  -> Handle != Seam
+  -> derived normalized geometry != authored coordinates
+
+VEXWEB-F1  compiler-visible authoring  [CURRENT / NEXT]
+  -> build ergonomic Kotlin authoring over accepted Frame / Seam / Region / Allocation
+  -> preserve exact source identity and geometry relationships
+  -> do not reintroduce binary layout language
+  -> no HTML/CSS/JS generation yet
+
+VEXWEB-F2  deterministic artifact compiler  [HELD]
+  -> accepted VexWeb source -> normalized projection
   -> projection -> native HTML / CSS / JS / manifest
-  -> same input produces byte/semantic-stable output
+  -> same input produces stable output
 
 VEXWEB-F3  generated-artifact membrane
-  -> generated web artifacts are outputs, not ordinary authoring surfaces
+  -> generated files are outputs, not normal authoring surfaces
   -> verify/regenerate detects manual drift
 
 VEXWEB-F4  Compose parity pressure
-  -> same bounded presentation relationship can be realized by Compose reference + VexWeb
-  -> compare meaning/identity, not pixel or implementation sameness
+  -> compare shared meaning / identity
+  -> do not require implementation sameness
 
-VEXWEB-F5  VexLife web specimen
-  -> generate the inert VexLife shell / browser / companion workspace
+VEXWEB-F5  inert VexLife web specimen
+  -> generated shell / browser / companion workspace
   -> truthful unbound states only
 
 then
