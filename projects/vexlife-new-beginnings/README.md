@@ -321,7 +321,10 @@ P0 · clean repository foundation
                               [FORMED] JVM Desktop Compose reference shell
                               [FORMED] local Conversation/Settings visual state without Family
                               [FORMED] reference-only DisplayState -> UI / UI -> Control specimen
-                              [HELD] exact Compose/Kotlin JVM + retained JS proof
+                              [HOST PROOF FORMED] artifact.vexlife-prod.p0.compose-reference-proof.a001.sha256.5a4b9daa60089b0cdf1499cf7fe3f23dd320544c16427e844c5f4adf200ef80c
+                                                  exact candidate JVM + JS proof
+                                                  read-only; no push
+                                                  RETURN required before threshold claim
 
             [WAITING] deterministic portable renderer contract
 
