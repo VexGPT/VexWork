@@ -251,6 +251,30 @@ merge tree
 
 The merge tree exactly equals the proved builder-guide candidate tree. The public archive now teaches the architecture through the real codebase and causal feature walk; the first-edition witness remains preserved in Git history and PR #560 provenance.
 
+### Narrow-screen lived review
+
+Victor's first direct small-width read of the deployed builder guide exposed presentation friction that
+was not visible from source-only review:
+
+- the large preformatted map and segmented responsibility legend required horizontal scrolling;
+- short owner explanations were hidden behind accordion interaction;
+- the visual ordering did not clearly distinguish causal sequence from orthogonal/conditional
+  architecture relationships.
+
+Vextreme PR #562 now owns the same-lane correction. Its design rule is:
+
+```text
+where order is causal -> make sequence explicit
+where a relationship is supporting/cross-cutting/conditional -> do not number it as a next stage
+
+small enough explanation -> show it
+wide diagram on narrow screen -> wrap it
+color category -> keep color, remove stepper implication
+```
+
+The correction is part of `work.vexarchitecture.public-archive.rendered-lived-review`; it is not a
+foundational VexArchitecture mutation.
+
 ### Hosted deployment currentness
 
 The accepted Vextreme merge is deployed on GitHub Pages:
