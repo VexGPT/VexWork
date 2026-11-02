@@ -303,11 +303,17 @@ P0 · clean repository foundation
          VexLife-Prod PR #1
          merge 2fd6674a425919bf8696ea36dadd7d773cbd76a3
 
-  [NEXT] compiler-constrained semantic Blueprint practicum
-         smallest pure-Kotlin relationship
-         -> DisplayState/UI kinship
-         -> reference Compose pressure
-         -> deterministic portable contract
+  [RUNNING] compiler-constrained semantic Blueprint practicum
+            VexLife-Prod PR #2
+            candidate 157f88a88afbd3ee925bb95af19a70aa650a6246
+
+            [FORMED] pure-Kotlin Family/State/Control/Effect/DisplayState contract
+            [FORMED] rooted initial VexLife workspace Blueprint
+            [PASS / DISPOSABLE] Kotlin 1.9 formation compile + specimen probe
+            [HELD] exact Kotlin 2.4.20 JVM + JS + common-test proof
+            [HELD] reproducible repository-owned Gradle route
+            [WAITING] Compose reference realization
+            [WAITING] deterministic portable renderer contract
 
 P1 · intended interface
   [WAITING] web-native VexLife workspace
@@ -330,8 +336,11 @@ Interpretation:
 DONE
   accepted source/effect remains valid
 
+RUNNING
+  current admitted work is active; nested lines identify the exact completed and held sub-edges
+
 NEXT
-  current unconsumed causal edge
+  next unconsumed causal edge after the active work retires
 
 WAITING
   dependency-gated by earlier mapped work

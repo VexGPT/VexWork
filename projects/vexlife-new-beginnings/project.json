@@ -23,7 +23,9 @@
     "project.vexlife.blueprint-source-of-truth",
     "repo.vextreme:pages/terrain-map.html",
     "github.pull.vexlife-prod.1",
-    "github.commit.vexlife-prod.2fd6674a425919bf8696ea36dadd7d773cbd76a3"
+    "github.commit.vexlife-prod.2fd6674a425919bf8696ea36dadd7d773cbd76a3",
+    "github.pull.vexlife-prod.2",
+    "github.commit.vexlife-prod.157f88a88afbd3ee925bb95af19a70aa650a6246"
   ],
   "formedAt": "2026-11-02T02:28:00.000Z"
 }
