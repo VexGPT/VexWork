@@ -137,10 +137,10 @@ PR #561
 [Development Standard][2/N] Reveal VexArchitecture as a builder field guide
 
 source head
-7eba5738432d30be05f5f91db4e35e6f7aac356e
+91ba3c8567c117af345ee8739358cffe7774d42f
 
 source tree
-2b9a3d985a65b1a245d897406d8eea260a07b956
+705024b9ff623809b6f506bd5083b7a77da97d40
 
 source paths
 pages/vexarchitecture-first-stable-body.html
@@ -160,6 +160,7 @@ problem pressure
 -> application/session construction lifetimes
 -> chronology
 -> convergence
+-> presentation from semantic truth to human experience
 -> subtraction
 -> reusable feature-design questions
 -> VexStream / Maps pressure prompts
