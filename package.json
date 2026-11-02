@@ -17,7 +17,9 @@
     "test:coverage": "node --test --experimental-test-coverage --test-reporter=tap --test-reporter=lcov --test-reporter-destination=stdout --test-reporter-destination=coverage.lcov",
     "coverage:source": "node scripts/check-source-coverage.mjs",
     "workgraph:build": "node scripts/build-public-workgraph.mjs",
-    "workgraph:check": "node scripts/build-public-workgraph.mjs --check"
+    "workgraph:check": "node scripts/build-public-workgraph.mjs --check",
+    "project-registry:build": "node scripts/build-project-registry.mjs",
+    "project-registry:check": "node scripts/build-project-registry.mjs --check"
   },
   "engines": {
     "node": ">=20.1"

@@ -97,6 +97,30 @@ to be partial: source-managed Projects omitted from that order still enter disco
 deterministically. A stale compatibility ref fails closed rather than silently suppressing or
 resurrecting membership.
 
+### Registry v1 compatibility version
+
+The v1 registry historically advanced `registryVersion` in lockstep with Project population
+(1 Project/version 1 through 17 Projects/version 17). No current consumer treats that integer as an
+independent release, identity, or currentness owner.
+
+Source-derived generation therefore preserves the v1 shape mechanically:
+
+~~~text
+registryVersion = derived source Project count
+~~~
+
+but the integer is compatibility metadata only.
+
+~~~text
+REGISTRY_VERSION_V1 != PROJECT_IDENTITY
+REGISTRY_VERSION_V1 != CURRENTNESS
+REGISTRY_VERSION_V1 != MEMBERSHIP AUTHORITY
+LITERAL PROJECT COUNT != ARCHITECTURE LAW
+~~~
+
+A later registry schema may replace or remove the compatibility integer. Until then, no test or
+worker should encode a literal population number as correctness.
+
 ## Source placement
 
 The first Workgraph was historically formed beneath `projects/vexwork-foundation/`. Once a second Project became real, the shared source moves to `workgraphs/public.json`.

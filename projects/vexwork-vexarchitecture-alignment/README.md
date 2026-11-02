@@ -812,6 +812,48 @@ The shared `blueprint/project-registry.json`, `workgraphs/public.json`, and
 `public/workspace.json` remain untouched in this slice while #182/#193 hold those paths. A1 now has
 a source-owner implementation that can be applied to those consequences once custody is reconciled.
 
+#### Real repository source census
+
+A1 now also has a repository adapter:
+
+~~~text
+scripts/build-project-registry.mjs
+
+projects/*/project.json
+  -> enumerate candidate source locations only
+
+workgraphs/segments/*.json
++ workgraphs/composition.json
+  -> compose exact current Workgraph in memory
+
+each Project
+  -> validated projectRef / rootWorkRefs
+  -> default Board collapsed to derived view
+  -> explicit custom Board retained only when non-default
+  -> optional agency policy path
+
+current registry order
+  -> partial compatibility preference only
+
+all validated source bundles
+  -> derived Project Registry v1 consequence
+~~~
+
+For v1 compatibility, `registryVersion` is generated from the derived Project population because
+that is how the historical schema encoded it. This is not a new architecture law and no test asserts
+a literal Project count.
+
+The new commands are intentionally not yet part of `review:deterministic`:
+
+~~~text
+npm run project-registry:build
+npm run project-registry:check
+~~~
+
+The current checked-in registry is expected to remain stale until the live #182/#193 shared-path
+custody is reconciled. A2 owns making this generated consequence part of ordinary repository
+currentness after the shared source is safely converged.
+
 ### A2 — generated consequence ownership + integration reconciliation
 
 ~~~

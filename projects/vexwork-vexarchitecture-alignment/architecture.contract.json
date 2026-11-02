@@ -348,7 +348,9 @@
       "proofRefs": [
         "test/project-registry.test.mjs",
         "src/core/project-registry.mjs",
-        "test/project-discoverability.test.mjs"
+        "test/project-discoverability.test.mjs",
+        "scripts/build-project-registry.mjs",
+        "test/project-registry-source.test.mjs"
       ],
       "patientZeroRefs": [
         "project.vexlife.new-beginnings",
@@ -541,7 +543,7 @@
     {
       "sourceRef": "blueprint/project-registry.json",
       "classification": "DERIVATION_CANDIDATE",
-      "reason": "For source-managed local Projects, definition path, Board path, stable ProjectRef and ordinary shared Workgraph relation are substantially derivable from project-local source; current manual membership is the observed omission/synchronization pressure."
+      "reason": "For source-managed local Projects, definition identity, default Board semantics, stable ProjectRef and ordinary shared Workgraph relation are derivable from validated Project source. The v1 registryVersion historically mirrors Project count and is retained only as generated compatibility metadata; it is not membership/currentness authority."
     },
     {
       "sourceRef": "workgraphs/public.json",

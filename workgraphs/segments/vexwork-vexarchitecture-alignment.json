@@ -102,7 +102,10 @@
         "src/core/project-registry.mjs",
         "scripts/build-public-workspace.mjs",
         "test/project-discoverability.test.mjs",
-        "docs/foundation/WORK-BOARD.md"
+        "docs/foundation/WORK-BOARD.md",
+        "scripts/build-project-registry.mjs",
+        "test/project-registry-source.test.mjs",
+        "package.json"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [

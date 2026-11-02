@@ -396,3 +396,18 @@ test('A1 binds the source-owner implementation to existing Work Board and Projec
   assert.match(defaultBoard.constraint, /derive the default Board viewRef, label and laneRefOrder/i);
   assert.match(defaultBoard.constraint, /explicit Board-view source/i);
 });
+
+
+test('A1 source census is an adapter over validated source rather than a new membership owner', () => {
+  const a1 = graph.items.find((item) =>
+    item.workRef === 'work.vexwork.vexarchitecture-alignment.project-discoverability-contract'
+  );
+  assert.equal(a1.sourceRefs.includes('scripts/build-project-registry.mjs'), true);
+  assert.equal(a1.sourceRefs.includes('test/project-registry-source.test.mjs'), true);
+
+  const classification = architectureContract.sourceClassifications.find((entry) =>
+    entry.sourceRef === 'blueprint/project-registry.json'
+  );
+  assert.match(classification.reason, /v1 registryVersion historically mirrors Project count/i);
+  assert.match(classification.reason, /not membership\/currentness authority/i);
+});
