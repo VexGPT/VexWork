@@ -326,7 +326,7 @@ P0 · clean product foundations
          - Compose manifestation isolated from portable semantic KMP
          - exact root JVM/JS + Compose JVM proof
 
-  [READY / NEXT] VexWeb foundation
+  [RUNNING / F0] VexWeb foundation
                  work.vexlife.new-beginnings.p0.vexweb-foundation
 
                  apply VexArchitecture construction discipline to browser manifestation:
@@ -363,9 +363,10 @@ Later
 ### VexWeb queued construction trajectory
 
 ~~~text
-VEXWEB-F0  vocabulary pressure
-  -> start from one real Workspace slice
-  -> earn the smallest Element / Parameter / Layout / Presentation / Binding vocabulary
+VEXWEB-F0  vocabulary pressure  [CURRENT]
+  -> accepted completed-view blueprint: VexLife-Prod PR #6
+  -> pressure the first fractal Workspace/Split/Send/Snackbar specimen
+  -> earn the smallest Element / Parameter / Layout / Depth / Interaction / Binding / Fallback vocabulary
   -> do not create a generic web framework by theory
 
 VEXWEB-F1  compiler-visible authoring
