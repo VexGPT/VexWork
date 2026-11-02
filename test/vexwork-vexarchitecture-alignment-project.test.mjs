@@ -368,3 +368,31 @@ test('New Beginnings patient zero satisfies the Workgraph Segment provenance con
   ]);
   assert.equal(newBeginningsSegment.formedAt, newBeginningsProject.formedAt);
 });
+
+
+test('A1 binds the source-owner implementation to existing Work Board and Project Registry owners', () => {
+  const a1 = graph.items.find((item) =>
+    item.workRef === 'work.vexwork.vexarchitecture-alignment.project-discoverability-contract'
+  );
+  assert.equal(a1.state, 'RUNNING');
+  for (const ref of [
+    'src/core/work-board.mjs',
+    'src/core/project-registry.mjs',
+    'scripts/build-public-workspace.mjs',
+    'test/project-discoverability.test.mjs',
+  ]) {
+    assert.equal(a1.sourceRefs.includes(ref), true, ref);
+  }
+
+  const discoverability = architectureContract.relationships.find((relationship) =>
+    relationship.relationshipRef === 'relationship.vexwork.project-source-to-discoverability'
+  );
+  assert.match(discoverability.constraint, /compatibility ordering may be partial/i);
+  assert.match(discoverability.constraint, /path\/slug is not Project identity/i);
+
+  const defaultBoard = architectureContract.relationships.find((relationship) =>
+    relationship.relationshipRef === 'relationship.vexwork.project-to-default-board-view'
+  );
+  assert.match(defaultBoard.constraint, /derive the default Board viewRef, label and laneRefOrder/i);
+  assert.match(defaultBoard.constraint, /explicit Board-view source/i);
+});

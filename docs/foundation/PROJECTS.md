@@ -56,13 +56,46 @@ where is its Board view?
 does it have a Project Agency Policy?
 ```
 
-The registry contains paths and stable refs only. It does not duplicate Project purpose, WorkState, Board cards, or Workgraph contents.
+The registry contains paths and stable refs only. It does not duplicate Project purpose, WorkState, Board cards, or Workgraph contents. Source-derived membership may generate this projection; the registry file itself does not become a second membership author.
 
 ```text
 PROJECT_REGISTRY != PROJECT
 PROJECT_REGISTRY != WORKGRAPH
 PROJECT_REGISTRY != PLANNING_RUNTIME
 ```
+
+
+### Source-derived discoverability
+
+For source-managed local Projects, discoverability membership is derivable from validated Project
+source. A filesystem adapter may enumerate candidate `project.json` files, but the path/slug only
+locates bytes:
+
+~~~text
+candidate definition path
+-> createProject(project.json)
+-> projectRef from validated source
+-> rootWorkRefs resolve in the exact Workgraph
+-> optional explicit Board binds the same projectRef
+-> discoverability entry
+~~~
+
+Permanent:
+
+~~~text
+PROJECT_PATH != PROJECT_IDENTITY
+PROJECT_DIRECTORY_NAME != PROJECT_IDENTITY
+COMPATIBILITY_ORDER != PROJECT_MEMBERSHIP
+~~~
+
+The registry's `boardViewPath` may be `null`. Null means the Project uses the canonical default
+Work Board derived from Project identity/label plus the Work Registry's canonical lanes. A non-null
+path means the Project has an explicit Board source.
+
+A compatibility order may rank selected known ProjectRefs for presentation continuity. It is allowed
+to be partial: source-managed Projects omitted from that order still enter discoverability
+deterministically. A stale compatibility ref fails closed rather than silently suppressing or
+resurrecting membership.
 
 ## Source placement
 
@@ -73,9 +106,9 @@ The stable graph identity remains `workgraph.vexwork.foundation`; stable identit
 Project-local source stays under:
 
 ```text
-projects/<project-slug>/
-  project.json
-  board.view.json
+projects/<physical-project-directory>/
+  project.json         # semantic Project identity lives here
+  board.view.json      # only when Project-specific Board semantics are earned
   agency.policy.json   # only when that Project has earned one
 ```
 

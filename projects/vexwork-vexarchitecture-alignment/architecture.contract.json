@@ -344,9 +344,11 @@
       "consequenceRefs": [
         "blueprint/project-registry.json"
       ],
-      "constraint": "Bounded source enumeration may discover candidate Project definitions, but path/slug is not Project identity. Each candidate must supply a validated projectRef; its Board must bind that same projectRef; its roots must resolve in exactly one admitted canonical Workgraph relationship (or fail/hold on ambiguity); every eligible Project must then appear exactly once in discoverability and no orphan registry entry may exist.",
+      "constraint": "A bounded adapter may enumerate candidate Project definitions, but path/slug is not Project identity. Each candidate must supply a validated projectRef, its rootWorkRefs must resolve in the exact Workgraph, and any explicit Board source must bind that same projectRef. Default Board identity/label/lane order derive from Project + canonical Work Registry truth. Derived membership must include every eligible source Project exactly once; optional compatibility ordering may be partial and cannot suppress unlisted source membership.",
       "proofRefs": [
-        "test/project-registry.test.mjs"
+        "test/project-registry.test.mjs",
+        "src/core/project-registry.mjs",
+        "test/project-discoverability.test.mjs"
       ],
       "patientZeroRefs": [
         "project.vexlife.new-beginnings",
@@ -492,11 +494,12 @@
       "consequenceRefs": [
         "default Work Board view"
       ],
-      "constraint": "Project identity plus canonical Work Registry lanes must be sufficient to derive the default Board view; an explicit Board-view source is required only for independently meaningful Project-specific view configuration and must bind the same projectRef rather than restating canonical defaults by convention.",
+      "constraint": "Project identity/label plus canonical Work Registry lanes derive the default Board viewRef, label and laneRefOrder. An explicit Board-view source is required only for independently meaningful Project-specific presentation and must bind the same projectRef; a physical Project directory never supplies semantic identity.",
       "proofRefs": [
         "src/core/work-board.mjs",
         "test/work-board.test.mjs",
-        "18-current-Project board-view census at VexWork main 690758a4751fcd6071d7a5e070f3cbe7396dff52"
+        "18-current-Project board-view census at VexWork main 690758a4751fcd6071d7a5e070f3cbe7396dff52",
+        "test/project-discoverability.test.mjs"
       ],
       "patientZeroRefs": [
         "project.vexlife.new-beginnings",
@@ -558,7 +561,7 @@
     {
       "sourceRef": "projects/*/board.view.json",
       "classification": "DERIVATION_CANDIDATE_WHEN_DEFAULT_ONLY",
-      "reason": "All 18 current Project Board views repeat the exact canonical laneRefOrder owned by the Work Registry. Default Board projection should be derivable from Project identity + canonical lane semantics; an explicit Board-view source should remain available only when a Project earns independently meaningful view configuration."
+      "reason": "All currently observed default-only Project Board views repeat the canonical Work Registry relationship (18/18 on the fixed base; 19/19 on the current #210 candidate). Default Board projection is therefore derivable from Project identity/label + canonical lane semantics; an explicit Board-view source remains available only when a Project earns independently meaningful view configuration."
     }
   ],
   "foundationAlignments": [
@@ -615,7 +618,7 @@
         "law.vexwork.current-history-projection-separation",
         "law.vexwork.generated-consequence"
       ],
-      "note": "Projection ownership is sound, but all 18 current board.view sources repeat the same canonical lane order and have not earned independent default-view authoring."
+      "note": "Projection ownership is sound. Current evidence shows every default-only Board source is derivable (18/18 fixed-base Projects; 19/19 on #210 after the Alignment Project formed), so A1 moves default view identity/label/lane order to Project + Work Registry derivation while preserving explicit custom views."
     },
     {
       "foundation": "Derived Attention",
@@ -929,8 +932,8 @@
         "projects/*/board.view.json",
         "src/core/work-board.mjs"
       ],
-      "relationship": "All 18 current Project Board-view files restate the same laneRefOrder already canonically owned by the Work Registry.",
-      "visibleConsequence": "Every new Project currently creates another synchronization surface even when it has no Project-specific view semantics.",
+      "relationship": "All currently observed Project Board-view files (18/18 on the fixed base; 19/19 on the current #210 candidate) restate the same lane order plus a viewRef/label deterministically derived from Project identity/label and the canonical Work Registry.",
+      "visibleConsequence": "Every default Project currently carries a redundant synchronization surface even though no independently authored view meaning exists; A1 proves the same Board can be reconstructed from rightful source while explicit custom views remain valid.",
       "notThis": "A claim that custom Project views or Board projection are unnecessary."
     },
     {

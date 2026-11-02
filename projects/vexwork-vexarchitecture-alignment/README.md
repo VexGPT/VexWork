@@ -493,7 +493,7 @@ projections, exact-current binding, and fail-closed boundaries.
 The current observed architecture pressures are concentrated:
 
 1. **Projects / Project Registry** — valid Project source can exist without discoverability.
-2. **Default Work Board view authoring** — 18/18 current Projects restate the exact same canonical
+2. **Default Work Board view authoring** — 18/18 fixed-base Projects, and 19/19 on the current #210 candidate, restate the exact same canonical
    `laneRefOrder`; this is source duplication, not independently earned Project meaning.
 3. **Repository Integration** — accepted source movement does not yet own deterministic VexWork
    consequence reconciliation, so generated/public truth can remain stale or a hold can live only in
@@ -509,8 +509,10 @@ foundation currently satisfies or pressures.
 Observed on current VexWork main `690758a4751fcd6071d7a5e070f3cbe7396dff52`:
 
 ~~~
-Project directories             = 18
-board.view.json files            = 18
+fixed-base Project directories  = 18
+fixed-base board.view.json files = 18
+current #210 Project directories = 19
+current #210 Board files         = 19
 unique laneRefOrder arrangements = 1
 ~~~
 
@@ -771,6 +773,44 @@ Likely pressure:
 - bounded source enumeration may locate candidate Project files, but folder/slug/path never becomes Project identity; validated source identity + Board kinship + exact Workgraph-root resolution must decide the relationship;
 - decide whether blueprint/project-registry.json remains authored or becomes generated;
 - prefer the smaller architecture that removes repeated manual membership maintenance.
+
+
+#### A1 source-owner implementation now present
+
+The first A1 slice is deliberately disjoint from the currently claimed shared aggregates:
+
+~~~text
+src/core/work-board.mjs
+  deriveDefaultBoardView(...)
+  resolveWorkBoardView(...)
+  isDefaultWorkBoardView(...)
+
+src/core/project-registry.mjs
+  deriveProjectSourceBundle(...)
+  deriveProjectRegistry(...)
+
+scripts/build-public-workspace.mjs
+  boardViewPath = null
+  -> canonical derived default
+~~~
+
+The relationship is now executable without making filesystem location semantic identity:
+
+~~~text
+enumerator locates candidate Project bytes
+-> validated projectRef owns identity
+-> rootWorkRefs must resolve in exact Workgraph
+-> no explicit Board source:
+     derive canonical view from Project + Work Registry
+-> explicit Board source:
+     validate same projectRef; preserve independently meaningful view
+-> derive registry membership
+-> optional partial compatibility order affects presentation only
+~~~
+
+The shared `blueprint/project-registry.json`, `workgraphs/public.json`, and
+`public/workspace.json` remain untouched in this slice while #182/#193 hold those paths. A1 now has
+a source-owner implementation that can be applied to those consequences once custody is reconciled.
 
 ### A2 — generated consequence ownership + integration reconciliation
 

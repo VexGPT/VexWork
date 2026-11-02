@@ -97,7 +97,12 @@
         "blueprint/project-registry.json",
         "test/project-registry.test.mjs",
         "projects/vexlife-new-beginnings/project.json",
-        "workgraphs/segments/vexlife-new-beginnings.json"
+        "workgraphs/segments/vexlife-new-beginnings.json",
+        "src/core/work-board.mjs",
+        "src/core/project-registry.mjs",
+        "scripts/build-public-workspace.mjs",
+        "test/project-discoverability.test.mjs",
+        "docs/foundation/WORK-BOARD.md"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [
