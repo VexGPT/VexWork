@@ -196,3 +196,63 @@ test('A1 source census may enumerate files but cannot infer Project identity fro
   assert.match(discoverability.constraint, /Board must bind that same projectRef/i);
   assert.match(discoverability.constraint, /exactly one admitted canonical Workgraph relationship/i);
 });
+
+
+test('A0 alignment matrix covers every current VexWork foundation and isolates observed pressures', () => {
+  const names = architectureContract.foundationAlignments.map((entry) => entry.foundation);
+  assert.equal(new Set(names).size, names.length);
+  for (const required of [
+    'Workgraph',
+    'Stability / regression floor',
+    'Workgraph Composition',
+    'Projects / Project Registry',
+    'Delegated agency / Human Transition Handshake',
+    'Work Board',
+    'Derived Attention',
+    'Derived Work Promotion',
+    'Operating Domain',
+    'Attention Queue',
+    'Parking Lot',
+    'Process Map',
+    'Repository Graph',
+    'Provider Relations',
+    'Runtime persistence',
+    'Work Participation',
+    'Operating Profiles',
+    'Orientation / fresh-worker judgment',
+    'Planning',
+    'Reconciliation',
+    'Repository Integration / Merge Stewardship',
+    'Human UI',
+  ]) {
+    assert.equal(names.includes(required), true, required);
+  }
+
+  assert.equal(
+    architectureContract.foundationAlignments.find((entry) =>
+      entry.foundation === 'Projects / Project Registry'
+    ).alignmentState,
+    'OBSERVED_GAP',
+  );
+  assert.equal(
+    architectureContract.foundationAlignments.find((entry) =>
+      entry.foundation === 'Repository Integration / Merge Stewardship'
+    ).alignmentState,
+    'OBSERVED_GAP',
+  );
+});
+
+test('default Board projection is treated as derivable unless Project-specific view meaning is earned', () => {
+  const classification = architectureContract.sourceClassifications.find((entry) =>
+    entry.sourceRef === 'projects/*/board.view.json'
+  );
+  assert.equal(classification.classification, 'DERIVATION_CANDIDATE_WHEN_DEFAULT_ONLY');
+
+  const relationship = architectureContract.relationships.find((entry) =>
+    entry.relationshipRef === 'relationship.vexwork.project-to-default-board-view'
+  );
+  assert.equal(relationship.alignmentState, 'OBSERVED_GAP');
+  assert.equal(relationship.workRef, 'work.vexwork.vexarchitecture-alignment.project-discoverability-contract');
+  assert.match(relationship.constraint, /default Board view/i);
+  assert.match(relationship.constraint, /explicit Board-view source/i);
+});

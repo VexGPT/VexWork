@@ -402,6 +402,72 @@ accepted source moved
 
 6. A prose hold such as shared projection held can disappear from current structural truth.
 
+
+## Whole-foundation alignment review
+
+A0 now reviews every foundation currently listed in `docs/foundation/INDEX.md`, not only the New
+Beginnings path.
+
+The result is deliberately not "rewrite everything." Most current foundations already express the
+VexArchitecture ownership law well: one semantic owner, bounded connective mechanics, read-only
+projections, exact-current binding, and fail-closed boundaries.
+
+The current observed architecture pressures are concentrated:
+
+1. **Projects / Project Registry** — valid Project source can exist without discoverability.
+2. **Default Work Board view authoring** — 18/18 current Projects restate the exact same canonical
+   `laneRefOrder`; this is source duplication, not independently earned Project meaning.
+3. **Repository Integration** — accepted source movement does not yet own deterministic VexWork
+   consequence reconciliation, so generated/public truth can remain stale or a hold can live only in
+   prose.
+4. **Human UI** — the reader boundary itself is sound, but it can only be as current as the generated
+   workspace it receives.
+
+The contract's `foundationAlignments[]` records the full matrix and the VexArchitecture laws each
+foundation currently satisfies or pressures.
+
+### Board-view pressure
+
+Observed on current VexWork main `690758a4751fcd6071d7a5e070f3cbe7396dff52`:
+
+~~~
+Project directories             = 18
+board.view.json files            = 18
+unique laneRefOrder arrangements = 1
+~~~
+
+Every view repeats:
+
+~~~
+intake
+planned
+ready
+active
+waiting
+needs-human
+verify
+attention
+done
+archive
+~~~
+
+Those lanes are already canonically owned by `blueprint/work-registry.json`.
+
+The intended correction is not "delete Board views." It is:
+
+~~~
+Project + canonical Work Registry lanes
+-> default Board view
+
+explicit Project Board-view source
+-> only when Project-specific presentation semantics are independently authored
+-> must bind the same projectRef
+~~~
+
+This follows the Android law that connective/default mechanics should not force every semantic owner
+to restate the same relationship, while preserving a real extension point when custom meaning is
+earned.
+
 ## Target VexWork architecture blueprint
 
 This is an English architecture map, not a mandate to create one universal Relationship framework.
@@ -568,7 +634,7 @@ VexBoard can make relationships perceptible. It must not become the truth/healin
 
 This Project formation owns the source-grounded owner/process map and the English target architecture.
 
-### A1 — Project discoverability relationship contract
+### A1 — Project source bundle + discoverability relationship contract
 
 Use New Beginnings as the first regression patient zero.
 
