@@ -344,7 +344,7 @@
       "consequenceRefs": [
         "blueprint/project-registry.json"
       ],
-      "constraint": "Every eligible source-managed Project must resolve exactly once into discoverability with matching Project/Board/Workgraph identity; no orphan registry entry may exist.",
+      "constraint": "Bounded source enumeration may discover candidate Project definitions, but path/slug is not Project identity. Each candidate must supply a validated projectRef; its Board must bind that same projectRef; its roots must resolve in exactly one admitted canonical Workgraph relationship (or fail/hold on ambiguity); every eligible Project must then appear exactly once in discoverability and no orphan registry entry may exist.",
       "proofRefs": [
         "test/project-registry.test.mjs"
       ],

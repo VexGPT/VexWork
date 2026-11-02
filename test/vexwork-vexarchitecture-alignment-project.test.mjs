@@ -185,3 +185,14 @@ test('static source classification distinguishes authored meaning from derivable
     assert.equal(entry.reason.trim().length > 0, true, entry.sourceRef);
   }
 });
+
+
+test('A1 source census may enumerate files but cannot infer Project identity from path convention', () => {
+  const discoverability = architectureContract.relationships.find((relationship) =>
+    relationship.relationshipRef === 'relationship.vexwork.project-source-to-discoverability'
+  );
+  assert.match(discoverability.constraint, /path\/slug is not Project identity/i);
+  assert.match(discoverability.constraint, /validated projectRef/i);
+  assert.match(discoverability.constraint, /Board must bind that same projectRef/i);
+  assert.match(discoverability.constraint, /exactly one admitted canonical Workgraph relationship/i);
+});

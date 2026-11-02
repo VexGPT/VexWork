@@ -576,6 +576,7 @@ Likely pressure:
 
 - remove hard-coded Project count assumptions;
 - exact-set Project source/discoverability validation;
+- bounded source enumeration may locate candidate Project files, but folder/slug/path never becomes Project identity; validated source identity + Board kinship + exact Workgraph-root resolution must decide the relationship;
 - decide whether blueprint/project-registry.json remains authored or becomes generated;
 - prefer the smaller architecture that removes repeated manual membership maintenance.
 
