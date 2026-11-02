@@ -295,41 +295,105 @@ The new Project asks how those earned truths compose in a fresh product containe
 
 ## Current execution map
 
+The original P0 practicum has now crossed its intended semantic + reference-renderer threshold. The
+next earned foundation is **VexWeb**, separated as its own Work rather than hidden inside semantic
+authoring.
+
 ~~~text
-P0 · clean repository foundation
+P0 · clean product foundations
 
   [DONE] repository front door
          VexLife-Prod PR #1
 
-  [ACCEPTED] semantic contract + rooted Workspace Blueprint
-             VexLife-Prod PR #2
-             merge c9aca940a49cb2e828ecfbd4be726f3553bf0063
+  [DONE] compiler-constrained semantic Blueprint authoring
+         VexLife-Prod PR #2
+         merge c9aca940a49cb2e828ecfbd4be726f3553bf0063
 
-  [ACCEPTED] Compose reference realization
-             VexLife-Prod PR #4
-             merge 1264be62324878126ade9ad37da33db3097aad45
-             tree  aeb6c6977fa3b5772854b1c4fe21ec1095513d06
-             root JVM/JS proof PASS
-             reference:compose JVM proof PASS
+         established:
+         - pure Kotlin Family / State / Control / Effect / DisplayState contract
+         - rooted compiler-visible Workspace Blueprint
+         - exact JVM + JS semantic proof
 
-  [CURRENT / NEXT] deterministic portable renderer contract
-                   one renderer-neutral presentation syntax / IR
-                   -> Compose realization
-                   -> native HTML/CSS realization
+  [DONE] Compose reference realization
+         VexLife-Prod PR #4
+         merge 1264be62324878126ade9ad37da33db3097aad45
+         tree  aeb6c6977fa3b5772854b1c4fe21ec1095513d06
 
-P1
-  [WAITING] web-native VexLife workspace
-  [WAITING] public GitHub nested-browser practicum
+         established:
+         - compiler-visible Blueprint element handles
+         - Family.Parameter identity pressure
+         - DisplayState -> presentation / UI -> typed Control
+         - Compose manifestation isolated from portable semantic KMP
+         - exact root JVM/JS + Compose JVM proof
 
-P2
-  [WAITING] browser/DOM context projection
+  [READY / NEXT] VexWeb foundation
+                 work.vexlife.new-beginnings.p0.vexweb-foundation
+
+                 apply VexArchitecture construction discipline to browser manifestation:
+
+                 Kotlin VexWeb authoring
+                 -> typed Element / Parameter / Layout / Presentation / Binding relationships
+                 -> deterministic generator / compiler
+                 -> generated HTML / CSS / JS + semantic manifest
+                 -> generated artifacts verified, not manually authored
+
+                 required laws:
+                 - VexWeb consumes VexBlueprint identity; it does not recreate selectors by memory.
+                 - VexWeb may consume Family DisplayState / typed Control boundaries; it does not own product State.
+                 - AI/human authors relationship source, not generated CSS/JS.
+                 - hard-coded platform values are generated from named/typed parameters where meaning exists.
+                 - renderer-specific escape hatches stay explicit; ALIGNMENT != SAMENESS.
+                 - generated DOM keeps source-addressable Vex refs for later browser-context perception.
+
+P1 · intended browser product
+  [WAITING on VexWeb] web-native VexLife workspace
+  [WAITING] public GitHub nested-browser practicum / Vextreme Terrain
+
+P2 · Vex perception + relationship
+  [WAITING] current browser/DOM context projection
   [WAITING] canonical Conversation + Vex reintegration
 
-P3
-  [WAITING] lived browser/context-aware Vex proof
+P3 · whole lived circuit
+  [WAITING] nested browser -> current context -> one real Vex turn -> durable Conversation
+
+Later
+  [PARKED] source-map Settings capabilities after the first whole browser/Conversation circuit
 ~~~
 
-The current map is navigation. PR checkpoint comments preserve immutable threshold history.
+### VexWeb queued construction trajectory
+
+~~~text
+VEXWEB-F0  vocabulary pressure
+  -> start from one real Workspace slice
+  -> earn the smallest Element / Parameter / Layout / Presentation / Binding vocabulary
+  -> do not create a generic web framework by theory
+
+VEXWEB-F1  compiler-visible authoring
+  -> Kotlin relationships bind Blueprint element identity + meaningful presentation parameters
+  -> no freehand selector/property/string reconstruction
+
+VEXWEB-F2  deterministic artifact compiler
+  -> VexWeb source -> normalized renderer-neutral projection
+  -> projection -> native HTML / CSS / JS / manifest
+  -> same input produces byte/semantic-stable output
+
+VEXWEB-F3  generated-artifact membrane
+  -> generated web artifacts are outputs, not ordinary authoring surfaces
+  -> verify/regenerate detects manual drift
+
+VEXWEB-F4  Compose parity pressure
+  -> same bounded presentation relationship can be realized by Compose reference + VexWeb
+  -> compare meaning/identity, not pixel or implementation sameness
+
+VEXWEB-F5  VexLife web specimen
+  -> generate the inert VexLife shell / browser / companion workspace
+  -> truthful unbound states only
+
+then
+  -> P1 nested-browser practicum
+~~~
+
+The map is navigation. PR checkpoint comments preserve immutable threshold history.
 
 ## Instance checkpoint lineage
 
