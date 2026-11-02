@@ -305,13 +305,14 @@ P0 · clean repository foundation
 
   [RUNNING] compiler-constrained semantic Blueprint practicum
             VexLife-Prod PR #2
-            candidate 157f88a88afbd3ee925bb95af19a70aa650a6246
+            candidate 5d679dd7473522713538a28ea06dcd971a4d6b07
 
             [FORMED] pure-Kotlin Family/State/Control/Effect/DisplayState contract
             [FORMED] rooted initial VexLife workspace Blueprint
             [PASS / DISPOSABLE] Kotlin 1.9 formation compile + specimen probe
+            [FORMED] exact Gradle 9.6 text launchers + wrapper properties
+            [HELD / HOST] exact wrapper JAR blob b1b8ef56b44f16b14dc800fa8103a6d89abb526f
             [HELD] exact Kotlin 2.4.20 JVM + JS + common-test proof
-            [HELD] reproducible repository-owned Gradle route
             [WAITING] Compose reference realization
             [WAITING] deterministic portable renderer contract
 
