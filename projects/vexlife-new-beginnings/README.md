@@ -320,17 +320,20 @@ P0 · clean repository foundation
                               missing Google Maven dependency repository
 
                               A002 head 8f7ff7b99dacb4c6324f71b78b52c34ac352f288
-                              A002 tree af55e7620e81089b53d4c66bc3005ae08cca500c
+                              A002 RETURN sha256 64319ab72d1681107fec21a512ab59bc48f627378cb0bc0b15134bf3a24e55d5
+                              SAFE_FAILURE at COMPILE_KOTLIN_JVM:
+                              explicit layout.weight import resolved to internal symbol
+
+                              A003 head da25faf7587b8db68f1ce9ff1dd7001cc7e16069
+                              A003 tree bce8a857df83a2465f7cecdda3f00e12a5917842
 
                               [FORMED] compiler-visible Blueprint element handles
                               [FORMED] JVM Desktop Compose reference shell
                               [FORMED] local Conversation/Settings visual state without Family
                               [FORMED] tighter Family generic compiler fences aligned with #209
                               [FORMED] Family.Parameter identity carried Control -> Effect in reference specimen
-                              [HOST PROOF FORMED] artifact.vexlife-prod.p0.compose-reference-proof.a002.sha256.ca4916ce0d65c3b9116d69b49967deb088a8681386bdc47f4361aff439f76c29
-                                                   exact candidate JVM + JS proof
-                                                   read-only; no push
-                                                   RETURN required before threshold claim
+                              [FORMED] parent-layout-owned weight scope correction
+                              [HELD] exact Compose/Kotlin JVM + retained JS proof
 
             [WAITING] deterministic portable renderer contract
 

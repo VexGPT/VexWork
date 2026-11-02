@@ -69,7 +69,7 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-11-02T02:28:00.000Z",
-      "updatedAt": "2026-11-02T04:31:00.000Z",
+      "updatedAt": "2026-11-02T04:41:00.000Z",
       "workRef": "work.vexlife.new-beginnings.p0.semantic-contract-authoring",
       "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
       "label": "P0 — compiler-constrained semantic Blueprint authoring",
@@ -111,7 +111,10 @@
         "github.pull.vexlife-prod.4.comment.6569063989",
         "github.commit.vexlife-prod.8f7ff7b99dacb4c6324f71b78b52c34ac352f288",
         "github.pull.vexlife-prod.4.comment.6569096800",
-        "artifact.vexlife-prod.p0.compose-reference-proof.a002.sha256.ca4916ce0d65c3b9116d69b49967deb088a8681386bdc47f4361aff439f76c29"
+        "artifact.vexlife-prod.p0.compose-reference-proof.a002.sha256.ca4916ce0d65c3b9116d69b49967deb088a8681386bdc47f4361aff439f76c29",
+        "artifact.vexlife-prod.p0.compose-reference-proof.a002.return.sha256.64319ab72d1681107fec21a512ab59bc48f627378cb0bc0b15134bf3a24e55d5",
+        "github.pull.vexlife-prod.4.comment.6569217799",
+        "github.commit.vexlife-prod.da25faf7587b8db68f1ce9ff1dd7001cc7e16069"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
