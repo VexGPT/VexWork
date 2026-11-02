@@ -372,12 +372,16 @@ VEXWEB-F0  vocabulary pressure  [ACCEPTED]
   -> sourceParentRef preserves Blueprint parent
   -> containerRef preserves VexWeb manifestation containment
 
-VEXWEB-F1  compiler-visible authoring  [CURRENT / NEXT]
-  -> make accepted F0 relationships readable/compositional to author
-  -> preserve explicit split roles and bound targets
-  -> Kotlin relationships bind Blueprint element identity + meaningful presentation parameters
-  -> no freehand selector/property/string reconstruction
-  -> no HTML/CSS/JS generation yet
+VEXWEB-F1  compiler-visible authoring  [CURRENT / PROOF]
+  -> VexLife-Prod PR #10
+  -> head 9a318a093527a5f6ce61fd176fc7ded3b487a09e
+  -> tree fb19f4f00473c6fccc46ad83fa0ee99b69ad43ba
+  -> @VexWebDsl + bounded Surface/Split/Children scopes formed
+  -> accepted F0 specimen rewritten through compositional/fractal authoring
+  -> explicit split roles and bound targets preserved
+  -> no new F0 meaning; no HTML/CSS/JS generation
+  -> proof artifact sha256 36bb5da3e33cd3ed046effc046cd6bec367e6874dc781fb46f927d469da174b8
+  -> exact JVM/JS RETURN required before acceptance
 
 VEXWEB-F2  deterministic artifact compiler
   -> VexWeb source -> normalized renderer-neutral projection
