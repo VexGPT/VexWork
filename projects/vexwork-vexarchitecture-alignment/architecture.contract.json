@@ -424,10 +424,11 @@
       "consequenceRefs": [
         "current read-only discrepancy projection"
       ],
-      "constraint": "A required but temporarily unresolvable relationship remains visible with its exact predicate/evidence until convergence; clearing evidence removes the attention without changing WorkState by implication.",
+      "constraint": "A rightful relationship owner reports SATISFIED, UNSATISFIED or UNKNOWN currentness. Attention Queue reuses relationshipRef as the stable attention identity and deterministically projects CLEAR, ATTENTION or UNKNOWN; later accepted evidence clears the same condition without changing WorkState or granting mutation authority.",
       "proofRefs": [
         "test/derived-attention.test.mjs",
-        "test/attention-queue.test.mjs"
+        "test/attention-queue.test.mjs",
+        "src/core/attention-queue.mjs"
       ],
       "patientZeroRefs": [
         "project.vexlife.new-beginnings"
@@ -987,6 +988,24 @@
       "relationship": "The A2 candidate derives Project Registry membership, canonical Workgraph and public workspace from rightful Project/segment source and treats older PR aggregate copies as disposable integration snapshots rather than competing semantic owners.",
       "visibleConsequence": "New Beginnings and VexWork VexArchitecture Alignment become navigable consequences of their source, while future Project/segment additions make deterministic currentness checks fail until the consequences are regenerated.",
       "notThis": "Automatic merge authority, permission to discard another PR's Project-local semantic source, or a second WorkState/currentness owner."
+    },
+    {
+      "demonstrationRef": "demo.vexwork.a3-relationship-attention-clears",
+      "kind": "ALIGNMENT_DOGFOOD",
+      "lawRefs": [
+        "law.vexwork.visible-held-closure",
+        "law.vexwork.identity-from-existing-structure",
+        "law.vexwork.current-history-projection-separation",
+        "law.vexwork.connective-mechanics-not-meaning"
+      ],
+      "sourceRefs": [
+        "src/core/attention-queue.mjs",
+        "test/attention-queue.test.mjs",
+        "docs/foundation/ATTENTION-QUEUE.md"
+      ],
+      "relationship": "A rightful owner evaluates relationship currentness; the Attention Queue reuses relationshipRef as attentionRef and maps UNSATISFIED to ATTENTION, UNKNOWN to UNKNOWN, and SATISFIED to CLEAR.",
+      "visibleConsequence": "The same stable relationship condition remains queued while held and disappears from active attention only after explicit current evidence produces CLEAR; no WorkState or effect authority changes.",
+      "notThis": "A generic relationship truth owner, automatic source repair, mutation permission, Work creation, or a persistent OPEN/DONE attention lifecycle."
     }
   ]
 }

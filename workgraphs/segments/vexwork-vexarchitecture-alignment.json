@@ -180,7 +180,9 @@
         "projects/vexwork-vexarchitecture-alignment/architecture.contract.json",
         "docs/foundation/DERIVED-ATTENTION.md",
         "docs/foundation/ATTENTION-QUEUE.md",
-        "docs/foundation/PROJECT-RECONCILIATION.md"
+        "docs/foundation/PROJECT-RECONCILIATION.md",
+        "src/core/attention-queue.mjs",
+        "test/attention-queue.test.mjs"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [

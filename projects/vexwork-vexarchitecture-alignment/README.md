@@ -1021,6 +1021,42 @@ not:
 
 Reuse Derived Attention / Attention Queue or the smallest compatible evolution so an owed-but-held structural relationship cannot disappear into prose.
 
+#### A3 relationship attention adapter
+
+A3 reuses the existing Attention Queue rather than inventing a healer subsystem.
+
+~~~text
+rightful relationship owner
+  -> SATISFIED | UNSATISFIED | UNKNOWN
+
+relationshipRef
+  -> reused as attentionRef
+
+UNSATISFIED -> ATTENTION
+UNKNOWN     -> UNKNOWN
+SATISFIED   -> CLEAR
+~~~
+
+The adapter cannot compute or mutate Project/Workgraph/provider truth. It consumes an already-evaluated
+currentness predicate and produces the existing read-only queue snapshot.
+
+This directly demonstrates the intended healing pressure:
+
+~~~text
+held relationship
+-> stable visible attention
+
+same relationship + accepted current evidence
+-> explicit CLEAR
+-> no active queued entry
+
+without:
+  human deleting a TODO
+  automatic Work creation
+  WorkState mutation
+  source mutation authority
+~~~
+
 ### A4 — end-to-end foundation proof
 
 Prove:

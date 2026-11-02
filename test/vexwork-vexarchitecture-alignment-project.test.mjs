@@ -573,3 +573,30 @@ test('A2 completion regenerates its own lifecycle consequence before A3 starts',
     true,
   );
 });
+
+
+test('A3 reuses relationship identity inside the existing read-only Attention Queue', () => {
+  const a3 = graph.items.find((item) =>
+    item.workRef === 'work.vexwork.vexarchitecture-alignment.relationship-attention-healing'
+  );
+  assert.equal(a3.state, 'RUNNING');
+  for (const ref of [
+    'src/core/attention-queue.mjs',
+    'test/attention-queue.test.mjs',
+    'docs/foundation/ATTENTION-QUEUE.md',
+  ]) {
+    assert.equal(a3.sourceRefs.includes(ref), true, ref);
+  }
+
+  const relationship = architectureContract.relationships.find((entry) =>
+    entry.relationshipRef === 'relationship.vexwork.held-closure-to-visible-attention'
+  );
+  assert.match(relationship.constraint, /reuses relationshipRef as the stable attention identity/i);
+
+  const demo = architectureContract.demonstrations.find((entry) =>
+    entry.demonstrationRef === 'demo.vexwork.a3-relationship-attention-clears'
+  );
+  assert.equal(demo.kind, 'ALIGNMENT_DOGFOOD');
+  assert.match(demo.visibleConsequence, /explicit current evidence produces CLEAR/i);
+  assert.match(demo.notThis, /automatic source repair/i);
+});
