@@ -189,6 +189,26 @@ ordinary non-force push
 
 The outer LocalBridge consumer stopped at its separate review boundary; the retained inner VexRelay RETURN proves generation, full repository validation, exact-path gating, commit cleanliness, and push all passed with zero inner findings.
 
+### Builder-guide integration
+
+Vextreme PR #561 is accepted source.
+
+```text
+proved/pushed candidate
+bf6f9579dea78f6039ac5bb9742cdf354f6bc953
+
+candidate tree
+071e050a0f26fa374f9aad8c1c5f4bf4518f4449
+
+merge/main
+50cc2cf6f6d66b4bb69c5d5c0a4ab68b61197f9f
+
+merge tree
+071e050a0f26fa374f9aad8c1c5f4bf4518f4449
+```
+
+The merge tree exactly equals the proved builder-guide candidate tree. The public archive now teaches the architecture through the real codebase and causal feature walk; the first-edition witness remains preserved in Git history and PR #560 provenance.
+
 ### Hosted deployment currentness
 
 The accepted Vextreme merge is deployed on GitHub Pages:
