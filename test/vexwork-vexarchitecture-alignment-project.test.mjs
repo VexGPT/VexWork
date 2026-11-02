@@ -321,3 +321,32 @@ test('counterexamples stay distinct from accepted architecture demonstrations', 
   assert.match(newBeginnings.notThis, /Project itself.*invalid/i);
   assert.match(boardRestatement.notThis, /custom Project views.*unnecessary/i);
 });
+
+
+const foundationIndexText = fs.readFileSync(new URL('../docs/foundation/INDEX.md', import.meta.url), 'utf8');
+const orientationText = fs.readFileSync(new URL('../docs/foundation/VEXWORK-ORIENTATION.md', import.meta.url), 'utf8');
+const orientationHtml = fs.readFileSync(new URL('../orientation.html', import.meta.url), 'utf8');
+
+test('ordinary VexWork orientation exposes the active alignment Project without promoting it to Foundation authority', () => {
+  for (const text of [foundationIndexText, orientationText, orientationHtml]) {
+    assert.match(text, /vexwork-vexarchitecture-alignment/i);
+  }
+
+  assert.match(foundationIndexText, /Current architecture evolution/i);
+  assert.match(foundationIndexText, /not a replacement Foundation owner/i);
+  assert.match(orientationText, /active evolution source, not accepted Foundation authority/i);
+  assert.match(orientationHtml, /does not override accepted Foundation truth/i);
+});
+
+test('alignment contract dogfoods orientation-to-evolution discoverability', () => {
+  const demo = architectureContract.demonstrations.find((entry) =>
+    entry.demonstrationRef === 'demo.vexwork.orientation-discovers-active-architecture-evolution'
+  );
+
+  assert.equal(demo.kind, 'ALIGNMENT_DOGFOOD');
+  assert.equal(demo.sourceRefs.includes('docs/foundation/INDEX.md'), true);
+  assert.equal(demo.sourceRefs.includes('docs/foundation/VEXWORK-ORIENTATION.md'), true);
+  assert.equal(demo.sourceRefs.includes('orientation.html'), true);
+  assert.match(demo.visibleConsequence, /without knowing PR #210/i);
+  assert.match(demo.notThis, /Foundation acceptance/i);
+});

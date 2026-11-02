@@ -795,6 +795,36 @@ Strongest acceptance patient zero:
 
 > A merged Project must not be able to exist in durable source while disappearing from the VexWork Projects navigation surface without an explicit current discrepancy explaining why.
 
+## Discoverability from ordinary VexWork orientation
+
+This Project is intentionally reachable from the normal VexWork orientation path:
+
+~~~text
+orientation.html
+docs/foundation/VEXWORK-ORIENTATION.md
+        ↓
+docs/foundation/INDEX.md
+        ↓
+projects/vexwork-vexarchitecture-alignment/README.md
+        ↓
+architecture.contract.json
+~~~
+
+That relationship is part of the dogfood.
+
+Fresh instances should not need:
+
+~~~text
+PR #210 memorized
+the Project slug guessed
+the predecessor chat replayed
+the public Project Registry to already be repaired
+~~~
+
+The orientation route explicitly labels this Project as **active architecture evolution**, not
+accepted Foundation authority. Discoverability must not collapse candidate status into architectural
+acceptance.
+
 ## Fresh-instance entry
 
 ~~~
