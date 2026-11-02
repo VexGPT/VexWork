@@ -126,6 +126,48 @@ No visual PASS is inferred.
 
 The next truthful edge is to inspect the accepted page through a working browser/rendering route, refine the page only if the lived composition actually needs it, and preserve the current merged source if no correction is earned.
 
+### Builder-guide revision
+
+Victor's lived review changed the visual-review question from “does the accepted page render?” to “does the page actually teach the architecture from inside the work?”
+
+Vextreme PR #561 now owns that bounded second-edition source revision:
+
+```text
+PR #561
+[Development Standard][2/N] Reveal VexArchitecture as a builder field guide
+
+source head
+7eba5738432d30be05f5f91db4e35e6f7aac356e
+
+source tree
+2b9a3d985a65b1a245d897406d8eea260a07b956
+
+source paths
+pages/vexarchitecture-first-stable-body.html
+data/strings/source/pages/vexarchitecture-first-stable-body.json
+tests/146-vexarchitecture-builder-guide.test.js
+```
+
+The new reading path is deliberately:
+
+```text
+problem pressure
+-> one question / one rightful owner
+-> real accepted codebase structure
+-> ThemeMode intention-to-pixels walk
+-> RelationshipId -> Job(s) active custody
+-> outside-truth race / same-Parameter currentness
+-> application/session construction lifetimes
+-> chronology
+-> convergence
+-> subtraction
+-> reusable feature-design questions
+-> VexStream / Maps pressure prompts
+-> source/provenance/forensics appendix
+```
+
+This is a substantive guide revision, not a foundational VexArchitecture mutation. VexLife-Android #209/main remains behavioral authority.
+
 ### Hosted deployment currentness
 
 The accepted Vextreme merge is deployed on GitHub Pages:
