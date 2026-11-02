@@ -1023,7 +1023,7 @@ Reuse Derived Attention / Attention Queue or the smallest compatible evolution s
 
 #### A3 relationship attention adapter
 
-A3 reuses the existing Attention Queue rather than inventing a healer subsystem.
+A3 is **COMPLETED**. It reuses the existing Attention Queue rather than inventing a healer subsystem, and the phase itself dogfooded a real UNSATISFIED -> ATTENTION -> regenerated -> SATISFIED -> CLEAR cycle.
 
 ~~~text
 rightful relationship owner
@@ -1056,6 +1056,29 @@ without:
   WorkState mutation
   source mutation authority
 ~~~
+
+#### A4 current entry
+
+A4 is now **RUNNING**. It owns one whole-circuit proof, not another architecture expansion:
+
+~~~text
+Project source
+-> exact Workgraph segment/composition
+-> source-derived Project discoverability
+-> canonical default Board
+-> public workspace
+-> ordinary VexWork navigation/orientation
+
+and:
+
+stale relationship evidence
+-> ATTENTION
+-> deterministic convergence
+-> CLEAR
+~~~
+
+Patient zeros remain New Beginnings and the Alignment Project. The final proof must not depend on a
+literal Project count, predecessor chat, or manual aggregate synchronization.
 
 ### A4 — end-to-end foundation proof
 

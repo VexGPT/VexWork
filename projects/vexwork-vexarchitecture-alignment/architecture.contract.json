@@ -1001,10 +1001,13 @@
       "sourceRefs": [
         "src/core/attention-queue.mjs",
         "test/attention-queue.test.mjs",
-        "docs/foundation/ATTENTION-QUEUE.md"
+        "docs/foundation/ATTENTION-QUEUE.md",
+        "workgraphs/segments/vexwork-vexarchitecture-alignment.json",
+        "workgraphs/public.json",
+        "github.pull.vexwork.210.comment.6577935959"
       ],
-      "relationship": "A rightful owner evaluates relationship currentness; the Attention Queue reuses relationshipRef as attentionRef and maps UNSATISFIED to ATTENTION, UNKNOWN to UNKNOWN, and SATISFIED to CLEAR.",
-      "visibleConsequence": "The same stable relationship condition remains queued while held and disappears from active attention only after explicit current evidence produces CLEAR; no WorkState or effect authority changes.",
+      "relationship": "At A3 source head bd96fbf6..., the Alignment A3 segment item had two sourceRefs absent from the prior generated public Workgraph, so the accepted-source-to-generated-consequence relationship was UNSATISFIED/ATTENTION. The A3 completion change regenerates the same consequence and the same stable relationship becomes SATISFIED/CLEAR.",
+      "visibleConsequence": "A real held source->generated consequence remained visibly ATTENTION until regeneration, then the same relationshipRef cleared from current evidence; no WorkState transition was caused by attention itself.",
       "notThis": "A generic relationship truth owner, automatic source repair, mutation permission, Work creation, or a persistent OPEN/DONE attention lifecycle."
     }
   ]

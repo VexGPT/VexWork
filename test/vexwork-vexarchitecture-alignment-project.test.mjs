@@ -554,7 +554,7 @@ test('A2 completion regenerates its own lifecycle consequence before A3 starts',
     item.workRef === 'work.vexwork.vexarchitecture-alignment.relationship-attention-healing'
   );
   assert.equal(a2.state, 'COMPLETED');
-  assert.equal(a3.state, 'RUNNING');
+  assert.equal(a3.state, 'COMPLETED');
 
   const generatedA2 = generatedPublicWorkgraph.items.find((item) => item.workRef === a2.workRef);
   const generatedA3 = generatedPublicWorkgraph.items.find((item) => item.workRef === a3.workRef);
@@ -579,7 +579,7 @@ test('A3 reuses relationship identity inside the existing read-only Attention Qu
   const a3 = graph.items.find((item) =>
     item.workRef === 'work.vexwork.vexarchitecture-alignment.relationship-attention-healing'
   );
-  assert.equal(a3.state, 'RUNNING');
+  assert.equal(a3.state, 'COMPLETED');
   for (const ref of [
     'src/core/attention-queue.mjs',
     'test/attention-queue.test.mjs',
@@ -599,4 +599,33 @@ test('A3 reuses relationship identity inside the existing read-only Attention Qu
   assert.equal(demo.kind, 'ALIGNMENT_DOGFOOD');
   assert.match(demo.visibleConsequence, /explicit current evidence produces CLEAR/i);
   assert.match(demo.notThis, /automatic source repair/i);
+});
+
+
+test('A3 real dogfood relationship is CLEAR after phase-boundary regeneration', () => {
+  const sourceA3 = graph.items.find((item) =>
+    item.workRef === 'work.vexwork.vexarchitecture-alignment.relationship-attention-healing'
+  );
+  const generatedA3 = generatedPublicWorkgraph.items.find((item) => item.workRef === sourceA3.workRef);
+  assert.equal(sourceA3.state, 'COMPLETED');
+  assert.equal(generatedA3.state, 'COMPLETED');
+  assert.deepEqual(generatedA3.sourceRefs, sourceA3.sourceRefs);
+
+  const demo = architectureContract.demonstrations.find((entry) =>
+    entry.demonstrationRef === 'demo.vexwork.a3-relationship-attention-clears'
+  );
+  assert.match(demo.relationship, /UNSATISFIED\/ATTENTION/);
+  assert.match(demo.relationship, /SATISFIED\/CLEAR/);
+});
+
+test('A4 starts only after A3 visible-held-closure proof completes', () => {
+  const a3 = graph.items.find((item) =>
+    item.workRef === 'work.vexwork.vexarchitecture-alignment.relationship-attention-healing'
+  );
+  const a4 = graph.items.find((item) =>
+    item.workRef === 'work.vexwork.vexarchitecture-alignment.end-to-end-foundation-proof'
+  );
+  assert.equal(a3.state, 'COMPLETED');
+  assert.equal(a4.state, 'RUNNING');
+  assert.deepEqual(a4.dependencyRefs, [a3.workRef]);
 });

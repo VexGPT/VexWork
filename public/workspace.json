@@ -13839,7 +13839,7 @@
           "label": "Prove VexWork relationship closure end to end",
           "purpose": "Pressure the aligned foundation with real Project formation and stale-consequence cases: a Project becomes source-addressable, Workgraph roots resolve, Board identity resolves, deterministic aggregate projections become current, an intentionally held consequence remains visible, and clearing the predicate removes the attention without manual human archaeology.",
           "workClass": "TASK",
-          "state": "WAITING_DEPENDENCIES",
+          "state": "RUNNING",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vexwork.vexarchitecture-alignment.outcome",
@@ -13867,8 +13867,38 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-11-02T06:50:00.000Z",
-          "updatedAt": "2026-11-02T06:50:00.000Z",
-          "transitionHistory": []
+          "updatedAt": "2026-11-02T13:05:00.003Z",
+          "transitionHistory": [
+            {
+              "transitionRef": "transition.vexwork.vexarchitecture-alignment.end-to-end.waiting-ready.a3-complete",
+              "priorState": "WAITING_DEPENDENCIES",
+              "nextState": "READY",
+              "reason": "A3 completed visible held-relationship closure. The next unconsumed edge is whole-foundation proof across Project source, Workgraph composition, default Board derivation, Project Registry, public workspace, ordinary orientation and attention clear semantics.",
+              "actorRef": "role.vexwork.vexarchitecture-alignment-author",
+              "sourceRefs": [
+                "work.vexwork.vexarchitecture-alignment.relationship-attention-healing",
+                "projects/vexwork-vexarchitecture-alignment/architecture.contract.json"
+              ],
+              "createdAt": "2026-11-02T13:05:00.002Z"
+            },
+            {
+              "transitionRef": "transition.vexwork.vexarchitecture-alignment.end-to-end.ready-running.a4-whole-circuit",
+              "priorState": "READY",
+              "nextState": "RUNNING",
+              "reason": "Begin A4 whole-circuit proof using New Beginnings and the Alignment Project as patient zeros. Prove source -> canonical Workgraph -> derived Project/Board -> workspace/navigation plus stale relationship ATTENTION -> regenerated consequence CLEAR, with no literal Project-count law or predecessor-chat dependency.",
+              "actorRef": "role.vexwork.vexarchitecture-alignment-author",
+              "sourceRefs": [
+                "project.vexlife.new-beginnings",
+                "project.vexwork.vexarchitecture-alignment",
+                "blueprint/project-registry.json",
+                "workgraphs/public.json",
+                "public/workspace.json",
+                "docs/foundation/VEXWORK-ORIENTATION.md",
+                "docs/foundation/ATTENTION-QUEUE.md"
+              ],
+              "createdAt": "2026-11-02T13:05:00.003Z"
+            }
+          ]
         },
         {
           "workRef": "work.vexwork.vexarchitecture-alignment.generated-consequence-reconciliation",
@@ -14256,7 +14286,7 @@
           "label": "Surface unresolved relationship closure without creating a second lifecycle",
           "purpose": "When deterministic convergence is temporarily impossible because source custody, provider state or another exact predicate is held, derive read-only attention from the unsatisfied relationship and clear it from evidence once the relationship converges; do not require Victor or a successor model to remember prose TODOs and do not turn Attention into WorkState or mutation authority.",
           "workClass": "TASK",
-          "state": "RUNNING",
+          "state": "COMPLETED",
           "workDisposition": "ACTIVE",
           "priorityClass": "HIGH",
           "parentWorkRefOrNull": "work.vexwork.vexarchitecture-alignment.outcome",
@@ -14272,7 +14302,9 @@
             "projects/vexwork-vexarchitecture-alignment/architecture.contract.json",
             "docs/foundation/DERIVED-ATTENTION.md",
             "docs/foundation/ATTENTION-QUEUE.md",
-            "docs/foundation/PROJECT-RECONCILIATION.md"
+            "docs/foundation/PROJECT-RECONCILIATION.md",
+            "src/core/attention-queue.mjs",
+            "test/attention-queue.test.mjs"
           ],
           "formationProcessRefOrNull": null,
           "nextProcessRefs": [
@@ -14282,7 +14314,7 @@
           "authorityDisposition": "AUTHORIZED_BOUNDED",
           "effectDisposition": "EFFECTS_BOUND",
           "createdAt": "2026-11-02T06:50:00.000Z",
-          "updatedAt": "2026-11-02T12:59:18.003Z",
+          "updatedAt": "2026-11-02T13:05:00.001Z",
           "transitionHistory": [
             {
               "transitionRef": "transition.vexwork.vexarchitecture-alignment.relationship-attention.waiting-ready.a2-complete",
@@ -14309,6 +14341,35 @@
                 "docs/foundation/PROJECT-RECONCILIATION.md"
               ],
               "createdAt": "2026-11-02T12:59:18.003Z"
+            },
+            {
+              "transitionRef": "transition.vexwork.vexarchitecture-alignment.relationship-attention.running-verifying.a3-real-held-clear",
+              "priorState": "RUNNING",
+              "nextState": "VERIFYING",
+              "reason": "A3's adapter passed source review and a real dogfood discrepancy was observed: after A3 authored new sourceRefs, the generated public Workgraph remained on the prior consequence, so the accepted-source-to-generated-consequence relationship was UNSATISFIED/ATTENTION. The phase-boundary regeneration will clear the same stable relationship without changing WorkState by attention.",
+              "actorRef": "role.vexwork.vexarchitecture-alignment-author",
+              "sourceRefs": [
+                "github.pull.vexwork.210.comment.6577935959",
+                "src/core/attention-queue.mjs",
+                "test/attention-queue.test.mjs",
+                "workgraphs/segments/vexwork-vexarchitecture-alignment.json",
+                "workgraphs/public.json"
+              ],
+              "createdAt": "2026-11-02T13:05:00.000Z"
+            },
+            {
+              "transitionRef": "transition.vexwork.vexarchitecture-alignment.relationship-attention.verifying-completed.a3-clear-from-evidence",
+              "priorState": "VERIFYING",
+              "nextState": "COMPLETED",
+              "reason": "A3's admitted outcome is complete: relationship currentness remains owned by the rightful source/check owner, the existing Attention Queue reuses relationshipRef as stable attention identity, held/unknown conditions remain visible, and accepted current evidence clears the same condition without WorkState, Work creation or mutation authority.",
+              "actorRef": "role.vexwork.vexarchitecture-alignment-author",
+              "sourceRefs": [
+                "docs/foundation/ATTENTION-QUEUE.md",
+                "src/core/attention-queue.mjs",
+                "test/attention-queue.test.mjs",
+                "github.pull.vexwork.210.comment.6577935959"
+              ],
+              "createdAt": "2026-11-02T13:05:00.001Z"
             }
           ]
         },
@@ -14358,7 +14419,6 @@
           "laneRef": "lane.work.planned",
           "label": "Planned",
           "workRefs": [
-            "work.vexwork.vexarchitecture-alignment.end-to-end-foundation-proof",
             "work.vexwork.vexarchitecture-alignment.vexboard-projection-alignment"
           ]
         },
@@ -14372,7 +14432,7 @@
           "label": "Active",
           "workRefs": [
             "work.vexwork.vexarchitecture-alignment.outcome",
-            "work.vexwork.vexarchitecture-alignment.relationship-attention-healing"
+            "work.vexwork.vexarchitecture-alignment.end-to-end-foundation-proof"
           ]
         },
         {
@@ -14401,7 +14461,8 @@
           "workRefs": [
             "work.vexwork.vexarchitecture-alignment.map-current-contracts",
             "work.vexwork.vexarchitecture-alignment.project-discoverability-contract",
-            "work.vexwork.vexarchitecture-alignment.generated-consequence-reconciliation"
+            "work.vexwork.vexarchitecture-alignment.generated-consequence-reconciliation",
+            "work.vexwork.vexarchitecture-alignment.relationship-attention-healing"
           ]
         },
         {
@@ -14412,13 +14473,13 @@
       ],
       "summary": {
         "workItemCount": 7,
-        "openWorkItemCount": 4,
+        "openWorkItemCount": 3,
         "outcomeCount": 1,
         "taskCount": 6,
         "defectCount": 0,
         "potentialCount": 0,
         "needsHumanCount": 0,
-        "completedCount": 3
+        "completedCount": 4
       },
       "rootItems": [
         {
