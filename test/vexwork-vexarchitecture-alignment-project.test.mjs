@@ -429,7 +429,7 @@ test('A1 makes stale Project discoverability a deterministic review failure befo
 });
 
 
-test('A1 reopens only the actionable SourceOwner RETURN corrections before A2', () => {
+test('A1 completes its source contract and releases A2 after the consumed RETURN review', () => {
   const a1 = graph.items.find((item) =>
     item.workRef === 'work.vexwork.vexarchitecture-alignment.project-discoverability-contract'
   );
@@ -437,8 +437,8 @@ test('A1 reopens only the actionable SourceOwner RETURN corrections before A2', 
     item.workRef === 'work.vexwork.vexarchitecture-alignment.generated-consequence-reconciliation'
   );
 
-  assert.equal(a1.state, 'RUNNING');
-  assert.equal(a2.state, 'WAITING_DEPENDENCIES');
+  assert.equal(a1.state, 'COMPLETED');
+  assert.equal(a2.state, 'RUNNING');
   assert.deepEqual(a2.dependencyRefs, [a1.workRef]);
 
   const reopen = graph.transitions.find((entry) =>
@@ -465,4 +465,25 @@ test('New Beginnings outcome history uses only lawful Work transitions', () => {
     ],
   );
   assert.equal(outcomeTransitions[0].createdAt, outcomeTransitions[1].createdAt);
+});
+
+
+test('A2 starts only after A1 source-contract review clearance', () => {
+  const a1 = graph.items.find((item) =>
+    item.workRef === 'work.vexwork.vexarchitecture-alignment.project-discoverability-contract'
+  );
+  const a2 = graph.items.find((item) =>
+    item.workRef === 'work.vexwork.vexarchitecture-alignment.generated-consequence-reconciliation'
+  );
+
+  assert.equal(a1.state, 'COMPLETED');
+  assert.equal(a2.state, 'RUNNING');
+  assert.deepEqual(a2.dependencyRefs, [a1.workRef]);
+
+  const release = graph.transitions.find((entry) =>
+    entry.transitionRef === 'transition.vexwork.vexarchitecture-alignment.generated-consequence.waiting-ready.a1-complete'
+  );
+  assert.ok(release);
+  assert.equal(release.sourceRefs.includes('github.pull.vexwork.182.comment.6577339504'), true);
+  assert.equal(release.sourceRefs.includes('github.pull.vexwork.193.comment.6577340172'), true);
 });

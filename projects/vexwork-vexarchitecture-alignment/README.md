@@ -760,7 +760,7 @@ not evidence against #210. The retained inner RETURN was consumed directly for c
 
 The first repository-wide run remains useful trajectory evidence, but it is not the semantic definition of A0 completion. The remaining red repository state belongs to downstream relationship closure in A1/A2 and must still be retired before PR clearance.
 
-A1 is now **RUNNING** on the exact corrections earned from the consumed SourceOwner RETURN. Shared registry/public aggregate mutation remains outside A1 and belongs to A2.
+A1 is **COMPLETED**. The consumed SourceOwner RETURN drove the final source corrections and the full 21-segment source audit; generated registry/public aggregate convergence remains explicitly downstream.
 
 ### A1 — Project source bundle + discoverability relationship contract
 
@@ -922,6 +922,42 @@ No new event time or lifecycle permission is invented.
 A1 returns to RUNNING only for this coherent correction set. Do not form another ZIP merely to
 repeat the same loop. Re-run locally/provider-reconstructed where possible; only return to a host
 carrier after the candidate stabilizes and one irreducible predicate remains.
+
+#### A2 current entry after A1 completion
+
+A2 is now **RUNNING**.
+
+Before mutation, re-ground:
+
+~~~text
+current VexWork main
+current #210 exact head/tree
+current #182 / #193 claims + mergeability + path overlap
+WORKGRAPH-COMPOSITION
+REPOSITORY-INTEGRATION
+INTEGRATE-READY-PULL-REQUESTS
+current Project census / generated registry expectation
+current segment composition / public Workgraph drift
+current public workspace drift
+~~~
+
+The objective is not "make the files green somehow." It is:
+
+~~~text
+rightful semantic source
+-> deterministic consequence builders
+-> one integration/convergence owner
+-> checked-in consequences current
+-> ordinary deterministic review green
+
+without:
+  source lanes racing generated files
+  stale old-base PR snapshots becoming authority
+  repeated human ZIP proof after every small correction
+~~~
+
+The next host proof should happen only after A2 has converged the full consequence set and the candidate
+has reached one stable integrated review boundary.
 
 ### A2 — generated consequence ownership + integration reconciliation
 
