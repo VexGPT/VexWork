@@ -51,14 +51,15 @@ test('archive work points only to known repositories and reusable processes', ()
   }
 });
 
-test('accepted archive is complete while lived visual review remains ready', () => {
+test('accepted archive is complete while deployed lived visual review remains active', () => {
   const accepted = graph.items.find((item) => item.workRef === 'work.vexarchitecture.public-archive.accepted-record');
   const visual = graph.items.find((item) => item.workRef === 'work.vexarchitecture.public-archive.rendered-lived-review');
   const discovery = graph.items.find((item) => item.workRef === 'work.vexarchitecture.public-archive.vexwork-discoverability');
 
   assert.equal(accepted.state, 'COMPLETED');
-  assert.equal(visual.state, 'READY');
+  assert.equal(visual.state, 'RUNNING');
   assert.deepEqual(visual.dependencyRefs, ['work.vexarchitecture.public-archive.accepted-record']);
+  assert.equal(visual.sourceRefs.includes('https://github.com/vgong24/Vextreme/actions/runs/41403200831'), true);
   assert.equal(discovery.state, 'WAITING_DEPENDENCIES');
   assert.equal(discovery.sourceRefs.includes('github.pull.vexwork.182'), true);
 });
