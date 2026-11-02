@@ -80,7 +80,7 @@
       "label": "Constrain Project source bundle, default Board view and discoverability",
       "purpose": "Replace count- and memory-based Project registration plus repeated default Board-view declarations with a constrained Project source relationship: Project identity comes from validated source, canonical Work Registry lanes derive the default Board projection, explicit Board-view source exists only when custom view meaning is earned, and every eligible source-managed Project resolves exactly once to its canonical Workgraph roots and discoverability. Use VexLife New Beginnings and this Alignment Project as patient zeros without letting filesystem path or Project slug become semantic identity.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "WAITING_TOOL",
       "workDisposition": "ACTIVE",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [
@@ -115,7 +115,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-11-02T06:50:00.000Z",
-      "updatedAt": "2026-11-02T12:22:03.003Z"
+      "updatedAt": "2026-11-02T12:35:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -355,6 +355,25 @@
         "github.pull.vexwork.193"
       ],
       "createdAt": "2026-11-02T12:22:03.003Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.vexarchitecture-alignment.project-discoverability.running-waiting-tool.a1-source-owner-proof",
+      "workRef": "work.vexwork.vexarchitecture-alignment.project-discoverability-contract",
+      "priorState": "RUNNING",
+      "nextState": "WAITING_TOOL",
+      "reason": "A1 now has its rightful-owner implementation, real repository source census, default Board derivation, source-derived Project Registry consequence and deterministic fail-closed review gate. Hold only exact SourceOwner execution proving the A1/core tests pass and the pre-A2 checked-in registry is detected as stale; A2 remains dependency-held until that proof is consumed.",
+      "actorRef": "role.vexwork.vexarchitecture-alignment-author",
+      "sourceRefs": [
+        "src/core/work-board.mjs",
+        "src/core/project-registry.mjs",
+        "scripts/build-project-registry.mjs",
+        "test/project-discoverability.test.mjs",
+        "test/project-registry-source.test.mjs",
+        "package.json",
+        "source.vexrelay.current-contract/v1"
+      ],
+      "createdAt": "2026-11-02T12:35:00.000Z"
     }
   ],
   "sourceRefs": [

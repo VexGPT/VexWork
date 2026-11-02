@@ -760,7 +760,7 @@ not evidence against #210. The retained inner RETURN was consumed directly for c
 
 The first repository-wide run remains useful trajectory evidence, but it is not the semantic definition of A0 completion. The remaining red repository state belongs to downstream relationship closure in A1/A2 and must still be retired before PR clearance.
 
-A1 is now **RUNNING** on the disjoint rightful-owner implementation edge; shared registry/public aggregate mutation remains held on current #182/#193 custody until reconciled.
+A1 is now **WAITING_TOOL** only for exact SourceOwner proof of the new resolver/census/fail-closed gate. Shared registry/public aggregate mutation remains outside A1 and belongs to A2 after A1 proof is consumed.
 
 ### A1 — Project source bundle + discoverability relationship contract
 
@@ -881,8 +881,7 @@ SOURCE PROJECT PRESENT
 -> FAIL AT PROJECT REGISTRY BOUNDARY
 ~~~
 
-A1 therefore makes omission non-silent without racing #182/#193. A2 owns reconciling the generated
-registry/public Workgraph/workspace consequences and turning the deterministic review green.
+A1 makes omission non-silent without racing #182/#193. A1 owns source derivation + fail-closed detection; A2 owns generated consequence convergence + restoring the deterministic review to green.
 
 ### A2 — generated consequence ownership + integration reconciliation
 

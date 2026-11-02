@@ -269,7 +269,7 @@ test('A0 completes its map claim and releases A1 without claiming PR-wide merge 
   );
 
   assert.equal(a0.state, 'COMPLETED');
-  assert.equal(a1.state, 'RUNNING');
+  assert.equal(a1.state, 'WAITING_TOOL');
   assert.deepEqual(a1.dependencyRefs, [a0.workRef]);
 
   const a0Completion = graph.transitions.find((entry) =>
@@ -421,4 +421,26 @@ test('A1 makes stale Project discoverability a deterministic review failure befo
       < packageJson.scripts['review:deterministic'].indexOf('workgraph:check'),
     true,
   );
+});
+
+
+test('A1 holds only exact SourceOwner execution before A2', () => {
+  const a1 = graph.items.find((item) =>
+    item.workRef === 'work.vexwork.vexarchitecture-alignment.project-discoverability-contract'
+  );
+  const a2 = graph.items.find((item) =>
+    item.workRef === 'work.vexwork.vexarchitecture-alignment.generated-consequence-reconciliation'
+  );
+
+  assert.equal(a1.state, 'WAITING_TOOL');
+  assert.equal(a2.state, 'WAITING_DEPENDENCIES');
+  assert.deepEqual(a2.dependencyRefs, [a1.workRef]);
+
+  const hold = graph.transitions.find((entry) =>
+    entry.transitionRef === 'transition.vexwork.vexarchitecture-alignment.project-discoverability.running-waiting-tool.a1-source-owner-proof'
+  );
+  assert.ok(hold);
+  assert.equal(hold.priorState, 'RUNNING');
+  assert.equal(hold.nextState, 'WAITING_TOOL');
+  assert.match(hold.reason, /pre-A2 checked-in registry is detected as stale/i);
 });
