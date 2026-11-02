@@ -327,7 +327,10 @@ P0 · clean repository foundation
                               [FORMED] local Conversation/Settings visual state without Family
                               [FORMED] tighter Family generic compiler fences aligned with #209
                               [FORMED] Family.Parameter identity carried Control -> Effect in reference specimen
-                              [HELD] exact Compose/Kotlin JVM + retained JS proof
+                              [HOST PROOF FORMED] artifact.vexlife-prod.p0.compose-reference-proof.a002.sha256.ca4916ce0d65c3b9116d69b49967deb088a8681386bdc47f4361aff439f76c29
+                                                   exact candidate JVM + JS proof
+                                                   read-only; no push
+                                                   RETURN required before threshold claim
 
             [WAITING] deterministic portable renderer contract
 
