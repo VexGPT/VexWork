@@ -376,15 +376,17 @@ VEXWEB spatial language  [CURRENT / PROOF]
   -> prior F1 binary-layout candidate PR #10 CLOSED / NOT MERGED
   -> human law: expansion must scale the same language fractally
   -> current candidate: VexLife-Prod PR #11
-  -> head 6e8c48ba801f682a1ef0a596698e5608d3e0e51b
-  -> tree 5ed774b13f86e27fad63d4a2a38082b4da89d32f
-  -> Frame / Seam / Region / Allocation
-  -> 2 / 3 / 4 region scalability tests
-  -> partial Seam proves irregular three-region layout
-  -> same-axis Seam dependency cycles rejected
-  -> Handle != Seam
-  -> Matrix / normalized coordinates remain derived inspection
-  -> exact JVM/JS proof required before acceptance
+  -> A001 head 6e8c48ba801f682a1ef0a596698e5608d3e0e51b
+  -> A001 RETURN sha256 3249350cc4c1bef19865f300e319aa6037de9015c213e6dea7a2f060a7b03abb
+  -> JVM/JS compile + tests PASS
+  -> Frame / Seam / Region / Allocation language passed 2 / 3 / 4 region scalability
+  -> threshold review required geometry-validity hardening
+  -> A002 head 789b067765ec4049d671d07866ca44a6a11e41f8
+  -> A002 tree d109f0d648e1adeba35796b0dd0dc766d1dea4c1
+  -> internal normalized resolution validates forward intervals / non-empty spans
+  -> Region edges may reference only Seams that actually cover the full edge
+  -> authored language remains unchanged
+  -> exact A002 JVM/JS proof is next
 
 VEXWEB-F2  deterministic artifact compiler
   -> VexWeb source -> normalized renderer-neutral projection
