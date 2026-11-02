@@ -967,6 +967,56 @@ source lane != generated aggregate owner
 
 Move deterministic aggregate currentness to composition/integration where possible.
 
+#### A2 generated consequences now converge from source
+
+The candidate now demonstrates the intended integration relationship:
+
+~~~text
+current source Projects = 19
+current source segments = 21
+
+source-derived Project Registry
+  -> 19 Projects
+  -> default-only Board paths collapse to null
+
+segment composition
+  -> 223 Work items
+  -> 261 transitions
+  -> 25 roots
+
+public workspace
+  -> 19 Projects
+  -> New Beginnings visible
+  -> VexWork VexArchitecture Alignment visible
+  -> New Beginnings parked settings item visible
+~~~
+
+`workspace:build` now converges:
+
+~~~text
+project-registry:build
+-> workgraph:build
+-> public workspace build
+~~~
+
+The old #182/#193 generated snapshots are not imported into this result because their Project-local
+sources have not been accepted into current main/#210. Their semantic Projects remain theirs; when
+those candidates resume, they should preserve/rebase their Project/segment source and let the current
+builders regenerate consequences.
+
+This is the A2 behavior we wanted:
+
+~~~text
+STALE GENERATED FILE
+-> source composition
+-> regenerate
+-> check
+-> clear
+
+not:
+-> human remembers which old PR had the "right" aggregate copy
+~~~
+
 ### A3 — unresolved relationship attention
 
 Reuse Derived Attention / Attention Queue or the smallest compatible evolution so an owed-but-held structural relationship cannot disappear into prose.

@@ -487,3 +487,60 @@ test('A2 starts only after A1 source-contract review clearance', () => {
   assert.equal(release.sourceRefs.includes('github.pull.vexwork.182.comment.6577339504'), true);
   assert.equal(release.sourceRefs.includes('github.pull.vexwork.193.comment.6577340172'), true);
 });
+
+
+const generatedProjectRegistry = read('blueprint/project-registry.json');
+const generatedPublicWorkgraph = read('workgraphs/public.json');
+const generatedPublicWorkspace = read('public/workspace.json');
+
+test('A2 generated consequences make both patient-zero Projects navigable', () => {
+  for (const projectRef of [
+    'project.vexlife.new-beginnings',
+    'project.vexwork.vexarchitecture-alignment',
+  ]) {
+    assert.equal(
+      generatedProjectRegistry.projects.some((entry) => entry.projectRef === projectRef),
+      true,
+      projectRef,
+    );
+    assert.equal(
+      generatedPublicWorkspace.projects.some((entry) => entry.project.projectRef === projectRef),
+      true,
+      projectRef,
+    );
+  }
+
+  assert.equal(
+    generatedPublicWorkgraph.items.some((item) =>
+      item.workRef === 'work.vexlife.new-beginnings.outcome'
+    ),
+    true,
+  );
+  assert.equal(
+    generatedPublicWorkgraph.items.some((item) =>
+      item.workRef === 'work.vexwork.vexarchitecture-alignment.outcome'
+    ),
+    true,
+  );
+  assert.equal(
+    generatedPublicWorkspace.parkingLot.items.some((item) =>
+      item.workRef === 'work.vexlife.new-beginnings.later.settings-capability-mapping'
+    ),
+    true,
+  );
+});
+
+test('A2 preserves generated consequence ownership instead of lane-owned aggregate authority', () => {
+  const demo = architectureContract.demonstrations.find((entry) =>
+    entry.demonstrationRef === 'demo.vexwork.a2-generated-consequence-convergence'
+  );
+  assert.equal(demo.kind, 'ALIGNMENT_DOGFOOD');
+  assert.match(demo.relationship, /disposable integration snapshots/i);
+  assert.match(demo.notThis, /discard another PR's Project-local semantic source/i);
+
+  const packageJson = JSON.parse(fs.readFileSync(new URL('../package.json', import.meta.url), 'utf8'));
+  assert.equal(
+    packageJson.scripts['workspace:build'],
+    'npm run project-registry:build && npm run workgraph:build && node scripts/build-public-workspace.mjs',
+  );
+});

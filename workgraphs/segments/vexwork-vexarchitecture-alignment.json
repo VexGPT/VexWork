@@ -142,7 +142,12 @@
         "scripts/build-public-workgraph.mjs",
         "scripts/build-public-workspace.mjs",
         "workgraphs/public.json",
-        "public/workspace.json"
+        "public/workspace.json",
+        "scripts/build-project-registry.mjs",
+        "blueprint/project-registry.json",
+        "package.json",
+        "test/project-registry.test.mjs",
+        "test/public-workspace.test.mjs"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [

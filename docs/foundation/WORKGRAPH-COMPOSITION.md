@@ -198,6 +198,46 @@ public workspace
 
 Aggregate merge conflicts should now normally indicate stale generated output or source-currentness reconciliation, not a reason to serialize unrelated work families.
 
+## VexWork generated-consequence convergence
+
+Project discoverability now follows the same ownership law as Workgraph composition.
+
+For a VexWork candidate that changes source-managed Project or Workgraph truth:
+
+~~~text
+projects/*/project.json
+workgraphs/segments/*.json
+workgraphs/composition.json
+        ↓
+npm run project-registry:build
+npm run workgraph:build
+node scripts/build-public-workspace.mjs
+        ↓
+blueprint/project-registry.json
+workgraphs/public.json
+public/workspace.json
+~~~
+
+The checked-in consequences remain portable/current read surfaces, but they are not independent
+authoring membranes.
+
+Permanent:
+
+~~~text
+GENERATED_CONSEQUENCE_CONFLICT
+!= SEMANTIC_SOURCE_CONFLICT
+
+STALE_GENERATED_SNAPSHOT
+!= INTEGRATION_AUTHORITY
+~~~
+
+When two candidates carry different copies of one of these generated files, reconcile the rightful
+semantic sources first and regenerate the consequence from the composed source. Do not choose one
+generated side by age, PR order, or textual convenience.
+
+For current VexWork source, `npm run workspace:build` performs the ordered Project Registry ->
+Workgraph -> public workspace convergence. `npm run review` then proves generated currentness.
+
 ## Non-collapse
 
 ```text

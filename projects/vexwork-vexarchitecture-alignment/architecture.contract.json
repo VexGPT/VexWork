@@ -371,10 +371,14 @@
       "consequenceRefs": [
         "public/workspace.json"
       ],
-      "constraint": "Public workspace is a deterministic consequence of current canonical Project + Workgraph truth and cannot remain green while those source relationships are omitted or stale.",
+      "constraint": "Public workspace is a deterministic consequence of current canonical Project + Workgraph truth. Project Registry, public Workgraph and workspace are re-derived together from source; stale candidate snapshots are integration material, not independent authority.",
       "proofRefs": [
         "scripts/build-public-workspace.mjs",
-        "test/public-workspace.test.mjs"
+        "test/public-workspace.test.mjs",
+        "blueprint/project-registry.json",
+        "workgraphs/public.json",
+        "public/workspace.json",
+        "package.json"
       ],
       "patientZeroRefs": [
         "project.vexlife.new-beginnings"
@@ -393,11 +397,16 @@
         "workgraphs/public.json",
         "public/workspace.json"
       ],
-      "constraint": "After accepted source movement, deterministic VexWork consequences are re-derived and verified at the rightful convergence boundary; source lanes do not permanently own generated aggregate synchronization.",
+      "constraint": "After VexWork semantic source movement, Integration re-derives Project Registry, public Workgraph and public workspace from the composed source before clearance. Generated-file conflicts preserve source and regenerate consequences; source lanes do not permanently own aggregate synchronization.",
       "proofRefs": [
         "npm run workgraph:check",
         "npm run workspace:check",
-        "test/repository-integration-foundation.test.mjs"
+        "test/repository-integration-foundation.test.mjs",
+        "docs/foundation/REPOSITORY-INTEGRATION.md",
+        "docs/process/INTEGRATE-READY-PULL-REQUESTS.md",
+        "blueprint/project-registry.json",
+        "workgraphs/public.json",
+        "public/workspace.json"
       ],
       "patientZeroRefs": [
         "project.vexlife.new-beginnings"
@@ -956,6 +965,28 @@
       "relationship": "The normal VexWork orientation route explicitly exposes the active architecture-evolution Project when VexWork itself is implicated, while labeling the Project as candidate/evolution source rather than accepted Foundation authority.",
       "visibleConsequence": "A fresh human or agent can discover the Alignment Project from the same Foundation Index/orientation surfaces they already read, without knowing PR #210, the Project slug in advance, or relying on the currently incomplete public Project Registry projection.",
       "notThis": "Project Registry acceptance, Foundation acceptance, merge clearance, or permission for candidate architecture to override accepted Foundation source."
+    },
+    {
+      "demonstrationRef": "demo.vexwork.a2-generated-consequence-convergence",
+      "kind": "ALIGNMENT_DOGFOOD",
+      "lawRefs": [
+        "law.vexwork.generated-consequence",
+        "law.vexwork.relationship-authored-once",
+        "law.vexwork.connective-mechanics-not-meaning",
+        "law.vexwork.proof-follows-claim"
+      ],
+      "sourceRefs": [
+        "scripts/build-project-registry.mjs",
+        "scripts/build-public-workgraph.mjs",
+        "scripts/build-public-workspace.mjs",
+        "blueprint/project-registry.json",
+        "workgraphs/public.json",
+        "public/workspace.json",
+        "docs/foundation/REPOSITORY-INTEGRATION.md"
+      ],
+      "relationship": "The A2 candidate derives Project Registry membership, canonical Workgraph and public workspace from rightful Project/segment source and treats older PR aggregate copies as disposable integration snapshots rather than competing semantic owners.",
+      "visibleConsequence": "New Beginnings and VexWork VexArchitecture Alignment become navigable consequences of their source, while future Project/segment additions make deterministic currentness checks fail until the consequences are regenerated.",
+      "notThis": "Automatic merge authority, permission to discard another PR's Project-local semantic source, or a second WorkState/currentness owner."
     }
   ]
 }
