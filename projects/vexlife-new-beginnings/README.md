@@ -351,6 +351,56 @@ PARKED
 
 The map is continuity, not a second lifecycle owner. Canonical WorkState remains in the Workgraph segment.
 
+## Instance checkpoint lineage
+
+Execution-instance identity is append-only continuity evidence.
+
+Current instance anchor:
+
+~~~text
+instanceRef
+instance.chatgpt.vexlife-new-beginnings.20261101T191700-0800
+
+human anchor
+November 1, 2026 at 7:17 PM America/Los_Angeles
+~~~
+
+Checkpoint history owned by this instance:
+
+~~~text
+P0_REPOSITORY_FRONT_DOOR_ACCEPTED
+  VexLife-Prod PR #1
+  checkpoint comment 6568211489
+  accepted merge 2fd6674a425919bf8696ea36dadd7d773cbd76a3
+
+P0_SEMANTIC_BLUEPRINT_CANDIDATE_FORMED
+  VexLife-Prod PR #2
+  checkpoint comment 6568211912
+  candidate 157f88a88afbd3ee925bb95af19a70aa650a6246
+  exact Kotlin 2.4.20 repository proof still held
+~~~
+
+Permanent continuation law:
+
+~~~text
+INSTANCE IDENTITY
+!= ACTOR ROLE
+!= WORK IDENTITY
+
+future instance
+-> form a new immutable instanceRef
+-> consume prior checkpoint history
+-> preserve valid completed thresholds
+-> continue the current unconsumed edge
+-> append its own PR checkpoint when another threshold is crossed
+-> currentize this map
+
+future instance
+!= permission to rewrite predecessor checkpoint as its own contribution
+~~~
+
+The README is the current map and may evolve. PR checkpoint comments are threshold-history anchors and should remain historically scoped to what was true when they were written.
+
 ## Formation / integration boundary
 
 Project-local source is formed first:

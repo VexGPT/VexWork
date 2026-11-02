@@ -27,7 +27,10 @@
         "projects/vexlife-new-beginnings/README.md",
         "human.design.vexlife.new-beginnings.initial-engagement.20261101",
         "github.pull.vexlife-prod.1",
-        "github.commit.vexlife-prod.2fd6674a425919bf8696ea36dadd7d773cbd76a3"
+        "github.commit.vexlife-prod.2fd6674a425919bf8696ea36dadd7d773cbd76a3",
+        "github.pull.vexwork.199.comment.6568212464",
+        "github.pull.vexlife-prod.1.comment.6568211489",
+        "github.pull.vexlife-prod.2.comment.6568211912"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
@@ -54,7 +57,8 @@
         "github.repository.VexGPT.VexLife-Prod",
         "projects/vexlife-new-beginnings/README.md",
         "github.pull.vexlife-prod.1",
-        "github.commit.vexlife-prod.2fd6674a425919bf8696ea36dadd7d773cbd76a3"
+        "github.commit.vexlife-prod.2fd6674a425919bf8696ea36dadd7d773cbd76a3",
+        "github.pull.vexlife-prod.1.comment.6568211489"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
@@ -88,7 +92,8 @@
         "github.pull.vexlife-prod.1",
         "github.commit.vexlife-prod.2fd6674a425919bf8696ea36dadd7d773cbd76a3",
         "github.pull.vexlife-prod.2",
-        "github.commit.vexlife-prod.157f88a88afbd3ee925bb95af19a70aa650a6246"
+        "github.commit.vexlife-prod.157f88a88afbd3ee925bb95af19a70aa650a6246",
+        "github.pull.vexlife-prod.2.comment.6568211912"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
