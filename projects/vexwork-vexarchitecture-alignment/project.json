@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.vexwork.vexarchitecture-alignment",
+  "label": "VexWork VexArchitecture Alignment",
+  "purpose": "Refactor VexWork toward the relationship-constrained architecture patterns accepted in VexLife-Android and VexLife-Prod so work truth, discoverability, generated projections, reconciliation and integration remain structurally aligned; deterministic consequences converge automatically where lawful, unresolved relationships remain visibly held where not, and future AI instances can extend VexWork without relying on memory, manual aggregate edits or Victor rediscovering deferred obligations.",
+  "rootWorkRefs": [
+    "work.vexwork.vexarchitecture-alignment.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vexlife-android",
+    "repo.vexlife-prod"
+  ],
+  "sourceRefs": [
+    "projects/vexwork-vexarchitecture-alignment/README.md",
+    "docs/process/FORM-PROJECT.md",
+    "docs/foundation/PROCESS-MAP.md",
+    "docs/foundation/WORKGRAPH-COMPOSITION.md",
+    "docs/foundation/PROJECTS.md",
+    "docs/foundation/PROJECT-RECONCILIATION.md",
+    "docs/foundation/REPOSITORY-INTEGRATION.md",
+    "docs/foundation/DERIVED-ATTENTION.md",
+    "docs/foundation/ATTENTION-QUEUE.md",
+    "human.design.vexwork.vexarchitecture-alignment.20261101",
+    "github.commit.vexlife-android.66c866dea6a8dd78e2946da88715c4deb78c1847",
+    "repo.vexlife-android:architecture/vexarchitecture/README.md",
+    "repo.vexlife-android:architecture/vexarchitecture/REFINED-BOUNDARIES.md",
+    "github.commit.vexlife-prod.20919f21578eeff9d2e1d513a00e0cd66ecd72ea",
+    "repo.vexlife-prod:docs/CULTURE.md",
+    "repo.vexlife-prod:docs/foundation/SEMANTIC-CONTRACT-AUTHORING.md",
+    "repo.vexlife-prod:docs/foundation/VEXWEB-SPATIAL-FOUNDATION.md",
+    "project.vexlife.new-beginnings",
+    "github.pull.vexwork.199",
+    "github.issue-comment.vexwork.182.6570893418",
+    "github.issue-comment.vexwork.193.6570894001"
+  ],
+  "formedAt": "2026-11-02T06:50:00.000Z"
+}

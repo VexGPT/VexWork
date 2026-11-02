@@ -1,0 +1,251 @@
+{
+  "schemaVersion": "vexwork.workgraph-segment/v1",
+  "segmentRef": "segment.vexwork.vexarchitecture-alignment",
+  "graphRef": "workgraph.vexwork.foundation",
+  "items": [
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexwork.vexarchitecture-alignment.outcome",
+      "parentWorkRefOrNull": null,
+      "label": "VexWork VexArchitecture Alignment",
+      "purpose": "Make VexWork scale through explicit, source-addressable and validator-visible relationships rather than remembered aggregate edits: align VexWork foundations with the accepted VexArchitecture pattern of one semantic owner, bounded projections, derived consequences, fail-closed invalid relationships and truthful reconciliation, then prove a newly formed Project cannot silently disappear from canonical navigation.",
+      "workClass": "OUTCOME",
+      "state": "RUNNING",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-android",
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "project.vexwork.vexarchitecture-alignment",
+        "projects/vexwork-vexarchitecture-alignment/README.md",
+        "human.design.vexwork.vexarchitecture-alignment.20261101",
+        "github.commit.vexlife-android.66c866dea6a8dd78e2946da88715c4deb78c1847",
+        "github.commit.vexlife-prod.20919f21578eeff9d2e1d513a00e0cd66ecd72ea"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-11-02T06:50:00.000Z",
+      "updatedAt": "2026-11-02T06:50:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexwork.vexarchitecture-alignment.map-current-contracts",
+      "parentWorkRefOrNull": "work.vexwork.vexarchitecture-alignment.outcome",
+      "label": "Map current VexWork foundations to VexArchitecture contract patterns",
+      "purpose": "Read the existing Process Map, Projects, Workgraph Composition, Reconciliation, Integration, Derived Attention and public projection contracts; identify which relationships are already structurally owned, which still depend on manual restatement, and which accepted VexLife-Android/VexLife-Prod patterns translate without copying product-specific nouns.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/vexwork-vexarchitecture-alignment/README.md",
+        "docs/foundation/PROCESS-MAP.md",
+        "docs/foundation/PROJECTS.md",
+        "docs/foundation/WORKGRAPH-COMPOSITION.md",
+        "docs/foundation/PROJECT-RECONCILIATION.md",
+        "docs/foundation/REPOSITORY-INTEGRATION.md",
+        "repo.vexlife-android:architecture/vexarchitecture/README.md",
+        "repo.vexlife-android:architecture/vexarchitecture/REFINED-BOUNDARIES.md",
+        "repo.vexlife-prod:docs/CULTURE.md",
+        "repo.vexlife-prod:docs/foundation/VEXWEB-SPATIAL-FOUNDATION.md"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [
+        "process.vexwork.quality-review"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-11-02T06:50:00.000Z",
+      "updatedAt": "2026-11-02T06:50:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexwork.vexarchitecture-alignment.project-discoverability-contract",
+      "parentWorkRefOrNull": "work.vexwork.vexarchitecture-alignment.outcome",
+      "label": "Make Project discoverability a closed relationship contract",
+      "purpose": "Replace count- and memory-based Project registration with source-derived or exact-set-validated discoverability so every eligible source-managed Project resolves exactly once to its definition, Board and canonical Workgraph roots; use VexLife New Beginnings as the first regression patient zero and remove the possibility of green tests blessing an omitted Project.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexwork.vexarchitecture-alignment.map-current-contracts"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/vexwork-vexarchitecture-alignment/README.md",
+        "docs/process/FORM-PROJECT.md",
+        "docs/foundation/PROJECTS.md",
+        "blueprint/project-registry.json",
+        "test/project-registry.test.mjs",
+        "projects/vexlife-new-beginnings/project.json",
+        "workgraphs/segments/vexlife-new-beginnings.json"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [
+        "process.vexwork.quality-review",
+        "process.vexwork.integrate-ready-pull-requests"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-11-02T06:50:00.000Z",
+      "updatedAt": "2026-11-02T06:50:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexwork.vexarchitecture-alignment.generated-consequence-reconciliation",
+      "parentWorkRefOrNull": "work.vexwork.vexarchitecture-alignment.outcome",
+      "label": "Move generated aggregate convergence to the rightful composition/integration boundary",
+      "purpose": "Treat public Workgraph/workspace and any source-derived Project registry projection as deterministic consequences rather than ordinary lane-owned architecture; extend current integration/currentness behavior so accepted source changes re-ground, regenerate and verify required aggregate consequences without making unrelated source lanes race shared generated files.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexwork.vexarchitecture-alignment.project-discoverability-contract"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/vexwork-vexarchitecture-alignment/README.md",
+        "docs/foundation/WORKGRAPH-COMPOSITION.md",
+        "docs/foundation/REPOSITORY-INTEGRATION.md",
+        "docs/process/INTEGRATE-READY-PULL-REQUESTS.md",
+        "scripts/build-public-workgraph.mjs",
+        "scripts/build-public-workspace.mjs",
+        "workgraphs/public.json",
+        "public/workspace.json"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [
+        "process.vexwork.quality-review",
+        "process.vexwork.integrate-ready-pull-requests"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-11-02T06:50:00.000Z",
+      "updatedAt": "2026-11-02T06:50:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexwork.vexarchitecture-alignment.relationship-attention-healing",
+      "parentWorkRefOrNull": "work.vexwork.vexarchitecture-alignment.outcome",
+      "label": "Surface unresolved relationship closure without creating a second lifecycle",
+      "purpose": "When deterministic convergence is temporarily impossible because source custody, provider state or another exact predicate is held, derive read-only attention from the unsatisfied relationship and clear it from evidence once the relationship converges; do not require Victor or a successor model to remember prose TODOs and do not turn Attention into WorkState or mutation authority.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexwork.vexarchitecture-alignment.generated-consequence-reconciliation"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/vexwork-vexarchitecture-alignment/README.md",
+        "docs/foundation/DERIVED-ATTENTION.md",
+        "docs/foundation/ATTENTION-QUEUE.md",
+        "docs/foundation/PROJECT-RECONCILIATION.md"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [
+        "process.vexwork.promote-derived-concern",
+        "process.vexwork.quality-review"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-11-02T06:50:00.000Z",
+      "updatedAt": "2026-11-02T06:50:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexwork.vexarchitecture-alignment.end-to-end-foundation-proof",
+      "parentWorkRefOrNull": "work.vexwork.vexarchitecture-alignment.outcome",
+      "label": "Prove VexWork relationship closure end to end",
+      "purpose": "Pressure the aligned foundation with real Project formation and stale-consequence cases: a Project becomes source-addressable, Workgraph roots resolve, Board identity resolves, deterministic aggregate projections become current, an intentionally held consequence remains visible, and clearing the predicate removes the attention without manual human archaeology.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexwork.vexarchitecture-alignment.relationship-attention-healing"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/vexwork-vexarchitecture-alignment/README.md",
+        "projects/vexlife-new-beginnings/project.json",
+        "workgraphs/segments/vexlife-new-beginnings.json",
+        "public/workspace.json",
+        "test/public-workspace.test.mjs",
+        "test/workgraph-composition-source.test.mjs"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [
+        "process.vexwork.quality-review",
+        "process.vexwork.integrate-ready-pull-requests"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-11-02T06:50:00.000Z",
+      "updatedAt": "2026-11-02T06:50:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexwork.vexarchitecture-alignment.vexboard-projection-alignment",
+      "parentWorkRefOrNull": "work.vexwork.vexarchitecture-alignment.outcome",
+      "label": "Project aligned VexWork relationships into VexBoard after VexWork foundation proof",
+      "purpose": "Only after VexWork owns and proves the aligned relationship contracts, let VexBoard consume and visualize source owners, derived projections, unresolved closure and causal relationships without making VexBoard a healer, lifecycle owner or reason for VexWork to invent human-readable implementation identities.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [
+        "work.vexwork.vexarchitecture-alignment.end-to-end-foundation-proof"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/vexwork-vexarchitecture-alignment/README.md",
+        "docs/foundation/WORKGRAPH.md",
+        "vexboard/index.html",
+        "src/core/vexboard-source-projectors.mjs",
+        "test/vexboard-source-projectors.test.mjs",
+        "repo.vexlife-android:architecture/vexarchitecture/REFINED-BOUNDARIES.md"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [
+        "process.vexwork.quality-review"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-11-02T06:50:00.000Z",
+      "updatedAt": "2026-11-02T06:50:00.000Z"
+    }
+  ],
+  "transitions": [],
+  "sourceRefs": [
+    "project.vexwork.vexarchitecture-alignment",
+    "projects/vexwork-vexarchitecture-alignment/README.md",
+    "docs/foundation/WORKGRAPH-COMPOSITION.md",
+    "github.commit.vexlife-android.66c866dea6a8dd78e2946da88715c4deb78c1847",
+    "github.commit.vexlife-prod.20919f21578eeff9d2e1d513a00e0cd66ecd72ea"
+  ],
+  "formedAt": "2026-11-02T06:50:00.000Z"
+}
