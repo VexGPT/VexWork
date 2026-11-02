@@ -288,7 +288,7 @@ New Beginnings does not supersede earlier work:
 
 - `project.vexlife.interface-refinement` remains evidence/source for the proven Conversation, model, context, Memory/capability and currentness pathways.
 - `project.vexlife.blueprint-source-of-truth` remains evidence that portable semantic meaning should survive target-language/framework changes without making a target implementation canonical.
-- VexLife-Android PR #209 is current architecture pressure for Family / DisplayState / Execution / Dependency / Logger composition.
+- VexLife-Android PR #209 is merged provenance for the accepted Family / DisplayState / Execution / Dependency / Logger architecture now owned by VexLife-Android main.
 - Vextreme Terrain is the first public nested-browser practicum and remains Vextreme-owned source.
 
 The new Project asks how those earned truths compose in a fresh product container without inheriting their historical incidental structure.
@@ -365,14 +365,16 @@ Later
 ~~~text
 VEXWEB-F0  vocabulary pressure  [CURRENT / PROOF]
   -> accepted completed-view blueprint: VexLife-Prod PR #6
-  -> candidate: VexLife-Prod PR #7
-  -> head 66253c7188d551d79e89356eef0897da168dde86
-  -> tree 2bc0c4dc8dbb2def45238aae028f39de346de989
-  -> compiler-visible first fractal Workspace/Split/Send/Snackbar vocabulary formed
+  -> A001 candidate head 66253c7188d551d79e89356eef0897da168dde86
+  -> A001 RETURN sha256 03a7309be17244e29d19ec332e18bcbc8e80d38c97fc2537e0bd9f6cdbd71fa4
+  -> JVM compile/test PASS
+  -> JS SAFE_FAILURE: @JvmInline leaked JVM representation into commonMain
+  -> A002 head 68e0205650e0ec9502174beefc5adb1030994471
+  -> A002 tree b43d1dbc595c38f1485bf8b0474f1b34754e0739
+  -> typed source refs retained as platform-neutral data classes
   -> interactive nodes require explicit binding
   -> local/fallback targets must resolve in the same Surface
-  -> proof artifact sha256 866f6fdd27de0e99f5bf2ab48032b3d0e5cb2ffebdbeabbdf3f7c7e15bc41025
-  -> exact JVM/JS RETURN required before acceptance
+  -> exact A002 JVM/JS proof is next
 
 VEXWEB-F1  compiler-visible authoring
   -> Kotlin relationships bind Blueprint element identity + meaningful presentation parameters

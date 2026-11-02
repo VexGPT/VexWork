@@ -68,7 +68,11 @@
     "human.authorization.vexweb.f0.20261101",
     "github.pull.vexlife-prod.7",
     "github.commit.vexlife-prod.66253c7188d551d79e89356eef0897da168dde86",
-    "artifact.vexlife-prod.vexweb.f0.proof.a001.sha256.866f6fdd27de0e99f5bf2ab48032b3d0e5cb2ffebdbeabbdf3f7c7e15bc41025"
+    "artifact.vexlife-prod.vexweb.f0.proof.a001.sha256.866f6fdd27de0e99f5bf2ab48032b3d0e5cb2ffebdbeabbdf3f7c7e15bc41025",
+    "artifact.vexlife-prod.vexweb.f0.proof.a001.return.sha256.03a7309be17244e29d19ec332e18bcbc8e80d38c97fc2537e0bd9f6cdbd71fa4",
+    "github.pull.vexlife-prod.7.comment.6569880681",
+    "github.commit.vexlife-prod.68e0205650e0ec9502174beefc5adb1030994471",
+    "github.commit.vexlife-android.66c866dea6a8dd78e2946da88715c4deb78c1847"
   ],
   "formedAt": "2026-11-02T02:28:00.000Z"
 }
