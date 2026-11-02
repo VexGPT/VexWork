@@ -363,11 +363,16 @@ Later
 ### VexWeb queued construction trajectory
 
 ~~~text
-VEXWEB-F0  vocabulary pressure  [CURRENT]
+VEXWEB-F0  vocabulary pressure  [CURRENT / PROOF]
   -> accepted completed-view blueprint: VexLife-Prod PR #6
-  -> pressure the first fractal Workspace/Split/Send/Snackbar specimen
-  -> earn the smallest Element / Parameter / Layout / Depth / Interaction / Binding / Fallback vocabulary
-  -> do not create a generic web framework by theory
+  -> candidate: VexLife-Prod PR #7
+  -> head 66253c7188d551d79e89356eef0897da168dde86
+  -> tree 2bc0c4dc8dbb2def45238aae028f39de346de989
+  -> compiler-visible first fractal Workspace/Split/Send/Snackbar vocabulary formed
+  -> interactive nodes require explicit binding
+  -> local/fallback targets must resolve in the same Surface
+  -> proof artifact sha256 866f6fdd27de0e99f5bf2ab48032b3d0e5cb2ffebdbeabbdf3f7c7e15bc41025
+  -> exact JVM/JS RETURN required before acceptance
 
 VEXWEB-F1  compiler-visible authoring
   -> Kotlin relationships bind Blueprint element identity + meaningful presentation parameters
