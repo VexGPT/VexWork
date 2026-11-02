@@ -137,7 +137,7 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-11-02T04:55:00.000Z",
-      "updatedAt": "2026-11-02T05:59:00.000Z",
+      "updatedAt": "2026-11-02T06:16:00.000Z",
       "workRef": "work.vexlife.new-beginnings.p0.vexweb-foundation",
       "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
       "label": "P0 — establish VexWeb browser manifestation foundation",
@@ -184,7 +184,11 @@
         "artifact.vexlife-prod.vexweb.f1.proof.a001.return.sha256.3da3493468bc36d7db608205c2c74ee33d4407a621329dfccbd17b574d5db00f",
         "github.pull.vexlife-prod.10.comment.6570191802",
         "github.commit.vexlife-prod.069591b2f4a1570da2233c04c955ff42bd5ef049",
-        "human.design.vexweb.split-scalability.20261101"
+        "human.design.vexweb.split-scalability.20261101",
+        "github.pull.vexlife-prod.10.comment.6570385186",
+        "github.pull.vexlife-prod.11",
+        "github.commit.vexlife-prod.6e8c48ba801f682a1ef0a596698e5608d3e0e51b",
+        "human.design.vexweb.fractal-spatial-language.20261101"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
