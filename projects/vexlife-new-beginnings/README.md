@@ -363,25 +363,21 @@ Later
 ### VexWeb queued construction trajectory
 
 ~~~text
-VEXWEB-F0  vocabulary pressure  [CURRENT / PROOF]
-  -> accepted completed-view blueprint: VexLife-Prod PR #6
-  -> A001 candidate head 66253c7188d551d79e89356eef0897da168dde86
-  -> A001 RETURN sha256 03a7309be17244e29d19ec332e18bcbc8e80d38c97fc2537e0bd9f6cdbd71fa4
-  -> JVM compile/test PASS
-  -> JS SAFE_FAILURE: @JvmInline leaked JVM representation into commonMain
-  -> A002 head 68e0205650e0ec9502174beefc5adb1030994471
-  -> A002 RETURN sha256 899e5f9cc0fcd7646007fe003a7fffe785bda44bf6b492ea679bfff153e190b5
-  -> JVM/JS compile + tests PASS
-  -> threshold review found source-parent vs manifestation-containment collapse risk
-  -> A003 head 898789f1082dabff8278eca7581f694a33683274
-  -> A003 tree 29c7a57462a8795f209d0c9f7436901ce6c5b563
+VEXWEB-F0  vocabulary pressure  [ACCEPTED]
+  -> VexLife-Prod PR #7
+  -> merge 979ffaa31a94a94d44d0b0bc4c3dc532efb3eed2
+  -> tree  29c7a57462a8795f209d0c9f7436901ce6c5b563
+  -> proof RETURN sha256 0ebea0e6f2fcf628aaaca2a66272cd50d6578449022f2619a62d2b05f791ae01
+  -> exact JVM/JS compile + tests PASS
   -> sourceParentRef preserves Blueprint parent
   -> containerRef preserves VexWeb manifestation containment
-  -> exact A003 JVM/JS proof is next
 
-VEXWEB-F1  compiler-visible authoring
+VEXWEB-F1  compiler-visible authoring  [CURRENT / NEXT]
+  -> make accepted F0 relationships readable/compositional to author
+  -> preserve explicit split roles and bound targets
   -> Kotlin relationships bind Blueprint element identity + meaningful presentation parameters
   -> no freehand selector/property/string reconstruction
+  -> no HTML/CSS/JS generation yet
 
 VEXWEB-F2  deterministic artifact compiler
   -> VexWeb source -> normalized renderer-neutral projection
