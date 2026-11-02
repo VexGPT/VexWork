@@ -629,3 +629,25 @@ test('A4 starts only after A3 visible-held-closure proof completes', () => {
   assert.equal(a4.state, 'RUNNING');
   assert.deepEqual(a4.dependencyRefs, [a3.workRef]);
 });
+
+
+test('A4 whole-circuit proof is source-placed before final repository review', () => {
+  const a4 = graph.items.find((item) =>
+    item.workRef === 'work.vexwork.vexarchitecture-alignment.end-to-end-foundation-proof'
+  );
+  assert.equal(a4.state, 'RUNNING');
+  for (const ref of [
+    'test/vexwork-vexarchitecture-e2e.test.mjs',
+    'workspace-reader.js',
+    'index.html',
+  ]) {
+    assert.equal(a4.sourceRefs.includes(ref), true, ref);
+  }
+
+  const demo = architectureContract.demonstrations.find((entry) =>
+    entry.demonstrationRef === 'demo.vexwork.a4-whole-circuit-patient-zero'
+  );
+  assert.equal(demo.kind, 'ALIGNMENT_DOGFOOD');
+  assert.match(demo.visibleConsequence, /cannot silently disappear/i);
+  assert.match(demo.notThis, /repository-wide deterministic review/i);
+});

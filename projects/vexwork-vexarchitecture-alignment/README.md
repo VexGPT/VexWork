@@ -1100,6 +1100,42 @@ project.vexlife.new-beginnings
 project.vexwork.vexarchitecture-alignment
 ~~~
 
+#### A4 whole-circuit regression
+
+A4 now has one real-source end-to-end test:
+
+`test/vexwork-vexarchitecture-e2e.test.mjs`
+
+It proves, for New Beginnings and this Alignment Project:
+
+~~~text
+project.json identity
+-> exact composed Workgraph root
+-> source-derived Project Registry entry
+-> canonical default Board
+-> public workspace Project
+-> reader route / lookup / search
+-> Projects page generic workspace.projects renderer
+~~~
+
+The same test also proves:
+
+~~~text
+relationship UNSATISFIED
+-> ATTENTION
+
+same relationship SATISFIED with evidence
+-> CLEAR
+
+without changing canonical WorkState
+~~~
+
+and rejects a return to literal Project-count correctness.
+
+A4 is intentionally the stabilization point before the next host proof. Do not add another
+architecture layer merely because the test exists; run the complete deterministic review against the
+whole candidate once this source-level review is clear.
+
 ### A5 — VexBoard alignment
 
 Only after A4, project accepted VexWork source/projection/discrepancy relationships into VexBoard.

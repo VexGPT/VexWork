@@ -1009,6 +1009,31 @@
       "relationship": "At A3 source head bd96fbf6..., the Alignment A3 segment item had two sourceRefs absent from the prior generated public Workgraph, so the accepted-source-to-generated-consequence relationship was UNSATISFIED/ATTENTION. The A3 completion change regenerates the same consequence and the same stable relationship becomes SATISFIED/CLEAR.",
       "visibleConsequence": "A real held source->generated consequence remained visibly ATTENTION until regeneration, then the same relationshipRef cleared from current evidence; no WorkState transition was caused by attention itself.",
       "notThis": "A generic relationship truth owner, automatic source repair, mutation permission, Work creation, or a persistent OPEN/DONE attention lifecycle."
+    },
+    {
+      "demonstrationRef": "demo.vexwork.a4-whole-circuit-patient-zero",
+      "kind": "ALIGNMENT_DOGFOOD",
+      "lawRefs": [
+        "law.vexwork.rightful-semantic-owner",
+        "law.vexwork.relationship-authored-once",
+        "law.vexwork.generated-consequence",
+        "law.vexwork.visible-held-closure",
+        "law.vexwork.proof-follows-claim",
+        "law.vexwork.explicit-construction"
+      ],
+      "sourceRefs": [
+        "test/vexwork-vexarchitecture-e2e.test.mjs",
+        "workspace-reader.js",
+        "index.html",
+        "projects/vexlife-new-beginnings/project.json",
+        "projects/vexwork-vexarchitecture-alignment/project.json",
+        "blueprint/project-registry.json",
+        "workgraphs/public.json",
+        "public/workspace.json"
+      ],
+      "relationship": "New Beginnings and VexWork VexArchitecture Alignment flow from validated Project source through exact Workgraph composition, derived default Board/discoverability, public workspace and the ordinary VexWork reader, while relationship currentness independently demonstrates ATTENTION -> CLEAR on the same stable relationship identity.",
+      "visibleConsequence": "A source-managed Project cannot silently disappear from the Projects surface while deterministic checks remain green; the reader consumes workspace.projects directly and the same whole-circuit test proves source, generated consequence, navigation and held/clear semantics together.",
+      "notThis": "A literal Project-count law, a browser-owned Project registry, a substitute for repository-wide deterministic review, or permission for VexBoard to become a VexWork truth owner."
     }
   ]
 }
