@@ -314,17 +314,20 @@ P0 · clean repository foundation
 
             [CURRENT / PROOF] Compose reference realization
                               VexLife-Prod PR #4
-                              head 68779f09bd9614ad6c9252951cf90e32b1c4c8b4
-                              tree 494cede06812565bedc1511ce07ef1d946f89a1e
+                              A001 head 68779f09bd9614ad6c9252951cf90e32b1c4c8b4
+                              A001 RETURN sha256 890e854c307a0c85b39e0ba1b1f4ced6994b048f4bb666a8268303616242dda3
+                              SAFE_FAILURE before Kotlin source compile:
+                              missing Google Maven dependency repository
+
+                              A002 head 8f7ff7b99dacb4c6324f71b78b52c34ac352f288
+                              A002 tree af55e7620e81089b53d4c66bc3005ae08cca500c
 
                               [FORMED] compiler-visible Blueprint element handles
                               [FORMED] JVM Desktop Compose reference shell
                               [FORMED] local Conversation/Settings visual state without Family
-                              [FORMED] reference-only DisplayState -> UI / UI -> Control specimen
-                              [HOST PROOF FORMED] artifact.vexlife-prod.p0.compose-reference-proof.a001.sha256.5a4b9daa60089b0cdf1499cf7fe3f23dd320544c16427e844c5f4adf200ef80c
-                                                  exact candidate JVM + JS proof
-                                                  read-only; no push
-                                                  RETURN required before threshold claim
+                              [FORMED] tighter Family generic compiler fences aligned with #209
+                              [FORMED] Family.Parameter identity carried Control -> Effect in reference specimen
+                              [HELD] exact Compose/Kotlin JVM + retained JS proof
 
             [WAITING] deterministic portable renderer contract
 
