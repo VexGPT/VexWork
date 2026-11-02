@@ -374,14 +374,18 @@ VEXWEB-F0  vocabulary pressure  [ACCEPTED]
 
 VEXWEB-F1  compiler-visible authoring  [CURRENT / PROOF]
   -> VexLife-Prod PR #10
-  -> head 9a318a093527a5f6ce61fd176fc7ded3b487a09e
-  -> tree fb19f4f00473c6fccc46ad83fa0ee99b69ad43ba
-  -> @VexWebDsl + bounded Surface/Split/Children scopes formed
-  -> accepted F0 specimen rewritten through compositional/fractal authoring
-  -> explicit split roles and bound targets preserved
-  -> no new F0 meaning; no HTML/CSS/JS generation
-  -> proof artifact sha256 36bb5da3e33cd3ed046effc046cd6bec367e6874dc781fb46f927d469da174b8
-  -> exact JVM/JS RETURN required before acceptance
+  -> A001 head 9a318a093527a5f6ce61fd176fc7ded3b487a09e
+  -> A001 RETURN sha256 3da3493468bc36d7db608205c2c74ee33d4407a621329dfccbd17b574d5db00f
+  -> JVM/JS compile + tests PASS
+  -> human scalability pressure: Split must compose beyond two panes
+  -> recursive Split already scales because leading/trailing are Node
+  -> missing authored intention was SplitAxis
+  -> A002 head 069591b2f4a1570da2233c04c955ff42bd5ef049
+  -> A002 tree 73b858fe7afccd2a41e674f80cb9e21dd07e85f8
+  -> SplitAxis.Horizontal / Vertical added
+  -> four-pane 2x2 specimen = Horizontal Split containing two Vertical Splits
+  -> no Grid/MultiSplit/Partition ontology added
+  -> exact A002 JVM/JS proof is next
 
 VEXWEB-F2  deterministic artifact compiler
   -> VexWeb source -> normalized renderer-neutral projection
