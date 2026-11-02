@@ -311,8 +311,11 @@ P0 · clean repository foundation
             [FORMED] rooted initial VexLife workspace Blueprint
             [PASS / DISPOSABLE] Kotlin 1.9 formation compile + specimen probe
             [FORMED] exact Gradle 9.6 text launchers + wrapper properties
-            [HELD / HOST] exact wrapper JAR blob b1b8ef56b44f16b14dc800fa8103a6d89abb526f
-            [HELD] exact Kotlin 2.4.20 JVM + JS + common-test proof
+            [HOST ACTION FORMED] artifact.vexlife-prod.p0.semantic-proof.a001.sha256.de57be1c348b4080f0e1e4fc70b4bf266633ca2e346b1e92078793fc502e90f1
+                                 exact wrapper JAR blob b1b8ef56b44f16b14dc800fa8103a6d89abb526f
+                                 exact Kotlin 2.4.20 JVM + JS + common-test proof
+                                 push only on PASS
+                                 RETURN required before threshold claim
             [WAITING] Compose reference realization
             [WAITING] deterministic portable renderer contract
 
