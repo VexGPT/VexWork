@@ -16,6 +16,7 @@ import {
 
 const read = (relative) => JSON.parse(fs.readFileSync(new URL(`../${relative}`, import.meta.url), 'utf8'));
 const project = createProject(read('projects/vexboard/project.json'));
+const alignmentProject = createProject(read('projects/vexwork-vexarchitecture-alignment/project.json'));
 const graph = createWorkgraph(read('workgraphs/public.json'), read('blueprint/work-registry.json'));
 const repositoryRegistry = read('blueprint/repository-registry.json');
 const processRegistry = read('blueprint/process-registry.json');
@@ -23,38 +24,60 @@ const processMap = projectProcessMap(processRegistry);
 
 function relationshipAttentionSnapshot() {
   return createRelationshipAttentionQueueSnapshot({
-    queueRef: 'queue.vexwork.relationship-currentness.vexboard-fixture',
-    snapshotRef: 'snapshot.vexwork.relationship-currentness.vexboard-fixture.001',
+    queueRef: 'queue.vexwork.relationship-currentness.alignment-fixture',
+    snapshotRef: 'snapshot.vexwork.relationship-currentness.alignment-fixture.001',
     ownerRepositoryRef: 'repo.vexwork',
-    label: 'VexBoard relationship currentness fixture',
-    purpose: 'Expose already-owned VexWork relationship currentness to VexBoard without granting projection authority.',
+    label: 'VexArchitecture Alignment relationship currentness fixture',
+    purpose: 'Expose already-owned Alignment relationship currentness to VexBoard without granting projection authority.',
     observedAt: '2026-11-03T03:25:00.000Z',
-    sourceRefs: ['source.vexwork.relationship-currentness.vexboard-fixture'],
+    sourceRefs: ['project.vexwork.vexarchitecture-alignment'],
     relationships: [
       {
-        relationshipRef: 'relationship.vexboard.source-projectors.currentness',
-        subjectRef: 'project.vexboard',
+        relationshipRef: 'relationship.vexwork.accepted-source-to-generated-consequences',
+        subjectRef: 'project.vexwork.vexarchitecture-alignment',
         subjectKind: 'vexwork.project',
-        label: 'Source projector relationship currentness',
+        label: 'Accepted source to generated consequence currentness',
         relationshipState: 'UNSATISFIED',
         observedAt: '2026-11-03T03:24:00.000Z',
-        reasonRefs: ['reason.vexboard.source-projectors.consequence-held'],
-        evidenceRefs: ['evidence.vexboard.source-projectors.stale-consequence'],
-        sourceRefs: ['src/core/vexboard-source-projectors.mjs'],
-        existingWorkRefs: ['work.vexboard.source-projectors'],
+        reasonRefs: ['reason.vexwork.generated-consequence.stale'],
+        evidenceRefs: ['evidence.vexwork.generated-consequence.stale'],
+        sourceRefs: [
+          'workgraphs/segments/vexwork-vexarchitecture-alignment.json',
+          'workgraphs/public.json',
+        ],
+        existingWorkRefs: ['work.vexwork.vexarchitecture-alignment.generated-consequence-reconciliation'],
         processRefOrNull: null,
       },
       {
-        relationshipRef: 'relationship.vexboard.vexsync-convergence.currentness',
-        subjectRef: 'project.vexboard',
+        relationshipRef: 'relationship.vexwork.project-source-to-discoverability',
+        subjectRef: 'project.vexwork.vexarchitecture-alignment',
         subjectKind: 'vexwork.project',
-        label: 'VexSync convergence relationship currentness',
+        label: 'Project source to discoverability currentness',
         relationshipState: 'SATISFIED',
         observedAt: '2026-11-03T03:24:30.000Z',
-        reasonRefs: ['reason.vexboard.vexsync-convergence.current'],
-        evidenceRefs: ['evidence.vexboard.vexsync-convergence.current'],
-        sourceRefs: ['work.vexboard.vexsync-architecture-convergence'],
-        existingWorkRefs: ['work.vexboard.vexsync-architecture-convergence'],
+        reasonRefs: ['reason.vexwork.project-discoverability.current'],
+        evidenceRefs: ['evidence.vexwork.project-discoverability.current'],
+        sourceRefs: [
+          'projects/vexwork-vexarchitecture-alignment/project.json',
+          'blueprint/project-registry.json',
+        ],
+        existingWorkRefs: ['work.vexwork.vexarchitecture-alignment.project-discoverability-contract'],
+        processRefOrNull: null,
+      },
+      {
+        relationshipRef: 'relationship.vexwork.truth-to-vexboard-projection',
+        subjectRef: 'project.vexwork.vexarchitecture-alignment',
+        subjectKind: 'vexwork.project',
+        label: 'VexWork truth to VexBoard projection currentness',
+        relationshipState: 'UNKNOWN',
+        observedAt: '2026-11-03T03:24:45.000Z',
+        reasonRefs: ['reason.vexwork.vexboard-projection.proof-pending'],
+        evidenceRefs: [],
+        sourceRefs: [
+          'src/core/vexboard-source-projectors.mjs',
+          'test/vexboard-source-projectors.test.mjs',
+        ],
+        existingWorkRefs: ['work.vexwork.vexarchitecture-alignment.vexboard-projection-alignment'],
         processRefOrNull: null,
       },
     ],
@@ -114,21 +137,21 @@ test('VexWork Project source projector preserves source ownership and currentnes
   assert.equal(first.graph.nodes.some((node) => node.kind === 'PROCESS'), false);
 });
 
-test('VexWork Project source projector preserves relationship Attention identity and evidence without owning currentness', () => {
+test('VexWork Project source projector preserves Alignment relationship identity and evidence without owning currentness', () => {
   const attentionSnapshot = relationshipAttentionSnapshot();
   const projected = projectVexWorkProjectSource({
-    project,
+    project: alignmentProject,
     graph,
     processMap,
     attentionSnapshotOrNull: attentionSnapshot,
-    boardRef: 'board.vexwork.project.vexboard.relationship-currentness',
+    boardRef: 'board.vexwork.project.vexarchitecture-alignment.relationship-currentness',
   });
 
-  const heldRef = 'relationship.vexboard.source-projectors.currentness';
+  const heldRef = 'relationship.vexwork.accepted-source-to-generated-consequences';
   const heldNode = projected.graph.nodes.find((node) => node.nodeRef === heldRef);
   assert.equal(heldNode.kind, 'REFERENCE');
-  assert.equal(heldNode.sourceRefs.includes('reason.vexboard.source-projectors.consequence-held'), true);
-  assert.equal(heldNode.sourceRefs.includes('evidence.vexboard.source-projectors.stale-consequence'), true);
+  assert.equal(heldNode.sourceRefs.includes('reason.vexwork.generated-consequence.stale'), true);
+  assert.equal(heldNode.sourceRefs.includes('evidence.vexwork.generated-consequence.stale'), true);
 
   const heldCurrentness = projected.graph.nodes.find(
     (node) => node.nodeRef === `annotation.${heldRef}.currentness`,
@@ -140,24 +163,34 @@ test('VexWork Project source projector preserves relationship Attention identity
   const heldReasons = projected.graph.nodes.find(
     (node) => node.nodeRef === `annotation.${heldRef}.reasons`,
   );
-  assert.match(heldReasons.label, /reason\.vexboard\.source-projectors\.consequence-held/);
+  assert.match(heldReasons.label, /reason\.vexwork\.generated-consequence\.stale/);
 
   const heldEvidence = projected.graph.nodes.find(
     (node) => node.nodeRef === `annotation.${heldRef}.evidence`,
   );
-  assert.match(heldEvidence.label, /evidence\.vexboard\.source-projectors\.stale-consequence/);
+  assert.match(heldEvidence.label, /evidence\.vexwork\.generated-consequence\.stale/);
 
   assert.ok(projected.graph.relationships.some(
     (relationship) => relationship.fromRef === heldRef
-      && relationship.toRef === 'work.vexboard.source-projectors'
+      && relationship.toRef === 'work.vexwork.vexarchitecture-alignment.generated-consequence-reconciliation'
       && relationship.labelOrNull === 'CURRENTNESS_OF',
   ));
 
-  const clearRef = 'relationship.vexboard.vexsync-convergence.currentness';
+  const clearRef = 'relationship.vexwork.project-source-to-discoverability';
   const clearCurrentness = projected.graph.nodes.find(
     (node) => node.nodeRef === `annotation.${clearRef}.currentness`,
   );
   assert.match(clearCurrentness.label, /Attention: CLEAR/);
+
+  const unknownRef = 'relationship.vexwork.truth-to-vexboard-projection';
+  const unknownCurrentness = projected.graph.nodes.find(
+    (node) => node.nodeRef === `annotation.${unknownRef}.currentness`,
+  );
+  assert.match(unknownCurrentness.label, /Attention: UNKNOWN/);
+  assert.equal(
+    projected.graph.nodes.some((node) => node.nodeRef === `annotation.${unknownRef}.evidence`),
+    false,
+  );
 
   assert.deepEqual(projected.effects, {
     sourceMutationPerformed: false,
@@ -173,11 +206,11 @@ test('VexWork source projector rejects tampered Attention truth instead of repai
 
   assert.throws(
     () => projectVexWorkProjectSource({
-      project,
+      project: alignmentProject,
       graph,
       processMap,
       attentionSnapshotOrNull: tampered,
-      boardRef: 'board.vexwork.project.vexboard.tampered-attention',
+      boardRef: 'board.vexwork.project.vexarchitecture-alignment.tampered-attention',
     }),
     /semanticFingerprint mismatch/,
   );
