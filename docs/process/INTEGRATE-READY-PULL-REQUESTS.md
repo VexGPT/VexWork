@@ -91,6 +91,37 @@ Stop or hold the affected entry when:
 
 A conflict in one entry does not automatically block another independent, higher-or-lower queue entry whose dependencies remain satisfied.
 
+### Re-derive deterministic consequences
+
+Before treating a textual conflict in a generated path as a source conflict, identify whether the
+target repository declares that path as a deterministic consequence.
+
+For VexWork:
+
+~~~text
+blueprint/project-registry.json
+workgraphs/public.json
+public/workspace.json
+~~~
+
+are rebuilt from current Project / Workgraph source.
+
+If an older candidate also changes those paths:
+
+~~~text
+preserve its rightful Project / segment source
+-> compose with current source
+-> regenerate consequences
+-> compare/prove the generated result
+
+do not:
+  choose the older aggregate snapshot
+  let PR opening order define current truth
+  hand-edit generated output to hide a source mismatch
+~~~
+
+Only a real semantic-source overlap is routed back to source ownership.
+
 ## Completion
 
 The Steward session is complete when the queue is drained or no admissible entry remains.

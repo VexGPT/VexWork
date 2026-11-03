@@ -1,144 +1,160 @@
 {
   "schemaVersion": "vexwork.project-registry/v1",
   "registryRef": "registry.vexwork.projects.001",
-  "registryVersion": 17,
+  "registryVersion": 19,
   "purpose": "Locate source-managed Projects and their Workgraph, Board, and optional agency-policy sources without making the registry another owner of work state.",
   "projects": [
     {
       "projectRef": "project.vexwork.foundation",
       "workgraphRef": "workgraph.vexwork.foundation",
+      "workgraphPath": "workgraphs/public.json",
       "definitionPath": "projects/vexwork-foundation/project.json",
-      "boardViewPath": "projects/vexwork-foundation/board.view.json",
-      "agencyPolicyPathOrNull": null,
-      "workgraphPath": "workgraphs/public.json"
+      "boardViewPath": null,
+      "agencyPolicyPathOrNull": null
     },
     {
       "projectRef": "project.vexstream.mobile-library",
       "workgraphRef": "workgraph.vexwork.foundation",
+      "workgraphPath": "workgraphs/public.json",
       "definitionPath": "projects/vexstream-mobile-library/project.json",
-      "boardViewPath": "projects/vexstream-mobile-library/board.view.json",
-      "agencyPolicyPathOrNull": "projects/vexstream-mobile-library/agency.policy.json",
-      "workgraphPath": "workgraphs/public.json"
+      "boardViewPath": null,
+      "agencyPolicyPathOrNull": "projects/vexstream-mobile-library/agency.policy.json"
     },
     {
       "projectRef": "project.android-proof-orchestration",
       "workgraphRef": "workgraph.vexwork.foundation",
+      "workgraphPath": "workgraphs/public.json",
       "definitionPath": "projects/android-proof-orchestration/project.json",
-      "boardViewPath": "projects/android-proof-orchestration/board.view.json",
-      "agencyPolicyPathOrNull": null,
-      "workgraphPath": "workgraphs/public.json"
+      "boardViewPath": null,
+      "agencyPolicyPathOrNull": null
     },
     {
       "projectRef": "project.vexlife.tocompletion",
       "workgraphRef": "workgraph.vexwork.foundation",
+      "workgraphPath": "workgraphs/public.json",
       "definitionPath": "projects/vexlife-tocompletion/project.json",
-      "boardViewPath": "projects/vexlife-tocompletion/board.view.json",
-      "agencyPolicyPathOrNull": null,
-      "workgraphPath": "workgraphs/public.json"
+      "boardViewPath": null,
+      "agencyPolicyPathOrNull": null
     },
     {
       "projectRef": "project.vexlife.connected-services",
       "workgraphRef": "workgraph.vexwork.foundation",
+      "workgraphPath": "workgraphs/public.json",
       "definitionPath": "projects/vexlife-connected-services/project.json",
-      "boardViewPath": "projects/vexlife-connected-services/board.view.json",
-      "agencyPolicyPathOrNull": null,
-      "workgraphPath": "workgraphs/public.json"
+      "boardViewPath": null,
+      "agencyPolicyPathOrNull": null
     },
     {
       "projectRef": "project.vexwork.operational-console",
       "workgraphRef": "workgraph.vexwork.foundation",
+      "workgraphPath": "workgraphs/public.json",
       "definitionPath": "projects/vexwork-operational-console/project.json",
-      "boardViewPath": "projects/vexwork-operational-console/board.view.json",
-      "agencyPolicyPathOrNull": null,
-      "workgraphPath": "workgraphs/public.json"
+      "boardViewPath": null,
+      "agencyPolicyPathOrNull": null
     },
     {
       "projectRef": "project.vexboard",
       "workgraphRef": "workgraph.vexwork.foundation",
+      "workgraphPath": "workgraphs/public.json",
       "definitionPath": "projects/vexboard/project.json",
-      "boardViewPath": "projects/vexboard/board.view.json",
-      "agencyPolicyPathOrNull": null,
-      "workgraphPath": "workgraphs/public.json"
+      "boardViewPath": null,
+      "agencyPolicyPathOrNull": null
     },
     {
       "projectRef": "project.vex-universe",
       "workgraphRef": "workgraph.vexwork.foundation",
+      "workgraphPath": "workgraphs/public.json",
       "definitionPath": "projects/vex-universe/project.json",
-      "boardViewPath": "projects/vex-universe/board.view.json",
-      "agencyPolicyPathOrNull": null,
-      "workgraphPath": "workgraphs/public.json"
+      "boardViewPath": null,
+      "agencyPolicyPathOrNull": null
     },
     {
       "projectRef": "project.vexlife.blueprint-source-of-truth",
       "workgraphRef": "workgraph.vexwork.foundation",
+      "workgraphPath": "workgraphs/public.json",
       "definitionPath": "projects/vexlife-blueprint-source-of-truth/project.json",
-      "boardViewPath": "projects/vexlife-blueprint-source-of-truth/board.view.json",
-      "agencyPolicyPathOrNull": null,
-      "workgraphPath": "workgraphs/public.json"
+      "boardViewPath": null,
+      "agencyPolicyPathOrNull": null
     },
     {
       "projectRef": "project.vextreme.vexsite-localization",
       "workgraphRef": "workgraph.vexwork.foundation",
+      "workgraphPath": "workgraphs/public.json",
       "definitionPath": "projects/vexsite-localization/project.json",
-      "boardViewPath": "projects/vexsite-localization/board.view.json",
-      "agencyPolicyPathOrNull": null,
-      "workgraphPath": "workgraphs/public.json"
+      "boardViewPath": null,
+      "agencyPolicyPathOrNull": null
     },
     {
       "projectRef": "project.vexlife.welcome-wagon",
       "workgraphRef": "workgraph.vexwork.foundation",
+      "workgraphPath": "workgraphs/public.json",
       "definitionPath": "projects/vexlife-welcome-wagon/project.json",
-      "boardViewPath": "projects/vexlife-welcome-wagon/board.view.json",
-      "agencyPolicyPathOrNull": null,
-      "workgraphPath": "workgraphs/public.json"
+      "boardViewPath": null,
+      "agencyPolicyPathOrNull": null
     },
     {
       "projectRef": "project.vexlife-android.current-state-refinement",
       "workgraphRef": "workgraph.vexwork.foundation",
+      "workgraphPath": "workgraphs/public.json",
       "definitionPath": "projects/vexlife-android-current-state-refinement/project.json",
-      "boardViewPath": "projects/vexlife-android-current-state-refinement/board.view.json",
-      "agencyPolicyPathOrNull": null,
-      "workgraphPath": "workgraphs/public.json"
+      "boardViewPath": null,
+      "agencyPolicyPathOrNull": null
     },
     {
       "projectRef": "project.vex.security-assurance",
       "workgraphRef": "workgraph.vexwork.foundation",
+      "workgraphPath": "workgraphs/public.json",
       "definitionPath": "projects/vex-security-assurance/project.json",
-      "boardViewPath": "projects/vex-security-assurance/board.view.json",
-      "agencyPolicyPathOrNull": null,
-      "workgraphPath": "workgraphs/public.json"
+      "boardViewPath": null,
+      "agencyPolicyPathOrNull": null
     },
     {
       "projectRef": "project.android-widget-foundation",
       "workgraphRef": "workgraph.vexwork.foundation",
+      "workgraphPath": "workgraphs/public.json",
       "definitionPath": "projects/android-widget-foundation/project.json",
-      "boardViewPath": "projects/android-widget-foundation/board.view.json",
-      "agencyPolicyPathOrNull": null,
-      "workgraphPath": "workgraphs/public.json"
+      "boardViewPath": null,
+      "agencyPolicyPathOrNull": null
     },
     {
       "projectRef": "project.vexlife.interface-refinement",
       "workgraphRef": "workgraph.vexwork.foundation",
+      "workgraphPath": "workgraphs/public.json",
       "definitionPath": "projects/vexlife-interface-refinement/project.json",
-      "boardViewPath": "projects/vexlife-interface-refinement/board.view.json",
-      "agencyPolicyPathOrNull": null,
-      "workgraphPath": "workgraphs/public.json"
+      "boardViewPath": null,
+      "agencyPolicyPathOrNull": null
     },
     {
       "projectRef": "project.vexsync.debugmenu-blueprints",
       "workgraphRef": "workgraph.vexwork.foundation",
+      "workgraphPath": "workgraphs/public.json",
       "definitionPath": "projects/vexsync-debugmenu-blueprints/project.json",
-      "boardViewPath": "projects/vexsync-debugmenu-blueprints/board.view.json",
-      "agencyPolicyPathOrNull": null,
-      "workgraphPath": "workgraphs/public.json"
+      "boardViewPath": null,
+      "agencyPolicyPathOrNull": null
     },
     {
       "projectRef": "project.vextreme.architecture-convergence",
       "workgraphRef": "workgraph.vexwork.foundation",
+      "workgraphPath": "workgraphs/public.json",
       "definitionPath": "projects/vextreme-architecture-convergence/project.json",
-      "boardViewPath": "projects/vextreme-architecture-convergence/board.view.json",
-      "agencyPolicyPathOrNull": null,
-      "workgraphPath": "workgraphs/public.json"
+      "boardViewPath": null,
+      "agencyPolicyPathOrNull": null
+    },
+    {
+      "projectRef": "project.vexlife.new-beginnings",
+      "workgraphRef": "workgraph.vexwork.foundation",
+      "workgraphPath": "workgraphs/public.json",
+      "definitionPath": "projects/vexlife-new-beginnings/project.json",
+      "boardViewPath": null,
+      "agencyPolicyPathOrNull": null
+    },
+    {
+      "projectRef": "project.vexwork.vexarchitecture-alignment",
+      "workgraphRef": "workgraph.vexwork.foundation",
+      "workgraphPath": "workgraphs/public.json",
+      "definitionPath": "projects/vexwork-vexarchitecture-alignment/project.json",
+      "boardViewPath": null,
+      "agencyPolicyPathOrNull": null
     }
   ]
 }

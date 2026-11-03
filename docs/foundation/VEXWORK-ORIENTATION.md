@@ -50,6 +50,12 @@ VexWork repository
   -> AGENTS.md
   -> docs/CULTURE.md
   -> docs/foundation/INDEX.md
+  -> when the question is VexWork architecture itself, repeated relationship
+     restatement, discoverability/projection drift, generated consequence
+     ownership, or later VexBoard alignment:
+     -> projects/vexwork-vexarchitecture-alignment/README.md
+     -> projects/vexwork-vexarchitecture-alignment/architecture.contract.json
+     -> treat this as active evolution source, not accepted Foundation authority
   -> implicated VexWork foundations
 
 VexRelay relationship
@@ -62,6 +68,39 @@ target repository
 ~~~
 
 Do not copy those owners into this document. This orientation surface exists so a fresh reader can compile their current meaning together.
+
+## Architecture evolution is discoverable but does not become authority
+
+The Foundation Index also exposes current source-managed architecture-evolution trajectories when
+VexWork itself is being changed.
+
+The current VexArchitecture alignment route is:
+
+~~~text
+docs/foundation/INDEX.md
+-> projects/vexwork-vexarchitecture-alignment/README.md
+-> projects/vexwork-vexarchitecture-alignment/architecture.contract.json
+~~~
+
+Read it when the foreground pressure concerns VexWork architecture, duplicated/forgettable
+relationships, generated consequences, Project discoverability, or the later VexBoard projection
+boundary.
+
+The distinction is permanent:
+
+~~~text
+CURRENT EVOLUTION PROJECT
+  preserves intention, observed pressure, candidate relationships and current Work
+
+CURRENT FOUNDATION SOURCE
+  remains accepted VexWork authority
+
+EVOLUTION PROJECT != FOUNDATION REPLACEMENT
+PR / CANDIDATE != ACCEPTED ARCHITECTURE
+~~~
+
+This gives a fresh instance enough visibility to continue the architecture trajectory without
+turning a predecessor's candidate into current truth by discoverability alone.
 
 ## The orientation walk
 

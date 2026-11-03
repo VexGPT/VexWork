@@ -1,0 +1,1304 @@
+# VexWork VexArchitecture Alignment
+
+[VXG RealForever]
+
+## Human outcome
+
+Refactor VexWork so it scales through the relationship-constrained construction discipline already stabilized in VexLife-Android and pressure-tested again in VexLife-Prod:
+
+~~~
+human intention
+-> rightful semantic owner
+-> explicit source-addressable relationship
+-> validator-visible consequence
+-> bounded projection / realization
+-> proof matching the claim
+~~~
+
+Do not copy Kotlin, Family, Frame, Seam, Region, or other product-specific nouns into VexWork.
+
+The transferable law is smaller:
+
+> If VexWork can derive that a relationship must exist, correctness should not depend on a later worker remembering to restate it. If the relationship cannot yet converge, the unsatisfied relationship should remain visibly owed until it does.
+
+## Patient zero
+
+The current failure is project.vexlife.new-beginnings.
+
+Accepted VexWork main contains:
+
+~~~
+projects/vexlife-new-beginnings/project.json
+projects/vexlife-new-beginnings/board.view.json
+workgraphs/segments/vexlife-new-beginnings.json
+~~~
+
+while current aggregate truth omits it:
+
+~~~
+blueprint/project-registry.json
+  -> no project.vexlife.new-beginnings
+
+workgraphs/public.json
+  -> no work.vexlife.new-beginnings.outcome
+
+public/workspace.json
+  -> no New Beginnings Project
+
+VexWork Projects page
+  -> Project not navigable
+~~~
+
+PR #199 originally held shared aggregate integration for a legitimate coordination reason. The architecture gap is that a temporary hold can become an invisible unfinished relationship.
+
+~~~
+respect another writer
+-> merge rightful local source
+-> lose convergence obligation
+-> durable work exists
+-> navigation omits it
+-> Victor / successor must rediscover it
+~~~
+
+This Project exists to make that failure structurally difficult rather than culturally discouraged.
+
+## Accepted architecture references
+
+VexLife-Android accepted main:
+
+~~~
+66c866dea6a8dd78e2946da88715c4deb78c1847
+~~~
+
+Relevant sources:
+
+~~~
+architecture/vexarchitecture/README.md
+architecture/vexarchitecture/REFINED-BOUNDARIES.md
+~~~
+
+Transferable patterns:
+
+- one rightful semantic owner;
+- active/runtime truth is not duplicated into a second ledger;
+- identity derives from already-authored structure where possible;
+- chronology/observability has its own owner;
+- downstream projections consume truth rather than forcing projection-shaped identities into the source.
+
+VexLife-Prod accepted main:
+
+~~~
+20919f21578eeff9d2e1d513a00e0cd66ecd72ea
+~~~
+
+Relevant sources:
+
+~~~
+docs/CULTURE.md
+docs/foundation/SEMANTIC-CONTRACT-AUTHORING.md
+docs/foundation/VEXWEB-SPATIAL-FOUNDATION.md
+src/commonMain/kotlin/vexlife/semantic/
+src/commonMain/kotlin/vexlife/blueprint/
+src/commonMain/kotlin/vexlife/web/
+~~~
+
+Transferable pattern:
+
+~~~
+stable relationship
+-> compiler / validator can see it
+
+invalid relationship
+-> fail where authored
+
+generated consequence
+-> derive from rightful source
+-> do not hand-maintain as independent architecture
+
+projection / renderer
+-> consume existing identity
+-> do not reconstruct identity from memory
+~~~
+
+VexWeb A002 is the strongest analogy:
+
+~~~
+authored Region / Seam relationship
+-> resolve enough geometry to validate it
+-> impossible geometry FAILS
+-> renderer is not allowed to repair or guess
+~~~
+
+VexWork should apply the same discipline to its own relationships.
+
+
+## Full architecture intention — not a pattern library
+
+This alignment is not permission to cherry-pick one convenient VexArchitecture technique such as
+"add a validator" while retaining the older assumption that static duplicate structures, remembered
+string relationships, peer wrapper APIs and manually synchronized projections are normal.
+
+The transferable whole property is:
+
+~~~
+meaning is authored once by the rightful owner
+-> source makes the relationship explicit
+-> identity already present in that relationship is carried forward
+-> construction exposes only declared prerequisites
+-> connective layers consume that meaning and contribute only their mechanics
+-> current truth / history / projection remain separate owners
+-> deterministic consequences are derived
+-> invalid relationships fail where they can be proven invalid
+-> temporarily held closure remains visibly owed
+-> proof matches the exact claim
+~~~
+
+The Android implementation demonstrates the subtractive side of this law:
+
+~~~
+existing Family / Session owns the meaningful operation
+-> do not add a peer feature execution API
+
+semantic structure already identifies the active relationship
+-> do not mint another RelationshipKey / OwnerToken / InstanceId
+
+provider declares prerequisites explicitly
+-> do not discover dependencies through ambient lookup / reflection
+
+accepted / observed fact occurs
+-> Logger records chronology
+-> Logger does not become the semantic owner
+
+VexBoard / debug surface needs a human explanation
+-> project existing semantic/runtime/history truth
+-> do not force upstream architecture to invent display-shaped identities
+~~~
+
+VexLife-Prod demonstrates the construction side:
+
+~~~
+compiler-visible relationship
+-> consumer receives the existing handle / identity
+-> consumer does not reconstruct it from a string
+
+relational spatial source
+-> resolve enough consequence to validate geometry
+-> invalid relationship fails
+-> renderer cannot repair or guess
+
+authoritative relationship source
+-> deterministic generated artifact
+-> generated artifact is not a second authoring owner
+~~~
+
+### VexWork translation
+
+For VexWork, the default question becomes:
+
+> Is this code/source the rightful owner of independently meaningful truth, or is it manually
+> restating a relationship/consequence that can be constrained or derived from a rightful owner?
+
+Static source is not forbidden. It is earned when it is the rightful stable owner of meaning,
+policy, identity or an independently meaningful contract.
+
+Static duplication is the problem:
+
+~~~
+RIGHTFUL STATIC SOURCE
+  Workgraph lifecycle grammar
+  Project definition
+  repository/process definitions
+  repository-owned architecture contract
+
+DERIVED / CONSTRAINED CONSEQUENCE
+  composed Workgraph
+  public workspace
+  discoverability projection when membership is derivable
+  VexBoard/debug views
+
+SMELL
+  handwritten duplicate registry membership
+  hard-coded population counts
+  projection-specific IDs pushed upstream
+  peer wrapper APIs that restate an existing owner
+  prose-only "do this later" obligations
+  consumer reconstruction of relationships from names/paths/convention
+~~~
+
+The desired architecture therefore does not merely detect forgotten synchronization. It removes
+the need for that synchronization where the relationship is derivable, constrains the remaining
+authoring boundary where it is not, and keeps any genuinely held closure visible.
+
+
+## Current static-source classification
+
+The alignment contract classifies today's static sources by *why they exist*, not by file extension.
+
+~~~text
+RIGHTFUL_SEMANTIC_SOURCE
+  blueprint/work-registry.json
+  blueprint/project-planning-registry.json
+  blueprint/project-reconciliation-registry.json
+
+RIGHTFUL_RELATION_SOURCE
+  blueprint/repository-registry.json
+  blueprint/process-registry.json
+
+RIGHTFUL_COMPOSITION_POLICY_SOURCE
+  workgraphs/composition.json
+  (policy/currentness; segment membership stays source-derived)
+
+DERIVATION_CANDIDATE
+  blueprint/project-registry.json
+
+GENERATED_CONSEQUENCE
+  workgraphs/public.json
+  public/workspace.json
+  public/work-dashboard.json
+~~~
+
+This classification is intentionally asymmetric.
+
+Repository/process membership is an admission decision across independently owned sources, so local
+file discovery cannot decide it. Work/planning/reconciliation registries define portable semantic
+vocabulary. Project membership has different pressure: VexWork itself owns a uniform source-managed
+Project population whose definition/Board paths and stable refs are mechanically observable.
+
+The question is therefore never "can this JSON be generated?" It is:
+
+> Would generation preserve the same independently authored meaning, or would it erase a decision
+> that has its own rightful owner?
+
+A later implementation may refine this inventory when real pressure contradicts it; it must preserve
+the classification reason rather than copying the label by precedent.
+
+## Machine-readable alignment contract
+
+`projects/vexwork-vexarchitecture-alignment/architecture.contract.json` is the Project-local constrained map for this refactor.
+
+It is deliberately **not** a new universal VexWork relationship ontology. Its purpose is to keep the
+whole alignment intention mechanically connected to:
+
+- the accepted VexLife-Android / VexLife-Prod evidence;
+- the current VexWork truth owners;
+- each relationship being preserved or repaired;
+- the Work item that owns that migration;
+- the patient-zero failure/proof where applicable.
+
+A0 maintains this contract while the architecture is being mapped. A1–A5 must move each accepted law
+into the rightful production owner rather than making this Project file the permanent runtime
+executor.
+
+Fresh successors should read the contract alongside this README before narrowing the work to one
+patient-zero fix.
+
+## Existing VexWork process map
+
+This Project reuses current process owners instead of inventing an alignment workflow.
+
+- process.vexwork.form-project
+  - forms this durable human outcome / Work topology / Board.
+- process.vexwork.quality-review
+  - reviews exact refactor candidates and their falsification evidence.
+- process.vexwork.integrate-ready-pull-requests
+  - owns serialized current-main convergence and is the natural place for post-merge deterministic consequence reconciliation.
+- process.vexwork.promote-derived-concern
+  - may promote one exact discrepancy only when it truly needs canonical Work; attention itself is not WorkState.
+- process.multivex.operations.compile-vexrelay-stage-recipe.v1
+  - used only when a concrete proof effect actually requires host carriage.
+
+~~~
+PROCESS MAP = navigation
+PROCESS MAP != executor
+PROCESS MAP != lifecycle
+~~~
+
+## Current architecture map
+
+### Workgraph — already strongly aligned
+
+~~~
+workgraphs/segments/*.json
+        ↓
+deterministic composition
+        ↓
+workgraphs/public.json
+~~~
+
+Accepted law:
+
+~~~
+ONE SEMANTIC WORKGRAPH
+!= ONE AUTHORED FILE
+
+SEGMENT AUTHORING
+-> GENERATED CANONICAL AGGREGATE
+~~~
+
+This is the pattern to preserve and extend.
+
+### Work Board / public workspace — correct projection boundary
+
+These consume Workgraph / Project truth and remain read-only.
+
+~~~
+projection != WorkState owner
+projection != effect authority
+~~~
+
+### Project Reconciliation — correct derived-meaning boundary
+
+~~~
+Project + Workgraph truth
++ provider observation
++ proof observation
+-> deterministic reconciliation disposition
+~~~
+
+It derives current meaning without stealing transition authority.
+
+### Repository Integration — correct convergence owner, incomplete consequence closure
+
+Integration already distinguishes:
+
+~~~
+candidate proof
+!= current-main admission
+!= merge authority
+!= post-merge verification
+~~~
+
+It is the natural owner for deterministic VexWork aggregate reconciliation after accepted source movement.
+
+### Derived Attention / Attention Queue — promising held-relationship surface
+
+These can show a current discrepancy without automatically creating Work or mutation authority.
+
+### Current gaps
+
+1. Project discoverability still requires manual restatement.
+
+~~~
+projects/<slug>/project.json
+projects/<slug>/board.view.json
+
+PLUS AI / human remembers:
+  blueprint/project-registry.json
+~~~
+
+2. Project Registry validates entries already present, but does not prove every eligible source-managed Project is present exactly once.
+
+3. test/project-registry.test.mjs hard-codes the observed count 17. That proves historical circumstance, not the architectural property.
+
+4. Generated aggregate files such as workgraphs/public.json and public/workspace.json can be claimed like ordinary lane-authored source, creating avoidable contention and stale projection debt.
+
+5. Post-merge integration verifies Git convergence but does not yet ask the general VexWork-native question:
+
+~~~
+accepted source moved
+-> which deterministic VexWork relationships / consequences became owed?
+-> are they current?
+~~~
+
+6. A prose hold such as shared projection held can disappear from current structural truth.
+
+
+
+## See the architecture behaving, not only described
+
+A fresh instance should not have to infer what "VexArchitecture alignment" looks like from prose.
+
+The machine-readable contract now carries `demonstrations[]`: source-addressable examples of the
+relationship law already behaving correctly inside current VexWork, plus explicit counterexamples
+that pressure this refactor.
+
+Accepted demonstrations include:
+
+~~~
+Workgraph Composition
+  segment source
+  -> one composition owner
+  -> deterministic canonical Workgraph
+  -> duplicate/foreign/stale relationships fail closed
+
+Runtime Persistence
+  Work transition remains semantic event
+  -> pointer/snapshot layer contributes currentness mechanics only
+  -> no second lifecycle ledger
+
+Project Reconciliation
+  canonical Work + provider/proof observation
+  -> derived disposition
+  -> no transition authority
+
+Process Map / Repository Graph
+  explicit admitted relationships
+  -> stable refs + rightful owner routes
+  -> no filesystem/reflection/provider-discovery ontology
+
+Human Transition Handshake
+  existing Project/Work/graph identity carried through the handshake
+  -> no floating generic approval identity
+
+Derived Attention
+  observed concern
+  -> read-only attention
+  -> explicit separate promotion only when durable Work is earned
+~~~
+
+This Alignment Project itself is also a demonstration:
+
+~~~
+human intention
+-> project.json
+-> architecture.contract.json
+-> exact Work migration owner for every relationship
+-> source review
+-> A0 WAITING_TOOL with one exact held proof predicate
+-> exact Relay stage binding
+-> A1 remains dependency-held
+~~~
+
+The structure demonstrates the intended law:
+
+> A held obligation stays attached to the relationship it blocks instead of becoming a sentence
+> somebody must remember.
+
+Counterexamples live in the same contract:
+
+~~~
+New Beginnings
+  rightful Project + segment source
+  -> manually repeated discoverability relationship omitted
+  -> Project invisible
+
+18 default Board views
+  canonical lanes already exist
+  -> same lane order manually repeated 18 times
+  -> synchronization surface with no independent meaning
+~~~
+
+The demonstrations are evidence/entry coordinates. They do not make one implementation shape
+mandatory for every foundation.
+
+## Whole-foundation alignment review
+
+A0 now reviews every foundation currently listed in `docs/foundation/INDEX.md`, not only the New
+Beginnings path.
+
+The result is deliberately not "rewrite everything." Most current foundations already express the
+VexArchitecture ownership law well: one semantic owner, bounded connective mechanics, read-only
+projections, exact-current binding, and fail-closed boundaries.
+
+The current observed architecture pressures are concentrated:
+
+1. **Projects / Project Registry** — valid Project source can exist without discoverability.
+2. **Default Work Board view authoring** — 18/18 fixed-base Projects, and 19/19 on the current #210 candidate, restate the exact same canonical
+   `laneRefOrder`; this is source duplication, not independently earned Project meaning.
+3. **Repository Integration** — accepted source movement does not yet own deterministic VexWork
+   consequence reconciliation, so generated/public truth can remain stale or a hold can live only in
+   prose.
+4. **Human UI** — the reader boundary itself is sound, but it can only be as current as the generated
+   workspace it receives.
+
+The contract's `foundationAlignments[]` records the full matrix and the VexArchitecture laws each
+foundation currently satisfies or pressures.
+
+### Board-view pressure
+
+Observed on current VexWork main `690758a4751fcd6071d7a5e070f3cbe7396dff52`:
+
+~~~
+fixed-base Project directories  = 18
+fixed-base board.view.json files = 18
+current #210 Project directories = 19
+current #210 Board files         = 19
+unique laneRefOrder arrangements = 1
+~~~
+
+Every view repeats:
+
+~~~
+intake
+planned
+ready
+active
+waiting
+needs-human
+verify
+attention
+done
+archive
+~~~
+
+Those lanes are already canonically owned by `blueprint/work-registry.json`.
+
+The intended correction is not "delete Board views." It is:
+
+~~~
+Project + canonical Work Registry lanes
+-> default Board view
+
+explicit Project Board-view source
+-> only when Project-specific presentation semantics are independently authored
+-> must bind the same projectRef
+~~~
+
+This follows the Android law that connective/default mechanics should not force every semantic owner
+to restate the same relationship, while preserving a real extension point when custom meaning is
+earned.
+
+## Target VexWork architecture blueprint
+
+This is an English architecture map, not a mandate to create one universal Relationship framework.
+
+### A. Author the smallest rightful source
+
+Examples:
+
+~~~
+Project definition
+Workgraph segment
+Process definition
+Repository definition
+Planning definition
+Reconciliation relation
+~~~
+
+Each source owns its meaning.
+
+### B. Make required relationships explicit and addressable
+
+Examples:
+
+~~~
+Project
+-> root WorkRefs
+-> Board view
+-> Workgraph identity
+
+Work item
+-> parent
+-> dependencies
+-> repositories
+-> process routes
+
+Workgraph segment
+-> local Work family
+-> canonical composed Workgraph
+
+source-managed Project population
+-> Project discoverability projection
+
+accepted source movement
+-> deterministic generated consequences
+~~~
+
+Do not create a universal relationship schema merely to make the map symmetrical.
+
+### C. Validate closure at the authoring boundary
+
+For Project discoverability:
+
+~~~
+eligible source-managed Project definitions
+<-> Project discoverability
+
+exact-set closure:
+  no missing Project
+  no orphan registry entry
+  no duplicate ProjectRef
+  every definition path resolves
+  every Board resolves same Project
+  every root WorkRef resolves in canonical Workgraph
+~~~
+
+The count is evidence:
+
+~~~
+observedProjectCount = N
+~~~
+
+not law:
+
+~~~
+N == 17 forever
+~~~
+
+### D. Treat deterministic aggregate files as consequences
+
+Desired direction:
+
+~~~
+project-local source
+        ↓
+deterministic Project census / composition
+        ↓
+Project Registry discoverability projection
+        ↓
+public workspace
+~~~
+
+alongside the already-accepted:
+
+~~~
+Workgraph segments
+        ↓
+public Workgraph
+        ↓
+public workspace
+~~~
+
+Human/AI authoring stays at semantic source. Generated aggregate files do not become competing semantic owners.
+
+### E. Put convergence at the existing Integration Steward boundary
+
+After accepted source movement:
+
+~~~
+post-merge re-ground
+-> discover current semantic sources
+-> derive required aggregate consequences
+-> compare generated state
+-> safe deterministic mismatch?
+     YES -> regenerate / prove
+     NO  -> preserve exact unsatisfied relationship
+-> post-merge verification
+~~~
+
+Do not invent a permanent healer agent or second trunk merely to regenerate files.
+
+### F. Surface blocked relationship closure through read-only attention
+
+When deterministic convergence cannot lawfully happen yet:
+
+~~~
+relationship expected
++ current source evidence
++ missing predicate / active custody
+-> current derived attention
+~~~
+
+Example:
+
+~~~
+Project source PRESENT
+Project registry relation UNSATISFIED
+public Workgraph consequence UNSATISFIED
+workspace projection UNSATISFIED
+reason = ACTIVE_SHARED_CUSTODY
+~~~
+
+When the predicate is satisfied and the consequence converges:
+
+~~~
+ATTENTION -> CLEAR
+~~~
+
+No WorkState transition or source authority is implied.
+
+### G. VexBoard remains downstream
+
+Only after VexWork owns and proves the relationship contracts:
+
+~~~
+VexWork truth / reconciliation / attention
+-> VexBoard projection
+~~~
+
+VexBoard can make relationships perceptible. It must not become the truth/healing/lifecycle owner.
+
+## Work phases
+
+### A0 — map + blueprint
+
+Current state: **COMPLETED**. A0's architecture-map/recoverability claim is closed; PR-wide merge readiness remains a later trajectory predicate.
+
+The source-grounded owner/process map, English target architecture, machine-readable full-intention contract, static-source classification, whole-foundation matrix, worked demonstrations, orientation discoverability and Board-view census remain source-formed and reviewed.
+
+Focused deterministic proof is retained:
+
+~~~text
+17 exact prerequisite/source files
+-> every local Git blob SHA matched the candidate provider tree
+-> Node v22.16.0
+-> node --test test/vexwork-vexarchitecture-alignment-project.test.mjs
+-> 17 / 17 PASS
+~~~
+
+The first whole-repository SourceOwner run also reached the exact candidate and executed `npm run review`. It produced:
+
+~~~text
+candidate head/tree checks  PASS
+test:coverage              483 PASS / 2 FAIL
+failing tests              workgraph-composition-source #452 / #453
+first source failure       sourceRefs must be an array
+~~~
+
+The failing source was not introduced by this PR. The exact fixed base and candidate carry the same
+`workgraphs/segments/vexlife-new-beginnings.json` blob, and the same composition source-adoption
+test. The patient-zero segment omitted both required segment-level fields:
+
+~~~text
+sourceRefs
+formedAt
+~~~
+
+The Project already authors the needed identity and formation time, so A0 reopens only to repair that
+rightful segment boundary from existing source:
+
+~~~text
+project.vexlife.new-beginnings
+projects/vexlife-new-beginnings/README.md
+formedAt = 2026-11-02T02:28:00.000Z
+~~~
+
+The outer native carrier also retained the canonical inner SAFE_FAILURE but could not consume it
+because the pre-review inner result carried `candidateBinding=null` while its source block still
+carried the exact candidate head/tree. That is a carrier/consumer failure after evidence formation,
+not evidence against #210. The retained inner RETURN was consumed directly for classification.
+
+The first repository-wide run remains useful trajectory evidence, but it is not the semantic definition of A0 completion. The remaining red repository state belongs to downstream relationship closure in A1/A2 and must still be retired before PR clearance.
+
+A1 is **COMPLETED**. The consumed SourceOwner RETURN drove the final source corrections and the full 21-segment source audit; generated registry/public aggregate convergence remains explicitly downstream.
+
+### A1 — Project source bundle + discoverability relationship contract
+
+Use New Beginnings as the first regression patient zero.
+
+Likely pressure:
+
+- remove hard-coded Project count assumptions;
+- exact-set Project source/discoverability validation;
+- bounded source enumeration may locate candidate Project files, but folder/slug/path never becomes Project identity; validated source identity + Board kinship + exact Workgraph-root resolution must decide the relationship;
+- decide whether blueprint/project-registry.json remains authored or becomes generated;
+- prefer the smaller architecture that removes repeated manual membership maintenance.
+
+
+#### A1 source-owner implementation now present
+
+The first A1 slice is deliberately disjoint from the currently claimed shared aggregates:
+
+~~~text
+src/core/work-board.mjs
+  deriveDefaultBoardView(...)
+  resolveWorkBoardView(...)
+  isDefaultWorkBoardView(...)
+
+src/core/project-registry.mjs
+  deriveProjectSourceBundle(...)
+  deriveProjectRegistry(...)
+
+scripts/build-public-workspace.mjs
+  boardViewPath = null
+  -> canonical derived default
+~~~
+
+The relationship is now executable without making filesystem location semantic identity:
+
+~~~text
+enumerator locates candidate Project bytes
+-> validated projectRef owns identity
+-> rootWorkRefs must resolve in exact Workgraph
+-> no explicit Board source:
+     derive canonical view from Project + Work Registry
+-> explicit Board source:
+     validate same projectRef; preserve independently meaningful view
+-> derive registry membership
+-> optional partial compatibility order affects presentation only
+~~~
+
+The shared `blueprint/project-registry.json`, `workgraphs/public.json`, and
+`public/workspace.json` remain untouched in this slice while #182/#193 hold those paths. A1 now has
+a source-owner implementation that can be applied to those consequences once custody is reconciled.
+
+#### Real repository source census
+
+A1 now also has a repository adapter:
+
+~~~text
+scripts/build-project-registry.mjs
+
+projects/*/project.json
+  -> enumerate candidate source locations only
+
+workgraphs/segments/*.json
++ workgraphs/composition.json
+  -> compose exact current Workgraph in memory
+
+each Project
+  -> validated projectRef / rootWorkRefs
+  -> default Board collapsed to derived view
+  -> explicit custom Board retained only when non-default
+  -> optional agency policy path
+
+current registry order
+  -> partial compatibility preference only
+
+all validated source bundles
+  -> derived Project Registry v1 consequence
+~~~
+
+For v1 compatibility, `registryVersion` is generated from the derived Project population because
+that is how the historical schema encoded it. This is not a new architecture law and no test asserts
+a literal Project count.
+
+The new commands are intentionally not yet part of `review:deterministic`:
+
+~~~text
+npm run project-registry:build
+npm run project-registry:check
+~~~
+
+The current checked-in registry is expected to remain stale until the live #182/#193 shared-path
+custody is reconciled. A2 owns making this generated consequence part of ordinary repository
+currentness after the shared source is safely converged.
+
+#### A1 fail-closed repository gate
+
+The source-derived census now participates in ordinary deterministic review:
+
+~~~text
+npm run review
+  -> test:coverage
+  -> coverage:source
+  -> project-registry:check
+  -> workgraph:check
+  -> structural check
+  -> dashboard:check
+  -> workspace:check
+~~~
+
+On the current candidate, `project-registry:check` is expected to stop the review before later stale
+aggregate checks because the checked-in v1 registry still omits current source Projects.
+
+That red state is intentional evidence of the pre-existing gap:
+
+~~~text
+SOURCE PROJECT PRESENT
++ DERIVED MEMBERSHIP EXPECTED
++ CHECKED-IN DISCOVERABILITY STALE
+-> FAIL AT PROJECT REGISTRY BOUNDARY
+~~~
+
+A1 makes omission non-silent without racing #182/#193. A1 owns source derivation + fail-closed detection; A2 owns generated consequence convergence + restoring the deterministic review to green.
+
+#### A1 SourceOwner RETURN — correction set before any new host round-trip
+
+The exact A1 host RETURN was consumed rather than treated as a generic red result.
+
+~~~text
+outer canonical RETURN
+  sha256 2c9c010347d8871c950e5a5c82c74e763bc46dadad8f68fce9ec2ba43a5f86d5
+
+retained inner VexRelay RETURN
+  sha256 98be22478be16b6ceb4de67ac67434837443d7b378f318032df58e95ad42bf7f
+
+carrier admission / execution / inner-return consumption
+  PASS
+
+inner SourceOwner disposition
+  SAFE_FAILURE
+~~~
+
+The 11 focused failures collapse into three causal classes:
+
+1. one inherited patient-zero lifecycle defect:
+   `PLAN_VALIDATED -> RUNNING` was never a lawful canonical Work transition;
+2. four stale Alignment assertions that still described older A0/A1 states/phrasing;
+3. public Workgraph equality still red because New Beginnings + Alignment segments are not yet
+   converged into the generated aggregate — explicitly A2 territory.
+
+The New Beginnings lifecycle correction uses the same recorded authorization timestamp/evidence and
+splits the malformed edge into:
+
+~~~text
+PLAN_VALIDATED -> READY
+READY          -> RUNNING
+~~~
+
+No new event time or lifecycle permission is invented.
+
+A1 returns to RUNNING only for this coherent correction set. Do not form another ZIP merely to
+repeat the same loop. Re-run locally/provider-reconstructed where possible; only return to a host
+carrier after the candidate stabilizes and one irreducible predicate remains.
+
+#### A2 current entry after A1 completion
+
+A2 is **COMPLETED**; its own lifecycle transition was regenerated into the canonical public Workgraph/workspace in the same phase-boundary change. A3 is now **RUNNING**.
+
+Before mutation, re-ground:
+
+~~~text
+current VexWork main
+current #210 exact head/tree
+current #182 / #193 claims + mergeability + path overlap
+WORKGRAPH-COMPOSITION
+REPOSITORY-INTEGRATION
+INTEGRATE-READY-PULL-REQUESTS
+current Project census / generated registry expectation
+current segment composition / public Workgraph drift
+current public workspace drift
+~~~
+
+The objective is not "make the files green somehow." It is:
+
+~~~text
+rightful semantic source
+-> deterministic consequence builders
+-> one integration/convergence owner
+-> checked-in consequences current
+-> ordinary deterministic review green
+
+without:
+  source lanes racing generated files
+  stale old-base PR snapshots becoming authority
+  repeated human ZIP proof after every small correction
+~~~
+
+The next host proof should happen only after A2 has converged the full consequence set and the candidate
+has reached one stable integrated review boundary.
+
+### A2 — generated consequence ownership + integration reconciliation
+
+~~~
+source lane != generated aggregate owner
+~~~
+
+Move deterministic aggregate currentness to composition/integration where possible.
+
+#### A2 generated consequences now converge from source
+
+The candidate now demonstrates the intended integration relationship:
+
+~~~text
+current source Projects = 19
+current source segments = 21
+
+source-derived Project Registry
+  -> 19 Projects
+  -> default-only Board paths collapse to null
+
+segment composition
+  -> 223 Work items
+  -> 261 transitions
+  -> 25 roots
+
+public workspace
+  -> 19 Projects
+  -> New Beginnings visible
+  -> VexWork VexArchitecture Alignment visible
+  -> New Beginnings parked settings item visible
+~~~
+
+`workspace:build` now converges:
+
+~~~text
+project-registry:build
+-> workgraph:build
+-> public workspace build
+~~~
+
+The old #182/#193 generated snapshots are not imported into this result because their Project-local
+sources have not been accepted into current main/#210. Their semantic Projects remain theirs; when
+those candidates resume, they should preserve/rebase their Project/segment source and let the current
+builders regenerate consequences.
+
+This is the A2 behavior we wanted:
+
+~~~text
+STALE GENERATED FILE
+-> source composition
+-> regenerate
+-> check
+-> clear
+
+not:
+-> human remembers which old PR had the "right" aggregate copy
+~~~
+
+### A3 — unresolved relationship attention
+
+Reuse Derived Attention / Attention Queue or the smallest compatible evolution so an owed-but-held structural relationship cannot disappear into prose.
+
+#### A3 relationship attention adapter
+
+A3 is **COMPLETED**. It reuses the existing Attention Queue rather than inventing a healer subsystem, and the phase itself dogfooded a real UNSATISFIED -> ATTENTION -> regenerated -> SATISFIED -> CLEAR cycle.
+
+~~~text
+rightful relationship owner
+  -> SATISFIED | UNSATISFIED | UNKNOWN
+
+relationshipRef
+  -> reused as attentionRef
+
+UNSATISFIED -> ATTENTION
+UNKNOWN     -> UNKNOWN
+SATISFIED   -> CLEAR
+~~~
+
+The adapter cannot compute or mutate Project/Workgraph/provider truth. It consumes an already-evaluated
+currentness predicate and produces the existing read-only queue snapshot.
+
+This directly demonstrates the intended healing pressure:
+
+~~~text
+held relationship
+-> stable visible attention
+
+same relationship + accepted current evidence
+-> explicit CLEAR
+-> no active queued entry
+
+without:
+  human deleting a TODO
+  automatic Work creation
+  WorkState mutation
+  source mutation authority
+~~~
+
+#### A4 current entry
+
+A4 is now **WAITING_TOOL** only on one stabilized full-repository `npm run review`. Its whole-circuit source is formed; no additional narrow proof package should be created before consuming that result.
+
+~~~text
+Project source
+-> exact Workgraph segment/composition
+-> source-derived Project discoverability
+-> canonical default Board
+-> public workspace
+-> ordinary VexWork navigation/orientation
+
+and:
+
+stale relationship evidence
+-> ATTENTION
+-> deterministic convergence
+-> CLEAR
+~~~
+
+Patient zeros remain New Beginnings and the Alignment Project. The final proof must not depend on a
+literal Project count, predecessor chat, or manual aggregate synchronization.
+
+### A4 — end-to-end foundation proof
+
+Prove:
+
+1. a new Project can be authored from project-local source;
+2. discoverability cannot silently omit it;
+3. root Work exists in canonical composed graph;
+4. Board identity resolves;
+5. public workspace becomes current deterministically;
+6. a deliberately held consequence remains visible;
+7. satisfying the held predicate clears the discrepancy;
+8. no hard-coded Project count or user archaeology is needed.
+
+Patient zeros:
+
+~~~
+project.vexlife.new-beginnings
+project.vexwork.vexarchitecture-alignment
+~~~
+
+#### A4 whole-circuit regression
+
+A4 now has one real-source end-to-end test:
+
+`test/vexwork-vexarchitecture-e2e.test.mjs`
+
+It proves, for New Beginnings and this Alignment Project:
+
+~~~text
+project.json identity
+-> exact composed Workgraph root
+-> source-derived Project Registry entry
+-> canonical default Board
+-> public workspace Project
+-> reader route / lookup / search
+-> Projects page generic workspace.projects renderer
+~~~
+
+The same test also proves:
+
+~~~text
+relationship UNSATISFIED
+-> ATTENTION
+
+same relationship SATISFIED with evidence
+-> CLEAR
+
+without changing canonical WorkState
+~~~
+
+and rejects a return to literal Project-count correctness.
+
+A4 is intentionally the stabilization point before the next host proof. Do not add another
+architecture layer merely because the test exists; run the complete deterministic review against the
+whole candidate once this source-level review is clear.
+
+### A5 — VexBoard alignment
+
+Only after A4, project accepted VexWork source/projection/discrepancy relationships into VexBoard.
+
+## Current coordination / integration boundary
+
+A2 has now converged the generated VexWork consequences on this candidate:
+
+~~~
+blueprint/project-registry.json
+workgraphs/public.json
+public/workspace.json
+~~~
+
+Those paths are **generated convergence surfaces**, not semantic authoring membranes.
+
+Open PRs #182 and #193 still contain older-base copies of some of those generated files. Their
+Project-local / segment source remains meaningful and must be preserved when those lanes resume, but
+their old aggregate snapshots are not current authority.
+
+Current rule:
+
+~~~
+semantic Project / Workgraph source overlap
+-> coordinate with rightful source owner
+
+generated consequence overlap
+-> preserve semantic source
+-> re-compose current source
+-> regenerate consequence
+-> prove currentness
+~~~
+
+Do not resolve a generated-file conflict by picking the older PR's bytes, PR opening order, or the
+textually easiest side.
+
+## Completion pressure
+
+This Project is not complete because VexWork adopts VexArchitecture vocabulary or adds a helper.
+
+Completion means a fresh instance can observe:
+
+~~~
+new semantic source enters VexWork
+-> required relationships are mechanically discoverable
+-> invalid / missing relationships fail closed
+-> deterministic consequences converge at the rightful boundary
+-> blocked convergence remains visibly owed
+-> projections consume current truth
+-> no human rediscovers a forgotten later obligation
+~~~
+
+Strongest acceptance patient zero:
+
+> A merged Project must not be able to exist in durable source while disappearing from the VexWork Projects navigation surface without an explicit current discrepancy explaining why.
+
+## Discoverability from ordinary VexWork orientation
+
+This Project is intentionally reachable from the normal VexWork orientation path:
+
+~~~text
+orientation.html
+docs/foundation/VEXWORK-ORIENTATION.md
+        ↓
+docs/foundation/INDEX.md
+        ↓
+projects/vexwork-vexarchitecture-alignment/README.md
+        ↓
+architecture.contract.json
+~~~
+
+That relationship is part of the dogfood.
+
+Fresh instances should not need:
+
+~~~text
+PR #210 memorized
+the Project slug guessed
+the predecessor chat replayed
+the public Project Registry to already be repaired
+~~~
+
+The orientation route explicitly labels this Project as **active architecture evolution**, not
+accepted Foundation authority. Discoverability must not collapse candidate status into architectural
+acceptance.
+
+## Current successor checkpoint
+
+Exact trajectory state at the current candidate:
+
+~~~text
+A0 full VexArchitecture map / owner model          COMPLETED
+A1 Project + default Board + discoverability       COMPLETED
+A2 generated consequence convergence               COMPLETED
+A3 held relationship ATTENTION -> CLEAR             COMPLETED
+A4 whole-circuit end-to-end proof                  COMPLETED
+A5 VexBoard projection alignment                   COMPLETED
+Alignment outcome                                  VERIFYING / READY_FOR_INTEGRATION
+~~~
+
+A4 is complete on exact SourceOwner A006 + terminal FOUNDATION Quality Review:
+
+~~~text
+head 53f823a96903b68eca3080323caff09aa83751d7
+tree fd343087d40116e224c8c9331802c7ea6a3486ec
+npm run review -> PASS
+QA QR-01..QR-14 -> CLEAR
+~~~
+
+A4's whole-circuit regression is:
+
+~~~text
+test/vexwork-vexarchitecture-e2e.test.mjs
+~~~
+
+and covers:
+
+~~~text
+Project source identity
+-> exact composed Workgraph
+-> source-derived Project Registry
+-> canonical derived default Board
+-> public workspace
+-> reader route / lookup / search
+-> public Projects renderer
+
+relationship UNSATISFIED
+-> ATTENTION
+-> regenerated/current evidence
+-> CLEAR
+
+ordinary orientation
+-> this architecture trajectory
+~~~
+
+A5 is complete on exact SourceOwner A005 + terminal FOUNDATION Quality Review. The implementation
+reuses the existing VexWork source projector and canonical effect-free Attention snapshot so VexBoard
+perceives already-owned relationship/currentness truth without becoming its owner.
+
+The current edge is repository integration: preserve the exact A005 SourceOwner + A5 QA evidence,
+re-ground current main under the Integration Steward process, merge only when current-main/provider
+predicates hold, then post-merge verify before completing the parent Alignment outcome.
+
+## Fresh-instance entry
+
+~~~
+1. read this README
+2. read projects/vexwork-vexarchitecture-alignment/architecture.contract.json
+3. read project.json + board.view.json
+4. read workgraphs/segments/vexwork-vexarchitecture-alignment.json
+5. identify current Work / dependency
+6. descend only to the named VexWork foundation
+7. use VexLife-Android / VexLife-Prod as architecture evidence, not VexWork source authority
+8. implement the smallest relationship fix without narrowing away the contract's whole-system laws
+9. current edge: Alignment outcome is VERIFYING / READY_FOR_INTEGRATION; preserve exact A005 + A5 QA evidence and use the Integration Steward process without reopening completed A0-A5
+10. use process.vexwork.quality-review
+11. use process.vexwork.integrate-ready-pull-requests at integration
+12. reconcile deterministic consequences after accepted source movement
+13. continue until the end-to-end property is proved
+~~~
+
+Do not reconstruct this Project from the conversation that formed it.
+
+Preserve the relationship discipline; let VexWork's own pressure determine final source shapes.
+
+<!-- [VXG RealForever][VEXWORK][VEXARCHITECTURE-ALIGNMENT] -->

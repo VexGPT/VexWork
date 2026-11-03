@@ -6,6 +6,7 @@ import { verifySemanticFingerprint, withSemanticFingerprint } from './semantic.m
 export const ATTENTION_QUEUE_SNAPSHOT_SCHEMA = 'vexwork.attention-queue-snapshot/v1';
 export const ATTENTION_QUEUE_PROJECTION_SCHEMA = 'vexwork.attention-queue-projection/v1';
 export const ATTENTION_QUEUE_STATES = Object.freeze(ATTENTION_STATES.filter((state) => state !== 'NOT_APPLICABLE'));
+export const RELATIONSHIP_CURRENTNESS_STATES = Object.freeze(['SATISFIED', 'UNSATISFIED', 'UNKNOWN']);
 
 const REF = /^[A-Za-z0-9][A-Za-z0-9._:/-]*$/u;
 const ISO = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/u;
@@ -139,6 +140,58 @@ export function createAttentionQueueSnapshot(input, { repositoryRegistry, proces
     effects: false,
     executionAuthority: 'NONE',
   }, 'attention queue snapshot');
+}
+
+
+function relationshipAttentionState(state) {
+  assert(RELATIONSHIP_CURRENTNESS_STATES.includes(state), `unsupported relationshipState ${state}`);
+  if (state === 'SATISFIED') return 'CLEAR';
+  if (state === 'UNSATISFIED') return 'ATTENTION';
+  return 'UNKNOWN';
+}
+
+export function createRelationshipAttentionQueueSnapshot(input, context) {
+  const keys = [
+    'queueRef', 'snapshotRef', 'ownerRepositoryRef', 'label', 'purpose',
+    'observedAt', 'sourceRefs', 'relationships',
+  ];
+  exactKeys(input, keys, 'relationship attention input');
+  assert(Array.isArray(input.relationships), 'relationships must be an array');
+
+  const entries = input.relationships.map((relationship, index) => {
+    const relationshipKeys = [
+      'relationshipRef', 'subjectRef', 'subjectKind', 'label', 'relationshipState',
+      'observedAt', 'reasonRefs', 'evidenceRefs', 'sourceRefs', 'existingWorkRefs',
+      'processRefOrNull',
+    ];
+    exactKeys(relationship, relationshipKeys, `relationships[${index}]`);
+    const relationshipRef = stableRef(relationship.relationshipRef, `relationships[${index}].relationshipRef`);
+    return {
+      attentionRef: relationshipRef,
+      subjectRef: relationship.subjectRef,
+      subjectKind: relationship.subjectKind,
+      label: relationship.label,
+      attentionState: relationshipAttentionState(relationship.relationshipState),
+      observedAt: relationship.observedAt,
+      reasonRefs: relationship.reasonRefs,
+      evidenceRefs: relationship.evidenceRefs,
+      sourceRefs: relationship.sourceRefs,
+      existingWorkRefs: relationship.existingWorkRefs,
+      processRefOrNull: relationship.processRefOrNull,
+    };
+  });
+
+  return createAttentionQueueSnapshot({
+    schemaVersion: ATTENTION_QUEUE_SNAPSHOT_SCHEMA,
+    queueRef: input.queueRef,
+    snapshotRef: input.snapshotRef,
+    ownerRepositoryRef: input.ownerRepositoryRef,
+    label: input.label,
+    purpose: input.purpose,
+    observedAt: input.observedAt,
+    sourceRefs: input.sourceRefs,
+    entries,
+  }, context);
 }
 
 export function projectAttentionQueue(snapshot, context) {

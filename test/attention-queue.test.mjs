@@ -6,6 +6,7 @@ import { withSemanticFingerprint } from '../src/core/semantic.mjs';
 import {
   ATTENTION_QUEUE_PROJECTION_SCHEMA,
   createAttentionQueueSnapshot,
+  createRelationshipAttentionQueueSnapshot,
   projectAttentionQueue,
 } from '../src/core/attention-queue.mjs';
 
@@ -167,3 +168,112 @@ test('stored semantic identity must already be canonical and read-only', () => {
 });
 
 // [VXG RealForever][VEXWORK][ATTENTION-QUEUE]
+
+
+function relationshipSnapshot(state, {
+  evidenceRefs = ['evidence.vexwork.relationship.fixture'],
+  snapshotRef = 'snapshot.vexwork.relationship-currentness.001',
+  observedAt = '2026-11-02T13:00:00.000Z',
+} = {}) {
+  return createRelationshipAttentionQueueSnapshot({
+    queueRef: 'queue.vexwork.relationship-currentness',
+    snapshotRef,
+    ownerRepositoryRef: 'repo.vexwork',
+    label: 'VexWork relationship currentness',
+    purpose: 'Project current relationship closure without creating WorkState or effect authority.',
+    observedAt,
+    sourceRefs: ['source.vexwork.relationship-currentness'],
+    relationships: [{
+      relationshipRef: 'relationship.vexwork.fixture.source-to-consequence',
+      subjectRef: 'project.fixture.relationship',
+      subjectKind: 'vexwork.project',
+      label: 'Fixture generated consequence currentness',
+      relationshipState: state,
+      observedAt,
+      reasonRefs: ['reason.vexwork.relationship.generated-consequence'],
+      evidenceRefs,
+      sourceRefs: ['source.fixture.semantic-owner', 'source.fixture.generated-consequence'],
+      existingWorkRefs: ['work.fixture.relationship-convergence'],
+      processRefOrNull: null,
+    }],
+  }, { repositoryRegistry, processRegistry });
+}
+
+test('relationship currentness reuses relationship identity and clears from evidence', () => {
+  const stale = relationshipSnapshot('UNSATISFIED');
+  const staleProjection = projectAttentionQueue(stale, { repositoryRegistry, processRegistry });
+  assert.equal(stale.entries[0].attentionRef, 'relationship.vexwork.fixture.source-to-consequence');
+  assert.equal(stale.entries[0].attentionState, 'ATTENTION');
+  assert.equal(staleProjection.summary.queuedCount, 1);
+  assert.deepEqual(staleProjection.clearEntryRefs, []);
+  assert.equal(stale.effects, false);
+  assert.equal(stale.executionAuthority, 'NONE');
+
+  const current = relationshipSnapshot('SATISFIED', {
+    evidenceRefs: ['evidence.vexwork.relationship.fixture.current'],
+    snapshotRef: 'snapshot.vexwork.relationship-currentness.002',
+    observedAt: '2026-11-02T13:01:00.000Z',
+  });
+  const currentProjection = projectAttentionQueue(current, { repositoryRegistry, processRegistry });
+  assert.equal(current.entries[0].attentionRef, stale.entries[0].attentionRef);
+  assert.equal(current.entries[0].attentionState, 'CLEAR');
+  assert.equal(currentProjection.summary.queuedCount, 0);
+  assert.deepEqual(currentProjection.clearEntryRefs, ['relationship.vexwork.fixture.source-to-consequence']);
+});
+
+test('unknown relationship currentness remains visible without manufacturing evidence', () => {
+  const unknown = relationshipSnapshot('UNKNOWN', {
+    evidenceRefs: [],
+    snapshotRef: 'snapshot.vexwork.relationship-currentness.unknown',
+    observedAt: '2026-11-02T13:02:00.000Z',
+  });
+  const projection = projectAttentionQueue(unknown, { repositoryRegistry, processRegistry });
+  assert.equal(unknown.entries[0].attentionState, 'UNKNOWN');
+  assert.equal(unknown.entries[0].evidenceRefs.length, 0);
+  assert.equal(projection.summary.queuedCount, 1);
+});
+
+test('relationship attention adapter rejects hidden authority and unsupported relationship state', () => {
+  const hidden = {
+    queueRef: 'queue.vexwork.relationship-currentness',
+    snapshotRef: 'snapshot.vexwork.relationship-currentness.hidden',
+    ownerRepositoryRef: 'repo.vexwork',
+    label: 'Hidden authority fixture',
+    purpose: 'Reject authority-shaped adapter fields.',
+    observedAt: '2026-11-02T13:03:00.000Z',
+    sourceRefs: ['source.fixture'],
+    relationships: [],
+    mutationAuthority: 'WRITE_SOURCE',
+  };
+  assert.throws(
+    () => createRelationshipAttentionQueueSnapshot(hidden, { repositoryRegistry, processRegistry }),
+    /relationship attention input has unexpected fields/,
+  );
+
+  const invalid = {
+    queueRef: 'queue.vexwork.relationship-currentness',
+    snapshotRef: 'snapshot.vexwork.relationship-currentness.invalid',
+    ownerRepositoryRef: 'repo.vexwork',
+    label: 'Invalid relationship fixture',
+    purpose: 'Reject unsupported currentness.',
+    observedAt: '2026-11-02T13:03:00.000Z',
+    sourceRefs: ['source.fixture'],
+    relationships: [{
+      relationshipRef: 'relationship.vexwork.fixture.invalid',
+      subjectRef: 'project.fixture',
+      subjectKind: 'vexwork.project',
+      label: 'Invalid relationship',
+      relationshipState: 'BROKEN',
+      observedAt: '2026-11-02T13:03:00.000Z',
+      reasonRefs: ['reason.fixture'],
+      evidenceRefs: ['evidence.fixture'],
+      sourceRefs: ['source.fixture'],
+      existingWorkRefs: [],
+      processRefOrNull: null,
+    }],
+  };
+  assert.throws(
+    () => createRelationshipAttentionQueueSnapshot(invalid, { repositoryRegistry, processRegistry }),
+    /unsupported relationshipState BROKEN/,
+  );
+});
