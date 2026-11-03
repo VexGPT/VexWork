@@ -122,6 +122,9 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   const vexboardJourney = graph.items.find((item) => item.workRef === 'work.vexboard.boardjourney-simulation');
   const vexboardBoardPatch = graph.items.find((item) => item.workRef === 'work.vexboard.boardpatch-authoring');
   const vexboardProjectors = graph.items.find((item) => item.workRef === 'work.vexboard.source-projectors');
+  const vexboardArchitectureUiRefinement = graph.items.find(
+    (item) => item.workRef === 'work.vexboard.source-projectors.vexarchitecture-ui-refinement',
+  );
   const vexboardRefinement = graph.items.find((item) => item.workRef === 'work.vexboard.usability-refinement');
   const vexboardComposition = graph.items.find((item) => item.workRef === 'work.vexboard.fractal-semantic-composition-spatial-layout');
   assert.equal(vexboardRoot.state, 'DECOMPOSED');
@@ -154,6 +157,24 @@ test('one Workgraph can contain project work and unprojected parked work', () =>
   assert.equal(vexboardProjectors.sourceRefs.includes('github.pull.vexwork.115'), true);
   assert.equal(vexboardProjectors.sourceRefs.includes('src/shared/vexboard-source-resolver.mjs'), true);
   assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexboard.source-projectors.running.pr108'));
+  assert.equal(vexboardArchitectureUiRefinement.state, 'READY');
+  assert.equal(vexboardArchitectureUiRefinement.parentWorkRefOrNull, vexboardProjectors.workRef);
+  assert.equal(vexboardArchitectureUiRefinement.priorityClass, 'IMMEDIATE');
+  assert.equal(vexboardArchitectureUiRefinement.authorityDisposition, 'AUTHORIZED_BOUNDED');
+  assert.equal(vexboardArchitectureUiRefinement.effectDisposition, 'EFFECTS_BOUND');
+  assert.equal(vexboardArchitectureUiRefinement.sourceRefs.includes('github.pull.vexwork.215'), true);
+  assert.equal(
+    vexboardArchitectureUiRefinement.sourceRefs.includes(
+      'git.commit.vexwork.cd1264763e315d3bc2b6db80115806a102ed339b',
+    ),
+    true,
+  );
+  assert.equal(
+    vexboardArchitectureUiRefinement.sourceRefs.includes(
+      'projects/vexboard/examples/vexlife-android-vexstream-playback.vexarchitecture.json',
+    ),
+    true,
+  );
   assert.equal(vexboardRefinement.state, 'COMPLETED');
   assert.ok(graph.transitions.some((transition) => transition.transitionRef === 'transition.vexboard.usability-refinement.completed.lived-acceptance-pr135'));
   assert.equal(vexboardComposition.state, 'RUNNING');
