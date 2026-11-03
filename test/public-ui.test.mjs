@@ -104,7 +104,7 @@ test('Project current trajectory derives plural open work, held state, and chron
 
   const trajectory = reader.projectCurrentTrajectory(project);
   assert.deepEqual(trajectory.rootItems.map((item) => [item.workRef, item.state]), [['work.root', 'RUNNING']]);
-  assert.deepEqual(trajectory.openItems.map((item) => item.workRef), ['work.root', 'work.wait', 'work.build']);
+  assert.deepEqual(trajectory.openItems.map((item) => item.workRef), ['work.root', 'work.build', 'work.wait']);
   assert.deepEqual(trajectory.heldItems.map((item) => item.workRef), ['work.wait']);
   assert.equal(trajectory.heldItems[0].latestReasonOrNull, 'Exact host proof is required.');
   assert.equal(trajectory.latestTransitionOrNull.transitionRef, 'transition.wait.tool');
@@ -112,6 +112,29 @@ test('Project current trajectory derives plural open work, held state, and chron
   assert.equal(trajectory.effects, false);
   assert.equal(trajectory.executionAuthority, 'NONE');
 });
+
+test('Project current trajectory reuses Board ordering rather than duplicating priority semantics', () => {
+  const project = {
+    project: { projectRef: 'project.demo', rootWorkRefs: ['work.root'] },
+    items: [
+      { workRef: 'work.root', label: 'Outcome', state: 'RUNNING', priorityClass: 'LOW', parentWorkRefOrNull: null, childWorkRefs: [], dependencyRefs: [], updatedAt: '2026-11-03T09:00:00.000Z', transitionHistory: [] },
+      { workRef: 'work.ready', label: 'Ready first', state: 'READY', priorityClass: 'NORMAL', parentWorkRefOrNull: 'work.root', childWorkRefs: [], dependencyRefs: [], updatedAt: '2026-11-03T09:01:00.000Z', transitionHistory: [] },
+      { workRef: 'work.active', label: 'Active second', state: 'RUNNING', priorityClass: 'IMMEDIATE', parentWorkRefOrNull: 'work.root', childWorkRefs: [], dependencyRefs: [], updatedAt: '2026-11-03T09:02:00.000Z', transitionHistory: [] },
+    ],
+    lanes: [
+      { laneRef: 'lane.work.ready', workRefs: ['work.ready'] },
+      { laneRef: 'lane.work.active', workRefs: ['work.root', 'work.active'] },
+      { laneRef: 'lane.work.done', workRefs: [] },
+      { laneRef: 'lane.work.archive', workRefs: [] },
+    ],
+  };
+  assert.deepEqual(
+    reader.projectCurrentTrajectory(project).openItems.map((item) => item.workRef),
+    ['work.ready', 'work.root', 'work.active'],
+  );
+});
+
+
 
 test('recursive containment and incoming dependencies remain projection helpers', () => {
   const project = {
