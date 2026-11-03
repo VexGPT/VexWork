@@ -2063,7 +2063,8 @@ work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence
   accepted Relay route: VexWork PR #187 / merge 80e8cb441ae5c7270bb001c69ced4e7c33b90224
   fresh verification finding: formation callers still duplicate candidate identity, attempt identity, path membrane and continuation routing outside the SDK compiler/carrier
   observed failures: lifecycle vocabulary collapse (#210), attempt -> branch identity collapse (#212), stale membrane carry-forward (#212/#213)
-  current SDK owners to refine: recipe-compiler.mjs + lifecycle-router.json + source-managed VexLocalBridge package/bootstrap formation
+  fresh #214 carrier evidence: exact candidate head/tree checks passed, npm review failed before REVIEW_SNAPSHOT on two stale VexWork tests, inner RETURN was retained byte-exact, but outer consumption rejected candidateBinding=NONE
+  current SDK owners to refine: recipe-compiler.mjs + lifecycle-router.json + return-consumer / native VexLocalBridge carrier + source-managed package/bootstrap formation
   next durability edge: make those relationships derived/non-collapsible while preserving task/v2 + canonical RETURN compatibility
   R1 A012 formation failure remains EXECUTOR_FAILURE_NO_PRODUCT_DELTA historical evidence only
 
