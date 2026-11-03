@@ -2017,13 +2017,24 @@ Initial acceptance questions:
 The corresponding Work item is
 `work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence`.
 
-Current Workgraph truth is now:
+Current Workgraph truth for Relay convergence is now:
 
 ~~~text
-RUNNING / HIGH
+VERIFYING / HIGH
 authority = AUTHORIZED_BOUNDED
 effects   = EFFECTS_BOUND
-active child source = VexWork PR #189
+
+fresh verification evidence:
+  VexWork #210 -> VexWork READY_FOR_INTEGRATION was incorrectly authored into a VexRelay lifecycle field
+  VexWork #212 -> proof-attempt A002 leaked into stable PR branch identity and queried a nonexistent branch
+  VexWork #212/#213 -> predecessor path membranes leaked across fresh attempts until wrapper self-checks caught them
+
+current correction owner:
+  Vextreme-SDK Relay formation / recipe / carrier boundary
+
+next question:
+  which candidate, membrane and continuation relationships can the SDK derive from existing owners so
+  fresh workers stop reimplementing canonical mechanics in hand-authored wrappers?
 ~~~
 
 That currentizes the work trajectory; it does **not** transfer SDK, Android, Vextreme product, merge,
@@ -2050,7 +2061,10 @@ work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence
   merge 763d27f4ec5afc133c71e018c7d4532fc155fe95
   merge tree = exact A012-proven e6df3aaa333c71143da8217f8764161a884e5f04
   accepted Relay route: VexWork PR #187 / merge 80e8cb441ae5c7270bb001c69ced4e7c33b90224
-  next durability edge: accept parent Project PR #185 with current generated projections
+  fresh verification finding: formation callers still duplicate candidate identity, attempt identity, path membrane and continuation routing outside the SDK compiler/carrier
+  observed failures: lifecycle vocabulary collapse (#210), attempt -> branch identity collapse (#212), stale membrane carry-forward (#212/#213)
+  current SDK owners to refine: recipe-compiler.mjs + lifecycle-router.json + source-managed VexLocalBridge package/bootstrap formation
+  next durability edge: make those relationships derived/non-collapsible while preserving task/v2 + canonical RETURN compatibility
   R1 A012 formation failure remains EXECUTOR_FAILURE_NO_PRODUCT_DELTA historical evidence only
 
 work.vextreme.architecture-convergence.terrain-journey-inspection
