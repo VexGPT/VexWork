@@ -11179,6 +11179,38 @@
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.vexarchitecture-alignment.end-to-end.waiting-tool-verifying.a4-a006-pass",
+      "workRef": "work.vexwork.vexarchitecture-alignment.end-to-end-foundation-proof",
+      "priorState": "WAITING_TOOL",
+      "nextState": "VERIFYING",
+      "reason": "The exact A006 SourceOwner proof bound head 53f823a96903b68eca3080323caff09aa83751d7 / tree fd343087d40116e224c8c9331802c7ea6a3486ec, completed `npm run review` with exit 0, formed and consumed the canonical inner RETURN, and reported no candidate, harness, environment or unknown findings. A4 therefore leaves its tool hold and enters terminal semantic verification.",
+      "actorRef": "role.vexwork.vexarchitecture-alignment-author",
+      "sourceRefs": [
+        "artifact.vexwork.vexarchitecture-alignment.a4.source-owner.outer-return.sha256.3bb205be3a8187348bf0a93a8ada21b6145a32aab5a5d84f3722425a5ce381ec",
+        "artifact.vexwork.vexarchitecture-alignment.a4.source-owner.inner-return.sha256.e72ab894b1481f920b5b74acc8629f9de8e18de83018237d091a7e0bbf392a6c",
+        "package.json",
+        "test/vexwork-vexarchitecture-e2e.test.mjs"
+      ],
+      "createdAt": "2026-11-03T03:20:52.249Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexwork.vexarchitecture-alignment.end-to-end.verifying-completed.a4-qa-clear",
+      "workRef": "work.vexwork.vexarchitecture-alignment.end-to-end-foundation-proof",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "Terminal FOUNDATION Quality Review on the exact A006 candidate returned CLEAR across QR-01 through QR-14 with no blocking or nonblocking findings. A4's admitted outcome is complete: Project/source identity, Workgraph composition, derived default Board, deterministic Project/public consequences, reader navigation, ordinary orientation and held-to-clear relationship attention are proved together without granting VexBoard, projections or generated artifacts semantic/effect ownership.",
+      "actorRef": "role.vexwork.vexarchitecture-alignment-author",
+      "sourceRefs": [
+        "github.pull.vexwork.210.review.PRR_kwDOVRnGt88AAAABVoo6WQ",
+        "artifact.vexwork.vexarchitecture-alignment.a4.source-owner.outer-return.sha256.3bb205be3a8187348bf0a93a8ada21b6145a32aab5a5d84f3722425a5ce381ec",
+        "artifact.vexwork.vexarchitecture-alignment.a4.source-owner.inner-return.sha256.e72ab894b1481f920b5b74acc8629f9de8e18de83018237d091a7e0bbf392a6c",
+        "docs/process/QUALITY-REVIEW.md"
+      ],
+      "createdAt": "2026-11-03T03:22:57.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
       "transitionRef": "transition.vexwork.vexarchitecture-alignment.generated-consequence.waiting-ready.a1-complete",
       "workRef": "work.vexwork.vexarchitecture-alignment.generated-consequence-reconciliation",
       "priorState": "WAITING_DEPENDENCIES",
@@ -11478,38 +11510,6 @@
         "github.pull.vexwork.210.comment.6577935959"
       ],
       "createdAt": "2026-11-02T13:05:00.001Z"
-    },
-    {
-      "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vexwork.vexarchitecture-alignment.end-to-end.waiting-tool-verifying.a4-a006-pass",
-      "workRef": "work.vexwork.vexarchitecture-alignment.end-to-end-foundation-proof",
-      "priorState": "WAITING_TOOL",
-      "nextState": "VERIFYING",
-      "reason": "The exact A006 SourceOwner proof bound head 53f823a96903b68eca3080323caff09aa83751d7 / tree fd343087d40116e224c8c9331802c7ea6a3486ec, completed `npm run review` with exit 0, formed and consumed the canonical inner RETURN, and reported no candidate, harness, environment or unknown findings. A4 therefore leaves its tool hold and enters terminal semantic verification.",
-      "actorRef": "role.vexwork.vexarchitecture-alignment-author",
-      "sourceRefs": [
-        "artifact.vexwork.vexarchitecture-alignment.a4.source-owner.outer-return.sha256.3bb205be3a8187348bf0a93a8ada21b6145a32aab5a5d84f3722425a5ce381ec",
-        "artifact.vexwork.vexarchitecture-alignment.a4.source-owner.inner-return.sha256.e72ab894b1481f920b5b74acc8629f9de8e18de83018237d091a7e0bbf392a6c",
-        "package.json",
-        "test/vexwork-vexarchitecture-e2e.test.mjs"
-      ],
-      "createdAt": "2026-11-03T03:20:52.249Z"
-    },
-    {
-      "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vexwork.vexarchitecture-alignment.end-to-end.verifying-completed.a4-qa-clear",
-      "workRef": "work.vexwork.vexarchitecture-alignment.end-to-end-foundation-proof",
-      "priorState": "VERIFYING",
-      "nextState": "COMPLETED",
-      "reason": "Terminal FOUNDATION Quality Review on the exact A006 candidate returned CLEAR across QR-01 through QR-14 with no blocking or nonblocking findings. A4's admitted outcome is complete: Project/source identity, Workgraph composition, derived default Board, deterministic Project/public consequences, reader navigation, ordinary orientation and held-to-clear relationship attention are proved together without granting VexBoard, projections or generated artifacts semantic/effect ownership.",
-      "actorRef": "role.vexwork.vexarchitecture-alignment-author",
-      "sourceRefs": [
-        "github.pull.vexwork.210.review.PRR_kwDOVRnGt88AAAABVoo6WQ",
-        "artifact.vexwork.vexarchitecture-alignment.a4.source-owner.outer-return.sha256.3bb205be3a8187348bf0a93a8ada21b6145a32aab5a5d84f3722425a5ce381ec",
-        "artifact.vexwork.vexarchitecture-alignment.a4.source-owner.inner-return.sha256.e72ab894b1481f920b5b74acc8629f9de8e18de83018237d091a7e0bbf392a6c",
-        "docs/process/QUALITY-REVIEW.md"
-      ],
-      "createdAt": "2026-11-03T03:22:57.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
