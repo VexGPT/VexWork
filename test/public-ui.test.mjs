@@ -113,6 +113,26 @@ test('Project current trajectory derives plural open work, held state, and chron
   assert.equal(trajectory.executionAuthority, 'NONE');
 });
 
+test('Project current trajectory does not heal omitted Board membership in the Human UI', () => {
+  const project = {
+    project: { projectRef: 'project.demo', rootWorkRefs: ['work.root'] },
+    items: [
+      { workRef: 'work.root', label: 'Outcome', state: 'RUNNING', priorityClass: 'IMMEDIATE', parentWorkRefOrNull: null, childWorkRefs: ['work.omitted'], dependencyRefs: [], updatedAt: '2026-11-03T09:00:00.000Z', transitionHistory: [] },
+      { workRef: 'work.omitted', label: 'Upstream projection gap', state: 'READY', priorityClass: 'HIGH', parentWorkRefOrNull: 'work.root', childWorkRefs: [], dependencyRefs: [], updatedAt: '2026-11-03T09:01:00.000Z', transitionHistory: [] },
+    ],
+    lanes: [
+      { laneRef: 'lane.work.active', workRefs: ['work.root'] },
+      { laneRef: 'lane.work.done', workRefs: [] },
+      { laneRef: 'lane.work.archive', workRefs: [] },
+    ],
+  };
+
+  assert.deepEqual(
+    reader.projectCurrentTrajectory(project).openItems.map((item) => item.workRef),
+    ['work.root'],
+  );
+});
+
 test('Project current trajectory reuses Board ordering rather than duplicating priority semantics', () => {
   const project = {
     project: { projectRef: 'project.demo', rootWorkRefs: ['work.root'] },
