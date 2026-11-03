@@ -95,6 +95,7 @@ async function ensureFamilyKotlin(){
   return FamilyKotlin;
 }
 const THEME_MODE_WORKSPACE_BOARD_REF='board.vexlife.debug-menu.theme-mode.origin-walk';
+const VEXSTREAM_PLAYBACK_ARCHITECTURE_BOARD_REF='board.vexlife-android.vexstream-playback.vexarchitecture';
 const sourceCatalogUrls=Object.freeze([
   '../projects/vexboard/examples/board-source-catalog.json',
 ]);
@@ -217,6 +218,11 @@ async function loadCatalogBoard(boardRef){
       boardRef,
       context.design,
     ).board;
+  }else if(payload?.schemaVersion===AndroidProjector.VEXLIFE_ANDROID_VEXARCHITECTURE_SLICE_SCHEMA){
+    projected=AndroidProjector.projectVexLifeAndroidVexArchitectureSlice(
+      payload,
+      boardRef,
+    ).board;
   }
   const draft=Board.normalizeDraft(projected);
   if(draft.draftRef!==boardRef)throw new Error(`board source identity mismatch ${boardRef}`);
@@ -279,8 +285,9 @@ function landing(){
   const intent=el('button','btn','Open intent topology example');intent.onclick=async()=>openCatalogBoard('board.vexbusinessfactory.intent-topology.patient-zero');
   const vexstream=el('button','btn violet','Open VexStream living Blueprint');vexstream.onclick=async()=>openCatalogBoard('board.vexstream.phone-desktop-connection.living-blueprint');
   const androidPoc=el('button','btn violet','Open VexLife Android Screen POC');androidPoc.onclick=async()=>openCatalogBoard(AndroidProjector.VEXBOARD_ANDROID_POC_BOARD_REFS.EXPERIENCE);
+  const architectureSlice=el('button','btn violet','Open current VexStream VexArchitecture walk');architectureSlice.onclick=async()=>openCatalogBoard(VEXSTREAM_PLAYBACK_ARCHITECTURE_BOARD_REF);
   const themeMode=el('button','btn violet','Open Theme Mode Origin Walk');themeMode.onclick=async()=>openCatalogBoard(THEME_MODE_WORKSPACE_BOARD_REF);
-  examples.append(anatomy,intent,vexstream,androidPoc,themeMode);
+  examples.append(anatomy,intent,vexstream,androidPoc,architectureSlice,themeMode);
   box.append(actions,el('h2','','Source examples'),examples,el('h2','','Local drafts'));
   const list=el('div','cards');
   for(const d of drafts()){const c=el('article','card');c.append(el('div','tiny',d.mode),el('h3','',d.title),el('p','',d.derivedFromRefOrNull?`Forked from ${d.derivedFromRefOrNull}`:'Independent local draft'));const b=el('button','btn','Resume draft');b.onclick=()=>openBoard(d,{boardRef:d.draftRef});c.append(b);list.append(c)}
