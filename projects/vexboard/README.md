@@ -68,6 +68,90 @@ relationships perceptible. Real VexStream, Vex Universe, VexLife-Prod or other c
 expose missing projection/composition/evidence seams; VexBoard should not prebuild another architecture
 merely because an older foundation chain once depended on it.
 
+## Current continuation sequence across related Projects
+
+These Projects are related, but they are **not one serial dependency chain**.
+
+~~~text
+FOREGROUND — VEXBOARD
+  work.vexboard.vexstream-screenshot-pilot
+  + work.vexboard.source-projectors
+  -> prove one living Origin vertical slice from current source/evidence
+  -> earn the smallest reusable projection/evidence/construction seams
+
+THEN / SECOND CONSUMER — VEX UNIVERSE
+  work.vex-universe.journey-evidence-patient-zero
+  -> consume the accepted VexBoard substrate
+  -> pressure reuse with a genuinely different journey/evidence domain
+  -> do not reopen universal architecture
+
+PARALLEL — OPERATIONAL CONSOLE
+  work.vexwork.operational-console.antique-pilot
+  work.vexwork.operational-console.relational-terrain.*
+  -> continue on its own product/lived predicates
+  -> may later supply dynamic Work/attention projection pressure
+  -> is not a prerequisite for VexBoard or Vex Universe
+
+LINEAGE / PARKED — VEXLIFE BLUEPRINT SOURCE OF TRUTH
+  completed portability/parity proof remains reusable evidence
+  unfinished MAUI/Mac target leg remains parked
+  -> consult for earned construction/proof lessons
+  -> do not resume it to unblock VexBoard
+~~~
+
+### VexBoard internal order
+
+Within the VexBoard foreground, prefer this order:
+
+~~~text
+1. Living Origin / source-projection patient zero
+   current VexStream feature source + evidence
+   -> bounded VexBoard Feature Board
+   -> intended/observed comparison at stable semantic coordinates
+
+2. Source Projectors + lived comparison
+   implement only the adapters/evidence seams the patient zero actually requires
+   -> avoid a generic projector framework before repeated consumers earn it
+
+3. Publish/readiness + immutable Board revision
+   once one authored/reverse-adopted board is coherent enough to claim an intended design
+   -> working Board != published Board revision
+
+4. Target compilation patient zero
+   published VexBoard design
+   -> separately governed target adapter
+   -> target-native source candidate
+   -> target-owned build/lifecycle proof
+   -> target must not silently redesign the accepted Board
+
+5. Round-trip evidence
+   accepted target source / lived result
+   -> project back against the same published Board coordinates
+   -> expose currentness/drift instead of assuming successful compilation means design fidelity
+
+6. Second materially different consumer
+   Vex Universe journey/evidence patient zero
+   -> pressure whether the seams are truly reusable before extracting broader abstractions
+
+7. BoardPatch authoring
+   only after published-design and target-round-trip semantics are concrete enough that AI mutation
+   can reuse the same Board Control / validation / release boundaries without inventing a second model
+~~~
+
+Fractal semantic composition / spatial layout may advance **in parallel only when one of those real
+consumers exposes a concrete composition or layout limit**. It is not a prerequisite to finish in the
+abstract.
+
+The Operational Console remains parallel because its current foreground is the lived Antique Plate
+commerce pilot and its Terrain/currentness experience. Those Work items answer a different product
+question. VexBoard may project their already-owned Work/attention truth, but should not absorb the
+Operational Console as another VexBoard subsystem.
+
+The VexLife Blueprint Source-of-Truth Project remains predecessor lineage. Its useful portable
+meaning/construction/proof lessons are already carried forward; its parked target-specific residue does
+not gate this sequence.
+
+
 ## Current formation status
 
 ```text
