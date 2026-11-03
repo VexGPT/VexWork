@@ -335,15 +335,23 @@ const foundationIndexText = fs.readFileSync(new URL('../docs/foundation/INDEX.md
 const orientationText = fs.readFileSync(new URL('../docs/foundation/VEXWORK-ORIENTATION.md', import.meta.url), 'utf8');
 const orientationHtml = fs.readFileSync(new URL('../orientation.html', import.meta.url), 'utf8');
 
-test('ordinary VexWork orientation exposes the active alignment Project without promoting it to Foundation authority', () => {
+test('ordinary VexWork orientation preserves completed Alignment as provenance without presenting it as unfinished Work', () => {
   for (const text of [foundationIndexText, orientationText, orientationHtml]) {
     assert.match(text, /vexwork-vexarchitecture-alignment/i);
   }
 
-  assert.match(foundationIndexText, /Current architecture evolution/i);
-  assert.match(foundationIndexText, /not a replacement Foundation owner/i);
-  assert.match(orientationText, /active evolution source, not accepted Foundation authority/i);
-  assert.match(orientationHtml, /does not override accepted Foundation truth/i);
+  assert.match(foundationIndexText, /Accepted VexArchitecture alignment provenance/i);
+  assert.match(foundationIndexText, /COMPLETED ALIGNMENT PROJECT/i);
+  assert.match(foundationIndexText, /do not reopen A0-A5/i);
+  assert.doesNotMatch(foundationIndexText, /ACTIVE ARCHITECTURE EVOLUTION/);
+
+  assert.match(orientationText, /completed VexArchitecture Alignment Project/i);
+  assert.match(orientationText, /COMPLETED PROJECT != CURRENT UNFINISHED EDGE/);
+  assert.doesNotMatch(orientationText, /treat this as active evolution source/i);
+
+  assert.match(orientationHtml, /Architecture provenance/i);
+  assert.match(orientationHtml, /completed and accepted on main/i);
+  assert.doesNotMatch(orientationHtml, /current source-managed alignment Project/i);
 });
 
 test('alignment contract dogfoods orientation-to-evolution discoverability', () => {

@@ -50,13 +50,11 @@ VexWork repository
   -> AGENTS.md
   -> docs/CULTURE.md
   -> docs/foundation/INDEX.md
-  -> when the question is VexWork architecture itself, repeated relationship
-     restatement, discoverability/projection drift, generated consequence
-     ownership, or later VexBoard alignment:
+  -> implicated current VexWork foundations
+  -> when provenance for the accepted VexArchitecture alignment is materially useful:
      -> projects/vexwork-vexarchitecture-alignment/README.md
      -> projects/vexwork-vexarchitecture-alignment/architecture.contract.json
-     -> treat this as active evolution source, not accepted Foundation authority
-  -> implicated VexWork foundations
+     -> treat this as completed accepted provenance/dogfood, not current unfinished Work
 
 VexRelay relationship
   -> docs/foundation/OPERATING-PROFILES.md explains the VexWork boundary
@@ -69,12 +67,10 @@ target repository
 
 Do not copy those owners into this document. This orientation surface exists so a fresh reader can compile their current meaning together.
 
-## Architecture evolution is discoverable but does not become authority
+## Accepted architecture provenance is discoverable without becoming current Work
 
-The Foundation Index also exposes current source-managed architecture-evolution trajectories when
-VexWork itself is being changed.
-
-The current VexArchitecture alignment route is:
+The completed VexArchitecture Alignment Project remains discoverable from the Foundation Index as
+accepted provenance and dogfood:
 
 ~~~text
 docs/foundation/INDEX.md
@@ -82,25 +78,25 @@ docs/foundation/INDEX.md
 -> projects/vexwork-vexarchitecture-alignment/architecture.contract.json
 ~~~
 
-Read it when the foreground pressure concerns VexWork architecture, duplicated/forgettable
-relationships, generated consequences, Project discoverability, or the later VexBoard projection
-boundary.
-
-The distinction is permanent:
+Use it when the reason for an accepted relationship boundary matters. Do not use its former
+candidate/current-edge language as the source of today's unfinished Work.
 
 ~~~text
-CURRENT EVOLUTION PROJECT
-  preserves intention, observed pressure, candidate relationships and current Work
+COMPLETED ALIGNMENT PROJECT
+  explains accepted intention, pressure, evidence and architecture history
 
 CURRENT FOUNDATION SOURCE
-  remains accepted VexWork authority
+  owns accepted VexWork architecture
 
-EVOLUTION PROJECT != FOUNDATION REPLACEMENT
-PR / CANDIDATE != ACCEPTED ARCHITECTURE
+CURRENT WORKGRAPH
+  owns today's unfinished Work
+
+COMPLETED PROJECT != CURRENT UNFINISHED EDGE
+PROVENANCE != WORKSTATE
 ~~~
 
-This gives a fresh instance enough visibility to continue the architecture trajectory without
-turning a predecessor's candidate into current truth by discoverability alone.
+New VexWork architecture pressure is admitted as new bounded Work at the rightful owner rather than
+reopening A0-A5 merely because the completed Project is easy to find.
 
 ## The orientation walk
 
