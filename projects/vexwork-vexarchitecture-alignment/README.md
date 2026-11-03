@@ -1231,17 +1231,18 @@ A0 full VexArchitecture map / owner model          COMPLETED
 A1 Project + default Board + discoverability       COMPLETED
 A2 generated consequence convergence               COMPLETED
 A3 held relationship ATTENTION -> CLEAR             COMPLETED
-A4 whole-circuit end-to-end proof                  WAITING_TOOL
-A5 VexBoard projection alignment                   WAITING_DEPENDENCIES
+A4 whole-circuit end-to-end proof                  COMPLETED
+A5 VexBoard projection alignment                   RUNNING
 ~~~
 
-A4 source is already formed. Its single remaining predicate is:
+A4 is complete on exact SourceOwner A006 + terminal FOUNDATION Quality Review:
 
 ~~~text
-npm run review
+head 53f823a96903b68eca3080323caff09aa83751d7
+tree fd343087d40116e224c8c9331802c7ea6a3486ec
+npm run review -> PASS
+QA QR-01..QR-14 -> CLEAR
 ~~~
-
-against the exact current candidate.
 
 A4's whole-circuit regression is:
 
@@ -1269,9 +1270,10 @@ ordinary orientation
 -> this architecture trajectory
 ~~~
 
-Do not add another architecture layer or another narrow ZIP cycle before consuming that stabilized
-full-repository review. If it passes, review A4 against its own claim, complete A4, release A5, then
-re-ground VexBoard's current source/projectors before authoring the downstream projection.
+The current edge is A5. Re-ground VexBoard's current Project, source projectors, fractal semantic/spatial
+composition sources, tests and provider state before authoring. Extend the smallest existing read-only
+projection seam so already-owned VexWork source/currentness/relationship meaning becomes perceptible;
+do not make VexBoard a healer, lifecycle owner, or reason to mint display-shaped upstream identities.
 
 ## Fresh-instance entry
 
@@ -1284,7 +1286,7 @@ re-ground VexBoard's current source/projectors before authoring the downstream p
 6. descend only to the named VexWork foundation
 7. use VexLife-Android / VexLife-Prod as architecture evidence, not VexWork source authority
 8. implement the smallest relationship fix without narrowing away the contract's whole-system laws
-9. current edge: A4 is WAITING_TOOL on one stabilized full-repository `npm run review`; do not replay earlier A0/A1 narrow proof rounds unless the affected source predicate changes
+9. current edge: A5 is RUNNING; re-ground current VexBoard source/projector/provider truth and implement the smallest downstream read-only projection without reopening completed A0-A4
 10. use process.vexwork.quality-review
 11. use process.vexwork.integrate-ready-pull-requests at integration
 12. reconcile deterministic consequences after accepted source movement
