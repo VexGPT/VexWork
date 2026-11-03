@@ -1,0 +1,248 @@
+{
+  "schemaVersion": "vexlife-android.vexarchitecture-source-slice/v1",
+  "sliceRef": "slice.vexlife-android.vexstream-playback.4d357c48",
+  "productRef": "product.vexlife-android",
+  "label": "VexLife Android · VexStream Playback · current VexArchitecture relationship walk",
+  "sourceRevisionRef": "git.commit.vexlife-android.4d357c48eb5a25797513708f800e61a87e0195c0",
+  "sourceRefs": [
+    "git.commit.vexlife-android.4d357c48eb5a25797513708f800e61a87e0195c0",
+    "repo.vexlife-android:architecture/vexarchitecture/README.md",
+    "repo.vexlife-android:architecture/vexarchitecture/REFINED-BOUNDARIES.md",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamLibrarySurface.kt",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/VexStreamPlaybackExperience.kt",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/VexStreamPlaybackConnectionViewModel.kt",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/Media3VexStreamPlaybackConnection.kt",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/VexStreamPlaybackBehavior.kt",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamPlayerPresentation.kt"
+  ],
+  "nodes": [
+    {
+      "nodeRef": "reference.vexstream.playback.library-surface",
+      "label": "VexStreamLibrarySurface · composition entry",
+      "question": "Where does the parent VexStream composition request and consume the Playback Experience?",
+      "sourceRefs": [
+        "git.commit.vexlife-android.4d357c48eb5a25797513708f800e61a87e0195c0",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamLibrarySurface.kt"
+      ]
+    },
+    {
+      "nodeRef": "reference.vexstream.playback.experience",
+      "label": "VexStreamPlaybackExperience · UI-facing membrane",
+      "question": "Which boundary carries derived DisplayState and forwards Controls without becoming semantic truth?",
+      "sourceRefs": [
+        "git.commit.vexlife-android.4d357c48eb5a25797513708f800e61a87e0195c0",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/VexStreamPlaybackExperience.kt"
+      ]
+    },
+    {
+      "nodeRef": "reference.vexstream.playback.connection-owner",
+      "label": "VexStreamPlaybackConnectionViewModel · configuration-lifetime owner",
+      "question": "Who owns the concrete Media3 connection across Android configuration recreation?",
+      "sourceRefs": [
+        "git.commit.vexlife-android.4d357c48eb5a25797513708f800e61a87e0195c0",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/VexStreamPlaybackConnectionViewModel.kt"
+      ]
+    },
+    {
+      "nodeRef": "reference.vexstream.playback.connection",
+      "label": "Media3VexStreamPlaybackConnection · realization / reconciliation boundary",
+      "question": "Where are accepted playback meaning, pending intent, Media3 realization, and observed reconciliation joined?",
+      "sourceRefs": [
+        "git.commit.vexlife-android.4d357c48eb5a25797513708f800e61a87e0195c0",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/Media3VexStreamPlaybackConnection.kt"
+      ]
+    },
+    {
+      "nodeRef": "reference.vexstream.playback.mini-player",
+      "label": "VexStreamMiniPlayer · visible Play/Pause doorway",
+      "question": "Where does human Play/Pause intention enter the current playback relationship?",
+      "sourceRefs": [
+        "git.commit.vexlife-android.4d357c48eb5a25797513708f800e61a87e0195c0",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamPlayerPresentation.kt"
+      ]
+    },
+    {
+      "nodeRef": "reference.vexstream.playback.behavior",
+      "label": "VexStreamPlaybackBehavior · semantic behavior",
+      "question": "Who decides what a playback Act means against exact current playback State?",
+      "sourceRefs": [
+        "git.commit.vexlife-android.4d357c48eb5a25797513708f800e61a87e0195c0",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/VexStreamPlaybackBehavior.kt"
+      ]
+    },
+    {
+      "nodeRef": "reference.vexstream.playback.media3",
+      "label": "MediaController / Player · physical playback truth",
+      "question": "Who owns physical playback reality and emits asynchronous Player observations?",
+      "sourceRefs": [
+        "git.commit.vexlife-android.4d357c48eb5a25797513708f800e61a87e0195c0",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/VexStreamPlaybackConnectionViewModel.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/Media3VexStreamPlaybackConnection.kt"
+      ]
+    },
+    {
+      "nodeRef": "reference.vexstream.playback.projection",
+      "label": "Playback Projection / DisplayState · outward meaning",
+      "question": "How does reconciled playback truth return toward presentation without making Compose the semantic owner?",
+      "sourceRefs": [
+        "git.commit.vexlife-android.4d357c48eb5a25797513708f800e61a87e0195c0",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/Media3VexStreamPlaybackConnection.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/VexStreamPlaybackExperience.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamPlayerPresentation.kt"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipRef": "rel.vexstream.playback.library-experience",
+      "fromRef": "reference.vexstream.playback.library-surface",
+      "toRef": "reference.vexstream.playback.experience",
+      "label": "REQUESTS PLAYBACK EXPERIENCE",
+      "sourceRefs": [
+        "git.commit.vexlife-android.4d357c48eb5a25797513708f800e61a87e0195c0",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamLibrarySurface.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/VexStreamPlaybackExperience.kt"
+      ]
+    },
+    {
+      "relationshipRef": "rel.vexstream.playback.experience-owner",
+      "fromRef": "reference.vexstream.playback.experience",
+      "toRef": "reference.vexstream.playback.connection-owner",
+      "label": "RESOLVES CONFIGURATION-LIFETIME OWNER",
+      "sourceRefs": [
+        "git.commit.vexlife-android.4d357c48eb5a25797513708f800e61a87e0195c0",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/VexStreamPlaybackExperience.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/VexStreamPlaybackConnectionViewModel.kt"
+      ]
+    },
+    {
+      "relationshipRef": "rel.vexstream.playback.owner-connection",
+      "fromRef": "reference.vexstream.playback.connection-owner",
+      "toRef": "reference.vexstream.playback.connection",
+      "label": "CREATES / OWNS CONCRETE CONNECTION",
+      "sourceRefs": [
+        "git.commit.vexlife-android.4d357c48eb5a25797513708f800e61a87e0195c0",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/VexStreamPlaybackConnectionViewModel.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/Media3VexStreamPlaybackConnection.kt"
+      ]
+    },
+    {
+      "relationshipRef": "rel.vexstream.playback.experience-connection",
+      "fromRef": "reference.vexstream.playback.experience",
+      "toRef": "reference.vexstream.playback.connection",
+      "label": "CARRIES SAME CONNECTION",
+      "sourceRefs": [
+        "git.commit.vexlife-android.4d357c48eb5a25797513708f800e61a87e0195c0",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/VexStreamPlaybackExperience.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/Media3VexStreamPlaybackConnection.kt"
+      ]
+    },
+    {
+      "relationshipRef": "rel.vexstream.playback.library-player",
+      "fromRef": "reference.vexstream.playback.library-surface",
+      "toRef": "reference.vexstream.playback.mini-player",
+      "label": "PASSES EXPERIENCE TO VISIBLE PLAYER",
+      "sourceRefs": [
+        "git.commit.vexlife-android.4d357c48eb5a25797513708f800e61a87e0195c0",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamLibrarySurface.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamPlayerPresentation.kt"
+      ]
+    },
+    {
+      "relationshipRef": "rel.vexstream.playback.player-experience",
+      "fromRef": "reference.vexstream.playback.mini-player",
+      "toRef": "reference.vexstream.playback.experience",
+      "label": "ACTIVATE · PLAY_PAUSE",
+      "sourceRefs": [
+        "git.commit.vexlife-android.4d357c48eb5a25797513708f800e61a87e0195c0",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamPlayerPresentation.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/VexStreamPlaybackExperience.kt"
+      ]
+    },
+    {
+      "relationshipRef": "rel.vexstream.playback.experience-control",
+      "fromRef": "reference.vexstream.playback.experience",
+      "toRef": "reference.vexstream.playback.connection",
+      "label": "FORWARDS CONTROL",
+      "sourceRefs": [
+        "git.commit.vexlife-android.4d357c48eb5a25797513708f800e61a87e0195c0",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/VexStreamPlaybackExperience.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/Media3VexStreamPlaybackConnection.kt"
+      ]
+    },
+    {
+      "relationshipRef": "rel.vexstream.playback.connection-behavior",
+      "fromRef": "reference.vexstream.playback.connection",
+      "toRef": "reference.vexstream.playback.behavior",
+      "label": "RESOLVES CURRENT STATE + ACT",
+      "sourceRefs": [
+        "git.commit.vexlife-android.4d357c48eb5a25797513708f800e61a87e0195c0",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/Media3VexStreamPlaybackConnection.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/VexStreamPlaybackBehavior.kt"
+      ]
+    },
+    {
+      "relationshipRef": "rel.vexstream.playback.behavior-connection",
+      "fromRef": "reference.vexstream.playback.behavior",
+      "toRef": "reference.vexstream.playback.connection",
+      "label": "RETURNS EFFECT / ADMISSION",
+      "sourceRefs": [
+        "git.commit.vexlife-android.4d357c48eb5a25797513708f800e61a87e0195c0",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/VexStreamPlaybackBehavior.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/Media3VexStreamPlaybackConnection.kt"
+      ]
+    },
+    {
+      "relationshipRef": "rel.vexstream.playback.connection-media3",
+      "fromRef": "reference.vexstream.playback.connection",
+      "toRef": "reference.vexstream.playback.media3",
+      "label": "REALIZES EFFECT",
+      "sourceRefs": [
+        "git.commit.vexlife-android.4d357c48eb5a25797513708f800e61a87e0195c0",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/Media3VexStreamPlaybackConnection.kt"
+      ]
+    },
+    {
+      "relationshipRef": "rel.vexstream.playback.media3-observation",
+      "fromRef": "reference.vexstream.playback.media3",
+      "toRef": "reference.vexstream.playback.connection",
+      "label": "PLAYER LISTENER OBSERVATION",
+      "sourceRefs": [
+        "git.commit.vexlife-android.4d357c48eb5a25797513708f800e61a87e0195c0",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/Media3VexStreamPlaybackConnection.kt"
+      ]
+    },
+    {
+      "relationshipRef": "rel.vexstream.playback.connection-projection",
+      "fromRef": "reference.vexstream.playback.connection",
+      "toRef": "reference.vexstream.playback.projection",
+      "label": "PUBLISHES OBSERVED PROJECTION",
+      "sourceRefs": [
+        "git.commit.vexlife-android.4d357c48eb5a25797513708f800e61a87e0195c0",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/Media3VexStreamPlaybackConnection.kt"
+      ]
+    },
+    {
+      "relationshipRef": "rel.vexstream.playback.projection-experience",
+      "fromRef": "reference.vexstream.playback.projection",
+      "toRef": "reference.vexstream.playback.experience",
+      "label": "DERIVES DISPLAY STATE",
+      "sourceRefs": [
+        "git.commit.vexlife-android.4d357c48eb5a25797513708f800e61a87e0195c0",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/Media3VexStreamPlaybackConnection.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/VexStreamPlaybackExperience.kt"
+      ]
+    },
+    {
+      "relationshipRef": "rel.vexstream.playback.experience-player",
+      "fromRef": "reference.vexstream.playback.experience",
+      "toRef": "reference.vexstream.playback.mini-player",
+      "label": "RETURNS CURRENT PRESENTATION",
+      "sourceRefs": [
+        "git.commit.vexlife-android.4d357c48eb5a25797513708f800e61a87e0195c0",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/VexStreamPlaybackExperience.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamPlayerPresentation.kt"
+      ]
+    }
+  ]
+}
