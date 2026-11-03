@@ -8,6 +8,7 @@ const OPEN_STATES = new Set(['READY', 'CONTEXT_ADMITTED', 'RUNNING', 'WAITING_TO
 const WAITING_STATES = new Set(['WAITING_DEPENDENCIES', 'WAITING_RESOURCE', 'PAUSED_AT_CHECKPOINT', 'WAITING_HUMAN', 'HELD_UNKNOWN']);
 const PENDING_STATES = new Set(['CAPTURED', 'NEEDS_CLARIFICATION', 'DECOMPOSED', 'PLAN_VALIDATED']);
 const ARCHIVE_STATES = new Set(['SUPERSEDED', 'CANCELLED']);
+const TRAJECTORY_HELD_STATES = new Set([...BLOCKED_STATES, ...WAITING_STATES, 'WAITING_TOOL']);
 
 export function validateWorkspace(data) {
   if (!data || data.schemaVersion !== 'vexwork.public-workspace/v1') throw new Error('unsupported VexWork workspace schema');
@@ -142,6 +143,88 @@ export function openWorkGroups(project) {
     ...group,
     items: Object.freeze([...group.items]),
   })));
+}
+
+function latestTransition(item) {
+  const history = Array.isArray(item?.transitionHistory) ? item.transitionHistory : [];
+  return history.length ? history[history.length - 1] : null;
+}
+
+function trajectoryItem(item) {
+  const latest = latestTransition(item);
+  return Object.freeze({
+    workRef: item.workRef,
+    label: item.label,
+    state: item.state,
+    priorityClass: item.priorityClass,
+    updatedAt: item.updatedAt,
+    latestReasonOrNull: latest?.reason || null,
+  });
+}
+
+function boardOrderedOpenItems(project) {
+  const byRef = itemMap(project);
+  const closedLanes = new Set(['lane.work.done', 'lane.work.archive']);
+  const seen = new Set();
+  const result = [];
+
+  // Reuse the existing Work Board projection order. That projection already owns
+  // lane/card ordering from the canonical Work Registry, so this reader does not
+  // restate priority semantics merely to improve first-read perception.
+  for (const lane of project?.lanes || []) {
+    if (closedLanes.has(lane.laneRef)) continue;
+    for (const workRef of lane.workRefs || []) {
+      if (seen.has(workRef)) continue;
+      const item = byRef.get(workRef);
+      if (!item) continue;
+      seen.add(workRef);
+      result.push(item);
+    }
+  }
+
+  // The Board projection is an input, not something this reader heals. If an
+  // upstream projection is incomplete, its rightful builder/currentness checks must
+  // fail; presentation must not silently reconstruct a second Board membership.
+  return result;
+}
+
+export function projectCurrentTrajectory(project) {
+  // Currentness is projected from canonical Project/Work truth. Do not choose one
+  // "current work" when the Project truthfully has multiple concurrent open items.
+  const rootItems = projectRootItems(project).map(trajectoryItem);
+  const openItems = boardOrderedOpenItems(project).map(trajectoryItem);
+  const heldItems = openItems.filter((item) => TRAJECTORY_HELD_STATES.has(item.state));
+
+  // Transition chronology explains the latest accepted movement; it never replaces
+  // each Work item's current state as the semantic owner.
+  const transitions = [];
+  for (const item of project?.items || []) {
+    for (const transition of item.transitionHistory || []) {
+      transitions.push({
+        workRef: item.workRef,
+        workLabel: item.label,
+        transitionRef: transition.transitionRef,
+        priorState: transition.priorState,
+        nextState: transition.nextState,
+        reason: transition.reason || '',
+        actorRef: transition.actorRef,
+        createdAt: transition.createdAt,
+      });
+    }
+  }
+  transitions.sort((left, right) =>
+    String(right.createdAt || '').localeCompare(String(left.createdAt || ''))
+      || left.transitionRef.localeCompare(right.transitionRef)
+  );
+
+  return Object.freeze({
+    rootItems: Object.freeze(rootItems),
+    openItems: Object.freeze(openItems),
+    heldItems: Object.freeze(heldItems),
+    latestTransitionOrNull: transitions.length ? Object.freeze(transitions[0]) : null,
+    effects: false,
+    executionAuthority: 'NONE',
+  });
 }
 
 export function stateTone(state) {
