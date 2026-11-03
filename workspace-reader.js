@@ -102,6 +102,26 @@ export function projectRootItems(project) {
   return (project?.project?.rootWorkRefs || []).map((ref) => byRef.get(ref)).filter(Boolean);
 }
 
+export function projectPortfolioGroups(workspace) {
+  const groups = { toComplete: [], completed: [], archived: [] };
+  for (const project of workspace?.projects || []) {
+    const roots = projectRootItems(project);
+    const noOpenWork = project?.summary?.openWorkItemCount === 0;
+    const completedRoots = roots.length > 0 && roots.every((item) => DONE_STATES.has(item.state));
+    const archivedRoots = roots.length > 0 && roots.every((item) => ARCHIVE_STATES.has(item.state));
+
+    if (noOpenWork && completedRoots) groups.completed.push(project);
+    else if (noOpenWork && archivedRoots) groups.archived.push(project);
+    else groups.toComplete.push(project);
+  }
+
+  return Object.freeze({
+    toComplete: Object.freeze(groups.toComplete),
+    completed: Object.freeze(groups.completed),
+    archived: Object.freeze(groups.archived),
+  });
+}
+
 export function openWorkItems(project) {
   const closed = new Set(
     (project?.lanes || [])
