@@ -190,6 +190,22 @@
   "parkingLot": {
     "items": [
       {
+        "workRef": "work.vexlife.new-beginnings.later.settings-capability-mapping",
+        "label": "Later — source-map Settings capabilities",
+        "purpose": "After the first browser/Conversation circuit is real, map Context Window, RAM/resource projection, reasoning visibility, accessible directories, Continuity Mode, Dream Sync and clean-chat/memory controls to their existing rightful source owners. Do not infer backend semantics from the screenshot labels or combine destructive effects merely because one visual button does.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "NORMAL",
+        "repositoryRefs": [
+          "repo.vexlife-prod",
+          "repo.vexlife"
+        ],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "updatedAt": "2026-11-02T02:28:00.000Z"
+      },
+      {
         "workRef": "work.vexboard.vexstream-origin-roundtrip-review",
         "label": "Independent review — VexStream Origin round-trip architecture",
         "purpose": "Preserve a later independent review edge for the VexStream living-Origin round trip once the implementation/proof foundation is mature enough to review meaningfully. When activated, pressure-test Origin naming/lineage, content-Origin versus value-binding separation, target realization leakage, construction-admission boundaries, evidence/currentness semantics, duplicated truth and unjustified abstractions. This is deliberately parked while #182/#183 target proof and Origin round-trip construction are still forming; it is advisory evidence and grants no source mutation, approval, merge or Origin-authority acceptance.",
@@ -317,7 +333,7 @@
   "summary": {
     "projectWorkItemCount": 8,
     "openProjectWorkItemCount": 0,
-    "parkingLotItemCount": 8
+    "parkingLotItemCount": 9
   },
   "effects": false,
   "executionAuthority": "NONE"

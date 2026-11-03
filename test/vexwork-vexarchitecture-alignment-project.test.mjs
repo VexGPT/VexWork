@@ -60,7 +60,7 @@ test('VexWork architecture work remains ahead of VexBoard projection alignment',
 
   assert.deepEqual(active.cards.map((card) => card.workRef), [
     'work.vexwork.vexarchitecture-alignment.outcome',
-    'work.vexwork.vexarchitecture-alignment.project-discoverability-contract',
+    'work.vexwork.vexarchitecture-alignment.end-to-end-foundation-proof',
   ]);
 
   const done = projected.lanes.find((lane) => lane.laneRef === 'lane.work.done');
@@ -201,7 +201,7 @@ test('A1 source census may enumerate files but cannot infer Project identity fro
   assert.match(discoverability.constraint, /path\/slug is not Project identity/i);
   assert.match(discoverability.constraint, /validated projectRef/i);
   assert.match(discoverability.constraint, /explicit Board source must bind that same projectRef/i);
-  assert.match(discoverability.constraint, /exactly one admitted canonical Workgraph relationship/i);
+  assert.match(discoverability.constraint, /rootWorkRefs must resolve in the exact Workgraph/i);
 });
 
 
@@ -274,7 +274,7 @@ test('A0 completes its map claim and releases A1 without claiming PR-wide merge 
   );
 
   assert.equal(a0.state, 'COMPLETED');
-  assert.equal(a1.state, 'RUNNING');
+  assert.equal(a1.state, 'COMPLETED');
   assert.deepEqual(a1.dependencyRefs, [a0.workRef]);
 
   const a0Completion = graph.transitions.find((entry) =>
@@ -379,7 +379,7 @@ test('A1 binds the source-owner implementation to existing Work Board and Projec
   const a1 = graph.items.find((item) =>
     item.workRef === 'work.vexwork.vexarchitecture-alignment.project-discoverability-contract'
   );
-  assert.equal(a1.state, 'RUNNING');
+  assert.equal(a1.state, 'COMPLETED');
   for (const ref of [
     'src/core/work-board.mjs',
     'src/core/project-registry.mjs',
@@ -559,7 +559,7 @@ test('A2 completion regenerates its own lifecycle consequence before A3 starts',
   const generatedA2 = generatedPublicWorkgraph.items.find((item) => item.workRef === a2.workRef);
   const generatedA3 = generatedPublicWorkgraph.items.find((item) => item.workRef === a3.workRef);
   assert.equal(generatedA2.state, 'COMPLETED');
-  assert.equal(generatedA3.state, 'RUNNING');
+  assert.equal(generatedA3.state, 'COMPLETED');
 
   const workspaceProject = generatedPublicWorkspace.projects.find((entry) =>
     entry.project.projectRef === 'project.vexwork.vexarchitecture-alignment'
@@ -569,7 +569,7 @@ test('A2 completion regenerates its own lifecycle consequence before A3 starts',
     true,
   );
   assert.equal(
-    workspaceProject.lanes.find((lane) => lane.laneRef === 'lane.work.active').workRefs.includes(a3.workRef),
+    workspaceProject.lanes.find((lane) => lane.laneRef === 'lane.work.done').workRefs.includes(a3.workRef),
     true,
   );
 });
@@ -597,7 +597,7 @@ test('A3 reuses relationship identity inside the existing read-only Attention Qu
     entry.demonstrationRef === 'demo.vexwork.a3-relationship-attention-clears'
   );
   assert.equal(demo.kind, 'ALIGNMENT_DOGFOOD');
-  assert.match(demo.visibleConsequence, /explicit current evidence produces CLEAR/i);
+  assert.match(demo.visibleConsequence, /same relationshipRef cleared from current evidence/i);
   assert.match(demo.notThis, /automatic source repair/i);
 });
 
@@ -626,7 +626,7 @@ test('A4 starts only after A3 visible-held-closure proof completes', () => {
     item.workRef === 'work.vexwork.vexarchitecture-alignment.end-to-end-foundation-proof'
   );
   assert.equal(a3.state, 'COMPLETED');
-  assert.equal(a4.state, 'RUNNING');
+  assert.equal(a4.state, 'WAITING_TOOL');
   assert.deepEqual(a4.dependencyRefs, [a3.workRef]);
 });
 
