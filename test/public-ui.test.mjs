@@ -156,6 +156,25 @@ test('Project current trajectory reuses Board ordering rather than duplicating p
 
 
 
+test('portfolio groups distinguish unfinished, completed, and archived Projects from existing Work truth', () => {
+  const makeProject = (projectRef, rootState, openWorkItemCount) => ({
+    project: { projectRef, rootWorkRefs: [projectRef + '.outcome'] },
+    items: [{ workRef: projectRef + '.outcome', state: rootState }],
+    summary: { openWorkItemCount },
+  });
+  const groups = reader.projectPortfolioGroups({
+    projects: [
+      makeProject('project.running', 'RUNNING', 3),
+      makeProject('project.completed', 'COMPLETED', 0),
+      makeProject('project.closed', 'CLOSED', 0),
+      makeProject('project.cancelled', 'CANCELLED', 0),
+    ],
+  });
+  assert.deepEqual(groups.toComplete.map((project) => project.project.projectRef), ['project.running']);
+  assert.deepEqual(groups.completed.map((project) => project.project.projectRef), ['project.completed', 'project.closed']);
+  assert.deepEqual(groups.archived.map((project) => project.project.projectRef), ['project.cancelled']);
+});
+
 test('recursive containment and incoming dependencies remain projection helpers', () => {
   const project = {
     project: { projectRef: 'project.demo', rootWorkRefs: ['work.root'] },
@@ -191,6 +210,14 @@ test('Project first read exposes derived current trajectory without pre-orientat
   assert.match(page, /Chronology only; current WorkState remains owned by the Workgraph\./);
   assert.match(page, /Reader\.projectCurrentTrajectory\(project\)/);
   assert.match(orientationSource, /## Only then introduce the foreground work/);
+});
+
+test('portfolio first read compares Projects to complete with Completed Projects', () => {
+  assert.match(page, /Projects to complete/);
+  assert.match(page, /Completed Projects/);
+  assert.match(page, /Archived \/ exited Projects/);
+  assert.match(page, /Reader\.projectPortfolioGroups\(workspace\)/);
+  assert.doesNotMatch(page, /workspace\.projects\.length,'Projects'/);
 });
 
 test('UI exposes semantic lenses but no work/comment mutation controls', () => {
