@@ -7142,7 +7142,9 @@
           "workDisposition": "ACTIVE",
           "priorityClass": "NORMAL",
           "parentWorkRefOrNull": "work.vexboard.outcome",
-          "childWorkRefs": [],
+          "childWorkRefs": [
+            "work.vexboard.source-projectors.vexarchitecture-ui-refinement"
+          ],
           "dependencyRefs": [
             "work.vexboard.boardgraph-contract",
             "work.vexboard.canvas-projection",
@@ -7202,6 +7204,45 @@
               "createdAt": "2026-10-24T05:21:11.000Z"
             }
           ]
+        },
+        {
+          "workRef": "work.vexboard.source-projectors.vexarchitecture-ui-refinement",
+          "label": "UI Refinement — VexArchitecture relationship map",
+          "purpose": "Refine the newly accepted VexLife-Android VexStream VexArchitecture read-only relationship map so a fresh human or AI can perceive ownership transitions, causal flow, return paths, grouping, hierarchy, labels and navigation with less interpretation burden, while preserving the accepted source slice as semantic truth and keeping layout, emphasis and interaction as VexBoard projection concerns. Use Victor's lived perception together with a fresh instance's independent perception to identify where the map communicates well or poorly, and only evolve presentation/navigation seams that are earned by that comparison.",
+          "workClass": "TASK",
+          "state": "READY",
+          "workDisposition": "ACTIVE",
+          "priorityClass": "IMMEDIATE",
+          "parentWorkRefOrNull": "work.vexboard.source-projectors",
+          "childWorkRefs": [],
+          "dependencyRefs": [
+            "work.vexboard.canvas-projection",
+            "work.vexboard.boardjourney-simulation",
+            "work.vexboard.usability-refinement"
+          ],
+          "repositoryRefs": [
+            "repo.vexwork",
+            "repo.vexlife-android"
+          ],
+          "sourceRefs": [
+            "work.vexboard.source-projectors",
+            "github.pull.vexwork.215",
+            "git.commit.vexwork.cd1264763e315d3bc2b6db80115806a102ed339b",
+            "projects/vexboard/examples/vexlife-android-vexstream-playback.vexarchitecture.json",
+            "src/core/vexboard-android-source-projector.mjs",
+            "vexboard/index.html",
+            "repo.vexlife-android:architecture/vexarchitecture/README.md",
+            "repo.vexlife-android:architecture/vexarchitecture/REFINED-BOUNDARIES.md"
+          ],
+          "formationProcessRefOrNull": null,
+          "nextProcessRefs": [
+            "process.vexwork.quality-review"
+          ],
+          "authorityDisposition": "AUTHORIZED_BOUNDED",
+          "effectDisposition": "EFFECTS_BOUND",
+          "createdAt": "2026-11-03T11:14:57.000Z",
+          "updatedAt": "2026-11-03T11:14:57.000Z",
+          "transitionHistory": []
         },
         {
           "workRef": "work.vexboard.tech-debt.origin-rename-propagation",
@@ -7510,6 +7551,7 @@
           "laneRef": "lane.work.ready",
           "label": "Ready",
           "workRefs": [
+            "work.vexboard.source-projectors.vexarchitecture-ui-refinement",
             "work.vexboard.boardpatch-authoring"
           ]
         },
@@ -7561,10 +7603,10 @@
         }
       ],
       "summary": {
-        "workItemCount": 14,
-        "openWorkItemCount": 9,
+        "workItemCount": 15,
+        "openWorkItemCount": 10,
         "outcomeCount": 3,
-        "taskCount": 9,
+        "taskCount": 10,
         "defectCount": 0,
         "potentialCount": 2,
         "needsHumanCount": 0,
