@@ -2,7 +2,7 @@
   "schemaVersion": "vexwork.project-definition/v1",
   "projectRef": "project.vexsync.debugmenu-blueprints",
   "label": "VexSync DebugMenu Blueprints",
-  "purpose": "Use Debug Menu as the first live process specimen for discovering and proving how an ordinary human feature request becomes truthful VexBoard/Origin terrain and then maps against current VexLife Android without semantic reinterpretation: preserve known versus missing meaning, investigate existing coordinates and owners before creating identities/source, let reusable relationship language emerge from repeated real pressure, and use the resulting process as a foundation for broader VexUniverse Origin <-> target development.",
+  "purpose": "Preserve the VexSync DebugMenu/ThemeMode patient-zero discovery as provenance for the accepted VexArchitecture threshold. The old unfinished DarkMode-specific Origin round-trip is retired rather than a current blocker; current Origin-outward construction proceeds through VexLife New Beginnings / VexLife-Prod and current downstream consumers such as VexBoard/Vex Universe.",
   "rootWorkRefs": [
     "work.vexsync.debugmenu-blueprints.outcome"
   ],
@@ -27,7 +27,20 @@
     "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/debug/README.md",
     "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/debug/design/README.md",
     "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/runtime/AppActions.kt",
-    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt"
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/ui/VexLifeSession.kt",
+    "github.pull.vexlife-android.209",
+    "github.commit.vexlife-android.66c866dea6a8dd78e2946da88715c4deb78c1847",
+    "repo.vexlife-android:architecture/vexarchitecture/README.md",
+    "repo.vexlife-android:architecture/vexarchitecture/REFINED-BOUNDARIES.md",
+    "project.vexwork.vexarchitecture-alignment",
+    "github.pull.vexwork.210",
+    "github.commit.vexwork.d1def6a746646350364266121191b30c7b4e9727",
+    "github.pull.vexlife-android.188",
+    "github.commit.vexlife-android.7ac61612fb1fb30f26e7fd3794bd4382e905a0d7",
+    "github.pull.vexlife-android.200",
+    "github.commit.vexlife-android.14bb2c4e82eb6cf55cbdc6ef5f2c65d38f97e45b",
+    "project.vexlife.new-beginnings",
+    "github.commit.vexlife-prod.20919f21578eeff9d2e1d513a00e0cd66ecd72ea"
   ],
   "formedAt": "2026-10-26T07:26:46.000Z"
 }

@@ -2,6 +2,72 @@
 
 `[VXG RealForever]`
 
+## Current VexArchitecture re-entry — 2026-11-03
+
+VexBoard's foundational substrate is no longer waiting for the architecture chain that originally fed it.
+The current architecture context is the accepted VexArchitecture body in VexLife-Android plus the completed
+VexWork VexArchitecture Alignment.
+
+~~~text
+VexLife-Android current source
+  -> architecture/vexarchitecture/README.md
+  -> architecture/vexarchitecture/REFINED-BOUNDARIES.md
+  -> exact owning source + tests
+
+VexArchitecture implementation origin
+  -> PR #209 / merge 66c866dea6a8dd78e2946da88715c4deb78c1847
+
+VexWork alignment
+  -> PR #210 / merge d1def6a746646350364266121191b30c7b4e9727
+  -> VexBoard consumes already-owned relationship/currentness truth
+  -> VexBoard does not become healer, WorkState owner, history owner or source authority
+~~~
+
+The earlier Family-Circuit-only projection is a useful **slice**, not the current architectural baseline.
+Family semantics and Execution remain part of VexArchitecture; so do outside truth, construction/lifetime,
+Logger chronology, Relay/convergence and presentation. A VexBoard view may teach one slice, but it must
+not become a second architecture ontology.
+
+Cascade already closed:
+
+~~~text
+BoardGraph                              COMPLETED
+Canvas Projection                      COMPLETED
+BoardJourney + typed/clickable sim     COMPLETED
+lived canvas usability threshold       COMPLETED
+
+blank browser recovery / self-map
+  PR #184
+  provider integration PASS
+  lived Pages acceptance PASS
+
+navigation-first primary drag
+  PR #186
+  provider/source integration PASS
+
+VexWork -> VexBoard relationship projection alignment
+  PR #210 A5
+  COMPLETED
+~~~
+
+Accordingly, the bounded VexSync <-> VexBoard architecture-convergence item is complete rather than a
+standing prerequisite for another architecture layer.
+
+What remains open in VexBoard is narrower and consumer-driven:
+
+~~~text
+Source Projectors + lived comparison         RUNNING
+Fractal semantic composition / spatial       RUNNING when real consumers pressure it
+VexStream living Origin screenshot pilot     RUNNING
+AI BoardPatch authoring                      READY / NO_AUTHORITY / NO_EFFECTS
+Origin rename propagation debt               PARKED
+~~~
+
+For current consumers, VexBoard's role is to project, traverse, compare and make already-owned semantic
+relationships perceptible. Real VexStream, Vex Universe, VexLife-Prod or other consumer pressure may
+expose missing projection/composition/evidence seams; VexBoard should not prebuild another architecture
+merely because an older foundation chain once depended on it.
+
 ## Current formation status
 
 ```text

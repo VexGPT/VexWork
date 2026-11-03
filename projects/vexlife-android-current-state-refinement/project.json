@@ -2,7 +2,7 @@
   "schemaVersion": "vexwork.project-definition/v1",
   "projectRef": "project.vexlife-android.current-state-refinement",
   "label": "VexLife Android Current-State Refinement",
-  "purpose": "Refine the current VexLife Android product from lived use by reviewing scalability, SCAE/execution placement, large-state UI/data behavior, VexMaps discovery-to-navigation experience, Conversation history growth and reusable performance diagnostics while preserving accepted feature semantics and requiring evidence before optimization.",
+  "purpose": "Refine the current VexLife Android product from lived use under the accepted VexArchitecture body: address scalability, execution placement, large-state behavior, VexMaps discovery/navigation, Conversation growth and performance diagnostics by improving the smallest rightful owner rather than inventing parallel state/architecture, with evidence before optimization.",
   "rootWorkRefs": [
     "work.vexlife-android.current-state-refinement.outcome"
   ],
@@ -21,7 +21,13 @@
     "repo.vexlife-android:docs/foundation/INDEX.md",
     "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexBehaviorDocs.kt",
     "repo.vexlife-android:architecture/execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt",
-    "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/VexStableLazyList.kt"
+    "repo.vexlife-android:architecture/elements/src/main/kotlin/com/vextreme/vexlife/android/elements/VexStableLazyList.kt",
+    "github.pull.vexlife-android.209",
+    "github.commit.vexlife-android.66c866dea6a8dd78e2946da88715c4deb78c1847",
+    "repo.vexlife-android:architecture/vexarchitecture/README.md",
+    "repo.vexlife-android:architecture/vexarchitecture/VEXLOGGER.md",
+    "repo.vexlife-android:architecture/vexarchitecture/REFINED-BOUNDARIES.md",
+    "repo.vexlife-android:docs/foundation/VEX-BODY-SEMANTIC-BLUEPRINT.md"
   ],
   "formedAt": "2026-10-24T08:50:00.000Z"
 }

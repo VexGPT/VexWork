@@ -40,7 +40,7 @@
       "workRef": "work.vextreme.architecture-convergence.semantic-owner-map",
       "parentWorkRefOrNull": "work.vextreme.architecture-convergence.outcome",
       "label": "Map Vextreme seams to rightful semantic owners and relationships",
-      "purpose": "Use current lived website seams as construction specimens and map each one from human intention through current Vextreme source to the smallest rightful owner and reusable relationship language. Consume VexSync Builder-discovery as live architectural context, including its current typed relationship/ownership pressure, without copying Android/Kotlin shapes or allowing VexSync to become Vextreme's source authority.",
+      "purpose": "Map current lived Vextreme seams to rightful semantic owners and relationships under accepted VexArchitecture ownership/subtraction laws, while keeping Vextreme source authority local. Earlier VexSync/Family-Circuit work remains provenance rather than the current architecture owner.",
       "workClass": "TASK",
       "state": "RUNNING",
       "workDisposition": "ACTIVE",
@@ -87,7 +87,11 @@
         "repo.vextreme:lib/logger.js",
         "repo.vextreme:lib/logger-codes.js",
         "github.issue-comment.vextreme.273.6497654829",
-        "repo.vextreme:docs/architecture/07-registry.md"
+        "repo.vextreme:docs/architecture/07-registry.md",
+        "github.pull.vexlife-android.209",
+        "github.commit.vexlife-android.66c866dea6a8dd78e2946da88715c4deb78c1847",
+        "repo.vexlife-android:architecture/vexarchitecture/README.md",
+        "repo.vexlife-android:architecture/vexarchitecture/REFINED-BOUNDARIES.md"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
@@ -286,9 +290,9 @@
       "workRef": "work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence",
       "parentWorkRefOrNull": "work.vextreme.architecture-convergence.outcome",
       "label": "Converge VexRelay Protocol with Family Circuit / VexArchitecture",
-      "purpose": "Port and refine the operational VexRelay protocol into the source-managed Vex architecture / Family Circuit model so a human or fresh agent can understand the Relay question, semantic owners, current State/Control/Act/Effect/Connection relationships, task families, and safe execution route without reconstructing a giant ChatGPT Project manual or hand-authoring low-level harness parameters. Preserve Vextreme-SDK current-contract, task/RETURN, validator, carrier and runtime authority; use accepted VexLife-Android Family Circuit and Compound Relay source as architecture evidence rather than a Kotlin transplant; move protocol-owned invariants and repeatable recipe plumbing out of AI guesswork; and prove compatibility before any runtime replacement or Project-source reduction.",
+      "purpose": "Preserve the accepted Relay / MetaWalk relationship model and its VexArchitecture ownership lessons as a completed convergence foundation. VexWork PR #189, Relay route PR #187 and parent Project PR #185 are accepted; future Vextreme work consumes current VexArchitecture directly rather than extending this foundation by default.",
       "workClass": "TASK",
-      "state": "VERIFYING",
+      "state": "COMPLETED",
       "workDisposition": "ACTIVE",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
@@ -325,14 +329,18 @@
         "artifact.vexrelay.inner-return.sha256.d012ae95b37b889f6b33d273378360be7b241d44841406fbf5ce939f6fb2a963",
         "github.issue-comment.vexwork.187.6519751897",
         "github.issue-comment.vexwork.187.6519761811",
-        "github.issue-comment.vexwork.187.6519798670"
+        "github.issue-comment.vexwork.187.6519798670",
+        "github.pull.vexwork.185",
+        "github.commit.vexwork.c1188e6a47b010d6ab6027c3d9961959ff31af7b",
+        "github.pull.vexlife-android.209",
+        "github.commit.vexlife-android.66c866dea6a8dd78e2946da88715c4deb78c1847"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-30T02:25:00.000Z",
-      "updatedAt": "2026-10-30T09:49:00.000Z"
+      "updatedAt": "2026-10-30T10:30:50.000Z"
     }
   ],
   "transitions": [
@@ -492,6 +500,24 @@
         "github.issue-comment.vexwork.189.6519527203"
       ],
       "createdAt": "2026-10-30T09:33:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.architecture-convergence.vexrelay-family-circuit-convergence.completed.pr185-parent-accepted",
+      "workRef": "work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "The held durability predicate named by this Work is satisfied: child MetaWalk PR #189 and Relay route PR #187 were already accepted, and parent Architecture Convergence Project PR #185 subsequently merged on VexWork main. The foundation is complete; remaining Vextreme Terrain/lived questions retain their own Work identities.",
+      "actorRef": "actor.chatgpt.vexworks.architecture-threshold-currentization",
+      "sourceRefs": [
+        "github.pull.vexwork.189",
+        "github.commit.vexwork.763d27f4ec5afc133c71e018c7d4532fc155fe95",
+        "github.pull.vexwork.187",
+        "github.commit.vexwork.80e8cb441ae5c7270bb001c69ced4e7c33b90224",
+        "github.pull.vexwork.185",
+        "github.commit.vexwork.c1188e6a47b010d6ab6027c3d9961959ff31af7b"
+      ],
+      "createdAt": "2026-10-30T10:30:50.000Z"
     }
   ],
   "sourceRefs": [
@@ -537,7 +563,10 @@
     "github.actions.vextreme.pages.40874736897",
     "github.pull.vextreme.488",
     "repo.vextreme:tests/45-terrain-journey.test.js",
-    "repo.vextreme:tests/85-terrain-view-contract.test.js"
+    "repo.vextreme:tests/85-terrain-view-contract.test.js",
+    "github.pull.vexlife-android.209",
+    "repo.vexlife-android:architecture/vexarchitecture/README.md",
+    "github.pull.vexwork.185"
   ],
   "formedAt": "2026-10-29T11:45:00.000Z"
 }

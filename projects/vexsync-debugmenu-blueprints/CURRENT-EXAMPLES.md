@@ -2,6 +2,33 @@
 
 [VXG RealForever]
 
+## Current architecture rebase note — 2026-11-03
+
+Read the examples below as **causal discovery history through the current Project README**. Since these
+episodes were written, VexArchitecture reached an accepted executable stability point in VexLife-Android
+PR #209 and VexWork completed its own VexArchitecture alignment in PR #210.
+
+Therefore:
+
+~~~text
+examples below
+  = pressure / provenance / rejected and surviving hypotheses
+
+current VexArchitecture source
+  = architecture authority
+
+current ThemeMode / target source
+  = current realization evidence
+
+current Project README
+  = current VexSync resume coordinate
+~~~
+
+Later wording in this file does not outrank accepted architecture merely because it is chronologically
+later. Preserve the reasoning that taught something; re-evaluate any still-unaccepted noun or mechanism
+against current VexArchitecture before carrying it forward.
+
+
 ## Status
 
 This is a current discovery companion, not an accepted schema, final process, canonical naming source or

@@ -2,6 +2,44 @@
 
 `[VXG RealForever]`
 
+## Current architecture baseline — refinement, not architecture discovery
+
+This Project remains live because its scale/product questions are still real. Its job is **not** to
+rediscover the Vex architecture while solving them.
+
+Current architectural entry:
+
+~~~text
+VexLife-Android current source
+-> architecture/vexarchitecture/README.md
+-> architecture/vexarchitecture/VEXLOGGER.md when chronology/history is implicated
+-> architecture/vexarchitecture/REFINED-BOUNDARIES.md
+-> docs/foundation/VEX-BODY-SEMANTIC-BLUEPRINT.md
+-> exact owning feature/source/tests
+~~~
+
+PR #209 is the accepted implementation-origin/reasoning record; current source owns behavior.
+
+Therefore performance, paging, history growth, Maps discovery and other refinements should first ask
+whether the current rightful owner can be made cheaper or more scalable **without moving semantic
+ownership**.
+
+~~~text
+SCALE PRESSURE
+!= PERMISSION TO ADD A SECOND STATE OWNER
+
+PERFORMANCE DIAGNOSTIC
+!= NEW ARCHITECTURE FRAMEWORK
+
+CURRENT VEXARCHITECTURE
++ OBSERVED BOTTLENECK
+-> NARROWEST RIGHTFUL REFINEMENT
+~~~
+
+The existing Work items remain open unless their own lived/evidence predicate is satisfied. They are not
+closed merely because VexArchitecture stabilized; VexArchitecture is the constraint under which those
+real product/scale debts now continue.
+
 ## Human outcome
 
 Refine the **current** VexLife Android product from lived use rather than waiting for each scale or UX problem to become a crisis.

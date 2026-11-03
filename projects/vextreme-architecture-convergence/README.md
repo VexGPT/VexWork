@@ -2,6 +2,40 @@
 
 [VXG RealForever]
 
+## Current architecture threshold — 2026-11-03
+
+The original VexSync / Family-Circuit pressure did its job: it helped expose ownership boundaries while
+VexArchitecture was still forming. It is no longer the current architecture entry for this Project.
+
+Current architectural source is now:
+
+~~~text
+VexLife-Android current source
+-> architecture/vexarchitecture/README.md
+-> architecture/vexarchitecture/VEXLOGGER.md when chronology/history is implicated
+-> architecture/vexarchitecture/REFINED-BOUNDARIES.md
+-> docs/foundation/VEX-BODY-SEMANTIC-BLUEPRINT.md
+-> exact owning feature/source/tests
+
+PR #209
+  = accepted implementation-origin / reasoning provenance
+  != current behavioral owner
+~~~
+
+Vextreme remains its own source owner. The transferable VexArchitecture law constrains how this Project
+finds rightful owners and relationships; it does not transplant Android class names or make VexSync a
+permanent semantic parent.
+
+The former VexRelay / Family-Circuit convergence foundation is now complete:
+VexWork PR #189 accepted the MetaWalk formation, PR #187 accepted the Relay route, and parent Project
+PR #185 subsequently merged. Those relationships remain reusable evidence; they no longer block the
+remaining lived Terrain verification.
+
+Current unfinished edges are therefore the **real lived predicates** still recorded below—especially
+Terrain Journey Inspect usefulness/readability and the bounded reader-navigation lived question—not
+another architecture-convergence foundation.
+
+
 ## Human outcome
 
 Refactor and enhance the Vextreme website by making its existing product intentions, semantic owners,
@@ -2043,14 +2077,10 @@ work.vextreme.architecture-convergence.semantic-owner-map
 
 
 work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence
-  VERIFYING / HIGH
-  AUTHORIZED_BOUNDED / EFFECTS_BOUND
-  accepted child: VexWork PR #189
-  first MetaWalk formation: RECONCILE_ACCEPT / ACCEPTED
-  merge 763d27f4ec5afc133c71e018c7d4532fc155fe95
-  merge tree = exact A012-proven e6df3aaa333c71143da8217f8764161a884e5f04
+  COMPLETED
+  accepted child: VexWork PR #189 / merge 763d27f4ec5afc133c71e018c7d4532fc155fe95
   accepted Relay route: VexWork PR #187 / merge 80e8cb441ae5c7270bb001c69ced4e7c33b90224
-  next durability edge: accept parent Project PR #185 with current generated projections
+  parent Project durability: VexWork PR #185 / merge c1188e6a47b010d6ab6027c3d9961959ff31af7b
   R1 A012 formation failure remains EXECUTOR_FAILURE_NO_PRODUCT_DELTA historical evidence only
 
 work.vextreme.architecture-convergence.terrain-journey-inspection
@@ -2114,13 +2144,16 @@ Vextreme:
   pages/terrain-map.html
   lib/vextreme-index-v2.js
 
-VexSync / convergence:
+Architecture / convergence provenance:
   project.vexsync.debugmenu-blueprints
-  VexWork PR #178
-  VexWork PR #184
+  VexWork PR #178 = superseded discovery checkpoint
+  VexWork PR #184 = accepted VexBoard recovery/self-application
 
-Architecture / instrumentation pressure:
-  VexLife-Android PR #193
+Current architecture:
+  VexLife-Android architecture/vexarchitecture/README.md
+  VexLife-Android architecture/vexarchitecture/REFINED-BOUNDARIES.md
+  VexLife-Android docs/foundation/VEX-BODY-SEMANTIC-BLUEPRINT.md
+  VexLife-Android PR #209 = accepted origin/reasoning record
 
 Lived navigation evidence:
   Vextreme PR #487
