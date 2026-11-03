@@ -13,7 +13,8 @@
     "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/VexStreamPlaybackConnectionViewModel.kt",
     "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/Media3VexStreamPlaybackConnection.kt",
     "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/VexStreamPlaybackBehavior.kt",
-    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamPlayerPresentation.kt"
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/vexstream/VexStreamPlayerPresentation.kt",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/media/vexstream/VexStreamPlaybackService.kt"
   ],
   "nodes": [
     {
@@ -71,6 +72,15 @@
       ]
     },
     {
+      "nodeRef": "reference.vexstream.playback.service",
+      "label": "VexStreamPlaybackService · Android-native playback lifetime owner",
+      "question": "Who owns the Android-native MediaSession / ExoPlayer lifetime that the controller connects to?",
+      "sourceRefs": [
+        "git.commit.vexlife-android.4d357c48eb5a25797513708f800e61a87e0195c0",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/media/vexstream/VexStreamPlaybackService.kt"
+      ]
+    },
+    {
       "nodeRef": "reference.vexstream.playback.media3",
       "label": "MediaController / Player · physical playback truth",
       "question": "Who owns physical playback reality and emits asynchronous Player observations?",
@@ -124,6 +134,27 @@
         "git.commit.vexlife-android.4d357c48eb5a25797513708f800e61a87e0195c0",
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/VexStreamPlaybackConnectionViewModel.kt",
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/Media3VexStreamPlaybackConnection.kt"
+      ]
+    },
+    {
+      "relationshipRef": "rel.vexstream.playback.owner-service",
+      "fromRef": "reference.vexstream.playback.connection-owner",
+      "toRef": "reference.vexstream.playback.service",
+      "label": "CONNECTS MEDIA CONTROLLER TO SERVICE",
+      "sourceRefs": [
+        "git.commit.vexlife-android.4d357c48eb5a25797513708f800e61a87e0195c0",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/VexStreamPlaybackConnectionViewModel.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/media/vexstream/VexStreamPlaybackService.kt"
+      ]
+    },
+    {
+      "relationshipRef": "rel.vexstream.playback.service-media3",
+      "fromRef": "reference.vexstream.playback.service",
+      "toRef": "reference.vexstream.playback.media3",
+      "label": "OWNS MEDIASESSION / EXOPLAYER",
+      "sourceRefs": [
+        "git.commit.vexlife-android.4d357c48eb5a25797513708f800e61a87e0195c0",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/media/vexstream/VexStreamPlaybackService.kt"
       ]
     },
     {
