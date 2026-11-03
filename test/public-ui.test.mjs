@@ -33,6 +33,12 @@ test('orientation is a read-only source-grounded judgment surface rather than a 
   assert.match(orientationSource, /current sources\n-> fresh instance reads them/);
   assert.match(orientationSource, /The plan is continuity, not authority\./);
   assert.match(orientationSource, /the predecessor's orientation answers/i);
+  assert.match(orientationSource, /completed VexArchitecture Alignment Project/i);
+  assert.match(orientationSource, /COMPLETED PROJECT != CURRENT UNFINISHED EDGE/);
+  assert.doesNotMatch(orientationSource, /treat this as active evolution source/i);
+  assert.match(orientationPage, /Architecture provenance/);
+  assert.match(orientationPage, /completed and accepted on main/i);
+  assert.doesNotMatch(orientationPage, /current source-managed alignment Project/i);
   assert.doesNotMatch(orientationPage, /method:\s*['"](?:POST|PUT|PATCH|DELETE)['"]/i);
 });
 
@@ -217,6 +223,8 @@ test('portfolio first read compares Projects to complete with Completed Projects
   assert.match(page, /Completed Projects/);
   assert.match(page, /Archived \/ exited Projects/);
   assert.match(page, /Reader\.projectPortfolioGroups\(workspace\)/);
+  assert.match(page, /unfinished · /);
+  assert.match(page, /completed outcomes with no open Project-selected Work/);
   assert.doesNotMatch(page, /workspace\.projects\.length,'Projects'/);
 });
 
