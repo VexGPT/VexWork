@@ -182,11 +182,9 @@ function boardOrderedOpenItems(project) {
     }
   }
 
-  // Preserve truth even for an incomplete projection: any still-open item omitted
-  // from lanes remains visible after the board-ordered items instead of disappearing.
-  for (const item of openWorkItems(project)) {
-    if (!seen.has(item.workRef)) result.push(item);
-  }
+  // The Board projection is an input, not something this reader heals. If an
+  // upstream projection is incomplete, its rightful builder/currentness checks must
+  // fail; presentation must not silently reconstruct a second Board membership.
   return result;
 }
 
