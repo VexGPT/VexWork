@@ -19,6 +19,7 @@ import {
   locateItem,
   parseRoute,
   projectByRef,
+  projectPortfolioGroups,
   searchWorkspace,
   validateWorkspace,
 } from '../workspace-reader.js';
@@ -109,17 +110,26 @@ test('A4 patient-zero Projects flow from source identity to Workgraph, derived B
   }
 });
 
-test('A4 public Projects surface consumes the generated workspace population instead of a parallel hard-coded Project list', () => {
+test('A4 public Projects surface consumes the generated workspace population without a parallel Project list or Project lifecycle', () => {
   const html = readText('index.html');
   assert.match(html, /const WORKSPACE_URL = '\.\/public\/workspace\.json'/);
-  assert.match(html, /workspace\.projects\.forEach\(\(p\)=>grid\.appendChild\(projectCard\(p\)\)\)/);
+  assert.match(html, /Reader\.projectPortfolioGroups\(workspace\)/);
+  assert.match(html, /renderProjectGroup\('Projects to complete'/);
+  assert.match(html, /renderProjectGroup\('Completed Projects'/);
 
-  for (const projectRef of [
-    'project.vexlife.new-beginnings',
-    'project.vexwork.vexarchitecture-alignment',
-  ]) {
-    assert.equal(workspace.projects.some((entry) => entry.project.projectRef === projectRef), true);
-  }
+  const groups = projectPortfolioGroups(workspace);
+  assert.equal(
+    groups.toComplete.some((entry) => entry.project.projectRef === 'project.vexlife.new-beginnings'),
+    true,
+  );
+  assert.equal(
+    groups.completed.some((entry) => entry.project.projectRef === 'project.vexwork.vexarchitecture-alignment'),
+    true,
+  );
+  assert.equal(
+    groups.toComplete.length + groups.completed.length + groups.archived.length,
+    workspace.projects.length,
+  );
 });
 
 test('A4 held relationship attention clears by evidence without changing WorkState', () => {
