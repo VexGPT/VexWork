@@ -668,6 +668,14 @@ test('current VexStream VexArchitecture slice projects source-owned relationship
     'CREATES / OWNS CONCRETE CONNECTION',
   );
   assert.equal(
+    relation('rel.vexstream.playback.owner-service').labelOrNull,
+    'CONNECTS MEDIA CONTROLLER TO SERVICE',
+  );
+  assert.equal(
+    relation('rel.vexstream.playback.service-media3').labelOrNull,
+    'OWNS MEDIASESSION / EXOPLAYER',
+  );
+  assert.equal(
     relation('rel.vexstream.playback.player-experience').labelOrNull,
     'ACTIVATE · PLAY_PAUSE',
   );
