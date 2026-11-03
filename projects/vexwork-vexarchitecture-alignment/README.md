@@ -1233,7 +1233,7 @@ A2 generated consequence convergence               COMPLETED
 A3 held relationship ATTENTION -> CLEAR             COMPLETED
 A4 whole-circuit end-to-end proof                  COMPLETED
 A5 VexBoard projection alignment                   COMPLETED
-Alignment outcome                                  VERIFYING / READY_FOR_INTEGRATION
+Alignment outcome                                  COMPLETED / ACCEPTED ON MAIN
 ~~~
 
 A4 is complete on exact SourceOwner A006 + terminal FOUNDATION Quality Review:
@@ -1275,9 +1275,11 @@ A5 is complete on exact SourceOwner A005 + terminal FOUNDATION Quality Review. T
 reuses the existing VexWork source projector and canonical effect-free Attention snapshot so VexBoard
 perceives already-owned relationship/currentness truth without becoming its owner.
 
-The current edge is repository integration: preserve the exact A005 SourceOwner + A5 QA evidence,
-re-ground current main under the Integration Steward process, merge only when current-main/provider
-predicates hold, then post-merge verify before completing the parent Alignment outcome.
+Repository integration is complete. PR #210 merged as `d1def6a746646350364266121191b30c7b4e9727`,
+and post-merge verification proved its merge tree exactly equals the A007-proven candidate tree.
+The parent Alignment outcome is therefore COMPLETED. Future VexWork architecture pressure should enter
+as a separately admitted observed relationship question; do not reopen A0-A5 merely because a new
+consumer or perception refinement appears.
 
 ## Fresh-instance entry
 
@@ -1290,7 +1292,7 @@ predicates hold, then post-merge verify before completing the parent Alignment o
 6. descend only to the named VexWork foundation
 7. use VexLife-Android / VexLife-Prod as architecture evidence, not VexWork source authority
 8. implement the smallest relationship fix without narrowing away the contract's whole-system laws
-9. current edge: Alignment outcome is VERIFYING / READY_FOR_INTEGRATION; preserve exact A005 + A5 QA evidence and use the Integration Steward process without reopening completed A0-A5
+9. accepted state: Alignment outcome is COMPLETED on VexWork main; preserve A0-A5 as accepted evidence and admit any later pressure as a new bounded relationship question rather than reopening this completed trajectory
 10. use process.vexwork.quality-review
 11. use process.vexwork.integrate-ready-pull-requests at integration
 12. reconcile deterministic consequences after accepted source movement
