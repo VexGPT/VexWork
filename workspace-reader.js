@@ -8,6 +8,8 @@ const OPEN_STATES = new Set(['READY', 'CONTEXT_ADMITTED', 'RUNNING', 'WAITING_TO
 const WAITING_STATES = new Set(['WAITING_DEPENDENCIES', 'WAITING_RESOURCE', 'PAUSED_AT_CHECKPOINT', 'WAITING_HUMAN', 'HELD_UNKNOWN']);
 const PENDING_STATES = new Set(['CAPTURED', 'NEEDS_CLARIFICATION', 'DECOMPOSED', 'PLAN_VALIDATED']);
 const ARCHIVE_STATES = new Set(['SUPERSEDED', 'CANCELLED']);
+const TRAJECTORY_HELD_STATES = new Set([...BLOCKED_STATES, ...WAITING_STATES, 'WAITING_TOOL']);
+const PRIORITY_RANK = new Map(['IMMEDIATE', 'HIGH', 'NORMAL', 'LOW'].map((value, index) => [value, index]));
 
 export function validateWorkspace(data) {
   if (!data || data.schemaVersion !== 'vexwork.public-workspace/v1') throw new Error('unsupported VexWork workspace schema');
@@ -142,6 +144,70 @@ export function openWorkGroups(project) {
     ...group,
     items: Object.freeze([...group.items]),
   })));
+}
+
+function latestTransition(item) {
+  const history = Array.isArray(item?.transitionHistory) ? item.transitionHistory : [];
+  return history.length ? history[history.length - 1] : null;
+}
+
+function trajectoryItem(item) {
+  const latest = latestTransition(item);
+  return Object.freeze({
+    workRef: item.workRef,
+    label: item.label,
+    state: item.state,
+    priorityClass: item.priorityClass,
+    updatedAt: item.updatedAt,
+    latestReasonOrNull: latest?.reason || null,
+  });
+}
+
+function compareTrajectoryItems(left, right) {
+  const leftRank = PRIORITY_RANK.get(left.priorityClass) ?? PRIORITY_RANK.size;
+  const rightRank = PRIORITY_RANK.get(right.priorityClass) ?? PRIORITY_RANK.size;
+  return leftRank - rightRank
+    || String(right.updatedAt || '').localeCompare(String(left.updatedAt || ''))
+    || left.workRef.localeCompare(right.workRef);
+}
+
+export function projectCurrentTrajectory(project) {
+  // Currentness is projected from canonical Project/Work truth. Do not choose one
+  // "current work" when the Project truthfully has multiple concurrent open items.
+  const rootItems = projectRootItems(project).map(trajectoryItem);
+  const openItems = openWorkItems(project).map(trajectoryItem).sort(compareTrajectoryItems);
+  const heldItems = openItems.filter((item) => TRAJECTORY_HELD_STATES.has(item.state));
+
+  // Transition chronology explains the latest accepted movement; it never replaces
+  // each Work item's current state as the semantic owner.
+  const transitions = [];
+  for (const item of project?.items || []) {
+    for (const transition of item.transitionHistory || []) {
+      transitions.push({
+        workRef: item.workRef,
+        workLabel: item.label,
+        transitionRef: transition.transitionRef,
+        priorState: transition.priorState,
+        nextState: transition.nextState,
+        reason: transition.reason || '',
+        actorRef: transition.actorRef,
+        createdAt: transition.createdAt,
+      });
+    }
+  }
+  transitions.sort((left, right) =>
+    String(right.createdAt || '').localeCompare(String(left.createdAt || ''))
+      || left.transitionRef.localeCompare(right.transitionRef)
+  );
+
+  return Object.freeze({
+    rootItems: Object.freeze(rootItems),
+    openItems: Object.freeze(openItems),
+    heldItems: Object.freeze(heldItems),
+    latestTransitionOrNull: transitions.length ? Object.freeze(transitions[0]) : null,
+    effects: false,
+    executionAuthority: 'NONE',
+  });
 }
 
 export function stateTone(state) {
