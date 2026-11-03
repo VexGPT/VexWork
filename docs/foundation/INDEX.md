@@ -31,33 +31,35 @@ This is the current architecture map. Follow the exact foundation whose question
 
 `FOUNDATION` means the initial portable contract exists in this repository. It does not mean every production integration is complete.
 
-## Current architecture evolution
+## Accepted VexArchitecture alignment provenance
 
-When the implicated question is **VexWork's own architecture**—especially repeated relationship
-restatement, source/projection drift, generated-consequence ownership, Project discoverability,
-default Board duplication, or how accepted VexWork relationships should later project into
-VexBoard—descend to the active alignment Project:
+The VexWork VexArchitecture Alignment Project is **COMPLETED and accepted on main**. It remains a
+useful dogfood/provenance surface when a worker needs to understand why the accepted foundations were
+shaped around rightful owners, authored-once relationships, generated consequences, visible held
+closure and projection boundaries:
 
 ```text
 projects/vexwork-vexarchitecture-alignment/README.md
 projects/vexwork-vexarchitecture-alignment/architecture.contract.json
 ```
 
-That Project is the current source-managed **evolution trajectory and dogfood surface**. It is not a replacement Foundation owner, and its candidate conclusions do not override the accepted Foundation sources above.
+Do not treat that completed Project as the current unfinished architecture trajectory.
 
 ```text
-ACTIVE ARCHITECTURE EVOLUTION
-!= ACCEPTED FOUNDATION AUTHORITY
+COMPLETED ALIGNMENT PROJECT
+= accepted provenance / dogfood / rationale
 
-alignment Project
--> maps / pressures / proves proposed evolution
+ACCEPTED FOUNDATION SOURCE
+= current VexWork authority
 
-accepted Foundation source
--> remains current authority until an accepted change lands
+NEW OBSERVED ARCHITECTURE PRESSURE
+-> admit new bounded Work at its rightful owner
+-> do not reopen A0-A5 by default
 ```
 
-A fresh instance should be able to discover the trajectory here rather than reconstructing it from a
-provider PR number, predecessor chat, or the public Projects projection.
+A fresh instance may descend to the completed Alignment Project when provenance is useful, but ordinary
+current work should come from current Foundation source plus the current Workgraph rather than a
+formerly-active candidate route.
 
 ## Descent
 
@@ -123,7 +125,7 @@ hosted ChatGPT / local Vex / assisted host action / VexRelay-style handoff
 fresh human/agent entry / source-grounded assumptions / inverse reflection / successor takeover
 -> VEXWORK-ORIENTATION.md
 
-VexWork architecture evolution / repeated relationship restatement / discoverability-projection drift / generated consequence ownership / later VexBoard alignment
+accepted VexArchitecture alignment provenance / why accepted relationship boundaries exist
 -> ../../projects/vexwork-vexarchitecture-alignment/README.md
 -> ../../projects/vexwork-vexarchitecture-alignment/architecture.contract.json
 

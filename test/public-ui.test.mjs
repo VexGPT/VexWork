@@ -33,6 +33,12 @@ test('orientation is a read-only source-grounded judgment surface rather than a 
   assert.match(orientationSource, /current sources\n-> fresh instance reads them/);
   assert.match(orientationSource, /The plan is continuity, not authority\./);
   assert.match(orientationSource, /the predecessor's orientation answers/i);
+  assert.match(orientationSource, /completed VexArchitecture Alignment Project/i);
+  assert.match(orientationSource, /COMPLETED PROJECT != CURRENT UNFINISHED EDGE/);
+  assert.doesNotMatch(orientationSource, /treat this as active evolution source/i);
+  assert.match(orientationPage, /Architecture provenance/);
+  assert.match(orientationPage, /completed and accepted on main/i);
+  assert.doesNotMatch(orientationPage, /current source-managed alignment Project/i);
   assert.doesNotMatch(orientationPage, /method:\s*['"](?:POST|PUT|PATCH|DELETE)['"]/i);
 });
 
@@ -156,6 +162,25 @@ test('Project current trajectory reuses Board ordering rather than duplicating p
 
 
 
+test('portfolio groups distinguish unfinished, completed, and archived Projects from existing Work truth', () => {
+  const makeProject = (projectRef, rootState, openWorkItemCount) => ({
+    project: { projectRef, rootWorkRefs: [projectRef + '.outcome'] },
+    items: [{ workRef: projectRef + '.outcome', state: rootState }],
+    summary: { openWorkItemCount },
+  });
+  const groups = reader.projectPortfolioGroups({
+    projects: [
+      makeProject('project.running', 'RUNNING', 3),
+      makeProject('project.completed', 'COMPLETED', 0),
+      makeProject('project.closed', 'CLOSED', 0),
+      makeProject('project.cancelled', 'CANCELLED', 0),
+    ],
+  });
+  assert.deepEqual(groups.toComplete.map((project) => project.project.projectRef), ['project.running']);
+  assert.deepEqual(groups.completed.map((project) => project.project.projectRef), ['project.completed', 'project.closed']);
+  assert.deepEqual(groups.archived.map((project) => project.project.projectRef), ['project.cancelled']);
+});
+
 test('recursive containment and incoming dependencies remain projection helpers', () => {
   const project = {
     project: { projectRef: 'project.demo', rootWorkRefs: ['work.root'] },
@@ -191,6 +216,16 @@ test('Project first read exposes derived current trajectory without pre-orientat
   assert.match(page, /Chronology only; current WorkState remains owned by the Workgraph\./);
   assert.match(page, /Reader\.projectCurrentTrajectory\(project\)/);
   assert.match(orientationSource, /## Only then introduce the foreground work/);
+});
+
+test('portfolio first read compares Projects to complete with Completed Projects', () => {
+  assert.match(page, /Projects to complete/);
+  assert.match(page, /Completed Projects/);
+  assert.match(page, /Archived \/ exited Projects/);
+  assert.match(page, /Reader\.projectPortfolioGroups\(workspace\)/);
+  assert.match(page, /unfinished · /);
+  assert.match(page, /completed outcomes with no open Project-selected Work/);
+  assert.doesNotMatch(page, /workspace\.projects\.length,'Projects'/);
 });
 
 test('UI exposes semantic lenses but no work/comment mutation controls', () => {
