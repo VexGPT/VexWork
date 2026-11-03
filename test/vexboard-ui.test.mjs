@@ -62,6 +62,7 @@ test('VexBoard Pages entry exposes create/open/read-only/fork/save-draft workflo
   assert.match(page, /Source examples/);
   assert.match(page, /Open system anatomy example/);
   assert.match(page, /Open intent topology example/);
+  assert.match(page, /Open current VexStream VexArchitecture walk/);
   assert.match(page, /Open Theme Mode Origin Walk/);
   assert.match(page, /Request edit → draft copy/);
   assert.match(page, /Save draft/);
@@ -357,6 +358,7 @@ test('built-in and patient-zero source boards preserve separate catalog ownershi
       'board.vexstream.phone-desktop-connection.living-blueprint',
       'board.vexlife-android.home-vexstream.poc',
       'board.vexlife-android.vexstream-depth.poc',
+      'board.vexlife-android.vexstream-playback.vexarchitecture',
       'board.vexlife.debug-menu.theme-mode.origin-walk',
       'board.vexwork.process-family-metawalk',
     ]),
@@ -371,6 +373,16 @@ test('built-in and patient-zero source boards preserve separate catalog ownershi
   assert.equal(intentResolution.catalogRef, catalog.catalogRef);
   assert.equal(intentResolution.location, './vexbusinessfactory-intent-topology.board.json');
   assert.equal(intentResolution.boardRef, intentTopology.draftRef);
+
+  const architectureResolution = resolveBoardSource(
+    'board.vexlife-android.vexstream-playback.vexarchitecture',
+    [catalog],
+  );
+  assert.equal(architectureResolution.catalogRef, catalog.catalogRef);
+  assert.equal(
+    architectureResolution.location,
+    './vexlife-android-vexstream-playback.vexarchitecture.json',
+  );
 
   const themeModeResolution = resolveBoardSource(themeModeBoard.draftRef, [catalog]);
   assert.equal(themeModeResolution.catalogRef, catalog.catalogRef);
@@ -395,6 +407,8 @@ test('VexLife Android POC is projected at source-load time and styled without ch
   assert.match(page, /vexboard-android-source-projector\.mjs/);
   assert.match(page, /android-reference-presentation\.mjs/);
   assert.match(page, /VEXLIFE_ANDROID_POC_SNAPSHOT_SCHEMA/);
+  assert.match(page, /VEXLIFE_ANDROID_VEXARCHITECTURE_SLICE_SCHEMA/);
+  assert.match(page, /projectVexLifeAndroidVexArchitectureSlice\(\s*payload,\s*boardRef,\s*\)/);
   assert.match(page, /AndroidProjector\.androidPocDesignLocation\(payload\)/);
   assert.match(page, /new URL\(designLocation,boardUrl\)/);
   assert.match(page, /ScreenDesign\.normalizeScreenDesign\(await designResponse\.json\(\)\)/);

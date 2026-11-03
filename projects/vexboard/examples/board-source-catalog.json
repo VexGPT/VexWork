@@ -62,6 +62,17 @@
       ]
     },
     {
+      "boardRef": "board.vexlife-android.vexstream-playback.vexarchitecture",
+      "location": "./vexlife-android-vexstream-playback.vexarchitecture.json",
+      "sourceRefs": [
+        "git.commit.vexlife-android.4d357c48eb5a25797513708f800e61a87e0195c0",
+        "projects/vexboard/examples/vexlife-android-vexstream-playback.vexarchitecture.json",
+        "src/core/vexboard-android-source-projector.mjs",
+        "repo.vexlife-android:architecture/vexarchitecture/README.md",
+        "repo.vexlife-android:architecture/vexarchitecture/REFINED-BOUNDARIES.md"
+      ]
+    },
+    {
       "boardRef": "board.vexlife.debug-menu.theme-mode.origin-walk",
       "location": "./vexlife-debug-menu-theme-mode.board.json",
       "sourceRefs": [
