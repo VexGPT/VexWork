@@ -1232,7 +1232,8 @@ A1 Project + default Board + discoverability       COMPLETED
 A2 generated consequence convergence               COMPLETED
 A3 held relationship ATTENTION -> CLEAR             COMPLETED
 A4 whole-circuit end-to-end proof                  COMPLETED
-A5 VexBoard projection alignment                   RUNNING
+A5 VexBoard projection alignment                   COMPLETED
+Alignment outcome                                  VERIFYING / READY_FOR_INTEGRATION
 ~~~
 
 A4 is complete on exact SourceOwner A006 + terminal FOUNDATION Quality Review:
@@ -1270,10 +1271,13 @@ ordinary orientation
 -> this architecture trajectory
 ~~~
 
-The current edge is A5. Re-ground VexBoard's current Project, source projectors, fractal semantic/spatial
-composition sources, tests and provider state before authoring. Extend the smallest existing read-only
-projection seam so already-owned VexWork source/currentness/relationship meaning becomes perceptible;
-do not make VexBoard a healer, lifecycle owner, or reason to mint display-shaped upstream identities.
+A5 is complete on exact SourceOwner A005 + terminal FOUNDATION Quality Review. The implementation
+reuses the existing VexWork source projector and canonical effect-free Attention snapshot so VexBoard
+perceives already-owned relationship/currentness truth without becoming its owner.
+
+The current edge is repository integration: preserve the exact A005 SourceOwner + A5 QA evidence,
+re-ground current main under the Integration Steward process, merge only when current-main/provider
+predicates hold, then post-merge verify before completing the parent Alignment outcome.
 
 ## Fresh-instance entry
 
@@ -1286,7 +1290,7 @@ do not make VexBoard a healer, lifecycle owner, or reason to mint display-shaped
 6. descend only to the named VexWork foundation
 7. use VexLife-Android / VexLife-Prod as architecture evidence, not VexWork source authority
 8. implement the smallest relationship fix without narrowing away the contract's whole-system laws
-9. current edge: A5 is RUNNING; re-ground current VexBoard source/projector/provider truth and implement the smallest downstream read-only projection without reopening completed A0-A4
+9. current edge: Alignment outcome is VERIFYING / READY_FOR_INTEGRATION; preserve exact A005 + A5 QA evidence and use the Integration Steward process without reopening completed A0-A5
 10. use process.vexwork.quality-review
 11. use process.vexwork.integrate-ready-pull-requests at integration
 12. reconcile deterministic consequences after accepted source movement

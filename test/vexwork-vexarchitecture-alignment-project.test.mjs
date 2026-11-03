@@ -53,29 +53,20 @@ test('alignment source points only to known repositories and registered reusable
   }
 });
 
-test('A4 completion releases VexBoard projection alignment without changing upstream ownership', () => {
+test('A5 completion leaves the parent outcome verifying for repository integration', () => {
   const projected = projectWorkBoard({ project, graph, view, registry: workRegistry });
   const active = projected.lanes.find((lane) => lane.laneRef === 'lane.work.active');
+  const verify = projected.lanes.find((lane) => lane.laneRef === 'lane.work.verify');
   const planned = projected.lanes.find((lane) => lane.laneRef === 'lane.work.planned');
-
-  assert.deepEqual(active.cards.map((card) => card.workRef), [
-    'work.vexwork.vexarchitecture-alignment.outcome',
-    'work.vexwork.vexarchitecture-alignment.vexboard-projection-alignment',
-  ]);
-
+  assert.deepEqual(active.cards.map((card) => card.workRef), []);
+  assert.deepEqual(verify.cards.map((card) => card.workRef), ['work.vexwork.vexarchitecture-alignment.outcome']);
   const done = projected.lanes.find((lane) => lane.laneRef === 'lane.work.done');
-  assert.equal(done.cards.some((card) =>
-    card.workRef === 'work.vexwork.vexarchitecture-alignment.end-to-end-foundation-proof'
-  ), true);
-  assert.equal(done.cards.some((card) =>
-    card.workRef === 'work.vexwork.vexarchitecture-alignment.generated-consequence-reconciliation'
-  ), true);
+  assert.equal(done.cards.some((card) => card.workRef === 'work.vexwork.vexarchitecture-alignment.end-to-end-foundation-proof'), true);
+  assert.equal(done.cards.some((card) => card.workRef === 'work.vexwork.vexarchitecture-alignment.vexboard-projection-alignment'), true);
   assert.deepEqual(planned.cards.map((card) => card.workRef), []);
-
   const vexboard = graph.items.find((item) => item.workRef === 'work.vexwork.vexarchitecture-alignment.vexboard-projection-alignment');
   assert.deepEqual(vexboard.dependencyRefs, ['work.vexwork.vexarchitecture-alignment.end-to-end-foundation-proof']);
 });
-
 test('patient-zero closure is a named implementation edge, not a hard-coded Project count', () => {
   const discoverability = graph.items.find((item) => item.workRef === 'work.vexwork.vexarchitecture-alignment.project-discoverability-contract');
   assert.match(discoverability.purpose, /every eligible source-managed Project resolves exactly once/i);
@@ -661,7 +652,7 @@ test('A4 completion releases A5 only after the stabilized full repository review
     item.workRef === 'work.vexwork.vexarchitecture-alignment.vexboard-projection-alignment'
   );
   assert.equal(a4.state, 'COMPLETED');
-  assert.equal(a5.state, 'RUNNING');
+  assert.equal(a5.state, 'COMPLETED');
   assert.deepEqual(a5.dependencyRefs, [a4.workRef]);
 
   const hold = graph.transitions.find((entry) =>
@@ -676,6 +667,18 @@ test('A4 completion releases A5 only after the stabilized full repository review
   assert.ok(completion);
   assert.equal(completion.priorState, 'VERIFYING');
   assert.equal(completion.nextState, 'COMPLETED');
+
+  const a5Completion = graph.transitions.find((entry) =>
+    entry.transitionRef === 'transition.vexwork.vexarchitecture-alignment.vexboard-projection.verifying-completed.a5-qa-clear'
+  );
+  assert.ok(a5Completion);
+  assert.equal(a5Completion.priorState, 'VERIFYING');
+  assert.equal(a5Completion.nextState, 'COMPLETED');
+
+  const outcome = graph.items.find((item) =>
+    item.workRef === 'work.vexwork.vexarchitecture-alignment.outcome'
+  );
+  assert.equal(outcome.state, 'VERIFYING');
 });
 
 
@@ -685,7 +688,8 @@ test('Project README current checkpoint agrees with the Workgraph phase state', 
     'utf8',
   );
   assert.match(projectReadme, /A4 whole-circuit end-to-end proof\s+COMPLETED/);
-  assert.match(projectReadme, /A5 VexBoard projection alignment\s+RUNNING/);
+  assert.match(projectReadme, /A5 VexBoard projection alignment\s+COMPLETED/);
+  assert.match(projectReadme, /Alignment outcome\s+VERIFYING \/ READY_FOR_INTEGRATION/);
   assert.match(projectReadme, /npm run review/);
   assert.doesNotMatch(projectReadme, /This first candidate deliberately does not edit:/);
   assert.doesNotMatch(projectReadme, /preserve the exact focused 17\/17 PASS while the candidate's tested closure is unchanged/);
