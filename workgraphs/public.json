@@ -2980,6 +2980,44 @@
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexboard.source-projectors.vexarchitecture-ui-refinement",
+      "parentWorkRefOrNull": "work.vexboard.source-projectors",
+      "label": "UI Refinement — VexArchitecture relationship map",
+      "purpose": "Refine the newly accepted VexLife-Android VexStream VexArchitecture read-only relationship map so a fresh human or AI can perceive ownership transitions, causal flow, return paths, grouping, hierarchy, labels and navigation with less interpretation burden, while preserving the accepted source slice as semantic truth and keeping layout, emphasis and interaction as VexBoard projection concerns. Use Victor's lived perception together with a fresh instance's independent perception to identify where the map communicates well or poorly, and only evolve presentation/navigation seams that are earned by that comparison.",
+      "workClass": "TASK",
+      "state": "READY",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexboard.canvas-projection",
+        "work.vexboard.boardjourney-simulation",
+        "work.vexboard.usability-refinement"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "formationProcessRefOrNull": null,
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "work.vexboard.source-projectors",
+        "github.pull.vexwork.215",
+        "git.commit.vexwork.cd1264763e315d3bc2b6db80115806a102ed339b",
+        "projects/vexboard/examples/vexlife-android-vexstream-playback.vexarchitecture.json",
+        "src/core/vexboard-android-source-projector.mjs",
+        "vexboard/index.html",
+        "repo.vexlife-android:architecture/vexarchitecture/README.md",
+        "repo.vexlife-android:architecture/vexarchitecture/REFINED-BOUNDARIES.md"
+      ],
+      "nextProcessRefs": [
+        "process.vexwork.quality-review"
+      ],
+      "createdAt": "2026-11-03T11:14:57.000Z",
+      "updatedAt": "2026-11-03T11:14:57.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-23T00:33:00.000Z",
       "updatedAt": "2026-10-23T00:33:00.000Z",
       "workDisposition": "ACTIVE",
