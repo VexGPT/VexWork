@@ -53,17 +53,20 @@ test('alignment source points only to known repositories and registered reusable
   }
 });
 
-test('A5 completion leaves the parent outcome verifying for repository integration', () => {
+test('accepted integration completion moves the parent outcome to Done without reopening A0-A5', () => {
   const projected = projectWorkBoard({ project, graph, view, registry: workRegistry });
   const active = projected.lanes.find((lane) => lane.laneRef === 'lane.work.active');
   const verify = projected.lanes.find((lane) => lane.laneRef === 'lane.work.verify');
   const planned = projected.lanes.find((lane) => lane.laneRef === 'lane.work.planned');
-  assert.deepEqual(active.cards.map((card) => card.workRef), []);
-  assert.deepEqual(verify.cards.map((card) => card.workRef), ['work.vexwork.vexarchitecture-alignment.outcome']);
   const done = projected.lanes.find((lane) => lane.laneRef === 'lane.work.done');
+
+  assert.deepEqual(active.cards.map((card) => card.workRef), []);
+  assert.deepEqual(verify.cards.map((card) => card.workRef), []);
+  assert.deepEqual(planned.cards.map((card) => card.workRef), []);
+  assert.equal(done.cards.some((card) => card.workRef === 'work.vexwork.vexarchitecture-alignment.outcome'), true);
   assert.equal(done.cards.some((card) => card.workRef === 'work.vexwork.vexarchitecture-alignment.end-to-end-foundation-proof'), true);
   assert.equal(done.cards.some((card) => card.workRef === 'work.vexwork.vexarchitecture-alignment.vexboard-projection-alignment'), true);
-  assert.deepEqual(planned.cards.map((card) => card.workRef), []);
+
   const vexboard = graph.items.find((item) => item.workRef === 'work.vexwork.vexarchitecture-alignment.vexboard-projection-alignment');
   assert.deepEqual(vexboard.dependencyRefs, ['work.vexwork.vexarchitecture-alignment.end-to-end-foundation-proof']);
 });
@@ -678,7 +681,18 @@ test('A4 completion releases A5 only after the stabilized full repository review
   const outcome = graph.items.find((item) =>
     item.workRef === 'work.vexwork.vexarchitecture-alignment.outcome'
   );
-  assert.equal(outcome.state, 'VERIFYING');
+  assert.equal(outcome.state, 'COMPLETED');
+
+  const outcomeCompletion = graph.transitions.find((entry) =>
+    entry.transitionRef === 'transition.vexwork.vexarchitecture-alignment.outcome.verifying-completed.pr210-postmerge'
+  );
+  assert.ok(outcomeCompletion);
+  assert.equal(outcomeCompletion.priorState, 'VERIFYING');
+  assert.equal(outcomeCompletion.nextState, 'COMPLETED');
+  assert.equal(outcomeCompletion.actorRef, 'role.vexwork.integration-steward');
+  assert.equal(outcomeCompletion.sourceRefs.includes('github.commit.vexwork.d1def6a746646350364266121191b30c7b4e9727'), true);
+  assert.equal(outcomeCompletion.sourceRefs.includes('artifact.vexwork.vexarchitecture-alignment.integration-readiness.a007.outer-return.sha256.ec1d32da9ee1c0c6ce7a4caad80b40d9347fbe1f0f086c3ffeab37703c16d819'), true);
+  assert.equal(outcomeCompletion.sourceRefs.includes('artifact.vexwork.vexarchitecture-alignment.integration-readiness.a007.inner-return.sha256.ba58a2ff97b943483d1a917947ae727f13d2248377f7d34b5fd66879b4fd38e2'), true);
 });
 
 
@@ -689,7 +703,9 @@ test('Project README current checkpoint agrees with the Workgraph phase state', 
   );
   assert.match(projectReadme, /A4 whole-circuit end-to-end proof\s+COMPLETED/);
   assert.match(projectReadme, /A5 VexBoard projection alignment\s+COMPLETED/);
-  assert.match(projectReadme, /Alignment outcome\s+VERIFYING \/ READY_FOR_INTEGRATION/);
+  assert.match(projectReadme, /Alignment outcome\s+COMPLETED \/ ACCEPTED ON MAIN/);
+  assert.match(projectReadme, /d1def6a746646350364266121191b30c7b4e9727/);
+  assert.match(projectReadme, /do not reopen A0-A5/i);
   assert.match(projectReadme, /npm run review/);
   assert.doesNotMatch(projectReadme, /This first candidate deliberately does not edit:/);
   assert.doesNotMatch(projectReadme, /preserve the exact focused 17\/17 PASS while the candidate's tested closure is unchanged/);
