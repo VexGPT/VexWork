@@ -6,9 +6,12 @@ import { createBoardGraph, createBoardProjection } from '../src/core/vexboard.mj
 import { VEXLIFE_ANDROID_TEXT_VALUE_RESOLUTION_CAPABILITY_REF } from '../src/core/vexboard-android-construction.mjs';
 import {
   VEXBOARD_ANDROID_POC_BOARD_REFS,
+  VEXBOARD_ANDROID_VEXARCHITECTURE_PROJECTION_SCHEMA,
   VEXLIFE_ANDROID_POC_SNAPSHOT_SCHEMA,
+  VEXLIFE_ANDROID_VEXARCHITECTURE_SLICE_SCHEMA,
   androidPocDesignLocation,
   projectVexLifeAndroidPocSnapshot,
+  projectVexLifeAndroidVexArchitectureSlice,
   summarizeAndroidPocAdoptionReadiness,
 } from '../src/core/vexboard-android-source-projector.mjs';
 
@@ -18,6 +21,10 @@ const snapshot = JSON.parse(fs.readFileSync(
 ));
 const design = JSON.parse(fs.readFileSync(
   new URL('../projects/vexboard/examples/vexlife-android-home-vexstream.design.json', import.meta.url),
+  'utf8',
+));
+const architectureSlice = JSON.parse(fs.readFileSync(
+  new URL('../projects/vexboard/examples/vexlife-android-vexstream-playback.vexarchitecture.json', import.meta.url),
   'utf8',
 ));
 
@@ -608,6 +615,118 @@ test('VexLife Android POC snapshot fails closed when the bounded three-state con
   assert.throws(
     () => projectVexLifeAndroidPocSnapshot(invalid, VEXBOARD_ANDROID_POC_BOARD_REFS.EXPERIENCE, design),
     /requires exactly three library state projections/,
+  );
+});
+
+test('current VexStream VexArchitecture slice projects source-owned relationships without becoming an architecture owner', () => {
+  assert.equal(
+    architectureSlice.schemaVersion,
+    VEXLIFE_ANDROID_VEXARCHITECTURE_SLICE_SCHEMA,
+  );
+
+  const boardRef = 'board.vexlife-android.vexstream-playback.vexarchitecture';
+  const first = projectVexLifeAndroidVexArchitectureSlice(
+    architectureSlice,
+    boardRef,
+  );
+  const second = projectVexLifeAndroidVexArchitectureSlice(
+    architectureSlice,
+    boardRef,
+  );
+
+  assert.deepEqual(first, second);
+  assert.equal(first.schemaVersion, VEXBOARD_ANDROID_VEXARCHITECTURE_PROJECTION_SCHEMA);
+  assert.equal(
+    first.sourceRevisionRef,
+    'git.commit.vexlife-android.4d357c48eb5a25797513708f800e61a87e0195c0',
+  );
+  assert.deepEqual(first.effects, {
+    sourceMutationPerformed: false,
+    externalEffectsPerformed: false,
+  });
+  assert.equal(first.board.mode, 'READ_ONLY_SOURCE');
+
+  const graph = createBoardGraph(first.board.graph);
+  const projection = createBoardProjection(first.board.projection, graph);
+  assert.equal(projection.layoutIntent, 'SYSTEM_MAP');
+  assert.equal(
+    graph.nodes
+      .filter((node) => node.kind !== 'ANNOTATION')
+      .every((node) => node.kind === 'REFERENCE'),
+    true,
+  );
+  assert.equal(
+    graph.nodes.some((node) => /VexLogger/u.test(node.label)),
+    false,
+    'the playback slice must not fabricate a chronology edge that current feature source does not establish',
+  );
+
+  const relation = (ref) =>
+    graph.relationships.find((entry) => entry.relationshipRef === ref);
+  assert.equal(
+    relation('rel.vexstream.playback.owner-connection').labelOrNull,
+    'CREATES / OWNS CONCRETE CONNECTION',
+  );
+  assert.equal(
+    relation('rel.vexstream.playback.player-experience').labelOrNull,
+    'ACTIVATE · PLAY_PAUSE',
+  );
+  assert.equal(
+    relation('rel.vexstream.playback.connection-media3').labelOrNull,
+    'REALIZES EFFECT',
+  );
+  assert.equal(
+    relation('rel.vexstream.playback.media3-observation').labelOrNull,
+    'PLAYER LISTENER OBSERVATION',
+  );
+  assert.equal(
+    relation('rel.vexstream.playback.projection-experience').labelOrNull,
+    'DERIVES DISPLAY STATE',
+  );
+
+  assert.equal(
+    first.board.sourceRefs.includes(
+      'repo.vexlife-android:architecture/vexarchitecture/README.md',
+    ),
+    true,
+  );
+  assert.equal(
+    first.board.sourceRefs.includes(
+      'repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/Media3VexStreamPlaybackConnection.kt',
+    ),
+    true,
+  );
+  assert.equal(
+    graph.nodes.some(
+      (node) =>
+        node.nodeRef === 'annotation.reference.vexstream.playback.media3.question' &&
+        /physical playback reality/u.test(node.label),
+    ),
+    true,
+  );
+});
+
+test('VexArchitecture source slice fails closed on missing revision provenance and dangling relationships', () => {
+  const missingRevision = structuredClone(architectureSlice);
+  missingRevision.sourceRefs = missingRevision.sourceRefs.filter(
+    (ref) => ref !== missingRevision.sourceRevisionRef,
+  );
+  assert.throws(
+    () => projectVexLifeAndroidVexArchitectureSlice(
+      missingRevision,
+      'board.vexlife-android.vexstream-playback.invalid-revision',
+    ),
+    /sourceRefs must include sourceRevisionRef/u,
+  );
+
+  const dangling = structuredClone(architectureSlice);
+  dangling.relationships[0].toRef = 'reference.vexstream.playback.missing';
+  assert.throws(
+    () => projectVexLifeAndroidVexArchitectureSlice(
+      dangling,
+      'board.vexlife-android.vexstream-playback.dangling',
+    ),
+    /endpoint missing/u,
   );
 });
 
