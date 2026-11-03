@@ -680,6 +680,10 @@ test('current VexStream VexArchitecture slice projects source-owned relationship
     'PLAYER LISTENER OBSERVATION',
   );
   assert.equal(
+    relation('rel.vexstream.playback.media3-experience').labelOrNull,
+    'SUPPLIES PLAYBACK READ STATE',
+  );
+  assert.equal(
     relation('rel.vexstream.playback.projection-experience').labelOrNull,
     'DERIVES DISPLAY STATE',
   );
