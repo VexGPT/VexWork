@@ -9,7 +9,6 @@ const WAITING_STATES = new Set(['WAITING_DEPENDENCIES', 'WAITING_RESOURCE', 'PAU
 const PENDING_STATES = new Set(['CAPTURED', 'NEEDS_CLARIFICATION', 'DECOMPOSED', 'PLAN_VALIDATED']);
 const ARCHIVE_STATES = new Set(['SUPERSEDED', 'CANCELLED']);
 const TRAJECTORY_HELD_STATES = new Set([...BLOCKED_STATES, ...WAITING_STATES, 'WAITING_TOOL']);
-const PRIORITY_RANK = new Map(['IMMEDIATE', 'HIGH', 'NORMAL', 'LOW'].map((value, index) => [value, index]));
 
 export function validateWorkspace(data) {
   if (!data || data.schemaVersion !== 'vexwork.public-workspace/v1') throw new Error('unsupported VexWork workspace schema');
@@ -163,19 +162,39 @@ function trajectoryItem(item) {
   });
 }
 
-function compareTrajectoryItems(left, right) {
-  const leftRank = PRIORITY_RANK.get(left.priorityClass) ?? PRIORITY_RANK.size;
-  const rightRank = PRIORITY_RANK.get(right.priorityClass) ?? PRIORITY_RANK.size;
-  return leftRank - rightRank
-    || String(right.updatedAt || '').localeCompare(String(left.updatedAt || ''))
-    || left.workRef.localeCompare(right.workRef);
+function boardOrderedOpenItems(project) {
+  const byRef = itemMap(project);
+  const closedLanes = new Set(['lane.work.done', 'lane.work.archive']);
+  const seen = new Set();
+  const result = [];
+
+  // Reuse the existing Work Board projection order. That projection already owns
+  // lane/card ordering from the canonical Work Registry, so this reader does not
+  // restate priority semantics merely to improve first-read perception.
+  for (const lane of project?.lanes || []) {
+    if (closedLanes.has(lane.laneRef)) continue;
+    for (const workRef of lane.workRefs || []) {
+      if (seen.has(workRef)) continue;
+      const item = byRef.get(workRef);
+      if (!item) continue;
+      seen.add(workRef);
+      result.push(item);
+    }
+  }
+
+  // Preserve truth even for an incomplete projection: any still-open item omitted
+  // from lanes remains visible after the board-ordered items instead of disappearing.
+  for (const item of openWorkItems(project)) {
+    if (!seen.has(item.workRef)) result.push(item);
+  }
+  return result;
 }
 
 export function projectCurrentTrajectory(project) {
   // Currentness is projected from canonical Project/Work truth. Do not choose one
   // "current work" when the Project truthfully has multiple concurrent open items.
   const rootItems = projectRootItems(project).map(trajectoryItem);
-  const openItems = openWorkItems(project).map(trajectoryItem).sort(compareTrajectoryItems);
+  const openItems = boardOrderedOpenItems(project).map(trajectoryItem);
   const heldItems = openItems.filter((item) => TRAJECTORY_HELD_STATES.has(item.state));
 
   // Transition chronology explains the latest accepted movement; it never replaces
