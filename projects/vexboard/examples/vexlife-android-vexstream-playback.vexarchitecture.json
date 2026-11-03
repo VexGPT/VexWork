@@ -213,6 +213,17 @@
       ]
     },
     {
+      "relationshipRef": "rel.vexstream.playback.media3-experience",
+      "fromRef": "reference.vexstream.playback.media3",
+      "toRef": "reference.vexstream.playback.experience",
+      "label": "SUPPLIES PLAYBACK READ STATE",
+      "sourceRefs": [
+        "git.commit.vexlife-android.4d357c48eb5a25797513708f800e61a87e0195c0",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/VexStreamPlaybackExperience.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/playback/VexStreamPlaybackConnectionViewModel.kt"
+      ]
+    },
+    {
       "relationshipRef": "rel.vexstream.playback.connection-projection",
       "fromRef": "reference.vexstream.playback.connection",
       "toRef": "reference.vexstream.playback.projection",
