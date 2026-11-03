@@ -188,6 +188,9 @@ test('VexBoard projects completed navigation/usability foundations with Source P
   const boardpatch = vexboard.items.find((item) => item.workRef === 'work.vexboard.boardpatch-authoring');
   const refinement = vexboard.items.find((item) => item.workRef === 'work.vexboard.usability-refinement');
   const projectors = vexboard.items.find((item) => item.workRef === 'work.vexboard.source-projectors');
+  const architectureUiRefinement = vexboard.items.find(
+    (item) => item.workRef === 'work.vexboard.source-projectors.vexarchitecture-ui-refinement',
+  );
   const composition = vexboard.items.find((item) => item.workRef === 'work.vexboard.fractal-semantic-composition-spatial-layout');
   const screenshotPilot = vexboard.items.find((item) => item.workRef === 'work.vexboard.vexstream-screenshot-pilot');
   const businessGraduation = vexboard.items.find((item) => item.workRef === 'work.vexboard.later.businessfactory-guided-company-formation');
@@ -220,6 +223,19 @@ test('VexBoard projects completed navigation/usability foundations with Source P
   assert.equal(projectors.sourceRefs.includes('src/shared/vexboard-evidence.mjs'), true);
   assert.equal(projectors.sourceRefs.includes('github.pull.vexwork.115'), true);
   assert.equal(projectors.sourceRefs.includes('src/shared/vexboard-source-resolver.mjs'), true);
+  assert.equal(architectureUiRefinement.state, 'READY');
+  assert.equal(architectureUiRefinement.parentWorkRefOrNull, projectors.workRef);
+  assert.equal(architectureUiRefinement.priorityClass, 'IMMEDIATE');
+  assert.equal(architectureUiRefinement.authorityDisposition, 'AUTHORIZED_BOUNDED');
+  assert.equal(architectureUiRefinement.effectDisposition, 'EFFECTS_BOUND');
+  assert.equal(architectureUiRefinement.sourceRefs.includes('github.pull.vexwork.215'), true);
+  assert.equal(projectors.childWorkRefs.includes(architectureUiRefinement.workRef), true);
+  assert.equal(
+    vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.ready').workRefs.includes(
+      architectureUiRefinement.workRef,
+    ),
+    true,
+  );
   assert.equal(composition.sourceRefs.includes('projects/vexboard/FRACTAL-SEMANTIC-COMPOSITION-AND-SPATIAL-LAYOUT.md'), true);
   assert.equal(screenshotPilot.sourceRefs.includes('project.vexlife.blueprint-source-of-truth'), true);
   assert.equal(screenshotPilot.sourceRefs.includes('projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md'), true);
