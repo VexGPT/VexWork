@@ -7024,14 +7024,19 @@
         "artifact.vexrelay.inner-return.sha256.d012ae95b37b889f6b33d273378360be7b241d44841406fbf5ce939f6fb2a963",
         "github.issue-comment.vexwork.187.6519751897",
         "github.issue-comment.vexwork.187.6519761811",
-        "github.issue-comment.vexwork.187.6519798670"
+        "github.issue-comment.vexwork.187.6519798670",
+        "github.pull.vexwork.210.comment.6599490479",
+        "github.pull.vexwork.212.comment.6599841565",
+        "github.pull.vexwork.213.comment.6600271356",
+        "repo.vextreme-sdk:lib/vexrelay/recipe-compiler.mjs",
+        "repo.vextreme-sdk:docs/private-continuity/vexrelay/atlas/lifecycle-router.json"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-30T02:25:00.000Z",
-      "updatedAt": "2026-10-30T09:49:00.000Z"
+      "updatedAt": "2026-11-03T09:58:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
