@@ -58,3 +58,19 @@ test('existing board markers sit on borders and frame titles are never covered',
 });
 
 // [VXG RealForever][VEXWORK][VEXBOARD][SCREEN-LENS][UI-TEST]
+
+test('search, impact, coverage and briefs are wired from the shared query module', () => {
+  assert.match(page, /from '\.\.\/src\/shared\/vexboard-screen-lens-query\.mjs'/);
+  assert.match(page, /Query\.searchLens\(state\.lens, searchState\.query, \{ currentScreenRef: screenRef\(\) \}\)/);
+  assert.match(page, /event\.key === '\/'\) \{ event\.preventDefault\(\); document\.getElementById\('lens-search'\)\?\.focus\(\)/);
+  assert.match(page, /role: 'combobox'/);
+  assert.match(page, /aria-activedescendant/);
+  assert.match(page, /Query\.impactOf\(state\.lens, element\.ref\)/);
+  assert.match(page, /Query\.impactOf\(state\.lens, node\.ref\)/);
+  assert.match(page, /Query\.screenCoverage\(state\.lens, screen\.screenRef\)/);
+  assert.match(page, /Query\.controlBrief\(state\.lens, anchor/);
+  assert.match(page, /Query\.screenBrief\(state\.lens, screenRef\(\)/);
+  assert.match(page, /navigator\.clipboard\?\.writeText\(text\)/);
+  assert.match(page, /showBriefFallback\(title, text\)/, 'blocked clipboard falls back to selectable text');
+});
+// [VXG RealForever]

@@ -147,6 +147,92 @@ and for the screen map.
 The same label placer now also places edge labels on the existing VexBoard canvas, and relationships
 sharing the same endpoints get separate lanes so opposite edges are never drawn on the same line.
 
+## Finding things, impact and briefs
+
+`src/shared/vexboard-screen-lens-query.mjs` answers the questions a developer or a fresh AI asks before
+touching code. The page wires it in; nothing here owns truth.
+
+```text
+SEARCH  (/ in the lens)
+  start from any coordinate: action key, element ref, Kotlin symbol, file name, label or note text
+  every token must match; exact identifiers rank first, then labels, then prose
+  choosing a result jumps to the screen (preferring the one you are on), anchors the control,
+  flips the Behavior side to the step's face and reveals it
+
+IMPACT  (inspector)
+  control  -> screens it appears on, controls sharing its pathway, what it touches underneath
+              (steps in the Runtime, Outside truth and Beside-the-path bands)
+  step     -> every control and screen that reaches it, plus steps in other pathways with the
+              same symbol or the same source file
+
+COVERAGE  (screen chips and inspector)
+  traced = a reachable control has a pathway in this lens
+  TRACED != PROVEN != CURRENT
+
+BRIEFS  (Copy control brief / Copy screen brief)
+  paste-ready Markdown for a person or an AI: identities, roles, source paths pinned to the commit,
+  reach, pathways face by face, notes, and everything still held
+  a brief describes the lens; regenerate it, never edit it into a second source of truth
+```
+
+## Decision record
+
+Choices made while building, with the reason and what was rejected, so a successor does not have to
+rediscover them.
+
+```text
+D1  Separate page (vexboard/lens.html) sharing modules with VexBoard
+    why       the main board is one large file under many accepted contracts; regression first
+    rejected  rewriting index.html around a new mode
+
+D2  Four faces = two sides x front/back, not a 2x2 grid
+    why       Victor's words; README non-goal "automatic four-quadrant / 2x2 reflow"
+
+D3  ELEMENT (UI doorway) and CONTROL (Family Control) are different roles
+    why       ThemeMode proves they are different coordinates (toggle vs Control.Select)
+
+D4  Every pathway carries a disposition; doorway collapses only when >= 2 non-doorway steps remain
+    why       never imply SCAE where the code has none; direct registrations ARE their doorway
+
+D5  Annotations always name a subject
+    why       floating annotation shapes were the main readability failure on the Theme Mode board
+
+D6  Route ownership decides where a screen-map edge starts; destinations appear once
+    why       grounded in AppShell / AppFrame isPrimary() / AppScreens primary vs shared
+    rejected  nesting shared screens under each parent; drawing the whole trajectory tree
+
+D7  Walk semantics match BoardJourney: Back pops, crumb click appends a Revisit, A -> B -> A kept
+    why       one navigation law across VexBoard surfaces
+
+D8  Layered vertical layout, return lanes outside content, bridge enters from the band above
+    why       half-width panels read top to bottom; entering from above never crosses a node
+    proof     layoutCollisions() == [] for every face and the screen map (tests)
+
+D9  One label placer for the lens and the existing canvas
+    why       same overlap law everywhere instead of two heuristics
+
+D10 Hand projection pinned to one commit; refs reuse source identities; container refs derived
+    why       no generator yet; never mint identity the source does not have
+    marked    sourceSnapshot.notes says so in the file and in every brief
+
+D11 Right-click flips Behavior, shift + right-click keeps the browser menu
+    open      main board uses right-click for its context menu; Victor to confirm the split
+
+D12 Search ranks identifiers over prose and prefers the current screen
+    why       a developer usually pastes a key or symbol, and should not be thrown to another screen
+
+D13 "Touches underneath" = Runtime, Outside truth and Beside-the-path bands
+    why       those are what change when a control is used; semantic steps are meaning, not reach
+
+D14 Stacked PRs: #219 stays the proven Screen Lens; this work stacks on it
+    why       keep a reviewed, proven candidate separate from new scope (REPOSITORY-INTEGRATION.md)
+
+D15 Not done here, on purpose
+    Work item admission      needs authority on the Workgraph; proposed only
+    Kotlin annotations       VexLife-Android owns its source meaning; proposal only
+    generator + currentness  routed to the ChatGPT lane (resourcing / hooking)
+```
+
 ## Data contract
 
 `vexboard.screen-lens/v1` (see `examples/vexlife-debug-menu.screen-lens.json`):
@@ -248,15 +334,33 @@ role vocabulary changes, it changes here first and the Kotlin enum follows.
 ## Next edges
 
 ```text
-1. admit the bounded Work item (suggested: work.vexboard.screen-lens under project.vexboard,
-   related to project.vexsync.debugmenu-blueprints) and rebuild public projections
-2. Lived Pages check at desktop and phone widths; confirm right-click flip does not fight other
-   browser habits for Victor
-3. Android source projector: generate this lens from the pinned commit using only the DERIVABLE NOW
-   list; golden-test that it reproduces the hand projection's structure
-4. Decide in VexLife-Android whether to admit @VexLens / @VexLensEdge / @VexLensNote for the
-   NEEDS A BOND list
-5. Second screen (VexStream Music or Settings) to pressure reuse before generalizing anything
+DONE   Screen Lens UI, data contract, overlap-free layout            PR #219
+DONE   existing canvas overlap fixes                                 PR #219
+DONE   search, impact, coverage, briefs                              stacked on #219
+
+NEXT   admit the bounded Work item (suggested: work.vexboard.screen-lens under project.vexboard,
+       related to project.vexsync.debugmenu-blueprints) and rebuild public projections
+NEXT   lived Pages check at desktop and phone widths; Victor confirms the right-click split (D11)
+NEXT   currentness check (suggested contract below), then the Android source generator
+LATER  VexLife-Android decision on @VexLens / @VexLensEdge / @VexLensNote
+LATER  observed journey: replay a VexLogger export over a pathway
+LATER  crawler screenshots on the Surface face
+LATER  second screen (VexStream Music or Settings) to pressure reuse before generalizing
+```
+
+Suggested currentness contract, kept separate so the lens file stays an immutable projection:
+
+```text
+vexboard.screen-lens-currentness/v1
+  lensRef, lensCommit, checkedCommit, checkedAt
+  entries[]: { ref, source, symbol, state: CURRENT | MOVED | MISSING | UNCHECKED, foundIn? }
+
+CURRENT    source file exists at checkedCommit and contains the symbol
+MOVED      the symbol exists, in a different file
+MISSING    neither the file nor the symbol is found
+UNCHECKED  no symbol to check
+
+the lens overlays this as a badge per node/element; it never rewrites the lens
 ```
 
 <!-- [VXG RealForever][VEXWORK][VEXBOARD][SCREEN-LENS] -->
