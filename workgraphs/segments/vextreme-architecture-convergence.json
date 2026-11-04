@@ -40,7 +40,7 @@
       "workRef": "work.vextreme.architecture-convergence.semantic-owner-map",
       "parentWorkRefOrNull": "work.vextreme.architecture-convergence.outcome",
       "label": "Map Vextreme seams to rightful semantic owners and relationships",
-      "purpose": "Use current lived website seams as construction specimens and map each one from human intention through current Vextreme source to the smallest rightful owner and reusable relationship language. Consume VexSync Builder-discovery as live architectural context, including its current typed relationship/ownership pressure, without copying Android/Kotlin shapes or allowing VexSync to become Vextreme's source authority.",
+      "purpose": "Map current lived Vextreme seams to rightful semantic owners and relationships under accepted VexArchitecture ownership/subtraction laws, while keeping Vextreme source authority local. Earlier VexSync/Family-Circuit work remains provenance rather than the current architecture owner.",
       "workClass": "TASK",
       "state": "RUNNING",
       "workDisposition": "ACTIVE",
@@ -87,7 +87,12 @@
         "repo.vextreme:lib/logger.js",
         "repo.vextreme:lib/logger-codes.js",
         "github.issue-comment.vextreme.273.6497654829",
-        "repo.vextreme:docs/architecture/07-registry.md"
+        "repo.vextreme:docs/architecture/07-registry.md",
+        "github.pull.vexlife-android.209",
+        "github.pull.vexlife-android.211",
+        "github.commit.vexlife-android.305a09eac1fabebcf2241bd207386950f41121f2",
+        "github.pull.vextreme.570",
+        "github.commit.vextreme.3f6ad6ff7e2f18cf6c541ecfc1743772f4b15906"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
@@ -286,9 +291,9 @@
       "workRef": "work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence",
       "parentWorkRefOrNull": "work.vextreme.architecture-convergence.outcome",
       "label": "Converge VexRelay Protocol with Family Circuit / VexArchitecture",
-      "purpose": "Port and refine the operational VexRelay protocol into the source-managed Vex architecture / Family Circuit model so a human or fresh agent can understand the Relay question, semantic owners, current State/Control/Act/Effect/Connection relationships, task families, and safe execution route without reconstructing a giant ChatGPT Project manual or hand-authoring low-level harness parameters. Preserve Vextreme-SDK current-contract, task/RETURN, validator, carrier and runtime authority; use accepted VexLife-Android Family Circuit and Compound Relay source as architecture evidence rather than a Kotlin transplant; move protocol-owned invariants and repeatable recipe plumbing out of AI guesswork; and prove compatibility before any runtime replacement or Project-source reduction.",
+      "purpose": "Preserve the accepted Relay / MetaWalk relationship model and its VexArchitecture ownership lessons as a completed convergence foundation. VexWork PR #189, Relay route PR #187 and parent Project PR #185 are accepted. The #210/#212/#213/#214 formation and carrier failures remain retained SDK/tooling evidence without keeping this Vextreme Work open.",
       "workClass": "TASK",
-      "state": "VERIFYING",
+      "state": "COMPLETED",
       "workDisposition": "ACTIVE",
       "priorityClass": "HIGH",
       "dependencyRefs": [],
@@ -332,14 +337,21 @@
         "repo.vextreme-sdk:lib/vexrelay/recipe-compiler.mjs",
         "repo.vextreme-sdk:docs/private-continuity/vexrelay/atlas/lifecycle-router.json",
         "artifact.vexrelay.outer-return.sha256.f59df1f7af84fc4d9c592d73d59888ed8fd3ad94983954ca889224c36c32132a",
-        "artifact.vexrelay.inner-return.sha256.e10737c69b34df4f9453da21f69c1612b09d366ab81adda3371bfc8ace83a7a1"
+        "artifact.vexrelay.inner-return.sha256.e10737c69b34df4f9453da21f69c1612b09d366ab81adda3371bfc8ace83a7a1",
+        "github.pull.vexwork.185",
+        "github.commit.vexwork.c1188e6a47b010d6ab6027c3d9961959ff31af7b",
+        "github.pull.vexlife-android.209",
+        "github.pull.vexlife-android.211",
+        "github.commit.vexlife-android.305a09eac1fabebcf2241bd207386950f41121f2",
+        "github.pull.vextreme.570",
+        "github.commit.vextreme.3f6ad6ff7e2f18cf6c541ecfc1743772f4b15906"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-30T02:25:00.000Z",
-      "updatedAt": "2026-11-03T10:15:55.049Z"
+      "updatedAt": "2026-11-04T07:17:22.000Z"
     }
   ],
   "transitions": [
@@ -499,6 +511,25 @@
         "github.issue-comment.vexwork.189.6519527203"
       ],
       "createdAt": "2026-10-30T09:33:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.architecture-convergence.vexrelay-family-circuit-convergence.completed.pr185-parent-accepted",
+      "workRef": "work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "The held durability predicate is satisfied: child MetaWalk PR #189 and Relay route PR #187 were accepted and parent Architecture Convergence PR #185 merged. PR #214's later formation/carrier failures remain retained SDK/tooling evidence, but they do not reopen the completed Vextreme convergence foundation.",
+      "actorRef": "actor.chatgpt.vexworks.architecture-threshold-currentization",
+      "sourceRefs": [
+        "github.pull.vexwork.189",
+        "github.commit.vexwork.763d27f4ec5afc133c71e018c7d4532fc155fe95",
+        "github.pull.vexwork.187",
+        "github.commit.vexwork.80e8cb441ae5c7270bb001c69ced4e7c33b90224",
+        "github.pull.vexwork.185",
+        "github.commit.vexwork.c1188e6a47b010d6ab6027c3d9961959ff31af7b",
+        "github.pull.vexwork.214"
+      ],
+      "createdAt": "2026-11-04T07:17:22.000Z"
     }
   ],
   "sourceRefs": [
@@ -544,7 +575,13 @@
     "github.actions.vextreme.pages.40874736897",
     "github.pull.vextreme.488",
     "repo.vextreme:tests/45-terrain-journey.test.js",
-    "repo.vextreme:tests/85-terrain-view-contract.test.js"
+    "repo.vextreme:tests/85-terrain-view-contract.test.js",
+    "github.pull.vexlife-android.209",
+    "github.pull.vexlife-android.211",
+    "github.pull.vexwork.185",
+    "github.pull.vexwork.214",
+    "github.pull.vextreme.570",
+    "github.commit.vextreme.3f6ad6ff7e2f18cf6c541ecfc1743772f4b15906"
   ],
   "formedAt": "2026-10-29T11:45:00.000Z"
 }

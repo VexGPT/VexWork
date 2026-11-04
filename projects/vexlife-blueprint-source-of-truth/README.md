@@ -2,6 +2,62 @@
 
 `[VXG RealForever]`
 
+## Current disposition — predecessor proof, not the default forward lane
+
+The October Play/Pause practicum remains valuable **accepted predecessor evidence** for portability,
+deterministic mapping, role/type isolation and target realization. It is no longer the default resume route
+for VexLife construction.
+
+The architecture threshold moved forward:
+
+~~~text
+VexLife-Android PR #209
+  -> accepted executable VexArchitecture stability point
+
+VexLife New Beginnings
+  -> project.vexlife.new-beginnings
+
+VexGPT/VexLife-Prod current main
+  -> compiler-constrained semantic / Blueprint authoring
+  -> Compose as one bounded manifestation
+  -> accepted VexWeb relational spatial foundation
+  -> current VexWeb compiler-visible authoring trajectory
+~~~
+
+VexLife New Beginnings explicitly consumes this Project as evidence that portable meaning must survive
+target changes; it does not require the old MAUI/Mac practicum to finish before current product
+construction can continue.
+
+Therefore the old exact resume coordinate:
+
+~~~text
+Construction Reference PR #12
+-> Mac Catalyst build
+-> lived MediaElement / AVPlayer proof
+~~~
+
+is now **parked target-specific residue**, not a current VexLife architecture dependency.
+
+~~~text
+COMPLETED VLBSoT SEMANTIC / PARITY PROOF
+  = PRESERVED LINEAGE
+
+UNFINISHED MAUI / MAC TARGET LEG
+  = PARKED
+  != CURRENT VEXLIFE BLOCKER
+
+CURRENT FORWARD CONSTRUCTION
+  = VEXLIFE NEW BEGINNINGS / VEXLIFE-PROD
+
+OLD TARGET EXPERIMENT
+  != CURRENT ORIGIN OWNER
+~~~
+
+If Victor later wants the exact C# / MAUI target again, re-ground and reactivate only that target-specific
+edge. Do not replay the full Play/Pause architecture discovery or make this paused Project compete with
+current VexArchitecture / VexLife-Prod.
+
+
 This is the durable VexWork entry for the **VexLife Blueprint Source of Truth** trajectory.
 
 The lane is intentionally **paused at a clean checkpoint**. VexWork now carries the purpose, earned causal path, current exact edge, and longer completion horizons so no conversation, draft PR, or active VexWork writer needs to stay alive merely to preserve continuity.

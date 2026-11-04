@@ -190,6 +190,131 @@
   "parkingLot": {
     "items": [
       {
+        "workRef": "work.vexlife.blueprint-source-of-truth.outcome",
+        "label": "VexLife Blueprint Source of Truth",
+        "purpose": "Preserve accepted VLBSoT portability/parity proof as predecessor lineage while the unfinished MAUI/Mac target leg is parked; current VexLife construction proceeds through VexLife New Beginnings / VexLife-Prod on accepted VexArchitecture.",
+        "workClass": "OUTCOME",
+        "state": "PAUSED_AT_CHECKPOINT",
+        "workDisposition": "PARKED",
+        "priorityClass": "LOW",
+        "repositoryRefs": [
+          "repo.vexwork",
+          "repo.vexlife",
+          "repo.vextreme-sdk",
+          "repo.vexlife-android",
+          "repo.vexlife-construction-reference"
+        ],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "updatedAt": "2026-11-03T09:40:00.000Z"
+      },
+      {
+        "workRef": "work.vexlife.blueprint-source-of-truth.play-pause-practicum",
+        "label": "Play/Pause first complete semantic circuit",
+        "purpose": "Preserve the completed Play/Pause semantic/parity thresholds and the exact unfinished target-native residue as historical lineage; do not resume the MAUI/Mac leg unless that target is explicitly wanted again.",
+        "workClass": "OUTCOME",
+        "state": "PAUSED_AT_CHECKPOINT",
+        "workDisposition": "PARKED",
+        "priorityClass": "LOW",
+        "repositoryRefs": [
+          "repo.vexwork",
+          "repo.vexlife",
+          "repo.vextreme-sdk",
+          "repo.vexlife-android",
+          "repo.vexlife-construction-reference"
+        ],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "updatedAt": "2026-11-03T09:40:00.000Z"
+      },
+      {
+        "workRef": "work.vexlife.blueprint-source-of-truth.play-pause.native-lived-proof",
+        "label": "Lived native provider conformance",
+        "purpose": "Park the lived MAUI/provider proof with its dependency. Preserve it as an exact future target proof question, not as a blocker on current VexLife construction.",
+        "workClass": "TASK",
+        "state": "WAITING_DEPENDENCIES",
+        "workDisposition": "PARKED",
+        "priorityClass": "LOW",
+        "repositoryRefs": [
+          "repo.vexwork",
+          "repo.vexlife-construction-reference"
+        ],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "updatedAt": "2026-11-03T09:40:00.000Z"
+      },
+      {
+        "workRef": "work.vexlife.blueprint-source-of-truth.play-pause.native-source-admission",
+        "label": "Target-native MAUI / MediaElement source admission",
+        "purpose": "Park the unfinished MAUI / MediaElement target-native source admission. It is not a prerequisite for current VexArchitecture or VexLife-Prod; reactivate only if the exact C#/MAUI target becomes a current human outcome.",
+        "workClass": "TASK",
+        "state": "WAITING_RESOURCE",
+        "workDisposition": "PARKED",
+        "priorityClass": "LOW",
+        "repositoryRefs": [
+          "repo.vexwork",
+          "repo.vextreme-sdk",
+          "repo.vexlife-construction-reference"
+        ],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "updatedAt": "2026-11-03T09:40:00.000Z"
+      },
+      {
+        "workRef": "work.vexlife.blueprint-source-of-truth.reusable-v1",
+        "label": "Reusable VLBSoT v1",
+        "purpose": "Preserve the reusable-method intention as predecessor lineage; current compiler-constrained semantic construction is being developed in VexLife New Beginnings rather than by resuming this paused practicum.",
+        "workClass": "OUTCOME",
+        "state": "WAITING_DEPENDENCIES",
+        "workDisposition": "PARKED",
+        "priorityClass": "LOW",
+        "repositoryRefs": [
+          "repo.vexwork",
+          "repo.vexlife",
+          "repo.vextreme-sdk",
+          "repo.vexlife-android",
+          "repo.vexlife-construction-reference"
+        ],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "updatedAt": "2026-11-03T09:40:00.000Z"
+      },
+      {
+        "workRef": "work.vexlife.blueprint-source-of-truth.total-feature-capacity",
+        "label": "Whole-product total feature capacity",
+        "purpose": "Preserve the whole-product portability intention as lineage. Current Origin-outward product construction is owned by VexLife New Beginnings / VexLife-Prod; do not treat this old horizon as a parallel active architecture program.",
+        "workClass": "OUTCOME",
+        "state": "WAITING_DEPENDENCIES",
+        "workDisposition": "PARKED",
+        "priorityClass": "LOW",
+        "repositoryRefs": [
+          "repo.vexwork",
+          "repo.vexlife",
+          "repo.vextreme-sdk",
+          "repo.vexlife-android",
+          "repo.vexlife-construction-reference"
+        ],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "updatedAt": "2026-11-03T09:40:00.000Z"
+      },
+      {
+        "workRef": "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery",
+        "label": "Discover Feature Request -> Builder process through one Debug Menu specimen",
+        "purpose": "Use the dark/light-theme request as the first live process specimen: preserve the human goal/return, hold only dependent unknowns, lock known terrain endpoints before filling the middle, investigate current Android identities/owners/HOW before creating new source, and let relationship names/IDs/phases emerge only when the living specimen earns them.",
+        "workClass": "TASK",
+        "state": "COMPLETED",
+        "workDisposition": "PARKED",
+        "priorityClass": "LOW",
+        "repositoryRefs": [
+          "repo.vexwork",
+          "repo.vexlife-android"
+        ],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "updatedAt": "2026-11-03T09:22:02.000Z"
+      },
+      {
         "workRef": "work.vexlife.new-beginnings.later.settings-capability-mapping",
         "label": "Later — source-map Settings capabilities",
         "purpose": "After the first browser/Conversation circuit is real, map Context Window, RAM/resource projection, reasoning visibility, accessible directories, Continuity Mode, Dream Sync and clean-chat/memory controls to their existing rightful source owners. Do not infer backend semantics from the screenshot labels or combine destructive effects merely because one visual button does.",
@@ -333,7 +458,7 @@
   "summary": {
     "projectWorkItemCount": 8,
     "openProjectWorkItemCount": 0,
-    "parkingLotItemCount": 9
+    "parkingLotItemCount": 16
   },
   "effects": false,
   "executionAuthority": "NONE"

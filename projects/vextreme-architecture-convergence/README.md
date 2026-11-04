@@ -2,6 +2,48 @@
 
 [VXG RealForever]
 
+## Current architecture threshold — 2026-11-04
+
+The original VexSync / Family-Circuit pressure did its job: it exposed ownership boundaries while
+VexArchitecture was forming. It is provenance now, not the current architecture entry for this Project.
+
+Current architectural source is:
+
+~~~text
+VexLife-Android main
+  305a09eac1fabebcf2241bd207386950f41121f2
+-> architecture/vexarchitecture/README.md
+-> architecture/vexarchitecture/VEXLOGGER.md when chronology/history is implicated
+-> architecture/vexarchitecture/REFINED-BOUNDARIES.md
+-> docs/foundation/VEX-BODY-SEMANTIC-BLUEPRINT.md
+-> exact owning feature/source/tests
+
+PR #209 / merge 66c866dea6a8dd78e2946da88715c4deb78c1847
+  = accepted implementation-origin / reasoning provenance
+  != current behavioral owner
+
+PR #211 / merge 305a09eac1fabebcf2241bd207386950f41121f2
+  = accepted VexMethod Method-result refinement
+
+Vextreme PR #570 / merge 3f6ad6ff7e2f18cf6c541ecfc1743772f4b15906
+  = accepted public Builder Field Guide / Live Demonstration currentness
+  = teaching/projection of current source
+  != second architecture authority
+~~~
+
+Vextreme remains its own source owner. The transferable VexArchitecture law constrains how this Project
+finds rightful owners and relationships; it does not transplant Android class names or make VexSync a
+permanent semantic parent.
+
+The former VexRelay / Family-Circuit convergence Work is complete: VexWork PR #189 accepted the
+MetaWalk formation, PR #187 accepted the Relay route, and parent Project PR #185 subsequently merged.
+The #210/#212/#213 formation failures recorded by PR #214 remain valuable SDK/tooling evidence, but they
+no longer hold this Vextreme architecture Work open.
+
+Current unfinished edges are the real lived predicates recorded below—especially Terrain Journey Inspect
+usefulness/readability and the bounded reader-navigation lived question—not another foundation rewrite.
+
+
 ## Human outcome
 
 Refactor and enhance the Vextreme website by making its existing product intentions, semantic owners,
@@ -2020,21 +2062,22 @@ The corresponding Work item is
 Current Workgraph truth for Relay convergence is now:
 
 ~~~text
-VERIFYING / HIGH
+COMPLETED / HIGH
 authority = AUTHORIZED_BOUNDED
 effects   = EFFECTS_BOUND
 
-fresh verification evidence:
-  VexWork #210 -> VexWork READY_FOR_INTEGRATION was incorrectly authored into a VexRelay lifecycle field
-  VexWork #212 -> proof-attempt A002 leaked into stable PR branch identity and queried a nonexistent branch
-  VexWork #212/#213 -> predecessor path membranes leaked across fresh attempts until wrapper self-checks caught them
+accepted convergence:
+  VexWork #189 -> MetaWalk accepted / merge 763d27f4ec5afc133c71e018c7d4532fc155fe95
+  VexWork #187 -> Relay route accepted / merge 80e8cb441ae5c7270bb001c69ced4e7c33b90224
+  VexWork #185 -> parent Project durability accepted / merge c1188e6a47b010d6ab6027c3d9961959ff31af7b
 
-current correction owner:
-  Vextreme-SDK Relay formation / recipe / carrier boundary
+retained SDK/tooling evidence from PR #214:
+  #210 -> VexWork READY_FOR_INTEGRATION leaked into a VexRelay lifecycle field
+  #212 -> proof-attempt identity leaked into stable PR branch identity
+  #212/#213 -> predecessor path membranes leaked across fresh attempts
+  carrier SAFE_FAILURE/NOT_REACHED pressure remains evidence for the SDK boundary
 
-next question:
-  which candidate, membrane and continuation relationships can the SDK derive from existing owners so
-  fresh workers stop reimplementing canonical mechanics in hand-authored wrappers?
+these are retained lessons, not an active Vextreme architecture blocker.
 ~~~
 
 That currentizes the work trajectory; it does **not** transfer SDK, Android, Vextreme product, merge,
@@ -2054,18 +2097,13 @@ work.vextreme.architecture-convergence.semantic-owner-map
 
 
 work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence
-  VERIFYING / HIGH
-  AUTHORIZED_BOUNDED / EFFECTS_BOUND
-  accepted child: VexWork PR #189
-  first MetaWalk formation: RECONCILE_ACCEPT / ACCEPTED
-  merge 763d27f4ec5afc133c71e018c7d4532fc155fe95
-  merge tree = exact A012-proven e6df3aaa333c71143da8217f8764161a884e5f04
+  COMPLETED
+  accepted child: VexWork PR #189 / merge 763d27f4ec5afc133c71e018c7d4532fc155fe95
   accepted Relay route: VexWork PR #187 / merge 80e8cb441ae5c7270bb001c69ced4e7c33b90224
-  fresh verification finding: formation callers still duplicate candidate identity, attempt identity, path membrane and continuation routing outside the SDK compiler/carrier
-  observed failures: lifecycle vocabulary collapse (#210), attempt -> branch identity collapse (#212), stale membrane carry-forward (#212/#213)
-  fresh #214 carrier evidence: exact candidate head/tree checks passed, npm review failed before REVIEW_SNAPSHOT on two stale VexWork tests, inner RETURN was retained byte-exact, but outer consumption rejected candidateBinding=NONE
-  current SDK owners to refine: recipe-compiler.mjs + lifecycle-router.json + return-consumer / native VexLocalBridge carrier + source-managed package/bootstrap formation
-  next durability edge: make those relationships derived/non-collapsible while preserving task/v2 + canonical RETURN compatibility
+  parent Project durability: VexWork PR #185 / merge c1188e6a47b010d6ab6027c3d9961959ff31af7b
+  retained tooling evidence: #210 lifecycle-vocabulary collapse, #212 attempt/branch collapse,
+    #212/#213 stale membrane carry-forward, #214 carrier-consumption pressure
+  current disposition: historical SDK/tooling evidence only; no Vextreme product delta is held here
   R1 A012 formation failure remains EXECUTOR_FAILURE_NO_PRODUCT_DELTA historical evidence only
 
 work.vextreme.architecture-convergence.terrain-journey-inspection
@@ -2129,13 +2167,21 @@ Vextreme:
   pages/terrain-map.html
   lib/vextreme-index-v2.js
 
-VexSync / convergence:
+Architecture / convergence provenance:
   project.vexsync.debugmenu-blueprints
-  VexWork PR #178
-  VexWork PR #184
+  VexWork PR #178 = superseded discovery checkpoint
+  VexWork PR #184 = accepted VexBoard recovery/self-application
+  VexWork PR #189 / #187 / #185 = accepted Relay / MetaWalk / parent convergence
+  VexWork PR #214 = retained Relay formation/tooling pressure
 
-Architecture / instrumentation pressure:
-  VexLife-Android PR #193
+Current architecture:
+  VexLife-Android main 305a09eac1fabebcf2241bd207386950f41121f2
+  VexLife-Android architecture/vexarchitecture/README.md
+  VexLife-Android architecture/vexarchitecture/REFINED-BOUNDARIES.md
+  VexLife-Android docs/foundation/VEX-BODY-SEMANTIC-BLUEPRINT.md
+  VexLife-Android PR #209 = accepted origin/reasoning record
+  VexLife-Android PR #211 = accepted VexMethod Method-result refinement
+  Vextreme PR #570 = accepted public architecture teaching/currentness
 
 Lived navigation evidence:
   Vextreme PR #487
