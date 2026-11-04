@@ -305,8 +305,7 @@ The canonical generated-product trajectory below remains authoritative for its o
 VexWeb F1 is still the current source-construction edge, and generated P1/P2/P3 are not silently
 promoted by exploration.
 
-At the same time, the human-approved lived exploration has progressed materially beyond the original
-`WAITING` wording and must remain visible to fresh entrants:
+The lived exploration has nevertheless crossed real thresholds that remain useful:
 
 ~~~text
 VexLife-Prod PR #13  ACCEPTED / MERGED
@@ -321,11 +320,18 @@ VexLife-Prod PR #14  ACCEPTED / MERGED
   -> projected read-only into the response / Context Inspector
   -> exact "what Vex received" metadata without hidden reasoning/raw prompt reconstruction
 
-VexLife-Prod PR #15  ACCEPTED / MERGED
-  VexLife-Prod becomes the ordinary human/product Mac launch front door
-  -> one source-local command
-  -> current VexLife-Prod presentation on 127.0.0.1:18210
-  -> canonical VexLife backend remains the Conversation / prompt-Memory / Companion-model owner
+VexLife-Prod PR #15  MERGED / LIVED FRONT-DOOR CLAIM INVALIDATED
+VexLife-Prod PR #16  MERGED / LIVED REPAIR CLAIM INVALIDATED
+  -> both Mac runs reached canonical VexLife Companion READY
+  -> neither run brought the VexLife-Prod presentation up
+  -> the parallel launcher was not an earned stability point
+
+VexLife-Prod PR #17  INTEGRITY RETRACTION / MERGED
+  -> removes the unproven parallel Mac launcher
+  -> removes the unexecuted launcher proof surrogate
+  -> restores server.mjs to its pre-#16 presentation bytes
+  -> keeps #13/#14 lived product and prompt-receipt thresholds
+  -> records that current VexLife owns the accepted Mac lifecycle/process-currentness path
 
 VexLife PR #975      SOURCE-OWNER PROVEN / LIFECYCLE PENDING
   promptContextMode = CONTINUE | CLEAN_START
@@ -334,21 +340,44 @@ VexLife PR #975      SOURCE-OWNER PROVEN / LIFECYCLE PENDING
   -> not accepted main until its remaining integration/lifecycle gates complete
 ~~~
 
-Current Mac human front door:
+There is currently **no accepted VexLife-Prod Mac front-door command**.
 
-~~~bash
-rm -f /tmp/open-vexlife.command
-curl -fsSL https://raw.githubusercontent.com/VexGPT/VexLife-Prod/main/open-vexlife.command -o /tmp/open-vexlife.command && bash /tmp/open-vexlife.command
+The existing accepted Mac startup/lifecycle baseline remains in current `vgong24/VexLife`:
+
+~~~text
+setup-vexlife.command
+-> exact-source materialization
+
+install/vexlife-setup.sh
+-> Home lifecycle status
+-> state-derived open / reconnect / repair / rebuild-preserve
+-> per-Home setup serialization
+-> prior-source browser reconciliation
+
+scripts/macos-lifecycle.mjs
+-> exact runtime qualification/reuse
+-> exact browser-process ownership
+-> launchd user lifetime
+-> source-currentness
+-> canonical Companion READY
+
+open_vex()
+-> exact interface source-currentness
+-> source-addressed browser open
 ~~~
 
-This is intentionally a **lived threshold overlay**, not a WorkState rewrite:
+The next Prod launch work must reuse those existing ownership/currentness contracts and add only the
+missing VexLife-Prod presentation relationship. A fresh repository is not permission to rebuild an
+already-earned lifecycle from examples.
+
+This remains a **lived threshold overlay**, not a WorkState rewrite:
 
 ~~~text
 LIVED EXPLORATION THRESHOLD
 != ACCEPTED VEXWEB-GENERATED PRODUCT
 
-VEXLIFE-PROD HUMAN FRONT DOOR
-!= CANONICAL CONVERSATION / MODEL OWNER
+VEXLIFE-PROD PRESENTATION
+!= VEXLIFE MAC LIFECYCLE OWNER
 ~~~
 
 ## Current execution map
