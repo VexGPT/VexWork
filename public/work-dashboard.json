@@ -204,7 +204,7 @@
           "repo.vexlife-android",
           "repo.vexlife-construction-reference"
         ],
-        "authorityDisposition": "AUTHORIZED_BOUNDED",
+        "authorityDisposition": "NO_AUTHORITY",
         "effectDisposition": "NO_EFFECTS",
         "updatedAt": "2026-11-03T09:40:00.000Z"
       },
@@ -223,7 +223,7 @@
           "repo.vexlife-android",
           "repo.vexlife-construction-reference"
         ],
-        "authorityDisposition": "AUTHORIZED_BOUNDED",
+        "authorityDisposition": "NO_AUTHORITY",
         "effectDisposition": "NO_EFFECTS",
         "updatedAt": "2026-11-03T09:40:00.000Z"
       },
@@ -239,7 +239,7 @@
           "repo.vexwork",
           "repo.vexlife-construction-reference"
         ],
-        "authorityDisposition": "AUTHORIZED_BOUNDED",
+        "authorityDisposition": "NO_AUTHORITY",
         "effectDisposition": "NO_EFFECTS",
         "updatedAt": "2026-11-03T09:40:00.000Z"
       },
@@ -256,7 +256,7 @@
           "repo.vextreme-sdk",
           "repo.vexlife-construction-reference"
         ],
-        "authorityDisposition": "AUTHORIZED_BOUNDED",
+        "authorityDisposition": "NO_AUTHORITY",
         "effectDisposition": "NO_EFFECTS",
         "updatedAt": "2026-11-03T09:40:00.000Z"
       },
@@ -275,7 +275,7 @@
           "repo.vexlife-android",
           "repo.vexlife-construction-reference"
         ],
-        "authorityDisposition": "AUTHORIZED_BOUNDED",
+        "authorityDisposition": "NO_AUTHORITY",
         "effectDisposition": "NO_EFFECTS",
         "updatedAt": "2026-11-03T09:40:00.000Z"
       },
@@ -294,7 +294,7 @@
           "repo.vexlife-android",
           "repo.vexlife-construction-reference"
         ],
-        "authorityDisposition": "AUTHORIZED_BOUNDED",
+        "authorityDisposition": "NO_AUTHORITY",
         "effectDisposition": "NO_EFFECTS",
         "updatedAt": "2026-11-03T09:40:00.000Z"
       },
