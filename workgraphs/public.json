@@ -3015,7 +3015,7 @@
         "github.commit.vexlife-prod.20919f21578eeff9d2e1d513a00e0cd66ecd72ea"
       ],
       "nextProcessRefs": [],
-      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS"
     },
     {
@@ -3047,7 +3047,7 @@
         "github.commit.vexlife-prod.20919f21578eeff9d2e1d513a00e0cd66ecd72ea"
       ],
       "nextProcessRefs": [],
-      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS"
     },
     {
@@ -3324,7 +3324,7 @@
         "github.commit.vexlife-prod.20919f21578eeff9d2e1d513a00e0cd66ecd72ea"
       ],
       "nextProcessRefs": [],
-      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS"
     },
     {
@@ -3355,7 +3355,7 @@
         "github.commit.vexlife-prod.20919f21578eeff9d2e1d513a00e0cd66ecd72ea"
       ],
       "nextProcessRefs": [],
-      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS"
     },
     {
@@ -3389,7 +3389,7 @@
         "github.commit.vexlife-prod.20919f21578eeff9d2e1d513a00e0cd66ecd72ea"
       ],
       "nextProcessRefs": [],
-      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS"
     },
     {
@@ -3423,7 +3423,7 @@
         "github.commit.vexlife-prod.20919f21578eeff9d2e1d513a00e0cd66ecd72ea"
       ],
       "nextProcessRefs": [],
-      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS"
     },
     {
@@ -10144,6 +10144,38 @@
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.vexsync-architecture-convergence.running-verifying.cascade-return-20261103",
+      "workRef": "work.vexboard.vexsync-architecture-convergence",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "PR #184 merged the browser recovery and flat self-application with lived Pages acceptance; later VexWork VexArchitecture Alignment A5 independently confirmed the projection ownership boundary. Verify closure instead of extending the old Family-Circuit-only baseline.",
+      "actorRef": "actor.chatgpt.vexsync-vexboard.cascade-return",
+      "sourceRefs": [
+        "github.pull.vexwork.184",
+        "github.commit.vexwork.e56c01f48614a87dc40faa00eff60bcf43a80c86",
+        "github.pull.vexwork.210",
+        "github.commit.vexwork.d1def6a746646350364266121191b30c7b4e9727"
+      ],
+      "createdAt": "2026-11-03T09:22:04.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.vexsync-architecture-convergence.verifying-completed.cascade-return-20261103",
+      "workRef": "work.vexboard.vexsync-architecture-convergence",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "The admitted VexSync/VexBoard convergence foundation is complete: VexBoard is live again, its self-map is accepted and lived, and its read-only projection role is aligned to the full accepted VexArchitecture intention. Remaining source-projector, lived-comparison, fractal/spatial and BoardPatch work keep their own Work identities.",
+      "actorRef": "actor.chatgpt.vexsync-vexboard.cascade-return",
+      "sourceRefs": [
+        "github.pull.vexwork.184",
+        "github.pull.vexwork.210",
+        "work.vexboard.source-projectors",
+        "work.vexboard.fractal-semantic-composition-spatial-layout"
+      ],
+      "createdAt": "2026-11-03T09:22:05.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
       "transitionRef": "transition.vexlife.connected-services.vcs04.verifying.pr154-terminal",
       "workRef": "work.vexlife.connected-services.vcs04-conversation-adoption",
       "priorState": "RUNNING",
@@ -10986,6 +11018,86 @@
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.origin-roundtrip.waiting-cancelled.architecture-threshold-20261103",
+      "workRef": "work.vexsync.debugmenu-blueprints.debugmenu-origin-roundtrip",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "CANCELLED",
+      "reason": "The old DarkMode-specific round-trip is no longer an owed dependency chain: ThemeMode is a stable accepted VexArchitecture patient zero, and current Origin-outward construction is carried by VexLife New Beginnings / VexLife-Prod. Preserve this Work as superseded-route provenance rather than replaying it.",
+      "actorRef": "actor.chatgpt.vexworks.architecture-threshold-currentization",
+      "sourceRefs": [
+        "github.pull.vexlife-android.209",
+        "github.commit.vexlife-android.66c866dea6a8dd78e2946da88715c4deb78c1847",
+        "project.vexlife.new-beginnings",
+        "github.commit.vexlife-prod.20919f21578eeff9d2e1d513a00e0cd66ecd72ea"
+      ],
+      "createdAt": "2026-11-03T09:45:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.builder-discovery.ready-running.cascade-return-20261103",
+      "workRef": "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "Accepted ThemeMode/VexArchitecture source now supplies the grounded semantic owners and target realization that this discovery task was created to earn; resume the specimen from accepted evidence rather than leaving the discovery hypothetical.",
+      "actorRef": "actor.chatgpt.vexsync-vexboard.cascade-return",
+      "sourceRefs": [
+        "github.pull.vexlife-android.209",
+        "github.commit.vexlife-android.66c866dea6a8dd78e2946da88715c4deb78c1847",
+        "github.pull.vexlife-android.188",
+        "github.commit.vexlife-android.7ac61612fb1fb30f26e7fd3794bd4382e905a0d7"
+      ],
+      "createdAt": "2026-11-03T09:22:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.builder-discovery.running-verifying.accepted-architecture-20261103",
+      "workRef": "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "The accepted VexArchitecture stability point, typed relationship foundation and ThemeMode production realization answer the Builder-discovery questions with source-owned evidence; verify this as completed discovery rather than inventing another architecture layer.",
+      "actorRef": "actor.chatgpt.vexsync-vexboard.cascade-return",
+      "sourceRefs": [
+        "repo.vexlife-android:architecture/vexarchitecture/README.md",
+        "repo.vexlife-android:architecture/vexarchitecture/REFINED-BOUNDARIES.md",
+        "github.pull.vexlife-android.193",
+        "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523"
+      ],
+      "createdAt": "2026-11-03T09:22:01.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.builder-discovery.verifying-completed.cascade-return-20261103",
+      "workRef": "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "Feature Request -> Builder discovery is now embodied by the accepted ThemeMode VexArchitecture patient zero and no longer blocks the product round trip. Remaining work is the actual Origin/VexBoard <-> current Android round trip, not more foundational discovery.",
+      "actorRef": "actor.chatgpt.vexsync-vexboard.cascade-return",
+      "sourceRefs": [
+        "github.pull.vexlife-android.209",
+        "github.commit.vexlife-android.66c866dea6a8dd78e2946da88715c4deb78c1847",
+        "github.pull.vexwork.210",
+        "github.commit.vexwork.d1def6a746646350364266121191b30c7b4e9727"
+      ],
+      "createdAt": "2026-11-03T09:22:02.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexsync.debugmenu-blueprints.outcome.running-cancelled.architecture-threshold-20261103",
+      "workRef": "work.vexsync.debugmenu-blueprints.outcome",
+      "priorState": "RUNNING",
+      "nextState": "CANCELLED",
+      "reason": "The DebugMenu/ThemeMode Project fulfilled its role as architecture/process pressure and its surviving relationships are accepted elsewhere. No current human outcome requires completing the old patient-zero route; close the remaining Project obligation and preserve it as lineage while Origin-outward construction continues in current successor Projects.",
+      "actorRef": "actor.chatgpt.vexworks.architecture-threshold-currentization",
+      "sourceRefs": [
+        "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery",
+        "github.pull.vexlife-android.209",
+        "project.vexlife.new-beginnings",
+        "project.vexwork.vexarchitecture-alignment"
+      ],
+      "createdAt": "2026-11-03T09:45:01.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
       "transitionRef": "transition.vextreme.architecture-convergence.terrain-active-surface-context.verifying.pr505-a002-assurance",
       "workRef": "work.vextreme.architecture-convergence.terrain-active-surface-context",
       "priorState": "RUNNING",
@@ -11140,6 +11252,25 @@
         "github.issue-comment.vexwork.189.6519527203"
       ],
       "createdAt": "2026-10-30T09:33:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vextreme.architecture-convergence.vexrelay-family-circuit-convergence.completed.pr185-parent-accepted",
+      "workRef": "work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "The held durability predicate is satisfied: child MetaWalk PR #189 and Relay route PR #187 were accepted and parent Architecture Convergence PR #185 merged. PR #214's later formation/carrier failures remain retained SDK/tooling evidence, but they do not reopen the completed Vextreme convergence foundation.",
+      "actorRef": "actor.chatgpt.vexworks.architecture-threshold-currentization",
+      "sourceRefs": [
+        "github.pull.vexwork.189",
+        "github.commit.vexwork.763d27f4ec5afc133c71e018c7d4532fc155fe95",
+        "github.pull.vexwork.187",
+        "github.commit.vexwork.80e8cb441ae5c7270bb001c69ced4e7c33b90224",
+        "github.pull.vexwork.185",
+        "github.commit.vexwork.c1188e6a47b010d6ab6027c3d9961959ff31af7b",
+        "github.pull.vexwork.214"
+      ],
+      "createdAt": "2026-11-04T07:17:22.000Z"
     },
     {
       "schemaVersion": "vexwork.work-transition/v1",
@@ -11701,137 +11832,6 @@
         "repo.vexlife-android:architecture/vexarchitecture/REFINED-BOUNDARIES.md"
       ],
       "createdAt": "2026-11-03T08:28:27.000Z"
-    },
-    {
-      "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vexboard.vexsync-architecture-convergence.running-verifying.cascade-return-20261103",
-      "workRef": "work.vexboard.vexsync-architecture-convergence",
-      "priorState": "RUNNING",
-      "nextState": "VERIFYING",
-      "reason": "PR #184 merged the browser recovery and flat self-application with lived Pages acceptance; later VexWork VexArchitecture Alignment A5 independently confirmed the projection ownership boundary. Verify closure instead of extending the old Family-Circuit-only baseline.",
-      "actorRef": "actor.chatgpt.vexsync-vexboard.cascade-return",
-      "sourceRefs": [
-        "github.pull.vexwork.184",
-        "github.commit.vexwork.e56c01f48614a87dc40faa00eff60bcf43a80c86",
-        "github.pull.vexwork.210",
-        "github.commit.vexwork.d1def6a746646350364266121191b30c7b4e9727"
-      ],
-      "createdAt": "2026-11-03T09:22:04.000Z"
-    },
-    {
-      "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vexboard.vexsync-architecture-convergence.verifying-completed.cascade-return-20261103",
-      "workRef": "work.vexboard.vexsync-architecture-convergence",
-      "priorState": "VERIFYING",
-      "nextState": "COMPLETED",
-      "reason": "The admitted VexSync/VexBoard convergence foundation is complete: VexBoard is live again, its self-map is accepted and lived, and its read-only projection role is aligned to the full accepted VexArchitecture intention. Remaining source-projector, lived-comparison, fractal/spatial and BoardPatch work keep their own Work identities.",
-      "actorRef": "actor.chatgpt.vexsync-vexboard.cascade-return",
-      "sourceRefs": [
-        "github.pull.vexwork.184",
-        "github.pull.vexwork.210",
-        "work.vexboard.source-projectors",
-        "work.vexboard.fractal-semantic-composition-spatial-layout"
-      ],
-      "createdAt": "2026-11-03T09:22:05.000Z"
-    },
-    {
-      "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vexsync.debugmenu-blueprints.origin-roundtrip.waiting-cancelled.architecture-threshold-20261103",
-      "workRef": "work.vexsync.debugmenu-blueprints.debugmenu-origin-roundtrip",
-      "priorState": "WAITING_DEPENDENCIES",
-      "nextState": "CANCELLED",
-      "reason": "The old DarkMode-specific round-trip is no longer an owed dependency chain: ThemeMode is a stable accepted VexArchitecture patient zero, and current Origin-outward construction is carried by VexLife New Beginnings / VexLife-Prod. Preserve this Work as superseded-route provenance rather than replaying it.",
-      "actorRef": "actor.chatgpt.vexworks.architecture-threshold-currentization",
-      "sourceRefs": [
-        "github.pull.vexlife-android.209",
-        "github.commit.vexlife-android.66c866dea6a8dd78e2946da88715c4deb78c1847",
-        "project.vexlife.new-beginnings",
-        "github.commit.vexlife-prod.20919f21578eeff9d2e1d513a00e0cd66ecd72ea"
-      ],
-      "createdAt": "2026-11-03T09:45:00.000Z"
-    },
-    {
-      "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vexsync.debugmenu-blueprints.builder-discovery.ready-running.cascade-return-20261103",
-      "workRef": "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery",
-      "priorState": "READY",
-      "nextState": "RUNNING",
-      "reason": "Accepted ThemeMode/VexArchitecture source now supplies the grounded semantic owners and target realization that this discovery task was created to earn; resume the specimen from accepted evidence rather than leaving the discovery hypothetical.",
-      "actorRef": "actor.chatgpt.vexsync-vexboard.cascade-return",
-      "sourceRefs": [
-        "github.pull.vexlife-android.209",
-        "github.commit.vexlife-android.66c866dea6a8dd78e2946da88715c4deb78c1847",
-        "github.pull.vexlife-android.188",
-        "github.commit.vexlife-android.7ac61612fb1fb30f26e7fd3794bd4382e905a0d7"
-      ],
-      "createdAt": "2026-11-03T09:22:00.000Z"
-    },
-    {
-      "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vexsync.debugmenu-blueprints.builder-discovery.running-verifying.accepted-architecture-20261103",
-      "workRef": "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery",
-      "priorState": "RUNNING",
-      "nextState": "VERIFYING",
-      "reason": "The accepted VexArchitecture stability point, typed relationship foundation and ThemeMode production realization answer the Builder-discovery questions with source-owned evidence; verify this as completed discovery rather than inventing another architecture layer.",
-      "actorRef": "actor.chatgpt.vexsync-vexboard.cascade-return",
-      "sourceRefs": [
-        "repo.vexlife-android:architecture/vexarchitecture/README.md",
-        "repo.vexlife-android:architecture/vexarchitecture/REFINED-BOUNDARIES.md",
-        "github.pull.vexlife-android.193",
-        "github.commit.vexlife-android.3c899e656d90487abcff06df7b087a42c4a68523"
-      ],
-      "createdAt": "2026-11-03T09:22:01.000Z"
-    },
-    {
-      "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vexsync.debugmenu-blueprints.builder-discovery.verifying-completed.cascade-return-20261103",
-      "workRef": "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery",
-      "priorState": "VERIFYING",
-      "nextState": "COMPLETED",
-      "reason": "Feature Request -> Builder discovery is now embodied by the accepted ThemeMode VexArchitecture patient zero and no longer blocks the product round trip. Remaining work is the actual Origin/VexBoard <-> current Android round trip, not more foundational discovery.",
-      "actorRef": "actor.chatgpt.vexsync-vexboard.cascade-return",
-      "sourceRefs": [
-        "github.pull.vexlife-android.209",
-        "github.commit.vexlife-android.66c866dea6a8dd78e2946da88715c4deb78c1847",
-        "github.pull.vexwork.210",
-        "github.commit.vexwork.d1def6a746646350364266121191b30c7b4e9727"
-      ],
-      "createdAt": "2026-11-03T09:22:02.000Z"
-    },
-    {
-      "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vexsync.debugmenu-blueprints.outcome.running-cancelled.architecture-threshold-20261103",
-      "workRef": "work.vexsync.debugmenu-blueprints.outcome",
-      "priorState": "RUNNING",
-      "nextState": "CANCELLED",
-      "reason": "The DebugMenu/ThemeMode Project fulfilled its role as architecture/process pressure and its surviving relationships are accepted elsewhere. No current human outcome requires completing the old patient-zero route; close the remaining Project obligation and preserve it as lineage while Origin-outward construction continues in current successor Projects.",
-      "actorRef": "actor.chatgpt.vexworks.architecture-threshold-currentization",
-      "sourceRefs": [
-        "work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery",
-        "github.pull.vexlife-android.209",
-        "project.vexlife.new-beginnings",
-        "project.vexwork.vexarchitecture-alignment"
-      ],
-      "createdAt": "2026-11-03T09:45:01.000Z"
-    },
-    {
-      "schemaVersion": "vexwork.work-transition/v1",
-      "transitionRef": "transition.vextreme.architecture-convergence.vexrelay-family-circuit-convergence.completed.pr185-parent-accepted",
-      "workRef": "work.vextreme.architecture-convergence.vexrelay-family-circuit-convergence",
-      "priorState": "VERIFYING",
-      "nextState": "COMPLETED",
-      "reason": "The held durability predicate is satisfied: child MetaWalk PR #189 and Relay route PR #187 were accepted and parent Architecture Convergence PR #185 merged. PR #214's later formation/carrier failures remain retained SDK/tooling evidence, but they do not reopen the completed Vextreme convergence foundation.",
-      "actorRef": "actor.chatgpt.vexworks.architecture-threshold-currentization",
-      "sourceRefs": [
-        "github.pull.vexwork.189",
-        "github.commit.vexwork.763d27f4ec5afc133c71e018c7d4532fc155fe95",
-        "github.pull.vexwork.187",
-        "github.commit.vexwork.80e8cb441ae5c7270bb001c69ced4e7c33b90224",
-        "github.pull.vexwork.185",
-        "github.commit.vexwork.c1188e6a47b010d6ab6027c3d9961959ff31af7b",
-        "github.pull.vexwork.214"
-      ],
-      "createdAt": "2026-11-04T07:17:22.000Z"
     }
   ],
   "sourceRefs": [
