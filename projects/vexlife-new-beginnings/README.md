@@ -299,6 +299,58 @@ New Beginnings does not supersede earlier work:
 
 The new Project asks how those earned truths compose in a fresh product container without inheriting their historical incidental structure.
 
+## Lived product threshold — current parallel truth
+
+The canonical generated-product trajectory below remains authoritative for its own Workgraph states:
+VexWeb F1 is still the current source-construction edge, and generated P1/P2/P3 are not silently
+promoted by exploration.
+
+At the same time, the human-approved lived exploration has progressed materially beyond the original
+`WAITING` wording and must remain visible to fresh entrants:
+
+~~~text
+VexLife-Prod PR #13  ACCEPTED / MERGED
+  hand-built nested-browser presentation
+  -> current canonical VexLife Companion
+  -> canonical self-development Conversation
+  -> real human Send + streamed Vex response
+  != alternate local Conversation/model owner
+
+VexLife-Prod PR #14  ACCEPTED / MERGED
+  canonical vexlife.prompt-context-materialization-receipt/v2
+  -> projected read-only into the response / Context Inspector
+  -> exact "what Vex received" metadata without hidden reasoning/raw prompt reconstruction
+
+VexLife-Prod PR #15  ACCEPTED / MERGED
+  VexLife-Prod becomes the ordinary human/product Mac launch front door
+  -> one source-local command
+  -> current VexLife-Prod presentation on 127.0.0.1:18210
+  -> canonical VexLife backend remains the Conversation / prompt-Memory / Companion-model owner
+
+VexLife PR #975      SOURCE-OWNER PROVEN / LIFECYCLE PENDING
+  promptContextMode = CONTINUE | CLEAN_START
+  CLEAN_START keeps the same canonical Conversation + Memory eligibility
+  while selecting zero prior Conversation events into the next provider prompt
+  -> not accepted main until its remaining integration/lifecycle gates complete
+~~~
+
+Current Mac human front door:
+
+~~~bash
+rm -f /tmp/open-vexlife.command
+curl -fsSL https://raw.githubusercontent.com/VexGPT/VexLife-Prod/main/open-vexlife.command -o /tmp/open-vexlife.command && bash /tmp/open-vexlife.command
+~~~
+
+This is intentionally a **lived threshold overlay**, not a WorkState rewrite:
+
+~~~text
+LIVED EXPLORATION THRESHOLD
+!= ACCEPTED VEXWEB-GENERATED PRODUCT
+
+VEXLIFE-PROD HUMAN FRONT DOOR
+!= CANONICAL CONVERSATION / MODEL OWNER
+~~~
+
 ## Current execution map
 
 The original P0 practicum has now crossed its intended semantic + reference-renderer threshold. The
