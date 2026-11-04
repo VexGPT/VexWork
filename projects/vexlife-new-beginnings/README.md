@@ -333,6 +333,30 @@ VexLife-Prod PR #17  INTEGRITY RETRACTION / MERGED
   -> keeps #13/#14 lived product and prompt-receipt thresholds
   -> records that current VexLife owns the accepted Mac lifecycle/process-currentness path
 
+VexLife-Prod PR #19  STARTUP INTEGRITY GUARDS / MERGED
+  -> PROOF_ROUTE != ORDINARY_PRODUCT_ROUTE
+  -> ENSURE_VEX_LIFECYCLE_READY != OPEN_REFERENCE_PRESENTATION
+  -> BOOT_PASS != SUSTAINED_LIFETIME_PASS
+  -> NEW_PRESENTATION_PROCESS != FREE_DEPENDENCY
+
+VexLife-Prod PR #18  DRAFT / HOST REGRESSIONS OPEN
+  -> terminal fallback route reached Prod + canonical Vex and completed a lived turn
+  -> ordinary product proof was not established by that terminal shortcut
+  -> first windowed composition opened BOTH reference VexLife and Prod
+     because the caller reused the higher-level Open Vex effect rather than lifecycle readiness
+  -> later the loaded Prod UI lost its own local presentation service
+  -> canonical Companion/model failure is NOT established by that screenshot
+  -> BOOT + INITIAL INTERACTION PASS != SUSTAINED PRESENTATION LIFETIME PASS
+  -> remains DRAFT; no accepted front door
+
+VexLife PR #976      DRAFT / REQUIRED PREDECESSOR FOR #18
+  -> makes setup completion meaning explicit:
+       open-reference = lifecycle ready + open reference projection
+       return-ready   = lifecycle ready + return to calling presentation
+  -> standalone VexLife default remains open-reference
+  -> Prod candidate consumes return-ready so one prerequisite cannot secretly open a second UI
+  -> exact Mac/windowed + sustained consumer proof still required
+
 VexLife PR #975      SOURCE-OWNER PROVEN / LIFECYCLE PENDING
   promptContextMode = CONTINUE | CLEAN_START
   CLEAN_START keeps the same canonical Conversation + Memory eligibility
