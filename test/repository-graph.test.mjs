@@ -19,6 +19,7 @@ test('public Repository Graph is structurally valid and culture remains by refer
   assert.deepEqual(music.entryRefs, ['README.md', 'v2/README.md', 'v2/architecture/README.md']);
   const sdk = graph.repositories.find((repository) => repository.repositoryRef === 'repo.vextreme-sdk');
   assert.equal(sdk.visibility, 'PRIVATE');
+  assert.deepEqual(sdk.entryRefs, ['AGENTS.md']);
   assert.deepEqual(sdk.cultureRefs, []);
   const construction = graph.repositories.find((repository) => repository.repositoryRef === 'repo.vexlife-construction-reference');
   assert.equal(construction.visibility, 'PUBLIC');
