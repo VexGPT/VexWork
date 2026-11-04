@@ -248,9 +248,12 @@ test('dynamic VexWork strings enter through textContent, not producer HTML', () 
   assert.doesNotMatch(page, /\.innerHTML\s*=\s*item\.|\.innerHTML\s*=\s*project\./);
 });
 
-test('family navigation keeps Vextreme and VexLife as sibling destinations', () => {
+test('family navigation keeps Vextreme and VexLife Prod as sibling destinations', () => {
   assert.match(page, /https:\/\/vgong24\.github\.io\/Vextreme\/pages\/terrain-map\.html/);
-  assert.match(page, /https:\/\/vgong24\.github\.io\/VexLife\//);
+  assert.match(page, /https:\/\/github\.com\/VexGPT\/VexLife-Prod/);
+  assert.match(orientationPage, /https:\/\/github\.com\/VexGPT\/VexLife-Prod/);
+  assert.doesNotMatch(page, /https:\/\/vgong24\.github\.io\/VexLife\//);
+  assert.doesNotMatch(orientationPage, /https:\/\/vgong24\.github\.io\/VexLife\//);
 });
 
 test('family rail keeps one fixed mark and stable context slots', () => {
