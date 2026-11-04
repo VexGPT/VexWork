@@ -74,3 +74,16 @@ test('search, impact, coverage and briefs are wired from the shared query module
   assert.match(page, /showBriefFallback\(title, text\)/, 'blocked clipboard falls back to selectable text');
 });
 // [VXG RealForever]
+
+test('nothing the lens adds on the surface covers a control: chips, opened overlays and the bridge', () => {
+  // The browser sweep in PR #221 checks all 119 traced controls; this pins the wiring that makes it hold.
+  assert.match(page, /function placeSurfaceFloaters\(\)/);
+  assert.match(page, /placeSurfaceFloaters\(\);\s*drawBridge\(\);/, 'floaters settle before the bridge measures');
+  assert.match(page, /dataset: \{ order \}/, 'travel chips carry an ordered list of sides to try');
+  assert.match(page, /chip\.className = 'travel badge'/, 'a chip with no clear side shrinks to a corner badge');
+  assert.match(page, /'dialog-zone opened'/, 'dialogs render apart from bottom sheets');
+  assert.match(page, /\['', 'at-top', 'at-bottom'\]/, 'a dialog moves to the band that leaves its opener visible');
+  assert.match(page, /body\.scrollTop \+= cover/, 'a sheet scrolls its opener above it');
+  assert.match(page, /function bridgeExit\(/);
+  assert.match(page, /if \(!crosses\(from\.midY, a\.right\)\) return direct;/, 'the bridge only detours when the side exit would cross a sibling');
+});

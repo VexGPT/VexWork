@@ -144,8 +144,14 @@ a{color:var(--focus)}
 .el-menuitem{height:32px;padding:0 13px;border:1px solid #cfd5df;border-radius:999px;background:#fff;font-size:12.5px;font-weight:500;box-shadow:0 4px 12px -8px #0005}
 .sheet-zone{position:absolute;left:0;right:0;bottom:0;z-index:6;padding:12px 16px 20px;border-top-left-radius:20px;border-top-right-radius:20px;background:#fff;border-top:1px solid #dfe3ea;box-shadow:0 -12px 30px -18px #0006}
 .sheet-zone .grab{width:36px;height:4px;border-radius:2px;background:#d7dce5;margin:0 auto 10px}
+.dialog-zone{position:absolute;left:20px;right:20px;top:50%;transform:translateY(-50%);z-index:6;padding:16px;border-radius:18px;background:#fff;border:1px solid #dfe3ea;box-shadow:0 22px 44px -18px #0007;display:flex;flex-direction:column;gap:6px}
+.dialog-zone.at-top{top:66px;transform:none}.dialog-zone.at-bottom{top:auto;bottom:72px;transform:none}
+.phone.dimmed .opened[data-ref]:not(.sel):not(.anc){opacity:1}
+.opened .el-text{overflow-wrap:anywhere}
 .travel{position:absolute;left:50%;top:calc(100% + 8px);transform:translateX(-50%);z-index:8;white-space:nowrap;height:28px;padding:0 12px;border-radius:999px;border:0;background:var(--r-NAVIGATION);color:#fff;font-size:12px;font-weight:600;box-shadow:0 6px 16px -8px #0007}
 .travel.above{top:auto;bottom:calc(100% + 8px)}.travel.left{left:auto;right:calc(100% + 8px);top:50%;transform:translateY(-50%)}
+.travel.right{left:calc(100% + 8px);top:50%;transform:translateY(-50%)}
+.travel.badge{left:auto;right:-8px;top:-10px;transform:none;height:20px;padding:0 8px;font-size:11px}
 
 /* Structure face */
 .structure{flex:1;overflow:auto;padding:16px 16px 28px}
@@ -597,8 +603,8 @@ function travelButton(element) {
   if (!element.navigatesTo || state.anchorElementRef !== element.ref) return null;
   const to = element.navigatesTo === Lens.BACK ? 'Go back' : `Go to ${Lens.screenFor(state.lens, element.navigatesTo).label}`;
   const slot = Lens.elementPath(state.lens, element.ref).find((step) => step.slot)?.slot;
-  const placement = slot === 'BOTTOM' ? ' above' : slot === 'FAB' ? ' left' : '';
-  return h('button', { class: `travel${placement}`, onclick: (event) => { event.stopPropagation(); travel(element); } }, to);
+  const order = slot === 'BOTTOM' ? 'above' : slot === 'FAB' ? 'left above' : 'below above right left';
+  return h('button', { class: `travel ${order.split(' ')[0]}`, type: 'button', title: to, 'aria-label': to, dataset: { order }, onclick: (event) => { event.stopPropagation(); travel(element); } }, to);
 }
 function renderSurfaceElement(tree, marks, context) {
   const { element, children } = tree;
@@ -666,7 +672,9 @@ function renderSurface() {
   const opens = (overlay) => overlay.symbol && anchor?.intent && new RegExp(`\\b(open|toggle)\\(${overlay.symbol.split('.').pop()}\\)`).test(anchor.intent);
   const sheet = screen.elements.find((element) => (element.kind === 'SHEET' || element.kind === 'DIALOG') && (anchor?.ref === element.ref || opens(element)));
   const sheetOpen = Boolean(sheet);
-  if (sheetOpen) phone.append(markElement(h('div', { class: 'sheet-zone' }, h('div', { class: 'grab' }), h('p', { class: 'el-text TITLE' }, sheet.label), h('p', { class: 'el-text' }, sheet.visibleWhen ?? '')), sheet, marks));
+  if (sheetOpen) phone.append(markElement(sheet.kind === 'DIALOG'
+    ? h('div', { class: 'dialog-zone opened', role: 'presentation' }, h('p', { class: 'el-text TITLE' }, sheet.label), h('p', { class: 'el-text' }, sheet.visibleWhen ?? ''))
+    : h('div', { class: 'sheet-zone opened' }, h('div', { class: 'grab' }), h('p', { class: 'el-text TITLE' }, sheet.label), h('p', { class: 'el-text' }, sheet.visibleWhen ?? '')), sheet, marks));
   return h('div', { class: 'surface', onclick: () => clearSelection() }, phone);
 }
 
@@ -945,6 +953,32 @@ function visibleRect(node, clip) {
   const c = clip.getBoundingClientRect();
   return { left: r.left, right: r.right, top: r.top, bottom: r.bottom, midY: Math.min(Math.max(r.top + r.height / 2, c.top + 12), c.bottom - 12), offscreen: r.bottom < c.top || r.top > c.bottom, clip: c };
 }
+// The bridge leaves the anchor sideways unless that would cross a sibling control;
+// then it drops into the free gap below (or above) the anchor's row first.
+function bridgeExit(leftFace, anchorRef, from, preferAbove) {
+  const direct = { detour: 0 };
+  if (state.faces.EXPERIENCE !== 'SURFACE') return direct;
+  const phone = leftFace.querySelector('.phone');
+  const anchorNode = leftFace.querySelector(`[data-ref="${CSS.escape(anchorRef)}"]`);
+  if (!phone || !anchorNode) return direct;
+  const a = anchorNode.getBoundingClientRect();
+  const right = phone.getBoundingClientRect().right;
+  const body = phone.querySelector('.phone-body').getBoundingClientRect();
+  const leaves = [...phone.querySelectorAll('[data-ref], .travel')]
+    .filter((node) => node.classList.contains('travel') || (node !== anchorNode && !anchorNode.contains(node) && !node.contains(anchorNode) && !node.querySelector('[data-ref]')))
+    .map((node) => node.getBoundingClientRect())
+    .filter((box) => box.width && box.height && box.bottom > body.top && box.top < body.bottom);
+  const crosses = (y, x0) => leaves.some((box) => box.top - 1 <= y && y <= box.bottom + 1 && box.right > x0 && box.left < right);
+  if (!crosses(from.midY, a.right)) return direct;
+  const x0 = a.right - Math.min(14, a.width / 3);
+  const span = (box) => box.right > x0 && box.left < right;
+  const below = () => { const next = Math.min(...leaves.filter((box) => span(box) && box.top >= a.bottom - 1).map((box) => box.top), a.bottom + 20); return next - a.bottom >= 4 ? { dir: 1, y: (a.bottom + next) / 2 } : null; };
+  const above = () => { const prev = Math.max(...leaves.filter((box) => span(box) && box.bottom <= a.top + 1).map((box) => box.bottom), a.top - 20); return a.top - prev >= 4 ? { dir: -1, y: (a.top + prev) / 2 } : null; };
+  for (const gap of preferAbove ? [above(), below()] : [below(), above()]) {
+    if (gap && gap.y > body.top && gap.y < body.bottom && !crosses(gap.y, x0)) return { detour: gap.dir, x0, y0: gap.dir > 0 ? a.bottom : a.top, y: gap.y };
+  }
+  return direct;
+}
 function drawBridge() {
   const svg = refs.bridge;
   if (!svg) return;
@@ -968,15 +1002,28 @@ function drawBridge() {
   const stopA = s('stop', { offset: '0' }); stopA.style.stopColor = 'var(--r-ELEMENT)';
   const stopB = s('stop', { offset: '1' }); stopB.style.stopColor = `var(--r-${entryNode.role})`;
   gradient.append(stopA, stopB); defs.append(gradient); svg.append(defs);
-  const x1 = Math.min(from.right, from.clip.right) - main.left;
-  const y1 = from.midY - main.top;
+  const exit = bridgeExit(leftFace, anchor.ref, from, state.faces.BEHAVIOR === 'BEHAVIOR' && Boolean(pathway.returnRef));
+  const sideX = Math.min(from.right, from.clip.right) - main.left;
+  let x1 = sideX;
+  let y1 = from.midY - main.top;
+  let start = `M${x1},${y1}`;
+  const capA = { x: x1, y: y1 };
+  if (exit.detour) {
+    const ex = exit.x0 - main.left; const ey0 = exit.y0 - main.top; const ey = exit.y - main.top;
+    const er = Math.min(6, Math.abs(ey - ey0));
+    start = `M${ex},${ey0} V${ey - exit.detour * er} Q${ex},${ey} ${ex + er},${ey}`;
+    capA.x = ex; capA.y = ey0; x1 = ex + er; y1 = ey;
+  }
   const x2 = Math.max(to.left, to.clip.left) - main.left;
   const y2 = (to.offscreen ? (to.top < to.clip.top ? to.clip.top + 14 : to.clip.bottom - 14) : to.midY) - main.top;
   const capB = { x: x2, y: y2 };
   let d;
   if (stripTarget) {
-    const bend = Math.max(60, (x2 - x1) * 0.45);
-    d = `M${x1},${y1} C${x1 + bend},${y1} ${x2 - bend},${y2} ${x2},${y2}`;
+    // Run level until clear of the phone, so the curve never climbs across other controls.
+    const phoneBox = state.faces.EXPERIENCE === 'SURFACE' ? leftFace.querySelector('.phone')?.getBoundingClientRect() : null;
+    const px = phoneBox ? Math.max(x1, Math.min(phoneBox.right + 8, from.clip.right) - main.left) : x1;
+    const bend = Math.max(60, (x2 - px) * 0.45);
+    d = `${start}${px > x1 ? ` H${px}` : ''} C${px + bend},${y1} ${x2 - bend},${y2} ${x2},${y2}`;
   } else {
     // Enter the node from the free band above it: horizontal out of the anchor,
     // down or up the gutter, across above the face content, then into the top.
@@ -986,19 +1033,19 @@ function drawBridge() {
     const tx = Math.max(to.left, to.clip.left) - main.left + Math.min(26, (to.right - to.left) / 2);
     const r = Math.min(10, Math.abs(ty - y1) / 2, Math.abs(tx - gx) / 2);
     const dy = ty > y1 ? 1 : -1;
-    d = `M${x1},${y1} H${gx - r} Q${gx},${y1} ${gx},${y1 + dy * r} V${ty - dy * r} Q${gx},${ty} ${gx + r},${ty} H${tx - r} Q${tx},${ty} ${tx},${ty + r} V${to.offscreen ? ty + r : to.top - main.top}`;
+    d = `${start} H${gx - r} Q${gx},${y1} ${gx},${y1 + dy * r} V${ty - dy * r} Q${gx},${ty} ${gx + r},${ty} H${tx - r} Q${tx},${ty} ${tx},${ty + r} V${to.offscreen ? ty + r : to.top - main.top}`;
     capB.x = tx; capB.y = to.offscreen ? ty + r : to.top - main.top;
   }
-  gradient.setAttribute('gradientUnits', 'userSpaceOnUse'); gradient.setAttribute('x1', x1); gradient.setAttribute('x2', capB.x); gradient.setAttribute('y1', y1); gradient.setAttribute('y2', y1);
+  gradient.setAttribute('gradientUnits', 'userSpaceOnUse'); gradient.setAttribute('x1', capA.x); gradient.setAttribute('x2', capB.x); gradient.setAttribute('y1', y1); gradient.setAttribute('y2', y1);
   const out = s('path', { d, class: 'out', stroke: 'url(#bridge-gradient)', 'stroke-dasharray': to.offscreen ? '7 5' : null });
-  svg.append(out, s('circle', { cx: x1, cy: y1, r: 4.5, class: 'cap', fill: 'var(--r-ELEMENT)' }), s('circle', { cx: capB.x, cy: capB.y, r: 4.5, class: 'cap', fill: `var(--r-${entryNode.role})` }));
+  svg.append(out, s('circle', { cx: capA.x, cy: capA.y, r: 4.5, class: 'cap', fill: 'var(--r-ELEMENT)' }), s('circle', { cx: capB.x, cy: capB.y, r: 4.5, class: 'cap', fill: `var(--r-${entryNode.role})` }));
   if (state.faces.BEHAVIOR === 'BEHAVIOR' && pathway.returnRef) {
     const back = visibleRect(rightFace.querySelector(`[data-node-ref="${CSS.escape(pathway.returnRef)}"]`), viewport);
     if (back && !back.offscreen) {
       const rx = back.left - main.left;
       const ry = back.midY - main.top;
       const ly = Math.min(from.bottom, from.clip.bottom) - main.top - 4;
-      const lx = x1 - 6;
+      const lx = sideX - 6;
       const bendBack = Math.max(60, (rx - lx) * 0.5);
       svg.append(s('path', { d: `M${rx},${ry} C${rx - bendBack},${ry} ${lx + bendBack},${ly} ${lx},${ly}`, class: 'ret' }));
     }
@@ -1177,6 +1224,51 @@ function renderLegend() {
     h('button', { class: 'tool', style: 'margin-top:12px', onclick: () => { state.overlay = null; render(); } }, 'Close'));
 }
 
+/* ---------- surface floaters: nothing the lens adds may cover a control ---------- */
+function boxesOverlap(a, b, pad = 0) { return a.left < b.right + pad && b.left < a.right + pad && a.top < b.bottom + pad && b.top < a.bottom + pad; }
+function placeSurfaceFloaters() {
+  if (state.faces.EXPERIENCE !== 'SURFACE') return;
+  const phone = document.querySelector('.face[data-face="SURFACE"] .phone');
+  if (!phone) return;
+  const body = phone.querySelector('.phone-body');
+  const anchorNode = state.anchorElementRef ? phone.querySelector(`[data-ref="${CSS.escape(state.anchorElementRef)}"]`) : null;
+  // An opened sheet keeps the control that opened it in view, above the sheet.
+  const sheet = phone.querySelector('.sheet-zone');
+  if (sheet && anchorNode && body.contains(anchorNode)) {
+    body.style.paddingBottom = `${Math.max(84, Math.ceil(sheet.getBoundingClientRect().height) + 24)}px`;
+    const cover = anchorNode.getBoundingClientRect().bottom - (sheet.getBoundingClientRect().top - 12);
+    if (cover > 0) body.scrollTop += cover;
+  }
+  // An opened dialog moves to whichever band leaves the control uncovered.
+  const dialog = phone.querySelector('.dialog-zone');
+  if (dialog && anchorNode) {
+    for (const band of ['', 'at-top', 'at-bottom']) {
+      dialog.classList.remove('at-top', 'at-bottom');
+      if (band) dialog.classList.add(band);
+      if (!boxesOverlap(dialog.getBoundingClientRect(), anchorNode.getBoundingClientRect(), 8)) break;
+    }
+  }
+  // The travel chip takes the first side that covers no other control, or shrinks to a corner badge.
+  const chip = phone.querySelector('.travel');
+  if (!chip) return;
+  chip.textContent = chip.title;
+  const host = chip.parentElement;
+  const inBody = body.contains(host);
+  const obstacles = [...phone.querySelectorAll('[data-ref]')]
+    .filter((node) => node !== host && !node.contains(host) && !host.contains(node) && (inBody || !body.contains(node)))
+    .map((node) => node.getBoundingClientRect()).filter((box) => box.width && box.height);
+  for (const layer of phone.querySelectorAll('.phone-top,.phone-bottom')) if (inBody) obstacles.push(layer.getBoundingClientRect());
+  const bounds = phone.getBoundingClientRect();
+  const inside = (box) => box.left >= bounds.left + 4 && box.right <= bounds.right - 4 && box.top >= bounds.top + 4 && box.bottom <= bounds.bottom - 4;
+  for (const side of chip.dataset.order.split(' ')) {
+    chip.className = `travel ${side}`;
+    const box = chip.getBoundingClientRect();
+    if (inside(box) && !obstacles.some((other) => boxesOverlap(box, other, 2))) return;
+  }
+  chip.className = 'travel badge';
+  chip.textContent = 'Go';
+}
+
 /* ---------- render ---------- */
 function syncUrl() {
   const next = new URLSearchParams(location.search);
@@ -1202,13 +1294,14 @@ function render() {
     applyCamera('BEHAVIOR'); applyCamera('DEPTH'); if (state.overlay === 'MAP') applyCamera('MAP');
     if (state.selected?.kind === 'ELEMENT') document.querySelector(`.face[data-face="${state.faces.EXPERIENCE}"] [data-ref="${CSS.escape(state.selected.ref)}"]`)?.scrollIntoView({ block: 'nearest' });
     if (focusedRef) document.querySelector(`.face:not([inert]) [data-ref="${CSS.escape(focusedRef)}"], .face:not([inert]) [data-node-ref="${CSS.escape(focusedRef)}"]`)?.focus({ preventScroll: true });
+    placeSurfaceFloaters();
     drawBridge();
   });
   for (const scroller of main.querySelectorAll('.surface,.structure,.phone-body')) scroller.addEventListener('scroll', scheduleBridge, { passive: true });
   syncUrl();
 }
 
-window.addEventListener('resize', () => { state.cameras.clear(); applyCamera('BEHAVIOR'); applyCamera('DEPTH'); scheduleBridge(); });
+window.addEventListener('resize', () => { state.cameras.clear(); applyCamera('BEHAVIOR'); applyCamera('DEPTH'); placeSurfaceFloaters(); scheduleBridge(); });
 window.addEventListener('keydown', (event) => {
   if (event.target.closest?.('input,textarea')) return;
   if (event.key === '[') { flip('EXPERIENCE'); }
