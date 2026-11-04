@@ -264,6 +264,18 @@ D21 Currentness by provenance and regeneration, not by a second file
 D22 Manual-dispatch workflow, never auto-push
     why       Victor asked for a script any instance can rerun; the repository runs no CI today, and
               writing generated output to main needs a human or Integration Steward decision
+
+D23 Nothing the lens adds on the surface covers a control
+    why       the generated lens put 119 traced controls on screen and exposed three overlaps the
+              hand lens never hit: an opened dialog over its opener, the travel chip over the next
+              button, the bridge through sibling controls in the same row
+    how       placement is measured after layout: a dialog moves to the band that leaves its opener
+              visible; a sheet scrolls its opener above it; the travel chip tries its sides in order
+              and otherwise shrinks to a corner "Go" badge; the bridge drops into the gap below (or
+              above) the row and runs level until it is clear of the phone
+    proof     browser sweep over every traced control: 0 crossings, 0 covered controls
+    rejected  hiding the chip entirely (it is the surface's only travel affordance besides
+              double-click)
 ```
 
 ## Data contract
