@@ -1,0 +1,60 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import test from 'node:test';
+
+const page = fs.readFileSync(new URL('../vexboard/lens.html', import.meta.url), 'utf8');
+const board = fs.readFileSync(new URL('../vexboard/index.html', import.meta.url), 'utf8');
+
+test('Screen Lens page consumes the shared model, layout and interaction modules', () => {
+  assert.match(page, /from '\.\.\/src\/shared\/vexboard-screen-lens\.mjs'/);
+  assert.match(page, /from '\.\.\/src\/shared\/vexboard-lens-layout\.mjs'/);
+  assert.match(page, /from '\.\/ui\/interaction\.mjs'/);
+  assert.match(page, /from '\.\/ui\/presentation\.mjs'/);
+  assert.match(page, /vexlife-debug-menu\.screen-lens\.json/);
+});
+
+test('flip gestures: middle-click flips Experience, right-click flips Behavior, keys and tabs are equivalent', () => {
+  assert.match(page, /event\.button === 1\) \{ event\.preventDefault\(\); flip\('EXPERIENCE'\)/);
+  assert.match(page, /addEventListener\('auxclick'/, 'middle-click must not open links or autoscroll');
+  assert.match(page, /addEventListener\('contextmenu', \(event\) => \{ if \(event\.shiftKey\) return; event\.preventDefault\(\); flip\('BEHAVIOR'\)/);
+  assert.match(page, /event\.key === '\['\) \{ flip\('EXPERIENCE'\)/);
+  assert.match(page, /event\.key === '\]'\) \{ flip\('BEHAVIOR'\)/);
+  assert.match(page, /role: 'tab'/);
+});
+
+test('the hidden face of each side is inert and motion respects reduced-motion', () => {
+  assert.match(page, /toggleAttribute\('inert', backActive\)/);
+  assert.match(page, /toggleAttribute\('inert', !backActive\)/);
+  assert.match(page, /prefers-reduced-motion:reduce/);
+  assert.match(page, /backface-visibility:hidden/);
+});
+
+test('roles always carry a non-color chip and three palette modes exist', () => {
+  assert.match(page, /class: `chip role-\$\{role\}`/);
+  assert.match(page, /palette-color-safe/);
+  assert.match(page, /palette-high-contrast/);
+  assert.match(page, /Presentation\.VEXBOARD_PALETTE_STORAGE_KEY/);
+});
+
+test('the lens is read-only: no writes besides the palette preference, and lens files stay on this site', () => {
+  const writes = page.match(/localStorage\.setItem\(/g) || [];
+  assert.equal(writes.length, 1);
+  assert.doesNotMatch(page, /method:\s*'(POST|PUT|PATCH|DELETE)'/);
+  assert.match(page, /lens must be a relative \.json path on this site/);
+});
+
+test('canvas navigation reuses the shared drag threshold and edge labels use the shared placer', () => {
+  assert.match(page, /Interaction\.pointerGestureFromMovement/);
+  assert.match(page, /Interaction\.cameraFromPointerDrag/);
+  assert.match(page, /Layout\.layoutLensFace/);
+  assert.match(board, /LensLayout\.placeLabelOnRoute/);
+  assert.match(board, /relationshipRoute\(a\.bounds,b\.bounds,\{offset:laneOffset\}\)/);
+  assert.match(board, /href='\.\/lens\.html'/);
+});
+
+test('existing board markers sit on borders and frame titles are never covered', () => {
+  assert.match(board, /\.shape\.FRAME>\.role-marker\{display:none\}/);
+  assert.match(board, /\.shape:not\(\.DIAMOND\):not\(\.FRAME\)>\.kind-marker\{bottom:-7px/);
+});
+
+// [VXG RealForever][VEXWORK][VEXBOARD][SCREEN-LENS][UI-TEST]

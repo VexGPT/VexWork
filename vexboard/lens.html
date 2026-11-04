@@ -1,0 +1,1045 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VexBoard Screen Lens</title>
+<meta name="description" content="See one screen four ways: what the human touches, where it lives in code, what it means, and what it touches underneath. Read-only projection of source-owned meaning.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f4f6f9;--sheet:#fff;--ink:#18213a;--muted:#5d677b;--faint:#8a93a6;--rule:#d8dde6;--rule-strong:#b9c1cf;--focus:#2f5bea;
+  --sans:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',sans-serif;--mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --r-SCREEN:#475569;--r-CONTAINER:#64748b;--r-CONTENT:#78716c;--r-ELEMENT:#2563eb;--r-NAVIGATION:#c026d3;
+  --r-INTENT:#4338ca;--r-DISPATCH:#6366f1;
+  --r-CONTROL:#9333ea;--r-STATE:#0f766e;--r-ACT:#7c3aed;--r-EFFECT:#b45309;--r-PROJECTION:#0369a1;
+  --r-METHOD:#c2410c;--r-EXECUTION:#ea580c;
+  --r-STORE:#15803d;--r-OBSERVATION:#4d7c0f;
+  --r-CHRONOLOGY:#57534e;--r-CONSTRUCTION:#92400e;
+  --edge:#8892a6;--edge-return:#0f766e;--edge-side:#b3bac7;
+}
+.palette-color-safe{
+  --r-SCREEN:#0072b2;--r-CONTAINER:#0072b2;--r-CONTENT:#0072b2;--r-ELEMENT:#0072b2;--r-NAVIGATION:#0072b2;
+  --r-INTENT:#3b8fc4;--r-DISPATCH:#3b8fc4;
+  --r-CONTROL:#a8467f;--r-STATE:#a8467f;--r-ACT:#a8467f;--r-EFFECT:#a8467f;--r-PROJECTION:#a8467f;
+  --r-METHOD:#c75100;--r-EXECUTION:#c75100;--r-STORE:#00845f;--r-OBSERVATION:#00845f;--r-CHRONOLOGY:#555;--r-CONSTRUCTION:#555;
+}
+.palette-high-contrast{
+  --rule:#000;--rule-strong:#000;--muted:#222;--faint:#333;--edge:#000;--edge-return:#000;--edge-side:#000;
+  --r-SCREEN:#000;--r-CONTAINER:#000;--r-CONTENT:#000;--r-ELEMENT:#000;--r-NAVIGATION:#000;--r-INTENT:#000;--r-DISPATCH:#000;--r-CONTROL:#000;--r-STATE:#000;--r-ACT:#000;--r-EFFECT:#000;--r-PROJECTION:#000;--r-METHOD:#000;--r-EXECUTION:#000;--r-STORE:#000;--r-OBSERVATION:#000;--r-CHRONOLOGY:#000;--r-CONSTRUCTION:#000;
+}
+*{box-sizing:border-box}html,body{height:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.45 var(--sans);-webkit-font-smoothing:antialiased}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+code,.mono{font-family:var(--mono)}
+a{color:var(--focus)}
+
+.role-SCREEN{--rc:var(--r-SCREEN)}.role-CONTAINER{--rc:var(--r-CONTAINER)}.role-CONTENT{--rc:var(--r-CONTENT)}.role-ELEMENT{--rc:var(--r-ELEMENT)}.role-NAVIGATION{--rc:var(--r-NAVIGATION)}
+.role-INTENT{--rc:var(--r-INTENT)}.role-DISPATCH{--rc:var(--r-DISPATCH)}
+.role-CONTROL{--rc:var(--r-CONTROL)}.role-STATE{--rc:var(--r-STATE)}.role-ACT{--rc:var(--r-ACT)}.role-EFFECT{--rc:var(--r-EFFECT)}.role-PROJECTION{--rc:var(--r-PROJECTION)}
+.role-METHOD{--rc:var(--r-METHOD)}.role-EXECUTION{--rc:var(--r-EXECUTION)}.role-STORE{--rc:var(--r-STORE)}.role-OBSERVATION{--rc:var(--r-OBSERVATION)}.role-CHRONOLOGY{--rc:var(--r-CHRONOLOGY)}.role-CONSTRUCTION{--rc:var(--r-CONSTRUCTION)}
+.chip{display:inline-flex;align-items:center;height:18px;padding:0 6px;border-radius:5px;background:color-mix(in srgb,var(--rc,#64748b) 13%,#fff);color:var(--rc,#64748b);font:600 10.5px/1 var(--sans);letter-spacing:.02em;white-space:nowrap;flex:none}
+.palette-high-contrast .chip{background:#000;color:#fff}
+
+.lens{display:grid;grid-template-rows:auto auto minmax(0,1fr) auto;height:100vh;min-height:560px}
+.bar{display:flex;align-items:center;gap:14px;padding:8px 18px;background:var(--sheet);border-bottom:1px solid var(--rule)}
+.bar .crumb{color:var(--muted);text-decoration:none;font-weight:500}.bar .crumb:hover{color:var(--ink)}
+.bar h1{margin:0;font-size:16px;font-weight:600;letter-spacing:-.005em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.snapshot{color:var(--muted);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.snapshot code{font-size:11.5px;color:var(--ink)}
+.spacer{flex:1}
+.tool{height:32px;padding:0 12px;border:1px solid var(--rule);border-radius:8px;background:var(--sheet);font-weight:500;font-size:13px;white-space:nowrap}
+.tool:hover{border-color:var(--rule-strong)}.tool[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+
+.atlas{display:flex;align-items:center;gap:16px;padding:6px 18px;border-bottom:1px solid var(--rule);background:#fbfcfd;overflow-x:auto;scrollbar-width:thin}
+.walk{display:flex;align-items:center;gap:4px;flex:none}
+.walk .step{border:0;background:none;padding:3px 6px;border-radius:6px;color:var(--muted);font-size:13px}
+.walk .step:hover{background:#eef1f5;color:var(--ink)}.walk .step.current{color:var(--ink);font-weight:600}
+.walk .sep{color:var(--faint)}
+.walk .back{height:28px;padding:0 10px;border:1px solid var(--rule);border-radius:7px;background:var(--sheet);font-size:12.5px;margin-right:4px}
+.walk .back:disabled{opacity:.4;cursor:default}
+.screens{display:flex;align-items:center;gap:6px;flex:none;margin-left:auto}
+.screens .group{color:var(--faint);font-size:12px;margin:0 2px 0 10px}
+.screen-chip{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border:1px solid var(--rule);border-radius:999px;background:var(--sheet);font-size:12.5px;white-space:nowrap}
+.screen-chip:hover{border-color:var(--rule-strong)}
+.screen-chip.current{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.screen-chip .mapped{width:8px;height:8px;border-radius:50%;border:1.5px solid var(--ink)}
+.mapped.MAPPED{background:var(--ink)}.mapped.CHROME_ONLY{background:linear-gradient(90deg,var(--ink) 50%,transparent 50%)}.mapped.HELD{background:transparent}
+.screen-chip .visits{font-size:11px;color:var(--muted)}
+
+.main{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;padding:12px 18px 14px;min-height:0}
+.side{display:grid;grid-template-rows:auto minmax(0,1fr);min-height:0;perspective:1800px}
+.side-head{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.side-head h2{margin:0;font-size:13px;font-weight:600;color:var(--muted)}
+.faces{display:inline-flex;padding:2px;border:1px solid var(--rule);border-radius:9px;background:var(--sheet)}
+.faces button{border:0;background:none;height:26px;padding:0 11px;border-radius:7px;font-size:12.5px;color:var(--muted);font-weight:500}
+.faces button[aria-selected="true"]{background:var(--ink);color:#fff}
+.hint{color:var(--faint);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.side-head .tool{height:26px;font-size:12px;padding:0 9px;margin-left:auto}
+.flipper{position:relative;min-height:0;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.2,.7,.2,1)}
+.flipper.flipped{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:var(--sheet);border:1px solid var(--rule);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.face.back{transform:rotateY(180deg)}
+.face .spine{position:absolute;top:10px;right:10px;z-index:4;padding:3px 9px;border-radius:999px;background:#eef1f5;color:var(--muted);font-size:11.5px;pointer-events:none}
+@media (prefers-reduced-motion:reduce){.flipper{transition:none}}
+
+/* Surface face */
+.surface{flex:1;min-height:0;overflow:hidden;padding:18px 22px;display:flex;justify-content:center;background:radial-gradient(circle at 50% 0,#eef2f8,transparent 70%)}
+.phone{position:relative;width:min(340px,100%);height:100%;max-height:760px;min-height:420px;display:flex;flex-direction:column;border:1px solid #cfd5df;border-radius:30px;background:#fbfbfd;box-shadow:0 18px 40px -24px #18213a55;overflow:hidden;align-self:flex-start}
+.phone.dimmed [data-ref]:not(.sel):not(.anc){opacity:.46}
+.phone.dimmed [data-ref]:not(.sel):not(.anc) [data-ref],.phone.dimmed .sel [data-ref]{opacity:1}
+.phone-top{display:flex;align-items:center;gap:8px;height:54px;padding:0 14px;border-bottom:1px solid #eceff4;background:#fff}
+.phone-title{font-weight:600;font-size:15px}
+.phone-body{flex:1;min-height:0;overflow:auto;padding:14px 14px 84px;display:flex;flex-direction:column;gap:12px;scrollbar-width:thin}
+.phone-bottom{display:flex;justify-content:space-around;height:58px;border-top:1px solid #eceff4;background:#fff}
+.phone-held{border:1.5px dashed #cfd5df;border-radius:12px;padding:16px;color:var(--muted);font-size:13px}
+[data-ref]{position:relative;border-radius:10px;transition:opacity .15s,box-shadow .15s}
+[data-ref].sel{z-index:3;box-shadow:0 0 0 2px var(--r-ELEMENT),0 8px 22px -10px #2563eb88}
+[data-ref].anc{box-shadow:0 0 0 1.5px color-mix(in srgb,var(--r-CONTAINER) 55%,transparent)}
+.el-column{display:flex;flex-direction:column;gap:12px}
+.el-card{display:flex;flex-direction:column;gap:8px;padding:12px;border:1px solid #e3e7ee;border-radius:14px;background:#fff}
+.el-row{display:flex;flex-wrap:wrap;gap:8px;border-radius:8px}
+.el-text{margin:0;font-size:13px;color:var(--muted)}.el-text.TITLE{color:var(--ink);font-weight:600;font-size:14px}
+.el-image{font-weight:600;letter-spacing:-.01em}
+.el-toggle{display:flex;align-items:center;justify-content:space-between;width:100%;padding:12px 14px;border:1px solid #e3e7ee;border-radius:14px;background:#fff;text-align:left;font-weight:500}
+.el-toggle .switch{width:38px;height:22px;border-radius:999px;background:#d7dce5;position:relative;flex:none}
+.el-toggle .switch::after{content:'';position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 1px 2px #0003}
+.el-button{height:34px;padding:0 14px;border:1px solid #cfd5df;border-radius:999px;background:#fff;font-size:13px;font-weight:500}
+.el-button.has-path::before,.el-toggle.has-path::before,.el-menuitem.has-path::before,.el-fab.has-path::before,.el-nav.has-path::before{content:'';position:absolute;top:-3px;right:-3px;width:7px;height:7px;border-radius:50%;background:var(--r-ELEMENT);border:1.5px solid #fff}
+.el-nav{flex:1;border:0;background:none;font-size:12px;color:var(--muted);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.el-nav.here{color:var(--ink);font-weight:600}
+.el-nav .glyph{width:20px;height:3px;border-radius:2px;background:currentColor;opacity:.5}
+.el-back{border:0;background:none;padding:4px 6px;font-size:13px;color:var(--muted)}
+.fab-zone{position:absolute;right:16px;bottom:74px;display:flex;flex-direction:column;align-items:flex-end;gap:8px;z-index:5}
+.el-fab{width:52px;height:52px;border-radius:17px;border:0;background:var(--ink);color:#fff;font-size:24px;line-height:1;box-shadow:0 8px 20px -8px #18213a99}
+.el-menu{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.el-menu.closed{display:none}
+.el-menuitem{height:32px;padding:0 13px;border:1px solid #cfd5df;border-radius:999px;background:#fff;font-size:12.5px;font-weight:500;box-shadow:0 4px 12px -8px #0005}
+.sheet-zone{position:absolute;left:0;right:0;bottom:0;z-index:6;padding:12px 16px 20px;border-top-left-radius:20px;border-top-right-radius:20px;background:#fff;border-top:1px solid #dfe3ea;box-shadow:0 -12px 30px -18px #0006}
+.sheet-zone .grab{width:36px;height:4px;border-radius:2px;background:#d7dce5;margin:0 auto 10px}
+.travel{position:absolute;left:50%;top:calc(100% + 8px);transform:translateX(-50%);z-index:8;white-space:nowrap;height:28px;padding:0 12px;border-radius:999px;border:0;background:var(--r-NAVIGATION);color:#fff;font-size:12px;font-weight:600;box-shadow:0 6px 16px -8px #0007}
+.travel.above{top:auto;bottom:calc(100% + 8px)}.travel.left{left:auto;right:calc(100% + 8px);top:50%;transform:translateY(-50%)}
+
+/* Structure face */
+.structure{flex:1;overflow:auto;padding:16px 16px 28px}
+.struct-section{margin-bottom:18px}
+.struct-section header{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin:2px 0 8px}
+.struct-section h3{margin:0;font-size:13.5px;font-weight:600}
+.struct-section header p{margin:0;color:var(--muted);font-size:12px;flex-basis:100%}
+.srow{position:relative;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 9px;align-items:start;padding:7px 10px 7px calc(10px + var(--d) * 18px);border-radius:8px;cursor:pointer;}
+.srow::before{content:'';position:absolute;left:calc(var(--d) * 18px - 3px);top:0;bottom:0;width:1px;background:var(--rule);display:var(--guide,block)}
+.srow:hover{background:#f3f5f8}
+.srow.sel{background:color-mix(in srgb,var(--r-ELEMENT) 9%,#fff);box-shadow:inset 3px 0 0 var(--r-ELEMENT)}
+.srow.anc .slabel{font-weight:600}
+.srow .slabel{font-weight:500;overflow-wrap:anywhere}
+.srow .sdecl{grid-column:2;font:12px/1.4 var(--mono);color:var(--muted);overflow-wrap:break-word}
+.srow .sref{grid-column:2;font:11.5px/1.4 var(--mono);color:var(--faint);overflow-wrap:anywhere}
+.srow .sintent{grid-column:2;font:11.5px/1.4 var(--mono);color:var(--r-INTENT);overflow-wrap:anywhere}
+
+/* Graph faces */
+.graph{position:relative;flex:1;overflow:hidden;cursor:grab;touch-action:none;background-image:radial-gradient(#dfe4ec 1px,transparent 1px);background-size:22px 22px}
+.graph.dragging{cursor:grabbing}
+.graph-canvas{position:absolute;left:0;top:0;transform-origin:0 0}
+.graph-canvas svg{position:absolute;left:0;top:0;overflow:visible;pointer-events:none}
+.e{fill:none;stroke:var(--edge);stroke-width:1.6}
+.e.DATA{stroke-dasharray:6 4}.e.RETURN{stroke:var(--edge-return);stroke-dasharray:7 4;stroke-width:1.8}.e.SIDE{stroke:var(--edge-side);stroke-dasharray:2 4}
+.e.hot{stroke:var(--ink);stroke-width:2.4}
+.elabel rect{fill:#fff;stroke:var(--rule)}.elabel text{font:500 10.5px var(--sans);fill:var(--muted)}
+.elabel.hot rect{stroke:var(--ink)}.elabel.hot text{fill:var(--ink)}
+.lnode{position:absolute;display:flex;flex-direction:column;gap:3px;padding:9px 10px 8px 13px;border:1px solid var(--rule);border-radius:11px;background:#fff;box-shadow:0 1px 0 #18213a08;cursor:pointer;overflow:hidden;text-align:left}
+.lnode::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--rc)}
+.lnode:hover{border-color:var(--rule-strong)}
+.lnode.sel{border-color:var(--rc);box-shadow:0 0 0 2px color-mix(in srgb,var(--rc) 40%,transparent),0 10px 24px -14px #18213a66}
+.lnode.entry{box-shadow:0 0 0 2px color-mix(in srgb,var(--r-ELEMENT) 30%,transparent)}
+.lnode .top{display:flex;align-items:center;gap:6px;min-width:0;height:18px}
+.lnode .sym{font:11px var(--mono);color:var(--faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.lnode .note{margin-left:auto;flex:none;font-size:11px;color:var(--muted);border:1px solid var(--rule);border-radius:5px;padding:0 5px;line-height:16px}
+.lnode .lbl{font-weight:600;font-size:12.5px;line-height:17px;overflow-wrap:break-word;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.lnode .sum{font-size:11px;line-height:14px;color:var(--muted);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.lnode .port{margin-top:auto;font-size:11px;color:var(--rc);border:0;background:none;padding:0;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;height:18px;line-height:18px}
+.lnode .port:hover{text-decoration:underline}
+.graph-tools{position:absolute;right:12px;bottom:12px;z-index:5;display:flex;gap:6px}
+.graph-tools button{height:28px;min-width:28px;padding:0 9px;border:1px solid var(--rule);border-radius:7px;background:#fffffff0;font-size:12px}
+.empty{margin:auto;max-width:34ch;padding:24px;text-align:center;color:var(--muted)}
+.empty strong{display:block;color:var(--ink);font-size:15px;margin-bottom:6px;font-weight:600}
+.disposition{padding:10px 16px 9px;border-bottom:1px solid var(--rule);background:#fbfcfd}
+.disposition .k{font-weight:600}
+.disposition p{margin:2px 0 0;color:var(--muted);font-size:12.5px;max-width:78ch;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+.doorway{display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px;margin-top:8px;font-size:12px}
+.doorway .lead{flex-basis:100%;color:var(--muted)}
+.doorway button{display:inline-flex;align-items:center;gap:5px;max-width:100%;height:24px;padding:0 8px 0 4px;border:1px solid var(--rule);border-radius:7px;background:#fff;font:11.5px var(--mono);color:var(--ink)}
+.doorway button span.t{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:24ch}
+.doorway button.sel{border-color:var(--rc);box-shadow:0 0 0 2px color-mix(in srgb,var(--rc) 35%,transparent)}
+.doorway .sep{color:var(--faint)}
+
+/* Bridge */
+.bridge{position:absolute;inset:0;pointer-events:none;z-index:20;overflow:visible}
+.bridge path{fill:none}
+.bridge .out{stroke-width:2.6}
+.bridge .ret{stroke:var(--r-PROJECTION);stroke-width:1.8;stroke-dasharray:6 5;opacity:.85}
+.bridge .cap{stroke:#fff;stroke-width:2}
+
+/* Inspector tray */
+.tray{border-top:1px solid var(--rule);background:var(--sheet);max-height:25vh;overflow:auto}
+.tray.collapsed .tray-body{display:none}
+.tray-head{display:flex;align-items:center;gap:10px;padding:10px 18px;position:sticky;top:0;background:var(--sheet);border-bottom:1px solid #eef1f5;z-index:1}
+.tray-head h2{margin:0;font-size:14px;font-weight:600;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tray-head .ref{font:12px var(--mono);color:var(--faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.tray-head .tool{margin-left:auto;height:28px}
+.tray-body{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px 28px;padding:10px 18px 14px}
+.tray h3{margin:0 0 6px;font-size:12px;font-weight:600;color:var(--muted)}
+.tray dl{margin:0;display:grid;grid-template-columns:max-content minmax(0,1fr);gap:4px 12px;font-size:12.5px}
+.tray dt{color:var(--muted)}.tray dd{margin:0;overflow-wrap:anywhere}
+.tray dd code{font-size:12px}
+.tray p{margin:0 0 8px;font-size:13px;max-width:72ch}
+.tray pre{margin:6px 0 8px;padding:10px 12px;border-radius:9px;background:#18213a;color:#e6eaf3;font:12px/1.5 var(--mono);overflow:auto;white-space:pre}
+.tray .links{display:flex;flex-wrap:wrap;gap:6px}
+.tray .link{display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 9px;border:1px solid var(--rule);border-radius:7px;background:#fff;font-size:12px;max-width:100%}
+.tray .link:hover{border-color:var(--rule-strong)}
+.tray .link span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tray .note{border-left:3px solid var(--rule-strong);padding:2px 0 2px 10px;margin-bottom:8px;font-size:12.5px}
+.tray .note b{font-weight:600}
+.tray .go{height:30px;padding:0 13px;border:0;border-radius:8px;background:var(--r-NAVIGATION);color:#fff;font-weight:600;font-size:12.5px}
+
+/* Overlays */
+.overlay{position:absolute;inset:12px 18px;z-index:40;display:flex;flex-direction:column;background:var(--sheet);border:1px solid var(--rule-strong);border-radius:16px;box-shadow:0 30px 60px -30px #18213a88;overflow:hidden}
+.overlay-head{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--rule)}
+.overlay-head h2{margin:0;font-size:15px;font-weight:600}
+.overlay-head p{margin:0;color:var(--muted);font-size:12.5px}
+.overlay-head .tool{margin-left:auto}
+.overlay .graph{flex:1}
+.unreached{padding:10px 16px;border-top:1px solid var(--rule);font-size:12.5px;color:var(--muted);display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.lnode.screen-node.current{border-color:var(--ink);box-shadow:0 0 0 2px var(--ink)}
+.legend{position:absolute;top:12px;right:18px;z-index:45;width:min(440px,calc(100% - 36px));max-height:calc(100% - 24px);overflow:auto;padding:14px 16px;background:var(--sheet);border:1px solid var(--rule-strong);border-radius:14px;box-shadow:0 24px 50px -28px #18213a88}
+.legend h3{margin:12px 0 6px;font-size:12.5px;font-weight:600}
+.legend h3:first-child{margin-top:0}
+.legend .band{display:grid;grid-template-columns:110px minmax(0,1fr);gap:4px 10px;align-items:start;margin-bottom:8px;font-size:12.5px}
+.legend .band b{font-weight:600}.legend .band .muted{color:var(--muted);font-size:11.5px}
+.legend .roles{display:flex;flex-wrap:wrap;gap:4px}
+.legend ul{margin:0;padding-left:18px;font-size:12.5px}.legend li{margin:2px 0}
+kbd{font:11px var(--mono);border:1px solid var(--rule-strong);border-bottom-width:2px;border-radius:4px;padding:0 4px;background:#fff}
+.boot{margin:12vh auto;max-width:56ch;padding:24px;color:var(--muted)}
+.boot h1{color:var(--ink);font-size:20px}
+
+@media (max-width:900px){
+  .lens{height:auto;min-height:100vh}
+  .main{grid-template-columns:1fr;gap:18px}
+  .side{min-height:640px}
+  .bridge{display:none}
+  .tray-body{grid-template-columns:1fr}
+  .tray{max-height:none}
+  .snapshot{display:none}
+  .screens{margin-left:0}
+  body{overflow-x:hidden}
+  .bar{flex-wrap:wrap;row-gap:6px}.bar h1{flex-basis:100%;order:-1;white-space:normal}.bar .spacer{display:none}
+  .main{padding:12px}
+  .side-head{flex-wrap:wrap}.side-head .hint{display:none}
+  .surface{padding:12px}
+}
+</style>
+</head>
+<body>
+<div id="app"><section class="boot"><h1>Loading Screen Lens…</h1></section></div>
+<script>
+window.addEventListener('error',(event)=>{const app=document.getElementById('app');if(!app)return;app.innerHTML='<section class="boot"><h1>Screen Lens could not start.</h1><p></p></section>';app.querySelector('p').textContent=event?.message||'A module failed to load.'});
+window.addEventListener('unhandledrejection',(event)=>{const app=document.getElementById('app');if(!app)return;app.innerHTML='<section class="boot"><h1>Screen Lens could not start.</h1><p></p></section>';app.querySelector('p').textContent=String(event?.reason?.message||event?.reason||'Loading failed.')});
+</script>
+<script type="module">
+import * as Lens from '../src/shared/vexboard-screen-lens.mjs';
+import * as Layout from '../src/shared/vexboard-lens-layout.mjs';
+import * as Interaction from './ui/interaction.mjs';
+import * as Presentation from './ui/presentation.mjs';
+
+const DEFAULT_LENS_URL = '../projects/vexboard/examples/vexlife-debug-menu.screen-lens.json';
+const params = new URLSearchParams(location.search);
+const app = document.getElementById('app');
+const SVG = 'http://www.w3.org/2000/svg';
+
+function lensUrlFromParams() {
+  const requested = params.get('lens');
+  if (!requested) return DEFAULT_LENS_URL;
+  if (/^[a-z]+:|^\/\//i.test(requested) || !/\.json$/i.test(requested)) throw new Error('lens must be a relative .json path on this site');
+  return requested;
+}
+
+function h(tag, attrs = {}, ...children) {
+  const node = document.createElement(tag);
+  for (const [key, value] of Object.entries(attrs || {})) {
+    if (value === null || value === undefined || value === false) continue;
+    if (key === 'class') node.className = value;
+    else if (key === 'text') node.textContent = value;
+    else if (key.startsWith('on')) node.addEventListener(key.slice(2), value);
+    else if (key === 'dataset') Object.assign(node.dataset, value);
+    else if (key === 'style') node.style.cssText = value;
+    else node.setAttribute(key, value === true ? '' : String(value));
+  }
+  for (const child of children.flat()) {
+    if (child === null || child === undefined || child === false) continue;
+    node.append(child instanceof Node ? child : document.createTextNode(String(child)));
+  }
+  return node;
+}
+function s(tag, attrs = {}) {
+  const node = document.createElementNS(SVG, tag);
+  for (const [key, value] of Object.entries(attrs)) if (value !== null && value !== undefined) node.setAttribute(key, String(value));
+  return node;
+}
+const DISPOSITION_NAMES = { SCAE_FAMILY: 'SCAE Family', TYPED_PRESENTATION: 'Typed presentation', TYPED_NAVIGATION: 'Typed navigation', DIRECT_REGISTRATION: 'Direct registration' };
+function breakable(value) { const out = []; String(value).split(/(?<=[.(,>_/])/).forEach((part, i) => { if (i) out.push(h('wbr')); out.push(part); }); return out; }
+function chip(role) { const info = Lens.roleFor(role); return h('span', { class: `chip role-${role}`, title: `${info.label} · ${Lens.LENS_BANDS[info.band].label}` }, info.chip); }
+function elementChip(element) { return h('span', { class: `chip role-${element.role}`, title: element.kind.toLowerCase().replace('_', ' ') }, element.kind.replace('_', ' ').toLowerCase()); }
+
+const state = {
+  lens: null,
+  walk: null,
+  selected: null, // { kind: 'ELEMENT' | 'NODE' | 'SCREEN', ref }
+  anchorElementRef: null,
+  pathwayRef: null,
+  faces: { EXPERIENCE: 'SURFACE', BEHAVIOR: 'BEHAVIOR' },
+  hideDoorway: true,
+  cameras: new Map(),
+  layouts: new Map(),
+  overlay: null, // 'MAP' | 'LEGEND'
+  trayCollapsed: false,
+  palette: 'STANDARD',
+};
+let refs = {};
+
+function readPalette() { try { return Presentation.normalizePaletteMode(localStorage.getItem(Presentation.VEXBOARD_PALETTE_STORAGE_KEY)); } catch { return 'STANDARD'; } }
+function writePalette(mode) { try { localStorage.setItem(Presentation.VEXBOARD_PALETTE_STORAGE_KEY, mode); } catch { /* presentation preference only */ } }
+
+const screenRef = () => Lens.currentWalkScreen(state.walk);
+const currentScreen = () => Lens.screenFor(state.lens, screenRef());
+const currentPathway = () => Lens.pathwayFor(state.lens, state.pathwayRef);
+const anchorElement = () => (state.anchorElementRef ? Lens.elementFor(state.lens, state.anchorElementRef) : null);
+const pathwayNode = (ref) => currentPathway()?.nodes.find((node) => node.ref === ref) ?? null;
+function doorwayCollapsible(pathway) {
+  if (!pathway) return false;
+  const behavior = Lens.faceGraph(pathway, 'BEHAVIOR');
+  const doorway = behavior.nodes.filter((node) => Lens.roleFor(node.role).band === 'DOORWAY').length;
+  return doorway > 0 && behavior.nodes.length - doorway >= 2;
+}
+const doorwayCollapsed = () => state.hideDoorway && doorwayCollapsible(currentPathway());
+const hideBandsFor = (face) => (face === 'BEHAVIOR' && doorwayCollapsed() ? ['DOORWAY'] : []);
+
+function selectElement(elementRef, { keepFaces = true } = {}) {
+  const element = Lens.elementFor(state.lens, elementRef);
+  if (!element) return;
+  state.selected = { kind: 'ELEMENT', ref: elementRef };
+  state.anchorElementRef = elementRef;
+  const nextPathway = element.pathwayRef ?? null;
+  if (nextPathway !== state.pathwayRef) {
+    state.pathwayRef = nextPathway;
+    state.cameras.delete('BEHAVIOR');
+    state.cameras.delete('DEPTH');
+  }
+  if (!keepFaces) state.faces.BEHAVIOR = 'BEHAVIOR';
+  render();
+}
+function selectNode(ref, { reveal = false } = {}) {
+  const node = pathwayNode(ref);
+  if (!node) return;
+  state.selected = { kind: 'NODE', ref };
+  if (reveal && state.faces.BEHAVIOR !== node.face) { state.faces.BEHAVIOR = node.face; }
+  render();
+  if (reveal) requestAnimationFrame(() => revealNode(node.face, ref));
+}
+function clearSelection() { state.selected = null; state.anchorElementRef = null; state.pathwayRef = null; render(); }
+
+function travel(element) {
+  if (!element?.navigatesTo) return;
+  if (element.navigatesTo === Lens.BACK) { state.walk = Lens.backScreenWalk(state.walk); }
+  else state.walk = Lens.advanceScreenWalk(state.lens, state.walk, { toScreenRef: element.navigatesTo, viaElementRef: element.ref });
+  state.selected = null; state.anchorElementRef = null; state.pathwayRef = null;
+  render();
+}
+function jumpTo(target, how = 'JUMP') {
+  if (target === screenRef() && how !== 'REVISIT') { state.overlay = null; render(); return; }
+  state.walk = Lens.advanceScreenWalk(state.lens, state.walk, { toScreenRef: target, how });
+  state.selected = null; state.anchorElementRef = null; state.pathwayRef = null; state.overlay = null;
+  render();
+}
+
+function flip(side) {
+  const face = state.faces[side];
+  state.faces[side] = Lens.LENS_FACES[face].flipTo;
+  applyFlipState();
+  syncUrl();
+}
+
+/* ---------- top bar and atlas ---------- */
+function renderBar() {
+  const snapshot = state.lens.sourceSnapshot;
+  const repoName = snapshot.repositoryUrl ? snapshot.repositoryUrl.split('/').slice(-1)[0] : snapshot.repositoryRef;
+  const commit = snapshot.commit ? snapshot.commit.slice(0, 7) : 'unpinned';
+  const commitLink = snapshot.repositoryUrl && snapshot.commit ? h('a', { href: `${snapshot.repositoryUrl}/tree/${snapshot.commit}`, target: '_blank', rel: 'noopener' }, h('code', {}, `${repoName} @ ${commit}`)) : h('code', {}, `${repoName} @ ${commit}`);
+  return h('header', { class: 'bar' },
+    h('a', { class: 'crumb', href: './' }, 'VexBoard'),
+    h('h1', {}, state.lens.title),
+    h('span', { class: 'snapshot', title: snapshot.notes.join('\n') }, 'Read-only projection of ', commitLink),
+    h('span', { class: 'spacer' }),
+    h('button', { class: 'tool', 'aria-pressed': state.overlay === 'MAP', onclick: () => { state.overlay = state.overlay === 'MAP' ? null : 'MAP'; render(); } }, 'Screen map'),
+    h('button', { class: 'tool', 'aria-pressed': state.overlay === 'LEGEND', onclick: () => { state.overlay = state.overlay === 'LEGEND' ? null : 'LEGEND'; render(); } }, 'Legend'),
+    h('button', { class: 'tool', title: 'Cycle color presentation', onclick: () => { state.palette = Presentation.nextPaletteMode(state.palette); writePalette(state.palette); applyPalette(); } }, paletteLabel()),
+  );
+}
+function paletteLabel() { return { STANDARD: 'Colors: standard', COLOR_SAFE: 'Colors: color-safe', HIGH_CONTRAST: 'Colors: high contrast' }[state.palette]; }
+function applyPalette() {
+  const root = document.querySelector('.lens');
+  if (!root) return;
+  root.classList.remove('palette-color-safe', 'palette-high-contrast');
+  if (state.palette === 'COLOR_SAFE') root.classList.add('palette-color-safe');
+  if (state.palette === 'HIGH_CONTRAST') root.classList.add('palette-high-contrast');
+  const button = [...document.querySelectorAll('.bar .tool')].at(-1);
+  if (button) button.textContent = paletteLabel();
+  requestAnimationFrame(drawBridge);
+}
+
+function renderAtlas() {
+  const steps = state.walk.steps;
+  const label = (ref) => Lens.screenFor(state.lens, ref).label;
+  const walk = h('nav', { class: 'walk', 'aria-label': 'Walk' },
+    h('button', { class: 'back', disabled: steps.length <= 1, onclick: () => { state.walk = Lens.backScreenWalk(state.walk); state.selected = null; state.anchorElementRef = null; state.pathwayRef = null; render(); } }, 'Back'),
+    ...steps.flatMap((step, i) => {
+      const via = step.viaElementRef ? Lens.elementFor(state.lens, step.viaElementRef)?.label : null;
+      const button = h('button', {
+        class: `step${i === steps.length - 1 ? ' current' : ''}`,
+        title: via ? `Reached via ${via}` : step.how === 'START' ? 'Start' : step.how.toLowerCase(),
+        'aria-current': i === steps.length - 1 ? 'step' : null,
+        onclick: () => { if (i < steps.length - 1) { state.walk = Lens.revisitScreenWalk(state.lens, state.walk, step.sequence); state.selected = null; state.anchorElementRef = null; state.pathwayRef = null; render(); } },
+      }, label(step.screenRef));
+      return i ? [h('span', { class: 'sep', 'aria-hidden': 'true' }, '›'), button] : [button];
+    }),
+  );
+  const counts = Lens.walkVisitCounts(state.walk);
+  const chipFor = (screen) => h('button', {
+    class: `screen-chip${screen.screenRef === screenRef() ? ' current' : ''}`,
+    title: `${screen.summary ?? ''}\n${screen.mapped.replace('_', ' ').toLowerCase()}`,
+    onclick: () => jumpTo(screen.screenRef),
+  }, h('span', { class: `mapped ${screen.mapped}`, 'aria-hidden': 'true' }), screen.label, counts.get(screen.screenRef) > 1 ? h('span', { class: 'visits' }, `×${counts.get(screen.screenRef)}`) : null);
+  const primary = state.lens.screens.filter((screen) => screen.placement === 'PRIMARY');
+  const shared = state.lens.screens.filter((screen) => screen.placement === 'SHARED');
+  return h('div', { class: 'atlas' }, walk,
+    h('div', { class: 'screens', role: 'group', 'aria-label': 'Screens' },
+      h('span', { class: 'group' }, 'Primary'), ...primary.map(chipFor),
+      h('span', { class: 'group' }, 'Shared'), ...shared.map(chipFor)));
+}
+
+/* ---------- Experience side ---------- */
+function selectionPathRefs() {
+  const anchor = state.anchorElementRef;
+  if (!anchor) return { selected: null, ancestors: new Set() };
+  const path = Lens.elementPath(state.lens, anchor);
+  return { selected: anchor, ancestors: new Set(path.slice(0, -1).map((element) => element.ref)) };
+}
+function markElement(node, element, marks) {
+  node.dataset.ref = element.ref;
+  if (marks.selected === element.ref) node.classList.add('sel');
+  if (marks.ancestors.has(element.ref)) node.classList.add('anc');
+  if (element.pathwayRef) node.classList.add('has-path');
+  node.title = `${element.label} · ${element.ref}`;
+  node.addEventListener('click', (event) => { event.stopPropagation(); selectElement(element.ref); });
+  if (element.navigatesTo) node.addEventListener('dblclick', (event) => { event.stopPropagation(); travel(element); });
+  return node;
+}
+function travelButton(element) {
+  if (!element.navigatesTo || state.anchorElementRef !== element.ref) return null;
+  const to = element.navigatesTo === Lens.BACK ? 'Go back' : `Go to ${Lens.screenFor(state.lens, element.navigatesTo).label}`;
+  const slot = Lens.elementPath(state.lens, element.ref).find((step) => step.slot)?.slot;
+  const placement = slot === 'BOTTOM' ? ' above' : slot === 'FAB' ? ' left' : '';
+  return h('button', { class: `travel${placement}`, onclick: (event) => { event.stopPropagation(); travel(element); } }, to);
+}
+function renderSurfaceElement(tree, marks, context) {
+  const { element, children } = tree;
+  const kids = () => children.filter((child) => child.element.kind !== 'SHEET').map((child) => renderSurfaceElement(child, marks, context));
+  let node;
+  switch (element.kind) {
+    case 'COLUMN': case 'REGION': node = h('div', { class: 'el-column' }, kids()); break;
+    case 'CARD': node = h('div', { class: 'el-card' }, kids()); break;
+    case 'ROW': case 'STACK': node = h('div', { class: 'el-row' }, kids()); break;
+    case 'TEXT': node = h('p', { class: `el-text ${element.textRole ?? ''}` }, element.label); break;
+    case 'IMAGE': node = h('span', { class: 'el-image' }, element.label); break;
+    case 'TOGGLE': node = h('button', { class: 'el-toggle', type: 'button' }, element.label, h('span', { class: 'switch', 'aria-hidden': 'true' })); break;
+    case 'BUTTON': node = h('button', { class: 'el-button', type: 'button' }, element.label); break;
+    case 'FAB': node = h('button', { class: 'el-fab', type: 'button', 'aria-label': element.label }, element.label); break;
+    case 'MENU': node = h('div', { class: `el-menu${context.fabOpen ? '' : ' closed'}` }, kids()); break;
+    case 'MENU_ITEM': node = h('button', { class: 'el-menuitem', type: 'button' }, element.label); break;
+    default: node = h('div', {}, element.label);
+  }
+  markElement(node, element, marks);
+  const go = travelButton(element);
+  if (go) node.append(go);
+  return node;
+}
+function renderSurface() {
+  const screen = currentScreen();
+  const marks = selectionPathRefs();
+  const elements = Lens.elementsForScreen(state.lens, screen.screenRef);
+  const bySlot = (slot) => Lens.elementTree(elements.filter((element) => element.ownerRef !== screen.screenRef)).filter((tree) => tree.element.slot === slot);
+  const anchor = anchorElement();
+  const fabRefs = new Set(elements.filter((element) => element.ref === 'element.shell.fab-cluster' || Lens.elementPath(state.lens, element.ref).some((step) => step.slot === 'FAB')).map((element) => element.ref));
+  const context = { fabOpen: Boolean(anchor && fabRefs.has(anchor.ref)) };
+  const top = bySlot('TOP')[0];
+  const topBar = h('div', { class: 'phone-top' });
+  if (top) {
+    for (const child of top.children) if (child.element.navigatesTo !== Lens.BACK || state.walk.steps.length > 1) topBar.append(child.element.kind === 'BUTTON'
+      ? (() => { const button = markElement(h('button', { class: 'el-back', type: 'button' }, `‹ ${child.element.label}`), child.element, marks); const go = travelButton(child.element); if (go) button.append(go); return button; })()
+      : renderSurfaceElement(child, marks, context));
+    markElement(topBar, top.element, marks);
+  }
+  topBar.append(h('span', { class: 'phone-title' }, screen.label));
+  const body = h('div', { class: 'phone-body' });
+  const own = Lens.elementTree(screen.elements);
+  if (own.length) for (const tree of own) body.append(renderSurfaceElement(tree, marks, context));
+  else body.append(h('div', { class: 'phone-held' }, h('strong', {}, screen.mapped === 'CHROME_ONLY' ? `${screen.label} content is held` : `${screen.label} is not projected yet`), h('br'), screen.summary ?? ''));
+  const phone = h('div', { class: `phone${marks.selected ? ' dimmed' : ''}`, 'aria-label': `${screen.label} surface` }, topBar, body);
+  const bottom = bySlot('BOTTOM')[0];
+  if (bottom) {
+    const bar = h('div', { class: 'phone-bottom' });
+    for (const child of bottom.children) {
+      const button = markElement(h('button', { class: `el-nav${child.element.navigatesTo === screen.screenRef ? ' here' : ''}`, type: 'button' }, h('span', { class: 'glyph', 'aria-hidden': 'true' }), child.element.label), child.element, marks);
+      const go = travelButton(child.element); if (go) button.append(go);
+      bar.append(button);
+    }
+    markElement(bar, bottom.element, marks);
+    phone.append(bar);
+  }
+  const fab = bySlot('FAB')[0];
+  if (fab) {
+    const zone = h('div', { class: 'fab-zone' }, fab.children.map((child) => renderSurfaceElement(child, marks, context)));
+    markElement(zone, fab.element, marks);
+    phone.append(zone);
+  }
+  const sheet = screen.elements.find((element) => element.kind === 'SHEET');
+  const sheetOpen = sheet && (anchor?.ref === sheet.ref || anchor?.pathwayRef === 'pathway.log-history.show');
+  if (sheetOpen) phone.append(markElement(h('div', { class: 'sheet-zone' }, h('div', { class: 'grab' }), h('p', { class: 'el-text TITLE' }, sheet.label), h('p', { class: 'el-text' }, sheet.visibleWhen ?? '')), sheet, marks));
+  return h('div', { class: 'surface', onclick: () => clearSelection() }, phone);
+}
+
+function renderStructure() {
+  const screen = currentScreen();
+  const marks = selectionPathRefs();
+  const elements = Lens.elementsForScreen(state.lens, screen.screenRef);
+  const sections = [];
+  const owners = [...state.lens.chrome.filter((entry) => elements.some((element) => element.ownerRef === entry.chromeRef)), screen];
+  for (const owner of owners) {
+    const isScreen = owner === screen;
+    const ownElements = elements.filter((element) => element.ownerRef === (isScreen ? screen.screenRef : owner.chromeRef));
+    const applied = isScreen || owner.appliesTo === screen.placement;
+    const source = Lens.sourceUrl(state.lens, owner.source);
+    const header = h('header', {},
+      chip(isScreen ? 'SCREEN' : 'CONTAINER'),
+      h('h3', {}, isScreen ? `${owner.symbol ?? owner.label}` : `${owner.label} chrome`),
+      h('code', { class: 'mono', style: 'font-size:11.5px;color:var(--faint)' }, isScreen ? owner.screenRef : owner.chromeRef),
+      source ? h('a', { href: source, target: '_blank', rel: 'noopener', style: 'font-size:12px' }, 'source') : null,
+      h('p', {}, isScreen ? (owner.summary ?? '') : `${applied ? 'Shown here because this is a primary screen.' : 'Only elements visible on shared screens are listed.'} ${owner.summary ?? ''}`));
+    const rows = [];
+    const walkTree = (tree, depth) => {
+      const { element } = tree;
+      const row = h('div', { class: `srow${marks.selected === element.ref ? ' sel' : ''}${marks.ancestors.has(element.ref) ? ' anc' : ''}`, style: `--d:${depth};${depth ? '' : '--guide:none'}`, role: 'treeitem', tabindex: '0', 'aria-level': depth + 1, dataset: { ref: element.ref },
+        onclick: () => selectElement(element.ref),
+        onkeydown: (event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); selectElement(element.ref); } },
+        ondblclick: () => travel(element) },
+        elementChip(element),
+        h('span', { class: 'slabel' }, element.label, element.pathwayRef && Lens.pathwayFor(state.lens, element.pathwayRef).label !== element.label ? h('span', { style: 'color:var(--faint);font-weight:400' }, ` · ${Lens.pathwayFor(state.lens, element.pathwayRef).label}`) : null),
+        element.declared || element.symbol ? h('span', { class: 'sdecl' }, element.symbol && element.declared && element.symbol !== element.declared ? `${element.symbol} = ${element.declared}` : (element.declared ?? element.symbol)) : null,
+        element.intent ? h('span', { class: 'sintent' }, `${element.intent}${element.actionKey ? `  ⟶ ${element.actionKey}` : ''}${element.navigatesTo && element.navigatesTo !== Lens.BACK ? `  ⟶ ${element.navigatesTo}` : ''}`) : null,
+        h('span', { class: 'sref' }, element.ref));
+      rows.push(row);
+      tree.children.forEach((child) => walkTree(child, depth + 1));
+    };
+    Lens.elementTree(ownElements).forEach((tree) => walkTree(tree, 0));
+    if (!rows.length) rows.push(h('p', { class: 'hint', style: 'white-space:normal' }, owner.summary ?? 'Nothing projected yet.'));
+    sections.push(h('section', { class: 'struct-section', role: 'tree', 'aria-label': header.textContent }, header, rows));
+  }
+  return h('div', { class: 'structure' }, sections);
+}
+
+function renderExperienceSide() {
+  const front = h('div', { class: 'face front', dataset: { face: 'SURFACE' } }, renderSurface(), h('span', { class: 'spine' }, 'Back: Structure'));
+  const back = h('div', { class: 'face back', dataset: { face: 'STRUCTURE' } }, renderStructure(), h('span', { class: 'spine' }, 'Back: Surface'));
+  return renderSide('EXPERIENCE', 'Experience', ['SURFACE', 'STRUCTURE'], front, back, 'Middle-click to flip', null);
+}
+
+/* ---------- Behavior side ---------- */
+function renderGraphFace(face) {
+  const pathway = currentPathway();
+  const anchor = anchorElement();
+  const wrap = h('div', { class: 'face', dataset: { face } });
+  if (!pathway) {
+    const message = anchor
+      ? [h('strong', {}, `${anchor.label} is ${anchor.role === 'CONTENT' ? 'content' : 'structure'}`), 'It carries no behavior. Select a control on the left to trace what it does.']
+      : [h('strong', {}, 'Pick a control to trace'), `Click any control on the ${state.faces.EXPERIENCE === 'SURFACE' ? 'Surface' : 'Structure'} face. Controls with a pathway show a small blue dot.`];
+    wrap.append(h('div', { class: 'empty' }, message));
+    return wrap;
+  }
+  const graph = Lens.faceGraph(pathway, face, { hideBands: hideBandsFor(face) });
+  const shared = Lens.elementsUsingPathway(state.lens, pathway.pathwayRef).length;
+  wrap.append(h('div', { class: 'disposition' },
+    h('span', { class: 'k' }, pathway.label), ' ',
+    h('span', { class: 'hint', title: Lens.PATHWAY_DISPOSITIONS[pathway.disposition] }, `${DISPOSITION_NAMES[pathway.disposition]}${shared > 1 ? `, shared by ${shared} controls` : ''}`),
+    (() => { const line = face === 'BEHAVIOR' ? (pathway.summary ?? Lens.PATHWAY_DISPOSITIONS[pathway.disposition]) : `Returns to the human: ${pathway.returns ?? 'nothing visible'}`; return h('p', { title: line }, line); })(),
+    face === 'BEHAVIOR' && graph.hidden.length ? h('div', { class: 'doorway', 'aria-label': 'Doorway steps' }, h('span', { class: 'lead' }, pathway.disposition === 'SCAE_FAMILY' ? 'Doorway: how the touch reaches the Family' : 'Doorway: how the touch reaches the runtime'),
+      graph.hidden.flatMap((node, i) => [i ? h('span', { class: 'sep', 'aria-hidden': 'true' }, '›') : null,
+        h('button', { class: `role-${node.role}${state.selected?.ref === node.ref ? ' sel' : ''}`, dataset: { nodeRef: node.ref }, title: `${node.label}\n${node.summary ?? ''}`, onclick: (event) => { event.stopPropagation(); selectNode(node.ref); } }, chip(node.role), h('span', { class: 't' }, node.label))])) : null));
+  if (!graph.nodes.length) {
+    wrap.append(h('div', { class: 'empty' }, face === 'DEPTH'
+      ? [h('strong', {}, 'Nothing underneath'), `${pathway.label} stays in runtime presentation. It touches no store, repository or execution custody.`]
+      : [h('strong', {}, 'Doorway hidden'), 'Show the doorway to see this pathway.']));
+    return wrap;
+  }
+  const portsOutBy = new Map();
+  graph.portsOut.forEach((port) => portsOutBy.set(port.from, [...(portsOutBy.get(port.from) || []), port]));
+  const portsInBy = new Map();
+  graph.portsIn.forEach((port) => portsInBy.set(port.to, [...(portsInBy.get(port.to) || []), port]));
+  const layout = Layout.layoutLensFace({
+    nodes: graph.nodes.map((node) => ({ ref: node.ref, label: node.label, summary: node.summary, footer: portsOutBy.has(node.ref) || portsInBy.has(node.ref) })),
+    edges: graph.edges,
+  });
+  state.layouts.set(face, layout);
+  const viewport = h('div', { class: 'graph', dataset: { graphFace: face } });
+  const canvas = h('div', { class: 'graph-canvas', style: `width:${layout.width}px;height:${layout.height}px` });
+  const svg = s('svg', { width: layout.width, height: layout.height, 'aria-hidden': 'true' });
+  const defs = s('defs');
+  for (const [id, color] of [['a-flow', 'var(--edge)'], ['a-return', 'var(--edge-return)'], ['a-hot', 'var(--ink)']]) {
+    const marker = s('marker', { id: `${id}-${face}`, viewBox: '0 0 10 10', refX: 9, refY: 5, markerWidth: 6, markerHeight: 6, orient: 'auto-start-reverse' });
+    const tip = s('path', { d: 'M0 0L10 5L0 10z' }); tip.style.fill = color; marker.append(tip); defs.append(marker);
+  }
+  svg.append(defs);
+  const selectedRef = state.selected?.kind === 'NODE' ? state.selected.ref : null;
+  const entryRef = entryRefForFace(face);
+  for (const edge of layout.edges) {
+    const hot = selectedRef && (edge.from === selectedRef || edge.to === selectedRef);
+    const path = s('polyline', { points: edge.points.map((p) => `${p.x},${p.y}`).join(' '), class: `e ${edge.kind}${hot ? ' hot' : ''}`, 'marker-end': `url(#${hot ? 'a-hot' : edge.kind === 'RETURN' ? 'a-return' : 'a-flow'}-${face})` });
+    svg.append(path);
+    if (edge.labelBox) {
+      const g = s('g', { class: `elabel${hot ? ' hot' : ''}` });
+      g.append(s('rect', { x: edge.labelBox.x, y: edge.labelBox.y, width: edge.labelBox.width, height: edge.labelBox.height, rx: 5 }));
+      const t = s('text', { x: edge.labelBox.x + edge.labelBox.width / 2, y: edge.labelBox.y + edge.labelBox.height / 2 + 3.6, 'text-anchor': 'middle' }); t.textContent = edge.label;
+      g.append(t); svg.append(g);
+    }
+  }
+  canvas.append(svg);
+  for (const placed of layout.nodes) {
+    const node = graph.nodes.find((candidate) => candidate.ref === placed.ref);
+    const notes = Lens.annotationsFor(state.lens, node.ref);
+    const portsOut = portsOutBy.get(node.ref) || [];
+    const portsIn = portsInBy.get(node.ref) || [];
+    const port = portsOut[0] ?? portsIn[0] ?? null;
+    const other = port ? Lens.LENS_FACES[port.otherFace].title : null;
+    const card = h('div', {
+      class: `lnode role-${node.role}${selectedRef === node.ref ? ' sel' : ''}${entryRef === node.ref && !selectedRef ? ' entry' : ''}`,
+      style: `left:${placed.x}px;top:${placed.y}px;width:${placed.width}px;height:${placed.height}px`,
+      role: 'button', tabindex: '0', dataset: { nodeRef: node.ref },
+      'aria-label': `${Lens.roleFor(node.role).label}: ${node.label}`,
+      onkeydown: (event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); selectNode(node.ref); } },
+    },
+      h('div', { class: 'top' }, chip(node.role), node.symbol ? h('span', { class: 'sym', title: node.symbol }, node.symbol) : null, notes.length ? h('span', { class: 'note', title: notes.map((note) => note.text).join('\n') }, `${notes.length} note${notes.length > 1 ? 's' : ''}`) : null),
+      h('div', { class: 'lbl' }, breakable(node.label)),
+      node.summary ? h('div', { class: 'sum' }, node.summary) : null,
+      port ? h('button', { class: 'port', type: 'button', onclick: (event) => { event.stopPropagation(); selectNode(portsOut[0] ? port.to : port.from, { reveal: true }); } },
+        portsOut[0] ? `Continues on ${other}: ${port.otherLabel}` : `Arrives from ${other}: ${port.otherLabel}`) : null);
+    card.addEventListener('click', (event) => { if (viewport.dataset.suppressClick === '1') return; event.stopPropagation(); selectNode(node.ref); });
+    canvas.append(card);
+  }
+  viewport.append(canvas, h('div', { class: 'graph-tools', 'data-vexboard-plane': 'CHROME' },
+    h('button', { title: 'Zoom out', onclick: () => zoomFace(face, 1 / 1.2) }, '−'),
+    h('button', { title: 'Zoom in', onclick: () => zoomFace(face, 1.2) }, '+'),
+    h('button', { onclick: () => { state.cameras.delete(face); applyCamera(face); } }, 'Fit')));
+  wireGraphViewport(viewport, face);
+  wrap.append(viewport);
+  return wrap;
+}
+function entryRefForFace(face) {
+  const pathway = currentPathway();
+  if (!pathway) return null;
+  const graph = Lens.faceGraph(pathway, face, { hideBands: hideBandsFor(face) });
+  if (!graph.nodes.length) return null;
+  if (face === 'DEPTH') return (graph.portsIn[0]?.to) ?? graph.nodes[0].ref;
+  const targets = new Set(graph.edges.map((edge) => edge.to));
+  return (graph.nodes.find((node) => !targets.has(node.ref)) ?? graph.nodes[0]).ref;
+}
+function renderBehaviorSide() {
+  const front = renderGraphFace('BEHAVIOR'); front.classList.add('front'); front.append(h('span', { class: 'spine' }, 'Back: Depth'));
+  const back = renderGraphFace('DEPTH'); back.classList.add('back'); back.append(h('span', { class: 'spine' }, 'Back: Behavior'));
+  const doorway = doorwayCollapsible(currentPathway())
+    ? h('button', { class: 'tool', 'aria-pressed': !state.hideDoorway, title: 'Show the declared intent and dispatch steps as full nodes', onclick: () => { state.hideDoorway = !state.hideDoorway; state.cameras.delete('BEHAVIOR'); render(); } }, state.hideDoorway ? 'Expand doorway' : 'Collapse doorway')
+    : null;
+  return renderSide('BEHAVIOR', 'Behavior', ['BEHAVIOR', 'DEPTH'], front, back, 'Right-click to flip', doorway);
+}
+
+function renderSide(side, title, faces, front, back, hint, extra) {
+  const tabs = h('div', { class: 'faces', role: 'tablist', 'aria-label': `${title} faces` }, faces.map((face) => h('button', {
+    role: 'tab', 'aria-selected': state.faces[side] === face, title: Lens.LENS_FACES[face].question,
+    onclick: () => { if (state.faces[side] !== face) flip(side); },
+  }, Lens.LENS_FACES[face].title)));
+  const flipper = h('div', { class: `flipper${state.faces[side] === faces[1] ? ' flipped' : ''}`, dataset: { side } }, front, back);
+  const section = h('section', { class: 'side', dataset: { side }, 'aria-label': `${title} side` },
+    h('div', { class: 'side-head' }, h('h2', {}, title), tabs, h('span', { class: 'hint' }, hint), extra), flipper);
+  flipper.addEventListener('transitionend', () => drawBridge());
+  if (side === 'EXPERIENCE') {
+    section.addEventListener('mousedown', (event) => { if (event.button === 1) { event.preventDefault(); flip('EXPERIENCE'); } });
+    section.addEventListener('auxclick', (event) => { if (event.button === 1) event.preventDefault(); });
+  } else {
+    section.addEventListener('contextmenu', (event) => { if (event.shiftKey) return; event.preventDefault(); flip('BEHAVIOR'); });
+  }
+  return section;
+}
+function applyFlipState() {
+  for (const side of ['EXPERIENCE', 'BEHAVIOR']) {
+    const flipper = document.querySelector(`.flipper[data-side="${side}"]`);
+    if (!flipper) continue;
+    const faces = side === 'EXPERIENCE' ? ['SURFACE', 'STRUCTURE'] : ['BEHAVIOR', 'DEPTH'];
+    const backActive = state.faces[side] === faces[1];
+    flipper.classList.toggle('flipped', backActive);
+    flipper.querySelector('.face.front').toggleAttribute('inert', backActive);
+    flipper.querySelector('.face.back').toggleAttribute('inert', !backActive);
+    flipper.closest('.side').querySelectorAll('[role="tab"]').forEach((tab, i) => tab.setAttribute('aria-selected', String(state.faces[side] === faces[i])));
+  }
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) drawBridge();
+  else { clearBridge(); setTimeout(drawBridge, 600); }
+}
+
+/* ---------- camera ---------- */
+function fitCamera(face) {
+  const viewport = document.querySelector(`[data-graph-face="${face}"]`);
+  const layout = state.layouts.get(face);
+  if (!viewport || !layout) return { x: 0, y: 0, zoom: 1 };
+  const width = viewport.clientWidth;
+  const height = viewport.clientHeight;
+  const zoom = Math.max(0.74, Math.min(1, (width - 32) / layout.width, (height - 16) / layout.height));
+  return { x: Math.max(16, (width - layout.width * zoom) / 2), y: 8, zoom };
+}
+function applyCamera(face) {
+  const viewport = document.querySelector(`[data-graph-face="${face}"]`);
+  if (!viewport) return;
+  if (!state.cameras.has(face)) state.cameras.set(face, fitCamera(face));
+  const camera = state.cameras.get(face);
+  viewport.querySelector('.graph-canvas').style.transform = `translate(${camera.x}px,${camera.y}px) scale(${camera.zoom})`;
+  drawBridge();
+}
+function zoomFace(face, factor, anchor = null) {
+  const viewport = document.querySelector(`[data-graph-face="${face}"]`);
+  if (!viewport) return;
+  const camera = state.cameras.get(face) ?? fitCamera(face);
+  const ax = anchor?.x ?? viewport.clientWidth / 2;
+  const ay = anchor?.y ?? viewport.clientHeight / 2;
+  const zoom = Math.min(2.2, Math.max(0.3, camera.zoom * factor));
+  const k = zoom / camera.zoom;
+  state.cameras.set(face, { zoom, x: ax - (ax - camera.x) * k, y: ay - (ay - camera.y) * k });
+  applyCamera(face);
+}
+function revealNode(face, ref) {
+  const viewport = document.querySelector(`[data-graph-face="${face}"]`);
+  const placed = state.layouts.get(face)?.nodes.find((node) => node.ref === ref);
+  if (!viewport || !placed) return;
+  const camera = state.cameras.get(face) ?? fitCamera(face);
+  const top = camera.y + placed.y * camera.zoom;
+  const bottom = top + placed.height * camera.zoom;
+  if (top < 12 || bottom > viewport.clientHeight - 12) {
+    state.cameras.set(face, { ...camera, y: viewport.clientHeight / 3 - placed.y * camera.zoom });
+    applyCamera(face);
+  }
+}
+function wireGraphViewport(viewport, face) {
+  viewport.addEventListener('wheel', (event) => {
+    event.preventDefault();
+    const rect = viewport.getBoundingClientRect();
+    if (event.ctrlKey || event.metaKey) { zoomFace(face, Math.exp(-event.deltaY * 0.0022), { x: event.clientX - rect.left, y: event.clientY - rect.top }); return; }
+    const camera = state.cameras.get(face) ?? fitCamera(face);
+    const dx = event.shiftKey ? event.deltaY : event.deltaX;
+    const dy = event.shiftKey ? 0 : event.deltaY;
+    state.cameras.set(face, { ...camera, x: camera.x - dx, y: camera.y - dy });
+    applyCamera(face);
+  }, { passive: false });
+  viewport.addEventListener('pointerdown', (event) => {
+    if (event.button !== 0) return;
+    const plane = Interaction.interactionPlaneForTarget(event.target);
+    if (!Interaction.shouldStartCanvasPan({ tool: 'SELECT', targetPlane: plane, button: event.button })) return;
+    if (event.target.closest('button')) return;
+    const start = { x: event.clientX, y: event.clientY };
+    const origin = state.cameras.get(face) ?? fitCamera(face);
+    let dragging = false;
+    viewport.dataset.suppressClick = '0';
+    const move = (next) => {
+      const point = { x: next.clientX, y: next.clientY };
+      if (!dragging && Interaction.pointerGestureFromMovement(start, point) !== 'DRAG') return;
+      if (!dragging) { dragging = true; viewport.classList.add('dragging'); viewport.setPointerCapture(event.pointerId); }
+      state.cameras.set(face, Interaction.cameraFromPointerDrag(origin, start, point));
+      applyCamera(face);
+    };
+    const up = () => {
+      viewport.removeEventListener('pointermove', move);
+      viewport.removeEventListener('pointerup', up);
+      viewport.removeEventListener('pointercancel', up);
+      viewport.classList.remove('dragging');
+      if (dragging) { viewport.dataset.suppressClick = '1'; setTimeout(() => { viewport.dataset.suppressClick = '0'; }, 0); }
+    };
+    viewport.addEventListener('pointermove', move);
+    viewport.addEventListener('pointerup', up);
+    viewport.addEventListener('pointercancel', up);
+  });
+  viewport.addEventListener('click', (event) => { if (viewport.dataset.suppressClick === '1') { event.stopPropagation(); return; } if (event.target === viewport || event.target.classList.contains('graph-canvas')) { if (state.selected?.kind === 'NODE') { state.selected = state.anchorElementRef ? { kind: 'ELEMENT', ref: state.anchorElementRef } : null; render(); } } });
+}
+
+/* ---------- bridge ---------- */
+function clearBridge() { refs.bridge?.replaceChildren(); }
+function visibleRect(node, clip) {
+  if (!node) return null;
+  const r = node.getBoundingClientRect();
+  if (r.width === 0 && r.height === 0) return null;
+  const c = clip.getBoundingClientRect();
+  return { left: r.left, right: r.right, top: r.top, bottom: r.bottom, midY: Math.min(Math.max(r.top + r.height / 2, c.top + 12), c.bottom - 12), offscreen: r.bottom < c.top || r.top > c.bottom, clip: c };
+}
+function drawBridge() {
+  const svg = refs.bridge;
+  if (!svg) return;
+  svg.replaceChildren();
+  const anchor = anchorElement();
+  const pathway = currentPathway();
+  if (!anchor || !pathway || window.matchMedia('(max-width:900px)').matches) return;
+  const main = refs.main.getBoundingClientRect();
+  const leftFace = document.querySelector(`.flipper[data-side="EXPERIENCE"] .face[data-face="${state.faces.EXPERIENCE}"]`);
+  const rightFace = document.querySelector(`.flipper[data-side="BEHAVIOR"] .face[data-face="${state.faces.BEHAVIOR}"]`);
+  if (!leftFace || !rightFace) return;
+  const from = visibleRect(leftFace.querySelector(`[data-ref="${CSS.escape(anchor.ref)}"]`), leftFace);
+  const entry = entryRefForFace(state.faces.BEHAVIOR);
+  const viewport = rightFace.querySelector('.graph');
+  const stripTarget = state.faces.BEHAVIOR === 'BEHAVIOR' ? rightFace.querySelector('.doorway button') : null;
+  const to = stripTarget ? visibleRect(stripTarget, rightFace) : (entry && viewport ? visibleRect(rightFace.querySelector(`[data-node-ref="${CSS.escape(entry)}"]`), viewport) : null);
+  if (!from || !to) return;
+  const entryNode = pathwayNode(stripTarget ? stripTarget.dataset.nodeRef : entry);
+  const defs = s('defs');
+  const gradient = s('linearGradient', { id: 'bridge-gradient', x1: '0', x2: '1', y1: '0', y2: '0' });
+  const stopA = s('stop', { offset: '0' }); stopA.style.stopColor = 'var(--r-ELEMENT)';
+  const stopB = s('stop', { offset: '1' }); stopB.style.stopColor = `var(--r-${entryNode.role})`;
+  gradient.append(stopA, stopB); defs.append(gradient); svg.append(defs);
+  const x1 = Math.min(from.right, from.clip.right) - main.left;
+  const y1 = from.midY - main.top;
+  const x2 = Math.max(to.left, to.clip.left) - main.left;
+  const y2 = (to.offscreen ? (to.top < to.clip.top ? to.clip.top + 14 : to.clip.bottom - 14) : to.midY) - main.top;
+  const capB = { x: x2, y: y2 };
+  let d;
+  if (stripTarget) {
+    const bend = Math.max(60, (x2 - x1) * 0.45);
+    d = `M${x1},${y1} C${x1 + bend},${y1} ${x2 - bend},${y2} ${x2},${y2}`;
+  } else {
+    // Enter the node from the free band above it: horizontal out of the anchor,
+    // down or up the gutter, across above the face content, then into the top.
+    const leftPanel = leftFace.getBoundingClientRect();
+    const gx = (leftPanel.right + rightFace.getBoundingClientRect().left) / 2 - main.left;
+    const ty = (to.offscreen ? to.clip.top + 14 : Math.max(to.top - 14, to.clip.top + 6)) - main.top;
+    const tx = Math.max(to.left, to.clip.left) - main.left + Math.min(26, (to.right - to.left) / 2);
+    const r = Math.min(10, Math.abs(ty - y1) / 2, Math.abs(tx - gx) / 2);
+    const dy = ty > y1 ? 1 : -1;
+    d = `M${x1},${y1} H${gx - r} Q${gx},${y1} ${gx},${y1 + dy * r} V${ty - dy * r} Q${gx},${ty} ${gx + r},${ty} H${tx - r} Q${tx},${ty} ${tx},${ty + r} V${to.offscreen ? ty + r : to.top - main.top}`;
+    capB.x = tx; capB.y = to.offscreen ? ty + r : to.top - main.top;
+  }
+  gradient.setAttribute('gradientUnits', 'userSpaceOnUse'); gradient.setAttribute('x1', x1); gradient.setAttribute('x2', capB.x); gradient.setAttribute('y1', y1); gradient.setAttribute('y2', y1);
+  const out = s('path', { d, class: 'out', stroke: 'url(#bridge-gradient)', 'stroke-dasharray': to.offscreen ? '7 5' : null });
+  svg.append(out, s('circle', { cx: x1, cy: y1, r: 4.5, class: 'cap', fill: 'var(--r-ELEMENT)' }), s('circle', { cx: capB.x, cy: capB.y, r: 4.5, class: 'cap', fill: `var(--r-${entryNode.role})` }));
+  if (state.faces.BEHAVIOR === 'BEHAVIOR' && pathway.returnRef) {
+    const back = visibleRect(rightFace.querySelector(`[data-node-ref="${CSS.escape(pathway.returnRef)}"]`), viewport);
+    if (back && !back.offscreen) {
+      const rx = back.left - main.left;
+      const ry = back.midY - main.top;
+      const ly = Math.min(from.bottom, from.clip.bottom) - main.top - 4;
+      const lx = x1 - 6;
+      const bendBack = Math.max(60, (rx - lx) * 0.5);
+      svg.append(s('path', { d: `M${rx},${ry} C${rx - bendBack},${ry} ${lx + bendBack},${ly} ${lx},${ly}`, class: 'ret' }));
+    }
+  }
+}
+let bridgeFrame = 0;
+const scheduleBridge = () => { cancelAnimationFrame(bridgeFrame); bridgeFrame = requestAnimationFrame(drawBridge); };
+
+/* ---------- inspector tray ---------- */
+function sourceLink(source, label = 'Open source') {
+  const url = Lens.sourceUrl(state.lens, source);
+  if (!url) return null;
+  return h('a', { class: 'link', href: url, target: '_blank', rel: 'noopener', title: Lens.sourcePath(state.lens, source) }, h('span', {}, `${label}: ${Lens.sourcePath(state.lens, source).split('/').slice(-1)[0]}`));
+}
+function notesBlock(subjectRef) {
+  const notes = Lens.annotationsFor(state.lens, subjectRef);
+  if (!notes.length) return null;
+  return h('div', {}, h('h3', {}, 'Notes'), notes.map((note) => h('div', { class: 'note' }, h('b', {}, note.text), note.detail ? h('div', {}, note.detail) : null)));
+}
+function dl(rows) { return h('dl', {}, rows.filter(([, value]) => value).flatMap(([key, value]) => [h('dt', {}, key), h('dd', {}, value)])); }
+function renderTray() {
+  const tray = h('section', { class: `tray${state.trayCollapsed ? ' collapsed' : ''}`, 'aria-label': 'Inspector' });
+  const toggle = h('button', { class: 'tool', 'aria-expanded': !state.trayCollapsed, onclick: () => { state.trayCollapsed = !state.trayCollapsed; render(); } }, state.trayCollapsed ? 'Show details' : 'Hide details');
+  const selected = state.selected;
+  if (!selected) {
+    const screen = currentScreen();
+    tray.append(h('div', { class: 'tray-head' }, chip('SCREEN'), h('h2', {}, screen.label), h('span', { class: 'ref' }, screen.screenRef), toggle),
+      h('div', { class: 'tray-body' },
+        h('div', {}, h('h3', {}, 'This screen'), h('p', {}, screen.summary ?? ''), dl([['Placement', screen.placement.toLowerCase()], ['Projected', screen.mapped.replace('_', ' ').toLowerCase()], ['Symbol', screen.symbol ? h('code', {}, screen.symbol) : null]]), h('div', { class: 'links', style: 'margin-top:8px' }, sourceLink(screen.source))),
+        h('div', {}, h('h3', {}, 'Reached from'), reachList(screen.screenRef)),
+        h('div', {}, notesBlock(screen.screenRef), h('h3', {}, 'How to read this'), h('p', {}, 'Click a control to see its pathway. Middle-click the left side to see its code structure. Right-click the right side to see what it touches underneath.'))));
+    return tray;
+  }
+  if (selected.kind === 'ELEMENT') {
+    const element = Lens.elementFor(state.lens, selected.ref);
+    const pathway = Lens.pathwayFor(state.lens, element.pathwayRef);
+    const path = Lens.elementPath(state.lens, element.ref);
+    const owner = state.lens.chrome.find((entry) => entry.chromeRef === element.ownerRef) ?? Lens.screenFor(state.lens, element.ownerRef);
+    const shared = pathway ? Lens.elementsUsingPathway(state.lens, pathway.pathwayRef).length : 0;
+    tray.append(h('div', { class: 'tray-head' }, elementChip(element), h('h2', {}, element.label), h('span', { class: 'ref' }, element.ref), toggle),
+      h('div', { class: 'tray-body' },
+        h('div', {}, h('h3', {}, 'Where it lives'),
+          dl([['Owner', owner.symbol ?? owner.label], ['Declared', element.declared ? h('code', {}, element.declared) : null], ['Symbol', element.symbol ? h('code', {}, element.symbol) : null], ['Text', element.labelRes ? h('code', {}, element.labelRes) : null], ['Visible', element.visibleWhen]]),
+          h('h3', { style: 'margin-top:10px' }, 'Container path'),
+          h('div', { class: 'links' }, path.map((step) => h('button', { class: 'link', onclick: () => selectElement(step.ref) }, h('span', {}, step.label)))),
+          h('div', { class: 'links', style: 'margin-top:8px' }, sourceLink(owner.source))),
+        h('div', {}, h('h3', {}, 'What it does'),
+          element.intent ? dl([['Intent', h('code', {}, element.intent)], ['Action key', element.actionKey ? h('code', {}, element.actionKey) : null], ['Calls', element.call ? h('code', {}, element.call) : null]]) : h('p', {}, `${element.kind.toLowerCase()} with no declared intent.`),
+          pathway ? h('p', { style: 'margin-top:8px' }, h('b', {}, `${pathway.label}. `), pathway.summary ?? '') : null,
+          pathway && shared > 1 ? h('p', { class: 'hint', style: 'white-space:normal' }, `${shared} controls share this pathway.`) : null,
+          element.navigatesTo ? h('button', { class: 'go', onclick: () => travel(element) }, element.navigatesTo === Lens.BACK ? 'Go back' : `Go to ${Lens.screenFor(state.lens, element.navigatesTo).label}`) : null),
+        h('div', {}, notesBlock(element.ref), pathway ? [h('h3', {}, 'Result for the human'), h('p', {}, pathway.returns ?? '')] : null)));
+    return tray;
+  }
+  const node = pathwayNode(selected.ref);
+  const pathway = currentPathway();
+  const related = (list, pick) => list.map((edge) => {
+    const other = pathwayNode(pick(edge));
+    return h('button', { class: 'link', onclick: () => selectNode(other.ref, { reveal: true }) }, chip(other.role), h('span', {}, `${edge.label ? `${edge.label}: ` : ''}${other.label}${other.face !== node.face ? ` (on ${Lens.LENS_FACES[other.face].title})` : ''}`));
+  });
+  const incoming = pathway.edges.filter((edge) => edge.to === node.ref);
+  const outgoing = pathway.edges.filter((edge) => edge.from === node.ref);
+  const info = Lens.roleFor(node.role);
+  tray.append(h('div', { class: 'tray-head' }, chip(node.role), h('h2', {}, node.label), h('span', { class: 'ref' }, node.ref), toggle),
+    h('div', { class: 'tray-body' },
+      h('div', {}, h('h3', {}, `${info.label} · ${Lens.LENS_BANDS[info.band].label}`), h('p', {}, node.summary ?? ''), dl([['Symbol', node.symbol ? h('code', {}, node.symbol) : null], ['Face', Lens.LENS_FACES[node.face].title], ['Pathway', pathway.label]])),
+      h('div', {}, h('h3', {}, 'Relationships'),
+        incoming.length ? h('div', { class: 'links' }, related(incoming, (edge) => edge.from)) : h('p', { class: 'hint' }, 'Nothing arrives here.'),
+        h('div', { style: 'height:6px' }),
+        outgoing.length ? h('div', { class: 'links' }, related(outgoing, (edge) => edge.to)) : h('p', { class: 'hint' }, 'Nothing leaves here.')),
+      h('div', {}, node.code ? [h('h3', {}, 'Source excerpt'), h('pre', {}, node.code)] : null, h('div', { class: 'links' }, sourceLink(node.source)), notesBlock(node.ref))));
+  return tray;
+}
+function reachList(target) {
+  const near = Lens.screenNeighborhood(state.lens, target);
+  if (!near.inbound.length) return h('p', { class: 'hint', style: 'white-space:normal' }, 'No route into this screen is projected yet.');
+  return h('div', { class: 'links' }, near.inbound.map((route) => {
+    const owner = state.lens.chrome.find((entry) => entry.chromeRef === route.ownerRef);
+    const origins = route.fromScreenRefs.map((ref) => Lens.screenFor(state.lens, ref).label).join(', ');
+    return h('button', { class: 'link', title: `${owner ? `${owner.label} route, shown on ${origins}` : origins}`, onclick: () => { jumpTo(route.fromScreenRefs.includes(screenRef()) ? screenRef() : route.fromScreenRefs[0]); selectElement(route.viaElementRef); } },
+      h('span', {}, `${route.viaLabel} · ${owner ? `${owner.label} on ${origins}` : origins}`));
+  }));
+}
+
+/* ---------- overlays ---------- */
+function renderMap() {
+  const graph = Lens.screenMapGraph(state.lens);
+  const counts = Lens.walkVisitCounts(state.walk);
+  const layout = Layout.layoutLensFace({ nodes: graph.nodes.map((node) => ({ ref: node.ref, label: node.label, summary: node.summary })), edges: graph.edges }, { nodeWidth: 200 });
+  state.layouts.set('MAP', layout);
+  const viewport = h('div', { class: 'graph', dataset: { graphFace: 'MAP' } });
+  const canvas = h('div', { class: 'graph-canvas', style: `width:${layout.width}px;height:${layout.height}px` });
+  const svg = s('svg', { width: layout.width, height: layout.height });
+  const defs = s('defs'); const marker = s('marker', { id: 'a-map', viewBox: '0 0 10 10', refX: 9, refY: 5, markerWidth: 6, markerHeight: 6, orient: 'auto-start-reverse' }); const tip = s('path', { d: 'M0 0L10 5L0 10z' }); tip.style.fill = 'var(--edge)'; marker.append(tip); defs.append(marker); svg.append(defs);
+  for (const edge of layout.edges) {
+    svg.append(s('polyline', { points: edge.points.map((p) => `${p.x},${p.y}`).join(' '), class: 'e', 'marker-end': 'url(#a-map)' }));
+    if (edge.labelBox) { const g = s('g', { class: 'elabel' }); g.append(s('rect', { x: edge.labelBox.x, y: edge.labelBox.y, width: edge.labelBox.width, height: edge.labelBox.height, rx: 5 })); const t = s('text', { x: edge.labelBox.x + edge.labelBox.width / 2, y: edge.labelBox.y + edge.labelBox.height / 2 + 3.6, 'text-anchor': 'middle' }); t.textContent = edge.label; g.append(t); svg.append(g); }
+  }
+  canvas.append(svg);
+  for (const placed of layout.nodes) {
+    const node = graph.nodes.find((candidate) => candidate.ref === placed.ref);
+    const isScreen = node.kind === 'SCREEN';
+    const visits = counts.get(node.ref);
+    const card = h('div', { class: `lnode screen-node role-${isScreen ? 'SCREEN' : 'CONTAINER'}${node.ref === screenRef() ? ' current' : ''}`, style: `left:${placed.x}px;top:${placed.y}px;width:${placed.width}px;height:${placed.height}px`, role: isScreen ? 'button' : null, tabindex: isScreen ? '0' : null,
+      onkeydown: isScreen ? (event) => { if (event.key === 'Enter') jumpTo(node.ref); } : null },
+      h('div', { class: 'top' }, chip(isScreen ? 'SCREEN' : 'CONTAINER'), visits > 1 ? h('span', { class: 'note' }, `visited ×${visits}`) : node.ref === screenRef() ? h('span', { class: 'note' }, 'You are here') : null),
+      h('div', { class: 'lbl' }, node.label), h('div', { class: 'sum' }, node.summary));
+    if (isScreen) card.addEventListener('click', () => { if (viewport.dataset.suppressClick !== '1') jumpTo(node.ref); });
+    canvas.append(card);
+  }
+  viewport.append(canvas);
+  wireGraphViewport(viewport, 'MAP');
+  const unreached = graph.unreachable.map((ref) => Lens.screenFor(state.lens, ref));
+  return h('section', { class: 'overlay', role: 'dialog', 'aria-label': 'Screen map' },
+    h('div', { class: 'overlay-head' }, h('h2', {}, 'Screen map'), h('p', {}, 'Each screen appears once. Routes owned by shared chrome are drawn once from that owner, not copied under every screen that shows it.'), h('button', { class: 'tool', onclick: () => { state.overlay = null; render(); } }, 'Close')),
+    viewport,
+    unreached.length ? h('div', { class: 'unreached' }, 'No projected route reaches yet:', unreached.map((screen) => h('button', { class: 'screen-chip', onclick: () => jumpTo(screen.screenRef) }, h('span', { class: `mapped ${screen.mapped}` }), screen.label))) : null);
+}
+function renderLegend() {
+  const bands = Object.values(Lens.LENS_BANDS).map((band) => h('div', { class: 'band' },
+    h('div', {}, h('b', {}, band.label), h('div', { class: 'muted' }, band.question)),
+    h('div', { class: 'roles' }, Object.values(Lens.LENS_ROLES).filter((role) => role.band === band.band).map((role) => h('span', { style: 'display:inline-flex;gap:4px;align-items:center;margin-right:6px' }, chip(role.role), h('span', { style: 'font-size:12px' }, role.label))))));
+  return h('aside', { class: 'legend', role: 'dialog', 'aria-label': 'Legend' },
+    h('h3', {}, 'Four faces'),
+    h('ul', {}, Object.values(Lens.LENS_FACES).map((face) => h('li', {}, h('b', {}, face.title), `: ${face.question}`))),
+    h('h3', {}, 'Roles, grouped by the question they answer'), bands,
+    h('h3', {}, 'Gestures'),
+    h('ul', {},
+      h('li', {}, 'Middle-click the Experience side, or press ', h('kbd', {}, '['), ', to flip Surface and Structure.'),
+      h('li', {}, 'Right-click the Behavior side, or press ', h('kbd', {}, ']'), ', to flip Behavior and Depth. Shift + right-click opens the browser menu.'),
+      h('li', {}, 'Drag to pan. Scroll to move. ', h('kbd', {}, 'Ctrl'), ' or ', h('kbd', {}, '⌘'), ' + scroll to zoom.'),
+      h('li', {}, 'Double-click a navigating control, or use its Go button, to travel. ', h('kbd', {}, 'M'), ' opens the screen map. ', h('kbd', {}, 'Esc'), ' clears.')),
+    h('h3', {}, 'Dots on the screen chips'),
+    h('ul', {}, h('li', {}, 'Filled: fully projected. Half: shared chrome only. Hollow: held, not projected yet.')),
+    h('button', { class: 'tool', style: 'margin-top:12px', onclick: () => { state.overlay = null; render(); } }, 'Close'));
+}
+
+/* ---------- render ---------- */
+function syncUrl() {
+  const next = new URLSearchParams(location.search);
+  next.set('screen', screenRef());
+  if (state.anchorElementRef) next.set('element', state.anchorElementRef); else next.delete('element');
+  next.set('left', state.faces.EXPERIENCE); next.set('right', state.faces.BEHAVIOR);
+  history.replaceState(null, '', `${location.pathname}?${next}`);
+}
+function render() {
+  const focusedRef = document.activeElement?.dataset?.ref ?? document.activeElement?.dataset?.nodeRef ?? null;
+  const root = h('div', { class: 'lens' });
+  const main = h('main', { class: 'main' }, renderExperienceSide(), renderBehaviorSide());
+  const bridge = s('svg', { class: 'bridge', 'aria-hidden': 'true' });
+  main.append(bridge);
+  if (state.overlay === 'MAP') main.append(renderMap());
+  if (state.overlay === 'LEGEND') main.append(renderLegend());
+  root.append(renderBar(), renderAtlas(), main, renderTray());
+  app.replaceChildren(root);
+  refs = { main, bridge };
+  applyPalette();
+  applyFlipState();
+  requestAnimationFrame(() => {
+    applyCamera('BEHAVIOR'); applyCamera('DEPTH'); if (state.overlay === 'MAP') applyCamera('MAP');
+    if (state.selected?.kind === 'ELEMENT') document.querySelector(`.face[data-face="${state.faces.EXPERIENCE}"] [data-ref="${CSS.escape(state.selected.ref)}"]`)?.scrollIntoView({ block: 'nearest' });
+    if (focusedRef) document.querySelector(`.face:not([inert]) [data-ref="${CSS.escape(focusedRef)}"], .face:not([inert]) [data-node-ref="${CSS.escape(focusedRef)}"]`)?.focus({ preventScroll: true });
+    drawBridge();
+  });
+  for (const scroller of main.querySelectorAll('.surface,.structure,.phone-body')) scroller.addEventListener('scroll', scheduleBridge, { passive: true });
+  syncUrl();
+}
+
+window.addEventListener('resize', () => { state.cameras.clear(); applyCamera('BEHAVIOR'); applyCamera('DEPTH'); scheduleBridge(); });
+window.addEventListener('keydown', (event) => {
+  if (event.target.closest?.('input,textarea')) return;
+  if (event.key === '[') { flip('EXPERIENCE'); }
+  else if (event.key === ']') { flip('BEHAVIOR'); }
+  else if (event.key === 'm' || event.key === 'M') { state.overlay = state.overlay === 'MAP' ? null : 'MAP'; render(); }
+  else if (event.key === 'Escape') { if (state.overlay) { state.overlay = null; render(); } else clearSelection(); }
+});
+
+async function boot() {
+  state.palette = readPalette();
+  const response = await fetch(lensUrlFromParams(), { cache: 'no-store' });
+  if (!response.ok) throw new Error(`lens file HTTP ${response.status}`);
+  state.lens = Lens.normalizeScreenLens(await response.json());
+  const startScreen = params.get('screen');
+  state.walk = Lens.createScreenWalk(state.lens, startScreen && state.lens.screens.some((screen) => screen.screenRef === startScreen) ? startScreen : state.lens.entryScreenRef);
+  if (params.get('left') && Lens.LENS_FACES[params.get('left')]?.side === 'EXPERIENCE') state.faces.EXPERIENCE = params.get('left');
+  if (params.get('right') && Lens.LENS_FACES[params.get('right')]?.side === 'BEHAVIOR') state.faces.BEHAVIOR = params.get('right');
+  const requested = params.get('element') ?? (startScreen ? null : state.lens.entryElementRef);
+  if (requested && Lens.elementsForScreen(state.lens, screenRef()).some((element) => element.ref === requested)) selectElement(requested);
+  else render();
+}
+boot();
+</script>
+</body>
+</html>

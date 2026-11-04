@@ -38,6 +38,9 @@
 .save-status{min-width:116px;color:#78716c;font:700 8px ui-monospace,monospace;line-height:1.25}.save-status.dirty{color:#b45309}.save-status.error{color:#b91c1c}.save-status.saved{color:#15803d}
 .containment-row{display:grid;grid-template-columns:82px minmax(0,1fr);gap:6px;align-items:center;margin-top:8px}.containment-select{min-width:0;border:1px solid #d6d3d1;border-radius:6px;background:#fff;padding:6px;font-size:10px}.kotlin-preview{white-space:pre;overflow:auto;max-height:360px;border:1px solid #d6d3d1;border-radius:7px;background:#0f172a;color:#e2e8f0;padding:9px;font:9px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace}.kotlin-binding{display:grid;grid-template-columns:100px minmax(0,1fr);gap:6px;align-items:center;margin:6px 0}
 @media(max-width:850px){.work,.work.drawer-open{grid-template-columns:62px minmax(0,1fr)}.context-drawer{position:absolute;right:0;top:0;bottom:0;width:min(320px,82vw);z-index:80;box-shadow:-10px 0 28px #0003}.minimap{width:150px;height:94px}}
+.shape:not(.DIAMOND){overflow:visible}.shape:not(.DIAMOND):not(.FRAME)>.shape-label{overflow:hidden;border-radius:inherit}
+.shape:not(.DIAMOND):not(.FRAME)>.role-marker{top:-7px;left:10px}.shape:not(.DIAMOND):not(.FRAME)>.branch-marker{top:-7px;right:10px}.shape:not(.DIAMOND):not(.FRAME)>.kind-marker{bottom:-7px;left:10px}.shape:not(.DIAMOND):not(.FRAME)>.contained-marker{bottom:-7px;right:10px}
+.shape.FRAME>.role-marker{display:none}.shape.FRAME .shape-label::before{content:'Frame';margin-right:7px;padding-right:7px;border-right:1px solid #cbd5e1;color:#94a3b8}
 .shape.pin-muted{opacity:.2}.edge.pin-muted,.edge-label.pin-muted{opacity:.12}.shape.pin-focus{box-shadow:0 0 0 3px #0f766e33,0 3px 12px #00000010}.shape.pin-seed{outline:3px solid #0f766e55;outline-offset:3px}.edge.pin-focus{stroke:#0f766e!important;stroke-width:4}.edge-label.pin-focus{fill:#115e59;stroke:#ccfbf1;stroke-width:5px}.pin-menu{position:fixed;z-index:200;min-width:190px;padding:6px;border:1px solid #d6d3d1;border-radius:9px;background:#fff;box-shadow:0 12px 32px #0003;display:flex;flex-direction:column;gap:4px}.pin-menu button{text-align:left}.pin-mode-active{border-color:#5eead4!important;background:#f0fdfa!important;color:#115e59!important}.pin-list{display:flex;flex-direction:column;gap:5px}.pin-row{display:flex;align-items:center;gap:5px}.pin-row .ref-token{flex:1}</style>
 </head>
 <body>
@@ -69,6 +72,7 @@ import * as Presentation from './ui/presentation.mjs';
 import * as AndroidProjector from '../src/core/vexboard-android-source-projector.mjs';
 import * as ScreenDesign from '../src/core/vexboard-screen-design.mjs';
 import * as AndroidPresentation from './ui/android-reference-presentation.mjs';
+import * as LensLayout from '../src/shared/vexboard-lens-layout.mjs';
 
 const app=document.getElementById('app');
 let current=null,selected=null,tool='SELECT',connectFrom=null;
@@ -287,7 +291,8 @@ function landing(){
   const androidPoc=el('button','btn violet','Open VexLife Android Screen POC');androidPoc.onclick=async()=>openCatalogBoard(AndroidProjector.VEXBOARD_ANDROID_POC_BOARD_REFS.EXPERIENCE);
   const architectureSlice=el('button','btn violet','Open current VexStream VexArchitecture walk');architectureSlice.onclick=async()=>openCatalogBoard(VEXSTREAM_PLAYBACK_ARCHITECTURE_BOARD_REF);
   const themeMode=el('button','btn violet','Open Theme Mode Origin Walk');themeMode.onclick=async()=>openCatalogBoard(THEME_MODE_WORKSPACE_BOARD_REF);
-  examples.append(anatomy,intent,vexstream,androidPoc,architectureSlice,themeMode);
+  const screenLens=el('a','btn violet','Open Debug Menu Screen Lens');screenLens.href='./lens.html';
+  examples.append(anatomy,intent,vexstream,androidPoc,architectureSlice,themeMode,screenLens);
   box.append(actions,el('h2','','Source examples'),examples,el('h2','','Local drafts'));
   const list=el('div','cards');
   for(const d of drafts()){const c=el('article','card');c.append(el('div','tiny',d.mode),el('h3','',d.title),el('p','',d.derivedFromRefOrNull?`Forked from ${d.derivedFromRefOrNull}`:'Independent local draft'));const b=el('button','btn','Resume draft');b.onclick=()=>openBoard(d,{boardRef:d.draftRef});c.append(b);list.append(c)}
@@ -359,16 +364,23 @@ function renderEdges(svg,visibleSemanticRefs,presentation,focus){
   const marker=document.createElementNS('http://www.w3.org/2000/svg','marker');
   marker.setAttribute('id','vexboard-arrow');marker.setAttribute('viewBox','0 0 10 10');marker.setAttribute('refX','8');marker.setAttribute('refY','5');marker.setAttribute('markerWidth','5');marker.setAttribute('markerHeight','5');marker.setAttribute('orient','auto-start-reverse');
   const path=document.createElementNS('http://www.w3.org/2000/svg','path');path.setAttribute('d','M 0 0 L 10 5 L 0 10 z');path.setAttribute('fill','#64748b');marker.append(path);defs.append(marker);svg.append(defs);
+  // Edge labels are placed where they cover no visible object or other label; relationships that
+  // share endpoints get separate lanes so opposite edges between neighbours never coincide.
+  const labelObstacles=visibleItems().filter(candidate=>candidate.shapeKind!=='FRAME').map(candidate=>candidate.bounds),placedLabels=[];
+  const pairKey=r=>[r.fromRef,r.toRef].sort().join('|'),pairTotals=new Map(),pairSeen=new Map();
+  for(const r of current.graph.relationships)pairTotals.set(pairKey(r),(pairTotals.get(pairKey(r))||0)+1);
   for(const r of current.graph.relationships){
     if(!Presentation.relationshipVisibleInMode(current.graph,r,relationshipViewMode))continue;
     if(!visibleSemanticRefs.has(r.fromRef)||!visibleSemanticRefs.has(r.toRef))continue;
+    const key=pairKey(r),laneIndex=pairSeen.get(key)||0;pairSeen.set(key,laneIndex+1);
+    const laneOffset=(laneIndex-((pairTotals.get(key)||1)-1)/2)*14*(r.fromRef<=r.toRef?1:-1);
     const occurrenceRoute=AndroidPresentation.androidReferenceRelationshipRoute(current.presentation,r.relationshipRef);
     const a=occurrenceRoute?item(occurrenceRoute.fromProjectionItemRef):itemFor(r.fromRef),b=occurrenceRoute?item(occurrenceRoute.toProjectionItemRef):itemFor(r.toRef);if(!a||!b)continue;
-    const route=Presentation.relationshipRoute(a.bounds,b.bounds),accent=presentation.relationshipAccentByRef[r.relationshipRef];
+    const route=Presentation.relationshipRoute(a.bounds,b.bounds,{offset:laneOffset}),accent=presentation.relationshipAccentByRef[r.relationshipRef];
     const classes=['edge',r.kind.toLowerCase()];if(Number.isInteger(accent))classes.push(`branch-${accent}`);if(focus){if(focus.relationships.some(value=>value.relationshipRef===r.relationshipRef))classes.push('pin-focus');else classes.push('pin-muted')}
     const l=document.createElementNS('http://www.w3.org/2000/svg','polyline');l.setAttribute('class',classes.join(' '));l.dataset.relationshipRef=r.relationshipRef;l.setAttribute('points',route.points.map(point=>`${point.x},${point.y}`).join(' '));l.setAttribute('marker-end','url(#vexboard-arrow)');svg.append(l);
     if(r.labelOrNull){
-      const label=document.createElementNS('http://www.w3.org/2000/svg','text');label.classList.add('edge-label',r.kind.toLowerCase());if(focus){if(focus.relationships.some(value=>value.relationshipRef===r.relationshipRef))label.classList.add('pin-focus');else label.classList.add('pin-muted')}label.dataset.relationshipRef=r.relationshipRef;label.setAttribute('x',String(route.labelPoint.x));label.setAttribute('y',String(route.labelPoint.y));label.setAttribute('text-anchor','middle');label.textContent=r.labelOrNull;svg.append(label);
+      const label=document.createElementNS('http://www.w3.org/2000/svg','text');label.classList.add('edge-label',r.kind.toLowerCase());if(focus){if(focus.relationships.some(value=>value.relationshipRef===r.relationshipRef))label.classList.add('pin-focus');else label.classList.add('pin-muted')}label.dataset.relationshipRef=r.relationshipRef;const labelSize=LensLayout.estimateLabelSize(r.labelOrNull,{labelCharWidth:5.6,labelHeight:12,labelPadding:6}),placement=LensLayout.placeLabelOnRoute(route.points,labelSize,[...labelObstacles,...placedLabels]),labelBox=placement.box;if(labelBox)placedLabels.push(labelBox);label.setAttribute('x',String(labelBox?labelBox.x+labelBox.width/2:route.labelPoint.x));label.setAttribute('y',String(labelBox?labelBox.y+labelBox.height/2+3:route.labelPoint.y));label.setAttribute('text-anchor','middle');label.textContent=r.labelOrNull;svg.append(label);
     }
   }
 }
