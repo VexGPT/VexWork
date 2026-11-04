@@ -2,6 +2,76 @@
 
 `[VXG RealForever]`
 
+## Current refinement reference — VexMethod Method-result boundary
+
+VexLife-Android PR #211 is now accepted source on `main`.
+
+~~~text
+PR
+https://github.com/vgong24/VexLife-Android/pull/211
+
+proved candidate
+1957a3907a8460558b0bc691fc15ee6e8e1b041a
+
+proved / merged tree
+d5d1ea1e02002eb89c0aa475779c4f31e986bd38
+
+merge commit
+305a09eac1fabebcf2241bd207386950f41121f2
+~~~
+
+Current architecture:
+
+~~~text
+provider / Store / repository
+-> smallest truthful provider/domain fact
+
+VexMethod<SuccessOutput, FailureOutput>
+-> invoke()
+   -> Result<SuccessOutput, FailureOutput>
+      -> Success(output)
+      -> Failure(output)
+      -> Error(cause)
+
+VexFamily
+-> Act
+   -> Method<Family, SuccessOutput, FailureOutput>
+      -> specializes VexMethod<SuccessOutput, FailureOutput>
+~~~
+
+ThemeMode patient zero:
+
+~~~text
+ThemeModeStore.save(mode)
+-> Boolean provider commit fact
+
+ThemeModeFamily.Act.Method.Save.invoke()
+-> Result<ThemeMode, Unit>
+~~~
+
+Lifecycle closure:
+
+~~~text
+SourceOwner A007        PASS
+vexVerifyLocal          PASS
+vexVerifyJvm            PASS
+Independent Assurance   CLEAR
+Lifecycle currentness   CLEAR
+OwnerMergeDuty          COMPLETED
+post-merge tree proof   PASS
+integration             ACCEPTED
+~~~
+
+The ordinary two-parent merge preserved the exact proved candidate tree. Comparing the proved
+candidate head to merged `main` yields one merge commit and zero file differences.
+
+Current VexLife-Android repository source and tests own this behavior. PR #211 is retained as
+reasoning/proof provenance, not as a second behavioral owner.
+
+This VexWork reference remains stacked on PR #188's currentization branch. Its own VexWork
+integration is separate from the now-completed Android source lifecycle; do not use this reference
+PR to mutate or bypass #188's broader currentization ownership.
+
 ## Current architecture baseline — refinement, not architecture discovery
 
 This Project remains live because its scale/product questions are still real. Its job is **not** to
