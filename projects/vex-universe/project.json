@@ -2,7 +2,7 @@
   "schemaVersion": "vexwork.project-definition/v1",
   "projectRef": "project.vex-universe",
   "label": "Vex Universe Foundations",
-  "purpose": "Make VexWork the visible operating record for Vex Universe and VexBusinessFactory work, and use VexBoard as the explorable semantic/process view, while preserving source ownership and allowing the VexBoard substrate to evolve independently.",
+  "purpose": "Use VexWork as the visible operating record and VexBoard as an explorable Origin/process projection for Vex Universe / VexBusinessFactory, consuming accepted VexArchitecture and source-owned product/process truth rather than inventing another architecture owner. The current frontier is real journey/evidence patient-zero pressure over the accepted substrate.",
   "rootWorkRefs": [
     "work.vex-universe.outcome"
   ],
@@ -15,7 +15,16 @@
     "docs/foundation/WORKGRAPH-COMPOSITION.md",
     "github.pull.vexwork.90",
     "github.pull.vexwork.92",
-    "project.vexboard"
+    "project.vexboard",
+    "github.pull.vexlife-android.209",
+    "github.commit.vexlife-android.66c866dea6a8dd78e2946da88715c4deb78c1847",
+    "project.vexwork.vexarchitecture-alignment",
+    "github.pull.vexwork.210",
+    "github.commit.vexwork.d1def6a746646350364266121191b30c7b4e9727",
+    "github.pull.vexlife-android.211",
+    "github.commit.vexlife-android.305a09eac1fabebcf2241bd207386950f41121f2",
+    "github.pull.vexwork.215",
+    "github.commit.vexwork.cd1264763e315d3bc2b6db80115806a102ed339b"
   ],
   "formedAt": "2026-10-24T03:45:00.000Z"
 }

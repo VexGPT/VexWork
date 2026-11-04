@@ -2,6 +2,121 @@
 
 `[VXG RealForever]`
 
+## Current refinement reference — VexMethod Method-result boundary
+
+VexLife-Android PR #211 is now accepted source on `main`.
+
+~~~text
+PR
+https://github.com/vgong24/VexLife-Android/pull/211
+
+proved candidate
+1957a3907a8460558b0bc691fc15ee6e8e1b041a
+
+proved / merged tree
+d5d1ea1e02002eb89c0aa475779c4f31e986bd38
+
+merge commit
+305a09eac1fabebcf2241bd207386950f41121f2
+~~~
+
+Current architecture:
+
+~~~text
+provider / Store / repository
+-> smallest truthful provider/domain fact
+
+VexMethod<SuccessOutput, FailureOutput>
+-> invoke()
+   -> lawful returned Result
+      -> Success(output)
+      -> Failure(output)
+
+escaped invoke() Throwable
+-> Family / Execution continuation
+-> Result.Error(cause)
+
+Cancellation
+-> VexExecution lifetime
+-> not Result.Error
+
+VexFamily
+-> Act
+   -> Method<Family, SuccessOutput, FailureOutput>
+      -> specializes VexMethod<SuccessOutput, FailureOutput>
+~~~
+
+ThemeMode patient zero:
+
+~~~text
+ThemeModeStore.save(mode)
+-> Boolean provider commit fact
+
+ThemeModeFamily.Act.Method.Save.invoke()
+-> Result<ThemeMode, Unit>
+~~~
+
+Lifecycle closure:
+
+~~~text
+SourceOwner A007        PASS
+vexVerifyLocal          PASS
+vexVerifyJvm            PASS
+Independent Assurance   CLEAR
+Lifecycle currentness   CLEAR
+OwnerMergeDuty          COMPLETED
+post-merge tree proof   PASS
+integration             ACCEPTED
+~~~
+
+The ordinary two-parent merge preserved the exact proved candidate tree. Comparing the proved
+candidate head to merged `main` yields one merge commit and zero file differences.
+
+Current VexLife-Android repository source and tests own this behavior. PR #211 is retained as
+reasoning/proof provenance, not as a second behavioral owner.
+
+This reference entered the VexWork currentization stream through stacked PR #217 and is carried
+by PR #188's broader currentization. Current VexLife-Android source/tests remain the behavioral owner;
+the VexWork text is navigation/provenance and must not become a second Method-result authority.
+
+## Current architecture baseline — refinement, not architecture discovery
+
+This Project remains live because its scale/product questions are still real. Its job is **not** to
+rediscover the Vex architecture while solving them.
+
+Current architectural entry:
+
+~~~text
+VexLife-Android current source
+-> architecture/vexarchitecture/README.md
+-> architecture/vexarchitecture/VEXLOGGER.md when chronology/history is implicated
+-> architecture/vexarchitecture/REFINED-BOUNDARIES.md
+-> docs/foundation/VEX-BODY-SEMANTIC-BLUEPRINT.md
+-> exact owning feature/source/tests
+~~~
+
+PR #209 is the accepted implementation-origin/reasoning record; current source owns behavior.
+
+Therefore performance, paging, history growth, Maps discovery and other refinements should first ask
+whether the current rightful owner can be made cheaper or more scalable **without moving semantic
+ownership**.
+
+~~~text
+SCALE PRESSURE
+!= PERMISSION TO ADD A SECOND STATE OWNER
+
+PERFORMANCE DIAGNOSTIC
+!= NEW ARCHITECTURE FRAMEWORK
+
+CURRENT VEXARCHITECTURE
++ OBSERVED BOTTLENECK
+-> NARROWEST RIGHTFUL REFINEMENT
+~~~
+
+The existing Work items remain open unless their own lived/evidence predicate is satisfied. They are not
+closed merely because VexArchitecture stabilized; VexArchitecture is the constraint under which those
+real product/scale debts now continue.
+
 ## Human outcome
 
 Refine the **current** VexLife Android product from lived use rather than waiting for each scale or UX problem to become a crisis.

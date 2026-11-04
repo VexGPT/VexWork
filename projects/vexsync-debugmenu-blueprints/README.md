@@ -2,6 +2,147 @@
 
 [VXG RealForever]
 
+## Current ThemeMode refinement reference — 2026-11-04
+
+The DebugMenu/ThemeMode route remains historical patient-zero provenance, not active Work. Current
+VexLife-Android PR #211 / merge `305a09eac1fabebcf2241bd207386950f41121f2` refined the accepted
+Method-result boundary:
+
+~~~text
+ThemeModeStore
+-> smallest truthful provider fact (Boolean commit result)
+
+ThemeModeFamily.Act.Method.Save
+-> lawful VexMethod.Result.Success / Failure
+
+escaped invoke() Throwable
+-> Family / Execution continuation forms Result.Error
+
+Cancellation
+-> VexExecution lifetime
+~~~
+
+This current reference sharpens the old example without reopening the cancelled Origin round-trip.
+
+## Current cascade-return entry — 2026-11-03
+
+This Project was intentionally left mid-construction while the work kept discovering foundations that had
+to exist first. Those foundations now exist. Resume from the accepted architecture and current source;
+do **not** restart the October architecture discovery or treat later experimental vocabulary as authority
+merely because it appears later in PR history.
+
+Current governing architecture:
+
+~~~text
+current VexLife-Android source
+  -> architecture/vexarchitecture/README.md
+  -> architecture/vexarchitecture/REFINED-BOUNDARIES.md
+  -> exact owning production source + tests
+
+accepted implementation origin / reasoning record
+  -> VexLife-Android PR #209
+  -> merge 66c866dea6a8dd78e2946da88715c4deb78c1847
+
+accepted VexWork relationship alignment
+  -> project.vexwork.vexarchitecture-alignment
+  -> VexWork PR #210
+  -> merge d1def6a746646350364266121191b30c7b4e9727
+~~~
+
+The accepted VexArchitecture body is broader than the earlier Family-Circuit-only checkpoint:
+
+~~~text
+Family / semantic meaning
+-> Execution / active custody
+-> Store or provider / outside truth
+-> rightful observation back into semantic State
+-> Projection / DisplayState
+-> concrete presentation
+-> human experience
+
+alongside, without becoming mandatory runtime stages:
+
+Dependency / construction lifetime
+VexLogger / chronology
+Relay / convergence of independently-owned truths
+~~~
+
+Cascade dependencies now retired by accepted evidence:
+
+~~~text
+Feature Request -> Builder discovery
+  COMPLETED
+  ThemeMode pressure produced the accepted architecture instead of remaining a hypothetical process
+
+typed Control / relationship identity pressure
+  ACCEPTED
+  VexLife-Android PR #193
+
+Compound current-State gap
+  ACCEPTED
+  VexLife-Android PR #200
+
+ThemeMode production realization
+  ACCEPTED
+  VexLife-Android PR #188
+
+VexBoard blank-screen recovery + first flat self-application
+  ACCEPTED / LIVED PASS
+  VexWork PR #184
+
+VexWork relationship/projection alignment to VexArchitecture
+  ACCEPTED
+  VexWork PR #210
+~~~
+
+The old VexSync PR #178 remains valuable causal provenance. It is **not** the current architecture owner
+and is not a branch to resume blindly; current accepted source decides which of its discoveries survived.
+
+### Current disposition — patient zero retired; forward work moved outward
+
+Dark Mode / ThemeMode is no longer an unfinished VexSync feature edge. It is a stable accepted
+VexArchitecture patient zero in current VexLife-Android.
+
+The original Debug Menu Origin <-> Android round-trip task is therefore retired rather than kept READY.
+Its intended learning has been absorbed into accepted architecture, VexBoard projection foundations and
+the newer clean-container construction trajectory.
+
+~~~text
+work.vexsync.debugmenu-blueprints.feature-intention-builder-discovery
+  COMPLETED / preserved provenance
+
+work.vexsync.debugmenu-blueprints.debugmenu-origin-roundtrip
+  CANCELLED / superseded unfinished route
+
+work.vexsync.debugmenu-blueprints.outcome
+  CANCELLED / PARKED historical patient zero
+
+current forward construction
+  -> project.vexlife.new-beginnings
+  -> VexGPT/VexLife-Prod
+  -> accepted semantic / Blueprint source
+  -> build outward into bounded manifestations
+
+current downstream proving surfaces
+  -> project.vexboard
+  -> project.vex-universe
+  -> real current consumers / lived evidence
+~~~
+
+`CANCELLED` here does not mean the discovery failed. It is the lawful WorkState for an unfinished
+old route whose remaining obligation is no longer owed because a newer accepted trajectory owns the
+forward outcome.
+
+Do not reopen Dark Mode merely to complete the old diagram/process shape. If a new Origin/target question
+exists, start from the current human outcome and accepted VexArchitecture, then let the real current
+consumer earn whatever relationship is still missing.
+
+~~~text
+PATIENT_ZERO_PROVENANCE != CURRENT_FOREGROUND
+OLD_UNFINISHED_ROUTE != PERMANENT_OBLIGATION
+ACCEPTED_ARCHITECTURE -> ORIGIN OUTWARD
+~~~
+
 ## Human outcome
 
 Use one real Debug Menu feature request to discover a reusable feature-building process that Victor + AI

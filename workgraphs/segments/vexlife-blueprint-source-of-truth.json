@@ -6,16 +6,16 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-23T00:33:00.000Z",
-      "updatedAt": "2026-10-23T00:33:00.000Z",
-      "workDisposition": "ACTIVE",
+      "updatedAt": "2026-11-03T09:40:00.000Z",
+      "workDisposition": "PARKED",
       "formationProcessRefOrNull": "process.vexwork.form-project",
       "workRef": "work.vexlife.blueprint-source-of-truth.outcome",
       "parentWorkRefOrNull": null,
       "label": "VexLife Blueprint Source of Truth",
-      "purpose": "Preserve and eventually complete the VexLife Blueprint Source of Truth capability across portable meaning, deterministic mappings, target realizations and proof while the lane is deliberately dormant.",
+      "purpose": "Preserve accepted VLBSoT portability/parity proof as predecessor lineage while the unfinished MAUI/Mac target leg is parked; current VexLife construction proceeds through VexLife New Beginnings / VexLife-Prod on accepted VexArchitecture.",
       "workClass": "OUTCOME",
       "state": "PAUSED_AT_CHECKPOINT",
-      "priorityClass": "HIGH",
+      "priorityClass": "LOW",
       "dependencyRefs": [],
       "repositoryRefs": [
         "repo.vexwork",
@@ -28,7 +28,10 @@
         "project.vexlife.blueprint-source-of-truth",
         "projects/vexlife-blueprint-source-of-truth/README.md",
         "trajectory.vexlife.blueprint-source-of-truth",
-        "github.pull.vexwork.35"
+        "github.pull.vexwork.35",
+        "project.vexlife.new-beginnings",
+        "github.pull.vexlife-android.209",
+        "github.commit.vexlife-prod.20919f21578eeff9d2e1d513a00e0cd66ecd72ea"
       ],
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
@@ -37,16 +40,16 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-23T00:33:00.000Z",
-      "updatedAt": "2026-10-23T00:33:00.000Z",
-      "workDisposition": "ACTIVE",
+      "updatedAt": "2026-11-03T09:40:00.000Z",
+      "workDisposition": "PARKED",
       "formationProcessRefOrNull": null,
       "workRef": "work.vexlife.blueprint-source-of-truth.play-pause-practicum",
       "parentWorkRefOrNull": "work.vexlife.blueprint-source-of-truth.outcome",
       "label": "Play/Pause first complete semantic circuit",
-      "purpose": "Preserve the first bounded practicum from canonical portable Play/Pause meaning through deterministic C# representation, provider-neutral runtime/connection, target-native source acceptance and lived provider proof; resume only when Victor reactivates the lane.",
+      "purpose": "Preserve the completed Play/Pause semantic/parity thresholds and the exact unfinished target-native residue as historical lineage; do not resume the MAUI/Mac leg unless that target is explicitly wanted again.",
       "workClass": "OUTCOME",
       "state": "PAUSED_AT_CHECKPOINT",
-      "priorityClass": "HIGH",
+      "priorityClass": "LOW",
       "dependencyRefs": [],
       "repositoryRefs": [
         "repo.vexwork",
@@ -57,7 +60,10 @@
       ],
       "sourceRefs": [
         "projects/vexlife-blueprint-source-of-truth/README.md",
-        "contract.vexlife.vexstream.playback.play-pause.001"
+        "contract.vexlife.vexstream.playback.play-pause.001",
+        "project.vexlife.new-beginnings",
+        "github.pull.vexlife-android.209",
+        "github.commit.vexlife-prod.20919f21578eeff9d2e1d513a00e0cd66ecd72ea"
       ],
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
@@ -309,16 +315,16 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-23T00:33:00.000Z",
-      "updatedAt": "2026-10-23T00:33:00.000Z",
-      "workDisposition": "ACTIVE",
+      "updatedAt": "2026-11-03T09:40:00.000Z",
+      "workDisposition": "PARKED",
       "formationProcessRefOrNull": null,
       "workRef": "work.vexlife.blueprint-source-of-truth.play-pause.native-source-admission",
       "parentWorkRefOrNull": "work.vexlife.blueprint-source-of-truth.play-pause-practicum",
       "label": "Target-native MAUI / MediaElement source admission",
-      "purpose": "Resume at exact Construction Reference PR #12 and complete the remaining qualified Mac Catalyst build proof before native source acceptance; this edge is stored but performs no effects while the Project is paused.",
+      "purpose": "Park the unfinished MAUI / MediaElement target-native source admission. It is not a prerequisite for current VexArchitecture or VexLife-Prod; reactivate only if the exact C#/MAUI target becomes a current human outcome.",
       "workClass": "TASK",
       "state": "WAITING_RESOURCE",
-      "priorityClass": "HIGH",
+      "priorityClass": "LOW",
       "dependencyRefs": [
         "work.vexlife.blueprint-source-of-truth.play-pause.native-adapter-selection"
       ],
@@ -331,7 +337,10 @@
         "github.issue.VexGPT.VexLife-Construction-Reference.11",
         "github.pull.VexGPT.VexLife-Construction-Reference.12",
         "github.issue.VexGPT.VexLife-Construction-Reference.11.comment.6289018948",
-        "projects/vexlife-blueprint-source-of-truth/README.md"
+        "projects/vexlife-blueprint-source-of-truth/README.md",
+        "project.vexlife.new-beginnings",
+        "github.pull.vexlife-android.209",
+        "github.commit.vexlife-prod.20919f21578eeff9d2e1d513a00e0cd66ecd72ea"
       ],
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
@@ -340,16 +349,16 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-23T00:33:00.000Z",
-      "updatedAt": "2026-10-23T00:33:00.000Z",
-      "workDisposition": "ACTIVE",
+      "updatedAt": "2026-11-03T09:40:00.000Z",
+      "workDisposition": "PARKED",
       "formationProcessRefOrNull": null,
       "workRef": "work.vexlife.blueprint-source-of-truth.play-pause.native-lived-proof",
       "parentWorkRefOrNull": "work.vexlife.blueprint-source-of-truth.play-pause-practicum",
       "label": "Lived native provider conformance",
-      "purpose": "After native source acceptance and lane reactivation, prove the actual target provider loop preserves admission, stale/matching acknowledgements, opposite intent, end/restart and fail-closed target observations without promoting provider state into portable meaning.",
+      "purpose": "Park the lived MAUI/provider proof with its dependency. Preserve it as an exact future target proof question, not as a blocker on current VexLife construction.",
       "workClass": "TASK",
       "state": "WAITING_DEPENDENCIES",
-      "priorityClass": "NORMAL",
+      "priorityClass": "LOW",
       "dependencyRefs": [
         "work.vexlife.blueprint-source-of-truth.play-pause.native-source-admission"
       ],
@@ -359,7 +368,10 @@
       ],
       "sourceRefs": [
         "github.issue.VexGPT.VexLife-Construction-Reference.11",
-        "projects/vexlife-blueprint-source-of-truth/README.md"
+        "projects/vexlife-blueprint-source-of-truth/README.md",
+        "project.vexlife.new-beginnings",
+        "github.pull.vexlife-android.209",
+        "github.commit.vexlife-prod.20919f21578eeff9d2e1d513a00e0cd66ecd72ea"
       ],
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
@@ -368,16 +380,16 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-23T00:33:00.000Z",
-      "updatedAt": "2026-10-23T00:33:00.000Z",
-      "workDisposition": "ACTIVE",
+      "updatedAt": "2026-11-03T09:40:00.000Z",
+      "workDisposition": "PARKED",
       "formationProcessRefOrNull": null,
       "workRef": "work.vexlife.blueprint-source-of-truth.reusable-v1",
       "parentWorkRefOrNull": "work.vexlife.blueprint-source-of-truth.outcome",
       "label": "Reusable VLBSoT v1",
-      "purpose": "When the practicum is terminal and the lane is reactivated, turn it into a repeatable capability with bounded source intake, stable portable meaning, deterministic mappings, multiple materially different realizations, separate construction/semantic/native proof, guarded reverse observation and projectable mapping coverage.",
+      "purpose": "Preserve the reusable-method intention as predecessor lineage; current compiler-constrained semantic construction is being developed in VexLife New Beginnings rather than by resuming this paused practicum.",
       "workClass": "OUTCOME",
       "state": "WAITING_DEPENDENCIES",
-      "priorityClass": "NORMAL",
+      "priorityClass": "LOW",
       "dependencyRefs": [
         "work.vexlife.blueprint-source-of-truth.play-pause-practicum"
       ],
@@ -390,7 +402,10 @@
       ],
       "sourceRefs": [
         "projects/vexlife-blueprint-source-of-truth/README.md",
-        "trajectory.vexlife.blueprint-source-of-truth"
+        "trajectory.vexlife.blueprint-source-of-truth",
+        "project.vexlife.new-beginnings",
+        "github.pull.vexlife-android.209",
+        "github.commit.vexlife-prod.20919f21578eeff9d2e1d513a00e0cd66ecd72ea"
       ],
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
@@ -399,16 +414,16 @@
     {
       "schemaVersion": "vexwork.work-item/v1",
       "createdAt": "2026-10-23T00:33:00.000Z",
-      "updatedAt": "2026-10-23T00:33:00.000Z",
-      "workDisposition": "ACTIVE",
+      "updatedAt": "2026-11-03T09:40:00.000Z",
+      "workDisposition": "PARKED",
       "formationProcessRefOrNull": null,
       "workRef": "work.vexlife.blueprint-source-of-truth.total-feature-capacity",
       "parentWorkRefOrNull": "work.vexlife.blueprint-source-of-truth.outcome",
       "label": "Whole-product total feature capacity",
-      "purpose": "Eventually reach a sufficiently complete VexLife semantic Blueprint and reusable adapter/proof system such that supported codebases can be constructed and re-observed truthfully without whole-repository guesswork or automatic reverse writeback.",
+      "purpose": "Preserve the whole-product portability intention as lineage. Current Origin-outward product construction is owned by VexLife New Beginnings / VexLife-Prod; do not treat this old horizon as a parallel active architecture program.",
       "workClass": "OUTCOME",
       "state": "WAITING_DEPENDENCIES",
-      "priorityClass": "NORMAL",
+      "priorityClass": "LOW",
       "dependencyRefs": [
         "work.vexlife.blueprint-source-of-truth.reusable-v1"
       ],
@@ -421,7 +436,10 @@
       ],
       "sourceRefs": [
         "projects/vexlife-blueprint-source-of-truth/README.md",
-        "trajectory.vexlife.blueprint-source-of-truth"
+        "trajectory.vexlife.blueprint-source-of-truth",
+        "project.vexlife.new-beginnings",
+        "github.pull.vexlife-android.209",
+        "github.commit.vexlife-prod.20919f21578eeff9d2e1d513a00e0cd66ecd72ea"
       ],
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
@@ -430,7 +448,10 @@
   ],
   "transitions": [],
   "sourceRefs": [
-    "project.vexlife.blueprint-source-of-truth"
+    "project.vexlife.blueprint-source-of-truth",
+    "project.vexlife.new-beginnings",
+    "github.pull.vexlife-android.209",
+    "github.commit.vexlife-prod.20919f21578eeff9d2e1d513a00e0cd66ecd72ea"
   ],
   "formedAt": "2026-10-21T01:45:00.000Z"
 }
