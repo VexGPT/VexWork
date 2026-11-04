@@ -194,9 +194,11 @@ test('VexBoard projects completed navigation/usability foundations with Source P
   const convergence = vexboard.items.find(
     (item) => item.workRef === 'work.vexboard.vexsync-architecture-convergence',
   );
-  assert.equal(convergence.state, 'RUNNING');
+  assert.equal(convergence.state, 'COMPLETED');
   assert.equal(convergence.authorityDisposition, 'AUTHORIZED_BOUNDED');
   assert.equal(convergence.effectDisposition, 'EFFECTS_BOUND');
+  assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.done').workRefs.includes(convergence.workRef), true);
+  assert.equal(vexboard.lanes.find((lane) => lane.laneRef === 'lane.work.active').workRefs.includes(convergence.workRef), false);
   assert.deepEqual([boardgraph.state, canvas.state, journey.state], ['COMPLETED', 'COMPLETED', 'COMPLETED']);
   assert.equal(canvas.authorityDisposition, 'AUTHORIZED_BOUNDED');
   assert.equal(canvas.effectDisposition, 'EFFECTS_BOUND');
@@ -287,10 +289,13 @@ test('Blueprint SOT is durably paused without active effects while preserving it
   const practicum = blueprint.items.find((item) => item.workRef === 'work.vexlife.blueprint-source-of-truth.play-pause-practicum');
   const nativeSource = blueprint.items.find((item) => item.workRef === 'work.vexlife.blueprint-source-of-truth.play-pause.native-source-admission');
   assert.equal(root.state, 'PAUSED_AT_CHECKPOINT');
+  assert.equal(root.authorityDisposition, 'NO_AUTHORITY');
   assert.equal(root.effectDisposition, 'NO_EFFECTS');
   assert.equal(practicum.state, 'PAUSED_AT_CHECKPOINT');
+  assert.equal(practicum.authorityDisposition, 'NO_AUTHORITY');
   assert.equal(practicum.effectDisposition, 'NO_EFFECTS');
   assert.equal(nativeSource.state, 'WAITING_RESOURCE');
+  assert.equal(nativeSource.authorityDisposition, 'NO_AUTHORITY');
   assert.equal(nativeSource.effectDisposition, 'NO_EFFECTS');
   assert.equal(blueprint.lanes.find((lane) => lane.laneRef === 'lane.work.waiting').workRefs.includes(root.workRef), true);
   assert.equal(blueprint.lanes.find((lane) => lane.laneRef === 'lane.work.waiting').workRefs.includes(nativeSource.workRef), true);
