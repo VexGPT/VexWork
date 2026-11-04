@@ -230,12 +230,47 @@ D14 Stacked PRs: #219 stays the proven Screen Lens; this work stacks on it
 D15 Not done here, on purpose
     Work item admission      needs authority on the Workgraph; proposed only
     Kotlin annotations       VexLife-Android owns its source meaning; proposal only
-    generator + currentness  routed to the ChatGPT lane (resourcing / hooking)
+    generator + currentness  routed to the ChatGPT lane (resourcing / hooking); superseded by D16
+
+D16 Generate the lens from source; the hand-made lens becomes a test fixture
+    why       hand projection drifted within days (ThemeModeStore.Result vs VexMethod.Result)
+    how       src/core/vexboard-screen-lens-android-adapter.mjs + scripts/build-screen-lens.mjs
+    rejected  keeping two lenses that both claim to describe the app
+
+D17 One template per architectural shape, not per screen
+    why       VexArchitecture is fractal: every Family takes the same path, every screen uses the
+              same DSL; one rule per shape covers today's 10 screens and tomorrow's
+    rejected  per-screen mapping files
+
+D18 Follow the captured closure instead of asking for an annotation
+    why       ScreenActionContext.<closure> -> session lambda -> fun -> XFamily.Control.Y( is
+              readable from source; annotations stay reserved for hops nothing can read
+
+D19 Human knowledge lives in a small overlay that fails on dangling refs
+    why       notes and the ThemeMode fence are real knowledge the code does not say yet;
+              failing on unknown refs stops a rename from silently orphaning a note
+    rule      an overlay entry is a TODO for source (KDoc or @VexLens)
+
+D20 Read strings.xml for visible text
+    why       labels from resource names read like code ("Log history show"); the real text is in
+              source
+
+D21 Currentness by provenance and regeneration, not by a second file
+    why       provenance hashes (adapter, overlay, generator) + --check against a commit answer
+              "is this still true?" for the whole lens; the per-node currentness contract below
+              is only needed if the lens is ever served without regeneration
+    proof     --fetch --check regenerates byte-identical output from a fresh clone of the pin
+
+D22 Manual-dispatch workflow, never auto-push
+    why       Victor asked for a script any instance can rerun; the repository runs no CI today, and
+              writing generated output to main needs a human or Integration Steward decision
 ```
 
 ## Data contract
 
-`vexboard.screen-lens/v1` (see `examples/vexlife-debug-menu.screen-lens.json`):
+`vexboard.screen-lens/v1`. The live lens is generated (`lens/vexlife-android.screen-lens.json`, see
+`SCREEN-LENS-ADAPTER.md`); the original hand-made Debug Menu lens is kept as a test fixture
+(`test/fixtures/screen-lens/debug-menu.hand.screen-lens.json`).
 
 ```text
 sourceSnapshot   repository url + exact commit + path roots ("app:", "arch:")
@@ -320,11 +355,10 @@ role vocabulary changes, it changes here first and the Kotlin enum follows.
 
 ## Current limits
 
-- The Debug Menu lens is hand-projected from VexLife-Android `305a09e`. Until a projector generates it,
-  treat it as a candidate projection.
-- Visible text is approximated from `R.string` names; string values were not projected.
-- Home, Events and Settings show chrome only; their content is held. Gallery, Profile and the other
-  shared screens are listed but not projected.
+- The lens is generated from VexLife-Android `305a09e` for all 10 registered screens (see
+  `SCREEN-LENS-ADAPTER.md`). Only ThemeMode is bonded to a Family today; other Families reach their
+  UI through runtime connections the adapter does not follow yet.
+- Visible text comes from `res/values/strings.xml`, default locale.
 - The older "Debug Menu / Theme Mode · Family language" board still says `Control.Toggle`; current
   `ThemeMode.kt` uses `Control.Select(Parameter.Mode)`. The lens records this as a note.
 - On the existing VexBoard canvas, some routes can still pass behind a node (for example the activate
@@ -336,16 +370,18 @@ role vocabulary changes, it changes here first and the Kotlin enum follows.
 ```text
 DONE   Screen Lens UI, data contract, overlap-free layout            PR #219
 DONE   existing canvas overlap fixes                                 PR #219
-DONE   search, impact, coverage, briefs                              stacked on #219
+DONE   search, impact, coverage, briefs                              PR #220
+DONE   generated lens: adapter, overlay, script, manual workflow     PR #221
 
 NEXT   admit the bounded Work item (suggested: work.vexboard.screen-lens under project.vexboard,
        related to project.vexsync.debugmenu-blueprints) and rebuild public projections
 NEXT   lived Pages check at desktop and phone widths; Victor confirms the right-click split (D11)
-NEXT   currentness check (suggested contract below), then the Android source generator
-LATER  VexLife-Android decision on @VexLens / @VexLensEdge / @VexLensNote
+NEXT   adapter rule for Families reached through runtime connections (VexStream Playback, Maps)
+NEXT   page state as a small SCAE Family (selection, flip, walk) so the lens dogfoods the architecture
+LATER  VexLife-Android exports its own projection from UIBlueprintRegistry (SCREEN-LENS-ADAPTER.md)
+LATER  move overlay entries into KDoc / @VexLens once VexLife-Android admits them
 LATER  observed journey: replay a VexLogger export over a pathway
 LATER  crawler screenshots on the Surface face
-LATER  second screen (VexStream Music or Settings) to pressure reuse before generalizing
 ```
 
 Suggested currentness contract, kept separate so the lens file stays an immutable projection:

@@ -10,7 +10,7 @@ test('Screen Lens page consumes the shared model, layout and interaction modules
   assert.match(page, /from '\.\.\/src\/shared\/vexboard-lens-layout\.mjs'/);
   assert.match(page, /from '\.\/ui\/interaction\.mjs'/);
   assert.match(page, /from '\.\/ui\/presentation\.mjs'/);
-  assert.match(page, /vexlife-debug-menu\.screen-lens\.json/);
+  assert.match(page, /lens\/vexlife-android\.screen-lens\.json/);
 });
 
 test('flip gestures: middle-click flips Experience, right-click flips Behavior, keys and tabs are equivalent', () => {

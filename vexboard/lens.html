@@ -127,6 +127,7 @@ a{color:var(--focus)}
 .el-row{display:flex;flex-wrap:wrap;gap:8px;border-radius:8px}
 .el-text{margin:0;font-size:13px;color:var(--muted)}.el-text.TITLE{color:var(--ink);font-weight:600;font-size:14px}
 .el-image{font-weight:600;letter-spacing:-.01em}
+.el-field{display:flex;align-items:center;height:40px;padding:0 12px;border:1px solid #cfd5df;border-radius:10px;background:#fff;color:var(--faint);font-size:13px}
 .el-toggle{display:flex;align-items:center;justify-content:space-between;width:100%;padding:12px 14px;border:1px solid #e3e7ee;border-radius:14px;background:#fff;text-align:left;font-weight:500}
 .el-toggle .switch{width:38px;height:22px;border-radius:999px;background:#d7dce5;position:relative;flex:none}
 .el-toggle .switch::after{content:'';position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 1px 2px #0003}
@@ -279,7 +280,7 @@ import * as Interaction from './ui/interaction.mjs';
 import * as Presentation from './ui/presentation.mjs';
 import * as Query from '../src/shared/vexboard-screen-lens-query.mjs';
 
-const DEFAULT_LENS_URL = '../projects/vexboard/examples/vexlife-debug-menu.screen-lens.json';
+const DEFAULT_LENS_URL = '../projects/vexboard/lens/vexlife-android.screen-lens.json';
 const params = new URLSearchParams(location.search);
 const app = document.getElementById('app');
 const SVG = 'http://www.w3.org/2000/svg';
@@ -601,7 +602,7 @@ function travelButton(element) {
 }
 function renderSurfaceElement(tree, marks, context) {
   const { element, children } = tree;
-  const kids = () => children.filter((child) => child.element.kind !== 'SHEET').map((child) => renderSurfaceElement(child, marks, context));
+  const kids = () => children.filter((child) => child.element.kind !== 'SHEET' && child.element.kind !== 'DIALOG').map((child) => renderSurfaceElement(child, marks, context));
   let node;
   switch (element.kind) {
     case 'COLUMN': case 'REGION': node = h('div', { class: 'el-column' }, kids()); break;
@@ -611,9 +612,10 @@ function renderSurfaceElement(tree, marks, context) {
     case 'IMAGE': node = h('span', { class: 'el-image' }, element.label); break;
     case 'TOGGLE': node = h('button', { class: 'el-toggle', type: 'button' }, element.label, h('span', { class: 'switch', 'aria-hidden': 'true' })); break;
     case 'BUTTON': node = h('button', { class: 'el-button', type: 'button' }, element.label); break;
-    case 'FAB': node = h('button', { class: 'el-fab', type: 'button', 'aria-label': element.label }, element.label); break;
+    case 'FAB': node = element.label.length <= 2 ? h('button', { class: 'el-fab', type: 'button', 'aria-label': element.label }, element.label) : h('button', { class: 'el-button', type: 'button' }, element.label); break;
     case 'MENU': node = h('div', { class: `el-menu${context.fabOpen ? '' : ' closed'}` }, kids()); break;
     case 'MENU_ITEM': node = h('button', { class: 'el-menuitem', type: 'button' }, element.label); break;
+    case 'FIELD': node = h('div', { class: 'el-field' }, h('span', {}, element.label)); break;
     default: node = h('div', {}, element.label);
   }
   markElement(node, element, marks);
@@ -660,8 +662,10 @@ function renderSurface() {
     markElement(zone, fab.element, marks);
     phone.append(zone);
   }
-  const sheet = screen.elements.find((element) => element.kind === 'SHEET');
-  const sheetOpen = sheet && (anchor?.ref === sheet.ref || anchor?.pathwayRef === 'pathway.log-history.show');
+  // A sheet or dialog shows when it is selected, or when the selected control opens it.
+  const opens = (overlay) => overlay.symbol && anchor?.intent && new RegExp(`\\b(open|toggle)\\(${overlay.symbol.split('.').pop()}\\)`).test(anchor.intent);
+  const sheet = screen.elements.find((element) => (element.kind === 'SHEET' || element.kind === 'DIALOG') && (anchor?.ref === element.ref || opens(element)));
+  const sheetOpen = Boolean(sheet);
   if (sheetOpen) phone.append(markElement(h('div', { class: 'sheet-zone' }, h('div', { class: 'grab' }), h('p', { class: 'el-text TITLE' }, sheet.label), h('p', { class: 'el-text' }, sheet.visibleWhen ?? '')), sheet, marks));
   return h('div', { class: 'surface', onclick: () => clearSelection() }, phone);
 }

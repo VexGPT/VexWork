@@ -16,7 +16,7 @@ import {
   targetFor,
 } from '../src/shared/vexboard-screen-lens-query.mjs';
 
-const source = JSON.parse(fs.readFileSync(new URL('../projects/vexboard/examples/vexlife-debug-menu.screen-lens.json', import.meta.url), 'utf8'));
+const source = JSON.parse(fs.readFileSync(new URL('./fixtures/screen-lens/debug-menu.hand.screen-lens.json', import.meta.url), 'utf8'));
 const lens = normalizeScreenLens(source);
 const clone = () => JSON.parse(JSON.stringify(source));
 const primary = ['screen.home', 'screen.events', 'screen.settings'];
