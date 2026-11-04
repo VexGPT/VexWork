@@ -24,7 +24,7 @@
 
 export const SCREEN_LENS_ADAPTER_SCHEMA = 'vexboard.screen-lens-adapter/v1';
 export const SCREEN_LENS_OVERLAY_SCHEMA = 'vexboard.screen-lens-overlay/v1';
-export const ADAPTER_VERSION = 'vexlife-android-adapter/1';
+export const ADAPTER_VERSION = 'vexlife-android-adapter/2';
 
 function fail(message) {
   throw new TypeError(`screen lens adapter: ${message}`);
@@ -503,6 +503,241 @@ function followClosure(cat, adapter, name) {
   return null;
 }
 
+
+// One earned VexBehavior shape: a custom presentation doorway forwards a
+// Family-bound Control through an Experience membrane into a typed VexPort /
+// VexPortFlow Connection. This does not cover session/Relay/convergence entry;
+// those shapes must earn their own traversal from source.
+function uniqueSource(cat, adapter, pattern) {
+  const paths = cat.find(pattern);
+  if (paths.length !== 1) return null;
+  const path = paths[0];
+  return { path, text: cat.files.get(path), source: toRootRef(adapter, path) };
+}
+
+function behaviorControlActs(text, controlType, controlMember, actType) {
+  const pattern = new RegExp(`\\bcontrol\\s*\\(\\s*${escapeRegex(controlType)}\\.${escapeRegex(controlMember)}\\b`, 'g');
+  const candidates = [];
+  for (const match of text.matchAll(pattern)) {
+    const open = text.indexOf('(', match.index);
+    if (open < 0) continue;
+    let close;
+    try { close = matchClose(text, open); } catch { continue; }
+    const acts = splitArgs(text.slice(open + 1, close)).slice(1)
+      .map((arg) => new RegExp(`${escapeRegex(actType)}\\.(\\w+)`).exec(arg.value)?.[1])
+      .filter(Boolean);
+    if (acts.length) candidates.push(acts);
+  }
+  const unique = new Map(candidates.map((acts) => [acts.join('|'), acts]));
+  return unique.size === 1 ? [...unique.values()][0] : null;
+}
+
+function behaviorEffectsForActs(text, actType, effectType, acts) {
+  const effects = [];
+  for (const match of text.matchAll(/\bon\s*\(/g)) {
+    const open = match.index + match[0].length - 1;
+    let close;
+    try { close = matchClose(text, open); } catch { continue; }
+    const args = splitArgs(text.slice(open + 1, close));
+    const actValue = named(args, 'act');
+    const effectValue = named(args, 'effect');
+    const act = actValue ? new RegExp(`${escapeRegex(actType)}\\.(\\w+)`).exec(actValue)?.[1] : null;
+    const effect = effectValue ? new RegExp(`${escapeRegex(effectType)}\\.(\\w+)`).exec(effectValue)?.[1] : null;
+    if (act && effect && acts.includes(act)) effects.push(effect);
+  }
+  return [...new Set(effects)];
+}
+
+function typealiasCoordinates(text, alias, target) {
+  const match = new RegExp(`typealias\\s+${escapeRegex(alias)}\\s*=\\s*${escapeRegex(target)}\\s*<([\\s\\S]{0,900}?)>`).exec(text);
+  if (!match) return null;
+  const args = splitArgs(match[1]).map((arg) => arg.value.trim());
+  return args.length >= 4 ? args.slice(0, 4) : null;
+}
+
+function behaviorBlueprintCoordinates(cat, adapter, familyType, stateType, actType) {
+  for (const [path, text] of cat.files) {
+    if (!text.includes('vexBehaviorBlueprint') || !text.includes(familyType)) continue;
+    const match = new RegExp(`VexBehaviorBlueprint\\s*<\\s*${escapeRegex(familyType)}\\s*,\\s*${escapeRegex(stateType)}\\s*,\\s*${escapeRegex(actType)}\\s*,\\s*(\\w+)\\s*>`).exec(text);
+    if (!match) continue;
+    const behaviorRef = /behaviorRef\s*=\s*"([^"]+)"/.exec(text)?.[1] ?? null;
+    if (!behaviorRef) continue;
+    return { path, text, source: toRootRef(adapter, path), effectType: match[1], behaviorRef };
+  }
+  return null;
+}
+
+function implementationOf(cat, adapter, interfaceType, controlType) {
+  const candidates = [];
+  for (const [path, text] of cat.files) {
+    for (const match of text.matchAll(/\bclass\s+(\w+)\s*\(/g)) {
+      const paramsOpen = match.index + match[0].length - 1;
+      let paramsClose;
+      try { paramsClose = matchClose(text, paramsOpen); } catch { continue; }
+      const bodyOpen = text.indexOf('{', paramsClose);
+      if (bodyOpen < 0) continue;
+      const header = text.slice(paramsClose + 1, bodyOpen);
+      if (!new RegExp(`:\\s*${escapeRegex(interfaceType)}\\b`).test(header)) continue;
+      let bodyClose;
+      try { bodyClose = matchClose(text, bodyOpen); } catch { continue; }
+      const body = text.slice(bodyOpen + 1, bodyClose);
+      const params = splitArgs(text.slice(paramsOpen + 1, paramsClose));
+      const port = params
+        .map((arg) => /(?:private\s+)?val\s+(\w+)\s*:\s*([A-Z]\w*Connection(?:Flow)?)\??/.exec(arg.value))
+        .find(Boolean);
+      if (!port) continue;
+      const activate = functionSpans(body).find((fn) => fn.name === 'activate' && [...fn.params.values()].includes(controlType));
+      if (!activate) continue;
+      const controlName = [...activate.params.entries()].find(([, type]) => type === controlType)?.[0] ?? null;
+      if (!controlName) continue;
+      const activateBody = body.slice(activate.bodyStart, activate.end);
+      const forwards = new RegExp(`${escapeRegex(port[1])}\\s*(?:\\?\\.|\\.)\\s*activate\\s*\\(\\s*${escapeRegex(controlName)}\\s*,?\\s*\\)`).test(activateBody);
+      if (!forwards) continue;
+      candidates.push({ name: match[1], portField: port[1], portType: port[2], source: toRootRef(adapter, path), path, text });
+    }
+  }
+  const unique = new Map(candidates.map((candidate) => [`${candidate.name}|${candidate.portType}`, candidate]));
+  return unique.size === 1 ? [...unique.values()][0] : null;
+}
+
+function concreteConnection(cat, adapter, flowAlias, controlType) {
+  const candidates = [];
+  for (const [path, text] of cat.files) {
+    for (const match of text.matchAll(/\bclass\s+(\w*Connection)\s*\(/g)) {
+      const paramsOpen = match.index + match[0].length - 1;
+      let paramsClose;
+      try { paramsClose = matchClose(text, paramsOpen); } catch { continue; }
+      const bodyOpen = text.indexOf('{', paramsClose);
+      if (bodyOpen < 0) continue;
+      const header = text.slice(paramsClose + 1, bodyOpen);
+      if (!new RegExp(`:\\s*${escapeRegex(flowAlias)}\\b`).test(header)) continue;
+      let bodyClose;
+      try { bodyClose = matchClose(text, bodyOpen); } catch { continue; }
+      const body = text.slice(bodyOpen + 1, bodyClose);
+      if (!new RegExp(`override\\s+fun\\s+activate\\s*\\([\\s\\S]{0,180}${escapeRegex(controlType)}\\b`).test(body)) continue;
+      const params = splitArgs(text.slice(paramsOpen + 1, paramsClose));
+      const provider = params
+        .map((arg) => /(?:private\s+)?val\s+(\w+)\s*:\s*([A-Z][\w.]*)/.exec(arg.value))
+        .find(Boolean);
+      candidates.push({
+        name: match[1], path, source: toRootRef(adapter, path), text: text.slice(match.index, bodyClose + 1),
+        providerName: provider?.[1] ?? null, providerType: provider?.[2] ?? null,
+      });
+    }
+  }
+  const unique = new Map(candidates.map((candidate) => [candidate.name, candidate]));
+  return unique.size === 1 ? [...unique.values()][0] : null;
+}
+
+function sourceForFunction(cat, adapter, functionName) {
+  const candidates = [];
+  for (const [path, text] of cat.files) {
+    if (new RegExp(`fun\\s+(?:\\w+\\.)?${escapeRegex(functionName)}\\s*\\(`).test(text)) candidates.push({ path, text, source: toRootRef(adapter, path) });
+  }
+  return candidates.length === 1 ? candidates[0] : null;
+}
+
+function followBehaviorPort(cat, adapter, screen, element) {
+  const declaration = element.symbol?.split('.').at(-1) ?? null;
+  if (!screen || !declaration) return null;
+  const elementPattern = `${escapeRegex(screen.object)}\\s*\\.\\s*${escapeRegex(declaration)}`;
+  const doorways = [];
+  for (const [path, text] of cat.files) {
+    const pattern = new RegExp(`${elementPattern}\\s*->[\\s\\S]{0,260}?([a-z]\\w*)\\s*(?:\\?\\.)?\\.\\s*activate\\s*\\(\\s*([A-Z]\\w*Control)\\s*\\.\\s*(\\w+)`, 'g');
+    for (const match of text.matchAll(pattern)) {
+      const span = functionSpans(text).filter((fn) => fn.start < match.index && fn.end > match.index).sort((a, b) => b.start - a.start)[0] ?? null;
+      const receiverType = span?.params.get(match[1])?.replace(/\?$/, '') ?? null;
+      if (!receiverType) continue;
+      doorways.push({ receiver: match[1], receiverType, controlType: match[2], control: match[3], functionName: span.name, source: toRootRef(adapter, path), path });
+    }
+  }
+  const doorwayKeys = new Set(doorways.map((doorway) => `${doorway.receiverType}|${doorway.controlType}|${doorway.control}`));
+  const doorwaySources = new Set(doorways.map((doorway) => doorway.source));
+  if (doorwayKeys.size !== 1 || doorwaySources.size !== 1) return null;
+  const doorway = { ...doorways[0], functions: [...new Set(doorways.map((entry) => entry.functionName))] };
+
+  const experience = uniqueSource(cat, adapter, new RegExp(`interface\\s+${escapeRegex(doorway.receiverType)}\\b`));
+  if (!experience) return null;
+  const implementation = implementationOf(cat, adapter, doorway.receiverType, doorway.controlType);
+  if (!implementation) return null;
+
+  const types = uniqueSource(cat, adapter, new RegExp(`typealias\\s+${escapeRegex(implementation.portType)}\\b`));
+  if (!types) return null;
+  const coordinates = typealiasCoordinates(types.text, implementation.portType, 'VexPort');
+  if (!coordinates) return null;
+  const [familyType, stateType, controlType, actType] = coordinates;
+  if (controlType !== doorway.controlType) return null;
+
+  const flowAliases = [...types.text.matchAll(/typealias\s+(\w+)\s*=\s*VexPortFlow\s*</g)].map((match) => match[1]);
+  const flowAlias = flowAliases.find((alias) => {
+    const flow = typealiasCoordinates(types.text, alias, 'VexPortFlow');
+    return flow && flow.join('|') === coordinates.join('|');
+  }) ?? null;
+  if (!flowAlias) return null;
+
+  const family = uniqueSource(cat, adapter, new RegExp(`(?:sealed\\s+interface|interface|class)\\s+${escapeRegex(familyType)}[\\s\\S]{0,240}VexBehaviorFamily\\s*<\\s*${escapeRegex(familyType)}\\s*>`));
+  const state = uniqueSource(cat, adapter, new RegExp(`(?:sealed\\s+interface|interface|class)\\s+${escapeRegex(stateType)}[\\s\\S]{0,280}VexBehaviorFamily\\.State\\s*<\\s*${escapeRegex(familyType)}\\s*>`));
+  const control = uniqueSource(cat, adapter, new RegExp(`enum\\s+class\\s+${escapeRegex(controlType)}[\\s\\S]{0,280}VexBehaviorFamily\\.Control\\s*<\\s*${escapeRegex(familyType)}\\s*>`));
+  const act = uniqueSource(cat, adapter, new RegExp(`(?:sealed\\s+interface|interface|class)\\s+${escapeRegex(actType)}[\\s\\S]{0,280}VexBehaviorFamily\\.Act\\s*<\\s*${escapeRegex(familyType)}\\s*>`));
+  const behavior = behaviorBlueprintCoordinates(cat, adapter, familyType, stateType, actType);
+  if (!family || !state || !control || !act || !behavior) return null;
+
+  const effectType = behavior.effectType;
+  const effect = uniqueSource(cat, adapter, new RegExp(`(?:sealed\\s+interface|interface|class)\\s+${escapeRegex(effectType)}[\\s\\S]{0,280}VexBehaviorFamily\\.Effect\\s*<\\s*${escapeRegex(familyType)}\\s*>`));
+  if (!effect) return null;
+
+  const acts = behaviorControlActs(control.text, controlType, doorway.control, actType);
+  if (!acts) return null;
+  const effects = behaviorEffectsForActs(behavior.text, actType, effectType, acts);
+  if (!effects.length) return null;
+
+  const connection = concreteConnection(cat, adapter, flowAlias, controlType);
+  if (!connection) return null;
+  const hasResolve = /controls\.resolve[\s\S]{0,1200}behavior\.resolve/.test(connection.text);
+  const admittedCall = /\bcurrent\.(\w+)\(\s*effect\s*,?\s*\)/.exec(connection.text)?.[1] ?? null;
+  const reconcileCall = /(reconcile\w*Observation)\s*\(/.exec(connection.text)?.[1] ?? null;
+  if (!hasResolve || !admittedCall || !reconcileCall) return null;
+  const admitted = sourceForFunction(cat, adapter, admittedCall);
+  const reconcile = sourceForFunction(cat, adapter, reconcileCall);
+  if (!admitted || !reconcile) return null;
+
+  const projectionMatch = [...types.text.matchAll(/typealias\s+(\w+)\s*=\s*VexBehaviorProjection\s*</g)]
+    .map((match) => match[1])
+    .find((alias) => new RegExp(`typealias\\s+${escapeRegex(alias)}\\s*=[\\s\\S]{0,500}${escapeRegex(familyType)}`).test(types.text)) ?? null;
+  if (!projectionMatch) return null;
+
+  const displayType = /val\s+displayState\s*:\s*([A-Z]\w*DisplayState)/.exec(experience.text)?.[1] ?? null;
+  const display = displayType ? uniqueSource(cat, adapter, new RegExp(`(?:sealed\\s+interface|interface|class)\\s+${escapeRegex(displayType)}\\b`)) : null;
+  if (!display) return null;
+
+  const owners = [];
+  for (const [path, text] of cat.files) {
+    if (path === connection.path || !text.includes(flowAlias)) continue;
+    if (!new RegExp(`${escapeRegex(connection.name)}\\s*\\(`).test(text)) continue;
+    const match = /class\s+(\w+)\s*\(/.exec(text);
+    if (match) owners.push({ name: match[1], source: toRootRef(adapter, path), path, text });
+  }
+  const owner = owners.length === 1 ? owners[0] : null;
+
+  const listenerType = /object\s*:\s*([A-Z][\w.]*)\s*\{/.exec(connection.text)?.[1] ?? null;
+  const publishObserved = /\b(publishObserved)\s*\(/.test(connection.text) ? 'publishObserved' : null;
+  if (!listenerType || !publishObserved) return null;
+
+  return {
+    ...doorway,
+    behaviorRef: behavior.behaviorRef,
+    familyType, stateType, controlType, actType, effectType,
+    familySource: family, stateSource: state, controlSource: control, actSource: act, effectSource: effect,
+    behavior, experience, implementation, types,
+    flowAlias, connection, owner, acts, effects,
+    stateValues: sealedMembers(state.text, stateType),
+    admittedCall, admitted, reconcileCall, reconcile,
+    projectionType: projectionMatch,
+    displayType, display,
+    listenerType, publishObserved,
+  };
+}
+
 /* ---------- pathway templates ---------- */
 
 const SUMMARY = Object.freeze({
@@ -680,6 +915,116 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, overlay
     return ref;
   };
 
+
+  const behaviorPortPathway = (screen, element, bond) => {
+    const controlSlug = bond.control.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+    const ref = `pathway.${bond.behaviorRef}.${controlSlug}`;
+    if (pathways.has(ref)) return ref;
+    const builder = new PathwayBuilder(ref, `${humanize(bond.behaviorRef)} · ${humanize(bond.control)}`, 'SCAE_FAMILY');
+
+    const intent = builder.node('intent', 'BEHAVIOR', 'INTENT', 'localEffect()', {
+      symbol: element.symbol,
+      summary: 'The registered element delegates feature-local meaning to its custom presentation handler.',
+      source: screen.source,
+      code: 'intent = localEffect()',
+    });
+    const doorway = builder.node('doorway', 'BEHAVIOR', 'DISPATCH', `${bond.receiverType}.activate(${bond.control})`, {
+      symbol: `${bond.receiverType}.activate`,
+      summary: 'The visible control manifestations forward the same Family-bound Control through the UI-facing membrane.',
+      source: bond.source,
+    });
+    const control = builder.node('control', 'BEHAVIOR', 'CONTROL', `${bond.controlType}.${bond.control}`, {
+      symbol: `${bond.controlType}.${bond.control}`,
+      summary: 'Family-bound semantic input.',
+      source: bond.controlSource.source,
+    });
+    const stateLabel = bond.stateValues.length ? `${bond.stateType} · ${bond.stateValues.join(' | ')}` : bond.stateType;
+    const state = builder.node('state', 'BEHAVIOR', 'STATE', `CURRENT ${stateLabel}`, {
+      symbol: bond.stateType,
+      summary: 'Exact current semantic truth used to resolve the Control.',
+      source: bond.stateSource.source,
+    });
+    const act = builder.node('act', 'BEHAVIOR', 'ACT', `${bond.control} → ${bond.acts.join(' | ')}`, {
+      symbol: bond.actType,
+      summary: 'The Control blueprint chooses the lawful Act for exact current State.',
+      source: bond.controlSource.source,
+    });
+    const effect = builder.node('effect', 'BEHAVIOR', 'EFFECT', bond.effects.join(' | '), {
+      symbol: bond.effectType,
+      summary: 'Behavior resolves the Act into the runtime transformation appropriate to current State.',
+      source: bond.behavior.source,
+    });
+    const admitted = builder.node('admitted', 'BEHAVIOR', 'STATE', `current.${bond.admittedCall}(effect)`, {
+      symbol: `${bond.stateType}.${bond.admittedCall}`,
+      summary: 'Semantic State reflects admitted intent before outside observation converges.',
+      source: bond.admitted.source,
+    });
+    const projection = builder.node('projection', 'BEHAVIOR', 'PROJECTION', bond.projectionType, {
+      symbol: bond.projectionType,
+      summary: 'The typed Connection publishes the Family projection.',
+      source: bond.types.source,
+    });
+    const presentation = builder.node('presentation', 'BEHAVIOR', 'PROJECTION', `${bond.displayType} → ${humanize(bond.control)} presentation`, {
+      symbol: bond.displayType,
+      summary: 'The Experience derives display meaning from the returned projection without becoming semantic owner.',
+      source: bond.experience.source,
+    });
+
+    let owner = null;
+    if (bond.owner) {
+      owner = builder.node('connection-owner', 'DEPTH', 'CONSTRUCTION', bond.owner.name, {
+        symbol: bond.owner.name,
+        summary: 'Lifetime owner of the concrete Connection; construction support, not semantic truth.',
+        source: bond.owner.source,
+      });
+    }
+    const connection = builder.node('connection', 'DEPTH', 'DISPATCH', `${bond.implementation.portType} / ${bond.flowAlias} → ${bond.connection.name}`, {
+      symbol: bond.connection.name,
+      summary: 'Typed VexPort boundary carrying the same Family / State / Control / Act coordinates into provider realization and reconciliation.',
+      source: bond.connection.source,
+    });
+    const providerLabel = bond.connection.providerType ?? 'outside provider';
+    const provider = builder.node('provider', 'DEPTH', 'STORE', providerLabel, {
+      symbol: bond.connection.providerType ?? undefined,
+      summary: 'Independently owned outside/runtime truth.',
+      source: bond.connection.source,
+    });
+    const observation = builder.node('observation', 'DEPTH', 'OBSERVATION', `${bond.listenerType} → ${bond.publishObserved}()`, {
+      symbol: bond.listenerType,
+      summary: 'Asynchronous provider observations re-enter through the same concrete Connection.',
+      source: bond.connection.source,
+    });
+    const reconcile = builder.node('reconcile', 'DEPTH', 'OBSERVATION', `${bond.reconcileCall}(observed, pending)`, {
+      symbol: bond.reconcileCall,
+      summary: 'Observed provider truth is reconciled with still-pending local intent before it may replace semantic State.',
+      source: bond.reconcile.source,
+    });
+
+    builder.edge(intent, doorway, 'custom handler');
+    builder.edge(doorway, control, 'same Control');
+    builder.edge(state, act, 'CURRENT', 'DATA');
+    builder.edge(control, act, 'resolve');
+    builder.edge(act, effect, 'Behavior');
+    builder.edge(effect, admitted, 'admits');
+    builder.edge(admitted, projection, 'projects');
+    builder.edge(projection, presentation, 'display');
+    builder.edge(doorway, connection, 'forwards typed Control');
+    if (owner) builder.edge(owner, connection, 'owns', 'SIDE');
+    builder.edge(effect, connection, 'realize');
+    builder.edge(connection, provider, 'provider');
+    builder.edge(provider, observation, 'callback');
+    builder.edge(observation, reconcile, 'observed');
+    builder.edge(reconcile, state, 'reconciled', 'RETURN');
+    builder.edge(reconcile, projection, 'publishes', 'RETURN');
+
+    builder.pathway.summary = `${bond.familyType} owns ${bond.control} meaning; the typed Connection realizes and reconciles outside truth back into the same Family projection.`;
+    builder.pathway.returnRef = presentation;
+    builder.pathway.returns = `The returned ${bond.projectionType} / ${bond.displayType} reaches the same human-facing control.`;
+    pathways.set(ref, builder.pathway);
+    report.bonds.push({ elementRef: element.ref, via: 'BEHAVIOR_PORT', family: bond.familyType, control: bond.control });
+    return ref;
+  };
+
   const directPathway = (actionKey, registration) => {
     const ref = `pathway.${actionKey.replace(/^action\./, '')}`;
     const builder = new PathwayBuilder(ref, humanize(registration.actionName), 'DIRECT_REGISTRATION');
@@ -742,6 +1087,13 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, overlay
       const bond = closureName && /->/.test(fields.get(closureName) ?? '') ? followClosure(cat, adapter, closureName) : null;
       element.pathwayRef = (bond?.family ? familyPathway(actionKey, registration, bond) : null) ?? directPathway(actionKey, registration);
       return element;
+    }
+    if (screen && steps.length === 1 && steps[0].op === 'localEffect') {
+      const bond = followBehaviorPort(cat, adapter, screen, element);
+      if (bond) {
+        element.pathwayRef = behaviorPortPathway(screen, element, bond);
+        return element;
+      }
     }
     const nav = steps.find((step) => step.op === 'navigateTo');
     if (nav) element.navigatesTo = screenRefOf(nav.arg) ?? undefined;

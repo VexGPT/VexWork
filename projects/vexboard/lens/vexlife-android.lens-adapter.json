@@ -24,7 +24,8 @@
     "app:screens/",
     "app:shell/",
     "app:runtime/",
-    "app:ui/"
+    "app:ui/",
+    "app:vexstream/playback/"
   ],
   "stringResources": [
     "app/src/main/res/values/strings.xml"
