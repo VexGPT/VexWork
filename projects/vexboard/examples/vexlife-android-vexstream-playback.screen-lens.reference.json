@@ -1,0 +1,1771 @@
+{
+  "schemaVersion": "vexboard.screen-lens/v1",
+  "lensRef": "lens.reference.vexlife-android.vexstream-playback",
+  "title": "VexStream Playback · Screen Lens Reference",
+  "summary": "Stable human-authored reference for the VexStream screen: Claude's existing direct-registration paths remain intact while Play / Pause demonstrates the runtime-connected Playback Family round trip. This is an oracle for VexBoard experience and later adapter equivalence, not live source authority.",
+  "entryScreenRef": "screen.vexstream-music",
+  "entryElementRef": "element.vexstream-music.body.player.play-pause",
+  "sourceSnapshot": {
+    "repositoryRef": "repo.vexlife-android",
+    "repositoryUrl": "https://github.com/vgong24/VexLife-Android",
+    "commit": "305a09eac1fabebcf2241bd207386950f41121f2",
+    "observedAt": "2026-11-03",
+    "roots": {
+      "app": "app/src/main/kotlin/com/vextreme/vexlife/android/",
+      "arch": "architecture/"
+    },
+    "notes": [
+      "Stable Screen Lens reference case: current VexStream screen projection plus a hand-authored Playback relationship oracle. It is not the live generated lens and does not own VexLife behavior.",
+      "Existing VexStream element ids and direct-registration pathways are preserved from the generated 305a09e lens. The Play / Pause pathway is grounded in the accepted VexStream Playback source slice and rechecked against the same pinned source.",
+      "Later adapter work succeeds only when generation can reproduce this relationship without changing the VexBoard consumer contract."
+    ]
+  },
+  "chrome": [],
+  "screens": [
+    {
+      "screenRef": "screen.vexstream-music",
+      "label": "VexStream",
+      "placement": "SHARED",
+      "symbol": "VexStreamMusicScreen",
+      "source": "app:screens/shared/vexstream/VexStreamMusicScreen.kt",
+      "mapped": "MAPPED",
+      "summary": "One registered VexLife Screen, with feature-local library lenses. Renders custom content over its registered element tree; the tree shows the registered identities.",
+      "elements": [
+        {
+          "ref": "element.vexstream-music.body",
+          "kind": "COLUMN",
+          "label": "Body",
+          "parentRef": null,
+          "declared": "column(\"body\")"
+        },
+        {
+          "ref": "element.vexstream-music.body.connection",
+          "kind": "COLUMN",
+          "label": "Connection",
+          "parentRef": "element.vexstream-music.body",
+          "symbol": "VexStreamMusicScreen.ConnectionSection",
+          "declared": "columnRef(id = \"body.connection\")"
+        },
+        {
+          "ref": "element.vexstream-music.body.connection.intro",
+          "kind": "TEXT",
+          "label": "Your music from VexStream, on this phone. Stream while your computer is nearby or keep songs downloaded for offline playback.",
+          "parentRef": "element.vexstream-music.body.connection",
+          "declared": "text(\"intro\")",
+          "labelRes": "R.string.vexstream_music_intro",
+          "textRole": "SUPPORTING"
+        },
+        {
+          "ref": "element.vexstream-music.body.connection.find",
+          "kind": "BUTTON",
+          "label": "Find VexStream",
+          "parentRef": "element.vexstream-music.body.connection",
+          "symbol": "VexStreamMusicScreen.FindNearby",
+          "declared": "buttonRef(id = \"body.connection.find\")",
+          "labelRes": "R.string.vexstream_music_find",
+          "intent": "invoke(AppActions.FindNearbyVexStream)",
+          "actionKey": "action.vexstream-music.connection.find",
+          "call": "scope.launch { repository.findNearbyVexStream() }",
+          "pathwayRef": "pathway.vexstream-music.connection.find"
+        },
+        {
+          "ref": "element.vexstream-music.body.connection.confirm-code",
+          "kind": "BUTTON",
+          "label": "Codes match · Request access",
+          "parentRef": "element.vexstream-music.body.connection",
+          "symbol": "VexStreamMusicScreen.ConfirmPairingCode",
+          "declared": "buttonRef(id = \"body.connection.confirm-code\")",
+          "labelRes": "R.string.vexstream_music_confirm_code",
+          "intent": "invoke(AppActions.ConfirmVexStreamPairingCode)",
+          "actionKey": "action.vexstream-music.connection.confirm-code",
+          "call": "scope.launch { repository.confirmPairingCode() }",
+          "pathwayRef": "pathway.vexstream-music.connection.confirm-code"
+        },
+        {
+          "ref": "element.vexstream-music.body.library-tabs",
+          "kind": "ROW",
+          "label": "Library tabs",
+          "parentRef": "element.vexstream-music.body",
+          "declared": "row(\"library-tabs\")"
+        },
+        {
+          "ref": "element.vexstream-music.body.library-tabs.songs",
+          "kind": "BUTTON",
+          "label": "Songs",
+          "parentRef": "element.vexstream-music.body.library-tabs",
+          "symbol": "VexStreamMusicScreen.SongsTab",
+          "declared": "buttonRef(id = \"body.library-tabs.songs\")",
+          "labelRes": "R.string.vexstream_music_songs",
+          "intent": "swapTo(container = LibraryContent, child = SongsPanel)",
+          "pathwayRef": "pathway.vexstream-music.swap-to"
+        },
+        {
+          "ref": "element.vexstream-music.body.library-tabs.albums",
+          "kind": "BUTTON",
+          "label": "Albums",
+          "parentRef": "element.vexstream-music.body.library-tabs",
+          "symbol": "VexStreamMusicScreen.AlbumsTab",
+          "declared": "buttonRef(id = \"body.library-tabs.albums\")",
+          "labelRes": "R.string.vexstream_music_albums",
+          "intent": "swapTo(container = LibraryContent, child = AlbumsPanel)",
+          "pathwayRef": "pathway.vexstream-music.swap-to"
+        },
+        {
+          "ref": "element.vexstream-music.body.library-tabs.artists",
+          "kind": "BUTTON",
+          "label": "Artists",
+          "parentRef": "element.vexstream-music.body.library-tabs",
+          "symbol": "VexStreamMusicScreen.ArtistsTab",
+          "declared": "buttonRef(id = \"body.library-tabs.artists\")",
+          "labelRes": "R.string.vexstream_music_artists",
+          "intent": "swapTo(container = LibraryContent, child = ArtistsPanel)",
+          "pathwayRef": "pathway.vexstream-music.swap-to"
+        },
+        {
+          "ref": "element.vexstream-music.body.library-tabs.playlists",
+          "kind": "BUTTON",
+          "label": "Playlists",
+          "parentRef": "element.vexstream-music.body.library-tabs",
+          "symbol": "VexStreamMusicScreen.PlaylistsTab",
+          "declared": "buttonRef(id = \"body.library-tabs.playlists\")",
+          "labelRes": "R.string.vexstream_music_playlists",
+          "intent": "swapTo(container = LibraryContent, child = PlaylistsPanel)",
+          "pathwayRef": "pathway.vexstream-music.swap-to"
+        },
+        {
+          "ref": "element.vexstream-music.body.library-tabs.downloads",
+          "kind": "BUTTON",
+          "label": "Downloads",
+          "parentRef": "element.vexstream-music.body.library-tabs",
+          "symbol": "VexStreamMusicScreen.DownloadsTab",
+          "declared": "buttonRef(id = \"body.library-tabs.downloads\")",
+          "labelRes": "R.string.vexstream_music_downloads",
+          "intent": "swapTo(container = LibraryContent, child = DownloadsPanel)",
+          "pathwayRef": "pathway.vexstream-music.swap-to"
+        },
+        {
+          "ref": "element.vexstream-music.body.library-organization-status",
+          "kind": "COLUMN",
+          "label": "Library organization status",
+          "parentRef": "element.vexstream-music.body",
+          "declared": "column(\"library-organization-status\")"
+        },
+        {
+          "ref": "element.vexstream-music.body.library.organization-status.active",
+          "kind": "TEXT",
+          "label": "Filters active",
+          "parentRef": "element.vexstream-music.body.library-organization-status",
+          "symbol": "VexStreamMusicScreen.FiltersActive",
+          "declared": "textRef(id = \"body.library.organization-status.active\")",
+          "labelRes": "R.string.vexstream_music_filters_active"
+        },
+        {
+          "ref": "element.vexstream-music.body.library.organization-status.no-matches",
+          "kind": "TEXT",
+          "label": "No songs match these filters",
+          "parentRef": "element.vexstream-music.body.library-organization-status",
+          "symbol": "VexStreamMusicScreen.FiltersNoMatches",
+          "declared": "textRef(id = \"body.library.organization-status.no-matches\")",
+          "labelRes": "R.string.vexstream_music_filters_no_matches"
+        },
+        {
+          "ref": "element.vexstream-music.body.library",
+          "kind": "REGION",
+          "label": "Library",
+          "parentRef": "element.vexstream-music.body",
+          "symbol": "VexStreamMusicScreen.LibraryContent",
+          "declared": "swappableRef(id = \"body.library\")"
+        },
+        {
+          "ref": "element.vexstream-music.body.library.songs",
+          "kind": "COLUMN",
+          "label": "Songs",
+          "parentRef": "element.vexstream-music.body.library",
+          "symbol": "VexStreamMusicScreen.SongsPanel",
+          "declared": "scrollableColumnRef(id = \"body.library.songs\")"
+        },
+        {
+          "ref": "element.vexstream-music.body.library.albums",
+          "kind": "COLUMN",
+          "label": "Albums",
+          "parentRef": "element.vexstream-music.body.library",
+          "symbol": "VexStreamMusicScreen.AlbumsPanel",
+          "declared": "scrollableColumnRef(id = \"body.library.albums\")"
+        },
+        {
+          "ref": "element.vexstream-music.body.library.artists",
+          "kind": "COLUMN",
+          "label": "Artists",
+          "parentRef": "element.vexstream-music.body.library",
+          "symbol": "VexStreamMusicScreen.ArtistsPanel",
+          "declared": "scrollableColumnRef(id = \"body.library.artists\")"
+        },
+        {
+          "ref": "element.vexstream-music.body.library.playlists",
+          "kind": "COLUMN",
+          "label": "Playlists",
+          "parentRef": "element.vexstream-music.body.library",
+          "symbol": "VexStreamMusicScreen.PlaylistsPanel",
+          "declared": "scrollableColumnRef(id = \"body.library.playlists\")"
+        },
+        {
+          "ref": "element.vexstream-music.body.library.downloads",
+          "kind": "COLUMN",
+          "label": "Downloads",
+          "parentRef": "element.vexstream-music.body.library",
+          "symbol": "VexStreamMusicScreen.DownloadsPanel",
+          "declared": "scrollableColumnRef(id = \"body.library.downloads\")"
+        },
+        {
+          "ref": "element.vexstream-music.body.collection-actions",
+          "kind": "ROW",
+          "label": "Collection actions",
+          "parentRef": "element.vexstream-music.body",
+          "declared": "row(\"collection-actions\")"
+        },
+        {
+          "ref": "element.vexstream-music.body.collection.open",
+          "kind": "BUTTON",
+          "label": "Open collection",
+          "parentRef": "element.vexstream-music.body.collection-actions",
+          "symbol": "VexStreamMusicScreen.OpenCollection",
+          "declared": "buttonRef(id = \"body.collection.open\")",
+          "labelRes": "R.string.vexstream_music_open_collection",
+          "intent": "localEffect()",
+          "pathwayRef": "pathway.vexstream-music.local-effect"
+        },
+        {
+          "ref": "element.vexstream-music.body.collection.back",
+          "kind": "BUTTON",
+          "label": "Back",
+          "parentRef": "element.vexstream-music.body.collection-actions",
+          "symbol": "VexStreamMusicScreen.CollectionBack",
+          "declared": "buttonRef(id = \"body.collection.back\")",
+          "labelRes": "R.string.back",
+          "intent": "localEffect()",
+          "pathwayRef": "pathway.vexstream-music.local-effect"
+        },
+        {
+          "ref": "element.vexstream-music.body.collection.download-missing",
+          "kind": "BUTTON",
+          "label": "Download missing",
+          "parentRef": "element.vexstream-music.body.collection-actions",
+          "symbol": "VexStreamMusicScreen.DownloadMissing",
+          "declared": "buttonRef(id = \"body.collection.download-missing\")",
+          "labelRes": "R.string.vexstream_music_download_missing",
+          "intent": "localEffect()",
+          "pathwayRef": "pathway.vexstream-music.local-effect"
+        },
+        {
+          "ref": "element.vexstream-music.body.track-actions",
+          "kind": "COLUMN",
+          "label": "Track actions",
+          "parentRef": "element.vexstream-music.body",
+          "declared": "column(\"track-actions\")"
+        },
+        {
+          "ref": "element.vexstream-music.body.track-actions.menu",
+          "kind": "BUTTON",
+          "label": "Song options",
+          "parentRef": "element.vexstream-music.body.track-actions",
+          "symbol": "VexStreamMusicScreen.TrackMenu",
+          "declared": "buttonRef(id = \"body.track-actions.menu\")",
+          "labelRes": "R.string.vexstream_music_track_menu",
+          "intent": "localEffect()",
+          "pathwayRef": "pathway.vexstream-music.local-effect"
+        },
+        {
+          "ref": "element.vexstream-music.body.track-actions.play",
+          "kind": "BUTTON",
+          "label": "Play",
+          "parentRef": "element.vexstream-music.body.track-actions",
+          "symbol": "VexStreamMusicScreen.PlayTrack",
+          "declared": "buttonRef(id = \"body.track-actions.play\")",
+          "labelRes": "R.string.vexstream_music_play",
+          "intent": "localEffect()",
+          "pathwayRef": "pathway.vexstream-music.local-effect"
+        },
+        {
+          "ref": "element.vexstream-music.body.track-actions.play-next",
+          "kind": "BUTTON",
+          "label": "Play next",
+          "parentRef": "element.vexstream-music.body.track-actions",
+          "symbol": "VexStreamMusicScreen.PlayTrackNext",
+          "declared": "buttonRef(id = \"body.track-actions.play-next\")",
+          "labelRes": "R.string.vexstream_music_play_next",
+          "intent": "localEffect()",
+          "pathwayRef": "pathway.vexstream-music.local-effect"
+        },
+        {
+          "ref": "element.vexstream-music.body.track-actions.add-queue",
+          "kind": "BUTTON",
+          "label": "Add to queue",
+          "parentRef": "element.vexstream-music.body.track-actions",
+          "symbol": "VexStreamMusicScreen.AddTrackToQueue",
+          "declared": "buttonRef(id = \"body.track-actions.add-queue\")",
+          "labelRes": "R.string.vexstream_music_add_queue",
+          "intent": "localEffect()",
+          "pathwayRef": "pathway.vexstream-music.local-effect"
+        },
+        {
+          "ref": "element.vexstream-music.body.track-actions.download",
+          "kind": "BUTTON",
+          "label": "Download",
+          "parentRef": "element.vexstream-music.body.track-actions",
+          "symbol": "VexStreamMusicScreen.DownloadTrack",
+          "declared": "buttonRef(id = \"body.track-actions.download\")",
+          "labelRes": "R.string.vexstream_music_download",
+          "intent": "localEffect()",
+          "pathwayRef": "pathway.vexstream-music.local-effect"
+        },
+        {
+          "ref": "element.vexstream-music.body.track-actions.remove-download",
+          "kind": "BUTTON",
+          "label": "Remove download",
+          "parentRef": "element.vexstream-music.body.track-actions",
+          "symbol": "VexStreamMusicScreen.RemoveTrackDownload",
+          "declared": "buttonRef(id = \"body.track-actions.remove-download\")",
+          "labelRes": "R.string.vexstream_music_remove_download",
+          "intent": "localEffect()",
+          "pathwayRef": "pathway.vexstream-music.local-effect"
+        },
+        {
+          "ref": "element.vexstream-music.body.track-actions.visit-artist",
+          "kind": "BUTTON",
+          "label": "Visit artist",
+          "parentRef": "element.vexstream-music.body.track-actions",
+          "symbol": "VexStreamMusicScreen.VisitTrackArtist",
+          "declared": "buttonRef(id = \"body.track-actions.visit-artist\")",
+          "labelRes": "R.string.vexstream_music_visit_artist",
+          "intent": "localEffect()",
+          "pathwayRef": "pathway.vexstream-music.local-effect"
+        },
+        {
+          "ref": "element.vexstream-music.body.library-actions",
+          "kind": "ROW",
+          "label": "Library actions",
+          "parentRef": "element.vexstream-music.body",
+          "declared": "row(\"library-actions\")"
+        },
+        {
+          "ref": "element.vexstream-music.body.library-actions.play-all",
+          "kind": "BUTTON",
+          "label": "Play all",
+          "parentRef": "element.vexstream-music.body.library-actions",
+          "symbol": "VexStreamMusicScreen.PlayAll",
+          "declared": "buttonRef(id = \"body.library-actions.play-all\")",
+          "labelRes": "R.string.vexstream_music_play_all",
+          "intent": "localEffect()",
+          "pathwayRef": "pathway.vexstream-music.local-effect"
+        },
+        {
+          "ref": "element.vexstream-music.body.library-actions.shuffle-all",
+          "kind": "BUTTON",
+          "label": "Shuffle all",
+          "parentRef": "element.vexstream-music.body.library-actions",
+          "symbol": "VexStreamMusicScreen.ShuffleAll",
+          "declared": "buttonRef(id = \"body.library-actions.shuffle-all\")",
+          "labelRes": "R.string.vexstream_music_shuffle_all",
+          "intent": "localEffect()",
+          "pathwayRef": "pathway.vexstream-music.local-effect"
+        },
+        {
+          "ref": "element.vexstream-music.body.player.queue.show",
+          "kind": "BUTTON",
+          "label": "Queue",
+          "parentRef": "element.vexstream-music.body.library-actions",
+          "symbol": "VexStreamMusicScreen.ShowQueue",
+          "declared": "buttonRef(id = \"body.player.queue.show\")",
+          "labelRes": "R.string.vexstream_music_queue",
+          "intent": "swapTo(container = FullPlayerContent, child = QueuePanel).then(open(FullPlayerSheet))",
+          "pathwayRef": "pathway.vexstream-music.swap-to-then-open"
+        },
+        {
+          "ref": "element.vexstream-music.body.player",
+          "kind": "COLUMN",
+          "label": "Player",
+          "parentRef": "element.vexstream-music.body",
+          "symbol": "VexStreamMusicScreen.PlayerSection",
+          "declared": "columnRef(id = \"body.player\")"
+        },
+        {
+          "ref": "element.vexstream-music.body.player.open",
+          "kind": "BUTTON",
+          "label": "Now playing",
+          "parentRef": "element.vexstream-music.body.player",
+          "symbol": "VexStreamMusicScreen.OpenFullPlayer",
+          "declared": "buttonRef(id = \"body.player.open\")",
+          "labelRes": "R.string.vexstream_music_now_playing",
+          "intent": "swapTo(container = FullPlayerContent, child = FullPlayerNowPlayingPanel).then(open(FullPlayerSheet))",
+          "pathwayRef": "pathway.vexstream-music.swap-to-then-open"
+        },
+        {
+          "ref": "element.vexstream-music.body.player.seek",
+          "kind": "BUTTON",
+          "label": "Seek playback",
+          "parentRef": "element.vexstream-music.body.player",
+          "symbol": "VexStreamMusicScreen.SeekPlayback",
+          "declared": "buttonRef(id = \"body.player.seek\")",
+          "labelRes": "R.string.vexstream_music_seek",
+          "intent": "localEffect()",
+          "pathwayRef": "pathway.vexstream-music.local-effect"
+        },
+        {
+          "ref": "element.vexstream-music.body.player.controls",
+          "kind": "ROW",
+          "label": "Controls",
+          "parentRef": "element.vexstream-music.body.player",
+          "declared": "row(\"controls\")"
+        },
+        {
+          "ref": "element.vexstream-music.body.player.previous",
+          "kind": "BUTTON",
+          "label": "Previous",
+          "parentRef": "element.vexstream-music.body.player.controls",
+          "symbol": "VexStreamMusicScreen.PreviousTrack",
+          "declared": "buttonRef(id = \"body.player.previous\")",
+          "labelRes": "R.string.vexstream_music_previous",
+          "intent": "localEffect()",
+          "pathwayRef": "pathway.vexstream-music.local-effect"
+        },
+        {
+          "ref": "element.vexstream-music.body.player.play-pause",
+          "kind": "BUTTON",
+          "label": "Play / Pause",
+          "parentRef": "element.vexstream-music.body.player.controls",
+          "symbol": "VexStreamMusicScreen.TogglePlayback",
+          "declared": "buttonRef(id = \"body.player.play-pause\")",
+          "labelRes": "R.string.vexstream_music_play_pause",
+          "intent": "localEffect()",
+          "pathwayRef": "pathway.vexstream.playback.play-pause"
+        },
+        {
+          "ref": "element.vexstream-music.body.player.next",
+          "kind": "BUTTON",
+          "label": "Next",
+          "parentRef": "element.vexstream-music.body.player.controls",
+          "symbol": "VexStreamMusicScreen.NextTrack",
+          "declared": "buttonRef(id = \"body.player.next\")",
+          "labelRes": "R.string.vexstream_music_next",
+          "intent": "localEffect()",
+          "pathwayRef": "pathway.vexstream-music.local-effect"
+        },
+        {
+          "ref": "element.vexstream-music.body.player.shuffle",
+          "kind": "BUTTON",
+          "label": "Shuffle",
+          "parentRef": "element.vexstream-music.body.player.controls",
+          "symbol": "VexStreamMusicScreen.ShuffleQueue",
+          "declared": "buttonRef(id = \"body.player.shuffle\")",
+          "labelRes": "R.string.vexstream_music_shuffle",
+          "intent": "localEffect()",
+          "pathwayRef": "pathway.vexstream-music.local-effect"
+        },
+        {
+          "ref": "element.vexstream-music.body.player.sheet",
+          "kind": "SHEET",
+          "label": "Sheet",
+          "parentRef": "element.vexstream-music.body",
+          "symbol": "VexStreamMusicScreen.FullPlayerSheet",
+          "declared": "modalBottomSheetRef(id = \"body.player.sheet\")",
+          "visibleWhen": "runtime.presentation.isOpen(FullPlayerSheet)"
+        },
+        {
+          "ref": "element.vexstream-music.body.player.sheet.content",
+          "kind": "REGION",
+          "label": "Content",
+          "parentRef": "element.vexstream-music.body.player.sheet",
+          "symbol": "VexStreamMusicScreen.FullPlayerContent",
+          "declared": "swappableRef(id = \"body.player.sheet.content\")"
+        },
+        {
+          "ref": "element.vexstream-music.body.player.sheet.content.now-playing",
+          "kind": "COLUMN",
+          "label": "Now playing",
+          "parentRef": "element.vexstream-music.body.player.sheet.content",
+          "symbol": "VexStreamMusicScreen.FullPlayerNowPlayingPanel",
+          "declared": "columnRef(id = \"body.player.sheet.content.now-playing\")"
+        },
+        {
+          "ref": "element.vexstream-music.body.queue.sheet",
+          "kind": "COLUMN",
+          "label": "Sheet",
+          "parentRef": "element.vexstream-music.body.player.sheet.content",
+          "symbol": "VexStreamMusicScreen.QueuePanel",
+          "declared": "columnRef(id = \"body.queue.sheet\")"
+        },
+        {
+          "ref": "element.vexstream-music.body.queue.sheet.shuffle",
+          "kind": "BUTTON",
+          "label": "Shuffle",
+          "parentRef": "element.vexstream-music.body.queue.sheet",
+          "symbol": "VexStreamMusicScreen.QueueShuffle",
+          "declared": "buttonRef(id = \"body.queue.sheet.shuffle\")",
+          "labelRes": "R.string.vexstream_music_shuffle",
+          "intent": "localEffect()",
+          "pathwayRef": "pathway.vexstream-music.local-effect"
+        },
+        {
+          "ref": "element.vexstream-music.body.queue.sheet.repeat",
+          "kind": "BUTTON",
+          "label": "Repeat",
+          "parentRef": "element.vexstream-music.body.queue.sheet",
+          "symbol": "VexStreamMusicScreen.ToggleRepeat",
+          "declared": "buttonRef(id = \"body.queue.sheet.repeat\")",
+          "labelRes": "R.string.vexstream_music_repeat",
+          "intent": "localEffect()",
+          "pathwayRef": "pathway.vexstream-music.local-effect"
+        },
+        {
+          "ref": "element.vexstream-music.body.queue.sheet.clear",
+          "kind": "BUTTON",
+          "label": "Clear queue",
+          "parentRef": "element.vexstream-music.body.queue.sheet",
+          "symbol": "VexStreamMusicScreen.ClearQueue",
+          "declared": "buttonRef(id = \"body.queue.sheet.clear\")",
+          "labelRes": "R.string.vexstream_music_clear_queue",
+          "intent": "localEffect()",
+          "pathwayRef": "pathway.vexstream-music.local-effect"
+        },
+        {
+          "ref": "element.vexstream-music.body.queue.sheet.play",
+          "kind": "BUTTON",
+          "label": "Play queued song",
+          "parentRef": "element.vexstream-music.body.queue.sheet",
+          "symbol": "VexStreamMusicScreen.QueuePlay",
+          "declared": "buttonRef(id = \"body.queue.sheet.play\")",
+          "labelRes": "R.string.vexstream_music_queue_play",
+          "intent": "localEffect()",
+          "pathwayRef": "pathway.vexstream-music.local-effect"
+        },
+        {
+          "ref": "element.vexstream-music.body.queue.sheet.reorder",
+          "kind": "BUTTON",
+          "label": "Reorder queue",
+          "parentRef": "element.vexstream-music.body.queue.sheet",
+          "symbol": "VexStreamMusicScreen.QueueReorder",
+          "declared": "buttonRef(id = \"body.queue.sheet.reorder\")",
+          "labelRes": "R.string.vexstream_music_queue_reorder",
+          "intent": "localEffect()",
+          "pathwayRef": "pathway.vexstream-music.local-effect"
+        },
+        {
+          "ref": "element.vexstream-music.body.queue.sheet.now-playing",
+          "kind": "BUTTON",
+          "label": "Now playing",
+          "parentRef": "element.vexstream-music.body.queue.sheet",
+          "symbol": "VexStreamMusicScreen.ShowNowPlaying",
+          "declared": "buttonRef(id = \"body.queue.sheet.now-playing\")",
+          "labelRes": "R.string.vexstream_music_now_playing",
+          "intent": "swapTo(container = FullPlayerContent, child = FullPlayerNowPlayingPanel)",
+          "pathwayRef": "pathway.vexstream-music.swap-to"
+        },
+        {
+          "ref": "element.vexstream-music.body.queue.sheet.close",
+          "kind": "BUTTON",
+          "label": "Close",
+          "parentRef": "element.vexstream-music.body.queue.sheet",
+          "symbol": "VexStreamMusicScreen.CloseQueue",
+          "declared": "buttonRef(id = \"body.queue.sheet.close\")",
+          "labelRes": "R.string.close",
+          "intent": "close(FullPlayerSheet)",
+          "pathwayRef": "pathway.vexstream-music.close.FullPlayerSheet"
+        },
+        {
+          "ref": "element.vexstream-music.body.player.sheet.close",
+          "kind": "BUTTON",
+          "label": "Close",
+          "parentRef": "element.vexstream-music.body.player.sheet",
+          "symbol": "VexStreamMusicScreen.CloseFullPlayer",
+          "declared": "buttonRef(id = \"body.player.sheet.close\")",
+          "labelRes": "R.string.close",
+          "intent": "close(FullPlayerSheet)",
+          "pathwayRef": "pathway.vexstream-music.close.FullPlayerSheet"
+        },
+        {
+          "ref": "element.vexstream-music.body.library.search-sheet",
+          "kind": "SHEET",
+          "label": "Search sheet",
+          "parentRef": "element.vexstream-music.body",
+          "symbol": "VexStreamMusicScreen.SearchSheet",
+          "declared": "modalBottomSheetRef(id = \"body.library.search-sheet\")",
+          "visibleWhen": "runtime.presentation.isOpen(SearchSheet)"
+        },
+        {
+          "ref": "element.vexstream-music.body.library.search-sheet.content",
+          "kind": "COLUMN",
+          "label": "Content",
+          "parentRef": "element.vexstream-music.body.library.search-sheet",
+          "symbol": "VexStreamMusicScreen.SearchContent",
+          "declared": "columnRef(id = \"body.library.search-sheet.content\")"
+        },
+        {
+          "ref": "element.vexstream-music.body.library.search",
+          "kind": "FIELD",
+          "label": "Search your VexStream library",
+          "parentRef": "element.vexstream-music.body.library.search-sheet.content",
+          "symbol": "VexStreamMusicScreen.SearchQuery",
+          "declared": "textFieldRef(id = \"body.library.search\")",
+          "labelRes": "R.string.vexstream_music_search"
+        },
+        {
+          "ref": "element.vexstream-music.body.library.search-sheet.content.prompt",
+          "kind": "TEXT",
+          "label": "Search your VexStream library",
+          "parentRef": "element.vexstream-music.body.library.search-sheet.content",
+          "symbol": "VexStreamMusicScreen.SearchPrompt",
+          "declared": "textRef(id = \"body.library.search-sheet.content.prompt\")",
+          "labelRes": "R.string.vexstream_music_search"
+        },
+        {
+          "ref": "element.vexstream-music.body.library.search-sheet.content.no-results",
+          "kind": "TEXT",
+          "label": "No matching music.",
+          "parentRef": "element.vexstream-music.body.library.search-sheet.content",
+          "symbol": "VexStreamMusicScreen.SearchNoResults",
+          "declared": "textRef(id = \"body.library.search-sheet.content.no-results\")",
+          "labelRes": "R.string.vexstream_music_no_search_results"
+        },
+        {
+          "ref": "element.vexstream-music.body.library.search.close",
+          "kind": "BUTTON",
+          "label": "Close",
+          "parentRef": "element.vexstream-music.body.library.search-sheet.content",
+          "symbol": "VexStreamMusicScreen.CloseSearch",
+          "declared": "buttonRef(id = \"body.library.search.close\")",
+          "labelRes": "R.string.close",
+          "intent": "close(SearchSheet)",
+          "pathwayRef": "pathway.vexstream-music.close.SearchSheet"
+        },
+        {
+          "ref": "element.vexstream-music.body.library.organization-sheet",
+          "kind": "SHEET",
+          "label": "Organization sheet",
+          "parentRef": "element.vexstream-music.body",
+          "symbol": "VexStreamMusicScreen.OrganizationSheet",
+          "declared": "modalBottomSheetRef(id = \"body.library.organization-sheet\")",
+          "visibleWhen": "runtime.presentation.isOpen(OrganizationSheet)"
+        },
+        {
+          "ref": "element.vexstream-music.body.library.organization-sheet.content",
+          "kind": "COLUMN",
+          "label": "Content",
+          "parentRef": "element.vexstream-music.body.library.organization-sheet",
+          "declared": "column(\"content\")"
+        },
+        {
+          "ref": "element.vexstream-music.body.library.organization.sort.title",
+          "kind": "BUTTON",
+          "label": "Title",
+          "parentRef": "element.vexstream-music.body.library.organization-sheet.content",
+          "symbol": "VexStreamMusicScreen.SortLibraryByTitle",
+          "declared": "buttonRef(id = \"body.library.organization.sort.title\")",
+          "labelRes": "R.string.vexstream_music_sort_title",
+          "intent": "localEffect()",
+          "pathwayRef": "pathway.vexstream-music.local-effect"
+        },
+        {
+          "ref": "element.vexstream-music.body.library.organization.sort.artist",
+          "kind": "BUTTON",
+          "label": "Artist",
+          "parentRef": "element.vexstream-music.body.library.organization-sheet.content",
+          "symbol": "VexStreamMusicScreen.SortLibraryByArtist",
+          "declared": "buttonRef(id = \"body.library.organization.sort.artist\")",
+          "labelRes": "R.string.vexstream_music_sort_artist",
+          "intent": "localEffect()",
+          "pathwayRef": "pathway.vexstream-music.local-effect"
+        },
+        {
+          "ref": "element.vexstream-music.body.library.organization.sort.album",
+          "kind": "BUTTON",
+          "label": "Album",
+          "parentRef": "element.vexstream-music.body.library.organization-sheet.content",
+          "symbol": "VexStreamMusicScreen.SortLibraryByAlbum",
+          "declared": "buttonRef(id = \"body.library.organization.sort.album\")",
+          "labelRes": "R.string.vexstream_music_sort_album",
+          "intent": "localEffect()",
+          "pathwayRef": "pathway.vexstream-music.local-effect"
+        },
+        {
+          "ref": "element.vexstream-music.body.library.organization.sort.year",
+          "kind": "BUTTON",
+          "label": "Year",
+          "parentRef": "element.vexstream-music.body.library.organization-sheet.content",
+          "symbol": "VexStreamMusicScreen.SortLibraryByYear",
+          "declared": "buttonRef(id = \"body.library.organization.sort.year\")",
+          "labelRes": "R.string.vexstream_music_sort_year",
+          "intent": "localEffect()",
+          "pathwayRef": "pathway.vexstream-music.local-effect"
+        },
+        {
+          "ref": "element.vexstream-music.body.library.organization.sort.duration",
+          "kind": "BUTTON",
+          "label": "Duration",
+          "parentRef": "element.vexstream-music.body.library.organization-sheet.content",
+          "symbol": "VexStreamMusicScreen.SortLibraryByDuration",
+          "declared": "buttonRef(id = \"body.library.organization.sort.duration\")",
+          "labelRes": "R.string.vexstream_music_sort_duration",
+          "intent": "localEffect()",
+          "pathwayRef": "pathway.vexstream-music.local-effect"
+        },
+        {
+          "ref": "element.vexstream-music.body.library.organization.duration.any",
+          "kind": "BUTTON",
+          "label": "Any duration",
+          "parentRef": "element.vexstream-music.body.library.organization-sheet.content",
+          "symbol": "VexStreamMusicScreen.DurationFilterAny",
+          "declared": "buttonRef(id = \"body.library.organization.duration.any\")",
+          "labelRes": "R.string.vexstream_music_filter_any_duration",
+          "intent": "localEffect()",
+          "pathwayRef": "pathway.vexstream-music.local-effect"
+        },
+        {
+          "ref": "element.vexstream-music.body.library.organization.duration.less-than",
+          "kind": "BUTTON",
+          "label": "Less than",
+          "parentRef": "element.vexstream-music.body.library.organization-sheet.content",
+          "symbol": "VexStreamMusicScreen.DurationFilterLessThan",
+          "declared": "buttonRef(id = \"body.library.organization.duration.less-than\")",
+          "labelRes": "R.string.vexstream_music_filter_less_than",
+          "intent": "localEffect()",
+          "pathwayRef": "pathway.vexstream-music.local-effect"
+        },
+        {
+          "ref": "element.vexstream-music.body.library.organization.duration.greater-than",
+          "kind": "BUTTON",
+          "label": "Greater than",
+          "parentRef": "element.vexstream-music.body.library.organization-sheet.content",
+          "symbol": "VexStreamMusicScreen.DurationFilterGreaterThan",
+          "declared": "buttonRef(id = \"body.library.organization.duration.greater-than\")",
+          "labelRes": "R.string.vexstream_music_filter_greater_than",
+          "intent": "localEffect()",
+          "pathwayRef": "pathway.vexstream-music.local-effect"
+        },
+        {
+          "ref": "element.vexstream-music.body.library.organization.duration-minutes",
+          "kind": "FIELD",
+          "label": "Minutes",
+          "parentRef": "element.vexstream-music.body.library.organization-sheet.content",
+          "symbol": "VexStreamMusicScreen.DurationThresholdMinutes",
+          "declared": "textFieldRef(id = \"body.library.organization.duration-minutes\")",
+          "labelRes": "R.string.vexstream_music_filter_duration_minutes"
+        },
+        {
+          "ref": "element.vexstream-music.body.library.organization.filter.toggle",
+          "kind": "BUTTON",
+          "label": "Toggle library filter",
+          "parentRef": "element.vexstream-music.body.library.organization-sheet.content",
+          "symbol": "VexStreamMusicScreen.ToggleLibraryFilter",
+          "declared": "buttonRef(id = \"body.library.organization.filter.toggle\")",
+          "labelRes": "R.string.vexstream_music_filter_toggle",
+          "intent": "localEffect()",
+          "pathwayRef": "pathway.vexstream-music.local-effect"
+        },
+        {
+          "ref": "element.vexstream-music.body.library.organization.clear-filters",
+          "kind": "BUTTON",
+          "label": "Clear filters",
+          "parentRef": "element.vexstream-music.body.library.organization-sheet.content",
+          "symbol": "VexStreamMusicScreen.ClearLibraryFilters",
+          "declared": "buttonRef(id = \"body.library.organization.clear-filters\")",
+          "labelRes": "R.string.vexstream_music_filter_clear",
+          "intent": "localEffect()",
+          "pathwayRef": "pathway.vexstream-music.local-effect"
+        },
+        {
+          "ref": "element.vexstream-music.body.library.organization.close",
+          "kind": "BUTTON",
+          "label": "Close",
+          "parentRef": "element.vexstream-music.body.library.organization-sheet.content",
+          "symbol": "VexStreamMusicScreen.CloseOrganization",
+          "declared": "buttonRef(id = \"body.library.organization.close\")",
+          "labelRes": "R.string.close",
+          "intent": "close(OrganizationSheet)",
+          "pathwayRef": "pathway.vexstream-music.close.OrganizationSheet"
+        },
+        {
+          "ref": "element.vexstream-music.body.connection.menu",
+          "kind": "SHEET",
+          "label": "Menu",
+          "parentRef": "element.vexstream-music.body",
+          "symbol": "VexStreamMusicScreen.ConnectionMenuSheet",
+          "declared": "modalBottomSheetRef(id = \"body.connection.menu\")",
+          "visibleWhen": "runtime.presentation.isOpen(ConnectionMenuSheet)"
+        },
+        {
+          "ref": "element.vexstream-music.body.connection.refresh",
+          "kind": "BUTTON",
+          "label": "Refresh library",
+          "parentRef": "element.vexstream-music.body.connection.menu",
+          "symbol": "VexStreamMusicScreen.RefreshCatalog",
+          "declared": "buttonRef(id = \"body.connection.refresh\")",
+          "labelRes": "R.string.vexstream_music_refresh",
+          "intent": "invoke(AppActions.RefreshVexStreamCatalog)",
+          "actionKey": "action.vexstream-music.catalog.refresh",
+          "call": "scope.launch { repository.refreshCatalog() }",
+          "pathwayRef": "pathway.vexstream-music.catalog.refresh"
+        },
+        {
+          "ref": "element.vexstream-music.body.connection.reconnect",
+          "kind": "BUTTON",
+          "label": "Reconnect",
+          "parentRef": "element.vexstream-music.body.connection.menu",
+          "symbol": "VexStreamMusicScreen.Reconnect",
+          "declared": "buttonRef(id = \"body.connection.reconnect\")",
+          "labelRes": "R.string.vexstream_music_reconnect",
+          "intent": "invoke(AppActions.ReconnectVexStream)",
+          "actionKey": "action.vexstream-music.connection.reconnect",
+          "call": "scope.launch { repository.reconnectPairedVexStream() }",
+          "pathwayRef": "pathway.vexstream-music.connection.reconnect"
+        },
+        {
+          "ref": "element.vexstream-music.body.connection.library.download-all-missing",
+          "kind": "BUTTON",
+          "label": "Download missing songs & artwork",
+          "parentRef": "element.vexstream-music.body.connection.menu",
+          "symbol": "VexStreamMusicScreen.DownloadAllMissingSongs",
+          "declared": "buttonRef(id = \"body.connection.library.download-all-missing\")",
+          "labelRes": "R.string.vexstream_music_download_all_missing",
+          "intent": "localEffect()",
+          "pathwayRef": "pathway.vexstream-music.local-effect"
+        },
+        {
+          "ref": "element.vexstream-music.body.connection.library.remove-all-downloaded",
+          "kind": "BUTTON",
+          "label": "Remove all downloaded songs",
+          "parentRef": "element.vexstream-music.body.connection.menu",
+          "symbol": "VexStreamMusicScreen.RemoveAllDownloadedSongs",
+          "declared": "buttonRef(id = \"body.connection.library.remove-all-downloaded\")",
+          "labelRes": "R.string.vexstream_music_remove_all_downloaded",
+          "intent": "localEffect()",
+          "pathwayRef": "pathway.vexstream-music.local-effect"
+        },
+        {
+          "ref": "element.vexstream-music.body.connection.forget.request",
+          "kind": "BUTTON",
+          "label": "Forget this VexStream",
+          "parentRef": "element.vexstream-music.body.connection.menu",
+          "symbol": "VexStreamMusicScreen.RequestForgetPaired",
+          "declared": "buttonRef(id = \"body.connection.forget.request\")",
+          "labelRes": "R.string.vexstream_music_forget",
+          "intent": "open(ForgetConfirmationDialog)",
+          "pathwayRef": "pathway.vexstream-music.open.ForgetConfirmationDialog"
+        },
+        {
+          "ref": "element.vexstream-music.body.connection.menu.close",
+          "kind": "BUTTON",
+          "label": "Close",
+          "parentRef": "element.vexstream-music.body.connection.menu",
+          "symbol": "VexStreamMusicScreen.CloseConnectionMenu",
+          "declared": "buttonRef(id = \"body.connection.menu.close\")",
+          "labelRes": "R.string.close",
+          "intent": "close(ConnectionMenuSheet)",
+          "pathwayRef": "pathway.vexstream-music.close.ConnectionMenuSheet"
+        },
+        {
+          "ref": "element.vexstream-music.body.connection.forget-confirmation",
+          "kind": "DIALOG",
+          "label": "Forget confirmation",
+          "parentRef": "element.vexstream-music.body",
+          "symbol": "VexStreamMusicScreen.ForgetConfirmationDialog",
+          "declared": "dialogRef(id = \"body.connection.forget-confirmation\")",
+          "visibleWhen": "runtime.presentation.isOpen(ForgetConfirmationDialog)"
+        },
+        {
+          "ref": "element.vexstream-music.body.connection.forget",
+          "kind": "BUTTON",
+          "label": "Forget VexStream",
+          "parentRef": "element.vexstream-music.body.connection.forget-confirmation",
+          "symbol": "VexStreamMusicScreen.ForgetPaired",
+          "declared": "buttonRef(id = \"body.connection.forget\")",
+          "labelRes": "R.string.vexstream_music_forget_confirm",
+          "intent": "invoke(AppActions.ForgetPairedVexStream) .then(close(ForgetConfirmationDialog)) .then(close(ConnectionMenuSheet))",
+          "actionKey": "action.vexstream-music.connection.forget",
+          "call": "scope.launch { repository.forgetPairedVexStream() }",
+          "pathwayRef": "pathway.vexstream-music.connection.forget"
+        },
+        {
+          "ref": "element.vexstream-music.body.connection.forget.cancel",
+          "kind": "BUTTON",
+          "label": "Cancel",
+          "parentRef": "element.vexstream-music.body.connection.forget-confirmation",
+          "symbol": "VexStreamMusicScreen.CancelForgetPaired",
+          "declared": "buttonRef(id = \"body.connection.forget.cancel\")",
+          "labelRes": "R.string.vexstream_music_cancel",
+          "intent": "close(ForgetConfirmationDialog)",
+          "pathwayRef": "pathway.vexstream-music.close.ForgetConfirmationDialog"
+        }
+      ]
+    }
+  ],
+  "pathways": [
+    {
+      "pathwayRef": "pathway.vexstream-music.connection.find",
+      "label": "Find nearby vex stream",
+      "disposition": "DIRECT_REGISTRATION",
+      "summary": "The registration calls owners directly; no Family has earned this meaning yet.",
+      "returns": null,
+      "nodes": [
+        {
+          "ref": "vexstream-music.connection.find.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "invoke(AppActions.FindNearbyVexStream)",
+          "symbol": "action.vexstream-music.connection.find",
+          "summary": "Application action key.",
+          "source": "app:runtime/AppActions.kt"
+        },
+        {
+          "ref": "vexstream-music.connection.find.runtime",
+          "face": "BEHAVIOR",
+          "role": "DISPATCH",
+          "label": "VexRuntime → AppActionRegistrations.dispatch",
+          "symbol": "ElementIntent.Invoke",
+          "summary": "Runtime interprets the Invoke intent and looks up the one registered owner for the ActionKey.",
+          "source": "app:runtime/VexRuntime.kt"
+        },
+        {
+          "ref": "vexstream-music.connection.find.registration",
+          "face": "BEHAVIOR",
+          "role": "DISPATCH",
+          "label": "appAction(FindNearbyVexStream) { scope.launch { repository.findNearbyVexStream() } }",
+          "symbol": "vexStreamActionRegistrations",
+          "summary": "Calls the rightful owners directly. No Act, no Effect.",
+          "source": "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
+        },
+        {
+          "ref": "vexstream-music.connection.find.owner-repository",
+          "face": "DEPTH",
+          "role": "STORE",
+          "label": "VexStreamMusicRepository",
+          "symbol": "repository",
+          "summary": "Outside truth this registration touches.",
+          "source": "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
+        }
+      ],
+      "edges": [
+        {
+          "from": "vexstream-music.connection.find.intent",
+          "to": "vexstream-music.connection.find.runtime",
+          "label": "Invoke"
+        },
+        {
+          "from": "vexstream-music.connection.find.runtime",
+          "to": "vexstream-music.connection.find.registration",
+          "label": "dispatch"
+        },
+        {
+          "from": "vexstream-music.connection.find.registration",
+          "to": "vexstream-music.connection.find.owner-repository",
+          "label": "calls"
+        }
+      ]
+    },
+    {
+      "pathwayRef": "pathway.vexstream-music.connection.confirm-code",
+      "label": "Confirm vex stream pairing code",
+      "disposition": "DIRECT_REGISTRATION",
+      "summary": "The registration calls owners directly; no Family has earned this meaning yet.",
+      "returns": null,
+      "nodes": [
+        {
+          "ref": "vexstream-music.connection.confirm-code.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "invoke(AppActions.ConfirmVexStreamPairingCode)",
+          "symbol": "action.vexstream-music.connection.confirm-code",
+          "summary": "Application action key.",
+          "source": "app:runtime/AppActions.kt"
+        },
+        {
+          "ref": "vexstream-music.connection.confirm-code.runtime",
+          "face": "BEHAVIOR",
+          "role": "DISPATCH",
+          "label": "VexRuntime → AppActionRegistrations.dispatch",
+          "symbol": "ElementIntent.Invoke",
+          "summary": "Runtime interprets the Invoke intent and looks up the one registered owner for the ActionKey.",
+          "source": "app:runtime/VexRuntime.kt"
+        },
+        {
+          "ref": "vexstream-music.connection.confirm-code.registration",
+          "face": "BEHAVIOR",
+          "role": "DISPATCH",
+          "label": "appAction(ConfirmVexStreamPairingCode) { scope.launch { repository.confirmPairingCode() } }",
+          "symbol": "vexStreamActionRegistrations",
+          "summary": "Calls the rightful owners directly. No Act, no Effect.",
+          "source": "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
+        },
+        {
+          "ref": "vexstream-music.connection.confirm-code.owner-repository",
+          "face": "DEPTH",
+          "role": "STORE",
+          "label": "VexStreamMusicRepository",
+          "symbol": "repository",
+          "summary": "Outside truth this registration touches.",
+          "source": "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
+        }
+      ],
+      "edges": [
+        {
+          "from": "vexstream-music.connection.confirm-code.intent",
+          "to": "vexstream-music.connection.confirm-code.runtime",
+          "label": "Invoke"
+        },
+        {
+          "from": "vexstream-music.connection.confirm-code.runtime",
+          "to": "vexstream-music.connection.confirm-code.registration",
+          "label": "dispatch"
+        },
+        {
+          "from": "vexstream-music.connection.confirm-code.registration",
+          "to": "vexstream-music.connection.confirm-code.owner-repository",
+          "label": "calls"
+        }
+      ]
+    },
+    {
+      "pathwayRef": "pathway.vexstream-music.swap-to",
+      "label": "Swap to",
+      "disposition": "TYPED_PRESENTATION",
+      "summary": "A typed presentation relationship already says everything; no Family, Act or Effect is earned.",
+      "returns": null,
+      "nodes": [
+        {
+          "ref": "vexstream-music.swap-to.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "swapTo(container = LibraryContent, child = SongsPanel)",
+          "symbol": "ElementIntent",
+          "summary": "Declared on the element.",
+          "source": "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
+        },
+        {
+          "ref": "vexstream-music.swap-to.step-1",
+          "face": "BEHAVIOR",
+          "role": "NAVIGATION",
+          "label": "SwapTo(container = LibraryContent, child = SongsPanel)",
+          "symbol": "runtime.presentation",
+          "summary": "Runtime presentation state changes; no Behavior is earned.",
+          "source": "app:runtime/VexRuntime.kt"
+        }
+      ],
+      "edges": [
+        {
+          "from": "vexstream-music.swap-to.intent",
+          "to": "vexstream-music.swap-to.step-1",
+          "label": "swapTo"
+        }
+      ]
+    },
+    {
+      "pathwayRef": "pathway.vexstream-music.local-effect",
+      "label": "Local effect",
+      "disposition": "TYPED_PRESENTATION",
+      "summary": "A typed presentation relationship already says everything; no Family, Act or Effect is earned.",
+      "returns": null,
+      "nodes": [
+        {
+          "ref": "vexstream-music.local-effect.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "localEffect()",
+          "symbol": "ElementIntent",
+          "summary": "Declared on the element.",
+          "source": "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
+        },
+        {
+          "ref": "vexstream-music.local-effect.step-1",
+          "face": "BEHAVIOR",
+          "role": "NAVIGATION",
+          "label": "LocalEffect()",
+          "symbol": "runtime.presentation",
+          "summary": "Runtime presentation state changes; no Behavior is earned.",
+          "source": "app:runtime/VexRuntime.kt"
+        }
+      ],
+      "edges": [
+        {
+          "from": "vexstream-music.local-effect.intent",
+          "to": "vexstream-music.local-effect.step-1",
+          "label": "localEffect"
+        }
+      ]
+    },
+    {
+      "pathwayRef": "pathway.vexstream-music.swap-to-then-open",
+      "label": "Swap to",
+      "disposition": "TYPED_PRESENTATION",
+      "summary": "A typed presentation relationship already says everything; no Family, Act or Effect is earned.",
+      "returns": null,
+      "nodes": [
+        {
+          "ref": "vexstream-music.swap-to-then-open.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "swapTo(container = FullPlayerContent, child = QueuePanel) then open(FullPlayerSheet)",
+          "symbol": "ElementIntent",
+          "summary": "Declared on the element.",
+          "source": "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
+        },
+        {
+          "ref": "vexstream-music.swap-to-then-open.step-1",
+          "face": "BEHAVIOR",
+          "role": "NAVIGATION",
+          "label": "SwapTo(container = FullPlayerContent, child = QueuePanel)",
+          "symbol": "runtime.presentation",
+          "summary": "Runtime presentation state changes; no Behavior is earned.",
+          "source": "app:runtime/VexRuntime.kt"
+        },
+        {
+          "ref": "vexstream-music.swap-to-then-open.step-2",
+          "face": "BEHAVIOR",
+          "role": "NAVIGATION",
+          "label": "Open(FullPlayerSheet)",
+          "symbol": "runtime.presentation",
+          "summary": "Runtime presentation state changes; no Behavior is earned.",
+          "source": "app:runtime/VexRuntime.kt"
+        }
+      ],
+      "edges": [
+        {
+          "from": "vexstream-music.swap-to-then-open.intent",
+          "to": "vexstream-music.swap-to-then-open.step-1",
+          "label": "swapTo"
+        },
+        {
+          "from": "vexstream-music.swap-to-then-open.step-1",
+          "to": "vexstream-music.swap-to-then-open.step-2",
+          "label": "then"
+        }
+      ]
+    },
+    {
+      "pathwayRef": "pathway.vexstream-music.close.FullPlayerSheet",
+      "label": "Close Full player sheet",
+      "disposition": "TYPED_PRESENTATION",
+      "summary": "A typed presentation relationship already says everything; no Family, Act or Effect is earned.",
+      "returns": null,
+      "nodes": [
+        {
+          "ref": "vexstream-music.close.FullPlayerSheet.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "close(FullPlayerSheet)",
+          "symbol": "ElementIntent",
+          "summary": "Declared on the element.",
+          "source": "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
+        },
+        {
+          "ref": "vexstream-music.close.FullPlayerSheet.step-1",
+          "face": "BEHAVIOR",
+          "role": "NAVIGATION",
+          "label": "Close(element.vexstream-music.body.player.sheet)",
+          "symbol": "runtime.presentation",
+          "summary": "Runtime presentation state changes; no Behavior is earned.",
+          "source": "app:runtime/VexRuntime.kt"
+        }
+      ],
+      "edges": [
+        {
+          "from": "vexstream-music.close.FullPlayerSheet.intent",
+          "to": "vexstream-music.close.FullPlayerSheet.step-1",
+          "label": "close"
+        }
+      ]
+    },
+    {
+      "pathwayRef": "pathway.vexstream-music.close.SearchSheet",
+      "label": "Close Search sheet",
+      "disposition": "TYPED_PRESENTATION",
+      "summary": "A typed presentation relationship already says everything; no Family, Act or Effect is earned.",
+      "returns": null,
+      "nodes": [
+        {
+          "ref": "vexstream-music.close.SearchSheet.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "close(SearchSheet)",
+          "symbol": "ElementIntent",
+          "summary": "Declared on the element.",
+          "source": "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
+        },
+        {
+          "ref": "vexstream-music.close.SearchSheet.step-1",
+          "face": "BEHAVIOR",
+          "role": "NAVIGATION",
+          "label": "Close(element.vexstream-music.body.library.search-sheet)",
+          "symbol": "runtime.presentation",
+          "summary": "Runtime presentation state changes; no Behavior is earned.",
+          "source": "app:runtime/VexRuntime.kt"
+        }
+      ],
+      "edges": [
+        {
+          "from": "vexstream-music.close.SearchSheet.intent",
+          "to": "vexstream-music.close.SearchSheet.step-1",
+          "label": "close"
+        }
+      ]
+    },
+    {
+      "pathwayRef": "pathway.vexstream-music.close.OrganizationSheet",
+      "label": "Close Organization sheet",
+      "disposition": "TYPED_PRESENTATION",
+      "summary": "A typed presentation relationship already says everything; no Family, Act or Effect is earned.",
+      "returns": null,
+      "nodes": [
+        {
+          "ref": "vexstream-music.close.OrganizationSheet.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "close(OrganizationSheet)",
+          "symbol": "ElementIntent",
+          "summary": "Declared on the element.",
+          "source": "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
+        },
+        {
+          "ref": "vexstream-music.close.OrganizationSheet.step-1",
+          "face": "BEHAVIOR",
+          "role": "NAVIGATION",
+          "label": "Close(element.vexstream-music.body.library.organization-sheet)",
+          "symbol": "runtime.presentation",
+          "summary": "Runtime presentation state changes; no Behavior is earned.",
+          "source": "app:runtime/VexRuntime.kt"
+        }
+      ],
+      "edges": [
+        {
+          "from": "vexstream-music.close.OrganizationSheet.intent",
+          "to": "vexstream-music.close.OrganizationSheet.step-1",
+          "label": "close"
+        }
+      ]
+    },
+    {
+      "pathwayRef": "pathway.vexstream-music.catalog.refresh",
+      "label": "Refresh vex stream catalog",
+      "disposition": "DIRECT_REGISTRATION",
+      "summary": "The registration calls owners directly; no Family has earned this meaning yet.",
+      "returns": null,
+      "nodes": [
+        {
+          "ref": "vexstream-music.catalog.refresh.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "invoke(AppActions.RefreshVexStreamCatalog)",
+          "symbol": "action.vexstream-music.catalog.refresh",
+          "summary": "Application action key.",
+          "source": "app:runtime/AppActions.kt"
+        },
+        {
+          "ref": "vexstream-music.catalog.refresh.runtime",
+          "face": "BEHAVIOR",
+          "role": "DISPATCH",
+          "label": "VexRuntime → AppActionRegistrations.dispatch",
+          "symbol": "ElementIntent.Invoke",
+          "summary": "Runtime interprets the Invoke intent and looks up the one registered owner for the ActionKey.",
+          "source": "app:runtime/VexRuntime.kt"
+        },
+        {
+          "ref": "vexstream-music.catalog.refresh.registration",
+          "face": "BEHAVIOR",
+          "role": "DISPATCH",
+          "label": "appAction(RefreshVexStreamCatalog) { scope.launch { repository.refreshCatalog() } }",
+          "symbol": "vexStreamActionRegistrations",
+          "summary": "Calls the rightful owners directly. No Act, no Effect.",
+          "source": "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
+        },
+        {
+          "ref": "vexstream-music.catalog.refresh.owner-repository",
+          "face": "DEPTH",
+          "role": "STORE",
+          "label": "VexStreamMusicRepository",
+          "symbol": "repository",
+          "summary": "Outside truth this registration touches.",
+          "source": "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
+        }
+      ],
+      "edges": [
+        {
+          "from": "vexstream-music.catalog.refresh.intent",
+          "to": "vexstream-music.catalog.refresh.runtime",
+          "label": "Invoke"
+        },
+        {
+          "from": "vexstream-music.catalog.refresh.runtime",
+          "to": "vexstream-music.catalog.refresh.registration",
+          "label": "dispatch"
+        },
+        {
+          "from": "vexstream-music.catalog.refresh.registration",
+          "to": "vexstream-music.catalog.refresh.owner-repository",
+          "label": "calls"
+        }
+      ]
+    },
+    {
+      "pathwayRef": "pathway.vexstream-music.connection.reconnect",
+      "label": "Reconnect vex stream",
+      "disposition": "DIRECT_REGISTRATION",
+      "summary": "The registration calls owners directly; no Family has earned this meaning yet.",
+      "returns": null,
+      "nodes": [
+        {
+          "ref": "vexstream-music.connection.reconnect.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "invoke(AppActions.ReconnectVexStream)",
+          "symbol": "action.vexstream-music.connection.reconnect",
+          "summary": "Application action key.",
+          "source": "app:runtime/AppActions.kt"
+        },
+        {
+          "ref": "vexstream-music.connection.reconnect.runtime",
+          "face": "BEHAVIOR",
+          "role": "DISPATCH",
+          "label": "VexRuntime → AppActionRegistrations.dispatch",
+          "symbol": "ElementIntent.Invoke",
+          "summary": "Runtime interprets the Invoke intent and looks up the one registered owner for the ActionKey.",
+          "source": "app:runtime/VexRuntime.kt"
+        },
+        {
+          "ref": "vexstream-music.connection.reconnect.registration",
+          "face": "BEHAVIOR",
+          "role": "DISPATCH",
+          "label": "appAction(ReconnectVexStream) { scope.launch { repository.reconnectPairedVexStream() } }",
+          "symbol": "vexStreamActionRegistrations",
+          "summary": "Calls the rightful owners directly. No Act, no Effect.",
+          "source": "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
+        },
+        {
+          "ref": "vexstream-music.connection.reconnect.owner-repository",
+          "face": "DEPTH",
+          "role": "STORE",
+          "label": "VexStreamMusicRepository",
+          "symbol": "repository",
+          "summary": "Outside truth this registration touches.",
+          "source": "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
+        }
+      ],
+      "edges": [
+        {
+          "from": "vexstream-music.connection.reconnect.intent",
+          "to": "vexstream-music.connection.reconnect.runtime",
+          "label": "Invoke"
+        },
+        {
+          "from": "vexstream-music.connection.reconnect.runtime",
+          "to": "vexstream-music.connection.reconnect.registration",
+          "label": "dispatch"
+        },
+        {
+          "from": "vexstream-music.connection.reconnect.registration",
+          "to": "vexstream-music.connection.reconnect.owner-repository",
+          "label": "calls"
+        }
+      ]
+    },
+    {
+      "pathwayRef": "pathway.vexstream-music.open.ForgetConfirmationDialog",
+      "label": "Open Forget confirmation dialog",
+      "disposition": "TYPED_PRESENTATION",
+      "summary": "A typed presentation relationship already says everything; no Family, Act or Effect is earned.",
+      "returns": null,
+      "nodes": [
+        {
+          "ref": "vexstream-music.open.ForgetConfirmationDialog.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "open(ForgetConfirmationDialog)",
+          "symbol": "ElementIntent",
+          "summary": "Declared on the element.",
+          "source": "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
+        },
+        {
+          "ref": "vexstream-music.open.ForgetConfirmationDialog.step-1",
+          "face": "BEHAVIOR",
+          "role": "NAVIGATION",
+          "label": "Open(element.vexstream-music.body.connection.forget-confirmation)",
+          "symbol": "runtime.presentation",
+          "summary": "Runtime presentation state changes; no Behavior is earned.",
+          "source": "app:runtime/VexRuntime.kt"
+        }
+      ],
+      "edges": [
+        {
+          "from": "vexstream-music.open.ForgetConfirmationDialog.intent",
+          "to": "vexstream-music.open.ForgetConfirmationDialog.step-1",
+          "label": "open"
+        }
+      ]
+    },
+    {
+      "pathwayRef": "pathway.vexstream-music.close.ConnectionMenuSheet",
+      "label": "Close Connection menu sheet",
+      "disposition": "TYPED_PRESENTATION",
+      "summary": "A typed presentation relationship already says everything; no Family, Act or Effect is earned.",
+      "returns": null,
+      "nodes": [
+        {
+          "ref": "vexstream-music.close.ConnectionMenuSheet.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "close(ConnectionMenuSheet)",
+          "symbol": "ElementIntent",
+          "summary": "Declared on the element.",
+          "source": "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
+        },
+        {
+          "ref": "vexstream-music.close.ConnectionMenuSheet.step-1",
+          "face": "BEHAVIOR",
+          "role": "NAVIGATION",
+          "label": "Close(element.vexstream-music.body.connection.menu)",
+          "symbol": "runtime.presentation",
+          "summary": "Runtime presentation state changes; no Behavior is earned.",
+          "source": "app:runtime/VexRuntime.kt"
+        }
+      ],
+      "edges": [
+        {
+          "from": "vexstream-music.close.ConnectionMenuSheet.intent",
+          "to": "vexstream-music.close.ConnectionMenuSheet.step-1",
+          "label": "close"
+        }
+      ]
+    },
+    {
+      "pathwayRef": "pathway.vexstream-music.connection.forget",
+      "label": "Forget paired vex stream",
+      "disposition": "DIRECT_REGISTRATION",
+      "summary": "The registration calls owners directly; no Family has earned this meaning yet.",
+      "returns": null,
+      "nodes": [
+        {
+          "ref": "vexstream-music.connection.forget.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "invoke(AppActions.ForgetPairedVexStream)",
+          "symbol": "action.vexstream-music.connection.forget",
+          "summary": "Application action key.",
+          "source": "app:runtime/AppActions.kt"
+        },
+        {
+          "ref": "vexstream-music.connection.forget.runtime",
+          "face": "BEHAVIOR",
+          "role": "DISPATCH",
+          "label": "VexRuntime → AppActionRegistrations.dispatch",
+          "symbol": "ElementIntent.Invoke",
+          "summary": "Runtime interprets the Invoke intent and looks up the one registered owner for the ActionKey.",
+          "source": "app:runtime/VexRuntime.kt"
+        },
+        {
+          "ref": "vexstream-music.connection.forget.registration",
+          "face": "BEHAVIOR",
+          "role": "DISPATCH",
+          "label": "appAction(ForgetPairedVexStream) { scope.launch { repository.forgetPairedVexStream() } }",
+          "symbol": "vexStreamActionRegistrations",
+          "summary": "Calls the rightful owners directly. No Act, no Effect.",
+          "source": "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
+        },
+        {
+          "ref": "vexstream-music.connection.forget.owner-repository",
+          "face": "DEPTH",
+          "role": "STORE",
+          "label": "VexStreamMusicRepository",
+          "symbol": "repository",
+          "summary": "Outside truth this registration touches.",
+          "source": "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
+        }
+      ],
+      "edges": [
+        {
+          "from": "vexstream-music.connection.forget.intent",
+          "to": "vexstream-music.connection.forget.runtime",
+          "label": "Invoke"
+        },
+        {
+          "from": "vexstream-music.connection.forget.runtime",
+          "to": "vexstream-music.connection.forget.registration",
+          "label": "dispatch"
+        },
+        {
+          "from": "vexstream-music.connection.forget.registration",
+          "to": "vexstream-music.connection.forget.owner-repository",
+          "label": "calls"
+        }
+      ]
+    },
+    {
+      "pathwayRef": "pathway.vexstream-music.close.ForgetConfirmationDialog",
+      "label": "Close Forget confirmation dialog",
+      "disposition": "TYPED_PRESENTATION",
+      "summary": "A typed presentation relationship already says everything; no Family, Act or Effect is earned.",
+      "returns": null,
+      "nodes": [
+        {
+          "ref": "vexstream-music.close.ForgetConfirmationDialog.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "close(ForgetConfirmationDialog)",
+          "symbol": "ElementIntent",
+          "summary": "Declared on the element.",
+          "source": "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
+        },
+        {
+          "ref": "vexstream-music.close.ForgetConfirmationDialog.step-1",
+          "face": "BEHAVIOR",
+          "role": "NAVIGATION",
+          "label": "Close(element.vexstream-music.body.connection.forget-confirmation)",
+          "symbol": "runtime.presentation",
+          "summary": "Runtime presentation state changes; no Behavior is earned.",
+          "source": "app:runtime/VexRuntime.kt"
+        }
+      ],
+      "edges": [
+        {
+          "from": "vexstream-music.close.ForgetConfirmationDialog.intent",
+          "to": "vexstream-music.close.ForgetConfirmationDialog.step-1",
+          "label": "close"
+        }
+      ]
+    },
+    {
+      "pathwayRef": "pathway.vexstream.playback.play-pause",
+      "label": "VexStream Playback · Play / Pause",
+      "disposition": "SCAE_FAMILY",
+      "summary": "The visible Play / Pause doorway carries one typed Playback Control through the Experience into the current Connection. Playback Behavior owns State → Act → Effect meaning; Media3 owns physical playback truth; provider observation is reconciled back into the same Playback projection.",
+      "returns": "The reconciled VexStreamPlaybackProjection and DisplayState return to the same mini-player Play / Pause control.",
+      "returnRef": "vexstream.playback.play-pause.presentation",
+      "nodes": [
+        {
+          "ref": "vexstream.playback.play-pause.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "localEffect()",
+          "symbol": "VexStreamMusicScreen.TogglePlayback",
+          "summary": "The registered element declares only that feature-local behavior will handle this touch; it does not itself claim Playback meaning.",
+          "source": "app:screens/shared/vexstream/VexStreamMusicScreen.kt",
+          "code": "intent = localEffect()"
+        },
+        {
+          "ref": "vexstream.playback.play-pause.doorway",
+          "face": "BEHAVIOR",
+          "role": "DISPATCH",
+          "label": "VexStreamPlaybackExperience.activate(PlayPause)",
+          "symbol": "VexStreamPlaybackExperience.activate",
+          "summary": "The visible Play / Pause manifestations forward the same Family-bound Control through the UI-facing Playback Experience membrane.",
+          "source": "app:screens/shared/vexstream/VexStreamPlayerPresentation.kt",
+          "code": "VexStreamMusicScreen.TogglePlayback -> playbackExperience.activate(VexStreamPlaybackControl.PlayPause)"
+        },
+        {
+          "ref": "vexstream.playback.play-pause.control",
+          "face": "BEHAVIOR",
+          "role": "CONTROL",
+          "label": "VexStreamPlaybackControl.PlayPause",
+          "symbol": "VexStreamPlaybackControl.PlayPause",
+          "summary": "Family-bound semantic input. The Control blueprint maps it to Play or Pause according to exact current State.",
+          "source": "app:vexstream/playback/VexStreamPlaybackControl.kt"
+        },
+        {
+          "ref": "vexstream.playback.play-pause.state",
+          "face": "BEHAVIOR",
+          "role": "STATE",
+          "label": "CURRENT VexStreamPlaybackState · NoMedia | Media | Ended",
+          "symbol": "VexStreamPlaybackState",
+          "summary": "Current semantic playback truth derived from Media3 plus still-pending local intent.",
+          "source": "app:vexstream/playback/VexStreamPlaybackState.kt"
+        },
+        {
+          "ref": "vexstream.playback.play-pause.act",
+          "face": "BEHAVIOR",
+          "role": "ACT",
+          "label": "PlayPause → Play | Pause",
+          "symbol": "VexStreamPlaybackAct",
+          "summary": "The Control blueprint chooses the lawful Act for the exact current State; NoMedia admits no PlayPause Act.",
+          "source": "app:vexstream/playback/VexStreamPlaybackControl.kt"
+        },
+        {
+          "ref": "vexstream.playback.play-pause.effect",
+          "face": "BEHAVIOR",
+          "role": "EFFECT",
+          "label": "RequestPlay | RequestPause | RestartCurrent",
+          "symbol": "VexStreamPlaybackEffect",
+          "summary": "Behavior resolves Play/Pause against current State. Ended + Play becomes RestartCurrent rather than pretending it is the ordinary RequestPlay case.",
+          "source": "app:vexstream/playback/VexStreamPlaybackBehavior.kt"
+        },
+        {
+          "ref": "vexstream.playback.play-pause.admitted",
+          "face": "BEHAVIOR",
+          "role": "STATE",
+          "label": "current.afterIntent(effect)",
+          "symbol": "VexStreamPlaybackState.afterIntent",
+          "summary": "Semantic State reflects the admitted request immediately while pending flags explicitly avoid claiming provider convergence.",
+          "source": "app:vexstream/playback/VexStreamPlaybackPending.kt"
+        },
+        {
+          "ref": "vexstream.playback.play-pause.projection",
+          "face": "BEHAVIOR",
+          "role": "PROJECTION",
+          "label": "VexStreamPlaybackProjection",
+          "symbol": "VexStreamPlaybackProjection",
+          "summary": "The Connection publishes Family-owned current meaning as a VexBehaviorProjection; presentation consumes it without becoming semantic truth.",
+          "source": "app:vexstream/playback/VexStreamPlaybackTypes.kt"
+        },
+        {
+          "ref": "vexstream.playback.play-pause.presentation",
+          "face": "BEHAVIOR",
+          "role": "PROJECTION",
+          "label": "VexStreamPlaybackDisplayState → Play / Pause presentation",
+          "symbol": "VexStreamPlaybackDisplayState",
+          "summary": "The Experience derives one display classification and the player presents the current Play/Pause icon and availability back to the human.",
+          "source": "app:vexstream/playback/VexStreamPlaybackExperience.kt"
+        },
+        {
+          "ref": "vexstream.playback.play-pause.connection-owner",
+          "face": "DEPTH",
+          "role": "CONSTRUCTION",
+          "label": "VexStreamPlaybackConnectionViewModel",
+          "symbol": "VexStreamPlaybackConnectionViewModel",
+          "summary": "Android configuration-lifetime owner of the concrete Playback Connection. It is construction/lifetime support, not semantic playback truth.",
+          "source": "app:vexstream/playback/VexStreamPlaybackConnectionViewModel.kt"
+        },
+        {
+          "ref": "vexstream.playback.play-pause.connection",
+          "face": "DEPTH",
+          "role": "DISPATCH",
+          "label": "VexStreamPlaybackConnection / Flow → Media3VexStreamPlaybackConnection",
+          "symbol": "Media3VexStreamPlaybackConnection",
+          "summary": "Typed VexPort boundary carrying the same Playback Family / State / Control / Act coordinates into the Media3 realization and reconciliation owner.",
+          "source": "app:vexstream/playback/Media3VexStreamPlaybackConnection.kt"
+        },
+        {
+          "ref": "vexstream.playback.play-pause.provider",
+          "face": "DEPTH",
+          "role": "STORE",
+          "label": "MediaController / Player",
+          "symbol": "MediaController",
+          "summary": "Physical playback reality. The Connection requests play/pause/restart here; this outside owner does not adopt Playback semantic State.",
+          "source": "app:vexstream/playback/Media3VexStreamPlaybackConnection.kt"
+        },
+        {
+          "ref": "vexstream.playback.play-pause.observation",
+          "face": "DEPTH",
+          "role": "OBSERVATION",
+          "label": "Player.Listener → publishObserved()",
+          "symbol": "Player.Listener",
+          "summary": "Asynchronous Media3 observations re-enter through the same concrete Connection.",
+          "source": "app:vexstream/playback/Media3VexStreamPlaybackConnection.kt"
+        },
+        {
+          "ref": "vexstream.playback.play-pause.reconcile",
+          "face": "DEPTH",
+          "role": "OBSERVATION",
+          "label": "reconcileVexStreamPlaybackObservation(observed, pending)",
+          "symbol": "reconcileVexStreamPlaybackObservation",
+          "summary": "A stale callback cannot erase newer admitted intent. Pending clears only when provider truth acknowledges it or incompatible terminal truth invalidates it.",
+          "source": "app:vexstream/playback/VexStreamPlaybackPending.kt"
+        }
+      ],
+      "edges": [
+        {
+          "from": "vexstream.playback.play-pause.intent",
+          "to": "vexstream.playback.play-pause.doorway",
+          "label": "custom handler"
+        },
+        {
+          "from": "vexstream.playback.play-pause.doorway",
+          "to": "vexstream.playback.play-pause.control",
+          "label": "same Control"
+        },
+        {
+          "from": "vexstream.playback.play-pause.state",
+          "to": "vexstream.playback.play-pause.act",
+          "label": "CURRENT",
+          "kind": "DATA"
+        },
+        {
+          "from": "vexstream.playback.play-pause.control",
+          "to": "vexstream.playback.play-pause.act",
+          "label": "resolve"
+        },
+        {
+          "from": "vexstream.playback.play-pause.act",
+          "to": "vexstream.playback.play-pause.effect",
+          "label": "Behavior"
+        },
+        {
+          "from": "vexstream.playback.play-pause.effect",
+          "to": "vexstream.playback.play-pause.admitted",
+          "label": "admits"
+        },
+        {
+          "from": "vexstream.playback.play-pause.admitted",
+          "to": "vexstream.playback.play-pause.projection",
+          "label": "projects"
+        },
+        {
+          "from": "vexstream.playback.play-pause.projection",
+          "to": "vexstream.playback.play-pause.presentation",
+          "label": "display"
+        },
+        {
+          "from": "vexstream.playback.play-pause.doorway",
+          "to": "vexstream.playback.play-pause.connection",
+          "label": "forwards typed Control"
+        },
+        {
+          "from": "vexstream.playback.play-pause.connection-owner",
+          "to": "vexstream.playback.play-pause.connection",
+          "label": "owns",
+          "kind": "SIDE"
+        },
+        {
+          "from": "vexstream.playback.play-pause.effect",
+          "to": "vexstream.playback.play-pause.connection",
+          "label": "realize"
+        },
+        {
+          "from": "vexstream.playback.play-pause.connection",
+          "to": "vexstream.playback.play-pause.provider",
+          "label": "Media3"
+        },
+        {
+          "from": "vexstream.playback.play-pause.provider",
+          "to": "vexstream.playback.play-pause.observation",
+          "label": "callback"
+        },
+        {
+          "from": "vexstream.playback.play-pause.observation",
+          "to": "vexstream.playback.play-pause.reconcile",
+          "label": "observed"
+        },
+        {
+          "from": "vexstream.playback.play-pause.reconcile",
+          "to": "vexstream.playback.play-pause.state",
+          "label": "reconciled",
+          "kind": "RETURN"
+        },
+        {
+          "from": "vexstream.playback.play-pause.reconcile",
+          "to": "vexstream.playback.play-pause.projection",
+          "label": "publishes",
+          "kind": "RETURN"
+        }
+      ]
+    }
+  ],
+  "annotations": [
+    {
+      "ref": "note.vexstream.playback.reference",
+      "subjectRef": "pathway.vexstream.playback.play-pause",
+      "text": "Stable reference case, not a second source of truth",
+      "detail": "The screen/element tree and existing direct-registration pathways are copied from Claude's generated lens at 305a09e. The Playback pathway is hand-authored from the accepted VexStream Playback source slice plus exact current source so VexBoard has a stable visual oracle before the adapter is asked to reproduce it."
+    },
+    {
+      "ref": "note.vexstream.playback.pending",
+      "subjectRef": "vexstream.playback.play-pause.reconcile",
+      "text": "Pending intent is connection-local implementation state",
+      "detail": "VexStreamPlaybackPending is explicitly a shock absorber, not a fifth Behavior concept. Public semantic truth remains VexStreamPlaybackState."
+    }
+  ]
+}
