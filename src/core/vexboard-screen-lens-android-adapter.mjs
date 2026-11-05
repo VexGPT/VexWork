@@ -920,7 +920,15 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, overlay
     const controlSlug = bond.control.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
     const ref = `pathway.${bond.behaviorRef}.${controlSlug}`;
     if (pathways.has(ref)) return ref;
-    const builder = new PathwayBuilder(ref, `${humanize(bond.behaviorRef)} · ${humanize(bond.control)}`, 'SCAE_FAMILY');
+    const behaviorParts = bond.behaviorRef.split('.');
+    const behaviorDomain = behaviorParts[0] ?? '';
+    const screenBrand = String(screen.label ?? '')
+      .split(/\\s+/)
+      .find((token) => token.replace(/\\W/g, '').toLowerCase() === behaviorDomain.replace(/\\W/g, '').toLowerCase())
+      ?? humanize(behaviorDomain);
+    const behaviorLabel = [screenBrand, ...behaviorParts.slice(1).map(humanize)].filter(Boolean).join(' ');
+    const controlLabel = element.label || humanize(bond.control);
+    const builder = new PathwayBuilder(ref, `${behaviorLabel} · ${controlLabel}`, 'SCAE_FAMILY');
 
     const intent = builder.node('intent', 'BEHAVIOR', 'INTENT', 'localEffect()', {
       symbol: element.symbol,
@@ -932,6 +940,7 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, overlay
       symbol: `${bond.receiverType}.activate`,
       summary: 'The visible control manifestations forward the same Family-bound Control through the UI-facing membrane.',
       source: bond.source,
+      code: `${element.symbol} -> ${bond.receiver}.activate(${bond.controlType}.${bond.control})`,
     });
     const control = builder.node('control', 'BEHAVIOR', 'CONTROL', `${bond.controlType}.${bond.control}`, {
       symbol: `${bond.controlType}.${bond.control}`,
@@ -964,7 +973,7 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, overlay
       summary: 'The typed Connection publishes the Family projection.',
       source: bond.types.source,
     });
-    const presentation = builder.node('presentation', 'BEHAVIOR', 'PROJECTION', `${bond.displayType} → ${humanize(bond.control)} presentation`, {
+    const presentation = builder.node('presentation', 'BEHAVIOR', 'PROJECTION', `${bond.displayType} → ${controlLabel} presentation`, {
       symbol: bond.displayType,
       summary: 'The Experience derives display meaning from the returned projection without becoming semantic owner.',
       source: bond.experience.source,
@@ -978,12 +987,18 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, overlay
         source: bond.owner.source,
       });
     }
-    const connection = builder.node('connection', 'DEPTH', 'DISPATCH', `${bond.implementation.portType} / ${bond.flowAlias} → ${bond.connection.name}`, {
+    const flowLabel = bond.flowAlias === `${bond.implementation.portType}Flow`
+      ? 'Flow'
+      : bond.flowAlias;
+    const connection = builder.node('connection', 'DEPTH', 'DISPATCH', `${bond.implementation.portType} / ${flowLabel} → ${bond.connection.name}`, {
       symbol: bond.connection.name,
       summary: 'Typed VexPort boundary carrying the same Family / State / Control / Act coordinates into provider realization and reconciliation.',
       source: bond.connection.source,
     });
-    const providerLabel = bond.connection.providerType ?? 'outside provider';
+    const listenerOwner = bond.listenerType?.split('.')[0] ?? null;
+    const providerParts = [bond.connection.providerType ?? 'outside provider'];
+    if (listenerOwner && !providerParts.includes(listenerOwner)) providerParts.push(listenerOwner);
+    const providerLabel = providerParts.join(' / ');
     const provider = builder.node('provider', 'DEPTH', 'STORE', providerLabel, {
       symbol: bond.connection.providerType ?? undefined,
       summary: 'Independently owned outside/runtime truth.',
@@ -1011,7 +1026,12 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, overlay
     builder.edge(doorway, connection, 'forwards typed Control');
     if (owner) builder.edge(owner, connection, 'owns', 'SIDE');
     builder.edge(effect, connection, 'realize');
-    builder.edge(connection, provider, 'provider');
+    const familyStem = bond.familyType.replace(/Family$/, '');
+    const providerSuffix = `${familyStem}Connection`;
+    const providerEdgeLabel = bond.connection.name.endsWith(providerSuffix)
+      ? bond.connection.name.slice(0, -providerSuffix.length) || 'provider'
+      : 'provider';
+    builder.edge(connection, provider, providerEdgeLabel);
     builder.edge(provider, observation, 'callback');
     builder.edge(observation, reconcile, 'observed');
     builder.edge(reconcile, state, 'reconciled', 'RETURN');
@@ -1019,7 +1039,7 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, overlay
 
     builder.pathway.summary = `${bond.familyType} owns ${bond.control} meaning; the typed Connection realizes and reconciles outside truth back into the same Family projection.`;
     builder.pathway.returnRef = presentation;
-    builder.pathway.returns = `The returned ${bond.projectionType} / ${bond.displayType} reaches the same human-facing control.`;
+    builder.pathway.returns = `The returned ${bond.projectionType} / ${bond.displayType} reaches the same human-facing ${controlLabel} control.`;
     pathways.set(ref, builder.pathway);
     report.bonds.push({ elementRef: element.ref, via: 'BEHAVIOR_PORT', family: bond.familyType, control: bond.control });
     return ref;
