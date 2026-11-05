@@ -365,242 +365,187 @@ VexLife-Prod PR #24  CLOSED / UNMERGED
   folded into successor
 ~~~
 
-### Current parallel fresh-local trajectory
+### Current parallel New Beginnings source trajectories
 
-Provider truth re-grounded after the earlier launcher experiments were closed/superseded:
+Provider truth re-grounded after the earlier launcher experiments were closed/superseded.
+
+#### A. Isolated local-product construction
 
 ~~~text
-VexLife-Prod PR #25  OPEN / DRAFT
-  strict durable JSON mechanics boundary
-  head f3368ad0069f410bd0646ba1b5bffb347a8c9380
-
-        ↓ stacked prerequisite
-
-VexLife-Prod PR #26  OPEN / DRAFT
-  isolated VexLife-Prod Home + Heretic local-runtime body
-  head 339f1accc685303a448a2cd9f9d649d6c507acf6
-
-        ↓ stacked successor
-
-VexLife-Prod PR #27  OPEN / DRAFT
-  direct personal Conversation + local Vex turn
-  provider head must be re-grounded before source work
-
-        ↓ stacked successor
-
-VexLife-Prod PR #28  OPEN / DRAFT
-  fixed common-Kotlin local product-service API
-  127.0.0.1:18210
-  source currentness + Conversation projection + Send
-
-        ↓ stacked successor
-
-VexLife-Prod PR #29  OPEN / DRAFT
-  source-bound no-acquisition long-lived service-process entry
-
-        ↓ stacked successor
-
-VexLife-Prod PR #30  OPEN / DRAFT
-  source-bound private macOS service image + archive carriage
-
-        ↓ stacked successor
-
-VexLife-Prod PR #31  OPEN / DRAFT
-  bundled authorized setup + verified private-image install
-
-        ↓ stacked successor
-
-VexLife-Prod PR #32  OPEN / DRAFT / CURRENT LOCAL FOREGROUND
-  exact macOS product-service image/process/source lifetime
-  provider head must be re-grounded before source work
+#25  strict durable JSON mechanics
+  ↓
+#26  isolated Home + Heretic local substrate
+  ↓
+#27  direct personal Conversation + local Vex turn
+  ↓
+#28  fixed loopback renderer-facing service API
+  ↓
+#29  source-bound no-acquisition long-lived service process
+  ↓
+#30  source-bound private macOS service image
+  ↓
+#31  bundled authorized setup + verified image install
+  ↓
+#32  exact macOS service source/image/process/PID lifetime
+  ↓
+#33  source-bound bootstrap carriage + native AppKit setup window
 ~~~
 
-PR #26 source-forms the isolated local substrate:
+Current provider heads at this map update:
+
+~~~text
+#25  f3368ad0069f410bd0646ba1b5bffb347a8c9380
+#26  339f1accc685303a448a2cd9f9d649d6c507acf6
+#27  a43e3aadcd2c19d7c5d38d21b58194ba6d5cdf13
+#28  48ac7b3dcc7f0b6ceb8bcaf3b5266834583f3eae
+#29  7fa136e525732905756c4f2a31af27e85b7e4fae
+#30  ec810a5bdbaa447edcf77319da533802ec4b94ba
+#31  177bed44de3d2024b00df8c1d394dfe5c9dbc367
+#32  c8ff7ef82c75ea9f42bc9f5f75c34edf83fa30e6
+#33  da67a73ad86275c6f71781b14b7307e3a1cd3462
+~~~
+
+The local stack now source-forms this causal body:
 
 ~~~text
 isolated VexLife-Prod Home
--> strict durable file/path custody
--> explicit model configuration lifecycle
--> Prod-owned fixed artifact-delivery channels
--> resumable exact artifact delivery/materialization
--> private exact managed Python
--> exact Python/mlx-lm environment
--> packaged-implementation-bound persistent Heretic runtime
--> macOS runtime/process realization
--> serialized whole local-setup composition
+-> exact certified Heretic artifacts
+-> private managed Python + exact mlx-lm environment
+-> exact qualified Heretic runtime
+-> bounded direct Conversation turn
+-> fixed 127.0.0.1:18210 product service
+-> source-bound private JDK21 image
+-> Home-gated exact image install
+-> exact launchd source/image/process/PID currentness
+-> native setup consent/progress projection
+-> source/digest-bound bootstrap carriage
 ~~~
 
-An audit before advancing to Companion found and corrected these reliability/currentness edges:
+#33 adds a source-owned release contract. Exact releases remain source-addressed while a provider
+current channel is defined as:
 
 ~~~text
-lexical path containment
-!= filesystem custody
-
-reuse-only check
-!= permission to create directories
-
-authorized acquisition
-!= invalid-final repair authority
-
-complete valid .partial
-!= repeat network request
-
-caller-supplied bootstrap/runtime paths
-!= rightful currentness
+github-release-latest
+-> stable bootstrap asset name
+-> bytes proven identical to the source-specific bootstrap
+-> bootstrap embeds exact source SHA + archive SHA-256
 ~~~
 
-PR #28/#29 now continue that same circuit into a renderer-facing fixed product doorway and one
-source-bound long-lived process entry:
+Therefore:
 
 ~~~text
-VexLifeProdServiceContract
-  common Kotlin route/wire identity
+CURRENT POINTER
+!= MUTABLE PRODUCT TOPOLOGY
 
-VexLifeProdLocalService
-  fixed 127.0.0.1:18210
-  -> source-currentness projection
-  -> canonical Conversation projection
-  -> Send delegates to DirectCompanionTurn
-
-VexLifeProdServiceProcess
-  --source-sha only
-  -> establish existing Session with acquisition=false
-  -> start fixed service
-  -> machine readiness
-  -> remain alive until process termination
+STABLE CURRENT CHANNEL
+-> ONE EXACT RELEASE
+-> ONE EXACT BOOTSTRAP
+-> ONE EXACT ARCHIVE
 ~~~
 
-Long-lived Send does not trust setup-time runtime qualification forever. New inference re-observes the
-exact current Heretic receipt/process/substrate/environment/health through the runtime owner; exact
-completed duplicate replay does not require runtime/provider availability.
+The generated `.command` is still carriage, not the accepted polished ordinary product entry.
+Provider Release publication, signed/double-click distribution and the final VexWeb product
+presentation remain held.
 
-Permanent:
+#### B. VexWeb relational authoring — independent source lane
+
+VexWeb F1 does **not** depend on the local-runtime/bootstrap PR ancestry.
 
 ~~~text
-SERVICE API != PRESENTATION
-SERVICE PROCESS != HUMAN SETUP
-SERVICE PROCESS != ACQUISITION AUTHORITY
-SERVICE PROCESS SOURCE != PACKAGED MAC EXECUTABLE
+accepted main
+  Frame / Seam / Region / Allocation
+        ↓
+#34  relational authoring candidate
 ~~~
 
-A fresh Mac is not assumed to have Java/Gradle/Kotlin. That pressure is now source-formed through
-#30/#31/#32:
+Current #34 head:
 
 ~~~text
-#30 private service image
-  -> clean exact Git source admission
-  -> jvmJar + derived runtime dependency files
-  -> jdeps-derived JDK modules
-  -> jlink private Java 21 runtime
-  -> exact app/dependency JARs
-  -> source/payload-bound manifest
-  -> source-addressed tar.gz + archive receipt
+effad48ce998787bafecbcdaaa7ebadd717f181b
+~~~
 
-#31 bundled setup/install
-  -> private image v2:
-       bin/vexlife-prod-service
-       bin/vexlife-prod-setup
-  -> setup verifies its own image/source
-  -> explicit acquisition authorization
-  -> LocalSetup establishes Home + Heretic
-  -> exact image installed under Home/runtime/product-service/images/<sha>
-  -> invalid installed image HOLDs rather than becoming delete/repair authority
+#34 adds only authoring ergonomics over the accepted objects:
 
-#32 macOS product service lifetime
-  -> stable launchd label com.vexlife.prod.service
-  -> exact installed image
-  -> exact launchd receipt + environment + persisted plist
-  -> HTTP source currentness v2 binds exact listener PID
-  -> source rotation retires only exact owned prior service
-  -> any post-start readiness/receipt failure exactly retires the newly-started service
+~~~text
+surface
+  content
+  overlay
+
+frame
+  verticalSeam
+  horizontalSeam
+  region
+  chrome
+
+element
+structural
+localSpatial
+unbound
 ~~~
 
 Permanent:
 
 ~~~text
-IMAGE CURRENT
-!= PROCESS OWNERSHIP CURRENT
-!= HTTP SOURCE/PID CURRENT
+VEXWEB F1 AUTHORING
+!= NEW SPATIAL LANGUAGE
 
-QUALIFIED AT START
-!= RUNTIME CURRENT AT LATER SEND
+VEXWEB F1
+!= LOCAL RUNTIME DEPENDENCY
 
-CURRENTNESS
-!= RETIREMENT AUTHORITY
+VEXWEB F1
+!= HTML / CSS / JS GENERATION
 
-PRIVATE SERVICE IMAGE
-!= HUMAN APPLICATION
+REJECTED SPLIT F1
+!= CURRENT AUTHORING PRECEDENT
 ~~~
 
-The next construction edge is now the pre-JVM/native human bootstrap + setup window that consumes
-these owners without learning Home/model/runtime/install semantics.
+The current VexLife workspace specimen is re-authored through the relational F1 surface while keeping
+the same source identities. Source tests form direct-object equality plus 2 / irregular-3 / 4 region
+pressure.
 
-PR #27 then composes the first bounded personal human ↔ Vex circuit:
+#### Current held proof / completion boundary
+
+Neither source trajectory is accepted merely because source/tests are formed.
 
 ~~~text
-qualified local Heretic runtime evidence
--> direct Conversation whole-turn writer lease
--> source-owned self-development address
--> REQUEST durable
--> bounded direct prompt materialization
--> numeric-loopback provider Connection
--> normalized runtime observation + invocation evidence
--> RESPONSE durable
--> durable "what Vex received / what runtime call happened" context
--> immutable completed-head receipt
--> atomic current Conversation head
+#25 -> #34 exact repository Kotlin 2.4.20 proof where applicable
+#30/#33 exact Gradle 9.6 packaging/bootstrap execution
+
+real macOS:
+  private image v3 build/archive
+  provider Release publication
+  current bootstrap download/extraction
+  AppKit setup window
+  certified model reuse/acquisition
+  exact service currentness
+  setup/bootstrap exits
+  service remains alive
+  direct Vex turn 1
+  later Vex turn still succeeds
+
+fresh product:
+  attributed Memory selection
+  working-checkpoint successor continuity
+  CLEAN_START
+  streamed response progress
+  explicit-open reasoning projection
+  deterministic VexWeb F2 artifacts
+  browser provider / nested public browser
+  final ordinary product presentation
 ~~~
 
-Current ordinary prompt continuity in #27 deliberately ports the current VexLife
-`IMMEDIATE_PRIOR_COMPLETED_TURN` relationship:
+The first direct circuit remains intentionally bounded:
 
 ~~~text
-first turn
-  current request only
+IMMEDIATE_PRIOR_COMPLETED_TURN
+= PORTED
 
-CONTINUE
-  immediate prior REQUEST
-  + immediate prior RESPONSE
-  + current request
+WORKING_CHECKPOINT_SUCCESSOR
+= HELD
 
-whole-history enumeration = false
+MEMORY
+= HELD
 ~~~
-
-This is **not full prompt-continuity parity**. Current VexLife also has separately-owned
-`WORKING_CHECKPOINT_SUCCESSOR` continuity and attributed Memory selection. Those remain held in the
-fresh body rather than being silently collapsed into the first two-turn circuit.
-
-VexArchitecture audit at the current #27 head:
-
-~~~text
-DirectConversationStore
-  owns durable Conversation bytes/currentness + its writer coordinate
-  != model / prompt / presentation
-
-DirectPromptContext
-  owns bounded provider-message selection
-  != provider effect / Memory
-
-DirectCompanionConnection
-  owns actual numeric-loopback HTTP + normalized invocation evidence
-  != runtime lifecycle / Conversation
-
-DirectTurnContextStore
-  owns durable normalized turn evidence
-  != raw provider/reasoning persistence
-
-DirectCompanionTurn
-  composes the owners + first-failure route
-  != second semantic/runtime owner
-
-VexExclusiveFileLease
-  owns reusable OS file-lock mechanics only
-  setup + Conversation retain their own lock coordinates
-~~~
-
-The classes are not split merely because they are large. The current audit found coherent ownership
-questions; VexArchitecture explicitly rejects adding generic layers just because a concrete
-presentation/construction boundary exists.
 
 Permanent isolation:
 
@@ -616,66 +561,27 @@ VexLife source/runtime
   != runtime dependency of the fresh product
 ~~~
 
-The fresh-local/direct-Companion stack is **not accepted** merely because source/tests are formed.
-Current held predicates include:
+#### Downstream dual-proof acceptance horizon
+
+Once the fresh product presentation + ordinary entry become coherent, New Beginnings should earn both:
 
 ~~~text
-PR #25 / #26 / #27 exact repository Kotlin 2.4.20 common/JVM/JS proof
-real macOS host/runtime proof
-real certified artifact reuse/acquisition
-real Python/mlx-lm proof
-real MLX /health + /v1/models + bounded qualification chat
-real direct turn 1 + direct turn 2
-sustained isolated runtime after setup completion
-
-fresh Memory owner + attributed Memory selection
-working-checkpoint successor / rollover continuity
-CLEAN_START wiring
-streamed response progress
-explicit-open reasoning projection
-product service / presentation
-real private image build/archive/extract
-real bundled setup + image install
-real launchd source/process/PID currentness
-real service sustained after setup exits
-ordinary fresh-user Mac entry
-~~~
-
-VexLife PR #975 remains separate and open/draft:
-
-~~~text
-promptContextMode = CONTINUE | CLEAN_START
-CLEAN_START keeps the same canonical Conversation + Memory eligibility
-while selecting zero prior Conversation events into the next provider prompt
--> not accepted main until remaining integration/lifecycle gates complete
-~~~
-
-### Downstream dual-proof acceptance horizon
-
-Once the fresh product service/presentation + ordinary Mac entry become coherent, New Beginnings should
-also earn one exact source-pinned VexBoard snapshot of the same product body.
-
-~~~text
-VexLife-Prod lived product
+LIVED VEXLIFE-PROD
   -> proves the causal body executes
 
-VexLife-Prod -> VexBoard source projection
-  -> proves the causal body is explicit/perceivable from source
+EXACT SOURCE-PINNED VEXBOARD SNAPSHOT
+  -> proves the same body is explicit/perceivable from source
 ~~~
 
-This is a downstream proof target, not a runtime dependency.
-
-Preferred route when the compiler-visible product model is mature enough:
+Preferred mature projection:
 
 ~~~text
 VexLife-Prod source @ exact revision
   -> source-owned architecture export
-  -> bounded VexBoard adapter
+  -> bounded read-only VexBoard adapter
   -> generated Lens snapshot
   -> VexBoard
 ~~~
-
-A read-only source adapter is acceptable for the first proof if an export is not yet earned, but:
 
 ~~~text
 VEXBOARD != PRODUCT AUTHORITY
@@ -684,31 +590,8 @@ GENERATED LENS != AUTHORING SOURCE
 OVERLAY != SECOND SOURCE
 ~~~
 
-Preserve stable identities and explicit relationships now so the later projector does not need to
-reverse-engineer same-directory placement, similar class names, constructor proximity, comments or
-renderer selectors.
-
-There is currently **no accepted VexLife-Prod fresh-user Mac front door on main**.
-
-The historical accepted VexLife startup/lifecycle and direct Companion sources remain provenance for
-earned reliability/relationship laws. The fresh product is physically independent and ports those
-relationships into its own rightful owners.
-
-This remains a parallel source trajectory, not a WorkState rewrite:
-
-~~~text
-FRESH-LOCAL SOURCE CANDIDATE
-!= ACCEPTED LOCAL PRODUCT
-
-DIRECT TWO-TURN SOURCE CIRCUIT
-!= FULL PROMPT-CONTINUITY PARITY
-
-LIVED EXPLORATION THRESHOLD
-!= ACCEPTED VEXWEB-GENERATED PRODUCT
-
-VEXLIFE-PROD
-!= LEGACY/CURRENT VEXLIFE PROCESS/HOME
-~~~
+There is still **no accepted VexLife-Prod fresh-user Mac front door on main** and no accepted
+VexWeb-generated final product presentation.
 
 ## Current execution map
 
