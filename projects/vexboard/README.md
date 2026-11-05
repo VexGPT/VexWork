@@ -603,7 +603,11 @@ middle-click) and Behavior (SCAE Behavior ⇄ Depth, right-click). A selected co
 across both sides, routes owned by shared chrome are drawn once, and every face is laid out without
 overlap. The first projection is VexLife-Android Debug Menu at `305a09e`.
 
-Design, data contract, the Kotlin annotation proposal and next edges live in `SCREEN-LENS.md`. The lens
+Search (`/`), impact, per-screen coverage and paste-ready control and screen briefs come from
+`src/shared/vexboard-screen-lens-query.mjs`. Design, data contract, decision record, the Kotlin annotation
+proposal and next edges live in `SCREEN-LENS.md`. The lens is generated from VexLife-Android source by
+`npm run lens:fetch` (or `node scripts/build-screen-lens.mjs --source <checkout>`); how and why is in
+`SCREEN-LENS-ADAPTER.md`. The lens
 is a read-only projection; it does not admit Work or change lifecycle truth by itself.
 
 ## Reusable Semantic Origin IDE foundation

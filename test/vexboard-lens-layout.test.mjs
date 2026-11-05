@@ -15,7 +15,7 @@ import {
 } from '../src/shared/vexboard-lens-layout.mjs';
 import { faceGraph, normalizeScreenLens, screenMapGraph } from '../src/shared/vexboard-screen-lens.mjs';
 
-const lens = normalizeScreenLens(JSON.parse(fs.readFileSync(new URL('../projects/vexboard/examples/vexlife-debug-menu.screen-lens.json', import.meta.url), 'utf8')));
+const lens = normalizeScreenLens(JSON.parse(fs.readFileSync(new URL('./fixtures/screen-lens/debug-menu.hand.screen-lens.json', import.meta.url), 'utf8')));
 
 test('word wrapping counts lines deterministically, including words longer than a line', () => {
   assert.equal(wrappedLineCount('', 10), 0);

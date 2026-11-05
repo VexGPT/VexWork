@@ -19,7 +19,11 @@
     "workgraph:build": "node scripts/build-public-workgraph.mjs",
     "workgraph:check": "node scripts/build-public-workgraph.mjs --check",
     "project-registry:build": "node scripts/build-project-registry.mjs",
-    "project-registry:check": "node scripts/build-project-registry.mjs --check"
+    "project-registry:check": "node scripts/build-project-registry.mjs --check",
+    "lens:build": "node scripts/build-screen-lens.mjs",
+    "lens:check": "node scripts/build-screen-lens.mjs --check",
+    "lens:fetch": "node scripts/build-screen-lens.mjs --fetch",
+    "lens:verify": "node scripts/build-screen-lens.mjs --verify"
   },
   "engines": {
     "node": ">=20.1"

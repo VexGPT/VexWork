@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "vexboard.screen-lens-adapter/v1",
+  "adapterRef": "adapter.vexboard.screen-lens.vexlife-android",
+  "lensRef": "lens.vexlife-android",
+  "title": "VexLife Android \u00b7 Screen Lens",
+  "summary": "Every registered VexLife Android screen seen four ways: what the human touches, where it lives in code, what it means (SCAE), and what it touches underneath. Generated from source.",
+  "entry": {
+    "screenRef": "screen.debug-menu",
+    "elementRef": "element.debug-menu.body.dark-mode"
+  },
+  "relatedBoardRefs": [
+    "board.vexlife.debug-menu.theme-mode.origin-walk"
+  ],
+  "repository": {
+    "ref": "repo.vexlife-android",
+    "url": "https://github.com/vgong24/VexLife-Android",
+    "commit": "305a09eac1fabebcf2241bd207386950f41121f2",
+    "roots": {
+      "app": "app/src/main/kotlin/com/vextreme/vexlife/android/",
+      "arch": "architecture/"
+    }
+  },
+  "read": [
+    "app:screens/",
+    "app:shell/",
+    "app:runtime/",
+    "app:ui/",
+    "app:vexstream/playback/"
+  ],
+  "stringResources": [
+    "app/src/main/res/values/strings.xml"
+  ],
+  "sources": {
+    "appScreens": "app:screens/AppScreens.kt",
+    "appShell": "app:shell/AppShell.kt",
+    "appActions": "app:runtime/AppActions.kt",
+    "session": "app:ui/VexLifeSession.kt",
+    "screenActionContext": "app:screens/AppScreenBlueprint.kt",
+    "runtime": "app:runtime/VexRuntime.kt",
+    "frame": "app:shell/AppFrame.kt",
+    "vexFamily": "arch:behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt",
+    "vexExecution": "arch:execution/src/main/kotlin/com/vextreme/vexlife/android/execution/VexExecution.kt",
+    "logger": "arch:logging/src/main/kotlin/com/vextreme/vexlife/android/logging/VexLogger.kt"
+  },
+  "chrome": {
+    "chromeRef": "chrome.app-shell",
+    "label": "AppShell",
+    "symbol": "AppShell",
+    "appliesTo": "PRIMARY",
+    "summary": "App-wide chrome with one owner. AppFrame shows bottom navigation and the FAB cluster only when runtime.isPrimary(); routes defined here are never copied into each screen.",
+    "slots": {
+      "element.shell.toolbar": "TOP",
+      "element.shell.primary-navigation": "BOTTOM",
+      "element.shell.fab-cluster": "FAB"
+    },
+    "visibleWhen": {
+      "element.shell.primary-navigation": "runtime.isPrimary()",
+      "element.shell.fab-cluster": "runtime.isPrimary()",
+      "element.shell.fab-options": "toggled open by the + FAB",
+      "element.shell.back": "runtime has a back target"
+    },
+    "alwaysVisible": [
+      "element.shell.back"
+    ],
+    "kinds": {
+      "element.shell.fab-options": "MENU"
+    },
+    "labels": {
+      "element.shell.fab.add": "+",
+      "element.shell.brand-mark": "VexLife"
+    }
+  }
+}
