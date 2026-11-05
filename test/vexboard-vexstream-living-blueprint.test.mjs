@@ -45,9 +45,13 @@ test('VexStream primary living Blueprint is journey-first and delegates construc
     assert.ok(item.sourceRefs.includes('git.commit.vexlife-android.eb1edba1b76a295ce59195b889b0bcd58613f334'));
     assert.ok(item.sourceRefs.includes('git.commit.vexstream-music.ea3fce6cbfb666c84e3a0bccb6ff67fe830093b3'));
   }
-  assert.ok(home.sourceRefs.includes('git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552'));
-  assert.equal(home.artifacts[0].sourceRefs.includes('git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552'), false,
-    'observed A011 source stays distinct from the newer expected-source slot');
+  assert.ok(home.sourceRefs.includes('git.commit.vexlife-android.305a09eac1fabebcf2241bd207386950f41121f2'));
+  assert.equal(home.artifacts[0].sourceRefs.includes('git.commit.vexlife-android.305a09eac1fabebcf2241bd207386950f41121f2'), false,
+    'observed A011 source stays distinct from the current expected-source slot');
+  assert.ok(evidence.sourceRefs.includes('git.commit.vexstream-music.7b442351047a698611b0bd11079bb38f69c9ab94'));
+  const osPermissionNode = state.graph.nodes.find((node) => node.nodeRef === 'reference.vexstream.android-os.media-permission');
+  assert.ok(osPermissionNode.sourceRefs.includes('repo.vexlife-android:app/src/main/AndroidManifest.xml'));
+  assert.ok(evidenceForSemanticRef(evidence, state.graph, 'reference.vexstream.android-os.media-permission')[0].sourceRefs.includes('repo.vexlife-android:app/src/main/AndroidManifest.xml'));
 });
 
 test('construction/evidence board preserves target-specific Android mapping without treating dp as portable truth', async () => {
