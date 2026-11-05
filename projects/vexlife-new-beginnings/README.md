@@ -302,10 +302,10 @@ The new Project asks how those earned truths compose in a fresh product containe
 ## Lived product threshold — current parallel truth
 
 The canonical generated-product trajectory below remains authoritative for its own Workgraph states:
-VexWeb F1 is still the current source-construction edge, and generated P1/P2/P3 are not silently
-promoted by exploration.
+VexWeb F1 is still the accepted source-construction edge, and generated P1/P2/P3 are not silently
+promoted by exploration or by the parallel local-runtime foundation.
 
-The lived exploration has nevertheless crossed real thresholds that remain useful:
+The lived exploration thresholds that remain valid are:
 
 ~~~text
 VexLife-Prod PR #13  ACCEPTED / MERGED
@@ -324,84 +324,128 @@ VexLife-Prod PR #15  MERGED / LIVED FRONT-DOOR CLAIM INVALIDATED
 VexLife-Prod PR #16  MERGED / LIVED REPAIR CLAIM INVALIDATED
   -> both Mac runs reached canonical VexLife Companion READY
   -> neither run brought the VexLife-Prod presentation up
-  -> the parallel launcher was not an earned stability point
 
 VexLife-Prod PR #17  INTEGRITY RETRACTION / MERGED
-  -> removes the unproven parallel Mac launcher
-  -> removes the unexecuted launcher proof surrogate
-  -> restores server.mjs to its pre-#16 presentation bytes
-  -> keeps #13/#14 lived product and prompt-receipt thresholds
-  -> records that current VexLife owns the accepted Mac lifecycle/process-currentness path
+  -> removed the unproven parallel Mac launcher
+  -> preserved #13/#14 lived product thresholds
 
 VexLife-Prod PR #19  STARTUP INTEGRITY GUARDS / MERGED
+VexLife-Prod PR #20  STARTUP DEPENDENCY LAW / MERGED
   -> PROOF_ROUTE != ORDINARY_PRODUCT_ROUTE
-  -> ENSURE_VEX_LIFECYCLE_READY != OPEN_REFERENCE_PRESENTATION
   -> BOOT_PASS != SUSTAINED_LIFETIME_PASS
-  -> NEW_PRESENTATION_PROCESS != FREE_DEPENDENCY
-
-VexLife-Prod PR #18  DRAFT / HOST REGRESSIONS OPEN
-  -> terminal fallback route reached Prod + canonical Vex and completed a lived turn
-  -> ordinary product proof was not established by that terminal shortcut
-  -> first windowed composition opened BOTH reference VexLife and Prod
-     because the caller reused the higher-level Open Vex effect rather than lifecycle readiness
-  -> later the loaded Prod UI lost its own local presentation service
-  -> canonical Companion/model failure is NOT established by that screenshot
-  -> BOOT + INITIAL INTERACTION PASS != SUSTAINED PRESENTATION LIFETIME PASS
-  -> remains DRAFT; no accepted front door
-
-VexLife PR #976      DRAFT / REQUIRED PREDECESSOR FOR #18
-  -> makes setup completion meaning explicit:
-       open-reference = lifecycle ready + open reference projection
-       return-ready   = lifecycle ready + return to calling presentation
-  -> standalone VexLife default remains open-reference
-  -> Prod candidate consumes return-ready so one prerequisite cannot secretly open a second UI
-  -> exact Mac/windowed + sustained consumer proof still required
-
-VexLife PR #975      SOURCE-OWNER PROVEN / LIFECYCLE PENDING
-  promptContextMode = CONTINUE | CLEAN_START
-  CLEAN_START keeps the same canonical Conversation + Memory eligibility
-  while selecting zero prior Conversation events into the next provider prompt
-  -> not accepted main until its remaining integration/lifecycle gates complete
+  -> NEW COMMIT != NEW STARTUP TOPOLOGY
+  -> ordinary topology varies by identity/currentness, not convenience parameters
 ~~~
 
-There is currently **no accepted VexLife-Prod Mac front-door command**.
-
-The existing accepted Mac startup/lifecycle baseline remains in current `vgong24/VexLife`:
+Superseded launch/local-foundation drafts are provenance only:
 
 ~~~text
-setup-vexlife.command
--> exact-source materialization
+VexLife-Prod PR #18  CLOSED / UNMERGED
+  second presentation-process composition experiment
+  terminal-route boot evidence + duplicate-presentation + sustained-lifetime failure provenance
 
-install/vexlife-setup.sh
--> Home lifecycle status
--> state-derived open / reconnect / repair / rebuild-preserve
--> per-Home setup serialization
--> prior-source browser reconciliation
+VexLife PR #976       CLOSED / UNMERGED
+  readiness-vs-reference-presentation experiment
+  superseded; not a current predecessor
 
-scripts/macos-lifecycle.mjs
--> exact runtime qualification/reuse
--> exact browser-process ownership
--> launchd user lifetime
--> source-currentness
--> canonical Companion READY
+VexLife-Prod PR #21  CLOSED / UNMERGED
+  Heretic common/product contract
+  folded into current local-foundation successor
 
-open_vex()
--> exact interface source-currentness
--> source-addressed browser open
+VexLife-Prod PR #22  CLOSED / UNMERGED
+  generic launchd substrate candidate
+  folded into successor
+
+VexLife-Prod PR #23  CLOSED / UNMERGED
+  artifact + Python realization candidate
+  folded into successor
+
+VexLife-Prod PR #24  CLOSED / UNMERGED
+  isolated Prod Home candidate
+  folded into successor
 ~~~
 
-The next Prod launch work must reuse those existing ownership/currentness contracts and add only the
-missing VexLife-Prod presentation relationship. A fresh repository is not permission to rebuild an
-already-earned lifecycle from examples.
-
-This remains a **lived threshold overlay**, not a WorkState rewrite:
+### Current parallel local-foundation trajectory
 
 ~~~text
+VexLife-Prod PR #25  OPEN / DRAFT
+  strict durable JSON mechanics boundary
+  head f3368ad0069f410bd0646ba1b5bffb347a8c9380
+
+        ↓ stacked prerequisite
+
+VexLife-Prod PR #26  OPEN / DRAFT / CURRENT FOREGROUND
+  isolated VexLife-Prod Home + Heretic local-runtime body
+  provider head must be re-grounded before source work
+~~~
+
+PR #26 currently owns the source-formed trajectory:
+
+~~~text
+isolated VexLife-Prod Home
+-> explicit model configuration lifecycle
+-> private managed Python
+-> exact resumable Heretic artifact delivery/materialization
+-> exact Python/mlx-lm environment
+-> packaged-implementation-bound persistent Heretic runtime
+-> macOS runtime/process realization
+-> thin local setup composition
+~~~
+
+Permanent isolation:
+
+~~~text
+legacy/current VexLife Home
+  ~/.vexlife
+
+fresh VexLife-Prod Home
+  ~/Library/Application Support/VexLife-Prod
+
+VexLife source/runtime
+  = provenance/reference for earned relationships
+  != runtime dependency of the fresh product
+~~~
+
+The local foundation is **not accepted** merely because source/tests are formed. It remains held on:
+
+~~~text
+PR #25 accepted prerequisite
+exact repository Kotlin 2.4.20 common/JVM/JS proof
+real macOS host/runtime proof
+real certified artifact reuse/acquisition
+real Python/mlx-lm proof
+real MLX /health + /v1/models + bounded qualification chat
+sustained isolated runtime after setup completion
+fresh-user product entry / install / open lifecycle
+later Vex turn still succeeds
+~~~
+
+VexLife PR #975 remains separate and open/draft:
+
+~~~text
+promptContextMode = CONTINUE | CLEAN_START
+CLEAN_START keeps the same canonical Conversation + Memory eligibility
+while selecting zero prior Conversation events into the next provider prompt
+-> not accepted main until remaining integration/lifecycle gates complete
+~~~
+
+There is currently **no accepted VexLife-Prod fresh-user Mac front door on main**.
+
+The historical accepted VexLife startup/lifecycle remains provenance for earned reliability rules, but
+the fresh product local foundation is intentionally becoming physically independent rather than
+retaining VexLife as a runtime dependency.
+
+This remains a parallel source trajectory, not a WorkState rewrite:
+
+~~~text
+LOCAL FOUNDATION SOURCE CANDIDATE
+!= ACCEPTED LOCAL PRODUCT
+
 LIVED EXPLORATION THRESHOLD
 != ACCEPTED VEXWEB-GENERATED PRODUCT
 
-VEXLIFE-PROD PRESENTATION
-!= VEXLIFE MAC LIFECYCLE OWNER
+VEXLIFE-PROD
+!= LEGACY/CURRENT VEXLIFE PROCESS/HOME
 ~~~
 
 ## Current execution map
