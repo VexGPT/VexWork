@@ -602,6 +602,64 @@ test('lenient overlay skips entries an older commit lacks, lists them, and still
   assert.deepEqual(project({ overlay: null }).report.overlayMisses, []);
 });
 
+test('lenient historical overlay applies descriptive fields but skips source-sensitive fields on existing refs', () => {
+  const base = project().lens;
+  const home = base.screens.find((screen) => screen.screenRef === 'screen.home');
+  const element = home.elements[0];
+  const pathway = base.pathways.find((entry) => entry.pathwayRef === element.pathwayRef) ?? base.pathways[0];
+  const node = pathway.nodes[0];
+
+  const overlay = {
+    schemaVersion: SCREEN_LENS_OVERLAY_SCHEMA,
+    screens: {
+      'screen.home': {
+        summary: 'Current descriptive screen summary.',
+        elements: [],
+      },
+    },
+    elements: {
+      [element.ref]: {
+        label: 'Current descriptive element label.',
+        pathwayRef: 'pathway.future',
+      },
+    },
+    pathways: {
+      [pathway.pathwayRef]: {
+        label: 'Current descriptive pathway label.',
+        disposition: 'DIRECT_REGISTRATION',
+        nodes: {
+          [node.ref]: {
+            summary: 'Current descriptive node summary.',
+            role: 'STATE',
+          },
+        },
+      },
+    },
+  };
+
+  const { lens, misses } = applyOverlayWithReport(base, overlay, { strict: false });
+  normalizeScreenLens(lens);
+
+  const nextHome = lens.screens.find((screen) => screen.screenRef === 'screen.home');
+  const nextElement = nextHome.elements.find((candidate) => candidate.ref === element.ref);
+  const nextPathway = lens.pathways.find((candidate) => candidate.pathwayRef === pathway.pathwayRef);
+  const nextNode = nextPathway.nodes.find((candidate) => candidate.ref === node.ref);
+
+  assert.equal(nextHome.summary, 'Current descriptive screen summary.');
+  assert.equal(nextHome.elements.length, home.elements.length, 'historical screen structure is source-owned');
+  assert.equal(nextElement.label, 'Current descriptive element label.');
+  assert.equal(nextElement.pathwayRef, element.pathwayRef, 'historical element linkage is source-owned');
+  assert.equal(nextPathway.label, 'Current descriptive pathway label.');
+  assert.equal(nextPathway.disposition, pathway.disposition, 'historical pathway disposition is source-owned');
+  assert.equal(nextNode.summary, 'Current descriptive node summary.');
+  assert.equal(nextNode.role, node.role, 'historical node role is source-owned');
+
+  assert.ok(misses.includes('structural-field:screen.home.elements'));
+  assert.ok(misses.includes(`structural-field:${element.ref}.pathwayRef`));
+  assert.ok(misses.includes(`structural-field:${pathway.pathwayRef}.disposition`));
+  assert.ok(misses.includes(`structural-field:${node.ref}.role`));
+});
+
 test('the read plan names exactly the files the adapter reads', () => {
   const plan = adapterReadPlan(adapter);
   assert.ok(plan.prefixes.every((prefix) => prefix.endsWith('/')));

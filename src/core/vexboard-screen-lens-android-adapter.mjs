@@ -1304,25 +1304,45 @@ export function applyOverlayWithReport(lensInput, overlay, { strict = true } = {
   const lens = JSON.parse(JSON.stringify(lensInput));
   const misses = [];
   const assign = (target, patch) => { for (const [key, value] of Object.entries(patch)) target[key] = value; };
+  const assignLenientDescriptive = (target, patch, allowedFields, ref) => {
+    for (const [key, value] of Object.entries(patch)) {
+      if (allowedFields.has(key)) target[key] = value;
+      else misses.push(`structural-field:${ref}.${key}`);
+    }
+  };
+  const SCREEN_LENIENT_FIELDS = new Set(['label', 'summary']);
+  const ELEMENT_LENIENT_FIELDS = new Set(['label']);
+  const PATHWAY_LENIENT_FIELDS = new Set(['label', 'summary', 'returns']);
+  const NODE_LENIENT_FIELDS = new Set(['label', 'summary']);
   for (const [ref, patch] of Object.entries(overlay.screens ?? {})) {
     const screen = lens.screens.find((candidate) => candidate.screenRef === ref);
-    if (screen) assign(screen, patch); else misses.push(ref);
+    if (screen) {
+      if (strict) assign(screen, patch);
+      else assignLenientDescriptive(screen, patch, SCREEN_LENIENT_FIELDS, ref);
+    } else misses.push(ref);
   }
   const allElements = [...lens.chrome.flatMap((entry) => entry.elements), ...lens.screens.flatMap((screen) => screen.elements)];
   for (const [ref, patch] of Object.entries(overlay.elements ?? {})) {
     const element = allElements.find((candidate) => candidate.ref === ref);
-    if (element) assign(element, patch); else misses.push(ref);
+    if (element) {
+      if (strict) assign(element, patch);
+      else assignLenientDescriptive(element, patch, ELEMENT_LENIENT_FIELDS, ref);
+    } else misses.push(ref);
   }
   for (const [ref, patch] of Object.entries(overlay.pathways ?? {})) {
     const pathway = lens.pathways.find((candidate) => candidate.pathwayRef === ref);
     if (!pathway) { misses.push(ref); continue; }
     const { addNodes = [], addEdges = [], removeEdges = [], nodes = {}, ...fields } = patch;
     const descriptiveFields = { ...fields };
-    if (!strict) delete descriptiveFields.returnRef;
-    assign(pathway, descriptiveFields);
+    delete descriptiveFields.returnRef;
+    if (strict) assign(pathway, descriptiveFields);
+    else assignLenientDescriptive(pathway, descriptiveFields, PATHWAY_LENIENT_FIELDS, ref);
     for (const [nodeRef, nodePatch] of Object.entries(nodes)) {
       const node = pathway.nodes.find((candidate) => candidate.ref === nodeRef);
-      if (node) assign(node, nodePatch); else misses.push(nodeRef);
+      if (node) {
+        if (strict) assign(node, nodePatch);
+        else assignLenientDescriptive(node, nodePatch, NODE_LENIENT_FIELDS, nodeRef);
+      } else misses.push(nodeRef);
     }
     if (strict) {
       pathway.nodes.push(...addNodes);
