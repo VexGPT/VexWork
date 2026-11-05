@@ -395,8 +395,23 @@ VexLife-Prod PR #28  OPEN / DRAFT
 
         ↓ stacked successor
 
-VexLife-Prod PR #29  OPEN / DRAFT / CURRENT LOCAL FOREGROUND
+VexLife-Prod PR #29  OPEN / DRAFT
   source-bound no-acquisition long-lived service-process entry
+
+        ↓ stacked successor
+
+VexLife-Prod PR #30  OPEN / DRAFT
+  source-bound private macOS service image + archive carriage
+
+        ↓ stacked successor
+
+VexLife-Prod PR #31  OPEN / DRAFT
+  bundled authorized setup + verified private-image install
+
+        ↓ stacked successor
+
+VexLife-Prod PR #32  OPEN / DRAFT / CURRENT LOCAL FOREGROUND
+  exact macOS product-service image/process/source lifetime
   provider head must be re-grounded before source work
 ~~~
 
@@ -468,8 +483,57 @@ SERVICE PROCESS != ACQUISITION AUTHORITY
 SERVICE PROCESS SOURCE != PACKAGED MAC EXECUTABLE
 ~~~
 
-A fresh Mac is not assumed to have Java/Gradle/Kotlin. The next construction edge is therefore a
-self-contained packaged runtime/service image before launchd/product-entry proof.
+A fresh Mac is not assumed to have Java/Gradle/Kotlin. That pressure is now source-formed through
+#30/#31/#32:
+
+~~~text
+#30 private service image
+  -> clean exact Git source admission
+  -> jvmJar + derived runtime dependency files
+  -> jdeps-derived JDK modules
+  -> jlink private Java 21 runtime
+  -> exact app/dependency JARs
+  -> source/payload-bound manifest
+  -> source-addressed tar.gz + archive receipt
+
+#31 bundled setup/install
+  -> private image v2:
+       bin/vexlife-prod-service
+       bin/vexlife-prod-setup
+  -> setup verifies its own image/source
+  -> explicit acquisition authorization
+  -> LocalSetup establishes Home + Heretic
+  -> exact image installed under Home/runtime/product-service/images/<sha>
+  -> invalid installed image HOLDs rather than becoming delete/repair authority
+
+#32 macOS product service lifetime
+  -> stable launchd label com.vexlife.prod.service
+  -> exact installed image
+  -> exact launchd receipt + environment + persisted plist
+  -> HTTP source currentness v2 binds exact listener PID
+  -> source rotation retires only exact owned prior service
+  -> any post-start readiness/receipt failure exactly retires the newly-started service
+~~~
+
+Permanent:
+
+~~~text
+IMAGE CURRENT
+!= PROCESS OWNERSHIP CURRENT
+!= HTTP SOURCE/PID CURRENT
+
+QUALIFIED AT START
+!= RUNTIME CURRENT AT LATER SEND
+
+CURRENTNESS
+!= RETIREMENT AUTHORITY
+
+PRIVATE SERVICE IMAGE
+!= HUMAN APPLICATION
+~~~
+
+The next construction edge is now the pre-JVM/native human bootstrap + setup window that consumes
+these owners without learning Home/model/runtime/install semantics.
 
 PR #27 then composes the first bounded personal human ↔ Vex circuit:
 
@@ -570,8 +634,10 @@ CLEAN_START wiring
 streamed response progress
 explicit-open reasoning projection
 product service / presentation
-packaged self-contained Mac service/runtime image
-launchd-owned service source/process currentness
+real private image build/archive/extract
+real bundled setup + image install
+real launchd source/process/PID currentness
+real service sustained after setup exits
 ordinary fresh-user Mac entry
 ~~~
 
