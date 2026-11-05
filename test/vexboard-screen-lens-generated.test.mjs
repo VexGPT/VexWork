@@ -23,6 +23,13 @@ test('the committed lens is current with its adapter, overlay and generator', ()
   assert.match(lens.sourceSnapshot.notes[0], /Regenerate it; do not edit by hand/);
 });
 
+test('generated related boards are stable VexBoard identities', () => {
+  assert.deepEqual(lens.relatedBoardRefs, [
+    'board.vexlife.debug-menu.theme-mode.origin-walk',
+    'board.vexlife-prod.perceivability-alignment',
+  ]);
+});
+
 test('every registered screen is projected from source', () => {
   assert.deepEqual(lens.screens.map((screen) => screen.screenRef).sort(), [
     'screen.debug-menu', 'screen.events', 'screen.family-conversation', 'screen.gallery', 'screen.home',
