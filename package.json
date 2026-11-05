@@ -23,7 +23,9 @@
     "lens:build": "node scripts/build-screen-lens.mjs",
     "lens:check": "node scripts/build-screen-lens.mjs --check",
     "lens:fetch": "node scripts/build-screen-lens.mjs --fetch",
-    "lens:verify": "node scripts/build-screen-lens.mjs --verify"
+    "lens:verify": "node scripts/build-screen-lens.mjs --verify",
+    "lens:main": "node scripts/build-screen-lens.mjs --build main --fetch",
+    "lens:promote": "node scripts/build-screen-lens.mjs --promote"
   },
   "engines": {
     "node": ">=20.1"

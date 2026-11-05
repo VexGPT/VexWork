@@ -46,8 +46,39 @@ test('roles always carry a non-color chip and three palette modes exist', () => 
 test('the lens is read-only: no writes besides the palette preference, and lens files stay on this site', () => {
   const writes = page.match(/localStorage\.setItem\(/g) || [];
   assert.equal(writes.length, 1);
+  const sessionWrites = page.match(/sessionStorage\.setItem\(/g) || [];
+  assert.equal(sessionWrites.length, 1, 'one tab-only cache of commits projected in this browser');
+  assert.match(page, /function writeCommitCache\(key, value\) \{ try \{ sessionStorage\.setItem/);
   assert.doesNotMatch(page, /method:\s*'(POST|PUT|PATCH|DELETE)'/);
   assert.match(page, /lens must be a relative \.json path on this site/);
+  assert.doesNotMatch(page, /api\.github\.com|raw\.githubusercontent\.com/, 'GitHub is reached only through the commit-source module');
+});
+
+test('the header switches project and build from the catalog, and any commit projects in the browser', () => {
+  assert.match(page, /from '\.\.\/src\/shared\/vexboard-lens-catalog\.mjs'/);
+  assert.match(page, /Catalog\.resolveLensRequest\(state\.catalog, params\)/);
+  assert.match(page, /h\('a', \{ class: 'crumb', href: '\.\/projects\.html'/);
+  assert.match(page, /aria-label': 'Projects'/);
+  assert.match(page, /role: 'group', 'aria-label': 'Build'/);
+  assert.match(page, /switchBuild\('stable'\)/);
+  assert.match(page, /switchBuild\('main'\)/);
+  assert.match(page, /import\('\.\.\/src\/core\/vexboard-screen-lens-android-adapter\.mjs'\)/, 'the adapter loads only when a commit is opened');
+  assert.match(page, /project: Adapter\.projectAndroidScreenLens, readPlan: Adapter\.adapterReadPlan/);
+  assert.match(page, /Catalog\.validateSourceRef\(commitRefFromInput\(rawValue\)\)/);
+  assert.match(page, /next\.set\('commit', state\.commit\.sha\)/, 'a commit link pins the resolved SHA, not a moving branch');
+  assert.match(page, /if \(subject && state\.request\.mode !== 'LEGACY'\)/);
+  assert.match(page, /renderNoLens\(\)/);
+});
+
+test('differences from Stable use the accepted comparison and mark without covering anything', () => {
+  assert.match(page, /from '\.\.\/src\/shared\/vexboard-screen-lens-revision\.mjs'/);
+  assert.match(page, /Revision\.compareScreenLensRevisions\(state\.stableLens, state\.lens\)/);
+  assert.match(page, /Revision\.comparePathwayRevision\(/);
+  assert.match(page, /\.delta-added,\.delta-changed\{outline:2px dashed var\(--delta\);outline-offset:2px\}/);
+  assert.match(page, /'Same meaning as Stable'/, 'a new commit with no projection change says so');
+  assert.match(page, /aria-label': 'Differences from Stable'/);
+  assert.match(page, /'Mark differences on the board'/);
+  assert.match(page, /'Copy as text'/);
 });
 
 test('canvas navigation reuses the shared drag threshold and edge labels use the shared placer', () => {

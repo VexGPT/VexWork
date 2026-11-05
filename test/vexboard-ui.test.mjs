@@ -786,5 +786,6 @@ test('swimlane journey view prioritizes the product path while preserving full r
   assert.match(page, /createElementNS\('http:\/\/www\.w3\.org\/2000\/svg','polyline'\)/);
   assert.match(page, /nested-control/);
   assert.match(page, /has-contained-children/);
-  assert.match(page, /openCatalogBoard\(detailBoardRef,\{pushCurrent:true\}\)/);
+  // Portals resolve through the one boardRef resolver (local draft, built-in, then catalog) since D24.
+  assert.match(page, /return openBoardRef\(detailBoardRef,\{pushCurrent:true\}\)/);
 });
