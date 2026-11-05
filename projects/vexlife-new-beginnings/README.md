@@ -532,6 +532,44 @@ while selecting zero prior Conversation events into the next provider prompt
 -> not accepted main until remaining integration/lifecycle gates complete
 ~~~
 
+### Downstream dual-proof acceptance horizon
+
+Once the fresh product service/presentation + ordinary Mac entry become coherent, New Beginnings should
+also earn one exact source-pinned VexBoard snapshot of the same product body.
+
+~~~text
+VexLife-Prod lived product
+  -> proves the causal body executes
+
+VexLife-Prod -> VexBoard source projection
+  -> proves the causal body is explicit/perceivable from source
+~~~
+
+This is a downstream proof target, not a runtime dependency.
+
+Preferred route when the compiler-visible product model is mature enough:
+
+~~~text
+VexLife-Prod source @ exact revision
+  -> source-owned architecture export
+  -> bounded VexBoard adapter
+  -> generated Lens snapshot
+  -> VexBoard
+~~~
+
+A read-only source adapter is acceptable for the first proof if an export is not yet earned, but:
+
+~~~text
+VEXBOARD != PRODUCT AUTHORITY
+ADAPTER != PRODUCT DEPENDENCY
+GENERATED LENS != AUTHORING SOURCE
+OVERLAY != SECOND SOURCE
+~~~
+
+Preserve stable identities and explicit relationships now so the later projector does not need to
+reverse-engineer same-directory placement, similar class names, constructor proximity, comments or
+renderer selectors.
+
 There is currently **no accepted VexLife-Prod fresh-user Mac front door on main**.
 
 The historical accepted VexLife startup/lifecycle and direct Companion sources remain provenance for
