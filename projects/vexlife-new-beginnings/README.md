@@ -375,7 +375,16 @@ work.vexlife.new-beginnings.local-runtime-foundation  RUNNING / AUTHORIZED_BOUND
 
 VexLife-Prod PR #38  OPEN / DRAFT / CURRENT LOCAL-RUNTIME CLAIM
   base  accepted P1 main 9615aab32c6e4427f3b538550284c391471a7eb0
-  head  c6baa58765992465ac4e5d1722403764764a7a0f
+  head  d3729ccc37f0d8efc227a3baaa971b59bbd2084a
+  tree  173544ff9a28f63d71942d198de724f58264ebec
+
+current proof boundary
+  A001  Gradle script compilation SAFE_FAILURE
+  A002  Kotlin candidate compilation SAFE_FAILURE
+  A003  Relay formation SAFE_FAILURE before business execution
+        current SDK requires repositoryRef on every source path record
+  A004  qualified compatible retry formed
+        sha256 6021a2ffc0f0a387caf9f02d2e060b2f1ceb9a006b475596fca26c11a2936151
 
 source provenance
   PR #25 -> #33
@@ -414,11 +423,16 @@ VexLife source/runtime
   != runtime dependency of the fresh product
 ~~~
 
-The local foundation remains a **source candidate**, not accepted product truth. PR #38 must still
-exercise the exact combined repository source and the real macOS runtime/lifetime predicates before
-integration.
+The local foundation remains a **source candidate**, not accepted product truth. The next exact edge is
+the A004 compatible Relay retry: the VexLife-Prod candidate is unchanged from A003; only the formation
+schema is repaired so every `source.expectedChangedPaths[]` record carries
+`repositoryRef = primary`. PR #38 must still exercise the exact combined repository source and the
+real macOS runtime/lifetime predicates before integration.
 
-Its work boundary is deliberately separate from the current public-browser work:
+Its work boundary is deliberately separate from the current public-browser work. PR #37 was formed
+over an earlier substrate snapshot and must be reconciled onto accepted PR #38/main after the
+local-runtime foundation integrates; do not merge #37 first.
+
 
 ~~~text
 LOCAL RUNTIME FOUNDATION
