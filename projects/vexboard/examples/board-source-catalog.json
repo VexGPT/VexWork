@@ -73,6 +73,19 @@
       ]
     },
     {
+      "boardRef": "board.vexlife-prod.perceivability-alignment",
+      "location": "./vexlife-prod-perceivability-alignment.board.json",
+      "sourceRefs": [
+        "projects/vexlife-new-beginnings/VEXBOARD-PERCEIVABILITY-ALIGNMENT.md",
+        "projects/vexboard/examples/vexlife-prod-perceivability-alignment.board.json",
+        "projects/vexboard/SCREEN-LENS.md",
+        "repo.vexlife-prod:README.md",
+        "repo.vexlife-prod:AGENTS.md",
+        "repo.vexlife-prod:docs/CULTURE.md",
+        "github.commit.vexlife-prod.b687ef9c6fa1aebfd4b0053e36daf18d0293816f"
+      ]
+    },
+    {
       "boardRef": "board.vexlife.debug-menu.theme-mode.origin-walk",
       "location": "./vexlife-debug-menu-theme-mode.board.json",
       "sourceRefs": [

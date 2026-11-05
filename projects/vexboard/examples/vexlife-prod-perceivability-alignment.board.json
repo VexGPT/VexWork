@@ -1,0 +1,356 @@
+{
+  "schemaVersion": "vexboard.local-draft/v1",
+  "draftRef": "board.vexlife-prod.perceivability-alignment",
+  "title": "VexLife-Prod — Perceivability Alignment",
+  "mode": "READ_ONLY_SOURCE",
+  "derivedFromRefOrNull": null,
+  "savedAtOrNull": null,
+  "graph": {
+    "schemaVersion": "vexboard.board-graph/v1",
+    "graphRef": "graph.vexlife-prod.perceivability-alignment",
+    "nodes": [
+      {
+        "nodeRef": "node.vlp.screen-lens-proof",
+        "kind": "REFERENCE",
+        "label": "Living Screen Lens · source-derived proof",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.pull.vexwork.230",
+          "github.pull.vexwork.232",
+          "projects/vexboard/SCREEN-LENS.md",
+          "projects/vexboard/SCREEN-LENS-ADAPTER.md"
+        ]
+      },
+      {
+        "nodeRef": "node.vlp.perceivability-law",
+        "kind": "PROCESS",
+        "label": "Explicit relationships → perceivable projection",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-new-beginnings/VEXBOARD-PERCEIVABILITY-ALIGNMENT.md",
+          "projects/vexboard/SCREEN-LENS.md"
+        ]
+      },
+      {
+        "nodeRef": "node.vlp.new-beginnings-intention",
+        "kind": "REFERENCE",
+        "label": "New Beginnings · human intention first",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-new-beginnings/README.md",
+          "repo.vexlife-prod:README.md",
+          "repo.vexlife-prod:AGENTS.md",
+          "repo.vexlife-prod:docs/CULTURE.md",
+          "github.commit.vexlife-prod.b687ef9c6fa1aebfd4b0053e36daf18d0293816f"
+        ]
+      },
+      {
+        "nodeRef": "node.vlp.semantic-relationships",
+        "kind": "PROCESS",
+        "label": "Semantic owner + typed relationships",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:README.md",
+          "repo.vexlife-prod:docs/CULTURE.md"
+        ]
+      },
+      {
+        "nodeRef": "node.vlp.realization",
+        "kind": "PROCESS",
+        "label": "Compose / VexWeb / provider realization",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:README.md",
+          "repo.vexlife-prod:docs/CULTURE.md"
+        ]
+      },
+      {
+        "nodeRef": "node.vlp.future-projector",
+        "kind": "PROCESS",
+        "label": "Future VexLife-Prod source projector / export",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-new-beginnings/VEXBOARD-PERCEIVABILITY-ALIGNMENT.md",
+          "projects/vexboard/SCREEN-LENS-ADAPTER.md"
+        ]
+      },
+      {
+        "nodeRef": "node.vlp.perceivable-product",
+        "kind": "ARTIFACT",
+        "label": "VexBoard-readable VexLife-Prod relationship map",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-new-beginnings/VEXBOARD-PERCEIVABILITY-ALIGNMENT.md",
+          "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md"
+        ]
+      },
+      {
+        "nodeRef": "node.vlp.current-local-foundation",
+        "kind": "REFERENCE",
+        "label": "Current moving local-foundation source · PR #25 / #26",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.pull.vexlife-prod.25",
+          "github.pull.vexlife-prod.26",
+          "github.pull.vexwork.231"
+        ]
+      },
+      {
+        "nodeRef": "node.vlp.boundary",
+        "kind": "ANNOTATION",
+        "label": "Align relationship explicitness · do not copy Android forms",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-new-beginnings/VEXBOARD-PERCEIVABILITY-ALIGNMENT.md"
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "relationshipRef": "rel.vlp.proof-law",
+        "kind": "REFERENCE",
+        "fromRef": "node.vlp.screen-lens-proof",
+        "toRef": "node.vlp.perceivability-law",
+        "labelOrNull": "PROVES",
+        "sourceRefs": [
+          "projects/vexlife-new-beginnings/VEXBOARD-PERCEIVABILITY-ALIGNMENT.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vlp.intention-law",
+        "kind": "REFERENCE",
+        "fromRef": "node.vlp.new-beginnings-intention",
+        "toRef": "node.vlp.perceivability-law",
+        "labelOrNull": "ALIGNS_WITH",
+        "sourceRefs": [
+          "projects/vexlife-new-beginnings/VEXBOARD-PERCEIVABILITY-ALIGNMENT.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vlp.intention-semantics",
+        "kind": "FLOW",
+        "fromRef": "node.vlp.new-beginnings-intention",
+        "toRef": "node.vlp.semantic-relationships",
+        "labelOrNull": "AUTHORS",
+        "sourceRefs": [
+          "repo.vexlife-prod:AGENTS.md",
+          "repo.vexlife-prod:docs/CULTURE.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vlp.semantics-realization",
+        "kind": "FLOW",
+        "fromRef": "node.vlp.semantic-relationships",
+        "toRef": "node.vlp.realization",
+        "labelOrNull": "REALIZED_BY",
+        "sourceRefs": [
+          "repo.vexlife-prod:README.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vlp.realization-projector",
+        "kind": "REFERENCE",
+        "fromRef": "node.vlp.realization",
+        "toRef": "node.vlp.future-projector",
+        "labelOrNull": "SOURCE-ADDRESSABLE_TO",
+        "sourceRefs": [
+          "projects/vexlife-new-beginnings/VEXBOARD-PERCEIVABILITY-ALIGNMENT.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vlp.projector-product",
+        "kind": "FLOW",
+        "fromRef": "node.vlp.future-projector",
+        "toRef": "node.vlp.perceivable-product",
+        "labelOrNull": "PROJECTS",
+        "sourceRefs": [
+          "projects/vexlife-new-beginnings/VEXBOARD-PERCEIVABILITY-ALIGNMENT.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vlp.local-foundation-semantics",
+        "kind": "REFERENCE",
+        "fromRef": "node.vlp.current-local-foundation",
+        "toRef": "node.vlp.semantic-relationships",
+        "labelOrNull": "CURRENT PRESSURE",
+        "sourceRefs": [
+          "github.pull.vexlife-prod.25",
+          "github.pull.vexlife-prod.26"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vlp.boundary-law",
+        "kind": "REFERENCE",
+        "fromRef": "node.vlp.boundary",
+        "toRef": "node.vlp.perceivability-law",
+        "labelOrNull": "CONSTRAINS",
+        "sourceRefs": [
+          "projects/vexlife-new-beginnings/VEXBOARD-PERCEIVABILITY-ALIGNMENT.md"
+        ]
+      }
+    ],
+    "sourceRefs": [
+      "projects/vexlife-new-beginnings/VEXBOARD-PERCEIVABILITY-ALIGNMENT.md",
+      "projects/vexboard/SCREEN-LENS.md",
+      "repo.vexlife-prod:README.md",
+      "repo.vexlife-prod:AGENTS.md",
+      "repo.vexlife-prod:docs/CULTURE.md",
+      "github.commit.vexlife-prod.b687ef9c6fa1aebfd4b0053e36daf18d0293816f"
+    ]
+  },
+  "projection": {
+    "schemaVersion": "vexboard.board-projection/v1",
+    "projectionRef": "projection.vexlife-prod.perceivability-alignment",
+    "graphRef": "graph.vexlife-prod.perceivability-alignment",
+    "layoutIntent": "SYSTEM_MAP",
+    "items": [
+      {
+        "projectionItemRef": "item.vlp.screen-lens-proof",
+        "semanticRef": "node.vlp.screen-lens-proof",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 80,
+          "y": 140,
+          "width": 250,
+          "height": 86
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vlp.perceivability-law",
+        "semanticRef": "node.vlp.perceivability-law",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 390,
+          "y": 140,
+          "width": 270,
+          "height": 86
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vlp.new-beginnings-intention",
+        "semanticRef": "node.vlp.new-beginnings-intention",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 80,
+          "y": 340,
+          "width": 250,
+          "height": 86
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vlp.semantic-relationships",
+        "semanticRef": "node.vlp.semantic-relationships",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 390,
+          "y": 340,
+          "width": 250,
+          "height": 86
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vlp.realization",
+        "semanticRef": "node.vlp.realization",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 720,
+          "y": 340,
+          "width": 250,
+          "height": 86
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vlp.future-projector",
+        "semanticRef": "node.vlp.future-projector",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1050,
+          "y": 340,
+          "width": 270,
+          "height": 86
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vlp.perceivable-product",
+        "semanticRef": "node.vlp.perceivable-product",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1400,
+          "y": 340,
+          "width": 300,
+          "height": 86
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vlp.current-local-foundation",
+        "semanticRef": "node.vlp.current-local-foundation",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 720,
+          "y": 540,
+          "width": 280,
+          "height": 86
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vlp.boundary",
+        "semanticRef": "node.vlp.boundary",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 390,
+          "y": 540,
+          "width": 270,
+          "height": 86
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      }
+    ],
+    "sourceRefs": [
+      "projects/vexlife-new-beginnings/VEXBOARD-PERCEIVABILITY-ALIGNMENT.md"
+    ]
+  }
+}
