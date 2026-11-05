@@ -71,6 +71,14 @@ test('VexBoard Pages entry exposes create/open/read-only/fork/save-draft workflo
   assert.match(page, /href="\.\.\/">← VexWork/);
 });
 
+test('VexBoard accepts one stable boardRef deep link through the existing source resolver', () => {
+  assert.match(page, /async function openBoardRef\(boardRef,\{pushCurrent=false\}=\{\}\)/);
+  assert.match(page, /new URLSearchParams\(location\.search\)\.get\('board'\)/);
+  assert.match(page, /await openBoardRef\(requestedBoardRef\)/);
+  assert.match(page, /SourceResolver\.resolveBoardSource\(boardRef/);
+  assert.match(page, /bootFromUrl\(\)/);
+});
+
 test('read-only fork preserves the actual draft identity as the active board coordinate', () => {
   const forkLine = page.split('\n').find((line) => line.includes('fork.onclick=async'));
   assert.ok(forkLine);
