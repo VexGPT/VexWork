@@ -375,8 +375,8 @@ work.vexlife.new-beginnings.local-runtime-foundation  RUNNING / AUTHORIZED_BOUND
 
 VexLife-Prod PR #38  OPEN / DRAFT / CURRENT LOCAL-RUNTIME CLAIM
   base  accepted P1 main 9615aab32c6e4427f3b538550284c391471a7eb0
-  head  411ef36c8bf6719eb0de389a19632dea1283483d
-  tree  4d5add765cf9f44edebf5e2ef46c788e71b74263
+  head  227f667e9761c2b8af4aeacfcf0d727e9ce4f814
+  tree  5e70b700dcd91836df2b2a76a0b220c3628f53d7
 
 current proof boundary
   A001  Gradle script compilation SAFE_FAILURE
@@ -387,9 +387,16 @@ current proof boundary
         compileKotlinJs PASS
         compileTestKotlinJs PASS
         compileKotlinJvm SAFE_FAILURE on one stale nonexistent Conversation exception reference
-  A005  qualified compatible retry formed
-        sha256 fef7963778b8cd31fc28ecfff573d75fd9bd466a9154b1f4877bc1d82cdd6a3a
-        remaining predicates: compileKotlinJvm + jvmTest + compileKotlinJs + archiveVexLifeProdServiceImage
+  A005  production compile/source-admission PASS
+        compileKotlinJvm PASS
+        compileKotlinJs PASS
+        jvmJar PASS
+        JVM test compilation SAFE_FAILURE on stale test fixtures/API ownership
+        private-image assembly held because Gradle was not running on JDK 21
+  A006  qualified compatible retry formed
+        sha256 ecf38f6d9615882f7e2a07e582617fb0ebe9522a2a35ef1c9031bb15138f167b
+        test-only delta from A005
+        remaining predicates: JDK21-bound jvmTest + archiveVexLifeProdServiceImage
 
 source provenance
   PR #25 -> #33
@@ -428,11 +435,13 @@ VexLife source/runtime
   != runtime dependency of the fresh product
 ~~~
 
-The local foundation remains a **source candidate**, not accepted product truth. The next exact edge is
-the A005 compatible Relay retry. A004 already established current Relay formation plus JS production/test
-compilation; A005 re-exercises only the still-uncertain JVM compile/tests, the common-source copy-visibility
-change on JS production, and the source-owned private service-image archive task. PR #38 must still prove
-those repository/package predicates before the real macOS install/setup/lifetime boundary can begin.
+The local foundation remains a **source candidate**, not accepted product truth. A005 established
+production JVM/JS compilation and exact-source admission. Its remaining failures were test-source drift and
+host JDK selection, not production source behavior. The six stale JVM test files are currentized on the same
+PR #38 branch; production source did not change after A005. The next exact edge is A006, which selects macOS
+JDK 21 explicitly and runs only `jvmTest` plus the source-owned `archiveVexLifeProdServiceImage` task.
+PR #38 must still prove those two repository/package predicates before the real macOS
+install/setup/lifetime boundary can begin.
 
 Its work boundary is deliberately separate from the current public-browser work. PR #37 was formed
 over an earlier substrate snapshot and must be reconciled onto accepted PR #38/main after the
