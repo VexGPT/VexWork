@@ -6,7 +6,8 @@
   "entryScreenRef": "screen.debug-menu",
   "entryElementRef": "element.debug-menu.body.dark-mode",
   "relatedBoardRefs": [
-    "board.vexlife.debug-menu.theme-mode.origin-walk"
+    "board.vexlife.debug-menu.theme-mode.origin-walk",
+    "board.vexlife-prod.perceivability-alignment"
   ],
   "sourceSnapshot": {
     "repositoryRef": "repo.vexlife-android",
@@ -5476,7 +5477,7 @@
   ],
   "provenance": {
     "generator": "vexlife-android-adapter/2",
-    "adapterSha256": "e47f18be83cc4d243da2f17dbe9f80b82e7760d661dd446a28a9e6f338943001",
+    "adapterSha256": "cb52dd98c776d89935b4ce419b2e9a5bd35eb197eea4344e72d9fb0ad0178f0b",
     "overlaySha256": "0522dc17f728f8342736e85c211af5e07ef2b0667aadae436862c4731da89647",
     "sourceCommit": "305a09eac1fabebcf2241bd207386950f41121f2"
   }
