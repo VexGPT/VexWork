@@ -81,7 +81,7 @@ roles: the UI doorway and the Family's semantic Control are different coordinate
 Each pathway also carries an honest disposition, so the lens never implies SCAE where it was not earned:
 
 ```text
-SCAE_FAMILY          a Family owns meaning (ThemeMode)
+SCAE_FAMILY          a Family owns meaning (ThemeMode; VexStream Playback via earned Behavior-port traversal)
 TYPED_PRESENTATION   Open / Close / Toggle already says everything (Show log, + FAB)
 TYPED_NAVIGATION     NavigateTo(ScreenId) already says everything (bottom nav, FAB options)
 DIRECT_REGISTRATION  registration calls owners directly; no Family yet (Reset log, Events lab)
@@ -376,35 +376,82 @@ UNANNOTATED + NOT DERIVABLE -> HELD never guessed
 `VexLensRole` mirrors `LENS_ROLES`. `VexLensEdgeKind` mirrors `FLOW | DATA | RETURN | SIDE`. If the
 role vocabulary changes, it changes here first and the Kotlin enum follows.
 
-## Current limits
+## Current accepted threshold and limits
 
-- The lens is generated from VexLife-Android `305a09e` for all 10 registered screens (see
-  `SCREEN-LENS-ADAPTER.md`). Only ThemeMode is bonded to a Family today; other Families reach their
-  UI through runtime connections the adapter does not follow yet.
+The Living Screen Lens is now an accepted, deployed first-draft VexBoard surface rather than an
+unintegrated candidate.
+
+Current accepted source/projection checkpoint:
+
+```text
+VexLife-Android source pin
+  305a09eac1fabebcf2241bd207386950f41121f2
+
+generated Lens
+  10 screens
+  241 elements
+  44 pathways
+  2 earned Family bonds
+    ThemeMode
+    VexStream Playback via BEHAVIOR_PORT
+
+integration
+  VexWork PR #230
+  merge 0ce15927913f9cd96b04d900e89dac39e50f201f
+
+lived browser threshold
+  Victor: navigable / perceivable first-draft PASS
+
+related-board federation/addressability
+  VexWork PR #232
+  merge 1a55b01f3c02b3d603fe9d6c55782b0715133fbf
+```
+
+Current limits remain:
+
 - Visible text comes from `res/values/strings.xml`, default locale.
+- VexStream Playback is the first runtime-Connection Family shape earned by source traversal; do not
+  generalize that shape to Maps or another feature merely because it also has a runtime connection.
+- Maps Process/Session + Relay/convergence relationships remain unprojected until their own source
+  shape earns a truthful traversal.
 - The older "Debug Menu / Theme Mode · Family language" board still says `Control.Toggle`; current
   `ThemeMode.kt` uses `Control.Select(Parameter.Mode)`. The lens records this as a note.
-- On the existing VexBoard canvas, some routes can still pass behind a node (for example the activate
-  edge behind the ThemeMode node). Labels no longer do; route avoidance is a separate refinement.
-- The lens is light-mode only, matching VexBoard.
+- On the existing VexBoard canvas, some routes can still pass behind a node. Labels no longer do;
+  route avoidance remains a separate presentation refinement.
+- The Lens is light-mode only, matching the current VexBoard presentation.
+- D11's exact right-click preference remains an interaction-design question even though the overall
+  deployed first-draft experience has received lived acceptance.
 
 ## Next edges
 
 ```text
-DONE   Screen Lens UI, data contract, overlap-free layout            PR #219
-DONE   existing canvas overlap fixes                                 PR #219
-DONE   search, impact, coverage, briefs                              PR #220
-DONE   generated lens: adapter, overlay, script, manual workflow     PR #221
+DONE   Screen Lens UI, data contract, overlap-free layout             PR #219
+DONE   existing canvas overlap fixes                                  PR #219
+DONE   search, impact, coverage, briefs                               PR #220
+DONE   generated lens: adapter, overlay, script, manual workflow      PR #221
+DONE   VexStream Playback stable reference + Behavior-port traversal  PR #222 / #227
+DONE   exact generated source proof + current-main composition        A004 / A006
+DONE   integrated complete Screen Lens stack                          PR #230
+DONE   lived first-draft browser acceptance                           human evidence
+DONE   stable boardRef deep links + Related-board affordance          PR #232
 
-NEXT   admit the bounded Work item (suggested: work.vexboard.screen-lens under project.vexboard,
-       related to project.vexsync.debugmenu-blueprints) and rebuild public projections
-NEXT   lived Pages check at desktop and phone widths; Victor confirms the right-click split (D11)
-NEXT   adapter rule for Families reached through runtime connections (VexStream Playback, Maps)
-NEXT   page state as a small SCAE Family (selection, flip, walk) so the lens dogfoods the architecture
+NEXT   use the accepted Related-board seam with a second real consumer:
+       VexLife-Prod / New Beginnings perceivability-alignment Board
+NEXT   prototype revision/currentness behind an advanced surface:
+       Stable vs checked/current/custom source revision, semantic diff rather than raw Git noise
+NEXT   continue canonical VexWork foreground:
+       work.vexboard.vexstream-screenshot-pilot + work.vexboard.source-projectors
+       align source projection with observed/lived evidence at stable semantic coordinates
+
+PRESSURE-DRIVEN
+       let Maps, VexLife-Prod and other materially different consumers earn additional relationship
+       shapes before extracting one generalized architecture-relation graph
+
 LATER  VexLife-Android exports its own projection from UIBlueprintRegistry (SCREEN-LENS-ADAPTER.md)
 LATER  move overlay entries into KDoc / @VexLens once VexLife-Android admits them
 LATER  observed journey: replay a VexLogger export over a pathway
 LATER  crawler screenshots on the Surface face
+LATER  BoardPatch / reversible authoring only after desired -> candidate -> regenerated proof is earned
 ```
 
 Suggested currentness contract, kept separate so the lens file stays an immutable projection:
