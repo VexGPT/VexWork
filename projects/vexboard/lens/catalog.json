@@ -64,6 +64,12 @@
           "role": "RELATED"
         },
         {
+          "boardRef": "board.vexstream.phone-desktop-connection.living-blueprint",
+          "label": "VexStream living Blueprint",
+          "summary": "Current phone ↔ desktop connection patient zero joining source-owned expectation with observed evidence.",
+          "role": "RELATED"
+        },
+        {
           "boardRef": "board.vexlife-android.home-vexstream.poc",
           "label": "Home and VexStream screen POC",
           "summary": "First attempt at projecting Android screens onto the canvas.",
@@ -145,12 +151,6 @@
     }
   ],
   "trials": [
-    {
-      "boardRef": "board.vexstream.phone-desktop-connection.living-blueprint",
-      "label": "VexStream living Blueprint",
-      "summary": "Phone to desktop connection as a living Blueprint with evidence.",
-      "role": "TRIAL"
-    },
     {
       "boardRef": "board.vexstream.phone-desktop-connection.construction-evidence",
       "label": "VexStream construction evidence",

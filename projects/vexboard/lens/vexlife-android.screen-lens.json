@@ -7,7 +7,8 @@
   "entryElementRef": "element.debug-menu.body.dark-mode",
   "relatedBoardRefs": [
     "board.vexlife.debug-menu.theme-mode.origin-walk",
-    "board.vexlife-android.vexstream-playback.vexarchitecture"
+    "board.vexlife-android.vexstream-playback.vexarchitecture",
+    "board.vexstream.phone-desktop-connection.living-blueprint"
   ],
   "sourceSnapshot": {
     "repositoryRef": "repo.vexlife-android",
@@ -5477,7 +5478,7 @@
   ],
   "provenance": {
     "generator": "vexlife-android-adapter/2",
-    "adapterSha256": "51c6e345cc87a59051d81346491ae029990964ffa985bdb31f7c2f5f3cc24318",
+    "adapterSha256": "d844788dfec846919f821534b9aec49f76fb7366e262166ebf2c7cdc9f04bcea",
     "overlaySha256": "0522dc17f728f8342736e85c211af5e07ef2b0667aadae436862c4731da89647",
     "sourceCommit": "305a09eac1fabebcf2241bd207386950f41121f2"
   }

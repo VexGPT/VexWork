@@ -10,7 +10,8 @@
   },
   "relatedBoardRefs": [
     "board.vexlife.debug-menu.theme-mode.origin-walk",
-    "board.vexlife-android.vexstream-playback.vexarchitecture"
+    "board.vexlife-android.vexstream-playback.vexarchitecture",
+    "board.vexstream.phone-desktop-connection.living-blueprint"
   ],
   "repository": {
     "ref": "repo.vexlife-android",

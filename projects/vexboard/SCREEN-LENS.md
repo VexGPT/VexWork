@@ -506,7 +506,9 @@ DONE   second real Related-board consumer:
        accepted read-only New Beginnings / VexLife-Prod alignment Board
 HISTORY accepted PR #235 threshold related Theme Mode Origin Walk + VexLife-Prod alignment
 CURRENT Projects/Builds refinement homes the adjacent alignment under VexLife Prod; Android direct
-        Related is Theme Mode Origin Walk + the earned VexStream Playback VexArchitecture walk
+        Related is Theme Mode Origin Walk + VexStream Playback VexArchitecture + the active
+        VexStream phone ↔ desktop Living Blueprint patient zero. The living Blueprint is no longer
+        grouped under earlier canvas trials; its separate construction-evidence board remains provenance.
 
 FOUNDATION  stable-ref Screen Lens revision comparison
             source commit movement != projection movement

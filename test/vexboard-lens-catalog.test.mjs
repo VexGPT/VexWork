@@ -52,6 +52,10 @@ test('the Stable pointer and the adapter pin agree, and every lens file exists',
   const directRelated = android.boards.filter((board) => board.role === 'RELATED').map((board) => board.boardRef);
   assert.deepEqual(adapter.relatedBoardRefs, directRelated, 'adapter Related set matches the generated subject catalog');
   assert.deepEqual(stableLens.relatedBoardRefs, directRelated, 'Stable Lens Related set matches the generated subject catalog');
+  assert.ok(directRelated.includes('board.vexstream.phone-desktop-connection.living-blueprint'),
+    'the active VexStream patient zero is an earned Android Related projection');
+  assert.equal(catalog.trials.some((board) => board.boardRef === 'board.vexstream.phone-desktop-connection.living-blueprint'), false,
+    'the active patient zero is not buried under earlier trials');
   assert.ok(buildFor(android, 'stable').evidence.includes('github.pull.vexwork.238'), 'same-source Stable projection refinement carries acceptance evidence');
   assert.equal(sameCommit(android), buildFor(android, 'stable').commit === buildFor(android, 'main').commit);
   assert.equal(sameCommit(subjectFor(catalog, 'vexboard')), false);
