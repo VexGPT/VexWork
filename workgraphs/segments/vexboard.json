@@ -228,6 +228,34 @@
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexboard.source-projectors.temporal-reversible-projection",
+      "parentWorkRefOrNull": "work.vexboard.source-projectors",
+      "label": "Temporal + reversible source/design projection",
+      "purpose": "Preserve the future VexBoard horizon where exact revisions/commits can be reconstructed into source-derived architecture relationship graphs and compared across historical, current, candidate and desired projections, so UX, engineering and AI can work from one connected semantic map. The reverse direction is intentional rather than source-authoritative: desired Origins may express constraints and explicit UNBOUND relationships; AI may traverse accepted Family/State/Control/Act/Effect/Projection, typed Port/Connection, provider/observation and convergence contracts to identify or propose missing connective tissue, but candidate source must be regenerated forward and compared with the desired projection before the connection is treated as real. Keep source expression, deterministic tests, runtime observation and human-lived evidence distinct so a historical projection never silently becomes a claim that the feature was known working.",
+      "workClass": "POTENTIAL",
+      "state": "CAPTURED",
+      "priorityClass": "LOW",
+      "dependencyRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+      "workDisposition": "PARKED",
+      "repositoryRefs": [
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md",
+        "work.vexboard.source-projectors",
+        "work.vexboard.boardpatch-authoring",
+        "github.pull.vexwork.219",
+        "github.pull.vexwork.227"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-05T02:56:51.000Z",
+      "updatedAt": "2026-11-05T02:56:51.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vexboard.usability-refinement",
       "parentWorkRefOrNull": "work.vexboard.outcome",
       "label": "Canvas interaction and visual affordance refinement",
