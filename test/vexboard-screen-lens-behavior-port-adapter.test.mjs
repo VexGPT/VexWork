@@ -32,9 +32,11 @@ internal class ScreenActionContext()
   [`${APP}screens/shared/vexstream/VexStreamMusicScreen.kt`]: `
 object VexStreamMusicScreen : AppScreenBlueprint(
     screenKey = "vexstream-music",
+    titleRes = R.string.vexstream_music_title,
 ) {
     val TogglePlayback = buttonRef(
         id = "body.player.play-pause",
+        labelRes = R.string.vexstream_music_play_pause,
         intent = localEffect(),
     )
     val LocalOnly = buttonRef(
@@ -275,6 +277,12 @@ internal fun reconcileVexStreamPlaybackObservation(
   [`${APP}vexstream/playback/VexStreamPlaybackDisplayState.kt`]: `
 internal sealed interface VexStreamPlaybackDisplayState
 `,
+  ['app/src/main/res/values/strings.xml']: `
+<resources>
+  <string name="vexstream_music_title">VexStream</string>
+  <string name="vexstream_music_play_pause">Play / Pause</string>
+</resources>
+`,
 }));
 
 const adapter = {
@@ -289,6 +297,7 @@ const adapter = {
     roots: { app: APP },
   },
   read: ['app:screens/', 'app:runtime/', 'app:shell/', 'app:ui/', 'app:vexstream/playback/'],
+  stringResources: ['app/src/main/res/values/strings.xml'],
   sources: {
     appScreens: 'app:screens/AppScreens.kt',
     appShell: 'app:shell/AppShell.kt',
