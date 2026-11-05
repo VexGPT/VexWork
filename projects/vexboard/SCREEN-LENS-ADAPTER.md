@@ -108,22 +108,40 @@ Hand projection was based partly on the Live Demonstration page, pinned at an ol
 
 ## Coverage today
 
+At the accepted source pin `305a09eac1fabebcf2241bd207386950f41121f2`:
+
 ```text
-10 screens · 241 elements · 43 pathways · 1 Family bond · 0 held · 0 unknown layout calls
+10 screens · 241 elements · 44 pathways · 2 Family bonds · 0 held · 0 unknown layout calls
+
+ThemeMode
+  captured-closure / registration traversal
+
+VexStream Playback
+  typed BEHAVIOR_PORT traversal
+  Experience.activate(Control)
+  -> VexPort / VexPortFlow Family coordinates
+  -> Behavior
+  -> concrete Connection / provider
+  -> observation / reconciliation
+  -> returned projection
 ```
 
-Only ThemeMode is bonded because only `toggleDarkMode` reaches a Family through `ScreenActionContext`
-today. VexStream and Maps reach their Families through their own runtime connections, not through
-registrations. Those are the next adapter rule to earn, from real pressure, not by guessing.
+Playback is evidence that runtime-connected Families can be projected when their source shape is
+explicit enough. It is **not** a generic rule that every runtime connection has the same architecture.
+
+Maps remains intentionally unbonded by this adapter because its Process/Session + Relay/convergence
+entry shape is materially different and must earn a separate traversal rather than inherit Playback's
+shape by analogy.
 
 ## Extending it
 
 ```text
-new layout builder in the element DSL      add it to LAYOUT_KINDS / REF_KINDS
-new intent op                              nothing; typed template handles op(arg) chains
-new Family reached through a closure       nothing
-Family reached through a runtime connection  new rule: follow the connection to its Behavior
-another repository (VexStream Desktop, web)  a new adapter module + adapter JSON; same lens schema
+new layout builder in the element DSL        add it to LAYOUT_KINDS / REF_KINDS
+new intent op                                nothing; typed template handles op(arg) chains
+new Family reached through a closure         nothing
+same earned BEHAVIOR_PORT source shape       reuse the accepted Behavior-port rule
+different runtime/convergence architecture   earn a new rule from that source shape
+another repository (VexLife-Prod, web)       new bounded adapter/export + same Lens consumer contract
 ```
 
 ## Upgrade path on the Android side
