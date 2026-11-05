@@ -922,9 +922,12 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, overlay
     if (pathways.has(ref)) return ref;
     const behaviorParts = bond.behaviorRef.split('.');
     const behaviorDomain = behaviorParts[0] ?? '';
-    const screenBrand = String(screen.label ?? '')
-      .split(/\\s+/)
-      .find((token) => token.replace(/\\W/g, '').toLowerCase() === behaviorDomain.replace(/\\W/g, '').toLowerCase())
+    const resolvedScreenLabel = screen.titleRes
+      ? textOf(screen.titleRes, screen.object.replace(/Screen$/, ''))
+      : humanize(screen.object.replace(/Screen$/, ''));
+    const screenBrand = String(resolvedScreenLabel)
+      .split(/\s+/)
+      .find((token) => token.replace(/\W/g, '').toLowerCase() === behaviorDomain.replace(/\W/g, '').toLowerCase())
       ?? humanize(behaviorDomain);
     const behaviorLabel = [screenBrand, ...behaviorParts.slice(1).map(humanize)].filter(Boolean).join(' ');
     const controlLabel = element.label || humanize(bond.control);
