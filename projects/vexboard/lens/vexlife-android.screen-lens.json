@@ -2443,6 +2443,606 @@
   ],
   "pathways": [
     {
+      "pathwayRef": "pathway.shell.navigate-back",
+      "label": "Back",
+      "disposition": "TYPED_NAVIGATION",
+      "summary": "A typed navigation relationship already says everything; no Act identity is earned.",
+      "returns": null,
+      "nodes": [
+        {
+          "ref": "shell.navigate-back.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "navigateBack()",
+          "symbol": "ElementIntent",
+          "summary": "Declared on the element.",
+          "source": "app:shell/AppShell.kt"
+        },
+        {
+          "ref": "shell.navigate-back.step-1",
+          "face": "BEHAVIOR",
+          "role": "NAVIGATION",
+          "label": "NavigateBack",
+          "symbol": "VexRuntime",
+          "summary": "Runtime pops to the back target.",
+          "source": "app:runtime/VexRuntime.kt"
+        }
+      ],
+      "edges": [
+        {
+          "from": "shell.navigate-back.intent",
+          "to": "shell.navigate-back.step-1",
+          "label": "navigateBack"
+        }
+      ]
+    },
+    {
+      "pathwayRef": "pathway.shell.navigate-to-home-screen",
+      "label": "Navigate",
+      "disposition": "TYPED_NAVIGATION",
+      "summary": "A typed navigation relationship already says everything; no Act identity is earned.",
+      "returns": "The destination screen is shown.",
+      "nodes": [
+        {
+          "ref": "shell.navigate-to-home-screen.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "navigateTo(<Screen>)",
+          "symbol": "ElementIntent",
+          "summary": "Declared on the element.",
+          "source": "app:shell/AppShell.kt"
+        },
+        {
+          "ref": "shell.navigate-to-home-screen.step-1",
+          "face": "BEHAVIOR",
+          "role": "NAVIGATION",
+          "label": "NavigateTo(ScreenId)",
+          "symbol": "VexRuntime",
+          "summary": "Runtime changes currentScreen to the destination.",
+          "source": "app:runtime/VexRuntime.kt"
+        },
+        {
+          "ref": "shell.navigate-to-home-screen.frame",
+          "face": "BEHAVIOR",
+          "role": "PROJECTION",
+          "label": "AppFrame renders destination",
+          "symbol": "runtime.currentScreen",
+          "summary": "AppFrame renders the destination; primary destinations keep the bottom bar and FAB.",
+          "source": "app:shell/AppFrame.kt"
+        }
+      ],
+      "edges": [
+        {
+          "from": "shell.navigate-to-home-screen.intent",
+          "to": "shell.navigate-to-home-screen.step-1",
+          "label": "navigateTo"
+        },
+        {
+          "from": "shell.navigate-to-home-screen.step-1",
+          "to": "shell.navigate-to-home-screen.frame",
+          "label": "currentScreen"
+        }
+      ],
+      "returnRef": "shell.navigate-to-home-screen.frame"
+    },
+    {
+      "pathwayRef": "pathway.shell.navigate-to-events-screen",
+      "label": "Navigate",
+      "disposition": "TYPED_NAVIGATION",
+      "summary": "A typed navigation relationship already says everything; no Act identity is earned.",
+      "returns": "The destination screen is shown.",
+      "nodes": [
+        {
+          "ref": "shell.navigate-to-events-screen.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "navigateTo(<Screen>)",
+          "symbol": "ElementIntent",
+          "summary": "Declared on the element.",
+          "source": "app:shell/AppShell.kt"
+        },
+        {
+          "ref": "shell.navigate-to-events-screen.step-1",
+          "face": "BEHAVIOR",
+          "role": "NAVIGATION",
+          "label": "NavigateTo(ScreenId)",
+          "symbol": "VexRuntime",
+          "summary": "Runtime changes currentScreen to the destination.",
+          "source": "app:runtime/VexRuntime.kt"
+        },
+        {
+          "ref": "shell.navigate-to-events-screen.frame",
+          "face": "BEHAVIOR",
+          "role": "PROJECTION",
+          "label": "AppFrame renders destination",
+          "symbol": "runtime.currentScreen",
+          "summary": "AppFrame renders the destination; primary destinations keep the bottom bar and FAB.",
+          "source": "app:shell/AppFrame.kt"
+        }
+      ],
+      "edges": [
+        {
+          "from": "shell.navigate-to-events-screen.intent",
+          "to": "shell.navigate-to-events-screen.step-1",
+          "label": "navigateTo"
+        },
+        {
+          "from": "shell.navigate-to-events-screen.step-1",
+          "to": "shell.navigate-to-events-screen.frame",
+          "label": "currentScreen"
+        }
+      ],
+      "returnRef": "shell.navigate-to-events-screen.frame"
+    },
+    {
+      "pathwayRef": "pathway.shell.navigate-to-settings-screen",
+      "label": "Navigate",
+      "disposition": "TYPED_NAVIGATION",
+      "summary": "A typed navigation relationship already says everything; no Act identity is earned.",
+      "returns": "The destination screen is shown.",
+      "nodes": [
+        {
+          "ref": "shell.navigate-to-settings-screen.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "navigateTo(<Screen>)",
+          "symbol": "ElementIntent",
+          "summary": "Declared on the element.",
+          "source": "app:shell/AppShell.kt"
+        },
+        {
+          "ref": "shell.navigate-to-settings-screen.step-1",
+          "face": "BEHAVIOR",
+          "role": "NAVIGATION",
+          "label": "NavigateTo(ScreenId)",
+          "symbol": "VexRuntime",
+          "summary": "Runtime changes currentScreen to the destination.",
+          "source": "app:runtime/VexRuntime.kt"
+        },
+        {
+          "ref": "shell.navigate-to-settings-screen.frame",
+          "face": "BEHAVIOR",
+          "role": "PROJECTION",
+          "label": "AppFrame renders destination",
+          "symbol": "runtime.currentScreen",
+          "summary": "AppFrame renders the destination; primary destinations keep the bottom bar and FAB.",
+          "source": "app:shell/AppFrame.kt"
+        }
+      ],
+      "edges": [
+        {
+          "from": "shell.navigate-to-settings-screen.intent",
+          "to": "shell.navigate-to-settings-screen.step-1",
+          "label": "navigateTo"
+        },
+        {
+          "from": "shell.navigate-to-settings-screen.step-1",
+          "to": "shell.navigate-to-settings-screen.frame",
+          "label": "currentScreen"
+        }
+      ],
+      "returnRef": "shell.navigate-to-settings-screen.frame"
+    },
+    {
+      "pathwayRef": "pathway.shell.close-fab-options-then-navigate-to-user-profile-screen",
+      "label": "Close options, then navigate",
+      "disposition": "TYPED_NAVIGATION",
+      "summary": "A typed navigation relationship already says everything; no Act identity is earned.",
+      "returns": "The destination screen is shown.",
+      "nodes": [
+        {
+          "ref": "shell.close-fab-options-then-navigate-to-user-profile-screen.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "close(FabOptions) then navigateTo(<Screen>)",
+          "symbol": "ElementIntent",
+          "summary": "Declared on the element.",
+          "source": "app:shell/AppShell.kt"
+        },
+        {
+          "ref": "shell.close-fab-options-then-navigate-to-user-profile-screen.step-1",
+          "face": "BEHAVIOR",
+          "role": "NAVIGATION",
+          "label": "Close(FabOptions)",
+          "symbol": "runtime.presentation",
+          "summary": "Runtime presentation state changes; no Behavior is earned.",
+          "source": "app:runtime/VexRuntime.kt"
+        },
+        {
+          "ref": "shell.close-fab-options-then-navigate-to-user-profile-screen.step-2",
+          "face": "BEHAVIOR",
+          "role": "NAVIGATION",
+          "label": "NavigateTo(ScreenId)",
+          "symbol": "VexRuntime",
+          "summary": "Runtime changes currentScreen to the destination.",
+          "source": "app:runtime/VexRuntime.kt"
+        },
+        {
+          "ref": "shell.close-fab-options-then-navigate-to-user-profile-screen.frame",
+          "face": "BEHAVIOR",
+          "role": "PROJECTION",
+          "label": "AppFrame renders destination",
+          "symbol": "runtime.currentScreen",
+          "summary": "AppFrame renders the destination; primary destinations keep the bottom bar and FAB.",
+          "source": "app:shell/AppFrame.kt"
+        }
+      ],
+      "edges": [
+        {
+          "from": "shell.close-fab-options-then-navigate-to-user-profile-screen.intent",
+          "to": "shell.close-fab-options-then-navigate-to-user-profile-screen.step-1",
+          "label": "close"
+        },
+        {
+          "from": "shell.close-fab-options-then-navigate-to-user-profile-screen.step-1",
+          "to": "shell.close-fab-options-then-navigate-to-user-profile-screen.step-2",
+          "label": "then"
+        },
+        {
+          "from": "shell.close-fab-options-then-navigate-to-user-profile-screen.step-2",
+          "to": "shell.close-fab-options-then-navigate-to-user-profile-screen.frame",
+          "label": "currentScreen"
+        }
+      ],
+      "returnRef": "shell.close-fab-options-then-navigate-to-user-profile-screen.frame"
+    },
+    {
+      "pathwayRef": "pathway.shell.close-fab-options-then-navigate-to-debug-menu-screen",
+      "label": "Close options, then navigate",
+      "disposition": "TYPED_NAVIGATION",
+      "summary": "A typed navigation relationship already says everything; no Act identity is earned.",
+      "returns": "The destination screen is shown.",
+      "nodes": [
+        {
+          "ref": "shell.close-fab-options-then-navigate-to-debug-menu-screen.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "close(FabOptions) then navigateTo(<Screen>)",
+          "symbol": "ElementIntent",
+          "summary": "Declared on the element.",
+          "source": "app:shell/AppShell.kt"
+        },
+        {
+          "ref": "shell.close-fab-options-then-navigate-to-debug-menu-screen.step-1",
+          "face": "BEHAVIOR",
+          "role": "NAVIGATION",
+          "label": "Close(FabOptions)",
+          "symbol": "runtime.presentation",
+          "summary": "Runtime presentation state changes; no Behavior is earned.",
+          "source": "app:runtime/VexRuntime.kt"
+        },
+        {
+          "ref": "shell.close-fab-options-then-navigate-to-debug-menu-screen.step-2",
+          "face": "BEHAVIOR",
+          "role": "NAVIGATION",
+          "label": "NavigateTo(ScreenId)",
+          "symbol": "VexRuntime",
+          "summary": "Runtime changes currentScreen to the destination.",
+          "source": "app:runtime/VexRuntime.kt"
+        },
+        {
+          "ref": "shell.close-fab-options-then-navigate-to-debug-menu-screen.frame",
+          "face": "BEHAVIOR",
+          "role": "PROJECTION",
+          "label": "AppFrame renders destination",
+          "symbol": "runtime.currentScreen",
+          "summary": "AppFrame renders the destination; primary destinations keep the bottom bar and FAB.",
+          "source": "app:shell/AppFrame.kt"
+        }
+      ],
+      "edges": [
+        {
+          "from": "shell.close-fab-options-then-navigate-to-debug-menu-screen.intent",
+          "to": "shell.close-fab-options-then-navigate-to-debug-menu-screen.step-1",
+          "label": "close"
+        },
+        {
+          "from": "shell.close-fab-options-then-navigate-to-debug-menu-screen.step-1",
+          "to": "shell.close-fab-options-then-navigate-to-debug-menu-screen.step-2",
+          "label": "then"
+        },
+        {
+          "from": "shell.close-fab-options-then-navigate-to-debug-menu-screen.step-2",
+          "to": "shell.close-fab-options-then-navigate-to-debug-menu-screen.frame",
+          "label": "currentScreen"
+        }
+      ],
+      "returnRef": "shell.close-fab-options-then-navigate-to-debug-menu-screen.frame"
+    },
+    {
+      "pathwayRef": "pathway.shell.close-fab-options-then-navigate-to-gallery-screen",
+      "label": "Close options, then navigate",
+      "disposition": "TYPED_NAVIGATION",
+      "summary": "A typed navigation relationship already says everything; no Act identity is earned.",
+      "returns": "The destination screen is shown.",
+      "nodes": [
+        {
+          "ref": "shell.close-fab-options-then-navigate-to-gallery-screen.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "close(FabOptions) then navigateTo(<Screen>)",
+          "symbol": "ElementIntent",
+          "summary": "Declared on the element.",
+          "source": "app:shell/AppShell.kt"
+        },
+        {
+          "ref": "shell.close-fab-options-then-navigate-to-gallery-screen.step-1",
+          "face": "BEHAVIOR",
+          "role": "NAVIGATION",
+          "label": "Close(FabOptions)",
+          "symbol": "runtime.presentation",
+          "summary": "Runtime presentation state changes; no Behavior is earned.",
+          "source": "app:runtime/VexRuntime.kt"
+        },
+        {
+          "ref": "shell.close-fab-options-then-navigate-to-gallery-screen.step-2",
+          "face": "BEHAVIOR",
+          "role": "NAVIGATION",
+          "label": "NavigateTo(ScreenId)",
+          "symbol": "VexRuntime",
+          "summary": "Runtime changes currentScreen to the destination.",
+          "source": "app:runtime/VexRuntime.kt"
+        },
+        {
+          "ref": "shell.close-fab-options-then-navigate-to-gallery-screen.frame",
+          "face": "BEHAVIOR",
+          "role": "PROJECTION",
+          "label": "AppFrame renders destination",
+          "symbol": "runtime.currentScreen",
+          "summary": "AppFrame renders the destination; primary destinations keep the bottom bar and FAB.",
+          "source": "app:shell/AppFrame.kt"
+        }
+      ],
+      "edges": [
+        {
+          "from": "shell.close-fab-options-then-navigate-to-gallery-screen.intent",
+          "to": "shell.close-fab-options-then-navigate-to-gallery-screen.step-1",
+          "label": "close"
+        },
+        {
+          "from": "shell.close-fab-options-then-navigate-to-gallery-screen.step-1",
+          "to": "shell.close-fab-options-then-navigate-to-gallery-screen.step-2",
+          "label": "then"
+        },
+        {
+          "from": "shell.close-fab-options-then-navigate-to-gallery-screen.step-2",
+          "to": "shell.close-fab-options-then-navigate-to-gallery-screen.frame",
+          "label": "currentScreen"
+        }
+      ],
+      "returnRef": "shell.close-fab-options-then-navigate-to-gallery-screen.frame"
+    },
+    {
+      "pathwayRef": "pathway.shell.toggle.FabOptions",
+      "label": "Toggle Fab options",
+      "disposition": "TYPED_PRESENTATION",
+      "summary": "A typed presentation relationship already says everything; no Family, Act or Effect is earned.",
+      "returns": null,
+      "nodes": [
+        {
+          "ref": "shell.toggle.FabOptions.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "toggle(FabOptions)",
+          "symbol": "ElementIntent",
+          "summary": "Declared on the element.",
+          "source": "app:shell/AppShell.kt"
+        },
+        {
+          "ref": "shell.toggle.FabOptions.step-1",
+          "face": "BEHAVIOR",
+          "role": "NAVIGATION",
+          "label": "Toggle(element.shell.fab-options)",
+          "symbol": "runtime.presentation",
+          "summary": "Runtime presentation state changes; no Behavior is earned.",
+          "source": "app:runtime/VexRuntime.kt"
+        }
+      ],
+      "edges": [
+        {
+          "from": "shell.toggle.FabOptions.intent",
+          "to": "shell.toggle.FabOptions.step-1",
+          "label": "toggle"
+        }
+      ]
+    },
+    {
+      "pathwayRef": "pathway.home.navigate-to-vex-stream-music-screen",
+      "label": "Navigate",
+      "disposition": "TYPED_NAVIGATION",
+      "summary": "A typed navigation relationship already says everything; no Act identity is earned.",
+      "returns": "The destination screen is shown.",
+      "nodes": [
+        {
+          "ref": "home.navigate-to-vex-stream-music-screen.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "navigateTo(<Screen>)",
+          "symbol": "ElementIntent",
+          "summary": "Declared on the element.",
+          "source": "app:screens/primary/home/HomeScreen.kt"
+        },
+        {
+          "ref": "home.navigate-to-vex-stream-music-screen.step-1",
+          "face": "BEHAVIOR",
+          "role": "NAVIGATION",
+          "label": "NavigateTo(ScreenId)",
+          "symbol": "VexRuntime",
+          "summary": "Runtime changes currentScreen to the destination.",
+          "source": "app:runtime/VexRuntime.kt"
+        },
+        {
+          "ref": "home.navigate-to-vex-stream-music-screen.frame",
+          "face": "BEHAVIOR",
+          "role": "PROJECTION",
+          "label": "AppFrame renders destination",
+          "symbol": "runtime.currentScreen",
+          "summary": "AppFrame renders the destination; primary destinations keep the bottom bar and FAB.",
+          "source": "app:shell/AppFrame.kt"
+        }
+      ],
+      "edges": [
+        {
+          "from": "home.navigate-to-vex-stream-music-screen.intent",
+          "to": "home.navigate-to-vex-stream-music-screen.step-1",
+          "label": "navigateTo"
+        },
+        {
+          "from": "home.navigate-to-vex-stream-music-screen.step-1",
+          "to": "home.navigate-to-vex-stream-music-screen.frame",
+          "label": "currentScreen"
+        }
+      ],
+      "returnRef": "home.navigate-to-vex-stream-music-screen.frame"
+    },
+    {
+      "pathwayRef": "pathway.home.navigate-to-vex-family-conversation-screen",
+      "label": "Navigate",
+      "disposition": "TYPED_NAVIGATION",
+      "summary": "A typed navigation relationship already says everything; no Act identity is earned.",
+      "returns": "The destination screen is shown.",
+      "nodes": [
+        {
+          "ref": "home.navigate-to-vex-family-conversation-screen.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "navigateTo(<Screen>)",
+          "symbol": "ElementIntent",
+          "summary": "Declared on the element.",
+          "source": "app:screens/primary/home/HomeScreen.kt"
+        },
+        {
+          "ref": "home.navigate-to-vex-family-conversation-screen.step-1",
+          "face": "BEHAVIOR",
+          "role": "NAVIGATION",
+          "label": "NavigateTo(ScreenId)",
+          "symbol": "VexRuntime",
+          "summary": "Runtime changes currentScreen to the destination.",
+          "source": "app:runtime/VexRuntime.kt"
+        },
+        {
+          "ref": "home.navigate-to-vex-family-conversation-screen.frame",
+          "face": "BEHAVIOR",
+          "role": "PROJECTION",
+          "label": "AppFrame renders destination",
+          "symbol": "runtime.currentScreen",
+          "summary": "AppFrame renders the destination; primary destinations keep the bottom bar and FAB.",
+          "source": "app:shell/AppFrame.kt"
+        }
+      ],
+      "edges": [
+        {
+          "from": "home.navigate-to-vex-family-conversation-screen.intent",
+          "to": "home.navigate-to-vex-family-conversation-screen.step-1",
+          "label": "navigateTo"
+        },
+        {
+          "from": "home.navigate-to-vex-family-conversation-screen.step-1",
+          "to": "home.navigate-to-vex-family-conversation-screen.frame",
+          "label": "currentScreen"
+        }
+      ],
+      "returnRef": "home.navigate-to-vex-family-conversation-screen.frame"
+    },
+    {
+      "pathwayRef": "pathway.home.navigate-to-vex-maps-screen",
+      "label": "Navigate",
+      "disposition": "TYPED_NAVIGATION",
+      "summary": "A typed navigation relationship already says everything; no Act identity is earned.",
+      "returns": "The destination screen is shown.",
+      "nodes": [
+        {
+          "ref": "home.navigate-to-vex-maps-screen.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "navigateTo(<Screen>)",
+          "symbol": "ElementIntent",
+          "summary": "Declared on the element.",
+          "source": "app:screens/primary/home/HomeScreen.kt"
+        },
+        {
+          "ref": "home.navigate-to-vex-maps-screen.step-1",
+          "face": "BEHAVIOR",
+          "role": "NAVIGATION",
+          "label": "NavigateTo(ScreenId)",
+          "symbol": "VexRuntime",
+          "summary": "Runtime changes currentScreen to the destination.",
+          "source": "app:runtime/VexRuntime.kt"
+        },
+        {
+          "ref": "home.navigate-to-vex-maps-screen.frame",
+          "face": "BEHAVIOR",
+          "role": "PROJECTION",
+          "label": "AppFrame renders destination",
+          "symbol": "runtime.currentScreen",
+          "summary": "AppFrame renders the destination; primary destinations keep the bottom bar and FAB.",
+          "source": "app:shell/AppFrame.kt"
+        }
+      ],
+      "edges": [
+        {
+          "from": "home.navigate-to-vex-maps-screen.intent",
+          "to": "home.navigate-to-vex-maps-screen.step-1",
+          "label": "navigateTo"
+        },
+        {
+          "from": "home.navigate-to-vex-maps-screen.step-1",
+          "to": "home.navigate-to-vex-maps-screen.frame",
+          "label": "currentScreen"
+        }
+      ],
+      "returnRef": "home.navigate-to-vex-maps-screen.frame"
+    },
+    {
+      "pathwayRef": "pathway.home.navigate-to-talk-to-vex-screen",
+      "label": "Navigate",
+      "disposition": "TYPED_NAVIGATION",
+      "summary": "A typed navigation relationship already says everything; no Act identity is earned.",
+      "returns": "The destination screen is shown.",
+      "nodes": [
+        {
+          "ref": "home.navigate-to-talk-to-vex-screen.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "navigateTo(<Screen>)",
+          "symbol": "ElementIntent",
+          "summary": "Declared on the element.",
+          "source": "app:screens/primary/home/HomeScreen.kt"
+        },
+        {
+          "ref": "home.navigate-to-talk-to-vex-screen.step-1",
+          "face": "BEHAVIOR",
+          "role": "NAVIGATION",
+          "label": "NavigateTo(ScreenId)",
+          "symbol": "VexRuntime",
+          "summary": "Runtime changes currentScreen to the destination.",
+          "source": "app:runtime/VexRuntime.kt"
+        },
+        {
+          "ref": "home.navigate-to-talk-to-vex-screen.frame",
+          "face": "BEHAVIOR",
+          "role": "PROJECTION",
+          "label": "AppFrame renders destination",
+          "symbol": "runtime.currentScreen",
+          "summary": "AppFrame renders the destination; primary destinations keep the bottom bar and FAB.",
+          "source": "app:shell/AppFrame.kt"
+        }
+      ],
+      "edges": [
+        {
+          "from": "home.navigate-to-talk-to-vex-screen.intent",
+          "to": "home.navigate-to-talk-to-vex-screen.step-1",
+          "label": "navigateTo"
+        },
+        {
+          "from": "home.navigate-to-talk-to-vex-screen.step-1",
+          "to": "home.navigate-to-talk-to-vex-screen.frame",
+          "label": "currentScreen"
+        }
+      ],
+      "returnRef": "home.navigate-to-talk-to-vex-screen.frame"
+    },
+    {
       "pathwayRef": "pathway.theme.dark-mode.toggle",
       "label": "Choose Light / Dark",
       "disposition": "SCAE_FAMILY",
@@ -2753,16 +3353,6 @@
         },
         {
           "from": "theme.dark-mode.toggle.fence",
-          "to": "theme.dark-mode.toggle.observe",
-          "label": "admit / hold"
-        },
-        {
-          "from": "theme.dark-mode.toggle.display",
-          "to": "theme.dark-mode.toggle.render",
-          "label": "manifests"
-        },
-        {
-          "from": "theme.dark-mode.toggle.fence",
           "to": "theme.dark-mode.toggle.method-observe",
           "label": "Success output"
         },
@@ -2777,9 +3367,78 @@
           "to": "theme.dark-mode.toggle.observe",
           "label": "states",
           "kind": "DATA"
+        },
+        {
+          "from": "theme.dark-mode.toggle.display",
+          "to": "theme.dark-mode.toggle.render",
+          "label": "manifests"
         }
       ],
       "returnRef": "theme.dark-mode.toggle.render"
+    },
+    {
+      "pathwayRef": "pathway.debug-menu.open.LogSheet",
+      "label": "Open Log sheet",
+      "disposition": "TYPED_PRESENTATION",
+      "summary": "A typed presentation relationship already says everything; no Family, Act or Effect is earned.",
+      "returns": null,
+      "nodes": [
+        {
+          "ref": "debug-menu.open.LogSheet.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "open(LogSheet)",
+          "symbol": "ElementIntent",
+          "summary": "Declared on the element.",
+          "source": "app:screens/shared/debug/DebugMenuScreen.kt"
+        },
+        {
+          "ref": "debug-menu.open.LogSheet.step-1",
+          "face": "BEHAVIOR",
+          "role": "NAVIGATION",
+          "label": "Open(element.debug-menu.log-history.sheet)",
+          "symbol": "runtime.presentation",
+          "summary": "Runtime presentation state changes; no Behavior is earned.",
+          "source": "app:runtime/VexRuntime.kt"
+        },
+        {
+          "ref": "debug-menu.open.LogSheet.renderer",
+          "face": "BEHAVIOR",
+          "role": "PROJECTION",
+          "label": "LogHistorySheet(…)",
+          "symbol": "isOpen(LogSheet)",
+          "summary": "The screen renders this while presentation says it is open.",
+          "source": "app:screens/shared/debug/DebugMenuScreen.kt"
+        },
+        {
+          "ref": "debug-menu.open.LogSheet.reads-logHistoryRepository",
+          "face": "DEPTH",
+          "role": "STORE",
+          "label": "logHistoryRepository",
+          "symbol": "logHistoryRepository",
+          "summary": "Read by the rendered content.",
+          "source": "app:screens/shared/debug/DebugMenuScreen.kt"
+        }
+      ],
+      "edges": [
+        {
+          "from": "debug-menu.open.LogSheet.intent",
+          "to": "debug-menu.open.LogSheet.step-1",
+          "label": "open"
+        },
+        {
+          "from": "debug-menu.open.LogSheet.step-1",
+          "to": "debug-menu.open.LogSheet.renderer",
+          "label": "renders"
+        },
+        {
+          "from": "debug-menu.open.LogSheet.renderer",
+          "to": "debug-menu.open.LogSheet.reads-logHistoryRepository",
+          "label": "reads",
+          "kind": "DATA"
+        }
+      ],
+      "returnRef": "debug-menu.open.LogSheet.renderer"
     },
     {
       "pathwayRef": "pathway.log-history.clear",
@@ -3814,6 +4473,210 @@
       ]
     },
     {
+      "pathwayRef": "pathway.gallery.open.DialogModalSample",
+      "label": "Open Dialog modal sample",
+      "disposition": "TYPED_PRESENTATION",
+      "summary": "A typed presentation relationship already says everything; no Family, Act or Effect is earned.",
+      "returns": null,
+      "nodes": [
+        {
+          "ref": "gallery.open.DialogModalSample.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "open(DialogModalSample)",
+          "symbol": "ElementIntent",
+          "summary": "Declared on the element.",
+          "source": "app:screens/shared/gallery/GalleryScreen.kt"
+        },
+        {
+          "ref": "gallery.open.DialogModalSample.step-1",
+          "face": "BEHAVIOR",
+          "role": "NAVIGATION",
+          "label": "Open(element.gallery.page.content.elements.modal-samples.dialog)",
+          "symbol": "runtime.presentation",
+          "summary": "Runtime presentation state changes; no Behavior is earned.",
+          "source": "app:runtime/VexRuntime.kt"
+        }
+      ],
+      "edges": [
+        {
+          "from": "gallery.open.DialogModalSample.intent",
+          "to": "gallery.open.DialogModalSample.step-1",
+          "label": "open"
+        }
+      ]
+    },
+    {
+      "pathwayRef": "pathway.gallery.open.BottomSheetModalSample",
+      "label": "Open Bottom sheet modal sample",
+      "disposition": "TYPED_PRESENTATION",
+      "summary": "A typed presentation relationship already says everything; no Family, Act or Effect is earned.",
+      "returns": null,
+      "nodes": [
+        {
+          "ref": "gallery.open.BottomSheetModalSample.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "open(BottomSheetModalSample)",
+          "symbol": "ElementIntent",
+          "summary": "Declared on the element.",
+          "source": "app:screens/shared/gallery/GalleryScreen.kt"
+        },
+        {
+          "ref": "gallery.open.BottomSheetModalSample.step-1",
+          "face": "BEHAVIOR",
+          "role": "NAVIGATION",
+          "label": "Open(element.gallery.page.content.elements.modal-samples.bottom-sheet)",
+          "symbol": "runtime.presentation",
+          "summary": "Runtime presentation state changes; no Behavior is earned.",
+          "source": "app:runtime/VexRuntime.kt"
+        }
+      ],
+      "edges": [
+        {
+          "from": "gallery.open.BottomSheetModalSample.intent",
+          "to": "gallery.open.BottomSheetModalSample.step-1",
+          "label": "open"
+        }
+      ]
+    },
+    {
+      "pathwayRef": "pathway.gallery.close.DialogModalSample",
+      "label": "Close Dialog modal sample",
+      "disposition": "TYPED_PRESENTATION",
+      "summary": "A typed presentation relationship already says everything; no Family, Act or Effect is earned.",
+      "returns": null,
+      "nodes": [
+        {
+          "ref": "gallery.close.DialogModalSample.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "close(DialogModalSample)",
+          "symbol": "ElementIntent",
+          "summary": "Declared on the element.",
+          "source": "app:screens/shared/gallery/GalleryScreen.kt"
+        },
+        {
+          "ref": "gallery.close.DialogModalSample.step-1",
+          "face": "BEHAVIOR",
+          "role": "NAVIGATION",
+          "label": "Close(element.gallery.page.content.elements.modal-samples.dialog)",
+          "symbol": "runtime.presentation",
+          "summary": "Runtime presentation state changes; no Behavior is earned.",
+          "source": "app:runtime/VexRuntime.kt"
+        }
+      ],
+      "edges": [
+        {
+          "from": "gallery.close.DialogModalSample.intent",
+          "to": "gallery.close.DialogModalSample.step-1",
+          "label": "close"
+        }
+      ]
+    },
+    {
+      "pathwayRef": "pathway.gallery.close.BottomSheetModalSample",
+      "label": "Close Bottom sheet modal sample",
+      "disposition": "TYPED_PRESENTATION",
+      "summary": "A typed presentation relationship already says everything; no Family, Act or Effect is earned.",
+      "returns": null,
+      "nodes": [
+        {
+          "ref": "gallery.close.BottomSheetModalSample.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "close(BottomSheetModalSample)",
+          "symbol": "ElementIntent",
+          "summary": "Declared on the element.",
+          "source": "app:screens/shared/gallery/GalleryScreen.kt"
+        },
+        {
+          "ref": "gallery.close.BottomSheetModalSample.step-1",
+          "face": "BEHAVIOR",
+          "role": "NAVIGATION",
+          "label": "Close(element.gallery.page.content.elements.modal-samples.bottom-sheet)",
+          "symbol": "runtime.presentation",
+          "summary": "Runtime presentation state changes; no Behavior is earned.",
+          "source": "app:runtime/VexRuntime.kt"
+        }
+      ],
+      "edges": [
+        {
+          "from": "gallery.close.BottomSheetModalSample.intent",
+          "to": "gallery.close.BottomSheetModalSample.step-1",
+          "label": "close"
+        }
+      ]
+    },
+    {
+      "pathwayRef": "pathway.gallery.swap-to-child-elements-panel-container-content",
+      "label": "Swap to",
+      "disposition": "TYPED_PRESENTATION",
+      "summary": "A typed presentation relationship already says everything; no Family, Act or Effect is earned.",
+      "returns": null,
+      "nodes": [
+        {
+          "ref": "gallery.swap-to-child-elements-panel-container-content.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "swapTo(container = Content, child = ElementsPanel)",
+          "symbol": "ElementIntent",
+          "summary": "Declared on the element.",
+          "source": "app:screens/shared/gallery/GalleryScreen.kt"
+        },
+        {
+          "ref": "gallery.swap-to-child-elements-panel-container-content.step-1",
+          "face": "BEHAVIOR",
+          "role": "NAVIGATION",
+          "label": "SwapTo(container = Content, child = ElementsPanel)",
+          "symbol": "runtime.presentation",
+          "summary": "Runtime presentation state changes; no Behavior is earned.",
+          "source": "app:runtime/VexRuntime.kt"
+        }
+      ],
+      "edges": [
+        {
+          "from": "gallery.swap-to-child-elements-panel-container-content.intent",
+          "to": "gallery.swap-to-child-elements-panel-container-content.step-1",
+          "label": "swapTo"
+        }
+      ]
+    },
+    {
+      "pathwayRef": "pathway.gallery.swap-to-child-app-graph-panel-container-content",
+      "label": "Swap to",
+      "disposition": "TYPED_PRESENTATION",
+      "summary": "A typed presentation relationship already says everything; no Family, Act or Effect is earned.",
+      "returns": null,
+      "nodes": [
+        {
+          "ref": "gallery.swap-to-child-app-graph-panel-container-content.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "swapTo(container = Content, child = AppGraphPanel)",
+          "symbol": "ElementIntent",
+          "summary": "Declared on the element.",
+          "source": "app:screens/shared/gallery/GalleryScreen.kt"
+        },
+        {
+          "ref": "gallery.swap-to-child-app-graph-panel-container-content.step-1",
+          "face": "BEHAVIOR",
+          "role": "NAVIGATION",
+          "label": "SwapTo(container = Content, child = AppGraphPanel)",
+          "symbol": "runtime.presentation",
+          "summary": "Runtime presentation state changes; no Behavior is earned.",
+          "source": "app:runtime/VexRuntime.kt"
+        }
+      ],
+      "edges": [
+        {
+          "from": "gallery.swap-to-child-app-graph-panel-container-content.intent",
+          "to": "gallery.swap-to-child-app-graph-panel-container-content.step-1",
+          "label": "swapTo"
+        }
+      ]
+    },
+    {
       "pathwayRef": "pathway.user-profile.save",
       "label": "Save user profile",
       "disposition": "DIRECT_REGISTRATION",
@@ -3938,6 +4801,54 @@
       ]
     },
     {
+      "pathwayRef": "pathway.vex-maps.close-map-menu-then-open-offline-panel",
+      "label": "Close",
+      "disposition": "TYPED_PRESENTATION",
+      "summary": "A typed presentation relationship already says everything; no Family, Act or Effect is earned.",
+      "returns": null,
+      "nodes": [
+        {
+          "ref": "vex-maps.close-map-menu-then-open-offline-panel.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "close(MapMenu) then open(OfflinePanel)",
+          "symbol": "ElementIntent",
+          "summary": "Declared on the element.",
+          "source": "app:screens/shared/maps/VexMapsScreen.kt"
+        },
+        {
+          "ref": "vex-maps.close-map-menu-then-open-offline-panel.step-1",
+          "face": "BEHAVIOR",
+          "role": "NAVIGATION",
+          "label": "Close(MapMenu)",
+          "symbol": "runtime.presentation",
+          "summary": "Runtime presentation state changes; no Behavior is earned.",
+          "source": "app:runtime/VexRuntime.kt"
+        },
+        {
+          "ref": "vex-maps.close-map-menu-then-open-offline-panel.step-2",
+          "face": "BEHAVIOR",
+          "role": "NAVIGATION",
+          "label": "Open(OfflinePanel)",
+          "symbol": "runtime.presentation",
+          "summary": "Runtime presentation state changes; no Behavior is earned.",
+          "source": "app:runtime/VexRuntime.kt"
+        }
+      ],
+      "edges": [
+        {
+          "from": "vex-maps.close-map-menu-then-open-offline-panel.intent",
+          "to": "vex-maps.close-map-menu-then-open-offline-panel.step-1",
+          "label": "close"
+        },
+        {
+          "from": "vex-maps.close-map-menu-then-open-offline-panel.step-1",
+          "to": "vex-maps.close-map-menu-then-open-offline-panel.step-2",
+          "label": "then"
+        }
+      ]
+    },
+    {
       "pathwayRef": "pathway.vexstream-music.connection.find",
       "label": "Find nearby vex stream",
       "disposition": "DIRECT_REGISTRATION",
@@ -4058,1380 +4969,6 @@
           "from": "vexstream-music.connection.confirm-code.registration",
           "to": "vexstream-music.connection.confirm-code.owner-repository",
           "label": "calls"
-        }
-      ]
-    },
-    {
-      "pathwayRef": "pathway.vexstream.playback.play-pause",
-      "label": "VexStream Playback · Play / Pause",
-      "disposition": "SCAE_FAMILY",
-      "summary": "VexStreamPlaybackFamily owns PlayPause meaning; the typed Connection realizes and reconciles outside truth back into the same Family projection.",
-      "returns": "The returned VexStreamPlaybackProjection / VexStreamPlaybackDisplayState reaches the same human-facing Play / Pause control.",
-      "nodes": [
-        {
-          "ref": "vexstream.playback.play-pause.intent",
-          "face": "BEHAVIOR",
-          "role": "INTENT",
-          "label": "localEffect()",
-          "symbol": "VexStreamMusicScreen.TogglePlayback",
-          "summary": "The registered element delegates feature-local meaning to its custom presentation handler.",
-          "source": "app:screens/shared/vexstream/VexStreamMusicScreen.kt",
-          "code": "intent = localEffect()"
-        },
-        {
-          "ref": "vexstream.playback.play-pause.doorway",
-          "face": "BEHAVIOR",
-          "role": "DISPATCH",
-          "label": "VexStreamPlaybackExperience.activate(PlayPause)",
-          "symbol": "VexStreamPlaybackExperience.activate",
-          "summary": "The visible control manifestations forward the same Family-bound Control through the UI-facing membrane.",
-          "source": "app:screens/shared/vexstream/VexStreamPlayerPresentation.kt",
-          "code": "VexStreamMusicScreen.TogglePlayback -> playbackExperience.activate(VexStreamPlaybackControl.PlayPause)"
-        },
-        {
-          "ref": "vexstream.playback.play-pause.control",
-          "face": "BEHAVIOR",
-          "role": "CONTROL",
-          "label": "VexStreamPlaybackControl.PlayPause",
-          "symbol": "VexStreamPlaybackControl.PlayPause",
-          "summary": "Family-bound semantic input.",
-          "source": "app:vexstream/playback/VexStreamPlaybackControl.kt"
-        },
-        {
-          "ref": "vexstream.playback.play-pause.state",
-          "face": "BEHAVIOR",
-          "role": "STATE",
-          "label": "CURRENT VexStreamPlaybackState · NoMedia | Media | Ended",
-          "symbol": "VexStreamPlaybackState",
-          "summary": "Exact current semantic truth used to resolve the Control.",
-          "source": "app:vexstream/playback/VexStreamPlaybackState.kt"
-        },
-        {
-          "ref": "vexstream.playback.play-pause.act",
-          "face": "BEHAVIOR",
-          "role": "ACT",
-          "label": "PlayPause → Play | Pause",
-          "symbol": "VexStreamPlaybackAct",
-          "summary": "The Control blueprint chooses the lawful Act for exact current State.",
-          "source": "app:vexstream/playback/VexStreamPlaybackControl.kt"
-        },
-        {
-          "ref": "vexstream.playback.play-pause.effect",
-          "face": "BEHAVIOR",
-          "role": "EFFECT",
-          "label": "RequestPlay | RequestPause | RestartCurrent",
-          "symbol": "VexStreamPlaybackEffect",
-          "summary": "Behavior resolves the Act into the runtime transformation appropriate to current State.",
-          "source": "app:vexstream/playback/VexStreamPlaybackBehavior.kt"
-        },
-        {
-          "ref": "vexstream.playback.play-pause.admitted",
-          "face": "BEHAVIOR",
-          "role": "STATE",
-          "label": "current.afterIntent(effect)",
-          "symbol": "VexStreamPlaybackState.afterIntent",
-          "summary": "Semantic State reflects admitted intent before outside observation converges.",
-          "source": "app:vexstream/playback/VexStreamPlaybackPending.kt"
-        },
-        {
-          "ref": "vexstream.playback.play-pause.projection",
-          "face": "BEHAVIOR",
-          "role": "PROJECTION",
-          "label": "VexStreamPlaybackProjection",
-          "symbol": "VexStreamPlaybackProjection",
-          "summary": "The typed Connection publishes the Family projection.",
-          "source": "app:vexstream/playback/VexStreamPlaybackTypes.kt"
-        },
-        {
-          "ref": "vexstream.playback.play-pause.presentation",
-          "face": "BEHAVIOR",
-          "role": "PROJECTION",
-          "label": "VexStreamPlaybackDisplayState → Play / Pause presentation",
-          "symbol": "VexStreamPlaybackDisplayState",
-          "summary": "The Experience derives display meaning from the returned projection without becoming semantic owner.",
-          "source": "app:vexstream/playback/VexStreamPlaybackExperience.kt"
-        },
-        {
-          "ref": "vexstream.playback.play-pause.connection-owner",
-          "face": "DEPTH",
-          "role": "CONSTRUCTION",
-          "label": "VexStreamPlaybackConnectionViewModel",
-          "symbol": "VexStreamPlaybackConnectionViewModel",
-          "summary": "Lifetime owner of the concrete Connection; construction support, not semantic truth.",
-          "source": "app:vexstream/playback/VexStreamPlaybackConnectionViewModel.kt"
-        },
-        {
-          "ref": "vexstream.playback.play-pause.connection",
-          "face": "DEPTH",
-          "role": "DISPATCH",
-          "label": "VexStreamPlaybackConnection / Flow → Media3VexStreamPlaybackConnection",
-          "symbol": "Media3VexStreamPlaybackConnection",
-          "summary": "Typed VexPort boundary carrying the same Family / State / Control / Act coordinates into provider realization and reconciliation.",
-          "source": "app:vexstream/playback/Media3VexStreamPlaybackConnection.kt"
-        },
-        {
-          "ref": "vexstream.playback.play-pause.provider",
-          "face": "DEPTH",
-          "role": "STORE",
-          "label": "MediaController / Player",
-          "symbol": "MediaController",
-          "summary": "Independently owned outside/runtime truth.",
-          "source": "app:vexstream/playback/Media3VexStreamPlaybackConnection.kt"
-        },
-        {
-          "ref": "vexstream.playback.play-pause.observation",
-          "face": "DEPTH",
-          "role": "OBSERVATION",
-          "label": "Player.Listener → publishObserved()",
-          "symbol": "Player.Listener",
-          "summary": "Asynchronous provider observations re-enter through the same concrete Connection.",
-          "source": "app:vexstream/playback/Media3VexStreamPlaybackConnection.kt"
-        },
-        {
-          "ref": "vexstream.playback.play-pause.reconcile",
-          "face": "DEPTH",
-          "role": "OBSERVATION",
-          "label": "reconcileVexStreamPlaybackObservation(observed, pending)",
-          "symbol": "reconcileVexStreamPlaybackObservation",
-          "summary": "Observed provider truth is reconciled with still-pending local intent before it may replace semantic State.",
-          "source": "app:vexstream/playback/VexStreamPlaybackPending.kt"
-        }
-      ],
-      "edges": [
-        {
-          "from": "vexstream.playback.play-pause.intent",
-          "to": "vexstream.playback.play-pause.doorway",
-          "label": "custom handler"
-        },
-        {
-          "from": "vexstream.playback.play-pause.doorway",
-          "to": "vexstream.playback.play-pause.control",
-          "label": "same Control"
-        },
-        {
-          "from": "vexstream.playback.play-pause.state",
-          "to": "vexstream.playback.play-pause.act",
-          "label": "CURRENT",
-          "kind": "DATA"
-        },
-        {
-          "from": "vexstream.playback.play-pause.control",
-          "to": "vexstream.playback.play-pause.act",
-          "label": "resolve"
-        },
-        {
-          "from": "vexstream.playback.play-pause.act",
-          "to": "vexstream.playback.play-pause.effect",
-          "label": "Behavior"
-        },
-        {
-          "from": "vexstream.playback.play-pause.effect",
-          "to": "vexstream.playback.play-pause.admitted",
-          "label": "admits"
-        },
-        {
-          "from": "vexstream.playback.play-pause.admitted",
-          "to": "vexstream.playback.play-pause.projection",
-          "label": "projects"
-        },
-        {
-          "from": "vexstream.playback.play-pause.projection",
-          "to": "vexstream.playback.play-pause.presentation",
-          "label": "display"
-        },
-        {
-          "from": "vexstream.playback.play-pause.doorway",
-          "to": "vexstream.playback.play-pause.connection",
-          "label": "forwards typed Control"
-        },
-        {
-          "from": "vexstream.playback.play-pause.connection-owner",
-          "to": "vexstream.playback.play-pause.connection",
-          "label": "owns",
-          "kind": "SIDE"
-        },
-        {
-          "from": "vexstream.playback.play-pause.effect",
-          "to": "vexstream.playback.play-pause.connection",
-          "label": "realize"
-        },
-        {
-          "from": "vexstream.playback.play-pause.connection",
-          "to": "vexstream.playback.play-pause.provider",
-          "label": "Media3"
-        },
-        {
-          "from": "vexstream.playback.play-pause.provider",
-          "to": "vexstream.playback.play-pause.observation",
-          "label": "callback"
-        },
-        {
-          "from": "vexstream.playback.play-pause.observation",
-          "to": "vexstream.playback.play-pause.reconcile",
-          "label": "observed"
-        },
-        {
-          "from": "vexstream.playback.play-pause.reconcile",
-          "to": "vexstream.playback.play-pause.state",
-          "label": "reconciled",
-          "kind": "RETURN"
-        },
-        {
-          "from": "vexstream.playback.play-pause.reconcile",
-          "to": "vexstream.playback.play-pause.projection",
-          "label": "publishes",
-          "kind": "RETURN"
-        }
-      ],
-      "returnRef": "vexstream.playback.play-pause.presentation"
-    },
-    {
-      "pathwayRef": "pathway.vexstream-music.catalog.refresh",
-      "label": "Refresh vex stream catalog",
-      "disposition": "DIRECT_REGISTRATION",
-      "summary": "The registration calls owners directly; no Family has earned this meaning yet.",
-      "returns": null,
-      "nodes": [
-        {
-          "ref": "vexstream-music.catalog.refresh.intent",
-          "face": "BEHAVIOR",
-          "role": "INTENT",
-          "label": "invoke(AppActions.RefreshVexStreamCatalog)",
-          "symbol": "action.vexstream-music.catalog.refresh",
-          "summary": "Application action key.",
-          "source": "app:runtime/AppActions.kt"
-        },
-        {
-          "ref": "vexstream-music.catalog.refresh.runtime",
-          "face": "BEHAVIOR",
-          "role": "DISPATCH",
-          "label": "VexRuntime → AppActionRegistrations.dispatch",
-          "symbol": "ElementIntent.Invoke",
-          "summary": "Runtime interprets the Invoke intent and looks up the one registered owner for the ActionKey.",
-          "source": "app:runtime/VexRuntime.kt"
-        },
-        {
-          "ref": "vexstream-music.catalog.refresh.registration",
-          "face": "BEHAVIOR",
-          "role": "DISPATCH",
-          "label": "appAction(RefreshVexStreamCatalog) { scope.launch { repository.refreshCatalog() } }",
-          "symbol": "vexStreamActionRegistrations",
-          "summary": "Calls the rightful owners directly. No Act, no Effect.",
-          "source": "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
-        },
-        {
-          "ref": "vexstream-music.catalog.refresh.owner-repository",
-          "face": "DEPTH",
-          "role": "STORE",
-          "label": "VexStreamMusicRepository",
-          "symbol": "repository",
-          "summary": "Outside truth this registration touches.",
-          "source": "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
-        }
-      ],
-      "edges": [
-        {
-          "from": "vexstream-music.catalog.refresh.intent",
-          "to": "vexstream-music.catalog.refresh.runtime",
-          "label": "Invoke"
-        },
-        {
-          "from": "vexstream-music.catalog.refresh.runtime",
-          "to": "vexstream-music.catalog.refresh.registration",
-          "label": "dispatch"
-        },
-        {
-          "from": "vexstream-music.catalog.refresh.registration",
-          "to": "vexstream-music.catalog.refresh.owner-repository",
-          "label": "calls"
-        }
-      ]
-    },
-    {
-      "pathwayRef": "pathway.vexstream-music.connection.reconnect",
-      "label": "Reconnect vex stream",
-      "disposition": "DIRECT_REGISTRATION",
-      "summary": "The registration calls owners directly; no Family has earned this meaning yet.",
-      "returns": null,
-      "nodes": [
-        {
-          "ref": "vexstream-music.connection.reconnect.intent",
-          "face": "BEHAVIOR",
-          "role": "INTENT",
-          "label": "invoke(AppActions.ReconnectVexStream)",
-          "symbol": "action.vexstream-music.connection.reconnect",
-          "summary": "Application action key.",
-          "source": "app:runtime/AppActions.kt"
-        },
-        {
-          "ref": "vexstream-music.connection.reconnect.runtime",
-          "face": "BEHAVIOR",
-          "role": "DISPATCH",
-          "label": "VexRuntime → AppActionRegistrations.dispatch",
-          "symbol": "ElementIntent.Invoke",
-          "summary": "Runtime interprets the Invoke intent and looks up the one registered owner for the ActionKey.",
-          "source": "app:runtime/VexRuntime.kt"
-        },
-        {
-          "ref": "vexstream-music.connection.reconnect.registration",
-          "face": "BEHAVIOR",
-          "role": "DISPATCH",
-          "label": "appAction(ReconnectVexStream) { scope.launch { repository.reconnectPairedVexStream() } }",
-          "symbol": "vexStreamActionRegistrations",
-          "summary": "Calls the rightful owners directly. No Act, no Effect.",
-          "source": "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
-        },
-        {
-          "ref": "vexstream-music.connection.reconnect.owner-repository",
-          "face": "DEPTH",
-          "role": "STORE",
-          "label": "VexStreamMusicRepository",
-          "symbol": "repository",
-          "summary": "Outside truth this registration touches.",
-          "source": "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
-        }
-      ],
-      "edges": [
-        {
-          "from": "vexstream-music.connection.reconnect.intent",
-          "to": "vexstream-music.connection.reconnect.runtime",
-          "label": "Invoke"
-        },
-        {
-          "from": "vexstream-music.connection.reconnect.runtime",
-          "to": "vexstream-music.connection.reconnect.registration",
-          "label": "dispatch"
-        },
-        {
-          "from": "vexstream-music.connection.reconnect.registration",
-          "to": "vexstream-music.connection.reconnect.owner-repository",
-          "label": "calls"
-        }
-      ]
-    },
-    {
-      "pathwayRef": "pathway.vexstream-music.connection.forget",
-      "label": "Forget paired vex stream",
-      "disposition": "DIRECT_REGISTRATION",
-      "summary": "The registration calls owners directly; no Family has earned this meaning yet.",
-      "returns": null,
-      "nodes": [
-        {
-          "ref": "vexstream-music.connection.forget.intent",
-          "face": "BEHAVIOR",
-          "role": "INTENT",
-          "label": "invoke(AppActions.ForgetPairedVexStream)",
-          "symbol": "action.vexstream-music.connection.forget",
-          "summary": "Application action key.",
-          "source": "app:runtime/AppActions.kt"
-        },
-        {
-          "ref": "vexstream-music.connection.forget.runtime",
-          "face": "BEHAVIOR",
-          "role": "DISPATCH",
-          "label": "VexRuntime → AppActionRegistrations.dispatch",
-          "symbol": "ElementIntent.Invoke",
-          "summary": "Runtime interprets the Invoke intent and looks up the one registered owner for the ActionKey.",
-          "source": "app:runtime/VexRuntime.kt"
-        },
-        {
-          "ref": "vexstream-music.connection.forget.registration",
-          "face": "BEHAVIOR",
-          "role": "DISPATCH",
-          "label": "appAction(ForgetPairedVexStream) { scope.launch { repository.forgetPairedVexStream() } }",
-          "symbol": "vexStreamActionRegistrations",
-          "summary": "Calls the rightful owners directly. No Act, no Effect.",
-          "source": "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
-        },
-        {
-          "ref": "vexstream-music.connection.forget.owner-repository",
-          "face": "DEPTH",
-          "role": "STORE",
-          "label": "VexStreamMusicRepository",
-          "symbol": "repository",
-          "summary": "Outside truth this registration touches.",
-          "source": "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
-        }
-      ],
-      "edges": [
-        {
-          "from": "vexstream-music.connection.forget.intent",
-          "to": "vexstream-music.connection.forget.runtime",
-          "label": "Invoke"
-        },
-        {
-          "from": "vexstream-music.connection.forget.runtime",
-          "to": "vexstream-music.connection.forget.registration",
-          "label": "dispatch"
-        },
-        {
-          "from": "vexstream-music.connection.forget.registration",
-          "to": "vexstream-music.connection.forget.owner-repository",
-          "label": "calls"
-        }
-      ]
-    },
-    {
-      "pathwayRef": "pathway.talk-to-vex.placeholder",
-      "label": "Talk to vex placeholder",
-      "disposition": "DIRECT_REGISTRATION",
-      "summary": "Registered, with no product effect yet.",
-      "returns": null,
-      "nodes": [
-        {
-          "ref": "talk-to-vex.placeholder.intent",
-          "face": "BEHAVIOR",
-          "role": "INTENT",
-          "label": "invoke(AppActions.TalkToVexPlaceholder)",
-          "symbol": "action.talk-to-vex.placeholder",
-          "summary": "Application action key.",
-          "source": "app:runtime/AppActions.kt"
-        },
-        {
-          "ref": "talk-to-vex.placeholder.runtime",
-          "face": "BEHAVIOR",
-          "role": "DISPATCH",
-          "label": "VexRuntime → AppActionRegistrations.dispatch",
-          "symbol": "ElementIntent.Invoke",
-          "summary": "Runtime interprets the Invoke intent and looks up the one registered owner for the ActionKey.",
-          "source": "app:runtime/VexRuntime.kt"
-        },
-        {
-          "ref": "talk-to-vex.placeholder.registration",
-          "face": "BEHAVIOR",
-          "role": "DISPATCH",
-          "label": "appAction(TalkToVexPlaceholder) { }",
-          "symbol": "TalkToVexScreen.appActionRegistrations",
-          "summary": "No product effect yet.",
-          "source": "app:screens/shared/vex/TalkToVexScreen.kt"
-        }
-      ],
-      "edges": [
-        {
-          "from": "talk-to-vex.placeholder.intent",
-          "to": "talk-to-vex.placeholder.runtime",
-          "label": "Invoke"
-        },
-        {
-          "from": "talk-to-vex.placeholder.runtime",
-          "to": "talk-to-vex.placeholder.registration",
-          "label": "dispatch"
-        }
-      ]
-    },
-    {
-      "pathwayRef": "pathway.shell.navigate-back",
-      "label": "Back",
-      "disposition": "TYPED_NAVIGATION",
-      "summary": "A typed navigation relationship already says everything; no Act identity is earned.",
-      "returns": null,
-      "nodes": [
-        {
-          "ref": "shell.navigate-back.intent",
-          "face": "BEHAVIOR",
-          "role": "INTENT",
-          "label": "navigateBack()",
-          "symbol": "ElementIntent",
-          "summary": "Declared on the element.",
-          "source": "app:shell/AppShell.kt"
-        },
-        {
-          "ref": "shell.navigate-back.step-1",
-          "face": "BEHAVIOR",
-          "role": "NAVIGATION",
-          "label": "NavigateBack",
-          "symbol": "VexRuntime",
-          "summary": "Runtime pops to the back target.",
-          "source": "app:runtime/VexRuntime.kt"
-        }
-      ],
-      "edges": [
-        {
-          "from": "shell.navigate-back.intent",
-          "to": "shell.navigate-back.step-1",
-          "label": "navigateBack"
-        }
-      ]
-    },
-    {
-      "pathwayRef": "pathway.shell.navigate-to-home-screen",
-      "label": "Navigate",
-      "disposition": "TYPED_NAVIGATION",
-      "summary": "A typed navigation relationship already says everything; no Act identity is earned.",
-      "returns": "The destination screen is shown.",
-      "nodes": [
-        {
-          "ref": "shell.navigate-to-home-screen.intent",
-          "face": "BEHAVIOR",
-          "role": "INTENT",
-          "label": "navigateTo(<Screen>)",
-          "symbol": "ElementIntent",
-          "summary": "Declared on the element.",
-          "source": "app:shell/AppShell.kt"
-        },
-        {
-          "ref": "shell.navigate-to-home-screen.step-1",
-          "face": "BEHAVIOR",
-          "role": "NAVIGATION",
-          "label": "NavigateTo(ScreenId)",
-          "symbol": "VexRuntime",
-          "summary": "Runtime changes currentScreen to the destination.",
-          "source": "app:runtime/VexRuntime.kt"
-        },
-        {
-          "ref": "shell.navigate-to-home-screen.frame",
-          "face": "BEHAVIOR",
-          "role": "PROJECTION",
-          "label": "AppFrame renders destination",
-          "symbol": "runtime.currentScreen",
-          "summary": "AppFrame renders the destination; primary destinations keep the bottom bar and FAB.",
-          "source": "app:shell/AppFrame.kt"
-        }
-      ],
-      "edges": [
-        {
-          "from": "shell.navigate-to-home-screen.intent",
-          "to": "shell.navigate-to-home-screen.step-1",
-          "label": "navigateTo"
-        },
-        {
-          "from": "shell.navigate-to-home-screen.step-1",
-          "to": "shell.navigate-to-home-screen.frame",
-          "label": "currentScreen"
-        }
-      ],
-      "returnRef": "shell.navigate-to-home-screen.frame"
-    },
-    {
-      "pathwayRef": "pathway.shell.navigate-to-events-screen",
-      "label": "Navigate",
-      "disposition": "TYPED_NAVIGATION",
-      "summary": "A typed navigation relationship already says everything; no Act identity is earned.",
-      "returns": "The destination screen is shown.",
-      "nodes": [
-        {
-          "ref": "shell.navigate-to-events-screen.intent",
-          "face": "BEHAVIOR",
-          "role": "INTENT",
-          "label": "navigateTo(<Screen>)",
-          "symbol": "ElementIntent",
-          "summary": "Declared on the element.",
-          "source": "app:shell/AppShell.kt"
-        },
-        {
-          "ref": "shell.navigate-to-events-screen.step-1",
-          "face": "BEHAVIOR",
-          "role": "NAVIGATION",
-          "label": "NavigateTo(ScreenId)",
-          "symbol": "VexRuntime",
-          "summary": "Runtime changes currentScreen to the destination.",
-          "source": "app:runtime/VexRuntime.kt"
-        },
-        {
-          "ref": "shell.navigate-to-events-screen.frame",
-          "face": "BEHAVIOR",
-          "role": "PROJECTION",
-          "label": "AppFrame renders destination",
-          "symbol": "runtime.currentScreen",
-          "summary": "AppFrame renders the destination; primary destinations keep the bottom bar and FAB.",
-          "source": "app:shell/AppFrame.kt"
-        }
-      ],
-      "edges": [
-        {
-          "from": "shell.navigate-to-events-screen.intent",
-          "to": "shell.navigate-to-events-screen.step-1",
-          "label": "navigateTo"
-        },
-        {
-          "from": "shell.navigate-to-events-screen.step-1",
-          "to": "shell.navigate-to-events-screen.frame",
-          "label": "currentScreen"
-        }
-      ],
-      "returnRef": "shell.navigate-to-events-screen.frame"
-    },
-    {
-      "pathwayRef": "pathway.shell.navigate-to-settings-screen",
-      "label": "Navigate",
-      "disposition": "TYPED_NAVIGATION",
-      "summary": "A typed navigation relationship already says everything; no Act identity is earned.",
-      "returns": "The destination screen is shown.",
-      "nodes": [
-        {
-          "ref": "shell.navigate-to-settings-screen.intent",
-          "face": "BEHAVIOR",
-          "role": "INTENT",
-          "label": "navigateTo(<Screen>)",
-          "symbol": "ElementIntent",
-          "summary": "Declared on the element.",
-          "source": "app:shell/AppShell.kt"
-        },
-        {
-          "ref": "shell.navigate-to-settings-screen.step-1",
-          "face": "BEHAVIOR",
-          "role": "NAVIGATION",
-          "label": "NavigateTo(ScreenId)",
-          "symbol": "VexRuntime",
-          "summary": "Runtime changes currentScreen to the destination.",
-          "source": "app:runtime/VexRuntime.kt"
-        },
-        {
-          "ref": "shell.navigate-to-settings-screen.frame",
-          "face": "BEHAVIOR",
-          "role": "PROJECTION",
-          "label": "AppFrame renders destination",
-          "symbol": "runtime.currentScreen",
-          "summary": "AppFrame renders the destination; primary destinations keep the bottom bar and FAB.",
-          "source": "app:shell/AppFrame.kt"
-        }
-      ],
-      "edges": [
-        {
-          "from": "shell.navigate-to-settings-screen.intent",
-          "to": "shell.navigate-to-settings-screen.step-1",
-          "label": "navigateTo"
-        },
-        {
-          "from": "shell.navigate-to-settings-screen.step-1",
-          "to": "shell.navigate-to-settings-screen.frame",
-          "label": "currentScreen"
-        }
-      ],
-      "returnRef": "shell.navigate-to-settings-screen.frame"
-    },
-    {
-      "pathwayRef": "pathway.shell.close-fab-options-then-navigate-to-user-profile-screen",
-      "label": "Close options, then navigate",
-      "disposition": "TYPED_NAVIGATION",
-      "summary": "A typed navigation relationship already says everything; no Act identity is earned.",
-      "returns": "The destination screen is shown.",
-      "nodes": [
-        {
-          "ref": "shell.close-fab-options-then-navigate-to-user-profile-screen.intent",
-          "face": "BEHAVIOR",
-          "role": "INTENT",
-          "label": "close(FabOptions) then navigateTo(<Screen>)",
-          "symbol": "ElementIntent",
-          "summary": "Declared on the element.",
-          "source": "app:shell/AppShell.kt"
-        },
-        {
-          "ref": "shell.close-fab-options-then-navigate-to-user-profile-screen.step-1",
-          "face": "BEHAVIOR",
-          "role": "NAVIGATION",
-          "label": "Close(FabOptions)",
-          "symbol": "runtime.presentation",
-          "summary": "Runtime presentation state changes; no Behavior is earned.",
-          "source": "app:runtime/VexRuntime.kt"
-        },
-        {
-          "ref": "shell.close-fab-options-then-navigate-to-user-profile-screen.step-2",
-          "face": "BEHAVIOR",
-          "role": "NAVIGATION",
-          "label": "NavigateTo(ScreenId)",
-          "symbol": "VexRuntime",
-          "summary": "Runtime changes currentScreen to the destination.",
-          "source": "app:runtime/VexRuntime.kt"
-        },
-        {
-          "ref": "shell.close-fab-options-then-navigate-to-user-profile-screen.frame",
-          "face": "BEHAVIOR",
-          "role": "PROJECTION",
-          "label": "AppFrame renders destination",
-          "symbol": "runtime.currentScreen",
-          "summary": "AppFrame renders the destination; primary destinations keep the bottom bar and FAB.",
-          "source": "app:shell/AppFrame.kt"
-        }
-      ],
-      "edges": [
-        {
-          "from": "shell.close-fab-options-then-navigate-to-user-profile-screen.intent",
-          "to": "shell.close-fab-options-then-navigate-to-user-profile-screen.step-1",
-          "label": "close"
-        },
-        {
-          "from": "shell.close-fab-options-then-navigate-to-user-profile-screen.step-1",
-          "to": "shell.close-fab-options-then-navigate-to-user-profile-screen.step-2",
-          "label": "then"
-        },
-        {
-          "from": "shell.close-fab-options-then-navigate-to-user-profile-screen.step-2",
-          "to": "shell.close-fab-options-then-navigate-to-user-profile-screen.frame",
-          "label": "currentScreen"
-        }
-      ],
-      "returnRef": "shell.close-fab-options-then-navigate-to-user-profile-screen.frame"
-    },
-    {
-      "pathwayRef": "pathway.shell.close-fab-options-then-navigate-to-debug-menu-screen",
-      "label": "Close options, then navigate",
-      "disposition": "TYPED_NAVIGATION",
-      "summary": "A typed navigation relationship already says everything; no Act identity is earned.",
-      "returns": "The destination screen is shown.",
-      "nodes": [
-        {
-          "ref": "shell.close-fab-options-then-navigate-to-debug-menu-screen.intent",
-          "face": "BEHAVIOR",
-          "role": "INTENT",
-          "label": "close(FabOptions) then navigateTo(<Screen>)",
-          "symbol": "ElementIntent",
-          "summary": "Declared on the element.",
-          "source": "app:shell/AppShell.kt"
-        },
-        {
-          "ref": "shell.close-fab-options-then-navigate-to-debug-menu-screen.step-1",
-          "face": "BEHAVIOR",
-          "role": "NAVIGATION",
-          "label": "Close(FabOptions)",
-          "symbol": "runtime.presentation",
-          "summary": "Runtime presentation state changes; no Behavior is earned.",
-          "source": "app:runtime/VexRuntime.kt"
-        },
-        {
-          "ref": "shell.close-fab-options-then-navigate-to-debug-menu-screen.step-2",
-          "face": "BEHAVIOR",
-          "role": "NAVIGATION",
-          "label": "NavigateTo(ScreenId)",
-          "symbol": "VexRuntime",
-          "summary": "Runtime changes currentScreen to the destination.",
-          "source": "app:runtime/VexRuntime.kt"
-        },
-        {
-          "ref": "shell.close-fab-options-then-navigate-to-debug-menu-screen.frame",
-          "face": "BEHAVIOR",
-          "role": "PROJECTION",
-          "label": "AppFrame renders destination",
-          "symbol": "runtime.currentScreen",
-          "summary": "AppFrame renders the destination; primary destinations keep the bottom bar and FAB.",
-          "source": "app:shell/AppFrame.kt"
-        }
-      ],
-      "edges": [
-        {
-          "from": "shell.close-fab-options-then-navigate-to-debug-menu-screen.intent",
-          "to": "shell.close-fab-options-then-navigate-to-debug-menu-screen.step-1",
-          "label": "close"
-        },
-        {
-          "from": "shell.close-fab-options-then-navigate-to-debug-menu-screen.step-1",
-          "to": "shell.close-fab-options-then-navigate-to-debug-menu-screen.step-2",
-          "label": "then"
-        },
-        {
-          "from": "shell.close-fab-options-then-navigate-to-debug-menu-screen.step-2",
-          "to": "shell.close-fab-options-then-navigate-to-debug-menu-screen.frame",
-          "label": "currentScreen"
-        }
-      ],
-      "returnRef": "shell.close-fab-options-then-navigate-to-debug-menu-screen.frame"
-    },
-    {
-      "pathwayRef": "pathway.shell.close-fab-options-then-navigate-to-gallery-screen",
-      "label": "Close options, then navigate",
-      "disposition": "TYPED_NAVIGATION",
-      "summary": "A typed navigation relationship already says everything; no Act identity is earned.",
-      "returns": "The destination screen is shown.",
-      "nodes": [
-        {
-          "ref": "shell.close-fab-options-then-navigate-to-gallery-screen.intent",
-          "face": "BEHAVIOR",
-          "role": "INTENT",
-          "label": "close(FabOptions) then navigateTo(<Screen>)",
-          "symbol": "ElementIntent",
-          "summary": "Declared on the element.",
-          "source": "app:shell/AppShell.kt"
-        },
-        {
-          "ref": "shell.close-fab-options-then-navigate-to-gallery-screen.step-1",
-          "face": "BEHAVIOR",
-          "role": "NAVIGATION",
-          "label": "Close(FabOptions)",
-          "symbol": "runtime.presentation",
-          "summary": "Runtime presentation state changes; no Behavior is earned.",
-          "source": "app:runtime/VexRuntime.kt"
-        },
-        {
-          "ref": "shell.close-fab-options-then-navigate-to-gallery-screen.step-2",
-          "face": "BEHAVIOR",
-          "role": "NAVIGATION",
-          "label": "NavigateTo(ScreenId)",
-          "symbol": "VexRuntime",
-          "summary": "Runtime changes currentScreen to the destination.",
-          "source": "app:runtime/VexRuntime.kt"
-        },
-        {
-          "ref": "shell.close-fab-options-then-navigate-to-gallery-screen.frame",
-          "face": "BEHAVIOR",
-          "role": "PROJECTION",
-          "label": "AppFrame renders destination",
-          "symbol": "runtime.currentScreen",
-          "summary": "AppFrame renders the destination; primary destinations keep the bottom bar and FAB.",
-          "source": "app:shell/AppFrame.kt"
-        }
-      ],
-      "edges": [
-        {
-          "from": "shell.close-fab-options-then-navigate-to-gallery-screen.intent",
-          "to": "shell.close-fab-options-then-navigate-to-gallery-screen.step-1",
-          "label": "close"
-        },
-        {
-          "from": "shell.close-fab-options-then-navigate-to-gallery-screen.step-1",
-          "to": "shell.close-fab-options-then-navigate-to-gallery-screen.step-2",
-          "label": "then"
-        },
-        {
-          "from": "shell.close-fab-options-then-navigate-to-gallery-screen.step-2",
-          "to": "shell.close-fab-options-then-navigate-to-gallery-screen.frame",
-          "label": "currentScreen"
-        }
-      ],
-      "returnRef": "shell.close-fab-options-then-navigate-to-gallery-screen.frame"
-    },
-    {
-      "pathwayRef": "pathway.shell.toggle.FabOptions",
-      "label": "Toggle Fab options",
-      "disposition": "TYPED_PRESENTATION",
-      "summary": "A typed presentation relationship already says everything; no Family, Act or Effect is earned.",
-      "returns": null,
-      "nodes": [
-        {
-          "ref": "shell.toggle.FabOptions.intent",
-          "face": "BEHAVIOR",
-          "role": "INTENT",
-          "label": "toggle(FabOptions)",
-          "symbol": "ElementIntent",
-          "summary": "Declared on the element.",
-          "source": "app:shell/AppShell.kt"
-        },
-        {
-          "ref": "shell.toggle.FabOptions.step-1",
-          "face": "BEHAVIOR",
-          "role": "NAVIGATION",
-          "label": "Toggle(FabOptions)",
-          "symbol": "runtime.presentation",
-          "summary": "Runtime presentation state changes; no Behavior is earned.",
-          "source": "app:runtime/VexRuntime.kt"
-        }
-      ],
-      "edges": [
-        {
-          "from": "shell.toggle.FabOptions.intent",
-          "to": "shell.toggle.FabOptions.step-1",
-          "label": "toggle"
-        }
-      ]
-    },
-    {
-      "pathwayRef": "pathway.home.navigate-to-vex-stream-music-screen",
-      "label": "Navigate",
-      "disposition": "TYPED_NAVIGATION",
-      "summary": "A typed navigation relationship already says everything; no Act identity is earned.",
-      "returns": "The destination screen is shown.",
-      "nodes": [
-        {
-          "ref": "home.navigate-to-vex-stream-music-screen.intent",
-          "face": "BEHAVIOR",
-          "role": "INTENT",
-          "label": "navigateTo(<Screen>)",
-          "symbol": "ElementIntent",
-          "summary": "Declared on the element.",
-          "source": "app:screens/primary/home/HomeScreen.kt"
-        },
-        {
-          "ref": "home.navigate-to-vex-stream-music-screen.step-1",
-          "face": "BEHAVIOR",
-          "role": "NAVIGATION",
-          "label": "NavigateTo(ScreenId)",
-          "symbol": "VexRuntime",
-          "summary": "Runtime changes currentScreen to the destination.",
-          "source": "app:runtime/VexRuntime.kt"
-        },
-        {
-          "ref": "home.navigate-to-vex-stream-music-screen.frame",
-          "face": "BEHAVIOR",
-          "role": "PROJECTION",
-          "label": "AppFrame renders destination",
-          "symbol": "runtime.currentScreen",
-          "summary": "AppFrame renders the destination; primary destinations keep the bottom bar and FAB.",
-          "source": "app:shell/AppFrame.kt"
-        }
-      ],
-      "edges": [
-        {
-          "from": "home.navigate-to-vex-stream-music-screen.intent",
-          "to": "home.navigate-to-vex-stream-music-screen.step-1",
-          "label": "navigateTo"
-        },
-        {
-          "from": "home.navigate-to-vex-stream-music-screen.step-1",
-          "to": "home.navigate-to-vex-stream-music-screen.frame",
-          "label": "currentScreen"
-        }
-      ],
-      "returnRef": "home.navigate-to-vex-stream-music-screen.frame"
-    },
-    {
-      "pathwayRef": "pathway.home.navigate-to-vex-family-conversation-screen",
-      "label": "Navigate",
-      "disposition": "TYPED_NAVIGATION",
-      "summary": "A typed navigation relationship already says everything; no Act identity is earned.",
-      "returns": "The destination screen is shown.",
-      "nodes": [
-        {
-          "ref": "home.navigate-to-vex-family-conversation-screen.intent",
-          "face": "BEHAVIOR",
-          "role": "INTENT",
-          "label": "navigateTo(<Screen>)",
-          "symbol": "ElementIntent",
-          "summary": "Declared on the element.",
-          "source": "app:screens/primary/home/HomeScreen.kt"
-        },
-        {
-          "ref": "home.navigate-to-vex-family-conversation-screen.step-1",
-          "face": "BEHAVIOR",
-          "role": "NAVIGATION",
-          "label": "NavigateTo(ScreenId)",
-          "symbol": "VexRuntime",
-          "summary": "Runtime changes currentScreen to the destination.",
-          "source": "app:runtime/VexRuntime.kt"
-        },
-        {
-          "ref": "home.navigate-to-vex-family-conversation-screen.frame",
-          "face": "BEHAVIOR",
-          "role": "PROJECTION",
-          "label": "AppFrame renders destination",
-          "symbol": "runtime.currentScreen",
-          "summary": "AppFrame renders the destination; primary destinations keep the bottom bar and FAB.",
-          "source": "app:shell/AppFrame.kt"
-        }
-      ],
-      "edges": [
-        {
-          "from": "home.navigate-to-vex-family-conversation-screen.intent",
-          "to": "home.navigate-to-vex-family-conversation-screen.step-1",
-          "label": "navigateTo"
-        },
-        {
-          "from": "home.navigate-to-vex-family-conversation-screen.step-1",
-          "to": "home.navigate-to-vex-family-conversation-screen.frame",
-          "label": "currentScreen"
-        }
-      ],
-      "returnRef": "home.navigate-to-vex-family-conversation-screen.frame"
-    },
-    {
-      "pathwayRef": "pathway.home.navigate-to-vex-maps-screen",
-      "label": "Navigate",
-      "disposition": "TYPED_NAVIGATION",
-      "summary": "A typed navigation relationship already says everything; no Act identity is earned.",
-      "returns": "The destination screen is shown.",
-      "nodes": [
-        {
-          "ref": "home.navigate-to-vex-maps-screen.intent",
-          "face": "BEHAVIOR",
-          "role": "INTENT",
-          "label": "navigateTo(<Screen>)",
-          "symbol": "ElementIntent",
-          "summary": "Declared on the element.",
-          "source": "app:screens/primary/home/HomeScreen.kt"
-        },
-        {
-          "ref": "home.navigate-to-vex-maps-screen.step-1",
-          "face": "BEHAVIOR",
-          "role": "NAVIGATION",
-          "label": "NavigateTo(ScreenId)",
-          "symbol": "VexRuntime",
-          "summary": "Runtime changes currentScreen to the destination.",
-          "source": "app:runtime/VexRuntime.kt"
-        },
-        {
-          "ref": "home.navigate-to-vex-maps-screen.frame",
-          "face": "BEHAVIOR",
-          "role": "PROJECTION",
-          "label": "AppFrame renders destination",
-          "symbol": "runtime.currentScreen",
-          "summary": "AppFrame renders the destination; primary destinations keep the bottom bar and FAB.",
-          "source": "app:shell/AppFrame.kt"
-        }
-      ],
-      "edges": [
-        {
-          "from": "home.navigate-to-vex-maps-screen.intent",
-          "to": "home.navigate-to-vex-maps-screen.step-1",
-          "label": "navigateTo"
-        },
-        {
-          "from": "home.navigate-to-vex-maps-screen.step-1",
-          "to": "home.navigate-to-vex-maps-screen.frame",
-          "label": "currentScreen"
-        }
-      ],
-      "returnRef": "home.navigate-to-vex-maps-screen.frame"
-    },
-    {
-      "pathwayRef": "pathway.home.navigate-to-talk-to-vex-screen",
-      "label": "Navigate",
-      "disposition": "TYPED_NAVIGATION",
-      "summary": "A typed navigation relationship already says everything; no Act identity is earned.",
-      "returns": "The destination screen is shown.",
-      "nodes": [
-        {
-          "ref": "home.navigate-to-talk-to-vex-screen.intent",
-          "face": "BEHAVIOR",
-          "role": "INTENT",
-          "label": "navigateTo(<Screen>)",
-          "symbol": "ElementIntent",
-          "summary": "Declared on the element.",
-          "source": "app:screens/primary/home/HomeScreen.kt"
-        },
-        {
-          "ref": "home.navigate-to-talk-to-vex-screen.step-1",
-          "face": "BEHAVIOR",
-          "role": "NAVIGATION",
-          "label": "NavigateTo(ScreenId)",
-          "symbol": "VexRuntime",
-          "summary": "Runtime changes currentScreen to the destination.",
-          "source": "app:runtime/VexRuntime.kt"
-        },
-        {
-          "ref": "home.navigate-to-talk-to-vex-screen.frame",
-          "face": "BEHAVIOR",
-          "role": "PROJECTION",
-          "label": "AppFrame renders destination",
-          "symbol": "runtime.currentScreen",
-          "summary": "AppFrame renders the destination; primary destinations keep the bottom bar and FAB.",
-          "source": "app:shell/AppFrame.kt"
-        }
-      ],
-      "edges": [
-        {
-          "from": "home.navigate-to-talk-to-vex-screen.intent",
-          "to": "home.navigate-to-talk-to-vex-screen.step-1",
-          "label": "navigateTo"
-        },
-        {
-          "from": "home.navigate-to-talk-to-vex-screen.step-1",
-          "to": "home.navigate-to-talk-to-vex-screen.frame",
-          "label": "currentScreen"
-        }
-      ],
-      "returnRef": "home.navigate-to-talk-to-vex-screen.frame"
-    },
-    {
-      "pathwayRef": "pathway.debug-menu.open.LogSheet",
-      "label": "Open Log sheet",
-      "disposition": "TYPED_PRESENTATION",
-      "summary": "A typed presentation relationship already says everything; no Family, Act or Effect is earned.",
-      "returns": null,
-      "nodes": [
-        {
-          "ref": "debug-menu.open.LogSheet.intent",
-          "face": "BEHAVIOR",
-          "role": "INTENT",
-          "label": "open(LogSheet)",
-          "symbol": "ElementIntent",
-          "summary": "Declared on the element.",
-          "source": "app:screens/shared/debug/DebugMenuScreen.kt"
-        },
-        {
-          "ref": "debug-menu.open.LogSheet.step-1",
-          "face": "BEHAVIOR",
-          "role": "NAVIGATION",
-          "label": "Open(LogSheet)",
-          "symbol": "runtime.presentation",
-          "summary": "Runtime presentation state changes; no Behavior is earned.",
-          "source": "app:runtime/VexRuntime.kt"
-        },
-        {
-          "ref": "debug-menu.open.LogSheet.renderer",
-          "face": "BEHAVIOR",
-          "role": "PROJECTION",
-          "label": "LogHistorySheet(…)",
-          "symbol": "isOpen(LogSheet)",
-          "summary": "The screen renders this while presentation says it is open.",
-          "source": "app:screens/shared/debug/DebugMenuScreen.kt"
-        },
-        {
-          "ref": "debug-menu.open.LogSheet.reads-logHistoryRepository",
-          "face": "DEPTH",
-          "role": "STORE",
-          "label": "logHistoryRepository",
-          "symbol": "logHistoryRepository",
-          "summary": "Read by the rendered content.",
-          "source": "app:screens/shared/debug/DebugMenuScreen.kt"
-        }
-      ],
-      "edges": [
-        {
-          "from": "debug-menu.open.LogSheet.intent",
-          "to": "debug-menu.open.LogSheet.step-1",
-          "label": "open"
-        },
-        {
-          "from": "debug-menu.open.LogSheet.step-1",
-          "to": "debug-menu.open.LogSheet.renderer",
-          "label": "renders"
-        },
-        {
-          "from": "debug-menu.open.LogSheet.renderer",
-          "to": "debug-menu.open.LogSheet.reads-logHistoryRepository",
-          "label": "reads",
-          "kind": "DATA"
-        }
-      ],
-      "returnRef": "debug-menu.open.LogSheet.renderer"
-    },
-    {
-      "pathwayRef": "pathway.gallery.open.DialogModalSample",
-      "label": "Open Dialog modal sample",
-      "disposition": "TYPED_PRESENTATION",
-      "summary": "A typed presentation relationship already says everything; no Family, Act or Effect is earned.",
-      "returns": null,
-      "nodes": [
-        {
-          "ref": "gallery.open.DialogModalSample.intent",
-          "face": "BEHAVIOR",
-          "role": "INTENT",
-          "label": "open(DialogModalSample)",
-          "symbol": "ElementIntent",
-          "summary": "Declared on the element.",
-          "source": "app:screens/shared/gallery/GalleryScreen.kt"
-        },
-        {
-          "ref": "gallery.open.DialogModalSample.step-1",
-          "face": "BEHAVIOR",
-          "role": "NAVIGATION",
-          "label": "Open(DialogModalSample)",
-          "symbol": "runtime.presentation",
-          "summary": "Runtime presentation state changes; no Behavior is earned.",
-          "source": "app:runtime/VexRuntime.kt"
-        }
-      ],
-      "edges": [
-        {
-          "from": "gallery.open.DialogModalSample.intent",
-          "to": "gallery.open.DialogModalSample.step-1",
-          "label": "open"
-        }
-      ]
-    },
-    {
-      "pathwayRef": "pathway.gallery.open.BottomSheetModalSample",
-      "label": "Open Bottom sheet modal sample",
-      "disposition": "TYPED_PRESENTATION",
-      "summary": "A typed presentation relationship already says everything; no Family, Act or Effect is earned.",
-      "returns": null,
-      "nodes": [
-        {
-          "ref": "gallery.open.BottomSheetModalSample.intent",
-          "face": "BEHAVIOR",
-          "role": "INTENT",
-          "label": "open(BottomSheetModalSample)",
-          "symbol": "ElementIntent",
-          "summary": "Declared on the element.",
-          "source": "app:screens/shared/gallery/GalleryScreen.kt"
-        },
-        {
-          "ref": "gallery.open.BottomSheetModalSample.step-1",
-          "face": "BEHAVIOR",
-          "role": "NAVIGATION",
-          "label": "Open(BottomSheetModalSample)",
-          "symbol": "runtime.presentation",
-          "summary": "Runtime presentation state changes; no Behavior is earned.",
-          "source": "app:runtime/VexRuntime.kt"
-        }
-      ],
-      "edges": [
-        {
-          "from": "gallery.open.BottomSheetModalSample.intent",
-          "to": "gallery.open.BottomSheetModalSample.step-1",
-          "label": "open"
-        }
-      ]
-    },
-    {
-      "pathwayRef": "pathway.gallery.close.DialogModalSample",
-      "label": "Close Dialog modal sample",
-      "disposition": "TYPED_PRESENTATION",
-      "summary": "A typed presentation relationship already says everything; no Family, Act or Effect is earned.",
-      "returns": null,
-      "nodes": [
-        {
-          "ref": "gallery.close.DialogModalSample.intent",
-          "face": "BEHAVIOR",
-          "role": "INTENT",
-          "label": "close(DialogModalSample)",
-          "symbol": "ElementIntent",
-          "summary": "Declared on the element.",
-          "source": "app:screens/shared/gallery/GalleryScreen.kt"
-        },
-        {
-          "ref": "gallery.close.DialogModalSample.step-1",
-          "face": "BEHAVIOR",
-          "role": "NAVIGATION",
-          "label": "Close(DialogModalSample)",
-          "symbol": "runtime.presentation",
-          "summary": "Runtime presentation state changes; no Behavior is earned.",
-          "source": "app:runtime/VexRuntime.kt"
-        }
-      ],
-      "edges": [
-        {
-          "from": "gallery.close.DialogModalSample.intent",
-          "to": "gallery.close.DialogModalSample.step-1",
-          "label": "close"
-        }
-      ]
-    },
-    {
-      "pathwayRef": "pathway.gallery.close.BottomSheetModalSample",
-      "label": "Close Bottom sheet modal sample",
-      "disposition": "TYPED_PRESENTATION",
-      "summary": "A typed presentation relationship already says everything; no Family, Act or Effect is earned.",
-      "returns": null,
-      "nodes": [
-        {
-          "ref": "gallery.close.BottomSheetModalSample.intent",
-          "face": "BEHAVIOR",
-          "role": "INTENT",
-          "label": "close(BottomSheetModalSample)",
-          "symbol": "ElementIntent",
-          "summary": "Declared on the element.",
-          "source": "app:screens/shared/gallery/GalleryScreen.kt"
-        },
-        {
-          "ref": "gallery.close.BottomSheetModalSample.step-1",
-          "face": "BEHAVIOR",
-          "role": "NAVIGATION",
-          "label": "Close(BottomSheetModalSample)",
-          "symbol": "runtime.presentation",
-          "summary": "Runtime presentation state changes; no Behavior is earned.",
-          "source": "app:runtime/VexRuntime.kt"
-        }
-      ],
-      "edges": [
-        {
-          "from": "gallery.close.BottomSheetModalSample.intent",
-          "to": "gallery.close.BottomSheetModalSample.step-1",
-          "label": "close"
-        }
-      ]
-    },
-    {
-      "pathwayRef": "pathway.gallery.swap-to-child-elements-panel-container-content",
-      "label": "Swap to",
-      "disposition": "TYPED_PRESENTATION",
-      "summary": "A typed presentation relationship already says everything; no Family, Act or Effect is earned.",
-      "returns": null,
-      "nodes": [
-        {
-          "ref": "gallery.swap-to-child-elements-panel-container-content.intent",
-          "face": "BEHAVIOR",
-          "role": "INTENT",
-          "label": "swapTo(container = Content, child = ElementsPanel)",
-          "symbol": "ElementIntent",
-          "summary": "Declared on the element.",
-          "source": "app:screens/shared/gallery/GalleryScreen.kt"
-        },
-        {
-          "ref": "gallery.swap-to-child-elements-panel-container-content.step-1",
-          "face": "BEHAVIOR",
-          "role": "NAVIGATION",
-          "label": "SwapTo(container = Content, child = ElementsPanel)",
-          "symbol": "runtime.presentation",
-          "summary": "Runtime presentation state changes; no Behavior is earned.",
-          "source": "app:runtime/VexRuntime.kt"
-        }
-      ],
-      "edges": [
-        {
-          "from": "gallery.swap-to-child-elements-panel-container-content.intent",
-          "to": "gallery.swap-to-child-elements-panel-container-content.step-1",
-          "label": "swapTo"
-        }
-      ]
-    },
-    {
-      "pathwayRef": "pathway.gallery.swap-to-child-app-graph-panel-container-content",
-      "label": "Swap to",
-      "disposition": "TYPED_PRESENTATION",
-      "summary": "A typed presentation relationship already says everything; no Family, Act or Effect is earned.",
-      "returns": null,
-      "nodes": [
-        {
-          "ref": "gallery.swap-to-child-app-graph-panel-container-content.intent",
-          "face": "BEHAVIOR",
-          "role": "INTENT",
-          "label": "swapTo(container = Content, child = AppGraphPanel)",
-          "symbol": "ElementIntent",
-          "summary": "Declared on the element.",
-          "source": "app:screens/shared/gallery/GalleryScreen.kt"
-        },
-        {
-          "ref": "gallery.swap-to-child-app-graph-panel-container-content.step-1",
-          "face": "BEHAVIOR",
-          "role": "NAVIGATION",
-          "label": "SwapTo(container = Content, child = AppGraphPanel)",
-          "symbol": "runtime.presentation",
-          "summary": "Runtime presentation state changes; no Behavior is earned.",
-          "source": "app:runtime/VexRuntime.kt"
-        }
-      ],
-      "edges": [
-        {
-          "from": "gallery.swap-to-child-app-graph-panel-container-content.intent",
-          "to": "gallery.swap-to-child-app-graph-panel-container-content.step-1",
-          "label": "swapTo"
-        }
-      ]
-    },
-    {
-      "pathwayRef": "pathway.vex-maps.close-map-menu-then-open-offline-panel",
-      "label": "Close",
-      "disposition": "TYPED_PRESENTATION",
-      "summary": "A typed presentation relationship already says everything; no Family, Act or Effect is earned.",
-      "returns": null,
-      "nodes": [
-        {
-          "ref": "vex-maps.close-map-menu-then-open-offline-panel.intent",
-          "face": "BEHAVIOR",
-          "role": "INTENT",
-          "label": "close(MapMenu) then open(OfflinePanel)",
-          "symbol": "ElementIntent",
-          "summary": "Declared on the element.",
-          "source": "app:screens/shared/maps/VexMapsScreen.kt"
-        },
-        {
-          "ref": "vex-maps.close-map-menu-then-open-offline-panel.step-1",
-          "face": "BEHAVIOR",
-          "role": "NAVIGATION",
-          "label": "Close(MapMenu)",
-          "symbol": "runtime.presentation",
-          "summary": "Runtime presentation state changes; no Behavior is earned.",
-          "source": "app:runtime/VexRuntime.kt"
-        },
-        {
-          "ref": "vex-maps.close-map-menu-then-open-offline-panel.step-2",
-          "face": "BEHAVIOR",
-          "role": "NAVIGATION",
-          "label": "Open(OfflinePanel)",
-          "symbol": "runtime.presentation",
-          "summary": "Runtime presentation state changes; no Behavior is earned.",
-          "source": "app:runtime/VexRuntime.kt"
-        }
-      ],
-      "edges": [
-        {
-          "from": "vex-maps.close-map-menu-then-open-offline-panel.intent",
-          "to": "vex-maps.close-map-menu-then-open-offline-panel.step-1",
-          "label": "close"
-        },
-        {
-          "from": "vex-maps.close-map-menu-then-open-offline-panel.step-1",
-          "to": "vex-maps.close-map-menu-then-open-offline-panel.step-2",
-          "label": "then"
         }
       ]
     },
@@ -5702,6 +5239,230 @@
       ]
     },
     {
+      "pathwayRef": "pathway.vexstream.playback.play-pause",
+      "label": "VexStream Playback · Play / Pause",
+      "disposition": "SCAE_FAMILY",
+      "summary": "VexStreamPlaybackFamily owns PlayPause meaning; the typed Connection realizes and reconciles outside truth back into the same Family projection.",
+      "returns": "The returned VexStreamPlaybackProjection / VexStreamPlaybackDisplayState reaches the same human-facing Play / Pause control.",
+      "nodes": [
+        {
+          "ref": "vexstream.playback.play-pause.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "localEffect()",
+          "symbol": "VexStreamMusicScreen.TogglePlayback",
+          "summary": "The registered element delegates feature-local meaning to its custom presentation handler.",
+          "source": "app:screens/shared/vexstream/VexStreamMusicScreen.kt",
+          "code": "intent = localEffect()"
+        },
+        {
+          "ref": "vexstream.playback.play-pause.doorway",
+          "face": "BEHAVIOR",
+          "role": "DISPATCH",
+          "label": "VexStreamPlaybackExperience.activate(PlayPause)",
+          "symbol": "VexStreamPlaybackExperience.activate",
+          "summary": "The visible control manifestations forward the same Family-bound Control through the UI-facing membrane.",
+          "source": "app:screens/shared/vexstream/VexStreamPlayerPresentation.kt",
+          "code": "VexStreamMusicScreen.TogglePlayback -> playbackExperience.activate(VexStreamPlaybackControl.PlayPause)"
+        },
+        {
+          "ref": "vexstream.playback.play-pause.control",
+          "face": "BEHAVIOR",
+          "role": "CONTROL",
+          "label": "VexStreamPlaybackControl.PlayPause",
+          "symbol": "VexStreamPlaybackControl.PlayPause",
+          "summary": "Family-bound semantic input.",
+          "source": "app:vexstream/playback/VexStreamPlaybackControl.kt"
+        },
+        {
+          "ref": "vexstream.playback.play-pause.state",
+          "face": "BEHAVIOR",
+          "role": "STATE",
+          "label": "CURRENT VexStreamPlaybackState · NoMedia | Media | Ended",
+          "symbol": "VexStreamPlaybackState",
+          "summary": "Exact current semantic truth used to resolve the Control.",
+          "source": "app:vexstream/playback/VexStreamPlaybackState.kt"
+        },
+        {
+          "ref": "vexstream.playback.play-pause.act",
+          "face": "BEHAVIOR",
+          "role": "ACT",
+          "label": "PlayPause → Play | Pause",
+          "symbol": "VexStreamPlaybackAct",
+          "summary": "The Control blueprint chooses the lawful Act for exact current State.",
+          "source": "app:vexstream/playback/VexStreamPlaybackControl.kt"
+        },
+        {
+          "ref": "vexstream.playback.play-pause.effect",
+          "face": "BEHAVIOR",
+          "role": "EFFECT",
+          "label": "RequestPlay | RequestPause | RestartCurrent",
+          "symbol": "VexStreamPlaybackEffect",
+          "summary": "Behavior resolves the Act into the runtime transformation appropriate to current State.",
+          "source": "app:vexstream/playback/VexStreamPlaybackBehavior.kt"
+        },
+        {
+          "ref": "vexstream.playback.play-pause.admitted",
+          "face": "BEHAVIOR",
+          "role": "STATE",
+          "label": "current.afterIntent(effect)",
+          "symbol": "VexStreamPlaybackState.afterIntent",
+          "summary": "Semantic State reflects admitted intent before outside observation converges.",
+          "source": "app:vexstream/playback/VexStreamPlaybackPending.kt"
+        },
+        {
+          "ref": "vexstream.playback.play-pause.projection",
+          "face": "BEHAVIOR",
+          "role": "PROJECTION",
+          "label": "VexStreamPlaybackProjection",
+          "symbol": "VexStreamPlaybackProjection",
+          "summary": "The typed Connection publishes the Family projection.",
+          "source": "app:vexstream/playback/VexStreamPlaybackTypes.kt"
+        },
+        {
+          "ref": "vexstream.playback.play-pause.presentation",
+          "face": "BEHAVIOR",
+          "role": "PROJECTION",
+          "label": "VexStreamPlaybackDisplayState → Play / Pause presentation",
+          "symbol": "VexStreamPlaybackDisplayState",
+          "summary": "The Experience derives display meaning from the returned projection without becoming semantic owner.",
+          "source": "app:vexstream/playback/VexStreamPlaybackExperience.kt"
+        },
+        {
+          "ref": "vexstream.playback.play-pause.connection-owner",
+          "face": "DEPTH",
+          "role": "CONSTRUCTION",
+          "label": "VexStreamPlaybackConnectionViewModel",
+          "symbol": "VexStreamPlaybackConnectionViewModel",
+          "summary": "Lifetime owner of the concrete Connection; construction support, not semantic truth.",
+          "source": "app:vexstream/playback/VexStreamPlaybackConnectionViewModel.kt"
+        },
+        {
+          "ref": "vexstream.playback.play-pause.connection",
+          "face": "DEPTH",
+          "role": "DISPATCH",
+          "label": "VexStreamPlaybackConnection / Flow → Media3VexStreamPlaybackConnection",
+          "symbol": "Media3VexStreamPlaybackConnection",
+          "summary": "Typed VexPort boundary carrying the same Family / State / Control / Act coordinates into provider realization and reconciliation.",
+          "source": "app:vexstream/playback/Media3VexStreamPlaybackConnection.kt"
+        },
+        {
+          "ref": "vexstream.playback.play-pause.provider",
+          "face": "DEPTH",
+          "role": "STORE",
+          "label": "MediaController / Player",
+          "symbol": "MediaController",
+          "summary": "Independently owned outside/runtime truth.",
+          "source": "app:vexstream/playback/Media3VexStreamPlaybackConnection.kt"
+        },
+        {
+          "ref": "vexstream.playback.play-pause.observation",
+          "face": "DEPTH",
+          "role": "OBSERVATION",
+          "label": "Player.Listener → publishObserved()",
+          "symbol": "Player.Listener",
+          "summary": "Asynchronous provider observations re-enter through the same concrete Connection.",
+          "source": "app:vexstream/playback/Media3VexStreamPlaybackConnection.kt"
+        },
+        {
+          "ref": "vexstream.playback.play-pause.reconcile",
+          "face": "DEPTH",
+          "role": "OBSERVATION",
+          "label": "reconcileVexStreamPlaybackObservation(observed, pending)",
+          "symbol": "reconcileVexStreamPlaybackObservation",
+          "summary": "Observed provider truth is reconciled with still-pending local intent before it may replace semantic State.",
+          "source": "app:vexstream/playback/VexStreamPlaybackPending.kt"
+        }
+      ],
+      "edges": [
+        {
+          "from": "vexstream.playback.play-pause.intent",
+          "to": "vexstream.playback.play-pause.doorway",
+          "label": "custom handler"
+        },
+        {
+          "from": "vexstream.playback.play-pause.doorway",
+          "to": "vexstream.playback.play-pause.control",
+          "label": "same Control"
+        },
+        {
+          "from": "vexstream.playback.play-pause.state",
+          "to": "vexstream.playback.play-pause.act",
+          "label": "CURRENT",
+          "kind": "DATA"
+        },
+        {
+          "from": "vexstream.playback.play-pause.control",
+          "to": "vexstream.playback.play-pause.act",
+          "label": "resolve"
+        },
+        {
+          "from": "vexstream.playback.play-pause.act",
+          "to": "vexstream.playback.play-pause.effect",
+          "label": "Behavior"
+        },
+        {
+          "from": "vexstream.playback.play-pause.effect",
+          "to": "vexstream.playback.play-pause.admitted",
+          "label": "admits"
+        },
+        {
+          "from": "vexstream.playback.play-pause.admitted",
+          "to": "vexstream.playback.play-pause.projection",
+          "label": "projects"
+        },
+        {
+          "from": "vexstream.playback.play-pause.projection",
+          "to": "vexstream.playback.play-pause.presentation",
+          "label": "display"
+        },
+        {
+          "from": "vexstream.playback.play-pause.doorway",
+          "to": "vexstream.playback.play-pause.connection",
+          "label": "forwards typed Control"
+        },
+        {
+          "from": "vexstream.playback.play-pause.connection-owner",
+          "to": "vexstream.playback.play-pause.connection",
+          "label": "owns",
+          "kind": "SIDE"
+        },
+        {
+          "from": "vexstream.playback.play-pause.effect",
+          "to": "vexstream.playback.play-pause.connection",
+          "label": "realize"
+        },
+        {
+          "from": "vexstream.playback.play-pause.connection",
+          "to": "vexstream.playback.play-pause.provider",
+          "label": "Media3"
+        },
+        {
+          "from": "vexstream.playback.play-pause.provider",
+          "to": "vexstream.playback.play-pause.observation",
+          "label": "callback"
+        },
+        {
+          "from": "vexstream.playback.play-pause.observation",
+          "to": "vexstream.playback.play-pause.reconcile",
+          "label": "observed"
+        },
+        {
+          "from": "vexstream.playback.play-pause.reconcile",
+          "to": "vexstream.playback.play-pause.state",
+          "label": "reconciled",
+          "kind": "RETURN"
+        },
+        {
+          "from": "vexstream.playback.play-pause.reconcile",
+          "to": "vexstream.playback.play-pause.projection",
+          "label": "publishes",
+          "kind": "RETURN"
+        }
+      ],
+      "returnRef": "vexstream.playback.play-pause.presentation"
+    },
+    {
       "pathwayRef": "pathway.vexstream-music.swap-to-child-full-player-now-playing-panel-container-full-player-content",
       "label": "Swap to",
       "disposition": "TYPED_PRESENTATION",
@@ -5755,7 +5516,7 @@
           "ref": "vexstream-music.close.FullPlayerSheet.step-1",
           "face": "BEHAVIOR",
           "role": "NAVIGATION",
-          "label": "Close(FullPlayerSheet)",
+          "label": "Close(element.vexstream-music.body.player.sheet)",
           "symbol": "runtime.presentation",
           "summary": "Runtime presentation state changes; no Behavior is earned.",
           "source": "app:runtime/VexRuntime.kt"
@@ -5789,7 +5550,7 @@
           "ref": "vexstream-music.close.SearchSheet.step-1",
           "face": "BEHAVIOR",
           "role": "NAVIGATION",
-          "label": "Close(SearchSheet)",
+          "label": "Close(element.vexstream-music.body.library.search-sheet)",
           "symbol": "runtime.presentation",
           "summary": "Runtime presentation state changes; no Behavior is earned.",
           "source": "app:runtime/VexRuntime.kt"
@@ -5823,7 +5584,7 @@
           "ref": "vexstream-music.close.OrganizationSheet.step-1",
           "face": "BEHAVIOR",
           "role": "NAVIGATION",
-          "label": "Close(OrganizationSheet)",
+          "label": "Close(element.vexstream-music.body.library.organization-sheet)",
           "symbol": "runtime.presentation",
           "summary": "Runtime presentation state changes; no Behavior is earned.",
           "source": "app:runtime/VexRuntime.kt"
@@ -5834,6 +5595,130 @@
           "from": "vexstream-music.close.OrganizationSheet.intent",
           "to": "vexstream-music.close.OrganizationSheet.step-1",
           "label": "close"
+        }
+      ]
+    },
+    {
+      "pathwayRef": "pathway.vexstream-music.catalog.refresh",
+      "label": "Refresh vex stream catalog",
+      "disposition": "DIRECT_REGISTRATION",
+      "summary": "The registration calls owners directly; no Family has earned this meaning yet.",
+      "returns": null,
+      "nodes": [
+        {
+          "ref": "vexstream-music.catalog.refresh.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "invoke(AppActions.RefreshVexStreamCatalog)",
+          "symbol": "action.vexstream-music.catalog.refresh",
+          "summary": "Application action key.",
+          "source": "app:runtime/AppActions.kt"
+        },
+        {
+          "ref": "vexstream-music.catalog.refresh.runtime",
+          "face": "BEHAVIOR",
+          "role": "DISPATCH",
+          "label": "VexRuntime → AppActionRegistrations.dispatch",
+          "symbol": "ElementIntent.Invoke",
+          "summary": "Runtime interprets the Invoke intent and looks up the one registered owner for the ActionKey.",
+          "source": "app:runtime/VexRuntime.kt"
+        },
+        {
+          "ref": "vexstream-music.catalog.refresh.registration",
+          "face": "BEHAVIOR",
+          "role": "DISPATCH",
+          "label": "appAction(RefreshVexStreamCatalog) { scope.launch { repository.refreshCatalog() } }",
+          "symbol": "vexStreamActionRegistrations",
+          "summary": "Calls the rightful owners directly. No Act, no Effect.",
+          "source": "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
+        },
+        {
+          "ref": "vexstream-music.catalog.refresh.owner-repository",
+          "face": "DEPTH",
+          "role": "STORE",
+          "label": "VexStreamMusicRepository",
+          "symbol": "repository",
+          "summary": "Outside truth this registration touches.",
+          "source": "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
+        }
+      ],
+      "edges": [
+        {
+          "from": "vexstream-music.catalog.refresh.intent",
+          "to": "vexstream-music.catalog.refresh.runtime",
+          "label": "Invoke"
+        },
+        {
+          "from": "vexstream-music.catalog.refresh.runtime",
+          "to": "vexstream-music.catalog.refresh.registration",
+          "label": "dispatch"
+        },
+        {
+          "from": "vexstream-music.catalog.refresh.registration",
+          "to": "vexstream-music.catalog.refresh.owner-repository",
+          "label": "calls"
+        }
+      ]
+    },
+    {
+      "pathwayRef": "pathway.vexstream-music.connection.reconnect",
+      "label": "Reconnect vex stream",
+      "disposition": "DIRECT_REGISTRATION",
+      "summary": "The registration calls owners directly; no Family has earned this meaning yet.",
+      "returns": null,
+      "nodes": [
+        {
+          "ref": "vexstream-music.connection.reconnect.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "invoke(AppActions.ReconnectVexStream)",
+          "symbol": "action.vexstream-music.connection.reconnect",
+          "summary": "Application action key.",
+          "source": "app:runtime/AppActions.kt"
+        },
+        {
+          "ref": "vexstream-music.connection.reconnect.runtime",
+          "face": "BEHAVIOR",
+          "role": "DISPATCH",
+          "label": "VexRuntime → AppActionRegistrations.dispatch",
+          "symbol": "ElementIntent.Invoke",
+          "summary": "Runtime interprets the Invoke intent and looks up the one registered owner for the ActionKey.",
+          "source": "app:runtime/VexRuntime.kt"
+        },
+        {
+          "ref": "vexstream-music.connection.reconnect.registration",
+          "face": "BEHAVIOR",
+          "role": "DISPATCH",
+          "label": "appAction(ReconnectVexStream) { scope.launch { repository.reconnectPairedVexStream() } }",
+          "symbol": "vexStreamActionRegistrations",
+          "summary": "Calls the rightful owners directly. No Act, no Effect.",
+          "source": "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
+        },
+        {
+          "ref": "vexstream-music.connection.reconnect.owner-repository",
+          "face": "DEPTH",
+          "role": "STORE",
+          "label": "VexStreamMusicRepository",
+          "symbol": "repository",
+          "summary": "Outside truth this registration touches.",
+          "source": "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
+        }
+      ],
+      "edges": [
+        {
+          "from": "vexstream-music.connection.reconnect.intent",
+          "to": "vexstream-music.connection.reconnect.runtime",
+          "label": "Invoke"
+        },
+        {
+          "from": "vexstream-music.connection.reconnect.runtime",
+          "to": "vexstream-music.connection.reconnect.registration",
+          "label": "dispatch"
+        },
+        {
+          "from": "vexstream-music.connection.reconnect.registration",
+          "to": "vexstream-music.connection.reconnect.owner-repository",
+          "label": "calls"
         }
       ]
     },
@@ -5857,7 +5742,7 @@
           "ref": "vexstream-music.open.ForgetConfirmationDialog.step-1",
           "face": "BEHAVIOR",
           "role": "NAVIGATION",
-          "label": "Open(ForgetConfirmationDialog)",
+          "label": "Open(element.vexstream-music.body.connection.forget-confirmation)",
           "symbol": "runtime.presentation",
           "summary": "Runtime presentation state changes; no Behavior is earned.",
           "source": "app:runtime/VexRuntime.kt"
@@ -5891,7 +5776,7 @@
           "ref": "vexstream-music.close.ConnectionMenuSheet.step-1",
           "face": "BEHAVIOR",
           "role": "NAVIGATION",
-          "label": "Close(ConnectionMenuSheet)",
+          "label": "Close(element.vexstream-music.body.connection.menu)",
           "symbol": "runtime.presentation",
           "summary": "Runtime presentation state changes; no Behavior is earned.",
           "source": "app:runtime/VexRuntime.kt"
@@ -5902,6 +5787,68 @@
           "from": "vexstream-music.close.ConnectionMenuSheet.intent",
           "to": "vexstream-music.close.ConnectionMenuSheet.step-1",
           "label": "close"
+        }
+      ]
+    },
+    {
+      "pathwayRef": "pathway.vexstream-music.connection.forget",
+      "label": "Forget paired vex stream",
+      "disposition": "DIRECT_REGISTRATION",
+      "summary": "The registration calls owners directly; no Family has earned this meaning yet.",
+      "returns": null,
+      "nodes": [
+        {
+          "ref": "vexstream-music.connection.forget.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "invoke(AppActions.ForgetPairedVexStream)",
+          "symbol": "action.vexstream-music.connection.forget",
+          "summary": "Application action key.",
+          "source": "app:runtime/AppActions.kt"
+        },
+        {
+          "ref": "vexstream-music.connection.forget.runtime",
+          "face": "BEHAVIOR",
+          "role": "DISPATCH",
+          "label": "VexRuntime → AppActionRegistrations.dispatch",
+          "symbol": "ElementIntent.Invoke",
+          "summary": "Runtime interprets the Invoke intent and looks up the one registered owner for the ActionKey.",
+          "source": "app:runtime/VexRuntime.kt"
+        },
+        {
+          "ref": "vexstream-music.connection.forget.registration",
+          "face": "BEHAVIOR",
+          "role": "DISPATCH",
+          "label": "appAction(ForgetPairedVexStream) { scope.launch { repository.forgetPairedVexStream() } }",
+          "symbol": "vexStreamActionRegistrations",
+          "summary": "Calls the rightful owners directly. No Act, no Effect.",
+          "source": "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
+        },
+        {
+          "ref": "vexstream-music.connection.forget.owner-repository",
+          "face": "DEPTH",
+          "role": "STORE",
+          "label": "VexStreamMusicRepository",
+          "symbol": "repository",
+          "summary": "Outside truth this registration touches.",
+          "source": "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
+        }
+      ],
+      "edges": [
+        {
+          "from": "vexstream-music.connection.forget.intent",
+          "to": "vexstream-music.connection.forget.runtime",
+          "label": "Invoke"
+        },
+        {
+          "from": "vexstream-music.connection.forget.runtime",
+          "to": "vexstream-music.connection.forget.registration",
+          "label": "dispatch"
+        },
+        {
+          "from": "vexstream-music.connection.forget.registration",
+          "to": "vexstream-music.connection.forget.owner-repository",
+          "label": "calls"
         }
       ]
     },
@@ -5925,7 +5872,7 @@
           "ref": "vexstream-music.close.ForgetConfirmationDialog.step-1",
           "face": "BEHAVIOR",
           "role": "NAVIGATION",
-          "label": "Close(ForgetConfirmationDialog)",
+          "label": "Close(element.vexstream-music.body.connection.forget-confirmation)",
           "symbol": "runtime.presentation",
           "summary": "Runtime presentation state changes; no Behavior is earned.",
           "source": "app:runtime/VexRuntime.kt"
@@ -5936,6 +5883,54 @@
           "from": "vexstream-music.close.ForgetConfirmationDialog.intent",
           "to": "vexstream-music.close.ForgetConfirmationDialog.step-1",
           "label": "close"
+        }
+      ]
+    },
+    {
+      "pathwayRef": "pathway.talk-to-vex.placeholder",
+      "label": "Talk to vex placeholder",
+      "disposition": "DIRECT_REGISTRATION",
+      "summary": "Registered, with no product effect yet.",
+      "returns": null,
+      "nodes": [
+        {
+          "ref": "talk-to-vex.placeholder.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "invoke(AppActions.TalkToVexPlaceholder)",
+          "symbol": "action.talk-to-vex.placeholder",
+          "summary": "Application action key.",
+          "source": "app:runtime/AppActions.kt"
+        },
+        {
+          "ref": "talk-to-vex.placeholder.runtime",
+          "face": "BEHAVIOR",
+          "role": "DISPATCH",
+          "label": "VexRuntime → AppActionRegistrations.dispatch",
+          "symbol": "ElementIntent.Invoke",
+          "summary": "Runtime interprets the Invoke intent and looks up the one registered owner for the ActionKey.",
+          "source": "app:runtime/VexRuntime.kt"
+        },
+        {
+          "ref": "talk-to-vex.placeholder.registration",
+          "face": "BEHAVIOR",
+          "role": "DISPATCH",
+          "label": "appAction(TalkToVexPlaceholder) { }",
+          "symbol": "TalkToVexScreen.appActionRegistrations",
+          "summary": "No product effect yet.",
+          "source": "app:screens/shared/vex/TalkToVexScreen.kt"
+        }
+      ],
+      "edges": [
+        {
+          "from": "talk-to-vex.placeholder.intent",
+          "to": "talk-to-vex.placeholder.runtime",
+          "label": "Invoke"
+        },
+        {
+          "from": "talk-to-vex.placeholder.runtime",
+          "to": "talk-to-vex.placeholder.registration",
+          "label": "dispatch"
         }
       ]
     }
