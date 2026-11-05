@@ -536,6 +536,7 @@ function renderBar() {
     h('span', { class: 'snapshot', title: snapshot.notes.join('\n') }, 'Read-only projection of ', commitLink),
     renderSearch(),
     h('button', { class: 'tool', 'aria-pressed': state.overlay === 'MAP', onclick: () => { state.overlay = state.overlay === 'MAP' ? null : 'MAP'; render(); } }, 'Screen map'),
+    state.lens.relatedBoardRefs.length ? h('button', { class: 'tool', 'aria-pressed': state.overlay === 'RELATED', onclick: () => { state.overlay = state.overlay === 'RELATED' ? null : 'RELATED'; render(); } }, `Related ${state.lens.relatedBoardRefs.length}`) : null,
     h('button', { class: 'tool', 'aria-pressed': state.overlay === 'LEGEND', onclick: () => { state.overlay = state.overlay === 'LEGEND' ? null : 'LEGEND'; render(); } }, 'Legend'),
     h('button', { class: 'tool', title: 'Cycle color presentation', onclick: () => { state.palette = Presentation.nextPaletteMode(state.palette); writePalette(state.palette); applyPalette(); } }, paletteLabel()),
   );
@@ -1204,6 +1205,17 @@ function renderMap() {
     viewport,
     unreached.length ? h('div', { class: 'unreached' }, 'No projected route reaches yet:', unreached.map((screen) => h('button', { class: 'screen-chip', onclick: () => jumpTo(screen.screenRef) }, h('span', { class: `mapped ${screen.mapped}` }), screen.label))) : null);
 }
+function renderRelatedBoards() {
+  return h('aside', { class: 'legend', role: 'dialog', 'aria-label': 'Related boards' },
+    h('h3', {}, 'Related boards'),
+    h('p', {}, 'Separate VexBoard projections related to this Lens. Opening one does not change the source meaning projected here.'),
+    h('div', { class: 'links' }, state.lens.relatedBoardRefs.map((boardRef) =>
+      h('a', { class: 'link', href: `./?board=${encodeURIComponent(boardRef)}` },
+        h('span', {}, 'Open related board'),
+        h('code', { style: 'display:block;margin-top:3px' }, boardRef)))),
+    h('button', { class: 'tool', style: 'margin-top:12px', onclick: () => { state.overlay = null; render(); } }, 'Close'));
+}
+
 function renderLegend() {
   const bands = Object.values(Lens.LENS_BANDS).map((band) => h('div', { class: 'band' },
     h('div', {}, h('b', {}, band.label), h('div', { class: 'muted' }, band.question)),
@@ -1284,6 +1296,7 @@ function render() {
   const bridge = s('svg', { class: 'bridge', 'aria-hidden': 'true' });
   main.append(bridge);
   if (state.overlay === 'MAP') main.append(renderMap());
+  if (state.overlay === 'RELATED') main.append(renderRelatedBoards());
   if (state.overlay === 'LEGEND') main.append(renderLegend());
   root.append(renderBar(), renderAtlas(), main, renderTray());
   app.replaceChildren(root);
