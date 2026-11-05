@@ -1,0 +1,78 @@
+# Regenerate the VexBoard Screen Lens from VexLife-Android source.
+#
+# Manual only (workflow_dispatch): nothing runs on push or schedule. A human, a
+# VexRelay host step or any instance can trigger it, or run the same script
+# locally:  node scripts/build-screen-lens.mjs --source <VexLife-Android checkout>
+#
+# The run proves the committed lens against the chosen commit and uploads the
+# regenerated lens as an artifact. It never pushes or opens a PR by itself.
+#
+# If VexLife-Android is private, add a repository secret VEXLIFE_ANDROID_TOKEN with
+# read access to it; the public case needs no secret.
+
+name: VexBoard Screen Lens
+
+on:
+  workflow_dispatch:
+    inputs:
+      commit:
+        description: VexLife-Android commit to project (empty = the commit pinned in the adapter)
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+jobs:
+  lens:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out VexWork
+        uses: actions/checkout@v4
+
+      - name: Read the pinned commit
+        id: pin
+        run: |
+          pinned=$(node -e "console.log(require('./projects/vexboard/lens/vexlife-android.lens-adapter.json').repository.commit)")
+          commit="${{ inputs.commit }}"
+          if [ -z "$commit" ]; then commit="$pinned"; fi
+          echo "commit=$commit" >> "$GITHUB_OUTPUT"
+
+      - name: Check out VexLife-Android
+        uses: actions/checkout@v4
+        with:
+          repository: vgong24/VexLife-Android
+          ref: ${{ steps.pin.outputs.commit }}
+          path: vexlife-android
+          token: ${{ secrets.VEXLIFE_ANDROID_TOKEN || github.token }}
+          sparse-checkout: |
+            app/src/main/kotlin
+            app/src/main/res/values
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Check the committed lens against this commit
+        id: check
+        continue-on-error: true
+        run: node scripts/build-screen-lens.mjs --source vexlife-android --commit ${{ steps.pin.outputs.commit }} --check
+
+      - name: Regenerate
+        run: node scripts/build-screen-lens.mjs --source vexlife-android --commit ${{ steps.pin.outputs.commit }} --report
+
+      - name: Show what changed
+        run: git diff --stat -- projects/vexboard/lens/
+
+      - name: Upload the regenerated lens
+        uses: actions/upload-artifact@v4
+        with:
+          name: vexboard-screen-lens-${{ steps.pin.outputs.commit }}
+          path: |
+            projects/vexboard/lens/vexlife-android.screen-lens.json
+            projects/vexboard/lens/vexlife-android.lens-adapter.json
+
+      - name: Report staleness
+        if: steps.check.outcome == 'failure'
+        run: |
+          echo "::warning::The committed lens is stale for ${{ steps.pin.outputs.commit }}. Download the artifact or run the script locally and commit the result."

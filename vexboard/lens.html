@@ -47,6 +47,28 @@ a{color:var(--focus)}
 
 .lens{display:grid;grid-template-rows:auto auto minmax(0,1fr) auto;height:100vh;min-height:560px}
 .bar{display:flex;align-items:center;gap:14px;padding:8px 18px;background:var(--sheet);border-bottom:1px solid var(--rule)}
+.search{position:relative;flex:1;min-width:180px;max-width:520px;margin-left:8px}
+.search input{width:100%;height:32px;padding:0 12px 0 32px;border:1px solid var(--rule);border-radius:8px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%238a93a6' stroke-width='2.4' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E") no-repeat 11px 50%;font-size:13px}
+.search input:focus{border-color:var(--focus);outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--focus) 18%,transparent)}
+.search .kbd{position:absolute;right:8px;top:7px;pointer-events:none}
+.search input:focus + .kbd,.search input:not(:placeholder-shown) + .kbd{display:none}
+.results{position:absolute;left:0;right:0;top:38px;z-index:60;max-height:min(62vh,560px);overflow:auto;padding:6px;background:var(--sheet);border:1px solid var(--rule-strong);border-radius:12px;box-shadow:0 24px 50px -24px #18213a88}
+.results h4{margin:8px 8px 4px;font-size:11.5px;font-weight:600;color:var(--faint)}
+.results h4:first-child{margin-top:2px}
+.result{display:grid;grid-template-columns:auto minmax(0,1fr);gap:1px 9px;align-items:center;width:100%;padding:7px 8px;border:0;border-radius:8px;background:none;text-align:left}
+.result:hover,.result.active{background:#eef2f8}
+.result .rl{font-size:13px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.result .rd{grid-column:2;font:11.5px var(--mono);color:var(--faint);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.results .none{padding:14px 10px;color:var(--muted);font-size:13px}
+.chip.note-chip{--rc:var(--r-CHRONOLOGY)}
+.copied{color:var(--r-STORE);font-size:12.5px;font-weight:500}
+.impact .count{font-size:13px;margin:0 0 6px}
+.impact .more{font-size:12px;color:var(--muted);border:0;background:none;padding:0 4px;text-decoration:underline}
+.brief-dialog{width:min(860px,94vw);padding:0;border:1px solid var(--rule-strong);border-radius:14px}
+.brief-dialog::backdrop{background:#18213a99}
+.brief-dialog header{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--rule)}
+.brief-dialog header h2{margin:0;font-size:15px;font-weight:600;flex:1}
+.brief-dialog textarea{display:block;width:100%;height:min(64vh,620px);border:0;padding:14px 16px;font:12px/1.5 var(--mono);resize:none}
 .bar .crumb{color:var(--muted);text-decoration:none;font-weight:500}.bar .crumb:hover{color:var(--ink)}
 .bar h1{margin:0;font-size:16px;font-weight:600;letter-spacing:-.005em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .snapshot{color:var(--muted);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
@@ -105,6 +127,7 @@ a{color:var(--focus)}
 .el-row{display:flex;flex-wrap:wrap;gap:8px;border-radius:8px}
 .el-text{margin:0;font-size:13px;color:var(--muted)}.el-text.TITLE{color:var(--ink);font-weight:600;font-size:14px}
 .el-image{font-weight:600;letter-spacing:-.01em}
+.el-field{display:flex;align-items:center;height:40px;padding:0 12px;border:1px solid #cfd5df;border-radius:10px;background:#fff;color:var(--faint);font-size:13px}
 .el-toggle{display:flex;align-items:center;justify-content:space-between;width:100%;padding:12px 14px;border:1px solid #e3e7ee;border-radius:14px;background:#fff;text-align:left;font-weight:500}
 .el-toggle .switch{width:38px;height:22px;border-radius:999px;background:#d7dce5;position:relative;flex:none}
 .el-toggle .switch::after{content:'';position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 1px 2px #0003}
@@ -121,8 +144,14 @@ a{color:var(--focus)}
 .el-menuitem{height:32px;padding:0 13px;border:1px solid #cfd5df;border-radius:999px;background:#fff;font-size:12.5px;font-weight:500;box-shadow:0 4px 12px -8px #0005}
 .sheet-zone{position:absolute;left:0;right:0;bottom:0;z-index:6;padding:12px 16px 20px;border-top-left-radius:20px;border-top-right-radius:20px;background:#fff;border-top:1px solid #dfe3ea;box-shadow:0 -12px 30px -18px #0006}
 .sheet-zone .grab{width:36px;height:4px;border-radius:2px;background:#d7dce5;margin:0 auto 10px}
+.dialog-zone{position:absolute;left:20px;right:20px;top:50%;transform:translateY(-50%);z-index:6;padding:16px;border-radius:18px;background:#fff;border:1px solid #dfe3ea;box-shadow:0 22px 44px -18px #0007;display:flex;flex-direction:column;gap:6px}
+.dialog-zone.at-top{top:66px;transform:none}.dialog-zone.at-bottom{top:auto;bottom:72px;transform:none}
+.phone.dimmed .opened[data-ref]:not(.sel):not(.anc){opacity:1}
+.opened .el-text{overflow-wrap:anywhere}
 .travel{position:absolute;left:50%;top:calc(100% + 8px);transform:translateX(-50%);z-index:8;white-space:nowrap;height:28px;padding:0 12px;border-radius:999px;border:0;background:var(--r-NAVIGATION);color:#fff;font-size:12px;font-weight:600;box-shadow:0 6px 16px -8px #0007}
 .travel.above{top:auto;bottom:calc(100% + 8px)}.travel.left{left:auto;right:calc(100% + 8px);top:50%;transform:translateY(-50%)}
+.travel.right{left:calc(100% + 8px);top:50%;transform:translateY(-50%)}
+.travel.badge{left:auto;right:-8px;top:-10px;transform:none;height:20px;padding:0 8px;font-size:11px}
 
 /* Structure face */
 .structure{flex:1;overflow:auto;padding:16px 16px 28px}
@@ -189,8 +218,8 @@ a{color:var(--focus)}
 .tray-head{display:flex;align-items:center;gap:10px;padding:10px 18px;position:sticky;top:0;background:var(--sheet);border-bottom:1px solid #eef1f5;z-index:1}
 .tray-head h2{margin:0;font-size:14px;font-weight:600;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .tray-head .ref{font:12px var(--mono);color:var(--faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
-.tray-head .tool{margin-left:auto;height:28px}
-.tray-body{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px 28px;padding:10px 18px 14px}
+.tray-head .tool{height:28px}.tray-head .push{margin-left:auto}
+.tray-body{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px 28px;padding:10px 18px 14px}
 .tray h3{margin:0 0 6px;font-size:12px;font-weight:600;color:var(--muted)}
 .tray dl{margin:0;display:grid;grid-template-columns:max-content minmax(0,1fr);gap:4px 12px;font-size:12.5px}
 .tray dt{color:var(--muted)}.tray dd{margin:0;overflow-wrap:anywhere}
@@ -235,7 +264,9 @@ kbd{font:11px var(--mono);border:1px solid var(--rule-strong);border-bottom-widt
   .snapshot{display:none}
   .screens{margin-left:0}
   body{overflow-x:hidden}
-  .bar{flex-wrap:wrap;row-gap:6px}.bar h1{flex-basis:100%;order:-1;white-space:normal}.bar .spacer{display:none}
+  .bar{flex-wrap:wrap;row-gap:6px}.bar h1{flex-basis:100%;order:-1;white-space:normal}
+  .search{flex-basis:100%;order:1;margin-left:0;max-width:none}
+  .tray-head{flex-wrap:wrap}
   .main{padding:12px}
   .side-head{flex-wrap:wrap}.side-head .hint{display:none}
   .surface{padding:12px}
@@ -253,8 +284,9 @@ import * as Lens from '../src/shared/vexboard-screen-lens.mjs';
 import * as Layout from '../src/shared/vexboard-lens-layout.mjs';
 import * as Interaction from './ui/interaction.mjs';
 import * as Presentation from './ui/presentation.mjs';
+import * as Query from '../src/shared/vexboard-screen-lens-query.mjs';
 
-const DEFAULT_LENS_URL = '../projects/vexboard/examples/vexlife-debug-menu.screen-lens.json';
+const DEFAULT_LENS_URL = '../projects/vexboard/lens/vexlife-android.screen-lens.json';
 const params = new URLSearchParams(location.search);
 const app = document.getElementById('app');
 const SVG = 'http://www.w3.org/2000/svg';
@@ -371,6 +403,127 @@ function flip(side) {
   syncUrl();
 }
 
+/* ---------- search and navigation ---------- */
+const SEARCH_GROUPS = [['ELEMENT', 'Controls and elements'], ['STEP', 'Pathway steps'], ['SCREEN', 'Screens'], ['PATHWAY', 'Pathways'], ['NOTE', 'Notes']];
+const searchState = { query: '', active: 0, results: [] };
+function whereText(target) {
+  if (!target.screenRef) return 'no projected screen';
+  if (target.elementRef) {
+    const screens = Query.screensForElement(state.lens, target.elementRef);
+    if (screens.length > 1) return `on ${screens.map((ref) => Lens.screenFor(state.lens, ref).label).join(', ')}`;
+  }
+  return `on ${Lens.screenFor(state.lens, target.screenRef).label}`;
+}
+function goToResult(result) {
+  const target = result.target;
+  if (target.screenRef && target.screenRef !== screenRef()) state.walk = Lens.advanceScreenWalk(state.lens, state.walk, { toScreenRef: target.screenRef, how: 'JUMP' });
+  state.overlay = null;
+  state.anchorElementRef = target.elementRef ?? null;
+  state.selected = target.elementRef ? { kind: 'ELEMENT', ref: target.elementRef } : null;
+  if ((target.pathwayRef ?? null) !== state.pathwayRef) { state.pathwayRef = target.pathwayRef ?? null; state.cameras.delete('BEHAVIOR'); state.cameras.delete('DEPTH'); }
+  let reveal = null;
+  if (target.nodeRef) {
+    const node = pathwayNode(target.nodeRef);
+    state.selected = { kind: 'NODE', ref: target.nodeRef };
+    state.faces.BEHAVIOR = node.face;
+    reveal = node;
+  }
+  searchState.query = '';
+  render();
+  if (reveal) requestAnimationFrame(() => revealNode(reveal.face, reveal.ref));
+}
+function renderSearchResults(list) {
+  list.replaceChildren();
+  if (!searchState.query.trim()) { list.hidden = true; return; }
+  list.hidden = false;
+  if (!searchState.results.length) { list.append(h('div', { class: 'none' }, `Nothing in this lens matches "${searchState.query}". Try an action key, a Kotlin symbol, a file name or a label.`)); return; }
+  let index = 0;
+  for (const [kind, title] of SEARCH_GROUPS) {
+    const group = searchState.results.filter((result) => result.kind === kind);
+    if (!group.length) continue;
+    list.append(h('h4', {}, title));
+    for (const result of group) {
+      const position = index++;
+      const badge = result.role ? chip(result.role) : h('span', { class: 'chip note-chip' }, 'Note');
+      list.append(h('button', {
+        class: `result${position === searchState.active ? ' active' : ''}`, type: 'button', role: 'option', id: `result-${position}`,
+        'aria-selected': position === searchState.active,
+        onmousedown: (event) => event.preventDefault(),
+        onclick: () => goToResult(result),
+      }, badge, h('span', { class: 'rl' }, result.label), h('span', { class: 'rd' }, `${result.detail ?? result.ref} · ${whereText(result.target)}`)));
+    }
+  }
+}
+function orderedResults() { return SEARCH_GROUPS.flatMap(([kind]) => searchState.results.filter((result) => result.kind === kind)); }
+function renderSearch() {
+  const list = h('div', { class: 'results', role: 'listbox', id: 'lens-search-results', hidden: true });
+  const input = h('input', {
+    id: 'lens-search', type: 'search', placeholder: 'Find a control, step, action key, symbol or file', autocomplete: 'off', spellcheck: 'false',
+    role: 'combobox', 'aria-expanded': 'false', 'aria-controls': 'lens-search-results', 'aria-label': 'Search this lens',
+  });
+  input.value = searchState.query;
+  const refresh = () => {
+    searchState.results = Query.searchLens(state.lens, searchState.query, { currentScreenRef: screenRef() });
+    searchState.active = Math.min(searchState.active, Math.max(0, searchState.results.length - 1));
+    renderSearchResults(list);
+    input.setAttribute('aria-expanded', String(!list.hidden));
+    if (!list.hidden && searchState.results.length) input.setAttribute('aria-activedescendant', `result-${searchState.active}`);
+    else input.removeAttribute('aria-activedescendant');
+    list.querySelector('.result.active')?.scrollIntoView({ block: 'nearest' });
+  };
+  input.addEventListener('input', () => { searchState.query = input.value; searchState.active = 0; refresh(); });
+  input.addEventListener('focus', () => { if (searchState.query) refresh(); });
+  input.addEventListener('blur', () => { list.hidden = true; input.setAttribute('aria-expanded', 'false'); });
+  input.addEventListener('keydown', (event) => {
+    const ordered = orderedResults();
+    if (event.key === 'ArrowDown') { event.preventDefault(); searchState.active = Math.min(ordered.length - 1, searchState.active + 1); refresh(); }
+    else if (event.key === 'ArrowUp') { event.preventDefault(); searchState.active = Math.max(0, searchState.active - 1); refresh(); }
+    else if (event.key === 'Enter') { event.preventDefault(); if (ordered[searchState.active]) goToResult(ordered[searchState.active]); }
+    else if (event.key === 'Escape') { event.preventDefault(); event.stopPropagation(); searchState.query = ''; input.value = ''; refresh(); input.blur(); }
+  });
+  return h('div', { class: 'search', role: 'search' }, input, h('kbd', { class: 'kbd', 'aria-hidden': 'true' }, '/'), list);
+}
+
+/* ---------- briefs ---------- */
+function lensLink() { return location.href; }
+let briefDialog = null;
+function showBriefFallback(title, text) {
+  briefDialog?.remove();
+  const area = h('textarea', { readonly: true, 'aria-label': title });
+  area.value = text;
+  briefDialog = h('dialog', { class: 'brief-dialog', 'aria-label': title },
+    h('header', {}, h('h2', {}, title), h('span', { class: 'hint' }, 'Copying was blocked here. The text is selected; press Ctrl or ⌘ + C.'), h('button', { class: 'tool', onclick: () => briefDialog.close() }, 'Close')),
+    area);
+  document.body.append(briefDialog);
+  briefDialog.showModal();
+  area.focus(); area.select();
+}
+function copyBrief(kind, button) {
+  const anchor = state.anchorElementRef;
+  const text = kind === 'CONTROL' && anchor
+    ? Query.controlBrief(state.lens, anchor, { screenRef: screenRef(), lensUrl: lensLink() })
+    : Query.screenBrief(state.lens, screenRef(), { lensUrl: lensLink() });
+  const title = kind === 'CONTROL' && anchor ? `Control brief: ${Lens.elementFor(state.lens, anchor).label}` : `Screen brief: ${currentScreen().label}`;
+  const done = () => { const note = h('span', { class: 'copied', role: 'status' }, 'Copied'); button.after(note); setTimeout(() => note.remove(), 1800); };
+  try {
+    const pending = navigator.clipboard?.writeText(text);
+    if (!pending) { showBriefFallback(title, text); return; }
+    pending.then(done, () => showBriefFallback(title, text));
+  } catch { showBriefFallback(title, text); }
+}
+function briefButtons() {
+  const buttons = [];
+  if (state.anchorElementRef) {
+    const control = h('button', { class: 'tool push', title: 'Copy a text summary of this control and its pathway for a person or an AI' }, 'Copy control brief');
+    control.addEventListener('click', () => copyBrief('CONTROL', control));
+    buttons.push(control);
+  }
+  const screenButton = h('button', { class: `tool${buttons.length ? '' : ' push'}`, title: 'Copy a text summary of this screen, its controls and pathways for a person or an AI' }, 'Copy screen brief');
+  screenButton.addEventListener('click', () => copyBrief('SCREEN', screenButton));
+  buttons.push(screenButton);
+  return buttons;
+}
+
 /* ---------- top bar and atlas ---------- */
 function renderBar() {
   const snapshot = state.lens.sourceSnapshot;
@@ -381,7 +534,7 @@ function renderBar() {
     h('a', { class: 'crumb', href: './' }, 'VexBoard'),
     h('h1', {}, state.lens.title),
     h('span', { class: 'snapshot', title: snapshot.notes.join('\n') }, 'Read-only projection of ', commitLink),
-    h('span', { class: 'spacer' }),
+    renderSearch(),
     h('button', { class: 'tool', 'aria-pressed': state.overlay === 'MAP', onclick: () => { state.overlay = state.overlay === 'MAP' ? null : 'MAP'; render(); } }, 'Screen map'),
     h('button', { class: 'tool', 'aria-pressed': state.overlay === 'LEGEND', onclick: () => { state.overlay = state.overlay === 'LEGEND' ? null : 'LEGEND'; render(); } }, 'Legend'),
     h('button', { class: 'tool', title: 'Cycle color presentation', onclick: () => { state.palette = Presentation.nextPaletteMode(state.palette); writePalette(state.palette); applyPalette(); } }, paletteLabel()),
@@ -418,7 +571,7 @@ function renderAtlas() {
   const counts = Lens.walkVisitCounts(state.walk);
   const chipFor = (screen) => h('button', {
     class: `screen-chip${screen.screenRef === screenRef() ? ' current' : ''}`,
-    title: `${screen.summary ?? ''}\n${screen.mapped.replace('_', ' ').toLowerCase()}`,
+    title: (() => { const coverage = Query.screenCoverage(state.lens, screen.screenRef); return `${screen.summary ?? ''}\n${screen.mapped.replace('_', ' ').toLowerCase()} · ${coverage.traced} of ${coverage.interactive} controls traced`; })(),
     onclick: () => jumpTo(screen.screenRef),
   }, h('span', { class: `mapped ${screen.mapped}`, 'aria-hidden': 'true' }), screen.label, counts.get(screen.screenRef) > 1 ? h('span', { class: 'visits' }, `×${counts.get(screen.screenRef)}`) : null);
   const primary = state.lens.screens.filter((screen) => screen.placement === 'PRIMARY');
@@ -450,12 +603,12 @@ function travelButton(element) {
   if (!element.navigatesTo || state.anchorElementRef !== element.ref) return null;
   const to = element.navigatesTo === Lens.BACK ? 'Go back' : `Go to ${Lens.screenFor(state.lens, element.navigatesTo).label}`;
   const slot = Lens.elementPath(state.lens, element.ref).find((step) => step.slot)?.slot;
-  const placement = slot === 'BOTTOM' ? ' above' : slot === 'FAB' ? ' left' : '';
-  return h('button', { class: `travel${placement}`, onclick: (event) => { event.stopPropagation(); travel(element); } }, to);
+  const order = slot === 'BOTTOM' ? 'above' : slot === 'FAB' ? 'left above' : 'below above right left';
+  return h('button', { class: `travel ${order.split(' ')[0]}`, type: 'button', title: to, 'aria-label': to, dataset: { order }, onclick: (event) => { event.stopPropagation(); travel(element); } }, to);
 }
 function renderSurfaceElement(tree, marks, context) {
   const { element, children } = tree;
-  const kids = () => children.filter((child) => child.element.kind !== 'SHEET').map((child) => renderSurfaceElement(child, marks, context));
+  const kids = () => children.filter((child) => child.element.kind !== 'SHEET' && child.element.kind !== 'DIALOG').map((child) => renderSurfaceElement(child, marks, context));
   let node;
   switch (element.kind) {
     case 'COLUMN': case 'REGION': node = h('div', { class: 'el-column' }, kids()); break;
@@ -465,9 +618,10 @@ function renderSurfaceElement(tree, marks, context) {
     case 'IMAGE': node = h('span', { class: 'el-image' }, element.label); break;
     case 'TOGGLE': node = h('button', { class: 'el-toggle', type: 'button' }, element.label, h('span', { class: 'switch', 'aria-hidden': 'true' })); break;
     case 'BUTTON': node = h('button', { class: 'el-button', type: 'button' }, element.label); break;
-    case 'FAB': node = h('button', { class: 'el-fab', type: 'button', 'aria-label': element.label }, element.label); break;
+    case 'FAB': node = element.label.length <= 2 ? h('button', { class: 'el-fab', type: 'button', 'aria-label': element.label }, element.label) : h('button', { class: 'el-button', type: 'button' }, element.label); break;
     case 'MENU': node = h('div', { class: `el-menu${context.fabOpen ? '' : ' closed'}` }, kids()); break;
     case 'MENU_ITEM': node = h('button', { class: 'el-menuitem', type: 'button' }, element.label); break;
+    case 'FIELD': node = h('div', { class: 'el-field' }, h('span', {}, element.label)); break;
     default: node = h('div', {}, element.label);
   }
   markElement(node, element, marks);
@@ -514,9 +668,13 @@ function renderSurface() {
     markElement(zone, fab.element, marks);
     phone.append(zone);
   }
-  const sheet = screen.elements.find((element) => element.kind === 'SHEET');
-  const sheetOpen = sheet && (anchor?.ref === sheet.ref || anchor?.pathwayRef === 'pathway.log-history.show');
-  if (sheetOpen) phone.append(markElement(h('div', { class: 'sheet-zone' }, h('div', { class: 'grab' }), h('p', { class: 'el-text TITLE' }, sheet.label), h('p', { class: 'el-text' }, sheet.visibleWhen ?? '')), sheet, marks));
+  // A sheet or dialog shows when it is selected, or when the selected control opens it.
+  const opens = (overlay) => overlay.symbol && anchor?.intent && new RegExp(`\\b(open|toggle)\\(${overlay.symbol.split('.').pop()}\\)`).test(anchor.intent);
+  const sheet = screen.elements.find((element) => (element.kind === 'SHEET' || element.kind === 'DIALOG') && (anchor?.ref === element.ref || opens(element)));
+  const sheetOpen = Boolean(sheet);
+  if (sheetOpen) phone.append(markElement(sheet.kind === 'DIALOG'
+    ? h('div', { class: 'dialog-zone opened', role: 'presentation' }, h('p', { class: 'el-text TITLE' }, sheet.label), h('p', { class: 'el-text' }, sheet.visibleWhen ?? ''))
+    : h('div', { class: 'sheet-zone opened' }, h('div', { class: 'grab' }), h('p', { class: 'el-text TITLE' }, sheet.label), h('p', { class: 'el-text' }, sheet.visibleWhen ?? '')), sheet, marks));
   return h('div', { class: 'surface', onclick: () => clearSelection() }, phone);
 }
 
@@ -795,6 +953,32 @@ function visibleRect(node, clip) {
   const c = clip.getBoundingClientRect();
   return { left: r.left, right: r.right, top: r.top, bottom: r.bottom, midY: Math.min(Math.max(r.top + r.height / 2, c.top + 12), c.bottom - 12), offscreen: r.bottom < c.top || r.top > c.bottom, clip: c };
 }
+// The bridge leaves the anchor sideways unless that would cross a sibling control;
+// then it drops into the free gap below (or above) the anchor's row first.
+function bridgeExit(leftFace, anchorRef, from, preferAbove) {
+  const direct = { detour: 0 };
+  if (state.faces.EXPERIENCE !== 'SURFACE') return direct;
+  const phone = leftFace.querySelector('.phone');
+  const anchorNode = leftFace.querySelector(`[data-ref="${CSS.escape(anchorRef)}"]`);
+  if (!phone || !anchorNode) return direct;
+  const a = anchorNode.getBoundingClientRect();
+  const right = phone.getBoundingClientRect().right;
+  const body = phone.querySelector('.phone-body').getBoundingClientRect();
+  const leaves = [...phone.querySelectorAll('[data-ref], .travel')]
+    .filter((node) => node.classList.contains('travel') || (node !== anchorNode && !anchorNode.contains(node) && !node.contains(anchorNode) && !node.querySelector('[data-ref]')))
+    .map((node) => node.getBoundingClientRect())
+    .filter((box) => box.width && box.height && box.bottom > body.top && box.top < body.bottom);
+  const crosses = (y, x0) => leaves.some((box) => box.top - 1 <= y && y <= box.bottom + 1 && box.right > x0 && box.left < right);
+  if (!crosses(from.midY, a.right)) return direct;
+  const x0 = a.right - Math.min(14, a.width / 3);
+  const span = (box) => box.right > x0 && box.left < right;
+  const below = () => { const next = Math.min(...leaves.filter((box) => span(box) && box.top >= a.bottom - 1).map((box) => box.top), a.bottom + 20); return next - a.bottom >= 4 ? { dir: 1, y: (a.bottom + next) / 2 } : null; };
+  const above = () => { const prev = Math.max(...leaves.filter((box) => span(box) && box.bottom <= a.top + 1).map((box) => box.bottom), a.top - 20); return a.top - prev >= 4 ? { dir: -1, y: (a.top + prev) / 2 } : null; };
+  for (const gap of preferAbove ? [above(), below()] : [below(), above()]) {
+    if (gap && gap.y > body.top && gap.y < body.bottom && !crosses(gap.y, x0)) return { detour: gap.dir, x0, y0: gap.dir > 0 ? a.bottom : a.top, y: gap.y };
+  }
+  return direct;
+}
 function drawBridge() {
   const svg = refs.bridge;
   if (!svg) return;
@@ -818,15 +1002,28 @@ function drawBridge() {
   const stopA = s('stop', { offset: '0' }); stopA.style.stopColor = 'var(--r-ELEMENT)';
   const stopB = s('stop', { offset: '1' }); stopB.style.stopColor = `var(--r-${entryNode.role})`;
   gradient.append(stopA, stopB); defs.append(gradient); svg.append(defs);
-  const x1 = Math.min(from.right, from.clip.right) - main.left;
-  const y1 = from.midY - main.top;
+  const exit = bridgeExit(leftFace, anchor.ref, from, state.faces.BEHAVIOR === 'BEHAVIOR' && Boolean(pathway.returnRef));
+  const sideX = Math.min(from.right, from.clip.right) - main.left;
+  let x1 = sideX;
+  let y1 = from.midY - main.top;
+  let start = `M${x1},${y1}`;
+  const capA = { x: x1, y: y1 };
+  if (exit.detour) {
+    const ex = exit.x0 - main.left; const ey0 = exit.y0 - main.top; const ey = exit.y - main.top;
+    const er = Math.min(6, Math.abs(ey - ey0));
+    start = `M${ex},${ey0} V${ey - exit.detour * er} Q${ex},${ey} ${ex + er},${ey}`;
+    capA.x = ex; capA.y = ey0; x1 = ex + er; y1 = ey;
+  }
   const x2 = Math.max(to.left, to.clip.left) - main.left;
   const y2 = (to.offscreen ? (to.top < to.clip.top ? to.clip.top + 14 : to.clip.bottom - 14) : to.midY) - main.top;
   const capB = { x: x2, y: y2 };
   let d;
   if (stripTarget) {
-    const bend = Math.max(60, (x2 - x1) * 0.45);
-    d = `M${x1},${y1} C${x1 + bend},${y1} ${x2 - bend},${y2} ${x2},${y2}`;
+    // Run level until clear of the phone, so the curve never climbs across other controls.
+    const phoneBox = state.faces.EXPERIENCE === 'SURFACE' ? leftFace.querySelector('.phone')?.getBoundingClientRect() : null;
+    const px = phoneBox ? Math.max(x1, Math.min(phoneBox.right + 8, from.clip.right) - main.left) : x1;
+    const bend = Math.max(60, (x2 - px) * 0.45);
+    d = `${start}${px > x1 ? ` H${px}` : ''} C${px + bend},${y1} ${x2 - bend},${y2} ${x2},${y2}`;
   } else {
     // Enter the node from the free band above it: horizontal out of the anchor,
     // down or up the gutter, across above the face content, then into the top.
@@ -836,19 +1033,19 @@ function drawBridge() {
     const tx = Math.max(to.left, to.clip.left) - main.left + Math.min(26, (to.right - to.left) / 2);
     const r = Math.min(10, Math.abs(ty - y1) / 2, Math.abs(tx - gx) / 2);
     const dy = ty > y1 ? 1 : -1;
-    d = `M${x1},${y1} H${gx - r} Q${gx},${y1} ${gx},${y1 + dy * r} V${ty - dy * r} Q${gx},${ty} ${gx + r},${ty} H${tx - r} Q${tx},${ty} ${tx},${ty + r} V${to.offscreen ? ty + r : to.top - main.top}`;
+    d = `${start} H${gx - r} Q${gx},${y1} ${gx},${y1 + dy * r} V${ty - dy * r} Q${gx},${ty} ${gx + r},${ty} H${tx - r} Q${tx},${ty} ${tx},${ty + r} V${to.offscreen ? ty + r : to.top - main.top}`;
     capB.x = tx; capB.y = to.offscreen ? ty + r : to.top - main.top;
   }
-  gradient.setAttribute('gradientUnits', 'userSpaceOnUse'); gradient.setAttribute('x1', x1); gradient.setAttribute('x2', capB.x); gradient.setAttribute('y1', y1); gradient.setAttribute('y2', y1);
+  gradient.setAttribute('gradientUnits', 'userSpaceOnUse'); gradient.setAttribute('x1', capA.x); gradient.setAttribute('x2', capB.x); gradient.setAttribute('y1', y1); gradient.setAttribute('y2', y1);
   const out = s('path', { d, class: 'out', stroke: 'url(#bridge-gradient)', 'stroke-dasharray': to.offscreen ? '7 5' : null });
-  svg.append(out, s('circle', { cx: x1, cy: y1, r: 4.5, class: 'cap', fill: 'var(--r-ELEMENT)' }), s('circle', { cx: capB.x, cy: capB.y, r: 4.5, class: 'cap', fill: `var(--r-${entryNode.role})` }));
+  svg.append(out, s('circle', { cx: capA.x, cy: capA.y, r: 4.5, class: 'cap', fill: 'var(--r-ELEMENT)' }), s('circle', { cx: capB.x, cy: capB.y, r: 4.5, class: 'cap', fill: `var(--r-${entryNode.role})` }));
   if (state.faces.BEHAVIOR === 'BEHAVIOR' && pathway.returnRef) {
     const back = visibleRect(rightFace.querySelector(`[data-node-ref="${CSS.escape(pathway.returnRef)}"]`), viewport);
     if (back && !back.offscreen) {
       const rx = back.left - main.left;
       const ry = back.midY - main.top;
       const ly = Math.min(from.bottom, from.clip.bottom) - main.top - 4;
-      const lx = x1 - 6;
+      const lx = sideX - 6;
       const bendBack = Math.max(60, (rx - lx) * 0.5);
       svg.append(s('path', { d: `M${rx},${ry} C${rx - bendBack},${ry} ${lx + bendBack},${ly} ${lx},${ly}`, class: 'ret' }));
     }
@@ -869,17 +1066,56 @@ function notesBlock(subjectRef) {
   return h('div', {}, h('h3', {}, 'Notes'), notes.map((note) => h('div', { class: 'note' }, h('b', {}, note.text), note.detail ? h('div', {}, note.detail) : null)));
 }
 function dl(rows) { return h('dl', {}, rows.filter(([, value]) => value).flatMap(([key, value]) => [h('dt', {}, key), h('dd', {}, value)])); }
+function linkButton(label, onclick, role = null) {
+  return h('button', { class: 'link', onclick }, role ? chip(role) : null, h('span', {}, label));
+}
+function capped(items, limit, render) {
+  if (items.length <= limit) return items.map(render);
+  const shown = items.slice(0, limit).map(render);
+  const more = h('button', { class: 'more', type: 'button' }, `${items.length - limit} more`);
+  more.addEventListener('click', () => { more.replaceWith(...items.slice(limit).map(render)); });
+  return [...shown, more];
+}
+function jumpToControl(elementRef, preferredScreen) {
+  goToResult({ target: Query.targetFor(state.lens, 'ELEMENT', elementRef, preferredScreen ?? screenRef()) });
+}
+function elementImpact(element) {
+  const impact = Query.impactOf(state.lens, element.ref);
+  const label = (ref) => Lens.screenFor(state.lens, ref).label;
+  return h('div', { class: 'impact' }, h('h3', {}, 'Impact'),
+    h('p', { class: 'count' }, impact.screenRefs.length > 1 ? `Appears on ${impact.screenRefs.length} screens` : impact.screenRefs.length ? `Appears on ${label(impact.screenRefs[0])}` : 'Not reachable on a projected screen'),
+    impact.screenRefs.length > 1 ? h('div', { class: 'links' }, impact.screenRefs.map((ref) => linkButton(label(ref), () => jumpToControl(element.ref, ref), 'SCREEN'))) : null,
+    impact.sharesPathwayWith.length ? [h('p', { class: 'count', style: 'margin-top:8px' }, `Shares its pathway with ${impact.sharesPathwayWith.length} other control${impact.sharesPathwayWith.length > 1 ? 's' : ''}`),
+      h('div', { class: 'links' }, capped(impact.sharesPathwayWith, 5, (ref) => linkButton(Lens.elementFor(state.lens, ref).label, () => jumpToControl(ref), 'ELEMENT')))] : null,
+    impact.touches.length ? [h('p', { class: 'count', style: 'margin-top:8px' }, 'Touches underneath'),
+      h('div', { class: 'links' }, capped(impact.touches, 6, (ref) => { const node = pathwayNode(ref); return linkButton(node.label, () => selectNode(ref, { reveal: true }), node.role); }))]
+      : (impact.pathwayRef ? h('p', { class: 'hint', style: 'white-space:normal;margin-top:6px' }, 'Touches no store, repository or execution custody.') : null));
+}
+function stepImpact(node) {
+  const impact = Query.impactOf(state.lens, node.ref);
+  const label = (ref) => Lens.screenFor(state.lens, ref).label;
+  const stepLink = (ref) => { const found = Query.findStep(state.lens, ref); return linkButton(`${found.pathway.label}: ${found.node.label}`, () => goToResult({ target: Query.targetFor(state.lens, 'STEP', ref, screenRef()) }), found.node.role); };
+  return h('div', { class: 'impact' }, h('h3', {}, 'Impact'),
+    h('p', { class: 'count' }, `Reached from ${impact.reachedFrom.length} control${impact.reachedFrom.length === 1 ? '' : 's'} on ${impact.screenRefs.length} screen${impact.screenRefs.length === 1 ? '' : 's'}`),
+    h('div', { class: 'links' }, capped(impact.reachedFrom, 5, (entry) => linkButton(`${Lens.elementFor(state.lens, entry.elementRef).label} on ${entry.screenRefs.map(label).join(', ')}`, () => jumpToControl(entry.elementRef), 'ELEMENT'))),
+    impact.sameSymbol.length ? [h('p', { class: 'count', style: 'margin-top:8px' }, 'Same symbol in other pathways'), h('div', { class: 'links' }, capped(impact.sameSymbol, 4, stepLink))] : null,
+    impact.sameSource.length ? [h('p', { class: 'count', style: 'margin-top:8px' }, `Same file in ${impact.sameSource.length} other step${impact.sameSource.length === 1 ? '' : 's'}`), h('div', { class: 'links' }, capped(impact.sameSource, 3, stepLink))] : null);
+}
 function renderTray() {
   const tray = h('section', { class: `tray${state.trayCollapsed ? ' collapsed' : ''}`, 'aria-label': 'Inspector' });
   const toggle = h('button', { class: 'tool', 'aria-expanded': !state.trayCollapsed, onclick: () => { state.trayCollapsed = !state.trayCollapsed; render(); } }, state.trayCollapsed ? 'Show details' : 'Hide details');
+  const head = (...children) => h('div', { class: 'tray-head' }, ...children, ...briefButtons(), toggle);
   const selected = state.selected;
   if (!selected) {
     const screen = currentScreen();
-    tray.append(h('div', { class: 'tray-head' }, chip('SCREEN'), h('h2', {}, screen.label), h('span', { class: 'ref' }, screen.screenRef), toggle),
+    const coverage = Query.screenCoverage(state.lens, screen.screenRef);
+    tray.append(head(chip('SCREEN'), h('h2', {}, screen.label), h('span', { class: 'ref' }, screen.screenRef)),
       h('div', { class: 'tray-body' },
-        h('div', {}, h('h3', {}, 'This screen'), h('p', {}, screen.summary ?? ''), dl([['Placement', screen.placement.toLowerCase()], ['Projected', screen.mapped.replace('_', ' ').toLowerCase()], ['Symbol', screen.symbol ? h('code', {}, screen.symbol) : null]]), h('div', { class: 'links', style: 'margin-top:8px' }, sourceLink(screen.source))),
-        h('div', {}, h('h3', {}, 'Reached from'), reachList(screen.screenRef)),
-        h('div', {}, notesBlock(screen.screenRef), h('h3', {}, 'How to read this'), h('p', {}, 'Click a control to see its pathway. Middle-click the left side to see its code structure. Right-click the right side to see what it touches underneath.'))));
+        h('div', {}, h('h3', {}, 'This screen'), h('p', {}, screen.summary ?? ''), dl([['Placement', screen.placement.toLowerCase()], ['Projected', screen.mapped.replace('_', ' ').toLowerCase()], ['Traced', `${coverage.traced} of ${coverage.interactive} controls`], ['Symbol', screen.symbol ? h('code', {}, screen.symbol) : null]]), h('div', { class: 'links', style: 'margin-top:8px' }, sourceLink(screen.source))),
+        h('div', {}, h('h3', {}, 'Reached from'), reachList(screen.screenRef),
+          coverage.untraced.length ? [h('h3', { style: 'margin-top:10px' }, 'Controls with no pathway yet'), h('div', { class: 'links' }, coverage.untraced.map((ref) => linkButton(Lens.elementFor(state.lens, ref).label, () => selectElement(ref), 'ELEMENT')))] : null,
+          !coverage.contentProjected ? h('p', { class: 'hint', style: 'white-space:normal;margin-top:8px' }, screen.mapped === 'CHROME_ONLY' ? 'Only shared chrome is projected; this screen\'s own content is held.' : 'This screen is not projected yet.') : null),
+        h('div', {}, notesBlock(screen.screenRef), h('h3', {}, 'How to read this'), h('p', {}, 'Click a control to see its pathway. Middle-click the left side to see its code structure. Right-click the right side to see what it touches underneath. Press / to find anything by name, key, symbol or file.'))));
     return tray;
   }
   if (selected.kind === 'ELEMENT') {
@@ -887,8 +1123,7 @@ function renderTray() {
     const pathway = Lens.pathwayFor(state.lens, element.pathwayRef);
     const path = Lens.elementPath(state.lens, element.ref);
     const owner = state.lens.chrome.find((entry) => entry.chromeRef === element.ownerRef) ?? Lens.screenFor(state.lens, element.ownerRef);
-    const shared = pathway ? Lens.elementsUsingPathway(state.lens, pathway.pathwayRef).length : 0;
-    tray.append(h('div', { class: 'tray-head' }, elementChip(element), h('h2', {}, element.label), h('span', { class: 'ref' }, element.ref), toggle),
+    tray.append(head(elementChip(element), h('h2', {}, element.label), h('span', { class: 'ref' }, element.ref)),
       h('div', { class: 'tray-body' },
         h('div', {}, h('h3', {}, 'Where it lives'),
           dl([['Owner', owner.symbol ?? owner.label], ['Declared', element.declared ? h('code', {}, element.declared) : null], ['Symbol', element.symbol ? h('code', {}, element.symbol) : null], ['Text', element.labelRes ? h('code', {}, element.labelRes) : null], ['Visible', element.visibleWhen]]),
@@ -898,9 +1133,10 @@ function renderTray() {
         h('div', {}, h('h3', {}, 'What it does'),
           element.intent ? dl([['Intent', h('code', {}, element.intent)], ['Action key', element.actionKey ? h('code', {}, element.actionKey) : null], ['Calls', element.call ? h('code', {}, element.call) : null]]) : h('p', {}, `${element.kind.toLowerCase()} with no declared intent.`),
           pathway ? h('p', { style: 'margin-top:8px' }, h('b', {}, `${pathway.label}. `), pathway.summary ?? '') : null,
-          pathway && shared > 1 ? h('p', { class: 'hint', style: 'white-space:normal' }, `${shared} controls share this pathway.`) : null,
+          pathway ? [h('h3', { style: 'margin-top:10px' }, 'Result for the human'), h('p', {}, pathway.returns ?? '')] : null,
           element.navigatesTo ? h('button', { class: 'go', onclick: () => travel(element) }, element.navigatesTo === Lens.BACK ? 'Go back' : `Go to ${Lens.screenFor(state.lens, element.navigatesTo).label}`) : null),
-        h('div', {}, notesBlock(element.ref), pathway ? [h('h3', {}, 'Result for the human'), h('p', {}, pathway.returns ?? '')] : null)));
+        elementImpact(element),
+        notesBlock(element.ref)));
     return tray;
   }
   const node = pathwayNode(selected.ref);
@@ -912,14 +1148,15 @@ function renderTray() {
   const incoming = pathway.edges.filter((edge) => edge.to === node.ref);
   const outgoing = pathway.edges.filter((edge) => edge.from === node.ref);
   const info = Lens.roleFor(node.role);
-  tray.append(h('div', { class: 'tray-head' }, chip(node.role), h('h2', {}, node.label), h('span', { class: 'ref' }, node.ref), toggle),
+  tray.append(head(chip(node.role), h('h2', {}, node.label), h('span', { class: 'ref' }, node.ref)),
     h('div', { class: 'tray-body' },
-      h('div', {}, h('h3', {}, `${info.label} · ${Lens.LENS_BANDS[info.band].label}`), h('p', {}, node.summary ?? ''), dl([['Symbol', node.symbol ? h('code', {}, node.symbol) : null], ['Face', Lens.LENS_FACES[node.face].title], ['Pathway', pathway.label]])),
+      h('div', {}, h('h3', {}, `${info.label} · ${Lens.LENS_BANDS[info.band].label}`), h('p', {}, node.summary ?? ''), dl([['Symbol', node.symbol ? h('code', {}, node.symbol) : null], ['Face', Lens.LENS_FACES[node.face].title], ['Pathway', pathway.label]]), notesBlock(node.ref)),
       h('div', {}, h('h3', {}, 'Relationships'),
         incoming.length ? h('div', { class: 'links' }, related(incoming, (edge) => edge.from)) : h('p', { class: 'hint' }, 'Nothing arrives here.'),
         h('div', { style: 'height:6px' }),
         outgoing.length ? h('div', { class: 'links' }, related(outgoing, (edge) => edge.to)) : h('p', { class: 'hint' }, 'Nothing leaves here.')),
-      h('div', {}, node.code ? [h('h3', {}, 'Source excerpt'), h('pre', {}, node.code)] : null, h('div', { class: 'links' }, sourceLink(node.source)), notesBlock(node.ref))));
+      stepImpact(node),
+      h('div', {}, node.code ? [h('h3', {}, 'Source excerpt'), h('pre', {}, node.code)] : null, h('div', { class: 'links' }, sourceLink(node.source)))));
   return tray;
 }
 function reachList(target) {
@@ -980,10 +1217,56 @@ function renderLegend() {
       h('li', {}, 'Middle-click the Experience side, or press ', h('kbd', {}, '['), ', to flip Surface and Structure.'),
       h('li', {}, 'Right-click the Behavior side, or press ', h('kbd', {}, ']'), ', to flip Behavior and Depth. Shift + right-click opens the browser menu.'),
       h('li', {}, 'Drag to pan. Scroll to move. ', h('kbd', {}, 'Ctrl'), ' or ', h('kbd', {}, '⌘'), ' + scroll to zoom.'),
+      h('li', {}, h('kbd', {}, '/'), ' finds any control, step, screen or note by label, ref, action key, Kotlin symbol or file name.'),
       h('li', {}, 'Double-click a navigating control, or use its Go button, to travel. ', h('kbd', {}, 'M'), ' opens the screen map. ', h('kbd', {}, 'Esc'), ' clears.')),
     h('h3', {}, 'Dots on the screen chips'),
     h('ul', {}, h('li', {}, 'Filled: fully projected. Half: shared chrome only. Hollow: held, not projected yet.')),
     h('button', { class: 'tool', style: 'margin-top:12px', onclick: () => { state.overlay = null; render(); } }, 'Close'));
+}
+
+/* ---------- surface floaters: nothing the lens adds may cover a control ---------- */
+function boxesOverlap(a, b, pad = 0) { return a.left < b.right + pad && b.left < a.right + pad && a.top < b.bottom + pad && b.top < a.bottom + pad; }
+function placeSurfaceFloaters() {
+  if (state.faces.EXPERIENCE !== 'SURFACE') return;
+  const phone = document.querySelector('.face[data-face="SURFACE"] .phone');
+  if (!phone) return;
+  const body = phone.querySelector('.phone-body');
+  const anchorNode = state.anchorElementRef ? phone.querySelector(`[data-ref="${CSS.escape(state.anchorElementRef)}"]`) : null;
+  // An opened sheet keeps the control that opened it in view, above the sheet.
+  const sheet = phone.querySelector('.sheet-zone');
+  if (sheet && anchorNode && body.contains(anchorNode)) {
+    body.style.paddingBottom = `${Math.max(84, Math.ceil(sheet.getBoundingClientRect().height) + 24)}px`;
+    const cover = anchorNode.getBoundingClientRect().bottom - (sheet.getBoundingClientRect().top - 12);
+    if (cover > 0) body.scrollTop += cover;
+  }
+  // An opened dialog moves to whichever band leaves the control uncovered.
+  const dialog = phone.querySelector('.dialog-zone');
+  if (dialog && anchorNode) {
+    for (const band of ['', 'at-top', 'at-bottom']) {
+      dialog.classList.remove('at-top', 'at-bottom');
+      if (band) dialog.classList.add(band);
+      if (!boxesOverlap(dialog.getBoundingClientRect(), anchorNode.getBoundingClientRect(), 8)) break;
+    }
+  }
+  // The travel chip takes the first side that covers no other control, or shrinks to a corner badge.
+  const chip = phone.querySelector('.travel');
+  if (!chip) return;
+  chip.textContent = chip.title;
+  const host = chip.parentElement;
+  const inBody = body.contains(host);
+  const obstacles = [...phone.querySelectorAll('[data-ref]')]
+    .filter((node) => node !== host && !node.contains(host) && !host.contains(node) && (inBody || !body.contains(node)))
+    .map((node) => node.getBoundingClientRect()).filter((box) => box.width && box.height);
+  for (const layer of phone.querySelectorAll('.phone-top,.phone-bottom')) if (inBody) obstacles.push(layer.getBoundingClientRect());
+  const bounds = phone.getBoundingClientRect();
+  const inside = (box) => box.left >= bounds.left + 4 && box.right <= bounds.right - 4 && box.top >= bounds.top + 4 && box.bottom <= bounds.bottom - 4;
+  for (const side of chip.dataset.order.split(' ')) {
+    chip.className = `travel ${side}`;
+    const box = chip.getBoundingClientRect();
+    if (inside(box) && !obstacles.some((other) => boxesOverlap(box, other, 2))) return;
+  }
+  chip.className = 'travel badge';
+  chip.textContent = 'Go';
 }
 
 /* ---------- render ---------- */
@@ -1011,17 +1294,19 @@ function render() {
     applyCamera('BEHAVIOR'); applyCamera('DEPTH'); if (state.overlay === 'MAP') applyCamera('MAP');
     if (state.selected?.kind === 'ELEMENT') document.querySelector(`.face[data-face="${state.faces.EXPERIENCE}"] [data-ref="${CSS.escape(state.selected.ref)}"]`)?.scrollIntoView({ block: 'nearest' });
     if (focusedRef) document.querySelector(`.face:not([inert]) [data-ref="${CSS.escape(focusedRef)}"], .face:not([inert]) [data-node-ref="${CSS.escape(focusedRef)}"]`)?.focus({ preventScroll: true });
+    placeSurfaceFloaters();
     drawBridge();
   });
   for (const scroller of main.querySelectorAll('.surface,.structure,.phone-body')) scroller.addEventListener('scroll', scheduleBridge, { passive: true });
   syncUrl();
 }
 
-window.addEventListener('resize', () => { state.cameras.clear(); applyCamera('BEHAVIOR'); applyCamera('DEPTH'); scheduleBridge(); });
+window.addEventListener('resize', () => { state.cameras.clear(); applyCamera('BEHAVIOR'); applyCamera('DEPTH'); placeSurfaceFloaters(); scheduleBridge(); });
 window.addEventListener('keydown', (event) => {
   if (event.target.closest?.('input,textarea')) return;
   if (event.key === '[') { flip('EXPERIENCE'); }
   else if (event.key === ']') { flip('BEHAVIOR'); }
+  else if (event.key === '/') { event.preventDefault(); document.getElementById('lens-search')?.focus(); }
   else if (event.key === 'm' || event.key === 'M') { state.overlay = state.overlay === 'MAP' ? null : 'MAP'; render(); }
   else if (event.key === 'Escape') { if (state.overlay) { state.overlay = null; render(); } else clearSelection(); }
 });

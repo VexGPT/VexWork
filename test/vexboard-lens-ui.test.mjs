@@ -10,7 +10,7 @@ test('Screen Lens page consumes the shared model, layout and interaction modules
   assert.match(page, /from '\.\.\/src\/shared\/vexboard-lens-layout\.mjs'/);
   assert.match(page, /from '\.\/ui\/interaction\.mjs'/);
   assert.match(page, /from '\.\/ui\/presentation\.mjs'/);
-  assert.match(page, /vexlife-debug-menu\.screen-lens\.json/);
+  assert.match(page, /lens\/vexlife-android\.screen-lens\.json/);
 });
 
 test('flip gestures: middle-click flips Experience, right-click flips Behavior, keys and tabs are equivalent', () => {
@@ -58,3 +58,32 @@ test('existing board markers sit on borders and frame titles are never covered',
 });
 
 // [VXG RealForever][VEXWORK][VEXBOARD][SCREEN-LENS][UI-TEST]
+
+test('search, impact, coverage and briefs are wired from the shared query module', () => {
+  assert.match(page, /from '\.\.\/src\/shared\/vexboard-screen-lens-query\.mjs'/);
+  assert.match(page, /Query\.searchLens\(state\.lens, searchState\.query, \{ currentScreenRef: screenRef\(\) \}\)/);
+  assert.match(page, /event\.key === '\/'\) \{ event\.preventDefault\(\); document\.getElementById\('lens-search'\)\?\.focus\(\)/);
+  assert.match(page, /role: 'combobox'/);
+  assert.match(page, /aria-activedescendant/);
+  assert.match(page, /Query\.impactOf\(state\.lens, element\.ref\)/);
+  assert.match(page, /Query\.impactOf\(state\.lens, node\.ref\)/);
+  assert.match(page, /Query\.screenCoverage\(state\.lens, screen\.screenRef\)/);
+  assert.match(page, /Query\.controlBrief\(state\.lens, anchor/);
+  assert.match(page, /Query\.screenBrief\(state\.lens, screenRef\(\)/);
+  assert.match(page, /navigator\.clipboard\?\.writeText\(text\)/);
+  assert.match(page, /showBriefFallback\(title, text\)/, 'blocked clipboard falls back to selectable text');
+});
+// [VXG RealForever]
+
+test('nothing the lens adds on the surface covers a control: chips, opened overlays and the bridge', () => {
+  // The browser sweep in PR #221 checks all 119 traced controls; this pins the wiring that makes it hold.
+  assert.match(page, /function placeSurfaceFloaters\(\)/);
+  assert.match(page, /placeSurfaceFloaters\(\);\s*drawBridge\(\);/, 'floaters settle before the bridge measures');
+  assert.match(page, /dataset: \{ order \}/, 'travel chips carry an ordered list of sides to try');
+  assert.match(page, /chip\.className = 'travel badge'/, 'a chip with no clear side shrinks to a corner badge');
+  assert.match(page, /'dialog-zone opened'/, 'dialogs render apart from bottom sheets');
+  assert.match(page, /\['', 'at-top', 'at-bottom'\]/, 'a dialog moves to the band that leaves its opener visible');
+  assert.match(page, /body\.scrollTop \+= cover/, 'a sheet scrolls its opener above it');
+  assert.match(page, /function bridgeExit\(/);
+  assert.match(page, /if \(!crosses\(from\.midY, a\.right\)\) return direct;/, 'the bridge only detours when the side exit would cross a sibling');
+});
