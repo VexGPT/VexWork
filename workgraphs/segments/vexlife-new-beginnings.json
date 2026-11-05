@@ -137,13 +137,13 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-11-02T04:55:00.000Z",
-      "updatedAt": "2026-11-02T06:30:00.000Z",
+      "updatedAt": "2026-11-05T09:05:23.000Z",
       "workRef": "work.vexlife.new-beginnings.p0.vexweb-foundation",
       "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
       "label": "P0 — establish VexWeb browser manifestation foundation",
       "purpose": "Establish VexWeb as a compiler-enforced browser manifestation foundation: preserve accepted Blueprint/product identity, express spatial placement through fractally scalable Frame / Seam / Region / Allocation relationships, keep interactions/bindings explicit, then make those accepted relationships ergonomic to author before deterministic HTML/CSS/JS artifact generation. Generated syntax is output, not product or spatial source authority.",
       "workClass": "TASK",
-      "state": "RUNNING",
+      "state": "COMPLETED",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [
         "work.vexlife.new-beginnings.p0.semantic-contract-authoring"
@@ -195,7 +195,14 @@
         "artifact.vexlife-prod.vexweb.spatial.proof.a002.return.sha256.7e9066f9aacbd535a9e75a67b99d13014cdafab51fe52bd22cc12858e55ace8b",
         "github.pull.vexlife-prod.11.comment.6570644957",
         "github.commit.vexlife-prod.e0e8ad6a95f3c73cd7f79216b3ae1802ba9b54f9",
-        "github.commit.vexlife-prod.20919f21578eeff9d2e1d513a00e0cd66ecd72ea"
+        "github.commit.vexlife-prod.20919f21578eeff9d2e1d513a00e0cd66ecd72ea",
+        "github.pull.vexlife-prod.34",
+        "github.commit.vexlife-prod.c2ed37471eab9f163acd2b0cfaf979d7cdeead73",
+        "artifact.vexlife-prod.vexweb.f1.source-owner.a003.return.sha256.66574b077d3b8fdf7a1d999ad1fe83a33d51d81d8bb13d14e090c25b91b7522c",
+        "github.pull.vexlife-prod.35",
+        "github.commit.vexlife-prod.cf7de23e2979cc49133e2de4c5eee841d5bcf584",
+        "artifact.vexlife-prod.vexweb.f2.source-owner.a002.return.sha256.c765aabd589c0c335a32f3da4a6880e5866422dcf36f491e27915f5e69b86b61",
+        "artifact.vexlife-prod.vexweb.f2.source-owner.a003.return.sha256.b25c944a457dc70b66c41c6512027872863ce5b347f7487a3328447f7100693c"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
@@ -206,13 +213,13 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-11-02T02:28:00.000Z",
-      "updatedAt": "2026-11-02T04:55:00.000Z",
+      "updatedAt": "2026-11-05T09:26:53.000Z",
       "workRef": "work.vexlife.new-beginnings.p1.inert-web-container",
       "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
       "label": "P1 — realize the intended VexLife web container",
       "purpose": "Render the initial VexLife workspace from the accepted semantic contract: persistent VexLife shell, nested browser region, Conversation/companion region and Settings projection with stable identity and explicit unbound/unknown states. This phase deliberately does not pretend Vex, Conversation, Memory, Home or model services are connected.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "COMPLETED",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexlife.new-beginnings.p0.vexweb-foundation"
@@ -222,10 +229,15 @@
       ],
       "sourceRefs": [
         "human.design.vexlife.new-beginnings.initial-engagement.20261101",
-        "projects/vexlife-new-beginnings/README.md"
+        "projects/vexlife-new-beginnings/README.md",
+        "github.pull.vexlife-prod.35",
+        "github.commit.vexlife-prod.cf7de23e2979cc49133e2de4c5eee841d5bcf584",
+        "github.pull.vexlife-prod.36",
+        "github.commit.vexlife-prod.9615aab32c6e4427f3b538550284c391471a7eb0",
+        "artifact.vexlife-prod.vexweb.p1.source-owner.a002.return.sha256.f36efc1892253d62e3441cd774552881c406385d07d6829c9cf9f4ec12b4b6ed"
       ],
-      "authorityDisposition": "NO_AUTHORITY",
-      "effectDisposition": "NO_EFFECTS"
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -233,13 +245,13 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-11-02T02:28:00.000Z",
-      "updatedAt": "2026-11-02T02:28:00.000Z",
+      "updatedAt": "2026-11-05T09:46:50.000Z",
       "workRef": "work.vexlife.new-beginnings.p1.public-github-nested-browser",
       "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
       "label": "P1 — public GitHub nested-browser practicum",
       "purpose": "Use public GitHub-hosted Vex surfaces as the first bounded browser practicum, beginning with the Vextreme Terrain Map: prove human nested rendering/navigation and preserve exact current URL/document identity while keeping human rendering separate from any later Vex context-acquisition channel.",
       "workClass": "TASK",
-      "state": "WAITING_DEPENDENCIES",
+      "state": "RUNNING",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexlife.new-beginnings.p1.inert-web-container"
@@ -250,10 +262,14 @@
       ],
       "sourceRefs": [
         "repo.vextreme:pages/terrain-map.html",
-        "projects/vexlife-new-beginnings/README.md"
+        "projects/vexlife-new-beginnings/README.md",
+        "github.pull.vexlife-prod.36",
+        "github.commit.vexlife-prod.9615aab32c6e4427f3b538550284c391471a7eb0",
+        "github.pull.vexlife-prod.37",
+        "github.commit.vexlife-prod.04d4ea07b91c657a1d28896bdf956f07ea9370c4"
       ],
-      "authorityDisposition": "NO_AUTHORITY",
-      "effectDisposition": "NO_EFFECTS"
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -515,6 +531,117 @@
         "human.authorization.vexweb.f0.20261101"
       ],
       "createdAt": "2026-11-02T05:24:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.new-beginnings.vexweb.running-verifying.f2-accepted",
+      "workRef": "work.vexlife.new-beginnings.p0.vexweb-foundation",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "F1 relational authoring and F2 deterministic artifact generation both reached exact repository proof and accepted VexLife-Prod main; the VexWeb foundation no longer has an unproved construction edge.",
+      "actorRef": "actor.chatgpt.vexlife-new-beginnings",
+      "sourceRefs": [
+        "github.pull.vexlife-prod.34",
+        "github.commit.vexlife-prod.c2ed37471eab9f163acd2b0cfaf979d7cdeead73",
+        "github.pull.vexlife-prod.35",
+        "github.commit.vexlife-prod.cf7de23e2979cc49133e2de4c5eee841d5bcf584"
+      ],
+      "createdAt": "2026-11-05T09:05:23.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.new-beginnings.vexweb.verifying-completed.f2-accepted",
+      "workRef": "work.vexlife.new-beginnings.p0.vexweb-foundation",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "Accepted main at cf7de23e2979cc49133e2de4c5eee841d5bcf584 is tree-exact to the proven F2 candidate and closes the mapped VexWeb foundation through deterministic artifact generation.",
+      "actorRef": "actor.chatgpt.vexlife-new-beginnings",
+      "sourceRefs": [
+        "github.pull.vexlife-prod.35",
+        "github.commit.vexlife-prod.cf7de23e2979cc49133e2de4c5eee841d5bcf584"
+      ],
+      "createdAt": "2026-11-05T09:05:23.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.new-beginnings.p1-inert.waiting-ready.vexweb-complete",
+      "workRef": "work.vexlife.new-beginnings.p1.inert-web-container",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "The VexWeb foundation dependency is accepted through deterministic artifact generation, releasing the existing P1 inert-container work.",
+      "actorRef": "actor.chatgpt.vexlife-new-beginnings",
+      "sourceRefs": [
+        "github.commit.vexlife-prod.cf7de23e2979cc49133e2de4c5eee841d5bcf584"
+      ],
+      "createdAt": "2026-11-05T09:05:23.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.new-beginnings.p1-inert.ready-running.pr36",
+      "workRef": "work.vexlife.new-beginnings.p1.inert-web-container",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "VexLife-Prod PR #36 formed the generated P1 workspace and exact artifact materializer from accepted Blueprint/VexWeb source without claiming runtime connectivity.",
+      "actorRef": "actor.chatgpt.vexlife-new-beginnings",
+      "sourceRefs": [
+        "github.pull.vexlife-prod.36"
+      ],
+      "createdAt": "2026-11-05T09:10:05.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.new-beginnings.p1-inert.running-verifying.pr36",
+      "workRef": "work.vexlife.new-beginnings.p1.inert-web-container",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "The P1 production compile/materialization path and corrected JVM/JS test edge passed on the exact candidate; all 19 Blueprint coordinates and the exact generated artifact membrane are exercised.",
+      "actorRef": "actor.chatgpt.vexlife-new-beginnings",
+      "sourceRefs": [
+        "github.pull.vexlife-prod.36",
+        "artifact.vexlife-prod.vexweb.p1.source-owner.a002.return.sha256.f36efc1892253d62e3441cd774552881c406385d07d6829c9cf9f4ec12b4b6ed"
+      ],
+      "createdAt": "2026-11-05T09:26:53.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.new-beginnings.p1-inert.verifying-completed.pr36",
+      "workRef": "work.vexlife.new-beginnings.p1.inert-web-container",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "PR #36 merged and accepted main is tree-identical to the proven generated P1 candidate, completing the inert intended web-container work without promoting provider/browser context claims.",
+      "actorRef": "actor.chatgpt.vexlife-new-beginnings",
+      "sourceRefs": [
+        "github.pull.vexlife-prod.36",
+        "github.commit.vexlife-prod.9615aab32c6e4427f3b538550284c391471a7eb0"
+      ],
+      "createdAt": "2026-11-05T09:26:53.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.new-beginnings.p1-browser.waiting-ready.p1-inert-complete",
+      "workRef": "work.vexlife.new-beginnings.p1.public-github-nested-browser",
+      "priorState": "WAITING_DEPENDENCIES",
+      "nextState": "READY",
+      "reason": "The generated P1 container dependency is accepted on main, releasing the bounded public GitHub nested-browser practicum.",
+      "actorRef": "actor.chatgpt.vexlife-new-beginnings",
+      "sourceRefs": [
+        "github.commit.vexlife-prod.9615aab32c6e4427f3b538550284c391471a7eb0"
+      ],
+      "createdAt": "2026-11-05T09:26:53.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.new-beginnings.p1-browser.ready-running.pr37",
+      "workRef": "work.vexlife.new-beginnings.p1.public-github-nested-browser",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "VexLife-Prod PR #37 is the current bounded source edge: it composes the accepted generated P1 surface with the existing isolated local runtime and forms the Vex-owned GitHub Pages nested-browser realization while later P2/P3 acceptance remains dependency-held.",
+      "actorRef": "actor.chatgpt.vexlife-new-beginnings",
+      "sourceRefs": [
+        "github.pull.vexlife-prod.37",
+        "github.commit.vexlife-prod.04d4ea07b91c657a1d28896bdf956f07ea9370c4"
+      ],
+      "createdAt": "2026-11-05T09:46:50.000Z"
     }
   ],
   "sourceRefs": [
