@@ -301,9 +301,10 @@ The new Project asks how those earned truths compose in a fresh product containe
 
 ## Lived product threshold — current parallel truth
 
-The canonical generated-product trajectory below remains authoritative for its own Workgraph states:
-VexWeb F1 is still the accepted source-construction edge, and generated P1/P2/P3 are not silently
-promoted by exploration or by the parallel local-runtime foundation.
+The canonical generated-product trajectory below remains authoritative for its own Workgraph states.
+VexWeb F1/F2 and the generated P1 inert workspace are now accepted source. The current foreground Work
+is the bounded public GitHub nested-browser practicum; P2 browser-context/Conversation acceptance and
+P3 lived whole-circuit completion remain dependency-held until the current edge is actually exercised.
 
 The lived exploration thresholds that remain valid are:
 
@@ -367,29 +368,63 @@ VexLife-Prod PR #24  CLOSED / UNMERGED
 
 ### Current parallel local-foundation trajectory
 
+The previously stacked #25→#33 source body now has one exact integration owner:
+
 ~~~text
-VexLife-Prod PR #25  OPEN / DRAFT
-  strict durable JSON mechanics boundary
-  head f3368ad0069f410bd0646ba1b5bffb347a8c9380
+work.vexlife.new-beginnings.local-runtime-foundation  RUNNING / AUTHORIZED_BOUNDED
 
-        ↓ stacked prerequisite
+VexLife-Prod PR #38  OPEN / DRAFT / CURRENT LOCAL-RUNTIME CLAIM
+  base  accepted P1 main 9615aab32c6e4427f3b538550284c391471a7eb0
+  head  227f667e9761c2b8af4aeacfcf0d727e9ce4f814
+  tree  5e70b700dcd91836df2b2a76a0b220c3628f53d7
 
-VexLife-Prod PR #26  OPEN / DRAFT / CURRENT FOREGROUND
-  isolated VexLife-Prod Home + Heretic local-runtime body
-  provider head must be re-grounded before source work
+current proof boundary
+  A001  Gradle script compilation SAFE_FAILURE
+  A002  Kotlin candidate compilation SAFE_FAILURE
+  A003  Relay formation SAFE_FAILURE before business execution
+        missing repositoryRef in regenerated source-path records
+  A004  Relay formation PASS
+        compileKotlinJs PASS
+        compileTestKotlinJs PASS
+        compileKotlinJvm SAFE_FAILURE on one stale nonexistent Conversation exception reference
+  A005  production compile/source-admission PASS
+        compileKotlinJvm PASS
+        compileKotlinJs PASS
+        jvmJar PASS
+        JVM test compilation SAFE_FAILURE on stale test fixtures/API ownership
+        private-image assembly held because Gradle was not running on JDK 21
+  A006  JVM test source compilation PASS
+        compileKotlinJvm PASS
+        compileTestKotlinJvm PASS
+        jvmJar PASS
+        jvmTest NOT REACHED
+        private-image assembly still saw a non-21 Gradle build JVM despite JAVA_HOME selection
+  A007  qualified environment-only retry formed
+        sha256 7b49b80ded37ab7ff3054a2e6af742e87351f2711688bea898b186155f9de16c
+        candidate source unchanged
+        remaining predicates: Gradle-build-JDK21-bound jvmTest + archiveVexLifeProdServiceImage
+
+source provenance
+  PR #25 -> #33
+  final cumulative #33 head
+  da67a73ad86275c6f71781b14b7307e3a1cd3462
 ~~~
 
-PR #26 currently owns the source-formed trajectory:
+The cumulative body owns:
 
 ~~~text
 isolated VexLife-Prod Home
--> explicit model configuration lifecycle
+-> strict durable contracts / owned paths / leases
+-> explicit Heretic model configuration
 -> private managed Python
 -> exact resumable Heretic artifact delivery/materialization
 -> exact Python/mlx-lm environment
 -> packaged-implementation-bound persistent Heretic runtime
--> macOS runtime/process realization
--> thin local setup composition
+-> canonical direct Conversation + prompt-context receipt
+-> local product service
+-> private service image + install
+-> macOS service lifetime
+-> source-bound setup/bootstrap
 ~~~
 
 Permanent isolation:
@@ -406,103 +441,65 @@ VexLife source/runtime
   != runtime dependency of the fresh product
 ~~~
 
-The local foundation is **not accepted** merely because source/tests are formed. It remains held on:
+The local foundation remains a **source candidate**, not accepted product truth. A005 established
+production JVM/JS compilation and exact-source admission; A006 additionally established that the current JVM
+test sources compile. The remaining hold is execution-environment binding: Gradle's build/daemon JVM still
+did not run on JDK 21, so `jvmTest` was never scheduled and private-image assembly stopped at its intentional
+JDK-21 gate. The candidate source is unchanged. The next exact edge is A007, which resolves macOS JDK 21,
+prints both Java/Gradle JVM diagnostics, forces the Gradle build JVM with command-line
+`-Dorg.gradle.java.home`, then runs only `jvmTest` plus the source-owned
+`archiveVexLifeProdServiceImage` task. PR #38 must still prove those two predicates before the real
+macOS install/setup/lifetime boundary can begin.
+
+Its work boundary is deliberately separate from the current public-browser work. PR #37 was formed
+over an earlier substrate snapshot and must be reconciled onto accepted PR #38/main after the
+local-runtime foundation integrates; do not merge #37 first.
+
 
 ~~~text
-PR #25 accepted prerequisite
-exact repository Kotlin 2.4.20 common/JVM/JS proof
-real macOS host/runtime proof
-real certified artifact reuse/acquisition
-real Python/mlx-lm proof
-real MLX /health + /v1/models + bounded qualification chat
-sustained isolated runtime after setup completion
-fresh-user product entry / install / open lifecycle
-later Vex turn still succeeds
+LOCAL RUNTIME FOUNDATION
+!= GENERATED P1 BROWSER PRESENTATION
+!= BROWSER CONTEXT ADMISSION
+!= P2 CONVERSATION REINTEGRATION
+!= P3 LIVED WHOLE CIRCUIT
 ~~~
 
-VexLife PR #975 remains separate and open/draft:
-
-~~~text
-promptContextMode = CONTINUE | CLEAN_START
-CLEAN_START keeps the same canonical Conversation + Memory eligibility
-while selecting zero prior Conversation events into the next provider prompt
--> not accepted main until remaining integration/lifecycle gates complete
-~~~
+VexLife PR #975 CLEAN_START remains separate and open/draft; no CLEAN_START acceptance is implied by
+the local-runtime foundation.
 
 There is currently **no accepted VexLife-Prod fresh-user Mac front door on main**.
 
-The historical accepted VexLife startup/lifecycle remains provenance for earned reliability rules, but
-the fresh product local foundation is intentionally becoming physically independent rather than
-retaining VexLife as a runtime dependency.
-
-This remains a parallel source trajectory, not a WorkState rewrite:
-
-~~~text
-LOCAL FOUNDATION SOURCE CANDIDATE
-!= ACCEPTED LOCAL PRODUCT
-
-LIVED EXPLORATION THRESHOLD
-!= ACCEPTED VEXWEB-GENERATED PRODUCT
-
-VEXLIFE-PROD
-!= LEGACY/CURRENT VEXLIFE PROCESS/HOME
-~~~
-
 ## Current execution map
 
-The original P0 practicum has now crossed its intended semantic + reference-renderer threshold. The
-next earned foundation is **VexWeb**, separated as its own Work rather than hidden inside semantic
-authoring.
+The source trajectory has now crossed the VexWeb compiler and generated inert-product thresholds.
 
 ~~~text
 P0 · clean product foundations
 
   [DONE] repository front door
-         VexLife-Prod PR #1
+  [DONE] semantic Blueprint + Compose reference
 
-  [DONE] compiler-constrained semantic Blueprint authoring
-         VexLife-Prod PR #2
-         merge c9aca940a49cb2e828ecfbd4be726f3553bf0063
+  [DONE] VexWeb relational foundation + authoring
+         -> PR #34 accepted relational authoring
+         -> merge c2ed37471eab9f163acd2b0cfaf979d7cdeead73
 
-         established:
-         - pure Kotlin Family / State / Control / Effect / DisplayState contract
-         - rooted compiler-visible Workspace Blueprint
-         - exact JVM + JS semantic proof
-
-  [DONE] Compose reference realization
-         VexLife-Prod PR #4
-         merge 1264be62324878126ade9ad37da33db3097aad45
-         tree  aeb6c6977fa3b5772854b1c4fe21ec1095513d06
-
-         established:
-         - compiler-visible Blueprint element handles
-         - Family.Parameter identity pressure
-         - DisplayState -> presentation / UI -> typed Control
-         - Compose manifestation isolated from portable semantic KMP
-         - exact root JVM/JS + Compose JVM proof
-
-  [RUNNING / F0] VexWeb foundation
-                 work.vexlife.new-beginnings.p0.vexweb-foundation
-
-                 apply VexArchitecture construction discipline to browser manifestation:
-
-                 Kotlin VexWeb authoring
-                 -> typed Element / Parameter / Layout / Presentation / Binding relationships
-                 -> deterministic generator / compiler
-                 -> generated HTML / CSS / JS + semantic manifest
-                 -> generated artifacts verified, not manually authored
-
-                 required laws:
-                 - VexWeb consumes VexBlueprint identity; it does not recreate selectors by memory.
-                 - VexWeb may consume Family DisplayState / typed Control boundaries; it does not own product State.
-                 - AI/human authors relationship source, not generated CSS/JS.
-                 - hard-coded platform values are generated from named/typed parameters where meaning exists.
-                 - renderer-specific escape hatches stay explicit; ALIGNMENT != SAMENESS.
-                 - generated DOM keeps source-addressable Vex refs for later browser-context perception.
+  [DONE] VexWeb deterministic artifact generation
+         -> PR #35
+         -> merge cf7de23e2979cc49133e2de4c5eee841d5bcf584
 
 P1 · intended browser product
-  [WAITING on VexWeb] web-native VexLife workspace
-  [WAITING] public GitHub nested-browser practicum / Vextreme Terrain
+
+  [DONE] generated inert VexLife workspace
+         -> all current Blueprint coordinates manifested
+         -> exact generated-artifact materialization / drift membrane
+         -> PR #36
+         -> merge 9615aab32c6e4427f3b538550284c391471a7eb0
+
+  [RUNNING] public GitHub nested-browser practicum
+            work.vexlife.new-beginnings.p1.public-github-nested-browser
+            -> current candidate PR #37
+            -> bounded Vex-owned GitHub Pages realization
+            -> human render/current-page identity must be exercised before completion
 
 P2 · Vex perception + relationship
   [WAITING] current browser/DOM context projection
@@ -514,6 +511,9 @@ P3 · whole lived circuit
 Later
   [PARKED] source-map Settings capabilities after the first whole browser/Conversation circuit
 ~~~
+
+The parallel local-runtime #25→#33 draft stack is provenance/source input to PR #37. Its existence does
+not independently advance P2/P3 state; accepted currentness follows the mapped dependency chain.
 
 ### VexWeb construction trajectory
 
