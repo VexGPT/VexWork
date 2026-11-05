@@ -368,29 +368,36 @@ VexLife-Prod PR #24  CLOSED / UNMERGED
 
 ### Current parallel local-foundation trajectory
 
+The previously stacked #25→#33 source body now has one exact integration owner:
+
 ~~~text
-VexLife-Prod PR #25  OPEN / DRAFT
-  strict durable JSON mechanics boundary
-  head f3368ad0069f410bd0646ba1b5bffb347a8c9380
+work.vexlife.new-beginnings.local-runtime-foundation  RUNNING / AUTHORIZED_BOUNDED
 
-        ↓ stacked prerequisite
+VexLife-Prod PR #38  OPEN / DRAFT / CURRENT LOCAL-RUNTIME CLAIM
+  base  accepted P1 main 9615aab32c6e4427f3b538550284c391471a7eb0
+  head  c6baa58765992465ac4e5d1722403764764a7a0f
 
-VexLife-Prod PR #26  OPEN / DRAFT / CURRENT FOREGROUND
-  isolated VexLife-Prod Home + Heretic local-runtime body
-  provider head must be re-grounded before source work
+source provenance
+  PR #25 -> #33
+  final cumulative #33 head
+  da67a73ad86275c6f71781b14b7307e3a1cd3462
 ~~~
 
-PR #26 currently owns the source-formed trajectory:
+The cumulative body owns:
 
 ~~~text
 isolated VexLife-Prod Home
--> explicit model configuration lifecycle
+-> strict durable contracts / owned paths / leases
+-> explicit Heretic model configuration
 -> private managed Python
 -> exact resumable Heretic artifact delivery/materialization
 -> exact Python/mlx-lm environment
 -> packaged-implementation-bound persistent Heretic runtime
--> macOS runtime/process realization
--> thin local setup composition
+-> canonical direct Conversation + prompt-context receipt
+-> local product service
+-> private service image + install
+-> macOS service lifetime
+-> source-bound setup/bootstrap
 ~~~
 
 Permanent isolation:
@@ -407,47 +414,24 @@ VexLife source/runtime
   != runtime dependency of the fresh product
 ~~~
 
-The local foundation is **not accepted** merely because source/tests are formed. It remains held on:
+The local foundation remains a **source candidate**, not accepted product truth. PR #38 must still
+exercise the exact combined repository source and the real macOS runtime/lifetime predicates before
+integration.
+
+Its work boundary is deliberately separate from the current public-browser work:
 
 ~~~text
-PR #25 accepted prerequisite
-exact repository Kotlin 2.4.20 common/JVM/JS proof
-real macOS host/runtime proof
-real certified artifact reuse/acquisition
-real Python/mlx-lm proof
-real MLX /health + /v1/models + bounded qualification chat
-sustained isolated runtime after setup completion
-fresh-user product entry / install / open lifecycle
-later Vex turn still succeeds
+LOCAL RUNTIME FOUNDATION
+!= GENERATED P1 BROWSER PRESENTATION
+!= BROWSER CONTEXT ADMISSION
+!= P2 CONVERSATION REINTEGRATION
+!= P3 LIVED WHOLE CIRCUIT
 ~~~
 
-VexLife PR #975 remains separate and open/draft:
-
-~~~text
-promptContextMode = CONTINUE | CLEAN_START
-CLEAN_START keeps the same canonical Conversation + Memory eligibility
-while selecting zero prior Conversation events into the next provider prompt
--> not accepted main until remaining integration/lifecycle gates complete
-~~~
+VexLife PR #975 CLEAN_START remains separate and open/draft; no CLEAN_START acceptance is implied by
+the local-runtime foundation.
 
 There is currently **no accepted VexLife-Prod fresh-user Mac front door on main**.
-
-The historical accepted VexLife startup/lifecycle remains provenance for earned reliability rules, but
-the fresh product local foundation is intentionally becoming physically independent rather than
-retaining VexLife as a runtime dependency.
-
-This remains a parallel source trajectory, not a WorkState rewrite:
-
-~~~text
-LOCAL FOUNDATION SOURCE CANDIDATE
-!= ACCEPTED LOCAL PRODUCT
-
-LIVED EXPLORATION THRESHOLD
-!= ACCEPTED VEXWEB-GENERATED PRODUCT
-
-VEXLIFE-PROD
-!= LEGACY/CURRENT VEXLIFE PROCESS/HOME
-~~~
 
 ## Current execution map
 
