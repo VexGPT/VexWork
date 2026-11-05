@@ -365,7 +365,9 @@ VexLife-Prod PR #24  CLOSED / UNMERGED
   folded into successor
 ~~~
 
-### Current parallel local-foundation trajectory
+### Current parallel fresh-local trajectory
+
+Provider truth re-grounded after the earlier launcher experiments were closed/superseded:
 
 ~~~text
 VexLife-Prod PR #25  OPEN / DRAFT
@@ -374,23 +376,117 @@ VexLife-Prod PR #25  OPEN / DRAFT
 
         ↓ stacked prerequisite
 
-VexLife-Prod PR #26  OPEN / DRAFT / CURRENT FOREGROUND
+VexLife-Prod PR #26  OPEN / DRAFT
   isolated VexLife-Prod Home + Heretic local-runtime body
-  provider head must be re-grounded before source work
+  head 339f1accc685303a448a2cd9f9d649d6c507acf6
+
+        ↓ stacked successor
+
+VexLife-Prod PR #27  OPEN / DRAFT / CURRENT LOCAL FOREGROUND
+  direct personal Conversation + local Vex turn
+  head f1913158126570cf72a3268d458fd443835bbdc6
 ~~~
 
-PR #26 currently owns the source-formed trajectory:
+PR #26 source-forms the isolated local substrate:
 
 ~~~text
 isolated VexLife-Prod Home
+-> strict durable file/path custody
 -> explicit model configuration lifecycle
--> private managed Python
--> exact resumable Heretic artifact delivery/materialization
+-> Prod-owned fixed artifact-delivery channels
+-> resumable exact artifact delivery/materialization
+-> private exact managed Python
 -> exact Python/mlx-lm environment
 -> packaged-implementation-bound persistent Heretic runtime
 -> macOS runtime/process realization
--> thin local setup composition
+-> serialized whole local-setup composition
 ~~~
+
+An audit before advancing to Companion found and corrected these reliability/currentness edges:
+
+~~~text
+lexical path containment
+!= filesystem custody
+
+reuse-only check
+!= permission to create directories
+
+authorized acquisition
+!= invalid-final repair authority
+
+complete valid .partial
+!= repeat network request
+
+caller-supplied bootstrap/runtime paths
+!= rightful currentness
+~~~
+
+PR #27 then composes the first bounded personal human ↔ Vex circuit:
+
+~~~text
+qualified local Heretic runtime evidence
+-> direct Conversation whole-turn writer lease
+-> source-owned self-development address
+-> REQUEST durable
+-> bounded direct prompt materialization
+-> numeric-loopback provider Connection
+-> normalized runtime observation + invocation evidence
+-> RESPONSE durable
+-> durable "what Vex received / what runtime call happened" context
+-> immutable completed-head receipt
+-> atomic current Conversation head
+~~~
+
+Current ordinary prompt continuity in #27 deliberately ports the current VexLife
+`IMMEDIATE_PRIOR_COMPLETED_TURN` relationship:
+
+~~~text
+first turn
+  current request only
+
+CONTINUE
+  immediate prior REQUEST
+  + immediate prior RESPONSE
+  + current request
+
+whole-history enumeration = false
+~~~
+
+This is **not full prompt-continuity parity**. Current VexLife also has separately-owned
+`WORKING_CHECKPOINT_SUCCESSOR` continuity and attributed Memory selection. Those remain held in the
+fresh body rather than being silently collapsed into the first two-turn circuit.
+
+VexArchitecture audit at the current #27 head:
+
+~~~text
+DirectConversationStore
+  owns durable Conversation bytes/currentness + its writer coordinate
+  != model / prompt / presentation
+
+DirectPromptContext
+  owns bounded provider-message selection
+  != provider effect / Memory
+
+DirectCompanionConnection
+  owns actual numeric-loopback HTTP + normalized invocation evidence
+  != runtime lifecycle / Conversation
+
+DirectTurnContextStore
+  owns durable normalized turn evidence
+  != raw provider/reasoning persistence
+
+DirectCompanionTurn
+  composes the owners + first-failure route
+  != second semantic/runtime owner
+
+VexExclusiveFileLease
+  owns reusable OS file-lock mechanics only
+  setup + Conversation retain their own lock coordinates
+~~~
+
+The classes are not split merely because they are large. The current audit found coherent ownership
+questions; VexArchitecture explicitly rejects adding generic layers just because a concrete
+presentation/construction boundary exists.
 
 Permanent isolation:
 
@@ -406,18 +502,25 @@ VexLife source/runtime
   != runtime dependency of the fresh product
 ~~~
 
-The local foundation is **not accepted** merely because source/tests are formed. It remains held on:
+The fresh-local/direct-Companion stack is **not accepted** merely because source/tests are formed.
+Current held predicates include:
 
 ~~~text
-PR #25 accepted prerequisite
-exact repository Kotlin 2.4.20 common/JVM/JS proof
+PR #25 / #26 / #27 exact repository Kotlin 2.4.20 common/JVM/JS proof
 real macOS host/runtime proof
 real certified artifact reuse/acquisition
 real Python/mlx-lm proof
 real MLX /health + /v1/models + bounded qualification chat
+real direct turn 1 + direct turn 2
 sustained isolated runtime after setup completion
-fresh-user product entry / install / open lifecycle
-later Vex turn still succeeds
+
+fresh Memory owner + attributed Memory selection
+working-checkpoint successor / rollover continuity
+CLEAN_START wiring
+streamed response progress
+explicit-open reasoning projection
+product service / presentation
+ordinary fresh-user Mac entry
 ~~~
 
 VexLife PR #975 remains separate and open/draft:
@@ -431,15 +534,18 @@ while selecting zero prior Conversation events into the next provider prompt
 
 There is currently **no accepted VexLife-Prod fresh-user Mac front door on main**.
 
-The historical accepted VexLife startup/lifecycle remains provenance for earned reliability rules, but
-the fresh product local foundation is intentionally becoming physically independent rather than
-retaining VexLife as a runtime dependency.
+The historical accepted VexLife startup/lifecycle and direct Companion sources remain provenance for
+earned reliability/relationship laws. The fresh product is physically independent and ports those
+relationships into its own rightful owners.
 
 This remains a parallel source trajectory, not a WorkState rewrite:
 
 ~~~text
-LOCAL FOUNDATION SOURCE CANDIDATE
+FRESH-LOCAL SOURCE CANDIDATE
 != ACCEPTED LOCAL PRODUCT
+
+DIRECT TWO-TURN SOURCE CIRCUIT
+!= FULL PROMPT-CONTINUITY PARITY
 
 LIVED EXPLORATION THRESHOLD
 != ACCEPTED VEXWEB-GENERATED PRODUCT
