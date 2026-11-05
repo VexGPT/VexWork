@@ -53,9 +53,12 @@ test('related-board changes stay distinct from source-derived entity changes', (
   next.relatedBoardRefs = next.relatedBoardRefs.slice(0, 1);
   const comparison = compareScreenLensRevisions(raw, next);
   assert.equal(comparison.projectionChanged, true);
-  assert.deepEqual(comparison.relatedBoards.removed, ['board.vexlife-prod.perceivability-alignment']);
+  assert.deepEqual(comparison.relatedBoards.removed, [
+    'board.vexlife-android.vexstream-playback.vexarchitecture',
+    'board.vexstream.phone-desktop-connection.living-blueprint',
+  ]);
   assert.equal(comparison.summary.entityChangeCount, 0);
-  assert.equal(comparison.summary.relatedBoardChangeCount, 1);
+  assert.equal(comparison.summary.relatedBoardChangeCount, 2);
 });
 
 test('revision comparison fails closed across different lens identities', () => {

@@ -28,7 +28,8 @@ test('the committed lens is current with its adapter, overlay and generator', ()
 test('generated related boards are stable VexBoard identities', () => {
   assert.deepEqual(lens.relatedBoardRefs, [
     'board.vexlife.debug-menu.theme-mode.origin-walk',
-    'board.vexlife-prod.perceivability-alignment',
+    'board.vexlife-android.vexstream-playback.vexarchitecture',
+    'board.vexstream.phone-desktop-connection.living-blueprint',
   ]);
 });
 

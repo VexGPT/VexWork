@@ -592,7 +592,7 @@ test('lenient overlay skips entries an older commit lacks, lists them, and still
   normalizeScreenLens(lens);
   assert.equal(lens.screens[0].summary, 'Kept');
   assert.deepEqual(lens.annotations.map((note) => note.ref), ['note.kept']);
-  assert.deepEqual(report.overlayMisses, ['screen.gone', 'element.gone', 'pathway.gone', 'widget.pick.gone', 'widget.pick.control->widget.pick.nowhere', 'note.orphan']);
+  assert.deepEqual(report.overlayMisses, ['screen.gone', 'element.gone', 'pathway.gone', 'widget.pick.gone', 'structural-add:widget.pick.control->widget.pick.nowhere', 'note.orphan']);
   assert.match(lens.sourceSnapshot.notes.at(-1), /^6 overlay entries do not apply at this commit and were skipped: screen\.gone/);
   assert.throws(() => project({ overlay, overlayMode: 'STRICT' }), /does not have/);
   assert.throws(() => project({ overlay, overlayMode: 'MAYBE' }), /overlayMode/);
