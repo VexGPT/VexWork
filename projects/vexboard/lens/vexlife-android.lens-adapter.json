@@ -2,14 +2,15 @@
   "schemaVersion": "vexboard.screen-lens-adapter/v1",
   "adapterRef": "adapter.vexboard.screen-lens.vexlife-android",
   "lensRef": "lens.vexlife-android",
-  "title": "VexLife Android \u00b7 Screen Lens",
+  "title": "VexLife Android · Screen Lens",
   "summary": "Every registered VexLife Android screen seen four ways: what the human touches, where it lives in code, what it means (SCAE), and what it touches underneath. Generated from source.",
   "entry": {
     "screenRef": "screen.debug-menu",
     "elementRef": "element.debug-menu.body.dark-mode"
   },
   "relatedBoardRefs": [
-    "board.vexlife.debug-menu.theme-mode.origin-walk"
+    "board.vexlife.debug-menu.theme-mode.origin-walk",
+    "board.vexlife-prod.perceivability-alignment"
   ],
   "repository": {
     "ref": "repo.vexlife-android",
