@@ -375,16 +375,21 @@ work.vexlife.new-beginnings.local-runtime-foundation  RUNNING / AUTHORIZED_BOUND
 
 VexLife-Prod PR #38  OPEN / DRAFT / CURRENT LOCAL-RUNTIME CLAIM
   base  accepted P1 main 9615aab32c6e4427f3b538550284c391471a7eb0
-  head  d3729ccc37f0d8efc227a3baaa971b59bbd2084a
-  tree  173544ff9a28f63d71942d198de724f58264ebec
+  head  411ef36c8bf6719eb0de389a19632dea1283483d
+  tree  4d5add765cf9f44edebf5e2ef46c788e71b74263
 
 current proof boundary
   A001  Gradle script compilation SAFE_FAILURE
   A002  Kotlin candidate compilation SAFE_FAILURE
   A003  Relay formation SAFE_FAILURE before business execution
-        current SDK requires repositoryRef on every source path record
-  A004  qualified compatible retry formed
-        sha256 6021a2ffc0f0a387caf9f02d2e060b2f1ceb9a006b475596fca26c11a2936151
+        missing repositoryRef in regenerated source-path records
+  A004  Relay formation PASS
+        compileKotlinJs PASS
+        compileTestKotlinJs PASS
+        compileKotlinJvm SAFE_FAILURE on one stale nonexistent Conversation exception reference
+  A005  qualified compatible retry formed
+        sha256 fef7963778b8cd31fc28ecfff573d75fd9bd466a9154b1f4877bc1d82cdd6a3a
+        remaining predicates: compileKotlinJvm + jvmTest + compileKotlinJs + archiveVexLifeProdServiceImage
 
 source provenance
   PR #25 -> #33
@@ -424,10 +429,10 @@ VexLife source/runtime
 ~~~
 
 The local foundation remains a **source candidate**, not accepted product truth. The next exact edge is
-the A004 compatible Relay retry: the VexLife-Prod candidate is unchanged from A003; only the formation
-schema is repaired so every `source.expectedChangedPaths[]` record carries
-`repositoryRef = primary`. PR #38 must still exercise the exact combined repository source and the
-real macOS runtime/lifetime predicates before integration.
+the A005 compatible Relay retry. A004 already established current Relay formation plus JS production/test
+compilation; A005 re-exercises only the still-uncertain JVM compile/tests, the common-source copy-visibility
+change on JS production, and the source-owned private service-image archive task. PR #38 must still prove
+those repository/package predicates before the real macOS install/setup/lifetime boundary can begin.
 
 Its work boundary is deliberately separate from the current public-browser work. PR #37 was formed
 over an earlier substrate snapshot and must be reconciled onto accepted PR #38/main after the
