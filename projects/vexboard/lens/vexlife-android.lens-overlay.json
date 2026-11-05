@@ -13,31 +13,128 @@
       "returns": "The same Dark mode toggle reads darkModeControlChecked from the returned presentation.",
       "returnRef": "theme.dark-mode.toggle.render",
       "nodes": {
-        "theme.dark-mode.toggle.control": { "summary": "Family-owned semantic input. The same Parameter instance travels into the Effect and the Method." },
-        "theme.dark-mode.toggle.store-impl": { "summary": "Process-lifetime store created by ThemeModeStoreProvider. Survives app restarts." }
+        "theme.dark-mode.toggle.control": {
+          "summary": "Family-owned semantic input. The same Parameter instance travels into the Effect and the Method."
+        },
+        "theme.dark-mode.toggle.store-impl": {
+          "summary": "Process-lifetime store created by ThemeModeStoreProvider. Survives app restarts."
+        }
       },
       "addNodes": [
-        { "ref": "theme.dark-mode.toggle.fence", "face": "DEPTH", "role": "STATE", "label": "selectionRealizationFinished · === fence", "symbol": "unsettledSelection", "summary": "Settles only when the finished Parameter is the same instance as the unsettled selection, so a stale observation cannot overwrite a newer choice.", "source": "app:ui/ThemeMode.kt", "code": "if (unsettledSelection === parameter) {\n    unsettledSelection = null\n}" },
-        { "ref": "theme.dark-mode.toggle.render", "face": "BEHAVIOR", "role": "PROJECTION", "label": "VexLifeTheme + toggle checked", "symbol": "themePresentation.darkModeControlChecked", "summary": "The same Debug Menu toggle reads the presentation that returned through the system.", "source": "app:ui/VexLifeTheme.kt" }
+        {
+          "ref": "theme.dark-mode.toggle.fence",
+          "face": "DEPTH",
+          "role": "STATE",
+          "label": "selectionRealizationFinished · === fence",
+          "symbol": "unsettledSelection",
+          "summary": "Settles only when the finished Parameter is the same instance as the unsettled selection, so a stale observation cannot overwrite a newer choice.",
+          "source": "app:ui/ThemeMode.kt",
+          "code": "if (unsettledSelection === parameter) {\n    unsettledSelection = null\n}"
+        },
+        {
+          "ref": "theme.dark-mode.toggle.method-observe",
+          "face": "DEPTH",
+          "role": "OBSERVATION",
+          "label": "observeThemeModeState(result.output)",
+          "symbol": "observeThemeModeState",
+          "summary": "Method Success output re-enters ThemeMode Family observation directly. This is distinct from the independently observed store.states source.",
+          "source": "app:ui/ThemeMode.kt"
+        },
+        {
+          "ref": "theme.dark-mode.toggle.render",
+          "face": "BEHAVIOR",
+          "role": "PROJECTION",
+          "label": "VexLifeTheme + toggle checked",
+          "symbol": "themePresentation.darkModeControlChecked",
+          "summary": "The same Debug Menu toggle reads the presentation that returned through the system.",
+          "source": "app:ui/VexLifeTheme.kt"
+        }
       ],
       "removeEdges": [
-        { "from": "theme.dark-mode.toggle.result", "to": "theme.dark-mode.toggle.observe" }
+        {
+          "from": "theme.dark-mode.toggle.result",
+          "to": "theme.dark-mode.toggle.observe"
+        }
       ],
       "addEdges": [
-        { "from": "theme.dark-mode.toggle.result", "to": "theme.dark-mode.toggle.fence", "label": "settle?" },
-        { "from": "theme.dark-mode.toggle.fence", "to": "theme.dark-mode.toggle.observe", "label": "admit / hold" },
-        { "from": "theme.dark-mode.toggle.display", "to": "theme.dark-mode.toggle.render", "label": "manifests" }
+        {
+          "from": "theme.dark-mode.toggle.result",
+          "to": "theme.dark-mode.toggle.fence",
+          "label": "settle?"
+        },
+        {
+          "from": "theme.dark-mode.toggle.fence",
+          "to": "theme.dark-mode.toggle.method-observe",
+          "label": "Success output"
+        },
+        {
+          "from": "theme.dark-mode.toggle.method-observe",
+          "to": "theme.dark-mode.toggle.state",
+          "label": "interpreted",
+          "kind": "RETURN"
+        },
+        {
+          "from": "theme.dark-mode.toggle.store",
+          "to": "theme.dark-mode.toggle.observe",
+          "label": "states",
+          "kind": "DATA"
+        },
+        {
+          "from": "theme.dark-mode.toggle.display",
+          "to": "theme.dark-mode.toggle.render",
+          "label": "manifests"
+        }
       ]
     }
   },
   "notes": [
-    { "ref": "note.dark-mode.doorway", "subjectRef": "element.debug-menu.body.dark-mode", "text": "Doorway only", "detail": "The toggle names an application action. It never writes SharedPreferences or ThemeMode State itself." },
-    { "ref": "note.control.select-drift", "subjectRef": "theme.dark-mode.toggle.control", "text": "Board drift", "detail": "Current ThemeMode.kt names this Control.Select(Parameter.Mode). The older 'Debug Menu / Theme Mode' Origin-walk board still labels it Control.Toggle." },
-    { "ref": "note.admitted.before-save", "subjectRef": "theme.dark-mode.toggle.admitted", "text": "State before Store", "detail": "Semantic State may already be Dark while persistence is still only requested. Accepting intention does not claim Store success." },
-    { "ref": "note.fence.local", "subjectRef": "theme.dark-mode.toggle.fence", "text": "ThemeMode-local", "detail": "This === currentness fence is earned by ThemeMode. It is not a universal token pattern for other Families." },
-    { "ref": "note.log.beside", "subjectRef": "theme.dark-mode.toggle.log", "text": "Beside the path", "detail": "Chronology observes facts as owners learn them. Removing the logger changes no behavior." },
-    { "ref": "note.shell.one-owner", "subjectRef": "element.shell.fab-cluster", "text": "One owner, many screens", "detail": "AppShell defines these routes once. AppFrame shows them on every PRIMARY screen, so the Screen map draws one route group instead of copying it under Home, Events and Settings." },
-    { "ref": "note.reset.no-family", "subjectRef": "pathway.log-history.clear", "text": "No Behavior earned", "detail": "Clearing has no State-dependent meaning today. A Family would earn its place only if clear needed confirmation, undo, or reuse by another Control." },
-    { "ref": "note.debug.composition", "subjectRef": "screen.debug-menu", "text": "Composition surface", "detail": "Debug Menu composes developer controls to rightful owners. It does not own Events, ThemeMode or log semantics." }
+    {
+      "ref": "note.dark-mode.doorway",
+      "subjectRef": "element.debug-menu.body.dark-mode",
+      "text": "Doorway only",
+      "detail": "The toggle names an application action. It never writes SharedPreferences or ThemeMode State itself."
+    },
+    {
+      "ref": "note.control.select-drift",
+      "subjectRef": "theme.dark-mode.toggle.control",
+      "text": "Board drift",
+      "detail": "Current ThemeMode.kt names this Control.Select(Parameter.Mode). The older 'Debug Menu / Theme Mode' Origin-walk board still labels it Control.Toggle."
+    },
+    {
+      "ref": "note.admitted.before-save",
+      "subjectRef": "theme.dark-mode.toggle.admitted",
+      "text": "State before Store",
+      "detail": "Semantic State may already be Dark while persistence is still only requested. Accepting intention does not claim Store success."
+    },
+    {
+      "ref": "note.fence.local",
+      "subjectRef": "theme.dark-mode.toggle.fence",
+      "text": "ThemeMode-local",
+      "detail": "This === currentness fence is earned by ThemeMode. It is not a universal token pattern for other Families."
+    },
+    {
+      "ref": "note.log.beside",
+      "subjectRef": "theme.dark-mode.toggle.log",
+      "text": "Beside the path",
+      "detail": "Chronology observes facts as owners learn them. Removing the logger changes no behavior."
+    },
+    {
+      "ref": "note.shell.one-owner",
+      "subjectRef": "element.shell.fab-cluster",
+      "text": "One owner, many screens",
+      "detail": "AppShell defines these routes once. AppFrame shows them on every PRIMARY screen, so the Screen map draws one route group instead of copying it under Home, Events and Settings."
+    },
+    {
+      "ref": "note.reset.no-family",
+      "subjectRef": "pathway.log-history.clear",
+      "text": "No Behavior earned",
+      "detail": "Clearing has no State-dependent meaning today. A Family would earn its place only if clear needed confirmation, undo, or reuse by another Control."
+    },
+    {
+      "ref": "note.debug.composition",
+      "subjectRef": "screen.debug-menu",
+      "text": "Composition surface",
+      "detail": "Debug Menu composes developer controls to rightful owners. It does not own Events, ThemeMode or log semantics."
+    }
   ]
 }

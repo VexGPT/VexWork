@@ -1087,8 +1087,10 @@ function renderGraphFace(face) {
   const wrap = h('div', { class: 'face', dataset: { face } });
   if (!pathway) {
     const message = anchor
-      ? [h('strong', {}, `${anchor.label} is ${anchor.role === 'CONTENT' ? 'content' : 'structure'}`), 'It carries no behavior. Select a control on the left to trace what it does.']
-      : [h('strong', {}, 'Pick a control to trace'), `Click any control on the ${state.faces.EXPERIENCE === 'SURFACE' ? 'Surface' : 'Structure'} face. Controls with a pathway show a small blue dot.`];
+      ? (anchor.role === 'ELEMENT'
+        ? [h('strong', {}, `${anchor.label} has no projected pathway yet`), 'An interaction may exist, but its deeper relationship is not currently projected.']
+        : [h('strong', {}, `${anchor.label} is ${anchor.role === 'CONTENT' ? 'content' : 'structure'}`), 'Select a control on the left to trace a projected relationship.'])
+      : [h('strong', {}, 'Pick a control to trace'), `Click any control on the ${state.faces.EXPERIENCE === 'SURFACE' ? 'Surface' : 'Structure'} face. Controls with a projected pathway show a small blue dot.`];
     wrap.append(h('div', { class: 'empty' }, message));
     return wrap;
   }

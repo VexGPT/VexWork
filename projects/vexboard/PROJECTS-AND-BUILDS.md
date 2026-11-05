@@ -50,8 +50,8 @@ the accepted projection carries the new acceptance evidence instead of pretendin
 
 ```bash
 npm run lens:verify    # every build matches its pointer, adapter, overlay and generator
-npm run lens:main      # Main -> newest commit on its branch (git ls-remote), regenerate Main
-node scripts/build-screen-lens.mjs --build main --fetch --commit <sha|branch|tag>   # Main -> a chosen commit
+npm run lens:main      # Main -> live branch only when current Main is an ancestor; behind/diverged fails closed
+node scripts/build-screen-lens.mjs --build main --fetch --commit <sha|branch|tag>   # explicit expert/recovery Main target
 npm run lens:promote -- --evidence github.pull.vexwork.<n>  # Stable -> Main with acceptance evidence; folds the two lens files back into one
 ```
 

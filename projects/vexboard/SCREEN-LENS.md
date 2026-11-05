@@ -352,6 +352,31 @@ D31 Projects does not own a proposal lifecycle
               would create another status surface for every future instance to maintain
     how       keep pressure-backed future seams in the owning docs and capture real Work through VexWork only
     boundary   removing the proposal subsystem does not discard provenance or authorize implementation
+
+D32 Unproven localEffect is held, not projected as generic presentation
+    why       a declared interaction does not prove its deeper semantic/runtime relationship
+    how       keep the element and intent, omit pathwayRef, and report the held relationship
+    boundary   no-pathway means "not currently projected", not "no behavior exists"
+
+D33 Typed implementation-template reuse does not collapse semantic pathway instances
+    why       SwapTo(Content, ElementsPanel) and SwapTo(Content, AppGraphPanel) share an API shape but not meaning
+    how       typed pathway identity includes stable operation operands; named-argument order is normalized
+    boundary   controls share one pathway only when they express the same semantic relationship
+
+D34 Generated provenance binds projector implementation bytes
+    why       a projector behavior change can alter meaning even when adapter config/version strings do not move
+    how       provenance records the projector Git-blob SHA-1 and lens:verify recomputes it from source bytes
+    boundary   provenance proves generator currentness, not semantic acceptance
+
+D35 Method Result and independent Store observation remain distinct
+    why       ThemeMode reconciles Method Success output directly while store.states is observed through a separate source
+    how       the ThemeMode overlay names those two exact paths without generalizing a universal Result ontology
+    boundary   ambiguous generic Family Effect/Method selection is held rather than choosing index 0
+
+D36 Ordinary Main movement is forward-only
+    why       currentness cannot call a rewound/diverged branch "new Main"
+    how       lens:main proves the existing Main commit is an ancestor of the configured live branch before advancing
+    boundary   an explicit --commit expert/recovery route remains separate from normal branch following
 ```
 
 ## Data contract

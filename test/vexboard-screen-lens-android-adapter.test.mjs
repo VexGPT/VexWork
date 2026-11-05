@@ -17,6 +17,7 @@ import {
   splitArgs,
   stripComments,
   topLevelCalls,
+  typedPathwayRef,
 } from '../src/core/vexboard-screen-lens-android-adapter.mjs';
 import { faceGraph, normalizeScreenLens, screenMapGraph } from '../src/shared/vexboard-screen-lens.mjs';
 import { layoutCollisions, layoutLensFace } from '../src/shared/vexboard-lens-layout.mjs';
@@ -378,6 +379,10 @@ test('intents parse both chaining forms', () => {
   assert.deepEqual(parseIntent('navigateBack()'), [{ op: 'navigateBack', arg: '' }]);
   assert.deepEqual(parseIntent(''), []);
   assert.deepEqual(parseIntent('somethingOdd'), [{ op: 'unknown', arg: 'somethingOdd' }]);
+  const elements = typedPathwayRef('gallery', parseIntent('swapTo(container = Content, child = ElementsPanel)'));
+  const appGraph = typedPathwayRef('gallery', parseIntent('swapTo(child = AppGraphPanel, container = Content)'));
+  assert.notEqual(elements, appGraph);
+  assert.equal(appGraph, typedPathwayRef('gallery', parseIntent('swapTo(container = Content, child = AppGraphPanel)')));
 });
 
 test('string resources decode entities, CDATA and escapes', () => {
@@ -471,9 +476,29 @@ test('typed intents become shared navigation and presentation templates', () => 
   assert.ok(open.nodes.some((node) => node.label === 'SheetView(…)' && node.role === 'PROJECTION'));
   assert.ok(open.nodes.some((node) => node.face === 'DEPTH' && node.label === 'repositories.things'));
   assert.equal(open.returnRef, 'home.open.Sheet.renderer');
-  const swap = lens.pathways.find((entry) => entry.pathwayRef === 'pathway.home.close-then-open');
+  const swap = lens.pathways.find((entry) => entry.pathwayRef === typedPathwayRef('home', parseIntent('close(Sheet).then(open(Panel))')));
   assert.deepEqual(swap.nodes.filter((node) => node.role === 'NAVIGATION').map((node) => node.label), ['Close(Sheet)', 'Open(Panel)']);
   assert.deepEqual(report.held, [{ elementRef: 'element.home.body.orphan', reason: 'no registration for AppActions.Missing' }]);
+});
+
+test('an unresolved localEffect stays held instead of becoming false typed presentation', () => {
+  const variant = new Map(files);
+  variant.set(`${APP}screens/primary/home/HomeScreen.kt`, files.get(`${APP}screens/primary/home/HomeScreen.kt`).replace('intent = invoke(AppActions.Ping)', 'intent = localEffect()'));
+  const { lens, report } = project({ files: variant });
+  const ping = lens.screens[0].elements.find((element) => element.ref === 'element.home.body.ping');
+  assert.equal(ping.intent, 'localEffect()');
+  assert.equal(ping.pathwayRef, undefined);
+  assert.ok(report.held.some((entry) => entry.elementRef === ping.ref && /not source-proven/.test(entry.reason)));
+  assert.equal(lens.pathways.some((entry) => entry.disposition === 'TYPED_PRESENTATION' && entry.nodes[0]?.label === 'localEffect()'), false);
+});
+
+test('an ambiguous Family Effect vocabulary is held rather than choosing the first syntactic match', () => {
+  const variant = new Map(files);
+  variant.set(`${APP}ui/Widget.kt`, files.get(`${APP}ui/Widget.kt`).replace('data class Persist(val choice: Parameter.Choice) : Effect', 'data class Persist(val choice: Parameter.Choice) : Effect\n        data class Mirror(val choice: Parameter.Choice) : Effect'));
+  const { lens, report } = project({ files: variant });
+  const pick = lens.screens[0].elements.find((element) => element.ref === 'element.home.body.pick');
+  assert.equal(pick.pathwayRef, undefined);
+  assert.ok(report.held.some((entry) => entry.elementRef === pick.ref && /ambiguous Family traversal/.test(entry.reason)));
 });
 
 test('chrome is one owner with slots, menu kinds and always-visible controls', () => {
@@ -527,6 +552,7 @@ test('the overlay adds human knowledge and fails loudly on refs that do not exis
     pathways: {
       'pathway.widget.pick': {
         label: 'Pick',
+        returnRef: 'widget.pick.extra',
         nodes: { 'widget.pick.control': { summary: 'Sharper.' } },
         addNodes: [{ ref: 'widget.pick.extra', face: 'DEPTH', role: 'STATE', label: 'Extra fence' }],
         removeEdges: [{ from: 'widget.pick.result', to: 'widget.pick.observe' }],
@@ -544,6 +570,7 @@ test('the overlay adds human knowledge and fails loudly on refs that do not exis
   assert.equal(pathway.label, 'Pick');
   assert.equal(pathway.nodes.find((node) => node.ref === 'widget.pick.control').summary, 'Sharper.');
   assert.ok(!pathway.edges.some((edge) => edge.from === 'widget.pick.result' && edge.to === 'widget.pick.observe'));
+  assert.equal(pathway.returnRef, 'widget.pick.extra', 'STRICT applies the current accepted return coordinate');
   assert.equal(lens.annotations.length, 1);
   for (const broken of [
     { screens: { 'screen.nope': {} } },

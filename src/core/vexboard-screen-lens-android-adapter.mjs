@@ -24,7 +24,7 @@
 
 export const SCREEN_LENS_ADAPTER_SCHEMA = 'vexboard.screen-lens-adapter/v1';
 export const SCREEN_LENS_OVERLAY_SCHEMA = 'vexboard.screen-lens-overlay/v1';
-export const ADAPTER_VERSION = 'vexlife-android-adapter/2';
+export const ADAPTER_VERSION = 'vexlife-android-adapter/3';
 
 function fail(message) {
   throw new TypeError(`screen lens adapter: ${message}`);
@@ -397,6 +397,31 @@ export function parseIntent(expression) {
     i = close + 1;
   }
   return steps.length ? steps : [{ op: 'unknown', arg: text }];
+}
+
+// One generator template may serve many controls, but one projected pathway is one semantic
+// relationship instance. Operands participate in identity whenever they carry product meaning.
+const typedRefToken = (value) => String(value ?? '')
+  .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+  .replace(/[^A-Za-z0-9]+/g, '-')
+  .replace(/^-+|-+$/g, '')
+  .toLowerCase();
+
+export function typedPathwayRef(ownerKey, steps, { targetLocal = null } = {}) {
+  const shape = steps.map((step) => step.op.replace(/([A-Z])/g, '-$1').toLowerCase()).join('-then-');
+  if (steps.length === 1 && ['open', 'close', 'toggle'].includes(steps[0].op) && targetLocal) {
+    return `pathway.${ownerKey}.${shape}.${targetLocal}`;
+  }
+  if (!steps.some((step) => step.arg)) return `pathway.${ownerKey}.${shape}`;
+  const identity = steps.map((step) => {
+    let args = splitArgs(step.arg);
+    if (args.length && args.every((arg) => arg.name)) args = [...args].sort((a, b) => a.name.localeCompare(b.name));
+    const operand = args.flatMap((arg) => arg.name
+      ? [typedRefToken(arg.name), typedRefToken(arg.value)]
+      : [typedRefToken(arg.value)]).filter(Boolean).join('-');
+    return [step.op.replace(/([A-Z])/g, '-$1').toLowerCase(), operand].filter(Boolean).join('-');
+  }).join('-then-');
+  return `pathway.${ownerKey}.${identity}`;
 }
 
 const escapeRegex = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -818,9 +843,7 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, overlay
   const registrations = registrationIndex(adapter, files);
 
   const typedPathway = (ownerKey, steps, elementInfo) => {
-    const shape = steps.map((step) => step.op.replace(/([A-Z])/g, '-$1').toLowerCase()).join('-then-');
-    const target = steps.length === 1 && ['open', 'close', 'toggle'].includes(steps[0].op) ? `.${elementInfo.targetLocal}` : '';
-    const ref = `pathway.${ownerKey}.${shape}${target}`;
+    const ref = typedPathwayRef(ownerKey, steps, { targetLocal: elementInfo.targetLocal });
     if (pathways.has(ref)) return ref;
     const navigates = steps.some((step) => step.op === 'navigateTo' || step.op === 'navigateBack');
     const builder = new PathwayBuilder(ref, elementInfo.pathwayLabel, navigates ? 'TYPED_NAVIGATION' : 'TYPED_PRESENTATION');
@@ -857,6 +880,13 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, overlay
     if (!family) return null;
     families.set(bond.family, family);
     const ref = `pathway.${actionKey.replace(/^action\./, '')}`;
+    if (family.methods.length > 1 || family.effects.length > 1) {
+      report.held.push({
+        elementRef: bond.elementRef ?? actionKey,
+        reason: `ambiguous Family traversal: ${family.effects.length} Effects / ${family.methods.length} Methods; source must earn the exact relationship`,
+      });
+      return null;
+    }
     const builder = new PathwayBuilder(ref, `${family.name.replace(/Family$/, '')} · ${bond.control}`, 'SCAE_FAMILY');
     const method = family.methods[0] ?? null;
     const effect = family.effects[0] ?? null;
@@ -1125,15 +1155,22 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, overlay
       const bare = /^(\w+)\(\)$/.exec(registration.code ?? '');
       const closureName = bare ? (registration.locals.get(bare[1])?.match(/^context\.(\w+)$/)?.[1] ?? null) : null;
       const bond = closureName && /->/.test(fields.get(closureName) ?? '') ? followClosure(cat, adapter, closureName) : null;
-      element.pathwayRef = (bond?.family ? familyPathway(actionKey, registration, bond) : null) ?? directPathway(actionKey, registration);
+      if (bond?.family) {
+        const familyRef = familyPathway(actionKey, registration, { ...bond, elementRef: element.ref });
+        if (familyRef) element.pathwayRef = familyRef;
+        return element;
+      }
+      element.pathwayRef = directPathway(actionKey, registration);
       return element;
     }
-    if (screen && steps.length === 1 && steps[0].op === 'localEffect') {
-      const bond = followBehaviorPort(cat, adapter, screen, element);
+    if (steps.length === 1 && steps[0].op === 'localEffect') {
+      const bond = screen ? followBehaviorPort(cat, adapter, screen, element) : null;
       if (bond) {
         element.pathwayRef = behaviorPortPathway(screen, element, bond);
         return element;
       }
+      report.held.push({ elementRef: element.ref, reason: 'localEffect relationship is declared but its deeper semantic relationship is not source-proven' });
+      return element;
     }
     const nav = steps.find((step) => step.op === 'navigateTo');
     if (nav) element.navigatesTo = screenRefOf(nav.arg) ?? undefined;
@@ -1335,7 +1372,7 @@ export function applyOverlayWithReport(lensInput, overlay, { strict = true } = {
     const { addNodes = [], addEdges = [], removeEdges = [], nodes = {}, ...fields } = patch;
     const descriptiveFields = { ...fields };
     delete descriptiveFields.returnRef;
-    if (strict) assign(pathway, descriptiveFields);
+    if (strict) assign(pathway, fields);
     else assignLenientDescriptive(pathway, descriptiveFields, PATHWAY_LENIENT_FIELDS, ref);
     for (const [nodeRef, nodePatch] of Object.entries(nodes)) {
       const node = pathway.nodes.find((candidate) => candidate.ref === nodeRef);

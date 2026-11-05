@@ -178,7 +178,7 @@ test('briefs for held and chrome-only screens say what is missing instead of inv
   input.chrome = [];
   input.annotations = input.annotations.filter((note) => !note.subjectRef.startsWith('element.shell'));
   const gap = screenBrief(normalizeScreenLens(input), 'screen.debug-menu');
-  assert.match(gap, /Mystery `element\.debug-menu\.body\.mystery` has no pathway yet/);
+  assert.match(gap, /Mystery `element\.debug-menu\.body\.mystery` has no pathway yet; its deeper relationship is not currently projected/);
   assert.match(gap, /Mystery `element\.debug-menu\.body\.mystery` — no pathway projected/);
   assert.match(gap, /chrome here: none/);
   assert.match(gap, /reached from: no projected route/);
@@ -213,7 +213,7 @@ test('the control brief explains one control end to end', () => {
   assert.match(option, /Depth face .*\n- nothing underneath/);
   assert.match(controlBrief(lens, 'element.shell.back'), /travels to: the runtime back target/);
   const card = controlBrief(lens, 'element.debug-menu.body.log-history');
-  assert.match(card, /This card carries no behavior in the lens\./);
+  assert.match(card, /has no projected pathway yet\. An interaction may exist, but its deeper relationship is not currently projected\./);
   assert.match(controlBrief(lens, 'element.debug-menu.body.events-simulator.actions.start'), /calls: `syntheticEvents\.start\(\)`/);
   assert.match(controlBrief(lens, 'element.debug-menu.log-history.sheet'), /visible when: runtime\.presentation\.isOpen\(LogSheet\)/);
   assert.throws(() => controlBrief(lens, 'element.nope'), /unknown element/);

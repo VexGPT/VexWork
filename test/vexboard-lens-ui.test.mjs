@@ -112,6 +112,8 @@ test('search, impact, coverage and briefs are wired from the shared query module
   assert.match(page, /Query\.screenBrief\(state\.lens, screenRef\(\)/);
   assert.match(page, /navigator\.clipboard\?\.writeText\(text\)/);
   assert.match(page, /showBriefFallback\(title, text\)/, 'blocked clipboard falls back to selectable text');
+  assert.match(page, /has no projected pathway yet/);
+  assert.match(page, /deeper relationship is not currently projected/);
 });
 // [VXG RealForever]
 
