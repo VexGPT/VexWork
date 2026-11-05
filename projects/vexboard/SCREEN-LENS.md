@@ -435,8 +435,11 @@ DONE   integrated complete Screen Lens stack                          PR #230
 DONE   lived first-draft browser acceptance                           human evidence
 DONE   stable boardRef deep links + Related-board affordance          PR #232
 
-NEXT   use the accepted Related-board seam with a second real consumer:
-       VexLife-Prod / New Beginnings perceivability-alignment Board
+DONE   second real Related-board consumer:
+       board.vexlife-prod.perceivability-alignment
+       accepted read-only New Beginnings / VexLife-Prod alignment Board
+DONE   generated Screen Lens relates Theme Mode Origin Walk + VexLife-Prod alignment by stable boardRef
+
 NEXT   prototype revision/currentness behind an advanced surface:
        Stable vs checked/current/custom source revision, semantic diff rather than raw Git noise
 NEXT   continue canonical VexWork foreground:
