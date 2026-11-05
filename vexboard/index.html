@@ -261,15 +261,18 @@ async function openBoard(input,{pushCurrent=false,boardRef=null,prototypeInput=n
   renderWorkspace();requestAnimationFrame(()=>fitBoard());
 }
 function returnBoard(){cameraAnimator.cancel();const prior=boardStack.pop();if(!prior)return;({current,selected,tool,camera,journey,journeyPathwayAnalysis,prototype,scenario,interactionTrail,activeBoardRef,draftDirty,saveMessage,relationalFocusMode,relationshipViewMode}=prior);collapsed=new Set(prior.collapsed);pinnedSemanticRefs=new Set(prior.pinnedSemanticRefs||[]);scrollOffsetsByProjectionRef=new Map(prior.scrollOffsets||[]);activeAndroidViewportProfileRef=prior.androidViewportProfileRef??null;connectFrom=null;closePinMenu();renderWorkspace();requestAnimationFrame(()=>applyCamera())}
-async function enterPortal(detailBoardRef){
-  const local=drafts().find(d=>d.draftRef===detailBoardRef);
-  if(local){await openBoard(local,{pushCurrent:true,boardRef:detailBoardRef});return}
-  const url=Board.builtinBoardUrl(detailBoardRef);
-  if(url){await openBuiltInBoard(detailBoardRef,{pushCurrent:true});return}
+async function openBoardRef(boardRef,{pushCurrent=false}={}){
+  const local=drafts().find(d=>d.draftRef===boardRef);
+  if(local){await openBoard(local,{pushCurrent,boardRef});return}
+  const url=Board.builtinBoardUrl(boardRef);
+  if(url){await openBuiltInBoard(boardRef,{pushCurrent});return}
   const sources=await loadSourceCatalogs();
-  const resolution=SourceResolver.resolveBoardSource(detailBoardRef,sources.map(source=>source.catalog));
-  if(resolution){await openCatalogBoard(detailBoardRef,{pushCurrent:true});return}
-  throw new Error(`portal target unavailable ${detailBoardRef}`);
+  const resolution=SourceResolver.resolveBoardSource(boardRef,sources.map(source=>source.catalog));
+  if(resolution){await openCatalogBoard(boardRef,{pushCurrent});return}
+  throw new Error(`board target unavailable ${boardRef}`);
+}
+async function enterPortal(detailBoardRef){
+  return openBoardRef(detailBoardRef,{pushCurrent:true});
 }
 
 function landing(){
@@ -1136,7 +1139,19 @@ function renderWorkspace(){
   work.append(tools,viewportEl);if(drawerMode){const side=el('aside','context-drawer');renderContextDrawer(side);work.append(side)}app.append(work);applyCamera();
 }
 
-landing();
+async function bootFromUrl(){
+  const requestedBoardRef=new URLSearchParams(location.search).get('board');
+  if(!requestedBoardRef){landing();return}
+  try{await openBoardRef(requestedBoardRef)}
+  catch(error){
+    landing();
+    const host=app.querySelector('.landing');
+    const notice=el('article','card');
+    notice.append(el('div','tiny','Board unavailable'),el('h3','',requestedBoardRef),el('p','',error?.message||String(error)));
+    host?.prepend(notice);
+  }
+}
+bootFromUrl();
 </script>
 </body>
 </html>
