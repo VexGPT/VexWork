@@ -335,6 +335,19 @@ test('behavior-port source shape reproduces the stable Playback reference struct
 
   assert.equal(pathway.pathwayRef, PLAYBACK);
   assert.deepEqual(pathwaySignature(pathway), pathwaySignature(oracle));
+  assert.equal(pathway.label, oracle.label);
+  assert.deepEqual(
+    pathway.nodes.map((node) => [node.ref, node.label]),
+    oracle.nodes.map((node) => [node.ref, node.label]),
+  );
+  assert.deepEqual(
+    pathway.edges.map((edge) => [edge.from, edge.to, edge.label]),
+    oracle.edges.map((edge) => [edge.from, edge.to, edge.label]),
+  );
+  assert.equal(
+    pathway.nodes.find((node) => node.ref.endsWith('.doorway')).code,
+    oracle.nodes.find((node) => node.ref.endsWith('.doorway')).code,
+  );
   assert.deepEqual(report.bonds.filter((bond) => bond.via === 'BEHAVIOR_PORT'), [{
     elementRef: PLAY_PAUSE,
     via: 'BEHAVIOR_PORT',
