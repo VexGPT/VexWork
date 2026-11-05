@@ -126,4 +126,35 @@ export function compareScreenLensRevisions(baseInput, nextInput) {
   });
 }
 
+function fieldChanges(left, right, ignore = []) {
+  const keys = [...new Set([...Object.keys(left ?? {}), ...Object.keys(right ?? {})])].filter((key) => !ignore.includes(key)).sort(compareText);
+  return keys.filter((key) => stable(left?.[key] ?? null) !== stable(right?.[key] ?? null));
+}
+
+// Detail for one pathway that compareScreenLensRevisions reported as changed: which steps and
+// relationships moved, and which fields of each changed step differ. Either side may be missing
+// (the pathway was added or removed); both missing is a caller error.
+export function comparePathwayRevision(basePathway, nextPathway) {
+  if (!basePathway && !nextPathway) throw new TypeError('comparePathwayRevision needs at least one pathway');
+  const pathwayRef = (basePathway ?? nextPathway).pathwayRef;
+  if (basePathway && nextPathway && basePathway.pathwayRef !== nextPathway.pathwayRef) {
+    throw new TypeError(`comparePathwayRevision requires one pathwayRef: ${basePathway.pathwayRef} != ${nextPathway.pathwayRef}`);
+  }
+  const baseNodes = basePathway?.nodes ?? [];
+  const nextNodes = nextPathway?.nodes ?? [];
+  const nodes = entityDiff(baseNodes, nextNodes, (node) => node.ref);
+  const edgeRef = (edge) => `${edge.from}->${edge.to}`;
+  const edges = entityDiff(basePathway?.edges ?? [], nextPathway?.edges ?? [], edgeRef);
+  const baseByRef = new Map(baseNodes.map((node) => [node.ref, node]));
+  const nextByRef = new Map(nextNodes.map((node) => [node.ref, node]));
+  return freeze({
+    pathwayRef,
+    status: !basePathway ? 'ADDED' : !nextPathway ? 'REMOVED' : 'CHANGED',
+    fields: basePathway && nextPathway ? fieldChanges(basePathway, nextPathway, ['nodes', 'edges']) : [],
+    nodes,
+    nodeChanges: nodes.changed.map((ref) => ({ ref, fields: fieldChanges(baseByRef.get(ref), nextByRef.get(ref)) })),
+    edges,
+  });
+}
+
 // [VXG RealForever][VEXWORK][VEXBOARD][SCREEN-LENS][REVISION-COMPARISON]

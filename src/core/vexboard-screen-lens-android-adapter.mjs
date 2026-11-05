@@ -773,8 +773,25 @@ class PathwayBuilder {
 
 /* ---------- projection ---------- */
 
-export function projectAndroidScreenLens({ adapter: adapterInput, files, overlay = null, observedAt = null }) {
+// Which repository files the adapter reads: every .kt file under a read prefix, plus string resources.
+// The build script and the in-browser commit projection both use this, so they read the same files.
+export function adapterReadPlan(adapterInput) {
   const adapter = normalizeAdapter(adapterInput);
+  const resolve = (logical) => {
+    const match = /^([a-z][a-z0-9-]*):(.*)$/.exec(logical);
+    if (!match) return logical;
+    if (!(match[1] in adapter.repository.roots)) fail(`adapter root ${match[1]} is not declared`);
+    return `${adapter.repository.roots[match[1]]}${match[2]}`;
+  };
+  const prefixes = (adapter.read ?? []).map((entry) => resolve(entry).replace(/\/?$/, '/'));
+  const resources = [...(adapter.stringResources ?? [])];
+  const includes = (path) => resources.includes(path) || (path.endsWith('.kt') && prefixes.some((prefix) => path.startsWith(prefix)));
+  return { prefixes, resources, includes };
+}
+
+export function projectAndroidScreenLens({ adapter: adapterInput, files, overlay = null, observedAt = null, overlayMode = 'STRICT' }) {
+  const adapter = normalizeAdapter(adapterInput);
+  if (!['STRICT', 'LENIENT'].includes(overlayMode)) fail('overlayMode must be STRICT or LENIENT');
   if (!(files instanceof Map)) fail('files must be a Map of repo-relative path -> text');
   const cat = catalog(adapter, files);
   const report = { screens: 0, elements: 0, pathways: 0, bonds: [], held: [], unknownCalls: [] };
@@ -1263,7 +1280,12 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, overlay
     annotations: [],
   };
   lens = clean(lens);
-  if (overlay) lens = applyOverlay(lens, overlay);
+  report.overlayMisses = [];
+  if (overlay) {
+    const applied = applyOverlayWithReport(lens, overlay, { strict: overlayMode === 'STRICT' });
+    lens = applied.lens;
+    report.overlayMisses = applied.misses;
+  }
   report.pathways = lens.pathways.length;
   return { lens, report };
 }
@@ -1271,6 +1293,13 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, overlay
 /* ---------- overlay: human knowledge merged over generated structure ---------- */
 
 export function applyOverlay(lensInput, overlay) {
+  return applyOverlayWithReport(lensInput, overlay, { strict: true }).lens;
+}
+
+// strict (the default for committed builds): any ref the lens lacks fails the run.
+// lenient (any-commit projection in the browser): entries that do not apply are skipped, listed in
+// misses, and named in the lens notes, so an older commit still projects honestly.
+export function applyOverlayWithReport(lensInput, overlay, { strict = true } = {}) {
   if (!overlay || overlay.schemaVersion !== SCREEN_LENS_OVERLAY_SCHEMA) fail(`overlay schemaVersion must be ${SCREEN_LENS_OVERLAY_SCHEMA}`);
   const lens = JSON.parse(JSON.stringify(lensInput));
   const misses = [];
@@ -1295,12 +1324,27 @@ export function applyOverlay(lensInput, overlay) {
     }
     pathway.nodes.push(...addNodes);
     pathway.edges = pathway.edges.filter((edge) => !removeEdges.some((remove) => remove.from === edge.from && remove.to === edge.to));
-    pathway.edges.push(...addEdges);
+    if (strict) pathway.edges.push(...addEdges);
+    else {
+      const nodeRefs = new Set(pathway.nodes.map((node) => node.ref));
+      for (const edge of addEdges) {
+        if (nodeRefs.has(edge.from) && nodeRefs.has(edge.to)) pathway.edges.push(edge);
+        else misses.push(`${edge.from}->${edge.to}`);
+      }
+    }
   }
-  lens.annotations = [...lens.annotations, ...(overlay.notes ?? [])];
+  const knownRefs = new Set([
+    ...lens.chrome.map((entry) => entry.chromeRef), ...lens.screens.map((screen) => screen.screenRef), ...allElements.map((element) => element.ref),
+    ...lens.pathways.flatMap((pathway) => [pathway.pathwayRef, ...pathway.nodes.map((node) => node.ref)]),
+  ]);
+  for (const note of overlay.notes ?? []) {
+    if (strict || !note.subjectRef || knownRefs.has(note.subjectRef)) lens.annotations.push(note);
+    else misses.push(note.ref ?? note.subjectRef);
+  }
   if (overlay.summary) lens.summary = overlay.summary;
-  if (misses.length) fail(`overlay targets refs the generated lens does not have: ${misses.join(', ')}`);
-  return lens;
+  if (misses.length && strict) fail(`overlay targets refs the generated lens does not have: ${misses.join(', ')}`);
+  if (misses.length) lens.sourceSnapshot.notes.push(`${misses.length} overlay ${misses.length === 1 ? 'entry does' : 'entries do'} not apply at this commit and ${misses.length === 1 ? 'was' : 'were'} skipped: ${misses.join(', ')}.`);
+  return { lens, misses };
 }
 
 // [VXG RealForever][VEXWORK][VEXBOARD][SCREEN-LENS][ANDROID-ADAPTER]

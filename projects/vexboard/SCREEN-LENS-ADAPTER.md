@@ -27,12 +27,18 @@ ADAPTER        != ANDROID CHANGE        reads only; nothing is written to VexLif
 ## Run it
 
 ```bash
-npm run lens:verify                                   # offline: committed lens matches adapter + overlay + generator
-npm run lens:fetch                                    # sparse-clone the pinned commit, regenerate, write
+npm run lens:verify                                   # offline: every catalog build matches its pointer + adapter + overlay + generator
+npm run lens:fetch                                    # sparse-clone Stable's commit, regenerate, write
+npm run lens:main                                     # move Main to its branch head and regenerate it (never re-pins Stable)
+npm run lens:promote                                  # Stable takes Main's commit (offline)
 node scripts/build-screen-lens.mjs --source ../VexLife-Android            # regenerate from a checkout
 node scripts/build-screen-lens.mjs --source ../VexLife-Android --check    # fail if the committed lens is stale
 node scripts/build-screen-lens.mjs --source ../VexLife-Android --commit <sha>   # re-pin to another commit
 ```
+
+Build pointers (Stable, Main) live in `catalog.json`; see `PROJECTS-AND-BUILDS.md`. The browser
+can also project any commit with this same adapter and a lenient overlay (`overlayMode: 'LENIENT'`):
+overlay entries the commit lacks are skipped and named in the lens notes instead of failing.
 
 Every run checks the generated lens with `normalizeScreenLens` and `layoutCollisions` on every face
 (with and without the doorway collapsed) and on the screen map. A projection that would overlap fails

@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VexBoard Projects</title>
+<meta name="description" content="Every project VexBoard can show: open a Screen Lens at its Stable or Main build or any commit, follow related boards, and see where each build pointer sits.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f4f6f9;--sheet:#fff;--ink:#18213a;--muted:#5d677b;--faint:#8a93a6;--rule:#d8dde6;--rule-strong:#b9c1cf;--focus:#2f5bea;
+  --sans:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',sans-serif;--mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --stable:#18213a;--main:#2563eb;--head:#15803d;--delta:#e11d48;--delta-ink:#9f1239;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.5 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:var(--focus)}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+code,.mono{font-family:var(--mono)}
+
+.bar{display:flex;align-items:center;gap:12px;padding:10px max(18px,env(safe-area-inset-right,0px)) 10px max(18px,env(safe-area-inset-left,0px));background:var(--sheet);border-bottom:1px solid var(--rule)}
+.bar .brand{font-weight:600;font-size:15px;color:var(--ink);text-decoration:none}
+.bar .here{color:var(--muted);font-weight:500}
+.bar .spacer{flex:1}
+.bar a.out{color:var(--muted);text-decoration:none;font-size:13px}
+.bar a.out:hover{color:var(--ink);text-decoration:underline}
+
+.page{max-width:1120px;margin:0 auto;padding:28px max(18px,env(safe-area-inset-right,0px)) 64px max(18px,env(safe-area-inset-left,0px))}
+.intro h1{margin:0;font-size:26px;font-weight:600;letter-spacing:-.015em}
+.intro p{margin:6px 0 0;color:var(--muted);max-width:68ch}
+section{margin-top:28px}
+section>h2{margin:0 0 4px;font-size:15px;font-weight:600}
+section>.lede{margin:0 0 12px;color:var(--muted);font-size:13px;max-width:72ch}
+
+/* The project with a lens */
+.project{background:var(--sheet);border:1px solid var(--rule);border-radius:16px;scroll-margin-top:16px}
+.project.lead{margin-top:20px;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);grid-template-areas:"head builds" "more builds";grid-template-rows:auto 1fr}
+.project .info{padding:22px 24px;min-width:0}
+.project.lead .head{grid-area:head;padding-bottom:0}
+.project.lead .more{grid-area:more;padding-top:0}
+.project.lead .builds{grid-area:builds}
+.project .kind{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--muted)}
+.project .kind .dot{width:8px;height:8px;border-radius:50%;background:var(--main)}
+.project .kind .dot.none{background:transparent;border:1.5px solid var(--faint)}
+.project h3{margin:6px 0 4px;font-size:21px;font-weight:600;letter-spacing:-.01em}
+.project .summary{margin:0;color:var(--muted);max-width:60ch}
+.project .facts{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;margin:14px 0 0;font-size:12.5px}
+.project .facts dt{color:var(--faint)}
+.project .facts dd{margin:0;overflow-wrap:anywhere}
+.project .facts code{font-size:12px}
+.stats{display:flex;flex-wrap:wrap;gap:6px 16px;margin:14px 0 0;font-size:13px}
+.stats b{font-weight:600}
+.screens{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 0}
+.screens a{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border:1px solid var(--rule);border-radius:999px;background:#fff;color:var(--ink);text-decoration:none;font-size:12.5px}
+.screens a:hover{border-color:var(--rule-strong)}
+.screens a .m{width:7px;height:7px;border-radius:50%;background:var(--ink)}
+.screens a .m.CHROME_ONLY{background:linear-gradient(90deg,var(--ink) 50%,transparent 50%);border:1px solid var(--ink)}
+.screens a .m.HELD{background:transparent;border:1px solid var(--ink)}
+
+.builds{padding:22px 24px;border-left:1px solid var(--rule);background:#fbfcfd;border-radius:0 16px 16px 0;min-width:0}
+.builds h4{margin:0 0 10px;font-size:12px;font-weight:600;color:var(--muted)}
+/* The pointer track: where Stable, Main and the live branch sit */
+.track{position:relative;height:56px;margin:0 6px 8px}
+.track .line{position:absolute;left:0;right:0;top:27px;height:2px;background:var(--rule-strong);border-radius:1px}
+.track .pin{position:absolute;top:0;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:3px;white-space:nowrap}
+.track .pin .tag{font-size:11px;font-weight:600}
+.track .pin .dot{width:14px;height:14px;border-radius:50%;border:3px solid var(--sheet);box-shadow:0 0 0 1.5px currentColor;background:currentColor}
+.track .pin.head .dot{background:var(--sheet)}
+.track .pin code{font-size:10.5px;color:var(--muted)}
+.track .pin.stable{color:var(--stable)}.track .pin.main{color:var(--main)}.track .pin.head{color:var(--head)}
+.currency{margin:0 0 14px;font-size:12.5px;color:var(--muted)}
+.currency.behind{color:var(--delta-ink)}
+.build{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:2px 12px;align-items:center;padding:10px 0;border-top:1px solid var(--rule)}
+.build .name{font-weight:600;font-size:13.5px;display:flex;align-items:center;gap:7px}
+.build .name .swatch{width:9px;height:9px;border-radius:50%}
+.build .sha{font:12px var(--mono);color:var(--muted)}
+.build .when{grid-column:2;font-size:12px;color:var(--faint)}
+.build .note{grid-column:1/-1;font-size:12px;color:var(--muted)}
+.open{display:inline-flex;align-items:center;justify-content:center;height:32px;padding:0 14px;border-radius:8px;background:var(--ink);color:#fff;text-decoration:none;font-size:13px;font-weight:600;white-space:nowrap}
+.open:hover{background:#0f1730}
+.open.quiet{background:var(--sheet);color:var(--ink);border:1px solid var(--rule)}
+.open.quiet:hover{border-color:var(--rule-strong)}
+.any{padding:12px 0 0;border-top:1px solid var(--rule)}
+.any label{display:block;font-size:13px;font-weight:600;margin-bottom:6px}
+.any form{display:flex;gap:6px}
+.any input{flex:1;min-width:0;height:32px;padding:0 10px;border:1px solid var(--rule);border-radius:8px;background:#fff;font:12.5px var(--mono)}
+.any input:focus{border-color:var(--focus);outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--focus) 18%,transparent)}
+.any button{height:32px;padding:0 14px;border:1px solid var(--rule);border-radius:8px;background:var(--sheet);font-weight:600;font-size:13px}
+.any .help{margin:6px 0 0;font-size:12px;color:var(--faint)}
+.any .error{margin:6px 0 0;font-size:12.5px;color:var(--delta-ink)}
+
+.boards{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0 0}
+.boards a{display:inline-flex;flex-direction:column;justify-content:center;min-height:44px;padding:5px 12px;border:1px solid var(--rule);border-radius:10px;background:#fff;color:var(--ink);text-decoration:none;font-size:13px;font-weight:500;max-width:100%}
+.boards a:hover{border-color:var(--rule-strong)}
+.boards a span{font-size:11.5px;font-weight:400;color:var(--faint)}
+.boards a.trial{background:transparent;border-style:dashed;color:var(--muted)}
+.label{margin:16px 0 6px;font-size:12px;font-weight:600;color:var(--faint)}
+
+.others{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:16px}
+.others .project .info{padding:20px 22px}
+.others .project h3{font-size:18px}
+.pending{margin:14px 0 0;padding:12px 14px;border-radius:10px;background:#f6f7fa;border:1px solid var(--rule);font-size:13px}
+.pending p{margin:0}
+.pending p+p{margin-top:6px;color:var(--muted)}
+.headline{margin:12px 0 0;font-size:12.5px;color:var(--muted)}
+.headline code{color:var(--ink);font-size:12px}
+
+/* Notes to consider */
+.notes{display:grid;gap:8px}
+.notes details{background:var(--sheet);border:1px solid var(--rule);border-radius:12px}
+.notes summary{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;padding:12px 16px;cursor:pointer;list-style:none}
+.notes summary::-webkit-details-marker{display:none}
+.notes summary .t{font-weight:600;font-size:13.5px}
+.notes summary .w{grid-column:1;font-size:12.5px;color:var(--muted)}
+.notes summary .tags{grid-row:1/span 2;grid-column:2;display:flex;gap:4px;align-items:center}
+.notes summary .tags span{font-size:11px;padding:2px 7px;border:1px solid var(--rule);border-radius:999px;color:var(--muted);white-space:nowrap}
+.notes details[open] summary{border-bottom:1px solid var(--rule)}
+.notes .body{padding:12px 16px 14px;font-size:13px;max-width:78ch}
+.notes .body p{margin:0 0 8px}
+.notes .body .k{font-weight:600}
+.notes .body .origin{color:var(--faint);font-size:12px;margin:0}
+
+/* Earlier canvas trials */
+.trials{padding:18px 20px;border:1px dashed var(--rule-strong);border-radius:16px}
+.trials .boards{margin-top:8px}
+.drafts{margin-top:12px;font-size:13px;color:var(--muted)}
+.drafts a{margin-right:10px}
+footer{margin-top:36px;font-size:12.5px;color:var(--faint);max-width:80ch}
+footer code{font-size:12px}
+
+@media (max-width:860px){
+  .project.lead{grid-template-columns:1fr;grid-template-areas:"head" "builds" "more";grid-template-rows:auto}
+  .project.lead .head{padding-bottom:18px}
+  .project.lead .more{padding-top:18px;border-top:1px solid var(--rule)}
+  .project.lead .builds{border-bottom:1px solid var(--rule);border-radius:0}
+  .builds{border-left:0;border-top:1px solid var(--rule);border-radius:0 0 16px 16px}
+  .others{grid-template-columns:1fr}
+  .intro h1{font-size:22px}
+}
+@media (max-width:480px){
+  .project .info,.builds{padding:18px 16px}
+  .notes summary{grid-template-columns:1fr}
+  .notes summary .tags{grid-row:auto;grid-column:1;flex-wrap:wrap}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="bar"><a class="brand" href="./projects.html">VexBoard</a><span class="here">Projects</span><span class="spacer"></span><a class="out" href="../">VexWork</a></header>
+<main class="page" id="app"><div class="intro"><h1>Projects</h1><p>Loading…</p></div></main>
+<script>
+window.addEventListener('error',(event)=>{const app=document.getElementById('app');if(!app)return;app.innerHTML='<div class="intro"><h1>Projects could not load.</h1><p></p></div>';app.querySelector('p').textContent=event?.message||'A module failed to load.'});
+window.addEventListener('unhandledrejection',(event)=>{const app=document.getElementById('app');if(!app)return;app.innerHTML='<div class="intro"><h1>Projects could not load.</h1><p></p></div>';app.querySelector('p').textContent=String(event?.reason?.message||event?.reason||'Loading failed.')});
+</script>
+<script type="module">
+import * as Catalog from '../src/shared/vexboard-lens-catalog.mjs';
+import * as Lens from '../src/shared/vexboard-screen-lens.mjs';
+import * as Source from '../src/shared/vexboard-lens-commit-source.mjs';
+
+const LENS_DIR = '../projects/vexboard/lens/';
+// Owned by vexboard-reader.js (VEXBOARD_DRAFT_STORAGE_KEY); read here, never written.
+const DRAFTS_KEY = 'vexboard.local-drafts/v1';
+const app = document.getElementById('app');
+
+function h(tag, attrs = {}, ...children) {
+  const node = document.createElement(tag);
+  for (const [key, value] of Object.entries(attrs || {})) {
+    if (value === null || value === undefined || value === false) continue;
+    if (key === 'class') node.className = value;
+    else if (key.startsWith('on')) node.addEventListener(key.slice(2), value);
+    else if (key === 'style') node.style.cssText = value;
+    else node.setAttribute(key, value === true ? '' : String(value));
+  }
+  for (const child of children.flat(Infinity)) {
+    if (child === null || child === undefined || child === false) continue;
+    node.append(child instanceof Node ? child : document.createTextNode(String(child)));
+  }
+  return node;
+}
+async function fetchJson(url) {
+  const response = await fetch(url, { cache: 'no-store' });
+  if (!response.ok) throw new Error(`${url} HTTP ${response.status}`);
+  return response.json();
+}
+const short = (sha) => String(sha ?? '').slice(0, 7);
+const day = (iso) => (iso ? String(iso).slice(0, 10) : '');
+const plural = (n, one, many = `${one}s`) => `${n} ${n === 1 ? one : many}`;
+
+// Live branch heads, cached for this tab so a reload does not spend GitHub's hourly allowance.
+const HEAD_CACHE = 'vexboard.projects.heads';
+const HEAD_TTL = 10 * 60 * 1000;
+function readHeads() { try { const raw = JSON.parse(sessionStorage.getItem(HEAD_CACHE) ?? 'null'); return raw && Date.now() - raw.at < HEAD_TTL ? raw.heads : {}; } catch { return {}; } }
+function writeHeads(heads) { try { sessionStorage.setItem(HEAD_CACHE, JSON.stringify({ at: Date.now(), heads })); } catch { /* cache only */ } }
+async function liveHead(subject) {
+  const cached = readHeads()[subject.slug];
+  if (cached) return cached;
+  const githubFetch = (url, init) => fetch(url, init);
+  const branch = Catalog.buildFor(subject, 'main')?.branch ?? subject.repository.defaultBranch;
+  const head = await Source.resolveCommit({ repositoryUrl: subject.repository.url, ref: branch, fetch: githubFetch });
+  const main = Catalog.buildFor(subject, 'main');
+  const value = { branch, head, aheadBy: null };
+  if (main && main.commit !== head.sha) value.aheadBy = (await Source.compareCommits({ repositoryUrl: subject.repository.url, base: main.commit, head: branch, fetch: githubFetch })).aheadBy;
+  else if (main) value.aheadBy = 0;
+  writeHeads({ ...readHeads(), [subject.slug]: value });
+  return value;
+}
+
+function track(subject, live) {
+  const stable = Catalog.buildFor(subject, 'stable');
+  const main = Catalog.buildFor(subject, 'main');
+  const pins = [
+    { key: 'stable', label: 'Stable', sha: stable.commit },
+    { key: 'main', label: 'Main', sha: main.commit },
+    live ? { key: 'head', label: `GitHub ${live.branch}`, sha: live.head.sha } : null,
+  ].filter(Boolean);
+  // Pins on one commit share one place on the track; distinct commits spread left to right.
+  const groups = [];
+  for (const pin of pins) {
+    const group = groups.find((entry) => entry.sha === pin.sha);
+    if (group) group.pins.push(pin); else groups.push({ sha: pin.sha, pins: [pin] });
+  }
+  const at = groups.length === 1 ? [50] : groups.length === 2 ? [18, 82] : [10, 50, 90];
+  return h('div', { class: 'track', role: 'img', 'aria-label': groups.map((group) => `${group.pins.map((pin) => pin.label).join(' and ')} at ${short(group.sha)}`).join('; ') },
+    h('div', { class: 'line' }),
+    groups.map((group, i) => h('div', { class: `pin ${group.pins[0].key}`, style: `left:${at[i]}%` },
+      h('span', { class: 'tag' }, group.pins.map((pin) => pin.label).join(' = ')), h('span', { class: 'dot' }), h('code', {}, short(group.sha)))));
+}
+
+function currency(subject, live, error) {
+  if (error) return h('p', { class: 'currency' }, `Could not check GitHub right now (${error}). The pointers above are what the catalog says.`);
+  if (!live) return h('p', { class: 'currency' }, 'Checking GitHub…');
+  if (live.aheadBy === 0) return h('p', { class: 'currency' }, `Main is current with ${live.branch} on GitHub.`);
+  return h('p', { class: 'currency behind' }, `GitHub ${live.branch} is ${plural(live.aheadBy, 'commit')} past Main (${short(live.head.sha)}, ${day(live.head.date)}). Run npm run lens:main to move Main.`);
+}
+
+function anyCommitForm(subject) {
+  const error = h('p', { class: 'error', role: 'alert', hidden: true });
+  const input = h('input', { id: `any-${subject.slug}`, placeholder: 'SHA, branch or tag', autocomplete: 'off', spellcheck: 'false' });
+  return h('div', { class: 'any' },
+    h('label', { for: input.id }, 'Any commit'),
+    h('form', { onsubmit: (event) => {
+      event.preventDefault();
+      try { location.href = Catalog.lensHref(subject, { commit: Catalog.validateSourceRef(input.value) }); }
+      catch (failure) { error.textContent = failure.message.replace(/^lens catalog: /, ''); error.hidden = false; }
+    } }, input, h('button', { type: 'submit' }, 'Open')),
+    error,
+    h('p', { class: 'help' }, 'Projected in your browser from public GitHub source. Nothing is saved.'));
+}
+
+function buildRow(subject, build, extra) {
+  const swatch = build.buildRef === 'stable' ? 'var(--stable)' : 'var(--main)';
+  return h('div', { class: 'build' },
+    h('span', { class: 'name' }, h('span', { class: 'swatch', style: `background:${swatch}` }), build.label),
+    h('span', { class: 'sha' }, short(build.commit), extra ? ` ${extra}` : ''),
+    h('a', { class: `open${build.buildRef === 'stable' ? '' : ' quiet'}`, href: Catalog.lensHref(subject, { build: build.buildRef }) }, `Open ${build.label}`),
+    h('span', { class: 'when' }, build.buildRef === 'stable' ? `Accepted ${build.since ?? ''}${build.observedAt ? ` · source from ${build.observedAt}` : ''}` : `Source from ${build.observedAt ?? 'unknown'}${build.branch ? ` on ${build.branch}` : ''}`),
+    build.summary ? h('span', { class: 'note' }, build.summary) : null);
+}
+
+function boardLinks(boards) {
+  return h('div', { class: 'boards' }, boards.map((board) => h('a', { class: board.role === 'TRIAL' ? 'trial' : '', href: Catalog.boardHref(board.boardRef), title: board.summary ?? board.boardRef },
+    board.label, h('span', {}, board.role === 'TRIAL' ? 'earlier canvas trial' : 'related board'))));
+}
+
+function facts(subject, extra = []) {
+  return h('dl', { class: 'facts' },
+    h('dt', {}, 'Source'), h('dd', {}, h('a', { href: subject.repository.url, target: '_blank', rel: 'noopener' }, subject.repository.url.replace('https://github.com/', '')), ' ', h('code', {}, subject.repositoryRef)),
+    subject.vexworkProjectRefs.length ? [h('dt', {}, 'VexWork'), h('dd', {}, subject.vexworkProjectRefs.map((ref, i) => [i ? ', ' : '', h('code', {}, ref)]))] : null,
+    extra);
+}
+
+function leadProject(subject, lens) {
+  const stable = Catalog.buildFor(subject, 'stable');
+  const main = Catalog.buildFor(subject, 'main');
+  const bonds = lens.pathways.filter((pathway) => pathway.disposition === 'SCAE_FAMILY').length;
+  const elements = lens.screens.reduce((sum, screen) => sum + screen.elements.length, 0) + lens.chrome.reduce((sum, entry) => sum + entry.elements.length, 0);
+  const currencySlot = h('div', {}, currency(subject, null));
+  const trackSlot = h('div', {}, track(subject, null));
+  liveHead(subject).then((live) => { trackSlot.replaceChildren(track(subject, live)); currencySlot.replaceChildren(currency(subject, live)); })
+    .catch((error) => currencySlot.replaceChildren(currency(subject, null, error.message)));
+  const related = subject.boards.filter((board) => board.role === 'RELATED');
+  const trials = subject.boards.filter((board) => board.role === 'TRIAL');
+  return h('article', { class: 'project lead', id: subject.slug },
+    h('div', { class: 'info head' },
+      h('span', { class: 'kind' }, h('span', { class: 'dot', 'aria-hidden': 'true' }), 'Screen Lens · generated from source'),
+      h('h3', {}, subject.label),
+      h('p', { class: 'summary' }, subject.summary),
+      h('div', { class: 'stats' }, h('span', {}, h('b', {}, lens.screens.length), ' screens'), h('span', {}, h('b', {}, elements), ' elements'), h('span', {}, h('b', {}, lens.pathways.length), ' pathways'), h('span', {}, h('b', {}, bonds), ` Family bond${bonds === 1 ? '' : 's'}`))),
+    h('div', { class: 'info more' },
+      h('div', { class: 'label' }, 'Go straight to a screen'),
+      h('nav', { class: 'screens', 'aria-label': `${subject.label} screens` }, lens.screens.map((screen) => h('a', { href: Catalog.lensHref(subject, { screen: screen.screenRef }) }, h('span', { class: `m ${screen.mapped}`, 'aria-hidden': 'true' }), screen.label))),
+      related.length ? [h('div', { class: 'label' }, 'Related boards'), boardLinks(related)] : null,
+      trials.length ? [h('div', { class: 'label' }, 'Earlier attempts for this project'), boardLinks(trials)] : null,
+      facts(subject)),
+    h('div', { class: 'builds' },
+      h('h4', {}, 'Builds'),
+      trackSlot,
+      currencySlot,
+      buildRow(subject, stable),
+      buildRow(subject, main, Catalog.sameCommit(subject) ? '· same commit as Stable' : ''),
+      subject.lens.anyCommit ? anyCommitForm(subject) : null));
+}
+
+function pendingProject(subject) {
+  const headSlot = h('p', { class: 'headline' }, 'Checking GitHub…');
+  liveHead(subject).then((live) => headSlot.replaceChildren(`${live.branch} on GitHub is at `, h('code', {}, short(live.head.sha)), ` · ${day(live.head.date)} · ${live.head.message}`))
+    .catch((error) => headSlot.replaceChildren(`Could not check GitHub right now (${error.message}).`));
+  return h('article', { class: 'project', id: subject.slug },
+    h('div', { class: 'info' },
+      h('span', { class: 'kind' }, h('span', { class: 'dot none', 'aria-hidden': 'true' }), 'No Screen Lens yet'),
+      h('h3', {}, subject.label),
+      h('p', { class: 'summary' }, subject.summary),
+      headSlot,
+      h('div', { class: 'pending' }, h('p', {}, subject.lens.reason), h('p', {}, h('b', {}, 'Next: '), subject.lens.next)),
+      subject.boards.length ? [h('div', { class: 'label' }, 'Boards'), boardLinks(subject.boards)] : null,
+      facts(subject)));
+}
+
+function notesSection(notes, catalog) {
+  const labels = new Map(catalog.subjects.map((subject) => [subject.subjectRef, subject.label]));
+  return h('section', { id: 'notes' },
+    h('h2', {}, 'Notes to consider'),
+    h('p', { class: 'lede' }, notes.summary),
+    h('div', { class: 'notes' }, notes.entries.filter((entry) => entry.status !== 'DROPPED').map((entry) => h('details', {},
+      h('summary', {}, h('span', { class: 't' }, entry.title), h('span', { class: 'w' }, `Discuss when: ${entry.threshold}`),
+        h('span', { class: 'tags' }, entry.subjectRefs.map((ref) => h('span', {}, labels.get(ref) ?? ref)), entry.status !== 'PROPOSED' ? h('span', {}, entry.status.toLowerCase()) : null)),
+      h('div', { class: 'body' },
+        h('p', {}, entry.idea),
+        h('p', {}, h('span', { class: 'k' }, 'Why: '), entry.why),
+        entry.capturedAs ? h('p', {}, h('span', { class: 'k' }, 'Captured as: '), h('code', {}, entry.capturedAs)) : null,
+        h('p', { class: 'origin' }, `${entry.origin} · `, h('code', {}, entry.ref)))))));
+}
+
+function draftsLine() {
+  let drafts = [];
+  try { const parsed = JSON.parse(localStorage.getItem(DRAFTS_KEY) ?? '[]'); drafts = Array.isArray(parsed) ? parsed.filter((entry) => entry && typeof entry.draftRef === 'string' && typeof entry.title === 'string') : []; } catch { drafts = []; }
+  return h('p', { class: 'drafts' },
+    h('a', { href: './?create=draft' }, 'Start a blank canvas draft'),
+    h('a', { href: './?canvas=home' }, 'Canvas home'),
+    drafts.length ? ['Your local drafts: ', drafts.map((draft, i) => [i ? ', ' : '', h('a', { href: Catalog.boardHref(draft.draftRef) }, draft.title)])] : 'No local drafts in this browser.');
+}
+
+async function boot() {
+  const catalog = Catalog.normalizeLensCatalog(await fetchJson(`${LENS_DIR}catalog.json`));
+  const notes = await fetchJson(`${LENS_DIR}considerations.json`).then(Catalog.normalizeConsiderations).catch(() => null);
+  const withLens = catalog.subjects.filter((subject) => subject.lens.status === 'GENERATED');
+  const lenses = await Promise.all(withLens.map(async (subject) => Lens.normalizeScreenLens(await fetchJson(LENS_DIR + Catalog.buildFor(subject, 'stable').lens))));
+  const others = catalog.subjects.filter((subject) => subject.lens.status !== 'GENERATED');
+  app.replaceChildren(...[
+    h('div', { class: 'intro' }, h('h1', {}, 'Projects'),
+      h('p', {}, 'Every project VexBoard can show. Open a Screen Lens at its Stable build, its Main build or any commit, follow its related boards, and see where each build points.')),
+    withLens.map((subject, i) => leadProject(subject, lenses[i])),
+    others.length ? h('div', { class: 'others' }, others.map(pendingProject)) : null,
+    notes ? notesSection(notes, catalog) : null,
+    h('section', { id: 'trials' },
+      h('h2', {}, 'Earlier canvas trials'),
+      h('p', { class: 'lede' }, 'These boards came before the Screen Lens. They stay readable, and the Lens still links the related ones, but new work starts from a project above.'),
+      h('div', { class: 'trials' }, boardLinks(catalog.trials), draftsLine())),
+    h('footer', {}, 'Build pointers live in ', h('code', {}, 'projects/vexboard/lens/catalog.json'), '. Move Main with ', h('code', {}, 'npm run lens:main'), ', promote it to Stable with ', h('code', {}, 'npm run lens:promote'), ', and check both with ', h('code', {}, 'npm run lens:verify'), '.'),
+  ].flat(Infinity).filter(Boolean));
+  if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView();
+}
+boot();
+</script>
+</body>
+</html>
+<!-- [VXG RealForever][VEXWORK][VEXBOARD][PROJECTS] -->

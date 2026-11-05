@@ -5,7 +5,9 @@ import {
   ADAPTER_VERSION,
   SCREEN_LENS_ADAPTER_SCHEMA,
   SCREEN_LENS_OVERLAY_SCHEMA,
+  adapterReadPlan,
   applyOverlay,
+  applyOverlayWithReport,
   compact,
   kdocBefore,
   matchClose,
@@ -568,3 +570,44 @@ test('adapter config and inputs fail closed', () => {
 });
 
 // [VXG RealForever][VEXWORK][VEXBOARD][SCREEN-LENS][ANDROID-ADAPTER-TEST]
+
+test('lenient overlay skips entries an older commit lacks, lists them, and still normalizes', () => {
+  const overlay = {
+    schemaVersion: SCREEN_LENS_OVERLAY_SCHEMA,
+    screens: { 'screen.home': { summary: 'Kept' }, 'screen.gone': { summary: 'Skipped' } },
+    elements: { 'element.gone': { label: 'Skipped' } },
+    pathways: {
+      'pathway.gone': { label: 'Skipped' },
+      'pathway.widget.pick': {
+        nodes: { 'widget.pick.gone': { summary: 'Skipped' } },
+        addEdges: [{ from: 'widget.pick.control', to: 'widget.pick.nowhere', label: 'dangling' }],
+      },
+    },
+    notes: [
+      { ref: 'note.kept', subjectRef: 'element.home.body.pick', text: 'Kept' },
+      { ref: 'note.orphan', subjectRef: 'element.gone', text: 'Skipped' },
+    ],
+  };
+  const { lens, report } = project({ overlay, overlayMode: 'LENIENT' });
+  normalizeScreenLens(lens);
+  assert.equal(lens.screens[0].summary, 'Kept');
+  assert.deepEqual(lens.annotations.map((note) => note.ref), ['note.kept']);
+  assert.deepEqual(report.overlayMisses, ['screen.gone', 'element.gone', 'pathway.gone', 'widget.pick.gone', 'widget.pick.control->widget.pick.nowhere', 'note.orphan']);
+  assert.match(lens.sourceSnapshot.notes.at(-1), /^6 overlay entries do not apply at this commit and were skipped: screen\.gone/);
+  assert.throws(() => project({ overlay, overlayMode: 'STRICT' }), /does not have/);
+  assert.throws(() => project({ overlay, overlayMode: 'MAYBE' }), /overlayMode/);
+  const one = applyOverlayWithReport(lens, { schemaVersion: SCREEN_LENS_OVERLAY_SCHEMA, screens: { 'screen.gone': {} } }, { strict: false });
+  assert.deepEqual(one.misses, ['screen.gone']);
+  assert.match(one.lens.sourceSnapshot.notes.at(-1), /^1 overlay entry does not apply at this commit and was skipped/);
+  assert.deepEqual(project({ overlay: null }).report.overlayMisses, []);
+});
+
+test('the read plan names exactly the files the adapter reads', () => {
+  const plan = adapterReadPlan(adapter);
+  assert.ok(plan.prefixes.every((prefix) => prefix.endsWith('/')));
+  for (const path of files.keys()) assert.equal(plan.includes(path), true, path);
+  assert.equal(plan.includes(`${APP}screens/README.md`), false, 'only Kotlin under a read prefix');
+  assert.equal(plan.includes('app/src/main/kotlin/elsewhere/Thing.kt'), false);
+  assert.throws(() => adapterReadPlan({ ...adapter, read: ['nope:screens/'] }), /root nope/);
+  assert.deepEqual(adapterReadPlan({ ...adapter, read: ['plain/path'] }).prefixes, ['plain/path/']);
+});

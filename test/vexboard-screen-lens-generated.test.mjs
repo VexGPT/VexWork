@@ -16,7 +16,9 @@ const hand = normalizeScreenLens(JSON.parse(fs.readFileSync(new URL('./fixtures/
 
 test('the committed lens is current with its adapter, overlay and generator', () => {
   const output = execFileSync(process.execPath, [path.join(ROOT, 'scripts/build-screen-lens.mjs'), '--verify'], { cwd: ROOT, encoding: 'utf8' });
-  assert.equal(JSON.parse(output).state, 'PASS');
+  const verified = JSON.parse(output);
+  assert.equal(verified.state, 'PASS');
+  assert.deepEqual(verified.builds.map((entry) => `${entry.subject}:${entry.build}:${entry.state}`), ['vexlife-android:stable:PASS', 'vexlife-android:main:PASS'], 'every catalog build is verified at its own pointer');
   assert.match(raw.provenance.generator, /^vexlife-android-adapter\//);
   assert.match(raw.provenance.sourceCommit, /^[0-9a-f]{40}$/);
   assert.equal(raw.provenance.sourceCommit, lens.sourceSnapshot.commit);

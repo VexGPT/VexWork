@@ -1,0 +1,178 @@
+{
+  "schemaVersion": "vexboard.lens-catalog/v1",
+  "catalogRef": "catalog.vexboard.lens",
+  "title": "VexBoard projects",
+  "defaultSubjectRef": "subject.vexlife-android",
+  "subjects": [
+    {
+      "subjectRef": "subject.vexlife-android",
+      "slug": "vexlife-android",
+      "label": "VexLife Android",
+      "summary": "The Android app. Every registered screen is generated from Kotlin source: what the human touches, where it lives in code, what it means, and what it touches underneath.",
+      "repositoryRef": "repo.vexlife-android",
+      "repository": {
+        "url": "https://github.com/vgong24/VexLife-Android",
+        "defaultBranch": "main"
+      },
+      "vexworkProjectRefs": [
+        "project.vexsync.debugmenu-blueprints",
+        "project.vexlife.blueprint-source-of-truth",
+        "project.vexboard"
+      ],
+      "lens": {
+        "status": "GENERATED",
+        "adapter": "vexlife-android.lens-adapter.json",
+        "overlay": "vexlife-android.lens-overlay.json",
+        "anyCommit": true,
+        "builds": [
+          {
+            "buildRef": "stable",
+            "label": "Stable",
+            "summary": "The accepted projection. Moves only when Main is promoted.",
+            "commit": "305a09eac1fabebcf2241bd207386950f41121f2",
+            "lens": "vexlife-android.screen-lens.json",
+            "since": "2026-11-05",
+            "observedAt": "2026-11-03",
+            "evidence": [
+              "github.pull.vexwork.230",
+              "human.victor.lived-first-draft-acceptance"
+            ]
+          },
+          {
+            "buildRef": "main",
+            "label": "Main",
+            "summary": "The latest projected commit on the default branch.",
+            "commit": "305a09eac1fabebcf2241bd207386950f41121f2",
+            "branch": "main",
+            "lens": "vexlife-android.screen-lens.json",
+            "observedAt": "2026-11-03"
+          }
+        ]
+      },
+      "boards": [
+        {
+          "boardRef": "board.vexlife.debug-menu.theme-mode.origin-walk",
+          "label": "Theme Mode Origin Walk",
+          "summary": "The Debug Menu dark-mode path drawn by hand as a Family-language board.",
+          "role": "RELATED"
+        },
+        {
+          "boardRef": "board.vexlife-android.vexstream-playback.vexarchitecture",
+          "label": "VexStream Playback walk",
+          "summary": "The VexArchitecture walk the Behavior-port traversal was earned from.",
+          "role": "RELATED"
+        },
+        {
+          "boardRef": "board.vexlife-android.home-vexstream.poc",
+          "label": "Home and VexStream screen POC",
+          "summary": "First attempt at projecting Android screens onto the canvas.",
+          "role": "TRIAL"
+        },
+        {
+          "boardRef": "board.vexlife-android.vexstream-depth.poc",
+          "label": "VexStream depth POC",
+          "summary": "The same POC, one level deeper.",
+          "role": "TRIAL"
+        }
+      ]
+    },
+    {
+      "subjectRef": "subject.vexlife-prod",
+      "slug": "vexlife-prod",
+      "label": "VexLife Prod",
+      "summary": "The clean product container rebuilding VexLife from explicit intention: Blueprint, Compose reference and VexWeb manifestation.",
+      "repositoryRef": "repo.vexlife-prod",
+      "repository": {
+        "url": "https://github.com/VexGPT/VexLife-Prod",
+        "defaultBranch": "main"
+      },
+      "vexworkProjectRefs": [
+        "project.vexlife.new-beginnings"
+      ],
+      "lens": {
+        "status": "NOT_BUILT",
+        "reason": "VexLife Prod describes its UI as a Kotlin Multiplatform Blueprint (VexUiBlueprint) rendered through VexWeb, not with the Android element DSL, so the Android adapter cannot read it.",
+        "next": "Export the Blueprint into the same Screen Lens schema (preferred over text parsing, because the Blueprint is already explicit), then add its builds here."
+      },
+      "boards": [
+        {
+          "boardRef": "board.vexlife-prod.perceivability-alignment",
+          "label": "Perceivability alignment",
+          "summary": "How VexLife Prod's intended experience lines up with what VexBoard can perceive today.",
+          "role": "RELATED"
+        }
+      ]
+    },
+    {
+      "subjectRef": "subject.vexboard",
+      "slug": "vexboard",
+      "label": "VexBoard",
+      "summary": "This tool, looking at itself: the projects entry, the Screen Lens and the canvas that came before it.",
+      "repositoryRef": "repo.vexwork",
+      "repository": {
+        "url": "https://github.com/VexGPT/VexWork",
+        "defaultBranch": "main"
+      },
+      "vexworkProjectRefs": [
+        "project.vexboard"
+      ],
+      "lens": {
+        "status": "NOT_BUILT",
+        "reason": "VexBoard is a web app. A Screen Lens of it needs a web adapter that reads its pages and page state, which does not exist yet.",
+        "next": "Project projects.html and lens.html as screens, with page state (selection, flips, walk, build) as a small SCAE Family, into the same schema."
+      },
+      "boards": [
+        {
+          "boardRef": "board.vexboard.self-map",
+          "label": "VexBoard self-map",
+          "summary": "VexBoard's own parts drawn on the canvas.",
+          "role": "RELATED"
+        },
+        {
+          "boardRef": "board.vexboard.architecture-convergence",
+          "label": "Architecture convergence",
+          "summary": "The convergence language applied to VexBoard as one flat board.",
+          "role": "RELATED"
+        },
+        {
+          "boardRef": "board.vexboard.prototype-demo",
+          "label": "Prototype demo",
+          "summary": "Clickable local simulation driven through the canvas.",
+          "role": "TRIAL"
+        }
+      ]
+    }
+  ],
+  "trials": [
+    {
+      "boardRef": "board.vexstream.phone-desktop-connection.living-blueprint",
+      "label": "VexStream living Blueprint",
+      "summary": "Phone to desktop connection as a living Blueprint with evidence.",
+      "role": "TRIAL"
+    },
+    {
+      "boardRef": "board.vexstream.phone-desktop-connection.construction-evidence",
+      "label": "VexStream construction evidence",
+      "summary": "The construction evidence behind the living Blueprint.",
+      "role": "TRIAL"
+    },
+    {
+      "boardRef": "board.vexbusinessfactory.system-anatomy.patient-zero",
+      "label": "System anatomy",
+      "summary": "VexBusinessFactory system anatomy, the first patient-zero board.",
+      "role": "TRIAL"
+    },
+    {
+      "boardRef": "board.vexbusinessfactory.intent-topology.patient-zero",
+      "label": "Intent topology",
+      "summary": "VexBusinessFactory intent topology.",
+      "role": "TRIAL"
+    },
+    {
+      "boardRef": "board.vexwork.process-family-metawalk",
+      "label": "Process Family metawalk",
+      "summary": "VexWork's process families walked on the canvas.",
+      "role": "TRIAL"
+    }
+  ]
+}

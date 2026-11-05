@@ -4,6 +4,7 @@ import test from 'node:test';
 
 import {
   SCREEN_LENS_REVISION_COMPARISON_SCHEMA,
+  comparePathwayRevision,
   compareScreenLensRevisions,
 } from '../src/shared/vexboard-screen-lens-revision.mjs';
 
@@ -67,3 +68,34 @@ test('revision comparison fails closed across different lens identities', () => 
 });
 
 // [VXG RealForever][VEXWORK][VEXBOARD][SCREEN-LENS][REVISION-COMPARISON-TEST]
+
+test('pathway detail names the steps and relationships that moved, and which fields', () => {
+  const base = raw.pathways.find((entry) => entry.pathwayRef === 'pathway.theme.dark-mode.toggle');
+  const next = clone(base);
+  const result = next.nodes.find((node) => node.ref === 'theme.dark-mode.toggle.result');
+  result.label = 'Result.Success(…)';
+  result.symbol = 'ThemeModeStore.Result';
+  next.nodes.push({ ref: 'theme.dark-mode.toggle.extra', face: 'DEPTH', role: 'STATE', label: 'Extra' });
+  next.nodes = next.nodes.filter((node) => node.ref !== 'theme.dark-mode.toggle.log');
+  next.edges = next.edges.filter((edge) => edge.to !== 'theme.dark-mode.toggle.log' && edge.from !== 'theme.dark-mode.toggle.log');
+  next.edges.push({ from: 'theme.dark-mode.toggle.result', to: 'theme.dark-mode.toggle.extra', label: 'new' });
+  next.label = 'Renamed';
+  const detail = comparePathwayRevision(base, next);
+  assert.equal(detail.status, 'CHANGED');
+  assert.deepEqual(detail.fields, ['label']);
+  assert.deepEqual(detail.nodes.added, ['theme.dark-mode.toggle.extra']);
+  assert.deepEqual(detail.nodes.removed, ['theme.dark-mode.toggle.log']);
+  assert.deepEqual(detail.nodeChanges, [{ ref: 'theme.dark-mode.toggle.result', fields: ['label', 'symbol'] }]);
+  assert.ok(detail.edges.added.includes('theme.dark-mode.toggle.result->theme.dark-mode.toggle.extra'));
+  assert.ok(detail.edges.removed.some((edgeRef) => edgeRef.endsWith('->theme.dark-mode.toggle.log')));
+  assert.ok(Object.isFrozen(detail.nodes.added));
+
+  const added = comparePathwayRevision(null, base);
+  assert.equal(added.status, 'ADDED');
+  assert.equal(added.nodes.added.length, base.nodes.length);
+  assert.deepEqual(added.fields, []);
+  assert.equal(comparePathwayRevision(base, null).status, 'REMOVED');
+  assert.equal(comparePathwayRevision(base, clone(base)).nodes.changed.length, 0);
+  assert.throws(() => comparePathwayRevision(null, null), /at least one/);
+  assert.throws(() => comparePathwayRevision(base, { ...base, pathwayRef: 'pathway.other' }), /one pathwayRef/);
+});

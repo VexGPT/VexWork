@@ -19,6 +19,7 @@
   --r-STORE:#15803d;--r-OBSERVATION:#4d7c0f;
   --r-CHRONOLOGY:#57534e;--r-CONSTRUCTION:#92400e;
   --edge:#8892a6;--edge-return:#0f766e;--edge-side:#b3bac7;
+  --delta:#e11d48;--delta-ink:#9f1239;
 }
 .palette-color-safe{
   --r-SCREEN:#0072b2;--r-CONTAINER:#0072b2;--r-CONTENT:#0072b2;--r-ELEMENT:#0072b2;--r-NAVIGATION:#0072b2;
@@ -27,6 +28,7 @@
   --r-METHOD:#c75100;--r-EXECUTION:#c75100;--r-STORE:#00845f;--r-OBSERVATION:#00845f;--r-CHRONOLOGY:#555;--r-CONSTRUCTION:#555;
 }
 .palette-high-contrast{
+  --delta:#000;--delta-ink:#000;
   --rule:#000;--rule-strong:#000;--muted:#222;--faint:#333;--edge:#000;--edge-return:#000;--edge-side:#000;
   --r-SCREEN:#000;--r-CONTAINER:#000;--r-CONTENT:#000;--r-ELEMENT:#000;--r-NAVIGATION:#000;--r-INTENT:#000;--r-DISPATCH:#000;--r-CONTROL:#000;--r-STATE:#000;--r-ACT:#000;--r-EFFECT:#000;--r-PROJECTION:#000;--r-METHOD:#000;--r-EXECUTION:#000;--r-STORE:#000;--r-OBSERVATION:#000;--r-CHRONOLOGY:#000;--r-CONSTRUCTION:#000;
 }
@@ -46,7 +48,7 @@ a{color:var(--focus)}
 .palette-high-contrast .chip{background:#000;color:#fff}
 
 .lens{display:grid;grid-template-rows:auto auto minmax(0,1fr) auto;height:100vh;min-height:560px}
-.bar{display:flex;align-items:center;gap:14px;padding:8px 18px;background:var(--sheet);border-bottom:1px solid var(--rule)}
+.bar{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;padding:8px 18px;background:var(--sheet);border-bottom:1px solid var(--rule)}
 .search{position:relative;flex:1;min-width:180px;max-width:520px;margin-left:8px}
 .search input{width:100%;height:32px;padding:0 12px 0 32px;border:1px solid var(--rule);border-radius:8px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%238a93a6' stroke-width='2.4' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E") no-repeat 11px 50%;font-size:13px}
 .search input:focus{border-color:var(--focus);outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--focus) 18%,transparent)}
@@ -254,6 +256,91 @@ kbd{font:11px var(--mono);border:1px solid var(--rule-strong);border-bottom-widt
 .boot{margin:12vh auto;max-width:56ch;padding:24px;color:var(--muted)}
 .boot h1{color:var(--ink);font-size:20px}
 
+/* Projects and builds */
+.bar h1{display:flex;align-items:center;gap:4px;flex:none;overflow:visible}
+.bar h1 .kind{font-weight:500;color:var(--muted);font-size:14px;margin-left:2px}
+.project{position:relative}
+.project-btn{display:inline-flex;align-items:center;gap:8px;height:30px;padding:0 9px;margin-left:-9px;border:1px solid transparent;border-radius:8px;background:none;font-size:16px;font-weight:600;letter-spacing:-.005em}
+.project-btn:hover,.project-btn[aria-expanded="true"]{border-color:var(--rule);background:var(--sheet)}
+.project-btn .caret{width:7px;height:7px;border-right:1.6px solid var(--muted);border-bottom:1.6px solid var(--muted);transform:translateY(-2px) rotate(45deg)}
+.menu{position:absolute;left:-9px;top:calc(100% + 6px);z-index:70;width:330px;padding:6px;font-size:13px;font-weight:400;letter-spacing:0;background:var(--sheet);border:1px solid var(--rule-strong);border-radius:12px;box-shadow:0 24px 50px -24px #18213a88}
+.menu a{display:grid;grid-template-columns:14px minmax(0,1fr);gap:1px 8px;padding:8px 10px;border-radius:8px;color:var(--ink);text-decoration:none}
+.menu a:hover,.menu a:focus-visible{background:#eef2f8;outline:none}
+.menu .tick{grid-row:span 2;align-self:center;width:7px;height:7px;border-radius:50%}
+.menu a[aria-current="page"] .tick{background:var(--focus)}
+.menu .ml{font-size:13.5px;font-weight:500}
+.menu .md{grid-column:2;font-size:12px;color:var(--muted)}
+.menu hr{border:0;border-top:1px solid var(--rule);margin:6px 4px}
+.builds{position:relative;display:inline-flex;padding:2px;border:1px solid var(--rule);border-radius:9px;background:var(--sheet);flex:none}
+.builds>button{display:inline-flex;align-items:baseline;gap:6px;height:26px;padding:0 10px;border:0;border-radius:7px;background:none;font-size:12.5px;font-weight:500;color:var(--muted);white-space:nowrap;line-height:26px}
+.builds>button:hover{color:var(--ink)}
+.builds>button .sha{font:11.5px var(--mono);color:var(--faint)}
+.builds>button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.builds>button[aria-pressed="true"] .sha{color:#c9d1e3}
+.source-link{font:12px var(--mono);color:var(--muted);white-space:nowrap;text-decoration:none;flex:none}
+.source-link:hover{color:var(--ink);text-decoration:underline}
+.delta-chip{display:inline-flex;align-items:center;gap:7px;height:28px;padding:0 11px;border:1.5px dashed var(--delta);border-radius:999px;background:color-mix(in srgb,var(--delta) 6%,#fff);color:var(--delta-ink);font-size:12.5px;font-weight:600;white-space:nowrap;flex:none}
+.delta-chip.same{border:1px solid var(--rule);background:var(--sheet);color:var(--muted);font-weight:500;cursor:default}
+.delta-chip[aria-pressed="true"]{background:var(--delta);border-color:var(--delta);border-style:solid;color:#fff}
+.commit-pop{position:absolute;left:0;top:calc(100% + 6px);z-index:70;width:min(440px,calc(100vw - 32px));padding:12px;background:var(--sheet);border:1px solid var(--rule-strong);border-radius:12px;box-shadow:0 24px 50px -24px #18213a88}
+.commit-pop label{display:block;font-size:12.5px;font-weight:600;margin-bottom:6px}
+.commit-pop form{display:flex;gap:6px}
+.commit-pop input{flex:1;min-width:0;height:32px;padding:0 10px;border:1px solid var(--rule);border-radius:8px;font:12.5px var(--mono)}
+.commit-pop input:focus{border-color:var(--focus);outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--focus) 18%,transparent)}
+.commit-pop .primary{height:32px;padding:0 14px;border:0;border-radius:8px;background:var(--ink);color:#fff;font-weight:600;font-size:12.5px}
+.commit-pop .primary:disabled{opacity:.5;cursor:default}
+.commit-pop .help{margin:8px 0 0;font-size:12px;color:var(--muted)}
+.commit-pop .error{margin:8px 0 0;padding:8px 10px;border-radius:8px;background:color-mix(in srgb,var(--delta) 8%,#fff);color:var(--delta-ink);font-size:12.5px}
+.commit-pop .progress{margin-top:10px;height:6px;border-radius:3px;background:#eef1f5;overflow:hidden}
+.commit-pop .progress span{display:block;height:100%;background:var(--focus);transition:width .2s}
+.commit-pop .step{margin:6px 0 0;font-size:12px;color:var(--muted)}
+.commit-pop h4{margin:12px 0 4px;font-size:11.5px;font-weight:600;color:var(--faint)}
+.commit-pop .recent{display:grid;max-height:250px;overflow:auto;margin:0 -4px}
+.commit-pop .recent button{display:grid;grid-template-columns:auto auto minmax(0,1fr) auto;gap:8px;align-items:baseline;padding:6px 8px;border:0;border-radius:7px;background:none;text-align:left;font-size:12.5px}
+.commit-pop .recent button:hover{background:#eef2f8}
+.commit-pop .recent code{font-size:11.5px}.commit-pop .recent .d{color:var(--faint);font-size:11.5px}
+.commit-pop .recent .m{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.commit-pop .recent .pin{font-size:10.5px;font-weight:600;color:var(--muted);border:1px solid var(--rule);border-radius:5px;padding:1px 5px}
+.toast{position:fixed;left:18px;bottom:18px;z-index:90;max-width:min(560px,calc(100vw - 36px));padding:10px 14px;border-radius:10px;background:var(--ink);color:#fff;font-size:13px;box-shadow:0 18px 40px -20px #18213aaa}
+.toast button{margin-left:10px;border:0;background:none;color:#c9d1e3;text-decoration:underline;font-size:12.5px}
+
+/* Differences from Stable: a dashed ring that never covers a neighbour */
+.delta-added,.delta-changed{outline:2px dashed var(--delta);outline-offset:2px}
+.delta-path{outline:1.5px dashed color-mix(in srgb,var(--delta) 55%,transparent);outline-offset:2px}
+.lnode.delta-added,.lnode.delta-changed{outline-offset:3px}
+.screen-chip .delta-dot{width:7px;height:7px;border-radius:50%;background:var(--delta)}
+.changes{position:absolute;top:12px;right:18px;z-index:45;width:min(500px,calc(100% - 36px));max-height:calc(100% - 24px);display:flex;flex-direction:column;background:var(--sheet);border:1px solid var(--rule-strong);border-radius:14px;box-shadow:0 24px 50px -28px #18213a88}
+.changes header{padding:14px 16px 10px;border-bottom:1px solid var(--rule)}
+.changes h3{margin:0;font-size:14px;font-weight:600}
+.changes .between{margin:3px 0 0;font-size:12px;color:var(--muted)}
+.changes .between code{font-size:11.5px;color:var(--ink)}
+.changes .sum{margin:8px 0 0;font-size:13px}
+.changes .body{overflow:auto;padding:4px 16px 8px}
+.changes h4{margin:12px 0 2px;font-size:11.5px;font-weight:600;color:var(--faint)}
+.changes .item{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:2px 8px;align-items:center;padding:8px 0;border-top:1px solid var(--rule)}
+.changes h4+.item{border-top:0}
+.changes .what{font-size:13px;font-weight:500;min-width:0;overflow-wrap:anywhere}
+.changes .where{grid-column:2;font-size:12px;color:var(--muted)}
+.changes .steps{grid-column:1/-1;margin:4px 0 0;padding-left:18px;font-size:12px}
+.changes .steps li{margin:4px 0}
+.changes .steps .was{color:var(--muted)}
+.changes .steps code{font-size:11.5px}
+.changes .item .tool{height:26px;font-size:12px;padding:0 9px}
+.changes footer{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:10px 16px;border-top:1px solid var(--rule);font-size:12.5px}
+.changes footer label{display:inline-flex;align-items:center;gap:6px;margin-right:auto}
+.changes footer .key{display:inline-block;width:14px;height:10px;border:2px dashed var(--delta);border-radius:3px}
+.status{display:inline-flex;align-items:center;height:18px;padding:0 6px;border-radius:5px;font:600 10.5px/1 var(--sans);white-space:nowrap}
+.status.changed{background:color-mix(in srgb,var(--delta) 12%,#fff);color:var(--delta-ink)}
+.status.added{background:#e9f7ef;color:#166534}
+.status.removed{background:#eef1f5;color:var(--muted)}
+.no-lens{max-width:640px;margin:10vh auto;padding:28px;background:var(--sheet);border:1px solid var(--rule);border-radius:16px}
+.no-lens h2{margin:0 0 8px;font-size:20px;letter-spacing:-.01em}
+.no-lens p{margin:0 0 12px;color:var(--muted);max-width:62ch}
+.no-lens .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.no-lens .links a{display:inline-flex;align-items:center;height:32px;padding:0 12px;border:1px solid var(--rule);border-radius:8px;background:#fff;color:var(--ink);text-decoration:none;font-size:13px}
+.no-lens .links a.primary{background:var(--ink);border-color:var(--ink);color:#fff}
+
+@media (max-width:1520px){.bar h1 .kind{display:none}}
 @media (max-width:900px){
   .lens{height:auto;min-height:100vh}
   .main{grid-template-columns:1fr;gap:18px}
@@ -264,7 +351,9 @@ kbd{font:11px var(--mono);border:1px solid var(--rule-strong);border-bottom-widt
   .snapshot{display:none}
   .screens{margin-left:0}
   body{overflow-x:hidden}
-  .bar{flex-wrap:wrap;row-gap:6px}.bar h1{flex-basis:100%;order:-1;white-space:normal}
+  .bar{flex-wrap:wrap;row-gap:6px}.bar h1{flex-basis:auto;white-space:normal}
+  .source-link{display:none}
+  .menu{width:min(330px,calc(100vw - 24px))}
   .search{flex-basis:100%;order:1;margin-left:0;max-width:none}
   .tray-head{flex-wrap:wrap}
   .main{padding:12px}
@@ -285,11 +374,177 @@ import * as Layout from '../src/shared/vexboard-lens-layout.mjs';
 import * as Interaction from './ui/interaction.mjs';
 import * as Presentation from './ui/presentation.mjs';
 import * as Query from '../src/shared/vexboard-screen-lens-query.mjs';
+import * as Catalog from '../src/shared/vexboard-lens-catalog.mjs';
+import * as Revision from '../src/shared/vexboard-screen-lens-revision.mjs';
 
 const DEFAULT_LENS_URL = '../projects/vexboard/lens/vexlife-android.screen-lens.json';
+const LENS_DIR = '../projects/vexboard/lens/';
+const CATALOG_URL = `${LENS_DIR}catalog.json`;
 const params = new URLSearchParams(location.search);
 const app = document.getElementById('app');
 const SVG = 'http://www.w3.org/2000/svg';
+
+async function fetchJson(url) {
+  const response = await fetch(url, { cache: 'no-store' });
+  if (!response.ok) throw new Error(`${url.replace(LENS_DIR, '')} HTTP ${response.status}`);
+  return response.json();
+}
+const short = (sha) => (sha ? sha.slice(0, 7) : 'unpinned');
+const currentSubject = () => state.request?.subject ?? null;
+const currentBuildRef = () => (state.request?.mode === 'BUILD' ? state.request.build.buildRef : null);
+function currentBuildLabel() {
+  if (state.request?.mode === 'COMMIT') return `Commit ${short(state.commit?.sha)}`;
+  if (state.request?.mode === 'BUILD') return `${state.request.build.label} ${short(state.request.build.commit)}`;
+  return short(state.lens?.sourceSnapshot.commit);
+}
+
+// Any-commit projection runs the same pure adapter the build script runs, loaded only when needed.
+let commitModules = null;
+async function commitTools() {
+  commitModules ??= Promise.all([import('../src/core/vexboard-screen-lens-android-adapter.mjs'), import('../src/shared/vexboard-lens-commit-source.mjs')]);
+  const [Adapter, Source] = await commitModules;
+  return { Adapter, Source };
+}
+const COMMIT_CACHE = 'vexboard.lens.commit.';
+function readCommitCache(key) { try { const raw = sessionStorage.getItem(COMMIT_CACHE + key); return raw ? JSON.parse(raw) : null; } catch { return null; } }
+function writeCommitCache(key, value) { try { sessionStorage.setItem(COMMIT_CACHE + key, JSON.stringify(value)); } catch { /* a cache for this tab only; projecting again is fine */ } }
+async function projectCommitLens(subject, ref, onProgress) {
+  const { Adapter, Source } = await commitTools();
+  const githubFetch = (url, init) => fetch(url, init);
+  const resolved = await Source.resolveCommit({ repositoryUrl: subject.repository.url, ref, fetch: githubFetch });
+  const key = `${subject.slug}.${resolved.sha}.${Adapter.ADAPTER_VERSION}`;
+  const cached = readCommitCache(key);
+  if (cached) return cached;
+  const [adapter, overlay] = await Promise.all([fetchJson(LENS_DIR + subject.lens.adapter), subject.lens.overlay ? fetchJson(LENS_DIR + subject.lens.overlay) : null]);
+  const result = await Source.projectCommit({ adapter, overlay, ref, resolved, fetch: githubFetch, project: Adapter.projectAndroidScreenLens, readPlan: Adapter.adapterReadPlan, onProgress });
+  const value = { lens: result.lens, commit: { ...result.commit, fileCount: result.fileCount, misses: result.report.overlayMisses ?? [] } };
+  writeCommitCache(key, value);
+  return value;
+}
+const stableLenses = new Map();
+async function stableLensFor(subject) {
+  if (!stableLenses.has(subject.slug)) stableLenses.set(subject.slug, fetchJson(LENS_DIR + Catalog.buildFor(subject, 'stable').lens).then((raw) => Lens.normalizeScreenLens(raw)));
+  return stableLenses.get(subject.slug);
+}
+async function lensForRequest(request, onProgress) {
+  if (request.mode === 'LEGACY') return { lens: Lens.normalizeScreenLens(await fetchJson(lensUrlFromParams())), commit: null };
+  if (request.mode === 'BUILD') return { lens: Lens.normalizeScreenLens(await fetchJson(LENS_DIR + request.build.lens)), commit: null };
+  const projected = await projectCommitLens(request.subject, request.commitRef, onProgress);
+  return { lens: Lens.normalizeScreenLens(projected.lens), commit: projected.commit };
+}
+
+// Differences from Stable, by stable identity (D25), with step-level detail for each pathway.
+function computeCompare() {
+  const subject = currentSubject();
+  if (!subject || !state.stableLens || currentBuildRef() === 'stable') return null;
+  if (state.stableLens.sourceSnapshot.commit === state.lens.sourceSnapshot.commit) return null;
+  const comparison = Revision.compareScreenLensRevisions(state.stableLens, state.lens);
+  const details = new Map();
+  for (const ref of [...comparison.pathways.changed, ...comparison.pathways.added, ...comparison.pathways.removed]) {
+    details.set(ref, Revision.comparePathwayRevision(Lens.pathwayFor(state.stableLens, ref), Lens.pathwayFor(state.lens, ref)));
+  }
+  const elements = new Map([...comparison.elements.added.map((ref) => [ref, 'delta-added']), ...comparison.elements.changed.map((ref) => [ref, 'delta-changed'])]);
+  const pathways = new Set([...comparison.pathways.changed, ...comparison.pathways.added]);
+  const screens = new Set();
+  for (const screen of state.lens.screens) {
+    if (comparison.screens.added.includes(screen.screenRef) || comparison.screens.changed.includes(screen.screenRef)
+      || screen.elements.some((element) => elements.has(element.ref) || pathways.has(element.pathwayRef))) screens.add(screen.screenRef);
+  }
+  const count = comparison.summary.entityChangeCount + comparison.summary.relatedBoardChangeCount;
+  return { comparison, details, elements, pathways, screens, count };
+}
+function deltaClass(element) {
+  if (!state.compare || !state.marks) return '';
+  if (state.compare.elements.has(element.ref)) return ` ${state.compare.elements.get(element.ref)}`;
+  return element.pathwayRef && state.compare.pathways.has(element.pathwayRef) ? ' delta-path' : '';
+}
+function nodeDeltaClass(nodeRef) {
+  if (!state.compare || !state.marks) return '';
+  const detail = state.compare.details.get(state.pathwayRef);
+  if (!detail) return '';
+  if (detail.nodes.added.includes(nodeRef)) return ' delta-added';
+  return detail.nodeChanges.some((change) => change.ref === nodeRef) ? ' delta-changed' : '';
+}
+
+function showToast(text, { action = null } = {}) {
+  state.toast = { text, action, id: Symbol('toast') };
+  const id = state.toast.id;
+  renderToast();
+  setTimeout(() => { if (state.toast?.id === id) { state.toast = null; renderToast(); } }, 7000);
+}
+function renderToast() {
+  document.querySelector('.toast')?.remove();
+  if (!state.toast) return;
+  document.body.append(h('div', { class: 'toast', role: 'status' }, state.toast.text,
+    state.toast.action ? h('button', { onclick: () => { const run = state.toast.action.run; state.toast = null; renderToast(); run(); } }, state.toast.action.label) : null));
+}
+
+// Open another build or commit in place, keeping the screen, control and faces when they still exist.
+async function openRequest(request, { onProgress = () => {}, announce = true } = {}) {
+  const keepScreen = state.lens ? screenRef() : null;
+  const keepElement = state.anchorElementRef;
+  const loaded = await lensForRequest(request, onProgress);
+  state.request = request;
+  state.lens = loaded.lens;
+  state.commit = loaded.commit;
+  state.stableLens = request.mode === 'BUILD' && request.build.buildRef === 'stable' ? state.lens : (request.subject ? await stableLensFor(request.subject).catch(() => null) : null);
+  state.compare = computeCompare();
+  state.menu = null;
+  state.layouts.clear();
+  state.cameras.clear();
+  const start = keepScreen && state.lens.screens.some((screen) => screen.screenRef === keepScreen) ? keepScreen : state.lens.entryScreenRef;
+  state.walk = Lens.createScreenWalk(state.lens, start);
+  state.selected = null; state.anchorElementRef = null; state.pathwayRef = null;
+  if (state.overlay === 'CHANGES' && !state.compare) state.overlay = null;
+  if (keepElement && Lens.elementsForScreen(state.lens, start).some((element) => element.ref === keepElement)) selectElement(keepElement);
+  else render();
+  if (announce && request.mode === 'COMMIT') {
+    const misses = state.commit.misses.length;
+    showToast(`Projected ${short(state.commit.sha)} in your browser from ${state.commit.fileCount} source files.${misses ? ` ${misses} overlay ${misses === 1 ? 'note does' : 'notes do'} not apply at this commit.` : ''}`);
+  }
+}
+async function switchBuild(buildRef) {
+  const subject = currentSubject();
+  const build = Catalog.buildFor(subject, buildRef);
+  if (!build || (state.request?.mode === 'BUILD' && state.request.build.buildRef === buildRef)) return;
+  try { await openRequest({ mode: 'BUILD', subject, build, commitRef: null }); }
+  catch (error) { showToast(`Could not open ${build.label}: ${error.message}`); }
+}
+function commitRefFromInput(value) {
+  const text = String(value ?? '').trim();
+  const pasted = /^https:\/\/github\.com\/[^/]+\/[^/]+\/(?:commit|tree)\/([^?#]+)/.exec(text);
+  return pasted ? decodeURIComponent(pasted[1]) : text;
+}
+async function openCommit(rawValue) {
+  const subject = currentSubject();
+  const form = state.commitForm;
+  let ref;
+  try { ref = Catalog.validateSourceRef(commitRefFromInput(rawValue)); }
+  catch (error) { form.error = error.message.replace(/^lens catalog: /, ''); renderBarInPlace(); return; }
+  form.value = ref; form.busy = true; form.error = null; form.progress = { phase: 'RESOLVE', done: 0, total: 0 };
+  renderBarInPlace();
+  try {
+    await openRequest({ mode: 'COMMIT', subject, build: null, commitRef: ref }, { onProgress: (progress) => { form.progress = progress; renderCommitProgress(); } });
+    form.busy = false; form.progress = null;
+  } catch (error) {
+    form.busy = false; form.progress = null; form.error = error.message;
+    state.menu = 'COMMIT';
+    renderBarInPlace();
+  }
+}
+async function loadRecentCommits() {
+  const subject = currentSubject();
+  const form = state.commitForm;
+  if (form.recent || form.recentError || !subject) return;
+  try {
+    const { Source } = await commitTools();
+    const branch = Catalog.buildFor(subject, 'main').branch ?? subject.repository.defaultBranch;
+    form.recent = await Source.listRecentCommits({ repositoryUrl: subject.repository.url, branch, fetch: (url, init) => fetch(url, init), count: 12 });
+  } catch (error) {
+    form.recentError = error.message;
+  }
+  if (state.menu === 'COMMIT') renderBarInPlace();
+}
 
 function lensUrlFromParams() {
   const requested = params.get('lens');
@@ -338,6 +593,16 @@ const state = {
   overlay: null, // 'MAP' | 'LEGEND'
   trayCollapsed: false,
   palette: 'STANDARD',
+  // Which project and build is on screen, and how it differs from Stable.
+  catalog: null,
+  request: null, // Catalog.resolveLensRequest(...) result, or { mode: 'LEGACY' }
+  commit: null, // { sha, date, message, fileCount, misses } when a commit was projected in this browser
+  stableLens: null,
+  compare: null,
+  marks: true,
+  menu: null, // 'PROJECT' | 'COMMIT'
+  commitForm: { value: '', busy: false, progress: null, error: null, recent: null, recentError: null },
+  toast: null,
 };
 let refs = {};
 
@@ -525,21 +790,114 @@ function briefButtons() {
 }
 
 /* ---------- top bar and atlas ---------- */
+function renderProjectMenu(subject) {
+  const open = state.menu === 'PROJECT';
+  const wrap = h('div', { class: 'project' },
+    h('button', { class: 'project-btn', 'aria-haspopup': 'true', 'aria-expanded': open ? 'true' : 'false', title: 'Switch project',
+      onclick: (event) => { event.stopPropagation(); state.menu = open ? null : 'PROJECT'; renderBarInPlace(); if (!open) requestAnimationFrame(() => document.querySelector('.menu a')?.focus()); } },
+      subject.label, h('span', { class: 'caret', 'aria-hidden': 'true' })));
+  if (!open || !state.catalog) return wrap;
+  const line = (entry) => {
+    if (entry.lens.status !== 'GENERATED') return `No Screen Lens yet · ${entry.boards.length} board${entry.boards.length === 1 ? '' : 's'}`;
+    const stable = Catalog.buildFor(entry, 'stable');
+    return `Screen Lens · Stable ${short(stable.commit)}${Catalog.sameCommit(entry) ? ' · Main = Stable' : ` · Main ${short(Catalog.buildFor(entry, 'main').commit)}`}`;
+  };
+  wrap.append(h('nav', { class: 'menu', 'aria-label': 'Projects' },
+    state.catalog.subjects.map((entry) => h('a', {
+      href: entry.lens.status === 'GENERATED' ? Catalog.lensHref(entry) : `./projects.html#${entry.slug}`,
+      'aria-current': entry.subjectRef === subject.subjectRef ? 'page' : null,
+    }, h('span', { class: 'tick', 'aria-hidden': 'true' }), h('span', { class: 'ml' }, entry.label), h('span', { class: 'md' }, line(entry)))),
+    h('hr'),
+    h('a', { href: './projects.html' }, h('span', { class: 'tick', 'aria-hidden': 'true' }), h('span', { class: 'ml' }, 'All projects'), h('span', { class: 'md' }, 'Builds, boards and earlier canvas trials'))));
+  return wrap;
+}
+function renderBuildSwitch(subject) {
+  const stable = Catalog.buildFor(subject, 'stable');
+  const main = Catalog.buildFor(subject, 'main');
+  const pressed = (ref) => (currentBuildRef() === ref ? 'true' : 'false');
+  const inCommit = state.request?.mode === 'COMMIT';
+  const wrap = h('div', { class: 'builds', role: 'group', 'aria-label': 'Build' },
+    h('button', { 'aria-pressed': pressed('stable'), title: `Stable: ${stable.summary ?? 'the accepted projection'}${stable.since ? `\nSince ${stable.since}` : ''}\n${stable.commit}`, onclick: () => switchBuild('stable') },
+      'Stable', h('span', { class: 'sha' }, short(stable.commit))),
+    h('button', { 'aria-pressed': pressed('main'), title: Catalog.sameCommit(subject) ? `Main points at the same commit as Stable.\n${main.commit}` : `Main: ${main.summary ?? 'the latest projected commit'}\n${main.commit}`, onclick: () => switchBuild('main') },
+      'Main', h('span', { class: 'sha' }, Catalog.sameCommit(subject) ? '= Stable' : short(main.commit))),
+    subject.lens.anyCommit ? h('button', {
+      'aria-pressed': inCommit ? 'true' : 'false', 'aria-expanded': state.menu === 'COMMIT' ? 'true' : 'false',
+      title: inCommit ? `Projected in your browser from public source at ${state.commit.sha}${state.commit.date ? ` (${state.commit.date.slice(0, 10)})` : ''}.\nNot an accepted build.` : 'Open any commit, branch or tag',
+      onclick: (event) => { event.stopPropagation(); state.menu = state.menu === 'COMMIT' ? null : 'COMMIT'; renderBarInPlace(); if (state.menu === 'COMMIT') { loadRecentCommits(); requestAnimationFrame(() => document.getElementById('commit-ref')?.focus()); } },
+    }, inCommit ? ['Commit', h('span', { class: 'sha' }, short(state.commit.sha))] : 'Commit…') : null);
+  if (state.menu === 'COMMIT') wrap.append(renderCommitPopover(subject));
+  return wrap;
+}
+function renderCommitPopover(subject) {
+  const form = state.commitForm;
+  const stable = Catalog.buildFor(subject, 'stable');
+  const main = Catalog.buildFor(subject, 'main');
+  const pins = (sha) => [sha === stable.commit ? 'Stable' : null, sha === main.commit ? 'Main' : null].filter(Boolean).join(' · ');
+  const input = h('input', { id: 'commit-ref', name: 'commit', autocomplete: 'off', spellcheck: 'false', placeholder: 'SHA, branch, tag or GitHub link', value: form.value, disabled: form.busy, 'aria-describedby': 'commit-help' });
+  input.addEventListener('input', () => { form.value = input.value; });
+  const pop = h('div', { class: 'commit-pop', role: 'dialog', 'aria-label': 'Open a commit', onclick: (event) => event.stopPropagation() },
+    h('label', { for: 'commit-ref' }, `Open ${subject.label} at any commit`),
+    h('form', { onsubmit: (event) => { event.preventDefault(); openCommit(input.value); } }, input, h('button', { class: 'primary', type: 'submit', disabled: form.busy }, form.busy ? 'Opening…' : 'Open')),
+    h('p', { class: 'help', id: 'commit-help' }, 'Projected in your browser from public GitHub source with the same adapter as Stable and Main. Nothing is saved or committed.'),
+    form.error ? h('p', { class: 'error', role: 'alert' }, form.error) : null,
+    form.busy ? renderProgressBlock(form.progress) : null);
+  if (!form.busy) {
+    pop.append(h('h4', {}, `Recent on ${main.branch ?? subject.repository.defaultBranch}`));
+    if (form.recentError) pop.append(h('p', { class: 'help' }, form.recentError));
+    else if (!form.recent) pop.append(h('p', { class: 'help' }, 'Loading…'));
+    else pop.append(h('div', { class: 'recent' }, form.recent.map((commit) => h('button', { type: 'button', title: commit.message, onclick: () => (pins(commit.sha) ? switchBuild(commit.sha === stable.commit ? 'stable' : 'main') : openCommit(commit.sha)) },
+      h('code', {}, short(commit.sha)), h('span', { class: 'd' }, commit.date ? commit.date.slice(0, 10) : ''), h('span', { class: 'm' }, commit.message), pins(commit.sha) ? h('span', { class: 'pin' }, pins(commit.sha)) : h('span')))));
+  }
+  return pop;
+}
+function renderProgressBlock(progress) {
+  const p = progress ?? { phase: 'RESOLVE', done: 0, total: 0 };
+  const share = p.phase === 'PROJECT' ? 100 : p.total ? Math.round((p.done / p.total) * 92) + 4 : 4;
+  const words = { RESOLVE: 'Finding the commit on GitHub…', FETCH: `Reading ${p.done} of ${p.total} source files…`, PROJECT: 'Projecting with the adapter…' }[p.phase];
+  return h('div', { class: 'progress-block' }, h('div', { class: 'progress', role: 'progressbar', 'aria-valuemin': '0', 'aria-valuemax': '100', 'aria-valuenow': String(share) }, h('span', { style: `width:${share}%` })), h('p', { class: 'step' }, words));
+}
+function renderCommitProgress() {
+  const block = document.querySelector('.commit-pop .progress-block');
+  if (block) block.replaceWith(renderProgressBlock(state.commitForm.progress));
+}
+function renderDeltaChip() {
+  if (!currentSubject() || currentBuildRef() === 'stable' || !state.stableLens) return null;
+  if (!state.compare) return null;
+  if (!state.compare.count) return h('span', { class: 'delta-chip same', title: 'The commit differs from Stable, but nothing this lens projects changed: same screens, controls, pathways and notes.' }, 'Same meaning as Stable');
+  const n = state.compare.count;
+  return h('button', { class: 'delta-chip', 'aria-pressed': state.overlay === 'CHANGES' ? 'true' : 'false', onclick: () => { state.overlay = state.overlay === 'CHANGES' ? null : 'CHANGES'; render(); } },
+    `${n} difference${n === 1 ? '' : 's'} vs Stable`);
+}
 function renderBar() {
   const snapshot = state.lens.sourceSnapshot;
   const repoName = snapshot.repositoryUrl ? snapshot.repositoryUrl.split('/').slice(-1)[0] : snapshot.repositoryRef;
-  const commit = snapshot.commit ? snapshot.commit.slice(0, 7) : 'unpinned';
-  const commitLink = snapshot.repositoryUrl && snapshot.commit ? h('a', { href: `${snapshot.repositoryUrl}/tree/${snapshot.commit}`, target: '_blank', rel: 'noopener' }, h('code', {}, `${repoName} @ ${commit}`)) : h('code', {}, `${repoName} @ ${commit}`);
+  const commit = short(snapshot.commit);
+  const where = `Read-only projection of ${repoName} @ ${commit}`;
+  const commitLink = snapshot.repositoryUrl && snapshot.commit
+    ? h('a', { class: 'source-link', href: `${snapshot.repositoryUrl}/tree/${snapshot.commit}`, target: '_blank', rel: 'noopener', title: `${where}\n${snapshot.notes.join('\n')}`, 'aria-label': where }, 'Source')
+    : h('span', { class: 'source-link', title: where }, `${repoName}@${commit}`);
+  const subject = currentSubject();
   return h('header', { class: 'bar' },
-    h('a', { class: 'crumb', href: './' }, 'VexBoard'),
-    h('h1', {}, state.lens.title),
-    h('span', { class: 'snapshot', title: snapshot.notes.join('\n') }, 'Read-only projection of ', commitLink),
+    h('a', { class: 'crumb', href: './projects.html', title: 'All projects' }, 'VexBoard'),
+    subject ? h('h1', {}, renderProjectMenu(subject), h('span', { class: 'kind' }, '· Screen Lens')) : h('h1', {}, state.lens.title),
+    subject ? renderBuildSwitch(subject) : null,
+    commitLink,
+    renderDeltaChip(),
     renderSearch(),
     h('button', { class: 'tool', 'aria-pressed': state.overlay === 'MAP', onclick: () => { state.overlay = state.overlay === 'MAP' ? null : 'MAP'; render(); } }, 'Screen map'),
     state.lens.relatedBoardRefs.length ? h('button', { class: 'tool', 'aria-pressed': state.overlay === 'RELATED', onclick: () => { state.overlay = state.overlay === 'RELATED' ? null : 'RELATED'; render(); } }, `Related ${state.lens.relatedBoardRefs.length}`) : null,
     h('button', { class: 'tool', 'aria-pressed': state.overlay === 'LEGEND', onclick: () => { state.overlay = state.overlay === 'LEGEND' ? null : 'LEGEND'; render(); } }, 'Legend'),
     h('button', { class: 'tool', title: 'Cycle color presentation', onclick: () => { state.palette = Presentation.nextPaletteMode(state.palette); writePalette(state.palette); applyPalette(); } }, paletteLabel()),
   );
+}
+// Menus re-render only the header, so the board keeps its scroll and camera.
+function renderBarInPlace() {
+  const bar = document.querySelector('.lens > .bar');
+  if (!bar) return;
+  const next = renderBar();
+  bar.replaceWith(next);
+  applyPalette();
 }
 function paletteLabel() { return { STANDARD: 'Colors: standard', COLOR_SAFE: 'Colors: color-safe', HIGH_CONTRAST: 'Colors: high contrast' }[state.palette]; }
 function applyPalette() {
@@ -574,7 +932,8 @@ function renderAtlas() {
     class: `screen-chip${screen.screenRef === screenRef() ? ' current' : ''}`,
     title: (() => { const coverage = Query.screenCoverage(state.lens, screen.screenRef); return `${screen.summary ?? ''}\n${screen.mapped.replace('_', ' ').toLowerCase()} · ${coverage.traced} of ${coverage.interactive} controls traced`; })(),
     onclick: () => jumpTo(screen.screenRef),
-  }, h('span', { class: `mapped ${screen.mapped}`, 'aria-hidden': 'true' }), screen.label, counts.get(screen.screenRef) > 1 ? h('span', { class: 'visits' }, `×${counts.get(screen.screenRef)}`) : null);
+  }, h('span', { class: `mapped ${screen.mapped}`, 'aria-hidden': 'true' }), screen.label, counts.get(screen.screenRef) > 1 ? h('span', { class: 'visits' }, `×${counts.get(screen.screenRef)}`) : null,
+    state.marks && state.compare?.screens.has(screen.screenRef) ? h('span', { class: 'delta-dot', title: 'Differs from Stable', 'aria-label': 'differs from Stable' }) : null);
   const primary = state.lens.screens.filter((screen) => screen.placement === 'PRIMARY');
   const shared = state.lens.screens.filter((screen) => screen.placement === 'SHARED');
   return h('div', { class: 'atlas' }, walk,
@@ -595,7 +954,9 @@ function markElement(node, element, marks) {
   if (marks.selected === element.ref) node.classList.add('sel');
   if (marks.ancestors.has(element.ref)) node.classList.add('anc');
   if (element.pathwayRef) node.classList.add('has-path');
-  node.title = `${element.label} · ${element.ref}`;
+  const delta = deltaClass(element).trim();
+  if (delta) node.classList.add(delta);
+  node.title = `${element.label} · ${element.ref}${delta ? `\n${delta === 'delta-added' ? 'Not in Stable' : delta === 'delta-changed' ? 'Differs from Stable' : 'Its pathway differs from Stable'}` : ''}`;
   node.addEventListener('click', (event) => { event.stopPropagation(); selectElement(element.ref); });
   if (element.navigatesTo) node.addEventListener('dblclick', (event) => { event.stopPropagation(); travel(element); });
   return node;
@@ -699,7 +1060,7 @@ function renderStructure() {
     const rows = [];
     const walkTree = (tree, depth) => {
       const { element } = tree;
-      const row = h('div', { class: `srow${marks.selected === element.ref ? ' sel' : ''}${marks.ancestors.has(element.ref) ? ' anc' : ''}`, style: `--d:${depth};${depth ? '' : '--guide:none'}`, role: 'treeitem', tabindex: '0', 'aria-level': depth + 1, dataset: { ref: element.ref },
+      const row = h('div', { class: `srow${marks.selected === element.ref ? ' sel' : ''}${marks.ancestors.has(element.ref) ? ' anc' : ''}${deltaClass(element)}`, style: `--d:${depth};${depth ? '' : '--guide:none'}`, role: 'treeitem', tabindex: '0', 'aria-level': depth + 1, dataset: { ref: element.ref },
         onclick: () => selectElement(element.ref),
         onkeydown: (event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); selectElement(element.ref); } },
         ondblclick: () => travel(element) },
@@ -791,7 +1152,7 @@ function renderGraphFace(face) {
     const port = portsOut[0] ?? portsIn[0] ?? null;
     const other = port ? Lens.LENS_FACES[port.otherFace].title : null;
     const card = h('div', {
-      class: `lnode role-${node.role}${selectedRef === node.ref ? ' sel' : ''}${entryRef === node.ref && !selectedRef ? ' entry' : ''}`,
+      class: `lnode role-${node.role}${selectedRef === node.ref ? ' sel' : ''}${entryRef === node.ref && !selectedRef ? ' entry' : ''}${nodeDeltaClass(node.ref)}`,
       style: `left:${placed.x}px;top:${placed.y}px;width:${placed.width}px;height:${placed.height}px`,
       role: 'button', tabindex: '0', dataset: { nodeRef: node.ref },
       'aria-label': `${Lens.roleFor(node.role).label}: ${node.label}`,
@@ -1216,6 +1577,151 @@ function renderRelatedBoards() {
     h('button', { class: 'tool', style: 'margin-top:12px', onclick: () => { state.overlay = null; render(); } }, 'Close'));
 }
 
+function changeWhere(lens, pathwayRef) {
+  const element = Lens.elementsUsingPathway(lens, pathwayRef)[0];
+  if (!element) return null;
+  const screen = lens.screens.find((entry) => entry.elements.some((candidate) => candidate.ref === element.ref));
+  return { element, screen };
+}
+function showChange({ elementRef = null, screenRef: target = null, nodeRef = null }) {
+  state.overlay = null;
+  if (target && target !== screenRef()) state.walk = Lens.advanceScreenWalk(state.lens, state.walk, { toScreenRef: target, how: 'JUMP' });
+  if (elementRef) {
+    selectElement(elementRef);
+    if (nodeRef && pathwayNode(nodeRef)) selectNode(nodeRef, { reveal: true });
+  } else render();
+}
+function stepLines(detail) {
+  const base = Lens.pathwayFor(state.stableLens, detail.pathwayRef);
+  const next = Lens.pathwayFor(state.lens, detail.pathwayRef);
+  const nodeIn = (pathway, ref) => pathway?.nodes.find((node) => node.ref === ref) ?? null;
+  const lines = [];
+  for (const change of detail.nodeChanges) {
+    const was = nodeIn(base, change.ref); const now = nodeIn(next, change.ref);
+    const shown = change.fields.includes('symbol') ? 'symbol' : change.fields.includes('label') ? 'label' : null;
+    lines.push({ ref: change.ref, text: shown
+      ? [h('code', {}, now[shown]), h('span', { class: 'was' }, ` here; Stable has `), h('code', {}, was[shown])]
+      : [h('b', {}, now.label), h('span', { class: 'was' }, ` differs in ${change.fields.join(', ')}`)] });
+  }
+  for (const ref of detail.nodes.added) lines.push({ ref, text: [h('span', { class: 'was' }, 'Step only here: '), h('b', {}, nodeIn(next, ref)?.label ?? ref)] });
+  for (const ref of detail.nodes.removed) lines.push({ ref: null, text: [h('span', { class: 'was' }, 'Step only in Stable: '), h('b', {}, nodeIn(base, ref)?.label ?? ref)] });
+  const edges = detail.edges.added.length + detail.edges.removed.length + detail.edges.changed.length;
+  if (edges) lines.push({ ref: null, text: h('span', { class: 'was' }, `${edges} relationship${edges === 1 ? '' : 's'} between steps differ`) });
+  if (detail.fields.length) lines.push({ ref: null, text: h('span', { class: 'was' }, `Pathway ${detail.fields.join(', ')} differ`) });
+  return lines;
+}
+function changesMarkdown() {
+  const { comparison, details } = state.compare;
+  const subject = currentSubject();
+  const out = [`# ${subject.label}: ${currentBuildLabel()} compared with Stable ${short(state.stableLens.sourceSnapshot.commit)}`, ''];
+  out.push(`- here: ${state.lens.sourceSnapshot.repositoryUrl}/tree/${state.lens.sourceSnapshot.commit}`, `- Stable: ${state.stableLens.sourceSnapshot.repositoryUrl}/tree/${state.stableLens.sourceSnapshot.commit}`, `- open: ${location.href}`, '');
+  const section = (title, diff) => {
+    const rows = [...diff.changed.map((ref) => `- differs: ${ref}`), ...diff.added.map((ref) => `- only here: ${ref}`), ...diff.removed.map((ref) => `- only in Stable: ${ref}`)];
+    if (rows.length) out.push(`## ${title}`, ...rows, '');
+  };
+  section('Screens', comparison.screens);
+  section('Controls and containers', comparison.elements);
+  if (details.size) {
+    out.push('## Pathways');
+    for (const detail of details.values()) {
+      out.push(`- ${detail.status.toLowerCase()}: ${detail.pathwayRef}`);
+      for (const change of detail.nodeChanges) out.push(`  - step ${change.ref} differs in ${change.fields.join(', ')}`);
+      for (const ref of detail.nodes.added) out.push(`  - step only here: ${ref}`);
+      for (const ref of detail.nodes.removed) out.push(`  - step only in Stable: ${ref}`);
+    }
+    out.push('');
+  }
+  section('Notes', comparison.annotations);
+  if (comparison.relatedBoards.added.length || comparison.relatedBoards.removed.length) out.push('## Related boards', ...comparison.relatedBoards.added.map((ref) => `- only here: ${ref}`), ...comparison.relatedBoards.removed.map((ref) => `- only in Stable: ${ref}`), '');
+  return out.join('\n');
+}
+function renderChanges() {
+  const { comparison, details } = state.compare;
+  const subject = currentSubject();
+  const counted = (n, one, many) => `${n} ${n === 1 ? one : many}`;
+  const parts = [
+    details.size ? counted(details.size, 'pathway', 'pathways') : null,
+    comparison.summary.changedElementCount ? counted(comparison.summary.changedElementCount, 'control or container', 'controls or containers') : null,
+    comparison.summary.changedScreenCount ? counted(comparison.summary.changedScreenCount, 'screen', 'screens') : null,
+    comparison.annotations.added.length + comparison.annotations.removed.length + comparison.annotations.changed.length ? counted(comparison.annotations.added.length + comparison.annotations.removed.length + comparison.annotations.changed.length, 'note', 'notes') : null,
+    comparison.summary.relatedBoardChangeCount ? counted(comparison.summary.relatedBoardChangeCount, 'related board', 'related boards') : null,
+  ].filter(Boolean);
+  const status = (word) => h('span', { class: `status ${word}` }, { changed: 'differs', added: 'only here', removed: 'only in Stable' }[word]);
+  const kindOf = (diff, ref) => (diff.added.includes(ref) ? 'added' : diff.removed.includes(ref) ? 'removed' : 'changed');
+  const body = h('div', { class: 'body' });
+  if (details.size) {
+    body.append(h('h4', {}, 'Pathways'));
+    for (const detail of details.values()) {
+      const kind = kindOf(comparison.pathways, detail.pathwayRef);
+      const pathway = Lens.pathwayFor(state.lens, detail.pathwayRef) ?? Lens.pathwayFor(state.stableLens, detail.pathwayRef);
+      const at = changeWhere(kind === 'removed' ? state.stableLens : state.lens, detail.pathwayRef);
+      const lines = stepLines(detail);
+      const firstStep = lines.find((line) => line.ref)?.ref ?? null;
+      body.append(h('div', { class: 'item' }, status(kind),
+        h('span', { class: 'what' }, pathway.label),
+        kind === 'removed' || !at ? h('span') : h('button', { class: 'tool', onclick: () => showChange({ elementRef: at.element.ref, screenRef: at.screen?.screenRef, nodeRef: firstStep }) }, 'Show'),
+        at ? h('span', { class: 'where' }, `${at.element.label}${at.screen ? ` on ${at.screen.label}` : ''}`) : null,
+        lines.length ? h('ul', { class: 'steps' }, lines.map((line) => h('li', {}, line.text))) : null));
+    }
+  }
+  const elementsChanged = [...comparison.elements.changed, ...comparison.elements.added, ...comparison.elements.removed];
+  if (elementsChanged.length) {
+    body.append(h('h4', {}, 'Controls and containers'));
+    for (const ref of elementsChanged) {
+      const kind = kindOf(comparison.elements, ref);
+      const lens = kind === 'removed' ? state.stableLens : state.lens;
+      const element = Lens.elementFor(lens, ref);
+      const screen = lens.screens.find((entry) => entry.elements.some((candidate) => candidate.ref === ref));
+      body.append(h('div', { class: 'item' }, status(kind), h('span', { class: 'what' }, element?.label ?? ref),
+        kind === 'removed'
+          ? h('a', { class: 'tool', style: 'display:inline-flex;align-items:center;text-decoration:none;color:inherit', href: Catalog.lensHref(subject, { screen: screen?.screenRef, element: ref }) }, 'Open in Stable')
+          : h('button', { class: 'tool', onclick: () => showChange({ elementRef: ref, screenRef: screen?.screenRef }) }, 'Show'),
+        h('span', { class: 'where' }, screen ? screen.label : 'App chrome')));
+    }
+  }
+  const screensChanged = [...comparison.screens.changed, ...comparison.screens.added, ...comparison.screens.removed];
+  if (screensChanged.length) {
+    body.append(h('h4', {}, 'Screens'));
+    for (const ref of screensChanged) {
+      const kind = kindOf(comparison.screens, ref);
+      const screen = Lens.screenFor(kind === 'removed' ? state.stableLens : state.lens, ref);
+      body.append(h('div', { class: 'item' }, status(kind), h('span', { class: 'what' }, screen?.label ?? ref),
+        kind === 'removed' ? h('span') : h('button', { class: 'tool', onclick: () => showChange({ screenRef: ref }) }, 'Show')));
+    }
+  }
+  const notes = comparison.annotations;
+  if (notes.added.length + notes.removed.length + notes.changed.length) {
+    body.append(h('h4', {}, 'Notes'), h('p', { class: 'between' }, [notes.changed.length ? `${notes.changed.length} differ` : null, notes.added.length ? `${notes.added.length} only here` : null, notes.removed.length ? `${notes.removed.length} only in Stable` : null].filter(Boolean).join(' · ')));
+  }
+  const copy = h('button', { class: 'tool', onclick: async () => { const text = changesMarkdown(); try { await navigator.clipboard.writeText(text); copy.textContent = 'Copied'; } catch { showBriefFallback('Differences from Stable', text); } } }, 'Copy as text');
+  return h('aside', { class: 'changes', role: 'dialog', 'aria-label': 'Differences from Stable' },
+    h('header', {},
+      h('h3', {}, 'Differences from Stable'),
+      h('p', { class: 'between' }, 'Here ', h('code', {}, currentBuildLabel()), ' · Stable ', h('code', {}, short(state.stableLens.sourceSnapshot.commit)), state.request.mode === 'COMMIT' ? ' · projected in your browser' : ''),
+      h('p', { class: 'sum' }, parts.length ? `${parts.join(', ')} ${parts.length === 1 && parts[0].startsWith('1 ') ? 'differs' : 'differ'}. Everything else is the same.` : 'Nothing differs.')),
+    body,
+    h('footer', {},
+      h('label', {}, (() => { const box = h('input', { type: 'checkbox' }); box.checked = state.marks; box.addEventListener('change', () => { state.marks = box.checked; render(); }); return box; })(), h('span', { class: 'key', 'aria-hidden': 'true' }), 'Mark differences on the board'),
+      copy,
+      h('button', { class: 'tool', onclick: () => { state.overlay = null; render(); } }, 'Close')));
+}
+function renderNoLens() {
+  const subject = currentSubject();
+  const root = h('div', { class: 'lens' });
+  root.append(h('header', { class: 'bar' },
+    h('a', { class: 'crumb', href: './projects.html', title: 'All projects' }, 'VexBoard'),
+    h('h1', {}, renderProjectMenu(subject), h('span', { class: 'kind' }, '· Screen Lens'))));
+  root.append(h('section', { class: 'no-lens' },
+    h('h2', {}, `${subject.label} has no Screen Lens yet`),
+    h('p', {}, subject.lens.reason),
+    h('p', {}, h('b', {}, 'Next: '), subject.lens.next),
+    h('div', { class: 'links' },
+      h('a', { class: 'primary', href: `./projects.html#${subject.slug}` }, 'Back to projects'),
+      subject.boards.map((board) => h('a', { href: Catalog.boardHref(board.boardRef) }, board.label)),
+      h('a', { href: subject.repository.url, target: '_blank', rel: 'noopener' }, 'Source on GitHub'))));
+  app.replaceChildren(root);
+}
+
 function renderLegend() {
   const bands = Object.values(Lens.LENS_BANDS).map((band) => h('div', { class: 'band' },
     h('div', {}, h('b', {}, band.label), h('div', { class: 'muted' }, band.question)),
@@ -1284,6 +1790,13 @@ function placeSurfaceFloaters() {
 /* ---------- render ---------- */
 function syncUrl() {
   const next = new URLSearchParams(location.search);
+  const subject = currentSubject();
+  if (subject && state.request.mode !== 'LEGACY') {
+    next.delete('lens');
+    next.set('subject', subject.slug);
+    if (state.request.mode === 'COMMIT') { next.set('commit', state.commit.sha); next.delete('build'); }
+    else { next.delete('commit'); if (currentBuildRef() === 'stable') next.delete('build'); else next.set('build', currentBuildRef()); }
+  }
   next.set('screen', screenRef());
   if (state.anchorElementRef) next.set('element', state.anchorElementRef); else next.delete('element');
   next.set('left', state.faces.EXPERIENCE); next.set('right', state.faces.BEHAVIOR);
@@ -1297,6 +1810,7 @@ function render() {
   main.append(bridge);
   if (state.overlay === 'MAP') main.append(renderMap());
   if (state.overlay === 'RELATED') main.append(renderRelatedBoards());
+  if (state.overlay === 'CHANGES' && state.compare?.count) main.append(renderChanges());
   if (state.overlay === 'LEGEND') main.append(renderLegend());
   root.append(renderBar(), renderAtlas(), main, renderTray());
   app.replaceChildren(root);
@@ -1321,14 +1835,41 @@ window.addEventListener('keydown', (event) => {
   else if (event.key === ']') { flip('BEHAVIOR'); }
   else if (event.key === '/') { event.preventDefault(); document.getElementById('lens-search')?.focus(); }
   else if (event.key === 'm' || event.key === 'M') { state.overlay = state.overlay === 'MAP' ? null : 'MAP'; render(); }
-  else if (event.key === 'Escape') { if (state.overlay) { state.overlay = null; render(); } else clearSelection(); }
+  else if (event.key === 'Escape') { if (state.menu) { state.menu = null; renderBarInPlace(); } else if (state.overlay) { state.overlay = null; render(); } else clearSelection(); }
+});
+window.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && state.menu && event.target.closest?.('input')) { state.menu = null; renderBarInPlace(); }
+});
+document.addEventListener('pointerdown', (event) => {
+  if (state.menu && !event.target.closest?.('.menu, .commit-pop, .project-btn, .builds > button')) { state.menu = null; renderBarInPlace(); }
 });
 
 async function boot() {
   state.palette = readPalette();
-  const response = await fetch(lensUrlFromParams(), { cache: 'no-store' });
-  if (!response.ok) throw new Error(`lens file HTTP ${response.status}`);
-  state.lens = Lens.normalizeScreenLens(await response.json());
+  try { state.catalog = Catalog.normalizeLensCatalog(await fetchJson(CATALOG_URL)); }
+  catch (error) { state.catalog = null; console.warn('VexBoard catalog unavailable; opening the default lens', error); }
+  const request = state.catalog ? Catalog.resolveLensRequest(state.catalog, params) : { mode: 'LEGACY', subject: null, build: null, commitRef: null, notice: null };
+  if (request.mode === 'NO_LENS') { state.request = request; renderNoLens(); return; }
+  let loaded;
+  try {
+    if (request.mode === 'COMMIT') app.replaceChildren(h('section', { class: 'boot' }, h('h1', {}, `Projecting ${request.subject.label} at ${request.commitRef}…`), h('p', {}, 'Reading public source from GitHub in your browser.')));
+    loaded = await lensForRequest(request);
+    state.request = request;
+  } catch (error) {
+    if (request.mode !== 'COMMIT') throw error;
+    const stable = Catalog.buildFor(request.subject, 'stable');
+    state.request = { mode: 'BUILD', subject: request.subject, build: stable, commitRef: null, notice: null };
+    loaded = await lensForRequest(state.request);
+    request.notice = `${error.message} Showing Stable.`;
+  }
+  state.lens = loaded.lens;
+  state.commit = loaded.commit;
+  if (state.request.subject) {
+    state.stableLens = currentBuildRef() === 'stable' ? state.lens : await stableLensFor(state.request.subject).catch(() => null);
+    state.compare = computeCompare();
+  }
+  if (request.notice) showToast(request.notice);
+  else if (state.request.mode === 'COMMIT' && state.commit.misses.length) showToast(`${state.commit.misses.length} overlay ${state.commit.misses.length === 1 ? 'note does' : 'notes do'} not apply at ${short(state.commit.sha)}.`);
   const startScreen = params.get('screen');
   state.walk = Lens.createScreenWalk(state.lens, startScreen && state.lens.screens.some((screen) => screen.screenRef === startScreen) ? startScreen : state.lens.entryScreenRef);
   if (params.get('left') && Lens.LENS_FACES[params.get('left')]?.side === 'EXPERIENCE') state.faces.EXPERIENCE = params.get('left');
