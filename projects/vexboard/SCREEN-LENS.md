@@ -286,6 +286,15 @@ D24 Related boards resolve by stable boardRef, not by copying URLs into the Lens
                cross-board BoardJourney continuity; browser Back is sufficient until lived use earns
                a stronger federated Journey contract
     rejected  hard-coded per-product hrefs and a second Screen-Lens-specific related-board registry
+
+D25 Revision comparison starts from generated Lens identities, not Git diff
+    why       a newer repository commit can leave the projected human/architecture meaning unchanged;
+              revision currentness needs to distinguish source movement from projection movement
+    how       src/shared/vexboard-screen-lens-revision.mjs compares two normalized Lens projections by
+              stable chrome/screen/element/pathway/annotation refs and keeps Related-board deltas separate
+    boundary   this compares already-generated projections; it does not choose which commit is Stable,
+               fetch history, promote a revision, or activate the parked full temporal/reversible horizon
+    rejected  treating commit count/file diff as proof that product meaning changed
 ```
 
 ## Data contract
@@ -440,8 +449,14 @@ DONE   second real Related-board consumer:
        accepted read-only New Beginnings / VexLife-Prod alignment Board
 DONE   generated Screen Lens relates Theme Mode Origin Walk + VexLife-Prod alignment by stable boardRef
 
+FOUNDATION  stable-ref Screen Lens revision comparison
+            source commit movement != projection movement
+            no default UI/history browser yet
+
 NEXT   prototype revision/currentness behind an advanced surface:
-       Stable vs checked/current/custom source revision, semantic diff rather than raw Git noise
+       Stable vs checked/current/custom generated projection
+       -> use the accepted comparison module
+       -> semantic/projection diff rather than raw Git noise
 NEXT   continue canonical VexWork foreground:
        work.vexboard.vexstream-screenshot-pilot + work.vexboard.source-projectors
        align source projection with observed/lived evidence at stable semantic coordinates
