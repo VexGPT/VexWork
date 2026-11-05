@@ -528,6 +528,40 @@
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-26T03:10:45.000Z",
       "updatedAt": "2026-10-26T03:35:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexboard.later.screen-lens-scenario-playground",
+      "parentWorkRefOrNull": "work.vexboard.outcome",
+      "label": "Later — Screen Lens Scenario Playground",
+      "purpose": "Preserve the future Screen Lens Scenario Playground: an effect-free third-face experience where a person can run bounded simulations from a source-projected Screen/control, vary source-backed or explicitly proposed scenario state, add/remove/substitute VexBoard-proposed content inside addressable source-backed bounds, preview transient presentation such as snackbars, traverse the next simulated consequence, and reset without mutating VexLife-Android or confusing Scenario/Design Draft truth with current source. Reuse the accepted BoardScenario/BoardPrototype and ScreenDesign/projector seams; admit only the smallest patient-zero extensions when this future work is deliberately activated.",
+      "workClass": "POTENTIAL",
+      "state": "CAPTURED",
+      "workDisposition": "PARKED",
+      "priorityClass": "LOW",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/vexboard/SCENARIO-PLAYGROUND.md",
+        "projects/vexboard/SCREEN-LENS.md",
+        "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md",
+        "src/shared/vexboard-simulation.mjs",
+        "src/core/vexboard-screen-design.mjs",
+        "src/core/vexboard-android-source-projector.mjs",
+        "projects/vexboard/examples/vexlife-android-home-vexstream.design.json",
+        "projects/vexboard/examples/vexlife-android-home-vexstream.snapshot.json",
+        "work.vexboard.boardjourney-simulation",
+        "work.vexboard.source-projectors",
+        "work.vexboard.vexstream-screenshot-pilot"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-05T10:50:07.000Z",
+      "updatedAt": "2026-11-05T10:50:07.000Z"
     }
   ],
   "transitions": [
