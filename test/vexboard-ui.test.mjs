@@ -764,13 +764,17 @@ test('prototype UI preserves the explicit interaction path beside BoardJourney a
     assert.match(returnBoardLine, new RegExp(field));
   }
 });
-test('VexStream living Blueprint is source-discoverable and Inspector consumes BoardEvidence without inventing observed proof', () => {
+test('VexStream living Blueprint Inspector exposes expected and observed evidence provenance without collapsing currentness', () => {
   assert.match(page, /Open VexStream living Blueprint/);
   assert.match(page, /board\.vexstream\.phone-desktop-connection\.living-blueprint/);
   assert.match(page, /vexboard-evidence\.mjs/);
   assert.match(page, /Evidence\.normalizeBoardEvidence/);
   assert.match(page, /Evidence\.evidenceForSemanticRef/);
   assert.match(page, /Evidence · expected \/ observed/);
+  assert.match(page, /Expected source/);
+  assert.match(page, /artifact\.role==='OBSERVED'\?'Observed source':'Reference source'/);
+  assert.match(page, /slot\.sourceRefs\.join\('\\n'\)/);
+  assert.match(page, /artifact\.sourceRefs\.join\('\\n'\)/);
   assert.match(page, /Expected slot only · no artifact admitted yet\./);
 });
 
