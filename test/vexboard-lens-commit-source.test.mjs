@@ -89,14 +89,20 @@ test('a commit is projected from exactly the planned files, pinned, and with a l
   assert.deepEqual([...hosts].sort(), ['api.github.com', 'raw.githubusercontent.com']);
 });
 
-test('a pointer can be compared with its branch', async () => {
+test('a pointer can advance along its branch, while rewound or divergent branches fail closed', async () => {
   const url = `${GITHUB_API}/repos/vgong24/VexLife-Android/compare/${SHA}...main`;
-  const { fetch } = fakeGitHub({ [url]: () => response(200, { ahead_by: 3, behind_by: 0, status: 'ahead' }) });
-  assert.deepEqual(await compareCommits({ repositoryUrl: REPO, base: SHA, head: 'main', fetch }), { aheadBy: 3, behindBy: 0, status: 'ahead' });
-  const empty = fakeGitHub({ [url]: () => response(200, {}) });
-  assert.deepEqual(await compareCommits({ repositoryUrl: REPO, base: SHA, head: 'main', fetch: empty.fetch }), { aheadBy: 0, behindBy: 0, status: 'unknown' });
-  await assert.rejects(compareCommits({ repositoryUrl: REPO, base: SHA, head: 'gone', fetch }), /cannot compare/);
-  await assert.rejects(compareCommits({ repositoryUrl: REPO, base: '..', head: 'main', fetch }), /not a commit SHA/);
+  const ahead = fakeGitHub({ [url]: () => response(200, { ahead_by: 3, behind_by: 0, status: 'ahead' }) });
+  assert.deepEqual(await compareCommits({ repositoryUrl: REPO, base: SHA, head: 'main', fetch: ahead.fetch }), { aheadBy: 3, behindBy: 0, status: 'ahead' });
+  const identical = fakeGitHub({ [url]: () => response(200, { ahead_by: 0, behind_by: 0, status: 'identical' }) });
+  assert.deepEqual(await compareCommits({ repositoryUrl: REPO, base: SHA, head: 'main', fetch: identical.fetch }), { aheadBy: 0, behindBy: 0, status: 'identical' });
+  const behind = fakeGitHub({ [url]: () => response(200, { ahead_by: 0, behind_by: 2, status: 'behind' }) });
+  await assert.rejects(compareCommits({ repositoryUrl: REPO, base: SHA, head: 'main', fetch: behind.fetch }), (error) => error instanceof CommitSourceError && error.kind === 'NON_FORWARD' && /2 commits behind/.test(error.message) && /moved backward/.test(error.message));
+  const diverged = fakeGitHub({ [url]: () => response(200, { ahead_by: 2, behind_by: 1, status: 'diverged' }) });
+  await assert.rejects(compareCommits({ repositoryUrl: REPO, base: SHA, head: 'main', fetch: diverged.fetch }), (error) => error instanceof CommitSourceError && error.kind === 'NON_FORWARD' && /2 ahead, 1 behind/.test(error.message));
+  const unknown = fakeGitHub({ [url]: () => response(200, {}) });
+  await assert.rejects(compareCommits({ repositoryUrl: REPO, base: SHA, head: 'main', fetch: unknown.fetch }), (error) => error instanceof CommitSourceError && error.kind === 'NON_FORWARD' && /could not establish a forward relationship/.test(error.message));
+  await assert.rejects(compareCommits({ repositoryUrl: REPO, base: SHA, head: 'gone', fetch: fakeGitHub().fetch }), /cannot compare/);
+  await assert.rejects(compareCommits({ repositoryUrl: REPO, base: '..', head: 'main', fetch: ahead.fetch }), /not a commit SHA/);
 });
 
 test('an already-resolved commit skips the lookup', async () => {

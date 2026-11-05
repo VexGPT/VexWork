@@ -66,12 +66,28 @@ export async function listRecentCommits({ repositoryUrl, branch, fetch: fetchImp
 }
 
 // How far a pointer is behind a branch: { aheadBy, behindBy, status } from GitHub's compare view.
+// The Projects surface may advance Main only along a forward branch relationship. A rewound, diverged
+// or ambiguous branch is not "current" merely because GitHub reports zero commits ahead.
 export async function compareCommits({ repositoryUrl, base, head, fetch: fetchImpl }) {
   const { owner, repo } = githubRepository(repositoryUrl);
   const from = validateSourceRef(base);
   const to = validateSourceRef(head);
   const body = await getJson(fetchImpl, `${GITHUB_API}/repos/${owner}/${repo}/compare/${encodeURIComponent(from)}...${encodeURIComponent(to)}`, `${repo} cannot compare ${from} with ${to}.`);
-  return { aheadBy: Number(body.ahead_by ?? 0), behindBy: Number(body.behind_by ?? 0), status: String(body.status ?? 'unknown') };
+  const comparison = {
+    aheadBy: Number(body.ahead_by ?? 0),
+    behindBy: Number(body.behind_by ?? 0),
+    status: String(body.status ?? 'unknown'),
+  };
+  if (comparison.status === 'behind') {
+    throw new CommitSourceError(`The live branch is ${comparison.behindBy} commit${comparison.behindBy === 1 ? '' : 's'} behind the catalog pointer. It may have moved backward; re-ground before moving either pointer.`, 'NON_FORWARD');
+  }
+  if (comparison.status === 'diverged') {
+    throw new CommitSourceError(`The live branch diverged from the catalog pointer (${comparison.aheadBy} ahead, ${comparison.behindBy} behind). Re-ground before moving either pointer.`, 'NON_FORWARD');
+  }
+  if (comparison.status !== 'ahead' && comparison.status !== 'identical') {
+    throw new CommitSourceError('GitHub could not establish a forward relationship between the catalog pointer and the live branch. Re-ground before claiming either pointer is current.', 'NON_FORWARD');
+  }
+  return comparison;
 }
 
 async function inBatches(items, size, task) {
