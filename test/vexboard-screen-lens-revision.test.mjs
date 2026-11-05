@@ -86,8 +86,8 @@ test('pathway detail names the steps and relationships that moved, and which fie
   assert.deepEqual(detail.nodes.added, ['theme.dark-mode.toggle.extra']);
   assert.deepEqual(detail.nodes.removed, ['theme.dark-mode.toggle.log']);
   assert.deepEqual(detail.nodeChanges, [{ ref: 'theme.dark-mode.toggle.result', fields: ['label', 'symbol'] }]);
-  assert.ok(detail.edges.added.includes('theme.dark-mode.toggle.result->theme.dark-mode.toggle.extra'));
-  assert.ok(detail.edges.removed.some((edgeRef) => edgeRef.endsWith('->theme.dark-mode.toggle.log')));
+  assert.ok(detail.edges.added.includes('theme.dark-mode.toggle.result->theme.dark-mode.toggle.extra|FLOW'));
+  assert.ok(detail.edges.removed.some((edgeRef) => edgeRef.includes('->theme.dark-mode.toggle.log|')));
   assert.ok(Object.isFrozen(detail.nodes.added));
 
   const added = comparePathwayRevision(null, base);
@@ -98,4 +98,22 @@ test('pathway detail names the steps and relationships that moved, and which fie
   assert.equal(comparePathwayRevision(base, clone(base)).nodes.changed.length, 0);
   assert.throws(() => comparePathwayRevision(null, null), /at least one/);
   assert.throws(() => comparePathwayRevision(base, { ...base, pathwayRef: 'pathway.other' }), /one pathwayRef/);
+});
+
+
+test('parallel relationship kinds keep distinct comparison identity', () => {
+  const base = {
+    pathwayRef: 'pathway.parallel',
+    label: 'Parallel',
+    nodes: [],
+    edges: [
+      { from: 'a', to: 'b', kind: 'FLOW', label: 'first' },
+      { from: 'a', to: 'b', kind: 'DATA', label: 'second' },
+    ],
+  };
+  const next = clone(base);
+  next.edges[0].label = 'changed';
+  const detail = comparePathwayRevision(base, next);
+  assert.deepEqual(detail.edges.changed, ['a->b|FLOW']);
+  assert.deepEqual(detail.edges.unchanged, ['a->b|DATA']);
 });

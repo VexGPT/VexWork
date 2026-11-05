@@ -611,3 +611,35 @@ test('the read plan names exactly the files the adapter reads', () => {
   assert.throws(() => adapterReadPlan({ ...adapter, read: ['nope:screens/'] }), /root nope/);
   assert.deepEqual(adapterReadPlan({ ...adapter, read: ['plain/path'] }).prefixes, ['plain/path/']);
 });
+
+
+test('lenient historical overlay never injects current structural nodes or edge rewrites', () => {
+  const base = project().lens;
+  const overlay = {
+    schemaVersion: SCREEN_LENS_OVERLAY_SCHEMA,
+    pathways: {
+      'pathway.widget.pick': {
+        label: 'Current interpretation label',
+        returnRef: 'widget.pick.future',
+        nodes: { 'widget.pick.control': { summary: 'Current descriptive interpretation.' } },
+        addNodes: [{ ref: 'widget.pick.future', face: 'BEHAVIOR', role: 'PROJECTION', label: 'Future source construct' }],
+        removeEdges: [{ from: 'widget.pick.intent', to: 'widget.pick.runtime' }],
+        addEdges: [{ from: 'widget.pick.display', to: 'widget.pick.future', label: 'future' }],
+      },
+    },
+    notes: [{ ref: 'note.future', subjectRef: 'widget.pick.future', text: 'Future note' }],
+  };
+  const { lens, misses } = applyOverlayWithReport(base, overlay, { strict: false });
+  const pathway = lens.pathways.find((entry) => entry.pathwayRef === 'pathway.widget.pick');
+  assert.equal(pathway.label, 'Current interpretation label');
+  assert.equal(pathway.nodes.find((node) => node.ref === 'widget.pick.control').summary, 'Current descriptive interpretation.');
+  assert.equal(pathway.nodes.some((node) => node.ref === 'widget.pick.future'), false);
+  assert.ok(pathway.edges.some((edge) => edge.from === 'widget.pick.intent' && edge.to === 'widget.pick.runtime'));
+  assert.equal(pathway.edges.some((edge) => edge.to === 'widget.pick.future'), false);
+  assert.notEqual(pathway.returnRef, 'widget.pick.future');
+  assert.ok(misses.includes('structural-node:widget.pick.future'));
+  assert.ok(misses.includes('structural-remove:widget.pick.intent->widget.pick.runtime'));
+  assert.ok(misses.includes('structural-add:widget.pick.display->widget.pick.future'));
+  assert.ok(misses.includes('note.future'));
+  normalizeScreenLens(lens);
+});

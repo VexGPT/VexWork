@@ -1,7 +1,7 @@
 {
   "schemaVersion": "vexboard.lens-catalog/v1",
   "catalogRef": "catalog.vexboard.lens",
-  "title": "VexBoard projects",
+  "title": "VexBoard Lens subjects",
   "defaultSubjectRef": "subject.vexlife-android",
   "subjects": [
     {
@@ -119,7 +119,7 @@
       "lens": {
         "status": "NOT_BUILT",
         "reason": "VexBoard is a web app. A Screen Lens of it needs a web adapter that reads its pages and page state, which does not exist yet.",
-        "next": "Project projects.html and lens.html as screens, with page state (selection, flips, walk, build) as a small SCAE Family, into the same schema."
+        "next": "Project projects.html and lens.html through a web adapter that can expose their screens, interactions and page state; let semantic ownership be earned from the web source instead of prescribing a Family in advance."
       },
       "boards": [
         {

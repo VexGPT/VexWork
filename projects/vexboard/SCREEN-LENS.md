@@ -305,18 +305,19 @@ D26 Projects is the VexBoard front door; the canvas is kept, not deleted
     rejected  moving the canvas to another file (ripples through Workgraph sourceRefs) and deleting
               the earlier boards (Related boards still open them)
 
-D27 One catalog owns which projects VexBoard shows and where each build points
+D27 One catalog owns which Lens subjects VexBoard can project and where each build points
     why       "which commit is Stable?" must have one answer a human, a script and an AI read the same way
     how       projects/vexboard/lens/catalog.json (vexboard.lens-catalog/v1), validated by
               src/shared/vexboard-lens-catalog.mjs; the UI says Project, the data says subject so it never
               collides with VexWork project.* refs; each subject names its repositoryRef and projectRefs
-    boundary   the adapter's repository.commit mirrors Stable and lens:verify fails if they disagree
+    boundary   VexWork still owns Project/Work/lifecycle truth; the adapter's repository.commit mirrors
+               Stable and lens:verify fails if they disagree
 
 D28 Two standing builds, Stable and Main; any other commit on demand
     why       Victor asked for a constant Stable and Main pair whose pointers move deliberately, plus a
               way to open anything older or specific for debugging
-    how       Stable moves only by npm run lens:promote (offline); npm run lens:main moves Main to the
-              branch head and never re-pins the adapter; Main shares Stable's lens file whenever both
+    how       Stable moves only by evidence-bearing npm run lens:promote; npm run lens:main moves Main
+              to the branch head and never re-pins the adapter; Main shares Stable's lens file whenever both
               point at one commit, so identical builds never become two files
     rejected  Stable following main automatically (Stable means accepted, not newest)
 
@@ -324,10 +325,12 @@ D29 Any commit is projected in the browser from public source, with the same ada
     why       debugging an older or specific commit should not need a checkout, a script or a PR
     how       src/shared/vexboard-lens-commit-source.mjs resolves the ref, lists the tree once, fetches
               exactly adapterReadPlan's files from raw.githubusercontent.com, and runs the pure adapter
-              with a lenient overlay (entries that do not apply are skipped and named, never guessed)
+              with a lenient current overlay: descriptive patches apply only to refs the historical source
+              exposes, while source-sensitive structural additions/removals are skipped rather than guessed
     boundary   reads only api.github.com and raw.githubusercontent.com for the catalog's repository; the
                typed ref is validated before it enters a URL; fetched Kotlin is parsed as text, never run;
-               nothing is written except a tab-only cache; unauthenticated GitHub allows 60 calls an hour
+               historical source is explicitly labeled as projected with current Lens understanding; no
+               projection cache survives a page reload; unauthenticated GitHub allows 60 calls an hour
                and a commit costs 2, so Stable and Main (no calls) always work
     rejected  a backend or GitHub token in the page
 
@@ -339,12 +342,11 @@ D30 Differences from Stable reuse D25 and stay readable at step level
     boundary   rings are outlines in the gap around a control (D23 holds); Copy as text hands the same
                differences to an AI as Markdown
 
-D31 Notes to consider are proposals with a threshold, not Work items
-    why       Victor invited ideas to discuss after thresholds; parking them as Work would claim
-              authority the Workgraph has not given
-    how       projects/vexboard/lens/considerations.json (authority PROPOSAL_ONLY), projected on the
-              projects page; one becomes Work only through process.vexwork.capture-discovered-work, and
-              then its entry says CAPTURED with the Work ref
+D31 Projects does not own a proposal lifecycle
+    why       useful future ideas already have rightful architecture/Work placement; a standing proposal registry
+              would create another status surface for every future instance to maintain
+    how       keep pressure-backed future seams in the owning docs and capture real Work through VexWork only
+    boundary   removing the proposal subsystem does not discard provenance or authorize implementation
 ```
 
 ## Data contract
@@ -503,8 +505,8 @@ FOUNDATION  stable-ref Screen Lens revision comparison
             source commit movement != projection movement
             no default UI/history browser yet
 
-DONE   projects entry, catalog, Stable/Main pointers, any-commit projection, Differences from
-       Stable, notes to consider                                       D26-D31 (this PR)
+DONE   projects entry, Lens-subject catalog, Stable/Main pointers, any-commit projection,
+       Differences from Stable                                         D26-D31 (this PR)
 
 NEXT   first real Main move: npm run lens:main when VexLife-Android main advances, then review
        the Differences panel before npm run lens:promote

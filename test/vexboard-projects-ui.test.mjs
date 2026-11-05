@@ -22,10 +22,9 @@ test('Projects is the VexBoard front door, and every canvas deep link still open
   assert.match(canvas, /'Projects is now the way in'/);
 });
 
-test('the projects page reads the catalog, notes and Stable lenses, and writes nothing', () => {
+test('the projects page reads the Lens-subject catalog and Stable lenses, and writes nothing', () => {
   assert.match(projects, /<title>VexBoard Projects<\/title>/);
   assert.match(projects, /Catalog\.normalizeLensCatalog\(await fetchJson\(`\$\{LENS_DIR\}catalog\.json`\)\)/);
-  assert.match(projects, /fetchJson\(`\$\{LENS_DIR\}considerations\.json`\)\.then\(Catalog\.normalizeConsiderations\)/);
   assert.match(projects, /Lens\.normalizeScreenLens\(await fetchJson\(LENS_DIR \+ Catalog\.buildFor\(subject, 'stable'\)\.lens\)\)/);
   assert.doesNotMatch(projects, /localStorage\.setItem/);
   assert.equal((projects.match(/sessionStorage\.setItem\(/g) || []).length, 1, 'only the ten-minute cache of branch heads');
@@ -43,11 +42,12 @@ test('local drafts are read with the key the draft owner defines', () => {
 test('each project shows its pointers, its currency against GitHub, and how to open any commit', () => {
   assert.match(projects, /class: 'track', role: 'img'/);
   assert.match(projects, /Source\.compareCommits\(\{ repositoryUrl: subject\.repository\.url, base: main\.commit, head: branch/);
+  assert.match(projects, /Could not check GitHub right now/);
   assert.match(projects, /Run npm run lens:main to move Main\./);
-  assert.match(projects, /Catalog\.lensHref\(subject, \{ commit: Catalog\.validateSourceRef\(input\.value\) \}\)/);
-  assert.match(projects, /h\('h2', \{\}, 'Notes to consider'\)/);
-  assert.match(projects, /h\('h2', \{\}, 'Earlier canvas trials'\)/);
+  assert.match(projects, /Catalog\.sourceRefFromInput\(input\.value, subject\.repository\.url\)/);
+  assert.match(projects, /h\('summary', \{\}, 'Earlier canvas trials'\)/);
   assert.match(projects, /'No Screen Lens yet'/);
+  assert.match(projects, /href: `\.\.\/\?project=\$\{encodeURIComponent\(ref\)\}`/);
 });
 
 test('the projects page and the any-commit adapter load in a browser without Node-only imports', () => {

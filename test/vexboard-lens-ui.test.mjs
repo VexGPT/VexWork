@@ -46,9 +46,8 @@ test('roles always carry a non-color chip and three palette modes exist', () => 
 test('the lens is read-only: no writes besides the palette preference, and lens files stay on this site', () => {
   const writes = page.match(/localStorage\.setItem\(/g) || [];
   assert.equal(writes.length, 1);
-  const sessionWrites = page.match(/sessionStorage\.setItem\(/g) || [];
-  assert.equal(sessionWrites.length, 1, 'one tab-only cache of commits projected in this browser');
-  assert.match(page, /function writeCommitCache\(key, value\) \{ try \{ sessionStorage\.setItem/);
+  assert.doesNotMatch(page, /sessionStorage\.setItem\(/, 'arbitrary-commit projections do not survive a reload');
+  assert.match(page, /const commitLenses = new Map\(\)/);
   assert.doesNotMatch(page, /method:\s*'(POST|PUT|PATCH|DELETE)'/);
   assert.match(page, /lens must be a relative \.json path on this site/);
   assert.doesNotMatch(page, /api\.github\.com|raw\.githubusercontent\.com/, 'GitHub is reached only through the commit-source module');
@@ -64,10 +63,11 @@ test('the header switches project and build from the catalog, and any commit pro
   assert.match(page, /switchBuild\('main'\)/);
   assert.match(page, /import\('\.\.\/src\/core\/vexboard-screen-lens-android-adapter\.mjs'\)/, 'the adapter loads only when a commit is opened');
   assert.match(page, /project: Adapter\.projectAndroidScreenLens, readPlan: Adapter\.adapterReadPlan/);
-  assert.match(page, /Catalog\.validateSourceRef\(commitRefFromInput\(rawValue\)\)/);
+  assert.match(page, /Catalog\.sourceRefFromInput\(rawValue, subject\.repository\.url\)/);
   assert.match(page, /next\.set\('commit', state\.commit\.sha\)/, 'a commit link pins the resolved SHA, not a moving branch');
   assert.match(page, /if \(subject && state\.request\.mode !== 'LEGACY'\)/);
   assert.match(page, /renderNoLens\(\)/);
+  assert.match(page, /Historical source is projected with the current Lens understanding/);
 });
 
 test('differences from Stable use the accepted comparison and mark without covering anything', () => {

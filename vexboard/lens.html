@@ -405,20 +405,18 @@ async function commitTools() {
   const [Adapter, Source] = await commitModules;
   return { Adapter, Source };
 }
-const COMMIT_CACHE = 'vexboard.lens.commit.';
-function readCommitCache(key) { try { const raw = sessionStorage.getItem(COMMIT_CACHE + key); return raw ? JSON.parse(raw) : null; } catch { return null; } }
-function writeCommitCache(key, value) { try { sessionStorage.setItem(COMMIT_CACHE + key, JSON.stringify(value)); } catch { /* a cache for this tab only; projecting again is fine */ } }
+const commitLenses = new Map();
 async function projectCommitLens(subject, ref, onProgress) {
   const { Adapter, Source } = await commitTools();
   const githubFetch = (url, init) => fetch(url, init);
   const resolved = await Source.resolveCommit({ repositoryUrl: subject.repository.url, ref, fetch: githubFetch });
   const key = `${subject.slug}.${resolved.sha}.${Adapter.ADAPTER_VERSION}`;
-  const cached = readCommitCache(key);
+  const cached = commitLenses.get(key);
   if (cached) return cached;
   const [adapter, overlay] = await Promise.all([fetchJson(LENS_DIR + subject.lens.adapter), subject.lens.overlay ? fetchJson(LENS_DIR + subject.lens.overlay) : null]);
   const result = await Source.projectCommit({ adapter, overlay, ref, resolved, fetch: githubFetch, project: Adapter.projectAndroidScreenLens, readPlan: Adapter.adapterReadPlan, onProgress });
   const value = { lens: result.lens, commit: { ...result.commit, fileCount: result.fileCount, misses: result.report.overlayMisses ?? [] } };
-  writeCommitCache(key, value);
+  commitLenses.set(key, value);
   return value;
 }
 const stableLenses = new Map();
@@ -500,7 +498,7 @@ async function openRequest(request, { onProgress = () => {}, announce = true } =
   else render();
   if (announce && request.mode === 'COMMIT') {
     const misses = state.commit.misses.length;
-    showToast(`Projected ${short(state.commit.sha)} in your browser from ${state.commit.fileCount} source files.${misses ? ` ${misses} overlay ${misses === 1 ? 'note does' : 'notes do'} not apply at this commit.` : ''}`);
+    showToast(`Projected historical source ${short(state.commit.sha)} with the current Lens understanding from ${state.commit.fileCount} source files.${misses ? ` ${misses} overlay ${misses === 1 ? 'note does' : 'notes do'} not apply at this commit.` : ''}`);
   }
 }
 async function switchBuild(buildRef) {
@@ -510,16 +508,11 @@ async function switchBuild(buildRef) {
   try { await openRequest({ mode: 'BUILD', subject, build, commitRef: null }); }
   catch (error) { showToast(`Could not open ${build.label}: ${error.message}`); }
 }
-function commitRefFromInput(value) {
-  const text = String(value ?? '').trim();
-  const pasted = /^https:\/\/github\.com\/[^/]+\/[^/]+\/(?:commit|tree)\/([^?#]+)/.exec(text);
-  return pasted ? decodeURIComponent(pasted[1]) : text;
-}
 async function openCommit(rawValue) {
   const subject = currentSubject();
   const form = state.commitForm;
   let ref;
-  try { ref = Catalog.validateSourceRef(commitRefFromInput(rawValue)); }
+  try { ref = Catalog.sourceRefFromInput(rawValue, subject.repository.url); }
   catch (error) { form.error = error.message.replace(/^lens catalog: /, ''); renderBarInPlace(); return; }
   form.value = ref; form.busy = true; form.error = null; form.progress = { phase: 'RESOLVE', done: 0, total: 0 };
   renderBarInPlace();
@@ -839,7 +832,7 @@ function renderCommitPopover(subject) {
   const pop = h('div', { class: 'commit-pop', role: 'dialog', 'aria-label': 'Open a commit', onclick: (event) => event.stopPropagation() },
     h('label', { for: 'commit-ref' }, `Open ${subject.label} at any commit`),
     h('form', { onsubmit: (event) => { event.preventDefault(); openCommit(input.value); } }, input, h('button', { class: 'primary', type: 'submit', disabled: form.busy }, form.busy ? 'Opening…' : 'Open')),
-    h('p', { class: 'help', id: 'commit-help' }, 'Projected in your browser from public GitHub source with the same adapter as Stable and Main. Nothing is saved or committed.'),
+    h('p', { class: 'help', id: 'commit-help' }, 'Historical source is projected with the current Lens understanding and the same pure adapter used by Stable/Main. Nothing is written back to GitHub or the repository.'),
     form.error ? h('p', { class: 'error', role: 'alert' }, form.error) : null,
     form.busy ? renderProgressBlock(form.progress) : null);
   if (!form.busy) {
@@ -873,7 +866,9 @@ function renderBar() {
   const snapshot = state.lens.sourceSnapshot;
   const repoName = snapshot.repositoryUrl ? snapshot.repositoryUrl.split('/').slice(-1)[0] : snapshot.repositoryRef;
   const commit = short(snapshot.commit);
-  const where = `Read-only projection of ${repoName} @ ${commit}`;
+  const where = state.request?.mode === 'COMMIT'
+    ? `Historical source from ${repoName} @ ${commit}, projected with the current Lens understanding`
+    : `Read-only projection of ${repoName} @ ${commit}`;
   const commitLink = snapshot.repositoryUrl && snapshot.commit
     ? h('a', { class: 'source-link', href: `${snapshot.repositoryUrl}/tree/${snapshot.commit}`, target: '_blank', rel: 'noopener', title: `${where}\n${snapshot.notes.join('\n')}`, 'aria-label': where }, 'Source')
     : h('span', { class: 'source-link', title: where }, `${repoName}@${commit}`);

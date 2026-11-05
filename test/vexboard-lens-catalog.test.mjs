@@ -4,7 +4,6 @@ import test from 'node:test';
 
 import {
   BOARD_ROLES,
-  CONSIDERATIONS_SCHEMA,
   LENS_CATALOG_SCHEMA,
   STANDING_BUILDS,
   advanceBuild,
@@ -12,25 +11,24 @@ import {
   buildFor,
   githubRepository,
   lensHref,
-  normalizeConsiderations,
   normalizeLensCatalog,
   promoteBuild,
   resolveLensRequest,
   sameCommit,
+  sourceRefFromInput,
   subjectFor,
   validateSourceRef,
 } from '../src/shared/vexboard-lens-catalog.mjs';
 
 const read = (path) => JSON.parse(fs.readFileSync(new URL(path, import.meta.url), 'utf8'));
 const rawCatalog = read('../projects/vexboard/lens/catalog.json');
-const rawConsiderations = read('../projects/vexboard/lens/considerations.json');
 const clone = (value) => JSON.parse(JSON.stringify(value));
 const catalog = normalizeLensCatalog(rawCatalog);
 const android = subjectFor(catalog, 'vexlife-android');
 const SHA_A = '305a09eac1fabebcf2241bd207386950f41121f2';
 const SHA_B = '4d357c48eb5a25797513708f800e61a87e0195c0';
 
-test('the committed catalog names every project VexBoard shows and where its builds point', () => {
+test('the committed catalog names every Lens subject VexBoard shows and where its builds point', () => {
   assert.equal(catalog.schemaVersion, LENS_CATALOG_SCHEMA);
   assert.deepEqual(catalog.subjects.map((subject) => subject.slug), ['vexlife-android', 'vexlife-prod', 'vexboard']);
   assert.deepEqual(STANDING_BUILDS, ['stable', 'main']);
@@ -60,6 +58,8 @@ test('a lens URL resolves to a project and build, and bad input falls back to St
   assert.deepEqual([at('').mode, at('').subject.slug, at('').build.buildRef, at('').notice], ['BUILD', 'vexlife-android', 'stable', null]);
   assert.equal(at('build=main').build.buildRef, 'main');
   assert.equal(at('subject=vexlife-android&commit=4d357c48').commitRef, '4d357c48');
+  assert.equal(at('subject=vexlife-android&commit=https%3A%2F%2Fgithub.com%2Fvgong24%2FVexLife-Android%2Fcommit%2F305a09e').commitRef, '305a09e');
+  assert.match(at('subject=vexlife-android&commit=https%3A%2F%2Fgithub.com%2FVexGPT%2FVexWork%2Fcommit%2F305a09e').notice, /points at VexGPT\/VexWork/);
   assert.equal(at('commit=feature/thing').mode, 'COMMIT');
   assert.match(at('build=nightly').notice, /No build named "nightly"/);
   assert.match(at('subject=nope').notice, /No project named "nope"/);
@@ -90,6 +90,10 @@ test('typed refs are limited to names Git allows', () => {
     assert.throws(() => validateSourceRef(bad), /lens catalog:/, JSON.stringify(bad));
   }
   assert.deepEqual(githubRepository('https://github.com/vgong24/VexLife-Android'), { owner: 'vgong24', repo: 'VexLife-Android' });
+  assert.equal(sourceRefFromInput(' main ', 'https://github.com/vgong24/VexLife-Android'), 'main');
+  assert.equal(sourceRefFromInput('https://github.com/vgong24/VexLife-Android/commit/305a09e', 'https://github.com/vgong24/VexLife-Android'), '305a09e');
+  assert.equal(sourceRefFromInput('https://github.com/vgong24/VexLife-Android/tree/feature%2Fscreen-lens', 'https://github.com/vgong24/VexLife-Android'), 'feature/screen-lens');
+  assert.throws(() => sourceRefFromInput('https://github.com/VexGPT/VexWork/commit/305a09e', 'https://github.com/vgong24/VexLife-Android'), /points at VexGPT\/VexWork/);
   for (const bad of ['http://github.com/a/b', 'https://gitlab.com/a/b', 'https://github.com/a', 'https://github.com/a/b/c', null]) assert.throws(() => githubRepository(bad), /repository url/);
 });
 
@@ -103,9 +107,8 @@ test('advancing Main to Stable\'s commit shares Stable\'s file; to another commi
   const back = advanceBuild(ahead.catalog, 'vexlife-android', 'main', { commit: SHA_A });
   assert.deepEqual([back.lens, back.write, back.retire], ['vexlife-android.screen-lens.json', false, 'vexlife-android.main.screen-lens.json']);
 
-  const stable = advanceBuild(rawCatalog, 'vexlife-android', 'stable', { commit: SHA_A });
-  assert.equal(stable.write, true);
-  assert.throws(() => advanceBuild(rawCatalog, 'vexlife-android', 'stable', { commit: SHA_B }), /share .* different commits/);
+  assert.throws(() => advanceBuild(rawCatalog, 'vexlife-android', 'stable', { commit: SHA_A }), /Stable moves only through promoteBuild/);
+  assert.throws(() => advanceBuild(rawCatalog, 'vexlife-android', 'stable', { commit: SHA_B }), /Stable moves only through promoteBuild/);
   assert.throws(() => advanceBuild(rawCatalog, 'vexlife-android', 'main', { commit: 'abc' }), /full commit SHA/);
   assert.throws(() => advanceBuild(rawCatalog, 'vexlife-android', 'main', { commit: SHA_B }), /separateLens required/);
   assert.throws(() => advanceBuild(rawCatalog, 'vexlife-prod', 'main', { commit: SHA_B }), /no generated lens/);
@@ -121,6 +124,7 @@ test('promoting Main moves Stable to Main\'s commit and folds the two files back
   assert.deepEqual([promoted.changed, promoted.copy, promoted.retire], [true, { from: 'vexlife-android.main.screen-lens.json', to: 'vexlife-android.screen-lens.json' }, 'vexlife-android.main.screen-lens.json']);
   const noop = promoteBuild(rawCatalog, 'vexlife-android', { on: '2026-11-07' });
   assert.deepEqual([noop.changed, noop.copy, noop.retire], [false, null, null]);
+  assert.throws(() => promoteBuild(ahead, 'vexlife-android', { on: '2026-11-07' }), /acceptance evidence/);
   assert.throws(() => promoteBuild(rawCatalog, 'vexlife-android', { on: 'tomorrow' }), /YYYY-MM-DD/);
   assert.throws(() => promoteBuild(rawCatalog, 'vexboard', { on: '2026-11-07' }), /no generated lens/);
 });
@@ -137,7 +141,7 @@ test('the catalog fails closed on shapes a reader could misread', () => {
     [(c) => { c.subjects[0].repository.url = 'https://example.com/a/b'; }, /repository url/],
     [(c) => { c.subjects[0].lens.status = 'MAYBE'; }, /status must be one of/],
     [(c) => { c.subjects[0].lens.builds.pop(); }, /exactly one main build/],
-    [(c) => { c.subjects[0].lens.builds[1].buildRef = 'stable'; }, /exactly one stable build/],
+    [(c) => { c.subjects[0].lens.builds[1].buildRef = 'stable'; }, /exactly one stable build|Stable needs/],
     [(c) => { c.subjects[0].lens.builds[0].buildRef = 'nightly'; }, /buildRef must be one of/],
     [(c) => { c.subjects[0].lens.builds[0].commit = '305a09e'; }, /full 40-character SHA/],
     [(c) => { c.subjects[0].lens.builds[0].lens = '../escape.json'; }, /relative \.json path/],
@@ -146,6 +150,9 @@ test('the catalog fails closed on shapes a reader could misread', () => {
     [(c) => { c.subjects[0].lens.builds[0].observedAt = 'yesterday'; }, /observedAt must be/],
     [(c) => { c.subjects[0].lens.builds[1].commit = SHA_B; }, /share .* different commits/],
     [(c) => { c.subjects[0].lens.builds[0].evidence = 'x'; }, /evidence must be a list/],
+    [(c) => { c.subjects[0].lens.builds[0].evidence = []; }, /Stable needs acceptance evidence/],
+    [(c) => { delete c.subjects[0].lens.builds[0].since; }, /Stable needs an acceptance date/],
+    [(c) => { delete c.subjects[0].lens.builds[1].branch; }, /Main needs its source branch/],
     [(c) => { c.subjects[1].lens.reason = ''; }, /reason required/],
     [(c) => { c.subjects[0].boards[0].role = 'PRIMARY'; }, /role must be one of/],
     [(c) => { c.subjects[0].boards[0].boardRef = 'lens.x.y'; }, /must start with board\./],
@@ -158,30 +165,6 @@ test('the catalog fails closed on shapes a reader could misread', () => {
   const withoutOverlay = clone(rawCatalog);
   delete withoutOverlay.subjects[0].lens.overlay;
   assert.equal(subjectFor(normalizeLensCatalog(withoutOverlay), 'vexlife-android').lens.overlay, null);
-});
-
-test('notes to consider are proposals with a threshold, never Work items', () => {
-  const notes = normalizeConsiderations(rawConsiderations);
-  assert.equal(notes.schemaVersion, CONSIDERATIONS_SCHEMA);
-  assert.equal(notes.authority, 'PROPOSAL_ONLY');
-  assert.equal(notes.captureProcess, 'process.vexwork.capture-discovered-work');
-  assert.ok(notes.entries.length >= 5);
-  const subjects = new Set(catalog.subjects.map((subject) => subject.subjectRef));
-  for (const entry of notes.entries) {
-    assert.ok(entry.threshold.length > 10, `${entry.ref} says when to discuss it`);
-    assert.ok(entry.subjectRefs.every((ref) => subjects.has(ref)), `${entry.ref} names real projects`);
-  }
-  const broken = (mutate) => { const next = clone(rawConsiderations); mutate(next); return () => normalizeConsiderations(next); };
-  assert.throws(broken((n) => { n.authority = 'WORK'; }), /PROPOSAL_ONLY/);
-  assert.throws(broken((n) => { n.schemaVersion = 'x'; }), /considerations schemaVersion/);
-  assert.throws(broken((n) => { n.entries[1].ref = n.entries[0].ref; }), /duplicate consideration/);
-  assert.throws(broken((n) => { n.entries[0].status = 'PLANNED'; }), /status must be one of/);
-  assert.throws(broken((n) => { n.entries[0].threshold = ' '; }), /threshold required/);
-  assert.throws(broken((n) => { n.entries[0].ref = 'work.x.y'; }), /must start with consider\./);
-  const captured = clone(rawConsiderations);
-  captured.entries[0].status = 'CAPTURED';
-  captured.entries[0].capturedAs = 'work.vexboard.meaning-bisect';
-  assert.equal(normalizeConsiderations(captured).entries[0].capturedAs, 'work.vexboard.meaning-bisect');
 });
 
 // [VXG RealForever][VEXWORK][VEXBOARD][LENS-CATALOG][TEST]

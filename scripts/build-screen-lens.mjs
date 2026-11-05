@@ -8,14 +8,14 @@
 //   node scripts/build-screen-lens.mjs --fetch                      regenerate Stable at its pointer
 //   node scripts/build-screen-lens.mjs --build main --fetch         move Main to the newest commit on its branch
 //   node scripts/build-screen-lens.mjs --build main --fetch --commit <sha|branch|tag>
-//   node scripts/build-screen-lens.mjs --promote [--evidence <ref>] Stable takes Main's commit (offline)
+//   node scripts/build-screen-lens.mjs --promote --evidence <ref> Stable takes Main's commit (offline)
 //   node scripts/build-screen-lens.mjs --source <checkout> [--build main] [--check]
 //
 // Options: --subject <slug> (default: the catalog's default project), --check, --report, --on <YYYY-MM-DD>.
 // Legacy single-lens use, bypassing the catalog: --adapter <file> [--overlay <file>] [--out <file>].
 //
-// Stable moves only by promote (or an explicit --build stable --commit). Generating Main never re-pins
-// the adapter, and Main shares Stable's lens file whenever both point at the same commit.
+// Stable moves only by evidence-bearing promote. Generating Main never re-pins the adapter, and Main
+// shares Stable's lens file whenever both point at the same commit.
 
 import crypto from 'node:crypto';
 import { execFileSync } from 'node:child_process';
@@ -248,13 +248,19 @@ function main() {
   let nextCatalog = null;
   let retire = null;
   let shared = false;
-  const repinAdapter = ctx.legacy || build.buildRef === 'stable';
+  const repinAdapter = ctx.legacy;
   if (!ctx.legacy) {
-    const moved = advanceBuild(ctx.rawCatalog, ctx.subject.slug, build.buildRef, { commit, observedAt, separateLens: `${ctx.subject.slug}.${build.buildRef}.screen-lens.json` });
-    outFile = lensFile(moved.lens);
-    shared = !moved.write;
-    retire = moved.retire;
-    nextCatalog = stable(moved.catalog);
+    if (build.buildRef === 'stable') {
+      if (commit !== build.commit) throw new Error('Stable moves only through --promote with acceptance evidence; move Main first, then promote it');
+      outFile = lensFile(build.lens);
+      nextCatalog = stable(ctx.rawCatalog);
+    } else {
+      const moved = advanceBuild(ctx.rawCatalog, ctx.subject.slug, build.buildRef, { commit, observedAt, separateLens: `${ctx.subject.slug}.${build.buildRef}.screen-lens.json` });
+      outFile = lensFile(moved.lens);
+      shared = !moved.write;
+      retire = moved.retire;
+      nextCatalog = stable(moved.catalog);
+    }
   }
   const summary = { state: 'PASS', subject: ctx.subject?.slug ?? null, build: build?.buildRef ?? null, lens: path.relative(ROOT, outFile), sourceCommit: commit, sharesStable: shared, screens: report.screens, elements: report.elements, pathways: report.pathways, familyBonds: report.bonds.length, held: report.held.length, unknownCalls: report.unknownCalls.length };
   const current = fs.existsSync(outFile) ? fs.readFileSync(outFile, 'utf8') : '';

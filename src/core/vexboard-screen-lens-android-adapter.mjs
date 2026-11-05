@@ -1297,8 +1297,8 @@ export function applyOverlay(lensInput, overlay) {
 }
 
 // strict (the default for committed builds): any ref the lens lacks fails the run.
-// lenient (any-commit projection in the browser): entries that do not apply are skipped, listed in
-// misses, and named in the lens notes, so an older commit still projects honestly.
+// lenient (any-commit projection in the browser): descriptive patches apply only to refs that exist; source-sensitive structural additions/removals are skipped,
+// listed in misses, and named in the lens notes, so historical source is never given current invented structure.
 export function applyOverlayWithReport(lensInput, overlay, { strict = true } = {}) {
   if (!overlay || overlay.schemaVersion !== SCREEN_LENS_OVERLAY_SCHEMA) fail(`overlay schemaVersion must be ${SCREEN_LENS_OVERLAY_SCHEMA}`);
   const lens = JSON.parse(JSON.stringify(lensInput));
@@ -1317,20 +1317,25 @@ export function applyOverlayWithReport(lensInput, overlay, { strict = true } = {
     const pathway = lens.pathways.find((candidate) => candidate.pathwayRef === ref);
     if (!pathway) { misses.push(ref); continue; }
     const { addNodes = [], addEdges = [], removeEdges = [], nodes = {}, ...fields } = patch;
-    assign(pathway, fields);
+    const descriptiveFields = { ...fields };
+    if (!strict) delete descriptiveFields.returnRef;
+    assign(pathway, descriptiveFields);
     for (const [nodeRef, nodePatch] of Object.entries(nodes)) {
       const node = pathway.nodes.find((candidate) => candidate.ref === nodeRef);
       if (node) assign(node, nodePatch); else misses.push(nodeRef);
     }
-    pathway.nodes.push(...addNodes);
-    pathway.edges = pathway.edges.filter((edge) => !removeEdges.some((remove) => remove.from === edge.from && remove.to === edge.to));
-    if (strict) pathway.edges.push(...addEdges);
-    else {
-      const nodeRefs = new Set(pathway.nodes.map((node) => node.ref));
-      for (const edge of addEdges) {
-        if (nodeRefs.has(edge.from) && nodeRefs.has(edge.to)) pathway.edges.push(edge);
-        else misses.push(`${edge.from}->${edge.to}`);
+    if (strict) {
+      pathway.nodes.push(...addNodes);
+      pathway.edges = pathway.edges.filter((edge) => !removeEdges.some((remove) => remove.from === edge.from && remove.to === edge.to));
+      pathway.edges.push(...addEdges);
+    } else {
+      if (Object.hasOwn(fields, 'returnRef')) {
+        if (fields.returnRef === null || pathway.nodes.some((node) => node.ref === fields.returnRef)) pathway.returnRef = fields.returnRef;
+        else misses.push(`${ref}.returnRef:${fields.returnRef}`);
       }
+      for (const node of addNodes) misses.push(`structural-node:${node.ref}`);
+      for (const edge of removeEdges) misses.push(`structural-remove:${edge.from}->${edge.to}`);
+      for (const edge of addEdges) misses.push(`structural-add:${edge.from}->${edge.to}`);
     }
   }
   const knownRefs = new Set([

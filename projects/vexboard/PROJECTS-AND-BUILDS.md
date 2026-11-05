@@ -11,8 +11,8 @@
 The answer has three parts.
 
 - **One entry.** `vexboard/projects.html` lists every project, and `vexboard/` opens it.
-- **One catalog.** `projects/vexboard/lens/catalog.json` records which projects exist and where each one's
-  **Stable** and **Main** builds point.
+- **One catalog.** `projects/vexboard/lens/catalog.json` records which subjects VexBoard can project or relate and where each one's
+  **Stable** and **Main** builds point. It does not replace the VexWork Project Registry.
 - **One header.** In the Screen Lens, a project menu and a `Stable · Main · Commit…` switch change what you
   are looking at in place.
 
@@ -30,7 +30,6 @@ projects/vexboard/lens/catalog.json        which projects, which builds, which c
 projects/vexboard/lens/<slug>.lens-adapter.json   how a project's source is read (repository.commit mirrors Stable)
 projects/vexboard/lens/<slug>.screen-lens.json    Stable's generated lens (Main shares it while both point at one commit)
 projects/vexboard/lens/<slug>.main.screen-lens.json   Main's own lens, only once Main has moved past Stable
-projects/vexboard/lens/considerations.json        notes to consider: proposals, never Work items (D31)
 ```
 
 To answer "what is Stable for VexLife Android?", read
@@ -49,8 +48,7 @@ COMMIT  != BUILD      any other commit is projected in your browser and never sa
 npm run lens:verify    # every build matches its pointer, adapter, overlay and generator
 npm run lens:main      # Main -> newest commit on its branch (git ls-remote), regenerate Main
 node scripts/build-screen-lens.mjs --build main --fetch --commit <sha|branch|tag>   # Main -> a chosen commit
-npm run lens:promote   # Stable -> Main's commit; folds the two lens files back into one (offline)
-node scripts/build-screen-lens.mjs --promote --evidence github.pull.vexwork.<n>     # record why
+npm run lens:promote -- --evidence github.pull.vexwork.<n>  # Stable -> Main with acceptance evidence; folds the two lens files back into one
 ```
 
 A typical cycle:
@@ -60,7 +58,8 @@ VexLife-Android main moves
 -> npm run lens:main               Main gets its own lens file; Stable is untouched
 -> open lens.html?build=main       the "N differences vs Stable" chip and panel show what changed in meaning
 -> review / lived check
--> npm run lens:promote            Stable takes Main's commit
+-> npm run lens:promote -- --evidence <acceptance-ref>
+                                      Stable takes Main's commit only with acceptance evidence
 -> npm run lens:verify, commit catalog + adapter + lens, open a PR
 ```
 
@@ -69,17 +68,20 @@ pushes (D22). A VexRelay host step can run the same npm scripts.
 
 ## Any commit, in the browser
 
-`Commit…` in the lens header, and **Any commit** on the projects page, accept a SHA, a branch, a tag
-or a pasted GitHub commit or tree link. The page then:
+`Commit…` in the lens header, and **Any commit** on the projects page, accept the same input forms: a SHA,
+a branch, a tag or a pasted GitHub commit/tree link for the selected subject's repository. A link to a
+different repository is rejected rather than reinterpreted as a local ref. The page then:
 
 1. resolves the name with one GitHub API call;
 2. lists the tree with a second call;
 3. downloads exactly the files `adapterReadPlan` names from `raw.githubusercontent.com`;
 4. runs the same pure adapter the script runs.
 
-The overlay is applied leniently. Entries the commit does not have are skipped and named in a toast and
-in the lens notes. The address bar then pins the full resolved SHA, so a copied link or a brief always
-reopens the same commit.
+This is **historical source projected with the current Lens understanding**. Existing-ref labels, summaries
+and notes may be applied leniently, but current overlay nodes/edge rewrites are not injected into a historical
+revision unless the source-derived projection already carries the referenced structure. Skipped entries are
+named in a toast and in the lens notes. The address bar pins the full resolved SHA, so a copied link or brief
+reopens the same source commit.
 
 There are limits:
 
@@ -118,16 +120,20 @@ identity (D25), with step detail (D30):
 
 `anyCommit` is true only for a project whose adapter is pure and whose source is public.
 
-## Notes to consider
+## Authority boundary
 
-`considerations.json` holds ideas Claude proposed while building this. Each names the threshold after
-which it is worth discussing, and the projects page lists them. They carry `authority: PROPOSAL_ONLY`.
-When one becomes real:
+The Projects page is a human-facing entry over Lens subjects. VexWork remains the owner of Project,
+Work, lifecycle and authority truth. Useful future ideas stay in their rightful architecture/Work sources;
+this page does not maintain a second proposal lifecycle.
 
-1. capture it through `process.vexwork.capture-discovered-work`;
-2. set its status to `CAPTURED`;
-3. set `capturedAs` to the new Work ref.
+```text
+LENS SUBJECT CATALOG
+  -> Lens availability
+  -> Stable/Main projection pointers
+  -> adapter/lens realization coordinates
 
-A future instance can add entries in the same shape.
+LENS SUBJECT CATALOG
+  != VEXWORK PROJECT REGISTRY
+```
 
 <!-- [VXG RealForever][VEXWORK][VEXBOARD][PROJECTS-AND-BUILDS] -->

@@ -615,8 +615,9 @@ acceptance after the complete stack integrated through PR #230. PR #232 then mad
 `relatedBoardRefs[]` relationship visible through stable `?board=<boardRef>` VexBoard resolution and
 added one uniquely identifiable `Open Living Screen Lens` entry on the older proving-ground landing.
 
-VexBoard's entry is now `vexboard/projects.html`: every project, its Stable and Main build pointers,
-any-commit projection and the earlier canvas trials. How projects, builds and pointers work lives in
+VexBoard's entry is now `vexboard/projects.html`: the subjects it can project or relate, their Stable
+and Main build pointers, any-commit projection and the earlier canvas trials. VexWork remains the owner
+of Project/Work/lifecycle truth. How projects, builds and pointers work lives in
 `PROJECTS-AND-BUILDS.md`.
 
 Design, data contract, decision record, accepted threshold and next edges live in `SCREEN-LENS.md`.
