@@ -380,6 +380,44 @@
       ],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-05T09:51:50.000Z",
+      "updatedAt": "2026-11-05T09:51:50.000Z",
+      "workRef": "work.vexlife.new-beginnings.local-runtime-foundation",
+      "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
+      "label": "Parallel foundation — isolated VexLife-Prod local runtime substrate",
+      "purpose": "Accept the physically independent VexLife-Prod local product substrate already formed across PR #25→#33: isolated Home and durable contract files, exact Heretic artifact/Python/mlx-lm realization, persistent qualified Heretic runtime, canonical direct Conversation/prompt-context storage, local product service, private service image/install, macOS service lifetime, and source-bound setup/bootstrap. This work does not own generated P1 browser presentation, browser-context admission, or P2/P3 lived convergence.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexlife.new-beginnings.p0.semantic-contract-authoring"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-new-beginnings/README.md",
+        "github.pull.vexlife-prod.25",
+        "github.pull.vexlife-prod.26",
+        "github.pull.vexlife-prod.27",
+        "github.pull.vexlife-prod.28",
+        "github.pull.vexlife-prod.29",
+        "github.pull.vexlife-prod.30",
+        "github.pull.vexlife-prod.31",
+        "github.pull.vexlife-prod.32",
+        "github.pull.vexlife-prod.33",
+        "github.commit.vexlife-prod.da67a73ad86275c6f71781b14b7307e3a1cd3462",
+        "github.pull.vexlife-prod.38",
+        "github.commit.vexlife-prod.c6baa58765992465ac4e5d1722403764764a7a0f"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND"
     }
   ],
   "transitions": [
@@ -642,6 +680,20 @@
         "github.commit.vexlife-prod.04d4ea07b91c657a1d28896bdf956f07ea9370c4"
       ],
       "createdAt": "2026-11-05T09:46:50.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.new-beginnings.local-runtime.ready-running.pr38",
+      "workRef": "work.vexlife.new-beginnings.local-runtime-foundation",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "The already-source-formed #25→#33 local-foundation trajectory now has one exact cumulative integration claim on accepted P1 main: VexLife-Prod PR #38. The work is bounded to substrate acceptance; browser/context/P2/P3 effects remain outside it.",
+      "actorRef": "actor.chatgpt.vexlife-new-beginnings",
+      "sourceRefs": [
+        "github.pull.vexlife-prod.38",
+        "github.commit.vexlife-prod.c6baa58765992465ac4e5d1722403764764a7a0f"
+      ],
+      "createdAt": "2026-11-05T09:51:50.000Z"
     }
   ],
   "sourceRefs": [
