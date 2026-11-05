@@ -393,10 +393,16 @@ current proof boundary
         jvmJar PASS
         JVM test compilation SAFE_FAILURE on stale test fixtures/API ownership
         private-image assembly held because Gradle was not running on JDK 21
-  A006  qualified compatible retry formed
-        sha256 ecf38f6d9615882f7e2a07e582617fb0ebe9522a2a35ef1c9031bb15138f167b
-        test-only delta from A005
-        remaining predicates: JDK21-bound jvmTest + archiveVexLifeProdServiceImage
+  A006  JVM test source compilation PASS
+        compileKotlinJvm PASS
+        compileTestKotlinJvm PASS
+        jvmJar PASS
+        jvmTest NOT REACHED
+        private-image assembly still saw a non-21 Gradle build JVM despite JAVA_HOME selection
+  A007  qualified environment-only retry formed
+        sha256 7b49b80ded37ab7ff3054a2e6af742e87351f2711688bea898b186155f9de16c
+        candidate source unchanged
+        remaining predicates: Gradle-build-JDK21-bound jvmTest + archiveVexLifeProdServiceImage
 
 source provenance
   PR #25 -> #33
@@ -436,12 +442,14 @@ VexLife source/runtime
 ~~~
 
 The local foundation remains a **source candidate**, not accepted product truth. A005 established
-production JVM/JS compilation and exact-source admission. Its remaining failures were test-source drift and
-host JDK selection, not production source behavior. The six stale JVM test files are currentized on the same
-PR #38 branch; production source did not change after A005. The next exact edge is A006, which selects macOS
-JDK 21 explicitly and runs only `jvmTest` plus the source-owned `archiveVexLifeProdServiceImage` task.
-PR #38 must still prove those two repository/package predicates before the real macOS
-install/setup/lifetime boundary can begin.
+production JVM/JS compilation and exact-source admission; A006 additionally established that the current JVM
+test sources compile. The remaining hold is execution-environment binding: Gradle's build/daemon JVM still
+did not run on JDK 21, so `jvmTest` was never scheduled and private-image assembly stopped at its intentional
+JDK-21 gate. The candidate source is unchanged. The next exact edge is A007, which resolves macOS JDK 21,
+prints both Java/Gradle JVM diagnostics, forces the Gradle build JVM with command-line
+`-Dorg.gradle.java.home`, then runs only `jvmTest` plus the source-owned
+`archiveVexLifeProdServiceImage` task. PR #38 must still prove those two predicates before the real
+macOS install/setup/lifetime boundary can begin.
 
 Its work boundary is deliberately separate from the current public-browser work. PR #37 was formed
 over an earlier substrate snapshot and must be reconciled onto accepted PR #38/main after the

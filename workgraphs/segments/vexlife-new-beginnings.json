@@ -387,7 +387,7 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-11-05T09:51:50.000Z",
-      "updatedAt": "2026-11-05T10:35:52.827Z",
+      "updatedAt": "2026-11-05T10:46:49.960Z",
       "workRef": "work.vexlife.new-beginnings.local-runtime-foundation",
       "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
       "label": "Parallel foundation — isolated VexLife-Prod local runtime substrate",
@@ -430,7 +430,11 @@
         "artifact.vexlife-prod.local-runtime-foundation.source-owner.a005.return.sha256.3ea521bd3b38c1e8d1058243a308b92b980950fcb1da1ebdca24732515bb5351",
         "artifact.vexlife-prod.local-runtime-foundation.source-owner.a005.inner-return.sha256.84ef98a6bdcb5733226e46cb2eddc82b73942aa359373ac411d3d0af81169835",
         "github.pull.vexlife-prod.38.comment.6655893016",
-        "artifact.vexlife-prod.local-runtime-foundation.source-owner.a006.formation.sha256.ecf38f6d9615882f7e2a07e582617fb0ebe9522a2a35ef1c9031bb15138f167b"
+        "artifact.vexlife-prod.local-runtime-foundation.source-owner.a006.formation.sha256.ecf38f6d9615882f7e2a07e582617fb0ebe9522a2a35ef1c9031bb15138f167b",
+        "artifact.vexlife-prod.local-runtime-foundation.source-owner.a006.return.sha256.09514c3270f3846574b7c58c90370d2f93823041aa63404b3558f222bc4916d9",
+        "artifact.vexlife-prod.local-runtime-foundation.source-owner.a006.inner-return.sha256.a505d999882c763fa1204684038e652c21dad07fe823e45fa12949077a47ead7",
+        "github.pull.vexlife-prod.38.comment.6656098665",
+        "artifact.vexlife-prod.local-runtime-foundation.source-owner.a007.formation.sha256.7b49b80ded37ab7ff3054a2e6af742e87351f2711688bea898b186155f9de16c"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND"
