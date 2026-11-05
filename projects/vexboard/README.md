@@ -253,20 +253,6 @@ AUTHORIZED
 
 The screenshot human predicate is now satisfied. The current foreground is a real VexStream patient zero that must prove more than screenshot placement: it should pressure one **living Blueprint vertical slice** across source-owned meaning, VexBoard perception, target construction lineage and observed evidence.
 
-The first OBSERVED evidence subset is now source-grounded from canonical lived RETURN `RETURN-VEXSTREAM-V4-ANDROID-LIVED-PROOF-A011` (SHA-256 `dcfe892eccbc85f2c51ec6b197298727dc7da456820248a8d9696d10757dc20c`). Three Android frames are admitted at the existing stable semantic slots: Home, NotPaired and ConfirmCode. Their exact capture times and content hashes come from the RETURN's run-scoped Android checkpoints, not Library/file timestamps.
-
-A011 itself ended `SAFE_FAILURE` later in the walk, and its observed source heads (`VexLife-Android eb1edba…`, `VexStream ea3fce6…`) are older/different from the board's current expected-source anchors. Therefore:
-
-```text
-A011_OBSERVED_FRAME = POINT_EVIDENCE
-A011_SAFE_FAILURE != WHOLE_JOURNEY_PASS
-OBSERVED_OLDER_SOURCE != CURRENT_EXPECTED_RENDER
-VISUAL_CONFIRM_CODE != WAITING_APPROVAL_PROOF
-HOST_DESKTOP_CAPTURE != ADMISSIBLE_VEXSTREAM_PAIRING_VISUAL
-```
-
-The evidence rail now exposes that partial observed truth without copying screenshot binaries into BoardGraph or pretending the historical run is current acceptance.
-
 ```text
 CURRENT / IMMEDIATE
 work.vexboard.vexstream-screenshot-pilot
