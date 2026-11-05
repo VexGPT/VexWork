@@ -48,6 +48,11 @@ test('the Stable pointer and the adapter pin agree, and every lens file exists',
     const lens = read(`../projects/vexboard/lens/${build.lens}`);
     assert.equal(lens.sourceSnapshot.commit, build.commit, `${build.buildRef} lens file is generated at its pointer`);
   }
+  const stableLens = read(`../projects/vexboard/lens/${buildFor(android, 'stable').lens}`);
+  const directRelated = android.boards.filter((board) => board.role === 'RELATED').map((board) => board.boardRef);
+  assert.deepEqual(adapter.relatedBoardRefs, directRelated, 'adapter Related set matches the generated subject catalog');
+  assert.deepEqual(stableLens.relatedBoardRefs, directRelated, 'Stable Lens Related set matches the generated subject catalog');
+  assert.ok(buildFor(android, 'stable').evidence.includes('github.pull.vexwork.238'), 'same-source Stable projection refinement carries acceptance evidence');
   assert.equal(sameCommit(android), buildFor(android, 'stable').commit === buildFor(android, 'main').commit);
   assert.equal(sameCommit(subjectFor(catalog, 'vexboard')), false);
   assert.equal(buildFor(subjectFor(catalog, 'vexboard'), 'stable'), null);
@@ -107,6 +112,9 @@ test('advancing Main to Stable\'s commit shares Stable\'s file; to another commi
   const back = advanceBuild(ahead.catalog, 'vexlife-android', 'main', { commit: SHA_A });
   assert.deepEqual([back.lens, back.write, back.retire], ['vexlife-android.screen-lens.json', false, 'vexlife-android.main.screen-lens.json']);
 
+  const undated = advanceBuild(rawCatalog, 'vexlife-android', 'main', { commit: SHA_B, separateLens: 'vexlife-android.main.screen-lens.json' });
+  assert.equal(buildFor(subjectFor(normalizeLensCatalog(undated.catalog), 'vexlife-android'), 'main').observedAt, null, 'a new commit never inherits the prior commit observation date');
+
   assert.throws(() => advanceBuild(rawCatalog, 'vexlife-android', 'stable', { commit: SHA_A }), /Stable moves only through promoteBuild/);
   assert.throws(() => advanceBuild(rawCatalog, 'vexlife-android', 'stable', { commit: SHA_B }), /Stable moves only through promoteBuild/);
   assert.throws(() => advanceBuild(rawCatalog, 'vexlife-android', 'main', { commit: 'abc' }), /full commit SHA/);
@@ -122,6 +130,9 @@ test('promoting Main moves Stable to Main\'s commit and folds the two files back
   assert.deepEqual(buildFor(subject, 'stable').evidence, ['github.pull.vexwork.999']);
   assert.equal(buildFor(subject, 'main').lens, 'vexlife-android.screen-lens.json');
   assert.deepEqual([promoted.changed, promoted.copy, promoted.retire], [true, { from: 'vexlife-android.main.screen-lens.json', to: 'vexlife-android.screen-lens.json' }, 'vexlife-android.main.screen-lens.json']);
+  const undatedAhead = advanceBuild(rawCatalog, 'vexlife-android', 'main', { commit: SHA_B, separateLens: 'vexlife-android.main.screen-lens.json' }).catalog;
+  const undatedPromoted = promoteBuild(undatedAhead, 'vexlife-android', { on: '2026-11-07', evidence: ['github.pull.vexwork.999'] }).catalog;
+  assert.equal(buildFor(subjectFor(normalizeLensCatalog(undatedPromoted), 'vexlife-android'), 'stable').observedAt, null, 'promotion never carries an observation date from the previous Stable commit');
   const noop = promoteBuild(rawCatalog, 'vexlife-android', { on: '2026-11-07' });
   assert.deepEqual([noop.changed, noop.copy, noop.retire], [false, null, null]);
   assert.throws(() => promoteBuild(ahead, 'vexlife-android', { on: '2026-11-07' }), /acceptance evidence/);

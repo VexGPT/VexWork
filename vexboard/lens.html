@@ -435,7 +435,6 @@ async function lensForRequest(request, onProgress) {
 function computeCompare() {
   const subject = currentSubject();
   if (!subject || !state.stableLens || currentBuildRef() === 'stable') return null;
-  if (state.stableLens.sourceSnapshot.commit === state.lens.sourceSnapshot.commit) return null;
   const comparison = Revision.compareScreenLensRevisions(state.stableLens, state.lens);
   const details = new Map();
   for (const ref of [...comparison.pathways.changed, ...comparison.pathways.added, ...comparison.pathways.removed]) {
@@ -449,6 +448,7 @@ function computeCompare() {
       || screen.elements.some((element) => elements.has(element.ref) || pathways.has(element.pathwayRef))) screens.add(screen.screenRef);
   }
   const count = comparison.summary.entityChangeCount + comparison.summary.relatedBoardChangeCount;
+  if (!comparison.sourceRevisionChanged && !comparison.projectionChanged) return null;
   return { comparison, details, elements, pathways, screens, count };
 }
 function deltaClass(element) {

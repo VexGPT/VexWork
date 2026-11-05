@@ -37,10 +37,14 @@ To answer "what is Stable for VexLife Android?", read
 pointer against its file, run `npm run lens:verify`. Both are offline.
 
 ```text
-STABLE  != NEWEST     Stable is accepted; it moves only when Main is promoted
+STABLE  != NEWEST     Stable is accepted; its source pointer moves only when Main is promoted
 MAIN    != ACCEPTED   Main is the newest projected commit on the default branch
 COMMIT  != BUILD      any other commit is projected in your browser and never saved
 ```
+
+An accepted VexBoard projector or relationship correction can refine Stable's projection while its
+product-source commit stays the same. That is `PROJECTION_CHANGED`, not `SOURCE_COMMIT_CHANGED`;
+the accepted projection carries the new acceptance evidence instead of pretending the product source moved.
 
 ## Moving the pointers
 

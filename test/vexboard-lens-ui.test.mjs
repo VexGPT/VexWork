@@ -73,6 +73,8 @@ test('the header switches project and build from the catalog, and any commit pro
 test('differences from Stable use the accepted comparison and mark without covering anything', () => {
   assert.match(page, /from '\.\.\/src\/shared\/vexboard-screen-lens-revision\.mjs'/);
   assert.match(page, /Revision\.compareScreenLensRevisions\(state\.stableLens, state\.lens\)/);
+  assert.doesNotMatch(page, /stableLens\.sourceSnapshot\.commit === state\.lens\.sourceSnapshot\.commit\) return null/, 'same source commit must not hide a changed current interpretation');
+  assert.match(page, /!comparison\.sourceRevisionChanged && !comparison\.projectionChanged/, 'only equal source and equal projection collapse to no delta');
   assert.match(page, /Revision\.comparePathwayRevision\(/);
   assert.match(page, /\.delta-added,\.delta-changed\{outline:2px dashed var\(--delta\);outline-offset:2px\}/);
   assert.match(page, /'Same meaning as Stable'/, 'a new commit with no projection change says so');

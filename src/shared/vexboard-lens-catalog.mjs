@@ -273,6 +273,7 @@ export function advanceBuild(catalogInput, subjectKey, buildRef, { commit, obser
   const previousLens = build.lens;
   build.commit = commit;
   if (observedAt) build.observedAt = observedAt;
+  else delete build.observedAt;
   build.lens = commit === stable.commit ? stable.lens : relativeJson(separateLens, 'separateLens');
   normalizeLensCatalog(next);
   const stillUsed = next.subjects.some((entry) => entry.lens.builds?.some((candidate) => candidate.lens === previousLens));
@@ -299,6 +300,7 @@ export function promoteBuild(catalogInput, subjectKey, { on, evidence = [] }) {
   nextStable.since = on;
   nextStable.evidence = promotionEvidence;
   if (main.observedAt) nextStable.observedAt = main.observedAt;
+  else delete nextStable.observedAt;
   nextMain.lens = stable.lens;
   normalizeLensCatalog(next);
   return {

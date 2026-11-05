@@ -283,15 +283,18 @@ D24 Related boards resolve by stable boardRef, not by copying URLs into the Lens
     how       Lens renders Related -> ./?board=<encoded boardRef>; VexBoard resolves that boardRef
               through the existing resolver and opens the source-owned BoardGraph read-only
     boundary   opening a related board does not mutate this Lens, transfer source authority, or imply
-               cross-board BoardJourney continuity; browser Back is sufficient until lived use earns
-               a stronger federated Journey contract
+               cross-board BoardJourney continuity; a generated subject's direct Related set stays aligned
+               with that subject's catalog RELATED boards, while an adjacent project's board lives under
+               that project's subject; browser Back is sufficient until lived use earns a stronger contract
     rejected  hard-coded per-product hrefs and a second Screen-Lens-specific related-board registry
 
 D25 Revision comparison starts from generated Lens identities, not Git diff
     why       a newer repository commit can leave the projected human/architecture meaning unchanged;
               revision currentness needs to distinguish source movement from projection movement
     how       src/shared/vexboard-screen-lens-revision.mjs compares two normalized Lens projections by
-              stable chrome/screen/element/pathway/annotation refs and keeps Related-board deltas separate
+              stable chrome/screen/element/pathway/annotation refs and keeps Related-board deltas separate;
+              sourceRevisionChanged and projectionChanged remain independent, so current Lens understanding
+              can change projected meaning even while the product-source commit stays the same
     boundary   this compares already-generated projections; it does not choose which commit is Stable,
                fetch history, promote a revision, or activate the parked full temporal/reversible horizon
     rejected  treating commit count/file diff as proof that product meaning changed
@@ -316,9 +319,11 @@ D27 One catalog owns which Lens subjects VexBoard can project and where each bui
 D28 Two standing builds, Stable and Main; any other commit on demand
     why       Victor asked for a constant Stable and Main pair whose pointers move deliberately, plus a
               way to open anything older or specific for debugging
-    how       Stable moves only by evidence-bearing npm run lens:promote; npm run lens:main moves Main
-              to the branch head and never re-pins the adapter; Main shares Stable's lens file whenever both
-              point at one commit, so identical builds never become two files
+    how       Stable's source pointer moves only by evidence-bearing npm run lens:promote; npm run lens:main
+              moves Main to the branch head and never re-pins the adapter; Main shares Stable's lens file
+              whenever both point at one commit. An accepted VexBoard projector/relationship correction may
+              refine the Stable projection at the same source commit; that adds acceptance evidence and is
+              PROJECTION_CHANGED, not SOURCE_COMMIT_CHANGED
     rejected  Stable following main automatically (Stable means accepted, not newest)
 
 D29 Any commit is projected in the browser from public source, with the same adapter
@@ -338,7 +343,7 @@ D30 Differences from Stable reuse D25 and stay readable at step level
     why       "1 pathway differs" is only useful if you can see which step and what it says now
     how       comparePathwayRevision adds step and relationship detail; the lens shows a chip, a
               Differences panel with Show links, and dashed rose rings on changed controls, steps and
-              screen chips; a new commit with no projected change says "Same meaning as Stable"
+              screen chips; a newer source commit with no projected change says "Same meaning as Stable"
     boundary   rings are outlines in the gap around a control (D23 holds); Copy as text hands the same
                differences to an AI as Markdown
 
@@ -499,7 +504,9 @@ DONE   stable boardRef deep links + Related-board affordance          PR #232
 DONE   second real Related-board consumer:
        board.vexlife-prod.perceivability-alignment
        accepted read-only New Beginnings / VexLife-Prod alignment Board
-DONE   generated Screen Lens relates Theme Mode Origin Walk + VexLife-Prod alignment by stable boardRef
+HISTORY accepted PR #235 threshold related Theme Mode Origin Walk + VexLife-Prod alignment
+CURRENT Projects/Builds refinement homes the adjacent alignment under VexLife Prod; Android direct
+        Related is Theme Mode Origin Walk + the earned VexStream Playback VexArchitecture walk
 
 FOUNDATION  stable-ref Screen Lens revision comparison
             source commit movement != projection movement
