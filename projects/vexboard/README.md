@@ -596,6 +596,16 @@ Once this foundational language is coherent enough for the next concrete consume
 PR #182's exact-head SourceOwner evidence remains valid while this language work proceeds.
 Independent review remains parked.
 
+## Screen Lens — four-face screen traceability (candidate)
+
+`vexboard/lens.html` shows one screen through two flip sides: Experience (Surface ⇄ Structure,
+middle-click) and Behavior (SCAE Behavior ⇄ Depth, right-click). A selected control's pathway is traced
+across both sides, routes owned by shared chrome are drawn once, and every face is laid out without
+overlap. The first projection is VexLife-Android Debug Menu at `305a09e`.
+
+Design, data contract, the Kotlin annotation proposal and next edges live in `SCREEN-LENS.md`. The lens
+is a read-only projection; it does not admit Work or change lifecycle truth by itself.
+
 ## Reusable Semantic Origin IDE foundation
 
 The reusable IDE/construction pattern, recursive category examples, scoped-neighborhood behavior and

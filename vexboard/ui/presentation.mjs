@@ -123,23 +123,29 @@ function center(bounds) {
   return Object.freeze({ x: bounds.x + bounds.width / 2, y: bounds.y + bounds.height / 2 });
 }
 
-export function relationshipRoute(fromBounds, toBounds) {
+// `offset` separates relationships that share the same pair of endpoints, so two
+// opposite edges between neighbours are never drawn on top of each other.
+export function relationshipRoute(fromBounds, toBounds, { offset = 0 } = {}) {
   const from = center(fromBounds);
   const to = center(toBounds);
   const dx = to.x - from.x;
   const dy = to.y - from.y;
   const horizontal = Math.abs(dx) > Math.abs(dy);
   if (horizontal) {
-    const start = Object.freeze({ x: dx >= 0 ? fromBounds.x + fromBounds.width : fromBounds.x, y: from.y });
-    const end = Object.freeze({ x: dx >= 0 ? toBounds.x : toBounds.x + toBounds.width, y: to.y });
+    const limit = Math.max(0, Math.min(fromBounds.height, toBounds.height) / 2 - 6);
+    const shift = Math.max(-limit, Math.min(limit, offset));
+    const start = Object.freeze({ x: dx >= 0 ? fromBounds.x + fromBounds.width : fromBounds.x, y: from.y + shift });
+    const end = Object.freeze({ x: dx >= 0 ? toBounds.x : toBounds.x + toBounds.width, y: to.y + shift });
     const midX = (start.x + end.x) / 2;
     return Object.freeze({
       points: Object.freeze([start, Object.freeze({ x: midX, y: start.y }), Object.freeze({ x: midX, y: end.y }), end]),
       labelPoint: Object.freeze({ x: midX, y: (start.y + end.y) / 2 - 6 }),
     });
   }
-  const start = Object.freeze({ x: from.x, y: dy >= 0 ? fromBounds.y + fromBounds.height : fromBounds.y });
-  const end = Object.freeze({ x: to.x, y: dy >= 0 ? toBounds.y : toBounds.y + toBounds.height });
+  const limit = Math.max(0, Math.min(fromBounds.width, toBounds.width) / 2 - 6);
+  const shift = Math.max(-limit, Math.min(limit, offset));
+  const start = Object.freeze({ x: from.x + shift, y: dy >= 0 ? fromBounds.y + fromBounds.height : fromBounds.y });
+  const end = Object.freeze({ x: to.x + shift, y: dy >= 0 ? toBounds.y : toBounds.y + toBounds.height });
   const midY = (start.y + end.y) / 2;
   return Object.freeze({
     points: Object.freeze([start, Object.freeze({ x: start.x, y: midY }), Object.freeze({ x: end.x, y: midY }), end]),
