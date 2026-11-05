@@ -382,9 +382,22 @@ VexLife-Prod PR #26  OPEN / DRAFT
 
         ↓ stacked successor
 
-VexLife-Prod PR #27  OPEN / DRAFT / CURRENT LOCAL FOREGROUND
+VexLife-Prod PR #27  OPEN / DRAFT
   direct personal Conversation + local Vex turn
-  head f1913158126570cf72a3268d458fd443835bbdc6
+  provider head must be re-grounded before source work
+
+        ↓ stacked successor
+
+VexLife-Prod PR #28  OPEN / DRAFT
+  fixed common-Kotlin local product-service API
+  127.0.0.1:18210
+  source currentness + Conversation projection + Send
+
+        ↓ stacked successor
+
+VexLife-Prod PR #29  OPEN / DRAFT / CURRENT LOCAL FOREGROUND
+  source-bound no-acquisition long-lived service-process entry
+  provider head must be re-grounded before source work
 ~~~
 
 PR #26 source-forms the isolated local substrate:
@@ -420,6 +433,43 @@ complete valid .partial
 caller-supplied bootstrap/runtime paths
 != rightful currentness
 ~~~
+
+PR #28/#29 now continue that same circuit into a renderer-facing fixed product doorway and one
+source-bound long-lived process entry:
+
+~~~text
+VexLifeProdServiceContract
+  common Kotlin route/wire identity
+
+VexLifeProdLocalService
+  fixed 127.0.0.1:18210
+  -> source-currentness projection
+  -> canonical Conversation projection
+  -> Send delegates to DirectCompanionTurn
+
+VexLifeProdServiceProcess
+  --source-sha only
+  -> establish existing Session with acquisition=false
+  -> start fixed service
+  -> machine readiness
+  -> remain alive until process termination
+~~~
+
+Long-lived Send does not trust setup-time runtime qualification forever. New inference re-observes the
+exact current Heretic receipt/process/substrate/environment/health through the runtime owner; exact
+completed duplicate replay does not require runtime/provider availability.
+
+Permanent:
+
+~~~text
+SERVICE API != PRESENTATION
+SERVICE PROCESS != HUMAN SETUP
+SERVICE PROCESS != ACQUISITION AUTHORITY
+SERVICE PROCESS SOURCE != PACKAGED MAC EXECUTABLE
+~~~
+
+A fresh Mac is not assumed to have Java/Gradle/Kotlin. The next construction edge is therefore a
+self-contained packaged runtime/service image before launchd/product-entry proof.
 
 PR #27 then composes the first bounded personal human ↔ Vex circuit:
 
@@ -520,6 +570,8 @@ CLEAN_START wiring
 streamed response progress
 explicit-open reasoning projection
 product service / presentation
+packaged self-contained Mac service/runtime image
+launchd-owned service source/process currentness
 ordinary fresh-user Mac entry
 ~~~
 
