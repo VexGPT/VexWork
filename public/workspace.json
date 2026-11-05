@@ -7154,7 +7154,9 @@
           "workDisposition": "ACTIVE",
           "priorityClass": "NORMAL",
           "parentWorkRefOrNull": "work.vexboard.outcome",
-          "childWorkRefs": [],
+          "childWorkRefs": [
+            "work.vexboard.source-projectors.temporal-reversible-projection"
+          ],
           "dependencyRefs": [
             "work.vexboard.boardgraph-contract",
             "work.vexboard.canvas-projection",
@@ -7220,6 +7222,35 @@
               "createdAt": "2026-10-24T05:21:11.000Z"
             }
           ]
+        },
+        {
+          "workRef": "work.vexboard.source-projectors.temporal-reversible-projection",
+          "label": "Temporal + reversible source/design projection",
+          "purpose": "Preserve the future VexBoard horizon where exact revisions/commits can be reconstructed into source-derived architecture relationship graphs and compared across historical, current, candidate and desired projections, so UX, engineering and AI can work from one connected semantic map. The reverse direction is intentional rather than source-authoritative: desired Origins may express constraints and explicit UNBOUND relationships; AI may traverse accepted Family/State/Control/Act/Effect/Projection, typed Port/Connection, provider/observation and convergence contracts to identify or propose missing connective tissue, but candidate source must be regenerated forward and compared with the desired projection before the connection is treated as real. Keep source expression, deterministic tests, runtime observation and human-lived evidence distinct so a historical projection never silently becomes a claim that the feature was known working.",
+          "workClass": "POTENTIAL",
+          "state": "CAPTURED",
+          "workDisposition": "PARKED",
+          "priorityClass": "LOW",
+          "parentWorkRefOrNull": "work.vexboard.source-projectors",
+          "childWorkRefs": [],
+          "dependencyRefs": [],
+          "repositoryRefs": [
+            "repo.vexwork"
+          ],
+          "sourceRefs": [
+            "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md",
+            "work.vexboard.source-projectors",
+            "work.vexboard.boardpatch-authoring",
+            "github.pull.vexwork.219",
+            "github.pull.vexwork.227"
+          ],
+          "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+          "nextProcessRefs": [],
+          "authorityDisposition": "NO_AUTHORITY",
+          "effectDisposition": "NO_EFFECTS",
+          "createdAt": "2026-11-05T02:56:51.000Z",
+          "updatedAt": "2026-11-05T02:56:51.000Z",
+          "transitionHistory": []
         },
         {
           "workRef": "work.vexboard.tech-debt.origin-rename-propagation",
@@ -7554,6 +7585,7 @@
           "workRefs": [
             "work.vexboard.outcome",
             "work.vexboard.later.businessfactory-guided-company-formation",
+            "work.vexboard.source-projectors.temporal-reversible-projection",
             "work.vexboard.tech-debt.origin-rename-propagation",
             "work.vexboard.vexstream-origin-roundtrip-review"
           ]
@@ -7618,12 +7650,12 @@
         }
       ],
       "summary": {
-        "workItemCount": 14,
-        "openWorkItemCount": 8,
+        "workItemCount": 15,
+        "openWorkItemCount": 9,
         "outcomeCount": 3,
         "taskCount": 9,
         "defectCount": 0,
-        "potentialCount": 2,
+        "potentialCount": 3,
         "needsHumanCount": 0,
         "completedCount": 6
       },
@@ -14995,6 +15027,157 @@
   "parkingLot": {
     "items": [
       {
+        "workRef": "work.vexlife-android.vexstream.not-yet-downloaded-filter",
+        "label": "VexStream Songs filter for Not yet downloaded",
+        "purpose": "Preserve the nice-to-have Songs-level filter that answers which songs on this device are still not downloaded, without making it part of MassDownload completion or authorizing implementation.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "LOW",
+        "parentWorkRefOrNull": null,
+        "childWorkRefs": [],
+        "dependencyRefs": [],
+        "repositoryRefs": [
+          "repo.vexlife-android"
+        ],
+        "sourceRefs": [
+          "github.issue.vexlife-android.144",
+          "github.pull.vexlife-android.142",
+          "docs/process/CAPTURE-DISCOVERED-WORK.md"
+        ],
+        "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+        "nextProcessRefs": [
+          "process.vexlife-android.feature-authoring"
+        ],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "createdAt": "2026-10-21T01:18:35.000Z",
+        "updatedAt": "2026-10-21T01:18:35.000Z",
+        "transitionHistory": [],
+        "graphRef": "workgraph.vexwork.foundation"
+      },
+      {
+        "workRef": "work.vexwork.history.foundational-infrastructure-backfill",
+        "label": "Foundational Infrastructure history backfill",
+        "purpose": "Gradually reconstruct completed foundational work into VexWork with provenance so future humans and instances can perceive what was built from a dashboard instead of rediscovering it across repositories and chat history.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "LOW",
+        "parentWorkRefOrNull": null,
+        "childWorkRefs": [],
+        "dependencyRefs": [
+          "work.vexwork.visibility.public-dashboard"
+        ],
+        "repositoryRefs": [
+          "repo.vexwork"
+        ],
+        "sourceRefs": [
+          "public/work-dashboard.json",
+          "docs/lineage/VEXLIFE-P0B.md",
+          "docs/foundation/PARKING-LOT.md",
+          "docs/process/CAPTURE-DISCOVERED-WORK.md"
+        ],
+        "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+        "nextProcessRefs": [],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "createdAt": "2026-10-21T06:07:27.000Z",
+        "updatedAt": "2026-10-22T04:42:04.000Z",
+        "transitionHistory": [],
+        "graphRef": "workgraph.vexwork.foundation"
+      },
+      {
+        "workRef": "work.vexlife.connected-services.guided-onboarding",
+        "label": "Simplify Connected Services onboarding across computer + phone",
+        "purpose": "Preserve the lived need for one guided setup path that checks Tailscale readiness across computer and phone, asks for protected human-only steps at the right moment, then returns to VexLife pairing/private-route setup without weakening Home, session, reachability, or pairing authority boundaries.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "LOW",
+        "parentWorkRefOrNull": null,
+        "childWorkRefs": [],
+        "dependencyRefs": [],
+        "repositoryRefs": [
+          "repo.vexlife",
+          "repo.vexlife-android"
+        ],
+        "sourceRefs": [
+          "github.issue.vexwork.6",
+          "github.issue.vexlife.899",
+          "docs/process/CAPTURE-DISCOVERED-WORK.md"
+        ],
+        "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+        "nextProcessRefs": [],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "createdAt": "2026-10-21T06:23:27.000Z",
+        "updatedAt": "2026-10-21T06:23:27.000Z",
+        "transitionHistory": [],
+        "graphRef": "workgraph.vexwork.foundation"
+      },
+      {
+        "workRef": "work.vexstream.mobile-library.keep-offline-sync",
+        "label": "Persistent Keep Offline / Sync",
+        "purpose": "Preserve the future policy question of keeping an album, artist, playlist, or other collection continuously mirrored as producer membership changes, without conflating it with one-shot Download missing.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "LOW",
+        "parentWorkRefOrNull": null,
+        "childWorkRefs": [],
+        "dependencyRefs": [
+          "work.vexstream.mobile-library.durable-device-library"
+        ],
+        "repositoryRefs": [
+          "repo.vexlife-android"
+        ],
+        "sourceRefs": [
+          "work.vexstream.mobile-library.outcome",
+          "github.pull.vexlife-android.142",
+          "docs/process/CAPTURE-DISCOVERED-WORK.md",
+          "projects/vexstream-mobile-library/README.md",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/offline/VexStreamOfflineDocs.kt"
+        ],
+        "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+        "nextProcessRefs": [
+          "process.vexlife-android.feature-authoring"
+        ],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "createdAt": "2026-10-21T08:41:00.000Z",
+        "updatedAt": "2026-10-21T08:41:00.000Z",
+        "transitionHistory": [],
+        "graphRef": "workgraph.vexwork.foundation"
+      },
+      {
+        "workRef": "work.vexwork.operational-console.multi-fulfiller-routing",
+        "label": "Multiple fulfiller / nearby-route optimization",
+        "purpose": "Preserve the possible later need for assigning fulfillment to multiple people, grouping nearby deliveries, routing/sequencing stops and collecting worker delivery acknowledgement without making dispatch/routing part of the first commerce-pilot completion boundary.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "LOW",
+        "parentWorkRefOrNull": null,
+        "childWorkRefs": [],
+        "dependencyRefs": [],
+        "repositoryRefs": [
+          "repo.vexwork"
+        ],
+        "sourceRefs": [
+          "projects/vexwork-operational-console/README.md",
+          "docs/process/CAPTURE-DISCOVERED-WORK.md"
+        ],
+        "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+        "nextProcessRefs": [],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "createdAt": "2026-10-22T03:20:00.000Z",
+        "updatedAt": "2026-10-22T03:20:00.000Z",
+        "transitionHistory": [],
+        "graphRef": "workgraph.vexwork.foundation"
+      },
+      {
         "workRef": "work.vexlife.blueprint-source-of-truth.outcome",
         "label": "VexLife Blueprint Source of Truth",
         "purpose": "Preserve accepted VLBSoT portability/parity proof as predecessor lineage while the unfinished MAUI/Mac target leg is parked; current VexLife construction proceeds through VexLife New Beginnings / VexLife-Prod on accepted VexArchitecture.",
@@ -15080,39 +15263,6 @@
         "graphRef": "workgraph.vexwork.foundation"
       },
       {
-        "workRef": "work.vexlife.blueprint-source-of-truth.play-pause.native-lived-proof",
-        "label": "Lived native provider conformance",
-        "purpose": "Park the lived MAUI/provider proof with its dependency. Preserve it as an exact future target proof question, not as a blocker on current VexLife construction.",
-        "workClass": "TASK",
-        "state": "WAITING_DEPENDENCIES",
-        "workDisposition": "PARKED",
-        "priorityClass": "LOW",
-        "parentWorkRefOrNull": "work.vexlife.blueprint-source-of-truth.play-pause-practicum",
-        "childWorkRefs": [],
-        "dependencyRefs": [
-          "work.vexlife.blueprint-source-of-truth.play-pause.native-source-admission"
-        ],
-        "repositoryRefs": [
-          "repo.vexwork",
-          "repo.vexlife-construction-reference"
-        ],
-        "sourceRefs": [
-          "github.issue.VexGPT.VexLife-Construction-Reference.11",
-          "projects/vexlife-blueprint-source-of-truth/README.md",
-          "project.vexlife.new-beginnings",
-          "github.pull.vexlife-android.209",
-          "github.commit.vexlife-prod.20919f21578eeff9d2e1d513a00e0cd66ecd72ea"
-        ],
-        "formationProcessRefOrNull": null,
-        "nextProcessRefs": [],
-        "authorityDisposition": "NO_AUTHORITY",
-        "effectDisposition": "NO_EFFECTS",
-        "createdAt": "2026-10-23T00:33:00.000Z",
-        "updatedAt": "2026-11-03T09:40:00.000Z",
-        "transitionHistory": [],
-        "graphRef": "workgraph.vexwork.foundation"
-      },
-      {
         "workRef": "work.vexlife.blueprint-source-of-truth.play-pause.native-source-admission",
         "label": "Target-native MAUI / MediaElement source admission",
         "purpose": "Park the unfinished MAUI / MediaElement target-native source admission. It is not a prerequisite for current VexArchitecture or VexLife-Prod; reactivate only if the exact C#/MAUI target becomes a current human outcome.",
@@ -15134,6 +15284,39 @@
           "github.issue.VexGPT.VexLife-Construction-Reference.11",
           "github.pull.VexGPT.VexLife-Construction-Reference.12",
           "github.issue.VexGPT.VexLife-Construction-Reference.11.comment.6289018948",
+          "projects/vexlife-blueprint-source-of-truth/README.md",
+          "project.vexlife.new-beginnings",
+          "github.pull.vexlife-android.209",
+          "github.commit.vexlife-prod.20919f21578eeff9d2e1d513a00e0cd66ecd72ea"
+        ],
+        "formationProcessRefOrNull": null,
+        "nextProcessRefs": [],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "createdAt": "2026-10-23T00:33:00.000Z",
+        "updatedAt": "2026-11-03T09:40:00.000Z",
+        "transitionHistory": [],
+        "graphRef": "workgraph.vexwork.foundation"
+      },
+      {
+        "workRef": "work.vexlife.blueprint-source-of-truth.play-pause.native-lived-proof",
+        "label": "Lived native provider conformance",
+        "purpose": "Park the lived MAUI/provider proof with its dependency. Preserve it as an exact future target proof question, not as a blocker on current VexLife construction.",
+        "workClass": "TASK",
+        "state": "WAITING_DEPENDENCIES",
+        "workDisposition": "PARKED",
+        "priorityClass": "LOW",
+        "parentWorkRefOrNull": "work.vexlife.blueprint-source-of-truth.play-pause-practicum",
+        "childWorkRefs": [],
+        "dependencyRefs": [
+          "work.vexlife.blueprint-source-of-truth.play-pause.native-source-admission"
+        ],
+        "repositoryRefs": [
+          "repo.vexwork",
+          "repo.vexlife-construction-reference"
+        ],
+        "sourceRefs": [
+          "github.issue.VexGPT.VexLife-Construction-Reference.11",
           "projects/vexlife-blueprint-source-of-truth/README.md",
           "project.vexlife.new-beginnings",
           "github.pull.vexlife-android.209",
@@ -15217,6 +15400,169 @@
         "effectDisposition": "NO_EFFECTS",
         "createdAt": "2026-10-23T00:33:00.000Z",
         "updatedAt": "2026-11-03T09:40:00.000Z",
+        "transitionHistory": [],
+        "graphRef": "workgraph.vexwork.foundation"
+      },
+      {
+        "workRef": "work.vexboard.source-projectors.temporal-reversible-projection",
+        "label": "Temporal + reversible source/design projection",
+        "purpose": "Preserve the future VexBoard horizon where exact revisions/commits can be reconstructed into source-derived architecture relationship graphs and compared across historical, current, candidate and desired projections, so UX, engineering and AI can work from one connected semantic map. The reverse direction is intentional rather than source-authoritative: desired Origins may express constraints and explicit UNBOUND relationships; AI may traverse accepted Family/State/Control/Act/Effect/Projection, typed Port/Connection, provider/observation and convergence contracts to identify or propose missing connective tissue, but candidate source must be regenerated forward and compared with the desired projection before the connection is treated as real. Keep source expression, deterministic tests, runtime observation and human-lived evidence distinct so a historical projection never silently becomes a claim that the feature was known working.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "LOW",
+        "parentWorkRefOrNull": "work.vexboard.source-projectors",
+        "childWorkRefs": [],
+        "dependencyRefs": [],
+        "repositoryRefs": [
+          "repo.vexwork"
+        ],
+        "sourceRefs": [
+          "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md",
+          "work.vexboard.source-projectors",
+          "work.vexboard.boardpatch-authoring",
+          "github.pull.vexwork.219",
+          "github.pull.vexwork.227"
+        ],
+        "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+        "nextProcessRefs": [],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "createdAt": "2026-11-05T02:56:51.000Z",
+        "updatedAt": "2026-11-05T02:56:51.000Z",
+        "transitionHistory": [],
+        "graphRef": "workgraph.vexwork.foundation"
+      },
+      {
+        "workRef": "work.vexboard.tech-debt.origin-rename-propagation",
+        "label": "Tech debt — Origin rename propagation through mapped descendants",
+        "purpose": "Preserve the low-priority future need for VexBoard to traverse an accepted Origin's existing semantic, process, source and realization relationships when its reusable name changes: first expose the complete downstream rename plan and support bounded manual propagation, then use the observed process to earn autonomous BoardPatch-style propagation with lineage/currentness proof. The Origin is the design truth; repository placement is secondary, so this does not imply repository fragmentation or a parallel rename registry.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "LOW",
+        "parentWorkRefOrNull": "work.vexboard.outcome",
+        "childWorkRefs": [],
+        "dependencyRefs": [],
+        "repositoryRefs": [
+          "repo.vexwork"
+        ],
+        "sourceRefs": [
+          "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md",
+          "projects/vexboard/README.md",
+          "docs/foundation/PROCESS-MAP.md",
+          "work.vexboard.boardpatch-authoring",
+          "work.vexboard.source-projectors"
+        ],
+        "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+        "nextProcessRefs": [],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "createdAt": "2026-10-26T01:57:41.000Z",
+        "updatedAt": "2026-10-26T01:57:41.000Z",
+        "transitionHistory": [],
+        "graphRef": "workgraph.vexwork.foundation"
+      },
+      {
+        "workRef": "work.vexboard.vexstream-origin-roundtrip-review",
+        "label": "Independent review — VexStream Origin round-trip architecture",
+        "purpose": "Preserve a later independent review edge for the VexStream living-Origin round trip once the implementation/proof foundation is mature enough to review meaningfully. When activated, pressure-test Origin naming/lineage, content-Origin versus value-binding separation, target realization leakage, construction-admission boundaries, evidence/currentness semantics, duplicated truth and unjustified abstractions. This is deliberately parked while #182/#183 target proof and Origin round-trip construction are still forming; it is advisory evidence and grants no source mutation, approval, merge or Origin-authority acceptance.",
+        "workClass": "TASK",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "LOW",
+        "parentWorkRefOrNull": "work.vexboard.vexstream-screenshot-pilot",
+        "childWorkRefs": [],
+        "dependencyRefs": [],
+        "repositoryRefs": [
+          "repo.vexwork",
+          "repo.vexlife-android"
+        ],
+        "sourceRefs": [
+          "work.vexboard.vexstream-screenshot-pilot",
+          "projects/vexboard/README.md",
+          "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md",
+          "projects/vexboard/examples/vexlife-android-home-vexstream.design.json",
+          "projects/vexboard/examples/vexlife-android-home-vexstream.snapshot.json",
+          "src/core/vexboard-screen-design.mjs",
+          "src/core/vexboard-android-construction.mjs",
+          "src/core/vexboard-android-source-projector.mjs",
+          "github.pull.vexlife-android.182",
+          "github.pull.vexlife-android.183",
+          "github.pull.vexwork.155"
+        ],
+        "formationProcessRefOrNull": null,
+        "nextProcessRefs": [
+          "process.vexwork.quality-review"
+        ],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "createdAt": "2026-10-26T03:10:45.000Z",
+        "updatedAt": "2026-10-26T03:35:00.000Z",
+        "transitionHistory": [],
+        "graphRef": "workgraph.vexwork.foundation"
+      },
+      {
+        "workRef": "work.vexlife.new-beginnings.later.settings-capability-mapping",
+        "label": "Later — source-map Settings capabilities",
+        "purpose": "After the first browser/Conversation circuit is real, map Context Window, RAM/resource projection, reasoning visibility, accessible directories, Continuity Mode, Dream Sync and clean-chat/memory controls to their existing rightful source owners. Do not infer backend semantics from the screenshot labels or combine destructive effects merely because one visual button does.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "NORMAL",
+        "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
+        "childWorkRefs": [],
+        "dependencyRefs": [],
+        "repositoryRefs": [
+          "repo.vexlife-prod",
+          "repo.vexlife"
+        ],
+        "sourceRefs": [
+          "human.design.vexlife.new-beginnings.initial-engagement.20261101",
+          "project.vexlife.interface-refinement"
+        ],
+        "formationProcessRefOrNull": null,
+        "nextProcessRefs": [],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "createdAt": "2026-11-02T02:28:00.000Z",
+        "updatedAt": "2026-11-02T02:28:00.000Z",
+        "transitionHistory": [],
+        "graphRef": "workgraph.vexwork.foundation"
+      },
+      {
+        "workRef": "work.vexstream.mobile-library.tag-topology-stations",
+        "label": "User tag topology / dynamic stations",
+        "purpose": "Preserve the future product question of user-authored music tags that remain distinct from imported source tags/categories and can drive reusable dynamic stations or smart-playlist rules without pre-deciding identity attachment, persistence ownership, rule language, or playlist materialization.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "LOW",
+        "parentWorkRefOrNull": null,
+        "childWorkRefs": [],
+        "dependencyRefs": [
+          "work.vexstream.mobile-library.sort-filter-controls"
+        ],
+        "repositoryRefs": [
+          "repo.vexstream-music",
+          "repo.vexlife-android"
+        ],
+        "sourceRefs": [
+          "work.vexstream.mobile-library.library-browse-discovery",
+          "projects/vexstream-mobile-library/README.md",
+          "repo.vexstream-music:v2/desktop/library/model.go",
+          "repo.vexstream-music:v2/desktop/library/filesystem/metadata.go",
+          "repo.vexstream-music:v2/web/features/library/client.js",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/README.md"
+        ],
+        "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+        "nextProcessRefs": [
+          "process.vexlife-android.feature-authoring"
+        ],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "createdAt": "2026-10-23T08:02:00.000Z",
+        "updatedAt": "2026-10-24T02:59:02.000Z",
         "transitionHistory": [],
         "graphRef": "workgraph.vexwork.foundation"
       },
@@ -15307,290 +15653,6 @@
             "createdAt": "2026-11-03T09:22:02.000Z"
           }
         ],
-        "graphRef": "workgraph.vexwork.foundation"
-      },
-      {
-        "workRef": "work.vexlife.new-beginnings.later.settings-capability-mapping",
-        "label": "Later — source-map Settings capabilities",
-        "purpose": "After the first browser/Conversation circuit is real, map Context Window, RAM/resource projection, reasoning visibility, accessible directories, Continuity Mode, Dream Sync and clean-chat/memory controls to their existing rightful source owners. Do not infer backend semantics from the screenshot labels or combine destructive effects merely because one visual button does.",
-        "workClass": "POTENTIAL",
-        "state": "CAPTURED",
-        "workDisposition": "PARKED",
-        "priorityClass": "NORMAL",
-        "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
-        "childWorkRefs": [],
-        "dependencyRefs": [],
-        "repositoryRefs": [
-          "repo.vexlife-prod",
-          "repo.vexlife"
-        ],
-        "sourceRefs": [
-          "human.design.vexlife.new-beginnings.initial-engagement.20261101",
-          "project.vexlife.interface-refinement"
-        ],
-        "formationProcessRefOrNull": null,
-        "nextProcessRefs": [],
-        "authorityDisposition": "NO_AUTHORITY",
-        "effectDisposition": "NO_EFFECTS",
-        "createdAt": "2026-11-02T02:28:00.000Z",
-        "updatedAt": "2026-11-02T02:28:00.000Z",
-        "transitionHistory": [],
-        "graphRef": "workgraph.vexwork.foundation"
-      },
-      {
-        "workRef": "work.vexboard.vexstream-origin-roundtrip-review",
-        "label": "Independent review — VexStream Origin round-trip architecture",
-        "purpose": "Preserve a later independent review edge for the VexStream living-Origin round trip once the implementation/proof foundation is mature enough to review meaningfully. When activated, pressure-test Origin naming/lineage, content-Origin versus value-binding separation, target realization leakage, construction-admission boundaries, evidence/currentness semantics, duplicated truth and unjustified abstractions. This is deliberately parked while #182/#183 target proof and Origin round-trip construction are still forming; it is advisory evidence and grants no source mutation, approval, merge or Origin-authority acceptance.",
-        "workClass": "TASK",
-        "state": "CAPTURED",
-        "workDisposition": "PARKED",
-        "priorityClass": "LOW",
-        "parentWorkRefOrNull": "work.vexboard.vexstream-screenshot-pilot",
-        "childWorkRefs": [],
-        "dependencyRefs": [],
-        "repositoryRefs": [
-          "repo.vexwork",
-          "repo.vexlife-android"
-        ],
-        "sourceRefs": [
-          "work.vexboard.vexstream-screenshot-pilot",
-          "projects/vexboard/README.md",
-          "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md",
-          "projects/vexboard/examples/vexlife-android-home-vexstream.design.json",
-          "projects/vexboard/examples/vexlife-android-home-vexstream.snapshot.json",
-          "src/core/vexboard-screen-design.mjs",
-          "src/core/vexboard-android-construction.mjs",
-          "src/core/vexboard-android-source-projector.mjs",
-          "github.pull.vexlife-android.182",
-          "github.pull.vexlife-android.183",
-          "github.pull.vexwork.155"
-        ],
-        "formationProcessRefOrNull": null,
-        "nextProcessRefs": [
-          "process.vexwork.quality-review"
-        ],
-        "authorityDisposition": "NO_AUTHORITY",
-        "effectDisposition": "NO_EFFECTS",
-        "createdAt": "2026-10-26T03:10:45.000Z",
-        "updatedAt": "2026-10-26T03:35:00.000Z",
-        "transitionHistory": [],
-        "graphRef": "workgraph.vexwork.foundation"
-      },
-      {
-        "workRef": "work.vexboard.tech-debt.origin-rename-propagation",
-        "label": "Tech debt — Origin rename propagation through mapped descendants",
-        "purpose": "Preserve the low-priority future need for VexBoard to traverse an accepted Origin's existing semantic, process, source and realization relationships when its reusable name changes: first expose the complete downstream rename plan and support bounded manual propagation, then use the observed process to earn autonomous BoardPatch-style propagation with lineage/currentness proof. The Origin is the design truth; repository placement is secondary, so this does not imply repository fragmentation or a parallel rename registry.",
-        "workClass": "POTENTIAL",
-        "state": "CAPTURED",
-        "workDisposition": "PARKED",
-        "priorityClass": "LOW",
-        "parentWorkRefOrNull": "work.vexboard.outcome",
-        "childWorkRefs": [],
-        "dependencyRefs": [],
-        "repositoryRefs": [
-          "repo.vexwork"
-        ],
-        "sourceRefs": [
-          "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md",
-          "projects/vexboard/README.md",
-          "docs/foundation/PROCESS-MAP.md",
-          "work.vexboard.boardpatch-authoring",
-          "work.vexboard.source-projectors"
-        ],
-        "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
-        "nextProcessRefs": [],
-        "authorityDisposition": "NO_AUTHORITY",
-        "effectDisposition": "NO_EFFECTS",
-        "createdAt": "2026-10-26T01:57:41.000Z",
-        "updatedAt": "2026-10-26T01:57:41.000Z",
-        "transitionHistory": [],
-        "graphRef": "workgraph.vexwork.foundation"
-      },
-      {
-        "workRef": "work.vexstream.mobile-library.tag-topology-stations",
-        "label": "User tag topology / dynamic stations",
-        "purpose": "Preserve the future product question of user-authored music tags that remain distinct from imported source tags/categories and can drive reusable dynamic stations or smart-playlist rules without pre-deciding identity attachment, persistence ownership, rule language, or playlist materialization.",
-        "workClass": "POTENTIAL",
-        "state": "CAPTURED",
-        "workDisposition": "PARKED",
-        "priorityClass": "LOW",
-        "parentWorkRefOrNull": null,
-        "childWorkRefs": [],
-        "dependencyRefs": [
-          "work.vexstream.mobile-library.sort-filter-controls"
-        ],
-        "repositoryRefs": [
-          "repo.vexstream-music",
-          "repo.vexlife-android"
-        ],
-        "sourceRefs": [
-          "work.vexstream.mobile-library.library-browse-discovery",
-          "projects/vexstream-mobile-library/README.md",
-          "repo.vexstream-music:v2/desktop/library/model.go",
-          "repo.vexstream-music:v2/desktop/library/filesystem/metadata.go",
-          "repo.vexstream-music:v2/web/features/library/client.js",
-          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/README.md"
-        ],
-        "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
-        "nextProcessRefs": [
-          "process.vexlife-android.feature-authoring"
-        ],
-        "authorityDisposition": "NO_AUTHORITY",
-        "effectDisposition": "NO_EFFECTS",
-        "createdAt": "2026-10-23T08:02:00.000Z",
-        "updatedAt": "2026-10-24T02:59:02.000Z",
-        "transitionHistory": [],
-        "graphRef": "workgraph.vexwork.foundation"
-      },
-      {
-        "workRef": "work.vexwork.history.foundational-infrastructure-backfill",
-        "label": "Foundational Infrastructure history backfill",
-        "purpose": "Gradually reconstruct completed foundational work into VexWork with provenance so future humans and instances can perceive what was built from a dashboard instead of rediscovering it across repositories and chat history.",
-        "workClass": "POTENTIAL",
-        "state": "CAPTURED",
-        "workDisposition": "PARKED",
-        "priorityClass": "LOW",
-        "parentWorkRefOrNull": null,
-        "childWorkRefs": [],
-        "dependencyRefs": [
-          "work.vexwork.visibility.public-dashboard"
-        ],
-        "repositoryRefs": [
-          "repo.vexwork"
-        ],
-        "sourceRefs": [
-          "public/work-dashboard.json",
-          "docs/lineage/VEXLIFE-P0B.md",
-          "docs/foundation/PARKING-LOT.md",
-          "docs/process/CAPTURE-DISCOVERED-WORK.md"
-        ],
-        "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
-        "nextProcessRefs": [],
-        "authorityDisposition": "NO_AUTHORITY",
-        "effectDisposition": "NO_EFFECTS",
-        "createdAt": "2026-10-21T06:07:27.000Z",
-        "updatedAt": "2026-10-22T04:42:04.000Z",
-        "transitionHistory": [],
-        "graphRef": "workgraph.vexwork.foundation"
-      },
-      {
-        "workRef": "work.vexwork.operational-console.multi-fulfiller-routing",
-        "label": "Multiple fulfiller / nearby-route optimization",
-        "purpose": "Preserve the possible later need for assigning fulfillment to multiple people, grouping nearby deliveries, routing/sequencing stops and collecting worker delivery acknowledgement without making dispatch/routing part of the first commerce-pilot completion boundary.",
-        "workClass": "POTENTIAL",
-        "state": "CAPTURED",
-        "workDisposition": "PARKED",
-        "priorityClass": "LOW",
-        "parentWorkRefOrNull": null,
-        "childWorkRefs": [],
-        "dependencyRefs": [],
-        "repositoryRefs": [
-          "repo.vexwork"
-        ],
-        "sourceRefs": [
-          "projects/vexwork-operational-console/README.md",
-          "docs/process/CAPTURE-DISCOVERED-WORK.md"
-        ],
-        "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
-        "nextProcessRefs": [],
-        "authorityDisposition": "NO_AUTHORITY",
-        "effectDisposition": "NO_EFFECTS",
-        "createdAt": "2026-10-22T03:20:00.000Z",
-        "updatedAt": "2026-10-22T03:20:00.000Z",
-        "transitionHistory": [],
-        "graphRef": "workgraph.vexwork.foundation"
-      },
-      {
-        "workRef": "work.vexstream.mobile-library.keep-offline-sync",
-        "label": "Persistent Keep Offline / Sync",
-        "purpose": "Preserve the future policy question of keeping an album, artist, playlist, or other collection continuously mirrored as producer membership changes, without conflating it with one-shot Download missing.",
-        "workClass": "POTENTIAL",
-        "state": "CAPTURED",
-        "workDisposition": "PARKED",
-        "priorityClass": "LOW",
-        "parentWorkRefOrNull": null,
-        "childWorkRefs": [],
-        "dependencyRefs": [
-          "work.vexstream.mobile-library.durable-device-library"
-        ],
-        "repositoryRefs": [
-          "repo.vexlife-android"
-        ],
-        "sourceRefs": [
-          "work.vexstream.mobile-library.outcome",
-          "github.pull.vexlife-android.142",
-          "docs/process/CAPTURE-DISCOVERED-WORK.md",
-          "projects/vexstream-mobile-library/README.md",
-          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/offline/VexStreamOfflineDocs.kt"
-        ],
-        "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
-        "nextProcessRefs": [
-          "process.vexlife-android.feature-authoring"
-        ],
-        "authorityDisposition": "NO_AUTHORITY",
-        "effectDisposition": "NO_EFFECTS",
-        "createdAt": "2026-10-21T08:41:00.000Z",
-        "updatedAt": "2026-10-21T08:41:00.000Z",
-        "transitionHistory": [],
-        "graphRef": "workgraph.vexwork.foundation"
-      },
-      {
-        "workRef": "work.vexlife.connected-services.guided-onboarding",
-        "label": "Simplify Connected Services onboarding across computer + phone",
-        "purpose": "Preserve the lived need for one guided setup path that checks Tailscale readiness across computer and phone, asks for protected human-only steps at the right moment, then returns to VexLife pairing/private-route setup without weakening Home, session, reachability, or pairing authority boundaries.",
-        "workClass": "POTENTIAL",
-        "state": "CAPTURED",
-        "workDisposition": "PARKED",
-        "priorityClass": "LOW",
-        "parentWorkRefOrNull": null,
-        "childWorkRefs": [],
-        "dependencyRefs": [],
-        "repositoryRefs": [
-          "repo.vexlife",
-          "repo.vexlife-android"
-        ],
-        "sourceRefs": [
-          "github.issue.vexwork.6",
-          "github.issue.vexlife.899",
-          "docs/process/CAPTURE-DISCOVERED-WORK.md"
-        ],
-        "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
-        "nextProcessRefs": [],
-        "authorityDisposition": "NO_AUTHORITY",
-        "effectDisposition": "NO_EFFECTS",
-        "createdAt": "2026-10-21T06:23:27.000Z",
-        "updatedAt": "2026-10-21T06:23:27.000Z",
-        "transitionHistory": [],
-        "graphRef": "workgraph.vexwork.foundation"
-      },
-      {
-        "workRef": "work.vexlife-android.vexstream.not-yet-downloaded-filter",
-        "label": "VexStream Songs filter for Not yet downloaded",
-        "purpose": "Preserve the nice-to-have Songs-level filter that answers which songs on this device are still not downloaded, without making it part of MassDownload completion or authorizing implementation.",
-        "workClass": "POTENTIAL",
-        "state": "CAPTURED",
-        "workDisposition": "PARKED",
-        "priorityClass": "LOW",
-        "parentWorkRefOrNull": null,
-        "childWorkRefs": [],
-        "dependencyRefs": [],
-        "repositoryRefs": [
-          "repo.vexlife-android"
-        ],
-        "sourceRefs": [
-          "github.issue.vexlife-android.144",
-          "github.pull.vexlife-android.142",
-          "docs/process/CAPTURE-DISCOVERED-WORK.md"
-        ],
-        "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
-        "nextProcessRefs": [
-          "process.vexlife-android.feature-authoring"
-        ],
-        "authorityDisposition": "NO_AUTHORITY",
-        "effectDisposition": "NO_EFFECTS",
-        "createdAt": "2026-10-21T01:18:35.000Z",
-        "updatedAt": "2026-10-21T01:18:35.000Z",
-        "transitionHistory": [],
         "graphRef": "workgraph.vexwork.foundation"
       }
     ]
