@@ -19,6 +19,7 @@ const systemAnatomy = JSON.parse(fs.readFileSync(new URL('../projects/vexboard/e
 const intentTopology = JSON.parse(fs.readFileSync(new URL('../projects/vexboard/examples/vexbusinessfactory-intent-topology.board.json', import.meta.url), 'utf8'));
 const patientZeroCatalog = JSON.parse(fs.readFileSync(new URL('../projects/vexboard/examples/board-source-catalog.json', import.meta.url), 'utf8'));
 const themeModeBoard = JSON.parse(fs.readFileSync(new URL('../projects/vexboard/examples/vexlife-debug-menu-theme-mode.board.json', import.meta.url), 'utf8'));
+const vexLifeProdAlignment = JSON.parse(fs.readFileSync(new URL('../projects/vexboard/examples/vexlife-prod-perceivability-alignment.board.json', import.meta.url), 'utf8'));
 
 const repositoryRootUrl = new URL('../', import.meta.url);
 
@@ -369,6 +370,7 @@ test('built-in and patient-zero source boards preserve separate catalog ownershi
       'board.vexlife-android.home-vexstream.poc',
       'board.vexlife-android.vexstream-depth.poc',
       'board.vexlife-android.vexstream-playback.vexarchitecture',
+      'board.vexlife-prod.perceivability-alignment',
       'board.vexlife.debug-menu.theme-mode.origin-walk',
       'board.vexwork.process-family-metawalk',
     ]),
@@ -398,6 +400,19 @@ test('built-in and patient-zero source boards preserve separate catalog ownershi
   assert.equal(themeModeResolution.catalogRef, catalog.catalogRef);
   assert.equal(themeModeResolution.location, './vexlife-debug-menu-theme-mode.board.json');
   assert.equal(themeModeResolution.boardRef, themeModeBoard.draftRef);
+
+  const vexLifeProdResolution = resolveBoardSource(vexLifeProdAlignment.draftRef, [catalog]);
+  assert.equal(vexLifeProdResolution.catalogRef, catalog.catalogRef);
+  assert.equal(vexLifeProdResolution.location, './vexlife-prod-perceivability-alignment.board.json');
+  assert.equal(vexLifeProdResolution.boardRef, vexLifeProdAlignment.draftRef);
+
+  const vexLifeProdGraph = normalizeBoardGraph(vexLifeProdAlignment.graph);
+  const vexLifeProdProjection = normalizeBoardProjection(vexLifeProdAlignment.projection, vexLifeProdGraph);
+  assert.equal(vexLifeProdAlignment.mode, 'READ_ONLY_SOURCE');
+  assert.equal(vexLifeProdProjection.graphRef, vexLifeProdGraph.graphRef);
+  assert.ok(vexLifeProdGraph.nodes.some((node) => node.nodeRef === 'node.vlp.screen-lens-proof'));
+  assert.ok(vexLifeProdGraph.nodes.some((node) => node.nodeRef === 'node.vlp.future-projector'));
+  assert.ok(vexLifeProdGraph.relationships.some((relationship) => relationship.relationshipRef === 'rel.vlp.projector-product'));
 
   assert.match(page, /vexboard-source-resolver\.mjs/);
   assert.match(page, /function loadSourceCatalogs\(\)/);
