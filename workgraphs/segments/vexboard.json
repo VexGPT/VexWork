@@ -562,6 +562,48 @@
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-11-05T10:50:07.000Z",
       "updatedAt": "2026-11-05T10:50:07.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexboard.screen-lens-currentness",
+      "parentWorkRefOrNull": "work.vexboard.source-projectors",
+      "label": "Living Screen Lens currentness and projection truth",
+      "purpose": "Keep the Living Screen Lens as VexBoard's primary source-grounded perceptual experience: preserve the accepted Projects -> Stable/Main/Commit -> Screen Lens product direction, project only source-earned relationships, keep current source movement distinct from projection movement, and converge source-owned expectation with historically observed lived evidence on stable semantic coordinates without making VexBoard a second VexWork or source owner. Current foreground is VexWork PR #238 under independent CHANGES_REQUESTED review: correct projection-honesty/currentness defects, regenerate exact artifacts, run exact-head SourceOwner proof, obtain fresh independent Assurance, and re-ground live main before any lifecycle/integration effect. The future Scenario Playground remains a separate parked potential.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexboard.boardgraph-contract",
+        "work.vexboard.canvas-projection",
+        "work.vexboard.source-projectors"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "projects/vexboard/SCREEN-LENS.md",
+        "projects/vexboard/SCREEN-LENS-ADAPTER.md",
+        "projects/vexboard/PROJECTS-AND-BUILDS.md",
+        "projects/vexboard/lens/catalog.json",
+        "github.pull.vexwork.230",
+        "github.pull.vexwork.232",
+        "github.pull.vexwork.237",
+        "github.pull.vexwork.238",
+        "git.commit.vexwork.b90cba32585382ba0b6eadd1275d1a38c4a36789",
+        "github.issue.vexwork.238.comment.6656450534",
+        "work.vexboard.source-projectors",
+        "work.vexboard.vexstream-screenshot-pilot"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [
+        "process.vexwork.quality-review"
+      ],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-11-05T11:02:00.000Z",
+      "updatedAt": "2026-11-05T11:02:00.000Z"
     }
   ],
   "transitions": [
@@ -904,5 +946,5 @@
     "github.pull.vexwork.215",
     "github.commit.vexwork.cd1264763e315d3bc2b6db80115806a102ed339b"
   ],
-  "formedAt": "2026-10-21T01:45:00.000Z"
+  "formedAt": "2026-11-05T11:02:00.000Z"
 }
