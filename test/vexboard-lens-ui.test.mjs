@@ -13,6 +13,13 @@ test('Screen Lens page consumes the shared model, layout and interaction modules
   assert.match(page, /lens\/vexlife-android\.screen-lens\.json/);
 });
 
+test('Screen Lens exposes related boards through stable VexBoard boardRef deep links', () => {
+  assert.match(page, /state\.lens\.relatedBoardRefs\.length/);
+  assert.match(page, /aria-label': 'Related boards'/);
+  assert.match(page, /\.\/\?board=\$\{encodeURIComponent\(boardRef\)\}/);
+  assert.match(page, /Opening one does not change the source meaning projected here/);
+});
+
 test('flip gestures: middle-click flips Experience, right-click flips Behavior, keys and tabs are equivalent', () => {
   assert.match(page, /event\.button === 1\) \{ event\.preventDefault\(\); flip\('EXPERIENCE'\)/);
   assert.match(page, /addEventListener\('auxclick'/, 'middle-click must not open links or autoscroll');

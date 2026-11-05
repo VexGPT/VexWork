@@ -276,6 +276,16 @@ D23 Nothing the lens adds on the surface covers a control
     proof     browser sweep over every traced control: 0 crossings, 0 covered controls
     rejected  hiding the chip entirely (it is the surface's only travel affordance besides
               double-click)
+
+D24 Related boards resolve by stable boardRef, not by copying URLs into the Lens
+    why       the Lens already carries relatedBoardRefs and VexBoard already owns source-catalog /
+              built-in board resolution; the missing seam is human addressability, not a new link model
+    how       Lens renders Related -> ./?board=<encoded boardRef>; VexBoard resolves that boardRef
+              through the existing resolver and opens the source-owned BoardGraph read-only
+    boundary   opening a related board does not mutate this Lens, transfer source authority, or imply
+               cross-board BoardJourney continuity; browser Back is sufficient until lived use earns
+               a stronger federated Journey contract
+    rejected  hard-coded per-product hrefs and a second Screen-Lens-specific related-board registry
 ```
 
 ## Data contract
@@ -286,6 +296,7 @@ D23 Nothing the lens adds on the surface covers a control
 
 ```text
 sourceSnapshot   repository url + exact commit + path roots ("app:", "arch:")
+relatedBoardRefs[] stable VexBoard board identities for separate related projections
 chrome[]         shared chrome owners with appliesTo PRIMARY | SHARED and their element trees
 screens[]        placement PRIMARY | SHARED, mapped MAPPED | CHROME_ONLY | HELD, element tree
 pathways[]       disposition, nodes (face BEHAVIOR | DEPTH, role, label, symbol, summary, source,

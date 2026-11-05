@@ -58,6 +58,8 @@ test('VexBoard Pages entry exposes create/open/read-only/fork/save-draft workflo
   assert.match(page, /Create new/);
   assert.match(page, /Open VexBoard self-map/);
   assert.match(page, /Open VexBoard architecture/);
+  assert.match(page, /Open Living Screen Lens/);
+  assert.match(page, /data-vexboard-entry="living-screen-lens"|dataset\.vexboardEntry='living-screen-lens'/);
   assert.match(page, /Open prototype demo/);
   assert.match(page, /Source examples/);
   assert.match(page, /Open system anatomy example/);
@@ -69,6 +71,14 @@ test('VexBoard Pages entry exposes create/open/read-only/fork/save-draft workflo
   assert.match(page, /Browser-local proving copies · not source truth/);
   assert.match(page, /Local draft · browser only/);
   assert.match(page, /href="\.\.\/">← VexWork/);
+});
+
+test('VexBoard accepts one stable boardRef deep link through the existing source resolver', () => {
+  assert.match(page, /async function openBoardRef\(boardRef,\{pushCurrent=false\}=\{\}\)/);
+  assert.match(page, /new URLSearchParams\(location\.search\)\.get\('board'\)/);
+  assert.match(page, /await openBoardRef\(requestedBoardRef\)/);
+  assert.match(page, /SourceResolver\.resolveBoardSource\(boardRef/);
+  assert.match(page, /bootFromUrl\(\)/);
 });
 
 test('read-only fork preserves the actual draft identity as the active board coordinate', () => {
