@@ -301,9 +301,10 @@ The new Project asks how those earned truths compose in a fresh product containe
 
 ## Lived product threshold — current parallel truth
 
-The canonical generated-product trajectory below remains authoritative for its own Workgraph states:
-VexWeb F1 is still the accepted source-construction edge, and generated P1/P2/P3 are not silently
-promoted by exploration or by the parallel local-runtime foundation.
+The canonical generated-product trajectory below remains authoritative for its own Workgraph states.
+VexWeb F1/F2 and the generated P1 inert workspace are now accepted source. The current foreground Work
+is the bounded public GitHub nested-browser practicum; P2 browser-context/Conversation acceptance and
+P3 lived whole-circuit completion remain dependency-held until the current edge is actually exercised.
 
 The lived exploration thresholds that remain valid are:
 
@@ -450,59 +451,35 @@ VEXLIFE-PROD
 
 ## Current execution map
 
-The original P0 practicum has now crossed its intended semantic + reference-renderer threshold. The
-next earned foundation is **VexWeb**, separated as its own Work rather than hidden inside semantic
-authoring.
+The source trajectory has now crossed the VexWeb compiler and generated inert-product thresholds.
 
 ~~~text
 P0 · clean product foundations
 
   [DONE] repository front door
-         VexLife-Prod PR #1
+  [DONE] semantic Blueprint + Compose reference
 
-  [DONE] compiler-constrained semantic Blueprint authoring
-         VexLife-Prod PR #2
-         merge c9aca940a49cb2e828ecfbd4be726f3553bf0063
+  [DONE] VexWeb relational foundation + authoring
+         -> PR #34 accepted relational authoring
+         -> merge c2ed37471eab9f163acd2b0cfaf979d7cdeead73
 
-         established:
-         - pure Kotlin Family / State / Control / Effect / DisplayState contract
-         - rooted compiler-visible Workspace Blueprint
-         - exact JVM + JS semantic proof
-
-  [DONE] Compose reference realization
-         VexLife-Prod PR #4
-         merge 1264be62324878126ade9ad37da33db3097aad45
-         tree  aeb6c6977fa3b5772854b1c4fe21ec1095513d06
-
-         established:
-         - compiler-visible Blueprint element handles
-         - Family.Parameter identity pressure
-         - DisplayState -> presentation / UI -> typed Control
-         - Compose manifestation isolated from portable semantic KMP
-         - exact root JVM/JS + Compose JVM proof
-
-  [RUNNING / F0] VexWeb foundation
-                 work.vexlife.new-beginnings.p0.vexweb-foundation
-
-                 apply VexArchitecture construction discipline to browser manifestation:
-
-                 Kotlin VexWeb authoring
-                 -> typed Element / Parameter / Layout / Presentation / Binding relationships
-                 -> deterministic generator / compiler
-                 -> generated HTML / CSS / JS + semantic manifest
-                 -> generated artifacts verified, not manually authored
-
-                 required laws:
-                 - VexWeb consumes VexBlueprint identity; it does not recreate selectors by memory.
-                 - VexWeb may consume Family DisplayState / typed Control boundaries; it does not own product State.
-                 - AI/human authors relationship source, not generated CSS/JS.
-                 - hard-coded platform values are generated from named/typed parameters where meaning exists.
-                 - renderer-specific escape hatches stay explicit; ALIGNMENT != SAMENESS.
-                 - generated DOM keeps source-addressable Vex refs for later browser-context perception.
+  [DONE] VexWeb deterministic artifact generation
+         -> PR #35
+         -> merge cf7de23e2979cc49133e2de4c5eee841d5bcf584
 
 P1 · intended browser product
-  [WAITING on VexWeb] web-native VexLife workspace
-  [WAITING] public GitHub nested-browser practicum / Vextreme Terrain
+
+  [DONE] generated inert VexLife workspace
+         -> all current Blueprint coordinates manifested
+         -> exact generated-artifact materialization / drift membrane
+         -> PR #36
+         -> merge 9615aab32c6e4427f3b538550284c391471a7eb0
+
+  [RUNNING] public GitHub nested-browser practicum
+            work.vexlife.new-beginnings.p1.public-github-nested-browser
+            -> current candidate PR #37
+            -> bounded Vex-owned GitHub Pages realization
+            -> human render/current-page identity must be exercised before completion
 
 P2 · Vex perception + relationship
   [WAITING] current browser/DOM context projection
@@ -514,6 +491,9 @@ P3 · whole lived circuit
 Later
   [PARKED] source-map Settings capabilities after the first whole browser/Conversation circuit
 ~~~
+
+The parallel local-runtime #25→#33 draft stack is provenance/source input to PR #37. Its existence does
+not independently advance P2/P3 state; accepted currentness follows the mapped dependency chain.
 
 ### VexWeb construction trajectory
 
