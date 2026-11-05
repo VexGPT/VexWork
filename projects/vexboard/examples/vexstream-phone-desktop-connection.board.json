@@ -955,12 +955,74 @@
         ]
       }
     ],
-    "artifacts": [],
+    "artifacts": [
+      {
+        "artifactRef": "evidence-artifact.vexstream.android-home.a011",
+        "slotRef": "evidence-slot.vexstream.android-home",
+        "role": "OBSERVED",
+        "assetRef": "asset.screenshot.vexstream.android-home.a011",
+        "journeyRefOrNull": null,
+        "journeyStepSequenceOrNull": null,
+        "interactionRefOrNull": "android.action.open-vexstream",
+        "configurationRefOrNull": null,
+        "capturedAtOrNull": "2026-10-19T03:59:25.489Z",
+        "contentSha256OrNull": "f5b84da36456bfeba22a1f1874c09360fe7b33eef303776ed0412fb72bdcb3da",
+        "sourceRefs": [
+          "return.vexstream-v4-android-lived-proof.a011.sha256-dcfe892eccbc85f2c51ec6b197298727dc7da456820248a8d9696d10757dc20c",
+          "run.vexstream-e2e-a011-20261019T035558Z-2400",
+          "git.commit.vexlife-android.eb1edba1b76a295ce59195b889b0bcd58613f334",
+          "git.commit.vexstream-music.ea3fce6cbfb666c84e3a0bccb6ff67fe830093b3",
+          "evidence.a011:android-private/screenshots/android.action.open-vexstream.before.png"
+        ]
+      },
+      {
+        "artifactRef": "evidence-artifact.vexstream.android-not-paired.a011",
+        "slotRef": "evidence-slot.vexstream.android-not-paired",
+        "role": "OBSERVED",
+        "assetRef": "asset.screenshot.vexstream.android-not-paired.a011",
+        "journeyRefOrNull": null,
+        "journeyStepSequenceOrNull": null,
+        "interactionRefOrNull": "android.action.open-vexstream",
+        "configurationRefOrNull": null,
+        "capturedAtOrNull": "2026-10-19T03:59:25.982Z",
+        "contentSha256OrNull": "3bde6851344aacc36fc5b647d1ed7b7937c2450e3e4c06ddaf5d101661164434",
+        "sourceRefs": [
+          "return.vexstream-v4-android-lived-proof.a011.sha256-dcfe892eccbc85f2c51ec6b197298727dc7da456820248a8d9696d10757dc20c",
+          "run.vexstream-e2e-a011-20261019T035558Z-2400",
+          "git.commit.vexlife-android.eb1edba1b76a295ce59195b889b0bcd58613f334",
+          "git.commit.vexstream-music.ea3fce6cbfb666c84e3a0bccb6ff67fe830093b3",
+          "evidence.a011:android-private/screenshots/android.action.open-vexstream.after.png"
+        ]
+      },
+      {
+        "artifactRef": "evidence-artifact.vexstream.android-confirm-code.a011",
+        "slotRef": "evidence-slot.vexstream.android-confirm-code",
+        "role": "OBSERVED",
+        "assetRef": "asset.screenshot.vexstream.android-confirm-code.a011",
+        "journeyRefOrNull": null,
+        "journeyStepSequenceOrNull": null,
+        "interactionRefOrNull": "android.action.confirm-pairing-code",
+        "configurationRefOrNull": null,
+        "capturedAtOrNull": "2026-10-19T03:59:27.014Z",
+        "contentSha256OrNull": "733f78c0ef2c117fd29cbab030abea8b17dcf0a5786366eb37f62ef6b9d26d23",
+        "sourceRefs": [
+          "return.vexstream-v4-android-lived-proof.a011.sha256-dcfe892eccbc85f2c51ec6b197298727dc7da456820248a8d9696d10757dc20c",
+          "run.vexstream-e2e-a011-20261019T035558Z-2400",
+          "git.commit.vexlife-android.eb1edba1b76a295ce59195b889b0bcd58613f334",
+          "git.commit.vexstream-music.ea3fce6cbfb666c84e3a0bccb6ff67fe830093b3",
+          "evidence.a011:android-private/screenshots/android.action.confirm-pairing-code.after.png"
+        ]
+      }
+    ],
     "sourceRefs": [
       "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md",
       "src/shared/vexboard-evidence.mjs",
       "git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552",
-      "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15"
+      "git.commit.vexstream-music.6ab8fef3e0acdf3a919fc64f9e28e3758060ec15",
+      "return.vexstream-v4-android-lived-proof.a011.sha256-dcfe892eccbc85f2c51ec6b197298727dc7da456820248a8d9696d10757dc20c",
+      "run.vexstream-e2e-a011-20261019T035558Z-2400",
+      "git.commit.vexlife-android.eb1edba1b76a295ce59195b889b0bcd58613f334",
+      "git.commit.vexstream-music.ea3fce6cbfb666c84e3a0bccb6ff67fe830093b3"
     ]
   }
 }

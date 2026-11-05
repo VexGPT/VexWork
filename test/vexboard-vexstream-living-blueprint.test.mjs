@@ -25,8 +25,29 @@ test('VexStream primary living Blueprint is journey-first and delegates construc
   const portal = state.graph.nodes.find((node) => node.nodeRef === 'portal.vexstream.construction-evidence');
   assert.ok(portal);
   assert.equal(portal.detailBoardRefOrNull, 'board.vexstream.phone-desktop-connection.construction-evidence');
-  assert.equal(evidence.artifacts.length, 0);
+  assert.equal(evidence.artifacts.length, 3);
   assert.equal(evidence.slots.length, 10);
+
+  const home = evidenceForSemanticRef(evidence, state.graph, 'scene.vexstream.android.home')[0];
+  const notPaired = evidenceForSemanticRef(evidence, state.graph, 'scene.vexstream.android.not-paired')[0];
+  const confirm = evidenceForSemanticRef(evidence, state.graph, 'scene.vexstream.android.confirm-code')[0];
+
+  assert.equal(home.artifacts[0].contentSha256OrNull, 'f5b84da36456bfeba22a1f1874c09360fe7b33eef303776ed0412fb72bdcb3da');
+  assert.equal(home.artifacts[0].capturedAtOrNull, '2026-10-19T03:59:25.489Z');
+  assert.equal(notPaired.artifacts[0].contentSha256OrNull, '3bde6851344aacc36fc5b647d1ed7b7937c2450e3e4c06ddaf5d101661164434');
+  assert.equal(notPaired.artifacts[0].capturedAtOrNull, '2026-10-19T03:59:25.982Z');
+  assert.equal(confirm.artifacts[0].contentSha256OrNull, '733f78c0ef2c117fd29cbab030abea8b17dcf0a5786366eb37f62ef6b9d26d23');
+  assert.equal(confirm.artifacts[0].capturedAtOrNull, '2026-10-19T03:59:27.014Z');
+
+  for (const item of [home.artifacts[0], notPaired.artifacts[0], confirm.artifacts[0]]) {
+    assert.equal(item.role, 'OBSERVED');
+    assert.ok(item.sourceRefs.includes('return.vexstream-v4-android-lived-proof.a011.sha256-dcfe892eccbc85f2c51ec6b197298727dc7da456820248a8d9696d10757dc20c'));
+    assert.ok(item.sourceRefs.includes('git.commit.vexlife-android.eb1edba1b76a295ce59195b889b0bcd58613f334'));
+    assert.ok(item.sourceRefs.includes('git.commit.vexstream-music.ea3fce6cbfb666c84e3a0bccb6ff67fe830093b3'));
+  }
+  assert.ok(home.sourceRefs.includes('git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552'));
+  assert.equal(home.artifacts[0].sourceRefs.includes('git.commit.vexlife-android.31a99c92d2c7a5e15a5e187e044dd7be19440552'), false,
+    'observed A011 source stays distinct from the newer expected-source slot');
 });
 
 test('construction/evidence board preserves target-specific Android mapping without treating dp as portable truth', async () => {
@@ -69,13 +90,21 @@ test('VexStream living Blueprint preserves the remembered-phone conditional bran
   assert.equal(journey.currentRef, 'control.vexstream.desktop.allow');
 });
 
-test('VexStream evidence slots preserve expected visuals while observed screenshot admission remains held', async () => {
+test('VexStream evidence slots admit the exact A011 Android observed subset without widening whole-run truth', async () => {
   const state = await Board.hydrateBoardState(raw.graph, raw.projection);
   const evidence = normalizeBoardEvidence(raw.evidence, state.graph);
   const confirm = evidenceForSemanticRef(evidence, state.graph, 'scene.vexstream.android.confirm-code');
   assert.equal(confirm.length, 1);
   assert.match(confirm[0].expectation, /six-digit code/);
-  assert.deepEqual(confirm[0].artifacts, []);
+  assert.equal(confirm[0].artifacts.length, 1);
+  assert.equal(confirm[0].artifacts[0].assetRef, 'asset.screenshot.vexstream.android-confirm-code.a011');
+
+  const waiting = evidenceForSemanticRef(evidence, state.graph, 'scene.vexstream.android.waiting-approval');
+  assert.deepEqual(waiting[0].artifacts, [], 'A011 visual does not prove WaitingForDesktopApproval even though the test state advanced');
+
+  const desktopReady = evidenceForSemanticRef(evidence, state.graph, 'scene.vexstream.desktop.pairing-ready');
+  assert.deepEqual(desktopReady[0].artifacts, [], 'A011 host screenshot did not isolate the VexStream pairing UI');
+
   const osPermission = evidenceForSemanticRef(evidence, state.graph, 'reference.vexstream.android-os.media-permission');
   assert.equal(osPermission.length, 1);
   assert.match(osPermission[0].expectation, /platform-owned/);
