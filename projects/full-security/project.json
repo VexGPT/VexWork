@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "vexwork.project-definition/v1",
+  "projectRef": "project.full-security",
+  "label": "Full Security",
+  "purpose": "Make the full currently admitted security-boundary family understandable through source-backed Vex examples, a real VexStream pairing patient zero, a deliberately complex VexLife-Prod/VexLife-Android demonstration mode, and Vex-guided VexBoard traversal without claiming certification, universal security completeness, or cross-repository effect authority.",
+  "rootWorkRefs": [
+    "work.full-security.outcome"
+  ],
+  "repositoryRefs": [
+    "repo.vexwork",
+    "repo.vexlife",
+    "repo.vexlife-prod",
+    "repo.vexlife-android",
+    "repo.vexstream-music"
+  ],
+  "sourceRefs": [
+    "projects/full-security/README.md",
+    "projects/full-security/VEXSTREAM-LOCAL-PAIRING-PATTERN.md",
+    "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md",
+    "projects/vexboard/examples/full-security-overview.board.json",
+    "projects/vexboard/examples/full-security-vexstream-local-pairing.board.json",
+    "projects/vexboard/examples/full-security-vexlife-complex-demonstrator.board.json",
+    "projects/vex-security-assurance/README.md",
+    "projects/vexboard/examples/security-boundary-atlas.board.json",
+    "github.pull.vexwork.256"
+  ],
+  "formedAt": "2026-11-06T10:50:45.000Z"
+}
