@@ -5987,9 +5987,9 @@
   ],
   "provenance": {
     "generator": "vexlife-android-adapter/3",
+    "projectorBlobSha1": "07b0b34a5ae269212fd10a02f20fc58d94c1093d",
     "adapterSha256": "d844788dfec846919f821534b9aec49f76fb7366e262166ebf2c7cdc9f04bcea",
     "overlaySha256": "b90f9037a67e7f9d6e4fac6cc455b036fe1a7128d8f4601ed66aa7be2825efd0",
-    "sourceCommit": "305a09eac1fabebcf2241bd207386950f41121f2",
-    "projectorBlobSha1": "07b0b34a5ae269212fd10a02f20fc58d94c1093d"
+    "sourceCommit": "305a09eac1fabebcf2241bd207386950f41121f2"
   }
 }

@@ -157,7 +157,7 @@ test('the screen brief carries identities, reach, every pathway, notes and what 
   assert.match(brief, /reached from: Debug Menu `element\.debug-menu` owned by AppShell, shown on Home, Events, Settings/);
   assert.match(brief, /controls traced: 14 of 14/);
   assert.match(brief, /chrome here: AppShell \(always-visible controls only\)/);
-  assert.match(brief, /### Choose Light \/ Dark · SCAE Family/);
+  assert.match(brief, /### Choose Light \/ Dark · SCAE semantic owner/);
   assert.match(brief, /\[STO Store \/ provider · outside truth\] ThemeModeStore\.save\(mode\)/);
   assert.match(brief, /theme\.observe — interpreted \(RETURN\) → theme\.state/);
   assert.match(brief, /Doorway only/);

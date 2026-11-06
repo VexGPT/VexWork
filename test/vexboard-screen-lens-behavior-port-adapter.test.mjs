@@ -365,12 +365,12 @@ test('behavior-port source shape reproduces the stable Playback reference struct
   }]);
 });
 
-test('an unrelated localEffect stays the existing generic local-effect pathway', () => {
+test('an unrelated unproven localEffect stays visible without an invented generic pathway', () => {
   const { lens } = project();
   const generated = Lens.normalizeScreenLens(lens);
   const element = Lens.elementFor(generated, 'element.vexstream-music.body.local-only');
-  assert.equal(element.pathwayRef, 'pathway.vexstream-music.local-effect');
-  assert.equal(Lens.pathwayFor(generated, element.pathwayRef).disposition, 'TYPED_PRESENTATION');
+  assert.equal(element.pathwayRef, null);
+  assert.equal(generated.pathways.some((pathway) => pathway.pathwayRef === 'pathway.vexstream-music.local-effect'), false);
 });
 
 test('the behavior-port projector fails closed when the Experience no longer forwards the Control', () => {
@@ -381,7 +381,7 @@ test('the behavior-port projector fails closed when the Experience no longer for
   const { lens, report } = project(broken);
   const generated = Lens.normalizeScreenLens(lens);
   const element = Lens.elementFor(generated, PLAY_PAUSE);
-  assert.equal(element.pathwayRef, 'pathway.vexstream-music.local-effect');
+  assert.equal(element.pathwayRef, null);
   assert.equal(report.bonds.filter((bond) => bond.via === 'BEHAVIOR_PORT').length, 0);
 });
 
