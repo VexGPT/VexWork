@@ -326,6 +326,18 @@
           "projects/full-security/README.md",
           "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md"
         ]
+      },
+      {
+        "nodeRef": "portal.fs.cx.scenario-suite",
+        "kind": "PORTAL",
+        "label": "Open S01–S20 Android account/device scenario suite",
+        "parentRefOrNull": "node.fs.cx.demo",
+        "detailBoardRefOrNull": "board.full-security.android-account-device-scenarios",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md",
+          "projects/vexboard/examples/full-security-android-account-device-scenarios.board.json"
+        ]
       }
     ],
     "relationships": [
@@ -544,6 +556,17 @@
         "labelOrNull": "GUIDED EXPLANATION WHEN CONTEXT ADMITTED",
         "sourceRefs": [
           "projects/full-security/README.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.cx.scenarios-suite",
+        "kind": "REFERENCE",
+        "fromRef": "artifact.fs.cx.scenarios",
+        "toRef": "portal.fs.cx.scenario-suite",
+        "labelOrNull": "EXPANDS TO",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
         ]
       }
     ],
@@ -1008,6 +1031,21 @@
         },
         "layer": 2,
         "parentProjectionItemRefOrNull": "item.fs.cx.root",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.cx.scenario-suite",
+        "semanticRef": "portal.fs.cx.scenario-suite",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 2700,
+          "y": 1460,
+          "width": 600,
+          "height": 120
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.cx.demo",
         "visible": true,
         "locked": true
       }
