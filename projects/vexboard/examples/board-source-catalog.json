@@ -126,6 +126,37 @@
         "projects/vexboard/examples/security-boundary-credential-custody.board.json",
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/connectedservices/VexHomeDevicePossession.kt"
       ]
+    },
+    {
+      "boardRef": "board.full-security.overview",
+      "location": "./full-security-overview.board.json",
+      "sourceRefs": [
+        "projects/full-security/README.md",
+        "projects/vexboard/examples/full-security-overview.board.json"
+      ]
+    },
+    {
+      "boardRef": "board.full-security.vexstream-local-pairing",
+      "location": "./full-security-vexstream-local-pairing.board.json",
+      "sourceRefs": [
+        "projects/full-security/VEXSTREAM-LOCAL-PAIRING-PATTERN.md",
+        "projects/vexboard/examples/full-security-vexstream-local-pairing.board.json",
+        "repo.vexstream-music:docs/architecture/MOBILE-BRIDGE-V1.md",
+        "repo.vexstream-music:v2/desktop/mobile/pairing.go",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/PairedVexStreamMusicRepository.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamConnectionStore.kt"
+      ]
+    },
+    {
+      "boardRef": "board.full-security.vexlife-complex-demonstrator",
+      "location": "./full-security-vexlife-complex-demonstrator.board.json",
+      "sourceRefs": [
+        "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md",
+        "projects/vexboard/examples/full-security-vexlife-complex-demonstrator.board.json",
+        "repo.vexlife-prod:README.md",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/connectedservices/VexHomeDevicePossession.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/connectedservices/VexPrivateHomeGatewayConnection.kt"
+      ]
     }
   ],
   "sourceRefs": [
