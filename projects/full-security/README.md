@@ -267,6 +267,74 @@ permission/storage state changes underneath the app
 
 This list is a demonstrator seed, not a permanent checklist.
 
+## Android account/device scenario suite
+
+The complex demonstrator now has an explicit executable scenario source:
+
+```text
+projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md
+board.full-security.android-account-device-scenarios
+```
+
+It preserves S01-S20, beginning with first-device registration / logout / second-device admission /
+selective revoke / reinstall and continuing through lost-device, expired-session, stale-offline,
+credential-rotation, backup/restore, replay, route-change, restart, update-trust and OS permission/storage
+cases.
+
+The scenario pressure also earns an Android product question:
+
+> Which devices are associated with my account/Home, what is their current relationship, and which one
+> do I want to disconnect/revoke?
+
+Candidate product doorway:
+
+```text
+Settings
+-> Connected Devices
+   -> This device
+   -> Other admitted devices
+   -> inspect relationship
+   -> Disconnect / Revoke
+```
+
+Permanent:
+
+```text
+CONNECTED_DEVICES_SCREEN != DEVICE_REGISTRY
+REVOKE_BUTTON != REVOCATION_AUTHORITY
+LOGOUT != FORGET_DEVICE
+ACCOUNT_VALID != DEVICE_AUTHORIZED
+```
+
+## Candidate reusable relationship patterns
+
+Repeated pressure across VexStream + the account/device scenarios is source-placed in:
+
+```text
+projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md
+```
+
+Current candidates are:
+
+```text
+Possession
+Admission
+Session
+Capability
+Revocation
+Rebinding / Replacement
+Currentness Reconciliation
+Integrity Binding
+Recovery without authority widening
+Explanation / Evidence
+```
+
+These are teaching/navigation patterns and architecture pressure, not yet universal runtime primitives.
+Existing VexArchitecture owners remain preferred. In particular, reconciliation may use Relay when
+independently-owned truths genuinely form new relationship truth, but reconciliation is not Relay by
+definition.
+
+
 ## Vex-guided learning
 
 The intended experience is not only a static board.
