@@ -217,7 +217,7 @@
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-11-06T10:50:45.000Z",
-      "updatedAt": "2026-11-06T11:20:00.000Z",
+      "updatedAt": "2026-11-06T11:35:00.000Z",
       "parentWorkRefOrNull": "work.full-security.outcome",
       "workClass": "TASK",
       "priorityClass": "HIGH",
@@ -240,7 +240,8 @@
       "dependencyRefs": [
         "work.full-security.vexlife-complex-demonstrator",
         "work.full-security.device-relationship-projection-foundation",
-        "work.full-security.synthetic-demonstration-provider-foundation"
+        "work.full-security.synthetic-demonstration-provider-foundation",
+        "work.full-security.full-scope-experience-design"
       ]
     },
     {
@@ -387,6 +388,68 @@
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T10:50:45.000Z",
+      "updatedAt": "2026-11-06T11:35:00.000Z",
+      "workRef": "work.full-security.full-scope-experience-design",
+      "parentWorkRefOrNull": "work.full-security.vexlife-complex-demonstrator",
+      "label": "Pressure the full security relationship/dashboard scope before product implementation",
+      "purpose": "Prove the Full Security experience can represent many principals, authentication methods, Homes, physical devices, app installations, credentials, sessions, capabilities, services, routes, software/update identities, recovery relationships and evidence across Android plus synthetic future platforms without redesigning the semantic model or turning Accounts into the root owner.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.full-security.canonical-owner-adoption-foundation"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife",
+        "repo.vexlife-prod",
+        "repo.vexlife-android",
+        "repo.vexstream-music"
+      ],
+      "sourceRefs": [
+        "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md",
+        "projects/vexboard/examples/full-security-full-scope-dashboard.board.json"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T10:50:45.000Z",
+      "updatedAt": "2026-11-06T11:35:00.000Z",
+      "workRef": "work.full-security.vexlife-prod-security-dashboard",
+      "parentWorkRefOrNull": "work.full-security.vexlife-complex-demonstrator",
+      "label": "Build the VexLife-Prod Full Security dashboard after scope and provider foundations",
+      "purpose": "Use the existing VexLife-Prod AppSelector to host a scalable Full Security application with Overview, Principals, Devices, Sessions, Access, Services, Software/Platform Trust, Recovery, Evidence, Scenarios and Architecture projections; explanations remain contextual while the dashboard behaves as a real product surface.",
+      "workClass": "TASK",
+      "state": "DECOMPOSED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.full-security.full-scope-experience-design",
+        "work.full-security.device-relationship-projection-foundation",
+        "work.full-security.synthetic-demonstration-provider-foundation"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-prod",
+        "repo.vexlife",
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/workspace/VexLifeWorkspaceBlueprint.kt"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
     }
   ],
   "transitions": [],
@@ -401,7 +464,9 @@
     "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
     "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md",
     "projects/full-security/FOUNDATION-STARTING-MAP.md",
-    "projects/vexboard/examples/full-security-foundation-starting-map.board.json"
+    "projects/vexboard/examples/full-security-foundation-starting-map.board.json",
+    "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md",
+    "projects/vexboard/examples/full-security-full-scope-dashboard.board.json"
   ],
   "formedAt": "2026-11-06T10:50:45.000Z"
 }
