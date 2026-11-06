@@ -166,6 +166,14 @@
         "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md",
         "projects/vexboard/examples/full-security-android-account-device-scenarios.board.json"
       ]
+    },
+    {
+      "boardRef": "board.full-security.foundation-starting-map",
+      "location": "./full-security-foundation-starting-map.board.json",
+      "sourceRefs": [
+        "projects/full-security/FOUNDATION-STARTING-MAP.md",
+        "projects/vexboard/examples/full-security-foundation-starting-map.board.json"
+      ]
     }
   ],
   "sourceRefs": [
