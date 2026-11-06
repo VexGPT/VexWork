@@ -206,7 +206,8 @@
       "sourceRefs": [
         "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
         "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md"
-      ]
+      ],
+      "dependencyRefs": []
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
