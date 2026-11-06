@@ -2601,6 +2601,476 @@ which source/owner supports each claim?
 
 This makes the Lens a causal architecture navigator rather than a class/call graph.
 
+## After the source refactor — revisit VexBoard maturity from real projection pressure
+
+The VexBoard question should be revisited **after** one lived VexLife-Prod circuit has been refactored into source-visible VexArchitecture relationships and can emit a real architecture projection.
+
+This is not because VexBoard is conceptually unrelated until then. The opposite is true:
+
+~~~text
+VexArchitecture
+  authors traversable causal relationships
+
+VexBoard
+  is a natural read-side for those relationships
+~~~
+
+The reason to wait before changing the Lens schema is narrower:
+
+> **Do not invent projection vocabulary for relationships the product source has not actually earned yet.**
+
+The refactor should first produce real pressure. Then VexBoard maturity can be judged by concrete questions.
+
+### Maturity question 1 — can current Lens roles represent the causal body without losing meaning?
+
+Current Screen Lens already recognizes roles such as:
+
+~~~text
+INTENT
+CONTROL
+STATE
+ACT
+EFFECT
+METHOD
+EXECUTION
+STORE
+OBSERVATION
+PROJECTION
+CONSTRUCTION
+CHRONOLOGY
+~~~
+
+That is already close to the VexArchitecture body.
+
+Example source relationship:
+
+~~~text
+HereticRuntime
+
+Control.EnsureAvailable
++ State.Absent
+    ↓
+Act.StartAndQualify
+    ↓
+Effect.StartExactRuntime
+    ↓
+Method
+    ↓
+Execution
+    ↓
+platform/provider
+    ↓
+Observation
+    ↓
+State.Qualified
+    ↓
+Projection.Ready
+~~~
+
+If a source-owned VexLife-Prod exporter can emit this faithfully into the current Lens schema, **do not add new node roles merely because the product is deeper than a screen**.
+
+Why:
+
+~~~text
+DEPTH OF FEATURE
+!= NEW ARCHITECTURAL SPECIES
+~~~
+
+A runtime feature can use the same semantic grammar as a human-facing feature.
+
+Evidence for maturity would be:
+
+~~~text
+current schema
++ source-owned export
+-> complete traversal
+-> no invented edge
+-> no lost owner distinction
+~~~
+
+### Maturity question 2 — does the Lens need richer relationship verbs, not richer nouns?
+
+A more likely pressure is not missing node types, but missing **edge meaning**.
+
+Consider:
+
+~~~text
+VexAvailability
+    ├─ reads ArtifactAvailability.Projection
+    ├─ reads EnvironmentAvailability.Projection
+    └─ reads HereticRuntime.Projection
+~~~
+
+and then:
+
+~~~text
+VexAvailability
+    ↓ requests Control
+ArtifactAvailability.Control.EnsureExact
+~~~
+
+Those two edges do very different things.
+
+If both become a generic:
+
+~~~text
+depends-on
+~~~
+
+VexBoard loses important architecture.
+
+Possible relationship meanings that real source may pressure:
+
+~~~text
+READS_PROJECTION
+REQUESTS_CONTROL
+REFERENCES_SOURCE
+CONVERGES_WITH
+REALIZES_EFFECT
+OBSERVES
+PROJECTS
+CONSTRUCTS
+~~~
+
+Why this matters:
+
+~~~text
+"uses X"
+does not tell a human whether:
+
+  X owns truth being observed,
+  X is being asked to change,
+  X merely realizes already-authored work,
+  or X is one contributor to new convergence truth.
+~~~
+
+Do not add these exact names merely because this document suggests them.
+
+After export exists, ask:
+
+> Can the current Lens already preserve those distinctions through existing pathway/role data?
+
+If yes, keep it.
+
+If no, the missing relationship distinction is now evidenced by real source rather than architecture speculation.
+
+### Maturity question 3 — can VexBoard show process position without becoming the process owner?
+
+Repeated convergence gives the architecture a meaningful current position:
+
+~~~text
+Goal:
+  VexAvailable
+
+Current:
+  Artifacts   Exact
+  Environment Ready
+  Runtime     Starting
+
+Waiting for:
+  runtime qualification
+
+Not yet lawful:
+  Conversation Send
+~~~
+
+VexBoard should be able to **explain** this.
+
+It must not become the thing deciding what runs next.
+
+Why:
+
+~~~text
+PRODUCT / RELAY
+  owns current convergence meaning
+
+VEXBOARD
+  projects that meaning
+
+VEXBOARD
+  != workflow engine
+  != process scheduler
+~~~
+
+The maturity question is therefore:
+
+> Can the source-owned projection express the current convergence output, satisfied prerequisites, hold reason and next-lawful relationship as read-only meaning?
+
+If yes, VexBoard can show process circuitry.
+
+If doing so would require VexBoard to recompute the decision from raw source States, the product projection is probably still too weak.
+
+### Maturity question 4 — can one stable source truth participate in several feature paths without being duplicated?
+
+Example:
+
+~~~text
+ConversationHeadRef
+    ├─ Prompt Context selection
+    ├─ Memory provenance
+    ├─ Dream frontier comparison
+    ├─ startup continuity
+    └─ VexBoard causal explanation
+~~~
+
+VexBoard should represent:
+
+~~~text
+ONE source identity
++
+SEVERAL relationships
+~~~
+
+not:
+
+~~~text
+five copied "Conversation Head" nodes
+that accidentally appear to own separate truth
+~~~
+
+Why:
+
+A major purpose of the New Beginnings architecture is reusable source truth with behavior owned by the relationship consuming it.
+
+The maturity question is:
+
+> Can the Lens retain stable source identity while showing different relationship meanings around it?
+
+If not, VexBoard may need a better identity/edge representation before this architecture is truly perceivable.
+
+### Maturity question 5 — can the graph recenter fractally?
+
+From Send:
+
+~~~text
+Surface:
+  Send UI
+
+Behavior:
+  ConversationTurn
+
+Depth:
+  HereticRuntime
+~~~
+
+Select HereticRuntime:
+
+~~~text
+Surface:
+  Ready / Starting / Held projection
+
+Behavior:
+  Ensure / Start / Reuse / Stop
+
+Depth:
+  Artifacts / Environment / Process / Qualification
+~~~
+
+Select ArtifactAvailability:
+
+~~~text
+Surface:
+  Exact / Missing / Held
+
+Behavior:
+  EnsureExact / Reuse / Acquire / Hold
+
+Depth:
+  provider / filesystem / bytes
+~~~
+
+The maturity question is:
+
+> Can VexBoard recenter the same stable node and reveal its own causal neighborhood without switching to an unrelated "infrastructure graph" ontology?
+
+Why:
+
+That is the practical proof that VexArchitecture depth is **relative/fractal**, not a fixed frontend/backend stack.
+
+A mature Lens should let:
+
+~~~text
+parent Depth node
+-> become selected center
+-> expose its own Surface / Behavior / Depth relationships
+~~~
+
+without losing the upward reason:
+
+~~~text
+"Why am I here?"
+
+ArtifactAvailability
+  exists in this walk because
+  HereticRuntime requires it because
+  VexAvailability requires runtime because
+  Conversation Send requires Vex.
+~~~
+
+### Maturity question 6 — can held, unknown and not-yet-connected truth stay visible?
+
+Example current source:
+
+~~~text
+VexLifeWebP1.Send
+-> Unbound("conversation.send")
+~~~
+
+VexBoard must not close that edge simply because the lower service path exists.
+
+Likewise:
+
+~~~text
+Runtime Held(QualificationFailed)
+~~~
+
+must not be projected as:
+
+~~~text
+Runtime -> Ready
+~~~
+
+because another nearby source file contains a successful startup path.
+
+Why:
+
+~~~text
+MAPPABILITY
+!= GRAPH COMPLETENESS AT ANY COST
+
+TRUTHFUL OPEN EDGE
+> INVENTED CLOSED CIRCUIT
+~~~
+
+The maturity question is:
+
+> Can the Lens express UNBOUND / HELD / UNKNOWN relationships as first-class visible states without treating them as adapter failure?
+
+This is essential if VexBoard is going to be useful for debugging architecture rather than merely drawing happy paths.
+
+### Maturity question 7 — can every material arrow point back to a source-owned relationship?
+
+A useful post-refactor proof is:
+
+Pick any important VexBoard edge and ask:
+
+~~~text
+Where did this arrow come from?
+~~~
+
+For example:
+
+~~~text
+ArtifactAvailability.Exact
+-> EnvironmentAvailability.EnsureCompatible becomes lawful
+~~~
+
+The answer should be an actual source-owned convergence relationship.
+
+Not:
+
+~~~text
+"The adapter knows setup normally works this way."
+~~~
+
+Likewise:
+
+~~~text
+Send
+-> ConversationTurn.Control.Send
+~~~
+
+must come from the actual product binding.
+
+Why:
+
+VexBoard should project architecture, not author missing architecture.
+
+A mature source projection therefore carries enough provenance to answer:
+
+~~~text
+node/edge
+-> source owner
+-> stable ref
+-> exact source coordinate/revision
+~~~
+
+### Maturity question 8 — can projection stay generated/read-only while product source remains authoritative?
+
+The desired direction is:
+
+~~~text
+VexLife-Prod source
+    ↓
+source-owned bounded architecture exports
+    ↓
+generated architecture snapshot
+    ↓
+VexBoard adapter
+    ↓
+VexBoard
+~~~
+
+Not:
+
+~~~text
+VexBoard parser
+    ↓
+reads arbitrary Kotlin proximity
+    ↓
+guesses relationships
+    ↓
+becomes a second architecture author
+~~~
+
+Why:
+
+The architecture should be correct even if VexBoard does not exist.
+
+VexBoard's job is to make that architecture perceivable.
+
+The maturity question is:
+
+> Can the adapter remain boring?
+
+A healthy result is that most semantic intelligence lives in the product's compiler/source-visible relationships, while VexBoard mostly validates schema/currentness/provenance and renders.
+
+### What would justify changing the Lens schema?
+
+After the refactor and first real export, change the Lens only when one of these becomes concrete:
+
+~~~text
+a real relationship cannot be represented
+without losing semantic meaning
+
+a stable source identity cannot be reused
+without duplication or ambiguity
+
+a held/currentness/process-position truth
+cannot be projected without adapter inference
+
+fractal recentering loses causality/provenance
+
+an important arrow cannot remain source-addressable
+~~~
+
+Then the schema change has a consumer and a demonstrated failure.
+
+Until then:
+
+~~~text
+VEXARCHITECTURE REFACTOR
+-> REAL SOURCE EXPORT
+-> VEXBOARD PRESSURE TEST
+-> ONLY THEN
+   decide whether Lens vocabulary must mature
+~~~
+
+This is not a reason to doubt VexBoard compatibility.
+
+It is a way to let the **actual traversable VexArchitecture body specify what the read-side needs**.
+
+
 ## Post-baseline New Beginnings refactor horizon
 
 Do not mix this refactor into the still-moving continuity/local-runtime proof merely to improve architecture aesthetics.
