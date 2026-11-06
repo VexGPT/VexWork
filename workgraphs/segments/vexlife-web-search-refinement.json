@@ -1,0 +1,172 @@
+{
+  "schemaVersion": "vexwork.workgraph-segment/v1",
+  "segmentRef": "segment.vexlife-web-search-refinement",
+  "graphRef": "workgraph.vexwork.foundation",
+  "items": [
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.web-search-refinement.outcome",
+      "parentWorkRefOrNull": null,
+      "label": "VexLife Web Search Refinement",
+      "purpose": "Give the canonical Vex Companion a truthful bounded public-web research path that reuses the existing capability runtime, scheduler and ToolResultRelay; keep external content untrusted, make all actual provider input share one context budget, preserve source-addressed evidence while temporary raw observations can leave active context, and prove one natural same-Conversation research turn without making web evidence a second Memory or authority owner.",
+      "workClass": "OUTCOME",
+      "state": "PLAN_VALIDATED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife",
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "project.vexlife.web-search-refinement",
+        "projects/vexlife-web-search-refinement/README.md",
+        "human.intent.vexlife.web-search-refinement.20261105",
+        "work.vexlife.interface-refinement.home-tool-capability",
+        "work.vexlife.interface-refinement.lived-context-capability-integration",
+        "work.vexlife.new-beginnings.p2.browser-context-dom-projection",
+        "projects/vex-security-assurance/README.md"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-06T06:30:00.000Z",
+      "updatedAt": "2026-11-06T06:30:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.web-search-refinement.context-budget-observation-lifecycle",
+      "parentWorkRefOrNull": "work.vexlife.web-search-refinement.outcome",
+      "label": "Unify provider-boundary context budget and transient observation lifecycle",
+      "purpose": "Make the real model input budget account for canonical Conversation/Memory materialization plus Foundation/Atlas/currentContext, capability request/synthesis instructions and active tool observations as one provider-boundary token budget. Add a system-owned transient-observation lifecycle so large raw web evidence can leave active model context after bounded reduction while exact source/observation refs remain available for rehydration; do not make the model responsible for manual cleanup.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexlife.interface-refinement.prior-context-memory-assimilation",
+        "work.vexlife.interface-refinement.atlas-self-capability-awareness"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-web-search-refinement/README.md",
+        "repo.vexlife:src/core/browser-prompt-context-runtime.mjs",
+        "repo.vexlife:src/core/context-lease.mjs",
+        "repo.vexlife:src/core/resource-context-pressure.mjs",
+        "repo.vexlife:src/core/capability-assimilation-runtime.mjs",
+        "repo.vexlife:src/core/tool-result-relay.mjs",
+        "work.vexlife.interface-refinement.prior-context-memory-assimilation",
+        "work.vexlife.interface-refinement.atlas-self-capability-awareness"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-06T06:30:00.000Z",
+      "updatedAt": "2026-11-06T06:30:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.web-search-refinement.safe-public-web-read",
+      "parentWorkRefOrNull": "work.vexlife.web-search-refinement.outcome",
+      "label": "Bind safe bounded public-web search and fetch reads",
+      "purpose": "Add the smallest provider-neutral public-web read surface needed for Vex to search for current information and fetch selected public sources through the existing capability runtime. Treat every returned webpage/snippet as untrusted external content rather than instruction or authority; require public HTTP/HTTPS destination admission, redirect revalidation, bounded time/bytes/content types, no implicit credentials or local-network reachability, source/currentness provenance and exact ToolResultRelay-compatible observations.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.web-search-refinement.context-budget-observation-lifecycle"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexlife",
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-web-search-refinement/README.md",
+        "repo.vexlife:docs/VEX-ASSEMBLY-CAPABILITY-DOMAINS.md",
+        "repo.vexlife:docs/CAPABILITY-ASSIMILATION-RUNTIME.md",
+        "repo.vexlife:blueprint/capability-registry.json",
+        "repo.vexlife:src/core/capability-assimilation-runtime.mjs",
+        "repo.vexlife:src/core/tool-result-relay.mjs",
+        "repo.vexlife-prod:exploration/web-workspace/lib/upstream.mjs",
+        "projects/vex-security-assurance/README.md"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-06T06:30:00.000Z",
+      "updatedAt": "2026-11-06T06:30:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.web-search-refinement.lived-web-research-proof",
+      "parentWorkRefOrNull": "work.vexlife.web-search-refinement.outcome",
+      "label": "Prove one lived natural web-research turn",
+      "purpose": "Prove the user-facing threshold in the canonical durable Conversation: Victor asks a natural question requiring current public information; Vex recognizes the admitted web-read capability, obtains bounded source-addressed search/fetch observations, keeps external prompt-injection text non-authoritative, receives results through ToolResultRelay, synthesizes a grounded answer, and the same Conversation remains current across completion/re-entry.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.web-search-refinement.safe-public-web-read",
+        "work.vexlife.interface-refinement.lived-context-capability-integration"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-web-search-refinement/README.md",
+        "work.vexlife.interface-refinement.lived-context-capability-integration",
+        "work.vexlife.interface-refinement.home-tool-capability",
+        "repo.vexlife:src/core/browser-companion-bridge.mjs",
+        "repo.vexlife:src/core/capability-assimilation-runtime.mjs",
+        "repo.vexlife:src/core/tool-result-relay.mjs"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-06T06:30:00.000Z",
+      "updatedAt": "2026-11-06T06:30:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.web-search-refinement.research-working-set",
+      "parentWorkRefOrNull": "work.vexlife.web-search-refinement.outcome",
+      "label": "Potential — transient multi-source research working set",
+      "purpose": "If real multi-source web use proves direct bounded observations insufficient, earn the smallest reusable mechanism that lets raw source observations remain externally addressable while active model context retains compact claim/evidence/currentness/contradiction packets and can rehydrate exact evidence on demand. Do not create this as a second Memory, semantic-truth or research-authority system before repeated pressure demonstrates the need.",
+      "workClass": "POTENTIAL",
+      "state": "CAPTURED",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "workDisposition": "PARKED",
+      "repositoryRefs": [
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-web-search-refinement/README.md",
+        "repo.vexlife:src/core/context-lease.mjs",
+        "repo.vexlife:src/core/tool-result-relay.mjs"
+      ],
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-06T06:30:00.000Z",
+      "updatedAt": "2026-11-06T06:30:00.000Z"
+    }
+  ],
+  "transitions": [],
+  "sourceRefs": [
+    "project.vexlife.web-search-refinement",
+    "projects/vexlife-web-search-refinement/README.md",
+    "human.intent.vexlife.web-search-refinement.20261105"
+  ],
+  "formedAt": "2026-11-06T06:30:00.000Z"
+}
