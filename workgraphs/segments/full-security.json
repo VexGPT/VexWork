@@ -187,7 +187,7 @@
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-11-06T10:50:45.000Z",
-      "updatedAt": "2026-11-06T11:05:00.000Z",
+      "updatedAt": "2026-11-06T11:20:00.000Z",
       "parentWorkRefOrNull": "work.full-security.outcome",
       "workClass": "TASK",
       "priorityClass": "HIGH",
@@ -207,7 +207,9 @@
         "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
         "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md"
       ],
-      "dependencyRefs": []
+      "dependencyRefs": [
+        "work.full-security.synthetic-demonstration-provider-foundation"
+      ]
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -215,7 +217,7 @@
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-11-06T10:50:45.000Z",
-      "updatedAt": "2026-11-06T11:05:00.000Z",
+      "updatedAt": "2026-11-06T11:20:00.000Z",
       "parentWorkRefOrNull": "work.full-security.outcome",
       "workClass": "TASK",
       "priorityClass": "HIGH",
@@ -236,7 +238,9 @@
         "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md"
       ],
       "dependencyRefs": [
-        "work.full-security.vexlife-complex-demonstrator"
+        "work.full-security.vexlife-complex-demonstrator",
+        "work.full-security.device-relationship-projection-foundation",
+        "work.full-security.synthetic-demonstration-provider-foundation"
       ]
     },
     {
@@ -267,6 +271,122 @@
         "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md"
       ],
       "dependencyRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T10:50:45.000Z",
+      "updatedAt": "2026-11-06T11:20:00.000Z",
+      "workRef": "work.full-security.canonical-owner-adoption-foundation",
+      "parentWorkRefOrNull": "work.full-security.vexlife-complex-demonstrator",
+      "label": "Adopt canonical Home security owners before adding backend state",
+      "purpose": "Map the complex demonstrator onto current VexLife Home principal/device membership, revocation generation, remote authenticated session, capability lease and session-authority owners; identify only genuine missing product-facing seams so Full Security does not create a second account/device/session backend.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife",
+        "repo.vexlife-android",
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "projects/full-security/FOUNDATION-STARTING-MAP.md",
+        "repo.vexlife:docs/HOME-BRIDGE-REMOTE-AUTHENTICATED-SESSION.md",
+        "repo.vexlife:docs/HOME-BRIDGE-SESSION-AUTHORITY.md"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T10:50:45.000Z",
+      "updatedAt": "2026-11-06T11:20:00.000Z",
+      "workRef": "work.full-security.device-relationship-projection-foundation",
+      "parentWorkRefOrNull": "work.full-security.vexlife-complex-demonstrator",
+      "label": "Define the safe device-relationship read projection",
+      "purpose": "Form the smallest portable read seam needed by Android Connected Devices, the VexLife-Prod Full Security Console, VexBoard LIVE_OBSERVATION and later Vex explanation, projecting current membership/session/access truth without exposing secrets or making the projection an authority owner.",
+      "workClass": "TASK",
+      "state": "DECOMPOSED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.full-security.canonical-owner-adoption-foundation"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife",
+        "repo.vexlife-android",
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "projects/full-security/FOUNDATION-STARTING-MAP.md",
+        "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T10:50:45.000Z",
+      "updatedAt": "2026-11-06T11:20:00.000Z",
+      "workRef": "work.full-security.synthetic-demonstration-provider-foundation",
+      "parentWorkRefOrNull": "work.full-security.vexlife-complex-demonstrator",
+      "label": "Build a synthetic Full Security provider behind the same product-facing seams",
+      "purpose": "Provide deterministic fake principal/device/session/capability state for S01-S20 with OFF/SYNTHETIC/LIVE_OBSERVATION separation, allowing UI and scenario proof before any real remote-device mutation or network widening.",
+      "workClass": "TASK",
+      "state": "DECOMPOSED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.full-security.device-relationship-projection-foundation"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "projects/full-security/FOUNDATION-STARTING-MAP.md",
+        "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T10:50:45.000Z",
+      "updatedAt": "2026-11-06T11:20:00.000Z",
+      "workRef": "work.full-security.host-local-recovery-foundation",
+      "parentWorkRefOrNull": "work.full-security.vexlife-complex-demonstrator",
+      "label": "Define a host-local remote-device recovery boundary",
+      "purpose": "Give the physical VexLife host an operational recovery path for disabling/recovering remote-device relationships without using GitHub/source changes or trusting a broken remote path; exact host authentication and mutation effects remain separately source-owned and unselected until target implementation.",
+      "workClass": "TASK",
+      "state": "DECOMPOSED",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [
+        "work.full-security.canonical-owner-adoption-foundation"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife",
+        "repo.vexlife-prod",
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/full-security/FOUNDATION-STARTING-MAP.md"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
     }
   ],
   "transitions": [],
@@ -279,7 +399,9 @@
     "projects/vexboard/examples/full-security-vexstream-local-pairing.board.json",
     "projects/vexboard/examples/full-security-vexlife-complex-demonstrator.board.json",
     "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
-    "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+    "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md",
+    "projects/full-security/FOUNDATION-STARTING-MAP.md",
+    "projects/vexboard/examples/full-security-foundation-starting-map.board.json"
   ],
   "formedAt": "2026-11-06T10:50:45.000Z"
 }
