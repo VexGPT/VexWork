@@ -14,6 +14,7 @@
   "sourceRefs": [
     "human.intent.vexlife.web-search-refinement.20261105",
     "projects/vexlife-web-search-refinement/README.md",
+    "projects/vexlife-web-search-refinement/VEXARCHITECTURE-PREPARATION.md",
     "project.vexlife.interface-refinement",
     "work.vexlife.interface-refinement.home-tool-capability",
     "work.vexlife.interface-refinement.prior-context-memory-assimilation",
