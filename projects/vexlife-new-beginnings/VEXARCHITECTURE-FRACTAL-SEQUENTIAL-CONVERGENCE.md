@@ -2680,6 +2680,238 @@ PRODUCT SOURCE
 
 The adapter must not invent missing relationships.
 
+## Exposure through expression — when the long form is signal and when it is bloat
+
+A useful pressure behind this architecture is the ordinary programming pattern:
+
+~~~kotlin
+val artifacts = materializeArtifacts()
+val environment = ensureEnvironment(artifacts)
+val runtime = startRuntime(environment)
+val result = invoke(runtime)
+~~~
+
+This form is attractive because causality is visually compact:
+
+~~~text
+return from A
+-> argument to B
+-> return from B
+-> argument to C
+~~~
+
+There is nothing inherently wrong with that form.
+
+The architecture question is:
+
+> **What meaning is lost when the intermediate result exists only as a local value passed to the next line?**
+
+If the answer is "nothing important," keep the short form.
+
+For example:
+
+~~~kotlin
+val digest = sha256(bytes)
+val normalized = normalize(path)
+val payload = encode(request)
+~~~
+
+Expanding those into architectural State/Control/Relay stages would usually be bloat.
+
+But if an intermediate result answers questions such as:
+
+~~~text
+Is this truth independently current?
+Can it fail or become held without the parent failing identically?
+Must another owner interpret it?
+Can another feature consume the same truth?
+Must restart/recovery rediscover it?
+Does authorization change what may happen next?
+Would a human/debugger need to know why continuation stopped here?
+Does the next stage become lawful only after this truth is established?
+~~~
+
+then hiding it inside:
+
+~~~kotlin
+val result = functionWithReturn()
+~~~
+
+may be a compression of architecture, not merely a compression of syntax.
+
+The longer VexArchitecture form exposes that hidden semantic boundary:
+
+~~~text
+CURRENT truth
++
+Control / required relationship
+        ↓
+Act / Effect
+        ↓
+realization
+        ↓
+Observation
+        ↓
+interpreted new truth
+        ↓
+next relationship becomes lawful
+~~~
+
+This can feel more verbose because it makes the previously implicit question addressable.
+
+The benefit is not "more code."
+
+The benefit is that somebody can now ask:
+
+~~~text
+What is true?
+Why are we here?
+What failed?
+Who owns this truth?
+What is waiting?
+What becomes lawful next?
+What source proves that?
+Can this same truth be reused somewhere else?
+~~~
+
+and source has an answer.
+
+### The long conceptual form does not require permanently verbose syntax
+
+A mature architecture may eventually provide concise authoring ergonomics while preserving the expanded relationships in compiler/source-visible form.
+
+Conceptually, a future authoring surface might allow something compact like:
+
+~~~kotlin
+// illustrative only — not an accepted API
+
+converge(VexAvailable) {
+    require(
+        ArtifactAvailability,
+        Control.EnsureExact,
+    )
+    require(
+        EnvironmentAvailability,
+        Control.EnsureCompatible,
+    )
+    require(
+        HereticRuntime,
+        Control.EnsureAvailable,
+    )
+}
+~~~
+
+while the underlying architecture still exposes:
+
+~~~text
+which projection was read
+which Control was requested
+which owner interpreted it
+which Effect was authored
+which Observation returned
+which next relationship became lawful
+~~~
+
+The target is therefore not:
+
+~~~text
+VERBOSE SOURCE = GOOD ARCHITECTURE
+~~~
+
+It is:
+
+~~~text
+SEMANTIC RELATIONSHIPS MUST REMAIN INSPECTABLE
+
+syntax may become shorter
+only if that shortening does not erase the questions
+~~~
+
+A useful rule:
+
+> **Compress syntax after the relationship is understood; do not compress away the relationship before it has been understood.**
+
+This is another reason New Beginnings should pressure the architecture with real product circuits before inventing a generalized convenience API.
+
+### Shortcut versus compression
+
+The distinction to preserve is:
+
+~~~text
+SHORTCUT
+  removes an architectural distinction
+  because it is inconvenient to express
+
+COMPRESSION
+  preserves the distinction
+  while giving the author a smaller lawful syntax
+~~~
+
+For example:
+
+~~~text
+artifact result
+-> environment result
+-> runtime result
+~~~
+
+may be perfectly good ordinary composition if those values are only local implementation details.
+
+But if they are actually:
+
+~~~text
+ArtifactAvailability.Exact
+-> makes EnvironmentAvailability.EnsureCompatible lawful
+
+EnvironmentAvailability.Ready
+-> makes HereticRuntime.EnsureAvailable lawful
+
+HereticRuntime.Qualified
+-> makes VexAvailable true
+~~~
+
+then those are not merely return values.
+
+They are semantic relationships worth exposing even if a later SDK makes their authoring concise.
+
+### Defer the VexBoard maturity question until this source pressure is real
+
+The current Screen Lens already projects useful VexArchitecture roles, but New Beginnings should not prematurely redesign the VexBoard schema from this discussion alone.
+
+For now:
+
+~~~text
+CURRENT QUESTION
+  can VexLife-Prod source make its real causal relationships explicit enough
+  that a source-owned projection can emit them without inference?
+
+FIRST
+  perform the relationship-preserving refactor against one lived circuit
+
+THEN
+  generate the real projection
+
+THEN ASK
+  does vexboard.screen-lens/v1 already express the required relationships?
+  which missing relation types are actually evidenced?
+  does process-position/currentness need a schema refinement?
+~~~
+
+Until that pressure exists:
+
+~~~text
+VEXBOARD MATURITY QUESTION
+= DEFERRED
+
+REVISIT AFTER
+  SOURCE REFACTOR
+  + REAL GENERATED PROJECTION
+  + FRACTAL WALK PRESSURE
+~~~
+
+The implementation sample should therefore be used to discover what the source must expose, not to pre-author the final VexBoard ontology.
+
+
 ## Anti-patterns this finding is intended to prevent
 
 ### Build silos first, reconnect later
