@@ -76,12 +76,14 @@ VexWork -> VexBoard relationship projection alignment
 Accordingly, the bounded VexSync <-> VexBoard architecture-convergence item is complete rather than a
 standing prerequisite for another architecture layer.
 
+The Living Screen Lens currentness/projection-truth trajectory is now **COMPLETED** through PR #238 and closure PR #250. Its accepted VexLife-Android Stable/Main source pin remains `305a09eac1fabebcf2241bd207386950f41121f2`; live VexLife-Android `main` currently equals that Stable pin, so the first future `lens:main` movement is a source-movement wake condition rather than unfinished Screen Lens work.
+
 What remains open in VexBoard is narrower and consumer-driven:
 
 ~~~text
-Source Projectors + lived comparison         RUNNING · #215 Android/VexStream slice accepted
+Source Projectors + lived comparison         RUNNING · Screen Lens substrate complete; broader lived comparison remains
 Fractal semantic composition / spatial       RUNNING when real consumers pressure it
-VexStream living Origin screenshot pilot     RUNNING · source relationship slice accepted; screenshot/evidence comparison still open
+VexStream living Origin screenshot pilot     RUNNING · source projection accepted; expected/observed evidence comparison still open
 AI BoardPatch authoring                      READY / NO_AUTHORITY / NO_EFFECTS
 Origin rename propagation debt               PARKED
 ~~~
@@ -596,13 +598,15 @@ Once this foundational language is coherent enough for the next concrete consume
 PR #182's exact-head SourceOwner evidence remains valid while this language work proceeds.
 Independent review remains parked.
 
-## Living Screen Lens — accepted first-draft source projection
+## Living Screen Lens — accepted currentness foundation
 
 `vexboard/lens.html` shows one screen through two flip sides: Experience (Surface ⇄ Structure,
 middle-click) and Behavior (SCAE Behavior ⇄ Depth, right-click). A selected control's pathway is traced
 across both sides, routes owned by shared chrome are drawn once, and every face is laid out without
-overlap. The accepted projection remains pinned to VexLife-Android
-`305a09eac1fabebcf2241bd207386950f41121f2`.
+overlap. The accepted currentness/projection-truth trajectory completed through PR #238 and closure
+PR #250, including deployed historical-commit / Differences-from-Stable lived proof. The accepted
+projection remains pinned to VexLife-Android `305a09eac1fabebcf2241bd207386950f41121f2`, and live
+VexLife-Android `main` currently equals that Stable pin.
 
 The current Lens is generated from source, not maintained as a hand architecture diagram. It now
 includes two earned Family paths: ThemeMode through the captured-closure/registration shape and
@@ -614,6 +618,10 @@ Search (`/`), impact, per-screen coverage and paste-ready control and screen bri
 acceptance after the complete stack integrated through PR #230. PR #232 then made the existing
 `relatedBoardRefs[]` relationship visible through stable `?board=<boardRef>` VexBoard resolution and
 added one uniquely identifiable `Open Living Screen Lens` entry on the older proving-ground landing.
+PR #238 later completed the source/currentness and historical-projection truth boundary; Victor's
+hosted historical-commit comparison closed the lived edge, and PR #250 currentized the durable Work
+coordinate to COMPLETED. Broader Source Projectors / VexStream screenshot evidence work remains
+separate and RUNNING.
 
 VexBoard's entry is now `vexboard/projects.html`: the subjects it can project or relate, their Stable
 and Main build pointers, any-commit projection and the earlier canvas trials. VexWork remains the owner

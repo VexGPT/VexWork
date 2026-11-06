@@ -470,10 +470,13 @@ UNANNOTATED + NOT DERIVABLE -> HELD never guessed
 `VexLensRole` mirrors `LENS_ROLES`. `VexLensEdgeKind` mirrors `FLOW | DATA | RETURN | SIDE`. If the
 role vocabulary changes, it changes here first and the Kotlin enum follows.
 
-## Accepted baseline, current completion candidate and limits
+## Accepted baseline, completed currentness foundation and limits
 
-The Living Screen Lens has an accepted, deployed first-draft baseline. PR #238 is a later completion
-candidate and is not accepted merely because it projects more source-earned relationships.
+The Living Screen Lens has an accepted, deployed first-draft baseline and an accepted completed
+currentness/projection-truth foundation. PR #238 integrated the later completion correction, its actual
+merge tree matched the pre-merge synthetic composition exactly, GitHub Pages deployed that merge, and
+Victor's hosted historical-commit / Differences-from-Stable browser proof closed the remaining lived
+edge. PR #250 then currentized the durable Screen Lens Work coordinate to COMPLETED.
 
 Accepted first-draft source/projection checkpoint:
 
@@ -501,7 +504,7 @@ related-board federation/addressability
   merge 1a55b01f3c02b3d603fe9d6c55782b0715133fbf
 ```
 
-Current PR #238 completion candidate:
+Accepted PR #238 currentness/projection-truth foundation:
 
 ```text
 same VexLife-Android source pin
@@ -520,6 +523,12 @@ truth boundary
   VexMethod.Result != independent Store observation
   concrete Connection realization != doorway dispatch
   unresolved relationship != invented generic presentation
+
+integration + lived closure
+  VexWork PR #238 -> merge cbfce46235b628635774c0d3c849fcfe5d8dd236
+  Pages deployment -> PASS
+  historical Commit 4d357c4 vs Stable 305a09e -> 2 differences rendered in deployed browser
+  VexWork PR #250 -> work.vexboard.screen-lens-currentness COMPLETED
 ```
 
 Current limits remain:
@@ -559,18 +568,22 @@ CURRENT Projects/Builds refinement homes the adjacent alignment under VexLife Pr
         VexStream phone ↔ desktop Living Blueprint patient zero. The living Blueprint is no longer
         grouped under earlier canvas trials; its separate construction-evidence board remains provenance.
 
-FOUNDATION  stable-ref Screen Lens revision comparison
-            source commit movement != projection movement
-            no default UI/history browser yet
+DONE   stable-ref Screen Lens revision comparison
+       source commit movement != projection movement
+       historical commit projection + Differences from Stable
 
 DONE   projects entry, Lens-subject catalog, Stable/Main pointers, any-commit projection,
-       Differences from Stable                                         D26-D31 (this PR)
+       Differences from Stable                                         PR #237 / #238
+DONE   currentness/projection-truth completion + hosted lived proof     PR #238
+DONE   durable Screen Lens Work closure                                PR #250
 
-NEXT   first real Main move: npm run lens:main when VexLife-Android main advances, then review
-       the Differences panel before npm run lens:promote
-NEXT   continue canonical VexWork foreground:
+WAKE   first real Main move only when VexLife-Android main advances beyond Stable:
+       npm run lens:main -> review Differences -> npm run lens:promote with acceptance evidence
+       Current observation: live main == Stable == 305a09eac1fabebcf2241bd207386950f41121f2; no action now.
+
+ACTIVE broader canonical VexWork foreground (not unfinished Screen Lens completion):
        work.vexboard.vexstream-screenshot-pilot + work.vexboard.source-projectors
-       align source projection with observed/lived evidence at stable semantic coordinates
+       align accepted source projection with observed/lived evidence at stable semantic coordinates
 
 PRESSURE-DRIVEN
        let Maps, VexLife-Prod and other materially different consumers earn additional relationship
