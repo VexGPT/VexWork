@@ -37,6 +37,35 @@
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexlife.web-search-refinement.vexarchitecture-preparation",
+      "parentWorkRefOrNull": "work.vexlife.web-search-refinement.outcome",
+      "label": "Preparation — map web research through current VexArchitecture",
+      "purpose": "Before provider implementation, map the bounded public-web research intention through the current New Beginnings/Interface Refinement semantic owners: capability need/admission, one final provider-boundary Context Lease budget, source admission, untrusted external observation, ToolResultRelay return, transient observation lifetime, working-context rollover, same-Conversation synthesis and VexBoard projectability. Preserve search vs fetch and public GitHub read vs authenticated/write authority as distinct questions where meaning would otherwise be lost. This work creates no network effect or provider authority.",
+      "workClass": "TASK",
+      "state": "PLAN_VALIDATED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "formationProcessRefOrNull": null,
+      "workDisposition": "ACTIVE",
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife",
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-web-search-refinement/VEXARCHITECTURE-PREPARATION.md",
+        "project.vexlife.new-beginnings",
+        "project.vexlife.interface-refinement",
+        "github.pull.vexwork.248",
+        "work.vexlife.web-search-refinement.context-budget-observation-lifecycle"
+      ],
+      "createdAt": "2026-11-06T07:16:00.000Z",
+      "updatedAt": "2026-11-06T07:16:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
       "workRef": "work.vexlife.web-search-refinement.context-budget-observation-lifecycle",
       "parentWorkRefOrNull": "work.vexlife.web-search-refinement.outcome",
       "label": "Unify provider-boundary context budget and transient observation lifecycle",
@@ -45,6 +74,7 @@
       "state": "WAITING_DEPENDENCIES",
       "priorityClass": "IMMEDIATE",
       "dependencyRefs": [
+        "work.vexlife.web-search-refinement.vexarchitecture-preparation",
         "work.vexlife.interface-refinement.prior-context-memory-assimilation",
         "work.vexlife.interface-refinement.atlas-self-capability-awareness"
       ],
@@ -67,7 +97,7 @@
       ],
       "nextProcessRefs": [],
       "createdAt": "2026-11-06T06:30:00.000Z",
-      "updatedAt": "2026-11-06T06:30:00.000Z"
+      "updatedAt": "2026-11-06T07:16:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -166,7 +196,8 @@
   "sourceRefs": [
     "project.vexlife.web-search-refinement",
     "projects/vexlife-web-search-refinement/README.md",
-    "human.intent.vexlife.web-search-refinement.20261105"
+    "human.intent.vexlife.web-search-refinement.20261105",
+    "projects/vexlife-web-search-refinement/VEXARCHITECTURE-PREPARATION.md"
   ],
   "formedAt": "2026-11-06T06:30:00.000Z"
 }
