@@ -97,6 +97,17 @@
           "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md",
           "projects/vexboard/examples/full-security-android-account-device-scenarios.board.json"
         ]
+      },
+      {
+        "nodeRef": "portal.full-security.foundation-map",
+        "kind": "PORTAL",
+        "label": "Foundation Starting Map · current owners → missing seams → surfaces → proof",
+        "parentRefOrNull": "node.full-security.overview",
+        "detailBoardRefOrNull": "board.full-security.foundation-starting-map",
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md",
+          "projects/vexboard/examples/full-security-foundation-starting-map.board.json"
+        ]
       }
     ],
     "relationships": [
@@ -161,6 +172,16 @@
         "labelOrNull": "CAN BE EXPLAINED THROUGH",
         "sourceRefs": [
           "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.full-security.complex-foundation",
+        "kind": "REFERENCE",
+        "fromRef": "portal.full-security.complex",
+        "toRef": "portal.full-security.foundation-map",
+        "labelOrNull": "START IMPLEMENTATION HERE",
+        "sourceRefs": [
+          "projects/full-security/FOUNDATION-STARTING-MAP.md"
         ]
       }
     ],
@@ -287,6 +308,21 @@
         "shapeKind": "RECTANGLE",
         "bounds": {
           "x": 1610,
+          "y": 560,
+          "width": 560,
+          "height": 190
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.full-security.overview",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.full-security.foundation-map",
+        "semanticRef": "portal.full-security.foundation-map",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 130,
           "y": 560,
           "width": 560,
           "height": 190
