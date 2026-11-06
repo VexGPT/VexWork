@@ -17,6 +17,7 @@ const boardPaths = {
   overview: 'projects/vexboard/examples/full-security-overview.board.json',
   vexstream: 'projects/vexboard/examples/full-security-vexstream-local-pairing.board.json',
   complex: 'projects/vexboard/examples/full-security-vexlife-complex-demonstrator.board.json',
+  androidScenarios: 'projects/vexboard/examples/full-security-android-account-device-scenarios.board.json',
 };
 
 test('Full Security source preserves demonstrator meaning without granting product authority', () => {
@@ -44,6 +45,21 @@ test('Full Security source preserves demonstrator meaning without granting produ
     (item) => item.workRef === 'work.full-security.discoverability',
   );
   assert.equal(discoverability?.state, 'WAITING_RESOURCE');
+
+  const scenarios = acceptedSegment.items.find(
+    (item) => item.workRef === 'work.full-security.android-account-device-scenarios',
+  );
+  assert.equal(scenarios?.state, 'DECOMPOSED');
+
+  const connectedDevices = acceptedSegment.items.find(
+    (item) => item.workRef === 'work.full-security.android-connected-devices-feature',
+  );
+  assert.equal(connectedDevices?.state, 'DECOMPOSED');
+
+  const patterns = acceptedSegment.items.find(
+    (item) => item.workRef === 'work.full-security.candidate-security-relationship-patterns',
+  );
+  assert.equal(patterns?.state, 'RUNNING');
 });
 
 test('Full Security boards resolve and preserve real-vs-demonstrator separation', async () => {
@@ -105,6 +121,28 @@ test('Full Security boards resolve and preserve real-vs-demonstrator separation'
   assert.ok(
     complex.graph.nodes.some((node) =>
       node.label.includes('does not remotely serve the entire topology')
+    ),
+  );
+
+  const androidScenarios = Reader.normalizeDraft(read(boardPaths.androidScenarios));
+  const scenarioLabels = androidScenarios.graph.nodes
+    .filter((node) => node.nodeRef.startsWith('process.fs.sc.s'))
+    .map((node) => node.label);
+  assert.equal(scenarioLabels.length, 20);
+  assert.ok(scenarioLabels.some((label) => label.startsWith('S07 · Revoke Device B')));
+  assert.ok(scenarioLabels.some((label) => label.startsWith('S15 · Backup / restore')));
+  assert.ok(
+    androidScenarios.graph.nodes.some(
+      (node) =>
+        node.nodeRef === 'reference.fs.sc.connected-devices' &&
+        node.label.includes('Connected Devices'),
+    ),
+  );
+  assert.ok(
+    androidScenarios.graph.nodes.some(
+      (node) =>
+        node.nodeRef === 'reference.fs.sc.p5' &&
+        node.label.startsWith('Revocation'),
     ),
   );
 });
