@@ -84,6 +84,57 @@ Current VexLife source already provides:
 
 Current VexLife-Prod exploration also contains a useful bounded public-web transport precedent in `exploration/web-workspace/lib/upstream.mjs`: HTTP/HTTPS only, public-address admission, local/private/special-address refusal, timeout handling and bounded-body helpers. That code remains VexLife-Prod presentation/exploration source; it is evidence for the network boundary, not automatic Companion capability ownership.
 
+## VexArchitecture preparation before implementation
+
+Web Search Refinement should not begin by choosing a search vendor or by adding another tool wrapper.
+
+The first preparation step is source-formed at:
+
+```text
+projects/vexlife-web-search-refinement/VEXARCHITECTURE-PREPARATION.md
+
+work.vexlife.web-search-refinement.vexarchitecture-preparation
+```
+
+Its role is to map the human research intention through the current shared owners before any provider effect:
+
+```text
+current external-information need
+-> capability awareness / admission
+-> one final Context Lease budget
+-> candidate-source discovery
+-> public-source admission
+-> untrusted external observation
+-> ToolResultRelay return
+-> transient observation lifetime / rehydration
+-> same-Conversation synthesis
+-> VexBoard projectability
+```
+
+Permanent:
+
+```text
+FRACTAL EXPANSION
+= MEANINGFUL INTENTION / TRUTH BOUNDARY
+!= EVERY SEARCH RESULT / HTTP HELPER / TEXT CHUNK
+
+PUBLIC GITHUB READ
+!= AUTHENTICATED GITHUB AUTHORITY
+!= REPOSITORY WRITE AUTHORITY
+```
+
+Public GitHub can be a useful patient-zero source for the first bounded research proof, but provider identity and GitHub-specific capabilities remain replaceable/earned rather than baked into the semantic layer.
+
+The current implementation order is therefore:
+
+```text
+VexArchitecture preparation
+-> current Interface Refinement Memory + Atlas prerequisites
+-> one provider-boundary context/observation lifecycle
+-> safe public web read
+-> lived same-Conversation research proof
+```
+
 ## Gaps this Project preserves
 
 ### 1. One actual context budget
