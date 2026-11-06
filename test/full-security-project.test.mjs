@@ -18,6 +18,7 @@ const boardPaths = {
   vexstream: 'projects/vexboard/examples/full-security-vexstream-local-pairing.board.json',
   complex: 'projects/vexboard/examples/full-security-vexlife-complex-demonstrator.board.json',
   androidScenarios: 'projects/vexboard/examples/full-security-android-account-device-scenarios.board.json',
+  foundation: 'projects/vexboard/examples/full-security-foundation-starting-map.board.json',
 };
 
 test('Full Security source preserves demonstrator meaning without granting product authority', () => {
@@ -60,6 +61,29 @@ test('Full Security source preserves demonstrator meaning without granting produ
     (item) => item.workRef === 'work.full-security.candidate-security-relationship-patterns',
   );
   assert.equal(patterns?.state, 'RUNNING');
+
+  const ownerAdoption = acceptedSegment.items.find(
+    (item) => item.workRef === 'work.full-security.canonical-owner-adoption-foundation',
+  );
+  assert.equal(ownerAdoption?.state, 'RUNNING');
+
+  const relationshipProjection = acceptedSegment.items.find(
+    (item) => item.workRef === 'work.full-security.device-relationship-projection-foundation',
+  );
+  assert.equal(relationshipProjection?.state, 'DECOMPOSED');
+  assert.deepEqual(
+    relationshipProjection?.dependencyRefs,
+    ['work.full-security.canonical-owner-adoption-foundation'],
+  );
+
+  const syntheticProvider = acceptedSegment.items.find(
+    (item) => item.workRef === 'work.full-security.synthetic-demonstration-provider-foundation',
+  );
+  assert.equal(syntheticProvider?.state, 'DECOMPOSED');
+  assert.deepEqual(
+    syntheticProvider?.dependencyRefs,
+    ['work.full-security.device-relationship-projection-foundation'],
+  );
 });
 
 test('Full Security boards resolve and preserve real-vs-demonstrator separation', async () => {
@@ -143,6 +167,36 @@ test('Full Security boards resolve and preserve real-vs-demonstrator separation'
       (node) =>
         node.nodeRef === 'reference.fs.sc.p5' &&
         node.label.startsWith('Revocation'),
+    ),
+  );
+
+  const foundation = Reader.normalizeDraft(read(boardPaths.foundation));
+  assert.ok(
+    foundation.graph.nodes.some(
+      (node) =>
+        node.nodeRef === 'reference.fs.fm.vexlife' &&
+        node.label.includes('principal/device membership'),
+    ),
+  );
+  assert.ok(
+    foundation.graph.nodes.some(
+      (node) =>
+        node.nodeRef === 'process.fs.fm.f2' &&
+        node.label.includes('Device-relationship read projection'),
+    ),
+  );
+  assert.ok(
+    foundation.graph.nodes.some(
+      (node) =>
+        node.nodeRef === 'process.fs.fm.f4' &&
+        node.label.includes('Synthetic demonstration provider'),
+    ),
+  );
+  assert.ok(
+    foundation.graph.nodes.some(
+      (node) =>
+        node.nodeRef === 'annotation.fs.fm.next' &&
+        node.label.includes('F0 canonical-owner adoption'),
     ),
   );
 });
