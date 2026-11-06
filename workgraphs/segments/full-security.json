@@ -1,0 +1,196 @@
+{
+  "schemaVersion": "vexwork.workgraph-segment/v1",
+  "segmentRef": "segment.full-security",
+  "graphRef": "workgraph.vexwork.foundation",
+  "items": [
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T10:50:45.000Z",
+      "updatedAt": "2026-11-06T10:50:45.000Z",
+      "workRef": "work.full-security.outcome",
+      "parentWorkRefOrNull": null,
+      "label": "Full Security",
+      "purpose": "Make security layers learnable and demonstrable through source-backed Vex specimens and deliberately complex synthetic scenarios, preserving rightful ownership and keeping demonstration state separate from live authority.",
+      "workClass": "OUTCOME",
+      "state": "RUNNING",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife",
+        "repo.vexlife-prod",
+        "repo.vexlife-android",
+        "repo.vexstream-music"
+      ],
+      "sourceRefs": [
+        "projects/full-security/README.md",
+        "github.pull.vexwork.256"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T10:50:45.000Z",
+      "updatedAt": "2026-11-06T10:50:45.000Z",
+      "workRef": "work.full-security.security-boundary-atlas",
+      "parentWorkRefOrNull": "work.full-security.outcome",
+      "label": "Security Boundary Atlas",
+      "purpose": "Provide the reusable boundary-family and six-question VexBoard doorway so a human or Vex can discover relevant security patterns before knowing the implementation terminology.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/vex-security-assurance/README.md",
+        "projects/vexboard/examples/security-boundary-atlas.board.json",
+        "github.pull.vexwork.256"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T10:50:45.000Z",
+      "updatedAt": "2026-11-06T10:50:45.000Z",
+      "workRef": "work.full-security.vexstream-local-pairing",
+      "parentWorkRefOrNull": "work.full-security.outcome",
+      "label": "Map the real VexStream pairing security specimen",
+      "purpose": "Project the current VexStream Desktop and VexLife Android pairing path as a source-backed security walk covering discovery, service identity, human code comparison, per-device credentials, bounded authorization, media integrity, reconnect and revocation.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexstream-music",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "projects/full-security/VEXSTREAM-LOCAL-PAIRING-PATTERN.md",
+        "projects/vexboard/examples/full-security-vexstream-local-pairing.board.json",
+        "repo.vexstream-music:docs/architecture/MOBILE-BRIDGE-V1.md",
+        "repo.vexstream-music:v2/desktop/mobile/pairing.go",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/PairedVexStreamMusicRepository.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamConnectionStore.kt"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T10:50:45.000Z",
+      "updatedAt": "2026-11-06T10:50:45.000Z",
+      "workRef": "work.full-security.vexlife-complex-demonstrator",
+      "parentWorkRefOrNull": "work.full-security.outcome",
+      "label": "Build the deliberately complex VexLife Android security demonstrator",
+      "purpose": "Design and later implement a feature-gated VexLife-Prod/VexLife-Android specimen that can express principal/account, multiple devices/installations, credential custody, reachability, authenticated sessions, authorization/capabilities, feature effects, local data, offline/reconnect, revocation/recovery, build/update trust and evidence as distinct relationships.",
+      "workClass": "TASK",
+      "state": "DECOMPOSED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexlife-prod",
+        "repo.vexlife-android",
+        "repo.vexlife",
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md",
+        "projects/vexboard/examples/full-security-vexlife-complex-demonstrator.board.json",
+        "repo.vexlife-prod:README.md",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/connectedservices/VexHomeDevicePossession.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/connectedservices/VexPrivateHomeGatewayConnection.kt",
+        "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T10:50:45.000Z",
+      "updatedAt": "2026-11-06T10:50:45.000Z",
+      "workRef": "work.full-security.vex-guided-explanation",
+      "parentWorkRefOrNull": "work.full-security.outcome",
+      "label": "Let Vex guide the human through the current security example",
+      "purpose": "Connect the accepted VexLife/VexBoard context path so Vex can resolve the relevant boundary family, open or reference the best current real/synthetic example, explain what each owner holds or proves, and descend to exact source without becoming security or effect authority.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [
+        "work.full-security.security-boundary-atlas",
+        "work.full-security.vexstream-local-pairing",
+        "work.full-security.vexlife-complex-demonstrator"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod",
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "projects/full-security/README.md",
+        "projects/vexboard/examples/full-security-overview.board.json",
+        "repo.vexlife-prod:README.md"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T10:50:45.000Z",
+      "updatedAt": "2026-11-06T10:50:45.000Z",
+      "workRef": "work.full-security.discoverability",
+      "parentWorkRefOrNull": "work.full-security.outcome",
+      "label": "Register Full Security and expose its source boards",
+      "purpose": "Complete canonical Project Registry, composed Workgraph/public projections and VexBoard discoverability after the currently occupied shared registry/generated surfaces are available, without racing or hand-editing another lane's generated custody.",
+      "workClass": "TASK",
+      "state": "WAITING_RESOURCE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/full-security/README.md",
+        "blueprint/project-registry.json",
+        "workgraphs/public.json",
+        "github.pull.vexwork.253",
+        "github.pull.vexwork.256"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    }
+  ],
+  "transitions": [],
+  "sourceRefs": [
+    "project.full-security",
+    "projects/full-security/README.md",
+    "projects/full-security/VEXSTREAM-LOCAL-PAIRING-PATTERN.md",
+    "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md",
+    "projects/vexboard/examples/full-security-overview.board.json",
+    "projects/vexboard/examples/full-security-vexstream-local-pairing.board.json",
+    "projects/vexboard/examples/full-security-vexlife-complex-demonstrator.board.json"
+  ],
+  "formedAt": "2026-11-06T10:50:45.000Z"
+}
