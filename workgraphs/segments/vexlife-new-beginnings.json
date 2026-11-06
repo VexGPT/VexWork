@@ -386,6 +386,45 @@
       "workDisposition": "ACTIVE",
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
+      "createdAt": "2026-11-06T04:00:00.000Z",
+      "updatedAt": "2026-11-06T04:00:00.000Z",
+      "workRef": "work.vexlife.new-beginnings.evolution-live-bridge",
+      "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
+      "label": "Bridge — reconnect lived evolution to the connected New Beginnings body",
+      "purpose": "After the fresh product has one real connected Conversation path, reconnect the already-earned VexLife developmental owners as modular relationships rather than rebuilding an autonomous-learning stack. Begin from exact current New Beginnings Conversation/Memory/runtime truth; prove one explicit manual G03 memory-only Dream on the connected product and make its before/after state inspectable; preserve G04 Rhythm as HELD_NOT_EARNED unless ordinary lived correction/recurrence actually earns a candidate; let Training Placement decide whether a later earned change belongs in Memory/Score, Rhythm, an adapter/LoRA experiment, or G04B foundation-weight training; keep candidate evaluation, model-generation activation, standing Dream scheduling and unattended self-training as separate effects. Existing ToCompletion P5/P6 and stable VexLife evolution sources are lineage/reference, not permission to transplant their historical container or fabricate learning.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.vexlife.new-beginnings.local-runtime-foundation",
+        "work.vexlife.new-beginnings.p2.vex-conversation-reintegration"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-prod",
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "project.vexlife.tocompletion",
+        "work.vexlife.tocompletion.p5.lived-continuity-learning",
+        "work.vexlife.tocompletion.p5.g03.daily-memory-dream",
+        "work.vexlife.tocompletion.p6.cultivation-training-birth",
+        "project.vexlife.interface-refinement",
+        "work.vexlife.new-beginnings.later.settings-capability-mapping",
+        "github.commit.vexlife.7d59753687ff12726b0d309ee2dde028b5f89e8a",
+        "repo.vexlife:docs/DAILY-MEMORY-DREAM.md",
+        "repo.vexlife:docs/EVALUATED-RHYTHM-LEARNING.md",
+        "repo.vexlife:docs/DREAM-SYNC-AND-MODEL-EVOLUTION.md",
+        "repo.vexlife:training/foundation-generation/README.md",
+        "github.pull.vexlife-prod.38"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
       "createdAt": "2026-11-05T09:51:50.000Z",
       "updatedAt": "2026-11-05T10:46:49.960Z",
       "workRef": "work.vexlife.new-beginnings.local-runtime-foundation",
