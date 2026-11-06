@@ -3189,7 +3189,7 @@
         {
           "ref": "theme.dark-mode.toggle.result",
           "face": "DEPTH",
-          "role": "OBSERVATION",
+          "role": "RESULT",
           "label": "VexMethod.Result.Success(…)",
           "symbol": "VexMethod.Result",
           "summary": "The bound Method reports what outside truth did. It is not admitted until the Family interprets it.",
@@ -3235,10 +3235,10 @@
         {
           "ref": "theme.dark-mode.toggle.method-observe",
           "face": "DEPTH",
-          "role": "OBSERVATION",
+          "role": "REALIZATION",
           "label": "observeThemeModeState(result.output)",
           "symbol": "observeThemeModeState",
-          "summary": "Method Success output re-enters ThemeMode Family observation directly. This is distinct from the independently observed store.states source.",
+          "summary": "Method Success output is interpreted through ThemeMode's exact reconciliation path. This is distinct from the independently observed store.states source.",
           "source": "app:ui/ThemeMode.kt"
         },
         {
@@ -5242,7 +5242,7 @@
       "pathwayRef": "pathway.vexstream.playback.play-pause",
       "label": "VexStream Playback · Play / Pause",
       "disposition": "SCAE_FAMILY",
-      "summary": "VexStreamPlaybackFamily owns PlayPause meaning; the typed Connection realizes and reconciles outside truth back into the same Family projection.",
+      "summary": "Source-earned VexStreamPlaybackFamily / Behavior coordinates own PlayPause meaning; the typed Connection realizes and reconciles outside truth back into the returned projection.",
       "returns": "The returned VexStreamPlaybackProjection / VexStreamPlaybackDisplayState reaches the same human-facing Play / Pause control.",
       "nodes": [
         {
@@ -5340,7 +5340,7 @@
         {
           "ref": "vexstream.playback.play-pause.connection",
           "face": "DEPTH",
-          "role": "DISPATCH",
+          "role": "REALIZATION",
           "label": "VexStreamPlaybackConnection / Flow → Media3VexStreamPlaybackConnection",
           "symbol": "Media3VexStreamPlaybackConnection",
           "summary": "Typed VexPort boundary carrying the same Family / State / Control / Act coordinates into provider realization and reconciliation.",
@@ -5988,8 +5988,8 @@
   "provenance": {
     "generator": "vexlife-android-adapter/3",
     "adapterSha256": "d844788dfec846919f821534b9aec49f76fb7366e262166ebf2c7cdc9f04bcea",
-    "overlaySha256": "3bd902083e886f83ea7871c80ae62424975df432ab3bb3bac047aeeff5b7bc04",
+    "overlaySha256": "b90f9037a67e7f9d6e4fac6cc455b036fe1a7128d8f4601ed66aa7be2825efd0",
     "sourceCommit": "305a09eac1fabebcf2241bd207386950f41121f2",
-    "projectorBlobSha1": "9aee7e9cab9f2556a763b508434a5264172d5af6"
+    "projectorBlobSha1": "07b0b34a5ae269212fd10a02f20fc58d94c1093d"
   }
 }

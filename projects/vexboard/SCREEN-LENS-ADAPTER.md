@@ -59,8 +59,9 @@ adapter or overlay without regenerating fails the suite.
 
 ## Why it can be automated: the architecture is regular
 
-VexArchitecture makes the same questions show up in the same shapes, so one rule per shape covers
-every screen.
+VexArchitecture makes the same ownership questions recur without requiring the same implementation
+shape. The adapter therefore reuses one rule per source-earned shape and holds materially different
+relationships until their own source earns a truthful traversal.
 
 | Source shape | What the adapter reads | Lens result |
 |---|---|---|
@@ -77,18 +78,29 @@ every screen.
 | `context.closure` → `closure = { fn(…) }` → `fun fn` → `XFamily.Control.Y(` | the hop through a captured closure | Family bond (no annotation needed) |
 | `XFamily`: State enum, sealed Parameter / Control / Effect / DisplayState, `object Act { class M(store: S) }`, `begin<Approach>`, `observe*Store`, `XFamilyProvider` | the Family vocabulary | one SCAE + Depth template |
 
-The SCAE builder is reusable only where source earns an unambiguous Family relationship. Multiple candidate Effects or Methods are held rather than selected by list order. The template follows the VexArchitecture path itself:
+The SCAE builder is reusable only where source earns an unambiguous Family relationship. Multiple candidate Effects or Methods are held rather than selected by list order. The Lens faces are question-first; ThemeMode is one concrete shape, not the universal definition:
 
 ```text
-Behavior  intent → runtime dispatch → registration → captured closure
-          → Control.Y(Parameter) → act(CURRENT State, Control) → admitted State
-          → Begin(Effect, Approach) → DisplayState → presentation
-Depth     Act.Method.M(store, parameter) → launchWith → VexExecution custody (Approach)
-          → Store.op → concrete Store → VexMethod.Result
-          → exact Family reconciliation when source proves it
-          plus independent Store-source observation where source proves that separately
-beside    VexLogger facts · XFamilyProvider(dependencies)
+Behavior  what does the interaction mean, and which semantic owner decides?
+Depth     what realizes that meaning, which outside truths participate, and how does truth return?
+
+ThemeMode
+  intent → registration → Control.Y(Parameter) → act(CURRENT State, Control)
+  → admitted State + Begin(Effect, Approach) → DisplayState → presentation
+  → Act.Method.M(store, parameter) → VexExecution custody → Store
+  → RESULT → exact Method-result reconciliation
+  plus independent Store-source OBSERVATION → Family reconciliation
+
+VexStream Playback
+  UI → Experience.activate(Control) → Behavior / Control resolution
+  → REALIZATION boundary (typed Connection) → provider reality
+  → OBSERVATION → reconciliation → Projection → presentation
+
+beside
+  VexLogger chronology · construction/lifetime owners
 ```
+
+`RESULT` and `REALIZATION` are Lens classifications for already-source-owned relationships. They do not create new VexArchitecture owners.
 
 A new Family reached from a control appears with no change to VexWork. So does a new screen added to
 `AppScreens`, a new control, or a new registration.

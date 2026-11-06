@@ -34,10 +34,10 @@
         {
           "ref": "theme.dark-mode.toggle.method-observe",
           "face": "DEPTH",
-          "role": "OBSERVATION",
+          "role": "REALIZATION",
           "label": "observeThemeModeState(result.output)",
           "symbol": "observeThemeModeState",
-          "summary": "Method Success output re-enters ThemeMode Family observation directly. This is distinct from the independently observed store.states source.",
+          "summary": "Method Success output is interpreted through ThemeMode's exact reconciliation path. This is distinct from the independently observed store.states source.",
           "source": "app:ui/ThemeMode.kt"
         },
         {

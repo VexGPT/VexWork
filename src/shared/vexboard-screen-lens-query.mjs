@@ -26,7 +26,7 @@ import {
 
 export const SEARCH_KINDS = Object.freeze(['ELEMENT', 'STEP', 'SCREEN', 'PATHWAY', 'NOTE']);
 export const DISPOSITION_LABELS = Object.freeze({
-  SCAE_FAMILY: 'SCAE Family',
+  SCAE_FAMILY: 'SCAE semantic owner',
   TYPED_PRESENTATION: 'Typed presentation',
   TYPED_NAVIGATION: 'Typed navigation',
   DIRECT_REGISTRATION: 'Direct registration',
@@ -239,7 +239,7 @@ function pathwaySection(lens, pathway) {
   for (const face of ['BEHAVIOR', 'DEPTH']) {
     const graph = faceGraph(pathway, face);
     lines.push(`${LENS_FACES[face].title} face (${LENS_FACES[face].question}):`);
-    if (!graph.nodes.length) lines.push('- nothing underneath; this pathway touches no store, repository or execution custody');
+    if (!graph.nodes.length) lines.push('- no deeper realization or outside-truth relationship is projected for this pathway');
     for (const node of graph.nodes) {
       const role = LENS_ROLES[node.role];
       lines.push(`- [${role.chip} ${role.label}] ${node.label} ${code(node.ref)}${node.symbol ? ` — ${code(node.symbol)}` : ''}${node.source ? ` — ${sourcePath(lens, node.source)}` : ''}`);

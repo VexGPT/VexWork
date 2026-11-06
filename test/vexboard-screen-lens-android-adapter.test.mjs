@@ -432,6 +432,8 @@ test('a closure that reaches a Family becomes one SCAE + Depth template', () => 
   assert.equal(node('store').label, 'WidgetStore.write(…)');
   assert.equal(node('store-impl').label, 'PrefsWidgetStore');
   assert.equal(node('result').label, 'VexMethod.Result.Success(…)');
+  assert.equal(node('result').role, 'RESULT');
+  assert.equal(node('observe').role, 'OBSERVATION');
   assert.equal(node('display').label, 'DisplayState → WidgetPresentation');
   assert.equal(node('provider').label, 'WidgetFamilyProvider(store, executionRoot)');
   assert.ok(pathway.edges.some((edge) => edge.from === 'widget.pick.observe' && edge.to === 'widget.pick.state' && edge.kind === 'RETURN'));

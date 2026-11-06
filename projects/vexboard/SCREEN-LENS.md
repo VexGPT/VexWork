@@ -32,9 +32,9 @@ EXPERIENCE       Surface                            Structure
                                                     (middle-click flips)
 
 BEHAVIOR         Behavior                           Depth
-                 what it means:                     what runs, persists and returns underneath:
-                 Control -> Act -> Effect ->        Method -> Execution -> Store -> Observation
-                 Projection (SCAE)                  (right-click flips)
+                 what does this interaction mean,   what realizes that meaning, which outside truths
+                 and which semantic owner decides?  participate, and how does truth return?
+                 (right-click flips)
 ```
 
 Selecting a control on either Experience face selects its pathway on both Behavior faces. A bridge line
@@ -70,18 +70,21 @@ differences and the high-contrast palette.
 EXPERIENCE  what the human meets        SCREEN · CONTAINER · CONTENT · ELEMENT · NAVIGATION
 DOORWAY     how a touch reaches owner   INTENT · DISPATCH
 SEMANTIC    what the owner decides      CONTROL · STATE · ACT · EFFECT · PROJECTION
-RUNTIME     what work is alive          METHOD · EXECUTION
+RUNTIME     what runs / realizes        METHOD · RESULT · EXECUTION · REALIZATION
 OUTSIDE     what reality says           STORE · OBSERVATION
 SUPPORT     beside the path             CHRONOLOGY · CONSTRUCTION
 ```
 
 `ELEMENT` (the UI toggle) and `CONTROL` (`ThemeModeFamily.Control.Select`) are deliberately different
-roles: the UI doorway and the Family's semantic Control are different coordinates.
+roles: the UI doorway and the semantic Control are different coordinates. `RESULT` names what a bound
+Method lawfully returned; it is not an `OBSERVATION`. `REALIZATION` marks a source-proven concrete
+realization/reconciliation boundary such as the VexStream Playback Connection; it is a Lens role, not a
+new VexArchitecture owner.
 
 Each pathway also carries an honest disposition, so the lens never implies SCAE where it was not earned:
 
 ```text
-SCAE_FAMILY          a Family owns meaning (ThemeMode; VexStream Playback via earned Behavior-port traversal)
+SCAE_FAMILY          source earns a semantic owner and explicit State / Control / Act / Effect / Projection relationships
 TYPED_PRESENTATION   Open / Close / Toggle already says everything (Show log, + FAB)
 TYPED_NAVIGATION     NavigateTo(ScreenId) already says everything (bottom nav, FAB options)
 DIRECT_REGISTRATION  registration calls owners directly; no Family yet (Reset log, Events lab)
@@ -467,12 +470,12 @@ UNANNOTATED + NOT DERIVABLE -> HELD never guessed
 `VexLensRole` mirrors `LENS_ROLES`. `VexLensEdgeKind` mirrors `FLOW | DATA | RETURN | SIDE`. If the
 role vocabulary changes, it changes here first and the Kotlin enum follows.
 
-## Current accepted threshold and limits
+## Accepted baseline, current completion candidate and limits
 
-The Living Screen Lens is now an accepted, deployed first-draft VexBoard surface rather than an
-unintegrated candidate.
+The Living Screen Lens has an accepted, deployed first-draft baseline. PR #238 is a later completion
+candidate and is not accepted merely because it projects more source-earned relationships.
 
-Current accepted source/projection checkpoint:
+Accepted first-draft source/projection checkpoint:
 
 ```text
 VexLife-Android source pin
@@ -496,6 +499,27 @@ lived browser threshold
 related-board federation/addressability
   VexWork PR #232
   merge 1a55b01f3c02b3d603fe9d6c55782b0715133fbf
+```
+
+Current PR #238 completion candidate:
+
+```text
+same VexLife-Android source pin
+  305a09eac1fabebcf2241bd207386950f41121f2
+
+generated Lens
+  10 screens
+  241 elements
+  56 source-earned pathways
+  67 visible localEffect() controls intentionally have no deeper projected pathway
+  2 earned semantic relationship shapes
+    ThemeMode captured-Family traversal
+    VexStream Playback typed BEHAVIOR_PORT traversal
+
+truth boundary
+  VexMethod.Result != independent Store observation
+  concrete Connection realization != doorway dispatch
+  unresolved relationship != invented generic presentation
 ```
 
 Current limits remain:

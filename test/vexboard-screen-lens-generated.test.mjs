@@ -69,7 +69,7 @@ test('dispositions match what the code earns', () => {
   assert.equal(disposition('element.shell.back'), 'TYPED_NAVIGATION');
   assert.equal(disposition('element.debug-menu.body.log-history'), null);
   const theme = pathwayForElement(lens, 'element.debug-menu.body.dark-mode');
-  for (const role of ['CONTROL', 'STATE', 'ACT', 'EFFECT', 'PROJECTION', 'METHOD', 'EXECUTION', 'STORE', 'OBSERVATION']) {
+  for (const role of ['CONTROL', 'STATE', 'ACT', 'EFFECT', 'PROJECTION', 'METHOD', 'RESULT', 'EXECUTION', 'REALIZATION', 'STORE', 'OBSERVATION']) {
     assert.ok(theme.nodes.some((node) => node.role === role), role);
   }
   assert.ok(theme.nodes.some((node) => node.ref === 'theme.dark-mode.toggle.fence'), 'overlay adds the ThemeMode-local fence');
@@ -102,10 +102,19 @@ test('unproven localEffect controls remain visible but do not claim a generic ty
 test('ThemeMode distinguishes Method Result reconciliation from independent Store source observation', () => {
   const theme = pathwayForElement(lens, 'element.debug-menu.body.dark-mode');
   assert.equal(theme.returnRef, 'theme.dark-mode.toggle.render');
-  assert.ok(theme.nodes.some((node) => node.ref === 'theme.dark-mode.toggle.method-observe' && node.symbol === 'observeThemeModeState'));
+  assert.ok(theme.nodes.some((node) => node.ref === 'theme.dark-mode.toggle.result' && node.role === 'RESULT'));
+  assert.ok(theme.nodes.some((node) => node.ref === 'theme.dark-mode.toggle.method-observe' && node.symbol === 'observeThemeModeState' && node.role === 'REALIZATION'));
+  assert.ok(theme.nodes.some((node) => node.ref === 'theme.dark-mode.toggle.observe' && node.role === 'OBSERVATION'));
   assert.equal(theme.edges.some((edge) => edge.from === 'theme.dark-mode.toggle.result' && edge.to === 'theme.dark-mode.toggle.observe'), false);
   assert.ok(theme.edges.some((edge) => edge.from === 'theme.dark-mode.toggle.method-observe' && edge.to === 'theme.dark-mode.toggle.state' && edge.kind === 'RETURN'));
   assert.ok(theme.edges.some((edge) => edge.from === 'theme.dark-mode.toggle.store' && edge.to === 'theme.dark-mode.toggle.observe' && edge.kind === 'DATA'));
+});
+
+test('VexStream Playback keeps realization, provider truth and observation as distinct roles', () => {
+  const playback = pathwayForElement(lens, 'element.vexstream-music.body.player.play-pause');
+  assert.ok(playback.nodes.some((node) => node.ref === 'vexstream.playback.play-pause.connection' && node.role === 'REALIZATION'));
+  assert.ok(playback.nodes.some((node) => node.ref === 'vexstream.playback.play-pause.provider' && node.role === 'STORE'));
+  assert.ok(playback.nodes.some((node) => node.ref === 'vexstream.playback.play-pause.observation' && node.role === 'OBSERVATION'));
 });
 
 test('Debug Menu controls are all traced', () => {

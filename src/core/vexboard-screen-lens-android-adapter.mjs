@@ -11,9 +11,9 @@
 //   ScreenActionContext closure          -> Family bond (follows the captured hop)
 //   <X>Family sealed vocabulary          -> one SCAE + Depth template for every Family
 //
-// Every Family is projected through the same VexArchitecture path, which is why
-// one template covers them: Control -> act() -> admitted State + Begin(Effect,
-// Approach) -> Act.Method -> launchWith -> VexExecution -> Store -> observation.
+// The adapter reuses source-earned relationship shapes without forcing every feature
+// through one implementation template. Captured Family closures and typed Behavior
+// ports answer the same ownership questions through materially different source paths.
 //
 // Human knowledge that code cannot say (notes, sharper summaries, ThemeMode's
 // === fence) lives in a separate overlay file, merged last. The generated lens
@@ -934,8 +934,8 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, overlay
         }
         if (method.result || store.results.length) {
           const result = method.result
-            ? builder.node('result', 'DEPTH', 'OBSERVATION', `VexMethod.Result.${method.result}(…)`, { symbol: 'VexMethod.Result', summary: 'The bound Method reports what outside truth did. It is not admitted until the Family interprets it.', source: family.source })
-            : builder.node('result', 'DEPTH', 'OBSERVATION', `Result.${store.results[0]}(…)`, { symbol: `${store.type}.Result`, summary: 'Outside truth came back. It is not admitted until the Family interprets it.', source: store.source });
+            ? builder.node('result', 'DEPTH', 'RESULT', `VexMethod.Result.${method.result}(…)`, { symbol: 'VexMethod.Result', summary: 'The bound Method reports what outside truth did. It is not admitted until the Family interprets it.', source: family.source })
+            : builder.node('result', 'DEPTH', 'RESULT', `Result.${store.results[0]}(…)`, { symbol: `${store.type}.Result`, summary: 'Outside truth came back. It is not admitted until the Family interprets it.', source: store.source });
           builder.edge(last, result, 'returns');
           last = result;
         }
@@ -1040,7 +1040,7 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, overlay
     const flowLabel = bond.flowAlias === `${bond.implementation.portType}Flow`
       ? 'Flow'
       : bond.flowAlias;
-    const connection = builder.node('connection', 'DEPTH', 'DISPATCH', `${bond.implementation.portType} / ${flowLabel} → ${bond.connection.name}`, {
+    const connection = builder.node('connection', 'DEPTH', 'REALIZATION', `${bond.implementation.portType} / ${flowLabel} → ${bond.connection.name}`, {
       symbol: bond.connection.name,
       summary: 'Typed VexPort boundary carrying the same Family / State / Control / Act coordinates into provider realization and reconciliation.',
       source: bond.connection.source,
@@ -1087,7 +1087,7 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, overlay
     builder.edge(reconcile, state, 'reconciled', 'RETURN');
     builder.edge(reconcile, projection, 'publishes', 'RETURN');
 
-    builder.pathway.summary = `${bond.familyType} owns ${bond.control} meaning; the typed Connection realizes and reconciles outside truth back into the same Family projection.`;
+    builder.pathway.summary = `Source-earned ${bond.familyType} / Behavior coordinates own ${bond.control} meaning; the typed Connection realizes and reconciles outside truth back into the returned projection.`;
     builder.pathway.returnRef = presentation;
     builder.pathway.returns = `The returned ${bond.projectionType} / ${bond.displayType} reaches the same human-facing ${controlLabel} control.`;
     pathways.set(ref, builder.pathway);

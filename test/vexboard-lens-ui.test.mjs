@@ -40,6 +40,8 @@ test('roles always carry a non-color chip and three palette modes exist', () => 
   assert.match(page, /class: `chip role-\$\{role\}`/);
   assert.match(page, /palette-color-safe/);
   assert.match(page, /palette-high-contrast/);
+  assert.match(page, /role-RESULT/);
+  assert.match(page, /role-REALIZATION/);
   assert.match(page, /Presentation\.VEXBOARD_PALETTE_STORAGE_KEY/);
 });
 
