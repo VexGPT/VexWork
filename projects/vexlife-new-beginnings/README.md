@@ -51,7 +51,7 @@ That gives this Project a clean test of a question the older VexLife trajectory 
 
 > Can VexLife be constructed from explicit intention + relationship contracts, so future AI instances extend a compiler-visible product body instead of copying patterns and silently accumulating assumptions?
 
-The repository front door is now accepted source. The VexWork Repository Graph therefore points to the real `README.md` / `AGENTS.md` / foundation / culture entries; the next construction edge is the semantic-contract practicum.
+The repository front door is accepted source. The initial construction/lived sequence has now crossed P1/P2/P3 into an accepted baseline; current lifecycle truth lives in the Workgraph, while this Project front door points to the post-baseline VexArchitecture refactor and later explicitly admitted capability/evolution work.
 
 ## Architecture reference — accepted source + provenance
 
@@ -299,293 +299,158 @@ New Beginnings does not supersede earlier work:
 
 The new Project asks how those earned truths compose in a fresh product container without inheriting their historical incidental structure.
 
-## Lived product threshold — current parallel truth
+## Accepted lived baseline — current source truth
 
-The canonical generated-product trajectory below remains authoritative for its own Workgraph states.
-VexWeb F1/F2 and the generated P1 inert workspace are now accepted source. The current foreground Work
-is the bounded public GitHub nested-browser practicum; P2 browser-context/Conversation acceptance and
-P3 lived whole-circuit completion remain dependency-held until the current edge is actually exercised.
+The Workgraph owns lifecycle truth. This README is a human/current-entry projection and should not duplicate an alternate lifecycle.
 
-The lived exploration thresholds that remain valid are:
+Accepted VexLife-Prod source:
 
 ~~~text
-VexLife-Prod PR #13  ACCEPTED / MERGED
-  hand-built nested-browser presentation
-  -> current canonical VexLife Companion
-  -> canonical self-development Conversation
-  -> real human Send + streamed Vex response
-  != alternate local Conversation/model owner
-
-VexLife-Prod PR #14  ACCEPTED / MERGED
-  canonical vexlife.prompt-context-materialization-receipt/v2
-  -> projected read-only into the response / Context Inspector
-  -> exact "what Vex received" metadata without hidden reasoning/raw prompt reconstruction
-
-VexLife-Prod PR #15  MERGED / LIVED FRONT-DOOR CLAIM INVALIDATED
-VexLife-Prod PR #16  MERGED / LIVED REPAIR CLAIM INVALIDATED
-  -> both Mac runs reached canonical VexLife Companion READY
-  -> neither run brought the VexLife-Prod presentation up
-
-VexLife-Prod PR #17  INTEGRITY RETRACTION / MERGED
-  -> removed the unproven parallel Mac launcher
-  -> preserved #13/#14 lived product thresholds
-
-VexLife-Prod PR #19  STARTUP INTEGRITY GUARDS / MERGED
-VexLife-Prod PR #20  STARTUP DEPENDENCY LAW / MERGED
-  -> PROOF_ROUTE != ORDINARY_PRODUCT_ROUTE
-  -> BOOT_PASS != SUSTAINED_LIFETIME_PASS
-  -> NEW COMMIT != NEW STARTUP TOPOLOGY
-  -> ordinary topology varies by identity/currentness, not convenience parameters
+main  1a1745547558110fdbc420d4c15896cd353f5c46
+tree  760a6d10f2aa98f3a0a2eebf7d53a2f5311aa7cf
 ~~~
 
-Superseded launch/local-foundation drafts are provenance only:
+The accepted lived sequence is now:
 
 ~~~text
-VexLife-Prod PR #18  CLOSED / UNMERGED
-  second presentation-process composition experiment
-  terminal-route boot evidence + duplicate-presentation + sustained-lifetime failure provenance
-
-VexLife PR #976       CLOSED / UNMERGED
-  readiness-vs-reference-presentation experiment
-  superseded; not a current predecessor
-
-VexLife-Prod PR #21  CLOSED / UNMERGED
-  Heretic common/product contract
-  folded into current local-foundation successor
-
-VexLife-Prod PR #22  CLOSED / UNMERGED
-  generic launchd substrate candidate
-  folded into successor
-
-VexLife-Prod PR #23  CLOSED / UNMERGED
-  artifact + Python realization candidate
-  folded into successor
-
-VexLife-Prod PR #24  CLOSED / UNMERGED
-  isolated Prod Home candidate
-  folded into successor
+canonical Home + lineage
+-> canonical Conversation
+-> truthful HELD Memory when its frontier is stale
+-> qualified local Heretic
+-> sustained exact-main product service
+-> generated P1 presentation
+-> isolated nested browser
+-> rendered bounded page context
+-> one real browser-context Vex turn
+-> durable canonical RESPONSE + Context + Head
+-> fresh reload preserves the exact turn
+-> accepted-main source identity
 ~~~
 
-### Current parallel local-foundation trajectory
+The evidence boundary is preserved through the A057 / A061 / A062 / A063 / A065 trajectory and VexLife-Prod PR #37 integration. No additional proof Send is required merely to remember that baseline.
 
-The previously stacked #25→#33 source body now has one exact integration owner:
+Current Workgraph projection on accepted VexWork main:
 
 ~~~text
-work.vexlife.new-beginnings.local-runtime-foundation  RUNNING / AUTHORIZED_BOUNDED
+P1 public nested-browser practicum             COMPLETED
+local-runtime foundation                       COMPLETED
+P2 browser/DOM context projection              COMPLETED
+P2 Conversation reintegration                  COMPLETED
+P3 lived context-aware browser Conversation    COMPLETED
 
-VexLife-Prod PR #38  OPEN / DRAFT / CURRENT LOCAL-RUNTIME CLAIM
-  base  accepted P1 main 9615aab32c6e4427f3b538550284c391471a7eb0
-  head  227f667e9761c2b8af4aeacfcf0d727e9ce4f814
-  tree  5e70b700dcd91836df2b2a76a0b220c3628f53d7
+connected evolution live bridge                READY
+  authorityDisposition                         NO_AUTHORITY
+  effectDisposition                            NO_EFFECTS
 
-current proof boundary
-  A001  Gradle script compilation SAFE_FAILURE
-  A002  Kotlin candidate compilation SAFE_FAILURE
-  A003  Relay formation SAFE_FAILURE before business execution
-        missing repositoryRef in regenerated source-path records
-  A004  Relay formation PASS
-        compileKotlinJs PASS
-        compileTestKotlinJs PASS
-        compileKotlinJvm SAFE_FAILURE on one stale nonexistent Conversation exception reference
-  A005  production compile/source-admission PASS
-        compileKotlinJvm PASS
-        compileKotlinJs PASS
-        jvmJar PASS
-        JVM test compilation SAFE_FAILURE on stale test fixtures/API ownership
-        private-image assembly held because Gradle was not running on JDK 21
-  A006  JVM test source compilation PASS
-        compileKotlinJvm PASS
-        compileTestKotlinJvm PASS
-        jvmJar PASS
-        jvmTest NOT REACHED
-        private-image assembly still saw a non-21 Gradle build JVM despite JAVA_HOME selection
-  A007  qualified environment-only retry formed
-        sha256 7b49b80ded37ab7ff3054a2e6af742e87351f2711688bea898b186155f9de16c
-        candidate source unchanged
-        remaining predicates: Gradle-build-JDK21-bound jvmTest + archiveVexLifeProdServiceImage
-
-source provenance
-  PR #25 -> #33
-  final cumulative #33 head
-  da67a73ad86275c6f71781b14b7307e3a1cd3462
+Settings capability mapping                    CAPTURED / PARKED
 ~~~
 
-The cumulative body owns:
+Permanent distinctions:
 
 ~~~text
-isolated VexLife-Prod Home
--> strict durable contracts / owned paths / leases
--> explicit Heretic model configuration
--> private managed Python
--> exact resumable Heretic artifact delivery/materialization
--> exact Python/mlx-lm environment
--> packaged-implementation-bound persistent Heretic runtime
--> canonical direct Conversation + prompt-context receipt
--> local product service
--> private service image + install
--> macOS service lifetime
--> source-bound setup/bootstrap
+COMPLETED LIVED BASELINE
+!= PERMISSION TO REPLAY PROOF
+
+READY EVOLUTION BRIDGE
+!= DREAM AUTHORITY
+!= TRAINING AUTHORITY
+!= ACTIVATION AUTHORITY
+!= STANDING SCHEDULING AUTHORITY
+
+WORKGRAPH
+= LIFECYCLE TRUTH OWNER
+
+THIS README
+= CURRENT HUMAN ENTRY / NAVIGATION
 ~~~
 
-Permanent isolation:
+## Current foreground — post-baseline VexArchitecture refactor
+
+The lower lived circuit is now stable enough to refactor **without changing its human outcome**.
+
+The architecture horizon is preserved in:
+
+[VEXARCHITECTURE-FRACTAL-SEQUENTIAL-CONVERGENCE.md](./VEXARCHITECTURE-FRACTAL-SEQUENTIAL-CONVERGENCE.md)
+
+Use that note as design pressure/provenance, not as accepted product implementation authority.
+
+The refactor starts from the proven causal body:
 
 ~~~text
-legacy/current VexLife Home
-  ~/.vexlife
-
-fresh VexLife-Prod Home
-  ~/Library/Application Support/VexLife-Prod
-
-VexLife source/runtime
-  = provenance/reference for earned relationships
-  != runtime dependency of the fresh product
+human intention
+-> required relationship
+-> semantic question
+-> current truth + Control
+-> Act
+-> Effect when outside work is required
+-> realization / execution
+-> outside observation
+-> rightful interpretation
+-> new truth
+-> convergence re-evaluation
+-> next lawful relationship
+-> ...
+-> human outcome
 ~~~
 
-The local foundation remains a **source candidate**, not accepted product truth. A005 established
-production JVM/JS compilation and exact-source admission; A006 additionally established that the current JVM
-test sources compile. The remaining hold is execution-environment binding: Gradle's build/daemon JVM still
-did not run on JDK 21, so `jvmTest` was never scheduled and private-image assembly stopped at its intentional
-JDK-21 gate. The candidate source is unchanged. The next exact edge is A007, which resolves macOS JDK 21,
-prints both Java/Gradle JVM diagnostics, forces the Gradle build JVM with command-line
-`-Dorg.gradle.java.home`, then runs only `jvmTest` plus the source-owned
-`archiveVexLifeProdServiceImage` task. PR #38 must still prove those two predicates before the real
-macOS install/setup/lifetime boundary can begin.
-
-Its work boundary is deliberately separate from the current public-browser work. PR #37 was formed
-over an earlier substrate snapshot and must be reconciled onto accepted PR #38/main after the
-local-runtime foundation integrates; do not merge #37 first.
-
+The first patient-zero region remains runtime/product availability because lived work exposed useful distinctions there:
 
 ~~~text
-LOCAL RUNTIME FOUNDATION
-!= GENERATED P1 BROWSER PRESENTATION
-!= BROWSER CONTEXT ADMISSION
-!= P2 CONVERSATION REINTEGRATION
-!= P3 LIVED WHOLE CIRCUIT
+process exists
+!= process is ours
+
+receipt exists
+!= receipt is current
+
+runtime started
+!= runtime qualified
+
+qualified predecessor evidence
+!= ownership transfer
+
+service running
+!= source-current product service
 ~~~
 
-VexLife PR #975 CLEAN_START remains separate and open/draft; no CLEAN_START acceptance is implied by
-the local-runtime foundation.
+Refactor rules:
 
-There is currently **no accepted VexLife-Prod fresh-user Mac front door on main**.
+1. Start from the human/parent intention, not package names.
+2. Ask which semantic question exists at each material depth.
+3. Reuse the smallest truthful owner of the current truth.
+4. Preserve direct composition where no independent semantic continuation question exists.
+5. Use Family / Execution / Relay relationships only where their question is actually earned.
+6. Treat failure / HELD / UNKNOWN as truthful process positions rather than inventing happy-path closure.
+7. Keep source identity reusable across relationships; do not turn workflow position into source identity.
+8. Make relationships compiler/source visible before asking VexBoard to project them.
+9. Keep VexBoard read-only; product source owns the architecture.
+10. Do not mix Dream/training/evolution effects into this refactor.
 
-## Current execution map
-
-The source trajectory has now crossed the VexWeb compiler and generated inert-product thresholds.
+The acceptance pressure for the first refactor slice is not “more architecture.” It is:
 
 ~~~text
-P0 · clean product foundations
-
-  [DONE] repository front door
-  [DONE] semantic Blueprint + Compose reference
-
-  [DONE] VexWeb relational foundation + authoring
-         -> PR #34 accepted relational authoring
-         -> merge c2ed37471eab9f163acd2b0cfaf979d7cdeead73
-
-  [DONE] VexWeb deterministic artifact generation
-         -> PR #35
-         -> merge cf7de23e2979cc49133e2de4c5eee841d5bcf584
-
-P1 · intended browser product
-
-  [DONE] generated inert VexLife workspace
-         -> all current Blueprint coordinates manifested
-         -> exact generated-artifact materialization / drift membrane
-         -> PR #36
-         -> merge 9615aab32c6e4427f3b538550284c391471a7eb0
-
-  [RUNNING] public GitHub nested-browser practicum
-            work.vexlife.new-beginnings.p1.public-github-nested-browser
-            -> current candidate PR #37
-            -> bounded Vex-owned GitHub Pages realization
-            -> human render/current-page identity must be exercised before completion
-
-P2 · Vex perception + relationship
-  [WAITING] current browser/DOM context projection
-  [WAITING] canonical Conversation + Vex reintegration
-
-P3 · whole lived circuit
-  [WAITING] nested browser -> current context -> one real Vex turn -> durable Conversation
-
-Later
-  [PARKED] source-map Settings capabilities after the first whole browser/Conversation circuit
+same lived behavior
++ clearer rightful ownership
++ source-visible causal relationships
++ no new semantic owner without an earned question
++ deterministic proof that the accepted circuit still works
 ~~~
 
-The parallel local-runtime #25→#33 draft stack is provenance/source input to PR #37. Its existence does
-not independently advance P2/P3 state; accepted currentness follows the mapped dependency chain.
+## Evolution bridge boundary
 
-### VexWeb construction trajectory
+The connected evolution bridge is now dependency-released but intentionally not effect-authorized.
+
+Its later first admitted sequence remains narrow:
 
 ~~~text
-VEXWEB-F0  first structural vocabulary  [HISTORICAL ACCEPTANCE / PARTIALLY RETAINED]
-  -> VexLife-Prod PR #7
-  -> accepted merge 979ffaa31a94a94d44d0b0bc4c3dc532efb3eed2
-  -> proof RETURN sha256 0ebea0e6f2fcf628aaaca2a66272cd50d6578449022f2619a62d2b05f791ae01
-
-  retained invariants:
-  -> Blueprint identity != manifestation containment
-  -> sourceParentRef != containerRef
-  -> relative Depth
-  -> explicit Interaction -> Binding
-  -> NotYetImplemented fallback
-  -> portable common source
-
-  superseded:
-  -> binary spatial decomposition noun
-  -> human scalability law rejected it as permanent spatial authority
-
-VEXWEB-SPATIAL  relational spatial foundation  [ACCEPTED]
-  -> VexLife-Prod PR #11
-  -> accepted merge e0e8ad6a95f3c73cd7f79216b3ae1802ba9b54f9
-  -> accepted tree d109f0d648e1adeba35796b0dd0dc766d1dea4c1
-  -> proof RETURN sha256 7e9066f9aacbd535a9e75a67b99d13014cdafab51fe52bd22cc12858e55ace8b
-
-  current spatial grammar:
-  -> Frame
-  -> Seam
-  -> Region
-  -> Allocation
-  -> Depth
-
-  proved:
-  -> same nouns at 2 / 3 / 4 regions
-  -> partial Seam for irregular three-region geometry
-  -> ratio Allocation bound to named Seam
-  -> same-axis cycle rejection
-  -> forward / non-empty geometry validation
-  -> Seam coverage validation for Region edges
-  -> Handle != Seam
-  -> derived normalized geometry != authored coordinates
-
-VEXWEB-F1  compiler-visible authoring  [CURRENT / NEXT]
-  -> build ergonomic Kotlin authoring over accepted Frame / Seam / Region / Allocation
-  -> preserve exact source identity and geometry relationships
-  -> do not reintroduce binary layout language
-  -> no HTML/CSS/JS generation yet
-
-VEXWEB-F2  deterministic artifact compiler  [HELD]
-  -> accepted VexWeb source -> normalized projection
-  -> projection -> native HTML / CSS / JS / manifest
-  -> same input produces stable output
-
-VEXWEB-F3  generated-artifact membrane
-  -> generated files are outputs, not normal authoring surfaces
-  -> verify/regenerate detects manual drift
-
-VEXWEB-F4  Compose parity pressure
-  -> compare shared meaning / identity
-  -> do not require implementation sameness
-
-VEXWEB-F5  inert VexLife web specimen
-  -> generated shell / browser / companion workspace
-  -> truthful unbound states only
-
-then
-  -> P1 nested-browser practicum
+observe exact current Conversation / Memory / runtime truth
+-> one explicit admitted G03 memory-only Dream
+-> inspect before/after evolution truth
+-> keep G04 Rhythm HELD unless ordinary lived recurrence earns it
+-> use Training Placement before selecting Memory/Score, Rhythm,
+   adapter/LoRA, or G04B foundation-weight training
 ~~~
 
-The map is navigation. PR checkpoint comments preserve immutable threshold history.
+Candidate evaluation, activation/promotion, standing Dream scheduling and unattended self-training remain separate effects.
 
 ## Instance checkpoint lineage
 
@@ -682,15 +547,23 @@ PROJECT FORMATION
 
 ## Current authority
 
-This Project formation records the plan and relationships only.
+This Project README does not grant product, model, Home, Memory, Conversation, training, activation, merge, or evolution effects.
 
-All product Work items begin with:
+Current lifecycle truth is owned by the accepted Workgraph. At the present baseline:
 
 ~~~text
-authorityDisposition = NO_AUTHORITY
-effectDisposition    = NO_EFFECTS
+connected evolution live bridge
+  state                READY
+  authorityDisposition NO_AUTHORITY
+  effectDisposition    NO_EFFECTS
+
+Settings capability mapping
+  state                CAPTURED
+  disposition          PARKED
+  authorityDisposition NO_AUTHORITY
+  effectDisposition    NO_EFFECTS
 ~~~
 
-Victor's explicit admission of a concrete `VexLife-Prod` implementation edge can advance the corresponding Work item and source effect separately.
+A concrete VexLife-Prod refactor or later capability/evolution effect requires its own current admission, exact source/effect ownership and proof. A Project link, architecture note, WorkState or provider record does not create that authority.
 
-<!-- [VXG RealForever][VEXLIFE][NEW-BEGINNINGS][FORMATION] -->
+<!-- [VXG RealForever][VEXLIFE][NEW-BEGINNINGS][CURRENT-ENTRY] -->
