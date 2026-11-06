@@ -568,7 +568,7 @@
       "workRef": "work.vexboard.screen-lens-currentness",
       "parentWorkRefOrNull": "work.vexboard.source-projectors",
       "label": "Living Screen Lens currentness and projection truth",
-      "purpose": "Keep the Living Screen Lens as VexBoard's primary source-grounded perceptual experience: preserve the accepted Projects -> Stable/Main/Commit -> Screen Lens product direction, project only source-earned relationships, keep current source movement distinct from projection movement, and converge source-owned expectation with historically observed lived evidence on stable semantic coordinates without making VexBoard a second VexWork or source owner. Current foreground is VexWork PR #238 at exact preimage candidate 901ade71dde2f9ecd165949b93e0bab29b60b952. A013 proved exact head/tree but found deterministic generation stale. A014 then recovered the exact source-generated Lens bytes without repository mutation: SHA-256 7daa8bf6661bcf4b6773117e357178037cf0c9c1854ee4563c0ffb3164b1eacc with 10 screens, 241 elements, 56 pathways, 2 earned bonds, 67 held relationships and 0 unknown calls. A015 is the next bounded effect: replace only projects/vexboard/lens/vexlife-android.screen-lens.json with that immutable A014 artifact through a preimage-bound Relay WRITE, require deterministic regeneration plus focused/full review and lens:verify, DCO commit, and non-force push only if the remote #238 branch still equals 901ade71. After A015 PASS, form a fresh exact-head SourceOwner proof on the resulting immutable candidate, then fresh Independent Assurance and live-main lifecycle currentness. Scenario Playground remains a separate parked potential.",
+      "purpose": "Keep the Living Screen Lens as VexBoard's primary source-grounded perceptual experience: preserve the accepted Projects -> Stable/Main/Commit -> Screen Lens product direction, project only source-earned relationships, keep current source movement distinct from projection movement, and converge source-owned expectation with historically observed lived evidence on stable semantic coordinates without making VexBoard a second VexWork or source owner. Current foreground is VexWork PR #238 at exact published candidate 8d8e80548e7e340a5962fe798b6d61cb2ca0fccc / tree 6afc5d8d367d24df5cb41f12489fef64eda29063. A021 published the final five-path currentness/reference correction. A023 then completed fresh ExactHead SourceOwner proof on that immutable candidate: deterministic regeneration, 103/103 focused Screen Lens tests, lens:verify, fixed-base ancestry, repository baseline parity, clean worktree and bounded 28-path review projection all passed. Fresh Independent Assurance is CLEAR on the same exact candidate, and provider lifecycle currentness confirms #238 OPEN/DRAFT/MERGEABLE at that head with main still e7f06ca18addca4cd4f2a6f513f6f7b302a15fc6 and truthful coordination metadata. The next rightful process is process.vexwork.integrate-ready-pull-requests for serialized current-trunk reconsideration; approval, READY, merge and post-merge lived proof remain separate exact-authority effects. Scenario Playground remains a separate parked potential.",
       "workClass": "TASK",
       "state": "RUNNING",
       "workDisposition": "ACTIVE",
@@ -591,22 +591,22 @@
         "github.pull.vexwork.232",
         "github.pull.vexwork.237",
         "github.pull.vexwork.238",
-        "git.commit.vexwork.901ade71dde2f9ecd165949b93e0bab29b60b952",
+        "git.commit.vexwork.8d8e80548e7e340a5962fe798b6d61cb2ca0fccc",
         "github.issue.vexwork.238.comment.6656450534",
         "work.vexboard.source-projectors",
         "work.vexboard.vexstream-screenshot-pilot",
-        "relay.return.vexboard.pr238.source-owner.a013.40823d87eee5efaf5f54d1500e200bc60eac8d110bbe699294f08a891e40c839",
-        "relay.return.vexboard.pr238.source-owner.a014.751c487e2b5d545f16398464aacb879c87f26a3095f53d9beb4424aa149f7b47",
+        "relay.return.vexboard.pr238.generated-artifact-publication.a021.7b1a8a01e306decf6705e587daa2138dcc302414f481d49676b9539f5f0ea586",
+        "relay.return.vexboard.pr238.source-owner.a023.938d4a7a5d77ff4caa1730e85262f9afe794435c366da444fd0405bddc39cd47",
         "artifact.sha256.7daa8bf6661bcf4b6773117e357178037cf0c9c1854ee4563c0ffb3164b1eacc"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [
-        "process.vexwork.quality-review"
+        "process.vexwork.integrate-ready-pull-requests"
       ],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-11-05T11:02:00.000Z",
-      "updatedAt": "2026-11-06T01:30:00.000Z"
+      "updatedAt": "2026-11-06T03:35:59.000Z"
     }
   ],
   "transitions": [
@@ -949,5 +949,5 @@
     "github.pull.vexwork.215",
     "github.commit.vexwork.cd1264763e315d3bc2b6db80115806a102ed339b"
   ],
-  "formedAt": "2026-11-05T11:02:00.000Z"
+  "formedAt": "2026-11-06T03:35:59.000Z"
 }
