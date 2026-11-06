@@ -190,6 +190,21 @@
   "parkingLot": {
     "items": [
       {
+        "workRef": "work.vexboard.later.screen-lens-scenario-playground",
+        "label": "Later — Screen Lens Scenario Playground",
+        "purpose": "Preserve the future Screen Lens Scenario Playground: an effect-free third-face experience where a person can run bounded simulations from a source-projected Screen/control, vary source-backed or explicitly proposed scenario state, add/remove/substitute VexBoard-proposed content inside addressable source-backed bounds, preview transient presentation such as snackbars, traverse the next simulated consequence, and reset without mutating VexLife-Android or confusing Scenario/Design Draft truth with current source. Reuse the accepted BoardScenario/BoardPrototype and ScreenDesign/projector seams; admit only the smallest patient-zero extensions when this future work is deliberately activated.",
+        "workClass": "POTENTIAL",
+        "state": "CAPTURED",
+        "workDisposition": "PARKED",
+        "priorityClass": "LOW",
+        "repositoryRefs": [
+          "repo.vexwork"
+        ],
+        "authorityDisposition": "NO_AUTHORITY",
+        "effectDisposition": "NO_EFFECTS",
+        "updatedAt": "2026-11-05T10:50:07.000Z"
+      },
+      {
         "workRef": "work.vexlife.blueprint-source-of-truth.outcome",
         "label": "VexLife Blueprint Source of Truth",
         "purpose": "Preserve accepted VLBSoT portability/parity proof as predecessor lineage while the unfinished MAUI/Mac target leg is parked; current VexLife construction proceeds through VexLife New Beginnings / VexLife-Prod on accepted VexArchitecture.",
@@ -458,7 +473,7 @@
   "summary": {
     "projectWorkItemCount": 8,
     "openProjectWorkItemCount": 0,
-    "parkingLotItemCount": 16
+    "parkingLotItemCount": 17
   },
   "effects": false,
   "executionAuthority": "NONE"

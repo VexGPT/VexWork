@@ -17,6 +17,7 @@ import {
   splitArgs,
   stripComments,
   topLevelCalls,
+  typedPathwayRef,
 } from '../src/core/vexboard-screen-lens-android-adapter.mjs';
 import { faceGraph, normalizeScreenLens, screenMapGraph } from '../src/shared/vexboard-screen-lens.mjs';
 import { layoutCollisions, layoutLensFace } from '../src/shared/vexboard-lens-layout.mjs';
@@ -378,6 +379,10 @@ test('intents parse both chaining forms', () => {
   assert.deepEqual(parseIntent('navigateBack()'), [{ op: 'navigateBack', arg: '' }]);
   assert.deepEqual(parseIntent(''), []);
   assert.deepEqual(parseIntent('somethingOdd'), [{ op: 'unknown', arg: 'somethingOdd' }]);
+  const elements = typedPathwayRef('gallery', parseIntent('swapTo(container = Content, child = ElementsPanel)'));
+  const appGraph = typedPathwayRef('gallery', parseIntent('swapTo(child = AppGraphPanel, container = Content)'));
+  assert.notEqual(elements, appGraph);
+  assert.equal(appGraph, typedPathwayRef('gallery', parseIntent('swapTo(container = Content, child = AppGraphPanel)')));
 });
 
 test('string resources decode entities, CDATA and escapes', () => {
@@ -427,6 +432,8 @@ test('a closure that reaches a Family becomes one SCAE + Depth template', () => 
   assert.equal(node('store').label, 'WidgetStore.write(…)');
   assert.equal(node('store-impl').label, 'PrefsWidgetStore');
   assert.equal(node('result').label, 'VexMethod.Result.Success(…)');
+  assert.equal(node('result').role, 'RESULT');
+  assert.equal(node('observe').role, 'OBSERVATION');
   assert.equal(node('display').label, 'DisplayState → WidgetPresentation');
   assert.equal(node('provider').label, 'WidgetFamilyProvider(store, executionRoot)');
   assert.ok(pathway.edges.some((edge) => edge.from === 'widget.pick.observe' && edge.to === 'widget.pick.state' && edge.kind === 'RETURN'));
@@ -471,9 +478,29 @@ test('typed intents become shared navigation and presentation templates', () => 
   assert.ok(open.nodes.some((node) => node.label === 'SheetView(…)' && node.role === 'PROJECTION'));
   assert.ok(open.nodes.some((node) => node.face === 'DEPTH' && node.label === 'repositories.things'));
   assert.equal(open.returnRef, 'home.open.Sheet.renderer');
-  const swap = lens.pathways.find((entry) => entry.pathwayRef === 'pathway.home.close-then-open');
+  const swap = lens.pathways.find((entry) => entry.pathwayRef === typedPathwayRef('home', parseIntent('close(Sheet).then(open(Panel))')));
   assert.deepEqual(swap.nodes.filter((node) => node.role === 'NAVIGATION').map((node) => node.label), ['Close(Sheet)', 'Open(Panel)']);
   assert.deepEqual(report.held, [{ elementRef: 'element.home.body.orphan', reason: 'no registration for AppActions.Missing' }]);
+});
+
+test('an unresolved localEffect stays held instead of becoming false typed presentation', () => {
+  const variant = new Map(files);
+  variant.set(`${APP}screens/primary/home/HomeScreen.kt`, files.get(`${APP}screens/primary/home/HomeScreen.kt`).replace('intent = invoke(AppActions.Ping)', 'intent = localEffect()'));
+  const { lens, report } = project({ files: variant });
+  const ping = lens.screens[0].elements.find((element) => element.ref === 'element.home.body.ping');
+  assert.equal(ping.intent, 'localEffect()');
+  assert.equal(ping.pathwayRef, undefined);
+  assert.ok(report.held.some((entry) => entry.elementRef === ping.ref && /not source-proven/.test(entry.reason)));
+  assert.equal(lens.pathways.some((entry) => entry.disposition === 'TYPED_PRESENTATION' && entry.nodes[0]?.label === 'localEffect()'), false);
+});
+
+test('an ambiguous Family Effect vocabulary is held rather than choosing the first syntactic match', () => {
+  const variant = new Map(files);
+  variant.set(`${APP}ui/Widget.kt`, files.get(`${APP}ui/Widget.kt`).replace('data class Persist(val choice: Parameter.Choice) : Effect', 'data class Persist(val choice: Parameter.Choice) : Effect\n        data class Mirror(val choice: Parameter.Choice) : Effect'));
+  const { lens, report } = project({ files: variant });
+  const pick = lens.screens[0].elements.find((element) => element.ref === 'element.home.body.pick');
+  assert.equal(pick.pathwayRef, undefined);
+  assert.ok(report.held.some((entry) => entry.elementRef === pick.ref && /ambiguous Family traversal/.test(entry.reason)));
 });
 
 test('chrome is one owner with slots, menu kinds and always-visible controls', () => {
@@ -527,6 +554,7 @@ test('the overlay adds human knowledge and fails loudly on refs that do not exis
     pathways: {
       'pathway.widget.pick': {
         label: 'Pick',
+        returnRef: 'widget.pick.extra',
         nodes: { 'widget.pick.control': { summary: 'Sharper.' } },
         addNodes: [{ ref: 'widget.pick.extra', face: 'DEPTH', role: 'STATE', label: 'Extra fence' }],
         removeEdges: [{ from: 'widget.pick.result', to: 'widget.pick.observe' }],
@@ -544,6 +572,7 @@ test('the overlay adds human knowledge and fails loudly on refs that do not exis
   assert.equal(pathway.label, 'Pick');
   assert.equal(pathway.nodes.find((node) => node.ref === 'widget.pick.control').summary, 'Sharper.');
   assert.ok(!pathway.edges.some((edge) => edge.from === 'widget.pick.result' && edge.to === 'widget.pick.observe'));
+  assert.equal(pathway.returnRef, 'widget.pick.extra', 'STRICT applies the current accepted return coordinate');
   assert.equal(lens.annotations.length, 1);
   for (const broken of [
     { screens: { 'screen.nope': {} } },
@@ -592,7 +621,7 @@ test('lenient overlay skips entries an older commit lacks, lists them, and still
   normalizeScreenLens(lens);
   assert.equal(lens.screens[0].summary, 'Kept');
   assert.deepEqual(lens.annotations.map((note) => note.ref), ['note.kept']);
-  assert.deepEqual(report.overlayMisses, ['screen.gone', 'element.gone', 'pathway.gone', 'widget.pick.gone', 'widget.pick.control->widget.pick.nowhere', 'note.orphan']);
+  assert.deepEqual(report.overlayMisses, ['screen.gone', 'element.gone', 'pathway.gone', 'widget.pick.gone', 'structural-add:widget.pick.control->widget.pick.nowhere', 'note.orphan']);
   assert.match(lens.sourceSnapshot.notes.at(-1), /^6 overlay entries do not apply at this commit and were skipped: screen\.gone/);
   assert.throws(() => project({ overlay, overlayMode: 'STRICT' }), /does not have/);
   assert.throws(() => project({ overlay, overlayMode: 'MAYBE' }), /overlayMode/);
@@ -600,6 +629,64 @@ test('lenient overlay skips entries an older commit lacks, lists them, and still
   assert.deepEqual(one.misses, ['screen.gone']);
   assert.match(one.lens.sourceSnapshot.notes.at(-1), /^1 overlay entry does not apply at this commit and was skipped/);
   assert.deepEqual(project({ overlay: null }).report.overlayMisses, []);
+});
+
+test('lenient historical overlay applies descriptive fields but skips source-sensitive fields on existing refs', () => {
+  const base = project().lens;
+  const home = base.screens.find((screen) => screen.screenRef === 'screen.home');
+  const element = home.elements[0];
+  const pathway = base.pathways.find((entry) => entry.pathwayRef === element.pathwayRef) ?? base.pathways[0];
+  const node = pathway.nodes[0];
+
+  const overlay = {
+    schemaVersion: SCREEN_LENS_OVERLAY_SCHEMA,
+    screens: {
+      'screen.home': {
+        summary: 'Current descriptive screen summary.',
+        elements: [],
+      },
+    },
+    elements: {
+      [element.ref]: {
+        label: 'Current descriptive element label.',
+        pathwayRef: 'pathway.future',
+      },
+    },
+    pathways: {
+      [pathway.pathwayRef]: {
+        label: 'Current descriptive pathway label.',
+        disposition: 'DIRECT_REGISTRATION',
+        nodes: {
+          [node.ref]: {
+            summary: 'Current descriptive node summary.',
+            role: 'STATE',
+          },
+        },
+      },
+    },
+  };
+
+  const { lens, misses } = applyOverlayWithReport(base, overlay, { strict: false });
+  normalizeScreenLens(lens);
+
+  const nextHome = lens.screens.find((screen) => screen.screenRef === 'screen.home');
+  const nextElement = nextHome.elements.find((candidate) => candidate.ref === element.ref);
+  const nextPathway = lens.pathways.find((candidate) => candidate.pathwayRef === pathway.pathwayRef);
+  const nextNode = nextPathway.nodes.find((candidate) => candidate.ref === node.ref);
+
+  assert.equal(nextHome.summary, 'Current descriptive screen summary.');
+  assert.equal(nextHome.elements.length, home.elements.length, 'historical screen structure is source-owned');
+  assert.equal(nextElement.label, 'Current descriptive element label.');
+  assert.equal(nextElement.pathwayRef, element.pathwayRef, 'historical element linkage is source-owned');
+  assert.equal(nextPathway.label, 'Current descriptive pathway label.');
+  assert.equal(nextPathway.disposition, pathway.disposition, 'historical pathway disposition is source-owned');
+  assert.equal(nextNode.summary, 'Current descriptive node summary.');
+  assert.equal(nextNode.role, node.role, 'historical node role is source-owned');
+
+  assert.ok(misses.includes('structural-field:screen.home.elements'));
+  assert.ok(misses.includes(`structural-field:${element.ref}.pathwayRef`));
+  assert.ok(misses.includes(`structural-field:${pathway.pathwayRef}.disposition`));
+  assert.ok(misses.includes(`structural-field:${node.ref}.role`));
 });
 
 test('the read plan names exactly the files the adapter reads', () => {
@@ -610,4 +697,36 @@ test('the read plan names exactly the files the adapter reads', () => {
   assert.equal(plan.includes('app/src/main/kotlin/elsewhere/Thing.kt'), false);
   assert.throws(() => adapterReadPlan({ ...adapter, read: ['nope:screens/'] }), /root nope/);
   assert.deepEqual(adapterReadPlan({ ...adapter, read: ['plain/path'] }).prefixes, ['plain/path/']);
+});
+
+
+test('lenient historical overlay never injects current structural nodes or edge rewrites', () => {
+  const base = project().lens;
+  const overlay = {
+    schemaVersion: SCREEN_LENS_OVERLAY_SCHEMA,
+    pathways: {
+      'pathway.widget.pick': {
+        label: 'Current interpretation label',
+        returnRef: 'widget.pick.future',
+        nodes: { 'widget.pick.control': { summary: 'Current descriptive interpretation.' } },
+        addNodes: [{ ref: 'widget.pick.future', face: 'BEHAVIOR', role: 'PROJECTION', label: 'Future source construct' }],
+        removeEdges: [{ from: 'widget.pick.intent', to: 'widget.pick.runtime' }],
+        addEdges: [{ from: 'widget.pick.display', to: 'widget.pick.future', label: 'future' }],
+      },
+    },
+    notes: [{ ref: 'note.future', subjectRef: 'widget.pick.future', text: 'Future note' }],
+  };
+  const { lens, misses } = applyOverlayWithReport(base, overlay, { strict: false });
+  const pathway = lens.pathways.find((entry) => entry.pathwayRef === 'pathway.widget.pick');
+  assert.equal(pathway.label, 'Current interpretation label');
+  assert.equal(pathway.nodes.find((node) => node.ref === 'widget.pick.control').summary, 'Current descriptive interpretation.');
+  assert.equal(pathway.nodes.some((node) => node.ref === 'widget.pick.future'), false);
+  assert.ok(pathway.edges.some((edge) => edge.from === 'widget.pick.intent' && edge.to === 'widget.pick.runtime'));
+  assert.equal(pathway.edges.some((edge) => edge.to === 'widget.pick.future'), false);
+  assert.notEqual(pathway.returnRef, 'widget.pick.future');
+  assert.ok(misses.includes('structural-node:widget.pick.future'));
+  assert.ok(misses.includes('structural-remove:widget.pick.intent->widget.pick.runtime'));
+  assert.ok(misses.includes('structural-add:widget.pick.display->widget.pick.future'));
+  assert.ok(misses.includes('note.future'));
+  normalizeScreenLens(lens);
 });

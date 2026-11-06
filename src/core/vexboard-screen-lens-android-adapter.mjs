@@ -11,9 +11,9 @@
 //   ScreenActionContext closure          -> Family bond (follows the captured hop)
 //   <X>Family sealed vocabulary          -> one SCAE + Depth template for every Family
 //
-// Every Family is projected through the same VexArchitecture path, which is why
-// one template covers them: Control -> act() -> admitted State + Begin(Effect,
-// Approach) -> Act.Method -> launchWith -> VexExecution -> Store -> observation.
+// The adapter reuses source-earned relationship shapes without forcing every feature
+// through one implementation template. Captured Family closures and typed Behavior
+// ports answer the same ownership questions through materially different source paths.
 //
 // Human knowledge that code cannot say (notes, sharper summaries, ThemeMode's
 // === fence) lives in a separate overlay file, merged last. The generated lens
@@ -24,7 +24,7 @@
 
 export const SCREEN_LENS_ADAPTER_SCHEMA = 'vexboard.screen-lens-adapter/v1';
 export const SCREEN_LENS_OVERLAY_SCHEMA = 'vexboard.screen-lens-overlay/v1';
-export const ADAPTER_VERSION = 'vexlife-android-adapter/2';
+export const ADAPTER_VERSION = 'vexlife-android-adapter/3';
 
 function fail(message) {
   throw new TypeError(`screen lens adapter: ${message}`);
@@ -397,6 +397,31 @@ export function parseIntent(expression) {
     i = close + 1;
   }
   return steps.length ? steps : [{ op: 'unknown', arg: text }];
+}
+
+// One generator template may serve many controls, but one projected pathway is one semantic
+// relationship instance. Operands participate in identity whenever they carry product meaning.
+const typedRefToken = (value) => String(value ?? '')
+  .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+  .replace(/[^A-Za-z0-9]+/g, '-')
+  .replace(/^-+|-+$/g, '')
+  .toLowerCase();
+
+export function typedPathwayRef(ownerKey, steps, { targetLocal = null } = {}) {
+  const shape = steps.map((step) => step.op.replace(/([A-Z])/g, '-$1').toLowerCase()).join('-then-');
+  if (steps.length === 1 && ['open', 'close', 'toggle'].includes(steps[0].op) && targetLocal) {
+    return `pathway.${ownerKey}.${shape}.${targetLocal}`;
+  }
+  if (!steps.some((step) => step.arg)) return `pathway.${ownerKey}.${shape}`;
+  const identity = steps.map((step) => {
+    let args = splitArgs(step.arg);
+    if (args.length && args.every((arg) => arg.name)) args = [...args].sort((a, b) => a.name.localeCompare(b.name));
+    const operand = args.flatMap((arg) => arg.name
+      ? [typedRefToken(arg.name), typedRefToken(arg.value)]
+      : [typedRefToken(arg.value)]).filter(Boolean).join('-');
+    return [step.op.replace(/([A-Z])/g, '-$1').toLowerCase(), operand].filter(Boolean).join('-');
+  }).join('-then-');
+  return `pathway.${ownerKey}.${identity}`;
 }
 
 const escapeRegex = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -818,9 +843,7 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, overlay
   const registrations = registrationIndex(adapter, files);
 
   const typedPathway = (ownerKey, steps, elementInfo) => {
-    const shape = steps.map((step) => step.op.replace(/([A-Z])/g, '-$1').toLowerCase()).join('-then-');
-    const target = steps.length === 1 && ['open', 'close', 'toggle'].includes(steps[0].op) ? `.${elementInfo.targetLocal}` : '';
-    const ref = `pathway.${ownerKey}.${shape}${target}`;
+    const ref = typedPathwayRef(ownerKey, steps, { targetLocal: elementInfo.targetLocal });
     if (pathways.has(ref)) return ref;
     const navigates = steps.some((step) => step.op === 'navigateTo' || step.op === 'navigateBack');
     const builder = new PathwayBuilder(ref, elementInfo.pathwayLabel, navigates ? 'TYPED_NAVIGATION' : 'TYPED_PRESENTATION');
@@ -857,6 +880,13 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, overlay
     if (!family) return null;
     families.set(bond.family, family);
     const ref = `pathway.${actionKey.replace(/^action\./, '')}`;
+    if (family.methods.length > 1 || family.effects.length > 1) {
+      report.held.push({
+        elementRef: bond.elementRef ?? actionKey,
+        reason: `ambiguous Family traversal: ${family.effects.length} Effects / ${family.methods.length} Methods; source must earn the exact relationship`,
+      });
+      return null;
+    }
     const builder = new PathwayBuilder(ref, `${family.name.replace(/Family$/, '')} · ${bond.control}`, 'SCAE_FAMILY');
     const method = family.methods[0] ?? null;
     const effect = family.effects[0] ?? null;
@@ -904,8 +934,8 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, overlay
         }
         if (method.result || store.results.length) {
           const result = method.result
-            ? builder.node('result', 'DEPTH', 'OBSERVATION', `VexMethod.Result.${method.result}(…)`, { symbol: 'VexMethod.Result', summary: 'The bound Method reports what outside truth did. It is not admitted until the Family interprets it.', source: family.source })
-            : builder.node('result', 'DEPTH', 'OBSERVATION', `Result.${store.results[0]}(…)`, { symbol: `${store.type}.Result`, summary: 'Outside truth came back. It is not admitted until the Family interprets it.', source: store.source });
+            ? builder.node('result', 'DEPTH', 'RESULT', `VexMethod.Result.${method.result}(…)`, { symbol: 'VexMethod.Result', summary: 'The bound Method reports what outside truth did. It is not admitted until the Family interprets it.', source: family.source })
+            : builder.node('result', 'DEPTH', 'RESULT', `Result.${store.results[0]}(…)`, { symbol: `${store.type}.Result`, summary: 'Outside truth came back. It is not admitted until the Family interprets it.', source: store.source });
           builder.edge(last, result, 'returns');
           last = result;
         }
@@ -1010,7 +1040,7 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, overlay
     const flowLabel = bond.flowAlias === `${bond.implementation.portType}Flow`
       ? 'Flow'
       : bond.flowAlias;
-    const connection = builder.node('connection', 'DEPTH', 'DISPATCH', `${bond.implementation.portType} / ${flowLabel} → ${bond.connection.name}`, {
+    const connection = builder.node('connection', 'DEPTH', 'REALIZATION', `${bond.implementation.portType} / ${flowLabel} → ${bond.connection.name}`, {
       symbol: bond.connection.name,
       summary: 'Typed VexPort boundary carrying the same Family / State / Control / Act coordinates into provider realization and reconciliation.',
       source: bond.connection.source,
@@ -1057,7 +1087,7 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, overlay
     builder.edge(reconcile, state, 'reconciled', 'RETURN');
     builder.edge(reconcile, projection, 'publishes', 'RETURN');
 
-    builder.pathway.summary = `${bond.familyType} owns ${bond.control} meaning; the typed Connection realizes and reconciles outside truth back into the same Family projection.`;
+    builder.pathway.summary = `Source-earned ${bond.familyType} / Behavior coordinates own ${bond.control} meaning; the typed Connection realizes and reconciles outside truth back into the returned projection.`;
     builder.pathway.returnRef = presentation;
     builder.pathway.returns = `The returned ${bond.projectionType} / ${bond.displayType} reaches the same human-facing ${controlLabel} control.`;
     pathways.set(ref, builder.pathway);
@@ -1125,15 +1155,22 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, overlay
       const bare = /^(\w+)\(\)$/.exec(registration.code ?? '');
       const closureName = bare ? (registration.locals.get(bare[1])?.match(/^context\.(\w+)$/)?.[1] ?? null) : null;
       const bond = closureName && /->/.test(fields.get(closureName) ?? '') ? followClosure(cat, adapter, closureName) : null;
-      element.pathwayRef = (bond?.family ? familyPathway(actionKey, registration, bond) : null) ?? directPathway(actionKey, registration);
+      if (bond?.family) {
+        const familyRef = familyPathway(actionKey, registration, { ...bond, elementRef: element.ref });
+        if (familyRef) element.pathwayRef = familyRef;
+        return element;
+      }
+      element.pathwayRef = directPathway(actionKey, registration);
       return element;
     }
-    if (screen && steps.length === 1 && steps[0].op === 'localEffect') {
-      const bond = followBehaviorPort(cat, adapter, screen, element);
+    if (steps.length === 1 && steps[0].op === 'localEffect') {
+      const bond = screen ? followBehaviorPort(cat, adapter, screen, element) : null;
       if (bond) {
         element.pathwayRef = behaviorPortPathway(screen, element, bond);
         return element;
       }
+      report.held.push({ elementRef: element.ref, reason: 'localEffect relationship is declared but its deeper semantic relationship is not source-proven' });
+      return element;
     }
     const nav = steps.find((step) => step.op === 'navigateTo');
     if (nav) element.navigatesTo = screenRefOf(nav.arg) ?? undefined;
@@ -1297,40 +1334,65 @@ export function applyOverlay(lensInput, overlay) {
 }
 
 // strict (the default for committed builds): any ref the lens lacks fails the run.
-// lenient (any-commit projection in the browser): entries that do not apply are skipped, listed in
-// misses, and named in the lens notes, so an older commit still projects honestly.
+// lenient (any-commit projection in the browser): descriptive patches apply only to refs that exist; source-sensitive structural additions/removals are skipped,
+// listed in misses, and named in the lens notes, so historical source is never given current invented structure.
 export function applyOverlayWithReport(lensInput, overlay, { strict = true } = {}) {
   if (!overlay || overlay.schemaVersion !== SCREEN_LENS_OVERLAY_SCHEMA) fail(`overlay schemaVersion must be ${SCREEN_LENS_OVERLAY_SCHEMA}`);
   const lens = JSON.parse(JSON.stringify(lensInput));
   const misses = [];
   const assign = (target, patch) => { for (const [key, value] of Object.entries(patch)) target[key] = value; };
+  const assignLenientDescriptive = (target, patch, allowedFields, ref) => {
+    for (const [key, value] of Object.entries(patch)) {
+      if (allowedFields.has(key)) target[key] = value;
+      else misses.push(`structural-field:${ref}.${key}`);
+    }
+  };
+  const SCREEN_LENIENT_FIELDS = new Set(['label', 'summary']);
+  const ELEMENT_LENIENT_FIELDS = new Set(['label']);
+  const PATHWAY_LENIENT_FIELDS = new Set(['label', 'summary', 'returns']);
+  const NODE_LENIENT_FIELDS = new Set(['label', 'summary']);
   for (const [ref, patch] of Object.entries(overlay.screens ?? {})) {
     const screen = lens.screens.find((candidate) => candidate.screenRef === ref);
-    if (screen) assign(screen, patch); else misses.push(ref);
+    if (screen) {
+      if (strict) assign(screen, patch);
+      else assignLenientDescriptive(screen, patch, SCREEN_LENIENT_FIELDS, ref);
+    } else misses.push(ref);
   }
   const allElements = [...lens.chrome.flatMap((entry) => entry.elements), ...lens.screens.flatMap((screen) => screen.elements)];
   for (const [ref, patch] of Object.entries(overlay.elements ?? {})) {
     const element = allElements.find((candidate) => candidate.ref === ref);
-    if (element) assign(element, patch); else misses.push(ref);
+    if (element) {
+      if (strict) assign(element, patch);
+      else assignLenientDescriptive(element, patch, ELEMENT_LENIENT_FIELDS, ref);
+    } else misses.push(ref);
   }
   for (const [ref, patch] of Object.entries(overlay.pathways ?? {})) {
     const pathway = lens.pathways.find((candidate) => candidate.pathwayRef === ref);
     if (!pathway) { misses.push(ref); continue; }
     const { addNodes = [], addEdges = [], removeEdges = [], nodes = {}, ...fields } = patch;
-    assign(pathway, fields);
+    const descriptiveFields = { ...fields };
+    delete descriptiveFields.returnRef;
+    if (strict) assign(pathway, fields);
+    else assignLenientDescriptive(pathway, descriptiveFields, PATHWAY_LENIENT_FIELDS, ref);
     for (const [nodeRef, nodePatch] of Object.entries(nodes)) {
       const node = pathway.nodes.find((candidate) => candidate.ref === nodeRef);
-      if (node) assign(node, nodePatch); else misses.push(nodeRef);
+      if (node) {
+        if (strict) assign(node, nodePatch);
+        else assignLenientDescriptive(node, nodePatch, NODE_LENIENT_FIELDS, nodeRef);
+      } else misses.push(nodeRef);
     }
-    pathway.nodes.push(...addNodes);
-    pathway.edges = pathway.edges.filter((edge) => !removeEdges.some((remove) => remove.from === edge.from && remove.to === edge.to));
-    if (strict) pathway.edges.push(...addEdges);
-    else {
-      const nodeRefs = new Set(pathway.nodes.map((node) => node.ref));
-      for (const edge of addEdges) {
-        if (nodeRefs.has(edge.from) && nodeRefs.has(edge.to)) pathway.edges.push(edge);
-        else misses.push(`${edge.from}->${edge.to}`);
+    if (strict) {
+      pathway.nodes.push(...addNodes);
+      pathway.edges = pathway.edges.filter((edge) => !removeEdges.some((remove) => remove.from === edge.from && remove.to === edge.to));
+      pathway.edges.push(...addEdges);
+    } else {
+      if (Object.hasOwn(fields, 'returnRef')) {
+        if (fields.returnRef === null || pathway.nodes.some((node) => node.ref === fields.returnRef)) pathway.returnRef = fields.returnRef;
+        else misses.push(`${ref}.returnRef:${fields.returnRef}`);
       }
+      for (const node of addNodes) misses.push(`structural-node:${node.ref}`);
+      for (const edge of removeEdges) misses.push(`structural-remove:${edge.from}->${edge.to}`);
+      for (const edge of addEdges) misses.push(`structural-add:${edge.from}->${edge.to}`);
     }
   }
   const knownRefs = new Set([

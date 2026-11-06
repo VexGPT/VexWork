@@ -184,7 +184,7 @@
       "workRef": "work.vexboard.source-projectors",
       "parentWorkRefOrNull": "work.vexboard.outcome",
       "label": "Source projectors and lived comparison",
-      "purpose": "Use the same semantic/rendering foundation to project source-owned VexWork/Atlas and repository VexArchitecture truth read-only, then compare intended VexBoard journeys with observed lived evidence without copying source ownership. VexWork PR #215 accepted one exact Android/VexStream relationship slice through the existing Android projector; broader evidence comparison, federation, automatic sourceRevision currentization and additional consumers remain unfinished.",
+      "purpose": "Use the same semantic/rendering foundation to project source-owned VexWork/Atlas and repository VexArchitecture truth read-only, then compare intended VexBoard journeys with observed lived evidence without copying source ownership. VexWork PR #215 accepted one exact Android/VexStream relationship slice through the existing Android projector. The Living Screen Lens currentness/projection-truth child is now accepted and COMPLETED through PR #238 / closure PR #250, so Screen Lens itself is no longer an unfinished Source Projectors edge. This broader outcome remains RUNNING for the VexStream living-Origin expected-versus-observed evidence comparison, broader evidence/federation consumers, automatic sourceRevision/currentness where repeated use earns it, and materially different consumers that may justify additional source-owned relationship shapes.",
       "workClass": "OUTCOME",
       "state": "RUNNING",
       "priorityClass": "NORMAL",
@@ -220,11 +220,17 @@
         "projects/vexboard/examples/vexlife-android-vexstream-playback.vexarchitecture.json",
         "src/core/vexboard-android-source-projector.mjs",
         "github.pull.vexlife-android.211",
-        "github.commit.vexlife-android.305a09eac1fabebcf2241bd207386950f41121f2"
+        "github.commit.vexlife-android.305a09eac1fabebcf2241bd207386950f41121f2",
+        "work.vexboard.screen-lens-currentness",
+        "github.pull.vexwork.238",
+        "git.commit.vexwork.cbfce46235b628635774c0d3c849fcfe5d8dd236",
+        "github.pull.vexwork.250",
+        "git.commit.vexwork.20fe8285ba78e84c7865750306e4531e4406d418",
+        "github.issue.vexwork.238.comment.6677190552"
       ],
       "nextProcessRefs": [],
       "createdAt": "2026-10-23T00:14:29.000Z",
-      "updatedAt": "2026-11-03T11:14:57.000Z"
+      "updatedAt": "2026-11-06T04:59:10.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -331,7 +337,7 @@
       "workRef": "work.vexboard.vexstream-screenshot-pilot",
       "parentWorkRefOrNull": "work.vexboard.outcome",
       "label": "VexStream living Origin screenshot pilot",
-      "purpose": "Use the real VexStream phone-to-desktop walkthrough and supplied screenshots as the first living Origin patient zero: reconcile observed evidence with current VexStream Desktop / VexLife Android source, project one stable feature journey through BoardGraph / BoardProjection / BoardJourney / BoardEvidence, and pressure the convergence with the accepted VexLife Blueprint Source of Truth lineage from portable semantic meaning through design-authoritative relationship/constraint-based UX composition, deterministic target construction mapping and target-native realization to expected-versus-observed currentness. Preserve product/source ownership, prevent target implementations from independently redesigning accepted Origin presentation, treat VLBSoT refs as accepted historical lineage rather than blocking dependencies or automatic lane reactivation, and earn only the smallest reusable feature/design/source/evidence/currentness seams. PR #215 now supplies an accepted read-only VexStream source-relationship projection slice; the screenshot/evidence comparison and living currentness predicates remain active.",
+      "purpose": "Use the real VexStream phone-to-desktop walkthrough and supplied screenshots as the first living Origin patient zero: reconcile observed evidence with current VexStream Desktop / VexLife Android source, project one stable feature journey through BoardGraph / BoardProjection / BoardJourney / BoardEvidence, and pressure the convergence with the accepted VexLife Blueprint Source of Truth lineage from portable semantic meaning through design-authoritative relationship/constraint-based UX composition, deterministic target construction mapping and target-native realization to expected-versus-observed currentness. Preserve product/source ownership, prevent target implementations from independently redesigning accepted Origin presentation, treat VLBSoT refs as accepted historical lineage rather than blocking dependencies or automatic lane reactivation, and earn only the smallest reusable feature/design/source/evidence/currentness seams. PR #215 supplies the accepted read-only VexStream source-relationship projection slice, and the completed Living Screen Lens currentness foundation (#238 / #250) now supplies an accepted source-grounded perception/currentness substrate. The remaining active edge is the phone-to-desktop screenshot/evidence comparison and living expected-versus-observed currentness at stable semantic coordinates, not additional Screen Lens completion work.",
       "workClass": "TASK",
       "state": "RUNNING",
       "workDisposition": "ACTIVE",
@@ -366,7 +372,13 @@
         "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md",
         "github.pull.vexwork.215",
         "github.commit.vexwork.cd1264763e315d3bc2b6db80115806a102ed339b",
-        "projects/vexboard/examples/vexlife-android-vexstream-playback.vexarchitecture.json"
+        "projects/vexboard/examples/vexlife-android-vexstream-playback.vexarchitecture.json",
+        "work.vexboard.screen-lens-currentness",
+        "github.pull.vexwork.238",
+        "git.commit.vexwork.cbfce46235b628635774c0d3c849fcfe5d8dd236",
+        "github.pull.vexwork.250",
+        "git.commit.vexwork.20fe8285ba78e84c7865750306e4531e4406d418",
+        "github.issue.vexwork.238.comment.6677190552"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [
@@ -375,7 +387,7 @@
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-25T04:00:00.000Z",
-      "updatedAt": "2026-11-03T11:14:57.000Z"
+      "updatedAt": "2026-11-06T04:59:10.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -528,6 +540,91 @@
       "effectDisposition": "NO_EFFECTS",
       "createdAt": "2026-10-26T03:10:45.000Z",
       "updatedAt": "2026-10-26T03:35:00.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexboard.later.screen-lens-scenario-playground",
+      "parentWorkRefOrNull": "work.vexboard.outcome",
+      "label": "Later — Screen Lens Scenario Playground",
+      "purpose": "Preserve the future Screen Lens Scenario Playground: an effect-free third-face experience where a person can run bounded simulations from a source-projected Screen/control, vary source-backed or explicitly proposed scenario state, add/remove/substitute VexBoard-proposed content inside addressable source-backed bounds, preview transient presentation such as snackbars, traverse the next simulated consequence, and reset without mutating VexLife-Android or confusing Scenario/Design Draft truth with current source. Reuse the accepted BoardScenario/BoardPrototype and ScreenDesign/projector seams; admit only the smallest patient-zero extensions when this future work is deliberately activated.",
+      "workClass": "POTENTIAL",
+      "state": "CAPTURED",
+      "workDisposition": "PARKED",
+      "priorityClass": "LOW",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/vexboard/SCENARIO-PLAYGROUND.md",
+        "projects/vexboard/SCREEN-LENS.md",
+        "projects/vexboard/SEMANTIC-BLUEPRINT-IDE-FOUNDATION.md",
+        "src/shared/vexboard-simulation.mjs",
+        "src/core/vexboard-screen-design.mjs",
+        "src/core/vexboard-android-source-projector.mjs",
+        "projects/vexboard/examples/vexlife-android-home-vexstream.design.json",
+        "projects/vexboard/examples/vexlife-android-home-vexstream.snapshot.json",
+        "work.vexboard.boardjourney-simulation",
+        "work.vexboard.source-projectors",
+        "work.vexboard.vexstream-screenshot-pilot"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.capture-discovered-work",
+      "nextProcessRefs": [],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-05T10:50:07.000Z",
+      "updatedAt": "2026-11-05T10:50:07.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vexboard.screen-lens-currentness",
+      "parentWorkRefOrNull": "work.vexboard.source-projectors",
+      "label": "Living Screen Lens currentness and projection truth",
+      "purpose": "Keep the Living Screen Lens as VexBoard's primary source-grounded perceptual experience: preserve the accepted Projects -> Stable/Main/Commit -> Screen Lens product direction, project only source-earned relationships, keep current source movement distinct from projection movement, and converge source-owned expectation with historically observed lived evidence on stable semantic coordinates without making VexBoard a second VexWork or source owner. PR #247 accepted the durable Work/currentness coordinate; PR #238 integrated the currentness/projection-truth correction and its actual merge tree exactly matched the pre-merge synthetic composition; GitHub Pages deployed that correction; exact built-artifact browser proof passed desktop/mobile, Stable/Main truth, held localEffect honesty and Related federation; Victor then completed the hosted-origin historical-commit / Differences-from-Stable edge. PR #250 accepted the lawful RUNNING -> VERIFYING -> COMPLETED closure and Pages run 42165468586 published that completed Work projection. The admitted Screen Lens currentness/projection-truth outcome is complete. VexLife-Android main currently remains exactly equal to Stable at 305a09eac1fabebcf2241bd207386950f41121f2, so a future first Main move is a source-movement wake condition, not active Screen Lens work. Scenario Playground remains a separate parked potential with NO_AUTHORITY / NO_EFFECTS.",
+      "workClass": "TASK",
+      "state": "COMPLETED",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.vexboard.boardgraph-contract",
+        "work.vexboard.canvas-projection",
+        "work.vexboard.source-projectors"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "projects/vexboard/SCREEN-LENS.md",
+        "projects/vexboard/SCREEN-LENS-ADAPTER.md",
+        "projects/vexboard/PROJECTS-AND-BUILDS.md",
+        "projects/vexboard/lens/catalog.json",
+        "github.pull.vexwork.230",
+        "github.pull.vexwork.232",
+        "github.pull.vexwork.237",
+        "github.pull.vexwork.238",
+        "git.commit.vexwork.8d8e80548e7e340a5962fe798b6d61cb2ca0fccc",
+        "work.vexboard.source-projectors",
+        "work.vexboard.vexstream-screenshot-pilot",
+        "relay.return.vexboard.pr238.generated-artifact-publication.a021.7b1a8a01e306decf6705e587daa2138dcc302414f481d49676b9539f5f0ea586",
+        "relay.return.vexboard.pr238.source-owner.a023.938d4a7a5d77ff4caa1730e85262f9afe794435c366da444fd0405bddc39cd47",
+        "artifact.sha256.7daa8bf6661bcf4b6773117e357178037cf0c9c1854ee4563c0ffb3164b1eacc",
+        "github.pull.vexwork.247",
+        "git.commit.vexwork.3af560397fb00b6a7ccf22551712e41f0508ae74",
+        "git.commit.vexwork.cbfce46235b628635774c0d3c849fcfe5d8dd236",
+        "github.actions.vexwork.run.42161623968",
+        "github.issue.vexwork.238.comment.6676912877",
+        "github.issue.vexwork.238.comment.6677190552",
+        "github.pull.vexwork.250",
+        "git.commit.vexwork.20fe8285ba78e84c7865750306e4531e4406d418",
+        "github.actions.vexwork.run.42165468586"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "EFFECTS_BOUND",
+      "createdAt": "2026-11-05T11:02:00.000Z",
+      "updatedAt": "2026-11-06T04:59:10.000Z"
     }
   ],
   "transitions": [
@@ -863,6 +960,42 @@
         "work.vexboard.fractal-semantic-composition-spatial-layout"
       ],
       "createdAt": "2026-11-03T09:22:05.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.screen-lens-currentness.running-verifying.postmerge-pages-20261106",
+      "workRef": "work.vexboard.screen-lens-currentness",
+      "priorState": "RUNNING",
+      "nextState": "VERIFYING",
+      "reason": "PR #247 and PR #238 are accepted on main; #238 is post-merge tree-exact to the proven synthetic composition, and GitHub Pages successfully deployed that merge. Exact built-artifact browser proof covers Projects/Lens desktop+mobile, held localEffect truth and Direct Related; the hosted-origin network-dependent historical-commit/Differences path remains the final lived predicate.",
+      "actorRef": "actor.chatgpt.vexboard.screen-lens.integration",
+      "sourceRefs": [
+        "github.pull.vexwork.247",
+        "git.commit.vexwork.3af560397fb00b6a7ccf22551712e41f0508ae74",
+        "github.pull.vexwork.238",
+        "git.commit.vexwork.cbfce46235b628635774c0d3c849fcfe5d8dd236",
+        "github.actions.vexwork.run.42161623968"
+      ],
+      "createdAt": "2026-11-06T04:18:40.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexboard.screen-lens-currentness.verifying-completed.hosted-lived-20261106",
+      "workRef": "work.vexboard.screen-lens-currentness",
+      "priorState": "VERIFYING",
+      "nextState": "COMPLETED",
+      "reason": "The admitted Living Screen Lens currentness/projection-truth outcome is complete. PR #247 and #238 are accepted on main with #238 tree-exact to the proved synthetic composition; GitHub Pages deployed that exact merge; exact built-artifact browser proof passed desktop/mobile, Stable/Main truth, held localEffect honesty and Direct Related; Victor then supplied hosted-origin browser screenshots proving historical commit 4d357c48 labeling and the 2 differences vs Stable dialog in-browser. Scenario Playground remains separate PARKED / NO_AUTHORITY / NO_EFFECTS work.",
+      "actorRef": "actor.chatgpt.vexboard.screen-lens.integration",
+      "sourceRefs": [
+        "github.pull.vexwork.247",
+        "git.commit.vexwork.3af560397fb00b6a7ccf22551712e41f0508ae74",
+        "github.pull.vexwork.238",
+        "git.commit.vexwork.cbfce46235b628635774c0d3c849fcfe5d8dd236",
+        "github.actions.vexwork.run.42161623968",
+        "github.issue.vexwork.238.comment.6676912877",
+        "github.issue.vexwork.238.comment.6677190552"
+      ],
+      "createdAt": "2026-11-06T04:49:47.000Z"
     }
   ],
   "sourceRefs": [
@@ -870,5 +1003,5 @@
     "github.pull.vexwork.215",
     "github.commit.vexwork.cd1264763e315d3bc2b6db80115806a102ed339b"
   ],
-  "formedAt": "2026-10-21T01:45:00.000Z"
+  "formedAt": "2026-11-06T04:59:10.000Z"
 }

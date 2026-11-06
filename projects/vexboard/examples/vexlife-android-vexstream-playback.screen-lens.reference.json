@@ -2,7 +2,7 @@
   "schemaVersion": "vexboard.screen-lens/v1",
   "lensRef": "lens.reference.vexlife-android.vexstream-playback",
   "title": "VexStream Playback · Screen Lens Reference",
-  "summary": "Stable human-authored reference for the VexStream screen: Claude's existing direct-registration paths remain intact while Play / Pause demonstrates the runtime-connected Playback Family round trip. This is an oracle for VexBoard experience and later adapter equivalence, not live source authority.",
+  "summary": "Stable human-authored reference for the VexStream screen: current source-earned non-Playback relationships remain aligned with the generated lens while Play / Pause demonstrates the runtime-connected Playback Family round trip. This is an oracle for VexBoard experience and later adapter equivalence, not live source authority.",
   "entryScreenRef": "screen.vexstream-music",
   "entryElementRef": "element.vexstream-music.body.player.play-pause",
   "sourceSnapshot": {
@@ -16,7 +16,7 @@
     },
     "notes": [
       "Stable Screen Lens reference case: current VexStream screen projection plus a hand-authored Playback relationship oracle. It is not the live generated lens and does not own VexLife behavior.",
-      "Existing VexStream element ids and direct-registration pathways are preserved from the generated 305a09e lens. The Play / Pause pathway is grounded in the accepted VexStream Playback source slice and rechecked against the same pinned source.",
+      "Existing VexStream element ids and source-earned non-Playback pathways are preserved from the generated 305a09e lens; unproven localEffect controls stay visible without invented generic pathways. The Play / Pause pathway is grounded in the accepted VexStream Playback source slice and rechecked against the same pinned source.",
       "Later adapter work succeeds only when generation can reproduce this relationship without changing the VexBoard consumer contract."
     ]
   },
@@ -97,7 +97,7 @@
           "declared": "buttonRef(id = \"body.library-tabs.songs\")",
           "labelRes": "R.string.vexstream_music_songs",
           "intent": "swapTo(container = LibraryContent, child = SongsPanel)",
-          "pathwayRef": "pathway.vexstream-music.swap-to"
+          "pathwayRef": "pathway.vexstream-music.swap-to-child-songs-panel-container-library-content"
         },
         {
           "ref": "element.vexstream-music.body.library-tabs.albums",
@@ -108,7 +108,7 @@
           "declared": "buttonRef(id = \"body.library-tabs.albums\")",
           "labelRes": "R.string.vexstream_music_albums",
           "intent": "swapTo(container = LibraryContent, child = AlbumsPanel)",
-          "pathwayRef": "pathway.vexstream-music.swap-to"
+          "pathwayRef": "pathway.vexstream-music.swap-to-child-albums-panel-container-library-content"
         },
         {
           "ref": "element.vexstream-music.body.library-tabs.artists",
@@ -119,7 +119,7 @@
           "declared": "buttonRef(id = \"body.library-tabs.artists\")",
           "labelRes": "R.string.vexstream_music_artists",
           "intent": "swapTo(container = LibraryContent, child = ArtistsPanel)",
-          "pathwayRef": "pathway.vexstream-music.swap-to"
+          "pathwayRef": "pathway.vexstream-music.swap-to-child-artists-panel-container-library-content"
         },
         {
           "ref": "element.vexstream-music.body.library-tabs.playlists",
@@ -130,7 +130,7 @@
           "declared": "buttonRef(id = \"body.library-tabs.playlists\")",
           "labelRes": "R.string.vexstream_music_playlists",
           "intent": "swapTo(container = LibraryContent, child = PlaylistsPanel)",
-          "pathwayRef": "pathway.vexstream-music.swap-to"
+          "pathwayRef": "pathway.vexstream-music.swap-to-child-playlists-panel-container-library-content"
         },
         {
           "ref": "element.vexstream-music.body.library-tabs.downloads",
@@ -141,7 +141,7 @@
           "declared": "buttonRef(id = \"body.library-tabs.downloads\")",
           "labelRes": "R.string.vexstream_music_downloads",
           "intent": "swapTo(container = LibraryContent, child = DownloadsPanel)",
-          "pathwayRef": "pathway.vexstream-music.swap-to"
+          "pathwayRef": "pathway.vexstream-music.swap-to-child-downloads-panel-container-library-content"
         },
         {
           "ref": "element.vexstream-music.body.library-organization-status",
@@ -231,8 +231,7 @@
           "symbol": "VexStreamMusicScreen.OpenCollection",
           "declared": "buttonRef(id = \"body.collection.open\")",
           "labelRes": "R.string.vexstream_music_open_collection",
-          "intent": "localEffect()",
-          "pathwayRef": "pathway.vexstream-music.local-effect"
+          "intent": "localEffect()"
         },
         {
           "ref": "element.vexstream-music.body.collection.back",
@@ -242,8 +241,7 @@
           "symbol": "VexStreamMusicScreen.CollectionBack",
           "declared": "buttonRef(id = \"body.collection.back\")",
           "labelRes": "R.string.back",
-          "intent": "localEffect()",
-          "pathwayRef": "pathway.vexstream-music.local-effect"
+          "intent": "localEffect()"
         },
         {
           "ref": "element.vexstream-music.body.collection.download-missing",
@@ -253,8 +251,7 @@
           "symbol": "VexStreamMusicScreen.DownloadMissing",
           "declared": "buttonRef(id = \"body.collection.download-missing\")",
           "labelRes": "R.string.vexstream_music_download_missing",
-          "intent": "localEffect()",
-          "pathwayRef": "pathway.vexstream-music.local-effect"
+          "intent": "localEffect()"
         },
         {
           "ref": "element.vexstream-music.body.track-actions",
@@ -271,8 +268,7 @@
           "symbol": "VexStreamMusicScreen.TrackMenu",
           "declared": "buttonRef(id = \"body.track-actions.menu\")",
           "labelRes": "R.string.vexstream_music_track_menu",
-          "intent": "localEffect()",
-          "pathwayRef": "pathway.vexstream-music.local-effect"
+          "intent": "localEffect()"
         },
         {
           "ref": "element.vexstream-music.body.track-actions.play",
@@ -282,8 +278,7 @@
           "symbol": "VexStreamMusicScreen.PlayTrack",
           "declared": "buttonRef(id = \"body.track-actions.play\")",
           "labelRes": "R.string.vexstream_music_play",
-          "intent": "localEffect()",
-          "pathwayRef": "pathway.vexstream-music.local-effect"
+          "intent": "localEffect()"
         },
         {
           "ref": "element.vexstream-music.body.track-actions.play-next",
@@ -293,8 +288,7 @@
           "symbol": "VexStreamMusicScreen.PlayTrackNext",
           "declared": "buttonRef(id = \"body.track-actions.play-next\")",
           "labelRes": "R.string.vexstream_music_play_next",
-          "intent": "localEffect()",
-          "pathwayRef": "pathway.vexstream-music.local-effect"
+          "intent": "localEffect()"
         },
         {
           "ref": "element.vexstream-music.body.track-actions.add-queue",
@@ -304,8 +298,7 @@
           "symbol": "VexStreamMusicScreen.AddTrackToQueue",
           "declared": "buttonRef(id = \"body.track-actions.add-queue\")",
           "labelRes": "R.string.vexstream_music_add_queue",
-          "intent": "localEffect()",
-          "pathwayRef": "pathway.vexstream-music.local-effect"
+          "intent": "localEffect()"
         },
         {
           "ref": "element.vexstream-music.body.track-actions.download",
@@ -315,8 +308,7 @@
           "symbol": "VexStreamMusicScreen.DownloadTrack",
           "declared": "buttonRef(id = \"body.track-actions.download\")",
           "labelRes": "R.string.vexstream_music_download",
-          "intent": "localEffect()",
-          "pathwayRef": "pathway.vexstream-music.local-effect"
+          "intent": "localEffect()"
         },
         {
           "ref": "element.vexstream-music.body.track-actions.remove-download",
@@ -326,8 +318,7 @@
           "symbol": "VexStreamMusicScreen.RemoveTrackDownload",
           "declared": "buttonRef(id = \"body.track-actions.remove-download\")",
           "labelRes": "R.string.vexstream_music_remove_download",
-          "intent": "localEffect()",
-          "pathwayRef": "pathway.vexstream-music.local-effect"
+          "intent": "localEffect()"
         },
         {
           "ref": "element.vexstream-music.body.track-actions.visit-artist",
@@ -337,8 +328,7 @@
           "symbol": "VexStreamMusicScreen.VisitTrackArtist",
           "declared": "buttonRef(id = \"body.track-actions.visit-artist\")",
           "labelRes": "R.string.vexstream_music_visit_artist",
-          "intent": "localEffect()",
-          "pathwayRef": "pathway.vexstream-music.local-effect"
+          "intent": "localEffect()"
         },
         {
           "ref": "element.vexstream-music.body.library-actions",
@@ -355,8 +345,7 @@
           "symbol": "VexStreamMusicScreen.PlayAll",
           "declared": "buttonRef(id = \"body.library-actions.play-all\")",
           "labelRes": "R.string.vexstream_music_play_all",
-          "intent": "localEffect()",
-          "pathwayRef": "pathway.vexstream-music.local-effect"
+          "intent": "localEffect()"
         },
         {
           "ref": "element.vexstream-music.body.library-actions.shuffle-all",
@@ -366,8 +355,7 @@
           "symbol": "VexStreamMusicScreen.ShuffleAll",
           "declared": "buttonRef(id = \"body.library-actions.shuffle-all\")",
           "labelRes": "R.string.vexstream_music_shuffle_all",
-          "intent": "localEffect()",
-          "pathwayRef": "pathway.vexstream-music.local-effect"
+          "intent": "localEffect()"
         },
         {
           "ref": "element.vexstream-music.body.player.queue.show",
@@ -378,7 +366,7 @@
           "declared": "buttonRef(id = \"body.player.queue.show\")",
           "labelRes": "R.string.vexstream_music_queue",
           "intent": "swapTo(container = FullPlayerContent, child = QueuePanel).then(open(FullPlayerSheet))",
-          "pathwayRef": "pathway.vexstream-music.swap-to-then-open"
+          "pathwayRef": "pathway.vexstream-music.swap-to-child-queue-panel-container-full-player-content-then-open-full-player-sheet"
         },
         {
           "ref": "element.vexstream-music.body.player",
@@ -397,7 +385,7 @@
           "declared": "buttonRef(id = \"body.player.open\")",
           "labelRes": "R.string.vexstream_music_now_playing",
           "intent": "swapTo(container = FullPlayerContent, child = FullPlayerNowPlayingPanel).then(open(FullPlayerSheet))",
-          "pathwayRef": "pathway.vexstream-music.swap-to-then-open"
+          "pathwayRef": "pathway.vexstream-music.swap-to-child-full-player-now-playing-panel-container-full-player-content-then-open-full-player-sheet"
         },
         {
           "ref": "element.vexstream-music.body.player.seek",
@@ -407,8 +395,7 @@
           "symbol": "VexStreamMusicScreen.SeekPlayback",
           "declared": "buttonRef(id = \"body.player.seek\")",
           "labelRes": "R.string.vexstream_music_seek",
-          "intent": "localEffect()",
-          "pathwayRef": "pathway.vexstream-music.local-effect"
+          "intent": "localEffect()"
         },
         {
           "ref": "element.vexstream-music.body.player.controls",
@@ -425,8 +412,7 @@
           "symbol": "VexStreamMusicScreen.PreviousTrack",
           "declared": "buttonRef(id = \"body.player.previous\")",
           "labelRes": "R.string.vexstream_music_previous",
-          "intent": "localEffect()",
-          "pathwayRef": "pathway.vexstream-music.local-effect"
+          "intent": "localEffect()"
         },
         {
           "ref": "element.vexstream-music.body.player.play-pause",
@@ -447,8 +433,7 @@
           "symbol": "VexStreamMusicScreen.NextTrack",
           "declared": "buttonRef(id = \"body.player.next\")",
           "labelRes": "R.string.vexstream_music_next",
-          "intent": "localEffect()",
-          "pathwayRef": "pathway.vexstream-music.local-effect"
+          "intent": "localEffect()"
         },
         {
           "ref": "element.vexstream-music.body.player.shuffle",
@@ -458,8 +443,7 @@
           "symbol": "VexStreamMusicScreen.ShuffleQueue",
           "declared": "buttonRef(id = \"body.player.shuffle\")",
           "labelRes": "R.string.vexstream_music_shuffle",
-          "intent": "localEffect()",
-          "pathwayRef": "pathway.vexstream-music.local-effect"
+          "intent": "localEffect()"
         },
         {
           "ref": "element.vexstream-music.body.player.sheet",
@@ -502,8 +486,7 @@
           "symbol": "VexStreamMusicScreen.QueueShuffle",
           "declared": "buttonRef(id = \"body.queue.sheet.shuffle\")",
           "labelRes": "R.string.vexstream_music_shuffle",
-          "intent": "localEffect()",
-          "pathwayRef": "pathway.vexstream-music.local-effect"
+          "intent": "localEffect()"
         },
         {
           "ref": "element.vexstream-music.body.queue.sheet.repeat",
@@ -513,8 +496,7 @@
           "symbol": "VexStreamMusicScreen.ToggleRepeat",
           "declared": "buttonRef(id = \"body.queue.sheet.repeat\")",
           "labelRes": "R.string.vexstream_music_repeat",
-          "intent": "localEffect()",
-          "pathwayRef": "pathway.vexstream-music.local-effect"
+          "intent": "localEffect()"
         },
         {
           "ref": "element.vexstream-music.body.queue.sheet.clear",
@@ -524,8 +506,7 @@
           "symbol": "VexStreamMusicScreen.ClearQueue",
           "declared": "buttonRef(id = \"body.queue.sheet.clear\")",
           "labelRes": "R.string.vexstream_music_clear_queue",
-          "intent": "localEffect()",
-          "pathwayRef": "pathway.vexstream-music.local-effect"
+          "intent": "localEffect()"
         },
         {
           "ref": "element.vexstream-music.body.queue.sheet.play",
@@ -535,8 +516,7 @@
           "symbol": "VexStreamMusicScreen.QueuePlay",
           "declared": "buttonRef(id = \"body.queue.sheet.play\")",
           "labelRes": "R.string.vexstream_music_queue_play",
-          "intent": "localEffect()",
-          "pathwayRef": "pathway.vexstream-music.local-effect"
+          "intent": "localEffect()"
         },
         {
           "ref": "element.vexstream-music.body.queue.sheet.reorder",
@@ -546,8 +526,7 @@
           "symbol": "VexStreamMusicScreen.QueueReorder",
           "declared": "buttonRef(id = \"body.queue.sheet.reorder\")",
           "labelRes": "R.string.vexstream_music_queue_reorder",
-          "intent": "localEffect()",
-          "pathwayRef": "pathway.vexstream-music.local-effect"
+          "intent": "localEffect()"
         },
         {
           "ref": "element.vexstream-music.body.queue.sheet.now-playing",
@@ -558,7 +537,7 @@
           "declared": "buttonRef(id = \"body.queue.sheet.now-playing\")",
           "labelRes": "R.string.vexstream_music_now_playing",
           "intent": "swapTo(container = FullPlayerContent, child = FullPlayerNowPlayingPanel)",
-          "pathwayRef": "pathway.vexstream-music.swap-to"
+          "pathwayRef": "pathway.vexstream-music.swap-to-child-full-player-now-playing-panel-container-full-player-content"
         },
         {
           "ref": "element.vexstream-music.body.queue.sheet.close",
@@ -661,8 +640,7 @@
           "symbol": "VexStreamMusicScreen.SortLibraryByTitle",
           "declared": "buttonRef(id = \"body.library.organization.sort.title\")",
           "labelRes": "R.string.vexstream_music_sort_title",
-          "intent": "localEffect()",
-          "pathwayRef": "pathway.vexstream-music.local-effect"
+          "intent": "localEffect()"
         },
         {
           "ref": "element.vexstream-music.body.library.organization.sort.artist",
@@ -672,8 +650,7 @@
           "symbol": "VexStreamMusicScreen.SortLibraryByArtist",
           "declared": "buttonRef(id = \"body.library.organization.sort.artist\")",
           "labelRes": "R.string.vexstream_music_sort_artist",
-          "intent": "localEffect()",
-          "pathwayRef": "pathway.vexstream-music.local-effect"
+          "intent": "localEffect()"
         },
         {
           "ref": "element.vexstream-music.body.library.organization.sort.album",
@@ -683,8 +660,7 @@
           "symbol": "VexStreamMusicScreen.SortLibraryByAlbum",
           "declared": "buttonRef(id = \"body.library.organization.sort.album\")",
           "labelRes": "R.string.vexstream_music_sort_album",
-          "intent": "localEffect()",
-          "pathwayRef": "pathway.vexstream-music.local-effect"
+          "intent": "localEffect()"
         },
         {
           "ref": "element.vexstream-music.body.library.organization.sort.year",
@@ -694,8 +670,7 @@
           "symbol": "VexStreamMusicScreen.SortLibraryByYear",
           "declared": "buttonRef(id = \"body.library.organization.sort.year\")",
           "labelRes": "R.string.vexstream_music_sort_year",
-          "intent": "localEffect()",
-          "pathwayRef": "pathway.vexstream-music.local-effect"
+          "intent": "localEffect()"
         },
         {
           "ref": "element.vexstream-music.body.library.organization.sort.duration",
@@ -705,8 +680,7 @@
           "symbol": "VexStreamMusicScreen.SortLibraryByDuration",
           "declared": "buttonRef(id = \"body.library.organization.sort.duration\")",
           "labelRes": "R.string.vexstream_music_sort_duration",
-          "intent": "localEffect()",
-          "pathwayRef": "pathway.vexstream-music.local-effect"
+          "intent": "localEffect()"
         },
         {
           "ref": "element.vexstream-music.body.library.organization.duration.any",
@@ -716,8 +690,7 @@
           "symbol": "VexStreamMusicScreen.DurationFilterAny",
           "declared": "buttonRef(id = \"body.library.organization.duration.any\")",
           "labelRes": "R.string.vexstream_music_filter_any_duration",
-          "intent": "localEffect()",
-          "pathwayRef": "pathway.vexstream-music.local-effect"
+          "intent": "localEffect()"
         },
         {
           "ref": "element.vexstream-music.body.library.organization.duration.less-than",
@@ -727,8 +700,7 @@
           "symbol": "VexStreamMusicScreen.DurationFilterLessThan",
           "declared": "buttonRef(id = \"body.library.organization.duration.less-than\")",
           "labelRes": "R.string.vexstream_music_filter_less_than",
-          "intent": "localEffect()",
-          "pathwayRef": "pathway.vexstream-music.local-effect"
+          "intent": "localEffect()"
         },
         {
           "ref": "element.vexstream-music.body.library.organization.duration.greater-than",
@@ -738,8 +710,7 @@
           "symbol": "VexStreamMusicScreen.DurationFilterGreaterThan",
           "declared": "buttonRef(id = \"body.library.organization.duration.greater-than\")",
           "labelRes": "R.string.vexstream_music_filter_greater_than",
-          "intent": "localEffect()",
-          "pathwayRef": "pathway.vexstream-music.local-effect"
+          "intent": "localEffect()"
         },
         {
           "ref": "element.vexstream-music.body.library.organization.duration-minutes",
@@ -758,8 +729,7 @@
           "symbol": "VexStreamMusicScreen.ToggleLibraryFilter",
           "declared": "buttonRef(id = \"body.library.organization.filter.toggle\")",
           "labelRes": "R.string.vexstream_music_filter_toggle",
-          "intent": "localEffect()",
-          "pathwayRef": "pathway.vexstream-music.local-effect"
+          "intent": "localEffect()"
         },
         {
           "ref": "element.vexstream-music.body.library.organization.clear-filters",
@@ -769,8 +739,7 @@
           "symbol": "VexStreamMusicScreen.ClearLibraryFilters",
           "declared": "buttonRef(id = \"body.library.organization.clear-filters\")",
           "labelRes": "R.string.vexstream_music_filter_clear",
-          "intent": "localEffect()",
-          "pathwayRef": "pathway.vexstream-music.local-effect"
+          "intent": "localEffect()"
         },
         {
           "ref": "element.vexstream-music.body.library.organization.close",
@@ -826,8 +795,7 @@
           "symbol": "VexStreamMusicScreen.DownloadAllMissingSongs",
           "declared": "buttonRef(id = \"body.connection.library.download-all-missing\")",
           "labelRes": "R.string.vexstream_music_download_all_missing",
-          "intent": "localEffect()",
-          "pathwayRef": "pathway.vexstream-music.local-effect"
+          "intent": "localEffect()"
         },
         {
           "ref": "element.vexstream-music.body.connection.library.remove-all-downloaded",
@@ -837,8 +805,7 @@
           "symbol": "VexStreamMusicScreen.RemoveAllDownloadedSongs",
           "declared": "buttonRef(id = \"body.connection.library.remove-all-downloaded\")",
           "labelRes": "R.string.vexstream_music_remove_all_downloaded",
-          "intent": "localEffect()",
-          "pathwayRef": "pathway.vexstream-music.local-effect"
+          "intent": "localEffect()"
         },
         {
           "ref": "element.vexstream-music.body.connection.forget.request",
@@ -1024,14 +991,14 @@
       ]
     },
     {
-      "pathwayRef": "pathway.vexstream-music.swap-to",
+      "pathwayRef": "pathway.vexstream-music.swap-to-child-songs-panel-container-library-content",
       "label": "Swap to",
       "disposition": "TYPED_PRESENTATION",
       "summary": "A typed presentation relationship already says everything; no Family, Act or Effect is earned.",
       "returns": null,
       "nodes": [
         {
-          "ref": "vexstream-music.swap-to.intent",
+          "ref": "vexstream-music.swap-to-child-songs-panel-container-library-content.intent",
           "face": "BEHAVIOR",
           "role": "INTENT",
           "label": "swapTo(container = LibraryContent, child = SongsPanel)",
@@ -1040,7 +1007,7 @@
           "source": "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
         },
         {
-          "ref": "vexstream-music.swap-to.step-1",
+          "ref": "vexstream-music.swap-to-child-songs-panel-container-library-content.step-1",
           "face": "BEHAVIOR",
           "role": "NAVIGATION",
           "label": "SwapTo(container = LibraryContent, child = SongsPanel)",
@@ -1051,33 +1018,33 @@
       ],
       "edges": [
         {
-          "from": "vexstream-music.swap-to.intent",
-          "to": "vexstream-music.swap-to.step-1",
+          "from": "vexstream-music.swap-to-child-songs-panel-container-library-content.intent",
+          "to": "vexstream-music.swap-to-child-songs-panel-container-library-content.step-1",
           "label": "swapTo"
         }
       ]
     },
     {
-      "pathwayRef": "pathway.vexstream-music.local-effect",
-      "label": "Local effect",
+      "pathwayRef": "pathway.vexstream-music.swap-to-child-albums-panel-container-library-content",
+      "label": "Swap to",
       "disposition": "TYPED_PRESENTATION",
       "summary": "A typed presentation relationship already says everything; no Family, Act or Effect is earned.",
       "returns": null,
       "nodes": [
         {
-          "ref": "vexstream-music.local-effect.intent",
+          "ref": "vexstream-music.swap-to-child-albums-panel-container-library-content.intent",
           "face": "BEHAVIOR",
           "role": "INTENT",
-          "label": "localEffect()",
+          "label": "swapTo(container = LibraryContent, child = AlbumsPanel)",
           "symbol": "ElementIntent",
           "summary": "Declared on the element.",
           "source": "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
         },
         {
-          "ref": "vexstream-music.local-effect.step-1",
+          "ref": "vexstream-music.swap-to-child-albums-panel-container-library-content.step-1",
           "face": "BEHAVIOR",
           "role": "NAVIGATION",
-          "label": "LocalEffect()",
+          "label": "SwapTo(container = LibraryContent, child = AlbumsPanel)",
           "symbol": "runtime.presentation",
           "summary": "Runtime presentation state changes; no Behavior is earned.",
           "source": "app:runtime/VexRuntime.kt"
@@ -1085,21 +1052,123 @@
       ],
       "edges": [
         {
-          "from": "vexstream-music.local-effect.intent",
-          "to": "vexstream-music.local-effect.step-1",
-          "label": "localEffect"
+          "from": "vexstream-music.swap-to-child-albums-panel-container-library-content.intent",
+          "to": "vexstream-music.swap-to-child-albums-panel-container-library-content.step-1",
+          "label": "swapTo"
         }
       ]
     },
     {
-      "pathwayRef": "pathway.vexstream-music.swap-to-then-open",
+      "pathwayRef": "pathway.vexstream-music.swap-to-child-artists-panel-container-library-content",
       "label": "Swap to",
       "disposition": "TYPED_PRESENTATION",
       "summary": "A typed presentation relationship already says everything; no Family, Act or Effect is earned.",
       "returns": null,
       "nodes": [
         {
-          "ref": "vexstream-music.swap-to-then-open.intent",
+          "ref": "vexstream-music.swap-to-child-artists-panel-container-library-content.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "swapTo(container = LibraryContent, child = ArtistsPanel)",
+          "symbol": "ElementIntent",
+          "summary": "Declared on the element.",
+          "source": "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
+        },
+        {
+          "ref": "vexstream-music.swap-to-child-artists-panel-container-library-content.step-1",
+          "face": "BEHAVIOR",
+          "role": "NAVIGATION",
+          "label": "SwapTo(container = LibraryContent, child = ArtistsPanel)",
+          "symbol": "runtime.presentation",
+          "summary": "Runtime presentation state changes; no Behavior is earned.",
+          "source": "app:runtime/VexRuntime.kt"
+        }
+      ],
+      "edges": [
+        {
+          "from": "vexstream-music.swap-to-child-artists-panel-container-library-content.intent",
+          "to": "vexstream-music.swap-to-child-artists-panel-container-library-content.step-1",
+          "label": "swapTo"
+        }
+      ]
+    },
+    {
+      "pathwayRef": "pathway.vexstream-music.swap-to-child-playlists-panel-container-library-content",
+      "label": "Swap to",
+      "disposition": "TYPED_PRESENTATION",
+      "summary": "A typed presentation relationship already says everything; no Family, Act or Effect is earned.",
+      "returns": null,
+      "nodes": [
+        {
+          "ref": "vexstream-music.swap-to-child-playlists-panel-container-library-content.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "swapTo(container = LibraryContent, child = PlaylistsPanel)",
+          "symbol": "ElementIntent",
+          "summary": "Declared on the element.",
+          "source": "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
+        },
+        {
+          "ref": "vexstream-music.swap-to-child-playlists-panel-container-library-content.step-1",
+          "face": "BEHAVIOR",
+          "role": "NAVIGATION",
+          "label": "SwapTo(container = LibraryContent, child = PlaylistsPanel)",
+          "symbol": "runtime.presentation",
+          "summary": "Runtime presentation state changes; no Behavior is earned.",
+          "source": "app:runtime/VexRuntime.kt"
+        }
+      ],
+      "edges": [
+        {
+          "from": "vexstream-music.swap-to-child-playlists-panel-container-library-content.intent",
+          "to": "vexstream-music.swap-to-child-playlists-panel-container-library-content.step-1",
+          "label": "swapTo"
+        }
+      ]
+    },
+    {
+      "pathwayRef": "pathway.vexstream-music.swap-to-child-downloads-panel-container-library-content",
+      "label": "Swap to",
+      "disposition": "TYPED_PRESENTATION",
+      "summary": "A typed presentation relationship already says everything; no Family, Act or Effect is earned.",
+      "returns": null,
+      "nodes": [
+        {
+          "ref": "vexstream-music.swap-to-child-downloads-panel-container-library-content.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "swapTo(container = LibraryContent, child = DownloadsPanel)",
+          "symbol": "ElementIntent",
+          "summary": "Declared on the element.",
+          "source": "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
+        },
+        {
+          "ref": "vexstream-music.swap-to-child-downloads-panel-container-library-content.step-1",
+          "face": "BEHAVIOR",
+          "role": "NAVIGATION",
+          "label": "SwapTo(container = LibraryContent, child = DownloadsPanel)",
+          "symbol": "runtime.presentation",
+          "summary": "Runtime presentation state changes; no Behavior is earned.",
+          "source": "app:runtime/VexRuntime.kt"
+        }
+      ],
+      "edges": [
+        {
+          "from": "vexstream-music.swap-to-child-downloads-panel-container-library-content.intent",
+          "to": "vexstream-music.swap-to-child-downloads-panel-container-library-content.step-1",
+          "label": "swapTo"
+        }
+      ]
+    },
+    {
+      "pathwayRef": "pathway.vexstream-music.swap-to-child-queue-panel-container-full-player-content-then-open-full-player-sheet",
+      "label": "Swap to",
+      "disposition": "TYPED_PRESENTATION",
+      "summary": "A typed presentation relationship already says everything; no Family, Act or Effect is earned.",
+      "returns": null,
+      "nodes": [
+        {
+          "ref": "vexstream-music.swap-to-child-queue-panel-container-full-player-content-then-open-full-player-sheet.intent",
           "face": "BEHAVIOR",
           "role": "INTENT",
           "label": "swapTo(container = FullPlayerContent, child = QueuePanel) then open(FullPlayerSheet)",
@@ -1108,7 +1177,7 @@
           "source": "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
         },
         {
-          "ref": "vexstream-music.swap-to-then-open.step-1",
+          "ref": "vexstream-music.swap-to-child-queue-panel-container-full-player-content-then-open-full-player-sheet.step-1",
           "face": "BEHAVIOR",
           "role": "NAVIGATION",
           "label": "SwapTo(container = FullPlayerContent, child = QueuePanel)",
@@ -1117,7 +1186,7 @@
           "source": "app:runtime/VexRuntime.kt"
         },
         {
-          "ref": "vexstream-music.swap-to-then-open.step-2",
+          "ref": "vexstream-music.swap-to-child-queue-panel-container-full-player-content-then-open-full-player-sheet.step-2",
           "face": "BEHAVIOR",
           "role": "NAVIGATION",
           "label": "Open(FullPlayerSheet)",
@@ -1128,14 +1197,96 @@
       ],
       "edges": [
         {
-          "from": "vexstream-music.swap-to-then-open.intent",
-          "to": "vexstream-music.swap-to-then-open.step-1",
+          "from": "vexstream-music.swap-to-child-queue-panel-container-full-player-content-then-open-full-player-sheet.intent",
+          "to": "vexstream-music.swap-to-child-queue-panel-container-full-player-content-then-open-full-player-sheet.step-1",
           "label": "swapTo"
         },
         {
-          "from": "vexstream-music.swap-to-then-open.step-1",
-          "to": "vexstream-music.swap-to-then-open.step-2",
+          "from": "vexstream-music.swap-to-child-queue-panel-container-full-player-content-then-open-full-player-sheet.step-1",
+          "to": "vexstream-music.swap-to-child-queue-panel-container-full-player-content-then-open-full-player-sheet.step-2",
           "label": "then"
+        }
+      ]
+    },
+    {
+      "pathwayRef": "pathway.vexstream-music.swap-to-child-full-player-now-playing-panel-container-full-player-content-then-open-full-player-sheet",
+      "label": "Swap to",
+      "disposition": "TYPED_PRESENTATION",
+      "summary": "A typed presentation relationship already says everything; no Family, Act or Effect is earned.",
+      "returns": null,
+      "nodes": [
+        {
+          "ref": "vexstream-music.swap-to-child-full-player-now-playing-panel-container-full-player-content-then-open-full-player-sheet.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "swapTo(container = FullPlayerContent, child = FullPlayerNowPlayingPanel) then open(FullPlayerSheet)",
+          "symbol": "ElementIntent",
+          "summary": "Declared on the element.",
+          "source": "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
+        },
+        {
+          "ref": "vexstream-music.swap-to-child-full-player-now-playing-panel-container-full-player-content-then-open-full-player-sheet.step-1",
+          "face": "BEHAVIOR",
+          "role": "NAVIGATION",
+          "label": "SwapTo(container = FullPlayerContent, child = FullPlayerNowPlayingPanel)",
+          "symbol": "runtime.presentation",
+          "summary": "Runtime presentation state changes; no Behavior is earned.",
+          "source": "app:runtime/VexRuntime.kt"
+        },
+        {
+          "ref": "vexstream-music.swap-to-child-full-player-now-playing-panel-container-full-player-content-then-open-full-player-sheet.step-2",
+          "face": "BEHAVIOR",
+          "role": "NAVIGATION",
+          "label": "Open(FullPlayerSheet)",
+          "symbol": "runtime.presentation",
+          "summary": "Runtime presentation state changes; no Behavior is earned.",
+          "source": "app:runtime/VexRuntime.kt"
+        }
+      ],
+      "edges": [
+        {
+          "from": "vexstream-music.swap-to-child-full-player-now-playing-panel-container-full-player-content-then-open-full-player-sheet.intent",
+          "to": "vexstream-music.swap-to-child-full-player-now-playing-panel-container-full-player-content-then-open-full-player-sheet.step-1",
+          "label": "swapTo"
+        },
+        {
+          "from": "vexstream-music.swap-to-child-full-player-now-playing-panel-container-full-player-content-then-open-full-player-sheet.step-1",
+          "to": "vexstream-music.swap-to-child-full-player-now-playing-panel-container-full-player-content-then-open-full-player-sheet.step-2",
+          "label": "then"
+        }
+      ]
+    },
+    {
+      "pathwayRef": "pathway.vexstream-music.swap-to-child-full-player-now-playing-panel-container-full-player-content",
+      "label": "Swap to",
+      "disposition": "TYPED_PRESENTATION",
+      "summary": "A typed presentation relationship already says everything; no Family, Act or Effect is earned.",
+      "returns": null,
+      "nodes": [
+        {
+          "ref": "vexstream-music.swap-to-child-full-player-now-playing-panel-container-full-player-content.intent",
+          "face": "BEHAVIOR",
+          "role": "INTENT",
+          "label": "swapTo(container = FullPlayerContent, child = FullPlayerNowPlayingPanel)",
+          "symbol": "ElementIntent",
+          "summary": "Declared on the element.",
+          "source": "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
+        },
+        {
+          "ref": "vexstream-music.swap-to-child-full-player-now-playing-panel-container-full-player-content.step-1",
+          "face": "BEHAVIOR",
+          "role": "NAVIGATION",
+          "label": "SwapTo(container = FullPlayerContent, child = FullPlayerNowPlayingPanel)",
+          "symbol": "runtime.presentation",
+          "summary": "Runtime presentation state changes; no Behavior is earned.",
+          "source": "app:runtime/VexRuntime.kt"
+        }
+      ],
+      "edges": [
+        {
+          "from": "vexstream-music.swap-to-child-full-player-now-playing-panel-container-full-player-content.intent",
+          "to": "vexstream-music.swap-to-child-full-player-now-playing-panel-container-full-player-content.step-1",
+          "label": "swapTo"
         }
       ]
     },
@@ -1632,7 +1783,7 @@
         {
           "ref": "vexstream.playback.play-pause.connection",
           "face": "DEPTH",
-          "role": "DISPATCH",
+          "role": "REALIZATION",
           "label": "VexStreamPlaybackConnection / Flow → Media3VexStreamPlaybackConnection",
           "symbol": "Media3VexStreamPlaybackConnection",
           "summary": "Typed VexPort boundary carrying the same Playback Family / State / Control / Act coordinates into the Media3 realization and reconciliation owner.",
@@ -1759,7 +1910,7 @@
       "ref": "note.vexstream.playback.reference",
       "subjectRef": "pathway.vexstream.playback.play-pause",
       "text": "Stable reference case, not a second source of truth",
-      "detail": "The screen/element tree and existing direct-registration pathways are copied from Claude's generated lens at 305a09e. The Playback pathway is hand-authored from the accepted VexStream Playback source slice plus exact current source so VexBoard has a stable visual oracle before the adapter is asked to reproduce it."
+      "detail": "The screen/element tree and source-earned non-Playback pathways are copied from the generated lens at 305a09e, including truthful held localEffect controls and typed operand-specific pathways. The Playback pathway remains hand-authored from the accepted VexStream Playback source slice so VexBoard retains a stable visual oracle without becoming source authority."
     },
     {
       "ref": "note.vexstream.playback.pending",

@@ -143,7 +143,7 @@ export function comparePathwayRevision(basePathway, nextPathway) {
   const baseNodes = basePathway?.nodes ?? [];
   const nextNodes = nextPathway?.nodes ?? [];
   const nodes = entityDiff(baseNodes, nextNodes, (node) => node.ref);
-  const edgeRef = (edge) => `${edge.from}->${edge.to}`;
+  const edgeRef = (edge) => `${edge.from}->${edge.to}|${edge.kind ?? 'FLOW'}`;
   const edges = entityDiff(basePathway?.edges ?? [], nextPathway?.edges ?? [], edgeRef);
   const baseByRef = new Map(baseNodes.map((node) => [node.ref, node]));
   const nextByRef = new Map(nextNodes.map((node) => [node.ref, node]));

@@ -157,8 +157,8 @@ test('the screen brief carries identities, reach, every pathway, notes and what 
   assert.match(brief, /reached from: Debug Menu `element\.debug-menu` owned by AppShell, shown on Home, Events, Settings/);
   assert.match(brief, /controls traced: 14 of 14/);
   assert.match(brief, /chrome here: AppShell \(always-visible controls only\)/);
-  assert.match(brief, /### Choose Light \/ Dark · SCAE Family/);
-  assert.match(brief, /\[STO Store \/ repository\] ThemeModeStore\.save\(mode\)/);
+  assert.match(brief, /### Choose Light \/ Dark · SCAE semantic owner/);
+  assert.match(brief, /\[STO Store \/ provider · outside truth\] ThemeModeStore\.save\(mode\)/);
   assert.match(brief, /theme\.observe — interpreted \(RETURN\) → theme\.state/);
   assert.match(brief, /Doorway only/);
   assert.match(brief, /screens not projected in this lens: Gallery/);
@@ -178,7 +178,7 @@ test('briefs for held and chrome-only screens say what is missing instead of inv
   input.chrome = [];
   input.annotations = input.annotations.filter((note) => !note.subjectRef.startsWith('element.shell'));
   const gap = screenBrief(normalizeScreenLens(input), 'screen.debug-menu');
-  assert.match(gap, /Mystery `element\.debug-menu\.body\.mystery` has no pathway yet/);
+  assert.match(gap, /Mystery `element\.debug-menu\.body\.mystery` has no pathway yet; its deeper relationship is not currently projected/);
   assert.match(gap, /Mystery `element\.debug-menu\.body\.mystery` — no pathway projected/);
   assert.match(gap, /chrome here: none/);
   assert.match(gap, /reached from: no projected route/);
@@ -202,7 +202,7 @@ test('the control brief explains one control end to end', () => {
   assert.match(dark, /container path: body › Dark mode/);
   assert.match(dark, /action key: `action\.theme\.dark-mode\.toggle`/);
   assert.match(dark, /touches underneath: .*ThemeModeStore\.save\(mode\)/);
-  assert.match(dark, /Disposition rule: A Family owns meaning/);
+  assert.match(dark, /Disposition rule: Source earns a semantic owner/);
   assert.match(dark, /## Role key/);
   assert.match(dark, /open in the lens/);
   const option = controlBrief(lens, 'element.debug-menu', { screenRef: 'screen.settings' });
@@ -210,14 +210,14 @@ test('the control brief explains one control end to end', () => {
   assert.match(option, /appears on: Home, Events, Settings/);
   assert.match(option, /travels to: Debug Menu/);
   assert.match(option, /shares its pathway with: Profile, Gallery/);
-  assert.match(option, /Depth face .*\n- nothing underneath/);
+  assert.match(option, /Depth face .*\n- no deeper realization or outside-truth relationship is projected/);
   assert.match(controlBrief(lens, 'element.shell.back'), /travels to: the runtime back target/);
   const card = controlBrief(lens, 'element.debug-menu.body.log-history');
-  assert.match(card, /This card carries no behavior in the lens\./);
+  assert.match(card, /has no projected pathway yet\. An interaction may exist, but its deeper relationship is not currently projected\./);
   assert.match(controlBrief(lens, 'element.debug-menu.body.events-simulator.actions.start'), /calls: `syntheticEvents\.start\(\)`/);
   assert.match(controlBrief(lens, 'element.debug-menu.log-history.sheet'), /visible when: runtime\.presentation\.isOpen\(LogSheet\)/);
   assert.throws(() => controlBrief(lens, 'element.nope'), /unknown element/);
-  assert.equal(DISPOSITION_LABELS.SCAE_FAMILY, 'SCAE Family');
+  assert.equal(DISPOSITION_LABELS.SCAE_FAMILY, 'SCAE semantic owner');
 });
 
 test('the control brief handles chrome owners without a source path and controls on no screen', () => {

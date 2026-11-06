@@ -26,7 +26,7 @@ import {
 
 export const SEARCH_KINDS = Object.freeze(['ELEMENT', 'STEP', 'SCREEN', 'PATHWAY', 'NOTE']);
 export const DISPOSITION_LABELS = Object.freeze({
-  SCAE_FAMILY: 'SCAE Family',
+  SCAE_FAMILY: 'SCAE semantic owner',
   TYPED_PRESENTATION: 'Typed presentation',
   TYPED_NAVIGATION: 'Typed navigation',
   DIRECT_REGISTRATION: 'Direct registration',
@@ -239,7 +239,7 @@ function pathwaySection(lens, pathway) {
   for (const face of ['BEHAVIOR', 'DEPTH']) {
     const graph = faceGraph(pathway, face);
     lines.push(`${LENS_FACES[face].title} face (${LENS_FACES[face].question}):`);
-    if (!graph.nodes.length) lines.push('- nothing underneath; this pathway touches no store, repository or execution custody');
+    if (!graph.nodes.length) lines.push('- no deeper realization or outside-truth relationship is projected for this pathway');
     for (const node of graph.nodes) {
       const role = LENS_ROLES[node.role];
       lines.push(`- [${role.chip} ${role.label}] ${node.label} ${code(node.ref)}${node.symbol ? ` — ${code(node.symbol)}` : ''}${node.source ? ` — ${sourcePath(lens, node.source)}` : ''}`);
@@ -283,7 +283,7 @@ function heldLines(lens, screenRef) {
   const coverage = screenCoverage(lens, screenRef);
   const lines = [];
   if (!coverage.contentProjected) lines.push(`- ${screenFor(lens, screenRef).label} content is ${coverage.mapped === 'CHROME_ONLY' ? 'held; only shared chrome is projected' : 'not projected yet'}`);
-  for (const ref of coverage.untraced) lines.push(`- ${elementFor(lens, ref).label} ${code(ref)} has no pathway yet`);
+  for (const ref of coverage.untraced) lines.push(`- ${elementFor(lens, ref).label} ${code(ref)} has no pathway yet; its deeper relationship is not currently projected`);
   const unprojected = lens.screens.filter((screen) => screen.mapped === 'HELD').map((screen) => screen.label);
   if (unprojected.length) lines.push(`- screens not projected in this lens: ${unprojected.join(', ')}`);
   for (const note of lens.sourceSnapshot.notes) lines.push(`- ${note}`);
@@ -360,7 +360,7 @@ export function controlBrief(lens, elementRef, { screenRef = null, lensUrl = nul
     lines.push('## Pathway', '', ...pathwaySection(lens, pathway));
     lines.push(`Disposition rule: ${PATHWAY_DISPOSITIONS[pathway.disposition]}`, '');
   } else {
-    lines.push(`This ${element.kind.toLowerCase().replace('_', ' ')} carries no behavior in the lens.`, '');
+    lines.push(`This ${element.kind.toLowerCase().replace('_', ' ')} has no projected pathway yet. An interaction may exist, but its deeper relationship is not currently projected.`, '');
   }
   const notes = notesFor(lens, [element.ref]);
   if (notes.length) lines.push('## Notes', '', ...notes, '');

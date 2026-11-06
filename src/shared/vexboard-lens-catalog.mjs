@@ -1,4 +1,4 @@
-// VexBoard lens catalog: which projects VexBoard shows, and where each one's builds point.
+// VexBoard lens catalog: which subjects VexBoard can project, and where each one's builds point.
 //
 // One file owns the pointers (projects/vexboard/lens/catalog.json), so a human, a script or an AI
 // can answer "which commit is Stable for VexLife Android?" by reading one place.
@@ -8,11 +8,9 @@
 // projectRefs it relates to.
 
 export const LENS_CATALOG_SCHEMA = 'vexboard.lens-catalog/v1';
-export const CONSIDERATIONS_SCHEMA = 'vexboard.considerations/v1';
 export const STANDING_BUILDS = Object.freeze(['stable', 'main']);
 export const LENS_STATUSES = Object.freeze(['GENERATED', 'NOT_BUILT']);
 export const BOARD_ROLES = Object.freeze(['RELATED', 'TRIAL']);
-export const CONSIDERATION_STATUSES = Object.freeze(['PROPOSED', 'DISCUSSED', 'CAPTURED', 'DROPPED']);
 
 const SHA = /^[0-9a-f]{40}$/;
 const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
@@ -70,6 +68,23 @@ export function validateSourceRef(value) {
   return out;
 }
 
+// Accept a raw Git ref or a pasted GitHub commit/tree URL, but only for the selected subject's
+// repository. A link to another repository must never be reinterpreted as a ref in this one.
+export function sourceRefFromInput(value, expectedRepositoryUrl) {
+  const input = String(value ?? '').trim();
+  const match = /^https:\/\/github\.com\/([^/?#]+)\/([^/?#]+)\/(?:commit|tree)\/([^?#]+)(?:[?#].*)?$/.exec(input);
+  if (!match) return validateSourceRef(input);
+  const expected = githubRepository(expectedRepositoryUrl);
+  const actual = { owner: match[1], repo: match[2].replace(/\.git$/, '') };
+  if (actual.owner.toLowerCase() !== expected.owner.toLowerCase() || actual.repo.toLowerCase() !== expected.repo.toLowerCase()) {
+    fail(`that GitHub link points at ${actual.owner}/${actual.repo}, not ${expected.owner}/${expected.repo}`);
+  }
+  let decoded;
+  try { decoded = decodeURIComponent(match[3]); }
+  catch { fail('that GitHub link contains an invalid encoded ref'); }
+  return validateSourceRef(decoded);
+}
+
 function normalizeBuild(input, label) {
   const buildRef = text(input?.buildRef, `${label} buildRef`);
   if (!STANDING_BUILDS.includes(buildRef)) fail(`${label} buildRef must be one of ${STANDING_BUILDS.join(', ')}`);
@@ -79,16 +94,21 @@ function normalizeBuild(input, label) {
   if (since && !DATE.test(since)) fail(`${label} since must be YYYY-MM-DD`);
   const observedAt = optionalText(input.observedAt, `${label} observedAt`);
   if (observedAt && !DATE.test(observedAt)) fail(`${label} observedAt must be YYYY-MM-DD`);
+  const branch = optionalText(input.branch, `${label} branch`);
+  const evidence = list(input.evidence, `${label} evidence`).map((entry, index) => text(entry, `${label} evidence[${index}]`));
+  if (buildRef === 'stable' && !since) fail(`${label} Stable needs an acceptance date`);
+  if (buildRef === 'stable' && !evidence.length) fail(`${label} Stable needs acceptance evidence`);
+  if (buildRef === 'main' && !branch) fail(`${label} Main needs its source branch`);
   return {
     buildRef,
     label: text(input.label, `${label} label`),
     summary: optionalText(input.summary, `${label} summary`),
     commit,
-    branch: optionalText(input.branch, `${label} branch`),
+    branch,
     lens: relativeJson(input.lens, `${label} lens`),
     since,
     observedAt,
-    evidence: list(input.evidence, `${label} evidence`).map((entry, index) => text(entry, `${label} evidence[${index}]`)),
+    evidence,
   };
 }
 
@@ -201,7 +221,7 @@ export function resolveLensRequest(catalog, params) {
     if (!subject.lens.anyCommit) notice = `${subject.label} cannot be projected at an arbitrary commit yet. Showing Stable.`;
     else {
       try {
-        return { mode: 'COMMIT', subject, build: null, commitRef: validateSourceRef(commit), lensPath: null, notice };
+        return { mode: 'COMMIT', subject, build: null, commitRef: sourceRefFromInput(commit, subject.repository.url), lensPath: null, notice };
       } catch (error) {
         notice = `${error.message.replace(/^lens catalog: /, '')}. Showing Stable.`;
       }
@@ -243,6 +263,7 @@ export function advanceBuild(catalogInput, subjectKey, buildRef, { commit, obser
   const catalog = normalizeLensCatalog(catalogInput);
   const subject = subjectFor(catalog, subjectKey);
   if (!subject || subject.lens.status !== 'GENERATED') fail(`${subjectKey} has no generated lens`);
+  if (buildRef === 'stable') fail('Stable moves only through promoteBuild');
   if (!SHA.test(String(commit))) fail('advanceBuild needs a full commit SHA');
   const next = plainCopy(catalogInput);
   const target = next.subjects.find((entry) => entry.subjectRef === subject.subjectRef);
@@ -252,11 +273,11 @@ export function advanceBuild(catalogInput, subjectKey, buildRef, { commit, obser
   const previousLens = build.lens;
   build.commit = commit;
   if (observedAt) build.observedAt = observedAt;
-  if (buildRef === 'stable') build.lens = buildFor(subject, 'stable').lens;
-  else build.lens = commit === stable.commit ? stable.lens : relativeJson(separateLens, 'separateLens');
+  else delete build.observedAt;
+  build.lens = commit === stable.commit ? stable.lens : relativeJson(separateLens, 'separateLens');
   normalizeLensCatalog(next);
   const stillUsed = next.subjects.some((entry) => entry.lens.builds?.some((candidate) => candidate.lens === previousLens));
-  return { catalog: next, lens: build.lens, write: build.lens !== stable.lens || buildRef === 'stable', retire: stillUsed ? null : previousLens };
+  return { catalog: next, lens: build.lens, write: build.lens !== stable.lens, retire: stillUsed ? null : previousLens };
 }
 
 // Promote Main to Stable: Stable takes Main's commit, and Main then shares Stable's lens file.
@@ -267,54 +288,27 @@ export function promoteBuild(catalogInput, subjectKey, { on, evidence = [] }) {
   if (!DATE.test(String(on))) fail('promoteBuild needs a YYYY-MM-DD date');
   const main = buildFor(subject, 'main');
   const stable = buildFor(subject, 'stable');
+  const changed = main.commit !== stable.commit;
+  if (!changed) return { catalog: plainCopy(catalogInput), changed: false, copy: null, retire: null };
+  const promotionEvidence = list(evidence, 'promotion evidence').map((entry, index) => text(entry, `promotion evidence[${index}]`));
+  if (!promotionEvidence.length) fail('promoteBuild needs acceptance evidence when Stable moves');
   const next = plainCopy(catalogInput);
   const target = next.subjects.find((entry) => entry.subjectRef === subject.subjectRef);
   const nextStable = target.lens.builds.find((build) => build.buildRef === 'stable');
   const nextMain = target.lens.builds.find((build) => build.buildRef === 'main');
   nextStable.commit = main.commit;
   nextStable.since = on;
-  nextStable.evidence = evidence;
+  nextStable.evidence = promotionEvidence;
   if (main.observedAt) nextStable.observedAt = main.observedAt;
+  else delete nextStable.observedAt;
   nextMain.lens = stable.lens;
   normalizeLensCatalog(next);
   return {
     catalog: next,
-    changed: main.commit !== stable.commit,
+    changed,
     copy: main.lens !== stable.lens ? { from: main.lens, to: stable.lens } : null,
     retire: main.lens !== stable.lens ? main.lens : null,
   };
-}
-
-export function normalizeConsiderations(input) {
-  if (!input || input.schemaVersion !== CONSIDERATIONS_SCHEMA) fail(`considerations schemaVersion must be ${CONSIDERATIONS_SCHEMA}`);
-  if (input.authority !== 'PROPOSAL_ONLY') fail('considerations authority must be PROPOSAL_ONLY');
-  const seen = new Set();
-  const entries = list(input.entries, 'considerations entries').map((entry, index) => {
-    const label = `considerations entries[${index}]`;
-    const id = ref(entry?.ref, `${label} ref`, 'consider');
-    if (seen.has(id)) fail(`duplicate consideration ${id}`);
-    seen.add(id);
-    const status = text(entry.status, `${label} status`);
-    if (!CONSIDERATION_STATUSES.includes(status)) fail(`${label} status must be one of ${CONSIDERATION_STATUSES.join(', ')}`);
-    return {
-      ref: id,
-      title: text(entry.title, `${label} title`),
-      idea: text(entry.idea, `${label} idea`),
-      why: text(entry.why, `${label} why`),
-      threshold: text(entry.threshold, `${label} threshold`),
-      subjectRefs: list(entry.subjectRefs, `${label} subjectRefs`).map((value, i) => ref(value, `${label} subjectRefs[${i}]`, 'subject')),
-      origin: text(entry.origin, `${label} origin`),
-      status,
-      capturedAs: optionalText(entry.capturedAs, `${label} capturedAs`),
-    };
-  });
-  return freeze({
-    schemaVersion: CONSIDERATIONS_SCHEMA,
-    authority: 'PROPOSAL_ONLY',
-    captureProcess: ref(input.captureProcess, 'considerations captureProcess', 'process'),
-    summary: text(input.summary, 'considerations summary'),
-    entries,
-  });
 }
 
 // [VXG RealForever][VEXWORK][VEXBOARD][LENS-CATALOG]
