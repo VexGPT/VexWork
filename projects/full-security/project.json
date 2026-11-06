@@ -24,7 +24,8 @@
     "projects/vexboard/examples/security-boundary-atlas.board.json",
     "github.pull.vexwork.256",
     "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
-    "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+    "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md",
+    "projects/vexboard/examples/full-security-android-account-device-scenarios.board.json"
   ],
   "formedAt": "2026-11-06T10:50:45.000Z"
 }
