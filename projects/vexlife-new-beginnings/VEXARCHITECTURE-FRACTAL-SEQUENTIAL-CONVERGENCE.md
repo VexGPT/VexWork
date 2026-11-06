@@ -807,6 +807,1360 @@ one stage establishes truth
 -> Relay asks again
 ~~~
 
+## Simulated live walk — startup to one foreground Vex response
+
+This section is a **source-informed teaching simulation**, modeled after the VexArchitecture Live Demonstration reader contract.
+
+It should be used the same way:
+
+~~~text
+DO NOT MEMORIZE THE EXAMPLE
+FOLLOW THE SCOPES + RELATIONSHIPS
+
+CURRENT SOURCE ANCHOR
+!= FUTURE ACCEPTED FORM
+
+ILLUSTRATIVE KOTLIN
+!= COPY/PASTE IMPLEMENTATION
+
+WHEN RESUMING:
+  re-open the named current source
+  ask "is this relationship still accurate?"
+  continue only from what current source still supports
+~~~
+
+Formation snapshot for this specimen:
+
+~~~text
+VexLife-Prod PR #38
+observed head:
+  1285876d8c6900cc09e3313c7750094033a14b1b
+
+VexArchitecture Live Demonstration source:
+  pages/vexarchitecture-live-demonstration.html
+  blob d9aaedab370d1f524e1a6b04113743f88dbe811b
+~~~
+
+The Live Demonstration habit retained here is:
+
+~~~text
+at every step name:
+
+  Container
+  Member
+  Role
+  Why traversal arrived here
+  Question answered here
+  Truth established here
+  Exact next edge
+~~~
+
+No introduced object is allowed to disappear behind "later."
+
+### Persistent world map
+
+The intended walk starts before the human can Send and ends only when the returned Conversation truth reaches the foreground.
+
+~~~text
+HUMAN INTENTION
+"I want to open VexLife and talk to the same Vex."
+        │
+        ▼
+OPEN / STARTUP
+product-service lifetime / service process
+        │
+        ▼
+current Home + Conversation writer safety
+        │
+        ▼
+VEX AVAILABILITY CONVERGENCE
+        │
+        ├─ ArtifactAvailability
+        │      ↓ observation
+        │      Exact
+        │
+        ├─ EnvironmentAvailability
+        │      ↓ observation
+        │      Ready
+        │
+        └─ HereticRuntime
+               ↓ observation
+               Qualified
+        │
+        ▼
+LOCAL PRODUCT SERVICE
+source-bound listener
+        │
+        ▼
+FOREGROUND
+VexWeb Conversation / Composer / Send
+        │
+        │ CURRENT SOURCE GAP:
+        │ Send is still Unbound("conversation.send")
+        │
+        ▼ intended typed product binding
+ConversationTurn.Control.Send
+        │
+        ▼
+canonical REQUEST
+        │
+        ├─ immediate prior Conversation
+        ├─ current attributed Memory
+        └─ current qualified runtime
+        │
+        ▼
+Prompt Context
+        │
+        ▼
+DirectCompanionConnection
+        │
+        ▼
+Heretic /v1/chat/completions
+        │
+        ▼
+RuntimeObservation + InvocationEvidence
+        │
+        ▼
+canonical RESPONSE + Context + Head
+        │
+        ▼
+service SendResponse / Conversation projection
+        │
+        ▼ intended foreground binding
+same Conversation surface
+        │
+        ▼
+HUMAN SEES VEX RESPONSE
+~~~
+
+The simulation below uses repeated convergence rounds rather than a single giant startup function as the architectural teaching form, while preserving current source anchors that still perform the work imperatively today.
+
+---
+
+### Round 01 — enter the source-bound service process
+
+**Question**
+
+> The human opened VexLife. What production process is responsible for bringing the local product service into a usable lifetime?
+
+~~~text
+Container
+  VexLifeProdServiceProcess
+
+Current source member
+  runWithHooks(...)
+
+Current role
+  process-level sequencing boundary
+
+Why traversal arrived here
+  the product service process is the source-bound foreground/backend bridge that must become live
+
+Current source does
+  establishSession(false)
+  -> startService(sourceSha, session)
+  -> reportReady(...)
+  -> awaitTermination(service)
+
+Truth required before next edge
+  one usable local-product session exists
+
+Next edge
+  current local setup / future Vex availability relationship
+~~~
+
+Current source anchor:
+
+~~~text
+VexLifeProdServiceProcess.runWithHooks
+  -> hooks.establishSession(false)
+  -> hooks.startService(sourceSha, session)
+  -> hooks.reportReady(arguments)
+  -> hooks.awaitTermination(service)
+~~~
+
+Illustrative future relationship shape — **not current accepted code**:
+
+~~~kotlin
+class VexAvailabilityRelay(...) :
+    VexCompoundRelay<VexAvailabilityInput, VexAvailabilityOutput>(...) {
+
+    override fun processStates(
+        inputState: VexAvailabilityInput,
+        currentState: VexCompoundState<...>,
+    ): VexCompoundState<...> =
+        when {
+            !inputState.homeAdmitted ->
+                currentState.output(Held(HomeNotAdmitted))
+
+            !inputState.conversationWriterSafe ->
+                currentState.output(Needs(ConversationWriter.EnsureSafe))
+
+            !inputState.artifacts.exact ->
+                currentState.output(Needs(ArtifactAvailability.EnsureExact))
+
+            !inputState.environment.ready ->
+                currentState.output(Needs(EnvironmentAvailability.EnsureCompatible))
+
+            !inputState.runtime.qualified ->
+                currentState.output(Needs(HereticRuntime.EnsureAvailable))
+
+            !inputState.productService.ready ->
+                currentState.output(Needs(ProductService.EnsureCurrent))
+
+            else ->
+                currentState.output(Ready(VexAvailable))
+        }
+}
+~~~
+
+This illustrative Relay does **not** call download/install/start functions.
+
+It says what relationship is unsatisfied now.
+
+**Revalidation question**
+
+> Does current source still make service startup depend on the same Home/writer/artifact/environment/runtime/service truths, or has accepted source moved one of those questions elsewhere?
+
+---
+
+### Round 02 — establish continuity before model/runtime setup
+
+**Question**
+
+> Before model/runtime work is allowed, are we still operating inside the same admitted Vex Home and a safely writable canonical Conversation?
+
+~~~text
+Container
+  VexLifeProdLocalSetup
+
+Current source members
+  establishDetailedAt(...)
+  convergeConversationWriter(...)
+
+Current role
+  application-level composition / sequencing
+
+Why traversal arrived here
+  Vex availability must not mint a parallel Home or race an abandoned Conversation writer
+
+Current source truth checks
+  host profile eligible
+  existing canonical ~/.vexlife Home admitted
+  Conversation writer:
+    IDLE
+    or exact abandoned writer recovery -> IDLE
+
+Truth established
+  canonical Home is the one being used
+  Conversation writer is safely startable
+
+Next edge
+  model/runtime availability prerequisites
+~~~
+
+Current source-informed shape:
+
+~~~kotlin
+// Current source today performs these checks inside establishDetailedAt(...).
+
+require(host.isEligible)
+
+val home =
+    requireNotNull(
+        VexLifeProdHomeFiles.observeExisting(productHome)
+    )
+
+convergeConversationWriter(
+    productHome = Path.of(home.productHome),
+    hooks = hooks,
+)
+~~~
+
+The current writer recovery already demonstrates the repeated-question pattern:
+
+~~~text
+observe writer
+    ↓
+IDLE?
+  yes -> continue
+
+RECOVERY_REQUIRED + owner ABSENT?
+  yes -> recover exact abandoned writer
+           ↓
+        observe again
+           ↓
+        must now be IDLE
+
+anything else
+  -> HOLD / refuse startup
+~~~
+
+A future architecture may expose this more directly as semantic relationship truth, but it should preserve the current law:
+
+~~~text
+RECOVER EXACT CURRENT TRUTH
+BEFORE
+CONTINUING STARTUP
+~~~
+
+**Revalidation question**
+
+> Is writer safety still a prerequisite of opening the same lived Vex relationship, and does recovery still converge through exact writer identity rather than broad cleanup?
+
+---
+
+### Round 03 — artifacts become exact
+
+**Question**
+
+> Given the intended Heretic model relationship, are the exact certified model materials available now?
+
+~~~text
+Container
+  current: HereticArtifactMaterialization
+  possible future semantic owner: ArtifactAvailability
+
+Current source member
+  materializeCurrent(...)
+
+Role
+  exact model-material observation + authorized acquisition realization
+
+Why traversal arrived here
+  Heretic runtime cannot be meaningfully bound to model material that is missing or unverified
+
+Current source branches
+  exact existing member -> reuse
+  missing + acquisition authorized -> acquire + verify
+  invalid existing member -> refuse implicit replacement
+
+Truth established
+  HERETIC_ARTIFACTS_MATERIALIZED_EXACT
+
+Next edge
+  execution-environment availability
+~~~
+
+Illustrative Family-shaped teaching form:
+
+~~~kotlin
+ArtifactAvailability.activate(
+    Control.EnsureExact(
+        artifactSetRef = HereticProductIdentity.ArtifactSetRef,
+        authority = acquisitionAuthority,
+    ),
+)
+
+// conceptual resolution:
+when (currentState) {
+    Exact ->
+        Act.Reuse
+
+    Missing if acquisitionAuthority != null ->
+        Act.Begin(
+            Effect.AcquireMissing(...)
+        )
+
+    Missing ->
+        Act.Hold(AcquisitionNotAuthorized)
+
+    InvalidExisting ->
+        Act.Hold(ExplicitRepairRequired)
+}
+~~~
+
+Realization remains outside the semantic decision:
+
+~~~text
+Effect.AcquireMissing
+  ↓
+HereticArtifactDelivery / filesystem
+  ↓
+ExactArtifactFile observation
+  ↓
+ArtifactAvailability interpretation
+  ↓
+Projection.Exact
+  ↓
+VexAvailability Relay runs again
+~~~
+
+**Revalidation question**
+
+> Does current source still distinguish reusable exact material, authorized missing acquisition, and invalid-existing material without silently conflating repair authority?
+
+---
+
+### Round 04 — execution environment becomes compatible
+
+**Question**
+
+> Now that exact model material exists, does the current machine have the exact Python/mlx-lm execution environment needed by that model/runtime relationship?
+
+~~~text
+Container
+  current: HereticPythonEnvironment
+  possible future semantic owner: EnvironmentAvailability
+
+Current source members
+  observeCurrent(...)
+  ensure(...)
+
+Role
+  environment reuse / creation / verification
+
+Why traversal arrived here
+  exact model bytes alone do not make the runtime executable
+
+Truth established
+  environment verified exact and reusable/created
+
+Next edge
+  runtime binding + runtime availability
+~~~
+
+Illustrative teaching form:
+
+~~~kotlin
+val act =
+    environmentFamily.activate(
+        Control.EnsureCompatible(
+            pythonVersion = HereticProductIdentity.PythonVersion,
+            mlxLmVersion = HereticProductIdentity.MlxLmVersion,
+            creationAuthority = authority,
+        )
+    )
+~~~
+
+Possible semantic meaning:
+
+~~~text
+CURRENT Compatible
+  -> Reuse
+
+CURRENT Missing + creation authority
+  -> Begin(CreateVerifiedEnvironment)
+
+CURRENT Missing + no authority
+  -> Hold
+
+CURRENT Invalid
+  -> repair meaning must be explicit
+  -> do not infer deletion authority from "ensure"
+~~~
+
+After realization:
+
+~~~text
+verified environment observation
+  ↓
+EnvironmentAvailability -> Ready
+  ↓
+VexAvailability Relay runs again
+~~~
+
+**Revalidation question**
+
+> Is environment creation still a distinct authorized meaning, and which current owner decides whether incompatible existing environment may be repaired/replaced?
+
+---
+
+### Round 05 — runtime becomes qualified, not merely started
+
+**Question**
+
+> Given exact model material + compatible environment, is the intended Heretic runtime actually the qualified runtime VexLife may use now?
+
+~~~text
+Container
+  HereticPersistentRuntime
+
+Current source members
+  bind(...)
+  startOrReuse(...)
+  configurationEvidence(...)
+  observeCurrentQualified(...)
+
+Role
+  persistent runtime semantic/effect owner + currentness source
+
+Why traversal arrived here
+  the human needs usable Vex, not merely "a process exists"
+
+Current source may
+  reuse exact owned runtime
+  recover exact starting runtime
+  rotate stale implementation
+  start a new exact runtime
+  qualify current runtime
+
+Qualification truth includes
+  exact process ownership
+  expected endpoint
+  model identity
+  runtime qualification evidence
+
+Truth established
+  QualifiedRuntimeEvidence
+
+Next edge
+  bind model relationship / expose Vex available projection
+~~~
+
+Illustrative Family-shaped structure:
+
+~~~kotlin
+val accepted =
+    hereticRuntime.activate(
+        Control.EnsureAvailable(binding)
+    )
+
+// conceptual outcomes:
+when (currentRuntimeState) {
+    QualifiedCurrent ->
+        Act.Reuse
+
+    Absent ->
+        Act.Begin(Effect.StartExact(binding))
+
+    StartingExact ->
+        Act.Begin(Effect.RecoverAndQualify(binding))
+
+    PriorImplementation ->
+        Act.Begin(Effect.RotateToCurrent(binding))
+
+    HeldUnknown ->
+        Act.Hold(CurrentnessUnknown)
+}
+~~~
+
+The important return loop:
+
+~~~text
+Effect.Start / Recover / Rotate
+  ↓
+VexExecution owns actual Job custody when async work is admitted
+  ↓
+Mac runtime platform / process / HTTP qualification
+  ↓
+Runtime observation
+  ↓
+same HereticRuntime semantic owner
+  ↓
+Projection.Qualified(...)
+  ↓
+VexAvailability Relay runs again
+~~~
+
+Current source then forms configuration evidence and binds the Home/Companion-scoped model relationship.
+
+**Revalidation question**
+
+> Does current accepted source still require exact qualified runtime evidence before model configuration can become bound, or has that relationship changed?
+
+---
+
+### Round 06 — service foreground/backend bridge becomes ready
+
+**Question**
+
+> Vex runtime is qualified. Is the source-bound local product service itself live and current so the foreground has a lawful route to request Conversation turns?
+
+~~~text
+Container A
+  VexLifeProdMacServiceLifetime
+
+Container B
+  VexLifeProdServiceProcess
+
+Container C
+  VexLifeProdLocalService
+
+Current roles
+  service source/image/process lifetime
+  process entry
+  fixed loopback HTTP delivery/projection
+
+Current service lifetime observations include
+  Absent
+  RunningCurrent
+  OwnedCurrentNotReady
+  OwnedPriorSource
+  HeldUnknown
+
+Truth established for foreground use
+  exact source-bound service listener is current
+  session retains fresh runtime-currentness capability
+
+Next edge
+  foreground product binding
+~~~
+
+Current service process:
+
+~~~kotlin
+val session =
+    hooks.establishSession(false)
+
+val service =
+    hooks.startService(
+        arguments.sourceSha,
+        session,
+    )
+
+hooks.reportReady(arguments)
+hooks.awaitTermination(service)
+~~~
+
+Potential convergence interpretation:
+
+~~~text
+Runtime Qualified
++ Service RunningCurrent
++ Conversation writer safe
+    ↓
+VexAvailability
+    ↓
+Ready(
+  serviceOrigin,
+  qualifiedRuntimeRef,
+  canonicalConversationRef
+)
+~~~
+
+**Revalidation question**
+
+> Is SOURCE_BOUND_LISTENING still only service source/PID currentness, and what current predicate proves the foreground may actually communicate with Vex rather than merely observe a listener?
+
+---
+
+### Round 07 — foreground Send reaches the semantic doorway
+
+**Question**
+
+> The human presses Send. What typed product meaning receives that interaction?
+
+~~~text
+Container
+  VexLifeWebP1 / VexLifeWorkspaceBlueprint
+
+Member
+  Send
+
+Current role
+  compiler-visible UI identity + Activate interaction
+
+Current source truth at formation
+  binding = Unbound(
+    capabilityRef = "conversation.send"
+  )
+
+Current limitation
+  the generated P1 artifact truthfully says this capability is not connected yet
+
+Next edge in current source
+  Snackbar fallback
+
+Intended post-refactor next edge
+  typed product interaction binding
+  -> ConversationTurn.Control.Send(...)
+~~~
+
+Current source anchor:
+
+~~~kotlin
+val Send =
+    VexWebAuthoring.element(
+        element = VexLifeWorkspaceBlueprint.Send,
+        interactions = setOf(
+            VexWeb.Interaction.Activate,
+        ),
+        binding =
+            VexWebAuthoring.unbound(
+                capabilityRef = Refs.ConversationSendCapability,
+                feedbackTarget = Refs.Snackbar,
+            ),
+    )
+~~~
+
+Therefore the full foreground circuit below is a **target simulation**, not a claim that P1 already has this edge.
+
+Illustrative target:
+
+~~~kotlin
+val Send =
+    VexWebAuthoring.element(
+        element = VexLifeWorkspaceBlueprint.Send,
+        interactions = setOf(VexWeb.Interaction.Activate),
+        binding =
+            productInteraction(
+                control = ConversationTurn.Control.Send,
+            ),
+    )
+~~~
+
+The exact future type/name must be earned.
+
+**Revalidation question**
+
+> Is Send still Unbound in accepted source? If not, follow the exact current typed binding instead of this simulated one.
+
+---
+
+### Round 08 — Send is admitted against exact turn state
+
+**Question**
+
+> What does Send mean against the exact current Conversation-turn truth?
+
+~~~text
+Container
+  simulated future ConversationTurn Family
+  current lower-circuit anchors:
+    VexLifeProdServiceContract
+    VexLifeProdLocalService
+    DirectCompanionTurn
+
+Control
+  Send(message, context?)
+
+CURRENT State
+  for example Idle / active / held
+
+Lawful meaning
+  only an admissible turn can author PerformTurn
+
+Next edge
+  local service SendRequest / DirectCompanionTurn.Intent
+~~~
+
+Illustrative semantic layer:
+
+~~~kotlin
+val act =
+    conversationTurn.activate(
+        Control.Send(
+            content = composerText,
+            contextRef = currentContextRef,
+        ),
+    )
+
+// conceptual:
+when (currentState) {
+    Idle ->
+        Act(
+            admittedState = Requested(turnRef),
+            begin = Begin(
+                Effect.PerformTurn(...)
+            ),
+        )
+
+    Requested,
+    Responding,
+    Stopping ->
+        null // another turn is not lawfully admitted
+}
+~~~
+
+Current service transport already has a concrete lower doorway:
+
+~~~text
+POST /api/v1/conversation/send
+  ↓
+VexLifeProdServiceContract.SendRequest
+  ↓
+VexLifeProdLocalService
+  ↓
+DirectCompanionTurn.Intent
+~~~
+
+**Revalidation question**
+
+> Which current semantic owner, if any, now owns Send admission? Do not assume a future ConversationTurn Family merely because this specimen uses it to expose the question.
+
+---
+
+### Round 09 — canonical REQUEST establishes the turn before inference
+
+**Question**
+
+> Has this turn become durable Conversation truth before any provider call is allowed?
+
+~~~text
+Container
+  DirectCompanionTurn
+
+Current member
+  performWithHooks(...)
+
+Current relationship
+  Conversation writer lease
+  -> immediate prior completed turn
+  -> beginRequest(...)
+
+Truth established
+  canonical REQUEST event/message/turn identity exists
+
+Next edge
+  current context materialization
+~~~
+
+Current source shape:
+
+~~~kotlin
+conversation.withWriterLease(instanceRef) {
+    val prior =
+        immediatePriorCompletedTurn()
+
+    val request =
+        beginRequest(
+            turnRef = identity.turnRef,
+            requestMessageRef = identity.requestMessageRef,
+            content = intent.content,
+            formedAt = hooks.now(),
+        )
+
+    // only now continue toward current context
+}
+~~~
+
+Potential process-circuit interpretation:
+
+~~~text
+REQUEST not durable
+  -> provider invocation not lawful
+
+REQUEST durable
+  -> ask next question:
+     "Is required current context established?"
+~~~
+
+**Revalidation question**
+
+> Does accepted source still durably establish REQUEST before prompt materialization/provider invocation, and what recovery law applies if the process stops after REQUEST but before RESPONSE?
+
+---
+
+### Round 10 — Conversation + Memory + runtime truth make provider invocation lawful
+
+**Question**
+
+> From this exact REQUEST, are the prior Conversation, current attributed Memory, and current runtime still the truths Vex may use right now?
+
+~~~text
+Container
+  DirectCompanionTurn + DirectPromptContext
+
+Current source sequence
+  current Memory Context
+  -> materialize Prompt Context
+  -> reverify immediate prior Conversation/current REQUEST/current Memory
+  -> obtain fresh current qualified runtime evidence
+
+Truth established
+  provider-ready message set is source-current
+  runtime evidence is current
+
+Next edge
+  DirectCompanionConnection.invoke(...)
+~~~
+
+Current source-informed code:
+
+~~~kotlin
+val memoryContext =
+    hooks.currentMemoryContext(productHome)
+
+val prompt =
+    DirectPromptContext.materialize(
+        prior = prior,
+        currentRequest = request,
+        memoryContext = memoryContext,
+    )
+
+DirectPromptContext.reverify(
+    materialization = prompt,
+    prior = immediatePriorCompletedTurn(),
+    currentRequest = request,
+    memoryContext = hooks.currentMemoryContext(productHome),
+)
+
+val runtimeEvidence =
+    hooks.currentRuntimeEvidence(setup)
+~~~
+
+This is a good example of **lawful direct composition that may remain direct**.
+
+Not every line needs a Relay round.
+
+The stage boundary is:
+
+~~~text
+before:
+  required sources have not been reverified
+
+after:
+  provider invocation is lawfully bound to exact current sources
+~~~
+
+**Revalidation question**
+
+> Which inputs still require exact revalidation immediately before invocation? Has browser-context admission joined this set yet?
+
+---
+
+### Round 11 — provider effect returns an observation, not semantic completion
+
+**Question**
+
+> What did the independently owned Heretic runtime actually return?
+
+~~~text
+Container
+  DirectCompanionConnection
+
+Current member
+  invoke(...)
+
+Role
+  numeric-loopback provider Connection
+
+Input
+  QualifiedRuntimeEvidence
+  provider-ready messages
+
+Effect
+  POST /v1/chat/completions
+
+Outside truth returned
+  provider HTTP result / response body
+
+Current normalized observations
+  RuntimeObservation
+  InvocationEvidence
+
+Next edge
+  canonical RESPONSE formation
+~~~
+
+Current source-informed shape:
+
+~~~kotlin
+val inference =
+    DirectCompanionConnection.invoke(
+        runtime = runtimeEvidence,
+        messages = prompt.messages,
+        transport = hooks.transport,
+        now = hooks.now,
+    )
+~~~
+
+Inside the Connection:
+
+~~~text
+qualified runtime
+  ↓
+admitted numeric-loopback origin
+  ↓
+POST /v1/chat/completions
+  ↓
+provider response
+  ↓
+RuntimeObservation
++ InvocationEvidence
+~~~
+
+Important:
+
+~~~text
+MODEL RETURNED TEXT
+!= CONVERSATION TURN COMPLETED
+~~~
+
+The next question is about durable Conversation truth.
+
+**Revalidation question**
+
+> Does DirectCompanionConnection still own only provider transport/observation normalization, and does any newer semantic owner now interpret its observation before Conversation persistence?
+
+---
+
+### Round 12 — RESPONSE + Context + Head earn turn completion
+
+**Question**
+
+> What must become durable before the system may truthfully say the Conversation turn completed?
+
+~~~text
+Container
+  DirectCompanionTurn
+  DirectConversationStore
+  DirectTurnContextStore
+
+Current sequence
+  appendResponse(...)
+  -> contextStore.record(...)
+  -> commitCompletedTurn(...)
+
+Truth established
+  canonical RESPONSE event exists
+  turn Context receipt exists
+  Conversation Head advances to completed turn
+
+Current result
+  state = TURN_COMPLETED
+
+Next edge
+  service response / Conversation projection
+~~~
+
+Current source-informed code:
+
+~~~kotlin
+val response =
+    appendResponse(
+        request = request,
+        content = inference.content,
+        model = inference.model,
+        runtimeObservationRef =
+            inference.runtimeObservation.observationRef,
+        invocationEvidenceRef =
+            inference.invocationEvidence.invocationRef,
+        ...
+    )
+
+val context =
+    contextStore.record(
+        request = request,
+        response = response,
+        promptContext = prompt.receipt,
+        runtimeObservation = inference.runtimeObservation,
+        invocationEvidence = inference.invocationEvidence,
+        ...
+    )
+
+val head =
+    commitCompletedTurn(
+        request = request,
+        response = response,
+        contextSha256 = context.contextSha256,
+        ...
+    )
+~~~
+
+Process-circuit interpretation:
+
+~~~text
+provider observation returned
+  ↓
+ask:
+  "Has RESPONSE become durable?"
+
+RESPONSE durable
+  ↓
+ask:
+  "Has Context become durable?"
+
+Context durable
+  ↓
+ask:
+  "Has Conversation Head advanced?"
+
+Head advanced
+  ↓
+Turn completion becomes lawful
+~~~
+
+Those questions need not each become a separate retained State if one atomic owner can prove the required invariant together.
+
+**Revalidation question**
+
+> Which durability boundaries are independently recoverable today, and which distinctions are required for crash recovery rather than merely useful for diagrams?
+
+---
+
+### Round 13 — service projects the completed truth toward the foreground
+
+**Question**
+
+> The turn is durable. What bounded product response crosses the service boundary?
+
+~~~text
+Container
+  VexLifeProdLocalService
+
+Current member
+  handleSend(...)
+
+Current source receives
+  DirectCompanionTurn.Result
+
+Current projection
+  VexLifeProdServiceContract.SendResponse
+
+Includes
+  turn/message/event refs
+  returned content/model
+  current Conversation Head
+  Context path
+  bounded Prompt Context projection
+
+Next edge
+  foreground consumer
+~~~
+
+Current source shape:
+
+~~~kotlin
+val result =
+    turnExecutor.perform(
+        startupSetup,
+        DirectCompanionTurn.Intent(
+            idempotencyKey = request.idempotencyKey,
+            content = request.content,
+        ),
+    )
+
+respondJson(
+    exchange = exchange,
+    status = 200,
+    value = SendResponse(
+        content = result.content,
+        currentConversationHeadSha256 =
+            result.currentConversationHeadSha256,
+        promptContext = ...,
+        ...
+    ),
+)
+~~~
+
+Important ownership law:
+
+~~~text
+SERVICE RESPONSE
+= bounded wire projection
+
+SERVICE RESPONSE
+!= Conversation owner
+!= Memory owner
+!= runtime owner
+~~~
+
+**Revalidation question**
+
+> Is SendResponse still the foreground-facing turn projection, or has a newer streaming/current Conversation projection replaced this transport shape?
+
+---
+
+### Round 14 — returned truth reaches the same human-facing Conversation
+
+**Question**
+
+> How does the durable returned Conversation truth reach the surface that initiated Send?
+
+~~~text
+Container
+  intended VexWeb / foreground relationship
+
+Current source status at formation
+  NOT YET CONNECTED in generated P1:
+  Send remains Unbound("conversation.send")
+
+Therefore:
+  this final edge is intentionally simulated
+
+Target meaning
+  completed Conversation / turn Projection
+  -> ConversationTimeline / ResponseProgress
+  -> same Companion region
+  -> human sees Vex response
+
+Completed human outcome
+  "I sent a message to the same Vex,
+   and the returned response is now durable Conversation truth
+   visible in the foreground."
+~~~
+
+Illustrative target only:
+
+~~~kotlin
+val turnProjection: ConversationTurn.Projection =
+    conversationTurn.currentProjection
+
+ConversationSurface(
+    timeline = canonicalConversationProjection,
+    turn = turnProjection,
+    onSend = {
+        conversationTurn.activate(
+            Control.Send(
+                content = composer.value,
+                contextRef = currentContextRef,
+            )
+        )
+    },
+)
+~~~
+
+The exact renderer/binding type is deliberately unspecified.
+
+The important round trip is:
+
+~~~text
+same human control
+  ↓
+semantic Control
+  ↓
+durable REQUEST
+  ↓
+current sources
+  ↓
+provider observation
+  ↓
+durable RESPONSE / Head
+  ↓
+semantic / Conversation projection
+  ↓
+same human-facing Conversation
+~~~
+
+**Revalidation question**
+
+> Is the current generated VexWeb product now connected to the service/Conversation projection? If yes, replace this simulated final bridge with the exact current source traversal.
+
+---
+
+## Completed simulated output
+
+If every relationship above is satisfied, the full process can be read as:
+
+~~~text
+OPEN VEXLIFE
+  ↓
+canonical Home admitted
+  ↓
+Conversation writer safe
+  ↓
+Artifacts Exact
+  ↓
+Environment Ready
+  ↓
+Heretic Runtime Qualified
+  ↓
+source-bound Product Service Ready
+  ↓
+Vex Available
+  ↓
+foreground Send becomes lawful
+  ↓
+canonical REQUEST durable
+  ↓
+current Conversation + Memory + runtime reverified
+  ↓
+Heretic provider observation
+  ↓
+canonical RESPONSE + Context + Head durable
+  ↓
+foreground consumes returned Conversation projection
+  ↓
+HUMAN SEES VEX RESPONSE
+~~~
+
+The sequentiality is not merely:
+
+~~~text
+1
+2
+3
+4
+5
+~~~
+
+It is:
+
+~~~text
+truth 1 established
+-> question 2 becomes lawful
+
+truth 2 established
+-> question 3 becomes lawful
+
+...
+
+returned truth established
+-> foreground projection becomes lawful
+~~~
+
+That is the reference behavior this specimen is trying to make visible.
+
+---
+
+## Fresh-instance accuracy walk
+
+Before using this specimen to implement or review source, a future instance should answer these questions against the **current** repository:
+
+1. **Is the parent human intention still accurate?**
+   - open VexLife;
+   - retain same lived identity/continuity;
+   - talk to Vex;
+   - see the returned durable Conversation.
+
+2. **Is the current source entry still the same?**
+   - service lifetime/process;
+   - local setup/session;
+   - local service;
+   - Conversation turn.
+
+3. **Is canonical Home still the admitted identity source?**
+
+4. **Does Conversation-writer safety/recovery still precede turn/service use?**
+
+5. **Are artifact exactness, environment compatibility and runtime qualification still distinct required truths?**
+
+6. **Which of those truths now have actual Family/Relay source, and which remain procedural?**
+   - do not keep this specimen's hypothetical Family names merely because they are written here.
+
+7. **Does repeated convergence still express the process without needing a second Process Relay primitive?**
+   - inspect current Relay source;
+   - ask what correctness a new primitive would add.
+
+8. **Is VexWeb Send still Unbound("conversation.send")?**
+   - if no, follow the actual current binding.
+
+9. **Does a turn still establish REQUEST before provider invocation?**
+
+10. **Which context sources are currently admitted?**
+    - immediate prior Conversation;
+    - Memory;
+    - browser context, if later accepted;
+    - anything else newly earned.
+
+11. **Is runtime evidence re-observed/reverified before provider invocation?**
+
+12. **Does DirectCompanionConnection still return provider observation/evidence without becoming Conversation owner?**
+
+13. **What exact durability boundary earns TURN_COMPLETED now?**
+
+14. **How does returned Conversation truth currently reach the foreground?**
+    - do not infer this from old VexWeb or exploration code.
+
+15. **Can VexBoard project every material edge without inventing one?**
+    - if not, determine whether source relationship is missing or projection is missing.
+
+The specimen survives only while those answers survive current source.
+
+~~~text
+REFERENCE EXAMPLE
+-> asks better questions
+
+REFERENCE EXAMPLE
+!= FUTURE INSTANCE AUTHORITY
+
+CURRENT SOURCE
+-> decides whether each relationship remains true
+~~~
+
+
 ## Failure is a process result, not an exception to the architecture
 
 Suppose:
