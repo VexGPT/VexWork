@@ -33,6 +33,15 @@ test('node and label sizes grow with content and respect line caps', () => {
   assert.equal(short.labelLines, 1);
   assert.equal(long.labelLines, LENS_LAYOUT_DEFAULTS.maxLabelLines);
   assert.equal(long.summaryLines, LENS_LAYOUT_DEFAULTS.maxSummaryLines);
+  assert.equal(LENS_LAYOUT_DEFAULTS.maxSummaryLines, 3);
+  const playbackState = estimateNodeSize({
+    label: 'CURRENT VexStreamPlaybackState · NoMedia | Media | Ended',
+    summary: 'Exact current semantic truth used to resolve the Control.',
+    footer: true,
+  });
+  assert.equal(playbackState.labelLines, 3, 'the VexStreamPlaybackState title reserves its browser-observed third line');
+  assert.ok(playbackState.summaryLines <= 3);
+  assert.ok(playbackState.height > withFooter.height, 'dense playback status cards receive additional text height');
   assert.ok(long.height > short.height);
   assert.equal(withFooter.height, short.height + 20);
   assert.equal(estimateLabelSize(''), null);

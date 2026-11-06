@@ -218,8 +218,12 @@ D10 Hand projection pinned to one commit; refs reuse source identities; containe
     why       no generator yet; never mint identity the source does not have
     marked    sourceSnapshot.notes says so in the file and in every brief
 
-D11 Right-click flips Behavior, shift + right-click keeps the browser menu
-    open      main board uses right-click for its context menu; Victor to confirm the split
+D11 Right-click flips either Screen Lens side; shift + right-click keeps the browser menu
+    why       one consistent face-flip gesture is easier to learn than remembering middle-click on Experience
+              and right-click on Behavior
+    how       the side owner handles one contextmenu rule; Experience flips Surface / Structure and Behavior
+              flips Behavior / Depth; [ and ] remain keyboard equivalents and the visible tabs remain explicit
+    rejected  the old split middle-click/right-click pattern after lived use showed unnecessary gesture-mode memory
 
 D12 Search ranks identifiers over prose and prefers the current screen
     why       a developer usually pastes a key or symbol, and should not be thrown to another screen
@@ -380,6 +384,28 @@ D36 Ordinary Main movement is forward-only
     why       currentness cannot call a rewound/diverged branch "new Main"
     how       lens:main proves the existing Main commit is an ancestor of the configured live branch before advancing
     boundary   an explicit --commit expert/recovery route remains separate from normal branch following
+
+
+D37 Wheel zooms a graph at the pointer; drag remains pan
+    why       scrolling inside the Behavior/Depth graph should change inspection scale rather than silently move
+              the camera vertically
+    how       graph wheel input is consumed by the camera and anchored through zoomFace(); primary-pointer drag pans
+    boundary   ordinary page scrolling outside the graph is unchanged; − / + / Fit remain explicit camera controls
+
+D38 Graph cards reserve bounded readable text before the full inspector
+    why       dense nodes such as CURRENT VexStreamPlaybackState could visually clip text even though the bottom
+              details pane already carried the complete label and description
+    how       layout and rendering share a conservative 3-line title + 3-line summary budget; cards grow to the
+              reserved height, title/summary rows do not flex-shrink, and hover text plus the selected-node inspector
+              preserve the full value
+    boundary   cards remain bounded summaries rather than unlimited documents; the full inspector/source view remains
+              the place for complete detail
+
+D39 Depth is an existing Screen Lens face; Scenario Playground remains separate parked work
+    why       Behavior ↔ Depth is already part of the accepted read-only Lens, while the future Scenario Playground
+              would be an effect-free simulation experience with a different question
+    boundary   these interaction/presentation refinements do not activate
+              work.vexboard.later.screen-lens-scenario-playground or grant simulation/source-mutation authority
 ```
 
 ## Data contract
@@ -543,8 +569,8 @@ Current limits remain:
 - On the existing VexBoard canvas, some routes can still pass behind a node. Labels no longer do;
   route avoidance remains a separate presentation refinement.
 - The Lens is light-mode only, matching the current VexBoard presentation.
-- D11's exact right-click preference remains an interaction-design question even though the overall
-  deployed first-draft experience has received lived acceptance.
+- Graph cards intentionally show at most three title lines and three summary lines before the full
+  selected-node inspector; the bounded card is not the owner of complete source detail.
 
 ## Next edges
 

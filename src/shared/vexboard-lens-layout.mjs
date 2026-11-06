@@ -20,13 +20,13 @@ export const LENS_LAYOUT_DEFAULTS = Object.freeze({
   labelCharWidth: 5.9,
   labelHeight: 16,
   labelPadding: 12,
-  nodeCharWidth: 7.0,
+  nodeCharWidth: 7.2,
   nodeLineHeight: 17,
   summaryCharWidth: 6.0,
   summaryLineHeight: 14,
-  nodeChromeHeight: 36,
+  nodeChromeHeight: 42,
   maxLabelLines: 3,
-  maxSummaryLines: 2,
+  maxSummaryLines: 3,
 });
 
 function options(input = {}) {

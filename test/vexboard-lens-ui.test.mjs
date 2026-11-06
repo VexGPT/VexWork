@@ -20,13 +20,30 @@ test('Screen Lens exposes related boards through stable VexBoard boardRef deep l
   assert.match(page, /Opening one does not change the source meaning projected here/);
 });
 
-test('flip gestures: middle-click flips Experience, right-click flips Behavior, keys and tabs are equivalent', () => {
-  assert.match(page, /event\.button === 1\) \{ event\.preventDefault\(\); flip\('EXPERIENCE'\)/);
-  assert.match(page, /addEventListener\('auxclick'/, 'middle-click must not open links or autoscroll');
-  assert.match(page, /addEventListener\('contextmenu', \(event\) => \{ if \(event\.shiftKey\) return; event\.preventDefault\(\); flip\('BEHAVIOR'\)/);
+test('flip gestures: right-click flips either side, Shift preserves the browser menu, keys and tabs are equivalent', () => {
+  assert.match(page, /addEventListener\('contextmenu', \(event\) => \{ if \(event\.shiftKey\) return; event\.preventDefault\(\); flip\(side\); \}\)/);
+  assert.doesNotMatch(page, /event\.button === 1/, 'middle-click is no longer a Screen Lens flip gesture');
+  assert.doesNotMatch(page, /addEventListener\('auxclick'/);
   assert.match(page, /event\.key === '\['\) \{ flip\('EXPERIENCE'\)/);
   assert.match(page, /event\.key === '\]'\) \{ flip\('BEHAVIOR'\)/);
   assert.match(page, /role: 'tab'/);
+});
+
+test('graph wheel zooms at the pointer while drag remains the pan gesture', () => {
+  assert.match(page, /addEventListener\('wheel'/);
+  assert.match(page, /const delta = Math\.abs\(event\.deltaY\) >= Math\.abs\(event\.deltaX\) \? event\.deltaY : event\.deltaX/);
+  assert.match(page, /zoomFace\(face, Math\.exp\(-delta \* 0\.0022\), \{ x: event\.clientX - rect\.left, y: event\.clientY - rect\.top \}\)/);
+  assert.doesNotMatch(page, /camera\.x - dx/);
+  assert.match(page, /Drag to pan\. Scroll to zoom at the pointer/);
+});
+
+test('graph cards reserve and expose up to three title and summary lines', () => {
+  assert.match(page, /\.lnode \.lbl\{[^}]*-webkit-line-clamp:3/);
+  assert.match(page, /\.lnode \.sum\{[^}]*-webkit-line-clamp:3/);
+  assert.match(page, /\.lnode \.lbl\{[^}]*flex-shrink:0/);
+  assert.match(page, /\.lnode \.sum\{[^}]*flex-shrink:0/);
+  assert.match(page, /class: 'lbl', title: node\.label/);
+  assert.match(page, /class: 'sum', title: node\.summary/);
 });
 
 test('the hidden face of each side is inert and motion respects reduced-motion', () => {
