@@ -25,6 +25,8 @@ test('four faces pair into two sides that flip front to back', () => {
     assert.equal(other.side, face.side);
     assert.notEqual(other.depth, face.depth);
   }
+  assert.match(Lens.LENS_FACES.BEHAVIOR.question, /which semantic owner decides/);
+  assert.match(Lens.LENS_FACES.DEPTH.question, /which outside truths participate/);
 });
 
 test('every role belongs to a band and carries a non-color chip', () => {
@@ -36,6 +38,9 @@ test('every role belongs to a band and carries a non-color chip', () => {
   }
   assert.equal(chips.size, Object.keys(Lens.LENS_ROLES).length, 'chips are unique so color is never the only cue');
   assert.equal(Lens.roleFor('STATE').band, 'SEMANTIC');
+  assert.equal(Lens.roleFor('RESULT').band, 'RUNTIME');
+  assert.equal(Lens.roleFor('REALIZATION').band, 'RUNTIME');
+  assert.notEqual(Lens.roleFor('RESULT').role, Lens.roleFor('OBSERVATION').role);
   assert.throws(() => Lens.roleFor('NOPE'), /unknown role/);
 });
 

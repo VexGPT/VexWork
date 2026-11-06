@@ -15,15 +15,15 @@ export const LENS_SIDES = Object.freeze({ EXPERIENCE: 'EXPERIENCE', BEHAVIOR: 'B
 export const LENS_FACES = Object.freeze({
   SURFACE: Object.freeze({ face: 'SURFACE', side: 'EXPERIENCE', depth: 'FRONT', title: 'Surface', question: 'What does the human see and touch?', flipTo: 'STRUCTURE' }),
   STRUCTURE: Object.freeze({ face: 'STRUCTURE', side: 'EXPERIENCE', depth: 'BACK', title: 'Structure', question: 'Which container, id and declaration is it?', flipTo: 'SURFACE' }),
-  BEHAVIOR: Object.freeze({ face: 'BEHAVIOR', side: 'BEHAVIOR', depth: 'FRONT', title: 'Behavior', question: 'What does it mean? Control → Act → Effect → Projection', flipTo: 'DEPTH' }),
-  DEPTH: Object.freeze({ face: 'DEPTH', side: 'BEHAVIOR', depth: 'BACK', title: 'Depth', question: 'What runs, persists and returns underneath?', flipTo: 'BEHAVIOR' }),
+  BEHAVIOR: Object.freeze({ face: 'BEHAVIOR', side: 'BEHAVIOR', depth: 'FRONT', title: 'Behavior', question: 'What does this interaction mean, and which semantic owner decides it?', flipTo: 'DEPTH' }),
+  DEPTH: Object.freeze({ face: 'DEPTH', side: 'BEHAVIOR', depth: 'BACK', title: 'Depth', question: 'What realizes that meaning, which outside truths participate, and how does truth return?', flipTo: 'BEHAVIOR' }),
 });
 
 export const LENS_BANDS = Object.freeze({
   EXPERIENCE: Object.freeze({ band: 'EXPERIENCE', label: 'Experience', question: 'what the human meets' }),
   DOORWAY: Object.freeze({ band: 'DOORWAY', label: 'Doorway', question: 'how a touch reaches an owner' }),
   SEMANTIC: Object.freeze({ band: 'SEMANTIC', label: 'Semantic', question: 'what the owner decides' }),
-  RUNTIME: Object.freeze({ band: 'RUNTIME', label: 'Runtime', question: 'what work is alive' }),
+  RUNTIME: Object.freeze({ band: 'RUNTIME', label: 'Runtime', question: 'what runs or realizes meaning' }),
   OUTSIDE: Object.freeze({ band: 'OUTSIDE', label: 'Outside truth', question: 'what reality says' }),
   SUPPORT: Object.freeze({ band: 'SUPPORT', label: 'Beside the path', question: 'construction and chronology' }),
 });
@@ -44,8 +44,10 @@ export const LENS_ROLES = Object.freeze({
   EFFECT: Object.freeze({ role: 'EFFECT', band: 'SEMANTIC', chip: 'EFF', label: 'Effect' }),
   PROJECTION: Object.freeze({ role: 'PROJECTION', band: 'SEMANTIC', chip: 'PRJ', label: 'Projection' }),
   METHOD: Object.freeze({ role: 'METHOD', band: 'RUNTIME', chip: 'MTH', label: 'Bound Method' }),
+  RESULT: Object.freeze({ role: 'RESULT', band: 'RUNTIME', chip: 'RES', label: 'Method result' }),
   EXECUTION: Object.freeze({ role: 'EXECUTION', band: 'RUNTIME', chip: 'EXE', label: 'Execution custody' }),
-  STORE: Object.freeze({ role: 'STORE', band: 'OUTSIDE', chip: 'STO', label: 'Store / repository' }),
+  REALIZATION: Object.freeze({ role: 'REALIZATION', band: 'RUNTIME', chip: 'RZN', label: 'Realization / reconciliation' }),
+  STORE: Object.freeze({ role: 'STORE', band: 'OUTSIDE', chip: 'STO', label: 'Store / provider · outside truth' }),
   OBSERVATION: Object.freeze({ role: 'OBSERVATION', band: 'OUTSIDE', chip: 'OBS', label: 'Observation' }),
   CHRONOLOGY: Object.freeze({ role: 'CHRONOLOGY', band: 'SUPPORT', chip: 'LOG', label: 'Chronology' }),
   CONSTRUCTION: Object.freeze({ role: 'CONSTRUCTION', band: 'SUPPORT', chip: 'DI', label: 'Construction' }),
@@ -58,7 +60,7 @@ export const ELEMENT_KINDS = Object.freeze({
 });
 
 export const PATHWAY_DISPOSITIONS = Object.freeze({
-  SCAE_FAMILY: 'A Family owns meaning: Control, Act, Effect and Projection are all earned.',
+  SCAE_FAMILY: 'Source earns a semantic owner: Control, State, Act, Effect and Projection relationships are explicit.',
   TYPED_PRESENTATION: 'Open / Close / Toggle already says everything; no Behavior is earned.',
   TYPED_NAVIGATION: 'NavigateTo(ScreenId) already says everything; no Act identity is earned.',
   DIRECT_REGISTRATION: 'The registration calls owners directly; no Family has earned this meaning yet.',

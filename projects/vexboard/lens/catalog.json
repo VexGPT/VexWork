@@ -1,7 +1,7 @@
 {
   "schemaVersion": "vexboard.lens-catalog/v1",
   "catalogRef": "catalog.vexboard.lens",
-  "title": "VexBoard projects",
+  "title": "VexBoard Lens subjects",
   "defaultSubjectRef": "subject.vexlife-android",
   "subjects": [
     {
@@ -35,7 +35,8 @@
             "observedAt": "2026-11-03",
             "evidence": [
               "github.pull.vexwork.230",
-              "human.victor.lived-first-draft-acceptance"
+              "human.victor.lived-first-draft-acceptance",
+              "github.pull.vexwork.238"
             ]
           },
           {
@@ -60,6 +61,12 @@
           "boardRef": "board.vexlife-android.vexstream-playback.vexarchitecture",
           "label": "VexStream Playback walk",
           "summary": "The VexArchitecture walk the Behavior-port traversal was earned from.",
+          "role": "RELATED"
+        },
+        {
+          "boardRef": "board.vexstream.phone-desktop-connection.living-blueprint",
+          "label": "VexStream living Blueprint",
+          "summary": "Current phone ↔ desktop connection patient zero joining source-owned expectation with stable evidence coordinates.",
           "role": "RELATED"
         },
         {
@@ -119,7 +126,7 @@
       "lens": {
         "status": "NOT_BUILT",
         "reason": "VexBoard is a web app. A Screen Lens of it needs a web adapter that reads its pages and page state, which does not exist yet.",
-        "next": "Project projects.html and lens.html as screens, with page state (selection, flips, walk, build) as a small SCAE Family, into the same schema."
+        "next": "Project projects.html and lens.html through a web adapter that can expose their screens, interactions and page state; let semantic ownership be earned from the web source instead of prescribing a Family in advance."
       },
       "boards": [
         {
@@ -144,12 +151,6 @@
     }
   ],
   "trials": [
-    {
-      "boardRef": "board.vexstream.phone-desktop-connection.living-blueprint",
-      "label": "VexStream living Blueprint",
-      "summary": "Phone to desktop connection as a living Blueprint with evidence.",
-      "role": "TRIAL"
-    },
     {
       "boardRef": "board.vexstream.phone-desktop-connection.construction-evidence",
       "label": "VexStream construction evidence",

@@ -1,14 +1,8 @@
-# Regenerate the VexBoard Screen Lens from VexLife-Android source.
+# Generate or verify the VexBoard Screen Lens from VexLife-Android source.
 #
-# Manual only (workflow_dispatch): nothing runs on push or schedule. A human, a
-# VexRelay host step or any instance can trigger it, or run the same script
-# locally:  node scripts/build-screen-lens.mjs --source <VexLife-Android checkout>
-#
-# The run proves the committed lens against the chosen commit and uploads the
-# regenerated lens as an artifact. It never pushes or opens a PR by itself.
-#
-# If VexLife-Android is private, add a repository secret VEXLIFE_ANDROID_TOKEN with
-# read access to it; the public case needs no secret.
+# Manual only. A selected arbitrary commit is projected as a DETACHED artifact; it never moves
+# Stable/Main pointers or re-pins the committed adapter. Empty input verifies Stable first.
+# The workflow never pushes or opens a PR.
 
 name: VexBoard Screen Lens
 
@@ -16,7 +10,7 @@ on:
   workflow_dispatch:
     inputs:
       commit:
-        description: VexLife-Android commit to project (empty = the commit pinned in the adapter)
+        description: VexLife-Android commit to inspect (empty = committed Stable pin)
         required: false
         default: ''
 
@@ -29,15 +23,13 @@ jobs:
     steps:
       - name: Check out VexWork
         uses: actions/checkout@v4
-
-      - name: Read the pinned commit
+      - name: Resolve detached source commit
         id: pin
         run: |
           pinned=$(node -e "console.log(require('./projects/vexboard/lens/vexlife-android.lens-adapter.json').repository.commit)")
-          commit="${{ inputs.commit }}"
-          if [ -z "$commit" ]; then commit="$pinned"; fi
-          echo "commit=$commit" >> "$GITHUB_OUTPUT"
-
+          selected="${{ inputs.commit }}"
+          if [ -z "$selected" ]; then selected="$pinned"; fi
+          echo "commit=$selected" >> "$GITHUB_OUTPUT"
       - name: Check out VexLife-Android
         uses: actions/checkout@v4
         with:
@@ -48,31 +40,24 @@ jobs:
           sparse-checkout: |
             app/src/main/kotlin
             app/src/main/res/values
-
+            architecture
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-
-      - name: Check the committed lens against this commit
-        id: check
-        continue-on-error: true
-        run: node scripts/build-screen-lens.mjs --source vexlife-android --commit ${{ steps.pin.outputs.commit }} --check
-
-      - name: Regenerate
-        run: node scripts/build-screen-lens.mjs --source vexlife-android --commit ${{ steps.pin.outputs.commit }} --report
-
-      - name: Show what changed
-        run: git diff --stat -- projects/vexboard/lens/
-
-      - name: Upload the regenerated lens
+      - name: Verify committed Stable when no detached commit was requested
+        if: ${{ inputs.commit == '' }}
+        run: npm run lens:verify
+      - name: Generate detached projection
+        run: |
+          mkdir -p .screen-lens-detached
+          cp projects/vexboard/lens/vexlife-android.lens-adapter.json .screen-lens-detached/vexlife-android.lens-adapter.json
+          node scripts/build-screen-lens.mjs             --adapter .screen-lens-detached/vexlife-android.lens-adapter.json             --overlay projects/vexboard/lens/vexlife-android.lens-overlay.json             --out .screen-lens-detached/vexlife-android.screen-lens.json             --source vexlife-android             --commit "${{ steps.pin.outputs.commit }}"             --report
+      - name: Show detached artifact identity
+        run: node -e "const x=require('./.screen-lens-detached/vexlife-android.screen-lens.json'); console.log(JSON.stringify({commit:x.sourceSnapshot.commit,provenance:x.provenance},null,2))"
+      - name: Upload detached projection
         uses: actions/upload-artifact@v4
         with:
           name: vexboard-screen-lens-${{ steps.pin.outputs.commit }}
           path: |
-            projects/vexboard/lens/vexlife-android.screen-lens.json
-            projects/vexboard/lens/vexlife-android.lens-adapter.json
-
-      - name: Report staleness
-        if: steps.check.outcome == 'failure'
-        run: |
-          echo "::warning::The committed lens is stale for ${{ steps.pin.outputs.commit }}. Download the artifact or run the script locally and commit the result."
+            .screen-lens-detached/vexlife-android.screen-lens.json
+            .screen-lens-detached/vexlife-android.lens-adapter.json

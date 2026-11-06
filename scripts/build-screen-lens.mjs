@@ -8,17 +8,17 @@
 //   node scripts/build-screen-lens.mjs --fetch                      regenerate Stable at its pointer
 //   node scripts/build-screen-lens.mjs --build main --fetch         move Main to the newest commit on its branch
 //   node scripts/build-screen-lens.mjs --build main --fetch --commit <sha|branch|tag>
-//   node scripts/build-screen-lens.mjs --promote [--evidence <ref>] Stable takes Main's commit (offline)
+//   node scripts/build-screen-lens.mjs --promote --evidence <ref> Stable takes Main's commit (offline)
 //   node scripts/build-screen-lens.mjs --source <checkout> [--build main] [--check]
 //
 // Options: --subject <slug> (default: the catalog's default project), --check, --report, --on <YYYY-MM-DD>.
 // Legacy single-lens use, bypassing the catalog: --adapter <file> [--overlay <file>] [--out <file>].
 //
-// Stable moves only by promote (or an explicit --build stable --commit). Generating Main never re-pins
-// the adapter, and Main shares Stable's lens file whenever both point at the same commit.
+// Stable moves only by evidence-bearing promote. Generating Main never re-pins the adapter, and Main
+// shares Stable's lens file whenever both point at the same commit.
 
 import crypto from 'node:crypto';
-import { execFileSync } from 'node:child_process';
+import { execFileSync, spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -30,6 +30,7 @@ import { faceGraph, normalizeScreenLens, screenMapGraph } from '../src/shared/ve
 import { layoutCollisions, layoutLensFace } from '../src/shared/vexboard-lens-layout.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const PROJECTOR_SOURCE = path.join(ROOT, 'src/core/vexboard-screen-lens-android-adapter.mjs');
 const LENS_DIR = 'projects/vexboard/lens';
 const CATALOG = `${LENS_DIR}/catalog.json`;
 
@@ -46,6 +47,8 @@ function parseArgs(argv) {
 }
 
 const sha256 = (text) => crypto.createHash('sha256').update(text).digest('hex');
+const gitBlobSha1 = (text) => crypto.createHash('sha1').update(`blob ${Buffer.byteLength(text)}\0`).update(text).digest('hex');
+const projectorBlobSha1 = () => gitBlobSha1(fs.readFileSync(PROJECTOR_SOURCE, 'utf8'));
 const readJson = (file) => JSON.parse(fs.readFileSync(file, 'utf8'));
 const stable = (value) => `${JSON.stringify(value, null, 2)}\n`;
 const git = (cwd, ...args) => execFileSync('git', ['-C', cwd, ...args], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] }).trim();
@@ -107,7 +110,13 @@ function verifyLayouts(lens) {
 
 // Hashes are taken over canonical JSON, so reformatting a file does not make the lens stale.
 export function provenanceFor(adapter, overlay) {
-  return { generator: ADAPTER_VERSION, adapterSha256: sha256(stable(adapter)), overlaySha256: overlay ? sha256(stable(overlay)) : null, sourceCommit: adapter.repository.commit };
+  return {
+    generator: ADAPTER_VERSION,
+    projectorBlobSha1: projectorBlobSha1(),
+    adapterSha256: sha256(stable(adapter)),
+    overlaySha256: overlay ? sha256(stable(overlay)) : null,
+    sourceCommit: adapter.repository.commit,
+  };
 }
 
 const pinTo = (adapter, commit) => ({ ...adapter, repository: { ...adapter.repository, commit } });
@@ -204,6 +213,33 @@ function remoteHead(url, branch) {
   return sha;
 }
 
+export function requireForwardMainRelation({ currentMain, liveHead, isAncestor, branch }) {
+  if (!/^[0-9a-f]{40}$/.test(currentMain ?? '') || !/^[0-9a-f]{40}$/.test(liveHead ?? '')) throw new Error('forward Main comparison needs exact commit SHAs');
+  if (currentMain === liveHead) return { status: 'IDENTICAL', head: liveHead };
+  if (isAncestor === true) return { status: 'AHEAD', head: liveHead };
+  if (isAncestor === false) throw new Error(`live ${branch} is not forward from catalog Main ${currentMain.slice(0, 7)}; re-ground before moving Main`);
+  throw new Error(`could not prove live ${branch} is forward from catalog Main ${currentMain.slice(0, 7)}`);
+}
+
+function remoteForwardHead(url, currentMain, branch) {
+  const liveHead = remoteHead(url, branch);
+  if (liveHead === currentMain) return liveHead;
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'screen-lens-currentness-'));
+  try {
+    git(dir, 'init', '-q');
+    git(dir, 'remote', 'add', 'origin', url);
+    git(dir, 'fetch', '-q', '--filter=blob:none', '--no-tags', 'origin', currentMain);
+    git(dir, 'fetch', '-q', '--filter=blob:none', '--no-tags', 'origin', `refs/heads/${branch}`);
+    const observedHead = git(dir, 'rev-parse', 'FETCH_HEAD');
+    if (observedHead !== liveHead) throw new Error(`live ${branch} moved while currentness was being checked; retry after re-grounding`);
+    const relation = spawnSync('git', ['-C', dir, 'merge-base', '--is-ancestor', currentMain, liveHead], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] });
+    const isAncestor = relation.status === 0 ? true : relation.status === 1 ? false : null;
+    return requireForwardMainRelation({ currentMain, liveHead, isAncestor, branch }).head;
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
+}
+
 function main() {
   const args = parseArgs(process.argv.slice(2));
   if (args.flags.has('verify')) return verify(args);
@@ -216,7 +252,7 @@ function main() {
   const build = ctx.legacy ? null : buildFor(ctx.subject, ctx.buildRef);
   const moving = Boolean(build && build.buildRef !== 'stable' && !args.commit && !args.flags.has('check') && !args.source);
 
-  let commit = args.commit ?? (moving ? remoteHead(adapter.repository.url, build.branch ?? ctx.subject.repository.defaultBranch) : (build?.commit ?? adapter.repository.commit));
+  let commit = args.commit ?? (moving ? remoteForwardHead(adapter.repository.url, build.commit, build.branch ?? ctx.subject.repository.defaultBranch) : (build?.commit ?? adapter.repository.commit));
   let source = args.source ? path.resolve(args.source) : null;
   if (!source && args.flags.has('fetch')) source = fetchCheckout(adapter, commit);
   if (!source) throw new Error('pass --source <checkout>, --fetch, --verify or --promote');
@@ -248,13 +284,19 @@ function main() {
   let nextCatalog = null;
   let retire = null;
   let shared = false;
-  const repinAdapter = ctx.legacy || build.buildRef === 'stable';
+  const repinAdapter = ctx.legacy;
   if (!ctx.legacy) {
-    const moved = advanceBuild(ctx.rawCatalog, ctx.subject.slug, build.buildRef, { commit, observedAt, separateLens: `${ctx.subject.slug}.${build.buildRef}.screen-lens.json` });
-    outFile = lensFile(moved.lens);
-    shared = !moved.write;
-    retire = moved.retire;
-    nextCatalog = stable(moved.catalog);
+    if (build.buildRef === 'stable') {
+      if (commit !== build.commit) throw new Error('Stable moves only through --promote with acceptance evidence; move Main first, then promote it');
+      outFile = lensFile(build.lens);
+      nextCatalog = stable(ctx.rawCatalog);
+    } else {
+      const moved = advanceBuild(ctx.rawCatalog, ctx.subject.slug, build.buildRef, { commit, observedAt, separateLens: `${ctx.subject.slug}.${build.buildRef}.screen-lens.json` });
+      outFile = lensFile(moved.lens);
+      shared = !moved.write;
+      retire = moved.retire;
+      nextCatalog = stable(moved.catalog);
+    }
   }
   const summary = { state: 'PASS', subject: ctx.subject?.slug ?? null, build: build?.buildRef ?? null, lens: path.relative(ROOT, outFile), sourceCommit: commit, sharesStable: shared, screens: report.screens, elements: report.elements, pathways: report.pathways, familyBonds: report.bonds.length, held: report.held.length, unknownCalls: report.unknownCalls.length };
   const current = fs.existsSync(outFile) ? fs.readFileSync(outFile, 'utf8') : '';

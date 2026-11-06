@@ -30,17 +30,22 @@ ADAPTER        != ANDROID CHANGE        reads only; nothing is written to VexLif
 npm run lens:verify                                   # offline: every catalog build matches its pointer + adapter + overlay + generator
 npm run lens:fetch                                    # sparse-clone Stable's commit, regenerate, write
 npm run lens:main                                     # move Main to its branch head and regenerate it (never re-pins Stable)
-npm run lens:promote                                  # Stable takes Main's commit (offline)
-node scripts/build-screen-lens.mjs --source ../VexLife-Android            # regenerate from a checkout
-node scripts/build-screen-lens.mjs --source ../VexLife-Android --check    # fail if the committed lens is stale
-node scripts/build-screen-lens.mjs --source ../VexLife-Android --commit <sha>   # re-pin to another commit
+npm run lens:promote -- --evidence <acceptance-ref>  # Stable takes Main's commit only with acceptance evidence
+node scripts/build-screen-lens.mjs --source ../VexLife-Android            # regenerate the standing Stable pointer only
+node scripts/build-screen-lens.mjs --source ../VexLife-Android --check    # fail if the committed standing lens is stale
+node scripts/build-screen-lens.mjs --build main --source ../VexLife-Android --commit <sha>  # explicit expert/recovery Main target
+
+# Detached arbitrary-commit artifact: copy the adapter and use an explicit output path so standing pointers stay untouched.
+node scripts/build-screen-lens.mjs --adapter .tmp/vexlife-android.lens-adapter.json \
+  --overlay projects/vexboard/lens/vexlife-android.lens-overlay.json \
+  --out .tmp/vexlife-android.screen-lens.json --source ../VexLife-Android --commit <sha>
 ```
 
 Build pointers (Stable, Main) live in `catalog.json`; see `PROJECTS-AND-BUILDS.md`. The browser
 can also project any commit with this same adapter and a lenient overlay (`overlayMode: 'LENIENT'`):
 overlay entries the commit lacks are skipped and named in the lens notes instead of failing.
 
-Every run checks the generated lens with `normalizeScreenLens` and `layoutCollisions` on every face
+Generated provenance binds the exact projector Git-blob identity as well as adapter/overlay/source identity, so changing projector behavior without regenerating makes `lens:verify` fail. Every run also checks the generated lens with `normalizeScreenLens` and `layoutCollisions` on every face
 (with and without the doorway collapsed) and on the screen map. A projection that would overlap fails
 the run instead of landing.
 
@@ -54,8 +59,9 @@ adapter or overlay without regenerating fails the suite.
 
 ## Why it can be automated: the architecture is regular
 
-VexArchitecture makes the same questions show up in the same shapes, so one rule per shape covers
-every screen.
+VexArchitecture makes the same ownership questions recur without requiring the same implementation
+shape. The adapter therefore reuses one rule per source-earned shape and holds materially different
+relationships until their own source earns a truthful traversal.
 
 | Source shape | What the adapter reads | Lens result |
 |---|---|---|
@@ -67,21 +73,34 @@ every screen.
 | `AppShell.Elements` + `blueprint` | one chrome owner | chrome tree; slots from config |
 | `AppActions.X = ActionKey("…")` | keys | action keys |
 | `appAction(action = AppActions.X) { … }` anywhere | body, enclosing locals and parameters | registration step and its owners |
-| `navigateTo` / `navigateBack` / `open` / `close` / `toggle` / `then` | typed intent chain | TYPED_NAVIGATION / TYPED_PRESENTATION templates |
+| `navigateTo` / `navigateBack` / `open` / `close` / `toggle` / `swapTo` / `then` | typed intent chain + stable operands | reusable template, distinct semantic pathway instance per meaningful operands |
 | `isOpen(Screen.Sheet)) { View(repository = …) }` | what a sheet renders and reads | renderer step + Depth store |
 | `context.closure` → `closure = { fn(…) }` → `fun fn` → `XFamily.Control.Y(` | the hop through a captured closure | Family bond (no annotation needed) |
 | `XFamily`: State enum, sealed Parameter / Control / Effect / DisplayState, `object Act { class M(store: S) }`, `begin<Approach>`, `observe*Store`, `XFamilyProvider` | the Family vocabulary | one SCAE + Depth template |
 
-The SCAE template is the VexArchitecture path itself, so it is the same for every Family:
+The SCAE builder is reusable only where source earns an unambiguous Family relationship. Multiple candidate Effects or Methods are held rather than selected by list order. The Lens faces are question-first; ThemeMode is one concrete shape, not the universal definition:
 
 ```text
-Behavior  intent → runtime dispatch → registration → captured closure
-          → Control.Y(Parameter) → act(CURRENT State, Control) → admitted State
-          → Begin(Effect, Approach) → DisplayState → presentation
-Depth     Act.Method.M(store, parameter) → launchWith → VexExecution custody (Approach)
-          → Store.op → concrete Store → VexMethod.Result → observe*Store → back into State
-beside    VexLogger facts · XFamilyProvider(dependencies)
+Behavior  what does the interaction mean, and which semantic owner decides?
+Depth     what realizes that meaning, which outside truths participate, and how does truth return?
+
+ThemeMode
+  intent → registration → Control.Y(Parameter) → act(CURRENT State, Control)
+  → admitted State + Begin(Effect, Approach) → DisplayState → presentation
+  → Act.Method.M(store, parameter) → VexExecution custody → Store
+  → RESULT → exact Method-result reconciliation
+  plus independent Store-source OBSERVATION → Family reconciliation
+
+VexStream Playback
+  UI → Experience.activate(Control) → Behavior / Control resolution
+  → REALIZATION boundary (typed Connection) → provider reality
+  → OBSERVATION → reconciliation → Projection → presentation
+
+beside
+  VexLogger chronology · construction/lifetime owners
 ```
+
+`RESULT` and `REALIZATION` are Lens classifications for already-source-owned relationships. They do not create new VexArchitecture owners.
 
 A new Family reached from a control appears with no change to VexWork. So does a new screen added to
 `AppScreens`, a new control, or a new registration.
@@ -117,7 +136,8 @@ Hand projection was based partly on the Live Demonstration page, pinned at an ol
 At the accepted source pin `305a09eac1fabebcf2241bd207386950f41121f2`:
 
 ```text
-10 screens · 241 elements · 44 pathways · 2 Family bonds · 0 held · 0 unknown layout calls
+10 screens · 241 elements · truthful projected pathways vary with source-earned typed operands · 2 earned Family bonds
+unproven localEffect controls remain visible and untraced until source earns their deeper relationship
 
 ThemeMode
   captured-closure / registration traversal

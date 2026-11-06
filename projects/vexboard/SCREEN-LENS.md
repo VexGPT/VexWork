@@ -32,9 +32,9 @@ EXPERIENCE       Surface                            Structure
                                                     (middle-click flips)
 
 BEHAVIOR         Behavior                           Depth
-                 what it means:                     what runs, persists and returns underneath:
-                 Control -> Act -> Effect ->        Method -> Execution -> Store -> Observation
-                 Projection (SCAE)                  (right-click flips)
+                 what does this interaction mean,   what realizes that meaning, which outside truths
+                 and which semantic owner decides?  participate, and how does truth return?
+                 (right-click flips)
 ```
 
 Selecting a control on either Experience face selects its pathway on both Behavior faces. A bridge line
@@ -70,18 +70,21 @@ differences and the high-contrast palette.
 EXPERIENCE  what the human meets        SCREEN · CONTAINER · CONTENT · ELEMENT · NAVIGATION
 DOORWAY     how a touch reaches owner   INTENT · DISPATCH
 SEMANTIC    what the owner decides      CONTROL · STATE · ACT · EFFECT · PROJECTION
-RUNTIME     what work is alive          METHOD · EXECUTION
+RUNTIME     what runs / realizes        METHOD · RESULT · EXECUTION · REALIZATION
 OUTSIDE     what reality says           STORE · OBSERVATION
 SUPPORT     beside the path             CHRONOLOGY · CONSTRUCTION
 ```
 
 `ELEMENT` (the UI toggle) and `CONTROL` (`ThemeModeFamily.Control.Select`) are deliberately different
-roles: the UI doorway and the Family's semantic Control are different coordinates.
+roles: the UI doorway and the semantic Control are different coordinates. `RESULT` names what a bound
+Method lawfully returned; it is not an `OBSERVATION`. `REALIZATION` marks a source-proven concrete
+realization/reconciliation boundary such as the VexStream Playback Connection; it is a Lens role, not a
+new VexArchitecture owner.
 
 Each pathway also carries an honest disposition, so the lens never implies SCAE where it was not earned:
 
 ```text
-SCAE_FAMILY          a Family owns meaning (ThemeMode; VexStream Playback via earned Behavior-port traversal)
+SCAE_FAMILY          source earns a semantic owner and explicit State / Control / Act / Effect / Projection relationships
 TYPED_PRESENTATION   Open / Close / Toggle already says everything (Show log, + FAB)
 TYPED_NAVIGATION     NavigateTo(ScreenId) already says everything (bottom nav, FAB options)
 DIRECT_REGISTRATION  registration calls owners directly; no Family yet (Reset log, Events lab)
@@ -283,15 +286,18 @@ D24 Related boards resolve by stable boardRef, not by copying URLs into the Lens
     how       Lens renders Related -> ./?board=<encoded boardRef>; VexBoard resolves that boardRef
               through the existing resolver and opens the source-owned BoardGraph read-only
     boundary   opening a related board does not mutate this Lens, transfer source authority, or imply
-               cross-board BoardJourney continuity; browser Back is sufficient until lived use earns
-               a stronger federated Journey contract
+               cross-board BoardJourney continuity; a generated subject's direct Related set stays aligned
+               with that subject's catalog RELATED boards, while an adjacent project's board lives under
+               that project's subject; browser Back is sufficient until lived use earns a stronger contract
     rejected  hard-coded per-product hrefs and a second Screen-Lens-specific related-board registry
 
 D25 Revision comparison starts from generated Lens identities, not Git diff
     why       a newer repository commit can leave the projected human/architecture meaning unchanged;
               revision currentness needs to distinguish source movement from projection movement
     how       src/shared/vexboard-screen-lens-revision.mjs compares two normalized Lens projections by
-              stable chrome/screen/element/pathway/annotation refs and keeps Related-board deltas separate
+              stable chrome/screen/element/pathway/annotation refs and keeps Related-board deltas separate;
+              sourceRevisionChanged and projectionChanged remain independent, so current Lens understanding
+              can change projected meaning even while the product-source commit stays the same
     boundary   this compares already-generated projections; it does not choose which commit is Stable,
                fetch history, promote a revision, or activate the parked full temporal/reversible horizon
     rejected  treating commit count/file diff as proof that product meaning changed
@@ -305,29 +311,34 @@ D26 Projects is the VexBoard front door; the canvas is kept, not deleted
     rejected  moving the canvas to another file (ripples through Workgraph sourceRefs) and deleting
               the earlier boards (Related boards still open them)
 
-D27 One catalog owns which projects VexBoard shows and where each build points
+D27 One catalog owns which Lens subjects VexBoard can project and where each build points
     why       "which commit is Stable?" must have one answer a human, a script and an AI read the same way
     how       projects/vexboard/lens/catalog.json (vexboard.lens-catalog/v1), validated by
               src/shared/vexboard-lens-catalog.mjs; the UI says Project, the data says subject so it never
               collides with VexWork project.* refs; each subject names its repositoryRef and projectRefs
-    boundary   the adapter's repository.commit mirrors Stable and lens:verify fails if they disagree
+    boundary   VexWork still owns Project/Work/lifecycle truth; the adapter's repository.commit mirrors
+               Stable and lens:verify fails if they disagree
 
 D28 Two standing builds, Stable and Main; any other commit on demand
     why       Victor asked for a constant Stable and Main pair whose pointers move deliberately, plus a
               way to open anything older or specific for debugging
-    how       Stable moves only by npm run lens:promote (offline); npm run lens:main moves Main to the
-              branch head and never re-pins the adapter; Main shares Stable's lens file whenever both
-              point at one commit, so identical builds never become two files
+    how       Stable's source pointer moves only by evidence-bearing npm run lens:promote; npm run lens:main
+              moves Main to the branch head and never re-pins the adapter; Main shares Stable's lens file
+              whenever both point at one commit. An accepted VexBoard projector/relationship correction may
+              refine the Stable projection at the same source commit; that adds acceptance evidence and is
+              PROJECTION_CHANGED, not SOURCE_COMMIT_CHANGED
     rejected  Stable following main automatically (Stable means accepted, not newest)
 
 D29 Any commit is projected in the browser from public source, with the same adapter
     why       debugging an older or specific commit should not need a checkout, a script or a PR
     how       src/shared/vexboard-lens-commit-source.mjs resolves the ref, lists the tree once, fetches
               exactly adapterReadPlan's files from raw.githubusercontent.com, and runs the pure adapter
-              with a lenient overlay (entries that do not apply are skipped and named, never guessed)
+              with a lenient current overlay: descriptive patches apply only to refs the historical source
+              exposes, while source-sensitive structural additions/removals are skipped rather than guessed
     boundary   reads only api.github.com and raw.githubusercontent.com for the catalog's repository; the
                typed ref is validated before it enters a URL; fetched Kotlin is parsed as text, never run;
-               nothing is written except a tab-only cache; unauthenticated GitHub allows 60 calls an hour
+               historical source is explicitly labeled as projected with current Lens understanding; no
+               projection cache survives a page reload; unauthenticated GitHub allows 60 calls an hour
                and a commit costs 2, so Stable and Main (no calls) always work
     rejected  a backend or GitHub token in the page
 
@@ -335,16 +346,40 @@ D30 Differences from Stable reuse D25 and stay readable at step level
     why       "1 pathway differs" is only useful if you can see which step and what it says now
     how       comparePathwayRevision adds step and relationship detail; the lens shows a chip, a
               Differences panel with Show links, and dashed rose rings on changed controls, steps and
-              screen chips; a new commit with no projected change says "Same meaning as Stable"
+              screen chips; a newer source commit with no projected change says "Same meaning as Stable"
     boundary   rings are outlines in the gap around a control (D23 holds); Copy as text hands the same
                differences to an AI as Markdown
 
-D31 Notes to consider are proposals with a threshold, not Work items
-    why       Victor invited ideas to discuss after thresholds; parking them as Work would claim
-              authority the Workgraph has not given
-    how       projects/vexboard/lens/considerations.json (authority PROPOSAL_ONLY), projected on the
-              projects page; one becomes Work only through process.vexwork.capture-discovered-work, and
-              then its entry says CAPTURED with the Work ref
+D31 Projects does not own a proposal lifecycle
+    why       useful future ideas already have rightful architecture/Work placement; a standing proposal registry
+              would create another status surface for every future instance to maintain
+    how       keep pressure-backed future seams in the owning docs and capture real Work through VexWork only
+    boundary   removing the proposal subsystem does not discard provenance or authorize implementation
+
+D32 Unproven localEffect is held, not projected as generic presentation
+    why       a declared interaction does not prove its deeper semantic/runtime relationship
+    how       keep the element and intent, omit pathwayRef, and report the held relationship
+    boundary   no-pathway means "not currently projected", not "no behavior exists"
+
+D33 Typed implementation-template reuse does not collapse semantic pathway instances
+    why       SwapTo(Content, ElementsPanel) and SwapTo(Content, AppGraphPanel) share an API shape but not meaning
+    how       typed pathway identity includes stable operation operands; named-argument order is normalized
+    boundary   controls share one pathway only when they express the same semantic relationship
+
+D34 Generated provenance binds projector implementation bytes
+    why       a projector behavior change can alter meaning even when adapter config/version strings do not move
+    how       provenance records the projector Git-blob SHA-1 and lens:verify recomputes it from source bytes
+    boundary   provenance proves generator currentness, not semantic acceptance
+
+D35 Method Result and independent Store observation remain distinct
+    why       ThemeMode reconciles Method Success output directly while store.states is observed through a separate source
+    how       the ThemeMode overlay names those two exact paths without generalizing a universal Result ontology
+    boundary   ambiguous generic Family Effect/Method selection is held rather than choosing index 0
+
+D36 Ordinary Main movement is forward-only
+    why       currentness cannot call a rewound/diverged branch "new Main"
+    how       lens:main proves the existing Main commit is an ancestor of the configured live branch before advancing
+    boundary   an explicit --commit expert/recovery route remains separate from normal branch following
 ```
 
 ## Data contract
@@ -435,12 +470,12 @@ UNANNOTATED + NOT DERIVABLE -> HELD never guessed
 `VexLensRole` mirrors `LENS_ROLES`. `VexLensEdgeKind` mirrors `FLOW | DATA | RETURN | SIDE`. If the
 role vocabulary changes, it changes here first and the Kotlin enum follows.
 
-## Current accepted threshold and limits
+## Accepted baseline, current completion candidate and limits
 
-The Living Screen Lens is now an accepted, deployed first-draft VexBoard surface rather than an
-unintegrated candidate.
+The Living Screen Lens has an accepted, deployed first-draft baseline. PR #238 is a later completion
+candidate and is not accepted merely because it projects more source-earned relationships.
 
-Current accepted source/projection checkpoint:
+Accepted first-draft source/projection checkpoint:
 
 ```text
 VexLife-Android source pin
@@ -464,6 +499,27 @@ lived browser threshold
 related-board federation/addressability
   VexWork PR #232
   merge 1a55b01f3c02b3d603fe9d6c55782b0715133fbf
+```
+
+Current PR #238 completion candidate:
+
+```text
+same VexLife-Android source pin
+  305a09eac1fabebcf2241bd207386950f41121f2
+
+generated Lens
+  10 screens
+  241 elements
+  56 source-earned pathways
+  67 visible localEffect() controls intentionally have no deeper projected pathway
+  2 earned semantic relationship shapes
+    ThemeMode captured-Family traversal
+    VexStream Playback typed BEHAVIOR_PORT traversal
+
+truth boundary
+  VexMethod.Result != independent Store observation
+  concrete Connection realization != doorway dispatch
+  unresolved relationship != invented generic presentation
 ```
 
 Current limits remain:
@@ -497,14 +553,18 @@ DONE   stable boardRef deep links + Related-board affordance          PR #232
 DONE   second real Related-board consumer:
        board.vexlife-prod.perceivability-alignment
        accepted read-only New Beginnings / VexLife-Prod alignment Board
-DONE   generated Screen Lens relates Theme Mode Origin Walk + VexLife-Prod alignment by stable boardRef
+HISTORY accepted PR #235 threshold related Theme Mode Origin Walk + VexLife-Prod alignment
+CURRENT Projects/Builds refinement homes the adjacent alignment under VexLife Prod; Android direct
+        Related is Theme Mode Origin Walk + VexStream Playback VexArchitecture + the active
+        VexStream phone ↔ desktop Living Blueprint patient zero. The living Blueprint is no longer
+        grouped under earlier canvas trials; its separate construction-evidence board remains provenance.
 
 FOUNDATION  stable-ref Screen Lens revision comparison
             source commit movement != projection movement
             no default UI/history browser yet
 
-DONE   projects entry, catalog, Stable/Main pointers, any-commit projection, Differences from
-       Stable, notes to consider                                       D26-D31 (this PR)
+DONE   projects entry, Lens-subject catalog, Stable/Main pointers, any-commit projection,
+       Differences from Stable                                         D26-D31 (this PR)
 
 NEXT   first real Main move: npm run lens:main when VexLife-Android main advances, then review
        the Differences panel before npm run lens:promote

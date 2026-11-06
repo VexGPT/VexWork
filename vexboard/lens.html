@@ -15,7 +15,7 @@
   --r-SCREEN:#475569;--r-CONTAINER:#64748b;--r-CONTENT:#78716c;--r-ELEMENT:#2563eb;--r-NAVIGATION:#c026d3;
   --r-INTENT:#4338ca;--r-DISPATCH:#6366f1;
   --r-CONTROL:#9333ea;--r-STATE:#0f766e;--r-ACT:#7c3aed;--r-EFFECT:#b45309;--r-PROJECTION:#0369a1;
-  --r-METHOD:#c2410c;--r-EXECUTION:#ea580c;
+  --r-METHOD:#c2410c;--r-RESULT:#9a3412;--r-EXECUTION:#ea580c;--r-REALIZATION:#b45309;
   --r-STORE:#15803d;--r-OBSERVATION:#4d7c0f;
   --r-CHRONOLOGY:#57534e;--r-CONSTRUCTION:#92400e;
   --edge:#8892a6;--edge-return:#0f766e;--edge-side:#b3bac7;
@@ -25,12 +25,12 @@
   --r-SCREEN:#0072b2;--r-CONTAINER:#0072b2;--r-CONTENT:#0072b2;--r-ELEMENT:#0072b2;--r-NAVIGATION:#0072b2;
   --r-INTENT:#3b8fc4;--r-DISPATCH:#3b8fc4;
   --r-CONTROL:#a8467f;--r-STATE:#a8467f;--r-ACT:#a8467f;--r-EFFECT:#a8467f;--r-PROJECTION:#a8467f;
-  --r-METHOD:#c75100;--r-EXECUTION:#c75100;--r-STORE:#00845f;--r-OBSERVATION:#00845f;--r-CHRONOLOGY:#555;--r-CONSTRUCTION:#555;
+  --r-METHOD:#c75100;--r-RESULT:#c75100;--r-EXECUTION:#c75100;--r-REALIZATION:#c75100;--r-STORE:#00845f;--r-OBSERVATION:#00845f;--r-CHRONOLOGY:#555;--r-CONSTRUCTION:#555;
 }
 .palette-high-contrast{
   --delta:#000;--delta-ink:#000;
   --rule:#000;--rule-strong:#000;--muted:#222;--faint:#333;--edge:#000;--edge-return:#000;--edge-side:#000;
-  --r-SCREEN:#000;--r-CONTAINER:#000;--r-CONTENT:#000;--r-ELEMENT:#000;--r-NAVIGATION:#000;--r-INTENT:#000;--r-DISPATCH:#000;--r-CONTROL:#000;--r-STATE:#000;--r-ACT:#000;--r-EFFECT:#000;--r-PROJECTION:#000;--r-METHOD:#000;--r-EXECUTION:#000;--r-STORE:#000;--r-OBSERVATION:#000;--r-CHRONOLOGY:#000;--r-CONSTRUCTION:#000;
+  --r-SCREEN:#000;--r-CONTAINER:#000;--r-CONTENT:#000;--r-ELEMENT:#000;--r-NAVIGATION:#000;--r-INTENT:#000;--r-DISPATCH:#000;--r-CONTROL:#000;--r-STATE:#000;--r-ACT:#000;--r-EFFECT:#000;--r-PROJECTION:#000;--r-METHOD:#000;--r-RESULT:#000;--r-EXECUTION:#000;--r-REALIZATION:#000;--r-STORE:#000;--r-OBSERVATION:#000;--r-CHRONOLOGY:#000;--r-CONSTRUCTION:#000;
 }
 *{box-sizing:border-box}html,body{height:100%}
 body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.45 var(--sans);-webkit-font-smoothing:antialiased}
@@ -43,7 +43,7 @@ a{color:var(--focus)}
 .role-SCREEN{--rc:var(--r-SCREEN)}.role-CONTAINER{--rc:var(--r-CONTAINER)}.role-CONTENT{--rc:var(--r-CONTENT)}.role-ELEMENT{--rc:var(--r-ELEMENT)}.role-NAVIGATION{--rc:var(--r-NAVIGATION)}
 .role-INTENT{--rc:var(--r-INTENT)}.role-DISPATCH{--rc:var(--r-DISPATCH)}
 .role-CONTROL{--rc:var(--r-CONTROL)}.role-STATE{--rc:var(--r-STATE)}.role-ACT{--rc:var(--r-ACT)}.role-EFFECT{--rc:var(--r-EFFECT)}.role-PROJECTION{--rc:var(--r-PROJECTION)}
-.role-METHOD{--rc:var(--r-METHOD)}.role-EXECUTION{--rc:var(--r-EXECUTION)}.role-STORE{--rc:var(--r-STORE)}.role-OBSERVATION{--rc:var(--r-OBSERVATION)}.role-CHRONOLOGY{--rc:var(--r-CHRONOLOGY)}.role-CONSTRUCTION{--rc:var(--r-CONSTRUCTION)}
+.role-METHOD{--rc:var(--r-METHOD)}.role-RESULT{--rc:var(--r-RESULT)}.role-EXECUTION{--rc:var(--r-EXECUTION)}.role-REALIZATION{--rc:var(--r-REALIZATION)}.role-STORE{--rc:var(--r-STORE)}.role-OBSERVATION{--rc:var(--r-OBSERVATION)}.role-CHRONOLOGY{--rc:var(--r-CHRONOLOGY)}.role-CONSTRUCTION{--rc:var(--r-CONSTRUCTION)}
 .chip{display:inline-flex;align-items:center;height:18px;padding:0 6px;border-radius:5px;background:color-mix(in srgb,var(--rc,#64748b) 13%,#fff);color:var(--rc,#64748b);font:600 10.5px/1 var(--sans);letter-spacing:.02em;white-space:nowrap;flex:none}
 .palette-high-contrast .chip{background:#000;color:#fff}
 
@@ -405,20 +405,18 @@ async function commitTools() {
   const [Adapter, Source] = await commitModules;
   return { Adapter, Source };
 }
-const COMMIT_CACHE = 'vexboard.lens.commit.';
-function readCommitCache(key) { try { const raw = sessionStorage.getItem(COMMIT_CACHE + key); return raw ? JSON.parse(raw) : null; } catch { return null; } }
-function writeCommitCache(key, value) { try { sessionStorage.setItem(COMMIT_CACHE + key, JSON.stringify(value)); } catch { /* a cache for this tab only; projecting again is fine */ } }
+const commitLenses = new Map();
 async function projectCommitLens(subject, ref, onProgress) {
   const { Adapter, Source } = await commitTools();
   const githubFetch = (url, init) => fetch(url, init);
   const resolved = await Source.resolveCommit({ repositoryUrl: subject.repository.url, ref, fetch: githubFetch });
   const key = `${subject.slug}.${resolved.sha}.${Adapter.ADAPTER_VERSION}`;
-  const cached = readCommitCache(key);
+  const cached = commitLenses.get(key);
   if (cached) return cached;
   const [adapter, overlay] = await Promise.all([fetchJson(LENS_DIR + subject.lens.adapter), subject.lens.overlay ? fetchJson(LENS_DIR + subject.lens.overlay) : null]);
   const result = await Source.projectCommit({ adapter, overlay, ref, resolved, fetch: githubFetch, project: Adapter.projectAndroidScreenLens, readPlan: Adapter.adapterReadPlan, onProgress });
   const value = { lens: result.lens, commit: { ...result.commit, fileCount: result.fileCount, misses: result.report.overlayMisses ?? [] } };
-  writeCommitCache(key, value);
+  commitLenses.set(key, value);
   return value;
 }
 const stableLenses = new Map();
@@ -437,7 +435,6 @@ async function lensForRequest(request, onProgress) {
 function computeCompare() {
   const subject = currentSubject();
   if (!subject || !state.stableLens || currentBuildRef() === 'stable') return null;
-  if (state.stableLens.sourceSnapshot.commit === state.lens.sourceSnapshot.commit) return null;
   const comparison = Revision.compareScreenLensRevisions(state.stableLens, state.lens);
   const details = new Map();
   for (const ref of [...comparison.pathways.changed, ...comparison.pathways.added, ...comparison.pathways.removed]) {
@@ -451,6 +448,7 @@ function computeCompare() {
       || screen.elements.some((element) => elements.has(element.ref) || pathways.has(element.pathwayRef))) screens.add(screen.screenRef);
   }
   const count = comparison.summary.entityChangeCount + comparison.summary.relatedBoardChangeCount;
+  if (!comparison.sourceRevisionChanged && !comparison.projectionChanged) return null;
   return { comparison, details, elements, pathways, screens, count };
 }
 function deltaClass(element) {
@@ -500,7 +498,7 @@ async function openRequest(request, { onProgress = () => {}, announce = true } =
   else render();
   if (announce && request.mode === 'COMMIT') {
     const misses = state.commit.misses.length;
-    showToast(`Projected ${short(state.commit.sha)} in your browser from ${state.commit.fileCount} source files.${misses ? ` ${misses} overlay ${misses === 1 ? 'note does' : 'notes do'} not apply at this commit.` : ''}`);
+    showToast(`Projected historical source ${short(state.commit.sha)} with the current Lens understanding from ${state.commit.fileCount} source files.${misses ? ` ${misses} overlay ${misses === 1 ? 'note does' : 'notes do'} not apply at this commit.` : ''}`);
   }
 }
 async function switchBuild(buildRef) {
@@ -510,16 +508,11 @@ async function switchBuild(buildRef) {
   try { await openRequest({ mode: 'BUILD', subject, build, commitRef: null }); }
   catch (error) { showToast(`Could not open ${build.label}: ${error.message}`); }
 }
-function commitRefFromInput(value) {
-  const text = String(value ?? '').trim();
-  const pasted = /^https:\/\/github\.com\/[^/]+\/[^/]+\/(?:commit|tree)\/([^?#]+)/.exec(text);
-  return pasted ? decodeURIComponent(pasted[1]) : text;
-}
 async function openCommit(rawValue) {
   const subject = currentSubject();
   const form = state.commitForm;
   let ref;
-  try { ref = Catalog.validateSourceRef(commitRefFromInput(rawValue)); }
+  try { ref = Catalog.sourceRefFromInput(rawValue, subject.repository.url); }
   catch (error) { form.error = error.message.replace(/^lens catalog: /, ''); renderBarInPlace(); return; }
   form.value = ref; form.busy = true; form.error = null; form.progress = { phase: 'RESOLVE', done: 0, total: 0 };
   renderBarInPlace();
@@ -839,7 +832,7 @@ function renderCommitPopover(subject) {
   const pop = h('div', { class: 'commit-pop', role: 'dialog', 'aria-label': 'Open a commit', onclick: (event) => event.stopPropagation() },
     h('label', { for: 'commit-ref' }, `Open ${subject.label} at any commit`),
     h('form', { onsubmit: (event) => { event.preventDefault(); openCommit(input.value); } }, input, h('button', { class: 'primary', type: 'submit', disabled: form.busy }, form.busy ? 'Opening…' : 'Open')),
-    h('p', { class: 'help', id: 'commit-help' }, 'Projected in your browser from public GitHub source with the same adapter as Stable and Main. Nothing is saved or committed.'),
+    h('p', { class: 'help', id: 'commit-help' }, 'Historical source is projected with the current Lens understanding and the same pure adapter used by Stable/Main. Nothing is written back to GitHub or the repository.'),
     form.error ? h('p', { class: 'error', role: 'alert' }, form.error) : null,
     form.busy ? renderProgressBlock(form.progress) : null);
   if (!form.busy) {
@@ -873,7 +866,9 @@ function renderBar() {
   const snapshot = state.lens.sourceSnapshot;
   const repoName = snapshot.repositoryUrl ? snapshot.repositoryUrl.split('/').slice(-1)[0] : snapshot.repositoryRef;
   const commit = short(snapshot.commit);
-  const where = `Read-only projection of ${repoName} @ ${commit}`;
+  const where = state.request?.mode === 'COMMIT'
+    ? `Historical source from ${repoName} @ ${commit}, projected with the current Lens understanding`
+    : `Read-only projection of ${repoName} @ ${commit}`;
   const commitLink = snapshot.repositoryUrl && snapshot.commit
     ? h('a', { class: 'source-link', href: `${snapshot.repositoryUrl}/tree/${snapshot.commit}`, target: '_blank', rel: 'noopener', title: `${where}\n${snapshot.notes.join('\n')}`, 'aria-label': where }, 'Source')
     : h('span', { class: 'source-link', title: where }, `${repoName}@${commit}`);
@@ -1092,8 +1087,10 @@ function renderGraphFace(face) {
   const wrap = h('div', { class: 'face', dataset: { face } });
   if (!pathway) {
     const message = anchor
-      ? [h('strong', {}, `${anchor.label} is ${anchor.role === 'CONTENT' ? 'content' : 'structure'}`), 'It carries no behavior. Select a control on the left to trace what it does.']
-      : [h('strong', {}, 'Pick a control to trace'), `Click any control on the ${state.faces.EXPERIENCE === 'SURFACE' ? 'Surface' : 'Structure'} face. Controls with a pathway show a small blue dot.`];
+      ? (anchor.role === 'ELEMENT'
+        ? [h('strong', {}, `${anchor.label} has no projected pathway yet`), 'An interaction may exist, but its deeper relationship is not currently projected.']
+        : [h('strong', {}, `${anchor.label} is ${anchor.role === 'CONTENT' ? 'content' : 'structure'}`), 'Select a control on the left to trace a projected relationship.'])
+      : [h('strong', {}, 'Pick a control to trace'), `Click any control on the ${state.faces.EXPERIENCE === 'SURFACE' ? 'Surface' : 'Structure'} face. Controls with a projected pathway show a small blue dot.`];
     wrap.append(h('div', { class: 'empty' }, message));
     return wrap;
   }

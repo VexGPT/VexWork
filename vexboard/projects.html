@@ -108,20 +108,8 @@ section>.lede{margin:0 0 12px;color:var(--muted);font-size:13px;max-width:72ch}
 .headline{margin:12px 0 0;font-size:12.5px;color:var(--muted)}
 .headline code{color:var(--ink);font-size:12px}
 
-/* Notes to consider */
-.notes{display:grid;gap:8px}
-.notes details{background:var(--sheet);border:1px solid var(--rule);border-radius:12px}
-.notes summary{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;padding:12px 16px;cursor:pointer;list-style:none}
-.notes summary::-webkit-details-marker{display:none}
-.notes summary .t{font-weight:600;font-size:13.5px}
-.notes summary .w{grid-column:1;font-size:12.5px;color:var(--muted)}
-.notes summary .tags{grid-row:1/span 2;grid-column:2;display:flex;gap:4px;align-items:center}
-.notes summary .tags span{font-size:11px;padding:2px 7px;border:1px solid var(--rule);border-radius:999px;color:var(--muted);white-space:nowrap}
-.notes details[open] summary{border-bottom:1px solid var(--rule)}
-.notes .body{padding:12px 16px 14px;font-size:13px;max-width:78ch}
-.notes .body p{margin:0 0 8px}
-.notes .body .k{font-weight:600}
-.notes .body .origin{color:var(--faint);font-size:12px;margin:0}
+.trials-section{margin-top:52px}
+.trials-section>summary{cursor:pointer;font-size:18px;font-weight:650;color:var(--muted)}
 
 /* Earlier canvas trials */
 .trials{padding:18px 20px;border:1px dashed var(--rule-strong);border-radius:16px}
@@ -142,8 +130,6 @@ footer code{font-size:12px}
 }
 @media (max-width:480px){
   .project .info,.builds{padding:18px 16px}
-  .notes summary{grid-template-columns:1fr}
-  .notes summary .tags{grid-row:auto;grid-column:1;flex-wrap:wrap}
 }
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
 </style>
@@ -238,16 +224,16 @@ function currency(subject, live, error) {
 
 function anyCommitForm(subject) {
   const error = h('p', { class: 'error', role: 'alert', hidden: true });
-  const input = h('input', { id: `any-${subject.slug}`, placeholder: 'SHA, branch or tag', autocomplete: 'off', spellcheck: 'false' });
+  const input = h('input', { id: `any-${subject.slug}`, placeholder: 'SHA, branch, tag or GitHub link', autocomplete: 'off', spellcheck: 'false' });
   return h('div', { class: 'any' },
     h('label', { for: input.id }, 'Any commit'),
     h('form', { onsubmit: (event) => {
       event.preventDefault();
-      try { location.href = Catalog.lensHref(subject, { commit: Catalog.validateSourceRef(input.value) }); }
+      try { location.href = Catalog.lensHref(subject, { commit: Catalog.sourceRefFromInput(input.value, subject.repository.url) }); }
       catch (failure) { error.textContent = failure.message.replace(/^lens catalog: /, ''); error.hidden = false; }
     } }, input, h('button', { type: 'submit' }, 'Open')),
     error,
-    h('p', { class: 'help' }, 'Projected in your browser from public GitHub source. Nothing is saved.'));
+    h('p', { class: 'help' }, 'Historical source is projected in your browser with the current Lens understanding. Nothing is written back to GitHub or the repository.'));
 }
 
 function buildRow(subject, build, extra) {
@@ -268,7 +254,7 @@ function boardLinks(boards) {
 function facts(subject, extra = []) {
   return h('dl', { class: 'facts' },
     h('dt', {}, 'Source'), h('dd', {}, h('a', { href: subject.repository.url, target: '_blank', rel: 'noopener' }, subject.repository.url.replace('https://github.com/', '')), ' ', h('code', {}, subject.repositoryRef)),
-    subject.vexworkProjectRefs.length ? [h('dt', {}, 'VexWork'), h('dd', {}, subject.vexworkProjectRefs.map((ref, i) => [i ? ', ' : '', h('code', {}, ref)]))] : null,
+    subject.vexworkProjectRefs.length ? [h('dt', {}, 'VexWork'), h('dd', {}, subject.vexworkProjectRefs.map((ref, i) => [i ? ', ' : '', h('a', { href: `../?project=${encodeURIComponent(ref)}` }, h('code', {}, ref))]))] : null,
     extra);
 }
 
@@ -319,21 +305,6 @@ function pendingProject(subject) {
       facts(subject)));
 }
 
-function notesSection(notes, catalog) {
-  const labels = new Map(catalog.subjects.map((subject) => [subject.subjectRef, subject.label]));
-  return h('section', { id: 'notes' },
-    h('h2', {}, 'Notes to consider'),
-    h('p', { class: 'lede' }, notes.summary),
-    h('div', { class: 'notes' }, notes.entries.filter((entry) => entry.status !== 'DROPPED').map((entry) => h('details', {},
-      h('summary', {}, h('span', { class: 't' }, entry.title), h('span', { class: 'w' }, `Discuss when: ${entry.threshold}`),
-        h('span', { class: 'tags' }, entry.subjectRefs.map((ref) => h('span', {}, labels.get(ref) ?? ref)), entry.status !== 'PROPOSED' ? h('span', {}, entry.status.toLowerCase()) : null)),
-      h('div', { class: 'body' },
-        h('p', {}, entry.idea),
-        h('p', {}, h('span', { class: 'k' }, 'Why: '), entry.why),
-        entry.capturedAs ? h('p', {}, h('span', { class: 'k' }, 'Captured as: '), h('code', {}, entry.capturedAs)) : null,
-        h('p', { class: 'origin' }, `${entry.origin} · `, h('code', {}, entry.ref)))))));
-}
-
 function draftsLine() {
   let drafts = [];
   try { const parsed = JSON.parse(localStorage.getItem(DRAFTS_KEY) ?? '[]'); drafts = Array.isArray(parsed) ? parsed.filter((entry) => entry && typeof entry.draftRef === 'string' && typeof entry.title === 'string') : []; } catch { drafts = []; }
@@ -345,21 +316,19 @@ function draftsLine() {
 
 async function boot() {
   const catalog = Catalog.normalizeLensCatalog(await fetchJson(`${LENS_DIR}catalog.json`));
-  const notes = await fetchJson(`${LENS_DIR}considerations.json`).then(Catalog.normalizeConsiderations).catch(() => null);
   const withLens = catalog.subjects.filter((subject) => subject.lens.status === 'GENERATED');
   const lenses = await Promise.all(withLens.map(async (subject) => Lens.normalizeScreenLens(await fetchJson(LENS_DIR + Catalog.buildFor(subject, 'stable').lens))));
   const others = catalog.subjects.filter((subject) => subject.lens.status !== 'GENERATED');
   app.replaceChildren(...[
     h('div', { class: 'intro' }, h('h1', {}, 'Projects'),
-      h('p', {}, 'Every project VexBoard can show. Open a Screen Lens at its Stable build, its Main build or any commit, follow its related boards, and see where each build points.')),
+      h('p', {}, 'Subjects VexBoard can project or relate. Open a Screen Lens at its Stable build, its Main build or any commit, follow related boards, and descend to VexWork for Project and lifecycle truth.')),
     withLens.map((subject, i) => leadProject(subject, lenses[i])),
     others.length ? h('div', { class: 'others' }, others.map(pendingProject)) : null,
-    notes ? notesSection(notes, catalog) : null,
-    h('section', { id: 'trials' },
-      h('h2', {}, 'Earlier canvas trials'),
-      h('p', { class: 'lede' }, 'These boards came before the Screen Lens. They stay readable, and the Lens still links the related ones, but new work starts from a project above.'),
+    h('details', { id: 'trials', class: 'trials-section' },
+      h('summary', {}, 'Earlier canvas trials'),
+      h('p', { class: 'lede' }, 'These boards came before the Screen Lens. They stay readable as provenance, but new work starts from a subject above.'),
       h('div', { class: 'trials' }, boardLinks(catalog.trials), draftsLine())),
-    h('footer', {}, 'Build pointers live in ', h('code', {}, 'projects/vexboard/lens/catalog.json'), '. Move Main with ', h('code', {}, 'npm run lens:main'), ', promote it to Stable with ', h('code', {}, 'npm run lens:promote'), ', and check both with ', h('code', {}, 'npm run lens:verify'), '.'),
+    h('footer', {}, 'Build pointers live in ', h('code', {}, 'projects/vexboard/lens/catalog.json'), '. Move Main with ', h('code', {}, 'npm run lens:main'), ', promote it to Stable with acceptance evidence using ', h('code', {}, 'npm run lens:promote -- --evidence <ref>'), ', and check both with ', h('code', {}, 'npm run lens:verify'), '.'),
   ].flat(Infinity).filter(Boolean));
   if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView();
 }
