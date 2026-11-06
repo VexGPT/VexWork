@@ -108,6 +108,24 @@
         "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
         "projects/vexboard/examples/vexwork-process-family-metawalk.board.json"
       ]
+    },
+    {
+      "boardRef": "board.vexboard.security-boundary-atlas.template",
+      "location": "./security-boundary-atlas.board.json",
+      "sourceRefs": [
+        "projects/vex-security-assurance/README.md",
+        "projects/vex-security-assurance/ADVERSARIAL-LENS.md",
+        "projects/vexboard/examples/security-boundary-atlas.board.json"
+      ]
+    },
+    {
+      "boardRef": "board.vexboard.security-boundary-atlas.credential-custody",
+      "location": "./security-boundary-credential-custody.board.json",
+      "sourceRefs": [
+        "projects/vex-security-assurance/README.md",
+        "projects/vexboard/examples/security-boundary-credential-custody.board.json",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/connectedservices/VexHomeDevicePossession.kt"
+      ]
     }
   ],
   "sourceRefs": [
