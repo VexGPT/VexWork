@@ -157,6 +157,15 @@
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/connectedservices/VexHomeDevicePossession.kt",
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/connectedservices/VexPrivateHomeGatewayConnection.kt"
       ]
+    },
+    {
+      "boardRef": "board.full-security.android-account-device-scenarios",
+      "location": "./full-security-android-account-device-scenarios.board.json",
+      "sourceRefs": [
+        "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+        "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md",
+        "projects/vexboard/examples/full-security-android-account-device-scenarios.board.json"
+      ]
     }
   ],
   "sourceRefs": [
