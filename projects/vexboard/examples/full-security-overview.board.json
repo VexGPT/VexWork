@@ -85,6 +85,18 @@
           "projects/full-security/README.md",
           "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md"
         ]
+      },
+      {
+        "nodeRef": "portal.full-security.android-scenarios",
+        "kind": "PORTAL",
+        "label": "Android account/device scenarios · S01–S20 + Connected Devices",
+        "parentRefOrNull": "node.full-security.overview",
+        "detailBoardRefOrNull": "board.full-security.android-account-device-scenarios",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md",
+          "projects/vexboard/examples/full-security-android-account-device-scenarios.board.json"
+        ]
       }
     ],
     "relationships": [
@@ -129,6 +141,27 @@
         "sourceRefs": [
           "projects/full-security/README.md"
         ]
+      },
+      {
+        "relationshipRef": "rel.full-security.complex-scenarios",
+        "kind": "REFERENCE",
+        "fromRef": "portal.full-security.complex",
+        "toRef": "portal.full-security.android-scenarios",
+        "labelOrNull": "EXPANDS INTO EXECUTABLE SCENARIOS",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.full-security.scenarios-guide",
+        "kind": "REFERENCE",
+        "fromRef": "portal.full-security.android-scenarios",
+        "toRef": "reference.full-security.vex-guide",
+        "labelOrNull": "CAN BE EXPLAINED THROUGH",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md"
+        ]
       }
     ],
     "sourceRefs": [
@@ -151,7 +184,7 @@
           "x": 0,
           "y": 0,
           "width": 2300,
-          "height": 1000
+          "height": 1180
         },
         "layer": 0,
         "parentProjectionItemRefOrNull": null,
@@ -239,9 +272,24 @@
         "shapeKind": "TEXT",
         "bounds": {
           "x": 270,
-          "y": 825,
+          "y": 1020,
           "width": 1760,
           "height": 100
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.full-security.overview",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.full-security.android-scenarios",
+        "semanticRef": "portal.full-security.android-scenarios",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1610,
+          "y": 560,
+          "width": 560,
+          "height": 190
         },
         "layer": 2,
         "parentProjectionItemRefOrNull": "item.full-security.overview",
