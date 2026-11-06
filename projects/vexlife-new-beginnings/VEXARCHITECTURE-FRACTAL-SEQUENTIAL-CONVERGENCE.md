@@ -334,6 +334,479 @@ A completes
 
 No arbitrary waiting period is implied by the architecture.
 
+## Concrete relay circuit rounds
+
+The following examples are intentionally repetitive. A future instance should be able to see the cadence of the architecture without inferring it from prose:
+
+~~~text
+OBSERVE CURRENT TRUTH
+-> ASK THE CURRENT RELATIONSHIP QUESTION
+-> DERIVE WHAT IS LAWFUL NOW
+-> REQUEST THE RIGHTFUL CONTROL
+-> FAMILY AUTHORS ACT / EFFECT
+-> REALIZATION OCCURS
+-> OBSERVATION RETURNS
+-> RIGHTFUL OWNER UPDATES ITS PROJECTION
+-> RELAY RUNS AGAIN
+~~~
+
+The repeated Relay pass is the process circuitry.
+
+### Circuit A — making Vex available
+
+Parent intention:
+
+~~~text
+"I want to talk to Vex."
+~~~
+
+#### Round A1 — artifacts are the first unsatisfied relationship
+
+~~~text
+OBSERVED INPUT PROJECTIONS
+
+ArtifactAvailability     Missing
+EnvironmentAvailability Missing
+HereticRuntime           Absent
+ProductService           Ready
+
+        ↓
+
+CONVERGENCE QUESTION
+
+"Given the goal VexAvailable and exact current projections,
+what required relationship is unsatisfied first?"
+
+        ↓
+
+OUTPUT RELATIONSHIP
+
+Needs(
+  ArtifactAvailability.EnsureExact
+)
+
+        ↓ requests rightful Control
+
+ArtifactAvailability.Control.EnsureExact
+
+        ↓ Family meaning
+
+CURRENT Artifact State = Missing
+Control = EnsureExact
+Act = AcquireMissing
+Effect = AcquireExactMembers(...)
+
+        ↓ realization
+
+artifact delivery / filesystem
+
+        ↓ observation
+
+required artifact bytes verified exact
+
+        ↓ rightful Family interpretation
+
+ArtifactAvailability -> Exact
+~~~
+
+That new projection is not the end of setup. It is the event that makes the Relay ask again.
+
+#### Round A2 — environment becomes the next lawful requirement
+
+~~~text
+OBSERVED INPUT PROJECTIONS
+
+ArtifactAvailability     Exact
+EnvironmentAvailability Missing
+HereticRuntime           Absent
+ProductService           Ready
+
+        ↓
+
+CONVERGENCE QUESTION
+
+"What relationship is still preventing VexAvailable?"
+
+        ↓
+
+OUTPUT RELATIONSHIP
+
+Needs(
+  EnvironmentAvailability.EnsureCompatible
+)
+
+        ↓ requests rightful Control
+
+EnvironmentAvailability.Control.EnsureCompatible
+
+        ↓ Family meaning
+
+CURRENT Environment State = Missing
+Control = EnsureCompatible
+Act = Create
+Effect = CreateVerifiedEnvironment(...)
+
+        ↓ realization
+
+managed Python / venv / package installation
+
+        ↓ observation
+
+exact Python + mlx-lm environment verified
+
+        ↓ rightful Family interpretation
+
+EnvironmentAvailability -> Ready
+~~~
+
+Again, the successful stage publishes new truth and immediately earns another Relay pass.
+
+#### Round A3 — runtime is now lawful
+
+~~~text
+OBSERVED INPUT PROJECTIONS
+
+ArtifactAvailability     Exact
+EnvironmentAvailability Ready
+HereticRuntime           Absent
+ProductService           Ready
+
+        ↓
+
+CONVERGENCE QUESTION
+
+"Are the prerequisites now sufficient to make the intended Vex runtime available?"
+
+        ↓
+
+OUTPUT RELATIONSHIP
+
+Needs(
+  HereticRuntime.EnsureAvailable
+)
+
+        ↓ requests rightful Control
+
+HereticRuntime.Control.EnsureAvailable
+
+        ↓ Family meaning
+
+CURRENT Runtime State = Absent
+Control = EnsureAvailable
+Act = StartAndQualify
+Effect = StartExactRuntime(...)
+
+        ↓ realization
+
+process platform / runtime qualification
+
+        ↓ observation
+
+exact process alive
++ endpoint healthy
++ model identity exact
++ qualification passed
+
+        ↓ rightful Family interpretation
+
+HereticRuntime -> Qualified
+
+        ↓ Relay receives changed projection
+
+CONVERGENCE QUESTION
+
+"Is Vex now available?"
+
+        ↓
+
+OUTPUT RELATIONSHIP
+
+Ready(
+  qualifiedRuntimeRef = ...
+)
+~~~
+
+The important sequence is therefore not:
+
+~~~text
+download()
+install()
+start()
+~~~
+
+It is:
+
+~~~text
+Artifact truth becomes Exact
+-> Environment request becomes lawful
+
+Environment truth becomes Ready
+-> Runtime request becomes lawful
+
+Runtime truth becomes Qualified
+-> VexAvailable becomes true
+~~~
+
+### Circuit B — one Conversation turn
+
+Parent intention:
+
+~~~text
+"Send this message to Vex and continue my same Conversation."
+~~~
+
+This example deliberately distinguishes material process truth from ordinary local function composition.
+
+#### Round B1 — REQUEST admission
+
+~~~text
+OBSERVED INPUT PROJECTIONS
+
+ConversationTurn    Idle
+CompanionAvailability Ready
+ContextRelationship Current
+
+        ↓
+
+HUMAN CONTROL
+
+ConversationTurn.Control.Send(message)
+
+        ↓
+
+FAMILY QUESTION
+
+"What does Send mean against exact CURRENT turn State?"
+
+        ↓
+
+accepted Act
+admitted Turn State = Requested
+Effect = PerformTurn(...)
+
+        ↓ realization begins
+
+canonical REQUEST append
+
+        ↓ observation
+
+REQUEST is durably admitted
+with exact event / message / turn identity
+
+        ↓ rightful interpretation / projection
+
+Turn process truth:
+  RequestEstablished
+~~~
+
+Whether "RequestEstablished" deserves a literal future State type is intentionally held. What matters is that durable REQUEST admission is a distinct truth on which later continuation depends.
+
+#### Round B2 — current context and runtime are re-evaluated before inference
+
+~~~text
+OBSERVED CURRENT TRUTH
+
+REQUEST              Established
+Immediate prior turn Current
+Memory projection    Current
+Runtime projection   Qualified
+
+        ↓
+
+PROCESS QUESTION
+
+"Is provider invocation lawful now from the exact current sources?"
+
+        ↓
+
+local composition may perform:
+
+read current Memory
+-> materialize Prompt Context
+-> reverify Memory/currentness
+-> read current qualified runtime evidence
+
+        ↓
+
+if those truths still agree:
+
+next lawful consequence =
+  invoke DirectCompanionConnection
+
+        ↓ provider realization
+
+Heretic inference
+
+        ↓ observation
+
+RuntimeObservation + InvocationEvidence
++ provider response content
+~~~
+
+A pure helper inside prompt materialization does not need its own process round. The material boundary is that provider invocation must not become lawful until the required sources are current.
+
+#### Round B3 — response durability earns completion
+
+~~~text
+OBSERVED CURRENT TRUTH
+
+provider response observation Present
+canonical REQUEST              Established
+
+        ↓
+
+PROCESS QUESTION
+
+"What must become durable before this turn may be called completed?"
+
+        ↓
+
+lawful realization
+
+append canonical RESPONSE
+-> record turn Context
+-> commit completed Conversation Head
+
+        ↓ observations
+
+RESPONSE durable
+Context durable
+Head advanced to exact completed turn
+
+        ↓ rightful Conversation / Turn interpretation
+
+ConversationTurn -> Completed / Idle-with-new-head
+Conversation projection -> includes returned Vex response
+
+        ↓
+
+human presentation may truthfully show completed turn
+~~~
+
+The process does not call the turn complete because the model returned text. Completion is earned by the later durable Conversation truth.
+
+### Circuit C — failed runtime qualification and later recovery
+
+This example shows why unsuccessful stages also ask the question again.
+
+#### Round C1 — runtime attempt fails
+
+~~~text
+OBSERVED INPUT PROJECTIONS
+
+Artifacts     Exact
+Environment   Ready
+Runtime       Absent
+
+        ↓
+
+Relay derives:
+  Needs(HereticRuntime.EnsureAvailable)
+
+        ↓
+
+Runtime Family authors Start/Qualify effect
+
+        ↓
+
+outside observation
+
+process started
+but qualification failed
+
+        ↓
+
+Runtime Family interpretation
+
+HereticRuntime -> Held(QualificationFailed)
+~~~
+
+#### Round C2 — convergence prevents illegal continuation
+
+~~~text
+OBSERVED INPUT PROJECTIONS
+
+Artifacts     Exact
+Environment   Ready
+Runtime       Held(QualificationFailed)
+
+        ↓
+
+CONVERGENCE QUESTION
+
+"Is VexAvailable now, and is any continuation lawful?"
+
+        ↓
+
+OUTPUT
+
+Held(
+  dependency = HereticRuntime,
+  reason = QualificationFailed
+)
+
+        ↓
+
+NO Conversation Send continuation
+NO silent runtime reuse
+NO next setup step merely because it was textually next
+~~~
+
+This is a valid process position, not an incomplete exception path.
+
+#### Round C3 — later truth changes and the same circuit resumes
+
+Suppose the runtime owner later receives new evidence because a lawful repair/retry occurred or outside reality changed:
+
+~~~text
+new observation:
+  exact runtime now qualifies
+
+        ↓
+
+HereticRuntime -> Qualified
+
+        ↓ dependency projection changes
+        ↓ Relay runs again
+
+OBSERVED INPUT PROJECTIONS
+
+Artifacts     Exact
+Environment   Ready
+Runtime       Qualified
+
+        ↓
+
+CONVERGENCE QUESTION
+
+"Is the held prerequisite now satisfied?"
+
+        ↓
+
+OUTPUT
+
+Ready(VexAvailable)
+~~~
+
+Nothing has to manually increment:
+
+~~~text
+setupStep = 4
+~~~
+
+The process resumes because current truth changed.
+
+These examples are illustrative architecture maps. They are not accepted names for future State / Control / Act / Effect classes, and they do not imply every listed stage must become a retained State. Their purpose is to preserve the **round-trip cadence** a future implementation should pressure:
+
+~~~text
+one stage establishes truth
+-> Relay asks again
+-> next stage is earned or held
+-> rightful owner acts
+-> observation returns
+-> Relay asks again
+~~~
+
 ## Failure is a process result, not an exception to the architecture
 
 Suppose:
