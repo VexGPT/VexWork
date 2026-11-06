@@ -2874,44 +2874,6 @@ then those are not merely return values.
 
 They are semantic relationships worth exposing even if a later SDK makes their authoring concise.
 
-### Defer the VexBoard maturity question until this source pressure is real
-
-The current Screen Lens already projects useful VexArchitecture roles, but New Beginnings should not prematurely redesign the VexBoard schema from this discussion alone.
-
-For now:
-
-~~~text
-CURRENT QUESTION
-  can VexLife-Prod source make its real causal relationships explicit enough
-  that a source-owned projection can emit them without inference?
-
-FIRST
-  perform the relationship-preserving refactor against one lived circuit
-
-THEN
-  generate the real projection
-
-THEN ASK
-  does vexboard.screen-lens/v1 already express the required relationships?
-  which missing relation types are actually evidenced?
-  does process-position/currentness need a schema refinement?
-~~~
-
-Until that pressure exists:
-
-~~~text
-VEXBOARD MATURITY QUESTION
-= DEFERRED
-
-REVISIT AFTER
-  SOURCE REFACTOR
-  + REAL GENERATED PROJECTION
-  + FRACTAL WALK PRESSURE
-~~~
-
-The implementation sample should therefore be used to discover what the source must expose, not to pre-author the final VexBoard ontology.
-
-
 ## Anti-patterns this finding is intended to prevent
 
 ### Build silos first, reconnect later
