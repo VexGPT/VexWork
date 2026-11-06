@@ -108,6 +108,17 @@
           "projects/full-security/FOUNDATION-STARTING-MAP.md",
           "projects/vexboard/examples/full-security-foundation-starting-map.board.json"
         ]
+      },
+      {
+        "nodeRef": "portal.full-security.full-scope-dashboard",
+        "kind": "PORTAL",
+        "label": "Full Scope Dashboard · many principals / devices / platforms / sessions / capabilities",
+        "parentRefOrNull": "node.full-security.overview",
+        "detailBoardRefOrNull": "board.full-security.full-scope-dashboard",
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md",
+          "projects/vexboard/examples/full-security-full-scope-dashboard.board.json"
+        ]
       }
     ],
     "relationships": [
@@ -182,6 +193,16 @@
         "labelOrNull": "START IMPLEMENTATION HERE",
         "sourceRefs": [
           "projects/full-security/FOUNDATION-STARTING-MAP.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.full-security.foundation-full-scope",
+        "kind": "REFERENCE",
+        "fromRef": "portal.full-security.foundation-map",
+        "toRef": "portal.full-security.full-scope-dashboard",
+        "labelOrNull": "PRESSURE SCOPE BEFORE IMPLEMENTATION",
+        "sourceRefs": [
+          "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md"
         ]
       }
     ],
@@ -326,6 +347,21 @@
           "y": 560,
           "width": 560,
           "height": 190
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.full-security.overview",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.full-security.full-scope-dashboard",
+        "semanticRef": "portal.full-security.full-scope-dashboard",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 870,
+          "y": 830,
+          "width": 560,
+          "height": 160
         },
         "layer": 2,
         "parentProjectionItemRefOrNull": "item.full-security.overview",
