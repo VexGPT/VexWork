@@ -180,6 +180,92 @@
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T10:50:45.000Z",
+      "updatedAt": "2026-11-06T11:05:00.000Z",
+      "parentWorkRefOrNull": "work.full-security.outcome",
+      "workClass": "TASK",
+      "priorityClass": "HIGH",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "workRef": "work.full-security.android-account-device-scenarios",
+      "label": "Implement and prove the Android account/device scenario suite",
+      "purpose": "Turn S01-S20 into explicit synthetic-first and later live-capable Android/host scenarios covering first-device registration, logout vs device trust, second-device admission, selective revoke, reinstall/new credential, lost device, expired session, stale offline authority, credential rotation, backup/restore, replay, route change, restart, update trust and OS permission/storage change.",
+      "state": "DECOMPOSED",
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod",
+        "repo.vexlife-android",
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+        "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T10:50:45.000Z",
+      "updatedAt": "2026-11-06T11:05:00.000Z",
+      "parentWorkRefOrNull": "work.full-security.outcome",
+      "workClass": "TASK",
+      "priorityClass": "HIGH",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "workRef": "work.full-security.android-connected-devices-feature",
+      "label": "Add Android Connected Devices visibility + selective revoke",
+      "purpose": "Make VexLife Android useful as a security-pattern demonstrator by exposing a truthful Connected Devices experience that can show this device and other admitted devices, distinguish current/revoked/session state, and request an explicit per-device disconnect/revoke without making Android UI the device-registry or revocation authority.",
+      "state": "DECOMPOSED",
+      "repositoryRefs": [
+        "repo.vexlife-android",
+        "repo.vexlife-prod",
+        "repo.vexlife",
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+        "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md"
+      ],
+      "dependencyRefs": [
+        "work.full-security.vexlife-complex-demonstrator"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T10:50:45.000Z",
+      "updatedAt": "2026-11-06T11:05:00.000Z",
+      "parentWorkRefOrNull": "work.full-security.outcome",
+      "workClass": "TASK",
+      "priorityClass": "NORMAL",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "workRef": "work.full-security.candidate-security-relationship-patterns",
+      "label": "Pressure reusable security relationship patterns",
+      "purpose": "Use VexStream plus the account/device scenarios to test whether Possession, Admission, Session, Capability, Revocation, Rebinding/Replacement, Currentness Reconciliation, Integrity Binding, Recovery without authority widening, and Explanation/Evidence remain useful reusable teaching/navigation patterns before promoting any of them into new runtime architecture.",
+      "state": "RUNNING",
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod",
+        "repo.vexlife-android",
+        "repo.vexstream-music"
+      ],
+      "sourceRefs": [
+        "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md",
+        "projects/full-security/VEXSTREAM-LOCAL-PAIRING-PATTERN.md",
+        "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md"
+      ],
+      "dependencyRefs": []
     }
   ],
   "transitions": [],
@@ -190,7 +276,9 @@
     "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md",
     "projects/vexboard/examples/full-security-overview.board.json",
     "projects/vexboard/examples/full-security-vexstream-local-pairing.board.json",
-    "projects/vexboard/examples/full-security-vexlife-complex-demonstrator.board.json"
+    "projects/vexboard/examples/full-security-vexlife-complex-demonstrator.board.json",
+    "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+    "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
   ],
   "formedAt": "2026-11-06T10:50:45.000Z"
 }
