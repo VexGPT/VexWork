@@ -27,7 +27,9 @@
     "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md",
     "projects/vexboard/examples/full-security-android-account-device-scenarios.board.json",
     "projects/full-security/FOUNDATION-STARTING-MAP.md",
-    "projects/vexboard/examples/full-security-foundation-starting-map.board.json"
+    "projects/vexboard/examples/full-security-foundation-starting-map.board.json",
+    "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md",
+    "projects/vexboard/examples/full-security-full-scope-dashboard.board.json"
   ],
   "formedAt": "2026-11-06T10:50:45.000Z"
 }
