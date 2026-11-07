@@ -136,6 +136,33 @@ test('search, impact, coverage and briefs are wired from the shared query module
 });
 // [VXG RealForever]
 
+test('source-backed expressions share one coordinate across the existing four Screen Lens faces', () => {
+  assert.match(page, /from '\.\.\/src\/shared\/vexboard-screen-lens-expressions\.mjs'/);
+  assert.match(page, /vexlife-android-vexstream\.screen-lens-expressions\.fixture\.json/);
+  assert.match(page, /Expressions\.normalizeScreenLensExpressionFixture\(state\.lens, source\)/);
+  assert.match(page, /Expressions\.resolveScreenLensExpression\(state\.lens, state\.expressionFixture, expressionRef\)/);
+  assert.match(page, /aria-label': `Expressions of \$\{currentScreen\(\)\.label\}`/);
+  assert.match(page, /'Previous expression'/);
+  assert.match(page, /'Next expression'/);
+  assert.match(page, /aria-label': 'Expression pathways'/);
+  assert.match(page, /setExpressionPathway\(ref\)/);
+  assert.match(page, /state\.pathwayRef = pathwayRef/, 'expression pathways reuse the existing Behavior\/Depth pathway owner');
+  assert.match(page, /expressionElementParticipates\(element\.ref\)/, 'Surface and Structure mark participation from the same resolution');
+  assert.match(page, /expressionRuntimeItemsFor\(element\.ref\)/);
+  assert.match(page, /runtime identity, not a static Screen element/);
+  assert.match(page, /next\.set\('expression', state\.expressionRef\)/, 'expression coordinates are shareable without becoming stored app state');
+  assert.doesNotMatch(page, /localStorage\.setItem\([^)]*expression/i);
+  assert.doesNotMatch(page, /BoardScenario|scenario state/i, 'the read-only expression rail does not import Scenario ownership');
+});
+
+test('expression participation is additive perception rather than a visibility claim', () => {
+  assert.match(page, /Highlighted elements participate in the selected expression; unmarked elements are not claimed absent/);
+  assert.doesNotMatch(page, /filter\([^\n]*expressionElementParticipates/, 'the existing Screen element tree is not filtered into a second visibility owner');
+  assert.match(page, /source\.lensSourceCommit !== state\.lens\.sourceSnapshot\.commit\) return;/, 'the fixture fails closed on a different Lens source snapshot');
+});
+
+// [VXG RealForever]
+
 test('nothing the lens adds on the surface covers a control: chips, opened overlays and the bridge', () => {
   // The browser sweep in PR #221 checks all 119 traced controls; this pins the wiring that makes it hold.
   assert.match(page, /function placeSurfaceFloaters\(\)/);
