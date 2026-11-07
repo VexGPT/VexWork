@@ -136,87 +136,54 @@ test('search, impact, coverage and briefs are wired from the shared query module
 });
 // [VXG RealForever]
 
-test('the Lens binds accepted expression fixtures by current Screen across navigation', () => {
-  assert.match(page, /const EXPRESSION_FIXTURE_URLS = Object\.freeze\(\{/);
-  assert.match(page, /'screen\.vexstream-music': '\.\.\/projects\/vexboard\/examples\/vexlife-android-vexstream\.screen-lens-expressions\.fixture\.json'/);
-  assert.match(page, /'screen\.events': '\.\.\/projects\/vexboard\/examples\/vexlife-android-events\.screen-lens-expressions\.fixture\.json'/);
-  assert.match(page, /function bindExpressionsForCurrentScreen\(\{ requestedRef = state\.expressionRef \} = \{\}\)/);
-  assert.match(page, /const source = expressionFixtureSources\.get\(screenRef\(\)\) \?\? null/);
-  assert.match(page, /source\.lensRef !== state\.lens\.lensRef \|\| source\.lensSourceCommit !== state\.lens\.sourceSnapshot\.commit\) return/);
-  assert.match(page, /function travel\([\s\S]*?bindExpressionsForCurrentScreen\(\{ requestedRef: null \}\);\s*resetScreenSelection\(\)/);
-  assert.match(page, /function jumpTo\([\s\S]*?bindExpressionsForCurrentScreen\(\{ requestedRef: null \}\);\s*resetScreenSelection\(\)/);
-  assert.match(page, /const changesScreen = Boolean\(target\.screenRef && target\.screenRef !== screenRef\(\)\)/);
-  assert.match(page, /if \(changesScreen\)[\s\S]*?bindExpressionsForCurrentScreen\(\{ requestedRef: null \}\)/);
-  assert.match(page, /Lens\.backScreenWalk\(state\.walk\); bindExpressionsForCurrentScreen\(\{ requestedRef: null \}\); resetScreenSelection\(\)/);
-  assert.match(page, /Lens\.revisitScreenWalk\([\s\S]*?bindExpressionsForCurrentScreen\(\{ requestedRef: null \}\); resetScreenSelection\(\)/);
-  assert.match(page, /bindExpressionsForCurrentScreen\(\{ requestedRef: requestedExpression \}\);\s*if \(expressionAvailable\(\)\) setExpression/, 'direct screen entry binds its own fixture before expression activation');
+test('the Lens derives expressions from source realization for every Screen', () => {
+  assert.match(page, /from '\.\.\/src\/shared\/vexboard-screen-lens-realization\.mjs'/);
+  assert.match(page, /from '\.\.\/src\/shared\/vexboard-screen-lens-source-expressions\.mjs'/);
+  assert.match(page, /Expressions\.expressionsFor\(state\.lens, screenRef\(\)\)/);
+  assert.match(page, /Realization\.emptyRealizationContext\(\)/);
+  assert.match(page, /const currentPathway = \(\) => Lens\.pathwayFor\(state\.lens, state\.pathwayRef\) \?\? \(state\.anchorElementRef \? null : expressionPathway\(\)\)/);
+  assert.doesNotMatch(page, /EXPRESSION_FIXTURE_URLS|expressionFixtureSources|normalizeScreenLensExpressionFixture|bindExpressionsForCurrentScreen/);
 });
 
-test('source-backed expressions are a top-level Lens dimension shared by all four faces', () => {
-  assert.match(page, /from '\.\.\/src\/shared\/vexboard-screen-lens-expressions\.mjs'/);
-  assert.match(page, /vexlife-android-vexstream\.screen-lens-expressions\.fixture\.json/);
-  assert.match(page, /Expressions\.normalizeScreenLensExpressionFixture\(state\.lens, source\)/);
-  assert.match(page, /Expressions\.resolveScreenLensExpression\(state\.lens, state\.expressionFixture, expressionRef\)/);
-  assert.match(page, /grid-template-rows:auto auto auto minmax\(0,1fr\) auto/, 'Expressions owns its own top-level Lens row');
-  assert.match(page, /const main = h\('main', \{ class: 'main' \}, renderExperienceSide\(\), renderBehaviorSide\(\)\)/);
-  assert.match(page, /const expressionRail = renderExpressionRail\(\);\s*if \(expressionRail\) root\.append\(expressionRail\);\s*root\.append\(main, renderTray\(\)\)/);
-  assert.match(page, /aria-label': `Expressions of \$\{currentScreen\(\)\.label\}`/);
-  assert.match(page, /'Previous expression'/);
-  assert.match(page, /'Next expression'/);
-  assert.match(page, /state\.pathwayRef = pathwayRef/, 'expression pathways still reuse the existing Behavior\/Depth pathway owner');
-  assert.match(page, /class: 'xstruct'/, 'Structure receives the same expression context');
-  assert.match(page, /class: 'xgraph-context'/, 'Behavior and Depth receive the same expression context');
-  assert.match(page, /aria-label': 'Expression pathways'/, 'pathway choice is local to the graph side rather than cluttering the rail');
-  assert.match(page, /next\.set\('expression', state\.expressionRef\)/, 'expression coordinates remain shareable without becoming stored app state');
+test('source-derived expressions are an unconditional top-level Lens dimension', () => {
+  assert.match(page, /grid-template-rows:auto auto auto minmax\(0,1fr\) auto/, 'the expression rail owns one top-level row');
+  assert.match(page, /root\.append\(renderBar\(\), renderAtlas\(\), renderExpressionRail\(\), main, renderTray\(\)\)/, 'every Screen receives a source expression rail, so main never falls into an auto row');
+  assert.doesNotMatch(page, /const expressionRail = renderExpressionRail\(\);\s*if \(expressionRail\)/, 'the rail is not conditional on a two-Screen fixture registry');
+  assert.match(page, /function renderPhone\(expression, \{ interactive \}\)/);
+  assert.match(page, /function renderStructure\(\)[\s\S]*const expression = activeExpression\(\)/);
+  assert.match(page, /pathway\.disposition === 'EXPRESSION'/, 'Behavior and Depth read the same expression relationship');
+  assert.match(page, /next\.set\('expression', expression\.ref\)/, 'shareable expression coordinates remain URL state, not product State');
   assert.doesNotMatch(page, /localStorage\.setItem\([^)]*expression/i);
-  assert.doesNotMatch(page, /BoardScenario|scenario state/i, 'the read-only expression experience does not import Scenario ownership');
 });
 
-test('Surface restores the expression carousel instead of treating the rail as a dashboard card', () => {
-  assert.match(page, /function renderPhone\(expressionRef = state\.expressionRef/);
-  assert.match(page, /class: 'xslot'/, 'the active expression owns the centered phone');
-  assert.match(page, /class: `xpeek \$\{side\}`/, 'adjacent expressions render as inert phone peeks');
-  assert.match(page, /renderPhone\(entry\.expressionRef, \{ interactive: false \}\)/);
-  assert.match(page, /phone\.inert = true/);
-  assert.match(page, /function wireExpressionSwipe\(surface\)/);
+test('Surface realizes source-authored presentation rather than flattening it into inventory rows', () => {
+  assert.match(page, /function presenceFor\(context\)/);
+  assert.match(page, /Realization\.resolvePresence\(state\.lens, screenRef\(\), context\)/);
+  assert.match(page, /function renderPopulation\(/);
+  assert.match(page, /function renderTemplateItem\(/);
+  assert.match(page, /class: 'region-fab'/);
+  assert.match(page, /class: 'dep-stub'/);
+  assert.match(page, /class: 't-card'/);
+  assert.match(page, /Examples & journeys/);
+  assert.match(page, /screen\.elements\.filter\(\(element\) => element\.slot === 'TOOLBAR'\)/);
+});
+
+test('expression carousel preserves the lived desktop and phone-width interaction shape', () => {
+  assert.match(page, /class: 'xslot'/);
+  assert.match(page, /class: `xpeek \$\{side\}`/);
+  assert.match(page, /renderPhone\(entry, \{ interactive: false \}\)/);
+  assert.match(page, /function wireSwipe\(surface\)/);
   assert.match(page, /Math\.abs\(dx\) > 70/);
-  assert.match(page, /event\.key === 'ArrowLeft'/);
-  assert.match(page, /event\.key === 'ArrowRight'/);
-  assert.match(page, /@media \(max-width:900px\)[\s\S]*\.xchip\{display:none\}[\s\S]*\.xchip\[aria-pressed="true"\]\{display:inline-flex/, 'phone width collapses the rail to the active expression instead of wrapping every chip');
-  assert.match(page, /@media \(max-width:900px\)[\s\S]*\.xpeek\{display:none\}/, 'phone width hides neighbours rather than creating horizontal page scroll');
-  assert.match(page, /Double-click to show expression:/, 'an element can jump to an expression that exposes it');
+  assert.match(page, /event\.key === 'ArrowRight' \|\| event\.key === 'ArrowLeft'/);
+  assert.match(page, /@media \(max-width:900px\)[\s\S]*\.xpeek\{display:none\}/, 'phone width hides neighbour phones');
+  assert.match(page, /Double-click to show expression:/, 'Structure can traverse to an expression that exposes a latent element');
 });
 
-test('expression participation stays additive even while the carousel makes the active context perceptually dominant', () => {
-  assert.match(page, /else if \(resolution && element\.ownerRef === screenRef\(\)\) node\.classList\.add\('x-unclaimed'\)/);
-  assert.match(page, /\.x-unclaimed\{opacity:\.34;filter:saturate\(\.55\)\}/);
-  assert.doesNotMatch(page, /filter\([^\n]*expressionElementParticipates/, 'the registered Screen tree is never filtered into a second visibility owner');
-  assert.match(page, /source\.lensSourceCommit !== state\.lens\.sourceSnapshot\.commit\) return;/, 'the fixture fails closed on a different Lens source snapshot');
-  assert.match(page, /runtime identity, not a static Screen element/);
-});
-
-test('screen-level arrival activates the selected expression across Behavior and Depth without overriding explicit targets', () => {
-  assert.match(page, /function resetScreenSelection\(\{ preferExpression = true \} = \{\}\)/);
-  assert.match(page, /preferExpression && expressionAvailable\(\) && state\.expressionRef/);
-  assert.match(page, /setExpression\(state\.expressionRef, \{ renderNow: false \}\)/);
-  assert.match(page, /function travel\([\s\S]*?resetScreenSelection\(\);[\s\S]*?render\(\);/);
-  assert.match(page, /function jumpTo\([\s\S]*?resetScreenSelection\(\);[\s\S]*?state\.overlay = null;/);
-  assert.match(page, /Lens\.backScreenWalk\(state\.walk\); bindExpressionsForCurrentScreen\(\{ requestedRef: null \}\); resetScreenSelection\(\); render\(\);/, 'Back rebinds the destination Screen fixture before restoring expression-owned selection');
-  assert.match(page, /Lens\.revisitScreenWalk\(state\.lens, state\.walk, step\.sequence\); bindExpressionsForCurrentScreen\(\{ requestedRef: null \}\); resetScreenSelection\(\); render\(\);/, 'Revisit rebinds the destination Screen fixture before restoring expression-owned selection');
-  assert.match(page, /const explicitTarget = Boolean\(target\.elementRef \|\| target\.pathwayRef \|\| target\.nodeRef\)/);
-  assert.match(page, /if \(!explicitTarget\) resetScreenSelection\(\)/, 'screen-only search results use expression context, while explicit control/pathway results retain their own coordinate');
-  assert.match(page, /await loadExpressionFixtureSourcesForUi\(\);[\s\S]*?bindExpressionsForCurrentScreen\(\{ requestedRef: requestedExpression \}\);\s*if \(expressionAvailable\(\)\) setExpression\(state\.expressionRef, \{ renderNow: false \}\);/, 'direct screen entry loads the accepted fixture set, binds the current Screen fixture, and activates its expression even without an explicit expression query parameter');
-});
-
-test('changing expressions focuses Behavior and Depth from explicit relationship order, not JSON assignment key order', () => {
-  assert.match(page, /function preferredExpressionPathway\(expressionRef\)/);
-  assert.match(page, /expression\.relationshipRefs\s*\.filter\(\(relationshipRef\) => Object\.hasOwn\(expression\.assignments, relationshipRef\)\)\s*\.reverse\(\)/);
-  assert.doesNotMatch(page, /Object\.entries\(expression\.assignments\)/, 'JSON object key insertion order is not a semantic priority contract');
-  assert.match(page, /const valueRef = expression\.assignments\[relationshipRef\]/);
-  assert.match(page, /const pathwayRef = value\?\.pathwayRefs\?\.\[0\] \?\? null/);
-  assert.match(page, /const changedExpression = state\.expressionRef !== expressionRef/);
-  assert.match(page, /const preserveCurrent = !changedExpression && paths\.includes\(state\.expressionPathwayRef\)/, 'a user-selected pathway is preserved only while staying within the same expression');
-  assert.match(page, /preserveCurrent \? state\.expressionPathwayRef : preferredExpressionPathway\(expressionRef\)/);
+test('screen travel resets presentation context without inventing cross-Screen State', () => {
+  assert.match(page, /function travel\([\s\S]*state\.realization = Realization\.emptyRealizationContext\(\);[\s\S]*render\(\);/);
+  assert.match(page, /function jumpTo\([\s\S]*state\.realization = Realization\.emptyRealizationContext\(\);[\s\S]*render\(\);/);
+  assert.match(page, /const requestedExpression = params\.get\('expression'\) \?\? \(params\.get\('example'\) \? `expression:\$\{params\.get\('example'\)\}` : null\)/);
+  assert.match(page, /Expressions\.expressionFor\(Expressions\.expressionsFor\(state\.lens, screenRef\(\)\), requestedExpression\)/);
 });
 
 // [VXG RealForever]

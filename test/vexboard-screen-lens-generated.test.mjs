@@ -21,7 +21,9 @@ test('the committed lens is current with its adapter, overlay and generator', ()
   assert.equal(verified.state, 'PASS');
   assert.deepEqual(verified.builds.map((entry) => `${entry.subject}:${entry.build}:${entry.state}`), ['vexlife-android:stable:PASS', 'vexlife-android:main:PASS'], 'every catalog build is verified at its own pointer');
   assert.match(raw.provenance.generator, /^vexlife-android-adapter\//);
-  assert.equal(raw.provenance.projectorBlobSha1, '07b0b34a5ae269212fd10a02f20fc58d94c1093d');
+  assert.equal(raw.provenance.projectorBlobSha1, '9c8f41180cc9e8d8c7793524cd85f790d706ff33');
+  // D34 extended: the projector's own module imports (Kotlin reading, realization, examples) are bound too.
+  assert.match(raw.provenance.projectorSupportSha256, /^[0-9a-f]{64}$/);
   assert.match(raw.provenance.sourceCommit, /^[0-9a-f]{40}$/);
   assert.equal(raw.provenance.sourceCommit, lens.sourceSnapshot.commit);
   assert.match(lens.sourceSnapshot.notes[0], /Regenerate it; do not edit by hand/);
