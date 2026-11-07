@@ -184,7 +184,7 @@
       "workRef": "work.vexboard.source-projectors",
       "parentWorkRefOrNull": "work.vexboard.outcome",
       "label": "Source projectors and lived comparison",
-      "purpose": "Use the same semantic/rendering foundation to project source-owned VexWork/Atlas and repository VexArchitecture truth read-only, then compare intended VexBoard journeys with observed lived evidence without copying source ownership. VexWork PR #215 accepted one exact Android/VexStream relationship slice through the existing Android projector. The Living Screen Lens currentness/projection-truth child is now accepted and COMPLETED through PR #238 / closure PR #250, so Screen Lens itself is no longer an unfinished Source Projectors edge. This broader outcome remains RUNNING for the VexStream living-Origin expected-versus-observed evidence comparison, broader evidence/federation consumers, automatic sourceRevision/currentness where repeated use earns it, and materially different consumers that may justify additional source-owned relationship shapes.",
+      "purpose": "Use the same semantic/rendering foundation to project source-owned VexWork/Atlas and repository VexArchitecture truth read-only, then compare intended VexBoard journeys with observed lived evidence without copying source ownership. VexWork PR #215 accepted one exact Android/VexStream relationship slice through the existing Android projector. The Living Screen Lens currentness/projection-truth child is now accepted and COMPLETED through PR #238 / closure PR #250, so Screen Lens itself is no longer an unfinished Source Projectors edge. This broader outcome remains RUNNING for the VexStream living-Origin expected-versus-observed evidence comparison, broader evidence/federation consumers, automatic sourceRevision/currentness where repeated use earns it, and materially different consumers that may justify additional source-owned relationship shapes. Draft PR #276 now pressures one materially different source-owned relationship shape—VexPartner circuits—through the existing Screen Lens Behavior/Depth model, proving the generic Android adapter can derive Partner/Connection/Signal/Observation/Receiver/Store depth and cross-Family feedback without a fifth face or a feature-authored BoardGraph; acceptance and Stable/Main repinning remain separate currentness effects.",
       "workClass": "OUTCOME",
       "state": "RUNNING",
       "priorityClass": "NORMAL",
@@ -226,11 +226,13 @@
         "git.commit.vexwork.cbfce46235b628635774c0d3c849fcfe5d8dd236",
         "github.pull.vexwork.250",
         "git.commit.vexwork.20fe8285ba78e84c7865750306e4531e4406d418",
-        "github.issue.vexwork.238.comment.6677190552"
+        "github.issue.vexwork.238.comment.6677190552",
+        "github.pull.vexwork.276",
+        "github.pull.vexlife-android.219"
       ],
       "nextProcessRefs": [],
       "createdAt": "2026-10-23T00:14:29.000Z",
-      "updatedAt": "2026-11-06T04:59:10.000Z"
+      "updatedAt": "2026-11-07T10:05:00.000Z"
     },
     {
       "schemaVersion": "vexwork.work-item/v1",
@@ -703,13 +705,15 @@
         "repo.vextreme:pages/vexarchitecture-first-stable-body.html",
         "repo.vextreme:pages/vexarchitecture-live-demonstration.html",
         "response.victor.screen-lens-realization-regression.20261107",
-        "github.pull.vexlife-android.218"
+        "github.pull.vexlife-android.218",
+        "github.pull.vexwork.276",
+        "github.pull.vexlife-android.219"
       ],
       "nextProcessRefs": [
         "process.vexwork.quality-review"
       ],
       "createdAt": "2026-11-07T06:24:13.000Z",
-      "updatedAt": "2026-11-07T06:24:16.000Z"
+      "updatedAt": "2026-11-07T10:05:00.000Z"
     }
   ],
   "transitions": [
