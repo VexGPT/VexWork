@@ -644,6 +644,7 @@ const state = {
   expressionResolution: null,
   expressionPathwayRef: null,
   expressionError: null,
+  expressionMotion: null,
   toast: null,
 };
 let refs = {};
@@ -1212,17 +1213,27 @@ function selectionPathRefs() {
   const path = Lens.elementPath(state.lens, anchor);
   return { selected: anchor, ancestors: new Set(path.slice(0, -1).map((element) => element.ref)) };
 }
-function markElement(node, element, marks) {
-  node.dataset.ref = element.ref;
-  if (marks.selected === element.ref) node.classList.add('sel');
-  if (marks.ancestors.has(element.ref)) node.classList.add('anc');
+function markElement(node, element, marks, { resolution = state.expressionResolution, interactive = true } = {}) {
+  if (interactive) node.dataset.ref = element.ref;
+  else node.dataset.peekRef = element.ref;
+  if (interactive && marks.selected === element.ref) node.classList.add('sel');
+  if (interactive && marks.ancestors.has(element.ref)) node.classList.add('anc');
   if (element.pathwayRef) node.classList.add('has-path');
   const delta = deltaClass(element).trim();
   if (delta) node.classList.add(delta);
-  if (expressionElementParticipates(element.ref)) node.classList.add('x-part');
+  const participates = expressionElementParticipates(element.ref, resolution);
+  if (participates) node.classList.add('x-part');
+  else if (resolution && element.ownerRef === screenRef()) node.classList.add('x-unclaimed');
   node.title = `${element.label} · ${element.ref}${delta ? `\n${delta === 'delta-added' ? 'Not in Stable' : delta === 'delta-changed' ? 'Differs from Stable' : 'Its pathway differs from Stable'}` : ''}`;
+  if (!interactive) return node;
   node.addEventListener('click', (event) => { event.stopPropagation(); selectElement(element.ref); });
-  if (element.navigatesTo) node.addEventListener('dblclick', (event) => { event.stopPropagation(); travel(element); });
+  const exposing = element.navigatesTo ? null : expressionExposingElement(element.ref);
+  if (element.navigatesTo) {
+    node.addEventListener('dblclick', (event) => { event.stopPropagation(); travel(element); });
+  } else if (exposing) {
+    node.title += `\nDouble-click to show expression: ${exposing.label}`;
+    node.addEventListener('dblclick', (event) => { event.stopPropagation(); setExpression(exposing.expressionRef); });
+  }
   return node;
 }
 function travelButton(element) {
@@ -1232,9 +1243,11 @@ function travelButton(element) {
   const order = slot === 'BOTTOM' ? 'above' : slot === 'FAB' ? 'left above' : 'below above right left';
   return h('button', { class: `travel ${order.split(' ')[0]}`, type: 'button', title: to, 'aria-label': to, dataset: { order }, onclick: (event) => { event.stopPropagation(); travel(element); } }, to);
 }
-function renderSurfaceElement(tree, marks, context) {
+function renderSurfaceElement(tree, marks, context, view) {
   const { element, children } = tree;
-  const kids = () => children.filter((child) => child.element.kind !== 'SHEET' && child.element.kind !== 'DIALOG').map((child) => renderSurfaceElement(child, marks, context));
+  const kids = () => children
+    .filter((child) => child.element.kind !== 'SHEET' && child.element.kind !== 'DIALOG')
+    .map((child) => renderSurfaceElement(child, marks, context, view));
   let node;
   switch (element.kind) {
     case 'COLUMN': case 'REGION': node = h('div', { class: 'el-column' }, kids()); break;
@@ -1250,60 +1263,150 @@ function renderSurfaceElement(tree, marks, context) {
     case 'FIELD': node = h('div', { class: 'el-field' }, h('span', {}, element.label)); break;
     default: node = h('div', {}, element.label);
   }
-  markElement(node, element, marks);
-  const runtimeItems = expressionRuntimeItemsFor(element.ref);
-  if (runtimeItems.length) node.append(h('div', { class: 'x-runtime', 'aria-label': 'Runtime representative items' }, runtimeItems.map((item) => h('span', { class: 'x-runtime-item', title: `${item.itemRef} · runtime identity, not a static Screen element` }, item.label ?? item.itemRef))));
-  const go = travelButton(element);
-  if (go) node.append(go);
+  markElement(node, element, marks, view);
+  const runtimeItems = expressionRuntimeItemsFor(element.ref, view.resolution);
+  if (runtimeItems.length) {
+    node.append(h('div', { class: 'x-runtime', 'aria-label': 'Runtime representative items' },
+      runtimeItems.map((item) => h('span', {
+        class: 'x-runtime-item',
+        title: `${item.itemRef} · runtime identity, not a static Screen element`,
+      }, item.label ?? item.itemRef))));
+  }
+  if (view.interactive) {
+    const go = travelButton(element);
+    if (go) node.append(go);
+  }
   return node;
 }
-function renderSurface() {
+function treeForRef(trees, ref) {
+  for (const tree of trees) {
+    if (tree.element.ref === ref) return tree;
+    const nested = treeForRef(tree.children, ref);
+    if (nested) return nested;
+  }
+  return null;
+}
+function renderPhone(expressionRef = state.expressionRef, { interactive = true } = {}) {
   const screen = currentScreen();
-  const marks = selectionPathRefs();
+  const resolution = expressionRef ? expressionResolutionFor(expressionRef) : null;
+  const view = { resolution, interactive };
+  const marks = interactive ? selectionPathRefs() : { selected: null, ancestors: new Set() };
   const elements = Lens.elementsForScreen(state.lens, screen.screenRef);
   const bySlot = (slot) => Lens.elementTree(elements.filter((element) => element.ownerRef !== screen.screenRef)).filter((tree) => tree.element.slot === slot);
-  const anchor = anchorElement();
+  const anchor = interactive ? anchorElement() : null;
   const fabRefs = new Set(elements.filter((element) => element.ref === 'element.shell.fab-cluster' || Lens.elementPath(state.lens, element.ref).some((step) => step.slot === 'FAB')).map((element) => element.ref));
   const context = { fabOpen: Boolean(anchor && fabRefs.has(anchor.ref)) };
+
   const top = bySlot('TOP')[0];
   const topBar = h('div', { class: 'phone-top' });
   if (top) {
-    for (const child of top.children) if (child.element.navigatesTo !== Lens.BACK || state.walk.steps.length > 1) topBar.append(child.element.kind === 'BUTTON'
-      ? (() => { const button = markElement(h('button', { class: 'el-back', type: 'button' }, `‹ ${child.element.label}`), child.element, marks); const go = travelButton(child.element); if (go) button.append(go); return button; })()
-      : renderSurfaceElement(child, marks, context));
-    markElement(topBar, top.element, marks);
+    for (const child of top.children) {
+      if (child.element.navigatesTo === Lens.BACK && state.walk.steps.length <= 1) continue;
+      if (child.element.kind === 'BUTTON') {
+        const button = markElement(h('button', { class: 'el-back', type: 'button' }, `‹ ${child.element.label}`), child.element, marks, view);
+        if (interactive) {
+          const go = travelButton(child.element);
+          if (go) button.append(go);
+        }
+        topBar.append(button);
+      } else {
+        topBar.append(renderSurfaceElement(child, marks, context, view));
+      }
+    }
+    markElement(topBar, top.element, marks, view);
   }
   topBar.append(h('span', { class: 'phone-title' }, screen.label));
+
   const body = h('div', { class: 'phone-body' });
-  const own = Lens.elementTree(screen.elements);
-  if (own.length) for (const tree of own) body.append(renderSurfaceElement(tree, marks, context));
-  else body.append(h('div', { class: 'phone-held' }, h('strong', {}, screen.mapped === 'CHROME_ONLY' ? `${screen.label} content is held` : `${screen.label} is not projected yet`), h('br'), screen.summary ?? ''));
-  const phone = h('div', { class: `phone${marks.selected ? ' dimmed' : ''}`, 'aria-label': `${screen.label} surface` }, topBar, body);
+  const ownTrees = Lens.elementTree(screen.elements);
+  const bodyTrees = ownTrees.filter((tree) => !['SHEET', 'DIALOG'].includes(tree.element.kind));
+  if (bodyTrees.length) {
+    for (const tree of bodyTrees) body.append(renderSurfaceElement(tree, marks, context, view));
+  } else {
+    body.append(h('div', { class: 'phone-held' },
+      h('strong', {}, screen.mapped === 'CHROME_ONLY' ? `${screen.label} content is held` : `${screen.label} is not projected yet`),
+      h('br'),
+      screen.summary ?? ''));
+  }
+
+  const phone = h('div', {
+    class: `phone${interactive && marks.selected ? ' dimmed' : ''}`,
+    'aria-label': `${screen.label}${expressionRef ? ` · ${Expressions.expressionFor(state.expressionFixture, expressionRef)?.label ?? expressionRef}` : ''} surface`,
+  }, topBar, body);
+
   const bottom = bySlot('BOTTOM')[0];
   if (bottom) {
     const bar = h('div', { class: 'phone-bottom' });
     for (const child of bottom.children) {
-      const button = markElement(h('button', { class: `el-nav${child.element.navigatesTo === screen.screenRef ? ' here' : ''}`, type: 'button' }, h('span', { class: 'glyph', 'aria-hidden': 'true' }), child.element.label), child.element, marks);
-      const go = travelButton(child.element); if (go) button.append(go);
+      const button = markElement(h('button', { class: `el-nav${child.element.navigatesTo === screen.screenRef ? ' here' : ''}`, type: 'button' },
+        h('span', { class: 'glyph', 'aria-hidden': 'true' }), child.element.label), child.element, marks, view);
+      if (interactive) {
+        const go = travelButton(child.element);
+        if (go) button.append(go);
+      }
       bar.append(button);
     }
-    markElement(bar, bottom.element, marks);
+    markElement(bar, bottom.element, marks, view);
     phone.append(bar);
   }
+
   const fab = bySlot('FAB')[0];
   if (fab) {
-    const zone = h('div', { class: 'fab-zone' }, fab.children.map((child) => renderSurfaceElement(child, marks, context)));
-    markElement(zone, fab.element, marks);
+    const zone = h('div', { class: 'fab-zone' }, fab.children.map((child) => renderSurfaceElement(child, marks, context, view)));
+    markElement(zone, fab.element, marks, view);
     phone.append(zone);
   }
-  // A sheet or dialog shows when it is selected, or when the selected control opens it.
-  const opens = (overlay) => overlay.symbol && anchor?.intent && new RegExp(`\\b(open|toggle)\\(${overlay.symbol.split('.').pop()}\\)`).test(anchor.intent);
-  const sheet = screen.elements.find((element) => (element.kind === 'SHEET' || element.kind === 'DIALOG') && (anchor?.ref === element.ref || opens(element)));
-  const sheetOpen = Boolean(sheet);
-  if (sheetOpen) phone.append(markElement(sheet.kind === 'DIALOG'
-    ? h('div', { class: 'dialog-zone opened', role: 'presentation' }, h('p', { class: 'el-text TITLE' }, sheet.label), h('p', { class: 'el-text' }, sheet.visibleWhen ?? ''))
-    : h('div', { class: 'sheet-zone opened' }, h('div', { class: 'grab' }), h('p', { class: 'el-text TITLE' }, sheet.label), h('p', { class: 'el-text' }, sheet.visibleWhen ?? '')), sheet, marks));
-  return h('div', { class: 'surface', onclick: () => clearSelection() }, phone);
+
+  const participating = new Set(resolution?.surface.elementRefs ?? []);
+  for (const overlay of screen.elements.filter((element) => ['SHEET', 'DIALOG'].includes(element.kind) && participating.has(element.ref))) {
+    const overlayTree = treeForRef(ownTrees, overlay.ref);
+    const contents = (overlayTree?.children ?? []).map((child) => renderSurfaceElement(child, marks, context, view));
+    const zone = overlay.kind === 'DIALOG'
+      ? h('div', { class: 'dialog-zone opened', role: 'presentation' },
+        h('p', { class: 'el-text TITLE' }, overlay.label),
+        overlay.visibleWhen ? h('p', { class: 'el-text' }, overlay.visibleWhen) : null,
+        ...contents)
+      : h('div', { class: 'sheet-zone opened' },
+        h('div', { class: 'grab' }),
+        h('p', { class: 'el-text TITLE' }, overlay.label),
+        overlay.visibleWhen ? h('p', { class: 'el-text' }, overlay.visibleWhen) : null,
+        h('div', { class: 'el-column', style: 'max-height:46vh;overflow:auto' }, contents));
+    markElement(zone, overlay, marks, view);
+    phone.append(zone);
+  }
+
+  if (!interactive) phone.inert = true;
+  return phone;
+}
+function renderSurface() {
+  if (!expressionAvailable()) {
+    return h('div', { class: 'surface', onclick: () => clearSelection() }, renderPhone(null, { interactive: true }));
+  }
+  const list = expressionList();
+  const active = activeExpression();
+  const index = list.findIndex((entry) => entry.expressionRef === active?.expressionRef);
+  const current = h('div', { class: 'xslot' }, expressionCaption(active), renderPhone(active.expressionRef, { interactive: true }));
+  const peek = (entry, side) => {
+    if (!entry) return null;
+    const wrap = h('div', {
+      class: `xpeek ${side}`,
+      role: 'button',
+      title: entry.summary ?? entry.label,
+      'aria-label': `${side === 'prev' ? 'Previous' : 'Next'} expression: ${entry.label}`,
+    }, h('span', { class: 'xpeek-label' }, h('span', { class: 'xk' }, expressionKind(entry)), h('b', {}, entry.label)),
+      renderPhone(entry.expressionRef, { interactive: false }));
+    wrap.addEventListener('click', (event) => { event.stopPropagation(); setExpression(entry.expressionRef); });
+    return wrap;
+  };
+  const motion = state.expressionMotion;
+  state.expressionMotion = null;
+  const stage = h('div', { class: `xstage${motion ? ` enter-${motion}` : ''}` },
+    current,
+    peek(index > 0 ? list[index - 1] : null, 'prev'),
+    peek(index >= 0 && index < list.length - 1 ? list[index + 1] : null, 'next'));
+  const surface = h('div', { class: 'surface', onclick: () => clearSelection() }, stage);
+  wireExpressionSwipe(surface);
+  return surface;
 }
 
 function renderStructure() {
