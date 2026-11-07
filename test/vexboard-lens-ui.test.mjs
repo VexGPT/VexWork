@@ -59,6 +59,12 @@ test('roles always carry a non-color chip and three palette modes exist', () => 
   assert.match(page, /palette-high-contrast/);
   assert.match(page, /role-RESULT/);
   assert.match(page, /role-REALIZATION/);
+  assert.match(page, /role-CONNECTION/);
+  assert.match(page, /role-DECODER/);
+  assert.match(page, /role-RECEIVER/);
+  assert.match(page, /role-PARTNER/);
+  assert.match(page, /role-SIGNAL/);
+  assert.match(page, /PARTNER_CIRCUIT: 'Partner circuit'/);
   assert.match(page, /Presentation\.VEXBOARD_PALETTE_STORAGE_KEY/);
 });
 
