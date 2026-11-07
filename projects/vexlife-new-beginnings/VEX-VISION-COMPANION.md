@@ -585,8 +585,15 @@ current implementation edge:
   provider diff 4 exact Vision/Safety paths
   historical focused SCREEN owner-binding proof 12/12 PASS
   historical focused macOS permission-agent proof 17/17 PASS
-  fresh SourceOwner A003 formed against accepted repaired baseline
-  live Safety currentness is part of the proof and may fail closed on expiry
+  SourceOwner A003 PASS on exact currentized head/tree
+  live Safety observed CURRENT_PERMITTED at 2026-11-07T11:04:53.344Z
+  hostPermissionRequestAuthorized=true while screenCaptureAuthorized=false / activeObservation=false
+  focused SCREEN owner-binding 12/12 PASS
+  focused macOS permission-agent 17/17 PASS
+  full sdk-check PASS: 7014 pass / 0 fail / 3 skip; READY yes
+  fresh Independent Assurance CLEAR_ON_EXACT_HEAD
+  distinct Formal Review pending at github.issue.vextreme-sdk.1922
+  live Safety currentness must be re-grounded again before later lifecycle/effect consumption
 ~~~
 
 It is READY as work because the human outcome and source owners are sufficiently clear.
