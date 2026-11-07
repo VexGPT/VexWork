@@ -26,7 +26,11 @@
     "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexMethod.kt",
     "repo.vexlife-android:architecture/relay/src/main/kotlin/com/vextreme/vexlife/android/relay/VexCompoundRelay.kt",
     "repo.vexlife-android:architecture/vexarchitecture/VEXLOGGER.md",
-    "projects/cloud-connectivity/CLOUD-CONNECTIVITY-LAB.md"
+    "projects/cloud-connectivity/CLOUD-CONNECTIVITY-LAB.md",
+    "projects/cloud-connectivity/SECURITY-CONNECTIVITY-EPIC-HANDOFF.md",
+    "repo.vexlife:docs/VEXHOME-HOSTED-CAPABILITIES.md",
+    "repo.vexlife:scripts/macos-lifecycle.mjs",
+    "repo.vexlife:scripts/serve-browser.mjs"
   ],
   "formedAt": "2026-11-06T17:25:00.000-08:00"
 }
