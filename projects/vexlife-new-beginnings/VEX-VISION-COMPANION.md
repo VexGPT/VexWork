@@ -407,8 +407,8 @@ Current product candidate:
 ~~~text
 VexLife-Prod PR #54
 base 56aa338f186e237bbcdfd91859b761c2ef203f1e
-head f08609836b5a916a9ad6503af2d6acf5bd9be805
-tree 1b7919f5c2ee8112db8b02321ef2a0e02f706fc0
+head 30acf0a6518476025b978698c98018f9762bfa68
+tree 442373d722e0b1c3e91f3904d45c4e6c219335f4
 ~~~
 
 PR #54 is intentionally stacked on the stable current #53 presentation source rather than widening

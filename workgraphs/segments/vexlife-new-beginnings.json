@@ -444,7 +444,7 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-11-07T08:06:00.000Z",
-      "updatedAt": "2026-11-07T10:18:00.000Z",
+      "updatedAt": "2026-11-07T10:26:00.000Z",
       "workRef": "work.vexlife.new-beginnings.vision-companion-real-browser-witness",
       "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
       "label": "High — Vex Vision companion for real-browser witnessing",
@@ -491,7 +491,8 @@
         "github.commit.vextreme-sdk.26f74ea4b5a9d4e37aa9e1fb09ae18d3f0e51180",
         "github.pull.vextreme-sdk.1918.comment.6705514788",
         "github.pull.vexlife-prod.54",
-        "github.commit.vexlife-prod.f08609836b5a916a9ad6503af2d6acf5bd9be805"
+        "github.commit.vexlife-prod.f08609836b5a916a9ad6503af2d6acf5bd9be805",
+        "github.commit.vexlife-prod.30acf0a6518476025b978698c98018f9762bfa68"
       ],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS"
@@ -502,7 +503,7 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-11-07T10:18:00.000Z",
-      "updatedAt": "2026-11-07T10:18:00.000Z",
+      "updatedAt": "2026-11-07T10:26:00.000Z",
       "workRef": "work.vexlife.new-beginnings.vision-companion-product-surface",
       "parentWorkRefOrNull": "work.vexlife.new-beginnings.vision-companion-real-browser-witness",
       "label": "High — VexLife Vision Family + held product control surface",
@@ -522,7 +523,8 @@
         "github.pull.vexlife-prod.54",
         "github.commit.vexlife-prod.f08609836b5a916a9ad6503af2d6acf5bd9be805",
         "github.pull.vexwork.267",
-        "github.pull.vexlife-android.219"
+        "github.pull.vexlife-android.219",
+        "github.commit.vexlife-prod.30acf0a6518476025b978698c98018f9762bfa68"
       ],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS"
