@@ -133,6 +133,235 @@ repo.vexlife:scripts/serve-browser.mjs
 Do not use VexLife-Prod as the backend reference for this build. It is still being reconstructed and
 is a later presentation/product consumer.
 
+## Exact direct source packet
+
+Use these exact links as the entry packet. They are pinned to the observed source heads at handoff
+formation so the successor does not have to search for the files. Before any mutation, re-ground the
+repository's current head and reopen any source that changed after these pins.
+
+### Cloud Connectivity — VexWork PR #257
+
+PR:
+https://github.com/VexGPT/VexWork/pull/257
+
+Pinned candidate head:
+e59efe96830ba9247baa14cad28392422bbfe6cc
+
+Read in this order:
+
+1. Coordinated build handoff — this file
+   https://github.com/VexGPT/VexWork/blob/e59efe96830ba9247baa14cad28392422bbfe6cc/projects/cloud-connectivity/SECURITY-CONNECTIVITY-EPIC-HANDOFF.md
+
+   Why:
+   owns the cross-Project sequencing, first-instance mission and integrated acceptance test.
+
+2. Cloud Connectivity Project README
+   https://github.com/VexGPT/VexWork/blob/e59efe96830ba9247baa14cad28392422bbfe6cc/projects/cloud-connectivity/README.md
+
+   Why:
+   owns Project purpose, scope, current architecture distinctions and completion direction.
+
+3. VexService / connectivity / automation architecture
+   https://github.com/VexGPT/VexWork/blob/e59efe96830ba9247baa14cad28392422bbfe6cc/projects/cloud-connectivity/VEXSERVICE-CONNECTIVITY-AND-AUTOMATION.md
+
+   Why:
+   owns the device-network / service / operation separation, candidate VexService graduation,
+   Vex Home hosted-capability placement and background automation grammar.
+
+4. Cloud Connectivity Lab
+   https://github.com/VexGPT/VexWork/blob/e59efe96830ba9247baa14cad28392422bbfe6cc/projects/cloud-connectivity/CLOUD-CONNECTIVITY-LAB.md
+
+   Why:
+   owns the service-feature library, minimum-to-maximum valid contract composition, typed field
+   controls, lawful error forms, outward scope, validation and contract-evolution boundary.
+
+5. VexLife simulation plan
+   https://github.com/VexGPT/VexWork/blob/e59efe96830ba9247baa14cad28392422bbfe6cc/projects/cloud-connectivity/VEXLIFE-SIMULATION-PLAN.md
+
+   Why:
+   owns C01-C37 scenario pressure and the synthetic system topology.
+
+6. Demonstration checklist
+   https://github.com/VexGPT/VexWork/blob/e59efe96830ba9247baa14cad28392422bbfe6cc/projects/cloud-connectivity/DEMONSTRATION-CHECKLIST.md
+
+   Why:
+   defines the coverage/proof envelope; use it to prevent a narrow happy-path implementation from
+   being mistaken for the completed demonstrator.
+
+7. Cloud Connectivity Workgraph
+   https://github.com/VexGPT/VexWork/blob/e59efe96830ba9247baa14cad28392422bbfe6cc/workgraphs/segments/cloud-connectivity.json
+
+   Why:
+   owns current Work ordering/dependencies/state. Do not reconstruct sequencing from prose when the
+   graph already states it.
+
+### Full Security — VexWork PR #256
+
+PR:
+https://github.com/VexGPT/VexWork/pull/256
+
+Pinned candidate head:
+b83c63d8092667a1c1d1856422e02128ddac4be1
+
+Read these exact sources:
+
+1. Foundation starting map
+   https://github.com/VexGPT/VexWork/blob/b83c63d8092667a1c1d1856422e02128ddac4be1/projects/full-security/FOUNDATION-STARTING-MAP.md
+
+   Why:
+   most important build source. It identifies canonical VexLife Home as the security owner and gives
+   F0-F7 ordering. Consume this before inventing account/device/session backend state.
+
+2. Candidate security relationship patterns
+   https://github.com/VexGPT/VexWork/blob/b83c63d8092667a1c1d1856422e02128ddac4be1/projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md
+
+   Why:
+   names repeated security pressures such as Possession, Admission, Session, Capability, Revocation,
+   Rebinding, Currentness Reconciliation, Integrity, Recovery and Evidence without promoting them
+   into a universal SecurityManager.
+
+3. Full-scope dashboard design
+   https://github.com/VexGPT/VexWork/blob/b83c63d8092667a1c1d1856422e02128ddac4be1/projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md
+
+   Why:
+   scale pressure only. Do not start implementation here; use it to ensure the shared semantic model
+   will scale after the causal body works.
+
+4. Android account/device scenarios
+   https://github.com/VexGPT/VexWork/blob/b83c63d8092667a1c1d1856422e02128ddac4be1/projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md
+
+   Why:
+   source-backed scenario pressure for admission/session/revocation/reinstall/offline/currentness.
+
+5. Full Security Workgraph
+   https://github.com/VexGPT/VexWork/blob/b83c63d8092667a1c1d1856422e02128ddac4be1/workgraphs/segments/full-security.json
+
+   Why:
+   owns current dependency/state order for the Full Security lane.
+
+### Current VexLife — canonical host + security substrate
+
+Observed current main head at handoff formation:
+7d59753687ff12726b0d309ee2dde028b5f89e8a
+
+Repository:
+https://github.com/vgong24/VexLife/tree/7d59753687ff12726b0d309ee2dde028b5f89e8a
+
+Read only these implicated sources first:
+
+1. VexLife README
+   https://github.com/vgong24/VexLife/blob/7d59753687ff12726b0d309ee2dde028b5f89e8a/README.md
+
+   Why:
+   current lived startup/product topology; establishes one human front door, Home custody, runtime
+   and browser/API process behavior.
+
+2. Vex Home hosted capabilities
+   https://github.com/vgong24/VexLife/blob/7d59753687ff12726b0d309ee2dde028b5f89e8a/docs/VEXHOME-HOSTED-CAPABILITIES.md
+
+   Why:
+   canonical placement law for the first Cloud Connectivity server realization:
+   CAPABILITY_CONTRACT != DEPLOYMENT_TOPOLOGY.
+
+3. Remote authenticated session
+   https://github.com/vgong24/VexLife/blob/7d59753687ff12726b0d309ee2dde028b5f89e8a/docs/HOME-BRIDGE-REMOTE-AUTHENTICATED-SESSION.md
+
+   Why:
+   owns remote possession/session authentication meaning. Do not reproduce it in Cloud Connectivity.
+
+4. Session authority
+   https://github.com/vgong24/VexLife/blob/7d59753687ff12726b0d309ee2dde028b5f89e8a/docs/HOME-BRIDGE-SESSION-AUTHORITY.md
+
+   Why:
+   owns current session + membership + capability/revocation admission meaning. This is the security
+   side of the first integrated operation.
+
+5. Mac lifecycle
+   https://github.com/vgong24/VexLife/blob/7d59753687ff12726b0d309ee2dde028b5f89e8a/scripts/macos-lifecycle.mjs
+
+   Why:
+   shows how one human start converges/reuses owned processes. Use it to preserve:
+   NEW CAPABILITY != NEW HUMAN-MANAGED TERMINAL.
+
+6. Browser/API process
+   https://github.com/vgong24/VexLife/blob/7d59753687ff12726b0d309ee2dde028b5f89e8a/scripts/serve-browser.mjs
+
+   Why:
+   current HTTP composition surface at 127.0.0.1:18110. It may host the first bounded Cloud
+   Connectivity module, but HTTP_ROUTE != CLOUD_DOMAIN_OWNER.
+
+Do not broad-read all VexLife before starting. Descend from these sources into an implementation file
+only when the exact next edge requires it.
+
+### Current VexLife-Android — semantic/runtime architecture
+
+Observed current main head at handoff formation:
+ecbb6987d1da338fa0adf7297456d3f652f04155
+
+Repository:
+https://github.com/vgong24/VexLife-Android/tree/ecbb6987d1da338fa0adf7297456d3f652f04155
+
+Required architecture sources:
+
+1. Stable VexFamily
+   https://github.com/vgong24/VexLife-Android/blob/ecbb6987d1da338fa0adf7297456d3f652f04155/architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexFamily.kt
+
+   Why:
+   Cloud Connectivity uses this grammar:
+   Control + CURRENT State -> act(...) -> admitted State + Begin.
+
+2. VexMethod
+   https://github.com/vgong24/VexLife-Android/blob/ecbb6987d1da338fa0adf7297456d3f652f04155/architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexMethod.kt
+
+   Why:
+   reusable one-attempt Success / Failure / Error contract. Do not invent FooApiResult.
+
+3. VexCompoundRelay
+   https://github.com/vgong24/VexLife-Android/blob/ecbb6987d1da338fa0adf7297456d3f652f04155/architecture/relay/src/main/kotlin/com/vextreme/vexlife/android/relay/VexCompoundRelay.kt
+
+   Why:
+   reusable convergence substrate for independently owned current truths. It does not admit Family
+   State.
+
+When Android implementation begins, then descend to the exact current Connected Services/Home
+security sources named by Full Security's foundation map rather than searching by analogy.
+
+### VexArchitecture explanatory witness
+
+These are explanation/witness surfaces, not source authority:
+
+Builder Field Guide:
+https://vgong24.github.io/Vextreme/pages/vexarchitecture-first-stable-body.html
+
+Live Demonstration:
+https://vgong24.github.io/Vextreme/pages/vexarchitecture-live-demonstration.html
+
+Pinned Vextreme source head observed at handoff formation:
+dac1378f95b9c77091b4a63b0ceba8705e018572
+
+Use them to understand ownership and traversal. When wording and code differ, exact current source and
+accepted owner relationships win.
+
+## Minimum reading order for the successor
+
+Do not make the successor read everything above before acting.
+
+Read in this order:
+
+~~~
+1. this coordinated handoff
+2. Full Security FOUNDATION-STARTING-MAP.md
+3. Cloud VEXSERVICE-CONNECTIVITY-AND-AUTOMATION.md
+4. Cloud CLOUD-CONNECTIVITY-LAB.md
+5. current VexLife VEXHOME-HOSTED-CAPABILITIES.md
+6. current VexLife remote session + session authority docs
+7. current Android VexFamily.kt + VexMethod.kt + VexCompoundRelay.kt
+8. exact implementation sources implicated by the first patient-zero contract
+~~~
+
+Use the Workgraphs/checklists as validation/navigation while building, not as a reason to postpone
+the first executable edge.
+
 ## Shared execution model
 
 The intended first topology is:
