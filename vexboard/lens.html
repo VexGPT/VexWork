@@ -1852,7 +1852,8 @@ function renderGraphFace(face) {
       wrap.append(h('div', { class: 'empty' }, face === 'DEPTH'
         ? [h('strong', {}, 'Nothing underneath'), 'Source names no realizer, data binding or fixture for this expression.']
         : [h('strong', {}, 'Nothing to reach'), 'This expression is how source renders the screen by default.']));
-      return wrap;+    }
+      return wrap;
+    }
   } else
   wrap.append(h('div', { class: 'disposition' },
     h('span', { class: 'k' }, pathway.label), ' ',

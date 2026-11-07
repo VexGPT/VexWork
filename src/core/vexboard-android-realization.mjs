@@ -997,7 +997,8 @@ export function summarizeRealization(tree, { screenKey, knownRefs, screenRef }) 
 // `object Owner { … const val NAME = "literal" … }` across the read sources.
 export function stringConstants(files) {
   const constants = new Map();
-  for (const [path, text] of files) {    if (!path.endsWith('.kt') || !text.includes('const val')) continue;
+  for (const [path, text] of files) {
+    if (!path.endsWith('.kt') || !text.includes('const val')) continue;
     for (const object of text.matchAll(/\bobject\s+(\w+)[^{]*\{/g)) {
       const open = object.index + object[0].length - 1;
       let close;
