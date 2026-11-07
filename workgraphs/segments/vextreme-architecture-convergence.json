@@ -382,7 +382,8 @@
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/media/vexstream/VexStreamPlaybackService.kt",
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/maps/VexMapsNavigationService.kt",
         "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/widget/vexstream/VexStreamPlaybackWidget.kt",
-        "repo.vexlife-android:app/src/main/AndroidManifest.xml"
+        "repo.vexlife-android:app/src/main/AndroidManifest.xml",
+        "github.pull.vexwork.280"
       ],
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
@@ -620,7 +621,8 @@
     "github.pull.vexwork.214",
     "github.pull.vextreme.570",
     "github.commit.vextreme.3f6ad6ff7e2f18cf6c541ecfc1743772f4b15906",
-    "work.vextreme.architecture-convergence.vexarchitecture-post-partner"
+    "work.vextreme.architecture-convergence.vexarchitecture-post-partner",
+    "github.pull.vexwork.280"
   ],
   "formedAt": "2026-10-29T11:45:00.000Z"
 }
