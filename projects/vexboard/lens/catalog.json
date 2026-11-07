@@ -43,7 +43,7 @@
             "buildRef": "main",
             "label": "Main",
             "summary": "The latest projected commit on the default branch.",
-            "commit": "85de20afa699df87e9a72e414a4df3a364248e30",
+            "commit": "996079e890e96d3272ecaf1b2b1caaea468ebd4d",
             "branch": "main",
             "lens": "vexlife-android.main.screen-lens.json",
             "observedAt": "2026-11-07"
