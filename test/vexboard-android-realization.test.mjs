@@ -295,7 +295,7 @@ test('a rendered example binds to its outermost semantic root, or reports a fore
 
 test('architecture law: the generic realization and example readers carry no product vocabulary', () => {
   // The handoff's architecture test made executable: feature nouns belong to feature source.
-  for (const relative of ['../src/core/vexboard-android-realization.mjs', '../src/core/vexboard-android-examples.mjs', '../src/core/vexboard-kotlin-source.mjs', '../src/shared/vexboard-screen-lens-realization.mjs', '../src/shared/vexboard-screen-lens-expressions.mjs']) {
+  for (const relative of ['../src/core/vexboard-android-realization.mjs', '../src/core/vexboard-android-examples.mjs', '../src/core/vexboard-kotlin-source.mjs', '../src/shared/vexboard-screen-lens-realization.mjs', '../src/shared/vexboard-screen-lens-source-expressions.mjs']) {
     const source = fs.readFileSync(new URL(relative, import.meta.url), 'utf8')
       // language vocabulary that merely spells like a product noun: JS Map / Array#map and Kotlin's map()
       .replace(/\bnew Map\b|\.map\(|\bMap\b|\bflatMap\b|forEach\|forEachIndexed\|map\|onEach/g, '')
