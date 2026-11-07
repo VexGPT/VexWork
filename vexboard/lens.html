@@ -47,7 +47,7 @@ a{color:var(--focus)}
 .chip{display:inline-flex;align-items:center;height:18px;padding:0 6px;border-radius:5px;background:color-mix(in srgb,var(--rc,#64748b) 13%,#fff);color:var(--rc,#64748b);font:600 10.5px/1 var(--sans);letter-spacing:.02em;white-space:nowrap;flex:none}
 .palette-high-contrast .chip{background:#000;color:#fff}
 
-.lens{display:grid;grid-template-rows:auto auto minmax(0,1fr) auto;height:100vh;min-height:560px}
+.lens{display:grid;grid-template-rows:auto auto auto minmax(0,1fr) auto;height:100vh;min-height:560px}
 .bar{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;padding:8px 18px;background:var(--sheet);border-bottom:1px solid var(--rule)}
 .search{position:relative;flex:1;min-width:180px;max-width:520px;margin-left:8px}
 .search input{width:100%;height:32px;padding:0 12px 0 32px;border:1px solid var(--rule);border-radius:8px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%238a93a6' stroke-width='2.4' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E") no-repeat 11px 50%;font-size:13px}
@@ -95,7 +95,7 @@ a{color:var(--focus)}
 .mapped.MAPPED{background:var(--ink)}.mapped.CHROME_ONLY{background:linear-gradient(90deg,var(--ink) 50%,transparent 50%)}.mapped.HELD{background:transparent}
 .screen-chip .visits{font-size:11px;color:var(--muted)}
 
-.main{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;padding:12px 18px 14px;min-height:0}
+.main{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr);gap:28px;padding:12px 18px 14px;min-height:0}
 .side{display:grid;grid-template-rows:auto minmax(0,1fr);min-height:0;perspective:1800px}
 .side-head{display:flex;align-items:center;gap:10px;margin-bottom:8px}
 .side-head h2{margin:0;font-size:13px;font-weight:600;color:var(--muted)}
@@ -155,27 +155,46 @@ a{color:var(--focus)}
 .travel.right{left:calc(100% + 8px);top:50%;transform:translateY(-50%)}
 .travel.badge{left:auto;right:-8px;top:-10px;transform:none;height:20px;padding:0 8px;font-size:11px}
 
-/* Source-backed Screen expressions: one viewing coordinate shared by all four existing faces. */
-.xrail{grid-column:1/-1;display:flex;align-items:center;gap:7px;min-width:0;padding:7px 10px;background:var(--sheet);border:1px solid var(--rule);border-radius:10px}
+/* Source-backed Screen expressions: one shared dimension over the four existing faces. */
+.xrail{display:flex;align-items:center;gap:8px;min-width:0;padding:6px 18px;background:var(--sheet);border-bottom:1px solid var(--rule)}
 .xrail .xlabel{flex:none;font-size:12px;font-weight:650;color:var(--muted)}
 .xrail .xstep{flex:none;width:28px;height:28px;border:1px solid var(--rule);border-radius:8px;background:#fff;color:var(--ink);font-size:16px;line-height:1}
 .xrail .xstep:disabled{opacity:.35;cursor:default}
-.xchips{display:flex;align-items:center;gap:5px;min-width:0;overflow-x:auto;scrollbar-width:none}
-.xchip{flex:none;height:28px;padding:0 10px;border:1px solid var(--rule);border-radius:999px;background:#fff;color:var(--muted);font-size:12px;white-space:nowrap}
-.xchip[aria-pressed="true"]{border-color:var(--focus);background:color-mix(in srgb,var(--focus) 10%,#fff);color:var(--ink);font-weight:650}
+.xchips{flex:1;min-width:0;display:flex;align-items:center;gap:5px;overflow-x:auto;padding:3px 2px;scrollbar-width:thin}
+.xchip{flex:none;display:inline-flex;align-items:center;gap:5px;max-width:280px;height:28px;padding:0 9px;border:1px solid var(--rule);border-radius:8px;background:#fff;color:var(--ink);font-size:12px;white-space:nowrap}
+.xchip .xt{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.xchip[aria-pressed="true"]{border-color:var(--ink);box-shadow:0 0 0 2px color-mix(in srgb,var(--ink) 14%,transparent);font-weight:650}
 .xrail .xcount{flex:none;font:11.5px var(--mono);color:var(--faint)}
-.xbasis{flex:none;padding:0 6px;border-radius:5px;background:#eef1f5;color:var(--muted);font:600 9.5px/18px var(--mono)}
-.xpaths{display:flex;align-items:center;gap:4px;min-width:0;margin-left:auto;padding-left:7px;border-left:1px solid var(--rule);overflow-x:auto;scrollbar-width:none}
+.xk{flex:none;padding:0 4px;border-radius:4px;background:#eef1f5;color:var(--muted);font:600 9.5px/15px var(--mono)}
+.xcap{display:flex;align-items:center;gap:6px;max-width:100%;min-height:20px;color:var(--muted);font-size:12px;white-space:nowrap}
+.xcap b{color:var(--ink);font-weight:650}.xcap .xwhat{min-width:0;overflow:hidden;text-overflow:ellipsis}
+.xstage{position:relative;flex:1;min-width:0;min-height:0;display:flex;justify-content:center}
+.xslot{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;width:min(340px,100%);min-height:0}
+.xslot>.phone{width:100%;flex:1;height:auto}
+.xpeek{position:absolute;top:28px;bottom:0;z-index:1;display:flex;flex-direction:column;width:min(340px,100%);opacity:.42;cursor:pointer;transition:opacity .15s}
+.xpeek:hover{opacity:.74}.xpeek.prev{right:calc(50% + 186px);transform:scale(.84);transform-origin:right top}.xpeek.next{left:calc(50% + 186px);transform:scale(.84);transform-origin:left top}
+.xpeek>.phone{flex:1;height:auto;pointer-events:none}.xpeek-label{position:absolute;bottom:calc(100% + 6px);left:0;right:0;display:flex;align-items:center;gap:5px;overflow:hidden;color:var(--muted);font-size:12px;white-space:nowrap}.xpeek.prev .xpeek-label{justify-content:flex-end}
+@keyframes x-in-next{from{transform:translateX(64px);opacity:.25}to{transform:none;opacity:1}}
+@keyframes x-in-prev{from{transform:translateX(-64px);opacity:.25}to{transform:none;opacity:1}}
+.xstage.enter-next .xslot{animation:x-in-next .26s cubic-bezier(.2,.7,.2,1)}.xstage.enter-prev .xslot{animation:x-in-prev .26s cubic-bezier(.2,.7,.2,1)}
+@media (prefers-reduced-motion:reduce){.xstage .xslot{animation:none!important}}
+.x-part{outline:2px solid color-mix(in srgb,var(--focus) 55%,transparent);outline-offset:2px}
+.x-unclaimed{opacity:.34;filter:saturate(.55)}
+.x-unclaimed.x-part{opacity:1;filter:none}
+.srow.x-part{outline:0;box-shadow:inset 3px 0 0 color-mix(in srgb,var(--focus) 70%,transparent)}
+.x-runtime{display:flex;flex-direction:column;gap:6px;margin-top:7px;padding:7px;border:1px dashed var(--rule-strong);border-radius:10px;background:#fff}
+.x-runtime::before{content:'runtime representatives · source values only';color:var(--faint);font:600 9.5px var(--mono);text-transform:uppercase}
+.x-runtime-item{display:flex;flex-direction:column;gap:1px;min-height:38px;padding:7px 9px;border:1px solid #e3e7ee;border-radius:10px;background:#fbfbfd;color:var(--ink);font-size:11.5px}
+.x-runtime-label{font-weight:650}.x-runtime-ref{color:var(--faint);font:10px var(--mono);overflow-wrap:anywhere}
+.x-runtime-count{flex:none;margin-left:auto;color:var(--muted);font:10.5px var(--mono)}
+.xstruct,.xgraph-context{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 10px;padding:8px 10px;border:1px solid var(--rule);border-radius:10px;background:#fff;color:var(--muted);font-size:12px}
+.xstruct b,.xgraph-context b{color:var(--ink)}
+.xgraph-context{margin:10px 12px 0}
+.xpaths{display:flex;align-items:center;gap:4px;min-width:0;margin-left:auto;overflow-x:auto;scrollbar-width:none}
 .xpaths .label{flex:none;font-size:11px;color:var(--faint)}
 .xpath{flex:none;height:25px;padding:0 8px;border:1px solid var(--rule);border-radius:7px;background:#fff;color:var(--muted);font-size:11px;white-space:nowrap;max-width:210px;overflow:hidden;text-overflow:ellipsis}
 .xpath[aria-pressed="true"]{border-color:var(--ink);background:var(--ink);color:#fff}
-.x-part{outline:2px solid color-mix(in srgb,var(--focus) 55%,transparent);outline-offset:2px}
-.srow.x-part{outline:0;box-shadow:inset 3px 0 0 color-mix(in srgb,var(--focus) 70%,transparent)}
-.x-runtime{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px;padding:6px;border:1px dashed var(--rule-strong);border-radius:8px;background:#fff}
-.x-runtime::before{content:'runtime';align-self:center;color:var(--faint);font:600 9.5px var(--mono);text-transform:uppercase}
-.x-runtime-item{display:inline-flex;align-items:center;min-height:22px;padding:2px 7px;border-radius:999px;background:#eef1f5;color:var(--ink);font-size:11px}
-.x-runtime-count{flex:none;margin-left:auto;color:var(--muted);font:10.5px var(--mono)}
-@media (max-width:900px){.xrail{grid-column:1;flex-wrap:wrap}.xrail .xlabel,.xbasis{display:none}.xchips{order:2;flex-basis:calc(100% - 72px)}.xpaths{order:3;flex-basis:100%;margin-left:0;padding:6px 0 0;border-left:0;border-top:1px solid var(--rule)}}
+@media (max-width:900px){.xrail{flex-wrap:nowrap;padding:6px 12px}.xrail .xlabel,.xrail .xcount{display:none}.xchips{order:initial;flex:1;flex-basis:auto;overflow:hidden;justify-content:center;padding:2px}.xchip{display:none}.xchip[aria-pressed="true"]{display:inline-flex;width:100%;max-width:100%;justify-content:center}.xpeek{display:none}.xslot{width:min(390px,100%)}.xgraph-context .xpaths{flex-basis:100%;margin-left:0;padding-top:4px}}
 
 /* Structure face */
 .structure{flex:1;overflow:auto;padding:16px 16px 28px}
@@ -626,6 +645,7 @@ const state = {
   expressionResolution: null,
   expressionPathwayRef: null,
   expressionError: null,
+  expressionMotion: null,
   toast: null,
 };
 let refs = {};
@@ -682,13 +702,50 @@ function expressionAvailable() {
 }
 function expressionList() { return expressionAvailable() ? state.expressionFixture.expressions : []; }
 function activeExpression() { return expressionList().find((entry) => entry.expressionRef === state.expressionRef) ?? null; }
-function expressionElementParticipates(ref) {
-  return Boolean(expressionAvailable() && state.expressionResolution?.surface.elementRefs.includes(ref));
+function expressionResolutionFor(expressionRef) {
+  if (!expressionAvailable() || !expressionRef) return null;
+  return Expressions.resolveScreenLensExpression(state.lens, state.expressionFixture, expressionRef);
 }
-function expressionRuntimeItemsFor(ref) {
+function expressionElementParticipates(ref, resolution = state.expressionResolution) {
+  return Boolean(expressionAvailable() && resolution?.surface.elementRefs.includes(ref));
+}
+function expressionRuntimeItemsFor(ref, resolution = state.expressionResolution) {
   return expressionAvailable()
-    ? (state.expressionResolution?.surface.runtimeItems ?? []).filter((item) => item.realizationRef === ref)
+    ? (resolution?.surface.runtimeItems ?? []).filter((item) => item.realizationRef === ref)
     : [];
+}
+function expressionKind(entry) {
+  if (!entry) return 'SRC';
+  if (entry.basis === 'SOURCE_DEFAULT') return 'SRC';
+  if (entry.basis === 'EVIDENCE') return 'EV';
+  const relationshipRefs = [...entry.relationshipRefs].reverse();
+  for (const relationshipRef of relationshipRefs) {
+    if (!Object.hasOwn(entry.assignments, relationshipRef)) continue;
+    const relationship = state.expressionFixture.relationships.find((candidate) => candidate.relationshipRef === relationshipRef);
+    return { SELECTS: 'SEL', PRESENTS: 'OPEN', POPULATES: 'ROWS', CONDITIONED_BY: 'IF' }[relationship?.kind] ?? 'AX';
+  }
+  return entry.basis === 'SOURCE_COUPLED' ? 'CO' : 'AX';
+}
+function expressionCaption(entry) {
+  if (!entry) return null;
+  const resolution = expressionResolutionFor(entry.expressionRef);
+  const delta = resolution
+    ? `${resolution.surface.elementRefs.length} static · ${resolution.surface.runtimeItems.length} runtime`
+    : '';
+  return h('div', { class: 'xcap', title: entry.summary ?? entry.label },
+    h('span', { class: 'xk' }, expressionKind(entry)),
+    h('b', {}, entry.label),
+    entry.summary ? h('span', { class: 'xwhat' }, entry.summary) : null,
+    delta ? h('span', { class: 'xcount' }, delta) : null);
+}
+function expressionExposingElement(elementRef) {
+  if (!expressionAvailable()) return null;
+  const active = state.expressionRef;
+  const candidates = expressionList()
+    .filter((entry) => entry.expressionRef !== active)
+    .map((entry) => ({ entry, resolution: expressionResolutionFor(entry.expressionRef) }))
+    .filter(({ resolution }) => resolution?.surface.elementRefs.includes(elementRef));
+  return candidates.find(({ entry }) => entry.basis !== 'SOURCE_DEFAULT')?.entry ?? candidates[0]?.entry ?? null;
 }
 function setExpressionPathway(pathwayRef, { renderNow = true } = {}) {
   if (!expressionAvailable()) return;
@@ -730,7 +787,7 @@ function setExpression(expressionRef, { renderNow = true } = {}) {
   if (!state.expressionFixture.expressions.some((entry) => entry.expressionRef === expressionRef)) return;
   const changedExpression = state.expressionRef !== expressionRef;
   state.expressionRef = expressionRef;
-  state.expressionResolution = Expressions.resolveScreenLensExpression(state.lens, state.expressionFixture, expressionRef);
+  state.expressionResolution = expressionResolutionFor(expressionRef);
   const paths = state.expressionResolution.behavior.pathwayRefs;
   if (paths.length) {
     const preserveCurrent = !changedExpression && paths.includes(state.expressionPathwayRef);
@@ -758,47 +815,72 @@ function stepExpression(delta) {
   const list = expressionList();
   const index = list.findIndex((entry) => entry.expressionRef === state.expressionRef);
   const next = list[index + delta];
-  if (next) setExpression(next.expressionRef);
+  if (next) {
+    state.expressionMotion = delta > 0 ? 'next' : 'prev';
+    setExpression(next.expressionRef);
+  }
+}
+const expressionSwipe = { wheel: 0, lock: 0 };
+function wireExpressionSwipe(surface) {
+  let start = null;
+  let swiped = false;
+  surface.addEventListener('wheel', (event) => {
+    if (Math.abs(event.deltaX) <= Math.abs(event.deltaY) * 1.2) return;
+    event.preventDefault();
+    if (event.timeStamp < expressionSwipe.lock) return;
+    expressionSwipe.wheel += event.deltaX;
+    if (Math.abs(expressionSwipe.wheel) > 60) {
+      const delta = Math.sign(expressionSwipe.wheel);
+      expressionSwipe.wheel = 0;
+      expressionSwipe.lock = event.timeStamp + 650;
+      stepExpression(delta);
+    }
+  }, { passive: false });
+  surface.addEventListener('pointerdown', (event) => {
+    if (event.button === 0) {
+      start = { x: event.clientX, y: event.clientY };
+      swiped = false;
+    }
+  });
+  surface.addEventListener('pointerup', (event) => {
+    if (!start) return;
+    const dx = event.clientX - start.x;
+    const dy = event.clientY - start.y;
+    start = null;
+    if (Math.abs(dx) > 70 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+      swiped = true;
+      stepExpression(dx < 0 ? 1 : -1);
+    }
+  });
+  surface.addEventListener('click', (event) => {
+    if (!swiped) return;
+    swiped = false;
+    event.stopPropagation();
+    event.preventDefault();
+  }, true);
 }
 function renderExpressionRail() {
   if (!expressionAvailable()) return null;
   const list = expressionList();
   const active = activeExpression();
   const index = list.findIndex((entry) => entry.expressionRef === active?.expressionRef);
-  const paths = state.expressionResolution?.behavior.pathwayRefs ?? [];
-  const runtimeCount = state.expressionResolution?.surface.runtimeItems.length ?? 0;
-  const evidenceCount = state.expressionResolution?.evidenceRefs.length ?? 0;
   return h('nav', {
     class: 'xrail',
     'aria-label': `Expressions of ${currentScreen().label}`,
-    title: 'A source-backed viewing coordinate over this same Screen. Highlighted elements participate in the selected expression; unmarked elements are not claimed absent.',
+    title: 'Every source-backed context this Screen can be viewed through. Swipe the Surface, use the arrows, or double-click an element to move to an expression that exposes it.',
   },
-    h('span', { class: 'xlabel' }, 'Expression'),
+    h('span', { class: 'xlabel' }, 'Expressions'),
     h('button', { class: 'xstep', type: 'button', 'aria-label': 'Previous expression', disabled: index <= 0, onclick: () => stepExpression(-1) }, '‹'),
-    h('div', { class: 'xchips' }, list.map((entry) => h('button', {
+    h('div', { class: 'xchips', role: 'list' }, list.map((entry) => h('button', {
       class: 'xchip',
       type: 'button',
+      role: 'listitem',
       'aria-pressed': entry.expressionRef === active?.expressionRef ? 'true' : 'false',
       title: entry.summary ?? entry.label,
       onclick: () => setExpression(entry.expressionRef),
-    }, entry.label))),
+    }, h('span', { class: 'xk' }, expressionKind(entry)), h('span', { class: 'xt' }, entry.label)))),
     h('button', { class: 'xstep', type: 'button', 'aria-label': 'Next expression', disabled: index < 0 || index >= list.length - 1, onclick: () => stepExpression(1) }, '›'),
-    h('span', { class: 'xcount' }, `${index + 1} / ${list.length}`),
-    active ? h('span', { class: 'xbasis', title: 'Expression basis' }, active.basis.replaceAll('_', ' ').toLowerCase()) : null,
-    paths.length ? h('div', { class: 'xpaths', 'aria-label': 'Expression pathways' },
-      h('span', { class: 'label' }, 'Pathway'),
-      paths.map((ref) => {
-        const pathway = Lens.pathwayFor(state.lens, ref);
-        return h('button', {
-          class: 'xpath',
-          type: 'button',
-          'aria-pressed': state.pathwayRef === ref ? 'true' : 'false',
-          title: pathway?.summary ?? pathway?.label ?? ref,
-          onclick: () => setExpressionPathway(ref),
-        }, pathway?.label ?? ref);
-      }),
-      runtimeCount ? h('span', { class: 'xcount', title: 'Runtime representatives; not static Screen elements' }, `${runtimeCount} runtime`) : null,
-      evidenceCount ? h('span', { class: 'xcount' }, `${evidenceCount} evidence`) : null) : null);
+    h('span', { class: 'xcount' }, `${index + 1} / ${list.length}`));
 }
 
 function selectElement(elementRef, { keepFaces = true } = {}) {
@@ -1132,17 +1214,27 @@ function selectionPathRefs() {
   const path = Lens.elementPath(state.lens, anchor);
   return { selected: anchor, ancestors: new Set(path.slice(0, -1).map((element) => element.ref)) };
 }
-function markElement(node, element, marks) {
-  node.dataset.ref = element.ref;
-  if (marks.selected === element.ref) node.classList.add('sel');
-  if (marks.ancestors.has(element.ref)) node.classList.add('anc');
+function markElement(node, element, marks, { resolution = state.expressionResolution, interactive = true } = {}) {
+  if (interactive) node.dataset.ref = element.ref;
+  else node.dataset.peekRef = element.ref;
+  if (interactive && marks.selected === element.ref) node.classList.add('sel');
+  if (interactive && marks.ancestors.has(element.ref)) node.classList.add('anc');
   if (element.pathwayRef) node.classList.add('has-path');
   const delta = deltaClass(element).trim();
   if (delta) node.classList.add(delta);
-  if (expressionElementParticipates(element.ref)) node.classList.add('x-part');
+  const participates = expressionElementParticipates(element.ref, resolution);
+  if (participates) node.classList.add('x-part');
+  else if (resolution && element.ownerRef === screenRef()) node.classList.add('x-unclaimed');
   node.title = `${element.label} · ${element.ref}${delta ? `\n${delta === 'delta-added' ? 'Not in Stable' : delta === 'delta-changed' ? 'Differs from Stable' : 'Its pathway differs from Stable'}` : ''}`;
+  if (!interactive) return node;
   node.addEventListener('click', (event) => { event.stopPropagation(); selectElement(element.ref); });
-  if (element.navigatesTo) node.addEventListener('dblclick', (event) => { event.stopPropagation(); travel(element); });
+  const exposing = element.navigatesTo ? null : expressionExposingElement(element.ref);
+  if (element.navigatesTo) {
+    node.addEventListener('dblclick', (event) => { event.stopPropagation(); travel(element); });
+  } else if (exposing) {
+    node.title += `\nDouble-click to show expression: ${exposing.label}`;
+    node.addEventListener('dblclick', (event) => { event.stopPropagation(); setExpression(exposing.expressionRef); });
+  }
   return node;
 }
 function travelButton(element) {
@@ -1152,9 +1244,11 @@ function travelButton(element) {
   const order = slot === 'BOTTOM' ? 'above' : slot === 'FAB' ? 'left above' : 'below above right left';
   return h('button', { class: `travel ${order.split(' ')[0]}`, type: 'button', title: to, 'aria-label': to, dataset: { order }, onclick: (event) => { event.stopPropagation(); travel(element); } }, to);
 }
-function renderSurfaceElement(tree, marks, context) {
+function renderSurfaceElement(tree, marks, context, view) {
   const { element, children } = tree;
-  const kids = () => children.filter((child) => child.element.kind !== 'SHEET' && child.element.kind !== 'DIALOG').map((child) => renderSurfaceElement(child, marks, context));
+  const kids = () => children
+    .filter((child) => child.element.kind !== 'SHEET' && child.element.kind !== 'DIALOG')
+    .map((child) => renderSurfaceElement(child, marks, context, view));
   let node;
   switch (element.kind) {
     case 'COLUMN': case 'REGION': node = h('div', { class: 'el-column' }, kids()); break;
@@ -1170,60 +1264,152 @@ function renderSurfaceElement(tree, marks, context) {
     case 'FIELD': node = h('div', { class: 'el-field' }, h('span', {}, element.label)); break;
     default: node = h('div', {}, element.label);
   }
-  markElement(node, element, marks);
-  const runtimeItems = expressionRuntimeItemsFor(element.ref);
-  if (runtimeItems.length) node.append(h('div', { class: 'x-runtime', 'aria-label': 'Runtime representative items' }, runtimeItems.map((item) => h('span', { class: 'x-runtime-item', title: `${item.itemRef} · runtime identity, not a static Screen element` }, item.label ?? item.itemRef))));
-  const go = travelButton(element);
-  if (go) node.append(go);
+  markElement(node, element, marks, view);
+  const runtimeItems = expressionRuntimeItemsFor(element.ref, view.resolution);
+  if (runtimeItems.length) {
+    node.append(h('div', { class: 'x-runtime', 'aria-label': 'Runtime representative items' },
+      runtimeItems.map((item) => h('span', {
+        class: 'x-runtime-item',
+        title: `${item.itemRef} · runtime identity, not a static Screen element`,
+      },
+        h('span', { class: 'x-runtime-label' }, item.label ?? item.itemRef),
+        h('code', { class: 'x-runtime-ref' }, item.itemRef)))));
+  }
+  if (view.interactive) {
+    const go = travelButton(element);
+    if (go) node.append(go);
+  }
   return node;
 }
-function renderSurface() {
+function treeForRef(trees, ref) {
+  for (const tree of trees) {
+    if (tree.element.ref === ref) return tree;
+    const nested = treeForRef(tree.children, ref);
+    if (nested) return nested;
+  }
+  return null;
+}
+function renderPhone(expressionRef = state.expressionRef, { interactive = true } = {}) {
   const screen = currentScreen();
-  const marks = selectionPathRefs();
+  const resolution = expressionRef ? expressionResolutionFor(expressionRef) : null;
+  const view = { resolution, interactive };
+  const marks = interactive ? selectionPathRefs() : { selected: null, ancestors: new Set() };
   const elements = Lens.elementsForScreen(state.lens, screen.screenRef);
   const bySlot = (slot) => Lens.elementTree(elements.filter((element) => element.ownerRef !== screen.screenRef)).filter((tree) => tree.element.slot === slot);
-  const anchor = anchorElement();
+  const anchor = interactive ? anchorElement() : null;
   const fabRefs = new Set(elements.filter((element) => element.ref === 'element.shell.fab-cluster' || Lens.elementPath(state.lens, element.ref).some((step) => step.slot === 'FAB')).map((element) => element.ref));
   const context = { fabOpen: Boolean(anchor && fabRefs.has(anchor.ref)) };
+
   const top = bySlot('TOP')[0];
   const topBar = h('div', { class: 'phone-top' });
   if (top) {
-    for (const child of top.children) if (child.element.navigatesTo !== Lens.BACK || state.walk.steps.length > 1) topBar.append(child.element.kind === 'BUTTON'
-      ? (() => { const button = markElement(h('button', { class: 'el-back', type: 'button' }, `‹ ${child.element.label}`), child.element, marks); const go = travelButton(child.element); if (go) button.append(go); return button; })()
-      : renderSurfaceElement(child, marks, context));
-    markElement(topBar, top.element, marks);
+    for (const child of top.children) {
+      if (child.element.navigatesTo === Lens.BACK && state.walk.steps.length <= 1) continue;
+      if (child.element.kind === 'BUTTON') {
+        const button = markElement(h('button', { class: 'el-back', type: 'button' }, `‹ ${child.element.label}`), child.element, marks, view);
+        if (interactive) {
+          const go = travelButton(child.element);
+          if (go) button.append(go);
+        }
+        topBar.append(button);
+      } else {
+        topBar.append(renderSurfaceElement(child, marks, context, view));
+      }
+    }
+    markElement(topBar, top.element, marks, view);
   }
   topBar.append(h('span', { class: 'phone-title' }, screen.label));
+
   const body = h('div', { class: 'phone-body' });
-  const own = Lens.elementTree(screen.elements);
-  if (own.length) for (const tree of own) body.append(renderSurfaceElement(tree, marks, context));
-  else body.append(h('div', { class: 'phone-held' }, h('strong', {}, screen.mapped === 'CHROME_ONLY' ? `${screen.label} content is held` : `${screen.label} is not projected yet`), h('br'), screen.summary ?? ''));
-  const phone = h('div', { class: `phone${marks.selected ? ' dimmed' : ''}`, 'aria-label': `${screen.label} surface` }, topBar, body);
+  const ownTrees = Lens.elementTree(screen.elements);
+  const bodyTrees = ownTrees.filter((tree) => !['SHEET', 'DIALOG'].includes(tree.element.kind));
+  if (bodyTrees.length) {
+    for (const tree of bodyTrees) body.append(renderSurfaceElement(tree, marks, context, view));
+  } else {
+    body.append(h('div', { class: 'phone-held' },
+      h('strong', {}, screen.mapped === 'CHROME_ONLY' ? `${screen.label} content is held` : `${screen.label} is not projected yet`),
+      h('br'),
+      screen.summary ?? ''));
+  }
+
+  const phone = h('div', {
+    class: `phone${interactive && marks.selected ? ' dimmed' : ''}`,
+    'aria-label': `${screen.label}${expressionRef ? ` · ${Expressions.expressionFor(state.expressionFixture, expressionRef)?.label ?? expressionRef}` : ''} surface`,
+  }, topBar, body);
+
   const bottom = bySlot('BOTTOM')[0];
   if (bottom) {
     const bar = h('div', { class: 'phone-bottom' });
     for (const child of bottom.children) {
-      const button = markElement(h('button', { class: `el-nav${child.element.navigatesTo === screen.screenRef ? ' here' : ''}`, type: 'button' }, h('span', { class: 'glyph', 'aria-hidden': 'true' }), child.element.label), child.element, marks);
-      const go = travelButton(child.element); if (go) button.append(go);
+      const button = markElement(h('button', { class: `el-nav${child.element.navigatesTo === screen.screenRef ? ' here' : ''}`, type: 'button' },
+        h('span', { class: 'glyph', 'aria-hidden': 'true' }), child.element.label), child.element, marks, view);
+      if (interactive) {
+        const go = travelButton(child.element);
+        if (go) button.append(go);
+      }
       bar.append(button);
     }
-    markElement(bar, bottom.element, marks);
+    markElement(bar, bottom.element, marks, view);
     phone.append(bar);
   }
+
   const fab = bySlot('FAB')[0];
   if (fab) {
-    const zone = h('div', { class: 'fab-zone' }, fab.children.map((child) => renderSurfaceElement(child, marks, context)));
-    markElement(zone, fab.element, marks);
+    const zone = h('div', { class: 'fab-zone' }, fab.children.map((child) => renderSurfaceElement(child, marks, context, view)));
+    markElement(zone, fab.element, marks, view);
     phone.append(zone);
   }
-  // A sheet or dialog shows when it is selected, or when the selected control opens it.
-  const opens = (overlay) => overlay.symbol && anchor?.intent && new RegExp(`\\b(open|toggle)\\(${overlay.symbol.split('.').pop()}\\)`).test(anchor.intent);
-  const sheet = screen.elements.find((element) => (element.kind === 'SHEET' || element.kind === 'DIALOG') && (anchor?.ref === element.ref || opens(element)));
-  const sheetOpen = Boolean(sheet);
-  if (sheetOpen) phone.append(markElement(sheet.kind === 'DIALOG'
-    ? h('div', { class: 'dialog-zone opened', role: 'presentation' }, h('p', { class: 'el-text TITLE' }, sheet.label), h('p', { class: 'el-text' }, sheet.visibleWhen ?? ''))
-    : h('div', { class: 'sheet-zone opened' }, h('div', { class: 'grab' }), h('p', { class: 'el-text TITLE' }, sheet.label), h('p', { class: 'el-text' }, sheet.visibleWhen ?? '')), sheet, marks));
-  return h('div', { class: 'surface', onclick: () => clearSelection() }, phone);
+
+  const participating = new Set(resolution?.surface.elementRefs ?? []);
+  for (const overlay of screen.elements.filter((element) => ['SHEET', 'DIALOG'].includes(element.kind) && participating.has(element.ref))) {
+    const overlayTree = treeForRef(ownTrees, overlay.ref);
+    const contents = (overlayTree?.children ?? []).map((child) => renderSurfaceElement(child, marks, context, view));
+    const zone = overlay.kind === 'DIALOG'
+      ? h('div', { class: 'dialog-zone opened', role: 'presentation' },
+        h('p', { class: 'el-text TITLE' }, overlay.label),
+        overlay.visibleWhen ? h('p', { class: 'el-text' }, overlay.visibleWhen) : null,
+        ...contents)
+      : h('div', { class: 'sheet-zone opened' },
+        h('div', { class: 'grab' }),
+        h('p', { class: 'el-text TITLE' }, overlay.label),
+        overlay.visibleWhen ? h('p', { class: 'el-text' }, overlay.visibleWhen) : null,
+        h('div', { class: 'el-column', style: 'max-height:46vh;overflow:auto' }, contents));
+    markElement(zone, overlay, marks, view);
+    phone.append(zone);
+  }
+
+  if (!interactive) phone.inert = true;
+  return phone;
+}
+function renderSurface() {
+  if (!expressionAvailable()) {
+    return h('div', { class: 'surface', onclick: () => clearSelection() }, renderPhone(null, { interactive: true }));
+  }
+  const list = expressionList();
+  const active = activeExpression();
+  const index = list.findIndex((entry) => entry.expressionRef === active?.expressionRef);
+  const current = h('div', { class: 'xslot' }, expressionCaption(active), renderPhone(active.expressionRef, { interactive: true }));
+  const peek = (entry, side) => {
+    if (!entry) return null;
+    const wrap = h('div', {
+      class: `xpeek ${side}`,
+      role: 'button',
+      title: entry.summary ?? entry.label,
+      'aria-label': `${side === 'prev' ? 'Previous' : 'Next'} expression: ${entry.label}`,
+    }, h('span', { class: 'xpeek-label' }, h('span', { class: 'xk' }, expressionKind(entry)), h('b', {}, entry.label)),
+      renderPhone(entry.expressionRef, { interactive: false }));
+    wrap.addEventListener('click', (event) => { event.stopPropagation(); setExpression(entry.expressionRef); });
+    return wrap;
+  };
+  const motion = state.expressionMotion;
+  state.expressionMotion = null;
+  const stage = h('div', { class: `xstage${motion ? ` enter-${motion}` : ''}` },
+    current,
+    peek(index > 0 ? list[index - 1] : null, 'prev'),
+    peek(index >= 0 && index < list.length - 1 ? list[index + 1] : null, 'next'));
+  const surface = h('div', { class: 'surface', onclick: () => clearSelection() }, stage);
+  wireExpressionSwipe(surface);
+  return surface;
 }
 
 function renderStructure() {
@@ -1231,6 +1417,18 @@ function renderStructure() {
   const marks = selectionPathRefs();
   const elements = Lens.elementsForScreen(state.lens, screen.screenRef);
   const sections = [];
+  if (expressionAvailable()) {
+    const expression = activeExpression();
+    const resolution = state.expressionResolution;
+    sections.push(h('div', {
+      class: 'xstruct',
+      title: 'The same expression shown on Surface; marked rows participate, unmarked rows are not claimed absent.',
+    },
+      h('span', { class: 'xk' }, expressionKind(expression)),
+      h('b', {}, expression.label),
+      expression.summary ? h('span', {}, expression.summary) : null,
+      h('span', { class: 'xcount' }, `${resolution.surface.elementRefs.length} static · ${resolution.surface.runtimeItems.length} runtime`)));
+  }
   const owners = [...state.lens.chrome.filter((entry) => elements.some((element) => element.ownerRef === entry.chromeRef)), screen];
   for (const owner of owners) {
     const isScreen = owner === screen;
@@ -1249,7 +1447,13 @@ function renderStructure() {
       const row = h('div', { class: `srow${marks.selected === element.ref ? ' sel' : ''}${marks.ancestors.has(element.ref) ? ' anc' : ''}${deltaClass(element)}${expressionElementParticipates(element.ref) ? ' x-part' : ''}`, style: `--d:${depth};${depth ? '' : '--guide:none'}`, role: 'treeitem', tabindex: '0', 'aria-level': depth + 1, dataset: { ref: element.ref },
         onclick: () => selectElement(element.ref),
         onkeydown: (event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); selectElement(element.ref); } },
-        ondblclick: () => travel(element) },
+        ondblclick: () => {
+          if (element.navigatesTo) travel(element);
+          else {
+            const exposing = expressionExposingElement(element.ref);
+            if (exposing) setExpression(exposing.expressionRef);
+          }
+        } },
         elementChip(element),
         h('span', { class: 'slabel' }, element.label, element.pathwayRef && Lens.pathwayFor(state.lens, element.pathwayRef).label !== element.label ? h('span', { style: 'color:var(--faint);font-weight:400' }, ` · ${Lens.pathwayFor(state.lens, element.pathwayRef).label}`) : null),
         element.declared || element.symbol ? h('span', { class: 'sdecl' }, element.symbol && element.declared && element.symbol !== element.declared ? `${element.symbol} = ${element.declared}` : (element.declared ?? element.symbol)) : null,
@@ -1277,6 +1481,26 @@ function renderGraphFace(face) {
   const pathway = currentPathway();
   const anchor = anchorElement();
   const wrap = h('div', { class: 'face', dataset: { face } });
+  if (expressionAvailable()) {
+    const expression = activeExpression();
+    const paths = state.expressionResolution?.behavior.pathwayRefs ?? [];
+    wrap.append(h('div', { class: 'xgraph-context', title: expression.summary ?? expression.label },
+      h('span', { class: 'xk' }, expressionKind(expression)),
+      h('b', {}, expression.label),
+      expression.summary ? h('span', {}, expression.summary) : null,
+      paths.length ? h('div', { class: 'xpaths', 'aria-label': 'Expression pathways' },
+        h('span', { class: 'label' }, 'Pathway'),
+        paths.map((ref) => {
+          const candidate = Lens.pathwayFor(state.lens, ref);
+          return h('button', {
+            class: 'xpath',
+            type: 'button',
+            'aria-pressed': state.pathwayRef === ref ? 'true' : 'false',
+            title: candidate?.summary ?? candidate?.label ?? ref,
+            onclick: (event) => { event.stopPropagation(); setExpressionPathway(ref); },
+          }, candidate?.label ?? ref);
+        })) : null));
+  }
   if (!pathway) {
     const message = anchor
       ? (anchor.role === 'ELEMENT'
@@ -1916,6 +2140,7 @@ function renderLegend() {
       h('li', {}, 'Right-click either side to flip it: Experience toggles Surface / Structure; Behavior toggles Behavior / Depth. Shift + right-click opens the browser menu. ', h('kbd', {}, '['), ' and ', h('kbd', {}, ']'), ' remain keyboard equivalents.'),
       h('li', {}, 'Drag to pan. Scroll to zoom at the pointer. Use the − / + / Fit controls for explicit camera changes.'),
       h('li', {}, h('kbd', {}, '/'), ' finds any control, step, screen or note by label, ref, action key, Kotlin symbol or file name.'),
+      h('li', {}, 'On a Screen with expressions, swipe horizontally on Surface or use ', h('kbd', {}, '←'), ' / ', h('kbd', {}, '→'), '. Double-click a non-navigation element to move to an expression that exposes it.'),
       h('li', {}, 'Double-click a navigating control, or use its Go button, to travel. ', h('kbd', {}, 'M'), ' opens the screen map. ', h('kbd', {}, 'Esc'), ' clears.')),
     h('h3', {}, 'Dots on the screen chips'),
     h('ul', {}, h('li', {}, 'Filled: fully projected. Half: shared chrome only. Hollow: held, not projected yet.')),
@@ -1986,14 +2211,17 @@ function syncUrl() {
 function render() {
   const focusedRef = document.activeElement?.dataset?.ref ?? document.activeElement?.dataset?.nodeRef ?? null;
   const root = h('div', { class: 'lens' });
-  const main = h('main', { class: 'main' }, renderExpressionRail(), renderExperienceSide(), renderBehaviorSide());
+  const main = h('main', { class: 'main' }, renderExperienceSide(), renderBehaviorSide());
   const bridge = s('svg', { class: 'bridge', 'aria-hidden': 'true' });
   main.append(bridge);
   if (state.overlay === 'MAP') main.append(renderMap());
   if (state.overlay === 'RELATED') main.append(renderRelatedBoards());
   if (state.overlay === 'CHANGES' && state.compare?.count) main.append(renderChanges());
   if (state.overlay === 'LEGEND') main.append(renderLegend());
-  root.append(renderBar(), renderAtlas(), main, renderTray());
+  root.append(renderBar(), renderAtlas());
+  const expressionRail = renderExpressionRail();
+  if (expressionRail) root.append(expressionRail);
+  root.append(main, renderTray());
   app.replaceChildren(root);
   refs = { main, bridge };
   applyPalette();
@@ -2014,6 +2242,8 @@ window.addEventListener('keydown', (event) => {
   if (event.target.closest?.('input,textarea')) return;
   if (event.key === '[') { flip('EXPERIENCE'); }
   else if (event.key === ']') { flip('BEHAVIOR'); }
+  else if (event.key === 'ArrowLeft' && expressionAvailable() && state.faces.EXPERIENCE === 'SURFACE' && !state.overlay) { event.preventDefault(); stepExpression(-1); }
+  else if (event.key === 'ArrowRight' && expressionAvailable() && state.faces.EXPERIENCE === 'SURFACE' && !state.overlay) { event.preventDefault(); stepExpression(1); }
   else if (event.key === '/') { event.preventDefault(); document.getElementById('lens-search')?.focus(); }
   else if (event.key === 'm' || event.key === 'M') { state.overlay = state.overlay === 'MAP' ? null : 'MAP'; render(); }
   else if (event.key === 'Escape') { if (state.menu) { state.menu = null; renderBarInPlace(); } else if (state.overlay) { state.overlay = null; render(); } else clearSelection(); }
