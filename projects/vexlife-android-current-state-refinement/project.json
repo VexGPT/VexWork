@@ -39,7 +39,12 @@
     "work.vexlife-android.current-state-refinement.semantic-family-convergence.repeat",
     "github.pull.vexlife-android.221",
     "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/repeat/VexStreamRepeatFamily.kt",
-    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/repeat/Media3VexStreamRepeatConnection.kt"
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/repeat/Media3VexStreamRepeatConnection.kt",
+    "work.vexlife-android.current-state-refinement.semantic-family-convergence.vexstream-hub-partner",
+    "github.pull.vexlife-android.223",
+    "github.pull.vexlife-android.219",
+    "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexPartner.kt",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamHubPartner.kt"
   ],
   "formedAt": "2026-10-24T08:50:00.000Z"
 }
