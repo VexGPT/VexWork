@@ -239,13 +239,34 @@ test('Events proves existing expression vocabulary without importing attention S
     fixture.expressions.map((entry) => entry.basis),
     ['SOURCE_DEFAULT', 'SOURCE_AXIS', 'SOURCE_AXIS'],
   );
+  const structuralMeaning = {
+    relationships: fixture.relationships.map((entry) => ({
+      relationshipRef: entry.relationshipRef,
+      kind: entry.kind,
+      subjectRef: entry.subjectRef,
+      elementRefs: entry.elementRefs,
+      pathwayRefs: entry.pathwayRefs,
+      sourceRefs: entry.sourceRefs,
+      defaultValueRef: entry.defaultValueRef,
+      values: entry.values,
+    })),
+    expressions: fixture.expressions.map((entry) => ({
+      expressionRef: entry.expressionRef,
+      basis: entry.basis,
+      relationshipRefs: entry.relationshipRefs,
+      assignments: entry.assignments,
+      sourceRefs: entry.sourceRefs,
+      evidenceRefs: entry.evidenceRefs,
+    })),
+  };
   assert.equal(
-    JSON.stringify(fixture).includes('EventsAttentionLabScenario'),
+    JSON.stringify(structuralMeaning).includes('EventsAttentionLabScenario'),
     false,
   );
   assert.equal(
-    JSON.stringify(fixture).toLowerCase().includes('scenario'),
+    JSON.stringify(structuralMeaning).toLowerCase().includes('scenario'),
     false,
+    'Scenario may be named in explanatory prose, but it must not enter structural expression meaning',
   );
 });
 
