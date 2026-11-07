@@ -1592,9 +1592,14 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, listing
       return element;
     }
     if (steps.length === 1 && steps[0].op === 'localEffect') {
-      const bond = screen ? followBehaviorPort(cat, adapter, screen, element) : null;
-      if (bond) {
-        element.pathwayRef = behaviorPortPathway(screen, element, bond);
+      const behaviorBond = screen ? followBehaviorPort(cat, adapter, screen, element) : null;
+      if (behaviorBond) {
+        element.pathwayRef = behaviorPortPathway(screen, element, behaviorBond);
+        return element;
+      }
+      const partnerBond = screen ? followPartnerCircuit(cat, adapter, screen, element) : null;
+      if (partnerBond) {
+        element.pathwayRef = partnerCircuitPathway(screen, element, partnerBond);
         return element;
       }
       report.held.push({ elementRef: element.ref, reason: 'localEffect relationship is declared but its deeper semantic relationship is not source-proven' });
