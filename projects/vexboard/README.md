@@ -82,12 +82,20 @@ What remains open in VexBoard is narrower and consumer-driven:
 
 ~~~text
 Source Projectors + lived comparison         RUNNING · Screen Lens substrate complete; broader lived comparison remains
-Screen Lens projectability + expressions     RUNNING / AUTHORIZED_BOUNDED / EFFECTS_BOUND · Android projectability patient zero active
+Screen Lens projectability + expressions     RUNNING / AUTHORIZED_BOUNDED / EFFECTS_BOUND · Android patient zero accepted/merged; VexBoard expression contract foreground
 Fractal semantic composition / spatial       RUNNING when real consumers pressure it
 VexStream living Origin screenshot pilot     RUNNING · source projection accepted; expected/observed evidence comparison still open
 AI BoardPatch authoring                      READY / NO_AUTHORITY / NO_EFFECTS
 Origin rename propagation debt               PARKED
 ~~~
+
+The Android projectability patient zero is now accepted on VexLife-Android through PR #212 /
+merge `ecbb6987d1da338fa0adf7297456d3f652f04155`: Songs/Downloads use the existing stable repeated-item
+owner, collection cards carry their existing runtime row identity into Vex Compose, and no runtime-row
+registry, `vexItems` ontology, Scenario coupling or VexBoard-specific Android AST was introduced. A007
+differential proof reproduced the remaining VexStream image-comparison mismatch with zero Screen Lens
+paths, so that visual baseline pressure remains separately owned rather than blocking the projectability
+slice.
 
 The next Screen Lens evolution is preserved separately in
 `projects/vexboard/SCREEN-LENS-PROJECTABILITY-EXPRESSIONS.md`. It keeps the accepted Screen Lens
