@@ -136,6 +136,22 @@ test('search, impact, coverage and briefs are wired from the shared query module
 });
 // [VXG RealForever]
 
+test('the Lens binds accepted expression fixtures by current Screen across navigation', () => {
+  assert.match(page, /const EXPRESSION_FIXTURE_URLS = Object\.freeze\(\{/);
+  assert.match(page, /'screen\.vexstream-music': '\.\.\/projects\/vexboard\/examples\/vexlife-android-vexstream\.screen-lens-expressions\.fixture\.json'/);
+  assert.match(page, /'screen\.events': '\.\.\/projects\/vexboard\/examples\/vexlife-android-events\.screen-lens-expressions\.fixture\.json'/);
+  assert.match(page, /function bindExpressionsForCurrentScreen\(\{ requestedRef = state\.expressionRef \} = \{\}\)/);
+  assert.match(page, /const source = expressionFixtureSources\.get\(screenRef\(\)\) \?\? null/);
+  assert.match(page, /source\.lensRef !== state\.lens\.lensRef \|\| source\.lensSourceCommit !== state\.lens\.sourceSnapshot\.commit\) return/);
+  assert.match(page, /function travel\([\s\S]*?bindExpressionsForCurrentScreen\(\{ requestedRef: null \}\);\s*resetScreenSelection\(\)/);
+  assert.match(page, /function jumpTo\([\s\S]*?bindExpressionsForCurrentScreen\(\{ requestedRef: null \}\);\s*resetScreenSelection\(\)/);
+  assert.match(page, /const changesScreen = Boolean\(target\.screenRef && target\.screenRef !== screenRef\(\)\)/);
+  assert.match(page, /if \(changesScreen\)[\s\S]*?bindExpressionsForCurrentScreen\(\{ requestedRef: null \}\)/);
+  assert.match(page, /Lens\.backScreenWalk\(state\.walk\); bindExpressionsForCurrentScreen\(\{ requestedRef: null \}\); resetScreenSelection\(\)/);
+  assert.match(page, /Lens\.revisitScreenWalk\([\s\S]*?bindExpressionsForCurrentScreen\(\{ requestedRef: null \}\); resetScreenSelection\(\)/);
+  assert.match(page, /bindExpressionsForCurrentScreen\(\{ requestedRef: requestedExpression \}\);\s*if \(expressionAvailable\(\)\) setExpression/, 'direct screen entry binds its own fixture before expression activation');
+});
+
 test('source-backed expressions are a top-level Lens dimension shared by all four faces', () => {
   assert.match(page, /from '\.\.\/src\/shared\/vexboard-screen-lens-expressions\.mjs'/);
   assert.match(page, /vexlife-android-vexstream\.screen-lens-expressions\.fixture\.json/);
