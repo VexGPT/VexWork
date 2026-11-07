@@ -352,6 +352,44 @@
       "effectDisposition": "EFFECTS_BOUND",
       "createdAt": "2026-10-30T02:25:00.000Z",
       "updatedAt": "2026-11-04T07:17:22.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workRef": "work.vextreme.architecture-convergence.vexarchitecture-post-partner",
+      "parentWorkRefOrNull": "work.vextreme.architecture-convergence.outcome",
+      "label": "VexArchitecture Post Partner",
+      "purpose": "Preserve the post-Partner VexArchitecture horizon as a bounded checkpoint: inventory Android/platform-boundary patterns such as sustained Services, BroadcastReceiver entry, App Widgets/system surfaces, permission/admission relationships, process/lifecycle callbacks and other repeated platform seams; distinguish already-earned roots from feature-local implementations and only formalize new reusable architecture when materially different consumers prove the same independent question.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "workDisposition": "ACTIVE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "github.pull.vexlife-android.219",
+        "github.pull.vextreme.591"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vextreme",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "projects/vextreme-architecture-convergence/README.md",
+        "github.pull.vexwork.267",
+        "github.pull.vexlife-android.219",
+        "github.pull.vextreme.591",
+        "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexPartner.kt",
+        "repo.vexlife-android:architecture/widget/README.md",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/media/vexstream/VexStreamPlaybackService.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/screens/shared/maps/VexMapsNavigationService.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/widget/vexstream/VexStreamPlaybackWidget.kt",
+        "repo.vexlife-android:app/src/main/AndroidManifest.xml"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-07T14:00:00.000Z",
+      "updatedAt": "2026-11-07T14:00:00.000Z"
     }
   ],
   "transitions": [
@@ -581,7 +619,8 @@
     "github.pull.vexwork.185",
     "github.pull.vexwork.214",
     "github.pull.vextreme.570",
-    "github.commit.vextreme.3f6ad6ff7e2f18cf6c541ecfc1743772f4b15906"
+    "github.commit.vextreme.3f6ad6ff7e2f18cf6c541ecfc1743772f4b15906",
+    "work.vextreme.architecture-convergence.vexarchitecture-post-partner"
   ],
   "formedAt": "2026-10-29T11:45:00.000Z"
 }
