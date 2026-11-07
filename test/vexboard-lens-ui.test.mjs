@@ -190,9 +190,15 @@ test('screen travel resets presentation context without inventing cross-Screen S
 // [VXG RealForever]
 
 
-test('lived usability keeps the inspector out of the way and makes expressions searchable', () => {
-  assert.match(page, /trayCollapsed: window\.matchMedia\('\(min-width:901px\)'\)\.matches/, 'desktop starts with the inspector collapsed');
-  assert.match(page, /Collapse inspector to give Experience and Behavior more room/);
+test('lived usability gives the inspector a resizable attention boundary and makes expressions searchable', () => {
+  assert.match(page, /trayHeight: Math\.round\(Math\.min\(280, Math\.max\(180, window\.innerHeight \* 0\.24\)\)\)/);
+  assert.match(page, /function wireTrayResize\(handle, tray\)/);
+  assert.match(page, /role: 'separator'/);
+  assert.match(page, /'aria-label': 'Resize inspector'/);
+  assert.match(page, /drag\.height \+ drag\.y - event\.clientY/);
+  assert.match(page, /event\.key === 'ArrowUp'/);
+  assert.match(page, /event\.key === 'ArrowDown'/);
+  assert.doesNotMatch(page, /trayCollapsed|Details ▴|Details ▾/, 'the inspector is resized rather than opened or closed');
   assert.match(page, /function renderExpressionFinder\(list\)/);
   assert.match(page, /placeholder: 'Find expression…'/);
   assert.match(page, /function expressionSearchText\(expression\)/);
