@@ -48,14 +48,7 @@
         },
         {
           "valueRef": "connection.paired",
-          "label": "Paired",
-          "elementRefs": [
-            "element.vexstream-music.body.library-tabs",
-            "element.vexstream-music.body.library"
-          ],
-          "sourceRefs": [
-            "app:screens/shared/vexstream/VexStreamMusicScreen.kt"
-          ]
+          "label": "Paired"
         }
       ]
     },
@@ -93,6 +86,9 @@
             "pathway.vexstream-music.swap-to-child-albums-panel-container-library-content"
           ]
         }
+      ],
+      "elementRefs": [
+        "element.vexstream-music.body.library"
       ]
     },
     {
@@ -158,7 +154,8 @@
       "summary": "Playback display truth determines whether the mini-player presentation participates; Playback semantic meaning remains owned by its existing pathway.",
       "sourceRefs": [
         "app:screens/shared/vexstream/VexStreamLibrarySurface.kt",
-        "app:vexstream/playback/VexStreamPlaybackDisplayState.kt"
+        "app:vexstream/playback/VexStreamPlaybackDisplayState.kt",
+        "app:screens/shared/vexstream/VexStreamPlayerPresentation.kt"
       ],
       "defaultValueRef": "player.inactive",
       "values": [
@@ -192,7 +189,8 @@
       "summary": "The runtime presentation owner opens/closes the already-registered full-player sheet.",
       "sourceRefs": [
         "app:screens/shared/vexstream/VexStreamMusicScreen.kt",
-        "app:screens/shared/vexstream/VexStreamLibrarySurface.kt"
+        "app:screens/shared/vexstream/VexStreamLibrarySurface.kt",
+        "app:screens/shared/vexstream/VexStreamPlayerPresentation.kt"
       ],
       "defaultValueRef": "full-player.closed",
       "values": [
