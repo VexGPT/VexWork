@@ -205,7 +205,7 @@ test('screen-level arrival activates the selected expression across Behavior and
   assert.match(page, /Lens\.revisitScreenWalk\(state\.lens, state\.walk, step\.sequence\); bindExpressionsForCurrentScreen\(\{ requestedRef: null \}\); resetScreenSelection\(\); render\(\);/, 'Revisit rebinds the destination Screen fixture before restoring expression-owned selection');
   assert.match(page, /const explicitTarget = Boolean\(target\.elementRef \|\| target\.pathwayRef \|\| target\.nodeRef\)/);
   assert.match(page, /if \(!explicitTarget\) resetScreenSelection\(\)/, 'screen-only search results use expression context, while explicit control/pathway results retain their own coordinate');
-  assert.match(page, /await bindExpressionsForLens\(\{ requestedRef: requestedExpression \}\);\s*if \(expressionAvailable\(\)\) setExpression\(state\.expressionRef, \{ renderNow: false \}\);/, 'direct screen entry activates the expression pathway even without an explicit expression query parameter');
+  assert.match(page, /await loadExpressionFixtureSourcesForUi\(\);[\s\S]*?bindExpressionsForCurrentScreen\(\{ requestedRef: requestedExpression \}\);\s*if \(expressionAvailable\(\)\) setExpression\(state\.expressionRef, \{ renderNow: false \}\);/, 'direct screen entry loads the accepted fixture set, binds the current Screen fixture, and activates its expression even without an explicit expression query parameter');
 });
 
 test('changing expressions focuses Behavior and Depth from explicit relationship order, not JSON assignment key order', () => {
