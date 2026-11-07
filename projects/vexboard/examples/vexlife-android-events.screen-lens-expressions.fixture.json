@@ -127,5 +127,7 @@
         "relationship.events.population": "population.preview"
       }
     }
-  ]
+  ],
+  "title": "Events · representative Screen Lens expressions",
+  "summary": "Source-backed representative contexts for the Events Screen. These preserve Relay currentness distinctions and feature-owned runtime event identity without importing attention Scenario state or inventing another State owner."
 }
