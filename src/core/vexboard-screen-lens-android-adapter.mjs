@@ -645,6 +645,210 @@ function followBehaviorPort(cat, adapter, screen, element) {
   };
 }
 
+
+// One source-proven VexPartner shape. Unknown or ambiguous hops stay held.
+function sourceFunction(cat, adapter, functionName) {
+  const source = sourceForFunction(cat, adapter, functionName);
+  if (!source) return null;
+  const spans = functionSpans(source.text).filter((span) => span.name === functionName);
+  if (spans.length !== 1) return null;
+  const span = spans[0];
+  return {
+    ...source,
+    name: functionName,
+    body: source.text.slice(span.bodyStart, span.end),
+    params: span.params,
+  };
+}
+
+function partnerRoot(cat, adapter, partnerType) {
+  return uniqueSource(
+    cat,
+    adapter,
+    new RegExp('object\\s+' + escapeRegex(partnerType) + '\\s*:\\s*VexPartner\\s*<\\s*' + escapeRegex(partnerType) + '\\s*>'),
+  );
+}
+
+function familyRoot(cat, adapter, familyType) {
+  return uniqueSource(cat, adapter, new RegExp('class\\s+' + escapeRegex(familyType) + '\\s*:'))
+    ?? uniqueSource(cat, adapter, new RegExp('class\\s+' + escapeRegex(familyType) + '\\s*\\('));
+}
+
+function storeRoot(cat, adapter, storeType) {
+  return uniqueSource(cat, adapter, new RegExp('class\\s+' + escapeRegex(storeType) + '\\b'))
+    ?? uniqueSource(cat, adapter, new RegExp('interface\\s+' + escapeRegex(storeType) + '\\b'));
+}
+
+function localEffectDoorway(screen, element) {
+  const declaration = element.symbol?.split('.').at(-1) ?? null;
+  if (!screen || !declaration) return null;
+  const pattern = new RegExp(
+    escapeRegex(screen.object) + '\\s*\\.\\s*' + escapeRegex(declaration) +
+      '\\s*->[\\s\\S]{0,420}?([a-z]\\w*)\\s*\\.\\s*(\\w+)\\s*\\(',
+  );
+  const match = pattern.exec(screen.text);
+  if (!match) return null;
+  return { receiver: match[1], functionName: match[2], source: screen.source };
+}
+
+function directMemberCalls(body) {
+  const calls = [];
+  for (const match of String(body).matchAll(/\b([a-z]\w*)\s*(?:\?\.)?\.\s*(\w+)\s*\(/g)) {
+    calls.push({ receiver: match[1], functionName: match[2], index: match.index });
+  }
+  return calls;
+}
+
+function connectionPartnerForLocal(sourceText, localName) {
+  const pattern = new RegExp(
+    '(?:private\\s+|internal\\s+|public\\s+)?val\\s+' + escapeRegex(localName) +
+      '\\s*=\\s*([A-Z]\\w*Partner)\\s*\\.\\s*Connection\\s*\\(',
+  );
+  return pattern.exec(sourceText)?.[1] ?? null;
+}
+
+function familyTypeForLab(sourceText) {
+  return /\bval\s+family\s*:\s*([A-Z]\w*Family)\b/.exec(sourceText)?.[1] ?? null;
+}
+
+function partnerStoreType(partnerText) {
+  return /class\s+Receiver\s*\([\s\S]{0,700}?\bstore\s*:\s*([A-Z]\w*Store)\b/.exec(partnerText)?.[1] ?? null;
+}
+
+function storeObservationIsMaintained(labText) {
+  return /VexExecution\.observe\s*\([\s\S]{0,1200}?source\s*=\s*store\s*::\s*snapshots[\s\S]{0,1200}?family\s*\.\s*observeStore\s*\(/.test(labText);
+}
+
+function resolvePartnerIngress(cat, adapter, functionName, visited = new Set()) {
+  if (visited.has(functionName) || visited.size > 5) return null;
+  const nextVisited = new Set(visited);
+  nextVisited.add(functionName);
+  const fn = sourceFunction(cat, adapter, functionName);
+  if (!fn) return null;
+
+  for (const call of directMemberCalls(fn.body)) {
+    if (call.functionName !== 'receive') continue;
+    const partnerType = connectionPartnerForLocal(fn.text, call.receiver);
+    if (!partnerType) continue;
+    const partner = partnerRoot(cat, adapter, partnerType);
+    if (!partner) continue;
+    const storeType = partnerStoreType(partner.text);
+    const store = storeType ? storeRoot(cat, adapter, storeType) : null;
+    const familyType = familyTypeForLab(fn.text);
+    const family = familyType ? familyRoot(cat, adapter, familyType) : null;
+    if (!storeType || !store || !familyType || !family) continue;
+    const signals = sealedMembers(partner.text, 'Signal');
+    const hasDecoder = /\bclass\s+Decoder\b[\s\S]{0,700}?VexPartner\.Connection\.Decoder\s*</.test(partner.text);
+    const hasObservation = /\bdata\s+class\s+Observation\b[\s\S]{0,700}?VexPartner\.Connection\.Observation\s*</.test(partner.text);
+    const hasReceiver = /\bclass\s+Receiver\b[\s\S]{0,900}?VexPartner\.Connection\.Receiver\s*</.test(partner.text);
+    if (!hasDecoder || !hasObservation || !hasReceiver || !storeObservationIsMaintained(fn.text)) continue;
+    return {
+      kind: 'INGRESS',
+      functionName,
+      functionSource: fn.source,
+      labSource: fn,
+      partnerType,
+      partner,
+      connectionLocal: call.receiver,
+      signals,
+      storeType,
+      store,
+      familyType,
+      family,
+      observeStore: /fun\s+observeStore\s*\(/.test(family.text) ? 'observeStore' : null,
+    };
+  }
+
+  for (const call of directMemberCalls(fn.body)) {
+    if (['toString', 'copy', 'also', 'let', 'map', 'filter'].includes(call.functionName)) continue;
+    if (!sourceFunction(cat, adapter, call.functionName)) continue;
+    const resolved = resolvePartnerIngress(cat, adapter, call.functionName, nextVisited);
+    if (resolved) return { ...resolved, doorwayChain: [functionName, ...(resolved.doorwayChain ?? [resolved.functionName])] };
+  }
+  return null;
+}
+
+function resolvePartnerFamilyRequest(cat, adapter, functionName, visited = new Set()) {
+  if (visited.has(functionName) || visited.size > 5) return null;
+  const nextVisited = new Set(visited);
+  nextVisited.add(functionName);
+  const fn = sourceFunction(cat, adapter, functionName);
+  if (!fn) return null;
+
+  const activation = /\b([a-z]\w*)\s*\.\s*activate\s*\(\s*([A-Z]\w*Family)\s*\.\s*Control\s*\.\s*(\w+)\s*\(/.exec(fn.body);
+  if (activation) {
+    const familyType = activation[2];
+    const control = activation[3];
+    const family = familyRoot(cat, adapter, familyType);
+    const parsed = family ? parseFamily(cat, adapter, familyType) : null;
+    if (!family || !parsed) return null;
+    const effect = parsed.effects.includes(control) ? control : parsed.effects.length === 1 ? parsed.effects[0] : null;
+    const method = parsed.methods.find((entry) => entry.name === control) ?? (parsed.methods.length === 1 ? parsed.methods[0] : null);
+    if (!effect || !method) return null;
+    const partnerPattern = new RegExp(
+      'class\\s+' + escapeRegex(method.name) +
+        '\\s*\\([\\s\\S]{0,1000}?connection\\s*:\\s*([A-Z]\\w*Partner)\\s*\\.\\s*Connection',
+    );
+    const partnerType = partnerPattern.exec(family.text)?.[1] ?? null;
+    const partner = partnerType ? partnerRoot(cat, adapter, partnerType) : null;
+    if (!partnerType || !partner) return null;
+    return {
+      kind: 'FAMILY_REQUEST',
+      functionName,
+      functionSource: fn.source,
+      labSource: fn,
+      familyType,
+      family,
+      parsedFamily: parsed,
+      control,
+      effect,
+      method,
+      partnerType,
+      partner,
+      signals: sealedMembers(partner.text, 'Signal'),
+    };
+  }
+
+  for (const call of directMemberCalls(fn.body)) {
+    if (!sourceFunction(cat, adapter, call.functionName)) continue;
+    const resolved = resolvePartnerFamilyRequest(cat, adapter, call.functionName, nextVisited);
+    if (resolved) return { ...resolved, doorwayChain: [functionName, ...(resolved.doorwayChain ?? [resolved.functionName])] };
+  }
+  return null;
+}
+
+function resolvePartnerAutomation(cat, adapter, doorway) {
+  if (!/toggle|enable|automation|rule/i.test(doorway.functionName)) return null;
+  const fn = sourceFunction(cat, adapter, doorway.functionName);
+  if (!fn || !/VexExecution\.observe\s*\(/.test(fn.text)) return null;
+  const sourceFamilyType = /evaluate\w*State\s*\(\s*state\s*:\s*([A-Z]\w*Family)\.State/.exec(fn.text)?.[1] ?? null;
+  const requestFunction = /\binsulin\s*\.\s*(request\w+)\s*\(/.exec(fn.text)?.[1] ?? null;
+  const sourceFamily = sourceFamilyType ? familyRoot(cat, adapter, sourceFamilyType) : null;
+  const request = requestFunction ? resolvePartnerFamilyRequest(cat, adapter, requestFunction) : null;
+  if (!sourceFamilyType || !sourceFamily || !request) return null;
+  return {
+    kind: 'AUTOMATION',
+    functionName: doorway.functionName,
+    functionSource: fn.source,
+    labSource: fn,
+    sourceFamilyType,
+    sourceFamily,
+    request,
+  };
+}
+
+function followPartnerCircuit(cat, adapter, screen, element) {
+  const doorway = localEffectDoorway(screen, element);
+  if (!doorway) return null;
+  const automation = resolvePartnerAutomation(cat, adapter, doorway);
+  if (automation) return { ...doorway, ...automation };
+  const request = resolvePartnerFamilyRequest(cat, adapter, doorway.functionName);
+  if (request) return { ...doorway, ...request };
+  const ingress = resolvePartnerIngress(cat, adapter, doorway.functionName);
+  if (ingress) return { ...doorway, ...ingress };
+  return null;
+}
+
 /* ---------- pathway templates ---------- */
 
 const SUMMARY = Object.freeze({
