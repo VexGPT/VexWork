@@ -1100,7 +1100,7 @@ The exact-source preflight exposed two useful currentness corrections:
      rather than borrowing their currentness from the older Stable Lens snapshot
 ~~~
 
-The exact Android source round-trip now resolves:
+The exact Android source round-trip resolves:
 
 ~~~text
 source-owned relationships = 8
@@ -1109,8 +1109,112 @@ representative expressions = 7
 findings = 0
 ~~~
 
+This edge is now accepted through VexWork PR #268:
+
+~~~text
+merge
+  979972600f7378fa64025f55bc9006eaf2292fb7
+
+SourceOwner / Android round-trip
+  focused 105 / 105 PASS
+  lens:verify PASS
+  full deterministic review 683 / 683 PASS
+  exact Android eight-file round-trip PASS
+
+fresh Independent Assurance
+  CLEAR_ON_EXACT_HEAD
+
+post-merge
+  actual tree == proven candidate tree
+  exact Pages artifact desktop + mobile PASS
+~~~
+
 This source derivation does **not** generalize Screen Lens Depth into Cloud/server traversal. Deeper
 ecosystem projection remains a separate consumer/rightful-owner pressure.
+
+## Phase 5 — materially different second consumer pressure
+
+The next portability question is not "can another VexStream context use the same code?"
+
+It is:
+
+~~~text
+can a materially different Screen / semantic owner
+use the accepted expression contract
+without changing its relationship vocabulary,
+expression bases,
+or runtime-item identity law?
+~~~
+
+Current candidate: **Events**.
+
+Why Events is useful pressure:
+
+~~~text
+VexStream
+  library/playback source relationships
+  runtime trackRef rows
+  static SongsPanel realization anchor
+
+Events
+  Relay/currentness source relationships
+  runtime eventRef rows
+  static Events body realization anchor
+  Unobserved != observed Empty
+~~~
+
+Events therefore reuses the accepted repeated-item law without importing VexStream semantics:
+
+~~~text
+REGISTERED
+REALIZED_AS
+POPULATES
+
+SOURCE_DEFAULT
+SOURCE_AXIS
+~~~
+
+The source-authored Events Attention Preview provides three stable runtime identities:
+
+~~~text
+event.preview.message.001
+event.preview.call.002
+event.preview.map.003
+~~~
+
+No attention Scenario state is imported into the Screen Expression fixture.
+
+### Held portability pressure — Family Conversation
+
+Family Conversation is intentionally **not** forced through the contract yet.
+
+Its source uses:
+
+~~~text
+VexStableLazyColumn(
+  listRef = "$semanticRootRef.messages",
+  itemRef = message.messageRef.value,
+)
+~~~
+
+so runtime `messageRef` identity is stable, but the actual `$screenId.messages` realization host is
+source-addressable custom Compose rather than a registered static Screen Lens element.
+
+Current contract requires every runtime item to point at an existing static `realizationRef`.
+
+Therefore:
+
+~~~text
+do not anchor messages falsely to body
+do not mint a fake static messages element
+do not widen the contract from one consumer
+
+Conversation non-static realization coordinate
+  = HELD portability pressure
+~~~
+
+If another materially different consumer repeats that shape, a smaller non-static realization
+coordinate may be earned later.
 
 ## Current continuation
 
@@ -1129,16 +1233,27 @@ DONE
   four-face human expression experience + lived focus refinement
   -> VexWork PR #265 / #266
 
+DONE
+  bounded Android-derived VexStream expression currentness
+  -> VexWork PR #268
+
 ACTIVE
-  prove bounded Android-derived expression relationship currentness
-  -> exact source reader
-  -> accepted fixture relationship reconciliation
-  -> repository proof + independent assurance + integration
+  Events materially-different second consumer
+  -> exact three-file source reader
+  -> source default preserves Unobserved != Empty
+  -> preview eventRef runtime identity anchors to existing element.events.body
+  -> no new relationship kinds / expression bases / Scenario state
+
+HELD
+  Family Conversation custom runtime realization
+  -> stable messageRef identity
+  -> non-static "$screenId.messages" host
+  -> insufficient repeated pressure for contract widening
 
 THEN
-  round-trip / lived proof from the source-derived result
-  -> one materially different second consumer
-  -> only then consider further shared abstraction
+  prove Events source/fixture portability
+  -> decide whether multi-fixture UI consumption is the next useful edge
+  -> only after second-consumer evidence consider any shared source-currentness abstraction
 
 Scenario Playground remains:
   CAPTURED / PARKED / NO_AUTHORITY / NO_EFFECTS
