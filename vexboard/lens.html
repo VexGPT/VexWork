@@ -194,7 +194,7 @@ a{color:var(--focus)}
 .xpaths .label{flex:none;font-size:11px;color:var(--faint)}
 .xpath{flex:none;height:25px;padding:0 8px;border:1px solid var(--rule);border-radius:7px;background:#fff;color:var(--muted);font-size:11px;white-space:nowrap;max-width:210px;overflow:hidden;text-overflow:ellipsis}
 .xpath[aria-pressed="true"]{border-color:var(--ink);background:var(--ink);color:#fff}
-@media (max-width:900px){.xrail{flex-wrap:wrap}.xrail .xlabel{display:none}.xchips{order:2;flex-basis:calc(100% - 72px)}.xpeek{display:none}.xslot{width:min(390px,100%)}.xgraph-context .xpaths{flex-basis:100%;margin-left:0;padding-top:4px}}
+@media (max-width:900px){.xrail{flex-wrap:nowrap;padding:6px 12px}.xrail .xlabel,.xrail .xcount{display:none}.xchips{order:initial;flex:1;flex-basis:auto;overflow:hidden;justify-content:center;padding:2px}.xchip{display:none}.xchip[aria-pressed="true"]{display:inline-flex;width:100%;max-width:100%;justify-content:center}.xpeek{display:none}.xslot{width:min(390px,100%)}.xgraph-context .xpaths{flex-basis:100%;margin-left:0;padding-top:4px}}
 
 /* Structure face */
 .structure{flex:1;overflow:auto;padding:16px 16px 28px}
