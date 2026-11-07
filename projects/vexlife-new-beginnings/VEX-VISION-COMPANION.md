@@ -51,13 +51,14 @@ It does not need to become the forever-browser architecture before this Vision e
 
 ## Current accepted Vex Vision source
 
-Current accepted Vextreme-SDK source after the repository baseline repair:
+Current accepted Vextreme-SDK source after the SCREEN Safety currentization:
 
 ~~~text
 vgong24/Vextreme-SDK
-main       ba62378289faa7c72e595793839389f71ba21923
-checkpoint ba62378289faa7c72e595793839389f71ba21923
-source PR  #1920 accepted / merged
+main       d738fe44612575a4ba2404368c1bfa8821d46cd3
+checkpoint d738fe44612575a4ba2404368c1bfa8821d46cd3
+source PR  #1915 accepted / merged
+baseline   #1920 accepted / merged
 ~~~
 
 Relevant accepted/current source already establishes:
@@ -592,8 +593,12 @@ current implementation edge:
   focused macOS permission-agent 17/17 PASS
   full sdk-check PASS: 7014 pass / 0 fail / 3 skip; READY yes
   fresh Independent Assurance CLEAR_ON_EXACT_HEAD
-  distinct Formal Review pending at github.issue.vextreme-sdk.1922
-  live Safety currentness must be re-grounded again before later lifecycle/effect consumption
+  distinct Formal Review APPROVE / CLEAR_ON_EXACT_HEAD
+  PR #1915 merged as d738fe44612575a4ba2404368c1bfa8821d46cd3
+  Main Integrity checkpoint converged to the same merge
+  next host prerequisite = MACOS_STABLE_REQUESTER_SIGNER_CURRENT
+  historical host attempt found STABLE_NON_ADHOC_SIGNER_UNAVAILABLE before any Screen Recording prompt
+  live Safety currentness must be re-grounded again before the later host-permission effect
 ~~~
 
 It is READY as work because the human outcome and source owners are sufficiently clear.
@@ -638,11 +643,11 @@ Vision must earn lived superiority before it replaces any existing product pathw
 
 ## Source grounding
 
-- Vextreme-SDK accepted main/checkpoint: `ba62378289faa7c72e595793839389f71ba21923`
+- Vextreme-SDK accepted main/checkpoint: `d738fe44612575a4ba2404368c1bfa8821d46cd3`
 - accepted held SCREEN integration merge:
   `4e8f2fca496269cadc7710e5134ed45d9ecae3e0`
 - accepted SDK baseline repair: Vextreme-SDK PR #1920 / merge `ba62378289faa7c72e595793839389f71ba21923`
-- current SCREEN Safety candidate: Vextreme-SDK PR #1915 / head `fb71627dd1a5d7b58b98a0457876e2b49f86d58c`
+- accepted SCREEN Safety currentization: Vextreme-SDK PR #1915 / merge `d738fe44612575a4ba2404368c1bfa8821d46cd3`
 - `docs/architecture/vex-body-vision-screen-held-integration.md`
 - `docs/architecture/perception-session-screen-owner-binding.md`
 - `docs/architecture/macos-screen-permission-agent.md`
