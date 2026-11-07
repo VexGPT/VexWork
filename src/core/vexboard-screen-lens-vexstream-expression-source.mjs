@@ -186,6 +186,11 @@ export function projectVexStreamExpressionSource({ lens, files, sourceRevisionRe
     /object\s+VexStreamMusicScreen\s*:\s*AppScreenBlueprint\([\s\S]*?screenKey\s*=\s*"vexstream-music"/,
     'VexStreamMusicScreen screenKey',
   );
+  requirePattern(
+    musicScreen,
+    /override\s+val\s+content\s*=\s*layout\s*\{[\s\S]*?column\(\s*"body"\s*\)/,
+    'VexStreamMusicScreen body layout',
+  );
 
   const libraryArgs = callArgsForVal(musicScreen, 'LibraryContent', 'swappableRef');
   if (compact(namedArg(libraryArgs, 'defaultChild')) !== 'SongsPanel') {
@@ -210,13 +215,19 @@ export function projectVexStreamExpressionSource({ lens, files, sourceRevisionRe
     /if\s*\(\s*state\.connectionState\s*!is\s*VexStreamConnectionState\.Paired\s*\)\s*\{[\s\S]*?VexStreamConnectionSetup\s*\(/,
     'connection setup is conditioned on not Paired',
   );
+  const connectionSetup = functionBody(connectionPresentation, 'VexStreamConnectionSetup');
   requirePattern(
-    connectionPresentation,
-    /VexStreamConnectionState\.NotPaired\s*->[\s\S]*?VexStreamMusicScreen\.FindNearby/,
-    'NotPaired presents FindNearby',
+    connectionSetup,
+    /VexContainer\s*\([\s\S]*?element\s*=\s*VexStreamMusicScreen\.ConnectionSection/,
+    'Connection setup renders ConnectionSection',
   );
   requirePattern(
-    connectionPresentation,
+    connectionSetup,
+    /VexStreamConnectionState\.NotPaired\s*->[\s\S]*?VexText\s*\([\s\S]*?id\s*=\s*"intro"[\s\S]*?VexStreamMusicScreen\.FindNearby/,
+    'NotPaired presents intro and FindNearby',
+  );
+  requirePattern(
+    connectionSetup,
     /is\s+VexStreamConnectionState\.Paired\s*->\s*Unit/,
     'Paired connection setup contributes no setup surface',
   );
@@ -311,6 +322,21 @@ export function projectVexStreamExpressionSource({ lens, files, sourceRevisionRe
     /runtime\.presentation\.isOpen\(VexStreamMusicScreen\.ConnectionMenuSheet\)[\s\S]*?VexStreamConnectionMenuSheet\s*\(/,
     'ConnectionMenuSheet presentation gate',
   );
+  const connectionMenu = functionBody(connectionPresentation, 'VexStreamConnectionMenuSheet');
+  for (const control of [
+    'RefreshCatalog',
+    'Reconnect',
+    'DownloadAllMissingSongs',
+    'RemoveAllDownloadedSongs',
+    'RequestForgetPaired',
+    'CloseConnectionMenu',
+  ]) {
+    requirePattern(
+      connectionMenu,
+      new RegExp(`element\\s*=\\s*VexStreamMusicScreen\\.${control}\\b`),
+      `Connection Menu renders ${control}`,
+    );
+  }
 
   const previewTracks = parsePreviewTracks(musicScreen);
   const songsPanel = requireElementBySymbol(lens, 'VexStreamMusicScreen.SongsPanel');
@@ -322,7 +348,7 @@ export function projectVexStreamExpressionSource({ lens, files, sourceRevisionRe
   const library = requireElementBySymbol(lens, 'VexStreamMusicScreen.LibraryContent');
   const player = requireElementBySymbol(lens, 'VexStreamMusicScreen.PlayerSection');
   const fullPlayerSheet = requireElementBySymbol(lens, 'VexStreamMusicScreen.FullPlayerSheet');
-  const connectionMenu = requireElementBySymbol(lens, 'VexStreamMusicScreen.ConnectionMenuSheet');
+  const connectionMenuElement = requireElementBySymbol(lens, 'VexStreamMusicScreen.ConnectionMenuSheet');
 
   const relationships = [
     relationship({
@@ -355,7 +381,6 @@ export function projectVexStreamExpressionSource({ lens, files, sourceRevisionRe
       kind: 'SELECTS',
       subjectRef: library.ref,
       elementRefs: [
-        requireElement(lens, 'element.vexstream-music.body.library-tabs').ref,
         library.ref,
       ],
       sourceRefs: [SOURCE_REFS.musicScreen, SOURCE_REFS.librarySurface],
@@ -443,14 +468,14 @@ export function projectVexStreamExpressionSource({ lens, files, sourceRevisionRe
     relationship({
       relationshipRef: 'relationship.vexstream.connection-menu.presentation',
       kind: 'PRESENTS',
-      subjectRef: connectionMenu.ref,
+      subjectRef: connectionMenuElement.ref,
       sourceRefs: [SOURCE_REFS.musicScreen, SOURCE_REFS.librarySurface, SOURCE_REFS.connectionPresentation],
       defaultValueRef: 'connection-menu.closed',
       values: [
         value('connection-menu.closed'),
         value('connection-menu.open', {
           elementRefs: [
-            connectionMenu.ref,
+            connectionMenuElement.ref,
             requireElementBySymbol(lens, 'VexStreamMusicScreen.RefreshCatalog').ref,
             requireElementBySymbol(lens, 'VexStreamMusicScreen.Reconnect').ref,
             requireElementBySymbol(lens, 'VexStreamMusicScreen.DownloadAllMissingSongs').ref,
