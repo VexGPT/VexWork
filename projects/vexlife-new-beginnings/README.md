@@ -470,9 +470,15 @@ Current coordinate:
 
 ~~~text
 work.vexlife.new-beginnings.vision-companion-real-browser-witness
-  READY / HIGH / PARALLEL
+  RUNNING / HIGH / PARALLEL
   authorityDisposition = NO_AUTHORITY
   effectDisposition    = NO_EFFECTS
+
+current source edge
+  Vextreme-SDK issue #1914
+  draft PR #1915
+  exact candidate 02779b8e34f42169bde3e8e55f954a0f170b32b8
+  SourceOwner proof = PENDING
 ~~~
 
 The first intended active slice is one explicit selected-window snapshot per Conversation turn (or

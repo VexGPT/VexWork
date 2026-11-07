@@ -121,7 +121,11 @@
     "repo.vextreme-sdk:docs/private-continuity/vex-body/vision/screen-permission/current.json",
     "repo.vextreme-sdk:docs/private-continuity/vexlocalbridge/model-runtime-adapter-registry.json",
     "repo.vextreme-sdk:lib/vexlocalbridge/mlx-persistent-runtime-owner.js",
-    "github.pull.vexlife-prod.53"
+    "github.pull.vexlife-prod.53",
+    "github.issue.vextreme-sdk.1914",
+    "github.issue.vextreme-sdk.226.comment.6704955343",
+    "github.pull.vextreme-sdk.1915",
+    "github.commit.vextreme-sdk.02779b8e34f42169bde3e8e55f954a0f170b32b8"
   ],
   "formedAt": "2026-11-02T02:28:00.000Z"
 }

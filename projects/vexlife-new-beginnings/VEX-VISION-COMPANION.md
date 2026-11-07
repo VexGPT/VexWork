@@ -260,11 +260,18 @@ The Workgraph coordinate is:
 
 ~~~text
 work.vexlife.new-beginnings.vision-companion-real-browser-witness
-state              READY
+state              RUNNING
 priority           HIGH
 workDisposition    ACTIVE
 authority          NO_AUTHORITY
 effects            NO_EFFECTS
+
+current implementation edge:
+  github.issue.vextreme-sdk.1914
+  github.pull.vextreme-sdk.1915
+  candidate 02779b8e34f42169bde3e8e55f954a0f170b32b8
+  candidate tree e641e9ee4b23c1e24d11c36b13065b12b46c64d3
+  SourceOwner proof PENDING
 ~~~
 
 It is READY as work because the human outcome and source owners are sufficiently clear.

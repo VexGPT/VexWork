@@ -444,13 +444,13 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-11-07T08:06:00.000Z",
-      "updatedAt": "2026-11-07T08:06:00.000Z",
+      "updatedAt": "2026-11-07T09:14:30.000Z",
       "workRef": "work.vexlife.new-beginnings.vision-companion-real-browser-witness",
       "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
       "label": "High — Vex Vision companion for real-browser witnessing",
       "purpose": "Let Victor use a normal browser with normal site/session behavior while Vex can be explicitly invited to witness one selected browser window through the existing Vex Vision / Perception architecture. Begin with visible, on-demand one-request/at-most-one-capture observation and ephemeral raw pixels; derive bounded visual context for canonical Conversation without making VexLife UI the sensor owner, treating screen content as authority, fabricating a VLM path, or enabling continuous/background monitoring.",
       "workClass": "TASK",
-      "state": "READY",
+      "state": "RUNNING",
       "priorityClass": "HIGH",
       "dependencyRefs": [
         "work.vexlife.new-beginnings.local-runtime-foundation",
@@ -478,7 +478,11 @@
         "repo.vextreme-sdk:lib/vexlocalbridge/mlx-persistent-runtime-owner.js",
         "projects/vex-security-assurance/ADVERSARIAL-LENS.md",
         "github.pull.vexlife-prod.53",
-        "work.vexlife.new-beginnings.experience-manifestation-parity"
+        "work.vexlife.new-beginnings.experience-manifestation-parity",
+        "github.issue.vextreme-sdk.1914",
+        "github.issue.vextreme-sdk.226.comment.6704955343",
+        "github.pull.vextreme-sdk.1915",
+        "github.commit.vextreme-sdk.02779b8e34f42169bde3e8e55f954a0f170b32b8"
       ],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS"
@@ -1129,6 +1133,22 @@
         "github.pull.vexlife-prod.37.comment.6679191516"
       ],
       "createdAt": "2026-11-06T07:12:17.000Z"
+    },
+    {
+      "schemaVersion": "vexwork.work-transition/v1",
+      "transitionRef": "transition.vexlife.new-beginnings.vision-companion.ready-running.sdk-screen-currentization.20261107A",
+      "workRef": "work.vexlife.new-beginnings.vision-companion-real-browser-witness",
+      "priorState": "READY",
+      "nextState": "RUNNING",
+      "reason": "The Vex Vision continuation descended to current Vextreme-SDK owners, formed fresh SCREEN Safety work case #1914, admitted the exact three-path owner-binding currentization, and opened draft PR #1915. SourceOwner proof is now the active boundary; host OS screen permission and capture remain unperformed.",
+      "actorRef": "actor.chatgpt.vexlife-vision-companion",
+      "sourceRefs": [
+        "github.issue.vextreme-sdk.1914",
+        "github.issue.vextreme-sdk.226.comment.6704955343",
+        "github.pull.vextreme-sdk.1915",
+        "github.commit.vextreme-sdk.02779b8e34f42169bde3e8e55f954a0f170b32b8"
+      ],
+      "createdAt": "2026-11-07T09:14:30.000Z"
     }
   ],
   "sourceRefs": [
