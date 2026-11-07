@@ -81,6 +81,27 @@ function sourceFiles(overrides = {}) {
           id = "body.connection.manage",
           intent = open(ConnectionMenuSheet),
         )
+
+        override val content = layout {
+          column("body") {
+            column(
+              element = ConnectionSection,
+            ) {
+              text(
+                id = "intro",
+              )
+              button(FindNearby)
+            }
+            row("library-tabs") {
+              button(SongsTab)
+              button(AlbumsTab)
+            }
+            swappable(LibraryContent) {
+              scrollableColumn(SongsPanel) {}
+              scrollableColumn(AlbumsPanel) {}
+            }
+          }
+        }
       }
 
       internal fun vexStreamPreviewState(): VexStreamMusicState {
