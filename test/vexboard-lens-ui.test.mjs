@@ -171,7 +171,7 @@ test('Surface realizes source-authored presentation rather than flattening it in
 test('expression carousel preserves the lived desktop and phone-width interaction shape', () => {
   assert.match(page, /class: 'xslot'/);
   assert.match(page, /class: `xpeek \$\{side\} kind-\$\{expression\.kind\}`/);
-  assert.match(page, /renderPhone\(entry, \{ interactive: false \}\)/);
+  assert.match(page, /renderPhone\(expression, \{ interactive: false \}\)/);
   assert.match(page, /function wireSwipe\(surface\)/);
   assert.match(page, /Math\.abs\(dx\) > 70/);
   assert.match(page, /event\.key === 'ArrowRight' \|\| event\.key === 'ArrowLeft'/);
