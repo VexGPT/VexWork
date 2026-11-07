@@ -822,7 +822,7 @@ VexWork:
 - work.vexboard.vexstream-screenshot-pilot
 - current base dd03cabfb181cdbbe0232d292c2d12b13c8621f3
 
-VexLife-Android at current main 305a09eac1fabebcf2241bd207386950f41121f2:
+VexLife-Android at current main ecbb6987d1da338fa0adf7297456d3f652f04155:
 
 - architecture/elements/README.md
 - architecture/elements/.../ScreenBlueprint.kt
@@ -837,18 +837,120 @@ VexArchitecture at Vextreme main dac1378f95b9c77091b4a63b0ceba8705e018572:
 - pages/vexarchitecture-first-stable-body.html
 - pages/vexarchitecture-live-demonstration.html
 
+## Android Phase 1 — accepted projectability patient zero
+
+The first bounded Android alignment is now accepted source.
+
+~~~text
+VexLife-Android PR #212
+merge
+ecbb6987d1da338fa0adf7297456d3f652f04155
+
+accepted paths
+  architecture/elements/.../VexStableLazyList.kt
+  architecture/elements/.../VexStableLazyListTest.kt
+  app/.../vexstream/VexStreamLibraryPresentation.kt
+  app/.../vexstream/VexStreamCollectionPresentation.kt
+~~~
+
+Accepted meaning:
+
+~~~text
+Songs / Downloads
+  registered panel identity
+  -> existing VexStableLazyColumn repeated-item mechanics
+  -> feature-owned trackRef runtime item identity
+
+collection card
+  existing runtime collection-row ref
+  -> VexComposeScope
+  -> existing layout container carries exact row ref
+  -> nested title / subtitle / count / offline presentation roles
+
+NO
+  runtime rows copied into static Screen registration
+  vexItems ontology
+  Scenario ownership
+  VexBoard-specific Android AST
+~~~
+
+Proof/review trajectory:
+
+~~~text
+A001
+  Relay formation lifecycle-label defect
+  -> no Android execution
+
+A002
+  exact source compile failure
+  -> missing Modifier import
+  -> one-line source correction
+
+A003
+  vexVerifyLocal PASS on exact four-path projectability head
+  -> broad visual proof later stopped at stale screenshot fixture API
+
+A004-A005
+  decomposed visual proof-foundation failures
+  -> currentized explicit VexThemePresentation fixture API
+  -> identified Layoutlib native-files boundary in VexStream artwork
+
+A006
+  aggregate local proof PASS on projectability composition
+  -> focused VexStream golden reaches image comparison
+
+A007 differential
+  zero Screen Lens projectability paths
+  -> same VexStream ImageComparisonAssertionError reproduces
+  -> focused visual mismatch is independent of projectability
+
+Independent Assurance
+  CLEAR_ON_EXACT_HEAD
+
+post-merge
+  all four merged blobs byte-equal to the proven candidate
+~~~
+
+The separate artwork/native-files pressure remains isolated on VexLife-Android PR #216. It did not
+merge with projectability and is not a hidden prerequisite for the Screen Lens continuation.
+
+The Android phase therefore closes the question "can existing VexStream runtime collection meaning
+be made lawfully projectable without teaching Android a VexBoard ontology?" with **yes**.
+
+The foreground now moves to the VexBoard side:
+
+~~~text
+typed projectability / expression fixture
+-> representative Expression Context derivation
+-> four-face projection contract
+-> expression rail / source-backed mapping
+-> bounded Android source adapter only after the contract is independently useful
+~~~
+
+The dual Behavior-foundation law remains in force:
+
+~~~text
+Direct VexFamily
+  exact admitted State VALUE may be projected
+
+compatibility VexBehaviorBlueprint
+  admitted State KIND only unless the concrete Connection proves the realized value
+
+Screen Lens
+  must not normalize these into invented equivalence
+~~~
+
 ## Current continuation
 
 ~~~text
 RUNNING / AUTHORIZED_BOUNDED / EFFECTS_BOUND
 
 next:
-  preserve baseline invariants
+  Android projectability patient zero ACCEPTED / MERGED
   -> form one VexStream projectability/expression contract fixture
-  -> pressure Android only where current source cannot lawfully expose the relationship
-  -> prove scalable expression derivation without Cartesian-product noise
-  -> implement VexBoard contract/components
-  -> implement bounded Android adapter/JSON projection
+  -> prove scalable representative expression derivation without Cartesian-product noise
+  -> implement VexBoard contract/components and four-face expression projection
+  -> implement bounded Android adapter/JSON projection after the contract is independently useful
   -> round-trip / screenshot / lived proof
   -> second materially different consumer before further abstraction
 
