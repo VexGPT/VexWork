@@ -266,8 +266,8 @@ a{color:var(--focus)}
 .kind-CUSTOM .xk{background:color-mix(in srgb,var(--pres-scenario) 14%,#fff);color:var(--pres-scenario)}
 .xchip.on{border:1px solid var(--ink);box-shadow:0 0 0 2px color-mix(in srgb,var(--ink) 14%,transparent);color:var(--ink)}
 .xsep{flex:none;width:1px;height:18px;margin:0 3px;background:var(--rule-strong)}
-.xstage{position:relative;flex:1;min-width:0;min-height:0;display:flex;justify-content:center}
-.xslot{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;width:min(340px,100%);min-height:0}
+.xstage{--x-shift:356px;position:relative;flex:1;min-width:0;min-height:0;display:flex;justify-content:center}
+.xslot{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;width:min(340px,100%);min-height:0;transform-origin:center top}
 .xslot > .phone{width:100%;flex:1;height:auto}
 .xcap{display:flex;align-items:center;gap:6px;max-width:100%;min-height:20px;font-size:12px;color:var(--muted);white-space:nowrap}
 .xcap b{color:var(--ink);font-weight:600}
@@ -280,13 +280,42 @@ a{color:var(--focus)}
 .xpeek > .phone{flex:1;height:auto;pointer-events:none}
 .xpeek-label{position:absolute;bottom:calc(100% + 6px);left:0;right:0;display:flex;align-items:center;gap:5px;overflow:hidden;font-size:12px;color:var(--muted);white-space:nowrap}
 .xpeek.prev .xpeek-label{justify-content:flex-end}
-@keyframes x-in-next{from{transform:translateX(64px);opacity:.25}to{transform:none;opacity:1}}
-@keyframes x-in-prev{from{transform:translateX(-64px);opacity:.25}to{transform:none;opacity:1}}
-.xstage.enter-next .xslot{animation:x-in-next .26s cubic-bezier(.2,.7,.2,1)}
-.xstage.enter-prev .xslot{animation:x-in-prev .26s cubic-bezier(.2,.7,.2,1)}
+/* Carousel handoff: the clicked neighbour becomes center while the old center becomes the opposite peek.
+   The DOM is rebuilt for the new expression, so each new role animates from the position that same
+   expression occupied immediately before the step instead of merely fading the center into place. */
+@keyframes x-center-from-next{
+  from{transform:translateX(var(--x-shift)) scale(.84);opacity:.45}
+  to{transform:translateX(0) scale(1);opacity:1}
+}
+@keyframes x-center-from-prev{
+  from{transform:translateX(calc(-1 * var(--x-shift))) scale(.84);opacity:.45}
+  to{transform:translateX(0) scale(1);opacity:1}
+}
+@keyframes x-center-to-prev{
+  from{transform:translateX(var(--x-shift)) scale(1);opacity:1}
+  to{transform:translateX(0) scale(.84);opacity:.45}
+}
+@keyframes x-center-to-next{
+  from{transform:translateX(calc(-1 * var(--x-shift))) scale(1);opacity:1}
+  to{transform:translateX(0) scale(.84);opacity:.45}
+}
+@keyframes x-outer-from-next{
+  from{transform:translateX(150px) scale(.78);opacity:0}
+  to{transform:translateX(0) scale(.84);opacity:.45}
+}
+@keyframes x-outer-from-prev{
+  from{transform:translateX(-150px) scale(.78);opacity:0}
+  to{transform:translateX(0) scale(.84);opacity:.45}
+}
+.xstage.enter-next .xslot{animation:x-center-from-next .34s cubic-bezier(.2,.72,.2,1)}
+.xstage.enter-next .xpeek.prev{animation:x-center-to-prev .34s cubic-bezier(.2,.72,.2,1)}
+.xstage.enter-next .xpeek.next{animation:x-outer-from-next .34s cubic-bezier(.2,.72,.2,1)}
+.xstage.enter-prev .xslot{animation:x-center-from-prev .34s cubic-bezier(.2,.72,.2,1)}
+.xstage.enter-prev .xpeek.next{animation:x-center-to-next .34s cubic-bezier(.2,.72,.2,1)}
+.xstage.enter-prev .xpeek.prev{animation:x-outer-from-prev .34s cubic-bezier(.2,.72,.2,1)}
 @keyframes x-flash{0%,45%{box-shadow:0 0 0 4px color-mix(in srgb,var(--focus) 55%,transparent)}100%{box-shadow:0 0 0 0 transparent}}
 .flash{animation:x-flash 1.3s ease 1}
-@media (prefers-reduced-motion:reduce){.xstage .xslot,.flash{animation:none!important}}
+@media (prefers-reduced-motion:reduce){.xstage .xslot,.xstage .xpeek,.flash{animation:none!important}}
 .golden-shot{position:absolute;inset:0;z-index:20;display:flex;flex-direction:column;margin:0;background:#0b0f19;cursor:pointer}
 .golden-shot img{flex:1;min-height:0;width:100%;object-fit:contain}
 .golden-shot figcaption{padding:6px 10px;background:#fff;color:var(--muted);font-size:11px}
