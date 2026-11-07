@@ -444,7 +444,7 @@
       "formationProcessRefOrNull": null,
       "nextProcessRefs": [],
       "createdAt": "2026-11-07T08:06:00.000Z",
-      "updatedAt": "2026-11-07T10:26:00.000Z",
+      "updatedAt": "2026-11-07T10:18:00.000Z",
       "workRef": "work.vexlife.new-beginnings.vision-companion-real-browser-witness",
       "parentWorkRefOrNull": "work.vexlife.new-beginnings.outcome",
       "label": "High — Vex Vision companion for real-browser witnessing",
@@ -489,7 +489,40 @@
         "github.pull.vextreme-sdk.1920",
         "github.commit.vextreme-sdk.74d02ea8b60a28ae23a5c40db0933de79abf0579",
         "github.commit.vextreme-sdk.26f74ea4b5a9d4e37aa9e1fb09ae18d3f0e51180",
-        "github.pull.vextreme-sdk.1918.comment.6705514788"
+        "github.pull.vextreme-sdk.1918.comment.6705514788",
+        "github.pull.vexlife-prod.54",
+        "github.commit.vexlife-prod.f08609836b5a916a9ad6503af2d6acf5bd9be805"
+      ],
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "createdAt": "2026-11-07T10:18:00.000Z",
+      "updatedAt": "2026-11-07T10:18:00.000Z",
+      "workRef": "work.vexlife.new-beginnings.vision-companion-product-surface",
+      "parentWorkRefOrNull": "work.vexlife.new-beginnings.vision-companion-real-browser-witness",
+      "label": "High — VexLife Vision Family + held product control surface",
+      "purpose": "Begin the VexLife product-side Vision feature now on the stable current PR #53 surface: form one compiler-visible Vision Family, add one stable Blueprint/VexWeb control coordinate, and manifest a visible HELD control without claiming screen permission, capture, visual observation, model input, or browser-control authority. This edge runs in parallel with the SDK physical Vision substrate and converges only when backend capability truth can drive Family state.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "projects/vexlife-new-beginnings/VEX-VISION-COMPANION.md",
+        "github.pull.vexlife-prod.53",
+        "github.commit.vexlife-prod.56aa338f186e237bbcdfd91859b761c2ef203f1e",
+        "github.pull.vexlife-prod.54",
+        "github.commit.vexlife-prod.f08609836b5a916a9ad6503af2d6acf5bd9be805",
+        "github.pull.vexwork.267",
+        "github.pull.vexlife-android.219"
       ],
       "authorityDisposition": "NO_AUTHORITY",
       "effectDisposition": "NO_EFFECTS"

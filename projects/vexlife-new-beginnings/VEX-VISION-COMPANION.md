@@ -378,6 +378,65 @@ VEX CAN WITNESS BROWSER
 A future browser-action capability would require its own Family Control / Act / Effect / Method /
 Partner acknowledgement / later-observation circuit. Vision observation alone cannot grant it.
 
+## Product-side decision currentization — begin the Vision surface now
+
+Victor explicitly judged the current VexLife-Prod presentation stable enough to begin adding Vision
+before the SDK physical capture trajectory reaches terminal acceptance.
+
+This changes the work order, not the authority boundary.
+
+~~~text
+PARALLEL EDGE A — PRODUCT
+VexLife-Prod PR #54
+  stacked on PR #53 exact head
+  VisionFamily State / Control / Effect / DisplayState
+  Blueprint Vision coordinate
+  VexWeb Companion-header manifestation
+  visible Vision · Held control
+  no capture binding
+
+PARALLEL EDGE B — PHYSICAL VISION
+Vextreme-SDK
+  PR #1915 SCREEN Safety currentization
+  held on repository baseline currentization PR #1920
+  then host permission / selected-window capture / Observation
+~~~
+
+Current product candidate:
+
+~~~text
+VexLife-Prod PR #54
+base 56aa338f186e237bbcdfd91859b761c2ef203f1e
+head f08609836b5a916a9ad6503af2d6acf5bd9be805
+tree 1b7919f5c2ee8112db8b02321ef2a0e02f706fc0
+~~~
+
+PR #54 is intentionally stacked on the stable current #53 presentation source rather than widening
+#53 itself. Its current button is **HELD by design**:
+
+~~~text
+VISIBLE CONTROL
+!= EFFECT AVAILABLE
+
+Vision · Held
+-> no JavaScript capture binding
+-> no screen-permission request
+-> no screenshot
+-> no VLM input
+~~~
+
+The current product semantic owner is source-visible now; later backend integration should drive the
+Family state rather than replacing the button with ad-hoc runtime booleans.
+
+Permanent:
+
+~~~text
+PRODUCT_SURFACE_READY
+!= SCREEN_PERMISSION_CURRENT
+!= SCREEN_CAPTURE_AVAILABLE
+!= VISUAL_OBSERVATION_ACTIVE
+~~~
+
 ## First bounded product slice
 
 The smallest useful active experience is **not continuous screen sharing**.
@@ -527,7 +586,7 @@ The next implementation sequence is:
 6. identify and qualify the actual local visual interpretation route (existing qualified VLM if one
    is later proven current, otherwise a separately admitted local visual worker);
 7. connect the derived visual observation into current VexLife-Prod Conversation Context;
-8. add the visible VexLife Vision control only when its states correspond to real capability truth;
+8. continue the already-formed VexLife-Prod #54 Vision Family/control surface from HELD into live capability states only when those states correspond to real backend truth;
 9. lived proof:
    - Vision OFF -> no capture;
    - Vision ON -> selected ordinary browser window only;
