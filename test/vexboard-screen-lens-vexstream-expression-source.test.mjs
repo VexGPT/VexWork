@@ -171,6 +171,73 @@ function sourceFiles(overrides = {}) {
         data class Active(val value: Int = 0) : VexStreamPlaybackDisplayState
       }
     `,
+    [VEXSTREAM_EXPRESSION_SOURCE_FILES.playerPresentation]: `
+      internal fun VexStreamMiniPlayer(
+        controller: Any?,
+        playbackExperience: Any,
+        runtime: Any,
+      ) {
+        VexContainer(
+          element = VexStreamMusicScreen.PlayerSection,
+        ) {
+          Row(
+            modifier = Modifier
+              .vex(
+                VexStreamMusicScreen.OpenFullPlayer,
+              )
+              .clickable {
+                runtime.activate(
+                  VexStreamMusicScreen.OpenFullPlayer,
+                )
+              },
+          ) {}
+          VexIconButton(
+            element = VexStreamMusicScreen.PreviousTrack,
+            handler = handler,
+          )
+          VexIconButton(
+            element = VexStreamMusicScreen.TogglePlayback,
+            handler = handler,
+          )
+          VexIconButton(
+            element = VexStreamMusicScreen.NextTrack,
+            handler = handler,
+          )
+          VexIconButton(
+            element = VexStreamMusicScreen.ShuffleQueue,
+            handler = handler,
+          )
+        }
+      }
+
+      internal fun VexStreamFullPlayerSheet(
+        state: Any,
+        controller: Any?,
+        playbackExperience: Any,
+        runtime: Any,
+      ) {
+        val selected =
+          runtime.presentation.selected(
+            VexStreamMusicScreen.FullPlayerContent,
+          )
+        VexModalBottomSheet(
+          element = VexStreamMusicScreen.FullPlayerSheet,
+        ) {
+          VexColumn(
+            element =
+              VexStreamMusicScreen
+                .FullPlayerNowPlayingPanel,
+          ) {
+            VexIconButton(
+              element =
+                VexStreamMusicScreen
+                  .CloseFullPlayer,
+              handler = handler,
+            )
+          }
+        }
+      }
+    `,
     [VEXSTREAM_EXPRESSION_SOURCE_FILES.stableList]: `
       fun <Item> VexStableLazyColumn(
         items: List<Item>,
@@ -204,7 +271,7 @@ test('the VexStream source reader is an exact bounded patient-zero read plan', (
     vexStreamExpressionSourceReadPlan(),
     Object.values(VEXSTREAM_EXPRESSION_SOURCE_FILES),
   );
-  assert.equal(vexStreamExpressionSourceReadPlan().length, 7);
+  assert.equal(vexStreamExpressionSourceReadPlan().length, 8);
   assert.ok(
     vexStreamExpressionSourceReadPlan().every(
       (path) => path.includes('vexstream') || path.endsWith('VexStableLazyList.kt'),
@@ -303,6 +370,19 @@ test('source projection fails closed when the library default or repeated-item i
   assert.throws(
     () => projection(listDrift),
     /VexStableLazyColumn uses itemRef as Compose key/,
+  );
+
+  const miniPlayerDrift = sourceFiles({
+    [VEXSTREAM_EXPRESSION_SOURCE_FILES.playerPresentation]:
+      sourceFiles().get(VEXSTREAM_EXPRESSION_SOURCE_FILES.playerPresentation)
+        .replace(
+          'element = VexStreamMusicScreen.TogglePlayback',
+          'element = VexStreamMusicScreen.SeekPlayback',
+        ),
+  });
+  assert.throws(
+    () => projection(miniPlayerDrift),
+    /Mini Player renders TogglePlayback/,
   );
 });
 
