@@ -422,7 +422,10 @@ import * as Expressions from '../src/shared/vexboard-screen-lens-expressions.mjs
 const DEFAULT_LENS_URL = '../projects/vexboard/lens/vexlife-android.screen-lens.json';
 const LENS_DIR = '../projects/vexboard/lens/';
 const CATALOG_URL = `${LENS_DIR}catalog.json`;
-const EXPRESSION_FIXTURE_URL = '../projects/vexboard/examples/vexlife-android-vexstream.screen-lens-expressions.fixture.json';
+const EXPRESSION_FIXTURE_URLS = Object.freeze({
+  'screen.vexstream-music': '../projects/vexboard/examples/vexlife-android-vexstream.screen-lens-expressions.fixture.json',
+  'screen.events': '../projects/vexboard/examples/vexlife-android-events.screen-lens-expressions.fixture.json',
+});
 const params = new URLSearchParams(location.search);
 const app = document.getElementById('app');
 const SVG = 'http://www.w3.org/2000/svg';
@@ -536,7 +539,9 @@ async function openRequest(request, { onProgress = () => {}, announce = true } =
   state.cameras.clear();
   const start = keepScreen && state.lens.screens.some((screen) => screen.screenRef === keepScreen) ? keepScreen : state.lens.entryScreenRef;
   state.walk = Lens.createScreenWalk(state.lens, start);
-  await bindExpressionsForLens({ requestedRef: keepExpression });
+  try { await loadExpressionFixtureSourcesForUi(); }
+  catch (error) { expressionFixturesLoaded = false; state.expressionError = error.message; }
+  bindExpressionsForCurrentScreen({ requestedRef: keepExpression });
   resetScreenSelection();
   if (state.overlay === 'CHANGES' && !state.compare) state.overlay = null;
   if (keepElement && Lens.elementsForScreen(state.lens, start).some((element) => element.ref === keepElement)) selectElement(keepElement);
@@ -667,10 +672,20 @@ function doorwayCollapsible(pathway) {
 const doorwayCollapsed = () => state.hideDoorway && doorwayCollapsible(currentPathway());
 const hideBandsFor = (face) => (face === 'BEHAVIOR' && doorwayCollapsed() ? ['DOORWAY'] : []);
 
-let expressionFixtureSource = null;
-async function expressionFixtureSourceForUi() {
-  expressionFixtureSource ??= await fetchJson(EXPRESSION_FIXTURE_URL);
-  return expressionFixtureSource;
+const expressionFixtureSources = new Map();
+let expressionFixturesLoaded = false;
+async function loadExpressionFixtureSourcesForUi() {
+  if (expressionFixturesLoaded) return;
+  const loaded = await Promise.all(Object.entries(EXPRESSION_FIXTURE_URLS).map(async ([expectedScreenRef, url]) => {
+    const source = await fetchJson(url);
+    if (source.screenRef !== expectedScreenRef) {
+      throw new Error(`${url} claims ${source.screenRef}; expected ${expectedScreenRef}`);
+    }
+    return [expectedScreenRef, source];
+  }));
+  expressionFixtureSources.clear();
+  for (const [screen, source] of loaded) expressionFixtureSources.set(screen, source);
+  expressionFixturesLoaded = true;
 }
 function clearExpressionBinding() {
   state.expressionFixture = null;
@@ -679,11 +694,10 @@ function clearExpressionBinding() {
   state.expressionPathwayRef = null;
   state.expressionError = null;
 }
-async function bindExpressionsForLens({ requestedRef = state.expressionRef } = {}) {
+function bindExpressionsForCurrentScreen({ requestedRef = state.expressionRef } = {}) {
   clearExpressionBinding();
-  let source;
-  try { source = await expressionFixtureSourceForUi(); }
-  catch (error) { state.expressionError = error.message; return; }
+  const source = expressionFixtureSources.get(screenRef()) ?? null;
+  if (!source) return;
   if (source.lensRef !== state.lens.lensRef || source.lensSourceCommit !== state.lens.sourceSnapshot.commit) return;
   try {
     state.expressionFixture = Expressions.normalizeScreenLensExpressionFixture(state.lens, source);
@@ -911,12 +925,14 @@ function travel(element) {
   if (!element?.navigatesTo) return;
   if (element.navigatesTo === Lens.BACK) { state.walk = Lens.backScreenWalk(state.walk); }
   else state.walk = Lens.advanceScreenWalk(state.lens, state.walk, { toScreenRef: element.navigatesTo, viaElementRef: element.ref });
+  bindExpressionsForCurrentScreen({ requestedRef: null });
   resetScreenSelection();
   render();
 }
 function jumpTo(target, how = 'JUMP') {
   if (target === screenRef() && how !== 'REVISIT') { state.overlay = null; render(); return; }
   state.walk = Lens.advanceScreenWalk(state.lens, state.walk, { toScreenRef: target, how });
+  bindExpressionsForCurrentScreen({ requestedRef: null });
   resetScreenSelection();
   state.overlay = null;
   render();
@@ -942,7 +958,11 @@ function whereText(target) {
 }
 function goToResult(result) {
   const target = result.target;
-  if (target.screenRef && target.screenRef !== screenRef()) state.walk = Lens.advanceScreenWalk(state.lens, state.walk, { toScreenRef: target.screenRef, how: 'JUMP' });
+  const changesScreen = Boolean(target.screenRef && target.screenRef !== screenRef());
+  if (changesScreen) {
+    state.walk = Lens.advanceScreenWalk(state.lens, state.walk, { toScreenRef: target.screenRef, how: 'JUMP' });
+    bindExpressionsForCurrentScreen({ requestedRef: null });
+  }
   state.overlay = null;
   const explicitTarget = Boolean(target.elementRef || target.pathwayRef || target.nodeRef);
   if (!explicitTarget) resetScreenSelection();
@@ -1180,14 +1200,14 @@ function renderAtlas() {
   const steps = state.walk.steps;
   const label = (ref) => Lens.screenFor(state.lens, ref).label;
   const walk = h('nav', { class: 'walk', 'aria-label': 'Walk' },
-    h('button', { class: 'back', disabled: steps.length <= 1, onclick: () => { state.walk = Lens.backScreenWalk(state.walk); resetScreenSelection(); render(); } }, 'Back'),
+    h('button', { class: 'back', disabled: steps.length <= 1, onclick: () => { state.walk = Lens.backScreenWalk(state.walk); bindExpressionsForCurrentScreen({ requestedRef: null }); resetScreenSelection(); render(); } }, 'Back'),
     ...steps.flatMap((step, i) => {
       const via = step.viaElementRef ? Lens.elementFor(state.lens, step.viaElementRef)?.label : null;
       const button = h('button', {
         class: `step${i === steps.length - 1 ? ' current' : ''}`,
         title: via ? `Reached via ${via}` : step.how === 'START' ? 'Start' : step.how.toLowerCase(),
         'aria-current': i === steps.length - 1 ? 'step' : null,
-        onclick: () => { if (i < steps.length - 1) { state.walk = Lens.revisitScreenWalk(state.lens, state.walk, step.sequence); resetScreenSelection(); render(); } },
+        onclick: () => { if (i < steps.length - 1) { state.walk = Lens.revisitScreenWalk(state.lens, state.walk, step.sequence); bindExpressionsForCurrentScreen({ requestedRef: null }); resetScreenSelection(); render(); } },
       }, label(step.screenRef));
       return i ? [h('span', { class: 'sep', 'aria-hidden': 'true' }, '›'), button] : [button];
     }),
@@ -2284,7 +2304,9 @@ async function boot() {
   const startScreen = params.get('screen');
   state.walk = Lens.createScreenWalk(state.lens, startScreen && state.lens.screens.some((screen) => screen.screenRef === startScreen) ? startScreen : state.lens.entryScreenRef);
   const requestedExpression = params.get('expression');
-  await bindExpressionsForLens({ requestedRef: requestedExpression });
+  try { await loadExpressionFixtureSourcesForUi(); }
+  catch (error) { expressionFixturesLoaded = false; state.expressionError = error.message; }
+  bindExpressionsForCurrentScreen({ requestedRef: requestedExpression });
   if (expressionAvailable()) setExpression(state.expressionRef, { renderNow: false });
   if (params.get('left') && Lens.LENS_FACES[params.get('left')]?.side === 'EXPERIENCE') state.faces.EXPERIENCE = params.get('left');
   if (params.get('right') && Lens.LENS_FACES[params.get('right')]?.side === 'BEHAVIOR') state.faces.BEHAVIOR = params.get('right');

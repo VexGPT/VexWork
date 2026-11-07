@@ -1253,12 +1253,22 @@ DONE
   bounded Android-derived VexStream expression currentness
   -> VexWork PR #268
 
-ACTIVE
+DONE
   Events materially-different contract/source consumer
+  -> VexWork PR #269
   -> exact three-file source reader
   -> source default preserves Unobserved != Empty
+  -> Preview populated is EVIDENCE, not production State
   -> preview eventRef runtime identity anchors to existing element.events.body
   -> no new relationship kinds / expression bases / Scenario state
+
+ACTIVE
+  multi-fixture Screen Lens consumption
+  -> current Screen selects its accepted expression fixture
+  -> VexStream keeps seven accepted expressions
+  -> Events exposes Source defaults / Observed empty / Preview populated through the same carousel
+  -> navigation rebinds fixture on travel / atlas / search / Back / Revisit
+  -> no fixture registry or shared source-currentness abstraction yet
 
 HELD
   Family Conversation custom runtime realization
@@ -1267,8 +1277,8 @@ HELD
   -> insufficient repeated pressure for contract widening
 
 THEN
-  prove Events source/fixture portability
-  -> multi-fixture Screen Lens consumption so Events is human-visible through the accepted carousel
+  prove multi-fixture UI with real desktop/mobile Events lived evidence
+  -> compare VexStream and Events human usefulness through the same Lens
   -> only after that lived second-Screen pressure consider any shared source-currentness abstraction
 
 Scenario Playground remains:

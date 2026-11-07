@@ -136,6 +136,22 @@ test('search, impact, coverage and briefs are wired from the shared query module
 });
 // [VXG RealForever]
 
+test('the Lens binds accepted expression fixtures by current Screen across navigation', () => {
+  assert.match(page, /const EXPRESSION_FIXTURE_URLS = Object\.freeze\(\{/);
+  assert.match(page, /'screen\.vexstream-music': '\.\.\/projects\/vexboard\/examples\/vexlife-android-vexstream\.screen-lens-expressions\.fixture\.json'/);
+  assert.match(page, /'screen\.events': '\.\.\/projects\/vexboard\/examples\/vexlife-android-events\.screen-lens-expressions\.fixture\.json'/);
+  assert.match(page, /function bindExpressionsForCurrentScreen\(\{ requestedRef = state\.expressionRef \} = \{\}\)/);
+  assert.match(page, /const source = expressionFixtureSources\.get\(screenRef\(\)\) \?\? null/);
+  assert.match(page, /source\.lensRef !== state\.lens\.lensRef \|\| source\.lensSourceCommit !== state\.lens\.sourceSnapshot\.commit\) return/);
+  assert.match(page, /function travel\([\s\S]*?bindExpressionsForCurrentScreen\(\{ requestedRef: null \}\);\s*resetScreenSelection\(\)/);
+  assert.match(page, /function jumpTo\([\s\S]*?bindExpressionsForCurrentScreen\(\{ requestedRef: null \}\);\s*resetScreenSelection\(\)/);
+  assert.match(page, /const changesScreen = Boolean\(target\.screenRef && target\.screenRef !== screenRef\(\)\)/);
+  assert.match(page, /if \(changesScreen\)[\s\S]*?bindExpressionsForCurrentScreen\(\{ requestedRef: null \}\)/);
+  assert.match(page, /Lens\.backScreenWalk\(state\.walk\); bindExpressionsForCurrentScreen\(\{ requestedRef: null \}\); resetScreenSelection\(\)/);
+  assert.match(page, /Lens\.revisitScreenWalk\([\s\S]*?bindExpressionsForCurrentScreen\(\{ requestedRef: null \}\); resetScreenSelection\(\)/);
+  assert.match(page, /bindExpressionsForCurrentScreen\(\{ requestedRef: requestedExpression \}\);\s*if \(expressionAvailable\(\)\) setExpression/, 'direct screen entry binds its own fixture before expression activation');
+});
+
 test('source-backed expressions are a top-level Lens dimension shared by all four faces', () => {
   assert.match(page, /from '\.\.\/src\/shared\/vexboard-screen-lens-expressions\.mjs'/);
   assert.match(page, /vexlife-android-vexstream\.screen-lens-expressions\.fixture\.json/);
@@ -185,11 +201,11 @@ test('screen-level arrival activates the selected expression across Behavior and
   assert.match(page, /setExpression\(state\.expressionRef, \{ renderNow: false \}\)/);
   assert.match(page, /function travel\([\s\S]*?resetScreenSelection\(\);[\s\S]*?render\(\);/);
   assert.match(page, /function jumpTo\([\s\S]*?resetScreenSelection\(\);[\s\S]*?state\.overlay = null;/);
-  assert.match(page, /Lens\.backScreenWalk\(state\.walk\); resetScreenSelection\(\); render\(\);/);
-  assert.match(page, /Lens\.revisitScreenWalk\(state\.lens, state\.walk, step\.sequence\); resetScreenSelection\(\); render\(\);/);
+  assert.match(page, /Lens\.backScreenWalk\(state\.walk\); bindExpressionsForCurrentScreen\(\{ requestedRef: null \}\); resetScreenSelection\(\); render\(\);/, 'Back rebinds the destination Screen fixture before restoring expression-owned selection');
+  assert.match(page, /Lens\.revisitScreenWalk\(state\.lens, state\.walk, step\.sequence\); bindExpressionsForCurrentScreen\(\{ requestedRef: null \}\); resetScreenSelection\(\); render\(\);/, 'Revisit rebinds the destination Screen fixture before restoring expression-owned selection');
   assert.match(page, /const explicitTarget = Boolean\(target\.elementRef \|\| target\.pathwayRef \|\| target\.nodeRef\)/);
   assert.match(page, /if \(!explicitTarget\) resetScreenSelection\(\)/, 'screen-only search results use expression context, while explicit control/pathway results retain their own coordinate');
-  assert.match(page, /await bindExpressionsForLens\(\{ requestedRef: requestedExpression \}\);\s*if \(expressionAvailable\(\)\) setExpression\(state\.expressionRef, \{ renderNow: false \}\);/, 'direct screen entry activates the expression pathway even without an explicit expression query parameter');
+  assert.match(page, /await loadExpressionFixtureSourcesForUi\(\);[\s\S]*?bindExpressionsForCurrentScreen\(\{ requestedRef: requestedExpression \}\);\s*if \(expressionAvailable\(\)\) setExpression\(state\.expressionRef, \{ renderNow: false \}\);/, 'direct screen entry loads the accepted fixture set, binds the current Screen fixture, and activates its expression even without an explicit expression query parameter');
 });
 
 test('changing expressions focuses Behavior and Depth from explicit relationship order, not JSON assignment key order', () => {
