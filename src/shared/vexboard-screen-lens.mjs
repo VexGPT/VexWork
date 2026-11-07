@@ -50,6 +50,7 @@ export const LENS_ROLES = Object.freeze({
   EXECUTION: Object.freeze({ role: 'EXECUTION', band: 'RUNTIME', chip: 'EXE', label: 'Execution custody' }),
   REALIZATION: Object.freeze({ role: 'REALIZATION', band: 'RUNTIME', chip: 'RZN', label: 'Realization / reconciliation' }),
   CONNECTION: Object.freeze({ role: 'CONNECTION', band: 'RUNTIME', chip: 'CON', label: 'Partner Connection' }),
+  DECODER: Object.freeze({ role: 'DECODER', band: 'RUNTIME', chip: 'DEC', label: 'Partner Decoder' }),
   RECEIVER: Object.freeze({ role: 'RECEIVER', band: 'RUNTIME', chip: 'RCV', label: 'Partner Receiver' }),
   PARTNER: Object.freeze({ role: 'PARTNER', band: 'OUTSIDE', chip: 'PAR', label: 'Partner' }),
   SIGNAL: Object.freeze({ role: 'SIGNAL', band: 'OUTSIDE', chip: 'SIG', label: 'Partner Signal' }),
