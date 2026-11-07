@@ -509,8 +509,9 @@ current implementation edge:
   focused macOS permission-agent proof 17/17 PASS
   repository-wide SourceOwner clearance HELD on separately-owned sdk-check baseline currentization
   baseline dependency github.issue.vextreme-sdk.1919 / github.pull.vextreme-sdk.1920
-  baseline candidate 74d02ea8b60a28ae23a5c40db0933de79abf0579
-  baseline tree e8bdab37cdd54234fe9c83e9285131da260967d5
+  integrated baseline candidate 26f74ea4b5a9d4e37aa9e1fb09ae18d3f0e51180
+  integrated baseline tree 4193597cbcd4af7aefd33f0af318f8da48337a3c
+  SourceOwner A003 PENDING on exact integrated baseline
 ~~~
 
 It is READY as work because the human outcome and source owners are sufficiently clear.
