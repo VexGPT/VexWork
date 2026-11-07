@@ -201,8 +201,8 @@ test('screen-level arrival activates the selected expression across Behavior and
   assert.match(page, /setExpression\(state\.expressionRef, \{ renderNow: false \}\)/);
   assert.match(page, /function travel\([\s\S]*?resetScreenSelection\(\);[\s\S]*?render\(\);/);
   assert.match(page, /function jumpTo\([\s\S]*?resetScreenSelection\(\);[\s\S]*?state\.overlay = null;/);
-  assert.match(page, /Lens\.backScreenWalk\(state\.walk\); resetScreenSelection\(\); render\(\);/);
-  assert.match(page, /Lens\.revisitScreenWalk\(state\.lens, state\.walk, step\.sequence\); resetScreenSelection\(\); render\(\);/);
+  assert.match(page, /Lens\.backScreenWalk\(state\.walk\); bindExpressionsForCurrentScreen\(\{ requestedRef: null \}\); resetScreenSelection\(\); render\(\);/, 'Back rebinds the destination Screen fixture before restoring expression-owned selection');
+  assert.match(page, /Lens\.revisitScreenWalk\(state\.lens, state\.walk, step\.sequence\); bindExpressionsForCurrentScreen\(\{ requestedRef: null \}\); resetScreenSelection\(\); render\(\);/, 'Revisit rebinds the destination Screen fixture before restoring expression-owned selection');
   assert.match(page, /const explicitTarget = Boolean\(target\.elementRef \|\| target\.pathwayRef \|\| target\.nodeRef\)/);
   assert.match(page, /if \(!explicitTarget\) resetScreenSelection\(\)/, 'screen-only search results use expression context, while explicit control/pathway results retain their own coordinate');
   assert.match(page, /await bindExpressionsForLens\(\{ requestedRef: requestedExpression \}\);\s*if \(expressionAvailable\(\)\) setExpression\(state\.expressionRef, \{ renderNow: false \}\);/, 'direct screen entry activates the expression pathway even without an explicit expression query parameter');
