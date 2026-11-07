@@ -401,6 +401,74 @@ VexStream 36-second startup defect
   -> ownership remains project.vexstream.mobile-library
 ```
 
+## Compatibility semantic-family convergence — bounded proof trajectory
+
+Current source intentionally has both the accepted compatibility `VexBehaviorBlueprint / VexPort`
+path and Direct `VexFamily`. Presence alone is not debt. Migration is earned only when stable
+behavior becomes smaller or clearer without moving provider, execution, Relay, or product ownership.
+
+```text
+semantic-family-convergence
+    RUNNING
+
+    maps-mode -> Android #220
+        no provider relationship
+        -> Direct Family
+        -> old Connection / Blueprint / VexPort disappear
+
+    repeat -> Android #221
+        local Media3 provider
+        -> Direct Family owns State / Control / Effect
+        -> provider Connection remains
+        -> immediate Effect creates no VexExecution Job
+
+    queue -> Android #222 stacked on #221
+        same local provider split
+        -> one Queue State availability law replaces generic control Projection
+        -> Queue Play / Reorder occurrence requests remain separate
+        -> whole candidate is net source subtraction
+
+    vexstream-hub-partner -> Android #223 stacked on VexPartner #219
+        paired Hub/Desktop is an independently-owned external participant
+        -> existing hubRef / certificate identity / HTTP conversion pressure VexPartner positively
+        -> Partner must reduce repository responsibility rather than mirror Family State
+```
+
+Current distinctions:
+
+```text
+NO INDEPENDENT CONNECTION QUESTION
+-> delete the Connection
+
+REAL LOCAL PROVIDER RELATIONSHIP
+-> keep the provider boundary
+-> remove semantic ownership from it
+
+INDEPENDENT EXTERNAL PARTICIPANT
++ Source / Connection identity / provider conversion
+-> pressure VexPartner positively
+
+SEMANTIC EFFECT
+!= AUTOMATIC ASYNC WORK
+!= AUTOMATIC VEXEXECUTION JOB
+
+FINITE QUEUE CONTROL
+!= QUEUE OCCURRENCE PLAY / REORDER REQUEST
+```
+
+Still held as pressure rather than admitted migration:
+
+```text
+VexStream Playback
+VexMaps Delivery Route
+```
+
+Those consumers move only if their own source becomes smaller while preserving earned
+provider/currentness/session relationships. Direct Family does not authorize a compatibility purge
+or absorption of provider / Session / Relay / Execution ownership. VexPartner is not rejected by
+default either: Hub/Desktop is the positive external-participant pressure, while Media3 remains the
+smaller local provider path unless its own source later earns independent Partner meaning.
+
 ## Permanent boundaries
 
 ```text
