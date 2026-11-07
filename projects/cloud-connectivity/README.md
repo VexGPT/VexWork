@@ -187,6 +187,36 @@ RELAY MAY REQUEST A FAMILY CONTROL
 RELAY MUST NOT ADMIT ANOTHER FAMILY'S STATE
 ```
 
+## First host realization — current VexLife Home
+
+The first synthetic server realization should reuse the **current VexLife Home hosted-capability
+substrate**, not require a second human-managed backend stack.
+
+Current VexLife already converges one human start into separately owned long-lived runtime/browser
+processes. Cloud Connectivity should preserve that product law:
+
+```text
+ONE HUMAN FRONT DOOR
+-> lifecycle converges owned processes
+-> interface/capabilities become ready
+
+NEW CAPABILITY
+!= NEW TERMINAL THE HUMAN MUST BABYSIT
+```
+
+The first Cloud Connectivity hosted capability may be composed inside the existing VexLife HTTP
+process behind a strict module/domain boundary. If later pressure earns a sibling local service or
+remote/cloud deployment, the same capability/API contract should survive that topology change.
+
+```text
+CAPABILITY_CONTRACT != DEPLOYMENT_TOPOLOGY
+HTTP_ROUTE != CLOUD_DOMAIN_OWNER
+```
+
+Source-backed detail lives in
+`VEXSERVICE-CONNECTIVITY-AND-AUTOMATION.md` and current VexLife
+`docs/VEXHOME-HOSTED-CAPABILITIES.md`.
+
 ## Provider-neutral first
 
 The architecture must not be named after AWS.
