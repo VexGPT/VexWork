@@ -764,6 +764,39 @@ function connectionPartnerForLocal(sourceText, localName) {
   return pattern.exec(sourceText)?.[1] ?? null;
 }
 
+function connectionConversionForLocal(sourceText, localName) {
+  const startPattern = new RegExp(
+    '(?:private\\s+|internal\\s+|public\\s+)?val\\s+' + escapeRegex(localName) +
+      '\\s*=\\s*([A-Z]\\w*Partner)\\s*\\.\\s*Connection\\s*\\(',
+  );
+  const start = startPattern.exec(sourceText);
+  if (!start) return null;
+  const localSlice = sourceText.slice(start.index, start.index + 1800);
+  const conversion =
+    /\bconversion\s*=\s*([A-Z]\w*Partner)\s*\.\s*Connection\s*\.\s*(\w+)\s*\(/.exec(localSlice);
+  return conversion
+    ? {
+        partnerType: conversion[1],
+        concreteName: conversion[2],
+        symbol: conversion[1] + '.Connection.' + conversion[2],
+      }
+    : null;
+}
+
+function partnerHasSource(partnerText, partnerType) {
+  return new RegExp(
+    'data\\s+class\\s+Source\\s*\\([\\s\\S]{0,700}?VexPartner\\.Source\\s*<\\s*' +
+      escapeRegex(partnerType) +
+      '\\s*>',
+  ).test(partnerText);
+}
+
+function signalsCarryPartnerSource(partnerText) {
+  const signalBlock = blockAfter(partnerText, /sealed\s+interface\s+Signal\b/);
+  return Boolean(signalBlock && /\bval\s+source\s*:\s*Source\b/.test(signalBlock));
+}
+
+
 function familyTypeForLab(sourceText) {
   return /\bval\s+family\s*:\s*([A-Z]\w*Family)\b/.exec(sourceText)?.[1] ?? null;
 }
@@ -796,10 +829,14 @@ function resolvePartnerIngress(cat, adapter, functionName, ownerType = null, vis
     const family = familyType ? familyRoot(cat, adapter, familyType) : null;
     if (!storeType || !store || !familyType || !family) continue;
     const signals = sealedMembers(partner.text, 'Signal');
-    const hasDecoder = /\bclass\s+Decoder\b[\s\S]{0,700}?VexPartner\.Connection\.Decoder\s*</.test(partner.text);
+    const conversion = connectionConversionForLocal(fn.text, call.receiver);
+    const hasConversion = /\bclass\s+\w+\b[\s\S]{0,900}?VexPartner\.Connection\.Conversion\s*</.test(partner.text);
+    const source = partnerHasSource(partner.text, partnerType) && signalsCarryPartnerSource(partner.text)
+      ? partnerType + '.Source'
+      : null;
     const hasObservation = /\bdata\s+class\s+Observation\b[\s\S]{0,700}?VexPartner\.Connection\.Observation\s*</.test(partner.text);
     const hasReceiver = /\bclass\s+Receiver\b[\s\S]{0,900}?VexPartner\.Connection\.Receiver\s*</.test(partner.text);
-    if (!hasDecoder || !hasObservation || !hasReceiver || !storeObservationIsMaintained(fn.text)) continue;
+    if (!conversion || !hasConversion || !hasObservation || !hasReceiver || !storeObservationIsMaintained(fn.text)) continue;
     return {
       kind: 'INGRESS',
       functionName,
@@ -808,6 +845,8 @@ function resolvePartnerIngress(cat, adapter, functionName, ownerType = null, vis
       partnerType,
       partner,
       connectionLocal: call.receiver,
+      conversion,
+      source,
       signals,
       storeType,
       store,
@@ -1324,11 +1363,18 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, listing
         })
       : null;
 
-    const decoder = builder.node('decoder', 'DEPTH', 'DECODER', bond.partnerType + '.Connection.Decoder', {
-      symbol: bond.partnerType + '.Connection.Decoder',
-      summary: 'Provider representation becomes zero or more domain Partner Signals.',
+    const conversion = builder.node('conversion', 'DEPTH', 'CONVERSION', bond.conversion.symbol, {
+      symbol: bond.conversion.symbol,
+      summary: 'Concrete provider representation becomes zero or more Signals in the same Partner vocabulary.',
       source: bond.partner.source,
     });
+    const source = bond.source
+      ? builder.node('source', 'DEPTH', 'SOURCE', bond.source, {
+          symbol: bond.source,
+          summary: 'Partner-owned origin coordinate carried by the external statement; transport does not own it.',
+          source: bond.partner.source,
+        })
+      : null;
     const signalLabel = bond.signals.length
       ? bond.partnerType + '.Signal · ' + bond.signals.join(' | ')
       : bond.partnerType + '.Signal';
@@ -1361,10 +1407,14 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, listing
     builder.edge(intent, doorway, 'lab control');
     builder.edge(doorway, partner, 'synthetic source');
     builder.edge(partner, connection, 'representation');
-    builder.edge(connection, admissionExecution ?? decoder, admissionExecution ? bond.ingressExecution.approach : 'decode');
-    if (admissionExecution) builder.edge(admissionExecution, decoder, 'invoke receipt');
+    builder.edge(connection, admissionExecution ?? conversion, admissionExecution ? bond.ingressExecution.approach : 'convert');
+    if (admissionExecution) builder.edge(admissionExecution, conversion, 'invoke receipt');
 
-    builder.edge(decoder, signal, '0..N Signals');
+    builder.edge(conversion, signal, '0..N Signals');
+    if (source) {
+      builder.edge(partner, source, 'owns', 'SIDE');
+      builder.edge(source, signal, 'origin', 'DATA');
+    }
     builder.edge(signal, observation, 'encounter');
     builder.edge(observation, receiver, 'receive');
     builder.edge(receiver, store, 'commit');
@@ -1383,6 +1433,8 @@ export function projectAndroidScreenLens({ adapter: adapterInput, files, listing
       partner: bond.partnerType,
       family: bond.familyType,
       store: bond.storeType,
+      conversion: bond.conversion.symbol,
+      source: bond.source,
       ...(bond.ingressExecution
         ? {
             executionApproach: bond.ingressExecution.approach,
