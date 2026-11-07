@@ -1,0 +1,472 @@
+{
+  "schemaVersion": "vexwork.workgraph-segment/v1",
+  "segmentRef": "segment.full-security",
+  "graphRef": "workgraph.vexwork.foundation",
+  "items": [
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T10:50:45.000Z",
+      "updatedAt": "2026-11-06T10:50:45.000Z",
+      "workRef": "work.full-security.outcome",
+      "parentWorkRefOrNull": null,
+      "label": "Full Security",
+      "purpose": "Make security layers learnable and demonstrable through source-backed Vex specimens and deliberately complex synthetic scenarios, preserving rightful ownership and keeping demonstration state separate from live authority.",
+      "workClass": "OUTCOME",
+      "state": "RUNNING",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife",
+        "repo.vexlife-prod",
+        "repo.vexlife-android",
+        "repo.vexstream-music"
+      ],
+      "sourceRefs": [
+        "projects/full-security/README.md",
+        "github.pull.vexwork.256"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T10:50:45.000Z",
+      "updatedAt": "2026-11-06T10:50:45.000Z",
+      "workRef": "work.full-security.security-boundary-atlas",
+      "parentWorkRefOrNull": "work.full-security.outcome",
+      "label": "Security Boundary Atlas",
+      "purpose": "Provide the reusable boundary-family and six-question VexBoard doorway so a human or Vex can discover relevant security patterns before knowing the implementation terminology.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/vex-security-assurance/README.md",
+        "projects/vexboard/examples/security-boundary-atlas.board.json",
+        "github.pull.vexwork.256"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T10:50:45.000Z",
+      "updatedAt": "2026-11-06T10:50:45.000Z",
+      "workRef": "work.full-security.vexstream-local-pairing",
+      "parentWorkRefOrNull": "work.full-security.outcome",
+      "label": "Map the real VexStream pairing security specimen",
+      "purpose": "Project the current VexStream Desktop and VexLife Android pairing path as a source-backed security walk covering discovery, service identity, human code comparison, per-device credentials, bounded authorization, media integrity, reconnect and revocation.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexstream-music",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "projects/full-security/VEXSTREAM-LOCAL-PAIRING-PATTERN.md",
+        "projects/vexboard/examples/full-security-vexstream-local-pairing.board.json",
+        "repo.vexstream-music:docs/architecture/MOBILE-BRIDGE-V1.md",
+        "repo.vexstream-music:v2/desktop/mobile/pairing.go",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/PairedVexStreamMusicRepository.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamConnectionStore.kt"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T10:50:45.000Z",
+      "updatedAt": "2026-11-06T10:50:45.000Z",
+      "workRef": "work.full-security.vexlife-complex-demonstrator",
+      "parentWorkRefOrNull": "work.full-security.outcome",
+      "label": "Build the deliberately complex VexLife Android security demonstrator",
+      "purpose": "Design and later implement a feature-gated VexLife-Prod/VexLife-Android specimen that can express principal/account, multiple devices/installations, credential custody, reachability, authenticated sessions, authorization/capabilities, feature effects, local data, offline/reconnect, revocation/recovery, build/update trust and evidence as distinct relationships.",
+      "workClass": "TASK",
+      "state": "DECOMPOSED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexlife-prod",
+        "repo.vexlife-android",
+        "repo.vexlife",
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md",
+        "projects/vexboard/examples/full-security-vexlife-complex-demonstrator.board.json",
+        "repo.vexlife-prod:README.md",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/connectedservices/VexHomeDevicePossession.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/connectedservices/VexPrivateHomeGatewayConnection.kt",
+        "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T10:50:45.000Z",
+      "updatedAt": "2026-11-06T10:50:45.000Z",
+      "workRef": "work.full-security.vex-guided-explanation",
+      "parentWorkRefOrNull": "work.full-security.outcome",
+      "label": "Let Vex guide the human through the current security example",
+      "purpose": "Connect the accepted VexLife/VexBoard context path so Vex can resolve the relevant boundary family, open or reference the best current real/synthetic example, explain what each owner holds or proves, and descend to exact source without becoming security or effect authority.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [
+        "work.full-security.security-boundary-atlas",
+        "work.full-security.vexstream-local-pairing",
+        "work.full-security.vexlife-complex-demonstrator"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod",
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "projects/full-security/README.md",
+        "projects/vexboard/examples/full-security-overview.board.json",
+        "repo.vexlife-prod:README.md"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T10:50:45.000Z",
+      "updatedAt": "2026-11-06T10:50:45.000Z",
+      "workRef": "work.full-security.discoverability",
+      "parentWorkRefOrNull": "work.full-security.outcome",
+      "label": "Register Full Security and expose its source boards",
+      "purpose": "Complete canonical Project Registry, composed Workgraph/public projections and VexBoard discoverability after the currently occupied shared registry/generated surfaces are available, without racing or hand-editing another lane's generated custody.",
+      "workClass": "TASK",
+      "state": "WAITING_RESOURCE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/full-security/README.md",
+        "blueprint/project-registry.json",
+        "workgraphs/public.json",
+        "github.pull.vexwork.253",
+        "github.pull.vexwork.256"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T10:50:45.000Z",
+      "updatedAt": "2026-11-06T11:20:00.000Z",
+      "parentWorkRefOrNull": "work.full-security.outcome",
+      "workClass": "TASK",
+      "priorityClass": "HIGH",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "workRef": "work.full-security.android-account-device-scenarios",
+      "label": "Implement and prove the Android account/device scenario suite",
+      "purpose": "Turn S01-S20 into explicit synthetic-first and later live-capable Android/host scenarios covering first-device registration, logout vs device trust, second-device admission, selective revoke, reinstall/new credential, lost device, expired session, stale offline authority, credential rotation, backup/restore, replay, route change, restart, update trust and OS permission/storage change.",
+      "state": "DECOMPOSED",
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod",
+        "repo.vexlife-android",
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+        "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md"
+      ],
+      "dependencyRefs": [
+        "work.full-security.synthetic-demonstration-provider-foundation"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T10:50:45.000Z",
+      "updatedAt": "2026-11-06T11:35:00.000Z",
+      "parentWorkRefOrNull": "work.full-security.outcome",
+      "workClass": "TASK",
+      "priorityClass": "HIGH",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "workRef": "work.full-security.android-connected-devices-feature",
+      "label": "Add Android Connected Devices visibility + selective revoke",
+      "purpose": "Make VexLife Android useful as a security-pattern demonstrator by exposing a truthful Connected Devices experience that can show this device and other admitted devices, distinguish current/revoked/session state, and request an explicit per-device disconnect/revoke without making Android UI the device-registry or revocation authority.",
+      "state": "DECOMPOSED",
+      "repositoryRefs": [
+        "repo.vexlife-android",
+        "repo.vexlife-prod",
+        "repo.vexlife",
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+        "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md"
+      ],
+      "dependencyRefs": [
+        "work.full-security.vexlife-complex-demonstrator",
+        "work.full-security.device-relationship-projection-foundation",
+        "work.full-security.synthetic-demonstration-provider-foundation",
+        "work.full-security.full-scope-experience-design"
+      ]
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T10:50:45.000Z",
+      "updatedAt": "2026-11-06T11:05:00.000Z",
+      "parentWorkRefOrNull": "work.full-security.outcome",
+      "workClass": "TASK",
+      "priorityClass": "NORMAL",
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": [],
+      "workRef": "work.full-security.candidate-security-relationship-patterns",
+      "label": "Pressure reusable security relationship patterns",
+      "purpose": "Use VexStream plus the account/device scenarios to test whether Possession, Admission, Session, Capability, Revocation, Rebinding/Replacement, Currentness Reconciliation, Integrity Binding, Recovery without authority widening, and Explanation/Evidence remain useful reusable teaching/navigation patterns before promoting any of them into new runtime architecture.",
+      "state": "RUNNING",
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod",
+        "repo.vexlife-android",
+        "repo.vexstream-music"
+      ],
+      "sourceRefs": [
+        "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md",
+        "projects/full-security/VEXSTREAM-LOCAL-PAIRING-PATTERN.md",
+        "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md"
+      ],
+      "dependencyRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T10:50:45.000Z",
+      "updatedAt": "2026-11-06T11:20:00.000Z",
+      "workRef": "work.full-security.canonical-owner-adoption-foundation",
+      "parentWorkRefOrNull": "work.full-security.vexlife-complex-demonstrator",
+      "label": "Adopt canonical Home security owners before adding backend state",
+      "purpose": "Map the complex demonstrator onto current VexLife Home principal/device membership, revocation generation, remote authenticated session, capability lease and session-authority owners; identify only genuine missing product-facing seams so Full Security does not create a second account/device/session backend.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife",
+        "repo.vexlife-android",
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "projects/full-security/FOUNDATION-STARTING-MAP.md",
+        "repo.vexlife:docs/HOME-BRIDGE-REMOTE-AUTHENTICATED-SESSION.md",
+        "repo.vexlife:docs/HOME-BRIDGE-SESSION-AUTHORITY.md"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T10:50:45.000Z",
+      "updatedAt": "2026-11-06T11:20:00.000Z",
+      "workRef": "work.full-security.device-relationship-projection-foundation",
+      "parentWorkRefOrNull": "work.full-security.vexlife-complex-demonstrator",
+      "label": "Define the safe device-relationship read projection",
+      "purpose": "Form the smallest portable read seam needed by Android Connected Devices, the VexLife-Prod Full Security Console, VexBoard LIVE_OBSERVATION and later Vex explanation, projecting current membership/session/access truth without exposing secrets or making the projection an authority owner.",
+      "workClass": "TASK",
+      "state": "DECOMPOSED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.full-security.canonical-owner-adoption-foundation"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife",
+        "repo.vexlife-android",
+        "repo.vexlife-prod"
+      ],
+      "sourceRefs": [
+        "projects/full-security/FOUNDATION-STARTING-MAP.md",
+        "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T10:50:45.000Z",
+      "updatedAt": "2026-11-06T11:20:00.000Z",
+      "workRef": "work.full-security.synthetic-demonstration-provider-foundation",
+      "parentWorkRefOrNull": "work.full-security.vexlife-complex-demonstrator",
+      "label": "Build a synthetic Full Security provider behind the same product-facing seams",
+      "purpose": "Provide deterministic fake principal/device/session/capability state for S01-S20 with OFF/SYNTHETIC/LIVE_OBSERVATION separation, allowing UI and scenario proof before any real remote-device mutation or network widening.",
+      "workClass": "TASK",
+      "state": "DECOMPOSED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.full-security.device-relationship-projection-foundation"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "projects/full-security/FOUNDATION-STARTING-MAP.md",
+        "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T10:50:45.000Z",
+      "updatedAt": "2026-11-06T11:20:00.000Z",
+      "workRef": "work.full-security.host-local-recovery-foundation",
+      "parentWorkRefOrNull": "work.full-security.vexlife-complex-demonstrator",
+      "label": "Define a host-local remote-device recovery boundary",
+      "purpose": "Give the physical VexLife host an operational recovery path for disabling/recovering remote-device relationships without using GitHub/source changes or trusting a broken remote path; exact host authentication and mutation effects remain separately source-owned and unselected until target implementation.",
+      "workClass": "TASK",
+      "state": "DECOMPOSED",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [
+        "work.full-security.canonical-owner-adoption-foundation"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife",
+        "repo.vexlife-prod",
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/full-security/FOUNDATION-STARTING-MAP.md"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T10:50:45.000Z",
+      "updatedAt": "2026-11-06T11:35:00.000Z",
+      "workRef": "work.full-security.full-scope-experience-design",
+      "parentWorkRefOrNull": "work.full-security.vexlife-complex-demonstrator",
+      "label": "Pressure the full security relationship/dashboard scope before product implementation",
+      "purpose": "Prove the Full Security experience can represent many principals, authentication methods, Homes, physical devices, app installations, credentials, sessions, capabilities, services, routes, software/update identities, recovery relationships and evidence across Android plus synthetic future platforms without redesigning the semantic model or turning Accounts into the root owner.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.full-security.canonical-owner-adoption-foundation"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife",
+        "repo.vexlife-prod",
+        "repo.vexlife-android",
+        "repo.vexstream-music"
+      ],
+      "sourceRefs": [
+        "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md",
+        "projects/vexboard/examples/full-security-full-scope-dashboard.board.json"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T10:50:45.000Z",
+      "updatedAt": "2026-11-06T11:35:00.000Z",
+      "workRef": "work.full-security.vexlife-prod-security-dashboard",
+      "parentWorkRefOrNull": "work.full-security.vexlife-complex-demonstrator",
+      "label": "Build the VexLife-Prod Full Security dashboard after scope and provider foundations",
+      "purpose": "Use the existing VexLife-Prod AppSelector to host a scalable Full Security application with Overview, Principals, Devices, Sessions, Access, Services, Software/Platform Trust, Recovery, Evidence, Scenarios and Architecture projections; explanations remain contextual while the dashboard behaves as a real product surface.",
+      "workClass": "TASK",
+      "state": "DECOMPOSED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.full-security.full-scope-experience-design",
+        "work.full-security.device-relationship-projection-foundation",
+        "work.full-security.synthetic-demonstration-provider-foundation"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-prod",
+        "repo.vexlife",
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/workspace/VexLifeWorkspaceBlueprint.kt"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    }
+  ],
+  "transitions": [],
+  "sourceRefs": [
+    "project.full-security",
+    "projects/full-security/README.md",
+    "projects/full-security/VEXSTREAM-LOCAL-PAIRING-PATTERN.md",
+    "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md",
+    "projects/vexboard/examples/full-security-overview.board.json",
+    "projects/vexboard/examples/full-security-vexstream-local-pairing.board.json",
+    "projects/vexboard/examples/full-security-vexlife-complex-demonstrator.board.json",
+    "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+    "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md",
+    "projects/full-security/FOUNDATION-STARTING-MAP.md",
+    "projects/vexboard/examples/full-security-foundation-starting-map.board.json",
+    "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md",
+    "projects/vexboard/examples/full-security-full-scope-dashboard.board.json"
+  ],
+  "formedAt": "2026-11-06T10:50:45.000Z"
+}

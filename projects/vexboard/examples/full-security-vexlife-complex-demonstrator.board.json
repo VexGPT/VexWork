@@ -1,0 +1,1058 @@
+{
+  "schemaVersion": "vexboard.local-draft/v1",
+  "draftRef": "board.full-security.vexlife-complex-demonstrator",
+  "title": "Full Security — VexLife Complex Demonstrator",
+  "mode": "READ_ONLY_SOURCE",
+  "derivedFromRefOrNull": "board.full-security.overview",
+  "savedAtOrNull": null,
+  "graph": {
+    "schemaVersion": "vexboard.board-graph/v1",
+    "graphRef": "graph.full-security.vexlife-complex-demonstrator",
+    "nodes": [
+      {
+        "nodeRef": "node.fs.cx.root",
+        "kind": "CONTAINER",
+        "label": "DESIRED / SYNTHETIC DEMONSTRATOR · VexLife-Prod ↔ Android",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md",
+          "projects/vexboard/examples/full-security-vexlife-complex-demonstrator.board.json"
+        ]
+      },
+      {
+        "nodeRef": "annotation.fs.cx.status",
+        "kind": "ANNOTATION",
+        "label": "Current source anchors are separated from desired relationships. This board is a demonstrator design, not a claim that VexLife-Prod already remotely serves the entire topology.",
+        "parentRefOrNull": "node.fs.cx.root",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md",
+          "repo.vexlife-prod:README.md"
+        ]
+      },
+      {
+        "nodeRef": "node.fs.cx.current",
+        "kind": "CONTAINER",
+        "label": "Current source anchors",
+        "parentRefOrNull": "node.fs.cx.root",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:README.md",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/connectedservices/VexHomeDevicePossession.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/connectedservices/VexPrivateHomeGatewayConnection.kt"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.cx.prod-current",
+        "kind": "REFERENCE",
+        "label": "CURRENT · VexLife-Prod personal/local service + canonical Conversation/Vex",
+        "parentRefOrNull": "node.fs.cx.current",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-prod:README.md",
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/conversation/VexLifeConversationContract.kt"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.cx.android-current",
+        "kind": "REFERENCE",
+        "label": "CURRENT · VexLife-Android device possession + private gateway/session distinctions",
+        "parentRefOrNull": "node.fs.cx.current",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/connectedservices/VexHomeDevicePossession.kt",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/connectedservices/VexPrivateHomeGatewayConnection.kt"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.cx.vexstream-current",
+        "kind": "PORTAL",
+        "label": "CURRENT PATTERN · VexStream remembered device pairing / revoke / reconnect",
+        "parentRefOrNull": "node.fs.cx.current",
+        "detailBoardRefOrNull": "board.full-security.vexstream-local-pairing",
+        "sourceRefs": [
+          "projects/full-security/VEXSTREAM-LOCAL-PAIRING-PATTERN.md",
+          "projects/vexboard/examples/full-security-vexstream-local-pairing.board.json"
+        ]
+      },
+      {
+        "nodeRef": "node.fs.cx.topology",
+        "kind": "CONTAINER",
+        "label": "Desired full-layer topology",
+        "parentRefOrNull": "node.fs.cx.root",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.cx.human",
+        "kind": "REFERENCE",
+        "label": "Human principal",
+        "parentRefOrNull": "node.fs.cx.topology",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.cx.account",
+        "kind": "REFERENCE",
+        "label": "Account / membership identity",
+        "parentRefOrNull": "node.fs.cx.topology",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.cx.host",
+        "kind": "REFERENCE",
+        "label": "VexLife-Prod personal host",
+        "parentRefOrNull": "node.fs.cx.topology",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md",
+          "repo.vexlife-prod:README.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.cx.registry",
+        "kind": "REFERENCE",
+        "label": "DESIRED · admitted-device registry / current membership mapping",
+        "parentRefOrNull": "node.fs.cx.topology",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.cx.gateway",
+        "kind": "REFERENCE",
+        "label": "DESIRED · private connected-device gateway",
+        "parentRefOrNull": "node.fs.cx.topology",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.cx.phone-a",
+        "kind": "REFERENCE",
+        "label": "Synthetic Android installation A · deviceRef A",
+        "parentRefOrNull": "node.fs.cx.topology",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.cx.key-a",
+        "kind": "REFERENCE",
+        "label": "Credential A · AndroidKeyStore custody",
+        "parentRefOrNull": "node.fs.cx.topology",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/connectedservices/VexHomeDevicePossession.kt"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.cx.session-a",
+        "kind": "REFERENCE",
+        "label": "Session A · authenticated, bounded lifetime",
+        "parentRefOrNull": "node.fs.cx.topology",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/connectedservices/VexPrivateHomeGatewayConnection.kt"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.cx.phone-b",
+        "kind": "REFERENCE",
+        "label": "Synthetic Android installation B · deviceRef B",
+        "parentRefOrNull": "node.fs.cx.topology",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.cx.key-b",
+        "kind": "REFERENCE",
+        "label": "Credential B · independent AndroidKeyStore custody",
+        "parentRefOrNull": "node.fs.cx.topology",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/connectedservices/VexHomeDevicePossession.kt"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.cx.session-b",
+        "kind": "REFERENCE",
+        "label": "Session B · independent currentness",
+        "parentRefOrNull": "node.fs.cx.topology",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md",
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/connectedservices/VexPrivateHomeGatewayConnection.kt"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.cx.authority",
+        "kind": "REFERENCE",
+        "label": "Current authorization / capability owner",
+        "parentRefOrNull": "node.fs.cx.topology",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md",
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.cx.conversation",
+        "kind": "REFERENCE",
+        "label": "Conversation / feature effect owner",
+        "parentRefOrNull": "node.fs.cx.topology",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md",
+          "repo.vexlife-prod:src/commonMain/kotlin/vexlife/conversation/VexLifeConversationContract.kt"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.cx.local-data",
+        "kind": "REFERENCE",
+        "label": "Android local data / offline truth",
+        "parentRefOrNull": "node.fs.cx.topology",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.cx.release",
+        "kind": "REFERENCE",
+        "label": "Build / release / update trust",
+        "parentRefOrNull": "node.fs.cx.topology",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.cx.evidence",
+        "kind": "REFERENCE",
+        "label": "Evidence / observability without secret leakage",
+        "parentRefOrNull": "node.fs.cx.topology",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md",
+          "projects/vex-security-assurance/README.md"
+        ]
+      },
+      {
+        "nodeRef": "node.fs.cx.demo",
+        "kind": "CONTAINER",
+        "label": "Demonstration complexity mode",
+        "parentRefOrNull": "node.fs.cx.root",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md"
+        ]
+      },
+      {
+        "nodeRef": "decision.fs.cx.mode",
+        "kind": "DECISION",
+        "label": "OFF / SYNTHETIC / LIVE_OBSERVATION",
+        "parentRefOrNull": "node.fs.cx.demo",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md"
+        ]
+      },
+      {
+        "nodeRef": "artifact.fs.cx.synthetic",
+        "kind": "ARTIFACT",
+        "label": "Synthetic principals / devices / sessions / capabilities · never live authority",
+        "parentRefOrNull": "node.fs.cx.demo",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md"
+        ]
+      },
+      {
+        "nodeRef": "artifact.fs.cx.scenarios",
+        "kind": "ARTIFACT",
+        "label": "Seed edge cases · multi-phone, shared device, stale session, revoke, reinstall, replay, restore, update, permission change",
+        "parentRefOrNull": "node.fs.cx.demo",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.cx.vexboard",
+        "kind": "REFERENCE",
+        "label": "VexBoard · read-only explanation of the selected topology/scenario",
+        "parentRefOrNull": "node.fs.cx.demo",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/README.md",
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md"
+        ]
+      },
+      {
+        "nodeRef": "reference.fs.cx.vex",
+        "kind": "REFERENCE",
+        "label": "Vex · guide through current example/source; not authority",
+        "parentRefOrNull": "node.fs.cx.demo",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/README.md",
+          "repo.vexlife-prod:docs/CULTURE.md"
+        ]
+      },
+      {
+        "nodeRef": "annotation.fs.cx.law",
+        "kind": "ANNOTATION",
+        "label": "DEMONSTRATION_STATE != AUTHORITY_STATE · SYNTHETIC_DEVICE != TRUSTED_DEVICE · VISIBLE VEXBOARD != CONTEXT SUPPLIED TO VEX",
+        "parentRefOrNull": "node.fs.cx.root",
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/full-security/README.md",
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md"
+        ]
+      },
+      {
+        "nodeRef": "portal.fs.cx.scenario-suite",
+        "kind": "PORTAL",
+        "label": "Open S01–S20 Android account/device scenario suite",
+        "parentRefOrNull": "node.fs.cx.demo",
+        "detailBoardRefOrNull": "board.full-security.android-account-device-scenarios",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md",
+          "projects/vexboard/examples/full-security-android-account-device-scenarios.board.json"
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "relationshipRef": "rel.fs.cx.human-account",
+        "kind": "FLOW",
+        "fromRef": "reference.fs.cx.human",
+        "toRef": "reference.fs.cx.account",
+        "labelOrNull": "REPRESENTED BY",
+        "sourceRefs": [
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.cx.account-host",
+        "kind": "FLOW",
+        "fromRef": "reference.fs.cx.account",
+        "toRef": "reference.fs.cx.host",
+        "labelOrNull": "PERSONAL HOST RELATIONSHIP",
+        "sourceRefs": [
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.cx.host-registry",
+        "kind": "FLOW",
+        "fromRef": "reference.fs.cx.host",
+        "toRef": "reference.fs.cx.registry",
+        "labelOrNull": "DESIRED OWNS / CONSULTS",
+        "sourceRefs": [
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.cx.registry-gateway",
+        "kind": "FLOW",
+        "fromRef": "reference.fs.cx.registry",
+        "toRef": "reference.fs.cx.gateway",
+        "labelOrNull": "ADMITS CURRENT DEVICE",
+        "sourceRefs": [
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.cx.gateway-phone-a",
+        "kind": "FLOW",
+        "fromRef": "reference.fs.cx.gateway",
+        "toRef": "reference.fs.cx.phone-a",
+        "labelOrNull": "PRIVATE CONNECTION",
+        "sourceRefs": [
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.cx.phone-a-key",
+        "kind": "REFERENCE",
+        "fromRef": "reference.fs.cx.phone-a",
+        "toRef": "reference.fs.cx.key-a",
+        "labelOrNull": "PROVES POSSESSION WITH",
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/connectedservices/VexHomeDevicePossession.kt",
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.cx.key-a-session",
+        "kind": "FLOW",
+        "fromRef": "reference.fs.cx.key-a",
+        "toRef": "reference.fs.cx.session-a",
+        "labelOrNull": "AUTHENTICATES BOUNDED SESSION",
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/connectedservices/VexPrivateHomeGatewayConnection.kt",
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.cx.gateway-phone-b",
+        "kind": "FLOW",
+        "fromRef": "reference.fs.cx.gateway",
+        "toRef": "reference.fs.cx.phone-b",
+        "labelOrNull": "PRIVATE CONNECTION",
+        "sourceRefs": [
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.cx.phone-b-key",
+        "kind": "REFERENCE",
+        "fromRef": "reference.fs.cx.phone-b",
+        "toRef": "reference.fs.cx.key-b",
+        "labelOrNull": "PROVES POSSESSION WITH",
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/connectedservices/VexHomeDevicePossession.kt",
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.cx.key-b-session",
+        "kind": "FLOW",
+        "fromRef": "reference.fs.cx.key-b",
+        "toRef": "reference.fs.cx.session-b",
+        "labelOrNull": "AUTHENTICATES BOUNDED SESSION",
+        "sourceRefs": [
+          "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/connectedservices/VexPrivateHomeGatewayConnection.kt",
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.cx.session-a-authority",
+        "kind": "FLOW",
+        "fromRef": "reference.fs.cx.session-a",
+        "toRef": "reference.fs.cx.authority",
+        "labelOrNull": "AUTHENTICATED != AUTHORIZED",
+        "sourceRefs": [
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md",
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.cx.session-b-authority",
+        "kind": "FLOW",
+        "fromRef": "reference.fs.cx.session-b",
+        "toRef": "reference.fs.cx.authority",
+        "labelOrNull": "AUTHENTICATED != AUTHORIZED",
+        "sourceRefs": [
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md",
+          "projects/vexlife-connected-services/VEXBOARD-SYSTEM-ANATOMY.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.cx.authority-conversation",
+        "kind": "FLOW",
+        "fromRef": "reference.fs.cx.authority",
+        "toRef": "reference.fs.cx.conversation",
+        "labelOrNull": "ADMITS FEATURE EFFECT",
+        "sourceRefs": [
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.cx.conversation-local",
+        "kind": "DATA",
+        "fromRef": "reference.fs.cx.conversation",
+        "toRef": "reference.fs.cx.local-data",
+        "labelOrNull": "BOUNDED PROJECTION / CACHE",
+        "sourceRefs": [
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.cx.release-phone-a",
+        "kind": "REFERENCE",
+        "fromRef": "reference.fs.cx.release",
+        "toRef": "reference.fs.cx.phone-a",
+        "labelOrNull": "INSTALLED SOFTWARE TRUST",
+        "sourceRefs": [
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.cx.release-phone-b",
+        "kind": "REFERENCE",
+        "fromRef": "reference.fs.cx.release",
+        "toRef": "reference.fs.cx.phone-b",
+        "labelOrNull": "INSTALLED SOFTWARE TRUST",
+        "sourceRefs": [
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.cx.topology-evidence",
+        "kind": "REFERENCE",
+        "fromRef": "reference.fs.cx.authority",
+        "toRef": "reference.fs.cx.evidence",
+        "labelOrNull": "PROVES / OBSERVES",
+        "sourceRefs": [
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md",
+          "projects/vex-security-assurance/README.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.cx.mode-synthetic",
+        "kind": "FLOW",
+        "fromRef": "decision.fs.cx.mode",
+        "toRef": "artifact.fs.cx.synthetic",
+        "labelOrNull": "SYNTHETIC ONLY",
+        "sourceRefs": [
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.cx.synthetic-scenarios",
+        "kind": "FLOW",
+        "fromRef": "artifact.fs.cx.synthetic",
+        "toRef": "artifact.fs.cx.scenarios",
+        "labelOrNull": "MATERIALIZES",
+        "sourceRefs": [
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.cx.scenarios-board",
+        "kind": "REFERENCE",
+        "fromRef": "artifact.fs.cx.scenarios",
+        "toRef": "reference.fs.cx.vexboard",
+        "labelOrNull": "PROJECTS",
+        "sourceRefs": [
+          "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.cx.board-vex",
+        "kind": "REFERENCE",
+        "fromRef": "reference.fs.cx.vexboard",
+        "toRef": "reference.fs.cx.vex",
+        "labelOrNull": "GUIDED EXPLANATION WHEN CONTEXT ADMITTED",
+        "sourceRefs": [
+          "projects/full-security/README.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.fs.cx.scenarios-suite",
+        "kind": "REFERENCE",
+        "fromRef": "artifact.fs.cx.scenarios",
+        "toRef": "portal.fs.cx.scenario-suite",
+        "labelOrNull": "EXPANDS TO",
+        "sourceRefs": [
+          "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+          "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md"
+        ]
+      }
+    ],
+    "sourceRefs": [
+      "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md",
+      "repo.vexlife-prod:README.md",
+      "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/connectedservices/VexHomeDevicePossession.kt",
+      "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/connectedservices/VexPrivateHomeGatewayConnection.kt",
+      "projects/vexboard/examples/full-security-vexlife-complex-demonstrator.board.json"
+    ]
+  },
+  "projection": {
+    "schemaVersion": "vexboard.board-projection/v1",
+    "projectionRef": "projection.full-security.vexlife-complex-demonstrator",
+    "graphRef": "graph.full-security.vexlife-complex-demonstrator",
+    "layoutIntent": "SYSTEM_MAP",
+    "items": [
+      {
+        "projectionItemRef": "item.fs.cx.root",
+        "semanticRef": "node.fs.cx.root",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 3440,
+          "height": 1900
+        },
+        "layer": 0,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.cx.status",
+        "semanticRef": "annotation.fs.cx.status",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 100,
+          "y": 50,
+          "width": 3220,
+          "height": 110
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.fs.cx.root",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.cx.current",
+        "semanticRef": "node.fs.cx.current",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 70,
+          "y": 200,
+          "width": 820,
+          "height": 1540
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.fs.cx.root",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.cx.prod-current",
+        "semanticRef": "reference.fs.cx.prod-current",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 130,
+          "y": 330,
+          "width": 700,
+          "height": 130
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.cx.current",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.cx.android-current",
+        "semanticRef": "reference.fs.cx.android-current",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 130,
+          "y": 530,
+          "width": 700,
+          "height": 140
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.cx.current",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.cx.vexstream-current",
+        "semanticRef": "reference.fs.cx.vexstream-current",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 130,
+          "y": 750,
+          "width": 700,
+          "height": 150
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.cx.current",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.cx.topology",
+        "semanticRef": "node.fs.cx.topology",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 940,
+          "y": 200,
+          "width": 1640,
+          "height": 1540
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.fs.cx.root",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.cx.human",
+        "semanticRef": "reference.fs.cx.human",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1040,
+          "y": 300,
+          "width": 500,
+          "height": 90
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.cx.topology",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.cx.account",
+        "semanticRef": "reference.fs.cx.account",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1040,
+          "y": 450,
+          "width": 500,
+          "height": 90
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.cx.topology",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.cx.host",
+        "semanticRef": "reference.fs.cx.host",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1040,
+          "y": 600,
+          "width": 500,
+          "height": 100
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.cx.topology",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.cx.registry",
+        "semanticRef": "reference.fs.cx.registry",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1040,
+          "y": 760,
+          "width": 500,
+          "height": 110
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.cx.topology",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.cx.gateway",
+        "semanticRef": "reference.fs.cx.gateway",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1040,
+          "y": 930,
+          "width": 500,
+          "height": 100
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.cx.topology",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.cx.phone-a",
+        "semanticRef": "reference.fs.cx.phone-a",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1660,
+          "y": 300,
+          "width": 390,
+          "height": 90
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.cx.topology",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.cx.key-a",
+        "semanticRef": "reference.fs.cx.key-a",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1660,
+          "y": 450,
+          "width": 390,
+          "height": 100
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.cx.topology",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.cx.session-a",
+        "semanticRef": "reference.fs.cx.session-a",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1660,
+          "y": 610,
+          "width": 390,
+          "height": 100
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.cx.topology",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.cx.phone-b",
+        "semanticRef": "reference.fs.cx.phone-b",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 2110,
+          "y": 300,
+          "width": 390,
+          "height": 90
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.cx.topology",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.cx.key-b",
+        "semanticRef": "reference.fs.cx.key-b",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 2110,
+          "y": 450,
+          "width": 390,
+          "height": 100
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.cx.topology",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.cx.session-b",
+        "semanticRef": "reference.fs.cx.session-b",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 2110,
+          "y": 610,
+          "width": 390,
+          "height": 100
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.cx.topology",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.cx.authority",
+        "semanticRef": "reference.fs.cx.authority",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1660,
+          "y": 820,
+          "width": 840,
+          "height": 100
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.cx.topology",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.cx.conversation",
+        "semanticRef": "reference.fs.cx.conversation",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1660,
+          "y": 980,
+          "width": 840,
+          "height": 100
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.cx.topology",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.cx.local-data",
+        "semanticRef": "reference.fs.cx.local-data",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1660,
+          "y": 1140,
+          "width": 390,
+          "height": 100
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.cx.topology",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.cx.release",
+        "semanticRef": "reference.fs.cx.release",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 2110,
+          "y": 1140,
+          "width": 390,
+          "height": 100
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.cx.topology",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.cx.evidence",
+        "semanticRef": "reference.fs.cx.evidence",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1660,
+          "y": 1300,
+          "width": 840,
+          "height": 110
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.cx.topology",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.cx.demo",
+        "semanticRef": "node.fs.cx.demo",
+        "shapeKind": "FRAME",
+        "bounds": {
+          "x": 2630,
+          "y": 200,
+          "width": 740,
+          "height": 1540
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": "item.fs.cx.root",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.cx.mode",
+        "semanticRef": "decision.fs.cx.mode",
+        "shapeKind": "DIAMOND",
+        "bounds": {
+          "x": 2810,
+          "y": 330,
+          "width": 380,
+          "height": 190
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.cx.demo",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.cx.synthetic",
+        "semanticRef": "artifact.fs.cx.synthetic",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 2700,
+          "y": 610,
+          "width": 600,
+          "height": 120
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.cx.demo",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.cx.scenarios",
+        "semanticRef": "artifact.fs.cx.scenarios",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 2700,
+          "y": 810,
+          "width": 600,
+          "height": 180
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.cx.demo",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.cx.vexboard",
+        "semanticRef": "reference.fs.cx.vexboard",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 2700,
+          "y": 1090,
+          "width": 600,
+          "height": 110
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.cx.demo",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.cx.vex",
+        "semanticRef": "reference.fs.cx.vex",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 2700,
+          "y": 1280,
+          "width": 600,
+          "height": 110
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.cx.demo",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.cx.law",
+        "semanticRef": "annotation.fs.cx.law",
+        "shapeKind": "TEXT",
+        "bounds": {
+          "x": 520,
+          "y": 1770,
+          "width": 2400,
+          "height": 80
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.cx.root",
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.fs.cx.scenario-suite",
+        "semanticRef": "portal.fs.cx.scenario-suite",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 2700,
+          "y": 1460,
+          "width": 600,
+          "height": 120
+        },
+        "layer": 2,
+        "parentProjectionItemRefOrNull": "item.fs.cx.demo",
+        "visible": true,
+        "locked": true
+      }
+    ],
+    "sourceRefs": [
+      "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md",
+      "projects/vexboard/examples/full-security-vexlife-complex-demonstrator.board.json"
+    ]
+  }
+}

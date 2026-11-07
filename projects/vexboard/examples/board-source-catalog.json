@@ -108,6 +108,80 @@
         "docs/process/VEX-PROCESS-FAMILY-METAWALK.md",
         "projects/vexboard/examples/vexwork-process-family-metawalk.board.json"
       ]
+    },
+    {
+      "boardRef": "board.vexboard.security-boundary-atlas.template",
+      "location": "./security-boundary-atlas.board.json",
+      "sourceRefs": [
+        "projects/vex-security-assurance/README.md",
+        "projects/vex-security-assurance/ADVERSARIAL-LENS.md",
+        "projects/vexboard/examples/security-boundary-atlas.board.json"
+      ]
+    },
+    {
+      "boardRef": "board.vexboard.security-boundary-atlas.credential-custody",
+      "location": "./security-boundary-credential-custody.board.json",
+      "sourceRefs": [
+        "projects/vex-security-assurance/README.md",
+        "projects/vexboard/examples/security-boundary-credential-custody.board.json",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/connectedservices/VexHomeDevicePossession.kt"
+      ]
+    },
+    {
+      "boardRef": "board.full-security.overview",
+      "location": "./full-security-overview.board.json",
+      "sourceRefs": [
+        "projects/full-security/README.md",
+        "projects/vexboard/examples/full-security-overview.board.json"
+      ]
+    },
+    {
+      "boardRef": "board.full-security.vexstream-local-pairing",
+      "location": "./full-security-vexstream-local-pairing.board.json",
+      "sourceRefs": [
+        "projects/full-security/VEXSTREAM-LOCAL-PAIRING-PATTERN.md",
+        "projects/vexboard/examples/full-security-vexstream-local-pairing.board.json",
+        "repo.vexstream-music:docs/architecture/MOBILE-BRIDGE-V1.md",
+        "repo.vexstream-music:v2/desktop/mobile/pairing.go",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/PairedVexStreamMusicRepository.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamConnectionStore.kt"
+      ]
+    },
+    {
+      "boardRef": "board.full-security.vexlife-complex-demonstrator",
+      "location": "./full-security-vexlife-complex-demonstrator.board.json",
+      "sourceRefs": [
+        "projects/full-security/VEXLIFE-COMPLEX-DEMONSTRATOR.md",
+        "projects/vexboard/examples/full-security-vexlife-complex-demonstrator.board.json",
+        "repo.vexlife-prod:README.md",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/connectedservices/VexHomeDevicePossession.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/connectedservices/VexPrivateHomeGatewayConnection.kt"
+      ]
+    },
+    {
+      "boardRef": "board.full-security.android-account-device-scenarios",
+      "location": "./full-security-android-account-device-scenarios.board.json",
+      "sourceRefs": [
+        "projects/full-security/ANDROID-ACCOUNT-DEVICE-SCENARIOS.md",
+        "projects/full-security/CANDIDATE-SECURITY-RELATIONSHIP-PATTERNS.md",
+        "projects/vexboard/examples/full-security-android-account-device-scenarios.board.json"
+      ]
+    },
+    {
+      "boardRef": "board.full-security.foundation-starting-map",
+      "location": "./full-security-foundation-starting-map.board.json",
+      "sourceRefs": [
+        "projects/full-security/FOUNDATION-STARTING-MAP.md",
+        "projects/vexboard/examples/full-security-foundation-starting-map.board.json"
+      ]
+    },
+    {
+      "boardRef": "board.full-security.full-scope-dashboard",
+      "location": "./full-security-full-scope-dashboard.board.json",
+      "sourceRefs": [
+        "projects/full-security/FULL-SCOPE-DASHBOARD-DESIGN.md",
+        "projects/vexboard/examples/full-security-full-scope-dashboard.board.json"
+      ]
     }
   ],
   "sourceRefs": [
