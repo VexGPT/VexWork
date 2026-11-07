@@ -1,0 +1,418 @@
+{
+  "schemaVersion": "vexwork.workgraph-segment/v1",
+  "segmentRef": "segment.cloud-connectivity",
+  "graphRef": "workgraph.vexwork.foundation",
+  "items": [
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T17:25:00.000-08:00",
+      "updatedAt": "2026-11-06T17:25:00.000-08:00",
+      "workRef": "work.cloud-connectivity.outcome",
+      "parentWorkRefOrNull": null,
+      "label": "Cloud Connectivity",
+      "purpose": "Make mobile/cloud architecture understandable and demonstrable through VexLife, preserving operation/attempt identity, sync/currentness, resilience, compatibility, security boundaries and evidence without creating a generic cloud owner.",
+      "workClass": "OUTCOME",
+      "state": "RUNNING",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife",
+        "repo.vexlife-prod",
+        "repo.vexlife-android",
+        "repo.vexstream-music"
+      ],
+      "sourceRefs": [
+        "projects/cloud-connectivity/README.md"
+      ],
+      "formationProcessRefOrNull": "process.vexwork.form-project",
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T17:25:00.000-08:00",
+      "updatedAt": "2026-11-06T17:25:00.000-08:00",
+      "workRef": "work.cloud-connectivity.system-topology",
+      "parentWorkRefOrNull": "work.cloud-connectivity.outcome",
+      "label": "Define the provider-neutral mobile/cloud relationship topology",
+      "purpose": "Identify the minimum semantic relationships among mobile operation, local state, pending work, transport attempts, API ingress, domain service, durable cloud state, object storage, observation and reconciliation before choosing provider-specific infrastructure.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "projects/cloud-connectivity/README.md",
+        "projects/cloud-connectivity/VEXLIFE-SIMULATION-PLAN.md"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T17:25:00.000-08:00",
+      "updatedAt": "2026-11-06T17:25:00.000-08:00",
+      "workRef": "work.cloud-connectivity.demonstration-checklist",
+      "parentWorkRefOrNull": "work.cloud-connectivity.outcome",
+      "label": "Close the Cloud Connectivity demonstration coverage checklist",
+      "purpose": "Pressure API contracts, resilience, idempotency, offline sync, multi-device convergence, API compatibility, data transfer, security integration, provider realization, evidence and educational-product behavior so implementation adds cases instead of repeatedly redesigning the foundation.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod",
+        "repo.vexlife-android",
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "projects/cloud-connectivity/DEMONSTRATION-CHECKLIST.md"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T17:25:00.000-08:00",
+      "updatedAt": "2026-11-06T17:25:00.000-08:00",
+      "workRef": "work.cloud-connectivity.synthetic-cloud",
+      "parentWorkRefOrNull": "work.cloud-connectivity.outcome",
+      "label": "Build the deterministic synthetic cloud and network demonstrator",
+      "purpose": "Provide a no-real-cloud simulation of online/offline/timeout/response-loss/outage/rate-limit/version/currentness conditions behind provider-neutral product-facing contracts so scenarios can be proved without external infrastructure.",
+      "workClass": "TASK",
+      "state": "DECOMPOSED",
+      "priorityClass": "IMMEDIATE",
+      "dependencyRefs": [
+        "work.cloud-connectivity.system-topology",
+        "work.cloud-connectivity.demonstration-checklist"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-prod",
+        "repo.vexlife-android",
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/cloud-connectivity/VEXLIFE-SIMULATION-PLAN.md"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T17:25:00.000-08:00",
+      "updatedAt": "2026-11-06T17:25:00.000-08:00",
+      "workRef": "work.cloud-connectivity.operation-attempt-idempotency",
+      "parentWorkRefOrNull": "work.cloud-connectivity.outcome",
+      "label": "Prove operation identity, attempts, timeout ambiguity and idempotency",
+      "purpose": "Demonstrate request-never-arrived, commit-response-lost, retry/deduplication and same-identity-different-meaning conflict while keeping one domain operation distinct from its transport attempts.",
+      "workClass": "TASK",
+      "state": "DECOMPOSED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.cloud-connectivity.synthetic-cloud"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-prod",
+        "repo.vexlife-android",
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/cloud-connectivity/VEXLIFE-SIMULATION-PLAN.md"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T17:25:00.000-08:00",
+      "updatedAt": "2026-11-06T17:25:00.000-08:00",
+      "workRef": "work.cloud-connectivity.offline-sync-currentness",
+      "parentWorkRefOrNull": "work.cloud-connectivity.outcome",
+      "label": "Prove offline sync and currentness reconciliation",
+      "purpose": "Demonstrate pending work, reconnect, stale cache, cloud-newer state, local-unsynced state, process restart and authorization/currentness changes without treating local cache as cloud authority.",
+      "workClass": "TASK",
+      "state": "DECOMPOSED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.cloud-connectivity.synthetic-cloud"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-prod",
+        "repo.vexlife-android",
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/cloud-connectivity/DEMONSTRATION-CHECKLIST.md",
+        "projects/cloud-connectivity/VEXLIFE-SIMULATION-PLAN.md"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T17:25:00.000-08:00",
+      "updatedAt": "2026-11-06T17:25:00.000-08:00",
+      "workRef": "work.cloud-connectivity.multi-device-convergence",
+      "parentWorkRefOrNull": "work.cloud-connectivity.outcome",
+      "label": "Prove multi-device cloud convergence",
+      "purpose": "Pressure two-device and five-device concurrent/offline/revoked/reinstalled cases so cloud synchronization remains correct across independent installations and operation histories.",
+      "workClass": "TASK",
+      "state": "DECOMPOSED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.cloud-connectivity.offline-sync-currentness"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-prod",
+        "repo.vexlife-android",
+        "repo.vexlife",
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/cloud-connectivity/VEXLIFE-SIMULATION-PLAN.md"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T17:25:00.000-08:00",
+      "updatedAt": "2026-11-06T17:25:00.000-08:00",
+      "workRef": "work.cloud-connectivity.api-versioning-compatibility",
+      "parentWorkRefOrNull": "work.cloud-connectivity.outcome",
+      "label": "Prove API versioning and mobile/backend compatibility windows",
+      "purpose": "Demonstrate old and new clients against evolving backend contracts, explicit unsupported versions, schema evolution and independent mobile/backend rollout without confusing parseability with semantic compatibility.",
+      "workClass": "TASK",
+      "state": "DECOMPOSED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.cloud-connectivity.synthetic-cloud"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-prod",
+        "repo.vexlife-android",
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/cloud-connectivity/DEMONSTRATION-CHECKLIST.md",
+        "projects/cloud-connectivity/VEXLIFE-SIMULATION-PLAN.md"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T17:25:00.000-08:00",
+      "updatedAt": "2026-11-06T17:25:00.000-08:00",
+      "workRef": "work.cloud-connectivity.data-transfer-integrity",
+      "parentWorkRefOrNull": "work.cloud-connectivity.outcome",
+      "label": "Prove structured and object-data transfer behavior",
+      "purpose": "Demonstrate small-record sync, large-object transfer, integrity binding, interruption, pagination and partial failure while reusing the real VexStream integrity/offline-copy specimen where useful.",
+      "workClass": "TASK",
+      "state": "DECOMPOSED",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [
+        "work.cloud-connectivity.synthetic-cloud"
+      ],
+      "repositoryRefs": [
+        "repo.vexstream-music",
+        "repo.vexlife-android",
+        "repo.vexlife-prod",
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/cloud-connectivity/DEMONSTRATION-CHECKLIST.md"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T17:25:00.000-08:00",
+      "updatedAt": "2026-11-06T17:25:00.000-08:00",
+      "workRef": "work.cloud-connectivity.full-security-integration",
+      "parentWorkRefOrNull": "work.cloud-connectivity.outcome",
+      "label": "Integrate Full Security boundaries without duplicating its ontology",
+      "purpose": "Map cloud operations onto current principal/device/session/capability, token/secret custody, service identity, revocation, replay, key-management and evidence questions from project.full-security while leaving distributed-systems correctness in Cloud Connectivity.",
+      "workClass": "TASK",
+      "state": "DECOMPOSED",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "work.cloud-connectivity.system-topology"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife",
+        "repo.vexlife-prod",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "projects/cloud-connectivity/README.md",
+        "projects/cloud-connectivity/DEMONSTRATION-CHECKLIST.md",
+        "project.full-security"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T17:25:00.000-08:00",
+      "updatedAt": "2026-11-06T17:25:00.000-08:00",
+      "workRef": "work.cloud-connectivity.vexlife-prod-app-selector",
+      "parentWorkRefOrNull": "work.cloud-connectivity.outcome",
+      "label": "Connect Cloud Connectivity through the VexLife-Prod application-selection seam",
+      "purpose": "Ground the missing selected-workspace-application relationship around the existing AppSelector so Browser, Full Security and Cloud Connectivity can become product applications without DOM visibility becoming product state or browser-specific controls becoming global semantics.",
+      "workClass": "TASK",
+      "state": "DECOMPOSED",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [
+        "work.cloud-connectivity.system-topology",
+        "work.cloud-connectivity.synthetic-cloud"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-prod",
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/cloud-connectivity/README.md",
+        "projects/cloud-connectivity/VEXLIFE-SIMULATION-PLAN.md",
+        "repo.vexlife-prod:src/commonMain/kotlin/vexlife/workspace/VexLifeWorkspaceBlueprint.kt"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T17:25:00.000-08:00",
+      "updatedAt": "2026-11-06T17:25:00.000-08:00",
+      "workRef": "work.cloud-connectivity.aws-example-realization",
+      "parentWorkRefOrNull": "work.cloud-connectivity.outcome",
+      "label": "Map the provider-neutral demonstrator onto an AWS example realization",
+      "purpose": "Teach how identity provider, API ingress, durable structured store, object store and key management may map to Cognito, API Gateway, DynamoDB, S3 and KMS without making those services the semantic architecture or creating real provider effects during formation.",
+      "workClass": "TASK",
+      "state": "DECOMPOSED",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [
+        "work.cloud-connectivity.synthetic-cloud",
+        "work.cloud-connectivity.full-security-integration"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod",
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "projects/cloud-connectivity/README.md",
+        "projects/cloud-connectivity/DEMONSTRATION-CHECKLIST.md"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T17:25:00.000-08:00",
+      "updatedAt": "2026-11-06T17:25:00.000-08:00",
+      "workRef": "work.cloud-connectivity.vexboard-explanation",
+      "parentWorkRefOrNull": "work.cloud-connectivity.outcome",
+      "label": "Project cloud operations and failure scenarios through VexBoard/Vex",
+      "purpose": "Let a human select an operation, attempt, sync conflict, API-version edge or cloud boundary and descend to a bounded read-only architecture/evidence view, with Vex explanation only when exact context is admitted.",
+      "workClass": "TASK",
+      "state": "WAITING_DEPENDENCIES",
+      "priorityClass": "NORMAL",
+      "dependencyRefs": [
+        "work.cloud-connectivity.operation-attempt-idempotency",
+        "work.cloud-connectivity.offline-sync-currentness",
+        "work.cloud-connectivity.api-versioning-compatibility",
+        "work.cloud-connectivity.vexlife-prod-app-selector"
+      ],
+      "repositoryRefs": [
+        "repo.vexwork",
+        "repo.vexlife-prod",
+        "repo.vexlife"
+      ],
+      "sourceRefs": [
+        "projects/cloud-connectivity/VEXLIFE-SIMULATION-PLAN.md"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "workDisposition": "ACTIVE",
+      "authorityDisposition": "NO_AUTHORITY",
+      "effectDisposition": "NO_EFFECTS",
+      "createdAt": "2026-11-06T17:25:00.000-08:00",
+      "updatedAt": "2026-11-06T17:25:00.000-08:00",
+      "workRef": "work.cloud-connectivity.discoverability",
+      "parentWorkRefOrNull": "work.cloud-connectivity.outcome",
+      "label": "Register Cloud Connectivity in canonical VexWork/VexBoard discovery surfaces",
+      "purpose": "Add canonical Project Registry/public Workgraph and VexBoard catalog/navigation only after currently occupied shared registry/generated/catalog surfaces are available; do not race PR #253/#256 or hand-edit generated custody.",
+      "workClass": "TASK",
+      "state": "WAITING_RESOURCE",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexwork"
+      ],
+      "sourceRefs": [
+        "projects/cloud-connectivity/README.md",
+        "github.pull.vexwork.253",
+        "github.pull.vexwork.256"
+      ],
+      "formationProcessRefOrNull": null,
+      "nextProcessRefs": []
+    }
+  ],
+  "transitions": [],
+  "sourceRefs": [
+    "project.cloud-connectivity",
+    "projects/cloud-connectivity/README.md",
+    "projects/cloud-connectivity/DEMONSTRATION-CHECKLIST.md",
+    "projects/cloud-connectivity/VEXLIFE-SIMULATION-PLAN.md"
+  ],
+  "formedAt": "2026-11-06T17:25:00.000-08:00"
+}
