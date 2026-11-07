@@ -13,7 +13,7 @@ const view = createBoardView(read('projects/vexlife-android-current-state-refine
 
 test('current-state refinement groups review work without stealing VexStream defect ownership', () => {
   const refs = projectWorkRefs(project, graph);
-  assert.equal(refs.length, 9);
+  assert.equal(refs.length, 10);
   assert.equal(refs.includes('work.vexlife-android.current-state-refinement.outcome'), true);
   assert.equal(refs.includes('work.vexstream.mobile-library.large-offline-startup-performance'), false);
 
@@ -26,15 +26,19 @@ test('current-state refinement groups review work without stealing VexStream def
   const convergence = graph.items.find((item) => item.workRef === 'work.vexlife-android.current-state-refinement.semantic-family-convergence');
   const mapsMode = graph.items.find((item) => item.workRef === 'work.vexlife-android.current-state-refinement.semantic-family-convergence.maps-mode');
   const repeat = graph.items.find((item) => item.workRef === 'work.vexlife-android.current-state-refinement.semantic-family-convergence.repeat');
+  const hubPartner = graph.items.find((item) => item.workRef === 'work.vexlife-android.current-state-refinement.semantic-family-convergence.vexstream-hub-partner');
 
   assert.deepEqual([root.state, audit.state], ['RUNNING', 'RUNNING']);
   assert.deepEqual([lists.state, maps.state, conversation.state, diagnostics.state], ['READY', 'READY', 'READY', 'READY']);
-  assert.deepEqual([convergence.state, mapsMode.state, repeat.state], ['RUNNING', 'RUNNING', 'RUNNING']);
+  assert.deepEqual([convergence.state, mapsMode.state, repeat.state, hubPartner.state], ['RUNNING', 'RUNNING', 'RUNNING', 'RUNNING']);
   assert.equal(mapsMode.parentWorkRefOrNull, convergence.workRef);
   assert.equal(repeat.parentWorkRefOrNull, convergence.workRef);
+  assert.equal(hubPartner.parentWorkRefOrNull, convergence.workRef);
   assert.equal(convergence.sourceRefs.includes('github.pull.vexlife-android.220'), true);
   assert.equal(mapsMode.sourceRefs.includes('github.pull.vexlife-android.220'), true);
   assert.equal(repeat.sourceRefs.includes('github.pull.vexlife-android.221'), true);
+  assert.equal(hubPartner.sourceRefs.includes('github.pull.vexlife-android.223'), true);
+  assert.equal(hubPartner.dependencyRefs.includes('github.pull.vexlife-android.219'), true);
   assert.equal(audit.sourceRefs.includes('github.issue.vexlife-android.168'), true);
   assert.equal(audit.sourceRefs.includes('work.vexstream.mobile-library.large-offline-startup-performance'), true);
   assert.equal(maps.sourceRefs.some((ref) => ref.endsWith('VexMapsDestinationSearchSession.kt')), true);
@@ -42,7 +46,7 @@ test('current-state refinement groups review work without stealing VexStream def
   assert.equal(diagnostics.sourceRefs.includes('repo.vexlife-android:docs/foundation/ANDROID-HOST-PROOF.md'), true);
 
   const board = projectWorkBoard({ project, graph, view, registry });
-  assert.equal(board.lanes.find((lane) => lane.laneRef === 'lane.work.active').cards.length, 5);
+  assert.equal(board.lanes.find((lane) => lane.laneRef === 'lane.work.active').cards.length, 6);
   assert.equal(board.lanes.find((lane) => lane.laneRef === 'lane.work.ready').cards.length, 4);
   assert.equal(board.lanes.flatMap((lane) => lane.cards).every((card) => card.effectDisposition === 'NO_EFFECTS'), true);
 });
