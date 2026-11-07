@@ -182,8 +182,8 @@ CgmFamily
 Projection / DisplayState
 ```
 
-The earlier `CgmReader` and `Connection<CgmDeviceFamily.Signal>` forms were useful discovery
-steps. They are no longer the current architecture. Provider realization may change between Local
+The earlier `CgmReader` and pre-Partner connection forms were useful discovery steps. They are no
+longer the current architecture. Provider realization may change between Local
 HTTP, BLE or another concrete transport while the Partner Source/Signal vocabulary and downstream
 Store/Family meaning remain stable.
 
