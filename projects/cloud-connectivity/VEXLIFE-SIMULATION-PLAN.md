@@ -352,6 +352,70 @@ Client A old + Client B new operate concurrently against the same admitted serve
 Map the synthetic provider-neutral components to an AWS example without changing operation/sync
 semantics.
 
+### C33 — periodic VexLogger bulk upload
+
+```text
+VexLogger facts
+-> durable LogHistory records
+-> pending upload batch exists
+-> OS/schedule window due
+-> NetworkConnectivity + Log ServiceConnectivity current
+-> upload attempt
+-> remote database accepts batch
+-> local sync receipt/currentness advances
+```
+
+The Logger remains chronology owner. Upload failure does not rewrite Logger success/failure facts.
+
+### C34 — automated and hidden/manual log upload share one semantic path
+
+If log synchronization earns product/debug semantic State + Control:
+
+```text
+periodic automation condition --\
+hidden Debug / long-press -------+-> Control.UploadNow
+                                  -> LogSyncFamily.act(...)
+                                  -> admitted State + Begin(UploadBatch)
+```
+
+No second debug-only upload implementation. If no Family semantic question is earned, both callers may
+instead converge on one infrastructure upload operation without manufacturing a Family.
+
+### C35 — global announcements poll, semantic admission and notification convergence
+
+```text
+Announcement VexService polls
+-> validates provider announcement record
+-> rightful semantic interpretation
+-> AnnouncementFamily.observe(Unacknowledged(...))
+-> Family Projection can update UI
+
+Announcement truth
++ notification permission
++ foreground/visible surface
++ user notification preferences
+-> notification convergence
+-> notify or do not notify
+```
+
+Fetching an announcement does not itself mean an Android notification should fire.
+
+### C36 — simultaneous service and operation isolation
+
+```text
+NetworkConnectivity = Available
+
+VexCloud ServiceConnectivity = Available
+    Measurement M1 -> Failure(ValidationRejected)
+    Conversation C1 -> Success(Appended)
+
+VexStream Desktop ServiceConnectivity = Unavailable
+    catalog refresh held
+```
+
+One operation failure must not poison shared service/network truth, and one service failure must not
+poison sibling services.
+
 ## VexLife-Prod AppSelector experience pressure
 
 Current source doorway:
