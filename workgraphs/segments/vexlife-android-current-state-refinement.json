@@ -260,6 +260,37 @@
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-11-07T13:40:00.000Z",
+      "updatedAt": "2026-11-07T13:40:00.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "workRef": "work.vexlife-android.current-state-refinement.semantic-family-convergence.vexstream-hub-partner",
+      "parentWorkRefOrNull": "work.vexlife-android.current-state-refinement.semantic-family-convergence",
+      "label": "Pressure paired VexStream Hub/Desktop as VexPartner",
+      "purpose": "Test VexPartner positively against the actual paired VexStream external participant: reuse existing hubRef as Partner Source and pinned certificateSha256 as Connection identity, move external catalog representation conversion out of PairedVexStreamMusicRepository, and keep Media3 classified separately as local platform/provider realization unless its own source later earns Partner meaning.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [
+        "github.pull.vexlife-android.219"
+      ],
+      "repositoryRefs": [
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "github.pull.vexlife-android.223",
+        "github.pull.vexlife-android.219",
+        "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexPartner.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamHubPartner.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/PairedVexStreamMusicRepository.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamHubContract.kt"
+      ],
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "NO_EFFECTS"
     }
   ],
   "transitions": [],
