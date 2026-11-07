@@ -244,7 +244,7 @@ export function projectVexStreamExpressionSource({ lens, files, sourceRevisionRe
   }
   requirePattern(
     librarySurface,
-    /runtime\.presentation\.isOpen\(\s*VexStreamMusicScreen\.FullPlayerSheet\s*\)[\s\S]*?VexStreamFullPlayerSheet\s*\(/,
+    /runtime\.presentation\.isOpen\(\s*VexStreamMusicScreen\.FullPlayerSheet\s*,?\s*\)\s*&&\s*playbackExperience\s*!=\s*null[\s\S]*?VexStreamFullPlayerSheet\s*\(/,
     'FullPlayerSheet presentation gate',
   );
 
