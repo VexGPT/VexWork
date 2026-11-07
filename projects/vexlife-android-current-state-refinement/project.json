@@ -44,7 +44,11 @@
     "github.pull.vexlife-android.223",
     "github.pull.vexlife-android.219",
     "repo.vexlife-android:architecture/behavior/src/main/kotlin/com/vextreme/vexlife/android/behavior/VexPartner.kt",
-    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamHubPartner.kt"
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/data/vexstream/VexStreamHubPartner.kt",
+    "work.vexlife-android.current-state-refinement.semantic-family-convergence.queue",
+    "github.pull.vexlife-android.222",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/queue/VexStreamQueueFamily.kt",
+    "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/queue/Media3VexStreamQueueConnection.kt"
   ],
   "formedAt": "2026-10-24T08:50:00.000Z"
 }
