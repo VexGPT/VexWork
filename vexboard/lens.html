@@ -700,13 +700,50 @@ function expressionAvailable() {
 }
 function expressionList() { return expressionAvailable() ? state.expressionFixture.expressions : []; }
 function activeExpression() { return expressionList().find((entry) => entry.expressionRef === state.expressionRef) ?? null; }
-function expressionElementParticipates(ref) {
-  return Boolean(expressionAvailable() && state.expressionResolution?.surface.elementRefs.includes(ref));
+function expressionResolutionFor(expressionRef) {
+  if (!expressionAvailable() || !expressionRef) return null;
+  return Expressions.resolveScreenLensExpression(state.lens, state.expressionFixture, expressionRef);
 }
-function expressionRuntimeItemsFor(ref) {
+function expressionElementParticipates(ref, resolution = state.expressionResolution) {
+  return Boolean(expressionAvailable() && resolution?.surface.elementRefs.includes(ref));
+}
+function expressionRuntimeItemsFor(ref, resolution = state.expressionResolution) {
   return expressionAvailable()
-    ? (state.expressionResolution?.surface.runtimeItems ?? []).filter((item) => item.realizationRef === ref)
+    ? (resolution?.surface.runtimeItems ?? []).filter((item) => item.realizationRef === ref)
     : [];
+}
+function expressionKind(entry) {
+  if (!entry) return 'SRC';
+  if (entry.basis === 'SOURCE_DEFAULT') return 'SRC';
+  if (entry.basis === 'EVIDENCE') return 'EV';
+  const relationshipRefs = [...entry.relationshipRefs].reverse();
+  for (const relationshipRef of relationshipRefs) {
+    if (!Object.hasOwn(entry.assignments, relationshipRef)) continue;
+    const relationship = state.expressionFixture.relationships.find((candidate) => candidate.relationshipRef === relationshipRef);
+    return { SELECTS: 'SEL', PRESENTS: 'OPEN', POPULATES: 'ROWS', CONDITIONED_BY: 'IF' }[relationship?.kind] ?? 'AX';
+  }
+  return entry.basis === 'SOURCE_COUPLED' ? 'CO' : 'AX';
+}
+function expressionCaption(entry) {
+  if (!entry) return null;
+  const resolution = expressionResolutionFor(entry.expressionRef);
+  const delta = resolution
+    ? `${resolution.surface.elementRefs.length} static · ${resolution.surface.runtimeItems.length} runtime`
+    : '';
+  return h('div', { class: 'xcap', title: entry.summary ?? entry.label },
+    h('span', { class: 'xk' }, expressionKind(entry)),
+    h('b', {}, entry.label),
+    entry.summary ? h('span', { class: 'xwhat' }, entry.summary) : null,
+    delta ? h('span', { class: 'xcount' }, delta) : null);
+}
+function expressionExposingElement(elementRef) {
+  if (!expressionAvailable()) return null;
+  const active = state.expressionRef;
+  const candidates = expressionList()
+    .filter((entry) => entry.expressionRef !== active)
+    .map((entry) => ({ entry, resolution: expressionResolutionFor(entry.expressionRef) }))
+    .filter(({ resolution }) => resolution?.surface.elementRefs.includes(elementRef));
+  return candidates.find(({ entry }) => entry.basis !== 'SOURCE_DEFAULT')?.entry ?? candidates[0]?.entry ?? null;
 }
 function setExpressionPathway(pathwayRef, { renderNow = true } = {}) {
   if (!expressionAvailable()) return;
@@ -748,7 +785,7 @@ function setExpression(expressionRef, { renderNow = true } = {}) {
   if (!state.expressionFixture.expressions.some((entry) => entry.expressionRef === expressionRef)) return;
   const changedExpression = state.expressionRef !== expressionRef;
   state.expressionRef = expressionRef;
-  state.expressionResolution = Expressions.resolveScreenLensExpression(state.lens, state.expressionFixture, expressionRef);
+  state.expressionResolution = expressionResolutionFor(expressionRef);
   const paths = state.expressionResolution.behavior.pathwayRefs;
   if (paths.length) {
     const preserveCurrent = !changedExpression && paths.includes(state.expressionPathwayRef);
@@ -776,47 +813,72 @@ function stepExpression(delta) {
   const list = expressionList();
   const index = list.findIndex((entry) => entry.expressionRef === state.expressionRef);
   const next = list[index + delta];
-  if (next) setExpression(next.expressionRef);
+  if (next) {
+    state.expressionMotion = delta > 0 ? 'next' : 'prev';
+    setExpression(next.expressionRef);
+  }
+}
+const expressionSwipe = { wheel: 0, lock: 0 };
+function wireExpressionSwipe(surface) {
+  let start = null;
+  let swiped = false;
+  surface.addEventListener('wheel', (event) => {
+    if (Math.abs(event.deltaX) <= Math.abs(event.deltaY) * 1.2) return;
+    event.preventDefault();
+    if (event.timeStamp < expressionSwipe.lock) return;
+    expressionSwipe.wheel += event.deltaX;
+    if (Math.abs(expressionSwipe.wheel) > 60) {
+      const delta = Math.sign(expressionSwipe.wheel);
+      expressionSwipe.wheel = 0;
+      expressionSwipe.lock = event.timeStamp + 650;
+      stepExpression(delta);
+    }
+  }, { passive: false });
+  surface.addEventListener('pointerdown', (event) => {
+    if (event.button === 0) {
+      start = { x: event.clientX, y: event.clientY };
+      swiped = false;
+    }
+  });
+  surface.addEventListener('pointerup', (event) => {
+    if (!start) return;
+    const dx = event.clientX - start.x;
+    const dy = event.clientY - start.y;
+    start = null;
+    if (Math.abs(dx) > 70 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+      swiped = true;
+      stepExpression(dx < 0 ? 1 : -1);
+    }
+  });
+  surface.addEventListener('click', (event) => {
+    if (!swiped) return;
+    swiped = false;
+    event.stopPropagation();
+    event.preventDefault();
+  }, true);
 }
 function renderExpressionRail() {
   if (!expressionAvailable()) return null;
   const list = expressionList();
   const active = activeExpression();
   const index = list.findIndex((entry) => entry.expressionRef === active?.expressionRef);
-  const paths = state.expressionResolution?.behavior.pathwayRefs ?? [];
-  const runtimeCount = state.expressionResolution?.surface.runtimeItems.length ?? 0;
-  const evidenceCount = state.expressionResolution?.evidenceRefs.length ?? 0;
   return h('nav', {
     class: 'xrail',
     'aria-label': `Expressions of ${currentScreen().label}`,
-    title: 'A source-backed viewing coordinate over this same Screen. Highlighted elements participate in the selected expression; unmarked elements are not claimed absent.',
+    title: 'Every source-backed context this Screen can be viewed through. Swipe the Surface, use the arrows, or double-click an element to move to an expression that exposes it.',
   },
-    h('span', { class: 'xlabel' }, 'Expression'),
+    h('span', { class: 'xlabel' }, 'Expressions'),
     h('button', { class: 'xstep', type: 'button', 'aria-label': 'Previous expression', disabled: index <= 0, onclick: () => stepExpression(-1) }, '‹'),
-    h('div', { class: 'xchips' }, list.map((entry) => h('button', {
+    h('div', { class: 'xchips', role: 'list' }, list.map((entry) => h('button', {
       class: 'xchip',
       type: 'button',
+      role: 'listitem',
       'aria-pressed': entry.expressionRef === active?.expressionRef ? 'true' : 'false',
       title: entry.summary ?? entry.label,
       onclick: () => setExpression(entry.expressionRef),
-    }, entry.label))),
+    }, h('span', { class: 'xk' }, expressionKind(entry)), h('span', { class: 'xt' }, entry.label)))),
     h('button', { class: 'xstep', type: 'button', 'aria-label': 'Next expression', disabled: index < 0 || index >= list.length - 1, onclick: () => stepExpression(1) }, '›'),
-    h('span', { class: 'xcount' }, `${index + 1} / ${list.length}`),
-    active ? h('span', { class: 'xbasis', title: 'Expression basis' }, active.basis.replaceAll('_', ' ').toLowerCase()) : null,
-    paths.length ? h('div', { class: 'xpaths', 'aria-label': 'Expression pathways' },
-      h('span', { class: 'label' }, 'Pathway'),
-      paths.map((ref) => {
-        const pathway = Lens.pathwayFor(state.lens, ref);
-        return h('button', {
-          class: 'xpath',
-          type: 'button',
-          'aria-pressed': state.pathwayRef === ref ? 'true' : 'false',
-          title: pathway?.summary ?? pathway?.label ?? ref,
-          onclick: () => setExpressionPathway(ref),
-        }, pathway?.label ?? ref);
-      }),
-      runtimeCount ? h('span', { class: 'xcount', title: 'Runtime representatives; not static Screen elements' }, `${runtimeCount} runtime`) : null,
-      evidenceCount ? h('span', { class: 'xcount' }, `${evidenceCount} evidence`) : null) : null);
+    h('span', { class: 'xcount' }, `${index + 1} / ${list.length}`));
 }
 
 function selectElement(elementRef, { keepFaces = true } = {}) {
