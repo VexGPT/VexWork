@@ -233,6 +233,33 @@
       "nextProcessRefs": [],
       "authorityDisposition": "AUTHORIZED_BOUNDED",
       "effectDisposition": "NO_EFFECTS"
+    },
+    {
+      "schemaVersion": "vexwork.work-item/v1",
+      "createdAt": "2026-11-07T13:10:52.000Z",
+      "updatedAt": "2026-11-07T13:10:52.000Z",
+      "workDisposition": "ACTIVE",
+      "formationProcessRefOrNull": null,
+      "workRef": "work.vexlife-android.current-state-refinement.semantic-family-convergence.repeat",
+      "parentWorkRefOrNull": "work.vexlife-android.current-state-refinement.semantic-family-convergence",
+      "label": "Prove provider-backed VexStream Repeat as Direct VexFamily",
+      "purpose": "Prove that a stable provider-backed compatibility family can move semantic State/Control/Effect ownership to Direct VexFamily while retaining the real Media3 Connection as provider observation/realization and without inventing VexExecution for an immediate repeatMode assignment. Preserve request != provider outcome and admit no Queue/Playback migration by analogy.",
+      "workClass": "TASK",
+      "state": "RUNNING",
+      "priorityClass": "HIGH",
+      "dependencyRefs": [],
+      "repositoryRefs": [
+        "repo.vexlife-android"
+      ],
+      "sourceRefs": [
+        "github.pull.vexlife-android.221",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/repeat/VexStreamRepeatFamily.kt",
+        "repo.vexlife-android:app/src/main/kotlin/com/vextreme/vexlife/android/vexstream/repeat/Media3VexStreamRepeatConnection.kt",
+        "repo.vexlife-android:architecture/behavior/FAMILY-CIRCUIT.md"
+      ],
+      "nextProcessRefs": [],
+      "authorityDisposition": "AUTHORIZED_BOUNDED",
+      "effectDisposition": "NO_EFFECTS"
     }
   ],
   "transitions": [],
