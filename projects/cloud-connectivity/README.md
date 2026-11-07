@@ -217,6 +217,43 @@ Source-backed detail lives in
 `VEXSERVICE-CONNECTIVITY-AND-AUTOMATION.md` and current VexLife
 `docs/VEXHOME-HOSTED-CAPABILITIES.md`.
 
+## Coordinated Full Security build
+
+Cloud Connectivity and Full Security are coordinated as two Projects, not collapsed into one owner.
+
+```text
+Full Security
+    current principal/device/session/capability/service-trust admission
+
+Cloud Connectivity
+    network/service/operation correctness across time/failure/version boundaries
+```
+
+The prioritized implementation handoff is:
+
+```text
+projects/cloud-connectivity/SECURITY-CONNECTIVITY-EPIC-HANDOFF.md
+```
+
+Its first integrated proof is:
+
+```text
+accepted Global Announcement contract
+-> Lab validation
+-> NetworkConnectivity + ServiceConnectivity
+-> synthetic Full Security admission / hold
+-> Vex Home hosted Cloud Connectivity capability
+-> provider/domain observation
+-> Announcement semantic projection
+```
+
+with the required distinction:
+
+```text
+SECURITY_DENIED != NETWORK_UNAVAILABLE
+SERVICE_AVAILABLE != EFFECT_AUTHORIZED
+```
+
 ## Provider-neutral first
 
 The architecture must not be named after AWS.
@@ -342,7 +379,8 @@ full demonstration checklist
 -> candidate VexService graduation pressure
 -> background automation patient zeros
 -> contract-driven Cloud Connectivity Lab
--> deterministic synthetic cloud
+-> deterministic synthetic cloud as Vex Home hosted capability
+-> first secured connected-operation patient zero
 -> VexLife-Android operation/sync consumer using stable VexFamily grammar
 -> VexLife-Prod selected-app surface
 -> failure + version + multi-device scenarios
