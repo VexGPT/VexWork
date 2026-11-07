@@ -44,7 +44,7 @@
           "repo.vexlife-prod:README.md",
           "repo.vexlife-prod:AGENTS.md",
           "repo.vexlife-prod:docs/CULTURE.md",
-          "github.commit.vexlife-prod.b687ef9c6fa1aebfd4b0053e36daf18d0293816f"
+          "github.commit.vexlife-prod.30e37a531edfc17b6959e13482149e249927ed69"
         ]
       },
       {
@@ -94,13 +94,12 @@
       {
         "nodeRef": "node.vlp.current-local-foundation",
         "kind": "REFERENCE",
-        "label": "Current moving local-foundation source · PR #25 / #26",
+        "label": "Accepted local-runtime foundation lineage",
         "parentRefOrNull": null,
         "detailBoardRefOrNull": null,
         "sourceRefs": [
-          "github.pull.vexlife-prod.25",
-          "github.pull.vexlife-prod.26",
-          "github.pull.vexwork.231"
+          "work.vexlife.new-beginnings.local-runtime-foundation",
+          "projects/vexlife-new-beginnings/README.md"
         ]
       },
       {
@@ -110,6 +109,45 @@
         "parentRefOrNull": null,
         "detailBoardRefOrNull": null,
         "sourceRefs": [
+          "projects/vexlife-new-beginnings/VEXBOARD-PERCEIVABILITY-ALIGNMENT.md"
+        ]
+      },
+      {
+        "nodeRef": "node.vlp.original-experience-source",
+        "kind": "REFERENCE",
+        "label": "Original VexLife experience source",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.commit.vexlife.7d59753687ff12726b0d309ee2dde028b5f89e8a",
+          "repo.vexlife:docs/EXPERIENCE-FOUNDATION.md",
+          "repo.vexlife:docs/INTERFACE-BUILDER.md",
+          "repo.vexlife:blueprint/design-tokens.json",
+          "repo.vexlife:reference/browser/index.html",
+          "repo.vexlife:reference/browser/app.css"
+        ]
+      },
+      {
+        "nodeRef": "node.vlp.current-lived-product-body",
+        "kind": "REFERENCE",
+        "label": "Current lived VexLife-Prod body · 30e37a",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "github.commit.vexlife-prod.30e37a531edfc17b6959e13482149e249927ed69",
+          "artifact.vexlife-prod.a022.host-lifetime.return.sha256.ac1a135a780aa737b5c06267af38bf5e707713545c3ecfd181a78bda741a21fa",
+          "artifact.vexlife-prod.a023.lived-conversation.return.sha256.7b51f203679f1a5284535fa3be6b1942f2f6ee34f5192f1d13b3ab25939a56d5"
+        ]
+      },
+      {
+        "nodeRef": "node.vlp.manifestation-parity",
+        "kind": "PROCESS",
+        "label": "Experience manifestation parity · current foreground",
+        "parentRefOrNull": null,
+        "detailBoardRefOrNull": null,
+        "sourceRefs": [
+          "projects/vexlife-new-beginnings/EXPERIENCE-MANIFESTATION-PARITY.md",
+          "human.witness.vexlife-prod.manifestation-parity-gap.20261106",
           "projects/vexlife-new-beginnings/VEXBOARD-PERCEIVABILITY-ALIGNMENT.md"
         ]
       }
@@ -196,6 +234,46 @@
         "sourceRefs": [
           "projects/vexlife-new-beginnings/VEXBOARD-PERCEIVABILITY-ALIGNMENT.md"
         ]
+      },
+      {
+        "relationshipRef": "rel.vlp.original-experience-manifestation",
+        "kind": "REFERENCE",
+        "fromRef": "node.vlp.original-experience-source",
+        "toRef": "node.vlp.manifestation-parity",
+        "labelOrNull": "INFORMS_WITHOUT_OWNING",
+        "sourceRefs": [
+          "projects/vexlife-new-beginnings/EXPERIENCE-MANIFESTATION-PARITY.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vlp.semantics-manifestation",
+        "kind": "FLOW",
+        "fromRef": "node.vlp.semantic-relationships",
+        "toRef": "node.vlp.manifestation-parity",
+        "labelOrNull": "CONSTRAINS",
+        "sourceRefs": [
+          "projects/vexlife-new-beginnings/EXPERIENCE-MANIFESTATION-PARITY.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vlp.lived-body-manifestation",
+        "kind": "REFERENCE",
+        "fromRef": "node.vlp.current-lived-product-body",
+        "toRef": "node.vlp.manifestation-parity",
+        "labelOrNull": "CURRENT_PRESSURE",
+        "sourceRefs": [
+          "projects/vexlife-new-beginnings/EXPERIENCE-MANIFESTATION-PARITY.md"
+        ]
+      },
+      {
+        "relationshipRef": "rel.vlp.manifestation-projector",
+        "kind": "REFERENCE",
+        "fromRef": "node.vlp.manifestation-parity",
+        "toRef": "node.vlp.future-projector",
+        "labelOrNull": "MUST_REMAIN_SOURCE_ADDRESSABLE",
+        "sourceRefs": [
+          "projects/vexlife-new-beginnings/EXPERIENCE-MANIFESTATION-PARITY.md"
+        ]
       }
     ],
     "sourceRefs": [
@@ -204,7 +282,8 @@
       "repo.vexlife-prod:README.md",
       "repo.vexlife-prod:AGENTS.md",
       "repo.vexlife-prod:docs/CULTURE.md",
-      "github.commit.vexlife-prod.b687ef9c6fa1aebfd4b0053e36daf18d0293816f"
+      "github.commit.vexlife-prod.30e37a531edfc17b6959e13482149e249927ed69",
+      "projects/vexlife-new-beginnings/EXPERIENCE-MANIFESTATION-PARITY.md"
     ]
   },
   "projection": {
@@ -324,7 +403,7 @@
         "shapeKind": "RECTANGLE",
         "bounds": {
           "x": 720,
-          "y": 540,
+          "y": 700,
           "width": 280,
           "height": 86
         },
@@ -347,10 +426,56 @@
         "parentProjectionItemRefOrNull": null,
         "visible": true,
         "locked": true
+      },
+      {
+        "projectionItemRef": "item.vlp.original-experience-source",
+        "semanticRef": "node.vlp.original-experience-source",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 80,
+          "y": 540,
+          "width": 250,
+          "height": 86
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vlp.current-lived-product-body",
+        "semanticRef": "node.vlp.current-lived-product-body",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 720,
+          "y": 540,
+          "width": 280,
+          "height": 86
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
+      },
+      {
+        "projectionItemRef": "item.vlp.manifestation-parity",
+        "semanticRef": "node.vlp.manifestation-parity",
+        "shapeKind": "RECTANGLE",
+        "bounds": {
+          "x": 1050,
+          "y": 540,
+          "width": 300,
+          "height": 86
+        },
+        "layer": 1,
+        "parentProjectionItemRefOrNull": null,
+        "visible": true,
+        "locked": true
       }
     ],
     "sourceRefs": [
-      "projects/vexlife-new-beginnings/VEXBOARD-PERCEIVABILITY-ALIGNMENT.md"
+      "projects/vexlife-new-beginnings/VEXBOARD-PERCEIVABILITY-ALIGNMENT.md",
+      "projects/vexlife-new-beginnings/EXPERIENCE-MANIFESTATION-PARITY.md"
     ]
   }
 }

@@ -306,8 +306,8 @@ The Workgraph owns lifecycle truth. This README is a human/current-entry project
 Accepted VexLife-Prod source:
 
 ~~~text
-main  1a1745547558110fdbc420d4c15896cd353f5c46
-tree  760a6d10f2aa98f3a0a2eebf7d53a2f5311aa7cf
+main  30e37a531edfc17b6959e13482149e249927ed69
+tree  68c4cd032d3ee35b8b04823c5c05004b714ec48e
 ~~~
 
 The accepted lived sequence is now:
@@ -327,7 +327,7 @@ canonical Home + lineage
 -> accepted-main source identity
 ~~~
 
-The evidence boundary is preserved through the A057 / A061 / A062 / A063 / A065 trajectory and VexLife-Prod PR #37 integration. No additional proof Send is required merely to remember that baseline.
+The earlier evidence boundary through A057 / A061 / A062 / A063 / A065 and PR #37 remains valid provenance. It has now been strengthened by the accepted VexLife-Prod source at `30e37a531edfc17b6959e13482149e249927ed69` plus the lived A022/A023 product proofs below. Do not replay the older baseline merely to remember it.
 
 Current Workgraph projection on accepted VexWork main:
 
@@ -364,7 +364,91 @@ THIS README
 = CURRENT HUMAN ENTRY / NAVIGATION
 ~~~
 
-## Current foreground — post-baseline VexArchitecture refactor
+## Current human-lived checkpoint — experience manifestation parity is immediate
+
+The clean product body is now materially stronger than the prior P3 checkpoint:
+
+~~~text
+accepted VexLife-Prod
+  main 30e37a531edfc17b6959e13482149e249927ed69
+  tree 68c4cd032d3ee35b8b04823c5c05004b714ec48e
+
+A022 host lifetime
+  exact accepted source built into the private Mac service image
+  canonical ~/.vexlife image installed/reused
+  launchd-owned service rotated from prior source to 30e37a...
+  setup exited
+  service remained alive
+  source/PID currentness stayed exact
+
+A023 lived Conversation
+  POST /api/v1/conversation/send -> 200
+  TURN_COMPLETED
+  fresh local model call
+  canonical human + Vex events appended
+  persisted Context matched the exact completed turn/head
+  Capability Frame projected AVAILABLE / HELD / UNAVAILABLE / UNKNOWN / OMITTED
+  effectAuthorityGranted=false
+  service source/PID remained stable
+~~~
+
+Lived presentation then exposed the current product gap:
+
+~~~text
+FUNCTIONAL PRODUCT BODY = PROVEN
+GENERATED VEXWEB STRUCTURE = PRESENT
+HUMAN EXPERIENCE PARITY = NOT YET ACHIEVED
+~~~
+
+The generated P1 surface is structurally and behaviorally connected, but its human manifestation is still a minimal renderer. The original VexLife experience source already carries richer design tokens, shell/chat presentation, message/composer behavior, contextual workspace behavior, Vex vessel semantics, accessibility, motion and interaction guidance.
+
+The immediate foreground is therefore:
+
+~~~text
+original VexLife experience evidence
++ accepted VexLife-Prod semantic/runtime body
++ accepted VexWeb Blueprint / Frame / Seam / Region relationships
++ VexBoard perceivability law
+        ↓
+experience manifestation parity
+        ↓
+lived VexLife product that remains compiler/source-visible and VexBoard-mappable
+~~~
+
+This is not permission to copy the historical implementation wholesale or hand-edit generated HTML/CSS/JS.
+
+~~~text
+PORT WITH INTEGRITY != COPY IMPLEMENTATION
+VISUAL PARITY != CSS-ONLY PATCH
+ORIGINAL VEXLIFE EXPERIENCE SOURCE != VEXLIFE-PROD RUNTIME AUTHORITY
+VEXWEB GENERATED ARTIFACT != AUTHORING SOURCE
+VEXBOARD MAPPABLE != VEXBOARD OWNED
+FUNCTIONAL SERVICE != HUMAN EXPERIENCE COMPLETE
+~~~
+
+Current Workgraph edge:
+
+~~~text
+work.vexlife.new-beginnings.experience-manifestation-parity
+  READY / IMMEDIATE
+  authorityDisposition = NO_AUTHORITY
+  effectDisposition    = NO_EFFECTS
+
+work.vexlife.new-beginnings.evolution-live-bridge
+  READY / HIGH / PARALLEL
+  remains a separate developmental edge
+  does not preempt the human-visible product completion gap
+~~~
+
+Durable navigation for this edge:
+
+~~~text
+projects/vexlife-new-beginnings/EXPERIENCE-MANIFESTATION-PARITY.md
+projects/vexlife-new-beginnings/VEXBOARD-PERCEIVABILITY-ALIGNMENT.md
+board.vexlife-prod.perceivability-alignment
+~~~
+
+## Architecture horizon — preserve during manifestation parity
 
 The lower lived circuit is now stable enough to refactor **without changing its human outcome**.
 

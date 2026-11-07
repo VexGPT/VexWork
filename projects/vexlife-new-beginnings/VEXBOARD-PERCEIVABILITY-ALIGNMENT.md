@@ -37,7 +37,7 @@ The proof is **not** that Android's Kotlin shapes should become universal. The p
 Accepted VexLife-Prod main at this alignment formation:
 
 ```text
-commit b687ef9c6fa1aebfd4b0053e36daf18d0293816f
+commit 30e37a531edfc17b6959e13482149e249927ed69
 ```
 
 Its current repository sources already say:
@@ -111,28 +111,39 @@ runtime/provider realization where applicable
 
 without treating generated CSS selectors or DOM position as semantic identity.
 
-## Current moving local-foundation work
+## Current lived product pressure
 
-At alignment formation, VexLife-Prod PRs #25 and #26 remain draft source candidates.
-
-They are useful current pressure around:
+The local foundation is no longer merely moving draft context. The accepted VexLife-Prod body is live on Victor's Mac at:
 
 ```text
-isolated Prod Home
-strict durable JSON
-Heretic model configuration
-managed Python
-artifact materialization
-persistent runtime
-process / launchd realization
-runtime qualification
+main 30e37a531edfc17b6959e13482149e249927ed69
+tree 68c4cd032d3ee35b8b04823c5c05004b714ec48e
 ```
 
-The alignment board may point at that work as **current moving context**.
+A022 proved the exact accepted private service image could be installed/reused into canonical Product Home, rotated into launchd ownership, survive setup exit and remain source/PID-current.
 
-It must not silently promote those drafts to accepted architecture or product completion.
+A023 proved one fresh real local-model Conversation turn, durable request/response append, exact Context readback, truthful Capability Frame projection and stable source/PID currentness.
 
-Likewise, VexWork PR #231 is currentization work in motion, not a replacement source owner.
+The next lived observation is equally important: the generated P1 browser body is functionally connected but does not yet manifest the richer VexLife human experience carried by current original VexLife source.
+
+The current pressure is therefore:
+
+```text
+original VexLife experience source
+  design tokens
+  Interface Builder / Experience contracts
+  shell + chat Blueprint
+  reference browser behavior
+
++ accepted VexLife-Prod semantic/runtime source
++ accepted VexWeb source relationships
+        ↓
+faithful experience manifestation
+        ↓
+source-addressable / VexBoard-projectable product
+```
+
+Do not store the private lived screenshot or Conversation content in this alignment source. The durable fact is only that human-visible manifestation parity is not yet achieved.
 
 ## Projection principle
 
@@ -158,6 +169,10 @@ Until then, a bounded adapter is acceptable when it can fail closed and preserve
 ```text
 ALIGNMENT != SAMENESS
 ANDROID SOURCE SHAPE != VEXLIFE-PROD REQUIRED SHAPE
+ORIGINAL VEXLIFE EXPERIENCE != COPY-PASTE IMPLEMENTATION
+VISUAL PARITY != CSS-ONLY PATCH
+FUNCTIONAL SERVICE != HUMAN EXPERIENCE COMPLETE
+VEXBOARD MAPPABLE != VEXBOARD OWNED
 VEXBOARD PROJECTION != PRODUCT SOURCE AUTHORITY
 GENERATED WEB ARTIFACT != AUTHORING SOURCE
 RUNTIME OWNER != SEMANTIC OWNER
