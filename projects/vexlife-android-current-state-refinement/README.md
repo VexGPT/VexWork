@@ -421,8 +421,17 @@ work.vexlife-android.current-state-refinement.semantic-family-convergence
     -> Android PR #221
     -> provider-backed semantic owner
     -> Direct Family owns State / Control / Effect
-    -> real Media3 Connection remains provider boundary
+    -> Media3 remains local platform/provider boundary after positive Partner pressure
     -> immediate repeatMode Effect creates no VexExecution Job
+
+    vexstream-hub-partner
+    -> Android PR #223 stacked on VexPartner #219
+    -> paired VexStream Hub/Desktop is the actual external participant pressure
+    -> existing hubRef becomes Partner Source
+    -> existing pinned certificateSha256 becomes Connection identity
+    -> HTTP catalog JSON conversion moves out of PairedVexStreamMusicRepository
+       into VexPartner.Connection.Conversion
+    -> Partner must reduce repository responsibility rather than mirror Family State
 ```
 
 The two proofs establish an important distinction:
@@ -431,9 +440,14 @@ The two proofs establish an important distinction:
 NO INDEPENDENT CONNECTION QUESTION
 -> delete the Connection
 
-REAL PROVIDER RELATIONSHIP
--> keep the Connection
+REAL LOCAL PROVIDER RELATIONSHIP
+-> keep the provider boundary
 -> remove semantic ownership from it
+
+INDEPENDENT EXTERNAL PARTICIPANT
++ existing Source / Connection identity / provider conversion
+-> pressure VexPartner positively
+-> keep only if it reduces duplicated relationship meaning
 
 SEMANTIC EFFECT
 != AUTOMATIC ASYNC WORK
@@ -449,8 +463,10 @@ VexMaps Delivery Route
 ```
 
 Those consumers move only if their own source becomes smaller while preserving their earned
-provider/currentness/session relationships. Direct Family does not authorize a compatibility purge,
-a VexPartner rewrite, or absorption of provider / Session / Relay / Execution ownership.
+provider/currentness/session relationships. Direct Family does not authorize a compatibility purge or absorption of provider / Session /
+Relay / Execution ownership. VexPartner is not rejected by default either: the paired Hub/Desktop
+pressure is now an active positive test on #223, while Media3 remains the smaller local provider path
+unless its own source later earns independent Partner meaning.
 
 ## Permanent boundaries
 
