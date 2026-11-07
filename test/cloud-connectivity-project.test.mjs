@@ -21,7 +21,7 @@ test('Cloud Connectivity forms a bounded no-authority Project', () => {
   assert.equal(project.projectRef, 'project.cloud-connectivity');
   assert.deepEqual(project.rootWorkRefs, ['work.cloud-connectivity.outcome']);
   assert.equal(segment.segmentRef, 'segment.cloud-connectivity');
-  assert.equal(segment.items.length, 18);
+  assert.equal(segment.items.length, 19);
 
   for (const item of segment.items) {
     assert.equal(item.authorityDisposition, 'NO_AUTHORITY');
@@ -167,6 +167,25 @@ test('synthetic cloud consumes the Lab doorway rather than bypassing contract co
   assert.ok(synthetic.dependencyRefs.includes('work.cloud-connectivity.contract-workbench-lab'));
   assert.match(lab, /Synthetic API ingress \/ server/);
   assert.match(lab, /VexBoard bounded architecture descent/);
+});
+
+
+test('current VexLife Home is the first hosted-capability server substrate', () => {
+  assert.match(serviceArchitecture, /ONE HUMAN FRONT DOOR/);
+  assert.match(serviceArchitecture, /CAPABILITY_CONTRACT != DEPLOYMENT_TOPOLOGY/);
+  const synthetic = byRef.get('work.cloud-connectivity.synthetic-cloud');
+  assert.match(synthetic.label, /Vex Home hosted capability/);
+  assert.ok(synthetic.repositoryRefs.includes('repo.vexlife'));
+});
+
+test('Full Security and Cloud Connectivity coordinate through one secured patient zero without collapsing owners', () => {
+  const secured = byRef.get('work.cloud-connectivity.secured-connected-operation-patient-zero');
+  assert.ok(secured);
+  assert.ok(secured.dependencyRefs.includes('work.cloud-connectivity.contract-workbench-lab'));
+  assert.ok(secured.dependencyRefs.includes('work.cloud-connectivity.synthetic-cloud'));
+  assert.ok(secured.dependencyRefs.includes('work.cloud-connectivity.full-security-integration'));
+  assert.match(secured.purpose, /denied security condition holds the operation without being misclassified as network\/service failure/);
+  assert.ok(byRef.get('work.cloud-connectivity.operation-attempt-idempotency').dependencyRefs.includes(secured.workRef));
 });
 
 // [VXG RealForever][CLOUD-CONNECTIVITY][PROJECT]
