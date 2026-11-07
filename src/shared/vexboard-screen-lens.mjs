@@ -50,9 +50,11 @@ export const LENS_ROLES = Object.freeze({
   EXECUTION: Object.freeze({ role: 'EXECUTION', band: 'RUNTIME', chip: 'EXE', label: 'Execution custody' }),
   REALIZATION: Object.freeze({ role: 'REALIZATION', band: 'RUNTIME', chip: 'RZN', label: 'Realization / reconciliation' }),
   CONNECTION: Object.freeze({ role: 'CONNECTION', band: 'RUNTIME', chip: 'CON', label: 'Partner Connection' }),
-  DECODER: Object.freeze({ role: 'DECODER', band: 'RUNTIME', chip: 'DEC', label: 'Partner Decoder' }),
+  CONVERSION: Object.freeze({ role: 'CONVERSION', band: 'RUNTIME', chip: 'CVT', label: 'Provider → Partner conversion' }),
+  DECODER: Object.freeze({ role: 'DECODER', band: 'RUNTIME', chip: 'DEC', label: 'Concrete decoder' }),
   RECEIVER: Object.freeze({ role: 'RECEIVER', band: 'RUNTIME', chip: 'RCV', label: 'Partner Receiver' }),
   PARTNER: Object.freeze({ role: 'PARTNER', band: 'OUTSIDE', chip: 'PAR', label: 'Partner' }),
+  SOURCE: Object.freeze({ role: 'SOURCE', band: 'OUTSIDE', chip: 'SRC', label: 'Partner Source' }),
   SIGNAL: Object.freeze({ role: 'SIGNAL', band: 'OUTSIDE', chip: 'SIG', label: 'Partner Signal' }),
   STORE: Object.freeze({ role: 'STORE', band: 'OUTSIDE', chip: 'STO', label: 'Store / provider · outside truth' }),
   OBSERVATION: Object.freeze({ role: 'OBSERVATION', band: 'OUTSIDE', chip: 'OBS', label: 'Observation' }),
@@ -71,7 +73,7 @@ export const PATHWAY_DISPOSITIONS = Object.freeze({
   TYPED_PRESENTATION: 'Open / Close / Toggle already says everything; no Behavior is earned.',
   TYPED_NAVIGATION: 'NavigateTo(ScreenId) already says everything; no Act identity is earned.',
   DIRECT_REGISTRATION: 'The registration calls owners directly; no Family has earned this meaning yet.',
-  PARTNER_CIRCUIT: 'Source proves an external Partner / Connection / Signal / Observation / Receiver path and its return through Store / Family truth without pretending ingress is a Family Control.',
+  PARTNER_CIRCUIT: 'Source proves an external Partner / Connection / Conversion / Signal / Observation / Receiver path and its return through Store / Family truth without pretending ingress is a Family Control.',
 });
 
 export const SCREEN_PLACEMENTS = Object.freeze(['PRIMARY', 'SHARED']);
