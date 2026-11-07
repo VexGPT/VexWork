@@ -155,6 +155,28 @@ a{color:var(--focus)}
 .travel.right{left:calc(100% + 8px);top:50%;transform:translateY(-50%)}
 .travel.badge{left:auto;right:-8px;top:-10px;transform:none;height:20px;padding:0 8px;font-size:11px}
 
+/* Source-backed Screen expressions: one viewing coordinate shared by all four existing faces. */
+.xrail{grid-column:1/-1;display:flex;align-items:center;gap:7px;min-width:0;padding:7px 10px;background:var(--sheet);border:1px solid var(--rule);border-radius:10px}
+.xrail .xlabel{flex:none;font-size:12px;font-weight:650;color:var(--muted)}
+.xrail .xstep{flex:none;width:28px;height:28px;border:1px solid var(--rule);border-radius:8px;background:#fff;color:var(--ink);font-size:16px;line-height:1}
+.xrail .xstep:disabled{opacity:.35;cursor:default}
+.xchips{display:flex;align-items:center;gap:5px;min-width:0;overflow-x:auto;scrollbar-width:none}
+.xchip{flex:none;height:28px;padding:0 10px;border:1px solid var(--rule);border-radius:999px;background:#fff;color:var(--muted);font-size:12px;white-space:nowrap}
+.xchip[aria-pressed="true"]{border-color:var(--focus);background:color-mix(in srgb,var(--focus) 10%,#fff);color:var(--ink);font-weight:650}
+.xrail .xcount{flex:none;font:11.5px var(--mono);color:var(--faint)}
+.xbasis{flex:none;padding:0 6px;border-radius:5px;background:#eef1f5;color:var(--muted);font:600 9.5px/18px var(--mono)}
+.xpaths{display:flex;align-items:center;gap:4px;min-width:0;margin-left:auto;padding-left:7px;border-left:1px solid var(--rule);overflow-x:auto;scrollbar-width:none}
+.xpaths .label{flex:none;font-size:11px;color:var(--faint)}
+.xpath{flex:none;height:25px;padding:0 8px;border:1px solid var(--rule);border-radius:7px;background:#fff;color:var(--muted);font-size:11px;white-space:nowrap;max-width:210px;overflow:hidden;text-overflow:ellipsis}
+.xpath[aria-pressed="true"]{border-color:var(--ink);background:var(--ink);color:#fff}
+.x-part{outline:2px solid color-mix(in srgb,var(--focus) 55%,transparent);outline-offset:2px}
+.srow.x-part{outline:0;box-shadow:inset 3px 0 0 color-mix(in srgb,var(--focus) 70%,transparent)}
+.x-runtime{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px;padding:6px;border:1px dashed var(--rule-strong);border-radius:8px;background:#fff}
+.x-runtime::before{content:'runtime';align-self:center;color:var(--faint);font:600 9.5px var(--mono);text-transform:uppercase}
+.x-runtime-item{display:inline-flex;align-items:center;min-height:22px;padding:2px 7px;border-radius:999px;background:#eef1f5;color:var(--ink);font-size:11px}
+.x-runtime-count{flex:none;margin-left:auto;color:var(--muted);font:10.5px var(--mono)}
+@media (max-width:900px){.xrail{grid-column:1;flex-wrap:wrap}.xrail .xlabel,.xbasis{display:none}.xchips{order:2;flex-basis:calc(100% - 72px)}.xpaths{order:3;flex-basis:100%;margin-left:0;padding:6px 0 0;border-left:0;border-top:1px solid var(--rule)}}
+
 /* Structure face */
 .structure{flex:1;overflow:auto;padding:16px 16px 28px}
 .struct-section{margin-bottom:18px}
@@ -376,10 +398,12 @@ import * as Presentation from './ui/presentation.mjs';
 import * as Query from '../src/shared/vexboard-screen-lens-query.mjs';
 import * as Catalog from '../src/shared/vexboard-lens-catalog.mjs';
 import * as Revision from '../src/shared/vexboard-screen-lens-revision.mjs';
+import * as Expressions from '../src/shared/vexboard-screen-lens-expressions.mjs';
 
 const DEFAULT_LENS_URL = '../projects/vexboard/lens/vexlife-android.screen-lens.json';
 const LENS_DIR = '../projects/vexboard/lens/';
 const CATALOG_URL = `${LENS_DIR}catalog.json`;
+const EXPRESSION_FIXTURE_URL = '../projects/vexboard/examples/vexlife-android-vexstream.screen-lens-expressions.fixture.json';
 const params = new URLSearchParams(location.search);
 const app = document.getElementById('app');
 const SVG = 'http://www.w3.org/2000/svg';
@@ -481,6 +505,7 @@ function renderToast() {
 async function openRequest(request, { onProgress = () => {}, announce = true } = {}) {
   const keepScreen = state.lens ? screenRef() : null;
   const keepElement = state.anchorElementRef;
+  const keepExpression = state.expressionRef;
   const loaded = await lensForRequest(request, onProgress);
   state.request = request;
   state.lens = loaded.lens;
@@ -492,6 +517,7 @@ async function openRequest(request, { onProgress = () => {}, announce = true } =
   state.cameras.clear();
   const start = keepScreen && state.lens.screens.some((screen) => screen.screenRef === keepScreen) ? keepScreen : state.lens.entryScreenRef;
   state.walk = Lens.createScreenWalk(state.lens, start);
+  await bindExpressionsForLens({ requestedRef: keepExpression });
   state.selected = null; state.anchorElementRef = null; state.pathwayRef = null;
   if (state.overlay === 'CHANGES' && !state.compare) state.overlay = null;
   if (keepElement && Lens.elementsForScreen(state.lens, start).some((element) => element.ref === keepElement)) selectElement(keepElement);
@@ -595,6 +621,11 @@ const state = {
   marks: true,
   menu: null, // 'PROJECT' | 'COMMIT'
   commitForm: { value: '', busy: false, progress: null, error: null, recent: null, recentError: null },
+  expressionFixture: null,
+  expressionRef: null,
+  expressionResolution: null,
+  expressionPathwayRef: null,
+  expressionError: null,
   toast: null,
 };
 let refs = {};
@@ -615,6 +646,132 @@ function doorwayCollapsible(pathway) {
 }
 const doorwayCollapsed = () => state.hideDoorway && doorwayCollapsible(currentPathway());
 const hideBandsFor = (face) => (face === 'BEHAVIOR' && doorwayCollapsed() ? ['DOORWAY'] : []);
+
+let expressionFixtureSource = null;
+async function expressionFixtureSourceForUi() {
+  expressionFixtureSource ??= await fetchJson(EXPRESSION_FIXTURE_URL);
+  return expressionFixtureSource;
+}
+function clearExpressionBinding() {
+  state.expressionFixture = null;
+  state.expressionRef = null;
+  state.expressionResolution = null;
+  state.expressionPathwayRef = null;
+  state.expressionError = null;
+}
+async function bindExpressionsForLens({ requestedRef = state.expressionRef } = {}) {
+  clearExpressionBinding();
+  let source;
+  try { source = await expressionFixtureSourceForUi(); }
+  catch (error) { state.expressionError = error.message; return; }
+  if (source.lensRef !== state.lens.lensRef || source.lensSourceCommit !== state.lens.sourceSnapshot.commit) return;
+  try {
+    state.expressionFixture = Expressions.normalizeScreenLensExpressionFixture(state.lens, source);
+    const fallback = state.expressionFixture.expressions[0]?.expressionRef ?? null;
+    state.expressionRef = state.expressionFixture.expressions.some((entry) => entry.expressionRef === requestedRef) ? requestedRef : fallback;
+    state.expressionResolution = state.expressionRef
+      ? Expressions.resolveScreenLensExpression(state.lens, state.expressionFixture, state.expressionRef)
+      : null;
+  } catch (error) {
+    clearExpressionBinding();
+    state.expressionError = error.message;
+  }
+}
+function expressionAvailable() {
+  return Boolean(state.expressionFixture && state.walk && screenRef() === state.expressionFixture.screenRef);
+}
+function expressionList() { return expressionAvailable() ? state.expressionFixture.expressions : []; }
+function activeExpression() { return expressionList().find((entry) => entry.expressionRef === state.expressionRef) ?? null; }
+function expressionElementParticipates(ref) {
+  return Boolean(expressionAvailable() && state.expressionResolution?.surface.elementRefs.includes(ref));
+}
+function expressionRuntimeItemsFor(ref) {
+  return expressionAvailable()
+    ? (state.expressionResolution?.surface.runtimeItems ?? []).filter((item) => item.realizationRef === ref)
+    : [];
+}
+function setExpressionPathway(pathwayRef, { renderNow = true } = {}) {
+  if (!expressionAvailable()) return;
+  const paths = state.expressionResolution?.behavior.pathwayRefs ?? [];
+  if (!paths.includes(pathwayRef)) return;
+  state.expressionPathwayRef = pathwayRef;
+  if (state.pathwayRef !== pathwayRef) {
+    state.pathwayRef = pathwayRef;
+    state.cameras.delete('BEHAVIOR');
+    state.cameras.delete('DEPTH');
+  }
+  const onScreen = Lens.elementsForScreen(state.lens, screenRef());
+  const participants = new Set(state.expressionResolution.surface.elementRefs);
+  const anchor = onScreen.find((element) => participants.has(element.ref) && element.pathwayRef === pathwayRef)
+    ?? onScreen.find((element) => element.pathwayRef === pathwayRef)
+    ?? null;
+  state.anchorElementRef = anchor?.ref ?? null;
+  state.selected = anchor ? { kind: 'ELEMENT', ref: anchor.ref } : null;
+  if (renderNow) render();
+}
+function setExpression(expressionRef, { renderNow = true } = {}) {
+  if (!expressionAvailable()) return;
+  if (!state.expressionFixture.expressions.some((entry) => entry.expressionRef === expressionRef)) return;
+  state.expressionRef = expressionRef;
+  state.expressionResolution = Expressions.resolveScreenLensExpression(state.lens, state.expressionFixture, expressionRef);
+  const paths = state.expressionResolution.behavior.pathwayRefs;
+  if (paths.length) {
+    const chosen = paths.includes(state.expressionPathwayRef) ? state.expressionPathwayRef : paths[0];
+    setExpressionPathway(chosen, { renderNow: false });
+  } else {
+    state.expressionPathwayRef = null;
+    state.pathwayRef = null;
+    state.anchorElementRef = null;
+    state.selected = null;
+  }
+  if (renderNow) render();
+}
+function stepExpression(delta) {
+  const list = expressionList();
+  const index = list.findIndex((entry) => entry.expressionRef === state.expressionRef);
+  const next = list[index + delta];
+  if (next) setExpression(next.expressionRef);
+}
+function renderExpressionRail() {
+  if (!expressionAvailable()) return null;
+  const list = expressionList();
+  const active = activeExpression();
+  const index = list.findIndex((entry) => entry.expressionRef === active?.expressionRef);
+  const paths = state.expressionResolution?.behavior.pathwayRefs ?? [];
+  const runtimeCount = state.expressionResolution?.surface.runtimeItems.length ?? 0;
+  const evidenceCount = state.expressionResolution?.evidenceRefs.length ?? 0;
+  return h('nav', {
+    class: 'xrail',
+    'aria-label': `Expressions of ${currentScreen().label}`,
+    title: 'A source-backed viewing coordinate over this same Screen. Highlighted elements participate in the selected expression; unmarked elements are not claimed absent.',
+  },
+    h('span', { class: 'xlabel' }, 'Expression'),
+    h('button', { class: 'xstep', type: 'button', 'aria-label': 'Previous expression', disabled: index <= 0, onclick: () => stepExpression(-1) }, '‹'),
+    h('div', { class: 'xchips' }, list.map((entry) => h('button', {
+      class: 'xchip',
+      type: 'button',
+      'aria-pressed': entry.expressionRef === active?.expressionRef ? 'true' : 'false',
+      title: entry.summary ?? entry.label,
+      onclick: () => setExpression(entry.expressionRef),
+    }, entry.label))),
+    h('button', { class: 'xstep', type: 'button', 'aria-label': 'Next expression', disabled: index < 0 || index >= list.length - 1, onclick: () => stepExpression(1) }, '›'),
+    h('span', { class: 'xcount' }, `${index + 1} / ${list.length}`),
+    active ? h('span', { class: 'xbasis', title: 'Expression basis' }, active.basis.replaceAll('_', ' ').toLowerCase()) : null,
+    paths.length ? h('div', { class: 'xpaths', 'aria-label': 'Expression pathways' },
+      h('span', { class: 'label' }, 'Pathway'),
+      paths.map((ref) => {
+        const pathway = Lens.pathwayFor(state.lens, ref);
+        return h('button', {
+          class: 'xpath',
+          type: 'button',
+          'aria-pressed': state.pathwayRef === ref ? 'true' : 'false',
+          title: pathway?.summary ?? pathway?.label ?? ref,
+          onclick: () => setExpressionPathway(ref),
+        }, pathway?.label ?? ref);
+      }),
+      runtimeCount ? h('span', { class: 'xcount', title: 'Runtime representatives; not static Screen elements' }, `${runtimeCount} runtime`) : null,
+      evidenceCount ? h('span', { class: 'xcount' }, `${evidenceCount} evidence`) : null) : null);
+}
 
 function selectElement(elementRef, { keepFaces = true } = {}) {
   const element = Lens.elementFor(state.lens, elementRef);
@@ -951,6 +1108,7 @@ function markElement(node, element, marks) {
   if (element.pathwayRef) node.classList.add('has-path');
   const delta = deltaClass(element).trim();
   if (delta) node.classList.add(delta);
+  if (expressionElementParticipates(element.ref)) node.classList.add('x-part');
   node.title = `${element.label} · ${element.ref}${delta ? `\n${delta === 'delta-added' ? 'Not in Stable' : delta === 'delta-changed' ? 'Differs from Stable' : 'Its pathway differs from Stable'}` : ''}`;
   node.addEventListener('click', (event) => { event.stopPropagation(); selectElement(element.ref); });
   if (element.navigatesTo) node.addEventListener('dblclick', (event) => { event.stopPropagation(); travel(element); });
@@ -982,6 +1140,8 @@ function renderSurfaceElement(tree, marks, context) {
     default: node = h('div', {}, element.label);
   }
   markElement(node, element, marks);
+  const runtimeItems = expressionRuntimeItemsFor(element.ref);
+  if (runtimeItems.length) node.append(h('div', { class: 'x-runtime', 'aria-label': 'Runtime representative items' }, runtimeItems.map((item) => h('span', { class: 'x-runtime-item', title: `${item.itemRef} · runtime identity, not a static Screen element` }, item.label ?? item.itemRef))));
   const go = travelButton(element);
   if (go) node.append(go);
   return node;
@@ -1055,7 +1215,7 @@ function renderStructure() {
     const rows = [];
     const walkTree = (tree, depth) => {
       const { element } = tree;
-      const row = h('div', { class: `srow${marks.selected === element.ref ? ' sel' : ''}${marks.ancestors.has(element.ref) ? ' anc' : ''}${deltaClass(element)}`, style: `--d:${depth};${depth ? '' : '--guide:none'}`, role: 'treeitem', tabindex: '0', 'aria-level': depth + 1, dataset: { ref: element.ref },
+      const row = h('div', { class: `srow${marks.selected === element.ref ? ' sel' : ''}${marks.ancestors.has(element.ref) ? ' anc' : ''}${deltaClass(element)}${expressionElementParticipates(element.ref) ? ' x-part' : ''}`, style: `--d:${depth};${depth ? '' : '--guide:none'}`, role: 'treeitem', tabindex: '0', 'aria-level': depth + 1, dataset: { ref: element.ref },
         onclick: () => selectElement(element.ref),
         onkeydown: (event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); selectElement(element.ref); } },
         ondblclick: () => travel(element) },
@@ -1063,6 +1223,7 @@ function renderStructure() {
         h('span', { class: 'slabel' }, element.label, element.pathwayRef && Lens.pathwayFor(state.lens, element.pathwayRef).label !== element.label ? h('span', { style: 'color:var(--faint);font-weight:400' }, ` · ${Lens.pathwayFor(state.lens, element.pathwayRef).label}`) : null),
         element.declared || element.symbol ? h('span', { class: 'sdecl' }, element.symbol && element.declared && element.symbol !== element.declared ? `${element.symbol} = ${element.declared}` : (element.declared ?? element.symbol)) : null,
         element.intent ? h('span', { class: 'sintent' }, `${element.intent}${element.actionKey ? `  ⟶ ${element.actionKey}` : ''}${element.navigatesTo && element.navigatesTo !== Lens.BACK ? `  ⟶ ${element.navigatesTo}` : ''}`) : null,
+        expressionRuntimeItemsFor(element.ref).length ? h('span', { class: 'x-runtime-count', title: 'Runtime representatives; not static Screen elements' }, `${expressionRuntimeItemsFor(element.ref).length} runtime`) : null,
         h('span', { class: 'sref' }, element.ref));
       rows.push(row);
       tree.children.forEach((child) => walkTree(child, depth + 1));
@@ -1788,12 +1949,13 @@ function syncUrl() {
   next.set('screen', screenRef());
   if (state.anchorElementRef) next.set('element', state.anchorElementRef); else next.delete('element');
   next.set('left', state.faces.EXPERIENCE); next.set('right', state.faces.BEHAVIOR);
+  if (expressionAvailable() && state.expressionRef) next.set('expression', state.expressionRef); else next.delete('expression');
   history.replaceState(null, '', `${location.pathname}?${next}`);
 }
 function render() {
   const focusedRef = document.activeElement?.dataset?.ref ?? document.activeElement?.dataset?.nodeRef ?? null;
   const root = h('div', { class: 'lens' });
-  const main = h('main', { class: 'main' }, renderExperienceSide(), renderBehaviorSide());
+  const main = h('main', { class: 'main' }, renderExpressionRail(), renderExperienceSide(), renderBehaviorSide());
   const bridge = s('svg', { class: 'bridge', 'aria-hidden': 'true' });
   main.append(bridge);
   if (state.overlay === 'MAP') main.append(renderMap());
@@ -1860,6 +2022,9 @@ async function boot() {
   else if (state.request.mode === 'COMMIT' && state.commit.misses.length) showToast(`${state.commit.misses.length} overlay ${state.commit.misses.length === 1 ? 'note does' : 'notes do'} not apply at ${short(state.commit.sha)}.`);
   const startScreen = params.get('screen');
   state.walk = Lens.createScreenWalk(state.lens, startScreen && state.lens.screens.some((screen) => screen.screenRef === startScreen) ? startScreen : state.lens.entryScreenRef);
+  const requestedExpression = params.get('expression');
+  await bindExpressionsForLens({ requestedRef: requestedExpression });
+  if (requestedExpression && expressionAvailable()) setExpression(state.expressionRef, { renderNow: false });
   if (params.get('left') && Lens.LENS_FACES[params.get('left')]?.side === 'EXPERIENCE') state.faces.EXPERIENCE = params.get('left');
   if (params.get('right') && Lens.LENS_FACES[params.get('right')]?.side === 'BEHAVIOR') state.faces.BEHAVIOR = params.get('right');
   const requested = params.get('element') ?? (startScreen ? null : state.lens.entryElementRef);
