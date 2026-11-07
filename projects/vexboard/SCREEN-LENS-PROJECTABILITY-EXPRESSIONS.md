@@ -1008,6 +1008,102 @@ post-merge
 This closes only the **contract patient-zero** edge. It does not claim the human Lens experience,
 Android source derivation, round-trip evidence or second-consumer portability are complete.
 
+## VexBoard Phase 3B — accepted four-face expression experience
+
+The human-facing patient zero is now accepted through two bounded merges.
+
+~~~text
+PR #265
+  merge 84cbe87c35bdd6a320e5b8d48b2acaebf9fd8f08
+  expression rail + shared Surface / Structure participation
+  existing Behavior / Depth pathway selection
+  runtime representatives remain runtime-only
+  ordinary Screen arrival restores expression coherence
+
+PR #266
+  merge 41f0003e5ff0598faee5e280d17c30a905cac697
+  expression changes focus an already-projected defining pathway
+  JSON assignment key order carries no priority
+  relationshipRefs order is patient-zero presentation focus only
+~~~
+
+Exact built-artifact browser proof after #266 establishes desktop + mobile usability for the current
+patient zero, including Playback focus for Player active / docked and the existing full-player-open
+pathway for Full player open. Connection Menu remains bounded by the older Lens snapshot rather than
+inventing a missing open-menu pathway.
+
+## Phase 4 — bounded Android-derived expression source
+
+The next source edge is deliberately **not** another generated UI file and not a general Kotlin or
+Depth engine.
+
+~~~text
+exact VexLife-Android source @ sourceRevisionRef
++ stable Screen Lens coordinates/pathways
+-> bounded VexStream expression source projection
+-> compare source-owned relationship skeleton with accepted fixture
+
+Android source owns:
+  source defaults and source-present relationship shapes
+  selection / presentation gates
+  repeated-item identity mechanics
+  source-authored preview representatives
+  existing projected Lens pathway coordinates
+
+VexWork still owns:
+  representative expression selection
+  human labels / summaries
+  external evidence classification and acceptance
+~~~
+
+The first bounded source reader is intentionally exact:
+
+~~~text
+src/core/vexboard-screen-lens-vexstream-expression-source.mjs
+
+read plan
+  VexStreamMusicScreen.kt
+  VexStreamLibrarySurface.kt
+  VexStreamLibraryPresentation.kt
+  VexStreamConnectionPresentation.kt
+  VexStreamMusicState.kt
+  VexStreamPlaybackDisplayState.kt
+  VexStableLazyList.kt
+~~~
+
+It reuses the existing Android Screen Lens adapter's parsing helpers. It does not create another
+general Kotlin parser.
+
+The read-only currentness route is:
+
+~~~bash
+node scripts/check-screen-lens-vexstream-expression-source.mjs \
+  --source <exact VexLife-Android checkout at ecbb6987d1da338fa0adf7297456d3f652f04155>
+~~~
+
+The first exact-source preflight exposed and corrected one hand-authored fixture drift:
+
+~~~text
+Android:
+  library region / tabs are outside the !Paired connection-setup guard
+
+therefore:
+  connection.paired does not own those containers
+  library.selection owns their always-participating relationship
+~~~
+
+The exact Android source round-trip now resolves:
+
+~~~text
+source-owned relationships = 8
+external evidence relationships = 1
+representative expressions = 7
+findings = 0
+~~~
+
+This source derivation does **not** generalize Screen Lens Depth into Cloud/server traversal. Deeper
+ecosystem projection remains a separate consumer/rightful-owner pressure.
+
 ## Current continuation
 
 ~~~text
@@ -1018,20 +1114,21 @@ DONE
   -> VexLife-Android PR #212
 
 DONE
-  bounded VexStream expression contract + representative fixture
+  bounded expression contract / representative fixture
   -> VexWork PR #263
 
+DONE
+  four-face human expression experience + lived focus refinement
+  -> VexWork PR #265 / #266
+
 ACTIVE
-  consume that accepted contract in the existing Screen Lens presentation owner
-  -> one expression rail over the same Screen
-  -> the same selected context marks Surface + Structure participation
-  -> expression pathway choices reuse existing Behavior + Depth pathway graphs
-  -> runtime representative items stay visibly runtime-only
-  -> unmarked elements are not claimed absent
+  prove bounded Android-derived expression relationship currentness
+  -> exact source reader
+  -> accepted fixture relationship reconciliation
+  -> repository proof + independent assurance + integration
 
 THEN
-  bounded Android adapter / JSON derivation after the UI contract is independently useful
-  -> round-trip / screenshot / lived proof
+  round-trip / lived proof from the source-derived result
   -> one materially different second consumer
   -> only then consider further shared abstraction
 
