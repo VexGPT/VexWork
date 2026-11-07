@@ -215,6 +215,49 @@ Key Management          -> KMS
 
 That mapping is an educational realization, not a claim about a current Vex or employer architecture.
 
+## Cloud Connectivity Lab
+
+The first human/AI engineering doorway is a **contract-driven workbench**, not a raw HTTP collection
+and not primarily a failure simulator.
+
+```text
+service / feature library
+-> accepted contract + version
+-> minimum lawful expression
+-> richer / maximum lawful expression
+-> typed field constraints
+-> exact request or lawful error expression
+-> delivery / outward scope
+-> deterministic validity gate
+-> synthetic realization
+-> resulting observations / VexBoard descent
+```
+
+The Lab projects accepted contract truth; it does not author protocol rules independently.
+
+```text
+LAB UI != CONTRACT OWNER
+SESSION DRAFT != CONTRACT EVOLUTION
+ENUM != FREE TEXT
+PARSEABLE != CONTRACT VALID
+SCHEMA_VALID != CURRENTLY_AUTHORIZED
+OUTWARD_SCOPE != FEATURE_PAYLOAD
+```
+
+Within one Lab session a human may vary values and include/omit already-lawful optional fields. Adding
+a new field, enum member, range, conditional rule or request/error form is deliberate contract
+evolution that must be reconciled with the rightful server/API and Android consumers before the Lab
+can expose it as valid.
+
+Prefer projection from an existing standard contract source such as OpenAPI / JSON Schema or an
+existing code-owned schema before inventing another Vex-specific schema.
+
+Full design and acceptance criteria:
+
+```text
+projects/cloud-connectivity/CLOUD-CONNECTIVITY-LAB.md
+```
+
 ## Product doorway
 
 Current VexLife-Prod already has:
@@ -268,6 +311,7 @@ full demonstration checklist
 -> per-service ServiceConnectivityRelay pressure
 -> candidate VexService graduation pressure
 -> background automation patient zeros
+-> contract-driven Cloud Connectivity Lab
 -> deterministic synthetic cloud
 -> VexLife-Android operation/sync consumer using stable VexFamily grammar
 -> VexLife-Prod selected-app surface
