@@ -88,6 +88,9 @@ test('scenario plan includes ambiguous outcome, five-device and compatibility pr
   assert.match(simulation, /C13 — supported old mobile client/);
   assert.match(simulation, /C31 — backend rollout compatibility window/);
   assert.match(simulation, /C32 — provider realization swap/);
+  assert.match(simulation, /C33 — periodic VexLogger bulk upload/);
+  assert.match(simulation, /C35 — global announcements poll/);
+  assert.match(simulation, /C36 — simultaneous service and operation isolation/);
 });
 
 test('canonical discoverability stays held while shared surfaces are occupied', () => {
