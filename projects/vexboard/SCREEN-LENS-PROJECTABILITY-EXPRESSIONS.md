@@ -468,6 +468,67 @@ For a new semantic family such as Cloud/Network Connectivity, architecture forma
 from the accepted Direct VexFamily body and pressure its exact State-value admission model against
 the real provider/runtime requirements before borrowing VexBehaviorBlueprint mechanics.
 
+## Common semantic authoring direction accepted after the dual-foundation review
+
+VexLife-Android PR #213 currentized the source-facing authoring direction without rewriting existing
+production consumers.
+
+~~~text
+COMMON AUTHORING ROUTE
+
+Direct VexFamily
+  exact CURRENT State + Control
+  -> act(...)
+  -> accepted Act
+     -> stay(...)
+     or
+     -> admit(actual State value, ...)
+  -> optional Begin / Effect / Approach
+
+
+COMPATIBILITY ROUTE
+
+VexBehaviorFamily / VexBehaviorBlueprint
+  existing accepted consumers only
+  chained on(...).stay() / .admit<State>()
+  no longer a peer canonical choice for new family authoring
+~~~
+
+The compatibility source remains truthful and must still be projected accurately while those
+consumers exist. This does **not** authorize VexBoard to pretend they have already migrated.
+
+For Screen Lens and future source work:
+
+~~~text
+new semantic family
+  -> Direct VexFamily first
+
+materially evolving old Blueprint consumer
+  -> preserve the consumer's earned requirements
+  -> test whether Direct VexFamily expresses them truthfully
+  -> migrate only when those requirements survive
+
+VexBoard adapter
+  -> recognize both while source is dual
+  -> expose the ownership difference
+  -> never normalize kind-only admission into a fabricated exact State value
+~~~
+
+Accepted Android source coordinate:
+
+~~~text
+PR #213
+merge 71fd852f1fe196116ced1504b6348adcb423d679
+
+changed source-facing compatibility surfaces:
+  architecture/behavior/VEX-BEHAVIOR-FAMILY-BLUEPRINT.md
+  architecture/behavior/.../VexBehaviorBlueprint.kt
+  architecture/behavior/.../VexBehaviorBlueprintBuilder.kt
+~~~
+
+This clarification is deliberately smaller than a VexStream/VexMaps migration. Their current
+requirements remain migration pressure, not permission to replace proven behavior in bulk.
+
 ## Shared projectability language
 
 Before changing many components, implementation should stabilize the **questions** that both repositories need to answer.
