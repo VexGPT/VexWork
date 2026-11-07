@@ -16,7 +16,11 @@
   "sourceRefs": [
     "projects/cloud-connectivity/README.md",
     "projects/cloud-connectivity/DEMONSTRATION-CHECKLIST.md",
-    "projects/cloud-connectivity/VEXLIFE-SIMULATION-PLAN.md"
+    "projects/cloud-connectivity/VEXLIFE-SIMULATION-PLAN.md",
+    "test/cloud-connectivity-project.test.mjs",
+    "repo.vexlife-prod:src/commonMain/kotlin/vexlife/workspace/VexLifeWorkspaceBlueprint.kt",
+    "repo.vexlife-prod:src/commonMain/kotlin/vexlife/web/VexLifeWebP1.kt",
+    "project.full-security"
   ],
   "formedAt": "2026-11-06T17:25:00.000-08:00"
 }
