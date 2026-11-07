@@ -43,6 +43,156 @@ no longer hold this Vextreme architecture Work open.
 Current unfinished edges are the real lived predicates recorded below—especially Terrain Journey Inspect
 usefulness/readability and the bounded reader-navigation lived question—not another foundation rewrite.
 
+## Checkpoint — VexArchitecture Post Partner
+
+A bounded successor Work now preserves the architecture questions that should be resumed only after
+the current Partner/onboarding lifecycle is stable enough to stand on accepted source:
+
+~~~text
+work.vextreme.architecture-convergence.vexarchitecture-post-partner
+    WAITING_DEPENDENCIES
+    label: VexArchitecture Post Partner
+~~~
+
+Dependencies:
+
+~~~text
+VexLife-Android #219
+    current VexPartner Source / Signal / Connection / Conversion /
+    Observation / Receiver proof
+
+Vextreme #591
+    current Builder Guide / Live Demonstration currentization
+    including positive owner-pressure and Service-pressure checkpointing
+~~~
+
+This is a checkpoint, not a pre-written architecture answer.
+
+### Resume question
+
+After Partner currentness is accepted, inventory the Android/platform boundaries that remain
+architecturally interesting and ask whether any repeated relationship deserves a reusable root,
+child vocabulary, or merely clearer composition guidance.
+
+Current pressure set:
+
+~~~text
+SERVICE
+    current evidence:
+      VexStreamPlaybackService
+      VexMapsNavigationService
+
+    candidate repeated question:
+      what capability must remain continuously available beyond a shorter
+      caller/UI lifetime, and what bounded lifetime carries that provision?
+
+    current vocabulary hypothesis only:
+      Service
+      Capability
+      Lifetime
+
+    do not yet create VexService or Service.Capability in source
+
+BROADCAST / RECEIVER ENTRY
+    Android / system-originated callback doorway
+    determine:
+      event ingress?
+      provider observation?
+      presentation/update trigger?
+      short receiver-bound work?
+    do not let BroadcastReceiver become semantic or long-running-work authority
+
+WIDGET / SYSTEM SURFACE
+    existing architecture/widget foundation is already real source
+    -> inspect/currentize rather than assume an unsolved blank
+    -> preserve:
+       APP_WIDGET != PRODUCT_STATE_OWNER
+       CALLBACK != LONG_RUNNING_WORK_OWNER
+
+PERMISSION / PLATFORM ADMISSION
+    inspect Android permission/currentness/consent relationships
+    distinguish:
+      user grant
+      OS availability
+      app declaration
+      authorization/security capability
+      feature semantic availability
+    do not collapse them into one generic Capability merely because the word repeats
+
+OTHER PLATFORM PATTERNS
+    discover from current source before naming them
+    candidates may include:
+      Activity / Intent entry
+      process restart / restoration
+      scheduled/background work
+      notifications / system surfaces
+      content/media providers
+      sensor/device callbacks
+    existence of an Android framework noun does not earn a VexArchitecture root
+~~~
+
+### Maturity distinctions at checkpoint formation
+
+~~~text
+Family
+    accepted reusable semantic contract
+
+Partner
+    current source-formed reusable external-participant contract
+    lifecycle acceptance still depends on Android #219 proof/review/merge
+
+Widget
+    existing Android Widget foundation
+    already has reusable source/tests
+    Post Partner asks how it fits the broader body, not whether it exists
+
+Service
+    repeated architecture pressure
+    two materially different current Android witnesses
+    NOT YET an accepted reusable Vex root
+
+BroadcastReceiver / permissions / other Android boundaries
+    inventory and pressure questions
+    NOT YET reusable architecture by existence
+~~~
+
+### Pressure method
+
+Reuse the same method that made Partner trustworthy:
+
+~~~text
+do not copy the patient zero
+-> choose materially different consumers
+-> identify what relationship vocabulary survives
+-> remove domain-specific assumptions
+-> prove each surviving term owns a unique recurring question
+-> prefer composition of existing roots when that is enough
+-> add a reusable root only when subtraction would otherwise lose required meaning
+~~~
+
+For Service, the current proposed third pressure is an app-owned live call because it would add
+bidirectional realtime media, multiple external-participation relationships, join/leave behavior and
+Android call-system integration. It remains a proposed pressure, not a claimed feature or current
+implementation.
+
+### Boundary with the current trajectory
+
+~~~text
+POST PARTNER
+!= reopen CGM / Pen / Pump
+!= block Partner integration
+!= pre-authorize a Service framework
+!= Android framework taxonomy project
+!= permission system redesign
+
+POST PARTNER
+= preserve the next architecture questions
+  so current Partner work can finish without losing them
+~~~
+
+When this Work resumes, begin from then-current accepted VexArchitecture source and current Android
+provider/platform facts. Do not treat this checkpoint's hypotheses as authority.
+
 
 ## Human outcome
 
