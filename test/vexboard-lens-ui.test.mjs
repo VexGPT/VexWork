@@ -176,7 +176,8 @@ test('expression carousel preserves the lived desktop and phone-width interactio
   assert.match(page, /Math\.abs\(dx\) > 70/);
   assert.match(page, /event\.key === 'ArrowRight' \|\| event\.key === 'ArrowLeft'/);
   assert.match(page, /@media \(max-width:900px\)[\s\S]*\.xpeek\{display:none\}/, 'phone width hides neighbour phones');
-  assert.match(page, /Double-click to show expression:/, 'Structure can traverse to an expression that exposes a latent element');
+  assert.match(page, /function exposeElement\(ref\)/, 'Structure can resolve an element to the expression that exposes it');
+  assert.match(page, /ondblclick: \(\) => \(element\.navigatesTo \? travel\(element\) : exposeElement\(element\.ref\)\)/, 'Structure double-click traverses to that source-derived expression');
 });
 
 test('screen travel resets presentation context without inventing cross-Screen State', () => {
