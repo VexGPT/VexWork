@@ -380,13 +380,16 @@ a{color:var(--focus)}
 .bridge .cap{stroke:#fff;stroke-width:2}
 
 /* Inspector tray */
-.tray{border-top:1px solid var(--rule);background:var(--sheet);max-height:25vh;overflow:auto}
-.tray.collapsed .tray-body{display:none}
-.tray-head{display:flex;align-items:center;gap:10px;padding:10px 18px;position:sticky;top:0;background:var(--sheet);border-bottom:1px solid #eef1f5;z-index:1}
+.tray{position:relative;display:flex;flex-direction:column;height:var(--tray-height,220px);min-height:56px;max-height:60vh;border-top:1px solid var(--rule);background:var(--sheet);overflow:hidden}
+.tray-resize{flex:none;height:12px;display:flex;align-items:center;justify-content:center;border:0;border-bottom:1px solid #eef1f5;background:var(--sheet);cursor:ns-resize;touch-action:none}
+.tray-resize::before{content:'';width:52px;height:4px;border-radius:999px;background:var(--rule-strong);transition:background .12s}
+.tray-resize:hover::before,.tray-resize.dragging::before,.tray-resize:focus-visible::before{background:var(--ink)}
+.tray-resize:focus-visible{outline:2px solid var(--focus);outline-offset:-2px}
+.tray-head{display:flex;align-items:center;gap:10px;padding:8px 18px;background:var(--sheet);border-bottom:1px solid #eef1f5;z-index:1}
 .tray-head h2{margin:0;font-size:14px;font-weight:600;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .tray-head .ref{font:12px var(--mono);color:var(--faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
 .tray-head .tool{height:28px}.tray-head .push{margin-left:auto}
-.tray-body{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px 28px;padding:10px 18px 14px}
+.tray-body{flex:1;min-height:0;overflow:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));align-content:start;gap:14px 28px;padding:10px 18px 14px}
 .tray h3{margin:0 0 6px;font-size:12px;font-weight:600;color:var(--muted)}
 .tray dl{margin:0;display:grid;grid-template-columns:max-content minmax(0,1fr);gap:4px 12px;font-size:12.5px}
 .tray dt{color:var(--muted)}.tray dd{margin:0;overflow-wrap:anywhere}
@@ -511,8 +514,9 @@ kbd{font:11px var(--mono);border:1px solid var(--rule-strong);border-bottom-widt
   .main{grid-template-columns:1fr;gap:18px}
   .side{min-height:640px}
   .bridge{display:none}
-  .tray-body{grid-template-columns:1fr}
-  .tray{max-height:none}
+  .tray-body{grid-template-columns:1fr;overflow:visible}
+  .tray{height:auto!important;min-height:0;max-height:none;overflow:visible}
+  .tray-resize{display:none}
   .snapshot{display:none}
   .screens{margin-left:0}
   body{overflow-x:hidden}
@@ -789,7 +793,7 @@ const state = {
   cameras: new Map(),
   layouts: new Map(),
   overlay: null, // 'MAP' | 'LEGEND'
-  trayCollapsed: window.matchMedia('(min-width:901px)').matches,
+  trayHeight: Math.round(Math.min(280, Math.max(180, window.innerHeight * 0.24))),
   palette: 'STANDARD',
   // Which project and build is on screen, and how it differs from Stable.
   catalog: null,
@@ -2293,10 +2297,66 @@ function stepImpact(node) {
     impact.sameSymbol.length ? [h('p', { class: 'count', style: 'margin-top:8px' }, 'Same symbol in other pathways'), h('div', { class: 'links' }, capped(impact.sameSymbol, 4, stepLink))] : null,
     impact.sameSource.length ? [h('p', { class: 'count', style: 'margin-top:8px' }, `Same file in ${impact.sameSource.length} other step${impact.sameSource.length === 1 ? '' : 's'}`), h('div', { class: 'links' }, capped(impact.sameSource, 3, stepLink))] : null);
 }
+function trayHeightBounds() {
+  const min = 56;
+  const max = Math.max(min, Math.round(window.innerHeight * 0.60));
+  return { min, max };
+}
+function clampTrayHeight(value) {
+  const { min, max } = trayHeightBounds();
+  return Math.max(min, Math.min(max, Math.round(value)));
+}
+function wireTrayResize(handle, tray) {
+  let drag = null;
+  const apply = (height) => {
+    state.trayHeight = clampTrayHeight(height);
+    tray.style.setProperty('--tray-height', `${state.trayHeight}px`);
+    handle.setAttribute('aria-valuenow', String(state.trayHeight));
+    scheduleBridge();
+  };
+  handle.addEventListener('pointerdown', (event) => {
+    if (event.button !== 0 || window.matchMedia('(max-width:900px)').matches) return;
+    event.preventDefault();
+    drag = { y: event.clientY, height: tray.getBoundingClientRect().height, pointerId: event.pointerId };
+    handle.setPointerCapture(event.pointerId);
+    handle.classList.add('dragging');
+  });
+  handle.addEventListener('pointermove', (event) => {
+    if (!drag || event.pointerId !== drag.pointerId) return;
+    apply(drag.height + drag.y - event.clientY);
+  });
+  const stop = (event) => {
+    if (!drag || event.pointerId !== drag.pointerId) return;
+    drag = null;
+    handle.classList.remove('dragging');
+    placeSurfaceFloaters();
+    scheduleBridge();
+  };
+  handle.addEventListener('pointerup', stop);
+  handle.addEventListener('pointercancel', stop);
+  handle.addEventListener('keydown', (event) => {
+    const { min, max } = trayHeightBounds();
+    const step = event.shiftKey ? 80 : 24;
+    let next = null;
+    if (event.key === 'ArrowUp') next = state.trayHeight + step;
+    else if (event.key === 'ArrowDown') next = state.trayHeight - step;
+    else if (event.key === 'Home') next = min;
+    else if (event.key === 'End') next = max;
+    if (next !== null) { event.preventDefault(); apply(next); }
+  });
+}
 function renderTray() {
-  const tray = h('section', { class: `tray${state.trayCollapsed ? ' collapsed' : ''}`, 'aria-label': 'Inspector' });
-  const toggle = h('button', { class: 'tool tray-toggle', 'aria-expanded': !state.trayCollapsed, title: state.trayCollapsed ? 'Open inspector details' : 'Collapse inspector to give Experience and Behavior more room', onclick: () => { state.trayCollapsed = !state.trayCollapsed; render(); } }, state.trayCollapsed ? 'Details ▴' : 'Details ▾');
-  const head = (...children) => h('div', { class: 'tray-head' }, ...children, ...briefButtons(), toggle);
+  const bounds = trayHeightBounds();
+  state.trayHeight = clampTrayHeight(state.trayHeight);
+  const tray = h('section', { class: 'tray', style: `--tray-height:${state.trayHeight}px`, 'aria-label': 'Inspector' });
+  const resize = h('div', {
+    class: 'tray-resize', role: 'separator', tabindex: '0', 'aria-orientation': 'horizontal',
+    'aria-label': 'Resize inspector', 'aria-valuemin': String(bounds.min), 'aria-valuemax': String(bounds.max),
+    'aria-valuenow': String(state.trayHeight), title: 'Drag to give the inspector or the Lens more room',
+  });
+  wireTrayResize(resize, tray);
+  const head = (...children) => h('div', { class: 'tray-head' }, ...children, ...briefButtons());
+  tray.append(resize);
   const selected = state.selected;
   if (!selected) {
     const screen = currentScreen();
